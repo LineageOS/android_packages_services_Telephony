@@ -72,7 +72,7 @@
     <string name="phone_accounts_configure_account_settings" msgid="6622119715253196586">"Konfiguratu kontuaren ezarpenak"</string>
     <string name="phone_accounts_all_calling_accounts" msgid="1609600743500618823">"Deiak egiteko kontu guztiak"</string>
     <string name="phone_accounts_all_calling_accounts_summary" msgid="2214134955430107240">"Hautatu zein kontutatik egin daitezkeen deiak"</string>
-    <string name="wifi_calling" msgid="3650509202851355742">"Wi-Fi bidezko deiak"</string>
+    <string name="wifi_calling" msgid="3650509202851355742">"Wifi bidezko deiak"</string>
     <string name="connection_service_default_label" msgid="7332739049855715584">"Konektatzeko zerbitzu integratua"</string>
     <string name="voicemail" msgid="7697769412804195032">"Erantzungailua"</string>
     <string name="voicemail_settings_with_label" msgid="4228431668214894138">"Erantzungailua (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -93,32 +93,32 @@
     <string name="sum_loading_settings" msgid="434063780286688775">"Ezarpenak kargatzen…"</string>
     <string name="sum_hide_caller_id" msgid="131100328602371933">"Ezkutatu zenbakia irteerako deietan"</string>
     <string name="sum_show_caller_id" msgid="3571854755324664591">"Erakutsi zenbakia irteerako deietan"</string>
-    <string name="sum_default_caller_id" msgid="1767070797135682959">"Erabili operadorearen ezarpen lehenetsiak irteerako deietan nire zenbakia erakusteko"</string>
+    <string name="sum_default_caller_id" msgid="1767070797135682959">"Erabili operadorearen ezarpen lehenetsiak, egiten ditudan deietan nire zenbakia erakusteko"</string>
     <string name="labelCW" msgid="8449327023861428622">"Deiak zain"</string>
-    <string name="sum_cw_enabled" msgid="3977308526187139996">"Deiak abian dauden bitartean, eman sarrerako deien berri"</string>
-    <string name="sum_cw_disabled" msgid="3658094589461768637">"Deiak abian dauden bitartean, eman sarrerako deien berri"</string>
+    <string name="sum_cw_enabled" msgid="3977308526187139996">"Deiak abian dauden bitartean, eman jasotzen ditudan deien berri"</string>
+    <string name="sum_cw_disabled" msgid="3658094589461768637">"Deiak abian dauden bitartean, eman jasotzen ditudan deien berri"</string>
     <string name="call_forwarding_settings" msgid="8937130467468257671">"Dei-desbideratzearen ezarpenak"</string>
     <string name="call_forwarding_settings_with_label" msgid="2345432813399564272">"Deiak desbideratzeko ezarpenak (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCF" msgid="3578719437928476078">"Dei-desbideratzea"</string>
     <string name="labelCFU" msgid="8870170873036279706">"Desbideratu beti"</string>
     <string name="messageCFU" msgid="1361806450979589744">"Erabili beti zenbaki hau"</string>
     <string name="sum_cfu_enabled_indicator" msgid="9030139213402432776">"Dei guztiak desbideratzen"</string>
-    <string name="sum_cfu_enabled" msgid="5806923046528144526">"Dei guztiak <xliff:g id="PHONENUMBER">{0}</xliff:g> zenbakira desbideratzen"</string>
+    <string name="sum_cfu_enabled" msgid="5806923046528144526">"Dei guztiak <xliff:g id="PHONENUMBER">{0}</xliff:g> zenbakira desbideratzen dira"</string>
     <string name="sum_cfu_enabled_no_number" msgid="7287752761743377930">"Zenbakia ez dago eskuragarri"</string>
     <string name="sum_cfu_disabled" msgid="5010617134210809853">"Desaktibatuta"</string>
     <string name="labelCFB" msgid="615265213360512768">"Okupatuta nagoenean"</string>
     <string name="messageCFB" msgid="1958017270393563388">"Okupatuta dagoenerako zenbakia"</string>
-    <string name="sum_cfb_enabled" msgid="332037613072049492">"<xliff:g id="PHONENUMBER">{0}</xliff:g> zenbakira desbideratzen"</string>
+    <string name="sum_cfb_enabled" msgid="332037613072049492">"<xliff:g id="PHONENUMBER">{0}</xliff:g> zenbakira desbideratzen dira"</string>
     <string name="sum_cfb_disabled" msgid="3589913334164866035">"Desaktibatuta"</string>
     <string name="disable_cfb_forbidden" msgid="4831494744351633961">"Operadoreak ez du dei-desbideratzeak desgaitzea onartzen telefonoa okupatuta dagoen bitartean."</string>
     <string name="labelCFNRy" msgid="3403533792248457946">"Erantzuten ez dudanean"</string>
     <string name="messageCFNRy" msgid="7644434155765359009">"Erantzunik jasotzen ez denerako zenbakia"</string>
-    <string name="sum_cfnry_enabled" msgid="3000500837493854799">"<xliff:g id="PHONENUMBER">{0}</xliff:g> zenbakira desbideratzen"</string>
+    <string name="sum_cfnry_enabled" msgid="3000500837493854799">"<xliff:g id="PHONENUMBER">{0}</xliff:g> zenbakira desbideratzen dira"</string>
     <string name="sum_cfnry_disabled" msgid="1990563512406017880">"Desaktibatuta"</string>
     <string name="disable_cfnry_forbidden" msgid="3174731413216550689">"Operadoreak ez du dei-desbideratzeak desgaitzea onartzen telefonoak erantzuten ez duenean."</string>
-    <string name="labelCFNRc" msgid="4163399350778066013">"Konektatu gabe nagoenean"</string>
+    <string name="labelCFNRc" msgid="4163399350778066013">"Telefonoa itzalita edo estalduratik at dagoenean"</string>
     <string name="messageCFNRc" msgid="6980340731313007250">"Eskuragarri ez dagoenerako zenbakia"</string>
-    <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"<xliff:g id="PHONENUMBER">{0}</xliff:g> zenbakira desbideratzen"</string>
+    <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"<xliff:g id="PHONENUMBER">{0}</xliff:g> zenbakira desbideratzen dira"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Desaktibatuta"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Operadoreak ez du dei-desbideratzeak desgaitzea onartzen telefonoa eskuragarri ez dagoen bitartean."</string>
     <string name="updating_title" msgid="6130548922615719689">"Deien ezarpenak"</string>
@@ -273,7 +273,7 @@
     <string name="sim_selection_required_pref" msgid="6985901872978341314">"Hautatu egin behar da"</string>
     <string name="sim_change_data_title" msgid="9142726786345906606">"Datuetarako SIMa aldatu nahi duzu?"</string>
     <string name="sim_change_data_message" msgid="3567358694255933280">"Datu-konexiorako, <xliff:g id="NEW_SIM">%1$s</xliff:g> txartela erabili nahi duzu <xliff:g id="OLD_SIM">%2$s</xliff:g> txartelaren ordez?"</string>
-    <string name="wifi_calling_settings_title" msgid="5800018845662016507">"Wi-Fi bidezko deiak"</string>
+    <string name="wifi_calling_settings_title" msgid="5800018845662016507">"Wifi bidezko deiak"</string>
     <string name="video_calling_settings_title" msgid="342829454913266078">"Operadorearen bideo-deiak"</string>
     <string name="gsm_umts_options" msgid="4968446771519376808">"GSM/UMTS aukerak"</string>
     <string name="cdma_options" msgid="3669592472226145665">"CDMA aukerak"</string>
@@ -539,7 +539,7 @@
     <string name="onscreenEndCallText" msgid="6138725377654842757">"Amaitu"</string>
     <string name="onscreenShowDialpadText" msgid="658465753816164079">"Markagailua"</string>
     <string name="onscreenMuteText" msgid="5470306116733843621">"Desaktibatu audioa"</string>
-    <string name="onscreenAddCallText" msgid="9075675082903611677">"Gehitu deia"</string>
+    <string name="onscreenAddCallText" msgid="9075675082903611677">"Gehitu dei bat"</string>
     <string name="onscreenMergeCallsText" msgid="3692389519611225407">"Bateratu deiak"</string>
     <string name="onscreenSwapCallsText" msgid="2682542150803377991">"Trukatu"</string>
     <string name="onscreenManageCallsText" msgid="1162047856081836469">"Kudeatu deiak"</string>
@@ -586,7 +586,7 @@
     <string name="ota_progress" msgid="8837259285255700132">"Telefonoa programatzen…"</string>
     <string name="ota_failure" msgid="5674217489921481576">"Ezin izan da programatu telefonoa"</string>
     <string name="ota_successful" msgid="1106825981548107774">"Telefonoa aktibatu egin da. Zerbitzua hasteko 15 minutu ere behar izan daitezke."</string>
-    <string name="ota_unsuccessful" msgid="8531037653803955754">"Ez duzu telefonoa aktibatu.\nBaliteke estaldura gehiago duen eremu bat aurkitu behar izatea (leiho baten ondoan edo kanpoan).\n\nSaiatu berriro edo, aukera gehiago ezagutzeko, deitu bezeroarentzako zerbitzura."</string>
+    <string name="ota_unsuccessful" msgid="8531037653803955754">"Ez duzu telefonoa aktibatu.\nBaliteke estaldura gehiago duen eremu bat aurkitu behar izatea (leiho baten ondoan edo kanpoan).\n\nSaiatu berriro edo, aukera gehiago ezagutzeko, deitu bezeroarentzako laguntza-zerbitzura."</string>
     <string name="ota_spc_failure" msgid="904092035241370080">"SPC HUTSEGITE GEHIEGI"</string>
     <string name="ota_call_end" msgid="8657746378290737034">"Atzera"</string>
     <string name="ota_try_again" msgid="6914781945599998550">"Saiatu berriro"</string>

@@ -485,7 +485,7 @@
     <string name="card_title_dialing" msgid="8742182654254431781">"전화 거는 중"</string>
     <string name="card_title_redialing" msgid="18130232613559964">"재다이얼 중"</string>
     <string name="card_title_conf_call" msgid="901197309274457427">"다자간 통화"</string>
-    <string name="card_title_incoming_call" msgid="881424648458792430">"수신전화"</string>
+    <string name="card_title_incoming_call" msgid="881424648458792430">"수신 전화"</string>
     <string name="card_title_call_ended" msgid="650223980095026340">"통화 종료됨"</string>
     <string name="card_title_on_hold" msgid="9028319436626975207">"대기 중"</string>
     <string name="card_title_hanging_up" msgid="814874106866647871">"전화 끊는 중"</string>
@@ -545,7 +545,7 @@
     <string name="onscreenManageCallsText" msgid="1162047856081836469">"통화 관리"</string>
     <string name="onscreenManageConferenceText" msgid="4700574060601755137">"다자간 통화 관리"</string>
     <string name="onscreenAudioText" msgid="7224226735052019986">"오디오"</string>
-    <string name="onscreenVideoCallText" msgid="1743992456126258698">"화상 통화"</string>
+    <string name="onscreenVideoCallText" msgid="1743992456126258698">"영상 통화"</string>
     <string name="importSimEntry" msgid="3892354284082689894">"가져오기"</string>
     <string name="importAllSimEntries" msgid="2628391505643564007">"모두 가져오기"</string>
     <string name="importingSimContacts" msgid="4995457122107888932">"SIM 주소록 가져오는 중"</string>

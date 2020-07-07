@@ -24,7 +24,7 @@
     <string name="unknown" msgid="8279698889921830815">"Không xác định"</string>
     <string name="private_num" msgid="4487990167889159992">"Số cá nhân"</string>
     <string name="payphone" msgid="7936735771836716941">"Điện thoại công cộng"</string>
-    <string name="onHold" msgid="6132725550015899006">"Đang chờ"</string>
+    <string name="onHold" msgid="6132725550015899006">"Đang giữ máy"</string>
     <string name="mmiStarted" msgid="9212975136944568623">"Đã bắt đầu mã MMI"</string>
     <string name="ussdRunning" msgid="1163586813106772717">"Mã USSD đang chạy…"</string>
     <string name="mmiCancelled" msgid="5339191899200678272">"Mã MMI đã bị hủy"</string>
@@ -83,13 +83,13 @@
     <string name="voicemail_notifications_preference_title" msgid="7829238858063382977">"Thông báo"</string>
     <string name="cell_broadcast_settings" msgid="8135324242541809924">"Phát sóng trong tình huống khẩn cấp"</string>
     <string name="call_settings" msgid="3677282690157603818">"Cài đặt cuộc gọi"</string>
-    <string name="additional_gsm_call_settings" msgid="1561980168685658846">"Cài đặt bổ sung"</string>
-    <string name="additional_gsm_call_settings_with_label" msgid="7973920539979524908">"Cài đặt bổ sung (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
+    <string name="additional_gsm_call_settings" msgid="1561980168685658846">"Tùy chọn cài đặt bổ sung"</string>
+    <string name="additional_gsm_call_settings_with_label" msgid="7973920539979524908">"Tùy chọn cài đặt bổ sung (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="sum_gsm_call_settings" msgid="7964692601608878138">"Cài đặt cuộc gọi chỉ GSM bổ sung"</string>
     <string name="additional_cdma_call_settings" msgid="2178016561980611304">"Cài đặt cuộc gọi CDMA bổ sung"</string>
     <string name="sum_cdma_call_settings" msgid="3185825305136993636">"Cài đặt cuộc gọi chỉ CDMA bổ sung"</string>
     <string name="labelNwService" msgid="6015891883487125120">"Cài đặt dịch vụ mạng"</string>
-    <string name="labelCallerId" msgid="2090540744550903172">"ID người gọi"</string>
+    <string name="labelCallerId" msgid="2090540744550903172">"Số nhận dạng người gọi"</string>
     <string name="sum_loading_settings" msgid="434063780286688775">"Đang tải cài đặt…"</string>
     <string name="sum_hide_caller_id" msgid="131100328602371933">"Số bị ẩn trong cuộc gọi đi"</string>
     <string name="sum_show_caller_id" msgid="3571854755324664591">"Số được hiển thị trong cuộc gọi đi"</string>
@@ -125,8 +125,8 @@
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Chỉ người dùng quản trị mới có thể thay đổi cài đặt cuộc gọi."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Cài đặt (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Lỗi cài đặt cuộc gọi"</string>
-    <string name="reading_settings" msgid="1605904432450871183">"Đang đọc cài đặt…"</string>
-    <string name="updating_settings" msgid="3650396734816028808">"Đang cập nhật cài đặt..."</string>
+    <string name="reading_settings" msgid="1605904432450871183">"Đang đọc các tùy chọn cài đặt…"</string>
+    <string name="updating_settings" msgid="3650396734816028808">"Đang cập nhật các tùy chọn cài đặt..."</string>
     <string name="reverting_settings" msgid="7378668837291012205">"Đang hoàn nguyên cài đặt…"</string>
     <string name="response_error" msgid="3904481964024543330">"Phản hồi không mong muốn từ mạng."</string>
     <string name="exception_error" msgid="330994460090467">"Lỗi mạng hoặc thẻ SIM."</string>
@@ -252,7 +252,7 @@
     <string name="roaming_enable" msgid="6853685214521494819">"Kết nối với dịch vụ dữ liệu khi chuyển vùng"</string>
     <string name="roaming_disable" msgid="8856224638624592681">"Kết nối với dịch vụ dữ liệu khi chuyển vùng"</string>
     <string name="roaming_reenable_message" msgid="1951802463885727915">"Tính năng Chuyển vùng dữ liệu bị tắt. Nhấn để bật."</string>
-    <string name="roaming_enabled_message" msgid="9022249120750897">"Có thể áp dụng phí chuyển vùng. Nhấn để sửa đổi."</string>
+    <string name="roaming_enabled_message" msgid="9022249120750897">"Bạn có thể bị tính phí chuyển vùng. Nhấn để sửa đổi."</string>
     <string name="roaming_notification_title" msgid="3590348480688047320">"Đã mất kết nối dữ liệu di động"</string>
     <string name="roaming_on_notification_title" msgid="7451473196411559173">"Chuyển vùng dữ liệu đang bật"</string>
     <string name="roaming_warning" msgid="7855681468067171971">"Bạn có thể phải trả một khoản phí lớn."</string>
@@ -274,7 +274,7 @@
     <string name="sim_change_data_title" msgid="9142726786345906606">"Thay đổi SIM cho dữ liệu di động?"</string>
     <string name="sim_change_data_message" msgid="3567358694255933280">"Sử dụng <xliff:g id="NEW_SIM">%1$s</xliff:g> thay vì <xliff:g id="OLD_SIM">%2$s</xliff:g> cho dữ liệu di động?"</string>
     <string name="wifi_calling_settings_title" msgid="5800018845662016507">"Gọi qua Wi-Fi"</string>
-    <string name="video_calling_settings_title" msgid="342829454913266078">"Tính năng gọi điện video của nhà cung cấp dịch vụ"</string>
+    <string name="video_calling_settings_title" msgid="342829454913266078">"Tính năng gọi video của nhà cung cấp dịch vụ"</string>
     <string name="gsm_umts_options" msgid="4968446771519376808">"Tùy chọn GSM/UMTS"</string>
     <string name="cdma_options" msgid="3669592472226145665">"Tùy chọn CDMA"</string>
     <string name="throttle_data_usage" msgid="1944145350660420711">"Sử dụng dữ liệu"</string>
@@ -421,7 +421,7 @@
     <string name="auto_retry_mode_title" msgid="2985801935424422340">"Tự động thử lại"</string>
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"Bật chế độ Tự động thử lại"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"Không được phép thay đổi Chế độ Máy điện báo đánh chữ (TTY) trong cuộc gọi video"</string>
-    <string name="menu_add" msgid="5616487894975773141">"Thêm liên hệ"</string>
+    <string name="menu_add" msgid="5616487894975773141">"Thêm người liên hệ"</string>
     <string name="menu_edit" msgid="3593856941552460706">"Chỉnh sửa liên hệ"</string>
     <string name="menu_delete" msgid="6326861853830546488">"Xóa liên hệ"</string>
     <string name="menu_dial" msgid="4178537318419450012">"Quay số liên hệ"</string>
@@ -487,7 +487,7 @@
     <string name="card_title_conf_call" msgid="901197309274457427">"Cuộc gọi hội nghị"</string>
     <string name="card_title_incoming_call" msgid="881424648458792430">"Cuộc gọi đến"</string>
     <string name="card_title_call_ended" msgid="650223980095026340">"Cuộc gọi đã kết thúc"</string>
-    <string name="card_title_on_hold" msgid="9028319436626975207">"Đang chờ"</string>
+    <string name="card_title_on_hold" msgid="9028319436626975207">"Đang giữ máy"</string>
     <string name="card_title_hanging_up" msgid="814874106866647871">"Kết thúc cuộc gọi"</string>
     <string name="card_title_in_call" msgid="8231896539567594265">"Đang trong cuộc gọi"</string>
     <string name="notification_voicemail_title" msgid="3932876181831601351">"Thư thoại mới"</string>
@@ -626,8 +626,8 @@
     <string name="voicemail_change_pin_dialog_title" msgid="4633077715231764435">"Thay đổi mã PIN"</string>
     <string name="preference_category_ringtone" msgid="8787281191375434976">"Nhạc chuông và rung"</string>
     <string name="pstn_connection_service_label" msgid="9200102709997537069">"Thẻ SIM tích hợp sẵn"</string>
-    <string name="enable_video_calling_title" msgid="7246600931634161830">"Bật gọi điện video"</string>
-    <string name="enable_video_calling_dialog_msg" msgid="7141478720386203540">"Để bật tính năng gọi điện video, bạn cần bật chế độ 4G LTE tăng cường trong cài đặt mạng."</string>
+    <string name="enable_video_calling_title" msgid="7246600931634161830">"Bật gọi video"</string>
+    <string name="enable_video_calling_dialog_msg" msgid="7141478720386203540">"Để bật tính năng gọi video, bạn cần bật chế độ 4G LTE tăng cường trong cài đặt mạng."</string>
     <string name="enable_video_calling_dialog_settings" msgid="8697890611305307110">"Cài đặt mạng"</string>
     <string name="enable_video_calling_dialog_close" msgid="4298929725917045270">"Đóng"</string>
     <string name="sim_label_emergency_calls" msgid="9078241989421522310">"Cuộc gọi khẩn cấp"</string>
@@ -771,7 +771,7 @@
     <string name="supp_service_additional_call_forwarded" msgid="8772753260008398632">"Đã chuyển tiếp cuộc gọi bổ sung."</string>
     <string name="supp_service_additional_ect_connected" msgid="8525934162945220237">"Hoàn tất chuyển cuộc gọi ở chế độ rõ."</string>
     <string name="supp_service_additional_ect_connecting" msgid="7046240728781222753">"Đang chuyển cuộc gọi ở chế độ rõ."</string>
-    <string name="supp_service_call_on_hold" msgid="2836811319594503059">"Cuộc gọi đang chờ."</string>
+    <string name="supp_service_call_on_hold" msgid="2836811319594503059">"Cuộc gọi đang giữ máy."</string>
     <string name="supp_service_call_resumed" msgid="3786864005920743546">"Đã tiếp tục cuộc gọi."</string>
     <string name="supp_service_deflected_call" msgid="7565979024562921707">"Cuộc gọi đã bị chuyển hướng."</string>
     <string name="supp_service_forwarded_call" msgid="6475776013771821457">"Cuộc gọi đã được chuyển tiếp."</string>

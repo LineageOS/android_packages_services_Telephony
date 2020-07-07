@@ -69,7 +69,7 @@
     <string name="phone_accounts_choose_accounts" msgid="4748805293314824974">"اختيار الحسابات"</string>
     <string name="phone_accounts_selection_header" msgid="2945830843104108440">"حسابات الهاتف"</string>
     <string name="phone_accounts_add_sip_account" msgid="1437634802033309305">"‏إضافة حساب SIP"</string>
-    <string name="phone_accounts_configure_account_settings" msgid="6622119715253196586">"تهيئة إعدادات الحساب"</string>
+    <string name="phone_accounts_configure_account_settings" msgid="6622119715253196586">"ضبط إعدادات الحساب"</string>
     <string name="phone_accounts_all_calling_accounts" msgid="1609600743500618823">"كل حسابات الاتصال"</string>
     <string name="phone_accounts_all_calling_accounts_summary" msgid="2214134955430107240">"حدد الحسابات التي يمكنها إجراء مكالمات"</string>
     <string name="wifi_calling" msgid="3650509202851355742">"‏الاتصال عبر Wi-Fi"</string>
@@ -116,7 +116,7 @@
     <string name="sum_cfnry_enabled" msgid="3000500837493854799">"إعادة التوجيه إلى <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnry_disabled" msgid="1990563512406017880">"غير مفعّل"</string>
     <string name="disable_cfnry_forbidden" msgid="3174731413216550689">"لا يتيح مشغل شبكة الجوال إيقاف اعادة توجيه المكالمة عند عدم رد هاتفك."</string>
-    <string name="labelCFNRc" msgid="4163399350778066013">"عند عدم الوصول"</string>
+    <string name="labelCFNRc" msgid="4163399350778066013">"عند تعذر الوصول"</string>
     <string name="messageCFNRc" msgid="6980340731313007250">"الرقم عند عدم الوصول"</string>
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"إعادة التوجيه إلى <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"غير مفعّل"</string>
@@ -126,7 +126,7 @@
     <string name="call_settings_with_label" msgid="8460230435361579511">"الإعدادات (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"خطأ في إعدادات الاتصال"</string>
     <string name="reading_settings" msgid="1605904432450871183">"جارٍ قراءة الإعدادات..."</string>
-    <string name="updating_settings" msgid="3650396734816028808">"جارٍ تحديث الإعدادات..."</string>
+    <string name="updating_settings" msgid="3650396734816028808">"جارٍ تعديل الإعدادات..."</string>
     <string name="reverting_settings" msgid="7378668837291012205">"جارٍ إعادة الإعدادات..."</string>
     <string name="response_error" msgid="3904481964024543330">"رد غير متوقع من الشبكة."</string>
     <string name="exception_error" msgid="330994460090467">"‏خطأ في الشبكة أو في شريحة SIM"</string>
@@ -172,7 +172,7 @@
     <string name="connect_later" msgid="1950138106010005425">"يتعذر الاتصال بهذه الشبكة في الوقت الحالي. حاول مرة أخرى لاحقًا."</string>
     <string name="registration_done" msgid="5337407023566953292">"مسجل على الشبكة."</string>
     <string name="already_auto" msgid="8607068290733079336">"في التحديد التلقائي فعلاً."</string>
-    <string name="select_automatically" msgid="779750291257872651">"تحديد الشبكة تلقائيًا"</string>
+    <string name="select_automatically" msgid="779750291257872651">"اختيار الشبكة تلقائيًا"</string>
     <string name="manual_mode_disallowed_summary" msgid="3970048592179890197">"‏الشبكات غير متاحة عند الاتصال بمشغِّل شبكة الجوّال %1$s."</string>
     <string name="network_select_title" msgid="4117305053881611988">"الشبكة"</string>
     <string name="register_automatically" msgid="3907580547590554834">"التسجيل التلقائي..."</string>
@@ -319,7 +319,7 @@
     <string name="international_enable" msgid="8943466745792690340">"تم تفعيل الأخبار الدولية"</string>
     <string name="international_disable" msgid="4803498658100318265">"تم إيقاف الأخبار الدولية"</string>
     <string name="list_language_title" msgid="1850167908665485738">"اللغة"</string>
-    <string name="list_language_summary" msgid="7921756070782277559">"حدد لغة الأخبار"</string>
+    <string name="list_language_summary" msgid="7921756070782277559">"اختَر لغة الأخبار"</string>
   <string-array name="list_language_entries">
     <item msgid="2347238508726934281">"الإنجليزية"</item>
     <item msgid="5172468397620875174">"الفرنسية"</item>
@@ -624,7 +624,7 @@
     <string name="calling_via_template" msgid="1791323450703751750">"الاتصال عبر <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
     <string name="contactPhoto" msgid="7885089213135154834">"صورة جهة الاتصال"</string>
     <string name="goPrivate" msgid="4645108311382209551">"انتقال إلى مكالمة خاصة"</string>
-    <string name="selectContact" msgid="1527612842599767382">"تحديد جهة اتصال"</string>
+    <string name="selectContact" msgid="1527612842599767382">"اختيار جهة اتصال"</string>
     <string name="not_voice_capable" msgid="2819996734252084253">"الاتصال الصوتي غير معتمد"</string>
     <string name="description_dial_button" msgid="8614631902795087259">"طلب"</string>
     <string name="description_dialpad_button" msgid="7395114120463883623">"عرض لوحة الاتصال"</string>
@@ -641,7 +641,7 @@
     <string name="sim_label_emergency_calls" msgid="9078241989421522310">"مكالمات الطوارئ"</string>
     <string name="sim_description_emergency_calls" msgid="5146872803938897296">"مكالمات الطوارئ فقط"</string>
     <string name="sim_description_default" msgid="7474671114363724971">"‏شريحة SIM، المنفذ: <xliff:g id="SLOT_ID">%s</xliff:g>"</string>
-    <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"إمكانية الوصول"</string>
+    <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"إعدادات تمكين الوصول"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"‏مكالمة Wi-Fi من"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"‏مكالمة عبر Wi-Fi"</string>
     <string name="emergency_action_launch_hint" msgid="2762016865340891314">"انقر مرة أخرى للفتح."</string>

@@ -41,7 +41,7 @@
     <string name="send_button" msgid="5070379600779031932">"Enviar"</string>
     <string name="pause_prompt_yes" msgid="8184132073048369575">"Sí"</string>
     <string name="pause_prompt_no" msgid="2145264674774138579">"No"</string>
-    <string name="wild_prompt_str" msgid="5858910969703305375">"Sustituir el carácter comodín por"</string>
+    <string name="wild_prompt_str" msgid="5858910969703305375">"Reemplazar el carácter comodín por"</string>
     <string name="no_vm_number" msgid="6623853880546176930">"Falta el número del buzón de voz."</string>
     <string name="no_vm_number_msg" msgid="5165161462411372504">"No se ha almacenado ningún número de buzón de voz en la tarjeta SIM."</string>
     <string name="add_vm_number_str" msgid="7368168964435881637">"Añadir número"</string>
@@ -60,7 +60,7 @@
     <string name="labelCdmaMore_with_label" msgid="7759692829160238152">"Ajustes de llamada de CDMA (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="apn_settings" msgid="1978652203074756623">"Nombres de puntos de acceso"</string>
     <string name="settings_label" msgid="9101778088412567956">"Ajustes de red"</string>
-    <string name="phone_accounts" msgid="1216879437523774604">"Cuentas de llamadas"</string>
+    <string name="phone_accounts" msgid="1216879437523774604">"Cuentas de llamada"</string>
     <string name="phone_accounts_make_calls_with" msgid="16747814788918145">"Realizar llamadas con"</string>
     <string name="phone_accounts_make_sip_calls_with" msgid="4691221006731847255">"Realizar llamadas SIP con"</string>
     <string name="phone_accounts_ask_every_time" msgid="6192347582666047168">"Preguntar primero"</string>
@@ -182,7 +182,7 @@
     <string name="forbidden_network" msgid="5081729819561333023">"(prohibida)"</string>
     <string name="choose_network_title" msgid="5335832663422653082">"Elegir red"</string>
     <string name="network_disconnected" msgid="8844141106841160825">"Desconectado"</string>
-    <string name="network_connected" msgid="2760235679963580224">"Conectada"</string>
+    <string name="network_connected" msgid="2760235679963580224">"Conectado"</string>
     <string name="network_connecting" msgid="160901383582774987">"Conectando..."</string>
     <string name="network_could_not_connect" msgid="6547460848093727998">"No se ha podido conectar"</string>
   <string-array name="preferred_network_mode_choices">
@@ -268,7 +268,7 @@
     <string name="keywords_carrier_settings_euicc" msgid="8540160967922063745">"operador, esim, sim, euicc, cambiar de operador, añadir operador"</string>
     <string name="carrier_settings_euicc_summary" msgid="2027941166597330117">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g>: <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="7228249980933944101">"Datos móviles"</string>
-    <string name="mobile_data_settings_summary" msgid="5012570152029118471">"Acceder a los datos con la red móvil"</string>
+    <string name="mobile_data_settings_summary" msgid="5012570152029118471">"Acceder a datos con la red móvil"</string>
     <string name="data_usage_disable_mobile" msgid="5669109209055988308">"¿Quieres desactivar los datos móviles?"</string>
     <string name="sim_selection_required_pref" msgid="6985901872978341314">"Debes seleccionar una opción"</string>
     <string name="sim_change_data_title" msgid="9142726786345906606">"¿Cambiar la SIM de datos?"</string>
@@ -611,7 +611,7 @@
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"Cerrar"</string>
     <string name="voicemail_provider" msgid="4158806657253745294">"Servicio"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"Configuración"</string>
-    <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;No definido&gt;"</string>
+    <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;Sin establecer&gt;"</string>
     <string name="other_settings" msgid="8895088007393598447">"Otras opciones de llamada"</string>
     <string name="calling_via_template" msgid="1791323450703751750">"Llamada vía <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
     <string name="contactPhoto" msgid="7885089213135154834">"foto de contacto"</string>

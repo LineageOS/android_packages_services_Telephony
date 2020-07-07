@@ -133,7 +133,7 @@
     <string name="stk_cc_ss_to_dial_error" msgid="5147693491690618704">"‏درخواست SS به تماس معمولی تغییر کرد"</string>
     <string name="stk_cc_ss_to_ussd_error" msgid="8330749347425752192">"‏درخواست SS به‌درخواست USSD تغییر کرد"</string>
     <string name="stk_cc_ss_to_ss_error" msgid="8297155544652134278">"‏به‌درخواست SS جدید تغییر کرد"</string>
-    <string name="stk_cc_ss_to_dial_video_error" msgid="4255261231466032505">"‏درخواست SS به تماس ویدیویی تغییر کرد"</string>
+    <string name="stk_cc_ss_to_dial_video_error" msgid="4255261231466032505">"‏درخواست SS به تماس تصویری تغییر کرد"</string>
     <string name="fdn_check_failure" msgid="1833769746374185247">"تنظیم اعداد شماره‌گیری ثابت برنامه‌های تلفن شما غیرفعال است. درنتیجه، برخی از ویژگی‌های مربوط به تماس کار نمی‌کند."</string>
     <string name="radio_off_error" msgid="8321564164914232181">"قبل از مشاهدهٔ این تنظیمات، رادیو را روشن کنید."</string>
     <string name="close_dialog" msgid="1074977476136119408">"تأیید"</string>
@@ -274,7 +274,7 @@
     <string name="sim_change_data_title" msgid="9142726786345906606">"سیم‌کارت داده تغییر کند؟"</string>
     <string name="sim_change_data_message" msgid="3567358694255933280">"برای داده تلفن همراه، از <xliff:g id="NEW_SIM">%1$s</xliff:g> به‌جای <xliff:g id="OLD_SIM">%2$s</xliff:g> استفاده شود؟"</string>
     <string name="wifi_calling_settings_title" msgid="5800018845662016507">"‏تماس ازطریق Wi-Fi"</string>
-    <string name="video_calling_settings_title" msgid="342829454913266078">"تماس ویدیویی با شرکت مخابراتی"</string>
+    <string name="video_calling_settings_title" msgid="342829454913266078">"تماس تصویری با شرکت مخابراتی"</string>
     <string name="gsm_umts_options" msgid="4968446771519376808">"‏گزینه‌های GSM/UMTS"</string>
     <string name="cdma_options" msgid="3669592472226145665">"‏گزینه‌های CDMA"</string>
     <string name="throttle_data_usage" msgid="1944145350660420711">"مصرف داده"</string>
@@ -420,7 +420,7 @@
     <string name="tty_mode_option_summary" msgid="4770510287236494371">"‏تنظیم حالت TTY"</string>
     <string name="auto_retry_mode_title" msgid="2985801935424422340">"سعی مجدد خودکار"</string>
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"فعال کردن حالت سعی مجدد خودکار"</string>
-    <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"‏تغییر حالت TTY در طول تماس ویدئویی مجاز نیست"</string>
+    <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"‏تغییر حالت TTY در طول تماس تصویری مجاز نیست"</string>
     <string name="menu_add" msgid="5616487894975773141">"افزودن مخاطب"</string>
     <string name="menu_edit" msgid="3593856941552460706">"ویرایش مخاطب"</string>
     <string name="menu_delete" msgid="6326861853830546488">"حذف مخاطب"</string>
@@ -545,7 +545,7 @@
     <string name="onscreenManageCallsText" msgid="1162047856081836469">"مدیریت تماس‌ها"</string>
     <string name="onscreenManageConferenceText" msgid="4700574060601755137">"مدیریت کنفرانس"</string>
     <string name="onscreenAudioText" msgid="7224226735052019986">"صوتی"</string>
-    <string name="onscreenVideoCallText" msgid="1743992456126258698">"تماس ویدئویی"</string>
+    <string name="onscreenVideoCallText" msgid="1743992456126258698">"تماس تصویری"</string>
     <string name="importSimEntry" msgid="3892354284082689894">"وارد کردن"</string>
     <string name="importAllSimEntries" msgid="2628391505643564007">"وارد کردن همه"</string>
     <string name="importingSimContacts" msgid="4995457122107888932">"وارد کردن مخاطبین سیم"</string>
@@ -626,8 +626,8 @@
     <string name="voicemail_change_pin_dialog_title" msgid="4633077715231764435">"تغییر پین"</string>
     <string name="preference_category_ringtone" msgid="8787281191375434976">"آهنگ‌ زنگ و لرزش"</string>
     <string name="pstn_connection_service_label" msgid="9200102709997537069">"سیم‌کارت‌های داخلی"</string>
-    <string name="enable_video_calling_title" msgid="7246600931634161830">"روشن کردن تماس ویدئویی"</string>
-    <string name="enable_video_calling_dialog_msg" msgid="7141478720386203540">"‏برای روشن کردن تماس ویدئویی، باید حالت پیشرفته 4G LTE را در تنظیمات شبکه فعال کنید."</string>
+    <string name="enable_video_calling_title" msgid="7246600931634161830">"روشن کردن تماس تصویری"</string>
+    <string name="enable_video_calling_dialog_msg" msgid="7141478720386203540">"‏برای روشن کردن تماس تصویری، باید حالت پیشرفته 4G LTE را در تنظیمات شبکه فعال کنید."</string>
     <string name="enable_video_calling_dialog_settings" msgid="8697890611305307110">"تنظیمات شبکه"</string>
     <string name="enable_video_calling_dialog_close" msgid="4298929725917045270">"بستن"</string>
     <string name="sim_label_emergency_calls" msgid="9078241989421522310">"تماس‌های اضطراری"</string>
@@ -643,7 +643,7 @@
     <string name="callFailed_imei_not_accepted" msgid="7257903653685147251">"مرتبط نشد، لطفاً سیم کارت معتبری را وارد کنید."</string>
     <string name="callFailed_wifi_lost" msgid="1788036730589163141">"اتصال وای‌فای قطع شد. تماس پایان یافت."</string>
     <string name="dialFailed_low_battery" msgid="6857904237423407056">"به دلیل شارژ کم باتری، نمی‌توان تماسی برقرار کرد."</string>
-    <string name="callFailed_low_battery" msgid="4056828320214416182">"تماس ویدیویی به‌دلیل شارژ کم باتری پایان یافت."</string>
+    <string name="callFailed_low_battery" msgid="4056828320214416182">"تماس تصویری به‌دلیل شارژ کم باتری پایان یافت."</string>
     <string name="callFailed_emergency_call_over_wfc_not_available" msgid="5944309590693432042">"‏در این مکان تماس اضطراری با «تماس ازطریق Wi-Fi» امکان‌پذیر نیست."</string>
     <string name="callFailed_wfc_service_not_available_in_this_location" msgid="3624536608369524988">"‏در این مکان تماس ازطریق Wi-Fi امکان‌پذیر نیست."</string>
     <string name="change_pin_title" msgid="3564254326626797321">"تغییر پین پست صوتی"</string>

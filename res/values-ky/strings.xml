@@ -46,7 +46,7 @@
     <string name="no_vm_number_msg" msgid="5165161462411372504">"SIM-картада сакталган үн почтасынын номери жок."</string>
     <string name="add_vm_number_str" msgid="7368168964435881637">"Номер кошуу"</string>
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"Үн почта жөндөөлөрүн алгачкы колдонуучу гана өзгөртө алат."</string>
-    <string name="puk_unlocked" msgid="4627340655215746511">"SIM-картаңыз бөгөттөн чыгарылган. Телефонуңуздун кулпусу ачылууда…"</string>
+    <string name="puk_unlocked" msgid="4627340655215746511">"SIM картаңыз бөгөттөн чыгарылган. Телефонуңуздун кулпусу ачылууда…"</string>
     <string name="label_ndp" msgid="7617392683877410341">"SIM-карта тармагынын кулпусун ачуучу PIN код"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"Кулпусун ачуу"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"Этибарга албоо"</string>
@@ -168,7 +168,7 @@
     <string name="empty_networks_list" msgid="9216418268008582342">"Эч тармак табылган жок."</string>
     <string name="network_query_error" msgid="3862515805115145124">"Тармактар табылбай койду. Кайталап көрүңүз."</string>
     <string name="register_on_network" msgid="4194770527833960423">"<xliff:g id="NETWORK">%s</xliff:g> тармагына катталууда…"</string>
-    <string name="not_allowed" msgid="8541221928746104798">"Сиздин SIM-картаңыз бул түйүнгө кошулганга жол бербейт."</string>
+    <string name="not_allowed" msgid="8541221928746104798">"Сиздин SIM картаңыз бул түйүнгө кошулганга жол бербейт."</string>
     <string name="connect_later" msgid="1950138106010005425">"Бул түйүнгө азыр кошулуу мүмкүн эмес. Бир аздан соң кайра аракеттениңиз."</string>
     <string name="registration_done" msgid="5337407023566953292">"Тармакка катталды."</string>
     <string name="already_auto" msgid="8607068290733079336">"Мурунтан эле автоматтык түрдө тандоодо."</string>
@@ -249,8 +249,8 @@
     <string name="data_enable_summary" msgid="696860063456536557">"Дайындарды пайдаланууга уруксат берүү"</string>
     <string name="dialog_alert_title" msgid="5260471806940268478">"Көңүл буруңуз"</string>
     <string name="roaming" msgid="1576180772877858949">"Роуминг"</string>
-    <string name="roaming_enable" msgid="6853685214521494819">"Роуминг учурунда мобилдик Интернетке туташат"</string>
-    <string name="roaming_disable" msgid="8856224638624592681">"Роуминг учурунда мобилдик Интернетке туташат"</string>
+    <string name="roaming_enable" msgid="6853685214521494819">"Роуминг учурунда дайын-даректерди өткөрүүчү кызматтарга туташуу"</string>
+    <string name="roaming_disable" msgid="8856224638624592681">"Роуминг учурунда дайын-даректерди өткөрүүчү кызматтарга туташуу"</string>
     <string name="roaming_reenable_message" msgid="1951802463885727915">"Интернет-роуминг өчүрүлгөн. Күйгүзүү үчүн басыңыз."</string>
     <string name="roaming_enabled_message" msgid="9022249120750897">"Роуминг акысын төлөп калышыңыз мүмкүн. Өзгөртүү үчүн таптап коюңуз."</string>
     <string name="roaming_notification_title" msgid="3590348480688047320">"Мобилдик интернет туташуусу үзүлдү"</string>
@@ -260,7 +260,7 @@
     <string name="roaming_alert_title" msgid="5689615818220960940">"Интернет-роумингди иштетесизби?"</string>
     <string name="limited_sim_function_notification_title" msgid="612715399099846281">"SIM-картанын функциялары чектелген"</string>
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"<xliff:g id="PHONE_NUMBER">%2$s</xliff:g> номерин колдонгондо <xliff:g id="CARRIER_NAME">%1$s</xliff:g> чалуулары жана дайындар кызматтары бөгөттөлүшү мүмкүн."</string>
-    <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"Башка SIM-картаны колднгндо <xliff:g id="CARRIER_NAME">%1$s</xliff:g> чалуулары жана дайындар кызмттары бөгөттлшү мүмкүн."</string>
+    <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"Башка SIM картаны колднгндо <xliff:g id="CARRIER_NAME">%1$s</xliff:g> чалуулары жана дайындар кызмттары бөгөттлшү мүмкүн."</string>
     <string name="data_usage_title" msgid="8438592133893837464">"Колдонмолордун трафиги"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"<xliff:g id="ID_2">%2$s</xliff:g> аралыгында <xliff:g id="ID_1">%1$s</xliff:g> мобилдик трафик колдонулду"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"Өркүндөтүлгөн"</string>
@@ -517,7 +517,7 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"Чалууну кармап туруу мүмкүн эмес."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"Чалуу үчүн зымсыз тармакка туташыңыз."</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"Wi-Fi аркылуу чалыңыз."</string>
-    <string name="emergency_information_hint" msgid="9208897544917793012">"Өзгөчө кырдаал маалыматы"</string>
+    <string name="emergency_information_hint" msgid="9208897544917793012">"Кырсыктаганда керек болчу маалымат"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"Ээси"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"Маалыматты көрүү үчүн кайра таптап коюңуз"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="2667568200755388829">"Шашылыш чалуу"</string>
@@ -548,7 +548,7 @@
     <string name="onscreenVideoCallText" msgid="1743992456126258698">"Видео чалуу"</string>
     <string name="importSimEntry" msgid="3892354284082689894">"Импорттоо"</string>
     <string name="importAllSimEntries" msgid="2628391505643564007">"Баарын импорттоо"</string>
-    <string name="importingSimContacts" msgid="4995457122107888932">"SIM-картадагы байланыштардан импорттоо"</string>
+    <string name="importingSimContacts" msgid="4995457122107888932">"SIM картадагы байланыштардан импорттоо"</string>
     <string name="importToFDNfromContacts" msgid="5068664870738407341">"Байланыштардан импорттоо"</string>
     <string name="singleContactImportedMsg" msgid="3619804066300998934">"Байланыш импорттолду"</string>
     <string name="failedToImportSingleContactMsg" msgid="228095510489830266">"Байланыш импорттолбой калды"</string>
@@ -640,7 +640,7 @@
     <string name="message_decode_error" msgid="1061856591500290887">"Билдирүү дешифрленип жатканда ката кеткен."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"SIM-карта кызматыңызды жандырып, телефонуңуздун роуминг мүмкүнчүлүктөрүн жаңыртты."</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"Учурда жигердүү чалуулар өтө көп. Чалуу үчүн учурдагы чалууларды бүтүрүңүз же бириктириңиз."</string>
-    <string name="callFailed_imei_not_accepted" msgid="7257903653685147251">"Байланышуу мумкүн эмес. Жарактуу SIM-картаны салыңыз."</string>
+    <string name="callFailed_imei_not_accepted" msgid="7257903653685147251">"Байланышуу мумкүн эмес. Жарактуу SIM картаны салыңыз."</string>
     <string name="callFailed_wifi_lost" msgid="1788036730589163141">"Wi-Fi туташуусу үзүлүп калды. Чалуу аяктады."</string>
     <string name="dialFailed_low_battery" msgid="6857904237423407056">"Батареянын заряды төмөн болгондуктан, видео режиминде чала албайсыз."</string>
     <string name="callFailed_low_battery" msgid="4056828320214416182">"Батареянын заряды төмөн болгондуктан, видео чалуу аяктады."</string>

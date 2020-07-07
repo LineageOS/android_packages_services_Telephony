@@ -60,7 +60,7 @@
     <string name="labelCdmaMore_with_label" msgid="7759692829160238152">"Configuració de trucades CDMA (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="apn_settings" msgid="1978652203074756623">"Noms dels punts d\'accés"</string>
     <string name="settings_label" msgid="9101778088412567956">"Configuració de xarxa"</string>
-    <string name="phone_accounts" msgid="1216879437523774604">"Comptes de trucades"</string>
+    <string name="phone_accounts" msgid="1216879437523774604">"Comptes de trucada"</string>
     <string name="phone_accounts_make_calls_with" msgid="16747814788918145">"Truca amb"</string>
     <string name="phone_accounts_make_sip_calls_with" msgid="4691221006731847255">"Fes trucades SIP amb"</string>
     <string name="phone_accounts_ask_every_time" msgid="6192347582666047168">"Pregunta primer"</string>
@@ -93,7 +93,7 @@
     <string name="sum_loading_settings" msgid="434063780286688775">"Carregant la configuració..."</string>
     <string name="sum_hide_caller_id" msgid="131100328602371933">"Número amagat en trucades sortints"</string>
     <string name="sum_show_caller_id" msgid="3571854755324664591">"Número mostrat a les trucades de sortida"</string>
-    <string name="sum_default_caller_id" msgid="1767070797135682959">"Utilitza la configuració predeterminada de l\'operador per mostrar el meu número a les trucades de sortida"</string>
+    <string name="sum_default_caller_id" msgid="1767070797135682959">"Utilitza la configuració predeterminada de l\'operador per mostrar el meu número a les trucades sortints"</string>
     <string name="labelCW" msgid="8449327023861428622">"Trucada en espera"</string>
     <string name="sum_cw_enabled" msgid="3977308526187139996">"Durant una trucada, avisa\'m de les trucades entrants"</string>
     <string name="sum_cw_disabled" msgid="3658094589461768637">"Durant una trucada, avisa\'m de les trucades entrants"</string>
@@ -556,7 +556,7 @@
     <string name="hac_mode_summary" msgid="7774989500136009881">"Activa la compatibilitat amb audiòfons"</string>
     <string name="rtt_mode_title" msgid="3075948111362818043">"Trucada de text en temps real (RTT)"</string>
     <string name="rtt_mode_summary" msgid="8631541375609989562">"Permet l\'ús de missatges en una trucada de veu"</string>
-    <string name="rtt_mode_more_information" msgid="587500128658756318">"La funció RTT ofereix assistència als usuaris que són sords, tenen problemes d\'audició o alteracions de la parla, o bé que necessiten un text a banda de la veu.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Més informació&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - Les trucades RTT es desen en forma de transcripció.\n       &lt;br&gt; - Aquesta funció no està disponible per a videotrucades."</string>
+    <string name="rtt_mode_more_information" msgid="587500128658756318">"La funció RTT ofereix assistència als usuaris que són sords, tenen deficiències auditives o alteracions de la parla, o bé que necessiten un text a banda de la veu.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Més informació&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - Les trucades RTT es desen en forma de transcripció.\n       &lt;br&gt; - Aquesta funció no està disponible per a videotrucades."</string>
   <string-array name="tty_mode_entries">
     <item msgid="3238070884803849303">"TTY desactivat"</item>
     <item msgid="1449091874731375214">"TTY complet"</item>

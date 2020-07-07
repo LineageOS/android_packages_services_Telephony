@@ -248,16 +248,16 @@
     <string name="data_enabled" msgid="22525832097434368">"Adatok engedélyezése"</string>
     <string name="data_enable_summary" msgid="696860063456536557">"Adatforgalom engedélyezése"</string>
     <string name="dialog_alert_title" msgid="5260471806940268478">"Figyelem"</string>
-    <string name="roaming" msgid="1576180772877858949">"Barangolás"</string>
-    <string name="roaming_enable" msgid="6853685214521494819">"Csatlakozás adatszolgáltatásokhoz barangolás során"</string>
-    <string name="roaming_disable" msgid="8856224638624592681">"Csatlakozás adatszolgáltatásokhoz barangolás során"</string>
+    <string name="roaming" msgid="1576180772877858949">"Roaming"</string>
+    <string name="roaming_enable" msgid="6853685214521494819">"Csatlakozás adatszolgáltatásokhoz roaming során"</string>
+    <string name="roaming_disable" msgid="8856224638624592681">"Csatlakozás adatszolgáltatásokhoz roaming során"</string>
     <string name="roaming_reenable_message" msgid="1951802463885727915">"Az adatbarangolás ki van kapcsolva. Koppintson a bekapcsolásához."</string>
     <string name="roaming_enabled_message" msgid="9022249120750897">"A szolgáltató adatroamingdíjat számíthat fel. Koppintson a módosításhoz."</string>
     <string name="roaming_notification_title" msgid="3590348480688047320">"Nincs mobiladat-kapcsolat"</string>
     <string name="roaming_on_notification_title" msgid="7451473196411559173">"Az adatroaming be van kapcsolva"</string>
     <string name="roaming_warning" msgid="7855681468067171971">"Lehet, hogy jelentős összeget számítanak fel érte."</string>
     <string name="roaming_check_price_warning" msgid="8212484083990570215">"Az árakat a szolgáltatótól tudhatja meg."</string>
-    <string name="roaming_alert_title" msgid="5689615818220960940">"Engedélyezi az adatbarangolást?"</string>
+    <string name="roaming_alert_title" msgid="5689615818220960940">"Engedélyezi az adatroamingot?"</string>
     <string name="limited_sim_function_notification_title" msgid="612715399099846281">"Korlátozott SIM-funkció"</string>
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"A(z) <xliff:g id="PHONE_NUMBER">%2$s</xliff:g> szám használatakor előfordulhat, hogy a(z) <xliff:g id="CARRIER_NAME">%1$s</xliff:g>-hívások és az adatszolgáltatások nem működnek."</string>
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"Másik SIM esetén lehet, hogy a(z) <xliff:g id="CARRIER_NAME">%1$s</xliff:g>-hívások és -adatszolgáltatások nem működnek."</string>
@@ -735,13 +735,13 @@
     <string name="call_barring_baoic_enabled" msgid="1203758092657630123">"Megszünteti a kimenő nemzetközi hívások letiltását?"</string>
     <string name="call_barring_baoic_disabled" msgid="5656889339002997449">"Letiltja a kimenő nemzetközi hívásokat?"</string>
     <string name="call_barring_baoicr" msgid="8566167764432343487">"Kimenő hívások nemzetközi barangoláskor"</string>
-    <string name="call_barring_baoicr_enabled" msgid="1615324165512798478">"Megszünteti a nemzetközi barangolás során kimenő hívások letiltását?"</string>
+    <string name="call_barring_baoicr_enabled" msgid="1615324165512798478">"Megszünteti a nemzetközi roaming során kimenő hívások letiltását?"</string>
     <string name="call_barring_baoicr_disabled" msgid="172010175248142831">"Letiltja a kimenő hívásokat nemzetközi barangoláskor?"</string>
     <string name="call_barring_baic" msgid="7941393541678658566">"Minden bejövő hívás"</string>
     <string name="call_barring_baic_enabled" msgid="4357332358020337470">"Megszünteti az összes bejövő hívás letiltását?"</string>
     <string name="call_barring_baic_disabled" msgid="2355945245938240958">"Letiltja az összes bejövő hívást?"</string>
     <string name="call_barring_baicr" msgid="8712249337313034226">"Bejövő hívások nemzetközi barangoláskor"</string>
-    <string name="call_barring_baicr_enabled" msgid="64774270234828175">"Megszünteti a nemzetközi barangolás során bejövő összes hívás letiltását?"</string>
+    <string name="call_barring_baicr_enabled" msgid="64774270234828175">"Megszünteti a nemzetközi roaming során bejövő összes hívás letiltását?"</string>
     <string name="call_barring_baicr_disabled" msgid="3488129262744027262">"Letiltja a bejövő hívásokat nemzetközi barangoláskor?"</string>
     <string name="call_barring_deactivate_all" msgid="7837931580047157328">"Az összes deaktiválása"</string>
     <string name="call_barring_deactivate_all_description" msgid="4474119585042121604">"Az összes híváskorlátozási beállítás deaktiválása"</string>

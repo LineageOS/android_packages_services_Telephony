@@ -24,7 +24,7 @@
     <string name="unknown" msgid="8279698889921830815">"Haijulikani"</string>
     <string name="private_num" msgid="4487990167889159992">" Number isiyojulikana"</string>
     <string name="payphone" msgid="7936735771836716941">"Simu ya kulipia"</string>
-    <string name="onHold" msgid="6132725550015899006">"Inangoja"</string>
+    <string name="onHold" msgid="6132725550015899006">"Imesitishwa"</string>
     <string name="mmiStarted" msgid="9212975136944568623">"Msimbo wa MMI  umeanza"</string>
     <string name="ussdRunning" msgid="1163586813106772717">"Msimbo wa USSD unafungua"</string>
     <string name="mmiCancelled" msgid="5339191899200678272">"Msimbo wa MMI umeghairiwa"</string>
@@ -89,11 +89,11 @@
     <string name="additional_cdma_call_settings" msgid="2178016561980611304">"Mipangilio ya ziada ya simu ya CDMA"</string>
     <string name="sum_cdma_call_settings" msgid="3185825305136993636">"Mipangilio ya ziada ya simu ya CDMA tu"</string>
     <string name="labelNwService" msgid="6015891883487125120">"Mipangilio ya huduma ya mtandao"</string>
-    <string name="labelCallerId" msgid="2090540744550903172">"Kitambulisho cha mpigaji SIM"</string>
+    <string name="labelCallerId" msgid="2090540744550903172">"Kitambulisho cha anayepiga"</string>
     <string name="sum_loading_settings" msgid="434063780286688775">"Mipangilio inapakia..."</string>
     <string name="sum_hide_caller_id" msgid="131100328602371933">"Nambari imefichwa kwa simu unayopiga"</string>
     <string name="sum_show_caller_id" msgid="3571854755324664591">"Namba inaonekana kwa simu zinazopigwa"</string>
-    <string name="sum_default_caller_id" msgid="1767070797135682959">"Tumia mipangilio ya kiendesha chaguomsingi kuonyesha namba kwa simu zinazopigwa"</string>
+    <string name="sum_default_caller_id" msgid="1767070797135682959">"Tumia mipangilio ya mtoa huduma chaguomsingi kuonyesha nambari kwa simu unazopiga"</string>
     <string name="labelCW" msgid="8449327023861428622">"Simu inayosubiri kupokewa"</string>
     <string name="sum_cw_enabled" msgid="3977308526187139996">"Wakati ninapokea simu, niarifu kuhusu simu zingine zinazoingia"</string>
     <string name="sum_cw_disabled" msgid="3658094589461768637">"Wakati ninapokea simu, niarifu kuhusu simu zingine zinazoingia"</string>
@@ -126,7 +126,7 @@
     <string name="call_settings_with_label" msgid="8460230435361579511">"Mipangilio (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Hitilafu ya mipangilio ya kupiga simu"</string>
     <string name="reading_settings" msgid="1605904432450871183">"Inasoma mipangilio…."</string>
-    <string name="updating_settings" msgid="3650396734816028808">"Inaboresha mipangilio…"</string>
+    <string name="updating_settings" msgid="3650396734816028808">"Inasasisha mipangilio…"</string>
     <string name="reverting_settings" msgid="7378668837291012205">"Inageuza mipangilio..."</string>
     <string name="response_error" msgid="3904481964024543330">"Jibu lisilotarajiwa kutoka kwa mtandao."</string>
     <string name="exception_error" msgid="330994460090467">"Hitilafu ya mtandao au SIM kadi."</string>
@@ -487,7 +487,7 @@
     <string name="card_title_conf_call" msgid="901197309274457427">"Simu ya kongamano"</string>
     <string name="card_title_incoming_call" msgid="881424648458792430">"Simu inayoingia"</string>
     <string name="card_title_call_ended" msgid="650223980095026340">"Simu imekamilika"</string>
-    <string name="card_title_on_hold" msgid="9028319436626975207">"Inangoja"</string>
+    <string name="card_title_on_hold" msgid="9028319436626975207">"Imesitishwa"</string>
     <string name="card_title_hanging_up" msgid="814874106866647871">"Kukata simu"</string>
     <string name="card_title_in_call" msgid="8231896539567594265">"Katika simu"</string>
     <string name="notification_voicemail_title" msgid="3932876181831601351">"Ujumbe mpya wa sauti"</string>

@@ -125,7 +125,7 @@
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Skambučių nustatymus gali keisti tik administruojantis naudotojas."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Nustatymai (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Skambinimo nustatymų klaida"</string>
-    <string name="reading_settings" msgid="1605904432450871183">"Skaitomi nustatymai..."</string>
+    <string name="reading_settings" msgid="1605904432450871183">"Analizuojami nustatymai..."</string>
     <string name="updating_settings" msgid="3650396734816028808">"Atnaujinami nustatymai..."</string>
     <string name="reverting_settings" msgid="7378668837291012205">"Grąžinami nustatymai…"</string>
     <string name="response_error" msgid="3904481964024543330">"Netikėtas atsakas iš tinklo."</string>

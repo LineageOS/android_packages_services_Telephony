@@ -399,8 +399,8 @@
     <string name="cdma_activate_device" msgid="5914720276140097632">"เปิดใช้งานอุปกรณ์"</string>
     <string name="cdma_lte_data_service" msgid="359786441782404562">"ตั้งค่าบริการข้อมูล"</string>
     <string name="carrier_settings_title" msgid="6292869148169850220">"การตั้งค่าของผู้ให้บริการ"</string>
-    <string name="fdn" msgid="2545904344666098749">"การจำกัดหมายเลขโทรออก"</string>
-    <string name="fdn_with_label" msgid="6412087553365709494">"โหมดจำกัดการโทร (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
+    <string name="fdn" msgid="2545904344666098749">"หมายเลขโทรออกที่กำหนดตายตัว"</string>
+    <string name="fdn_with_label" msgid="6412087553365709494">"หมายเลขโทรออกที่กำหนดตายตัว (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="manage_fdn_list" msgid="3341716430375195441">"รายการ FDN"</string>
     <string name="fdn_list_with_label" msgid="1409655283510382556">"รายการ FDN (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="fdn_activation" msgid="2178637004710435895">"การเปิดใช้งาน FDN"</string>
@@ -492,7 +492,7 @@
     <string name="card_title_in_call" msgid="8231896539567594265">"กำลังใช้สาย"</string>
     <string name="notification_voicemail_title" msgid="3932876181831601351">"ข้อความเสียงใหม่"</string>
     <string name="notification_voicemail_title_count" msgid="2806950319222327082">"ข้อความเสียงใหม่ (<xliff:g id="COUNT">%d</xliff:g>)"</string>
-    <string name="notification_voicemail_text_format" msgid="5720947141702312537">"หมุนหมายเลข <xliff:g id="VOICEMAIL_NUMBER">%s</xliff:g>"</string>
+    <string name="notification_voicemail_text_format" msgid="5720947141702312537">"โทร <xliff:g id="VOICEMAIL_NUMBER">%s</xliff:g>"</string>
     <string name="notification_voicemail_no_vm_number" msgid="3423686009815186750">"ไม่ทราบหมายเลขข้อความเสียง"</string>
     <string name="notification_network_selection_title" msgid="255595526707809121">"ไม่มีบริการ"</string>
     <string name="notification_network_selection_text" msgid="553288408722427659">"เครือข่ายที่เลือกไว้<xliff:g id="OPERATOR_NAME">%s</xliff:g> ไม่พร้อมใช้งาน"</string>
