@@ -22,6 +22,7 @@ import android.os.Binder;
 import android.os.PersistableBundle;
 import android.os.Process;
 import android.os.RemoteException;
+import android.provider.BlockedNumberContract;
 import android.telephony.CarrierConfigManager;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
@@ -56,6 +57,7 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
     private static final String IMS_SUBCOMMAND = "ims";
     private static final String NUMBER_VERIFICATION_SUBCOMMAND = "numverify";
     private static final String EMERGENCY_NUMBER_TEST_MODE = "emergency-number-test-mode";
+    private static final String END_BLOCK_SUPPRESSION = "end-block-suppression";
     private static final String CARRIER_CONFIG_SUBCOMMAND = "cc";
     private static final String DATA_TEST_MODE = "data";
     private static final String DATA_ENABLE = "enable";
@@ -82,6 +84,7 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
 
     private SubscriptionManager mSubscriptionManager;
     private CarrierConfigManager mCarrierConfigManager;
+    private Context mContext;
 
     private enum CcType {
         BOOLEAN, DOUBLE, DOUBLE_ARRAY, INT, INT_ARRAY, LONG, LONG_ARRAY, STRING,
@@ -132,6 +135,7 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                 (CarrierConfigManager) context.getSystemService(Context.CARRIER_CONFIG_SERVICE);
         mSubscriptionManager = (SubscriptionManager)
                 context.getSystemService(Context.TELEPHONY_SUBSCRIPTION_SERVICE);
+        mContext = context;
     }
 
     @Override
@@ -153,6 +157,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             }
             case DATA_TEST_MODE:
                 return handleDataTestModeCommand();
+            case END_BLOCK_SUPPRESSION:
+                return handleEndBlockSuppressionCommand();
             default: {
                 return handleDefaultCommands(cmd);
             }
@@ -169,12 +175,15 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         pw.println("    IMS Commands.");
         pw.println("  emergency-number-test-mode");
         pw.println("    Emergency Number Test Mode Commands.");
+        pw.println("  end-block-suppression");
+        pw.println("    End Block Suppression command.");
         pw.println("  data");
         pw.println("    Data Test Mode Commands.");
         pw.println("  cc");
         pw.println("    Carrier Config Commands.");
         onHelpIms();
         onHelpEmergencyNumber();
+        onHelpEndBlockSupperssion();
         onHelpDataTestMode();
         onHelpCc();
     }
@@ -240,6 +249,13 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         pw.println("      -r <emergency number address>: remove an existing emergency number"
                 + " address added by the test mode, only allows '0'-'9', '*', '#' or '+'.");
         pw.println("      -p: get the full emergency number list in the test mode.");
+    }
+
+    private void onHelpEndBlockSupperssion() {
+        PrintWriter pw = getOutPrintWriter();
+        pw.println("End Block Suppression command:");
+        pw.println("  end-block-suppression: disable suppressing blocking by contact");
+        pw.println("                         with emergency services.");
     }
 
     private void onHelpCc() {
@@ -1168,5 +1184,16 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             }
         }
         return bundle;
+    }
+
+    private int handleEndBlockSuppressionCommand() {
+        if (!checkShellUid()) {
+            return -1;
+        }
+
+        if (BlockedNumberContract.SystemContract.getBlockSuppressionStatus(mContext).isSuppressed) {
+            BlockedNumberContract.SystemContract.endBlockSuppression(mContext);
+        }
+        return 0;
     }
 }
