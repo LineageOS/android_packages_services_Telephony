@@ -40,6 +40,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.SystemProperties;
 import android.provider.Settings;
+import android.telephony.AccessNetworkConstants;
 import android.telephony.CarrierConfigManager;
 import android.telephony.CellIdentityCdma;
 import android.telephony.CellIdentityGsm;
@@ -55,6 +56,8 @@ import android.telephony.CellSignalStrengthCdma;
 import android.telephony.CellSignalStrengthGsm;
 import android.telephony.CellSignalStrengthLte;
 import android.telephony.CellSignalStrengthWcdma;
+import android.telephony.DataSpecificRegistrationInfo;
+import android.telephony.NetworkRegistrationInfo;
 import android.telephony.PhoneStateListener;
 import android.telephony.PhysicalChannelConfig;
 import android.telephony.PreciseCallState;
@@ -239,6 +242,11 @@ public class RadioInfo extends AppCompatActivity {
     private TextView mDnsCheckState;
     private TextView mDownlinkKbps;
     private TextView mUplinkKbps;
+    private TextView mEndcAvailable;
+    private TextView mDcnrRestricted;
+    private TextView mNrAvailable;
+    private TextView mNrState;
+    private TextView mNrFrequency;
     private EditText mSmsc;
     private Switch mRadioPowerOnSwitch;
     private Button mCellInfoRefreshRateButton;
@@ -356,6 +364,7 @@ public class RadioInfo extends AppCompatActivity {
             updateRadioPowerState();
             updateNetworkType();
             updateImsProvisionedState();
+            updateNrStats(serviceState);
         }
 
     }
@@ -500,8 +509,27 @@ public class RadioInfo extends AppCompatActivity {
         mPingHostnameV4 = (TextView) findViewById(R.id.pingHostnameV4);
         mPingHostnameV6 = (TextView) findViewById(R.id.pingHostnameV6);
         mHttpClientTest = (TextView) findViewById(R.id.httpClientTest);
-
+        mEndcAvailable = (TextView) findViewById(R.id.endc_available);
+        mDcnrRestricted = (TextView) findViewById(R.id.dcnr_restricted);
+        mNrAvailable = (TextView) findViewById(R.id.nr_available);
+        mNrState = (TextView) findViewById(R.id.nr_state);
+        mNrFrequency = (TextView) findViewById(R.id.nr_frequency);
         mPhyChanConfig = (TextView) findViewById(R.id.phy_chan_config);
+
+        // hide 5G stats on devices that don't support 5G
+        if ((mTelephonyManager.getSupportedRadioAccessFamily()
+                & TelephonyManager.NETWORK_TYPE_BITMASK_NR) == 0) {
+            ((TextView) findViewById(R.id.endc_available_label)).setVisibility(View.GONE);
+            mEndcAvailable.setVisibility(View.GONE);
+            ((TextView) findViewById(R.id.dcnr_restricted_label)).setVisibility(View.GONE);
+            mDcnrRestricted.setVisibility(View.GONE);
+            ((TextView) findViewById(R.id.nr_available_label)).setVisibility(View.GONE);
+            mNrAvailable.setVisibility(View.GONE);
+            ((TextView) findViewById(R.id.nr_state_label)).setVisibility(View.GONE);
+            mNrState.setVisibility(View.GONE);
+            ((TextView) findViewById(R.id.nr_frequency_label)).setVisibility(View.GONE);
+            mNrFrequency.setVisibility(View.GONE);
+        }
 
         mPreferredNetworkType = (Spinner) findViewById(R.id.preferredNetworkType);
         ArrayAdapter<String> mPreferredNetworkTypeAdapter = new ArrayAdapter<String>(this,
@@ -624,6 +652,7 @@ public class RadioInfo extends AppCompatActivity {
         updateProperties();
         updateDnsCheckState();
         updateNetworkType();
+        updateNrStats(null);
 
         updateLocation(mCellLocationResult);
         updateCellInfo(mCellInfoResult);
@@ -1128,6 +1157,32 @@ public class RadioInfo extends AppCompatActivity {
                     mPhone.getServiceState().getRilDataRadioTechnology()));
             mVoiceNetwork.setText(ServiceState.rilRadioTechnologyToString(
                     mPhone.getServiceState().getRilVoiceRadioTechnology()));
+        }
+    }
+
+    private void updateNrStats(ServiceState serviceState) {
+        if ((mTelephonyManager.getSupportedRadioAccessFamily()
+                & TelephonyManager.NETWORK_TYPE_BITMASK_NR) == 0) {
+            return;
+        }
+
+        ServiceState ss = serviceState;
+        if (ss == null && mPhone != null) {
+            ss = mPhone.getServiceState();
+        }
+        if (ss != null) {
+            NetworkRegistrationInfo nri = ss.getNetworkRegistrationInfo(
+                    NetworkRegistrationInfo.DOMAIN_PS, AccessNetworkConstants.TRANSPORT_TYPE_WWAN);
+            if (nri != null) {
+                DataSpecificRegistrationInfo dsri = nri.getDataSpecificInfo();
+                if (dsri != null) {
+                    mEndcAvailable.setText(dsri.isEnDcAvailable ? "True" : "False");
+                    mDcnrRestricted.setText(dsri.isDcNrRestricted ? "True" : "False");
+                    mNrAvailable.setText(dsri.isNrAvailable ? "True" : "False");
+                }
+            }
+            mNrState.setText(NetworkRegistrationInfo.nrStateToString(ss.getNrState()));
+            mNrFrequency.setText(ServiceState.frequencyRangeToString(ss.getNrFrequencyRange()));
         }
     }
 
