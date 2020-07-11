@@ -122,6 +122,37 @@
             <TextView android:id="@+id/ul_kbps" style="@style/info_value" />
         </LinearLayout>
 
+
+        <!-- EN-DC Available -->
+        <LinearLayout style="@style/RadioInfo_entry_layout" android:orientation="horizontal">
+            <TextView android:id="@+id/endc_available_label" android:text="@string/radio_info_endc_available" style="@style/info_label" />
+            <TextView android:id="@+id/endc_available" style="@style/info_value" />
+        </LinearLayout>
+
+        <!-- DCNR Restricted -->
+        <LinearLayout style="@style/RadioInfo_entry_layout" android:orientation="horizontal">
+            <TextView android:id="@+id/dcnr_restricted_label" android:text="@string/radio_info_dcnr_restricted" style="@style/info_label" />
+            <TextView android:id="@+id/dcnr_restricted" style="@style/info_value" />
+        </LinearLayout>
+
+        <!-- NR Available -->
+        <LinearLayout style="@style/RadioInfo_entry_layout" android:orientation="horizontal">
+            <TextView android:id="@+id/nr_available_label" android:text="@string/radio_info_nr_available" style="@style/info_label" />
+            <TextView android:id="@+id/nr_available" style="@style/info_value" />
+        </LinearLayout>
+
+        <!-- NR State -->
+        <LinearLayout style="@style/RadioInfo_entry_layout" android:orientation="horizontal">
+            <TextView android:id="@+id/nr_state_label" android:text="@string/radio_info_nr_state" style="@style/info_label" />
+            <TextView android:id="@+id/nr_state" style="@style/info_value" />
+        </LinearLayout>
+
+        <!-- NR Frequency -->
+        <LinearLayout style="@style/RadioInfo_entry_layout" android:orientation="horizontal">
+            <TextView android:id="@+id/nr_frequency_label" android:text="@string/radio_info_nr_frequency" style="@style/info_label" />
+            <TextView android:id="@+id/nr_frequency" style="@style/info_value" />
+        </LinearLayout>
+
         <!-- Physical Channel Config -->
         <LinearLayout style="@style/RadioInfo_entry_layout">
             <TextView android:text="@string/radio_info_phy_chan_config" style="@style/info_label" />
