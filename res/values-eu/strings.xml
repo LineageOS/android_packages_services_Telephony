@@ -38,7 +38,7 @@
     <string name="audio_mode_earpiece" msgid="2823700267171134282">"Aurikularrak"</string>
     <string name="audio_mode_wired_headset" msgid="5028010823105817443">"Entzungailu kableduna"</string>
     <string name="audio_mode_bluetooth" msgid="25732183428018809">"Bluetooth entzungailua"</string>
-    <string name="wait_prompt_str" msgid="5136209532150094910">"Ondorengo tonuak bidali?\n"</string>
+    <string name="wait_prompt_str" msgid="5136209532150094910">"Tonu hauek bidali nahi dituzu?\n"</string>
     <string name="pause_prompt_str" msgid="2308897950360272213">"Tonuak bidaltzen\n"</string>
     <string name="send_button" msgid="5070379600779031932">"Bidali"</string>
     <string name="pause_prompt_yes" msgid="8184132073048369575">"Bai"</string>
