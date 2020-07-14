@@ -5866,6 +5866,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     private int getCarrierPrivilegeStatusFromCarrierConfigRules(int privilegeFromSim, int uid,
             Phone phone) {
+        if (uid == Process.SYSTEM_UID || uid == Process.PHONE_UID) {
+            // Skip the check if it's one of these special uids
+            return TelephonyManager.CARRIER_PRIVILEGE_STATUS_HAS_ACCESS;
+        }
+
         //load access rules from carrier configs, and check those as well: b/139133814
         SubscriptionController subController = SubscriptionController.getInstance();
         if (privilegeFromSim == TelephonyManager.CARRIER_PRIVILEGE_STATUS_HAS_ACCESS
