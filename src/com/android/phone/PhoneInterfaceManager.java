@@ -8411,6 +8411,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         //TODO investigate if this API should require proper permission check in R b/133791609
         final long identity = Binder.clearCallingIdentity();
         try {
+            String carrierUAProfUrl = mApp.getCarrierConfigForSubId(subId).getString(
+                    CarrierConfigManager.KEY_MMS_UA_PROF_URL_STRING);
+            if (!TextUtils.isEmpty(carrierUAProfUrl)) {
+                return carrierUAProfUrl;
+            }
             return SubscriptionManager.getResourcesForSubId(getDefaultPhone().getContext(), subId)
                     .getString(com.android.internal.R.string.config_mms_user_agent_profile_url);
         } finally {
@@ -8423,6 +8428,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         //TODO investigate if this API should require proper permission check in R b/133791609
         final long identity = Binder.clearCallingIdentity();
         try {
+            String carrierUserAgent = mApp.getCarrierConfigForSubId(subId).getString(
+                    CarrierConfigManager.KEY_MMS_USER_AGENT_STRING);
+            if (!TextUtils.isEmpty(carrierUserAgent)) {
+                return carrierUserAgent;
+            }
             return SubscriptionManager.getResourcesForSubId(getDefaultPhone().getContext(), subId)
                     .getString(com.android.internal.R.string.config_mms_user_agent);
         } finally {
