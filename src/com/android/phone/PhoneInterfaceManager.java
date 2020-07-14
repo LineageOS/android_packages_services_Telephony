@@ -4371,7 +4371,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             if (phone == null) {
                 return PhoneConstants.LTE_ON_CDMA_UNKNOWN;
             } else {
-                return phone.getLteOnCdmaMode();
+                return TelephonyProperties.lte_on_cdma_device()
+                        .orElse(PhoneConstants.LTE_ON_CDMA_FALSE);
             }
         } finally {
             Binder.restoreCallingIdentity(identity);
