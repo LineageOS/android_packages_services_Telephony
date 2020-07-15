@@ -7703,7 +7703,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private boolean getDefaultDataRoamingEnabled(int subId) {
         final CarrierConfigManager configMgr = (CarrierConfigManager)
                 mApp.getSystemService(Context.CARRIER_CONFIG_SERVICE);
-        boolean isDataRoamingEnabled = TelephonyProperties.data_roaming().orElse(true);
+        boolean isDataRoamingEnabled = TelephonyProperties.data_roaming().orElse(false);
         isDataRoamingEnabled |= configMgr.getConfigForSubId(subId).getBoolean(
                 CarrierConfigManager.KEY_CARRIER_DEFAULT_DATA_ROAMING_ENABLED_BOOL);
         return isDataRoamingEnabled;
