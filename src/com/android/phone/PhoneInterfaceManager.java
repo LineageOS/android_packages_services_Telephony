@@ -4401,7 +4401,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             if (phone == null) {
                 return PhoneConstants.LTE_ON_CDMA_UNKNOWN;
             } else {
-                return phone.getLteOnCdmaMode();
+                return TelephonyProperties.lte_on_cdma_device()
+                        .orElse(PhoneConstants.LTE_ON_CDMA_FALSE);
             }
         } finally {
             Binder.restoreCallingIdentity(identity);
@@ -5866,6 +5867,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     private int getCarrierPrivilegeStatusFromCarrierConfigRules(int privilegeFromSim, int uid,
             Phone phone) {
+        if (uid == Process.SYSTEM_UID || uid == Process.PHONE_UID) {
+            // Skip the check if it's one of these special uids
+            return TelephonyManager.CARRIER_PRIVILEGE_STATUS_HAS_ACCESS;
+        }
+
         //load access rules from carrier configs, and check those as well: b/139133814
         SubscriptionController subController = SubscriptionController.getInstance();
         if (privilegeFromSim == TelephonyManager.CARRIER_PRIVILEGE_STATUS_HAS_ACCESS
@@ -8406,6 +8412,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         //TODO investigate if this API should require proper permission check in R b/133791609
         final long identity = Binder.clearCallingIdentity();
         try {
+            String carrierUAProfUrl = mApp.getCarrierConfigForSubId(subId).getString(
+                    CarrierConfigManager.KEY_MMS_UA_PROF_URL_STRING);
+            if (!TextUtils.isEmpty(carrierUAProfUrl)) {
+                return carrierUAProfUrl;
+            }
             return SubscriptionManager.getResourcesForSubId(getDefaultPhone().getContext(), subId)
                     .getString(com.android.internal.R.string.config_mms_user_agent_profile_url);
         } finally {
@@ -8418,6 +8429,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         //TODO investigate if this API should require proper permission check in R b/133791609
         final long identity = Binder.clearCallingIdentity();
         try {
+            String carrierUserAgent = mApp.getCarrierConfigForSubId(subId).getString(
+                    CarrierConfigManager.KEY_MMS_USER_AGENT_STRING);
+            if (!TextUtils.isEmpty(carrierUserAgent)) {
+                return carrierUserAgent;
+            }
             return SubscriptionManager.getResourcesForSubId(getDefaultPhone().getContext(), subId)
                     .getString(com.android.internal.R.string.config_mms_user_agent);
         } finally {
