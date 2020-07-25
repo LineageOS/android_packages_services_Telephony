@@ -639,6 +639,13 @@
     <string name="alert_dialog_yes" msgid="3532525979632841417">"Jā"</string>
     <string name="alert_dialog_no" msgid="1075632654085988420">"Nē"</string>
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"Noraidīt"</string>
+    <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"Tālrunis atrodas ārkārtas atzvana režīmā."</string>
+    <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"Līdz plkst. <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
+    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
+      <item quantity="zero">Tālrunis atradīsies ārkārtas atzvana režīmā <xliff:g id="COUNT_1">%s</xliff:g> minūtes.\nVai vēlaties iziet tūlīt?</item>
+      <item quantity="one">Tālrunis atradīsies ārkārtas atzvana režīmā <xliff:g id="COUNT_1">%s</xliff:g> minūti.\nVai vēlaties iziet tūlīt?</item>
+      <item quantity="other">Tālrunis atradīsies ārkārtas atzvana režīmā <xliff:g id="COUNT_1">%s</xliff:g> minūtes.\nVai vēlaties iziet tūlīt?</item>
+    </plurals>
     <string name="voicemail_provider" msgid="4158806657253745294">"Pakalpojums"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"Iestatīšana"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;Nav iestatīts&gt;"</string>
@@ -894,6 +901,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Atsvaidzināt"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"Pārslēgt DNS pārbaudi"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"OEM raksturīga informācija/iestatījumi"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC pieejamība:"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR ierobežojums:"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR pieejamība:"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"NR statuss:"</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR biežums:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Radio frekvenču joslu režīma iestatīšana"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Notiek joslu saraksta ielāde…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Iestatīt"</string>
