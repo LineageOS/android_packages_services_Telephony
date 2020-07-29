@@ -266,7 +266,9 @@ public class PhoneGlobals extends ContextWrapper {
                     // process.
                     EventSimStateChangedBag bag = (EventSimStateChangedBag)msg.obj;
                     if (IccCardConstants.INTENT_VALUE_ICC_READY.equals(bag.mIccStatus)
-                            || IccCardConstants.INTENT_VALUE_ICC_LOADED.equals(bag.mIccStatus)) {
+                            || IccCardConstants.INTENT_VALUE_ICC_LOADED.equals(bag.mIccStatus)
+                            || IccCardConstants.INTENT_VALUE_ICC_NOT_READY.equals(bag.mIccStatus)
+                            || IccCardConstants.INTENT_VALUE_ICC_ABSENT.equals(bag.mIccStatus)) {
                         // when the right event is triggered and there
                         // are UI objects in the foreground, we close
                         // them to display the lock panel.
@@ -280,7 +282,7 @@ public class PhoneGlobals extends ContextWrapper {
                             mPUKEntryProgressDialog.dismiss();
                             mPUKEntryProgressDialog = null;
                         }
-                        Log.i(LOG_TAG, "Dismissing depersonal panel");
+                        Log.i(LOG_TAG, "Dismissing depersonal panel" + (bag.mIccStatus));
                         IccNetworkDepersonalizationPanel.dialogDismiss(bag.mPhoneId);
                     }
                     break;
