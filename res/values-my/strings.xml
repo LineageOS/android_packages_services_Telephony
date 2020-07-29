@@ -664,7 +664,7 @@
     <string name="enable_video_calling_dialog_msg" msgid="7141478720386203540">"ဗွီဒီယို ခေါ်ဆိုမှု ဖွင့်ရန်၊ မြှင့်ထားသည့် 4G LTE မုဒ်ကို ကွန်ရက် ချိိန်ညှိချက်များတွင် ဖွင့်ပေးရပါမည်။"</string>
     <string name="enable_video_calling_dialog_settings" msgid="8697890611305307110">"ကွန်ရက် ဆက်တင်များ"</string>
     <string name="enable_video_calling_dialog_close" msgid="4298929725917045270">"ပိတ်ရန်"</string>
-    <string name="sim_label_emergency_calls" msgid="9078241989421522310">"အရေးပေါ် ခေါ်ဆိုမှုများ"</string>
+    <string name="sim_label_emergency_calls" msgid="9078241989421522310">"အရေးပေါ်ခေါ်ဆိုမှုများ"</string>
     <string name="sim_description_emergency_calls" msgid="5146872803938897296">"အရေးပေါ် ခေါ်ဆိုမှုသာလျှင်"</string>
     <string name="sim_description_default" msgid="7474671114363724971">"SIM ကတ်၊ အပေါက်: <xliff:g id="SLOT_ID">%s</xliff:g>"</string>
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"အများသုံးနိုင်မှု"</string>
@@ -898,6 +898,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"ပြန်စရန်"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"DNS စစ်ဆေးမှုခလုတ်ကို နှိပ်ပါ"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"ထုတ်လုပ်သူနှင့် သက်ဆိုင်သော အချက်အလက်/ဆက်တင်များ"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC အသုံးပြုနိုင်သည် -"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR ကန့်သတ်ထားသည် -"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR အသုံးပြုနိုင်သည် -"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"NR အခြေအနေ -"</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR ကြိမ်နှုန်း -"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"ရေဒီယိုလိုင်းမုဒ်အဖြစ် သတ်မှတ်ပါ"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"ရေဒီယိုလိုင်းစာရင်းကို ဖွင့်နေသည်…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"သတ်မှတ်ရန်"</string>

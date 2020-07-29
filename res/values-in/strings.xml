@@ -185,7 +185,7 @@
     <string name="choose_network_title" msgid="5335832663422653082">"Pilih jaringan"</string>
     <string name="network_disconnected" msgid="8844141106841160825">"Terputus"</string>
     <string name="network_connected" msgid="2760235679963580224">"Terhubung"</string>
-    <string name="network_connecting" msgid="160901383582774987">"Menyambungkan..."</string>
+    <string name="network_connecting" msgid="160901383582774987">"Menghubungkan..."</string>
     <string name="network_could_not_connect" msgid="6547460848093727998">"Tidak dapat tersambung"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="4531933377509551889">"GSM/WCDMA lebih disukai"</item>
@@ -898,6 +898,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Perbarui"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"Aktifkan Pemeriksaan DNS"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"Info spesifik OEM/Setelan"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC Tersedia:"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"Dibatasi DCNR:"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR Tersedia:"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"Status NR:"</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"Frekuensi NR:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Setel Mode Band Radio"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Memuat Daftar Band…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Setel"</string>

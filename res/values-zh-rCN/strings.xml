@@ -898,6 +898,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"刷新"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"切换 DNS 检查"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"特定 OEM 的信息/设置"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"4G/5G 双连接可用："</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"5G 双连接受限："</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"5G 可用："</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"5G 状态："</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"5G 频率："</string>
     <string name="band_mode_title" msgid="7988822920724576842">"设置无线装置频道模式"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"正在加载频道列表…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"设置"</string>
