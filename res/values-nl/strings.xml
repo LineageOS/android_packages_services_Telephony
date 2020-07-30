@@ -602,9 +602,9 @@
     <string name="ota_title_activate" msgid="4049645324841263423">"Je telefoon activeren"</string>
     <string name="ota_touch_activate" msgid="838764494319694754">"Je moet een speciaal gesprek voeren om je telefoonservice te activeren. \n\nNadat je op \'Activeren\' hebt gedrukt, luister je naar de instructies om je telefoon te activeren."</string>
     <string name="ota_hfa_activation_title" msgid="3300556778212729671">"Activeren..."</string>
-    <string name="ota_hfa_activation_dialog_message" msgid="7921718445773342996">"De telefoon activeert je mobiele gegevensservice.\n\nDit kan tot vijf minuten duren."</string>
+    <string name="ota_hfa_activation_dialog_message" msgid="7921718445773342996">"De telefoon activeert je mobiele-dataservice.\n\nDit kan tot vijf minuten duren."</string>
     <string name="ota_skip_activation_dialog_title" msgid="7666611236789203797">"Activering overslaan?"</string>
-    <string name="ota_skip_activation_dialog_message" msgid="6691722887019708713">"Als je de activering overslaat, kun je niet bellen of verbinding maken met mobiele gegevensnetwerken (je kunt wel verbinding maken met wifi-netwerken). Tot je de telefoon activeert, wordt je gevraagd deze te activeren telkens wanneer je de telefoon inschakelt."</string>
+    <string name="ota_skip_activation_dialog_message" msgid="6691722887019708713">"Als je de activering overslaat, kun je niet bellen of verbinding maken met mobiele-datanetwerken (je kunt wel verbinding maken met wifi-netwerken). Tot je de telefoon activeert, wordt je gevraagd deze te activeren telkens wanneer je de telefoon inschakelt."</string>
     <string name="ota_skip_activation_dialog_skip_label" msgid="5908029466817825633">"Overslaan"</string>
     <string name="ota_activate" msgid="7939695753665438357">"Activeren"</string>
     <string name="ota_title_activate_success" msgid="1272135024761004889">"De telefoon is geactiveerd."</string>
