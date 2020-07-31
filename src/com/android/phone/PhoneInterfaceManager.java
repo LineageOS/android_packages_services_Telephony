@@ -6326,6 +6326,14 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @Override
     public int getRadioAccessFamily(int phoneId, String callingPackage) {
         Phone phone = PhoneFactory.getPhone(phoneId);
+        try {
+            TelephonyPermissions
+                    .enforeceCallingOrSelfReadPrivilegedPhoneStatePermissionOrCarrierPrivilege(
+                            mApp, phone.getSubId(), "getRadioAccessFamily");
+        } catch (SecurityException e) {
+            EventLog.writeEvent(0x534e4554, "150857259", -1, "Missing Permission");
+            throw e;
+        }
         int raf = RadioAccessFamily.RAF_UNKNOWN;
         if (phone == null) {
             return raf;
