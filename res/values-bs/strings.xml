@@ -105,7 +105,7 @@
     <string name="labelCFU" msgid="8870170873036279706">"Uvijek proslijedi"</string>
     <string name="messageCFU" msgid="1361806450979589744">"Uvijek koristi ovaj broj"</string>
     <string name="sum_cfu_enabled_indicator" msgid="9030139213402432776">"Prosljeđivanje svih poziva"</string>
-    <string name="sum_cfu_enabled" msgid="5806923046528144526">"Preusmjeravaju se svi pozivi na <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
+    <string name="sum_cfu_enabled" msgid="5806923046528144526">"Prosljeđivanje svih poziva na <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfu_enabled_no_number" msgid="7287752761743377930">"Broj je nedostupan"</string>
     <string name="sum_cfu_disabled" msgid="5010617134210809853">"Isključeno"</string>
     <string name="labelCFB" msgid="615265213360512768">"Kada je zauzeto"</string>
@@ -127,8 +127,8 @@
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Postavke poziva može promijeniti samo administrator."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Postavke (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Greška u postavkama poziva"</string>
-    <string name="reading_settings" msgid="1605904432450871183">"Čitanje postavki u toku…"</string>
-    <string name="updating_settings" msgid="3650396734816028808">"Ažuriranje postavki u toku…"</string>
+    <string name="reading_settings" msgid="1605904432450871183">"Čitanje postavki…"</string>
+    <string name="updating_settings" msgid="3650396734816028808">"Ažuriranje postavki…"</string>
     <string name="reverting_settings" msgid="7378668837291012205">"Vraćanje postavki u toku…"</string>
     <string name="response_error" msgid="3904481964024543330">"Neočekivani odgovor mreže."</string>
     <string name="exception_error" msgid="330994460090467">"Greška na mreži ili SIM kartici."</string>
@@ -604,7 +604,7 @@
     <string name="ota_hfa_activation_title" msgid="3300556778212729671">"Aktivacija u toku..."</string>
     <string name="ota_hfa_activation_dialog_message" msgid="7921718445773342996">"Telefon aktivira uslugu prijenosa mobilnih podataka.\n\nTo može potrajati do 5 minuta."</string>
     <string name="ota_skip_activation_dialog_title" msgid="7666611236789203797">"Preskočiti aktivaciju?"</string>
-    <string name="ota_skip_activation_dialog_message" msgid="6691722887019708713">"Ako preskočite aktivaciju, nećete moći upućivati pozive niti se povezati na mobilne podatkovne mreže (iako se možete povezati na WiFi mreže). Dok ne aktivirate telefon, prikazivat će se upit za aktivaciju svaki put kada upalite telefon."</string>
+    <string name="ota_skip_activation_dialog_message" msgid="6691722887019708713">"Ako preskočite aktivaciju, nećete moći upućivati pozive niti se povezati na mobilne podatkovne mreže (iako se možete povezati s WiFi mrežama). Dok ne aktivirate telefon, prikazivat će se upit za aktivaciju svaki put kada upalite telefon."</string>
     <string name="ota_skip_activation_dialog_skip_label" msgid="5908029466817825633">"Preskoči"</string>
     <string name="ota_activate" msgid="7939695753665438357">"Aktiviraj"</string>
     <string name="ota_title_activate_success" msgid="1272135024761004889">"Telefon je aktiviran."</string>

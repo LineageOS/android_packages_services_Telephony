@@ -32,7 +32,7 @@
     <string name="mmiCancelled" msgid="5339191899200678272">"MMI-code geannuleerd"</string>
     <string name="cancel" msgid="8984206397635155197">"Annuleren"</string>
     <string name="enter_input" msgid="6193628663039958990">"USSD-bericht moet tussen <xliff:g id="MIN_LEN">%1$d</xliff:g> en <xliff:g id="MAX_LEN">%2$d</xliff:g> tekens lang zijn. Probeer het opnieuw."</string>
-    <string name="manageConferenceLabel" msgid="8415044818156353233">"Telefonische vergadering beheren"</string>
+    <string name="manageConferenceLabel" msgid="8415044818156353233">"Conferencecall beheren"</string>
     <string name="ok" msgid="7818974223666140165">"OK"</string>
     <string name="audio_mode_speaker" msgid="243689733219312360">"Luidspreker"</string>
     <string name="audio_mode_earpiece" msgid="2823700267171134282">"Oortelefoon van handset"</string>
@@ -510,7 +510,7 @@
     <string name="voicemail_settings_number_label" msgid="1265118640154688162">"Voicemailnummer"</string>
     <string name="card_title_dialing" msgid="8742182654254431781">"Kiezen"</string>
     <string name="card_title_redialing" msgid="18130232613559964">"Opnieuw bellen"</string>
-    <string name="card_title_conf_call" msgid="901197309274457427">"Telefonische vergadering"</string>
+    <string name="card_title_conf_call" msgid="901197309274457427">"Conferencecall"</string>
     <string name="card_title_incoming_call" msgid="881424648458792430">"Inkomend gesprek"</string>
     <string name="card_title_call_ended" msgid="650223980095026340">"Gesprek beëindigd"</string>
     <string name="card_title_on_hold" msgid="9028319436626975207">"In de wacht"</string>
@@ -602,9 +602,9 @@
     <string name="ota_title_activate" msgid="4049645324841263423">"Je telefoon activeren"</string>
     <string name="ota_touch_activate" msgid="838764494319694754">"Je moet een speciaal gesprek voeren om je telefoonservice te activeren. \n\nNadat je op \'Activeren\' hebt gedrukt, luister je naar de instructies om je telefoon te activeren."</string>
     <string name="ota_hfa_activation_title" msgid="3300556778212729671">"Activeren..."</string>
-    <string name="ota_hfa_activation_dialog_message" msgid="7921718445773342996">"De telefoon activeert je mobiele gegevensservice.\n\nDit kan tot vijf minuten duren."</string>
+    <string name="ota_hfa_activation_dialog_message" msgid="7921718445773342996">"De telefoon activeert je mobiele-dataservice.\n\nDit kan tot vijf minuten duren."</string>
     <string name="ota_skip_activation_dialog_title" msgid="7666611236789203797">"Activering overslaan?"</string>
-    <string name="ota_skip_activation_dialog_message" msgid="6691722887019708713">"Als je de activering overslaat, kun je niet bellen of verbinding maken met mobiele gegevensnetwerken (je kunt wel verbinding maken met wifi-netwerken). Tot je de telefoon activeert, wordt je gevraagd deze te activeren telkens wanneer je de telefoon inschakelt."</string>
+    <string name="ota_skip_activation_dialog_message" msgid="6691722887019708713">"Als je de activering overslaat, kun je niet bellen of verbinding maken met mobiele-datanetwerken (je kunt wel verbinding maken met wifi-netwerken). Tot je de telefoon activeert, wordt je gevraagd deze te activeren telkens wanneer je de telefoon inschakelt."</string>
     <string name="ota_skip_activation_dialog_skip_label" msgid="5908029466817825633">"Overslaan"</string>
     <string name="ota_activate" msgid="7939695753665438357">"Activeren"</string>
     <string name="ota_title_activate_success" msgid="1272135024761004889">"De telefoon is geactiveerd."</string>

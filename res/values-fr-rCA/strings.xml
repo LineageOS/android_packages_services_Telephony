@@ -580,7 +580,7 @@
     <string name="singleContactImportedMsg" msgid="3619804066300998934">"Contacts importés"</string>
     <string name="failedToImportSingleContactMsg" msgid="228095510489830266">"Impossible d\'importer le contact"</string>
     <string name="hac_mode_title" msgid="4127986689621125468">"Assistance auditive"</string>
-    <string name="hac_mode_summary" msgid="7774989500136009881">"Activer la compatibilité du service d\'assistance auditive"</string>
+    <string name="hac_mode_summary" msgid="7774989500136009881">"Activer la compatibilité des prothèses auditives"</string>
     <string name="rtt_mode_title" msgid="3075948111362818043">"Appel texte en temps réel (TTR)"</string>
     <string name="rtt_mode_summary" msgid="8631541375609989562">"Autoriser l\'utilisation de la messagerie lors des appels vocaux"</string>
     <string name="rtt_mode_more_information" msgid="587500128658756318">"La fonctionnalité TTR aide les appelants qui sont sourds ou malentendants, qui ont un trouble de la parole ou pour qui la voix ne suffit pas.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;En savoir plus&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - Les appels TTR sont enregistrés en tant que transcriptions de messages\n       &lt;br&gt; - La fonctionnalité TTR n\'est pas disponible pour les appels vidéo"</string>
