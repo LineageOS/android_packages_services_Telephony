@@ -898,6 +898,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"புதுப்பி"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"DNS சரிபார்ப்பை நிலைமாற்று"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"OEM சார்ந்த தகவல்/அமைப்புகள்"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC உள்ளது:"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR கட்டுப்படுத்தப்பட்டது:"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR உள்ளது:"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"NR நிலை:"</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR அலைவரிசை:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"ரேடியோ பேண்டு பயன்முறையை அமை"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"பேண்டு பட்டியலை ஏற்றுகிறது…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"அமை"</string>

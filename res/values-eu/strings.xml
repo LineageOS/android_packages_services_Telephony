@@ -38,7 +38,7 @@
     <string name="audio_mode_earpiece" msgid="2823700267171134282">"Aurikularrak"</string>
     <string name="audio_mode_wired_headset" msgid="5028010823105817443">"Entzungailu kableduna"</string>
     <string name="audio_mode_bluetooth" msgid="25732183428018809">"Bluetooth entzungailua"</string>
-    <string name="wait_prompt_str" msgid="5136209532150094910">"Ondorengo tonuak bidali?\n"</string>
+    <string name="wait_prompt_str" msgid="5136209532150094910">"Tonu hauek bidali nahi dituzu?\n"</string>
     <string name="pause_prompt_str" msgid="2308897950360272213">"Tonuak bidaltzen\n"</string>
     <string name="send_button" msgid="5070379600779031932">"Bidali"</string>
     <string name="pause_prompt_yes" msgid="8184132073048369575">"Bai"</string>
@@ -898,6 +898,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Freskatu"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"Aldatu DNS egiaztapenaren egoera"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"Jatorrizko fabrikatzailearen berariazko informazioa edota ezarpenak"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC erabilgarri:"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR mugatuta:"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR erabilgarri:"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"NR estatua:"</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR maiztasuna:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Ezarri irrati-bandaren modua"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Banden zerrenda kargatzen…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Ezarri"</string>
