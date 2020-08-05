@@ -875,7 +875,7 @@
     <string name="radio_info_roaming_label" msgid="6636932886446857120">"Roaming:"</string>
     <string name="radio_info_imei_label" msgid="8947899706930120368">"IMEI"</string>
     <string name="radio_info_call_redirect_label" msgid="4526480903023362276">"Pengalihan Panggilan:"</string>
-    <string name="radio_info_ppp_resets_label" msgid="9131901102339077661">"Jumlah Setel Ulang PPP Sejak Boot:"</string>
+    <string name="radio_info_ppp_resets_label" msgid="9131901102339077661">"Jumlah Reset PPP Sejak Boot:"</string>
     <string name="radio_info_current_network_label" msgid="3052098695239642450">"Jaringan Saat Ini:"</string>
     <string name="radio_info_ppp_received_label" msgid="5753592451640644889">"Data Diterima:"</string>
     <string name="radio_info_gsm_service_label" msgid="6443348321714241328">"Layanan Suara:"</string>
