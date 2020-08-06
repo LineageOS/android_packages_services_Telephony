@@ -763,7 +763,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     if (ar.exception == null && ar.result != null) {
                         request.result = ar.result;     // Integer
                     } else {
-                        request.result = null;
+                        // request.result must be set to something non-null
+                        // for the calling thread to unblock
+                        request.result = new int[]{-1};
                         if (ar.result == null) {
                             loge("getPreferredNetworkType: Empty response");
                         } else if (ar.exception instanceof CommandException) {
