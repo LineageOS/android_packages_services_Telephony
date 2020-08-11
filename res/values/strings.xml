@@ -107,6 +107,8 @@
     <!-- network depersonalization -->
     <!-- Label text for PIN entry widget on SIM Network Depersonalization panel -->
     <string name="label_ndp">SIM network unlock PIN</string>
+    <!-- Label text for Operator displayName on SIM Network Depersonalization panel -->
+    <string name="label_phoneid">Perso Locked for</string>
     <!-- Button label on SIM Network Depersonalization panel -->
     <string name="sim_ndp_unlock_text">Unlock</string>
     <!-- Button label on SIM Network Depersonalization panel -->
