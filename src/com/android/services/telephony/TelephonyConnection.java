@@ -2550,8 +2550,10 @@ abstract class TelephonyConnection extends Connection implements Holdable {
      */
     protected boolean isImsConnection() {
         com.android.internal.telephony.Connection originalConnection = getOriginalConnection();
-        return originalConnection != null &&
-                originalConnection.getPhoneType() == PhoneConstants.PHONE_TYPE_IMS;
+
+        return originalConnection != null
+                && originalConnection.getPhoneType() == PhoneConstants.PHONE_TYPE_IMS
+                && originalConnection instanceof ImsPhoneConnection;
     }
 
     /**
