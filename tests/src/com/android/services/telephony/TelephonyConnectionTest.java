@@ -2,6 +2,7 @@ package com.android.services.telephony;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertTrue;
+import static junit.framework.Assert.fail;
 import static junit.framework.TestCase.assertFalse;
 
 import android.os.Bundle;
@@ -18,6 +19,7 @@ public class TelephonyConnectionTest {
     @Test
     public void testCodecInIms() {
         TestTelephonyConnection c = new TestTelephonyConnection();
+        c.setIsImsConnection(true);
         c.updateState();
         Bundle extras = c.getExtras();
         int codec = extras.getInt(Connection.EXTRA_AUDIO_CODEC, Connection.AUDIO_CODEC_NONE);
@@ -36,5 +38,21 @@ public class TelephonyConnectionTest {
         c.setDownGradeVideoCall(false);
         c.refreshConferenceSupported();
         assertTrue(c.isConferenceSupported());
+    }
+
+    /**
+     * Tests to ensure that the presence of an ImsExternalConnection does not cause a crash in
+     * TelephonyConnection due to an illegal cast.
+     */
+    @Test
+    public void testImsExternalConnectionOnRefreshConference() {
+        TestTelephonyConnection c = new TestTelephonyConnection();
+        c.setIsImsConnection(true);
+        c.setIsImsExternalConnection(true);
+        try {
+            c.refreshConferenceSupported();
+        } catch (ClassCastException e) {
+            fail("refreshConferenceSupported threw ClassCastException");
+        }
     }
 }
