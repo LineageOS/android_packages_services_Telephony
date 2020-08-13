@@ -268,7 +268,7 @@ public class ImsConference extends TelephonyConferenceBase implements Holdable {
 
                 @Override
                 public void onExtrasChanged(Connection c, Bundle extras) {
-                    Log.v(this, "onExtrasChanged: c=" + c + " Extras=" + extras);
+                    Log.v(this, "onExtrasChanged: c=" + c + " Extras=" + Rlog.pii(LOG_TAG, extras));
                     updateExtras(extras);
                 }
 
