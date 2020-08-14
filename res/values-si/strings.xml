@@ -50,6 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"හඬ තැපැල් සැකසීම් මූලික පරිශීලක විසින් පමණක් වෙනස් කිරීමට හැකිය."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"ඔබගේ SIM කාඩ්පත අඟුළු හැර තිබේ. ඔබගේ දුරකතනයේ අඟුළු හරිමින්…"</string>
     <string name="label_ndp" msgid="7617392683877410341">"SIM ජාල අඟුළු හැරීමේ PIN"</string>
+    <string name="label_phoneid" msgid="474346208187126722">"මෙය සඳහා පර්සෝ අගුල දමා ඇත"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"අඟුල අරින්න"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"ඉවතලන්න"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"ජාල අඟුළු ඇරීමක් ඉල්ලුම් කරමින්…"</string>
@@ -905,6 +906,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"නැවුම් කරන්න"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"DNS පරීක්ෂාව ටොගල කරන්න"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"OEM-විශේෂිත තොරතුරු/සැකසීම්"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC ලබා ගත හැකි:"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR සීමා කළ:"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR ලබා ගත හැකි:"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"NR තත්ත්වය:"</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR සංඛ්‍යාතය:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"රේඩියෝ කලාප ප්‍රකාරය සකසන්න"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"කලාප ලැයිස්තුව පූරණය කරමින්…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"සකසන්න"</string>
