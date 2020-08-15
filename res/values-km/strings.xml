@@ -50,6 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"មាន​តែ​អ្នក​ប្រើប្រាស់​ចម្បង​ទើប​អាច​កែប្រែ​ការ​កំណត់​សារ​ជា​សំឡេង​បាន។"</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"បាន​ដោះ​សោ​ស៊ីមកាត​របស់​អ្នក។ ទូរស័ព្ទ​របស់​អ្នក​កំពុង​ដោះ​សោ…"</string>
     <string name="label_ndp" msgid="7617392683877410341">"ដោះ​សោ​​កូដ PIN បណ្ដាញ​ស៊ីមកាត"</string>
+    <string name="label_phoneid" msgid="474346208187126722">"បាន​ចាក់​សោ Perso សម្រាប់"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"ដោះ​សោ"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"បោះបង់"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"កំពុង​ស្នើ​​ដោះ​សោ​បណ្ដាញ…"</string>
@@ -905,6 +906,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"ផ្ទុកឡើងវិញ"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"បិទ/បើកការពិនិត្យ DNS"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"ការ​កំណត់/ព័ត៌មាន​ជាក់លាក់ OEM"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"មាន EN-DC៖"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR ត្រូវ​បាន​រឹតត្បិត៖"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"មាន NR៖"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"ស្ថានភាព NR៖"</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"កម្រិត​ញឹកញាប់​នៃ NR៖"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"កំណត់​មុខងារ​កម្រិត​បញ្ជូន​វិទ្យុ"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"កំពុងដំណើរការបញ្ជីក្រុម…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"កំណត់"</string>
