@@ -1687,7 +1687,6 @@ public class TelephonyConnectionService extends ConnectionService {
                 EmergencyNumber emergencyNumber =
                         phone.getEmergencyNumberTracker().getEmergencyNumber(number);
                 if (emergencyNumber != null) {
-                    phone.notifyOutgoingEmergencyCall(emergencyNumber);
                     if (!getAllConnections().isEmpty()) {
                         if (!shouldHoldForEmergencyCall(phone)) {
                             // If we do not support holding ongoing calls for an outgoing
