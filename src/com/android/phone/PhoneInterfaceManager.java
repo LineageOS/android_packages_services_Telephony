@@ -5564,11 +5564,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            Settings.Global.putInt(mApp.getContentResolver(),
-                    Settings.Global.PREFERRED_NETWORK_MODE + subId, networkType);
-
             Boolean success = (Boolean) sendRequest(
                     CMD_SET_PREFERRED_NETWORK_TYPE, networkType, subId);
+
+            if (success) {
+                Settings.Global.putInt(mApp.getContentResolver(),
+                        Settings.Global.PREFERRED_NETWORK_MODE + subId, networkType);
+            }
             if (DBG) log("setPreferredNetworkType: " + (success ? "ok" : "fail"));
             return success;
         } finally {
