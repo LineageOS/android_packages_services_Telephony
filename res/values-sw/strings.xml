@@ -50,6 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"Mipangilio ya ujumbe wa sauti inaweza kubadilishwa na Mtumiaji wa Msingi Pekee."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"Kadi yako ya simu imefunguliwa. Simu yangu inafungua…."</string>
     <string name="label_ndp" msgid="7617392683877410341">"PIN ya kufungua mtandao wa SIM"</string>
+    <string name="label_phoneid" msgid="474346208187126722">"Perso Imefungwa kwa ajili ya"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"Fungua"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"Ondoa"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"Inaomba mtandao ufunguliwe…."</string>

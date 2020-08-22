@@ -50,6 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"Sesli Mesaj Ayarları yalnızca Birincil Kullanıcı tarafından değiştirilebilir."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"SIM kartınızın engellemesi kaldırıldı. Telefonunuzun kilidi açılıyor..."</string>
     <string name="label_ndp" msgid="7617392683877410341">"SIM ağı kilit açma PIN kodu"</string>
+    <string name="label_phoneid" msgid="474346208187126722">"Şunun için Perso Lock uygulandı:"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"Kilit Aç"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"Kapat"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"Ağ kilidini açma isteği yapılıyor..."</string>

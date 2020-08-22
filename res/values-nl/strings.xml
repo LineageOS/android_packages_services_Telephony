@@ -50,6 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"Voicemailinstellingen kunnen alleen worden gewijzigd door de primaire gebruiker."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"Je simkaart is gedeblokkeerd. Je telefoon wordt ontgrendeld..."</string>
     <string name="label_ndp" msgid="7617392683877410341">"Pincode voor ontgrendelen SIM-netwerk"</string>
+    <string name="label_phoneid" msgid="474346208187126722">"Perso vergrendeld voor"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"Ontgrendelen"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"Negeren"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"Verzoek om ontgrendelen netwerk..."</string>
@@ -586,8 +587,8 @@
     <string name="importToFDNfromContacts" msgid="5068664870738407341">"Importeren uit contacten"</string>
     <string name="singleContactImportedMsg" msgid="3619804066300998934">"Contact geïmporteerd"</string>
     <string name="failedToImportSingleContactMsg" msgid="228095510489830266">"Kan contact niet importeren"</string>
-    <string name="hac_mode_title" msgid="4127986689621125468">"Gehoorapparaten"</string>
-    <string name="hac_mode_summary" msgid="7774989500136009881">"Compatibiliteit voor gehoorapparaat inschakelen"</string>
+    <string name="hac_mode_title" msgid="4127986689621125468">"Hoortoestellen"</string>
+    <string name="hac_mode_summary" msgid="7774989500136009881">"Compatibiliteit voor hoortoestel inschakelen"</string>
     <string name="rtt_mode_title" msgid="3075948111362818043">"Realtime tekstoproep (RTT)"</string>
     <string name="rtt_mode_summary" msgid="8631541375609989562">"Berichten in een audiogesprek toestaan"</string>
     <string name="rtt_mode_more_information" msgid="587500128658756318">"RTT helpt bellers die doof of slechthorend zijn, een spraakbeperking hebben of meer dan alleen een stem nodig hebben.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Meer informatie&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT-gesprekken worden opgeslagen als berichttranscript.\n       &lt;br&gt; - RTT is niet beschikbaar voor videogesprekken"</string>

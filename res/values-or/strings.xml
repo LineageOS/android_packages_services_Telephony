@@ -50,6 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"କେବଳ ପ୍ରାଥମିକ ୟୁଜରଙ୍କ ଦ୍ଵାରା ଭଏସମେଲ୍ ସେଟିଙ୍ଗକୁ ସଂଶୋଧିତ କରାଯାଇପାରିବ।"</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"ଆପଣଙ୍କର SIM କାର୍ଡକୁ ଅବରୋଧ କରିଦିଆଯାଇଛି। ଆପଣଙ୍କର ଫୋନ୍ ଅନଲକ୍ ହେଉଛି…"</string>
     <string name="label_ndp" msgid="7617392683877410341">"SIM ନେଟ୍‌ୱର୍କ‌କୁ ଅନଲକ୍ କରିବା ପାଇଁ PIN"</string>
+    <string name="label_phoneid" msgid="474346208187126722">"ଏଥିପାଇଁ Perso ଲକ୍ କରିଦିଆଯାଇଛି"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"ଅନଲକ୍‌ କରନ୍ତୁ"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"ଖାରଜ କରନ୍ତୁ"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"ନେଟ୍‌ୱର୍କକୁ ଅନଲକ୍ କରିବା ପାଇଁ ଅନୁରୋଧ କରାଯାଉଛି…"</string>

@@ -50,6 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"ການຕັ້ງຄ່າຂໍ້ຄວາມສຽງສາມາດແກ້ໄຂໄດ້ໂດຍຜູ້ໃຊ້ຫຼັກເທົ່ານັ້ນ."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"ຍົກເລີກການປິດກັ້ນ SIM card ຂອງທ່ານແລ້ວ. ໂທລະສັບຂອງທ່ານກຳລັງຖືກປົດລັອກ..."</string>
     <string name="label_ndp" msgid="7617392683877410341">"PIN ປົດລັອກເຄືອຂ່າຍ SIM"</string>
+    <string name="label_phoneid" msgid="474346208187126722">"ລັອກ Perso ສຳລັບ"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"ປົດລັອກ"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"ປິດໄວ້"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"ກຳລັງຮ້ອງຂໍການປົດລັອກເຄືອຂ່າຍ..."</string>

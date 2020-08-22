@@ -50,6 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"기본 사용자만 음성사서함 설정을 변경할 수 있습니다."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"SIM 카드의 잠금이 해제되었습니다. 휴대전화의 잠금해제 중..."</string>
     <string name="label_ndp" msgid="7617392683877410341">"SIM 네트워크 잠금해제 PIN"</string>
+    <string name="label_phoneid" msgid="474346208187126722">"맞춤설정 잠김:"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"잠금해제"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"취소"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"네트워크 잠금해제 요청 중..."</string>

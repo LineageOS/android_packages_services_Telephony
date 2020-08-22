@@ -50,6 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"ಧ್ವನಿಮೇಲ್ ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ಕೇವಲ ಪ್ರಾಥಮಿಕ ಬಳಕೆದಾರರು ಮಾತ್ರ ಮಾರ್ಪಡಿಸಬಹುದು."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"ನಿಮ್ಮ ಸಿಮ್‌ ಕಾರ್ಡ್‌ನ ನಿರ್ಬಂಧವನ್ನು ತೆಗೆಯಲಾಗಿದೆ. ನಿಮ್ಮ ಫೋನ್‌ ಅನ್‌ಲಾಕ್‌ ಆಗುತ್ತಿದೆ…"</string>
     <string name="label_ndp" msgid="7617392683877410341">"ಸಿಮ್‌ ನೆಟ್‌ವರ್ಕ್‌ನ ಅನ್‌ಲಾಕ್‌ ಮಾಡುವ ಪಿನ್‌"</string>
+    <string name="label_phoneid" msgid="474346208187126722">"ಇದಕ್ಕಾಗಿ ಪರ್ಸೊ ಲಾಕ್ ಮಾಡಲಾಗಿದೆ"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"ಅನ್‌ಲಾಕ್"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"ವಜಾಗೊಳಿಸಿ"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"ನೆಟ್‌ವರ್ಕ್‌ ಅನ್ನು ಅನ್‌ಲಾಕ್‌ ಮಾಡಲು ವಿನಂತಿಸಲಾಗುತ್ತಿದೆ…"</string>
