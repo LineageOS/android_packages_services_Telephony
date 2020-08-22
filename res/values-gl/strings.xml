@@ -50,6 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"O usuario principal é o único que pode modificar a configuración do correo de voz."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"Desbloqueouse a tarxeta SIM. O teléfono estase desbloqueando..."</string>
     <string name="label_ndp" msgid="7617392683877410341">"PIN de desbloqueo da rede SIM"</string>
+    <string name="label_phoneid" msgid="474346208187126722">"Bloqueado polo operador para"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"Desbloquear"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"Rexeitar"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"Solicitando desbloqueo da rede..."</string>

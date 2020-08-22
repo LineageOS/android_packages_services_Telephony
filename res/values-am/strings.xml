@@ -50,6 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"የድምፅ መልዕክት ቅንብሮች መለወጥ የሚችሉት በቀዳሚ ተጠቃሚው ብቻ ነው።"</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"የSIM ካርድዎ አልታገደም። ስልክዎ በመከፈት ላይነው..."</string>
     <string name="label_ndp" msgid="7617392683877410341">"የSIM አውታረመረብ መክፈቻ ፒን"</string>
+    <string name="label_phoneid" msgid="474346208187126722">"በPerso ተቆልፏል ለ"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"ክፈት"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"አሰናብት"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"አውታረመረብ ለማስከፈት በመጠየቅ ላይ..."</string>

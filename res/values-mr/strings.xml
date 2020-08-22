@@ -50,6 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"केवळ प्राथमिक वापरकर्ता व्हॉइसमेल सेटिंग्ज बदलू शकतो."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"तुमचे सिम कार्ड अवरोधित करणे रद्द केले गेले आहे. तुमचा फोन अनलॉक होत आहे…"</string>
     <string name="label_ndp" msgid="7617392683877410341">"सिम नेटवर्क अनलॉक पिन"</string>
+    <string name="label_phoneid" msgid="474346208187126722">"यासाठी पर्सो लॉक केले आहे"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"अनलॉक करा"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"डिसमिस करा"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"नेटवर्क अनलॉकची विनंती करत आहे..."</string>
@@ -905,6 +906,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"रिफ्रेश करा"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"DNS तपासणी टॉगल करा"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"OEM-विशिष्ट माहिती/सेटिंग्ज"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC उपलब्ध:"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR प्रतिबंधित:"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR उपलब्ध:"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"NR स्थिती:"</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR वारंवारता:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"रेडिओ बँड मोड सेट करा"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"बँड सूची लोड करत आहे…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"सेट करा"</string>
