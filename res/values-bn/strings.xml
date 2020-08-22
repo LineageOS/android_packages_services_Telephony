@@ -50,6 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"ভয়েসমেল সেটিংস কেবলমাত্র প্রাথমিক ব্যবহারকারী দ্বারা পরিবর্তন করা যাবে।"</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"আপনার সিম কার্ডকে অবরোধ মুক্ত করা হয়েছে৷ আপনার ফোন আনলক করা হচ্ছে..."</string>
     <string name="label_ndp" msgid="7617392683877410341">"সিম নেটওয়ার্ক আনলক পিন"</string>
+    <string name="label_phoneid" msgid="474346208187126722">"এর জন্য পার্সো লক লাগানো হয়েছে:"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"আনলক করুন"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"খারিজ করুন"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"নেটওয়ার্ক আনলকের অনুরোধ করা হচ্ছে..."</string>

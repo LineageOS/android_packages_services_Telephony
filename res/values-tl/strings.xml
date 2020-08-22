@@ -50,6 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"Maaari lang baguhin ng Pangunahing User ang Mga Setting ng Voicemail."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"Na-unblock ang iyong SIM card. Nag-a-unlock ang telepono mo…"</string>
     <string name="label_ndp" msgid="7617392683877410341">"PIN na pang-unlock ng SIM network"</string>
+    <string name="label_phoneid" msgid="474346208187126722">"Naka-perso Lock para sa"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"I-unlock"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"Balewalain"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"Humihiling ng pag-unlock sa network…"</string>

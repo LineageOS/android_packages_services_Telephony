@@ -50,6 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"Aðeins aðalnotandinn má breyta talhólfsstillingum."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"Opnað var fyrir SIM-kortið. Verið er að opna símann…"</string>
     <string name="label_ndp" msgid="7617392683877410341">"PIN-númer SIM-korts til að opna síma"</string>
+    <string name="label_phoneid" msgid="474346208187126722">"Læsing símafyrirtækis fyrir"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"Taka úr lás"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"Hunsa"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"Biður um að símkerfi sé opnað…"</string>
