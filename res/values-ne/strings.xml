@@ -648,7 +648,7 @@
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"सेट गरेको छैन"</string>
     <string name="other_settings" msgid="8895088007393598447">"अन्य कल सेटिङहरू"</string>
     <string name="calling_via_template" msgid="1791323450703751750">"<xliff:g id="PROVIDER_NAME">%s</xliff:g> को मार्फत कल गर्दै"</string>
-    <string name="contactPhoto" msgid="7885089213135154834">"सम्पर्क तस्बिर"</string>
+    <string name="contactPhoto" msgid="7885089213135154834">"सम्पर्क फोटो"</string>
     <string name="goPrivate" msgid="4645108311382209551">"निजी जानुहोस्"</string>
     <string name="selectContact" msgid="1527612842599767382">"सम्पर्क चयन गर्नुहोस्"</string>
     <string name="not_voice_capable" msgid="2819996734252084253">"भ्वाइस कल गर्ने समर्थित छैन"</string>

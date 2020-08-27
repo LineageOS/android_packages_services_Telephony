@@ -579,8 +579,8 @@
     <string name="importToFDNfromContacts" msgid="5068664870738407341">"Importeren uit contacten"</string>
     <string name="singleContactImportedMsg" msgid="3619804066300998934">"Contact geïmporteerd"</string>
     <string name="failedToImportSingleContactMsg" msgid="228095510489830266">"Kan contact niet importeren"</string>
-    <string name="hac_mode_title" msgid="4127986689621125468">"Gehoorapparaten"</string>
-    <string name="hac_mode_summary" msgid="7774989500136009881">"Compatibiliteit voor gehoorapparaat inschakelen"</string>
+    <string name="hac_mode_title" msgid="4127986689621125468">"Hoortoestellen"</string>
+    <string name="hac_mode_summary" msgid="7774989500136009881">"Compatibiliteit voor hoortoestel inschakelen"</string>
     <string name="rtt_mode_title" msgid="3075948111362818043">"Realtime tekstoproep (RTT)"</string>
     <string name="rtt_mode_summary" msgid="8631541375609989562">"Berichten in een audiogesprek toestaan"</string>
     <string name="rtt_mode_more_information" msgid="587500128658756318">"RTT helpt bellers die doof of slechthorend zijn, een spraakbeperking hebben of meer dan alleen een stem nodig hebben.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Meer informatie&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT-gesprekken worden opgeslagen als berichttranscript.\n       &lt;br&gt; - RTT is niet beschikbaar voor videogesprekken"</string>
