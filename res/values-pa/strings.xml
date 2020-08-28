@@ -50,7 +50,8 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"ਵੌਇਸਮੇਲ ਸੈਟਿੰਗਾਂ ਸਿਰਫ਼ ਪ੍ਰਾਇਮਰੀ ਵਰਤੋਂਕਾਰ ਦੁਆਰਾ ਹੀ ਸੰਸ਼ੋਧਿਤ ਕੀਤੀਆਂ ਜਾ ਸਕਦੀਆਂ ਹਨ।"</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"ਤੁਹਾਡਾ SIM ਕਾਰਡ ਅਨਬਲੌਕ ਕਰ ਦਿੱਤਾ ਗਿਆ ਹੈ। ਤੁਹਾਡਾ ਫੋਨ ਅਨੌਲਕ ਹੋ ਰਿਹਾ ਹੈ..."</string>
     <string name="label_ndp" msgid="7617392683877410341">"SIM ਨੈਟਵਰਕ ਅਣਲਾਕ PIN"</string>
-    <string name="label_phoneid" msgid="474346208187126722">"ਇਸ ਲਈ \'ਪਰਸੋ\' ਲਾਕ ਕੀਤਾ ਗਿਆ"</string>
+    <!-- no translation found for label_phoneid (8775611434123577808) -->
+    <skip />
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"ਅਣਲਾਕ ਕਰੋ"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"ਖਾਰਜ ਕਰੋ"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"ਨੈਟਵਰਕ ਅਣਲਾਕ ਦੀ ਬੇਨਤੀ ਕਰ ਰਿਹਾ ਹੈ…"</string>

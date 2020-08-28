@@ -50,7 +50,8 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"వాయిస్ మెయిల్ సెట్టింగ్‌లను ప్రాథమిక వినియోగదారు మాత్రమే సవరించగలరు."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"మీ SIM కార్డు అన్‌బ్లాక్ చేయబడింది. మీ ఫోన్ అన్‌లాక్ చేయబడుతోంది…"</string>
     <string name="label_ndp" msgid="7617392683877410341">"SIM నెట్‌వర్క్ అన్‌లాక్ పిన్‌"</string>
-    <string name="label_phoneid" msgid="474346208187126722">"దీని కోసం Perso లాక్ చేయబడింది"</string>
+    <!-- no translation found for label_phoneid (8775611434123577808) -->
+    <skip />
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"అన్‌లాక్ చేయి"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"తీసివేయి"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"నెట్‌వర్క్ అన్‌లాక్‌ను అభ్యర్థిస్తోంది…"</string>

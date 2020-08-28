@@ -50,7 +50,8 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"Setările pentru mesagerie vocală pot fi modificate numai de utilizatorul principal."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"Cardul dvs. SIM a fost deblocat. Telefonul dvs. se deblochează..."</string>
     <string name="label_ndp" msgid="7617392683877410341">"Codul PIN de deblocare a rețelei SIM"</string>
-    <string name="label_phoneid" msgid="474346208187126722">"Personalizarea este blocată pentru"</string>
+    <!-- no translation found for label_phoneid (8775611434123577808) -->
+    <skip />
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"Deblocați"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"Renunțați"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"Se solicită deblocarea rețelei..."</string>

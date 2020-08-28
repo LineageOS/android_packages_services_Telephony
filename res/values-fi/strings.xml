@@ -50,7 +50,8 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"Vain ensisijainen käyttäjä voi muuttaa vastaajan asetuksia."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"SIM-korttisi esto on purettu. Puhelimen lukitusta poistetaan..."</string>
     <string name="label_ndp" msgid="7617392683877410341">"SIM-verkko, PIN-koodin lukituksen poisto"</string>
-    <string name="label_phoneid" msgid="474346208187126722">"Lukittu operaattorille"</string>
+    <!-- no translation found for label_phoneid (8775611434123577808) -->
+    <skip />
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"Poista lukitus"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"Hylkää"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"Pyydetään verkon lukituksen poistoa..."</string>
