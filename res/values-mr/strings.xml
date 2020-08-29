@@ -50,7 +50,8 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"केवळ प्राथमिक वापरकर्ता व्हॉइसमेल सेटिंग्ज बदलू शकतो."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"तुमचे सिम कार्ड अवरोधित करणे रद्द केले गेले आहे. तुमचा फोन अनलॉक होत आहे…"</string>
     <string name="label_ndp" msgid="7617392683877410341">"सिम नेटवर्क अनलॉक पिन"</string>
-    <string name="label_phoneid" msgid="474346208187126722">"यासाठी पर्सो लॉक केले आहे"</string>
+    <!-- no translation found for label_phoneid (8775611434123577808) -->
+    <skip />
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"अनलॉक करा"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"डिसमिस करा"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"नेटवर्क अनलॉकची विनंती करत आहे..."</string>
