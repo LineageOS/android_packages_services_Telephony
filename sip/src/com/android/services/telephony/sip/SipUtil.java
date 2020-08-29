@@ -51,10 +51,10 @@ public class SipUtil {
     }
 
     public static boolean isVoipSupported(Context context) {
-        return SipManager.isVoipSupported(context) &&
-                context.getResources().getBoolean(
+        return SipManager.isVoipSupported(context)
+                && context.getResources().getBoolean(
                         com.android.internal.R.bool.config_built_in_sip_phone)
-                && ((TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE))
+                        && ((TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE))
                         .isVoiceCapable();
     }
 
