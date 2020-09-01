@@ -982,7 +982,7 @@ public class TelephonyConnectionService extends ConnectionService {
             // one and causing UI Jank.
             boolean noActiveSimCard = SubscriptionController.getInstance()
                     .getActiveSubInfoCount(phone.getContext().getOpPackageName(),
-                            null) == 0;
+                            phone.getContext().getAttributionTag()) == 0;
             // If there's no active sim card and the device is in emergency mode, use E account.
             addExistingConnection(mPhoneUtilsProxy.makePstnPhoneAccountHandleWithPrefix(
                     phone, "", isEmergencyNumber && noActiveSimCard), repConnection);

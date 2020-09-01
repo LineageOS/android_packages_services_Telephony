@@ -863,7 +863,7 @@ public class DisconnectCauseUtil {
 
             case android.telephony.DisconnectCause.IMS_MERGED_SUCCESSFULLY:
                 // Do not play any tones if disconnected because of a successful merge.
-                return ToneGenerator.TONE_UNKNOWN;
+                return -1;
 
             case android.telephony.DisconnectCause.ERROR_UNSPECIFIED:
             case android.telephony.DisconnectCause.LOCAL:
