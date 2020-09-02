@@ -50,6 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"Дуут шуудангийн тохиргоог зөвхөн Үндсэн хэрэглэгч өөрчлөх боломжтой."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"Таны SIM карт тайлагдлаа. Таны утас тайлагдаж байна…"</string>
     <string name="label_ndp" msgid="7617392683877410341">"SIM сүлжээ тайлах PIN"</string>
+    <string name="label_phoneid" msgid="8775611434123577808">"Операторын СИМ түгжигдсэн"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"Тайлах"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"Алгасах"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"Сүлжээг тайлах хүсэлтийг илгээж байна…"</string>
@@ -62,7 +63,7 @@
     <string name="labelCdmaMore_with_label" msgid="7759692829160238152">"CDMA дуудлагын тохиргоо (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="apn_settings" msgid="1978652203074756623">"Хандалтын Цэгийн Нэрс"</string>
     <string name="settings_label" msgid="9101778088412567956">"Сүлжээний тохиргоо"</string>
-    <string name="phone_accounts" msgid="1216879437523774604">"Дуудах бүртгэл"</string>
+    <string name="phone_accounts" msgid="1216879437523774604">"Дуудлагын бүртгэлүүд"</string>
     <string name="phone_accounts_make_calls_with" msgid="16747814788918145">"Дараахаар дуудлага хийх"</string>
     <string name="phone_accounts_make_sip_calls_with" msgid="4691221006731847255">"Дараахаар SIP дуудлага хийх"</string>
     <string name="phone_accounts_ask_every_time" msgid="6192347582666047168">"Эхлэж хандах"</string>
@@ -102,10 +103,10 @@
     <string name="call_forwarding_settings" msgid="8937130467468257671">"Дуудлага шилжүүлэх тохиргоо"</string>
     <string name="call_forwarding_settings_with_label" msgid="2345432813399564272">"Дуудлага шилжүүлэх тохиргоонууд (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCF" msgid="3578719437928476078">"Дуудлага дамжуулах"</string>
-    <string name="labelCFU" msgid="8870170873036279706">"Байнга дамжуулах"</string>
+    <string name="labelCFU" msgid="8870170873036279706">"Байнга шилжүүлэх"</string>
     <string name="messageCFU" msgid="1361806450979589744">"Байнга энэ дугаарыг ашиглах"</string>
     <string name="sum_cfu_enabled_indicator" msgid="9030139213402432776">"Бүх дуудлагыг дамжуулж байна"</string>
-    <string name="sum_cfu_enabled" msgid="5806923046528144526">"Бүх дуудлагыг <xliff:g id="PHONENUMBER">{0}</xliff:g> руу дамжуулж байна"</string>
+    <string name="sum_cfu_enabled" msgid="5806923046528144526">"Бүх дуудлагыг <xliff:g id="PHONENUMBER">{0}</xliff:g> руу шилжүүлж байна"</string>
     <string name="sum_cfu_enabled_no_number" msgid="7287752761743377930">"Дугаар холбогдох боломжгүй"</string>
     <string name="sum_cfu_disabled" msgid="5010617134210809853">"Идэвхгүй"</string>
     <string name="labelCFB" msgid="615265213360512768">"Завгүй бол"</string>
@@ -123,6 +124,13 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"<xliff:g id="PHONENUMBER">{0}</xliff:g> руу дамжуулж байна"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Идэвхгүй"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Таны үүрэн холбоо үзүүлэгчээс утас завгүй байхад дуудлагыг дамжуулахыг зогсоох үйлчилгээг дэмждэггүй."</string>
+    <string name="registration_cf_forbidden" msgid="4386482610771190420">"Таны оператор компани дуудлага шилжүүлэхийг дэмждэггүй."</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"\"Дуудлага хүлээлгэнд\" тохиргоог асаах уу?"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"Дуудлагын үеэр танд ирсэн дуудлагын талаар мэдэгдэнэ"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"Асаах"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"Болих"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"IMS доорх CDMA-н \"Дуудлага хүлээлгэнд\" тохиргоо асаалттай байна"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"IMS доорх CDMA-н \"Дуудлага хүлээлгэнд\" тохиргоо унтраалттай байна"</string>
     <string name="updating_title" msgid="6130548922615719689">"Дуудлагын тохиргоо"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Дуудлагын тохиргоог зөвхөн админ хэрэглэгч солих боломжтой."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Тохиргоо (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -425,7 +433,7 @@
     <string name="cdma_activate_device" msgid="5914720276140097632">"Төхөөрөмжийг идэвхжүүлэх"</string>
     <string name="cdma_lte_data_service" msgid="359786441782404562">"Дата үйлчилгээний тохиргоо"</string>
     <string name="carrier_settings_title" msgid="6292869148169850220">"Операторын тохиргоо"</string>
-    <string name="fdn" msgid="2545904344666098749">"Тогтсон Залгах Дугаарууд"</string>
+    <string name="fdn" msgid="2545904344666098749">"Тогтсон залгах дугаарууд"</string>
     <string name="fdn_with_label" msgid="6412087553365709494">"Тогтсон Дуудлагын Дугаарууд(<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="manage_fdn_list" msgid="3341716430375195441">"FDN жагсаалт"</string>
     <string name="fdn_list_with_label" msgid="1409655283510382556">"FDN жагсаалт (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -562,7 +570,7 @@
     <string name="fire_type_description" msgid="6565200468934914930">"Гал"</string>
     <string name="description_concat_format" msgid="2014471565101724088">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="1115266533703764049">"Залгахдаа гар ашиглах"</string>
-    <string name="onscreenHoldText" msgid="4025348842151665191">"Саатуулах"</string>
+    <string name="onscreenHoldText" msgid="4025348842151665191">"Хүлээлгэх"</string>
     <string name="onscreenEndCallText" msgid="6138725377654842757">"Дуусгах"</string>
     <string name="onscreenShowDialpadText" msgid="658465753816164079">"Диалпад"</string>
     <string name="onscreenMuteText" msgid="5470306116733843621">"Дууг хаах"</string>
@@ -625,8 +633,8 @@
     <string name="phone_in_ecm_call_notification_text" msgid="653972232922670335">"Дата холболтыг идэвхгүйжүүлсэн"</string>
     <string name="phone_in_ecm_notification_complete_time" msgid="7341624337163082759">"<xliff:g id="COMPLETETIME">%s</xliff:g> болтол дата холболт байхгүй"</string>
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="5425906903766466743">
-      <item quantity="other">Таны гар утас яаралтай түргэн тусламжийн дуудлагын хэлбэрт<xliff:g id="COUNT_1">%s</xliff:g> минут байна. Энэ горимд байгаа тохиолдолд интернет холболт ашигладаг ямар ч програмыг ашиглаж үл болно. Та гарахыг хүсэж байна уу?</item>
-      <item quantity="one">Таны гар утас яаралтай түргэн тусламжийн дуудлагын хэлбэрт <xliff:g id="COUNT_0">%s</xliff:g> минут байна. Энэ горимд байгаа тохиолдолд интернет холболт ашигладаг ямар ч програмыг ашиглаж үл болно. Та гарахыг хүсэж байна уу?</item>
+      <item quantity="other">Таны гар утас яаралтай түргэн тусламжийн дуудлагын хэлбэрт<xliff:g id="COUNT_1">%s</xliff:g> минут байна. Энэ горимд байгаа тохиолдолд интернет холболт ашигладаг ямар ч программыг ашиглаж үл болно. Та гарахыг хүсэж байна уу?</item>
+      <item quantity="one">Таны гар утас яаралтай түргэн тусламжийн дуудлагын хэлбэрт <xliff:g id="COUNT_0">%s</xliff:g> минут байна. Энэ горимд байгаа тохиолдолд интернет холболт ашигладаг ямар ч программыг ашиглаж үл болно. Та гарахыг хүсэж байна уу?</item>
     </plurals>
     <plurals name="alert_dialog_not_avaialble_in_ecm" formatted="false" msgid="1152682528741457004">
       <item quantity="other">Сонгосон үйлдлийг яаралтай түргэн тусламжийн горимд байгаа үед ашиглах боломжгүй. Таны гар утас энэ горимд <xliff:g id="COUNT_1">%s</xliff:g> минут байх болно. Та гарахыг хүсэж байна уу?</item>
@@ -637,6 +645,12 @@
     <string name="alert_dialog_yes" msgid="3532525979632841417">"Тийм"</string>
     <string name="alert_dialog_no" msgid="1075632654085988420">"Үгүй"</string>
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"Алгасах"</string>
+    <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"Утас яаралтай буцаж холбоо барих горимд байна"</string>
+    <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"<xliff:g id="COMPLETETIME">%s</xliff:g> хүртэл"</string>
+    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
+      <item quantity="other">Утас <xliff:g id="COUNT_1">%s</xliff:g> минутын турш яаралтай буцаж холбоо барих горимд байх болно.\nТа одоо гарахыг хүсэж байна уу?</item>
+      <item quantity="one">Утас <xliff:g id="COUNT_0">%s</xliff:g> минутын турш яаралтай буцаж холбоо барих горимд байх болно.\nТа одоо гарахыг хүсэж байна уу?</item>
+    </plurals>
     <string name="voicemail_provider" msgid="4158806657253745294">"Үйлчилгээ"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"Тохиргоо"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;Тохируулаагүй&gt;"</string>
@@ -649,7 +663,7 @@
     <string name="description_dial_button" msgid="8614631902795087259">"залгах"</string>
     <string name="description_dialpad_button" msgid="7395114120463883623">"дугаар цуглуулах самбарыг харуулах"</string>
     <string name="pane_title_emergency_dialpad" msgid="3627372514638694401">"Яаралтай тусламжийн дугаар цуглуулах самбар"</string>
-    <string name="voicemail_visual_voicemail_switch_title" msgid="6610414098912832120">"Уншиж болохуйц дуут шуудан"</string>
+    <string name="voicemail_visual_voicemail_switch_title" msgid="6610414098912832120">"Визуал дуут шуудан"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="7005128605986960003">"PIN тохируулах"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="4633077715231764435">"PIN өөрчлөх"</string>
     <string name="preference_category_ringtone" msgid="8787281191375434976">"Хонхны ая &amp; Чичиргээ"</string>
@@ -892,6 +906,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Сэргээх"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"DNS шалгалтыг унтраах/асаах"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"OEM-тодорхой Мэдээлэл/Тохиргоо"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC боломжтой:"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR хязгаарласан:"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR боломжтой:"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"NR төлөв:"</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR давтамж:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Радио зурвасын горимыг тохируулах"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Зурвасын жагсаалтыг ачаалж байна…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Тохируулах"</string>

@@ -72,7 +72,7 @@
     <string name="empty_alert" msgid="3693655518612836718">"<xliff:g id="INPUT_FIELD_NAME">%s</xliff:g> je obavezno polje i ne može biti prazno."</string>
     <string name="not_a_valid_port" msgid="3664668836663491376">"Broj priključka treba biti između 1000 i 65534."</string>
     <string name="no_internet_available" msgid="161720645084325479">"Da uputite SIP poziv, prvo provjerite internet vezu."</string>
-    <string name="no_wifi_available" msgid="1179092018692306312">"Trebate biti povezani na Wi-FI mrežu za SIP pozive (koristite postavke Bežično povezivanje i mreža)."</string>
+    <string name="no_wifi_available" msgid="1179092018692306312">"Trebate biti povezani s WiFi mrežom za SIP pozive (koristite postavke Bežično povezivanje i mreža)."</string>
     <string name="no_voip" msgid="3366395789297981738">"SIP pozivanje nije podržano"</string>
     <string name="sip_system_decide" msgid="197230378376326430">"Automatski"</string>
     <string name="sip_always_send_keepalive" msgid="4986533673960084769">"Uvijek pošalji"</string>
