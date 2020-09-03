@@ -206,7 +206,7 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         pw.println("      -s: The SIM slot ID for the registered ImsService. If no option");
         pw.println("          is specified, it will choose the default voice SIM slot.");
         pw.println("      -c: The ImsService defined as the carrier configured ImsService.");
-        pw.println("      -c: The ImsService defined as the device default ImsService.");
+        pw.println("      -d: The ImsService defined as the device default ImsService.");
         pw.println("      -f: The feature type that the query will be requested for. If none is");
         pw.println("          specified, the returned package name will correspond to MMTEL.");
         pw.println("  ims enable [-s SLOT_ID]");
