@@ -50,8 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"વૉઇસમેઇલ સેટિંગ્સને ફક્ત પ્રાથમિક વપરાશકર્તા દ્વારા જ સંશોધિત કરી શકાય છે."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"તમારા SIM કાર્ડને અનાવરોધિત કરવામાં આવ્યું છે. તમારા ફોનને અનલૉક કરી રહ્યાં છે…"</string>
     <string name="label_ndp" msgid="7617392683877410341">"SIM નેટવર્ક અનલૉક PIN"</string>
-    <!-- no translation found for label_phoneid (8775611434123577808) -->
-    <skip />
+    <string name="label_phoneid" msgid="8775611434123577808">"ઑપરેટર દ્વારા સિમ કાર્ડ લૉક કરવામાં આવ્યું છે"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"અનલૉક કરો"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"છોડી દો"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"નેટવર્ક અનલૉકની વિનંતી કરી રહ્યાં છે…"</string>

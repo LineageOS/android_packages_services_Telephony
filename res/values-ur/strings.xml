@@ -50,8 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"صرف بنیادی صارف ہی صوتی میل کی ترتیبات تبدیل کر سکتا ہے۔"</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"‏آپ کا SIM کارڈ غیر مسدود ہوگیا ہے۔ آپ کا فون غیر مقفل ہو رہا ہے…"</string>
     <string name="label_ndp" msgid="7617392683877410341">"‏SIM نیٹ ورک غیر مقفل کرنے کا PIN"</string>
-    <!-- no translation found for label_phoneid (8775611434123577808) -->
-    <skip />
+    <string name="label_phoneid" msgid="8775611434123577808">"‏آپریٹر کے لیے SIM مقفل ہے"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"غیر مقفل کریں"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"برخاست کریں"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"نیٹ ورک غیر مقفل کرنے کی درخواست کر رہا ہے…"</string>

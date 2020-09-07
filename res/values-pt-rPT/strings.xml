@@ -50,8 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"As definições do correio de voz só podem ser modificadas pelo utilizador principal."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"O cartão SIM foi desbloqueado. O telefone está a ser desbloqueado..."</string>
     <string name="label_ndp" msgid="7617392683877410341">"PIN para desbloqueio de rede do cartão SIM"</string>
-    <!-- no translation found for label_phoneid (8775611434123577808) -->
-    <skip />
+    <string name="label_phoneid" msgid="8775611434123577808">"SIM bloqueado para o operador"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"Desbloquear"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"Ignorar"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"A pedir desbloqueio de rede..."</string>
