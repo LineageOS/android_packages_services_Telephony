@@ -50,8 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"ভইচমেইল ছেটিংসমূহ কেৱল মুখ্য ব্যৱহাৰকাৰীয়ে হে সংশোধন কৰিব পাৰে।"</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"আপোনাৰ ছিম কাৰ্ডখন অৱৰোধৰ পৰা আঁতৰোৱা হ’ল। আপোনাৰ ফ\'নটো আনলক কৰি থকা হৈছে…"</string>
     <string name="label_ndp" msgid="7617392683877410341">"ছিম নেটৱৰ্ক আনলক পিন"</string>
-    <!-- no translation found for label_phoneid (8775611434123577808) -->
-    <skip />
+    <string name="label_phoneid" msgid="8775611434123577808">"অপাৰেটৰৰ বাবে ছিম লক কৰা হৈছে"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"আনলক"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"অগ্ৰাহ্য কৰক"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"নেটৱৰ্ক আনলক কৰিবলৈ অনুৰোধ কৰি থকা হৈছে…"</string>

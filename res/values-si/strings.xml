@@ -50,8 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"හඬ තැපැල් සැකසීම් මූලික පරිශීලක විසින් පමණක් වෙනස් කිරීමට හැකිය."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"ඔබගේ SIM කාඩ්පත අඟුළු හැර තිබේ. ඔබගේ දුරකතනයේ අඟුළු හරිමින්…"</string>
     <string name="label_ndp" msgid="7617392683877410341">"SIM ජාල අඟුළු හැරීමේ PIN"</string>
-    <!-- no translation found for label_phoneid (8775611434123577808) -->
-    <skip />
+    <string name="label_phoneid" msgid="8775611434123577808">"මෙහෙයවන්නා සඳහා SIM අගුලු දමා ඇත"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"අඟුල අරින්න"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"ඉවතලන්න"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"ජාල අඟුළු ඇරීමක් ඉල්ලුම් කරමින්…"</string>

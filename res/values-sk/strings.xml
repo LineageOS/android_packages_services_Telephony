@@ -50,8 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"Nastavenia hlasovej schránky môže zmeniť iba primárny používateľ."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"SIM karta bola odblokovaná. Prebieha odomykanie telefónu..."</string>
     <string name="label_ndp" msgid="7617392683877410341">"Kód PIN odomknutia siete pre SIM kartu"</string>
-    <!-- no translation found for label_phoneid (8775611434123577808) -->
-    <skip />
+    <string name="label_phoneid" msgid="8775611434123577808">"SIM karta je uzamknutá pre operátora"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"Odomknúť"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"Zatvoriť"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"Žiadosť o odomknutie siete..."</string>

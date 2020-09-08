@@ -50,8 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"Només l\'usuari principal pot modificar la configuració dels missatges de veu."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"La targeta SIM s\'ha desbloquejat. El telèfon s\'està desbloquejant..."</string>
     <string name="label_ndp" msgid="7617392683877410341">"PIN de desbloqueig de xarxa SIM"</string>
-    <!-- no translation found for label_phoneid (8775611434123577808) -->
-    <skip />
+    <string name="label_phoneid" msgid="8775611434123577808">"SIM bloquejada per a l\'operador"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"Desbloqueja"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"Ignora"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"S\'està sol·licitant el desbloqueig de la xarxa..."</string>
