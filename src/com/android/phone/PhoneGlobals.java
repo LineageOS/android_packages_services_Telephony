@@ -501,7 +501,8 @@ public class PhoneGlobals extends ContextWrapper {
     }
 
     public PersistableBundle getCarrierConfigForSubId(int subId) {
-        return configLoader.getConfigForSubIdWithFeature(subId, getOpPackageName(), null);
+        return configLoader.getConfigForSubIdWithFeature(subId, getOpPackageName(),
+                getAttributionTag());
     }
 
     private void registerSettingsObserver() {

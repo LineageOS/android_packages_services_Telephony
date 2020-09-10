@@ -70,6 +70,11 @@ public class TestContext extends MockContext {
     }
 
     @Override
+    public String getAttributionTag() {
+        return "";
+    }
+
+    @Override
     public Intent registerReceiver(BroadcastReceiver receiver, IntentFilter filter) {
         return null;
     }

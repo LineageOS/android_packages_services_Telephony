@@ -51,9 +51,7 @@ import android.os.PersistableBundle;
 import android.os.Process;
 import android.os.RemoteException;
 import android.os.ResultReceiver;
-import android.os.ServiceManager;
 import android.os.ServiceSpecificException;
-import android.os.ShellCallback;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.os.WorkSource;
@@ -90,6 +88,7 @@ import android.telephony.ServiceState;
 import android.telephony.SignalStrength;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
+import android.telephony.TelephonyFrameworkInitializer;
 import android.telephony.TelephonyHistogram;
 import android.telephony.TelephonyManager;
 import android.telephony.TelephonyScanManager;
@@ -122,7 +121,6 @@ import android.util.Pair;
 
 import com.android.ims.ImsManager;
 import com.android.ims.internal.IImsServiceFeatureCallback;
-import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.telephony.CallForwardInfo;
 import com.android.internal.telephony.CallManager;
 import com.android.internal.telephony.CallStateException;
@@ -153,6 +151,7 @@ import com.android.internal.telephony.ServiceStateTracker;
 import com.android.internal.telephony.SmsController;
 import com.android.internal.telephony.SmsPermissions;
 import com.android.internal.telephony.SubscriptionController;
+import com.android.internal.telephony.TelephonyIntents;
 import com.android.internal.telephony.TelephonyPermissions;
 import com.android.internal.telephony.dataconnection.ApnSettingUtils;
 import com.android.internal.telephony.emergency.EmergencyNumberTracker;
@@ -192,6 +191,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Consumer;
 
 /**
@@ -280,6 +280,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private static final int EVENT_SET_ICC_LOCK_ENABLED_DONE = 79;
     private static final int CMD_SET_SYSTEM_SELECTION_CHANNELS = 80;
     private static final int EVENT_SET_SYSTEM_SELECTION_CHANNELS_DONE = 81;
+    private static final int MSG_NOTIFY_USER_ACTIVITY = 82;
     private static final int CMD_GET_CALL_FORWARDING = 83;
     private static final int EVENT_GET_CALL_FORWARDING_DONE = 84;
     private static final int CMD_SET_CALL_FORWARDING = 85;
@@ -307,6 +308,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private SubscriptionController mSubscriptionController;
     private SharedPreferences mTelephonySharedPreferences;
     private PhoneConfigurationManager mPhoneConfigurationManager;
+
+    /** User Activity */
+    private AtomicBoolean mNotifyUserActivity;
+    private static final int USER_ACTIVITY_NOTIFICATION_DELAY = 200;
 
     private static final String PREF_CARRIERS_ALPHATAG_PREFIX = "carrier_alphtag_";
     private static final String PREF_CARRIERS_NUMBER_PREFIX = "carrier_number_";
@@ -1482,6 +1487,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     notifyRequester(request);
                     break;
 
+                case MSG_NOTIFY_USER_ACTIVITY:
+                    removeMessages(MSG_NOTIFY_USER_ACTIVITY);
+                    Intent intent = new Intent(TelephonyIntents.ACTION_USER_ACTIVITY_NOTIFICATION);
+                    intent.addFlags(Intent.FLAG_RECEIVER_REGISTERED_ONLY);
+                    getDefaultPhone().getContext().sendBroadcastAsUser(
+                            intent, UserHandle.ALL, permission.USER_ACTIVITY);
+                    break;
                 default:
                     Log.w(LOG_TAG, "MainThreadHandler: unexpected message code: " + msg.what);
                     break;
@@ -1640,8 +1652,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /** Private constructor; @see init() */
-    @VisibleForTesting
-    /* package */ PhoneInterfaceManager(PhoneGlobals app) {
+    private PhoneInterfaceManager(PhoneGlobals app) {
         mApp = app;
         mCM = PhoneGlobals.getInstance().mCM;
         mImsResolver = PhoneGlobals.getInstance().getImsResolver();
@@ -1653,6 +1664,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 PreferenceManager.getDefaultSharedPreferences(mApp);
         mNetworkScanRequestTracker = new NetworkScanRequestTracker();
         mPhoneConfigurationManager = PhoneConfigurationManager.getInstance();
+        mNotifyUserActivity = new AtomicBoolean(false);
 
         publish();
     }
@@ -1665,7 +1677,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private void publish() {
         if (DBG) log("publish: " + this);
 
-        ServiceManager.addService("phone", this);
+        TelephonyFrameworkInitializer
+                .getTelephonyServiceManager()
+                .getTelephonyServiceRegisterer()
+                .register(this);
     }
 
     private Phone getPhoneFromRequest(MainThreadRequest request) {
@@ -1989,6 +2004,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     public boolean isRadioOn(String callingPackage) {
         return isRadioOnWithFeature(callingPackage, null);
     }
+
 
     @Override
     public boolean isRadioOnWithFeature(String callingPackage, String callingFeatureId) {
@@ -5253,6 +5269,36 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             Binder.restoreCallingIdentity(identity);
         }
     }
+     /**
+     * Get the manual network selection
+     *
+     * @param subId the id of the subscription.
+     *
+     * @return the previously saved user selected PLMN
+     */
+    @Override
+    public String getManualNetworkSelectionPlmn(int subId) {
+        TelephonyPermissions
+                    .enforeceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
+                    mApp, subId, "getManualNetworkSelectionPlmn");
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            if (!isActiveSubscription(subId)) {
+                return "";
+            }
+
+            final Phone phone = getPhone(subId);
+            if (phone == null) {
+                return "";
+            }
+            OperatorInfo networkSelection = phone.getSavedNetworkSelection();
+            return TextUtils.isEmpty(networkSelection.getOperatorNumeric())
+                ? phone.getManualNetworkSelectionPlmn() : networkSelection.getOperatorNumeric();
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
 
     /**
      * Scans for available networks.
@@ -6210,7 +6256,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             final List<String> mergedSubscriberIds = new ArrayList<>();
             final List<SubscriptionInfo> groupInfos = SubscriptionController.getInstance()
                     .getSubscriptionsInGroup(groupUuid, mApp.getOpPackageName(),
-                            null);
+                            mApp.getAttributionTag());
             for (SubscriptionInfo subInfo : groupInfos) {
                 subscriberId = telephonyManager.getSubscriberId(subInfo.getSubscriptionId());
                 if (subscriberId != null) {
@@ -6654,7 +6700,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         final long identity = Binder.clearCallingIdentity();
         try {
             final SubscriptionInfo info = mSubscriptionController.getActiveSubscriptionInfo(subId,
-                    phone.getContext().getOpPackageName(), null);
+                    phone.getContext().getOpPackageName(), phone.getContext().getAttributionTag());
             if (info == null) {
                 log("getSimLocaleForSubscriber, inactive subId: " + subId);
                 return null;
@@ -6693,7 +6739,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     private List<SubscriptionInfo> getAllSubscriptionInfoList() {
         return mSubscriptionController.getAllSubInfoList(mApp.getOpPackageName(),
-                null);
+                mApp.getAttributionTag());
     }
 
     /**
@@ -6701,7 +6747,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     private List<SubscriptionInfo> getActiveSubscriptionInfoListPrivileged() {
         return mSubscriptionController.getActiveSubscriptionInfoList(mApp.getOpPackageName(),
-                null);
+                mApp.getAttributionTag());
     }
 
     private final ModemActivityInfo mLastModemActivityInfo =
@@ -7245,11 +7291,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public void onShellCommand(FileDescriptor in, FileDescriptor out, FileDescriptor err,
-            String[] args, ShellCallback callback, ResultReceiver resultReceiver)
-            throws RemoteException {
-        (new TelephonyShellCommand(this, getDefaultPhone().getContext()))
-                .exec(this, in, out, err, args, callback, resultReceiver);
+    public int handleShellCommand(@NonNull ParcelFileDescriptor in,
+            @NonNull ParcelFileDescriptor out, @NonNull ParcelFileDescriptor err,
+            @NonNull String[] args) {
+        return new TelephonyShellCommand(this, getDefaultPhone().getContext()).exec(
+                this, in.getFileDescriptor(), out.getFileDescriptor(),
+                        err.getFileDescriptor(), args);
     }
 
     /**
@@ -8291,6 +8338,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     @Override
     public boolean isMvnoMatched(int subId, int mvnoType, @NonNull String mvnoMatchData) {
+        enforceReadPrivilegedPermission("isMvnoMatched");
         IccRecords iccRecords = UiccController.getInstance().getIccRecords(
                 SubscriptionManager.getPhoneId(subId), UiccController.APP_FAM_3GPP);
         if (iccRecords == null) {
@@ -8475,10 +8523,14 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
-     * Set the ICC pin lock enabled or disabled..
+     * Set the ICC pin lock enabled or disabled.
      *
-     * @return Integer.MAX_VALUE if enable/disable IccLock successfully. If failed it will return
-     * 0 or a positive integer as the attempts remaining value.
+     * @return an integer representing the status of IccLock enabled or disabled in the following
+     * three cases:
+     *   - {@link TelephonyManager#CHANGE_ICC_LOCK_SUCCESS} if enabled or disabled IccLock
+     *   successfully.
+     *   - Positive number and zero for remaining password attempts.
+     *   - Negative number for other failure cases (such like enabling/disabling PIN failed).
      *
      */
     @Override
@@ -8507,8 +8559,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     /**
      * Change the ICC password used in ICC pin lock.
      *
-     * @return Integer.MAX_VALUE if enable/disable IccLock successfully. If failed it will return
-     * 0 or a positive integer as the attempts remaining value.
+     * @return an integer representing the status of IccLock changed in the following three cases:
+     *   - {@link TelephonyManager#CHANGE_ICC_LOCK_SUCCESS} if changed IccLock successfully.
+     *   - Positive number and zero for remaining password attempts.
+     *   - Negative number for other failure cases (such like enabling/disabling PIN failed).
      *
      */
     @Override
@@ -8532,6 +8586,44 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             Binder.restoreCallingIdentity(identity);
         }
         return 0;
+    }
+
+    /**
+     * Request for receiving user activity notification
+     */
+    @Override
+    public void requestUserActivityNotification() {
+        if (!mNotifyUserActivity.get()
+                && !mMainThreadHandler.hasMessages(MSG_NOTIFY_USER_ACTIVITY)) {
+            mNotifyUserActivity.set(true);
+        }
+    }
+
+    /**
+     * Called when userActivity is signalled in the power manager.
+     * This is safe to call from any thread, with any window manager locks held or not.
+     */
+    @Override
+    public void userActivity() {
+        // ***************************************
+        // *  Inherited from PhoneWindowManager  *
+        // ***************************************
+        // THIS IS CALLED FROM DEEP IN THE POWER MANAGER
+        // WITH ITS LOCKS HELD.
+        //
+        // This code must be VERY careful about the locks
+        // it acquires.
+        // In fact, the current code acquires way too many,
+        // and probably has lurking deadlocks.
+
+        if (Binder.getCallingUid() != Process.SYSTEM_UID) {
+            throw new SecurityException("Only the OS may call notifyUserActivity()");
+        }
+
+        if (mNotifyUserActivity.getAndSet(false)) {
+            mMainThreadHandler.sendEmptyMessageDelayed(MSG_NOTIFY_USER_ACTIVITY,
+                    USER_ACTIVITY_NOTIFICATION_DELAY);
+        }
     }
 
     @Override

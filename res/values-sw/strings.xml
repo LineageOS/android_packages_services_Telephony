@@ -25,8 +25,7 @@
     <string name="private_num" msgid="4487990167889159992">" Number isiyojulikana"</string>
     <string name="payphone" msgid="7936735771836716941">"Simu ya kulipia"</string>
     <string name="onHold" msgid="6132725550015899006">"Imesitishwa"</string>
-    <!-- no translation found for carrier_mmi_msg_title (823264526584518242) -->
-    <skip />
+    <string name="carrier_mmi_msg_title" msgid="6050165242447507034">"Ujumbe wa <xliff:g id="MMICARRIER">%s</xliff:g>"</string>
     <string name="default_carrier_mmi_msg_title" msgid="7754317179938537213">"Ujumbe wa Mtoa Huduma"</string>
     <string name="mmiStarted" msgid="9212975136944568623">"Msimbo wa MMI  umeanza"</string>
     <string name="ussdRunning" msgid="1163586813106772717">"Msimbo wa USSD unafungua"</string>
@@ -51,7 +50,8 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"Mipangilio ya ujumbe wa sauti inaweza kubadilishwa na Mtumiaji wa Msingi Pekee."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"Kadi yako ya simu imefunguliwa. Simu yangu inafungua…."</string>
     <string name="label_ndp" msgid="7617392683877410341">"PIN ya kufungua mtandao wa SIM"</string>
-    <string name="label_phoneid" msgid="8775611434123577808">"SIM imefungwa kwa mtoa huduma"</string>
+    <!-- no translation found for label_phoneid (8775611434123577808) -->
+    <skip />
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"Fungua"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"Ondoa"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"Inaomba mtandao ufunguliwe…."</string>

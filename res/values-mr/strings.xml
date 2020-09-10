@@ -25,8 +25,7 @@
     <string name="private_num" msgid="4487990167889159992">"खाजगी नंबर"</string>
     <string name="payphone" msgid="7936735771836716941">"सार्वजनिक फोन"</string>
     <string name="onHold" msgid="6132725550015899006">"होल्ड वर"</string>
-    <!-- no translation found for carrier_mmi_msg_title (823264526584518242) -->
-    <skip />
+    <string name="carrier_mmi_msg_title" msgid="6050165242447507034">"<xliff:g id="MMICARRIER">%s</xliff:g> मेसेज"</string>
     <string name="default_carrier_mmi_msg_title" msgid="7754317179938537213">"वाहक मेसेज"</string>
     <string name="mmiStarted" msgid="9212975136944568623">"MMI कोड प्रारंभ केला"</string>
     <string name="ussdRunning" msgid="1163586813106772717">"USSD कोड सुरू…"</string>
@@ -51,7 +50,8 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"केवळ प्राथमिक वापरकर्ता व्हॉइसमेल सेटिंग्ज बदलू शकतो."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"तुमचे सिम कार्ड अवरोधित करणे रद्द केले गेले आहे. तुमचा फोन अनलॉक होत आहे…"</string>
     <string name="label_ndp" msgid="7617392683877410341">"सिम नेटवर्क अनलॉक पिन"</string>
-    <string name="label_phoneid" msgid="8775611434123577808">"ऑपरेटरसाठी सिम लॉक केले आहे"</string>
+    <!-- no translation found for label_phoneid (8775611434123577808) -->
+    <skip />
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"अनलॉक करा"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"डिसमिस करा"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"नेटवर्क अनलॉकची विनंती करत आहे..."</string>
