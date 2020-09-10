@@ -259,7 +259,7 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="android:homeAsUpIndicator">@drawable/ic_back_arrow</item>
-        <item name="emergencyButtonBackgroundColor">#3cffffff</item>
+        <item name="emergencyButtonBackgroundColor">#10ffffff</item>
         <item name="dialpadTheme">@style/Dialpad_DarkTransparent.Emergency</item>
     </style>
 

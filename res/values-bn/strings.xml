@@ -25,8 +25,7 @@
     <string name="private_num" msgid="4487990167889159992">"ব্যক্তিগত নম্বর"</string>
     <string name="payphone" msgid="7936735771836716941">"পে ফোন"</string>
     <string name="onHold" msgid="6132725550015899006">"সাময়িকভাবে স্থগিত রাখা হয়েছে"</string>
-    <!-- no translation found for carrier_mmi_msg_title (823264526584518242) -->
-    <skip />
+    <string name="carrier_mmi_msg_title" msgid="6050165242447507034">"<xliff:g id="MMICARRIER">%s</xliff:g> মেসেজ"</string>
     <string name="default_carrier_mmi_msg_title" msgid="7754317179938537213">"পরিষেবা প্রদানকারীর মেসেজ"</string>
     <string name="mmiStarted" msgid="9212975136944568623">"MMI কোড শুরু করা হয়েছে"</string>
     <string name="ussdRunning" msgid="1163586813106772717">"USSD কোড চলছে…"</string>

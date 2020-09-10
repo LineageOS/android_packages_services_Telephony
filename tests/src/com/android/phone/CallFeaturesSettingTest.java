@@ -36,6 +36,7 @@ import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -62,6 +63,7 @@ public class CallFeaturesSettingTest {
         keepScreenOn(mRule, mActivity);
     }
 
+    @Ignore
     @FlakyTest
     @Test
     public void onResume_fdnIsAvailable_shouldShowFdnMenu() throws NoSuchFieldException,
@@ -77,6 +79,7 @@ public class CallFeaturesSettingTest {
         onView(withText(R.string.fdn)).check(matches(isDisplayed()));
     }
 
+    @Ignore
     @FlakyTest
     @Test
     public void onResume_iccCardIsNull_shouldNotShowFdnMenu() throws NoSuchFieldException,
@@ -91,6 +94,7 @@ public class CallFeaturesSettingTest {
         onView(withText(R.string.fdn)).check(doesNotExist());
     }
 
+    @Ignore
     @FlakyTest
     @Test
     public void onResume_fdnIsNotAvailable_shouldNotShowFdnMenu() throws NoSuchFieldException,

@@ -25,8 +25,7 @@
     <string name="private_num" msgid="4487990167889159992">"ເບີສ່ວນໂຕ"</string>
     <string name="payphone" msgid="7936735771836716941">"ຕູ້​ໂທ​ລະ​ສັບ​ສາ​ທາ​ລະ​ນະ"</string>
     <string name="onHold" msgid="6132725550015899006">"ພັກສາຍຊົ່ວຄາວ"</string>
-    <!-- no translation found for carrier_mmi_msg_title (823264526584518242) -->
-    <skip />
+    <string name="carrier_mmi_msg_title" msgid="6050165242447507034">"ຂໍ້ຄວາມ <xliff:g id="MMICARRIER">%s</xliff:g>"</string>
     <string name="default_carrier_mmi_msg_title" msgid="7754317179938537213">"ຂໍ້ຄວາມຜູ້ໃຫ້ບໍລິການ"</string>
     <string name="mmiStarted" msgid="9212975136944568623">"ເລີ່ມລະຫັດ MMI ແລ້ວ"</string>
     <string name="ussdRunning" msgid="1163586813106772717">"ກຳລັງແລ່ນລະຫັດ USSD..."</string>
@@ -51,7 +50,8 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"ການຕັ້ງຄ່າຂໍ້ຄວາມສຽງສາມາດແກ້ໄຂໄດ້ໂດຍຜູ້ໃຊ້ຫຼັກເທົ່ານັ້ນ."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"ຍົກເລີກການປິດກັ້ນ SIM card ຂອງທ່ານແລ້ວ. ໂທລະສັບຂອງທ່ານກຳລັງຖືກປົດລັອກ..."</string>
     <string name="label_ndp" msgid="7617392683877410341">"PIN ປົດລັອກເຄືອຂ່າຍ SIM"</string>
-    <string name="label_phoneid" msgid="8775611434123577808">"ລັອກ SIM ສຳລັບຜູ້ໃຫ້ບໍລິການແລ້ວ"</string>
+    <!-- no translation found for label_phoneid (8775611434123577808) -->
+    <skip />
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"ປົດລັອກ"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"ປິດໄວ້"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"ກຳລັງຮ້ອງຂໍການປົດລັອກເຄືອຂ່າຍ..."</string>

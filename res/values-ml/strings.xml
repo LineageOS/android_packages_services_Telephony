@@ -25,8 +25,7 @@
     <string name="private_num" msgid="4487990167889159992">"സ്വകാര്യ നമ്പർ"</string>
     <string name="payphone" msgid="7936735771836716941">"പണം നൽകി ഉപയോഗിക്കുന്ന ഫോൺ"</string>
     <string name="onHold" msgid="6132725550015899006">"ഹോള്‍ഡിലാണ്"</string>
-    <!-- no translation found for carrier_mmi_msg_title (823264526584518242) -->
-    <skip />
+    <string name="carrier_mmi_msg_title" msgid="6050165242447507034">"<xliff:g id="MMICARRIER">%s</xliff:g> സന്ദേശം"</string>
     <string name="default_carrier_mmi_msg_title" msgid="7754317179938537213">"സേവനദാതാവിന്റെ സന്ദേശം"</string>
     <string name="mmiStarted" msgid="9212975136944568623">"MMI കോഡ് ആരംഭിച്ചു"</string>
     <string name="ussdRunning" msgid="1163586813106772717">"USSD കോഡ് പ്രവർത്തിക്കുന്നു…"</string>
