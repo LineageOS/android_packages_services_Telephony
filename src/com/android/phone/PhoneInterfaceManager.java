@@ -7493,17 +7493,19 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     @Override
     public boolean isDataRoamingEnabled(int subId) {
-        mApp.enforceCallingOrSelfPermission(android.Manifest.permission.ACCESS_NETWORK_STATE,
-                null /* message */);
+        try {
+            mApp.enforceCallingOrSelfPermission(android.Manifest.permission.ACCESS_NETWORK_STATE,
+                    null);
+        } catch (Exception e) {
+            TelephonyPermissions.enforeceCallingOrSelfReadPhoneStatePermissionOrCarrierPrivilege(
+                    mApp, subId, "isDataRoamingEnabled");
+        }
 
         boolean isEnabled = false;
         final long identity = Binder.clearCallingIdentity();
         try {
             Phone phone = getPhone(subId);
             isEnabled =  phone != null ? phone.getDataRoamingEnabled() : false;
-        } catch (Exception e) {
-            TelephonyPermissions.enforeceCallingOrSelfReadPhoneStatePermissionOrCarrierPrivilege(
-                    mApp, subId, "isDataRoamingEnabled");
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
