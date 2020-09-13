@@ -135,7 +135,7 @@
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Nastavenia hovorov môže zmeniť iba používateľ s povoleniami správcu."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Nastavenia (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Chyba nastavení hovorov"</string>
-    <string name="reading_settings" msgid="1605904432450871183">"Nastavenia sa načítavajú…"</string>
+    <string name="reading_settings" msgid="1605904432450871183">"Nastavenia sa načítajú…"</string>
     <string name="updating_settings" msgid="3650396734816028808">"Prebieha aktualizácia nastavení..."</string>
     <string name="reverting_settings" msgid="7378668837291012205">"Prebieha vrátenie predchádzajúcich nastavení…"</string>
     <string name="response_error" msgid="3904481964024543330">"Neočakávaná odpoveď siete."</string>

@@ -136,7 +136,7 @@
     <string name="call_settings_with_label" msgid="8460230435361579511">"ಸೆಟ್ಟಿಂಗ್‌ಗಳು (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"ಕರೆ ಸೆಟ್ಟಿಂಗ್‌ಗಳ ದೋಷ"</string>
     <string name="reading_settings" msgid="1605904432450871183">"ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ಓದಲಾಗುತ್ತಿದೆ…"</string>
-    <string name="updating_settings" msgid="3650396734816028808">"ಸೆಟ್ಟಿಂಗ್‌ಗಳು ಅಪ್‌ಡೇಟ್‌ ಆಗುತ್ತಿವೆ…"</string>
+    <string name="updating_settings" msgid="3650396734816028808">"ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ನವೀಕರಿಸಲಾಗುತ್ತಿದೆ…"</string>
     <string name="reverting_settings" msgid="7378668837291012205">"ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ಹಿಂತಿರುಗಿಸಲಾಗುತ್ತಿದೆ…"</string>
     <string name="response_error" msgid="3904481964024543330">"ನೆಟ್‌ವರ್ಕ್‌ನಿಂದ ಅನಿರೀಕ್ಷಿತ ಪ್ರತಿಕ್ರಿಯೆ."</string>
     <string name="exception_error" msgid="330994460090467">"ನೆಟ್‌ವರ್ಕ್‌ ಅಥವಾ ಸಿಮ್‌ ಕಾರ್ಡ್‌ ದೋಷ."</string>

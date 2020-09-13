@@ -75,7 +75,7 @@
     <string name="phone_accounts_configure_account_settings" msgid="6622119715253196586">"Configure account settings"</string>
     <string name="phone_accounts_all_calling_accounts" msgid="1609600743500618823">"All calling accounts"</string>
     <string name="phone_accounts_all_calling_accounts_summary" msgid="2214134955430107240">"Select which accounts can make calls"</string>
-    <string name="wifi_calling" msgid="3650509202851355742">"Wi-Fi calling"</string>
+    <string name="wifi_calling" msgid="3650509202851355742">"Wi-Fi Calling"</string>
     <string name="connection_service_default_label" msgid="7332739049855715584">"Built-in connection service"</string>
     <string name="voicemail" msgid="7697769412804195032">"Voicemail"</string>
     <string name="voicemail_settings_with_label" msgid="4228431668214894138">"Voicemail (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>

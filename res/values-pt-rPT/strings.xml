@@ -144,7 +144,7 @@
     <string name="stk_cc_ss_to_ussd_error" msgid="8330749347425752192">"Pedido SS alterado para um novo pedido USSD"</string>
     <string name="stk_cc_ss_to_ss_error" msgid="8297155544652134278">"Foi alterado para um novo pedido SS"</string>
     <string name="stk_cc_ss_to_dial_video_error" msgid="4255261231466032505">"O pedido SS foi alterado para uma videochamada"</string>
-    <string name="fdn_check_failure" msgid="1833769746374185247">"A definição Números Autorizados da app do seu Telemóvel está ativada. Por conseguinte, algumas funcionalidades relacionadas com chamadas não estão a funcionar."</string>
+    <string name="fdn_check_failure" msgid="1833769746374185247">"A definição Números Autorizados da aplicação do seu Telemóvel está ativada. Por conseguinte, algumas funcionalidades relacionadas com chamadas não estão a funcionar."</string>
     <string name="radio_off_error" msgid="8321564164914232181">"Ative o rádio antes de visualizar estas definições."</string>
     <string name="close_dialog" msgid="1074977476136119408">"OK"</string>
     <string name="enable" msgid="2636552299455477603">"Ativar"</string>
@@ -294,7 +294,7 @@
     <string name="limited_sim_function_notification_title" msgid="612715399099846281">"Funcionalidade de SIM limitada"</string>
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"As chamadas e os serviços de dados da <xliff:g id="CARRIER_NAME">%1$s</xliff:g> podem ficar bloqueados ao utilizar o número <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>."</string>
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"As chamadas e serviços de dados da <xliff:g id="CARRIER_NAME">%1$s</xliff:g> podem ser bloqueados se utilizar outro SIM."</string>
-    <string name="data_usage_title" msgid="8438592133893837464">"Utilização de dados da app"</string>
+    <string name="data_usage_title" msgid="8438592133893837464">"Utilização de dados da aplicação"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"<xliff:g id="ID_1">%1$s</xliff:g> de dados móveis utilizados entre <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"Avançadas"</string>
     <string name="carrier_settings_euicc" msgid="1190237227261337749">"Operador"</string>
