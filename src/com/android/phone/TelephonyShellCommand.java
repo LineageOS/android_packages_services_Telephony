@@ -24,13 +24,14 @@ import android.os.Process;
 import android.os.RemoteException;
 import android.provider.BlockedNumberContract;
 import android.telephony.CarrierConfigManager;
-import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.emergency.EmergencyNumber;
 import android.telephony.ims.feature.ImsFeature;
 import android.util.Log;
 
 import com.android.internal.telephony.ITelephony;
+import com.android.internal.telephony.Phone;
+import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.emergency.EmergencyNumberTracker;
 import com.android.internal.telephony.util.TelephonyUtils;
 
@@ -739,17 +740,21 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         try {
             slotId = Integer.parseInt(slotString);
         } catch (NumberFormatException e) {
+            getErrPrintWriter().println(tag + slotString + " is not a valid number for SLOT_ID.");
+            return SubscriptionManager.INVALID_SUBSCRIPTION_ID;
+        }
+
+        if (!SubscriptionManager.isValidPhoneId(slotId)) {
             getErrPrintWriter().println(tag + slotString + " is not a valid SLOT_ID.");
             return SubscriptionManager.INVALID_SUBSCRIPTION_ID;
         }
 
-        SubscriptionInfo subInfo =
-                mSubscriptionManager.getActiveSubscriptionInfoForSimSlotIndex(slotId);
-        if (subInfo == null) {
+        Phone phone = PhoneFactory.getPhone(slotId);
+        if (phone == null) {
             getErrPrintWriter().println(tag + "No subscription found in slot " + slotId + ".");
             return SubscriptionManager.INVALID_SUBSCRIPTION_ID;
         }
-        return subInfo.getSubscriptionId();
+        return phone.getSubId();
     }
 
     private boolean checkShellUid() {
