@@ -506,7 +506,7 @@
     <string name="pin2_attempts" msgid="5625178102026453023">\n"Je hebt nog <xliff:g id="NUMBER">%d</xliff:g> pogingen."</string>
     <string name="pin2_unblocked" msgid="4481107908727789303">"PIN2 niet langer geblokkeerd"</string>
     <string name="pin2_error_exception" msgid="8116103864600823641">"Netwerk- of simkaartfout"</string>
-    <string name="doneButton" msgid="7371209609238460207">"Gereed"</string>
+    <string name="doneButton" msgid="7371209609238460207">"Klaar"</string>
     <string name="voicemail_settings_number_label" msgid="1265118640154688162">"Voicemailnummer"</string>
     <string name="card_title_dialing" msgid="8742182654254431781">"Kiezen"</string>
     <string name="card_title_redialing" msgid="18130232613559964">"Opnieuw bellen"</string>
