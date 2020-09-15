@@ -438,6 +438,7 @@ public class ImsConference extends TelephonyConferenceBase implements Holdable {
 
         mTelephonyConnectionService = telephonyConnectionService;
         setConferenceHost(conferenceHost);
+        setVideoProvider(conferenceHost, conferenceHost.getVideoProvider());
 
         int capabilities = Connection.CAPABILITY_MUTE |
                 Connection.CAPABILITY_CONFERENCE_HAS_NO_CHILDREN;
