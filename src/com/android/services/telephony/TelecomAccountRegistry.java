@@ -1412,6 +1412,17 @@ public class TelecomAccountRegistry {
         return false;
     }
 
+    PhoneAccountHandle getPhoneAccountHandleForSubId(int subId) {
+        synchronized (mAccountsLock) {
+            for (AccountEntry entry : mAccounts) {
+                if (entry.getSubId() == subId) {
+                    return entry.getPhoneAccountHandle();
+                }
+            }
+        }
+        return null;
+    }
+
     /**
      * Un-registers any {@link PhoneAccount}s which are no longer present in the list
      * {@code AccountEntry}(s).
