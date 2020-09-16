@@ -106,6 +106,13 @@ public class TelecomAccountRegistry {
      */
     private static final int LISTENER_STATE_REGISTERED = 3;
 
+    /**
+     * Copy-pasted from android.telecom.PhoneAccount -- hidden constant which is unfortunately being
+     * used by some 1P apps, so we're keeping it here until we can remove it.
+     */
+    private static final String EXTRA_SUPPORTS_VIDEO_CALLING_FALLBACK =
+            "android.telecom.extra.SUPPORTS_VIDEO_CALLING_FALLBACK";
+
     final class AccountEntry implements PstnPhoneCapabilitiesNotifier.Listener {
         private final Phone mPhone;
         private PhoneAccount mAccount;
@@ -416,7 +423,7 @@ public class TelecomAccountRegistry {
                 extras.putBoolean(PhoneAccount.EXTRA_PLAY_CALL_RECORDING_TONE, true);
             }
 
-            extras.putBoolean(PhoneAccount.EXTRA_SUPPORTS_VIDEO_CALLING_FALLBACK,
+            extras.putBoolean(EXTRA_SUPPORTS_VIDEO_CALLING_FALLBACK,
                     mContext.getResources()
                             .getBoolean(R.bool.config_support_video_calling_fallback));
 
