@@ -65,6 +65,12 @@ final class PstnIncomingCallNotifier {
      */
     private static final int MAX_NUMBER_VERIFICATION_HANGUP_DELAY_MILLIS = 10000;
 
+    /**
+     * Hardcoded extra for a call that's used to provide metrics information to the dialer app.
+     */
+    private static final String EXTRA_CALL_CREATED_TIME_MILLIS =
+            "android.telecom.extra.CALL_CREATED_TIME_MILLIS";
+
     /** The phone object to listen to. */
     private final Phone mPhone;
 
@@ -245,8 +251,7 @@ final class PstnIncomingCallNotifier {
             }
 
             // Specifies the time the call was added. This is used by the dialer for analytics.
-            extras.putLong(TelecomManager.EXTRA_CALL_CREATED_TIME_MILLIS,
-                    SystemClock.elapsedRealtime());
+            extras.putLong(EXTRA_CALL_CREATED_TIME_MILLIS, SystemClock.elapsedRealtime());
 
             PhoneAccountHandle handle = findCorrectPhoneAccountHandle();
             if (handle == null) {
@@ -276,8 +281,7 @@ final class PstnIncomingCallNotifier {
         }
 
         // Specifies the time the call was added. This is used by the dialer for analytics.
-        extras.putLong(TelecomManager.EXTRA_CALL_CREATED_TIME_MILLIS,
-                SystemClock.elapsedRealtime());
+        extras.putLong(EXTRA_CALL_CREATED_TIME_MILLIS, SystemClock.elapsedRealtime());
 
         if (connection.getPhoneType() == PhoneConstants.PHONE_TYPE_IMS) {
             if (((ImsPhoneConnection) connection).isRttEnabledForCall()) {
