@@ -32,7 +32,7 @@
     <string name="saving_account" msgid="3390358043846687266">"Po ruan llogarinë…"</string>
     <string name="removing_account" msgid="1544132880414780408">"Po heq llogarinë…"</string>
     <string name="sip_menu_save" msgid="4377112554203123060">"Ruaj"</string>
-    <string name="sip_menu_discard" msgid="1883166691772895243">"Injoro"</string>
+    <string name="sip_menu_discard" msgid="1883166691772895243">"Hiq"</string>
     <string name="alert_dialog_close" msgid="1734746505531110706">"Mbyll profilin"</string>
     <string name="alert_dialog_ok" msgid="7806760618798687406">"Në rregull"</string>
     <string name="close_profile" msgid="3756064641769751774">"Mbyll"</string>
