@@ -334,11 +334,6 @@
             android:background="?android:attr/listDivider" />
 
         <!-- CellInfoListRate Selection -->
-        <!-- Location -->
-        <LinearLayout style="@style/RadioInfo_entry_layout">
-            <TextView android:text="@string/radio_info_signal_location_label" style="@style/info_label" />
-            <TextView android:id="@+id/location" style="@style/info_value" />
-        </LinearLayout>
 
         <TextView
                 android:layout_width="match_parent"
