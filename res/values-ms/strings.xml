@@ -122,7 +122,7 @@
     <string name="labelCFNRc" msgid="4163399350778066013">"Jika tidak dapat dihubungi"</string>
     <string name="messageCFNRc" msgid="6980340731313007250">"Nombor apabila tidak dapat dihubungi"</string>
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"Memajukan ke <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
-    <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Dimatikan"</string>
+    <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Mati"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Pembawa anda tidak menyokong pelumpuhan pemajuan panggilan semasa telefon anda tidak boleh dihubungi."</string>
     <string name="registration_cf_forbidden" msgid="4386482610771190420">"Pembawa anda tidak menyokong pemajuan panggilan."</string>
     <string name="cdma_call_waiting" msgid="4565070960879673216">"Hidupkan panggilan menunggu?"</string>

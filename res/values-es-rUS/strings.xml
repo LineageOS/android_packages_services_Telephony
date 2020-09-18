@@ -97,7 +97,7 @@
     <string name="sum_loading_settings" msgid="434063780286688775">"Cargando la configuración…"</string>
     <string name="sum_hide_caller_id" msgid="131100328602371933">"Número escondido en llamadas salientes"</string>
     <string name="sum_show_caller_id" msgid="3571854755324664591">"Número visualizado en llamadas salientes"</string>
-    <string name="sum_default_caller_id" msgid="1767070797135682959">"Utilizar configuración predeterminada del operador para visualizar mi número en las llamadas salientes"</string>
+    <string name="sum_default_caller_id" msgid="1767070797135682959">"Utilizar configuración del operador predeterminada para visualizar mi número en las llamadas salientes"</string>
     <string name="labelCW" msgid="8449327023861428622">"Llamada en espera"</string>
     <string name="sum_cw_enabled" msgid="3977308526187139996">"Durante una llamada, notificarme sobre las llamadas entrantes"</string>
     <string name="sum_cw_disabled" msgid="3658094589461768637">"Durante una llamada, notificarme sobre las llamadas entrantes"</string>

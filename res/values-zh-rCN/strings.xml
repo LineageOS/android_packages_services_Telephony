@@ -171,7 +171,7 @@
     <string name="vm_change_pin_error_mismatch" msgid="5364847280026257331">"旧的 PIN 码不匹配。"</string>
     <string name="vm_change_pin_error_invalid" msgid="5230002671175580674">"新的 PIN 码包含无效字符。"</string>
     <string name="vm_change_pin_error_system_error" msgid="9116483527909681791">"无法更改 PIN 码"</string>
-    <string name="vvm_unsupported_message_format" msgid="4206402558577739713">"不受支持的语音信息类型，请拨打 <xliff:g id="NUMBER">%s</xliff:g> 收听。"</string>
+    <string name="vvm_unsupported_message_format" msgid="4206402558577739713">"不受支持的语音邮件类型，请拨打 <xliff:g id="NUMBER">%s</xliff:g> 收听。"</string>
     <string name="network_settings_title" msgid="7560807107123171541">"移动网络"</string>
     <string name="label_available" msgid="1316084116670821258">"可用网络"</string>
     <string name="load_networks_progress" msgid="4051433047717401683">"正在搜索..."</string>
@@ -524,8 +524,8 @@
     <string name="card_title_on_hold" msgid="9028319436626975207">"保持"</string>
     <string name="card_title_hanging_up" msgid="814874106866647871">"正在挂断"</string>
     <string name="card_title_in_call" msgid="8231896539567594265">"正在通话"</string>
-    <string name="notification_voicemail_title" msgid="3932876181831601351">"新语音信息"</string>
-    <string name="notification_voicemail_title_count" msgid="2806950319222327082">"新语音信息 (<xliff:g id="COUNT">%d</xliff:g>)"</string>
+    <string name="notification_voicemail_title" msgid="3932876181831601351">"新语音邮件"</string>
+    <string name="notification_voicemail_title_count" msgid="2806950319222327082">"新语音邮件 (<xliff:g id="COUNT">%d</xliff:g>)"</string>
     <string name="notification_voicemail_text_format" msgid="5720947141702312537">"拨打 <xliff:g id="VOICEMAIL_NUMBER">%s</xliff:g>"</string>
     <string name="notification_voicemail_no_vm_number" msgid="3423686009815186750">"语音信箱号码未知"</string>
     <string name="notification_network_selection_title" msgid="255595526707809121">"无服务"</string>
