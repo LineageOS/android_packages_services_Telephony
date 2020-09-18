@@ -52,7 +52,6 @@ import android.telephony.CellInfoCdma;
 import android.telephony.CellInfoGsm;
 import android.telephony.CellInfoLte;
 import android.telephony.CellInfoWcdma;
-import android.telephony.CellLocation;
 import android.telephony.CellSignalStrengthCdma;
 import android.telephony.CellSignalStrengthGsm;
 import android.telephony.CellSignalStrengthLte;
@@ -66,8 +65,6 @@ import android.telephony.ServiceState;
 import android.telephony.SignalStrength;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
-import android.telephony.cdma.CdmaCellLocation;
-import android.telephony.gsm.GsmCellLocation;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
@@ -232,7 +229,6 @@ public class RadioInfo extends AppCompatActivity {
     private TextView mDBm;
     private TextView mMwi;
     private TextView mCfi;
-    private TextView mLocation;
     private TextView mCellInfo;
     private TextView mSent;
     private TextView mReceived;
@@ -284,7 +280,6 @@ public class RadioInfo extends AppCompatActivity {
     private boolean mCfiValue = false;
 
     private List<CellInfo> mCellInfoResult = null;
-    private CellLocation mCellLocationResult = null;
 
     private int mPreferredNetworkTypeResult;
     private int mCellInfoRefreshRateIndex;
@@ -326,11 +321,6 @@ public class RadioInfo extends AppCompatActivity {
         @Override
         public void onPreciseCallStateChanged(PreciseCallState preciseState) {
             updateNetworkType();
-        }
-
-        @Override
-        public void onCellLocationChanged(CellLocation location) {
-            updateLocation(location);
         }
 
         @Override
@@ -499,7 +489,6 @@ public class RadioInfo extends AppCompatActivity {
         mDBm = (TextView) findViewById(R.id.dbm);
         mMwi = (TextView) findViewById(R.id.mwi);
         mCfi = (TextView) findViewById(R.id.cfi);
-        mLocation = (TextView) findViewById(R.id.location);
         mCellInfo = (TextView) findViewById(R.id.cellinfo);
         mCellInfo.setTypeface(Typeface.MONOSPACE);
 
@@ -655,7 +644,6 @@ public class RadioInfo extends AppCompatActivity {
         updateNetworkType();
         updateNrStats(null);
 
-        updateLocation(mCellLocationResult);
         updateCellInfo(mCellInfoResult);
         updateSubscriptionIds();
 
@@ -815,7 +803,6 @@ public class RadioInfo extends AppCompatActivity {
         mSent.setText("");
         mReceived.setText("");
         mCallState.setText("");
-        mLocation.setText("");
         mMwiValue = false;
         mMwi.setText("");
         mCfiValue = false;
@@ -871,45 +858,6 @@ public class RadioInfo extends AppCompatActivity {
                 + r.getString(R.string.radioInfo_display_dbm) + "   "
                 + String.valueOf(signalAsu) + " "
                 + r.getString(R.string.radioInfo_display_asu));
-    }
-
-    private void updateLocation(CellLocation location) {
-        Resources r = getResources();
-        if (location instanceof GsmCellLocation) {
-            GsmCellLocation loc = (GsmCellLocation) location;
-            int lac = loc.getLac();
-            int cid = loc.getCid();
-            mLocation.setText(r.getString(R.string.radioInfo_lac) + " = "
-                    + ((lac == -1) ? "unknown" : Integer.toHexString(lac))
-                    + "   "
-                    + r.getString(R.string.radioInfo_cid) + " = "
-                    + ((cid == -1) ? "unknown" : Integer.toHexString(cid)));
-        } else if (location instanceof CdmaCellLocation) {
-            CdmaCellLocation loc = (CdmaCellLocation) location;
-            int bid = loc.getBaseStationId();
-            int sid = loc.getSystemId();
-            int nid = loc.getNetworkId();
-            int lat = loc.getBaseStationLatitude();
-            int lon = loc.getBaseStationLongitude();
-            mLocation.setText("BID = "
-                    + ((bid == -1) ? "unknown" : Integer.toHexString(bid))
-                    + "   "
-                    + "SID = "
-                    + ((sid == -1) ? "unknown" : Integer.toHexString(sid))
-                    + "   "
-                    + "NID = "
-                    + ((nid == -1) ? "unknown" : Integer.toHexString(nid))
-                    + "\n"
-                    + "LAT = "
-                    + ((lat == -1) ? "unknown" : Integer.toHexString(lat))
-                    + "   "
-                    + "LONG = "
-                    + ((lon == -1) ? "unknown" : Integer.toHexString(lon)));
-        } else {
-            mLocation.setText("unknown");
-        }
-
-
     }
 
     private String getCellInfoDisplayString(int i) {
@@ -1287,11 +1235,9 @@ public class RadioInfo extends AppCompatActivity {
     private void updateAllCellInfo() {
 
         mCellInfo.setText("");
-        mLocation.setText("");
 
         final Runnable updateAllCellInfoResults = new Runnable() {
             public void run() {
-                updateLocation(mCellLocationResult);
                 updateCellInfo(mCellInfoResult);
             }
         };
@@ -1300,7 +1246,6 @@ public class RadioInfo extends AppCompatActivity {
             @Override
             public void run() {
                 mCellInfoResult = mTelephonyManager.getAllCellInfo();
-                mCellLocationResult = mTelephonyManager.getCellLocation();
 
                 mHandler.post(updateAllCellInfoResults);
             }
