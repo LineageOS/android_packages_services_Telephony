@@ -484,7 +484,7 @@
     <string name="disable_sim_pin" msgid="3112303905548613752">"‏محو رقم التعريف الشخصي لبطاقة SIM"</string>
     <string name="enable_sim_pin" msgid="445461050748318980">"‏تعيين رقم التعريف الشخصي لبطاقة SIM"</string>
     <string name="enable_in_progress" msgid="4135305985717272592">"جارٍ تعيين رقم التعريف الشخصي…"</string>
-    <string name="enable_pin_ok" msgid="2877428038280804256">"تم تعيين رقم التعريف الشخصي"</string>
+    <string name="enable_pin_ok" msgid="2877428038280804256">"تم ضبط رقم التعريف الشخصي"</string>
     <string name="disable_pin_ok" msgid="888505244389647754">"تم محو رقم التعريف الشخصي"</string>
     <string name="pin_failed" msgid="4527347792881939652">"رقم التعريف الشخصي غير صحيح"</string>
     <string name="pin_changed" msgid="7291153750090452808">"تم تحديث رقم التعريف الشخصي"</string>
