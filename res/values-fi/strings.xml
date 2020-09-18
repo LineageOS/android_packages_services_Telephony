@@ -108,21 +108,21 @@
     <string name="sum_cfu_enabled_indicator" msgid="9030139213402432776">"Kaikki puhelut siirretään"</string>
     <string name="sum_cfu_enabled" msgid="5806923046528144526">"Siirretään kaikki puhelut numeroon <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfu_enabled_no_number" msgid="7287752761743377930">"Numeroon ei saada yhteyttä"</string>
-    <string name="sum_cfu_disabled" msgid="5010617134210809853">"Ei päällä"</string>
+    <string name="sum_cfu_disabled" msgid="5010617134210809853">"Ei käytössä"</string>
     <string name="labelCFB" msgid="615265213360512768">"Kun olen varattu"</string>
     <string name="messageCFB" msgid="1958017270393563388">"Soita, kun numero on varattu:"</string>
     <string name="sum_cfb_enabled" msgid="332037613072049492">"Puhelu siirretään numeroon <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
-    <string name="sum_cfb_disabled" msgid="3589913334164866035">"Ei päällä"</string>
+    <string name="sum_cfb_disabled" msgid="3589913334164866035">"Ei käytössä"</string>
     <string name="disable_cfb_forbidden" msgid="4831494744351633961">"Operaattorisi ei tue soitonsiirtojen poistamista käytöstä, kun puhelimesi on varattuna."</string>
     <string name="labelCFNRy" msgid="3403533792248457946">"Kun en vastaa"</string>
     <string name="messageCFNRy" msgid="7644434155765359009">"Soita, kun numero ei vastaa:"</string>
     <string name="sum_cfnry_enabled" msgid="3000500837493854799">"Puhelu siirretään numeroon <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
-    <string name="sum_cfnry_disabled" msgid="1990563512406017880">"Ei päällä"</string>
+    <string name="sum_cfnry_disabled" msgid="1990563512406017880">"Ei käytössä"</string>
     <string name="disable_cfnry_forbidden" msgid="3174731413216550689">"Operaattorisi ei tue soitonsiirtojen poistamista käytöstä, kun puhelimesi ei vastaa."</string>
     <string name="labelCFNRc" msgid="4163399350778066013">"Kun en ole tavoitettavissa"</string>
     <string name="messageCFNRc" msgid="6980340731313007250">"Soita, kun numeroon ei saada yhteyttä:"</string>
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"Puhelu siirretään numeroon <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
-    <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Ei päällä"</string>
+    <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Ei käytössä"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Operaattorisi ei tue soitonsiirtojen poistamista käytöstä puhelimesi ollessa saavuttamattomissa."</string>
     <string name="registration_cf_forbidden" msgid="4386482610771190420">"Operaattorisi ei tue soitonsiirtoa."</string>
     <string name="cdma_call_waiting" msgid="4565070960879673216">"Otetaanko koputus käyttöön?"</string>
@@ -302,7 +302,7 @@
     <string name="carrier_settings_euicc_summary" msgid="2027941166597330117">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> – <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="7228249980933944101">"Mobiilidata"</string>
     <string name="mobile_data_settings_summary" msgid="5012570152029118471">"Käytä dataa mobiiliverkon kautta."</string>
-    <string name="data_usage_disable_mobile" msgid="5669109209055988308">"Laitetaanko mobiilidata pois päältä?"</string>
+    <string name="data_usage_disable_mobile" msgid="5669109209055988308">"Poistetaanko mobiilidata käytöstä?"</string>
     <string name="sim_selection_required_pref" msgid="6985901872978341314">"Valinta on pakollinen"</string>
     <string name="sim_change_data_title" msgid="9142726786345906606">"Vaihdetaanko tied.siirto-SIM?"</string>
     <string name="sim_change_data_message" msgid="3567358694255933280">"Käytetäänkö SIM-kortin <xliff:g id="NEW_SIM">%1$s</xliff:g> mobiilidataa kortin <xliff:g id="OLD_SIM">%2$s</xliff:g> sijaan?"</string>
@@ -551,7 +551,7 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"Puhelujen pito ei onnistu."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"Yhdistä langattomaan verkkoon, jos haluat soittaa puhelun."</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"Ota Wi-Fi-puhelut käyttöön soittaaksesi."</string>
-    <string name="emergency_information_hint" msgid="9208897544917793012">"Vaaratiedot"</string>
+    <string name="emergency_information_hint" msgid="9208897544917793012">"Hätätilannetiedot"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"Omistaja"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"Katso tiedot napauttamalla uudelleen"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="2667568200755388829">"Hätäpuhelu"</string>

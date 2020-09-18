@@ -673,7 +673,7 @@
     <string name="enable_video_calling_dialog_msg" msgid="7141478720386203540">"Бейне қоңырауларды қосу үшін желі параметрлерінде жақсартылған 4G LTE режимін қосу керек."</string>
     <string name="enable_video_calling_dialog_settings" msgid="8697890611305307110">"Желі параметрлері"</string>
     <string name="enable_video_calling_dialog_close" msgid="4298929725917045270">"Жабу"</string>
-    <string name="sim_label_emergency_calls" msgid="9078241989421522310">"Құтқару қызметіне қоңырау шалу"</string>
+    <string name="sim_label_emergency_calls" msgid="9078241989421522310">"Жедел қоңыраулар"</string>
     <string name="sim_description_emergency_calls" msgid="5146872803938897296">"Тек жедел қоңыраулар"</string>
     <string name="sim_description_default" msgid="7474671114363724971">"SIM картасы, ұяшық: <xliff:g id="SLOT_ID">%s</xliff:g>"</string>
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"Арнайы мүмкіндіктер"</string>

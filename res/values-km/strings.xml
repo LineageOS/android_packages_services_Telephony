@@ -24,7 +24,7 @@
     <string name="unknown" msgid="8279698889921830815">"មិន​ស្គាល់"</string>
     <string name="private_num" msgid="4487990167889159992">"លេខ​ឯកជន"</string>
     <string name="payphone" msgid="7936735771836716941">"ទូរស័ព្ទសាធារណៈ"</string>
-    <string name="onHold" msgid="6132725550015899006">"កំពុងរង់ចាំ"</string>
+    <string name="onHold" msgid="6132725550015899006">"រង់ចាំ"</string>
     <string name="carrier_mmi_msg_title" msgid="6050165242447507034">"សារ <xliff:g id="MMICARRIER">%s</xliff:g>"</string>
     <string name="default_carrier_mmi_msg_title" msgid="7754317179938537213">"សារ​ក្រុមហ៊ុន​សេវា​ទូរសព្ទ"</string>
     <string name="mmiStarted" msgid="9212975136944568623">"បាន​ចាប់ផ្ដើម​កូដ MMI"</string>
@@ -92,7 +92,7 @@
     <string name="additional_cdma_call_settings" msgid="2178016561980611304">"កំណត់​ការ​ហៅ CDMA បន្ថែម"</string>
     <string name="sum_cdma_call_settings" msgid="3185825305136993636">"កំណត់​ការ​ហៅ​តែ CDMA បន្ថែម​ប៉ុណ្ណោះ"</string>
     <string name="labelNwService" msgid="6015891883487125120">"ការ​កំណត់​​សេវា​បណ្ដាញ"</string>
-    <string name="labelCallerId" msgid="2090540744550903172">"អត្តសញ្ញាណអ្នកហៅទូរសព្ទ"</string>
+    <string name="labelCallerId" msgid="2090540744550903172">"លេខ​សម្គាល់​អ្នក​ហៅ"</string>
     <string name="sum_loading_settings" msgid="434063780286688775">"កំពុង​ផ្ទុក​ការ​កំណត់…"</string>
     <string name="sum_hide_caller_id" msgid="131100328602371933">"បាន​លាក់​លេខ​​ក្នុង​ការ​​ហៅ​ចេញ"</string>
     <string name="sum_show_caller_id" msgid="3571854755324664591">"បាន​បង្ហាញ​​​លេខ​ក្នុង​ការ​ហៅ​ចេញ"</string>
@@ -100,8 +100,8 @@
     <string name="labelCW" msgid="8449327023861428622">"រង់ចាំ​ការ​ហៅ"</string>
     <string name="sum_cw_enabled" msgid="3977308526187139996">"ក្នុង​អំឡុង​ពេល​ហៅ ជូនដំណឹងដល់​ខ្ញុំ​អំពី​ការ​ហៅ​ចូល"</string>
     <string name="sum_cw_disabled" msgid="3658094589461768637">"ក្នុង​អំឡុង​ពេល​ហៅ ជូនដំណឹងដល់​ខ្ញុំ​អំពី​ការ​ហៅ​ចូល"</string>
-    <string name="call_forwarding_settings" msgid="8937130467468257671">"ការកំណត់ការបញ្ជូនបន្តការហៅទូរសព្ទ"</string>
-    <string name="call_forwarding_settings_with_label" msgid="2345432813399564272">"ការកំណត់ការបញ្ជូនបន្តការហៅទូរសព្ទ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
+    <string name="call_forwarding_settings" msgid="8937130467468257671">"កំណត់​ការ​ហៅ​​​បញ្ជូន​បន្ត"</string>
+    <string name="call_forwarding_settings_with_label" msgid="2345432813399564272">"ការកំណត់ការបញ្ជូនការហៅបន្ត (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCF" msgid="3578719437928476078">"បញ្ជូន​ការ​ហៅ​បន្ត"</string>
     <string name="labelCFU" msgid="8870170873036279706">"បញ្ជូន​បន្ត​ជានិច្ច"</string>
     <string name="messageCFU" msgid="1361806450979589744">"ប្រើ​លេខ​នេះ​ជានិច្ច"</string>
@@ -136,7 +136,7 @@
     <string name="call_settings_with_label" msgid="8460230435361579511">"ការកំណត់ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"បញ្ហា​ការ​កំណត់​ការ​ហៅ"</string>
     <string name="reading_settings" msgid="1605904432450871183">"កំពុង​អាន​ការ​កំណត់…"</string>
-    <string name="updating_settings" msgid="3650396734816028808">"កំពុងធ្វើ​បច្ចុប្បន្ន​ភាព​ការកំណត់…"</string>
+    <string name="updating_settings" msgid="3650396734816028808">"កំណត់​ការ​ធ្វើ​បច្ចុប្បន្ន​ភាព…"</string>
     <string name="reverting_settings" msgid="7378668837291012205">"ត្រឡប់​ការ​កំណត់…"</string>
     <string name="response_error" msgid="3904481964024543330">"ការ​ឆ្លើយ​តប​ដែល​មិន​រំពឹង​ទុក​ពី​​បណ្ដាញ​។"</string>
     <string name="exception_error" msgid="330994460090467">"បញ្ហា​ស៊ីមកាត ឬ​បណ្ដាញ។"</string>
@@ -306,7 +306,7 @@
     <string name="sim_selection_required_pref" msgid="6985901872978341314">"ជម្រើស​ដែល​ត្រូវមាន"</string>
     <string name="sim_change_data_title" msgid="9142726786345906606">"ប្ដូរ​ស៊ីមទិន្នន័យ?"</string>
     <string name="sim_change_data_message" msgid="3567358694255933280">"ប្រើប្រាស់ <xliff:g id="NEW_SIM">%1$s</xliff:g> ជំនួសឲ្យ <xliff:g id="OLD_SIM">%2$s</xliff:g> សម្រាប់​ទិន្នន័យ​ទូរសព្ទ​ចល័ត​ដែរ​ឬ​ទេ?"</string>
-    <string name="wifi_calling_settings_title" msgid="5800018845662016507">"ការហៅ​តាម Wi-Fi"</string>
+    <string name="wifi_calling_settings_title" msgid="5800018845662016507">"ការហៅ​ទូរសព្ទ​តាម Wi-Fi"</string>
     <string name="video_calling_settings_title" msgid="342829454913266078">"ការហៅវីដេអូ​តាម​ក្រុមផ្ដល់​សេវា​ទូរសព្ទ"</string>
     <string name="gsm_umts_options" msgid="4968446771519376808">"ជម្រើស GSM/UMTS"</string>
     <string name="cdma_options" msgid="3669592472226145665">"ជម្រើស CDMA"</string>
@@ -521,7 +521,7 @@
     <string name="card_title_conf_call" msgid="901197309274457427">"ការ​ហៅ​ជា​​ក្រុម"</string>
     <string name="card_title_incoming_call" msgid="881424648458792430">"ការ​ហៅ​ចូល"</string>
     <string name="card_title_call_ended" msgid="650223980095026340">"បាន​បញ្ចប់​ការ​ហៅ"</string>
-    <string name="card_title_on_hold" msgid="9028319436626975207">"កំពុងរង់ចាំ"</string>
+    <string name="card_title_on_hold" msgid="9028319436626975207">"រង់ចាំ"</string>
     <string name="card_title_hanging_up" msgid="814874106866647871">"បញ្ចប់​ការ​សន្ទនា"</string>
     <string name="card_title_in_call" msgid="8231896539567594265">"ការ​ហៅ​ចូល"</string>
     <string name="notification_voicemail_title" msgid="3932876181831601351">"សារ​ជា​សំឡេង​ថ្មី"</string>
@@ -853,7 +853,7 @@
     <string name="radio_info_ims_reg_status" msgid="25582845222446390">"ការចុះឈ្មោះ IMS៖ <xliff:g id="STATUS">%1$s</xliff:g>\nការហៅ​ជា​សំឡេង​តាម LTE៖ <xliff:g id="AVAILABILITY_0">%2$s</xliff:g>\nការហៅ​ជា​សំឡេង​តាម WiFi៖ <xliff:g id="AVAILABILITY_1">%3$s</xliff:g>\nការហៅជាវីដេអូ៖ <xliff:g id="AVAILABILITY_2">%4$s</xliff:g>\nផ្ទៃ UT ៖ <xliff:g id="AVAILABILITY_3">%5$s</xliff:g>"</string>
     <string name="radioInfo_service_in" msgid="45753418231446400">"កំពុង​ដំណើរការ"</string>
     <string name="radioInfo_service_out" msgid="287972405416142312">"មិនដំណើរការ"</string>
-    <string name="radioInfo_service_emergency" msgid="4763879891415016848">"ការហៅទៅលេខសង្គ្រោះបន្ទាន់​តែប៉ុណ្ណោះ"</string>
+    <string name="radioInfo_service_emergency" msgid="4763879891415016848">"សម្រាប់​តែ​ការហៅទៅលេខសង្គ្រោះបន្ទាន់​ប៉ុណ្ណោះ"</string>
     <string name="radioInfo_service_off" msgid="3456583511226783064">"វិទ្យុ​បាន​បិទ"</string>
     <string name="radioInfo_roaming_in" msgid="3156335577793145965">"រ៉ូមីង"</string>
     <string name="radioInfo_roaming_not" msgid="1904547918725478110">"មិនរ៉ូមីងទេ"</string>
