@@ -20,5 +20,6 @@
     <string name="close_profile">Dùin</string>
     <string name="username_title">Ainm-cleachdaiche</string>
     <string name="display_name_title">Ainm taisbeanaidh</string>
+    <string name="all_empty_alert">Cuir a-steach fiosrachadh a’ chunntais SIP ùir.</string>
     <string translatable="true" name="sip_always_send_keepalive">Cuir an-còmhnaidh</string>
 </resources>
