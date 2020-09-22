@@ -132,6 +132,7 @@ import com.android.internal.telephony.CommandsInterface;
 import com.android.internal.telephony.DefaultPhoneNotifier;
 import com.android.internal.telephony.HalVersion;
 import com.android.internal.telephony.IBooleanConsumer;
+import com.android.internal.telephony.ICallForwardingInfoCallback;
 import com.android.internal.telephony.IIntegerConsumer;
 import com.android.internal.telephony.INumberVerificationCallback;
 import com.android.internal.telephony.ITelephony;
@@ -172,6 +173,7 @@ import com.android.internal.telephony.uicc.UiccProfile;
 import com.android.internal.telephony.uicc.UiccSlot;
 import com.android.internal.telephony.util.LocaleUtils;
 import com.android.internal.telephony.util.VoicemailNotificationSettingsUtil;
+import com.android.internal.util.FunctionalUtils;
 import com.android.internal.util.HexDump;
 import com.android.phone.settings.PickSmsSubscriptionActivity;
 import com.android.phone.vvm.PhoneAccountHandleConverter;
@@ -831,38 +833,43 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     getPhoneFromRequest(request).getAvailableNetworks(onCompleted);
                     break;
 
-                case CMD_GET_CALL_FORWARDING:
+                case CMD_GET_CALL_FORWARDING: {
                     request = (MainThreadRequest) msg.obj;
                     onCompleted = obtainMessage(EVENT_GET_CALL_FORWARDING_DONE, request);
-                    int callForwardingReason = (Integer) request.argument;
-                    getPhoneFromRequest(request).getCallForwardingOption(
-                            callForwardingReason, onCompleted);
+                    Pair<Integer, TelephonyManager.CallForwardingInfoCallback> args =
+                            (Pair<Integer, TelephonyManager.CallForwardingInfoCallback>)
+                                    request.argument;
+                    int callForwardingReason = args.first;
+                    request.phone.getCallForwardingOption(callForwardingReason, onCompleted);
                     break;
-
-                case EVENT_GET_CALL_FORWARDING_DONE:
+                }
+                case EVENT_GET_CALL_FORWARDING_DONE: {
                     ar = (AsyncResult) msg.obj;
                     request = (MainThreadRequest) ar.userObj;
-                    CallForwardingInfo callForwardingInfo = null;
+                    TelephonyManager.CallForwardingInfoCallback callback =
+                            ((Pair<Integer, TelephonyManager.CallForwardingInfoCallback>)
+                                    request.argument).second;
                     if (ar.exception == null && ar.result != null) {
+                        CallForwardingInfo callForwardingInfo = null;
                         CallForwardInfo[] callForwardInfos = (CallForwardInfo[]) ar.result;
                         for (CallForwardInfo callForwardInfo : callForwardInfos) {
                             // Service Class is a bit mask per 3gpp 27.007. Search for
                             // any service for voice call.
                             if ((callForwardInfo.serviceClass
                                     & CommandsInterface.SERVICE_CLASS_VOICE) > 0) {
-                                callForwardingInfo = new CallForwardingInfo(
-                                        callForwardInfo.serviceClass, callForwardInfo.reason,
-                                                callForwardInfo.number,
-                                                        callForwardInfo.timeSeconds);
+                                callForwardingInfo = new CallForwardingInfo(true,
+                                        callForwardInfo.reason,
+                                        callForwardInfo.number,
+                                        callForwardInfo.timeSeconds);
                                 break;
                             }
                         }
                         // Didn't find a call forward info for voice call.
                         if (callForwardingInfo == null) {
-                            callForwardingInfo = new CallForwardingInfo(
-                                    CallForwardingInfo.STATUS_UNKNOWN_ERROR,
-                                            0 /* reason */, null /* number */, 0 /* timeout */);
+                            callForwardingInfo = new CallForwardingInfo(false /* enabled */,
+                                    0 /* reason */, null /* number */, 0 /* timeout */);
                         }
+                        callback.onCallForwardingInfoAvailable(callForwardingInfo);
                     } else {
                         if (ar.result == null) {
                             loge("EVENT_GET_CALL_FORWARDING_DONE: Empty response");
@@ -870,56 +877,74 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                         if (ar.exception != null) {
                             loge("EVENT_GET_CALL_FORWARDING_DONE: Exception: " + ar.exception);
                         }
-                        int errorCode = CallForwardingInfo.STATUS_UNKNOWN_ERROR;
+                        int errorCode = CallForwardingInfo.ERROR_UNKNOWN;
                         if (ar.exception instanceof CommandException) {
                             CommandException.Error error =
                                     ((CommandException) (ar.exception)).getCommandError();
                             if (error == CommandException.Error.FDN_CHECK_FAILURE) {
-                                errorCode = CallForwardingInfo.STATUS_FDN_CHECK_FAILURE;
+                                errorCode = CallForwardingInfo.ERROR_FDN_CHECK_FAILURE;
                             } else if (error == CommandException.Error.REQUEST_NOT_SUPPORTED) {
-                                errorCode = CallForwardingInfo.STATUS_NOT_SUPPORTED;
+                                errorCode = CallForwardingInfo.ERROR_NOT_SUPPORTED;
                             }
                         }
-                        callForwardingInfo = new CallForwardingInfo(
-                                errorCode, 0 /* reason */, null /* number */, 0 /* timeout */);
+                        callback.onError(errorCode);
                     }
-                    request.result = callForwardingInfo;
-                    notifyRequester(request);
                     break;
+                }
 
-                case CMD_SET_CALL_FORWARDING:
+                case CMD_SET_CALL_FORWARDING: {
                     request = (MainThreadRequest) msg.obj;
                     onCompleted = obtainMessage(EVENT_SET_CALL_FORWARDING_DONE, request);
+                    request = (MainThreadRequest) msg.obj;
                     CallForwardingInfo callForwardingInfoToSet =
-                            (CallForwardingInfo) request.argument;
-                    getPhoneFromRequest(request).setCallForwardingOption(
-                            callForwardingInfoToSet.getStatus(),
+                            ((Pair<CallForwardingInfo, Consumer<Integer>>)
+                                    request.argument).first;
+                    request.phone.setCallForwardingOption(
+                            callForwardingInfoToSet.isEnabled()
+                                    ? CommandsInterface.CF_ACTION_ENABLE
+                                    : CommandsInterface.CF_ACTION_DISABLE,
                             callForwardingInfoToSet.getReason(),
                             callForwardingInfoToSet.getNumber(),
                             callForwardingInfoToSet.getTimeoutSeconds(), onCompleted);
                     break;
+                }
 
-                case EVENT_SET_CALL_FORWARDING_DONE:
+                case EVENT_SET_CALL_FORWARDING_DONE: {
                     ar = (AsyncResult) msg.obj;
                     request = (MainThreadRequest) ar.userObj;
-                    if (ar.exception == null) {
-                        request.result = true;
-                    } else {
-                        request.result = false;
+                    Consumer<Integer> callback =
+                            ((Pair<CallForwardingInfo, Consumer<Integer>>)
+                                    request.argument).second;
+                    if (ar.exception != null) {
                         loge("setCallForwarding exception: " + ar.exception);
+                        int errorCode = CallForwardingInfo.ERROR_UNKNOWN;
+                        if (ar.exception instanceof CommandException) {
+                            CommandException.Error error =
+                                    ((CommandException) (ar.exception)).getCommandError();
+                            if (error == CommandException.Error.FDN_CHECK_FAILURE) {
+                                errorCode = CallForwardingInfo.ERROR_FDN_CHECK_FAILURE;
+                            } else if (error == CommandException.Error.REQUEST_NOT_SUPPORTED) {
+                                errorCode = CallForwardingInfo.ERROR_NOT_SUPPORTED;
+                            }
+                        }
+                        callback.accept(errorCode);
+                    } else {
+                        callback.accept(CallForwardingInfo.SUCCESS);
                     }
-                    notifyRequester(request);
                     break;
+                }
 
-                case CMD_GET_CALL_WAITING:
+                case CMD_GET_CALL_WAITING: {
                     request = (MainThreadRequest) msg.obj;
                     onCompleted = obtainMessage(EVENT_GET_CALL_WAITING_DONE, request);
                     getPhoneFromRequest(request).getCallWaiting(onCompleted);
                     break;
+                }
 
-                case EVENT_GET_CALL_WAITING_DONE:
+                case EVENT_GET_CALL_WAITING_DONE: {
                     ar = (AsyncResult) msg.obj;
                     request = (MainThreadRequest) ar.userObj;
+                    Consumer<Integer> callback = (Consumer<Integer>) request.argument;
                     int callForwardingStatus = TelephonyManager.CALL_WAITING_STATUS_UNKNOWN_ERROR;
                     if (ar.exception == null && ar.result != null) {
                         int[] callForwardResults = (int[]) ar.result;
@@ -927,12 +952,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                         // Search for any service for voice call.
                         if (callForwardResults.length > 1
                                 && ((callForwardResults[1]
-                                        & CommandsInterface.SERVICE_CLASS_VOICE) > 0)) {
+                                & CommandsInterface.SERVICE_CLASS_VOICE) > 0)) {
                             callForwardingStatus = callForwardResults[0] == 0
-                                    ? TelephonyManager.CALL_WAITING_STATUS_INACTIVE
-                                            : TelephonyManager.CALL_WAITING_STATUS_ACTIVE;
+                                    ? TelephonyManager.CALL_WAITING_STATUS_DISABLED
+                                    : TelephonyManager.CALL_WAITING_STATUS_ENABLED;
                         } else {
-                            callForwardingStatus = TelephonyManager.CALL_WAITING_STATUS_INACTIVE;
+                            callForwardingStatus = TelephonyManager.CALL_WAITING_STATUS_DISABLED;
                         }
                     } else {
                         if (ar.result == null) {
@@ -950,28 +975,43 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                             }
                         }
                     }
-                    request.result = callForwardingStatus;
-                    notifyRequester(request);
+                    callback.accept(callForwardingStatus);
                     break;
+                }
 
-                case CMD_SET_CALL_WAITING:
+                case CMD_SET_CALL_WAITING: {
                     request = (MainThreadRequest) msg.obj;
                     onCompleted = obtainMessage(EVENT_SET_CALL_WAITING_DONE, request);
-                    boolean isEnable = (Boolean) request.argument;
-                    getPhoneFromRequest(request).setCallWaiting(isEnable, onCompleted);
+                    boolean enable = ((Pair<Boolean, Consumer<Integer>>) request.argument).first;
+                    getPhoneFromRequest(request).setCallWaiting(enable, onCompleted);
                     break;
+                }
 
-                case EVENT_SET_CALL_WAITING_DONE:
+                case EVENT_SET_CALL_WAITING_DONE: {
                     ar = (AsyncResult) msg.obj;
                     request = (MainThreadRequest) ar.userObj;
-                    if (ar.exception == null) {
-                        request.result = true;
-                    } else {
-                        request.result = false;
+                    boolean enable = ((Pair<Boolean, Consumer<Integer>>) request.argument).first;
+                    Consumer<Integer> callback =
+                            ((Pair<Boolean, Consumer<Integer>>) request.argument).second;
+                    if (ar.exception != null) {
                         loge("setCallWaiting exception: " + ar.exception);
+                        if (ar.exception instanceof CommandException) {
+                            CommandException.Error error =
+                                    ((CommandException) (ar.exception)).getCommandError();
+                            if (error == CommandException.Error.REQUEST_NOT_SUPPORTED) {
+                                callback.accept(TelephonyManager.CALL_WAITING_STATUS_NOT_SUPPORTED);
+                            } else {
+                                callback.accept(TelephonyManager.CALL_WAITING_STATUS_UNKNOWN_ERROR);
+                            }
+                        } else {
+                            callback.accept(TelephonyManager.CALL_WAITING_STATUS_UNKNOWN_ERROR);
+                        }
+                    } else {
+                        callback.accept(enable ? TelephonyManager.CALL_WAITING_STATUS_ENABLED
+                                : TelephonyManager.CALL_WAITING_STATUS_DISABLED);
                     }
-                    notifyRequester(request);
                     break;
+                }
 
                 case EVENT_PERFORM_NETWORK_SCAN_DONE:
                     ar = (AsyncResult) msg.obj;
@@ -5345,7 +5385,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * Get the call forwarding info, given the call forwarding reason.
      */
     @Override
-    public CallForwardingInfo getCallForwarding(int subId, int callForwardingReason) {
+    public void getCallForwarding(int subId, int callForwardingReason,
+            ICallForwardingInfoCallback callback) {
         enforceReadPrivilegedPermission("getCallForwarding");
         long identity = Binder.clearCallingIdentity();
         try {
@@ -5353,8 +5394,38 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 log("getCallForwarding: subId " + subId
                         + " callForwardingReason" + callForwardingReason);
             }
-            return (CallForwardingInfo) sendRequest(
-                    CMD_GET_CALL_FORWARDING, callForwardingReason, subId);
+
+            Phone phone = getPhone(subId);
+            if (phone == null) {
+                try {
+                    callback.onError(CallForwardingInfo.ERROR_UNKNOWN);
+                } catch (RemoteException e) {
+                    // ignore
+                }
+                return;
+            }
+
+            Pair<Integer, TelephonyManager.CallForwardingInfoCallback> argument = Pair.create(
+                    callForwardingReason, new TelephonyManager.CallForwardingInfoCallback() {
+                        @Override
+                        public void onCallForwardingInfoAvailable(CallForwardingInfo info) {
+                            try {
+                                callback.onCallForwardingInfoAvailable(info);
+                            } catch (RemoteException e) {
+                                // ignore
+                            }
+                        }
+
+                        @Override
+                        public void onError(int error) {
+                            try {
+                                callback.onError(error);
+                            } catch (RemoteException e) {
+                                // ignore
+                            }
+                        }
+                    });
+            sendRequestAsync(CMD_GET_CALL_FORWARDING, argument, phone, null);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -5365,7 +5436,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * reason, the number to forward, and the timeout before the forwarding is attempted.
      */
     @Override
-    public boolean setCallForwarding(int subId, CallForwardingInfo callForwardingInfo) {
+    public void setCallForwarding(int subId, CallForwardingInfo callForwardingInfo,
+            IIntegerConsumer callback) {
         enforceModifyPermission();
         long identity = Binder.clearCallingIdentity();
         try {
@@ -5373,38 +5445,78 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 log("setCallForwarding: subId " + subId
                         + " callForwardingInfo" + callForwardingInfo);
             }
-            return (Boolean) sendRequest(CMD_SET_CALL_FORWARDING, callForwardingInfo, subId);
+
+            Phone phone = getPhone(subId);
+            if (phone == null) {
+                try {
+                    callback.accept(CallForwardingInfo.ERROR_UNKNOWN);
+                } catch (RemoteException e) {
+                    // ignore
+                }
+                return;
+            }
+
+            Pair<CallForwardingInfo, Consumer<Integer>> arguments = Pair.create(callForwardingInfo,
+                    FunctionalUtils.ignoreRemoteException(callback::accept));
+
+            sendRequestAsync(CMD_SET_CALL_FORWARDING, arguments, phone, null);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
     }
 
     /**
-     * Get the call forwarding info, given the call forwarding reason.
+     * Get the call waiting status for a subId.
      */
     @Override
-    public int getCallWaitingStatus(int subId) {
+    public void getCallWaitingStatus(int subId, IIntegerConsumer callback) {
         enforceReadPrivilegedPermission("getCallForwarding");
         long identity = Binder.clearCallingIdentity();
         try {
+
+            Phone phone = getPhone(subId);
+            if (phone == null) {
+                try {
+                    callback.accept(TelephonyManager.CALL_WAITING_STATUS_UNKNOWN_ERROR);
+                } catch (RemoteException e) {
+                    // ignore
+                }
+                return;
+            }
+
+            Consumer<Integer> argument = FunctionalUtils.ignoreRemoteException(callback::accept);
+
             if (DBG) log("getCallWaitingStatus: subId " + subId);
-            return (Integer) sendRequest(CMD_GET_CALL_WAITING, null, subId);
+            sendRequestAsync(CMD_GET_CALL_WAITING, argument, phone, null);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
     }
 
     /**
-     * Sets the voice call forwarding info including status (enable/disable), call forwarding
-     * reason, the number to forward, and the timeout before the forwarding is attempted.
+     * Sets whether call waiting is enabled for a given subId.
      */
     @Override
-    public boolean setCallWaitingStatus(int subId, boolean isEnable) {
+    public void setCallWaitingStatus(int subId, boolean enable, IIntegerConsumer callback) {
         enforceModifyPermission();
         long identity = Binder.clearCallingIdentity();
         try {
-            if (DBG) log("setCallWaitingStatus: subId " + subId + " isEnable: " + isEnable);
-            return (Boolean) sendRequest(CMD_SET_CALL_WAITING, isEnable, subId);
+            if (DBG) log("setCallWaitingStatus: subId " + subId + " enable: " + enable);
+
+            Phone phone = getPhone(subId);
+            if (phone == null) {
+                try {
+                    callback.accept(TelephonyManager.CALL_WAITING_STATUS_UNKNOWN_ERROR);
+                } catch (RemoteException e) {
+                    // ignore
+                }
+                return;
+            }
+
+            Pair<Boolean, Consumer<Integer>> arguments = Pair.create(enable,
+                    FunctionalUtils.ignoreRemoteException(callback::accept));
+
+            sendRequestAsync(CMD_SET_CALL_WAITING, arguments, phone, null);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
