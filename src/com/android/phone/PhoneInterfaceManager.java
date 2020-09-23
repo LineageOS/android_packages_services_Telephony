@@ -5405,7 +5405,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                                 .setMinSdkVersionForFine(Build.VERSION_CODES.Q)
                                 .build());
         if (locationResult != LocationAccessPolicy.LocationPermissionResult.ALLOWED) {
-            SecurityException e = checkNetworkRequestForSanitizedLocationAccess(request, subId);
+            SecurityException e = checkNetworkRequestForSanitizedLocationAccess(
+                    request, subId, callingPackage);
             if (e != null) {
                 if (locationResult == LocationAccessPolicy.LocationPermissionResult.DENIED_HARD) {
                     throw e;
@@ -5428,8 +5429,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     private SecurityException checkNetworkRequestForSanitizedLocationAccess(
-            NetworkScanRequest request, int subId) {
-        boolean hasCarrierPriv = getCarrierPrivilegeStatusForUid(subId, Binder.getCallingUid())
+            NetworkScanRequest request, int subId, String callingPackage) {
+        boolean hasCarrierPriv = checkCarrierPrivilegesForPackage(subId, callingPackage)
                 == TelephonyManager.CARRIER_PRIVILEGE_STATUS_HAS_ACCESS;
         boolean hasNetworkScanPermission =
                 mApp.checkCallingOrSelfPermission(android.Manifest.permission.NETWORK_SCAN)
