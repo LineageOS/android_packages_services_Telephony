@@ -936,14 +936,14 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
 
         // Setup test to not support SUPL on the non-DDS subscription
         doReturn(true).when(mDeviceState).isSuplDdsSwitchRequiredForEmergencyCall(any());
-        getTestContext().getCarrierConfig().putStringArray(
+        getTestContext().getCarrierConfig(0 /*subId*/).putStringArray(
                 CarrierConfigManager.Gps.KEY_ES_SUPL_DATA_PLANE_ONLY_ROAMING_PLMN_STRING_ARRAY,
                 null);
         testPhone.getServiceState().setRoaming(false);
-        getTestContext().getCarrierConfig().putInt(
+        getTestContext().getCarrierConfig(0 /*subId*/).putInt(
                 CarrierConfigManager.Gps.KEY_ES_SUPL_CONTROL_PLANE_SUPPORT_INT,
                 CarrierConfigManager.Gps.SUPL_EMERGENCY_MODE_TYPE_DP_ONLY);
-        getTestContext().getCarrierConfig().putString(
+        getTestContext().getCarrierConfig(0 /*subId*/).putString(
                 CarrierConfigManager.Gps.KEY_ES_EXTENSION_SEC_STRING, "150");
         delayDialRunnable.run();
 
@@ -1021,14 +1021,14 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
 
         // Setup test to not support SUPL on the non-DDS subscription
         doReturn(true).when(mDeviceState).isSuplDdsSwitchRequiredForEmergencyCall(any());
-        getTestContext().getCarrierConfig().putStringArray(
+        getTestContext().getCarrierConfig(0 /*subId*/).putStringArray(
                 CarrierConfigManager.Gps.KEY_ES_SUPL_DATA_PLANE_ONLY_ROAMING_PLMN_STRING_ARRAY,
                 null);
         testPhone.getServiceState().setRoaming(false);
-        getTestContext().getCarrierConfig().putInt(
+        getTestContext().getCarrierConfig(0 /*subId*/).putInt(
                 CarrierConfigManager.Gps.KEY_ES_SUPL_CONTROL_PLANE_SUPPORT_INT,
                 CarrierConfigManager.Gps.SUPL_EMERGENCY_MODE_TYPE_CP_FALLBACK);
-        getTestContext().getCarrierConfig().putString(
+        getTestContext().getCarrierConfig(0 /*subId*/).putString(
                 CarrierConfigManager.Gps.KEY_ES_EXTENSION_SEC_STRING, "0");
         delayDialRunnable.run();
 
@@ -1047,14 +1047,14 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
 
         // If the non-DDS supports SUPL, dont switch data
         doReturn(false).when(mDeviceState).isSuplDdsSwitchRequiredForEmergencyCall(any());
-        getTestContext().getCarrierConfig().putStringArray(
+        getTestContext().getCarrierConfig(0 /*subId*/).putStringArray(
                 CarrierConfigManager.Gps.KEY_ES_SUPL_DATA_PLANE_ONLY_ROAMING_PLMN_STRING_ARRAY,
                 null);
         testPhone.getServiceState().setRoaming(false);
-        getTestContext().getCarrierConfig().putInt(
+        getTestContext().getCarrierConfig(0 /*subId*/).putInt(
                 CarrierConfigManager.Gps.KEY_ES_SUPL_CONTROL_PLANE_SUPPORT_INT,
                 CarrierConfigManager.Gps.SUPL_EMERGENCY_MODE_TYPE_DP_ONLY);
-        getTestContext().getCarrierConfig().putString(
+        getTestContext().getCarrierConfig(0 /*subId*/).putString(
                 CarrierConfigManager.Gps.KEY_ES_EXTENSION_SEC_STRING, "0");
         delayDialRunnable.run();
 
@@ -1073,14 +1073,14 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
 
         // Setup test to not support SUPL on the non-DDS subscription
         doReturn(true).when(mDeviceState).isSuplDdsSwitchRequiredForEmergencyCall(any());
-        getTestContext().getCarrierConfig().putStringArray(
+        getTestContext().getCarrierConfig(0 /*subId*/).putStringArray(
                 CarrierConfigManager.Gps.KEY_ES_SUPL_DATA_PLANE_ONLY_ROAMING_PLMN_STRING_ARRAY,
                 null);
         testPhone.getServiceState().setRoaming(true);
-        getTestContext().getCarrierConfig().putInt(
+        getTestContext().getCarrierConfig(0 /*subId*/).putInt(
                 CarrierConfigManager.Gps.KEY_ES_SUPL_CONTROL_PLANE_SUPPORT_INT,
                 CarrierConfigManager.Gps.SUPL_EMERGENCY_MODE_TYPE_DP_ONLY);
-        getTestContext().getCarrierConfig().putString(
+        getTestContext().getCarrierConfig(0 /*subId*/).putString(
                 CarrierConfigManager.Gps.KEY_ES_EXTENSION_SEC_STRING, "0");
         delayDialRunnable.run();
 
@@ -1107,13 +1107,13 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         doReturn(true).when(mDeviceState).isSuplDdsSwitchRequiredForEmergencyCall(any());
         String[] roamingPlmns = new String[1];
         roamingPlmns[0] = testRoamingOperator;
-        getTestContext().getCarrierConfig().putStringArray(
+        getTestContext().getCarrierConfig(0 /*subId*/).putStringArray(
                 CarrierConfigManager.Gps.KEY_ES_SUPL_DATA_PLANE_ONLY_ROAMING_PLMN_STRING_ARRAY,
                 roamingPlmns);
-        getTestContext().getCarrierConfig().putInt(
+        getTestContext().getCarrierConfig(0 /*subId*/).putInt(
                 CarrierConfigManager.Gps.KEY_ES_SUPL_CONTROL_PLANE_SUPPORT_INT,
                 CarrierConfigManager.Gps.SUPL_EMERGENCY_MODE_TYPE_CP_FALLBACK);
-        getTestContext().getCarrierConfig().putString(
+        getTestContext().getCarrierConfig(0 /*subId*/).putString(
                 CarrierConfigManager.Gps.KEY_ES_EXTENSION_SEC_STRING, "0");
         delayDialRunnable.run();
 
@@ -1140,13 +1140,13 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         doReturn(true).when(mDeviceState).isSuplDdsSwitchRequiredForEmergencyCall(any());
         String[] roamingPlmns = new String[1];
         roamingPlmns[0] = testRoamingOperator;
-        getTestContext().getCarrierConfig().putStringArray(
+        getTestContext().getCarrierConfig(0 /*subId*/).putStringArray(
                 CarrierConfigManager.Gps.KEY_ES_SUPL_DATA_PLANE_ONLY_ROAMING_PLMN_STRING_ARRAY,
                 roamingPlmns);
-        getTestContext().getCarrierConfig().putInt(
+        getTestContext().getCarrierConfig(0 /*subId*/).putInt(
                 CarrierConfigManager.Gps.KEY_ES_SUPL_CONTROL_PLANE_SUPPORT_INT,
                 CarrierConfigManager.Gps.SUPL_EMERGENCY_MODE_TYPE_CP_FALLBACK);
-        getTestContext().getCarrierConfig().putString(
+        getTestContext().getCarrierConfig(0 /*subId*/).putString(
                 CarrierConfigManager.Gps.KEY_ES_EXTENSION_SEC_STRING, "0");
         delayDialRunnable.run();
 
