@@ -8399,6 +8399,53 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
+    public boolean isMobileDataPolicyEnabled(int subscriptionId, int policy) {
+        enforceReadPrivilegedPermission("isMobileDataPolicyEnabled");
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            Phone phone = getPhone(subscriptionId);
+            if (phone == null) return false;
+
+            switch (policy) {
+                case TelephonyManager.MOBILE_DATA_POLICY_DATA_ON_NON_DEFAULT_DURING_VOICE_CALL:
+                    return phone.getDataEnabledSettings().isDataAllowedInVoiceCall();
+                case TelephonyManager.MOBILE_DATA_POLICY_MMS_ALWAYS_ALLOWED:
+                    return phone.getDataEnabledSettings().isMmsAlwaysAllowed();
+                default:
+                    throw new IllegalArgumentException(policy + " is not a valid policy");
+            }
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    @Override
+    public void setMobileDataPolicyEnabledStatus(int subscriptionId, int policy,
+            boolean enabled) {
+        enforceModifyPermission();
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            Phone phone = getPhone(subscriptionId);
+            if (phone == null) return;
+
+            switch (policy) {
+                case TelephonyManager.MOBILE_DATA_POLICY_DATA_ON_NON_DEFAULT_DURING_VOICE_CALL:
+                    phone.getDataEnabledSettings().setAllowDataDuringVoiceCall(enabled);
+                    break;
+                case TelephonyManager.MOBILE_DATA_POLICY_MMS_ALWAYS_ALLOWED:
+                    phone.getDataEnabledSettings().setAlwaysAllowMmsData(enabled);
+                    break;
+                default:
+                    throw new IllegalArgumentException(policy + " is not a valid policy");
+            }
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    @Override
     public boolean setDataAllowedDuringVoiceCall(int subId, boolean allow) {
         enforceModifyPermission();
 
