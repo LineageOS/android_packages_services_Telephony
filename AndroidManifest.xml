@@ -215,6 +215,7 @@
     <uses-permission android:name="android.permission.START_ACTIVITIES_FROM_BACKGROUND" />
     <uses-permission android:name="android.permission.NETWORK_STATS_PROVIDER" />
     <uses-permission android:name="android.permission.HANDLE_CAR_MODE_CHANGES"/>
+    <uses-permission android:name="android.permission.MANAGE_SUBSCRIPTION_PLANS"/>
 
     <application android:name="PhoneApp"
             android:persistent="true"
