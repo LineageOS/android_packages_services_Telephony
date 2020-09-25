@@ -657,7 +657,7 @@
     </plurals>
     <string name="voicemail_provider" msgid="4158806657253745294">"الخدمة"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"الإعداد"</string>
-    <string name="voicemail_number_not_set" msgid="8831561283386938155">"‏&lt;لم يتم التعيين&gt;"</string>
+    <string name="voicemail_number_not_set" msgid="8831561283386938155">"‏&lt;لم يتم الضبط&gt;"</string>
     <string name="other_settings" msgid="8895088007393598447">"اعدادات المكالمات الاخرى"</string>
     <string name="calling_via_template" msgid="1791323450703751750">"الاتصال عبر <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
     <string name="contactPhoto" msgid="7885089213135154834">"صورة جهة الاتصال"</string>
