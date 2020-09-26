@@ -875,7 +875,6 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"ID secundario de SIM de datos predeterminada:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Ancho de banda de descarga (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Ancho de banda de carga (kbps):"</string>
-    <string name="radio_info_signal_location_label" msgid="6188435197086550049">"Datos de ubicación del celular (obsoleto):"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Configuración del canal físico de LTE:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Frecuencia de actualización de datos del celular:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Información sobre las dimensiones del celular:"</string>

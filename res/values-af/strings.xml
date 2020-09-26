@@ -875,7 +875,6 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"Sub-ID van verstekdata-SIM:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Aflaaibandwydte (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Oplaaibandwydte (kbps):"</string>
-    <string name="radio_info_signal_location_label" msgid="6188435197086550049">"Selligginginligting (opgeskort):"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Fisieke LTE-kanaalopstelling:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Herlaaikoers van selinligting:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Alle selmetingsinligting:"</string>
