@@ -55,6 +55,7 @@ import android.util.LocalLog;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.android.ims.ImsFeatureBinderRepository;
 import com.android.internal.telephony.CallManager;
 import com.android.internal.telephony.IccCardConstants;
 import com.android.internal.telephony.MmiCode;
@@ -356,7 +357,8 @@ public class PhoneGlobals extends ContextWrapper {
                 String defaultImsRcsPackage = getResources().getString(
                         R.string.config_ims_rcs_package);
                 mImsResolver = new ImsResolver(this, defaultImsMmtelPackage,
-                        defaultImsRcsPackage, PhoneFactory.getPhones().length);
+                        defaultImsRcsPackage, PhoneFactory.getPhones().length,
+                        new ImsFeatureBinderRepository());
                 mImsResolver.initialize();
             }
 
