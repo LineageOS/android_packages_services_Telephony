@@ -428,8 +428,7 @@ public class TelecomAccountRegistry {
                             .getBoolean(R.bool.config_support_video_calling_fallback));
 
             if (slotId != SubscriptionManager.INVALID_SIM_SLOT_INDEX) {
-                extras.putString(PhoneAccount.EXTRA_SORT_ORDER,
-                    String.valueOf(slotId));
+                extras.putInt(PhoneAccount.EXTRA_SORT_ORDER, slotId);
             }
 
             mIsMergeCallSupported = isCarrierMergeCallSupported();
