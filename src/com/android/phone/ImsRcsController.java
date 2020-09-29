@@ -29,14 +29,17 @@ import android.telephony.ims.aidl.IImsRcsController;
 import android.telephony.ims.aidl.IImsRegistrationCallback;
 import android.telephony.ims.aidl.IRcsUceControllerCallback;
 import android.telephony.ims.aidl.IRcsUcePublishStateCallback;
+import android.telephony.ims.feature.ImsFeature;
 import android.telephony.ims.feature.RcsFeature;
 import android.telephony.ims.stub.ImsRegistrationImplBase;
 import android.util.Log;
 
 import com.android.ims.ImsManager;
+import com.android.ims.internal.IImsServiceFeatureCallback;
 import com.android.internal.telephony.IIntegerConsumer;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.TelephonyPermissions;
+import com.android.internal.telephony.ims.ImsResolver;
 import com.android.internal.telephony.imsphone.ImsPhone;
 import com.android.services.telephony.rcs.RcsFeatureController;
 import com.android.services.telephony.rcs.TelephonyRcsService;
@@ -55,6 +58,7 @@ public class ImsRcsController extends IImsRcsController.Stub {
 
     private PhoneGlobals mApp;
     private TelephonyRcsService mRcsService;
+    private ImsResolver mImsResolver;
 
     /**
      * Initialize the singleton ImsRcsController instance.
@@ -77,6 +81,7 @@ public class ImsRcsController extends IImsRcsController.Stub {
         mApp = app;
         TelephonyFrameworkInitializer
                 .getTelephonyServiceManager().getTelephonyImsServiceRegisterer().register(this);
+        mImsResolver = mApp.getImsResolver();
     }
 
     /**
@@ -345,6 +350,46 @@ public class ImsRcsController extends IImsRcsController.Stub {
                     SubscriptionManager.IMS_RCS_UCE_ENABLED, (isEnabled ? "1" : "0"));
         } finally {
             Binder.restoreCallingIdentity(token);
+        }
+    }
+
+    /**
+     * Registers for updates to the RcsFeature connection through the IImsServiceFeatureCallback
+     * callback.
+     */
+    @Override
+    public void registerRcsFeatureCallback(int slotId, IImsServiceFeatureCallback callback,
+            boolean oneShot) {
+        enforceModifyPermission();
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            if (mImsResolver == null) {
+                throw new ServiceSpecificException(ImsException.CODE_ERROR_UNSUPPORTED_OPERATION,
+                        "Device does not support IMS");
+            }
+            if (oneShot) {
+                mImsResolver.callBackIfExists(slotId, ImsFeature.FEATURE_RCS, callback);
+            } else {
+                mImsResolver.listenForFeature(slotId, ImsFeature.FEATURE_RCS, callback);
+            }
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+    /**
+     * Unregister a previously registered IImsServiceFeatureCallback associated with an ImsFeature.
+     */
+    @Override
+    public void unregisterImsFeatureCallback(IImsServiceFeatureCallback callback) {
+        enforceModifyPermission();
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            if (mImsResolver == null) return;
+            mImsResolver.unregisterImsFeatureCallback(callback);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
         }
     }
 
