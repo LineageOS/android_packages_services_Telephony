@@ -104,8 +104,6 @@ import android.telephony.ims.RegistrationManager;
 import android.telephony.ims.aidl.IImsCapabilityCallback;
 import android.telephony.ims.aidl.IImsConfig;
 import android.telephony.ims.aidl.IImsConfigCallback;
-import android.telephony.ims.aidl.IImsMmTelFeature;
-import android.telephony.ims.aidl.IImsRcsFeature;
 import android.telephony.ims.aidl.IImsRegistration;
 import android.telephony.ims.aidl.IImsRegistrationCallback;
 import android.telephony.ims.feature.ImsFeature;
@@ -5051,58 +5049,40 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
-     * Returns the {@link IImsMmTelFeature} that corresponds to the given slot Id for the MMTel
-     * feature or {@link null} if the service is not available. If the feature is available, the
-     * {@link IImsServiceFeatureCallback} callback is registered as a listener for feature updates.
+     * Registers for updates to the MmTelFeature connection through the IImsServiceFeatureCallback
+     * callback.
      */
-    public IImsMmTelFeature getMmTelFeatureAndListen(int slotId,
-            IImsServiceFeatureCallback callback) {
+    @Override
+    public void registerMmTelFeatureCallback(int slotId, IImsServiceFeatureCallback callback,
+            boolean oneShot) {
         enforceModifyPermission();
 
         final long identity = Binder.clearCallingIdentity();
         try {
             if (mImsResolver == null) {
-                // may happen if the device does not support IMS.
-                return null;
+                throw new ServiceSpecificException(ImsException.CODE_ERROR_UNSUPPORTED_OPERATION,
+                        "Device does not support IMS");
             }
-            return mImsResolver.getMmTelFeatureAndListen(slotId, callback);
+            if (oneShot) {
+                mImsResolver.callBackIfExists(slotId, ImsFeature.FEATURE_MMTEL, callback);
+            } else {
+                mImsResolver.listenForFeature(slotId, ImsFeature.FEATURE_MMTEL, callback);
+            }
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
     }
-
-    /**
-     * Returns the {@link IImsRcsFeature} that corresponds to the given slot Id for the RCS
-     * feature during emergency calling or {@link null} if the service is not available. If the
-     * feature is available, the {@link IImsServiceFeatureCallback} callback is registered as a
-     * listener for feature updates.
-     */
-    public IImsRcsFeature getRcsFeatureAndListen(int slotId, IImsServiceFeatureCallback callback) {
-        enforceModifyPermission();
-
-        final long identity = Binder.clearCallingIdentity();
-        try {
-            if (mImsResolver == null) {
-                // may happen if the device does not support IMS.
-                return null;
-            }
-            return mImsResolver.getRcsFeatureAndListen(slotId, callback);
-        } finally {
-            Binder.restoreCallingIdentity(identity);
-        }
-    }
-
     /**
      * Unregister a previously registered IImsServiceFeatureCallback associated with an ImsFeature.
      */
-    public void unregisterImsFeatureCallback(int slotId, int featureType,
-            IImsServiceFeatureCallback callback) {
+    @Override
+    public void unregisterImsFeatureCallback(IImsServiceFeatureCallback callback) {
         enforceModifyPermission();
 
         final long identity = Binder.clearCallingIdentity();
         try {
             if (mImsResolver == null) return;
-            mImsResolver.unregisterImsFeatureCallback(slotId, featureType, callback);
+            mImsResolver.unregisterImsFeatureCallback(callback);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
