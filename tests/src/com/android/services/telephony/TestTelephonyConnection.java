@@ -241,12 +241,6 @@ public class TestTelephonyConnection extends TelephonyConnection {
         when(mImsCall.wasVideoCall()).thenReturn(wasVideoCall);
     }
 
-    @Override
-    boolean isWfcEnabled(Phone phone) {
-        // Requires ImsManager dependencies, mock for test.
-        return true;
-    }
-
     public int getNotifyPhoneAccountChangedCount() {
         return mNotifyPhoneAccountChangedCount;
     }
