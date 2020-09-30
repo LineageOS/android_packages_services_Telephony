@@ -100,8 +100,7 @@ public class RcsFeatureControllerTest extends TelephonyTestBase {
         verify(mMockFeature).onRcsConnected(mFeatureManager);
 
         // Disconnect
-        mConnectorListener.getValue().connectionUnavailable(
-                FeatureConnector.UNAVAILABLE_REASON_DISCONNECTED);
+        mConnectorListener.getValue().connectionUnavailable();
 
         verify(mFeatureManager).unregisterImsRegistrationCallback(any());
         verify(mMockFeature, times(2)).onRcsDisconnected();
@@ -194,8 +193,7 @@ public class RcsFeatureControllerTest extends TelephonyTestBase {
     public void testFeatureManagerDisconnectedAddFeature() {
         RcsFeatureController controller = createFeatureController();
         // Disconnect the RcsFeatureManager
-        mConnectorListener.getValue().connectionUnavailable(
-                FeatureConnector.UNAVAILABLE_REASON_DISCONNECTED);
+        mConnectorListener.getValue().connectionUnavailable();
         controller.addFeature(mMockFeature, RcsFeatureController.Feature.class);
 
         verify(mMockFeature).onRcsDisconnected();
@@ -207,8 +205,7 @@ public class RcsFeatureControllerTest extends TelephonyTestBase {
         IImsRegistrationCallback regCb = mock(IImsRegistrationCallback.class);
         IImsCapabilityCallback capCb = mock(IImsCapabilityCallback.class);
         // Disconnect the RcsFeatureManager
-        mConnectorListener.getValue().connectionUnavailable(
-                FeatureConnector.UNAVAILABLE_REASON_DISCONNECTED);
+        mConnectorListener.getValue().connectionUnavailable();
 
         try {
             controller.registerImsRegistrationCallback(0 /*subId*/, null /*callback*/);
