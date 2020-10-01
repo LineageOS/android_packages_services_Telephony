@@ -5053,8 +5053,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * callback.
      */
     @Override
-    public void registerMmTelFeatureCallback(int slotId, IImsServiceFeatureCallback callback,
-            boolean oneShot) {
+    public void registerMmTelFeatureCallback(int slotId, IImsServiceFeatureCallback callback) {
         enforceModifyPermission();
 
         final long identity = Binder.clearCallingIdentity();
@@ -5063,11 +5062,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 throw new ServiceSpecificException(ImsException.CODE_ERROR_UNSUPPORTED_OPERATION,
                         "Device does not support IMS");
             }
-            if (oneShot) {
-                mImsResolver.callBackIfExists(slotId, ImsFeature.FEATURE_MMTEL, callback);
-            } else {
-                mImsResolver.listenForFeature(slotId, ImsFeature.FEATURE_MMTEL, callback);
-            }
+            mImsResolver.listenForFeature(slotId, ImsFeature.FEATURE_MMTEL, callback);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
