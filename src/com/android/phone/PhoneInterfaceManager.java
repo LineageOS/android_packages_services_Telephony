@@ -5285,7 +5285,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
-   /**
+    /**
      * Ask the radio to connect to the input network and change selection mode to manual.
      *
      * @param subId the id of the subscription.
@@ -8821,5 +8821,26 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @Override
     public boolean canConnectTo5GInDsdsMode() {
         return mApp.getResources().getBoolean(R.bool.config_5g_connection_in_dsds_mode);
+    }
+
+    @Override
+    public @NonNull List<String> getEquivalentHomePlmns(int subId, String callingPackage,
+            String callingFeatureId) {
+        if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(
+                mApp, subId, callingPackage, callingFeatureId, "getEquivalentHomePlmns")) {
+            throw new SecurityException("Requires READ_PHONE_STATE permission.");
+        }
+
+        Phone phone = getPhone(subId);
+        if (phone == null) {
+            throw new RuntimeException("phone is not available");
+        }
+        // Now that all security checks passes, perform the operation as ourselves.
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return phone.getEquivalentHomePlmns();
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
     }
 }
