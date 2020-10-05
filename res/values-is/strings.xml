@@ -50,8 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"Aðeins aðalnotandinn má breyta talhólfsstillingum."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"Opnað var fyrir SIM-kortið. Verið er að opna símann…"</string>
     <string name="label_ndp" msgid="7617392683877410341">"PIN-númer SIM-korts til að opna síma"</string>
-    <!-- no translation found for label_phoneid (8775611434123577808) -->
-    <skip />
+    <string name="label_phoneid" msgid="8775611434123577808">"SIM-kort læst fyrir símafyrirtæki"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"Taka úr lás"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"Hunsa"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"Biður um að símkerfi sé opnað…"</string>
@@ -110,7 +109,7 @@
     <string name="sum_cfu_enabled" msgid="5806923046528144526">"Áframsendir öll símtöl í <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfu_enabled_no_number" msgid="7287752761743377930">"Ekki næst í númerið"</string>
     <string name="sum_cfu_disabled" msgid="5010617134210809853">"Slökkt"</string>
-    <string name="labelCFB" msgid="615265213360512768">"Þegar er á tali"</string>
+    <string name="labelCFB" msgid="615265213360512768">"Þegar það er á tali"</string>
     <string name="messageCFB" msgid="1958017270393563388">"Númeraval þegar síminn er á tali"</string>
     <string name="sum_cfb_enabled" msgid="332037613072049492">"Áframsendir í <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfb_disabled" msgid="3589913334164866035">"Slökkt"</string>
@@ -876,7 +875,6 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"Undirauðkenni sjálfgefins SIM-korts fyrir gögn:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Niðurhalsbandvídd (kb/sek.):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Upphleðslubandvídd (kb/sek.):"</string>
-    <string name="radio_info_signal_location_label" msgid="6188435197086550049">"Staðsetningarupplýsingar loftneta (úrelt):"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"LTE-rásarstilling:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Endurnýjunartíðni loftnetaupplýsinga:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Allar mælingarupplýsingar loftneta:"</string>

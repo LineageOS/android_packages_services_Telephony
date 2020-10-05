@@ -122,7 +122,7 @@
     <string name="labelCFNRc" msgid="4163399350778066013">"Jika tidak dapat dihubungi"</string>
     <string name="messageCFNRc" msgid="6980340731313007250">"Nombor apabila tidak dapat dihubungi"</string>
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"Memajukan ke <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
-    <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Mati"</string>
+    <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Dimatikan"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Pembawa anda tidak menyokong pelumpuhan pemajuan panggilan semasa telefon anda tidak boleh dihubungi."</string>
     <string name="registration_cf_forbidden" msgid="4386482610771190420">"Pembawa anda tidak menyokong pemajuan panggilan."</string>
     <string name="cdma_call_waiting" msgid="4565070960879673216">"Hidupkan panggilan menunggu?"</string>
@@ -875,7 +875,6 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"SubId SIM data lalai:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Lebar Jalur DL (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Lebar Jalur UL (kbps):"</string>
-    <string name="radio_info_signal_location_label" msgid="6188435197086550049">"Maklumat Lokasi Selular (ditamatkan):"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Konfigurasi Saluran Fizikal LTE:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Kadar Muat Semula Maklumat Selular:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Semua Maklumat Ukuran Selular:"</string>

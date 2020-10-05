@@ -578,7 +578,7 @@
     <string name="onscreenMergeCallsText" msgid="3692389519611225407">"Slå opkald sammen"</string>
     <string name="onscreenSwapCallsText" msgid="2682542150803377991">"Skift"</string>
     <string name="onscreenManageCallsText" msgid="1162047856081836469">"Administrer opkald"</string>
-    <string name="onscreenManageConferenceText" msgid="4700574060601755137">"Admin. konference"</string>
+    <string name="onscreenManageConferenceText" msgid="4700574060601755137">"Admin. møde"</string>
     <string name="onscreenAudioText" msgid="7224226735052019986">"Lyd"</string>
     <string name="onscreenVideoCallText" msgid="1743992456126258698">"Videoopkald"</string>
     <string name="importSimEntry" msgid="3892354284082689894">"Importer"</string>
@@ -812,7 +812,7 @@
     <string name="supp_service_additional_call_forwarded" msgid="8772753260008398632">"Det andet opkald er videresendt."</string>
     <string name="supp_service_additional_ect_connected" msgid="8525934162945220237">"Opkaldet blev tilsluttet ECT."</string>
     <string name="supp_service_additional_ect_connecting" msgid="7046240728781222753">"Opkaldet tilsluttes ECT."</string>
-    <string name="supp_service_call_on_hold" msgid="2836811319594503059">"Parkeret opkald."</string>
+    <string name="supp_service_call_on_hold" msgid="2836811319594503059">"Opkald på hold."</string>
     <string name="supp_service_call_resumed" msgid="3786864005920743546">"Opkaldet er genoptaget."</string>
     <string name="supp_service_deflected_call" msgid="7565979024562921707">"Opkaldet blev viderestillet."</string>
     <string name="supp_service_forwarded_call" msgid="6475776013771821457">"Videresendt opkald."</string>
@@ -875,7 +875,6 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"Under-id for standard-SIM-kort til data:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Båndbredde til download (kB/sek.):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Båndbredde til upload (kB/sek.):"</string>
-    <string name="radio_info_signal_location_label" msgid="6188435197086550049">"Oplysning om placering af celle (udfaset):"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Fysisk kanalkonfiguration for LTE:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Opdateringsfrekvens for celleoplysninger:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Alle oplysninger om cellemåling:"</string>

@@ -119,7 +119,7 @@
     <string name="sum_cfnry_enabled" msgid="3000500837493854799">"Прослеђује се на <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnry_disabled" msgid="1990563512406017880">"Искључено"</string>
     <string name="disable_cfnry_forbidden" msgid="3174731413216550689">"Оператер не подржава онемогућавање преусмеравања позива када се на позив не одговори."</string>
-    <string name="labelCFNRc" msgid="4163399350778066013">"Кад сам недоступан/а"</string>
+    <string name="labelCFNRc" msgid="4163399350778066013">"Кад сам недоступан/на"</string>
     <string name="messageCFNRc" msgid="6980340731313007250">"Број кад је недоступно"</string>
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"Прослеђује се на <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Искључено"</string>
@@ -878,7 +878,6 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"SubID подразумеваног SIM-а за податке:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DL пропусни опсег (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL пропусни опсег (kbps):"</string>
-    <string name="radio_info_signal_location_label" msgid="6188435197086550049">"Информације о локацији предајника (застарело):"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Конфигурација LTE физичког канала:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Учесталост освежавања информација о предајнику:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Све информације о мерењу за предајник:"</string>
