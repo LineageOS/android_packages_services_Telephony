@@ -1586,7 +1586,7 @@ abstract class TelephonyConnection extends Connection implements Holdable {
                 }
             }
 
-            isVowifiEnabled = ImsUtil.isWfcEnabled(phone.getContext(), phone.getPhoneId());
+            isVowifiEnabled = isWfcEnabled(phone);
         }
 
         if (isCurrentVideoCall) {
@@ -2724,7 +2724,7 @@ abstract class TelephonyConnection extends Connection implements Holdable {
         boolean isIms = phone.getPhoneType() == PhoneConstants.PHONE_TYPE_IMS;
         boolean isVoWifiEnabled = false;
         if (isIms) {
-            isVoWifiEnabled = ImsUtil.isWfcEnabled(phone.getContext(), phone.getPhoneId());
+            isVoWifiEnabled = isWfcEnabled(phone);
         }
         boolean isRttMergeSupported = getCarrierConfig()
                 .getBoolean(CarrierConfigManager.KEY_ALLOW_MERGING_RTT_CALLS_BOOL);
@@ -2793,6 +2793,12 @@ abstract class TelephonyConnection extends Connection implements Holdable {
             notifyConferenceSupportedChanged(isConferenceSupported);
         }
     }
+
+    @VisibleForTesting
+    boolean isWfcEnabled(Phone phone) {
+        return ImsUtil.isWfcEnabled(phone.getContext(), phone.getPhoneId());
+    }
+
     /**
      * Provides a mapping from extras keys which may be found in the
      * {@link com.android.internal.telephony.Connection} to their equivalents defined in
