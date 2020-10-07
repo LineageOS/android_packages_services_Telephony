@@ -169,6 +169,12 @@ public class TestTelephonyConnection extends TelephonyConnection {
         // Requires ImsManager dependencies, do not implement during testing.
     }
 
+    @Override
+    boolean isWfcEnabled(Phone phone) {
+        // Requires ImsManager dependencies, mock for test.
+        return true;
+    }
+
     public int getNotifyPhoneAccountChangedCount() {
         return mNotifyPhoneAccountChangedCount;
     }

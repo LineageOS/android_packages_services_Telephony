@@ -20,7 +20,9 @@ import android.annotation.AnyThread;
 import android.content.Context;
 import android.net.Uri;
 import android.telephony.ims.ImsException;
+import android.telephony.ims.ImsRcsManager;
 import android.telephony.ims.ImsReasonInfo;
+import android.telephony.ims.RegistrationManager;
 import android.telephony.ims.aidl.IImsCapabilityCallback;
 import android.telephony.ims.aidl.IImsRegistrationCallback;
 import android.telephony.ims.stub.ImsRegistrationImplBase;
@@ -28,7 +30,7 @@ import android.util.ArrayMap;
 import android.util.Log;
 
 import com.android.ims.FeatureConnector;
-import com.android.ims.IFeatureConnector;
+import com.android.ims.FeatureUpdates;
 import com.android.ims.RcsFeatureManager;
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.telephony.imsphone.ImsRegistrationCallbackHelper;
@@ -78,13 +80,13 @@ public class RcsFeatureController {
      * Used to inject FeatureConnector instances for testing.
      */
     @VisibleForTesting
-    public interface FeatureConnectorFactory<T extends IFeatureConnector> {
+    public interface FeatureConnectorFactory<U extends FeatureUpdates> {
         /**
-         * @return a {@link FeatureConnector} associated for the given {@link IFeatureConnector}
-         * and slot id.
+         * @return a {@link FeatureConnector} associated for the given {@link FeatureUpdates}
+         * and slot index.
          */
-        FeatureConnector<T> create(Context context, int slotId,
-                FeatureConnector.Listener<T> listener, Executor executor, String tag);
+        FeatureConnector<U> create(Context context, int slotIndex,
+                FeatureConnector.Listener<U> listener, Executor executor, String logPrefix);
     }
 
     /**
@@ -100,7 +102,8 @@ public class RcsFeatureController {
                 ImsRegistrationCallbackHelper.ImsRegistrationUpdate cb, Executor executor);
     }
 
-    private FeatureConnectorFactory<RcsFeatureManager> mFeatureFactory = FeatureConnector::new;
+    private FeatureConnectorFactory<RcsFeatureManager> mFeatureFactory =
+            RcsFeatureManager::getConnector;
     private RegistrationHelperFactory mRegistrationHelperFactory =
             ImsRegistrationCallbackHelper::new;
 
@@ -114,11 +117,6 @@ public class RcsFeatureController {
 
     private FeatureConnector.Listener<RcsFeatureManager> mFeatureConnectorListener =
             new FeatureConnector.Listener<RcsFeatureManager>() {
-                @Override
-                public RcsFeatureManager getFeatureManager() {
-                    return new RcsFeatureManager(mContext, mSlotId);
-                }
-
                 @Override
                 public void connectionReady(RcsFeatureManager manager)
                         throws com.android.ims.ImsException {
@@ -140,7 +138,10 @@ public class RcsFeatureController {
                 }
 
                 @Override
-                public void connectionUnavailable() {
+                public void connectionUnavailable(int reason) {
+                    if (reason == FeatureConnector.UNAVAILABLE_REASON_SERVER_UNAVAILABLE) {
+                        loge("unexpected - connectionUnavailable due to server unavailable");
+                    }
                     // Call before disabling connection to manager.
                     removeConnectionToService();
                     updateConnectionStatus(null /*manager*/);
@@ -279,7 +280,7 @@ public class RcsFeatureController {
     }
 
     @VisibleForTesting
-    public void setFeatureConnectorFactory(FeatureConnectorFactory factory) {
+    public void setFeatureConnectorFactory(FeatureConnectorFactory<RcsFeatureManager> factory) {
         mFeatureFactory = factory;
     }
 
@@ -431,6 +432,10 @@ public class RcsFeatureController {
 
     private void logw(String log) {
         Log.w(LOG_TAG, getLogPrefix().append(log).toString());
+    }
+
+    private void loge(String log) {
+        Log.e(LOG_TAG, getLogPrefix().append(log).toString());
     }
 
     private StringBuilder getLogPrefix() {
