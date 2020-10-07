@@ -358,8 +358,7 @@ public class ImsRcsController extends IImsRcsController.Stub {
      * callback.
      */
     @Override
-    public void registerRcsFeatureCallback(int slotId, IImsServiceFeatureCallback callback,
-            boolean oneShot) {
+    public void registerRcsFeatureCallback(int slotId, IImsServiceFeatureCallback callback) {
         enforceModifyPermission();
 
         final long identity = Binder.clearCallingIdentity();
@@ -368,15 +367,12 @@ public class ImsRcsController extends IImsRcsController.Stub {
                 throw new ServiceSpecificException(ImsException.CODE_ERROR_UNSUPPORTED_OPERATION,
                         "Device does not support IMS");
             }
-            if (oneShot) {
-                mImsResolver.callBackIfExists(slotId, ImsFeature.FEATURE_RCS, callback);
-            } else {
-                mImsResolver.listenForFeature(slotId, ImsFeature.FEATURE_RCS, callback);
-            }
+            mImsResolver.listenForFeature(slotId, ImsFeature.FEATURE_RCS, callback);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
     }
+
     /**
      * Unregister a previously registered IImsServiceFeatureCallback associated with an ImsFeature.
      */
