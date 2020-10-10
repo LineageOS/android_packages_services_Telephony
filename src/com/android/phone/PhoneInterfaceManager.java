@@ -8430,7 +8430,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      *  1) user data is turned on, or
      *  2) APN is un-metered for this subscription, or
      *  3) APN type is whitelisted. E.g. MMS is whitelisted if
-     *  {@link TelephonyManager#setAlwaysAllowMmsData} is turned on.
+     *  {@link TelephonyManager#MOBILE_DATA_POLICY_MMS_ALWAYS_ALLOWED} is enabled.
      *
      * @return whether data is allowed for a apn type.
      *
@@ -8572,55 +8572,54 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public boolean setDataAllowedDuringVoiceCall(int subId, boolean allow) {
-        enforceModifyPermission();
+    public boolean isMobileDataPolicyEnabled(int subscriptionId, int policy) {
+        enforceReadPrivilegedPermission("isMobileDataPolicyEnabled");
 
-        // Now that all security checks passes, perform the operation as ourselves.
         final long identity = Binder.clearCallingIdentity();
         try {
-            Phone phone = getPhone(subId);
+            Phone phone = getPhone(subscriptionId);
             if (phone == null) return false;
 
-            return phone.getDataEnabledSettings().setAllowDataDuringVoiceCall(allow);
+            switch (policy) {
+                case TelephonyManager.MOBILE_DATA_POLICY_DATA_ON_NON_DEFAULT_DURING_VOICE_CALL:
+                    return phone.getDataEnabledSettings().isDataAllowedInVoiceCall();
+                case TelephonyManager.MOBILE_DATA_POLICY_MMS_ALWAYS_ALLOWED:
+                    return phone.getDataEnabledSettings().isMmsAlwaysAllowed();
+                default:
+                    throw new IllegalArgumentException(policy + " is not a valid policy");
+            }
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
     }
 
     @Override
-    public boolean isDataAllowedInVoiceCall(int subId) {
-        enforceReadPrivilegedPermission("isDataAllowedInVoiceCall");
-
-        // Now that all security checks passes, perform the operation as ourselves.
-        final long identity = Binder.clearCallingIdentity();
-        try {
-            Phone phone = getPhone(subId);
-            if (phone == null) return false;
-
-            return phone.getDataEnabledSettings().isDataAllowedInVoiceCall();
-        } finally {
-            Binder.restoreCallingIdentity(identity);
-        }
-    }
-
-    @Override
-    public boolean setAlwaysAllowMmsData(int subId, boolean alwaysAllow) {
+    public void setMobileDataPolicyEnabledStatus(int subscriptionId, int policy,
+            boolean enabled) {
         enforceModifyPermission();
 
-        // Now that all security checks passes, perform the operation as ourselves.
         final long identity = Binder.clearCallingIdentity();
         try {
-            Phone phone = getPhone(subId);
-            if (phone == null) return false;
+            Phone phone = getPhone(subscriptionId);
+            if (phone == null) return;
 
-            return phone.getDataEnabledSettings().setAlwaysAllowMmsData(alwaysAllow);
+            switch (policy) {
+                case TelephonyManager.MOBILE_DATA_POLICY_DATA_ON_NON_DEFAULT_DURING_VOICE_CALL:
+                    phone.getDataEnabledSettings().setAllowDataDuringVoiceCall(enabled);
+                    break;
+                case TelephonyManager.MOBILE_DATA_POLICY_MMS_ALWAYS_ALLOWED:
+                    phone.getDataEnabledSettings().setAlwaysAllowMmsData(enabled);
+                    break;
+                default:
+                    throw new IllegalArgumentException(policy + " is not a valid policy");
+            }
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
     }
 
     /**
-     * Updates whether conference event pacakge handling is enabled.
+     * Updates whether conference event package handling is enabled.
      * @param isCepEnabled {@code true} if CEP handling is enabled (default), or {@code false}
      *                                 otherwise.
      */
