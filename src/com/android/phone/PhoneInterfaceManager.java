@@ -1086,13 +1086,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     }
                     break;
 
-                case EVENT_GET_MODEM_ACTIVITY_INFO_DONE:
+                case EVENT_GET_MODEM_ACTIVITY_INFO_DONE: {
                     ar = (AsyncResult) msg.obj;
                     request = (MainThreadRequest) ar.userObj;
                     ResultReceiver result = (ResultReceiver) request.argument;
 
-                    ModemActivityInfo ret = new ModemActivityInfo(0, 0, 0,
-                            new int[ModemActivityInfo.getNumTxPowerLevels()], 0);
+                    ModemActivityInfo ret = null;
+                    int error = 0;
                     if (ar.exception == null && ar.result != null) {
                         // Update the last modem activity info and the result of the request.
                         ModemActivityInfo info = (ModemActivityInfo) ar.result;
@@ -1122,18 +1122,29 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     } else {
                         if (ar.result == null) {
                             loge("queryModemActivityInfo: Empty response");
+                            error = TelephonyManager.ModemActivityInfoException
+                                    .ERROR_INVALID_INFO_RECEIVED;
                         } else if (ar.exception instanceof CommandException) {
                             loge("queryModemActivityInfo: CommandException: " +
                                     ar.exception);
+                            error = TelephonyManager.ModemActivityInfoException
+                                    .ERROR_MODEM_RESPONSE_ERROR;
                         } else {
                             loge("queryModemActivityInfo: Unknown exception");
+                            error = TelephonyManager.ModemActivityInfoException
+                                    .ERROR_UNKNOWN;
                         }
                     }
                     Bundle bundle = new Bundle();
-                    bundle.putParcelable(TelephonyManager.MODEM_ACTIVITY_RESULT_KEY, ret);
+                    if (ret != null) {
+                        bundle.putParcelable(TelephonyManager.MODEM_ACTIVITY_RESULT_KEY, ret);
+                    } else {
+                        bundle.putInt(TelephonyManager.EXCEPTION_RESULT_KEY, error);
+                    }
                     result.send(0, bundle);
                     notifyRequester(request);
                     break;
+                }
 
                 case CMD_SET_ALLOWED_CARRIERS:
                     request = (MainThreadRequest) msg.obj;
