@@ -8045,11 +8045,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         try {
             for (Phone phone: PhoneFactory.getPhones()) {
                 if (phone.getEmergencyNumberTracker() != null
-                        && phone.getEmergencyNumberTracker() != null) {
-                    if (phone.getEmergencyNumberTracker().isEmergencyNumber(
-                            number, exactMatch)) {
-                        return true;
-                    }
+                        && phone.getEmergencyNumberTracker()
+                                .isEmergencyNumber(number, exactMatch)) {
+                    return true;
                 }
             }
             return false;
