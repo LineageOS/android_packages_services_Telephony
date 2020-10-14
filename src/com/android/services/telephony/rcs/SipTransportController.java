@@ -17,8 +17,15 @@
 package com.android.services.telephony.rcs;
 
 import android.content.Context;
+import android.telephony.ims.DelegateRequest;
 import android.telephony.ims.ImsException;
 import android.telephony.ims.ImsService;
+import android.telephony.ims.aidl.ISipDelegate;
+import android.telephony.ims.aidl.ISipDelegateConnectionStateCallback;
+import android.telephony.ims.aidl.ISipDelegateMessageCallback;
+import android.telephony.ims.stub.DelegateConnectionMessageCallback;
+import android.telephony.ims.stub.DelegateConnectionStateCallback;
+import android.telephony.ims.stub.SipDelegate;
 import android.util.Log;
 
 import com.android.ims.RcsFeatureManager;
@@ -97,6 +104,37 @@ public class SipTransportController implements RcsFeatureController.Feature {
     public void onDestroy() {
         // Can be null in testing.
         mExecutorService.shutdownNow();
+    }
+
+    /**
+     * Optionally create a new {@link SipDelegate} based off of the {@link DelegateRequest} given
+     * based on the state of this controller and associate it with the given callbacks.
+     * <p>
+     * Once the {@link SipDelegate} has been created,
+     * {@link ISipDelegateConnectionStateCallback#onCreated(ISipDelegate)} must be called with
+     * the AIDL instance corresponding to the remote {@link SipDelegate}.
+     * @param subId the subId associated with the request.
+     * @param request The request parameters used to create the {@link SipDelegate}.
+     * @param delegateState The {@link DelegateConnectionStateCallback} Binder connection.
+     * @param delegateMessage The {@link DelegateConnectionMessageCallback} Binder Connection
+     * @throws ImsException if the request to create the {@link SipDelegate} did not complete.
+     */
+    public void createSipDelegate(int subId, DelegateRequest request,
+            ISipDelegateConnectionStateCallback delegateState,
+            ISipDelegateMessageCallback delegateMessage) throws ImsException {
+        // TODO implementation.
+        throw new ImsException("createSipDelegate is not supported yet",
+                ImsException.CODE_ERROR_UNSUPPORTED_OPERATION);
+    }
+
+    /**
+     * The remote IMS application has requested the destruction of an existing {@link SipDelegate}.
+     * @param subId The subId associated with the request.
+     * @param connection The internal Binder connection associated with the {@link SipDelegate}.
+     * @param reason The reason for why the {@link SipDelegate} was destroyed.
+     */
+    public void destroySipDelegate(int subId, ISipDelegate connection, int reason) {
+        // TODO implementation
     }
 
     /**
