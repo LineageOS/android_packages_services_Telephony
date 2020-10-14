@@ -16,6 +16,8 @@
 
 package com.android.services.telephony;
 
+import android.telephony.TelephonyManager;
+
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
@@ -65,6 +67,9 @@ public class TestTelephonyConnection extends TelephonyConnection {
 
     @Mock
     Resources mMockResources;
+
+    @Mock
+    TelephonyManager mMockTelephonyManager;
 
     @Mock
     EmergencyNumberTracker mEmergencyNumberTracker;
@@ -117,7 +122,7 @@ public class TestTelephonyConnection extends TelephonyConnection {
         mIsImsExternalConnection = false;
         mMockPhone = mock(Phone.class);
         mMockContext = mock(Context.class);
-        mTelecomAccountRegistry = mock(TelecomAccountRegistry.class);
+        mMockTelephonyManager = mock(TelephonyManager.class);
         mOriginalConnection = mMockRadioConnection;
         // Set up mMockRadioConnection and mMockPhone to contain an active call
         when(mMockRadioConnection.getState()).thenReturn(Call.State.ACTIVE);
@@ -138,6 +143,8 @@ public class TestTelephonyConnection extends TelephonyConnection {
         when(mMockPhone.getContext()).thenReturn(mMockContext);
         when(mMockPhone.getCurrentSubscriberUris()).thenReturn(null);
         when(mMockContext.getResources()).thenReturn(mMockResources);
+        when(mMockContext.getSystemService(Context.TELEPHONY_SERVICE))
+                .thenReturn(mMockTelephonyManager);
         when(mMockResources.getBoolean(anyInt())).thenReturn(false);
         when(mMockPhone.getDefaultPhone()).thenReturn(mMockPhone);
         when(mMockPhone.getPhoneType()).thenReturn(PhoneConstants.PHONE_TYPE_IMS);
