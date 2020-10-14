@@ -1325,7 +1325,9 @@ abstract class TelephonyConnection extends Connection implements Holdable {
                 setCallerDisplayName(name, namePresentation);
             }
 
-            if (PhoneNumberUtils.isEmergencyNumber(mOriginalConnection.getAddress())) {
+            TelephonyManager tm = (TelephonyManager) getPhone().getContext()
+                    .getSystemService(Context.TELEPHONY_SERVICE);
+            if (tm.isEmergencyNumber(mOriginalConnection.getAddress())) {
                 mTreatAsEmergencyCall = true;
             }
 
@@ -1388,7 +1390,9 @@ abstract class TelephonyConnection extends Connection implements Holdable {
             mHandler.obtainMessage(MSG_CONNECTION_EXTRAS_CHANGED, connExtras == null ? null :
                     new Bundle(connExtras)).sendToTarget();
 
-        if (PhoneNumberUtils.isEmergencyNumber(mOriginalConnection.getAddress())) {
+        TelephonyManager tm = (TelephonyManager) getPhone().getContext()
+                .getSystemService(Context.TELEPHONY_SERVICE);
+        if (tm.isEmergencyNumber(mOriginalConnection.getAddress())) {
             mTreatAsEmergencyCall = true;
         }
         // Propagate VERSTAT for IMS calls.
