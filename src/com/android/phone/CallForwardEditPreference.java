@@ -384,7 +384,9 @@ public class CallForwardEditPreference extends EditPhoneNumberPreference {
                 CallForwardInfo cfInfoArray[] = (CallForwardInfo[]) ar.result;
                 if (cfInfoArray == null || cfInfoArray.length == 0) {
                     Log.d(LOG_TAG, "handleGetCFResponse: cfInfoArray.length==0");
-                    mTcpListener.onError(CallForwardEditPreference.this, RESPONSE_ERROR);
+                    if (!(ar.userObj instanceof Throwable)) {
+                        mTcpListener.onError(CallForwardEditPreference.this, RESPONSE_ERROR);
+                    }
                 } else {
                     for (int i = 0, length = cfInfoArray.length; i < length; i++) {
                         Log.d(LOG_TAG, "handleGetCFResponse, cfInfoArray[" + i + "]="
