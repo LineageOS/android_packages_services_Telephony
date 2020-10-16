@@ -17,6 +17,8 @@
     <string name="private_num">Àireamh phrìobhaideach</string>
     <string name="audio_mode_speaker">Glaodhaire</string>
     <string name="add_vm_number_str">Cuir àireamh ris</string>
+    <string name="mobile_network_settings_not_available">Chan eil roghainnean lìonra mobile ri fhaighinn airson a’ cleachdaiche seo</string>
+    <string name="phone_accounts_default_account_label">Chan eil lìonra ri làimh</string>
     <string name="phone_accounts_settings_header">Roghainnean</string>
     <string name="voicemail">Post-gutha</string>
     <string name="additional_gsm_call_settings">Barrachd roghainnean</string>
@@ -34,6 +36,7 @@
     <string name="labelCFNRc">Nuair nach gabh a ruigsinn</string>
     <string name="messageCFNRc">An àireamh mura gabh a ruigsinn</string>
     <string name="sum_cfnrc_disabled">Dheth</string>
+    <string name="call_settings_admin_user_only">Chan urrainn ach cleachdaiche a tha ’na rianaire na roghainnean atharrachadh air na gairmean.</string>
     <string name="stk_cc_ss_to_dial_error">Chaidh iarrtas SS atharrachadh gu gairm àbhaisteach</string>
     <string name="stk_cc_ss_to_ussd_error">Chaidh iarrtas SS atharrachadh gu iarrtas USSD</string>
     <string name="stk_cc_ss_to_ss_error">Chaidh atharrachadh gu iarrtas SS ùr</string>
@@ -45,6 +48,14 @@
         <item>Falaich an àireamh</item>
         <item>Seall an àireamh</item>
     </string-array>
+    <string name="vm_change_pin_progress_message">Fuirich ort.</string>
+    <string name="vm_change_pin_error_too_short">Tha an am PIN ùr ro ghoirid.</string>
+    <string name="vm_change_pin_error_too_long">Tha an am PIN ùr ro fhada.</string>
+    <string name="vm_change_pin_error_too_weak">Tha am PIN ùr ro lag. Cha bu chòir do shreath leantainneach a bhith a broinn facail-fhaire no an t-aon àireamh a-rithist.</string>
+    <string name="vm_change_pin_error_mismatch">Chan eil an seann PIN co-ionnann</string>
+    <string name="vm_change_pin_error_invalid">Tha caractaran mì-dhligheach sa PhIN ùr.</string>
+    <string name="vm_change_pin_error_system_error">Cha deach leinn am PIN atharrachadh</string>
+    <string name="vvm_unsupported_message_format">Cha chuirear taic ris an seòrsa de theachdaireachd seo, cuir fòn gu <xliff:g id="number" example="*86">%s</xliff:g> airson èisteachd.</string>
     <string name="network_query_error">Cha do lorg sinn lìonra. Feuch ris a-rithist.</string>
     <string name="already_auto">Tha sinn ’ga thaghadh gu fèin-obrachail mu thràth.</string>
     <string name="choose_network_title">Tagh lìonraidh</string>
@@ -66,7 +77,7 @@
         <item>Uile-choitcheann</item>
         <item>LTE</item>
         <item>LTE / WCDMA</item>
-        <item>TDSCDMA only</item>
+        <item>TDSCDMA a-mhàin</item>
         <item>TDSCDMA/WCDMA</item>
         <item>LTE/TDSCDMA</item>
         <item>TDSCDMA/GSM</item>
@@ -77,6 +88,15 @@
         <item>TDSCDMA/CDMA/EVDO/GSM/WCDMA </item>
         <item>LTE/TDSCDMA/CDMA/EVDO/GSM/WCDMA</item>
     </string-array>
+    <string name="preferred_network_mode_tdscdma_wcdma_summary">Modh lìonraidh as annsa: TDSCDMA / WCDMA</string>
+    <string name="preferred_network_mode_lte_tdscdma_summary">Modh lìonraidh as annsa: LTE / TDSCDMA</string>
+    <string name="preferred_network_mode_tdscdma_gsm_summary">Modh lìonraidh as annsa: TDSCDMA / GSM</string>
+    <string name="preferred_network_mode_lte_tdscdma_gsm_summary">Modh lìonraidh as annsa: LTE/GSM/TDSCDMA</string>
+    <string name="preferred_network_mode_tdscdma_gsm_wcdma_summary">Modh lìonraidh as annsa: TDSCDMA/GSM/WCDMA</string>
+    <string name="preferred_network_mode_lte_tdscdma_wcdma_summary">Modh lìonraidh as annsa: LTE/TDSCDMA/WCDMA</string>
+    <string name="preferred_network_mode_lte_tdscdma_gsm_wcdma_summary">Modh lìonraidh as annsa: LTE/TDSCDMA/GSM/WCDMA</string>
+    <string name="preferred_network_mode_tdscdma_cdma_evdo_gsm_wcdma_summary">Modh lìonraidh as annsa: TDSCDMA/CDMA/EvDo/GSM/WCDMA</string>
+    <string name="preferred_network_mode_lte_tdscdma_cdma_evdo_gsm_wcdma_summary">Modh lìonraidh as annsa: LTE/TDSCDMA/CDMA/EvDo/GSM/WCDMA</string>
     <string name="dialog_alert_title">An aire</string>
     <string name="roaming_reenable_message">Tha dàta air fàrsan dheth. Thoir gnogag airson a chur air.</string>
     <string name="roaming_notification_title">Chaill sinn an ceangal ri dàta mobile</string>
@@ -115,6 +135,11 @@
     <string name="card_title_call_ended">Crìoch na gairm</string>
     <string name="notification_voicemail_title">Post-gutha ùr</string>
     <string name="notification_network_selection_title">Gun seirbheis</string>
+    <string name="incall_error_out_of_service">Chan eil lìonra mobile ri làimh.</string>
+    <string name="incall_error_out_of_service_wfc">Chan eil lìonra mobile ri làimh. Ceangail ri lìonra uèirleas gus gairm a dhèanamh.</string>
+    <string name="incall_error_call_failed">Dh’fhàillig leis a’ ghairm.</string>
+    <string name="incall_error_supp_service_hold">Cha ghabh gairmean a chumail.</string>
+    <string name="incall_error_promote_wfc">Cuir an comas gairmean WiFi airson gairm a dhèanamh.</string>
     <string name="emergency_information_hint">Fiosrachadh èiginn</string>
     <string name="emergency_information_owner_hint">Seilbheadair</string>
     <string name="emergency_information_confirm_hint">Thoir gnogag air a-rithist gus coimhead air an fhiosrachadh</string>
@@ -123,6 +148,7 @@
     <string name="single_emergency_number_title">Àireamh èiginn</string>
     <string name="numerous_emergency_numbers_title">Àireamhan èiginn</string>
     <string name="emergency_call_shortcut_hint">Thoir gnogag air a-rithist gus fòn a chur gu <xliff:g id="emergency_number">%s</xliff:g></string>
+    <string name="radio_off_during_emergency_call">Chan urrainn dhut am modh itealain a chur air rè gairm-èiginn.</string>
     <string name="dial_emergency_calling_not_available">Chan eil gairmean èiginn ri làimh</string>
     <string name="police_type_description">Am poileas</string>
     <string name="ambulance_type_description">Carbad-eiridinn</string>
@@ -133,6 +159,8 @@
     <string name="onscreenVideoCallText">Gairm video</string>
     <string name="importSimEntry">Ion-phortaich</string>
     <string name="importAllSimEntries">Ion-phortaich na h-uile</string>
+    <string name="singleContactImportedMsg">Neach-aithne a chaidh ion-phortadh</string>
+    <string name="failedToImportSingleContactMsg">Dh’fhàillig ion-phortadh an neach-aithne</string>
     <string name="rtt_mode_title">Gairm teacsa fìor-ama (RTT)</string>
     <string name="rtt_mode_summary">Ceadaich teachdaireachdan le gairm gutha</string>
     <string name="rtt_mode_more_information">       Cuidichidh RTT luchd-gairm bodhar, sa bheil èisteachd bheag, aig a bheil ciorram bruidhinn
@@ -152,9 +180,25 @@
     <string name="voicemail_settings">Suidheachadh</string>
     <string name="description_dialpad_button">seall pada nan àireamhan</string>
     <string name="pane_title_emergency_dialpad">Pada àireamhan èiginn</string>
+    <string name="voicemail_set_pin_dialog_title">Suidhich am PIN</string>
     <string name="voicemail_change_pin_dialog_title">Atharraich am PIN</string>
     <string name="enable_video_calling_dialog_close">Dùin</string>
     <string name="accessibility_settings_activity_title">So-ruigsinneachd</string>
+    <string name="status_hint_label_incoming_wifi_call">Gairm WiFi o</string>
+    <string name="emergency_action_launch_hint">Thoir gnogag air a-rithist gus fhosgladh</string>
+    <string name="callFailed_cdma_call_limit">        Tha cus ghairmean gnìomhach ann. Cuir crìoch air gairm no co-aonaich cuid dhen fheadhainn a tha ann mus cuir thu tè ùr.
+    </string>
+    <string name="change_pin_title">Atharraich PIN a’ phuist-gutha</string>
+    <string name="change_pin_continue_label">Lean air adhart</string>
+    <string name="change_pin_ok_label">Ceart ma-thà</string>
+    <string name="change_pin_enter_old_pin_header">Dearbh an seann PIN agad</string>
+    <string name="change_pin_enter_old_pin_hint">Cuir a-steach PIN a’ phuist-ghutha agad a leantainn air adhart.</string>
+    <string name="change_pin_enter_new_pin_header">Suidhich PIN ùr</string>
+    <string name="change_pin_enter_new_pin_hint">Feumaidh <xliff:g id="min" example="4">%1$d</xliff:g>-<xliff:g id="max" example="7">%2$d</xliff:g> àireamhan a bhith sa PhIN.</string>
+    <string name="change_pin_confirm_pin_header">Dearbh am PIN agad</string>
+    <string name="change_pin_confirm_pins_dont_match">Chan eil an dà PhIN co-ionnann</string>
+    <string name="change_pin_succeeded">Chaidh PIN a’ phuist-ghutha ùrachadh</string>
+    <string name="change_pin_system_error">Cha b’ urrainn dhuinn am PIN a shuidheachadh</string>
     <string name="clh_card_title_call_ended_txt">Crìoch na gairm</string>
     <string name="clh_callFailed_powerOff_txt">Tha an rèidio dheth</string>
     <string name="clh_callFailed_simError_txt">Chan eil cairt SIM ann no thachair mearachd leis a’ chairt SIM</string>
