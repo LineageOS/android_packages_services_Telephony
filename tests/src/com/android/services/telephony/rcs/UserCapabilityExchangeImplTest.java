@@ -32,7 +32,10 @@ import android.os.Looper;
 import android.os.RemoteCallbackList;
 import android.telephony.ims.ImsManager;
 import android.telephony.ims.ImsMmTelManager;
+import android.telephony.ims.RcsContactPresenceTuple;
+import android.telephony.ims.RcsContactPresenceTuple.ServiceCapabilities;
 import android.telephony.ims.RcsContactUceCapability;
+import android.telephony.ims.RcsContactUceCapability.PresenceBuilder;
 import android.telephony.ims.RegistrationManager;
 import android.telephony.ims.aidl.IRcsUceControllerCallback;
 import android.telephony.ims.aidl.IRcsUcePublishStateCallback;
@@ -165,8 +168,7 @@ public class UserCapabilityExchangeImplTest extends TelephonyTestBase {
         int taskId = 1;
         int sipResponse = 200;
         Uri contact = Uri.fromParts("sip", "test", null);
-        RcsContactUceCapability.Builder builder = new RcsContactUceCapability.Builder(contact);
-        RcsContactUceCapability capability = builder.build();
+        RcsContactUceCapability capability = getRcsContactUceCapability(contact);
 
         UserCapabilityExchangeImpl uceImpl = createUserCapabilityExchangeImpl();
         uceImpl.onRcsConnected(mRcsFeatureManager);
@@ -190,8 +192,7 @@ public class UserCapabilityExchangeImplTest extends TelephonyTestBase {
     public void testRequestPublicationWithFailedResponse() throws Exception {
         int taskId = 1;
         Uri contact = Uri.fromParts("sip", "test", null);
-        RcsContactUceCapability.Builder builder = new RcsContactUceCapability.Builder(contact);
-        RcsContactUceCapability capability = builder.build();
+        RcsContactUceCapability capability = getRcsContactUceCapability(contact);
 
         UserCapabilityExchangeImpl uceImpl = createUserCapabilityExchangeImpl();
         uceImpl.onRcsConnected(mRcsFeatureManager);
@@ -208,6 +209,22 @@ public class UserCapabilityExchangeImplTest extends TelephonyTestBase {
         assertEquals(ResultCode.SUCCESS, result);
         verify(mPresencePublication).onCommandStatusUpdated(taskId, taskId,
                 ResultCode.PUBLISH_GENERIC_FAILURE);
+    }
+
+    private RcsContactUceCapability getRcsContactUceCapability(Uri contact) {
+        ServiceCapabilities.Builder servCapsBuilder = new ServiceCapabilities.Builder(true, true);
+        servCapsBuilder.addSupportedDuplexMode(ServiceCapabilities.DUPLEX_MODE_FULL);
+
+        RcsContactPresenceTuple.Builder tupleBuilder = new RcsContactPresenceTuple.Builder(
+                RcsContactPresenceTuple.TUPLE_BASIC_STATUS_OPEN,
+                RcsContactPresenceTuple.SERVICE_ID_MMTEL, "1.0");
+        tupleBuilder.addContactUri(contact).addServiceCapabilities(servCapsBuilder.build());
+
+        PresenceBuilder presenceBuilder = new PresenceBuilder(contact,
+                RcsContactUceCapability.SOURCE_TYPE_CACHED,
+                RcsContactUceCapability.REQUEST_RESULT_FOUND);
+        presenceBuilder.addCapabilityTuple(tupleBuilder.build());
+        return presenceBuilder.build();
     }
 
     @Test
