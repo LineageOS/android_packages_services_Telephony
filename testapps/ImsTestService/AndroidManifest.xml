@@ -21,7 +21,7 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <!--Beware, declaring the below permission will cause the device to not boot unless you add
         this app and permission to frameworks/base/data/etc/privapp-permissions-platform.xml-->
-    <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE"/>
+    <!--uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE"/-->
     <application android:label="ImsTestService"
          android:directBootAware="true">
         <activity android:name=".ImsTestServiceApp"
