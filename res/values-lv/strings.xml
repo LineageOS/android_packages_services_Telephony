@@ -50,8 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"Tikai galvenais lietotājs var mainīt balss pasta iestatījumus."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"SIM karte ir atbloķēta. Notiek tālruņa atbloķēšana..."</string>
     <string name="label_ndp" msgid="7617392683877410341">"SIM tīkla atbloķēšanas PIN"</string>
-    <!-- no translation found for label_phoneid (8775611434123577808) -->
-    <skip />
+    <string name="label_phoneid" msgid="8775611434123577808">"SIM karte ir bloķēta operatoram"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"Atbloķēt"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"Noraidīt"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"Notiek tīkla atbloķēšanas pieprasīšana..."</string>
@@ -879,7 +878,6 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"Noklusējuma datu SIM kartes papildu ID:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DL joslas platums (kb/s):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL joslas platums (kb/s):"</string>
-    <string name="radio_info_signal_location_label" msgid="6188435197086550049">"Mobilā tālruņa atrašanās vietas informācija (novecojusi):"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"LTE fiziskā kanāla konfigurācija:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Mobilā tīkla informācijas atsvaidzināšanas biežums:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Visa mobilā tīkla mērījumu informācija:"</string>

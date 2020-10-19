@@ -48,7 +48,7 @@
     <string name="no_vm_number_msg" msgid="5165161462411372504">"SIM-картада сакталган үн почтасынын номери жок."</string>
     <string name="add_vm_number_str" msgid="7368168964435881637">"Номер кошуу"</string>
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"Үн почта жөндөөлөрүн алгачкы колдонуучу гана өзгөртө алат."</string>
-    <string name="puk_unlocked" msgid="4627340655215746511">"SIM-картаңыз бөгөттөн чыгарылган. Телефонуңуздун кулпусу ачылууда…"</string>
+    <string name="puk_unlocked" msgid="4627340655215746511">"SIM картаңыз бөгөттөн чыгарылган. Телефонуңуздун кулпусу ачылууда…"</string>
     <string name="label_ndp" msgid="7617392683877410341">"SIM-карта тармагынын кулпусун ачуучу PIN код"</string>
     <string name="label_phoneid" msgid="8775611434123577808">"SIM-карта оператор үчүн кулпуланган"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"Кулпусун ачуу"</string>
@@ -178,7 +178,7 @@
     <string name="empty_networks_list" msgid="9216418268008582342">"Эч тармак табылган жок."</string>
     <string name="network_query_error" msgid="3862515805115145124">"Тармактар табылбай койду. Кайталап көрүңүз."</string>
     <string name="register_on_network" msgid="4194770527833960423">"<xliff:g id="NETWORK">%s</xliff:g> тармагына катталууда…"</string>
-    <string name="not_allowed" msgid="8541221928746104798">"Сиздин SIM-картаңыз бул түйүнгө кошулганга жол бербейт."</string>
+    <string name="not_allowed" msgid="8541221928746104798">"Сиздин SIM картаңыз бул түйүнгө кошулганга жол бербейт."</string>
     <string name="connect_later" msgid="1950138106010005425">"Бул түйүнгө азыр кошулуу мүмкүн эмес. Бир аздан соң кайра аракеттениңиз."</string>
     <string name="registration_done" msgid="5337407023566953292">"Тармакка катталды."</string>
     <string name="already_auto" msgid="8607068290733079336">"Мурунтан эле автоматтык түрдө тандоодо."</string>
@@ -472,9 +472,9 @@
     <string name="delete_fdn_contact" msgid="7027405651994507077">"Туруктуу терүү номерин жок кылуу"</string>
     <string name="deleting_fdn_contact" msgid="6872320570844460428">"Туруктуу терүү номери жок кылынууда…"</string>
     <string name="fdn_contact_deleted" msgid="1680714996763848838">"Туруктуу терүү номери өчүрүлдү."</string>
-    <string name="pin2_invalid" msgid="2313954262684494442">"БНТ жаңыртылган жок, анткени туура эмес PIN-код киргизилди."</string>
-    <string name="fdn_invalid_number" msgid="9067189814657840439">"Уруксат берилген номер жаңыртылган жок, себеби жазылган номердин саны <xliff:g id="FDN_NUMBER_LIMIT_LENGTH">%d</xliff:g> ашпашы керек."</string>
-    <string name="pin2_or_fdn_invalid" msgid="7542639487955868181">"БНТ жаңыртылган жок. PIN2 туура эмес, же телефон номуру жараксыз."</string>
+    <string name="pin2_invalid" msgid="2313954262684494442">"БНТ жаңырган жок, анткени туура эмес PIN-код киргизилди."</string>
+    <string name="fdn_invalid_number" msgid="9067189814657840439">"Уруксат берилген номер жаңырган жок, себеби жазылган номердин саны <xliff:g id="FDN_NUMBER_LIMIT_LENGTH">%d</xliff:g> ашпашы керек."</string>
+    <string name="pin2_or_fdn_invalid" msgid="7542639487955868181">"БНТ жаңырган жок. PIN2 туура эмес, же телефон номуру жараксыз."</string>
     <string name="fdn_failed" msgid="216592346853420250">"БНТ иши кыйрады."</string>
     <string name="simContacts_emptyLoading" msgid="4989040293858675483">"SIM-картадан окулууда…"</string>
     <string name="simContacts_empty" msgid="1135632055473689521">"SIM картаңызда байланыштар жок."</string>
@@ -875,7 +875,6 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"Демейки оператордун SIM картасынын көз салуу идентификатору:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DL өткөрүү жөндөмдүүлүгү (кб/сек.):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL өткөрүү жөндөмдүүлүгү (кб/сек.):"</string>
-    <string name="radio_info_signal_location_label" msgid="6188435197086550049">"Уюлдук тармакта жайгашкан жери тууралуу маалымат (жоюлган):"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"LTE физикалык каналынын конфигурациясы:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Уюлдук маалыматты жаңылоо ылдамдыгы:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Уюлдук чен-өлчөм маалыматтары:"</string>

@@ -50,8 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"Οι ρυθμίσεις αυτόματου τηλεφωνητή μπορούν να αλλάξουν μόνο από τον κύριο χρήστη."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"Καταργήθηκε ο αποκλεισμός της κάρτας SIM. Το τηλέφωνό σας ξεκλειδώνεται..."</string>
     <string name="label_ndp" msgid="7617392683877410341">"Αριθμός PIN ξεκλειδώματος δικτύου κάρτας SIM"</string>
-    <!-- no translation found for label_phoneid (8775611434123577808) -->
-    <skip />
+    <string name="label_phoneid" msgid="8775611434123577808">"Η κάρτα SIM κλειδώθηκε για τον πάροχο"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"Ξεκλείδωμα"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"Παράβλεψη"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"Αίτηση ξεκλειδώματος δικτύου..."</string>
@@ -876,7 +875,6 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"SubId προεπιλεγμένης SIM δεδομένων:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Εύρος ζώνης DL (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Εύρος ζώνης UL (kbps):"</string>
-    <string name="radio_info_signal_location_label" msgid="6188435197086550049">"Πληροφορίες τοποθεσίας κινητής τηλεφωνίας (καταργήθηκε):"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Διαμόρφωση φυσικού καναλιού LTE:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Ρυθμός ανανέωσης στοιχείων κινητής τηλεφωνίας:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Όλα τα στοιχεία μετρήσεων κινητής τηλεφωνίας:"</string>

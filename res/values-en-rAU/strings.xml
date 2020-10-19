@@ -75,7 +75,7 @@
     <string name="phone_accounts_configure_account_settings" msgid="6622119715253196586">"Configure account settings"</string>
     <string name="phone_accounts_all_calling_accounts" msgid="1609600743500618823">"All calling accounts"</string>
     <string name="phone_accounts_all_calling_accounts_summary" msgid="2214134955430107240">"Select which accounts can make calls"</string>
-    <string name="wifi_calling" msgid="3650509202851355742">"Wi-Fi Calling"</string>
+    <string name="wifi_calling" msgid="3650509202851355742">"Wi-Fi calling"</string>
     <string name="connection_service_default_label" msgid="7332739049855715584">"Built-in connection service"</string>
     <string name="voicemail" msgid="7697769412804195032">"Voicemail"</string>
     <string name="voicemail_settings_with_label" msgid="4228431668214894138">"Voicemail (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -875,7 +875,6 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"SubId of default data SIM:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DL bandwidth (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL bandwidth (kbps):"</string>
-    <string name="radio_info_signal_location_label" msgid="6188435197086550049">"Mobile location info (deprecated):"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"LTE physical channel configuration:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Mobile info refresh rate:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"All mobile measurement info:"</string>

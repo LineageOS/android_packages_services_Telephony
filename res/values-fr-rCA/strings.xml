@@ -50,8 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"Seul l\'utilisateur principal peut modifier les paramètres de la messagerie vocale."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"Votre carte SIM a été déverrouillée. Votre téléphone est en cours de déverrouillage..."</string>
     <string name="label_ndp" msgid="7617392683877410341">"NIP de déblocage du réseau SIM"</string>
-    <!-- no translation found for label_phoneid (8775611434123577808) -->
-    <skip />
+    <string name="label_phoneid" msgid="8775611434123577808">"Carte SIM verrouillée pour le fournisseur de services :"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"Déverrouiller"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"Ignorer"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"Demande de déblocage du réseau…"</string>
@@ -589,7 +588,7 @@
     <string name="singleContactImportedMsg" msgid="3619804066300998934">"Contacts importés"</string>
     <string name="failedToImportSingleContactMsg" msgid="228095510489830266">"Impossible d\'importer le contact"</string>
     <string name="hac_mode_title" msgid="4127986689621125468">"Assistance auditive"</string>
-    <string name="hac_mode_summary" msgid="7774989500136009881">"Activer la compatibilité du service d\'assistance auditive"</string>
+    <string name="hac_mode_summary" msgid="7774989500136009881">"Activer la compatibilité des prothèses auditives"</string>
     <string name="rtt_mode_title" msgid="3075948111362818043">"Appel texte en temps réel (TTR)"</string>
     <string name="rtt_mode_summary" msgid="8631541375609989562">"Autoriser l\'utilisation de la messagerie lors des appels vocaux"</string>
     <string name="rtt_mode_more_information" msgid="587500128658756318">"La fonctionnalité TTR aide les appelants qui sont sourds ou malentendants, qui ont un trouble de la parole ou pour qui la voix ne suffit pas.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;En savoir plus&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - Les appels TTR sont enregistrés en tant que transcriptions de messages\n       &lt;br&gt; - La fonctionnalité TTR n\'est pas disponible pour les appels vidéo"</string>
@@ -876,7 +875,6 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"Sous-identifiant de la carte SIM par défaut :"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Bande passante de téléchargement (kb/s) :"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Bande passante de téléversement (kb/s) :"</string>
-    <string name="radio_info_signal_location_label" msgid="6188435197086550049">"Données de la position de la cellule (obsolètes) :"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Configuration du canal physique LTE :"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Taux d\'actualisation des données de la cellule :"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Données des mesures de toutes les cellules :"</string>
