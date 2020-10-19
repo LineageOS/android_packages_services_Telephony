@@ -50,8 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"Solo el usuario principal puede cambiar la configuración del buzón de voz."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"Tu tarjeta SIM ha sido desbloqueada. Tu dispositivo está desbloqueando..."</string>
     <string name="label_ndp" msgid="7617392683877410341">"PIN de desbloqueo de red de tarjeta SIM"</string>
-    <!-- no translation found for label_phoneid (8775611434123577808) -->
-    <skip />
+    <string name="label_phoneid" msgid="8775611434123577808">"SIM bloqueada para el operador"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"Desbloquear"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"Descartar"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"Solicitando desbloqueo de red..."</string>
@@ -97,7 +96,7 @@
     <string name="sum_loading_settings" msgid="434063780286688775">"Cargando la configuración…"</string>
     <string name="sum_hide_caller_id" msgid="131100328602371933">"Número escondido en llamadas salientes"</string>
     <string name="sum_show_caller_id" msgid="3571854755324664591">"Número visualizado en llamadas salientes"</string>
-    <string name="sum_default_caller_id" msgid="1767070797135682959">"Utilizar configuración del operador predeterminada para visualizar mi número en las llamadas salientes"</string>
+    <string name="sum_default_caller_id" msgid="1767070797135682959">"Utilizar configuración predeterminada del operador para visualizar mi número en las llamadas salientes"</string>
     <string name="labelCW" msgid="8449327023861428622">"Llamada en espera"</string>
     <string name="sum_cw_enabled" msgid="3977308526187139996">"Durante una llamada, notificarme sobre las llamadas entrantes"</string>
     <string name="sum_cw_disabled" msgid="3658094589461768637">"Durante una llamada, notificarme sobre las llamadas entrantes"</string>
@@ -876,7 +875,6 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"ID secundario de SIM de datos predeterminada:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Ancho de banda de descarga (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Ancho de banda de carga (kbps):"</string>
-    <string name="radio_info_signal_location_label" msgid="6188435197086550049">"Datos de ubicación del celular (obsoleto):"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Configuración del canal físico de LTE:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Frecuencia de actualización de datos del celular:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Información sobre las dimensiones del celular:"</string>

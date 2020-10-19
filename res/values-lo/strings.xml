@@ -50,8 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"ການຕັ້ງຄ່າຂໍ້ຄວາມສຽງສາມາດແກ້ໄຂໄດ້ໂດຍຜູ້ໃຊ້ຫຼັກເທົ່ານັ້ນ."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"ຍົກເລີກການປິດກັ້ນ SIM card ຂອງທ່ານແລ້ວ. ໂທລະສັບຂອງທ່ານກຳລັງຖືກປົດລັອກ..."</string>
     <string name="label_ndp" msgid="7617392683877410341">"PIN ປົດລັອກເຄືອຂ່າຍ SIM"</string>
-    <!-- no translation found for label_phoneid (8775611434123577808) -->
-    <skip />
+    <string name="label_phoneid" msgid="8775611434123577808">"ລັອກ SIM ສຳລັບຜູ້ໃຫ້ບໍລິການແລ້ວ"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"ປົດລັອກ"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"ປິດໄວ້"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"ກຳລັງຮ້ອງຂໍການປົດລັອກເຄືອຂ່າຍ..."</string>
@@ -876,7 +875,6 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"SubId ຂອງຊິມອິນເຕີເນັດເລີ່ມຕົ້ນ:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"ແບນວິດ DL (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"ແບນວິດ UL (kbps):"</string>
-    <string name="radio_info_signal_location_label" msgid="6188435197086550049">"ຂໍ້ມູນສະຖານທີ່ມືຖື (ສິ້ນສຸດການສະໜັບສະໜຸນແລ້ວ):"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"ການຕັ້ງຄ່າຊ່ອງ LTE ກາຍະພາບ:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"ອັດຕາການໂຫຼດຄືນໃໝ່ຂອງຂໍ້ມູນມືຖື:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"ຂໍ້ມູນການວັດແທກມືຖືທັງໝົດ:"</string>

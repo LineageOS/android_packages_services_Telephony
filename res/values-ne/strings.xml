@@ -149,7 +149,7 @@
     <string name="close_dialog" msgid="1074977476136119408">"ठिक छ"</string>
     <string name="enable" msgid="2636552299455477603">"सकृय पार्नुहोस्"</string>
     <string name="disable" msgid="1122698860799462116">"निस्कृय पार्नुहोस्"</string>
-    <string name="change_num" msgid="6982164494063109334">"अद्यावधिक गर्नुहोस्"</string>
+    <string name="change_num" msgid="6982164494063109334">"अपडेट गर्नुहोस्"</string>
   <string-array name="clir_display_values">
     <item msgid="8477364191403806960">"नेटवर्क पूर्वनिर्धारित"</item>
     <item msgid="6813323051965618926">"सङ्ख्या लुकाउनुहोस्"</item>
@@ -306,7 +306,7 @@
     <string name="sim_selection_required_pref" msgid="6985901872978341314">"चयन गर्न आवश्यक छ"</string>
     <string name="sim_change_data_title" msgid="9142726786345906606">"डेटा सिम परिवर्तन गर्ने हो?"</string>
     <string name="sim_change_data_message" msgid="3567358694255933280">"मोबाइल डेटाका लागि <xliff:g id="OLD_SIM">%2$s</xliff:g> को सट्टा <xliff:g id="NEW_SIM">%1$s</xliff:g> को प्रयोग गर्ने हो?"</string>
-    <string name="wifi_calling_settings_title" msgid="5800018845662016507">"Wi-Fi कल"</string>
+    <string name="wifi_calling_settings_title" msgid="5800018845662016507">"Wi-Fi कलिङ"</string>
     <string name="video_calling_settings_title" msgid="342829454913266078">"सेवा प्रदायकको भिडियो कल"</string>
     <string name="gsm_umts_options" msgid="4968446771519376808">"GSM/UMTS  विकल्पहरू"</string>
     <string name="cdma_options" msgid="3669592472226145665">"CDMA विकल्पहरू"</string>
@@ -631,7 +631,7 @@
     <string name="phone_entered_ecm_text" msgid="8431238297843035842">"आपतकालीन कलब्याक मोड प्रविष्टि गरियो"</string>
     <string name="phone_in_ecm_notification_title" msgid="6825016389926367946">"आपतकालीन कलब्याक मोड"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="653972232922670335">"डेटा जडान अक्षम भयो"</string>
-    <string name="phone_in_ecm_notification_complete_time" msgid="7341624337163082759">"<xliff:g id="COMPLETETIME">%s</xliff:g> सम्म डेटा जडान भएको छैन"</string>
+    <string name="phone_in_ecm_notification_complete_time" msgid="7341624337163082759">"<xliff:g id="COMPLETETIME">%s</xliff:g> सम्म डेटा कनेक्ट भएको छैन"</string>
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="5425906903766466743">
       <item quantity="other"> फोन आपतकालीन कलब्याक मोडमा <xliff:g id="COUNT_1">%s</xliff:g> मिनेटको लागि हुनेछ। यस मोडको अवस्थामा एक डेटा जडान प्रयोग गरेर कुनै पनि एपहरू प्रयोग गर्न सकिँदैन। के तपाईं अहिले निस्कन चाहनुहुन्छ?</item>
       <item quantity="one"> फोन आपतकालीन कलब्याक मोडमा <xliff:g id="COUNT_0">%s</xliff:g> मिनेटको लागि हुनेछ। यस मोडको समयमा एक डेटा जडान प्रयोग गरेर कुनै पनि एपहरू प्रयोग गर्न सकिँदैन। के तपाईं अहिले निस्कन चाहनुहुन्छ?</item>
@@ -875,7 +875,6 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"पूर्वनिर्धारित डेटा SIM को SubId:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DL ब्यान्डविथ (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL व्यान्डविथ (kbps):"</string>
-    <string name="radio_info_signal_location_label" msgid="6188435197086550049">"सेलको स्थानबारे जानकारी (चल्तीबाट हटाइएको):"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"LTE को भौतिक च्यानलको कन्फिगरेसन:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"सेलसम्बन्धी जानकारीलाई पुनः ताजा गरिने दर:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"सेलको मापनसम्बन्धी सबै जानकारी:"</string>
@@ -902,7 +901,7 @@
     <string name="radio_info_http_client_test" msgid="1329583721088428238">"HTTP क्लाइन्टको परीक्षण:"</string>
     <string name="ping_test_label" msgid="448617502935719694">"पिङसम्बन्धी परीक्षण सञ्चालन गर्नुहोस्"</string>
     <string name="radio_info_smsc_label" msgid="3749927072726033763">"SMSC:"</string>
-    <string name="radio_info_smsc_update_label" msgid="5141996256097115753">"अद्यावधिक गर्नुहोस्"</string>
+    <string name="radio_info_smsc_update_label" msgid="5141996256097115753">"अपडेट गर्नुहोस्"</string>
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"पुनः ताजा गर्नुहोस्"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"DNS को जाँचलाई टगल गर्नुहोस्"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"OEM-विशिष्ट जानकारी/सेटिङ"</string>

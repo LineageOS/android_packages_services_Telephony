@@ -50,8 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"Cilësimet e postës zanore mund të modifikohen vetëm nga \"Përdoruesi kryesor\""</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"Karta jote SIM u zhbllokua. Telefoni yt po shkyçet..."</string>
     <string name="label_ndp" msgid="7617392683877410341">"PIN-i i shkyçjes së rrjetit të kartës SIM"</string>
-    <!-- no translation found for label_phoneid (8775611434123577808) -->
-    <skip />
+    <string name="label_phoneid" msgid="8775611434123577808">"Karta SIM e kyçur për operatorin"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"Shkyçe"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"Injoro"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"Po kërkon shkyçjen e rrjetit…"</string>
@@ -76,7 +75,7 @@
     <string name="phone_accounts_configure_account_settings" msgid="6622119715253196586">"Konfiguro cilësimet e llogarisë"</string>
     <string name="phone_accounts_all_calling_accounts" msgid="1609600743500618823">"Të gjitha llogaritë e telefonatave"</string>
     <string name="phone_accounts_all_calling_accounts_summary" msgid="2214134955430107240">"Zgjidh se cilat llogari mund të kryejnë telefonata"</string>
-    <string name="wifi_calling" msgid="3650509202851355742">"Telefonatë me Wi-Fi"</string>
+    <string name="wifi_calling" msgid="3650509202851355742">"Telefonata me Wi-Fi"</string>
     <string name="connection_service_default_label" msgid="7332739049855715584">"Shërbim i integruar lidhjeje"</string>
     <string name="voicemail" msgid="7697769412804195032">"Posta zanore"</string>
     <string name="voicemail_settings_with_label" msgid="4228431668214894138">"Posta zanore (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -876,7 +875,6 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"ID-ja dytësore e kartës SIM të parazgjedhur të të dhënave:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Gjerësia e bandës DL (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Gjerësia e bandës UL (kbps):"</string>
-    <string name="radio_info_signal_location_label" msgid="6188435197086550049">"Informacionet e vendndodhjes të rrjetit celular (e vjetruar):"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Konfigurimi i kanalit fizik LTE:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Shpejtësia e rifreskimit të informacioneve të rrjetit celular"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Të gjitha informacionet e matjes së rrjetit celular:"</string>

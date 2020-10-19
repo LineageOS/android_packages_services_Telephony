@@ -433,8 +433,8 @@
     <string name="cdma_activate_device" msgid="5914720276140097632">"เปิดใช้งานอุปกรณ์"</string>
     <string name="cdma_lte_data_service" msgid="359786441782404562">"ตั้งค่าบริการข้อมูล"</string>
     <string name="carrier_settings_title" msgid="6292869148169850220">"การตั้งค่าของผู้ให้บริการ"</string>
-    <string name="fdn" msgid="2545904344666098749">"การจำกัดหมายเลขโทรออก"</string>
-    <string name="fdn_with_label" msgid="6412087553365709494">"โหมดจำกัดการโทร (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
+    <string name="fdn" msgid="2545904344666098749">"หมายเลขโทรออกที่กำหนดตายตัว"</string>
+    <string name="fdn_with_label" msgid="6412087553365709494">"หมายเลขโทรออกที่กำหนดตายตัว (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="manage_fdn_list" msgid="3341716430375195441">"รายการ FDN"</string>
     <string name="fdn_list_with_label" msgid="1409655283510382556">"รายการ FDN (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="fdn_activation" msgid="2178637004710435895">"การเปิดใช้งาน FDN"</string>
@@ -875,7 +875,6 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"SubId ของซิมอินเทอร์เน็ตเริ่มต้น:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"แบนด์วิดท์ดาวน์โหลด (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"แบนด์วิดท์อัปโหลด (kbps):"</string>
-    <string name="radio_info_signal_location_label" msgid="6188435197086550049">"ข้อมูลตำแหน่งของเครือข่ายมือถือ (เลิกใช้งานแล้ว):"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"การกำหนดค่าแชเนลทางกายภาพของ LTE:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"อัตราการรีเฟรชข้อมูลมือถือ:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"ข้อมูลการวัดเครือข่ายมือถือทั้งหมด:"</string>

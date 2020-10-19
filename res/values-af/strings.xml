@@ -96,7 +96,7 @@
     <string name="sum_loading_settings" msgid="434063780286688775">"Laai tans instellings..."</string>
     <string name="sum_hide_caller_id" msgid="131100328602371933">"Nommer versteek in uitgaande oproepe"</string>
     <string name="sum_show_caller_id" msgid="3571854755324664591">"Nommer wat vertoon in uitgaande oproepe"</string>
-    <string name="sum_default_caller_id" msgid="1767070797135682959">"Gebruik verstek beheerinstellings om my nommer te vertoon in uitgaande oproepe"</string>
+    <string name="sum_default_caller_id" msgid="1767070797135682959">"Gebruik verstekbeheerinstellings om my nommer te vertoon in uitgaande oproepe"</string>
     <string name="labelCW" msgid="8449327023861428622">"Oproep wag"</string>
     <string name="sum_cw_enabled" msgid="3977308526187139996">"Stel my tydens \'n oproep in kennis van inkomende oproepe"</string>
     <string name="sum_cw_disabled" msgid="3658094589461768637">"Stel my tydens \'n oproep in kennis van inkomende oproepe"</string>
@@ -149,7 +149,7 @@
     <string name="close_dialog" msgid="1074977476136119408">"OK"</string>
     <string name="enable" msgid="2636552299455477603">"Skakel aan"</string>
     <string name="disable" msgid="1122698860799462116">"Skakel af"</string>
-    <string name="change_num" msgid="6982164494063109334">"Opdateer"</string>
+    <string name="change_num" msgid="6982164494063109334">"Dateer op"</string>
   <string-array name="clir_display_values">
     <item msgid="8477364191403806960">"Netwerkverstek"</item>
     <item msgid="6813323051965618926">"Versteek nommer"</item>
@@ -875,7 +875,6 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"Sub-ID van verstekdata-SIM:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Aflaaibandwydte (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Oplaaibandwydte (kbps):"</string>
-    <string name="radio_info_signal_location_label" msgid="6188435197086550049">"Selligginginligting (opgeskort):"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Fisieke LTE-kanaalopstelling:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Herlaaikoers van selinligting:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Alle selmetingsinligting:"</string>
