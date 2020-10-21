@@ -42,6 +42,7 @@ import com.android.internal.telephony.TelephonyPermissions;
 import com.android.internal.telephony.ims.ImsResolver;
 import com.android.internal.telephony.imsphone.ImsPhone;
 import com.android.services.telephony.rcs.RcsFeatureController;
+import com.android.services.telephony.rcs.SipTransportController;
 import com.android.services.telephony.rcs.TelephonyRcsService;
 import com.android.services.telephony.rcs.UserCapabilityExchangeImpl;
 
@@ -348,6 +349,29 @@ public class ImsRcsController extends IImsRcsController.Stub {
         try {
             SubscriptionManager.setSubscriptionProperty(subId,
                     SubscriptionManager.IMS_RCS_UCE_ENABLED, (isEnabled ? "1" : "0"));
+        } finally {
+            Binder.restoreCallingIdentity(token);
+        }
+    }
+
+    @Override
+    public boolean isSipDelegateSupported(int subId) {
+        enforceReadPrivilegedPermission("isSipDelegateSupported");
+        final long token = Binder.clearCallingIdentity();
+        try {
+            SipTransportController transport = getRcsFeatureController(subId).getFeature(
+                    SipTransportController.class);
+            if (transport == null) {
+                return false;
+            }
+            return transport.isSupported(subId);
+        } catch (ImsException e) {
+            throw new ServiceSpecificException(e.getCode(), e.getMessage());
+        } catch (ServiceSpecificException e) {
+            if (e.errorCode == ImsException.CODE_ERROR_UNSUPPORTED_OPERATION) {
+                return false;
+            }
+            throw e;
         } finally {
             Binder.restoreCallingIdentity(token);
         }
