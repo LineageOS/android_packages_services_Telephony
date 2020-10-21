@@ -62,6 +62,12 @@ public class TelephonyRcsService {
          */
         UserCapabilityExchangeImpl createUserCapabilityExchange(Context context, int slotId,
                 int subId);
+
+        /**
+         * @return an instance of {@link SipTransportController} for the slot and subscription
+         * specified.
+         */
+        SipTransportController createSipTransportController(Context context, int slotId, int subId);
     }
 
     private FeatureFactory mFeatureFactory = new FeatureFactory() {
@@ -74,6 +80,12 @@ public class TelephonyRcsService {
         public UserCapabilityExchangeImpl createUserCapabilityExchange(Context context, int slotId,
                 int subId) {
             return new UserCapabilityExchangeImpl(context, slotId, subId);
+        }
+
+        @Override
+        public SipTransportController createSipTransportController(Context context, int slotId,
+                int subId) {
+            return new SipTransportController(context, slotId, subId);
         }
     };
 
@@ -234,6 +246,17 @@ public class TelephonyRcsService {
                 c.removeFeature(UserCapabilityExchangeImpl.class);
             }
         }
+
+        if (doesSubscriptionSupportSingleRegistration(subId)) {
+            if (c.getFeature(SipTransportController.class) == null) {
+                c.addFeature(mFeatureFactory.createSipTransportController(mContext, slotId, subId),
+                        SipTransportController.class);
+            }
+        } else {
+            if (c.getFeature(SipTransportController.class) != null) {
+                c.removeFeature(SipTransportController.class);
+            }
+        }
         // Only start the connection procedure if we have active features.
         if (c.hasActiveFeatures()) c.connect();
     }
@@ -250,6 +273,14 @@ public class TelephonyRcsService {
         return supportsUce;
     }
 
+    private boolean doesSubscriptionSupportSingleRegistration(int subId) {
+        if (!SubscriptionManager.isValidSubscriptionId(subId)) return false;
+        CarrierConfigManager carrierConfigManager =
+                mContext.getSystemService(CarrierConfigManager.class);
+        if (carrierConfigManager == null) return false;
+        return carrierConfigManager.getConfigForSubId(subId).getBoolean(
+                CarrierConfigManager.Ims.KEY_IMS_SINGLE_REGISTRATION_REQUIRED_BOOL);
+    }
 
     private int getSubscriptionFromSlot(int slotId) {
         SubscriptionManager manager = mContext.getSystemService(SubscriptionManager.class);
