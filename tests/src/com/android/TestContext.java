@@ -17,7 +17,7 @@
 package com.android;
 
 import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.doAnswer;
 
 import android.content.BroadcastReceiver;
 import android.content.ContentResolver;
@@ -32,9 +32,11 @@ import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.telephony.ims.ImsManager;
 import android.test.mock.MockContext;
+import android.util.SparseArray;
 
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.mockito.stubbing.Answer;
 
 import java.util.concurrent.Executor;
 
@@ -46,11 +48,19 @@ public class TestContext extends MockContext {
     @Mock SubscriptionManager mMockSubscriptionManager;
     @Mock ImsManager mMockImsManager;
 
-    private PersistableBundle mCarrierConfig = new PersistableBundle();
+    private SparseArray<PersistableBundle> mCarrierConfigs = new SparseArray<>();
 
     public TestContext() {
         MockitoAnnotations.initMocks(this);
-        doReturn(mCarrierConfig).when(mMockCarrierConfigManager).getConfigForSubId(anyInt());
+        doAnswer((Answer<PersistableBundle>) invocation -> {
+            int subId = (int) invocation.getArguments()[0];
+            if (subId < 0) {
+                return new PersistableBundle();
+            }
+            PersistableBundle b = mCarrierConfigs.get(subId);
+
+            return (b != null ? b : new PersistableBundle());
+        }).when(mMockCarrierConfigManager).getConfigForSubId(anyInt());
     }
 
     @Override
@@ -140,7 +150,15 @@ public class TestContext extends MockContext {
         return null;
     }
 
-    public PersistableBundle getCarrierConfig() {
-        return mCarrierConfig;
+    /**
+     * @return CarrierConfig PersistableBundle for the subscription specified.
+     */
+    public PersistableBundle getCarrierConfig(int subId) {
+        PersistableBundle b = mCarrierConfigs.get(subId);
+        if (b == null) {
+            b = new PersistableBundle();
+            mCarrierConfigs.put(subId, b);
+        }
+        return b;
     }
 }
