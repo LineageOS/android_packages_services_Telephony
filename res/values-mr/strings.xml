@@ -573,7 +573,7 @@
     <string name="onscreenHoldText" msgid="4025348842151665191">"होल्ड करा"</string>
     <string name="onscreenEndCallText" msgid="6138725377654842757">"शेवट"</string>
     <string name="onscreenShowDialpadText" msgid="658465753816164079">"डायलपॅड"</string>
-    <string name="onscreenMuteText" msgid="5470306116733843621">"नि:शब्द करा"</string>
+    <string name="onscreenMuteText" msgid="5470306116733843621">"म्यूट करा"</string>
     <string name="onscreenAddCallText" msgid="9075675082903611677">"कॉल जोडा"</string>
     <string name="onscreenMergeCallsText" msgid="3692389519611225407">"कॉल विलीन करा"</string>
     <string name="onscreenSwapCallsText" msgid="2682542150803377991">"अदलाबदल करा"</string>
@@ -875,7 +875,7 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"डीफॉल्ट डेटा सिम SubId:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DL बँडविड्थ (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL बँडविड्थ (kbps):"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"LTE फिजिकल चॅनेल कॉंफिगरेशन:"</string>
+    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"LTE फिजिकल चॅनल कॉंफिगरेशन:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"सेल माहिती रिफ्रेश रेट:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"सर्व सेल परिमाण माहिती:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"डेटा सर्व्हिस:"</string>
