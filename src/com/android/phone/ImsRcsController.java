@@ -16,10 +16,12 @@
 
 package com.android.phone;
 
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Binder;
 import android.os.RemoteException;
 import android.os.ServiceSpecificException;
+import android.os.UserHandle;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyFrameworkInitializer;
 import android.telephony.ims.DelegateRequest;
@@ -413,10 +415,22 @@ public class ImsRcsController extends IImsRcsController.Stub {
     }
 
     @Override
-    public void createSipDelegate(int subId, DelegateRequest request,
+    public void createSipDelegate(int subId, DelegateRequest request, String packageName,
             ISipDelegateConnectionStateCallback delegateState,
             ISipDelegateMessageCallback delegateMessage) {
         enforceModifyPermission();
+        if (!UserHandle.getUserHandleForUid(Binder.getCallingUid()).isSystem()) {
+            throw new ServiceSpecificException(ImsException.CODE_ERROR_UNSUPPORTED_OPERATION,
+                    "SipDelegate creation is only available to primary user.");
+        }
+        try {
+            int remoteUid = mApp.getPackageManager().getPackageUid(packageName, 0 /*flags*/);
+            if (Binder.getCallingUid() != remoteUid) {
+                throw new SecurityException("passed in packageName does not match the caller");
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+            throw new SecurityException("Passed in PackageName can not be found on device");
+        }
 
         final long identity = Binder.clearCallingIdentity();
         SipTransportController transport = getRcsFeatureController(subId).getFeature(
@@ -426,7 +440,8 @@ public class ImsRcsController extends IImsRcsController.Stub {
                     "This subscription does not support the creation of SIP delegates");
         }
         try {
-            transport.createSipDelegate(subId, request, delegateState, delegateMessage);
+            transport.createSipDelegate(subId, request, packageName, delegateState,
+                    delegateMessage);
         } catch (ImsException e) {
             throw new ServiceSpecificException(e.getCode(), e.getMessage());
         } finally {
@@ -440,7 +455,12 @@ public class ImsRcsController extends IImsRcsController.Stub {
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            // Do nothing yet, we do not support this API yet.
+            SipTransportController transport = getRcsFeatureController(subId).getFeature(
+                    SipTransportController.class);
+            if (transport == null) {
+                return;
+            }
+            transport.destroySipDelegate(subId, connection, reason);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
