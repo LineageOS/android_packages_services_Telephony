@@ -7147,6 +7147,14 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         boolean hasCoarsePermission =
                 coarseLocationResult == LocationAccessPolicy.LocationPermissionResult.ALLOWED;
 
+        final Phone phone = getPhone(subId);
+        if (phone == null) {
+            return null;
+        }
+
+        boolean isCallingPackageDataService = phone.getDataServicePackages()
+                .contains(callingPackage);
+
         final long identity = Binder.clearCallingIdentity();
         try {
             // isActiveSubId requires READ_PHONE_STATE, which we already check for above
@@ -7156,16 +7164,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 return null;
             }
 
-            final Phone phone = getPhone(subId);
-            if (phone == null) {
-                return null;
-            }
-
             ServiceState ss = phone.getServiceState();
 
             // Scrub out the location info in ServiceState depending on what level of access
             // the caller has.
-            if (hasFinePermission) return ss;
+            if (hasFinePermission || isCallingPackageDataService) return ss;
             if (hasCoarsePermission) return ss.createLocationInfoSanitizedCopy(false);
             return ss.createLocationInfoSanitizedCopy(true);
         } finally {
