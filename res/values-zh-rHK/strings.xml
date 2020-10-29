@@ -510,7 +510,7 @@
     <string name="voicemail_settings_number_label" msgid="1265118640154688162">"留言信箱號碼"</string>
     <string name="card_title_dialing" msgid="8742182654254431781">"撥號中"</string>
     <string name="card_title_redialing" msgid="18130232613559964">"重撥"</string>
-    <string name="card_title_conf_call" msgid="901197309274457427">"視訊會議"</string>
+    <string name="card_title_conf_call" msgid="901197309274457427">"視像會議"</string>
     <string name="card_title_incoming_call" msgid="881424648458792430">"來電"</string>
     <string name="card_title_call_ended" msgid="650223980095026340">"通話已結束"</string>
     <string name="card_title_on_hold" msgid="9028319436626975207">"保留通話"</string>

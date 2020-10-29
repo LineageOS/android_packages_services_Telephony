@@ -648,7 +648,7 @@
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;Ei asetettu&gt;"</string>
     <string name="other_settings" msgid="8895088007393598447">"Muut puheluasetukset"</string>
     <string name="calling_via_template" msgid="1791323450703751750">"Operaattorilla <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
-    <string name="contactPhoto" msgid="7885089213135154834">"yhteyshenkilön valokuva"</string>
+    <string name="contactPhoto" msgid="7885089213135154834">"yhteyshenkilön kuva"</string>
     <string name="goPrivate" msgid="4645108311382209551">"muuta yksityiseksi"</string>
     <string name="selectContact" msgid="1527612842599767382">"valitse yhteystieto"</string>
     <string name="not_voice_capable" msgid="2819996734252084253">"Äänipuheluita ei tueta"</string>

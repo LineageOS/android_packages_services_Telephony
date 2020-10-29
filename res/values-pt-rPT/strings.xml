@@ -95,10 +95,10 @@
     <string name="sum_loading_settings" msgid="434063780286688775">"A carregar as definições..."</string>
     <string name="sum_hide_caller_id" msgid="131100328602371933">"Ocultar o número em chamadas efectuadas"</string>
     <string name="sum_show_caller_id" msgid="3571854755324664591">"Número apresentado em chamadas efectuadas"</string>
-    <string name="sum_default_caller_id" msgid="1767070797135682959">"Utilizar as predefinições do operador para apresentar o meu número nas chamadas efectuadas"</string>
+    <string name="sum_default_caller_id" msgid="1767070797135682959">"Utilizar as predefinições do operador para apresentar o meu número nas chamadas efetuadas"</string>
     <string name="labelCW" msgid="8449327023861428622">"Chamada em espera"</string>
-    <string name="sum_cw_enabled" msgid="3977308526187139996">"Notificar-me de chamadas a receber durante uma chamada"</string>
-    <string name="sum_cw_disabled" msgid="3658094589461768637">"Notificar-me de chamadas a receber durante uma chamada"</string>
+    <string name="sum_cw_enabled" msgid="3977308526187139996">"Notificar-me de chamadas em espera durante uma chamada"</string>
+    <string name="sum_cw_disabled" msgid="3658094589461768637">"Notificar-me de chamadas em espera durante uma chamada"</string>
     <string name="call_forwarding_settings" msgid="8937130467468257671">"Definições do encaminhamento de chamadas"</string>
     <string name="call_forwarding_settings_with_label" msgid="2345432813399564272">"Definições de encaminhamento de chamadas (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCF" msgid="3578719437928476078">"Encaminhamento de chamadas"</string>

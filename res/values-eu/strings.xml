@@ -430,7 +430,7 @@
     <string name="manage_fdn_list" msgid="3341716430375195441">"Markatze finkoko zenbakien zerrenda"</string>
     <string name="fdn_list_with_label" msgid="1409655283510382556">"Markatze finkoko zenbakiak (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="fdn_activation" msgid="2178637004710435895">"Markatze finkoko zenbakiaren aktibazioa"</string>
-    <string name="fdn_enabled" msgid="7017355494808056447">"Markatze finkoko zenbakiak gaituta daude"</string>
+    <string name="fdn_enabled" msgid="7017355494808056447">"Markatze finkoko zenbakiak gaituta"</string>
     <string name="fdn_disabled" msgid="6696468878037736600">"Markatze finkoko zenbakiak desgaituta daude"</string>
     <string name="enable_fdn" msgid="4830555730418033723">"Gaitu markatze finkoko zenbakiak"</string>
     <string name="disable_fdn" msgid="3918794950264647541">"Desgaitu markatze finkoko zenbakia"</string>
