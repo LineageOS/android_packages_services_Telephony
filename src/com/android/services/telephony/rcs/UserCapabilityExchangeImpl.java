@@ -759,8 +759,6 @@ public class UserCapabilityExchangeImpl implements RcsFeatureController.Feature,
                 return RcsUceAdapter.ERROR_INSUFFICIENT_MEMORY;
             case ResultCode.SUBSCRIBE_LOST_NETWORK:
                 return RcsUceAdapter.ERROR_LOST_NETWORK;
-            case ResultCode.SUBSCRIBE_ALREADY_IN_QUEUE:
-                return RcsUceAdapter.ERROR_ALREADY_IN_QUEUE;
             default:
                 return RcsUceAdapter.ERROR_GENERIC_FAILURE;
         }
