@@ -282,7 +282,7 @@ final class PstnIncomingCallNotifier {
             }
             if (((ImsPhoneConnection) connection).isIncomingCallAutoRejected()) {
                 extras.putString(TelecomManager.EXTRA_CALL_DISCONNECT_MESSAGE,
-                        "Call Dropped by lower layers");
+                        TelecomManager.CALL_AUTO_DISCONNECT_MESSAGE_STRING);
             }
         }
 
