@@ -360,6 +360,7 @@ public class PhoneGlobals extends ContextWrapper {
                         defaultImsRcsPackage, PhoneFactory.getPhones().length,
                         new ImsFeatureBinderRepository());
                 mImsResolver.initialize();
+                RcsProvisioningMonitor.make(this);
             }
 
             // Start TelephonyDebugService After the default phone is created.
