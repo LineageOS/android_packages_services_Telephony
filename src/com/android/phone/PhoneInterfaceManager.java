@@ -5894,7 +5894,18 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     @Override
     public boolean isDataEnabled(int subId) {
-        enforceReadPrivilegedPermission("isDataEnabled");
+        try {
+            try {
+                mApp.enforceCallingOrSelfPermission(
+                        android.Manifest.permission.ACCESS_NETWORK_STATE,
+                        null);
+            } catch (Exception e) {
+                mApp.enforceCallingOrSelfPermission(android.Manifest.permission.READ_PHONE_STATE,
+                        "isDataEnabled");
+            }
+        } catch (Exception e) {
+            enforceReadPrivilegedPermission("isDataEnabled");
+        }
 
         final long identity = Binder.clearCallingIdentity();
         try {
@@ -5921,14 +5932,14 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * @return {@code true} if the overall data is enabled; {@code false} if not.
      */
     @Override
-    public boolean isDataEnabledWithReason(int subId,
+    public boolean isDataEnabledForReason(int subId,
             @TelephonyManager.DataEnabledReason int reason) {
         try {
             mApp.enforceCallingOrSelfPermission(android.Manifest.permission.ACCESS_NETWORK_STATE,
                     null);
         } catch (Exception e) {
             mApp.enforceCallingOrSelfPermission(android.Manifest.permission.READ_PHONE_STATE,
-                    "isDataEnabledWithReason");
+                    "isDataEnabledForReason");
         }
 
 
@@ -5936,7 +5947,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         try {
             int phoneId = mSubscriptionController.getPhoneId(subId);
             if (DBG) {
-                log("isDataEnabledWithReason: subId=" + subId + " phoneId=" + phoneId
+                log("isDataEnabledForReason: subId=" + subId + " phoneId=" + phoneId
                         + " reason=" + reason);
             }
             Phone phone = PhoneFactory.getPhone(phoneId);
@@ -5945,13 +5956,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 if (reason == TelephonyManager.DATA_ENABLED_REASON_USER) {
                     retVal = phone.isUserDataEnabled();
                 } else {
-                    retVal = phone.getDataEnabledSettings().isDataEnabledWithReason(reason);
+                    retVal = phone.getDataEnabledSettings().isDataEnabledForReason(reason);
                 }
-                if (DBG) log("isDataEnabledWithReason: retVal=" + retVal);
+                if (DBG) log("isDataEnabledForReason: retVal=" + retVal);
                 return retVal;
             } else {
                 if (DBG) {
-                    loge("isDataEnabledWithReason: no phone subId="
+                    loge("isDataEnabledForReason: no phone subId="
                             + subId + " retVal=false");
                 }
                 return false;
@@ -6797,7 +6808,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         try {
             if (SubscriptionManager.isUsableSubIdValue(subId) && !mUserManager.hasUserRestriction(
                     UserManager.DISALLOW_CONFIG_MOBILE_NETWORKS)) {
-                setDataEnabledWithReason(subId, TelephonyManager.DATA_ENABLED_REASON_USER,
+                setDataEnabledForReason(subId, TelephonyManager.DATA_ENABLED_REASON_USER,
                         getDefaultDataEnabled());
                 setNetworkSelectionModeAutomatic(subId);
                 setPreferredNetworkType(subId, getDefaultNetworkType(subId));
@@ -7432,13 +7443,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * @hide
      */
     @Override
-    public void setDataEnabledWithReason(int subId, @TelephonyManager.DataEnabledReason int reason,
+    public void setDataEnabledForReason(int subId, @TelephonyManager.DataEnabledReason int reason,
             boolean enabled) {
         if (reason == TelephonyManager.DATA_ENABLED_REASON_USER
                 || reason == TelephonyManager.DATA_ENABLED_REASON_CARRIER) {
             try {
                 TelephonyPermissions.enforceCallingOrSelfCarrierPrivilege(
-                        mApp, subId, "setDataEnabledWithReason");
+                        mApp, subId, "setDataEnabledForReason");
             } catch (SecurityException se) {
                 enforceModifyPermission();
             }
