@@ -309,6 +309,17 @@ public class ImsRcsController extends IImsRcsController.Stub {
     }
 
     @Override
+    public void requestNetworkAvailability(int subId, String callingPackage,
+            String callingFeatureId, Uri contactNumber, IRcsUceControllerCallback c) {
+        enforceReadPrivilegedPermission("requestNetworkAvailability");
+        if (!isUceSettingEnabled(subId, callingPackage, callingFeatureId)) {
+            throw new ServiceSpecificException(ImsException.CODE_ERROR_UNSUPPORTED_OPERATION,
+                    "The user has not enabled UCE for this subscription.");
+        }
+        // TODO: Implement this method
+    }
+
+    @Override
     public int getUcePublishState(int subId) {
         enforceReadPrivilegedPermission("getUcePublishState");
         final long token = Binder.clearCallingIdentity();
