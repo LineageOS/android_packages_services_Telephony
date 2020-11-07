@@ -1185,15 +1185,23 @@ public class TelephonyConnectionService extends ConnectionService {
                             "Phone is null"));
         }
 
+        Bundle extras = request.getExtras();
+        String disconnectMessage = null;
+        if (extras.containsKey(TelecomManager.EXTRA_CALL_DISCONNECT_MESSAGE)) {
+            disconnectMessage = extras.getString(TelecomManager.EXTRA_CALL_DISCONNECT_MESSAGE);
+            Log.i(this, "onCreateIncomingConnection Disconnect message " + disconnectMessage);
+        }
+
         Call call = phone.getRingingCall();
-        if (!call.getState().isRinging()) {
+        if (!call.getState().isRinging()
+                || (disconnectMessage != null
+                && disconnectMessage.equals(TelecomManager.CALL_AUTO_DISCONNECT_MESSAGE_STRING))) {
             Log.i(this, "onCreateIncomingConnection, no ringing call");
             Connection connection = Connection.createFailedConnection(
                     mDisconnectCauseFactory.toTelecomDisconnectCause(
                             android.telephony.DisconnectCause.INCOMING_MISSED,
                             "Found no ringing call",
                             phone.getPhoneId()));
-            Bundle extras = request.getExtras();
 
             long time = extras.getLong(TelecomManager.EXTRA_CALL_CREATED_EPOCH_TIME_MILLIS);
             if (time != 0) {
