@@ -47,21 +47,19 @@ public class TelephonyRcsService {
     private static final String LOG_TAG = "TelephonyRcsService";
 
     /**
-     * Used to inject RcsFeatureController and UserCapabilityExchangeImpl instances for testing.
+     * Used to inject RcsFeatureController and UceController instances for testing.
      */
     @VisibleForTesting
     public interface FeatureFactory {
         /**
-         * @return an {@link RcsFeatureController} assoicated with the slot specified.
+         * @return an {@link RcsFeatureController} associated with the slot specified.
          */
         RcsFeatureController createController(Context context, int slotId);
 
         /**
-         * @return an instance of {@link UserCapabilityExchangeImpl} associated with the slot
-         * specified.
+         * @return an instance of {@link UceControllerManager} associated with the slot specified.
          */
-        UserCapabilityExchangeImpl createUserCapabilityExchange(Context context, int slotId,
-                int subId);
+        UceControllerManager createUceControllerManager(Context context, int slotId, int subId);
 
         /**
          * @return an instance of {@link SipTransportController} for the slot and subscription
@@ -77,9 +75,9 @@ public class TelephonyRcsService {
         }
 
         @Override
-        public UserCapabilityExchangeImpl createUserCapabilityExchange(Context context, int slotId,
+        public UceControllerManager createUceControllerManager(Context context, int slotId,
                 int subId) {
-            return new UserCapabilityExchangeImpl(context, slotId, subId);
+            return new UceControllerManager(context, slotId, subId);
         }
 
         @Override
@@ -237,13 +235,13 @@ public class TelephonyRcsService {
 
     private void updateSupportedFeatures(RcsFeatureController c, int slotId, int subId) {
         if (doesSubscriptionSupportPresence(subId)) {
-            if (c.getFeature(UserCapabilityExchangeImpl.class) == null) {
-                c.addFeature(mFeatureFactory.createUserCapabilityExchange(mContext, slotId, subId),
-                        UserCapabilityExchangeImpl.class);
+            if (c.getFeature(UceControllerManager.class) == null) {
+                c.addFeature(mFeatureFactory.createUceControllerManager(mContext, slotId, subId),
+                        UceControllerManager.class);
             }
         } else {
-            if (c.getFeature(UserCapabilityExchangeImpl.class) != null) {
-                c.removeFeature(UserCapabilityExchangeImpl.class);
+            if (c.getFeature(UceControllerManager.class) != null) {
+                c.removeFeature(UceControllerManager.class);
             }
         }
 
