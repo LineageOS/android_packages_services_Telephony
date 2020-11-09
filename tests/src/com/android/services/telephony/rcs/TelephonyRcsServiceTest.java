@@ -50,8 +50,8 @@ public class TelephonyRcsServiceTest extends TelephonyTestBase {
 
     @Captor ArgumentCaptor<BroadcastReceiver> mReceiverCaptor;
     @Mock TelephonyRcsService.FeatureFactory mFeatureFactory;
-    @Mock UserCapabilityExchangeImpl mMockUceSlot0;
-    @Mock UserCapabilityExchangeImpl mMockUceSlot1;
+    @Mock UceControllerManager mMockUceSlot0;
+    @Mock UceControllerManager mMockUceSlot1;
     @Mock SipTransportController mMockSipTransportSlot0;
     @Mock SipTransportController mMockSipTransportSlot1;
     @Mock RcsFeatureController.RegistrationHelperFactory mRegistrationFactory;
@@ -70,9 +70,9 @@ public class TelephonyRcsServiceTest extends TelephonyTestBase {
         mFeatureControllerSlot1 = createFeatureController(1 /*slotId*/);
         doReturn(mFeatureControllerSlot0).when(mFeatureFactory).createController(any(), eq(0));
         doReturn(mFeatureControllerSlot1).when(mFeatureFactory).createController(any(), eq(1));
-        doReturn(mMockUceSlot0).when(mFeatureFactory).createUserCapabilityExchange(any(), eq(0),
+        doReturn(mMockUceSlot0).when(mFeatureFactory).createUceControllerManager(any(), eq(0),
                 anyInt());
-        doReturn(mMockUceSlot1).when(mFeatureFactory).createUserCapabilityExchange(any(), eq(1),
+        doReturn(mMockUceSlot1).when(mFeatureFactory).createUceControllerManager(any(), eq(1),
                 anyInt());
         doReturn(mMockSipTransportSlot0).when(mFeatureFactory).createSipTransportController(any(),
                 eq(0), anyInt());
@@ -89,20 +89,20 @@ public class TelephonyRcsServiceTest extends TelephonyTestBase {
     }
 
     @Test
-    public void testUserCapabilityExchangePresenceConnected() {
+    public void testUceControllerPresenceConnected() {
         setCarrierConfig(1 /*subId*/, CarrierConfigManager.KEY_USE_RCS_PRESENCE_BOOL,
                 true /*isEnabled*/);
         createRcsService(1 /*numSlots*/);
-        verify(mFeatureControllerSlot0).addFeature(mMockUceSlot0, UserCapabilityExchangeImpl.class);
+        verify(mFeatureControllerSlot0).addFeature(mMockUceSlot0, UceControllerManager.class);
         verify(mFeatureControllerSlot0).connect();
     }
 
     @Test
-    public void testUserCapabilityExchangeOptionsConnected() {
+    public void testUceControllerOptionsConnected() {
         setCarrierConfig(1 /*subId*/, CarrierConfigManager.KEY_USE_RCS_SIP_OPTIONS_BOOL,
                 true /*isEnabled*/);
         createRcsService(1 /*numSlots*/);
-        verify(mFeatureControllerSlot0).addFeature(mMockUceSlot0, UserCapabilityExchangeImpl.class);
+        verify(mFeatureControllerSlot0).addFeature(mMockUceSlot0, UceControllerManager.class);
         verify(mFeatureControllerSlot0).connect();
     }
 
@@ -111,7 +111,7 @@ public class TelephonyRcsServiceTest extends TelephonyTestBase {
         createRcsService(1 /*numSlots*/);
         // No carrier config set for UCE.
         verify(mFeatureControllerSlot0, never()).addFeature(mMockUceSlot0,
-                UserCapabilityExchangeImpl.class);
+                UceControllerManager.class);
         verify(mFeatureControllerSlot0, never()).connect();
     }
 
@@ -171,7 +171,7 @@ public class TelephonyRcsServiceTest extends TelephonyTestBase {
 
         sendCarrierConfigChanged(0, SubscriptionManager.INVALID_SUBSCRIPTION_ID);
         verify(mFeatureControllerSlot0, never()).addFeature(mMockUceSlot0,
-                UserCapabilityExchangeImpl.class);
+                UceControllerManager.class);
         verify(mFeatureControllerSlot0, never()).connect();
         verify(mFeatureControllerSlot0, never()).updateAssociatedSubscription(anyInt());
     }
@@ -184,25 +184,25 @@ public class TelephonyRcsServiceTest extends TelephonyTestBase {
         setCarrierConfig(2 /*subId*/, CarrierConfigManager.KEY_USE_RCS_PRESENCE_BOOL,
                 true /*isEnabled*/);
         TelephonyRcsService service = createRcsService(1 /*numSlots*/);
-        verify(mFeatureControllerSlot0).addFeature(mMockUceSlot0, UserCapabilityExchangeImpl.class);
+        verify(mFeatureControllerSlot0).addFeature(mMockUceSlot0, UceControllerManager.class);
         verify(mFeatureControllerSlot0).connect();
 
         // there should be no changes if the new num slots = old num
         service.updateFeatureControllerSize(1 /*newNumSlots*/);
         verify(mFeatureControllerSlot0, times(1)).addFeature(mMockUceSlot0,
-                UserCapabilityExchangeImpl.class);
+                UceControllerManager.class);
         verify(mFeatureControllerSlot0, times(1)).connect();
 
         // Add a new slot.
         verify(mFeatureControllerSlot1, never()).addFeature(mMockUceSlot1,
-                UserCapabilityExchangeImpl.class);
+                UceControllerManager.class);
         verify(mFeatureControllerSlot1, never()).connect();
         service.updateFeatureControllerSize(2 /*newNumSlots*/);
         // This shouldn't have changed for slot 0.
         verify(mFeatureControllerSlot0, times(1)).addFeature(mMockUceSlot0,
-                UserCapabilityExchangeImpl.class);
+                UceControllerManager.class);
         verify(mFeatureControllerSlot0, times(1)).connect();
-        verify(mFeatureControllerSlot1).addFeature(mMockUceSlot1, UserCapabilityExchangeImpl.class);
+        verify(mFeatureControllerSlot1).addFeature(mMockUceSlot1, UceControllerManager.class);
         verify(mFeatureControllerSlot1, times(1)).connect();
 
         // Remove a slot.
@@ -211,10 +211,10 @@ public class TelephonyRcsServiceTest extends TelephonyTestBase {
         service.updateFeatureControllerSize(1 /*newNumSlots*/);
         // addFeature/connect shouldn't have been called again
         verify(mFeatureControllerSlot0, times(1)).addFeature(mMockUceSlot0,
-                UserCapabilityExchangeImpl.class);
+                UceControllerManager.class);
         verify(mFeatureControllerSlot0, times(1)).connect();
         verify(mFeatureControllerSlot1, times(1)).addFeature(mMockUceSlot1,
-                UserCapabilityExchangeImpl.class);
+                UceControllerManager.class);
         verify(mFeatureControllerSlot1, times(1)).connect();
         // Verify destroy is only called for slot 1.
         verify(mFeatureControllerSlot0, never()).destroy();
@@ -228,8 +228,8 @@ public class TelephonyRcsServiceTest extends TelephonyTestBase {
         setCarrierConfig(2 /*subId*/, CarrierConfigManager.KEY_USE_RCS_PRESENCE_BOOL,
                 true /*isEnabled*/);
         createRcsService(2 /*numSlots*/);
-        verify(mFeatureControllerSlot0).addFeature(mMockUceSlot0, UserCapabilityExchangeImpl.class);
-        verify(mFeatureControllerSlot1).addFeature(mMockUceSlot1, UserCapabilityExchangeImpl.class);
+        verify(mFeatureControllerSlot0).addFeature(mMockUceSlot0, UceControllerManager.class);
+        verify(mFeatureControllerSlot1).addFeature(mMockUceSlot1, UceControllerManager.class);
         verify(mFeatureControllerSlot0).connect();
         verify(mFeatureControllerSlot1).connect();
 
@@ -248,7 +248,7 @@ public class TelephonyRcsServiceTest extends TelephonyTestBase {
         setCarrierConfig(1 /*subId*/, CarrierConfigManager.KEY_USE_RCS_PRESENCE_BOOL,
                 true /*isEnabled*/);
         createRcsService(1 /*numSlots*/);
-        verify(mFeatureControllerSlot0).addFeature(mMockUceSlot0, UserCapabilityExchangeImpl.class);
+        verify(mFeatureControllerSlot0).addFeature(mMockUceSlot0, UceControllerManager.class);
         verify(mFeatureControllerSlot0).connect();
 
 
@@ -256,7 +256,7 @@ public class TelephonyRcsServiceTest extends TelephonyTestBase {
         setCarrierConfig(1 /*subId*/, CarrierConfigManager.KEY_USE_RCS_PRESENCE_BOOL,
                 false /*isEnabled*/);
         sendCarrierConfigChanged(0 /*slotId*/, 1 /*subId*/);
-        verify(mFeatureControllerSlot0).removeFeature(UserCapabilityExchangeImpl.class);
+        verify(mFeatureControllerSlot0).removeFeature(UceControllerManager.class);
         verify(mFeatureControllerSlot0).updateAssociatedSubscription(1);
     }
 
@@ -284,7 +284,7 @@ public class TelephonyRcsServiceTest extends TelephonyTestBase {
     public void testCarrierConfigUpdateNoUceToUce() {
         createRcsService(1 /*numSlots*/);
         verify(mFeatureControllerSlot0, never()).addFeature(mMockUceSlot0,
-                UserCapabilityExchangeImpl.class);
+                UceControllerManager.class);
         verify(mFeatureControllerSlot0, never()).connect();
 
 
@@ -292,7 +292,7 @@ public class TelephonyRcsServiceTest extends TelephonyTestBase {
         setCarrierConfig(1 /*subId*/, CarrierConfigManager.KEY_USE_RCS_PRESENCE_BOOL,
                 true /*isEnabled*/);
         sendCarrierConfigChanged(0 /*slotId*/, 1 /*subId*/);
-        verify(mFeatureControllerSlot0).addFeature(mMockUceSlot0, UserCapabilityExchangeImpl.class);
+        verify(mFeatureControllerSlot0).addFeature(mMockUceSlot0, UceControllerManager.class);
         verify(mFeatureControllerSlot0).connect();
         verify(mFeatureControllerSlot0).updateAssociatedSubscription(1);
     }
