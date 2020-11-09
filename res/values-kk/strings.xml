@@ -50,6 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"Дауыстық пошта параметрлерін тек негізгі пайдаланушы өзгерте алады."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"SIM картаңыз ашылды. Телефоныңыздың бекітпесі ашылуда…"</string>
     <string name="label_ndp" msgid="7617392683877410341">"SIM желісін ашатын PIN код"</string>
+    <string name="label_phoneid" msgid="8775611434123577808">"SIM картасы келесі операторға құлыпталған"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"Бекітпесін ашу"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"Бас тарту"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"Желінің бекітпесін ашуды өтінуде…"</string>
@@ -96,7 +97,7 @@
     <string name="sum_hide_caller_id" msgid="131100328602371933">"Шығыс қоңырауларда нөмірді жасыру"</string>
     <string name="sum_show_caller_id" msgid="3571854755324664591">"Шығыс қоңыраулар нөмірді көрсету"</string>
     <string name="sum_default_caller_id" msgid="1767070797135682959">"Шығыс қоңырауларында менің нөмірім көрсетілуі үшін бастапқы оператор параметрлерін қолдану"</string>
-    <string name="labelCW" msgid="8449327023861428622">"Күтудегі қоңырау"</string>
+    <string name="labelCW" msgid="8449327023861428622">"Қоңырауды ұстап тұру"</string>
     <string name="sum_cw_enabled" msgid="3977308526187139996">"Қоңырау кезінде маған келген қоңыраулар жайлы хабарлау"</string>
     <string name="sum_cw_disabled" msgid="3658094589461768637">"Қоңырау кезінде маған келген қоңыраулар жайлы хабарлау"</string>
     <string name="call_forwarding_settings" msgid="8937130467468257671">"Қоңырауды басқа нөмірге бағыттау параметрлері"</string>
@@ -123,8 +124,13 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"<xliff:g id="PHONENUMBER">{0}</xliff:g> нөміріне бағытталуда"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Өшірулі"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Телефоныңыз қол жетімсіз болғанда жабдықтаушы қоңырауды басқа нөмірге бағыттауды өшіруді қолдамайды."</string>
-    <!-- no translation found for registration_cf_forbidden (4386482610771190420) -->
-    <skip />
+    <string name="registration_cf_forbidden" msgid="4386482610771190420">"Операторыңыз қоңырауды басқа нөмірге бағыттауды қолдамайды."</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"Қоңырауды ұстап тұру мүмкіндігін қосу керек пе?"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"Сөйлесіп жатқанда сізге кіріс қоңыраулар туралы хабарландыру көрсетіледі."</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"Қосу"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"Бас тарту"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"IMS бойынша басқа CDMA желісіндегі қоңырауды ұстап тұру мүмкіндігі қосулы."</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"IMS бойынша басқа CDMA желісіндегі қоңырауды ұстап тұру мүмкіндігі өшірулі."</string>
     <string name="updating_title" msgid="6130548922615719689">"Қоңырау параметрлері"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Қоңырау параметрлерін тек әкімші пайдаланушы өзгерте алады."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Параметрлер (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -666,7 +672,7 @@
     <string name="enable_video_calling_dialog_msg" msgid="7141478720386203540">"Бейне қоңырауларды қосу үшін желі параметрлерінде жақсартылған 4G LTE режимін қосу керек."</string>
     <string name="enable_video_calling_dialog_settings" msgid="8697890611305307110">"Желі параметрлері"</string>
     <string name="enable_video_calling_dialog_close" msgid="4298929725917045270">"Жабу"</string>
-    <string name="sim_label_emergency_calls" msgid="9078241989421522310">"Жедел қоңыраулар"</string>
+    <string name="sim_label_emergency_calls" msgid="9078241989421522310">"Құтқару қызметіне қоңырау шалу"</string>
     <string name="sim_description_emergency_calls" msgid="5146872803938897296">"Тек жедел қоңыраулар"</string>
     <string name="sim_description_default" msgid="7474671114363724971">"SIM картасы, ұяшық: <xliff:g id="SLOT_ID">%s</xliff:g>"</string>
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"Арнайы мүмкіндіктер"</string>
@@ -869,7 +875,6 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"Әдепкі деректер SIM картасының қосалқы идентификаторы:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DL өткізу мүмкіндігі (кбит/сек):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL өткізу мүмкіндігі (кбит/сек):"</string>
-    <string name="radio_info_signal_location_label" msgid="6188435197086550049">"Ұялы желінің орналасқан жері туралы ақпарат (қолданыстан шығарылды):"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"LTE физикалық арна конфигурациясы:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Ұялы желі туралы ақпаратты жаңарту жиілігі:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Барлық ұялы желі өлшемдері туралы ақпарат:"</string>
@@ -900,6 +905,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Жаңарту"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"DNS тексерісін қосу/өшіру"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"Өндірушіге қатысты ақпарат/параметрлер"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC қолжетімді:"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR шектеулі:"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR қолжетімді:"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"NR күйі:"</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR жиілігі:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Радиожолақ режимін орнату"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Жолақтар тізімі жүктелуде…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Орнату"</string>

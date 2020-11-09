@@ -50,6 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"Izilungiselelo zevoyisimeyili zingashintshwa kuphela umsebenzisi oyinhloko."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"Ikhadi lakho le-SIM livuliwe. Ifoni yakho iyavula..."</string>
     <string name="label_ndp" msgid="7617392683877410341">"Inethiwekhi ye-SIM yokuvula i-PIN"</string>
+    <string name="label_phoneid" msgid="8775611434123577808">"I-SIM ivalelwe umsebenzisi"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"Vula"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"Cashisa"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"Icela ukuvula inethiwekhi..."</string>
@@ -124,6 +125,12 @@
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Valiwe"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Isiphathi sakho asisekeli ukuvimbela ukudlulisela ucingo lapho ifoni yakho ingafinyeleleki."</string>
     <string name="registration_cf_forbidden" msgid="4386482610771190420">"Inkampani yakho yenethiwekhi ayisekeli ukudlulisela phambili ikholi."</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"Vula ukulinda ikholi?"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"Phakathi nekholi, uzokwaziswa ngamakholi angenayo"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"Vula"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"Hoxa"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"Ukulinda kwekholi ye-CDMA ngaphansi kwe-IMS kuvuliwe"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"Ukulinda kwekholi ye-CDMA ngaphansi kwe-IMS kuvaliwe"</string>
     <string name="updating_title" msgid="6130548922615719689">"Izilungiselelo zekholi"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Izilungiselelo zekholi zingaguqulwa kuphela ngumsebenzisi oyinhloko."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Izilungiselelo (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -870,7 +877,6 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"I-SubId ye-SIM yedatha yokuzenzakalela:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Umkhawulokudonsa we-DL (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Umkhawulokudonsa we-UL (kbps):"</string>
-    <string name="radio_info_signal_location_label" msgid="6188435197086550049">"Ulwazi lwendawo lweseli (kwehlisiwe):"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Ukulungiselelwa okuphathekayo kwesiteshi se-LTE:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Isilinganiso sokuqalisa kabusha solwazi lweseli:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Ulwazi lwesilinganiso seseli:"</string>
@@ -901,6 +907,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Vuselela"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"Guqula ukuhlola i-DNS"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"Ulwazi oucacile kwe-OEM/Izilungiselelo"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"I-EN-DC Iyatholakala:"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"Okukhawulelwe kwe-DCNR:"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"I-NR Iyatholakala:"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"Isimo se-NR:"</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"Imvamisa ye-NR:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Isetha imodi yebhendi yerediyo"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Ilayisha uhlu lwebhendi…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Setha"</string>

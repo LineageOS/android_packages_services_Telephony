@@ -50,6 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"Endast den primära användaren får ändra röstbrevlådans inställningar."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"SIM-kortets spärr har tagits bort. Låser upp telefonen…"</string>
     <string name="label_ndp" msgid="7617392683877410341">"PIN-kod för upplåsning av SIM-nätverk"</string>
+    <string name="label_phoneid" msgid="8775611434123577808">"Operatörslåst SIM-kort"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"Lås upp"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"Ta bort permanent"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"Försöker låsa upp nätverket…"</string>
@@ -124,6 +125,12 @@
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Av"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Operatören stöder inte inaktivering av vidarebefordran av samtal när det inte går att nå telefonen."</string>
     <string name="registration_cf_forbidden" msgid="4386482610771190420">"Din operatör stöder inte vidarebefordran av samtal."</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"Aktivera Samtal väntar?"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"Du meddelas om inkommande samtal under samtal"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"Aktivera"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"Avbryt"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"CDMA samtal väntar under IMS på"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"CDMA samtal väntar under IMS av"</string>
     <string name="updating_title" msgid="6130548922615719689">"Samtalsinställningar"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Det är bara administratören som kan ändra samtalsinställningar."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Inställningar (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -308,12 +315,8 @@
     <string name="throttle_time_frame" msgid="1813452485948918791">"Dataanvändningsperiod"</string>
     <string name="throttle_rate" msgid="7641913901133634905">"Datahastighetspolicy"</string>
     <string name="throttle_help" msgid="2624535757028809735">"Läs mer"</string>
-    <!-- String.format failed for translation -->
-    <!-- no translation found for throttle_status_subtext (1110276415078236687) -->
-    <skip />
-    <!-- String.format failed for translation -->
-    <!-- no translation found for throttle_data_usage_subtext (3185429653996709840) -->
-    <skip />
+    <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) av högst <xliff:g id="USED_2">%3$s</xliff:g> för perioden\nNästa period börjar om <xliff:g id="USED_3">%4$d</xliff:g> dagar (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
+    <string name="throttle_data_usage_subtext" msgid="3185429653996709840">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g> ٪) av högst <xliff:g id="USED_2">%3$s</xliff:g> för perioden"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"<xliff:g id="USED_0">%1$s</xliff:g> maxvärdet har överskridits\nDatahastigheten har sänkts till <xliff:g id="USED_1">%2$d</xliff:g> kbit/s"</string>
     <string name="throttle_time_frame_subtext" msgid="6462089615392402127">"<xliff:g id="USED_0">%1$d</xliff:g> ٪ av cykeln har gått\nNästa period börjar om <xliff:g id="USED_1">%2$d</xliff:g> dagar (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
     <string name="throttle_rate_subtext" msgid="7221971817325779535">"Datahastigheten sänks till <xliff:g id="USED">%1$d</xliff:g> kbit/s om dataanvändningsgränsen överskrids"</string>
@@ -693,7 +696,7 @@
     <string name="change_pin_enter_old_pin_hint" msgid="8801292976275169367">"Ange pinkoden till röstbrevlådan för att fortsätta."</string>
     <string name="change_pin_enter_new_pin_header" msgid="4739465616733486118">"Ange en ny pinkod"</string>
     <string name="change_pin_enter_new_pin_hint" msgid="2326038476516364210">"Pinkoden måste ha <xliff:g id="MIN">%1$d</xliff:g>-<xliff:g id="MAX">%2$d</xliff:g> siffror."</string>
-    <string name="change_pin_confirm_pin_header" msgid="2606303906320705726">"Bekräfta pinkod"</string>
+    <string name="change_pin_confirm_pin_header" msgid="2606303906320705726">"Bekräfta PIN-kod"</string>
     <string name="change_pin_confirm_pins_dont_match" msgid="305164501222587215">"Pinkoderna matchar inte"</string>
     <string name="change_pin_succeeded" msgid="2504705600693014403">"Röstbrevlådans pinkod bekräftad"</string>
     <string name="change_pin_system_error" msgid="7772788809875146873">"Det går inte att ställa in pinkod"</string>
@@ -872,7 +875,6 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"SubId för standarddata på SIM-kortet:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Bandbredd för nedladdning (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Bandbredd för uppladdning (kbps):"</string>
-    <string name="radio_info_signal_location_label" msgid="6188435197086550049">"Platsinformation för mast (utfasad):"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Fysisk kanalkonfiguration för LTE:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Frekvens för uppdatering av mastinformation:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Alla information om mastmätning:"</string>
@@ -903,6 +905,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Uppdatera"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"Aktivera och inaktivera DNS-kontroll"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"OEM-specifik information/inställningar"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC tillgänglig:"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR begränsad:"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR tillgänglig:"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"NR-status:"</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR-frekvens:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Konfigurera radiobandsläget"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Läser in bandlista …"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Ange"</string>

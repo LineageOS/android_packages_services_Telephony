@@ -43,13 +43,14 @@
     <string name="send_button" msgid="5070379600779031932">"Enviar"</string>
     <string name="pause_prompt_yes" msgid="8184132073048369575">"Sí"</string>
     <string name="pause_prompt_no" msgid="2145264674774138579">"No"</string>
-    <string name="wild_prompt_str" msgid="5858910969703305375">"Sustituir el carácter comodín por"</string>
+    <string name="wild_prompt_str" msgid="5858910969703305375">"Reemplazar el carácter comodín por"</string>
     <string name="no_vm_number" msgid="6623853880546176930">"Falta el número del buzón de voz."</string>
     <string name="no_vm_number_msg" msgid="5165161462411372504">"No se ha almacenado ningún número de buzón de voz en la tarjeta SIM."</string>
     <string name="add_vm_number_str" msgid="7368168964435881637">"Añadir número"</string>
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"El usuario principal es el único que puede modificar los ajustes del buzón de voz."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"La tarjeta SIM se ha desbloqueado. El teléfono se está desbloqueando..."</string>
     <string name="label_ndp" msgid="7617392683877410341">"PIN de desbloqueo de red de tarjeta SIM"</string>
+    <string name="label_phoneid" msgid="8775611434123577808">"SIM bloqueada por el operador"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"Desbloquear"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"Cerrar"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"Solicitando desbloqueo de red..."</string>
@@ -62,7 +63,7 @@
     <string name="labelCdmaMore_with_label" msgid="7759692829160238152">"Ajustes de llamada de CDMA (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="apn_settings" msgid="1978652203074756623">"Nombres de puntos de acceso"</string>
     <string name="settings_label" msgid="9101778088412567956">"Ajustes de red"</string>
-    <string name="phone_accounts" msgid="1216879437523774604">"Cuentas de llamadas"</string>
+    <string name="phone_accounts" msgid="1216879437523774604">"Cuentas de llamada"</string>
     <string name="phone_accounts_make_calls_with" msgid="16747814788918145">"Realizar llamadas con"</string>
     <string name="phone_accounts_make_sip_calls_with" msgid="4691221006731847255">"Realizar llamadas SIP con"</string>
     <string name="phone_accounts_ask_every_time" msgid="6192347582666047168">"Preguntar primero"</string>
@@ -123,8 +124,13 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"Desviando a <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Desactivado"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Tu operador no permite inhabilitar el desvío de llamadas si no se puede establecer la llamada."</string>
-    <!-- no translation found for registration_cf_forbidden (4386482610771190420) -->
-    <skip />
+    <string name="registration_cf_forbidden" msgid="4386482610771190420">"Tu operador no admite el desvío de llamadas."</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"¿Quieres activar la llamada en espera?"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"Se te notificarán las llamadas entrantes mientras estés en una llamada"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"Activar"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"Cancelar"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"Llamada en espera de CDMA en IMS activada"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"Llamada en espera de CDMA en IMS desactivada"</string>
     <string name="updating_title" msgid="6130548922615719689">"Ajustes de llamadas"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"El administrador es el único usuario que puede cambiar los ajustes de llamada."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Ajustes (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -186,7 +192,7 @@
     <string name="forbidden_network" msgid="5081729819561333023">"(prohibida)"</string>
     <string name="choose_network_title" msgid="5335832663422653082">"Elegir red"</string>
     <string name="network_disconnected" msgid="8844141106841160825">"Desconectado"</string>
-    <string name="network_connected" msgid="2760235679963580224">"Conectada"</string>
+    <string name="network_connected" msgid="2760235679963580224">"Conectado"</string>
     <string name="network_connecting" msgid="160901383582774987">"Conectando..."</string>
     <string name="network_could_not_connect" msgid="6547460848093727998">"No se ha podido conectar"</string>
   <string-array name="preferred_network_mode_choices">
@@ -295,7 +301,7 @@
     <string name="keywords_carrier_settings_euicc" msgid="8540160967922063745">"operador, esim, sim, euicc, cambiar de operador, añadir operador"</string>
     <string name="carrier_settings_euicc_summary" msgid="2027941166597330117">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g>: <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="7228249980933944101">"Datos móviles"</string>
-    <string name="mobile_data_settings_summary" msgid="5012570152029118471">"Acceder a los datos con la red móvil"</string>
+    <string name="mobile_data_settings_summary" msgid="5012570152029118471">"Acceder a datos con la red móvil"</string>
     <string name="data_usage_disable_mobile" msgid="5669109209055988308">"¿Quieres desactivar los datos móviles?"</string>
     <string name="sim_selection_required_pref" msgid="6985901872978341314">"Debes seleccionar una opción"</string>
     <string name="sim_change_data_title" msgid="9142726786345906606">"¿Cambiar la SIM de datos?"</string>
@@ -309,9 +315,7 @@
     <string name="throttle_time_frame" msgid="1813452485948918791">"Período uso datos"</string>
     <string name="throttle_rate" msgid="7641913901133634905">"Política velocidad datos"</string>
     <string name="throttle_help" msgid="2624535757028809735">"Más información"</string>
-    <!-- String.format failed for translation -->
-    <!-- no translation found for throttle_status_subtext (1110276415078236687) -->
-    <skip />
+    <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) de periodo máximo de <xliff:g id="USED_2">%3$s</xliff:g>.\nPróx periodo en <xliff:g id="USED_3">%4$d</xliff:g> días (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
     <string name="throttle_data_usage_subtext" msgid="3185429653996709840">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) de periodo máx de <xliff:g id="USED_2">%3$s</xliff:g>"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"Máx de <xliff:g id="USED_0">%1$s</xliff:g> superado.\nFrec datos reducida a <xliff:g id="USED_1">%2$d</xliff:g> Kb/s"</string>
     <string name="throttle_time_frame_subtext" msgid="6462089615392402127">"<xliff:g id="USED_0">%1$d</xliff:g>٪ del ciclo transcurrido.\nPróx periodo en <xliff:g id="USED_1">%2$d</xliff:g> días (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
@@ -621,7 +625,7 @@
     <string name="ota_unsuccessful" msgid="8531037653803955754">"El teléfono no se ha activado. \nEs posible que tengas que situarte en una zona con más cobertura (cerca de una ventana o en el exterior). \n\nInténtalo de nuevo o ponte en contacto con el servicio de atención al cliente para consultar otras opciones."</string>
     <string name="ota_spc_failure" msgid="904092035241370080">"EXCESO DE ERRORES DE SPC"</string>
     <string name="ota_call_end" msgid="8657746378290737034">"Atrás"</string>
-    <string name="ota_try_again" msgid="6914781945599998550">"Volver a intentarlo"</string>
+    <string name="ota_try_again" msgid="6914781945599998550">"Reintentar"</string>
     <string name="ota_next" msgid="2041016619313475914">"Siguiente"</string>
     <string name="ecm_exit_dialog" msgid="4200691880721429078">"EcmExitDialog"</string>
     <string name="phone_entered_ecm_text" msgid="8431238297843035842">"Se ha activado el modo de devolución de llamada de emergencia."</string>
@@ -649,7 +653,7 @@
     </plurals>
     <string name="voicemail_provider" msgid="4158806657253745294">"Servicio"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"Configuración"</string>
-    <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;No definido&gt;"</string>
+    <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;Sin establecer&gt;"</string>
     <string name="other_settings" msgid="8895088007393598447">"Otras opciones de llamada"</string>
     <string name="calling_via_template" msgid="1791323450703751750">"Llamada vía <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
     <string name="contactPhoto" msgid="7885089213135154834">"foto de contacto"</string>
@@ -768,19 +772,19 @@
     <string name="sum_call_barring_disabled" msgid="5699448000600153096">"Desactivado"</string>
     <string name="call_barring_baoc" msgid="7400892586336429326">"Todas las realizadas"</string>
     <string name="call_barring_baoc_enabled" msgid="3131509193386668182">"¿Quieres desbloquear todas las llamadas realizadas?"</string>
-    <string name="call_barring_baoc_disabled" msgid="8534224684091141509">"¿Quieres bloquear todas las llamadas realizadas?"</string>
+    <string name="call_barring_baoc_disabled" msgid="8534224684091141509">"¿Bloquear todas las llamadas realizadas?"</string>
     <string name="call_barring_baoic" msgid="8668125428666851665">"Internacionales realizadas"</string>
     <string name="call_barring_baoic_enabled" msgid="1203758092657630123">"¿Quieres desbloquear las llamadas internacionales realizadas?"</string>
-    <string name="call_barring_baoic_disabled" msgid="5656889339002997449">"¿Quieres bloquear las llamadas internacionales realizadas?"</string>
+    <string name="call_barring_baoic_disabled" msgid="5656889339002997449">"¿Bloquear las llamadas internacionales realizadas?"</string>
     <string name="call_barring_baoicr" msgid="8566167764432343487">"Itinerancia de llamadas internacionales realizadas"</string>
     <string name="call_barring_baoicr_enabled" msgid="1615324165512798478">"¿Quieres desbloquear la itinerancia de las llamadas internacionales realizadas?"</string>
-    <string name="call_barring_baoicr_disabled" msgid="172010175248142831">"¿Quieres bloquear la itinerancia de las llamadas internacionales realizadas?"</string>
+    <string name="call_barring_baoicr_disabled" msgid="172010175248142831">"¿Bloquear la itinerancia de las llamadas internacionales realizadas?"</string>
     <string name="call_barring_baic" msgid="7941393541678658566">"Todas las entrantes"</string>
     <string name="call_barring_baic_enabled" msgid="4357332358020337470">"¿Quieres desbloquear todas las llamadas entrantes?"</string>
-    <string name="call_barring_baic_disabled" msgid="2355945245938240958">"¿Quieres bloquear todas las llamadas entrantes?"</string>
+    <string name="call_barring_baic_disabled" msgid="2355945245938240958">"¿Bloquear todas las llamadas entrantes?"</string>
     <string name="call_barring_baicr" msgid="8712249337313034226">"Itinerancia de llamadas internacionales entrantes"</string>
     <string name="call_barring_baicr_enabled" msgid="64774270234828175">"¿Quieres desbloquear la itinerancia de las llamadas internacionales entrantes?"</string>
-    <string name="call_barring_baicr_disabled" msgid="3488129262744027262">"¿Quieres bloquear la itinerancia de las llamadas internacionales entrantes?"</string>
+    <string name="call_barring_baicr_disabled" msgid="3488129262744027262">"¿Bloquear la itinerancia de las llamadas internacionales entrantes?"</string>
     <string name="call_barring_deactivate_all" msgid="7837931580047157328">"Desactivar todo"</string>
     <string name="call_barring_deactivate_all_description" msgid="4474119585042121604">"Desactivar todos los ajustes de bloqueo de llamadas"</string>
     <string name="call_barring_deactivate_success" msgid="3545644320298275337">"Se ha desactivado el bloqueo de llamadas"</string>
@@ -871,7 +875,6 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"ID secundario de la SIM de datos predeterminada:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Ancho de banda de bajada (Kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Ancho de banda de subida (Kbps):"</string>
-    <string name="radio_info_signal_location_label" msgid="6188435197086550049">"Información sobre la ubicación del teléfono (obsoleto):"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Configuración del canal físico de LTE:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Frecuencia de actualización de la información del teléfono:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Información sobre las dimensiones de los teléfonos:"</string>
@@ -902,6 +905,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Actualizar"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"Activar o desactivar comprobación de DNS"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"Ajustes o información específica de OEM"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC disponible:"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR restringido:"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR disponible:"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"Estado de NR:"</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"Frecuencia de NR:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Establecer modo de banda de señal móvil"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Cargando lista de bandas…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Seleccionar"</string>

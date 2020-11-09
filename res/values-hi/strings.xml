@@ -50,6 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"वॉइसमेल सेटिंग को केवल प्राथमिक उपयोगकर्ता ही बदल सकता है."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"आपका सिम कार्ड अनब्लॉक कर दिया गया है. आपका फ़ोन अनलॉक किया जा रहा है..."</string>
     <string name="label_ndp" msgid="7617392683877410341">"सिम नेटवर्क अनलॉक पिन"</string>
+    <string name="label_phoneid" msgid="8775611434123577808">"ऑपरेटर के लिए सिम को लॉक किया गया"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"अनब्लॉक करें"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"खारिज करें"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"नेटवर्क अनलॉक के लिए अनुरोध कर रहा है..."</string>
@@ -124,6 +125,12 @@
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"बंद"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"जब आपका फ़ोन पहुंच योग्य न हो, तो आपका कैरियर कॉल अग्रेषण अक्षम करने का समर्थन नहीं करता."</string>
     <string name="registration_cf_forbidden" msgid="4386482610771190420">"आपको मोबाइल और इंटरनेट सेवा देने वाली कंपनी, कॉल को दूसरे नंबर पर भेजने की सुविधा नहीं देती."</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"क्या आप कॉल वेटिंग (कॉल के दौरान आ रहा दूसरा कॉल) की सुविधा चालू करना चाहते हैं?"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"कॉल के दौरान, आपको आने वाले कॉल (इनकमिंग) के बारे में सूचना दी जाएगी"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"चालू करें"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"रद्द करें"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"आईएमएस में CDMA कॉल वेटिंग की सुविधा चालू है"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"आईएमएस में CDMA कॉल वेटिंग की सुविधा बंद है"</string>
     <string name="updating_title" msgid="6130548922615719689">"कॉल सेटिंग"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"कॉल सेटिंग केवल व्यवस्थापक उपयोगकर्ता द्वारा ही बदली जा सकती हैं."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"सेटिंग (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -308,7 +315,7 @@
     <string name="throttle_time_frame" msgid="1813452485948918791">"डेटा उपयोग अवधि"</string>
     <string name="throttle_rate" msgid="7641913901133634905">"डेटा दर नीति"</string>
     <string name="throttle_help" msgid="2624535757028809735">"ज़्यादा जानें"</string>
-    <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_2">%3$s</xliff:g> में से <xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) अवधि अधिकतम\nअगली अवधि <xliff:g id="USED_3">%4$d</xliff:g> दिनों (<xliff:g id="USED_4">%5$s</xliff:g>) में प्रारंभ होगी"</string>
+    <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_2">%3$s</xliff:g> में से <xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) अवधि अधिकतम\nअगली अवधि <xliff:g id="USED_3">%4$d</xliff:g> दिनों (<xliff:g id="USED_4">%5$s</xliff:g>) में शुरू होगी"</string>
     <string name="throttle_data_usage_subtext" msgid="3185429653996709840">"<xliff:g id="USED_2">%3$s</xliff:g> में से <xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) अवधि अधिकतम"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"<xliff:g id="USED_0">%1$s</xliff:g> अधिकतम सीमा पार हो गई\nडेटा दर <xliff:g id="USED_1">%2$d</xliff:g> Kb/s तक कम हो गई है"</string>
     <string name="throttle_time_frame_subtext" msgid="6462089615392402127">"चक्र का <xliff:g id="USED_0">%1$d</xliff:g>٪ बीत चुका है\nअगली अवधि <xliff:g id="USED_1">%2$d</xliff:g> दिन में आरंभ होगी (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
@@ -868,7 +875,6 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"डिफ़ॉल्ट डेटा सिम का सब-आईडी:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"डीएल बैंडविड्थ (केबीपीएस):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"यूएल बैंडविड्थ (केबीपीएस):"</string>
-    <string name="radio_info_signal_location_label" msgid="6188435197086550049">"सेल की जगह की जानकारी (रोकी गयी है):"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"एलटीई की फ़िज़िकल चैनल कॉन्फ़िगरेशन:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"सेल की जानकारी रीफ़्रेश होने की दर:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"सभी सेल के माप की पूरी जानकारी:"</string>
@@ -899,6 +905,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"रीफ़्रेश करें"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"डीएनएस जांच टॉगल करें"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"ओईएम-खास जानकारी/सेटिंग"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC उपलब्ध है:"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR प्रतिबंधित है:"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR उपलब्ध है:"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"NR की स्थिति:"</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR की फ़्रीक्वेंसी:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"\'रेडियो बैंड\' मोड सेट करें"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"बैंड सूची लोड की जा रही है…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"सेट करें"</string>

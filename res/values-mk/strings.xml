@@ -50,6 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"Поставките за говорна пошта може да ги измени само примарниот корисник."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"Вашата SIM картичка е одблокирана. Вашиот телефон се отклучува..."</string>
     <string name="label_ndp" msgid="7617392683877410341">"PIN за отклучување мрежа на SIM"</string>
+    <string name="label_phoneid" msgid="8775611434123577808">"SIM-картичката е заклучена за операторот"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"Отклучи"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"Отфрли"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"Барање за отклучување мрежа..."</string>
@@ -74,7 +75,7 @@
     <string name="phone_accounts_configure_account_settings" msgid="6622119715253196586">"Конфигурирајте ги поставките на сметка"</string>
     <string name="phone_accounts_all_calling_accounts" msgid="1609600743500618823">"Сите сметки за повици"</string>
     <string name="phone_accounts_all_calling_accounts_summary" msgid="2214134955430107240">"Изберете кои сметки може да повикуваат"</string>
-    <string name="wifi_calling" msgid="3650509202851355742">"Повикување преку Wi-Fi"</string>
+    <string name="wifi_calling" msgid="3650509202851355742">"Повик преку Wi-Fi"</string>
     <string name="connection_service_default_label" msgid="7332739049855715584">"Вградена услуга на поврзување"</string>
     <string name="voicemail" msgid="7697769412804195032">"Говорна пошта"</string>
     <string name="voicemail_settings_with_label" msgid="4228431668214894138">"Говорна пошта (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -84,7 +85,7 @@
     <string name="smart_forwarding_settings_menu_summary" msgid="5096947726032885325">"Кога едниот број е недостапен, секогаш проследувајте ги повиците на вашиот друг број"</string>
     <string name="voicemail_notifications_preference_title" msgid="7829238858063382977">"Известувања"</string>
     <string name="cell_broadcast_settings" msgid="8135324242541809924">"Итни емитувања"</string>
-    <string name="call_settings" msgid="3677282690157603818">"Поставки на повик"</string>
+    <string name="call_settings" msgid="3677282690157603818">"Поставки за повици"</string>
     <string name="additional_gsm_call_settings" msgid="1561980168685658846">"Дополнителни поставки"</string>
     <string name="additional_gsm_call_settings_with_label" msgid="7973920539979524908">"Дополнителни поставки (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="sum_gsm_call_settings" msgid="7964692601608878138">"Дополнителни поставки на повик само за GSM"</string>
@@ -123,13 +124,18 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"Проследување на <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Исклучено"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Вашиот оператор не поддржува оневозможување проследување повик кога вашиот телефон е недостапен."</string>
-    <!-- no translation found for registration_cf_forbidden (4386482610771190420) -->
-    <skip />
-    <string name="updating_title" msgid="6130548922615719689">"Поставки на повик"</string>
+    <string name="registration_cf_forbidden" msgid="4386482610771190420">"Вашиот оператор не поддржува проследување повик."</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"Да се вклучи повик на чекање?"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"Во текот на повик ќе добиете известување за дојдовни повици"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"Вклучи"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"Откажи"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"Повикот на чекање CDMA под IMS е вклучен"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"Повикот на чекање CDMA под IMS е исклучен"</string>
+    <string name="updating_title" msgid="6130548922615719689">"Поставки за повици"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Поставките за повик може да ги измени само администраторскиот корисник."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Поставки (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Грешка со поставки на повици"</string>
-    <string name="reading_settings" msgid="1605904432450871183">"Поставки за читање..."</string>
+    <string name="reading_settings" msgid="1605904432450871183">"Се читаат поставките..."</string>
     <string name="updating_settings" msgid="3650396734816028808">"Ажурирање поставки..."</string>
     <string name="reverting_settings" msgid="7378668837291012205">"Враќање поставки..."</string>
     <string name="response_error" msgid="3904481964024543330">"Неочекуван одговор од мрежата."</string>
@@ -300,7 +306,7 @@
     <string name="sim_selection_required_pref" msgid="6985901872978341314">"Треба да се избере"</string>
     <string name="sim_change_data_title" msgid="9142726786345906606">"Да се промени SIM за интернет?"</string>
     <string name="sim_change_data_message" msgid="3567358694255933280">"Да се користи <xliff:g id="NEW_SIM">%1$s</xliff:g> наместо <xliff:g id="OLD_SIM">%2$s</xliff:g> за мобилен интернет?"</string>
-    <string name="wifi_calling_settings_title" msgid="5800018845662016507">"Повикување преку Wi-Fi"</string>
+    <string name="wifi_calling_settings_title" msgid="5800018845662016507">"Повик преку Wi-Fi"</string>
     <string name="video_calling_settings_title" msgid="342829454913266078">"Видеоповикување преку оператор"</string>
     <string name="gsm_umts_options" msgid="4968446771519376808">"Опции за GSM/UMTS"</string>
     <string name="cdma_options" msgid="3669592472226145665">"Опции на CDMA"</string>
@@ -309,9 +315,7 @@
     <string name="throttle_time_frame" msgid="1813452485948918791">"Период на потрошен интернет"</string>
     <string name="throttle_rate" msgid="7641913901133634905">"Политика на стапка на податоци"</string>
     <string name="throttle_help" msgid="2624535757028809735">"Дознај повеќе"</string>
-    <!-- String.format failed for translation -->
-    <!-- no translation found for throttle_status_subtext (1110276415078236687) -->
-    <skip />
+    <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g> ٪) од максимум <xliff:g id="USED_2">%3$s</xliff:g> за периодот\nСледниот период започнува за <xliff:g id="USED_3">%4$d</xliff:g> дена (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
     <string name="throttle_data_usage_subtext" msgid="3185429653996709840">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) од <xliff:g id="USED_2">%3$s</xliff:g> максимален период"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"<xliff:g id="USED_0">%1$s</xliff:g> максимум е надминат\nСтапката на податоци е намалена на <xliff:g id="USED_1">%2$d</xliff:g> кб/с"</string>
     <string name="throttle_time_frame_subtext" msgid="6462089615392402127">"<xliff:g id="USED_0">%1$d</xliff:g>٪ од циклусот помина\nНаредниот период започнува за <xliff:g id="USED_1">%2$d</xliff:g> дена (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
@@ -547,7 +551,7 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"Не може да се задржат повици."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"Поврзете се на безжична мрежа за да повикате."</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"Овозможете повикување преку Wi-Fi за воспоставување повик."</string>
-    <string name="emergency_information_hint" msgid="9208897544917793012">"Информации за итни случаи"</string>
+    <string name="emergency_information_hint" msgid="9208897544917793012">"Податоци за итни случаи"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"Сопственик"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"Допрете повторно за приказ на информации"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="2667568200755388829">"Повик за итни случаи"</string>
@@ -845,7 +849,7 @@
     <string name="radio_info_ims_reg_status_registered" msgid="7095182114078864326">"Регистриран"</string>
     <string name="radio_info_ims_reg_status_not_registered" msgid="8045821447288876085">"Не е регистриран"</string>
     <string name="radio_info_ims_feature_status_available" msgid="6493200914756969292">"Достапен"</string>
-    <string name="radio_info_ims_feature_status_unavailable" msgid="8930391136839759778">"Недостапен"</string>
+    <string name="radio_info_ims_feature_status_unavailable" msgid="8930391136839759778">"Недостапно"</string>
     <string name="radio_info_ims_reg_status" msgid="25582845222446390">"IMS-регистрација: <xliff:g id="STATUS">%1$s</xliff:g>\nКомуникација преку LTE: <xliff:g id="AVAILABILITY_0">%2$s</xliff:g>\nКомуникација преку Wi-Fi: <xliff:g id="AVAILABILITY_1">%3$s</xliff:g>\nВидеоповикување: <xliff:g id="AVAILABILITY_2">%4$s</xliff:g>\nUT-интерфејс: <xliff:g id="AVAILABILITY_3">%5$s</xliff:g>"</string>
     <string name="radioInfo_service_in" msgid="45753418231446400">"Во употреба"</string>
     <string name="radioInfo_service_out" msgid="287972405416142312">"Надвор од употреба"</string>
@@ -871,7 +875,6 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"SUBID на стандардната SIM за мобилен интернет:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Брзина на пренос при преземање (кбит/с):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Брзина на пренос при прикачување (кбит/с):"</string>
-    <string name="radio_info_signal_location_label" msgid="6188435197086550049">"Информации за локација на мобилен (неподдржано):"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Конфигурација на физички канал на LTE:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Стапка на освежување на информациите за мобилниот:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Сите информации за мерењата на мобилниот:"</string>
@@ -902,6 +905,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Освежи"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"Префрли на DNS-проверка"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"Информации/Поставки карактеристични за ОЕМ"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"Достапно за EN-DC:"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"Ограничено на DCNR:"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"Достапно за NR:"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"Состојба на NR:"</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"Фреквенција на NR:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Поставете режим на појас на радио"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Се вчитува список на појаси…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Постави"</string>

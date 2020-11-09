@@ -50,6 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"Nastavenia hlasovej schránky môže zmeniť iba primárny používateľ."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"SIM karta bola odblokovaná. Prebieha odomykanie telefónu..."</string>
     <string name="label_ndp" msgid="7617392683877410341">"Kód PIN odomknutia siete pre SIM kartu"</string>
+    <string name="label_phoneid" msgid="8775611434123577808">"SIM karta je uzamknutá pre operátora"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"Odomknúť"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"Zatvoriť"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"Žiadosť o odomknutie siete..."</string>
@@ -123,13 +124,18 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"Presmerovanie na <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Vypnuté"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Váš operátor neumožňuje zakázanie presmerovaní, keď je telefón nedostupný."</string>
-    <!-- no translation found for registration_cf_forbidden (4386482610771190420) -->
-    <skip />
+    <string name="registration_cf_forbidden" msgid="4386482610771190420">"Váš operátor nepodporuje presmerovanie hovorov."</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"Chcete zapnúť funkciu Čakajúci hovor?"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"Počas hovoru budete dostávať upozornenia na prichádzajúce hovory"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"Zapnúť"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"Zrušiť"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"CDMA – čakajúci hovor službe IMS – zapnuté"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"CDMA – čakajúci hovor v službe IMS – vypnuté"</string>
     <string name="updating_title" msgid="6130548922615719689">"Nastavenia hovorov"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Nastavenia hovorov môže zmeniť iba používateľ s povoleniami správcu."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Nastavenia (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Chyba nastavení hovorov"</string>
-    <string name="reading_settings" msgid="1605904432450871183">"Nastavenia sa načítajú…"</string>
+    <string name="reading_settings" msgid="1605904432450871183">"Nastavenia sa načítavajú…"</string>
     <string name="updating_settings" msgid="3650396734816028808">"Prebieha aktualizácia nastavení..."</string>
     <string name="reverting_settings" msgid="7378668837291012205">"Prebieha vrátenie predchádzajúcich nastavení…"</string>
     <string name="response_error" msgid="3904481964024543330">"Neočakávaná odpoveď siete."</string>
@@ -875,7 +881,6 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"Podradený identifikátor predvolenej dátovej SIM karty:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Rýchlosť pripojenia DL (kB/s):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Rýchlosť pripojenia UL (kB/s):"</string>
-    <string name="radio_info_signal_location_label" msgid="6188435197086550049">"Informácie o polohe mobilnej siete (podpora bola ukončená):"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Konfigurácia fyzického kanála LTE:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Frekvencia obnovenia informácií o mobilnej sieti:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Všetky informácie o meraní mobilnej siete:"</string>
@@ -906,6 +911,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Obnoviť"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"Prepnúť kontrolu DNS"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"Informácie alebo nastavenia špecifické pre výrobcu OEM"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"Dostupné EN-DC:"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"Obmedzené DCNR:"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"Dostupné NR:"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"Stav NR:"</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"Frekvencia NR:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Nastaviť režim rádiového pásma"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Načítava sa zoznam pásiem…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Nastaviť"</string>

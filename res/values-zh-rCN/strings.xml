@@ -50,6 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"只有主用户才能修改语音信箱设置。"</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"您的SIM卡已解锁。正在解锁您的手机..."</string>
     <string name="label_ndp" msgid="7617392683877410341">"SIM 网络解锁 PIN 码"</string>
+    <string name="label_phoneid" msgid="8775611434123577808">"已锁定以下运营商的 SIM 卡："</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"解锁"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"关闭"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"正在请求网络解锁..."</string>
@@ -123,8 +124,13 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"转接到 <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"关闭"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"您的运营商不支持在手机无法接通时停用来电转接功能。"</string>
-    <!-- no translation found for registration_cf_forbidden (4386482610771190420) -->
-    <skip />
+    <string name="registration_cf_forbidden" msgid="4386482610771190420">"您的运营商不支持来电转接功能。"</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"要启用来电等待吗？"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"如果您在通话期间接到来电，则会收到通知"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"开启"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"取消"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"基于 IMS 的 CDMA 来电等待功能已开启"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"基于 IMS 的 CDMA 来电等待功能已关闭"</string>
     <string name="updating_title" msgid="6130548922615719689">"通话设置"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"只有管理员用户才能更改通话设置。"</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"设置（<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>）"</string>
@@ -165,7 +171,7 @@
     <string name="vm_change_pin_error_mismatch" msgid="5364847280026257331">"旧的 PIN 码不匹配。"</string>
     <string name="vm_change_pin_error_invalid" msgid="5230002671175580674">"新的 PIN 码包含无效字符。"</string>
     <string name="vm_change_pin_error_system_error" msgid="9116483527909681791">"无法更改 PIN 码"</string>
-    <string name="vvm_unsupported_message_format" msgid="4206402558577739713">"不受支持的语音邮件类型，请拨打 <xliff:g id="NUMBER">%s</xliff:g> 收听。"</string>
+    <string name="vvm_unsupported_message_format" msgid="4206402558577739713">"不受支持的语音信息类型，请拨打 <xliff:g id="NUMBER">%s</xliff:g> 收听。"</string>
     <string name="network_settings_title" msgid="7560807107123171541">"移动网络"</string>
     <string name="label_available" msgid="1316084116670821258">"可用网络"</string>
     <string name="load_networks_progress" msgid="4051433047717401683">"正在搜索..."</string>
@@ -278,13 +284,13 @@
     <string name="roaming" msgid="1576180772877858949">"漫游"</string>
     <string name="roaming_enable" msgid="6853685214521494819">"漫游时连接到移动数据网络服务"</string>
     <string name="roaming_disable" msgid="8856224638624592681">"漫游时连接到移动数据网络服务"</string>
-    <string name="roaming_reenable_message" msgid="1951802463885727915">"数据网络漫游已停用。点按即可启用。"</string>
+    <string name="roaming_reenable_message" msgid="1951802463885727915">"数据漫游已关闭。点按即可开启。"</string>
     <string name="roaming_enabled_message" msgid="9022249120750897">"可能需要支付漫游费。点按即可修改。"</string>
     <string name="roaming_notification_title" msgid="3590348480688047320">"移动网络连接中断"</string>
-    <string name="roaming_on_notification_title" msgid="7451473196411559173">"已开启数据网络漫游功能"</string>
+    <string name="roaming_on_notification_title" msgid="7451473196411559173">"已开启数据漫游功能"</string>
     <string name="roaming_warning" msgid="7855681468067171971">"这可能会产生高额费用。"</string>
     <string name="roaming_check_price_warning" msgid="8212484083990570215">"请与您的网络服务提供商联系以了解定价。"</string>
-    <string name="roaming_alert_title" msgid="5689615818220960940">"要允许移动数据网络漫游吗？"</string>
+    <string name="roaming_alert_title" msgid="5689615818220960940">"允许数据漫游？"</string>
     <string name="limited_sim_function_notification_title" msgid="612715399099846281">"SIM 卡功能受限"</string>
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"使用 <xliff:g id="PHONE_NUMBER">%2$s</xliff:g> 时，系统可能会屏蔽<xliff:g id="CARRIER_NAME">%1$s</xliff:g>通话和数据服务。"</string>
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"使用另一张 SIM 卡时，系统可能会屏蔽<xliff:g id="CARRIER_NAME">%1$s</xliff:g>通话和数据服务。"</string>
@@ -518,8 +524,8 @@
     <string name="card_title_on_hold" msgid="9028319436626975207">"保持"</string>
     <string name="card_title_hanging_up" msgid="814874106866647871">"正在挂断"</string>
     <string name="card_title_in_call" msgid="8231896539567594265">"正在通话"</string>
-    <string name="notification_voicemail_title" msgid="3932876181831601351">"新语音邮件"</string>
-    <string name="notification_voicemail_title_count" msgid="2806950319222327082">"新语音邮件 (<xliff:g id="COUNT">%d</xliff:g>)"</string>
+    <string name="notification_voicemail_title" msgid="3932876181831601351">"新语音信息"</string>
+    <string name="notification_voicemail_title_count" msgid="2806950319222327082">"新语音信息 (<xliff:g id="COUNT">%d</xliff:g>)"</string>
     <string name="notification_voicemail_text_format" msgid="5720947141702312537">"拨打 <xliff:g id="VOICEMAIL_NUMBER">%s</xliff:g>"</string>
     <string name="notification_voicemail_no_vm_number" msgid="3423686009815186750">"语音信箱号码未知"</string>
     <string name="notification_network_selection_title" msgid="255595526707809121">"无服务"</string>
@@ -694,8 +700,8 @@
     <string name="change_pin_confirm_pins_dont_match" msgid="305164501222587215">"PIN 码不一致"</string>
     <string name="change_pin_succeeded" msgid="2504705600693014403">"语音信箱 PIN 码已更新"</string>
     <string name="change_pin_system_error" msgid="7772788809875146873">"无法设置 PIN 码"</string>
-    <string name="mobile_data_status_roaming_turned_off_subtext" msgid="6840673347416227054">"数据网络漫游功能已停用"</string>
-    <string name="mobile_data_status_roaming_turned_on_subtext" msgid="5615757897768777865">"数据网络漫游功能已启用"</string>
+    <string name="mobile_data_status_roaming_turned_off_subtext" msgid="6840673347416227054">"数据漫游服务已关闭"</string>
+    <string name="mobile_data_status_roaming_turned_on_subtext" msgid="5615757897768777865">"数据漫游服务已开启"</string>
     <string name="mobile_data_status_roaming_without_plan_subtext" msgid="6536671968072284677">"目前处于漫游状态，需要添加数据流量套餐"</string>
     <string name="mobile_data_status_roaming_with_plan_subtext" msgid="2576177169108123095">"目前处于漫游状态，数据流量套餐已启用"</string>
     <string name="mobile_data_status_no_plan_subtext" msgid="170331026419263657">"无剩余移动数据流量"</string>
@@ -869,7 +875,6 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"默认数据 SIM 卡的 SubId："</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DL 带宽 (kbps)："</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL 带宽 (kbps)："</string>
-    <string name="radio_info_signal_location_label" msgid="6188435197086550049">"移动网络位置信息（已弃用）："</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"LTE 物理信道配置："</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"移动网络信息刷新频率："</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"所有移动网络测量信息："</string>
@@ -900,6 +905,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"刷新"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"切换 DNS 检查"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"特定 OEM 的信息/设置"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"4G/5G 双连接可用："</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"5G 双连接受限："</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"5G 可用："</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"5G 状态："</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"5G 频率："</string>
     <string name="band_mode_title" msgid="7988822920724576842">"设置无线装置频道模式"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"正在加载频道列表…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"设置"</string>

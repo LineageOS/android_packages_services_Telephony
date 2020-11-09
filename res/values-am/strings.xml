@@ -50,6 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"የድምፅ መልዕክት ቅንብሮች መለወጥ የሚችሉት በቀዳሚ ተጠቃሚው ብቻ ነው።"</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"የSIM ካርድዎ አልታገደም። ስልክዎ በመከፈት ላይነው..."</string>
     <string name="label_ndp" msgid="7617392683877410341">"የSIM አውታረመረብ መክፈቻ ፒን"</string>
+    <string name="label_phoneid" msgid="8775611434123577808">"SIM ለከዋኙ ተቆልፏል"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"ክፈት"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"አሰናብት"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"አውታረመረብ ለማስከፈት በመጠየቅ ላይ..."</string>
@@ -74,7 +75,7 @@
     <string name="phone_accounts_configure_account_settings" msgid="6622119715253196586">"የመለያ ቅንብሮችን ይውቀሩ"</string>
     <string name="phone_accounts_all_calling_accounts" msgid="1609600743500618823">"የሁሉም ደዋይ መለያዎች"</string>
     <string name="phone_accounts_all_calling_accounts_summary" msgid="2214134955430107240">"የትኛዎቹ መለያዎች ጥሪዎችን ማድረግ እንደሚችሉ ይምረጡ"</string>
-    <string name="wifi_calling" msgid="3650509202851355742">"የWi-Fi ጥሪ ማድረጊያ"</string>
+    <string name="wifi_calling" msgid="3650509202851355742">"የWi-Fi ጥሪ"</string>
     <string name="connection_service_default_label" msgid="7332739049855715584">"አብሮ የተገነባ የግንኙነት አገልግሎት"</string>
     <string name="voicemail" msgid="7697769412804195032">"የድምፅ መልዕክት"</string>
     <string name="voicemail_settings_with_label" msgid="4228431668214894138">"የድምጽ መልዕክት (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -123,8 +124,13 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"ወደ <xliff:g id="PHONENUMBER">{0}</xliff:g>በማስተላለፍ ላይ"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"ጠፍቷል"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"ስልክህ በማይደረስበት ጊዜ የድምጽ ተያያዥ ሞደምህ  የጥሪ-ማስተላለፍን አይደግፍም።"</string>
-    <!-- no translation found for registration_cf_forbidden (4386482610771190420) -->
-    <skip />
+    <string name="registration_cf_forbidden" msgid="4386482610771190420">"አገልግሎት አቅራቢዎ ጥሪ ማስተላለፍን አይደግፍም።"</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"ጥሪ መጠበቂያ ይብራ?"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"በጥሪ ጊዜ፣ ስለ ገቢ ጥሪዎች እንዲያውቁት ይደረጋል"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"አብራ"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"ይቅር"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"በIMS ስር ያለው የCDMA ጥሪ መጠበቂያ በርቷል"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"በIMS ስር ያለው የCDMA ጥሪ መጠበቂያ ጠፍቷል"</string>
     <string name="updating_title" msgid="6130548922615719689">"የጥሪ ቅንብሮች"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"የጥሪ ቅንብሮች በአስተዳዳሪ ተጠቃሚው ብቻ ነው ሊለወጡ የሚችሉት።"</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"ቅንብሮች (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -238,7 +244,7 @@
     <string name="preferred_network_mode_lte_gsm_wcdma_summary" msgid="2217794334331254936">"ተመራጭ የአውታረመረብ ሁኔታ: GSM/WCDMA/LTE"</string>
     <string name="preferred_network_mode_lte_cdma_evdo_summary" msgid="5559198623419981805">"ተመራጭ የአውታረመረብ ሁኔታ ፡ CDMA+LTE/EVDO"</string>
     <string name="preferred_network_mode_lte_cdma_evdo_gsm_wcdma_summary" msgid="6707224437925495615">"የተመረጠው የአውታረ መረብ ሁነታ፦ LTE/CDMA/EvDo/GSM/WCDMA"</string>
-    <string name="preferred_network_mode_global_summary" msgid="3847086258439582411">"ተመራጭ የአውታረመረብ ፡ አለምአቀፍ"</string>
+    <string name="preferred_network_mode_global_summary" msgid="3847086258439582411">"ተመራጭ የአውታረመረብ ፡ ዓለምአቀፍ"</string>
     <string name="preferred_network_mode_lte_wcdma_summary" msgid="7001804022020813865">"ተመራጭ የአውታረመረብ ሁኔታ፡ LTE / WCDMA"</string>
     <string name="preferred_network_mode_lte_gsm_umts_summary" msgid="6484203890156282179">"ተመራጭ የአውታረ መረብ ሁነታ፦ LTE / GSM / UMTS"</string>
     <string name="preferred_network_mode_lte_cdma_summary" msgid="8187929456614068518">"ተመራጭ የአውታረመረብ ፡LTE / CDMA ሁነታ"</string>
@@ -405,7 +411,7 @@
     <string name="network_recommended" msgid="3444321100580250926">" (የሚመከር)"</string>
     <string name="network_lte" msgid="7206879277095094280">"LTE (የሚመከር)"</string>
     <string name="network_4G" msgid="6800527815504223913">"4G (የሚመከር)"</string>
-    <string name="network_global" msgid="3289646154407617631">"አለምአቀፍ"</string>
+    <string name="network_global" msgid="3289646154407617631">"ዓለምአቀፍ"</string>
     <string name="cdma_system_select_title" msgid="614165233552656431">"የሥርዓት ምርጫ"</string>
     <string name="cdma_system_select_summary" msgid="3840420390242060407">"የCDMA በእንቅስቃሴ ላይ ሁኔታ ለውጥ"</string>
     <string name="cdma_system_select_dialogtitle" msgid="5524639510676501802">"የሥርዓት ምርጫ"</string>
@@ -869,7 +875,6 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"የነባሪ ውሂብ ሲም SubId:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DL መተላለፊያ ይዘት (ኪቢ/ሴ)፡"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"የUL መተላለፊያ ይዘት (ኪቢ/ሴ)፡"</string>
-    <string name="radio_info_signal_location_label" msgid="6188435197086550049">"የሕዋስ የአካባቢ መረጃ (የተቋረጠ)፦"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"የLTE አካላዊ ሰርጥ ውቅረት:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"የሕዋስ መረጃ እድሳት ፍጥነት፡"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"ሁሉም የሕዋስ መለኪያ መረጃ፡"</string>
@@ -900,6 +905,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"አድስ"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"የDNS ፍተሻን ቀያይር"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"OEM-የተወሰነ መረጃ/ቅንብሮች"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC ይገኛል፦"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR ተገድቧል፦"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR ይገኛል፦"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"NR ሁኔታ፦"</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR ድግግሞሽ፦"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"የሬዲዮ ባንድ ሁነታን ያቀናጁ"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"የባንድ ዝርዝርን በመጫን ላይ…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"አዋቅር"</string>

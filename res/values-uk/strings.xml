@@ -50,6 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"Налаштування голосової пошти може змінювати лише основний користувач."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"Вашу SIM-карту розблоковано. Ваш телефон розблоковується..."</string>
     <string name="label_ndp" msgid="7617392683877410341">"Розбл. PIN-код мережі SIM"</string>
+    <string name="label_phoneid" msgid="8775611434123577808">"Заблокована SIM-карта оператора"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"Розблок."</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"Відхилити"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"Запитув. розблок. мережі..."</string>
@@ -124,6 +125,12 @@
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Вимкнено"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Ваш оператор не підтримує вимкнення переадресації викликів, коли телефон недосяжний."</string>
     <string name="registration_cf_forbidden" msgid="4386482610771190420">"Ваш оператор не підтримує переадресацію викликів."</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"Увімкнути паралельний виклик?"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"Під час дзвінків ви отримуватимете сповіщення про інші вхідні виклики"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"Увімкнути"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"Скасувати"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"Паралельний виклик CDMA на платформі IMS увімкнено"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"Паралельний виклик CDMA на платформі IMS вимкнено"</string>
     <string name="updating_title" msgid="6130548922615719689">"Налаштування викликів"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Налаштування викликів може змінювати лише адміністратор."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Налаштування (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -308,7 +315,7 @@
     <string name="throttle_time_frame" msgid="1813452485948918791">"Період викор. даних"</string>
     <string name="throttle_rate" msgid="7641913901133634905">"Пол. шв. перед. дан."</string>
     <string name="throttle_help" msgid="2624535757028809735">"Докладніше"</string>
-    <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) з <xliff:g id="USED_2">%3$s</xliff:g> макс. пеірод\nНаступний період поч. через <xliff:g id="USED_3">%4$d</xliff:g> дн. (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
+    <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) з <xliff:g id="USED_2">%3$s</xliff:g> на цей період\nНаступний період почнеться за <xliff:g id="USED_3">%4$d</xliff:g> дн. (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
     <string name="throttle_data_usage_subtext" msgid="3185429653996709840">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) з<xliff:g id="USED_2">%3$s</xliff:g> максим. періоду"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"<xliff:g id="USED_0">%1$s</xliff:g> макс. перевищ.\nШв. перед. дан. скор. до <xliff:g id="USED_1">%2$d</xliff:g> КБ/сек"</string>
     <string name="throttle_time_frame_subtext" msgid="6462089615392402127">"<xliff:g id="USED_0">%1$d</xliff:g>٪ з циклу здійсн.\nНаст. період почин. через <xliff:g id="USED_1">%2$d</xliff:g> дн. (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
@@ -874,7 +881,6 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"Субідентифікатор SIM-карти для даних за умовчанням:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Пропускна спроможність DL (кбіт/с):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Пропускна спроможність UL (кбіт/с):"</string>
-    <string name="radio_info_signal_location_label" msgid="6188435197086550049">"Геодані телефона (більше не підтримуються):"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Конфігурація фізичного каналу LTE:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Частота оновлення даних про мобільний зв\'язок:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Усі дані про показники мобільного зв\'язку:"</string>
@@ -905,6 +911,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Оновити"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"Увімк./вимк. перевірку DNS"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"Інформація/налаштування OEM"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC доступно:"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR обмежено:"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR доступно:"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"Статус NR:"</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"Частота NR:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Установити режим радіодіапазону"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Завантаження списку діапазонів частот…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Установити"</string>

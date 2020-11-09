@@ -50,6 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"Setările pentru mesagerie vocală pot fi modificate numai de utilizatorul principal."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"Cardul dvs. SIM a fost deblocat. Telefonul dvs. se deblochează..."</string>
     <string name="label_ndp" msgid="7617392683877410341">"Codul PIN de deblocare a rețelei SIM"</string>
+    <string name="label_phoneid" msgid="8775611434123577808">"Cardul SIM a fost blocat pentru operator"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"Deblocați"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"Renunțați"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"Se solicită deblocarea rețelei..."</string>
@@ -123,8 +124,13 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"Se redirecționează la <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Dezactivat"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Operatorul dvs. nu acceptă ca redirecționarea apelurilor să fie dezactivată atunci când telefonul nu este accesibil."</string>
-    <!-- no translation found for registration_cf_forbidden (4386482610771190420) -->
-    <skip />
+    <string name="registration_cf_forbidden" msgid="4386482610771190420">"Operatorul dvs. nu acceptă redirecționarea apelurilor."</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"Activați apelurile în așteptare?"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"În timpul unui apel, veți primi o notificare despre apelurile primite"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"Activați"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"Anulați"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"Apelurile în așteptare CDMA din IMS sunt activate"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"Apelurile în așteptare CDMA din IMS sunt dezactivate"</string>
     <string name="updating_title" msgid="6130548922615719689">"Setări pentru apeluri"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Numai administratorul poate să modifice setările pentru apeluri."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Setări (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -872,7 +878,6 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"SubId pentru SIM-ul de date prestabilit:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Lățime de bandă de descărcare (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Lățime de bandă de încărcare (kbps):"</string>
-    <string name="radio_info_signal_location_label" msgid="6188435197086550049">"Informații despre localizarea celulei (învechite):"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Configurarea canalului fizic LTE:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Rata de actualizare a informațiilor despre celulă:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Toate informațiile de măsurare despre celulă:"</string>
@@ -903,6 +908,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Actualizați"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"Activați/dezactivați verificarea DNS"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"Informații/Setări caracteristice OEM"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"Disponibilă EN-DC:"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"Restricționată DCNR:"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"Disponibilă NR:"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"Stare NR:"</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"Frecvență NR:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Setați Modul bandă radio"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Se încarcă lista de benzi…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Setați"</string>

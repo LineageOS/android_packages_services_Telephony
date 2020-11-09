@@ -50,6 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"વૉઇસમેઇલ સેટિંગ્સને ફક્ત પ્રાથમિક વપરાશકર્તા દ્વારા જ સંશોધિત કરી શકાય છે."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"તમારા SIM કાર્ડને અનાવરોધિત કરવામાં આવ્યું છે. તમારા ફોનને અનલૉક કરી રહ્યાં છે…"</string>
     <string name="label_ndp" msgid="7617392683877410341">"SIM નેટવર્ક અનલૉક PIN"</string>
+    <string name="label_phoneid" msgid="8775611434123577808">"ઑપરેટર દ્વારા સિમ કાર્ડ લૉક કરવામાં આવ્યું છે"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"અનલૉક કરો"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"છોડી દો"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"નેટવર્ક અનલૉકની વિનંતી કરી રહ્યાં છે…"</string>
@@ -62,7 +63,7 @@
     <string name="labelCdmaMore_with_label" msgid="7759692829160238152">"CDMA કૉલ સેટિંગ્સ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="apn_settings" msgid="1978652203074756623">"ઍક્સેસ પોઇન્ટનું નામ"</string>
     <string name="settings_label" msgid="9101778088412567956">"નેટવર્ક સેટિંગ્સ"</string>
-    <string name="phone_accounts" msgid="1216879437523774604">"કૉલિંગ એકાઉન્ટ્સ"</string>
+    <string name="phone_accounts" msgid="1216879437523774604">"કૉલ કરવા માટેના એકાઉન્ટ"</string>
     <string name="phone_accounts_make_calls_with" msgid="16747814788918145">"આના વડે કૉલ કરો"</string>
     <string name="phone_accounts_make_sip_calls_with" msgid="4691221006731847255">"આના વડે SIP કૉલ્સ કરો"</string>
     <string name="phone_accounts_ask_every_time" msgid="6192347582666047168">"પહેલાં પૂછો"</string>
@@ -84,9 +85,9 @@
     <string name="smart_forwarding_settings_menu_summary" msgid="5096947726032885325">"એક નંબર પર પહોંચી શકાય તેમ ન હોય, ત્યારે હંમેશાં તમારા અન્ય નંબર પર કૉલ ફૉરવર્ડ કરો"</string>
     <string name="voicemail_notifications_preference_title" msgid="7829238858063382977">"નોટિફિકેશન"</string>
     <string name="cell_broadcast_settings" msgid="8135324242541809924">"કટોકટીના બ્રોડકાસ્ટ્સ"</string>
-    <string name="call_settings" msgid="3677282690157603818">"કૉલ સેટિંગ્સ"</string>
-    <string name="additional_gsm_call_settings" msgid="1561980168685658846">"વધારાની સેટિંગ્સ"</string>
-    <string name="additional_gsm_call_settings_with_label" msgid="7973920539979524908">"વધારાની સેટિંગ્સ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
+    <string name="call_settings" msgid="3677282690157603818">"કૉલ સેટિંગ"</string>
+    <string name="additional_gsm_call_settings" msgid="1561980168685658846">"વધારાના સેટિંગ"</string>
+    <string name="additional_gsm_call_settings_with_label" msgid="7973920539979524908">"વધારાના સેટિંગ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="sum_gsm_call_settings" msgid="7964692601608878138">"ફક્ત વધારાની GSM કૉલ સેટિંગ્સ"</string>
     <string name="additional_cdma_call_settings" msgid="2178016561980611304">"વધારાની CDMA કૉલ સેટિંગ્સ"</string>
     <string name="sum_cdma_call_settings" msgid="3185825305136993636">"ફક્ત વધારાની CDMA કૉલ સેટિંગ્સ"</string>
@@ -97,10 +98,10 @@
     <string name="sum_show_caller_id" msgid="3571854755324664591">"આઉટગોઇંગ કૉલ્સમાં નંબર પ્રદર્શિત થાય છે"</string>
     <string name="sum_default_caller_id" msgid="1767070797135682959">"આઉટગોઇંગ કૉલ્સમાં મારો નંબર પ્રદર્શિત કરવા માટે ડિફોલ્ટ ઓપરેટર સેટિંગ્સનો ઉપયોગ કરો"</string>
     <string name="labelCW" msgid="8449327023861428622">"કૉલ પ્રતીક્ષા"</string>
-    <string name="sum_cw_enabled" msgid="3977308526187139996">"કૉલ દરમ્યાન, મને આવનારા કૉલ્સની સૂચના આપો"</string>
-    <string name="sum_cw_disabled" msgid="3658094589461768637">"કૉલ દરમ્યાન, મને આવનારા કૉલ્સની સૂચના આપો"</string>
-    <string name="call_forwarding_settings" msgid="8937130467468257671">"કૉલ ફોરવર્ડિંગ સેટિંગ્સ"</string>
-    <string name="call_forwarding_settings_with_label" msgid="2345432813399564272">"કૉલ ફોરવર્ડિંગ સેટિંગ્સ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
+    <string name="sum_cw_enabled" msgid="3977308526187139996">"કૉલ દરમ્યાન, મને ઇનકમિંગ કૉલની સૂચના આપો"</string>
+    <string name="sum_cw_disabled" msgid="3658094589461768637">"કૉલ દરમ્યાન, મને ઇનકમિંગ કૉલની સૂચના આપો"</string>
+    <string name="call_forwarding_settings" msgid="8937130467468257671">"કૉલ ફોરવર્ડિંગ સેટિંગ"</string>
+    <string name="call_forwarding_settings_with_label" msgid="2345432813399564272">"કૉલ ફોરવર્ડિંગ સેટિંગ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCF" msgid="3578719437928476078">"કૉલ ફોરવર્ડિંગ"</string>
     <string name="labelCFU" msgid="8870170873036279706">"હંમેશા ફોરવર્ડ કરો"</string>
     <string name="messageCFU" msgid="1361806450979589744">"હંમેશાં આ નંબરનો ઉપયોગ કરો"</string>
@@ -123,14 +124,19 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"<xliff:g id="PHONENUMBER">{0}</xliff:g> પર ફોરવર્ડ કરી રહ્યાં છે"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"બંધ"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"જ્યારે તમારો ફોન પહોંચયોગ્ય ન હોય ત્યારે તમારા કેરિઅર કૉલ ફોરવર્ડિંગને અક્ષમ કરવાને સમર્થન આપતા નથી."</string>
-    <!-- no translation found for registration_cf_forbidden (4386482610771190420) -->
-    <skip />
-    <string name="updating_title" msgid="6130548922615719689">"કૉલ સેટિંગ્સ"</string>
+    <string name="registration_cf_forbidden" msgid="4386482610771190420">"તમારા મોબાઇલ ઑપરેટર કૉલ ફૉર્વર્ડિંગને સપોર્ટ કરતા નથી."</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"કૉલ પ્રતીક્ષા ચાલુ કરવા માગો છો?"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"કૉલ દરમ્યાન, તમને ઇનકમિંગ કૉલ વિશે નોટિફિકેશન આપવામાં આવશે"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"ચાલુ કરો"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"રદ કરો"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"IMS હેઠળ CDMA કૉલ પ્રતીક્ષા ચાલુ છે"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"IMS હેઠળ CDMA કૉલ પ્રતીક્ષા બંધ છે"</string>
+    <string name="updating_title" msgid="6130548922615719689">"કૉલ સેટિંગ"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"કૉલ સેટિંગ્સને ફક્ત એડમિન વપરાશકર્તા દ્વારા જ બદલી શકાય છે."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"સેટિંગ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"કૉલ સેટિંગની ભૂલ"</string>
-    <string name="reading_settings" msgid="1605904432450871183">"સેટિંગ્સ વાંચી રહ્યાં છે…"</string>
-    <string name="updating_settings" msgid="3650396734816028808">"સેટિંગ્સ અપડેટ કરી રહ્યાં છે..."</string>
+    <string name="reading_settings" msgid="1605904432450871183">"સેટિંગ વાંચી રહ્યાં છે…"</string>
+    <string name="updating_settings" msgid="3650396734816028808">"સેટિંગ અપડેટ કરી રહ્યાં છીએ..."</string>
     <string name="reverting_settings" msgid="7378668837291012205">"સેટિંગ્સ પાછી ફરાવી રહ્યાં છે…"</string>
     <string name="response_error" msgid="3904481964024543330">"નેટવર્ક તરફથી અનપેક્ષિત પ્રતિસાદ."</string>
     <string name="exception_error" msgid="330994460090467">"નેટવર્ક અથવા SIM કાર્ડ ભૂલ."</string>
@@ -175,8 +181,8 @@
     <string name="not_allowed" msgid="8541221928746104798">"તમારું SIM કાર્ડ આ નેટવર્કથી કનેક્શનને મંજૂરી આપતું નથી."</string>
     <string name="connect_later" msgid="1950138106010005425">"હમણાં આ નેટવર્કથી કનેક્ટ કરી શકાતું નથી. પછીથી ફરી પ્રયાસ કરો."</string>
     <string name="registration_done" msgid="5337407023566953292">"નેટવર્ક પર નોંધણી કરી."</string>
-    <string name="already_auto" msgid="8607068290733079336">"પહેલેથી જ આપમેળે પસંદગીમાં."</string>
-    <string name="select_automatically" msgid="779750291257872651">"નેટવર્ક આપમેળે પસંદ કરો"</string>
+    <string name="already_auto" msgid="8607068290733079336">"પહેલેથી જ ઑટોમૅટિક પસંદગીમાં."</string>
+    <string name="select_automatically" msgid="779750291257872651">"નેટવર્ક ઑટોમૅટિક રીતે પસંદ કરો"</string>
     <string name="manual_mode_disallowed_summary" msgid="3970048592179890197">"%1$s સાથે કનેક્ટ કરેલું હોય ત્યારે અનુપલબ્ધ"</string>
     <string name="network_select_title" msgid="4117305053881611988">"નેટવર્ક"</string>
     <string name="register_automatically" msgid="3907580547590554834">"સ્વયંચાલિત નોંધણી…"</string>
@@ -548,8 +554,8 @@
     <string name="emergency_information_hint" msgid="9208897544917793012">"ઇમર્જન્સીની માહિતી"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"માલિક"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"માહિતી જોવા માટે ફરીથી ટૅપ કરો"</string>
-    <string name="emergency_enable_radio_dialog_title" msgid="2667568200755388829">"કટોકટીનો કૉલ"</string>
-    <string name="single_emergency_number_title" msgid="8413371079579067196">"કટોકટીનો નંબર"</string>
+    <string name="emergency_enable_radio_dialog_title" msgid="2667568200755388829">"ઇમર્જન્સી કૉલ"</string>
+    <string name="single_emergency_number_title" msgid="8413371079579067196">"ઇમર્જન્સી નંબર"</string>
     <string name="numerous_emergency_numbers_title" msgid="8972398932506755510">"કટોકટીના નંબર"</string>
     <string name="emergency_call_shortcut_hint" msgid="1290485125107779500">"<xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>ને ફરીથી કૉલ કરવા માટે ટૅપ કરો"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="1695305158151408629">"રેડિઓ ચાલુ કરી રહ્યાં છે…"</string>
@@ -574,7 +580,7 @@
     <string name="onscreenManageCallsText" msgid="1162047856081836469">"કૉલ્સ સંચાલિત કરો"</string>
     <string name="onscreenManageConferenceText" msgid="4700574060601755137">"કોન્ફરન્સ સંચાલિત કરો"</string>
     <string name="onscreenAudioText" msgid="7224226735052019986">"ઑડિઓ"</string>
-    <string name="onscreenVideoCallText" msgid="1743992456126258698">"વિડિઓ કૉલ"</string>
+    <string name="onscreenVideoCallText" msgid="1743992456126258698">"વીડિયો કૉલ"</string>
     <string name="importSimEntry" msgid="3892354284082689894">"આયાત કરો"</string>
     <string name="importAllSimEntries" msgid="2628391505643564007">"બધુ આયાત કરો"</string>
     <string name="importingSimContacts" msgid="4995457122107888932">"SIM સંપર્કો આયાત કરી રહ્યાં છે"</string>
@@ -869,7 +875,6 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"ડિફૉલ્ટ ડેટા સિમનું SubId:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DL બૅન્ડવિડ્થ (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL બૅન્ડવિડ્થ (kbps):"</string>
-    <string name="radio_info_signal_location_label" msgid="6188435197086550049">"સેલ સ્થાન માહિતી (ટાળેલ):"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"LTE ભૌતિક ચૅનલની ગોઠવણી:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"સેલ માહિતી રિફ્રેશ થવાનો રેટ:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"તમામ સેલ માપ માહિતી:"</string>
@@ -900,6 +905,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"રિફ્રેશ કરો"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"DNS તપાસ ટૉગલ કરો"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"OEM-વિશિષ્ટ માહિતી/સેટિંગ"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC ઉપલબ્ધ:"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR પ્રતિબંધિત:"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR ઉપલબ્ધ:"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"NR સ્ટેટસ:"</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR આવર્તન:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"રેડિયો બૅન્ડ મોડ સેટ કરો"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"બૅન્ડની સૂચિ લોડ કરી રહ્યું છે…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"સેટ કરો"</string>
