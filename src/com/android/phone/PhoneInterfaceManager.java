@@ -293,6 +293,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private static final int EVENT_ENABLE_NR_DUAL_CONNECTIVITY_DONE = 92;
     private static final int CMD_IS_NR_DUAL_CONNECTIVITY_ENABLED = 93;
     private static final int EVENT_IS_NR_DUAL_CONNECTIVITY_ENABLED_DONE = 94;
+    private static final int CMD_GET_CDMA_SUBSCRIPTION_MODE = 95;
+    private static final int EVENT_GET_CDMA_SUBSCRIPTION_MODE_DONE = 96;
 
     // Parameters of select command.
     private static final int SELECT_COMMAND = 0xA4;
@@ -1395,11 +1397,27 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     request.result = ar.exception == null;
                     notifyRequester(request);
                     break;
+                case CMD_GET_CDMA_SUBSCRIPTION_MODE:
+                    request = (MainThreadRequest) msg.obj;
+                    onCompleted = obtainMessage(EVENT_GET_CDMA_SUBSCRIPTION_MODE_DONE, request);
+                    getPhoneFromRequest(request).queryCdmaSubscriptionMode(onCompleted);
+                    break;
+                case EVENT_GET_CDMA_SUBSCRIPTION_MODE_DONE:
+                    ar = (AsyncResult) msg.obj;
+                    request = (MainThreadRequest) ar.userObj;
+                    if (ar.exception != null) {
+                        request.result = TelephonyManager.CDMA_SUBSCRIPTION_RUIM_SIM;
+                    } else {
+                        request.result = ((int[]) ar.result)[0];
+                    }
+                    notifyRequester(request);
+                    break;
                 case CMD_SET_CDMA_SUBSCRIPTION_MODE:
                     request = (MainThreadRequest) msg.obj;
                     onCompleted = obtainMessage(EVENT_SET_CDMA_SUBSCRIPTION_MODE_DONE, request);
                     int subscriptionMode = (int) request.argument;
-                    getPhoneFromRequest(request).setCdmaSubscription(subscriptionMode, onCompleted);
+                    getPhoneFromRequest(request).setCdmaSubscriptionMode(
+                            subscriptionMode, onCompleted);
                     break;
                 case EVENT_SET_CDMA_SUBSCRIPTION_MODE_DONE:
                     ar = (AsyncResult) msg.obj;
@@ -8143,6 +8161,20 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         final long identity = Binder.clearCallingIdentity();
         try {
             return (boolean) sendRequest(CMD_SET_CDMA_ROAMING_MODE, mode, subId);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    @Override
+    public int getCdmaSubscriptionMode(int subId) {
+        TelephonyPermissions
+                .enforeceCallingOrSelfReadPrivilegedPhoneStatePermissionOrCarrierPrivilege(
+                        mApp, subId, "getCdmaSubscriptionMode");
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return (int) sendRequest(CMD_GET_CDMA_SUBSCRIPTION_MODE, null /* argument */, subId);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
