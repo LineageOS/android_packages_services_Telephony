@@ -50,6 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"Le impostazioni della segreteria possono essere modificate solo dall\'utente principale."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"La SIM è stata sbloccata. Sblocco del telefono..."</string>
     <string name="label_ndp" msgid="7617392683877410341">"PIN sblocco rete SIM"</string>
+    <string name="label_phoneid" msgid="8775611434123577808">"SIM bloccata per l\'operatore"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"Sblocca"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"Chiudi"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"Richiesta sblocco rete..."</string>
@@ -95,7 +96,7 @@
     <string name="sum_loading_settings" msgid="434063780286688775">"Caricamento impostazioni…"</string>
     <string name="sum_hide_caller_id" msgid="131100328602371933">"Numero nascosto per chiamate in uscita"</string>
     <string name="sum_show_caller_id" msgid="3571854755324664591">"Numero visualizzato in chiamate in uscita"</string>
-    <string name="sum_default_caller_id" msgid="1767070797135682959">"Usa impostazioni dell\'operatore per mostrare il mio numero nelle chiamate in uscita"</string>
+    <string name="sum_default_caller_id" msgid="1767070797135682959">"Usa le impostazioni predefinite dell\'operatore per mostrare il mio numero nelle chiamate in uscita"</string>
     <string name="labelCW" msgid="8449327023861428622">"Avviso di chiamata"</string>
     <string name="sum_cw_enabled" msgid="3977308526187139996">"Notifica chiamate in entrata durante telefonata"</string>
     <string name="sum_cw_disabled" msgid="3658094589461768637">"Notifica chiamate in entrata durante telefonata"</string>
@@ -124,6 +125,12 @@
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"OFF"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Il tuo operatore non supporta la disattivazione dell\'inoltro chiamate quando il telefono non è raggiungibile."</string>
     <string name="registration_cf_forbidden" msgid="4386482610771190420">"Il tuo operatore non supporta la deviazione chiamate."</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"Attiva avviso di chiamata"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"Durante una telefonata, riceverai una notifica per le chiamate in entrata"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"Attiva"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"Annulla"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"Avviso di chiamata CDMA con IMS attivato"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"Avviso di chiamata CDMA con IMS disattivato"</string>
     <string name="updating_title" msgid="6130548922615719689">"Impostazioni chiamate"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Le impostazioni delle chiamate possono essere modificate solo dall\'utente amministratore."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Impostazioni (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -308,9 +315,7 @@
     <string name="throttle_time_frame" msgid="1813452485948918791">"Periodo utilizzo dati"</string>
     <string name="throttle_rate" msgid="7641913901133634905">"Norme velocità dati"</string>
     <string name="throttle_help" msgid="2624535757028809735">"Ulteriori informazioni"</string>
-    <!-- String.format failed for translation -->
-    <!-- no translation found for throttle_status_subtext (1110276415078236687) -->
-    <skip />
+    <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) del <xliff:g id="USED_2">%3$s</xliff:g> max periodo\nIl periodo succ. inizia tra <xliff:g id="USED_3">%4$d</xliff:g> gg (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
     <string name="throttle_data_usage_subtext" msgid="3185429653996709840">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) del <xliff:g id="USED_2">%3$s</xliff:g> max periodo"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"<xliff:g id="USED_0">%1$s</xliff:g> max superato\nVelocità dati ridotta a <xliff:g id="USED_1">%2$d</xliff:g> Kb/s"</string>
     <string name="throttle_time_frame_subtext" msgid="6462089615392402127">"<xliff:g id="USED_0">%1$d</xliff:g>٪ del ciclo trascorso\nIl periodo succ. inizia tra <xliff:g id="USED_1">%2$d</xliff:g> gg (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
@@ -870,7 +875,6 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"ID secondario della SIM dati predefinita:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Larghezza di banda DL (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Larghezza di banda UL (kbps):"</string>
-    <string name="radio_info_signal_location_label" msgid="6188435197086550049">"Informazioni sulla posizione delle celle (obsoleto):"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Configurazione canale fisico LTE:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Frequenza di aggiornamento delle informazioni sulle celle:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Informazioni sulla misurazione di tutte le celle:"</string>
@@ -901,6 +905,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Aggiorna"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"Attiva o disattiva verifica DNS"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"Info/impostazioni specifiche OEM"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC disponibile:"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR con limitazioni:"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR disponibile:"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"Stato NR:"</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"Frequenza NR:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Imposta modalità banda radio"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Caricamento elenco bande…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Imposta"</string>

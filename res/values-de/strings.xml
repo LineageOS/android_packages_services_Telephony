@@ -49,12 +49,13 @@
     <string name="add_vm_number_str" msgid="7368168964435881637">"Nummer hinzufügen"</string>
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"Mailboxeinstellungen können nur vom primären Nutzer geändert werden."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"Deine SIM-Karte wurde entsperrt. Dein Telefon wird nun entsperrt..."</string>
-    <string name="label_ndp" msgid="7617392683877410341">"PIN zur Entsperrung des SIM-Netzwerks"</string>
+    <string name="label_ndp" msgid="7617392683877410341">"Entsperr-PIN für netzgebundenes Gerät"</string>
+    <string name="label_phoneid" msgid="8775611434123577808">"SIM für Anbieter gesperrt"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"Entsperren"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"Verwerfen"</string>
-    <string name="requesting_unlock" msgid="930512210309437741">"Netzwerkentsperrung wird angefordert..."</string>
-    <string name="unlock_failed" msgid="7103543844840661366">"Anfrage für Entsperrung des Netzwerks war nicht erfolgreich."</string>
-    <string name="unlock_success" msgid="32681089371067565">"Entsperrung des Netzwerks nicht erfolgreich."</string>
+    <string name="requesting_unlock" msgid="930512210309437741">"Entsperrung des netzgebundenen Geräts wird angefordert..."</string>
+    <string name="unlock_failed" msgid="7103543844840661366">"Entsperranforderung für netzgebundenes Gerät war nicht erfolgreich."</string>
+    <string name="unlock_success" msgid="32681089371067565">"Entsperrung des netzgebundenen Geräts war nicht erfolgreich."</string>
     <string name="mobile_network_settings_not_available" msgid="8678168497517090039">"Mobile Netzwerkeinstellungen sind für diesen Nutzer nicht verfügbar."</string>
     <string name="labelGSMMore" msgid="7354182269461281543">"GSM-Anrufeinstellungen"</string>
     <string name="labelGsmMore_with_label" msgid="3206015314393246224">"GSM-Anrufeinstellungen (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -124,6 +125,12 @@
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Aus"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Dein Mobilfunkanbieter unterstützt die Deaktivierung der Anrufweiterleitung bei Nichterreichbarkeit nicht."</string>
     <string name="registration_cf_forbidden" msgid="4386482610771190420">"Dein Mobilfunkanbieter unterstützt die Anrufweiterleitung nicht."</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"Anklopfen aktivieren?"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"Du wirst während eines Anrufs über eingehende Anrufe benachrichtigt"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"Aktivieren"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"Abbrechen"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"CDMA-Anklopfen unter IMS aktiviert"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"CDMA-Anklopfen unter IMS deaktiviert"</string>
     <string name="updating_title" msgid="6130548922615719689">"Anrufeinstellungen"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Anrufeinstellungen können nur vom Administrator geändert werden."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Einstellungen (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -308,9 +315,7 @@
     <string name="throttle_time_frame" msgid="1813452485948918791">"Zeitraum des Datenverbrauchs"</string>
     <string name="throttle_rate" msgid="7641913901133634905">"Richtlinien zur Datenrate"</string>
     <string name="throttle_help" msgid="2624535757028809735">"Weitere Informationen"</string>
-    <!-- String.format failed for translation -->
-    <!-- no translation found for throttle_status_subtext (1110276415078236687) -->
-    <skip />
+    <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g> %%) des maximalen Zeitraums von <xliff:g id="USED_2">%3$s</xliff:g>.\nDer nächste Zeitraum beginnt in <xliff:g id="USED_3">%4$d</xliff:g> Tagen (<xliff:g id="USED_4">%5$s</xliff:g>)."</string>
     <string name="throttle_data_usage_subtext" msgid="3185429653996709840">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g> ٪) des maximalen Zeitraums von <xliff:g id="USED_2">%3$s</xliff:g>"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"Maximum von <xliff:g id="USED_0">%1$s</xliff:g> wurde überschritten.\nDatenrate wurde auf <xliff:g id="USED_1">%2$d</xliff:g> kbit/s reduziert."</string>
     <string name="throttle_time_frame_subtext" msgid="6462089615392402127">"<xliff:g id="USED_0">%1$d</xliff:g> ٪ des Zyklus sind verstrichen. \nDer nächste Zeitraum beginnt in <xliff:g id="USED_1">%2$d</xliff:g> Tagen (<xliff:g id="USED_2">%3$s</xliff:g>)."</string>
@@ -870,7 +875,6 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"Unter-ID der standardmäßigen Daten-SIM:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DL-Bandbreite (kbit/s):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL-Bandbreite (kbit/s):"</string>
-    <string name="radio_info_signal_location_label" msgid="6188435197086550049">"Standortinformationen des Mobiltelefons (eingestellt):"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Konfiguration des physischen LTE-Kanals:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Aktualisierungsrate der Mobiltelefoninformationen:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Alle Informationen zu Zellenmesswerten:"</string>
@@ -901,6 +905,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Aktualisieren"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"DNS-Überprüfung ein-/ausschalten"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"OEM-spezifische Infos/Einstellungen"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC verfügbar:"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR eingeschränkt:"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR verfügbar:"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"NR-Status:"</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR-Frequenz:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Frequenzbereichmodus festlegen"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Frequenzliste wird geladen…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Festlegen"</string>

@@ -50,6 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"କେବଳ ପ୍ରାଥମିକ ୟୁଜରଙ୍କ ଦ୍ଵାରା ଭଏସମେଲ୍ ସେଟିଙ୍ଗକୁ ସଂଶୋଧିତ କରାଯାଇପାରିବ।"</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"ଆପଣଙ୍କର SIM କାର୍ଡକୁ ଅବରୋଧ କରିଦିଆଯାଇଛି। ଆପଣଙ୍କର ଫୋନ୍ ଅନଲକ୍ ହେଉଛି…"</string>
     <string name="label_ndp" msgid="7617392683877410341">"SIM ନେଟ୍‌ୱର୍କ‌କୁ ଅନଲକ୍ କରିବା ପାଇଁ PIN"</string>
+    <string name="label_phoneid" msgid="8775611434123577808">"ଅପରେଟର୍ ପାଇଁ SIM ଲକ୍ କରାଯାଇଛି"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"ଅନଲକ୍‌ କରନ୍ତୁ"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"ଖାରଜ କରନ୍ତୁ"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"ନେଟ୍‌ୱର୍କକୁ ଅନଲକ୍ କରିବା ପାଇଁ ଅନୁରୋଧ କରାଯାଉଛି…"</string>
@@ -74,7 +75,7 @@
     <string name="phone_accounts_configure_account_settings" msgid="6622119715253196586">"ଆକାଉଣ୍ଟ ସେଟିଙ୍ଗକୁ କନଫିଗର୍ କରନ୍ତୁ"</string>
     <string name="phone_accounts_all_calling_accounts" msgid="1609600743500618823">"ସମସ୍ତ କଲିଙ୍ଗ ଆକାଉଣ୍ଟ"</string>
     <string name="phone_accounts_all_calling_accounts_summary" msgid="2214134955430107240">"କଲ୍ କରିପାରୁଥିବା ଆକାଉଣ୍ଟକୁ ଚୟନ କରନ୍ତୁ"</string>
-    <string name="wifi_calling" msgid="3650509202851355742">"ୱାଇ-ଫାଇ କଲିଙ୍ଗ"</string>
+    <string name="wifi_calling" msgid="3650509202851355742">"ୱାଇ-ଫାଇ କଲିଂ"</string>
     <string name="connection_service_default_label" msgid="7332739049855715584">"ବିଲ୍ଟ-ଇନ୍ ସଂଯୋଗ ସେବା"</string>
     <string name="voicemail" msgid="7697769412804195032">"ଭଏସମେଲ୍"</string>
     <string name="voicemail_settings_with_label" msgid="4228431668214894138">"ଭଏସମେଲ୍ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -84,7 +85,7 @@
     <string name="smart_forwarding_settings_menu_summary" msgid="5096947726032885325">"ଯେତେବେଳେ ଏକ ନମ୍ବର୍ ଅପହଞ୍ଚ ଦୂରରେ ରହିଥାଏ, ସେତେବେଳେ ସର୍ବଦା ଆପଣଙ୍କର ଅନ୍ୟ ନମ୍ବର୍‍କୁ କଲ୍‍‍ଗୁଡ଼ିକ ଫର୍‍ୱର୍ଡ ହେବ"</string>
     <string name="voicemail_notifications_preference_title" msgid="7829238858063382977">"ବିଜ୍ଞପ୍ତି"</string>
     <string name="cell_broadcast_settings" msgid="8135324242541809924">"ଜରୁରିକାଳୀନ ପ୍ରସାରଣ"</string>
-    <string name="call_settings" msgid="3677282690157603818">"କଲ୍‌ ସେଟିଙ୍ଗ"</string>
+    <string name="call_settings" msgid="3677282690157603818">"କଲ୍‌ ସେଟିଂସ୍"</string>
     <string name="additional_gsm_call_settings" msgid="1561980168685658846">"ଅତିରିକ୍ତ ସେଟିଙ୍ଗ"</string>
     <string name="additional_gsm_call_settings_with_label" msgid="7973920539979524908">"ଅତିରିକ୍ତ ସେଟିଙ୍ଗ(<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="sum_gsm_call_settings" msgid="7964692601608878138">"ଅତିରିକ୍ତ କେବଳ GSM କଲ୍ ସେଟିଙ୍ଗ"</string>
@@ -95,41 +96,47 @@
     <string name="sum_loading_settings" msgid="434063780286688775">"ସେଟିଙ୍ଗ ଲୋଡ୍ ହେଉଛି…"</string>
     <string name="sum_hide_caller_id" msgid="131100328602371933">"ଆଉଟ୍‌ଗୋ‌ଇଙ୍ଗ କଲ୍‌ରେ ଲୁଚିଥିବା କଲ୍"</string>
     <string name="sum_show_caller_id" msgid="3571854755324664591">"ଆଉଟ୍‌ଗୋ‌ଇଙ୍ଗ କଲ୍‌ରେ ନମ୍ବର୍ ଡିସପ୍ଲେ ହୋ‌ଇଛି"</string>
-    <string name="sum_default_caller_id" msgid="1767070797135682959">"ଆଉଟ୍‌ଗୋ‌ଇଙ୍ଗ କଲ୍‌ରେ ମୋର ନମ୍ବର୍‌କୁ ଦେଖାଇବା ପାଇଁ ଡିଫଲ୍ଟ ଅପରେଟର୍ ସେଟିଙ୍ଗକୁ ବ୍ୟବହାର କରନ୍ତୁ"</string>
+    <string name="sum_default_caller_id" msgid="1767070797135682959">"ଆଉଟ୍‌ଗୋ‌ଇଙ୍ଗ କଲ୍‌ରେ ମୋର ନମ୍ବର୍‌କୁ ଡିସପ୍ଲେ କରିବା ପାଇଁ ଡିଫଲ୍ଟ ଅପରେଟର୍ ସେଟିଂସକୁ ବ୍ୟବହାର କରନ୍ତୁ"</string>
     <string name="labelCW" msgid="8449327023861428622">"କଲ୍‌ ଅପେକ୍ଷାରେ ଅଛି"</string>
-    <string name="sum_cw_enabled" msgid="3977308526187139996">"ଗୋଟିଏ କଲ୍ କରିବା ବେଳେ ଇନକମିଙ୍ଗ କଲ୍ ପାଇଁ ମୋତେ ସୂଚିତ କରନ୍ତୁ"</string>
-    <string name="sum_cw_disabled" msgid="3658094589461768637">"ଗୋଟିଏ କଲ୍ କରିବା ବେଳେ ଇନକମିଙ୍ଗ କଲ୍ ପାଇଁ ମୋତେ ସୂଚିତ କରନ୍ତୁ"</string>
-    <string name="call_forwarding_settings" msgid="8937130467468257671">"କଲ୍ ଫରୱାର୍ଡିଙ୍ଗ ସେଟିଙ୍ଗ"</string>
-    <string name="call_forwarding_settings_with_label" msgid="2345432813399564272">"କଲ୍ ଫର୍‌ୱାର୍ଡିଙ୍ଗ ସେଟିଙ୍ଗ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
+    <string name="sum_cw_enabled" msgid="3977308526187139996">"ଗୋଟିଏ କଲ୍ ସମୟରେ ଇନକମିଙ୍ଗ କଲ୍ ପାଇଁ ମୋତେ ସୂଚିତ କରନ୍ତୁ"</string>
+    <string name="sum_cw_disabled" msgid="3658094589461768637">"ଗୋଟିଏ କଲ୍ ସମୟରେ ଇନକମିଙ୍ଗ କଲ୍ ପାଇଁ ମୋତେ ସୂଚିତ କରନ୍ତୁ"</string>
+    <string name="call_forwarding_settings" msgid="8937130467468257671">"କଲ୍ ଫରୱାର୍ଡିଂ ସେଟିଂସ୍"</string>
+    <string name="call_forwarding_settings_with_label" msgid="2345432813399564272">"କଲ୍ ଫର୍‌ୱାର୍ଡିଂ ସେଟିଂସ୍ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCF" msgid="3578719437928476078">"କଲ୍‌ ଫର୍‌ୱାର୍ଡିଙ୍ଗ"</string>
     <string name="labelCFU" msgid="8870170873036279706">"ସର୍ବଦା ଫର୍‌ୱାର୍ଡ କରନ୍ତୁ"</string>
     <string name="messageCFU" msgid="1361806450979589744">"ସର୍ବଦା ଏହି ନମ୍ବର୍‌କୁ ବ୍ୟବହାର କରନ୍ତୁ"</string>
     <string name="sum_cfu_enabled_indicator" msgid="9030139213402432776">"ସମସ୍ତ କଲ୍ ଫରୱାର୍ଡ କରାଯାଉଛି"</string>
     <string name="sum_cfu_enabled" msgid="5806923046528144526">"<xliff:g id="PHONENUMBER">{0}</xliff:g>କୁ ସମସ୍ତ କଲ୍ ଫରୱାର୍ଡ କରାଯାଉଛି"</string>
     <string name="sum_cfu_enabled_no_number" msgid="7287752761743377930">"ନମ୍ବର୍ ଉପଲବ୍ଧ ନାହିଁ"</string>
-    <string name="sum_cfu_disabled" msgid="5010617134210809853">"ଅଫ୍ ଅଛି"</string>
+    <string name="sum_cfu_disabled" msgid="5010617134210809853">"ବନ୍ଦ ଅଛି"</string>
     <string name="labelCFB" msgid="615265213360512768">"ବ୍ୟସ୍ତଥିବା ବେଳେ"</string>
     <string name="messageCFB" msgid="1958017270393563388">"ବ୍ୟସ୍ତ ଥିବା ବେଳେ ନମ୍ବର୍"</string>
     <string name="sum_cfb_enabled" msgid="332037613072049492">"<xliff:g id="PHONENUMBER">{0}</xliff:g>କୁ ଫରୱାର୍ଡ କରାଯାଉଛି"</string>
-    <string name="sum_cfb_disabled" msgid="3589913334164866035">"ଅଫ୍ ଅଛି"</string>
+    <string name="sum_cfb_disabled" msgid="3589913334164866035">"ବନ୍ଦ ଅଛି"</string>
     <string name="disable_cfb_forbidden" msgid="4831494744351633961">"ଆପଣଙ୍କର ଫୋନ୍ ବ୍ୟସ୍ତ ଥିବାବେଳେ ଆପଣଙ୍କର ଅପରେଟର୍ କଲ୍ ଫର୍‌ୱାର୍ଡିଙ୍ଗକୁ ଅକ୍ଷମ କରିବାରେ ସପୋର୍ଟ କରିବେ ନାହିଁ।"</string>
     <string name="labelCFNRy" msgid="3403533792248457946">"ଉତ୍ତର ଦେଉନଥିବା ବେଳେ"</string>
     <string name="messageCFNRy" msgid="7644434155765359009">"ଉତ୍ତର ଦେଉନଥିବା ବେଳେ ନମ୍ବର୍"</string>
     <string name="sum_cfnry_enabled" msgid="3000500837493854799">"<xliff:g id="PHONENUMBER">{0}</xliff:g>କୁ ଫରୱାର୍ଡ କରାଯାଉଛି"</string>
-    <string name="sum_cfnry_disabled" msgid="1990563512406017880">"ଅଫ୍ ଅଛି"</string>
+    <string name="sum_cfnry_disabled" msgid="1990563512406017880">"ବନ୍ଦ ଅଛି"</string>
     <string name="disable_cfnry_forbidden" msgid="3174731413216550689">"ଆପଣଙ୍କର ଫୋନ୍ ଉତ୍ତର ଦେଇନପାରିବାବେଳେ ଆପଣଙ୍କର ଅପରେଟର୍ କଲ୍ ଫର୍‌ୱାର୍ଡିଙ୍ଗକୁ ଅକ୍ଷମ କରିବାରେ ସପୋର୍ଟ କରିବେ ନାହିଁ।"</string>
     <string name="labelCFNRc" msgid="4163399350778066013">"ଅପହଞ୍ଚ ଦୂରତାରେ ଥିବା ବେଳେ"</string>
     <string name="messageCFNRc" msgid="6980340731313007250">"ଅପହଞ୍ଚ ଦୂରତାରେ ଥିବା ବେଳେ ନମ୍ବର୍"</string>
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"<xliff:g id="PHONENUMBER">{0}</xliff:g>କୁ ଫରୱାର୍ଡ କରାଯାଉଛି"</string>
-    <string name="sum_cfnrc_disabled" msgid="739289696796917683">"ଅଫ୍ ଅଛି"</string>
+    <string name="sum_cfnrc_disabled" msgid="739289696796917683">"ବନ୍ଦ ଅଛି"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"ଆପଣଙ୍କର ଫୋନ୍ ଅପହଞ୍ଚ ଦୂରତାରେ ଥିବାବେଳେ ଆପଣଙ୍କର କେରିଅର୍ କଲ୍ ଫର୍‌ୱାର୍ଡିଙ୍ଗକୁ ଅକ୍ଷମ କରିବାରେ ସପୋର୍ଟ କରିବେ ନାହିଁ।"</string>
     <string name="registration_cf_forbidden" msgid="4386482610771190420">"ଆପଣଙ୍କ ମୋବାଇଲ କମ୍ପାନୀ କଲ୍‌ ଫର୍‌ୱାର୍ଡିଂ ସୁବିଧାର ସମର୍ଥନ କରେ ନାହିଁ।"</string>
-    <string name="updating_title" msgid="6130548922615719689">"କଲ୍‌ ସେଟିଙ୍ଗ"</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"\'କଲ୍ ୱେଟିଂ\' ସୁବିଧା ଚାଲୁ କରିବେ?"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"କଲ୍ ସମୟରେ, ଇନକମିଂ କଲଗୁଡ଼ିକ ବିଷୟରେ ଆପଣଙ୍କୁ ସୂଚିତ କରାଯିବ"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"ଚାଲୁ କରନ୍ତୁ"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"ବାତିଲ୍ କରନ୍ତୁ"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"IMSରେ CDMA \'କଲ୍ ୱେଟିଂ\' ସୁବିଧା ଚାଲୁ ଅଛି"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"IMSରେ CDMA \'କଲ୍ ୱେଟିଂ\' ସୁବିଧା ବନ୍ଦ ଅଛି"</string>
+    <string name="updating_title" msgid="6130548922615719689">"କଲ୍‌ ସେଟିଂସ୍"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"କଲ୍ ସେଟିଙ୍ଗକୁ କେବଳ ଆଡମିନ୍ ୟୁଜର୍‌ ବଦଳାଇପାରିବେ।"</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"ସେଟିଙ୍ଗ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"କଲ୍ ସେଟିଙ୍ଗରେ ତ୍ରୁଟି"</string>
-    <string name="reading_settings" msgid="1605904432450871183">"ସେଟିଙ୍ଗକୁ ପଢ଼ାଯାଉଛି…"</string>
-    <string name="updating_settings" msgid="3650396734816028808">"ସେଟିଙ୍ଗ ଅପଡେଟ୍ ହେଉଛି…"</string>
+    <string name="reading_settings" msgid="1605904432450871183">"ସେଟିଂସକୁ ପଢ଼ାଯାଉଛି…"</string>
+    <string name="updating_settings" msgid="3650396734816028808">"ସେଟିଂସ୍ ଅପଡେଟ୍ ହେଉଛି…"</string>
     <string name="reverting_settings" msgid="7378668837291012205">"ସେଟିଙ୍ଗକୁ ଫେରାଇଅଣାଯାଉଛି…"</string>
     <string name="response_error" msgid="3904481964024543330">"ନେଟ୍‌ୱର୍କରୁ ଆଶା କରାଯାଇନଥିବା ଉତ୍ତର ମିଳିଲା।"</string>
     <string name="exception_error" msgid="330994460090467">"ନେଟ୍‌ୱର୍କ କିମ୍ବା SIM କାର୍ଡରେ ତ୍ରୁଟି।"</string>
@@ -289,7 +296,7 @@
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"ଅନ୍ୟ SIM ବ୍ୟବହାର କରିବା ସମୟରେ <xliff:g id="CARRIER_NAME">%1$s</xliff:g> କଲ୍ ଏବଂ ଡାଟା ସେବାଗୁଡ଼ିକ ବ୍ଲକ୍ କରାଯାଇପାରେ।"</string>
     <string name="data_usage_title" msgid="8438592133893837464">"ଆପ୍‌ ଦ୍ୱାରା ଡାଟା ବ୍ୟବହାର"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"<xliff:g id="ID_2">%2$s</xliff:g>ରେ <xliff:g id="ID_1">%1$s</xliff:g> ମୋବାଇଲ୍ ଡାଟା ବ୍ୟବହାର କରାଯାଇଛି"</string>
-    <string name="advanced_options_title" msgid="9208195294513520934">"ଆଧୁନିକ"</string>
+    <string name="advanced_options_title" msgid="9208195294513520934">"ଉନ୍ନତ"</string>
     <string name="carrier_settings_euicc" msgid="1190237227261337749">"ନେଟୱର୍କ କ୍ୟାରିଅର"</string>
     <string name="keywords_carrier_settings_euicc" msgid="8540160967922063745">"ମୋବାଇଲ୍ ଓ ଇଣ୍ଟରନେଟ୍ ସେବା ପ୍ରଦାନକାରୀ କମ୍ପାନୀ, ଇସିମ୍, ସିମ୍, euicc, ମୋବାଇଲ୍ ଓ ଇଣ୍ଟରନେଟ୍ ସେବା ପ୍ରଦାନକାରୀ କମ୍ପାନୀକୁ ସ୍ଵିଚ୍ କରନ୍ତୁ, ମୋବାଇଲ୍ ଓ ଇଣ୍ଟରନେଟ୍ ସେବା ପ୍ରଦାନକାରୀ କମ୍ପାନୀକୁ ଯୋଡ଼ନ୍ତୁ"</string>
     <string name="carrier_settings_euicc_summary" msgid="2027941166597330117">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
@@ -299,7 +306,7 @@
     <string name="sim_selection_required_pref" msgid="6985901872978341314">"ମନୋନୟନ ଆବଶ୍ୟକ"</string>
     <string name="sim_change_data_title" msgid="9142726786345906606">"ଡାଟା ସିମ୍‌ ବଦଳାଇବେ?"</string>
     <string name="sim_change_data_message" msgid="3567358694255933280">"ମୋବାଇଲ୍‌ ଡାଟା ପାଇଁ <xliff:g id="OLD_SIM">%2$s</xliff:g> ବଦଳରେ <xliff:g id="NEW_SIM">%1$s</xliff:g> ବ୍ୟବହାର କରିବେ?"</string>
-    <string name="wifi_calling_settings_title" msgid="5800018845662016507">"ୱାଇ-ଫାଇ କଲିଙ୍ଗ"</string>
+    <string name="wifi_calling_settings_title" msgid="5800018845662016507">"ୱାଇ-ଫାଇ କଲିଂ"</string>
     <string name="video_calling_settings_title" msgid="342829454913266078">"କେରିଅର୍ ଭିଡିଓ କଲିଙ୍ଗ"</string>
     <string name="gsm_umts_options" msgid="4968446771519376808">"GSM/UMTS ବିକଳ୍ପ"</string>
     <string name="cdma_options" msgid="3669592472226145665">"CDMA ବିକଳ୍ପ"</string>
@@ -427,7 +434,7 @@
     <string name="cdma_lte_data_service" msgid="359786441782404562">"ଡାଟା ସେବାକୁ ସେଟ‌ଅପ୍ କରନ୍ତୁ"</string>
     <string name="carrier_settings_title" msgid="6292869148169850220">"କେରିଅର୍‍ ସେଟିଙ୍ଗ"</string>
     <string name="fdn" msgid="2545904344666098749">"ଫିକ୍ସଡ୍ ଡାଏଲିଙ୍ଗ ନମ୍ବର୍"</string>
-    <string name="fdn_with_label" msgid="6412087553365709494">"ଫିକ୍ସଡ୍ ଡାଏଲିଙ୍ଗ ନମ୍ବର୍ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
+    <string name="fdn_with_label" msgid="6412087553365709494">"ଫିକ୍ସଡ୍ ଡାଏଲିଂ ନମ୍ବର୍ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="manage_fdn_list" msgid="3341716430375195441">"FDN ତାଲିକା"</string>
     <string name="fdn_list_with_label" msgid="1409655283510382556">"FDN ତାଲିକା (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="fdn_activation" msgid="2178637004710435895">"FDNକୁ ସକ୍ରିୟ କରିବା"</string>
@@ -547,7 +554,7 @@
     <string name="emergency_information_hint" msgid="9208897544917793012">"ଜରୁରୀକାଳୀନ ସୂଚନା"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"ମାଲିକ"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"ସୂଚନା ଦେଖିବାକୁ ପୁଣିଥରେ ଟାପ୍‍ କରନ୍ତୁ"</string>
-    <string name="emergency_enable_radio_dialog_title" msgid="2667568200755388829">"ଜରୁରୀକାଳିନ କଲ୍‌"</string>
+    <string name="emergency_enable_radio_dialog_title" msgid="2667568200755388829">"ଜରୁରୀକାଳୀନ କଲ୍‌"</string>
     <string name="single_emergency_number_title" msgid="8413371079579067196">"ଜରୁରୀକାଳୀନ ନମ୍ବର୍‌"</string>
     <string name="numerous_emergency_numbers_title" msgid="8972398932506755510">"ଜରୁରୀକାଳୀନ ନମ୍ବର୍‌"</string>
     <string name="emergency_call_shortcut_hint" msgid="1290485125107779500">"<xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>ରେ କଲ୍‌ କରନ୍ତୁ"</string>
@@ -868,7 +875,6 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"ଡିଫଲ୍ଟ ଡାଟା SIMର SubId:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DL ବ୍ୟାଣ୍ଡୱିଡଥ୍ (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL ବ୍ୟାଣ୍ଡୱିଡଥ୍ (kbps):"</string>
-    <string name="radio_info_signal_location_label" msgid="6188435197086550049">"ସେଲ୍ ଲୋକେସନ୍ ସୂଚନା (ଅନୁରୋଧ କରାଯାଇଛି):"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"LTE ଫିଜିକାଲ୍ ଚ୍ୟାନେଲ୍ କନ୍‌ଫିଗରେସନ୍:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"ସେଲ୍ ସୂଚନା ରିଫ୍ରେସ୍ ଦର:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"ସମସ୍ତ ସେଲ୍ ପରିମାପ ସୂଚନା:"</string>
@@ -880,7 +886,7 @@
     <string name="radio_info_current_network_label" msgid="3052098695239642450">"ବର୍ତ୍ତମାନର ନେଟ୍‌ୱାର୍କ:"</string>
     <string name="radio_info_ppp_received_label" msgid="5753592451640644889">"ଡାଟା ପ୍ରାପ୍ତ ହୋଇଛି:"</string>
     <string name="radio_info_gsm_service_label" msgid="6443348321714241328">"ଭଏସ୍ ସେବା:"</string>
-    <string name="radio_info_signal_strength_label" msgid="5545444702102543260">"ସିଗ୍‌ନାଲ୍ ଶକ୍ତି:"</string>
+    <string name="radio_info_signal_strength_label" msgid="5545444702102543260">"ସିଗ୍‌ନାଲ୍ ଦକ୍ଷତା:"</string>
     <string name="radio_info_call_status_label" msgid="7693575431923095487">"ଭଏସ୍ କଲ୍ ସ୍ଥିତି:"</string>
     <string name="radio_info_ppp_sent_label" msgid="6542208429356199695">"ଡାଟା ପଠାଯାଇଛି:"</string>
     <string name="radio_info_message_waiting_label" msgid="1886549432566952078">"ବାର୍ତ୍ତା ଅପକ୍ଷାରତ:"</string>
@@ -899,6 +905,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"ରିଫ୍ରେସ୍ କରନ୍ତୁ"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"DNS ଯାଞ୍ଚ ଟୋଗଲ୍ କରନ୍ତୁ"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"OEM-ନିର୍ଦ୍ଦିଷ୍ଟ ସୂଚନା/ସେଟିଂସ୍"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC ଉପଲବ୍ଧ:"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR ପ୍ରତିବନ୍ଧିତ:"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR ଉପଲବ୍ଧ:"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"NR ସ୍ଥିତି:"</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR ଫ୍ରିକ୍ୱେନ୍ସୀ:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"ରେଡିଓ ବ୍ୟାଣ୍ଡ ମୋଡ୍ ସେଟ୍ କରନ୍ତୁ"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"ବ୍ୟାଣ୍ଡ ତାଲିକା ଲୋଡ୍ କରାଯାଉଛି…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"ସେଟ୍ କରନ୍ତୁ"</string>

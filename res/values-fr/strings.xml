@@ -50,6 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"Seul l\'utilisateur principal de la messagerie vocale peut en modifier les paramètres."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"Votre carte SIM a été déverrouillée. Votre téléphone est en cours de déverrouillage..."</string>
     <string name="label_ndp" msgid="7617392683877410341">"Code PIN de déblocage du réseau SIM"</string>
+    <string name="label_phoneid" msgid="8775611434123577808">"Carte SIM verrouillée par l\'opérateur"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"Déverrouiller"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"Rejeter"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"Demande de déblocage du réseau…"</string>
@@ -124,6 +125,12 @@
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Désactivé"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Votre opérateur ne permet pas la désactivation du transfert d\'appel lorsque votre téléphone n\'est pas joignable."</string>
     <string name="registration_cf_forbidden" msgid="4386482610771190420">"Votre opérateur ne permet pas le transfert des appels."</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"Activer la fonctionnalité d\'appel en attente ?"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"Lorsque vous êtes en communication, des notifications vous signalent les appels entrants"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"Activer"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"Annuler"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"Fonctionnalité d\'appel CDMA en attente sous IMS activée"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"Fonctionnalité d\'appel CDMA en attente sous IMS désactivée"</string>
     <string name="updating_title" msgid="6130548922615719689">"Paramètres d\'appel"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Seul l\'administrateur peut modifier les paramètres d\'appel."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Paramètres (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -868,7 +875,6 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"Sous-identifiant de la carte SIM par défaut pour les données :"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Bande passante de téléchargement (kbit/s) :"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Bande passante d\'importation (kbit/s) :"</string>
-    <string name="radio_info_signal_location_label" msgid="6188435197086550049">"Informations de géolocalisation mobiles (obsolètes) :"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Configuration de la chaîne physique LTE :"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Fréquence d\'actualisation des informations mobiles :"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Toutes les informations mobiles liées aux mesures :"</string>
@@ -899,6 +905,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Actualiser"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"Activer/Désactiver le contrôle DNS"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"Infos/paramètres OEM"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"Accès EN-DC disponible :"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"Limitation DCNR :"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"Accès NR disponible :"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"État NR :"</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"Fréquence NR :"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Définir le mode de bande radio"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Chargement de la liste de bandes…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Définir"</string>

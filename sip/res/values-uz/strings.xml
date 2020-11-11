@@ -26,7 +26,7 @@
     <string name="sip_call_options_entry_1" msgid="4722647332760934261">"Tarmoq trafigi mavjud bo‘lganda barcha qo‘ng‘iroqlar uchun"</string>
     <string name="sip_call_options_entry_2" msgid="7338504256051655013">"Faqat SIP chaqiruvlar uchun"</string>
     <string name="sip_call_options_wifi_only_entry_1" msgid="922329055414010991">"Barcha chaqiruvlar uchun"</string>
-    <string name="add_sip_account" msgid="5754758646745144384">"Hisob qo‘shish"</string>
+    <string name="add_sip_account" msgid="5754758646745144384">"Hisob kiritish"</string>
     <string name="remove_sip_account" msgid="8272617403399636513">"Hisobni olib tashlash"</string>
     <string name="sip_account_list" msgid="2596262496233721769">"SIP hisoblari"</string>
     <string name="saving_account" msgid="3390358043846687266">"Hisob saqlanmoqda…"</string>

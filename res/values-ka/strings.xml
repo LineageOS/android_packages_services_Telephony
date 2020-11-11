@@ -50,6 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"ხმოვანი ფოსტის პარამეტრების შეცვლა მხოლოდ ძირითად მომხმარებელს შეუძლია."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"თქვენი SIM ბარათი განიბლოკა. მიმდინარეობს თქვენი ტელეფონის განბლოკვა…"</string>
     <string name="label_ndp" msgid="7617392683877410341">"SIM ქსელის განბლოკვის PIN"</string>
+    <string name="label_phoneid" msgid="8775611434123577808">"SIM ჩაკეტილია ოპერატორისთვის"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"განბლოკვა"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"იგნორირება"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"ქსელის განბლოკვის მოთხოვნა…"</string>
@@ -74,7 +75,7 @@
     <string name="phone_accounts_configure_account_settings" msgid="6622119715253196586">"ანგარიშის პარამეტრების კონფიგურაცია"</string>
     <string name="phone_accounts_all_calling_accounts" msgid="1609600743500618823">"დარეკვის ყველა ანგარიში"</string>
     <string name="phone_accounts_all_calling_accounts_summary" msgid="2214134955430107240">"აირჩიეთ რომელ ანგარიშს შეეძლება ზარების განხორციელება"</string>
-    <string name="wifi_calling" msgid="3650509202851355742">"დარეკვა Wi-Fi-ს მეშვეობით"</string>
+    <string name="wifi_calling" msgid="3650509202851355742">"Wi-Fi დარეკვა"</string>
     <string name="connection_service_default_label" msgid="7332739049855715584">"კავშირის ჩაშენებული სერვისი"</string>
     <string name="voicemail" msgid="7697769412804195032">"ხმოვანი ფოსტა"</string>
     <string name="voicemail_settings_with_label" msgid="4228431668214894138">"ხმოვანი ფოსტა (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -123,8 +124,13 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"გადამისამართება <xliff:g id="PHONENUMBER">{0}</xliff:g>-ზე"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"გამორთული"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"თქვენს ოპერატორს ტელეფონის მიუწვდომელობის დროს ზარის გადამისამართების გაუქმების მხარდაჭერა არ გააჩნია."</string>
-    <!-- no translation found for registration_cf_forbidden (4386482610771190420) -->
-    <skip />
+    <string name="registration_cf_forbidden" msgid="4386482610771190420">"თქვენი ოპერატორი ზარის გადამისამართებას მხარს არ უჭერს."</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"გსურთ ზარის ლოდინის ჩართვა?"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"ზარის დროს გეცნობებათ შემომავალი ზარების შესახებ"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"ჩართვა"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"გაუქმება"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"CDMA ზარის ლოდინი IMS-ში ჩართულია"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"CDMA ზარის ლოდინი IMS-ში გამორთულია"</string>
     <string name="updating_title" msgid="6130548922615719689">"ზარის პარამეტრები"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"ზარის პარამეტრების შეცვლა მხოლოდ მომხმარებელ-ადმინისტრატორს შეუძლია."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"პარამეტრები (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -869,7 +875,6 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"მონაცემების ნაგულისხმევი SIM-ის subId:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DL-არხის გამტარუნარიანობა (კბიტ/წმ):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL-არხის გამტარუნარიანობა (კბიტ/წმ):"</string>
-    <string name="radio_info_signal_location_label" msgid="6188435197086550049">"ფიჭური მდებარეობის ინფორმაცია (მოძველდა):"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"LTE ფიზიკური არხის კონფიგურაცია:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"ფიჭური ინფორმაციის განახლების სიხშირე:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"სრული ინფორმაცია ფიჭური ქსელის შესახებ:"</string>
@@ -900,6 +905,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"განახლება"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"DNS შემოწმების გადართვა"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"ინფორმაცია/პარამეტრები სპეციალურად OEM-ისთვის"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC ხელმისაწვდომია:"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR შეზღუდულია:"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR ხელმისაწვდომია:"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"NR-ის მდგომარეობა:"</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR-ის სიხშირე:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"რადიოდიაპაზონის რეჟიმის დაყენება"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"მიმდინარეობს დიაპაზონთა სიის ჩატვირთვა…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"დაყენება"</string>

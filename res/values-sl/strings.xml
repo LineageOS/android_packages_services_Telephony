@@ -50,6 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"Nastavitve odzivnika lahko spremeni samo primarni uporabnik."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"Kartica SIM je bila deblokirana. Telefon se odklepa ..."</string>
     <string name="label_ndp" msgid="7617392683877410341">"PIN za odklep omrežja kartice SIM"</string>
+    <string name="label_phoneid" msgid="8775611434123577808">"Kartica SIM je zaklenjena za operaterja"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"Odkleni"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"Opusti"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"Zahteva za odklepanje omrežja ..."</string>
@@ -123,8 +124,13 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"Preusmerjanje na <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Izklopljeno"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Vaš operater ne podpira izklopa preusmeritve klicev, kadar je telefon nedosegljiv."</string>
-    <!-- no translation found for registration_cf_forbidden (4386482610771190420) -->
-    <skip />
+    <string name="registration_cf_forbidden" msgid="4386482610771190420">"Vaš operater ne podpira posredovanja klicev."</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"Želite vklopiti čakajoči klic?"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"Med klicem boste obveščeni o dohodnih klicih"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"Vklopi"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"Prekliči"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"Čakajoči klic CDMA v sistemu IMS je vklopljen"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"Čakajoči klic CDMA v sistemu IMS je izklopljen"</string>
     <string name="updating_title" msgid="6130548922615719689">"Nastavitve klicev"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Nastavitve klicanja lahko spremeni samo uporabnik s skrbniškim dostopom."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Nastavitve (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -875,7 +881,6 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"ID naročnine privzete kartice SIM za prenos podatkov:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Pasovna širina za prenos (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Pasovna širina za nalaganje (kbps):"</string>
-    <string name="radio_info_signal_location_label" msgid="6188435197086550049">"Podatki o lokaciji celice (zastarelo):"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Konfiguracija fizičnega kanala LTE:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Frekvenca osveževanja podatkov o celici:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Vsi podatki o meritvah celice:"</string>
@@ -906,6 +911,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Osveži"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"Preklop preverjanja DNS"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"Informacije/nastavitve za OEM"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"Razpoložljivo za EN-DC:"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"Omejeno za DCNR:"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"Razpoložljivo za NR:"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"Stanje NR:"</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"Frekvenca NR:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Nastavljanje načina radijskega območja"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Nalaganje seznama frekvenčnih pasov …"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Nastavi"</string>

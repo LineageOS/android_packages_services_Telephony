@@ -50,6 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"רק המשתמש הראשי יכול לשנות את ההגדרות של הדואר הקולי."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"‏בוטלה החסימה של כרטיס SIM. מבטל את חסימת הטלפון..."</string>
     <string name="label_ndp" msgid="7617392683877410341">"‏PIN לביטול נעילה של רשת SIM"</string>
+    <string name="label_phoneid" msgid="8775611434123577808">"‏כרטיס ה-SIM נעול על ידי הספק הסלולרי"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"בטל נעילה"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"סגור"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"מבקש ביטול נעילת רשת..."</string>
@@ -124,6 +125,12 @@
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"כבוי"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"הספק שלך לא תומך בהשבתה של העברת שיחות כאשר הטלפון כבוי."</string>
     <string name="registration_cf_forbidden" msgid="4386482610771190420">"הספק הסלולרי שלך לא תומך בהעברת שיחות."</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"רוצה להפעיל את השיחה הממתינה?"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"יוצגו לך התראות על שיחות שנכנסות במהלך שיחות אחרות"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"הפעלה"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"ביטול"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"‏השיחה הממתינה ברשת CDMA ב-IMS פועלת"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"‏השיחה הממתינה ברשת CDMA ב-IMS מושבתת"</string>
     <string name="updating_title" msgid="6130548922615719689">"הגדרות שיחה"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"רק מנהל המערכת יכול לשנות הגדרות שיחה."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"הגדרות (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -308,7 +315,7 @@
     <string name="throttle_time_frame" msgid="1813452485948918791">"תקופת השימוש בנתונים"</string>
     <string name="throttle_rate" msgid="7641913901133634905">"מדיניות קצב נתונים"</string>
     <string name="throttle_help" msgid="2624535757028809735">"למידע נוסף"</string>
-    <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>??) מתוך התקופה המרבית של <xliff:g id="USED_2">%3$s</xliff:g>\nהתקופה הבאה מתחילה בעוד <xliff:g id="USED_3">%4$d</xliff:g> ימים (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
+    <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>%%) מתוך התקופה המרבית של <xliff:g id="USED_2">%3$s</xliff:g>\nהתקופה הבאה מתחילה בעוד <xliff:g id="USED_3">%4$d</xliff:g> ימים (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
     <string name="throttle_data_usage_subtext" msgid="3185429653996709840">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>??)  מתוך התקופה המרבית של<xliff:g id="USED_2">%3$s</xliff:g>"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"‏<xliff:g id="USED_0">%1$s</xliff:g> חריגה מהמקסימום\nקצב הנתונים ירד ל-‏‎<xliff:g id="USED_1">%2$d</xliff:g> Kb לשנייה"</string>
     <string name="throttle_time_frame_subtext" msgid="6462089615392402127">"<xliff:g id="USED_0">%1$d</xliff:g>?? מהמחזור חלפו\nהתקופה הבאה מתחילה בעוד <xliff:g id="USED_1">%2$d</xliff:g> ימים (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
@@ -874,7 +881,6 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"‏תת-מזהה של כרטיס ה-SIM עם חבילת גלישה המוגדר כברירת מחדל:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"‏רוחב פס DL (ב-kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"‏רוחב פס UL (ב-kbps):"</string>
-    <string name="radio_info_signal_location_label" msgid="6188435197086550049">"מידע על מיקום סלולרי (הוצא משימוש):"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"‏תצורת ערוץ פיזי של LTE:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"קצב רענון של מידע סלולרי:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"כל המידע של מדידה סלולרית:"</string>
@@ -905,6 +911,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"רענון"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"‏החלפת מצב של בדיקת DNS"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"‏מידע/הגדרות ספציפיים ל-OEM"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"‏תומך ב-EN-DC:"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"‏לא תומך ב-5G NR:"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"‏תומך ב-5G NR:"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"‏מצב 5G NR:"</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"‏תדירות 5G NR:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"הגדרת מצב תדרים של רדיו"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"טוען רשימת תדרים…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"הגדרה"</string>

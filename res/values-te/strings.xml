@@ -50,6 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"వాయిస్ మెయిల్ సెట్టింగ్‌లను ప్రాథమిక వినియోగదారు మాత్రమే సవరించగలరు."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"మీ SIM కార్డు అన్‌బ్లాక్ చేయబడింది. మీ ఫోన్ అన్‌లాక్ చేయబడుతోంది…"</string>
     <string name="label_ndp" msgid="7617392683877410341">"SIM నెట్‌వర్క్ అన్‌లాక్ పిన్‌"</string>
+    <string name="label_phoneid" msgid="8775611434123577808">"ఈ ఆపరేటర్‌కు సంబంధించి SIM లాక్ చేయబడింది"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"అన్‌లాక్ చేయి"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"తీసివేయి"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"నెట్‌వర్క్ అన్‌లాక్‌ను అభ్యర్థిస్తోంది…"</string>
@@ -123,14 +124,19 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"<xliff:g id="PHONENUMBER">{0}</xliff:g>కి ఫార్వార్డ్ చేస్తోంది"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"ఆఫ్‌లో ఉంది"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"మీ ఫోన్‌ను చేరుకోవడం సాధ్యపడనప్పుడు కాల్ ఫార్వర్డింగ్‌ను నిలిపివేయడానికి మీ క్యారియర్ మద్దతు ఇవ్వదు."</string>
-    <!-- no translation found for registration_cf_forbidden (4386482610771190420) -->
-    <skip />
+    <string name="registration_cf_forbidden" msgid="4386482610771190420">"కాల్ ఫార్వర్డింగ్‌ను మీ క్యారియర్ సపోర్ట్ చేయదు."</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"కాల్ వెయిటింగ్‌ను ఆన్ చేయాలా?"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"మీరు కాల్‌లో ఉండగా, ఇన్‌కమింగ్ కాల్‌ల గురించి మీకు తెలియజేయబడుతుంది"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"ఆన్ చేయి"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"రద్దు చేయి"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"IMSలో CDMA కాల్ వెయిటింగ్ ఆన్‌లో ఉంది"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"IMSలో CDMA కాల్ వెయిటింగ్ ఆఫ్‌లో ఉంది"</string>
     <string name="updating_title" msgid="6130548922615719689">"కాల్ సెట్టింగ్‌లు"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"కాల్ సెట్టింగ్‌లను నిర్వాహక వినియోగదారు మాత్రమే మార్చగలరు."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"సెట్టింగ్‌లు (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"కాల్ సెట్టింగ్‌ల లోపం"</string>
     <string name="reading_settings" msgid="1605904432450871183">"సెట్టింగ్‌లను చదువుతోంది…"</string>
-    <string name="updating_settings" msgid="3650396734816028808">"సెట్టింగ్‌లను నవీకరిస్తోంది…"</string>
+    <string name="updating_settings" msgid="3650396734816028808">"సెట్టింగ్‌లను అప్‌డేట్ చేస్తోంది…"</string>
     <string name="reverting_settings" msgid="7378668837291012205">"సెట్టింగ్‌లను తిరిగి మారుస్తోంది…"</string>
     <string name="response_error" msgid="3904481964024543330">"నెట్‌వర్క్ నుండి ఊహించని ప్రతిస్పందన."</string>
     <string name="exception_error" msgid="330994460090467">"నెట్‌వర్క్ లేదా SIM కార్డు లోపం."</string>
@@ -143,7 +149,7 @@
     <string name="close_dialog" msgid="1074977476136119408">"సరే"</string>
     <string name="enable" msgid="2636552299455477603">"ఆన్ చేయి"</string>
     <string name="disable" msgid="1122698860799462116">"ఆఫ్ చేయి"</string>
-    <string name="change_num" msgid="6982164494063109334">"నవీకరించు"</string>
+    <string name="change_num" msgid="6982164494063109334">"అప్‌డేట్ చేయి"</string>
   <string-array name="clir_display_values">
     <item msgid="8477364191403806960">"నెట్‌వర్క్ డిఫాల్ట్"</item>
     <item msgid="6813323051965618926">"నంబర్‌ను దాచు"</item>
@@ -290,7 +296,7 @@
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"వేరొక SIMను ఉపయోగిస్తున్నప్పుడు <xliff:g id="CARRIER_NAME">%1$s</xliff:g> కాల్‌లు మరియు డేటా సేవలు బ్లాక్ చేయబడవచ్చు."</string>
     <string name="data_usage_title" msgid="8438592133893837464">"యాప్ డేటా వినియోగం"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"<xliff:g id="ID_2">%2$s</xliff:g> మధ్య కాలంలో <xliff:g id="ID_1">%1$s</xliff:g> మొబైల్ డేటా ఉపయోగించబడింది"</string>
-    <string name="advanced_options_title" msgid="9208195294513520934">"అధునాతనం"</string>
+    <string name="advanced_options_title" msgid="9208195294513520934">"అధునాతన సెట్టింగ్‌లు"</string>
     <string name="carrier_settings_euicc" msgid="1190237227261337749">"క్యారియర్"</string>
     <string name="keywords_carrier_settings_euicc" msgid="8540160967922063745">"క్యారియర్, ఇసిమ్, సిమ్, ఇయుక్, క్యారియర్‌లను మార్చు, క్యారియర్‌ను జోడించు"</string>
     <string name="carrier_settings_euicc_summary" msgid="2027941166597330117">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
@@ -309,7 +315,7 @@
     <string name="throttle_time_frame" msgid="1813452485948918791">"డేటా వినియోగ వ్యవధి"</string>
     <string name="throttle_rate" msgid="7641913901133634905">"డేటా రేట్ విధానం"</string>
     <string name="throttle_help" msgid="2624535757028809735">"మరింత తెలుసుకోండి"</string>
-    <string name="throttle_status_subtext" msgid="1110276415078236687">"గరిష్టంగా <xliff:g id="USED_2">%3$s</xliff:g> వ్యవధిలో <xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪)\nతదపరి వ్యవధి <xliff:g id="USED_3">%4$d</xliff:g> రోజుల్లో (<xliff:g id="USED_4">%5$s</xliff:g>) ప్రారంభమవుతుంది"</string>
+    <string name="throttle_status_subtext" msgid="1110276415078236687">"గరిష్ఠ వ్యవధి అయిన <xliff:g id="USED_2">%3$s</xliff:g>లో <xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪)\nతర్వాతి వ్యవధి <xliff:g id="USED_3">%4$d</xliff:g> రోజుల్లో (<xliff:g id="USED_4">%5$s</xliff:g>) ప్రారంభమవుతుంది"</string>
     <string name="throttle_data_usage_subtext" msgid="3185429653996709840">"గరిష్టంగా <xliff:g id="USED_2">%3$s</xliff:g>లో <xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪)"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"<xliff:g id="USED_0">%1$s</xliff:g> గరిష్ట పరిమితి మించిపోయింది\nడేటా రేట్ <xliff:g id="USED_1">%2$d</xliff:g> Kb/sకి తగ్గించబడింది"</string>
     <string name="throttle_time_frame_subtext" msgid="6462089615392402127">"సైకిల్‌లో <xliff:g id="USED_0">%1$d</xliff:g>٪ గడిచిపోయింది\nతదుపరి వ్యవధి <xliff:g id="USED_1">%2$d</xliff:g> రోజుల్లో (<xliff:g id="USED_2">%3$s</xliff:g>) ప్రారంభమవుతుంది"</string>
@@ -583,7 +589,7 @@
     <string name="failedToImportSingleContactMsg" msgid="228095510489830266">"పరిచయాన్ని దిగుమతి చేయడంలో విఫలమైంది"</string>
     <string name="hac_mode_title" msgid="4127986689621125468">"వినికిడి సహాయక సాధనాలు"</string>
     <string name="hac_mode_summary" msgid="7774989500136009881">"వినికిడి సహాయక సాధనం అనుకూలతను ప్రారంభించండి"</string>
-    <string name="rtt_mode_title" msgid="3075948111362818043">"నిజ సమయ వచనం (RTT) కాల్"</string>
+    <string name="rtt_mode_title" msgid="3075948111362818043">"రియ‌ల్‌-టైమ్‌ టెక్స్ట్ (RTT) కాల్"</string>
     <string name="rtt_mode_summary" msgid="8631541375609989562">"వాయిస్ కాల్‌లో సందేశాలు పంపడానికి అనుమతించండి"</string>
     <string name="rtt_mode_more_information" msgid="587500128658756318">"బధిరులు, వినికిడి సమస్యలు ఉన్న వారు, మాట్లాడటంలో సమస్యలు ఉన్న వారు లేదా కేవలం వాయిస్‌తో అర్థం చేసుకోలేని కాలర్‌లకు RTT సహాయపడుతుంది.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;మరింత తెలుసుకోండి&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT కాల్‌లు సందేశ లిపి మార్పు వలె సేవ్ చేయబడతాయి\n       &lt;br&gt; - వీడియో కాల్‌ల కోసం RTT అందుబాటులో లేదు"</string>
     <string name="no_rtt_when_roaming" msgid="5268008247378355389">"గమనిక: రోమింగ్‌లో ఉండగా RTTఅందుబాటులో ఉండదు"</string>
@@ -869,7 +875,6 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"డిఫాల్ట్ డేటా SIM యొక్క SubId:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DL బ్యాండ్‌విడ్త్ (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL బ్యాండ్‌విడ్త్ (kbps):"</string>
-    <string name="radio_info_signal_location_label" msgid="6188435197086550049">"సెల్ స్థాన సమాచారం (నిలిపివేయబడింది):"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"LTE భౌతిక ఛానెల్ కాన్ఫిగరేషన్:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"సెల్ సమాచార రిఫ్రెష్ సగటు:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"మొత్తం సెల్ పరిమాణ సమాచారం:"</string>
@@ -900,6 +905,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"రిఫ్రెష్ చేయి"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"DNS తనిఖీని టోగుల్ చేయండి"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"OEM-నిర్దిష్ట సమాచారం/సెట్టింగ్‌లు"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC అందుబాటులో ఉంది:"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR నియంత్రించబడింది:"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR అందుబాటులో ఉంది:"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"NR స్టేటస్:"</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR ఫ్రీక్వెన్సీ:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"రేడియో బ్యాండ్ మోడ్‌ను సెట్ చేయండి"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"బ్యాండ్ జాబితాను లోడ్ చేస్తోంది…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"సెట్ చేయి"</string>

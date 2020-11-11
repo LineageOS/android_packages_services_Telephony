@@ -50,6 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"صرف بنیادی صارف ہی صوتی میل کی ترتیبات تبدیل کر سکتا ہے۔"</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"‏آپ کا SIM کارڈ غیر مسدود ہوگیا ہے۔ آپ کا فون غیر مقفل ہو رہا ہے…"</string>
     <string name="label_ndp" msgid="7617392683877410341">"‏SIM نیٹ ورک غیر مقفل کرنے کا PIN"</string>
+    <string name="label_phoneid" msgid="8775611434123577808">"‏آپریٹر کے لیے SIM مقفل ہے"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"غیر مقفل کریں"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"برخاست کریں"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"نیٹ ورک غیر مقفل کرنے کی درخواست کر رہا ہے…"</string>
@@ -95,17 +96,17 @@
     <string name="sum_loading_settings" msgid="434063780286688775">"ترتیبات لوڈ ہو رہی ہیں…"</string>
     <string name="sum_hide_caller_id" msgid="131100328602371933">"باہر جانے والی کالوں میں نمبر پوشیدہ ہے"</string>
     <string name="sum_show_caller_id" msgid="3571854755324664591">"باہر جانے والی کالوں میں ڈسپلے نمبر ہوتا ہے"</string>
-    <string name="sum_default_caller_id" msgid="1767070797135682959">"باہر جانے والی کالوں میں میرا نمبر ڈسپلے کرنے کیلئے ڈیفالٹ آپریٹر کی ترتیبات کا استعمال کریں"</string>
+    <string name="sum_default_caller_id" msgid="1767070797135682959">"آؤٹ گوئنگ کالوں میں میرا نمبر ڈسپلے کرنے کیلئے ڈیفالٹ آپریٹر کی ترتیبات کا استعمال کریں"</string>
     <string name="labelCW" msgid="8449327023861428622">"کال کا انتظار"</string>
-    <string name="sum_cw_enabled" msgid="3977308526187139996">"کال کے دوران، مجھے آنے والی کالوں سے مطلع کریں"</string>
-    <string name="sum_cw_disabled" msgid="3658094589461768637">"کال کے دوران، مجھے آنے والی کالوں سے مطلع کریں"</string>
-    <string name="call_forwarding_settings" msgid="8937130467468257671">"کال آگے منتقل کرنے کی ترتیبات"</string>
+    <string name="sum_cw_enabled" msgid="3977308526187139996">"کال کے دوران، مجھے اِن کمنگ کالوں سے مطلع کریں"</string>
+    <string name="sum_cw_disabled" msgid="3658094589461768637">"کال کے دوران، مجھے اِن کمنگ کالوں سے مطلع کریں"</string>
+    <string name="call_forwarding_settings" msgid="8937130467468257671">"کال فارورڈنگ کی ترتیبات"</string>
     <string name="call_forwarding_settings_with_label" msgid="2345432813399564272">"کال فارورڈنگ ترتیبات (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCF" msgid="3578719437928476078">"کال فارورڈنگ"</string>
-    <string name="labelCFU" msgid="8870170873036279706">"ہمیشہ آگے منتقل کریں"</string>
+    <string name="labelCFU" msgid="8870170873036279706">"ہمیشہ فارورڈ کریں"</string>
     <string name="messageCFU" msgid="1361806450979589744">"ہمیشہ یہ نمبر استعمال کریں"</string>
     <string name="sum_cfu_enabled_indicator" msgid="9030139213402432776">"سبھی کالیں آگے منتقل کر رہا ہے"</string>
-    <string name="sum_cfu_enabled" msgid="5806923046528144526">"سبھی کالیں <xliff:g id="PHONENUMBER">{0}</xliff:g> کو آگے منتقل کر رہا ہے"</string>
+    <string name="sum_cfu_enabled" msgid="5806923046528144526">"سبھی کالیں <xliff:g id="PHONENUMBER">{0}</xliff:g> کو فارورڈ ہو رہی ہیں"</string>
     <string name="sum_cfu_enabled_no_number" msgid="7287752761743377930">"نمبر دستیاب نہیں ہے"</string>
     <string name="sum_cfu_disabled" msgid="5010617134210809853">"آف"</string>
     <string name="labelCFB" msgid="615265213360512768">"مصروف ہونے پر"</string>
@@ -124,6 +125,12 @@
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"آف"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"آپ کا کیریئر آپ کا فون ناقابل رسائی ہونے پر کال آگے منتقل کرنے کو غیر فعال کرنے کا تعاون نہیں کرتا ہے۔"</string>
     <string name="registration_cf_forbidden" msgid="4386482610771190420">"آپ کا کیریئر کال فارورڈنگ کو سپورٹ نہیں کرتا ہے۔"</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"\'کال کا انتظار کرنا\' آن کریں؟"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"کال کے دوران، آپ کو موصول ہونے والی کالز کے بارے میں مطلع کیا جائے گا"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"آن کریں"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"منسوخ کریں"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"‏IMS آن کے تحت CDMA کال کا انتظار کرنا"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"‏IMS آف کے تحت CDMA کال کا انتظار کرنا"</string>
     <string name="updating_title" msgid="6130548922615719689">"کال کی ترتیبات"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"صرف منتظم صارف ہی کال کی ترتیبات تبدیل کر سکتا ہے۔"</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"ترتیبات (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -512,7 +519,7 @@
     <string name="card_title_dialing" msgid="8742182654254431781">"ڈائل ہو رہا ہے"</string>
     <string name="card_title_redialing" msgid="18130232613559964">"دوبارہ ڈائل ہو رہا ہے"</string>
     <string name="card_title_conf_call" msgid="901197309274457427">"کانفرنس کال"</string>
-    <string name="card_title_incoming_call" msgid="881424648458792430">"آنے والی کال"</string>
+    <string name="card_title_incoming_call" msgid="881424648458792430">"اِن کمنگ کال"</string>
     <string name="card_title_call_ended" msgid="650223980095026340">"کال ختم ہوگئی"</string>
     <string name="card_title_on_hold" msgid="9028319436626975207">"ہولڈ پر"</string>
     <string name="card_title_hanging_up" msgid="814874106866647871">"کال منقطع ہو رہی ہے"</string>
@@ -813,7 +820,7 @@
     <string name="supp_service_held_call_released" msgid="2847835124639112410">"ہولڈ پر رکھی کال جاری ہو گئی۔"</string>
     <string name="callFailed_otasp_provisioning_in_process" msgid="3345666183602879326">"کال نہیں کی جا سکتی کیوںکہ فی الحال آلہ فراہم کیا جا رہا ہے۔"</string>
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"کال نہیں کی جا سکتی کیونکہ باہر جانے والی دوسری کال پہلے سے ڈائل کی جا رہی ہے۔"</string>
-    <string name="callFailed_already_ringing" msgid="2376603543544289303">"ایک جواب نہ ملنے والی موصول ہونے والی کال کی وجہ سے کال نہیں کی جا سکتی۔ نئی کال کرنے کے لیے پہلے موصول ہونے والی کال کا جواب دیں یا مسترد کریں۔"</string>
+    <string name="callFailed_already_ringing" msgid="2376603543544289303">"ایک جواب نہ ملنے والی اِن کمنگ کال کی وجہ سے کال نہیں کی جا سکتی۔ نئی کال کرنے کے لیے پہلے اِن کمنگ کال کا جواب دیں یا مسترد کریں۔"</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"‏ro.telephony.disable-call سسٹم کی خصوصیت کے ذریعے کال کرنے کو غیر فعال کر دیے جانے کی وجہ سے کال نہیں کی جا سکتی۔"</string>
     <string name="callFailed_too_many_calls" msgid="5379426826618582180">"پہلے سے دو کالز کے پیش رفت میں ہونے کی وجہ سے کال نہیں کی جا سکتی۔ نئی کال کرنے کے لیے پہلے ان میں سے ایک کو غیر منسلک کریں یا انہیں کانفرنس میں ضم کریں۔"</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"<xliff:g id="SUPP_SERVICE">%s</xliff:g> استعمال کرنے کے لیے، یقینی بنائيں کہ موبائل ڈیٹا آن ہے۔ آپ موبائل یٹ ورک کی ترتیبات میں اسے تبدیل کر سکتے ہیں۔"</string>
@@ -868,7 +875,6 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"‏ڈیفالٹ ڈیٹا SIM کی SubId:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"‏DL بینڈ وڈتھ (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"‏UL بینڈ وڈتھ (kbps):"</string>
-    <string name="radio_info_signal_location_label" msgid="6188435197086550049">"سیل کے مقام کی معلومات (فرسودہ):"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"‏LTE فزيکل چینل کنفیگریشن:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"سیل کی معلومات ریفریش کرنے کی شرح:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"سیل پیمائش کی تمام معلومات:"</string>
@@ -899,6 +905,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"ریفریش کریں"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"‏DNS چیک ٹوگل کریں"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"‏OEM-کیلئے مخصوص معلومات/ترتیبات"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"‏EN-DC دستیاب ہے:"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"‏DCNR محدود کردہ:"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"‏NR دستیاب ہے:"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"‏NR ریاست:"</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"‏NR فریکوئنسی:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"ریڈیو بینڈ موڈ سیٹ کریں"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"بینڈ کی فہرست لوڈ ہو رہی ہے…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"سیٹ کریں"</string>

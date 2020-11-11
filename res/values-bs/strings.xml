@@ -50,6 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"Postavke govorne pošte može promijeniti samo Primarni korisnik."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"Vaša SIM kartica je deblokirana. Telefon se otključava…"</string>
     <string name="label_ndp" msgid="7617392683877410341">"PIN za otključavanje mreže na SIM kartici"</string>
+    <string name="label_phoneid" msgid="8775611434123577808">"SIM je zaključan za operatera"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"Otključaj"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"Odbaci"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"Traži se otključavanje mreže…"</string>
@@ -105,7 +106,7 @@
     <string name="labelCFU" msgid="8870170873036279706">"Uvijek proslijedi"</string>
     <string name="messageCFU" msgid="1361806450979589744">"Uvijek koristi ovaj broj"</string>
     <string name="sum_cfu_enabled_indicator" msgid="9030139213402432776">"Prosljeđivanje svih poziva"</string>
-    <string name="sum_cfu_enabled" msgid="5806923046528144526">"Preusmjeravaju se svi pozivi na <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
+    <string name="sum_cfu_enabled" msgid="5806923046528144526">"Prosljeđivanje svih poziva na <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfu_enabled_no_number" msgid="7287752761743377930">"Broj je nedostupan"</string>
     <string name="sum_cfu_disabled" msgid="5010617134210809853">"Isključeno"</string>
     <string name="labelCFB" msgid="615265213360512768">"Kada je zauzeto"</string>
@@ -124,12 +125,18 @@
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Isključeno"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Vaš operater ne podržava onemogućavanje prosljeđivanja poziva kada ste nedostupni."</string>
     <string name="registration_cf_forbidden" msgid="4386482610771190420">"Vaš mobilni operater ne podržava prosljeđivanje poziva."</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"Uključiti poziv na čekanju?"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"Tokom poziva ćete primati obavještenja o dolaznim pozivima"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"Uključi"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"Otkaži"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"CDMA poziv na čekanju u okviru IMS-a je uključen"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"CDMA poziv na čekanju u okviru IMS-a je isključen"</string>
     <string name="updating_title" msgid="6130548922615719689">"Postavke poziva"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Postavke poziva može promijeniti samo administrator."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Postavke (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Greška u postavkama poziva"</string>
-    <string name="reading_settings" msgid="1605904432450871183">"Čitanje postavki u toku…"</string>
-    <string name="updating_settings" msgid="3650396734816028808">"Ažuriranje postavki u toku…"</string>
+    <string name="reading_settings" msgid="1605904432450871183">"Čitanje postavki…"</string>
+    <string name="updating_settings" msgid="3650396734816028808">"Ažuriranje postavki…"</string>
     <string name="reverting_settings" msgid="7378668837291012205">"Vraćanje postavki u toku…"</string>
     <string name="response_error" msgid="3904481964024543330">"Neočekivani odgovor mreže."</string>
     <string name="exception_error" msgid="330994460090467">"Greška na mreži ili SIM kartici."</string>
@@ -297,7 +304,7 @@
     <string name="mobile_data_settings_summary" msgid="5012570152029118471">"Pristup prijenosu podataka mobilnom mrežom"</string>
     <string name="data_usage_disable_mobile" msgid="5669109209055988308">"Isključiti prijenos podataka na mobilnoj mreži?"</string>
     <string name="sim_selection_required_pref" msgid="6985901872978341314">"Potreban izbor"</string>
-    <string name="sim_change_data_title" msgid="9142726786345906606">"Promijeniti podatkovni SIM?"</string>
+    <string name="sim_change_data_title" msgid="9142726786345906606">"Promijeniti SIM za prijenos podataka?"</string>
     <string name="sim_change_data_message" msgid="3567358694255933280">"Koristiti SIM karticu <xliff:g id="NEW_SIM">%1$s</xliff:g> umjesto SIM kartice <xliff:g id="OLD_SIM">%2$s</xliff:g> za prijenos podataka na mobilnoj mreži?"</string>
     <string name="wifi_calling_settings_title" msgid="5800018845662016507">"Pozivanje putem WiFi-ja"</string>
     <string name="video_calling_settings_title" msgid="342829454913266078">"Operater video pozivanja"</string>
@@ -605,7 +612,7 @@
     <string name="ota_hfa_activation_title" msgid="3300556778212729671">"Aktivacija u toku..."</string>
     <string name="ota_hfa_activation_dialog_message" msgid="7921718445773342996">"Telefon aktivira uslugu prijenosa mobilnih podataka.\n\nTo može potrajati do 5 minuta."</string>
     <string name="ota_skip_activation_dialog_title" msgid="7666611236789203797">"Preskočiti aktivaciju?"</string>
-    <string name="ota_skip_activation_dialog_message" msgid="6691722887019708713">"Ako preskočite aktivaciju, nećete moći upućivati pozive niti se povezati na mobilne podatkovne mreže (iako se možete povezati na WiFi mreže). Dok ne aktivirate telefon, prikazivat će se upit za aktivaciju svaki put kada upalite telefon."</string>
+    <string name="ota_skip_activation_dialog_message" msgid="6691722887019708713">"Ako preskočite aktivaciju, nećete moći upućivati pozive niti se povezati na mobilne podatkovne mreže (iako se možete povezati s WiFi mrežama). Dok ne aktivirate telefon, prikazivat će se upit za aktivaciju svaki put kada upalite telefon."</string>
     <string name="ota_skip_activation_dialog_skip_label" msgid="5908029466817825633">"Preskoči"</string>
     <string name="ota_activate" msgid="7939695753665438357">"Aktiviraj"</string>
     <string name="ota_title_activate_success" msgid="1272135024761004889">"Telefon je aktiviran."</string>
@@ -859,7 +866,7 @@
     <string name="radioInfo_data_disconnected" msgid="8085447971880814541">"Veza je prekinuta"</string>
     <string name="radioInfo_data_connecting" msgid="925092271092152472">"Povezivanje"</string>
     <string name="radioInfo_data_connected" msgid="7637335645634239508">"Povezano"</string>
-    <string name="radioInfo_data_suspended" msgid="8695262782642002785">"Suspendirano"</string>
+    <string name="radioInfo_data_suspended" msgid="8695262782642002785">"Obustavljeno"</string>
     <string name="radioInfo_unknown" msgid="5401423738500672850">"Nepoznato"</string>
     <string name="radioInfo_display_packets" msgid="6794302192441084157">"paketi"</string>
     <string name="radioInfo_display_bytes" msgid="7701006329222413797">"bajtova"</string>
@@ -868,10 +875,9 @@
     <string name="radioInfo_lac" msgid="3892986460272607013">"LAC"</string>
     <string name="radioInfo_cid" msgid="1423185536264406705">"CID"</string>
     <string name="radio_info_subid" msgid="6839966868621703203">"Trenutni pomoćni ID:"</string>
-    <string name="radio_info_dds" msgid="1122593144425697126">"Pomoćni ID za zadani podatkovni SIM:"</string>
+    <string name="radio_info_dds" msgid="1122593144425697126">"Pomoćni ID za zadani SIM za prijenos podataka:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DL propusnost (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL propusnost (kbps):"</string>
-    <string name="radio_info_signal_location_label" msgid="6188435197086550049">"Informacije o lokaciji ćelije (zastarjele):"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Konfiguracija LTE fizičkog kanala:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Interval osvježavanja informacija o ćeliji:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Sve informacije o mjerenju ćelije:"</string>
@@ -902,6 +908,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Osvježi"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"Uključi/isključi provjeru DNS-a"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"OEM-specifične informacije/postavke"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC dostupno:"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR ograničeno:"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR dostupno:"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"NR stanje:"</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR učestalost:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Postavite način radijskog opsega"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Učitavanje liste opsega…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Postavi"</string>

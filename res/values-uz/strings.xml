@@ -24,7 +24,7 @@
     <string name="unknown" msgid="8279698889921830815">"Noma’lum"</string>
     <string name="private_num" msgid="4487990167889159992">"Yashirin raqam"</string>
     <string name="payphone" msgid="7936735771836716941">"Taksofon"</string>
-    <string name="onHold" msgid="6132725550015899006">"Kutmoqda"</string>
+    <string name="onHold" msgid="6132725550015899006">"Pauzada"</string>
     <string name="carrier_mmi_msg_title" msgid="6050165242447507034">"<xliff:g id="MMICARRIER">%s</xliff:g> orqali xabar"</string>
     <string name="default_carrier_mmi_msg_title" msgid="7754317179938537213">"Operatordan xabar"</string>
     <string name="mmiStarted" msgid="9212975136944568623">"MMI kodi ishga tushirildi"</string>
@@ -50,6 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"Ovozli pochta sozlamalarini faqat bosh foydalanuvchi o‘zgartira oladi."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"To‘sib qo‘yilgan SIM kartangiz ochildi. Telefoningiz qulfdan chiqarilmoqda…"</string>
     <string name="label_ndp" msgid="7617392683877410341">"SIM kartani tarmoqdagi qulfidan chiqarish PIN kodi"</string>
+    <string name="label_phoneid" msgid="8775611434123577808">"SIM karta operator uchun bloklangan"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"Qulfdan chiqarish"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"Rad etish"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"Tarmoqni qulfdan chiqarish so‘ralmoqda…"</string>
@@ -123,13 +124,18 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"<xliff:g id="PHONENUMBER">{0}</xliff:g> raqamiga yo‘naltiriladi"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Yoqilmagan"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Telefoningiz o‘chiq bo‘lganida qo‘ng‘iroqlarni boshqa raqamga yo‘naltirishni o‘chirish xususiyati tarmoq operatoringizda yo‘q."</string>
-    <!-- no translation found for registration_cf_forbidden (4386482610771190420) -->
-    <skip />
+    <string name="registration_cf_forbidden" msgid="4386482610771190420">"Operatoringiz tarmog‘i orqali chaqiruvlarni uzatib bo‘lmaydi"</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"Chaqiruvdagi kutish rejimi yoqilsinmi?"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"Suhbat paytida boshqa kiruvchi chaqiruvlar haqida sizga bildirishnoma keladi"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"Yoqish"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"Bekor qilish"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"IMS asosidagi CDMA chaqiruvlari uchun kutish rejimi yoqildi"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"IMS asosidagi CDMA chaqiruvlari uchun kutish rejimi faolsizlantirildi"</string>
     <string name="updating_title" msgid="6130548922615719689">"Chaqiruv sozlamalari"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Faqat administrator qo‘ng‘iroq sozlamalarini o‘zgartirishi mumkin."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Sozlamalar (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Chaqiruv sozlamalarida xato"</string>
-    <string name="reading_settings" msgid="1605904432450871183">"Sozlamalar o‘qilmoqda…"</string>
+    <string name="reading_settings" msgid="1605904432450871183">"Sozlamalar olinmoqda…"</string>
     <string name="updating_settings" msgid="3650396734816028808">"Sozlamalar yangilanmoqda…"</string>
     <string name="reverting_settings" msgid="7378668837291012205">"Sozlamalar tiklanmoqda…"</string>
     <string name="response_error" msgid="3904481964024543330">"Tarmoqdan kutilmagan javob."</string>
@@ -142,7 +148,7 @@
     <string name="radio_off_error" msgid="8321564164914232181">"Ushbu sozlamalarni ko‘rishdan oldin radioni yoqing."</string>
     <string name="close_dialog" msgid="1074977476136119408">"OK"</string>
     <string name="enable" msgid="2636552299455477603">"Yoqish"</string>
-    <string name="disable" msgid="1122698860799462116">"O‘chirib qo‘yish"</string>
+    <string name="disable" msgid="1122698860799462116">"Faolsizlantirish"</string>
     <string name="change_num" msgid="6982164494063109334">"Yangilash"</string>
   <string-array name="clir_display_values">
     <item msgid="8477364191403806960">"Standart tarmoq sozlamalari"</item>
@@ -309,7 +315,7 @@
     <string name="throttle_time_frame" msgid="1813452485948918791">"Ma‘lumotdan foydalanish muddati"</string>
     <string name="throttle_rate" msgid="7641913901133634905">"Ma‘lumotlar uzatish tezligi siyosati"</string>
     <string name="throttle_help" msgid="2624535757028809735">"Batafsil"</string>
-    <string name="throttle_status_subtext" msgid="1110276415078236687">"Maksimal daraja muddati <xliff:g id="USED_2">%3$s</xliff:g>dan <xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) \nKeyingi muddat <xliff:g id="USED_3">%4$d</xliff:g> kunda (<xliff:g id="USED_4">%5$s</xliff:g>) boshlanadi."</string>
+    <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>%%) / <xliff:g id="USED_2">%3$s</xliff:g> (maksimum)\nKeyingi davr <xliff:g id="USED_3">%4$d</xliff:g> kun ichida boshlanadi (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
     <string name="throttle_data_usage_subtext" msgid="3185429653996709840">"Maksimal daraja muddati <xliff:g id="USED_2">%3$s</xliff:g>dan <xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪)"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"<xliff:g id="USED_0">%1$s</xliff:g> maksimal darajadan oshib ketdi\nTrafik tezligi <xliff:g id="USED_1">%2$d</xliff:g> Kb/s’ga pasaydi"</string>
     <string name="throttle_time_frame_subtext" msgid="6462089615392402127">"<xliff:g id="USED_0">%1$d</xliff:g>٪ o‘tgan bosqichdan\nKeyingi bosqich <xliff:g id="USED_1">%2$d</xliff:g> kunda boshlanadi (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
@@ -869,7 +875,6 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"Mobil internet uchun birlamchi SIM kartaning qoʻshimcha identifikatori:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Axborot uzatish tezligi (kbit/s):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL kanalining axborot uzatish tezligi (kbit/s):"</string>
-    <string name="radio_info_signal_location_label" msgid="6188435197086550049">"Tarmoq joylashuvi haqidagi axborot (eskirgan):"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"LTE jismoniy kanal konfiguratsiyasi:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Tarmoq haqidagi axborotning yangilanish darajasi:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Tarmoq statistikasi:"</string>
@@ -900,6 +905,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Yangilash"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"DNS tekshiruvini yoqish/o‘chirish"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"OEM maxsus axboroti va sozlamalari"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC ochiq:"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR cheklangan:"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR ochiq:"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"NR holati:"</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR chastotasi:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Tarmoq rejimini sozlash"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Chastotalar ro‘yxati yuklanmoqda…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Saqlash"</string>

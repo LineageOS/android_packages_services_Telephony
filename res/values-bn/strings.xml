@@ -50,6 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"ভয়েসমেল সেটিংস কেবলমাত্র প্রাথমিক ব্যবহারকারী দ্বারা পরিবর্তন করা যাবে।"</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"আপনার সিম কার্ডকে অবরোধ মুক্ত করা হয়েছে৷ আপনার ফোন আনলক করা হচ্ছে..."</string>
     <string name="label_ndp" msgid="7617392683877410341">"সিম নেটওয়ার্ক আনলক পিন"</string>
+    <string name="label_phoneid" msgid="8775611434123577808">"অপারেটরের জন্য সিম লক করা আছে"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"আনলক করুন"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"খারিজ করুন"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"নেটওয়ার্ক আনলকের অনুরোধ করা হচ্ছে..."</string>
@@ -124,6 +125,12 @@
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"বন্ধ আছে"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"আপনার ক্যারিয়ার আপনার ফোনের সাথে যখন সংযোগ স্থাপন করা যাচ্ছে না সেই অবস্থায় কল ফরওয়ার্ডিংকে অক্ষম করা সমর্থন করে না৷"</string>
     <string name="registration_cf_forbidden" msgid="4386482610771190420">"আপনার পরিষেবা প্রদানকারী নম্বর ব্যবহার করে কল ফরওয়ার্ড করার সুবিধা ব্যবহার করতে পারবেন না।"</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"কল ওয়েটিং সুবিধা চালু করতে চান?"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"কল চলার সময়ে ইনকামিং কল এলে আপনাকে জানানো হবে"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"চালু করুন"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"বাতিল করুন"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"IMS-এ CDMA কল ওয়েটিং সুবিধা চালু আছে"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"IMS-এ CDMA কল ওয়েটিং সুবিধা বন্ধ আছে"</string>
     <string name="updating_title" msgid="6130548922615719689">"কল সেটিংস"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"কেবলমাত্র প্রশাসক ব্যবহারকারী কল সেটিংস পরিবর্তন করতে পারবেন৷"</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"সেটিংস (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -868,7 +875,6 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"ডিফল্ট ডেটা সিমের SubId:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"ডিএল ব্যান্ডউইথ (কেবিপিএস):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"ইউএল ব্যান্ডউইথ (কেবিপিএস):"</string>
-    <string name="radio_info_signal_location_label" msgid="6188435197086550049">"সেল লোকেশন তথ্য (বন্ধ করা হয়েছে):"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"LTE ফিজিক্যাল চ্যানেল কনফিগারেশন:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"সেল তথ্যে রিফ্রেশ রেট:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"সমস্ত সেল পরিমাপ তথ্য:"</string>
@@ -899,6 +905,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"রিফ্রেশ"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"DNS চেক টগল করুন"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"OEM-নির্দিষ্ট তথ্য/সেটিংস"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC উপলভ্য:"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR সীমাবদ্ধ করা আছে:"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR উপলভ্য:"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"NR স্ট্যাটাস:"</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR ফ্রিকোয়েন্সি:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"রেডিও ব্যান্ড মোড সেট করুন"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"ব্যান্ড তালিকা লোড হচ্ছে..."</string>
     <string name="band_mode_set" msgid="6657819412803771421">"সেট করুন"</string>
