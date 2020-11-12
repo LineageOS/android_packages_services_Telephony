@@ -65,6 +65,7 @@ import android.telecom.PhoneAccountHandle;
 import android.telecom.TelecomManager;
 import android.telephony.Annotation.ApnType;
 import android.telephony.CallForwardingInfo;
+import android.telephony.CarrierBandwidth;
 import android.telephony.CarrierConfigManager;
 import android.telephony.CarrierRestrictionRules;
 import android.telephony.CellIdentity;
@@ -5904,6 +5905,28 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     null, subId, workSource);
             if (DBG) log("isNRDualConnectivityEnabled: " + isEnabled);
             return isEnabled;
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * get carrier bandwidth per primary and secondary carrier
+     * @param subId subscription id of the sim card
+     * @return CarrierBandwidth with bandwidth of both primary and secondary carrier..
+     */
+    @Override
+    public CarrierBandwidth getCarrierBandwidth(int subId) {
+        TelephonyPermissions
+                .enforeceCallingOrSelfReadPrivilegedPhoneStatePermissionOrCarrierPrivilege(
+                        mApp, subId, "isNRDualConnectivityEnabled");
+        WorkSource workSource = getWorkSource(Binder.getCallingUid());
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            CarrierBandwidth carrierBandwidth =
+                    getPhoneFromSubId(subId).getCarrierBandwidth();
+            if (DBG) log("getCarrierBandwidth: " + carrierBandwidth);
+            return carrierBandwidth;
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
