@@ -25,6 +25,8 @@ import android.util.Log;
 
 import com.android.ims.ImsConfig;
 import com.android.ims.ImsManager;
+import com.android.internal.telephony.PhoneFactory;
+import com.android.internal.telephony.imsphone.ImsPhone;
 
 public class ImsUtil {
     private static final String LOG_TAG = ImsUtil.class.getSimpleName();
@@ -128,6 +130,13 @@ public class ImsUtil {
             return false;
         }
 
+        // Do not promote WFC if in roaming and WFC roaming not allowed.
+        // WFC roaming setting is not modifiable, so its value is decided by the default value
+        // chosen by the carrier, hence it really means if the carrier supports WFC roaming.
+        if (getLastKnownRoamingState(phoneId) && !imsManager.isWfcRoamingEnabledByUser()) {
+            return false;
+        }
+
         ConnectivityManager cm =
                 (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         if (cm != null) {
@@ -151,5 +160,14 @@ public class ImsUtil {
             subId = subIds[0];
         }
         return subId;
+    }
+
+    private static boolean getLastKnownRoamingState(int phoneId) {
+        try {
+            ImsPhone imsPhone = (ImsPhone) (PhoneFactory.getPhone(phoneId).getImsPhone());
+            return imsPhone.getRoamingState();
+        } catch (NullPointerException | ClassCastException e) {
+            return false;
+        }
     }
 }
