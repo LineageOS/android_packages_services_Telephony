@@ -17,7 +17,6 @@
 package com.android.phone;
 
 import android.content.Context;
-import android.os.BasicShellCommandHandler;
 import android.os.Binder;
 import android.os.PersistableBundle;
 import android.os.Process;
@@ -34,6 +33,7 @@ import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.emergency.EmergencyNumberTracker;
 import com.android.internal.telephony.util.TelephonyUtils;
+import com.android.modules.utils.BasicShellCommandHandler;
 
 import java.io.PrintWriter;
 import java.util.ArrayList;
