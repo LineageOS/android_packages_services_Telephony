@@ -96,6 +96,9 @@ abstract class TelephonyConnection extends Connection implements Holdable {
     private static final int MSG_CONFERENCE_MERGE_FAILED = 6;
     private static final int MSG_SUPP_SERVICE_NOTIFY = 7;
 
+    // the threshold used to compare mAudioCodecBitrateKbps and mAudioCodecBandwidth.
+    private static final float THRESHOLD = 0.01f;
+
     /**
      * Mappings from {@link com.android.internal.telephony.Connection} extras keys to their
      * equivalents defined in {@link android.telecom.Connection}.
@@ -1496,7 +1499,8 @@ abstract class TelephonyConnection extends Connection implements Holdable {
         }
     }
 
-    private void refreshCodecType() {
+    private void refreshCodec() {
+        boolean changed = false;
         Bundle newExtras = getExtras();
         if (newExtras == null) {
             newExtras = new Bundle();
@@ -1512,6 +1516,31 @@ abstract class TelephonyConnection extends Connection implements Holdable {
                 Connection.AUDIO_CODEC_NONE);
         if (newCodecType != oldCodecType) {
             newExtras.putInt(Connection.EXTRA_AUDIO_CODEC, newCodecType);
+            changed = true;
+        }
+        if (isImsConnection()) {
+            float newBitrate = getOriginalConnection().getAudioCodecBitrateKbps();
+            float oldBitrate = newExtras.getFloat(Connection.EXTRA_AUDIO_CODEC_BITRATE_KBPS, 0.0f);
+            if (Math.abs(newBitrate - oldBitrate) > THRESHOLD) {
+                newExtras.putFloat(Connection.EXTRA_AUDIO_CODEC_BITRATE_KBPS, newBitrate);
+                changed = true;
+            }
+
+            float newBandwidth = getOriginalConnection().getAudioCodecBandwidthKhz();
+            float oldBandwidth = newExtras.getFloat(Connection.EXTRA_AUDIO_CODEC_BANDWIDTH_KHZ,
+                    0.0f);
+            if (Math.abs(newBandwidth - oldBandwidth) > THRESHOLD) {
+                newExtras.putFloat(Connection.EXTRA_AUDIO_CODEC_BANDWIDTH_KHZ, newBandwidth);
+                changed = true;
+            }
+        } else {
+            ArrayList<String> toRemove = new ArrayList<>();
+            toRemove.add(Connection.EXTRA_AUDIO_CODEC_BITRATE_KBPS);
+            toRemove.add(Connection.EXTRA_AUDIO_CODEC_BANDWIDTH_KHZ);
+            removeTelephonyExtras(toRemove);
+        }
+
+        if (changed) {
             putTelephonyExtras(newExtras);
         }
     }
@@ -2195,7 +2224,7 @@ abstract class TelephonyConnection extends Connection implements Holdable {
         updateAddress();
         updateMultiparty();
         refreshDisableAddCall();
-        refreshCodecType();
+        refreshCodec();
     }
 
     /**
