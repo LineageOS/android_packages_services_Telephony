@@ -35,7 +35,6 @@ android_app {
         "com.android.phone.common-lib",
         "guava",
         "PlatformProperties",
-        "modules-utils-os",
     ],
 
     srcs: [
