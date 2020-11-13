@@ -22,6 +22,7 @@ import android.os.RemoteException;
 import android.os.ServiceSpecificException;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyFrameworkInitializer;
+import android.telephony.ims.DelegateRequest;
 import android.telephony.ims.ImsException;
 import android.telephony.ims.RcsUceAdapter.PublishState;
 import android.telephony.ims.RegistrationManager;
@@ -30,6 +31,9 @@ import android.telephony.ims.aidl.IImsRcsController;
 import android.telephony.ims.aidl.IImsRegistrationCallback;
 import android.telephony.ims.aidl.IRcsUceControllerCallback;
 import android.telephony.ims.aidl.IRcsUcePublishStateCallback;
+import android.telephony.ims.aidl.ISipDelegate;
+import android.telephony.ims.aidl.ISipDelegateConnectionStateCallback;
+import android.telephony.ims.aidl.ISipDelegateMessageCallback;
 import android.telephony.ims.feature.ImsFeature;
 import android.telephony.ims.feature.RcsFeature;
 import android.telephony.ims.stub.ImsRegistrationImplBase;
@@ -405,6 +409,40 @@ public class ImsRcsController extends IImsRcsController.Stub {
             throw e;
         } finally {
             Binder.restoreCallingIdentity(token);
+        }
+    }
+
+    @Override
+    public void createSipDelegate(int subId, DelegateRequest request,
+            ISipDelegateConnectionStateCallback delegateState,
+            ISipDelegateMessageCallback delegateMessage) {
+        enforceModifyPermission();
+
+        final long identity = Binder.clearCallingIdentity();
+        SipTransportController transport = getRcsFeatureController(subId).getFeature(
+                SipTransportController.class);
+        if (transport == null) {
+            throw new ServiceSpecificException(ImsException.CODE_ERROR_UNSUPPORTED_OPERATION,
+                    "This subscription does not support the creation of SIP delegates");
+        }
+        try {
+            transport.createSipDelegate(subId, request, delegateState, delegateMessage);
+        } catch (ImsException e) {
+            throw new ServiceSpecificException(e.getCode(), e.getMessage());
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    @Override
+    public void destroySipDelegate(int subId, ISipDelegate connection, int reason) {
+        enforceModifyPermission();
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            // Do nothing yet, we do not support this API yet.
+        } finally {
+            Binder.restoreCallingIdentity(identity);
         }
     }
 
