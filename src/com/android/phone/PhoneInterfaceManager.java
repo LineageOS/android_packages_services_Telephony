@@ -6374,12 +6374,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         final Phone phone = getPhone(subId);
         UiccCard card = phone == null ? null : phone.getUiccCard();
         if (card == null) {
-            loge("getIccId: No UICC");
             return null;
         }
         String iccId = card.getIccId();
         if (TextUtils.isEmpty(iccId)) {
-            loge("getIccId: ICC ID is null or empty.");
             return null;
         }
         return iccId;
