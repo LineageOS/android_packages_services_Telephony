@@ -7191,10 +7191,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             return null;
         }
 
+        final long identity = Binder.clearCallingIdentity();
+
         boolean isCallingPackageDataService = phone.getDataServicePackages()
                 .contains(callingPackage);
-
-        final long identity = Binder.clearCallingIdentity();
         try {
             // isActiveSubId requires READ_PHONE_STATE, which we already check for above
             if (!mSubscriptionController.isActiveSubId(subId, callingPackage, callingFeatureId)) {
