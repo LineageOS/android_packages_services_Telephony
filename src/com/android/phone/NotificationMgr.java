@@ -536,7 +536,11 @@ public class NotificationMgr {
                 int slotId = SubscriptionManager.getSlotIndex(subId);
                 resId = (slotId == 0) ? R.drawable.stat_sys_phone_call_forward_sub1
                         : R.drawable.stat_sys_phone_call_forward_sub2;
-                notificationTitle = subInfo.getDisplayName().toString();
+                if (subInfo.getDisplayName() != null) {
+                    notificationTitle = subInfo.getDisplayName().toString();
+                } else {
+                    notificationTitle = mContext.getString(R.string.labelCF);
+                }
             } else {
                 notificationTitle = mContext.getString(R.string.labelCF);
             }
