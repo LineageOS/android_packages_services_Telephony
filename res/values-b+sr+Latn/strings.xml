@@ -572,7 +572,7 @@
     <string name="dialerKeyboardHintText" msgid="1115266533703764049">"Koristite tastaturu za pozivanje"</string>
     <string name="onscreenHoldText" msgid="4025348842151665191">"Čekanje"</string>
     <string name="onscreenEndCallText" msgid="6138725377654842757">"Završi"</string>
-    <string name="onscreenShowDialpadText" msgid="658465753816164079">"Numerička tastatura"</string>
+    <string name="onscreenShowDialpadText" msgid="658465753816164079">"Brojčanik"</string>
     <string name="onscreenMuteText" msgid="5470306116733843621">"Isključi zvuk"</string>
     <string name="onscreenAddCallText" msgid="9075675082903611677">"Dodaj poziv"</string>
     <string name="onscreenMergeCallsText" msgid="3692389519611225407">"Objedini pozive"</string>
@@ -665,7 +665,7 @@
     <string name="not_voice_capable" msgid="2819996734252084253">"Audio pozivi nisu podržani"</string>
     <string name="description_dial_button" msgid="8614631902795087259">"biranje"</string>
     <string name="description_dialpad_button" msgid="7395114120463883623">"prikažite numeričku tastaturu"</string>
-    <string name="pane_title_emergency_dialpad" msgid="3627372514638694401">"Numerička tastatura za hitne pozive"</string>
+    <string name="pane_title_emergency_dialpad" msgid="3627372514638694401">"Brojčanik za hitne pozive"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="6610414098912832120">"Vizuelna govorna pošta"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="7005128605986960003">"Podesite PIN"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="4633077715231764435">"Promenite PIN"</string>
