@@ -612,7 +612,7 @@
     <string name="ota_hfa_activation_title" msgid="3300556778212729671">"Идэвхжүүлж байна..."</string>
     <string name="ota_hfa_activation_dialog_message" msgid="7921718445773342996">"Утас таны мобайл дата үйлчилгээг идэвхжүүлж байна.\n\nҮүнд 5 хүртэл минут орж болно."</string>
     <string name="ota_skip_activation_dialog_title" msgid="7666611236789203797">"Идэвхжүүлэхийг алгасах уу?"</string>
-    <string name="ota_skip_activation_dialog_message" msgid="6691722887019708713">"Хэрэв та идэвхжүүлэхийг алгасвал дуудлага хийх буюу мобайль дата сүлжээнд холбогдох (хэдийгээр Wi-Fi сүлжээнд холбогдож болох ч) боломжгүй болно. Таныг утсаа идэвхжүүлэх хүртэл утсаа асаах бүрт идэвхжүүлэхийг хүсэх болно."</string>
+    <string name="ota_skip_activation_dialog_message" msgid="6691722887019708713">"Хэрэв та идэвхжүүлэхийг алгасвал дуудлага хийх буюу мобайль дата сүлжээнд холбогдох (хэдийгээр Wi-Fi сүлжээнд холбогдож болох ч) боломжгүй болно. Таныг утсаа идэвхжүүлэх хүртэл утсаа асаах бүрд идэвхжүүлэхийг хүсэх болно."</string>
     <string name="ota_skip_activation_dialog_skip_label" msgid="5908029466817825633">"Алгасах"</string>
     <string name="ota_activate" msgid="7939695753665438357">"Идэвхжүүлэх"</string>
     <string name="ota_title_activate_success" msgid="1272135024761004889">"Утсыг идэвхжүүллээ."</string>
