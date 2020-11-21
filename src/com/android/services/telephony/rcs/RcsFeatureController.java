@@ -74,6 +74,12 @@ public class RcsFeatureController {
          * Called when the feature should be destroyed.
          */
         void onDestroy();
+
+        /**
+         * Called when a dumpsys is being generated for this RcsFeatureController for all Features
+         * to report their status.
+         */
+        void dump(PrintWriter pw);
     }
 
     /**
@@ -427,6 +433,14 @@ public class RcsFeatureController {
         pw.print("connected=");
         synchronized (mLock) {
             pw.println(mFeatureManager != null);
+            pw.println();
+            pw.println("RcsFeatureControllers:");
+            pw.increaseIndent();
+            for (Feature f : mFeatures.values()) {
+                f.dump(pw);
+                pw.println();
+            }
+            pw.decreaseIndent();
         }
     }
 
