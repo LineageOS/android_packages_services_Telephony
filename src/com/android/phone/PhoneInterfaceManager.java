@@ -85,6 +85,7 @@ import android.telephony.PhoneCapability;
 import android.telephony.PhoneNumberRange;
 import android.telephony.RadioAccessFamily;
 import android.telephony.RadioAccessSpecifier;
+import android.telephony.RadioInterfaceCapabilities;
 import android.telephony.ServiceState;
 import android.telephony.SignalStrength;
 import android.telephony.SubscriptionInfo;
@@ -9070,6 +9071,18 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             return phone.getEquivalentHomePlmns();
         } finally {
             Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    @Override
+    public boolean isRadioInterfaceCapabilitySupported(
+            @NonNull @TelephonyManager.RadioInterfaceCapability String capability) {
+        RadioInterfaceCapabilities radioInterfaceCapabilities =
+                mPhoneConfigurationManager.getRadioInterfaceCapabilities();
+        if (radioInterfaceCapabilities == null) {
+            throw new RuntimeException("radio interface capabilities are not available");
+        } else {
+            return radioInterfaceCapabilities.isSupported(capability);
         }
     }
 }
