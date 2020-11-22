@@ -75,7 +75,7 @@
     <string name="phone_accounts_configure_account_settings" msgid="6622119715253196586">"Konfigurisanje podešavanja naloga"</string>
     <string name="phone_accounts_all_calling_accounts" msgid="1609600743500618823">"Svi nalozi za pozivanje"</string>
     <string name="phone_accounts_all_calling_accounts_summary" msgid="2214134955430107240">"Izaberite koji nalozi mogu da obavljaju pozive"</string>
-    <string name="wifi_calling" msgid="3650509202851355742">"Pozivanje preko WiFi-ja"</string>
+    <string name="wifi_calling" msgid="3650509202851355742">"Pozivanje preko WiFi-a"</string>
     <string name="connection_service_default_label" msgid="7332739049855715584">"Ugrađena usluga povezivanja"</string>
     <string name="voicemail" msgid="7697769412804195032">"Govorna pošta"</string>
     <string name="voicemail_settings_with_label" msgid="4228431668214894138">"Glasovna pošta (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -306,7 +306,7 @@
     <string name="sim_selection_required_pref" msgid="6985901872978341314">"Potrebno je da izaberete nešto"</string>
     <string name="sim_change_data_title" msgid="9142726786345906606">"Da promenimo SIM za podatke?"</string>
     <string name="sim_change_data_message" msgid="3567358694255933280">"Želite li da za mobilne podatke koristite <xliff:g id="NEW_SIM">%1$s</xliff:g> umesto <xliff:g id="OLD_SIM">%2$s</xliff:g>?"</string>
-    <string name="wifi_calling_settings_title" msgid="5800018845662016507">"Pozivanje preko WiFi-ja"</string>
+    <string name="wifi_calling_settings_title" msgid="5800018845662016507">"Pozivanje preko WiFi-a"</string>
     <string name="video_calling_settings_title" msgid="342829454913266078">"Video pozivanje preko operatera"</string>
     <string name="gsm_umts_options" msgid="4968446771519376808">"Opcije za GSM/UMTS"</string>
     <string name="cdma_options" msgid="3669592472226145665">"CDMA opcije"</string>
@@ -550,7 +550,7 @@
     <string name="incall_error_supp_service_hangup" msgid="836524952243836735">"Uspostavljanje poziva nije uspelo."</string>
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"Nije moguće stavljati pozive na čekanje."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"Povežite se na bežičnu mrežu da biste uputili poziv."</string>
-    <string name="incall_error_promote_wfc" msgid="9164896813931363415">"Omogućite pozivanje preko WiFi-ja da biste uputili poziv."</string>
+    <string name="incall_error_promote_wfc" msgid="9164896813931363415">"Omogućite pozivanje preko WiFi-a da biste uputili poziv."</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"Informacije za hitne slučajeve"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"Vlasnik"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"Dodirnite ponovo da biste videli informacije"</string>
@@ -689,8 +689,8 @@
     <string name="callFailed_wifi_lost" msgid="1788036730589163141">"WiFi veza je prekinuta. Poziv je završen."</string>
     <string name="dialFailed_low_battery" msgid="6857904237423407056">"Ne možete da uputite poziv jer je baterija skoro prazna."</string>
     <string name="callFailed_low_battery" msgid="4056828320214416182">"Video poziv je prekinut jer je baterija skoro prazna."</string>
-    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="5944309590693432042">"Hitni pozivi pomoću funkcije Pozivanje preko WiFi-ja nisu dostupni na ovoj lokaciji."</string>
-    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="3624536608369524988">"Pozivanje preko WiFi-ja nije dostupno na ovoj lokaciji."</string>
+    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="5944309590693432042">"Hitni pozivi pomoću funkcije Pozivanje preko WiFi-a nisu dostupni na ovoj lokaciji."</string>
+    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="3624536608369524988">"Pozivanje preko WiFi-a nije dostupno na ovoj lokaciji."</string>
     <string name="change_pin_title" msgid="3564254326626797321">"Promenite PIN kôd govorne pošte"</string>
     <string name="change_pin_continue_label" msgid="5177011752453506371">"Nastavi"</string>
     <string name="change_pin_cancel_label" msgid="2301711566758827936">"Otkaži"</string>
@@ -835,7 +835,7 @@
     <string name="radio_info_data_connection_disable" msgid="6404751291511368706">"Onemogući vezu za prenos podataka"</string>
     <string name="volte_provisioned_switch_string" msgid="4812874990480336178">"Dodeljeno za VoLTE"</string>
     <string name="vt_provisioned_switch_string" msgid="8295542122512195979">"Video pozivi su dodeljeni"</string>
-    <string name="wfc_provisioned_switch_string" msgid="3835004640321078988">"Pozivanje preko WiFi-ja je dodeljeno"</string>
+    <string name="wfc_provisioned_switch_string" msgid="3835004640321078988">"Pozivanje preko WiFi-a je dodeljeno"</string>
     <string name="eab_provisioned_switch_string" msgid="4449676720736033035">"Dodeljen je EAB/prisustvo"</string>
     <string name="cbrs_data_switch_string" msgid="6060356430838077653">"Podaci CBRS-a"</string>
     <string name="dsds_switch_string" msgid="7564769822086764796">"Omogući DSDS"</string>
@@ -853,7 +853,7 @@
     <string name="radio_info_ims_reg_status_not_registered" msgid="8045821447288876085">"Nije registrovano"</string>
     <string name="radio_info_ims_feature_status_available" msgid="6493200914756969292">"Dostupno"</string>
     <string name="radio_info_ims_feature_status_unavailable" msgid="8930391136839759778">"Nije dostupno"</string>
-    <string name="radio_info_ims_reg_status" msgid="25582845222446390">"Registracija IMS-a: <xliff:g id="STATUS">%1$s</xliff:g>\nGlas preko LTE-a: <xliff:g id="AVAILABILITY_0">%2$s</xliff:g>\nGlas preko WiFi-ja: <xliff:g id="AVAILABILITY_1">%3$s</xliff:g>\nVideo poziv: <xliff:g id="AVAILABILITY_2">%4$s</xliff:g>\nUT interfejs: <xliff:g id="AVAILABILITY_3">%5$s</xliff:g>"</string>
+    <string name="radio_info_ims_reg_status" msgid="25582845222446390">"Registracija IMS-a: <xliff:g id="STATUS">%1$s</xliff:g>\nGlas preko LTE-a: <xliff:g id="AVAILABILITY_0">%2$s</xliff:g>\nGlas preko WiFi-a: <xliff:g id="AVAILABILITY_1">%3$s</xliff:g>\nVideo poziv: <xliff:g id="AVAILABILITY_2">%4$s</xliff:g>\nUT interfejs: <xliff:g id="AVAILABILITY_3">%5$s</xliff:g>"</string>
     <string name="radioInfo_service_in" msgid="45753418231446400">"Radi"</string>
     <string name="radioInfo_service_out" msgid="287972405416142312">"Ne radi"</string>
     <string name="radioInfo_service_emergency" msgid="4763879891415016848">"Samo hitni pozivi"</string>
