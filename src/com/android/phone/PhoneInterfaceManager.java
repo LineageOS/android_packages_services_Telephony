@@ -64,6 +64,7 @@ import android.telecom.PhoneAccount;
 import android.telecom.PhoneAccountHandle;
 import android.telecom.TelecomManager;
 import android.telephony.Annotation.ApnType;
+import android.telephony.Annotation.ThermalMitigationResult;
 import android.telephony.CallForwardingInfo;
 import android.telephony.CarrierBandwidth;
 import android.telephony.CarrierConfigManager;
@@ -75,6 +76,7 @@ import android.telephony.CellInfo;
 import android.telephony.CellInfoGsm;
 import android.telephony.CellInfoWcdma;
 import android.telephony.ClientRequestStats;
+import android.telephony.DataThrottlingRequest;
 import android.telephony.ICellInfoCallback;
 import android.telephony.IccOpenLogicalChannelResponse;
 import android.telephony.LocationAccessPolicy;
@@ -85,6 +87,7 @@ import android.telephony.PhoneCapability;
 import android.telephony.PhoneNumberRange;
 import android.telephony.RadioAccessFamily;
 import android.telephony.RadioAccessSpecifier;
+import android.telephony.RadioInterfaceCapabilities;
 import android.telephony.ServiceState;
 import android.telephony.SignalStrength;
 import android.telephony.SubscriptionInfo;
@@ -93,6 +96,7 @@ import android.telephony.TelephonyFrameworkInitializer;
 import android.telephony.TelephonyHistogram;
 import android.telephony.TelephonyManager;
 import android.telephony.TelephonyScanManager;
+import android.telephony.ThermalMitigationRequest;
 import android.telephony.UiccCardInfo;
 import android.telephony.UiccSlotInfo;
 import android.telephony.UssdResponse;
@@ -179,6 +183,8 @@ import com.android.phone.vvm.PhoneAccountHandleConverter;
 import com.android.phone.vvm.RemoteVvmTaskManager;
 import com.android.phone.vvm.VisualVoicemailSettingsUtil;
 import com.android.phone.vvm.VisualVoicemailSmsFilterConfig;
+import com.android.services.telephony.TelecomAccountRegistry;
+import com.android.services.telephony.TelephonyConnectionService;
 import com.android.telephony.Rlog;
 
 import java.io.FileDescriptor;
@@ -298,6 +304,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private static final int EVENT_GET_CDMA_SUBSCRIPTION_MODE_DONE = 96;
     private static final int CMD_GET_SYSTEM_SELECTION_CHANNELS = 97;
     private static final int EVENT_GET_SYSTEM_SELECTION_CHANNELS_DONE = 98;
+    private static final int CMD_SET_DATA_THROTTLING = 99;
+    private static final int EVENT_SET_DATA_THROTTLING_DONE = 100;
 
     // Parameters of select command.
     private static final int SELECT_COMMAND = 0xA4;
@@ -339,6 +347,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     private static final int TYPE_ALLOCATION_CODE_LENGTH = 8;
     private static final int MANUFACTURER_CODE_LENGTH = 8;
+
+    private static final int SET_DATA_THROTTLING_MODEM_THREW_INVALID_PARAMS = -1;
 
     /**
      * Experiment flag to enable erase modem config on reset network, default value is false
@@ -1692,6 +1702,52 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     intent.addFlags(Intent.FLAG_RECEIVER_REGISTERED_ONLY);
                     getDefaultPhone().getContext().sendBroadcastAsUser(
                             intent, UserHandle.ALL, permission.USER_ACTIVITY);
+                    break;
+
+                case CMD_SET_DATA_THROTTLING: {
+                    request = (MainThreadRequest) msg.obj;
+                    onCompleted = obtainMessage(EVENT_SET_DATA_THROTTLING_DONE, request);
+                    DataThrottlingRequest dataThrottlingRequest =
+                            (DataThrottlingRequest) request.argument;
+                    Phone phone = getPhoneFromRequest(request);
+                    if (phone != null) {
+                        phone.setDataThrottling(onCompleted,
+                                request.workSource, dataThrottlingRequest.getDataThrottlingAction(),
+                                dataThrottlingRequest.getCompletionDurationMillis());
+                    } else {
+                        loge("setDataThrottling: No phone object");
+                        request.result =
+                                TelephonyManager.THERMAL_MITIGATION_RESULT_MODEM_NOT_AVAILABLE;
+                        notifyRequester(request);
+                    }
+
+                    break;
+                }
+                case EVENT_SET_DATA_THROTTLING_DONE:
+                    ar = (AsyncResult) msg.obj;
+                    request = (MainThreadRequest) ar.userObj;
+
+                    if (ar.exception == null) {
+                        request.result = TelephonyManager.THERMAL_MITIGATION_RESULT_SUCCESS;
+                    } else if (ar.exception instanceof CommandException) {
+                        loge("setDataThrottling: CommandException: " + ar.exception);
+                        CommandException.Error error =
+                                ((CommandException) (ar.exception)).getCommandError();
+
+                        if (error == CommandException.Error.RADIO_NOT_AVAILABLE) {
+                            request.result = TelephonyManager
+                                .THERMAL_MITIGATION_RESULT_MODEM_NOT_AVAILABLE;
+                        } else if (error == CommandException.Error.INVALID_ARGUMENTS) {
+                            request.result = SET_DATA_THROTTLING_MODEM_THREW_INVALID_PARAMS;
+                        } else {
+                            request.result =
+                                    TelephonyManager.THERMAL_MITIGATION_RESULT_MODEM_ERROR;
+                        }
+                    } else {
+                        request.result = TelephonyManager.THERMAL_MITIGATION_RESULT_MODEM_ERROR;
+                    }
+                    Log.w(LOG_TAG, "DataThrottlingResult = " + request.result);
+                    notifyRequester(request);
                     break;
                 default:
                     Log.w(LOG_TAG, "MainThreadHandler: unexpected message code: " + msg.what);
@@ -9071,5 +9127,170 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
+    }
+
+    @Override
+    public boolean isRadioInterfaceCapabilitySupported(
+            @NonNull @TelephonyManager.RadioInterfaceCapability String capability) {
+        RadioInterfaceCapabilities radioInterfaceCapabilities =
+                mPhoneConfigurationManager.getRadioInterfaceCapabilities();
+        if (radioInterfaceCapabilities == null) {
+            throw new RuntimeException("radio interface capabilities are not available");
+        } else {
+            return radioInterfaceCapabilities.isSupported(capability);
+        }
+    }
+
+    /**
+     * Attempts to set the radio power state for thermal reason. This does not guarantee that the
+     * requested radio power state will actually be set. See {@link
+     * PhoneInternalInterface#setRadioPowerForReason} for more details.
+     *
+     * @param subId the subscription ID of the phone requesting to set the radio power state.
+     * @param enable {@code true} if trying to turn radio on.
+     * @return {@code true} if phone setRadioPowerForReason was called. Otherwise, returns {@code
+     * false}.
+     */
+    private boolean setRadioPowerForThermal(int subId, boolean enable) {
+        Phone phone = getPhone(subId);
+        if (phone != null) {
+            phone.setRadioPowerForReason(enable, Phone.RADIO_POWER_REASON_THERMAL);
+            return true;
+        }
+        return false;
+    }
+
+    private int handleDataThrottlingRequest(int subId,
+            DataThrottlingRequest dataThrottlingRequest) {
+        // Ensure that radio is on. If not able to power on due to phone being unavailable, return
+        // THERMAL_MITIGATION_RESULT_MODEM_NOT_AVAILABLE.
+        if (!setRadioPowerForThermal(subId, true)) {
+            return TelephonyManager.THERMAL_MITIGATION_RESULT_MODEM_NOT_AVAILABLE;
+        }
+
+        setDataEnabledForReason(subId, TelephonyManager.DATA_ENABLED_REASON_THERMAL, true);
+
+        int thermalMitigationResult =
+                (int) sendRequest(CMD_SET_DATA_THROTTLING, dataThrottlingRequest, subId);
+        if (thermalMitigationResult == SET_DATA_THROTTLING_MODEM_THREW_INVALID_PARAMS) {
+            throw new IllegalArgumentException("modem returned INVALID_ARGUMENTS");
+        }
+        return thermalMitigationResult;
+    }
+
+    /**
+     * Thermal mitigation request to control functionalities at modem.
+     *
+     * @param subId the id of the subscription.
+     * @param thermalMitigationRequest holds all necessary information to be passed down to modem.
+     *
+     * @return thermalMitigationResult enum as defined in android.telephony.Annotation.
+     */
+    @Override
+    @ThermalMitigationResult
+    public int sendThermalMitigationRequest(
+            int subId,
+            ThermalMitigationRequest thermalMitigationRequest) throws IllegalArgumentException {
+        enforceModifyPermission();
+
+        WorkSource workSource = getWorkSource(Binder.getCallingUid());
+        final long identity = Binder.clearCallingIdentity();
+
+        int thermalMitigationResult = TelephonyManager.THERMAL_MITIGATION_RESULT_UNKNOWN_ERROR;
+        try {
+            int thermalMitigationAction = thermalMitigationRequest.getThermalMitigationAction();
+            switch (thermalMitigationAction) {
+                case ThermalMitigationRequest.THERMAL_MITIGATION_ACTION_DATA_THROTTLING:
+                    thermalMitigationResult =
+                        handleDataThrottlingRequest(subId,
+                                thermalMitigationRequest.getDataThrottlingRequest());
+                    break;
+                case ThermalMitigationRequest.THERMAL_MITIGATION_ACTION_VOICE_ONLY:
+                    if (thermalMitigationRequest.getDataThrottlingRequest() != null) {
+                        throw new IllegalArgumentException("dataThrottlingRequest must be null for "
+                                + "ThermalMitigationRequest.THERMAL_MITIGATION_ACTION_VOICE_ONLY");
+                    }
+
+                    // Ensure that radio is on. If not able to power on due to phone being
+                    // unavailable, return THERMAL_MITIGATION_RESULT_MODEM_NOT_AVAILABLE.
+                    if (!setRadioPowerForThermal(subId, true)) {
+                        thermalMitigationResult =
+                                TelephonyManager.THERMAL_MITIGATION_RESULT_MODEM_NOT_AVAILABLE;
+                        break;
+                    }
+
+                    setDataEnabledForReason(subId, TelephonyManager.DATA_ENABLED_REASON_THERMAL,
+                            false);
+                    thermalMitigationResult = TelephonyManager.THERMAL_MITIGATION_RESULT_SUCCESS;
+                    break;
+                case ThermalMitigationRequest.THERMAL_MITIGATION_ACTION_RADIO_OFF:
+                    if (thermalMitigationRequest.getDataThrottlingRequest() != null) {
+                        throw new IllegalArgumentException("dataThrottlingRequest  must be null for"
+                                + " ThermalMitigationRequest.THERMAL_MITIGATION_ACTION_RADIO_OFF");
+                    }
+
+                    TelecomAccountRegistry registry = TelecomAccountRegistry.getInstance(null);
+                    if (registry != null) {
+                        TelephonyConnectionService service =
+                                registry.getTelephonyConnectionService();
+                        Phone phone = getPhone(subId);
+                        if (phone == null) {
+                            thermalMitigationResult =
+                                TelephonyManager.THERMAL_MITIGATION_RESULT_MODEM_NOT_AVAILABLE;
+                            break;
+                        }
+
+                        if (PhoneConstantConversions.convertCallState(phone.getState())
+                                    != TelephonyManager.CALL_STATE_IDLE
+                                    || phone.isInEmergencySmsMode() || phone.isInEcm()
+                                    || (service != null && service.isEmergencyCallPending())) {
+                            String errorMessage = "Phone state is not valid. call state = "
+                                    + PhoneConstantConversions.convertCallState(phone.getState())
+                                    + " isInEmergencySmsMode = " + phone.isInEmergencySmsMode()
+                                    + " isInEmergencyCallbackMode = " + phone.isInEcm();
+                            errorMessage += service == null
+                                    ? " TelephonyConnectionService is null"
+                                    : " isEmergencyCallPending = "
+                                            + service.isEmergencyCallPending();
+                            Log.e(LOG_TAG, errorMessage);
+                            thermalMitigationResult =
+                                TelephonyManager.THERMAL_MITIGATION_RESULT_INVALID_STATE;
+                            break;
+                        }
+                    } else {
+                        thermalMitigationResult =
+                                TelephonyManager.THERMAL_MITIGATION_RESULT_MODEM_NOT_AVAILABLE;
+                        break;
+                    }
+
+                    // Turn radio off. If not able to power off due to phone being unavailable,
+                    // return THERMAL_MITIGATION_RESULT_MODEM_NOT_AVAILABLE.
+                    if (!setRadioPowerForThermal(subId, false)) {
+                        thermalMitigationResult =
+                                TelephonyManager.THERMAL_MITIGATION_RESULT_MODEM_NOT_AVAILABLE;
+                        break;
+                    }
+                    thermalMitigationResult =
+                        TelephonyManager.THERMAL_MITIGATION_RESULT_SUCCESS;
+                    break;
+                default:
+                    throw new IllegalArgumentException("the requested thermalMitigationAction does "
+                            + "not exist. Requested action: " + thermalMitigationAction);
+            }
+        } catch (IllegalArgumentException e) {
+            throw e;
+        } catch (Exception e) {
+            Log.e(LOG_TAG, "thermalMitigationRequest. Exception e =" + e);
+            thermalMitigationResult = TelephonyManager.THERMAL_MITIGATION_RESULT_MODEM_ERROR;
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+
+        if (DBG) {
+            log("thermalMitigationRequest returning with thermalMitigationResult: "
+                    + thermalMitigationResult);
+        }
+
+        return thermalMitigationResult;
     }
 }

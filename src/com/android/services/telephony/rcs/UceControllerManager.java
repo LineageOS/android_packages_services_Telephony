@@ -28,7 +28,9 @@ import android.util.Log;
 import com.android.ims.RcsFeatureManager;
 import com.android.ims.rcs.uce.UceController;
 import com.android.internal.annotations.VisibleForTesting;
+import com.android.internal.util.IndentingPrintWriter;
 
+import java.io.PrintWriter;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
@@ -230,5 +232,16 @@ public class UceControllerManager implements RcsFeatureController.Feature {
                     ImsException.CODE_ERROR_SERVICE_UNAVAILABLE);
         }
         return true;
+    }
+
+
+    @Override
+    public void dump(PrintWriter printWriter) {
+        IndentingPrintWriter pw = new IndentingPrintWriter(printWriter, "  ");
+        pw.println("UceControllerManager" + "[" + mSlotId + "]:");
+        pw.increaseIndent();
+        pw.println("UceController available = " + mUceController != null);
+        //TODO: Add dump for UceController
+        pw.decreaseIndent();
     }
 }
