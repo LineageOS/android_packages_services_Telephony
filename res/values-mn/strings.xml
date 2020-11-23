@@ -31,7 +31,7 @@
     <string name="ussdRunning" msgid="1163586813106772717">"USSD код ажиллаж байна…"</string>
     <string name="mmiCancelled" msgid="5339191899200678272">"MMI код цуцлагдсан"</string>
     <string name="cancel" msgid="8984206397635155197">"Цуцлах"</string>
-    <string name="enter_input" msgid="6193628663039958990">"USSD зурвасын үсгийн тоо <xliff:g id="MIN_LEN">%1$d</xliff:g> болон <xliff:g id="MAX_LEN">%2$d</xliff:g> хооронд байх шаардлагатай. Дахин оролдоно уу."</string>
+    <string name="enter_input" msgid="6193628663039958990">"USSD мессежийн үсгийн тоо <xliff:g id="MIN_LEN">%1$d</xliff:g> болон <xliff:g id="MAX_LEN">%2$d</xliff:g> хооронд байх шаардлагатай. Дахин оролдоно уу."</string>
     <string name="manageConferenceLabel" msgid="8415044818156353233">"Хурлын дуудлага удирдах"</string>
     <string name="ok" msgid="7818974223666140165">"OK"</string>
     <string name="audio_mode_speaker" msgid="243689733219312360">"Чанга яригч"</string>
@@ -163,7 +163,7 @@
     <string name="vm_change_pin_error_mismatch" msgid="5364847280026257331">"Хуучин PIN таарахгүй байна."</string>
     <string name="vm_change_pin_error_invalid" msgid="5230002671175580674">"Шинэ PIN-д буруу тэмдэгт агуулагдаж байна."</string>
     <string name="vm_change_pin_error_system_error" msgid="9116483527909681791">"PIN-г өөрчлөх боломжгүй"</string>
-    <string name="vvm_unsupported_message_format" msgid="4206402558577739713">"Дэмжигдээгүй зурвасын төрөл, сонсохын тулд <xliff:g id="NUMBER">%s</xliff:g> руу залгана уу."</string>
+    <string name="vvm_unsupported_message_format" msgid="4206402558577739713">"Дэмжигдээгүй мессежийн төрөл, сонсохын тулд <xliff:g id="NUMBER">%s</xliff:g> руу залгана уу."</string>
     <string name="network_settings_title" msgid="7560807107123171541">"Мобайл сүлжээ"</string>
     <string name="label_available" msgid="1316084116670821258">"Боломжтой сүлжээнүүд"</string>
     <string name="load_networks_progress" msgid="4051433047717401683">"Хайж байна..."</string>
@@ -531,7 +531,7 @@
     <string name="incall_error_out_of_service_wfc" msgid="4497663185857190885">"Мобайл сүлжээнд холбогдох боломжгүй байна. Дуудлага хийхийн тулд утасгүй интернетэд холбогдоно уу."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="8680831089508851894">"Дуудлага хийхийн тулд хүчин төгөлдөр дугаар оруулна уу."</string>
     <string name="incall_error_call_failed" msgid="393508653582682539">"Дуудлага амжилтгүй болсон."</string>
-    <string name="incall_error_cannot_add_call" msgid="5425764862628655443">"Дуудлагыг энэ удаад нэмэх боломжгүй. Та зурвас илгээн холбоо тогтоохыг оролдох боломжтой."</string>
+    <string name="incall_error_cannot_add_call" msgid="5425764862628655443">"Дуудлагыг энэ удаад нэмэх боломжгүй. Та мессеж илгээн холбоо тогтоохыг оролдох боломжтой."</string>
     <string name="incall_error_supp_service_unknown" msgid="8751177117194592623">"Үйлчилгээг дэмждэггүй байна"</string>
     <string name="incall_error_supp_service_switch" msgid="5272822448189448479">"Дуудлагыг солих боломжгүй байна."</string>
     <string name="incall_error_supp_service_resume" msgid="1276861499306817035">"Дуудлагыг үргэлжлүүлэх боломжгүй."</string>
@@ -582,8 +582,8 @@
     <string name="hac_mode_title" msgid="4127986689621125468">"Сонсголын төхөөрөмж"</string>
     <string name="hac_mode_summary" msgid="7774989500136009881">"Сонсголын төхөөрөмж тааруулагчийг асаана уу"</string>
     <string name="rtt_mode_title" msgid="3075948111362818043">"Шууд мессежлэх (RTT) дуудлага"</string>
-    <string name="rtt_mode_summary" msgid="8631541375609989562">"Дуудлагын дотор зурвас бичихийг зөвшөөрөх"</string>
-    <string name="rtt_mode_more_information" msgid="587500128658756318">"RTT нь дүлий, хатуу чихтэй, хэл ярианы хөгжлийн бэрхшээлтэй, эсвэл хэн нэгний тусламжтай ярьдаг дуудлага хийгчдэд тусладаг.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Дэлгэрэнгүй үзэх&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT дуудлага нь зурвасын сийрүүлэг хэлбэрээр хадгалагдана\n       &lt;br&gt; - RTT нь видео дуудлага хийхэд боломжгүй"</string>
+    <string name="rtt_mode_summary" msgid="8631541375609989562">"Дуудлагын дотор мессеж бичихийг зөвшөөрөх"</string>
+    <string name="rtt_mode_more_information" msgid="587500128658756318">"RTT нь дүлий, хатуу чихтэй, хэл ярианы хөгжлийн бэрхшээлтэй, эсвэл хэн нэгний тусламжтай ярьдаг дуудлага хийгчдэд тусладаг.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Дэлгэрэнгүй үзэх&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT дуудлага нь мессежийн сийрүүлэг хэлбэрээр хадгалагдана\n       &lt;br&gt; - RTT нь видео дуудлага хийхэд боломжгүй"</string>
     <string name="no_rtt_when_roaming" msgid="5268008247378355389">"Санамж: RTT (Тухайн агшины текст) роуминг үйлчилгээний үед боломжгүй байна"</string>
   <string-array name="tty_mode_entries">
     <item msgid="3238070884803849303">"TTY Унтраасан"</item>
@@ -597,14 +597,14 @@
     <item msgid="2271798469250155310">"Энгийн"</item>
     <item msgid="6044210222666533564">"Урт"</item>
   </string-array>
-    <string name="network_info_message" msgid="7599413947016532355">"Сүлжээний зурвас"</string>
-    <string name="network_error_message" msgid="4271579424089326618">"Алдаатай зурвас"</string>
+    <string name="network_info_message" msgid="7599413947016532355">"Сүлжээний мессеж"</string>
+    <string name="network_error_message" msgid="4271579424089326618">"Алдаатай мессеж"</string>
     <string name="ota_title_activate" msgid="4049645324841263423">"Утсаа идэвхжүүлнэ үү"</string>
     <string name="ota_touch_activate" msgid="838764494319694754">"Таны утасны үйлчилгээ идэвхжүүлэхийн тулд тусгай дуудлага хийх шаардлагатай. \n\n“Идэвхжүүлэх” гэснийг дарсны дараа өгч байгаа зааврыг сонсон утсаа идэвхжүүлнэ үү."</string>
     <string name="ota_hfa_activation_title" msgid="3300556778212729671">"Идэвхжүүлж байна..."</string>
     <string name="ota_hfa_activation_dialog_message" msgid="7921718445773342996">"Утас таны мобайл дата үйлчилгээг идэвхжүүлж байна.\n\nҮүнд 5 хүртэл минут орж болно."</string>
     <string name="ota_skip_activation_dialog_title" msgid="7666611236789203797">"Идэвхжүүлэхийг алгасах уу?"</string>
-    <string name="ota_skip_activation_dialog_message" msgid="6691722887019708713">"Хэрэв та идэвхжүүлэхийг алгасвал дуудлага хийх буюу мобайль дата сүлжээнд холбогдох (хэдийгээр Wi-Fi сүлжээнд холбогдож болох ч) боломжгүй болно. Таныг утсаа идэвхжүүлэх хүртэл утсаа асаах бүрт идэвхжүүлэхийг хүсэх болно."</string>
+    <string name="ota_skip_activation_dialog_message" msgid="6691722887019708713">"Хэрэв та идэвхжүүлэхийг алгасвал дуудлага хийх буюу мобайль дата сүлжээнд холбогдох (хэдийгээр Wi-Fi сүлжээнд холбогдож болох ч) боломжгүй болно. Таныг утсаа идэвхжүүлэх хүртэл утсаа асаах бүрд идэвхжүүлэхийг хүсэх болно."</string>
     <string name="ota_skip_activation_dialog_skip_label" msgid="5908029466817825633">"Алгасах"</string>
     <string name="ota_activate" msgid="7939695753665438357">"Идэвхжүүлэх"</string>
     <string name="ota_title_activate_success" msgid="1272135024761004889">"Утсыг идэвхжүүллээ."</string>
@@ -671,7 +671,7 @@
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"Wi-Fi дуудлага"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"Wi-Fi дуудлага"</string>
     <string name="emergency_action_launch_hint" msgid="2762016865340891314">"Нээхийн тулд дахин дарна уу"</string>
-    <string name="message_decode_error" msgid="1061856591500290887">"Зурвасын кодыг тайлах явцад алдаа гарсан."</string>
+    <string name="message_decode_error" msgid="1061856591500290887">"Мессежийн кодыг тайлах явцад алдаа гарсан."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"SIM карт таны үйлчилгээг идэвхжүүлж, утасны роаминг багтаамжийг шинэчиллээ."</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"Хэт олон идэвхтэй дуудлага байна. Шинэ дуудлага хийхийн өмнө одоогийн дуудлагуудыг таслах буюу нэгтгэнэ үү."</string>
     <string name="callFailed_imei_not_accepted" msgid="7257903653685147251">"Холбох боломжгүй, хүчинтэй SIM карт оруулна уу."</string>
@@ -866,7 +866,7 @@
     <string name="radio_info_subid" msgid="6839966868621703203">"Одоогийн subId:"</string>
     <string name="radio_info_dds" msgid="1122593144425697126">"Өгөгдмөл дата SIM-н SubId:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DLзурвасын өргөн (kbps):"</string>
-    <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL Зурвасын өргөн (kbps):"</string>
+    <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL Мессежийн өргөн (kbps):"</string>
     <string name="radio_info_signal_location_label" msgid="6188435197086550049">"Үүрэн байршлын мэдээлэл (цуцалсан):"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"LTE Сувгийн бодит тохиргоо:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Үүрэн мэдээлэл сэргээх тариф:"</string>
@@ -882,9 +882,9 @@
     <string name="radio_info_signal_strength_label" msgid="5545444702102543260">"Дохионы хүч:"</string>
     <string name="radio_info_call_status_label" msgid="7693575431923095487">"Дуут дуудлагын төлөв:"</string>
     <string name="radio_info_ppp_sent_label" msgid="6542208429356199695">"Дата илгээсэн:"</string>
-    <string name="radio_info_message_waiting_label" msgid="1886549432566952078">"Зурвасыг хүлээж байна:"</string>
+    <string name="radio_info_message_waiting_label" msgid="1886549432566952078">"Мессежийг хүлээж байна:"</string>
     <string name="radio_info_phone_number_label" msgid="2533852539562512203">"Утасны дугаар:"</string>
-    <string name="radio_info_band_mode_label" msgid="23480556225515290">"Радио зурвасыг сонгох"</string>
+    <string name="radio_info_band_mode_label" msgid="23480556225515290">"Радио мессежийг сонгох"</string>
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"Дуут сүлжээний төрөл:"</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"Дата сүлжээний төрөл:"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"Утасны индекс сонгох"</string>
@@ -903,8 +903,8 @@
     <string name="radio_info_nr_available" msgid="1321318331361249997">"NR боломжтой:"</string>
     <string name="radio_info_nr_state" msgid="1337571996788535356">"NR төлөв:"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR давтамж:"</string>
-    <string name="band_mode_title" msgid="7988822920724576842">"Радио зурвасын горимыг тохируулах"</string>
-    <string name="band_mode_loading" msgid="795923726636735967">"Зурвасын жагсаалтыг ачаалж байна…"</string>
+    <string name="band_mode_title" msgid="7988822920724576842">"Радио мессежийн горимыг тохируулах"</string>
+    <string name="band_mode_loading" msgid="795923726636735967">"Мессежийн жагсаалтыг ачаалж байна…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Тохируулах"</string>
     <string name="band_mode_failed" msgid="1707488541847192924">"Амжилтгүй"</string>
     <string name="band_mode_succeeded" msgid="2230018000534761063">"Амжилттай"</string>

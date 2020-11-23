@@ -617,7 +617,7 @@
     <string name="ota_unsuccessful" msgid="8531037653803955754">"El teléfono no se ha activado. \nEs posible que tengas que situarte en una zona con más cobertura (cerca de una ventana o en el exterior). \n\nInténtalo de nuevo o ponte en contacto con el servicio de atención al cliente para consultar otras opciones."</string>
     <string name="ota_spc_failure" msgid="904092035241370080">"EXCESO DE ERRORES DE SPC"</string>
     <string name="ota_call_end" msgid="8657746378290737034">"Atrás"</string>
-    <string name="ota_try_again" msgid="6914781945599998550">"Volver a intentarlo"</string>
+    <string name="ota_try_again" msgid="6914781945599998550">"Reintentar"</string>
     <string name="ota_next" msgid="2041016619313475914">"Siguiente"</string>
     <string name="ecm_exit_dialog" msgid="4200691880721429078">"EcmExitDialog"</string>
     <string name="phone_entered_ecm_text" msgid="8431238297843035842">"Se ha activado el modo de devolución de llamada de emergencia."</string>

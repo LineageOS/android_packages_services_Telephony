@@ -173,8 +173,8 @@
     <string name="not_allowed" msgid="8541221928746104798">"તમારું SIM કાર્ડ આ નેટવર્કથી કનેક્શનને મંજૂરી આપતું નથી."</string>
     <string name="connect_later" msgid="1950138106010005425">"હમણાં આ નેટવર્કથી કનેક્ટ કરી શકાતું નથી. પછીથી ફરી પ્રયાસ કરો."</string>
     <string name="registration_done" msgid="5337407023566953292">"નેટવર્ક પર નોંધણી કરી."</string>
-    <string name="already_auto" msgid="8607068290733079336">"પહેલેથી જ આપમેળે પસંદગીમાં."</string>
-    <string name="select_automatically" msgid="779750291257872651">"નેટવર્ક આપમેળે પસંદ કરો"</string>
+    <string name="already_auto" msgid="8607068290733079336">"પહેલેથી જ ઑટોમૅટિક પસંદગીમાં."</string>
+    <string name="select_automatically" msgid="779750291257872651">"નેટવર્ક ઑટોમૅટિક રીતે પસંદ કરો"</string>
     <string name="manual_mode_disallowed_summary" msgid="3970048592179890197">"%1$s સાથે કનેક્ટ કરેલું હોય ત્યારે અનુપલબ્ધ"</string>
     <string name="network_select_title" msgid="4117305053881611988">"નેટવર્ક"</string>
     <string name="register_automatically" msgid="3907580547590554834">"સ્વયંચાલિત નોંધણી…"</string>
