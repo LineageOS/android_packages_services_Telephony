@@ -3924,6 +3924,50 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
+     * @return true if the user's setting for Voice over Cross SIM is enabled and false if it is not
+     * Requires carrier privileges or READ_PRECISE_PHONE_STATE permission.
+     * @param subId The subscription to use to check the configuration.
+     */
+    @Override
+    public boolean isCrossSimCallingEnabledByUser(int subId) {
+        TelephonyPermissions.enforeceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
+                mApp, subId, "isCrossSimCallingEnabledByUser");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
+            return ImsManager.getInstance(mApp,
+                    getSlotIndexOrException(subId)).isCrossSimCallingEnabledByUser();
+        } catch (ImsException e) {
+            throw new ServiceSpecificException(e.getCode());
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Sets the user's setting for whether or not Voice over Cross SIM is enabled.
+     * Requires MODIFY_PHONE_STATE permission.
+     * @param subId The subscription to use to check the configuration.
+     * @param isEnabled true if the user's setting for Voice over Cross SIM is enabled,
+     *                 false otherwise
+     */
+    @Override
+    public void setCrossSimCallingEnabled(int subId, boolean isEnabled) {
+        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(mApp, subId,
+                "setCrossSimCallingEnabled");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
+            ImsManager.getInstance(mApp, getSlotIndexOrException(subId))
+                    .setCrossSimCallingEnabled(isEnabled);
+        } catch (ImsException e) {
+            throw new ServiceSpecificException(e.getCode());
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
      * Requires carrier privileges or READ_PRECISE_PHONE_STATE permission.
      * @param subId The subscription to use to check the configuration.
      */
