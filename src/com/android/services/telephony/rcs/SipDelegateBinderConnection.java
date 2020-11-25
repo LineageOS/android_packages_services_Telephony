@@ -17,11 +17,13 @@
 package com.android.services.telephony.rcs;
 
 import android.os.Binder;
+import android.os.IBinder;
 import android.os.RemoteException;
 import android.telephony.ims.DelegateRegistrationState;
 import android.telephony.ims.DelegateRequest;
 import android.telephony.ims.FeatureTagState;
 import android.telephony.ims.SipDelegateImsConfiguration;
+import android.telephony.ims.SipDelegateManager;
 import android.telephony.ims.aidl.ISipDelegate;
 import android.telephony.ims.aidl.ISipDelegateMessageCallback;
 import android.telephony.ims.aidl.ISipDelegateStateCallback;
@@ -31,7 +33,9 @@ import android.util.LocalLog;
 import android.util.Log;
 
 import java.io.PrintWriter;
+import java.util.Collections;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Set;
 import java.util.concurrent.Executor;
 import java.util.function.BiConsumer;
@@ -43,7 +47,8 @@ import java.util.function.Consumer;
  * New instances of this class will be created and destroyed new {@link SipDelegate}s are created
  * and destroyed by the {@link SipDelegateController}.
  */
-public class SipDelegateBinderConnection implements DelegateBinderStateManager {
+public class SipDelegateBinderConnection implements DelegateBinderStateManager,
+        IBinder.DeathRecipient {
     private static final String LOG_TAG = "BinderConn";
 
     protected final int mSubId;
@@ -149,6 +154,7 @@ public class SipDelegateBinderConnection implements DelegateBinderStateManager {
         try {
             mSipTransport.createSipDelegate(mSubId, mRequestedConfig, mSipDelegateStateCallback,
                     cb);
+            mSipTransport.asBinder().linkToDeath(this, 0);
         } catch (RemoteException e) {
             logw("create called on unreachable SipTransport:" + e);
             return false;
@@ -170,6 +176,11 @@ public class SipDelegateBinderConnection implements DelegateBinderStateManager {
         } catch (RemoteException e) {
             logw("destroy called on unreachable SipTransport:" + e);
             mExecutor.execute(() -> notifySipDelegateDestroyed(reason));
+        }
+        try {
+            mSipTransport.asBinder().unlinkToDeath(this, 0);
+        } catch (NoSuchElementException e) {
+            logw("unlinkToDeath called on already unlinked binder" + e);
         }
     }
 
@@ -210,5 +221,16 @@ public class SipDelegateBinderConnection implements DelegateBinderStateManager {
     protected final void logw(String log) {
         Log.w(SipTransportController.LOG_TAG, LOG_TAG + "[" + mSubId + "] " + log);
         mLocalLog.log("[W] " + log);
+    }
+
+    @Override
+    public void binderDied() {
+        mExecutor.execute(() -> {
+            logw("binderDied!");
+            // Unblock any pending create/destroy operations.
+            // SipTransportController will handle the overall destruction/teardown.
+            notifySipDelegateCreated(null, Collections.emptyList());
+            notifySipDelegateDestroyed(SipDelegateManager.SIP_DELEGATE_DESTROY_REASON_SERVICE_DEAD);
+        });
     }
 }
