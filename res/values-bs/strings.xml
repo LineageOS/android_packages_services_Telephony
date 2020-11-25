@@ -858,7 +858,7 @@
     <string name="radioInfo_data_disconnected" msgid="8085447971880814541">"Veza je prekinuta"</string>
     <string name="radioInfo_data_connecting" msgid="925092271092152472">"Povezivanje"</string>
     <string name="radioInfo_data_connected" msgid="7637335645634239508">"Povezano"</string>
-    <string name="radioInfo_data_suspended" msgid="8695262782642002785">"Suspendirano"</string>
+    <string name="radioInfo_data_suspended" msgid="8695262782642002785">"Obustavljeno"</string>
     <string name="radioInfo_unknown" msgid="5401423738500672850">"Nepoznato"</string>
     <string name="radioInfo_display_packets" msgid="6794302192441084157">"paketi"</string>
     <string name="radioInfo_display_bytes" msgid="7701006329222413797">"bajtova"</string>

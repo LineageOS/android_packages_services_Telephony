@@ -18,7 +18,7 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="phoneAppLabel" product="tablet" msgid="1916019789885839910">"मोबाइल डेटा"</string>
     <string name="phoneAppLabel" product="default" msgid="130465039375347763">"फोन सेवाहरू"</string>
-    <string name="emergencyDialerIconLabel" msgid="8668005772339436680">"आपतकालीन डायल गर्ने"</string>
+    <string name="emergencyDialerIconLabel" msgid="8668005772339436680">"आपत्‌कालीन डायल गर्ने"</string>
     <string name="phoneIconLabel" msgid="3015941229249651419">"फोन"</string>
     <string name="fdnListLabel" msgid="4119121875004244097">"FDN सूची"</string>
     <string name="unknown" msgid="8279698889921830815">"अज्ञात"</string>
@@ -83,7 +83,7 @@
     <string name="smart_forwarding_settings_menu" msgid="8850429887958938540">"स्मार्ट तरिकाले फर्वार्ड गर्ने सुविधा"</string>
     <string name="smart_forwarding_settings_menu_summary" msgid="5096947726032885325">"एउटा नम्बर सम्पर्क क्षेत्रबाहिर भएका बेला कल सधैँ आफ्नो अर्को नम्बरमा फर्वार्ड गर्नुहोस्"</string>
     <string name="voicemail_notifications_preference_title" msgid="7829238858063382977">"सूचनाहरू"</string>
-    <string name="cell_broadcast_settings" msgid="8135324242541809924">"आपतकालीन प्रसारणहरू"</string>
+    <string name="cell_broadcast_settings" msgid="8135324242541809924">"आपत्‌कालीन प्रसारणहरू"</string>
     <string name="call_settings" msgid="3677282690157603818">"कल सेटिङहरू"</string>
     <string name="additional_gsm_call_settings" msgid="1561980168685658846">"अतिरिक्त सेटिङहरू"</string>
     <string name="additional_gsm_call_settings_with_label" msgid="7973920539979524908">"अतिरिक्त सेटिङ ( <xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g> )"</string>
@@ -318,9 +318,9 @@
     <string name="cell_bc_sms_enable" msgid="2019708772024632073">"सेल प्रसारण SMS सक्षम"</string>
     <string name="cell_bc_sms_disable" msgid="1214238639910875347">"सेल प्रसारण SMS अक्षम"</string>
     <string name="cb_sms_settings" msgid="6858093721831312036">"सेल प्रसारण SMS सेटिङहरू"</string>
-    <string name="enable_disable_emergency_broadcast" msgid="6325655044472196496">"आपतकालीन प्रसारण"</string>
-    <string name="emergency_broadcast_enable" msgid="5759610647771102442">"आपतकालीन प्रसारण सक्षम भयो"</string>
-    <string name="emergency_broadcast_disable" msgid="2844904734469323266">"आपतकालीन प्रसारण अक्षम भयो"</string>
+    <string name="enable_disable_emergency_broadcast" msgid="6325655044472196496">"आपत्‌कालीन प्रसारण"</string>
+    <string name="emergency_broadcast_enable" msgid="5759610647771102442">"आपत्‌कालीन प्रसारण सक्षम भयो"</string>
+    <string name="emergency_broadcast_disable" msgid="2844904734469323266">"आपत्‌कालीन प्रसारण अक्षम भयो"</string>
     <string name="enable_disable_administrative" msgid="7825925366822117961">"प्रशासकीय"</string>
     <string name="administrative_enable" msgid="5717963431079532028">"प्रशासनिक सक्षम"</string>
     <string name="administrative_disable" msgid="156796633660118691">"प्रशासनिक असक्षम"</string>
@@ -525,7 +525,7 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"मोबाइल नेटवर्क सक्रिय पार्नुहोस्, कल गर्न हवाइजहाज मोड वा ब्याट्री सेवर मोड निष्क्रिय पार्नुहोस्।"</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"एक कल गर्न हवाइजहाज मोड बन्द गर्नुहोस्।"</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"एक कल गर्न हवाइजहाज मोड बन्द गर्नुहोस् वा एक ताररहितको सञ्जालमा जडान गर्नुहोस्।"</string>
-    <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"गैर-आपतकालीन कल गर्न आपतकालीन कलब्याक मोडबाट निस्कनुहोस्।"</string>
+    <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"गैर-आपत्‌कालीन कल गर्न आपत्‌कालीन कलब्याक मोडबाट निस्कनुहोस्।"</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"नेटवर्कमा दर्ता भएको छैन।"</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"मोबाइल नेटवर्क उपलब्ध छैन।"</string>
     <string name="incall_error_out_of_service_wfc" msgid="4497663185857190885">"मोबाइल नेटवर्क उपलब्ध छैन। कल गर्न तारविनाको नेटवर्कमा जडान गर्नुहोस्।"</string>
@@ -543,19 +543,19 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"कल सञ्चालन गर्न सकिँदैन।"</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"एक कल गर्न एक ताररहितको सञ्जालमा जडान गर्नुहोस्।"</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"कल गर्नका लागि Wi-Fi कलिङ सक्षम गर्नुहोस्।"</string>
-    <string name="emergency_information_hint" msgid="9208897544917793012">"आपतकालीन जानकारी"</string>
+    <string name="emergency_information_hint" msgid="9208897544917793012">"आपत्‌कालीन जानकारी"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"मालिक"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"जानकारी हेर्न पुनः ट्याप गर्नुहोस्"</string>
-    <string name="emergency_enable_radio_dialog_title" msgid="2667568200755388829">"आपतकालीन कल"</string>
-    <string name="single_emergency_number_title" msgid="8413371079579067196">"आपतकालीन नम्बर"</string>
-    <string name="numerous_emergency_numbers_title" msgid="8972398932506755510">"आपतकालीन नम्बरहरू"</string>
+    <string name="emergency_enable_radio_dialog_title" msgid="2667568200755388829">"आपत्‌कालीन कल"</string>
+    <string name="single_emergency_number_title" msgid="8413371079579067196">"आपत्‌कालीन नम्बर"</string>
+    <string name="numerous_emergency_numbers_title" msgid="8972398932506755510">"आपत्‌कालीन नम्बरहरू"</string>
     <string name="emergency_call_shortcut_hint" msgid="1290485125107779500">"<xliff:g id="EMERGENCY_NUMBER">%s</xliff:g> मा कल गर्न फेरि ट्याप गर्नुहोस्"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="1695305158151408629">"रेडियो खोल्दै..."</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="4329131876852608587">"कुनै सेवा छैन। फेरि प्रयास गर्दै ..."</string>
-    <string name="radio_off_during_emergency_call" msgid="8011154134040481609">"आपतकालीन कलको समयमा हवाइजहाज मोडमा प्रविष्ट गर्न सक्दैन।"</string>
-    <string name="dial_emergency_error" msgid="825822413209026039">"कल गर्न सकिँदैन। <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> आपतकालीन नम्बर होइन।"</string>
-    <string name="dial_emergency_empty_error" msgid="2785803395047793634">"कल गर्न सकिँदैन। आपतकालीन नम्बर डायल गर्नुहोस्।"</string>
-    <string name="dial_emergency_calling_not_available" msgid="6485846193794727823">"आपतकालीन कल सेवा उपलब्ध छैन"</string>
+    <string name="radio_off_during_emergency_call" msgid="8011154134040481609">"आपत्‌कालीन कलको समयमा हवाइजहाज मोडमा प्रविष्ट गर्न सक्दैन।"</string>
+    <string name="dial_emergency_error" msgid="825822413209026039">"कल गर्न सकिँदैन। <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> आपत्‌कालीन नम्बर होइन।"</string>
+    <string name="dial_emergency_empty_error" msgid="2785803395047793634">"कल गर्न सकिँदैन। आपत्‌कालीन नम्बर डायल गर्नुहोस्।"</string>
+    <string name="dial_emergency_calling_not_available" msgid="6485846193794727823">"आपत्‌कालीन कल सेवा उपलब्ध छैन"</string>
     <string name="pin_puk_system_user_only" msgid="1045147220686867922">"यन्त्रका मालिक मात्र PIN/PUK कोडहरू प्रविष्टि गर्न सक्नुहुन्छ।"</string>
     <string name="police_type_description" msgid="2819533883972081757">"प्रहरी"</string>
     <string name="ambulance_type_description" msgid="6798237503553180461">"एम्बुलेन्स सेवा"</string>
@@ -620,20 +620,20 @@
     <string name="ota_try_again" msgid="6914781945599998550">"फेरि प्रयास गर्नुहोस्"</string>
     <string name="ota_next" msgid="2041016619313475914">"अर्को"</string>
     <string name="ecm_exit_dialog" msgid="4200691880721429078">"EcmExitDialog"</string>
-    <string name="phone_entered_ecm_text" msgid="8431238297843035842">"आपतकालीन कलब्याक मोड प्रविष्टि गरियो"</string>
-    <string name="phone_in_ecm_notification_title" msgid="6825016389926367946">"आपतकालीन कलब्याक मोड"</string>
+    <string name="phone_entered_ecm_text" msgid="8431238297843035842">"आपत्‌कालीन कलब्याक मोड प्रविष्टि गरियो"</string>
+    <string name="phone_in_ecm_notification_title" msgid="6825016389926367946">"आपत्‌कालीन कलब्याक मोड"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="653972232922670335">"डेटा जडान अक्षम भयो"</string>
     <string name="phone_in_ecm_notification_complete_time" msgid="7341624337163082759">"<xliff:g id="COMPLETETIME">%s</xliff:g> सम्म डेटा कनेक्ट भएको छैन"</string>
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="5425906903766466743">
-      <item quantity="other"> फोन आपतकालीन कलब्याक मोडमा <xliff:g id="COUNT_1">%s</xliff:g> मिनेटको लागि हुनेछ। यस मोडको अवस्थामा एक डेटा जडान प्रयोग गरेर कुनै पनि एपहरू प्रयोग गर्न सकिँदैन। के तपाईं अहिले निस्कन चाहनुहुन्छ?</item>
-      <item quantity="one"> फोन आपतकालीन कलब्याक मोडमा <xliff:g id="COUNT_0">%s</xliff:g> मिनेटको लागि हुनेछ। यस मोडको समयमा एक डेटा जडान प्रयोग गरेर कुनै पनि एपहरू प्रयोग गर्न सकिँदैन। के तपाईं अहिले निस्कन चाहनुहुन्छ?</item>
+      <item quantity="other"> फोन आपत्‌कालीन कलब्याक मोडमा <xliff:g id="COUNT_1">%s</xliff:g> मिनेटको लागि हुनेछ। यस मोडको अवस्थामा एक डेटा जडान प्रयोग गरेर कुनै पनि एपहरू प्रयोग गर्न सकिँदैन। के तपाईं अहिले निस्कन चाहनुहुन्छ?</item>
+      <item quantity="one"> फोन आपत्‌कालीन कलब्याक मोडमा <xliff:g id="COUNT_0">%s</xliff:g> मिनेटको लागि हुनेछ। यस मोडको समयमा एक डेटा जडान प्रयोग गरेर कुनै पनि एपहरू प्रयोग गर्न सकिँदैन। के तपाईं अहिले निस्कन चाहनुहुन्छ?</item>
     </plurals>
     <plurals name="alert_dialog_not_avaialble_in_ecm" formatted="false" msgid="1152682528741457004">
-      <item quantity="other"> आपतकालीन कलब्याक मोडको समयमा चयनित कार्य उपलब्ध छैन। फोन यस मोडमा <xliff:g id="COUNT_1">%s</xliff:g> मिनेटको लागि हुनेछ। के तपाईं अहिले निस्कन चाहनुहुन्छ?</item>
-      <item quantity="one"> आपतकालीन कलब्याक मोडको समयमा चयनित कार्य उपलब्ध छैन। फोन यस मोडमा <xliff:g id="COUNT_0">%s</xliff:g> मिनेटको लागि हुनेछ। के तपाईं अहिले निस्कन चाहनुहुन्छ?</item>
+      <item quantity="other"> आपत्‌कालीन कलब्याक मोडको समयमा चयनित कार्य उपलब्ध छैन। फोन यस मोडमा <xliff:g id="COUNT_1">%s</xliff:g> मिनेटको लागि हुनेछ। के तपाईं अहिले निस्कन चाहनुहुन्छ?</item>
+      <item quantity="one"> आपत्‌कालीन कलब्याक मोडको समयमा चयनित कार्य उपलब्ध छैन। फोन यस मोडमा <xliff:g id="COUNT_0">%s</xliff:g> मिनेटको लागि हुनेछ। के तपाईं अहिले निस्कन चाहनुहुन्छ?</item>
     </plurals>
-    <string name="alert_dialog_in_ecm_call" msgid="1207545603149771978">"आपतकालीन कल हुँदा चयन भएको कार्य उपलब्ध हुँदैन।"</string>
-    <string name="progress_dialog_exiting_ecm" msgid="9159080081676927217">"आपतकालीन कलब्याक मोडबाट निस्कदै"</string>
+    <string name="alert_dialog_in_ecm_call" msgid="1207545603149771978">"आपत्‌कालीन कल हुँदा चयन भएको कार्य उपलब्ध हुँदैन।"</string>
+    <string name="progress_dialog_exiting_ecm" msgid="9159080081676927217">"आपत्‌कालीन कलब्याक मोडबाट निस्कदै"</string>
     <string name="alert_dialog_yes" msgid="3532525979632841417">"हो"</string>
     <string name="alert_dialog_no" msgid="1075632654085988420">"होइन"</string>
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"खारेज गर्नुहोस्"</string>
@@ -654,7 +654,7 @@
     <string name="not_voice_capable" msgid="2819996734252084253">"भ्वाइस कल गर्ने समर्थित छैन"</string>
     <string name="description_dial_button" msgid="8614631902795087259">"डायल"</string>
     <string name="description_dialpad_button" msgid="7395114120463883623">"डायलप्याड देखाउनुहोस्"</string>
-    <string name="pane_title_emergency_dialpad" msgid="3627372514638694401">"आपतकालीन डायलप्याड"</string>
+    <string name="pane_title_emergency_dialpad" msgid="3627372514638694401">"आपत्‌कालीन डायलप्याड"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="6610414098912832120">"भिजुअल भ्वाइस मेल"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="7005128605986960003">"PIN सेट गर्नुहोस्"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="4633077715231764435">"PIN परिवर्तन गर्नुहोस्"</string>
@@ -678,7 +678,7 @@
     <string name="callFailed_wifi_lost" msgid="1788036730589163141">"Wi-Fi जडान विच्छेद भयो। कल समाप्त भयो।"</string>
     <string name="dialFailed_low_battery" msgid="6857904237423407056">"ब्याट्रीको चार्ज स्तर कम हुनाले तपाईं भिडियो कल गर्न सक्नुहुन्न।"</string>
     <string name="callFailed_low_battery" msgid="4056828320214416182">"ब्याट्रीको चार्ज स्तर कम हुनाले भिडियो कल बन्द भयो।"</string>
-    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="5944309590693432042">"यो स्थानमा Wi-Fi कलिङमार्फत आपतकालीन कलहरू गर्ने सुविधा उपलब्ध छैन।"</string>
+    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="5944309590693432042">"यो स्थानमा Wi-Fi कलिङमार्फत आपत्‌कालीन कलहरू गर्ने सुविधा उपलब्ध छैन।"</string>
     <string name="callFailed_wfc_service_not_available_in_this_location" msgid="3624536608369524988">"यो स्थानमा Wi-Fi कलिङ उपलब्ध छैन।"</string>
     <string name="change_pin_title" msgid="3564254326626797321">"भ्वाइस मेलको PIN परिवर्तन गर्नुहोस्"</string>
     <string name="change_pin_continue_label" msgid="5177011752453506371">"जारी राख्नुहोस्"</string>
@@ -845,7 +845,7 @@
     <string name="radio_info_ims_reg_status" msgid="25582845222446390">"IMS को दर्ता: <xliff:g id="STATUS">%1$s</xliff:g>\nभ्वाइस ओभर LTE: <xliff:g id="AVAILABILITY_0">%2$s</xliff:g>\nभ्वाइस ओभर WiFi: <xliff:g id="AVAILABILITY_1">%3$s</xliff:g>\nभिडियो कलिङ: <xliff:g id="AVAILABILITY_2">%4$s</xliff:g>\nUT को इन्टरफेस: <xliff:g id="AVAILABILITY_3">%5$s</xliff:g>"</string>
     <string name="radioInfo_service_in" msgid="45753418231446400">"सेवामा"</string>
     <string name="radioInfo_service_out" msgid="287972405416142312">"सेवा उपलब्ध छैन"</string>
-    <string name="radioInfo_service_emergency" msgid="4763879891415016848">"आपतकालीन कल मात्र"</string>
+    <string name="radioInfo_service_emergency" msgid="4763879891415016848">"आपत्‌कालीन कल मात्र"</string>
     <string name="radioInfo_service_off" msgid="3456583511226783064">"रेडियो निष्क्रिय छ"</string>
     <string name="radioInfo_roaming_in" msgid="3156335577793145965">"रोमिङ"</string>
     <string name="radioInfo_roaming_not" msgid="1904547918725478110">"रोमिङमा छैन"</string>
