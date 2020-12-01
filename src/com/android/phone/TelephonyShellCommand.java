@@ -64,8 +64,9 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
     private static final String DATA_ENABLE = "enable";
     private static final String DATA_DISABLE = "disable";
 
-    private static final String IMS_SET_CARRIER_SERVICE = "set-ims-service";
-    private static final String IMS_GET_CARRIER_SERVICE = "get-ims-service";
+    private static final String IMS_SET_IMS_SERVICE = "set-ims-service";
+    private static final String IMS_GET_IMS_SERVICE = "get-ims-service";
+    private static final String IMS_CLEAR_SERVICE_OVERRIDE = "clear-ims-service-override";
     private static final String IMS_ENABLE = "enable";
     private static final String IMS_DISABLE = "disable";
     // Used to disable or enable processing of conference event package data from the network.
@@ -210,6 +211,11 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         pw.println("      -d: The ImsService defined as the device default ImsService.");
         pw.println("      -f: The feature type that the query will be requested for. If none is");
         pw.println("          specified, the returned package name will correspond to MMTEL.");
+        pw.println("  ims clear-ims-service-override [-s SLOT_ID]");
+        pw.println("    Clear all carrier ImsService overrides. This does not work for device ");
+        pw.println("    configuration overrides. Options are:");
+        pw.println("      -s: The SIM slot ID for the registered ImsService. If no option");
+        pw.println("          is specified, it will choose the default voice SIM slot.");
         pw.println("  ims enable [-s SLOT_ID]");
         pw.println("    enables IMS for the SIM slot specified, or for the default voice SIM slot");
         pw.println("    if none is specified.");
@@ -295,11 +301,14 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         }
 
         switch (arg) {
-            case IMS_SET_CARRIER_SERVICE: {
+            case IMS_SET_IMS_SERVICE: {
                 return handleImsSetServiceCommand();
             }
-            case IMS_GET_CARRIER_SERVICE: {
+            case IMS_GET_IMS_SERVICE: {
                 return handleImsGetServiceCommand();
+            }
+            case IMS_CLEAR_SERVICE_OVERRIDE: {
+                return handleImsClearCarrierServiceCommand();
             }
             case IMS_ENABLE: {
                 return handleEnableIms();
@@ -541,6 +550,42 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                     + (isCarrierService ? "-c " : "-d ")
                     + "-f " + featuresList + " "
                     + packageName + ", error" + e.getMessage());
+            errPw.println("Exception: " + e.getMessage());
+            return -1;
+        }
+        return 0;
+    }
+
+    // ims clear-ims-service-override
+    private int handleImsClearCarrierServiceCommand() {
+        PrintWriter errPw = getErrPrintWriter();
+        int slotId = getDefaultSlot();
+
+        String opt;
+        while ((opt = getNextOption()) != null) {
+            switch (opt) {
+                case "-s": {
+                    try {
+                        slotId = Integer.parseInt(getNextArgRequired());
+                    } catch (NumberFormatException e) {
+                        errPw.println("ims set-ims-service requires an integer as a SLOT_ID.");
+                        return -1;
+                    }
+                    break;
+                }
+            }
+        }
+
+        try {
+            boolean result = mInterface.clearCarrierImsServiceOverride(slotId);
+            if (VDBG) {
+                Log.v(LOG_TAG, "ims clear-ims-service-override -s " + slotId
+                        + ", result=" + result);
+            }
+            getOutPrintWriter().println(result);
+        } catch (RemoteException e) {
+            Log.w(LOG_TAG, "ims clear-ims-service-override -s " + slotId
+                    + ", error" + e.getMessage());
             errPw.println("Exception: " + e.getMessage());
             return -1;
         }

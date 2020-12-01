@@ -159,7 +159,7 @@ public class MessageTransportStateTracker implements DelegateBinderStateManager.
          * and sent over the network.
          */
         @Override
-        public void sendMessage(SipMessage sipMessage, int configVersion) {
+        public void sendMessage(SipMessage sipMessage, long configVersion) {
             long token = Binder.clearCallingIdentity();
             try {
                 mExecutor.execute(() -> {
