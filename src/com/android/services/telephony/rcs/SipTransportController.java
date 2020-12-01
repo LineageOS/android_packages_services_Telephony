@@ -673,12 +673,18 @@ public class SipTransportController implements RcsFeatureController.Feature,
 
 
     private void updateRoleCache() {
-        // Only one app can fulfill the SMS role.
-        String newSmsRolePackageName = mRoleManagerAdapter.getRoleHolders(RoleManager.ROLE_SMS)
-                .stream().findFirst().orElse("");
+        String newSmsRolePackageName = "";
+        try {
+            // Only one app can fulfill the SMS role.
+            newSmsRolePackageName = mRoleManagerAdapter.getRoleHolders(RoleManager.ROLE_SMS)
+                    .stream().findFirst().orElse("");
+        } catch (Exception e) {
+            logi("updateRoleCache: exception=" + e);
+        }
 
+        logi("updateRoleCache: new packageName=" + newSmsRolePackageName);
         if (TextUtils.equals(mCachedSmsRolePackageName, newSmsRolePackageName)) {
-            logi("onRoleHoldersChanged, skipping, role did not change");
+            logi("updateRoleCache, skipping, role did not change");
             return;
         }
         mCachedSmsRolePackageName = newSmsRolePackageName;
@@ -793,19 +799,24 @@ public class SipTransportController implements RcsFeatureController.Feature,
             unregisterListeners();
             scheduleDestroyDelegates(SipDelegateManager.SIP_DELEGATE_DESTROY_REASON_SERVICE_DEAD);
         } else {
+            logi("onRcsManagerChanged: registering listeners/updating role cache...");
             registerListeners();
             updateRoleCache();
         }
     }
 
     private void registerListeners() {
-        mRoleManagerAdapter.addOnRoleHoldersChangedListenerAsUser(mExecutorService, this,
-                UserHandle.SYSTEM);
+        try {
+            mRoleManagerAdapter.addOnRoleHoldersChangedListenerAsUser(mExecutorService, this,
+                    UserHandle.SYSTEM);
+        } catch (Exception e) {
+            logi("registerListeners: exception=" + e);
+        }
     }
 
     private void unregisterListeners() {
-        mRoleManagerAdapter.removeOnRoleHoldersChangedListenerAsUser(this, UserHandle.SYSTEM);
         mCachedSmsRolePackageName = "";
+        mRoleManagerAdapter.removeOnRoleHoldersChangedListenerAsUser(this, UserHandle.SYSTEM);
     }
 
     /**
