@@ -126,14 +126,18 @@ public class DelegateStateTracker implements DelegateBinderStateManager.StateCal
      */
     @Override
     public void onRegistrationStateChanged(DelegateRegistrationState registrationState) {
-        mLastRegState = registrationState;
         if (mRegistrationStateOverride > DelegateRegistrationState.DEREGISTERED_REASON_UNKNOWN) {
             logi("onRegistrationStateChanged: overriding registered state to "
                     + mRegistrationStateOverride);
             registrationState = overrideRegistrationForDelegateChange(mRegistrationStateOverride,
                     registrationState);
         }
-        logi("onRegistrationStateChanged: sending reg state" + registrationState);
+        if (registrationState.equals(mLastRegState)) {
+            logi("onRegistrationStateChanged: skipping notification, state is the same.");
+            return;
+        }
+        mLastRegState = registrationState;
+        logi("onRegistrationStateChanged: sending reg state " + registrationState);
         try {
             mAppStateCallback.onFeatureTagStatusChanged(registrationState, mDelegateDeniedTags);
         } catch (RemoteException e) {
@@ -168,10 +172,6 @@ public class DelegateStateTracker implements DelegateBinderStateManager.StateCal
             int registerOverrideReason, DelegateRegistrationState state) {
         Set<String> registeredFeatures = state.getRegisteredFeatureTags();
         DelegateRegistrationState.Builder overriddenState = new DelegateRegistrationState.Builder();
-        // Override REGISTERED only
-        for (String ft : registeredFeatures) {
-            overriddenState.addDeregisteringFeatureTag(ft, registerOverrideReason);
-        }
         // keep other deregistering/deregistered tags the same.
         for (FeatureTagState dereging : state.getDeregisteringFeatureTags()) {
             overriddenState.addDeregisteringFeatureTag(dereging.getFeatureTag(),
@@ -180,6 +180,10 @@ public class DelegateStateTracker implements DelegateBinderStateManager.StateCal
         for (FeatureTagState dereged : state.getDeregisteredFeatureTags()) {
             overriddenState.addDeregisteredFeatureTag(dereged.getFeatureTag(),
                     dereged.getState());
+        }
+        // Override REGISTERED only
+        for (String ft : registeredFeatures) {
+            overriddenState.addDeregisteringFeatureTag(ft, registerOverrideReason);
         }
         return overriddenState.build();
     }

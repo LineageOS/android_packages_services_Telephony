@@ -21,9 +21,11 @@ import static org.junit.Assert.assertNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.verify;
 
+import android.os.IBinder;
 import android.os.RemoteException;
 import android.telephony.ims.DelegateRegistrationState;
 import android.telephony.ims.DelegateRequest;
@@ -59,6 +61,7 @@ public class SipDelegateBinderConnectionTest extends TelephonyTestBase {
 
     @Mock private ISipDelegate mMockDelegate;
     @Mock private ISipTransport mMockTransport;
+    @Mock private IBinder mTransportBinder;
     @Mock private ISipDelegateMessageCallback mMessageCallback;
     @Mock private DelegateBinderStateManager.StateCallback mMockStateCallback;
     @Mock private BiConsumer<ISipDelegate, Set<FeatureTagState>> mMockCreatedCallback;
@@ -69,6 +72,7 @@ public class SipDelegateBinderConnectionTest extends TelephonyTestBase {
     @Before
     public void setUp() throws Exception {
         super.setUp();
+        doReturn(mTransportBinder).when(mMockTransport).asBinder();
         mStateCallbackList = new ArrayList<>(1);
         mStateCallbackList.add(mMockStateCallback);
     }
