@@ -27,7 +27,6 @@ import android.telephony.ims.aidl.ISipDelegateMessageCallback;
 import android.telephony.ims.aidl.ISipTransport;
 import android.telephony.ims.stub.DelegateConnectionStateCallback;
 import android.telephony.ims.stub.SipDelegate;
-import android.util.ArraySet;
 import android.util.LocalLog;
 import android.util.Log;
 import android.util.Pair;
@@ -76,7 +75,7 @@ public class SipDelegateController {
     private final LocalLog mLocalLog = new LocalLog(SipTransportController.LOG_SIZE);
 
     private DelegateBinderStateManager mBinderConnection;
-    private Set<String> mTrackedFeatureTags = new ArraySet<>();
+    private Set<String> mTrackedFeatureTags;
 
     public SipDelegateController(int subId, DelegateRequest initialRequest, String packageName,
             ISipTransport sipTransportImpl, ScheduledExecutorService executorService,
@@ -154,7 +153,11 @@ public class SipDelegateController {
         // May need to implement special case handling where SipDelegate denies all in supportedSet,
         // however that should be a very rare case. For now, if that happens, just keep the
         // SipDelegate bound.
-        return pendingCreate.thenApplyAsync((resultPair) -> {
+        // use thenApply here because we need this to happen on the same thread that it was called
+        // on in order to ensure ordering of onCreated being called, followed by registration
+        // state changed. If not, this is subject to race conditions where registered is queued
+        // before the async processing of this future.
+        return pendingCreate.thenApply((resultPair) -> {
             if (resultPair == null) {
                 logw("create: resultPair returned null");
                 return false;
@@ -164,7 +167,7 @@ public class SipDelegateController {
             mMessageTransportStateTracker.openTransport(resultPair.first, resultPair.second);
             mDelegateStateTracker.sipDelegateConnected(resultPair.second);
             return true;
-        }, mExecutorService);
+        });
     }
 
     /**
@@ -196,7 +199,7 @@ public class SipDelegateController {
             Set<FeatureTagState> deniedSet) {
         logi("Received feature tag set change, old: [" + mTrackedFeatureTags + "], new: "
                 + newSupportedSet + ",denied: [" + deniedSet + "]");
-        if (mTrackedFeatureTags.equals(newSupportedSet)) {
+        if (mTrackedFeatureTags != null && mTrackedFeatureTags.equals(newSupportedSet)) {
             logi("changeSupportedFeatureTags: no change, returning");
             return CompletableFuture.completedFuture(true);
         }

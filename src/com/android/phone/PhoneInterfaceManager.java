@@ -5373,6 +5373,36 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
+     * Clears any carrier ImsService overrides for the slot index specified that were previously
+     * set with {@link #setBoundImsServiceOverride(int, boolean, int[], String)}.
+     *
+     * This should only be used for testing.
+     *
+     * @param slotIndex the slot ID that the ImsService should bind for.
+     * @return true if clearing the carrier ImsService override succeeded or false if it did not.
+     */
+    @Override
+    public boolean clearCarrierImsServiceOverride(int slotIndex) {
+        int[] subIds = SubscriptionManager.getSubId(slotIndex);
+        TelephonyPermissions.enforceShellOnly(Binder.getCallingUid(),
+                "clearCarrierImsServiceOverride");
+        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(mApp,
+                (subIds != null ? subIds[0] : SubscriptionManager.INVALID_SUBSCRIPTION_ID),
+                "clearCarrierImsServiceOverride");
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            if (mImsResolver == null) {
+                // may happen if the device does not support IMS.
+                return false;
+            }
+            return mImsResolver.clearCarrierImsServiceConfiguration(slotIndex);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
      * Return the package name of the currently bound ImsService.
      *
      * @param slotId The slot that the ImsService is associated with.
