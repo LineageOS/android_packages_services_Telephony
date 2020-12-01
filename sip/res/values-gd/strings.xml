@@ -14,12 +14,65 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="sip_settings">Roghainnean SIP</string>
+    <string name="sip_accounts">Cunntasan SIP</string>
     <string name="sip_accounts_title">Cunntasan</string>
+    <string name="sip_receive_calls">Faigh gairmean a thig a-steach</string>
+    <string name="sip_receive_calls_summary">Caithidh seo barrachd dhen bhataraidh agad</string>
+    <string name="sip_call_options_title">Cleachd gairm SIP</string>
+    <string name="sip_call_options_wifi_only_title">Cleachd gairm SIP (WiFi a-mhàin)</string>
+    <string name="sip_call_options_entry_1">Airson a h-uile gairm nuair a bhios lìonra dàta ri làimh</string>
+    <string name="sip_call_options_entry_2">Airson gairmean SIP a-mhàin</string>
+    <string name="sip_call_options_wifi_only_entry_1">Airson a h-uile gairm</string>
+    <string name="add_sip_account">Cuir cunntas ris</string>
+    <string name="remove_sip_account">Thoir air falbh an cunntas</string>
+    <string name="sip_account_list">Cunntasan SIP</string>
+    <string name="saving_account">A’ sàbhaladh a’ chunntais…</string>
+    <string name="removing_account">A’ toirt air falbh a’ chunntais…</string>
     <string name="sip_menu_save">Sàbhail</string>
     <string name="sip_menu_discard">Tilg air falbh</string>
+    <string name="alert_dialog_close">Dùin a’ phròifil</string>
+    <string name="alert_dialog_ok">Ceart ma-thà</string>
     <string name="close_profile">Dùin</string>
+    <string name="registration_status_checking_status">A’ sgrùdadh na staid…</string>
+    <string name="registration_status_registering">’Gad chlàradh\u2026</string>
+    <string name="registration_status_still_trying">’Ga fheuchainn fhathast\u2026</string>
+    <string name="registration_status_not_receiving">Chan eil thu a’ faighinn gairmean.</string>
+    <string name="registration_status_no_data">Chaidh sgur de chlàradh a’ chunntais air sgàth ’s nach eil ceangal dhan eadar-lìon ann.</string>
+    <string name="registration_status_no_wifi_data">Chaidh sgur de chlàradh a’ chunntais air sgàth ’s nach eil ceangal WiFi ann.</string>
+    <string name="registration_status_not_running">Cha deach le clàradh a’ chunntais.</string>
+    <string name="registration_status_done">Tha thu a’ faighinn gairmean.</string>
+    <string name="registration_status_failed_try_later">Cha deach le clàradh a’ chunntais: (<xliff:g id="registration_error_message" example="timed out">%s</xliff:g>); feuchaidh sinn ris a-rithist uaireigin eile</string>
+    <string name="registration_status_invalid_credentials">Cha deach le clàradh a’ chunntais: Chan eil an t-ainm-cleachdaiche no chan eil am facal-faire mar bu chòir.</string>
+    <string name="registration_status_server_unreachable">Cha deach le clàradh a’ chunntais: Thoir sùil air ainm an fhrithealaiche.</string>
+    <string name="third_party_account_summary">Tha an cunntas seo ’ga chleachdadh le aplacaid <xliff:g id="account_owner" example="Google Talk">%s</xliff:g>.</string>
+    <string name="sip_edit_title">Fiosrachadh a’ chunntais SIP</string>
+    <string name="sip_edit_new_title">Fiosrachadh a’ chunntais SIP</string>
+    <string name="domain_address_title">Frithealaiche</string>
     <string name="username_title">Ainm-cleachdaiche</string>
+    <string name="password_title">Facal-faire</string>
     <string name="display_name_title">Ainm taisbeanaidh</string>
+    <string name="proxy_address_title">Seòladh a’ phrogsaidh a-mach</string>
+    <string name="port_title">Àireamh a’ phuirt</string>
+    <string name="transport_title">Seòrsa giùlain</string>
+    <string name="send_keepalive_title">Cuir keep-alive</string>
+    <string name="advanced_settings">Roghainnean eile</string>
+    <string name="auth_username_title">Ainm-cleachdaiche an dearbhaidh</string>
+    <string name="auth_username_summary">An t-ainm-cleachdaiche a thèid a chleachdadh a chù dearbhaidh</string>
+    <string name="default_preference_summary_username">&lt;Cha deach a shuidheachadh&gt;</string>
+    <string name="default_preference_summary_password">&lt;Cha deach a shuidheachadh&gt;</string>
+    <string name="default_preference_summary_domain_address">&lt;Cha deach a shuidheachadh&gt;</string>
+    <string name="display_name_summary">&lt;Co-ionnann ris an ainm-chleachdaiche&gt;</string>
+    <string name="optional_summary">&lt;Roghainneil&gt;</string>
+    <string name="advanced_settings_show">▷ Suath ris a shealltainn na h-uile</string>
+    <string name="advanced_settings_hide">▷ Suath ris a dh’fhalach na h-uile</string>
     <string name="all_empty_alert">Cuir a-steach fiosrachadh a’ chunntais SIP ùir.</string>
+    <string name="empty_alert">Tha <xliff:g id="input_field_name" example="Username, Password...">%s</xliff:g> riatanach is chan fhaod thu fhàgail bàn.</string>
+    <string name="not_a_valid_port">Bu chòir do dh’àireamh a’ phuirt a bhith am broinn 1000 ’s 65534.</string>
+    <string name="no_internet_available">Thoir sùil air a’ cheangal agad ris an eadar-lìon mus cuir thu gairm SIP.</string>
+    <string name="no_wifi_available">Feumaidh tu ceangal ti lìonra WiFi airson gairm SIP (cleachd na roghainnean “Uèirleas ⁊ lìonra”).</string>
+    <string name="no_voip">Chan eil taic ri gairmean SIP</string>
+    <string translatable="true" name="sip_system_decide">Gu fèin-obrachail</string>
     <string translatable="true" name="sip_always_send_keepalive">Cuir an-còmhnaidh</string>
+    <string name="sip_connection_service_label">Gairmean SIP ’na bhroinn</string>
 </resources>
