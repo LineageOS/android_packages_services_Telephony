@@ -296,6 +296,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private static final int EVENT_IS_NR_DUAL_CONNECTIVITY_ENABLED_DONE = 94;
     private static final int CMD_GET_CDMA_SUBSCRIPTION_MODE = 95;
     private static final int EVENT_GET_CDMA_SUBSCRIPTION_MODE_DONE = 96;
+    private static final int CMD_GET_SYSTEM_SELECTION_CHANNELS = 97;
+    private static final int EVENT_GET_SYSTEM_SELECTION_CHANNELS_DONE = 98;
 
     // Parameters of select command.
     private static final int SELECT_COMMAND = 0xA4;
@@ -1455,19 +1457,20 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                         Log.w(LOG_TAG, "Discarded CellInfo due to Callback RemoteException");
                     }
                     break;
-                case CMD_GET_CELL_LOCATION:
+                case CMD_GET_CELL_LOCATION: {
                     request = (MainThreadRequest) msg.obj;
                     WorkSource ws = (WorkSource) request.argument;
                     Phone phone = getPhoneFromRequest(request);
                     phone.getCellIdentity(ws, obtainMessage(EVENT_GET_CELL_LOCATION_DONE, request));
                     break;
-                case EVENT_GET_CELL_LOCATION_DONE:
+                }
+                case EVENT_GET_CELL_LOCATION_DONE: {
                     ar = (AsyncResult) msg.obj;
                     request = (MainThreadRequest) ar.userObj;
                     if (ar.exception == null) {
                         request.result = ar.result;
                     } else {
-                        phone = getPhoneFromRequest(request);
+                        Phone phone = getPhoneFromRequest(request);
                         request.result = (phone.getPhoneType() == PhoneConstants.PHONE_TYPE_CDMA)
                                 ? new CellIdentityCdma() : new CellIdentityGsm();
                     }
@@ -1476,6 +1479,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                         request.notifyAll();
                     }
                     break;
+                }
                 case CMD_MODEM_REBOOT:
                     request = (MainThreadRequest) msg.obj;
                     onCompleted = obtainMessage(EVENT_RESET_MODEM_CONFIG_DONE, request);
@@ -1551,6 +1555,35 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     notifyRequester(request);
                     break;
                 }
+                case CMD_GET_SYSTEM_SELECTION_CHANNELS: {
+                    request = (MainThreadRequest) msg.obj;
+                    onCompleted = obtainMessage(EVENT_GET_SYSTEM_SELECTION_CHANNELS_DONE, request);
+                    Phone phone = getPhoneFromRequest(request);
+                    if (phone != null) {
+                        phone.getSystemSelectionChannels(onCompleted);
+                    } else {
+                        loge("getSystemSelectionChannels: No phone object");
+                        request.result = new ArrayList<RadioAccessSpecifier>();
+                        notifyRequester(request);
+                    }
+                    break;
+                }
+                case EVENT_GET_SYSTEM_SELECTION_CHANNELS_DONE:
+                    ar = (AsyncResult) msg.obj;
+                    request = (MainThreadRequest) ar.userObj;
+                    if (ar.exception == null && ar.result != null) {
+                        request.result = ar.result;
+                    } else {
+                        request.result = new IllegalArgumentException(
+                                "Failed to retrieve system selection channels");
+                        if (ar.result == null) {
+                            loge("getSystemSelectionChannels: Empty response");
+                        } else {
+                            loge("getSystemSelectionChannels: Unknown exception");
+                        }
+                    }
+                    notifyRequester(request);
+                    break;
                 case EVENT_SET_FORBIDDEN_PLMNS_DONE:
                     ar = (AsyncResult) msg.obj;
                     request = (MainThreadRequest) ar.userObj;
@@ -8713,6 +8746,24 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             sendRequestAsync(CMD_SET_SYSTEM_SELECTION_CHANNELS, argument, phone, null);
         } finally {
             Binder.restoreCallingIdentity(token);
+        }
+    }
+
+    @Override
+    public List<RadioAccessSpecifier> getSystemSelectionChannels(int subId) {
+        TelephonyPermissions
+                .enforeceCallingOrSelfReadPrivilegedPhoneStatePermissionOrCarrierPrivilege(
+                        mApp, subId, "getSystemSelectionChannels");
+        WorkSource workSource = getWorkSource(Binder.getCallingUid());
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            List<RadioAccessSpecifier> specifiers =
+                    (List<RadioAccessSpecifier>) sendRequest(CMD_GET_SYSTEM_SELECTION_CHANNELS,
+                    null, subId, workSource);
+            if (DBG) log("getSystemSelectionChannels: " + specifiers);
+            return specifiers;
+        } finally {
+            Binder.restoreCallingIdentity(identity);
         }
     }
 
