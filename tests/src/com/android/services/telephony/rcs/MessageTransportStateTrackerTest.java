@@ -18,6 +18,7 @@ package com.android.services.telephony.rcs;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.never;
@@ -96,7 +97,7 @@ public class MessageTransportStateTrackerTest extends TelephonyTestBase {
         tracker.getDelegateConnection().sendMessage(TEST_MESSAGE, 1 /*version*/);
         verify(mISipDelegate).sendMessage(TEST_MESSAGE, 1 /*version*/);
 
-        doThrow(new RemoteException()).when(mISipDelegate).sendMessage(any(), anyInt());
+        doThrow(new RemoteException()).when(mISipDelegate).sendMessage(any(), anyLong());
         tracker.getDelegateConnection().sendMessage(TEST_MESSAGE, 1 /*version*/);
         verify(mDelegateMessageCallback).onMessageSendFailure(any(),
                 eq(SipDelegateManager.MESSAGE_FAILURE_REASON_DELEGATE_DEAD));

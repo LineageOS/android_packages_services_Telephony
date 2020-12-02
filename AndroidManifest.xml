@@ -219,6 +219,7 @@
     <uses-permission android:name="android.permission.START_ACTIVITIES_FROM_BACKGROUND" />
     <uses-permission android:name="android.permission.NETWORK_STATS_PROVIDER" />
     <uses-permission android:name="android.permission.MANAGE_SUBSCRIPTION_PLANS"/>
+    <uses-permission android:name="android.permission.OBSERVE_ROLE_HOLDERS"/>
 
     <!-- Needed to listen to changes in projection state. -->
     <uses-permission android:name="android.permission.READ_PROJECTION_STATE"/>
@@ -239,6 +240,10 @@
                 android:exported="true"
                 android:readPermission="android.permission.READ_CONTACTS"
                 android:writePermission="android.permission.WRITE_CONTACTS" />
+
+        <provider android:name="com.android.ims.rcs.uce.eab.EabProvider"
+                android:authorities="eab"
+                android:exported="false"/>
 
         <!-- Dialer UI that only allows emergency calls -->
         <activity android:name="EmergencyDialer"
