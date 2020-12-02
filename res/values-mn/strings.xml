@@ -50,7 +50,6 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"Дуут шуудангийн тохиргоог зөвхөн Үндсэн хэрэглэгч өөрчлөх боломжтой."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"Таны SIM карт тайлагдлаа. Таны утас тайлагдаж байна…"</string>
     <string name="label_ndp" msgid="7617392683877410341">"SIM сүлжээ тайлах PIN"</string>
-    <string name="label_phoneid" msgid="8775611434123577808">"Операторын СИМ түгжигдсэн"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"Тайлах"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"Алгасах"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"Сүлжээг тайлах хүсэлтийг илгээж байна…"</string>
@@ -124,13 +123,6 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"<xliff:g id="PHONENUMBER">{0}</xliff:g> руу дамжуулж байна"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Идэвхгүй"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Таны үүрэн холбоо үзүүлэгчээс утас завгүй байхад дуудлагыг дамжуулахыг зогсоох үйлчилгээг дэмждэггүй."</string>
-    <string name="registration_cf_forbidden" msgid="4386482610771190420">"Таны оператор компани дуудлага шилжүүлэхийг дэмждэггүй."</string>
-    <string name="cdma_call_waiting" msgid="4565070960879673216">"\"Дуудлага хүлээлгэнд\" тохиргоог асаах уу?"</string>
-    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"Дуудлагын үеэр танд ирсэн дуудлагын талаар мэдэгдэнэ"</string>
-    <string name="enable_cdma_cw" msgid="811047045863422232">"Асаах"</string>
-    <string name="disable_cdma_cw" msgid="7119290446496301734">"Болих"</string>
-    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"IMS доорх CDMA-н \"Дуудлага хүлээлгэнд\" тохиргоо асаалттай байна"</string>
-    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"IMS доорх CDMA-н \"Дуудлага хүлээлгэнд\" тохиргоо унтраалттай байна"</string>
     <string name="updating_title" msgid="6130548922615719689">"Дуудлагын тохиргоо"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Дуудлагын тохиргоог зөвхөн админ хэрэглэгч солих боломжтой."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Тохиргоо (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -645,12 +637,6 @@
     <string name="alert_dialog_yes" msgid="3532525979632841417">"Тийм"</string>
     <string name="alert_dialog_no" msgid="1075632654085988420">"Үгүй"</string>
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"Алгасах"</string>
-    <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"Утас яаралтай буцаж холбоо барих горимд байна"</string>
-    <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"<xliff:g id="COMPLETETIME">%s</xliff:g> хүртэл"</string>
-    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
-      <item quantity="other">Утас <xliff:g id="COUNT_1">%s</xliff:g> минутын турш яаралтай буцаж холбоо барих горимд байх болно.\nТа одоо гарахыг хүсэж байна уу?</item>
-      <item quantity="one">Утас <xliff:g id="COUNT_0">%s</xliff:g> минутын турш яаралтай буцаж холбоо барих горимд байх болно.\nТа одоо гарахыг хүсэж байна уу?</item>
-    </plurals>
     <string name="voicemail_provider" msgid="4158806657253745294">"Үйлчилгээ"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"Тохиргоо"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;Тохируулаагүй&gt;"</string>
@@ -905,11 +891,6 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Сэргээх"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"DNS шалгалтыг унтраах/асаах"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"OEM-тодорхой Мэдээлэл/Тохиргоо"</string>
-    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC боломжтой:"</string>
-    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR хязгаарласан:"</string>
-    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR боломжтой:"</string>
-    <string name="radio_info_nr_state" msgid="1337571996788535356">"NR төлөв:"</string>
-    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR давтамж:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Радио зурвасын горимыг тохируулах"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Зурвасын жагсаалтыг ачаалж байна…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Тохируулах"</string>

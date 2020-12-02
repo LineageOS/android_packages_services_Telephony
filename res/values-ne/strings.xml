@@ -50,7 +50,6 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"प्राथमिक प्रयोगकर्ताले मात्र भ्वाइस मेल सेटिङहरू परिमार्जन गर्न सक्नुहुन्छ।"</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"तपाईँको SIM कार्ड अनब्लक गरिएको छ। तपाईँको फोन अनलक हुँदैछ ..."</string>
     <string name="label_ndp" msgid="7617392683877410341">"SIM नेटवर्क अनलक PIN"</string>
-    <string name="label_phoneid" msgid="8775611434123577808">"अपरेटरका लागि SIM लक गरिएको छ"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"अनलोक गर्नुहोस्"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"खारेज गर्नुहोस्"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"नेटवर्क अनलक गर्न अनुरोध गर्दै..."</string>
@@ -124,13 +123,6 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"<xliff:g id="PHONENUMBER">{0}</xliff:g> मा फर्वाड गर्दै"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"बन्द गर्नुहोस्"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"तपाईंको फोन पहुँचयोग्य नहुँदा तपाईंको केरियरले कल-फर्वार्डिङ असक्षम बनाउँदा समर्थन गर्दैन।"</string>
-    <string name="registration_cf_forbidden" msgid="4386482610771190420">"तपाईंको सेवा प्रदायकले कल फर्वार्ड गर्ने सुविधा उपलब्ध गराउँदैन।"</string>
-    <string name="cdma_call_waiting" msgid="4565070960879673216">"कल प्रतीक्षाको सुविधा सक्रिय गर्ने हो?"</string>
-    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"कल हुँदै गर्दा, तपाईंलाई आगमन कलबारे जानकारी दिइने छ"</string>
-    <string name="enable_cdma_cw" msgid="811047045863422232">"सक्रिय गर्नुहोस्"</string>
-    <string name="disable_cdma_cw" msgid="7119290446496301734">"रद्द गर्नुहोस्"</string>
-    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"IMS अन्तर्गत CDMA कल प्रतीक्षाको सुविधा सक्रिय छ"</string>
-    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"IMS अन्तर्गत CDMA कल प्रतीक्षाको सुविधा निष्क्रिय छ"</string>
     <string name="updating_title" msgid="6130548922615719689">"कल सेटिङहरू"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"कल सेटिङहरू केवल प्रशासकीय प्रयोगकर्ताद्वारा परिवर्तन गर्न सकिन्छ।"</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"सेटिङहरू (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -144,7 +136,7 @@
     <string name="stk_cc_ss_to_ussd_error" msgid="8330749347425752192">"SS अनुरोध USSD अनुरोधमा परिवर्तन गरियो"</string>
     <string name="stk_cc_ss_to_ss_error" msgid="8297155544652134278">"नयाँ SS अनुरोधमा परिवर्तन गरियो"</string>
     <string name="stk_cc_ss_to_dial_video_error" msgid="4255261231466032505">"SS अनुरोध भिडियो कलमा परिवर्तन गरियो"</string>
-    <string name="fdn_check_failure" msgid="1833769746374185247">"तपाईंको फोन एप स्थिर डायल गर्ने नम्बर सेटिङहरू खोलिएको छ। केही कल-सम्बन्धित विशेषताहरूले कार्य गरिरहेका छैनन्।"</string>
+    <string name="fdn_check_failure" msgid="1833769746374185247">"तपाईंको फोन अनुप्रयोग स्थिर डायल गर्ने नम्बर सेटिङहरू खोलिएको छ। केही कल-सम्बन्धित विशेषताहरूले कार्य गरिरहेका छैनन्।"</string>
     <string name="radio_off_error" msgid="8321564164914232181">"यी सेटिङहरू हेर्नु पहिले रेडियो खोल्नुहोस्।"</string>
     <string name="close_dialog" msgid="1074977476136119408">"ठिक छ"</string>
     <string name="enable" msgid="2636552299455477603">"सकृय पार्नुहोस्"</string>
@@ -633,8 +625,8 @@
     <string name="phone_in_ecm_call_notification_text" msgid="653972232922670335">"डेटा जडान अक्षम भयो"</string>
     <string name="phone_in_ecm_notification_complete_time" msgid="7341624337163082759">"<xliff:g id="COMPLETETIME">%s</xliff:g> सम्म डेटा कनेक्ट भएको छैन"</string>
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="5425906903766466743">
-      <item quantity="other"> फोन आपतकालीन कलब्याक मोडमा <xliff:g id="COUNT_1">%s</xliff:g> मिनेटको लागि हुनेछ। यस मोडको अवस्थामा एक डेटा जडान प्रयोग गरेर कुनै पनि एपहरू प्रयोग गर्न सकिँदैन। के तपाईं अहिले निस्कन चाहनुहुन्छ?</item>
-      <item quantity="one"> फोन आपतकालीन कलब्याक मोडमा <xliff:g id="COUNT_0">%s</xliff:g> मिनेटको लागि हुनेछ। यस मोडको समयमा एक डेटा जडान प्रयोग गरेर कुनै पनि एपहरू प्रयोग गर्न सकिँदैन। के तपाईं अहिले निस्कन चाहनुहुन्छ?</item>
+      <item quantity="other"> फोन आपतकालीन कलब्याक मोडमा <xliff:g id="COUNT_1">%s</xliff:g> मिनेटको लागि हुनेछ। यस मोडको अवस्थामा एक डेटा जडान प्रयोग गरेर कुनै पनि अनुप्रयोगहरू प्रयोग गर्न सकिँदैन। के तपाईं अहिले निस्कन चाहनुहुन्छ?</item>
+      <item quantity="one"> फोन आपतकालीन कलब्याक मोडमा <xliff:g id="COUNT_0">%s</xliff:g> मिनेटको लागि हुनेछ। यस मोडको समयमा एक डेटा जडान प्रयोग गरेर कुनै पनि अनुप्रयोगहरू प्रयोग गर्न सकिँदैन। के तपाईं अहिले निस्कन चाहनुहुन्छ?</item>
     </plurals>
     <plurals name="alert_dialog_not_avaialble_in_ecm" formatted="false" msgid="1152682528741457004">
       <item quantity="other"> आपतकालीन कलब्याक मोडको समयमा चयनित कार्य उपलब्ध छैन। फोन यस मोडमा <xliff:g id="COUNT_1">%s</xliff:g> मिनेटको लागि हुनेछ। के तपाईं अहिले निस्कन चाहनुहुन्छ?</item>
@@ -645,18 +637,12 @@
     <string name="alert_dialog_yes" msgid="3532525979632841417">"हो"</string>
     <string name="alert_dialog_no" msgid="1075632654085988420">"होइन"</string>
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"खारेज गर्नुहोस्"</string>
-    <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"यो फोन आपत्‌कालीन कलब्याक मोडमा छ"</string>
-    <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"<xliff:g id="COMPLETETIME">%s</xliff:g> सम्म"</string>
-    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
-      <item quantity="other">यो फोन <xliff:g id="COUNT_1">%s</xliff:g> मिनेटका लागि आपत्‌कालीन कलब्याक मोडमा हुने छ।\nतपाईं अहिले नै बाहिर निस्कन चाहनुहुन्छ?</item>
-      <item quantity="one">यो फोन <xliff:g id="COUNT_0">%s</xliff:g> मिनेटका लागि आपत्‌कालीन कलब्याक मोडमा हुने छ।\nतपाईं अहिले नै बाहिर निस्कन चाहनुहुन्छ?</item>
-    </plurals>
     <string name="voicemail_provider" msgid="4158806657253745294">"सेवा"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"सेटअप"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"सेट गरेको छैन"</string>
     <string name="other_settings" msgid="8895088007393598447">"अन्य कल सेटिङहरू"</string>
     <string name="calling_via_template" msgid="1791323450703751750">"<xliff:g id="PROVIDER_NAME">%s</xliff:g> को मार्फत कल गर्दै"</string>
-    <string name="contactPhoto" msgid="7885089213135154834">"सम्पर्क फोटो"</string>
+    <string name="contactPhoto" msgid="7885089213135154834">"सम्पर्क तस्बिर"</string>
     <string name="goPrivate" msgid="4645108311382209551">"निजी जानुहोस्"</string>
     <string name="selectContact" msgid="1527612842599767382">"सम्पर्क चयन गर्नुहोस्"</string>
     <string name="not_voice_capable" msgid="2819996734252084253">"भ्वाइस कल गर्ने समर्थित छैन"</string>
@@ -905,11 +891,6 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"पुनः ताजा गर्नुहोस्"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"DNS को जाँचलाई टगल गर्नुहोस्"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"OEM-विशिष्ट जानकारी/सेटिङ"</string>
-    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC उपलब्ध छ:"</string>
-    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR प्रतिबन्धित छ:"</string>
-    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR उपलब्ध छ:"</string>
-    <string name="radio_info_nr_state" msgid="1337571996788535356">"NR को स्थिती:"</string>
-    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR फ्रिक्वेन्सी:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"रेडियोको ब्यान्डसम्बन्धी मोडलाई सेट गर्नुहोस्"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"ब्यान्डको सूची लोड गर्दै…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"सेट गर्नुहोस्"</string>
