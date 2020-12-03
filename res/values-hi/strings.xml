@@ -648,7 +648,7 @@
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;सेट नहीं है&gt;"</string>
     <string name="other_settings" msgid="8895088007393598447">"अन्य कॉल सेटिंग"</string>
     <string name="calling_via_template" msgid="1791323450703751750">"कॉल <xliff:g id="PROVIDER_NAME">%s</xliff:g> से जा रही है"</string>
-    <string name="contactPhoto" msgid="7885089213135154834">"संपर्क का फ़ोटो"</string>
+    <string name="contactPhoto" msgid="7885089213135154834">"संपर्क की फ़ोटो"</string>
     <string name="goPrivate" msgid="4645108311382209551">"निजी हो जाएं"</string>
     <string name="selectContact" msgid="1527612842599767382">"संपर्क को चुनें"</string>
     <string name="not_voice_capable" msgid="2819996734252084253">"ध्वनि कॉल करना समर्थित नहीं है"</string>
