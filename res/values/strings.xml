@@ -2172,4 +2172,12 @@
     <string name="carrier_provisioning">Carrier Provisioning Info</string>
     <!-- Trigger Carrier Provisioning [CHAR LIMIT=NONE] -->
     <string name="trigger_carrier_provisioning">Trigger Carrier Provisioning</string>
+
+    <!-- details of the message popped up when there is
+    bad call quality caused by bluetooth connection-->
+    <string name="call_quality_notification_bluetooth_details">
+        Suggestion: Improve Bluetooth connectivity</string>
+    <!-- name of the notification that pops up during
+    a phone call when there is bad call quality -->
+    <string name="call_quality_notification_name">Call Quality Notification</string>
 </resources>
