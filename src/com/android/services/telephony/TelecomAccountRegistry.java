@@ -1134,7 +1134,7 @@ public class TelecomAccountRegistry {
         this.mTelephonyConnectionService = telephonyConnectionService;
     }
 
-    TelephonyConnectionService getTelephonyConnectionService() {
+    public TelephonyConnectionService getTelephonyConnectionService() {
         return mTelephonyConnectionService;
     }
 
