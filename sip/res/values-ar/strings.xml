@@ -34,7 +34,7 @@
     <string name="sip_menu_save" msgid="4377112554203123060">"حفظ"</string>
     <string name="sip_menu_discard" msgid="1883166691772895243">"إلغاء"</string>
     <string name="alert_dialog_close" msgid="1734746505531110706">"إغلاق الملف الشخصي"</string>
-    <string name="alert_dialog_ok" msgid="7806760618798687406">"موافق"</string>
+    <string name="alert_dialog_ok" msgid="7806760618798687406">"حسنًا"</string>
     <string name="close_profile" msgid="3756064641769751774">"إغلاق"</string>
     <string name="registration_status_checking_status" msgid="884179594507591180">"جارٍ فحص الحالة…"</string>
     <string name="registration_status_registering" msgid="7986331597809521791">"جارٍ التسجيل…"</string>

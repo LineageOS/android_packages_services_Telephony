@@ -50,6 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"មាន​តែ​អ្នក​ប្រើប្រាស់​ចម្បង​ទើប​អាច​កែប្រែ​ការ​កំណត់​សារ​ជា​សំឡេង​បាន។"</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"បាន​ដោះ​សោ​ស៊ីមកាត​របស់​អ្នក។ ទូរស័ព្ទ​របស់​អ្នក​កំពុង​ដោះ​សោ…"</string>
     <string name="label_ndp" msgid="7617392683877410341">"ដោះ​សោ​​កូដ PIN បណ្ដាញ​ស៊ីមកាត"</string>
+    <string name="label_phoneid" msgid="8775611434123577808">"ស៊ីម​ត្រូវ​បាន​ចាក់​សោ​សម្រាប់​ប្រតិបត្តិករ"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"ដោះ​សោ"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"បោះបង់"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"កំពុង​ស្នើ​​ដោះ​សោ​បណ្ដាញ…"</string>
@@ -123,6 +124,13 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"បញ្ជូន​បន្ត​ទៅ​ <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"បិទ"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"ក្រុមហ៊ុន​បញ្ជូន​របស់​អ្នក​​មិន​គាំទ្រ​ការ​បិទ​ការ​ហៅ​​បញ្ជូន​បន្ត នៅ​ពេល​ទូរស័ព្ទ​របស់​អ្នក​មិន​អាច​ហៅ​ចូល។"</string>
+    <string name="registration_cf_forbidden" msgid="4386482610771190420">"ក្រុមហ៊ុន​សេវា​ទូរសព្ទ​របស់​អ្នក​មិន​ផ្ដល់​ជូន​ការហៅ​បន្ត​ទេ។"</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"បើក​ការរង់ចាំ​ការហៅ​ទូរសព្ទ​ឬ?"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"ក្នុង​ពេល​ហៅ​ទូរសព្ទ អ្នក​នឹង​ទទួល​បាន​ការជូន​ដំណឹង​អំពី​ការហៅ​ចូល"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"បើក"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"បោះបង់"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"ការរង់ចាំ​ការហៅ ទូរសព្ទ CDMA ក្រោម IMS ត្រូវ​បាន​បើក"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"ការរង់ចាំ​ការហៅ ទូរសព្ទ CDMA ក្រោម IMS ត្រូវ​បាន​បិទ"</string>
     <string name="updating_title" msgid="6130548922615719689">"កំណត់​ការ​ហៅ"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"ការកំណត់ការហៅអាចផ្លាស់ប្តូរបានដោយអ្នកប្រើដែលមានសិទ្ធិគ្រប់គ្រងតែប៉ុណ្ណោះ។"</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"ការកំណត់ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -564,7 +572,7 @@
     <string name="dialerKeyboardHintText" msgid="1115266533703764049">"ប្រើ​​ក្ដារចុច​ដើម្បី​ចុច​លេខ"</string>
     <string name="onscreenHoldText" msgid="4025348842151665191">"ដាក់ឱ្យរង់ចាំ"</string>
     <string name="onscreenEndCallText" msgid="6138725377654842757">"បញ្ចប់"</string>
-    <string name="onscreenShowDialpadText" msgid="658465753816164079">"បន្ទះ​លេខ"</string>
+    <string name="onscreenShowDialpadText" msgid="658465753816164079">"ផ្ទាំងចុចលេខ"</string>
     <string name="onscreenMuteText" msgid="5470306116733843621">"ស្ងាត់"</string>
     <string name="onscreenAddCallText" msgid="9075675082903611677">"បន្ថែម​ការ​ហៅ"</string>
     <string name="onscreenMergeCallsText" msgid="3692389519611225407">"បញ្ចូល​ការ​ហៅ​រួម​​គ្នា"</string>
@@ -637,6 +645,12 @@
     <string name="alert_dialog_yes" msgid="3532525979632841417">"បាទ/ចាស"</string>
     <string name="alert_dialog_no" msgid="1075632654085988420">"ទេ"</string>
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"បោះបង់"</string>
+    <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"ទូរសព្ទ​ស្ថិត​ក្នុង​មុខងារ​ហៅ​ទៅ​វិញ​ពេល​មាន​អាសន្ន"</string>
+    <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"រហូត​ដល់​ម៉ោង <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
+    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
+      <item quantity="other">ទូរសព្ទ​នឹង​ស្ថិត​ក្នុង​មុខងារ​ហៅ​ទៅ​វិញ​ពេល​មាន​អាសន្ន​រយៈ​ពេល <xliff:g id="COUNT_1">%s</xliff:g> នាទី។\nតើ​អ្នក​ចង់​ចេញ​ឥឡូវ​នេះ​ដែរ​ឬ​ទេ?</item>
+      <item quantity="one">ទូរសព្ទ​នឹង​ស្ថិត​ក្នុង​មុខងារ​ហៅ​ទៅ​វិញ​ពេល​មាន​អាសន្ន​រយៈ​ពេល <xliff:g id="COUNT_0">%s</xliff:g> នាទី។\nតើ​អ្នក​ចង់​ចេញ​ឥឡូវ​នេះ​ដែរ​ឬ​ទេ?</item>
+    </plurals>
     <string name="voicemail_provider" msgid="4158806657253745294">"សេវា"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"រៀបចំ"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt; មិន​កំណត់ &gt;"</string>
@@ -891,6 +905,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"ផ្ទុកឡើងវិញ"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"បិទ/បើកការពិនិត្យ DNS"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"ការ​កំណត់/ព័ត៌មាន​ជាក់លាក់ OEM"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"មាន EN-DC៖"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR ត្រូវ​បាន​រឹតត្បិត៖"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"មាន NR៖"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"ស្ថានភាព NR៖"</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"កម្រិត​ញឹកញាប់​នៃ NR៖"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"កំណត់​មុខងារ​កម្រិត​បញ្ជូន​វិទ្យុ"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"កំពុងដំណើរការបញ្ជីក្រុម…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"កំណត់"</string>
