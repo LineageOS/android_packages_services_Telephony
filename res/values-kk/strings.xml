@@ -97,7 +97,7 @@
     <string name="sum_hide_caller_id" msgid="131100328602371933">"Шығыс қоңырауларда нөмірді жасыру"</string>
     <string name="sum_show_caller_id" msgid="3571854755324664591">"Шығыс қоңыраулар нөмірді көрсету"</string>
     <string name="sum_default_caller_id" msgid="1767070797135682959">"Шығыс қоңырауларында менің нөмірім көрсетілуі үшін бастапқы оператор параметрлерін қолдану"</string>
-    <string name="labelCW" msgid="8449327023861428622">"Күтудегі қоңырау"</string>
+    <string name="labelCW" msgid="8449327023861428622">"Қоңырауды ұстап тұру"</string>
     <string name="sum_cw_enabled" msgid="3977308526187139996">"Қоңырау кезінде маған келген қоңыраулар жайлы хабарлау"</string>
     <string name="sum_cw_disabled" msgid="3658094589461768637">"Қоңырау кезінде маған келген қоңыраулар жайлы хабарлау"</string>
     <string name="call_forwarding_settings" msgid="8937130467468257671">"Қоңырауды басқа нөмірге бағыттау параметрлері"</string>
@@ -125,12 +125,12 @@
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Өшірулі"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Телефоныңыз қол жетімсіз болғанда жабдықтаушы қоңырауды басқа нөмірге бағыттауды өшіруді қолдамайды."</string>
     <string name="registration_cf_forbidden" msgid="4386482610771190420">"Операторыңыз қоңырауды басқа нөмірге бағыттауды қолдамайды."</string>
-    <string name="cdma_call_waiting" msgid="4565070960879673216">"Басқа желідегі қоңырау мүмкіндігін қосу керек пе?"</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"Қоңырауды ұстап тұру мүмкіндігін қосу керек пе?"</string>
     <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"Сөйлесіп жатқанда сізге кіріс қоңыраулар туралы хабарландыру көрсетіледі."</string>
     <string name="enable_cdma_cw" msgid="811047045863422232">"Қосу"</string>
     <string name="disable_cdma_cw" msgid="7119290446496301734">"Бас тарту"</string>
-    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"IMS бойынша басқа CDMA желісіндегі қоңырау мүмкіндігі қосулы."</string>
-    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"IMS бойынша басқа CDMA желісіндегі қоңырау мүмкіндігі өшірулі."</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"IMS бойынша басқа CDMA желісіндегі қоңырауды ұстап тұру мүмкіндігі қосулы."</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"IMS бойынша басқа CDMA желісіндегі қоңырауды ұстап тұру мүмкіндігі өшірулі."</string>
     <string name="updating_title" msgid="6130548922615719689">"Қоңырау параметрлері"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Қоңырау параметрлерін тек әкімші пайдаланушы өзгерте алады."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Параметрлер (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
