@@ -100,6 +100,44 @@ public class TelephonyManagerTest {
     }
 
     @Test
+    public void testFilterEmergencyNumbersByCategories() throws Exception {
+        Map<Integer, List<EmergencyNumber>> emergencyNumberLists = new HashMap<>();
+        List<EmergencyNumber> emergencyNumberList = new ArrayList<>();
+        EmergencyNumber number_police = new EmergencyNumber(
+                "911",
+                "us",
+                "30",
+                EmergencyNumber.EMERGENCY_SERVICE_CATEGORY_POLICE,
+                new ArrayList<String>(),
+                EmergencyNumber.EMERGENCY_NUMBER_SOURCE_NETWORK_SIGNALING,
+                EmergencyNumber.EMERGENCY_CALL_ROUTING_NORMAL);
+        EmergencyNumber number_fire = new EmergencyNumber(
+                "912",
+                "us",
+                "30",
+                EmergencyNumber.EMERGENCY_SERVICE_CATEGORY_FIRE_BRIGADE,
+                new ArrayList<String>(),
+                EmergencyNumber.EMERGENCY_NUMBER_SOURCE_NETWORK_SIGNALING,
+                EmergencyNumber.EMERGENCY_CALL_ROUTING_NORMAL);
+        emergencyNumberList.add(number_police);
+        emergencyNumberList.add(number_fire);
+        final int test_sub_id = 1;
+        emergencyNumberLists.put(test_sub_id, emergencyNumberList);
+
+        Map<Integer, List<EmergencyNumber>> returnedEmergencyNumberLists =
+                mTelephonyManager.filterEmergencyNumbersByCategories(emergencyNumberLists,
+                        EmergencyNumber.EMERGENCY_SERVICE_CATEGORY_POLICE);
+
+        // Verify the returned number list contains only the police number(s)
+        List<EmergencyNumber> returnedEmergencyNumberList = returnedEmergencyNumberLists.get(
+                test_sub_id);
+        for (EmergencyNumber num : returnedEmergencyNumberList) {
+            assertTrue(num.isInEmergencyServiceCategories(
+                    EmergencyNumber.EMERGENCY_SERVICE_CATEGORY_POLICE));
+        }
+    }
+
+    @Test
     public void testGetEmergencyNumberListForCategories() throws Exception {
         Map<Integer, List<EmergencyNumber>> emergencyNumberLists = new HashMap<>();
         List<EmergencyNumber> emergencyNumberList = new ArrayList<>();
