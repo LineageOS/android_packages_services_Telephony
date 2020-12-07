@@ -1162,9 +1162,9 @@ public class TelephonyConnectionService extends ConnectionService {
                             phone.getPhoneId()));
         }
 
-
+        PhoneAccountHandle accountHandle = adjustAccountHandle(phone, request.getAccountHandle());
         final TelephonyConnection connection =
-                createConnectionFor(phone, null, true /* isOutgoing */, request.getAccountHandle(),
+                createConnectionFor(phone, null, true /* isOutgoing */, accountHandle,
                         request.getTelecomCallId(), request.isAdhocConferenceCall());
         if (connection == null) {
             return Connection.createFailedConnection(
@@ -2490,5 +2490,21 @@ public class TelephonyConnectionService extends ConnectionService {
     public void addTelephonyConference(@NonNull TelephonyConferenceBase conference) {
         addConference(conference);
         conference.addTelephonyConferenceListener(mTelephonyConferenceListener);
+    }
+
+    private PhoneAccountHandle adjustAccountHandle(Phone phone,
+            PhoneAccountHandle origAccountHandle) {
+        int origSubId = PhoneUtils.getSubIdForPhoneAccountHandle(origAccountHandle);
+        int subId = phone.getSubId();
+        if (origSubId != SubscriptionManager.INVALID_SUBSCRIPTION_ID
+                && subId != SubscriptionManager.INVALID_SUBSCRIPTION_ID
+                && origSubId != subId) {
+            PhoneAccountHandle handle = TelecomAccountRegistry.getInstance(this)
+                .getPhoneAccountHandleForSubId(subId);
+            if (handle != null) {
+                return handle;
+            }
+        }
+        return origAccountHandle;
     }
 }
