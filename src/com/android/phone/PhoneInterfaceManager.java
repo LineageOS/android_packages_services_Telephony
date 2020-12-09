@@ -306,6 +306,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private static final int EVENT_GET_SYSTEM_SELECTION_CHANNELS_DONE = 98;
     private static final int CMD_SET_DATA_THROTTLING = 99;
     private static final int EVENT_SET_DATA_THROTTLING_DONE = 100;
+    private static final int CMD_SET_SIM_POWER = 101;
+    private static final int EVENT_SET_SIM_POWER_DONE = 102;
 
     // Parameters of select command.
     private static final int SELECT_COMMAND = 0xA4;
@@ -1749,6 +1751,56 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     Log.w(LOG_TAG, "DataThrottlingResult = " + request.result);
                     notifyRequester(request);
                     break;
+
+                case CMD_SET_SIM_POWER: {
+                    request = (MainThreadRequest) msg.obj;
+                    onCompleted = obtainMessage(EVENT_SET_SIM_POWER_DONE, request);
+                    request = (MainThreadRequest) msg.obj;
+                    int stateToSet =
+                            ((Pair<Integer, IIntegerConsumer>)
+                                    request.argument).first;
+                    request.phone.setSimPowerState(stateToSet, onCompleted, request.workSource);
+                    break;
+                }
+                case EVENT_SET_SIM_POWER_DONE: {
+                    ar = (AsyncResult) msg.obj;
+                    request = (MainThreadRequest) ar.userObj;
+                    IIntegerConsumer callback =
+                            ((Pair<Integer, IIntegerConsumer>) request.argument).second;
+                    if (ar.exception != null) {
+                        loge("setSimPower exception: " + ar.exception);
+                        int errorCode = TelephonyManager.CallForwardingInfoCallback
+                                .RESULT_ERROR_UNKNOWN;
+                        if (ar.exception instanceof CommandException) {
+                            CommandException.Error error =
+                                    ((CommandException) (ar.exception)).getCommandError();
+                            if (error == CommandException.Error.SIM_ERR) {
+                                errorCode = TelephonyManager.SET_SIM_POWER_STATE_SIM_ERROR;
+                            } else if (error == CommandException.Error.INVALID_ARGUMENTS) {
+                                errorCode = TelephonyManager.SET_SIM_POWER_STATE_ALREADY_IN_STATE;
+                            } else if (error == CommandException.Error.REQUEST_NOT_SUPPORTED) {
+                                errorCode = TelephonyManager.SET_SIM_POWER_STATE_NOT_SUPPORTED;
+                            } else {
+                                errorCode = TelephonyManager.SET_SIM_POWER_STATE_MODEM_ERROR;
+                            }
+                        }
+                        try {
+                            callback.accept(errorCode);
+                        } catch (RemoteException e) {
+                            // Ignore if the remote process is no longer available to call back.
+                            Log.w(LOG_TAG, "setSimPower: callback not available.");
+                        }
+                    } else {
+                        try {
+                            callback.accept(TelephonyManager.SET_SIM_POWER_STATE_SUCCESS);
+                        } catch (RemoteException e) {
+                            // Ignore if the remote process is no longer available to call back.
+                            Log.w(LOG_TAG, "setSimPower: callback not available.");
+                        }
+                    }
+                    break;
+                }
+
                 default:
                     Log.w(LOG_TAG, "MainThreadHandler: unexpected message code: " + msg.what);
                     break;
@@ -7842,7 +7894,37 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         final long identity = Binder.clearCallingIdentity();
         try {
             if (phone != null) {
-                phone.setSimPowerState(state, workSource);
+                phone.setSimPowerState(state, null, workSource);
+            }
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Set SIM card power state.
+     *
+     * @param slotIndex SIM slot id.
+     * @param state  State of SIM (power down, power up, pass through)
+     * @param callback  callback to trigger after success or failure
+     * - {@link android.telephony.TelephonyManager#CARD_POWER_DOWN}
+     * - {@link android.telephony.TelephonyManager#CARD_POWER_UP}
+     * - {@link android.telephony.TelephonyManager#CARD_POWER_UP_PASS_THROUGH}
+     *
+     **/
+    @Override
+    public void setSimPowerStateForSlotWithCallback(int slotIndex, int state,
+            IIntegerConsumer callback) {
+        enforceModifyPermission();
+        Phone phone = PhoneFactory.getPhone(slotIndex);
+
+        WorkSource workSource = getWorkSource(Binder.getCallingUid());
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            if (phone != null) {
+                Pair<Integer, IIntegerConsumer> arguments = Pair.create(state, callback);
+                sendRequestAsync(CMD_SET_SIM_POWER, arguments, phone, workSource);
             }
         } finally {
             Binder.restoreCallingIdentity(identity);
