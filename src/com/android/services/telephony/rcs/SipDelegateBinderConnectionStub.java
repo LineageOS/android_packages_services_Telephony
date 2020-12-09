@@ -77,4 +77,10 @@ public class SipDelegateBinderConnectionStub implements DelegateBinderStateManag
             destroyedConsumer.accept(reason);
         });
     }
+
+    @Override
+    public void triggerFullNetworkRegistration(int sipCode, String sipReason) {
+        // This stub is not connected to an ImsService, so this method is intentionally not
+        // implemented.
+    }
 }

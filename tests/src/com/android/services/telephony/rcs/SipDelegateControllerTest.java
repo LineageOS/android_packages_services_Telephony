@@ -36,7 +36,6 @@ import android.telephony.ims.FeatureTagState;
 import android.telephony.ims.SipDelegateManager;
 import android.telephony.ims.aidl.ISipDelegate;
 import android.telephony.ims.aidl.ISipDelegateMessageCallback;
-import android.telephony.ims.aidl.ISipTransport;
 import android.util.ArraySet;
 
 import androidx.test.filters.SmallTest;
@@ -65,7 +64,6 @@ public class SipDelegateControllerTest extends TelephonyTestBase {
     private static final int TEST_SUB_ID = 1;
 
     @Mock private ISipDelegate mMockSipDelegate;
-    @Mock private ISipTransport mMockSipTransport;
     @Mock private MessageTransportStateTracker mMockMessageTracker;
     @Mock private ISipDelegateMessageCallback mMockMessageCallback;
     @Mock private DelegateStateTracker mMockDelegateStateTracker;
@@ -243,9 +241,9 @@ public class SipDelegateControllerTest extends TelephonyTestBase {
 
     private SipDelegateController getTestDelegateController(DelegateRequest request,
             Set<FeatureTagState> deniedSet) {
-        return new SipDelegateController(TEST_SUB_ID, request, "", mMockSipTransport,
-                mExecutorService, mMockMessageTracker, mMockDelegateStateTracker,
-                (a, b, c, deniedFeatureSet, e, f) ->  {
+        return new SipDelegateController(TEST_SUB_ID, request, "", mExecutorService,
+                mMockMessageTracker, mMockDelegateStateTracker,
+                (a, b, deniedFeatureSet, d, e) ->  {
                     assertEquals(deniedSet, deniedFeatureSet);
                     return mMockBinderConnection;
                 });
