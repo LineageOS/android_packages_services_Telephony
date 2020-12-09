@@ -464,9 +464,9 @@
     <string name="delete_fdn_contact" msgid="7027405651994507077">"Туруктуу терүү номерин жок кылуу"</string>
     <string name="deleting_fdn_contact" msgid="6872320570844460428">"Туруктуу терүү номери жок кылынууда…"</string>
     <string name="fdn_contact_deleted" msgid="1680714996763848838">"Туруктуу терүү номери өчүрүлдү."</string>
-    <string name="pin2_invalid" msgid="2313954262684494442">"БНТ жаңыртылган жок, анткени туура эмес PIN-код киргизилди."</string>
-    <string name="fdn_invalid_number" msgid="9067189814657840439">"Уруксат берилген номер жаңыртылган жок, себеби жазылган номердин саны <xliff:g id="FDN_NUMBER_LIMIT_LENGTH">%d</xliff:g> ашпашы керек."</string>
-    <string name="pin2_or_fdn_invalid" msgid="7542639487955868181">"БНТ жаңыртылган жок. PIN2 туура эмес, же телефон номуру жараксыз."</string>
+    <string name="pin2_invalid" msgid="2313954262684494442">"БНТ жаңырган жок, анткени туура эмес PIN-код киргизилди."</string>
+    <string name="fdn_invalid_number" msgid="9067189814657840439">"Уруксат берилген номер жаңырган жок, себеби жазылган номердин саны <xliff:g id="FDN_NUMBER_LIMIT_LENGTH">%d</xliff:g> ашпашы керек."</string>
+    <string name="pin2_or_fdn_invalid" msgid="7542639487955868181">"БНТ жаңырган жок. PIN2 туура эмес, же телефон номуру жараксыз."</string>
     <string name="fdn_failed" msgid="216592346853420250">"БНТ иши кыйрады."</string>
     <string name="simContacts_emptyLoading" msgid="4989040293858675483">"SIM-картадан окулууда…"</string>
     <string name="simContacts_empty" msgid="1135632055473689521">"SIM картаңызда байланыштар жок."</string>
@@ -898,6 +898,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Жаңылоо"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"DNS текшерүүнү которуштуруу"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"OEM\'ге тиешелүү Маалымат/Жөндөөлөр"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC жеткиликтүү:"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR чектелген:"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR жеткиликтүү:"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"NR абалы:"</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR жыштыгы:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Радио жыштыгынын режимин коюу"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Жыштык режиминин тизмеси жүктөлүүдө…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Жөндөө"</string>

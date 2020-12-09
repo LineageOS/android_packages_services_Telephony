@@ -522,7 +522,7 @@
     <string name="notification_voicemail_no_vm_number" msgid="3423686009815186750">"Balss pasta numurs nav zināms."</string>
     <string name="notification_network_selection_title" msgid="255595526707809121">"Nav pakalpojuma"</string>
     <string name="notification_network_selection_text" msgid="553288408722427659">"Atlasītais tīkls (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) nav pieejams"</string>
-    <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Lai veiktu zvanu, ieslēdziet mobilo tīklu, izslēdziet lidojuma režīmu vai izslēdziet akumulatora jaudas taupīšanas režīmu."</string>
+    <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Lai veiktu zvanu, ieslēdziet mobilo tīklu, izslēdziet lidojuma režīmu vai izslēdziet akumulatora enerģijas taupīšanas režīmu."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Lai veiktu zvanu, izslēdziet lidojuma režīmu."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Lai veiktu zvanu, izslēdziet lidojuma režīmu vai izveidojiet savienojumu ar bezvadu tīklu."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Lai veiktu parastu zvanu, izejiet no ārkārtas atzvana režīma."</string>
@@ -901,6 +901,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Atsvaidzināt"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"Pārslēgt DNS pārbaudi"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"OEM raksturīga informācija/iestatījumi"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC pieejamība:"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR ierobežojums:"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR pieejamība:"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"NR statuss:"</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR biežums:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Radio frekvenču joslu režīma iestatīšana"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Notiek joslu saraksta ielāde…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Iestatīt"</string>

@@ -5405,7 +5405,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                                 .setMinSdkVersionForFine(Build.VERSION_CODES.Q)
                                 .build());
         if (locationResult != LocationAccessPolicy.LocationPermissionResult.ALLOWED) {
-            SecurityException e = checkNetworkRequestForSanitizedLocationAccess(request, subId);
+            SecurityException e = checkNetworkRequestForSanitizedLocationAccess(
+                    request, subId, callingPackage);
             if (e != null) {
                 if (locationResult == LocationAccessPolicy.LocationPermissionResult.DENIED_HARD) {
                     throw e;
@@ -5428,8 +5429,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     private SecurityException checkNetworkRequestForSanitizedLocationAccess(
-            NetworkScanRequest request, int subId) {
-        boolean hasCarrierPriv = getCarrierPrivilegeStatusForUid(subId, Binder.getCallingUid())
+            NetworkScanRequest request, int subId, String callingPackage) {
+        boolean hasCarrierPriv = checkCarrierPrivilegesForPackage(subId, callingPackage)
                 == TelephonyManager.CARRIER_PRIVILEGE_STATUS_HAS_ACCESS;
         boolean hasNetworkScanPermission =
                 mApp.checkCallingOrSelfPermission(android.Manifest.permission.NETWORK_SCAN)
@@ -5532,11 +5533,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            Settings.Global.putInt(mApp.getContentResolver(),
-                    Settings.Global.PREFERRED_NETWORK_MODE + subId, networkType);
-
             Boolean success = (Boolean) sendRequest(
                     CMD_SET_PREFERRED_NETWORK_TYPE, networkType, subId);
+
+            if (success) {
+                Settings.Global.putInt(mApp.getContentResolver(),
+                        Settings.Global.PREFERRED_NETWORK_MODE + subId, networkType);
+            }
             if (DBG) log("setPreferredNetworkType: " + (success ? "ok" : "fail"));
             return success;
         } finally {
@@ -6326,6 +6329,14 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @Override
     public int getRadioAccessFamily(int phoneId, String callingPackage) {
         Phone phone = PhoneFactory.getPhone(phoneId);
+        try {
+            TelephonyPermissions
+                    .enforeceCallingOrSelfReadPrivilegedPhoneStatePermissionOrCarrierPrivilege(
+                            mApp, phone.getSubId(), "getRadioAccessFamily");
+        } catch (SecurityException e) {
+            EventLog.writeEvent(0x534e4554, "150857259", -1, "Missing Permission");
+            throw e;
+        }
         int raf = RadioAccessFamily.RAF_UNKNOWN;
         if (phone == null) {
             return raf;
@@ -6811,6 +6822,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         final long identity = Binder.clearCallingIdentity();
         try {
+            // isActiveSubId requires READ_PHONE_STATE, which we already check for above
+            if (!mSubscriptionController.isActiveSubId(subId, callingPackage, callingFeatureId)) {
+                Rlog.d(LOG_TAG,
+                        "getServiceStateForSubscriber returning null for inactive subId=" + subId);
+                return null;
+            }
+
             final Phone phone = getPhone(subId);
             if (phone == null) {
                 return null;
@@ -7703,7 +7721,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private boolean getDefaultDataRoamingEnabled(int subId) {
         final CarrierConfigManager configMgr = (CarrierConfigManager)
                 mApp.getSystemService(Context.CARRIER_CONFIG_SERVICE);
-        boolean isDataRoamingEnabled = TelephonyProperties.data_roaming().orElse(true);
+        boolean isDataRoamingEnabled = TelephonyProperties.data_roaming().orElse(false);
         isDataRoamingEnabled |= configMgr.getConfigForSubId(subId).getBoolean(
                 CarrierConfigManager.KEY_CARRIER_DEFAULT_DATA_ROAMING_ENABLED_BOOL);
         return isDataRoamingEnabled;

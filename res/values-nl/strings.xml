@@ -506,7 +506,7 @@
     <string name="pin2_attempts" msgid="5625178102026453023">\n"Je hebt nog <xliff:g id="NUMBER">%d</xliff:g> pogingen."</string>
     <string name="pin2_unblocked" msgid="4481107908727789303">"PIN2 niet langer geblokkeerd"</string>
     <string name="pin2_error_exception" msgid="8116103864600823641">"Netwerk- of simkaartfout"</string>
-    <string name="doneButton" msgid="7371209609238460207">"Gereed"</string>
+    <string name="doneButton" msgid="7371209609238460207">"Klaar"</string>
     <string name="voicemail_settings_number_label" msgid="1265118640154688162">"Voicemailnummer"</string>
     <string name="card_title_dialing" msgid="8742182654254431781">"Kiezen"</string>
     <string name="card_title_redialing" msgid="18130232613559964">"Opnieuw bellen"</string>
@@ -579,8 +579,8 @@
     <string name="importToFDNfromContacts" msgid="5068664870738407341">"Importeren uit contacten"</string>
     <string name="singleContactImportedMsg" msgid="3619804066300998934">"Contact geïmporteerd"</string>
     <string name="failedToImportSingleContactMsg" msgid="228095510489830266">"Kan contact niet importeren"</string>
-    <string name="hac_mode_title" msgid="4127986689621125468">"Gehoorapparaten"</string>
-    <string name="hac_mode_summary" msgid="7774989500136009881">"Compatibiliteit voor gehoorapparaat inschakelen"</string>
+    <string name="hac_mode_title" msgid="4127986689621125468">"Hoortoestellen"</string>
+    <string name="hac_mode_summary" msgid="7774989500136009881">"Compatibiliteit voor hoortoestel inschakelen"</string>
     <string name="rtt_mode_title" msgid="3075948111362818043">"Realtime tekstoproep (RTT)"</string>
     <string name="rtt_mode_summary" msgid="8631541375609989562">"Berichten in een audiogesprek toestaan"</string>
     <string name="rtt_mode_more_information" msgid="587500128658756318">"RTT helpt bellers die doof of slechthorend zijn, een spraakbeperking hebben of meer dan alleen een stem nodig hebben.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Meer informatie&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT-gesprekken worden opgeslagen als berichttranscript.\n       &lt;br&gt; - RTT is niet beschikbaar voor videogesprekken"</string>
@@ -602,9 +602,9 @@
     <string name="ota_title_activate" msgid="4049645324841263423">"Je telefoon activeren"</string>
     <string name="ota_touch_activate" msgid="838764494319694754">"Je moet een speciaal gesprek voeren om je telefoonservice te activeren. \n\nNadat je op \'Activeren\' hebt gedrukt, luister je naar de instructies om je telefoon te activeren."</string>
     <string name="ota_hfa_activation_title" msgid="3300556778212729671">"Activeren..."</string>
-    <string name="ota_hfa_activation_dialog_message" msgid="7921718445773342996">"De telefoon activeert je mobiele gegevensservice.\n\nDit kan tot vijf minuten duren."</string>
+    <string name="ota_hfa_activation_dialog_message" msgid="7921718445773342996">"De telefoon activeert je mobiele-dataservice.\n\nDit kan tot vijf minuten duren."</string>
     <string name="ota_skip_activation_dialog_title" msgid="7666611236789203797">"Activering overslaan?"</string>
-    <string name="ota_skip_activation_dialog_message" msgid="6691722887019708713">"Als je de activering overslaat, kun je niet bellen of verbinding maken met mobiele gegevensnetwerken (je kunt wel verbinding maken met wifi-netwerken). Tot je de telefoon activeert, wordt je gevraagd deze te activeren telkens wanneer je de telefoon inschakelt."</string>
+    <string name="ota_skip_activation_dialog_message" msgid="6691722887019708713">"Als je de activering overslaat, kun je niet bellen of verbinding maken met mobiele-datanetwerken (je kunt wel verbinding maken met wifi-netwerken). Tot je de telefoon activeert, wordt je gevraagd deze te activeren telkens wanneer je de telefoon inschakelt."</string>
     <string name="ota_skip_activation_dialog_skip_label" msgid="5908029466817825633">"Overslaan"</string>
     <string name="ota_activate" msgid="7939695753665438357">"Activeren"</string>
     <string name="ota_title_activate_success" msgid="1272135024761004889">"De telefoon is geactiveerd."</string>
@@ -898,6 +898,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Vernieuwen"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"DNS-controle in-/uitschakelen"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"OEM-specifieke gegevens/instellingen"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC beschikbaar:"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR beperkt:"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR beschikbaar:"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"NR-status:"</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR-frequentie:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Modus voor radioband instellen"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Bandlijst laden…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Instellen"</string>

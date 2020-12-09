@@ -296,7 +296,7 @@
     <string name="mobile_data_settings_summary" msgid="5012570152029118471">"Pristup prijenosu podataka mobilnom mrežom"</string>
     <string name="data_usage_disable_mobile" msgid="5669109209055988308">"Isključiti prijenos podataka na mobilnoj mreži?"</string>
     <string name="sim_selection_required_pref" msgid="6985901872978341314">"Potreban izbor"</string>
-    <string name="sim_change_data_title" msgid="9142726786345906606">"Promijeniti podatkovni SIM?"</string>
+    <string name="sim_change_data_title" msgid="9142726786345906606">"Promijeniti SIM za prijenos podataka?"</string>
     <string name="sim_change_data_message" msgid="3567358694255933280">"Koristiti SIM karticu <xliff:g id="NEW_SIM">%1$s</xliff:g> umjesto SIM kartice <xliff:g id="OLD_SIM">%2$s</xliff:g> za prijenos podataka na mobilnoj mreži?"</string>
     <string name="wifi_calling_settings_title" msgid="5800018845662016507">"Pozivanje putem WiFi-ja"</string>
     <string name="video_calling_settings_title" msgid="342829454913266078">"Operater video pozivanja"</string>
@@ -867,7 +867,7 @@
     <string name="radioInfo_lac" msgid="3892986460272607013">"LAC"</string>
     <string name="radioInfo_cid" msgid="1423185536264406705">"CID"</string>
     <string name="radio_info_subid" msgid="6839966868621703203">"Trenutni pomoćni ID:"</string>
-    <string name="radio_info_dds" msgid="1122593144425697126">"Pomoćni ID za zadani podatkovni SIM:"</string>
+    <string name="radio_info_dds" msgid="1122593144425697126">"Pomoćni ID za zadani SIM za prijenos podataka:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DL propusnost (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL propusnost (kbps):"</string>
     <string name="radio_info_signal_location_label" msgid="6188435197086550049">"Informacije o lokaciji ćelije (zastarjele):"</string>
@@ -901,6 +901,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Osvježi"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"Uključi/isključi provjeru DNS-a"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"OEM-specifične informacije/postavke"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC dostupno:"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR ograničeno:"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR dostupno:"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"NR stanje:"</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR učestalost:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Postavite način radijskog opsega"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Učitavanje liste opsega…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Postavi"</string>

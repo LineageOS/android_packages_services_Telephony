@@ -764,19 +764,19 @@
     <string name="sum_call_barring_disabled" msgid="5699448000600153096">"Desactivado"</string>
     <string name="call_barring_baoc" msgid="7400892586336429326">"Todas las realizadas"</string>
     <string name="call_barring_baoc_enabled" msgid="3131509193386668182">"¿Quieres desbloquear todas las llamadas realizadas?"</string>
-    <string name="call_barring_baoc_disabled" msgid="8534224684091141509">"¿Quieres bloquear todas las llamadas realizadas?"</string>
+    <string name="call_barring_baoc_disabled" msgid="8534224684091141509">"¿Bloquear todas las llamadas realizadas?"</string>
     <string name="call_barring_baoic" msgid="8668125428666851665">"Internacionales realizadas"</string>
     <string name="call_barring_baoic_enabled" msgid="1203758092657630123">"¿Quieres desbloquear las llamadas internacionales realizadas?"</string>
-    <string name="call_barring_baoic_disabled" msgid="5656889339002997449">"¿Quieres bloquear las llamadas internacionales realizadas?"</string>
+    <string name="call_barring_baoic_disabled" msgid="5656889339002997449">"¿Bloquear las llamadas internacionales realizadas?"</string>
     <string name="call_barring_baoicr" msgid="8566167764432343487">"Itinerancia de llamadas internacionales realizadas"</string>
     <string name="call_barring_baoicr_enabled" msgid="1615324165512798478">"¿Quieres desbloquear la itinerancia de las llamadas internacionales realizadas?"</string>
-    <string name="call_barring_baoicr_disabled" msgid="172010175248142831">"¿Quieres bloquear la itinerancia de las llamadas internacionales realizadas?"</string>
+    <string name="call_barring_baoicr_disabled" msgid="172010175248142831">"¿Bloquear la itinerancia de las llamadas internacionales realizadas?"</string>
     <string name="call_barring_baic" msgid="7941393541678658566">"Todas las entrantes"</string>
     <string name="call_barring_baic_enabled" msgid="4357332358020337470">"¿Quieres desbloquear todas las llamadas entrantes?"</string>
-    <string name="call_barring_baic_disabled" msgid="2355945245938240958">"¿Quieres bloquear todas las llamadas entrantes?"</string>
+    <string name="call_barring_baic_disabled" msgid="2355945245938240958">"¿Bloquear todas las llamadas entrantes?"</string>
     <string name="call_barring_baicr" msgid="8712249337313034226">"Itinerancia de llamadas internacionales entrantes"</string>
     <string name="call_barring_baicr_enabled" msgid="64774270234828175">"¿Quieres desbloquear la itinerancia de las llamadas internacionales entrantes?"</string>
-    <string name="call_barring_baicr_disabled" msgid="3488129262744027262">"¿Quieres bloquear la itinerancia de las llamadas internacionales entrantes?"</string>
+    <string name="call_barring_baicr_disabled" msgid="3488129262744027262">"¿Bloquear la itinerancia de las llamadas internacionales entrantes?"</string>
     <string name="call_barring_deactivate_all" msgid="7837931580047157328">"Desactivar todo"</string>
     <string name="call_barring_deactivate_all_description" msgid="4474119585042121604">"Desactivar todos los ajustes de bloqueo de llamadas"</string>
     <string name="call_barring_deactivate_success" msgid="3545644320298275337">"Se ha desactivado el bloqueo de llamadas"</string>
@@ -898,6 +898,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Actualizar"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"Activar o desactivar comprobación de DNS"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"Ajustes o información específica de OEM"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC disponible:"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR restringido:"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR disponible:"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"Estado de NR:"</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"Frecuencia de NR:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Establecer modo de banda de señal móvil"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Cargando lista de bandas…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Seleccionar"</string>

@@ -430,7 +430,7 @@
     <string name="manage_fdn_list" msgid="3341716430375195441">"Markatze finkoko zenbakien zerrenda"</string>
     <string name="fdn_list_with_label" msgid="1409655283510382556">"Markatze finkoko zenbakiak (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="fdn_activation" msgid="2178637004710435895">"Markatze finkoko zenbakiaren aktibazioa"</string>
-    <string name="fdn_enabled" msgid="7017355494808056447">"Markatze finkoko zenbakiak gaituta daude"</string>
+    <string name="fdn_enabled" msgid="7017355494808056447">"Markatze finkoko zenbakiak gaituta"</string>
     <string name="fdn_disabled" msgid="6696468878037736600">"Markatze finkoko zenbakiak desgaituta daude"</string>
     <string name="enable_fdn" msgid="4830555730418033723">"Gaitu markatze finkoko zenbakiak"</string>
     <string name="disable_fdn" msgid="3918794950264647541">"Desgaitu markatze finkoko zenbakia"</string>
@@ -898,6 +898,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Freskatu"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"Aldatu DNS egiaztapenaren egoera"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"Jatorrizko fabrikatzailearen berariazko informazioa edota ezarpenak"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC erabilgarri:"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR mugatuta:"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR erabilgarri:"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"NR estatua:"</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR maiztasuna:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Ezarri irrati-bandaren modua"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Banden zerrenda kargatzen…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Ezarri"</string>

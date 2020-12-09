@@ -617,7 +617,7 @@
     <string name="ota_unsuccessful" msgid="8531037653803955754">"Ваш тэлефон не актываваны. \nМагчыма, вам спатрэбіцца знайсці вобласць з лепшым пакрыццём (каля акна ці на вуліцы). \n\nПаўтарыце спробу ці звярнiцеся ў цэнтр абслугоўвання кліентаў, каб атрымаць дадатковую інфармацыю."</string>
     <string name="ota_spc_failure" msgid="904092035241370080">"ПАМЫЛКІ ПЕРАВЫШЭННЯ SPC"</string>
     <string name="ota_call_end" msgid="8657746378290737034">"Назад"</string>
-    <string name="ota_try_again" msgid="6914781945599998550">"Паспрабаваць яшчэ раз"</string>
+    <string name="ota_try_again" msgid="6914781945599998550">"Паўтарыць спробу"</string>
     <string name="ota_next" msgid="2041016619313475914">"Далей"</string>
     <string name="ecm_exit_dialog" msgid="4200691880721429078">"EcmExitDialog"</string>
     <string name="phone_entered_ecm_text" msgid="8431238297843035842">"У рэжыме экстранных зваротных выклікаў"</string>
@@ -904,6 +904,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Абнавіць"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"Уключыць/выключыць праверку DNS"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"Інфармацыя/налады пастаўшчыка"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"Даступнасць EN-DC:"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"Абмежаванне DCNR:"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"Даступнасць NR:"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"Стан NR:"</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"Частата NR:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Задаць рэжым радыёдыяпазону"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Загружаецца спіс дыяпазонаў…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Задаць"</string>

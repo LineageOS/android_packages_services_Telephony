@@ -648,7 +648,7 @@
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"सेट गरेको छैन"</string>
     <string name="other_settings" msgid="8895088007393598447">"अन्य कल सेटिङहरू"</string>
     <string name="calling_via_template" msgid="1791323450703751750">"<xliff:g id="PROVIDER_NAME">%s</xliff:g> को मार्फत कल गर्दै"</string>
-    <string name="contactPhoto" msgid="7885089213135154834">"सम्पर्क तस्बिर"</string>
+    <string name="contactPhoto" msgid="7885089213135154834">"सम्पर्क फोटो"</string>
     <string name="goPrivate" msgid="4645108311382209551">"निजी जानुहोस्"</string>
     <string name="selectContact" msgid="1527612842599767382">"सम्पर्क चयन गर्नुहोस्"</string>
     <string name="not_voice_capable" msgid="2819996734252084253">"भ्वाइस कल गर्ने समर्थित छैन"</string>
@@ -898,6 +898,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"पुनः ताजा गर्नुहोस्"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"DNS को जाँचलाई टगल गर्नुहोस्"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"OEM-विशिष्ट जानकारी/सेटिङ"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC उपलब्ध छ:"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR प्रतिबन्धित छ:"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR उपलब्ध छ:"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"NR को स्थिती:"</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR फ्रिक्वेन्सी:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"रेडियोको ब्यान्डसम्बन्धी मोडलाई सेट गर्नुहोस्"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"ब्यान्डको सूची लोड गर्दै…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"सेट गर्नुहोस्"</string>

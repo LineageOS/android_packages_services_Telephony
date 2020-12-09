@@ -898,6 +898,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"ਰਿਫ੍ਰੈਸ਼ ਕਰੋ"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"DNS ਜਾਂਚ ਟੌਗਲ ਕਰੋ"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"OEM-ਵਿਸ਼ੇਸ਼ ਜਾਣਕਾਰੀ/ਸੈਟਿੰਗਾਂ"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC ਉਪਲਬਧ:"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR ਪ੍ਰਤਿਬੰਧਿਤ:"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR ਉਪਲਬਧ:"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"NR ਸਥਿਤੀ:"</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR ਵਾਰਵਾਰਤਾ:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"ਰੇਡੀਓ ਬੈਂਡ ਮੋਡ ਸੈੱਟ ਕਰੋ"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"ਬੈਂਡ ਸੂਚੀ ਲੋਡ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"ਸੈੱਟ ਕਰੋ"</string>

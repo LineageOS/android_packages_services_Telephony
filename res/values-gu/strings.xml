@@ -546,7 +546,7 @@
     <string name="emergency_information_hint" msgid="9208897544917793012">"ઇમર્જન્સીની માહિતી"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"માલિક"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"માહિતી જોવા માટે ફરીથી ટૅપ કરો"</string>
-    <string name="emergency_enable_radio_dialog_title" msgid="2667568200755388829">"કટોકટીનો કૉલ"</string>
+    <string name="emergency_enable_radio_dialog_title" msgid="2667568200755388829">"ઇમર્જન્સી કૉલ"</string>
     <string name="single_emergency_number_title" msgid="8413371079579067196">"ઇમર્જન્સી નંબર"</string>
     <string name="numerous_emergency_numbers_title" msgid="8972398932506755510">"કટોકટીના નંબર"</string>
     <string name="emergency_call_shortcut_hint" msgid="1290485125107779500">"<xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>ને ફરીથી કૉલ કરવા માટે ટૅપ કરો"</string>
@@ -898,6 +898,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"રિફ્રેશ કરો"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"DNS તપાસ ટૉગલ કરો"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"OEM-વિશિષ્ટ માહિતી/સેટિંગ"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC ઉપલબ્ધ:"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR પ્રતિબંધિત:"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR ઉપલબ્ધ:"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"NR સ્ટેટસ:"</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR આવર્તન:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"રેડિયો બૅન્ડ મોડ સેટ કરો"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"બૅન્ડની સૂચિ લોડ કરી રહ્યું છે…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"સેટ કરો"</string>

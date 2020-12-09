@@ -22,7 +22,7 @@
     <string name="phoneIconLabel" msgid="3015941229249651419">"電話"</string>
     <string name="fdnListLabel" msgid="4119121875004244097">"固定撥號清單"</string>
     <string name="unknown" msgid="8279698889921830815">"不明"</string>
-    <string name="private_num" msgid="4487990167889159992">"私人號碼"</string>
+    <string name="private_num" msgid="4487990167889159992">"隱藏號碼"</string>
     <string name="payphone" msgid="7936735771836716941">"公用電話"</string>
     <string name="onHold" msgid="6132725550015899006">"通話保留"</string>
     <string name="carrier_mmi_msg_title" msgid="6050165242447507034">"「<xliff:g id="MMICARRIER">%s</xliff:g>」的訊息"</string>
@@ -898,6 +898,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"重新整理"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"切換 DNS 檢查"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"原始設備製造商 (OEM) 專用資訊/設定"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC 可供使用："</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR 受限："</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR 可供使用："</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"NR 狀態："</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR 頻率："</string>
     <string name="band_mode_title" msgid="7988822920724576842">"設定無線電頻帶模式"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"正在載入頻帶清單…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"設定"</string>

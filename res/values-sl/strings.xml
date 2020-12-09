@@ -904,6 +904,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Osveži"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"Preklop preverjanja DNS"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"Informacije/nastavitve za OEM"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"Razpoložljivo za EN-DC:"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"Omejeno za DCNR:"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"Razpoložljivo za NR:"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"Stanje NR:"</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"Frekvenca NR:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Nastavljanje načina radijskega območja"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Nalaganje seznama frekvenčnih pasov …"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Nastavi"</string>

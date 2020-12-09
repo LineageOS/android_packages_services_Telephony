@@ -875,7 +875,7 @@
     <string name="radio_info_roaming_label" msgid="6636932886446857120">"Roaming:"</string>
     <string name="radio_info_imei_label" msgid="8947899706930120368">"IMEI"</string>
     <string name="radio_info_call_redirect_label" msgid="4526480903023362276">"Pengalihan Panggilan:"</string>
-    <string name="radio_info_ppp_resets_label" msgid="9131901102339077661">"Jumlah Setel Ulang PPP Sejak Boot:"</string>
+    <string name="radio_info_ppp_resets_label" msgid="9131901102339077661">"Jumlah Reset PPP Sejak Boot:"</string>
     <string name="radio_info_current_network_label" msgid="3052098695239642450">"Jaringan Saat Ini:"</string>
     <string name="radio_info_ppp_received_label" msgid="5753592451640644889">"Data Diterima:"</string>
     <string name="radio_info_gsm_service_label" msgid="6443348321714241328">"Layanan Suara:"</string>
@@ -898,6 +898,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Perbarui"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"Aktifkan Pemeriksaan DNS"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"Info spesifik OEM/Setelan"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC Tersedia:"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"Dibatasi DCNR:"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR Tersedia:"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"Status NR:"</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"Frekuensi NR:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Setel Mode Band Radio"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Memuat Daftar Band…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Setel"</string>

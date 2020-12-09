@@ -99,10 +99,16 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
     private PersistableBundle[] mPersistentOverrideConfigs;
     // Carrier configs that are provided via the override test API, indexed by phone ID.
     private PersistableBundle[] mOverrideConfigs;
+    // Carrier configs to override code default when there is no SIM inserted
+    private PersistableBundle mNoSimConfig;
     // Service connection for binding to config app.
     private CarrierServiceConnection[] mServiceConnection;
+    // Service connection for binding to carrier config app for no SIM config.
+    private CarrierServiceConnection[] mServiceConnectionForNoSimConfig;
     // Whether we are bound to a service for each phone
     private boolean[] mServiceBound;
+    // Whether we are bound to a service for no SIM config
+    private boolean[] mServiceBoundForNoSimConfig;
     // Whether we have sent config change broadcast for each phone id.
     private boolean[] mHasSentConfigChange;
     // Whether the broadcast was sent from EVENT_SYSTEM_UNLOCKED, to track rebroadcasts
@@ -150,6 +156,16 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
     private static final int EVENT_SUBSCRIPTION_INFO_UPDATED = 16;
     // Multi-SIM config changed.
     private static final int EVENT_MULTI_SIM_CONFIG_CHANGED = 17;
+    // Attempt to fetch from default app or read from XML for no SIM case.
+    private static final int EVENT_DO_FETCH_DEFAULT_FOR_NO_SIM_CONFIG = 18;
+    // No SIM config has been loaded from default app (or cache).
+    private static final int EVENT_FETCH_DEFAULT_FOR_NO_SIM_CONFIG_DONE = 19;
+    // Has connected to default app for no SIM config.
+    private static final int EVENT_CONNECTED_TO_DEFAULT_FOR_NO_SIM_CONFIG = 20;
+    // Bind timed out for the default app when trying to fetch no SIM config.
+    private static final int EVENT_BIND_DEFAULT_FOR_NO_SIM_CONFIG_TIMEOUT = 21;
+    // Fetching config timed out from the default app for no SIM config.
+    private static final int EVENT_FETCH_DEFAULT_FOR_NO_SIM_CONFIG_TIMEOUT = 22;
 
     private static final int BIND_TIMEOUT_MILLIS = 30000;
 
@@ -505,6 +521,118 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                 case EVENT_MULTI_SIM_CONFIG_CHANGED:
                     onMultiSimConfigChanged();
                     break;
+
+                case EVENT_DO_FETCH_DEFAULT_FOR_NO_SIM_CONFIG: {
+                    PersistableBundle config =
+                            restoreNoSimConfigFromXml(mPlatformCarrierConfigPackage);
+
+                    if (config != null) {
+                        logd("Loaded no SIM config from XML. package="
+                                + mPlatformCarrierConfigPackage);
+                        mNoSimConfig = config;
+                        sendMessage(
+                                obtainMessage(
+                                        EVENT_FETCH_DEFAULT_FOR_NO_SIM_CONFIG_DONE,
+                                            phoneId, -1));
+                    } else {
+                        // No cached config, so fetch it from the default app.
+                        if (bindToConfigPackage(
+                                mPlatformCarrierConfigPackage,
+                                phoneId,
+                                EVENT_CONNECTED_TO_DEFAULT_FOR_NO_SIM_CONFIG)) {
+                            sendMessageDelayed(
+                                    obtainMessage(
+                                            EVENT_BIND_DEFAULT_FOR_NO_SIM_CONFIG_TIMEOUT,
+                                                phoneId, -1), BIND_TIMEOUT_MILLIS);
+                        } else {
+                            broadcastConfigChangedIntent(phoneId, false);
+                            // TODO: We *must* call unbindService even if bindService returns false.
+                            // (And possibly if SecurityException was thrown.)
+                            loge("binding to default app to fetch no SIM config: "
+                                    + mPlatformCarrierConfigPackage + " fails");
+                        }
+                    }
+                    break;
+                }
+
+                case EVENT_FETCH_DEFAULT_FOR_NO_SIM_CONFIG_DONE: {
+                    broadcastConfigChangedIntent(phoneId, false);
+                    break;
+                }
+
+                case EVENT_BIND_DEFAULT_FOR_NO_SIM_CONFIG_TIMEOUT:
+                case EVENT_FETCH_DEFAULT_FOR_NO_SIM_CONFIG_TIMEOUT: {
+                    loge("Bind/fetch time out for no SIM config from "
+                            + mPlatformCarrierConfigPackage);
+                    removeMessages(EVENT_FETCH_DEFAULT_FOR_NO_SIM_CONFIG_TIMEOUT);
+                    // If we attempted to bind to the app, but the service connection is null due to
+                    // the race condition that clear config event happens before bind/fetch complete
+                    // then config was cleared while we were waiting and we should not continue.
+                    if (mServiceConnectionForNoSimConfig[phoneId] != null) {
+                        // If a ResponseReceiver callback is in the queue when this happens, we will
+                        // unbind twice and throw an exception.
+                        unbindIfBoundForNoSimConfig(mContext,
+                                mServiceConnectionForNoSimConfig[phoneId], phoneId);
+                    }
+                    broadcastConfigChangedIntent(phoneId, false);
+                    break;
+                }
+
+                case EVENT_CONNECTED_TO_DEFAULT_FOR_NO_SIM_CONFIG: {
+                    removeMessages(EVENT_BIND_DEFAULT_FOR_NO_SIM_CONFIG_TIMEOUT);
+                    final CarrierServiceConnection conn = (CarrierServiceConnection) msg.obj;
+                    // If new service connection has been created, unbind.
+                    if (mServiceConnectionForNoSimConfig[phoneId] != conn || conn.service == null) {
+                        unbindIfBoundForNoSimConfig(mContext, conn, phoneId);
+                        break;
+                    }
+
+                    // ResultReceiver callback will execute in this Handler's thread.
+                    final ResultReceiver resultReceiver =
+                            new ResultReceiver(this) {
+                                @Override
+                                public void onReceiveResult(int resultCode, Bundle resultData) {
+                                    unbindIfBoundForNoSimConfig(mContext, conn, phoneId);
+                                    // If new service connection has been created, this is stale.
+                                    if (mServiceConnectionForNoSimConfig[phoneId] != conn) {
+                                        loge("Received response for stale request.");
+                                        return;
+                                    }
+                                    removeMessages(EVENT_FETCH_DEFAULT_FOR_NO_SIM_CONFIG_TIMEOUT);
+                                    if (resultCode == RESULT_ERROR || resultData == null) {
+                                        // On error, abort config fetching.
+                                        loge("Failed to get no SIM carrier config");
+                                        return;
+                                    }
+                                    PersistableBundle config =
+                                            resultData.getParcelable(KEY_CONFIG_BUNDLE);
+                                    saveNoSimConfigToXml(mPlatformCarrierConfigPackage, config);
+                                    mNoSimConfig = config;
+                                    sendMessage(
+                                            obtainMessage(
+                                                    EVENT_FETCH_DEFAULT_FOR_NO_SIM_CONFIG_DONE,
+                                                        phoneId, -1));
+                                }
+                            };
+                    // Now fetch the config asynchronously from the ICarrierService.
+                    try {
+                        ICarrierService carrierService =
+                                ICarrierService.Stub.asInterface(conn.service);
+                        carrierService.getCarrierConfig(null, resultReceiver);
+                        logdWithLocalLog("Fetch no sim config from default app: "
+                                + mPlatformCarrierConfigPackage);
+                    } catch (RemoteException e) {
+                        loge("Failed to get no sim carrier config from default app: " +
+                                mPlatformCarrierConfigPackage + " err: " + e.toString());
+                        unbindIfBoundForNoSimConfig(mContext, conn, phoneId);
+                        break; // So we don't set a timeout.
+                    }
+                    sendMessageDelayed(
+                            obtainMessage(
+                                    EVENT_FETCH_DEFAULT_FOR_NO_SIM_CONFIG_TIMEOUT,
+                                        phoneId, -1), BIND_TIMEOUT_MILLIS);
+                    break;
+                }
             }
         }
     }
@@ -539,10 +667,13 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         mConfigFromCarrierApp = new PersistableBundle[numPhones];
         mPersistentOverrideConfigs = new PersistableBundle[numPhones];
         mOverrideConfigs = new PersistableBundle[numPhones];
+        mNoSimConfig = new PersistableBundle();
         mServiceConnection = new CarrierServiceConnection[numPhones];
         mServiceBound = new boolean[numPhones];
         mHasSentConfigChange = new boolean[numPhones];
         mFromSystemUnlocked = new boolean[numPhones];
+        mServiceConnectionForNoSimConfig = new CarrierServiceConnection[numPhones];
+        mServiceBoundForNoSimConfig = new boolean[numPhones];
         // Make this service available through ServiceManager.
         TelephonyFrameworkInitializer
                 .getTelephonyServiceManager().getCarrierConfigServiceRegisterer().register(this);
@@ -568,7 +699,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         }
     }
 
-    private void clearConfigForPhone(int phoneId, boolean sendBroadcast) {
+    private void clearConfigForPhone(int phoneId, boolean fetchNoSimConfig) {
         /* Ignore clear configuration request if device is being shutdown. */
         Phone phone = PhoneFactory.getPhone(phoneId);
         if (phone != null) {
@@ -582,7 +713,12 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         mServiceConnection[phoneId] = null;
         mHasSentConfigChange[phoneId] = false;
 
-        if (sendBroadcast) broadcastConfigChangedIntent(phoneId, false);
+        if (fetchNoSimConfig) {
+            // To fetch no SIM config
+            mHandler.sendMessage(
+                    mHandler.obtainMessage(
+                            EVENT_DO_FETCH_DEFAULT_FOR_NO_SIM_CONFIG, phoneId, -1));
+        }
     }
 
     private void notifySubscriptionInfoUpdater(int phoneId) {
@@ -661,11 +797,21 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         logdWithLocalLog("Binding to " + pkgName + " for phone " + phoneId);
         Intent carrierService = new Intent(CarrierService.CARRIER_SERVICE_INTERFACE);
         carrierService.setPackage(pkgName);
-        mServiceConnection[phoneId] = new CarrierServiceConnection(phoneId, pkgName, eventId);
+        CarrierServiceConnection serviceConnection =  new CarrierServiceConnection(
+                phoneId, pkgName, eventId);
+        if (eventId == EVENT_CONNECTED_TO_DEFAULT_FOR_NO_SIM_CONFIG) {
+            mServiceConnectionForNoSimConfig[phoneId] = serviceConnection;
+        } else {
+            mServiceConnection[phoneId] = serviceConnection;
+        }
         try {
-            if (mContext.bindService(carrierService, mServiceConnection[phoneId],
+            if (mContext.bindService(carrierService, serviceConnection,
                     Context.BIND_AUTO_CREATE)) {
-                mServiceBound[phoneId] = true;
+                if (eventId == EVENT_CONNECTED_TO_DEFAULT_FOR_NO_SIM_CONFIG) {
+                    mServiceBoundForNoSimConfig[phoneId] = true;
+                } else {
+                    mServiceBound[phoneId] = true;
+                }
                 return true;
             } else {
                 return false;
@@ -767,26 +913,39 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
      *
      * In case of errors or invalid input, no file will be written.
      *
-     * @param packageName the name of the package from which we fetched this bundle.
-     * @param extraString An extra string to be used in the XML file name.
-     * @param phoneId     the phone ID.
-     * @param carrierId   contains all carrier-identifying information.
-     * @param config      the bundle to be written. Null will be treated as an empty bundle.
+     * @param packageName   the name of the package from which we fetched this bundle.
+     * @param extraString   An extra string to be used in the XML file name.
+     * @param phoneId       the phone ID.
+     * @param carrierId     contains all carrier-identifying information.
+     * @param config        the bundle to be written. Null will be treated as an empty bundle.
+     * @param isNoSimConfig whether this is invoked for noSimConfig or not.
      */
     private void saveConfigToXml(String packageName, @NonNull String extraString, int phoneId,
-            CarrierIdentifier carrierId, PersistableBundle config) {
-        if (SubscriptionManager.getSimStateForSlotIndex(phoneId)
-                != TelephonyManager.SIM_STATE_LOADED) {
-            loge("Skip save config because SIM records are not loaded.");
+            CarrierIdentifier carrierId, PersistableBundle config, boolean isNoSimConfig) {
+        if (packageName == null) {
+            loge("Cannot save config with null packageName");
             return;
         }
 
-        final String iccid = getIccIdForPhoneId(phoneId);
-        final int cid = carrierId.getSpecificCarrierId();
-        if (packageName == null || iccid == null) {
-            loge("Cannot save config with null packageName or iccid.");
-            return;
+        String fileName;
+        if (isNoSimConfig) {
+            fileName = getFilenameForNoSimConfig(packageName);
+        } else {
+            if (SubscriptionManager.getSimStateForSlotIndex(phoneId)
+                    != TelephonyManager.SIM_STATE_LOADED) {
+                loge("Skip save config because SIM records are not loaded.");
+                return;
+            }
+
+            final String iccid = getIccIdForPhoneId(phoneId);
+            final int cid = carrierId.getSpecificCarrierId();
+            if (iccid == null) {
+                loge("Cannot save config with null iccid.");
+                return;
+            }
+            fileName = getFilenameForConfig(packageName, extraString, iccid, cid);
         }
+
         // b/32668103 Only save to file if config isn't empty.
         // In case of failure, not caching an empty bundle will
         // try loading config again on next power on or sim loaded.
@@ -807,9 +966,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
 
         FileOutputStream outFile = null;
         try {
-            outFile = new FileOutputStream(
-                    new File(mContext.getFilesDir(),
-                            getFilenameForConfig(packageName, extraString, iccid, cid)));
+            outFile = new FileOutputStream(new File(mContext.getFilesDir(), fileName));
             config.putString(KEY_VERSION, version);
             config.writeToStream(outFile);
             outFile.flush();
@@ -817,6 +974,15 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         } catch (IOException e) {
             loge(e.toString());
         }
+    }
+
+    private void saveConfigToXml(String packageName, @NonNull String extraString, int phoneId,
+            CarrierIdentifier carrierId, PersistableBundle config) {
+        saveConfigToXml(packageName, extraString, phoneId, carrierId, config, false);
+    }
+
+    private void saveNoSimConfigToXml(String packageName, PersistableBundle config) {
+        saveConfigToXml(packageName, "", -1, null, config, true);
     }
 
     /**
@@ -828,38 +994,48 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
      * In case of errors, or if the saved config is from a different package version than the
      * current version, then null will be returned.
      *
-     * @param packageName the name of the package from which we fetched this bundle.
-     * @param extraString An extra string to be used in the XML file name.
-     * @param phoneId     the phone ID.
+     * @param packageName    the name of the package from which we fetched this bundle.
+     * @param extraString    An extra string to be used in the XML file name.
+     * @param phoneId        the phone ID.
+     * @param isNoSimConfig  whether this is invoked for noSimConfig or not.
      * @return the bundle from the XML file. Returns null if there is no saved config, the saved
      * version does not match, or reading config fails.
      */
     private PersistableBundle restoreConfigFromXml(String packageName, @NonNull String extraString,
-            int phoneId) {
+            int phoneId, boolean isNoSimConfig) {
+        if (packageName == null) {
+            loge("Cannot restore config with null packageName");
+        }
         final String version = getPackageVersion(packageName);
         if (version == null) {
             loge("Failed to get package version for: " + packageName);
             return null;
         }
-        if (SubscriptionManager.getSimStateForSlotIndex(phoneId)
-                != TelephonyManager.SIM_STATE_LOADED) {
-            loge("Skip restoring config because SIM records are not yet loaded.");
-            return null;
-        }
 
-        final String iccid = getIccIdForPhoneId(phoneId);
-        final int cid = getSpecificCarrierIdForPhoneId(phoneId);
-        if (packageName == null || iccid == null) {
-            loge("Cannot restore config with null packageName or iccid.");
-            return null;
+        String fileName;
+        if (isNoSimConfig) {
+            fileName = getFilenameForNoSimConfig(packageName);
+        } else {
+            if (SubscriptionManager.getSimStateForSlotIndex(phoneId)
+                    != TelephonyManager.SIM_STATE_LOADED) {
+                loge("Skip restore config because SIM records are not loaded.");
+                return null;
+            }
+
+            final String iccid = getIccIdForPhoneId(phoneId);
+            final int cid = getSpecificCarrierIdForPhoneId(phoneId);
+            if (iccid == null) {
+                loge("Cannot restore config with null iccid.");
+                return null;
+            }
+            fileName = getFilenameForConfig(packageName, extraString, iccid, cid);
         }
 
         PersistableBundle restoredBundle = null;
         File file = null;
         FileInputStream inFile = null;
         try {
-            file = new File(mContext.getFilesDir(),
-                    getFilenameForConfig(packageName, extraString, iccid, cid));
+            file = new File(mContext.getFilesDir(),fileName);
             inFile = new FileInputStream(file);
 
             restoredBundle = PersistableBundle.readFromStream(inFile);
@@ -881,6 +1057,15 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         }
 
         return restoredBundle;
+    }
+
+    private PersistableBundle restoreConfigFromXml(String packageName, @NonNull String extraString,
+            int phoneId) {
+        return restoreConfigFromXml(packageName, extraString, phoneId, false);
+    }
+
+    private PersistableBundle restoreNoSimConfigFromXml(String packageName) {
+        return restoreConfigFromXml(packageName, "", -1, true);
     }
 
     /**
@@ -912,13 +1097,19 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
     }
 
     /** Builds a canonical file name for a config file. */
-    private String getFilenameForConfig(@NonNull String packageName, @NonNull String extraString,
+    private static String getFilenameForConfig(
+            @NonNull String packageName, @NonNull String extraString,
             @NonNull String iccid, int cid) {
         // the same carrier should have a single copy of XML file named after carrier id.
         // However, it's still possible that platform doesn't recognize the current sim carrier,
         // we will use iccid + carrierid as the canonical file name. carrierid can also handle the
         // cases SIM OTA resolves to different carrier while iccid remains the same.
         return "carrierconfig-" + packageName + extraString + "-" + iccid + "-" + cid + ".xml";
+    }
+
+    /** Builds a canonical file name for no SIM config file. */
+    private String getFilenameForNoSimConfig(@NonNull String packageName) {
+        return "carrierconfig-" + packageName + "-" + "nosim" + ".xml";
     }
 
     /** Return the current version code of a package, or null if the name is not found. */
@@ -994,6 +1185,10 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
             config = mOverrideConfigs[phoneId];
             if (config != null) {
                 retConfig.putAll(config);
+            }
+        } else {
+            if (mNoSimConfig != null) {
+                retConfig.putAll(mNoSimConfig);
             }
         }
         return retConfig;
@@ -1104,6 +1299,14 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         }
     }
 
+    private void unbindIfBoundForNoSimConfig(Context context, CarrierServiceConnection conn,
+            int phoneId) {
+        if (mServiceBoundForNoSimConfig[phoneId]) {
+            mServiceBoundForNoSimConfig[phoneId] = false;
+            context.unbindService(conn);
+        }
+    }
+
     /**
      * If {@code args} contains {@link #DUMP_ARG_REQUESTING_PACKAGE} and a following package name,
      * we'll also call {@link IBinder#dump} on the default carrier service (if bound) and the
@@ -1144,6 +1347,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
             printConfig(mOverrideConfigs[i], indentPW, "mOverrideConfigs");
         }
 
+        printConfig(mNoSimConfig, indentPW, "mNoSimConfig");
         indentPW.println("CarrierConfigLoadingLog=");
         mCarrierConfigLoadingLog.dump(fd, indentPW, args);
 
