@@ -16,6 +16,8 @@
 
 package com.android.services.telephony;
 
+import static junit.framework.Assert.assertTrue;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
@@ -572,5 +574,41 @@ public class ImsConferenceTest {
         imsConference.handleConferenceParticipantsUpdate(mConferenceHost, Collections.emptyList());
         assertEquals(0, imsConference.getNumberOfParticipants());
         verify(mConferenceHost.mMockCall).hangup();
+    }
+
+    /**
+     * Verifies that an ImsConference can handle SIP and TEL URIs for both the P-Associated-Uri and
+     * conference event package identities.
+     */
+    @Test
+    public void testIsParticipantHost() {
+        // Simplest case, assume P-Associated-Uri is a tel URI and that the CEP participant is also
+        // a tel URI.
+        assertTrue(ImsConference.isParticipantHost(new Uri[] {
+                        Uri.parse("tel:+8616505551234")},
+                Uri.parse("tel:+8616505551234")));
+
+        // Assume P-Associated-Uri is a tel URI and the CEP participant is a sip URI.
+        assertTrue(ImsConference.isParticipantHost(new Uri[] {
+                        Uri.parse("tel:+8616505551234")},
+                Uri.parse("sip:+8616505551234@bj.ims.mnc011.mcc460.3gppnetwork.org")));
+
+        // Assume P-Associated-Uri is a sip URI and the CEP participant is a tel URI.
+        assertTrue(ImsConference.isParticipantHost(new Uri[] {
+                        Uri.parse("sip:+8616505551234@bj.ims.mnc011.mcc460.3gppnetwork.org")},
+                Uri.parse("tel:+8616505551234")));
+
+        // Assume both P-Associated-Uri and the CEP participant are SIP URIs.
+        assertTrue(ImsConference.isParticipantHost(new Uri[] {
+                        Uri.parse("sip:+8616505551234@bj.ims.mnc011.mcc460.3gppnetwork.org")},
+                Uri.parse("sip:+8616505551234@bj.ims.mnc011.mcc460.3gppnetwork.org")));
+
+        // Corner cases
+        assertFalse(ImsConference.isParticipantHost(new Uri[] {
+                        Uri.parse("tel:+8616505551234")}, Uri.fromParts("", "", "")));
+        assertFalse(ImsConference.isParticipantHost(new Uri[] {
+                        Uri.parse("tel:+8616505551234")}, null));
+        assertFalse(ImsConference.isParticipantHost(null, null));
+        assertFalse(ImsConference.isParticipantHost(new Uri[0], null));
     }
 }
