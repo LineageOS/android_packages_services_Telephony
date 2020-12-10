@@ -221,6 +221,7 @@
     <uses-permission android:name="android.permission.HANDLE_CAR_MODE_CHANGES"/>
     <uses-permission android:name="android.permission.MANAGE_SUBSCRIPTION_PLANS"/>
     <uses-permission android:name="android.permission.OBSERVE_ROLE_HOLDERS"/>
+    <uses-permission android:name="android.permission.BIND_GBA_SERVICE"/>
 
     <application android:name="PhoneApp"
             android:persistent="true"

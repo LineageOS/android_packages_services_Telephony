@@ -81,6 +81,12 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
     private static final String CC_SET_VALUE = "set-value";
     private static final String CC_CLEAR_VALUES = "clear-values";
 
+    private static final String GBA_SUBCOMMAND = "gba";
+    private static final String GBA_SET_SERVICE = "set-service";
+    private static final String GBA_GET_SERVICE = "get-service";
+    private static final String GBA_SET_RELEASE_TIME = "set-release";
+    private static final String GBA_GET_RELEASE_TIME = "get-release";
+
     // Take advantage of existing methods that already contain permissions checks when possible.
     private final ITelephony mInterface;
 
@@ -161,6 +167,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                 return handleDataTestModeCommand();
             case END_BLOCK_SUPPRESSION:
                 return handleEndBlockSuppressionCommand();
+            case GBA_SUBCOMMAND:
+                return handleGbaCommand();
             default: {
                 return handleDefaultCommands(cmd);
             }
@@ -183,11 +191,14 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         pw.println("    Data Test Mode Commands.");
         pw.println("  cc");
         pw.println("    Carrier Config Commands.");
+        pw.println("  gba");
+        pw.println("    GBA Commands.");
         onHelpIms();
         onHelpEmergencyNumber();
         onHelpEndBlockSupperssion();
         onHelpDataTestMode();
         onHelpCc();
+        onHelpGba();
     }
 
     private void onHelpIms() {
@@ -290,6 +301,32 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         pw.println("    with set-value");
         pw.println("    Options are:");
         pw.println("      -s: The SIM slot ID to clear carrier config values for. If no option");
+        pw.println("          is specified, it will choose the default voice SIM slot.");
+    }
+
+    private void onHelpGba() {
+        PrintWriter pw = getOutPrintWriter();
+        pw.println("Gba Commands:");
+        pw.println("  gba set-service [-s SLOT_ID] PACKAGE_NAME");
+        pw.println("    Sets the GbaService defined in PACKAGE_NAME to to be the bound.");
+        pw.println("    Options are:");
+        pw.println("      -s: The SIM slot ID to read carrier config value for. If no option");
+        pw.println("          is specified, it will choose the default voice SIM slot.");
+        pw.println("  gba get-service [-s SLOT_ID]");
+        pw.println("    Gets the package name of the currently defined GbaService.");
+        pw.println("    Options are:");
+        pw.println("      -s: The SIM slot ID to read carrier config value for. If no option");
+        pw.println("          is specified, it will choose the default voice SIM slot.");
+        pw.println("  gba set-release [-s SLOT_ID] n");
+        pw.println("    Sets the time to release/unbind GbaService in n milli-second.");
+        pw.println("    Do not release/unbind if n is -1.");
+        pw.println("    Options are:");
+        pw.println("      -s: The SIM slot ID to read carrier config value for. If no option");
+        pw.println("          is specified, it will choose the default voice SIM slot.");
+        pw.println("  gba get-release [-s SLOT_ID]");
+        pw.println("    Gets the time to release/unbind GbaService in n milli-sencond.");
+        pw.println("    Options are:");
+        pw.println("      -s: The SIM slot ID to read carrier config value for. If no option");
         pw.println("          is specified, it will choose the default voice SIM slot.");
     }
 
@@ -1244,6 +1281,141 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         if (BlockedNumberContract.SystemContract.getBlockSuppressionStatus(mContext).isSuppressed) {
             BlockedNumberContract.SystemContract.endBlockSuppression(mContext);
         }
+        return 0;
+    }
+
+    private int handleGbaCommand() {
+        String arg = getNextArg();
+        if (arg == null) {
+            onHelpGba();
+            return 0;
+        }
+
+        switch (arg) {
+            case GBA_SET_SERVICE: {
+                return handleGbaSetServiceCommand();
+            }
+            case GBA_GET_SERVICE: {
+                return handleGbaGetServiceCommand();
+            }
+            case GBA_SET_RELEASE_TIME: {
+                return handleGbaSetReleaseCommand();
+            }
+            case GBA_GET_RELEASE_TIME: {
+                return handleGbaGetReleaseCommand();
+            }
+        }
+
+        return -1;
+    }
+
+    private int getSubId(String cmd) {
+        int slotId = getDefaultSlot();
+        String opt = getNextOption();
+        if (opt != null && opt.equals("-s")) {
+            try {
+                slotId = Integer.parseInt(getNextArgRequired());
+            } catch (NumberFormatException e) {
+                getErrPrintWriter().println(cmd + " requires an integer as a SLOT_ID.");
+                return SubscriptionManager.INVALID_SUBSCRIPTION_ID;
+            }
+        }
+        int[] subIds = SubscriptionManager.getSubId(slotId);
+        return subIds[0];
+    }
+
+    private int handleGbaSetServiceCommand() {
+        int subId = getSubId("gba set-service");
+        if (subId == SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
+            return -1;
+        }
+
+        String packageName = getNextArg();
+        try {
+            if (packageName == null) {
+                packageName = "";
+            }
+            boolean result = mInterface.setBoundGbaServiceOverride(subId, packageName);
+            if (VDBG) {
+                Log.v(LOG_TAG, "gba set-service -s " + subId + " "
+                        + packageName + ", result=" + result);
+            }
+            getOutPrintWriter().println(result);
+        } catch (RemoteException e) {
+            Log.w(LOG_TAG, "gba set-service " + subId + " "
+                    + packageName + ", error" + e.getMessage());
+            getErrPrintWriter().println("Exception: " + e.getMessage());
+            return -1;
+        }
+        return 0;
+    }
+
+    private int handleGbaGetServiceCommand() {
+        String result;
+
+        int subId = getSubId("gba get-service");
+        if (subId == SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
+            return -1;
+        }
+
+        try {
+            result = mInterface.getBoundGbaService(subId);
+        } catch (RemoteException e) {
+            return -1;
+        }
+        if (VDBG) {
+            Log.v(LOG_TAG, "gba get-service -s " + subId + ", returned: " + result);
+        }
+        getOutPrintWriter().println(result);
+        return 0;
+    }
+
+    private int handleGbaSetReleaseCommand() {
+        //the release time value could be -1
+        int subId = getRemainingArgsCount() > 1 ? getSubId("gba set-release")
+                : SubscriptionManager.getDefaultSubscriptionId();
+        if (subId == SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
+            return -1;
+        }
+
+        String intervalStr = getNextArg();
+        if (intervalStr == null) {
+            return -1;
+        }
+
+        try {
+            int interval = Integer.parseInt(intervalStr);
+            boolean result = mInterface.setGbaReleaseTimeOverride(subId, interval);
+            if (VDBG) {
+                Log.v(LOG_TAG, "gba set-release -s " + subId + " "
+                        + intervalStr + ", result=" + result);
+            }
+            getOutPrintWriter().println(result);
+        } catch (NumberFormatException | RemoteException e) {
+            Log.w(LOG_TAG, "gba set-release -s " + subId + " "
+                    + intervalStr + ", error" + e.getMessage());
+            getErrPrintWriter().println("Exception: " + e.getMessage());
+            return -1;
+        }
+        return 0;
+    }
+
+    private int handleGbaGetReleaseCommand() {
+        int subId = getSubId("gba get-release");
+        if (subId == SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
+            return -1;
+        }
+
+        int result = 0;
+        try {
+            result = mInterface.getGbaReleaseTime(subId);
+        } catch (RemoteException e) {
+            return -1;
+        }
+        if (VDBG) {
+            Log.v(LOG_TAG, "gba get-release -s " + subId + ", returned: " + result);
+        }
+        getOutPrintWriter().println(result);
         return 0;
     }
 }
