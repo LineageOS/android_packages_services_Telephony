@@ -296,4 +296,11 @@
         <item>250</item>
         <item>350</item>
     </integer-array>
+
+    <!-- String indicating the package name of the device GbaService implementation. -->
+    <string name="config_gba_package" translatable="false"/>
+    <!-- The interval to release/unbind GbaService after the authentication request
+        by millisecond. -1 - no release, 0 - release immediately,
+        positive n - release in n milliseconds -->
+    <integer name="config_gba_release_time">0</integer>
 </resources>
