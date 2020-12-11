@@ -77,6 +77,7 @@ import android.telephony.CellInfoGsm;
 import android.telephony.CellInfoWcdma;
 import android.telephony.ClientRequestStats;
 import android.telephony.DataThrottlingRequest;
+import android.telephony.IBootstrapAuthenticationCallback;
 import android.telephony.ICellInfoCallback;
 import android.telephony.IccOpenLogicalChannelResponse;
 import android.telephony.LocationAccessPolicy;
@@ -103,6 +104,8 @@ import android.telephony.UssdResponse;
 import android.telephony.VisualVoicemailSmsFilterSettings;
 import android.telephony.data.ApnSetting;
 import android.telephony.emergency.EmergencyNumber;
+import android.telephony.gba.GbaAuthRequest;
+import android.telephony.gba.UaSecurityProtocolIdentifier;
 import android.telephony.ims.ImsException;
 import android.telephony.ims.ProvisioningManager;
 import android.telephony.ims.RegistrationManager;
@@ -133,6 +136,7 @@ import com.android.internal.telephony.CellNetworkScanResult;
 import com.android.internal.telephony.CommandException;
 import com.android.internal.telephony.CommandsInterface;
 import com.android.internal.telephony.DefaultPhoneNotifier;
+import com.android.internal.telephony.GbaManager;
 import com.android.internal.telephony.HalVersion;
 import com.android.internal.telephony.IBooleanConsumer;
 import com.android.internal.telephony.ICallForwardingInfoCallback;
@@ -9253,6 +9257,44 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
+    @Override
+    public void bootstrapAuthenticationRequest(int subId, int appType, Uri nafUrl,
+            UaSecurityProtocolIdentifier securityProtocol,
+            boolean forceBootStrapping, IBootstrapAuthenticationCallback callback)
+            throws RemoteException {
+        enforceModifyPermission();
+        if (DBG) {
+            log("bootstrapAuthenticationRequest, subId:" + subId + ", appType:"
+                    + appType + ", NAF:" + nafUrl + ", sp:" + securityProtocol
+                    + ", forceBootStrapping:" + forceBootStrapping + ", callback:" + callback);
+        }
+
+        if (!SubscriptionManager.isValidSubscriptionId(subId)
+                || appType < TelephonyManager.APPTYPE_UNKNOWN
+                || appType > TelephonyManager.APPTYPE_ISIM
+                || nafUrl == null || securityProtocol == null || callback == null) {
+            Log.d(LOG_TAG, "bootstrapAuthenticationRequest failed due to invalid parameters");
+            if (callback != null) {
+                try {
+                    callback.onAuthenticationFailure(
+                            0, TelephonyManager.GBA_FAILURE_REASON_FEATURE_NOT_SUPPORTED);
+                } catch (RemoteException exception) {
+                    log("Fail to notify onAuthenticationFailure due to " + exception);
+                }
+                return;
+            }
+        }
+
+        final long token = Binder.clearCallingIdentity();
+        try {
+            getGbaManager(subId).bootstrapAuthenticationRequest(
+                    new GbaAuthRequest(subId, appType, nafUrl, securityProtocol.toByteArray(),
+                    forceBootStrapping, callback));
+        } finally {
+            Binder.restoreCallingIdentity(token);
+        }
+    }
+
     /**
      * Attempts to set the radio power state for thermal reason. This does not guarantee that the
      * requested radio power state will actually be set. See {@link
@@ -9404,5 +9446,89 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
 
         return thermalMitigationResult;
+    }
+
+    /**
+     * Set the GbaService Package Name that Telephony will bind to.
+     *
+     * @param subId The sim that the GbaService is associated with.
+     * @param packageName The name of the package to be replaced with.
+     * @return true if setting the GbaService to bind to succeeded, false if it did not.
+     */
+    @Override
+    public boolean setBoundGbaServiceOverride(int subId, String packageName) {
+        enforceModifyPermission();
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return getGbaManager(subId).overrideServicePackage(packageName);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Return the package name of the currently bound GbaService.
+     *
+     * @param subId The sim that the GbaService is associated with.
+     * @return the package name of the GbaService configuration, null if GBA is not supported.
+     */
+    @Override
+    public String getBoundGbaService(int subId) {
+        enforceReadPrivilegedPermission("getBoundGbaServicePackage");
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return getGbaManager(subId).getServicePackage();
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Set the release time for telephony to unbind GbaService.
+     *
+     * @param subId The sim that the GbaService is associated with.
+     * @param interval The release time to unbind GbaService by millisecond.
+     * @return true if setting the GbaService to bind to succeeded, false if it did not.
+     */
+    @Override
+    public boolean setGbaReleaseTimeOverride(int subId, int interval) {
+        enforceModifyPermission();
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return getGbaManager(subId).overrideReleaseTime(interval);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Return the release time for telephony to unbind GbaService.
+     *
+     * @param subId The sim that the GbaService is associated with.
+     * @return The release time to unbind GbaService by millisecond.
+     */
+    @Override
+    public int getGbaReleaseTime(int subId) {
+        enforceReadPrivilegedPermission("getGbaReleaseTime");
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return getGbaManager(subId).getReleaseTime();
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    private GbaManager getGbaManager(int subId) {
+        GbaManager instance = GbaManager.getInstance(subId);
+        if (instance == null) {
+            String packageName = mApp.getResources().getString(R.string.config_gba_package);
+            int releaseTime = mApp.getResources().getInteger(R.integer.config_gba_release_time);
+            instance = GbaManager.make(mApp, subId, packageName, releaseTime);
+        }
+        return instance;
     }
 }

@@ -220,6 +220,7 @@
     <uses-permission android:name="android.permission.NETWORK_STATS_PROVIDER" />
     <uses-permission android:name="android.permission.MANAGE_SUBSCRIPTION_PLANS"/>
     <uses-permission android:name="android.permission.OBSERVE_ROLE_HOLDERS"/>
+    <uses-permission android:name="android.permission.BIND_GBA_SERVICE"/>
 
     <!-- Needed to listen to changes in projection state. -->
     <uses-permission android:name="android.permission.READ_PROJECTION_STATE"/>
