@@ -1436,6 +1436,15 @@ abstract class TelephonyConnection extends Connection implements Holdable {
         } else {
             extrasToRemove.add(Connection.EXTRA_DISABLE_ADD_CALL);
         }
+
+        if (mOriginalConnection != null) {
+            ArrayList<String> forwardedNumber = mOriginalConnection.getForwardedNumber();
+            if (forwardedNumber != null) {
+                extrasToPut.putStringArrayList(Connection.EXTRA_LAST_FORWARDED_NUMBER,
+                        forwardedNumber);
+            }
+        }
+
         putTelephonyExtras(extrasToPut);
         removeTelephonyExtras(extrasToRemove);
 
