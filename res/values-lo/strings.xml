@@ -919,4 +919,8 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"ຂໍ້​ມູນ​ໂທລະ​ສັບ"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"ຂໍ້ມູນການເປີດນຳໃຊ້ເຄືອຂ່າຍ"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"ກະຕຸ້ນການຈັດຫາຜູ້ໃຫ້ບໍລິການ"</string>
+    <!-- no translation found for call_quality_notification_bluetooth_details (219073466476340435) -->
+    <skip />
+    <!-- no translation found for call_quality_notification_name (3476828289553948830) -->
+    <skip />
 </resources>

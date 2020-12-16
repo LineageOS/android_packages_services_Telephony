@@ -919,4 +919,6 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"ព័ត៌មាន​ទូរសព្ទ"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"ព័ត៌មាន​អំពី​ការផ្តល់​ទិន្នន័យ​របស់​ក្រុមហ៊ុន​សេវា​ទូរសព្ទ"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"នាំ​ឱ្យ​មាន​ការផ្តល់​ទិន្នន័យ​ពី​ក្រុមហ៊ុន​សេវា​ទូរសព្ទ"</string>
+    <string name="call_quality_notification_bluetooth_details" msgid="219073466476340435">"ការណែនាំ៖ កែលម្អ​ការតភ្ជាប់ប៊្លូធូស"</string>
+    <string name="call_quality_notification_name" msgid="3476828289553948830">"ការជូនដំណឹង​អំពីគុណភាព​ហៅទូរសព្ទ"</string>
 </resources>
