@@ -31,7 +31,6 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.ApplicationInfo;
 import android.content.pm.ComponentInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -2272,7 +2271,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         mApp.getSystemService(AppOpsManager.class)
                 .checkPackage(Binder.getCallingUid(), callingPackage);
 
-        final int targetSdk = getTargetSdk(callingPackage);
+        final int targetSdk = TelephonyPermissions.getTargetSdk(mApp, callingPackage);
         if (targetSdk > android.os.Build.VERSION_CODES.R) {
             // Callers targeting S have no business invoking this method.
             return;
@@ -2707,30 +2706,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 android.Manifest.permission.CONTROL_LOCATION_UPDATES, null);
     }
 
-    /**
-     * Returns the target SDK version number for a given package name.
-     *
-     * This call MUST be invoked before clearing the calling UID.
-     *
-     * @return target SDK if the package is found or INT_MAX.
-     */
-    private int getTargetSdk(String packageName) {
-        try {
-            final ApplicationInfo ai = mApp.getPackageManager().getApplicationInfoAsUser(
-                    packageName, 0, UserHandle.getUserHandleForUid(Binder.getCallingUid()));
-            if (ai != null) return ai.targetSdkVersion;
-        } catch (PackageManager.NameNotFoundException unexpected) {
-            loge("Failed to get package info for pkg="
-                    + packageName + ", uid=" + Binder.getCallingUid());
-        }
-        return Integer.MAX_VALUE;
-    }
-
     @Override
     @SuppressWarnings("unchecked")
     public List<NeighboringCellInfo> getNeighboringCellInfo(String callingPackage,
             String callingFeatureId) {
-        final int targetSdk = getTargetSdk(callingPackage);
+        final int targetSdk = TelephonyPermissions.getTargetSdk(mApp, callingPackage);
         if (targetSdk >= android.os.Build.VERSION_CODES.Q) {
             throw new SecurityException(
                     "getNeighboringCellInfo() is unavailable to callers targeting Q+ SDK levels.");
@@ -2789,7 +2769,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 return new ArrayList<>();
         }
 
-        final int targetSdk = getTargetSdk(callingPackage);
+        final int targetSdk = TelephonyPermissions.getTargetSdk(mApp, callingPackage);
         if (targetSdk >= android.os.Build.VERSION_CODES.Q) {
             return getCachedCellInfo();
         }
@@ -2842,13 +2822,15 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                                 .build());
         switch (locationResult) {
             case DENIED_HARD:
-                if (getTargetSdk(callingPackage) < Build.VERSION_CODES.Q) {
+                if (TelephonyPermissions
+                        .getTargetSdk(mApp, callingPackage) < Build.VERSION_CODES.Q) {
                     // Safetynet logging for b/154934934
                     EventLog.writeEvent(0x534e4554, "154934934", Binder.getCallingUid());
                 }
                 throw new SecurityException("Not allowed to access cell info");
             case DENIED_SOFT:
-                if (getTargetSdk(callingPackage) < Build.VERSION_CODES.Q) {
+                if (TelephonyPermissions
+                        .getTargetSdk(mApp, callingPackage) < Build.VERSION_CODES.Q) {
                     // Safetynet logging for b/154934934
                     EventLog.writeEvent(0x534e4554, "154934934", Binder.getCallingUid());
                 }
@@ -4573,7 +4555,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @Override
     public int getNetworkTypeForSubscriber(int subId, String callingPackage,
             String callingFeatureId) {
-        final int targetSdk = getTargetSdk(callingPackage);
+        final int targetSdk = TelephonyPermissions.getTargetSdk(mApp, callingPackage);
         if (targetSdk > android.os.Build.VERSION_CODES.Q) {
             return getDataNetworkTypeForSubscriber(subId, callingPackage, callingFeatureId);
         } else if (targetSdk == android.os.Build.VERSION_CODES.Q
