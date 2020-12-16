@@ -24,6 +24,7 @@ import android.telephony.ims.DelegateRequest;
 import android.telephony.ims.FeatureTagState;
 import android.telephony.ims.SipDelegateImsConfiguration;
 import android.telephony.ims.SipDelegateManager;
+import android.telephony.ims.aidl.IImsRegistration;
 import android.telephony.ims.aidl.ISipDelegate;
 import android.telephony.ims.aidl.ISipDelegateMessageCallback;
 import android.telephony.ims.aidl.ISipDelegateStateCallback;
@@ -118,6 +119,7 @@ public class SipDelegateBinderConnection implements DelegateBinderStateManager,
             };
 
     private final ISipTransport mSipTransport;
+    private final IImsRegistration mImsRegistration;
     private final DelegateRequest mRequestedConfig;
 
     private ISipDelegate mDelegateBinder;
@@ -129,6 +131,8 @@ public class SipDelegateBinderConnection implements DelegateBinderStateManager,
      * {@link SipDelegate}.
      * @param subId The subid that this SipDelegate is being created for.
      * @param sipTransport The SipTransport implementation that will be used to manage SipDelegates.
+     * @param registrationImpl The ImsRegistration implementation that will be used to manage
+     *                         registration changes in relation to the SipDelegates.
      * @param requestedConfig The DelegateRequest to be sent to the ImsService.
      * @param transportDeniedTags The feature tags that have already been denied by the
      *                            SipTransportController and should not be requested.
@@ -138,10 +142,12 @@ public class SipDelegateBinderConnection implements DelegateBinderStateManager,
      *                       SipDelegate changes. This will be called on the supplied executor.
      */
     public SipDelegateBinderConnection(int subId, ISipTransport sipTransport,
-            DelegateRequest requestedConfig, Set<FeatureTagState> transportDeniedTags,
-            Executor executor, List<StateCallback> stateCallbacks) {
+            IImsRegistration registrationImpl, DelegateRequest requestedConfig,
+            Set<FeatureTagState> transportDeniedTags, Executor executor,
+            List<StateCallback> stateCallbacks) {
         mSubId = subId;
         mSipTransport = sipTransport;
+        mImsRegistration = registrationImpl;
         mRequestedConfig = requestedConfig;
         mDeniedTags = transportDeniedTags;
         mExecutor = executor;
@@ -181,6 +187,15 @@ public class SipDelegateBinderConnection implements DelegateBinderStateManager,
             mSipTransport.asBinder().unlinkToDeath(this, 0);
         } catch (NoSuchElementException e) {
             logw("unlinkToDeath called on already unlinked binder" + e);
+        }
+    }
+
+    @Override
+    public void triggerFullNetworkRegistration(int sipCode, String sipReason) {
+        try {
+            mImsRegistration.triggerFullNetworkRegistration(sipCode, sipReason);
+        } catch (RemoteException e) {
+            logw("triggerFullNetworkRegistration called on unreachable ImsRegistration:" + e);
         }
     }
 

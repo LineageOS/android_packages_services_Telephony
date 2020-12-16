@@ -25,6 +25,7 @@ import android.telephony.ims.FeatureTagState;
 import android.telephony.ims.ImsException;
 import android.telephony.ims.ImsService;
 import android.telephony.ims.SipDelegateManager;
+import android.telephony.ims.aidl.IImsRegistration;
 import android.telephony.ims.aidl.ISipDelegate;
 import android.telephony.ims.aidl.ISipDelegateConnectionStateCallback;
 import android.telephony.ims.aidl.ISipDelegateMessageCallback;
@@ -206,7 +207,8 @@ public class SipTransportController implements RcsFeatureController.Feature,
     public interface SipDelegateControllerFactory {
         /** See {@link SipDelegateController} */
         SipDelegateController create(int subId, DelegateRequest initialRequest, String packageName,
-                ISipTransport sipTransportImpl, ScheduledExecutorService executorService,
+                ISipTransport sipTransportImpl,  IImsRegistration registrationImpl,
+                ScheduledExecutorService executorService,
                 ISipDelegateConnectionStateCallback stateCallback,
                 ISipDelegateMessageCallback messageCallback);
     }
@@ -348,6 +350,16 @@ public class SipTransportController implements RcsFeatureController.Feature,
     }
 
     /**
+     * The remote IMS application has requested that the ImsService tear down and re-register for
+     * IMS features due to an error it received on the network in response to a SIP request.
+     */
+    public void triggerFullNetworkRegistration(int subId, ISipDelegate connection, int sipCode,
+            String sipReason) {
+        mExecutorService.execute(() -> triggerFullNetworkRegistrationInternal(subId, connection,
+                sipCode, sipReason));
+    }
+
+    /**
      * @return Whether or not SipTransports are supported on the connected ImsService. This can
      * change based on the capabilities of the ImsService.
      * @throws ImsException if the ImsService connected to this controller is currently down.
@@ -366,11 +378,13 @@ public class SipTransportController implements RcsFeatureController.Feature,
             ISipDelegateMessageCallback delegateMessage,
             Consumer<ImsException> startedErrorConsumer) {
         ISipTransport transport;
+        IImsRegistration registration;
         // Send back any errors via Consumer early in creation process if it is clear that the
         // SipDelegate will never be created.
         try {
             checkStateOfController(subId);
             transport = mRcsManager.getSipTransport();
+            registration = mRcsManager.getImsRegistration();
             if (transport == null) {
                 logw("createSipDelegateInternal, transport null during request.");
                 startedErrorConsumer.accept(new ImsException("SipTransport not supported",
@@ -387,7 +401,7 @@ public class SipTransportController implements RcsFeatureController.Feature,
         }
 
         SipDelegateController c = mDelegateControllerFactory.create(subId, request, packageName,
-                transport, mExecutorService, delegateState, delegateMessage);
+                transport, registration, mExecutorService, delegateState, delegateMessage);
         logi("createSipDelegateInternal: request= " + request + ", packageName= " + packageName
                 + ", controller created: " + c);
         addPendingCreateAndEvaluate(c);
@@ -418,6 +432,35 @@ public class SipTransportController implements RcsFeatureController.Feature,
 
         logi("destroySipDelegateInternal: destroy queued for connection= " + connection);
         addPendingDestroyAndEvaluate(match, reason);
+    }
+
+    private void triggerFullNetworkRegistrationInternal(int subId, ISipDelegate connection,
+            int sipCode, String sipReason) {
+        if (subId != mSubId) {
+            logw("triggerFullNetworkRegistrationInternal: ignoring network reg request, as this is"
+                    + "about to be destroyed anyway due to subId change, delegate=" + connection);
+            return;
+        }
+        if (connection == null) {
+            logw("triggerFullNetworkRegistrationInternal: ignoring, null connection binder.");
+            return;
+        }
+        // Ensure the requester has a valid SipDelegate registered.
+        SipDelegateController match = null;
+        for (SipDelegateController controller : mDelegatePriorityQueue) {
+            if (Objects.equal(connection.asBinder(),
+                    controller.getSipDelegateInterface().asBinder())) {
+                match = controller;
+                break;
+            }
+        }
+        if (match == null) {
+            logw("triggerFullNetworkRegistrationInternal: could not find matching connection, "
+                    + "ignoring");
+            return;
+        }
+
+        match.triggerFullNetworkRegistration(sipCode, sipReason);
     }
 
     /**

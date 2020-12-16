@@ -32,6 +32,7 @@ import android.telephony.ims.DelegateRequest;
 import android.telephony.ims.FeatureTagState;
 import android.telephony.ims.SipDelegateImsConfiguration;
 import android.telephony.ims.SipDelegateManager;
+import android.telephony.ims.aidl.IImsRegistration;
 import android.telephony.ims.aidl.ISipDelegate;
 import android.telephony.ims.aidl.ISipDelegateMessageCallback;
 import android.telephony.ims.aidl.ISipDelegateStateCallback;
@@ -61,6 +62,7 @@ public class SipDelegateBinderConnectionTest extends TelephonyTestBase {
 
     @Mock private ISipDelegate mMockDelegate;
     @Mock private ISipTransport mMockTransport;
+    @Mock private IImsRegistration mMockRegistration;
     @Mock private IBinder mTransportBinder;
     @Mock private ISipDelegateMessageCallback mMessageCallback;
     @Mock private DelegateBinderStateManager.StateCallback mMockStateCallback;
@@ -107,7 +109,8 @@ public class SipDelegateBinderConnectionTest extends TelephonyTestBase {
         DelegateRequest request = getDelegateRequest();
         ArraySet<FeatureTagState> deniedTags = getMmTelDeniedTag();
         SipDelegateBinderConnection connection = new SipDelegateBinderConnection(TEST_SUB_ID,
-                mMockTransport, request, deniedTags, Runnable::run, mStateCallbackList);
+                mMockTransport, mMockRegistration, request, deniedTags, Runnable::run,
+                mStateCallbackList);
         ISipDelegateStateCallback cb = createDelegateCaptureStateCallback(request, connection);
 
         // Send onCreated callback from SipDelegate
@@ -130,7 +133,8 @@ public class SipDelegateBinderConnectionTest extends TelephonyTestBase {
         DelegateRequest request = getDelegateRequest();
         ArraySet<FeatureTagState> deniedTags = getMmTelDeniedTag();
         SipDelegateBinderConnection connection = new SipDelegateBinderConnection(TEST_SUB_ID,
-                mMockTransport, request, deniedTags, Runnable::run, mStateCallbackList);
+                mMockTransport, mMockRegistration, request, deniedTags, Runnable::run,
+                mStateCallbackList);
         doThrow(new RemoteException()).when(mMockTransport).createSipDelegate(eq(TEST_SUB_ID),
                 any(), any(), any());
         ISipDelegateStateCallback cb = createDelegateCaptureStateCallback(request, connection);
@@ -143,7 +147,8 @@ public class SipDelegateBinderConnectionTest extends TelephonyTestBase {
         DelegateRequest request = getDelegateRequest();
         ArraySet<FeatureTagState> deniedTags = getMmTelDeniedTag();
         SipDelegateBinderConnection connection = new SipDelegateBinderConnection(TEST_SUB_ID,
-                mMockTransport, request, deniedTags, Runnable::run, mStateCallbackList);
+                mMockTransport, mMockRegistration, request, deniedTags, Runnable::run,
+                mStateCallbackList);
         ISipDelegateStateCallback cb = createDelegateCaptureStateCallback(request, connection);
         assertNotNull(cb);
         cb.onCreated(mMockDelegate, null /*denied*/);
@@ -162,7 +167,8 @@ public class SipDelegateBinderConnectionTest extends TelephonyTestBase {
         DelegateRequest request = getDelegateRequest();
         ArraySet<FeatureTagState> deniedTags = getMmTelDeniedTag();
         SipDelegateBinderConnection connection = new SipDelegateBinderConnection(TEST_SUB_ID,
-                mMockTransport, request, deniedTags, Runnable::run, mStateCallbackList);
+                mMockTransport, mMockRegistration, request, deniedTags, Runnable::run,
+                mStateCallbackList);
         ISipDelegateStateCallback cb = createDelegateCaptureStateCallback(request, connection);
         assertNotNull(cb);
         cb.onCreated(mMockDelegate, null /*denied*/);
@@ -181,7 +187,8 @@ public class SipDelegateBinderConnectionTest extends TelephonyTestBase {
         DelegateRequest request = getDelegateRequest();
         ArraySet<FeatureTagState> deniedTags = getMmTelDeniedTag();
         SipDelegateBinderConnection connection = new SipDelegateBinderConnection(TEST_SUB_ID,
-                mMockTransport, request, deniedTags, Runnable::run, mStateCallbackList);
+                mMockTransport, mMockRegistration, request, deniedTags, Runnable::run,
+                mStateCallbackList);
         ISipDelegateStateCallback cb = createDelegateCaptureStateCallback(request, connection);
         assertNotNull(cb);
         cb.onCreated(mMockDelegate, new ArrayList<>(deniedTags));

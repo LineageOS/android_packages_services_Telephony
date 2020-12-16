@@ -124,7 +124,7 @@ public class SipTransportControllerTest extends TelephonyTestBase {
             SipDelegateController c = getMockDelegateController(subId, packageName, request);
             assertNotNull("create called with no corresponding controller set up", c);
             return c;
-        }).when(mMockDelegateControllerFactory).create(anyInt(), any(), anyString(), any(),
+        }).when(mMockDelegateControllerFactory).create(anyInt(), any(), anyString(), any(), any(),
                 any(), any(), any());
     }
 
@@ -289,6 +289,7 @@ public class SipTransportControllerTest extends TelephonyTestBase {
         SipDelegateController c = injectMockDelegateController(TEST_PACKAGE_NAME, r);
         createDelegateAndVerify(controller, c, r, r.getFeatureTags(), Collections.emptySet(),
                 TEST_PACKAGE_NAME);
+        triggerFullNetworkRegistrationAndVerify(controller, c);
     }
 
     @SmallTest
@@ -303,6 +304,8 @@ public class SipTransportControllerTest extends TelephonyTestBase {
 
         destroyDelegateAndVerify(controller, c, false,
                 SipDelegateManager.SIP_DELEGATE_DESTROY_REASON_REQUESTED_BY_APP);
+
+        triggerFullNetworkRegistrationAndVerifyNever(controller, c);
     }
 
     @SmallTest
@@ -741,6 +744,24 @@ public class SipTransportControllerTest extends TelephonyTestBase {
         // ensure thread is not blocked while waiting for pending complete.
         waitForExecutorAction(mExecutorService, TIMEOUT_MS);
         completePendingDestroy(pendingDestroy, reason);
+    }
+
+    private void triggerFullNetworkRegistrationAndVerify(SipTransportController controller,
+            SipDelegateController delegateController) {
+        controller.triggerFullNetworkRegistration(TEST_SUB_ID,
+                delegateController.getSipDelegateInterface(), 403, "forbidden");
+        // move to internal & trigger event
+        waitForExecutorAction(mExecutorService, TIMEOUT_MS);
+        verify(delegateController).triggerFullNetworkRegistration(403, "forbidden");
+    }
+
+    private void triggerFullNetworkRegistrationAndVerifyNever(SipTransportController controller,
+            SipDelegateController delegateController) {
+        controller.triggerFullNetworkRegistration(TEST_SUB_ID,
+                delegateController.getSipDelegateInterface(), 403, "forbidden");
+        // move to internal & potentially trigger event
+        waitForExecutorAction(mExecutorService, TIMEOUT_MS);
+        verify(delegateController, never()).triggerFullNetworkRegistration(anyInt(), anyString());
     }
 
     private DelegateRequest getBaseDelegateRequest() {
