@@ -107,12 +107,14 @@ import android.telephony.gba.GbaAuthRequest;
 import android.telephony.gba.UaSecurityProtocolIdentifier;
 import android.telephony.ims.ImsException;
 import android.telephony.ims.ProvisioningManager;
+import android.telephony.ims.RcsClientConfiguration;
 import android.telephony.ims.RegistrationManager;
 import android.telephony.ims.aidl.IImsCapabilityCallback;
 import android.telephony.ims.aidl.IImsConfig;
 import android.telephony.ims.aidl.IImsConfigCallback;
 import android.telephony.ims.aidl.IImsRegistration;
 import android.telephony.ims.aidl.IImsRegistrationCallback;
+import android.telephony.ims.aidl.IRcsConfigCallback;
 import android.telephony.ims.feature.ImsFeature;
 import android.telephony.ims.feature.MmTelFeature;
 import android.telephony.ims.feature.RcsFeature;
@@ -9067,15 +9069,19 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             isCompressed) {
         TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
                 mApp, subId, "notifyRcsAutoConfigurationReceived");
+        if (!SubscriptionManager.isValidSubscriptionId(subId)) {
+            throw new IllegalArgumentException("Invalid Subscription ID: " + subId);
+        }
+        if (!isImsAvailableOnDevice()) {
+            throw new ServiceSpecificException(ImsException.CODE_ERROR_UNSUPPORTED_OPERATION,
+                    "IMS not available on device.");
+        }
+
+        final long identity = Binder.clearCallingIdentity();
         try {
-            IImsConfig configBinder = getImsConfig(getSlotIndex(subId), ImsFeature.FEATURE_RCS);
-            if (configBinder == null) {
-                Rlog.e(LOG_TAG, "null result for getImsConfig");
-            } else {
-                configBinder.notifyRcsAutoConfigurationReceived(config, isCompressed);
-            }
-        } catch (RemoteException e) {
-            Rlog.e(LOG_TAG, "fail to getImsConfig " + e.getMessage());
+            RcsProvisioningMonitor.getInstance().updateConfig(subId, config, isCompressed);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
         }
     }
 
@@ -9512,5 +9518,185 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             instance = GbaManager.make(mApp, subId, packageName, releaseTime);
         }
         return instance;
+    }
+
+    /**
+     * indicate whether the device and the carrier can support
+     * RCS VoLTE single registration.
+     */
+    @Override
+    public boolean isRcsVolteSingleRegistrationCapable(int subId) {
+        enforceReadPrivilegedPermission("isRcsVolteSingleRegistrationCapable");
+
+        if (!SubscriptionManager.isValidSubscriptionId(subId)) {
+            throw new IllegalArgumentException("Invalid Subscription ID: " + subId);
+        }
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            RcsProvisioningMonitor rpm = RcsProvisioningMonitor.getInstance();
+            if (rpm != null) {
+                return rpm.isRcsVolteSingleRegistrationEnabled(subId);
+            }
+            return false;
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Register RCS provisioning callback.
+     */
+    @Override
+    public void registerRcsProvisioningChangedCallback(int subId,
+            IRcsConfigCallback callback) {
+        enforceReadPrivilegedPermission("registerRcsProvisioningChangedCallback");
+
+        if (!SubscriptionManager.isValidSubscriptionId(subId)) {
+            throw new IllegalArgumentException("Invalid Subscription ID: " + subId);
+        }
+        if (!isImsAvailableOnDevice()) {
+            throw new ServiceSpecificException(ImsException.CODE_ERROR_UNSUPPORTED_OPERATION,
+                    "IMS not available on device.");
+        }
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            ImsManager.getInstance(mApp, getSlotIndexOrException(subId))
+                    .addRcsProvisioningCallbackForSubscription(callback, subId);
+        } catch (ImsException e) {
+            throw new ServiceSpecificException(e.getCode());
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Unregister RCS provisioning callback.
+     */
+    @Override
+    public void unregisterRcsProvisioningChangedCallback(int subId,
+            IRcsConfigCallback callback) {
+        enforceReadPrivilegedPermission("unregisterRcsProvisioningChangedCallback");
+
+        if (!SubscriptionManager.isValidSubscriptionId(subId)) {
+            throw new IllegalArgumentException("Invalid Subscription ID: " + subId);
+        }
+        if (!isImsAvailableOnDevice()) {
+            throw new ServiceSpecificException(ImsException.CODE_ERROR_UNSUPPORTED_OPERATION,
+                    "IMS not available on device.");
+        }
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            ImsManager.getInstance(mApp, getSlotIndexOrException(subId))
+                    .removeRcsProvisioningCallbackForSubscription(callback, subId);
+        } catch (ImsException e) {
+            Log.i(LOG_TAG, "unregisterRcsProvisioningChangedCallback: " + subId
+                    + "is inactive, ignoring unregister.");
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * trigger RCS reconfiguration.
+     */
+    public void triggerRcsReconfiguration(int subId) {
+        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
+                mApp, subId, "triggerRcsReconfiguration");
+
+        if (!SubscriptionManager.isValidSubscriptionId(subId)) {
+            throw new IllegalArgumentException("Invalid Subscription ID: " + subId);
+        }
+        if (!isImsAvailableOnDevice()) {
+            throw new ServiceSpecificException(ImsException.CODE_ERROR_UNSUPPORTED_OPERATION,
+                    "IMS not available on device.");
+        }
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            RcsProvisioningMonitor.getInstance().requestReconfig(subId);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Provide the client configuration parameters of the RCS application.
+     */
+    public void setRcsClientConfiguration(int subId, RcsClientConfiguration rcc) {
+        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
+                mApp, subId, "setRcsClientConfiguration");
+
+        if (!SubscriptionManager.isValidSubscriptionId(subId)) {
+            throw new IllegalArgumentException("Invalid Subscription ID: " + subId);
+        }
+        if (!isImsAvailableOnDevice()) {
+            throw new ServiceSpecificException(ImsException.CODE_ERROR_UNSUPPORTED_OPERATION,
+                    "IMS not available on device.");
+        }
+
+        final long identity = Binder.clearCallingIdentity();
+
+        try {
+            IImsConfig configBinder = getImsConfig(getSlotIndex(subId), ImsFeature.FEATURE_RCS);
+            if (configBinder == null) {
+                Rlog.e(LOG_TAG, "null result for setRcsClientConfiguration");
+            } else {
+                configBinder.setRcsClientConfiguration(rcc);
+            }
+        } catch (RemoteException e) {
+            Rlog.e(LOG_TAG, "fail to setRcsClientConfiguration " + e.getMessage());
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Overrides the config of RCS VoLTE single registration enabled for the device.
+     */
+    @Override
+    public void setDeviceSingleRegistrationEnabledOverride(String enabledStr) {
+        TelephonyPermissions.enforceShellOnly(Binder.getCallingUid(),
+                "setDeviceSingleRegistrationEnabledOverride");
+        enforceModifyPermission();
+
+        Boolean enabled = "NULL".equalsIgnoreCase(enabledStr) ? null
+                : Boolean.parseBoolean(enabledStr);
+        RcsProvisioningMonitor.getInstance().overrideDeviceSingleRegistrationEnabled(enabled);
+    }
+
+    /**
+     * Gets the config of RCS VoLTE single registration enabled for the device.
+     */
+    @Override
+    public boolean getDeviceSingleRegistrationEnabled() {
+        enforceReadPrivilegedPermission("getDeviceSingleRegistrationEnabled");
+        return RcsProvisioningMonitor.getInstance().getDeviceSingleRegistrationEnabled();
+    }
+
+    /**
+     * Overrides the config of RCS VoLTE single registration enabled for the carrier/subscription.
+     */
+    @Override
+    public boolean setCarrierSingleRegistrationEnabledOverride(int subId, String enabledStr) {
+        TelephonyPermissions.enforceShellOnly(Binder.getCallingUid(),
+                "setCarrierSingleRegistrationEnabledOverride");
+        enforceModifyPermission();
+
+        Boolean enabled = "NULL".equalsIgnoreCase(enabledStr) ? null
+                : Boolean.parseBoolean(enabledStr);
+        return RcsProvisioningMonitor.getInstance().overrideCarrierSingleRegistrationEnabled(
+                subId, enabled);
+    }
+
+    /**
+     * Gets the config of RCS VoLTE single registration enabled for the carrier/subscription.
+     */
+    @Override
+    public boolean getCarrierSingleRegistrationEnabled(int subId) {
+        enforceReadPrivilegedPermission("getCarrierSingleRegistrationEnabled");
+        return RcsProvisioningMonitor.getInstance().getCarrierSingleRegistrationEnabled(subId);
     }
 }
