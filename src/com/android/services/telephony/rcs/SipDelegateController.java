@@ -21,6 +21,7 @@ import android.telephony.ims.DelegateRequest;
 import android.telephony.ims.FeatureTagState;
 import android.telephony.ims.SipDelegateConnection;
 import android.telephony.ims.SipDelegateManager;
+import android.telephony.ims.aidl.IImsRegistration;
 import android.telephony.ims.aidl.ISipDelegate;
 import android.telephony.ims.aidl.ISipDelegateConnectionStateCallback;
 import android.telephony.ims.aidl.ISipDelegateMessageCallback;
@@ -49,10 +50,18 @@ import java.util.concurrent.ScheduledExecutorService;
 public class SipDelegateController {
     static final String LOG_TAG = "SipDelegateC";
 
-    private DelegateBinderStateManager.Factory mBinderConnectionFactory =
-            new DelegateBinderStateManager.Factory() {
+    private class BinderConnectionFactory implements DelegateBinderStateManager.Factory {
+
+        private final ISipTransport mSipTransportImpl;
+        private final IImsRegistration mImsRegistrationImpl;
+
+        BinderConnectionFactory(ISipTransport transport, IImsRegistration registration) {
+            mSipTransportImpl = transport;
+            mImsRegistrationImpl = registration;
+        }
+
         @Override
-        public DelegateBinderStateManager create(int subId, ISipTransport sipTransport,
+        public DelegateBinderStateManager create(int subId,
                 DelegateRequest requestedConfig, Set<FeatureTagState> transportDeniedTags,
                 Executor executor, List<DelegateBinderStateManager.StateCallback> stateCallbacks) {
             // We should not actually create a SipDelegate in this case.
@@ -60,32 +69,33 @@ public class SipDelegateController {
                 return new SipDelegateBinderConnectionStub(transportDeniedTags, executor,
                         stateCallbacks);
             }
-            return new SipDelegateBinderConnection(mSubId, mSipTransportImpl, requestedConfig,
-                    transportDeniedTags, mExecutorService, stateCallbacks);
+            return new SipDelegateBinderConnection(mSubId, mSipTransportImpl, mImsRegistrationImpl,
+                    requestedConfig, transportDeniedTags, mExecutorService, stateCallbacks);
         }
-    };
+    }
 
     private final int mSubId;
     private final String mPackageName;
     private final DelegateRequest mInitialRequest;
-    private final ISipTransport mSipTransportImpl;
     private final ScheduledExecutorService mExecutorService;
     private final MessageTransportStateTracker mMessageTransportStateTracker;
     private final DelegateStateTracker mDelegateStateTracker;
+    private final DelegateBinderStateManager.Factory mBinderConnectionFactory;
     private final LocalLog mLocalLog = new LocalLog(SipTransportController.LOG_SIZE);
 
     private DelegateBinderStateManager mBinderConnection;
     private Set<String> mTrackedFeatureTags;
 
     public SipDelegateController(int subId, DelegateRequest initialRequest, String packageName,
-            ISipTransport sipTransportImpl, ScheduledExecutorService executorService,
+            ISipTransport transportImpl, IImsRegistration registrationImpl,
+            ScheduledExecutorService executorService,
             ISipDelegateConnectionStateCallback stateCallback,
             ISipDelegateMessageCallback messageCallback) {
         mSubId = subId;
         mPackageName = packageName;
         mInitialRequest = initialRequest;
-        mSipTransportImpl = sipTransportImpl;
         mExecutorService = executorService;
+        mBinderConnectionFactory = new BinderConnectionFactory(transportImpl, registrationImpl);
 
         mMessageTransportStateTracker = new MessageTransportStateTracker(mSubId, executorService,
                 messageCallback);
@@ -98,14 +108,13 @@ public class SipDelegateController {
      */
     @VisibleForTesting
     public SipDelegateController(int subId, DelegateRequest initialRequest, String packageName,
-            ISipTransport sipTransportImpl, ScheduledExecutorService executorService,
+            ScheduledExecutorService executorService,
             MessageTransportStateTracker messageTransportStateTracker,
             DelegateStateTracker delegateStateTracker,
             DelegateBinderStateManager.Factory connectionFactory) {
         mSubId = subId;
         mInitialRequest = initialRequest;
         mPackageName = packageName;
-        mSipTransportImpl = sipTransportImpl;
         mExecutorService = executorService;
         mMessageTransportStateTracker = messageTransportStateTracker;
         mDelegateStateTracker = delegateStateTracker;
@@ -249,6 +258,21 @@ public class SipDelegateController {
         }, mExecutorService);
     };
 
+    /**
+     * The IMS application is notifying the ImsService that it has received a response to a request
+     * that will require that the IMS registration be torn down and brought back up.
+     *<p>
+     * See {@link SipDelegateManager#triggerFullNetworkRegistration} for more information.
+     */
+    public void triggerFullNetworkRegistration(int sipCode, String sipReason) {
+        logi("triggerFullNetworkRegistration, code=" + sipCode + ", reason=" + sipReason);
+        if (mBinderConnection != null) {
+            mBinderConnection.triggerFullNetworkRegistration(sipCode, sipReason);
+        } else {
+            logw("triggerFullNetworkRegistration called when binder connection is null");
+        }
+    }
+
     private static int getMessageFailReasonFromDestroyReason(int destroyReason) {
         switch (destroyReason) {
             case SipDelegateManager.SIP_DELEGATE_DESTROY_REASON_SERVICE_DEAD:
@@ -340,7 +364,7 @@ public class SipDelegateController {
         stateCallbacks.add(mDelegateStateTracker);
         stateCallbacks.add(mMessageTransportStateTracker);
 
-        return mBinderConnectionFactory.create(mSubId, mSipTransportImpl,
+        return mBinderConnectionFactory.create(mSubId,
                 new DelegateRequest(supportedSet), deniedSet, mExecutorService, stateCallbacks);
     }
 
