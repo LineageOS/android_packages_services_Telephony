@@ -61,9 +61,7 @@ public class TelephonyTestBase {
 
     protected final boolean waitForExecutorAction(Executor executor, long timeoutMillis) {
         final CountDownLatch lock = new CountDownLatch(1);
-        Log.i("BRAD", "waitForExecutorAction");
         executor.execute(() -> {
-            Log.i("BRAD", "countdown");
             lock.countDown();
         });
         while (lock.getCount() > 0) {
