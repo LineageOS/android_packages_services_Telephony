@@ -40,6 +40,7 @@ import android.telephony.ims.DelegateRequest;
 import android.telephony.ims.FeatureTagState;
 import android.telephony.ims.ImsException;
 import android.telephony.ims.SipDelegateManager;
+import android.telephony.ims.aidl.IImsRegistration;
 import android.telephony.ims.aidl.ISipDelegate;
 import android.telephony.ims.aidl.ISipDelegateConnectionStateCallback;
 import android.telephony.ims.aidl.ISipDelegateMessageCallback;
@@ -102,6 +103,7 @@ public class SipTransportControllerTest extends TelephonyTestBase {
 
     @Mock private RcsFeatureManager mRcsManager;
     @Mock private ISipTransport mSipTransport;
+    @Mock private IImsRegistration mImsRegistration;
     @Mock private ISipDelegateConnectionStateCallback mMockStateCallback;
     @Mock private ISipDelegateMessageCallback mMockMessageCallback;
     @Mock private SipTransportController.SipDelegateControllerFactory
@@ -116,6 +118,7 @@ public class SipTransportControllerTest extends TelephonyTestBase {
     public void setUp() throws Exception {
         super.setUp();
         doReturn(mSmsPackageName).when(mMockRoleManager).getRoleHolders(RoleManager.ROLE_SMS);
+        doReturn(mImsRegistration).when(mRcsManager).getImsRegistration();
         mSmsPackageName.add(TEST_PACKAGE_NAME);
         doAnswer(invocation -> {
             Integer subId = invocation.getArgument(0);
@@ -289,6 +292,7 @@ public class SipTransportControllerTest extends TelephonyTestBase {
         SipDelegateController c = injectMockDelegateController(TEST_PACKAGE_NAME, r);
         createDelegateAndVerify(controller, c, r, r.getFeatureTags(), Collections.emptySet(),
                 TEST_PACKAGE_NAME);
+        verifyDelegateRegistrationChangedEvent(1 /*times*/, 0 /*waitMs*/);
         triggerFullNetworkRegistrationAndVerify(controller, c);
     }
 
@@ -301,10 +305,11 @@ public class SipTransportControllerTest extends TelephonyTestBase {
         SipDelegateController c = injectMockDelegateController(TEST_PACKAGE_NAME, r);
         createDelegateAndVerify(controller, c, r, r.getFeatureTags(), Collections.emptySet(),
                 TEST_PACKAGE_NAME);
+        verifyDelegateRegistrationChangedEvent(1, 0 /*throttle*/);
 
         destroyDelegateAndVerify(controller, c, false,
                 SipDelegateManager.SIP_DELEGATE_DESTROY_REASON_REQUESTED_BY_APP);
-
+        verifyDelegateRegistrationChangedEvent(2 /*times*/, 0 /*waitMs*/);
         triggerFullNetworkRegistrationAndVerifyNever(controller, c);
     }
 
@@ -326,7 +331,8 @@ public class SipTransportControllerTest extends TelephonyTestBase {
     @SmallTest
     @Test
     public void createTwoAndDenyOverlappingTags() throws Exception {
-        SipTransportController controller = setupLiveTransportController();
+        SipTransportController controller = setupLiveTransportController(0 /*reeval*/,
+                THROTTLE_MS);
 
         // First delegate requests RCS message + File transfer
         ArraySet<String> firstDelegate = new ArraySet<>(getBaseDelegateRequest().getFeatureTags());
@@ -336,6 +342,8 @@ public class SipTransportControllerTest extends TelephonyTestBase {
                 firstDelegateRequest);
         createDelegateAndVerify(controller, c1, firstDelegateRequest, firstDelegate,
                 Collections.emptySet(), TEST_PACKAGE_NAME);
+        // there is a delay in the indication to update reg, so it should not happen yet.
+        verifyNoDelegateRegistrationChangedEvent();
 
         // First delegate requests RCS message + Group RCS message. For this delegate, single RCS
         // message should be denied.
@@ -349,12 +357,14 @@ public class SipTransportControllerTest extends TelephonyTestBase {
                 secondDelegateRequest);
         createDelegateAndVerify(controller, c2, secondDelegateRequest, grantedAndDenied.first,
                 grantedAndDenied.second, TEST_PACKAGE_NAME, 1);
+        // a reg changed event should happen after wait.
+        verifyDelegateRegistrationChangedEvent(1, 2 * THROTTLE_MS);
     }
 
     @SmallTest
     @Test
     public void createTwoAndTriggerRoleChange() throws Exception {
-        SipTransportController controller = setupLiveTransportController();
+        SipTransportController controller = setupLiveTransportController(0 /*reeval*/, THROTTLE_MS);
 
         DelegateRequest firstDelegateRequest = getBaseDelegateRequest();
         Set<FeatureTagState> firstDeniedTags = getDeniedTagsForReason(
@@ -364,6 +374,7 @@ public class SipTransportControllerTest extends TelephonyTestBase {
                 firstDelegateRequest);
         createDelegateAndVerify(controller, c1, firstDelegateRequest,
                 firstDelegateRequest.getFeatureTags(), Collections.emptySet(), TEST_PACKAGE_NAME);
+        verifyDelegateRegistrationChangedEvent(1 /*times*/, THROTTLE_MS);
 
         DelegateRequest secondDelegateRequest = getBaseDelegateRequest();
         Set<FeatureTagState> secondDeniedTags = getDeniedTagsForReason(
@@ -381,6 +392,10 @@ public class SipTransportControllerTest extends TelephonyTestBase {
         CompletableFuture<Boolean> pendingC2Change = setChangeSupportedFeatureTagsFuture(c2,
                 secondDelegateRequest.getFeatureTags(), Collections.emptySet());
         setSmsRoleAndEvaluate(controller, TEST_PACKAGE_NAME_2);
+        // swapping roles should trigger a deregistration event on the ImsService side.
+        verifyDelegateDeregistrationEvent();
+        // there should also not be any new registration changed events
+        verifyDelegateRegistrationChangedEvent(1 /*times*/, THROTTLE_MS);
         // trigger completion stage to run
         waitForExecutorAction(mExecutorService, TIMEOUT_MS);
         verify(c1).changeSupportedFeatureTags(Collections.emptySet(), firstDeniedTags);
@@ -397,12 +412,14 @@ public class SipTransportControllerTest extends TelephonyTestBase {
         // ensure we are not blocking executor here
         waitForExecutorAction(mExecutorService, TIMEOUT_MS);
         completePendingChange(pendingC2Change, true);
+        // verify we now get a second registration changed event
+        verifyDelegateRegistrationChangedEvent(2 /*times*/, THROTTLE_MS);
     }
 
     @SmallTest
     @Test
     public void createTwoAndDestroyOlder() throws Exception {
-        SipTransportController controller = setupLiveTransportController();
+        SipTransportController controller = setupLiveTransportController(0 /*reeval*/, THROTTLE_MS);
 
         // First delegate requests RCS message + File transfer
         ArraySet<String> firstDelegate = new ArraySet<>(getBaseDelegateRequest().getFeatureTags());
@@ -412,6 +429,7 @@ public class SipTransportControllerTest extends TelephonyTestBase {
                 firstDelegateRequest);
         createDelegateAndVerify(controller, c1, firstDelegateRequest, firstDelegate,
                 Collections.emptySet(), TEST_PACKAGE_NAME);
+        verifyNoDelegateRegistrationChangedEvent();
 
         // First delegate requests RCS message + Group RCS message. For this delegate, single RCS
         // message should be denied.
@@ -425,6 +443,7 @@ public class SipTransportControllerTest extends TelephonyTestBase {
                 secondDelegateRequest);
         createDelegateAndVerify(controller, c2, secondDelegateRequest, grantedAndDenied.first,
                 grantedAndDenied.second, TEST_PACKAGE_NAME, 1);
+        verifyNoDelegateRegistrationChangedEvent();
 
         // Destroy the firstDelegate, which should now cause all previously denied tags to be
         // granted to the new delegate.
@@ -436,12 +455,14 @@ public class SipTransportControllerTest extends TelephonyTestBase {
         assertTrue(waitForExecutorAction(mExecutorService, TIMEOUT_MS));
         verify(c2).changeSupportedFeatureTags(secondDelegate, Collections.emptySet());
         completePendingChange(pendingC2Change, true);
+
+        verifyDelegateRegistrationChangedEvent(1 /*times*/, THROTTLE_MS);
     }
 
     @SmallTest
     @Test
     public void testThrottling() throws Exception {
-        SipTransportController controller = setupLiveTransportController(THROTTLE_MS);
+        SipTransportController controller = setupLiveTransportController(THROTTLE_MS, THROTTLE_MS);
 
         // First delegate requests RCS message + File transfer
         ArraySet<String> firstDelegate = new ArraySet<>(getBaseDelegateRequest().getFeatureTags());
@@ -480,12 +501,14 @@ public class SipTransportControllerTest extends TelephonyTestBase {
                 thirdDelegateRequest, grantedAndDeniedC3.first, grantedAndDeniedC3.second,
                 TEST_PACKAGE_NAME);
 
+        verifyNoDelegateRegistrationChangedEvent();
         assertTrue(scheduleDelayedWait(2 * THROTTLE_MS));
         verifyDelegateChanged(c1, pendingC1Change, firstDelegate, Collections.emptySet(), 0);
         verifyDelegateChanged(c2, pendingC2Change, grantedAndDeniedC2.first,
                 grantedAndDeniedC2.second, 0);
         verifyDelegateChanged(c3, pendingC3Change, grantedAndDeniedC3.first,
                 grantedAndDeniedC3.second, 0);
+        verifyDelegateRegistrationChangedEvent(1, 2 * THROTTLE_MS);
 
         // Destroy the first and second controller in quick succession, this should only generate
         // one reevaluate for the third controller.
@@ -508,6 +531,7 @@ public class SipTransportControllerTest extends TelephonyTestBase {
         verify(c3).changeSupportedFeatureTags(thirdDelegate, Collections.emptySet());
         // In total reeval should have only been called twice.
         verify(c3, times(2)).changeSupportedFeatureTags(any(), any());
+        verifyDelegateRegistrationChangedEvent(2 /*times*/, 2 * THROTTLE_MS);
     }
 
     @SmallTest
@@ -521,6 +545,7 @@ public class SipTransportControllerTest extends TelephonyTestBase {
                 firstDelegateRequest);
         createDelegateAndVerify(controller, c1, firstDelegateRequest, firstDelegate,
                 Collections.emptySet(), TEST_PACKAGE_NAME);
+        verifyDelegateRegistrationChangedEvent(1 /*times*/, 0 /*waitMs*/);
 
         CompletableFuture<Integer> pendingDestroy =  setDestroyFuture(c1, true,
                 SipDelegateManager.SIP_DELEGATE_DESTROY_REASON_SUBSCRIPTION_TORN_DOWN);
@@ -528,6 +553,7 @@ public class SipTransportControllerTest extends TelephonyTestBase {
         waitForExecutorAction(mExecutorService, TIMEOUT_MS);
         verifyDestroyDelegate(controller, c1, pendingDestroy, true /*force*/,
                 SipDelegateManager.SIP_DELEGATE_DESTROY_REASON_SUBSCRIPTION_TORN_DOWN);
+        verifyDelegateRegistrationChangedEvent(2 /*times*/, 0 /*waitMs*/);
     }
 
     @SmallTest
@@ -548,6 +574,7 @@ public class SipTransportControllerTest extends TelephonyTestBase {
         waitForExecutorAction(mExecutorService, TIMEOUT_MS);
         verifyDestroyDelegate(controller, c1, pendingDestroy, true /*force*/,
                 SipDelegateManager.SIP_DELEGATE_DESTROY_REASON_SERVICE_DEAD);
+        verifyDelegateRegistrationChangedEvent(1, 0 /*waitMs*/);
     }
 
     @SmallTest
@@ -566,6 +593,7 @@ public class SipTransportControllerTest extends TelephonyTestBase {
                 SipDelegateManager.SIP_DELEGATE_DESTROY_REASON_SUBSCRIPTION_TORN_DOWN);
         controller.onDestroy();
         waitForExecutorAction(mExecutorService, TIMEOUT_MS);
+        verifyDelegateDeregistrationEvent();
         // verify change was called.
         verify(c1).destroy(true /*force*/,
                 SipDelegateManager.SIP_DELEGATE_DESTROY_REASON_SUBSCRIPTION_TORN_DOWN);
@@ -578,7 +606,7 @@ public class SipTransportControllerTest extends TelephonyTestBase {
     @SmallTest
     @Test
     public void testTimingSubIdChangedAndCreateNewSubId() throws Exception {
-        SipTransportController controller = setupLiveTransportController(THROTTLE_MS);
+        SipTransportController controller = setupLiveTransportController(THROTTLE_MS, 0);
 
         ArraySet<String> firstDelegate = new ArraySet<>(getBaseDelegateRequest().getFeatureTags());
         DelegateRequest firstDelegateRequest = new DelegateRequest(firstDelegate);
@@ -641,13 +669,14 @@ public class SipTransportControllerTest extends TelephonyTestBase {
     }
 
     private SipTransportController setupLiveTransportController() throws Exception {
-        return setupLiveTransportController(0 /*throttleMs*/);
+        return setupLiveTransportController(0 /*throttleMs*/, 0 /*regDelayMs*/);
     }
 
-    private SipTransportController setupLiveTransportController(int throttleMs) throws Exception {
+    private SipTransportController setupLiveTransportController(int throttleMs, int regDelayMs)
+            throws Exception {
         mExecutorService = Executors.newSingleThreadScheduledExecutor();
         SipTransportController controller = createControllerAndThrottle(mExecutorService,
-                throttleMs);
+                throttleMs, regDelayMs);
         doReturn(mSipTransport).when(mRcsManager).getSipTransport();
         controller.onAssociatedSubscriptionUpdated(TEST_SUB_ID);
         controller.onRcsConnected(mRcsManager);
@@ -828,12 +857,31 @@ public class SipTransportControllerTest extends TelephonyTestBase {
         waitForExecutorAction(mExecutorService, TIMEOUT_MS);
     }
 
+    private void verifyNoDelegateRegistrationChangedEvent() throws Exception {
+        // event is scheduled and then executed.
+        waitForExecutorAction(mExecutorService, TIMEOUT_MS);
+        verify(mImsRegistration, never()).triggerUpdateSipDelegateRegistration();
+    }
+
+    private void verifyDelegateRegistrationChangedEvent(int times, int waitMs)
+            throws Exception {
+        // event is scheduled and then executed.
+        assertTrue(scheduleDelayedWait(waitMs));
+        waitForExecutorAction(mExecutorService, TIMEOUT_MS);
+        verify(mImsRegistration, times(times)).triggerUpdateSipDelegateRegistration();
+    }
+
+
+    private void verifyDelegateDeregistrationEvent() throws Exception {
+        verify(mImsRegistration).triggerSipDelegateDeregistration();
+    }
+
     private SipTransportController createController(ScheduledExecutorService e) {
-        return createControllerAndThrottle(e, 0 /*throttleMs*/);
+        return createControllerAndThrottle(e, 0 /*throttleMs*/, 0 /*regDelayMs*/);
     }
 
     private SipTransportController createControllerAndThrottle(ScheduledExecutorService e,
-            int throttleMs) {
+            int throttleMs, int regDelayMs) {
         return new SipTransportController(mContext, 0 /*slotId*/, TEST_SUB_ID,
                 mMockDelegateControllerFactory, mMockRoleManager,
                 // Remove delays for testing.
@@ -845,7 +893,7 @@ public class SipTransportControllerTest extends TelephonyTestBase {
 
                     @Override
                     public int getUpdateRegistrationDelayMilliseconds() {
-                        return 0;
+                        return regDelayMs;
                     }
                 }, e);
     }
