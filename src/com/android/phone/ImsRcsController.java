@@ -466,6 +466,24 @@ public class ImsRcsController extends IImsRcsController.Stub {
         }
     }
 
+    @Override
+    public void triggerNetworkRegistration(int subId, ISipDelegate connection, int sipCode,
+            String sipReason) {
+        enforceModifyPermission();
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            SipTransportController transport = getRcsFeatureController(subId).getFeature(
+                    SipTransportController.class);
+            if (transport == null) {
+                return;
+            }
+            transport.triggerFullNetworkRegistration(subId, connection, sipCode, sipReason);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
     /**
      * Registers for updates to the RcsFeature connection through the IImsServiceFeatureCallback
      * callback.

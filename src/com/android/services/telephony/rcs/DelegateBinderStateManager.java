@@ -19,10 +19,11 @@ package com.android.services.telephony.rcs;
 import android.telephony.ims.DelegateRegistrationState;
 import android.telephony.ims.DelegateRequest;
 import android.telephony.ims.FeatureTagState;
+import android.telephony.ims.SipDelegateConnection;
 import android.telephony.ims.SipDelegateImsConfiguration;
+import android.telephony.ims.SipDelegateManager;
 import android.telephony.ims.aidl.ISipDelegate;
 import android.telephony.ims.aidl.ISipDelegateMessageCallback;
-import android.telephony.ims.aidl.ISipTransport;
 
 import com.android.internal.annotations.VisibleForTesting;
 
@@ -61,8 +62,8 @@ public interface DelegateBinderStateManager {
          * denied. See {@link SipDelegateBinderConnectionStub} and
          * {@link SipDelegateBinderConnection}
          */
-        DelegateBinderStateManager create(int subId, ISipTransport sipTransport,
-                DelegateRequest requestedConfig, Set<FeatureTagState> transportDeniedTags,
+        DelegateBinderStateManager create(int subId, DelegateRequest requestedConfig,
+                Set<FeatureTagState> transportDeniedTags,
                 Executor executor, List<StateCallback> stateCallbacks);
     }
 
@@ -89,4 +90,11 @@ public interface DelegateBinderStateManager {
      *         Contains the reason the SipDelegate reported it was destroyed.
      */
     void destroy(int reason, Consumer<Integer> destroyedConsumer);
+
+    /**
+     * Called by IMS application, see
+     * {@link SipDelegateManager#triggerFullNetworkRegistration(SipDelegateConnection, int, String)}
+     * for more information about when this is called.
+     */
+    void triggerFullNetworkRegistration(int sipCode, String sipReason);
 }
