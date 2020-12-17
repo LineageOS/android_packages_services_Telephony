@@ -87,6 +87,12 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
     private static final String GBA_SET_RELEASE_TIME = "set-release";
     private static final String GBA_GET_RELEASE_TIME = "get-release";
 
+    private static final String SINGLE_REGISTATION_CONFIG = "src";
+    private static final String SRC_SET_DEVICE_ENABLED = "set-device-enabled";
+    private static final String SRC_GET_DEVICE_ENABLED = "get-device-enabled";
+    private static final String SRC_SET_CARRIER_ENABLED = "set-carrier-enabled";
+    private static final String SRC_GET_CARRIER_ENABLED = "get-carrier-enabled";
+
     // Take advantage of existing methods that already contain permissions checks when possible.
     private final ITelephony mInterface;
 
@@ -169,6 +175,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                 return handleEndBlockSuppressionCommand();
             case GBA_SUBCOMMAND:
                 return handleGbaCommand();
+            case SINGLE_REGISTATION_CONFIG:
+                return handleSingleRegistrationConfigCommand();
             default: {
                 return handleDefaultCommands(cmd);
             }
@@ -193,12 +201,15 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         pw.println("    Carrier Config Commands.");
         pw.println("  gba");
         pw.println("    GBA Commands.");
+        pw.println("  src");
+        pw.println("    RCS VoLTE Single Registration Config Commands.");
         onHelpIms();
         onHelpEmergencyNumber();
         onHelpEndBlockSupperssion();
         onHelpDataTestMode();
         onHelpCc();
         onHelpGba();
+        onHelpSrc();
     }
 
     private void onHelpIms() {
@@ -327,6 +338,27 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         pw.println("    Gets the time to release/unbind GbaService in n milli-sencond.");
         pw.println("    Options are:");
         pw.println("      -s: The SIM slot ID to read carrier config value for. If no option");
+        pw.println("          is specified, it will choose the default voice SIM slot.");
+    }
+
+    private void onHelpSrc() {
+        PrintWriter pw = getOutPrintWriter();
+        pw.println("RCS VoLTE Single Registration Config Commands:");
+        pw.println("  src set-device-enabled true|false|null");
+        pw.println("    Sets the device config for RCS VoLTE single registration to the value.");
+        pw.println("    The value could be true, false, or null(undefined).");
+        pw.println("  src get-device-enabled");
+        pw.println("    Gets the device config for RCS VoLTE single registration.");
+        pw.println("  src set-carrier-enabled [-s SLOT_ID] true|false|null");
+        pw.println("    Sets the carrier config for RCS VoLTE single registration to the value.");
+        pw.println("    The value could be true, false, or null(undefined).");
+        pw.println("    Options are:");
+        pw.println("      -s: The SIM slot ID to set the config value for. If no option");
+        pw.println("          is specified, it will choose the default voice SIM slot.");
+        pw.println("  src get-carrier-enabled [-s SLOT_ID]");
+        pw.println("    Gets the carrier config for RCS VoLTE single registration.");
+        pw.println("    Options are:");
+        pw.println("      -s: The SIM slot ID to read the config value for. If no option");
         pw.println("          is specified, it will choose the default voice SIM slot.");
     }
 
@@ -1414,6 +1446,114 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         }
         if (VDBG) {
             Log.v(LOG_TAG, "gba get-release -s " + subId + ", returned: " + result);
+        }
+        getOutPrintWriter().println(result);
+        return 0;
+    }
+
+    private int handleSingleRegistrationConfigCommand() {
+        String arg = getNextArg();
+        if (arg == null) {
+            onHelpSrc();
+            return 0;
+        }
+
+        switch (arg) {
+            case SRC_SET_DEVICE_ENABLED: {
+                return handleSrcSetDeviceEnabledCommand();
+            }
+            case SRC_GET_DEVICE_ENABLED: {
+                return handleSrcGetDeviceEnabledCommand();
+            }
+            case SRC_SET_CARRIER_ENABLED: {
+                return handleSrcSetCarrierEnabledCommand();
+            }
+            case SRC_GET_CARRIER_ENABLED: {
+                return handleSrcGetCarrierEnabledCommand();
+            }
+        }
+
+        return -1;
+    }
+
+    private int handleSrcSetDeviceEnabledCommand() {
+        String enabledStr = getNextArg();
+        if (enabledStr == null) {
+            return -1;
+        }
+
+        try {
+            mInterface.setDeviceSingleRegistrationEnabledOverride(enabledStr);
+            if (VDBG) {
+                Log.v(LOG_TAG, "src set-device-enabled " + enabledStr + ", done");
+            }
+            getOutPrintWriter().println("Done");
+        } catch (NumberFormatException | RemoteException e) {
+            Log.w(LOG_TAG, "src set-device-enabled " + enabledStr + ", error" + e.getMessage());
+            getErrPrintWriter().println("Exception: " + e.getMessage());
+            return -1;
+        }
+        return 0;
+    }
+
+    private int handleSrcGetDeviceEnabledCommand() {
+        boolean result = false;
+        try {
+            result = mInterface.getDeviceSingleRegistrationEnabled();
+        } catch (RemoteException e) {
+            return -1;
+        }
+        if (VDBG) {
+            Log.v(LOG_TAG, "src get-device-enabled, returned: " + result);
+        }
+        getOutPrintWriter().println(result);
+        return 0;
+    }
+
+    private int handleSrcSetCarrierEnabledCommand() {
+        //the release time value could be -1
+        int subId = getRemainingArgsCount() > 1 ? getSubId("src set-carrier-enabled")
+                : SubscriptionManager.getDefaultSubscriptionId();
+        if (subId == SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
+            return -1;
+        }
+
+        String enabledStr = getNextArg();
+        if (enabledStr == null) {
+            return -1;
+        }
+
+        try {
+            boolean result =
+                    mInterface.setCarrierSingleRegistrationEnabledOverride(subId, enabledStr);
+            if (VDBG) {
+                Log.v(LOG_TAG, "src set-carrier-enabled -s " + subId + " "
+                        + enabledStr + ", result=" + result);
+            }
+            getOutPrintWriter().println(result);
+        } catch (NumberFormatException | RemoteException e) {
+            Log.w(LOG_TAG, "src set-carrier-enabled -s " + subId + " "
+                    + enabledStr + ", error" + e.getMessage());
+            getErrPrintWriter().println("Exception: " + e.getMessage());
+            return -1;
+        }
+        return 0;
+    }
+
+    private int handleSrcGetCarrierEnabledCommand() {
+        int subId = getSubId("src get-carrier-enabled");
+        if (subId == SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
+            return -1;
+        }
+
+        boolean result = false;
+        try {
+            result = mInterface.getCarrierSingleRegistrationEnabled(subId);
+        } catch (RemoteException e) {
+            return -1;
+        }
+        if (VDBG) {
+            Log.v(LOG_TAG, "src get-carrier-enabled -s " + subId + ", returned: " + result);
         }
         getOutPrintWriter().println(result);
         return 0;
