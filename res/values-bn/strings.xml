@@ -919,4 +919,6 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"ফোনের তথ্য"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"পরিষেবা প্রদানকারীর ব্যবস্থামূলক তথ্য"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"ট্রিগার পরিষেবা প্রদানকারীর ব্যবস্থা"</string>
+    <string name="call_quality_notification_bluetooth_details" msgid="219073466476340435">"পরামর্শ: ব্লুটুথ কানেক্টিভিটি উন্নত করুন"</string>
+    <string name="call_quality_notification_name" msgid="3476828289553948830">"ফোন কলের কোয়ালিটি সংক্রান্ত বিজ্ঞপ্তি"</string>
 </resources>

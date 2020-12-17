@@ -37,6 +37,7 @@ android_test {
         "mockito-target-minus-junit4",
         "androidx.test.espresso.core",
         "truth-prebuilt",
+	"testables",
     ],
 
     test_suites: [

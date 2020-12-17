@@ -919,4 +919,6 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"දුරකථන තොරතුරු"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"වාහක ප්‍රතිපාදන තතු"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"උත්ප්‍රේරක වාහක ප්‍රතිපාදන"</string>
+    <string name="call_quality_notification_bluetooth_details" msgid="219073466476340435">"යෝජනාව: බ්ලූටූත් සබැඳුම වැඩි දියුණු කිරීම"</string>
+    <string name="call_quality_notification_name" msgid="3476828289553948830">"ඇමතුම් ගුණත්ව දැනුම්දීම"</string>
 </resources>

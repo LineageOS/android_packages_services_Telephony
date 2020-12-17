@@ -314,7 +314,7 @@
     <string name="throttle_current_usage" msgid="7483859109708658613">"Ginamit na data sa kasalukuyang panahon"</string>
     <string name="throttle_time_frame" msgid="1813452485948918791">"Panahon ng paggamit ng data"</string>
     <string name="throttle_rate" msgid="7641913901133634905">"Patakaran ng rate ng data"</string>
-    <string name="throttle_help" msgid="2624535757028809735">"Matuto nang higit pa"</string>
+    <string name="throttle_help" msgid="2624535757028809735">"Matuto pa"</string>
     <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) ng <xliff:g id="USED_2">%3$s</xliff:g> maximum na tagal ng panahon\nMagsisimula ang susunod na tagal ng panahon sa loob ng <xliff:g id="USED_3">%4$d</xliff:g> (na) araw (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
     <string name="throttle_data_usage_subtext" msgid="3185429653996709840">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) ng <xliff:g id="USED_2">%3$s</xliff:g> maximum na period"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"Ang <xliff:g id="USED_0">%1$s</xliff:g> na maximum ay lumagpas sa\nBinabaan ang rate ng data sa <xliff:g id="USED_1">%2$d</xliff:g> Kb/s"</string>
@@ -919,4 +919,6 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Impormasyon ng telepono"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Impormasyon sa Provisioning ng Carrier"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"I-trigger ang Provisioning ng Carrier"</string>
+    <string name="call_quality_notification_bluetooth_details" msgid="219073466476340435">"Suhestyon: Pahusayin ang connectivity ng Bluetooth"</string>
+    <string name="call_quality_notification_name" msgid="3476828289553948830">"Notification sa Kalidad ng Tawag"</string>
 </resources>

@@ -922,4 +922,6 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Informații despre telefon"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Informații despre provizionarea operatorului"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Declanșați provizionarea operatorului"</string>
+    <string name="call_quality_notification_bluetooth_details" msgid="219073466476340435">"Sugestie: îmbunătățiți conectivitatea Bluetooth"</string>
+    <string name="call_quality_notification_name" msgid="3476828289553948830">"Notificare privind calitatea apelului"</string>
 </resources>

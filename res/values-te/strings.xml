@@ -919,4 +919,6 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"ఫోన్ సమాచారం"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"క్యారియర్ కేటాయింపు సమాచారం"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"క్యారియర్ కేటాయింపు సక్రియం చేయండి"</string>
+    <string name="call_quality_notification_bluetooth_details" msgid="219073466476340435">"సూచన: బ్లూటూత్ కనెక్టివిటీని మెరుగుపరచండి"</string>
+    <string name="call_quality_notification_name" msgid="3476828289553948830">"కాల్ క్వాలిటీ నోటిఫికేషన్"</string>
 </resources>
