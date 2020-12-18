@@ -19,12 +19,14 @@ package com.android.services.telephony.rcs;
 import android.app.role.OnRoleHoldersChangedListener;
 import android.app.role.RoleManager;
 import android.content.Context;
+import android.os.RemoteException;
 import android.os.UserHandle;
 import android.telephony.ims.DelegateRequest;
 import android.telephony.ims.FeatureTagState;
 import android.telephony.ims.ImsException;
 import android.telephony.ims.ImsService;
 import android.telephony.ims.SipDelegateManager;
+import android.telephony.ims.aidl.IImsRegistration;
 import android.telephony.ims.aidl.ISipDelegate;
 import android.telephony.ims.aidl.ISipDelegateConnectionStateCallback;
 import android.telephony.ims.aidl.ISipDelegateMessageCallback;
@@ -206,7 +208,8 @@ public class SipTransportController implements RcsFeatureController.Feature,
     public interface SipDelegateControllerFactory {
         /** See {@link SipDelegateController} */
         SipDelegateController create(int subId, DelegateRequest initialRequest, String packageName,
-                ISipTransport sipTransportImpl, ScheduledExecutorService executorService,
+                ISipTransport sipTransportImpl,  IImsRegistration registrationImpl,
+                ScheduledExecutorService executorService,
                 ISipDelegateConnectionStateCallback stateCallback,
                 ISipDelegateMessageCallback messageCallback);
     }
@@ -348,6 +351,16 @@ public class SipTransportController implements RcsFeatureController.Feature,
     }
 
     /**
+     * The remote IMS application has requested that the ImsService tear down and re-register for
+     * IMS features due to an error it received on the network in response to a SIP request.
+     */
+    public void triggerFullNetworkRegistration(int subId, ISipDelegate connection, int sipCode,
+            String sipReason) {
+        mExecutorService.execute(() -> triggerFullNetworkRegistrationInternal(subId, connection,
+                sipCode, sipReason));
+    }
+
+    /**
      * @return Whether or not SipTransports are supported on the connected ImsService. This can
      * change based on the capabilities of the ImsService.
      * @throws ImsException if the ImsService connected to this controller is currently down.
@@ -366,11 +379,13 @@ public class SipTransportController implements RcsFeatureController.Feature,
             ISipDelegateMessageCallback delegateMessage,
             Consumer<ImsException> startedErrorConsumer) {
         ISipTransport transport;
+        IImsRegistration registration;
         // Send back any errors via Consumer early in creation process if it is clear that the
         // SipDelegate will never be created.
         try {
             checkStateOfController(subId);
             transport = mRcsManager.getSipTransport();
+            registration = mRcsManager.getImsRegistration();
             if (transport == null) {
                 logw("createSipDelegateInternal, transport null during request.");
                 startedErrorConsumer.accept(new ImsException("SipTransport not supported",
@@ -387,7 +402,7 @@ public class SipTransportController implements RcsFeatureController.Feature,
         }
 
         SipDelegateController c = mDelegateControllerFactory.create(subId, request, packageName,
-                transport, mExecutorService, delegateState, delegateMessage);
+                transport, registration, mExecutorService, delegateState, delegateMessage);
         logi("createSipDelegateInternal: request= " + request + ", packageName= " + packageName
                 + ", controller created: " + c);
         addPendingCreateAndEvaluate(c);
@@ -420,43 +435,98 @@ public class SipTransportController implements RcsFeatureController.Feature,
         addPendingDestroyAndEvaluate(match, reason);
     }
 
+    private void triggerFullNetworkRegistrationInternal(int subId, ISipDelegate connection,
+            int sipCode, String sipReason) {
+        if (subId != mSubId) {
+            logw("triggerFullNetworkRegistrationInternal: ignoring network reg request, as this is"
+                    + "about to be destroyed anyway due to subId change, delegate=" + connection);
+            return;
+        }
+        if (connection == null) {
+            logw("triggerFullNetworkRegistrationInternal: ignoring, null connection binder.");
+            return;
+        }
+        // Ensure the requester has a valid SipDelegate registered.
+        SipDelegateController match = null;
+        for (SipDelegateController controller : mDelegatePriorityQueue) {
+            if (Objects.equal(connection.asBinder(),
+                    controller.getSipDelegateInterface().asBinder())) {
+                match = controller;
+                break;
+            }
+        }
+        if (match == null) {
+            logw("triggerFullNetworkRegistrationInternal: could not find matching connection, "
+                    + "ignoring");
+            return;
+        }
+
+        match.triggerFullNetworkRegistration(sipCode, sipReason);
+    }
+
     /**
      * Cancel pending update IMS registration events if they exist and instead send a deregister
      * event.
      */
     private void triggerDeregistrationEvent() {
-        if (mPendingUpdateRegistrationFuture != null
-                && !mPendingUpdateRegistrationFuture.isDone()) {
-            // Cancel pending update and replace with a call to deregister now.
-            mPendingUpdateRegistrationFuture.cancel(false);
-            logi("triggerDeregistrationEvent: cancelling existing reg update event: "
-                    + mPendingUpdateRegistrationFuture);
-        }
         logi("triggerDeregistrationEvent: Sending deregister event to ImsService");
-        //TODO hook up registration apis
+        cancelPendingUpdateRegistration();
+
+        IImsRegistration registrationImpl = mRcsManager.getImsRegistration();
+        if (registrationImpl != null) {
+            try {
+                registrationImpl.triggerSipDelegateDeregistration();
+            } catch (RemoteException e) {
+                logi("triggerDeregistrationEvent: received RemoteException: " + e);
+            }
+        }
     }
 
     /**
      * Schedule an update to the IMS registration. If there is an existing update scheduled, cancel
      * it and reschedule.
+     * <p>
+     * We want to wait because this can directly result in changes to the IMS registration on the
+     * network, so we need to wait for a steady state where all changes have been made before
+     * triggering an update to the network registration.
      */
     private void scheduleUpdateRegistration() {
-        if (mPendingUpdateRegistrationFuture != null
-                && !mPendingUpdateRegistrationFuture.isDone()) {
-            // Cancel the old pending operation and reschedule again.
-            mPendingUpdateRegistrationFuture.cancel(false);
-            logi("scheduleUpdateRegistration: cancelling existing reg update event: "
-                    + mPendingUpdateRegistrationFuture);
-        }
+        cancelPendingUpdateRegistration();
+
         ScheduledFuture<?> f = mExecutorService.schedule(this::triggerUpdateRegistrationEvent,
                 mTimerAdapter.getUpdateRegistrationDelayMilliseconds(), TimeUnit.MILLISECONDS);
         logi("scheduleUpdateRegistration: scheduling new event: " + f);
         mPendingUpdateRegistrationFuture = f;
     }
 
+    /**
+     * Cancel an existing pending task to update the IMS registration associated with SIP delegates.
+     */
+    private void cancelPendingUpdateRegistration() {
+        if (mPendingUpdateRegistrationFuture == null
+                || mPendingUpdateRegistrationFuture.isDone()) {
+            return;
+        }
+        // Cancel the old pending operation and reschedule again.
+        mPendingUpdateRegistrationFuture.cancel(false);
+        logi("scheduleUpdateRegistration: cancelling existing reg update event: "
+                + mPendingUpdateRegistrationFuture);
+    }
+
+    /**
+     * Triggers an event to update the IMS registration of the ImsService. Should only be called
+     * from {@link #scheduleUpdateRegistration()}.
+     */
     private void triggerUpdateRegistrationEvent() {
         logi("triggerUpdateRegistrationEvent: Sending update registration event to ImsService");
-        //TODO hook up registration apis
+        IImsRegistration registrationImpl = mRcsManager.getImsRegistration();
+        if (registrationImpl != null) {
+            try {
+                registrationImpl.triggerUpdateSipDelegateRegistration();
+            } catch (RemoteException e) {
+                logi("triggerUpdateRegistrationEvent: received RemoteException: " + e);
+            }
+        }
     }
 
     /**
@@ -564,6 +634,9 @@ public class SipTransportController implements RcsFeatureController.Feature,
      * by another delegate higher in the priority queue.
      */
     private void reevaluateDelegates() {
+        // We need to cancel the pending update now and reschedule IMS registration update for
+        // after the reevaluate is complete.
+        cancelPendingUpdateRegistration();
         if (mEvaluateCompleteFuture != null && !mEvaluateCompleteFuture.isDone()) {
             logw("reevaluateDelegates: last evaluate not done, deferring new request");
             // Defer re-evaluate until after the pending re-evaluate is complete.
@@ -614,10 +687,13 @@ public class SipTransportController implements RcsFeatureController.Feature,
             }, mExecutorService);
         }
 
-        // Executor doesn't matter here, just adding an extra stage to print result.
+        // Executor doesn't matter here, schedule an event to update the IMS registration.
         mEvaluateCompleteFuture = pendingChange
-                .thenAccept((associatedFeatures) -> logi("reevaluateDelegates: reevaluate complete,"
-                        + " feature tags associated: " + associatedFeatures));
+                .thenAccept((associatedFeatures) -> {
+                    logi("reevaluateDelegates: reevaluate complete," + " feature tags associated: "
+                            + associatedFeatures);
+                    scheduleUpdateRegistration();
+                });
         logi("reevaluateDelegates: future created.");
     }
 
@@ -666,13 +742,19 @@ public class SipTransportController implements RcsFeatureController.Feature,
             // CarrierConfigManager
             return;
         }
-        updateRoleCache();
-        // new denied tags will be picked up when reevaluate completes.
-        scheduleThrottledReevaluate();
+        boolean roleChanged = updateRoleCache();
+        if (roleChanged) {
+            triggerDeregistrationEvent();
+            // new denied tags will be picked up when reevaluate completes.
+            scheduleThrottledReevaluate();
+        }
     }
 
 
-    private void updateRoleCache() {
+    /**
+     * @return true, if the role cache has changed, false otherwise.
+     */
+    private boolean updateRoleCache() {
         String newSmsRolePackageName = "";
         try {
             // Only one app can fulfill the SMS role.
@@ -685,9 +767,10 @@ public class SipTransportController implements RcsFeatureController.Feature,
         logi("updateRoleCache: new packageName=" + newSmsRolePackageName);
         if (TextUtils.equals(mCachedSmsRolePackageName, newSmsRolePackageName)) {
             logi("updateRoleCache, skipping, role did not change");
-            return;
+            return false;
         }
         mCachedSmsRolePackageName = newSmsRolePackageName;
+        return true;
     }
 
     /**
