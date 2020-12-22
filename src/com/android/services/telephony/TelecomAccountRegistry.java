@@ -580,7 +580,9 @@ public class TelecomAccountRegistry {
             PersistableBundle b =
                     PhoneGlobals.getInstance().getCarrierConfigForSubId(mPhone.getSubId());
             boolean carrierConfigEnabled = b != null
-                    && b.getBoolean(CarrierConfigManager.KEY_USE_RCS_PRESENCE_BOOL);
+                    && (b.getBoolean(CarrierConfigManager.KEY_USE_RCS_PRESENCE_BOOL)
+                    || b.getBoolean(
+                    CarrierConfigManager.Ims.KEY_ENABLE_PRESENCE_CAPABILITY_EXCHANGE_BOOL));
             return carrierConfigEnabled && isUserContactDiscoverySettingEnabled();
         }
 

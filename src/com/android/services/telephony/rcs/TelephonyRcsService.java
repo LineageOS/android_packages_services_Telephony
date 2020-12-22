@@ -265,7 +265,7 @@ public class TelephonyRcsService {
                 mContext.getSystemService(CarrierConfigManager.class);
         if (carrierConfigManager == null) return false;
         boolean supportsUce = carrierConfigManager.getConfigForSubId(subId).getBoolean(
-                CarrierConfigManager.KEY_USE_RCS_PRESENCE_BOOL);
+                CarrierConfigManager.Ims.KEY_ENABLE_PRESENCE_PUBLISH_BOOL);
         supportsUce |= carrierConfigManager.getConfigForSubId(subId).getBoolean(
                 CarrierConfigManager.KEY_USE_RCS_SIP_OPTIONS_BOOL);
         return supportsUce;
