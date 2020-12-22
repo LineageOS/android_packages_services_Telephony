@@ -6543,6 +6543,45 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
+    public void setCallComposerStatus(int subId, int status) {
+        enforceModifyPermission();
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            Phone phone = getPhone(subId);
+            if (phone != null) {
+                Phone defaultPhone = phone.getImsPhone();
+                if (defaultPhone != null && defaultPhone.getPhoneType() == PHONE_TYPE_IMS) {
+                    ImsPhone imsPhone = (ImsPhone) defaultPhone;
+                    imsPhone.setCallComposerStatus(status);
+                }
+            }
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    @Override
+    public int getCallComposerStatus(int subId) {
+        enforceReadPrivilegedPermission("getCallComposerStatus");
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            Phone phone = getPhone(subId);
+            if (phone != null) {
+                Phone defaultPhone = phone.getImsPhone();
+                if (defaultPhone != null && defaultPhone.getPhoneType() == PHONE_TYPE_IMS) {
+                    ImsPhone imsPhone = (ImsPhone) defaultPhone;
+                    return imsPhone.getCallComposerStatus();
+                }
+            }
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+        return TelephonyManager.CALL_COMPOSER_STATUS_OFF;
+    }
+
+    @Override
     public boolean setLine1NumberForDisplayForSubscriber(int subId, String alphaTag,
             String number) {
         TelephonyPermissions.enforceCallingOrSelfCarrierPrivilege(mApp,
