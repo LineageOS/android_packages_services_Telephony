@@ -1546,7 +1546,9 @@ public class RadioInfo extends AppCompatActivity {
                     mPhone.getContext().getSystemService(Context.CARRIER_CONFIG_SERVICE);
             PersistableBundle b = configManager.getConfigForSubId(mPhone.getSubId());
             if (b != null) {
-                return b.getBoolean(CarrierConfigManager.KEY_USE_RCS_PRESENCE_BOOL,
+                return b.getBoolean(
+                        CarrierConfigManager.KEY_USE_RCS_PRESENCE_BOOL, false) || b.getBoolean(
+                        CarrierConfigManager.Ims.KEY_ENABLE_PRESENCE_CAPABILITY_EXCHANGE_BOOL,
                         false);
             }
         }
