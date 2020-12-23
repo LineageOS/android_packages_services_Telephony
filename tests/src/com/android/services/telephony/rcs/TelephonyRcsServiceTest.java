@@ -90,7 +90,8 @@ public class TelephonyRcsServiceTest extends TelephonyTestBase {
 
     @Test
     public void testUceControllerPresenceConnected() {
-        setCarrierConfig(1 /*subId*/, CarrierConfigManager.KEY_USE_RCS_PRESENCE_BOOL,
+        setCarrierConfig(1 /*subId*/,
+                CarrierConfigManager.Ims.KEY_ENABLE_PRESENCE_PUBLISH_BOOL,
                 true /*isEnabled*/);
         createRcsService(1 /*numSlots*/);
         verify(mFeatureControllerSlot0).addFeature(mMockUceSlot0, UceControllerManager.class);
@@ -179,9 +180,11 @@ public class TelephonyRcsServiceTest extends TelephonyTestBase {
 
     @Test
     public void testSlotUpdates() {
-        setCarrierConfig(1 /*subId*/, CarrierConfigManager.KEY_USE_RCS_PRESENCE_BOOL,
+        setCarrierConfig(1 /*subId*/,
+                CarrierConfigManager.Ims.KEY_ENABLE_PRESENCE_PUBLISH_BOOL,
                 true /*isEnabled*/);
-        setCarrierConfig(2 /*subId*/, CarrierConfigManager.KEY_USE_RCS_PRESENCE_BOOL,
+        setCarrierConfig(2 /*subId*/,
+                CarrierConfigManager.Ims.KEY_ENABLE_PRESENCE_PUBLISH_BOOL,
                 true /*isEnabled*/);
         TelephonyRcsService service = createRcsService(1 /*numSlots*/);
         verify(mFeatureControllerSlot0).addFeature(mMockUceSlot0, UceControllerManager.class);
@@ -223,9 +226,11 @@ public class TelephonyRcsServiceTest extends TelephonyTestBase {
 
     @Test
     public void testCarrierConfigUpdate() {
-        setCarrierConfig(1 /*subId*/, CarrierConfigManager.KEY_USE_RCS_PRESENCE_BOOL,
+        setCarrierConfig(1 /*subId*/,
+                CarrierConfigManager.Ims.KEY_ENABLE_PRESENCE_PUBLISH_BOOL,
                 true /*isEnabled*/);
-        setCarrierConfig(2 /*subId*/, CarrierConfigManager.KEY_USE_RCS_PRESENCE_BOOL,
+        setCarrierConfig(2 /*subId*/,
+                CarrierConfigManager.Ims.KEY_ENABLE_PRESENCE_PUBLISH_BOOL,
                 true /*isEnabled*/);
         createRcsService(2 /*numSlots*/);
         verify(mFeatureControllerSlot0).addFeature(mMockUceSlot0, UceControllerManager.class);
@@ -245,7 +250,8 @@ public class TelephonyRcsServiceTest extends TelephonyTestBase {
 
     @Test
     public void testCarrierConfigUpdateUceToNoUce() {
-        setCarrierConfig(1 /*subId*/, CarrierConfigManager.KEY_USE_RCS_PRESENCE_BOOL,
+        setCarrierConfig(1 /*subId*/,
+                CarrierConfigManager.Ims.KEY_ENABLE_PRESENCE_PUBLISH_BOOL,
                 true /*isEnabled*/);
         createRcsService(1 /*numSlots*/);
         verify(mFeatureControllerSlot0).addFeature(mMockUceSlot0, UceControllerManager.class);
@@ -253,7 +259,8 @@ public class TelephonyRcsServiceTest extends TelephonyTestBase {
 
 
         // Send carrier config update for each slot.
-        setCarrierConfig(1 /*subId*/, CarrierConfigManager.KEY_USE_RCS_PRESENCE_BOOL,
+        setCarrierConfig(1 /*subId*/,
+                CarrierConfigManager.Ims.KEY_ENABLE_PRESENCE_PUBLISH_BOOL,
                 false /*isEnabled*/);
         sendCarrierConfigChanged(0 /*slotId*/, 1 /*subId*/);
         verify(mFeatureControllerSlot0).removeFeature(UceControllerManager.class);
@@ -289,7 +296,8 @@ public class TelephonyRcsServiceTest extends TelephonyTestBase {
 
 
         // Send carrier config update for each slot.
-        setCarrierConfig(1 /*subId*/, CarrierConfigManager.KEY_USE_RCS_PRESENCE_BOOL,
+        setCarrierConfig(1 /*subId*/,
+                CarrierConfigManager.Ims.KEY_ENABLE_PRESENCE_PUBLISH_BOOL,
                 true /*isEnabled*/);
         sendCarrierConfigChanged(0 /*slotId*/, 1 /*subId*/);
         verify(mFeatureControllerSlot0).addFeature(mMockUceSlot0, UceControllerManager.class);
