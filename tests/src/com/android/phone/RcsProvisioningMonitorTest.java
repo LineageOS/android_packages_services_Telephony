@@ -452,7 +452,6 @@ public class RcsProvisioningMonitorTest {
         } catch (Exception e) {
             logd("Unable to create looper from handler.");
         }
-        processAllMessages();
     }
 
     private void broadcastCarrierConfigChange(int subId) {
