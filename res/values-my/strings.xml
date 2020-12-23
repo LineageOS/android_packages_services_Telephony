@@ -919,8 +919,6 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"ဖုန်းအချက်အလက်"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"ဝန်ဆောင်မှုပေးသူက ပေးထားသည့် အချက်အလက်များ"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"အစပျိုးပေးသော ဖုန်းကုမ္ပဏီ ပံ့ပိုးမှု"</string>
-    <!-- no translation found for call_quality_notification_bluetooth_details (219073466476340435) -->
-    <skip />
-    <!-- no translation found for call_quality_notification_name (3476828289553948830) -->
-    <skip />
+    <string name="call_quality_notification_bluetooth_details" msgid="219073466476340435">"အကြံပြုချက်- ဘလူးတုသ်ချိတ်ဆက်နိုင်မှုကို ပိုကောင်းအောင် ပြုလုပ်ပါ"</string>
+    <string name="call_quality_notification_name" msgid="3476828289553948830">"ခေါ်ဆိုမှုအရည်အသွေး အကြောင်းကြားချက်"</string>
 </resources>
