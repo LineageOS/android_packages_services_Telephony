@@ -15,7 +15,7 @@
     <string name="title_activity_service_config" msgid="5394662739555577279">"ServiceConfigActivity"</string>
     <string name="title_activity_test_config" msgid="7585204485536359713">"TestConfigActivity"</string>
     <string name="service_package_name" msgid="7204809439090483315">"GBA 服务的软件包名称"</string>
-    <string name="service_release_time" msgid="532937496122890892">"通话后释放服务所需的时间"</string>
+    <string name="service_release_time" msgid="532937496122890892">"调用 API 后释放服务所需的时间"</string>
     <string name="request_app_type" msgid="3975978141673475612">"UICC 应用类型"</string>
     <string name="request_naf_url" msgid="4487793541217737042">"网络应用功能 (NAF) 网址"</string>
     <string name="request_force_bootstrapping" msgid="206043602616214325">"要强制使用引导吗？"</string>

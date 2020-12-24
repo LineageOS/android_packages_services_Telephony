@@ -920,5 +920,5 @@
     <string name="carrier_provisioning" msgid="2668065041869578376">"Informazioni sul provisioning operatore"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Attiva provisioning operatore"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="219073466476340435">"Suggerimento: migliora la connettività Bluetooth"</string>
-    <string name="call_quality_notification_name" msgid="3476828289553948830">"Notifica qualità chiamata"</string>
+    <string name="call_quality_notification_name" msgid="3476828289553948830">"Notifica sulla qualità della chiamata"</string>
 </resources>
