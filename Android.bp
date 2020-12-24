@@ -24,6 +24,7 @@ android_app {
         "ims-common",
         "libprotobuf-java-lite",
         "unsupportedappusage",
+        "org.apache.http.legacy",
     ],
 
     static_libs: [
@@ -36,6 +37,7 @@ android_app {
         "guava",
         "PlatformProperties",
         "modules-utils-os",
+        "nist-sip",
     ],
 
     srcs: [
