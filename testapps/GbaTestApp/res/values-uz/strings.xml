@@ -15,7 +15,7 @@
     <string name="title_activity_service_config" msgid="5394662739555577279">"ServiceConfigActivity"</string>
     <string name="title_activity_test_config" msgid="7585204485536359713">"TestConfigActivity"</string>
     <string name="service_package_name" msgid="7204809439090483315">"GBA xizmati paketi nomi"</string>
-    <string name="service_release_time" msgid="532937496122890892">"Chaqiruvdan keyin xizmatni bo‘shatish uchun vaqt oralig‘i"</string>
+    <string name="service_release_time" msgid="532937496122890892">"Chaqiruvdan keyin xizmatni bo‘shatish uchun muddat"</string>
     <string name="request_app_type" msgid="3975978141673475612">"UICC ilovasi turi"</string>
     <string name="request_naf_url" msgid="4487793541217737042">"Tarmoq ilovasi funksiyasining (NAF) URL manzili"</string>
     <string name="request_force_bootstrapping" msgid="206043602616214325">"Avtomatik yuklash majburiy yoqilsinmi?"</string>
