@@ -1779,8 +1779,12 @@ abstract class TelephonyConnection extends Connection implements Holdable {
           *     - not indicated, then the add participant capability is same as before.
           */
         if (isCapable && (mOriginalConnection != null) && !mIsMultiParty) {
-            isCapable = mOriginalConnectionExtras.getBoolean(
+            // In case OEMs are still using deprecated value, read it and use it as default value.
+            boolean isCapableFromDeprecatedExtra = mOriginalConnectionExtras.getBoolean(
                     ImsCallProfile.EXTRA_CONFERENCE_AVAIL, isCapable);
+            isCapable = mOriginalConnectionExtras.getBoolean(
+                    ImsCallProfile.EXTRA_EXTENDING_TO_CONFERENCE_SUPPORTED,
+                    isCapableFromDeprecatedExtra);
         }
         return isCapable;
     }
@@ -2112,7 +2116,9 @@ abstract class TelephonyConnection extends Connection implements Holdable {
                     // If extras contain Conference support information,
                     // then ensure capabilities are updated.
                     if (mOriginalConnectionExtras.containsKey(
-                            ImsCallProfile.EXTRA_CONFERENCE_AVAIL)) {
+                            ImsCallProfile.EXTRA_EXTENDING_TO_CONFERENCE_SUPPORTED)
+                            || mOriginalConnectionExtras.containsKey(
+                                ImsCallProfile.EXTRA_CONFERENCE_AVAIL)) {
                         updateConnectionCapabilities();
                     }
                 } else {
