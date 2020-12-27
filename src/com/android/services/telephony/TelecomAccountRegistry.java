@@ -120,6 +120,7 @@ public class TelecomAccountRegistry {
         private final PstnPhoneCapabilitiesNotifier mPhoneCapabilitiesNotifier;
         private boolean mIsEmergency;
         private boolean mIsRttCapable;
+        private boolean mIsCallComposerCapable;
         private boolean mIsAdhocConfCapable;
         private boolean mIsEmergencyPreferred;
         private MmTelFeature.MmTelCapabilities mMmTelCapabilities;
@@ -173,6 +174,7 @@ public class TelecomAccountRegistry {
                         MmTelFeature.MmTelCapabilities capabilities) {
                     mMmTelCapabilities = capabilities;
                     updateRttCapability();
+                    updateCallComposerCapability(capabilities);
                 }
             };
             registerMmTelCapabilityCallback();
@@ -365,6 +367,10 @@ public class TelecomAccountRegistry {
                 mIsRttCapable = true;
             } else {
                 mIsRttCapable = false;
+            }
+
+            if (mIsCallComposerCapable) {
+                capabilities |= PhoneAccount.CAPABILITY_CALL_COMPOSER;
             }
 
             mIsVideoCapable = mPhone.isVideoEnabled();
@@ -822,6 +828,17 @@ public class TelecomAccountRegistry {
             boolean isRttEnabled = isRttCurrentlySupported();
             if (isRttEnabled != mIsRttCapable) {
                 Log.i(this, "updateRttCapability - changed, new value: " + isRttEnabled);
+                mAccount = registerPstnPhoneAccount(mIsEmergency, mIsTestAccount);
+            }
+        }
+
+        public void updateCallComposerCapability(MmTelFeature.MmTelCapabilities capabilities) {
+            boolean isCallComposerCapable = capabilities.isCapable(
+                    MmTelFeature.MmTelCapabilities.CAPABILITY_TYPE_CALL_COMPOSER);
+            if (isCallComposerCapable != mIsCallComposerCapable) {
+                mIsCallComposerCapable = isCallComposerCapable;
+                Log.i(this, "updateCallComposerCapability - changed, new value: "
+                        + isCallComposerCapable);
                 mAccount = registerPstnPhoneAccount(mIsEmergency, mIsTestAccount);
             }
         }
