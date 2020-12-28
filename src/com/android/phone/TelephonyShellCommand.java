@@ -24,6 +24,7 @@ import android.os.RemoteException;
 import android.provider.BlockedNumberContract;
 import android.telephony.CarrierConfigManager;
 import android.telephony.SubscriptionManager;
+import android.telephony.TelephonyManager;
 import android.telephony.emergency.EmergencyNumber;
 import android.telephony.ims.feature.ImsFeature;
 import android.util.Log;
@@ -59,6 +60,7 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
     private static final String NUMBER_VERIFICATION_SUBCOMMAND = "numverify";
     private static final String EMERGENCY_NUMBER_TEST_MODE = "emergency-number-test-mode";
     private static final String END_BLOCK_SUPPRESSION = "end-block-suppression";
+    private static final String RESTART_MODEM = "restart-modem";
     private static final String CARRIER_CONFIG_SUBCOMMAND = "cc";
     private static final String DATA_TEST_MODE = "data";
     private static final String DATA_ENABLE = "enable";
@@ -177,6 +179,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                 return handleGbaCommand();
             case SINGLE_REGISTATION_CONFIG:
                 return handleSingleRegistrationConfigCommand();
+            case RESTART_MODEM:
+                return handleRestartModemCommand();
             default: {
                 return handleDefaultCommands(cmd);
             }
@@ -203,6 +207,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         pw.println("    GBA Commands.");
         pw.println("  src");
         pw.println("    RCS VoLTE Single Registration Config Commands.");
+        pw.println("  restart-modem");
+        pw.println("    Restart modem command.");
         onHelpIms();
         onHelpEmergencyNumber();
         onHelpEndBlockSupperssion();
@@ -1314,6 +1320,20 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             BlockedNumberContract.SystemContract.endBlockSuppression(mContext);
         }
         return 0;
+    }
+
+    private int handleRestartModemCommand() {
+        // Verify that the user is allowed to run the command. Only allowed in rooted device in a
+        // non user build.
+        if (Binder.getCallingUid() != Process.ROOT_UID || TelephonyUtils.IS_USER) {
+            getErrPrintWriter().println("RestartModem: Permission denied.");
+            return -1;
+        }
+
+        boolean result = TelephonyManager.getDefault().rebootRadio();
+        getOutPrintWriter().println(result);
+
+        return result ? 0 : -1;
     }
 
     private int handleGbaCommand() {
