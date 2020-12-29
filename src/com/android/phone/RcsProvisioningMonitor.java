@@ -333,6 +333,7 @@ public class RcsProvisioningMonitor {
             mConfigs.forEach((k, v) -> {
                 if (isAcsUsed(k)) {
                     logv("acs used, trigger to re-configure.");
+                    mConfigs.put(k, null);
                     notifyRcsAutoConfigurationRemoved(k);
                     triggerRcsReconfiguration(k);
                 } else {
@@ -345,6 +346,11 @@ public class RcsProvisioningMonitor {
 
     private void notifyRcsAutoConfigurationReceived(int subId, byte[] config,
             boolean isCompressed) {
+        if (config == null) {
+            logd("Rcs config is null for sub : " + subId);
+            return;
+        }
+
         IImsConfig imsConfig = getIImsConfig(subId, ImsFeature.FEATURE_RCS);
         if (imsConfig != null) {
             try {
@@ -358,6 +364,7 @@ public class RcsProvisioningMonitor {
     }
 
     private void notifyRcsAutoConfigurationRemoved(int subId) {
+        RcsConfig.updateConfigForSub(mPhone, subId, null, true);
         IImsConfig imsConfig = getIImsConfig(subId, ImsFeature.FEATURE_RCS);
         if (imsConfig != null) {
             try {
@@ -461,8 +468,7 @@ public class RcsProvisioningMonitor {
 
     private void onReconfigRequest(int subId) {
         logv("onReconfigRequest, subId:" + subId);
-        mConfigs.remove(subId);
-        RcsConfig.updateConfigForSub(mPhone, subId, null, true);
+        mConfigs.put(subId, null);
         notifyRcsAutoConfigurationRemoved(subId);
         triggerRcsReconfiguration(subId);
     }
