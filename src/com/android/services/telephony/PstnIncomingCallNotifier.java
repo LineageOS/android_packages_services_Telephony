@@ -25,8 +25,10 @@ import android.os.SystemClock;
 import android.telecom.PhoneAccount;
 import android.telecom.PhoneAccountHandle;
 import android.telecom.TelecomManager;
+import android.telephony.ims.ImsCallProfile;
 import android.text.TextUtils;
 
+import com.android.ims.ImsCall;
 import com.android.internal.telephony.Call;
 import com.android.internal.telephony.CallStateException;
 import com.android.internal.telephony.Connection;
@@ -290,6 +292,22 @@ final class PstnIncomingCallNotifier {
             if (((ImsPhoneConnection) connection).isIncomingCallAutoRejected()) {
                 extras.putString(TelecomManager.EXTRA_CALL_DISCONNECT_MESSAGE,
                         TelecomManager.CALL_AUTO_DISCONNECT_MESSAGE_STRING);
+            }
+            ImsCall imsCall = ((ImsPhoneConnection) connection).getImsCall();
+            if (imsCall != null) {
+                ImsCallProfile imsCallProfile = imsCall.getCallProfile();
+                if (imsCallProfile != null) {
+                    extras.putInt(TelecomManager.EXTRA_PRIORITY,
+                            imsCallProfile.getCallExtraInt(ImsCallProfile.EXTRA_PRIORITY));
+                    extras.putString(TelecomManager.EXTRA_CALL_SUBJECT,
+                            imsCallProfile.getCallExtra(ImsCallProfile.EXTRA_CALL_SUBJECT));
+                    extras.putParcelable(TelecomManager.EXTRA_LOCATION,
+                            imsCallProfile.getCallExtraParcelable(ImsCallProfile.EXTRA_LOCATION));
+                    if (!TextUtils.isEmpty(
+                            imsCallProfile.getCallExtra(ImsCallProfile.EXTRA_PICTURE_URL))) {
+                        extras.putBoolean(TelecomManager.EXTRA_HAS_PICTURE, true);
+                    }
+                }
             }
         }
 

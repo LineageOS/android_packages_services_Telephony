@@ -6554,9 +6554,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 if (defaultPhone != null && defaultPhone.getPhoneType() == PHONE_TYPE_IMS) {
                     ImsPhone imsPhone = (ImsPhone) defaultPhone;
                     imsPhone.setCallComposerStatus(status);
+                    ImsManager.getInstance(mApp, getSlotIndexOrException(subId))
+                            .updateImsServiceConfig();
                 }
             }
-        } finally {
+        } catch (ImsException e) {
+            throw new ServiceSpecificException(e.getCode());
+        }  finally {
             Binder.restoreCallingIdentity(identity);
         }
     }
