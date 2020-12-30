@@ -6554,9 +6554,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 if (defaultPhone != null && defaultPhone.getPhoneType() == PHONE_TYPE_IMS) {
                     ImsPhone imsPhone = (ImsPhone) defaultPhone;
                     imsPhone.setCallComposerStatus(status);
+                    ImsManager.getInstance(mApp, getSlotIndexOrException(subId))
+                            .updateImsServiceConfig();
                 }
             }
-        } finally {
+        } catch (ImsException e) {
+            throw new ServiceSpecificException(e.getCode());
+        }  finally {
             Binder.restoreCallingIdentity(identity);
         }
     }
@@ -9737,5 +9741,20 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     public boolean getCarrierSingleRegistrationEnabled(int subId) {
         enforceReadPrivilegedPermission("getCarrierSingleRegistrationEnabled");
         return RcsProvisioningMonitor.getInstance().getCarrierSingleRegistrationEnabled(subId);
+    }
+
+    /**
+     * Get the mobile provisioning url that is used to launch a browser to allow users to manage
+     * their mobile plan.
+     */
+    @Override
+    public String getMobileProvisioningUrl() {
+        enforceReadPrivilegedPermission("getMobileProvisioningUrl");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return getDefaultPhone().getMobileProvisioningUrl();
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
     }
 }
