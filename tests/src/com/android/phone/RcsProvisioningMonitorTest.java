@@ -29,6 +29,7 @@ import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -156,6 +157,7 @@ public class RcsProvisioningMonitorTest {
 
     private class SimInfoContentProvider extends MockContentProvider {
         private Cursor mCursor;
+        private ContentValues mValues;
 
         SimInfoContentProvider(Context context) {
             super(context);
@@ -174,7 +176,12 @@ public class RcsProvisioningMonitorTest {
         @Override
         public int update(Uri uri, ContentValues values,
                 String selection, String[] selectionArgs) {
+            mValues = values;
             return 1;
+        }
+
+        ContentValues getContentValues() {
+            return mValues;
         }
     }
 
@@ -272,7 +279,7 @@ public class RcsProvisioningMonitorTest {
 
     @Test
     @SmallTest
-    public void testInit() throws Exception {
+    public void testInitWithSavedConfig() throws Exception {
         createMonitor(3);
         ArgumentCaptor<Intent> captorIntent = ArgumentCaptor.forClass(Intent.class);
         for (int i = 0; i < 3; i++) {
@@ -287,6 +294,21 @@ public class RcsProvisioningMonitorTest {
         PhoneGlobals.getInstance().getImsResolver();
         verify(mPhone, atLeastOnce()).getImsResolver();
         verify(mIImsConfig, times(3)).notifyRcsAutoConfigurationReceived(any(), anyBoolean());
+    }
+
+    @Test
+    @SmallTest
+    public void testInitWithoutSavedConfig() throws Exception {
+        when(mCursor.getBlob(anyInt())).thenReturn(null);
+        ArgumentCaptor<Intent> captorIntent = ArgumentCaptor.forClass(Intent.class);
+        createMonitor(3);
+
+        verify(mPhone, times(3)).sendBroadcast(captorIntent.capture());
+        Intent capturedIntent = captorIntent.getAllValues().get(1);
+        assertEquals(ProvisioningManager.ACTION_RCS_SINGLE_REGISTRATION_CAPABILITY_UPDATE,
+                capturedIntent.getAction());
+        //Should not notify null config
+        verify(mIImsConfig, never()).notifyRcsAutoConfigurationReceived(any(), anyBoolean());
     }
 
     @Test
@@ -318,17 +340,37 @@ public class RcsProvisioningMonitorTest {
 
     @Test
     @SmallTest
-    public void testDefaultMessagingApplicationChanged() throws Exception {
+    public void testDefaultMessagingApplicationChangedWithAcs() throws Exception {
+        createMonitor(1);
+        updateDefaultMessageApplication(DEFAULT_MESSAGING_APP2);
+        mBundle.putBoolean(CarrierConfigManager.KEY_USE_ACS_FOR_RCS_BOOL, true);
+        processAllMessages();
+        byte[] configCached = mRcsProvisioningMonitor.getConfig(FAKE_SUB_ID_BASE);
+
+        assertNull(configCached);
+        assertNull(mProvider.getContentValues().get(SimInfo.COLUMN_RCS_CONFIG));
+        verify(mIImsConfig, atLeastOnce()).notifyRcsAutoConfigurationRemoved();
+        verify(mIImsConfig, atLeastOnce()).triggerRcsReconfiguration();
+        // The api should only be called when monitor is initilized.
+        verify(mIImsConfig, times(1))
+                .notifyRcsAutoConfigurationReceived(any(), anyBoolean());
+    }
+
+    @Test
+    @SmallTest
+    public void testDefaultMessagingApplicationChangedWithoutAcs() throws Exception {
         createMonitor(1);
         updateDefaultMessageApplication(DEFAULT_MESSAGING_APP2);
         mBundle.putBoolean(CarrierConfigManager.KEY_USE_ACS_FOR_RCS_BOOL, false);
         processAllMessages();
-        verify(mIImsConfig, atLeastOnce())
+        byte[] configCached = mRcsProvisioningMonitor.getConfig(FAKE_SUB_ID_BASE);
+
+        assertTrue(Arrays.equals(SAMPLE_CONFIG.getBytes(), configCached));
+        verify(mIImsConfig, never()).notifyRcsAutoConfigurationRemoved();
+        // The api should be called 2 times, one happens when monitor is initilized,
+        // Another happens when DMS is changed.
+        verify(mIImsConfig, times(2))
                 .notifyRcsAutoConfigurationReceived(any(), anyBoolean());
-        mBundle.putBoolean(CarrierConfigManager.KEY_USE_ACS_FOR_RCS_BOOL, true);
-        updateDefaultMessageApplication(DEFAULT_MESSAGING_APP1);
-        processAllMessages();
-        verify(mIImsConfig, atLeastOnce()).triggerRcsReconfiguration();
     }
 
     @Test
@@ -493,7 +535,6 @@ public class RcsProvisioningMonitorTest {
         field.setAccessible(true);
         ((Map<String, IBinder>) field.get(null)).put(serviceName, binder);
     }
-
 
     private void processAllMessages() {
         while (!mLooper.getLooper().getQueue().isIdle()) {
