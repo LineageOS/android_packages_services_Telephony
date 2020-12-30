@@ -9742,4 +9742,19 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         enforceReadPrivilegedPermission("getCarrierSingleRegistrationEnabled");
         return RcsProvisioningMonitor.getInstance().getCarrierSingleRegistrationEnabled(subId);
     }
+
+    /**
+     * Get the mobile provisioning url that is used to launch a browser to allow users to manage
+     * their mobile plan.
+     */
+    @Override
+    public String getMobileProvisioningUrl() {
+        enforceReadPrivilegedPermission("getMobileProvisioningUrl");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return getDefaultPhone().getMobileProvisioningUrl();
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
 }
