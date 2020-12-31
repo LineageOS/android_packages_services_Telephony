@@ -15,14 +15,14 @@
     <string name="title_activity_service_config" msgid="5394662739555577279">"ServiceConfigActivity"</string>
     <string name="title_activity_test_config" msgid="7585204485536359713">"TestConfigActivity"</string>
     <string name="service_package_name" msgid="7204809439090483315">"Nome pacchetto del servizio GBA"</string>
-    <string name="service_release_time" msgid="532937496122890892">"Tempo per il rilascio del servizio dopo la chiamata"</string>
+    <string name="service_release_time" msgid="532937496122890892">"Intervallo di tempo tra la chiamata dell\'API e l\'attivazione del servizio"</string>
     <string name="request_app_type" msgid="3975978141673475612">"Tipo di app UICC"</string>
     <string name="request_naf_url" msgid="4487793541217737042">"URL NAF (Network Application Function)"</string>
     <string name="request_force_bootstrapping" msgid="206043602616214325">"Forzare il bootstrapping?"</string>
     <string name="request_org" msgid="8416693445448308975">"Codice organizzazione"</string>
     <string name="request_security_protocol" msgid="1444164827561010482">"ID protocollo sicurezza UA"</string>
     <string name="request_tls_cipher_suite" msgid="6659854717595308404">"ID pacchetto crittografia TLS"</string>
-    <string name="response_success" msgid="2469204471244527663">"Esito positivo autenticazione GBA?"</string>
+    <string name="response_success" msgid="2469204471244527663">"Autenticazione GBA riuscita?"</string>
     <string name="response_fail_reason" msgid="3401426967253202496">"ID motivo errore"</string>
     <string name="response_key" msgid="8839847772051686309">"Chiave GBA (CK + IK)"</string>
     <string name="response_btid" msgid="2550216722679350756">"Identificatore transazione bootstrapping (B-TID)"</string>
