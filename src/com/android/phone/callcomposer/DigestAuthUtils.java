@@ -39,18 +39,20 @@ public class DigestAuthUtils {
     private static final int CNONCE_LENGTH_BYTES = 16;
     private static final String AUTH_QOP = "auth";
 
-    // Generates the Authorization header for use in future requests to the call composer server.
-    public static String generateAuthorizationHeader(String authHeader,
-            GbaCredentials credentials, String method, String uri) {
-        String reconstitutedHeader = WWW_AUTHENTICATE + ": " + authHeader;
+    public static WWWAuthenticate parseAuthenticateHeader(String header) {
+        String reconstitutedHeader = WWW_AUTHENTICATE + ": " + header;
         WWWAuthenticate parsedHeader;
         try {
-            parsedHeader =
-                    (WWWAuthenticate) (new WWWAuthenticateParser(reconstitutedHeader).parse());
+            return (WWWAuthenticate) (new WWWAuthenticateParser(reconstitutedHeader).parse());
         } catch (ParseException e) {
             Log.e(TAG, "Error parsing received auth header: " + e);
             return null;
         }
+    }
+
+    // Generates the Authorization header for use in future requests to the call composer server.
+    public static String generateAuthorizationHeader(WWWAuthenticate parsedHeader,
+            GbaCredentials credentials, String method, String uri) {
         if (!TextUtils.isEmpty(parsedHeader.getAlgorithm())
                 && !MD5_ALGORITHM.equals(parsedHeader.getAlgorithm().toLowerCase())) {
             Log.e(TAG, "This client only supports MD5 auth");
