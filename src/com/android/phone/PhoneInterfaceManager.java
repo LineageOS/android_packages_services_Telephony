@@ -5495,12 +5495,20 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
-    public void setImsRegistrationState(boolean registered) {
+    /**
+     * Sets the ims registration state on all valid {@link Phone}s.
+     */
+    public void setImsRegistrationState(final boolean registered) {
         enforceModifyPermission();
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            getDefaultPhone().setImsRegistrationState(registered);
+            // NOTE: Before S, this method only set the default phone.
+            for (final Phone phone : PhoneFactory.getPhones()) {
+                if (SubscriptionManager.isValidSubscriptionId(phone.getSubId())) {
+                    phone.setImsRegistrationState(registered);
+                }
+            }
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
