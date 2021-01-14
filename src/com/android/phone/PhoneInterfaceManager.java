@@ -26,6 +26,7 @@ import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.app.AppOpsManager;
 import android.app.PendingIntent;
+import android.app.role.RoleManager;
 import android.content.ComponentName;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -192,7 +193,10 @@ import com.android.services.telephony.TelecomAccountRegistry;
 import com.android.services.telephony.TelephonyConnectionService;
 import com.android.telephony.Rlog;
 
+import java.io.ByteArrayOutputStream;
 import java.io.FileDescriptor;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -202,7 +206,10 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.NoSuchElementException;
+import java.util.Objects;
 import java.util.Set;
+import java.util.UUID;
+import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Consumer;
 
@@ -3924,6 +3931,50 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
+     * @return true if the user's setting for Voice over Cross SIM is enabled and false if it is not
+     * Requires carrier privileges or READ_PRECISE_PHONE_STATE permission.
+     * @param subId The subscription to use to check the configuration.
+     */
+    @Override
+    public boolean isCrossSimCallingEnabledByUser(int subId) {
+        TelephonyPermissions.enforeceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
+                mApp, subId, "isCrossSimCallingEnabledByUser");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
+            return ImsManager.getInstance(mApp,
+                    getSlotIndexOrException(subId)).isCrossSimCallingEnabledByUser();
+        } catch (ImsException e) {
+            throw new ServiceSpecificException(e.getCode());
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Sets the user's setting for whether or not Voice over Cross SIM is enabled.
+     * Requires MODIFY_PHONE_STATE permission.
+     * @param subId The subscription to use to check the configuration.
+     * @param isEnabled true if the user's setting for Voice over Cross SIM is enabled,
+     *                 false otherwise
+     */
+    @Override
+    public void setCrossSimCallingEnabled(int subId, boolean isEnabled) {
+        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(mApp, subId,
+                "setCrossSimCallingEnabled");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
+            ImsManager.getInstance(mApp, getSlotIndexOrException(subId))
+                    .setCrossSimCallingEnabled(isEnabled);
+        } catch (ImsException e) {
+            throw new ServiceSpecificException(e.getCode());
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
      * Requires carrier privileges or READ_PRECISE_PHONE_STATE permission.
      * @param subId The subscription to use to check the configuration.
      */
@@ -6918,6 +6969,84 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
+    public void uploadCallComposerPicture(int subscriptionId, String callingPackage,
+            ParcelFileDescriptor fd, ResultReceiver callback) {
+        try {
+            if (!Objects.equals(mApp.getPackageManager().getPackageUid(callingPackage, 0),
+                    Binder.getCallingUid())) {
+                throw new SecurityException("Package uid and package name do not match: "
+                        + "uid=" + Binder.getCallingUid() + ", packageName=" + callingPackage);
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+            throw new SecurityException("Package name invalid:" + callingPackage);
+        }
+        RoleManager rm = mApp.getSystemService(RoleManager.class);
+        List<String> dialerRoleHolders = rm.getRoleHolders(RoleManager.ROLE_DIALER);
+        if (!dialerRoleHolders.contains(callingPackage)) {
+            throw new SecurityException("App must be the dialer role holder to"
+                    + " upload a call composer pic");
+        }
+
+        Executors.newSingleThreadExecutor().execute(() -> {
+            ByteArrayOutputStream output = new ByteArrayOutputStream(
+                    (int) TelephonyManager.getMaximumCallComposerPictureSize());
+            InputStream input = new ParcelFileDescriptor.AutoCloseInputStream(fd);
+            boolean readUntilEnd = false;
+            int totalBytesRead = 0;
+            byte[] buffer = new byte[16 * 1024];
+            while (true) {
+                int numRead;
+                try {
+                    numRead = input.read(buffer);
+                } catch (IOException e) {
+                    try {
+                        fd.checkError();
+                        callback.send(TelephonyManager.CallComposerException.ERROR_INPUT_CLOSED,
+                                null);
+                    } catch (IOException e1) {
+                        // This means that the other side closed explicitly with an error. If this
+                        // happens, log and ignore.
+                        loge("Remote end of call composer picture pipe closed: " + e1);
+                    }
+                    break;
+                }
+                if (numRead == -1) {
+                    readUntilEnd = true;
+                    break;
+                }
+                totalBytesRead += numRead;
+                if (totalBytesRead > TelephonyManager.getMaximumCallComposerPictureSize()) {
+                    loge("Too many bytes read for call composer picture: " + totalBytesRead);
+                    try {
+                        input.close();
+                    } catch (IOException e) {
+                        // ignore
+                    }
+                    break;
+                }
+                output.write(buffer, 0, numRead);
+            }
+            // Generally, the remote end will close the file descriptors. The only case where we
+            // close is above, where the picture size is too big.
+
+            try {
+                fd.checkError();
+            } catch (IOException e) {
+                loge("Remote end for call composer closed with an error: " + e);
+                return;
+            }
+
+            // TODO: pass along the bytes read to the carrier somehow
+
+            ParcelUuid result = new ParcelUuid(UUID.randomUUID());
+            // TODO: cache this uuid that's been associated with the picture
+            Bundle outputResult = new Bundle();
+            outputResult.putParcelable(TelephonyManager.KEY_CALL_COMPOSER_PICTURE_HANDLE, result);
+            callback.send(-1, outputResult);
+        });
+    }
+
+    @Override
     public void enableVideoCalling(boolean enable) {
         final Phone defaultPhone = getDefaultPhone();
         enforceModifyPermission();
@@ -9605,10 +9734,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            ImsManager.getInstance(mApp, getSlotIndexOrException(subId))
-                    .addRcsProvisioningCallbackForSubscription(callback, subId);
-        } catch (ImsException e) {
-            throw new ServiceSpecificException(e.getCode());
+            if (!RcsProvisioningMonitor.getInstance()
+                    .registerRcsProvisioningChangedCallback(subId, callback)) {
+                throw new ServiceSpecificException(ImsException.CODE_ERROR_UNSUPPORTED_OPERATION,
+                        "Service not available for the subscription.");
+            }
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -9632,11 +9762,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            ImsManager.getInstance(mApp, getSlotIndexOrException(subId))
-                    .removeRcsProvisioningCallbackForSubscription(callback, subId);
-        } catch (ImsException e) {
-            Log.i(LOG_TAG, "unregisterRcsProvisioningChangedCallback: " + subId
-                    + "is inactive, ignoring unregister.");
+            RcsProvisioningMonitor.getInstance()
+                    .unregisterRcsProvisioningChangedCallback(subId, callback);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }

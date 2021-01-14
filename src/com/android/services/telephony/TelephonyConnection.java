@@ -1302,6 +1302,8 @@ abstract class TelephonyConnection extends Connection implements Holdable {
                 isNetworkIdentifiedEmergencyCall());
         newProperties = changeBitmask(newProperties, PROPERTY_IS_ADHOC_CONFERENCE,
                 isAdhocConferenceCall());
+        newProperties = changeBitmask(newProperties, PROPERTY_CROSS_SIM,
+                isCrossSimCall());
 
         if (getConnectionProperties() != newProperties) {
             setTelephonyConnectionProperties(newProperties);
@@ -2375,6 +2377,16 @@ abstract class TelephonyConnection extends Connection implements Holdable {
                 && mOriginalConnection.getPhoneType() == PhoneConstants.PHONE_TYPE_IMS
                 && mOriginalConnection instanceof ImsPhoneConnection
                 && ((ImsPhoneConnection) mOriginalConnection).isRttEnabledForCall();
+    }
+
+    /**
+     * Determines if the current connection is cross sim calling
+     */
+    private boolean isCrossSimCall() {
+        return mOriginalConnection != null
+                && mOriginalConnection.getPhoneType() == PhoneConstants.PHONE_TYPE_IMS
+                && mOriginalConnection instanceof ImsPhoneConnection
+                && ((ImsPhoneConnection) mOriginalConnection).isCrossSimCall();
     }
 
     /**

@@ -36,19 +36,20 @@ import android.telephony.TelephonyRegistryManager;
 import android.telephony.ims.ProvisioningManager;
 import android.telephony.ims.RcsConfig;
 import android.telephony.ims.aidl.IImsConfig;
+import android.telephony.ims.aidl.IRcsConfigCallback;
 import android.telephony.ims.feature.ImsFeature;
 import android.text.TextUtils;
 
-import com.android.ims.ImsManager;
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.util.CollectionUtils;
 import com.android.telephony.Rlog;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
+import java.util.Iterator;
+import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.Executor;
 
 /**
  * Class to monitor RCS Provisioning Status
@@ -67,10 +68,8 @@ public class RcsProvisioningMonitor {
 
     private final PhoneGlobals mPhone;
     private final Handler mHandler;
-    //cache the rcs config per sub id
-    private final Map<Integer, byte[]> mConfigs = Collections.synchronizedMap(new HashMap<>());
-    //cache the single registration config per sub id
-    private final ConcurrentHashMap<Integer, Integer> mSingleRegistrations =
+    // Cache the RCS provsioning info and related sub id
+    private final ConcurrentHashMap<Integer, RcsProvisioningInfo> mRcsProvisioningInfos =
             new ConcurrentHashMap<>();
     private Boolean mDeviceSingleRegistrationEnabledOverride;
     private final HashMap<Integer, Boolean> mCarrierSingleRegistrationEnabledOverride =
@@ -81,6 +80,7 @@ public class RcsProvisioningMonitor {
     private final DmaChangedListener mDmaChangedListener;
     private final SubscriptionManager mSubscriptionManager;
     private final TelephonyRegistryManager mTelephonyRegistryManager;
+    private final RoleManagerAdapter mRoleManager;
 
     private static RcsProvisioningMonitor sInstance;
 
@@ -111,8 +111,6 @@ public class RcsProvisioningMonitor {
     };
 
     private final class DmaChangedListener implements OnRoleHoldersChangedListener {
-        private RoleManager mRoleManager;
-
         @Override
         public void onRoleHoldersChanged(String role, UserHandle user) {
             if (RoleManager.ROLE_SMS.equals(role)) {
@@ -123,24 +121,19 @@ public class RcsProvisioningMonitor {
         }
 
         public void register() {
-            mRoleManager = mPhone.getSystemService(RoleManager.class);
-            if (mRoleManager != null) {
-                try {
-                    mRoleManager.addOnRoleHoldersChangedListenerAsUser(
-                            mPhone.getMainExecutor(), this, UserHandle.SYSTEM);
-                } catch (RuntimeException e) {
-                    loge("Could not register dma change listener due to " + e);
-                }
+            try {
+                mRoleManager.addOnRoleHoldersChangedListenerAsUser(
+                        mPhone.getMainExecutor(), this, UserHandle.SYSTEM);
+            } catch (RuntimeException e) {
+                loge("Could not register dma change listener due to " + e);
             }
         }
 
         public void unregister() {
-            if (mRoleManager != null) {
-                try {
-                    mRoleManager.removeOnRoleHoldersChangedListenerAsUser(this, UserHandle.SYSTEM);
-                } catch (RuntimeException e) {
-                    loge("Could not unregister dma change listener due to " + e);
-                }
+            try {
+                mRoleManager.removeOnRoleHoldersChangedListenerAsUser(this, UserHandle.SYSTEM);
+            } catch (RuntimeException e) {
+                loge("Could not unregister dma change listener due to " + e);
             }
         }
     }
@@ -189,13 +182,113 @@ public class RcsProvisioningMonitor {
         }
     }
 
+    private final class RcsProvisioningInfo {
+        private int mSubId;
+        private volatile int mSingleRegistrationCapability;
+        private volatile byte[] mConfig;
+        private HashSet<IRcsConfigCallback> mRcsConfigCallbacks;
+
+        RcsProvisioningInfo(int subId, int singleRegistrationCapability, byte[] config) {
+            mSubId = subId;
+            mSingleRegistrationCapability = singleRegistrationCapability;
+            mConfig = config;
+            mRcsConfigCallbacks = new HashSet<>();
+        }
+
+        void setSingleRegistrationCapability(int singleRegistrationCapability) {
+            mSingleRegistrationCapability = singleRegistrationCapability;
+        }
+
+        int getSingleRegistrationCapability() {
+            return mSingleRegistrationCapability;
+        }
+
+        void setConfig(byte[] config) {
+            mConfig = config;
+        }
+
+        byte[] getConfig() {
+            return mConfig;
+        }
+
+        boolean addRcsConfigCallback(IRcsConfigCallback cb) {
+            IImsConfig imsConfig = getIImsConfig(mSubId, ImsFeature.FEATURE_RCS);
+            if (imsConfig == null) {
+                logd("fail to addRcsConfigCallback as imsConfig is null");
+                return false;
+            }
+
+            synchronized (mRcsConfigCallbacks) {
+                try {
+                    imsConfig.addRcsConfigCallback(cb);
+                } catch (RemoteException e) {
+                    loge("fail to addRcsConfigCallback due to " + e);
+                    return false;
+                }
+                mRcsConfigCallbacks.add(cb);
+            }
+            return true;
+        }
+
+        boolean removeRcsConfigCallback(IRcsConfigCallback cb) {
+            boolean result = true;
+            IImsConfig imsConfig = getIImsConfig(mSubId, ImsFeature.FEATURE_RCS);
+
+            synchronized (mRcsConfigCallbacks) {
+                if (imsConfig != null) {
+                    try {
+                        imsConfig.removeRcsConfigCallback(cb);
+                    } catch (RemoteException e) {
+                        loge("fail to removeRcsConfigCallback due to " + e);
+                    }
+                } else {
+                    // Return false but continue to remove the callback
+                    result = false;
+                }
+
+                try {
+                    cb.onRemoved();
+                } catch (RemoteException e) {
+                    logd("Failed to notify onRemoved due to dead binder of " + cb);
+                }
+                mRcsConfigCallbacks.remove(cb);
+            }
+            return result;
+        }
+
+        void clear() {
+            setConfig(null);
+            synchronized (mRcsConfigCallbacks) {
+                IImsConfig imsConfig = getIImsConfig(mSubId, ImsFeature.FEATURE_RCS);
+                Iterator<IRcsConfigCallback> it = mRcsConfigCallbacks.iterator();
+                while (it.hasNext()) {
+                    IRcsConfigCallback cb = it.next();
+                    if (imsConfig != null) {
+                        try {
+                            imsConfig.removeRcsConfigCallback(cb);
+                        } catch (RemoteException e) {
+                            loge("fail to removeRcsConfigCallback due to " + e);
+                        }
+                    }
+                    try {
+                        cb.onRemoved();
+                    } catch (RemoteException e) {
+                        logd("Failed to notify onRemoved due to dead binder of " + cb);
+                    }
+                    it.remove();
+                }
+            }
+        }
+    }
+
     @VisibleForTesting
-    public RcsProvisioningMonitor(PhoneGlobals app, Looper looper) {
+    public RcsProvisioningMonitor(PhoneGlobals app, Looper looper, RoleManagerAdapter roleManager) {
         mPhone = app;
         mHandler = new MyHandler(looper);
         mCarrierConfigManager = mPhone.getSystemService(CarrierConfigManager.class);
         mSubscriptionManager = mPhone.getSystemService(SubscriptionManager.class);
         mTelephonyRegistryManager = mPhone.getSystemService(TelephonyRegistryManager.class);
+        mRoleManager = roleManager;
         mDmaPackageName = getDmaPackageName();
         logv("DMA is " + mDmaPackageName);
         IntentFilter filter = new IntentFilter();
@@ -217,7 +310,8 @@ public class RcsProvisioningMonitor {
             logd("RcsProvisioningMonitor created.");
             HandlerThread handlerThread = new HandlerThread(TAG);
             handlerThread.start();
-            sInstance = new RcsProvisioningMonitor(app, handlerThread.getLooper());
+            sInstance = new RcsProvisioningMonitor(app, handlerThread.getLooper(),
+                    new RoleManagerAdapterImpl(app));
         }
         return sInstance;
     }
@@ -254,15 +348,19 @@ public class RcsProvisioningMonitor {
      */
     @VisibleForTesting
     public byte[] getConfig(int subId) {
-        return mConfigs.get(subId);
+        if (mRcsProvisioningInfos.containsKey(subId)) {
+            return mRcsProvisioningInfos.get(subId).getConfig();
+        }
+        return null;
     }
 
     /**
      * Returns whether Rcs Volte single registration is enabled for the sub.
      */
     public boolean isRcsVolteSingleRegistrationEnabled(int subId) {
-        if (mSingleRegistrations.containsKey(subId)) {
-            return mSingleRegistrations.get(subId) == ProvisioningManager.STATUS_CAPABLE;
+        if (mRcsProvisioningInfos.containsKey(subId)) {
+            return mRcsProvisioningInfos.get(subId).getSingleRegistrationCapability()
+                    == ProvisioningManager.STATUS_CAPABLE;
         }
         return false;
     }
@@ -283,6 +381,34 @@ public class RcsProvisioningMonitor {
     }
 
     /**
+     * Called when the application registers rcs provisioning changed callback
+     */
+    public boolean registerRcsProvisioningChangedCallback(int subId, IRcsConfigCallback cb) {
+        RcsProvisioningInfo info = mRcsProvisioningInfos.get(subId);
+        // should not happen in normal case
+        if (info == null) {
+            logd("fail to register rcs provisioning changed due to subscription unavailable");
+            return false;
+        }
+
+        return info.addRcsConfigCallback(cb);
+    }
+
+    /**
+     * Called when the application unregisters rcs provisioning changed callback
+     */
+    public boolean unregisterRcsProvisioningChangedCallback(int subId, IRcsConfigCallback cb) {
+        RcsProvisioningInfo info = mRcsProvisioningInfos.get(subId);
+        // should not happen in normal case
+        if (info == null) {
+            logd("fail to unregister rcs provisioning changed due to subscription unavailable");
+            return false;
+        }
+
+        return info.removeRcsConfigCallback(cb);
+    }
+
+    /**
      * override the device config whether single registration is enabled
      */
     public void overrideDeviceSingleRegistrationEnabled(Boolean enabled) {
@@ -293,7 +419,7 @@ public class RcsProvisioningMonitor {
      * Overrides the carrier config whether single registration is enabled
      */
     public boolean overrideCarrierSingleRegistrationEnabled(int subId, Boolean enabled) {
-        if (!mSingleRegistrations.containsKey(subId)) {
+        if (!mRcsProvisioningInfos.containsKey(subId)) {
             return false;
         }
         mHandler.sendMessage(mHandler.obtainMessage(
@@ -305,8 +431,9 @@ public class RcsProvisioningMonitor {
      * Returns the device config whether single registration is enabled
      */
     public boolean getDeviceSingleRegistrationEnabled() {
-        for (int val : mSingleRegistrations.values()) {
-            return (val & ProvisioningManager.STATUS_DEVICE_NOT_CAPABLE) == 0;
+        for (RcsProvisioningInfo info : mRcsProvisioningInfos.values()) {
+            return (info.getSingleRegistrationCapability()
+                    & ProvisioningManager.STATUS_DEVICE_NOT_CAPABLE) == 0;
         }
         return false;
     }
@@ -315,8 +442,8 @@ public class RcsProvisioningMonitor {
      * Returns the carrier config whether single registration is enabled
      */
     public boolean getCarrierSingleRegistrationEnabled(int subId) {
-        if (mSingleRegistrations.containsKey(subId)) {
-            return (mSingleRegistrations.get(subId)
+        if (mRcsProvisioningInfos.containsKey(subId)) {
+            return (mRcsProvisioningInfos.get(subId).getSingleRegistrationCapability()
                     & ProvisioningManager.STATUS_CARRIER_NOT_CAPABLE) == 0;
         }
         return false;
@@ -325,20 +452,21 @@ public class RcsProvisioningMonitor {
     private void onDefaultMessagingApplicationChanged() {
         final String packageName = getDmaPackageName();
         if (!TextUtils.equals(mDmaPackageName, packageName)) {
-            //clear old callbacks
-            ImsManager.getInstance(mPhone, mPhone.getPhone().getPhoneId())
-                    .clearRcsProvisioningCallbacks();
             mDmaPackageName = packageName;
             logv("new default messaging application " + mDmaPackageName);
-            mConfigs.forEach((k, v) -> {
+
+            mRcsProvisioningInfos.forEach((k, v) -> {
+                byte[] cachedConfig = v.getConfig();
+                //clear old callbacks
+                v.clear();
                 if (isAcsUsed(k)) {
                     logv("acs used, trigger to re-configure.");
-                    mConfigs.put(k, null);
                     notifyRcsAutoConfigurationRemoved(k);
                     triggerRcsReconfiguration(k);
                 } else {
+                    v.setConfig(cachedConfig);
                     logv("acs not used, notify.");
-                    notifyRcsAutoConfigurationReceived(k, v, false);
+                    notifyRcsAutoConfigurationReceived(k, v.getConfig(), false);
                 }
             });
         }
@@ -427,58 +555,68 @@ public class RcsProvisioningMonitor {
 
     private void onCarrierConfigChange() {
         logv("onCarrierConfigChange");
-        mConfigs.forEach((subId, config) -> {
+        mRcsProvisioningInfos.forEach((subId, info) -> {
             int value = getSingleRegistrationCapableValue(subId);
-            if (value != mSingleRegistrations.get(subId)) {
-                mSingleRegistrations.put(subId, value);
-                notifyDmaForSub(subId);
+            if (value != info.getSingleRegistrationCapability()) {
+                info.setSingleRegistrationCapability(value);
+                notifyDmaForSub(subId, value);
             }
         });
     }
 
     private void onSubChanged() {
         final int[] activeSubs = mSubscriptionManager.getActiveSubscriptionIdList();
-        final HashSet<Integer> subsToBeDeactivated = new HashSet<>(mConfigs.keySet());
+        final HashSet<Integer> subsToBeDeactivated = new HashSet<>(mRcsProvisioningInfos.keySet());
 
         for (int i : activeSubs) {
             subsToBeDeactivated.remove(i);
-            if (!mConfigs.containsKey(i)) {
+            if (!mRcsProvisioningInfos.containsKey(i)) {
                 byte[] data = RcsConfig.loadRcsConfigForSub(mPhone, i, false);
-                logv("new config is created for sub : " + i);
-                mConfigs.put(i, data);
+                int capability = getSingleRegistrationCapableValue(i);
+                logv("new info is created for sub : " + i + ", single registration capability :"
+                        + capability + ", rcs config : " + data);
+                mRcsProvisioningInfos.put(i, new RcsProvisioningInfo(i, capability, data));
                 notifyRcsAutoConfigurationReceived(i, data, false);
-                mSingleRegistrations.put(i, getSingleRegistrationCapableValue(i));
-                notifyDmaForSub(i);
+                notifyDmaForSub(i, capability);
             }
         }
 
         subsToBeDeactivated.forEach(i -> {
-            mConfigs.remove(i);
+            RcsProvisioningInfo info = mRcsProvisioningInfos.remove(i);
             notifyRcsAutoConfigurationRemoved(i);
+            if (info != null) {
+                info.clear();
+            }
         });
     }
 
     private void onConfigReceived(int subId, byte[] config, boolean isCompressed) {
         logv("onConfigReceived, subId:" + subId + ", config:"
                 + config + ", isCompressed:" + isCompressed);
-        mConfigs.put(subId, isCompressed ? RcsConfig.decompressGzip(config) : config);
+        RcsProvisioningInfo info = mRcsProvisioningInfos.get(subId);
+        if (info != null) {
+            info.setConfig(isCompressed ? RcsConfig.decompressGzip(config) : config);
+        }
         RcsConfig.updateConfigForSub(mPhone, subId, config, isCompressed);
         notifyRcsAutoConfigurationReceived(subId, config, isCompressed);
     }
 
     private void onReconfigRequest(int subId) {
         logv("onReconfigRequest, subId:" + subId);
-        mConfigs.put(subId, null);
+        RcsProvisioningInfo info = mRcsProvisioningInfos.get(subId);
+        if (info != null) {
+            info.setConfig(null);
+        }
         notifyRcsAutoConfigurationRemoved(subId);
         triggerRcsReconfiguration(subId);
     }
 
-    private void notifyDmaForSub(int subId) {
+    private void notifyDmaForSub(int subId, int capability) {
         final Intent intent = new Intent(
                 ProvisioningManager.ACTION_RCS_SINGLE_REGISTRATION_CAPABILITY_UPDATE);
         intent.setPackage(mDmaPackageName);
         intent.putExtra(ProvisioningManager.EXTRA_SUBSCRIPTION_ID, subId);
-        intent.putExtra(ProvisioningManager.EXTRA_STATUS, mSingleRegistrations.get(subId));
+        intent.putExtra(ProvisioningManager.EXTRA_STATUS, capability);
         logv("notify " + intent);
         mPhone.sendBroadcast(intent);
     }
@@ -490,8 +628,7 @@ public class RcsProvisioningMonitor {
 
     private String getDmaPackageName() {
         try {
-            return CollectionUtils.firstOrNull(mPhone.getSystemService(RoleManager.class)
-                    .getRoleHolders(RoleManager.ROLE_SMS));
+            return CollectionUtils.firstOrNull(mRoleManager.getRoleHolders(RoleManager.ROLE_SMS));
         } catch (RuntimeException e) {
             loge("Could not get dma name due to " + e);
             return null;
@@ -516,5 +653,45 @@ public class RcsProvisioningMonitor {
 
     private static void loge(String msg) {
         Rlog.e(TAG, msg);
+    }
+
+    /**
+     * {@link RoleManager} is final so we have to wrap the implementation for testing.
+     */
+    @VisibleForTesting
+    public interface RoleManagerAdapter {
+        /** See {@link RoleManager#getRoleHolders(String)} */
+        List<String> getRoleHolders(String roleName);
+        /** See {@link RoleManager#addOnRoleHoldersChangedListenerAsUser} */
+        void addOnRoleHoldersChangedListenerAsUser(Executor executor,
+                OnRoleHoldersChangedListener listener, UserHandle user);
+        /** See {@link RoleManager#removeOnRoleHoldersChangedListenerAsUser} */
+        void removeOnRoleHoldersChangedListenerAsUser(OnRoleHoldersChangedListener listener,
+                UserHandle user);
+    }
+
+    private static class RoleManagerAdapterImpl implements RoleManagerAdapter {
+        private final RoleManager mRoleManager;
+
+        private RoleManagerAdapterImpl(Context context) {
+            mRoleManager = context.getSystemService(RoleManager.class);
+        }
+
+        @Override
+        public List<String> getRoleHolders(String roleName) {
+            return mRoleManager.getRoleHolders(roleName);
+        }
+
+        @Override
+        public void addOnRoleHoldersChangedListenerAsUser(Executor executor,
+                OnRoleHoldersChangedListener listener, UserHandle user) {
+            mRoleManager.addOnRoleHoldersChangedListenerAsUser(executor, listener, user);
+        }
+
+        @Override
+        public void removeOnRoleHoldersChangedListenerAsUser(OnRoleHoldersChangedListener listener,
+                UserHandle user) {
+            mRoleManager.removeOnRoleHoldersChangedListenerAsUser(listener, user);
+        }
     }
 }
