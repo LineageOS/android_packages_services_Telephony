@@ -47,8 +47,10 @@ import com.android.telephony.Rlog;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.Executor;
 
 /**
  * Class to monitor RCS Provisioning Status
@@ -81,6 +83,7 @@ public class RcsProvisioningMonitor {
     private final DmaChangedListener mDmaChangedListener;
     private final SubscriptionManager mSubscriptionManager;
     private final TelephonyRegistryManager mTelephonyRegistryManager;
+    private final RoleManagerAdapter mRoleManager;
 
     private static RcsProvisioningMonitor sInstance;
 
@@ -111,8 +114,6 @@ public class RcsProvisioningMonitor {
     };
 
     private final class DmaChangedListener implements OnRoleHoldersChangedListener {
-        private RoleManager mRoleManager;
-
         @Override
         public void onRoleHoldersChanged(String role, UserHandle user) {
             if (RoleManager.ROLE_SMS.equals(role)) {
@@ -123,24 +124,19 @@ public class RcsProvisioningMonitor {
         }
 
         public void register() {
-            mRoleManager = mPhone.getSystemService(RoleManager.class);
-            if (mRoleManager != null) {
-                try {
-                    mRoleManager.addOnRoleHoldersChangedListenerAsUser(
-                            mPhone.getMainExecutor(), this, UserHandle.SYSTEM);
-                } catch (RuntimeException e) {
-                    loge("Could not register dma change listener due to " + e);
-                }
+            try {
+                mRoleManager.addOnRoleHoldersChangedListenerAsUser(
+                        mPhone.getMainExecutor(), this, UserHandle.SYSTEM);
+            } catch (RuntimeException e) {
+                loge("Could not register dma change listener due to " + e);
             }
         }
 
         public void unregister() {
-            if (mRoleManager != null) {
-                try {
-                    mRoleManager.removeOnRoleHoldersChangedListenerAsUser(this, UserHandle.SYSTEM);
-                } catch (RuntimeException e) {
-                    loge("Could not unregister dma change listener due to " + e);
-                }
+            try {
+                mRoleManager.removeOnRoleHoldersChangedListenerAsUser(this, UserHandle.SYSTEM);
+            } catch (RuntimeException e) {
+                loge("Could not unregister dma change listener due to " + e);
             }
         }
     }
@@ -190,12 +186,13 @@ public class RcsProvisioningMonitor {
     }
 
     @VisibleForTesting
-    public RcsProvisioningMonitor(PhoneGlobals app, Looper looper) {
+    public RcsProvisioningMonitor(PhoneGlobals app, Looper looper, RoleManagerAdapter roleManager) {
         mPhone = app;
         mHandler = new MyHandler(looper);
         mCarrierConfigManager = mPhone.getSystemService(CarrierConfigManager.class);
         mSubscriptionManager = mPhone.getSystemService(SubscriptionManager.class);
         mTelephonyRegistryManager = mPhone.getSystemService(TelephonyRegistryManager.class);
+        mRoleManager = roleManager;
         mDmaPackageName = getDmaPackageName();
         logv("DMA is " + mDmaPackageName);
         IntentFilter filter = new IntentFilter();
@@ -217,7 +214,8 @@ public class RcsProvisioningMonitor {
             logd("RcsProvisioningMonitor created.");
             HandlerThread handlerThread = new HandlerThread(TAG);
             handlerThread.start();
-            sInstance = new RcsProvisioningMonitor(app, handlerThread.getLooper());
+            sInstance = new RcsProvisioningMonitor(app, handlerThread.getLooper(),
+                    new RoleManagerAdapterImpl(app));
         }
         return sInstance;
     }
@@ -490,8 +488,7 @@ public class RcsProvisioningMonitor {
 
     private String getDmaPackageName() {
         try {
-            return CollectionUtils.firstOrNull(mPhone.getSystemService(RoleManager.class)
-                    .getRoleHolders(RoleManager.ROLE_SMS));
+            return CollectionUtils.firstOrNull(mRoleManager.getRoleHolders(RoleManager.ROLE_SMS));
         } catch (RuntimeException e) {
             loge("Could not get dma name due to " + e);
             return null;
@@ -516,5 +513,45 @@ public class RcsProvisioningMonitor {
 
     private static void loge(String msg) {
         Rlog.e(TAG, msg);
+    }
+
+    /**
+     * {@link RoleManager} is final so we have to wrap the implementation for testing.
+     */
+    @VisibleForTesting
+    public interface RoleManagerAdapter {
+        /** See {@link RoleManager#getRoleHolders(String)} */
+        List<String> getRoleHolders(String roleName);
+        /** See {@link RoleManager#addOnRoleHoldersChangedListenerAsUser} */
+        void addOnRoleHoldersChangedListenerAsUser(Executor executor,
+                OnRoleHoldersChangedListener listener, UserHandle user);
+        /** See {@link RoleManager#removeOnRoleHoldersChangedListenerAsUser} */
+        void removeOnRoleHoldersChangedListenerAsUser(OnRoleHoldersChangedListener listener,
+                UserHandle user);
+    }
+
+    private static class RoleManagerAdapterImpl implements RoleManagerAdapter {
+        private final RoleManager mRoleManager;
+
+        private RoleManagerAdapterImpl(Context context) {
+            mRoleManager = context.getSystemService(RoleManager.class);
+        }
+
+        @Override
+        public List<String> getRoleHolders(String roleName) {
+            return mRoleManager.getRoleHolders(roleName);
+        }
+
+        @Override
+        public void addOnRoleHoldersChangedListenerAsUser(Executor executor,
+                OnRoleHoldersChangedListener listener, UserHandle user) {
+            mRoleManager.addOnRoleHoldersChangedListenerAsUser(executor, listener, user);
+        }
+
+        @Override
+        public void removeOnRoleHoldersChangedListenerAsUser(OnRoleHoldersChangedListener listener,
+                UserHandle user) {
+            mRoleManager.removeOnRoleHoldersChangedListenerAsUser(listener, user);
+        }
     }
 }
