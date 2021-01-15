@@ -163,8 +163,8 @@ public class DelegateStateTracker implements DelegateBinderStateManager.StateCal
     public void dump(PrintWriter printWriter) {
         printWriter.println("Last reg state: " + mLastRegState);
         printWriter.println("Denied tags: " + mDelegateDeniedTags);
-        printWriter.println("Most recent logs: ");
         printWriter.println();
+        printWriter.println("Most recent logs: ");
         mLocalLog.dump(printWriter);
     }
 
