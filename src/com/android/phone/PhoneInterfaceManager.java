@@ -9573,10 +9573,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            ImsManager.getInstance(mApp, getSlotIndexOrException(subId))
-                    .addRcsProvisioningCallbackForSubscription(callback, subId);
-        } catch (ImsException e) {
-            throw new ServiceSpecificException(e.getCode());
+            if (!RcsProvisioningMonitor.getInstance()
+                    .registerRcsProvisioningChangedCallback(subId, callback)) {
+                throw new ServiceSpecificException(ImsException.CODE_ERROR_UNSUPPORTED_OPERATION,
+                        "Service not available for the subscription.");
+            }
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -9600,11 +9601,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            ImsManager.getInstance(mApp, getSlotIndexOrException(subId))
-                    .removeRcsProvisioningCallbackForSubscription(callback, subId);
-        } catch (ImsException e) {
-            Log.i(LOG_TAG, "unregisterRcsProvisioningChangedCallback: " + subId
-                    + "is inactive, ignoring unregister.");
+            RcsProvisioningMonitor.getInstance()
+                    .unregisterRcsProvisioningChangedCallback(subId, callback);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
