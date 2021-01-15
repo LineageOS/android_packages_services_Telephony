@@ -6970,7 +6970,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     @Override
     public void uploadCallComposerPicture(int subscriptionId, String callingPackage,
-            ParcelFileDescriptor fd, ResultReceiver callback) {
+            String contentType, ParcelFileDescriptor fd, ResultReceiver callback) {
         try {
             if (!Objects.equals(mApp.getPackageManager().getPackageUid(callingPackage, 0),
                     Binder.getCallingUid())) {
