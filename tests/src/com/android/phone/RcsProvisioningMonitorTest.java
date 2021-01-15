@@ -53,6 +53,7 @@ import android.telephony.TelephonyRegistryManager;
 import android.telephony.ims.ProvisioningManager;
 import android.telephony.ims.RcsConfig;
 import android.telephony.ims.aidl.IImsConfig;
+import android.telephony.ims.aidl.IRcsConfigCallback;
 import android.telephony.ims.feature.ImsFeature;
 import android.test.mock.MockContentProvider;
 import android.test.mock.MockContentResolver;
@@ -90,7 +91,7 @@ public class RcsProvisioningMonitorTest {
             + "\t\t<GroupChatAuth>1</GroupChatAuth>\n"
             + "\t\t<ftAuth>1</ftAuth>\n"
             + "\t\t<standaloneMsgAuth>1</standaloneMsgAuth>\n"
-            + "\t\t<geolocPushAuth>1<geolocPushAuth>\n"
+            + "\t\t<geolocPushAuth>1</geolocPushAuth>\n"
             + "\t\t<Ext>\n"
             + "\t\t\t<DataOff>\n"
             + "\t\t\t\t<rcsMessagingDataOff>1</rcsMessagingDataOff>\n"
@@ -135,6 +136,8 @@ public class RcsProvisioningMonitorTest {
     private Resources mResources;
     @Mock
     private PhoneGlobals mPhone;
+    @Mock
+    private IRcsConfigCallback mCallback;
 
     private Executor mExecutor = new Executor() {
         @Override
@@ -433,7 +436,6 @@ public class RcsProvisioningMonitorTest {
         verify(mIImsConfig, times(1)).triggerRcsReconfiguration();
     }
 
-
     @Test
     @SmallTest
     public void testIsRcsVolteSingleRegistrationEnabled() throws Exception {
@@ -461,6 +463,56 @@ public class RcsProvisioningMonitorTest {
         broadcastCarrierConfigChange(FAKE_SUB_ID_BASE);
         processAllMessages();
         assertFalse(mRcsProvisioningMonitor.isRcsVolteSingleRegistrationEnabled(FAKE_SUB_ID_BASE));
+    }
+
+    @Test
+    @SmallTest
+    public void testRegisterThenUnregisterCallback() throws Exception {
+        createMonitor(1);
+
+        boolean result = mRcsProvisioningMonitor.registerRcsProvisioningChangedCallback(
+                FAKE_SUB_ID_BASE, mCallback);
+
+        assertTrue(result);
+        verify(mIImsConfig, times(1)).addRcsConfigCallback(eq(mCallback));
+
+        result = mRcsProvisioningMonitor.unregisterRcsProvisioningChangedCallback(
+                FAKE_SUB_ID_BASE, mCallback);
+
+        assertTrue(result);
+        verify(mIImsConfig, times(1)).removeRcsConfigCallback(eq(mCallback));
+        verify(mCallback, times(1)).onRemoved();
+    }
+
+    @Test
+    @SmallTest
+    public void testCallbackRemovedWhenSubInfoChanged() throws Exception {
+        createMonitor(1);
+
+        boolean result = mRcsProvisioningMonitor.registerRcsProvisioningChangedCallback(
+                FAKE_SUB_ID_BASE, mCallback);
+        makeFakeActiveSubIds(0);
+        mExecutor.execute(() -> mSubChangedListener.onSubscriptionsChanged());
+        processAllMessages();
+
+        assertTrue(result);
+        verify(mIImsConfig, times(1)).removeRcsConfigCallback(eq(mCallback));
+        verify(mCallback, times(1)).onRemoved();
+    }
+
+    @Test
+    @SmallTest
+    public void testCallbackRemovedWhenDmaChanged() throws Exception {
+        createMonitor(1);
+
+        boolean result = mRcsProvisioningMonitor.registerRcsProvisioningChangedCallback(
+                FAKE_SUB_ID_BASE, mCallback);
+        updateDefaultMessageApplication(DEFAULT_MESSAGING_APP2);
+        processAllMessages();
+
+        assertTrue(result);
+        verify(mIImsConfig, times(1)).removeRcsConfigCallback(eq(mCallback));
+        verify(mCallback, times(1)).onRemoved();
     }
 
     private void createMonitor(int subCount) {
