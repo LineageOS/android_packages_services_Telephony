@@ -306,4 +306,8 @@
 
     <!-- Whether or not to support RCS VoLTE single registration  -->
     <bool name="config_rcsVolteSingleRegistrationEnabled">true</bool>
+
+    <!-- Whether or not to support device to device communication using RTP and DTMF communication
+         transports. -->
+    <bool name="config_use_device_to_device_communication">false</bool>
 </resources>
