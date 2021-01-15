@@ -3228,7 +3228,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         String authorizedPackage = NumberVerificationManager.getAuthorizedPackage(mApp);
         if (!TextUtils.equals(callingPackage, authorizedPackage)) {
-            throw new SecurityException("Calling package must be configured in the device config");
+            throw new SecurityException("Calling package must be configured in the device config: "
+                    + "calling package: " + callingPackage
+                    + ", configured package: " + authorizedPackage);
         }
 
         if (range == null) {
