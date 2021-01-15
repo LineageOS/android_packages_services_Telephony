@@ -27,7 +27,7 @@
     <string name="onHold" msgid="6132725550015899006">"होल्ड वर"</string>
     <string name="carrier_mmi_msg_title" msgid="6050165242447507034">"<xliff:g id="MMICARRIER">%s</xliff:g> मेसेज"</string>
     <string name="default_carrier_mmi_msg_title" msgid="7754317179938537213">"वाहक मेसेज"</string>
-    <string name="mmiStarted" msgid="9212975136944568623">"MMI कोड प्रारंभ केला"</string>
+    <string name="mmiStarted" msgid="9212975136944568623">"MMI कोड सुरू केला"</string>
     <string name="ussdRunning" msgid="1163586813106772717">"USSD कोड सुरू…"</string>
     <string name="mmiCancelled" msgid="5339191899200678272">"MMI कोड रद्द केला"</string>
     <string name="cancel" msgid="8984206397635155197">"रद्द करा"</string>
@@ -315,10 +315,10 @@
     <string name="throttle_time_frame" msgid="1813452485948918791">"डेटा वापर कालावधी"</string>
     <string name="throttle_rate" msgid="7641913901133634905">"डेटा रेट धोरण"</string>
     <string name="throttle_help" msgid="2624535757028809735">"अधिक जाणून घ्या"</string>
-    <string name="throttle_status_subtext" msgid="1110276415078236687">"कमाल कालावधी <xliff:g id="USED_2">%3$s</xliff:g> पैकी <xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) \nपुढील  कालावधी <xliff:g id="USED_3">%4$d</xliff:g> दिवसात (<xliff:g id="USED_4">%5$s</xliff:g>) प्रारंभ होतो"</string>
+    <string name="throttle_status_subtext" msgid="1110276415078236687">"कमाल कालावधी <xliff:g id="USED_2">%3$s</xliff:g> पैकी <xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) \nपुढील  कालावधी <xliff:g id="USED_3">%4$d</xliff:g> दिवसात (<xliff:g id="USED_4">%5$s</xliff:g>) सुरू होतो"</string>
     <string name="throttle_data_usage_subtext" msgid="3185429653996709840">"कमाल कालावधी <xliff:g id="USED_2">%3$s</xliff:g> पैकी <xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪)"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"<xliff:g id="USED_0">%1$s</xliff:g> कमाल ओलांडले\nडेटा रेट <xliff:g id="USED_1">%2$d</xliff:g> Kb/s इतका कमी झाला"</string>
-    <string name="throttle_time_frame_subtext" msgid="6462089615392402127">"कालचक्राचा <xliff:g id="USED_0">%1$d</xliff:g>٪ काळ लोटला\nपुढील कालावधी <xliff:g id="USED_1">%2$d</xliff:g> दिवसांमध्‍ये (<xliff:g id="USED_2">%3$s</xliff:g>) प्रारंभ होतो"</string>
+    <string name="throttle_time_frame_subtext" msgid="6462089615392402127">"कालचक्राचा <xliff:g id="USED_0">%1$d</xliff:g>٪ काळ लोटला\nपुढील कालावधी <xliff:g id="USED_1">%2$d</xliff:g> दिवसांमध्‍ये (<xliff:g id="USED_2">%3$s</xliff:g>) सुरू होतो"</string>
     <string name="throttle_rate_subtext" msgid="7221971817325779535">"डेटा वापर मर्यादा ओलांडल्‍यास डेटा रेट <xliff:g id="USED">%1$d</xliff:g> Kb/s इतका कमी केला"</string>
     <string name="throttle_help_subtext" msgid="2817114897095534807">"आपल्‍या वाहकाच्‍या मोबाइल नेटवर्क डेटा वापर धोरणाविषयी अधिक माहिती"</string>
     <string name="cell_broadcast_sms" msgid="4053449797289031063">"सेल प्रसारण SMS"</string>
