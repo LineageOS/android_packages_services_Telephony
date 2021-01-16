@@ -376,14 +376,23 @@ public class SipDelegateController {
         IndentingPrintWriter pw = new IndentingPrintWriter(printWriter, "  ");
         pw.println("SipDelegateController" + "[" + mSubId + "]:");
         pw.increaseIndent();
+        pw.println("Most recent logs:");
+        pw.increaseIndent();
+        mLocalLog.dump(pw);
+        pw.decreaseIndent();
+
+        pw.println();
         pw.println("DelegateStateTracker:");
         pw.increaseIndent();
-        mDelegateStateTracker.dump(printWriter);
+        mDelegateStateTracker.dump(pw);
         pw.decreaseIndent();
+
+        pw.println();
         pw.println("MessageStateTracker:");
         pw.increaseIndent();
-        mMessageTransportStateTracker.dump(printWriter);
+        mMessageTransportStateTracker.dump(pw);
         pw.decreaseIndent();
+
         pw.decreaseIndent();
     }
 

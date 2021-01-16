@@ -343,6 +343,7 @@ public class MessageTransportStateTracker implements DelegateBinderStateManager.
 
     /** Dump state about this tracker that should be included in the dumpsys */
     public void dump(PrintWriter printWriter) {
+        printWriter.println("Most recent logs:");
         mLocalLog.dump(printWriter);
     }
 

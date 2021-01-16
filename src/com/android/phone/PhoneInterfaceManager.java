@@ -3249,7 +3249,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         String authorizedPackage = NumberVerificationManager.getAuthorizedPackage(mApp);
         if (!TextUtils.equals(callingPackage, authorizedPackage)) {
-            throw new SecurityException("Calling package must be configured in the device config");
+            throw new SecurityException("Calling package must be configured in the device config: "
+                    + "calling package: " + callingPackage
+                    + ", configured package: " + authorizedPackage);
         }
 
         if (range == null) {
@@ -6970,7 +6972,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     @Override
     public void uploadCallComposerPicture(int subscriptionId, String callingPackage,
-            ParcelFileDescriptor fd, ResultReceiver callback) {
+            String contentType, ParcelFileDescriptor fd, ResultReceiver callback) {
         try {
             if (!Objects.equals(mApp.getPackageManager().getPackageUid(callingPackage, 0),
                     Binder.getCallingUid())) {
