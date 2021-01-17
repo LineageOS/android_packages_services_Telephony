@@ -841,7 +841,7 @@
     <string name="radio_info_ims_reg_status_registered" msgid="7095182114078864326">"已注册"</string>
     <string name="radio_info_ims_reg_status_not_registered" msgid="8045821447288876085">"未注册"</string>
     <string name="radio_info_ims_feature_status_available" msgid="6493200914756969292">"可用"</string>
-    <string name="radio_info_ims_feature_status_unavailable" msgid="8930391136839759778">"不支持该付款方式"</string>
+    <string name="radio_info_ims_feature_status_unavailable" msgid="8930391136839759778">"无法使用"</string>
     <string name="radio_info_ims_reg_status" msgid="25582845222446390">"IMS 注册：<xliff:g id="STATUS">%1$s</xliff:g>\nLTE 语音通话：<xliff:g id="AVAILABILITY_0">%2$s</xliff:g>\nWLAN 语音通话：<xliff:g id="AVAILABILITY_1">%3$s</xliff:g>\n视频通话：<xliff:g id="AVAILABILITY_2">%4$s</xliff:g>\nUT 接口：<xliff:g id="AVAILABILITY_3">%5$s</xliff:g>"</string>
     <string name="radioInfo_service_in" msgid="45753418231446400">"服务中"</string>
     <string name="radioInfo_service_out" msgid="287972405416142312">"不在服务区"</string>
