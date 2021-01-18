@@ -24,18 +24,15 @@ import static junit.framework.Assert.assertTrue;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyBoolean;
 import static org.mockito.Matchers.anyInt;
-import static org.mockito.Matchers.anyString;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.doAnswer;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import android.app.role.IOnRoleHoldersChangedListener;
-import android.app.role.IRoleManager;
+import android.app.role.OnRoleHoldersChangedListener;
 import android.app.role.RoleManager;
 import android.content.BroadcastReceiver;
 import android.content.ContentValues;
@@ -46,12 +43,8 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.HandlerThread;
-import android.os.IBinder;
-import android.os.IInterface;
 import android.os.Looper;
 import android.os.PersistableBundle;
-import android.os.RemoteException;
-import android.os.ServiceManager;
 import android.os.UserHandle;
 import android.provider.Telephony.SimInfo;
 import android.telephony.CarrierConfigManager;
@@ -60,6 +53,7 @@ import android.telephony.TelephonyRegistryManager;
 import android.telephony.ims.ProvisioningManager;
 import android.telephony.ims.RcsConfig;
 import android.telephony.ims.aidl.IImsConfig;
+import android.telephony.ims.aidl.IRcsConfigCallback;
 import android.telephony.ims.feature.ImsFeature;
 import android.test.mock.MockContentProvider;
 import android.test.mock.MockContentResolver;
@@ -76,15 +70,12 @@ import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.mockito.MockitoSession;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.Executor;
 
 /**
@@ -100,7 +91,7 @@ public class RcsProvisioningMonitorTest {
             + "\t\t<GroupChatAuth>1</GroupChatAuth>\n"
             + "\t\t<ftAuth>1</ftAuth>\n"
             + "\t\t<standaloneMsgAuth>1</standaloneMsgAuth>\n"
-            + "\t\t<geolocPushAuth>1<geolocPushAuth>\n"
+            + "\t\t<geolocPushAuth>1</geolocPushAuth>\n"
             + "\t\t<Ext>\n"
             + "\t\t\t<DataOff>\n"
             + "\t\t\t\t<rcsMessagingDataOff>1</rcsMessagingDataOff>\n"
@@ -115,7 +106,6 @@ public class RcsProvisioningMonitorTest {
     private static final String DEFAULT_MESSAGING_APP1 = "DMA1";
     private static final String DEFAULT_MESSAGING_APP2 = "DMA2";
 
-    private MockitoSession mSession;
     private RcsProvisioningMonitor mRcsProvisioningMonitor;
     private Handler mHandler;
     private HandlerThread mHandlerThread;
@@ -133,10 +123,9 @@ public class RcsProvisioningMonitorTest {
     private TelephonyRegistryManager mTelephonyRegistryManager;
     @Mock
     private CarrierConfigManager mCarrierConfigManager;
-    private IOnRoleHoldersChangedListener.Stub mRoleHolderChangedListener;
-    private RoleManager mRoleManager;
+    private OnRoleHoldersChangedListener mRoleHolderChangedListener;
     @Mock
-    private IRoleManager.Stub mIRoleManager;
+    private RcsProvisioningMonitor.RoleManagerAdapter mRoleManager;
     @Mock
     private ITelephony.Stub mITelephony;
     @Mock
@@ -147,6 +136,8 @@ public class RcsProvisioningMonitorTest {
     private Resources mResources;
     @Mock
     private PhoneGlobals mPhone;
+    @Mock
+    private IRcsConfigCallback mCallback;
 
     private Executor mExecutor = new Executor() {
         @Override
@@ -189,8 +180,6 @@ public class RcsProvisioningMonitorTest {
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
 
-        replaceService(Context.ROLE_SERVICE, mIRoleManager);
-        mRoleManager = new RoleManager(mPhone);
         when(mPhone.getResources()).thenReturn(mResources);
         when(mResources.getBoolean(
                 eq(R.bool.config_rcsVolteSingleRegistrationEnabled))).thenReturn(true);
@@ -209,8 +198,6 @@ public class RcsProvisioningMonitorTest {
                 .thenReturn(mSubscriptionManager);
         when(mPhone.getSystemService(eq(Context.TELEPHONY_REGISTRY_SERVICE)))
                 .thenReturn(mTelephonyRegistryManager);
-        when(mPhone.getSystemService(eq(Context.ROLE_SERVICE)))
-                .thenReturn(mRoleManager);
 
         mBundle = new PersistableBundle();
         when(mCarrierConfigManager.getConfigForSubId(anyInt())).thenReturn(mBundle);
@@ -237,15 +224,15 @@ public class RcsProvisioningMonitorTest {
         doAnswer(new Answer<Void>() {
             @Override
             public Void answer(InvocationOnMock invocation) throws Throwable {
-                mRoleHolderChangedListener = (IOnRoleHoldersChangedListener.Stub)
-                        invocation.getArguments()[0];
+                mRoleHolderChangedListener = (OnRoleHoldersChangedListener)
+                        invocation.getArguments()[1];
                 return null;
             }
-        }).when(mIRoleManager).addOnRoleHoldersChangedListenerAsUser(
-                any(IOnRoleHoldersChangedListener.Stub.class), anyInt());
+        }).when(mRoleManager).addOnRoleHoldersChangedListenerAsUser(any(Executor.class),
+                any(OnRoleHoldersChangedListener.class), any(UserHandle.class));
         List<String> dmas = new ArrayList<>();
         dmas.add(DEFAULT_MESSAGING_APP1);
-        when(mIRoleManager.getRoleHoldersAsUser(any(), anyInt())).thenReturn(dmas);
+        when(mRoleManager.getRoleHolders(eq(RoleManager.ROLE_SMS))).thenReturn(dmas);
 
         mProvider = new SimInfoContentProvider(mPhone);
         mProvider.setCursor(mCursor);
@@ -268,9 +255,6 @@ public class RcsProvisioningMonitorTest {
             mRcsProvisioningMonitor = null;
         }
 
-        if (mSession != null) {
-            mSession.finishMocking();
-        }
         if (mLooper != null) {
             mLooper.destroy();
             mLooper = null;
@@ -452,7 +436,6 @@ public class RcsProvisioningMonitorTest {
         verify(mIImsConfig, times(1)).triggerRcsReconfiguration();
     }
 
-
     @Test
     @SmallTest
     public void testIsRcsVolteSingleRegistrationEnabled() throws Exception {
@@ -482,12 +465,63 @@ public class RcsProvisioningMonitorTest {
         assertFalse(mRcsProvisioningMonitor.isRcsVolteSingleRegistrationEnabled(FAKE_SUB_ID_BASE));
     }
 
+    @Test
+    @SmallTest
+    public void testRegisterThenUnregisterCallback() throws Exception {
+        createMonitor(1);
+
+        boolean result = mRcsProvisioningMonitor.registerRcsProvisioningChangedCallback(
+                FAKE_SUB_ID_BASE, mCallback);
+
+        assertTrue(result);
+        verify(mIImsConfig, times(1)).addRcsConfigCallback(eq(mCallback));
+
+        result = mRcsProvisioningMonitor.unregisterRcsProvisioningChangedCallback(
+                FAKE_SUB_ID_BASE, mCallback);
+
+        assertTrue(result);
+        verify(mIImsConfig, times(1)).removeRcsConfigCallback(eq(mCallback));
+        verify(mCallback, times(1)).onRemoved();
+    }
+
+    @Test
+    @SmallTest
+    public void testCallbackRemovedWhenSubInfoChanged() throws Exception {
+        createMonitor(1);
+
+        boolean result = mRcsProvisioningMonitor.registerRcsProvisioningChangedCallback(
+                FAKE_SUB_ID_BASE, mCallback);
+        makeFakeActiveSubIds(0);
+        mExecutor.execute(() -> mSubChangedListener.onSubscriptionsChanged());
+        processAllMessages();
+
+        assertTrue(result);
+        verify(mIImsConfig, times(1)).removeRcsConfigCallback(eq(mCallback));
+        verify(mCallback, times(1)).onRemoved();
+    }
+
+    @Test
+    @SmallTest
+    public void testCallbackRemovedWhenDmaChanged() throws Exception {
+        createMonitor(1);
+
+        boolean result = mRcsProvisioningMonitor.registerRcsProvisioningChangedCallback(
+                FAKE_SUB_ID_BASE, mCallback);
+        updateDefaultMessageApplication(DEFAULT_MESSAGING_APP2);
+        processAllMessages();
+
+        assertTrue(result);
+        verify(mIImsConfig, times(1)).removeRcsConfigCallback(eq(mCallback));
+        verify(mCallback, times(1)).onRemoved();
+    }
+
     private void createMonitor(int subCount) {
         if (Looper.myLooper() == null) {
             Looper.prepare();
         }
         makeFakeActiveSubIds(subCount);
-        mRcsProvisioningMonitor = new RcsProvisioningMonitor(mPhone, mHandlerThread.getLooper());
+        mRcsProvisioningMonitor = new RcsProvisioningMonitor(mPhone, mHandlerThread.getLooper(),
+                mRoleManager);
         mHandler = mRcsProvisioningMonitor.getHandler();
         try {
             mLooper = new TestableLooper(mHandler.getLooper());
@@ -512,27 +546,12 @@ public class RcsProvisioningMonitorTest {
         when(mSubscriptionManager.getActiveSubscriptionIdList()).thenReturn(subIds);
     }
 
-    private void updateDefaultMessageApplication(String packageName) throws Exception {
+    private void updateDefaultMessageApplication(String packageName) {
         List<String> dmas = new ArrayList<>();
         dmas.add(packageName);
-        when(mIRoleManager.getRoleHoldersAsUser(any(), anyInt())).thenReturn(dmas);
-        mExecutor.execute(() -> {
-            try {
-                mRoleHolderChangedListener.onRoleHoldersChanged(
-                        RoleManager.ROLE_SMS, UserHandle.USER_ALL);
-            } catch (RemoteException e) {
-                logd("exception to call onRoleHoldersChanged " + e);
-            }
-        });
-    }
-
-    private void replaceService(final String serviceName,
-            final IInterface serviceInstance) throws Exception {
-        IBinder binder = mock(IBinder.class);
-        when(binder.queryLocalInterface(anyString())).thenReturn(serviceInstance);
-        Field field = ServiceManager.class.getDeclaredField("sCache");
-        field.setAccessible(true);
-        ((Map<String, IBinder>) field.get(null)).put(serviceName, binder);
+        when(mRoleManager.getRoleHolders(eq(RoleManager.ROLE_SMS))).thenReturn(dmas);
+        mExecutor.execute(() -> mRoleHolderChangedListener.onRoleHoldersChanged(
+                RoleManager.ROLE_SMS, UserHandle.ALL));
     }
 
     private void processAllMessages() {
