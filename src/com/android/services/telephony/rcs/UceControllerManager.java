@@ -51,6 +51,7 @@ public class UceControllerManager implements RcsFeatureController.Feature {
     private final ExecutorService mExecutorService;
 
     private volatile UceController mUceController;
+    private volatile RcsFeatureManager mRcsFeatureManager;
 
     public UceControllerManager(Context context, int slotId, int subId) {
         Log.d(LOG_TAG, "create: slotId=" + slotId + ", subId=" + subId);
@@ -74,12 +75,18 @@ public class UceControllerManager implements RcsFeatureController.Feature {
 
     @Override
     public void onRcsConnected(RcsFeatureManager manager) {
-        mExecutorService.submit(() -> mUceController.onRcsConnected(manager));
+        mExecutorService.submit(() -> {
+            mRcsFeatureManager = manager;
+            mUceController.onRcsConnected(manager);
+        });
     }
 
     @Override
     public void onRcsDisconnected() {
-        mExecutorService.submit(() -> mUceController.onRcsDisconnected());
+        mExecutorService.submit(() -> {
+            mRcsFeatureManager = null;
+            mUceController.onRcsDisconnected();
+        });
     }
 
     @Override
@@ -103,6 +110,12 @@ public class UceControllerManager implements RcsFeatureController.Feature {
             // Destroy existing UceController and create a new one.
             mUceController.onDestroy();
             mUceController = new UceController(mContext, subId);
+
+            // The RCS should be connected when the mRcsFeatureManager is not null. Set it to the
+            // new UceController instance.
+            if (mRcsFeatureManager != null) {
+                mUceController.onRcsConnected(mRcsFeatureManager);
+            }
         });
     }
 
