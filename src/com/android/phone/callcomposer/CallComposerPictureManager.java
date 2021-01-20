@@ -79,8 +79,8 @@ public class CallComposerPictureManager {
 
     // disabled provisionally until the auth stack is fully operational
     @VisibleForTesting
-    public static boolean sHttpOperationsEnabled = false;
-    private static final String FAKE_SERVER_URL = "https://example.com/FAKE.png";
+    public static boolean sTestMode = false;
+    public static final String FAKE_SERVER_URL = "https://example.com/FAKE.png";
 
     public interface CallLogProxy {
         default void storeCallComposerPictureAsUser(Context context,
@@ -111,7 +111,7 @@ public class CallComposerPictureManager {
 
     public void handleUploadToServer(CallComposerPictureTransfer.Factory transferFactory,
             ImageData imageData, Consumer<Pair<UUID, Integer>> callback) {
-        if (!sHttpOperationsEnabled) {
+        if (sTestMode) {
             UUID id = UUID.randomUUID();
             mCachedImages.put(id, imageData);
             mCachedServerUrls.put(id, FAKE_SERVER_URL);
@@ -171,7 +171,7 @@ public class CallComposerPictureManager {
 
     public void handleDownloadFromServer(CallComposerPictureTransfer.Factory transferFactory,
             String remoteUrl, Consumer<Pair<Uri, Integer>> callback) {
-        if (!sHttpOperationsEnabled) {
+        if (sTestMode) {
             ImageData imageData = new ImageData(getPlaceholderPictureAsBytes(), "image/png", null);
             UUID id = UUID.randomUUID();
             mCachedImages.put(id, imageData);
