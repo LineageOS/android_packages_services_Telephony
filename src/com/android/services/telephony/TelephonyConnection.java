@@ -1129,6 +1129,21 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
     }
 
     @Override
+    public void onCallFilteringCompleted(boolean isBlocked, boolean isInContacts) {
+        if (isImsConnection()) {
+            if (!isBlocked && isInContacts) {
+                ImsPhoneConnection originalConnection = (ImsPhoneConnection) mOriginalConnection;
+                ImsCallProfile profile = originalConnection.getImsCall().getCallProfile();
+                if (profile != null
+                        && !TextUtils.isEmpty(
+                                profile.getCallExtra(ImsCallProfile.EXTRA_PICTURE_URL))) {
+                    // TODO: start off the picture download
+                }
+            }
+        }
+    }
+
+    @Override
     public void handleRttUpgradeResponse(RttTextStream textStream) {
         if (!isImsConnection()) {
             Log.w(this, "handleRttUpgradeResponse - not in IMS, so RTT cannot be enabled.");
