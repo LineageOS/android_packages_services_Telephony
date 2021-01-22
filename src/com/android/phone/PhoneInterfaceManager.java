@@ -91,6 +91,8 @@ import android.telephony.RadioAccessSpecifier;
 import android.telephony.RadioInterfaceCapabilities;
 import android.telephony.ServiceState;
 import android.telephony.SignalStrength;
+import android.telephony.SignalStrengthUpdateRequest;
+import android.telephony.SignalThresholdInfo;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyFrameworkInitializer;
@@ -320,6 +322,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private static final int EVENT_SET_DATA_THROTTLING_DONE = 100;
     private static final int CMD_SET_SIM_POWER = 101;
     private static final int EVENT_SET_SIM_POWER_DONE = 102;
+    private static final int CMD_SET_SIGNAL_STRENGTH_UPDATE_REQUEST = 103;
+    private static final int EVENT_SET_SIGNAL_STRENGTH_UPDATE_REQUEST_DONE = 104;
+    private static final int CMD_CLEAR_SIGNAL_STRENGTH_UPDATE_REQUEST = 105;
+    private static final int EVENT_CLEAR_SIGNAL_STRENGTH_UPDATE_REQUEST_DONE = 106;
 
     // Parameters of select command.
     private static final int SELECT_COMMAND = 0xA4;
@@ -1812,6 +1818,60 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     }
                     break;
                 }
+                case CMD_SET_SIGNAL_STRENGTH_UPDATE_REQUEST: {
+                    request = (MainThreadRequest) msg.obj;
+
+                    final Phone phone = getPhoneFromRequest(request);
+                    if (phone == null || phone.getServiceStateTracker() == null) {
+                        request.result = new IllegalStateException("Phone or SST is null");
+                        notifyRequester(request);
+                        break;
+                    }
+
+                    Pair<Integer, SignalStrengthUpdateRequest> pair =
+                            (Pair<Integer, SignalStrengthUpdateRequest>) request.argument;
+                    onCompleted = obtainMessage(EVENT_SET_SIGNAL_STRENGTH_UPDATE_REQUEST_DONE,
+                            request);
+                    phone.getServiceStateTracker().setSignalStrengthUpdateRequest(
+                                    request.subId, pair.first /*callingUid*/,
+                                    pair.second /*request*/, onCompleted);
+                    break;
+                }
+                case EVENT_SET_SIGNAL_STRENGTH_UPDATE_REQUEST_DONE: {
+                    ar = (AsyncResult) msg.obj;
+                    request = (MainThreadRequest) ar.userObj;
+                    // request.result will be the exception of ar if present, true otherwise.
+                    // Be cautious not to leave result null which will wait() forever
+                    request.result = ar.exception != null ? ar.exception : true;
+                    notifyRequester(request);
+                    break;
+                }
+                case CMD_CLEAR_SIGNAL_STRENGTH_UPDATE_REQUEST: {
+                    request = (MainThreadRequest) msg.obj;
+
+                    Phone phone = getPhoneFromRequest(request);
+                    if (phone == null || phone.getServiceStateTracker() == null) {
+                        request.result = new IllegalStateException("Phone or SST is null");
+                        notifyRequester(request);
+                        break;
+                    }
+
+                    Pair<Integer, SignalStrengthUpdateRequest> pair =
+                            (Pair<Integer, SignalStrengthUpdateRequest>) request.argument;
+                    onCompleted = obtainMessage(EVENT_CLEAR_SIGNAL_STRENGTH_UPDATE_REQUEST_DONE,
+                            request);
+                    phone.getServiceStateTracker().clearSignalStrengthUpdateRequest(
+                                    request.subId, pair.first /*callingUid*/,
+                                    pair.second /*request*/, onCompleted);
+                    break;
+                }
+                case EVENT_CLEAR_SIGNAL_STRENGTH_UPDATE_REQUEST_DONE: {
+                    ar = (AsyncResult) msg.obj;
+                    request = (MainThreadRequest) ar.userObj;
+                    request.result = ar.exception != null ? ar.exception : true;
+                    notifyRequester(request);
+                    break;
+                }
 
                 default:
                     Log.w(LOG_TAG, "MainThreadHandler: unexpected message code: " + msg.what);
@@ -3036,7 +3096,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      *
      * @throws SecurityException if the caller is not system.
      */
-    private void enforceSystemCaller() {
+    private static void enforceSystemCaller() {
         if (Binder.getCallingUid() != Process.SYSTEM_UID) {
             throw new SecurityException("Caller must be system");
         }
@@ -5560,12 +5620,20 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
-    public void setImsRegistrationState(boolean registered) {
+    /**
+     * Sets the ims registration state on all valid {@link Phone}s.
+     */
+    public void setImsRegistrationState(final boolean registered) {
         enforceModifyPermission();
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            getDefaultPhone().setImsRegistrationState(registered);
+            // NOTE: Before S, this method only set the default phone.
+            for (final Phone phone : PhoneFactory.getPhones()) {
+                if (SubscriptionManager.isValidSubscriptionId(phone.getSubId())) {
+                    phone.setImsRegistrationState(registered);
+                }
+            }
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -9884,6 +9952,94 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             return getDefaultPhone().getMobileProvisioningUrl();
         } finally {
             Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    @Override
+    public void setSignalStrengthUpdateRequest(int subId, SignalStrengthUpdateRequest request,
+            String callingPackage) {
+        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
+                mApp, subId, "setSignalStrengthUpdateRequest");
+
+        final int callingUid = Binder.getCallingUid();
+        // Verify that tha callingPackage belongs to the calling UID
+        mApp.getSystemService(AppOpsManager.class)
+                .checkPackage(callingUid, callingPackage);
+
+        validateSignalStrengthUpdateRequest(request, callingUid);
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            Object result = sendRequest(CMD_SET_SIGNAL_STRENGTH_UPDATE_REQUEST,
+                    new Pair<Integer, SignalStrengthUpdateRequest>(callingUid, request), subId);
+
+            if (result instanceof IllegalStateException) {
+                throw (IllegalStateException) result;
+            }
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    @Override
+    public void clearSignalStrengthUpdateRequest(int subId, SignalStrengthUpdateRequest request,
+            String callingPackage) {
+        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
+                mApp, subId, "clearSignalStrengthUpdateRequest");
+
+        final int callingUid = Binder.getCallingUid();
+        // Verify that tha callingPackage belongs to the calling UID
+        mApp.getSystemService(AppOpsManager.class)
+                .checkPackage(callingUid, callingPackage);
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            Object result = sendRequest(CMD_CLEAR_SIGNAL_STRENGTH_UPDATE_REQUEST,
+                    new Pair<Integer, SignalStrengthUpdateRequest>(callingUid, request), subId);
+
+            if (result instanceof IllegalStateException) {
+                throw (IllegalStateException) result;
+            }
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    private static void validateSignalStrengthUpdateRequest(SignalStrengthUpdateRequest request,
+            int callingUid) {
+        if (callingUid == Process.PHONE_UID || callingUid == Process.SYSTEM_UID) {
+            // phone/system process do not have further restriction on request
+            return;
+        }
+
+        // Applications has restrictions on how to use the request:
+        // Only system caller can set mIsSystemThresholdReportingRequestedWhileIdle
+        if (request.isSystemThresholdReportingRequestedWhileIdle()) {
+            // This is not system caller which has been checked above
+            throw new IllegalArgumentException(
+                    "Only system can set isSystemThresholdReportingRequestedWhileIdle");
+        }
+
+        for (SignalThresholdInfo info : request.getSignalThresholdInfos()) {
+            // Only system caller can set mHysteresisMs/mHysteresisDb/mIsEnabled.
+            if (info.getHysteresisMs() != SignalThresholdInfo.HYSTERESIS_MS_DISABLED
+                    || info.getHysteresisDb() != SignalThresholdInfo.HYSTERESIS_DB_DISABLED
+                    || info.isEnabled()) {
+                throw new IllegalArgumentException(
+                        "Only system can set hide fields in SignalThresholdInfo");
+            }
+
+            // Thresholds length for each RAN need in range. This has been validated in
+            // SignalThresholdInfo#Builder#setThreshold. Here we prevent apps calling hide method
+            // setThresholdUnlimited (e.g. through reflection) with too short or too long thresholds
+            final int[] thresholds = info.getThresholds();
+            Objects.requireNonNull(thresholds);
+            if (thresholds.length < SignalThresholdInfo.getMinimumNumberOfThresholdsAllowed()
+                    || thresholds.length
+                    > SignalThresholdInfo.getMaximumNumberOfThresholdsAllowed()) {
+                throw new IllegalArgumentException(
+                        "thresholds length is out of range: " + thresholds.length);
+            }
         }
     }
 }
