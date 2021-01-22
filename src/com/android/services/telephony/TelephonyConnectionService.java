@@ -1711,10 +1711,20 @@ public class TelephonyConnectionService extends ConnectionService {
             return;
         }
 
-        if (extras.containsKey(TelecomManager.EXTRA_OUTGOING_PICTURE)) {
+        if (extras != null && extras.containsKey(TelecomManager.EXTRA_OUTGOING_PICTURE)) {
             ParcelUuid uuid = extras.getParcelable(TelecomManager.EXTRA_OUTGOING_PICTURE);
             CallComposerPictureManager.getInstance(phone.getContext(), phone.getSubId())
-                    .storeUploadedPictureToCallLog(uuid.getUuid(), (uri) -> { });
+                    .storeUploadedPictureToCallLog(uuid.getUuid(), (uri) -> {
+                        if (uri != null) {
+                            try {
+                                Bundle b = new Bundle();
+                                b.putParcelable(TelecomManager.EXTRA_PICTURE_URI, uri);
+                                connection.putTelephonyExtras(b);
+                            } catch (Exception e) {
+                                Log.e(this, e, "Couldn't set picture extra on outgoing call");
+                            }
+                        }
+                    });
         }
 
         com.android.internal.telephony.Connection originalConnection = null;
