@@ -68,7 +68,9 @@ public class PictureManagerTest {
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
         originalTestMode = CallComposerPictureManager.sTestMode;
-        CallComposerPictureManager.sTestMode = true;
+        // Even though this is a test, we want test mode off so we can actually exercise the logic
+        // in the class.
+        CallComposerPictureManager.sTestMode = false;
         when(context.getSystemService(Context.TELEPHONY_SERVICE)).thenReturn(telephonyManager);
         when(context.getSystemServiceName(TelephonyManager.class))
                 .thenReturn(Context.TELEPHONY_SERVICE);
