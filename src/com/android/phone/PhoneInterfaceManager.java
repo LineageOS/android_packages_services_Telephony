@@ -87,6 +87,7 @@ import android.telephony.PhoneCapability;
 import android.telephony.PhoneNumberRange;
 import android.telephony.RadioAccessFamily;
 import android.telephony.RadioAccessSpecifier;
+import android.telephony.RadioInterfaceCapabilities;
 import android.telephony.ServiceState;
 import android.telephony.SignalStrength;
 import android.telephony.SignalStrengthUpdateRequest;
@@ -9326,6 +9327,18 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
+    public boolean isRadioInterfaceCapabilitySupported(
+            @NonNull @TelephonyManager.RadioInterfaceCapability String capability) {
+        RadioInterfaceCapabilities radioInterfaceCapabilities =
+                mPhoneConfigurationManager.getRadioInterfaceCapabilities();
+        if (radioInterfaceCapabilities == null) {
+            throw new RuntimeException("radio interface capabilities are not available");
+        } else {
+            return radioInterfaceCapabilities.isSupported(capability);
+        }
+    }
+
+    @Override
     public void bootstrapAuthenticationRequest(int subId, int appType, Uri nafUrl,
             UaSecurityProtocolIdentifier securityProtocol,
             boolean forceBootStrapping, IBootstrapAuthenticationCallback callback)
@@ -9424,8 +9437,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             switch (thermalMitigationAction) {
                 case ThermalMitigationRequest.THERMAL_MITIGATION_ACTION_DATA_THROTTLING:
                     thermalMitigationResult =
-                        handleDataThrottlingRequest(subId,
-                                thermalMitigationRequest.getDataThrottlingRequest());
+                            handleDataThrottlingRequest(subId,
+                                    thermalMitigationRequest.getDataThrottlingRequest());
                     break;
                 case ThermalMitigationRequest.THERMAL_MITIGATION_ACTION_VOICE_ONLY:
                     if (thermalMitigationRequest.getDataThrottlingRequest() != null) {
@@ -9458,14 +9471,14 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                         Phone phone = getPhone(subId);
                         if (phone == null) {
                             thermalMitigationResult =
-                                TelephonyManager.THERMAL_MITIGATION_RESULT_MODEM_NOT_AVAILABLE;
+                                    TelephonyManager.THERMAL_MITIGATION_RESULT_MODEM_NOT_AVAILABLE;
                             break;
                         }
 
                         if (PhoneConstantConversions.convertCallState(phone.getState())
-                                    != TelephonyManager.CALL_STATE_IDLE
-                                    || phone.isInEmergencySmsMode() || phone.isInEcm()
-                                    || (service != null && service.isEmergencyCallPending())) {
+                                != TelephonyManager.CALL_STATE_IDLE
+                                || phone.isInEmergencySmsMode() || phone.isInEcm()
+                                || (service != null && service.isEmergencyCallPending())) {
                             String errorMessage = "Phone state is not valid. call state = "
                                     + PhoneConstantConversions.convertCallState(phone.getState())
                                     + " isInEmergencySmsMode = " + phone.isInEmergencySmsMode()
@@ -9476,7 +9489,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                                             + service.isEmergencyCallPending();
                             Log.e(LOG_TAG, errorMessage);
                             thermalMitigationResult =
-                                TelephonyManager.THERMAL_MITIGATION_RESULT_INVALID_STATE;
+                                    TelephonyManager.THERMAL_MITIGATION_RESULT_INVALID_STATE;
                             break;
                         }
                     } else {
@@ -9493,7 +9506,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                         break;
                     }
                     thermalMitigationResult =
-                        TelephonyManager.THERMAL_MITIGATION_RESULT_SUCCESS;
+                            TelephonyManager.THERMAL_MITIGATION_RESULT_SUCCESS;
                     break;
                 default:
                     throw new IllegalArgumentException("the requested thermalMitigationAction does "
