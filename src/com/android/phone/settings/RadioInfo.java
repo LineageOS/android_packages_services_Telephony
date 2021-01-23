@@ -17,7 +17,6 @@
 package com.android.phone.settings;
 
 import static android.net.ConnectivityManager.NetworkCallback;
-import static android.provider.Settings.Global.PREFERRED_NETWORK_MODE;
 
 import android.content.ComponentName;
 import android.content.Context;
@@ -40,7 +39,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.PersistableBundle;
 import android.os.SystemProperties;
-import android.provider.Settings;
 import android.telephony.AccessNetworkConstants;
 import android.telephony.CarrierConfigManager;
 import android.telephony.CellIdentityCdma;
@@ -61,6 +59,7 @@ import android.telephony.NetworkRegistrationInfo;
 import android.telephony.PhoneStateListener;
 import android.telephony.PhysicalChannelConfig;
 import android.telephony.PreciseCallState;
+import android.telephony.RadioAccessFamily;
 import android.telephony.ServiceState;
 import android.telephony.SignalStrength;
 import android.telephony.SubscriptionManager;
@@ -200,9 +199,6 @@ public class RadioInfo extends AppCompatActivity {
     }
 
     private static final int EVENT_CFI_CHANGED = 302;
-
-    private static final int EVENT_QUERY_PREFERRED_TYPE_DONE = 1000;
-    private static final int EVENT_SET_PREFERRED_TYPE_DONE = 1001;
     private static final int EVENT_QUERY_SMSC_DONE = 1005;
     private static final int EVENT_UPDATE_SMSC_DONE = 1006;
     private static final int EVENT_PHYSICAL_CHANNEL_CONFIG_CHANGED = 1007;
@@ -376,8 +372,7 @@ public class RadioInfo extends AppCompatActivity {
 
     private void updatePreferredNetworkType(int type) {
         if (type >= PREFERRED_NETWORK_LABELS.length || type < 0) {
-            log("EVENT_QUERY_PREFERRED_TYPE_DONE: unknown "
-                    + "type=" + type);
+            log("Network type: unknown type value=" + type);
             type = PREFERRED_NETWORK_LABELS.length - 1; //set to Unknown
         }
         mPreferredNetworkTypeResult = type;
@@ -405,21 +400,6 @@ public class RadioInfo extends AppCompatActivity {
         public void handleMessage(Message msg) {
             AsyncResult ar;
             switch (msg.what) {
-                case EVENT_QUERY_PREFERRED_TYPE_DONE:
-                    ar = (AsyncResult) msg.obj;
-                    if (ar.exception == null && ar.result != null) {
-                        updatePreferredNetworkType(((int []) ar.result)[0]);
-                    } else {
-                        //In case of an exception, we will set this to unknown
-                        updatePreferredNetworkType(PREFERRED_NETWORK_LABELS.length - 1);
-                    }
-                    break;
-                case EVENT_SET_PREFERRED_TYPE_DONE:
-                    ar = (AsyncResult) msg.obj;
-                    if (ar.exception != null) {
-                        log("Set preferred network type failed.");
-                    }
-                    break;
                 case EVENT_QUERY_SMSC_DONE:
                     ar = (AsyncResult) msg.obj;
                     if (ar.exception != null) {
@@ -606,9 +586,11 @@ public class RadioInfo extends AppCompatActivity {
         mPreferredNetworkTypeResult = PREFERRED_NETWORK_LABELS.length - 1; //Unknown
         mSelectedPhoneIndex = 0; //phone 0
 
-        //FIXME: Replace with TelephonyManager call
-        mPhone.getPreferredNetworkType(
-                mHandler.obtainMessage(EVENT_QUERY_PREFERRED_TYPE_DONE));
+        new Thread(() -> {
+            int networkType = (int) mTelephonyManager.getPreferredNetworkTypeBitmask();
+            updatePreferredNetworkType(
+                    RadioAccessFamily.getNetworkTypeFromRaf(networkType));
+        }).start();
 
         restoreFromBundle(icicle);
     }
@@ -1659,21 +1641,11 @@ public class RadioInfo extends AppCompatActivity {
             if (mPreferredNetworkTypeResult != pos && pos >= 0
                     && pos <= PREFERRED_NETWORK_LABELS.length - 2) {
                 mPreferredNetworkTypeResult = pos;
-
-                // TODO: Possibly migrate this to TelephonyManager.setPreferredNetworkType()
-                // which today still has some issues (mostly that the "set" is conditional
-                // on a successful modem call, which is not what we want). Instead we always
-                // want this setting to be set, so that if the radio hiccups and this setting
-                // is for some reason unsuccessful, future calls to the radio will reflect
-                // the users's preference which is set here.
-                final int subId = mPhone.getSubId();
-                if (SubscriptionManager.isUsableSubIdValue(subId)) {
-                    Settings.Global.putInt(mPhone.getContext().getContentResolver(),
-                            PREFERRED_NETWORK_MODE + subId, mPreferredNetworkTypeResult);
-                }
-                log("Calling setPreferredNetworkType(" + mPreferredNetworkTypeResult + ")");
-                Message msg = mHandler.obtainMessage(EVENT_SET_PREFERRED_TYPE_DONE);
-                mPhone.setPreferredNetworkType(mPreferredNetworkTypeResult, msg);
+                new Thread(() -> {
+                    mTelephonyManager.setAllowedNetworkTypesForReason(
+                            TelephonyManager.ALLOWED_NETWORK_TYPES_REASON_USER,
+                            RadioAccessFamily.getRafFromNetworkType(mPreferredNetworkTypeResult));
+                }).start();
             }
         }
 
