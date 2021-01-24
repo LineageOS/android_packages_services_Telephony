@@ -158,7 +158,6 @@ import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.ProxyController;
 import com.android.internal.telephony.RIL;
-import com.android.internal.telephony.RILConstants;
 import com.android.internal.telephony.ServiceStateTracker;
 import com.android.internal.telephony.SmsController;
 import com.android.internal.telephony.SmsPermissions;
@@ -240,10 +239,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private static final int EVENT_NV_WRITE_CDMA_PRL_DONE = 18;
     private static final int CMD_RESET_MODEM_CONFIG = 19;
     private static final int EVENT_RESET_MODEM_CONFIG_DONE = 20;
-    private static final int CMD_GET_PREFERRED_NETWORK_TYPE = 21;
-    private static final int EVENT_GET_PREFERRED_NETWORK_TYPE_DONE = 22;
-    private static final int CMD_SET_PREFERRED_NETWORK_TYPE = 23;
-    private static final int EVENT_SET_PREFERRED_NETWORK_TYPE_DONE = 24;
+    private static final int CMD_GET_ALLOWED_NETWORK_TYPES_BITMASK = 21;
+    private static final int EVENT_GET_ALLOWED_NETWORK_TYPES_BITMASK_DONE = 22;
     private static final int CMD_SEND_ENVELOPE = 25;
     private static final int EVENT_SEND_ENVELOPE_DONE = 26;
     private static final int CMD_INVOKE_OEM_RIL_REQUEST_RAW = 27;
@@ -326,6 +323,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private static final int EVENT_SET_SIGNAL_STRENGTH_UPDATE_REQUEST_DONE = 104;
     private static final int CMD_CLEAR_SIGNAL_STRENGTH_UPDATE_REQUEST = 105;
     private static final int EVENT_CLEAR_SIGNAL_STRENGTH_UPDATE_REQUEST_DONE = 106;
+    private static final int CMD_SET_ALLOWED_NETWORK_TYPES_FOR_REASON = 107;
+    private static final int EVENT_SET_ALLOWED_NETWORK_TYPES_FOR_REASON_DONE = 108;
 
     // Parameters of select command.
     private static final int SELECT_COMMAND = 0xA4;
@@ -874,13 +873,14 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     break;
                 }
 
-                case CMD_GET_PREFERRED_NETWORK_TYPE:
+                case CMD_GET_ALLOWED_NETWORK_TYPES_BITMASK:
                     request = (MainThreadRequest) msg.obj;
-                    onCompleted = obtainMessage(EVENT_GET_PREFERRED_NETWORK_TYPE_DONE, request);
-                    getPhoneFromRequest(request).getPreferredNetworkType(onCompleted);
+                    onCompleted = obtainMessage(EVENT_GET_ALLOWED_NETWORK_TYPES_BITMASK_DONE,
+                            request);
+                    getPhoneFromRequest(request).getAllowedNetworkTypesBitmask(onCompleted);
                     break;
 
-                case EVENT_GET_PREFERRED_NETWORK_TYPE_DONE:
+                case EVENT_GET_ALLOWED_NETWORK_TYPES_BITMASK_DONE:
                     ar = (AsyncResult) msg.obj;
                     request = (MainThreadRequest) ar.userObj;
                     if (ar.exception == null && ar.result != null) {
@@ -890,26 +890,31 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                         // for the calling thread to unblock
                         request.result = new int[]{-1};
                         if (ar.result == null) {
-                            loge("getPreferredNetworkType: Empty response");
+                            loge("getAllowedNetworkTypesBitmask: Empty response");
                         } else if (ar.exception instanceof CommandException) {
-                            loge("getPreferredNetworkType: CommandException: " +
-                                    ar.exception);
+                            loge("getAllowedNetworkTypesBitmask: CommandException: "
+                                    + ar.exception);
                         } else {
-                            loge("getPreferredNetworkType: Unknown exception");
+                            loge("getAllowedNetworkTypesBitmask: Unknown exception");
                         }
                     }
                     notifyRequester(request);
                     break;
 
-                case CMD_SET_PREFERRED_NETWORK_TYPE:
+                case CMD_SET_ALLOWED_NETWORK_TYPES_FOR_REASON:
                     request = (MainThreadRequest) msg.obj;
-                    onCompleted = obtainMessage(EVENT_SET_PREFERRED_NETWORK_TYPE_DONE, request);
-                    int networkType = (Integer) request.argument;
-                    getPhoneFromRequest(request).setPreferredNetworkType(networkType, onCompleted);
+                    onCompleted = obtainMessage(EVENT_SET_ALLOWED_NETWORK_TYPES_FOR_REASON_DONE,
+                            request);
+                    Pair<Integer, Long> reasonWithNetworkTypes =
+                            (Pair<Integer, Long>) request.argument;
+                    getPhoneFromRequest(request).setAllowedNetworkTypes(
+                            reasonWithNetworkTypes.first,
+                            reasonWithNetworkTypes.second,
+                            onCompleted);
                     break;
 
-                case EVENT_SET_PREFERRED_NETWORK_TYPE_DONE:
-                    handleNullReturnEvent(msg, "setPreferredNetworkType");
+                case EVENT_SET_ALLOWED_NETWORK_TYPES_FOR_REASON_DONE:
+                    handleNullReturnEvent(msg, "setAllowedNetworkTypesForReason");
                     break;
 
                 case CMD_INVOKE_OEM_RIL_REQUEST_RAW:
@@ -6001,120 +6006,26 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
-     * Get the calculated preferred network type.
-     * Used for debugging incorrect network type.
+     * Get the allowed network types bitmask.
      *
-     * @return the preferred network type, defined in RILConstants.java.
+     * @return the allowed network types bitmask, defined in RILConstants.java.
      */
     @Override
-    public int getCalculatedPreferredNetworkType(String callingPackage, String callingFeatureId) {
-        final Phone defaultPhone = getDefaultPhone();
-        if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(mApp, defaultPhone.getSubId(),
-                callingPackage, callingFeatureId, "getCalculatedPreferredNetworkType")) {
-            return RILConstants.PREFERRED_NETWORK_MODE;
-        }
-
-        final long identity = Binder.clearCallingIdentity();
-        try {
-            // FIXME: need to get SubId from somewhere.
-            return PhoneFactory.calculatePreferredNetworkType(defaultPhone.getContext(), 0);
-        } finally {
-            Binder.restoreCallingIdentity(identity);
-        }
-    }
-
-    /**
-     * Get the preferred network type.
-     * Used for device configuration by some CDMA operators.
-     *
-     * @return the preferred network type, defined in RILConstants.java.
-     */
-    @Override
-    public int getPreferredNetworkType(int subId) {
+    public int getAllowedNetworkTypesBitmask(int subId) {
         TelephonyPermissions
                 .enforeceCallingOrSelfReadPrivilegedPhoneStatePermissionOrCarrierPrivilege(
-                        mApp, subId, "getPreferredNetworkType");
+                        mApp, subId, "getAllowedNetworkTypesBitmask");
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            if (DBG) log("getPreferredNetworkType");
-            int[] result = (int[]) sendRequest(CMD_GET_PREFERRED_NETWORK_TYPE, null, subId);
-            int networkType = (result != null ? result[0] : -1);
-            if (DBG) log("getPreferredNetworkType: " + networkType);
-            return networkType;
+            if (DBG) log("getAllowedNetworkTypesBitmask");
+            int[] result = (int[]) sendRequest(CMD_GET_ALLOWED_NETWORK_TYPES_BITMASK, null, subId);
+            int networkTypesBitmask = (result != null ? result[0] : -1);
+            if (DBG) log("getAllowedNetworkTypesBitmask: " + networkTypesBitmask);
+            return networkTypesBitmask;
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
-    }
-
-    /**
-     * Set the preferred network type.
-     *
-     * @param networkType the preferred network type, defined in RILConstants.java.
-     * @return true on success; false on any failure.
-     */
-    @Override
-    public boolean setPreferredNetworkType(int subId, int networkType) {
-        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
-                mApp, subId, "setPreferredNetworkType");
-
-        final long identity = Binder.clearCallingIdentity();
-        try {
-            Boolean success = (Boolean) sendRequest(
-                    CMD_SET_PREFERRED_NETWORK_TYPE, networkType, subId);
-
-            if (success) {
-                Settings.Global.putInt(mApp.getContentResolver(),
-                        Settings.Global.PREFERRED_NETWORK_MODE + subId, networkType);
-            }
-            if (DBG) log("setPreferredNetworkType: " + (success ? "ok" : "fail"));
-            return success;
-        } finally {
-            Binder.restoreCallingIdentity(identity);
-        }
-    }
-
-    /**
-     * Get the allowed network types that store in the telephony provider.
-     *
-     * @param subId the id of the subscription.
-     * @return allowedNetworkTypes the allowed network types.
-     */
-    @Override
-    public long getAllowedNetworkTypes(int subId) {
-        TelephonyPermissions
-                .enforeceCallingOrSelfReadPrivilegedPhoneStatePermissionOrCarrierPrivilege(
-                    mApp, subId, "getAllowedNetworkTypes");
-
-        final long identity = Binder.clearCallingIdentity();
-        try {
-            return SubscriptionManager.getLongSubscriptionProperty(
-                    subId, SubscriptionManager.ALLOWED_NETWORK_TYPES, -1, mApp);
-        } finally {
-            Binder.restoreCallingIdentity(identity);
-        }
-    }
-
-    /**
-     * Set the allowed network types.
-     *
-     * @param subId the id of the subscription.
-     * @param allowedNetworkTypes the allowed network types.
-     * @return true on success; false on any failure.
-     */
-    @Override
-    public boolean setAllowedNetworkTypes(int subId, long allowedNetworkTypes) {
-        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
-                mApp, subId, "setAllowedNetworkTypes");
-
-        SubscriptionManager.setSubscriptionProperty(subId,
-                SubscriptionManager.ALLOWED_NETWORK_TYPES,
-                String.valueOf(allowedNetworkTypes));
-
-        int preferredNetworkMode = Settings.Global.getInt(mApp.getContentResolver(),
-                Settings.Global.PREFERRED_NETWORK_MODE + subId,
-                RILConstants.PREFERRED_NETWORK_MODE);
-        return setPreferredNetworkType(subId, preferredNetworkMode);
     }
 
     /**
@@ -6213,27 +6124,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
-     * Get the effective allowed network types on the device.
-     * This API will return an intersection of allowed network types for all reasons,
-     * including the configuration done through setAllowedNetworkTypes
-     *
-     * @param subId the id of the subscription.
-     * @return the allowed network types
-     */
-    @Override
-    public long getEffectiveAllowedNetworkTypes(int subId) {
-        TelephonyPermissions
-                .enforeceCallingOrSelfReadPrivilegedPhoneStatePermissionOrCarrierPrivilege(
-                        mApp, subId, "getEffectiveAllowedNetworkTypes");
-        final long identity = Binder.clearCallingIdentity();
-        try {
-            return getPhoneFromSubId(subId).getEffectiveAllowedNetworkTypes();
-        } finally {
-            Binder.restoreCallingIdentity(identity);
-        }
-    }
-
-    /**
      * Set the allowed network types of the device and
      * provide the reason triggering the allowed network change.
      *
@@ -6244,16 +6134,27 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     @Override
     public boolean setAllowedNetworkTypesForReason(int subId,
-            @TelephonyManager.AllowedNetworkTypesReason int reason, long allowedNetworkTypes) {
+            @TelephonyManager.AllowedNetworkTypesReason int reason,
+            @TelephonyManager.NetworkTypeBitMask long allowedNetworkTypes) {
         TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
                 mApp, subId, "setAllowedNetworkTypesForReason");
+        if (!TelephonyManager.isValidAllowedNetworkTypesReason(reason)) {
+            Rlog.e(LOG_TAG, "Invalid allowed network type reason: " + reason);
+            return false;
+        }
+
+        if (DBG) {
+            log("setAllowedNetworkTypesForReason: " + reason
+                    + " value: " + allowedNetworkTypes);
+        }
         final long identity = Binder.clearCallingIdentity();
         try {
-            getPhoneFromSubId(subId).setAllowedNetworkTypes(reason, allowedNetworkTypes);
-            int preferredNetworkMode = Settings.Global.getInt(mApp.getContentResolver(),
-                    Settings.Global.PREFERRED_NETWORK_MODE + subId,
-                    RILConstants.PREFERRED_NETWORK_MODE);
-            return setPreferredNetworkType(subId, preferredNetworkMode);
+            Boolean success = (Boolean) sendRequest(
+                    CMD_SET_ALLOWED_NETWORK_TYPES_FOR_REASON,
+                    new Pair<Integer, Long>(reason, allowedNetworkTypes), subId);
+
+            if (DBG) log("setAllowedNetworkTypesForReason: " + (success ? "ok" : "fail"));
+            return success;
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -7408,7 +7309,15 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 setDataEnabledForReason(subId, TelephonyManager.DATA_ENABLED_REASON_USER,
                         getDefaultDataEnabled());
                 setNetworkSelectionModeAutomatic(subId);
-                setPreferredNetworkType(subId, getDefaultNetworkType(subId));
+                setAllowedNetworkTypesForReason(subId,
+                        TelephonyManager.ALLOWED_NETWORK_TYPES_REASON_USER,
+                        RadioAccessFamily.getRafFromNetworkType(getDefaultNetworkType(subId)));
+                setAllowedNetworkTypesForReason(subId,
+                        TelephonyManager.ALLOWED_NETWORK_TYPES_REASON_CARRIER,
+                        RadioAccessFamily.getRafFromNetworkType(getDefaultNetworkType(subId)));
+                setAllowedNetworkTypesForReason(subId,
+                        TelephonyManager.ALLOWED_NETWORK_TYPES_REASON_POWER,
+                        RadioAccessFamily.getRafFromNetworkType(getDefaultNetworkType(subId)));
                 setDataRoamingEnabled(subId, getDefaultDataRoamingEnabled(subId));
                 CarrierInfoManager.deleteAllCarrierKeysForImsiEncryption(mApp);
             }
