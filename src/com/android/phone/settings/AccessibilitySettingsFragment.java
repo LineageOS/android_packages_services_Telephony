@@ -122,8 +122,12 @@ public class AccessibilitySettingsFragment extends PreferenceFragment {
                     (TelephonyManager) mContext.getSystemService(Context.TELEPHONY_SERVICE);
             boolean isRoaming = tm.isNetworkRoaming(
                     SubscriptionManager.getDefaultVoiceSubscriptionId());
+            boolean alwaysAllowWhileRoaming = isCarrierAllowRttWhenRoaming(
+                    SubscriptionManager.getDefaultVoiceSubscriptionId());
 
-            boolean shouldDisableBecauseRoamingOffWfc = isRoaming && !isOnWfc();
+            boolean shouldDisableBecauseRoamingOffWfc =
+                    (isRoaming && !isOnWfc()) && !alwaysAllowWhileRoaming;
+
             if (shouldDisableBecauseRoamingOffWfc) {
                 mButtonRtt.setSummary(TextUtils.concat(getText(R.string.rtt_mode_summary), "\n",
                         getText(R.string.no_rtt_when_roaming)));
@@ -276,5 +280,14 @@ public class AccessibilitySettingsFragment extends PreferenceFragment {
                 (CarrierConfigManager) mContext.getSystemService(Context.CARRIER_CONFIG_SERVICE);
         return configManager.getConfig().getBoolean(
                 CarrierConfigManager.KEY_TTY_SUPPORTED_BOOL);
+    }
+
+    /**
+     * Determines from carrier config whether to always allow RTT while roaming.
+     */
+    private boolean isCarrierAllowRttWhenRoaming(int subId) {
+        PersistableBundle b =
+                PhoneGlobals.getInstance().getCarrierConfigForSubId(subId);
+        return b.getBoolean(CarrierConfigManager.KEY_RTT_SUPPORTED_WHILE_ROAMING_BOOL);
     }
 }
