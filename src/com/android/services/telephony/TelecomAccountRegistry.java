@@ -991,6 +991,9 @@ public class TelecomAccountRegistry {
             return mMmTelManager.isAvailable(ImsRegistrationImplBase.REGISTRATION_TECH_LTE,
                     MmTelFeature.MmTelCapabilities.CAPABILITY_TYPE_VOICE)
                     || mMmTelManager.isAvailable(ImsRegistrationImplBase.REGISTRATION_TECH_IWLAN,
+                    MmTelFeature.MmTelCapabilities.CAPABILITY_TYPE_VOICE)
+                    || mMmTelManager.isAvailable(
+                            ImsRegistrationImplBase.REGISTRATION_TECH_CROSS_SIM,
                     MmTelFeature.MmTelCapabilities.CAPABILITY_TYPE_VOICE);
         }
     }
