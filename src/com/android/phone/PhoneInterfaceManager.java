@@ -9759,6 +9759,32 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
+     * Sends a device to device communication message.  Only usable via shell.
+     * @param message message to send.
+     * @param value message value.
+     */
+    @Override
+    public void sendDeviceToDeviceMessage(int message, int value) {
+        TelephonyPermissions.enforceShellOnly(Binder.getCallingUid(),
+                "setCarrierSingleRegistrationEnabledOverride");
+        enforceModifyPermission();
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            TelephonyConnectionService service =
+                    TelecomAccountRegistry.getInstance(null).getTelephonyConnectionService();
+            if (service == null) {
+                Rlog.e(LOG_TAG, "sendDeviceToDeviceMessage: not in a call.");
+                return;
+            }
+            service.sendTestDeviceToDeviceMessage(message, value);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+
+    /**
      * Gets the config of RCS VoLTE single registration enabled for the device.
      */
     @Override
