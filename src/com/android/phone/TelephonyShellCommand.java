@@ -16,6 +16,11 @@
 
 package com.android.phone;
 
+import static com.android.internal.telephony.d2d.Communicator.MESSAGE_CALL_AUDIO_CODEC;
+import static com.android.internal.telephony.d2d.Communicator.MESSAGE_CALL_RADIO_ACCESS_TYPE;
+import static com.android.internal.telephony.d2d.Communicator.MESSAGE_DEVICE_BATTERY_STATE;
+import static com.android.internal.telephony.d2d.Communicator.MESSAGE_DEVICE_NETWORK_COVERAGE;
+
 import android.content.Context;
 import android.os.Binder;
 import android.os.PersistableBundle;
@@ -32,6 +37,7 @@ import android.util.Log;
 import com.android.internal.telephony.ITelephony;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
+import com.android.internal.telephony.d2d.Communicator;
 import com.android.internal.telephony.emergency.EmergencyNumberTracker;
 import com.android.internal.telephony.util.TelephonyUtils;
 import com.android.modules.utils.BasicShellCommandHandler;
@@ -94,6 +100,9 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
     private static final String SRC_GET_DEVICE_ENABLED = "get-device-enabled";
     private static final String SRC_SET_CARRIER_ENABLED = "set-carrier-enabled";
     private static final String SRC_GET_CARRIER_ENABLED = "get-carrier-enabled";
+
+    private static final String D2D_SUBCOMMAND = "d2d";
+    private static final String D2D_SEND = "send";
 
     // Take advantage of existing methods that already contain permissions checks when possible.
     private final ITelephony mInterface;
@@ -177,6 +186,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                 return handleEndBlockSuppressionCommand();
             case GBA_SUBCOMMAND:
                 return handleGbaCommand();
+            case D2D_SUBCOMMAND:
+                return handleD2dCommand();
             case SINGLE_REGISTATION_CONFIG:
                 return handleSingleRegistrationConfigCommand();
             case RESTART_MODEM:
@@ -216,6 +227,23 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         onHelpCc();
         onHelpGba();
         onHelpSrc();
+        onHelpD2D();
+    }
+
+    private void onHelpD2D() {
+        PrintWriter pw = getOutPrintWriter();
+        pw.println("D2D Comms Commands:");
+        pw.println("  d2d send TYPE VALUE");
+        pw.println("    Sends a D2D message of specified type and value.");
+        pw.println("    Type: " + MESSAGE_CALL_RADIO_ACCESS_TYPE + " - "
+                + Communicator.messageToString(MESSAGE_CALL_RADIO_ACCESS_TYPE));
+        pw.println("    Type: " + MESSAGE_CALL_AUDIO_CODEC + " - " + Communicator.messageToString(
+                MESSAGE_CALL_AUDIO_CODEC));
+        pw.println("    Type: " + MESSAGE_DEVICE_BATTERY_STATE + " - "
+                        + Communicator.messageToString(
+                        MESSAGE_DEVICE_BATTERY_STATE));
+        pw.println("    Type: " + MESSAGE_DEVICE_NETWORK_COVERAGE + " - "
+                + Communicator.messageToString(MESSAGE_DEVICE_NETWORK_COVERAGE));
     }
 
     private void onHelpIms() {
@@ -544,6 +572,64 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         }
 
         return -1;
+    }
+
+    private int handleD2dCommand() {
+        String arg = getNextArg();
+        if (arg == null) {
+            onHelpD2D();
+            return 0;
+        }
+
+        switch (arg) {
+            case D2D_SEND: {
+                return handleD2dSendCommand();
+            }
+        }
+
+        return -1;
+    }
+
+    private int handleD2dSendCommand() {
+        PrintWriter errPw = getErrPrintWriter();
+        String opt;
+        int messageType = -1;
+        int messageValue = -1;
+
+
+        String arg = getNextArg();
+        if (arg == null) {
+            onHelpD2D();
+            return 0;
+        }
+        try {
+            messageType = Integer.parseInt(arg);
+        } catch (NumberFormatException e) {
+            errPw.println("message type must be a valid integer");
+            return -1;
+        }
+
+        arg = getNextArg();
+        if (arg == null) {
+            onHelpD2D();
+            return 0;
+        }
+        try {
+            messageValue = Integer.parseInt(arg);
+        } catch (NumberFormatException e) {
+            errPw.println("message value must be a valid integer");
+            return -1;
+        }
+        
+        try {
+            mInterface.sendDeviceToDeviceMessage(messageType, messageValue);
+        } catch (RemoteException e) {
+            Log.w(LOG_TAG, "d2d send error: " + e.getMessage());
+            errPw.println("Exception: " + e.getMessage());
+            return -1;
+        }
+
+        return 0;
     }
 
     // ims set-ims-service
