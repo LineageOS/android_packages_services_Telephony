@@ -63,6 +63,7 @@ import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.PhoneSwitcher;
 import com.android.internal.telephony.RIL;
 import com.android.internal.telephony.SubscriptionController;
+import com.android.internal.telephony.d2d.Communicator;
 import com.android.internal.telephony.imsphone.ImsExternalCallTracker;
 import com.android.internal.telephony.imsphone.ImsPhone;
 import com.android.internal.telephony.imsphone.ImsPhoneConnection;
@@ -77,6 +78,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -2490,6 +2492,31 @@ public class TelephonyConnectionService extends ConnectionService {
     public void addTelephonyConference(@NonNull TelephonyConferenceBase conference) {
         addConference(conference);
         conference.addTelephonyConferenceListener(mTelephonyConferenceListener);
+    }
+
+    /**
+     * Sends a test device to device message on the active call which supports it.
+     * Used exclusively from the telephony shell command to send a test message.
+     *
+     * @param message the message
+     * @param value the value
+     */
+    public void sendTestDeviceToDeviceMessage(int message, int value) {
+       getAllConnections().stream()
+               .filter(f -> f instanceof TelephonyConnection)
+               .forEach(t -> {
+                        TelephonyConnection tc = (TelephonyConnection) t;
+                        Communicator c = tc.getCommunicator();
+                        if (c == null) {
+                            Log.w(this, "sendTestDeviceToDeviceMessage: D2D not enabled");
+                            return;
+                        }
+
+                        c.sendMessages(new HashSet<Communicator.Message>() {{
+                            add(new Communicator.Message(message, value));
+                        }});
+
+       });
     }
 
     private PhoneAccountHandle adjustAccountHandle(Phone phone,
