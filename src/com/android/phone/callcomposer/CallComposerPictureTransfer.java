@@ -26,10 +26,13 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.http.multipart.MultipartEntity;
 import com.android.internal.http.multipart.Part;
 
 import com.google.common.net.MediaType;
+
+import gov.nist.javax.sip.header.WWWAuthenticate;
 
 import org.xml.sax.InputSource;
 
@@ -49,7 +52,6 @@ import java.nio.charset.Charset;
 import java.util.Iterator;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 import javax.xml.namespace.NamespaceContext;
 import javax.xml.xpath.XPath;
@@ -67,6 +69,13 @@ public class CallComposerPictureTransfer {
     private static final int ERROR_HTTP_TIMEOUT = 1;
     private static final int ERROR_NO_AUTH_REQUIRED = 2;
     private static final int ERROR_FORBIDDEN = 3;
+
+    public interface Factory {
+        default CallComposerPictureTransfer create(Context context, int subscriptionId, String url,
+                ExecutorService executorService) {
+            return new CallComposerPictureTransfer(context, subscriptionId, url, executorService);
+        }
+    }
 
     public interface PictureCallback {
         default void onError(@TelephonyManager.CallComposerException.CallComposerError int error) {}
@@ -86,29 +95,44 @@ public class CallComposerPictureTransfer {
     private final Context mContext;
     private final int mSubscriptionId;
     private final String mUrl;
-    private final ExecutorService mExecutorService = Executors.newSingleThreadExecutor();
+    private final ExecutorService mExecutorService;
 
-    // Only one of these is nonnull per instance.
     private PictureCallback mCallback;
 
-    public CallComposerPictureTransfer(Context context, int subscriptionId, String url,
-            PictureCallback downloadCallback) {
+    private CallComposerPictureTransfer(Context context, int subscriptionId, String url,
+            ExecutorService executorService) {
         mContext = context;
         mSubscriptionId = subscriptionId;
+        mExecutorService = executorService;
         mUrl = url;
-        mCallback = downloadCallback;
     }
 
-    public void uploadPicture(ImageData image, GbaCredentials credentials) {
+    @VisibleForTesting
+    public void setCallback(PictureCallback callback) {
+        mCallback = callback;
+    }
+
+    public void uploadPicture(ImageData image,
+            GbaCredentialsSupplier credentialsSupplier) {
         CompletableFuture<Network> networkFuture = getNetworkForCallComposer();
-        CompletableFuture<String> authorizationFuture = networkFuture
+        CompletableFuture<WWWAuthenticate> authorizationHeaderFuture = networkFuture
                 .thenApplyAsync((network) -> prepareInitialPost(network, mUrl), mExecutorService)
                 .thenComposeAsync(this::obtainAuthenticateHeader, mExecutorService)
-                .thenApplyAsync((authHeader) ->
-                        DigestAuthUtils.generateAuthorizationHeader(
-                                authHeader, credentials, "POST", mUrl), mExecutorService)
-                .whenCompleteAsync((authorization, error) -> handleExceptionalCompletion(error),
+                .thenApplyAsync(DigestAuthUtils::parseAuthenticateHeader);
+        CompletableFuture<GbaCredentials> credsFuture = authorizationHeaderFuture
+                .thenComposeAsync((header) ->
+                        credentialsSupplier.getCredentials(header.getRealm(), mExecutorService),
                         mExecutorService);
+
+        CompletableFuture<String> authorizationFuture =
+                authorizationHeaderFuture.thenCombineAsync(credsFuture,
+                        (authHeader, credentials) ->
+                                DigestAuthUtils.generateAuthorizationHeader(
+                                        authHeader, credentials, "POST", mUrl),
+                        mExecutorService)
+                        .whenCompleteAsync(
+                                (authorization, error) -> handleExceptionalCompletion(error),
+                                mExecutorService);
 
         CompletableFuture<String> networkUrlFuture =
                 networkFuture.thenCombineAsync(authorizationFuture,
@@ -119,7 +143,7 @@ public class CallComposerPictureTransfer {
         }, mExecutorService);
     }
 
-    public void downloadPicture(GbaCredentials credentials) {
+    public void downloadPicture(GbaCredentialsSupplier credentialsSupplier) {
         CompletableFuture<Network> networkFuture = getNetworkForCallComposer();
         CompletableFuture<HttpURLConnection> getConnectionFuture =
                 networkFuture.thenApplyAsync((network) ->
@@ -149,12 +173,22 @@ public class CallComposerPictureTransfer {
                         logException("IOException obtaining return code: ", e);
                         throw new NetworkAccessException(ERROR_HTTP_TIMEOUT);
                     }
-                    CompletableFuture<String> authorizationFuture = obtainAuthenticateHeader(conn)
-                            .thenApplyAsync((authHeader) ->
+                    CompletableFuture<WWWAuthenticate> authenticateHeaderFuture =
+                            obtainAuthenticateHeader(conn)
+                                    .thenApply(DigestAuthUtils::parseAuthenticateHeader);
+                    CompletableFuture<GbaCredentials> credsFuture = authenticateHeaderFuture
+                            .thenComposeAsync((header) ->
+                                    credentialsSupplier.getCredentials(header.getRealm(),
+                                            mExecutorService), mExecutorService);
+
+                    CompletableFuture<String> authorizationFuture = authenticateHeaderFuture
+                            .thenCombineAsync(credsFuture, (authHeader, credentials) ->
                                     DigestAuthUtils.generateAuthorizationHeader(
-                                            authHeader, credentials, "GET", mUrl), mExecutorService)
+                                            authHeader, credentials, "GET", mUrl),
+                                    mExecutorService)
                             .whenCompleteAsync((authorization, error) ->
                                     handleExceptionalCompletion(error), mExecutorService);
+
                     return networkFuture.thenCombineAsync(authorizationFuture,
                             this::downloadImageWithAuth, mExecutorService);
                 }, mExecutorService);
@@ -170,10 +204,6 @@ public class CallComposerPictureTransfer {
             if (fromAuth != null) mCallback.onDownloadSuccessful(fromAuth);
             mCallback.onDownloadSuccessful(fromImmediate);
         });
-    }
-
-    public void shutdown() {
-        mExecutorService.shutdown();
     }
 
     private CompletableFuture<Network> getNetworkForCallComposer() {

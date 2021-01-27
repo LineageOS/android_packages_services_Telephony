@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 The Android Open Source Project
+ * Copyright (C) 2021 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,31 +16,9 @@
 
 package com.android.phone.callcomposer;
 
-public class ImageData {
-    private final byte[] mImageBytes;
-    private final String mMimeType;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 
-    private String mId;
-
-    public ImageData(byte[] imageBytes, String mimeType, String id) {
-        mImageBytes = imageBytes;
-        mMimeType = mimeType;
-        mId = id;
-    }
-
-    public byte[] getImageBytes() {
-        return mImageBytes;
-    }
-
-    public String getMimeType() {
-        return mMimeType;
-    }
-
-    public String getId() {
-        return mId;
-    }
-
-    public void setId(String id) {
-        mId = id;
-    }
+public interface GbaCredentialsSupplier {
+    CompletableFuture<GbaCredentials> getCredentials(String realm, Executor executor);
 }
