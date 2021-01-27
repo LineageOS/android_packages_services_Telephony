@@ -8830,7 +8830,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             loge("isMultiSimSupportedInternal: no static configuration available");
             return TelephonyManager.MULTISIM_NOT_SUPPORTED_BY_HARDWARE;
         }
-        if (staticCapability.logicalModemList.size() < 2) {
+        if (staticCapability.getLogicalModemList().size() < 2) {
             loge("isMultiSimSupportedInternal: maximum number of modem is < 2");
             return TelephonyManager.MULTISIM_NOT_SUPPORTED_BY_HARDWARE;
         }
@@ -9817,6 +9817,32 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
+     * Sends a device to device communication message.  Only usable via shell.
+     * @param message message to send.
+     * @param value message value.
+     */
+    @Override
+    public void sendDeviceToDeviceMessage(int message, int value) {
+        TelephonyPermissions.enforceShellOnly(Binder.getCallingUid(),
+                "setCarrierSingleRegistrationEnabledOverride");
+        enforceModifyPermission();
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            TelephonyConnectionService service =
+                    TelecomAccountRegistry.getInstance(null).getTelephonyConnectionService();
+            if (service == null) {
+                Rlog.e(LOG_TAG, "sendDeviceToDeviceMessage: not in a call.");
+                return;
+            }
+            service.sendTestDeviceToDeviceMessage(message, value);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+
+    /**
      * Gets the config of RCS VoLTE single registration enabled for the device.
      */
     @Override
@@ -9949,6 +9975,25 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 throw new IllegalArgumentException(
                         "thresholds length is out of range: " + thresholds.length);
             }
+        }
+    }
+
+    /**
+     * Gets the current phone capability.
+     *
+     * Requires carrier privileges or READ_PRECISE_PHONE_STATE permission.
+     * @return the PhoneCapability which describes the data connection capability of modem.
+     * It's used to evaluate possible phone config change, for example from single
+     * SIM device to multi-SIM device.
+     */
+    @Override
+    public PhoneCapability getPhoneCapability() {
+        enforceReadPrivilegedPermission("getPhoneCapability");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return mPhoneConfigurationManager.getCurrentPhoneCapability();
+        } finally {
+            Binder.restoreCallingIdentity(identity);
         }
     }
 }

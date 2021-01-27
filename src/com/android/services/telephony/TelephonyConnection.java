@@ -3239,8 +3239,12 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
      */
     private void maybeConfigureDeviceToDeviceCommunication() {
         if (!getPhone().getContext().getResources().getBoolean(
-                R.bool.config_use_device_to_device_communication) || !isImsConnection()) {
+                R.bool.config_use_device_to_device_communication)) {
             Log.d(this, "maybeConfigureDeviceToDeviceCommunication: not using D2D.");
+            return;
+        }
+        if (!isImsConnection()) {
+            Log.d(this, "maybeConfigureDeviceToDeviceCommunication: not an IMS connection.");
             return;
         }
         // Implement abstracted out RTP functionality the RTP transport depends on.
@@ -3259,8 +3263,10 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
             public void sendRtpHeaderExtensions(
                     @NonNull Set<RtpHeaderExtension> rtpHeaderExtensions) {
                 if (!isImsConnection()) {
-                    Log.w(this, "sendRtpHeaderExtensions: not an ims connection.");
+                    Log.w(TelephonyConnection.this, "sendRtpHeaderExtensions: not an ims conn.");
                 }
+                Log.d(TelephonyConnection.this, "sendRtpHeaderExtensions: sending %d messages",
+                        rtpHeaderExtensions.size());
                 ImsPhoneConnection originalConnection =
                         (ImsPhoneConnection) mOriginalConnection;
                 originalConnection.sendRtpHeaderExtensions(rtpHeaderExtensions);
@@ -3273,6 +3279,13 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
     }
 
     /**
+     * @return The D2D communication class, or {@code null} if not set up.
+     */
+    public @Nullable Communicator getCommunicator() {
+        return mCommunicator;
+    }
+
+    /**
      * Called by {@link Communicator} associated with this {@link TelephonyConnection} when there
      * are incoming device-to-device messages received.
      * @param messages the incoming messages.
@@ -3281,6 +3294,14 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
     public void onMessagesReceived(@NonNull Set<Communicator.Message> messages) {
         Log.i(this, "onMessagesReceived: got d2d messages: %s", messages);
         // TODO: Actually do something WITH the messages.
+
+        // TODO: Remove this prior to launch.
+        // This is just here for debug purposes; send as a connection event so that it
+        // will be output in the Telecom logs.
+        for (Communicator.Message msg : messages) {
+            sendConnectionEvent("D2D_" + Communicator.messageToString(msg.getType())
+                + "_" + Communicator.valueToString(msg.getType(), msg.getValue()), null);
+        }
     }
 
     /**
