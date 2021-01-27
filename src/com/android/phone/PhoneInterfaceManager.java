@@ -9722,10 +9722,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * Register RCS provisioning callback.
      */
     @Override
-    public void registerRcsProvisioningChangedCallback(int subId,
+    public void registerRcsProvisioningCallback(int subId,
             IRcsConfigCallback callback) {
         TelephonyPermissions.enforceAnyPermissionGrantedOrCarrierPrivileges(mApp, subId,
-                Binder.getCallingUid(), "registerRcsProvisioningChangedCallback",
+                Binder.getCallingUid(), "registerRcsProvisioningCallback",
                 Manifest.permission.PERFORM_IMS_SINGLE_REGISTRATION,
                 permission.READ_PRIVILEGED_PHONE_STATE);
 
@@ -9740,7 +9740,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         final long identity = Binder.clearCallingIdentity();
         try {
             if (!RcsProvisioningMonitor.getInstance()
-                    .registerRcsProvisioningChangedCallback(subId, callback)) {
+                    .registerRcsProvisioningCallback(subId, callback)) {
                 throw new ServiceSpecificException(ImsException.CODE_ERROR_UNSUPPORTED_OPERATION,
                         "Service not available for the subscription.");
             }
@@ -9753,10 +9753,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * Unregister RCS provisioning callback.
      */
     @Override
-    public void unregisterRcsProvisioningChangedCallback(int subId,
+    public void unregisterRcsProvisioningCallback(int subId,
             IRcsConfigCallback callback) {
         TelephonyPermissions.enforceAnyPermissionGrantedOrCarrierPrivileges(mApp, subId,
-                Binder.getCallingUid(), "unregisterRcsProvisioningChangedCallback",
+                Binder.getCallingUid(), "unregisterRcsProvisioningCallback",
                 Manifest.permission.PERFORM_IMS_SINGLE_REGISTRATION,
                 permission.READ_PRIVILEGED_PHONE_STATE);
 
@@ -9771,7 +9771,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         final long identity = Binder.clearCallingIdentity();
         try {
             RcsProvisioningMonitor.getInstance()
-                    .unregisterRcsProvisioningChangedCallback(subId, callback);
+                    .unregisterRcsProvisioningCallback(subId, callback);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
