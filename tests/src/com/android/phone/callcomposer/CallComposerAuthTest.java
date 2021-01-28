@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.phone;
+package com.android.phone.callcomposer;
 
 import static org.junit.Assert.assertEquals;
 
