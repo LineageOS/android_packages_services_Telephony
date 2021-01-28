@@ -76,6 +76,8 @@ import com.android.phone.ImsUtil;
 import com.android.phone.PhoneGlobals;
 import com.android.phone.PhoneUtils;
 import com.android.phone.R;
+import com.android.phone.callcomposer.CallComposerPictureManager;
+import com.android.phone.callcomposer.CallComposerPictureTransfer;
 import com.android.telephony.Rlog;
 
 import java.util.ArrayList;
@@ -1131,13 +1133,33 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
     @Override
     public void onCallFilteringCompleted(boolean isBlocked, boolean isInContacts) {
         if (isImsConnection()) {
-            if (!isBlocked && isInContacts) {
+            ImsPhone imsPhone = (ImsPhone) getPhone().getImsPhone();
+            if (imsPhone != null
+                    && imsPhone.getCallComposerStatus() == TelephonyManager.CALL_COMPOSER_STATUS_ON
+                    && !isBlocked && isInContacts) {
                 ImsPhoneConnection originalConnection = (ImsPhoneConnection) mOriginalConnection;
                 ImsCallProfile profile = originalConnection.getImsCall().getCallProfile();
                 if (profile != null
                         && !TextUtils.isEmpty(
-                                profile.getCallExtra(ImsCallProfile.EXTRA_PICTURE_URL))) {
-                    // TODO: start off the picture download
+                        profile.getCallExtra(ImsCallProfile.EXTRA_PICTURE_URL))) {
+                    CallComposerPictureManager manager = CallComposerPictureManager
+                            .getInstance(getPhone().getContext(), getPhone().getSubId());
+                    manager.handleDownloadFromServer(new CallComposerPictureTransfer.Factory() {},
+                            profile.getCallExtra(ImsCallProfile.EXTRA_PICTURE_URL),
+                            (result) -> {
+                                if (result.first != null) {
+                                    Bundle newExtras = new Bundle();
+                                    newExtras.putParcelable(TelecomManager.EXTRA_PICTURE_URI,
+                                            result.first);
+                                    putTelephonyExtras(newExtras);
+                                } else {
+                                    Log.i(this, "Call composer picture download:"
+                                            + " error=" + result.second);
+                                    Bundle newExtras = new Bundle();
+                                    newExtras.putBoolean(TelecomManager.EXTRA_HAS_PICTURE, false);
+                                    putTelephonyExtras(newExtras);
+                                }
+                            });
                 }
             }
         }

@@ -49,6 +49,7 @@ import android.telephony.CarrierConfigManager;
 import android.telephony.ServiceState;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
+import android.telephony.TelephonyLocalConnection;
 import android.telephony.TelephonyManager;
 import android.telephony.data.ApnSetting;
 import android.util.LocalLog;
@@ -329,6 +330,9 @@ public class PhoneGlobals extends ContextWrapper {
         if (VDBG) Log.v(LOG_TAG, "onCreate()...");
 
         ContentResolver resolver = getContentResolver();
+
+        // Initialize the shim from frameworks/opt/telephony into packages/services/Telephony.
+        TelephonyLocalConnection.setInstance(new LocalConnectionImpl(this));
 
         // Cache the "voice capable" flag.
         // This flag currently comes from a resource (which is
