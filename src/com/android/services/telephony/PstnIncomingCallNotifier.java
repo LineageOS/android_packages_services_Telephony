@@ -41,6 +41,7 @@ import com.android.internal.telephony.imsphone.ImsExternalConnection;
 import com.android.internal.telephony.imsphone.ImsPhoneConnection;
 import com.android.phone.NumberVerificationManager;
 import com.android.phone.PhoneUtils;
+import com.android.phone.callcomposer.CallComposerPictureManager;
 import com.android.telephony.Rlog;
 
 import java.util.List;
@@ -297,6 +298,11 @@ final class PstnIncomingCallNotifier {
             if (imsCall != null) {
                 ImsCallProfile imsCallProfile = imsCall.getCallProfile();
                 if (imsCallProfile != null) {
+                    if (CallComposerPictureManager.sTestMode) {
+                        imsCallProfile.setCallExtra(ImsCallProfile.EXTRA_PICTURE_URL,
+                                CallComposerPictureManager.FAKE_SERVER_URL);
+                    }
+
                     extras.putInt(TelecomManager.EXTRA_PRIORITY,
                             imsCallProfile.getCallExtraInt(ImsCallProfile.EXTRA_PRIORITY));
                     extras.putString(TelecomManager.EXTRA_CALL_SUBJECT,
