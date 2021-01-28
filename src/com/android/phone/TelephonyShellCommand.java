@@ -31,6 +31,7 @@ import android.telephony.CarrierConfigManager;
 import android.telephony.SubscriptionManager;
 import android.telephony.emergency.EmergencyNumber;
 import android.telephony.ims.feature.ImsFeature;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.android.internal.telephony.ITelephony;
@@ -102,6 +103,9 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
     private static final String D2D_SUBCOMMAND = "d2d";
     private static final String D2D_SEND = "send";
 
+    private static final String RCS_UCE_COMMAND = "uce";
+    private static final String UCE_REMOVE_EAB_CONTACT = "remove-eab-contact";
+
     // Take advantage of existing methods that already contain permissions checks when possible.
     private final ITelephony mInterface;
 
@@ -171,6 +175,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             case IMS_SUBCOMMAND: {
                 return handleImsCommand();
             }
+            case RCS_UCE_COMMAND:
+                return handleRcsUceCommand();
             case NUMBER_VERIFICATION_SUBCOMMAND:
                 return handleNumberVerificationCommand();
             case EMERGENCY_NUMBER_TEST_MODE:
@@ -202,6 +208,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         pw.println("    Print this help text.");
         pw.println("  ims");
         pw.println("    IMS Commands.");
+        pw.println("  uce");
+        pw.println("    RCS User Capability Exchange Commands.");
         pw.println("  emergency-number-test-mode");
         pw.println("    Emergency Number Test Mode Commands.");
         pw.println("  end-block-suppression");
@@ -215,6 +223,7 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         pw.println("  src");
         pw.println("    RCS VoLTE Single Registration Config Commands.");
         onHelpIms();
+        onHelpUce();
         onHelpEmergencyNumber();
         onHelpEndBlockSupperssion();
         onHelpDataTestMode();
@@ -274,6 +283,17 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         pw.println("    slot if none is specified.");
         pw.println("  ims conference-event-package [enable/disable]");
         pw.println("    enables or disables handling or network conference event package data.");
+    }
+
+    private void onHelpUce() {
+        PrintWriter pw = getOutPrintWriter();
+        pw.println("User Capability Exchange Commands:");
+        pw.println("  uce remove-eab-contact [-s SLOT_ID] [PHONE_NUMBER]");
+        pw.println("    Remove the EAB contacts from the EAB database.");
+        pw.println("    Options are:");
+        pw.println("      -s: The SIM slot ID to read carrier config value for. If no option");
+        pw.println("          is specified, it will choose the default voice SIM slot.");
+        pw.println("      PHONE_NUMBER: The phone numbers to be removed from the EAB databases");
     }
 
     private void onHelpNumberVerification() {
@@ -1560,6 +1580,45 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         }
 
         return -1;
+    }
+
+    private int handleRcsUceCommand() {
+        String arg = getNextArg();
+        if (arg == null) {
+            Log.w(LOG_TAG, "cannot get uce parameter");
+            return -1;
+        }
+
+        switch (arg) {
+            case UCE_REMOVE_EAB_CONTACT:
+                return handleRemovingEabContactCommand();
+        }
+        return -1;
+    }
+
+    private int handleRemovingEabContactCommand() {
+        int subId = getSubId("uce remove-eab-contact");
+        if (subId == SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
+            return -1;
+        }
+
+        String phoneNumber = getNextArgRequired();
+        if (TextUtils.isEmpty(phoneNumber)) {
+            return -1;
+        }
+        int result = 0;
+        try {
+            result = mInterface.removeContactFromEab(subId, phoneNumber);
+        } catch (RemoteException e) {
+            Log.w(LOG_TAG, "uce remove-eab-contact -s " + subId + ", error " + e.getMessage());
+            getErrPrintWriter().println("Exception: " + e.getMessage());
+            return -1;
+        }
+
+        if (VDBG) {
+            Log.v(LOG_TAG, "uce remove-eab-contact -s " + subId + ", result: " + result);
+        }
+        return result;
     }
 
     private int handleSrcSetDeviceEnabledCommand() {
