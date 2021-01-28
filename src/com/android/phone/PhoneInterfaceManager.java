@@ -131,6 +131,7 @@ import android.util.Pair;
 
 import com.android.ims.ImsManager;
 import com.android.ims.internal.IImsServiceFeatureCallback;
+import com.android.ims.rcs.uce.eab.EabUtil;
 import com.android.internal.telephony.CallForwardInfo;
 import com.android.internal.telephony.CallManager;
 import com.android.internal.telephony.CallStateException;
@@ -9885,6 +9886,21 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         final long identity = Binder.clearCallingIdentity();
         try {
             return getDefaultPhone().getMobileProvisioningUrl();
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Remove the EAB contacts from the EAB database.
+     */
+    @Override
+    public int removeContactFromEab(int subId, String contacts) {
+        TelephonyPermissions.enforceShellOnly(Binder.getCallingUid(), "removeCapabilitiesFromEab");
+        enforceModifyPermission();
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return EabUtil.removeContactFromEab(subId, contacts, getDefaultPhone().getContext());
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
