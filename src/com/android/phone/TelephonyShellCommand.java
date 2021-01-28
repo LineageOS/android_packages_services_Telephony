@@ -21,7 +21,9 @@ import static com.android.internal.telephony.d2d.Communicator.MESSAGE_CALL_RADIO
 import static com.android.internal.telephony.d2d.Communicator.MESSAGE_DEVICE_BATTERY_STATE;
 import static com.android.internal.telephony.d2d.Communicator.MESSAGE_DEVICE_NETWORK_COVERAGE;
 
+import android.Manifest;
 import android.content.Context;
+import android.net.Uri;
 import android.os.Binder;
 import android.os.PersistableBundle;
 import android.os.Process;
@@ -42,6 +44,7 @@ import com.android.internal.telephony.d2d.Communicator;
 import com.android.internal.telephony.emergency.EmergencyNumberTracker;
 import com.android.internal.telephony.util.TelephonyUtils;
 import com.android.modules.utils.BasicShellCommandHandler;
+import com.android.phone.callcomposer.CallComposerPictureManager;
 
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -49,6 +52,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeSet;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 
 /**
  * Takes actions based on the adb commands given by "adb shell cmd phone ...". Be careful, no
@@ -63,6 +68,7 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
     private static final boolean VDBG = true;
     private static final int DEFAULT_PHONE_ID = 0;
 
+    private static final String CALL_COMPOSER_SUBCOMMAND = "callcomposer";
     private static final String IMS_SUBCOMMAND = "ims";
     private static final String NUMBER_VERIFICATION_SUBCOMMAND = "numverify";
     private static final String EMERGENCY_NUMBER_TEST_MODE = "emergency-number-test-mode";
@@ -70,14 +76,16 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
     private static final String RESTART_MODEM = "restart-modem";
     private static final String CARRIER_CONFIG_SUBCOMMAND = "cc";
     private static final String DATA_TEST_MODE = "data";
-    private static final String DATA_ENABLE = "enable";
-    private static final String DATA_DISABLE = "disable";
+    private static final String ENABLE = "enable";
+    private static final String DISABLE = "disable";
+    private static final String QUERY = "query";
+
+    private static final String CALL_COMPOSER_TEST_MODE = "test_mode";
+    private static final String CALL_COMPOSER_SIMULATE_CALL = "simulate-outgoing-call";
 
     private static final String IMS_SET_IMS_SERVICE = "set-ims-service";
     private static final String IMS_GET_IMS_SERVICE = "get-ims-service";
     private static final String IMS_CLEAR_SERVICE_OVERRIDE = "clear-ims-service-override";
-    private static final String IMS_ENABLE = "enable";
-    private static final String IMS_DISABLE = "disable";
     // Used to disable or enable processing of conference event package data from the network.
     // This is handy for testing scenarios where CEP data does not exist on a network which does
     // support CEP data.
@@ -198,6 +206,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                 return handleSingleRegistrationConfigCommand();
             case RESTART_MODEM:
                 return handleRestartModemCommand();
+            case CALL_COMPOSER_SUBCOMMAND:
+                return handleCallComposerCommand();
             default: {
                 return handleDefaultCommands(cmd);
             }
@@ -433,10 +443,10 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             case IMS_CLEAR_SERVICE_OVERRIDE: {
                 return handleImsClearCarrierServiceCommand();
             }
-            case IMS_ENABLE: {
+            case ENABLE: {
                 return handleEnableIms();
             }
-            case IMS_DISABLE: {
+            case DISABLE: {
                 return handleDisableIms();
             }
             case IMS_CEP: {
@@ -455,7 +465,7 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             return 0;
         }
         switch (arg) {
-            case DATA_ENABLE: {
+            case ENABLE: {
                 try {
                     mInterface.enableDataConnectivity();
                 } catch (RemoteException ex) {
@@ -465,7 +475,7 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                 }
                 break;
             }
-            case DATA_DISABLE: {
+            case DISABLE: {
                 try {
                     mInterface.disableDataConnectivity();
                 } catch (RemoteException ex) {
@@ -1721,6 +1731,64 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             Log.v(LOG_TAG, "src get-carrier-enabled -s " + subId + ", returned: " + result);
         }
         getOutPrintWriter().println(result);
+        return 0;
+    }
+
+    private void onHelpCallComposer() {
+        PrintWriter pw = getOutPrintWriter();
+        pw.println("Call composer commands");
+        pw.println("  callcomposer test-mode enable|disable|query");
+        pw.println("    Enables or disables test mode for call composer. In test mode, picture");
+        pw.println("    upload/download from carrier servers is disabled, and operations are");
+        pw.println("    performed using emulated local files instead.");
+        pw.println("  callcomposer simulate-outgoing-call [subId] [UUID]");
+        pw.println("    Simulates an outgoing call being placed with the picture ID as");
+        pw.println("    the provided UUID. This triggers storage to the call log.");
+    }
+
+    private int handleCallComposerCommand() {
+        String arg = getNextArg();
+        if (arg == null) {
+            onHelpCallComposer();
+            return 0;
+        }
+
+        mContext.enforceCallingPermission(Manifest.permission.MODIFY_PHONE_STATE,
+                "MODIFY_PHONE_STATE required for call composer shell cmds");
+        switch (arg) {
+            case CALL_COMPOSER_TEST_MODE: {
+                String enabledStr = getNextArg();
+                if (ENABLE.equals(enabledStr)) {
+                    CallComposerPictureManager.sTestMode = true;
+                } else if (DISABLE.equals(enabledStr)) {
+                    CallComposerPictureManager.sTestMode = false;
+                } else if (QUERY.equals(enabledStr)) {
+                    getOutPrintWriter().println(CallComposerPictureManager.sTestMode);
+                } else {
+                    onHelpCallComposer();
+                    return 1;
+                }
+                break;
+            }
+            case CALL_COMPOSER_SIMULATE_CALL: {
+                int subscriptionId = Integer.valueOf(getNextArg());
+                String uuidString = getNextArg();
+                UUID uuid = UUID.fromString(uuidString);
+                CompletableFuture<Uri> storageUriFuture = new CompletableFuture<>();
+                Binder.withCleanCallingIdentity(() -> {
+                    CallComposerPictureManager.getInstance(mContext, subscriptionId)
+                            .storeUploadedPictureToCallLog(uuid, storageUriFuture::complete);
+                });
+                try {
+                    Uri uri = storageUriFuture.get();
+                    getOutPrintWriter().println(String.valueOf(uri));
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+                break;
+            }
+        }
+
         return 0;
     }
 }
