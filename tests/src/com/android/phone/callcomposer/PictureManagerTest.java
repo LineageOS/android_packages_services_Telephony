@@ -63,12 +63,14 @@ public class PictureManagerTest {
     @Mock Context context;
     @Mock TelephonyManager telephonyManager;
 
-    private boolean originalHttpOpValue = false;
+    private boolean originalTestMode = false;
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        originalHttpOpValue = CallComposerPictureManager.sHttpOperationsEnabled;
-        CallComposerPictureManager.sHttpOperationsEnabled = true;
+        originalTestMode = CallComposerPictureManager.sTestMode;
+        // Even though this is a test, we want test mode off so we can actually exercise the logic
+        // in the class.
+        CallComposerPictureManager.sTestMode = false;
         when(context.getSystemService(Context.TELEPHONY_SERVICE)).thenReturn(telephonyManager);
         when(context.getSystemServiceName(TelephonyManager.class))
                 .thenReturn(Context.TELEPHONY_SERVICE);
@@ -81,7 +83,7 @@ public class PictureManagerTest {
 
     @After
     public void tearDown() throws Exception {
-        CallComposerPictureManager.sHttpOperationsEnabled = originalHttpOpValue;
+        CallComposerPictureManager.sTestMode = originalTestMode;
         CallComposerPictureManager.clearInstances();
     }
 

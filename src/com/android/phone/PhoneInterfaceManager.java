@@ -131,6 +131,7 @@ import android.util.Pair;
 
 import com.android.ims.ImsManager;
 import com.android.ims.internal.IImsServiceFeatureCallback;
+import com.android.ims.rcs.uce.eab.EabUtil;
 import com.android.internal.telephony.CallForwardInfo;
 import com.android.internal.telephony.CallManager;
 import com.android.internal.telephony.CallStateException;
@@ -185,6 +186,9 @@ import com.android.internal.telephony.util.LocaleUtils;
 import com.android.internal.telephony.util.VoicemailNotificationSettingsUtil;
 import com.android.internal.util.FunctionalUtils;
 import com.android.internal.util.HexDump;
+import com.android.phone.callcomposer.CallComposerPictureManager;
+import com.android.phone.callcomposer.CallComposerPictureTransfer;
+import com.android.phone.callcomposer.ImageData;
 import com.android.phone.settings.PickSmsSubscriptionActivity;
 import com.android.phone.vvm.PhoneAccountHandleConverter;
 import com.android.phone.vvm.RemoteVvmTaskManager;
@@ -209,7 +213,6 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.Set;
-import java.util.UUID;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Consumer;
@@ -7007,13 +7010,28 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 return;
             }
 
-            // TODO: pass along the bytes read to the carrier somehow
+            if (!readUntilEnd) {
+                loge("Did not finish reading entire image; aborting");
+                return;
+            }
 
-            ParcelUuid result = new ParcelUuid(UUID.randomUUID());
-            // TODO: cache this uuid that's been associated with the picture
-            Bundle outputResult = new Bundle();
-            outputResult.putParcelable(TelephonyManager.KEY_CALL_COMPOSER_PICTURE_HANDLE, result);
-            callback.send(-1, outputResult);
+            ImageData imageData = new ImageData(output.toByteArray(), contentType, null);
+            CallComposerPictureManager.getInstance(mApp, subscriptionId).handleUploadToServer(
+                    new CallComposerPictureTransfer.Factory() {},
+                    imageData,
+                    (result) -> {
+                        if (result.first != null) {
+                            ParcelUuid parcelUuid = new ParcelUuid(result.first);
+                            Bundle outputResult = new Bundle();
+                            outputResult.putParcelable(
+                                    TelephonyManager.KEY_CALL_COMPOSER_PICTURE_HANDLE, parcelUuid);
+                            callback.send(TelephonyManager.CallComposerException.SUCCESS,
+                                    outputResult);
+                        } else {
+                            callback.send(result.second, null);
+                        }
+                    }
+            );
         });
     }
 
@@ -9885,6 +9903,21 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         final long identity = Binder.clearCallingIdentity();
         try {
             return getDefaultPhone().getMobileProvisioningUrl();
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Remove the EAB contacts from the EAB database.
+     */
+    @Override
+    public int removeContactFromEab(int subId, String contacts) {
+        TelephonyPermissions.enforceShellOnly(Binder.getCallingUid(), "removeCapabilitiesFromEab");
+        enforceModifyPermission();
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return EabUtil.removeContactFromEab(subId, contacts, getDefaultPhone().getContext());
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
