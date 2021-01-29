@@ -31,6 +31,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
+import android.os.ParcelUuid;
 import android.telecom.Conference;
 import android.telecom.Connection;
 import android.telecom.ConnectionRequest;
@@ -63,12 +64,14 @@ import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.PhoneSwitcher;
 import com.android.internal.telephony.RIL;
 import com.android.internal.telephony.SubscriptionController;
+import com.android.internal.telephony.d2d.Communicator;
 import com.android.internal.telephony.imsphone.ImsExternalCallTracker;
 import com.android.internal.telephony.imsphone.ImsPhone;
 import com.android.internal.telephony.imsphone.ImsPhoneConnection;
 import com.android.phone.MMIDialogActivity;
 import com.android.phone.PhoneUtils;
 import com.android.phone.R;
+import com.android.phone.callcomposer.CallComposerPictureManager;
 import com.android.phone.settings.SuppServicesUiUtil;
 
 import java.lang.ref.WeakReference;
@@ -77,6 +80,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -1078,7 +1082,8 @@ public class TelephonyConnectionService extends ConnectionService {
         if (state == ServiceState.STATE_OUT_OF_SERVICE) {
             int dataNetType = phone.getServiceState().getDataNetworkType();
             if (dataNetType == TelephonyManager.NETWORK_TYPE_LTE ||
-                    dataNetType == TelephonyManager.NETWORK_TYPE_LTE_CA) {
+                    dataNetType == TelephonyManager.NETWORK_TYPE_LTE_CA ||
+                    dataNetType == TelephonyManager.NETWORK_TYPE_NR) {
                 state = phone.getServiceState().getDataRegistrationState();
             }
         }
@@ -1705,6 +1710,22 @@ public class TelephonyConnectionService extends ConnectionService {
             connection.setDisconnected(DisconnectCauseUtil.toTelecomDisconnectCause(
                         android.telephony.DisconnectCause.DIALED_MMI, "UT is not available"));
             return;
+        }
+
+        if (extras != null && extras.containsKey(TelecomManager.EXTRA_OUTGOING_PICTURE)) {
+            ParcelUuid uuid = extras.getParcelable(TelecomManager.EXTRA_OUTGOING_PICTURE);
+            CallComposerPictureManager.getInstance(phone.getContext(), phone.getSubId())
+                    .storeUploadedPictureToCallLog(uuid.getUuid(), (uri) -> {
+                        if (uri != null) {
+                            try {
+                                Bundle b = new Bundle();
+                                b.putParcelable(TelecomManager.EXTRA_PICTURE_URI, uri);
+                                connection.putTelephonyExtras(b);
+                            } catch (Exception e) {
+                                Log.e(this, e, "Couldn't set picture extra on outgoing call");
+                            }
+                        }
+                    });
         }
 
         com.android.internal.telephony.Connection originalConnection = null;
@@ -2490,6 +2511,31 @@ public class TelephonyConnectionService extends ConnectionService {
     public void addTelephonyConference(@NonNull TelephonyConferenceBase conference) {
         addConference(conference);
         conference.addTelephonyConferenceListener(mTelephonyConferenceListener);
+    }
+
+    /**
+     * Sends a test device to device message on the active call which supports it.
+     * Used exclusively from the telephony shell command to send a test message.
+     *
+     * @param message the message
+     * @param value the value
+     */
+    public void sendTestDeviceToDeviceMessage(int message, int value) {
+       getAllConnections().stream()
+               .filter(f -> f instanceof TelephonyConnection)
+               .forEach(t -> {
+                        TelephonyConnection tc = (TelephonyConnection) t;
+                        Communicator c = tc.getCommunicator();
+                        if (c == null) {
+                            Log.w(this, "sendTestDeviceToDeviceMessage: D2D not enabled");
+                            return;
+                        }
+
+                        c.sendMessages(new HashSet<Communicator.Message>() {{
+                            add(new Communicator.Message(message, value));
+                        }});
+
+       });
     }
 
     private PhoneAccountHandle adjustAccountHandle(Phone phone,

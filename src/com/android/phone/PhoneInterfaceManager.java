@@ -131,6 +131,7 @@ import android.util.Pair;
 
 import com.android.ims.ImsManager;
 import com.android.ims.internal.IImsServiceFeatureCallback;
+import com.android.ims.rcs.uce.eab.EabUtil;
 import com.android.internal.telephony.CallForwardInfo;
 import com.android.internal.telephony.CallManager;
 import com.android.internal.telephony.CallStateException;
@@ -185,6 +186,9 @@ import com.android.internal.telephony.util.LocaleUtils;
 import com.android.internal.telephony.util.VoicemailNotificationSettingsUtil;
 import com.android.internal.util.FunctionalUtils;
 import com.android.internal.util.HexDump;
+import com.android.phone.callcomposer.CallComposerPictureManager;
+import com.android.phone.callcomposer.CallComposerPictureTransfer;
+import com.android.phone.callcomposer.ImageData;
 import com.android.phone.settings.PickSmsSubscriptionActivity;
 import com.android.phone.vvm.PhoneAccountHandleConverter;
 import com.android.phone.vvm.RemoteVvmTaskManager;
@@ -209,7 +213,6 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.Set;
-import java.util.UUID;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Consumer;
@@ -7007,13 +7010,28 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 return;
             }
 
-            // TODO: pass along the bytes read to the carrier somehow
+            if (!readUntilEnd) {
+                loge("Did not finish reading entire image; aborting");
+                return;
+            }
 
-            ParcelUuid result = new ParcelUuid(UUID.randomUUID());
-            // TODO: cache this uuid that's been associated with the picture
-            Bundle outputResult = new Bundle();
-            outputResult.putParcelable(TelephonyManager.KEY_CALL_COMPOSER_PICTURE_HANDLE, result);
-            callback.send(-1, outputResult);
+            ImageData imageData = new ImageData(output.toByteArray(), contentType, null);
+            CallComposerPictureManager.getInstance(mApp, subscriptionId).handleUploadToServer(
+                    new CallComposerPictureTransfer.Factory() {},
+                    imageData,
+                    (result) -> {
+                        if (result.first != null) {
+                            ParcelUuid parcelUuid = new ParcelUuid(result.first);
+                            Bundle outputResult = new Bundle();
+                            outputResult.putParcelable(
+                                    TelephonyManager.KEY_CALL_COMPOSER_PICTURE_HANDLE, parcelUuid);
+                            callback.send(TelephonyManager.CallComposerException.SUCCESS,
+                                    outputResult);
+                        } else {
+                            callback.send(result.second, null);
+                        }
+                    }
+            );
         });
     }
 
@@ -8830,7 +8848,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             loge("isMultiSimSupportedInternal: no static configuration available");
             return TelephonyManager.MULTISIM_NOT_SUPPORTED_BY_HARDWARE;
         }
-        if (staticCapability.logicalModemList.size() < 2) {
+        if (staticCapability.getLogicalModemList().size() < 2) {
             loge("isMultiSimSupportedInternal: maximum number of modem is < 2");
             return TelephonyManager.MULTISIM_NOT_SUPPORTED_BY_HARDWARE;
         }
@@ -9817,6 +9835,32 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
+     * Sends a device to device communication message.  Only usable via shell.
+     * @param message message to send.
+     * @param value message value.
+     */
+    @Override
+    public void sendDeviceToDeviceMessage(int message, int value) {
+        TelephonyPermissions.enforceShellOnly(Binder.getCallingUid(),
+                "setCarrierSingleRegistrationEnabledOverride");
+        enforceModifyPermission();
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            TelephonyConnectionService service =
+                    TelecomAccountRegistry.getInstance(null).getTelephonyConnectionService();
+            if (service == null) {
+                Rlog.e(LOG_TAG, "sendDeviceToDeviceMessage: not in a call.");
+                return;
+            }
+            service.sendTestDeviceToDeviceMessage(message, value);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+
+    /**
      * Gets the config of RCS VoLTE single registration enabled for the device.
      */
     @Override
@@ -9859,6 +9903,21 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         final long identity = Binder.clearCallingIdentity();
         try {
             return getDefaultPhone().getMobileProvisioningUrl();
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Remove the EAB contacts from the EAB database.
+     */
+    @Override
+    public int removeContactFromEab(int subId, String contacts) {
+        TelephonyPermissions.enforceShellOnly(Binder.getCallingUid(), "removeCapabilitiesFromEab");
+        enforceModifyPermission();
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return EabUtil.removeContactFromEab(subId, contacts, getDefaultPhone().getContext());
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -9949,6 +10008,25 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 throw new IllegalArgumentException(
                         "thresholds length is out of range: " + thresholds.length);
             }
+        }
+    }
+
+    /**
+     * Gets the current phone capability.
+     *
+     * Requires carrier privileges or READ_PRECISE_PHONE_STATE permission.
+     * @return the PhoneCapability which describes the data connection capability of modem.
+     * It's used to evaluate possible phone config change, for example from single
+     * SIM device to multi-SIM device.
+     */
+    @Override
+    public PhoneCapability getPhoneCapability() {
+        enforceReadPrivilegedPermission("getPhoneCapability");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return mPhoneConfigurationManager.getCurrentPhoneCapability();
+        } finally {
+            Binder.restoreCallingIdentity(identity);
         }
     }
 }

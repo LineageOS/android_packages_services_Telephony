@@ -16,7 +16,14 @@
 
 package com.android.phone;
 
+import static com.android.internal.telephony.d2d.Communicator.MESSAGE_CALL_AUDIO_CODEC;
+import static com.android.internal.telephony.d2d.Communicator.MESSAGE_CALL_RADIO_ACCESS_TYPE;
+import static com.android.internal.telephony.d2d.Communicator.MESSAGE_DEVICE_BATTERY_STATE;
+import static com.android.internal.telephony.d2d.Communicator.MESSAGE_DEVICE_NETWORK_COVERAGE;
+
+import android.Manifest;
 import android.content.Context;
+import android.net.Uri;
 import android.os.Binder;
 import android.os.PersistableBundle;
 import android.os.Process;
@@ -27,14 +34,17 @@ import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.telephony.emergency.EmergencyNumber;
 import android.telephony.ims.feature.ImsFeature;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.android.internal.telephony.ITelephony;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
+import com.android.internal.telephony.d2d.Communicator;
 import com.android.internal.telephony.emergency.EmergencyNumberTracker;
 import com.android.internal.telephony.util.TelephonyUtils;
 import com.android.modules.utils.BasicShellCommandHandler;
+import com.android.phone.callcomposer.CallComposerPictureManager;
 
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -42,6 +52,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeSet;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 
 /**
  * Takes actions based on the adb commands given by "adb shell cmd phone ...". Be careful, no
@@ -56,6 +68,7 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
     private static final boolean VDBG = true;
     private static final int DEFAULT_PHONE_ID = 0;
 
+    private static final String CALL_COMPOSER_SUBCOMMAND = "callcomposer";
     private static final String IMS_SUBCOMMAND = "ims";
     private static final String NUMBER_VERIFICATION_SUBCOMMAND = "numverify";
     private static final String EMERGENCY_NUMBER_TEST_MODE = "emergency-number-test-mode";
@@ -63,14 +76,16 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
     private static final String RESTART_MODEM = "restart-modem";
     private static final String CARRIER_CONFIG_SUBCOMMAND = "cc";
     private static final String DATA_TEST_MODE = "data";
-    private static final String DATA_ENABLE = "enable";
-    private static final String DATA_DISABLE = "disable";
+    private static final String ENABLE = "enable";
+    private static final String DISABLE = "disable";
+    private static final String QUERY = "query";
+
+    private static final String CALL_COMPOSER_TEST_MODE = "test_mode";
+    private static final String CALL_COMPOSER_SIMULATE_CALL = "simulate-outgoing-call";
 
     private static final String IMS_SET_IMS_SERVICE = "set-ims-service";
     private static final String IMS_GET_IMS_SERVICE = "get-ims-service";
     private static final String IMS_CLEAR_SERVICE_OVERRIDE = "clear-ims-service-override";
-    private static final String IMS_ENABLE = "enable";
-    private static final String IMS_DISABLE = "disable";
     // Used to disable or enable processing of conference event package data from the network.
     // This is handy for testing scenarios where CEP data does not exist on a network which does
     // support CEP data.
@@ -94,6 +109,12 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
     private static final String SRC_GET_DEVICE_ENABLED = "get-device-enabled";
     private static final String SRC_SET_CARRIER_ENABLED = "set-carrier-enabled";
     private static final String SRC_GET_CARRIER_ENABLED = "get-carrier-enabled";
+
+    private static final String D2D_SUBCOMMAND = "d2d";
+    private static final String D2D_SEND = "send";
+
+    private static final String RCS_UCE_COMMAND = "uce";
+    private static final String UCE_REMOVE_EAB_CONTACT = "remove-eab-contact";
 
     // Take advantage of existing methods that already contain permissions checks when possible.
     private final ITelephony mInterface;
@@ -164,6 +185,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             case IMS_SUBCOMMAND: {
                 return handleImsCommand();
             }
+            case RCS_UCE_COMMAND:
+                return handleRcsUceCommand();
             case NUMBER_VERIFICATION_SUBCOMMAND:
                 return handleNumberVerificationCommand();
             case EMERGENCY_NUMBER_TEST_MODE:
@@ -177,10 +200,14 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                 return handleEndBlockSuppressionCommand();
             case GBA_SUBCOMMAND:
                 return handleGbaCommand();
+            case D2D_SUBCOMMAND:
+                return handleD2dCommand();
             case SINGLE_REGISTATION_CONFIG:
                 return handleSingleRegistrationConfigCommand();
             case RESTART_MODEM:
                 return handleRestartModemCommand();
+            case CALL_COMPOSER_SUBCOMMAND:
+                return handleCallComposerCommand();
             default: {
                 return handleDefaultCommands(cmd);
             }
@@ -195,6 +222,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         pw.println("    Print this help text.");
         pw.println("  ims");
         pw.println("    IMS Commands.");
+        pw.println("  uce");
+        pw.println("    RCS User Capability Exchange Commands.");
         pw.println("  emergency-number-test-mode");
         pw.println("    Emergency Number Test Mode Commands.");
         pw.println("  end-block-suppression");
@@ -210,12 +239,30 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         pw.println("  restart-modem");
         pw.println("    Restart modem command.");
         onHelpIms();
+        onHelpUce();
         onHelpEmergencyNumber();
         onHelpEndBlockSupperssion();
         onHelpDataTestMode();
         onHelpCc();
         onHelpGba();
         onHelpSrc();
+        onHelpD2D();
+    }
+
+    private void onHelpD2D() {
+        PrintWriter pw = getOutPrintWriter();
+        pw.println("D2D Comms Commands:");
+        pw.println("  d2d send TYPE VALUE");
+        pw.println("    Sends a D2D message of specified type and value.");
+        pw.println("    Type: " + MESSAGE_CALL_RADIO_ACCESS_TYPE + " - "
+                + Communicator.messageToString(MESSAGE_CALL_RADIO_ACCESS_TYPE));
+        pw.println("    Type: " + MESSAGE_CALL_AUDIO_CODEC + " - " + Communicator.messageToString(
+                MESSAGE_CALL_AUDIO_CODEC));
+        pw.println("    Type: " + MESSAGE_DEVICE_BATTERY_STATE + " - "
+                        + Communicator.messageToString(
+                        MESSAGE_DEVICE_BATTERY_STATE));
+        pw.println("    Type: " + MESSAGE_DEVICE_NETWORK_COVERAGE + " - "
+                + Communicator.messageToString(MESSAGE_DEVICE_NETWORK_COVERAGE));
     }
 
     private void onHelpIms() {
@@ -252,6 +299,17 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         pw.println("    slot if none is specified.");
         pw.println("  ims conference-event-package [enable/disable]");
         pw.println("    enables or disables handling or network conference event package data.");
+    }
+
+    private void onHelpUce() {
+        PrintWriter pw = getOutPrintWriter();
+        pw.println("User Capability Exchange Commands:");
+        pw.println("  uce remove-eab-contact [-s SLOT_ID] [PHONE_NUMBER]");
+        pw.println("    Remove the EAB contacts from the EAB database.");
+        pw.println("    Options are:");
+        pw.println("      -s: The SIM slot ID to read carrier config value for. If no option");
+        pw.println("          is specified, it will choose the default voice SIM slot.");
+        pw.println("      PHONE_NUMBER: The phone numbers to be removed from the EAB databases");
     }
 
     private void onHelpNumberVerification() {
@@ -385,10 +443,10 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             case IMS_CLEAR_SERVICE_OVERRIDE: {
                 return handleImsClearCarrierServiceCommand();
             }
-            case IMS_ENABLE: {
+            case ENABLE: {
                 return handleEnableIms();
             }
-            case IMS_DISABLE: {
+            case DISABLE: {
                 return handleDisableIms();
             }
             case IMS_CEP: {
@@ -407,7 +465,7 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             return 0;
         }
         switch (arg) {
-            case DATA_ENABLE: {
+            case ENABLE: {
                 try {
                     mInterface.enableDataConnectivity();
                 } catch (RemoteException ex) {
@@ -417,7 +475,7 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                 }
                 break;
             }
-            case DATA_DISABLE: {
+            case DISABLE: {
                 try {
                     mInterface.disableDataConnectivity();
                 } catch (RemoteException ex) {
@@ -544,6 +602,64 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         }
 
         return -1;
+    }
+
+    private int handleD2dCommand() {
+        String arg = getNextArg();
+        if (arg == null) {
+            onHelpD2D();
+            return 0;
+        }
+
+        switch (arg) {
+            case D2D_SEND: {
+                return handleD2dSendCommand();
+            }
+        }
+
+        return -1;
+    }
+
+    private int handleD2dSendCommand() {
+        PrintWriter errPw = getErrPrintWriter();
+        String opt;
+        int messageType = -1;
+        int messageValue = -1;
+
+
+        String arg = getNextArg();
+        if (arg == null) {
+            onHelpD2D();
+            return 0;
+        }
+        try {
+            messageType = Integer.parseInt(arg);
+        } catch (NumberFormatException e) {
+            errPw.println("message type must be a valid integer");
+            return -1;
+        }
+
+        arg = getNextArg();
+        if (arg == null) {
+            onHelpD2D();
+            return 0;
+        }
+        try {
+            messageValue = Integer.parseInt(arg);
+        } catch (NumberFormatException e) {
+            errPw.println("message value must be a valid integer");
+            return -1;
+        }
+        
+        try {
+            mInterface.sendDeviceToDeviceMessage(messageType, messageValue);
+        } catch (RemoteException e) {
+            Log.w(LOG_TAG, "d2d send error: " + e.getMessage());
+            errPw.println("Exception: " + e.getMessage());
+            return -1;
+        }
+
+        return 0;
     }
 
     // ims set-ims-service
@@ -1496,6 +1612,45 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         return -1;
     }
 
+    private int handleRcsUceCommand() {
+        String arg = getNextArg();
+        if (arg == null) {
+            Log.w(LOG_TAG, "cannot get uce parameter");
+            return -1;
+        }
+
+        switch (arg) {
+            case UCE_REMOVE_EAB_CONTACT:
+                return handleRemovingEabContactCommand();
+        }
+        return -1;
+    }
+
+    private int handleRemovingEabContactCommand() {
+        int subId = getSubId("uce remove-eab-contact");
+        if (subId == SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
+            return -1;
+        }
+
+        String phoneNumber = getNextArgRequired();
+        if (TextUtils.isEmpty(phoneNumber)) {
+            return -1;
+        }
+        int result = 0;
+        try {
+            result = mInterface.removeContactFromEab(subId, phoneNumber);
+        } catch (RemoteException e) {
+            Log.w(LOG_TAG, "uce remove-eab-contact -s " + subId + ", error " + e.getMessage());
+            getErrPrintWriter().println("Exception: " + e.getMessage());
+            return -1;
+        }
+
+        if (VDBG) {
+            Log.v(LOG_TAG, "uce remove-eab-contact -s " + subId + ", result: " + result);
+        }
+        return result;
+    }
+
     private int handleSrcSetDeviceEnabledCommand() {
         String enabledStr = getNextArg();
         if (enabledStr == null) {
@@ -1576,6 +1731,64 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             Log.v(LOG_TAG, "src get-carrier-enabled -s " + subId + ", returned: " + result);
         }
         getOutPrintWriter().println(result);
+        return 0;
+    }
+
+    private void onHelpCallComposer() {
+        PrintWriter pw = getOutPrintWriter();
+        pw.println("Call composer commands");
+        pw.println("  callcomposer test-mode enable|disable|query");
+        pw.println("    Enables or disables test mode for call composer. In test mode, picture");
+        pw.println("    upload/download from carrier servers is disabled, and operations are");
+        pw.println("    performed using emulated local files instead.");
+        pw.println("  callcomposer simulate-outgoing-call [subId] [UUID]");
+        pw.println("    Simulates an outgoing call being placed with the picture ID as");
+        pw.println("    the provided UUID. This triggers storage to the call log.");
+    }
+
+    private int handleCallComposerCommand() {
+        String arg = getNextArg();
+        if (arg == null) {
+            onHelpCallComposer();
+            return 0;
+        }
+
+        mContext.enforceCallingPermission(Manifest.permission.MODIFY_PHONE_STATE,
+                "MODIFY_PHONE_STATE required for call composer shell cmds");
+        switch (arg) {
+            case CALL_COMPOSER_TEST_MODE: {
+                String enabledStr = getNextArg();
+                if (ENABLE.equals(enabledStr)) {
+                    CallComposerPictureManager.sTestMode = true;
+                } else if (DISABLE.equals(enabledStr)) {
+                    CallComposerPictureManager.sTestMode = false;
+                } else if (QUERY.equals(enabledStr)) {
+                    getOutPrintWriter().println(CallComposerPictureManager.sTestMode);
+                } else {
+                    onHelpCallComposer();
+                    return 1;
+                }
+                break;
+            }
+            case CALL_COMPOSER_SIMULATE_CALL: {
+                int subscriptionId = Integer.valueOf(getNextArg());
+                String uuidString = getNextArg();
+                UUID uuid = UUID.fromString(uuidString);
+                CompletableFuture<Uri> storageUriFuture = new CompletableFuture<>();
+                Binder.withCleanCallingIdentity(() -> {
+                    CallComposerPictureManager.getInstance(mContext, subscriptionId)
+                            .storeUploadedPictureToCallLog(uuid, storageUriFuture::complete);
+                });
+                try {
+                    Uri uri = storageUriFuture.get();
+                    getOutPrintWriter().println(String.valueOf(uri));
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+                break;
+            }
+        }
+
         return 0;
     }
 }
