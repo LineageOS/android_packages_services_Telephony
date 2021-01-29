@@ -1149,7 +1149,7 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
                             (result) -> {
                                 if (result.first != null) {
                                     Bundle newExtras = new Bundle();
-                                    newExtras.putParcelable(TelecomManager.EXTRA_INCOMING_PICTURE,
+                                    newExtras.putParcelable(TelecomManager.EXTRA_PICTURE_URI,
                                             result.first);
                                     putTelephonyExtras(newExtras);
                                 } else {
