@@ -561,7 +561,7 @@
     <string name="ambulance_type_description" msgid="6798237503553180461">"ஆம்புலன்ஸ்"</string>
     <string name="fire_type_description" msgid="6565200468934914930">"தீயணைப்பு"</string>
     <string name="description_concat_format" msgid="2014471565101724088">"%1$s, %2$s"</string>
-    <string name="dialerKeyboardHintText" msgid="1115266533703764049">"டயல் செய்வதற்கு விசைப்பலகையைப் பயன்படுத்துக"</string>
+    <string name="dialerKeyboardHintText" msgid="1115266533703764049">"டயல் செய்வதற்கு கீபோர்டைப் பயன்படுத்துக"</string>
     <string name="onscreenHoldText" msgid="4025348842151665191">"காத்திரு"</string>
     <string name="onscreenEndCallText" msgid="6138725377654842757">"முடி"</string>
     <string name="onscreenShowDialpadText" msgid="658465753816164079">"டயல்பேடு"</string>
