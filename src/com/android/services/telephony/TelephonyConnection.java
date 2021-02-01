@@ -1133,19 +1133,21 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
     @Override
     public void onCallFilteringCompleted(boolean isBlocked, boolean isInContacts) {
         if (isImsConnection()) {
-            ImsPhone imsPhone = (ImsPhone) getPhone().getImsPhone();
+            ImsPhone imsPhone = (getPhone() instanceof ImsPhone) ? (ImsPhone) getPhone() : null;
             if (imsPhone != null
                     && imsPhone.getCallComposerStatus() == TelephonyManager.CALL_COMPOSER_STATUS_ON
                     && !isBlocked && isInContacts) {
                 ImsPhoneConnection originalConnection = (ImsPhoneConnection) mOriginalConnection;
                 ImsCallProfile profile = originalConnection.getImsCall().getCallProfile();
+                String serverUrl = CallComposerPictureManager.sTestMode
+                        ? CallComposerPictureManager.FAKE_SERVER_URL
+                        : profile.getCallExtra(ImsCallProfile.EXTRA_PICTURE_URL);
                 if (profile != null
-                        && !TextUtils.isEmpty(
-                        profile.getCallExtra(ImsCallProfile.EXTRA_PICTURE_URL))) {
+                        && !TextUtils.isEmpty(serverUrl)) {
                     CallComposerPictureManager manager = CallComposerPictureManager
                             .getInstance(getPhone().getContext(), getPhone().getSubId());
                     manager.handleDownloadFromServer(new CallComposerPictureTransfer.Factory() {},
-                            profile.getCallExtra(ImsCallProfile.EXTRA_PICTURE_URL),
+                            serverUrl,
                             (result) -> {
                                 if (result.first != null) {
                                     Bundle newExtras = new Bundle();
