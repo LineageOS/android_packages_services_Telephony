@@ -31,6 +31,7 @@ import static org.mockito.Mockito.verify;
 import android.telephony.AccessNetworkConstants;
 import android.telephony.ims.ImsException;
 import android.telephony.ims.ImsReasonInfo;
+import android.telephony.ims.ImsRegistrationAttributes;
 import android.telephony.ims.RegistrationManager;
 import android.telephony.ims.aidl.IImsCapabilityCallback;
 import android.telephony.ims.aidl.IImsRegistrationCallback;
@@ -175,7 +176,9 @@ public class RcsFeatureControllerTest extends TelephonyTestBase {
         });
         verify(mRegistrationCallback).handleImsUnregistered(REASON_DISCONNECTED);
 
-        captor.getValue().onRegistering(ImsRegistrationImplBase.REGISTRATION_TECH_LTE);
+        ImsRegistrationAttributes attr = new ImsRegistrationAttributes.Builder(
+                ImsRegistrationImplBase.REGISTRATION_TECH_LTE).build();
+        captor.getValue().onRegistering(attr);
         controller.getRegistrationState(result -> {
             assertNotNull(result);
             assertEquals(RegistrationManager.REGISTRATION_STATE_REGISTERING, result.intValue());
@@ -183,7 +186,7 @@ public class RcsFeatureControllerTest extends TelephonyTestBase {
         verify(mRegistrationCallback).handleImsRegistering(
                 AccessNetworkConstants.TRANSPORT_TYPE_WWAN);
 
-        captor.getValue().onRegistered(ImsRegistrationImplBase.REGISTRATION_TECH_LTE);
+        captor.getValue().onRegistered(attr);
         controller.getRegistrationState(result -> {
             assertNotNull(result);
             assertEquals(RegistrationManager.REGISTRATION_STATE_REGISTERED, result.intValue());
