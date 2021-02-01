@@ -114,6 +114,7 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
     private static final String D2D_SEND = "send";
 
     private static final String RCS_UCE_COMMAND = "uce";
+    private static final String UCE_GET_EAB_CONTACT = "get-eab-contact";
     private static final String UCE_REMOVE_EAB_CONTACT = "remove-eab-contact";
 
     // Take advantage of existing methods that already contain permissions checks when possible.
@@ -304,6 +305,12 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
     private void onHelpUce() {
         PrintWriter pw = getOutPrintWriter();
         pw.println("User Capability Exchange Commands:");
+        pw.println("  uce get-eab-contact [PHONE_NUMBER]");
+        pw.println("    Get the EAB contacts from the EAB database.");
+        pw.println("    Options are:");
+        pw.println("      PHONE_NUMBER: The phone numbers to be removed from the EAB databases");
+        pw.println("    Expected output format :");
+        pw.println("      [PHONE_NUMBER],[RAW_CONTACT_ID],[CONTACT_ID],[DATA_ID]");
         pw.println("  uce remove-eab-contact [-s SLOT_ID] [PHONE_NUMBER]");
         pw.println("    Remove the EAB contacts from the EAB database.");
         pw.println("    Options are:");
@@ -1622,6 +1629,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         switch (arg) {
             case UCE_REMOVE_EAB_CONTACT:
                 return handleRemovingEabContactCommand();
+            case UCE_GET_EAB_CONTACT:
+                return handleGettingEabContactCommand();
         }
         return -1;
     }
@@ -1649,6 +1658,28 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             Log.v(LOG_TAG, "uce remove-eab-contact -s " + subId + ", result: " + result);
         }
         return result;
+    }
+
+    private int handleGettingEabContactCommand() {
+        String phoneNumber = getNextArgRequired();
+        if (TextUtils.isEmpty(phoneNumber)) {
+            return -1;
+        }
+        String result = "";
+        try {
+            result = mInterface.getContactFromEab(phoneNumber);
+
+        } catch (RemoteException e) {
+            Log.w(LOG_TAG, "uce get-eab-contact, error " + e.getMessage());
+            getErrPrintWriter().println("Exception: " + e.getMessage());
+            return -1;
+        }
+
+        if (VDBG) {
+            Log.v(LOG_TAG, "uce get-eab-contact, result: " + result);
+        }
+        getOutPrintWriter().println(result);
+        return 0;
     }
 
     private int handleSrcSetDeviceEnabledCommand() {
