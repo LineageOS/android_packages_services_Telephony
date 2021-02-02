@@ -9939,6 +9939,28 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
+    public boolean getDeviceUceEnabled() {
+        TelephonyPermissions.enforceShellOnly(Binder.getCallingUid(), "getDeviceUceEnabled");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return mApp.getDeviceUceEnabled();
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    @Override
+    public void setDeviceUceEnabled(boolean isEnabled) {
+        TelephonyPermissions.enforceShellOnly(Binder.getCallingUid(), "setDeviceUceEnabled");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            mApp.setDeviceUceEnabled(isEnabled);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    @Override
     public void setSignalStrengthUpdateRequest(int subId, SignalStrengthUpdateRequest request,
             String callingPackage) {
         TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
