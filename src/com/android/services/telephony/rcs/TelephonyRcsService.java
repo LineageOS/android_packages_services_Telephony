@@ -33,6 +33,7 @@ import android.util.SparseArray;
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.telephony.PhoneConfigurationManager;
 import com.android.internal.util.IndentingPrintWriter;
+import com.android.phone.R;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
@@ -87,6 +88,22 @@ public class TelephonyRcsService {
         }
     };
 
+    /**
+     * Used to inject device resource for testing.
+     */
+    @VisibleForTesting
+    public interface ResourceProxy {
+        /**
+         * @return an whether the device supports User Capability Exchange.
+         */
+        boolean getDeviceUceEnabled(Context context);
+    }
+
+    private static ResourceProxy sResourceProxy = context -> {
+        return context.getResources().getBoolean(
+                R.bool.config_rcs_user_capability_exchange_enabled);
+    };
+
     // Notifies this service that there has been a change in available slots.
     private static final int HANDLER_MSIM_CONFIGURATION_CHANGE = 1;
 
@@ -96,6 +113,9 @@ public class TelephonyRcsService {
 
     // Maps slot ID -> RcsFeatureController.
     private SparseArray<RcsFeatureController> mFeatureControllers;
+
+    // Whether the device supports User Capability Exchange
+    private boolean mRcsUceEnabled;
 
     private BroadcastReceiver mCarrierConfigChangedReceiver = new BroadcastReceiver() {
         @Override
@@ -139,6 +159,16 @@ public class TelephonyRcsService {
         mContext = context;
         mNumSlots = numSlots;
         mFeatureControllers = new SparseArray<>(numSlots);
+        mRcsUceEnabled = sResourceProxy.getDeviceUceEnabled(mContext);
+    }
+
+    @VisibleForTesting
+    public TelephonyRcsService(Context context, int numSlots, ResourceProxy resourceProxy) {
+        mContext = context;
+        mNumSlots = numSlots;
+        mFeatureControllers = new SparseArray<>(numSlots);
+        sResourceProxy = resourceProxy;
+        mRcsUceEnabled = sResourceProxy.getDeviceUceEnabled(mContext);
     }
 
     /**
@@ -234,7 +264,7 @@ public class TelephonyRcsService {
     }
 
     private void updateSupportedFeatures(RcsFeatureController c, int slotId, int subId) {
-        if (doesSubscriptionSupportPresence(subId)) {
+        if (isDeviceUceEnabled() && doesSubscriptionSupportPresence(subId)) {
             if (c.getFeature(UceControllerManager.class) == null) {
                 c.addFeature(mFeatureFactory.createUceControllerManager(mContext, slotId, subId),
                         UceControllerManager.class);
@@ -257,6 +287,20 @@ public class TelephonyRcsService {
         }
         // Only start the connection procedure if we have active features.
         if (c.hasActiveFeatures()) c.connect();
+    }
+
+    /**
+     * Get whether the device supports RCS User Capability Exchange or not.
+     */
+    public boolean isDeviceUceEnabled() {
+        return mRcsUceEnabled;
+    }
+
+    /**
+     * Set the device supports RCS User Capability Exchange.
+     */
+    public void setDeviceUceEnabled(boolean isEnabled) {
+        mRcsUceEnabled = isEnabled;
     }
 
     private boolean doesSubscriptionSupportPresence(int subId) {
