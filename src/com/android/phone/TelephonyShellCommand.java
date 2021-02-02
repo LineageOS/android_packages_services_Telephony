@@ -116,6 +116,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
     private static final String RCS_UCE_COMMAND = "uce";
     private static final String UCE_GET_EAB_CONTACT = "get-eab-contact";
     private static final String UCE_REMOVE_EAB_CONTACT = "remove-eab-contact";
+    private static final String UCE_GET_DEVICE_ENABLED = "get-device-enabled";
+    private static final String UCE_SET_DEVICE_ENABLED = "set-device-enabled";
 
     // Take advantage of existing methods that already contain permissions checks when possible.
     private final ITelephony mInterface;
@@ -317,6 +319,11 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         pw.println("      -s: The SIM slot ID to read carrier config value for. If no option");
         pw.println("          is specified, it will choose the default voice SIM slot.");
         pw.println("      PHONE_NUMBER: The phone numbers to be removed from the EAB databases");
+        pw.println("  uce get-device-enabled");
+        pw.println("    Get the config to check whether the device supports RCS UCE or not.");
+        pw.println("  uce set-device-enabled true|false");
+        pw.println("    Set the device config for RCS User Capability Exchange to the value.");
+        pw.println("    The value could be true, false.");
     }
 
     private void onHelpNumberVerification() {
@@ -1631,6 +1638,10 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                 return handleRemovingEabContactCommand();
             case UCE_GET_EAB_CONTACT:
                 return handleGettingEabContactCommand();
+            case UCE_GET_DEVICE_ENABLED:
+                return handleUceGetDeviceEnabledCommand();
+            case UCE_SET_DEVICE_ENABLED:
+                return handleUceSetDeviceEnabledCommand();
         }
         return -1;
     }
@@ -1678,7 +1689,41 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         if (VDBG) {
             Log.v(LOG_TAG, "uce get-eab-contact, result: " + result);
         }
+        return 0;
+    }
+
+    private int handleUceGetDeviceEnabledCommand() {
+        boolean result = false;
+        try {
+            result = mInterface.getDeviceUceEnabled();
+        } catch (RemoteException e) {
+            Log.w(LOG_TAG, "uce get-device-enabled, error " + e.getMessage());
+            return -1;
+        }
+        if (VDBG) {
+            Log.v(LOG_TAG, "uce get-device-enabled, returned: " + result);
+        }
         getOutPrintWriter().println(result);
+        return 0;
+    }
+
+    private int handleUceSetDeviceEnabledCommand() {
+        String enabledStr = getNextArg();
+        if (TextUtils.isEmpty(enabledStr)) {
+            return -1;
+        }
+
+        try {
+            boolean isEnabled = Boolean.parseBoolean(enabledStr);
+            mInterface.setDeviceUceEnabled(isEnabled);
+            if (VDBG) {
+                Log.v(LOG_TAG, "uce set-device-enabled " + enabledStr + ", done");
+            }
+        } catch (NumberFormatException | RemoteException e) {
+            Log.w(LOG_TAG, "uce set-device-enabled " + enabledStr + ", error " + e.getMessage());
+            getErrPrintWriter().println("Exception: " + e.getMessage());
+            return -1;
+        }
         return 0;
     }
 
