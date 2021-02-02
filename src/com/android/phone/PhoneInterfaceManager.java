@@ -3293,17 +3293,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         mApp.enforceCallingOrSelfPermission(android.Manifest.permission.MODIFY_PHONE_STATE, null);
     }
 
-    /**
-     * Make sure the caller is system.
-     *
-     * @throws SecurityException if the caller is not system.
-     */
-    private static void enforceSystemCaller() {
-        if (Binder.getCallingUid() != Process.SYSTEM_UID) {
-            throw new SecurityException("Caller must be system");
-        }
-    }
-
     private void enforceActiveEmergencySessionPermission() {
         mApp.enforceCallingOrSelfPermission(
                 android.Manifest.permission.READ_ACTIVE_EMERGENCY_SESSION, null);
@@ -6473,34 +6462,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 return phone.hasMatchedTetherApnSetting();
             } else {
                 return false;
-            }
-        } finally {
-            Binder.restoreCallingIdentity(identity);
-        }
-    }
-
-    /**
-     * Enable or disable always reporting signal strength changes from radio.
-     *
-     * @param isEnable {@code true} for enabling; {@code false} for disabling.
-     */
-    @Override
-    public void setAlwaysReportSignalStrength(int subId, boolean isEnable) {
-        enforceModifyPermission();
-        enforceSystemCaller();
-
-        final long identity = Binder.clearCallingIdentity();
-        final Phone phone = getPhone(subId);
-        try {
-            if (phone != null) {
-                if (DBG) {
-                    log("setAlwaysReportSignalStrength: subId=" + subId
-                            + " isEnable=" + isEnable);
-                }
-                phone.setAlwaysReportSignalStrength(isEnable);
-            } else {
-                loge("setAlwaysReportSignalStrength: no phone found for subId="
-                        + subId);
             }
         } finally {
             Binder.restoreCallingIdentity(identity);
@@ -10643,7 +10604,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         mApp.getSystemService(AppOpsManager.class)
                 .checkPackage(callingUid, callingPackage);
 
-        validateSignalStrengthUpdateRequest(request, callingUid);
+        validateSignalStrengthUpdateRequest(mApp, request, callingUid);
 
         final long identity = Binder.clearCallingIdentity();
         try {
@@ -10682,19 +10643,19 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
-    private static void validateSignalStrengthUpdateRequest(SignalStrengthUpdateRequest request,
-            int callingUid) {
+    private static void validateSignalStrengthUpdateRequest(Context context,
+            SignalStrengthUpdateRequest request, int callingUid) {
         if (callingUid == Process.PHONE_UID || callingUid == Process.SYSTEM_UID) {
             // phone/system process do not have further restriction on request
             return;
         }
 
         // Applications has restrictions on how to use the request:
-        // Only system caller can set mIsSystemThresholdReportingRequestedWhileIdle
+        // Non-system callers need permission to set mIsSystemThresholdReportingRequestedWhileIdle
         if (request.isSystemThresholdReportingRequestedWhileIdle()) {
-            // This is not system caller which has been checked above
-            throw new IllegalArgumentException(
-                    "Only system can set isSystemThresholdReportingRequestedWhileIdle");
+            context.enforceCallingOrSelfPermission(
+                    android.Manifest.permission.LISTEN_ALWAYS_REPORTED_SIGNAL_STRENGTH,
+                    "validateSignalStrengthUpdateRequest");
         }
 
         for (SignalThresholdInfo info : request.getSignalThresholdInfos()) {
