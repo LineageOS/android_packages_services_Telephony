@@ -944,6 +944,23 @@ public class PhoneGlobals extends ContextWrapper {
     }
 
     /**
+     * @return whether the device supports RCS User Capability Exchange or not.
+     */
+    public boolean getDeviceUceEnabled() {
+        return (mTelephonyRcsService == null) ? false : mTelephonyRcsService.isDeviceUceEnabled();
+    }
+
+    /**
+     * Set the device supports RCS User Capability Exchange.
+     * @param isEnabled true if the device supports UCE.
+     */
+    public void setDeviceUceEnabled(boolean isEnabled) {
+        if (mTelephonyRcsService != null) {
+            mTelephonyRcsService.setDeviceUceEnabled(isEnabled);
+        }
+    }
+
+    /**
      * Dump the state of the object, add calls to other objects as desired.
      *
      * @param fd File descriptor
