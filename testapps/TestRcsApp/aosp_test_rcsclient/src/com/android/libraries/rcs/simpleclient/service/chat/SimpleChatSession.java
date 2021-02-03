@@ -210,7 +210,9 @@ public class SimpleChatSession {
             return Futures.immediateFuture(null);
         }
         try {
-            mMsrpSession.terminate();
+            if (mMsrpSession != null) {
+                mMsrpSession.terminate();
+            }
         } catch (IOException e) {
             return Futures.immediateFailedFuture(
                     new ChatServiceException(

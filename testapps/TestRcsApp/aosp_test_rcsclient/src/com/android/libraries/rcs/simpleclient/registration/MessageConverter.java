@@ -67,7 +67,9 @@ public final class MessageConverter {
                 .append(length)
                 .append("\r\n");
 
-        return new SipMessage(startLine, headers.toString(), message.getRawContent());
+        byte[] rawContent = message.getRawContent();
+        rawContent = rawContent == null ? new byte[0] : message.getRawContent();
+        return new SipMessage(startLine, headers.toString(), rawContent);
     }
 
     public static Message toStackMessage(SipMessage message) throws ParseException {
