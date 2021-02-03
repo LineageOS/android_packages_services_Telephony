@@ -19,6 +19,9 @@ package com.android.phone.settings;
 import android.content.Context;
 import android.media.AudioManager;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.HandlerExecutor;
+import android.os.Looper;
 import android.os.PersistableBundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
@@ -56,13 +59,10 @@ public class AccessibilitySettingsFragment extends PreferenceFragment {
 
     private static final int WFC_QUERY_TIMEOUT_MILLIS = 20;
 
-    private final PhoneStateListener mPhoneStateListener = new PhoneStateListener() {
-        /**
-         * Disable the TTY setting when in/out of a call (and if carrier doesn't
-         * support VoLTE with TTY).
-         * @see android.telephony.PhoneStateListener#onCallStateChanged(int,
-         * java.lang.String)
-         */
+    private final PhoneStateListener mPhoneStateListener = new AccessibilityPhoneStateListener();
+
+    private final class AccessibilityPhoneStateListener extends PhoneStateListener implements
+            PhoneStateListener.CallStateChangedListener {
         @Override
         public void onCallStateChanged(int state, String incomingNumber) {
             if (DBG) Log.d(LOG_TAG, "PhoneStateListener.onCallStateChanged: state=" + state);
@@ -78,7 +78,7 @@ public class AccessibilitySettingsFragment extends PreferenceFragment {
                         || (telephonyManager.getCallState() == TelephonyManager.CALL_STATE_IDLE));
             }
         }
-    };
+    }
 
     private Context mContext;
     private AudioManager mAudioManager;
@@ -148,7 +148,8 @@ public class AccessibilitySettingsFragment extends PreferenceFragment {
         super.onResume();
         TelephonyManager tm =
                 (TelephonyManager) mContext.getSystemService(Context.TELEPHONY_SERVICE);
-        tm.listen(mPhoneStateListener, PhoneStateListener.LISTEN_CALL_STATE);
+        tm.registerPhoneStateListener(new HandlerExecutor(new Handler(Looper.getMainLooper())),
+                mPhoneStateListener);
     }
 
     @Override
@@ -156,7 +157,7 @@ public class AccessibilitySettingsFragment extends PreferenceFragment {
         super.onPause();
         TelephonyManager tm =
                 (TelephonyManager) mContext.getSystemService(Context.TELEPHONY_SERVICE);
-        tm.listen(mPhoneStateListener, PhoneStateListener.LISTEN_NONE);
+        tm.unregisterPhoneStateListener(mPhoneStateListener);
     }
 
     @Override

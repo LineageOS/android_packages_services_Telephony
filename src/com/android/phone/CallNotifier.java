@@ -25,6 +25,7 @@ import android.media.AudioSystem;
 import android.media.ToneGenerator;
 import android.os.AsyncResult;
 import android.os.Handler;
+import android.os.HandlerExecutor;
 import android.os.Message;
 import android.os.SystemProperties;
 import android.telecom.TelecomManager;
@@ -583,9 +584,8 @@ public class CallNotifier extends Handler {
                 mApplication.notificationMgr.updateMwi(subId, false);
                 mApplication.notificationMgr.updateCfi(subId, false);
 
-                // Listening to LISTEN_NONE removes the listener.
-                mTelephonyManager.listen(
-                        mPhoneStateListeners.get(subId), PhoneStateListener.LISTEN_NONE);
+                // Unregister the listener.
+                mTelephonyManager.unregisterPhoneStateListener(mPhoneStateListeners.get(subId));
                 mPhoneStateListeners.remove(subId);
             } else {
                 Log.d(LOG_TAG, "updatePhoneStateListeners: update CF notifications.");
@@ -618,9 +618,8 @@ public class CallNotifier extends Handler {
             int subId = subInfos.get(i).getSubscriptionId();
             if (!mPhoneStateListeners.containsKey(subId)) {
                 CallNotifierPhoneStateListener listener = new CallNotifierPhoneStateListener(subId);
-                mTelephonyManager.createForSubscriptionId(subId).listen(listener,
-                        PhoneStateListener.LISTEN_MESSAGE_WAITING_INDICATOR
-                        | PhoneStateListener.LISTEN_CALL_FORWARDING_INDICATOR);
+                mTelephonyManager.createForSubscriptionId(subId).registerPhoneStateListener(
+                        new HandlerExecutor(this), listener);
                 mPhoneStateListeners.put(subId, listener);
             }
         }
@@ -768,7 +767,10 @@ public class CallNotifier extends Handler {
                 }
             };
 
-    private class CallNotifierPhoneStateListener extends PhoneStateListener {
+    private class CallNotifierPhoneStateListener extends PhoneStateListener implements
+            PhoneStateListener.MessageWaitingIndicatorChangedListener,
+            PhoneStateListener.CallForwardingIndicatorChangedListener {
+
         private final int mSubId;
 
         CallNotifierPhoneStateListener(int subId) {
@@ -790,7 +792,7 @@ public class CallNotifier extends Handler {
             mCFIStatus.put(this.mSubId, visible);
             updatePhoneStateListeners(false, UPDATE_TYPE_CFI, this.mSubId);
         }
-    };
+    }
 
     private void log(String msg) {
         Log.d(LOG_TAG, msg);
