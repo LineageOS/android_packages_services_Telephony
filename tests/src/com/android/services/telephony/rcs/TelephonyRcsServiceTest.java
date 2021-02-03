@@ -50,6 +50,7 @@ public class TelephonyRcsServiceTest extends TelephonyTestBase {
 
     @Captor ArgumentCaptor<BroadcastReceiver> mReceiverCaptor;
     @Mock TelephonyRcsService.FeatureFactory mFeatureFactory;
+    @Mock TelephonyRcsService.ResourceProxy mResourceProxy;
     @Mock UceControllerManager mMockUceSlot0;
     @Mock UceControllerManager mMockUceSlot1;
     @Mock SipTransportController mMockSipTransportSlot0;
@@ -78,6 +79,7 @@ public class TelephonyRcsServiceTest extends TelephonyTestBase {
                 eq(0), anyInt());
         doReturn(mMockSipTransportSlot1).when(mFeatureFactory).createSipTransportController(any(),
                 eq(1), anyInt());
+        doReturn(true).when(mResourceProxy).getDeviceUceEnabled(any());
         //set up default slot-> sub ID mappings.
         setSlotToSubIdMapping(0 /*slotId*/, 1/*subId*/);
         setSlotToSubIdMapping(1 /*slotId*/, 2/*subId*/);
@@ -325,7 +327,7 @@ public class TelephonyRcsServiceTest extends TelephonyTestBase {
     }
 
     private TelephonyRcsService createRcsService(int numSlots) {
-        TelephonyRcsService service = new TelephonyRcsService(mContext, numSlots);
+        TelephonyRcsService service = new TelephonyRcsService(mContext, numSlots, mResourceProxy);
         service.setFeatureFactory(mFeatureFactory);
         service.initialize();
         verify(mContext).registerReceiver(mReceiverCaptor.capture(), any());

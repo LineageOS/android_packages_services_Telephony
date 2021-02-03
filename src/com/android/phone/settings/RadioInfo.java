@@ -36,6 +36,7 @@ import android.os.AsyncResult;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.HandlerExecutor;
 import android.os.Message;
 import android.os.PersistableBundle;
 import android.os.SystemProperties;
@@ -296,9 +297,19 @@ public class RadioInfo extends AppCompatActivity {
 
     // not final because we need to recreate this object to register on a new subId (b/117555407)
     private PhoneStateListener mPhoneStateListener = new RadioInfoPhoneStateListener();
-    private class RadioInfoPhoneStateListener extends PhoneStateListener {
+    private class RadioInfoPhoneStateListener extends PhoneStateListener implements
+            PhoneStateListener.DataConnectionStateChangedListener,
+            PhoneStateListener.DataActivityListener,
+            PhoneStateListener.CallStateChangedListener,
+            PhoneStateListener.MessageWaitingIndicatorChangedListener,
+            PhoneStateListener.CallForwardingIndicatorChangedListener,
+            PhoneStateListener.CellInfoChangedListener,
+            PhoneStateListener.CellLocationChangedListener,
+            PhoneStateListener.SignalStrengthsChangedListener,
+            PhoneStateListener.ServiceStateChangedListener {
+
         @Override
-        public void onDataConnectionStateChanged(int state) {
+        public void onDataConnectionStateChanged(int state, int networkType) {
             updateDataState();
             updateNetworkType();
         }
@@ -312,11 +323,6 @@ public class RadioInfo extends AppCompatActivity {
         public void onCallStateChanged(int state, String incomingNumber) {
             updateNetworkType();
             updatePhoneState(state);
-        }
-
-        @Override
-        public void onPreciseCallStateChanged(PreciseCallState preciseState) {
-            updateNetworkType();
         }
 
         @Override
@@ -636,6 +642,8 @@ public class RadioInfo extends AppCompatActivity {
         mCellInfoRefreshRateSpinner.setOnItemSelectedListener(mCellInfoRefreshRateHandler);
         //set selection after registering listener to force update
         mCellInfoRefreshRateSpinner.setSelection(mCellInfoRefreshRateIndex);
+        // Request cell information update from RIL.
+        mTelephonyManager.setCellInfoListRate(CELL_INFO_REFRESH_RATES[mCellInfoRefreshRateIndex]);
 
         //set selection before registering to prevent update
         mPreferredNetworkType.setSelection(mPreferredNetworkTypeResult, true);
@@ -673,7 +681,7 @@ public class RadioInfo extends AppCompatActivity {
 
         log("onPause: unregister phone & data intents");
 
-        mTelephonyManager.listen(mPhoneStateListener, PhoneStateListener.LISTEN_NONE);
+        mTelephonyManager.unregisterPhoneStateListener(mPhoneStateListener);
         mTelephonyManager.setCellInfoListRate(sCellInfoListRateDisabled);
         mConnectivityManager.unregisterNetworkCallback(mNetworkCallback);
 
@@ -774,7 +782,7 @@ public class RadioInfo extends AppCompatActivity {
     }
 
     private void unregisterPhoneStateListener() {
-        mTelephonyManager.listen(mPhoneStateListener, PhoneStateListener.LISTEN_NONE);
+        mTelephonyManager.unregisterPhoneStateListener(mPhoneStateListener);
         mPhone.unregisterForPhysicalChannelConfig(mHandler);
 
         // clear all fields so they are blank until the next listener event occurs
@@ -799,18 +807,8 @@ public class RadioInfo extends AppCompatActivity {
     // register mPhoneStateListener for relevant fields using the current TelephonyManager
     private void registerPhoneStateListener() {
         mPhoneStateListener = new RadioInfoPhoneStateListener();
-        mTelephonyManager.listen(mPhoneStateListener,
-                  PhoneStateListener.LISTEN_CALL_STATE
-        //b/27803938 - RadioInfo currently cannot read PRECISE_CALL_STATE
-        //      | PhoneStateListener.LISTEN_PRECISE_CALL_STATE
-                | PhoneStateListener.LISTEN_DATA_CONNECTION_STATE
-                | PhoneStateListener.LISTEN_DATA_ACTIVITY
-                | PhoneStateListener.LISTEN_CELL_LOCATION
-                | PhoneStateListener.LISTEN_MESSAGE_WAITING_INDICATOR
-                | PhoneStateListener.LISTEN_CALL_FORWARDING_INDICATOR
-                | PhoneStateListener.LISTEN_CELL_INFO
-                | PhoneStateListener.LISTEN_SERVICE_STATE
-                | PhoneStateListener.LISTEN_SIGNAL_STRENGTHS);
+        mTelephonyManager.registerPhoneStateListener(new HandlerExecutor(mHandler),
+                mPhoneStateListener);
     }
 
     private void updateDnsCheckState() {
