@@ -9174,7 +9174,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public void setMobileDataPolicyEnabledStatus(int subscriptionId, int policy,
+    public void setMobileDataPolicyEnabled(int subscriptionId, int policy,
             boolean enabled) {
         enforceModifyPermission();
 
