@@ -304,9 +304,6 @@
         positive n - release in n milliseconds -->
     <integer name="config_gba_release_time">0</integer>
 
-    <!-- Whether or not to support RCS VoLTE single registration  -->
-    <bool name="config_rcsVolteSingleRegistrationEnabled">true</bool>
-
     <!-- Whether or not to support RCS User Capability Exchange -->
     <bool name="config_rcs_user_capability_exchange_enabled">true</bool>
 

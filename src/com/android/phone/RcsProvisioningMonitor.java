@@ -22,6 +22,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Handler;
 import android.os.HandlerThread;
@@ -543,7 +544,8 @@ public class RcsProvisioningMonitor {
         boolean isSingleRegistrationEnabledOnDevice =
                 mDeviceSingleRegistrationEnabledOverride != null
                 ? mDeviceSingleRegistrationEnabledOverride
-                : mPhone.getResources().getBoolean(R.bool.config_rcsVolteSingleRegistrationEnabled);
+                : mPhone.getPackageManager().hasSystemFeature(
+                        PackageManager.FEATURE_TELEPHONY_IMS_SINGLE_REGISTRATION);
 
         int value = (isSingleRegistrationEnabledOnDevice ? 0
                 : ProvisioningManager.STATUS_DEVICE_NOT_CAPABLE) | (
