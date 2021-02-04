@@ -9832,6 +9832,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         Boolean enabled = "NULL".equalsIgnoreCase(enabledStr) ? null
                 : Boolean.parseBoolean(enabledStr);
         RcsProvisioningMonitor.getInstance().overrideDeviceSingleRegistrationEnabled(enabled);
+        mApp.imsRcsController.setDeviceSingleRegistrationSupportOverride(enabled);
     }
 
     /**
