@@ -38,6 +38,7 @@ import android.content.BroadcastReceiver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.net.Uri;
@@ -138,6 +139,8 @@ public class RcsProvisioningMonitorTest {
     private PhoneGlobals mPhone;
     @Mock
     private IRcsConfigCallback mCallback;
+    @Mock
+    private PackageManager mPackageManager;
 
     private Executor mExecutor = new Executor() {
         @Override
@@ -181,8 +184,9 @@ public class RcsProvisioningMonitorTest {
         MockitoAnnotations.initMocks(this);
 
         when(mPhone.getResources()).thenReturn(mResources);
-        when(mResources.getBoolean(
-                eq(R.bool.config_rcsVolteSingleRegistrationEnabled))).thenReturn(true);
+        when(mPhone.getPackageManager()).thenReturn(mPackageManager);
+        when(mPackageManager.hasSystemFeature(
+                eq(PackageManager.FEATURE_TELEPHONY_IMS_SINGLE_REGISTRATION))).thenReturn(true);
         when(mPhone.getMainExecutor()).thenReturn(mExecutor);
         when(mPhone.getSystemServiceName(eq(CarrierConfigManager.class)))
                 .thenReturn(Context.CARRIER_CONFIG_SERVICE);
@@ -361,8 +365,8 @@ public class RcsProvisioningMonitorTest {
     @SmallTest
     public void testCarrierConfigChanged() throws Exception {
         createMonitor(1);
-        when(mResources.getBoolean(
-                eq(R.bool.config_rcsVolteSingleRegistrationEnabled))).thenReturn(true);
+        when(mPackageManager.hasSystemFeature(
+                eq(PackageManager.FEATURE_TELEPHONY_IMS_SINGLE_REGISTRATION))).thenReturn(true);
         ArgumentCaptor<Intent> captorIntent = ArgumentCaptor.forClass(Intent.class);
         mBundle.putBoolean(
                 CarrierConfigManager.Ims.KEY_IMS_SINGLE_REGISTRATION_REQUIRED_BOOL, true);
@@ -391,8 +395,8 @@ public class RcsProvisioningMonitorTest {
                 capturedIntent.getIntExtra(ProvisioningManager.EXTRA_STATUS, -1));
 
 
-        when(mResources.getBoolean(
-                eq(R.bool.config_rcsVolteSingleRegistrationEnabled))).thenReturn(false);
+        when(mPackageManager.hasSystemFeature(
+                eq(PackageManager.FEATURE_TELEPHONY_IMS_SINGLE_REGISTRATION))).thenReturn(false);
         broadcastCarrierConfigChange(FAKE_SUB_ID_BASE);
         processAllMessages();
         verify(mPhone, atLeastOnce()).sendBroadcast(captorIntent.capture());
@@ -441,8 +445,8 @@ public class RcsProvisioningMonitorTest {
     public void testIsRcsVolteSingleRegistrationEnabled() throws Exception {
         createMonitor(1);
 
-        when(mResources.getBoolean(
-                eq(R.bool.config_rcsVolteSingleRegistrationEnabled))).thenReturn(true);
+        when(mPackageManager.hasSystemFeature(
+                eq(PackageManager.FEATURE_TELEPHONY_IMS_SINGLE_REGISTRATION))).thenReturn(true);
         mBundle.putBoolean(
                 CarrierConfigManager.Ims.KEY_IMS_SINGLE_REGISTRATION_REQUIRED_BOOL, true);
         broadcastCarrierConfigChange(FAKE_SUB_ID_BASE);
@@ -456,8 +460,8 @@ public class RcsProvisioningMonitorTest {
         assertFalse(mRcsProvisioningMonitor.isRcsVolteSingleRegistrationEnabled(FAKE_SUB_ID_BASE));
 
 
-        when(mResources.getBoolean(
-                eq(R.bool.config_rcsVolteSingleRegistrationEnabled))).thenReturn(false);
+        when(mPackageManager.hasSystemFeature(
+                eq(PackageManager.FEATURE_TELEPHONY_IMS_SINGLE_REGISTRATION))).thenReturn(false);
         mBundle.putBoolean(
                 CarrierConfigManager.Ims.KEY_IMS_SINGLE_REGISTRATION_REQUIRED_BOOL, true);
         broadcastCarrierConfigChange(FAKE_SUB_ID_BASE);
