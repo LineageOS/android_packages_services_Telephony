@@ -30,6 +30,7 @@ import android.os.Message;
 import android.os.PersistableBundle;
 import android.telecom.BluetoothCallQualityReport;
 import android.telecom.CallAudioState;
+import android.telecom.CallScreeningService;
 import android.telecom.Conference;
 import android.telecom.Connection;
 import android.telecom.ConnectionService;
@@ -1131,7 +1132,9 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
     }
 
     @Override
-    public void onCallFilteringCompleted(boolean isBlocked, boolean isInContacts) {
+    public void onCallFilteringCompleted(boolean isBlocked, boolean isInContacts,
+            CallScreeningService.CallResponse callScreeningResponse,
+            boolean isResponseFromSystemDialer) {
         if (isImsConnection()) {
             ImsPhone imsPhone = (getPhone() instanceof ImsPhone) ? (ImsPhone) getPhone() : null;
             if (imsPhone != null
