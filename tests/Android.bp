@@ -33,9 +33,13 @@ android_test {
     instrumentation_for: "TeleService",
 
     static_libs: [
+        "androidx.test.core",
+        "androidx.test.espresso.core",
+        "androidx.test.ext.junit",
         "androidx.test.rules",
         "mockito-target-minus-junit4",
-        "androidx.test.espresso.core",
+        "telephony-common-testing",
+        "testng",
         "truth-prebuilt",
 	"testables",
     ],
@@ -46,3 +50,4 @@ android_test {
     ],
 
 }
+
