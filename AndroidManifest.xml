@@ -246,6 +246,13 @@
                 android:readPermission="android.permission.READ_CONTACTS"
                 android:writePermission="android.permission.WRITE_CONTACTS" />
 
+        <provider android:name=".SimPhonebookProvider"
+            android:authorities="com.android.simphonebook"
+            android:multiprocess="true"
+            android:exported="true"
+            android:readPermission="android.permission.READ_CONTACTS"
+            android:writePermission="android.permission.WRITE_CONTACTS" />
+
         <provider android:name="com.android.ims.rcs.uce.eab.EabProvider"
                 android:authorities="eab"
                 android:exported="false"/>
