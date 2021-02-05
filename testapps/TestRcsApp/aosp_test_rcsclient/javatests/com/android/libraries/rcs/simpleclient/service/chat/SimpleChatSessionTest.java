@@ -52,7 +52,7 @@ public class SimpleChatSessionTest {
     SipSessionConfiguration configuration =
             new SipSessionConfiguration() {
                 @Override
-                public int getVersion() {
+                public long getVersion() {
                     return 0;
                 }
 

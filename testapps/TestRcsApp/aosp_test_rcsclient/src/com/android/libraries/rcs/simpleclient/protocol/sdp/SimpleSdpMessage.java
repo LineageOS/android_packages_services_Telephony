@@ -147,6 +147,14 @@ public abstract class SimpleSdpMessage {
         return OptionalInt.of(media().get(0).port());
     }
 
+    public Optional<String> getPath() {
+        if (media().isEmpty()) {
+            return Optional.empty();
+        }
+
+        return Optional.ofNullable(media().get(0).attributes().get("path"));
+    }
+
     /** Encode the entire SDP fields as a string. */
     public String encode() {
         StringBuilder builder = new StringBuilder();
