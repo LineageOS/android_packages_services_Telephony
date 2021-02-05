@@ -80,7 +80,7 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
     private static final String DISABLE = "disable";
     private static final String QUERY = "query";
 
-    private static final String CALL_COMPOSER_TEST_MODE = "test_mode";
+    private static final String CALL_COMPOSER_TEST_MODE = "test-mode";
     private static final String CALL_COMPOSER_SIMULATE_CALL = "simulate-outgoing-call";
 
     private static final String IMS_SET_IMS_SERVICE = "set-ims-service";
