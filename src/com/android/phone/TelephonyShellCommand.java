@@ -1668,7 +1668,7 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         if (VDBG) {
             Log.v(LOG_TAG, "uce remove-eab-contact -s " + subId + ", result: " + result);
         }
-        return result;
+        return 0;
     }
 
     private int handleGettingEabContactCommand() {
@@ -1689,6 +1689,7 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         if (VDBG) {
             Log.v(LOG_TAG, "uce get-eab-contact, result: " + result);
         }
+        getOutPrintWriter().println(result);
         return 0;
     }
 
