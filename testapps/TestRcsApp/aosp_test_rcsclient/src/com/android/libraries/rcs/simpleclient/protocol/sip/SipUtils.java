@@ -157,7 +157,7 @@ public final class SipUtils {
             if (configuration.getPlaniHeader() != null) {
                 request.setHeader(
                         sHeaderFactory.createHeader(PLANI_HEADER_NAME,
-                                configuration.getPaniHeader()));
+                                configuration.getPlaniHeader()));
             }
         } catch (InvalidArgumentException e) {
             // Nothing to do here
@@ -295,7 +295,7 @@ public final class SipUtils {
         }
         if (configuration.getPlaniHeader() != null) {
             response.setHeader(
-                    sHeaderFactory.createHeader(PLANI_HEADER_NAME, configuration.getPaniHeader()));
+                    sHeaderFactory.createHeader(PLANI_HEADER_NAME, configuration.getPlaniHeader()));
         }
         return response;
     }
