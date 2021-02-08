@@ -100,7 +100,8 @@ public class ImsRcsController extends IImsRcsController.Stub {
      */
     @Override
     public void registerImsRegistrationCallback(int subId, IImsRegistrationCallback callback) {
-        enforceReadPrivilegedPermission("registerImsRegistrationCallback");
+        TelephonyPermissions.enforeceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
+                mApp, subId, "registerImsRegistrationCallback");
         final long token = Binder.clearCallingIdentity();
         try {
             getRcsFeatureController(subId).registerImsRegistrationCallback(subId, callback);
@@ -117,7 +118,8 @@ public class ImsRcsController extends IImsRcsController.Stub {
      */
     @Override
     public void unregisterImsRegistrationCallback(int subId, IImsRegistrationCallback callback) {
-        enforceReadPrivilegedPermission("unregisterImsRegistrationCallback");
+        TelephonyPermissions.enforeceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
+                mApp, subId, "unregisterImsRegistrationCallback");
         final long token = Binder.clearCallingIdentity();
         try {
             getRcsFeatureController(subId).unregisterImsRegistrationCallback(subId, callback);
@@ -133,7 +135,8 @@ public class ImsRcsController extends IImsRcsController.Stub {
      */
     @Override
     public void getImsRcsRegistrationState(int subId, IIntegerConsumer consumer) {
-        enforceReadPrivilegedPermission("getImsRcsRegistrationState");
+        TelephonyPermissions.enforeceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
+                mApp, subId, "getImsRcsRegistrationState");
         final long token = Binder.clearCallingIdentity();
         try {
             getRcsFeatureController(subId).getRegistrationState(regState -> {
@@ -154,7 +157,8 @@ public class ImsRcsController extends IImsRcsController.Stub {
      */
     @Override
     public void getImsRcsRegistrationTransportType(int subId, IIntegerConsumer consumer) {
-        enforceReadPrivilegedPermission("getImsRcsRegistrationTransportType");
+        TelephonyPermissions.enforeceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
+                mApp, subId, "getImsRcsRegistrationTransportType");
         final long token = Binder.clearCallingIdentity();
         try {
             getRcsFeatureController(subId).getRegistrationTech(regTech -> {
@@ -217,7 +221,7 @@ public class ImsRcsController extends IImsRcsController.Stub {
      *
      * @param subId the subscription ID
      * @param capability the RCS capability to query.
-     * @param radioTech the radio tech that this capability failed for
+     * @param radioTech the radio technology type that we are querying.
      * @return true if the RCS capability is capable for this subscription, false otherwise.
      */
     @Override
@@ -243,15 +247,17 @@ public class ImsRcsController extends IImsRcsController.Stub {
      * @param subId the subscription ID
      * @param capability the RCS capability to query.
      * @return true if the RCS capability is currently available for the associated subscription,
+     * @param radioTech the radio technology type that we are querying.
      * false otherwise.
      */
     @Override
     public boolean isAvailable(int subId,
-            @RcsFeature.RcsImsCapabilities.RcsImsCapabilityFlag int capability) {
+            @RcsFeature.RcsImsCapabilities.RcsImsCapabilityFlag int capability,
+            @ImsRegistrationImplBase.ImsRegistrationTech int radioTech) {
         enforceReadPrivilegedPermission("isAvailable");
         final long token = Binder.clearCallingIdentity();
         try {
-            return getRcsFeatureController(subId).isAvailable(capability);
+            return getRcsFeatureController(subId).isAvailable(capability, radioTech);
         } catch (ImsException e) {
             Log.e(TAG, "isAvailable: sudId=" + subId
                     + ", capability=" + capability + ", " + e.getMessage());
