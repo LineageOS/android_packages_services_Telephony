@@ -17,9 +17,12 @@
 package com.android.libraries.rcs.simpleclient.protocol.msrp;
 
 import com.android.libraries.rcs.simpleclient.protocol.sip.SipUtils;
+import java.security.SecureRandom;
 
 /** Collections of utility functions for MSRP */
 public final class MsrpUtils {
+
+    private static final SecureRandom random = new SecureRandom();
 
     private MsrpUtils() {
     }
@@ -43,5 +46,15 @@ public final class MsrpUtils {
                 .append(";tcp");
 
         return builder.toString();
+    }
+
+    public static String generateRandomId() {
+        byte[] randomBytes = new byte[8];
+        random.nextBytes(randomBytes);
+        String hex = "";
+        for (byte b : randomBytes) {
+            hex = hex + String.format("%02x", b);
+        }
+        return hex;
     }
 }
