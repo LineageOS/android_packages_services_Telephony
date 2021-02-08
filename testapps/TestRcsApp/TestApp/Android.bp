@@ -1,0 +1,19 @@
+android_app {
+    name: "TestRcsApp",
+
+    srcs: [
+        "src/**/*.java",
+    ],
+
+    static_libs: [
+        "androidx-constraintlayout_constraintlayout",
+        "aosp_test_rcs_client_base",
+        "androidx.appcompat_appcompat",
+    ],
+    certificate: "platform",
+
+    sdk_version: "system_current",
+    min_sdk_version: "30",
+}
+
+
