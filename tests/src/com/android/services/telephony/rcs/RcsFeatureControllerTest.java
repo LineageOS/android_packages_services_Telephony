@@ -135,7 +135,8 @@ public class RcsFeatureControllerTest extends TelephonyTestBase {
             controller.registerRcsAvailabilityCallback(0 /*subId*/, capCb);
             controller.isCapable(RcsFeature.RcsImsCapabilities.CAPABILITY_TYPE_PRESENCE_UCE,
                     ImsRegistrationImplBase.REGISTRATION_TECH_LTE);
-            controller.isAvailable(RcsFeature.RcsImsCapabilities.CAPABILITY_TYPE_PRESENCE_UCE);
+            controller.isAvailable(RcsFeature.RcsImsCapabilities.CAPABILITY_TYPE_PRESENCE_UCE,
+                    ImsRegistrationImplBase.REGISTRATION_TECH_LTE);
             controller.getRegistrationTech(integer -> {
             });
             verify(mFeatureManager).registerImsRegistrationCallback(0, regCb);
@@ -144,7 +145,8 @@ public class RcsFeatureControllerTest extends TelephonyTestBase {
                     RcsFeature.RcsImsCapabilities.CAPABILITY_TYPE_PRESENCE_UCE,
                     ImsRegistrationImplBase.REGISTRATION_TECH_LTE);
             verify(mFeatureManager).isAvailable(
-                    RcsFeature.RcsImsCapabilities.CAPABILITY_TYPE_PRESENCE_UCE);
+                    RcsFeature.RcsImsCapabilities.CAPABILITY_TYPE_PRESENCE_UCE,
+                    ImsRegistrationImplBase.REGISTRATION_TECH_LTE);
             verify(mFeatureManager).getImsRegistrationTech(any());
         } catch (ImsException e) {
             fail("ImsException not expected.");
@@ -230,7 +232,8 @@ public class RcsFeatureControllerTest extends TelephonyTestBase {
             //expected
         }
         try {
-            controller.isAvailable(RcsFeature.RcsImsCapabilities.CAPABILITY_TYPE_PRESENCE_UCE);
+            controller.isAvailable(RcsFeature.RcsImsCapabilities.CAPABILITY_TYPE_PRESENCE_UCE,
+                    ImsRegistrationImplBase.REGISTRATION_TECH_LTE);
             fail("ImsException expected for availability check");
         } catch (ImsException e) {
             //expected
