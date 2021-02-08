@@ -19,8 +19,6 @@ package com.android.libraries.rcs.simpleclient.protocol.sip;
 import static com.android.libraries.rcs.simpleclient.protocol.sdp.SdpUtils.SDP_CONTENT_SUB_TYPE;
 import static com.android.libraries.rcs.simpleclient.protocol.sdp.SdpUtils.SDP_CONTENT_TYPE;
 
-import static java.nio.charset.StandardCharsets.UTF_8;
-
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -106,7 +104,10 @@ public final class SipUtils {
      * @param conversationId The id to be contained in Conversation-ID header.
      */
     public static SIPRequest buildInvite(
-            SipSessionConfiguration configuration, String targetUri, String conversationId)
+            SipSessionConfiguration configuration,
+            String targetUri,
+            String conversationId,
+            byte[] content)
             throws ParseException {
         String address = configuration.getLocalIpAddress();
         int port = configuration.getLocalPort();
@@ -196,13 +197,11 @@ public final class SipUtils {
         request.addHeader(
                 sHeaderFactory.createUserAgentHeader(ImmutableList.of(USER_AGENT_HEADER)));
 
-        SimpleSdpMessage sdp = SdpUtils.createSdpForMsrp(address, false);
-        request.setMessageContent(SDP_CONTENT_TYPE, SDP_CONTENT_SUB_TYPE,
-                sdp.encode().getBytes(UTF_8));
+        request.setMessageContent(SDP_CONTENT_TYPE, SDP_CONTENT_SUB_TYPE, content);
 
         if (viaHeader != null && Ascii.equalsIgnoreCase("udp", transport)) {
-            String newTransport = determineTransportBySize(configuration,
-                    request.encodeAsBytes("udp").length);
+            String newTransport =
+                    determineTransportBySize(configuration, request.encodeAsBytes("udp").length);
             if (!Ascii.equalsIgnoreCase(transport, newTransport)) {
                 viaHeader.setTransport(newTransport);
             }
