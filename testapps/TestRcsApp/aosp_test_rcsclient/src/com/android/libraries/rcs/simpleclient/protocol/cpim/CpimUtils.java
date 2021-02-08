@@ -23,6 +23,7 @@ import java.util.Random;
 /** Collections of utility functions for CPIM */
 public class CpimUtils {
     private static final String ANONYMOUS_URI = "<sip:anonymous@anonymous.invalid>";
+    public static final String CPIM_CONTENT_TYPE = "message/cpim";
 
     private CpimUtils() {
     }
