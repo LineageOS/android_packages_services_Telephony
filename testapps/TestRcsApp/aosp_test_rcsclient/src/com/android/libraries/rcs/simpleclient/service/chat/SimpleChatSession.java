@@ -16,6 +16,7 @@
 
 package com.android.libraries.rcs.simpleclient.service.chat;
 
+import static com.android.libraries.rcs.simpleclient.protocol.cpim.CpimUtils.CPIM_CONTENT_TYPE;
 import static com.android.libraries.rcs.simpleclient.service.chat.ChatServiceException.CODE_ERROR_UNSPECIFIED;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
@@ -29,9 +30,14 @@ import com.android.libraries.rcs.simpleclient.SimpleRcsClientContext;
 import com.android.libraries.rcs.simpleclient.protocol.cpim.CpimUtils;
 import com.android.libraries.rcs.simpleclient.protocol.cpim.SimpleCpimMessage;
 import com.android.libraries.rcs.simpleclient.protocol.msrp.MsrpChunk;
+import com.android.libraries.rcs.simpleclient.protocol.msrp.MsrpChunk.Continuation;
+import com.android.libraries.rcs.simpleclient.protocol.msrp.MsrpConstants;
 import com.android.libraries.rcs.simpleclient.protocol.msrp.MsrpManager;
 import com.android.libraries.rcs.simpleclient.protocol.msrp.MsrpSession;
+import com.android.libraries.rcs.simpleclient.protocol.msrp.MsrpUtils;
+import com.android.libraries.rcs.simpleclient.protocol.sdp.SdpUtils;
 import com.android.libraries.rcs.simpleclient.protocol.sdp.SimpleSdpMessage;
+import com.android.libraries.rcs.simpleclient.protocol.sip.SipSessionConfiguration;
 import com.android.libraries.rcs.simpleclient.protocol.sip.SipUtils;
 import com.android.libraries.rcs.simpleclient.service.chat.ChatServiceException.ErrorCode;
 
@@ -74,6 +80,8 @@ public class SimpleChatSession {
     @Nullable
     private SimpleSdpMessage mRemoteSdp;
     @Nullable
+    private SimpleSdpMessage mLocalSdp;
+    @Nullable
     private MsrpSession mMsrpSession;
     @Nullable
     private ChatSessionListener mListener;
@@ -94,16 +102,27 @@ public class SimpleChatSession {
     /** Send a text message via MSRP session associated with this session. */
     public void sendMessage(String msg) {
         MsrpSession session = mMsrpSession;
-        if (session == null) {
+        if (session == null || mRemoteSdp == null || mLocalSdp == null) {
+            Log.e(TAG, "Session is not established");
             return;
         }
 
         // Build a new CPIM message and send it out through the MSRP session.
         SimpleCpimMessage cpim = CpimUtils.createForText(msg);
+        byte[] content = cpim.encode().getBytes(UTF_8);
         MsrpChunk msrpChunk =
                 MsrpChunk.newBuilder()
                         .method(MsrpChunk.Method.SEND)
-                        .content(cpim.encode().getBytes(UTF_8))
+                        .transactionId(MsrpUtils.generateRandomId())
+                        .content(content)
+                        .continuation(Continuation.COMPLETE)
+                        .addHeader(MsrpConstants.HEADER_TO_PATH, mRemoteSdp.getPath().get())
+                        .addHeader(MsrpConstants.HEADER_FROM_PATH, mLocalSdp.getPath().get())
+                        .addHeader(
+                                MsrpConstants.HEADER_BYTE_RANGE,
+                                String.format("1-%d/%d", content.length, content.length))
+                        .addHeader(MsrpConstants.HEADER_MESSAGE_ID, MsrpUtils.generateRandomId())
+                        .addHeader(MsrpConstants.HEADER_CONTENT_TYPE, CPIM_CONTENT_TYPE)
                         .build();
         Futures.addCallback(
                 session.send(msrpChunk),
@@ -139,12 +158,16 @@ public class SimpleChatSession {
         mStartFuture = future;
         mRemoteUri = SipUtils.createUri(telUriContact);
         try {
+            SipSessionConfiguration configuration = mContext.getSipSession().getSessionConfiguration();
+            SimpleSdpMessage sdp = SdpUtils.createSdpForMsrp(configuration.getLocalIpAddress(), false);
             SIPRequest invite =
                     SipUtils.buildInvite(
-                            mContext.getSipSession().getSessionConfiguration(), telUriContact,
-                            mConversationId);
-            Log.i(TAG, "buildInvite done");
+                            mContext.getSipSession().getSessionConfiguration(),
+                            telUriContact,
+                            mConversationId,
+                            sdp.encode().getBytes(UTF_8));
             mInviteRequest = invite;
+            mLocalSdp = sdp;
             Futures.addCallback(
                     mService.sendSipRequest(invite, this),
                     new FutureCallback<Boolean>() {
