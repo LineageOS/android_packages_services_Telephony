@@ -20,9 +20,7 @@ import android.annotation.AnyThread;
 import android.content.Context;
 import android.net.Uri;
 import android.telephony.ims.ImsException;
-import android.telephony.ims.ImsRcsManager;
 import android.telephony.ims.ImsReasonInfo;
-import android.telephony.ims.RegistrationManager;
 import android.telephony.ims.aidl.IImsCapabilityCallback;
 import android.telephony.ims.aidl.IImsRegistrationCallback;
 import android.telephony.ims.stub.ImsRegistrationImplBase;
@@ -355,13 +353,14 @@ public class RcsFeatureController {
     /**
      * Query the availability of an IMS RCS capability.
      */
-    public boolean isAvailable(int capability) throws android.telephony.ims.ImsException {
+    public boolean isAvailable(int capability, int radioTech)
+            throws android.telephony.ims.ImsException {
         RcsFeatureManager manager = getFeatureManager();
         if (manager == null) {
             throw new ImsException("Service is not available",
                     ImsException.CODE_ERROR_SERVICE_UNAVAILABLE);
         }
-        return manager.isAvailable(capability);
+        return manager.isAvailable(capability, radioTech);
     }
 
     /**
