@@ -49,6 +49,11 @@ public interface SipSessionConfiguration {
 
     String getPlaniHeader();
 
+    /**
+     * @return the user agent header from the  ims config.
+     */
+    String getUserAgentHeader();
+
     default int getMaxPayloadSizeOnUdp() {
         return 0;
     }
