@@ -194,8 +194,9 @@ public final class SipUtils {
             }
         }
 
-        request.addHeader(
-                sHeaderFactory.createUserAgentHeader(ImmutableList.of(USER_AGENT_HEADER)));
+        String userAgent = configuration.getUserAgentHeader();
+        userAgent = (userAgent == null) ? USER_AGENT_HEADER : userAgent;
+        request.addHeader(sHeaderFactory.createUserAgentHeader(ImmutableList.of(userAgent)));
 
         request.setMessageContent(SDP_CONTENT_TYPE, SDP_CONTENT_SUB_TYPE, content);
 

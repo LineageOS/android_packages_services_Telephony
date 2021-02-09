@@ -31,6 +31,9 @@ import android.telephony.ims.stub.DelegateConnectionStateCallback;
 import android.text.TextUtils;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+
 import com.android.libraries.rcs.simpleclient.protocol.sip.SipSession;
 import com.android.libraries.rcs.simpleclient.protocol.sip.SipSessionConfiguration;
 import com.android.libraries.rcs.simpleclient.protocol.sip.SipSessionListener;
@@ -50,9 +53,6 @@ import java.util.Set;
 import java.util.concurrent.Executor;
 
 import javax.sip.message.Message;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 
 /**
  * Actual implementation built upon SipDelegateConnection as a SIP transport.
@@ -264,6 +264,8 @@ public class RegistrationControllerImpl implements RegistrationController {
                             KEY_SIP_CONFIG_P_LAST_ACCESS_NETWORK_INFO_HEADER_STRING));
             Log.i(TAG, "KEY_SIP_CONFIG_P_ASSOCIATED_URI_HEADER_STRING:" + config.getString(
                     SipDelegateImsConfiguration.KEY_SIP_CONFIG_P_ASSOCIATED_URI_HEADER_STRING));
+            Log.i(TAG, "KEY_SIP_CONFIG_USER_AGENT_HEADER_STRING:" + config.getString(
+                    SipDelegateImsConfiguration.KEY_SIP_CONFIG_USER_AGENT_HEADER_STRING));
 
             Log.i(TAG, "KEY_SIP_CONFIG_MAX_PAYLOAD_SIZE_ON_UDP_INT:" + config.getInt(
                     SipDelegateImsConfiguration.KEY_SIP_CONFIG_MAX_PAYLOAD_SIZE_ON_UDP_INT, -99));
@@ -409,6 +411,12 @@ public class RegistrationControllerImpl implements RegistrationController {
             return configuration.getString(
                     SipDelegateImsConfiguration.
                             KEY_SIP_CONFIG_P_LAST_ACCESS_NETWORK_INFO_HEADER_STRING);
+        }
+
+        @Override
+        public String getUserAgentHeader() {
+            return configuration.getString(
+                    SipDelegateImsConfiguration.KEY_SIP_CONFIG_USER_AGENT_HEADER_STRING);
         }
 
         @Override
