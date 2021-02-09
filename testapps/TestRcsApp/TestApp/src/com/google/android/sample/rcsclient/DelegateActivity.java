@@ -368,6 +368,8 @@ public class DelegateActivity extends AppCompatActivity {
         Log.i(TAG, "KEY_SIP_CONFIG_P_ASSOCIATED_URI_HEADER_STRING:"
                 + config.getString(SipDelegateImsConfiguration
                 .KEY_SIP_CONFIG_P_ASSOCIATED_URI_HEADER_STRING));
+        Log.i(TAG, "KEY_SIP_CONFIG_USER_AGENT_HEADER_STRING:" + config.getString(
+                SipDelegateImsConfiguration.KEY_SIP_CONFIG_USER_AGENT_HEADER_STRING));
 
         Log.i(TAG, "KEY_SIP_CONFIG_MAX_PAYLOAD_SIZE_ON_UDP_INT:" + config.getInt(
                 SipDelegateImsConfiguration.KEY_SIP_CONFIG_MAX_PAYLOAD_SIZE_ON_UDP_INT, -99));
