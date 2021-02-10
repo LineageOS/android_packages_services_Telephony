@@ -328,6 +328,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private static final int EVENT_CLEAR_SIGNAL_STRENGTH_UPDATE_REQUEST_DONE = 106;
     private static final int CMD_SET_ALLOWED_NETWORK_TYPES_FOR_REASON = 107;
     private static final int EVENT_SET_ALLOWED_NETWORK_TYPES_FOR_REASON_DONE = 108;
+    private static final int CMD_PREPARE_UNATTENDED_REBOOT = 109;
 
     // Parameters of select command.
     private static final int SELECT_COMMAND = 0xA4;
@@ -1547,7 +1548,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     PhoneConfigurationManager.getInstance()
                             .enablePhone(request.phone, enable, onCompleted);
                     break;
-                case EVENT_ENABLE_MODEM_DONE:
+                case EVENT_ENABLE_MODEM_DONE: {
                     ar = (AsyncResult) msg.obj;
                     request = (MainThreadRequest) ar.userObj;
                     request.result = (ar.exception == null);
@@ -1562,6 +1563,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     }
                     notifyRequester(request);
                     break;
+                }
                 case CMD_GET_MODEM_STATUS:
                     request = (MainThreadRequest) msg.obj;
                     onCompleted = obtainMessage(EVENT_GET_MODEM_STATUS_DONE, request);
@@ -1700,27 +1702,44 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     request = (MainThreadRequest) ar.userObj;
                     if (ar.exception == null) {
                         request.result = TelephonyManager.CHANGE_ICC_LOCK_SUCCESS;
+                        // If the operation is successful, update the PIN storage
+                        Pair<String, String> passwords = (Pair<String, String>) request.argument;
+                        int phoneId = getPhoneFromRequest(request).getPhoneId();
+                        UiccController.getInstance().getPinStorage()
+                                .storePin(passwords.second, phoneId);
                     } else {
                         request.result = msg.arg1;
                     }
                     notifyRequester(request);
                     break;
 
-                case CMD_SET_ICC_LOCK_ENABLED:
+                case CMD_SET_ICC_LOCK_ENABLED: {
                     request = (MainThreadRequest) msg.obj;
                     onCompleted = obtainMessage(EVENT_SET_ICC_LOCK_ENABLED_DONE, request);
                     Pair<Boolean, String> enabled = (Pair<Boolean, String>) request.argument;
                     getPhoneFromRequest(request).getIccCard().setIccLockEnabled(
                             enabled.first, enabled.second, onCompleted);
                     break;
+                }
                 case EVENT_SET_ICC_LOCK_ENABLED_DONE:
                     ar = (AsyncResult) msg.obj;
                     request = (MainThreadRequest) ar.userObj;
                     if (ar.exception == null) {
                         request.result = TelephonyManager.CHANGE_ICC_LOCK_SUCCESS;
+                        // If the operation is successful, update the PIN storage
+                        Pair<Boolean, String> enabled = (Pair<Boolean, String>) request.argument;
+                        int phoneId = getPhoneFromRequest(request).getPhoneId();
+                        if (enabled.first) {
+                            UiccController.getInstance().getPinStorage()
+                                    .storePin(enabled.second, phoneId);
+                        } else {
+                            UiccController.getInstance().getPinStorage().clearPin(phoneId);
+                        }
                     } else {
                         request.result = msg.arg1;
                     }
+
+
                     notifyRequester(request);
                     break;
 
@@ -1880,6 +1899,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     notifyRequester(request);
                     break;
                 }
+
+                case CMD_PREPARE_UNATTENDED_REBOOT:
+                    request = (MainThreadRequest) msg.obj;
+                    request.result =
+                            UiccController.getInstance().getPinStorage().prepareUnattendedReboot();
+                    notifyRequester(request);
+                    break;
 
                 default:
                     Log.w(LOG_TAG, "MainThreadHandler: unexpected message code: " + msg.what);
@@ -2209,7 +2235,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            final UnlockSim checkSimPin = new UnlockSim(getPhone(subId).getIccCard());
+            Phone phone = getPhone(subId);
+            final UnlockSim checkSimPin = new UnlockSim(phone.getPhoneId(), phone.getIccCard());
             checkSimPin.start();
             return checkSimPin.unlockSim(null, pin);
         } finally {
@@ -2222,7 +2249,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            final UnlockSim checkSimPuk = new UnlockSim(getPhone(subId).getIccCard());
+            Phone phone = getPhone(subId);
+            final UnlockSim checkSimPuk = new UnlockSim(phone.getPhoneId(), phone.getIccCard());
             checkSimPuk.start();
             return checkSimPuk.unlockSim(puk, pin);
         } finally {
@@ -2237,6 +2265,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private static class UnlockSim extends Thread {
 
         private final IccCard mSimCard;
+        private final int mPhoneId;
 
         private boolean mDone = false;
         private int mResult = PhoneConstants.PIN_GENERAL_FAILURE;
@@ -2248,7 +2277,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         // For async handler to identify request type
         private static final int SUPPLY_PIN_COMPLETE = 100;
 
-        public UnlockSim(IccCard simCard) {
+        UnlockSim(int phoneId, IccCard simCard) {
+            mPhoneId = phoneId;
             mSimCard = simCard;
         }
 
@@ -2330,6 +2360,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             int[] resultArray = new int[2];
             resultArray[0] = mResult;
             resultArray[1] = mRetryCount;
+
+            if (mResult == PhoneConstants.PIN_RESULT_SUCCESS && pin.length() > 0) {
+                UiccController.getInstance().getPinStorage().storePin(pin, mPhoneId);
+            }
+
             return resultArray;
         }
     }
@@ -3126,6 +3161,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     private void enforceSettingsPermission() {
         mApp.enforceCallingOrSelfPermission(android.Manifest.permission.NETWORK_SETTINGS, null);
+    }
+
+    private void enforceRebootPermission() {
+        mApp.enforceCallingOrSelfPermission(android.Manifest.permission.REBOOT, null);
     }
 
     private String createTelUrl(String number) {
@@ -10063,6 +10102,23 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         final long identity = Binder.clearCallingIdentity();
         try {
             return mPhoneConfigurationManager.getCurrentPhoneCapability();
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Prepare TelephonyManager for an unattended reboot. The reboot is
+     * required to be done shortly after the API is invoked.
+     */
+    @Override
+    @TelephonyManager.PrepareUnattendedRebootResult
+    public int prepareForUnattendedReboot() {
+        enforceRebootPermission();
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return (int) sendRequest(CMD_PREPARE_UNATTENDED_REBOOT, null);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
