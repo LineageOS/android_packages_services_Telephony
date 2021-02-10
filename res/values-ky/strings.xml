@@ -404,9 +404,9 @@
     <string name="network_lte" msgid="7206879277095094280">"LTE (сунушталат)"</string>
     <string name="network_4G" msgid="6800527815504223913">"4G (сунушталат)"</string>
     <string name="network_global" msgid="3289646154407617631">"Дүйнө жүзү"</string>
-    <string name="cdma_system_select_title" msgid="614165233552656431">"Тутум тандоо"</string>
+    <string name="cdma_system_select_title" msgid="614165233552656431">"Системаны тандоо"</string>
     <string name="cdma_system_select_summary" msgid="3840420390242060407">"CDMA роуминг тартибин алмаштыруу"</string>
-    <string name="cdma_system_select_dialogtitle" msgid="5524639510676501802">"Тутум тандоо"</string>
+    <string name="cdma_system_select_dialogtitle" msgid="5524639510676501802">"Системаны тандоо"</string>
   <string-array name="cdma_system_select_choices">
     <item msgid="462340042928284921">"Башкы бет гана"</item>
     <item msgid="6058010046783562674">"Автоматтык"</item>
