@@ -5,74 +5,16 @@ import static junit.framework.Assert.assertTrue;
 import static junit.framework.Assert.fail;
 import static junit.framework.TestCase.assertFalse;
 
-import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.when;
-
 import android.os.Bundle;
 import android.telecom.Connection;
-import android.telephony.ims.RtpHeaderExtension;
 
 import androidx.test.runner.AndroidJUnit4;
 
-import com.android.internal.telephony.Call;
-import com.android.internal.telephony.PhoneConstants;
-import com.android.internal.telephony.imsphone.ImsPhoneConnection;
-import com.android.phone.R;
-
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.ArgumentCaptor;
-import org.mockito.Captor;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-
-import java.util.Set;
 
 @RunWith(AndroidJUnit4.class)
 public class TelephonyConnectionTest {
-    @Mock
-    private ImsPhoneConnection mImsPhoneConnection;
-    @Captor
-    private ArgumentCaptor<Set<RtpHeaderExtension>> mRtpHeaderExtensionCaptor;
-
-
-    @Before
-    public void setUp() throws Exception {
-        MockitoAnnotations.initMocks(this);
-        when(mImsPhoneConnection.getState()).thenReturn(Call.State.ACTIVE);
-        when(mImsPhoneConnection.getPhoneType()).thenReturn(PhoneConstants.PHONE_TYPE_IMS);
-    }
-
-    /**
-     * Ensures an Ims connection uses the D2D communicator when it is enabled.
-     */
-    @Test
-    public void testSetupCommunicator() {
-        TestTelephonyConnection c = new TestTelephonyConnection();
-        c.setIsImsConnection(true);
-        // Enable D2D comms.
-        when(c.mMockResources.getBoolean(eq(
-                R.bool.config_use_device_to_device_communication))).thenReturn(true);
-
-        c.setOriginalConnection(mImsPhoneConnection);
-        junit.framework.Assert.assertNotNull(c.getCommunicator());
-    }
-
-    /**
-     * Ensures an Ims connection does not use the D2D communicator when it is disabled.
-     */
-    @Test
-    public void testDoNotSetupCommunicator() {
-        TestTelephonyConnection c = new TestTelephonyConnection();
-        c.setIsImsConnection(true);
-        // Disable D2D comms.
-        when(c.mMockResources.getBoolean(eq(
-                R.bool.config_use_device_to_device_communication))).thenReturn(false);
-
-        c.setOriginalConnection(mImsPhoneConnection);
-        junit.framework.Assert.assertNull(c.getCommunicator());
-    }
 
     @Test
     public void testCodecInIms() {
