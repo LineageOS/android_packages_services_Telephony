@@ -259,7 +259,7 @@ public final class SipUtils {
 
         request.setCallId(invite.getCallId());
 
-        Via via = (Via) request.getTopmostVia().clone();
+        Via via = (Via) invite.getTopmostVia().clone();
         via.removeParameter("branch");
         request.addHeader(via);
         request.addHeader(

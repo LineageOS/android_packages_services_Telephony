@@ -339,41 +339,52 @@ public class SimpleChatSession {
             return;
         }
 
+        SimpleSdpMessage sdp;
         try {
-            SimpleSdpMessage sdp =
-                    SimpleSdpMessage.parse(new ByteArrayInputStream(response.getRawContent()));
-            startMsrpSession(sdp);
+            sdp = SimpleSdpMessage.parse(new ByteArrayInputStream(response.getRawContent()));
         } catch (ParseException | IOException e) {
             notifyFailure("Invalid SDP in INVITE", CODE_ERROR_UNSPECIFIED);
+            return;
         }
 
-        if (mInviteRequest != null) {
-            SIPRequest ack = mInviteRequest.createAckRequest((To) response.getToHeader());
-            Futures.addCallback(
-                    mService.sendSipRequest(ack, this),
-                    new FutureCallback<Boolean>() {
-                        @Override
-                        public void onSuccess(Boolean result) {
-                            if (result) {
-                                mStartFuture.set(null);
-                                mStartFuture = null;
-                            } else {
-                                notifyFailure("Failed to send ACK", CODE_ERROR_UNSPECIFIED);
-                            }
-                        }
+        if (mInviteRequest == null) {
+            notifyFailure("No INVITE request sent out", CODE_ERROR_UNSPECIFIED);
+            return;
+        }
 
-                        @Override
-                        public void onFailure(Throwable t) {
+        SIPRequest ack = mInviteRequest.createAckRequest((To) response.getToHeader());
+        Futures.addCallback(
+                mService.sendSipRequest(ack, this),
+                new FutureCallback<Boolean>() {
+                    @Override
+                    public void onSuccess(Boolean result) {
+                        if (result) {
+                            startMsrpSession(sdp);
+                        } else {
                             notifyFailure("Failed to send ACK", CODE_ERROR_UNSPECIFIED);
                         }
-                    },
-                    MoreExecutors.directExecutor());
-        }
+                    }
+
+                    @Override
+                    public void onFailure(Throwable t) {
+                        notifyFailure("Failed to send ACK", CODE_ERROR_UNSPECIFIED);
+                    }
+                },
+                MoreExecutors.directExecutor());
     }
 
     private void notifyFailure(String message, @ErrorCode int code) {
-        mStartFuture.setException(new ChatServiceException(message, code));
-        mStartFuture = null;
+        if (mStartFuture != null) {
+            mStartFuture.setException(new ChatServiceException(message, code));
+            mStartFuture = null;
+        }
+    }
+
+    private void notifySuccess() {
+        if (mStartFuture != null) {
+            mStartFuture.set(null);
+            mStartFuture = null;
+        }
     }
 
     private void startMsrpSession(SimpleSdpMessage remoteSdp) {
@@ -387,16 +398,17 @@ public class SimpleChatSession {
                         @Override
                         public void onSuccess(MsrpSession result) {
                             mMsrpSession = result;
+                            notifySuccess();
                         }
 
                         @Override
                         public void onFailure(Throwable t) {
                             Log.e(TAG, "Failed to create msrp session", t);
+                            notifyFailure("Failed to establish msrp session",
+                                    CODE_ERROR_UNSPECIFIED);
                             terminate()
                                     .addListener(
-                                            () -> {
-                                                Log.d(TAG, "Session terminated");
-                                            },
+                                            () -> Log.d(TAG, "Session terminated"),
                                             MoreExecutors.directExecutor());
                         }
                     },
