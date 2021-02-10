@@ -18,9 +18,14 @@
 package com.google.android.sample.rcsclient;
 
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -32,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private Button mUceButton;
     private Button mGbaButton;
     private Button mMessageClientButton;
+    private TextView mVersionInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         mMessageClientButton = (Button) this.findViewById(R.id.msgClient);
         mUceButton = (Button) this.findViewById(R.id.uce);
         mGbaButton = (Button) this.findViewById(R.id.gba);
+        mVersionInfo = this.findViewById(R.id.version_info);
         mProvisionButton.setOnClickListener(view -> {
             Intent intent = new Intent(this, ProvisioningActivity.class);
             MainActivity.this.startActivity(intent);
@@ -70,6 +77,13 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, ContactListActivity.class);
             MainActivity.this.startActivity(intent);
         });
+
+        String appVersionName = getVersionCode(getPackageName());
+        if (!TextUtils.isEmpty(appVersionName)) {
+            String version = String.format(getResources().getString(R.string.version_info),
+                    appVersionName);
+            mVersionInfo.setText(version);
+        }
     }
 
     @Override
@@ -79,5 +93,15 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-}
 
+    private String getVersionCode(String packageName) {
+        try {
+            // get android:versionName from the android manifest
+            PackageInfo info = getPackageManager().getPackageInfo(getPackageName(), 0 /*flags*/);
+            return info.versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            Log.w(TAG, "couldn't get version info for package name:" + packageName);
+        }
+        return null;
+    }
+}
