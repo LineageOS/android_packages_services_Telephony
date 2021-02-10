@@ -28,6 +28,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.os.Messenger;
 import android.os.PersistableBundle;
 import android.telecom.BluetoothCallQualityReport;
 import android.telecom.CallAudioState;
@@ -95,6 +96,7 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Executors;
+import java.util.stream.Collectors;
 
 /**
  * Base class for CDMA and GSM connections.
@@ -133,6 +135,7 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
     private static final int MSG_ON_CONNECTION_EVENT = 19;
     private static final int MSG_REDIAL_CONNECTION_CHANGED = 20;
     private static final int MSG_REJECT = 21;
+    private static final int MSG_DTMF_DONE = 22;
 
     private static final String JAPAN_COUNTRY_CODE_WITH_PLUS_SIGN = "+81";
     private static final String JAPAN_ISO_COUNTRY_CODE = "JP";
@@ -303,6 +306,9 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
                     int rejectReason = (int) msg.obj;
                     reject(rejectReason);
                     break;
+                case MSG_DTMF_DONE:
+                    Log.i(this, "MSG_DTMF_DONE");
+                    break;
 
                 case MSG_SET_CALL_RADIO_TECH:
                     int vrat = (int) msg.obj;
@@ -340,6 +346,8 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
             }
         }
     };
+
+    private final Messenger mHandlerMessenger = new Messenger(mHandler);
 
     /**
      * Handles {@link SuppServiceNotification}s pertinent to Telephony.
@@ -510,7 +518,7 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
 
         @Override
         public void onStateChanged(android.telecom.Connection c, int state) {
-            mCommunicator.onStateChanged(c, state);
+            mCommunicator.onStateChanged(c.getTelecomCallId(), state);
         }
     }
 
@@ -741,6 +749,15 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
             Log.i(this, "onReceivedRtpHeaderExtensions: received %d extensions",
                     extensionData.size());
             mRtpTransport.onRtpHeaderExtensionsReceived(extensionData);
+        }
+
+        @Override
+        public void onReceivedDtmfDigit(char digit) {
+            if (mDtmfTransport == null) {
+                return;
+            }
+            Log.i(this, "onReceivedDtmfDigit: digit=%c", digit);
+            mDtmfTransport.onDtmfReceived(digit);
         }
     };
 
@@ -2351,7 +2368,7 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
             }
 
             if (mCommunicator != null) {
-                mCommunicator.onStateChanged(this, getState());
+                mCommunicator.onStateChanged(getTelecomCallId(), getState());
             }
         }
     }
@@ -3284,13 +3301,18 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
     private void maybeConfigureDeviceToDeviceCommunication() {
         if (!getPhone().getContext().getResources().getBoolean(
                 R.bool.config_use_device_to_device_communication)) {
-            Log.d(this, "maybeConfigureDeviceToDeviceCommunication: not using D2D.");
+            Log.i(this, "maybeConfigureDeviceToDeviceCommunication: not using D2D.");
             return;
         }
         if (!isImsConnection()) {
-            Log.d(this, "maybeConfigureDeviceToDeviceCommunication: not an IMS connection.");
+            Log.i(this, "maybeConfigureDeviceToDeviceCommunication: not an IMS connection.");
             return;
         }
+        if (mTreatAsEmergencyCall || mIsNetworkIdentifiedEmergencyCall) {
+            Log.i(this, "maybeConfigureDeviceToDeviceCommunication: emergency call; no D2D");
+            return;
+        }
+
         // Implement abstracted out RTP functionality the RTP transport depends on.
         RtpAdapter rtpAdapter = new RtpAdapter() {
             @Override
@@ -3309,8 +3331,11 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
                 if (!isImsConnection()) {
                     Log.w(TelephonyConnection.this, "sendRtpHeaderExtensions: not an ims conn.");
                 }
-                Log.d(TelephonyConnection.this, "sendRtpHeaderExtensions: sending %d messages",
-                        rtpHeaderExtensions.size());
+
+                Log.i(TelephonyConnection.this, "sendRtpHeaderExtensions: sending: %s",
+                        rtpHeaderExtensions.stream()
+                                .map(r -> r.toString())
+                                .collect(Collectors.joining(",")));
                 ImsPhoneConnection originalConnection =
                         (ImsPhoneConnection) mOriginalConnection;
                 originalConnection.sendRtpHeaderExtensions(rtpHeaderExtensions);
@@ -3322,10 +3347,12 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
             if (!isImsConnection()) {
                 Log.w(TelephonyConnection.this, "sendDtmf: not an ims conn.");
             }
-            Log.d(TelephonyConnection.this, "sendDtmf: send digit %c", digit);
+            Log.i(TelephonyConnection.this, "sendDtmf: send digit %c", digit);
             ImsPhoneConnection originalConnection =
                     (ImsPhoneConnection) mOriginalConnection;
-            originalConnection.getImsCall().sendDtmf(digit, null /* result msg not needed */);
+            Message dtmfComplete = mHandler.obtainMessage(MSG_DTMF_DONE);
+            dtmfComplete.replyTo = mHandlerMessenger;
+            originalConnection.getImsCall().sendDtmf(digit, dtmfComplete);
         };
         ContentResolver cr = getPhone().getContext().getContentResolver();
         mDtmfTransport = new DtmfTransport(dtmfAdapter, new Timeouts.Adapter(cr),
