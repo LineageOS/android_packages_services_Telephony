@@ -18,6 +18,7 @@ package com.android.services.telephony;
 
 import android.annotation.NonNull;
 import android.annotation.Nullable;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Icon;
@@ -65,8 +66,11 @@ import com.android.internal.telephony.Connection.PostDialListener;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.d2d.Communicator;
+import com.android.internal.telephony.d2d.DtmfAdapter;
+import com.android.internal.telephony.d2d.DtmfTransport;
 import com.android.internal.telephony.d2d.RtpAdapter;
 import com.android.internal.telephony.d2d.RtpTransport;
+import com.android.internal.telephony.d2d.Timeouts;
 import com.android.internal.telephony.gsm.SuppServiceNotification;
 import com.android.internal.telephony.imsphone.ImsPhone;
 import com.android.internal.telephony.imsphone.ImsPhoneCall;
@@ -89,6 +93,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.Executors;
 
 /**
  * Base class for CDMA and GSM connections.
@@ -845,6 +850,8 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
     private D2DCallStateAdapter mD2DCallStateAdapter;
 
     private RtpTransport mRtpTransport;
+
+    private DtmfTransport mDtmfTransport;
 
     /**
      * Facilitates device to device communication.
@@ -3297,7 +3304,20 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
             }
         };
         mRtpTransport = new RtpTransport(rtpAdapter, null /* TODO: not needed yet */, mHandler);
-        mCommunicator = new Communicator(List.of(mRtpTransport), this);
+
+        DtmfAdapter dtmfAdapter = digit -> {
+            if (!isImsConnection()) {
+                Log.w(TelephonyConnection.this, "sendDtmf: not an ims conn.");
+            }
+            Log.d(TelephonyConnection.this, "sendDtmf: send digit %c", digit);
+            ImsPhoneConnection originalConnection =
+                    (ImsPhoneConnection) mOriginalConnection;
+            originalConnection.getImsCall().sendDtmf(digit, null /* result msg not needed */);
+        };
+        ContentResolver cr = getPhone().getContext().getContentResolver();
+        mDtmfTransport = new DtmfTransport(dtmfAdapter, new Timeouts.Adapter(cr),
+                Executors.newSingleThreadScheduledExecutor());
+        mCommunicator = new Communicator(List.of(mRtpTransport, mDtmfTransport), this);
         mD2DCallStateAdapter = new D2DCallStateAdapter(mCommunicator);
         addTelephonyConnectionListener(mD2DCallStateAdapter);
     }
