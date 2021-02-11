@@ -41,6 +41,7 @@
     <string name="chatbot_version">Chatbot Version</string>
     <string name="provisioning_done">Provisioning Done</string>
     <string name="registration_done">Registration Done</string>
+    <string name="version_info">Version: %s</string>
 
     <string-array name="organization">
         <item>NONE</item>
