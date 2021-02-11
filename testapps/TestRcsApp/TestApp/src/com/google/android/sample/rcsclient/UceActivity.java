@@ -19,8 +19,12 @@ package com.google.android.sample.rcsclient;
 import android.net.Uri;
 import android.os.Bundle;
 import android.telephony.SmsManager;
+import android.telephony.ims.ImsException;
 import android.telephony.ims.ImsManager;
 import android.telephony.ims.ImsRcsManager;
+import android.telephony.ims.RcsContactPresenceTuple;
+import android.telephony.ims.RcsContactUceCapability;
+import android.telephony.ims.RcsUceAdapter;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
@@ -35,8 +39,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
-//import android.telephony.ims.RcsUceAdapter.CapabilitiesCallback;
 
 /** An activity to verify UCE. */
 public class UceActivity extends AppCompatActivity {
@@ -72,62 +74,81 @@ public class UceActivity extends AppCompatActivity {
 
         List<Uri> contactList = getContectList();
         mImsRcsManager = getImsRcsManager(mDefaultSmsSubId);
-//        mCapabilityButton.setOnClickListener(view -> {
-//            if(contactList.size() == 0) {
-//                Log.i(TAG, "empty contact list");
-//                return;
-//            }
-//            mImsRcsManager.getUceAdapter().requestCapabilities(mExecutorService, contactList,
-//                    new CapabilitiesCallback() {
-//                        public void onCapabilitiesReceived(
-//                                @NonNull List<RcsContactUceCapability> contactCapabilities) {
-//                            Log.i(TAG, "onCapabilitiesReceived()");
-//                            mCapabilityResult.setText("onCapabilitiesReceived()");
-//                        }
-//
-//                        public void onComplete() {
-//                            Log.i(TAG, "onComplete()");
-//                            mCapabilityResult.setText("onComplete()");
-//
-//                        }
-//
-//                        public void onError(int errorCode, long retryAfterMilliseconds) {
-//                            Log.i(TAG, "onError() errorCode:" + errorCode + " retryAfterMs:"
-//                                    + retryAfterMilliseconds);
-//                            mCapabilityResult.setText("onError() errorCode:" + errorCode
-//                                    + " retryAfterMs:" + retryAfterMilliseconds);
-//                        }
-//                    });
-//        });
-//
-//        mAvailabilityButton.setOnClickListener(view -> {
-//            if(contactList.size() == 0) {
-//                Log.i(TAG, "empty contact list");
-//                return;
-//            }
-//            mImsRcsManager.getUceAdapter().requestNetworkAvailability(mExecutorService,
-//            contactList,
-//                    new CapabilitiesCallback() {
-//                        public void onCapabilitiesReceived(
-//                                @NonNull List<RcsContactUceCapability> contactCapabilities) {
-//                            Log.i(TAG, "onCapabilitiesReceived()");
-//                            mAvailabilityResult.setText("onCapabilitiesReceived()");
-//                        }
-//
-//                        public void onComplete() {
-//                            Log.i(TAG, "onComplete()");
-//                            mAvailabilityResult.setText("onComplete()");
-//
-//                        }
-//
-//                        public void onError(int errorCode, long retryAfterMilliseconds) {
-//                            Log.i(TAG, "onError() errorCode:" + errorCode + " retryAfterMs:"
-//                                    + retryAfterMilliseconds);
-//                            mAvailabilityResult.setText("onError() errorCode:" + errorCode
-//                                    + " retryAfterMs:" + retryAfterMilliseconds);
-//                        }
-//                    });
-//        });
+        mCapabilityButton.setOnClickListener(view -> {
+            if (contactList.size() == 0) {
+                Log.i(TAG, "empty contact list");
+                return;
+            }
+            mCapabilityResult.setText("pending...\n");
+            try {
+                mImsRcsManager.getUceAdapter().requestCapabilities(contactList, mExecutorService,
+                        new RcsUceAdapter.CapabilitiesCallback() {
+                            public void onCapabilitiesReceived(
+                                    List<RcsContactUceCapability> contactCapabilities) {
+                                Log.i(TAG, "onCapabilitiesReceived()");
+                                StringBuilder b = new StringBuilder("onCapabilitiesReceived:\n");
+                                for (RcsContactUceCapability c : contactCapabilities) {
+                                    b.append(getReadableCapability(c));
+                                    b.append("\n");
+                                }
+                                mCapabilityResult.append(b.toString() + "\n");
+                            }
+
+                            public void onComplete() {
+                                Log.i(TAG, "onComplete()");
+                                mCapabilityResult.append("complete");
+
+                            }
+
+                            public void onError(int errorCode, long retryAfterMilliseconds) {
+                                Log.i(TAG, "onError() errorCode:" + errorCode + " retryAfterMs:"
+                                        + retryAfterMilliseconds);
+                                mCapabilityResult.append("error - errorCode:" + errorCode
+                                        + " retryAfterMs:" + retryAfterMilliseconds);
+                            }
+                        });
+            } catch (ImsException e) {
+                mCapabilityResult.setText("ImsException:" + e);
+            }
+        });
+
+        mAvailabilityButton.setOnClickListener(view -> {
+            if (contactList.size() == 0) {
+                Log.i(TAG, "empty contact list");
+                return;
+            }
+            mAvailabilityResult.setText("pending...\n");
+            try {
+                mImsRcsManager.getUceAdapter().requestAvailability(contactList.get(0),
+                        mExecutorService, new RcsUceAdapter.CapabilitiesCallback() {
+                            public void onCapabilitiesReceived(
+                                    List<RcsContactUceCapability> contactCapabilities) {
+                                Log.i(TAG, "onCapabilitiesReceived()");
+                                StringBuilder b = new StringBuilder("onCapabilitiesReceived:\n");
+                                for (RcsContactUceCapability c : contactCapabilities) {
+                                    b.append(getReadableCapability(c));
+                                    b.append("\n");
+                                }
+                                mAvailabilityResult.append(b.toString() + "\n");
+                            }
+
+                            public void onComplete() {
+                                Log.i(TAG, "onComplete()");
+                                mAvailabilityResult.append("complete");
+
+                            }
+
+                            public void onError(int errorCode, long retryAfterMilliseconds) {
+                                Log.i(TAG, "onError() errorCode:" + errorCode + " retryAfterMs:"
+                                        + retryAfterMilliseconds);
+                                mAvailabilityResult.append("error - errorCode:" + errorCode
+                                        + " retryAfterMs:" + retryAfterMilliseconds);
+                            }
+                        });
+            } catch (ImsException e) {
+                mAvailabilityResult.setText("ImsException:" + e);
+            }
+        });
     }
 
     private List<Uri> getContectList() {
@@ -164,5 +185,37 @@ public class UceActivity extends AppCompatActivity {
             finish();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private String getReadableCapability(RcsContactUceCapability c) {
+        StringBuilder b = new StringBuilder("RcsContactUceCapability: uri=");
+        b.append(c.getContactUri());
+        b.append(", requestResult=");
+        b.append(c.getRequestResult());
+        b.append(", sourceType=");
+        b.append(c.getSourceType());
+        if (c.getCapabilityMechanism() == RcsContactUceCapability.CAPABILITY_MECHANISM_PRESENCE) {
+            b.append(", tuples={");
+            for (RcsContactPresenceTuple t : c.getCapabilityTuples()) {
+                b.append("[uri=");
+                b.append(t.getContactUri());
+                b.append(", serviceId=");
+                b.append(t.getServiceId());
+                b.append(", serviceVersion=");
+                b.append(t.getServiceVersion());
+                if (t.getServiceCapabilities() != null) {
+                    RcsContactPresenceTuple.ServiceCapabilities servCaps =
+                            t.getServiceCapabilities();
+                    b.append(", servCaps=(supported=");
+                    b.append(servCaps.getSupportedDuplexModes());
+                    b.append("), servCaps=(unsupported=");
+                    b.append(servCaps.getUnsupportedDuplexModes());
+                    b.append("))");
+                }
+                b.append("]");
+            }
+            b.append("}");
+        }
+        return b.toString();
     }
 }
