@@ -44,6 +44,10 @@ public class SmsManagerTestApp extends Activity {
     private static final ComponentName SETTINGS_SUB_PICK_ACTIVITY = new ComponentName(
             "com.android.settings", "com.android.settings.sim.SimDialogActivity");
 
+    // Can't import PERFORM_IMS_SINGLE_REGISTRATION const directly beause it's a @SystemApi
+    private static final String PERFORM_IMS_SINGLE_REGISTRATION =
+            "android.permission.PERFORM_IMS_SINGLE_REGISTRATION";
+
     /*
      * Forwarded constants from SimDialogActivity.
      */
@@ -70,6 +74,8 @@ public class SmsManagerTestApp extends Activity {
                 .setOnClickListener(this::setPersistentServiceComponentEnabled);
         findViewById(R.id.disable_persistent_service)
                 .setOnClickListener(this::setPersistentServiceComponentDisabled);
+        findViewById(R.id.check_single_reg_permission)
+                .setOnClickListener(this::checkSingleRegPermission);
         mPhoneNumber = (EditText) findViewById(R.id.phone_number_text);
     }
 
@@ -201,6 +207,17 @@ public class SmsManagerTestApp extends Activity {
                 PackageManager.DONT_KILL_APP);
     }
 
+    private void checkSingleRegPermission(View view) {
+        if (checkSelfPermission(PERFORM_IMS_SINGLE_REGISTRATION)
+                == PackageManager.PERMISSION_GRANTED) {
+            Toast.makeText(this, "Single Reg permission granted",
+                    Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Single Reg permission NOT granted",
+                    Toast.LENGTH_SHORT).show();
+        }
+
+    }
 
     private Intent getSendStatusIntent() {
         // Encode requestId in intent data
