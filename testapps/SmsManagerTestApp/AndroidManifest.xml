@@ -21,6 +21,7 @@
          android:targetSdkVersion="29"/>
     <uses-permission android:name="android.permission.SEND_SMS"/>
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.PERFORM_IMS_SINGLE_REGISTRATION"/>
     <application android:label="SmsManagerTestApp">
         <activity android:name=".SmsManagerTestApp"
              android:label="SmsManagerTestApp"
@@ -54,6 +55,7 @@
 
         <!-- Fake BroadcastReceiver that listens for incoming SMS messages -->
         <receiver android:name=".SmsReceiver"
+                  android:exported="true"
                   android:permission="android.permission.BROADCAST_SMS">
             <intent-filter>
                 <action android:name="android.provider.Telephony.SMS_DELIVER" />
@@ -62,7 +64,8 @@
 
         <!-- Fake BroadcastReceiver that listens for incoming MMS messages -->
         <receiver android:name=".MmsReceiver"
-                  android:permission="android.permission.BROADCAST_WAP_PUSH">
+                  android:permission="android.permission.BROADCAST_WAP_PUSH"
+                  android:exported="true">
             <intent-filter>
                 <action android:name="android.provider.Telephony.WAP_PUSH_DELIVER" />
                 <data android:mimeType="application/vnd.wap.mms-message" />
@@ -70,7 +73,7 @@
         </receiver>
 
         <!-- Fake Activity that allows the user to send new SMS/MMS messages -->
-        <activity android:name=".ComposeSmsActivity" >
+        <activity android:name=".ComposeSmsActivity" android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
                 <action android:name="android.intent.action.SENDTO" />
