@@ -75,5 +75,11 @@
             android:layout_height="wrap_content"
             android:paddingRight="4dp"
             android:text="@string/disable_persistent_service"/>
+        <Button
+            android:id="@+id/check_single_reg_permission"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="4dp"
+            android:text="@string/check_single_reg_permission"/>
     </LinearLayout>
 </LinearLayout>
