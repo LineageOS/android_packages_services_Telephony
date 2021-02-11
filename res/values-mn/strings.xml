@@ -896,7 +896,7 @@
     <string name="radio_info_smsc_label" msgid="3749927072726033763">"SMSC:"</string>
     <string name="radio_info_smsc_update_label" msgid="5141996256097115753">"Шинэчлэх"</string>
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Сэргээх"</string>
-    <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"DNS шалгалтыг унтраах/асаах"</string>
+    <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"DNS шалгалтыг асаах/унтраах"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"OEM-тодорхой Мэдээлэл/Тохиргоо"</string>
     <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC боломжтой:"</string>
     <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR хязгаарласан:"</string>
