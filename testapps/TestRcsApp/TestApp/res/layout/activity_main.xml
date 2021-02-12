@@ -49,6 +49,14 @@
             android:text="@string/test_msg_client"
             android:textAlignment="center"
             android:textAllCaps="false" />
+
+        <TextView
+            android:id="@+id/version_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/version_info"
+            android:textAlignment="center"
+            android:paddingTop="7dp"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
