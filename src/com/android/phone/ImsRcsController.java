@@ -28,6 +28,7 @@ import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyFrameworkInitializer;
 import android.telephony.ims.DelegateRequest;
 import android.telephony.ims.ImsException;
+import android.telephony.ims.RcsContactUceCapability;
 import android.telephony.ims.RcsUceAdapter.PublishState;
 import android.telephony.ims.RegistrationManager;
 import android.telephony.ims.aidl.IImsCapabilityCallback;
@@ -56,6 +57,7 @@ import com.android.services.telephony.rcs.TelephonyRcsService;
 import com.android.services.telephony.rcs.UceControllerManager;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * Implementation of the IImsRcsController interface.
@@ -334,6 +336,82 @@ public class ImsRcsController extends IImsRcsController.Stub {
         } finally {
             Binder.restoreCallingIdentity(token);
         }
+    }
+
+    /**
+     * Add new feature tags to the Set used to calculate the capabilities in PUBLISH.
+     */
+    // Used for SHELL command only right now.
+    public RcsContactUceCapability addUceRegistrationOverrideShell(int subId,
+            Set<String> featureTags) throws ImsException {
+        // Permission check happening in PhoneInterfaceManager.
+        UceControllerManager uceCtrlManager = getRcsFeatureController(subId).getFeature(
+                UceControllerManager.class);
+        if (uceCtrlManager == null) {
+            return null;
+        }
+        return uceCtrlManager.addUceRegistrationOverride(featureTags);
+    }
+
+    /**
+     * Remove existing feature tags to the Set used to calculate the capabilities in PUBLISH.
+     */
+    // Used for SHELL command only right now.
+    public RcsContactUceCapability removeUceRegistrationOverrideShell(int subId,
+            Set<String> featureTags) throws ImsException {
+        // Permission check happening in PhoneInterfaceManager.
+        UceControllerManager uceCtrlManager = getRcsFeatureController(subId).getFeature(
+                UceControllerManager.class);
+        if (uceCtrlManager == null) {
+            return null;
+        }
+        return uceCtrlManager.removeUceRegistrationOverride(featureTags);
+    }
+
+    /**
+     * Clear all overrides in the Set used to calculate the capabilities in PUBLISH.
+     */
+    // Used for SHELL command only right now.
+    public RcsContactUceCapability clearUceRegistrationOverrideShell(int subId)
+            throws ImsException {
+        // Permission check happening in PhoneInterfaceManager.
+        UceControllerManager uceCtrlManager = getRcsFeatureController(subId).getFeature(
+                UceControllerManager.class);
+        if (uceCtrlManager == null) {
+            return null;
+        }
+        return uceCtrlManager.clearUceRegistrationOverride();
+    }
+
+    /**
+     * @return current RcsContactUceCapability instance that will be used for PUBLISH.
+     */
+    // Used for SHELL command only right now.
+    public RcsContactUceCapability getLatestRcsContactUceCapabilityShell(int subId)
+            throws ImsException {
+        // Permission check happening in PhoneInterfaceManager.
+        UceControllerManager uceCtrlManager = getRcsFeatureController(subId).getFeature(
+                UceControllerManager.class);
+        if (uceCtrlManager == null) {
+            return null;
+        }
+        return uceCtrlManager.getLatestRcsContactUceCapability();
+    }
+
+    /**
+     * @return the PIDf XML used in the last PUBLISH procedure or "none" if the device is not
+     * published. Returns {@code null} if the operation failed due to an error.
+     */
+    // Used for SHELL command only right now.
+    public String getLastUcePidfXmlShell(int subId) throws ImsException {
+        // Permission check happening in PhoneInterfaceManager.
+        UceControllerManager uceCtrlManager = getRcsFeatureController(subId).getFeature(
+                UceControllerManager.class);
+        if (uceCtrlManager == null) {
+            return null;
+        }
+        String pidfXml = uceCtrlManager.getLastPidfXml();
+        return pidfXml == null ? "none" : pidfXml;
     }
 
     @Override
