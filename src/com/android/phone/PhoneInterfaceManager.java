@@ -88,7 +88,6 @@ import android.telephony.PhoneCapability;
 import android.telephony.PhoneNumberRange;
 import android.telephony.RadioAccessFamily;
 import android.telephony.RadioAccessSpecifier;
-import android.telephony.RadioInterfaceCapabilities;
 import android.telephony.ServiceState;
 import android.telephony.SignalStrength;
 import android.telephony.SignalStrengthUpdateRequest;
@@ -9443,14 +9442,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     @Override
     public boolean isRadioInterfaceCapabilitySupported(
-            @NonNull @TelephonyManager.RadioInterfaceCapability String capability) {
-        RadioInterfaceCapabilities radioInterfaceCapabilities =
+            final @NonNull @TelephonyManager.RadioInterfaceCapability String capability) {
+        Set<String> radioInterfaceCapabilities =
                 mPhoneConfigurationManager.getRadioInterfaceCapabilities();
         if (radioInterfaceCapabilities == null) {
             throw new RuntimeException("radio interface capabilities are not available");
-        } else {
-            return radioInterfaceCapabilities.isSupported(capability);
         }
+        return radioInterfaceCapabilities.contains(capability);
     }
 
     @Override
