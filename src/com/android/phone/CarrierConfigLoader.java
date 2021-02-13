@@ -278,6 +278,9 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                                     obtainMessage(EVENT_BIND_DEFAULT_TIMEOUT, phoneId, -1),
                                     BIND_TIMEOUT_MILLIS);
                         } else {
+                            // Put a stub bundle in place so that the rest of the logic continues
+                            // smoothly.
+                            mConfigFromDefaultApp[phoneId] = new PersistableBundle();
                             // Send broadcast if bind fails.
                             notifySubscriptionInfoUpdater(phoneId);
                             // TODO: We *must* call unbindService even if bindService returns false.
@@ -359,6 +362,8 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                         unbindIfBound(mContext, mServiceConnection[phoneId], phoneId);
                         broadcastConfigChangedIntent(phoneId);
                     }
+                    // Put a stub bundle in place so that the rest of the logic continues smoothly.
+                    mConfigFromDefaultApp[phoneId] = new PersistableBundle();
                     notifySubscriptionInfoUpdater(phoneId);
                     break;
                 }
@@ -402,6 +407,9 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                                     obtainMessage(EVENT_BIND_CARRIER_TIMEOUT, phoneId, -1),
                                     BIND_TIMEOUT_MILLIS);
                         } else {
+                            // Put a stub bundle in place so that the rest of the logic continues
+                            // smoothly.
+                            mConfigFromCarrierApp[phoneId] = new PersistableBundle();
                             // Send broadcast if bind fails.
                             broadcastConfigChangedIntent(phoneId);
                             loge("Bind to carrier app: " + carrierPackageName + " fails");
@@ -471,7 +479,8 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
 
                 case EVENT_BIND_CARRIER_TIMEOUT:
                 case EVENT_FETCH_CARRIER_TIMEOUT: {
-                    loge("Bind/fetch from carrier app timeout");
+                    loge("Bind/fetch from carrier app timeout, package="
+                            + getCarrierPackageForPhoneId(phoneId));
                     removeMessages(EVENT_FETCH_CARRIER_TIMEOUT);
                     // If we attempted to bind to the app, but the service connection is null due to
                     // the race condition that clear config event happens before bind/fetch complete
@@ -482,6 +491,8 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                         unbindIfBound(mContext, mServiceConnection[phoneId], phoneId);
                         broadcastConfigChangedIntent(phoneId);
                     }
+                    // Put a stub bundle in place so that the rest of the logic continues smoothly.
+                    mConfigFromCarrierApp[phoneId] = new PersistableBundle();
                     notifySubscriptionInfoUpdater(phoneId);
                     break;
                 }
@@ -848,6 +859,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
     }
 
     /** Returns the package name of a priveleged carrier app, or null if there is none. */
+    @Nullable
     private String getCarrierPackageForPhoneId(int phoneId) {
         List<String> carrierPackageNames = TelephonyManager.from(mContext)
                 .getCarrierPackageNamesForIntentAndPhone(
@@ -1167,25 +1179,27 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
             PersistableBundle config = mConfigFromDefaultApp[phoneId];
             if (config != null) {
                 retConfig.putAll(config);
-                if (getCarrierPackageForPhoneId(phoneId) == null) {
-                    retConfig.putBoolean(
-                            CarrierConfigManager.KEY_CARRIER_CONFIG_APPLIED_BOOL, true);
-                }
             }
             config = mConfigFromCarrierApp[phoneId];
             if (config != null) {
                 retConfig.putAll(config);
-                retConfig.putBoolean(CarrierConfigManager.KEY_CARRIER_CONFIG_APPLIED_BOOL, true);
             }
             config = mPersistentOverrideConfigs[phoneId];
             if (config != null) {
                 retConfig.putAll(config);
-                retConfig.putBoolean(CarrierConfigManager.KEY_CARRIER_CONFIG_APPLIED_BOOL, true);
             }
             config = mOverrideConfigs[phoneId];
             if (config != null) {
                 retConfig.putAll(config);
             }
+            // Ignore the theoretical case of the default app not being present since that won't
+            // work in CarrierConfigLoader today.
+            final boolean allConfigsApplied =
+                    (mConfigFromCarrierApp[phoneId] != null
+                        || getCarrierPackageForPhoneId(phoneId) == null)
+                    && mConfigFromDefaultApp[phoneId] != null;
+            retConfig.putBoolean(
+                    CarrierConfigManager.KEY_CARRIER_CONFIG_APPLIED_BOOL, allConfigsApplied);
         } else {
             if (mNoSimConfig != null) {
                 retConfig.putAll(mNoSimConfig);
