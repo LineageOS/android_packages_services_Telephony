@@ -35,16 +35,15 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.sample.rcsclient.util.NumberUtils;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 /** An activity to verify UCE. */
 public class UceActivity extends AppCompatActivity {
 
     private static final String TAG = "TestRcsApp.UceActivity";
-    private final ExecutorService mExecutorService = Executors.newSingleThreadExecutor();
     private Button mCapabilityButton;
     private Button mAvailabilityButton;
     private TextView mCapabilityResult;
@@ -72,16 +71,16 @@ public class UceActivity extends AppCompatActivity {
         mCapabilityResult = findViewById(R.id.capability_result);
         mAvailabilityResult = findViewById(R.id.capability_result);
 
-        List<Uri> contactList = getContectList();
         mImsRcsManager = getImsRcsManager(mDefaultSmsSubId);
         mCapabilityButton.setOnClickListener(view -> {
+            List<Uri> contactList = getContectList();
             if (contactList.size() == 0) {
                 Log.i(TAG, "empty contact list");
                 return;
             }
             mCapabilityResult.setText("pending...\n");
             try {
-                mImsRcsManager.getUceAdapter().requestCapabilities(contactList, mExecutorService,
+                mImsRcsManager.getUceAdapter().requestCapabilities(contactList, getMainExecutor(),
                         new RcsUceAdapter.CapabilitiesCallback() {
                             public void onCapabilitiesReceived(
                                     List<RcsContactUceCapability> contactCapabilities) {
@@ -113,6 +112,7 @@ public class UceActivity extends AppCompatActivity {
         });
 
         mAvailabilityButton.setOnClickListener(view -> {
+            List<Uri> contactList = getContectList();
             if (contactList.size() == 0) {
                 Log.i(TAG, "empty contact list");
                 return;
@@ -120,7 +120,7 @@ public class UceActivity extends AppCompatActivity {
             mAvailabilityResult.setText("pending...\n");
             try {
                 mImsRcsManager.getUceAdapter().requestAvailability(contactList.get(0),
-                        mExecutorService, new RcsUceAdapter.CapabilitiesCallback() {
+                        getMainExecutor(), new RcsUceAdapter.CapabilitiesCallback() {
                             public void onCapabilitiesReceived(
                                     List<RcsContactUceCapability> contactCapabilities) {
                                 Log.i(TAG, "onCapabilitiesReceived()");
@@ -153,13 +153,18 @@ public class UceActivity extends AppCompatActivity {
 
     private List<Uri> getContectList() {
         mNumbers = findViewById(R.id.number_list);
-        String []numbers;
+        String[] numbers;
         ArrayList<Uri> contactList = new ArrayList<>();
         if (!TextUtils.isEmpty(mNumbers.getText().toString())) {
             String numberList = mNumbers.getText().toString().trim();
             numbers = numberList.split(",");
             for (String number : numbers) {
-                contactList.add(Uri.parse(ChatActivity.TELURI_PREFIX + number));
+                String formattedNumber = NumberUtils.formatNumber(this, number);
+                if (formattedNumber != null) {
+                    contactList.add(Uri.parse(ChatActivity.TELURI_PREFIX + formattedNumber));
+                } else {
+                    Log.w(TAG, "number formatted improperly, skipping: " + number);
+                }
             }
         }
 
@@ -206,6 +211,10 @@ public class UceActivity extends AppCompatActivity {
                 if (t.getServiceCapabilities() != null) {
                     RcsContactPresenceTuple.ServiceCapabilities servCaps =
                             t.getServiceCapabilities();
+                    b.append(", servCaps=(audio=");
+                    b.append(servCaps.isAudioCapable());
+                    b.append(", video=");
+                    b.append(servCaps.isVideoCapable());
                     b.append(", servCaps=(supported=");
                     b.append(servCaps.getSupportedDuplexModes());
                     b.append("), servCaps=(unsupported=");
