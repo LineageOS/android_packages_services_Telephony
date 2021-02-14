@@ -40,6 +40,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.sample.rcsclient.util.ChatManager;
 import com.google.android.sample.rcsclient.util.ChatProvider;
+import com.google.android.sample.rcsclient.util.NumberUtils;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -58,6 +59,7 @@ public class ChatActivity extends AppCompatActivity {
     private boolean mSessionInitResult = false;
     private Button mSend;
     private String mDestNumber;
+    private TextView mDestNumberView;
     private EditText mNewMessage;
     private ChatObserver mChatObserver;
     private Handler mHandler;
@@ -89,6 +91,7 @@ public class ChatActivity extends AppCompatActivity {
 
             }
         };
+        mDestNumberView = findViewById(R.id.destNum);
         initDestNumber();
         mChatObserver = new ChatObserver(mHandler);
     }
@@ -96,8 +99,7 @@ public class ChatActivity extends AppCompatActivity {
     private void initDestNumber() {
         Intent intent = getIntent();
         mDestNumber = intent.getStringExtra(EXTRA_REMOTE_PHONE_NUMBER);
-        TextView destNumber = findViewById(R.id.destNum);
-        destNumber.setText(mDestNumber);
+        mDestNumberView.setText(mDestNumber);
     }
 
     @Override
@@ -119,7 +121,12 @@ public class ChatActivity extends AppCompatActivity {
             return;
         }
         try {
-
+            // Reformat so that the number matches the one sent to the network.
+            String formattedNumber = NumberUtils.formatNumber(this, mDestNumber);
+            if (formattedNumber != null) {
+                mDestNumber = formattedNumber;
+            }
+            mDestNumberView.setText(mDestNumber);
             ChatManager.getInstance(getApplicationContext(), subId).initChatSession(
                     TELURI_PREFIX + mDestNumber, new SessionStateCallback() {
                         @Override
