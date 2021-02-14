@@ -22,9 +22,12 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.sample.rcsclient.util.NumberUtils;
 
 /** An activity to let user input phone number to chat. */
 public class PhoneNumberActivity extends AppCompatActivity {
@@ -43,11 +46,16 @@ public class PhoneNumberActivity extends AppCompatActivity {
         mChatButton = this.findViewById(R.id.launch_chat_btn);
         mPhoneNumber = findViewById(R.id.destNum);
         mChatButton.setOnClickListener(view -> {
-            Intent intent = new Intent(PhoneNumberActivity.this, ChatActivity.class);
-            intent.putExtra(ChatActivity.EXTRA_REMOTE_PHONE_NUMBER,
+            String formattedNumber = NumberUtils.formatNumber(PhoneNumberActivity.this,
                     mPhoneNumber.getText().toString());
-            PhoneNumberActivity.this.startActivity(intent);
-
+            if (formattedNumber != null) {
+                Intent intent = new Intent(PhoneNumberActivity.this, ChatActivity.class);
+                intent.putExtra(ChatActivity.EXTRA_REMOTE_PHONE_NUMBER, formattedNumber);
+                PhoneNumberActivity.this.startActivity(intent);
+            } else {
+                Toast.makeText(this, "Invalid Number format!",
+                        Toast.LENGTH_LONG).show();
+            }
         });
     }
 

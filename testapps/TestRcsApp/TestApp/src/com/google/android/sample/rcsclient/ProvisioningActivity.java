@@ -88,7 +88,7 @@ public class ProvisioningActivity extends AppCompatActivity {
     private static RcsClientConfiguration getDefaultClientConfiguration() {
         return new RcsClientConfiguration(
                 /*rcsVersion=*/ "6.0",
-                /*rcsProfile=*/ "UP_2.3",
+                /*rcsProfile=*/ "UP_1.0",
                 /*clientVendor=*/ "Goog",
                 /*clientVersion=*/ "RCSAndrd-1.0");
     }
