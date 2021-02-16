@@ -560,7 +560,7 @@
     <string name="police_type_description" msgid="2819533883972081757">"ፖሊስ"</string>
     <string name="ambulance_type_description" msgid="6798237503553180461">"አምቡላንስ"</string>
     <string name="fire_type_description" msgid="6565200468934914930">"እሳት"</string>
-    <!-- format error in translation for description_concat_format (2014471565101724088) -->
+    <string name="description_concat_format" msgid="2014471565101724088">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="1115266533703764049">"ለመደወል የሰሌዳ ቁልፍ ተጠቀም"</string>
     <string name="onscreenHoldText" msgid="4025348842151665191">"ያዝ"</string>
     <string name="onscreenEndCallText" msgid="6138725377654842757">"መጨረሻ"</string>
