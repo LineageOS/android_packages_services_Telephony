@@ -118,6 +118,14 @@ public final class SimPhonebookProviderTest {
 
     @Test
     public void query_entityFiles_returnsCursorWithCorrectProjection() {
+        // Null projection
+        try (Cursor cursor = mResolver.query(ElementaryFiles.CONTENT_URI, null, null,
+                null)) {
+            assertThat(Objects.requireNonNull(cursor).getColumnNames()).asList()
+                    .containsExactlyElementsIn(
+                            SimPhonebookProvider.ELEMENTARY_FILES_ALL_COLUMNS);
+        }
+
         // Empty projection
         try (Cursor cursor = mResolver.query(ElementaryFiles.CONTENT_URI, new String[0], null,
                 null)) {
@@ -211,10 +219,30 @@ public final class SimPhonebookProviderTest {
     }
 
     @Test
+    public void query_entityFilesItem_nullProjection_returnsCursorWithCorrectProjection() {
+        setupSimsWithSubscriptionIds(1);
+        mIccPhoneBook.makeAllEfsSupported(1);
+
+        // Null projection
+        try (Cursor cursor = mResolver.query(ElementaryFiles.getItemUri(1, EF_ADN), null, null,
+                null)) {
+            assertThat(Objects.requireNonNull(cursor).getColumnNames()).asList()
+                    .containsExactlyElementsIn(
+                            SimPhonebookProvider.ELEMENTARY_FILES_ALL_COLUMNS);
+        }
+    }
+
+    @Test
     public void query_adnRecords_returnsCursorWithMatchingProjection() {
         setupSimsWithSubscriptionIds(1);
         mIccPhoneBook.makeAllEfsSupported(1);
         Uri contentAdn = SimRecords.getContentUri(1, EF_ADN);
+
+        // Null projection
+        try (Cursor cursor = mResolver.query(contentAdn, null, null, null)) {
+            assertThat(Objects.requireNonNull(cursor).getColumnNames()).asList()
+                    .containsExactlyElementsIn(SimPhonebookProvider.SIM_RECORDS_ALL_COLUMNS);
+        }
 
         // Empty projection
         try (Cursor cursor = mResolver.query(contentAdn, new String[0], null, null)) {
@@ -222,7 +250,7 @@ public final class SimPhonebookProviderTest {
         }
 
         // Single column
-        try (Cursor cursor = mResolver.query(contentAdn, new String[] {
+        try (Cursor cursor = mResolver.query(contentAdn, new String[]{
                 SimRecords.PHONE_NUMBER
         }, null, null)) {
             assertThat(cursor).hasColumnNames(SimRecords.PHONE_NUMBER);
@@ -527,6 +555,20 @@ public final class SimPhonebookProviderTest {
                     "8005550105");
             assertThat(item5).hasSingleRow(2, ElementaryFiles.EF_SDN, 1, "Name@Sdn2[1]",
                     "8005550106");
+        }
+    }
+
+    @Test
+    public void query_itemUriNullProjection_returnsCursorWithAllColumns() {
+        setupSimsWithSubscriptionIds(1);
+        mIccPhoneBook.makeAllEfsSupported(1);
+
+        try (Cursor cursor = mResolver.query(SimRecords.getItemUri(1, ElementaryFiles.EF_ADN, 1),
+                null, null, null)
+        ) {
+            assertThat(Objects.requireNonNull(
+                    cursor).getColumnNames()).asList().containsExactlyElementsIn(
+                    SimPhonebookProvider.SIM_RECORDS_ALL_COLUMNS);
         }
     }
 

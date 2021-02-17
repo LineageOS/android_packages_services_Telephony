@@ -59,6 +59,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
@@ -295,6 +296,9 @@ public class SimPhonebookProvider extends ContentProvider {
 
     private Cursor queryElementaryFilesItem(PhonebookArgs args, String[] projection) {
         validateProjection(ELEMENTARY_FILES_COLUMNS_SET, projection);
+        if (projection == null) {
+            projection = ELEMENTARY_FILES_ALL_COLUMNS;
+        }
 
         MatrixCursor result = new MatrixCursor(projection);
         try {
@@ -641,8 +645,8 @@ public class SimPhonebookProvider extends ContentProvider {
     }
 
     private boolean hasPermissionsForFdnWrite(PhonebookArgs args) {
-        TelephonyManager telephonyManager = getContext().getSystemService(
-                TelephonyManager.class);
+        TelephonyManager telephonyManager = Objects.requireNonNull(
+                getContext().getSystemService(TelephonyManager.class));
         String callingPackage = getCallingPackage();
         int granted = PackageManager.PERMISSION_DENIED;
         if (callingPackage != null) {
@@ -701,7 +705,12 @@ public class SimPhonebookProvider extends ContentProvider {
 
         String name = values.getAsString(SimRecords.NAME);
         int length = getEncodedNameLength(name);
-        int maxLength = AdnRecord.getMaxAlphaTagBytes(getRecordSize(getRecordsSizeForEf(args)));
+        int[] recordsSize = getRecordsSizeForEf(args);
+        if (recordsSize == null) {
+            throw new IllegalStateException(
+                    "Failed to get " + ElementaryFiles.NAME_MAX_LENGTH + " from SIM");
+        }
+        int maxLength = AdnRecord.getMaxAlphaTagBytes(getRecordSize(recordsSize));
 
         if (length > maxLength) {
             throw new IllegalArgumentException(SimRecords.NAME + " is too long.");
@@ -740,7 +749,7 @@ public class SimPhonebookProvider extends ContentProvider {
 
     private AdnRecord loadRecord(PhonebookArgs args) {
         List<AdnRecord> records = loadRecordsForEf(args);
-        if (args.recordNumber > records.size()) {
+        if (records == null || args.recordNumber > records.size()) {
             return null;
         }
         AdnRecord result = records.get(args.recordNumber - 1);
