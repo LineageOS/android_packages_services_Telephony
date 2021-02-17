@@ -21,6 +21,7 @@ import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static com.android.internal.telephony.PhoneConstants.PHONE_TYPE_IMS;
 import static com.android.internal.telephony.PhoneConstants.SUBSCRIPTION_KEY;
 
+import android.Manifest;
 import android.Manifest.permission;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
@@ -9416,9 +9417,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @Override
     public void bootstrapAuthenticationRequest(int subId, int appType, Uri nafUrl,
             UaSecurityProtocolIdentifier securityProtocol,
-            boolean forceBootStrapping, IBootstrapAuthenticationCallback callback)
-            throws RemoteException {
-        enforceModifyPermission();
+            boolean forceBootStrapping, IBootstrapAuthenticationCallback callback) {
+        TelephonyPermissions.enforceAnyPermissionGrantedOrCarrierPrivileges(mApp, subId,
+                Binder.getCallingUid(), "bootstrapAuthenticationRequest",
+                Manifest.permission.PERFORM_IMS_SINGLE_REGISTRATION,
+                Manifest.permission.MODIFY_PHONE_STATE);
         if (DBG) {
             log("bootstrapAuthenticationRequest, subId:" + subId + ", appType:"
                     + appType + ", NAF:" + nafUrl + ", sp:" + securityProtocol
@@ -9694,7 +9697,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     @Override
     public boolean isRcsVolteSingleRegistrationCapable(int subId) {
-        enforceReadPrivilegedPermission("isRcsVolteSingleRegistrationCapable");
+        TelephonyPermissions.enforceAnyPermissionGrantedOrCarrierPrivileges(mApp, subId,
+                Binder.getCallingUid(), "isRcsVolteSingleRegistrationCapable",
+                Manifest.permission.PERFORM_IMS_SINGLE_REGISTRATION,
+                permission.READ_PRIVILEGED_PHONE_STATE);
 
         if (!SubscriptionManager.isValidSubscriptionId(subId)) {
             throw new IllegalArgumentException("Invalid Subscription ID: " + subId);
@@ -9718,7 +9724,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @Override
     public void registerRcsProvisioningChangedCallback(int subId,
             IRcsConfigCallback callback) {
-        enforceReadPrivilegedPermission("registerRcsProvisioningChangedCallback");
+        TelephonyPermissions.enforceAnyPermissionGrantedOrCarrierPrivileges(mApp, subId,
+                Binder.getCallingUid(), "registerRcsProvisioningChangedCallback",
+                Manifest.permission.PERFORM_IMS_SINGLE_REGISTRATION,
+                permission.READ_PRIVILEGED_PHONE_STATE);
 
         if (!SubscriptionManager.isValidSubscriptionId(subId)) {
             throw new IllegalArgumentException("Invalid Subscription ID: " + subId);
@@ -9746,7 +9755,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @Override
     public void unregisterRcsProvisioningChangedCallback(int subId,
             IRcsConfigCallback callback) {
-        enforceReadPrivilegedPermission("unregisterRcsProvisioningChangedCallback");
+        TelephonyPermissions.enforceAnyPermissionGrantedOrCarrierPrivileges(mApp, subId,
+                Binder.getCallingUid(), "unregisterRcsProvisioningChangedCallback",
+                Manifest.permission.PERFORM_IMS_SINGLE_REGISTRATION,
+                permission.READ_PRIVILEGED_PHONE_STATE);
 
         if (!SubscriptionManager.isValidSubscriptionId(subId)) {
             throw new IllegalArgumentException("Invalid Subscription ID: " + subId);
@@ -9769,8 +9781,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * trigger RCS reconfiguration.
      */
     public void triggerRcsReconfiguration(int subId) {
-        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
-                mApp, subId, "triggerRcsReconfiguration");
+        TelephonyPermissions.enforceAnyPermissionGranted(mApp, Binder.getCallingUid(),
+                "triggerRcsReconfiguration",
+                Manifest.permission.PERFORM_IMS_SINGLE_REGISTRATION);
 
         if (!SubscriptionManager.isValidSubscriptionId(subId)) {
             throw new IllegalArgumentException("Invalid Subscription ID: " + subId);
@@ -9792,8 +9805,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * Provide the client configuration parameters of the RCS application.
      */
     public void setRcsClientConfiguration(int subId, RcsClientConfiguration rcc) {
-        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
-                mApp, subId, "setRcsClientConfiguration");
+        TelephonyPermissions.enforceAnyPermissionGranted(mApp, Binder.getCallingUid(),
+                "setRcsClientConfiguration",
+                Manifest.permission.PERFORM_IMS_SINGLE_REGISTRATION);
 
         if (!SubscriptionManager.isValidSubscriptionId(subId)) {
             throw new IllegalArgumentException("Invalid Subscription ID: " + subId);
