@@ -59,7 +59,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
@@ -106,7 +105,6 @@ public class SimPhonebookProvider extends ContentProvider {
     private static final int ELEMENTARY_FILES_ITEM = 101;
     private static final int SIM_RECORDS = 200;
     private static final int SIM_RECORDS_ITEM = 201;
-    private static final int VALIDATE_NAME = 300;
 
     static {
         URI_MATCHER.addURI(SimPhonebookContract.AUTHORITY,
@@ -120,10 +118,6 @@ public class SimPhonebookProvider extends ContentProvider {
                 SimPhonebookContract.SUBSCRIPTION_ID_PATH_SEGMENT + "/#/*", SIM_RECORDS);
         URI_MATCHER.addURI(SimPhonebookContract.AUTHORITY,
                 SimPhonebookContract.SUBSCRIPTION_ID_PATH_SEGMENT + "/#/*/#", SIM_RECORDS_ITEM);
-        URI_MATCHER.addURI(SimPhonebookContract.AUTHORITY,
-                SimPhonebookContract.SUBSCRIPTION_ID_PATH_SEGMENT + "/#/*/"
-                        + SimRecords.VALIDATE_NAME_PATH_SEGMENT,
-                VALIDATE_NAME);
     }
 
     // Only allow 1 write at a time to prevent races; the mutations are based on reads of the
@@ -209,6 +203,31 @@ public class SimPhonebookProvider extends ContentProvider {
         return true;
     }
 
+    @Nullable
+    @Override
+    public Bundle call(@NonNull String method, @Nullable String arg, @Nullable Bundle extras) {
+        if (SimRecords.GET_ENCODED_NAME_LENGTH_METHOD_NAME.equals(method)) {
+            // No permissions checks needed. This isn't leaking any sensitive information since the
+            // name we are checking is provided by the caller.
+            return callForEncodedNameLength(arg);
+        }
+        return super.call(method, arg, extras);
+    }
+
+    private Bundle callForEncodedNameLength(String name) {
+        Bundle result = new Bundle();
+        result.putInt(SimRecords.EXTRA_ENCODED_NAME_LENGTH, getEncodedNameLength(name));
+        return result;
+    }
+
+    private int getEncodedNameLength(String name) {
+        if (Strings.isNullOrEmpty(name)) {
+            return 0;
+        } else {
+            byte[] encoded = AdnRecord.encodeAlphaTag(name);
+            return encoded.length;
+        }
+    }
 
     @Nullable
     @Override
@@ -231,8 +250,6 @@ public class SimPhonebookProvider extends ContentProvider {
             case SIM_RECORDS_ITEM:
                 return querySimRecordsItem(PhonebookArgs.forSimRecordsItem(uri, queryArgs),
                         projection);
-            case VALIDATE_NAME:
-                return queryValidateName(PhonebookArgs.forValidateName(uri, queryArgs), queryArgs);
             default:
                 throw new IllegalArgumentException("Unsupported Uri " + uri);
         }
@@ -399,21 +416,6 @@ public class SimPhonebookProvider extends ContentProvider {
                 .add(SimRecords.RECORD_NUMBER, record.getRecId())
                 .add(SimRecords.NAME, record.getAlphaTag())
                 .add(SimRecords.PHONE_NUMBER, record.getNumber());
-        return result;
-    }
-
-    private Cursor queryValidateName(PhonebookArgs args, @Nullable Bundle queryArgs) {
-        if (queryArgs == null) {
-            throw new IllegalArgumentException(SimRecords.NAME + " is required.");
-        }
-        validateSubscriptionAndEf(args);
-        String name = queryArgs.getString(SimRecords.NAME);
-
-        // Cursor extras are used to return the result.
-        Cursor result = new MatrixCursor(new String[0], 0);
-        Bundle extras = new Bundle();
-        extras.putParcelable(SimRecords.EXTRA_NAME_VALIDATION_RESULT, validateName(args, name));
-        result.setExtras(extras);
         return result;
     }
 
@@ -665,23 +667,6 @@ public class SimPhonebookProvider extends ContentProvider {
         }
     }
 
-    private SimRecords.NameValidationResult validateName(
-            PhonebookArgs args, @Nullable String name) {
-        name = Strings.nullToEmpty(name);
-        int recordSize = getRecordSize(getRecordsSizeForEf(args));
-        // Validating the name consists of encoding the record in the binary format that it is
-        // stored on the SIM then decoding it and checking whether the decoded name is the same.
-        // The AOSP implementation of AdnRecord replaces unsupported characters with spaces during
-        // encoding.
-        // TODO: It would be good to update AdnRecord to support UCS-2 on the encode path (it
-        //  supports it on the decode path). Right now it's not supported and so any non-latin
-        //  characters will not be valid (at least in the AOSP implementation).
-        byte[] encodedName = AdnRecord.encodeAlphaTag(name);
-        String sanitizedName = AdnRecord.decodeAlphaTag(encodedName, 0, encodedName.length);
-        return new SimRecords.NameValidationResult(name, sanitizedName,
-                encodedName.length, AdnRecord.getMaxAlphaTagBytes(recordSize));
-    }
-
     private void validatePhoneNumber(@Nullable String phoneNumber) {
         if (phoneNumber == null || phoneNumber.isEmpty()) {
             throw new IllegalArgumentException(SimRecords.PHONE_NUMBER + " is required.");
@@ -715,13 +700,11 @@ public class SimPhonebookProvider extends ContentProvider {
         validatePhoneNumber(phoneNumber);
 
         String name = values.getAsString(SimRecords.NAME);
-        SimRecords.NameValidationResult result = validateName(args, name);
+        int length = getEncodedNameLength(name);
+        int maxLength = AdnRecord.getMaxAlphaTagBytes(getRecordSize(getRecordsSizeForEf(args)));
 
-        if (result.getEncodedLength() > result.getMaxEncodedLength()) {
+        if (length > maxLength) {
             throw new IllegalArgumentException(SimRecords.NAME + " is too long.");
-        } else if (!Objects.equals(result.getName(), result.getSanitizedName())) {
-            throw new IllegalArgumentException(
-                    SimRecords.NAME + " contains unsupported characters.");
         }
     }
 
@@ -893,19 +876,6 @@ public class SimPhonebookProvider extends ContentProvider {
             int recordNumber = parseRecordNumberFromUri(uri, 3);
             return PhonebookArgs.createFromEfName(uri, subscriptionId, efName, recordNumber,
                     queryArgs);
-        }
-
-        /**
-         * Pattern: subid/${subscriptionId}/${efName}/validate_name
-         *
-         * @see SimRecords#validateName(ContentResolver, int, int, String)
-         * @see #VALIDATE_NAME
-         */
-        static PhonebookArgs forValidateName(Uri uri, Bundle queryArgs) {
-            int subscriptionId = parseSubscriptionIdFromUri(uri, 1);
-            String efName = uri.getPathSegments().get(2);
-            return PhonebookArgs.createFromEfName(
-                    uri, subscriptionId, efName, -1, queryArgs);
         }
 
         private static int parseSubscriptionIdFromUri(Uri uri, int pathIndex) {
