@@ -78,10 +78,7 @@ import java.util.stream.Collectors;
 @RunWith(AndroidJUnit4.class)
 public final class SimPhonebookProviderTest {
 
-    // Emojis aren't currently supported for the ADN record label.
     private static final String EMOJI = new String(Character.toChars(0x1F642));
-    private static final String UNSUPPORTED_NAME = ":)=" + EMOJI + ";ni=日;hon=本;";
-    private static final String UNSUPPORTED_NAME2 = "日本" + EMOJI;
     private static final Correspondence<AdnRecord, AdnRecord> ADN_RECORD_IS_EQUAL =
             Correspondence.from(AdnRecord::isEqual, "isEqual");
 
@@ -674,6 +671,30 @@ public final class SimPhonebookProviderTest {
     }
 
     @Test
+    public void insert_nameWithNonGsmCharacters_addsAdnRecord() {
+        setupSimsWithSubscriptionIds(1);
+        mIccPhoneBook.makeAllEfsSupported(1);
+
+        ContentValues values = new ContentValues();
+        String name = "abc日本" + EMOJI;
+        values.put(SimRecords.NAME, name);
+        values.put(SimRecords.PHONE_NUMBER, "8005550101");
+
+        Uri uri = mResolver.insert(SimRecords.getContentUri(1, EF_ADN), values);
+
+        List<AdnRecord> records = mIccPhoneBook.getAdnRecordsInEfForSubscriber(
+                1, IccConstants.EF_ADN).stream()
+                .filter(((Predicate<AdnRecord>) AdnRecord::isEmpty).negate())
+                .collect(Collectors.toList());
+
+        assertThat(records)
+                .comparingElementsUsing(ADN_RECORD_IS_EQUAL)
+                .containsExactly(new AdnRecord(IccConstants.EF_ADN, 1, name, "8005550101"));
+
+        assertThat(uri).isEqualTo(SimRecords.getItemUri(1, ElementaryFiles.EF_ADN, 1));
+    }
+
+    @Test
     public void insert_nullValues_returnsNull() {
         setupSimsWithSubscriptionIds(1);
         mIccPhoneBook.makeAllEfsSupported(1);
@@ -753,11 +774,18 @@ public final class SimPhonebookProviderTest {
         mIccPhoneBook.setRecordsSize(1, IccConstants.EF_ADN, 1, 25);
 
         ContentValues values = new ContentValues();
-        // Name is limited to 11 characters
+        // Name is limited to 11 characters when the max record size is 25
         values.put(SimRecords.NAME, "1234567890ab");
         values.put(SimRecords.PHONE_NUMBER, "8005550102");
 
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class,
+                () -> mResolver.insert(SimRecords.getContentUri(1, EF_ADN), values));
+
+        assertThat(e).hasMessageThat().isEqualTo(SimRecords.NAME + " is too long.");
+
+        // 2 bytes per character and 4 for the emoji. So this is 14 characters long.
+        values.put(SimRecords.NAME, "abc日本" + EMOJI);
+        e = assertThrows(IllegalArgumentException.class,
                 () -> mResolver.insert(SimRecords.getContentUri(1, EF_ADN), values));
 
         assertThat(e).hasMessageThat().isEqualTo(SimRecords.NAME + " is too long.");
@@ -780,36 +808,22 @@ public final class SimPhonebookProviderTest {
     }
 
     @Test
-    public void insert_illegalCharacters_throwsCorrectException() {
+    public void insert_numberWithInvalidCharacters_throwsCorrectException() {
         setupSimsWithSubscriptionIds(1);
         mIccPhoneBook.setRecordsSize(1, IccConstants.EF_ADN, 1, 32);
 
         ContentValues values = new ContentValues();
         values.put(SimRecords.NAME, "Name");
-        values.put(SimRecords.PHONE_NUMBER, "1800J550A0B");
+        values.put(SimRecords.PHONE_NUMBER, "(800)555-0190 x7777");
 
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class,
-                () -> mResolver.insert(SimRecords.getContentUri(1, EF_ADN), values));
+                () -> mResolver.insert(SimRecords.getContentUri(1, ElementaryFiles.EF_ADN),
+                        values,
+                        null));
         assertThat(e).hasMessageThat().isEqualTo(
                 SimRecords.PHONE_NUMBER + " contains unsupported characters.");
 
-        values.put(SimRecords.NAME, UNSUPPORTED_NAME);
-        values.put(SimRecords.PHONE_NUMBER, "18005550101");
-
-        e = assertThrows(IllegalArgumentException.class,
-                () -> mResolver.insert(SimRecords.getContentUri(1, EF_ADN), values));
-        assertThat(e).hasMessageThat().isEqualTo(
-                SimRecords.NAME + " contains unsupported characters.");
-
-        values.put(SimRecords.NAME, UNSUPPORTED_NAME2);
-        values.put(SimRecords.PHONE_NUMBER, "18005550101");
-
-        e = assertThrows(IllegalArgumentException.class,
-                () -> mResolver.insert(SimRecords.getContentUri(1, EF_ADN), values));
-        assertThat(e).hasMessageThat().isEqualTo(
-                SimRecords.NAME + " contains unsupported characters.");
-
-        // The inserts didn't actually add any data.
+        // The insert didn't actually change the data.
         assertThat(mIccPhoneBook.getAllValidRecords()).isEmpty();
     }
 
@@ -996,7 +1010,7 @@ public final class SimPhonebookProviderTest {
     }
 
     @Test
-    public void update_nameOrNumberWithInvalidCharacters_throwsCorrectException() {
+    public void update_numberWithInvalidCharacters_throwsCorrectException() {
         setupSimsWithSubscriptionIds(1);
         mIccPhoneBook.setRecordsSize(1, IccConstants.EF_ADN, 1, 32);
         mIccPhoneBook.addRecord(1, IccConstants.EF_ADN, "Initial", "8005550101");
@@ -1012,18 +1026,7 @@ public final class SimPhonebookProviderTest {
         assertThat(e).hasMessageThat().isEqualTo(
                 SimRecords.PHONE_NUMBER + " contains unsupported characters.");
 
-        // Unicode fffe is a unicode non-character
-        values.put(SimRecords.NAME, UNSUPPORTED_NAME);
-        values.put(SimRecords.PHONE_NUMBER, "18005550102");
-
-        e = assertThrows(IllegalArgumentException.class,
-                () -> mResolver.update(SimRecords.getItemUri(1, ElementaryFiles.EF_ADN, 1),
-                        values,
-                        null));
-        assertThat(e).hasMessageThat().isEqualTo(
-                SimRecords.NAME + " contains unsupported characters.");
-
-        // The updates didn't actually change the data.
+        // The update didn't actually change the data.
         assertThat(mIccPhoneBook.getAllValidRecords())
                 .comparingElementsUsing(Correspondence.from(AdnRecord::isEqual, "isEqual"))
                 .containsExactly(new AdnRecord(IccConstants.EF_ADN, 1, "Initial", "8005550101"));
@@ -1179,76 +1182,26 @@ public final class SimPhonebookProviderTest {
     }
 
     @Test
-    public void validateName_validName_returnsValueIsCorrect() {
-        setupSimsWithSubscriptionIds(1);
-        String validName = "First Last";
-        // See AdnRecord#FOOTER_SIZE_BYTES
-        mIccPhoneBook.setRecordsSize(1, IccConstants.EF_ADN, 10, validName.length() + 14);
-        SimRecords.NameValidationResult validationResult = SimRecords.validateName(mResolver, 1,
-                EF_ADN, validName);
+    public void getEncodedNameLength_returnsValueIsCorrect() {
+        String name = "";
+        int length = SimRecords.getEncodedNameLength(mResolver, name);
+        assertThat(length).isEqualTo(0);
 
-        assertThat(validationResult.isValid()).isTrue();
-        assertThat(validationResult.getName()).isEqualTo(validName);
-        assertThat(validationResult.getSanitizedName()).isEqualTo(validName);
-        assertThat(validationResult.getEncodedLength()).isEqualTo(validName.length());
-        assertThat(validationResult.getMaxEncodedLength()).isEqualTo(validName.length());
+        name = "First Last";
+        length = SimRecords.getEncodedNameLength(mResolver, name);
+        assertThat(length).isEqualTo(name.length());
 
-        mIccPhoneBook.setRecordsSize(1, IccConstants.EF_ADN, 10, 40);
-        validationResult = SimRecords.validateName(mResolver, 1, EF_ADN, validName);
-        assertThat(validationResult.getMaxEncodedLength()).isEqualTo(40 - 14);
-    }
+        name = "日本";
+        length = SimRecords.getEncodedNameLength(mResolver, name);
+        assertThat(length).isEqualTo(name.length() * 2 + 1);
 
-    @Test
-    public void validateName_nameTooLong_returnsValueIsCorrect() {
-        setupSimsWithSubscriptionIds(1);
-        String tooLongName = "First Last";
-        mIccPhoneBook.setRecordsSize(1, IccConstants.EF_ADN, 10, tooLongName.length() + 14 - 1);
-        SimRecords.NameValidationResult validationResult = SimRecords.validateName(mResolver, 1,
-                EF_ADN, tooLongName);
+        name = EMOJI;
+        length = SimRecords.getEncodedNameLength(mResolver, name);
+        assertThat(length).isEqualTo(name.length() * 2 + 1);
 
-        assertThat(validationResult.isValid()).isFalse();
-        assertThat(validationResult.getName()).isEqualTo(tooLongName);
-        assertThat(validationResult.getSanitizedName()).isEqualTo(tooLongName);
-        assertThat(validationResult.getEncodedLength()).isEqualTo(tooLongName.length());
-        assertThat(validationResult.getMaxEncodedLength()).isEqualTo(tooLongName.length() - 1);
-    }
-
-    @Test
-    public void validateName_nameWithUnsupportedCharacters_returnsValueIsCorrect() {
-        setupSimsWithSubscriptionIds(1);
-        mIccPhoneBook.setRecordsSize(1, IccConstants.EF_ADN, 10, 40);
-        SimRecords.NameValidationResult validationResult = SimRecords.validateName(mResolver, 1,
-                EF_ADN, UNSUPPORTED_NAME);
-
-        assertThat(validationResult.isValid()).isFalse();
-        assertThat(validationResult.getName()).isEqualTo(UNSUPPORTED_NAME);
-        assertThat(validationResult.getSanitizedName()).isEqualTo(":)=  ;ni= ;hon= ;");
-        assertThat(validationResult.getEncodedLength()).isEqualTo(UNSUPPORTED_NAME.length());
-        assertThat(validationResult.getMaxEncodedLength()).isEqualTo(
-                AdnRecord.getMaxAlphaTagBytes(40));
-    }
-
-    @Test
-    public void validateName_emptyString_returnsValueIsCorrect() {
-        setupSimsWithSubscriptionIds(1);
-        mIccPhoneBook.setRecordsSize(1, IccConstants.EF_ADN, 10, 40);
-        SimRecords.NameValidationResult validationResult = SimRecords.validateName(mResolver, 1,
-                EF_ADN, "");
-
-        assertThat(validationResult.isValid()).isTrue();
-        assertThat(validationResult.getName()).isEqualTo("");
-        assertThat(validationResult.getSanitizedName()).isEqualTo("");
-        assertThat(validationResult.getEncodedLength()).isEqualTo(0);
-        assertThat(validationResult.getMaxEncodedLength()).isEqualTo(
-                AdnRecord.getMaxAlphaTagBytes(40));
-
-        // Null is equivalent to empty
-        validationResult = SimRecords.validateName(mResolver, 1, EF_ADN, null);
-        assertThat(validationResult.getName()).isEqualTo("");
-        assertThat(validationResult.getSanitizedName()).isEqualTo("");
-        assertThat(validationResult.getEncodedLength()).isEqualTo(0);
-        assertThat(validationResult.getMaxEncodedLength()).isEqualTo(
-                AdnRecord.getMaxAlphaTagBytes(40));
+        name = "abc日本" + EMOJI;
+        length = SimRecords.getEncodedNameLength(mResolver, name);
+        assertThat(length).isEqualTo(name.length() * 2 + 1);
     }
 
     private void setupSimsWithSubscriptionIds(int... subscriptionIds) {
