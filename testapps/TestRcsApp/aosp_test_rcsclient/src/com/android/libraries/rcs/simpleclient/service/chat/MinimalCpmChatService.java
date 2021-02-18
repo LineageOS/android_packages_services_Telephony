@@ -21,6 +21,8 @@ import android.telephony.ims.SipDelegateConnection;
 import android.text.TextUtils;
 import android.util.Log;
 
+import androidx.annotation.Nullable;
+
 import com.android.libraries.rcs.simpleclient.SimpleRcsClientContext;
 import com.android.libraries.rcs.simpleclient.protocol.msrp.MsrpManager;
 import com.android.libraries.rcs.simpleclient.protocol.sip.SipSession;
@@ -44,8 +46,6 @@ import java.util.Set;
 
 import javax.sip.message.Request;
 import javax.sip.message.Response;
-
-import androidx.annotation.Nullable;
 
 /**
  * Minimal CPM chat session service that provides the interface creating a {@link SimpleChatSession}
@@ -162,7 +162,8 @@ public class MinimalCpmChatService implements ImsService {
                         SipUtils.buildInviteResponse(
                                 mContext.getSipSession().getSessionConfiguration(),
                                 request,
-                                Response.METHOD_NOT_ALLOWED);
+                                Response.METHOD_NOT_ALLOWED,
+                                null);
                 sendSipResponse(response, /* session= */ null)
                         .addListener(() -> {
                         }, MoreExecutors.directExecutor());
