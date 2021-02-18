@@ -31,6 +31,7 @@ import com.android.libraries.rcs.simpleclient.protocol.cpim.CpimUtils;
 import com.android.libraries.rcs.simpleclient.protocol.cpim.SimpleCpimMessage;
 import com.android.libraries.rcs.simpleclient.protocol.msrp.MsrpChunk;
 import com.android.libraries.rcs.simpleclient.protocol.msrp.MsrpChunk.Continuation;
+import com.android.libraries.rcs.simpleclient.protocol.msrp.MsrpChunkHeader;
 import com.android.libraries.rcs.simpleclient.protocol.msrp.MsrpConstants;
 import com.android.libraries.rcs.simpleclient.protocol.msrp.MsrpManager;
 import com.android.libraries.rcs.simpleclient.protocol.msrp.MsrpSession;
@@ -408,10 +409,28 @@ public class SimpleChatSession {
 
     private void receiveMsrpChunk(MsrpChunk chunk) {
         Log.d(TAG, "Received msrp= " + chunk + " conversation=" + mConversationId);
-        if (mListener != null) {
-            // TODO(b/173186571): Parse CPIM and invoke onMessageReceived()
+
+        MsrpChunkHeader contentTypeHeader = chunk.header("Content-Type");
+        if (chunk.content().length == 0 || contentTypeHeader == null) {
+            Log.i(TAG, "No content or Content-Type header, drop it");
+            return;
+        }
+
+        String contentType = contentTypeHeader.value();
+        if ("message/cpim".equals(contentType)) {
+            try {
+                SimpleCpimMessage cpim = SimpleCpimMessage.parse(chunk.content());
+                if (mListener != null) {
+                    mListener.onMessageReceived(cpim);
+                }
+            } catch (Exception e) {
+                Log.e(TAG, "Error while parsing cpim message.", e);
+            }
+        } else {
+            Log.w(TAG, contentType + " is not supported.");
         }
     }
+
 
     /** Set new listener for this session. */
     public void setListener(@Nullable ChatSessionListener listener) {
