@@ -110,6 +110,8 @@ public class SimpleChatSession {
 
         // Build a new CPIM message and send it out through the MSRP session.
         SimpleCpimMessage cpim = CpimUtils.createForText(msg);
+        Log.i(TAG, "Encoded CPIM:" + cpim.encode());
+
         byte[] content = cpim.encode().getBytes(UTF_8);
         MsrpChunk msrpChunk =
                 MsrpChunk.newBuilder()
@@ -119,12 +121,18 @@ public class SimpleChatSession {
                         .continuation(Continuation.COMPLETE)
                         .addHeader(MsrpConstants.HEADER_TO_PATH, mRemoteSdp.getPath().get())
                         .addHeader(MsrpConstants.HEADER_FROM_PATH, mLocalSdp.getPath().get())
+                        .addHeader(MsrpConstants.HEADER_FAILURE_REPORT,
+                                MsrpConstants.REPORT_VALUE_YES)
+                        .addHeader(MsrpConstants.HEADER_SUCCESS_REPORT,
+                                MsrpConstants.REPORT_VALUE_NO)
                         .addHeader(
                                 MsrpConstants.HEADER_BYTE_RANGE,
                                 String.format("1-%d/%d", content.length, content.length))
                         .addHeader(MsrpConstants.HEADER_MESSAGE_ID, MsrpUtils.generateRandomId())
                         .addHeader(MsrpConstants.HEADER_CONTENT_TYPE, CPIM_CONTENT_TYPE)
                         .build();
+
+        Log.i(TAG, "Send a MSRP chunk: " + msrpChunk);
         Futures.addCallback(
                 session.send(msrpChunk),
                 new FutureCallback<MsrpChunk>() {
@@ -214,11 +222,13 @@ public class SimpleChatSession {
 
         updateRemoteUri(mInviteRequest);
 
+        SipSessionConfiguration configuration = mContext.getSipSession().getSessionConfiguration();
+        SimpleSdpMessage sdp = SdpUtils.createSdpForMsrp(configuration.getLocalIpAddress(), false);
+
         // Automatically reply back to the invite by building a pre-canned response.
         try {
-            SIPResponse response =
-                    SipUtils.buildInviteResponse(
-                            mContext.getSipSession().getSessionConfiguration(), invite, statusCode);
+            SIPResponse response = SipUtils.buildInviteResponse(configuration, invite, statusCode,
+                    sdp);
             return Futures.transform(
                     mService.sendSipResponse(response, this), result -> null,
                     MoreExecutors.directExecutor());
@@ -340,41 +350,53 @@ public class SimpleChatSession {
             return;
         }
 
+        SimpleSdpMessage sdp;
         try {
-            SimpleSdpMessage sdp =
-                    SimpleSdpMessage.parse(new ByteArrayInputStream(response.getRawContent()));
-            startMsrpSession(sdp);
+            sdp = SimpleSdpMessage.parse(new ByteArrayInputStream(response.getRawContent()));
         } catch (ParseException | IOException e) {
             notifyFailure("Invalid SDP in INVITE", CODE_ERROR_UNSPECIFIED);
+            return;
         }
 
-        if (mInviteRequest != null) {
-            SIPRequest ack = mInviteRequest.createAckRequest((To) response.getToHeader());
-            Futures.addCallback(
-                    mService.sendSipRequest(ack, this),
-                    new FutureCallback<Boolean>() {
-                        @Override
-                        public void onSuccess(Boolean result) {
-                            if (result) {
-                                mStartFuture.set(null);
-                                mStartFuture = null;
-                            } else {
-                                notifyFailure("Failed to send ACK", CODE_ERROR_UNSPECIFIED);
-                            }
-                        }
+        if (mInviteRequest == null) {
+            notifyFailure("No INVITE request sent out", CODE_ERROR_UNSPECIFIED);
+            return;
+        }
 
-                        @Override
-                        public void onFailure(Throwable t) {
+        SIPRequest ack = mInviteRequest.createAckRequest((To) response.getToHeader());
+        Futures.addCallback(
+                mService.sendSipRequest(ack, this),
+                new FutureCallback<Boolean>() {
+                    @Override
+                    public void onSuccess(Boolean result) {
+                        if (result) {
+                            startMsrpSession(sdp);
+                            mRemoteSdp = sdp;
+                        } else {
                             notifyFailure("Failed to send ACK", CODE_ERROR_UNSPECIFIED);
                         }
-                    },
-                    MoreExecutors.directExecutor());
-        }
+                    }
+
+                    @Override
+                    public void onFailure(Throwable t) {
+                        notifyFailure("Failed to send ACK", CODE_ERROR_UNSPECIFIED);
+                    }
+                },
+                MoreExecutors.directExecutor());
     }
 
     private void notifyFailure(String message, @ErrorCode int code) {
-        mStartFuture.setException(new ChatServiceException(message, code));
-        mStartFuture = null;
+        if (mStartFuture != null) {
+            mStartFuture.setException(new ChatServiceException(message, code));
+            mStartFuture = null;
+        }
+    }
+
+    private void notifySuccess() {
+        if (mStartFuture != null) {
+            mStartFuture.set(null);
+            mStartFuture = null;
+        }
     }
 
     private void startMsrpSession(SimpleSdpMessage remoteSdp) {
@@ -388,16 +410,17 @@ public class SimpleChatSession {
                         @Override
                         public void onSuccess(MsrpSession result) {
                             mMsrpSession = result;
+                            notifySuccess();
                         }
 
                         @Override
                         public void onFailure(Throwable t) {
                             Log.e(TAG, "Failed to create msrp session", t);
+                            notifyFailure("Failed to establish msrp session",
+                                    CODE_ERROR_UNSPECIFIED);
                             terminate()
                                     .addListener(
-                                            () -> {
-                                                Log.d(TAG, "Session terminated");
-                                            },
+                                            () -> Log.d(TAG, "Session terminated"),
                                             MoreExecutors.directExecutor());
                         }
                     },
