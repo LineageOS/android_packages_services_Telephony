@@ -99,7 +99,7 @@ public class CallQualityManager {
                 .setContentTitle(title)
                 .setContentText(details)
                 .setStyle(new Notification.BigTextStyle().bigText(details))
-                .setOngoing(true)
+                .setAutoCancel(true)
                 .setChannelId(CALL_QUALITY_CHANNEL_ID)
                 .setOnlyAlertOnce(true)
                 .build();
