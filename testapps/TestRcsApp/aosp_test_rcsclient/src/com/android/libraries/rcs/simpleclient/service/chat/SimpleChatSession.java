@@ -109,6 +109,8 @@ public class SimpleChatSession {
 
         // Build a new CPIM message and send it out through the MSRP session.
         SimpleCpimMessage cpim = CpimUtils.createForText(msg);
+        Log.i(TAG, "Encoded CPIM:" + cpim.encode());
+
         byte[] content = cpim.encode().getBytes(UTF_8);
         MsrpChunk msrpChunk =
                 MsrpChunk.newBuilder()
@@ -118,12 +120,18 @@ public class SimpleChatSession {
                         .continuation(Continuation.COMPLETE)
                         .addHeader(MsrpConstants.HEADER_TO_PATH, mRemoteSdp.getPath().get())
                         .addHeader(MsrpConstants.HEADER_FROM_PATH, mLocalSdp.getPath().get())
+                        .addHeader(MsrpConstants.HEADER_FAILURE_REPORT,
+                                MsrpConstants.REPORT_VALUE_YES)
+                        .addHeader(MsrpConstants.HEADER_SUCCESS_REPORT,
+                                MsrpConstants.REPORT_VALUE_NO)
                         .addHeader(
                                 MsrpConstants.HEADER_BYTE_RANGE,
                                 String.format("1-%d/%d", content.length, content.length))
                         .addHeader(MsrpConstants.HEADER_MESSAGE_ID, MsrpUtils.generateRandomId())
                         .addHeader(MsrpConstants.HEADER_CONTENT_TYPE, CPIM_CONTENT_TYPE)
                         .build();
+
+        Log.i(TAG, "Send a MSRP chunk: " + msrpChunk);
         Futures.addCallback(
                 session.send(msrpChunk),
                 new FutureCallback<MsrpChunk>() {
@@ -213,11 +221,13 @@ public class SimpleChatSession {
 
         updateRemoteUri(mInviteRequest);
 
+        SipSessionConfiguration configuration = mContext.getSipSession().getSessionConfiguration();
+        SimpleSdpMessage sdp = SdpUtils.createSdpForMsrp(configuration.getLocalIpAddress(), false);
+
         // Automatically reply back to the invite by building a pre-canned response.
         try {
-            SIPResponse response =
-                    SipUtils.buildInviteResponse(
-                            mContext.getSipSession().getSessionConfiguration(), invite, statusCode);
+            SIPResponse response = SipUtils.buildInviteResponse(configuration, invite, statusCode,
+                    sdp);
             return Futures.transform(
                     mService.sendSipResponse(response, this), result -> null,
                     MoreExecutors.directExecutor());
@@ -360,6 +370,7 @@ public class SimpleChatSession {
                     public void onSuccess(Boolean result) {
                         if (result) {
                             startMsrpSession(sdp);
+                            mRemoteSdp = sdp;
                         } else {
                             notifyFailure("Failed to send ACK", CODE_ERROR_UNSPECIFIED);
                         }
