@@ -82,7 +82,7 @@ public final class ImsPdnNetworkFetcher {
         return result;
     }
 
-    private ConnectivityManager getConnectivityManager() {
+    ConnectivityManager getConnectivityManager() {
         return context.getSystemService(ConnectivityManager.class);
     }
 }
