@@ -9,6 +9,8 @@ apex_defaults {
 
     key: "com.android.telephony.key",
     certificate: ":com.android.telephony.certificate",
+
+    updatable: false,
 }
 
 apex {

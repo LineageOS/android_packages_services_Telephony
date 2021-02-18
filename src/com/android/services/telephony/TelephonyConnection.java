@@ -31,6 +31,7 @@ import android.os.Message;
 import android.os.PersistableBundle;
 import android.telecom.BluetoothCallQualityReport;
 import android.telecom.CallAudioState;
+import android.telecom.CallScreeningService;
 import android.telecom.Conference;
 import android.telecom.Connection;
 import android.telecom.ConnectionService;
@@ -1138,12 +1139,24 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
     }
 
     @Override
-    public void onCallFilteringCompleted(boolean isBlocked, boolean isInContacts) {
+    public void onCallFilteringCompleted(boolean isBlocked, boolean isInContacts,
+            CallScreeningService.CallResponse callScreeningResponse,
+            boolean isResponseFromSystemDialer) {
+        // Check what the call screening service has to say, if it's a system dialer.
+        boolean isAllowedToDisplayPicture;
+        if (isResponseFromSystemDialer && callScreeningResponse != null
+                && callScreeningResponse.getCallComposerAttachmentsToShow() >= 0) {
+            isAllowedToDisplayPicture = (callScreeningResponse.getCallComposerAttachmentsToShow()
+                    & CallScreeningService.CallResponse.CALL_COMPOSER_ATTACHMENT_PICTURE) != 0;
+        } else {
+            isAllowedToDisplayPicture = isInContacts;
+        }
+
         if (isImsConnection()) {
             ImsPhone imsPhone = (getPhone() instanceof ImsPhone) ? (ImsPhone) getPhone() : null;
             if (imsPhone != null
                     && imsPhone.getCallComposerStatus() == TelephonyManager.CALL_COMPOSER_STATUS_ON
-                    && !isBlocked && isInContacts) {
+                    && !isBlocked && isAllowedToDisplayPicture) {
                 ImsPhoneConnection originalConnection = (ImsPhoneConnection) mOriginalConnection;
                 ImsCallProfile profile = originalConnection.getImsCall().getCallProfile();
                 String serverUrl = CallComposerPictureManager.sTestMode
