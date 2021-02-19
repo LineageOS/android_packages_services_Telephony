@@ -13,3 +13,4 @@ sarahchin@google.com
 dbright@google.com
 xiaotonj@google.com
 
+per-file *SimPhonebookProvider* = file:platform/packages/apps/Contacts:/OWNERS
