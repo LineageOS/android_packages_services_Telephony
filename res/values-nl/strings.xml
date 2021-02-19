@@ -32,7 +32,7 @@
     <string name="mmiCancelled" msgid="5339191899200678272">"MMI-code geannuleerd"</string>
     <string name="cancel" msgid="8984206397635155197">"Annuleren"</string>
     <string name="enter_input" msgid="6193628663039958990">"USSD-bericht moet tussen <xliff:g id="MIN_LEN">%1$d</xliff:g> en <xliff:g id="MAX_LEN">%2$d</xliff:g> tekens lang zijn. Probeer het opnieuw."</string>
-    <string name="manageConferenceLabel" msgid="8415044818156353233">"Conferencecall beheren"</string>
+    <string name="manageConferenceLabel" msgid="8415044818156353233">"Telefonische vergadering beheren"</string>
     <string name="ok" msgid="7818974223666140165">"OK"</string>
     <string name="audio_mode_speaker" msgid="243689733219312360">"Luidspreker"</string>
     <string name="audio_mode_earpiece" msgid="2823700267171134282">"Oortelefoon van handset"</string>
@@ -510,7 +510,7 @@
     <string name="voicemail_settings_number_label" msgid="1265118640154688162">"Voicemailnummer"</string>
     <string name="card_title_dialing" msgid="8742182654254431781">"Kiezen"</string>
     <string name="card_title_redialing" msgid="18130232613559964">"Opnieuw bellen"</string>
-    <string name="card_title_conf_call" msgid="901197309274457427">"Conferencecall"</string>
+    <string name="card_title_conf_call" msgid="901197309274457427">"Telefonische vergadering"</string>
     <string name="card_title_incoming_call" msgid="881424648458792430">"Inkomend gesprek"</string>
     <string name="card_title_call_ended" msgid="650223980095026340">"Gesprek beëindigd"</string>
     <string name="card_title_on_hold" msgid="9028319436626975207">"In de wacht"</string>
