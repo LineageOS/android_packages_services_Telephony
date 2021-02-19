@@ -35,13 +35,13 @@ import com.google.common.util.concurrent.ListenableFuture;
 import gov.nist.javax.sip.message.SIPRequest;
 import gov.nist.javax.sip.message.SIPResponse;
 
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
 import java.util.List;
 
 import javax.sip.message.Message;
 import javax.sip.message.Request;
-
-import org.junit.Test;
-import org.junit.runner.RunWith;
 
 @RunWith(AndroidJUnit4.class)
 public class SimpleChatSessionTest {
@@ -125,6 +125,16 @@ public class SimpleChatSessionTest {
                 @Override
                 public String getPlaniHeader() {
                     return "IEEE-802.11;i-wlan-node-id=PLANI01EB5B0";
+                }
+
+                @Override
+                public String getUserAgentHeader() {
+                    return "Test-Client";
+                }
+
+                @Override
+                public int getMaxPayloadSizeOnUdp() {
+                    return 0;
                 }
             };
     private final SimpleRcsClientContext context =
