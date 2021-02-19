@@ -16,11 +16,19 @@
 
 package com.android.libraries.rcs.simpleclient.protocol.cpim;
 
+import android.text.TextUtils;
 import com.google.auto.value.AutoValue;
+import com.google.common.base.Ascii;
 import com.google.common.base.Utf8;
 import com.google.common.collect.ImmutableMap;
-
+import com.google.common.io.CharStreams;
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * The CPIM implementation as per RFC 3862. This class supports minimal fields that is required to
@@ -30,10 +38,9 @@ import java.util.Map;
 public abstract class SimpleCpimMessage {
     private static final String CRLF = "\r\n";
     private static final String COLSP = ": ";
-
-    public static SimpleCpimMessage.Builder newBuilder() {
-        return new AutoValue_SimpleCpimMessage.Builder();
-    }
+    private static final Pattern NAMESPACE_HEADER_PATTERN =
+            Pattern.compile("NS:\\s+(\\S+)\\s+<(.+)>");
+    private static final Pattern HEADER_PATTERN = Pattern.compile("([^\\s:]+):\\s+(.+)");
 
     public abstract ImmutableMap<String, String> namespaces();
 
@@ -68,6 +75,42 @@ public abstract class SimpleCpimMessage {
         return builder.toString();
     }
 
+    public static SimpleCpimMessage parse(byte[] content) throws IOException {
+        BufferedReader reader =
+                new BufferedReader(new InputStreamReader(new ByteArrayInputStream(content)));
+        Builder builder = newBuilder();
+
+        String line = reader.readLine();
+        while (!TextUtils.isEmpty(line)) {
+            Matcher namespaceMatcher = NAMESPACE_HEADER_PATTERN.matcher(line);
+            Matcher headerMatcher = HEADER_PATTERN.matcher(line);
+            if (namespaceMatcher.matches()) {
+                builder.addNamespace(namespaceMatcher.group(1), namespaceMatcher.group(2));
+            } else if (headerMatcher.matches()) {
+                builder.addHeader(headerMatcher.group(1), headerMatcher.group(2));
+            }
+
+            line = reader.readLine();
+        }
+
+        line = reader.readLine();
+        while (!TextUtils.isEmpty(line)) {
+            Matcher headerMatcher = HEADER_PATTERN.matcher(line);
+            if (headerMatcher.matches()) {
+                if (Ascii.equalsIgnoreCase("content-type", headerMatcher.group(1))) {
+                    builder.setContentType(headerMatcher.group(2));
+                }
+            }
+
+            line = reader.readLine();
+        }
+
+        String body = CharStreams.toString(reader);
+        builder.setContent(body);
+
+        return builder.build();
+    }
+
     @AutoValue.Builder
     public abstract static class Builder {
         public abstract ImmutableMap.Builder<String, String> namespacesBuilder();
@@ -89,5 +132,9 @@ public abstract class SimpleCpimMessage {
             headersBuilder().put(name, value);
             return this;
         }
+    }
+
+    public static SimpleCpimMessage.Builder newBuilder() {
+        return new AutoValue_SimpleCpimMessage.Builder();
     }
 }
