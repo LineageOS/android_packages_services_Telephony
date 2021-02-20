@@ -22,7 +22,8 @@ import static com.android.libraries.rcs.simpleclient.protocol.sdp.SdpUtils.SDP_C
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.android.libraries.rcs.simpleclient.protocol.sdp.SdpUtils;
+import androidx.annotation.Nullable;
+
 import com.android.libraries.rcs.simpleclient.protocol.sdp.SimpleSdpMessage;
 
 import com.google.common.base.Ascii;
@@ -259,7 +260,7 @@ public final class SipUtils {
 
         request.setCallId(invite.getCallId());
 
-        Via via = (Via) request.getTopmostVia().clone();
+        Via via = (Via) invite.getTopmostVia().clone();
         via.removeParameter("branch");
         request.addHeader(via);
         request.addHeader(
@@ -280,12 +281,13 @@ public final class SipUtils {
      * @param code          The status code of the response.
      */
     public static SIPResponse buildInviteResponse(
-            SipSessionConfiguration configuration, SIPRequest invite, int code)
+            SipSessionConfiguration configuration,
+            SIPRequest invite,
+            int code,
+            @Nullable SimpleSdpMessage sdp)
             throws ParseException {
         SIPResponse response = invite.createResponse(code);
         if (code == Response.OK) {
-            SimpleSdpMessage sdp = SdpUtils.createSdpForMsrp(configuration.getLocalIpAddress(),
-                    false);
             response.setMessageContent(SDP_CONTENT_TYPE, SDP_CONTENT_SUB_TYPE, sdp.encode());
         }
 

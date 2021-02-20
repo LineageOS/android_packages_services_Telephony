@@ -68,8 +68,9 @@ public abstract class SimpleCpimMessage {
 
         builder.append(CRLF);
         builder.append("Content-Type").append(COLSP).append(contentType());
-        builder.append("Content-Length").append(COLSP).append(Utf8.encodedLength(content()));
         builder.append(CRLF);
+        builder.append("Content-Length").append(COLSP).append(Utf8.encodedLength(content()));
+        builder.append(CRLF).append(CRLF);
         builder.append(content());
 
         return builder.toString();
