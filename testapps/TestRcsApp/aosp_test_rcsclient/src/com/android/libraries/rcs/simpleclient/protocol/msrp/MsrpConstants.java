@@ -44,6 +44,10 @@ public class MsrpConstants {
     public static final String HEADER_TO_PATH = "To-Path";
     public static final String HEADER_FROM_PATH = "From-Path";
     public static final String HEADER_FAILURE_REPORT = "Failure-Report";
+    public static final String HEADER_SUCCESS_REPORT = "Success-Report";
+    public static final String REPORT_VALUE_YES = "yes";
+    public static final String REPORT_VALUE_NO = "no";
+
     public static final int RESPONSE_CODE_OK = 200;
 
     private MsrpConstants() {

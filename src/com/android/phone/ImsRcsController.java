@@ -16,6 +16,7 @@
 
 package com.android.phone;
 
+import android.Manifest;
 import android.app.ActivityManager;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -402,7 +403,10 @@ public class ImsRcsController extends IImsRcsController.Stub {
 
     @Override
     public boolean isSipDelegateSupported(int subId) {
-        enforceReadPrivilegedPermission("isSipDelegateSupported");
+        TelephonyPermissions.enforceAnyPermissionGranted(mApp, Binder.getCallingUid(),
+                "isSipDelegateSupported",
+                Manifest.permission.PERFORM_IMS_SINGLE_REGISTRATION,
+                Manifest.permission.READ_PRIVILEGED_PHONE_STATE);
         if (!isImsSingleRegistrationSupportedOnDevice()) {
             return false;
         }
@@ -430,7 +434,7 @@ public class ImsRcsController extends IImsRcsController.Stub {
     public void createSipDelegate(int subId, DelegateRequest request, String packageName,
             ISipDelegateConnectionStateCallback delegateState,
             ISipDelegateMessageCallback delegateMessage) {
-        enforceModifyPermission();
+        enforceImsSingleRegistrationPermission("createSipDelegate");
         if (!isImsSingleRegistrationSupportedOnDevice()) {
             throw new ServiceSpecificException(ImsException.CODE_ERROR_UNSUPPORTED_OPERATION,
                     "SipDelegate creation is only supported for devices supporting IMS single "
@@ -468,7 +472,7 @@ public class ImsRcsController extends IImsRcsController.Stub {
 
     @Override
     public void destroySipDelegate(int subId, ISipDelegate connection, int reason) {
-        enforceModifyPermission();
+        enforceImsSingleRegistrationPermission("destroySipDelegate");
 
         final long identity = Binder.clearCallingIdentity();
         try {
@@ -486,7 +490,7 @@ public class ImsRcsController extends IImsRcsController.Stub {
     @Override
     public void triggerNetworkRegistration(int subId, ISipDelegate connection, int sipCode,
             String sipReason) {
-        enforceModifyPermission();
+        enforceImsSingleRegistrationPermission("triggerNetworkRegistration");
 
         final long identity = Binder.clearCallingIdentity();
         try {
@@ -545,6 +549,15 @@ public class ImsRcsController extends IImsRcsController.Stub {
     private void enforceReadPrivilegedPermission(String message) {
         mApp.enforceCallingOrSelfPermission(
                 android.Manifest.permission.READ_PRIVILEGED_PHONE_STATE, message);
+    }
+
+    /**
+     * @throws SecurityException if the caller does not have the required
+     *     PERFORM_IMS_SINGLE_REGISTRATION permission.
+     */
+    private void enforceImsSingleRegistrationPermission(String message) {
+        mApp.enforceCallingOrSelfPermission(
+                Manifest.permission.PERFORM_IMS_SINGLE_REGISTRATION, message);
     }
 
     /**

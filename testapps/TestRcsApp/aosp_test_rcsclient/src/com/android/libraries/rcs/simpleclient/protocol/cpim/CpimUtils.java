@@ -16,8 +16,9 @@
 
 package com.android.libraries.rcs.simpleclient.protocol.cpim;
 
-import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Random;
 
 /** Collections of utility functions for CPIM */
@@ -28,6 +29,7 @@ public class CpimUtils {
     private CpimUtils() {
     }
 
+    @SuppressWarnings("AndroidJdkLibsChecker")
     public static SimpleCpimMessage createForText(String text) {
         return SimpleCpimMessage.newBuilder()
                 .addNamespace("imdn", "urn:ietf:params:imdn")
@@ -35,7 +37,8 @@ public class CpimUtils {
                 .addHeader("imdn.Disposition-Notification", "positive-delivery, display")
                 .addHeader("To", ANONYMOUS_URI)
                 .addHeader("From", ANONYMOUS_URI)
-                .addHeader("DateTime", LocalDate.now(ZoneId.systemDefault()).toString())
+                .addHeader("DateTime", ZonedDateTime.now(ZoneId.systemDefault()).format(
+                        DateTimeFormatter.ISO_INSTANT))
                 .setContentType("text/plain")
                 .setContent(text)
                 .build();
@@ -43,6 +46,6 @@ public class CpimUtils {
 
     private static String generateImdnMessageId() {
         Random random = new Random();
-        return "Test_" + random.nextLong();
+        return "Test_" + random.nextInt(1000000);
     }
 }
