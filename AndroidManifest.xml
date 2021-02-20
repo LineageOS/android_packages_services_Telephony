@@ -184,6 +184,8 @@
     <!-- Needed to start demo session -->
     <uses-permission android:name="com.google.android.apps.stargate.permission.SEND_NON_EMERGENCY_INTENTS"/>
 
+    <protected-broadcast android:name="org.codeaurora.intent.action.RADIO_POWER_STATE" />
+
     <application android:name="PhoneApp"
             android:persistent="true"
             android:label="@string/phoneAppLabel"
