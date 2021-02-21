@@ -53,6 +53,7 @@ import android.os.Process;
 import android.os.RemoteException;
 import android.os.ResultReceiver;
 import android.os.ServiceSpecificException;
+import android.os.SystemClock;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.os.WorkSource;
@@ -378,6 +379,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     public static final String RESET_NETWORK_ERASE_MODEM_CONFIG_ENABLED =
             "reset_network_erase_modem_config_enabled";
+
+    private static final int SET_NETWORK_SELECTION_MODE_AUTOMATIC_TIMEOUT_MS = 2000; // 2 seconds
 
     /**
      * A request object to use for transmitting data to an ICC.
@@ -1942,8 +1945,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * @see #sendRequestAsync
      */
     private Object sendRequest(int command, Object argument) {
-        return sendRequest(
-                command, argument, SubscriptionManager.INVALID_SUBSCRIPTION_ID, null, null);
+        return sendRequest(command, argument, SubscriptionManager.INVALID_SUBSCRIPTION_ID, null,
+                null, -1 /*timeoutInMs*/);
     }
 
     /**
@@ -1953,7 +1956,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     private Object sendRequest(int command, Object argument, WorkSource workSource) {
         return sendRequest(command, argument,  SubscriptionManager.INVALID_SUBSCRIPTION_ID,
-                null, workSource);
+                null, workSource, -1 /*timeoutInMs*/);
     }
 
     /**
@@ -1962,7 +1965,18 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * @see #sendRequestAsync
      */
     private Object sendRequest(int command, Object argument, Integer subId) {
-        return sendRequest(command, argument, subId, null, null);
+        return sendRequest(command, argument, subId, null, null, -1 /*timeoutInMs*/);
+    }
+
+    /**
+     * Posts the specified command to be executed on the main thread,
+     * waits for the request to complete for at most {@code timeoutInMs}, and returns the result
+     * if not timeout or null otherwise.
+     * @see #sendRequestAsync
+     */
+    private @Nullable Object sendRequest(int command, Object argument, Integer subId,
+            long timeoutInMs) {
+        return sendRequest(command, argument, subId, null, null, timeoutInMs);
     }
 
     /**
@@ -1971,7 +1985,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * @see #sendRequestAsync
      */
     private Object sendRequest(int command, Object argument, int subId, WorkSource workSource) {
-        return sendRequest(command, argument, subId, null, workSource);
+        return sendRequest(command, argument, subId, null, workSource, -1 /*timeoutInMs*/);
     }
 
     /**
@@ -1980,17 +1994,18 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * @see #sendRequestAsync
      */
     private Object sendRequest(int command, Object argument, Phone phone, WorkSource workSource) {
-        return sendRequest(
-                command, argument, SubscriptionManager.INVALID_SUBSCRIPTION_ID, phone, workSource);
+        return sendRequest(command, argument, SubscriptionManager.INVALID_SUBSCRIPTION_ID, phone,
+                workSource, -1 /*timeoutInMs*/);
     }
 
     /**
-     * Posts the specified command to be executed on the main thread,
-     * waits for the request to complete, and returns the result.
+     * Posts the specified command to be executed on the main thread. If {@code timeoutInMs} is
+     * negative, waits for the request to complete, and returns the result. Otherwise, wait for
+     * maximum of {@code timeoutInMs} milliseconds, interrupt and return null.
      * @see #sendRequestAsync
      */
-    private Object sendRequest(
-            int command, Object argument, Integer subId, Phone phone, WorkSource workSource) {
+    private @Nullable Object sendRequest(int command, Object argument, Integer subId, Phone phone,
+            WorkSource workSource, long timeoutInMs) {
         if (Looper.myLooper() == mMainThreadHandler.getLooper()) {
             throw new RuntimeException("This method will deadlock if called from the main thread.");
         }
@@ -2007,15 +2022,35 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         Message msg = mMainThreadHandler.obtainMessage(command, request);
         msg.sendToTarget();
 
-        // Wait for the request to complete
+
         synchronized (request) {
-            while (request.result == null) {
-                try {
-                    request.wait();
-                } catch (InterruptedException e) {
-                    // Do nothing, go back and wait until the request is complete
+            if (timeoutInMs >= 0) {
+                // Wait for at least timeoutInMs before returning null request result
+                long now = SystemClock.elapsedRealtime();
+                long deadline = now + timeoutInMs;
+                while (request == null && now < deadline) {
+                    try {
+                        request.wait(deadline - now);
+                    } catch (InterruptedException e) {
+                        // Do nothing, go back and check if request is completed or timeout
+                    } finally {
+                        now = SystemClock.elapsedRealtime();
+                    }
+                }
+            } else {
+                // Wait for the request to complete
+                while (request.result == null) {
+                    try {
+                        request.wait();
+                    } catch (InterruptedException e) {
+                        // Do nothing, go back and wait until the request is complete
+                    }
                 }
             }
+        }
+        if (request.result == null) {
+            Log.wtf(LOG_TAG,
+                    "sendRequest: Blocking command timed out. Something has gone terribly wrong.");
         }
         return request.result;
     }
@@ -5701,7 +5736,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 return;
             }
             if (DBG) log("setNetworkSelectionModeAutomatic: subId " + subId);
-            sendRequest(CMD_SET_NETWORK_SELECTION_MODE_AUTOMATIC, null, subId);
+            sendRequest(CMD_SET_NETWORK_SELECTION_MODE_AUTOMATIC, null, subId,
+                    SET_NETWORK_SELECTION_MODE_AUTOMATIC_TIMEOUT_MS);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
