@@ -17,6 +17,7 @@
 package com.android.libraries.rcs.simpleclient.protocol.msrp;
 
 import android.content.Context;
+import android.net.ConnectivityManager;
 import android.net.Network;
 
 import com.google.common.util.concurrent.Futures;
@@ -34,11 +35,12 @@ public class MsrpManager {
         imsPdnNetworkFetcher = new ImsPdnNetworkFetcher(context);
     }
 
-    private static MsrpSession createMsrpSession(
+    private static MsrpSession createMsrpSession(ConnectivityManager manager,
             Network network, String host, int port, MsrpSessionListener listener)
             throws IOException {
         Socket socket = network.getSocketFactory().createSocket(host, port);
-        MsrpSession msrpSession = new MsrpSession(socket, listener);
+        MsrpSession msrpSession = new MsrpSession(manager,
+                network, socket, listener);
         Thread thread = new Thread(msrpSession::run);
         thread.start();
         return msrpSession;
@@ -51,7 +53,8 @@ public class MsrpManager {
                 network -> {
                     if (network != null) {
                         return Futures.immediateFuture(
-                                createMsrpSession(network, host, port, listener));
+                                createMsrpSession(imsPdnNetworkFetcher.getConnectivityManager(),
+                                        network, host, port, listener));
                     } else {
                         return Futures.immediateFailedFuture(
                                 new IllegalStateException("Network is null"));
