@@ -27,9 +27,9 @@ import android.os.SystemProperties;
 import android.telecom.PhoneAccountHandle;
 import android.telecom.TelecomManager;
 import android.telephony.CarrierConfigManager;
-import android.telephony.PhoneStateListener;
 import android.telephony.ServiceState;
 import android.telephony.SubscriptionManager;
+import android.telephony.TelephonyCallback;
 import android.telephony.TelephonyManager;
 import android.util.ArrayMap;
 import android.util.ArraySet;
@@ -71,8 +71,8 @@ public class VvmSimStateTracker extends BroadcastReceiver {
      * Waits for the account to become {@link ServiceState#STATE_IN_SERVICE} and notify the
      * connected event. Will unregister itself once the event has been triggered.
      */
-    private class ServiceStateListener extends PhoneStateListener
-            implements PhoneStateListener.ServiceStateChangedListener  {
+    private class ServiceStateListener extends TelephonyCallback implements
+            TelephonyCallback.ServiceStateListener  {
 
         private final PhoneAccountHandle mPhoneAccountHandle;
         private final Context mContext;
@@ -88,7 +88,7 @@ public class VvmSimStateTracker extends BroadcastReceiver {
                 VvmLog.e(TAG, "Cannot create TelephonyManager from " + mPhoneAccountHandle);
                 return;
             }
-            telephonyManager.registerPhoneStateListener(
+            telephonyManager.registerTelephonyCallback(
                     new HandlerExecutor(new Handler(Looper.getMainLooper())), this);
         }
 
@@ -97,7 +97,7 @@ public class VvmSimStateTracker extends BroadcastReceiver {
             // PhoneStateListener, and mPhoneAccountHandle might be invalid at this point
             // (e.g. SIM removal)
             mContext.getSystemService(TelephonyManager.class)
-                    .unregisterPhoneStateListener(this);
+                    .unregisterTelephonyCallback(this);
             sListeners.put(mPhoneAccountHandle, null);
         }
 
