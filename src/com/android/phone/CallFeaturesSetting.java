@@ -30,6 +30,9 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.ResolveInfo;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.HandlerExecutor;
+import android.os.Looper;
 import android.os.PersistableBundle;
 import android.os.UserManager;
 import android.preference.Preference;
@@ -40,8 +43,8 @@ import android.provider.Settings;
 import android.telecom.PhoneAccountHandle;
 import android.telecom.TelecomManager;
 import android.telephony.CarrierConfigManager;
-import android.telephony.PhoneStateListener;
 import android.telephony.SubscriptionManager;
+import android.telephony.TelephonyCallback;
 import android.telephony.TelephonyManager;
 import android.telephony.ims.ProvisioningManager;
 import android.telephony.ims.feature.ImsFeature;
@@ -103,6 +106,7 @@ public class CallFeaturesSetting extends PreferenceActivity
     private ImsManager mImsMgr;
     private SubscriptionInfoHelper mSubscriptionInfoHelper;
     private TelecomManager mTelecomManager;
+    private TelephonyCallback mTelephonyCallback;
 
     private SwitchPreference mButtonAutoRetry;
     private PreferenceScreen mVoicemailSettingsScreen;
@@ -263,6 +267,7 @@ public class CallFeaturesSetting extends PreferenceActivity
         mSubscriptionInfoHelper.setActionBarTitle(
                 getActionBar(), getResourcesForSubId(), R.string.call_settings_with_label);
         mTelecomManager = getSystemService(TelecomManager.class);
+        mTelephonyCallback = new CallFeaturesTelephonyCallback();
     }
 
     private void updateImsManager(Phone phone) {
@@ -279,11 +284,16 @@ public class CallFeaturesSetting extends PreferenceActivity
     private void listenPhoneState(boolean listen) {
         TelephonyManager telephonyManager = getSystemService(TelephonyManager.class)
                 .createForSubscriptionId(mPhone.getSubId());
-        telephonyManager.listen(mPhoneStateListener, listen
-                ? PhoneStateListener.LISTEN_CALL_STATE : PhoneStateListener.LISTEN_NONE);
+        if (listen) {
+            telephonyManager.registerTelephonyCallback(
+                    new HandlerExecutor(new Handler(Looper.getMainLooper())), mTelephonyCallback);
+        } else {
+            telephonyManager.unregisterTelephonyCallback(mTelephonyCallback);
+        }
     }
 
-    private final PhoneStateListener mPhoneStateListener = new PhoneStateListener() {
+    private final class CallFeaturesTelephonyCallback extends TelephonyCallback implements
+            TelephonyCallback.CallStateListener {
         @Override
         public void onCallStateChanged(int state, String incomingNumber) {
             if (DBG) log("PhoneStateListener onCallStateChanged: state is " + state);

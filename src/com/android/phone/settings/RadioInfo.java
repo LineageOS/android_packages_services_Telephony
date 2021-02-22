@@ -36,6 +36,7 @@ import android.os.AsyncResult;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.HandlerExecutor;
 import android.os.Message;
 import android.os.PersistableBundle;
 import android.os.SystemProperties;
@@ -56,13 +57,13 @@ import android.telephony.CellSignalStrengthLte;
 import android.telephony.CellSignalStrengthWcdma;
 import android.telephony.DataSpecificRegistrationInfo;
 import android.telephony.NetworkRegistrationInfo;
-import android.telephony.PhoneStateListener;
 import android.telephony.PhysicalChannelConfig;
 import android.telephony.PreciseCallState;
 import android.telephony.RadioAccessFamily;
 import android.telephony.ServiceState;
 import android.telephony.SignalStrength;
 import android.telephony.SubscriptionManager;
+import android.telephony.TelephonyCallback;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Log;
@@ -295,10 +296,20 @@ public class RadioInfo extends AppCompatActivity {
     };
 
     // not final because we need to recreate this object to register on a new subId (b/117555407)
-    private PhoneStateListener mPhoneStateListener = new RadioInfoPhoneStateListener();
-    private class RadioInfoPhoneStateListener extends PhoneStateListener {
+    private TelephonyCallback mTelephonyCallback = new RadioInfoTelephonyCallback();
+    private class RadioInfoTelephonyCallback extends TelephonyCallback implements
+            TelephonyCallback.DataConnectionStateListener,
+            TelephonyCallback.DataActivityListener,
+            TelephonyCallback.CallStateListener,
+            TelephonyCallback.MessageWaitingIndicatorListener,
+            TelephonyCallback.CallForwardingIndicatorListener,
+            TelephonyCallback.CellInfoListener,
+            TelephonyCallback.SignalStrengthsListener,
+            TelephonyCallback.ServiceStateListener, 
+            TelephonyCallback.PreciseCallStateListener {
+
         @Override
-        public void onDataConnectionStateChanged(int state) {
+        public void onDataConnectionStateChanged(int state, int networkType) {
             updateDataState();
             updateNetworkType();
         }
@@ -673,7 +684,7 @@ public class RadioInfo extends AppCompatActivity {
 
         log("onPause: unregister phone & data intents");
 
-        mTelephonyManager.listen(mPhoneStateListener, PhoneStateListener.LISTEN_NONE);
+        mTelephonyManager.unregisterTelephonyCallback(mTelephonyCallback);
         mTelephonyManager.setCellInfoListRate(sCellInfoListRateDisabled);
         mConnectivityManager.unregisterNetworkCallback(mNetworkCallback);
 
@@ -774,7 +785,7 @@ public class RadioInfo extends AppCompatActivity {
     }
 
     private void unregisterPhoneStateListener() {
-        mTelephonyManager.listen(mPhoneStateListener, PhoneStateListener.LISTEN_NONE);
+        mTelephonyManager.unregisterTelephonyCallback(mTelephonyCallback);
         mPhone.unregisterForPhysicalChannelConfig(mHandler);
 
         // clear all fields so they are blank until the next listener event occurs
@@ -796,21 +807,11 @@ public class RadioInfo extends AppCompatActivity {
         mPhyChanConfig.setText("");
     }
 
-    // register mPhoneStateListener for relevant fields using the current TelephonyManager
+    // register mTelephonyCallback for relevant fields using the current TelephonyManager
     private void registerPhoneStateListener() {
-        mPhoneStateListener = new RadioInfoPhoneStateListener();
-        mTelephonyManager.listen(mPhoneStateListener,
-                  PhoneStateListener.LISTEN_CALL_STATE
-        //b/27803938 - RadioInfo currently cannot read PRECISE_CALL_STATE
-        //      | PhoneStateListener.LISTEN_PRECISE_CALL_STATE
-                | PhoneStateListener.LISTEN_DATA_CONNECTION_STATE
-                | PhoneStateListener.LISTEN_DATA_ACTIVITY
-                | PhoneStateListener.LISTEN_CELL_LOCATION
-                | PhoneStateListener.LISTEN_MESSAGE_WAITING_INDICATOR
-                | PhoneStateListener.LISTEN_CALL_FORWARDING_INDICATOR
-                | PhoneStateListener.LISTEN_CELL_INFO
-                | PhoneStateListener.LISTEN_SERVICE_STATE
-                | PhoneStateListener.LISTEN_SIGNAL_STRENGTHS);
+        mTelephonyCallback = new RadioInfoTelephonyCallback();
+        mTelephonyManager.registerTelephonyCallback(new HandlerExecutor(mHandler),
+                mTelephonyCallback);
     }
 
     private void updateDnsCheckState() {
