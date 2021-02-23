@@ -83,6 +83,7 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
 
     private static final String CALL_COMPOSER_TEST_MODE = "test-mode";
     private static final String CALL_COMPOSER_SIMULATE_CALL = "simulate-outgoing-call";
+    private static final String CALL_COMPOSER_USER_SETTING = "user-setting";
 
     private static final String IMS_SET_IMS_SERVICE = "set-ims-service";
     private static final String IMS_GET_IMS_SERVICE = "get-ims-service";
@@ -1840,6 +1841,9 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         pw.println("  callcomposer simulate-outgoing-call [subId] [UUID]");
         pw.println("    Simulates an outgoing call being placed with the picture ID as");
         pw.println("    the provided UUID. This triggers storage to the call log.");
+        pw.println("  callcomposer user-setting [subId] enable|disable|query");
+        pw.println("    Enables or disables the user setting for call composer, as set by");
+        pw.println("    TelephonyManager#setCallComposerStatus.");
     }
 
     private int handleCallComposerCommand() {
@@ -1880,6 +1884,29 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                     getOutPrintWriter().println(String.valueOf(uri));
                 } catch (Exception e) {
                     throw new RuntimeException(e);
+                }
+                break;
+            }
+            case CALL_COMPOSER_USER_SETTING: {
+                try {
+                    int subscriptionId = Integer.valueOf(getNextArg());
+                    String enabledStr = getNextArg();
+                    if (ENABLE.equals(enabledStr)) {
+                        mInterface.setCallComposerStatus(subscriptionId,
+                                TelephonyManager.CALL_COMPOSER_STATUS_ON);
+                    } else if (DISABLE.equals(enabledStr)) {
+                        mInterface.setCallComposerStatus(subscriptionId,
+                                TelephonyManager.CALL_COMPOSER_STATUS_OFF);
+                    } else if (QUERY.equals(enabledStr)) {
+                        getOutPrintWriter().println(mInterface.getCallComposerStatus(subscriptionId)
+                                == TelephonyManager.CALL_COMPOSER_STATUS_ON);
+                    } else {
+                        onHelpCallComposer();
+                        return 1;
+                    }
+                } catch (RemoteException e) {
+                    e.printStackTrace(getOutPrintWriter());
+                    return 1;
                 }
                 break;
             }
