@@ -9933,7 +9933,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @Override
     public void sendDeviceToDeviceMessage(int message, int value) {
         TelephonyPermissions.enforceShellOnly(Binder.getCallingUid(),
-                "setCarrierSingleRegistrationEnabledOverride");
+                "sendDeviceToDeviceMessage");
         enforceModifyPermission();
 
         final long identity = Binder.clearCallingIdentity();
@@ -9950,6 +9950,29 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
+    /**
+     * Sets the specified device to device transport active.
+     * @param transport The transport to set active.
+     */
+    @Override
+    public void setActiveDeviceToDeviceTransport(@NonNull String transport) {
+        TelephonyPermissions.enforceShellOnly(Binder.getCallingUid(),
+                "setActiveDeviceToDeviceTransport");
+        enforceModifyPermission();
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            TelephonyConnectionService service =
+                    TelecomAccountRegistry.getInstance(null).getTelephonyConnectionService();
+            if (service == null) {
+                Rlog.e(LOG_TAG, "setActiveDeviceToDeviceTransport: not in a call.");
+                return;
+            }
+            service.setActiveDeviceToDeviceTransport(transport);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
 
     /**
      * Gets the config of RCS VoLTE single registration enabled for the device.
