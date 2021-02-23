@@ -2538,6 +2538,26 @@ public class TelephonyConnectionService extends ConnectionService {
        });
     }
 
+    /**
+     * Overrides the current D2D transport, forcing the specified one to be active.  Used for test.
+     * @param transport The class simple name of the transport to make active.
+     */
+    public void setActiveDeviceToDeviceTransport(@NonNull String transport) {
+        getAllConnections().stream()
+                .filter(f -> f instanceof TelephonyConnection)
+                .forEach(t -> {
+                    TelephonyConnection tc = (TelephonyConnection) t;
+                    Communicator c = tc.getCommunicator();
+                    if (c == null) {
+                        Log.w(this, "setActiveDeviceToDeviceTransport: D2D not enabled");
+                        return;
+                    }
+                    Log.i(this, "setActiveDeviceToDeviceTransport: callId=%s, set to: %s",
+                            tc.getTelecomCallId(), transport);
+                    c.setTransportActive(transport);
+                });
+    }
+
     private PhoneAccountHandle adjustAccountHandle(Phone phone,
             PhoneAccountHandle origAccountHandle) {
         int origSubId = PhoneUtils.getSubIdForPhoneAccountHandle(origAccountHandle);
