@@ -3053,6 +3053,9 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
         setDisconnected(disconnectCause);
         notifyDisconnected(disconnectCause);
         notifyStateChanged(getState());
+        if (mCallQualityManager != null) {
+            mCallQualityManager.clearNotifications();
+        }
     }
 
     /**
