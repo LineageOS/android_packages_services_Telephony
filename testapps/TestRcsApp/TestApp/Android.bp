@@ -18,6 +18,7 @@ android_app {
         "androidx-constraintlayout_constraintlayout",
         "aosp_test_rcs_client_base",
         "androidx.appcompat_appcompat",
+        "libphonenumber-platform"
     ],
 
     certificate: "platform",
