@@ -17,6 +17,7 @@
 package com.android.phone.callcomposer;
 
 import android.content.Context;
+import android.location.Location;
 import android.net.Uri;
 import android.os.OutcomeReceiver;
 import android.os.UserHandle;
@@ -81,6 +82,13 @@ public class CallComposerPictureManager {
     @VisibleForTesting
     public static boolean sTestMode = false;
     public static final String FAKE_SERVER_URL = "https://example.com/FAKE.png";
+    public static final String FAKE_SUBJECT = "This is a test call subject";
+    public static final Location FAKE_LOCATION = new Location("");
+    static {
+        // Meteor Crater, AZ
+        FAKE_LOCATION.setLatitude(35.027526);
+        FAKE_LOCATION.setLongitude(-111.021696);
+    }
 
     public interface CallLogProxy {
         default void storeCallComposerPictureAsUser(Context context,
