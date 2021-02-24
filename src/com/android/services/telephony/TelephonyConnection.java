@@ -1156,24 +1156,33 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
     }
 
     @Override
-    public void onCallFilteringCompleted(boolean isBlocked, boolean isInContacts,
-            CallScreeningService.CallResponse callScreeningResponse,
-            boolean isResponseFromSystemDialer) {
+    public void onCallFilteringCompleted(CallFilteringCompletionInfo callFilteringCompletionInfo) {
         // Check what the call screening service has to say, if it's a system dialer.
         boolean isAllowedToDisplayPicture;
+        String callScreeningPackage =
+                callFilteringCompletionInfo.getCallScreeningComponent() == null
+                        ? null
+                        : callFilteringCompletionInfo.getCallScreeningComponent().getPackageName();
+        boolean isResponseFromSystemDialer =
+                Objects.equals(getPhone().getContext()
+                        .getSystemService(TelecomManager.class).getSystemDialerPackage(),
+                        callScreeningPackage);
+        CallScreeningService.CallResponse callScreeningResponse =
+                callFilteringCompletionInfo.getCallResponse();
+
         if (isResponseFromSystemDialer && callScreeningResponse != null
                 && callScreeningResponse.getCallComposerAttachmentsToShow() >= 0) {
             isAllowedToDisplayPicture = (callScreeningResponse.getCallComposerAttachmentsToShow()
                     & CallScreeningService.CallResponse.CALL_COMPOSER_ATTACHMENT_PICTURE) != 0;
         } else {
-            isAllowedToDisplayPicture = isInContacts;
+            isAllowedToDisplayPicture = callFilteringCompletionInfo.isInContacts();
         }
 
         if (isImsConnection()) {
             ImsPhone imsPhone = (getPhone() instanceof ImsPhone) ? (ImsPhone) getPhone() : null;
             if (imsPhone != null
                     && imsPhone.getCallComposerStatus() == TelephonyManager.CALL_COMPOSER_STATUS_ON
-                    && !isBlocked && isAllowedToDisplayPicture) {
+                    && !callFilteringCompletionInfo.isBlocked() && isAllowedToDisplayPicture) {
                 ImsPhoneConnection originalConnection = (ImsPhoneConnection) mOriginalConnection;
                 ImsCallProfile profile = originalConnection.getImsCall().getCallProfile();
                 String serverUrl = CallComposerPictureManager.sTestMode
