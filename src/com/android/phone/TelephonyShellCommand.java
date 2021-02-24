@@ -83,6 +83,7 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
 
     private static final String CALL_COMPOSER_TEST_MODE = "test-mode";
     private static final String CALL_COMPOSER_SIMULATE_CALL = "simulate-outgoing-call";
+    private static final String CALL_COMPOSER_USER_SETTING = "user-setting";
 
     private static final String IMS_SET_IMS_SERVICE = "set-ims-service";
     private static final String IMS_GET_IMS_SERVICE = "get-ims-service";
@@ -113,6 +114,7 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
 
     private static final String D2D_SUBCOMMAND = "d2d";
     private static final String D2D_SEND = "send";
+    private static final String D2D_TRANSPORT = "transport";
 
     private static final String RCS_UCE_COMMAND = "uce";
     private static final String UCE_GET_EAB_CONTACT = "get-eab-contact";
@@ -271,6 +273,9 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                         MESSAGE_DEVICE_BATTERY_STATE));
         pw.println("    Type: " + MESSAGE_DEVICE_NETWORK_COVERAGE + " - "
                 + Communicator.messageToString(MESSAGE_DEVICE_NETWORK_COVERAGE));
+        pw.println("  d2d transport TYPE");
+        pw.println("    Forces the specified D2D transport TYPE to be active.  Use the");
+        pw.println("    short class name of the transport; i.e. DtmfTransport or RtpTransport.");
     }
 
     private void onHelpIms() {
@@ -634,6 +639,9 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             case D2D_SEND: {
                 return handleD2dSendCommand();
             }
+            case D2D_TRANSPORT: {
+                return handleD2dTransportCommand();
+            }
         }
 
         return -1;
@@ -641,10 +649,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
 
     private int handleD2dSendCommand() {
         PrintWriter errPw = getErrPrintWriter();
-        String opt;
         int messageType = -1;
         int messageValue = -1;
-
 
         String arg = getNextArg();
         if (arg == null) {
@@ -678,6 +684,25 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             return -1;
         }
 
+        return 0;
+    }
+
+    private int handleD2dTransportCommand() {
+        PrintWriter errPw = getErrPrintWriter();
+
+        String arg = getNextArg();
+        if (arg == null) {
+            onHelpD2D();
+            return 0;
+        }
+
+        try {
+            mInterface.setActiveDeviceToDeviceTransport(arg);
+        } catch (RemoteException e) {
+            Log.w(LOG_TAG, "d2d transport error: " + e.getMessage());
+            errPw.println("Exception: " + e.getMessage());
+            return -1;
+        }
         return 0;
     }
 
@@ -1840,6 +1865,9 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         pw.println("  callcomposer simulate-outgoing-call [subId] [UUID]");
         pw.println("    Simulates an outgoing call being placed with the picture ID as");
         pw.println("    the provided UUID. This triggers storage to the call log.");
+        pw.println("  callcomposer user-setting [subId] enable|disable|query");
+        pw.println("    Enables or disables the user setting for call composer, as set by");
+        pw.println("    TelephonyManager#setCallComposerStatus.");
     }
 
     private int handleCallComposerCommand() {
@@ -1880,6 +1908,29 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                     getOutPrintWriter().println(String.valueOf(uri));
                 } catch (Exception e) {
                     throw new RuntimeException(e);
+                }
+                break;
+            }
+            case CALL_COMPOSER_USER_SETTING: {
+                try {
+                    int subscriptionId = Integer.valueOf(getNextArg());
+                    String enabledStr = getNextArg();
+                    if (ENABLE.equals(enabledStr)) {
+                        mInterface.setCallComposerStatus(subscriptionId,
+                                TelephonyManager.CALL_COMPOSER_STATUS_ON);
+                    } else if (DISABLE.equals(enabledStr)) {
+                        mInterface.setCallComposerStatus(subscriptionId,
+                                TelephonyManager.CALL_COMPOSER_STATUS_OFF);
+                    } else if (QUERY.equals(enabledStr)) {
+                        getOutPrintWriter().println(mInterface.getCallComposerStatus(subscriptionId)
+                                == TelephonyManager.CALL_COMPOSER_STATUS_ON);
+                    } else {
+                        onHelpCallComposer();
+                        return 1;
+                    }
+                } catch (RemoteException e) {
+                    e.printStackTrace(getOutPrintWriter());
+                    return 1;
                 }
                 break;
             }
