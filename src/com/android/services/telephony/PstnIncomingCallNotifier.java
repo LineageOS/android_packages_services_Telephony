@@ -301,6 +301,12 @@ final class PstnIncomingCallNotifier {
                     if (CallComposerPictureManager.sTestMode) {
                         imsCallProfile.setCallExtra(ImsCallProfile.EXTRA_PICTURE_URL,
                                 CallComposerPictureManager.FAKE_SERVER_URL);
+                        imsCallProfile.setCallExtraInt(ImsCallProfile.EXTRA_PRIORITY,
+                                TelecomManager.PRIORITY_URGENT);
+                        imsCallProfile.setCallExtra(ImsCallProfile.EXTRA_CALL_SUBJECT,
+                                CallComposerPictureManager.FAKE_SUBJECT);
+                        imsCallProfile.setCallExtraParcelable(ImsCallProfile.EXTRA_LOCATION,
+                                CallComposerPictureManager.FAKE_LOCATION);
                     }
 
                     extras.putInt(TelecomManager.EXTRA_PRIORITY,
