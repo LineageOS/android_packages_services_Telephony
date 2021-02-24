@@ -402,10 +402,11 @@ public class SimpleChatSession {
     private void startMsrpSession(SimpleSdpMessage remoteSdp) {
         Log.d(TAG, "Start MSRP session: " + remoteSdp);
         if (remoteSdp.getAddress().isPresent() && remoteSdp.getPort().isPresent()) {
+            String localIp = getLocalIp();
             Futures.addCallback(
                     mMsrpManager.createMsrpSession(
-                            remoteSdp.getAddress().get(), remoteSdp.getPort().getAsInt(),
-                            this::receiveMsrpChunk),
+                            remoteSdp.getAddress().get(), remoteSdp.getPort().getAsInt(), localIp,
+                            0 /* localPort */, this::receiveMsrpChunk),
                     new FutureCallback<MsrpSession>() {
                         @Override
                         public void onSuccess(MsrpSession result) {
@@ -428,6 +429,11 @@ public class SimpleChatSession {
         } else {
             Log.e(TAG, "Address or port is not present");
         }
+    }
+
+    private String getLocalIp() {
+        SipSessionConfiguration configuration = mContext.getSipSession().getSessionConfiguration();
+        return configuration.getLocalIpAddress();
     }
 
     private void receiveMsrpChunk(MsrpChunk chunk) {
