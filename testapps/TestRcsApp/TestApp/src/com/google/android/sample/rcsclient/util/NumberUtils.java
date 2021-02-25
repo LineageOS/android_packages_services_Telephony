@@ -17,8 +17,12 @@
 package com.google.android.sample.rcsclient.util;
 
 import android.content.Context;
-import android.telephony.PhoneNumberUtils;
 import android.telephony.TelephonyManager;
+import android.util.Log;
+
+import com.android.i18n.phonenumbers.NumberParseException;
+import com.android.i18n.phonenumbers.PhoneNumberUtil;
+import com.android.i18n.phonenumbers.Phonenumber;
 
 public class NumberUtils {
 
@@ -30,6 +34,13 @@ public class NumberUtils {
     public static String formatNumber(Context context, String number) {
         TelephonyManager manager = context.getSystemService(TelephonyManager.class);
         String simCountryIso = manager.getSimCountryIso().toUpperCase();
-        return PhoneNumberUtils.formatNumberToE164(number, simCountryIso);
+        PhoneNumberUtil util = PhoneNumberUtil.getInstance();
+        try {
+            Phonenumber.PhoneNumber phoneNumber = util.parse(number, simCountryIso);
+            return util.format(phoneNumber, PhoneNumberUtil.PhoneNumberFormat.E164);
+        } catch (NumberParseException e) {
+            Log.w("NumberUtils", "formatNumber: could not format " + number + ", error: " + e);
+        }
+        return null;
     }
 }
