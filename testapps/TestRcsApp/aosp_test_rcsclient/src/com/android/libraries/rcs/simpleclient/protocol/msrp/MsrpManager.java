@@ -25,6 +25,7 @@ import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.MoreExecutors;
 
 import java.io.IOException;
+import java.net.InetAddress;
 import java.net.Socket;
 
 /** Provides creating and managing {@link MsrpSession} */
@@ -36,9 +37,10 @@ public class MsrpManager {
     }
 
     private static MsrpSession createMsrpSession(ConnectivityManager manager,
-            Network network, String host, int port, MsrpSessionListener listener)
-            throws IOException {
-        Socket socket = network.getSocketFactory().createSocket(host, port);
+            Network network, String host, int port, String localIp, int localPort,
+            MsrpSessionListener listener) throws IOException {
+        Socket socket = network.getSocketFactory().createSocket(host, port,
+                InetAddress.getByName(localIp), localPort);
         MsrpSession msrpSession = new MsrpSession(manager,
                 network, socket, listener);
         Thread thread = new Thread(msrpSession::run);
@@ -47,14 +49,14 @@ public class MsrpManager {
     }
 
     public ListenableFuture<MsrpSession> createMsrpSession(
-            String host, int port, MsrpSessionListener listener) {
+            String host, int port, String localIp, int localPort, MsrpSessionListener listener) {
         return Futures.transformAsync(
                 imsPdnNetworkFetcher.getImsPdnNetwork(),
                 network -> {
                     if (network != null) {
                         return Futures.immediateFuture(
                                 createMsrpSession(imsPdnNetworkFetcher.getConnectivityManager(),
-                                        network, host, port, listener));
+                                        network, host, port, localIp, localPort, listener));
                     } else {
                         return Futures.immediateFailedFuture(
                                 new IllegalStateException("Network is null"));
