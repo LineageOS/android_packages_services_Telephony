@@ -9884,6 +9884,30 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
+     * Overrides the ims feature validation result
+     */
+    @Override
+    public boolean setImsFeatureValidationOverride(int subId, String enabledStr) {
+        TelephonyPermissions.enforceShellOnly(Binder.getCallingUid(),
+                "setImsFeatureValidationOverride");
+
+        Boolean enabled = "NULL".equalsIgnoreCase(enabledStr) ? null
+                : Boolean.parseBoolean(enabledStr);
+        return RcsProvisioningMonitor.getInstance().overrideImsFeatureValidation(
+                subId, enabled);
+    }
+
+    /**
+     * Gets the ims feature validation override value
+     */
+    @Override
+    public boolean getImsFeatureValidationOverride(int subId) {
+        TelephonyPermissions.enforceShellOnly(Binder.getCallingUid(),
+                "getImsFeatureValidationOverride");
+        return RcsProvisioningMonitor.getInstance().getImsFeatureValidationOverride(subId);
+    }
+
+    /**
      * Get the mobile provisioning url that is used to launch a browser to allow users to manage
      * their mobile plan.
      */
