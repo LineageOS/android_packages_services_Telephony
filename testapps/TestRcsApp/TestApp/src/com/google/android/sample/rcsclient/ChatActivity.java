@@ -168,8 +168,10 @@ public class ChatActivity extends AppCompatActivity {
                 });
             });
         } catch (Exception e) {
-            Log.e(TAG, e.getMessage());
+            Log.e(TAG, "Exception: " + e);
             e.printStackTrace();
+            Toast.makeText(this, getResources().getString(R.string.session_failed),
+                    Toast.LENGTH_SHORT).show();
         }
     }
 
