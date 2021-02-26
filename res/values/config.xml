@@ -310,4 +310,7 @@
     <!-- Whether or not to support device to device communication using RTP and DTMF communication
          transports. -->
     <bool name="config_use_device_to_device_communication">false</bool>
+
+    <!-- Whether or not to show notifications for when bluetooth connection is bad during a call -->
+    <bool name="enable_bluetooth_call_quality_notification">false</bool>
 </resources>
