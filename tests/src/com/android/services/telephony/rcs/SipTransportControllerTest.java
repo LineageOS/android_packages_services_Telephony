@@ -35,7 +35,9 @@ import static org.mockito.Mockito.verify;
 
 import android.app.role.RoleManager;
 import android.os.IBinder;
+import android.os.PersistableBundle;
 import android.os.UserHandle;
+import android.telephony.CarrierConfigManager;
 import android.telephony.ims.DelegateRequest;
 import android.telephony.ims.FeatureTagState;
 import android.telephony.ims.ImsException;
@@ -54,6 +56,7 @@ import androidx.test.runner.AndroidJUnit4;
 import com.android.TelephonyTestBase;
 import com.android.TestExecutorService;
 import com.android.ims.RcsFeatureManager;
+import com.android.phone.RcsProvisioningMonitor;
 
 import org.junit.After;
 import org.junit.Before;
@@ -129,6 +132,9 @@ public class SipTransportControllerTest extends TelephonyTestBase {
             return c;
         }).when(mMockDelegateControllerFactory).create(anyInt(), any(), anyString(), any(), any(),
                 any(), any(), any());
+        setFeatureAllowedConfig(TEST_SUB_ID, new String[]{ImsSignallingUtils.MMTEL_TAG,
+                ImsSignallingUtils.ONE_TO_ONE_CHAT_TAG, ImsSignallingUtils.GROUP_CHAT_TAG,
+                ImsSignallingUtils.FILE_TRANSFER_HTTP_TAG});
     }
 
     @After
@@ -138,6 +144,7 @@ public class SipTransportControllerTest extends TelephonyTestBase {
         if (!isShutdown) {
             mExecutorService.shutdownNow();
         }
+        RcsProvisioningMonitor.getInstance().overrideImsFeatureValidation(TEST_SUB_ID, null);
     }
 
     @SmallTest
@@ -607,6 +614,9 @@ public class SipTransportControllerTest extends TelephonyTestBase {
     @Test
     public void testTimingSubIdChangedAndCreateNewSubId() throws Exception {
         SipTransportController controller = setupLiveTransportController(THROTTLE_MS, 0);
+        setFeatureAllowedConfig(TEST_SUB_ID + 1, new String[]{ImsSignallingUtils.MMTEL_TAG,
+                ImsSignallingUtils.ONE_TO_ONE_CHAT_TAG, ImsSignallingUtils.GROUP_CHAT_TAG,
+                ImsSignallingUtils.FILE_TRANSFER_HTTP_TAG});
 
         ArraySet<String> firstDelegate = new ArraySet<>(getBaseDelegateRequest().getFeatureTags());
         DelegateRequest firstDelegateRequest = new DelegateRequest(firstDelegate);
@@ -641,6 +651,67 @@ public class SipTransportControllerTest extends TelephonyTestBase {
                 SipDelegateManager.SIP_DELEGATE_DESTROY_REASON_SUBSCRIPTION_TORN_DOWN);
         assertTrue(scheduleDelayedWait(2 * THROTTLE_MS));
         verifyDelegateChanged(c2, pendingC2Change, secondDelegate, Collections.emptySet(), 0);
+    }
+
+    @SmallTest
+    @Test
+    public void testFeatureTagsDeniedByConfig() throws Exception {
+        setFeatureAllowedConfig(TEST_SUB_ID, new String[]{ImsSignallingUtils.GROUP_CHAT_TAG,
+                ImsSignallingUtils.FILE_TRANSFER_HTTP_TAG});
+        SipTransportController controller = setupLiveTransportController(THROTTLE_MS, 0);
+
+        ArraySet<String> requestTags = new ArraySet<>(getBaseDelegateRequest().getFeatureTags());
+        ArraySet<String> allowedTags = new ArraySet<>(requestTags);
+        ArraySet<String> deniedTags = new ArraySet<>();
+        DelegateRequest delegateRequest = new DelegateRequest(requestTags);
+        SipDelegateController sc = injectMockDelegateController(TEST_PACKAGE_NAME,
+                delegateRequest);
+        CompletableFuture<Boolean> pendingScChange = createDelegate(controller, sc,
+                delegateRequest, requestTags, Collections.emptySet(), TEST_PACKAGE_NAME);
+        allowedTags.remove(ImsSignallingUtils.ONE_TO_ONE_CHAT_TAG);
+        deniedTags.add(ImsSignallingUtils.ONE_TO_ONE_CHAT_TAG);
+
+        assertTrue(scheduleDelayedWait(2 * THROTTLE_MS));
+        verifyDelegateChanged(sc, pendingScChange, allowedTags, getDeniedTagsForReason(
+                deniedTags, SipDelegateManager.DENIED_REASON_NOT_ALLOWED), 0);
+    }
+
+    @SmallTest
+    @Test
+    public void testFeatureTagsDeniedByOverride() throws Exception {
+        RcsProvisioningMonitor.getInstance().overrideImsFeatureValidation(TEST_SUB_ID, false);
+        SipTransportController controller = setupLiveTransportController(THROTTLE_MS, 0);
+
+        ArraySet<String> requestTags = new ArraySet<>(getBaseDelegateRequest().getFeatureTags());
+        ArraySet<String> deniedTags = new ArraySet<>(requestTags);
+        DelegateRequest delegateRequest = new DelegateRequest(requestTags);
+        SipDelegateController sc = injectMockDelegateController(TEST_PACKAGE_NAME,
+                delegateRequest);
+        CompletableFuture<Boolean> pendingScChange = createDelegate(controller, sc,
+                delegateRequest, requestTags, Collections.emptySet(), TEST_PACKAGE_NAME);
+
+        assertTrue(scheduleDelayedWait(2 * THROTTLE_MS));
+        verifyDelegateChanged(sc, pendingScChange, Collections.emptySet(), getDeniedTagsForReason(
+                deniedTags, SipDelegateManager.DENIED_REASON_NOT_ALLOWED), 0);
+    }
+
+    @SmallTest
+    @Test
+    public void testFeatureTagsDeniedByConfigAllowedByOverride() throws Exception {
+        setFeatureAllowedConfig(TEST_SUB_ID, new String[]{});
+        RcsProvisioningMonitor.getInstance().overrideImsFeatureValidation(TEST_SUB_ID, true);
+        SipTransportController controller = setupLiveTransportController(THROTTLE_MS, 0);
+
+        ArraySet<String> requestTags = new ArraySet<>(getBaseDelegateRequest().getFeatureTags());
+        ArraySet<String> allowedTags = new ArraySet<>(requestTags);
+        DelegateRequest delegateRequest = new DelegateRequest(requestTags);
+        SipDelegateController sc = injectMockDelegateController(TEST_PACKAGE_NAME,
+                delegateRequest);
+        CompletableFuture<Boolean> pendingScChange = createDelegate(controller, sc,
+                delegateRequest, requestTags, Collections.emptySet(), TEST_PACKAGE_NAME);
+
+        assertTrue(scheduleDelayedWait(2 * THROTTLE_MS));
+        verifyDelegateChanged(sc, pendingScChange, allowedTags, Collections.emptySet(), 0);
     }
 
     @SafeVarargs
@@ -909,5 +980,11 @@ public class SipTransportControllerTest extends TelephonyTestBase {
             }
         }
         return true;
+    }
+
+    private void setFeatureAllowedConfig(int subId, String[] tags) {
+        PersistableBundle bundle = mContext.getCarrierConfig(subId);
+        bundle.putStringArray(
+                CarrierConfigManager.Ims.KEY_RCS_FEATURE_TAG_ALLOWED_STRING_ARRAY, tags);
     }
 }
