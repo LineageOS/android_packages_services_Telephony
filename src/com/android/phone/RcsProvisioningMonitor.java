@@ -39,15 +39,20 @@ import android.telephony.ims.ProvisioningManager;
 import android.telephony.ims.RcsConfig;
 import android.telephony.ims.aidl.IImsConfig;
 import android.telephony.ims.aidl.IRcsConfigCallback;
-import android.telephony.ims.feature.ImsFeature;
 import android.text.TextUtils;
+import android.util.ArraySet;
+import android.util.SparseArray;
 
+import com.android.ims.FeatureConnector;
+import com.android.ims.FeatureUpdates;
+import com.android.ims.RcsFeatureManager;
 import com.android.internal.annotations.VisibleForTesting;
+import com.android.internal.telephony.util.HandlerExecutor;
 import com.android.internal.util.CollectionUtils;
 import com.android.telephony.Rlog;
 
+import java.util.Arrays;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
@@ -67,6 +72,7 @@ public class RcsProvisioningMonitor {
     private static final int EVENT_RECONFIG_REQUEST = 5;
     private static final int EVENT_DEVICE_CONFIG_OVERRIDE = 6;
     private static final int EVENT_CARRIER_CONFIG_OVERRIDE = 7;
+    private static final int EVENT_RESET = 8;
 
     private final PhoneGlobals mPhone;
     private final Handler mHandler;
@@ -77,12 +83,15 @@ public class RcsProvisioningMonitor {
     private final HashMap<Integer, Boolean> mCarrierSingleRegistrationEnabledOverride =
             new HashMap<>();
     private String mDmaPackageName;
+    private final SparseArray<RcsFeatureListener> mRcsFeatureListeners = new SparseArray<>();
+    private volatile boolean mTestModeEnabled;
 
     private final CarrierConfigManager mCarrierConfigManager;
     private final DmaChangedListener mDmaChangedListener;
     private final SubscriptionManager mSubscriptionManager;
     private final TelephonyRegistryManager mTelephonyRegistryManager;
     private final RoleManagerAdapter mRoleManager;
+    private FeatureConnectorFactory<RcsFeatureManager> mFeatureFactory;
 
     private static RcsProvisioningMonitor sInstance;
 
@@ -147,6 +156,7 @@ public class RcsProvisioningMonitor {
 
         @Override
         public void handleMessage(Message msg) {
+            logv("handleMessage: " + msg);
             switch (msg.what) {
                 case EVENT_SUB_CHANGED:
                     onSubChanged();
@@ -178,6 +188,9 @@ public class RcsProvisioningMonitor {
                         onCarrierConfigChange();
                     }
                     break;
+                case EVENT_RESET:
+                    reset();
+                    break;
                 default:
                     loge("Unhandled event " + msg.what);
             }
@@ -188,13 +201,20 @@ public class RcsProvisioningMonitor {
         private int mSubId;
         private volatile int mSingleRegistrationCapability;
         private volatile byte[] mConfig;
-        private HashSet<IRcsConfigCallback> mRcsConfigCallbacks;
+        private ArraySet<IRcsConfigCallback> mRcsConfigCallbacks;
+        private IImsConfig mIImsConfig;
+        private boolean mHasReconfigRequest;
 
         RcsProvisioningInfo(int subId, int singleRegistrationCapability, byte[] config) {
             mSubId = subId;
             mSingleRegistrationCapability = singleRegistrationCapability;
             mConfig = config;
-            mRcsConfigCallbacks = new HashSet<>();
+            mRcsConfigCallbacks = new ArraySet<>();
+            registerRcsFeatureListener(this);
+        }
+
+        int getSubId() {
+            return mSubId;
         }
 
         void setSingleRegistrationCapability(int singleRegistrationCapability) {
@@ -206,7 +226,14 @@ public class RcsProvisioningMonitor {
         }
 
         void setConfig(byte[] config) {
-            mConfig = config;
+            if (!Arrays.equals(mConfig, config)) {
+                mConfig = config;
+                if (mConfig != null) {
+                    notifyRcsAutoConfigurationReceived();
+                } else {
+                    notifyRcsAutoConfigurationRemoved();
+                }
+            }
         }
 
         byte[] getConfig() {
@@ -214,15 +241,14 @@ public class RcsProvisioningMonitor {
         }
 
         boolean addRcsConfigCallback(IRcsConfigCallback cb) {
-            IImsConfig imsConfig = getIImsConfig(mSubId, ImsFeature.FEATURE_RCS);
-            if (imsConfig == null) {
+            if (mIImsConfig == null) {
                 logd("fail to addRcsConfigCallback as imsConfig is null");
                 return false;
             }
 
             synchronized (mRcsConfigCallbacks) {
                 try {
-                    imsConfig.addRcsConfigCallback(cb);
+                    mIImsConfig.addRcsConfigCallback(cb);
                 } catch (RemoteException e) {
                     loge("fail to addRcsConfigCallback due to " + e);
                     return false;
@@ -234,12 +260,11 @@ public class RcsProvisioningMonitor {
 
         boolean removeRcsConfigCallback(IRcsConfigCallback cb) {
             boolean result = true;
-            IImsConfig imsConfig = getIImsConfig(mSubId, ImsFeature.FEATURE_RCS);
 
             synchronized (mRcsConfigCallbacks) {
-                if (imsConfig != null) {
+                if (mIImsConfig != null) {
                     try {
-                        imsConfig.removeRcsConfigCallback(cb);
+                        mIImsConfig.removeRcsConfigCallback(cb);
                     } catch (RemoteException e) {
                         loge("fail to removeRcsConfigCallback due to " + e);
                     }
@@ -258,16 +283,89 @@ public class RcsProvisioningMonitor {
             return result;
         }
 
+        void triggerRcsReconfiguration() {
+            if (mIImsConfig != null) {
+                try {
+                    logv("triggerRcsReconfiguration for sub:" + mSubId);
+                    mIImsConfig.triggerRcsReconfiguration();
+                    mHasReconfigRequest = false;
+                } catch (RemoteException e) {
+                    loge("triggerRcsReconfiguration failed due to " + e);
+                }
+            } else {
+                logd("triggerRcsReconfiguration failed due to IImsConfig null.");
+                mHasReconfigRequest = true;
+            }
+        }
+
+        void destroy() {
+            unregisterRcsFeatureListener(this);
+            clear();
+            mIImsConfig = null;
+            mRcsConfigCallbacks = null;
+        }
+
         void clear() {
             setConfig(null);
+            clearCallbacks();
+        }
+
+        void onRcsStatusChanged(IImsConfig binder) {
+            logv("onRcsStatusChanged for sub:" + mSubId + ", IImsConfig?" + binder);
+            if (mIImsConfig != binder) {
+                mIImsConfig = binder;
+                if (mIImsConfig != null) {
+                    if (mHasReconfigRequest) {
+                        triggerRcsReconfiguration();
+                    } else {
+                        notifyRcsAutoConfigurationReceived();
+                    }
+                } else {
+                    // clear callbacks if rcs disconnected
+                    clearCallbacks();
+                }
+            }
+        }
+
+        private void notifyRcsAutoConfigurationReceived() {
+            if (mConfig == null) {
+                logd("Rcs config is null for sub : " + mSubId);
+                return;
+            }
+
+            if (mIImsConfig != null) {
+                try {
+                    logv("notifyRcsAutoConfigurationReceived for sub:" + mSubId);
+                    mIImsConfig.notifyRcsAutoConfigurationReceived(mConfig, false);
+                } catch (RemoteException e) {
+                    loge("notifyRcsAutoConfigurationReceived failed due to " + e);
+                }
+            } else {
+                logd("notifyRcsAutoConfigurationReceived failed due to IImsConfig null.");
+            }
+        }
+
+        private void notifyRcsAutoConfigurationRemoved() {
+            if (mIImsConfig != null) {
+                try {
+                    logv("notifyRcsAutoConfigurationRemoved for sub:" + mSubId);
+                    mIImsConfig.notifyRcsAutoConfigurationRemoved();
+                } catch (RemoteException e) {
+                    loge("notifyRcsAutoConfigurationRemoved failed due to " + e);
+                }
+            } else {
+                logd("notifyRcsAutoConfigurationRemoved failed due to IImsConfig null.");
+            }
+        }
+
+        private void clearCallbacks() {
             synchronized (mRcsConfigCallbacks) {
-                IImsConfig imsConfig = getIImsConfig(mSubId, ImsFeature.FEATURE_RCS);
                 Iterator<IRcsConfigCallback> it = mRcsConfigCallbacks.iterator();
                 while (it.hasNext()) {
                     IRcsConfigCallback cb = it.next();
-                    if (imsConfig != null) {
+                    if (mIImsConfig != null) {
                         try {
-                            imsConfig.removeRcsConfigCallback(cb);
+                            mIImsConfig.removeRcsConfigCallback(cb);
                         } catch (RemoteException e) {
                             loge("fail to removeRcsConfigCallback due to " + e);
                         }
@@ -284,7 +382,61 @@ public class RcsProvisioningMonitor {
     }
 
     @VisibleForTesting
-    public RcsProvisioningMonitor(PhoneGlobals app, Looper looper, RoleManagerAdapter roleManager) {
+    public interface FeatureConnectorFactory<U extends FeatureUpdates> {
+        /**
+         * @return a {@link FeatureConnector} associated for the given {@link FeatureUpdates}
+         * and slot index.
+         */
+        FeatureConnector<U> create(Context context, int slotIndex,
+                FeatureConnector.Listener<U> listener, Executor executor, String logPrefix);
+    }
+
+    private final class RcsFeatureListener implements FeatureConnector.Listener<RcsFeatureManager> {
+        private final ArraySet<RcsProvisioningInfo> mRcsProvisioningInfos = new ArraySet<>();
+        private RcsFeatureManager mRcsFeatureManager;
+        private FeatureConnector<RcsFeatureManager> mConnector;
+
+        RcsFeatureListener(int slotId) {
+            mConnector = mFeatureFactory.create(
+                    mPhone, slotId, this, new HandlerExecutor(mHandler), TAG);
+            mConnector.connect();
+        }
+
+        void destroy() {
+            mConnector.disconnect();
+            mConnector = null;
+            mRcsFeatureManager = null;
+            mRcsProvisioningInfos.clear();
+        }
+
+        void addRcsProvisioningInfo(RcsProvisioningInfo info) {
+            if (!mRcsProvisioningInfos.contains(info)) {
+                mRcsProvisioningInfos.add(info);
+                info.onRcsStatusChanged(mRcsFeatureManager == null ? null
+                        : mRcsFeatureManager.getConfig());
+            }
+        }
+
+        void removeRcsProvisioningInfo(RcsProvisioningInfo info) {
+            mRcsProvisioningInfos.remove(info);
+        }
+
+        @Override
+        public void connectionReady(RcsFeatureManager manager) {
+            mRcsFeatureManager = manager;
+            mRcsProvisioningInfos.forEach(v -> v.onRcsStatusChanged(manager.getConfig()));
+        }
+
+        @Override
+        public void connectionUnavailable(int reason) {
+            mRcsFeatureManager = null;
+            mRcsProvisioningInfos.forEach(v -> v.onRcsStatusChanged(null));
+        }
+    }
+
+    @VisibleForTesting
+    public RcsProvisioningMonitor(PhoneGlobals app, Looper looper, RoleManagerAdapter roleManager,
+            FeatureConnectorFactory<RcsFeatureManager> factory) {
         mPhone = app;
         mHandler = new MyHandler(looper);
         mCarrierConfigManager = mPhone.getSystemService(CarrierConfigManager.class);
@@ -293,15 +445,9 @@ public class RcsProvisioningMonitor {
         mRoleManager = roleManager;
         mDmaPackageName = getDmaPackageName();
         logv("DMA is " + mDmaPackageName);
-        IntentFilter filter = new IntentFilter();
-        filter.addAction(CarrierConfigManager.ACTION_CARRIER_CONFIG_CHANGED);
-        mPhone.registerReceiver(mReceiver, filter);
-        mTelephonyRegistryManager.addOnSubscriptionsChangedListener(
-                mSubChangedListener, mSubChangedListener.getHandlerExecutor());
         mDmaChangedListener = new DmaChangedListener();
-        mDmaChangedListener.register();
-        //initialize configs for all active sub
-        onSubChanged();
+        mFeatureFactory = factory;
+        init();
     }
 
     /**
@@ -313,7 +459,7 @@ public class RcsProvisioningMonitor {
             HandlerThread handlerThread = new HandlerThread(TAG);
             handlerThread.start();
             sInstance = new RcsProvisioningMonitor(app, handlerThread.getLooper(),
-                    new RoleManagerAdapterImpl(app));
+                    new RoleManagerAdapterImpl(app), RcsFeatureManager::getConnector);
         }
         return sInstance;
     }
@@ -325,15 +471,44 @@ public class RcsProvisioningMonitor {
         return sInstance;
     }
 
+    private void init() {
+        logd("init.");
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(CarrierConfigManager.ACTION_CARRIER_CONFIG_CHANGED);
+        mPhone.registerReceiver(mReceiver, filter);
+        mTelephonyRegistryManager.addOnSubscriptionsChangedListener(
+                mSubChangedListener, mSubChangedListener.getHandlerExecutor());
+        mDmaChangedListener.register();
+        //initialize configs for all active sub
+        onSubChanged();
+    }
+
+    private void release() {
+        logd("release.");
+        mDmaChangedListener.unregister();
+        mTelephonyRegistryManager.removeOnSubscriptionsChangedListener(mSubChangedListener);
+        mPhone.unregisterReceiver(mReceiver);
+        for (int i = 0; i < mRcsFeatureListeners.size(); i++) {
+            mRcsFeatureListeners.valueAt(i).destroy();
+        }
+        mRcsFeatureListeners.clear();
+        mRcsProvisioningInfos.forEach((k, v)->v.destroy());
+        mRcsProvisioningInfos.clear();
+        mCarrierSingleRegistrationEnabledOverride.clear();
+    }
+
+    private void reset() {
+        release();
+        init();
+    }
+
     /**
      * destroy the instance
      */
     @VisibleForTesting
     public void destroy() {
         logd("destroy it.");
-        mDmaChangedListener.unregister();
-        mTelephonyRegistryManager.removeOnSubscriptionsChangedListener(mSubChangedListener);
-        mPhone.unregisterReceiver(mReceiver);
+        release();
         mHandler.getLooper().quit();
     }
 
@@ -411,6 +586,27 @@ public class RcsProvisioningMonitor {
     }
 
     /**
+     * Enables or disables test mode.
+     *
+     * <p> If test mode is enabled, any rcs config change will not update the database.
+     */
+    public void setTestModeEnabled(boolean enabled) {
+        logv("setTestModeEnabled as " + enabled);
+        if (mTestModeEnabled != enabled) {
+            mTestModeEnabled = enabled;
+            mHandler.sendMessage(mHandler.obtainMessage(EVENT_RESET));
+        }
+    }
+
+
+    /**
+     * Returns whether the test mode is enabled.
+     */
+    public boolean getTestModeEnabled() {
+        return mTestModeEnabled;
+    }
+
+    /**
      * override the device config whether single registration is enabled
      */
     public void overrideDeviceSingleRegistrationEnabled(Boolean enabled) {
@@ -463,61 +659,29 @@ public class RcsProvisioningMonitor {
                 v.clear();
                 if (isAcsUsed(k)) {
                     logv("acs used, trigger to re-configure.");
-                    notifyRcsAutoConfigurationRemoved(k);
-                    triggerRcsReconfiguration(k);
+                    updateConfigForSub(k, null, true);
+                    v.triggerRcsReconfiguration();
                 } else {
+                    logv("acs not used, set cached config and notify.");
                     v.setConfig(cachedConfig);
-                    logv("acs not used, notify.");
-                    notifyRcsAutoConfigurationReceived(k, v.getConfig(), false);
                 }
             });
         }
     }
 
-    private void notifyRcsAutoConfigurationReceived(int subId, byte[] config,
-            boolean isCompressed) {
-        if (config == null) {
-            logd("Rcs config is null for sub : " + subId);
-            return;
-        }
-
-        IImsConfig imsConfig = getIImsConfig(subId, ImsFeature.FEATURE_RCS);
-        if (imsConfig != null) {
-            try {
-                imsConfig.notifyRcsAutoConfigurationReceived(config, isCompressed);
-            } catch (RemoteException e) {
-                loge("fail to notify rcs configuration received!");
-            }
-        } else {
-            logd("getIImsConfig returns null.");
+    private void updateConfigForSub(int subId, byte[] config, boolean isCompressed) {
+        logv("updateConfigForSub, subId:" + subId + ", mTestModeEnabled:" + mTestModeEnabled);
+        if (!mTestModeEnabled) {
+            RcsConfig.updateConfigForSub(mPhone, subId, config, isCompressed);
         }
     }
 
-    private void notifyRcsAutoConfigurationRemoved(int subId) {
-        RcsConfig.updateConfigForSub(mPhone, subId, null, true);
-        IImsConfig imsConfig = getIImsConfig(subId, ImsFeature.FEATURE_RCS);
-        if (imsConfig != null) {
-            try {
-                imsConfig.notifyRcsAutoConfigurationRemoved();
-            } catch (RemoteException e) {
-                loge("fail to notify rcs configuration removed!");
-            }
-        } else {
-            logd("getIImsConfig returns null.");
+    private byte[] loadConfigForSub(int subId) {
+        logv("loadConfigForSub, subId:" + subId + ", mTestModeEnabled:" + mTestModeEnabled);
+        if (!mTestModeEnabled) {
+            return RcsConfig.loadRcsConfigForSub(mPhone, subId, false);
         }
-    }
-
-    private void triggerRcsReconfiguration(int subId) {
-        IImsConfig imsConfig = getIImsConfig(subId, ImsFeature.FEATURE_RCS);
-        if (imsConfig != null) {
-            try {
-                imsConfig.triggerRcsReconfiguration();
-            } catch (RemoteException e) {
-                loge("fail to trigger rcs reconfiguration!");
-            }
-        } else {
-            logd("getIImsConfig returns null.");
-        }
+        return null;
     }
 
     private boolean isAcsUsed(int subId) {
@@ -569,26 +733,25 @@ public class RcsProvisioningMonitor {
 
     private void onSubChanged() {
         final int[] activeSubs = mSubscriptionManager.getActiveSubscriptionIdList();
-        final HashSet<Integer> subsToBeDeactivated = new HashSet<>(mRcsProvisioningInfos.keySet());
+        final ArraySet<Integer> subsToBeDeactivated =
+                new ArraySet<>(mRcsProvisioningInfos.keySet());
 
         for (int i : activeSubs) {
             subsToBeDeactivated.remove(i);
             if (!mRcsProvisioningInfos.containsKey(i)) {
-                byte[] data = RcsConfig.loadRcsConfigForSub(mPhone, i, false);
+                byte[] data = loadConfigForSub(i);
                 int capability = getSingleRegistrationCapableValue(i);
                 logv("new info is created for sub : " + i + ", single registration capability :"
                         + capability + ", rcs config : " + data);
                 mRcsProvisioningInfos.put(i, new RcsProvisioningInfo(i, capability, data));
-                notifyRcsAutoConfigurationReceived(i, data, false);
                 notifyDmaForSub(i, capability);
             }
         }
 
         subsToBeDeactivated.forEach(i -> {
             RcsProvisioningInfo info = mRcsProvisioningInfos.remove(i);
-            notifyRcsAutoConfigurationRemoved(i);
             if (info != null) {
-                info.clear();
+                info.destroy();
             }
         });
     }
@@ -597,11 +760,8 @@ public class RcsProvisioningMonitor {
         logv("onConfigReceived, subId:" + subId + ", config:"
                 + config + ", isCompressed:" + isCompressed);
         RcsProvisioningInfo info = mRcsProvisioningInfos.get(subId);
-        if (info != null) {
-            info.setConfig(isCompressed ? RcsConfig.decompressGzip(config) : config);
-        }
-        RcsConfig.updateConfigForSub(mPhone, subId, config, isCompressed);
-        notifyRcsAutoConfigurationReceived(subId, config, isCompressed);
+        info.setConfig(isCompressed ? RcsConfig.decompressGzip(config) : config);
+        updateConfigForSub(subId, config, isCompressed);
     }
 
     private void onReconfigRequest(int subId) {
@@ -609,9 +769,10 @@ public class RcsProvisioningMonitor {
         RcsProvisioningInfo info = mRcsProvisioningInfos.get(subId);
         if (info != null) {
             info.setConfig(null);
+            // clear rcs config stored in db
+            updateConfigForSub(subId, null, true);
+            info.triggerRcsReconfiguration();
         }
-        notifyRcsAutoConfigurationRemoved(subId);
-        triggerRcsReconfiguration(subId);
     }
 
     private void notifyDmaForSub(int subId, int capability) {
@@ -621,13 +782,13 @@ public class RcsProvisioningMonitor {
         intent.putExtra(ProvisioningManager.EXTRA_SUBSCRIPTION_ID, subId);
         intent.putExtra(ProvisioningManager.EXTRA_STATUS, capability);
         logv("notify " + intent);
-        // Only send permission to the default sms app if it has the correct permissions.
-        mPhone.sendBroadcast(intent, Manifest.permission.PERFORM_IMS_SINGLE_REGISTRATION);
-    }
-
-    private IImsConfig getIImsConfig(int subId, int feature) {
-        return mPhone.getImsResolver().getImsConfig(
-                SubscriptionManager.getSlotIndex(subId), feature);
+        // Only send permission to the default sms app if it has the correct permissions
+        // except test mode enabled
+        if (!mTestModeEnabled) {
+            mPhone.sendBroadcast(intent, Manifest.permission.PERFORM_IMS_SINGLE_REGISTRATION);
+        } else {
+            mPhone.sendBroadcast(intent);
+        }
     }
 
     private String getDmaPackageName() {
@@ -636,6 +797,24 @@ public class RcsProvisioningMonitor {
         } catch (RuntimeException e) {
             loge("Could not get dma name due to " + e);
             return null;
+        }
+    }
+
+    void registerRcsFeatureListener(RcsProvisioningInfo info) {
+        int slotId = SubscriptionManager.getSlotIndex(info.getSubId());
+        RcsFeatureListener cb = mRcsFeatureListeners.get(slotId);
+        if (cb == null) {
+            cb = new RcsFeatureListener(slotId);
+            mRcsFeatureListeners.put(slotId, cb);
+        }
+        cb.addRcsProvisioningInfo(info);
+    }
+
+    void unregisterRcsFeatureListener(RcsProvisioningInfo info) {
+        int slotId = SubscriptionManager.getSlotIndex(info.getSubId());
+        RcsFeatureListener cb = mRcsFeatureListeners.get(slotId);
+        if (cb != null) {
+            cb.removeRcsProvisioningInfo(info);
         }
     }
 
