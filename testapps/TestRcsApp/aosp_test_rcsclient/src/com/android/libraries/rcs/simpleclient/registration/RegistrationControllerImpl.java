@@ -47,6 +47,7 @@ import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.SettableFuture;
 
 import java.text.ParseException;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -386,6 +387,9 @@ public class RegistrationControllerImpl implements RegistrationController {
             String serviceRoutes =
                     configuration.getString(
                             SipDelegateImsConfiguration.KEY_SIP_CONFIG_SERVICE_ROUTE_HEADER_STRING);
+            if (TextUtils.isEmpty(serviceRoutes)) {
+                return Collections.emptyList();
+            }
             return Splitter.on(',').trimResults().splitToList(serviceRoutes);
         }
 
