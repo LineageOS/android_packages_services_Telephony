@@ -90,6 +90,11 @@ public class CallQualityManager {
     }
 
     private void popUpNotification(String title, CharSequence details) {
+        if (!mContext.getResources().getBoolean(
+                R.bool.enable_bluetooth_call_quality_notification)) {
+            Log.d(TAG, "Bluetooth call quality notifications not enabled.");
+            return;
+        }
         int iconId = android.R.drawable.stat_notify_error;
 
         Notification notification = new Notification.Builder(mContext)
