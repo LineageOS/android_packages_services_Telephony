@@ -153,6 +153,7 @@ public class RegistrationControllerImpl implements RegistrationController {
                 new DelegateConnectionMessageCallback() {
                     @Override
                     public void onMessageReceived(@NonNull SipMessage message) {
+                        message = repairHeaderSection(message);
                         SipSessionListener listener = sipSessionListener;
                         if (listener != null) {
                             try {
@@ -427,6 +428,23 @@ public class RegistrationControllerImpl implements RegistrationController {
         public int getMaxPayloadSizeOnUdp() {
             return configuration.getInt(
                     SipDelegateImsConfiguration.KEY_SIP_CONFIG_MAX_PAYLOAD_SIZE_ON_UDP_INT, 1500);
+        }
+
+        /**
+         * There is a modem issue where "ia:" is returned back instead of "Via:". Fix that locally
+         * for now.
+         * @return A SipMessage with the corrected header section.
+         */
+        private static SipMessage repairHeaderSection(SipMessage message) {
+            String headers = message.getHeaderSection();
+
+            if (headers.startsWith("ia:")) {
+                headers = "V" + headers;
+                Log.i(TAG, "repairHeaderSection: detected malformed via: "
+                        + message.getHeaderSection().substring(0, 10) + "->"
+                        + headers.substring(0, 10));
+            }
+            return new SipMessage(message.getStartLine(), headers, message.getContent());
         }
     }
 }
