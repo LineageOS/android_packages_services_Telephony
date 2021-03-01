@@ -240,7 +240,7 @@
     <string name="throttle_status_subtext"><xliff:g id="used">%1$s</xliff:g> (<xliff:g id="used">%2$d</xliff:g>\u066A) de <xliff:g id="used">%3$s</xliff:g> periodu máximu\nSiguiente periodu entama en <xliff:g id="used">%4$d</xliff:g> díes (<xliff:g id="used">%5$s</xliff:g>)</string>
     <string name="throttle_data_usage_subtext"><xliff:g id="used">%1$s</xliff:g> (<xliff:g id="used">%2$d</xliff:g>\u066A) de <xliff:g id="used">%3$s</xliff:g> periodu maximu</string>
     <string name="throttle_data_rate_reduced_subtext">Máx de <xliff:g id="USED_0">%1$s</xliff:g> perpasáu.\nFrec datos reducida a <xliff:g id="USED_1">%2$d</xliff:g> Kb/s</string>
-    <string name="throttle_time_frame_subtext"><xliff:g id="USED_0">%1$d</xliff:g>% del ciclu trescurríu.\nPróx periodu en <xliff:g id="USED_1">%2$d</xliff:g> díes (<xliff:g id="USED_2">%3$s</xliff:g>)</string>
+    <string name="throttle_time_frame_subtext"><xliff:g id="USED_0">%1$d</xliff:g>\u066A del ciclu trescurríu.\nPróx periodu en <xliff:g id="USED_1">%2$d</xliff:g> díes (<xliff:g id="USED_2">%3$s</xliff:g>)</string>
     <string name="throttle_rate_subtext">Frec datos reduzse a <xliff:g id="USED">%1$d</xliff:g> Kb/s si se supera llende usu datos</string>
     <string name="cell_broadcast_sms">SMS de difusión móvil</string>
     <string name="enable_disable_cell_bc_sms">SMS de difusión móvil</string>
