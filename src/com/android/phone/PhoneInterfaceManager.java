@@ -9820,6 +9820,28 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
+     * Enables or disables the test mode for RCS VoLTE single registration.
+     */
+    @Override
+    public void setRcsSingleRegistrationTestModeEnabled(boolean enabled) {
+        TelephonyPermissions.enforceShellOnly(Binder.getCallingUid(),
+                "setRcsSingleRegistrationTestModeEnabled");
+
+        RcsProvisioningMonitor.getInstance().setTestModeEnabled(enabled);
+    }
+
+    /**
+     * Gets the test mode for RCS VoLTE single registration.
+     */
+    @Override
+    public boolean getRcsSingleRegistrationTestModeEnabled() {
+        TelephonyPermissions.enforceShellOnly(Binder.getCallingUid(),
+                "getRcsSingleRegistrationTestModeEnabled");
+
+        return RcsProvisioningMonitor.getInstance().getTestModeEnabled();
+    }
+
+    /**
      * Overrides the config of RCS VoLTE single registration enabled for the device.
      */
     @Override
