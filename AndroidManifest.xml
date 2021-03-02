@@ -59,6 +59,7 @@
     <protected-broadcast android:name= "com.android.internal.telephony.CARRIER_SIGNAL_PCO_VALUE" />
     <protected-broadcast android:name= "com.android.internal.telephony.CARRIER_SIGNAL_RESET" />
     <protected-broadcast android:name= "com.android.internal.telephony.CARRIER_SIGNAL_DEFAULT_NETWORK_AVAILABLE" />
+    <protected-broadcast android:name= "com.android.internal.telephony.PROVISION" />
     <protected-broadcast android:name= "com.android.internal.telephony.ACTION_LINE1_NUMBER_ERROR_DETECTED" />
     <protected-broadcast android:name= "com.android.internal.provider.action.VOICEMAIL_SMS_RECEIVED" />
     <protected-broadcast android:name= "com.android.intent.isim_refresh" />
@@ -96,6 +97,7 @@
     <protected-broadcast android:name= "org.codeaurora.intent.action.ACTION_DDS_SWITCH_DONE" />
     <protected-broadcast android:name= "android.telephony.action.SUBSCRIPTION_CARRIER_IDENTITY_CHANGED" />
     <protected-broadcast android:name= "android.telephony.action.SUBSCRIPTION_SPECIFIC_CARRIER_IDENTITY_CHANGED" />
+    <protected-broadcast android:name= "android.telephony.action.TOGGLE_PROVISION" />
     <protected-broadcast android:name= "android.telephony.action.NETWORK_COUNTRY_CHANGED" />
     <protected-broadcast android:name= "android.telephony.action.PRIMARY_SUBSCRIPTION_LIST_CHANGED" />
     <protected-broadcast android:name= "android.telephony.action.MULTI_SIM_CONFIG_CHANGED" />

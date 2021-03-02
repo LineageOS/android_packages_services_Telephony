@@ -606,7 +606,7 @@
     <string name="ota_skip_activation_dialog_title" msgid="7666611236789203797">"לדלג על ההפעלה?"</string>
     <string name="ota_skip_activation_dialog_message" msgid="6691722887019708713">"‏אם מדלגים על ההפעלה, אי אפשר להתקשר או להתחבר לרשתות נתונים לנייד (אך אפשר להתחבר לרשתות Wi-Fi). עד להפעלת הטלפון תופיע הודעה שמבקשת לבצע את ההפעלה בכל פעם שמדליקים את הטלפון."</string>
     <string name="ota_skip_activation_dialog_skip_label" msgid="5908029466817825633">"דילוג"</string>
-    <string name="ota_activate" msgid="7939695753665438357">"הפעל"</string>
+    <string name="ota_activate" msgid="7939695753665438357">"הפעלה"</string>
     <string name="ota_title_activate_success" msgid="1272135024761004889">"הטלפון מופעל."</string>
     <string name="ota_title_problem_with_activation" msgid="7019745985413368726">"בעיה בהפעלה"</string>
     <string name="ota_listen" msgid="2772252405488894280">"בצע את ההוראות הנאמרות עד שתשמע שההפעלה הושלמה."</string>

@@ -363,9 +363,6 @@ public class PhoneGlobals extends ContextWrapper {
             startService(intent);
 
             mCM = CallManager.getInstance();
-            for (Phone phone : PhoneFactory.getPhones()) {
-                mCM.registerPhone(phone);
-            }
 
             // Create the NotificationMgr singleton, which is used to display
             // status bar icons and control other status bar behavior.

@@ -302,7 +302,7 @@
     <string name="video_calling_settings_title" msgid="342829454913266078">"Відэавыклікі праз аператара"</string>
     <string name="gsm_umts_options" msgid="4968446771519376808">"Параметры GSM/UMTS"</string>
     <string name="cdma_options" msgid="3669592472226145665">"Параметры CDMA"</string>
-    <string name="throttle_data_usage" msgid="1944145350660420711">"Выкарыстанне трафіку"</string>
+    <string name="throttle_data_usage" msgid="1944145350660420711">"Выкарыстанне трафіка"</string>
     <string name="throttle_current_usage" msgid="7483859109708658613">"Выкарыстанне даных у бягучы перыяд"</string>
     <string name="throttle_time_frame" msgid="1813452485948918791">"Перыяд выкарыстання дадзеных"</string>
     <string name="throttle_rate" msgid="7641913901133634905">"Палітыка хуткасці перадачы дадзеных"</string>
@@ -442,7 +442,7 @@
     <string name="sum_fdn_manage_list" msgid="3311397063233992907">"Кіраванне спісам тэлефонных нумароў"</string>
     <string name="voice_privacy" msgid="7346935172372181951">"Палiтыка прыватнасцi Voice"</string>
     <string name="voice_privacy_summary" msgid="3556460926168473346">"Уключыць пашыраны рэжым прыватнасці"</string>
-    <string name="tty_mode_option_title" msgid="3843817710032641703">"Рэжым тэлетайпа"</string>
+    <string name="tty_mode_option_title" msgid="3843817710032641703">"Рэжым TTY"</string>
     <string name="tty_mode_option_summary" msgid="4770510287236494371">"Задаць рэжым TTY"</string>
     <string name="auto_retry_mode_title" msgid="2985801935424422340">"Аўтаматычны паўтор"</string>
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"Уключыць рэжым аўтаматычнага паўтору"</string>
@@ -586,10 +586,10 @@
     <string name="rtt_mode_more_information" msgid="587500128658756318">"Функцыя RTT дапамагае абанентам з парушэннямі слыху і маўлення.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Даведацца больш&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT-выклікі захоўваюцца ў выглядзе расшыфроўкі паведамленняў\n       &lt;br&gt; - Функцыя RTT недаступная для відэавыклікаў"</string>
     <string name="no_rtt_when_roaming" msgid="5268008247378355389">"Заўвага. Функцыя RTT недаступная ў роўмінгу."</string>
   <string-array name="tty_mode_entries">
-    <item msgid="3238070884803849303">"Тэлетайп выключаны"</item>
-    <item msgid="1449091874731375214">"Поўнафункцыянальны тэлетайп"</item>
-    <item msgid="1044179293199519425">"Тэлетайп HCO"</item>
-    <item msgid="2131559553795606483">"Тэлетайп VCO"</item>
+    <item msgid="3238070884803849303">"TTY выключаны"</item>
+    <item msgid="1449091874731375214">"Поўнафункцыянальны TTY"</item>
+    <item msgid="1044179293199519425">"TTY з магчымасцю чуць суразмоўніка"</item>
+    <item msgid="2131559553795606483">"TTY з магчымасцю перадачы голасу"</item>
   </string-array>
     <string name="dtmf_tones_title" msgid="7874845461117175236">"Сігналы DTMF"</string>
     <string name="dtmf_tones_summary" msgid="2294822239899471201">"Задаць даўжыню тонаў DTMF"</string>

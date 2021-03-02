@@ -171,7 +171,7 @@
     <string name="network_query_error" msgid="3862515805115145124">"Nepodarilo sa nájsť siete. Skúste to znova."</string>
     <string name="register_on_network" msgid="4194770527833960423">"Prebieha registrácia v sieti <xliff:g id="NETWORK">%s</xliff:g>..."</string>
     <string name="not_allowed" msgid="8541221928746104798">"Vaša SIM karta nepovoľuje pripojenie k tejto sieti."</string>
-    <string name="connect_later" msgid="1950138106010005425">"V tejto chvíli sa nedá pripojiť k sieti. Skúste to znova neskôr."</string>
+    <string name="connect_later" msgid="1950138106010005425">"V tejto chvíli sa nedá pripojiť k sieti. Skúste to neskôr."</string>
     <string name="registration_done" msgid="5337407023566953292">"Prihlásenie k sieti prebehlo úspešne."</string>
     <string name="already_auto" msgid="8607068290733079336">"Už v automatickom výbere"</string>
     <string name="select_automatically" msgid="779750291257872651">"Vybrať sieť automaticky"</string>

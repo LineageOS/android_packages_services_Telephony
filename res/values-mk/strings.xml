@@ -168,7 +168,7 @@
     <string name="label_available" msgid="1316084116670821258">"Достапни мрежи"</string>
     <string name="load_networks_progress" msgid="4051433047717401683">"Се пребарува..."</string>
     <string name="empty_networks_list" msgid="9216418268008582342">"Не се пронајдени мрежи."</string>
-    <string name="network_query_error" msgid="3862515805115145124">"Не можеше да се најдат мрежи. Обидете се повторно."</string>
+    <string name="network_query_error" msgid="3862515805115145124">"Не може да се најдат мрежи. Обидете се повторно."</string>
     <string name="register_on_network" msgid="4194770527833960423">"Регистрирање на <xliff:g id="NETWORK">%s</xliff:g>..."</string>
     <string name="not_allowed" msgid="8541221928746104798">"Вашата SIM картичка не дозволува поврзување со оваа мрежа."</string>
     <string name="connect_later" msgid="1950138106010005425">"Не може да се поврзе со оваа мрежа во моментов. Обидете се повторно подоцна."</string>
@@ -186,7 +186,7 @@
     <string name="network_disconnected" msgid="8844141106841160825">"Исклучено"</string>
     <string name="network_connected" msgid="2760235679963580224">"Поврзано"</string>
     <string name="network_connecting" msgid="160901383582774987">"Се поврзува…"</string>
-    <string name="network_could_not_connect" msgid="6547460848093727998">"Не можеше да се поврзе"</string>
+    <string name="network_could_not_connect" msgid="6547460848093727998">"Не може да се поврзе"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="4531933377509551889">"Претпочитан: GSM/WCDMA"</item>
     <item msgid="5120532750027435355">"Само GSM"</item>
@@ -612,7 +612,7 @@
     <string name="ota_listen" msgid="2772252405488894280">"Следете ги гласовните упатства додека не слушнете дека активацијата е завршена."</string>
     <string name="ota_speaker" msgid="1086766980329820528">"Звучник"</string>
     <string name="ota_progress" msgid="8837259285255700132">"Телефонот се програмира…"</string>
-    <string name="ota_failure" msgid="5674217489921481576">"Телефонот не можеше да се програмира"</string>
+    <string name="ota_failure" msgid="5674217489921481576">"Телефонот не може да се програмира"</string>
     <string name="ota_successful" msgid="1106825981548107774">"Вашиот телефон е сега активиран. Може да поминат и до 15 минути за услугата да започне."</string>
     <string name="ota_unsuccessful" msgid="8531037653803955754">"Вашиот телефон не се активираше. \nМожеби ќе треба да најде област со подобра покриеност (во близина на прозорец или надвор). \n\nОбидете се повторно или јавете се во служба за услуги на клиенти за повеќе опции."</string>
     <string name="ota_spc_failure" msgid="904092035241370080">"ВИШОК SPC ГРЕШКИ"</string>
@@ -711,54 +711,54 @@
     <string name="clh_callFailed_simError_txt" msgid="5128538525762326413">"Не може да се пристапи до SIM-картичката"</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="2736010617446749869">"Мобилната мрежа не е достапна"</string>
     <string name="clh_callFailed_unassigned_number_txt" msgid="141967660286695682">"Проблем со телефонскиот број што се обидувате да го бирате. Код за грешка: 1."</string>
-    <string name="clh_callFailed_no_route_to_destination_txt" msgid="4805015149822352308">"Повикот не можеше да се заврши. Код за грешка: 3."</string>
-    <string name="clh_callFailed_channel_unacceptable_txt" msgid="4062754579408613021">"Повикот не можеше да се заврши. Код за грешка: 6."</string>
-    <string name="clh_callFailed_operator_determined_barring_txt" msgid="4202077821465974286">"Повикот не можеше да се заврши. Код за грешка: 8."</string>
-    <string name="clh_callFailed_normal_call_clearing_txt" msgid="5677987959062976462">"Повикот не можеше да се заврши. Код за грешка: 16."</string>
+    <string name="clh_callFailed_no_route_to_destination_txt" msgid="4805015149822352308">"Повикот не може да се заврши. Код за грешка: 3."</string>
+    <string name="clh_callFailed_channel_unacceptable_txt" msgid="4062754579408613021">"Повикот не може да се заврши. Код за грешка: 6."</string>
+    <string name="clh_callFailed_operator_determined_barring_txt" msgid="4202077821465974286">"Повикот не може да се заврши. Код за грешка: 8."</string>
+    <string name="clh_callFailed_normal_call_clearing_txt" msgid="5677987959062976462">"Повикот не може да се заврши. Код за грешка: 16."</string>
     <string name="clh_callFailed_user_busy_txt" msgid="8886432858568086854">"Корисникот е зафатен"</string>
     <string name="clh_callFailed_no_user_responding_txt" msgid="341100226919865128">"Корисникот не одговара"</string>
-    <string name="clh_callFailed_user_alerting_txt" msgid="896082976264427969">"Повикот не можеше да се заврши. Код за грешка: 19."</string>
+    <string name="clh_callFailed_user_alerting_txt" msgid="896082976264427969">"Повикот не може да се заврши. Код за грешка: 19."</string>
     <string name="clh_callFailed_call_rejected_txt" msgid="3439435671153341709">"Повикот е одбиен"</string>
     <string name="clh_callFailed_number_changed_txt" msgid="2868476949771441667">"Бројот е променет"</string>
-    <string name="clh_callFailed_pre_emption_txt" msgid="8887998866342162724">"Повикот не можеше да се заврши. Код за грешка: 25."</string>
-    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="4804529874810197550">"Повикот не можеше да се заврши. Код за грешка: 26."</string>
-    <string name="clh_callFailed_destination_out_of_order_txt" msgid="1130697076352728824">"Повикот не можеше да се заврши. Код за грешка: 27."</string>
+    <string name="clh_callFailed_pre_emption_txt" msgid="8887998866342162724">"Повикот не може да се заврши. Код за грешка: 25."</string>
+    <string name="clh_callFailed_non_selected_user_clearing_txt" msgid="4804529874810197550">"Повикот не може да се заврши. Код за грешка: 26."</string>
+    <string name="clh_callFailed_destination_out_of_order_txt" msgid="1130697076352728824">"Повикот не може да се заврши. Код за грешка: 27."</string>
     <string name="clh_callFailed_invalid_number_format_txt" msgid="3171016382987224989">"Неважечки формат на број (нецелосен број)"</string>
-    <string name="clh_callFailed_facility_rejected_txt" msgid="1054386430010898993">"Повикот не можеше да се заврши. Код за грешка: 29."</string>
-    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="2763172551412307536">"Повикот не можеше да се заврши. Код за грешка: 30."</string>
-    <string name="clh_callFailed_normal_unspecified_txt" msgid="978119938935737419">"Повикот не можеше да се заврши. Код за грешка: 31."</string>
-    <string name="clh_callFailed_no_circuit_available_txt" msgid="1519684050419134605">"Повикот не можеше да се заврши. Код за грешка: 34."</string>
-    <string name="clh_callFailed_network_out_of_order_txt" msgid="8689826504394592289">"Повикот не можеше да се заврши. Код за грешка: 38."</string>
-    <string name="clh_callFailed_temporary_failure_txt" msgid="5065091554509067874">"Повикот не можеше да се заврши. Код за грешка: 41."</string>
-    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="8681599376741988769">"Повикот не можеше да се заврши. Код за грешка: 42."</string>
-    <string name="clh_callFailed_access_information_discarded_txt" msgid="2476199425130545428">"Повикот не можеше да се заврши. Код за грешка: 43."</string>
-    <string name="clh_callFailed_requested_circuit_txt" msgid="7497497808928490219">"Повикот не можеше да се заврши. Код за грешка: 44."</string>
-    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="144010529672928445">"Повикот не можеше да се заврши. Код за грешка: 47."</string>
-    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="4650329342288289290">"Повикот не можеше да се заврши. Код за грешка: 49."</string>
-    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="9107977008516882170">"Повикот не можеше да се заврши. Код за грешка: 50."</string>
-    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="501037491908315591">"Повикот не можеше да се заврши. Код за грешка: 55."</string>
-    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="4344366517528362620">"Повикот не можеше да се заврши. Код за грешка: 57."</string>
-    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="1436957294571545381">"Повикот не можеше да се заврши. Код за грешка: 58."</string>
-    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="2149878874722675428">"Повикот не можеше да се заврши. Код за грешка: 63."</string>
-    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="1074983013965612410">"Повикот не можеше да се заврши. Код за грешка: 65."</string>
-    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="7889034195264205333">"Повикот не можеше да се заврши. Код за грешка: 68."</string>
-    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="7996646684699167978">"Повикот не можеше да се заврши. Код за грешка: 69."</string>
-    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="2358958110447385682">"Повикот не можеше да се заврши. Код за грешка: 70."</string>
-    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="3046428509531159481">"Повикот не можеше да се заврши. Код за грешка: 79."</string>
-    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="1727401871777396619">"Повикот не можеше да се заврши. Код за грешка: 81."</string>
-    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="442282135105229307">"Повикот не можеше да се заврши. Код за грешка: 87."</string>
-    <string name="clh_callFailed_incompatible_destination_txt" msgid="5900394706344969020">"Повикот не можеше да се заврши. Код за грешка: 88."</string>
-    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="6274621838349037741">"Повикот не можеше да се заврши. Код за грешка: 91."</string>
-    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="7000705190197981937">"Повикот не можеше да се заврши. Код за грешка: 95."</string>
-    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="3609204152671052123">"Повикот не можеше да се заврши. Код за грешка: 96."</string>
-    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="1552110431052032814">"Повикот не можеше да се заврши. Код за грешка: 97."</string>
-    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="7717048934226300032">"Повикот не можеше да се заврши. Код за грешка: 98."</string>
-    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="8931396541061612169">"Повикот не можеше да се заврши. Код за грешка: 99."</string>
-    <string name="clh_callFailed_conditional_IE_error_txt" msgid="4630685477888727741">"Повикот не можеше да се заврши. Код за грешка: 100."</string>
-    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="3014075977395922947">"Повикот не можеше да се заврши. Код за грешка: 101."</string>
-    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="5637581978978731672">"Повикот не можеше да се заврши. Код за грешка: 102."</string>
-    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="9203320572562697755">"Повикот не можеше да се заврши. Код за грешка: 111."</string>
-    <string name="clh_callFailed_interworking_unspecified_txt" msgid="7969686413930847182">"Повикот не можеше да се заврши. Код за грешка: 127."</string>
+    <string name="clh_callFailed_facility_rejected_txt" msgid="1054386430010898993">"Повикот не може да се заврши. Код за грешка: 29."</string>
+    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt" msgid="2763172551412307536">"Повикот не може да се заврши. Код за грешка: 30."</string>
+    <string name="clh_callFailed_normal_unspecified_txt" msgid="978119938935737419">"Повикот не може да се заврши. Код за грешка: 31."</string>
+    <string name="clh_callFailed_no_circuit_available_txt" msgid="1519684050419134605">"Повикот не може да се заврши. Код за грешка: 34."</string>
+    <string name="clh_callFailed_network_out_of_order_txt" msgid="8689826504394592289">"Повикот не може да се заврши. Код за грешка: 38."</string>
+    <string name="clh_callFailed_temporary_failure_txt" msgid="5065091554509067874">"Повикот не може да се заврши. Код за грешка: 41."</string>
+    <string name="clh_callFailed_switching_equipment_congestion_txt" msgid="8681599376741988769">"Повикот не може да се заврши. Код за грешка: 42."</string>
+    <string name="clh_callFailed_access_information_discarded_txt" msgid="2476199425130545428">"Повикот не може да се заврши. Код за грешка: 43."</string>
+    <string name="clh_callFailed_requested_circuit_txt" msgid="7497497808928490219">"Повикот не може да се заврши. Код за грешка: 44."</string>
+    <string name="clh_callFailed_resources_unavailable_unspecified_txt" msgid="144010529672928445">"Повикот не може да се заврши. Код за грешка: 47."</string>
+    <string name="clh_callFailed_quality_of_service_unavailable_txt" msgid="4650329342288289290">"Повикот не може да се заврши. Код за грешка: 49."</string>
+    <string name="clh_callFailed_requested_facility_not_subscribed_txt" msgid="9107977008516882170">"Повикот не може да се заврши. Код за грешка: 50."</string>
+    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt" msgid="501037491908315591">"Повикот не може да се заврши. Код за грешка: 55."</string>
+    <string name="clh_callFailed_bearer_capability_not_authorized_txt" msgid="4344366517528362620">"Повикот не може да се заврши. Код за грешка: 57."</string>
+    <string name="clh_callFailed_bearer_capability_not_presently_available_txt" msgid="1436957294571545381">"Повикот не може да се заврши. Код за грешка: 58."</string>
+    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt" msgid="2149878874722675428">"Повикот не може да се заврши. Код за грешка: 63."</string>
+    <string name="clh_callFailed_bearer_service_not_implemented_txt" msgid="1074983013965612410">"Повикот не може да се заврши. Код за грешка: 65."</string>
+    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt" msgid="7889034195264205333">"Повикот не може да се заврши. Код за грешка: 68."</string>
+    <string name="clh_callFailed_requested_facility_not_implemented_txt" msgid="7996646684699167978">"Повикот не може да се заврши. Код за грешка: 69."</string>
+    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt" msgid="2358958110447385682">"Повикот не може да се заврши. Код за грешка: 70."</string>
+    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt" msgid="3046428509531159481">"Повикот не може да се заврши. Код за грешка: 79."</string>
+    <string name="clh_callFailed_invalid_transaction_identifier_value_txt" msgid="1727401871777396619">"Повикот не може да се заврши. Код за грешка: 81."</string>
+    <string name="clh_callFailed_user_not_member_of_CUG_txt" msgid="442282135105229307">"Повикот не може да се заврши. Код за грешка: 87."</string>
+    <string name="clh_callFailed_incompatible_destination_txt" msgid="5900394706344969020">"Повикот не може да се заврши. Код за грешка: 88."</string>
+    <string name="clh_callFailed_invalid_transit_network_selection_txt" msgid="6274621838349037741">"Повикот не може да се заврши. Код за грешка: 91."</string>
+    <string name="clh_callFailed_semantically_incorrect_message_txt" msgid="7000705190197981937">"Повикот не може да се заврши. Код за грешка: 95."</string>
+    <string name="clh_callFailed_invalid_mandatory_information_txt" msgid="3609204152671052123">"Повикот не може да се заврши. Код за грешка: 96."</string>
+    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt" msgid="1552110431052032814">"Повикот не може да се заврши. Код за грешка: 97."</string>
+    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt" msgid="7717048934226300032">"Повикот не може да се заврши. Код за грешка: 98."</string>
+    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt" msgid="8931396541061612169">"Повикот не може да се заврши. Код за грешка: 99."</string>
+    <string name="clh_callFailed_conditional_IE_error_txt" msgid="4630685477888727741">"Повикот не може да се заврши. Код за грешка: 100."</string>
+    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt" msgid="3014075977395922947">"Повикот не може да се заврши. Код за грешка: 101."</string>
+    <string name="clh_callFailed_recovery_on_timer_expiry_txt" msgid="5637581978978731672">"Повикот не може да се заврши. Код за грешка: 102."</string>
+    <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="9203320572562697755">"Повикот не може да се заврши. Код за грешка: 111."</string>
+    <string name="clh_callFailed_interworking_unspecified_txt" msgid="7969686413930847182">"Повикот не може да се заврши. Код за грешка: 127."</string>
     <string name="labelCallBarring" msgid="4180377113052853173">"Забрана на повик"</string>
     <string name="sum_call_barring_enabled" msgid="5184331188926370824">"Вклучено"</string>
     <string name="sum_call_barring_disabled" msgid="5699448000600153096">"Исклучено"</string>

@@ -16,7 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="phoneAppLabel" product="tablet" msgid="1916019789885839910">"मोबाईल डेटा"</string>
+    <string name="phoneAppLabel" product="tablet" msgid="1916019789885839910">"मोबाइल डेटा"</string>
     <string name="phoneAppLabel" product="default" msgid="130465039375347763">"फोन सेवा"</string>
     <string name="emergencyDialerIconLabel" msgid="8668005772339436680">"आणीबाणी डायलर"</string>
     <string name="phoneIconLabel" msgid="3015941229249651419">"फोन"</string>
@@ -32,7 +32,7 @@
     <string name="mmiCancelled" msgid="5339191899200678272">"MMI कोड रद्द केला"</string>
     <string name="cancel" msgid="8984206397635155197">"रद्द करा"</string>
     <string name="enter_input" msgid="6193628663039958990">"USSD मेसेज <xliff:g id="MIN_LEN">%1$d</xliff:g> आणि <xliff:g id="MAX_LEN">%2$d</xliff:g> वर्णांमधील असणे आवश्‍यक आहे. कृपया पुन्‍हा प्रयत्‍न करा."</string>
-    <string name="manageConferenceLabel" msgid="8415044818156353233">"कॉन्फरन्स कॉल व्यवस्थापित करा"</string>
+    <string name="manageConferenceLabel" msgid="8415044818156353233">"कॉंफरन्स कॉल व्यवस्थापित करा"</string>
     <string name="ok" msgid="7818974223666140165">"ठीक"</string>
     <string name="audio_mode_speaker" msgid="243689733219312360">"स्पीकर"</string>
     <string name="audio_mode_earpiece" msgid="2823700267171134282">"हँडसेट इअरपीस"</string>
@@ -55,7 +55,7 @@
     <string name="requesting_unlock" msgid="930512210309437741">"नेटवर्क अनलॉकची विनंती करत आहे..."</string>
     <string name="unlock_failed" msgid="7103543844840661366">"नेटवर्क अनलॉक विनंती अयशस्वी."</string>
     <string name="unlock_success" msgid="32681089371067565">"नेटवर्क अनलॉक यशस्वी."</string>
-    <string name="mobile_network_settings_not_available" msgid="8678168497517090039">"या वापरकर्त्यासाठी मोबाईल नेटवर्क सेटिंग्ज उपलब्ध नाहीत"</string>
+    <string name="mobile_network_settings_not_available" msgid="8678168497517090039">"या वापरकर्त्यासाठी मोबाइल नेटवर्क सेटिंग्ज उपलब्ध नाहीत"</string>
     <string name="labelGSMMore" msgid="7354182269461281543">"GSM कॉल सेटिंग्ज"</string>
     <string name="labelGsmMore_with_label" msgid="3206015314393246224">"GSM कॉल सेटिंग्ज (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCDMAMore" msgid="7937441382611224632">"CDMA कॉल सेटिंग्ज"</string>
@@ -510,7 +510,7 @@
     <string name="voicemail_settings_number_label" msgid="1265118640154688162">"व्हॉइसमेल नंबर"</string>
     <string name="card_title_dialing" msgid="8742182654254431781">"डायल करत आहे"</string>
     <string name="card_title_redialing" msgid="18130232613559964">"रीडायल करत आहे"</string>
-    <string name="card_title_conf_call" msgid="901197309274457427">"कॉन्फरन्स कॉल"</string>
+    <string name="card_title_conf_call" msgid="901197309274457427">"कॉंफरन्स कॉल"</string>
     <string name="card_title_incoming_call" msgid="881424648458792430">"येणारे कॉल"</string>
     <string name="card_title_call_ended" msgid="650223980095026340">"कॉल संपला"</string>
     <string name="card_title_on_hold" msgid="9028319436626975207">"होल्ड वर"</string>
@@ -565,7 +565,7 @@
     <string name="onscreenHoldText" msgid="4025348842151665191">"होल्ड करा"</string>
     <string name="onscreenEndCallText" msgid="6138725377654842757">"शेवट"</string>
     <string name="onscreenShowDialpadText" msgid="658465753816164079">"डायलपॅड"</string>
-    <string name="onscreenMuteText" msgid="5470306116733843621">"नि:शब्द करा"</string>
+    <string name="onscreenMuteText" msgid="5470306116733843621">"म्यूट करा"</string>
     <string name="onscreenAddCallText" msgid="9075675082903611677">"कॉल जोडा"</string>
     <string name="onscreenMergeCallsText" msgid="3692389519611225407">"कॉल विलीन करा"</string>
     <string name="onscreenSwapCallsText" msgid="2682542150803377991">"अदलाबदल करा"</string>
@@ -868,7 +868,7 @@
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DL बँडविड्थ (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL बँडविड्थ (kbps):"</string>
     <string name="radio_info_signal_location_label" msgid="6188435197086550049">"सेल स्थान माहिती (कालबाह्य झाली):"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"LTE फिजिकल चॅनेल कॉंफिगरेशन:"</string>
+    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"LTE फिजिकल चॅनल कॉंफिगरेशन:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"सेल माहिती रिफ्रेश रेट:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"सर्व सेल परिमाण माहिती:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"डेटा सर्व्हिस:"</string>

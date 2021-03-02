@@ -306,7 +306,7 @@
     <string name="throttle_current_usage" msgid="7483859109708658613">"Ginamit na data sa kasalukuyang panahon"</string>
     <string name="throttle_time_frame" msgid="1813452485948918791">"Panahon ng paggamit ng data"</string>
     <string name="throttle_rate" msgid="7641913901133634905">"Patakaran ng rate ng data"</string>
-    <string name="throttle_help" msgid="2624535757028809735">"Matuto nang higit pa"</string>
+    <string name="throttle_help" msgid="2624535757028809735">"Matuto pa"</string>
     <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) ng <xliff:g id="USED_2">%3$s</xliff:g> maximum na tagal ng panahon\nMagsisimula ang susunod na tagal ng panahon sa loob ng <xliff:g id="USED_3">%4$d</xliff:g> (na) araw (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
     <string name="throttle_data_usage_subtext" msgid="3185429653996709840">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) ng <xliff:g id="USED_2">%3$s</xliff:g> maximum na period"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"Ang <xliff:g id="USED_0">%1$s</xliff:g> na maximum ay lumagpas sa\nBinabaan ang rate ng data sa <xliff:g id="USED_1">%2$d</xliff:g> Kb/s"</string>
