@@ -19,6 +19,7 @@ package com.android.phone;
 import static android.Manifest.permission.READ_PHONE_STATE;
 
 import android.annotation.Nullable;
+import android.app.BroadcastOptions;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -105,6 +106,12 @@ public class NotificationMgr {
     private static final int STATE_UNKNOWN_SERVICE = -1;
 
     private static final String ACTION_MOBILE_NETWORK_LIST = "android.settings.MOBILE_NETWORK_LIST";
+
+    /**
+     * Grant recipients of new voicemail broadcasts a 10sec allowlist so they can start a background
+     * service to do VVM processing.
+     */
+    private final long VOICEMAIL_ALLOW_LIST_DURATION_MILLIS = 10000L;
 
     /** The singleton NotificationMgr instance. */
     private static NotificationMgr sInstance;
@@ -470,7 +477,10 @@ public class NotificationMgr {
                             pendingIntent);
                 }
             }
-            mContext.sendBroadcastAsUser(intent, userHandle, READ_PHONE_STATE);
+
+            BroadcastOptions bopts = BroadcastOptions.makeBasic();
+            bopts.setTemporaryAppWhitelistDuration(VOICEMAIL_ALLOW_LIST_DURATION_MILLIS);
+            mContext.sendBroadcastAsUser(intent, userHandle, READ_PHONE_STATE, bopts.toBundle());
             return true;
         }
 

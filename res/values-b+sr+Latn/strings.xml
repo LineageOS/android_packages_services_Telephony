@@ -74,7 +74,7 @@
     <string name="phone_accounts_configure_account_settings" msgid="6622119715253196586">"Konfigurisanje podešavanja naloga"</string>
     <string name="phone_accounts_all_calling_accounts" msgid="1609600743500618823">"Svi nalozi za pozivanje"</string>
     <string name="phone_accounts_all_calling_accounts_summary" msgid="2214134955430107240">"Izaberite koji nalozi mogu da obavljaju pozive"</string>
-    <string name="wifi_calling" msgid="3650509202851355742">"Pozivanje preko Wi-Fi-ja"</string>
+    <string name="wifi_calling" msgid="3650509202851355742">"Pozivanje preko WiFi-a"</string>
     <string name="connection_service_default_label" msgid="7332739049855715584">"Ugrađena usluga povezivanja"</string>
     <string name="voicemail" msgid="7697769412804195032">"Govorna pošta"</string>
     <string name="voicemail_settings_with_label" msgid="4228431668214894138">"Glasovna pošta (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -298,7 +298,7 @@
     <string name="sim_selection_required_pref" msgid="6985901872978341314">"Potrebno je da izaberete nešto"</string>
     <string name="sim_change_data_title" msgid="9142726786345906606">"Da promenimo SIM za podatke?"</string>
     <string name="sim_change_data_message" msgid="3567358694255933280">"Želite li da za mobilne podatke koristite <xliff:g id="NEW_SIM">%1$s</xliff:g> umesto <xliff:g id="OLD_SIM">%2$s</xliff:g>?"</string>
-    <string name="wifi_calling_settings_title" msgid="5800018845662016507">"Pozivanje preko Wi-Fi-ja"</string>
+    <string name="wifi_calling_settings_title" msgid="5800018845662016507">"Pozivanje preko WiFi-a"</string>
     <string name="video_calling_settings_title" msgid="342829454913266078">"Video pozivanje preko operatera"</string>
     <string name="gsm_umts_options" msgid="4968446771519376808">"Opcije za GSM/UMTS"</string>
     <string name="cdma_options" msgid="3669592472226145665">"CDMA opcije"</string>
@@ -542,7 +542,7 @@
     <string name="incall_error_supp_service_hangup" msgid="836524952243836735">"Uspostavljanje poziva nije uspelo."</string>
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"Nije moguće stavljati pozive na čekanje."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"Povežite se na bežičnu mrežu da biste uputili poziv."</string>
-    <string name="incall_error_promote_wfc" msgid="9164896813931363415">"Omogućite pozivanje preko Wi-Fi-ja da biste uputili poziv."</string>
+    <string name="incall_error_promote_wfc" msgid="9164896813931363415">"Omogućite pozivanje preko WiFi-a da biste uputili poziv."</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"Informacije za hitne slučajeve"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"Vlasnik"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"Dodirnite ponovo da biste videli informacije"</string>
@@ -564,7 +564,7 @@
     <string name="dialerKeyboardHintText" msgid="1115266533703764049">"Koristite tastaturu za pozivanje"</string>
     <string name="onscreenHoldText" msgid="4025348842151665191">"Čekanje"</string>
     <string name="onscreenEndCallText" msgid="6138725377654842757">"Završi"</string>
-    <string name="onscreenShowDialpadText" msgid="658465753816164079">"Numerička tastatura"</string>
+    <string name="onscreenShowDialpadText" msgid="658465753816164079">"Brojčanik"</string>
     <string name="onscreenMuteText" msgid="5470306116733843621">"Isključi zvuk"</string>
     <string name="onscreenAddCallText" msgid="9075675082903611677">"Dodaj poziv"</string>
     <string name="onscreenMergeCallsText" msgid="3692389519611225407">"Objedini pozive"</string>
@@ -604,7 +604,7 @@
     <string name="ota_hfa_activation_title" msgid="3300556778212729671">"Aktiviranje..."</string>
     <string name="ota_hfa_activation_dialog_message" msgid="7921718445773342996">"Telefon aktivira uslugu mobilnog prenosa podataka.\n\nTo može da potraje i do 5 minuta."</string>
     <string name="ota_skip_activation_dialog_title" msgid="7666611236789203797">"Želite li da preskočite aktivaciju?"</string>
-    <string name="ota_skip_activation_dialog_message" msgid="6691722887019708713">"Ako preskočite aktivaciju, ne možete da upućujete pozive ili da se povezujete sa mrežama za mobilni prenos podataka (iako možete da se povežete sa Wi-Fi mrežama). Sve dok ne aktivirate svoj telefon, bićete upitani da to učinite svaki put kada ga uključite."</string>
+    <string name="ota_skip_activation_dialog_message" msgid="6691722887019708713">"Ako preskočite aktivaciju, ne možete da upućujete pozive ili da se povezujete sa mrežama za mobilni prenos podataka (iako možete da se povežete sa WiFi mrežama). Sve dok ne aktivirate svoj telefon, bićete upitani da to učinite svaki put kada ga uključite."</string>
     <string name="ota_skip_activation_dialog_skip_label" msgid="5908029466817825633">"Preskoči"</string>
     <string name="ota_activate" msgid="7939695753665438357">"Aktiviraj"</string>
     <string name="ota_title_activate_success" msgid="1272135024761004889">"Telefon je aktiviran."</string>
@@ -657,7 +657,7 @@
     <string name="not_voice_capable" msgid="2819996734252084253">"Audio pozivi nisu podržani"</string>
     <string name="description_dial_button" msgid="8614631902795087259">"biranje"</string>
     <string name="description_dialpad_button" msgid="7395114120463883623">"prikažite numeričku tastaturu"</string>
-    <string name="pane_title_emergency_dialpad" msgid="3627372514638694401">"Numerička tastatura za hitne pozive"</string>
+    <string name="pane_title_emergency_dialpad" msgid="3627372514638694401">"Brojčanik za hitne pozive"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="6610414098912832120">"Vizuelna govorna pošta"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="7005128605986960003">"Podesite PIN"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="4633077715231764435">"Promenite PIN"</string>
@@ -671,18 +671,18 @@
     <string name="sim_description_emergency_calls" msgid="5146872803938897296">"Samo za hitne pozive"</string>
     <string name="sim_description_default" msgid="7474671114363724971">"SIM kartica, otvor: <xliff:g id="SLOT_ID">%s</xliff:g>"</string>
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"Pristupačnost"</string>
-    <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"Wi-Fi poziv od"</string>
-    <string name="status_hint_label_wifi_call" msgid="942993035689809853">"Wi-Fi poziv"</string>
+    <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"WiFi poziv od"</string>
+    <string name="status_hint_label_wifi_call" msgid="942993035689809853">"WiFi poziv"</string>
     <string name="emergency_action_launch_hint" msgid="2762016865340891314">"Dodirnite ponovo da biste otvorili"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"Došlo je do greške pri dekodiranju poruke."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"SIM kartica je aktivirala uslugu i ažurirala funkcije rominga na telefonu."</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"Ima previše aktivnih poziva. Završite ili objedinite postojeće pozive pre nego što uputite novi."</string>
     <string name="callFailed_imei_not_accepted" msgid="7257903653685147251">"Povezivanje nije uspelo, ubacite važeću SIM karticu."</string>
-    <string name="callFailed_wifi_lost" msgid="1788036730589163141">"Wi-Fi veza je prekinuta. Poziv je završen."</string>
+    <string name="callFailed_wifi_lost" msgid="1788036730589163141">"WiFi veza je prekinuta. Poziv je završen."</string>
     <string name="dialFailed_low_battery" msgid="6857904237423407056">"Ne možete da uputite poziv jer je baterija skoro prazna."</string>
     <string name="callFailed_low_battery" msgid="4056828320214416182">"Video poziv je prekinut jer je baterija skoro prazna."</string>
-    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="5944309590693432042">"Hitni pozivi pomoću funkcije Pozivanje preko Wi-Fi-ja nisu dostupni na ovoj lokaciji."</string>
-    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="3624536608369524988">"Pozivanje preko Wi-Fi-ja nije dostupno na ovoj lokaciji."</string>
+    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="5944309590693432042">"Hitni pozivi pomoću funkcije Pozivanje preko WiFi-a nisu dostupni na ovoj lokaciji."</string>
+    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="3624536608369524988">"Pozivanje preko WiFi-a nije dostupno na ovoj lokaciji."</string>
     <string name="change_pin_title" msgid="3564254326626797321">"Promenite PIN kôd govorne pošte"</string>
     <string name="change_pin_continue_label" msgid="5177011752453506371">"Nastavi"</string>
     <string name="change_pin_cancel_label" msgid="2301711566758827936">"Otkaži"</string>
@@ -827,7 +827,7 @@
     <string name="radio_info_data_connection_disable" msgid="6404751291511368706">"Onemogući vezu za prenos podataka"</string>
     <string name="volte_provisioned_switch_string" msgid="4812874990480336178">"Dodeljeno za VoLTE"</string>
     <string name="vt_provisioned_switch_string" msgid="8295542122512195979">"Video pozivi su dodeljeni"</string>
-    <string name="wfc_provisioned_switch_string" msgid="3835004640321078988">"Pozivanje preko Wi-Fi-ja je dodeljeno"</string>
+    <string name="wfc_provisioned_switch_string" msgid="3835004640321078988">"Pozivanje preko WiFi-a je dodeljeno"</string>
     <string name="eab_provisioned_switch_string" msgid="4449676720736033035">"Dodeljen je EAB/prisustvo"</string>
     <string name="cbrs_data_switch_string" msgid="6060356430838077653">"Podaci CBRS-a"</string>
     <string name="dsds_switch_string" msgid="7564769822086764796">"Omogući DSDS"</string>
@@ -845,7 +845,7 @@
     <string name="radio_info_ims_reg_status_not_registered" msgid="8045821447288876085">"Nije registrovano"</string>
     <string name="radio_info_ims_feature_status_available" msgid="6493200914756969292">"Dostupno"</string>
     <string name="radio_info_ims_feature_status_unavailable" msgid="8930391136839759778">"Nije dostupno"</string>
-    <string name="radio_info_ims_reg_status" msgid="25582845222446390">"Registracija IMS-a: <xliff:g id="STATUS">%1$s</xliff:g>\nGlas preko LTE-a: <xliff:g id="AVAILABILITY_0">%2$s</xliff:g>\nGlas preko Wi-Fi-ja: <xliff:g id="AVAILABILITY_1">%3$s</xliff:g>\nVideo poziv: <xliff:g id="AVAILABILITY_2">%4$s</xliff:g>\nUT interfejs: <xliff:g id="AVAILABILITY_3">%5$s</xliff:g>"</string>
+    <string name="radio_info_ims_reg_status" msgid="25582845222446390">"Registracija IMS-a: <xliff:g id="STATUS">%1$s</xliff:g>\nGlas preko LTE-a: <xliff:g id="AVAILABILITY_0">%2$s</xliff:g>\nGlas preko WiFi-a: <xliff:g id="AVAILABILITY_1">%3$s</xliff:g>\nVideo poziv: <xliff:g id="AVAILABILITY_2">%4$s</xliff:g>\nUT interfejs: <xliff:g id="AVAILABILITY_3">%5$s</xliff:g>"</string>
     <string name="radioInfo_service_in" msgid="45753418231446400">"Radi"</string>
     <string name="radioInfo_service_out" msgid="287972405416142312">"Ne radi"</string>
     <string name="radioInfo_service_emergency" msgid="4763879891415016848">"Samo hitni pozivi"</string>

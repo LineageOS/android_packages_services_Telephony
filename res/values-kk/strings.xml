@@ -96,7 +96,7 @@
     <string name="sum_hide_caller_id" msgid="131100328602371933">"Шығыс қоңырауларда нөмірді жасыру"</string>
     <string name="sum_show_caller_id" msgid="3571854755324664591">"Шығыс қоңыраулар нөмірді көрсету"</string>
     <string name="sum_default_caller_id" msgid="1767070797135682959">"Шығыс қоңырауларында менің нөмірім көрсетілуі үшін бастапқы оператор параметрлерін қолдану"</string>
-    <string name="labelCW" msgid="8449327023861428622">"Күтудегі қоңырау"</string>
+    <string name="labelCW" msgid="8449327023861428622">"Қоңырауды ұстап тұру"</string>
     <string name="sum_cw_enabled" msgid="3977308526187139996">"Қоңырау кезінде маған келген қоңыраулар жайлы хабарлау"</string>
     <string name="sum_cw_disabled" msgid="3658094589461768637">"Қоңырау кезінде маған келген қоңыраулар жайлы хабарлау"</string>
     <string name="call_forwarding_settings" msgid="8937130467468257671">"Қоңырауды басқа нөмірге бағыттау параметрлері"</string>

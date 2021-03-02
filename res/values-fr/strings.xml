@@ -36,7 +36,7 @@
     <string name="ok" msgid="7818974223666140165">"OK"</string>
     <string name="audio_mode_speaker" msgid="243689733219312360">"Haut-parleur"</string>
     <string name="audio_mode_earpiece" msgid="2823700267171134282">"Écouteur du combiné"</string>
-    <string name="audio_mode_wired_headset" msgid="5028010823105817443">"Écouteurs filaires"</string>
+    <string name="audio_mode_wired_headset" msgid="5028010823105817443">"Casque filaire"</string>
     <string name="audio_mode_bluetooth" msgid="25732183428018809">"Bluetooth"</string>
     <string name="wait_prompt_str" msgid="5136209532150094910">"Envoyer les tonalités suivantes ?\n"</string>
     <string name="pause_prompt_str" msgid="2308897950360272213">"Envoi des tonalités\n"</string>

@@ -45,7 +45,7 @@
     <string name="registration_status_not_running" msgid="6236403137652262659">"खाता दर्ता गर्न विफल"</string>
     <string name="registration_status_done" msgid="6787397199273357721">"कलहरू प्राप्त गर्दै।"</string>
     <string name="registration_status_failed_try_later" msgid="7855389184910312091">"खाता दर्ता गर्न विफल: (<xliff:g id="REGISTRATION_ERROR_MESSAGE">%s</xliff:g>); पछि प्रयास गर्नुहोस्"</string>
-    <string name="registration_status_invalid_credentials" msgid="8896714049938660777">"खाता दर्ता प्रक्रिया असफल: गलत प्रयोगकर्ताको नाम वा पासवर्ड।"</string>
+    <string name="registration_status_invalid_credentials" msgid="8896714049938660777">"खाता दर्ता प्रक्रिया असफल: गलत युजरनेम वा पासवर्ड।"</string>
     <string name="registration_status_server_unreachable" msgid="3832339558868965604">"खाता दर्ता गर्न असफल: सर्भरको नाम जाँच गर्नुहोस्।"</string>
     <string name="third_party_account_summary" msgid="5918779106950859167">"<xliff:g id="ACCOUNT_OWNER">%s</xliff:g> अनुप्रयोगद्वारा यो खाता हाल प्रयोगमा छ।"</string>
     <string name="sip_edit_title" msgid="7438891546610820307">"SIP खाता विवरणहरू"</string>

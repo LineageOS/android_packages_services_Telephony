@@ -508,7 +508,7 @@
     <string name="pin2_error_exception" msgid="8116103864600823641">"Erro de rede ou do chip"</string>
     <string name="doneButton" msgid="7371209609238460207">"Concluído"</string>
     <string name="voicemail_settings_number_label" msgid="1265118640154688162">"Número correio de voz"</string>
-    <string name="card_title_dialing" msgid="8742182654254431781">"Discando"</string>
+    <string name="card_title_dialing" msgid="8742182654254431781">"Chamando..."</string>
     <string name="card_title_redialing" msgid="18130232613559964">"Rediscando"</string>
     <string name="card_title_conf_call" msgid="901197309274457427">"Teleconferência"</string>
     <string name="card_title_incoming_call" msgid="881424648458792430">"Recebendo chamada"</string>
