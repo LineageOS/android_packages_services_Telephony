@@ -861,6 +861,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                                 request.result =
                                         TelephonyManager
                                                 .ENABLE_NR_DUAL_CONNECTIVITY_RADIO_NOT_AVAILABLE;
+                            } else if (error == CommandException.Error.REQUEST_NOT_SUPPORTED) {
+                                request.result =
+                                        TelephonyManager
+                                                .ENABLE_NR_DUAL_CONNECTIVITY_NOT_SUPPORTED;
                             }
                             loge("enableNrDualConnectivity" + ": CommandException: "
                                     + ar.exception);
