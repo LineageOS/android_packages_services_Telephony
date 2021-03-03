@@ -20,8 +20,19 @@ android_app {
         "androidx.appcompat_appcompat",
         "libphonenumber-platform"
     ],
+
     certificate: "platform",
+    privileged: true,
+    product_specific: true,
 
     sdk_version: "system_current",
     min_sdk_version: "30",
+    required: ["privapp-permissions-com.google.android.sample.rcsclient.xml"]
+}
+
+prebuilt_etc {
+    name: "privapp-permissions-com.google.android.sample.rcsclient.xml",
+    src: "etc/permissions/privapp-permissions-com.google.android.sample.rcsclient.xml",
+    sub_dir:"permissions",
+    product_specific: true,
 }
