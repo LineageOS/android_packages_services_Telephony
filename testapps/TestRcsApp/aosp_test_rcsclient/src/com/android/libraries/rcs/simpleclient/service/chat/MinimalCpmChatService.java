@@ -54,7 +54,7 @@ import javax.sip.message.Response;
 public class MinimalCpmChatService implements ImsService {
     public static final String CPM_SESSION_TAG =
             "+g.3gpp.icsi-ref=\"urn%3Aurn-7%3A3gpp-service.ims.icsi.oma.cpm.session\"";
-    private static final String TAG = SimpleChatSession.class.getSimpleName();
+    private static final String TAG = MinimalCpmChatService.class.getSimpleName();
     private final Map<String, SimpleChatSession> mTransactions = new HashMap<>();
     private final Map<String, SimpleChatSession> mDialogs = new HashMap<>();
 
@@ -112,7 +112,7 @@ public class MinimalCpmChatService implements ImsService {
     }
 
     ListenableFuture<Boolean> sendSipRequest(SIPRequest msg, SimpleChatSession session) {
-        Log.i(TAG, "sendSipRequest");
+        Log.i(TAG, "sendSipRequest:\r\n" + msg);
         if (!TextUtils.equals(msg.getMethod(), Request.ACK)) {
             mTransactions.put(msg.getTransactionId(), session);
         }
@@ -126,7 +126,7 @@ public class MinimalCpmChatService implements ImsService {
     }
 
     ListenableFuture<Boolean> sendSipResponse(SIPResponse msg, SimpleChatSession session) {
-        Log.i(TAG, "sendSipRequest");
+        Log.i(TAG, "sendSipResponse:\r\n" + msg);
         if (TextUtils.equals(msg.getCSeq().getMethod(), Request.BYE)) {
             mDialogs.remove(msg.getDialogId(/* isServer= */ true));
         } else if (TextUtils.equals(msg.getCSeq().getMethod(), Request.INVITE)
@@ -139,6 +139,7 @@ public class MinimalCpmChatService implements ImsService {
     }
 
     private void handleRequest(SIPRequest request) {
+        Log.i(TAG, "handleRequest:\r\n" + request);
         String dialogId = request.getDialogId(/* isServer= */ true);
         if (mDialogs.containsKey(dialogId)) {
             SimpleChatSession session = mDialogs.get(dialogId);
