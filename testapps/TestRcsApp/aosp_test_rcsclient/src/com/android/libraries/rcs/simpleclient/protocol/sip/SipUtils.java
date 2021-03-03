@@ -54,6 +54,7 @@ import javax.sip.address.AddressFactory;
 import javax.sip.address.SipURI;
 import javax.sip.address.URI;
 import javax.sip.header.ContactHeader;
+import javax.sip.header.Header;
 import javax.sip.header.HeaderFactory;
 import javax.sip.header.ViaHeader;
 import javax.sip.message.Request;
@@ -262,6 +263,7 @@ public final class SipUtils {
 
         Via via = (Via) invite.getTopmostVia().clone();
         via.removeParameter("branch");
+        via.setBranch(Utils.getInstance().generateBranchId());
         request.addHeader(via);
         request.addHeader(
                 sHeaderFactory.createFromHeader(invite.getFrom().getAddress(),
@@ -290,6 +292,27 @@ public final class SipUtils {
         if (code == Response.OK) {
             response.setMessageContent(SDP_CONTENT_TYPE, SDP_CONTENT_SUB_TYPE, sdp.encode());
         }
+        response.setToTag(Utils.getInstance().generateTag());
+
+        // Set a Contact header.
+        response.setHeader(generateContactHeader(configuration));
+
+        // Set Conversation-ID and Contribution-ID
+        Header conversationIdHeader = invite.getHeader(CONVERSATION_ID_HEADER_NAME);
+        if (conversationIdHeader != null) {
+            response.setHeader((Header) conversationIdHeader.clone());
+        }
+        Header contributionIdHeader = invite.getHeader(CONTRIBUTION_ID_HEADER_NAME);
+        if (conversationIdHeader != null) {
+            response.setHeader((Header) contributionIdHeader.clone());
+        }
+
+        // Set P-Preferred-Identity
+        List<String> associatedUris = configuration.getAssociatedUris();
+        String preferredUri = Iterables.getFirst(associatedUris,
+                configuration.getPublicUserIdentity());
+        response.setHeader(
+                sHeaderFactory.createHeader(PPreferredIdentityHeader.NAME, preferredUri));
 
         // Set PANI and PLANI if exists
         if (configuration.getPaniHeader() != null) {
