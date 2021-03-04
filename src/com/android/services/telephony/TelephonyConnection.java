@@ -3170,6 +3170,9 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
         setDisconnected(disconnectCause);
         notifyDisconnected(disconnectCause);
         notifyStateChanged(getState());
+        if (mCallQualityManager != null) {
+            mCallQualityManager.clearNotifications();
+        }
     }
 
     /**
@@ -3386,14 +3389,13 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
     @Override
     public void onMessagesReceived(@NonNull Set<Communicator.Message> messages) {
         Log.i(this, "onMessagesReceived: got d2d messages: %s", messages);
-        // TODO: Actually do something WITH the messages.
-
-        // TODO: Remove this prior to launch.
-        // This is just here for debug purposes; send as a connection event so that it
-        // will be output in the Telecom logs.
+        // Send connection events up to Telecom so that we can relay the messages to a valid
+        // CallDiagnosticService which is bound.
         for (Communicator.Message msg : messages) {
-            sendConnectionEvent("D2D_" + Communicator.messageToString(msg.getType())
-                + "_" + Communicator.valueToString(msg.getType(), msg.getValue()), null);
+            Bundle extras = new Bundle();
+            extras.putInt(Connection.EXTRA_DEVICE_TO_DEVICE_MESSAGE_TYPE, msg.getType());
+            extras.putInt(Connection.EXTRA_DEVICE_TO_DEVICE_MESSAGE_VALUE, msg.getValue());
+            sendConnectionEvent(Connection.EVENT_DEVICE_TO_DEVICE_MESSAGE, extras);
         }
     }
 

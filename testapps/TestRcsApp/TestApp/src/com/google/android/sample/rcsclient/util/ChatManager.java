@@ -91,6 +91,21 @@ public class ChatManager {
         mImsService.setListener((session) -> {
             Log.i(TAG, "onIncomingSession()");
             mContactSessionMap.put(session.getRemoteUri(), session);
+            session.setListener(
+                    // implement onMessageReceived()
+                    (message) -> {
+                        mFixedThreadPool.execute(() -> {
+                            String msg = message.content();
+                            String phoneNumber = getNumberFromUri(
+                                    session.getRemoteUri().toString());
+                            if (TextUtils.isEmpty(phoneNumber)) {
+                                Log.i(TAG, "dest number is empty, uri:"
+                                        + session.getRemoteUri());
+                            } else {
+                                addNewMessage(msg, phoneNumber, SELF);
+                            }
+                        });
+                    });
         });
     }
 

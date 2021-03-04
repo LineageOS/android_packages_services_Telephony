@@ -2176,7 +2176,7 @@
     <!-- details of the message popped up when there is
     bad call quality caused by bluetooth connection-->
     <string name="call_quality_notification_bluetooth_details">
-        Suggestion: Improve Bluetooth connectivity</string>
+        Your bluetooth signal is weak.  Try switching to speakerphone.</string>
     <!-- name of the notification that pops up during
     a phone call when there is bad call quality -->
     <string name="call_quality_notification_name">Call Quality Notification</string>

@@ -21,10 +21,12 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.telecom.BluetoothCallQualityReport;
 import android.util.Log;
 
 import com.android.internal.annotations.VisibleForTesting;
+import com.android.internal.telephony.SlidingWindowEventCounter;
 import com.android.phone.R;
 
 /**
@@ -32,16 +34,20 @@ import com.android.phone.R;
  */
 public class CallQualityManager {
     private static final String TAG = CallQualityManager.class.getCanonicalName();
-    private static final String CALL_QUALITY_REPORT_CHANNEL = "call_quality_report_channel";
 
     /** notification ids */
     public static final int BLUETOOTH_CHOPPY_VOICE_NOTIFICATION_ID = 700;
-
-    public static final String CALL_QUALITY_CHANNEL_ID = "CallQualityNotification";
+    public static final String CALL_QUALITY_CHANNEL_ID = "CallQualityNotificationChannel";
+    public static final long NOTIFICATION_BACKOFF_TIME_MILLIS = 5L * 60 * 1000;
+    public static final int NUM_OCCURRENCES_THRESHOLD = 5;
+    public static final long TIME_WINDOW_MILLIS = 5 * 1000;
 
     private final Context mContext;
     private final NotificationChannel mNotificationChannel;
     private final NotificationManager mNotificationManager;
+    private final SlidingWindowEventCounter mSlidingWindowEventCounter;
+
+    private long mNotificationLastTime;
 
     public CallQualityManager(Context context) {
         mContext = context;
@@ -51,6 +57,11 @@ public class CallQualityManager {
         mNotificationManager = (NotificationManager)
                 mContext.getSystemService(Context.NOTIFICATION_SERVICE);
         mNotificationManager.createNotificationChannel(mNotificationChannel);
+        //making sure at the start we qualify to show notifications
+        mNotificationLastTime =
+                SystemClock.elapsedRealtime() - NOTIFICATION_BACKOFF_TIME_MILLIS - 1;
+        mSlidingWindowEventCounter =
+                new SlidingWindowEventCounter(TIME_WINDOW_MILLIS, NUM_OCCURRENCES_THRESHOLD);
     }
 
     /**
@@ -80,35 +91,49 @@ public class CallQualityManager {
     @VisibleForTesting
     public void onChoppyVoice() {
         String title = "Call Quality Improvement";
-        //TODO: update call_quality_bluetooth_enhancement_suggestion with below before submitting:
-//        "Voice is not being transmitted properly via your bluetooth device."
-//                + "To improve, try:\n"
-//                + "1. moving your phone closer to your bluetooth device\n"
-//                + "2. using a different bluetooth device, or your phone's speaker\n";
-        popUpNotification(title,
-                mContext.getText(R.string.call_quality_notification_bluetooth_details));
+        Log.d(TAG, "Bluetooth choppy voice signal received.");
+        if (mSlidingWindowEventCounter.addOccurrence(SystemClock.elapsedRealtime())) {
+            timedNotify(title,
+                    mContext.getText(R.string.call_quality_notification_bluetooth_details));
+        }
     }
 
-    private void popUpNotification(String title, CharSequence details) {
+    // notify user only if you haven't in the last NOTIFICATION_BACKOFF_TIME_MILLIS milliseconds
+    private void timedNotify(String title, CharSequence details) {
         if (!mContext.getResources().getBoolean(
                 R.bool.enable_bluetooth_call_quality_notification)) {
             Log.d(TAG, "Bluetooth call quality notifications not enabled.");
             return;
         }
-        int iconId = android.R.drawable.stat_notify_error;
+        long now = SystemClock.elapsedRealtime();
+        if (now - mNotificationLastTime > NOTIFICATION_BACKOFF_TIME_MILLIS) {
+            int iconId = android.R.drawable.stat_notify_error;
 
-        Notification notification = new Notification.Builder(mContext)
-                .setSmallIcon(iconId)
-                .setWhen(System.currentTimeMillis())
-                .setAutoCancel(true)
-                .setContentTitle(title)
-                .setContentText(details)
-                .setStyle(new Notification.BigTextStyle().bigText(details))
-                .setAutoCancel(true)
-                .setChannelId(CALL_QUALITY_CHANNEL_ID)
-                .setOnlyAlertOnce(true)
-                .build();
+            Notification notification = new Notification.Builder(mContext)
+                    .setSmallIcon(iconId)
+                    .setWhen(System.currentTimeMillis())
+                    .setAutoCancel(true)
+                    .setContentTitle(title)
+                    .setContentText(details)
+                    .setStyle(new Notification.BigTextStyle().bigText(details))
+                    .setChannelId(CALL_QUALITY_CHANNEL_ID)
+                    .setOnlyAlertOnce(true)
+                    .build();
 
-        mNotificationManager.notify(TAG, BLUETOOTH_CHOPPY_VOICE_NOTIFICATION_ID, notification);
+            mNotificationManager.notify(TAG, BLUETOOTH_CHOPPY_VOICE_NOTIFICATION_ID, notification);
+            mNotificationLastTime = now;
+            Log.d(TAG, "Call quality signal received, showing notification");
+        } else {
+            Log.d(TAG, "Call quality signal received, but not showing notification, "
+                    + "as recently notified in the last "
+                    + NOTIFICATION_BACKOFF_TIME_MILLIS / 1000 + " seconds");
+        }
+    }
+
+    /**
+     * close the notifications that have been emitted during the call
+     */
+    public void clearNotifications() {
+        mNotificationManager.cancel(TAG, BLUETOOTH_CHOPPY_VOICE_NOTIFICATION_ID);
     }
 }
