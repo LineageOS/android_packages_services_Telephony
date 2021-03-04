@@ -67,10 +67,12 @@ public class TelephonyRcsServiceTest extends TelephonyTestBase {
         super.setUp();
         doReturn(mFeatureConnector).when(mFeatureConnectorFactory).create(any(), anyInt(),
                 any(), any(), any());
-        mFeatureControllerSlot0 = createFeatureController(0 /*slotId*/);
-        mFeatureControllerSlot1 = createFeatureController(1 /*slotId*/);
-        doReturn(mFeatureControllerSlot0).when(mFeatureFactory).createController(any(), eq(0));
-        doReturn(mFeatureControllerSlot1).when(mFeatureFactory).createController(any(), eq(1));
+        mFeatureControllerSlot0 = createFeatureController(0 /*slotId*/, 1 /*subId*/);
+        mFeatureControllerSlot1 = createFeatureController(1 /*slotId*/, 2 /*subId*/);
+        doReturn(mFeatureControllerSlot0).when(mFeatureFactory).createController(any(), eq(0),
+                anyInt());
+        doReturn(mFeatureControllerSlot1).when(mFeatureFactory).createController(any(), eq(1),
+                anyInt());
         doReturn(mMockUceSlot0).when(mFeatureFactory).createUceControllerManager(any(), eq(0),
                 anyInt());
         doReturn(mMockUceSlot1).when(mFeatureFactory).createUceControllerManager(any(), eq(1),
@@ -227,7 +229,7 @@ public class TelephonyRcsServiceTest extends TelephonyTestBase {
     }
 
     @Test
-    public void testCarrierConfigUpdate() {
+    public void testCarrierConfigUpdateAssociatedSub() {
         setCarrierConfig(1 /*subId*/,
                 CarrierConfigManager.Ims.KEY_ENABLE_PRESENCE_PUBLISH_BOOL,
                 true /*isEnabled*/);
@@ -248,6 +250,26 @@ public class TelephonyRcsServiceTest extends TelephonyTestBase {
         sendCarrierConfigChanged(1 /*slotId*/, 2 /*subId*/);
         verify(mFeatureControllerSlot0, never()).updateAssociatedSubscription(2);
         verify(mFeatureControllerSlot1, times(1)).updateAssociatedSubscription(2);
+    }
+
+    @Test
+    public void testCarrierConfigNotifyFeatures() {
+        setCarrierConfig(1 /*subId*/,
+                CarrierConfigManager.Ims.KEY_ENABLE_PRESENCE_PUBLISH_BOOL,
+                true /*isEnabled*/);
+        createRcsService(1 /*numSlots*/);
+        verify(mFeatureControllerSlot0).addFeature(mMockUceSlot0, UceControllerManager.class);
+        verify(mFeatureControllerSlot0).connect();
+
+
+        // Send carrier config update twice with no update to subId
+        sendCarrierConfigChanged(0 /*slotId*/, 1 /*subId*/);
+        verify(mFeatureControllerSlot0).updateAssociatedSubscription(1);
+        verify(mFeatureControllerSlot0, never()).onCarrierConfigChangedForSubscription();
+        sendCarrierConfigChanged(0 /*slotId*/, 1 /*subId*/);
+        verify(mFeatureControllerSlot0, times(1)).updateAssociatedSubscription(1);
+        // carrier config changed should be sent here
+        verify(mFeatureControllerSlot0).onCarrierConfigChangedForSubscription();
     }
 
     @Test
@@ -334,10 +356,10 @@ public class TelephonyRcsServiceTest extends TelephonyTestBase {
         return service;
     }
 
-    private RcsFeatureController createFeatureController(int slotId) {
+    private RcsFeatureController createFeatureController(int slotId, int subId) {
         // Create a spy instead of a mock because TelephonyRcsService relies on state provided by
         // RcsFeatureController.
-        RcsFeatureController controller = spy(new RcsFeatureController(mContext, slotId,
+        RcsFeatureController controller = spy(new RcsFeatureController(mContext, slotId, subId,
                 mRegistrationFactory));
         controller.setFeatureConnectorFactory(mFeatureConnectorFactory);
         return controller;
