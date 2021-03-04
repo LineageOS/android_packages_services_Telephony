@@ -167,8 +167,10 @@ public class SimpleChatSession {
         mStartFuture = future;
         mRemoteUri = SipUtils.createUri(telUriContact);
         try {
-            SipSessionConfiguration configuration = mContext.getSipSession().getSessionConfiguration();
-            SimpleSdpMessage sdp = SdpUtils.createSdpForMsrp(configuration.getLocalIpAddress(), false);
+            SipSessionConfiguration configuration =
+                    mContext.getSipSession().getSessionConfiguration();
+            SimpleSdpMessage sdp = SdpUtils.createSdpForMsrp(configuration.getLocalIpAddress(),
+                    false);
             SIPRequest invite =
                     SipUtils.buildInvite(
                             mContext.getSipSession().getSessionConfiguration(),
@@ -229,6 +231,7 @@ public class SimpleChatSession {
         try {
             SIPResponse response = SipUtils.buildInviteResponse(configuration, invite, statusCode,
                     sdp);
+            mLocalSdp = sdp;
             return Futures.transform(
                     mService.sendSipResponse(response, this), result -> null,
                     MoreExecutors.directExecutor());
@@ -467,6 +470,7 @@ public class SimpleChatSession {
 
         String contentType = contentTypeHeader.value();
         if ("message/cpim".equals(contentType)) {
+            Log.d(TAG, "Received CPIM: " + new String(chunk.content(), UTF_8));
             try {
                 SimpleCpimMessage cpim = SimpleCpimMessage.parse(chunk.content());
                 if (mListener != null) {
