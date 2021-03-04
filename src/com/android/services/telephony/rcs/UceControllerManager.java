@@ -52,6 +52,7 @@ public class UceControllerManager implements RcsFeatureController.Feature {
     private final Context mContext;
     private final ExecutorService mExecutorService;
 
+    private volatile int mSubId;
     private volatile UceController mUceController;
     private volatile RcsFeatureManager mRcsFeatureManager;
 
@@ -59,6 +60,7 @@ public class UceControllerManager implements RcsFeatureController.Feature {
         Log.d(LOG_TAG, "create: slotId=" + slotId + ", subId=" + subId);
 
         mSlotId = slotId;
+        mSubId = subId;
         mContext = context;
         mExecutorService = Executors.newSingleThreadExecutor();
         mUceController = new UceController(mContext, subId);
@@ -70,6 +72,7 @@ public class UceControllerManager implements RcsFeatureController.Feature {
     @VisibleForTesting
     public UceControllerManager(Context context, int slotId, int subId, ExecutorService executor) {
         mSlotId = slotId;
+        mSubId = subId;
         mContext = context;
         mExecutorService = executor;
         mUceController = new UceController(mContext, subId);
@@ -100,15 +103,19 @@ public class UceControllerManager implements RcsFeatureController.Feature {
     }
 
     /**
-     * This method will be called when either the subscription ID associated with the slot has
-     * changed or the carrier configuration associated with the same subId has changed.
+     * This method will be called when the subscription ID associated with the slot has
+     * changed.
      */
     @Override
     public void onAssociatedSubscriptionUpdated(int subId) {
         mExecutorService.submit(() -> {
             Log.i(LOG_TAG, "onAssociatedSubscriptionUpdated: slotId=" + mSlotId
-                    + ", subId=" + subId);
-
+                    + ", subId=" + mSubId + ", newSubId=" + subId);
+            if (mSubId == subId) {
+                Log.w(LOG_TAG, "onAssociatedSubscriptionUpdated called with the same subId");
+                return;
+            }
+            mSubId = subId;
             // Destroy existing UceController and create a new one.
             mUceController.onDestroy();
             mUceController = new UceController(mContext, subId);
@@ -118,6 +125,18 @@ public class UceControllerManager implements RcsFeatureController.Feature {
             if (mRcsFeatureManager != null) {
                 mUceController.onRcsConnected(mRcsFeatureManager);
             }
+        });
+    }
+
+    /**
+     * This method will be called when the carrier config of the subscription associated with this
+     * manager has changed.
+     */
+    @Override
+    public void onCarrierConfigChanged() {
+        mExecutorService.submit(() -> {
+            Log.i(LOG_TAG, "onCarrierConfigChanged: subId=" + mSubId);
+            mUceController.onCarrierConfigChanged();
         });
     }
 
