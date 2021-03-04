@@ -253,8 +253,7 @@ public class UceControllerManager implements RcsFeatureController.Feature {
         IndentingPrintWriter pw = new IndentingPrintWriter(printWriter, "  ");
         pw.println("UceControllerManager" + "[" + mSlotId + "]:");
         pw.increaseIndent();
-        pw.println("UceController available = " + mUceController != null);
-        //TODO: Add dump for UceController
+        mUceController.dump(pw);
         pw.decreaseIndent();
     }
 }
