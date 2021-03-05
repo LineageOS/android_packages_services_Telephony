@@ -10,5 +10,7 @@ package {
 android_app {
     name: "SmsManagerTestApp",
     srcs: ["src/**/*.java"],
-    sdk_version: "current",
+    platform_apis: true,
+    certificate: "platform",
+    privileged: true,
 }

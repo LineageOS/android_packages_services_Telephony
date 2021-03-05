@@ -16,6 +16,7 @@
 
 package com.android.phone;
 
+import android.Manifest;
 import android.app.role.OnRoleHoldersChangedListener;
 import android.app.role.RoleManager;
 import android.content.BroadcastReceiver;
@@ -784,8 +785,7 @@ public class RcsProvisioningMonitor {
         // Only send permission to the default sms app if it has the correct permissions
         // except test mode enabled
         if (!mTestModeEnabled) {
-            //mPhone.sendBroadcast(intent, Manifest.permission.PERFORM_IMS_SINGLE_REGISTRATION);
-            mPhone.sendBroadcast(intent);
+            mPhone.sendBroadcast(intent, Manifest.permission.PERFORM_IMS_SINGLE_REGISTRATION);
         } else {
             mPhone.sendBroadcast(intent);
         }

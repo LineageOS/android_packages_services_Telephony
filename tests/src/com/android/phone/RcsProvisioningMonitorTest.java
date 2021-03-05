@@ -282,7 +282,7 @@ public class RcsProvisioningMonitorTest {
                     mRcsProvisioningMonitor.getConfig(FAKE_SUB_ID_BASE + i)));
         }
 
-        verify(mPhone, times(3)).sendBroadcast(captorIntent.capture());
+        verify(mPhone, times(3)).sendBroadcast(captorIntent.capture(), any());
         Intent capturedIntent = captorIntent.getAllValues().get(1);
         assertEquals(ProvisioningManager.ACTION_RCS_SINGLE_REGISTRATION_CAPABILITY_UPDATE,
                 capturedIntent.getAction());
@@ -296,7 +296,7 @@ public class RcsProvisioningMonitorTest {
         ArgumentCaptor<Intent> captorIntent = ArgumentCaptor.forClass(Intent.class);
         createMonitor(3);
 
-        verify(mPhone, times(3)).sendBroadcast(captorIntent.capture());
+        verify(mPhone, times(3)).sendBroadcast(captorIntent.capture(), any());
         Intent capturedIntent = captorIntent.getAllValues().get(1);
 
         assertEquals(ProvisioningManager.ACTION_RCS_SINGLE_REGISTRATION_CAPABILITY_UPDATE,
@@ -315,7 +315,7 @@ public class RcsProvisioningMonitorTest {
             assertTrue(Arrays.equals(SAMPLE_CONFIG.getBytes(),
                     mRcsProvisioningMonitor.getConfig(FAKE_SUB_ID_BASE + i)));
         }
-        verify(mPhone, times(3)).sendBroadcast(captorIntent.capture());
+        verify(mPhone, times(3)).sendBroadcast(captorIntent.capture(), any());
         Intent capturedIntent = captorIntent.getAllValues().get(1);
         assertEquals(ProvisioningManager.ACTION_RCS_SINGLE_REGISTRATION_CAPABILITY_UPDATE,
                 capturedIntent.getAction());
@@ -377,7 +377,7 @@ public class RcsProvisioningMonitorTest {
                 CarrierConfigManager.Ims.KEY_IMS_SINGLE_REGISTRATION_REQUIRED_BOOL, true);
         broadcastCarrierConfigChange(FAKE_SUB_ID_BASE);
         processAllMessages();
-        verify(mPhone, atLeastOnce()).sendBroadcast(captorIntent.capture());
+        verify(mPhone, atLeastOnce()).sendBroadcast(captorIntent.capture(), any());
         Intent capturedIntent = captorIntent.getValue();
         assertEquals(capturedIntent.getAction(),
                 ProvisioningManager.ACTION_RCS_SINGLE_REGISTRATION_CAPABILITY_UPDATE);
@@ -390,7 +390,7 @@ public class RcsProvisioningMonitorTest {
                 CarrierConfigManager.Ims.KEY_IMS_SINGLE_REGISTRATION_REQUIRED_BOOL, false);
         broadcastCarrierConfigChange(FAKE_SUB_ID_BASE);
         processAllMessages();
-        verify(mPhone, atLeastOnce()).sendBroadcast(captorIntent.capture());
+        verify(mPhone, atLeastOnce()).sendBroadcast(captorIntent.capture(), any());
         capturedIntent = captorIntent.getValue();
         assertEquals(capturedIntent.getAction(),
                 ProvisioningManager.ACTION_RCS_SINGLE_REGISTRATION_CAPABILITY_UPDATE);
@@ -404,7 +404,7 @@ public class RcsProvisioningMonitorTest {
                 eq(PackageManager.FEATURE_TELEPHONY_IMS_SINGLE_REGISTRATION))).thenReturn(false);
         broadcastCarrierConfigChange(FAKE_SUB_ID_BASE);
         processAllMessages();
-        verify(mPhone, atLeastOnce()).sendBroadcast(captorIntent.capture());
+        verify(mPhone, atLeastOnce()).sendBroadcast(captorIntent.capture(), any());
         capturedIntent = captorIntent.getValue();
         assertEquals(capturedIntent.getAction(),
                 ProvisioningManager.ACTION_RCS_SINGLE_REGISTRATION_CAPABILITY_UPDATE);
