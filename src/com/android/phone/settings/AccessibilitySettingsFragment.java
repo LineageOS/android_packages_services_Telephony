@@ -30,8 +30,8 @@ import android.preference.SwitchPreference;
 import android.provider.Settings;
 import android.telephony.AccessNetworkConstants;
 import android.telephony.CarrierConfigManager;
-import android.telephony.PhoneStateListener;
 import android.telephony.SubscriptionManager;
+import android.telephony.TelephonyCallback;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Log;
@@ -59,10 +59,10 @@ public class AccessibilitySettingsFragment extends PreferenceFragment {
 
     private static final int WFC_QUERY_TIMEOUT_MILLIS = 20;
 
-    private final PhoneStateListener mPhoneStateListener = new AccessibilityPhoneStateListener();
+    private final TelephonyCallback mTelephonyCallback = new AccessibilityTelephonyCallback();
 
-    private final class AccessibilityPhoneStateListener extends PhoneStateListener implements
-            PhoneStateListener.CallStateChangedListener {
+    private final class AccessibilityTelephonyCallback extends TelephonyCallback implements
+            TelephonyCallback.CallStateListener {
         @Override
         public void onCallStateChanged(int state, String incomingNumber) {
             if (DBG) Log.d(LOG_TAG, "PhoneStateListener.onCallStateChanged: state=" + state);
@@ -148,8 +148,8 @@ public class AccessibilitySettingsFragment extends PreferenceFragment {
         super.onResume();
         TelephonyManager tm =
                 (TelephonyManager) mContext.getSystemService(Context.TELEPHONY_SERVICE);
-        tm.registerPhoneStateListener(new HandlerExecutor(new Handler(Looper.getMainLooper())),
-                mPhoneStateListener);
+        tm.registerTelephonyCallback(new HandlerExecutor(new Handler(Looper.getMainLooper())),
+                mTelephonyCallback);
     }
 
     @Override
@@ -157,7 +157,7 @@ public class AccessibilitySettingsFragment extends PreferenceFragment {
         super.onPause();
         TelephonyManager tm =
                 (TelephonyManager) mContext.getSystemService(Context.TELEPHONY_SERVICE);
-        tm.unregisterPhoneStateListener(mPhoneStateListener);
+        tm.unregisterTelephonyCallback(mTelephonyCallback);
     }
 
     @Override
