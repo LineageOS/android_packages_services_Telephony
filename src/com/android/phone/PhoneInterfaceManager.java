@@ -6985,15 +6985,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public void setRadioCapability(RadioAccessFamily[] rafs) {
-        try {
-            ProxyController.getInstance().setRadioCapability(rafs);
-        } catch (RuntimeException e) {
-            Log.w(LOG_TAG, "setRadioCapability: Runtime Exception");
-        }
-    }
-
-    @Override
     public int getRadioAccessFamily(int phoneId, String callingPackage) {
         Phone phone = PhoneFactory.getPhone(phoneId);
         try {
