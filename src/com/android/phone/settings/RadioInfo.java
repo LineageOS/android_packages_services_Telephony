@@ -57,13 +57,12 @@ import android.telephony.CellSignalStrengthLte;
 import android.telephony.CellSignalStrengthWcdma;
 import android.telephony.DataSpecificRegistrationInfo;
 import android.telephony.NetworkRegistrationInfo;
-import android.telephony.PhoneStateListener;
 import android.telephony.PhysicalChannelConfig;
-import android.telephony.PreciseCallState;
 import android.telephony.RadioAccessFamily;
 import android.telephony.ServiceState;
 import android.telephony.SignalStrength;
 import android.telephony.SubscriptionManager;
+import android.telephony.TelephonyCallback;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Log;
@@ -296,17 +295,16 @@ public class RadioInfo extends AppCompatActivity {
     };
 
     // not final because we need to recreate this object to register on a new subId (b/117555407)
-    private PhoneStateListener mPhoneStateListener = new RadioInfoPhoneStateListener();
-    private class RadioInfoPhoneStateListener extends PhoneStateListener implements
-            PhoneStateListener.DataConnectionStateChangedListener,
-            PhoneStateListener.DataActivityListener,
-            PhoneStateListener.CallStateChangedListener,
-            PhoneStateListener.MessageWaitingIndicatorChangedListener,
-            PhoneStateListener.CallForwardingIndicatorChangedListener,
-            PhoneStateListener.CellInfoChangedListener,
-            PhoneStateListener.CellLocationChangedListener,
-            PhoneStateListener.SignalStrengthsChangedListener,
-            PhoneStateListener.ServiceStateChangedListener {
+    private TelephonyCallback mTelephonyCallback = new RadioInfoTelephonyCallback();
+    private class RadioInfoTelephonyCallback extends TelephonyCallback implements
+            TelephonyCallback.DataConnectionStateListener,
+            TelephonyCallback.DataActivityListener,
+            TelephonyCallback.CallStateListener,
+            TelephonyCallback.MessageWaitingIndicatorListener,
+            TelephonyCallback.CallForwardingIndicatorListener,
+            TelephonyCallback.CellInfoListener,
+            TelephonyCallback.SignalStrengthsListener,
+            TelephonyCallback.ServiceStateListener {
 
         @Override
         public void onDataConnectionStateChanged(int state, int networkType) {
@@ -681,7 +679,7 @@ public class RadioInfo extends AppCompatActivity {
 
         log("onPause: unregister phone & data intents");
 
-        mTelephonyManager.unregisterPhoneStateListener(mPhoneStateListener);
+        mTelephonyManager.unregisterTelephonyCallback(mTelephonyCallback);
         mTelephonyManager.setCellInfoListRate(sCellInfoListRateDisabled);
         mConnectivityManager.unregisterNetworkCallback(mNetworkCallback);
 
@@ -782,7 +780,7 @@ public class RadioInfo extends AppCompatActivity {
     }
 
     private void unregisterPhoneStateListener() {
-        mTelephonyManager.unregisterPhoneStateListener(mPhoneStateListener);
+        mTelephonyManager.unregisterTelephonyCallback(mTelephonyCallback);
         mPhone.unregisterForPhysicalChannelConfig(mHandler);
 
         // clear all fields so they are blank until the next listener event occurs
@@ -804,11 +802,11 @@ public class RadioInfo extends AppCompatActivity {
         mPhyChanConfig.setText("");
     }
 
-    // register mPhoneStateListener for relevant fields using the current TelephonyManager
+    // register mTelephonyCallback for relevant fields using the current TelephonyManager
     private void registerPhoneStateListener() {
-        mPhoneStateListener = new RadioInfoPhoneStateListener();
-        mTelephonyManager.registerPhoneStateListener(new HandlerExecutor(mHandler),
-                mPhoneStateListener);
+        mTelephonyCallback = new RadioInfoTelephonyCallback();
+        mTelephonyManager.registerTelephonyCallback(new HandlerExecutor(mHandler),
+                mTelephonyCallback);
     }
 
     private void updateDnsCheckState() {
