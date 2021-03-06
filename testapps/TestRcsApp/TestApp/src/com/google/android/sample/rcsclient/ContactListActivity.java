@@ -32,7 +32,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -51,13 +50,17 @@ public class ContactListActivity extends AppCompatActivity {
 
     private static final String TAG = "TestRcsApp.ContactListActivity";
     private static final int RENDER_LISTVIEW = 1;
-    private static final int SHOW_TOAST = 2;
+    private static final int SHOW_STATUS = 2;
+    private static final long TIMEOUT_IN_MS = 10000L;
     private final ExecutorService mSingleThread = Executors.newSingleThreadExecutor();
+    private TextView mTips;
     private Button mStartChatButton;
     private Handler mHandler;
     private SummaryObserver mSummaryObserver;
     private ArrayAdapter mAdapter;
     private ListView mListview;
+    private State mState;
+    private ArrayList<ContactAttributes> mContactList;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -68,22 +71,25 @@ public class ContactListActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        mContactList = new ArrayList<>();
+        mTips = findViewById(R.id.tips);
+        mListview = findViewById(R.id.listview);
         mStartChatButton = findViewById(R.id.start_chat_btn);
         mStartChatButton.setOnClickListener(view -> {
             Intent intent = new Intent(ContactListActivity.this, PhoneNumberActivity.class);
             ContactListActivity.this.startActivity(intent);
         });
+        setButtonClickable(false);
 
         mHandler = new Handler() {
             public void handleMessage(Message message) {
                 Log.i(TAG, "handleMessage:" + message.what);
                 switch (message.what) {
                     case RENDER_LISTVIEW:
-                        renderListView((ArrayList<ContactAttributes>) message.obj);
+                        renderListView();
                         break;
-                    case SHOW_TOAST:
-                        Toast.makeText(ContactListActivity.this, message.obj.toString(),
-                                Toast.LENGTH_SHORT).show();
+                    case SHOW_STATUS:
+                        mTips.setText(message.obj.toString());
                         break;
                     default:
                         Log.i(TAG, "unknown msg:" + message.what);
@@ -91,6 +97,7 @@ public class ContactListActivity extends AppCompatActivity {
             }
         };
         initListView();
+        initSipDelegate();
         mSummaryObserver = new SummaryObserver(mHandler);
     }
 
@@ -98,7 +105,6 @@ public class ContactListActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         Log.i(TAG, "onStart");
-        initSipDelegate();
         querySummaryData();
         getContentResolver().registerContentObserver(ChatProvider.SUMMARY_URI, false,
                 mSummaryObserver);
@@ -130,7 +136,6 @@ public class ContactListActivity extends AppCompatActivity {
 
     private void initListView() {
         Log.i(TAG, "initListView");
-        mListview = findViewById(R.id.listview);
 
         mAdapter = new ArrayAdapter<ContactAttributes>(this,
                 android.R.layout.simple_list_item_2,
@@ -159,28 +164,34 @@ public class ContactListActivity extends AppCompatActivity {
                             ChatProvider.SummaryColumns.LATEST_MESSAGE,
                             ChatProvider.SummaryColumns.IS_READ}, null, null, null);
 
-            ArrayList<ContactAttributes> contactList = new ArrayList<>();
+            mContactList.clear();
             while (cursor.moveToNext()) {
                 String phoneNumber = getPhoneNumber(cursor);
                 String latestMessage = getLatestMessage(cursor);
                 boolean isRead = getIsRead(cursor);
-                contactList.add(new ContactAttributes(phoneNumber, latestMessage, isRead));
+                mContactList.add(new ContactAttributes(phoneNumber, latestMessage, isRead));
             }
-            mHandler.sendMessage(mHandler.obtainMessage(RENDER_LISTVIEW, contactList));
+            mHandler.sendMessage(mHandler.obtainMessage(RENDER_LISTVIEW));
             cursor.close();
         });
     }
 
-    private void renderListView(ArrayList<ContactAttributes> contactList) {
+    private void renderListView() {
         mAdapter.clear();
-        mAdapter.addAll(contactList);
-        mListview.setOnItemClickListener((parent, view, position, id) -> {
-            Intent intent = new Intent(ContactListActivity.this, ChatActivity.class);
-            intent.putExtra(ChatActivity.EXTRA_REMOTE_PHONE_NUMBER,
-                    contactList.get(position).phoneNumber);
-            ContactListActivity.this.startActivity(intent);
-        });
+        mAdapter.addAll(mContactList);
+    }
 
+    private void setListViewClickable(boolean clickable) {
+        if (clickable) {
+            mListview.setOnItemClickListener((parent, view, position, id) -> {
+                Intent intent = new Intent(ContactListActivity.this, ChatActivity.class);
+                intent.putExtra(ChatActivity.EXTRA_REMOTE_PHONE_NUMBER,
+                        mContactList.get(position).phoneNumber);
+                ContactListActivity.this.startActivity(intent);
+            });
+        } else {
+            mListview.setOnItemClickListener(null);
+        }
     }
 
     private void initSipDelegate() {
@@ -193,20 +204,55 @@ public class ContactListActivity extends AppCompatActivity {
         ChatManager chatManager = ChatManager.getInstance(this, subId);
         chatManager.setRcsStateChangedCallback((oldState, newState) -> {
             //Show toast when provisioning or registration is done.
-            if (newState == State.REGISTERING) {
-                mHandler.sendMessage(mHandler.obtainMessage(SHOW_TOAST,
-                        ContactListActivity.this.getResources().getString(
-                                R.string.provisioning_done)));
-            } else if (newState == State.REGISTERED) {
-                mHandler.sendMessage(mHandler.obtainMessage(SHOW_TOAST,
-                        ContactListActivity.this.getResources().getString(
-                                R.string.registration_done)));
-            }
+            mState = newState;
+            String tips = "";
+            String timeoutTips = "";
+            switch (newState) {
+                case PROVISIONING:
+                    tips = ContactListActivity.this.getResources().getString(
+                            R.string.start_provisioning);
+                    mHandler.sendMessage(mHandler.obtainMessage(SHOW_STATUS, tips));
+                    timeoutTips = ContactListActivity.this.getResources().getString(
+                            R.string.provisioning_timeout);
+                    mHandler.sendMessageDelayed(mHandler.obtainMessage(SHOW_STATUS, timeoutTips),
+                            TIMEOUT_IN_MS);
+                    break;
+                case REGISTERING:
+                    tips = ContactListActivity.this.getResources().getString(
+                            R.string.provisioning_done);
+                    if (mHandler.hasMessages(SHOW_STATUS)) {
+                        mHandler.removeMessages(SHOW_STATUS);
+                    }
+                    mHandler.sendMessage(mHandler.obtainMessage(SHOW_STATUS, tips));
+                    timeoutTips = ContactListActivity.this.getResources().getString(
+                            R.string.registration_timeout);
+                    mHandler.sendMessageDelayed(mHandler.obtainMessage(SHOW_STATUS, timeoutTips),
+                            TIMEOUT_IN_MS);
+                    break;
+                case REGISTERED:
+                    tips = ContactListActivity.this.getResources().getString(
+                            R.string.registration_done);
+                    if (mHandler.hasMessages(SHOW_STATUS)) {
+                        mHandler.removeMessages(SHOW_STATUS);
+                    }
+                    mHandler.sendMessage(mHandler.obtainMessage(SHOW_STATUS, tips));
+                    setButtonClickable(true);
+                    setListViewClickable(true);
+                    break;
+                case NOT_REGISTERED:
+                    tips = ContactListActivity.this.getResources().getString(
+                            R.string.registration_failed);
+                    mHandler.sendMessage(mHandler.obtainMessage(SHOW_STATUS, tips));
+                    setButtonClickable(false);
+                    setListViewClickable(false);
+                    break;
 
+                default:
+                    Log.i(TAG, "unknown state:" + newState);
+            }
         });
         chatManager.register();
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -228,6 +274,16 @@ public class ContactListActivity extends AppCompatActivity {
 
     private boolean getIsRead(Cursor cursor) {
         return 1 == cursor.getInt(cursor.getColumnIndex(ChatProvider.SummaryColumns.IS_READ));
+    }
+
+    private void setButtonClickable(boolean clickable) {
+        if (clickable) {
+            mStartChatButton.setAlpha(1);
+            mStartChatButton.setClickable(true);
+        } else {
+            mStartChatButton.setAlpha(.5f);
+            mStartChatButton.setClickable(false);
+        }
     }
 
     class ContactAttributes {
