@@ -16,6 +16,7 @@
 
 package com.android.libraries.rcs.simpleclient.registration;
 
+import com.android.libraries.rcs.simpleclient.protocol.sip.SipSession;
 import com.android.libraries.rcs.simpleclient.service.ImsService;
 
 /**
@@ -30,4 +31,10 @@ public interface RegistrationStateChangeCallback {
      * @param imsService the newly registered service.
      */
     void notifyRegStateChanged(ImsService imsService);
+
+    /**callback for successful session creation */
+    void onSuccess(SipSession sipSession);
+
+    /**callback for failed session creation. */
+    void onFailure(String reason);
 }
