@@ -138,7 +138,6 @@ import com.android.ims.rcs.uce.eab.EabUtil;
 import com.android.internal.telephony.CallForwardInfo;
 import com.android.internal.telephony.CallManager;
 import com.android.internal.telephony.CallStateException;
-import com.android.internal.telephony.CarrierInfoManager;
 import com.android.internal.telephony.CarrierResolver;
 import com.android.internal.telephony.CellNetworkScanResult;
 import com.android.internal.telephony.CommandException;
@@ -7409,7 +7408,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                         TelephonyManager.ALLOWED_NETWORK_TYPES_REASON_ENABLE_2G,
                         RadioAccessFamily.getRafFromNetworkType(getDefaultNetworkType(subId)));
                 setDataRoamingEnabled(subId, getDefaultDataRoamingEnabled(subId));
-                CarrierInfoManager.deleteAllCarrierKeysForImsiEncryption(mApp);
+                getPhone(subId).resetCarrierKeysForImsiEncryption();
             }
             // There has been issues when Sms raw table somehow stores orphan
             // fragments. They lead to garbled message when new fragments come
