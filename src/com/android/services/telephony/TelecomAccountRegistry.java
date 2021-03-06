@@ -43,11 +43,11 @@ import android.telecom.PhoneAccount;
 import android.telecom.PhoneAccountHandle;
 import android.telecom.TelecomManager;
 import android.telephony.CarrierConfigManager;
-import android.telephony.PhoneStateListener;
 import android.telephony.ServiceState;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.SubscriptionManager.OnSubscriptionsChangedListener;
+import android.telephony.TelephonyCallback;
 import android.telephony.TelephonyManager;
 import android.telephony.ims.ImsException;
 import android.telephony.ims.ImsMmTelManager;
@@ -1084,11 +1084,11 @@ public class TelecomAccountRegistry {
         }
     };
 
-    private final PhoneStateListener mPhoneStateListener = new TelecomAccountPhoneStateListener();
+    private final TelephonyCallback mTelephonyCallback = new TelecomAccountTelephonyCallback();
 
-    private class TelecomAccountPhoneStateListener extends PhoneStateListener implements
-            PhoneStateListener.ActiveDataSubscriptionIdChangedListener,
-            PhoneStateListener.ServiceStateChangedListener {
+    private class TelecomAccountTelephonyCallback extends TelephonyCallback implements
+            TelephonyCallback.ActiveDataSubscriptionIdListener,
+            TelephonyCallback.ServiceStateListener {
         @Override
         public void onServiceStateChanged(ServiceState serviceState) {
             int newState = serviceState.getState();
@@ -1382,8 +1382,8 @@ public class TelecomAccountRegistry {
 
         // We also need to listen for changes to the service state (e.g. emergency -> in service)
         // because this could signal a removal or addition of a SIM in a single SIM phone.
-        mTelephonyManager.registerPhoneStateListener(new HandlerExecutor(mHandler),
-                mPhoneStateListener);
+        mTelephonyManager.registerTelephonyCallback(new HandlerExecutor(mHandler),
+                mTelephonyCallback);
 
         // Listen for user switches.  When the user switches, we need to ensure that if the current
         // use is not the primary user we disable video calling.
