@@ -16,10 +16,7 @@
 
 package com.android.libraries.rcs.simpleclient.registration;
 
-import com.android.libraries.rcs.simpleclient.protocol.sip.SipSession;
 import com.android.libraries.rcs.simpleclient.service.ImsService;
-
-import com.google.common.util.concurrent.ListenableFuture;
 
 /**
  * Access to registration functionality.
@@ -27,10 +24,10 @@ import com.google.common.util.concurrent.ListenableFuture;
 public interface RegistrationController {
 
     /**
-     * Registers the given ImsService with the backend and returns a SipSession for sending and
-     * receiving SIP messages.
+     * Register the given ImsService with the backend and use the callback to return a SipSession
+     * for sending and receiving SIP messages.
      */
-    ListenableFuture<SipSession> register(ImsService imsService);
+    void register(ImsService imsService, RegistrationStateChangeCallback callback);
 
     void deregister();
 
