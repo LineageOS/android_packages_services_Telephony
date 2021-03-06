@@ -19,6 +19,7 @@ package com.google.android.sample.rcsclient;
 import android.net.Uri;
 import android.os.Bundle;
 import android.telephony.SmsManager;
+import android.telephony.SubscriptionManager;
 import android.telephony.ims.ImsException;
 import android.telephony.ims.ImsManager;
 import android.telephony.ims.ImsRcsManager;
@@ -26,6 +27,7 @@ import android.telephony.ims.RcsContactPresenceTuple;
 import android.telephony.ims.RcsContactUceCapability;
 import android.telephony.ims.RcsUceAdapter;
 import android.text.TextUtils;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Button;
@@ -47,7 +49,6 @@ public class UceActivity extends AppCompatActivity {
     private Button mCapabilityButton;
     private Button mAvailabilityButton;
     private TextView mCapabilityResult;
-    private TextView mAvailabilityResult;
     private EditText mNumbers;
     private int mDefaultSmsSubId;
     private ImsRcsManager mImsRcsManager;
@@ -63,15 +64,25 @@ public class UceActivity extends AppCompatActivity {
         initLayout();
     }
 
-    private void initLayout() {
+    @Override
+    protected void onStart() {
+        super.onStart();
         mDefaultSmsSubId = SmsManager.getDefaultSmsSubscriptionId();
+        Log.i(TAG, "defaultSmsSubId:" + mDefaultSmsSubId);
+        if (SubscriptionManager.isValidSubscriptionId(mDefaultSmsSubId)) {
+            mImsRcsManager = getImsRcsManager(mDefaultSmsSubId);
+            if (mImsRcsManager != null) {
+                initLayout();
+            }
+        }
+    }
 
+    private void initLayout() {
         mCapabilityButton = findViewById(R.id.capability_btn);
         mAvailabilityButton = findViewById(R.id.availability_btn);
         mCapabilityResult = findViewById(R.id.capability_result);
-        mAvailabilityResult = findViewById(R.id.capability_result);
+        mCapabilityResult.setMovementMethod(new ScrollingMovementMethod());
 
-        mImsRcsManager = getImsRcsManager(mDefaultSmsSubId);
         mCapabilityButton.setOnClickListener(view -> {
             List<Uri> contactList = getContectList();
             if (contactList.size() == 0) {
@@ -84,13 +95,13 @@ public class UceActivity extends AppCompatActivity {
                         new RcsUceAdapter.CapabilitiesCallback() {
                             public void onCapabilitiesReceived(
                                     List<RcsContactUceCapability> contactCapabilities) {
-                                Log.i(TAG, "onCapabilitiesReceived()");
                                 StringBuilder b = new StringBuilder("onCapabilitiesReceived:\n");
                                 for (RcsContactUceCapability c : contactCapabilities) {
                                     b.append(getReadableCapability(c));
                                     b.append("\n");
                                 }
                                 mCapabilityResult.append(b.toString() + "\n");
+                                Log.i(TAG, b.toString());
                             }
 
                             public void onComplete() {
@@ -100,10 +111,11 @@ public class UceActivity extends AppCompatActivity {
                             }
 
                             public void onError(int errorCode, long retryAfterMilliseconds) {
-                                Log.i(TAG, "onError() errorCode:" + errorCode + " retryAfterMs:"
-                                        + retryAfterMilliseconds);
-                                mCapabilityResult.append("error - errorCode:" + errorCode
-                                        + " retryAfterMs:" + retryAfterMilliseconds);
+                                String result =
+                                        "onError() errorCode:" + errorCode + " retryAfterMs:"
+                                                + retryAfterMilliseconds + "\n";
+                                Log.i(TAG, result);
+                                mCapabilityResult.append(result);
                             }
                         });
             } catch (ImsException e) {
@@ -117,36 +129,37 @@ public class UceActivity extends AppCompatActivity {
                 Log.i(TAG, "empty contact list");
                 return;
             }
-            mAvailabilityResult.setText("pending...\n");
+            mCapabilityResult.setText("pending...\n");
             try {
                 mImsRcsManager.getUceAdapter().requestAvailability(contactList.get(0),
                         getMainExecutor(), new RcsUceAdapter.CapabilitiesCallback() {
                             public void onCapabilitiesReceived(
                                     List<RcsContactUceCapability> contactCapabilities) {
-                                Log.i(TAG, "onCapabilitiesReceived()");
                                 StringBuilder b = new StringBuilder("onCapabilitiesReceived:\n");
                                 for (RcsContactUceCapability c : contactCapabilities) {
                                     b.append(getReadableCapability(c));
                                     b.append("\n");
                                 }
-                                mAvailabilityResult.append(b.toString() + "\n");
+                                mCapabilityResult.append(b.toString() + "\n");
+                                Log.i(TAG, b.toString());
                             }
 
                             public void onComplete() {
                                 Log.i(TAG, "onComplete()");
-                                mAvailabilityResult.append("complete");
+                                mCapabilityResult.append("complete");
 
                             }
 
                             public void onError(int errorCode, long retryAfterMilliseconds) {
-                                Log.i(TAG, "onError() errorCode:" + errorCode + " retryAfterMs:"
-                                        + retryAfterMilliseconds);
-                                mAvailabilityResult.append("error - errorCode:" + errorCode
-                                        + " retryAfterMs:" + retryAfterMilliseconds);
+                                String result =
+                                        "onError() errorCode:" + errorCode + " retryAfterMs:"
+                                                + retryAfterMilliseconds + "\n";
+                                Log.i(TAG, result);
+                                mCapabilityResult.append(result);
                             }
                         });
             } catch (ImsException e) {
-                mAvailabilityResult.setText("ImsException:" + e);
+                mCapabilityResult.setText("ImsException:" + e);
             }
         });
     }
