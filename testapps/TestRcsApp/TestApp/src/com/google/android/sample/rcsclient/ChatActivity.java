@@ -52,17 +52,19 @@ public class ChatActivity extends AppCompatActivity {
     public static final String TELURI_PREFIX = "tel:";
     private static final String TAG = "TestRcsApp.ChatActivity";
     private static final int INIT_LIST = 1;
-    private static final int SHOW_TOAST = 2;
+    private static final int SHOW_STATUS = 2;
     private static final float TEXT_SIZE = 20.0f;
     private static final int MARGIN_SIZE = 20;
+    private static final long TIMEOUT_IN_MS = 10000L;
     private final ExecutorService mFixedThreadPool = Executors.newFixedThreadPool(3);
     private boolean mSessionInitResult = false;
     private Button mSend;
     private String mDestNumber;
-    private TextView mDestNumberView;
+    private TextView mDestNumberView, mTips;
     private EditText mNewMessage;
     private ChatObserver mChatObserver;
     private Handler mHandler;
+    private int mSubId;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -80,9 +82,8 @@ public class ChatActivity extends AppCompatActivity {
                     case INIT_LIST:
                         initChatMessageLayout((Cursor) msg.obj);
                         break;
-                    case SHOW_TOAST:
-                        Toast.makeText(ChatActivity.this, msg.obj.toString(),
-                                Toast.LENGTH_SHORT).show();
+                    case SHOW_STATUS:
+                        mTips.setText(msg.obj.toString());
                         break;
                     default:
                         Log.d(TAG, "unknown msg:" + msg.what);
@@ -92,6 +93,7 @@ public class ChatActivity extends AppCompatActivity {
             }
         };
         mDestNumberView = findViewById(R.id.destNum);
+        mTips = findViewById(R.id.session_tips);
         initDestNumber();
         mChatObserver = new ChatObserver(mHandler);
     }
@@ -115,9 +117,9 @@ public class ChatActivity extends AppCompatActivity {
         mNewMessage = findViewById(R.id.new_msg);
         mSend = findViewById(R.id.chat_btn);
 
-        int subId = SubscriptionManager.getDefaultSmsSubscriptionId();
-        if (!SubscriptionManager.isValidSubscriptionId(subId)) {
-            Log.e(TAG, "invalid subId:" + subId);
+        mSubId = SubscriptionManager.getDefaultSmsSubscriptionId();
+        if (!SubscriptionManager.isValidSubscriptionId(mSubId)) {
+            Log.e(TAG, "invalid subId:" + mSubId);
             return;
         }
         try {
@@ -127,42 +129,53 @@ public class ChatActivity extends AppCompatActivity {
                 mDestNumber = formattedNumber;
             }
             mDestNumberView.setText(mDestNumber);
-            ChatManager.getInstance(getApplicationContext(), subId).initChatSession(
+            mTips.setText(ChatActivity.this.getResources().getString(R.string.session_initiating));
+            mHandler.sendMessageDelayed(mHandler.obtainMessage(SHOW_STATUS,
+                    ChatActivity.this.getResources().getString(R.string.session_timeout)),
+                    TIMEOUT_IN_MS);
+            ChatManager.getInstance(getApplicationContext(), mSubId).initChatSession(
                     TELURI_PREFIX + mDestNumber, new SessionStateCallback() {
                         @Override
                         public void onSuccess() {
                             Log.i(TAG, "session init succeeded");
-                            mHandler.sendMessage(mHandler.obtainMessage(SHOW_TOAST,
-                                    ChatActivity.this.getResources().getString(
-                                            R.string.session_succeeded)));
+                            String success = ChatActivity.this.getResources().getString(
+                                    R.string.session_succeeded);
+                            if (mHandler.hasMessages(SHOW_STATUS)) {
+                                mHandler.removeMessages(SHOW_STATUS);
+                            }
+                            mHandler.sendMessage(mHandler.obtainMessage(SHOW_STATUS, success));
                             mSessionInitResult = true;
                         }
 
                         @Override
                         public void onFailure() {
                             Log.i(TAG, "session init failed");
-                            mHandler.sendMessage(mHandler.obtainMessage(SHOW_TOAST,
-                                    ChatActivity.this.getResources().getString(
-                                            R.string.session_failed)));
+                            String failure = ChatActivity.this.getResources().getString(
+                                    R.string.session_failed);
+                            if (mHandler.hasMessages(SHOW_STATUS)) {
+                                mHandler.removeMessages(SHOW_STATUS);
+                            }
+                            mHandler.sendMessage(mHandler.obtainMessage(SHOW_STATUS, failure));
                             mSessionInitResult = false;
                         }
                     });
 
             mSend.setOnClickListener(view -> {
-                if (!mSessionInitResult) {
+                if (!ChatManager.getInstance(getApplicationContext(), mSubId).isRegistered()
+                        || !mSessionInitResult) {
                     Toast.makeText(ChatActivity.this,
-                            getResources().getString(R.string.session_not_ready),
+                            getResources().getString(R.string.session_broken_or_not_ready),
                             Toast.LENGTH_SHORT).show();
-                    Log.i(TAG, "session not ready");
+                    Log.i(TAG, "session broken or not ready");
                     return;
                 }
                 mFixedThreadPool.execute(() -> {
                     if (TextUtils.isEmpty(mDestNumber)) {
                         Log.i(TAG, "Destination number is empty");
                     } else {
-                        ChatManager.getInstance(getApplicationContext(), subId).addNewMessage(
+                        ChatManager.getInstance(getApplicationContext(), mSubId).addNewMessage(
                                 mNewMessage.getText().toString(), ChatManager.SELF, mDestNumber);
-                        ChatManager.getInstance(getApplicationContext(), subId).sendMessage(
+                        ChatManager.getInstance(getApplicationContext(), mSubId).sendMessage(
                                 TELURI_PREFIX + mDestNumber, mNewMessage.getText().toString());
                     }
                 });
@@ -246,16 +259,8 @@ public class ChatActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         Log.i(TAG, "onDestroy");
-    }
-
-    private void dispose() {
-        int subId = SubscriptionManager.getDefaultSmsSubscriptionId();
-        if (!SubscriptionManager.isValidSubscriptionId(subId)) {
-            Log.e(TAG, "invalid subId:" + subId);
-            return;
-        }
-        ChatManager chatManager = ChatManager.getInstance(this, subId);
-        chatManager.deregister();
+        ChatManager.getInstance(getApplicationContext(), mSubId).terminateSession(
+                TELURI_PREFIX + mDestNumber);
     }
 
     @Override
@@ -277,5 +282,4 @@ public class ChatActivity extends AppCompatActivity {
             queryChatData();
         }
     }
-
 }
