@@ -14,16 +14,18 @@
         multiple ones.</string>
     <string name="number">Number: </string>
     <string name="request_capability">requestCapability</string>
-    <string name="request_availability">requestNetworkAvailability</string>
+    <string name="request_availability">requestNetworkAvailability (1st number)</string>
     <string name="gba_bootstrap">bootstrapAuthenticationRequest</string>
     <string name="start_chat">Start Chat</string>
     <string name="to">To:</string>
     <string name="chat_message">Chat Message</string>
     <string name="send">Send</string>
     <string name="ok">OK</string>
-    <string name="session_succeeded">Session init succeeded</string>
-    <string name="session_failed">Session init failed</string>
-    <string name="session_not_ready">Session not ready</string>
+    <string name="session_initiating">Initializing chat session..</string>
+    <string name="session_timeout">Session initialization timeout</string>
+    <string name="session_succeeded">Session initialization succeeded</string>
+    <string name="session_failed">Session initialization failed</string>
+    <string name="session_broken_or_not_ready">Session broken or not ready</string>
     <string name="organization">Organization:</string>
     <string name="uicc_type">UICC Type:</string>
     <string name="protocol">Protocol:</string>
@@ -39,8 +41,12 @@
     <string name="chatbot_session">Chatbot Session</string>
     <string name="chatbot_standalone">Chatbot Standalone</string>
     <string name="chatbot_version">Chatbot Version</string>
-    <string name="provisioning_done">Provisioning Done</string>
-    <string name="registration_done">Registration Done</string>
+    <string name="start_provisioning">Start Provisioning....</string>
+    <string name="provisioning_timeout">Provisioning timeout.</string>
+    <string name="provisioning_done">Provisioning done, Start registering...</string>
+    <string name="registration_timeout">Registration timeout</string>
+    <string name="registration_done">Registration done. Enjoy chat!</string>
+    <string name="registration_failed">Registration failed</string>
     <string name="version_info">Version: %s</string>
 
     <string-array name="organization">
