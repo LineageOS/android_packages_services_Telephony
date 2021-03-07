@@ -24,14 +24,10 @@ import androidx.annotation.RequiresApi;
 
 import com.android.libraries.rcs.simpleclient.protocol.sip.SipSession;
 import com.android.libraries.rcs.simpleclient.provisioning.ProvisioningController;
-import com.android.libraries.rcs.simpleclient.provisioning.StaticConfigProvisioningController;
 import com.android.libraries.rcs.simpleclient.registration.RegistrationController;
+import com.android.libraries.rcs.simpleclient.registration.RegistrationStateChangeCallback;
 import com.android.libraries.rcs.simpleclient.service.ImsService;
 
-import com.google.common.util.concurrent.FutureCallback;
-import com.google.common.util.concurrent.Futures;
-
-import java.util.concurrent.Executor;
 import java.util.concurrent.atomic.AtomicReference;
 
 /**
@@ -46,7 +42,6 @@ public class SimpleRcsClient {
     private ProvisioningController provisioningController;
     private RegistrationController registrationController;
     private ImsService imsService;
-    private Executor executor;
     private SimpleRcsClientContext context;
     private StateChangedCallback stateChangedCallback;
 
@@ -108,29 +103,41 @@ public class SimpleRcsClient {
             return;
         }
 
-        Futures.addCallback(registrationController.register(imsService),
-                new FutureCallback<SipSession>() {
+        registrationController.register(imsService,
+                new RegistrationStateChangeCallback() {
                     @Override
-                    public void onSuccess(SipSession result) {
-                        Log.i(TAG, "onSuccess:" + result);
-                        registered(result);
+                    public void notifyRegStateChanged(ImsService imsService) {
+
                     }
 
                     @Override
-                    public void onFailure(Throwable t) {
-                        Log.i(TAG, "onFailure:" + t);
+                    public void onSuccess(SipSession sipSession) {
+                        Log.i(TAG, "onSuccess");
+                        registered(sipSession);
                     }
-                }, executor);
+
+                    @Override
+                    public void onFailure(String reason) {
+                        Log.i(TAG, "onFailure reason:" + reason);
+                        notRegistered();
+                    }
+                });
     }
 
     private void registered(SipSession session) {
-        enterState(State.REGISTERING, State.REGISTERED);
+        if (state.get().equals(State.REGISTERING) || state.get().equals(State.NOT_REGISTERED)) {
+            enterState(state.get(), State.REGISTERED);
+        }
 
         context = new SimpleRcsClientContext(provisioningController, registrationController,
                 imsService,
                 session);
 
         imsService.start(context);
+    }
+
+    private void notRegistered() {
+        enterState(State.REGISTERED, State.NOT_REGISTERED);
     }
 
     /**
@@ -141,6 +148,7 @@ public class SimpleRcsClient {
         PROVISIONING,
         REGISTERING,
         REGISTERED,
+        NOT_REGISTERED,
     }
 
     /**
@@ -151,7 +159,6 @@ public class SimpleRcsClient {
         private ProvisioningController provisioningController;
         private RegistrationController registrationController;
         private ImsService imsService;
-        private Executor executor;
 
         public Builder provisioningController(ProvisioningController controller) {
             this.provisioningController = controller;
@@ -168,17 +175,11 @@ public class SimpleRcsClient {
             return this;
         }
 
-        public Builder executor(Executor executor) {
-            this.executor = executor;
-            return this;
-        }
-
         public SimpleRcsClient build() {
             SimpleRcsClient client = new SimpleRcsClient();
             client.registrationController = registrationController;
             client.provisioningController = provisioningController;
             client.imsService = imsService;
-            client.executor = executor;
 
             return client;
         }

@@ -68,6 +68,7 @@ public class RegistrationControllerImpl implements RegistrationController {
     private final int subscriptionId;
     private SipDelegateManager sipDelegateManager;
     private RegistrationContext context;
+    private RegistrationStateChangeCallback callback;
 
     public RegistrationControllerImpl(int subscriptionId, Executor executor,
             ImsManager imsManager) {
@@ -77,11 +78,11 @@ public class RegistrationControllerImpl implements RegistrationController {
     }
 
     @Override
-    public ListenableFuture<SipSession> register(ImsService imsService) {
+    public void register(ImsService imsService, RegistrationStateChangeCallback callback) {
         Log.i(TAG, "register");
+        this.callback = callback;
         context = new RegistrationContext(this, imsService);
         context.register();
-        return context.getFuture();
     }
 
     @Override
@@ -101,7 +102,7 @@ public class RegistrationControllerImpl implements RegistrationController {
     /**
      * Envelopes the registration data for a single ImsService instance.
      */
-    private static class RegistrationContext implements SipSession, SipSessionConfiguration {
+    private class RegistrationContext implements SipSession, SipSessionConfiguration {
 
         private final RegistrationControllerImpl controller;
         private final ImsService imsService;
@@ -139,12 +140,17 @@ public class RegistrationControllerImpl implements RegistrationController {
                                 .getRegisteredFeatureTags()
                                 .containsAll(imsService.getFeatureTags())) {
                             // registered;
-                            sessionFuture.set(RegistrationContext.this);
+                            callback.onSuccess(RegistrationContext.this);
+                        } else {
+                            callback.onFailure("feature tag not registered");
                         }
                     }
 
                     @Override
                     public void onDestroyed(int reason) {
+                        Log.d(TAG, "onDestroyed:" + reason);
+                        callback.onFailure("delegate destroyed");
+
                     }
                 };
         private SipSessionListener sipSessionListener;
@@ -167,10 +173,13 @@ public class RegistrationControllerImpl implements RegistrationController {
 
                     @Override
                     public void onMessageSendFailure(@NonNull String viaTransactionId, int reason) {
+                        Log.i(TAG, "onMessageSendFailure: viaTransactionId:"
+                                + viaTransactionId + ", reason:" + reason);
                     }
 
                     @Override
                     public void onMessageSent(@NonNull String viaTransactionId) {
+                        Log.i(TAG, "onMessageSent: viaTransactionId:" + viaTransactionId);
                     }
 
                 };
@@ -435,7 +444,7 @@ public class RegistrationControllerImpl implements RegistrationController {
          * for now.
          * @return A SipMessage with the corrected header section.
          */
-        private static SipMessage repairHeaderSection(SipMessage message) {
+        private SipMessage repairHeaderSection(SipMessage message) {
             String headers = message.getHeaderSection();
 
             if (headers.startsWith("ia:")) {
