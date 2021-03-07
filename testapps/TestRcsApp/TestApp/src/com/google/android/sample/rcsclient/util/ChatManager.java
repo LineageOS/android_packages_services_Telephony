@@ -79,8 +79,8 @@ public class ChatManager {
         mSimpleRcsClient = SimpleRcsClient.newBuilder()
                 .registrationController(mRegistrationController)
                 .provisioningController(mProvisioningController)
-                .imsService(mImsService)
-                .executor(mFixedThreadPool).build();
+                .imsService(mImsService).build();
+
         mState = State.NEW;
         // register callback for state change
         mSimpleRcsClient.onStateChanged((oldState, newState) -> {
@@ -183,6 +183,8 @@ public class ChatManager {
         URI uri = createUri(telUriContact);
         if (mContactSessionMap.containsKey(uri)) {
             callback.onSuccess();
+            Log.i(TAG, "uri exists");
+            return;
         }
         Futures.addCallback(
                 mImsService.startOriginatingChatSession(telUriContact),
@@ -223,16 +225,32 @@ public class ChatManager {
      * @param message chat message.
      */
     public void sendMessage(String telUriContact, String message) {
-        if (mState != State.REGISTERED) {
-            Log.i(TAG, "Could not send msg due to State = " + mState);
-            return;
-        }
         SimpleChatSession chatSession = mContactSessionMap.get(createUri(telUriContact));
         if (chatSession == null) {
             Log.i(TAG, "session is unavailable for telUriContact = " + telUriContact);
             return;
         }
         chatSession.sendMessage(message);
+    }
+
+    public boolean isRegistered() {
+        return (mState == State.REGISTERED);
+    }
+
+    /**
+     * Terminate the chat session.
+     * @param telUriContact destination tel Uri
+     */
+    public void terminateSession(String telUriContact) {
+        Log.i(TAG, "terminateSession");
+        URI uri = createUri(telUriContact);
+        SimpleChatSession chatSession = mContactSessionMap.get(uri);
+        if (chatSession == null) {
+            Log.i(TAG, "session is unavailable for telUriContact = " + telUriContact);
+            return;
+        }
+        chatSession.terminate();
+        mContactSessionMap.remove(uri);
     }
 
     /**
