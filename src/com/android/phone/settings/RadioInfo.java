@@ -318,7 +318,7 @@ public class RadioInfo extends AppCompatActivity {
         }
 
         @Override
-        public void onCallStateChanged(int state, String incomingNumber) {
+        public void onCallStateChanged(int state) {
             updateNetworkType();
             updatePhoneState(state);
         }
