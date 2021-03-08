@@ -558,13 +558,13 @@ public class RcsProvisioningMonitor {
     }
 
     /**
-     * Called when the application registers rcs provisioning changed callback
+     * Called when the application registers rcs provisioning callback
      */
-    public boolean registerRcsProvisioningChangedCallback(int subId, IRcsConfigCallback cb) {
+    public boolean registerRcsProvisioningCallback(int subId, IRcsConfigCallback cb) {
         RcsProvisioningInfo info = mRcsProvisioningInfos.get(subId);
         // should not happen in normal case
         if (info == null) {
-            logd("fail to register rcs provisioning changed due to subscription unavailable");
+            logd("fail to register rcs provisioning callback due to subscription unavailable");
             return false;
         }
 
@@ -572,9 +572,9 @@ public class RcsProvisioningMonitor {
     }
 
     /**
-     * Called when the application unregisters rcs provisioning changed callback
+     * Called when the application unregisters rcs provisioning callback
      */
-    public boolean unregisterRcsProvisioningChangedCallback(int subId, IRcsConfigCallback cb) {
+    public boolean unregisterRcsProvisioningCallback(int subId, IRcsConfigCallback cb) {
         RcsProvisioningInfo info = mRcsProvisioningInfos.get(subId);
         // should not happen in normal case
         if (info == null) {
