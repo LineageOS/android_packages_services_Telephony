@@ -20,6 +20,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -32,7 +33,11 @@ import android.telephony.ims.RcsClientConfiguration;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -47,15 +52,27 @@ import java.util.concurrent.Executors;
 public class ProvisioningActivity extends AppCompatActivity {
 
     private static final String TAG = "TestRcsApp.ProvisioningActivity";
+    private static final String UP_10 = "UP_1.0";
+    private static final String UP_23 = "UP_2.3";
+    private static final String V_6 = "6.0";
+    private static final String V_9 = "9.0";
+    private static final String RCS_CONFIG = "CONFIG";
+    private static final String RCS_PROFILE = "RCS_PROFILE";
+    private static final String RCS_VERSION = "RCS_VERSION";
     private static final int MSG_RESULT = 1;
+
     private final ExecutorService mExecutorService = Executors.newSingleThreadExecutor();
     private int mDefaultSmsSubId;
     private ProvisioningManager mProvisioningManager;
+    private Spinner mRcsProfileSpinner;
+    private String mRcsVersion;
+    private String mRcsProfile;
     private Button mRegisterButton;
     private Button mUnRegisterButton;
     private Button mIsCapableButton;
     private TextView mSingleRegResult;
     private TextView mCallbackResult;
+    private SharedPreferences mPref;
     private SingleRegCapabilityReceiver mSingleRegCapabilityReceiver;
     private boolean mIsRegistered = false;
     private Handler mHandler;
@@ -85,10 +102,10 @@ public class ProvisioningActivity extends AppCompatActivity {
             };
 
     // Static configuration.
-    private static RcsClientConfiguration getDefaultClientConfiguration() {
+    private RcsClientConfiguration getDefaultClientConfiguration() {
         return new RcsClientConfiguration(
-                /*rcsVersion=*/ "6.0",
-                /*rcsProfile=*/ "UP_1.0",
+                /*rcsVersion=*/ mRcsVersion,
+                /*rcsProfile=*/ mRcsProfile,
                 /*clientVendor=*/ "Goog",
                 /*clientVersion=*/ "RCSAndrd-1.0");
     }
@@ -112,6 +129,8 @@ public class ProvisioningActivity extends AppCompatActivity {
                 }
             }
         };
+        mPref = getSharedPreferences(RCS_CONFIG, MODE_PRIVATE);
+        initRcsProfile();
     }
 
     @Override
@@ -204,6 +223,44 @@ public class ProvisioningActivity extends AppCompatActivity {
 
     private boolean isValidSubscriptionId(int subId) {
         return SubscriptionManager.isValidSubscriptionId(mDefaultSmsSubId);
+    }
+
+    private void initRcsProfile() {
+        mRcsProfileSpinner = findViewById(R.id.rcs_profile_list);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.rcs_profile, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mRcsProfileSpinner.setAdapter(adapter);
+        mRcsProfileSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Log.i(TAG, "rcs profile position:" + position);
+                switch (position) {
+                    case 0:
+                        mRcsProfile = UP_10;
+                        mRcsVersion = V_6;
+                        break;
+                    case 1:
+                        mRcsProfile = UP_23;
+                        mRcsVersion = V_9;
+                        break;
+                    default:
+                        Log.e(TAG, "invalid position:" + position);
+                        return;
+                }
+                mPref.edit().putString(RCS_PROFILE, mRcsProfile)
+                        .putString(RCS_VERSION, mRcsVersion)
+                        .commit();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // TODO Auto-generated method stub
+            }
+        });
+        mRcsProfile = mPref.getString(RCS_PROFILE, UP_10);
+        mRcsVersion = mPref.getString(RCS_VERSION, V_6);
+        mRcsProfileSpinner.setSelection(mRcsProfile.equals(UP_10) ? 0 : 1);
     }
 
     @Override
