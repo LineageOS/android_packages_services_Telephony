@@ -475,13 +475,13 @@ public class RcsProvisioningMonitorTest {
     public void testRegisterThenUnregisterCallback() throws Exception {
         createMonitor(1);
 
-        boolean result = mRcsProvisioningMonitor.registerRcsProvisioningChangedCallback(
+        boolean result = mRcsProvisioningMonitor.registerRcsProvisioningCallback(
                 FAKE_SUB_ID_BASE, mCallback);
 
         assertTrue(result);
         verify(mIImsConfig, times(1)).addRcsConfigCallback(eq(mCallback));
 
-        result = mRcsProvisioningMonitor.unregisterRcsProvisioningChangedCallback(
+        result = mRcsProvisioningMonitor.unregisterRcsProvisioningCallback(
                 FAKE_SUB_ID_BASE, mCallback);
 
         assertTrue(result);
@@ -494,7 +494,7 @@ public class RcsProvisioningMonitorTest {
     public void testCallbackRemovedWhenSubInfoChanged() throws Exception {
         createMonitor(1);
 
-        boolean result = mRcsProvisioningMonitor.registerRcsProvisioningChangedCallback(
+        boolean result = mRcsProvisioningMonitor.registerRcsProvisioningCallback(
                 FAKE_SUB_ID_BASE, mCallback);
         makeFakeActiveSubIds(0);
         mExecutor.execute(() -> mSubChangedListener.onSubscriptionsChanged());
@@ -510,7 +510,7 @@ public class RcsProvisioningMonitorTest {
     public void testCallbackRemovedWhenDmaChanged() throws Exception {
         createMonitor(1);
 
-        boolean result = mRcsProvisioningMonitor.registerRcsProvisioningChangedCallback(
+        boolean result = mRcsProvisioningMonitor.registerRcsProvisioningCallback(
                 FAKE_SUB_ID_BASE, mCallback);
         updateDefaultMessageApplication(DEFAULT_MESSAGING_APP2);
         processAllMessages();
@@ -524,7 +524,7 @@ public class RcsProvisioningMonitorTest {
     @SmallTest
     public void testRcsConnectedAndDisconnected() throws Exception {
         createMonitor(1);
-        mRcsProvisioningMonitor.registerRcsProvisioningChangedCallback(
+        mRcsProvisioningMonitor.registerRcsProvisioningCallback(
                 FAKE_SUB_ID_BASE, mCallback);
 
         verify(mIImsConfig, times(1))

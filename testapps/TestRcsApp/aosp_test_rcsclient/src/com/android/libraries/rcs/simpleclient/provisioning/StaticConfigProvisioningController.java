@@ -24,14 +24,14 @@ import android.telephony.ims.ProvisioningManager.RcsProvisioningCallback;
 import android.telephony.ims.RcsClientConfiguration;
 import android.util.Log;
 
-import java.util.Optional;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.annotation.RequiresPermission;
 import androidx.annotation.VisibleForTesting;
+
+import java.util.Optional;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * "Fake" provisioning implementation for supplying a static config when testing ProvisioningManager
@@ -136,7 +136,7 @@ public class StaticConfigProvisioningController implements ProvisioningControlle
 
         Log.i(TAG, "Registering the callback.");
         synchronized (this) {
-            provisioningManager.registerRcsProvisioningChangedCallback(executorService, callback);
+            provisioningManager.registerRcsProvisioningCallback(executorService, callback);
             storedCallback = Optional.of(callback);
         }
     }
@@ -147,7 +147,7 @@ public class StaticConfigProvisioningController implements ProvisioningControlle
             RcsProvisioningCallback callback =
                     storedCallback.orElseThrow(
                             () -> new IllegalStateException("No callback present."));
-            provisioningManager.unregisterRcsProvisioningChangedCallback(callback);
+            provisioningManager.unregisterRcsProvisioningCallback(callback);
             storedCallback = Optional.empty();
         }
     }

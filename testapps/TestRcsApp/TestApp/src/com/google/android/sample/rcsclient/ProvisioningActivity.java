@@ -130,7 +130,7 @@ public class ProvisioningActivity extends AppCompatActivity {
         super.onDestroy();
         this.unregisterReceiver(mSingleRegCapabilityReceiver);
         if (mIsRegistered) {
-            mProvisioningManager.unregisterRcsProvisioningChangedCallback(mCallback);
+            mProvisioningManager.unregisterRcsProvisioningCallback(mCallback);
         }
     }
 
@@ -157,9 +157,9 @@ public class ProvisioningActivity extends AppCompatActivity {
                 Log.i(TAG, "Using configuration: " + getDefaultClientConfiguration());
                 try {
                     Log.i(TAG, "setRcsClientConfiguration()");
-                    Log.i(TAG, "registerRcsProvisioningChangedCallback()");
+                    Log.i(TAG, "registerRcsProvisioningCallback()");
                     mProvisioningManager.setRcsClientConfiguration(getDefaultClientConfiguration());
-                    mProvisioningManager.registerRcsProvisioningChangedCallback(mExecutorService,
+                    mProvisioningManager.registerRcsProvisioningCallback(mExecutorService,
                             mCallback);
                     mIsRegistered = true;
                 } catch (ImsException e) {
@@ -173,7 +173,7 @@ public class ProvisioningActivity extends AppCompatActivity {
         });
         mUnRegisterButton.setOnClickListener(view -> {
             if (mProvisioningManager != null) {
-                mProvisioningManager.unregisterRcsProvisioningChangedCallback(mCallback);
+                mProvisioningManager.unregisterRcsProvisioningCallback(mCallback);
                 setClickable(mRegisterButton, false);
                 setClickable(mRegisterButton, true);
                 mIsRegistered = false;
