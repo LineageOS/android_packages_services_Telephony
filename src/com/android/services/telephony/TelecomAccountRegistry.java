@@ -32,6 +32,7 @@ import android.graphics.drawable.Icon;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.HandlerExecutor;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.PersistableBundle;
@@ -42,11 +43,11 @@ import android.telecom.PhoneAccount;
 import android.telecom.PhoneAccountHandle;
 import android.telecom.TelecomManager;
 import android.telephony.CarrierConfigManager;
-import android.telephony.PhoneStateListener;
 import android.telephony.ServiceState;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.SubscriptionManager.OnSubscriptionsChangedListener;
+import android.telephony.TelephonyCallback;
 import android.telephony.TelephonyManager;
 import android.telephony.ims.ImsException;
 import android.telephony.ims.ImsMmTelManager;
@@ -112,6 +113,8 @@ public class TelecomAccountRegistry {
      */
     private static final String EXTRA_SUPPORTS_VIDEO_CALLING_FALLBACK =
             "android.telecom.extra.SUPPORTS_VIDEO_CALLING_FALLBACK";
+
+    private Handler mHandler;
 
     final class AccountEntry implements PstnPhoneCapabilitiesNotifier.Listener {
         private final Phone mPhone;
@@ -1078,7 +1081,11 @@ public class TelecomAccountRegistry {
         }
     };
 
-    private final PhoneStateListener mPhoneStateListener = new PhoneStateListener() {
+    private final TelephonyCallback mTelephonyCallback = new TelecomAccountTelephonyCallback();
+
+    private class TelecomAccountTelephonyCallback extends TelephonyCallback implements
+            TelephonyCallback.ActiveDataSubscriptionIdListener,
+            TelephonyCallback.ServiceStateListener {
         @Override
         public void onServiceStateChanged(ServiceState serviceState) {
             int newState = serviceState.getState();
@@ -1144,6 +1151,7 @@ public class TelecomAccountRegistry {
         mTelephonyManager = TelephonyManager.from(context);
         mSubscriptionManager = SubscriptionManager.from(context);
         mHandlerThread.start();
+        mHandler = new Handler(Looper.getMainLooper());
         mRegisterSubscriptionListenerBackoff = new ExponentialBackoff(
                 REGISTER_START_DELAY_MS,
                 REGISTER_MAXIMUM_DELAY_MS,
@@ -1371,8 +1379,8 @@ public class TelecomAccountRegistry {
 
         // We also need to listen for changes to the service state (e.g. emergency -> in service)
         // because this could signal a removal or addition of a SIM in a single SIM phone.
-        mTelephonyManager.listen(mPhoneStateListener, PhoneStateListener.LISTEN_SERVICE_STATE
-                | PhoneStateListener.LISTEN_ACTIVE_DATA_SUBSCRIPTION_ID_CHANGE);
+        mTelephonyManager.registerTelephonyCallback(new HandlerExecutor(mHandler),
+                mTelephonyCallback);
 
         // Listen for user switches.  When the user switches, we need to ensure that if the current
         // use is not the primary user we disable video calling.
@@ -1392,8 +1400,7 @@ public class TelecomAccountRegistry {
 
     private void registerContentObservers() {
         // Listen to the RTT system setting so that we update it when the user flips it.
-        ContentObserver rttUiSettingObserver = new ContentObserver(
-                new Handler(Looper.getMainLooper())) {
+        ContentObserver rttUiSettingObserver = new ContentObserver(mHandler) {
             @Override
             public void onChange(boolean selfChange) {
                 synchronized (mAccountsLock) {
@@ -1409,8 +1416,7 @@ public class TelecomAccountRegistry {
                 rttSettingUri, false, rttUiSettingObserver);
 
         // Listen to the changes to the user's Contacts Discovery Setting.
-        ContentObserver contactDiscoveryObserver = new ContentObserver(
-                new Handler(Looper.getMainLooper())) {
+        ContentObserver contactDiscoveryObserver = new ContentObserver(mHandler) {
             @Override
             public void onChange(boolean selfChange) {
                 synchronized (mAccountsLock) {
