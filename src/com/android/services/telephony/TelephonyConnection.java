@@ -49,6 +49,7 @@ import android.telephony.ServiceState.RilRadioTechnology;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.telephony.ims.ImsCallProfile;
+import android.telephony.ims.ImsReasonInfo;
 import android.telephony.ims.ImsStreamMediaProfile;
 import android.telephony.ims.RtpHeaderExtension;
 import android.telephony.ims.RtpHeaderExtensionType;
@@ -2364,12 +2365,18 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
                                     + " -> " + mHangupDisconnectCause);
                             disconnectCause = mHangupDisconnectCause;
                         }
+                        ImsReasonInfo imsReasonInfo = null;
+                        if (isImsConnection()) {
+                            ImsPhoneConnection imsPhoneConnection =
+                                    (ImsPhoneConnection) mOriginalConnection;
+                            imsReasonInfo = imsPhoneConnection.getImsReasonInfo();
+                        }
                         setTelephonyConnectionDisconnected(
                                 DisconnectCauseUtil.toTelecomDisconnectCause(
                                         disconnectCause,
                                         preciseDisconnectCause,
                                         mOriginalConnection.getVendorDisconnectCause(),
-                                        getPhone().getPhoneId()));
+                                        getPhone().getPhoneId(), imsReasonInfo));
                         close();
                     }
                     break;
@@ -3161,7 +3168,7 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
     }
 
     /**
-     * Set this {@link TelephonyConnection} to a held state.
+     * Set this {@link TelephonyConnection} to a disconnected state.
      * <p>
      * Note: This should be used instead of
      * {@link #setDisconnected(android.telecom.DisconnectCause)} to ensure listeners are notified.
