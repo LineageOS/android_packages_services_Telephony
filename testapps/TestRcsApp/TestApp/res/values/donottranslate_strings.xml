@@ -6,6 +6,10 @@
     <string name="gba_test">GBA Test</string>
     <string name="test_msg_client">TestMessageClient</string>
     <string name="db_client">DBClient</string>
+    <string name="rcs_profile">RcsProfile:</string>
+    <string name="register_provisioning_callback">registerProvisioningCallback</string>
+    <string name="unregister_provisioning_callback">unRegisterProvisioningCallback</string>
+    <string name="isRcsVolteSingleRegCapable">isRcsVolteSingleRegCapable</string>
     <string name="result">Result:</string>
     <string name="callback_result">Callback Result:</string>
     <string name="initialize_delegate">initializeSipDelegate</string>
@@ -49,6 +53,10 @@
     <string name="registration_failed">Registration failed</string>
     <string name="version_info">Version: %s</string>
 
+    <string-array name="rcs_profile">
+        <item>UP_1.0</item>
+        <item>UP_2.3</item>
+    </string-array>
     <string-array name="organization">
         <item>NONE</item>
         <item>3GPP</item>

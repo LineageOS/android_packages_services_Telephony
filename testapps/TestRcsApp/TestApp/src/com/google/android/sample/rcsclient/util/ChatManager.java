@@ -71,7 +71,8 @@ public class ChatManager {
     private ChatManager(Context context, int subId) {
         mContext = context;
         mSubId = subId;
-        mProvisioningController = StaticConfigProvisioningController.createForSubscriptionId(subId);
+        mProvisioningController = StaticConfigProvisioningController.createForSubscriptionId(subId,
+                context);
         ImsManager imsManager = mContext.getSystemService(ImsManager.class);
         mRegistrationController = new RegistrationControllerImpl(subId, mFixedThreadPool,
                 imsManager);
