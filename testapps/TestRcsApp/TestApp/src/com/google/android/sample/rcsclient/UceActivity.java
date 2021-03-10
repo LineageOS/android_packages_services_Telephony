@@ -106,7 +106,7 @@ public class UceActivity extends AppCompatActivity {
 
                             public void onComplete() {
                                 Log.i(TAG, "onComplete()");
-                                mCapabilityResult.append("complete");
+                                mCapabilityResult.append("onComplete");
 
                             }
 
