@@ -95,6 +95,7 @@
     <protected-broadcast android:name= "android.telephony.action.NETWORK_COUNTRY_CHANGED" />
     <protected-broadcast android:name= "android.telephony.action.PRIMARY_SUBSCRIPTION_LIST_CHANGED" />
     <protected-broadcast android:name= "android.telephony.action.MULTI_SIM_CONFIG_CHANGED" />
+    <protected-broadcast android:name= "android.telephony.action.CARRIER_SIGNAL_RESET" />
 
     <!-- For Vendor Debugging in Telephony -->
     <protected-broadcast android:name="android.telephony.action.ANOMALY_REPORTED" />
