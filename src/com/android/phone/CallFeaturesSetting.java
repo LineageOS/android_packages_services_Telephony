@@ -295,7 +295,7 @@ public class CallFeaturesSetting extends PreferenceActivity
     private final class CallFeaturesTelephonyCallback extends TelephonyCallback implements
             TelephonyCallback.CallStateListener {
         @Override
-        public void onCallStateChanged(int state, String incomingNumber) {
+        public void onCallStateChanged(int state) {
             if (DBG) log("PhoneStateListener onCallStateChanged: state is " + state);
             boolean isCallStateIdle = state == TelephonyManager.CALL_STATE_IDLE;
             if (mEnableVideoCalling != null) {
