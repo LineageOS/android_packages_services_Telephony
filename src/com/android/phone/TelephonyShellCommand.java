@@ -125,6 +125,9 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
     private static final String UCE_GET_DEVICE_ENABLED = "get-device-enabled";
     private static final String UCE_SET_DEVICE_ENABLED = "set-device-enabled";
 
+    // Check if a package has carrier privileges on any SIM, regardless of subId/phoneId.
+    private static final String HAS_CARRIER_PRIVILEGES_COMMAND = "has-carrier-privileges";
+
     // Take advantage of existing methods that already contain permissions checks when possible.
     private final ITelephony mInterface;
 
@@ -221,6 +224,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                 return handleCallComposerCommand();
             case UNATTENDED_REBOOT:
                 return handleUnattendedReboot();
+            case HAS_CARRIER_PRIVILEGES_COMMAND:
+                return handleHasCarrierPrivilegesCommand();
             default: {
                 return handleDefaultCommands(cmd);
             }
@@ -253,6 +258,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         pw.println("    Restart modem command.");
         pw.println("  unattended-reboot");
         pw.println("    Prepare for unattended reboot.");
+        pw.println("  has-carrier-privileges [package]");
+        pw.println("    Query carrier privilege status for a package. Prints true or false.");
         onHelpIms();
         onHelpUce();
         onHelpEmergencyNumber();
@@ -698,7 +705,7 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             errPw.println("message value must be a valid integer");
             return -1;
         }
-        
+
         try {
             mInterface.sendDeviceToDeviceMessage(messageType, messageValue);
         } catch (RemoteException e) {
@@ -1998,7 +2005,24 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                 break;
             }
         }
+        return 0;
+    }
 
+    private int handleHasCarrierPrivilegesCommand() {
+        String packageName = getNextArgRequired();
+
+        boolean hasCarrierPrivileges;
+        try {
+            hasCarrierPrivileges =
+                    mInterface.checkCarrierPrivilegesForPackageAnyPhone(packageName)
+                            == TelephonyManager.CARRIER_PRIVILEGE_STATUS_HAS_ACCESS;
+        } catch (RemoteException e) {
+            Log.w(LOG_TAG, HAS_CARRIER_PRIVILEGES_COMMAND + " exception", e);
+            getErrPrintWriter().println("Exception: " + e.getMessage());
+            return -1;
+        }
+
+        getOutPrintWriter().println(hasCarrierPrivileges);
         return 0;
     }
 }
