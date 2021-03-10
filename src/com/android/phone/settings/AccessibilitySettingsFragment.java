@@ -64,7 +64,7 @@ public class AccessibilitySettingsFragment extends PreferenceFragment {
     private final class AccessibilityTelephonyCallback extends TelephonyCallback implements
             TelephonyCallback.CallStateListener {
         @Override
-        public void onCallStateChanged(int state, String incomingNumber) {
+        public void onCallStateChanged(int state) {
             if (DBG) Log.d(LOG_TAG, "PhoneStateListener.onCallStateChanged: state=" + state);
             Preference pref = getPreferenceScreen().findPreference(BUTTON_TTY_KEY);
             if (pref != null) {
