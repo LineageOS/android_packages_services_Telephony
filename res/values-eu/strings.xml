@@ -356,7 +356,7 @@
   <string-array name="list_language_entries">
     <item msgid="2347238508726934281">"Ingelesa"</item>
     <item msgid="5172468397620875174">"Frantsesa"</item>
-    <item msgid="3978110664146015398">"Espainiera"</item>
+    <item msgid="3978110664146015398">"Gaztelania"</item>
     <item msgid="2637764545851526369">"Japoniera"</item>
     <item msgid="6103816221834932751">"Koreera"</item>
     <item msgid="3127367370005168399">"Txinera"</item>
@@ -919,6 +919,7 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Telefonoaren informazioa"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Operadorearen hornikuntza-informazioa"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Abiarazi operadorearen hornikuntza"</string>
-    <string name="call_quality_notification_bluetooth_details" msgid="219073466476340435">"Iradokizuna: hobetu Bluetooth-konexioa"</string>
+    <!-- no translation found for call_quality_notification_bluetooth_details (8348950331707346711) -->
+    <skip />
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Deien kalitateari buruzko jakinarazpena"</string>
 </resources>
