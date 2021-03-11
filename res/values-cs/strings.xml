@@ -301,7 +301,7 @@
     <string name="keywords_carrier_settings_euicc" msgid="8540160967922063745">"operátor, esim, sim, euicc, přepnout operátora, přidat operátora"</string>
     <string name="carrier_settings_euicc_summary" msgid="2027941166597330117">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> – <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="7228249980933944101">"Mobilní data"</string>
-    <string name="mobile_data_settings_summary" msgid="5012570152029118471">"Přistupovat k datům přes mobilní síť"</string>
+    <string name="mobile_data_settings_summary" msgid="5012570152029118471">"Používat datové připojení přes mobilní síť"</string>
     <string name="data_usage_disable_mobile" msgid="5669109209055988308">"Vypnout mobilní data?"</string>
     <string name="sim_selection_required_pref" msgid="6985901872978341314">"Vyžadován výběr"</string>
     <string name="sim_change_data_title" msgid="9142726786345906606">"Změnit SIM kartu pro data?"</string>
@@ -925,6 +925,7 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Informace o telefonu"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Informace o zprovoznění služby u operátora"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Spustit zprovoznění služby u operátora"</string>
-    <string name="call_quality_notification_bluetooth_details" msgid="219073466476340435">"Doporučení: Vylepšete připojení přes Bluetooth"</string>
+    <!-- no translation found for call_quality_notification_bluetooth_details (8348950331707346711) -->
+    <skip />
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Oznámení o kvalitě hovoru"</string>
 </resources>
