@@ -20,6 +20,7 @@ import android.content.Context;
 import android.location.Location;
 import android.net.Uri;
 import android.os.OutcomeReceiver;
+import android.os.PersistableBundle;
 import android.os.UserHandle;
 import android.provider.CallLog;
 import android.telephony.CarrierConfigManager;
@@ -33,14 +34,12 @@ import android.util.SparseArray;
 import androidx.annotation.NonNull;
 
 import com.android.internal.annotations.VisibleForTesting;
-import com.android.phone.callcomposer.CallComposerPictureTransfer.PictureCallback;
 import com.android.phone.R;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
@@ -53,6 +52,7 @@ import java.util.function.Consumer;
 public class CallComposerPictureManager {
     private static final String TAG = CallComposerPictureManager.class.getSimpleName();
     private static final SparseArray<CallComposerPictureManager> sInstances = new SparseArray<>();
+    private static final String THREE_GPP_BOOTSTRAPPING = "3GPP-bootstrapping";
 
     public static CallComposerPictureManager getInstance(Context context, int subscriptionId) {
         synchronized (sInstances) {
@@ -104,7 +104,7 @@ public class CallComposerPictureManager {
 
     private final HashMap<UUID, String> mCachedServerUrls = new HashMap<>();
     private final HashMap<UUID, ImageData> mCachedImages = new HashMap<>();
-    private final Map<String, GbaCredentials> mCachedCredentials = new HashMap<>();
+    private GbaCredentials mCachedCredentials = null;
     private final int mSubscriptionId;
     private final TelephonyManager mTelephonyManager;
     private final Context mContext;
@@ -127,7 +127,8 @@ public class CallComposerPictureManager {
             return;
         }
 
-        String uploadUrl = mTelephonyManager.getCarrierConfig().getString(
+        PersistableBundle carrierConfig = mTelephonyManager.getCarrierConfig();
+        String uploadUrl = carrierConfig.getString(
                 CarrierConfigManager.KEY_CALL_COMPOSER_PICTURE_SERVER_URL_STRING);
         if (TextUtils.isEmpty(uploadUrl)) {
             Log.e(TAG, "Call composer upload URL not configured in carrier config");
@@ -141,7 +142,7 @@ public class CallComposerPictureManager {
                 mSubscriptionId, uploadUrl, sExecutorService);
 
         AtomicBoolean hasRetried = new AtomicBoolean(false);
-        transfer.setCallback(new PictureCallback() {
+        transfer.setCallback(new CallComposerPictureTransfer.PictureCallback() {
             @Override
             public void onError(int error) {
                 callback.accept(Pair.create(null, error));
@@ -157,7 +158,7 @@ public class CallComposerPictureManager {
                 }
                 GbaCredentialsSupplier supplier =
                         (realm, executor) ->
-                                getGbaCredentials(credentialRefresh, realm, executor);
+                                getGbaCredentials(credentialRefresh, carrierConfig, executor);
 
                 sExecutorService.schedule(() -> transfer.uploadPicture(imageData, supplier),
                         backoffMillis, TimeUnit.MILLISECONDS);
@@ -174,7 +175,7 @@ public class CallComposerPictureManager {
         });
 
         transfer.uploadPicture(imageData,
-                (realm, executor) -> getGbaCredentials(false, realm, executor));
+                (realm, executor) -> getGbaCredentials(false, carrierConfig, executor));
     }
 
     public void handleDownloadFromServer(CallComposerPictureTransfer.Factory transferFactory,
@@ -187,11 +188,12 @@ public class CallComposerPictureManager {
             return;
         }
 
+        PersistableBundle carrierConfig = mTelephonyManager.getCarrierConfig();
         CallComposerPictureTransfer transfer = transferFactory.create(mContext,
                 mSubscriptionId, remoteUrl, sExecutorService);
 
         AtomicBoolean hasRetried = new AtomicBoolean(false);
-        transfer.setCallback(new PictureCallback() {
+        transfer.setCallback(new CallComposerPictureTransfer.PictureCallback() {
             @Override
             public void onError(int error) {
                 callback.accept(Pair.create(null, error));
@@ -207,7 +209,7 @@ public class CallComposerPictureManager {
                 }
                 GbaCredentialsSupplier supplier =
                         (realm, executor) ->
-                                getGbaCredentials(credentialRefresh, realm, executor);
+                                getGbaCredentials(credentialRefresh, carrierConfig, executor);
 
                 sExecutorService.schedule(() -> transfer.downloadPicture(supplier),
                         backoffMillis, TimeUnit.MILLISECONDS);
@@ -237,7 +239,8 @@ public class CallComposerPictureManager {
             }
         });
 
-        transfer.downloadPicture(((realm, executor) -> getGbaCredentials(false, realm, executor)));
+        transfer.downloadPicture(((realm, executor) ->
+                getGbaCredentials(false, carrierConfig, executor)));
     }
 
     public void storeUploadedPictureToCallLog(UUID id, Consumer<Uri> callback) {
@@ -298,32 +301,36 @@ public class CallComposerPictureManager {
     }
 
     private CompletableFuture<GbaCredentials> getGbaCredentials(
-            boolean forceRefresh, String nafId, Executor executor) {
-        synchronized (mCachedCredentials) {
-            if (!forceRefresh && mCachedCredentials.containsKey(nafId)) {
-                return CompletableFuture.completedFuture(mCachedCredentials.get(nafId));
+            boolean forceRefresh, PersistableBundle config, Executor executor) {
+        synchronized (this) {
+            if (!forceRefresh && mCachedCredentials != null) {
+                return CompletableFuture.completedFuture(mCachedCredentials);
             }
+
             if (forceRefresh) {
-                mCachedCredentials.remove(nafId);
+                mCachedCredentials = null;
             }
         }
 
         UaSecurityProtocolIdentifier securityProtocolIdentifier =
                 new UaSecurityProtocolIdentifier.Builder()
-                        .setOrg(UaSecurityProtocolIdentifier.ORG_3GPP)
-                        .setProtocol(UaSecurityProtocolIdentifier
-                                .UA_SECURITY_PROTOCOL_3GPP_HTTP_DIGEST_AUTHENTICATION)
+                        .setOrg(config.getInt(
+                                CarrierConfigManager.KEY_GBA_UA_SECURITY_ORGANIZATION_INT))
+                        .setProtocol(config.getInt(
+                                CarrierConfigManager.KEY_GBA_UA_SECURITY_PROTOCOL_INT))
+                        .setTlsCipherSuite(config.getInt(
+                                CarrierConfigManager.KEY_GBA_UA_TLS_CIPHER_SUITE_INT))
                         .build();
         CompletableFuture<GbaCredentials> resultFuture = new CompletableFuture<>();
 
-        mTelephonyManager.bootstrapAuthenticationRequest(TelephonyManager.APPTYPE_UNKNOWN,
-                Uri.parse(nafId), securityProtocolIdentifier, forceRefresh, executor,
+        mTelephonyManager.bootstrapAuthenticationRequest(TelephonyManager.APPTYPE_ISIM,
+                getNafUri(config), securityProtocolIdentifier, forceRefresh, executor,
                 new TelephonyManager.BootstrapAuthenticationCallback() {
                     @Override
                     public void onKeysAvailable(byte[] gbaKey, String transactionId) {
                         GbaCredentials creds = new GbaCredentials(transactionId, gbaKey);
-                        synchronized (mCachedCredentials) {
-                            mCachedCredentials.put(nafId, creds);
+                        synchronized (CallComposerPictureManager.this) {
+                            mCachedCredentials = creds;
                         }
                         resultFuture.complete(creds);
                     }
@@ -336,6 +343,30 @@ public class CallComposerPictureManager {
                 });
 
         return resultFuture;
+    }
+
+    private static Uri getNafUri(PersistableBundle carrierConfig) {
+        String uploadUriString = carrierConfig.getString(
+                CarrierConfigManager.KEY_CALL_COMPOSER_PICTURE_SERVER_URL_STRING);
+        Uri uploadUri = Uri.parse(uploadUriString);
+        String nafPrefix;
+        switch (carrierConfig.getInt(CarrierConfigManager.KEY_GBA_MODE_INT)) {
+            case CarrierConfigManager.GBA_U:
+                nafPrefix = THREE_GPP_BOOTSTRAPPING + "-uicc";
+                break;
+            case CarrierConfigManager.GBA_DIGEST:
+                nafPrefix = THREE_GPP_BOOTSTRAPPING + "-digest";
+                break;
+            case CarrierConfigManager.GBA_ME:
+            default:
+                nafPrefix = THREE_GPP_BOOTSTRAPPING;
+        }
+        String newAuthority = nafPrefix + "@" + uploadUri.getAuthority();
+        Uri nafUri = new Uri.Builder().scheme(uploadUri.getScheme())
+                .encodedAuthority(newAuthority)
+                .build();
+        Log.i(TAG, "using NAF uri " + nafUri + " for GBA");
+        return nafUri;
     }
 
     @VisibleForTesting
