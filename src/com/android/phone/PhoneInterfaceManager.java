@@ -2822,9 +2822,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             if (sst == null) return "";
             LocaleTracker lt = sst.getLocaleTracker();
             if (lt == null) return "";
-            if (!TextUtils.isEmpty(lt.getCurrentCountry())) return lt.getCurrentCountry();
-            EmergencyNumberTracker ent = phone.getEmergencyNumberTracker();
-            return (ent == null) ? "" : ent.getEmergencyCountryIso();
+            return lt.getCurrentCountry();
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
