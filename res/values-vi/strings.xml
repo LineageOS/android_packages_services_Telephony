@@ -919,6 +919,7 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Thông tin điện thoại"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Thông tin cấp phép của nhà mạng"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Kích hoạt dịch vụ cấp phép của nhà mạng"</string>
-    <string name="call_quality_notification_bluetooth_details" msgid="219073466476340435">"Mục đề xuất: Cải thiện khả năng kết nối Bluetooth"</string>
+    <!-- no translation found for call_quality_notification_bluetooth_details (8348950331707346711) -->
+    <skip />
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Thông báo về chất lượng cuộc gọi"</string>
 </resources>

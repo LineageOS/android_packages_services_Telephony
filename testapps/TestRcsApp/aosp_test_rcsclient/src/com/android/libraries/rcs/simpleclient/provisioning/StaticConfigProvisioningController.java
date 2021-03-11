@@ -16,6 +16,8 @@
 
 package com.android.libraries.rcs.simpleclient.provisioning;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Build.VERSION_CODES;
 import android.telephony.SubscriptionManager;
 import android.telephony.ims.ImsException;
@@ -45,29 +47,35 @@ public class StaticConfigProvisioningController implements ProvisioningControlle
     private Optional<RcsProvisioningCallback> storedCallback = Optional.empty();
     private Optional<ProvisioningStateChangeCallback> stateChangeCallback = Optional.empty();
     private Optional<byte[]> configXmlData = Optional.empty();
+    private Context context;
 
-    private StaticConfigProvisioningController(int subId) {
+    private StaticConfigProvisioningController(int subId, Context context) {
         this.provisioningManager = ProvisioningManager.createForSubscriptionId(subId);
+        this.context = context;
     }
 
     @RequiresApi(api = VERSION_CODES.R)
-    public static StaticConfigProvisioningController createWithDefaultSubscriptionId() {
+    public static StaticConfigProvisioningController createWithDefaultSubscriptionId(
+            Context context) {
         return new StaticConfigProvisioningController(
-                SubscriptionManager.getActiveDataSubscriptionId());
+                SubscriptionManager.getActiveDataSubscriptionId(), context);
     }
 
-    public static StaticConfigProvisioningController createForSubscriptionId(int subscriptionId) {
-        return new StaticConfigProvisioningController(subscriptionId);
+    /** Create ProvisioningController */
+    public static StaticConfigProvisioningController createForSubscriptionId(int subscriptionId,
+            Context context) {
+        return new StaticConfigProvisioningController(subscriptionId, context);
     }
 
     // Static configuration.
-    private static RcsClientConfiguration getDefaultClientConfiguration() {
+    private RcsClientConfiguration getDefaultClientConfiguration() {
+        SharedPreferences pref = context.getSharedPreferences("CONFIG", context.MODE_PRIVATE);
 
         return new RcsClientConfiguration(
-                /*rcsVersion=*/ "6.0",
-                /*rcsProfile=*/ "UP_2.3",
+                /*rcsVersion=*/ pref.getString("RCS_VERSION", "6.0"),
+                /*rcsProfile=*/ pref.getString("RCS_PROFILE", "UP_1.0"),
                 /*clientVendor=*/ "Goog",
-                /*clientVersion=*/ "RCSAndrd-1.0");//"RCS fake library 1.0");
+                /*clientVersion=*/ "RCSAndrd-1.0");
     }
 
     @Override

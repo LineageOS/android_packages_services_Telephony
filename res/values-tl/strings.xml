@@ -919,6 +919,7 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Impormasyon ng telepono"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Impormasyon sa Provisioning ng Carrier"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"I-trigger ang Provisioning ng Carrier"</string>
-    <string name="call_quality_notification_bluetooth_details" msgid="219073466476340435">"Suhestyon: Pahusayin ang connectivity ng Bluetooth"</string>
+    <!-- no translation found for call_quality_notification_bluetooth_details (8348950331707346711) -->
+    <skip />
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Notification sa Kalidad ng Tawag"</string>
 </resources>

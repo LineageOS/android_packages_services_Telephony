@@ -919,6 +919,6 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"ଫୋନ୍ ସୂଚନା"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"ମୋବାଇଲ୍ କମ୍ପାନୀ ପ୍ରାବଧାନ ସୂଚନା"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"କେରିଅର୍ ପ୍ରୋଭିଜନିଂ ଟ୍ରିଗର୍ କରନ୍ତୁ"</string>
-    <string name="call_quality_notification_bluetooth_details" msgid="219073466476340435">"ପରାମର୍ଶ: ବ୍ଲୁଟୁଥ୍ ସଂଯୋଗ ଉନ୍ନତ କରନ୍ତୁ"</string>
+    <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"ଆପଣଙ୍କ ବ୍ଲୁଟୁଥ୍ ସିଗନାଲ୍ ଦୁର୍ବଳ ଅଛି। ସ୍ପିକରଫୋନକୁ ସ୍ୱିଚ୍ କରିବା ପାଇଁ ଚେଷ୍ଟା କରନ୍ତୁ।"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"କଲ୍ ଗୁଣବତ୍ତା ବିଜ୍ଞପ୍ତି"</string>
 </resources>
