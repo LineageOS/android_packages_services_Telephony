@@ -163,6 +163,7 @@ import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.ProxyController;
 import com.android.internal.telephony.RIL;
+import com.android.internal.telephony.RILConstants;
 import com.android.internal.telephony.RadioInterfaceCapabilityController;
 import com.android.internal.telephony.ServiceStateTracker;
 import com.android.internal.telephony.SmsController;
@@ -6124,9 +6125,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @Override
     public long getAllowedNetworkTypesForReason(int subId,
             @TelephonyManager.AllowedNetworkTypesReason int reason) {
-        TelephonyPermissions
-                .enforeceCallingOrSelfReadPrivilegedPhoneStatePermissionOrCarrierPrivilege(
-                        mApp, subId, "getAllowedNetworkTypesForReason");
+        TelephonyPermissions.enforeceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
+                mApp, subId, "getAllowedNetworkTypesForReason");
         final long identity = Binder.clearCallingIdentity();
         try {
             return getPhoneFromSubId(subId).getAllowedNetworkTypes(reason);
@@ -6229,10 +6229,15 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             return false;
         }
 
-        if (DBG) {
-            log("setAllowedNetworkTypesForReason: " + reason
-                    + " value: " + allowedNetworkTypes);
+        log("setAllowedNetworkTypesForReason: " + reason + " value: "
+                + TelephonyManager.convertNetworkTypeBitmaskToString(allowedNetworkTypes));
+
+
+        if (allowedNetworkTypes == getPhoneFromSubId(subId).getAllowedNetworkTypes(reason)) {
+            log("setAllowedNetworkTypesForReason: " + reason + "does not change value");
+            return true;
         }
+
         final long identity = Binder.clearCallingIdentity();
         try {
             Boolean success = (Boolean) sendRequest(
@@ -7401,18 +7406,14 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 setDataEnabledForReason(subId, TelephonyManager.DATA_ENABLED_REASON_USER,
                         getDefaultDataEnabled());
                 setNetworkSelectionModeAutomatic(subId);
-                setAllowedNetworkTypesForReason(subId,
-                        TelephonyManager.ALLOWED_NETWORK_TYPES_REASON_USER,
-                        RadioAccessFamily.getRafFromNetworkType(getDefaultNetworkType(subId)));
-                setAllowedNetworkTypesForReason(subId,
-                        TelephonyManager.ALLOWED_NETWORK_TYPES_REASON_CARRIER,
-                        RadioAccessFamily.getRafFromNetworkType(getDefaultNetworkType(subId)));
-                setAllowedNetworkTypesForReason(subId,
-                        TelephonyManager.ALLOWED_NETWORK_TYPES_REASON_POWER,
-                        RadioAccessFamily.getRafFromNetworkType(getDefaultNetworkType(subId)));
-                setAllowedNetworkTypesForReason(subId,
-                        TelephonyManager.ALLOWED_NETWORK_TYPES_REASON_ENABLE_2G,
-                        RadioAccessFamily.getRafFromNetworkType(getDefaultNetworkType(subId)));
+                Phone phone = getPhone(subId);
+                if (phone != null) {
+                    SubscriptionManager.setSubscriptionProperty(subId,
+                            SubscriptionManager.ALLOWED_NETWORK_TYPES,
+                            "user=" + RadioAccessFamily.getRafFromNetworkType(
+                                    RILConstants.PREFERRED_NETWORK_MODE));
+                    phone.loadAllowedNetworksFromSubscriptionDatabase();
+                }
                 setDataRoamingEnabled(subId, getDefaultDataRoamingEnabled(subId));
                 CarrierInfoManager.deleteAllCarrierKeysForImsiEncryption(mApp);
             }
