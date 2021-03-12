@@ -73,6 +73,7 @@ import com.android.internal.telephony.d2d.DtmfTransport;
 import com.android.internal.telephony.d2d.RtpAdapter;
 import com.android.internal.telephony.d2d.RtpTransport;
 import com.android.internal.telephony.d2d.Timeouts;
+import com.android.internal.telephony.d2d.TransportProtocol;
 import com.android.internal.telephony.gsm.SuppServiceNotification;
 import com.android.internal.telephony.imsphone.ImsPhone;
 import com.android.internal.telephony.imsphone.ImsPhoneCall;
@@ -3325,53 +3326,57 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
             return;
         }
 
-        // Implement abstracted out RTP functionality the RTP transport depends on.
-        RtpAdapter rtpAdapter = new RtpAdapter() {
-            @Override
-            public Set<RtpHeaderExtensionType> getAcceptedRtpHeaderExtensions() {
-                if (!isImsConnection()) {
-                    return Collections.EMPTY_SET;
-                }
-                ImsPhoneConnection originalConnection =
-                        (ImsPhoneConnection) mOriginalConnection;
-                return originalConnection.getAcceptedRtpHeaderExtensions();
-            }
+        ArrayList<TransportProtocol> supportedTransports = new ArrayList<>(2);
 
-            @Override
-            public void sendRtpHeaderExtensions(
-                    @NonNull Set<RtpHeaderExtension> rtpHeaderExtensions) {
-                if (!isImsConnection()) {
-                    Log.w(TelephonyConnection.this, "sendRtpHeaderExtensions: not an ims conn.");
+        if (supportsD2DUsingRtp()) {
+            Log.i(this, "maybeConfigureDeviceToDeviceCommunication: carrier supports RTP.");
+            // Implement abstracted out RTP functionality the RTP transport depends on.
+            RtpAdapter rtpAdapter = new RtpAdapter() {
+                @Override
+                public Set<RtpHeaderExtensionType> getAcceptedRtpHeaderExtensions() {
+                    ImsPhoneConnection originalConnection =
+                            (ImsPhoneConnection) mOriginalConnection;
+                    return originalConnection.getAcceptedRtpHeaderExtensions();
                 }
 
-                Log.i(TelephonyConnection.this, "sendRtpHeaderExtensions: sending: %s",
-                        rtpHeaderExtensions.stream()
-                                .map(r -> r.toString())
-                                .collect(Collectors.joining(",")));
+                @Override
+                public void sendRtpHeaderExtensions(
+                        @NonNull Set<RtpHeaderExtension> rtpHeaderExtensions) {
+                    Log.i(TelephonyConnection.this, "sendRtpHeaderExtensions: sending: %s",
+                            rtpHeaderExtensions.stream()
+                                    .map(r -> r.toString())
+                                    .collect(Collectors.joining(",")));
+                    ImsPhoneConnection originalConnection =
+                            (ImsPhoneConnection) mOriginalConnection;
+                    originalConnection.sendRtpHeaderExtensions(rtpHeaderExtensions);
+                }
+            };
+            mRtpTransport = new RtpTransport(rtpAdapter, null /* TODO: not needed yet */, mHandler,
+                    supportsSdpNegotiationOfRtpHeaderExtensions());
+            supportedTransports.add(mRtpTransport);
+        }
+        if (supportsD2DUsingDtmf()) {
+            Log.i(this, "maybeConfigureDeviceToDeviceCommunication: carrier supports DTMF.");
+            DtmfAdapter dtmfAdapter = digit -> {
+                Log.i(TelephonyConnection.this, "sendDtmf: send digit %c", digit);
                 ImsPhoneConnection originalConnection =
                         (ImsPhoneConnection) mOriginalConnection;
-                originalConnection.sendRtpHeaderExtensions(rtpHeaderExtensions);
-            }
-        };
-        mRtpTransport = new RtpTransport(rtpAdapter, null /* TODO: not needed yet */, mHandler);
-
-        DtmfAdapter dtmfAdapter = digit -> {
-            if (!isImsConnection()) {
-                Log.w(TelephonyConnection.this, "sendDtmf: not an ims conn.");
-            }
-            Log.i(TelephonyConnection.this, "sendDtmf: send digit %c", digit);
-            ImsPhoneConnection originalConnection =
-                    (ImsPhoneConnection) mOriginalConnection;
-            Message dtmfComplete = mHandler.obtainMessage(MSG_DTMF_DONE);
-            dtmfComplete.replyTo = mHandlerMessenger;
-            originalConnection.getImsCall().sendDtmf(digit, dtmfComplete);
-        };
-        ContentResolver cr = getPhone().getContext().getContentResolver();
-        mDtmfTransport = new DtmfTransport(dtmfAdapter, new Timeouts.Adapter(cr),
-                Executors.newSingleThreadScheduledExecutor());
-        mCommunicator = new Communicator(List.of(mRtpTransport, mDtmfTransport), this);
-        mD2DCallStateAdapter = new D2DCallStateAdapter(mCommunicator);
-        addTelephonyConnectionListener(mD2DCallStateAdapter);
+                Message dtmfComplete = mHandler.obtainMessage(MSG_DTMF_DONE);
+                dtmfComplete.replyTo = mHandlerMessenger;
+                originalConnection.getImsCall().sendDtmf(digit, dtmfComplete);
+            };
+            ContentResolver cr = getPhone().getContext().getContentResolver();
+            mDtmfTransport = new DtmfTransport(dtmfAdapter, new Timeouts.Adapter(cr),
+                    Executors.newSingleThreadScheduledExecutor());
+            supportedTransports.add(mDtmfTransport);
+        }
+        if (supportedTransports.size() > 0) {
+            mCommunicator = new Communicator(supportedTransports, this);
+            mD2DCallStateAdapter = new D2DCallStateAdapter(mCommunicator);
+            addTelephonyConnectionListener(mD2DCallStateAdapter);
+        } else {
+            Log.i(this, "maybeConfigureDeviceToDeviceCommunication: no transports; disabled.");
+        }
     }
 
     /**
@@ -3574,5 +3579,35 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
 
     public TelecomAccountRegistry getTelecomAccountRegistry(Context context) {
         return TelecomAccountRegistry.getInstance(context);
+    }
+
+    /**
+     * @return {@code true} if the carrier supports D2D using RTP header extensions, {@code false}
+     * otherwise.
+     */
+    private boolean supportsD2DUsingRtp() {
+        PersistableBundle b = getCarrierConfig();
+        return b != null && b.getBoolean(
+                CarrierConfigManager.KEY_SUPPORTS_DEVICE_TO_DEVICE_COMMUNICATION_USING_RTP_BOOL);
+    }
+
+    /**
+     * @return {@code true} if the carrier supports D2D using DTMF digits, {@code false} otherwise.
+     */
+    private boolean supportsD2DUsingDtmf() {
+        PersistableBundle b = getCarrierConfig();
+        return b != null && b.getBoolean(
+                CarrierConfigManager.KEY_SUPPORTS_DEVICE_TO_DEVICE_COMMUNICATION_USING_DTMF_BOOL);
+    }
+
+    /**
+     * @return {@code true} if the carrier supports using SDP negotiation for the RTP header
+     * extensions used in D2D comms, {@code false} otherwise.
+     */
+    private boolean supportsSdpNegotiationOfRtpHeaderExtensions() {
+        PersistableBundle b = getCarrierConfig();
+        return b != null && b.getBoolean(
+                CarrierConfigManager
+                        .KEY_SUPPORTS_SDP_NEGOTIATION_OF_D2D_RTP_HEADER_EXTENSIONS_BOOL);
     }
 }
