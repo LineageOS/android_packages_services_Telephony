@@ -163,6 +163,7 @@ import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.ProxyController;
 import com.android.internal.telephony.RIL;
+import com.android.internal.telephony.RadioInterfaceCapabilityController;
 import com.android.internal.telephony.ServiceStateTracker;
 import com.android.internal.telephony.SmsController;
 import com.android.internal.telephony.SmsPermissions;
@@ -352,6 +353,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private SubscriptionController mSubscriptionController;
     private SharedPreferences mTelephonySharedPreferences;
     private PhoneConfigurationManager mPhoneConfigurationManager;
+    private final RadioInterfaceCapabilityController mRadioInterfaceCapabilities;
 
     /** User Activity */
     private AtomicBoolean mNotifyUserActivity;
@@ -2119,6 +2121,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 PreferenceManager.getDefaultSharedPreferences(mApp);
         mNetworkScanRequestTracker = new NetworkScanRequestTracker();
         mPhoneConfigurationManager = PhoneConfigurationManager.getInstance();
+        mRadioInterfaceCapabilities = RadioInterfaceCapabilityController.getInstance();
         mNotifyUserActivity = new AtomicBoolean(false);
 
         publish();
@@ -9505,7 +9508,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     public boolean isRadioInterfaceCapabilitySupported(
             final @NonNull @TelephonyManager.RadioInterfaceCapability String capability) {
         Set<String> radioInterfaceCapabilities =
-                mPhoneConfigurationManager.getRadioInterfaceCapabilities();
+                mRadioInterfaceCapabilities.getCapabilities();
         if (radioInterfaceCapabilities == null) {
             throw new RuntimeException("radio interface capabilities are not available");
         }
