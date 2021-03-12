@@ -16,6 +16,8 @@
 
 package com.android.services.telephony;
 
+import android.content.ContentResolver;
+import android.os.UserHandle;
 import android.telephony.TelephonyManager;
 
 import static org.mockito.ArgumentMatchers.any;
@@ -66,6 +68,9 @@ public class TestTelephonyConnection extends TelephonyConnection {
     Context mMockContext;
 
     @Mock
+    ContentResolver mMockContentResolver;
+
+    @Mock
     Resources mMockResources;
 
     @Mock
@@ -97,6 +102,7 @@ public class TestTelephonyConnection extends TelephonyConnection {
     private List<String> mLastConnectionEvents = new ArrayList<>();
     private List<Bundle> mLastConnectionEventExtras = new ArrayList<>();
     private Object mLock = new Object();
+    private PersistableBundle mCarrierConfig = new PersistableBundle();
 
     @Override
     public com.android.internal.telephony.Connection getOriginalConnection() {
@@ -143,8 +149,10 @@ public class TestTelephonyConnection extends TelephonyConnection {
         when(mMockPhone.getContext()).thenReturn(mMockContext);
         when(mMockPhone.getCurrentSubscriberUris()).thenReturn(null);
         when(mMockContext.getResources()).thenReturn(mMockResources);
+        when(mMockContext.getContentResolver()).thenReturn(mMockContentResolver);
         when(mMockContext.getSystemService(Context.TELEPHONY_SERVICE))
                 .thenReturn(mMockTelephonyManager);
+        when(mMockContentResolver.getUserId()).thenReturn(UserHandle.USER_CURRENT);
         when(mMockResources.getBoolean(anyInt())).thenReturn(false);
         when(mMockPhone.getDefaultPhone()).thenReturn(mMockPhone);
         when(mMockPhone.getPhoneType()).thenReturn(PhoneConstants.PHONE_TYPE_IMS);
@@ -201,7 +209,7 @@ public class TestTelephonyConnection extends TelephonyConnection {
     public PersistableBundle getCarrierConfig() {
         // Depends on PhoneGlobals for context in TelephonyConnection, do not implement during
         // testing.
-        return new PersistableBundle();
+        return mCarrierConfig;
     }
 
     @Override
@@ -283,5 +291,9 @@ public class TestTelephonyConnection extends TelephonyConnection {
         when(mMockContext.getSystemService(Context.CARRIER_CONFIG_SERVICE))
                 .thenReturn(mCarrierConfigManager);
         when(mCarrierConfigManager.getConfigForSubId(anyInt())).thenReturn(bundle);
+    }
+
+    public PersistableBundle getCarrierConfigBundle() {
+        return mCarrierConfig;
     }
 }
