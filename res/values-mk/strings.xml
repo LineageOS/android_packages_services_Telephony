@@ -309,9 +309,9 @@
     <string name="throttle_help" msgid="2624535757028809735">"Дознај повеќе"</string>
     <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g> ٪) од максимум <xliff:g id="USED_2">%3$s</xliff:g> за периодот\nСледниот период започнува за <xliff:g id="USED_3">%4$d</xliff:g> дена (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
     <string name="throttle_data_usage_subtext" msgid="3185429653996709840">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) од <xliff:g id="USED_2">%3$s</xliff:g> максимален период"</string>
-    <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"<xliff:g id="USED_0">%1$s</xliff:g> максимум е надминат\nСтапката на податоци е намалена на <xliff:g id="USED_1">%2$d</xliff:g> кб/с"</string>
+    <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"<xliff:g id="USED_0">%1$s</xliff:g> максимум е надминат\nСтапката на податоци е намалена на <xliff:g id="USED_1">%2$d</xliff:g> Kb/s"</string>
     <string name="throttle_time_frame_subtext" msgid="6462089615392402127">"<xliff:g id="USED_0">%1$d</xliff:g>٪ од циклусот помина\nНаредниот период започнува за <xliff:g id="USED_1">%2$d</xliff:g> дена (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
-    <string name="throttle_rate_subtext" msgid="7221971817325779535">"Преносот на податоци се сведува на <xliff:g id="USED">%1$d</xliff:g> кб/с ако се надмине границата на потрошен интернет"</string>
+    <string name="throttle_rate_subtext" msgid="7221971817325779535">"Преносот на податоци се сведува на <xliff:g id="USED">%1$d</xliff:g> Kb/s ако се надмине границата на потрошен интернет"</string>
     <string name="throttle_help_subtext" msgid="2817114897095534807">"Повеќе информации за политиката на користање податоци на мобилната мрежа на вашиот оператор"</string>
     <string name="cell_broadcast_sms" msgid="4053449797289031063">"SMS за емитување од мобилен"</string>
     <string name="enable_disable_cell_bc_sms" msgid="4759958924031721350">"SMS за емитување од мобилен"</string>
@@ -865,8 +865,8 @@
     <string name="radioInfo_cid" msgid="1423185536264406705">"CID"</string>
     <string name="radio_info_subid" msgid="6839966868621703203">"Тековен SUBID:"</string>
     <string name="radio_info_dds" msgid="1122593144425697126">"SUBID на стандардната SIM за мобилен интернет:"</string>
-    <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Брзина на пренос при преземање (кбит/с):"</string>
-    <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Брзина на пренос при прикачување (кбит/с):"</string>
+    <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Брзина на пренос при преземање (kbps):"</string>
+    <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Брзина на пренос при прикачување (kbps):"</string>
     <string name="radio_info_signal_location_label" msgid="6188435197086550049">"Информации за локација на мобилен (неподдржано):"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Конфигурација на физички канал на LTE:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Стапка на освежување на информациите за мобилниот:"</string>

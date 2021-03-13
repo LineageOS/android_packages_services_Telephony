@@ -274,8 +274,8 @@
     <string name="data_enable_summary" msgid="696860063456536557">"ဒေတာ သုံးစွဲမှု ခွင့်ပြုရန်"</string>
     <string name="dialog_alert_title" msgid="5260471806940268478">"သတိပြုရန်"</string>
     <string name="roaming" msgid="1576180772877858949">"ပြင်ပကွန်ရက်နှင့် ချိတ်ဆက်ခြင်း"</string>
-    <string name="roaming_enable" msgid="6853685214521494819">"ကွန်ရက်ပြင်ပဒေတာကို သုံးနေစဉ် ဒေတာဝန်ဆောင်မှုများကို ချိတ်ဆက်ပါ"</string>
-    <string name="roaming_disable" msgid="8856224638624592681">"ကွန်ရက်ပြင်ပဒေတာကို သုံးနေစဉ် ဒေတာဝန်ဆောင်မှုများကို ချိတ်ဆက်ပါ"</string>
+    <string name="roaming_enable" msgid="6853685214521494819">"ပြင်ပကွန်ရက်သုံးလျှင် ဒေတာဝန်ဆောင်မှုများကို ချိတ်ဆက်ပါ"</string>
+    <string name="roaming_disable" msgid="8856224638624592681">"ပြင်ပကွန်ရက်သုံးလျှင် ဒေတာဝန်ဆောင်မှုများကို ချိတ်ဆက်ပါ"</string>
     <string name="roaming_reenable_message" msgid="1951802463885727915">"ကွန်ရက်ပြင်ပဒေတာသုံးခြင်းကို ပိတ်ထားပါသည်။ ဖွင့်ရန် တို့ပါ။"</string>
     <string name="roaming_enabled_message" msgid="9022249120750897">"ပြင်ပကွန်ရက်နှင့် ချိတ်ဆက်သော အသုံးပြုခများ ကျသင့်နိုင်သည်။ ပြင်ဆင်ရန် တို့ပါ။"</string>
     <string name="roaming_notification_title" msgid="3590348480688047320">"မိုဘိုင်းဒေတာ ချိတ်ဆက်မှု မရှိတော့ပါ"</string>
@@ -290,7 +290,7 @@
     <string name="data_usage_template" msgid="6287906680674061783">"<xliff:g id="ID_2">%2$s</xliff:g> အထိ မိုဘိုင်းဒေတာ <xliff:g id="ID_1">%1$s</xliff:g> ကို အသုံးပြုထားပါသည်"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"အဆင့်မြင့်"</string>
     <string name="carrier_settings_euicc" msgid="1190237227261337749">"ဝန်ဆောင်မှုပေးသူ"</string>
-    <string name="keywords_carrier_settings_euicc" msgid="8540160967922063745">"ဖုန်းဝန်ဆောင်မှုပေးသူ၊ esim၊ ဆင်းမ်ကဒ်၊ euicc၊ ဖုန်းလိုင်းများ ပြောင်းရန်၊ ဖုန်းလိုင်း ထည့်ရန်"</string>
+    <string name="keywords_carrier_settings_euicc" msgid="8540160967922063745">"ဖုန်းကုမ္ပဏီ၊ esim၊ ဆင်းမ်ကဒ်၊ euicc၊ ဖုန်းလိုင်းများ ပြောင်းရန်၊ ဖုန်းလိုင်း ထည့်ရန်"</string>
     <string name="carrier_settings_euicc_summary" msgid="2027941166597330117">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="7228249980933944101">"မိုဘိုင်းဒေတာ"</string>
     <string name="mobile_data_settings_summary" msgid="5012570152029118471">"မိုဘိုင်းကွန်ရက်သုံးပြီး ဒေတာကို ဝင်သုံးခွင့်ပေးပါ"</string>

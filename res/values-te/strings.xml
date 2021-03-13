@@ -274,8 +274,8 @@
     <string name="data_enable_summary" msgid="696860063456536557">"డేటా వినియోగాన్ని అనుమతించు"</string>
     <string name="dialog_alert_title" msgid="5260471806940268478">"హెచ్చరిక"</string>
     <string name="roaming" msgid="1576180772877858949">"రోమింగ్"</string>
-    <string name="roaming_enable" msgid="6853685214521494819">"రోమింగ్‌లో ఉన్నప్పుడు డేటా సేవలకు కనెక్ట్ చేయి"</string>
-    <string name="roaming_disable" msgid="8856224638624592681">"రోమింగ్‌లో ఉన్నప్పుడు డేటా సేవలకు కనెక్ట్ చేయి"</string>
+    <string name="roaming_enable" msgid="6853685214521494819">"రోమింగ్‌లో ఉన్నప్పుడు డేటా సర్వీసులకు కనెక్ట్ చేయండి"</string>
+    <string name="roaming_disable" msgid="8856224638624592681">"రోమింగ్‌లో ఉన్నప్పుడు డేటా సర్వీసులకు కనెక్ట్ చేయండి"</string>
     <string name="roaming_reenable_message" msgid="1951802463885727915">"డేటా రోమింగ్ ఆఫ్ చేయబడింది. ఆన్ చేయడానికి నొక్కండి."</string>
     <string name="roaming_enabled_message" msgid="9022249120750897">"రోమింగ్ ఛార్జీలు వర్తించవచ్చు. మార్చడానికి నొక్కండి."</string>
     <string name="roaming_notification_title" msgid="3590348480688047320">"మొబైల్ డేటా కనెక్షన్‌ని కోల్పోయారు"</string>
