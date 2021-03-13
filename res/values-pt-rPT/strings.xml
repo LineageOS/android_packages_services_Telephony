@@ -919,6 +919,6 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Informações do telefone"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Informações de fornecimento do operador"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Acionar fornecimento do operador"</string>
-    <string name="call_quality_notification_bluetooth_details" msgid="219073466476340435">"Sugestão: melhore a conetividade Bluetooth"</string>
+    <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"O seu sinal Bluetooth é fraco. Tente mudar para o altifalante."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Notificação de qualidade da chamada"</string>
 </resources>
