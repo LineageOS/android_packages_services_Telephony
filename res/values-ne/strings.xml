@@ -919,7 +919,6 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"फोनसम्बन्धी जानकारी"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"सेवा प्रदायकको प्रावधानसम्बन्धी जानकारी"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"सेवा प्रदायकको प्रावधानलाई ट्रिगर गर्नुहोस्"</string>
-    <!-- no translation found for call_quality_notification_bluetooth_details (8348950331707346711) -->
-    <skip />
+    <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"ब्लुटुथको सिग्नल कमजोर छ। स्पिकरफोन प्रयोग गरी हेर्नुहोस्।"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"कलको गुणस्तरसम्बन्धी सूचना"</string>
 </resources>
