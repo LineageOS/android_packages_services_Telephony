@@ -919,7 +919,6 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"휴대전화 정보"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"이동통신사 프로비저닝 정보"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"이동통신사 프로비저닝 실행"</string>
-    <!-- no translation found for call_quality_notification_bluetooth_details (8348950331707346711) -->
-    <skip />
+    <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"블루투스 신호 강도가 약합니다. 스피커폰으로 전환해 보세요."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"통화 품질 알림"</string>
 </resources>
