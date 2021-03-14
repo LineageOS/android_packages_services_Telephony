@@ -1596,6 +1596,7 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
                 Connection.AUDIO_CODEC_NONE);
         if (newCodecType != oldCodecType) {
             newExtras.putInt(Connection.EXTRA_AUDIO_CODEC, newCodecType);
+            Log.i(this, "put audio codec:" + newCodecType);
             changed = true;
         }
         if (isImsConnection()) {
@@ -1603,6 +1604,7 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
             float oldBitrate = newExtras.getFloat(Connection.EXTRA_AUDIO_CODEC_BITRATE_KBPS, 0.0f);
             if (Math.abs(newBitrate - oldBitrate) > THRESHOLD) {
                 newExtras.putFloat(Connection.EXTRA_AUDIO_CODEC_BITRATE_KBPS, newBitrate);
+                Log.i(this, "put audio bitrate:" + newBitrate);
                 changed = true;
             }
 
@@ -1611,6 +1613,7 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
                     0.0f);
             if (Math.abs(newBandwidth - oldBandwidth) > THRESHOLD) {
                 newExtras.putFloat(Connection.EXTRA_AUDIO_CODEC_BANDWIDTH_KHZ, newBandwidth);
+                Log.i(this, "put audio bandwidth:" + newBandwidth);
                 changed = true;
             }
         } else {
@@ -1621,6 +1624,12 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
         }
 
         if (changed) {
+            Log.i(this, "Audio attribute, Codec:"
+                    + newExtras.getInt(Connection.EXTRA_AUDIO_CODEC, Connection.AUDIO_CODEC_NONE)
+                    + ", Bitrate:"
+                    + newExtras.getFloat(Connection.EXTRA_AUDIO_CODEC_BITRATE_KBPS, 0.0f)
+                    + ", Bandwidth:"
+                    + newExtras.getFloat(Connection.EXTRA_AUDIO_CODEC_BANDWIDTH_KHZ, 0.0f));
             putTelephonyExtras(newExtras);
         }
     }
