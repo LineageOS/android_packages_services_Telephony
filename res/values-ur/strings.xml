@@ -919,6 +919,6 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"فون کی معلومات"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"کیرئیر فراہمی معلومات"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"ٹرگر کیرئیر فراہمی"</string>
-    <string name="call_quality_notification_bluetooth_details" msgid="219073466476340435">"تجویز: بلوٹوتھ کنیکٹوٹی کو بہتر بنائیں"</string>
+    <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"آپ کا بلوٹوتھ سگنل کمزور ہے۔ اسپیکر فون پر سوئچ کر کے آزمائیں۔"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"کال کی کوالٹی کی اطلاع"</string>
 </resources>

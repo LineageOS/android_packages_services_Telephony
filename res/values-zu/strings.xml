@@ -921,6 +921,6 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Ulwazi lwefoni"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Ulwazi lokuhlinzeka lenkampani yenethiwekhi"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Cupha ukunikezwa kwenkampani yenethiwekhi"</string>
-    <string name="call_quality_notification_bluetooth_details" msgid="219073466476340435">"Isiphakamiso: Thuthukisa uxhumo lwe-Bluetooth"</string>
+    <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Isignali yakho ye-bluetooth ayiqinile. Zama ukushintshela kusipikhasefoni."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Isaziso Sekhwalithi"</string>
 </resources>

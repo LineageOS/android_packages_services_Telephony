@@ -919,6 +919,6 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Telefooninformatie"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Gegevens voor providerregistratie"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Providerregistratie activeren"</string>
-    <string name="call_quality_notification_bluetooth_details" msgid="219073466476340435">"Suggestie: verbeter de bluetooth-verbinding"</string>
+    <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Het bluetooth-signaal is zwak. Schakel over naar bellen op luidspreker."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Melding over gesprekskwaliteit"</string>
 </resources>

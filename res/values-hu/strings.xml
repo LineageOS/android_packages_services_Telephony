@@ -919,6 +919,6 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Telefon adatai"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Információ a szolgáltatói ellátásról"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Szolgáltatói ellátás aktiválása"</string>
-    <string name="call_quality_notification_bluetooth_details" msgid="219073466476340435">"Javaslat: Gondoskodjon jobb Bluetooth-kapcsolatról"</string>
+    <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Gyenge a Bluetooth-jel. Próbáljon kihangosítóra váltani."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Értesítés a hívás minőségéről"</string>
 </resources>

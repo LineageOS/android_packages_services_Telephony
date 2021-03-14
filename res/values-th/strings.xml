@@ -919,6 +919,6 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"ข้อมูลโทรศัพท์"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"ข้อมูลการจัดสรรผู้ให้บริการ"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"ทริกเกอร์การจัดสรรผู้ให้บริการ"</string>
-    <string name="call_quality_notification_bluetooth_details" msgid="219073466476340435">"คำแนะนำ: ปรับปรุงการเชื่อมต่อบลูทูธ"</string>
+    <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"สัญญาณบลูทูธอ่อน ลองเปลี่ยนไปใช้ลำโพงแทน"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"การแจ้งเตือนคุณภาพการโทร"</string>
 </resources>
