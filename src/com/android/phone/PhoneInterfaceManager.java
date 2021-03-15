@@ -6153,6 +6153,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             @TelephonyManager.NrDualConnectivityState int nrDualConnectivityState) {
         TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
                 mApp, subId, "enableNRDualConnectivity");
+        if (isRadioInterfaceCapabilitySupported(
+                TelephonyManager.CAPABILITY_NR_DUAL_CONNECTIVITY_CONFIGURATION_AVAILABLE)) {
+            return TelephonyManager.ENABLE_NR_DUAL_CONNECTIVITY_NOT_SUPPORTED;
+        }
+
         WorkSource workSource = getWorkSource(Binder.getCallingUid());
         final long identity = Binder.clearCallingIdentity();
         try {
@@ -6175,6 +6180,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         TelephonyPermissions
                 .enforeceCallingOrSelfReadPrivilegedPhoneStatePermissionOrCarrierPrivilege(
                         mApp, subId, "isNRDualConnectivityEnabled");
+        if (isRadioInterfaceCapabilitySupported(
+                TelephonyManager.CAPABILITY_NR_DUAL_CONNECTIVITY_CONFIGURATION_AVAILABLE)) {
+            return false;
+        }
         WorkSource workSource = getWorkSource(Binder.getCallingUid());
         final long identity = Binder.clearCallingIdentity();
         try {
