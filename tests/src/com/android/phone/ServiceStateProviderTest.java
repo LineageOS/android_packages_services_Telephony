@@ -64,7 +64,7 @@ public class ServiceStateProviderTest {
     private final String[] mTestProjection =
     {
         ServiceStateTable.VOICE_REG_STATE,
-        ServiceStateProvider.DATA_REG_STATE,
+        ServiceStateTable.DATA_REG_STATE,
         ServiceStateProvider.VOICE_OPERATOR_ALPHA_LONG,
         ServiceStateProvider.VOICE_OPERATOR_ALPHA_SHORT,
         ServiceStateTable.VOICE_OPERATOR_NUMERIC,
@@ -324,6 +324,28 @@ public class ServiceStateProviderTest {
 
         // Test that notifyChange is called by notifyChangeForSubIdAndField when the
         // data_network_type changes
+        assertTrue(notifyChangeCalledForSubIdAndField(oldSS, newSS, subId));
+    }
+
+    @Test
+    @SmallTest
+    public void testNotifyChanged_dataRegStateUpdated() {
+        int subId = 0;
+
+        ServiceState oldSS = new ServiceState();
+        oldSS.setStateOutOfService();
+        oldSS.setDataRegState(ServiceState.STATE_OUT_OF_SERVICE);
+
+        ServiceState newSS = new ServiceState();
+        newSS.setStateOutOfService();
+        newSS.setDataRegState(ServiceState.STATE_POWER_OFF);
+
+        // Test that notifyChange is called by notifyChangeForSubId
+        // when the data_reg_state changes
+        assertTrue(notifyChangeCalledForSubId(oldSS, newSS, subId));
+
+        // Test that notifyChange is called by notifyChangeForSubIdAndField
+        // when the data_reg_state changes
         assertTrue(notifyChangeCalledForSubIdAndField(oldSS, newSS, subId));
     }
 
