@@ -86,6 +86,7 @@ public class ServiceStateProviderTest {
         ServiceStateProvider.OPERATOR_ALPHA_LONG_RAW,
         ServiceStateProvider.OPERATOR_ALPHA_SHORT_RAW,
         ServiceStateTable.DATA_NETWORK_TYPE,
+        ServiceStateTable.DUPLEX_MODE,
     };
 
     // Exception used internally to verify if the Resolver#notifyChange has been called.
@@ -110,6 +111,15 @@ public class ServiceStateProviderTest {
         mTestServiceState.setStateOutOfService();
         mTestServiceStateForSubId1 = new ServiceState();
         mTestServiceStateForSubId1.setStateOff();
+
+        // Add NRI to trigger SS with non-default values (e.g. duplex mode)
+        NetworkRegistrationInfo nriWwan = new NetworkRegistrationInfo.Builder()
+                .setTransportType(AccessNetworkConstants.TRANSPORT_TYPE_WWAN)
+                .setAccessNetworkTechnology(TelephonyManager.NETWORK_TYPE_LTE)
+                .setDomain(NetworkRegistrationInfo.DOMAIN_PS)
+                .build();
+        mTestServiceStateForSubId1.addNetworkRegistrationInfo(nriWwan);
+        mTestServiceStateForSubId1.setChannelNumber(65536); // EutranBand.BAND_65, DUPLEX_MODE_FDD
 
         // Mock out the actual phone state
         ServiceStateProvider provider = new ServiceStateProvider() {
@@ -196,6 +206,7 @@ public class ServiceStateProviderTest {
         final String operatorAlphaLongRaw = ss.getOperatorAlphaLongRaw();
         final String operatorAlphaShortRaw = ss.getOperatorAlphaShortRaw();
         final int dataNetworkType = ss.getDataNetworkType();
+        final int duplexMode = ss.getDuplexMode();
 
         assertEquals(voiceRegState, cursor.getInt(0));
         assertEquals(dataRegState, cursor.getInt(1));
@@ -220,6 +231,7 @@ public class ServiceStateProviderTest {
         assertEquals(operatorAlphaLongRaw, cursor.getString(20));
         assertEquals(operatorAlphaShortRaw, cursor.getString(21));
         assertEquals(dataNetworkType, cursor.getInt(22));
+        assertEquals(duplexMode, cursor.getInt(23));
     }
 
     /**
