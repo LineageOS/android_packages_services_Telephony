@@ -247,6 +247,12 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                 }
 
                 case EVENT_DO_FETCH_DEFAULT: {
+                    // Clear in-memory cache for carrier app config, so when carrier app gets
+                    // uninstalled, no stale config is left.
+                    if (mConfigFromCarrierApp[phoneId] != null
+                            && getCarrierPackageForPhoneId(phoneId) == null) {
+                        mConfigFromCarrierApp[phoneId] = null;
+                    }
                     // Restore persistent override values.
                     PersistableBundle config = restoreConfigFromXml(
                             mPlatformCarrierConfigPackage, OVERRIDE_PACKAGE_ADDITION, phoneId);
@@ -1142,12 +1148,6 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
      * have a saved config file to use instead.
      */
     private void updateConfigForPhoneId(int phoneId) {
-        // Clear in-memory cache for carrier app config, so when carrier app gets uninstalled, no
-        // stale config is left.
-        if (mConfigFromCarrierApp[phoneId] != null &&
-                getCarrierPackageForPhoneId(phoneId) == null) {
-            mConfigFromCarrierApp[phoneId] = null;
-        }
         mHandler.sendMessage(mHandler.obtainMessage(EVENT_DO_FETCH_DEFAULT, phoneId, -1));
     }
 
