@@ -56,9 +56,13 @@ public class DigestAuthUtils {
         if (!TextUtils.isEmpty(parsedHeader.getAlgorithm())
                 && !MD5_ALGORITHM.equals(parsedHeader.getAlgorithm().toLowerCase())) {
             Log.e(TAG, "This client only supports MD5 auth");
+            return "";
         }
-
-        Log.i(TAG, "nonce=" + parsedHeader.getNonce());
+        if (!TextUtils.isEmpty(parsedHeader.getQop())
+                && !AUTH_QOP.equals(parsedHeader.getQop().toLowerCase())) {
+            Log.e(TAG, "This client only supports the auth qop");
+            return "";
+        }
 
         String clientNonce = makeClientNonce();
 
@@ -71,7 +75,9 @@ public class DigestAuthUtils {
             replyHeader.setScheme(parsedHeader.getScheme());
             replyHeader.setUsername(credentials.getTransactionId());
             replyHeader.setURI(new WorkaroundURI(uri));
+            replyHeader.setRealm(parsedHeader.getRealm());
             replyHeader.setQop(AUTH_QOP);
+            replyHeader.setNonce(parsedHeader.getNonce());
             replyHeader.setCNonce(clientNonce);
             replyHeader.setNonceCount(1);
             replyHeader.setResponse(response);
@@ -83,7 +89,7 @@ public class DigestAuthUtils {
             return null;
         }
 
-        return replyHeader.encode();
+        return replyHeader.encodeBody();
     }
 
     public static String computeResponse(String serverNonce, String clientNonce, String qop,
