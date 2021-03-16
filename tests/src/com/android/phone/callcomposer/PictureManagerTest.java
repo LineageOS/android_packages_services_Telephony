@@ -34,6 +34,7 @@ import android.os.UserHandle;
 import android.provider.CallLog;
 import android.telephony.CarrierConfigManager;
 import android.telephony.TelephonyManager;
+import android.telephony.gba.TlsParams;
 import android.telephony.gba.UaSecurityProtocolIdentifier;
 
 import org.junit.After;
@@ -78,6 +79,14 @@ public class PictureManagerTest {
         PersistableBundle b = new PersistableBundle();
         b.putString(CarrierConfigManager.KEY_CALL_COMPOSER_PICTURE_SERVER_URL_STRING,
                 FAKE_URL_BASE);
+        b.putInt(CarrierConfigManager.KEY_GBA_MODE_INT,
+                CarrierConfigManager.GBA_ME);
+        b.putInt(CarrierConfigManager.KEY_GBA_UA_SECURITY_ORGANIZATION_INT,
+                UaSecurityProtocolIdentifier.ORG_3GPP);
+        b.putInt(CarrierConfigManager.KEY_GBA_UA_SECURITY_PROTOCOL_INT,
+                UaSecurityProtocolIdentifier.UA_SECURITY_PROTOCOL_3GPP_TLS_DEFAULT);
+        b.putInt(CarrierConfigManager.KEY_GBA_UA_TLS_CIPHER_SUITE_INT,
+                TlsParams.TLS_RSA_WITH_AES_128_CBC_SHA);
         when(telephonyManager.getCarrierConfig()).thenReturn(b);
     }
 
@@ -263,7 +272,7 @@ public class PictureManagerTest {
 
     public void testGbaCredLookup(GbaCredentialsSupplier supplier, boolean forceExpected)
             throws Exception {
-        String fakeRealm = "3gpp-bootstraping@naf1.example.com";
+        String fakeNafId = "https://3GPP-bootstrapping@www.example.com";
         byte[] fakeKey = new byte[] {1, 2, 3, 4, 5};
         String fakeTxId = "89sdfjggf";
 
@@ -271,8 +280,9 @@ public class PictureManagerTest {
                 ArgumentCaptor.forClass(TelephonyManager.BootstrapAuthenticationCallback.class);
 
         CompletableFuture<GbaCredentials> credsFuture =
-                supplier.getCredentials(fakeRealm, CallComposerPictureManager.getExecutor());
-        verify(telephonyManager).bootstrapAuthenticationRequest(anyInt(), eq(Uri.parse(fakeRealm)),
+                supplier.getCredentials(fakeNafId, CallComposerPictureManager.getExecutor());
+        verify(telephonyManager).bootstrapAuthenticationRequest(anyInt(),
+                eq(Uri.parse(fakeNafId)),
                 nullable(UaSecurityProtocolIdentifier.class), eq(forceExpected),
                 nullable(Executor.class),
                 authCallbackCaptor.capture());
@@ -285,9 +295,9 @@ public class PictureManagerTest {
         // Do it again and see if we make another request, then make sure that matches up with what
         // we expected.
         CompletableFuture<GbaCredentials> credsFuture1 =
-                supplier.getCredentials(fakeRealm, CallComposerPictureManager.getExecutor());
+                supplier.getCredentials(fakeNafId, CallComposerPictureManager.getExecutor());
         verify(telephonyManager, times(forceExpected ? 2 : 1))
-                .bootstrapAuthenticationRequest(anyInt(), eq(Uri.parse(fakeRealm)),
+                .bootstrapAuthenticationRequest(anyInt(), eq(Uri.parse(fakeNafId)),
                         nullable(UaSecurityProtocolIdentifier.class),
                         eq(forceExpected),
                         nullable(Executor.class),
