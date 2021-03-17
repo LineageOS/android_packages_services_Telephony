@@ -113,6 +113,7 @@ import android.telephony.gba.UaSecurityProtocolIdentifier;
 import android.telephony.ims.ImsException;
 import android.telephony.ims.ProvisioningManager;
 import android.telephony.ims.RcsClientConfiguration;
+import android.telephony.ims.RcsContactUceCapability;
 import android.telephony.ims.RegistrationManager;
 import android.telephony.ims.aidl.IImsCapabilityCallback;
 import android.telephony.ims.aidl.IImsConfig;
@@ -10106,6 +10107,104 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             Binder.restoreCallingIdentity(identity);
         }
     }
+
+    /**
+     * Add new feature tags to the Set used to calculate the capabilities in PUBLISH.
+     * @return current RcsContactUceCapability instance that will be used for PUBLISH.
+     */
+    // Used for SHELL command only right now.
+    @Override
+    public RcsContactUceCapability addUceRegistrationOverrideShell(int subId,
+            List<String> featureTags) {
+        TelephonyPermissions.enforceShellOnly(Binder.getCallingUid(),
+                "addUceRegistrationOverrideShell");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return mApp.imsRcsController.addUceRegistrationOverrideShell(subId,
+                    new ArraySet<>(featureTags));
+        } catch (ImsException e) {
+            throw new ServiceSpecificException(e.getCode(), e.getMessage());
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Remove existing feature tags to the Set used to calculate the capabilities in PUBLISH.
+     * @return current RcsContactUceCapability instance that will be used for PUBLISH.
+     */
+    // Used for SHELL command only right now.
+    @Override
+    public RcsContactUceCapability removeUceRegistrationOverrideShell(int subId,
+            List<String> featureTags) {
+        TelephonyPermissions.enforceShellOnly(Binder.getCallingUid(),
+                "removeUceRegistrationOverrideShell");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return mApp.imsRcsController.removeUceRegistrationOverrideShell(subId,
+                    new ArraySet<>(featureTags));
+        } catch (ImsException e) {
+            throw new ServiceSpecificException(e.getCode(), e.getMessage());
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Clear all overrides in the Set used to calculate the capabilities in PUBLISH.
+     * @return current RcsContactUceCapability instance that will be used for PUBLISH.
+     */
+    // Used for SHELL command only right now.
+    @Override
+    public RcsContactUceCapability clearUceRegistrationOverrideShell(int subId) {
+        TelephonyPermissions.enforceShellOnly(Binder.getCallingUid(),
+                "clearUceRegistrationOverrideShell");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return mApp.imsRcsController.clearUceRegistrationOverrideShell(subId);
+        } catch (ImsException e) {
+            throw new ServiceSpecificException(e.getCode(), e.getMessage());
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * @return current RcsContactUceCapability instance that will be used for PUBLISH.
+     */
+    // Used for SHELL command only right now.
+    @Override
+    public RcsContactUceCapability getLatestRcsContactUceCapabilityShell(int subId) {
+        TelephonyPermissions.enforceShellOnly(Binder.getCallingUid(),
+                "getLatestRcsContactUceCapabilityShell");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return mApp.imsRcsController.getLatestRcsContactUceCapabilityShell(subId);
+        } catch (ImsException e) {
+            throw new ServiceSpecificException(e.getCode(), e.getMessage());
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Returns the last PIDF XML sent to the network during the last PUBLISH or "none" if the
+     * device does not have an active PUBLISH.
+     */
+    // Used for SHELL command only right now.
+    @Override
+    public String getLastUcePidfXmlShell(int subId) {
+        TelephonyPermissions.enforceShellOnly(Binder.getCallingUid(), "uceGetLastPidfXml");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return mApp.imsRcsController.getLastUcePidfXmlShell(subId);
+        } catch (ImsException e) {
+            throw new ServiceSpecificException(e.getCode(), e.getMessage());
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
 
     @Override
     public void setSignalStrengthUpdateRequest(int subId, SignalStrengthUpdateRequest request,
