@@ -57,6 +57,7 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
 
     private static final String IMS_SUBCOMMAND = "ims";
     private static final String NUMBER_VERIFICATION_SUBCOMMAND = "numverify";
+    private static final String EMERGENCY_CALLBACK_MODE = "emergency-callback-mode";
     private static final String EMERGENCY_NUMBER_TEST_MODE = "emergency-number-test-mode";
     private static final String END_BLOCK_SUPPRESSION = "end-block-suppression";
     private static final String CARRIER_CONFIG_SUBCOMMAND = "cc";
@@ -151,6 +152,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             }
             case NUMBER_VERIFICATION_SUBCOMMAND:
                 return handleNumberVerificationCommand();
+            case EMERGENCY_CALLBACK_MODE:
+                return handleEmergencyCallbackModeCommand();
             case EMERGENCY_NUMBER_TEST_MODE:
                 return handleEmergencyNumberTestModeCommand();
             case CARRIER_CONFIG_SUBCOMMAND: {
@@ -346,6 +349,19 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             default:
                 onHelpDataTestMode();
                 break;
+        }
+        return 0;
+    }
+
+    private int handleEmergencyCallbackModeCommand() {
+        PrintWriter errPw = getErrPrintWriter();
+        try {
+            mInterface.startEmergencyCallbackMode();
+            Log.d(LOG_TAG, "handleEmergencyCallbackModeCommand: triggered");
+        } catch (RemoteException ex) {
+            Log.w(LOG_TAG, "emergency-callback-mode error: " + ex.getMessage());
+            errPw.println("Exception: " + ex.getMessage());
+            return -1;
         }
         return 0;
     }
