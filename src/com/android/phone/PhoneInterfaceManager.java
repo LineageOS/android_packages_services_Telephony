@@ -18,6 +18,8 @@ package com.android.phone;
 
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 
+import static com.android.internal.telephony.PhoneConstants.PHONE_TYPE_CDMA;
+import static com.android.internal.telephony.PhoneConstants.PHONE_TYPE_GSM;
 import static com.android.internal.telephony.PhoneConstants.PHONE_TYPE_IMS;
 import static com.android.internal.telephony.PhoneConstants.SUBSCRIPTION_KEY;
 
@@ -130,6 +132,7 @@ import com.android.internal.telephony.CellNetworkScanResult;
 import com.android.internal.telephony.CommandException;
 import com.android.internal.telephony.CommandsInterface;
 import com.android.internal.telephony.DefaultPhoneNotifier;
+import com.android.internal.telephony.GsmCdmaPhone;
 import com.android.internal.telephony.HalVersion;
 import com.android.internal.telephony.IBooleanConsumer;
 import com.android.internal.telephony.IIntegerConsumer;
@@ -7878,6 +7881,31 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 }
             }
             return false;
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Start emergency callback mode for GsmCdmaPhone for testing.
+     */
+    @Override
+    public void startEmergencyCallbackMode() {
+        TelephonyPermissions.enforceShellOnly(Binder.getCallingUid(),
+                "startEmergencyCallbackMode");
+        enforceModifyPermission();
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            for (Phone phone : PhoneFactory.getPhones()) {
+                Rlog.d(LOG_TAG, "startEmergencyCallbackMode phone type: " + phone.getPhoneType());
+                if (phone != null && ((phone.getPhoneType() == PHONE_TYPE_GSM)
+                        || (phone.getPhoneType() == PHONE_TYPE_CDMA))) {
+                    GsmCdmaPhone gsmCdmaPhone = (GsmCdmaPhone) phone;
+                    gsmCdmaPhone.obtainMessage(
+                            GsmCdmaPhone.EVENT_EMERGENCY_CALLBACK_MODE_ENTER).sendToTarget();
+                    Rlog.d(LOG_TAG, "startEmergencyCallbackMode: triggered");
+                }
+            }
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
