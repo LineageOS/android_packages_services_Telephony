@@ -28,15 +28,21 @@ import android.os.Binder;
 import android.os.PersistableBundle;
 import android.os.Process;
 import android.os.RemoteException;
+import android.os.ServiceSpecificException;
 import android.provider.BlockedNumberContract;
 import android.telephony.CarrierConfigManager;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.telephony.emergency.EmergencyNumber;
+import android.telephony.ims.ImsException;
+import android.telephony.ims.RcsContactUceCapability;
 import android.telephony.ims.feature.ImsFeature;
 import android.text.TextUtils;
+import android.util.ArrayMap;
+import android.util.ArraySet;
 import android.util.Log;
 
+import com.android.ims.rcs.uce.util.FeatureTags;
 import com.android.internal.telephony.ITelephony;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
@@ -48,9 +54,12 @@ import com.android.phone.callcomposer.CallComposerPictureManager;
 
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.TreeSet;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
@@ -124,6 +133,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
     private static final String UCE_REMOVE_EAB_CONTACT = "remove-eab-contact";
     private static final String UCE_GET_DEVICE_ENABLED = "get-device-enabled";
     private static final String UCE_SET_DEVICE_ENABLED = "set-device-enabled";
+    private static final String UCE_OVERRIDE_PUBLISH_CAPS = "override-published-caps";
+    private static final String UCE_GET_LAST_PIDF_XML = "get-last-publish-pidf";
 
     // Check if a package has carrier privileges on any SIM, regardless of subId/phoneId.
     private static final String HAS_CARRIER_PRIVILEGES_COMMAND = "has-carrier-privileges";
@@ -177,6 +188,48 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             put(CarrierConfigManager.KEY_RATCHET_RAT_FAMILIES, CcType.STRING_ARRAY);
         }
     };
+
+    /**
+     * Map from a shorthand string to the feature tags required in registration required in order
+     * for the RCS feature to be considered "capable".
+     */
+    private static final Map<String, Set<String>> TEST_FEATURE_TAG_MAP;
+    static {
+        ArrayMap<String, Set<String>> map = new ArrayMap<>(18);
+        map.put("chat_v1", Collections.singleton(FeatureTags.FEATURE_TAG_CHAT_IM));
+        map.put("chat_v2", Collections.singleton(FeatureTags.FEATURE_TAG_CHAT_SESSION));
+        map.put("ft", Collections.singleton(FeatureTags.FEATURE_TAG_FILE_TRANSFER));
+        map.put("ft_sms", Collections.singleton(FeatureTags.FEATURE_TAG_FILE_TRANSFER_VIA_SMS));
+        map.put("mmtel", Collections.singleton(FeatureTags.FEATURE_TAG_MMTEL));
+        map.put("mmtel_vt", new ArraySet<>(Arrays.asList(FeatureTags.FEATURE_TAG_MMTEL,
+                FeatureTags.FEATURE_TAG_VIDEO)));
+        map.put("geo_push", Collections.singleton(FeatureTags.FEATURE_TAG_GEO_PUSH));
+        map.put("geo_push_sms", Collections.singleton(FeatureTags.FEATURE_TAG_GEO_PUSH_VIA_SMS));
+        map.put("call_comp",
+                Collections.singleton(FeatureTags.FEATURE_TAG_CALL_COMPOSER_ENRICHED_CALLING));
+        map.put("call_comp_mmtel",
+                Collections.singleton(FeatureTags.FEATURE_TAG_CALL_COMPOSER_VIA_TELEPHONY));
+        map.put("call_post", Collections.singleton(FeatureTags.FEATURE_TAG_POST_CALL));
+        map.put("map", Collections.singleton(FeatureTags.FEATURE_TAG_SHARED_MAP));
+        map.put("sketch", Collections.singleton(FeatureTags.FEATURE_TAG_SHARED_SKETCH));
+        // Feature tags defined twice for chatbot session because we want v1 and v2 based on bot
+        // version
+        map.put("chatbot", new ArraySet<>(Arrays.asList(
+                FeatureTags.FEATURE_TAG_CHATBOT_COMMUNICATION_USING_SESSION,
+                FeatureTags.FEATURE_TAG_CHATBOT_VERSION_SUPPORTED)));
+        map.put("chatbot_v2", new ArraySet<>(Arrays.asList(
+                FeatureTags.FEATURE_TAG_CHATBOT_COMMUNICATION_USING_SESSION,
+                FeatureTags.FEATURE_TAG_CHATBOT_VERSION_SUPPORTED)));
+        map.put("chatbot_sa", new ArraySet<>(Arrays.asList(
+                FeatureTags.FEATURE_TAG_CHATBOT_COMMUNICATION_USING_STANDALONE_MSG,
+                FeatureTags.FEATURE_TAG_CHATBOT_VERSION_SUPPORTED)));
+        map.put("chatbot_sa_v2", new ArraySet<>(Arrays.asList(
+                FeatureTags.FEATURE_TAG_CHATBOT_COMMUNICATION_USING_STANDALONE_MSG,
+                FeatureTags.FEATURE_TAG_CHATBOT_VERSION_SUPPORTED)));
+        map.put("chatbot_role", Collections.singleton(FeatureTags.FEATURE_TAG_CHATBOT_ROLE));
+        TEST_FEATURE_TAG_MAP = Collections.unmodifiableMap(map);
+    }
+
 
     public TelephonyShellCommand(ITelephony binder, Context context) {
         mInterface = binder;
@@ -346,6 +399,22 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         pw.println("  uce set-device-enabled true|false");
         pw.println("    Set the device config for RCS User Capability Exchange to the value.");
         pw.println("    The value could be true, false.");
+        pw.println("  uce override-published-caps [-s SLOT_ID] add|remove|clear [CAPABILITIES]");
+        pw.println("    Override the existing SIP PUBLISH with different capabilities.");
+        pw.println("    Options are:");
+        pw.println("      -s: The SIM slot ID to read carrier config value for. If no option");
+        pw.println("          is specified, it will choose the default voice SIM slot.");
+        pw.println("      add [CAPABILITY]: add a new capability");
+        pw.println("      remove [CAPABILITY]: remove a capability");
+        pw.println("      clear: clear all capability overrides");
+        pw.println("      CAPABILITY: \":\" separated list of capabilities.");
+        pw.println("          Valid options are: [mmtel(_vt), chat_v1, chat_v2, ft, ft_sms,");
+        pw.println("          geo_push, geo_push_sms, call_comp, call_post, map, sketch, chatbot,");
+        pw.println("          chatbot_sa, chatbot_role] as well as full length");
+        pw.println("          featureTag=\"featureValue\" feature tags that are not defined here.");
+        pw.println("  uce get-last-publish-pidf [-s SLOT_ID]");
+        pw.println("    Get the PIDF XML included in the last SIP PUBLISH, or \"none\" if no ");
+        pw.println("    PUBLISH is active");
     }
 
     private void onHelpNumberVerification() {
@@ -1709,8 +1778,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
     private int handleRcsUceCommand() {
         String arg = getNextArg();
         if (arg == null) {
-            Log.w(LOG_TAG, "cannot get uce parameter");
-            return -1;
+            onHelpUce();
+            return 0;
         }
 
         switch (arg) {
@@ -1722,6 +1791,10 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                 return handleUceGetDeviceEnabledCommand();
             case UCE_SET_DEVICE_ENABLED:
                 return handleUceSetDeviceEnabledCommand();
+            case UCE_OVERRIDE_PUBLISH_CAPS:
+                return handleUceOverridePublishCaps();
+            case UCE_GET_LAST_PIDF_XML:
+                return handleUceGetPidfXml();
         }
         return -1;
     }
@@ -1837,6 +1910,101 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         }
         if (VDBG) {
             Log.v(LOG_TAG, "src get-test-enabled, returned: " + result);
+        }
+        getOutPrintWriter().println(result);
+        return 0;
+    }
+
+    private int handleUceOverridePublishCaps() {
+        int subId = getSubId("uce override-published-caps");
+        if (subId == SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
+            return -1;
+        }
+        //uce override-published-caps [-s SLOT_ID] add|remove|clear|list [CAPABILITIES]
+        String operation = getNextArgRequired();
+        String caps = getNextArg();
+        if (!"add".equals(operation) && !"remove".equals(operation) && !"clear".equals(operation)
+                && !"list".equals(operation)) {
+            getErrPrintWriter().println("Invalid operation: " + operation);
+            return -1;
+        }
+
+        // add/remove requires capabilities to be specified.
+        if ((!"clear".equals(operation) && !"list".equals(operation)) && TextUtils.isEmpty(caps)) {
+            getErrPrintWriter().println("\"" + operation + "\" requires capabilities to be "
+                    + "specified");
+            return -1;
+        }
+
+        ArraySet<String> capSet = new ArraySet<>();
+        if (!TextUtils.isEmpty(caps)) {
+            String[] capArray = caps.split(":");
+            for (String cap : capArray) {
+                // Allow unknown tags to be passed in as well.
+                capSet.addAll(TEST_FEATURE_TAG_MAP.getOrDefault(cap, Collections.singleton(cap)));
+            }
+        }
+
+        RcsContactUceCapability result = null;
+        try {
+            switch (operation) {
+                case "add":
+                    result = mInterface.addUceRegistrationOverrideShell(subId,
+                            new ArrayList<>(capSet));
+                    break;
+                case "remove":
+                    result = mInterface.removeUceRegistrationOverrideShell(subId,
+                            new ArrayList<>(capSet));
+                    break;
+                case "clear":
+                    result = mInterface.clearUceRegistrationOverrideShell(subId);
+                    break;
+                case "list":
+                    result = mInterface.getLatestRcsContactUceCapabilityShell(subId);
+                    break;
+            }
+        } catch (RemoteException e) {
+            Log.w(LOG_TAG, "uce override-published-caps, error " + e.getMessage());
+            getErrPrintWriter().println("Exception: " + e.getMessage());
+            return -1;
+        } catch (ServiceSpecificException sse) {
+            // Reconstruct ImsException
+            ImsException imsException = new ImsException(sse.getMessage(), sse.errorCode);
+            Log.w(LOG_TAG, "uce override-published-caps, error " + imsException);
+            getErrPrintWriter().println("Exception: " + imsException);
+            return -1;
+        }
+        if (result == null) {
+            getErrPrintWriter().println("Service not available");
+            return -1;
+        }
+        getOutPrintWriter().println(result);
+        return 0;
+    }
+
+    private int handleUceGetPidfXml() {
+        int subId = getSubId("uce get-last-publish-pidf");
+        if (subId == SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
+            return -1;
+        }
+
+        String result;
+        try {
+            result = mInterface.getLastUcePidfXmlShell(subId);
+        } catch (RemoteException e) {
+            Log.w(LOG_TAG, "uce get-last-publish-pidf, error " + e.getMessage());
+            getErrPrintWriter().println("Exception: " + e.getMessage());
+            return -1;
+        } catch (ServiceSpecificException sse) {
+            // Reconstruct ImsException
+            ImsException imsException = new ImsException(sse.getMessage(), sse.errorCode);
+            Log.w(LOG_TAG, "uce get-last-publish-pidf error " + imsException);
+            getErrPrintWriter().println("Exception: " + imsException);
+            return -1;
+        }
+        if (result == null) {
+            getErrPrintWriter().println("Service not available");
+            return -1;
         }
         getOutPrintWriter().println(result);
         return 0;
