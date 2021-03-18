@@ -55,7 +55,7 @@ public class TelephonyRcsService {
         /**
          * @return an {@link RcsFeatureController} associated with the slot specified.
          */
-        RcsFeatureController createController(Context context, int slotId);
+        RcsFeatureController createController(Context context, int slotId, int subId);
 
         /**
          * @return an instance of {@link UceControllerManager} associated with the slot specified.
@@ -71,8 +71,8 @@ public class TelephonyRcsService {
 
     private FeatureFactory mFeatureFactory = new FeatureFactory() {
         @Override
-        public RcsFeatureController createController(Context context, int slotId) {
-            return new RcsFeatureController(context, slotId);
+        public RcsFeatureController createController(Context context, int slotId, int subId) {
+            return new RcsFeatureController(context, slotId, subId);
         }
 
         @Override
@@ -113,6 +113,8 @@ public class TelephonyRcsService {
 
     // Maps slot ID -> RcsFeatureController.
     private SparseArray<RcsFeatureController> mFeatureControllers;
+    // Maps slotId -> associatedSubIds
+    private SparseArray<Integer> mSlotToAssociatedSubIds;
 
     // Whether the device supports User Capability Exchange
     private boolean mRcsUceEnabled;
@@ -132,7 +134,7 @@ public class TelephonyRcsService {
                         SubscriptionManager.INVALID_PHONE_INDEX);
                 int subId = bundle.getInt(CarrierConfigManager.EXTRA_SUBSCRIPTION_INDEX,
                         SubscriptionManager.INVALID_SUBSCRIPTION_ID);
-                updateFeatureControllerSubscription(slotId, subId);
+                onCarrierConfigChangedForSlot(slotId, subId);
             }
         }
     };
@@ -159,6 +161,7 @@ public class TelephonyRcsService {
         mContext = context;
         mNumSlots = numSlots;
         mFeatureControllers = new SparseArray<>(numSlots);
+        mSlotToAssociatedSubIds = new SparseArray<>(numSlots);
         mRcsUceEnabled = sResourceProxy.getDeviceUceEnabled(mContext);
     }
 
@@ -167,6 +170,7 @@ public class TelephonyRcsService {
         mContext = context;
         mNumSlots = numSlots;
         mFeatureControllers = new SparseArray<>(numSlots);
+        mSlotToAssociatedSubIds = new SparseArray<>(numSlots);
         sResourceProxy = resourceProxy;
         mRcsUceEnabled = sResourceProxy.getDeviceUceEnabled(mContext);
     }
@@ -218,6 +222,8 @@ public class TelephonyRcsService {
                     // Do not add feature controllers for inactive subscriptions
                     if (c.hasActiveFeatures()) {
                         mFeatureControllers.put(i, c);
+                        // Do not change mSlotToAssociatedSubIds, it will be updated upon carrier
+                        // config change.
                     }
                 }
             } else {
@@ -225,6 +231,7 @@ public class TelephonyRcsService {
                     RcsFeatureController c = mFeatureControllers.get(i);
                     if (c != null) {
                         mFeatureControllers.remove(i);
+                        mSlotToAssociatedSubIds.remove(i);
                         c.destroy();
                     }
                 }
@@ -232,19 +239,29 @@ public class TelephonyRcsService {
         }
     }
 
-    private void updateFeatureControllerSubscription(int slotId, int newSubId) {
+    /**
+     * ACTION_CARRIER_CONFIG_CHANGED was received by this service for a specific slot.
+     * @param slotId The slotId associated with the event.
+     * @param subId The subId associated with the event. May cause the subId associated with the
+     *              RcsFeatureController to change if the subscription itself has changed.
+     */
+    private void onCarrierConfigChangedForSlot(int slotId, int subId) {
         synchronized (mLock) {
             RcsFeatureController f = mFeatureControllers.get(slotId);
-            Log.i(LOG_TAG, "updateFeatureControllerSubscription: slotId=" + slotId + " newSubId="
-                    + newSubId + ", existing feature=" + (f != null));
-            if (SubscriptionManager.isValidSubscriptionId(newSubId)) {
+            final int oldSubId = mSlotToAssociatedSubIds.get(slotId,
+                    SubscriptionManager.INVALID_SUBSCRIPTION_ID);
+            mSlotToAssociatedSubIds.put(slotId, subId);
+            Log.i(LOG_TAG, "updateFeatureControllerSubscription: slotId=" + slotId
+                    + ", oldSubId= " + oldSubId + ", subId=" + subId + ", existing feature="
+                    + (f != null));
+            if (SubscriptionManager.isValidSubscriptionId(subId)) {
                 if (f == null) {
                     // A controller doesn't exist for this slot yet.
-                    f = mFeatureFactory.createController(mContext, slotId);
-                    updateSupportedFeatures(f, slotId, newSubId);
+                    f = mFeatureFactory.createController(mContext, slotId, subId);
+                    updateSupportedFeatures(f, slotId, subId);
                     if (f.hasActiveFeatures()) mFeatureControllers.put(slotId, f);
                 } else {
-                    updateSupportedFeatures(f, slotId, newSubId);
+                    updateSupportedFeatures(f, slotId, subId);
                     // Do not keep an empty container around.
                     if (!f.hasActiveFeatures()) {
                         f.destroy();
@@ -252,13 +269,19 @@ public class TelephonyRcsService {
                     }
                 }
             }
-            if (f != null) f.updateAssociatedSubscription(newSubId);
+            if (f != null) {
+                if (oldSubId == subId) {
+                    f.onCarrierConfigChangedForSubscription();
+                } else {
+                    f.updateAssociatedSubscription(subId);
+                }
+            }
         }
     }
 
     private RcsFeatureController constructFeatureController(int slotId) {
-        RcsFeatureController c = mFeatureFactory.createController(mContext, slotId);
         int subId = getSubscriptionFromSlot(slotId);
+        RcsFeatureController c = mFeatureFactory.createController(mContext, slotId, subId);
         updateSupportedFeatures(c, slotId, subId);
         return c;
     }
