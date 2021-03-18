@@ -21,6 +21,7 @@ import android.net.ConnectivityManager;
 import android.net.Network;
 import android.net.NetworkCapabilities;
 import android.net.NetworkRequest;
+import android.os.Build;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 
@@ -49,6 +50,9 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Iterator;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
@@ -140,7 +144,10 @@ public class CallComposerPictureTransfer {
                         mExecutorService);
         networkUrlFuture.thenAcceptAsync((result) -> {
             if (result != null) mCallback.onUploadSuccessful(result);
-        }, mExecutorService);
+        }, mExecutorService).exceptionally((ex) -> {
+            logException("Exception uploading image" , ex);
+            return null;
+        });
     }
 
     public void downloadPicture(GbaCredentialsSupplier credentialsSupplier) {
@@ -203,6 +210,9 @@ public class CallComposerPictureTransfer {
             }
             if (fromAuth != null) mCallback.onDownloadSuccessful(fromAuth);
             mCallback.onDownloadSuccessful(fromImmediate);
+        }).exceptionally((ex) -> {
+            logException("Exception downloading image" , ex);
+            return null;
         });
     }
 
@@ -223,7 +233,7 @@ public class CallComposerPictureTransfer {
         return resultFuture;
     }
 
-    private static HttpURLConnection prepareInitialPost(Network network, String uploadUrl) {
+    private HttpURLConnection prepareInitialPost(Network network, String uploadUrl) {
         try {
             HttpURLConnection connection =
                     (HttpURLConnection) network.openConnection(new URL(uploadUrl));
@@ -231,7 +241,7 @@ public class CallComposerPictureTransfer {
             connection.setInstanceFollowRedirects(false);
             connection.setConnectTimeout(HTTP_TIMEOUT_MILLIS);
             connection.setReadTimeout(HTTP_TIMEOUT_MILLIS);
-            connection.setRequestProperty("User-Agent", THREE_GPP_GBA);
+            connection.setRequestProperty("User-Agent", getUserAgent());
             return connection;
         } catch (MalformedURLException e) {
             Log.e(TAG, "Malformed URL: " + uploadUrl);
@@ -242,14 +252,14 @@ public class CallComposerPictureTransfer {
         }
     }
 
-    private static HttpURLConnection prepareImageDownloadRequest(Network network, String imageUrl) {
+    private HttpURLConnection prepareImageDownloadRequest(Network network, String imageUrl) {
         try {
             HttpURLConnection connection =
                     (HttpURLConnection) network.openConnection(new URL(imageUrl));
             connection.setRequestMethod("GET");
             connection.setConnectTimeout(HTTP_TIMEOUT_MILLIS);
             connection.setReadTimeout(HTTP_TIMEOUT_MILLIS);
-            connection.setRequestProperty("User-Agent", THREE_GPP_GBA);
+            connection.setRequestProperty("User-Agent", getUserAgent());
             return connection;
         } catch (MalformedURLException e) {
             Log.e(TAG, "Malformed URL: " + imageUrl);
@@ -387,7 +397,7 @@ public class CallComposerPictureTransfer {
             public void sendDispositionHeader(OutputStream out) throws IOException {
                 super.sendDispositionHeader(out);
                 if (filename != null) {
-                    String fileNameSuffix = ";filename=\"" + filename + "\"";
+                    String fileNameSuffix = "; filename=\"" + filename + "\"";
                     out.write(fileNameSuffix.getBytes());
                 }
             }
@@ -416,6 +426,11 @@ public class CallComposerPictureTransfer {
         HttpURLConnection connection = prepareInitialPost(network, mUrl);
         connection.setDoOutput(true);
         connection.addRequestProperty("Authorization", authHeader);
+        connection.addRequestProperty("Content-Length",
+                String.valueOf(multipartEntity.getContentLength()));
+        connection.addRequestProperty("Content-Type", multipartEntity.getContentType().getValue());
+        connection.addRequestProperty("Accept-Encoding", "*");
+
         try (OutputStream requestBodyOut = connection.getOutputStream()) {
             multipartEntity.writeTo(requestBodyOut);
         } catch (IOException e) {
@@ -425,6 +440,8 @@ public class CallComposerPictureTransfer {
 
         try {
             int response = connection.getResponseCode();
+            Log.i(TAG, "Received response code: " + response
+                    + ", message=" + connection.getResponseMessage());
             if (response == 401 || response == 403) {
                 deliverFailure(TelephonyManager.CallComposerException.ERROR_AUTHENTICATION_FAILED);
                 return null;
@@ -491,6 +508,22 @@ public class CallComposerPictureTransfer {
             return null;
         }
         return sb.toString();
+    }
+
+    private String getUserAgent() {
+        String carrierName = mContext.getSystemService(TelephonyManager.class)
+                .createForSubscriptionId(mSubscriptionId)
+                .getSimOperatorName();
+        String buildId = Build.ID;
+        String buildDate = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+                .withZone(ZoneId.systemDefault())
+                .format(Instant.ofEpochMilli(Build.TIME));
+        String buildVersion = Build.VERSION.RELEASE_OR_CODENAME;
+        String deviceName = Build.DEVICE;
+        return String.format("%s %s %s %s %s %s %s",
+                carrierName, buildId, buildDate, "Android", buildVersion,
+                deviceName, THREE_GPP_GBA);
+
     }
 
     private static void logException(String message, Throwable e) {
