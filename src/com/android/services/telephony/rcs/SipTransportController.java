@@ -296,6 +296,11 @@ public class SipTransportController implements RcsFeatureController.Feature,
     }
 
     @Override
+    public void onCarrierConfigChanged() {
+        mExecutorService.submit(this::onCarrierConfigChangedInternal);
+    }
+
+    @Override
     public void onDestroy() {
         mExecutorService.submit(()-> {
             // Ensure new create/destroy requests are denied.
@@ -903,8 +908,7 @@ public class SipTransportController implements RcsFeatureController.Feature,
     }
 
     /**
-     * Called when either the sub ID associated with the slot has changed or the carrier
-     * configuration associated with the same subId has changed.
+     * Called when the sub ID associated with the slot has changed.
      */
     private void onSubIdChanged(int newSubId) {
         logi("subId changed, " + mSubId + "->" + newSubId);
@@ -913,10 +917,14 @@ public class SipTransportController implements RcsFeatureController.Feature,
             mSubId = newSubId;
             scheduleDestroyDelegates(
                     SipDelegateManager.SIP_DELEGATE_DESTROY_REASON_SUBSCRIPTION_TORN_DOWN);
-            return;
         }
-        // TODO: if subId hasn't changed this means that we should load in any new carrier configs
-        // that we care about and apply.
+    }
+
+    /**
+     * Called when the carrier configuration associated with the same subId has changed.
+     */
+    private void onCarrierConfigChangedInternal() {
+        logi("Carrier Config changed for subId: " + mSubId);
     }
 
     /**

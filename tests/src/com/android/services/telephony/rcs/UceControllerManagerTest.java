@@ -19,6 +19,7 @@ package com.android.services.telephony.rcs;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 
 import android.net.Uri;
@@ -94,11 +95,15 @@ public class UceControllerManagerTest extends TelephonyTestBase {
     }
 
     @Test
-    public void testSubscriptionUpdated() throws Exception {
+    public void testSubIdAndCarrierConfigUpdate() throws Exception {
         UceControllerManager uceCtrlManager = getUceControllerManager();
 
-        uceCtrlManager.onAssociatedSubscriptionUpdated(mSubId);
+        // Updates with the same subId should not destroy the UceController
+        uceCtrlManager.onCarrierConfigChanged();
+        verify(mUceController, never()).onDestroy();
 
+        // Updates with different subIds should trigger the creation of a new controller.
+        uceCtrlManager.onAssociatedSubscriptionUpdated(mSubId + 1);
         verify(mUceController).onDestroy();
     }
 
