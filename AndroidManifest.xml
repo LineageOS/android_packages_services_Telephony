@@ -97,6 +97,9 @@
     <protected-broadcast android:name= "android.telephony.action.MULTI_SIM_CONFIG_CHANGED" />
     <protected-broadcast android:name= "android.telephony.action.CARRIER_SIGNAL_RESET" />
 
+    <protected-broadcast android:name= "com.android.phone.settings.CARRIER_PROVISIONING" />
+    <protected-broadcast android:name= "com.android.phone.settings.TRIGGER_CARRIER_PROVISIONING" />
+
     <!-- For Vendor Debugging in Telephony -->
     <protected-broadcast android:name="android.telephony.action.ANOMALY_REPORTED" />
 
