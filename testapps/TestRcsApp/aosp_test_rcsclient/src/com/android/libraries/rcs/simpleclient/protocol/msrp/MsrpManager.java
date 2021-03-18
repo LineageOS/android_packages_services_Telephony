@@ -31,17 +31,19 @@ import java.net.Socket;
 /** Provides creating and managing {@link MsrpSession} */
 public class MsrpManager {
     private final ImsPdnNetworkFetcher imsPdnNetworkFetcher;
+    private Context context;
 
     public MsrpManager(Context context) {
+        this.context = context;
         imsPdnNetworkFetcher = new ImsPdnNetworkFetcher(context);
     }
 
-    private static MsrpSession createMsrpSession(ConnectivityManager manager,
+    private MsrpSession createMsrpSession(ConnectivityManager manager,
             Network network, String host, int port, String localIp, int localPort,
             MsrpSessionListener listener) throws IOException {
         Socket socket = network.getSocketFactory().createSocket(host, port,
                 InetAddress.getByName(localIp), localPort);
-        MsrpSession msrpSession = new MsrpSession(manager,
+        MsrpSession msrpSession = new MsrpSession(manager, context,
                 network, socket, listener);
         Thread thread = new Thread(msrpSession::run);
         thread.start();
