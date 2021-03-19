@@ -46,6 +46,7 @@ import java.util.List;
 public class UceActivity extends AppCompatActivity {
 
     private static final String TAG = "TestRcsApp.UceActivity";
+    private static final String TELURI_PREFIX = "tel:";
     private Button mCapabilityButton;
     private Button mAvailabilityButton;
     private TextView mCapabilityResult;
@@ -146,7 +147,7 @@ public class UceActivity extends AppCompatActivity {
 
                             public void onComplete() {
                                 Log.i(TAG, "onComplete()");
-                                mCapabilityResult.append("complete");
+                                mCapabilityResult.append("onComplete");
 
                             }
 
@@ -174,7 +175,7 @@ public class UceActivity extends AppCompatActivity {
             for (String number : numbers) {
                 String formattedNumber = NumberUtils.formatNumber(this, number);
                 if (formattedNumber != null) {
-                    contactList.add(Uri.parse(ChatActivity.TELURI_PREFIX + formattedNumber));
+                    contactList.add(Uri.parse(TELURI_PREFIX + formattedNumber));
                 } else {
                     Log.w(TAG, "number formatted improperly, skipping: " + number);
                 }
