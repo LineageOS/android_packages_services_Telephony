@@ -138,7 +138,7 @@ public class ProvisioningActivity extends AppCompatActivity {
         super.onStart();
         mDefaultSmsSubId = SmsManager.getDefaultSmsSubscriptionId();
         Log.i(TAG, "defaultSmsSubId:" + mDefaultSmsSubId);
-        if (isValidSubscriptionId(mDefaultSmsSubId)) {
+        if (SubscriptionManager.isValidSubscriptionId(mDefaultSmsSubId)) {
             mProvisioningManager = ProvisioningManager.createForSubscriptionId(mDefaultSmsSubId);
             init();
         }
@@ -219,10 +219,6 @@ public class ProvisioningActivity extends AppCompatActivity {
             button.setAlpha(.5f);
             button.setClickable(false);
         }
-    }
-
-    private boolean isValidSubscriptionId(int subId) {
-        return SubscriptionManager.isValidSubscriptionId(mDefaultSmsSubId);
     }
 
     private void initRcsProfile() {
