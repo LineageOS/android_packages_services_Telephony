@@ -49,10 +49,10 @@ import java.util.concurrent.Executors;
 public class ChatActivity extends AppCompatActivity {
 
     public static final String EXTRA_REMOTE_PHONE_NUMBER = "REMOTE_PHONE_NUMBER";
-    public static final String TELURI_PREFIX = "tel:";
     private static final String TAG = "TestRcsApp.ChatActivity";
     private static final int INIT_LIST = 1;
     private static final int SHOW_STATUS = 2;
+    private static final int EMPTY_MSG = 3;
     private static final float TEXT_SIZE = 20.0f;
     private static final int MARGIN_SIZE = 20;
     private static final long TIMEOUT_IN_MS = 10000L;
@@ -84,6 +84,9 @@ public class ChatActivity extends AppCompatActivity {
                         break;
                     case SHOW_STATUS:
                         mTips.setText(msg.obj.toString());
+                        break;
+                    case EMPTY_MSG:
+                        mNewMessage.setText("");
                         break;
                     default:
                         Log.d(TAG, "unknown msg:" + msg.what);
@@ -134,7 +137,7 @@ public class ChatActivity extends AppCompatActivity {
                     ChatActivity.this.getResources().getString(R.string.session_timeout)),
                     TIMEOUT_IN_MS);
             ChatManager.getInstance(getApplicationContext(), mSubId).initChatSession(
-                    TELURI_PREFIX + mDestNumber, new SessionStateCallback() {
+                    mDestNumber, new SessionStateCallback() {
                         @Override
                         public void onSuccess() {
                             Log.i(TAG, "session init succeeded");
@@ -176,7 +179,8 @@ public class ChatActivity extends AppCompatActivity {
                         ChatManager.getInstance(getApplicationContext(), mSubId).addNewMessage(
                                 mNewMessage.getText().toString(), ChatManager.SELF, mDestNumber);
                         ChatManager.getInstance(getApplicationContext(), mSubId).sendMessage(
-                                TELURI_PREFIX + mDestNumber, mNewMessage.getText().toString());
+                                mDestNumber, mNewMessage.getText().toString());
+                        mHandler.sendMessage(mHandler.obtainMessage(EMPTY_MSG));
                     }
                 });
             });
@@ -259,8 +263,7 @@ public class ChatActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         Log.i(TAG, "onDestroy");
-        ChatManager.getInstance(getApplicationContext(), mSubId).terminateSession(
-                TELURI_PREFIX + mDestNumber);
+        ChatManager.getInstance(getApplicationContext(), mSubId).terminateSession(mDestNumber);
     }
 
     @Override
