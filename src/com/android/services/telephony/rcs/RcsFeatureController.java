@@ -20,7 +20,9 @@ import android.annotation.AnyThread;
 import android.content.Context;
 import android.net.Uri;
 import android.telephony.ims.ImsException;
+import android.telephony.ims.ImsRcsManager;
 import android.telephony.ims.ImsReasonInfo;
+import android.telephony.ims.RegistrationManager;
 import android.telephony.ims.aidl.IImsCapabilityCallback;
 import android.telephony.ims.aidl.IImsRegistrationCallback;
 import android.telephony.ims.stub.ImsRegistrationImplBase;
@@ -63,10 +65,14 @@ public class RcsFeatureController {
         void onRcsDisconnected();
 
         /**
-         * The subscription associated with the slot this controller is bound to has changed or its
-         * carrier configuration has changed.
+         * The subscription associated with the slot this controller is bound to has changed.
          */
         void onAssociatedSubscriptionUpdated(int subId);
+
+        /**
+         * The carrier configuration associated with the active subscription id has changed.
+         */
+        void onCarrierConfigChanged();
 
         /**
          * Called when the feature should be destroyed.
@@ -118,6 +124,7 @@ public class RcsFeatureController {
     private final Object mLock = new Object();
     private FeatureConnector<RcsFeatureManager> mFeatureConnector;
     private RcsFeatureManager mFeatureManager;
+    private int mAssociatedSubId;
 
     private FeatureConnector.Listener<RcsFeatureManager> mFeatureConnectorListener =
             new FeatureConnector.Listener<RcsFeatureManager>() {
@@ -171,9 +178,10 @@ public class RcsFeatureController {
                 }
             };
 
-    public RcsFeatureController(Context context, int slotId) {
+    public RcsFeatureController(Context context, int slotId, int associatedSubId) {
         mContext = context;
         mSlotId = slotId;
+        mAssociatedSubId = associatedSubId;
         mImsRcsRegistrationHelper = mRegistrationHelperFactory.create(mRcsRegistrationUpdate,
                 mContext.getMainExecutor());
     }
@@ -182,9 +190,11 @@ public class RcsFeatureController {
      * Should only be used to inject registration helpers for testing.
      */
     @VisibleForTesting
-    public RcsFeatureController(Context context, int slotId, RegistrationHelperFactory f) {
+    public RcsFeatureController(Context context, int slotId, int associatedSubId,
+            RegistrationHelperFactory f) {
         mContext = context;
         mSlotId = slotId;
+        mAssociatedSubId = associatedSubId;
         mRegistrationHelperFactory = f;
         mImsRcsRegistrationHelper = mRegistrationHelperFactory.create(mRcsRegistrationUpdate,
                 mContext.getMainExecutor());
@@ -248,20 +258,28 @@ public class RcsFeatureController {
     }
 
     /**
-     * Update the subscription associated with this controller.
+     * Update the Features associated with this controller due to the associated subscription
+     * changing.
      */
     public void updateAssociatedSubscription(int newSubId) {
-        RcsFeatureManager manager = getFeatureManager();
-        if (manager != null) {
-            try {
-                manager.updateCapabilities();
-            } catch (ImsException e) {
-                Log.w(LOG_TAG, "associatedSubscriptionChanged failed:" + e);
-            }
-        }
+        mAssociatedSubId = newSubId;
+        updateCapabilities();
         synchronized (mLock) {
             for (Feature c : mFeatures.values()) {
                 c.onAssociatedSubscriptionUpdated(newSubId);
+            }
+        }
+    }
+
+    /**
+     * Update the features associated with this controller due to the carrier configuration
+     * changing.
+     */
+    public void onCarrierConfigChangedForSubscription() {
+        updateCapabilities();
+        synchronized (mLock) {
+            for (Feature c : mFeatures.values()) {
+                c.onCarrierConfigChanged();
             }
         }
     }
@@ -314,8 +332,8 @@ public class RcsFeatureController {
     }
 
     /**
-     * Register an {@link ImsRcsManager.AvailabilityCallback} with the associated RcsFeature,
-     * which will provide availability updates.
+     * Register an {@link ImsRcsManager.OnAvailabilityChangedListener} with the associated
+     * RcsFeature, which will provide availability updates.
      */
     public void registerRcsAvailabilityCallback(int subId, IImsCapabilityCallback callback)
             throws ImsException {
@@ -328,7 +346,7 @@ public class RcsFeatureController {
     }
 
     /**
-     * Remove a registered {@link ImsRcsManager.AvailabilityCallback} from the RcsFeature.
+     * Remove a registered {@link ImsRcsManager.OnAvailabilityChangedListener} from the RcsFeature.
      */
     public void unregisterRcsAvailabilityCallback(int subId, IImsCapabilityCallback callback) {
         RcsFeatureManager manager = getFeatureManager();
@@ -381,10 +399,21 @@ public class RcsFeatureController {
         callback.accept(mImsRcsRegistrationHelper.getImsRegistrationState());
     }
 
+    private void updateCapabilities() {
+        RcsFeatureManager manager = getFeatureManager();
+        if (manager != null) {
+            try {
+                manager.updateCapabilities(mAssociatedSubId);
+            } catch (ImsException e) {
+                Log.w(LOG_TAG, "updateCapabilities failed:" + e);
+            }
+        }
+    }
+
     private void setupConnectionToService(RcsFeatureManager manager) throws ImsException {
         // Open persistent listener connection, sends RcsFeature#onFeatureReady.
         manager.openConnection();
-        manager.updateCapabilities();
+        manager.updateCapabilities(mAssociatedSubId);
         manager.registerImsRegistrationCallback(mImsRcsRegistrationHelper.getCallbackBinder());
     }
 
