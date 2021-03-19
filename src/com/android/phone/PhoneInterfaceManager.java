@@ -7232,6 +7232,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 setAllowedNetworkTypesForReason(subId,
                         TelephonyManager.ALLOWED_NETWORK_TYPES_REASON_POWER,
                         RadioAccessFamily.getRafFromNetworkType(getDefaultNetworkType(subId)));
+                setAllowedNetworkTypesForReason(subId,
+                        TelephonyManager.ALLOWED_NETWORK_TYPES_REASON_ENABLE_2G,
+                        RadioAccessFamily.getRafFromNetworkType(getDefaultNetworkType(subId)));
                 setDataRoamingEnabled(subId, getDefaultDataRoamingEnabled(subId));
                 CarrierInfoManager.deleteAllCarrierKeysForImsiEncryption(mApp);
             }
