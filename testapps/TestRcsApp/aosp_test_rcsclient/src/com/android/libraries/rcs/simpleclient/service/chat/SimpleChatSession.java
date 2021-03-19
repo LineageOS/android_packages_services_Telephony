@@ -17,6 +17,7 @@
 package com.android.libraries.rcs.simpleclient.service.chat;
 
 import static com.android.libraries.rcs.simpleclient.protocol.cpim.CpimUtils.CPIM_CONTENT_TYPE;
+import static com.android.libraries.rcs.simpleclient.service.chat.ChatServiceException.CODE_ERROR_SEND_MESSAGE_FAILED;
 import static com.android.libraries.rcs.simpleclient.service.chat.ChatServiceException.CODE_ERROR_UNSPECIFIED;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
@@ -101,11 +102,12 @@ public class SimpleChatSession {
     }
 
     /** Send a text message via MSRP session associated with this session. */
-    public void sendMessage(String msg) {
+    public ListenableFuture<Void> sendMessage(String msg) {
         MsrpSession session = mMsrpSession;
         if (session == null || mRemoteSdp == null || mLocalSdp == null) {
             Log.e(TAG, "Session is not established");
-            return;
+            return Futures.immediateFailedFuture(
+                    new IllegalStateException("Session is not established"));
         }
 
         // Build a new CPIM message and send it out through the MSRP session.
@@ -133,27 +135,21 @@ public class SimpleChatSession {
                         .build();
 
         Log.i(TAG, "Send a MSRP chunk: " + msrpChunk);
-        Futures.addCallback(
-                session.send(msrpChunk),
-                new FutureCallback<MsrpChunk>() {
-                    @Override
-                    public void onSuccess(MsrpChunk result) {
-                        if (result.responseCode() != 200) {
-                            Log.d(
-                                    TAG,
-                                    "Received error response id="
-                                            + result.transactionId()
-                                            + " code="
-                                            + result.responseCode());
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Throwable t) {
-                        Log.d(TAG, "Failed to send msrp chunk", t);
-                    }
-                },
-                MoreExecutors.directExecutor());
+        return Futures.transformAsync(session.send(msrpChunk), result -> {
+            if (result == null) {
+                return Futures.immediateFailedFuture(
+                        new ChatServiceException("Failed to send a chunk",
+                                CODE_ERROR_SEND_MESSAGE_FAILED));
+            }
+            if (result.responseCode() != 200) {
+                Log.d(TAG, "Received error response id=" + result.transactionId()
+                        + " code=" + result.responseCode());
+                return Futures.immediateFailedFuture(
+                        new ChatServiceException("Msrp response code: " + result.responseCode(),
+                                CODE_ERROR_SEND_MESSAGE_FAILED));
+            }
+            return Futures.immediateFuture(null);
+        }, MoreExecutors.directExecutor());
     }
 
     /** Start outgoing chat session. */
