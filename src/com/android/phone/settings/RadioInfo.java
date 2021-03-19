@@ -210,6 +210,11 @@ public class RadioInfo extends AppCompatActivity {
     private static final int MENU_ITEM_GET_IMS_STATUS      = 4;
     private static final int MENU_ITEM_TOGGLE_DATA         = 5;
 
+    private static final String CARRIER_PROVISIONING_ACTION =
+            "com.android.phone.settings.CARRIER_PROVISIONING";
+    private static final String TRIGGER_CARRIER_PROVISIONING_ACTION =
+            "com.android.phone.settings.TRIGGER_CARRIER_PROVISIONING";
+
     private TextView mDeviceId; //DeviceId is the IMEI in GSM and the MEID in CDMA
     private TextView mLine1Number;
     private TextView mSubscriptionId;
@@ -571,11 +576,20 @@ public class RadioInfo extends AppCompatActivity {
         mDnsCheckToggleButton = (Button) findViewById(R.id.dns_check_toggle);
         mDnsCheckToggleButton.setOnClickListener(mDnsCheckButtonHandler);
         mCarrierProvisioningButton = (Button) findViewById(R.id.carrier_provisioning);
-        mCarrierProvisioningButton.setOnClickListener(mCarrierProvisioningButtonHandler);
+        if (!TextUtils.isEmpty(getCarrierProvisioningAppString())) {
+            mCarrierProvisioningButton.setOnClickListener(mCarrierProvisioningButtonHandler);
+        } else {
+            mCarrierProvisioningButton.setEnabled(false);
+        }
+
         mTriggerCarrierProvisioningButton = (Button) findViewById(
                 R.id.trigger_carrier_provisioning);
-        mTriggerCarrierProvisioningButton.setOnClickListener(
-                mTriggerCarrierProvisioningButtonHandler);
+        if (!TextUtils.isEmpty(getCarrierProvisioningAppString())) {
+            mTriggerCarrierProvisioningButton.setOnClickListener(
+                    mTriggerCarrierProvisioningButtonHandler);
+        } else {
+            mTriggerCarrierProvisioningButton.setEnabled(false);
+        }
 
         mOemInfoButton = (Button) findViewById(R.id.oem_info);
         mOemInfoButton.setOnClickListener(mOemInfoButtonHandler);
@@ -1610,21 +1624,23 @@ public class RadioInfo extends AppCompatActivity {
         }
     };
 
-    OnClickListener mCarrierProvisioningButtonHandler = new OnClickListener() {
-        public void onClick(View v) {
-            final Intent intent = new Intent("com.android.settings.CARRIER_PROVISIONING");
-            final ComponentName serviceComponent = ComponentName.unflattenFromString(
-                    "com.android.omadm.service/.DMIntentReceiver");
+    OnClickListener mCarrierProvisioningButtonHandler = v -> {
+        String carrierProvisioningApp = getCarrierProvisioningAppString();
+        if (!TextUtils.isEmpty(carrierProvisioningApp)) {
+            final Intent intent = new Intent(CARRIER_PROVISIONING_ACTION);
+            final ComponentName serviceComponent =
+                    ComponentName.unflattenFromString(carrierProvisioningApp);
             intent.setComponent(serviceComponent);
             sendBroadcast(intent);
         }
     };
 
-    OnClickListener mTriggerCarrierProvisioningButtonHandler = new OnClickListener() {
-        public void onClick(View v) {
-            final Intent intent = new Intent("com.android.settings.TRIGGER_CARRIER_PROVISIONING");
-            final ComponentName serviceComponent = ComponentName.unflattenFromString(
-                    "com.android.omadm.service/.DMIntentReceiver");
+    OnClickListener mTriggerCarrierProvisioningButtonHandler = v -> {
+        String carrierProvisioningApp = getCarrierProvisioningAppString();
+        if (!TextUtils.isEmpty(carrierProvisioningApp)) {
+            final Intent intent = new Intent(TRIGGER_CARRIER_PROVISIONING_ACTION);
+            final ComponentName serviceComponent =
+                    ComponentName.unflattenFromString(carrierProvisioningApp);
             intent.setComponent(serviceComponent);
             sendBroadcast(intent);
         }
@@ -1688,6 +1704,19 @@ public class RadioInfo extends AppCompatActivity {
         public void onNothingSelected(AdapterView parent) {
         }
     };
+
+    private String getCarrierProvisioningAppString() {
+        if (mPhone != null) {
+            CarrierConfigManager configManager =
+                    mPhone.getContext().getSystemService(CarrierConfigManager.class);
+            PersistableBundle b = configManager.getConfigForSubId(mPhone.getSubId());
+            if (b != null) {
+                return b.getString(
+                        CarrierConfigManager.KEY_CARRIER_PROVISIONING_APP_STRING, "");
+            }
+        }
+        return "";
+    }
 
     boolean isCbrsSupported() {
         return getResources().getBoolean(

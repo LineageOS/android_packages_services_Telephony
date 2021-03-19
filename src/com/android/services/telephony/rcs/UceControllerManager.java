@@ -19,6 +19,7 @@ package com.android.services.telephony.rcs;
 import android.content.Context;
 import android.net.Uri;
 import android.telephony.ims.ImsException;
+import android.telephony.ims.RcsContactUceCapability;
 import android.telephony.ims.RcsUceAdapter;
 import android.telephony.ims.RcsUceAdapter.PublishState;
 import android.telephony.ims.aidl.IRcsUceControllerCallback;
@@ -32,6 +33,7 @@ import com.android.internal.annotations.VisibleForTesting;
 
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -50,6 +52,7 @@ public class UceControllerManager implements RcsFeatureController.Feature {
     private final Context mContext;
     private final ExecutorService mExecutorService;
 
+    private volatile int mSubId;
     private volatile UceController mUceController;
     private volatile RcsFeatureManager mRcsFeatureManager;
 
@@ -57,6 +60,7 @@ public class UceControllerManager implements RcsFeatureController.Feature {
         Log.d(LOG_TAG, "create: slotId=" + slotId + ", subId=" + subId);
 
         mSlotId = slotId;
+        mSubId = subId;
         mContext = context;
         mExecutorService = Executors.newSingleThreadExecutor();
         mUceController = new UceController(mContext, subId);
@@ -68,6 +72,7 @@ public class UceControllerManager implements RcsFeatureController.Feature {
     @VisibleForTesting
     public UceControllerManager(Context context, int slotId, int subId, ExecutorService executor) {
         mSlotId = slotId;
+        mSubId = subId;
         mContext = context;
         mExecutorService = executor;
         mUceController = new UceController(mContext, subId);
@@ -98,15 +103,19 @@ public class UceControllerManager implements RcsFeatureController.Feature {
     }
 
     /**
-     * This method will be called when either the subscription ID associated with the slot has
-     * changed or the carrier configuration associated with the same subId has changed.
+     * This method will be called when the subscription ID associated with the slot has
+     * changed.
      */
     @Override
     public void onAssociatedSubscriptionUpdated(int subId) {
         mExecutorService.submit(() -> {
             Log.i(LOG_TAG, "onAssociatedSubscriptionUpdated: slotId=" + mSlotId
-                    + ", subId=" + subId);
-
+                    + ", subId=" + mSubId + ", newSubId=" + subId);
+            if (mSubId == subId) {
+                Log.w(LOG_TAG, "onAssociatedSubscriptionUpdated called with the same subId");
+                return;
+            }
+            mSubId = subId;
             // Destroy existing UceController and create a new one.
             mUceController.onDestroy();
             mUceController = new UceController(mContext, subId);
@@ -116,6 +125,18 @@ public class UceControllerManager implements RcsFeatureController.Feature {
             if (mRcsFeatureManager != null) {
                 mUceController.onRcsConnected(mRcsFeatureManager);
             }
+        });
+    }
+
+    /**
+     * This method will be called when the carrier config of the subscription associated with this
+     * manager has changed.
+     */
+    @Override
+    public void onCarrierConfigChanged() {
+        mExecutorService.submit(() -> {
+            Log.i(LOG_TAG, "onCarrierConfigChanged: subId=" + mSubId);
+            mUceController.onCarrierConfigChanged();
         });
     }
 
@@ -181,20 +202,128 @@ public class UceControllerManager implements RcsFeatureController.Feature {
      * @throws ImsException if the ImsService connected to this controller is currently down.
      */
     public @PublishState int getUcePublishState() throws ImsException {
-        Future future = mExecutorService.submit(() -> {
+        Future<Integer> future = mExecutorService.submit(() -> {
             checkUceControllerState();
             return mUceController.getUcePublishState();
         });
 
         try {
-            return (Integer) future.get();
+            return future.get();
         } catch (ExecutionException | InterruptedException e) {
-            Log.w(LOG_TAG, "requestNetworkAvailability exception: " + e);
+            Log.w(LOG_TAG, "getUcePublishState exception: " + e);
             Throwable cause = e.getCause();
             if (cause instanceof ImsException) {
                 throw (ImsException) cause;
             }
             return RcsUceAdapter.PUBLISH_STATE_OTHER_ERROR;
+        }
+    }
+
+    /**
+     * Add new feature tags to the Set used to calculate the capabilities in PUBLISH.
+     */
+    public RcsContactUceCapability addUceRegistrationOverride(
+            Set<String> featureTags) throws ImsException {
+        Future<RcsContactUceCapability> future = mExecutorService.submit(() -> {
+            checkUceControllerState();
+            return mUceController.addRegistrationOverrideCapabilities(featureTags);
+        });
+
+        try {
+            return future.get();
+        } catch (ExecutionException | InterruptedException e) {
+            Log.w(LOG_TAG, "addUceRegistrationOverride exception: " + e);
+            Throwable cause = e.getCause();
+            if (cause instanceof ImsException) {
+                throw (ImsException) cause;
+            }
+            return null;
+        }
+    }
+
+    /**
+     * Remove existing feature tags to the Set used to calculate the capabilities in PUBLISH.
+     */
+    public RcsContactUceCapability removeUceRegistrationOverride(
+            Set<String> featureTags) throws ImsException {
+        Future<RcsContactUceCapability> future = mExecutorService.submit(() -> {
+            checkUceControllerState();
+            return mUceController.removeRegistrationOverrideCapabilities(featureTags);
+        });
+
+        try {
+            return future.get();
+        } catch (ExecutionException | InterruptedException e) {
+            Log.w(LOG_TAG, "removeUceRegistrationOverride exception: " + e);
+            Throwable cause = e.getCause();
+            if (cause instanceof ImsException) {
+                throw (ImsException) cause;
+            }
+            return null;
+        }
+    }
+
+    /**
+     * Clear all overrides in the Set used to calculate the capabilities in PUBLISH.
+     */
+    public RcsContactUceCapability clearUceRegistrationOverride() throws ImsException {
+        Future<RcsContactUceCapability> future = mExecutorService.submit(() -> {
+            checkUceControllerState();
+            return mUceController.clearRegistrationOverrideCapabilities();
+        });
+
+        try {
+            return future.get();
+        } catch (ExecutionException | InterruptedException e) {
+            Log.w(LOG_TAG, "clearUceRegistrationOverride exception: " + e);
+            Throwable cause = e.getCause();
+            if (cause instanceof ImsException) {
+                throw (ImsException) cause;
+            }
+            return null;
+        }
+    }
+
+    /**
+     * @return current RcsContactUceCapability instance that will be used for PUBLISH.
+     */
+    public RcsContactUceCapability getLatestRcsContactUceCapability() throws ImsException {
+        Future<RcsContactUceCapability> future = mExecutorService.submit(() -> {
+            checkUceControllerState();
+            return mUceController.getLatestRcsContactUceCapability();
+        });
+
+        try {
+            return future.get();
+        } catch (ExecutionException | InterruptedException e) {
+            Log.w(LOG_TAG, "getLatestRcsContactUceCapability exception: " + e);
+            Throwable cause = e.getCause();
+            if (cause instanceof ImsException) {
+                throw (ImsException) cause;
+            }
+            return null;
+        }
+    }
+
+    /**
+     *
+     * @return The last PIDF XML sent to the IMS stack to be published.
+     */
+    public String getLastPidfXml() throws ImsException {
+        Future<String> future = mExecutorService.submit(() -> {
+            checkUceControllerState();
+            return mUceController.getLastPidfXml();
+        });
+
+        try {
+            return future.get();
+        } catch (ExecutionException | InterruptedException e) {
+            Log.w(LOG_TAG, "getLastPidfXml exception: " + e);
+            Throwable cause = e.getCause();
+            if (cause instanceof ImsException) {
+                throw (ImsException) cause;
+            }
+            return null;
         }
     }
 
