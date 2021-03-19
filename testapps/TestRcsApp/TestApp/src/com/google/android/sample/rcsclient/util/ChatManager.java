@@ -55,6 +55,7 @@ import javax.sip.address.URI;
 public class ChatManager {
     public static final String SELF = "self";
     private static final String TAG = "TestRcsApp.ChatManager";
+    private static final String TELURI_PREFIX = "tel:";
     private static AddressFactory sAddressFactory = new AddressFactoryImpl();
     private static HashMap<Integer, ChatManager> sChatManagerInstances = new HashMap<>();
     private final ExecutorService mFixedThreadPool = Executors.newFixedThreadPool(5);
@@ -65,7 +66,7 @@ public class ChatManager {
     private SimpleRcsClient mSimpleRcsClient;
     private State mState;
     private int mSubId;
-    private HashMap<URI, SimpleChatSession> mContactSessionMap = new HashMap<>();
+    private HashMap<String, SimpleChatSession> mContactSessionMap = new HashMap<>();
     private RcsStateChangedCallback mRcsStateChangedCallback;
 
     private ChatManager(Context context, int subId) {
@@ -90,15 +91,14 @@ public class ChatManager {
             mRcsStateChangedCallback.notifyStateChange(oldState, newState);
         });
         mImsService.setListener((session) -> {
-            Log.i(TAG, "onIncomingSession()");
-            mContactSessionMap.put(session.getRemoteUri(), session);
+            Log.i(TAG, "onIncomingSession():" + session.getRemoteUri());
+            String phoneNumber = getNumberFromUri(session.getRemoteUri().toString());
+            mContactSessionMap.put(phoneNumber, session);
             session.setListener(
                     // implement onMessageReceived()
                     (message) -> {
                         mFixedThreadPool.execute(() -> {
                             String msg = message.content();
-                            String phoneNumber = getNumberFromUri(
-                                    session.getRemoteUri().toString());
                             if (TextUtils.isEmpty(phoneNumber)) {
                                 Log.i(TAG, "dest number is empty, uri:"
                                         + session.getRemoteUri());
@@ -173,33 +173,34 @@ public class ChatManager {
 
     /**
      * Initiate 1 to 1 chat session.
-     * @param telUriContact destination tel Uri.
+     *
+     * @param contact  destination phone number.
      * @param callback callback for session state.
      */
-    public void initChatSession(String telUriContact, SessionStateCallback callback) {
+    public void initChatSession(String contact, SessionStateCallback callback) {
         if (mState != State.REGISTERED) {
             Log.i(TAG, "Could not init session due to State = " + mState);
             return;
         }
-        URI uri = createUri(telUriContact);
-        if (mContactSessionMap.containsKey(uri)) {
+        Log.i(TAG, "initChatSession contact: " + contact);
+        if (mContactSessionMap.containsKey(contact)) {
             callback.onSuccess();
-            Log.i(TAG, "uri exists");
+            Log.i(TAG, "contact exists");
             return;
         }
         Futures.addCallback(
-                mImsService.startOriginatingChatSession(telUriContact),
+                mImsService.startOriginatingChatSession(TELURI_PREFIX + contact),
                 new FutureCallback<SimpleChatSession>() {
                     @Override
                     public void onSuccess(SimpleChatSession chatSession) {
-                        mContactSessionMap.put(chatSession.getRemoteUri(), chatSession);
+                        String phoneNumber = getNumberFromUri(
+                                chatSession.getRemoteUri().toString());
+                        mContactSessionMap.put(phoneNumber, chatSession);
                         chatSession.setListener(
                                 // implement onMessageReceived()
                                 (message) -> {
                                     mFixedThreadPool.execute(() -> {
                                         String msg = message.content();
-                                        String phoneNumber = getNumberFromUri(
-                                                chatSession.getRemoteUri().toString());
                                         if (TextUtils.isEmpty(phoneNumber)) {
                                             Log.i(TAG, "dest number is empty, uri:"
                                                     + chatSession.getRemoteUri());
@@ -222,13 +223,14 @@ public class ChatManager {
 
     /**
      * Send a chat message.
-     * @param telUriContact destination tel Uri.
+     *
+     * @param contact destination phone number.
      * @param message chat message.
      */
-    public void sendMessage(String telUriContact, String message) {
-        SimpleChatSession chatSession = mContactSessionMap.get(createUri(telUriContact));
+    public void sendMessage(String contact, String message) {
+        SimpleChatSession chatSession = mContactSessionMap.get(contact);
         if (chatSession == null) {
-            Log.i(TAG, "session is unavailable for telUriContact = " + telUriContact);
+            Log.i(TAG, "session is unavailable for contact = " + contact);
             return;
         }
         chatSession.sendMessage(message);
@@ -240,22 +242,23 @@ public class ChatManager {
 
     /**
      * Terminate the chat session.
-     * @param telUriContact destination tel Uri
+     *
+     * @param contact destination phone number.
      */
-    public void terminateSession(String telUriContact) {
+    public void terminateSession(String contact) {
         Log.i(TAG, "terminateSession");
-        URI uri = createUri(telUriContact);
-        SimpleChatSession chatSession = mContactSessionMap.get(uri);
+        SimpleChatSession chatSession = mContactSessionMap.get(contact);
         if (chatSession == null) {
-            Log.i(TAG, "session is unavailable for telUriContact = " + telUriContact);
+            Log.i(TAG, "session is unavailable for contact = " + contact);
             return;
         }
         chatSession.terminate();
-        mContactSessionMap.remove(uri);
+        mContactSessionMap.remove(contact);
     }
 
     /**
      * Insert chat information into database.
+     *
      * @param message chat message.
      * @param src source phone number.
      * @param dest destination phone number.
