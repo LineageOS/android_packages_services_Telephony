@@ -36,6 +36,7 @@ import android.telecom.CallScreeningService;
 import android.telecom.Conference;
 import android.telecom.Connection;
 import android.telecom.ConnectionService;
+import android.telecom.DiagnosticCall;
 import android.telecom.PhoneAccount;
 import android.telecom.PhoneAccountHandle;
 import android.telecom.StatusHints;
@@ -54,6 +55,7 @@ import android.telephony.ims.ImsStreamMediaProfile;
 import android.telephony.ims.RtpHeaderExtension;
 import android.telephony.ims.RtpHeaderExtensionType;
 import android.text.TextUtils;
+import android.util.ArraySet;
 import android.util.Pair;
 
 import com.android.ims.ImsCall;
@@ -71,6 +73,7 @@ import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.d2d.Communicator;
 import com.android.internal.telephony.d2d.DtmfAdapter;
 import com.android.internal.telephony.d2d.DtmfTransport;
+import com.android.internal.telephony.d2d.MessageTypeAndValueHelper;
 import com.android.internal.telephony.d2d.RtpAdapter;
 import com.android.internal.telephony.d2d.RtpTransport;
 import com.android.internal.telephony.d2d.Timeouts;
@@ -903,6 +906,10 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
                     mCallQualityManager = new CallQualityManager(getPhone().getContext());
                 }
                 mCallQualityManager.onBluetoothCallQualityReported(extras);
+                break;
+            case Connection.EVENT_DEVICE_TO_DEVICE_MESSAGE:
+                // A Device to device message is being sent by a CallDiagnosticService.
+                handleOutgoingDeviceToDeviceMessage(extras);
                 break;
             default:
                 break;
@@ -3404,9 +3411,43 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
         // Send connection events up to Telecom so that we can relay the messages to a valid
         // CallDiagnosticService which is bound.
         for (Communicator.Message msg : messages) {
+            Integer dcMsgType = MessageTypeAndValueHelper.MSG_TYPE_TO_DC_MSG_TYPE.getValue(
+                    msg.getType());
+            if (dcMsgType == null) {
+                // Invalid msg type, skip.
+                continue;
+            }
+
+            Integer dcMsgValue;
+            switch (msg.getType()) {
+                case DiagnosticCall.MESSAGE_CALL_AUDIO_CODEC:
+                    dcMsgValue = MessageTypeAndValueHelper.CODEC_TO_DC_CODEC.getValue(
+                            msg.getValue());
+                    break;
+                case DiagnosticCall.MESSAGE_CALL_NETWORK_TYPE:
+                    dcMsgValue = MessageTypeAndValueHelper.RAT_TYPE_TO_DC_NETWORK_TYPE.getValue(
+                            msg.getValue());
+                    break;
+                case DiagnosticCall.MESSAGE_DEVICE_BATTERY_STATE:
+                    dcMsgValue = MessageTypeAndValueHelper.BATTERY_STATE_TO_DC_BATTERY_STATE
+                            .getValue(msg.getValue());
+                    break;
+                case DiagnosticCall.MESSAGE_DEVICE_NETWORK_COVERAGE:
+                    dcMsgValue = MessageTypeAndValueHelper.COVERAGE_TO_DC_COVERAGE
+                            .getValue(msg.getValue());
+                    break;
+                default:
+                    Log.w(this, "onMessagesReceived: msg=%d - invalid msg", msg.getValue());
+                    continue;
+            }
+            if (dcMsgValue == null) {
+                Log.w(this, "onMessagesReceived: msg=%d/%d - invalid msg value", msg.getType(),
+                        msg.getValue());
+                continue;
+            }
             Bundle extras = new Bundle();
-            extras.putInt(Connection.EXTRA_DEVICE_TO_DEVICE_MESSAGE_TYPE, msg.getType());
-            extras.putInt(Connection.EXTRA_DEVICE_TO_DEVICE_MESSAGE_VALUE, msg.getValue());
+            extras.putInt(Connection.EXTRA_DEVICE_TO_DEVICE_MESSAGE_TYPE, dcMsgType);
+            extras.putInt(Connection.EXTRA_DEVICE_TO_DEVICE_MESSAGE_VALUE, dcMsgValue);
             sendConnectionEvent(Connection.EVENT_DEVICE_TO_DEVICE_MESSAGE, extras);
         }
     }
@@ -3616,5 +3657,53 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
         return b != null && b.getBoolean(
                 CarrierConfigManager
                         .KEY_SUPPORTS_SDP_NEGOTIATION_OF_D2D_RTP_HEADER_EXTENSIONS_BOOL);
+    }
+
+    /**
+     * Handles a device to device message which a {@link DiagnosticCall} wishes to send.
+     * @param extras the call event extras bundle.
+     */
+    private void handleOutgoingDeviceToDeviceMessage(Bundle extras) {
+        int messageType = extras.getInt(Connection.EXTRA_DEVICE_TO_DEVICE_MESSAGE_TYPE);
+        int messageValue = extras.getInt(Connection.EXTRA_DEVICE_TO_DEVICE_MESSAGE_VALUE);
+
+        Integer internalMessageValue;
+        switch (messageType) {
+            case DiagnosticCall.MESSAGE_CALL_AUDIO_CODEC:
+                internalMessageValue = MessageTypeAndValueHelper.CODEC_TO_DC_CODEC.getKey(
+                        messageValue);
+                break;
+            case DiagnosticCall.MESSAGE_CALL_NETWORK_TYPE:
+                internalMessageValue = MessageTypeAndValueHelper.RAT_TYPE_TO_DC_NETWORK_TYPE.getKey(
+                        messageValue);
+                break;
+            case DiagnosticCall.MESSAGE_DEVICE_BATTERY_STATE:
+                internalMessageValue = MessageTypeAndValueHelper.BATTERY_STATE_TO_DC_BATTERY_STATE
+                        .getKey(messageValue);
+                break;
+            case DiagnosticCall.MESSAGE_DEVICE_NETWORK_COVERAGE:
+                internalMessageValue = MessageTypeAndValueHelper.COVERAGE_TO_DC_COVERAGE
+                        .getKey(messageValue);
+                break;
+            default:
+                Log.w(this, "handleOutgoingDeviceToDeviceMessage: msg=%d - invalid msg",
+                        messageType);
+                return;
+        }
+        Integer internalMessageType = MessageTypeAndValueHelper.MSG_TYPE_TO_DC_MSG_TYPE.getKey(
+                messageType);
+        if (internalMessageValue == null) {
+            Log.w(this, "handleOutgoingDeviceToDeviceMessage: msg=%d/%d - invalid value",
+                    messageType, messageValue);
+            return;
+        }
+
+        if (mCommunicator != null) {
+            Log.w(this, "handleOutgoingDeviceToDeviceMessage: msg=%d/%d - sending",
+                    internalMessageType, internalMessageValue);
+            Set<Communicator.Message> set = new ArraySet<>();
+            set.add(new Communicator.Message(internalMessageType, internalMessageValue));
+            mCommunicator.sendMessages(set);
+        }
     }
 }
