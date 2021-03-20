@@ -31,6 +31,7 @@ import java.lang.annotation.RetentionPolicy;
 public final class ChatServiceException extends Exception {
 
     public static final int CODE_ERROR_UNSPECIFIED = 0;
+    public static final int CODE_ERROR_SEND_MESSAGE_FAILED = 1;
     private int mCode = CODE_ERROR_UNSPECIFIED;
 
     /**
