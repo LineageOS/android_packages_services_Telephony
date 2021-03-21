@@ -107,6 +107,7 @@ import android.telephony.UiccSlotInfo;
 import android.telephony.UssdResponse;
 import android.telephony.VisualVoicemailSmsFilterSettings;
 import android.telephony.data.ApnSetting;
+import android.telephony.data.SlicingConfig;
 import android.telephony.emergency.EmergencyNumber;
 import android.telephony.gba.GbaAuthRequest;
 import android.telephony.gba.UaSecurityProtocolIdentifier;
@@ -335,6 +336,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private static final int CMD_SET_ALLOWED_NETWORK_TYPES_FOR_REASON = 107;
     private static final int EVENT_SET_ALLOWED_NETWORK_TYPES_FOR_REASON_DONE = 108;
     private static final int CMD_PREPARE_UNATTENDED_REBOOT = 109;
+    private static final int CMD_GET_SLICING_CONFIG = 110;
+    private static final int EVENT_GET_SLICING_CONFIG_DONE = 111;
 
     // Parameters of select command.
     private static final int SELECT_COMMAND = 0xA4;
@@ -1909,6 +1912,42 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     ar = (AsyncResult) msg.obj;
                     request = (MainThreadRequest) ar.userObj;
                     request.result = ar.exception != null ? ar.exception : true;
+                    notifyRequester(request);
+                    break;
+                }
+
+                case CMD_GET_SLICING_CONFIG: {
+                    request = (MainThreadRequest) msg.obj;
+                    onCompleted = obtainMessage(EVENT_GET_SLICING_CONFIG_DONE, request);
+                    request.phone.getSlicingConfig(onCompleted);
+                    break;
+                }
+                case EVENT_GET_SLICING_CONFIG_DONE: {
+                    ar = (AsyncResult) msg.obj;
+                    request = (MainThreadRequest) ar.userObj;
+                    ResultReceiver result = (ResultReceiver) request.argument;
+
+                    SlicingConfig slicingConfig = null;
+                    Bundle bundle = new Bundle();
+                    int resultCode = 0;
+                    if (ar.exception != null) {
+                        Log.e(LOG_TAG, "Exception retrieving slicing configuration="
+                                + ar.exception);
+                        resultCode = TelephonyManager.SlicingException.ERROR_MODEM_ERROR;
+                    } else if (ar.result == null) {
+                        Log.w(LOG_TAG, "Timeout Waiting for slicing configuration!");
+                        resultCode = TelephonyManager.SlicingException.ERROR_TIMEOUT;
+                    } else {
+                        // use the result as returned
+                        resultCode = TelephonyManager.SlicingException.SUCCESS;
+                        slicingConfig = (SlicingConfig) ar.result;
+                    }
+
+                    if (slicingConfig == null) {
+                        slicingConfig = new SlicingConfig();
+                    }
+                    bundle.putParcelable(TelephonyManager.KEY_SLICING_CONFIG_HANDLE, slicingConfig);
+                    result.send(resultCode, bundle);
                     notifyRequester(request);
                     break;
                 }
@@ -10325,6 +10364,25 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         final long identity = Binder.clearCallingIdentity();
         try {
             return (int) sendRequest(CMD_PREPARE_UNATTENDED_REBOOT, null);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Request to get the current slicing configuration including URSP rules and
+     * NSSAIs (configured, allowed and rejected).
+     *
+     * Requires carrier privileges or READ_PRIVILEGED_PHONE_STATE permission.
+     */
+    @Override
+    public void getSlicingConfig(ResultReceiver callback) {
+        enforceReadPrivilegedPermission("getSlicingConfig");
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            Phone phone = getDefaultPhone();
+            sendRequestAsync(CMD_GET_SLICING_CONFIG, callback, phone, null);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
