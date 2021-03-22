@@ -772,7 +772,7 @@
     <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="9203320572562697755">"تعذر إكمال المكالمة. رمز الخطأ 111."</string>
     <string name="clh_callFailed_interworking_unspecified_txt" msgid="7969686413930847182">"تعذر إكمال المكالمة. رمز الخطأ 127."</string>
     <string name="labelCallBarring" msgid="4180377113052853173">"منع الاتصال"</string>
-    <string name="sum_call_barring_enabled" msgid="5184331188926370824">"تفعيل"</string>
+    <string name="sum_call_barring_enabled" msgid="5184331188926370824">"مفعّلة"</string>
     <string name="sum_call_barring_disabled" msgid="5699448000600153096">"متوقف"</string>
     <string name="call_barring_baoc" msgid="7400892586336429326">"كل المكالمات الصادرة"</string>
     <string name="call_barring_baoc_enabled" msgid="3131509193386668182">"هل تريد إيقاف حظر كل المكالمات الصادرة؟"</string>
