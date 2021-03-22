@@ -107,7 +107,7 @@ public class MsrpSession {
     private void listenForBearer() {
         try {
             connectivityManager.registerQosCallback(new QosSocketInfo(network, socket),
-                    qosCallback, MoreExecutors.directExecutor());
+                    MoreExecutors.directExecutor(), qosCallback);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
