@@ -347,6 +347,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     /** The singleton instance. */
     private static PhoneInterfaceManager sInstance;
+    private static List<String> sThermalMitigationAllowlistedPackages = new ArrayList<>();
 
     private PhoneGlobals mApp;
     private CallManager mCM;
@@ -9639,11 +9640,43 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         return TelephonyManager.THERMAL_MITIGATION_RESULT_SUCCESS;
     }
 
+    private static List<String> getThermalMitigationAllowlist(Context context) {
+        if (sThermalMitigationAllowlistedPackages.isEmpty()) {
+            for (String pckg : context.getResources()
+                    .getStringArray(R.array.thermal_mitigation_allowlisted_packages)) {
+                sThermalMitigationAllowlistedPackages.add(pckg);
+            }
+        }
+
+        return sThermalMitigationAllowlistedPackages;
+    }
+
+    /**
+     * Used by shell commands to add an authorized package name for thermal mitigation.
+     * @param packageName name of package to be allowlisted
+     * @param context
+     */
+    static void addPackageToThermalMitigationAllowlist(String packageName, Context context) {
+        sThermalMitigationAllowlistedPackages = getThermalMitigationAllowlist(context);
+        sThermalMitigationAllowlistedPackages.add(packageName);
+    }
+
+    /**
+     * Used by shell commands to remove an authorized package name for thermal mitigation.
+     * @param packageName name of package to remove from allowlist
+     * @param context
+     */
+    static void removePackageFromThermalMitigationAllowlist(String packageName, Context context) {
+        sThermalMitigationAllowlistedPackages = getThermalMitigationAllowlist(context);
+        sThermalMitigationAllowlistedPackages.remove(packageName);
+    }
+
     /**
      * Thermal mitigation request to control functionalities at modem.
      *
      * @param subId the id of the subscription.
      * @param thermalMitigationRequest holds all necessary information to be passed down to modem.
+     * @param callingPackage the package name of the calling package.
      *
      * @return thermalMitigationResult enum as defined in android.telephony.Annotation.
      */
@@ -9651,8 +9684,16 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @ThermalMitigationResult
     public int sendThermalMitigationRequest(
             int subId,
-            ThermalMitigationRequest thermalMitigationRequest) throws IllegalArgumentException {
+            ThermalMitigationRequest thermalMitigationRequest,
+            String callingPackage) throws IllegalArgumentException {
         enforceModifyPermission();
+
+        mAppOps.checkPackage(Binder.getCallingUid(), callingPackage);
+        if (!getThermalMitigationAllowlist(getDefaultPhone().getContext())
+                .contains(callingPackage)) {
+            throw new SecurityException("Calling package must be configured in the device config. "
+                    + "calling package: " + callingPackage);
+        }
 
         WorkSource workSource = getWorkSource(Binder.getCallingUid());
         final long identity = Binder.clearCallingIdentity();
