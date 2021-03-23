@@ -29,6 +29,7 @@ import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.app.AppOpsManager;
 import android.app.PendingIntent;
+import android.app.compat.CompatChanges;
 import android.app.role.RoleManager;
 import android.content.ComponentName;
 import android.content.ContentResolver;
@@ -2767,14 +2768,46 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
+    /**
+     * @deprecated  This method is deprecated and is only being kept due to an UnsupportedAppUsage
+     * tag on getCallState Binder call.
+     */
+    @Deprecated
+    @Override
     public int getCallState() {
-        return getCallStateForSlot(getSlotForDefaultSubscription());
-    }
-
-    public int getCallStateForSlot(int slotIndex) {
+        if (CompatChanges.isChangeEnabled(
+                TelecomManager.ENABLE_GET_CALL_STATE_PERMISSION_PROTECTION,
+                Binder.getCallingUid())) {
+            // Do not allow this API to be called on API version 31+, it should only be
+            // called on old apps using this Binder call directly.
+            throw new SecurityException("This method can only be used for applications "
+                    + "targeting API version 30 or less.");
+        }
         final long identity = Binder.clearCallingIdentity();
         try {
-            Phone phone = PhoneFactory.getPhone(slotIndex);
+            Phone phone = getPhone(getDefaultSubscription());
+            return phone == null ? TelephonyManager.CALL_STATE_IDLE :
+                    PhoneConstantConversions.convertCallState(phone.getState());
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    @Override
+    public int getCallStateForSubscription(int subId, String callingPackage, String featureId) {
+        if (CompatChanges.isChangeEnabled(
+                TelecomManager.ENABLE_GET_CALL_STATE_PERMISSION_PROTECTION,
+                Binder.getCallingUid())) {
+            // Check READ_PHONE_STATE for API version 31+
+            if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(mApp, subId, callingPackage,
+                    featureId, "getCallStateForSubscription")) {
+                throw new SecurityException("getCallState requires READ_PHONE_STATE for apps "
+                        + "targeting API level 31+.");
+            }
+        }
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            Phone phone = getPhone(subId);
             return phone == null ? TelephonyManager.CALL_STATE_IDLE :
                     PhoneConstantConversions.convertCallState(phone.getState());
         } finally {
