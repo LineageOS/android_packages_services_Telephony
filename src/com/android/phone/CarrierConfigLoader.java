@@ -281,7 +281,8 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                                 phoneId,
                                 EVENT_CONNECTED_TO_DEFAULT)) {
                             sendMessageDelayed(
-                                    obtainMessage(EVENT_BIND_DEFAULT_TIMEOUT, phoneId, -1),
+                                    obtainMessage(EVENT_BIND_DEFAULT_TIMEOUT, phoneId, -1 /*arg2*/,
+                                            getMessageToken(phoneId)),
                                     BIND_TIMEOUT_MILLIS);
                         } else {
                             // Put a stub bundle in place so that the rest of the logic continues
@@ -299,7 +300,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                 }
 
                 case EVENT_CONNECTED_TO_DEFAULT: {
-                    removeMessages(EVENT_BIND_DEFAULT_TIMEOUT);
+                    removeMessages(EVENT_BIND_DEFAULT_TIMEOUT, getMessageToken(phoneId));
                     final CarrierServiceConnection conn = (CarrierServiceConnection) msg.obj;
                     // If new service connection has been created, unbind.
                     if (mServiceConnection[phoneId] != conn || conn.service == null) {
@@ -318,7 +319,8 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                                         loge("Received response for stale request.");
                                         return;
                                     }
-                                    removeMessages(EVENT_FETCH_DEFAULT_TIMEOUT);
+                                    removeMessages(EVENT_FETCH_DEFAULT_TIMEOUT,
+                                            getMessageToken(phoneId));
                                     if (resultCode == RESULT_ERROR || resultData == null) {
                                         // On error, abort config fetching.
                                         loge("Failed to get carrier config");
@@ -350,7 +352,8 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                         break; // So we don't set a timeout.
                     }
                     sendMessageDelayed(
-                            obtainMessage(EVENT_FETCH_DEFAULT_TIMEOUT, phoneId, -1),
+                            obtainMessage(EVENT_FETCH_DEFAULT_TIMEOUT, phoneId, -1 /*arg2*/,
+                                    getMessageToken(phoneId)),
                             BIND_TIMEOUT_MILLIS);
                     break;
                 }
@@ -358,7 +361,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                 case EVENT_BIND_DEFAULT_TIMEOUT:
                 case EVENT_FETCH_DEFAULT_TIMEOUT: {
                     loge("Bind/fetch time out from " + mPlatformCarrierConfigPackage);
-                    removeMessages(EVENT_FETCH_DEFAULT_TIMEOUT);
+                    removeMessages(EVENT_FETCH_DEFAULT_TIMEOUT, getMessageToken(phoneId));
                     // If we attempted to bind to the app, but the service connection is null due to
                     // the race condition that clear config event happens before bind/fetch complete
                     // then config was cleared while we were waiting and we should not continue.
@@ -410,7 +413,8 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                         if (carrierPackageName != null && bindToConfigPackage(carrierPackageName,
                                 phoneId, EVENT_CONNECTED_TO_CARRIER)) {
                             sendMessageDelayed(
-                                    obtainMessage(EVENT_BIND_CARRIER_TIMEOUT, phoneId, -1),
+                                    obtainMessage(EVENT_BIND_CARRIER_TIMEOUT, phoneId, -1 /*arg2*/,
+                                            getMessageToken(phoneId)),
                                     BIND_TIMEOUT_MILLIS);
                         } else {
                             // Put a stub bundle in place so that the rest of the logic continues
@@ -426,7 +430,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                 }
 
                 case EVENT_CONNECTED_TO_CARRIER: {
-                    removeMessages(EVENT_BIND_CARRIER_TIMEOUT);
+                    removeMessages(EVENT_BIND_CARRIER_TIMEOUT, getMessageToken(phoneId));
                     final CarrierServiceConnection conn = (CarrierServiceConnection) msg.obj;
                     // If new service connection has been created, unbind.
                     if (mServiceConnection[phoneId] != conn || conn.service == null) {
@@ -445,7 +449,8 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                                         loge("Received response for stale request.");
                                         return;
                                     }
-                                    removeMessages(EVENT_FETCH_CARRIER_TIMEOUT);
+                                    removeMessages(EVENT_FETCH_CARRIER_TIMEOUT,
+                                            getMessageToken(phoneId));
                                     if (resultCode == RESULT_ERROR || resultData == null) {
                                         // On error, abort config fetching.
                                         loge("Failed to get carrier config from carrier app: "
@@ -478,7 +483,8 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                         break; // So we don't set a timeout.
                     }
                     sendMessageDelayed(
-                            obtainMessage(EVENT_FETCH_CARRIER_TIMEOUT, phoneId, -1),
+                            obtainMessage(EVENT_FETCH_CARRIER_TIMEOUT, phoneId, -1 /*arg2*/,
+                                    getMessageToken(phoneId)),
                             BIND_TIMEOUT_MILLIS);
                     break;
                 }
@@ -487,7 +493,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                 case EVENT_FETCH_CARRIER_TIMEOUT: {
                     loge("Bind/fetch from carrier app timeout, package="
                             + getCarrierPackageForPhoneId(phoneId));
-                    removeMessages(EVENT_FETCH_CARRIER_TIMEOUT);
+                    removeMessages(EVENT_FETCH_CARRIER_TIMEOUT, getMessageToken(phoneId));
                     // If we attempted to bind to the app, but the service connection is null due to
                     // the race condition that clear config event happens before bind/fetch complete
                     // then config was cleared while we were waiting and we should not continue.
@@ -1319,6 +1325,19 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
             mServiceBoundForNoSimConfig[phoneId] = false;
             context.unbindService(conn);
         }
+    }
+
+    /**
+     * Returns a boxed Integer object for phoneId, services as message token to distinguish messages
+     * with same code when calling {@link Handler#removeMessages(int, Object)}.
+     */
+    private Integer getMessageToken(int phoneId) {
+        if (phoneId < -128 || phoneId > 127) {
+            throw new IllegalArgumentException("phoneId should be in range [-128, 127], inclusive");
+        }
+        // Integer#valueOf guarantees the integers within [-128, 127] are cached and thus memory
+        // comparison (==) returns true for the same integer.
+        return Integer.valueOf(phoneId);
     }
 
     /**

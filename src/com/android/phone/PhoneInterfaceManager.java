@@ -382,6 +382,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private static final int MANUFACTURER_CODE_LENGTH = 8;
 
     private static final int SET_DATA_THROTTLING_MODEM_THREW_INVALID_PARAMS = -1;
+    private static final int MODEM_DOES_NOT_SUPPORT_DATA_THROTTLING_ERROR_CODE = -2;
 
     /**
      * Experiment flag to enable erase modem config on reset network, default value is false
@@ -1802,6 +1803,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                                 .THERMAL_MITIGATION_RESULT_MODEM_NOT_AVAILABLE;
                         } else if (error == CommandException.Error.INVALID_ARGUMENTS) {
                             request.result = SET_DATA_THROTTLING_MODEM_THREW_INVALID_PARAMS;
+                        } else if (error == CommandException.Error.REQUEST_NOT_SUPPORTED) {
+                            request.result = MODEM_DOES_NOT_SUPPORT_DATA_THROTTLING_ERROR_CODE;
                         } else {
                             request.result =
                                     TelephonyManager.THERMAL_MITIGATION_RESULT_MODEM_ERROR;
@@ -7351,8 +7354,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     @Override
     public @Nullable PhoneAccountHandle getPhoneAccountHandleForSubscriptionId(int subscriptionId) {
-        enforceReadPrivilegedPermission("getPhoneAccountHandleForSubscriptionId, "
-                + "subscriptionId: " + subscriptionId);
+        TelephonyPermissions
+                .enforeceCallingOrSelfReadPrivilegedPhoneStatePermissionOrCarrierPrivilege(
+                mApp,
+                subscriptionId,
+                "getPhoneAccountHandleForSubscriptionId, " + "subscriptionId: " + subscriptionId);
         final long identity = Binder.clearCallingIdentity();
         try {
             Phone phone = getPhone(subscriptionId);
@@ -9603,6 +9609,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     private int handleDataThrottlingRequest(int subId,
             DataThrottlingRequest dataThrottlingRequest) {
+        boolean isDataThrottlingSupported = isRadioInterfaceCapabilitySupported(
+                TelephonyManager.CAPABILITY_THERMAL_MITIGATION_DATA_THROTTLING);
+        if (!isDataThrottlingSupported && dataThrottlingRequest.getDataThrottlingAction()
+                != DataThrottlingRequest.DATA_THROTTLING_ACTION_NO_DATA_THROTTLING) {
+            throw new IllegalArgumentException("modem does not support data throttling");
+        }
+
         // Ensure that radio is on. If not able to power on due to phone being unavailable, return
         // THERMAL_MITIGATION_RESULT_MODEM_NOT_AVAILABLE.
         if (!setRadioPowerForThermal(subId, true)) {
@@ -9611,12 +9624,19 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         setDataEnabledForReason(subId, TelephonyManager.DATA_ENABLED_REASON_THERMAL, true);
 
-        int thermalMitigationResult =
+        if (isDataThrottlingSupported) {
+            int thermalMitigationResult =
                 (int) sendRequest(CMD_SET_DATA_THROTTLING, dataThrottlingRequest, subId);
-        if (thermalMitigationResult == SET_DATA_THROTTLING_MODEM_THREW_INVALID_PARAMS) {
-            throw new IllegalArgumentException("modem returned INVALID_ARGUMENTS");
+            if (thermalMitigationResult == SET_DATA_THROTTLING_MODEM_THREW_INVALID_PARAMS) {
+                throw new IllegalArgumentException("modem returned INVALID_ARGUMENTS");
+            } else if (thermalMitigationResult
+                    == MODEM_DOES_NOT_SUPPORT_DATA_THROTTLING_ERROR_CODE) {
+                throw new IllegalArgumentException("modem does not support data throttling");
+            }
+            return thermalMitigationResult;
         }
-        return thermalMitigationResult;
+
+        return TelephonyManager.THERMAL_MITIGATION_RESULT_SUCCESS;
     }
 
     /**
