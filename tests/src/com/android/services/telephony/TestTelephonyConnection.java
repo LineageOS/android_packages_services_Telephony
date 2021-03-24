@@ -16,7 +16,9 @@
 
 package com.android.services.telephony;
 
+import android.content.AttributionSource;
 import android.content.ContentResolver;
+import android.os.Process;
 import android.os.UserHandle;
 import android.telephony.TelephonyManager;
 
@@ -48,6 +50,8 @@ import com.android.internal.telephony.imsphone.ImsPhoneConnection;
 
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.mockito.invocation.InvocationOnMock;
+import org.mockito.stubbing.Answer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -124,6 +128,9 @@ public class TestTelephonyConnection extends TelephonyConnection {
         super(null, null, android.telecom.Call.Details.DIRECTION_INCOMING);
         MockitoAnnotations.initMocks(this);
 
+        AttributionSource attributionSource = new AttributionSource.Builder(
+                Process.myUid()).build();
+
         mIsImsConnection = false;
         mIsImsExternalConnection = false;
         mMockPhone = mock(Phone.class);
@@ -152,7 +159,9 @@ public class TestTelephonyConnection extends TelephonyConnection {
         when(mMockContext.getContentResolver()).thenReturn(mMockContentResolver);
         when(mMockContext.getSystemService(Context.TELEPHONY_SERVICE))
                 .thenReturn(mMockTelephonyManager);
+        when(mMockContext.getAttributionSource()).thenReturn(attributionSource);
         when(mMockContentResolver.getUserId()).thenReturn(UserHandle.USER_CURRENT);
+        when(mMockContentResolver.getAttributionSource()).thenReturn(attributionSource);
         when(mMockResources.getBoolean(anyInt())).thenReturn(false);
         when(mMockPhone.getDefaultPhone()).thenReturn(mMockPhone);
         when(mMockPhone.getPhoneType()).thenReturn(PhoneConstants.PHONE_TYPE_IMS);
