@@ -139,6 +139,10 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
     // Check if a package has carrier privileges on any SIM, regardless of subId/phoneId.
     private static final String HAS_CARRIER_PRIVILEGES_COMMAND = "has-carrier-privileges";
 
+    private static final String THERMAL_MITIGATION_COMMAND = "thermal-mitigation";
+    private static final String ALLOW_THERMAL_MITIGATION_PACKAGE_SUBCOMMAND = "allow-package";
+    private static final String DISALLOW_THERMAL_MITIGATION_PACKAGE_SUBCOMMAND = "disallow-package";
+
     // Take advantage of existing methods that already contain permissions checks when possible.
     private final ITelephony mInterface;
 
@@ -279,6 +283,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                 return handleUnattendedReboot();
             case HAS_CARRIER_PRIVILEGES_COMMAND:
                 return handleHasCarrierPrivilegesCommand();
+            case THERMAL_MITIGATION_COMMAND:
+                return handleThermalMitigationCommand();
             default: {
                 return handleDefaultCommands(cmd);
             }
@@ -426,6 +432,16 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         pw.println("  numverify fake-call NUMBER;");
         pw.println("    Fake an incoming call from NUMBER. This is for testing. Output will be");
         pw.println("    1 if the call would have been intercepted, 0 otherwise.");
+    }
+
+    private void onHelpThermalMitigation() {
+        PrintWriter pw = getOutPrintWriter();
+        pw.println("Thermal mitigation commands");
+        pw.println("  thermal-mitigation allow-package PACKAGE_NAME");
+        pw.println("    Set the package as one of authorized packages for thermal mitigation.");
+        pw.println("  thermal-mitigation disallow-package PACKAGE_NAME");
+        pw.println("    Remove the package from one of the authorized packages for thermal "
+                + "mitigation.");
     }
 
     private void onHelpDataTestMode() {
@@ -725,6 +741,36 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         }
 
         return -1;
+    }
+
+    private int handleThermalMitigationCommand() {
+        String arg = getNextArg();
+        String packageName = getNextArg();
+        if (arg == null || packageName == null) {
+            onHelpThermalMitigation();
+            return 0;
+        }
+
+        if (!checkShellUid()) {
+            return -1;
+        }
+
+        switch (arg) {
+            case ALLOW_THERMAL_MITIGATION_PACKAGE_SUBCOMMAND: {
+                PhoneInterfaceManager.addPackageToThermalMitigationAllowlist(packageName, mContext);
+                return 0;
+            }
+            case DISALLOW_THERMAL_MITIGATION_PACKAGE_SUBCOMMAND: {
+                PhoneInterfaceManager.removePackageFromThermalMitigationAllowlist(packageName,
+                        mContext);
+                return 0;
+            }
+            default:
+                onHelpThermalMitigation();
+        }
+
+        return -1;
+
     }
 
     private int handleD2dCommand() {
