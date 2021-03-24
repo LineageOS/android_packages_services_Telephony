@@ -18,6 +18,7 @@ package com.android.phone;
 
 import static android.provider.Telephony.ServiceStateTable;
 import static android.provider.Telephony.ServiceStateTable.getUriForSubscriptionId;
+import static android.telephony.NetworkRegistrationInfo.REGISTRATION_STATE_HOME;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -31,8 +32,11 @@ import android.content.pm.ProviderInfo;
 import android.database.ContentObserver;
 import android.database.Cursor;
 import android.net.Uri;
+import android.telephony.AccessNetworkConstants;
+import android.telephony.NetworkRegistrationInfo;
 import android.telephony.ServiceState;
 import android.telephony.SubscriptionManager;
+import android.telephony.TelephonyManager;
 import android.test.mock.MockContentResolver;
 import android.test.suitebuilder.annotation.SmallTest;
 
@@ -81,7 +85,15 @@ public class ServiceStateProviderTest {
         ServiceStateProvider.IS_USING_CARRIER_AGGREGATION,
         ServiceStateProvider.OPERATOR_ALPHA_LONG_RAW,
         ServiceStateProvider.OPERATOR_ALPHA_SHORT_RAW,
+        ServiceStateTable.DATA_NETWORK_TYPE,
     };
+
+    // Exception used internally to verify if the Resolver#notifyChange has been called.
+    private class TestNotifierException extends RuntimeException {
+        TestNotifierException() {
+            super();
+        }
+    }
 
     @Before
     public void setUp() throws Exception {
@@ -89,7 +101,7 @@ public class ServiceStateProviderTest {
         mContentResolver = new MockContentResolver() {
             @Override
             public void notifyChange(Uri uri, ContentObserver observer, boolean syncToNetwork) {
-                throw new RuntimeException("notifyChange!");
+                throw new TestNotifierException();
             }
         };
         doReturn(mContentResolver).when(mContext).getContentResolver();
@@ -183,6 +195,7 @@ public class ServiceStateProviderTest {
         final int isUsingCarrierAggregation = (ss.isUsingCarrierAggregation()) ? 1 : 0;
         final String operatorAlphaLongRaw = ss.getOperatorAlphaLongRaw();
         final String operatorAlphaShortRaw = ss.getOperatorAlphaShortRaw();
+        final int dataNetworkType = ss.getDataNetworkType();
 
         assertEquals(voiceRegState, cursor.getInt(0));
         assertEquals(dataRegState, cursor.getInt(1));
@@ -206,6 +219,7 @@ public class ServiceStateProviderTest {
         assertEquals(isUsingCarrierAggregation, cursor.getInt(19));
         assertEquals(operatorAlphaLongRaw, cursor.getString(20));
         assertEquals(operatorAlphaShortRaw, cursor.getString(21));
+        assertEquals(dataNetworkType, cursor.getInt(22));
     }
 
     /**
@@ -226,21 +240,12 @@ public class ServiceStateProviderTest {
         newSS.setCdmaSystemAndNetworkId(0, 0);
 
         // Test that notifyChange is not called for these fields
-        boolean notifyChangeWasCalled = false;
-        try {
-            ServiceStateProvider.notifyChangeForSubIdAndField(mContext, oldSS, newSS, subId);
-        } catch (RuntimeException e) {
-            final String message = e.getMessage();
-            if (message != null &&  message.equals("notifyChange!")) {
-                notifyChangeWasCalled = true;
-            }
-        }
-        assertFalse(notifyChangeWasCalled);
+        assertFalse(notifyChangeCalledForSubIdAndField(oldSS, newSS, subId));
     }
 
     @Test
     @SmallTest
-    public void testNotifyChanged() {
+    public void testNotifyChanged_noStateUpdated() {
         int subId = 0;
 
         ServiceState oldSS = new ServiceState();
@@ -251,57 +256,84 @@ public class ServiceStateProviderTest {
         copyOfOldSS.setStateOutOfService();
         copyOfOldSS.setVoiceRegState(ServiceState.STATE_OUT_OF_SERVICE);
 
+        // Test that notifyChange is not called with no change in notifyChangeForSubIdAndField
+        assertFalse(notifyChangeCalledForSubId(oldSS, copyOfOldSS, subId));
+
+        // Test that notifyChange is not called with no change in notifyChangeForSubId
+        assertFalse(notifyChangeCalledForSubIdAndField(oldSS, copyOfOldSS, subId));
+    }
+
+    @Test
+    @SmallTest
+    public void testNotifyChanged_voiceRegStateUpdated() {
+        int subId = 0;
+
+        ServiceState oldSS = new ServiceState();
+        oldSS.setStateOutOfService();
+        oldSS.setVoiceRegState(ServiceState.STATE_OUT_OF_SERVICE);
+
         ServiceState newSS = new ServiceState();
         newSS.setStateOutOfService();
         newSS.setVoiceRegState(ServiceState.STATE_POWER_OFF);
 
-        // Test that notifyChange is not called with no change in notifyChangeForSubIdAndField
-        boolean notifyChangeWasCalled = false;
-        try {
-            ServiceStateProvider.notifyChangeForSubIdAndField(mContext, oldSS, copyOfOldSS, subId);
-        } catch (RuntimeException e) {
-            final String message = e.getMessage();
-            if (message != null &&  message.equals("notifyChange!")) {
-                notifyChangeWasCalled = true;
-            }
-        }
-        assertFalse(notifyChangeWasCalled);
-
-        // Test that notifyChange is not called with no change in notifyChangeForSubId
-        notifyChangeWasCalled = false;
-        try {
-            ServiceStateProvider.notifyChangeForSubId(mContext, oldSS, copyOfOldSS, subId);
-        } catch (RuntimeException e) {
-            final String message = e.getMessage();
-            if (message != null &&  message.equals("notifyChange!")) {
-                notifyChangeWasCalled = true;
-            }
-        }
-        assertFalse(notifyChangeWasCalled);
-
         // Test that notifyChange is called by notifyChangeForSubIdAndField when the voice_reg_state
         // changes
-        notifyChangeWasCalled = false;
-        try {
-            ServiceStateProvider.notifyChangeForSubIdAndField(mContext, oldSS, newSS, subId);
-        } catch (RuntimeException e) {
-            final String message = e.getMessage();
-            if (message != null &&  message.equals("notifyChange!")) {
-                notifyChangeWasCalled = true;
-            }
-        }
-        assertTrue(notifyChangeWasCalled);
+        assertTrue(notifyChangeCalledForSubId(oldSS, newSS, subId));
 
         // Test that notifyChange is called by notifyChangeForSubId when the voice_reg_state changes
-        notifyChangeWasCalled = false;
+        assertTrue(notifyChangeCalledForSubIdAndField(oldSS, newSS, subId));
+    }
+
+    @Test
+    @SmallTest
+    public void testNotifyChanged_dataNetworkTypeUpdated() {
+        int subId = 0;
+
+        // While we don't have a method to directly set dataNetworkType, we emulate a ServiceState
+        // change that will trigger the change of dataNetworkType, according to the logic in
+        // ServiceState#getDataNetworkType
+        ServiceState oldSS = new ServiceState();
+        oldSS.setStateOutOfService();
+
+        ServiceState newSS = new ServiceState();
+        newSS.setStateOutOfService();
+
+        NetworkRegistrationInfo nriWwan = new NetworkRegistrationInfo.Builder()
+                .setTransportType(AccessNetworkConstants.TRANSPORT_TYPE_WWAN)
+                .setAccessNetworkTechnology(TelephonyManager.NETWORK_TYPE_LTE)
+                .setDomain(NetworkRegistrationInfo.DOMAIN_PS)
+                .setRegistrationState(REGISTRATION_STATE_HOME)
+                .build();
+        newSS.addNetworkRegistrationInfo(nriWwan);
+
+        // Test that notifyChange is called by notifyChangeForSubId when the
+        // data_network_type changes
+        assertTrue(notifyChangeCalledForSubId(oldSS, newSS, subId));
+
+        // Test that notifyChange is called by notifyChangeForSubIdAndField when the
+        // data_network_type changes
+        assertTrue(notifyChangeCalledForSubIdAndField(oldSS, newSS, subId));
+    }
+
+    // Check if notifyChange was called by notifyChangeForSubId
+    private boolean notifyChangeCalledForSubId(ServiceState oldSS,
+            ServiceState newSS, int subId) {
         try {
             ServiceStateProvider.notifyChangeForSubId(mContext, oldSS, newSS, subId);
-        } catch (RuntimeException e) {
-            final String message = e.getMessage();
-            if (message != null &&  message.equals("notifyChange!")) {
-                notifyChangeWasCalled = true;
-            }
+        } catch (TestNotifierException e) {
+            return true;
         }
-        assertTrue(notifyChangeWasCalled);
+        return false;
+    }
+
+    // Check if notifyChange was called by notifyChangeForSubIdAndField
+    private boolean notifyChangeCalledForSubIdAndField(ServiceState oldSS,
+            ServiceState newSS, int subId) {
+        try {
+            ServiceStateProvider.notifyChangeForSubIdAndField(mContext, oldSS, newSS, subId);
+        } catch (TestNotifierException e) {
+            return true;
+        }
+        return false;
     }
 }
