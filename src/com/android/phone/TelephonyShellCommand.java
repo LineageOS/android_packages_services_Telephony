@@ -123,6 +123,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
     private static final String SRC_GET_CARRIER_ENABLED = "get-carrier-enabled";
     private static final String SRC_SET_TEST_ENABLED = "set-test-enabled";
     private static final String SRC_GET_TEST_ENABLED = "get-test-enabled";
+    private static final String SRC_SET_FEATURE_ENABLED = "set-feature-validation";
+    private static final String SRC_GET_FEATURE_ENABLED = "get-feature-validation";
 
     private static final String D2D_SUBCOMMAND = "d2d";
     private static final String D2D_SEND = "send";
@@ -547,6 +549,17 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         pw.println("          is specified, it will choose the default voice SIM slot.");
         pw.println("  src get-carrier-enabled [-s SLOT_ID]");
         pw.println("    Gets the carrier config for RCS VoLTE single registration.");
+        pw.println("    Options are:");
+        pw.println("      -s: The SIM slot ID to read the config value for. If no option");
+        pw.println("          is specified, it will choose the default voice SIM slot.");
+        pw.println("  src set-feature-validation [-s SLOT_ID] true|false|null");
+        pw.println("    Sets ims feature validation result.");
+        pw.println("    The value could be true, false, or null(undefined).");
+        pw.println("    Options are:");
+        pw.println("      -s: The SIM slot ID to set the config value for. If no option");
+        pw.println("          is specified, it will choose the default voice SIM slot.");
+        pw.println("  src get-feature-validation [-s SLOT_ID]");
+        pw.println("    Gets ims feature validation override value.");
         pw.println("    Options are:");
         pw.println("      -s: The SIM slot ID to read the config value for. If no option");
         pw.println("          is specified, it will choose the default voice SIM slot.");
@@ -1816,6 +1829,12 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             case SRC_GET_CARRIER_ENABLED: {
                 return handleSrcGetCarrierEnabledCommand();
             }
+            case SRC_SET_FEATURE_ENABLED: {
+                return handleSrcSetFeatureValidationCommand();
+            }
+            case SRC_GET_FEATURE_ENABLED: {
+                return handleSrcGetFeatureValidationCommand();
+            }
         }
 
         return -1;
@@ -2138,6 +2157,56 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         getOutPrintWriter().println(result);
         return 0;
     }
+
+    private int handleSrcSetFeatureValidationCommand() {
+        //the release time value could be -1
+        int subId = getRemainingArgsCount() > 1 ? getSubId("src set-feature-validation")
+                : SubscriptionManager.getDefaultSubscriptionId();
+        if (subId == SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
+            return -1;
+        }
+
+        String enabledStr = getNextArg();
+        if (enabledStr == null) {
+            return -1;
+        }
+
+        try {
+            boolean result =
+                    mInterface.setImsFeatureValidationOverride(subId, enabledStr);
+            if (VDBG) {
+                Log.v(LOG_TAG, "src set-feature-validation -s " + subId + " "
+                        + enabledStr + ", result=" + result);
+            }
+            getOutPrintWriter().println(result);
+        } catch (NumberFormatException | RemoteException e) {
+            Log.w(LOG_TAG, "src set-feature-validation -s " + subId + " "
+                    + enabledStr + ", error" + e.getMessage());
+            getErrPrintWriter().println("Exception: " + e.getMessage());
+            return -1;
+        }
+        return 0;
+    }
+
+    private int handleSrcGetFeatureValidationCommand() {
+        int subId = getSubId("src get-feature-validation");
+        if (subId == SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
+            return -1;
+        }
+
+        Boolean result = false;
+        try {
+            result = mInterface.getImsFeatureValidationOverride(subId);
+        } catch (RemoteException e) {
+            return -1;
+        }
+        if (VDBG) {
+            Log.v(LOG_TAG, "src get-feature-validation -s " + subId + ", returned: " + result);
+        }
+        getOutPrintWriter().println(result);
+        return 0;
+    }
+
 
     private void onHelpCallComposer() {
         PrintWriter pw = getOutPrintWriter();
