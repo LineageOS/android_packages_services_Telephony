@@ -64,7 +64,7 @@ public class ServiceStateProviderTest {
     private final String[] mTestProjection =
     {
         ServiceStateTable.VOICE_REG_STATE,
-        ServiceStateProvider.DATA_REG_STATE,
+        ServiceStateTable.DATA_REG_STATE,
         ServiceStateProvider.VOICE_OPERATOR_ALPHA_LONG,
         ServiceStateProvider.VOICE_OPERATOR_ALPHA_SHORT,
         ServiceStateTable.VOICE_OPERATOR_NUMERIC,
@@ -86,6 +86,7 @@ public class ServiceStateProviderTest {
         ServiceStateProvider.OPERATOR_ALPHA_LONG_RAW,
         ServiceStateProvider.OPERATOR_ALPHA_SHORT_RAW,
         ServiceStateTable.DATA_NETWORK_TYPE,
+        ServiceStateTable.DUPLEX_MODE,
     };
 
     // Exception used internally to verify if the Resolver#notifyChange has been called.
@@ -110,6 +111,15 @@ public class ServiceStateProviderTest {
         mTestServiceState.setStateOutOfService();
         mTestServiceStateForSubId1 = new ServiceState();
         mTestServiceStateForSubId1.setStateOff();
+
+        // Add NRI to trigger SS with non-default values (e.g. duplex mode)
+        NetworkRegistrationInfo nriWwan = new NetworkRegistrationInfo.Builder()
+                .setTransportType(AccessNetworkConstants.TRANSPORT_TYPE_WWAN)
+                .setAccessNetworkTechnology(TelephonyManager.NETWORK_TYPE_LTE)
+                .setDomain(NetworkRegistrationInfo.DOMAIN_PS)
+                .build();
+        mTestServiceStateForSubId1.addNetworkRegistrationInfo(nriWwan);
+        mTestServiceStateForSubId1.setChannelNumber(65536); // EutranBand.BAND_65, DUPLEX_MODE_FDD
 
         // Mock out the actual phone state
         ServiceStateProvider provider = new ServiceStateProvider() {
@@ -196,6 +206,7 @@ public class ServiceStateProviderTest {
         final String operatorAlphaLongRaw = ss.getOperatorAlphaLongRaw();
         final String operatorAlphaShortRaw = ss.getOperatorAlphaShortRaw();
         final int dataNetworkType = ss.getDataNetworkType();
+        final int duplexMode = ss.getDuplexMode();
 
         assertEquals(voiceRegState, cursor.getInt(0));
         assertEquals(dataRegState, cursor.getInt(1));
@@ -220,6 +231,7 @@ public class ServiceStateProviderTest {
         assertEquals(operatorAlphaLongRaw, cursor.getString(20));
         assertEquals(operatorAlphaShortRaw, cursor.getString(21));
         assertEquals(dataNetworkType, cursor.getInt(22));
+        assertEquals(duplexMode, cursor.getInt(23));
     }
 
     /**
@@ -312,6 +324,28 @@ public class ServiceStateProviderTest {
 
         // Test that notifyChange is called by notifyChangeForSubIdAndField when the
         // data_network_type changes
+        assertTrue(notifyChangeCalledForSubIdAndField(oldSS, newSS, subId));
+    }
+
+    @Test
+    @SmallTest
+    public void testNotifyChanged_dataRegStateUpdated() {
+        int subId = 0;
+
+        ServiceState oldSS = new ServiceState();
+        oldSS.setStateOutOfService();
+        oldSS.setDataRegState(ServiceState.STATE_OUT_OF_SERVICE);
+
+        ServiceState newSS = new ServiceState();
+        newSS.setStateOutOfService();
+        newSS.setDataRegState(ServiceState.STATE_POWER_OFF);
+
+        // Test that notifyChange is called by notifyChangeForSubId
+        // when the data_reg_state changes
+        assertTrue(notifyChangeCalledForSubId(oldSS, newSS, subId));
+
+        // Test that notifyChange is called by notifyChangeForSubIdAndField
+        // when the data_reg_state changes
         assertTrue(notifyChangeCalledForSubIdAndField(oldSS, newSS, subId));
     }
 
