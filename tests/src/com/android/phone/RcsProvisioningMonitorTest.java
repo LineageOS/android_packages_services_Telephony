@@ -537,6 +537,50 @@ public class RcsProvisioningMonitorTest {
 
     @Test
     @SmallTest
+    public void testOverrideDeviceSingleRegistrationEnabled() throws Exception {
+        createMonitor(1);
+
+        when(mPackageManager.hasSystemFeature(
+                eq(PackageManager.FEATURE_TELEPHONY_IMS_SINGLE_REGISTRATION))).thenReturn(true);
+        mBundle.putBoolean(
+                CarrierConfigManager.Ims.KEY_IMS_SINGLE_REGISTRATION_REQUIRED_BOOL, true);
+        broadcastCarrierConfigChange(FAKE_SUB_ID_BASE);
+        processAllMessages();
+        assertTrue(mRcsProvisioningMonitor.isRcsVolteSingleRegistrationEnabled(FAKE_SUB_ID_BASE));
+
+        mRcsProvisioningMonitor.overrideDeviceSingleRegistrationEnabled(false);
+        processAllMessages();
+        assertFalse(mRcsProvisioningMonitor.getDeviceSingleRegistrationEnabled());
+        assertFalse(mRcsProvisioningMonitor.isRcsVolteSingleRegistrationEnabled(FAKE_SUB_ID_BASE));
+
+        mRcsProvisioningMonitor.overrideDeviceSingleRegistrationEnabled(null);
+        processAllMessages();
+        assertTrue(mRcsProvisioningMonitor.getDeviceSingleRegistrationEnabled());
+        assertTrue(mRcsProvisioningMonitor.isRcsVolteSingleRegistrationEnabled(FAKE_SUB_ID_BASE));
+
+        when(mPackageManager.hasSystemFeature(
+                eq(PackageManager.FEATURE_TELEPHONY_IMS_SINGLE_REGISTRATION))).thenReturn(false);
+        //use carrier config change to refresh the value as system feature is static
+        mBundle.putBoolean(
+                CarrierConfigManager.Ims.KEY_IMS_SINGLE_REGISTRATION_REQUIRED_BOOL, true);
+        broadcastCarrierConfigChange(FAKE_SUB_ID_BASE);
+        processAllMessages();
+
+        assertFalse(mRcsProvisioningMonitor.isRcsVolteSingleRegistrationEnabled(FAKE_SUB_ID_BASE));
+
+        mRcsProvisioningMonitor.overrideDeviceSingleRegistrationEnabled(true);
+        processAllMessages();
+        assertTrue(mRcsProvisioningMonitor.getDeviceSingleRegistrationEnabled());
+        assertTrue(mRcsProvisioningMonitor.isRcsVolteSingleRegistrationEnabled(FAKE_SUB_ID_BASE));
+
+        mRcsProvisioningMonitor.overrideDeviceSingleRegistrationEnabled(null);
+        processAllMessages();
+        assertFalse(mRcsProvisioningMonitor.getDeviceSingleRegistrationEnabled());
+        assertFalse(mRcsProvisioningMonitor.isRcsVolteSingleRegistrationEnabled(FAKE_SUB_ID_BASE));
+    }
+
+    @Test
+    @SmallTest
     public void testTestModeEnabledAndDisabled() throws Exception {
         when(mCursor.getBlob(anyInt())).thenReturn(null);
         createMonitor(1);
@@ -572,6 +616,65 @@ public class RcsProvisioningMonitorTest {
                 mRcsProvisioningMonitor.getConfig(FAKE_SUB_ID_BASE)));
         assertTrue(Arrays.equals(RcsConfig.compressGzip(SAMPLE_CONFIG.getBytes()),
                 (byte[]) mProvider.getContentValues().get(SimInfo.COLUMN_RCS_CONFIG)));
+    }
+
+    @Test
+    @SmallTest
+    public void testOverrideCarrierSingleRegistrationEnabled() throws Exception {
+        createMonitor(1);
+
+        when(mPackageManager.hasSystemFeature(
+                eq(PackageManager.FEATURE_TELEPHONY_IMS_SINGLE_REGISTRATION))).thenReturn(true);
+        mBundle.putBoolean(
+                CarrierConfigManager.Ims.KEY_IMS_SINGLE_REGISTRATION_REQUIRED_BOOL, true);
+        broadcastCarrierConfigChange(FAKE_SUB_ID_BASE);
+        processAllMessages();
+        assertTrue(mRcsProvisioningMonitor.isRcsVolteSingleRegistrationEnabled(FAKE_SUB_ID_BASE));
+
+        mRcsProvisioningMonitor
+                .overrideCarrierSingleRegistrationEnabled(FAKE_SUB_ID_BASE, false);
+        processAllMessages();
+        assertFalse(mRcsProvisioningMonitor.getCarrierSingleRegistrationEnabled(FAKE_SUB_ID_BASE));
+        assertFalse(mRcsProvisioningMonitor.isRcsVolteSingleRegistrationEnabled(FAKE_SUB_ID_BASE));
+
+        mRcsProvisioningMonitor
+                .overrideCarrierSingleRegistrationEnabled(FAKE_SUB_ID_BASE, null);
+        processAllMessages();
+        assertTrue(mRcsProvisioningMonitor.getCarrierSingleRegistrationEnabled(FAKE_SUB_ID_BASE));
+        assertTrue(mRcsProvisioningMonitor.isRcsVolteSingleRegistrationEnabled(FAKE_SUB_ID_BASE));
+
+        mBundle.putBoolean(
+                CarrierConfigManager.Ims.KEY_IMS_SINGLE_REGISTRATION_REQUIRED_BOOL, false);
+        broadcastCarrierConfigChange(FAKE_SUB_ID_BASE);
+        processAllMessages();
+        assertFalse(mRcsProvisioningMonitor.isRcsVolteSingleRegistrationEnabled(FAKE_SUB_ID_BASE));
+
+        mRcsProvisioningMonitor
+                .overrideCarrierSingleRegistrationEnabled(FAKE_SUB_ID_BASE, true);
+        processAllMessages();
+        assertTrue(mRcsProvisioningMonitor.getCarrierSingleRegistrationEnabled(FAKE_SUB_ID_BASE));
+        assertTrue(mRcsProvisioningMonitor.isRcsVolteSingleRegistrationEnabled(FAKE_SUB_ID_BASE));
+
+        mRcsProvisioningMonitor
+                .overrideCarrierSingleRegistrationEnabled(FAKE_SUB_ID_BASE, null);
+        processAllMessages();
+        assertFalse(mRcsProvisioningMonitor.getCarrierSingleRegistrationEnabled(FAKE_SUB_ID_BASE));
+        assertFalse(mRcsProvisioningMonitor.isRcsVolteSingleRegistrationEnabled(FAKE_SUB_ID_BASE));
+    }
+
+    @Test
+    @SmallTest
+    public void testOverrideImsFeatureValidation() throws Exception {
+        createMonitor(1);
+
+        mRcsProvisioningMonitor.overrideImsFeatureValidation(FAKE_SUB_ID_BASE, false);
+        assertFalse(mRcsProvisioningMonitor.getImsFeatureValidationOverride(FAKE_SUB_ID_BASE));
+
+        mRcsProvisioningMonitor.overrideImsFeatureValidation(FAKE_SUB_ID_BASE, true);
+        assertTrue(mRcsProvisioningMonitor.getImsFeatureValidationOverride(FAKE_SUB_ID_BASE));
+
+        mRcsProvisioningMonitor.overrideImsFeatureValidation(FAKE_SUB_ID_BASE, null);
+        assertNull(mRcsProvisioningMonitor.getImsFeatureValidationOverride(FAKE_SUB_ID_BASE));
     }
 
     private void createMonitor(int subCount) throws Exception {

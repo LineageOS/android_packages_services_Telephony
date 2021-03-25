@@ -19,8 +19,10 @@ package com.android.services.telephony.rcs;
 import android.app.role.OnRoleHoldersChangedListener;
 import android.app.role.RoleManager;
 import android.content.Context;
+import android.os.PersistableBundle;
 import android.os.RemoteException;
 import android.os.UserHandle;
+import android.telephony.CarrierConfigManager;
 import android.telephony.ims.DelegateRequest;
 import android.telephony.ims.FeatureTagState;
 import android.telephony.ims.ImsException;
@@ -44,12 +46,14 @@ import androidx.annotation.NonNull;
 import com.android.ims.RcsFeatureManager;
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.util.IndentingPrintWriter;
+import com.android.phone.RcsProvisioningMonitor;
 
 import com.google.common.base.Objects;
 
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.Callable;
@@ -247,6 +251,10 @@ public class SipTransportController implements RcsFeatureController.Feature,
     private RcsFeatureManager mRcsManager;
     // Cached package name of the app that is considered the default SMS app.
     private String mCachedSmsRolePackageName = "";
+    // Callback to monitor rcs provisioning change
+    private CarrierConfigManager mCarrierConfigManager;
+    // Cached allowed feature tags from carrier config
+    ArraySet<String> mFeatureTagsAllowed = new ArraySet<>();
 
     /**
      * Create an instance of SipTransportController.
@@ -261,6 +269,7 @@ public class SipTransportController implements RcsFeatureController.Feature,
         mRoleManagerAdapter = new RoleManagerAdapterImpl(context);
         mTimerAdapter = new TimerAdapterImpl();
         mExecutorService = Executors.newSingleThreadScheduledExecutor();
+        mCarrierConfigManager = context.getSystemService(CarrierConfigManager.class);
     }
 
     /**
@@ -277,6 +286,7 @@ public class SipTransportController implements RcsFeatureController.Feature,
         mTimerAdapter = timerAdapter;
         mDelegateControllerFactory = delegateFactory;
         mExecutorService = executor;
+        mCarrierConfigManager = context.getSystemService(CarrierConfigManager.class);
         logi("created");
     }
 
@@ -813,21 +823,14 @@ public class SipTransportController implements RcsFeatureController.Feature,
         }
 
         ArraySet<String> previouslyGrantedTags = new ArraySet<>(alreadyRequestedTags);
-        // deny tags already used by other delegates
-        Set<FeatureTagState> deniedTags = new ArraySet<>();
-        for (String s : requestedFeatureTags) {
-            if (previouslyGrantedTags.contains(s)) {
-                deniedTags.add(new FeatureTagState(s,
-                        SipDelegateManager.DENIED_REASON_IN_USE_BY_ANOTHER_DELEGATE));
-            }
-        }
-        Set<String> nonDeniedTags = requestedFeatureTags.stream()
-                .filter(r -> !previouslyGrantedTags.contains(r))
-                .collect(Collectors.toSet());
+        ArraySet<String> candidateFeatureTags = new ArraySet<>(requestedFeatureTags);
+        Set<FeatureTagState> deniedTags =
+                updateSupportedTags(candidateFeatureTags, previouslyGrantedTags);
+
         // Add newly granted tags to the already requested tags list.
-        previouslyGrantedTags.addAll(nonDeniedTags);
+        previouslyGrantedTags.addAll(candidateFeatureTags);
         CompletableFuture<Boolean> pendingChange = controller.changeSupportedFeatureTags(
-                nonDeniedTags, deniedTags);
+                candidateFeatureTags, deniedTags);
         logi("changeSupportedFeatureTags pendingChange=" + pendingChange);
         // do not worry about executor used here, this stage used to interpret result + add log.
         return pendingChange.thenApply((completedSuccessfully) ->  {
@@ -835,6 +838,51 @@ public class SipTransportController implements RcsFeatureController.Feature,
             if (!completedSuccessfully) return null;
             return previouslyGrantedTags;
         });
+    }
+
+    /**
+     * Update candidate feature tags according to feature tags allowed by carrier config,
+     * and previously granted by other SipDelegates.
+     *
+     * @param candidateFeatureTags The candidate feature tags to be updated. It will be
+     * updated as needed per the carrier config and previously granted feature tags.
+     * @param previouslyGrantedTags The feature tags already granted by other SipDelegates.
+     * @return The set of denied feature tags.
+     */
+    private Set<FeatureTagState> updateSupportedTags(Set<String> candidateFeatureTags,
+            Set<String> previouslyGrantedTags) {
+        Boolean overrideRes = RcsProvisioningMonitor.getInstance()
+                .getImsFeatureValidationOverride(mSubId);
+        // deny tags already used by other delegates
+        Set<FeatureTagState> deniedTags = new ArraySet<>();
+
+        // match config if feature validation is not overridden
+        if (overrideRes == null) {
+            Iterator<String> it = candidateFeatureTags.iterator();
+            while (it.hasNext()) {
+                String tag = it.next();
+                if (previouslyGrantedTags.contains(tag)) {
+                    logi(tag + " has already been granted previously.");
+                    it.remove();
+                    deniedTags.add(new FeatureTagState(tag,
+                            SipDelegateManager.DENIED_REASON_IN_USE_BY_ANOTHER_DELEGATE));
+                } else if (!mFeatureTagsAllowed.contains(tag.trim().toLowerCase())) {
+                    logi(tag + " is not allowed per config.");
+                    it.remove();
+                    deniedTags.add(new FeatureTagState(tag,
+                              SipDelegateManager.DENIED_REASON_NOT_ALLOWED));
+                }
+            }
+        } else if (Boolean.FALSE.equals(overrideRes)) {
+            logi("all features are denied for test purpose.");
+            for (String s : candidateFeatureTags) {
+                deniedTags.add(new FeatureTagState(s,
+                        SipDelegateManager.DENIED_REASON_NOT_ALLOWED));
+            }
+            candidateFeatureTags.clear();
+        }
+
+        return deniedTags;
     }
 
     /**
@@ -917,6 +965,16 @@ public class SipTransportController implements RcsFeatureController.Feature,
             mSubId = newSubId;
             scheduleDestroyDelegates(
                     SipDelegateManager.SIP_DELEGATE_DESTROY_REASON_SUBSCRIPTION_TORN_DOWN);
+        }
+
+        mFeatureTagsAllowed.clear();
+        PersistableBundle carrierConfig = mCarrierConfigManager.getConfigForSubId(mSubId);
+        String[] tagConfigs = carrierConfig.getStringArray(
+                CarrierConfigManager.Ims.KEY_RCS_FEATURE_TAG_ALLOWED_STRING_ARRAY);
+        if (tagConfigs != null && tagConfigs.length > 0) {
+            for (String tag : tagConfigs) {
+                mFeatureTagsAllowed.add(tag.trim().toLowerCase());
+            }
         }
     }
 
