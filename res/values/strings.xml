@@ -644,6 +644,13 @@
     <string name="limited_sim_function_with_phone_num_notification_message"><xliff:g id="carrier_name">%1$s</xliff:g> calls and data services may be blocked while using <xliff:g id="phone_number">%2$s</xliff:g>.</string>
     <!-- Notification message for limited sim function during dual sim [CHAR LIMIT=80]-->
     <string name="limited_sim_function_notification_message"><xliff:g id="carrier_name">%1$s</xliff:g> calls and data services may be blocked while using another SIM.</string>
+    <!-- Notification title for SIP accounts removed -->
+    <string name="sip_accounts_removed_notification_title">Deprecated SIP accounts found and removed</string>
+    <!-- Notification message for SIP accoutns removed -->
+    <string name="sip_accounts_removed_notification_message">
+        SIP calling is no longer supported by Android platform.\nYour existing SIP accounts <xliff:g id="removed_sip_accounts">%s</xliff:g> have been removed.\nPlease confirm your default calling account setting.
+    </string>
+    <string name="sip_accounts_removed_notification_action">Go to settings</string>
     <!-- Mobile network settings screen, data usage setting check box name -->
     <string name="data_usage_title">App data usage</string>
     <!-- Summary about how much data has been used in a date range [CHAR LIMIT=100] -->
@@ -2180,4 +2187,7 @@
     <!-- name of the notification that pops up during
     a phone call when there is bad call quality -->
     <string name="call_quality_notification_name">Call Quality Notification</string>
+    <!-- Telephony notification channel name for a channel containing SIP accounts removed
+     notificatios -->
+    <string name="notification_channel_sip_account">Deprecated SIP accounts</string>
 </resources>
