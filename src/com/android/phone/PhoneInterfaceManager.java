@@ -139,7 +139,6 @@ import com.android.ims.rcs.uce.eab.EabUtil;
 import com.android.internal.telephony.CallForwardInfo;
 import com.android.internal.telephony.CallManager;
 import com.android.internal.telephony.CallStateException;
-import com.android.internal.telephony.CarrierInfoManager;
 import com.android.internal.telephony.CarrierResolver;
 import com.android.internal.telephony.CellNetworkScanResult;
 import com.android.internal.telephony.CommandException;
@@ -7448,7 +7447,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     phone.loadAllowedNetworksFromSubscriptionDatabase();
                 }
                 setDataRoamingEnabled(subId, getDefaultDataRoamingEnabled(subId));
-                CarrierInfoManager.deleteAllCarrierKeysForImsiEncryption(mApp);
+                getPhone(subId).resetCarrierKeysForImsiEncryption();
             }
             // There has been issues when Sms raw table somehow stores orphan
             // fragments. They lead to garbled message when new fragments come
@@ -10139,6 +10138,30 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     public boolean getCarrierSingleRegistrationEnabled(int subId) {
         enforceReadPrivilegedPermission("getCarrierSingleRegistrationEnabled");
         return RcsProvisioningMonitor.getInstance().getCarrierSingleRegistrationEnabled(subId);
+    }
+
+    /**
+     * Overrides the ims feature validation result
+     */
+    @Override
+    public boolean setImsFeatureValidationOverride(int subId, String enabledStr) {
+        TelephonyPermissions.enforceShellOnly(Binder.getCallingUid(),
+                "setImsFeatureValidationOverride");
+
+        Boolean enabled = "NULL".equalsIgnoreCase(enabledStr) ? null
+                : Boolean.parseBoolean(enabledStr);
+        return RcsProvisioningMonitor.getInstance().overrideImsFeatureValidation(
+                subId, enabled);
+    }
+
+    /**
+     * Gets the ims feature validation override value
+     */
+    @Override
+    public boolean getImsFeatureValidationOverride(int subId) {
+        TelephonyPermissions.enforceShellOnly(Binder.getCallingUid(),
+                "getImsFeatureValidationOverride");
+        return RcsProvisioningMonitor.getInstance().getImsFeatureValidationOverride(subId);
     }
 
     /**
