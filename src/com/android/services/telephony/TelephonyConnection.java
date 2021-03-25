@@ -1501,6 +1501,17 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
         // Subclass can override this to do cleanup.
     }
 
+    public void registerForCallEvents(Phone phone) {
+        phone.registerForPreciseCallStateChanged(mHandler, MSG_PRECISE_CALL_STATE_CHANGED, null);
+        phone.registerForHandoverStateChanged(mHandler, MSG_HANDOVER_STATE_CHANGED, null);
+        phone.registerForRedialConnectionChanged(mHandler, MSG_REDIAL_CONNECTION_CHANGED, null);
+        phone.registerForRingbackTone(mHandler, MSG_RINGBACK_TONE, null);
+        phone.registerForSuppServiceNotification(mHandler, MSG_SUPP_SERVICE_NOTIFY, null);
+        phone.registerForOnHoldTone(mHandler, MSG_ON_HOLD_TONE, null);
+        phone.registerForInCallVoicePrivacyOn(mHandler, MSG_CDMA_VOICE_PRIVACY_ON, null);
+        phone.registerForInCallVoicePrivacyOff(mHandler, MSG_CDMA_VOICE_PRIVACY_OFF, null);
+    }
+
     void setOriginalConnection(com.android.internal.telephony.Connection originalConnection) {
         Log.v(this, "new TelephonyConnection, originalConnection: " + originalConnection);
         if (mOriginalConnection != null && originalConnection != null
@@ -1517,17 +1528,8 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
         mOriginalConnectionExtras.clear();
         mOriginalConnection = originalConnection;
         mOriginalConnection.setTelecomCallId(getTelecomCallId());
-        getPhone().registerForPreciseCallStateChanged(
-                mHandler, MSG_PRECISE_CALL_STATE_CHANGED, null);
-        getPhone().registerForHandoverStateChanged(
-                mHandler, MSG_HANDOVER_STATE_CHANGED, null);
-        getPhone().registerForRedialConnectionChanged(
-                mHandler, MSG_REDIAL_CONNECTION_CHANGED, null);
-        getPhone().registerForRingbackTone(mHandler, MSG_RINGBACK_TONE, null);
-        getPhone().registerForSuppServiceNotification(mHandler, MSG_SUPP_SERVICE_NOTIFY, null);
-        getPhone().registerForOnHoldTone(mHandler, MSG_ON_HOLD_TONE, null);
-        getPhone().registerForInCallVoicePrivacyOn(mHandler, MSG_CDMA_VOICE_PRIVACY_ON, null);
-        getPhone().registerForInCallVoicePrivacyOff(mHandler, MSG_CDMA_VOICE_PRIVACY_OFF, null);
+        registerForCallEvents(getPhone());
+
         mOriginalConnection.addPostDialListener(mPostDialListener);
         mOriginalConnection.addListener(mOriginalConnectionListener);
 
@@ -2046,20 +2048,24 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
     void clearOriginalConnection() {
         if (mOriginalConnection != null) {
             if (getPhone() != null) {
-                getPhone().unregisterForPreciseCallStateChanged(mHandler);
-                getPhone().unregisterForRingbackTone(mHandler);
-                getPhone().unregisterForHandoverStateChanged(mHandler);
-                getPhone().unregisterForRedialConnectionChanged(mHandler);
-                getPhone().unregisterForDisconnect(mHandler);
-                getPhone().unregisterForSuppServiceNotification(mHandler);
-                getPhone().unregisterForOnHoldTone(mHandler);
-                getPhone().unregisterForInCallVoicePrivacyOn(mHandler);
-                getPhone().unregisterForInCallVoicePrivacyOff(mHandler);
+                unregisterForCallEvents(getPhone());
             }
             mOriginalConnection.removePostDialListener(mPostDialListener);
             mOriginalConnection.removeListener(mOriginalConnectionListener);
             mOriginalConnection = null;
         }
+    }
+
+    public void unregisterForCallEvents(Phone phone) {
+        phone.unregisterForPreciseCallStateChanged(mHandler);
+        phone.unregisterForRingbackTone(mHandler);
+        phone.unregisterForHandoverStateChanged(mHandler);
+        phone.unregisterForRedialConnectionChanged(mHandler);
+        phone.unregisterForDisconnect(mHandler);
+        phone.unregisterForSuppServiceNotification(mHandler);
+        phone.unregisterForOnHoldTone(mHandler);
+        phone.unregisterForInCallVoicePrivacyOn(mHandler);
+        phone.unregisterForInCallVoicePrivacyOff(mHandler);
     }
 
     protected void hangup(int telephonyDisconnectCode) {
