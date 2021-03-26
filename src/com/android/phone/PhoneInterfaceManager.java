@@ -337,6 +337,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private static final int CMD_PREPARE_UNATTENDED_REBOOT = 109;
     private static final int CMD_GET_SLICING_CONFIG = 110;
     private static final int EVENT_GET_SLICING_CONFIG_DONE = 111;
+    private static final int CMD_ERASE_DATA_SHARED_PREFERENCES = 112;
 
     // Parameters of select command.
     private static final int SELECT_COMMAND = 0xA4;
@@ -1707,6 +1708,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     handleNullReturnEvent(msg, "eraseModemConfig");
                     break;
 
+                case CMD_ERASE_DATA_SHARED_PREFERENCES:
+                    request = (MainThreadRequest) msg.obj;
+                    request.result = defaultPhone.eraseDataInSharedPreferences();
+                    notifyRequester(request);
+                    break;
+
                 case CMD_CHANGE_ICC_LOCK_PASSWORD:
                     request = (MainThreadRequest) msg.obj;
                     onCompleted = obtainMessage(EVENT_CHANGE_ICC_LOCK_PASSWORD_DONE, request);
@@ -2208,18 +2215,14 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         return PhoneFactory.getPhone(mSubscriptionController.getPhoneId(subId));
     }
 
-    private void sendEraseModemConfig(Phone phone) {
-        if (phone != null) {
-            TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
-                  mApp, phone.getSubId(), "eraseModemConfig");
-            final long identity = Binder.clearCallingIdentity();
-            try {
-                Boolean success = (Boolean) sendRequest(CMD_ERASE_MODEM_CONFIG, null);
-                if (DBG) log("eraseModemConfig:" + ' ' + (success ? "ok" : "fail"));
-            } finally {
-                Binder.restoreCallingIdentity(identity);
-            }
-        }
+    private void sendEraseModemConfig(@NonNull Phone phone) {
+        Boolean success = (Boolean) sendRequest(CMD_ERASE_MODEM_CONFIG, null);
+        if (DBG) log("eraseModemConfig:" + ' ' + (success ? "ok" : "fail"));
+    }
+
+    private void sendEraseDataInSharedPreferences(@NonNull Phone phone) {
+        Boolean success = (Boolean) sendRequest(CMD_ERASE_DATA_SHARED_PREFERENCES, null);
+        if (DBG) log("eraseDataInSharedPreferences:" + ' ' + (success ? "ok" : "fail"));
     }
 
     private boolean isImsAvailableOnDevice() {
@@ -7429,7 +7432,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         if (mUserManager.hasUserRestriction(UserManager.DISALLOW_NETWORK_RESET)) {
             return;
         }
-
+        Phone defaultPhone = getDefaultPhone();
+        if (defaultPhone != null) {
+            TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
+                    mApp, getDefaultPhone().getSubId(), "factoryReset");
+        }
         final long identity = Binder.clearCallingIdentity();
 
         try {
@@ -7460,12 +7467,17 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 ImsManager.getInstance(mApp, slotId).factoryReset();
             }
 
+            if (defaultPhone == null) {
+                return;
+            }
             // Erase modem config if erase modem on network setting is enabled.
             String configValue = DeviceConfig.getProperty(DeviceConfig.NAMESPACE_TELEPHONY,
                     RESET_NETWORK_ERASE_MODEM_CONFIG_ENABLED);
             if (configValue != null && Boolean.parseBoolean(configValue)) {
-              sendEraseModemConfig(getDefaultPhone());
+                sendEraseModemConfig(defaultPhone);
             }
+
+            sendEraseDataInSharedPreferences(defaultPhone);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
