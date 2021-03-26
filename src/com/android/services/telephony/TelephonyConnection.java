@@ -1428,7 +1428,7 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
 
         newProperties = changeBitmask(newProperties, PROPERTY_HIGH_DEF_AUDIO,
                 hasHighDefAudioProperty());
-        newProperties = changeBitmask(newProperties, PROPERTY_WIFI, isWifi());
+        newProperties = changeBitmask(newProperties, PROPERTY_WIFI, isWifi() && !isCrossSimCall());
         newProperties = changeBitmask(newProperties, PROPERTY_IS_EXTERNAL_CALL,
                 isExternalConnection());
         newProperties = changeBitmask(newProperties, PROPERTY_HAS_CDMA_VOICE_PRIVACY,
