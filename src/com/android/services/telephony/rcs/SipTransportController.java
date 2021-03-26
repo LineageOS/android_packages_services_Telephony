@@ -967,6 +967,14 @@ public class SipTransportController implements RcsFeatureController.Feature,
                     SipDelegateManager.SIP_DELEGATE_DESTROY_REASON_SUBSCRIPTION_TORN_DOWN);
         }
 
+        onCarrierConfigChangedInternal();
+    }
+
+    /**
+     * Called when the carrier configuration associated with the same subId has changed.
+     */
+    private void onCarrierConfigChangedInternal() {
+        logi("Carrier Config changed for subId: " + mSubId);
         mFeatureTagsAllowed.clear();
         PersistableBundle carrierConfig = mCarrierConfigManager.getConfigForSubId(mSubId);
         String[] tagConfigs = carrierConfig.getStringArray(
@@ -976,13 +984,6 @@ public class SipTransportController implements RcsFeatureController.Feature,
                 mFeatureTagsAllowed.add(tag.trim().toLowerCase());
             }
         }
-    }
-
-    /**
-     * Called when the carrier configuration associated with the same subId has changed.
-     */
-    private void onCarrierConfigChangedInternal() {
-        logi("Carrier Config changed for subId: " + mSubId);
     }
 
     /**
