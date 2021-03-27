@@ -1728,7 +1728,7 @@ public class TelephonyConnectionService extends ConnectionService {
                     });
         }
 
-        com.android.internal.telephony.Connection originalConnection = null;
+        final com.android.internal.telephony.Connection originalConnection;
         try {
             if (phone != null) {
                 EmergencyNumber emergencyNumber =
@@ -1770,14 +1770,18 @@ public class TelephonyConnectionService extends ConnectionService {
                         }
                     }
                 }
+                connection.registerForCallEvents(phone);
                 originalConnection = phone.dial(number, new ImsPhone.ImsDialArgs.Builder()
                         .setVideoState(videoState)
                         .setIntentExtras(extras)
                         .setRttTextStream(connection.getRttTextStream())
                         .build());
+            } else {
+                originalConnection = null;
             }
         } catch (CallStateException e) {
             Log.e(this, e, "placeOutgoingConnection, phone.dial exception: " + e);
+            connection.unregisterForCallEvents(phone);
             handleCallStateException(e, connection, phone);
             return;
         }
@@ -1800,12 +1804,17 @@ public class TelephonyConnectionService extends ConnectionService {
                 startActivity(intent);
             }
             Log.d(this, "placeOutgoingConnection, phone.dial returned null");
+            connection.unregisterForCallEvents(phone);
             connection.setTelephonyConnectionDisconnected(
                     mDisconnectCauseFactory.toTelecomDisconnectCause(telephonyDisconnectCause,
                             "Connection is null", phone.getPhoneId()));
             connection.close();
         } else {
-            connection.setOriginalConnection(originalConnection);
+            getMainThreadHandler().post(() -> {
+                if (connection.getOriginalConnection() == null) {
+                    connection.setOriginalConnection(originalConnection);
+                }
+            });
         }
     }
 

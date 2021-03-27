@@ -135,6 +135,8 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
     <uses-permission android:name="android.permission.REORDER_TASKS" />
     <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -585,16 +587,6 @@
                 <action android:name="android.net.sip.action.SIP_INCOMING_CALL" />
             </intent-filter>
         </receiver>
-
-        <activity android:name="com.android.services.telephony.sip.SipPhoneAccountSettingsActivity"
-                android:theme="@android:style/Theme.NoDisplay"
-                android:exported="true"
-                android:excludeFromRecents="true">
-            <intent-filter>
-                <action android:name="android.telecom.action.CONFIGURE_PHONE_ACCOUNT" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
 
         <activity android:label="Sip Settings"
                   android:name="com.android.services.telephony.sip.SipSettings"
