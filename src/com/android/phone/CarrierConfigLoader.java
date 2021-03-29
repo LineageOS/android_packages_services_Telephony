@@ -892,9 +892,15 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
     /** Returns the package name of a priveleged carrier app, or null if there is none. */
     @Nullable
     private String getCarrierPackageForPhoneId(int phoneId) {
-        List<String> carrierPackageNames = TelephonyManager.from(mContext)
+        List<String> carrierPackageNames;
+        final long token = Binder.clearCallingIdentity();
+        try {
+            carrierPackageNames = TelephonyManager.from(mContext)
                 .getCarrierPackageNamesForIntentAndPhone(
-                        new Intent(CarrierService.CARRIER_SERVICE_INTERFACE), phoneId);
+                    new Intent(CarrierService.CARRIER_SERVICE_INTERFACE), phoneId);
+        } finally {
+            Binder.restoreCallingIdentity(token);
+        }
         if (carrierPackageNames != null && carrierPackageNames.size() > 0) {
             return carrierPackageNames.get(0);
         } else {

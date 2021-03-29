@@ -2295,6 +2295,7 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         String packageName = getNextArgRequired();
 
         boolean hasCarrierPrivileges;
+        final long token = Binder.clearCallingIdentity();
         try {
             hasCarrierPrivileges =
                     mInterface.checkCarrierPrivilegesForPackageAnyPhone(packageName)
@@ -2303,6 +2304,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             Log.w(LOG_TAG, HAS_CARRIER_PRIVILEGES_COMMAND + " exception", e);
             getErrPrintWriter().println("Exception: " + e.getMessage());
             return -1;
+        } finally {
+            Binder.restoreCallingIdentity(token);
         }
 
         getOutPrintWriter().println(hasCarrierPrivileges);
