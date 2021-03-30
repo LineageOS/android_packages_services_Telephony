@@ -1,3 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2021 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License
+  -->
+
 <resources>
     <string name="app_name">RcsClient</string>
     <string name="provisioning_test">Provisioning Test</string>
@@ -51,6 +68,15 @@
     <string name="registration_timeout">Registration timeout</string>
     <string name="registration_done">Registration done. Enjoy chat!</string>
     <string name="registration_failed">Registration failed</string>
+    <string name="attach">+</string>
+    <string name="browse">Browse</string>
+    <string name="upload">Upload</string>
+    <string name="upload_file_gba">Upload File with GBA</string>
+    <string name="invalid_parameters">Invalid Parameters</string>
+    <string name="server">Server:</string>
+    <string name="file_name">File Name:</string>
+    <string name="server_empty">Server is empty</string>
+    <string name="file_empty">File is empty</string>
     <string name="version_info">Version: %s</string>
 
     <string-array name="rcs_profile">
@@ -84,6 +110,10 @@
         <item>RSIM</item>
         <item>CSIM</item>
         <item>ISIM</item>
+    </string-array>
+    <string-array name="server">
+        <item>STAGING</item>
+        <item>PRODUCTION</item>
     </string-array>
 
 </resources>
