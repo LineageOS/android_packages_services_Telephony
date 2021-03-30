@@ -21,6 +21,7 @@ import android.database.ContentObserver;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -41,6 +42,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.sample.rcsclient.util.ChatManager;
 import com.google.android.sample.rcsclient.util.ChatProvider;
 import com.google.android.sample.rcsclient.util.NumberUtils;
+import com.google.common.util.concurrent.FutureCallback;
+import com.google.common.util.concurrent.Futures;
+import com.google.common.util.concurrent.MoreExecutors;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -176,11 +180,8 @@ public class ChatActivity extends AppCompatActivity {
                     if (TextUtils.isEmpty(mDestNumber)) {
                         Log.i(TAG, "Destination number is empty");
                     } else {
-                        ChatManager.getInstance(getApplicationContext(), mSubId).addNewMessage(
-                                mNewMessage.getText().toString(), ChatManager.SELF, mDestNumber);
-                        ChatManager.getInstance(getApplicationContext(), mSubId).sendMessage(
-                                mDestNumber, mNewMessage.getText().toString());
-                        mHandler.sendMessage(mHandler.obtainMessage(EMPTY_MSG));
+                        Log.i(TAG, "send message");
+                        sendChatMessage();
                     }
                 });
             });
@@ -190,6 +191,34 @@ public class ChatActivity extends AppCompatActivity {
             Toast.makeText(this, getResources().getString(R.string.session_failed),
                     Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void sendChatMessage() {
+        Uri result = ChatManager.getInstance(getApplicationContext(), mSubId).addNewMessage(
+                mNewMessage.getText().toString(), ChatManager.SELF, mDestNumber);
+        String chatId = result.getPathSegments().get(1);
+        Futures.addCallback(
+                ChatManager.getInstance(getApplicationContext(),
+                        mSubId).sendMessage(
+                        mDestNumber,
+                        mNewMessage.getText().toString()),
+                new FutureCallback<Void>() {
+                    @Override
+                    public void onSuccess(Void param) {
+                        Log.i(TAG, "send chat msg successfully");
+                        ChatManager.getInstance(getApplicationContext(), mSubId).updateMsgResult(
+                                chatId, true);
+                    }
+
+                    @Override
+                    public void onFailure(Throwable t) {
+                        Log.i(TAG, "fail to send chat message:" + t);
+                        ChatManager.getInstance(getApplicationContext(), mSubId).updateMsgResult(
+                                chatId, false);
+                    }
+                },
+                MoreExecutors.directExecutor());
+        mHandler.sendMessage(mHandler.obtainMessage(EMPTY_MSG));
     }
 
     private void initChatMessageLayout(Cursor cursor) {
@@ -221,7 +250,8 @@ public class ChatActivity extends AppCompatActivity {
         lp.setMargins(0, MARGIN_SIZE, 0, 0);
         if (messageFromSelf(cursor)) {
             lp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
-            chatMsg.setBackgroundColor(Color.YELLOW);
+            int result = cursor.getInt(cursor.getColumnIndex(ChatProvider.RcsColumns.RESULT));
+            chatMsg.setBackgroundColor(result == 1 ? Color.GREEN : Color.RED);
         } else {
             lp.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
             chatMsg.setBackgroundColor(Color.LTGRAY);
@@ -243,7 +273,8 @@ public class ChatActivity extends AppCompatActivity {
             Cursor cursor = getContentResolver().query(ChatProvider.CHAT_URI,
                     new String[]{ChatProvider.RcsColumns.SRC_PHONE_NUMBER,
                             ChatProvider.RcsColumns.DEST_PHONE_NUMBER,
-                            ChatProvider.RcsColumns.CHAT_MESSAGE},
+                            ChatProvider.RcsColumns.CHAT_MESSAGE,
+                            ChatProvider.RcsColumns.RESULT},
                     ChatProvider.RcsColumns.SRC_PHONE_NUMBER + "=? OR "
                             + ChatProvider.RcsColumns.DEST_PHONE_NUMBER + "=?",
                     new String[]{mDestNumber, mDestNumber},

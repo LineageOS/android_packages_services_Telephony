@@ -23,6 +23,7 @@ import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
@@ -36,7 +37,7 @@ public class ChatProvider extends ContentProvider {
     public static final Uri SUMMARY_URI = Uri.parse("content://rcsprovider/summary");
     public static final String AUTHORITY = "rcsprovider";
     private static final String TAG = "TestRcsApp.ChatProvider";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     private static final String CHAT_TABLE_NAME = "chat";
     private static final String SUMMARY_TABLE_NAME = "summary";
 
@@ -146,9 +147,9 @@ public class ChatProvider extends ContentProvider {
         public static final String SRC_PHONE_NUMBER = "source_phone_number";
         public static final String DEST_PHONE_NUMBER = "destination_phone_number";
         public static final String CHAT_MESSAGE = "chat_message";
-        public static final String SUBSCRIPTION_ID = "subscription_id";
         public static final String MSG_TIMESTAMP = "msg_timestamp";
         public static final String IS_READ = "is_read";
+        public static final String RESULT = "result";
     }
 
     /** Define columns for the summary table. */
@@ -169,7 +170,9 @@ public class ChatProvider extends ContentProvider {
                 + RcsColumns.DEST_PHONE_NUMBER + " Text DEFAULT NULL, "
                 + RcsColumns.CHAT_MESSAGE + " Text DEFAULT NULL, "
                 + RcsColumns.MSG_TIMESTAMP + " LONG DEFAULT NULL, "
-                + RcsColumns.IS_READ + " BOOLEAN DEFAULT false);";
+                + RcsColumns.IS_READ + " BOOLEAN DEFAULT false, "
+                + RcsColumns.RESULT + " BOOLEAN DEFAULT true);";
+
         public static final String SQL_CREATE_SUMMARY_TABLE = "CREATE TABLE "
                 + SUMMARY_TABLE_NAME
                 + " ("
@@ -191,8 +194,32 @@ public class ChatProvider extends ContentProvider {
         }
 
         @Override
-        public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
+        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
             Log.d(TAG, "DB upgrade from " + oldVersion + " to " + newVersion);
+            db.beginTransaction();
+            try {
+                switch (oldVersion) {
+                    case 1:
+                        upgradeDatabaseToVersion2(db);
+                        break;
+                    default: // fall out
+                }
+                db.setTransactionSuccessful();
+            } catch (Exception ex) {
+                Log.e(TAG, ex.getMessage(), ex);
+            } finally {
+                db.endTransaction();
+            }
+        }
+
+        private static void upgradeDatabaseToVersion2(SQLiteDatabase db) {
+            try {
+                Log.d(TAG, "upgradeDatabaseToVersion2");
+                String alterTable = "ALTER TABLE " + CHAT_TABLE_NAME + " ADD COLUMN ";
+                db.execSQL(alterTable + RcsColumns.RESULT + " BOOLEAN DEFAULT true");
+            } catch (SQLiteException e) {
+                Log.w(TAG, "[upgradeDatabaseToVersion10] Exception adding column: " + e);
+            }
         }
     }
 }
