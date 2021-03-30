@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private Button mUceButton;
     private Button mGbaButton;
     private Button mMessageClientButton;
+    private Button mFileUploadButton;
     private TextView mVersionInfo;
 
     @Override
@@ -53,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         mMessageClientButton = (Button) this.findViewById(R.id.msgClient);
         mUceButton = (Button) this.findViewById(R.id.uce);
         mGbaButton = (Button) this.findViewById(R.id.gba);
+        mFileUploadButton = findViewById(R.id.uploadFile);
         mVersionInfo = this.findViewById(R.id.version_info);
         mProvisionButton.setOnClickListener(view -> {
             Intent intent = new Intent(this, ProvisioningActivity.class);
@@ -75,6 +77,10 @@ public class MainActivity extends AppCompatActivity {
         });
         mMessageClientButton.setOnClickListener(view -> {
             Intent intent = new Intent(this, ContactListActivity.class);
+            MainActivity.this.startActivity(intent);
+        });
+        mFileUploadButton.setOnClickListener(view -> {
+            Intent intent = new Intent(this, FileUploadActivity.class);
             MainActivity.this.startActivity(intent);
         });
 
