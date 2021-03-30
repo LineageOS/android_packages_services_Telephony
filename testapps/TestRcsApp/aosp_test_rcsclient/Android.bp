@@ -33,6 +33,7 @@ android_library {
 
     libs: [
         "auto_value_annotations",
+        "org.apache.http.legacy",
     ],
 
     plugins: [
