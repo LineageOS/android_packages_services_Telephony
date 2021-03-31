@@ -20,6 +20,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.os.PersistableBundle;
+import android.telephony.CarrierConfigManager;
+import android.telephony.SmsManager;
+import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.telephony.TelephonyManager.BootstrapAuthenticationCallback;
 import android.telephony.gba.UaSecurityProtocolIdentifier;
@@ -46,6 +50,8 @@ import java.util.concurrent.Executors;
 public class GbaActivity extends AppCompatActivity {
 
     private static final String TAG = "TestRcsApp.GbaActivity";
+    private static final String NAF_PREFIX = "https://3GPP-bootstrapping@";
+
     private static final int MSG_RESULT = 1;
     private final ExecutorService mExecutorService = Executors.newSingleThreadExecutor();
     private Button mGbaButton;
@@ -96,6 +102,18 @@ public class GbaActivity extends AppCompatActivity {
         initProtocol();
         initUicctype();
 
+        int defaultSmsSubId = SmsManager.getDefaultSmsSubscriptionId();
+        if (!SubscriptionManager.isValidSubscriptionId(defaultSmsSubId)) {
+            Log.i(TAG, "invalid subId:" + defaultSmsSubId);
+            return;
+        }
+        TelephonyManager telephonyManager = getSystemService(
+                TelephonyManager.class).createForSubscriptionId(defaultSmsSubId);
+        PersistableBundle carrierConfig = telephonyManager.getCarrierConfig();
+        String uploadUrl = carrierConfig.getString(
+                CarrierConfigManager.KEY_CALL_COMPOSER_PICTURE_SERVER_URL_STRING);
+        mNaf.setText(NAF_PREFIX + uploadUrl);
+
         mGbaButton.setOnClickListener(view -> {
             Log.i(TAG, "trigger bootstrapAuthenticationRequest");
             UaSecurityProtocolIdentifier.Builder builder =
@@ -109,7 +127,6 @@ public class GbaActivity extends AppCompatActivity {
                 return;
             }
             UaSecurityProtocolIdentifier spId = builder.build();
-            TelephonyManager telephonyManager = this.getSystemService(TelephonyManager.class);
             telephonyManager.bootstrapAuthenticationRequest(mUiccType,
                     Uri.parse(mNaf.getText().toString()),
                     spId,

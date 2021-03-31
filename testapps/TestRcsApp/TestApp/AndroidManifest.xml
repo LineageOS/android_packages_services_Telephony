@@ -19,8 +19,8 @@
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.google.android.sample.rcsclient"
-    android:versionCode="9"
-    android:versionName="1.0.8">
+    android:versionCode="10"
+    android:versionName="1.0.9">
 
     <uses-sdk
         android:minSdkVersion="30"
@@ -55,6 +55,7 @@
         <activity android:name=".ChatActivity" />
         <activity android:name=".ContactListActivity" />
         <activity android:name=".ProvisioningActivity" />
+        <activity android:name=".FileUploadActivity" />
 
         <provider
             android:name=".util.ChatProvider"
