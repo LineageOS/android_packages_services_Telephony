@@ -72,6 +72,8 @@ import com.android.internal.telephony.dataconnection.DataConnectionReasons.DataD
 import com.android.internal.telephony.ims.ImsResolver;
 import com.android.internal.telephony.imsphone.ImsPhone;
 import com.android.internal.telephony.imsphone.ImsPhoneCallTracker;
+import com.android.internal.telephony.uicc.UiccCard;
+import com.android.internal.telephony.uicc.UiccProfile;
 import com.android.internal.util.IndentingPrintWriter;
 import com.android.phone.settings.SettingsConstants;
 import com.android.phone.vvm.CarrierVvmPackageInstalledReceiver;
@@ -220,6 +222,53 @@ public class PhoneGlobals extends ContextWrapper {
         }
     }
 
+    // Some carrier config settings disable the network lock screen, so we call handleSimLock
+    // when either SIM_LOCK or CARRIER_CONFIG changes so that no matter which one happens first,
+    // we still do the right thing
+    private void handleSimLock(int subType, Phone phone) {
+        PersistableBundle cc = getCarrierConfigForSubId(phone.getSubId());
+        if (!CarrierConfigManager.isConfigForIdentifiedCarrier(cc)) {
+            // If we only have the default carrier config just return, to avoid popping up the
+            // the SIM lock screen when it's disabled by the carrier.
+            Log.i(LOG_TAG, "Not showing 'SIM network unlock' screen. Carrier config not loaded");
+            return;
+        }
+        if (cc.getBoolean(CarrierConfigManager.KEY_IGNORE_SIM_NETWORK_LOCKED_EVENTS_BOOL)) {
+            // Some products don't have the concept of a "SIM network lock"
+            Log.i(LOG_TAG, "Not showing 'SIM network unlock' screen. Disabled by carrier config");
+            return;
+        }
+
+        // if passed in subType is unknown, retrieve it here.
+        if (subType == -1) {
+            final UiccCard uiccCard = phone.getUiccCard();
+            if (uiccCard == null) {
+                Log.e(LOG_TAG,
+                        "handleSimLock: uiccCard for phone " + phone.getPhoneId() + " is null");
+                return;
+            }
+            final UiccProfile uiccProfile = uiccCard.getUiccProfile();
+            if (uiccProfile == null) {
+                Log.e(LOG_TAG,
+                        "handleSimLock: uiccProfile for phone " + phone.getPhoneId() + " is null");
+                return;
+            }
+            subType = uiccProfile.getApplication(
+                    uiccProfile.mCurrentAppType).getPersoSubState().ordinal();
+        }
+        // Normal case: show the "SIM network unlock" PIN entry screen.
+        // The user won't be able to do anything else until
+        // they enter a valid SIM network PIN.
+        Log.i(LOG_TAG, "show sim depersonal panel");
+        IccNetworkDepersonalizationPanel.showDialog(phone, subType);
+    }
+
+    private boolean isSimLocked(Phone phone) {
+        TelephonyManager tm = getSystemService(TelephonyManager.class);
+        return tm.createForSubscriptionId(phone.getSubId()).getSimState()
+                == TelephonyManager.SIM_STATE_NETWORK_LOCKED;
+    }
+
     Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -229,20 +278,9 @@ public class PhoneGlobals extends ContextWrapper {
                 // TODO: This event should be handled by the lock screen, just
                 // like the "SIM missing" and "Sim locked" cases (bug 1804111).
                 case EVENT_SIM_NETWORK_LOCKED:
-                    if (getCarrierConfig().getBoolean(
-                            CarrierConfigManager.KEY_IGNORE_SIM_NETWORK_LOCKED_EVENTS_BOOL)) {
-                        // Some products don't have the concept of a "SIM network lock"
-                        Log.i(LOG_TAG, "Ignoring EVENT_SIM_NETWORK_LOCKED event; "
-                              + "not showing 'SIM network unlock' PIN entry screen");
-                    } else {
-                        // Normal case: show the "SIM network unlock" PIN entry screen.
-                        // The user won't be able to do anything else until
-                        // they enter a valid SIM network PIN.
-                        Log.i(LOG_TAG, "show sim depersonal panel");
-                        Phone phone = (Phone) ((AsyncResult) msg.obj).userObj;
-                        int subType = (Integer)((AsyncResult)msg.obj).result;
-                        IccNetworkDepersonalizationPanel.showDialog(phone, subType);
-                    }
+                    int subType = (Integer) ((AsyncResult) msg.obj).result;
+                    Phone phone = (Phone) ((AsyncResult) msg.obj).userObj;
+                    handleSimLock(subType, phone);
                     break;
 
                 case EVENT_DATA_ROAMING_DISCONNECTED:
@@ -315,6 +353,12 @@ public class PhoneGlobals extends ContextWrapper {
                     // The voicemail number could be overridden by carrier config, so need to
                     // refresh the message waiting (voicemail) indicator.
                     refreshMwiIndicator(subId);
+                    phone = getPhone(subId);
+                    if (phone != null && isSimLocked(phone)) {
+                        // pass in subType=-1 so handleSimLock can find the actual subType if
+                        // needed. This is safe as valid values for subType are >= 0
+                        handleSimLock(-1, phone);
+                    }
                     break;
             }
         }
