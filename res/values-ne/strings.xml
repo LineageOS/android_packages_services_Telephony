@@ -294,6 +294,12 @@
     <string name="limited_sim_function_notification_title" msgid="612715399099846281">"SIM को सीमित सुविधा"</string>
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"<xliff:g id="PHONE_NUMBER">%2$s</xliff:g>.प्रयोग गर्दा <xliff:g id="CARRIER_NAME">%1$s</xliff:g> का कल तथा डेटा सेवाहरूलाई रोक लगाइन सक्छ"</string>
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"अर्को SIM प्रयोग गर्दा <xliff:g id="CARRIER_NAME">%1$s</xliff:g> कल तथा डेटा सेवहरूलाई रोक लगाइन सक्छ।"</string>
+    <!-- no translation found for sip_accounts_removed_notification_title (3528076957535736095) -->
+    <skip />
+    <!-- no translation found for sip_accounts_removed_notification_message (1916856744869791592) -->
+    <skip />
+    <!-- no translation found for sip_accounts_removed_notification_action (3772778402370555562) -->
+    <skip />
     <string name="data_usage_title" msgid="8438592133893837464">"अनुप्रयोगले गरेको डेटाको प्रयोग"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"<xliff:g id="ID_2">%2$s</xliff:g> सम्म <xliff:g id="ID_1">%1$s</xliff:g> मोबाइल डेटा प्रयोग भयो"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"उन्नत"</string>
@@ -921,4 +927,6 @@
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"सेवा प्रदायकको प्रावधानलाई ट्रिगर गर्नुहोस्"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"ब्लुटुथको सिग्नल कमजोर छ। स्पिकरफोन प्रयोग गरी हेर्नुहोस्।"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"कलको गुणस्तरसम्बन्धी सूचना"</string>
+    <!-- no translation found for notification_channel_sip_account (1261816025156179637) -->
+    <skip />
 </resources>
