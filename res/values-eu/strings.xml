@@ -294,6 +294,12 @@
     <string name="limited_sim_function_notification_title" msgid="612715399099846281">"SIMaren funtzionaltasuna mugatua da"</string>
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"Baliteke <xliff:g id="CARRIER_NAME">%1$s</xliff:g> bidezko deiak eta datu-zerbitzuak blokeatuta egotea <xliff:g id="PHONE_NUMBER">%2$s</xliff:g> telefono-zenbakia erabiltzean."</string>
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"Baliteke <xliff:g id="CARRIER_NAME">%1$s</xliff:g> bidezko deiak eta datu-zerbitzuak blokeatuta egotea beste SIM txartel bat erabiltzean."</string>
+    <!-- no translation found for sip_accounts_removed_notification_title (3528076957535736095) -->
+    <skip />
+    <!-- no translation found for sip_accounts_removed_notification_message (1916856744869791592) -->
+    <skip />
+    <!-- no translation found for sip_accounts_removed_notification_action (3772778402370555562) -->
+    <skip />
     <string name="data_usage_title" msgid="8438592133893837464">"Aplikazioak erabilitako datuak"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"Datuen <xliff:g id="ID_1">%1$s</xliff:g> erabili dira data hauen artean: <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"Aurreratuak"</string>
@@ -921,4 +927,6 @@
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Abiarazi operadorearen hornikuntza"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Bluetooth seinalea ahula da. Erabili telefonoko bozgorailua."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Deien kalitateari buruzko jakinarazpena"</string>
+    <!-- no translation found for notification_channel_sip_account (1261816025156179637) -->
+    <skip />
 </resources>

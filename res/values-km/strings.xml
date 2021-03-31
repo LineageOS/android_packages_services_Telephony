@@ -294,6 +294,9 @@
     <string name="limited_sim_function_notification_title" msgid="612715399099846281">"មុខងារ​ស៊ីម​មាន​កម្រិត"</string>
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"សេវាកម្ម​ទិន្នន័យ និង​ការហៅ​ទូរសព្ទ​តាម <xliff:g id="CARRIER_NAME">%1$s</xliff:g> អាច​ត្រូវ​បាន​ទប់ស្កាត់ ពេល​ប្រើប្រាស់ <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>។"</string>
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"សេវាកម្មទិន្នន័យ និងការហៅទូរសព្ទតាម <xliff:g id="CARRIER_NAME">%1$s</xliff:g> អាចត្រូវបានទប់ស្កាត់ ពេលប្រើស៊ីម​ផ្សេង។"</string>
+    <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"បានរកឃើញ និងបានលុប​គណនី SIP ដែលបានបញ្ឈប់"</string>
+    <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"ការហៅទូរសព្ទ​តាម SIP មិនអាចប្រើ​ជាមួយប្រព័ន្ធ Android បានទៀតទេ។\nគណនី SIP ដែលមានស្រាប់​របស់អ្នក <xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g> ត្រូវបានលុប។\nសូមបញ្ជាក់​ការកំណត់គណនីនៃ​ការហៅទូរសព្ទ​លំនាំដើមរបស់អ្នក។"</string>
+    <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"ចូលទៅកាន់ការកំណត់"</string>
     <string name="data_usage_title" msgid="8438592133893837464">"ការប្រើប្រាស់​ទិន្នន័យកម្មវិធី"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"បានប្រើទិន្នន័យទូរសព្ទអស់ <xliff:g id="ID_1">%1$s</xliff:g> នៅថ្ងៃទី <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"កម្រិតខ្ពស់"</string>
@@ -921,4 +924,5 @@
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"នាំ​ឱ្យ​មាន​ការផ្តល់​ទិន្នន័យ​ពី​ក្រុមហ៊ុន​សេវា​ទូរសព្ទ"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"រលកសញ្ញាប៊្លូធូសរបស់អ្នក​មានកម្រិតខ្សោយ។ សូមសាកល្បងប្ដូរ​ទៅឧបករណ៍បំពងសំឡេងទូរសព្ទ។"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"ការជូនដំណឹង​អំពីគុណភាព​ហៅទូរសព្ទ"</string>
+    <string name="notification_channel_sip_account" msgid="1261816025156179637">"គណនី SIP ដែលបានបញ្ឈប់"</string>
 </resources>
