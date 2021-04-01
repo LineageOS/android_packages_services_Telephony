@@ -294,6 +294,12 @@
     <string name="limited_sim_function_notification_title" msgid="612715399099846281">"Chức năng SIM bị giới hạn"</string>
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"Các cuộc gọi và dịch vụ dữ liệu của nhà mạng <xliff:g id="CARRIER_NAME">%1$s</xliff:g> có thể bị chặn khi bạn sử dụng số <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>."</string>
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"Các cuộc gọi và dịch vụ dữ liệu của nhà mạng <xliff:g id="CARRIER_NAME">%1$s</xliff:g> có thể bị chặn khi bạn sử dụng một SIM khác."</string>
+    <!-- no translation found for sip_accounts_removed_notification_title (3528076957535736095) -->
+    <skip />
+    <!-- no translation found for sip_accounts_removed_notification_message (1916856744869791592) -->
+    <skip />
+    <!-- no translation found for sip_accounts_removed_notification_action (3772778402370555562) -->
+    <skip />
     <string name="data_usage_title" msgid="8438592133893837464">"Mức sử dụng dữ liệu của ứng dụng"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"Đã dùng <xliff:g id="ID_1">%1$s</xliff:g> dữ liệu di động: <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"Nâng cao"</string>
@@ -921,4 +927,6 @@
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Kích hoạt dịch vụ cấp phép của nhà mạng"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Tín hiệu Bluetooth của bạn đang yếu. Hãy thử chuyển sang loa ngoài."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Thông báo về chất lượng cuộc gọi"</string>
+    <!-- no translation found for notification_channel_sip_account (1261816025156179637) -->
+    <skip />
 </resources>
