@@ -294,6 +294,9 @@
     <string name="limited_sim_function_notification_title" msgid="612715399099846281">"ຈຳກັດການເຮັດວຽກຂອງຊິມ"</string>
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"ບໍລິການໂທ ແລະ ອິນເຕີເນັດ <xliff:g id="CARRIER_NAME">%1$s</xliff:g> ອາດຖືກບລັອກໄວ້ເມື່ອໃຊ້ເບີໂທ <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>."</string>
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"ບໍລິການໂທ ແລະ ອິນເຕີເນັດ <xliff:g id="CARRIER_NAME">%1$s</xliff:g> ອາດຖືກບລັອກໄວ້ເມື່ອໃຊ້ຊິມອື່ນ."</string>
+    <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"ພົບ ແລະ ລຶບບັນຊີ SIP ທີ່ເຊົາສະໜັບສະໜູນອອກແລ້ວ"</string>
+    <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"ແພລດຟອມ Android ບໍ່ຮອງຮັບການໂທ SIP ອີກຕໍ່ໄປ.\nບັນຊີ SIP ທີ່ທ່ານມີຢູ່ <xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g> ໄດ້ຖືກລຶບອອກແລ້ວ.\nກະລຸນາຢັ້ງຢືນການຕັ້ງຄ່າບັນຊີການໂທເລີ່ມຕົ້ນຂອງທ່ານ."</string>
+    <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"ໄປທີ່ການຕັ້ງຄ່າ"</string>
     <string name="data_usage_title" msgid="8438592133893837464">"ການໃຊ້ຂໍ້ມູນແອັບ"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"ໃຊ້ອິນເຕີເນັດໄປແລ້ວ <xliff:g id="ID_1">%1$s</xliff:g> ລະຫວ່າງ <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"ຂັ້ນສູງ"</string>
@@ -921,4 +924,5 @@
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"ກະຕຸ້ນການຈັດຫາຜູ້ໃຫ້ບໍລິການ"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"ສັນຍານ Bluetooth ຂອງທ່ານອ່ອນ. ລອງສະຫຼັບລຳໂພງໂທລະສັບ."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"ການແຈ້ງເຕືອນຄຸນນະພາບການໂທ"</string>
+    <string name="notification_channel_sip_account" msgid="1261816025156179637">"ບັນຊີ SIP ທີ່ເຊົາສະໜັບສະໜູນ"</string>
 </resources>

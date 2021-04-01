@@ -1225,25 +1225,29 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
             logd("Ignore invalid phoneId: " + phoneId + " for subId: " + subscriptionId);
             return;
         }
-        overrideConfig(mOverrideConfigs, phoneId, overrides);
+        // Post to run on handler thread on which all states should be confined.
+        mHandler.post(() -> {
+            overrideConfig(mOverrideConfigs, phoneId, overrides);
 
-        if (persistent) {
-            overrideConfig(mPersistentOverrideConfigs, phoneId, overrides);
+            if (persistent) {
+                overrideConfig(mPersistentOverrideConfigs, phoneId, overrides);
 
-            if (overrides != null) {
-                final CarrierIdentifier carrierId = getCarrierIdentifierForPhoneId(phoneId);
-                saveConfigToXml(mPlatformCarrierConfigPackage, OVERRIDE_PACKAGE_ADDITION, phoneId,
-                        carrierId, mPersistentOverrideConfigs[phoneId]);
-            } else {
-                final String iccid = getIccIdForPhoneId(phoneId);
-                final int cid = getSpecificCarrierIdForPhoneId(phoneId);
-                String fileName = getFilenameForConfig(mPlatformCarrierConfigPackage,
-                        OVERRIDE_PACKAGE_ADDITION, iccid, cid);
-                File fileToDelete = new File(mContext.getFilesDir(), fileName);
-                fileToDelete.delete();
+                if (overrides != null) {
+                    final CarrierIdentifier carrierId = getCarrierIdentifierForPhoneId(phoneId);
+                    saveConfigToXml(mPlatformCarrierConfigPackage, OVERRIDE_PACKAGE_ADDITION,
+                            phoneId,
+                            carrierId, mPersistentOverrideConfigs[phoneId]);
+                } else {
+                    final String iccid = getIccIdForPhoneId(phoneId);
+                    final int cid = getSpecificCarrierIdForPhoneId(phoneId);
+                    String fileName = getFilenameForConfig(mPlatformCarrierConfigPackage,
+                            OVERRIDE_PACKAGE_ADDITION, iccid, cid);
+                    File fileToDelete = new File(mContext.getFilesDir(), fileName);
+                    fileToDelete.delete();
+                }
             }
-        }
-        notifySubscriptionInfoUpdater(phoneId);
+            notifySubscriptionInfoUpdater(phoneId);
+        });
     }
 
     private void overrideConfig(@NonNull PersistableBundle[] currentOverrides, int phoneId,
