@@ -19,6 +19,7 @@ package com.google.android.sample.rcsclient.util;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.net.Uri;
 import android.telephony.ims.ImsManager;
 import android.text.TextUtils;
 import android.util.Log;
@@ -36,6 +37,7 @@ import com.google.android.sample.rcsclient.RcsStateChangedCallback;
 import com.google.android.sample.rcsclient.SessionStateCallback;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
+import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.MoreExecutors;
 
 import gov.nist.javax.sip.address.AddressFactoryImpl;
@@ -227,13 +229,14 @@ public class ChatManager {
      * @param contact destination phone number.
      * @param message chat message.
      */
-    public void sendMessage(String contact, String message) {
+    public ListenableFuture<Void> sendMessage(String contact, String message) {
         SimpleChatSession chatSession = mContactSessionMap.get(contact);
         if (chatSession == null) {
             Log.i(TAG, "session is unavailable for contact = " + contact);
-            return;
+            return Futures.immediateFailedFuture(
+                    new IllegalStateException("Chat session does not exist"));
         }
-        chatSession.sendMessage(message);
+        return chatSession.sendMessage(message);
     }
 
     public boolean isRegistered() {
@@ -263,7 +266,7 @@ public class ChatManager {
      * @param src source phone number.
      * @param dest destination phone number.
      */
-    public void addNewMessage(String message, String src, String dest) {
+    public Uri addNewMessage(String message, String src, String dest) {
         long currentTime = Instant.now().getEpochSecond();
         ContentValues contentValues = new ContentValues();
         contentValues.put(ChatProvider.RcsColumns.SRC_PHONE_NUMBER, src);
@@ -272,7 +275,7 @@ public class ChatManager {
         contentValues.put(ChatProvider.RcsColumns.MSG_TIMESTAMP, currentTime);
         contentValues.put(ChatProvider.RcsColumns.IS_READ, Boolean.TRUE);
         // insert chat table
-        mContext.getContentResolver().insert(ChatProvider.CHAT_URI, contentValues);
+        Uri result = mContext.getContentResolver().insert(ChatProvider.CHAT_URI, contentValues);
 
         ContentValues summary = new ContentValues();
         summary.put(ChatProvider.SummaryColumns.LATEST_MESSAGE, message);
@@ -288,6 +291,17 @@ public class ChatManager {
             summary.put(ChatProvider.SummaryColumns.REMOTE_PHONE_NUMBER, remoteNumber);
             mContext.getContentResolver().insert(ChatProvider.SUMMARY_URI, summary);
         }
+        return result;
+    }
+
+    /**
+     * Update MSRP chat message sent result.
+     */
+    public void updateMsgResult(String id, boolean success) {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(ChatProvider.RcsColumns.RESULT, success);
+        mContext.getContentResolver().update(ChatProvider.CHAT_URI, contentValues,
+                ChatProvider.RcsColumns._ID + "=?", new String[]{id});
     }
 
     /**
