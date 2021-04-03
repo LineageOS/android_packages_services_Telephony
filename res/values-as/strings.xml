@@ -294,12 +294,9 @@
     <string name="limited_sim_function_notification_title" msgid="612715399099846281">"ছিমৰ সীমিত কাৰ্যকাৰিতা"</string>
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"<xliff:g id="PHONE_NUMBER">%2$s</xliff:g> ব্যৱহাৰ কৰি থাকোঁতে <xliff:g id="CARRIER_NAME">%1$s</xliff:g>ৰ কল আৰু ডেটা সেৱাবোৰ অৱৰোধ কৰা হ’ব পাৰে।"</string>
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"অন্য এটা ছিম ব্যৱহাৰ কৰি থাকোঁতে <xliff:g id="CARRIER_NAME">%1$s</xliff:g>ৰ কল আৰু ডেটা সেৱাবোৰ অৱৰোধ কৰা হ’ব পাৰে।"</string>
-    <!-- no translation found for sip_accounts_removed_notification_title (3528076957535736095) -->
-    <skip />
-    <!-- no translation found for sip_accounts_removed_notification_message (1916856744869791592) -->
-    <skip />
-    <!-- no translation found for sip_accounts_removed_notification_action (3772778402370555562) -->
-    <skip />
+    <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"বন্ধ হৈ যোৱা SIP একাউণ্ট বিচাৰি পোৱা গৈছে আৰু আঁতৰাই পেলোৱা হৈছে"</string>
+    <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"Android প্লেটফৰ্মত আৰু SIP কলিং ব্যৱহাৰ কৰিব পৰা নাযাব।\nআপোনাৰ পূৰ্বৰে পৰা থকা SIP একাউণ্টসমূহ <xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g> আঁতৰাই পেলোৱা হ’ল।\nঅনুগ্ৰহ কৰি আপোনাৰ ডিফ’ল্ট কলিং একাউণ্টৰ ছেটিং নিশ্চিত কৰক।"</string>
+    <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"ছেটিঙলৈ যাওক"</string>
     <string name="data_usage_title" msgid="8438592133893837464">"এপৰ ডেটা ব্যৱহাৰ"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"<xliff:g id="ID_1">%1$s</xliff:g> ব্যৱহৃত ম’বাইল ডেটা <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"উচ্চখাপৰ ছেটিংসমূহ"</string>
@@ -927,6 +924,5 @@
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"বাহকৰ প্ৰ’ভিজনিং সূচনা কৰক"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"আপোনাৰ ব্লুটুথৰ ছিগনেল দুৰ্বল। স্পীকাৰফ’নলৈ সলনি কৰি চাওক।"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"কলৰ গুণগত মানৰ জাননী"</string>
-    <!-- no translation found for notification_channel_sip_account (1261816025156179637) -->
-    <skip />
+    <string name="notification_channel_sip_account" msgid="1261816025156179637">"বন্ধ হৈ যোৱা SIP একাউণ্ট"</string>
 </resources>

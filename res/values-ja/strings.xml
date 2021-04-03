@@ -294,12 +294,9 @@
     <string name="limited_sim_function_notification_title" msgid="612715399099846281">"SIM 機能の制限"</string>
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> の通話およびデータサービスは、<xliff:g id="PHONE_NUMBER">%2$s</xliff:g> を使用している間はブロックされる可能性があります。"</string>
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"別の SIM を使用中は、<xliff:g id="CARRIER_NAME">%1$s</xliff:g> の通話とデータサービスがブロックされる可能性があります。"</string>
-    <!-- no translation found for sip_accounts_removed_notification_title (3528076957535736095) -->
-    <skip />
-    <!-- no translation found for sip_accounts_removed_notification_message (1916856744869791592) -->
-    <skip />
-    <!-- no translation found for sip_accounts_removed_notification_action (3772778402370555562) -->
-    <skip />
+    <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"サポートが終了した SIP アカウントが検出されたため、削除いたしました"</string>
+    <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"SIP 通話は、Android プラットフォームではサポートされなくなりました。\nこのため、お客様の既存の SIP アカウント（<xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g>）を削除いたしました。\nデフォルトの通話アカウントの設定をご確認ください。"</string>
+    <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"設定に移動"</string>
     <string name="data_usage_title" msgid="8438592133893837464">"アプリのデータ使用量"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"<xliff:g id="ID_2">%2$s</xliff:g>のモバイルデータ使用量: <xliff:g id="ID_1">%1$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"詳細設定"</string>
@@ -927,6 +924,5 @@
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"携帯通信会社のプロビジョニングをトリガー"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Bluetooth の信号強度が十分ではありません。スピーカーフォンに切り替えてみてください。"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"通話品質に関するお知らせ"</string>
-    <!-- no translation found for notification_channel_sip_account (1261816025156179637) -->
-    <skip />
+    <string name="notification_channel_sip_account" msgid="1261816025156179637">"サポートが終了した SIP アカウント"</string>
 </resources>

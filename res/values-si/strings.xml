@@ -294,12 +294,9 @@
     <string name="limited_sim_function_notification_title" msgid="612715399099846281">"සීමිත SIM ක්‍රියාකාරීත්වය"</string>
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"<xliff:g id="PHONE_NUMBER">%2$s</xliff:g> භාවිත කරන අතරතුර <xliff:g id="CARRIER_NAME">%1$s</xliff:g> ඇමතුම් සහ දත්ත සේවා අවහිර විය හැකිය."</string>
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"වෙනත් SIM එකක් භාවිත කරන අතරතුර <xliff:g id="CARRIER_NAME">%1$s</xliff:g> ඇමතුම් සහ දත්ත සේවා අවහිර විය හැකිය."</string>
-    <!-- no translation found for sip_accounts_removed_notification_title (3528076957535736095) -->
-    <skip />
-    <!-- no translation found for sip_accounts_removed_notification_message (1916856744869791592) -->
-    <skip />
-    <!-- no translation found for sip_accounts_removed_notification_action (3772778402370555562) -->
-    <skip />
+    <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"අතහැර දැමූ SIP ගිණුම් සොයා ගෙන ඉවත් කර ඇත"</string>
+    <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"SIP ඇමතීමට තවදුරටත් Android වේදිකාව මගින් සහාය නොදක්වයි.\nඔබේ පවතින SIP ගිණුම් <xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g> ඉවත් කර ඇත.\nඔබේ පෙරනිමි ඇමතීමේ ගිණුම් සැකසීම තහවුරු කරන්න."</string>
+    <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"සැකසීම් වෙත යන්න"</string>
     <string name="data_usage_title" msgid="8438592133893837464">"යෙදුම් දත්ත භාවිතය"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"<xliff:g id="ID_2">%2$s</xliff:g> <xliff:g id="ID_1">%1$s</xliff:g>ක ජංගම දත්ත භාවිත කරන ලදී"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"උසස්"</string>
@@ -927,6 +924,5 @@
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"උත්ප්‍රේරක වාහක ප්‍රතිපාදන"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"ඔබේ බ්ලූටූත් සංඥාව දුර්වලයි. ස්පීකර් දුරකථනයට මාරු වීමට උත්සාහ කරන්න."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"ඇමතුම් ගුණත්ව දැනුම්දීම"</string>
-    <!-- no translation found for notification_channel_sip_account (1261816025156179637) -->
-    <skip />
+    <string name="notification_channel_sip_account" msgid="1261816025156179637">"අතහැර දැමූ SIP ගිණුම්"</string>
 </resources>

@@ -294,12 +294,9 @@
     <string name="limited_sim_function_notification_title" msgid="612715399099846281">"Ограничена функционалност SIM-а"</string>
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> услуге за позиве и податке се блокирају док користите <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>."</string>
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> услуге за позиве и податке се блокирају док користите други SIM."</string>
-    <!-- no translation found for sip_accounts_removed_notification_title (3528076957535736095) -->
-    <skip />
-    <!-- no translation found for sip_accounts_removed_notification_message (1916856744869791592) -->
-    <skip />
-    <!-- no translation found for sip_accounts_removed_notification_action (3772778402370555562) -->
-    <skip />
+    <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"Застарели SIP налози су пронађени и уклоњени"</string>
+    <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"Android платформа више не подржава SIP позивање.\nПостојећи SIP налози <xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g> су уклоњени.\nПотврдите подразумевано подешавање налога позивања."</string>
+    <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"Иди у подешавања"</string>
     <string name="data_usage_title" msgid="8438592133893837464">"Потрошња података апликације"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"Потрошили сте <xliff:g id="ID_1">%1$s</xliff:g> мобилних података у периоду <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"Напредно"</string>
@@ -930,6 +927,5 @@
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Покретање доделе мобилног оператера"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Bluetooth сигнал је слаб. Пробајте да пређете на спикерфон."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Обавештење о квалитету позива"</string>
-    <!-- no translation found for notification_channel_sip_account (1261816025156179637) -->
-    <skip />
+    <string name="notification_channel_sip_account" msgid="1261816025156179637">"Застарели SIP налози"</string>
 </resources>
