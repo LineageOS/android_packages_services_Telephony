@@ -294,12 +294,9 @@
     <string name="limited_sim_function_notification_title" msgid="612715399099846281">"सिम से सीमित सुविधाएं मिलेंगी"</string>
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"<xliff:g id="PHONE_NUMBER">%2$s</xliff:g> का इस्तेमाल करते समय <xliff:g id="CARRIER_NAME">%1$s</xliff:g> के कॉल और डेटा सेवाओं पर रोक लगाई जा सकती है."</string>
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"किसी और सिम का इस्तेमाल करते समय <xliff:g id="CARRIER_NAME">%1$s</xliff:g> की कॉल और डेटा सेवाएं ब्लॉक की जा सकती हैं."</string>
-    <!-- no translation found for sip_accounts_removed_notification_title (3528076957535736095) -->
-    <skip />
-    <!-- no translation found for sip_accounts_removed_notification_message (1916856744869791592) -->
-    <skip />
-    <!-- no translation found for sip_accounts_removed_notification_action (3772778402370555562) -->
-    <skip />
+    <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"ऐसे SIP खाते मिले जिनका समर्थन रोक दिया गया है और उन्हें हटाया गया"</string>
+    <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"SIP कॉल की सुविधा, Android प्लैटफ़ॉर्म पर अब काम नहीं करेगी.\nआपके मौजूदा SIP खाते <xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g> हटा दिए गए हैं.\nकृपया कॉल करने की अपनी डिफ़ॉल्ट खाता सेटिंग की पुष्टि करें."</string>
+    <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"सेटिंग पर जाएं"</string>
     <string name="data_usage_title" msgid="8438592133893837464">"ऐप्लिकेशन का डेटा खर्च"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"<xliff:g id="ID_2">%2$s</xliff:g> में <xliff:g id="ID_1">%1$s</xliff:g> मोबाइल डेटा का उपयोग किया गया"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"बेहतर विकल्प"</string>
@@ -927,6 +924,5 @@
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"मोबाइल और इंटरनेट सेवा देने वाली कंपनी के प्रावधान चालू करें"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"आपका ब्लूटूथ सिग्नल कमज़ोर है. स्पीकरफ़ोन की सुविधा का इस्तेमाल करें."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"कॉल की क्वालिटी की सूचना"</string>
-    <!-- no translation found for notification_channel_sip_account (1261816025156179637) -->
-    <skip />
+    <string name="notification_channel_sip_account" msgid="1261816025156179637">"ऐसे SIP खाते जिनका समर्थन रोक दिया गया है"</string>
 </resources>
