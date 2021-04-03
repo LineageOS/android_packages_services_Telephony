@@ -294,12 +294,9 @@
     <string name="limited_sim_function_notification_title" msgid="612715399099846281">"SIM పనితీరు పరిమితంగా ఉంది"</string>
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"<xliff:g id="PHONE_NUMBER">%2$s</xliff:g> ఉపయోగిస్తున్నప్పుడు <xliff:g id="CARRIER_NAME">%1$s</xliff:g> కాల్‌లు మరియు డేటా సేవలు బ్లాక్ చేయబడవచ్చు."</string>
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"వేరొక SIMను ఉపయోగిస్తున్నప్పుడు <xliff:g id="CARRIER_NAME">%1$s</xliff:g> కాల్‌లు మరియు డేటా సేవలు బ్లాక్ చేయబడవచ్చు."</string>
-    <!-- no translation found for sip_accounts_removed_notification_title (3528076957535736095) -->
-    <skip />
-    <!-- no translation found for sip_accounts_removed_notification_message (1916856744869791592) -->
-    <skip />
-    <!-- no translation found for sip_accounts_removed_notification_action (3772778402370555562) -->
-    <skip />
+    <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"తీసివేయబడిన SIP ఖాతాలు కనుగొనబడ్డాయి, తీసివేయబడ్డాయి"</string>
+    <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"SIP కాలింగ్‌కు ఇకపై Android ప్లాట్‌ఫామ్‌లో సపోర్ట్ ఉండదు.\nఇప్పటికే ఉన్న మీ SIP ఖాతాలు<xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g> తీసివేయబడ్డాయి.\nదయచేసి మీ ఆటోమేటిక్ కాలింగ్ ఖాతా సెట్టింగ్‌ను ధృవీకరించండి."</string>
+    <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"సెట్టింగ్‌లకు వెళ్లు"</string>
     <string name="data_usage_title" msgid="8438592133893837464">"యాప్ డేటా వినియోగం"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"<xliff:g id="ID_2">%2$s</xliff:g> మధ్య కాలంలో <xliff:g id="ID_1">%1$s</xliff:g> మొబైల్ డేటా ఉపయోగించబడింది"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"అధునాతన సెట్టింగ్‌లు"</string>
@@ -927,6 +924,5 @@
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"క్యారియర్ కేటాయింపు సక్రియం చేయండి"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"మీ బ్లూటూత్ సిగ్నల్ బలహీనంగా ఉంది. స్పీకర్‌ఫోన్‌కు స్విచ్ అవ్వడానికి ట్రై చేయండి."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"కాల్ క్వాలిటీ నోటిఫికేషన్"</string>
-    <!-- no translation found for notification_channel_sip_account (1261816025156179637) -->
-    <skip />
+    <string name="notification_channel_sip_account" msgid="1261816025156179637">"తీసివేయబడిన SIP ఖాతాలు"</string>
 </resources>
