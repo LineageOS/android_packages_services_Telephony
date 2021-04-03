@@ -294,12 +294,9 @@
     <string name="limited_sim_function_notification_title" msgid="612715399099846281">"Ograniczona funkcjonalność karty SIM"</string>
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"Połączenia i usługi transmisji danych w sieci operatora <xliff:g id="CARRIER_NAME">%1$s</xliff:g> mogą być zablokowane, gdy używasz numeru <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>."</string>
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"Połączenia i transmisja danych w <xliff:g id="CARRIER_NAME">%1$s</xliff:g> mogą być zablokowane przy innej karcie SIM."</string>
-    <!-- no translation found for sip_accounts_removed_notification_title (3528076957535736095) -->
-    <skip />
-    <!-- no translation found for sip_accounts_removed_notification_message (1916856744869791592) -->
-    <skip />
-    <!-- no translation found for sip_accounts_removed_notification_action (3772778402370555562) -->
-    <skip />
+    <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"Wycofane konta SIP zostały znalezione i usunięte"</string>
+    <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"Połączenia SIP nie są już obsługiwane na platformie Android.\nTwoje konta SIP (<xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g>) zostały usunięte.\nPotwierdź ustawienie domyślnego konta do połączeń."</string>
+    <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"Otwórz ustawienia"</string>
     <string name="data_usage_title" msgid="8438592133893837464">"Użycie danych przez aplikację"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"Wykorzystano <xliff:g id="ID_1">%1$s</xliff:g> mobilnej transmisji danych w okresie <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"Zaawansowane"</string>
@@ -933,6 +930,5 @@
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Uruchom obsługę administracyjną operatora"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Twój sygnał Bluetooth jest słaby. Spróbuj przełączyć na głośnik."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Powiadomienie o jakości połączenia"</string>
-    <!-- no translation found for notification_channel_sip_account (1261816025156179637) -->
-    <skip />
+    <string name="notification_channel_sip_account" msgid="1261816025156179637">"Wycofane konta SIP"</string>
 </resources>
