@@ -294,6 +294,9 @@
     <string name="limited_sim_function_notification_title" msgid="612715399099846281">"SIM kartada ayrim funksiyalar ishlamaydi"</string>
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"<xliff:g id="PHONE_NUMBER">%2$s</xliff:g> raqami ishlatilsa, <xliff:g id="CARRIER_NAME">%1$s</xliff:g> orqali chaqiruvlar va mobil internet bloklanishi mumkin."</string>
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"Boshqa SIM karta ishlatilsa, <xliff:g id="CARRIER_NAME">%1$s</xliff:g> orqali chaqiruvlar va internet bloklanishi mumkin."</string>
+    <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"To‘xtatilgan SIP hisoblar aniqlandi va olib tashlandi"</string>
+    <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"Endi Android platformasida SIP orqali chaqiruvlarni amalga oshirish imkonsiz.\nSIP hisoblaringiz (<xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g>) olib tashlandi.\nChaqiruvlar uchun standart holatda ishlatiladigan hisobingizni tasdiqlang."</string>
+    <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"Sozlamalarni ochish"</string>
     <string name="data_usage_title" msgid="8438592133893837464">"Ilova sarflagan trafik"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"<xliff:g id="ID_2">%2$s</xliff:g> davomida sarflangan mobil trafik: <xliff:g id="ID_1">%1$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"Kengaytirilgan sozlamalar"</string>
@@ -530,7 +533,7 @@
     <string name="notification_voicemail_no_vm_number" msgid="3423686009815186750">"Ovozli pochta raqami noma’lum"</string>
     <string name="notification_network_selection_title" msgid="255595526707809121">"Xizmat mavjud emas"</string>
     <string name="notification_network_selection_text" msgid="553288408722427659">"Tanlangan tarmoq (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) mavjud emas"</string>
-    <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Qo‘ng‘iroq qilish uchun mobil tarmoqni yoqing, parvoz yoki quvvat tejash rejimini o‘chirib qo‘ying."</string>
+    <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Telefon qilish uchun mobil tarmoqni yoqing, parvoz yoki quvvat tejash rejimini oʻchiring."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Qo‘ng‘iroq qilish uchun parvoz rejimini o‘chiring"</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Qo‘ng‘iroq qilish uchun parvoz rejimini o‘chiring yoki simsiz tarmoqqa ulaning."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Odatiy qo‘ng‘iroq qilish uchun favqulodda qayta qo‘ng‘iroq rejimidan chiqing."</string>
@@ -921,4 +924,5 @@
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Operator sinxronizatsiyasini yoqish/o‘chirish"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Bluetooth signali kuchsiz. Baland ovoz rejimini yoqish tavsiya etiladi."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Chaqiruv sifati haqida bildirishnoma"</string>
+    <string name="notification_channel_sip_account" msgid="1261816025156179637">"To‘xtatilgan SIP hisoblar"</string>
 </resources>

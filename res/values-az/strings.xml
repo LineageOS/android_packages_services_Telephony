@@ -294,6 +294,9 @@
     <string name="limited_sim_function_notification_title" msgid="612715399099846281">"Məhdud SIM funksionallığı"</string>
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"<xliff:g id="PHONE_NUMBER">%2$s</xliff:g> nömrəsindən istifadə edərkən <xliff:g id="CARRIER_NAME">%1$s</xliff:g> zəng və data xidmətləri bloklana bilər."</string>
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"Başqa SIM-dən istifadə edərkən <xliff:g id="CARRIER_NAME">%1$s</xliff:g> zəng və data xidmətləri bloklana bilər."</string>
+    <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"Ləğv edilmiş SIP hesabları tapıldı və silindi"</string>
+    <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"SIP zəngi artıq Android platforması tərəfindən dəstəklənmir.\nMövcud SIP hesablarınız <xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g> silinib.\nDefolt zəng hesabı ayarınızı təsdiq edin."</string>
+    <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"Ayarlara keçin"</string>
     <string name="data_usage_title" msgid="8438592133893837464">"Tətbiq data istifadəsi"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"<xliff:g id="ID_2">%2$s</xliff:g> ərzində <xliff:g id="ID_1">%1$s</xliff:g> mobil data istifadə edildi"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"Qabaqcıl"</string>
@@ -921,4 +924,5 @@
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Operator Təchizatlanmasını aktiv edin"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Bluetooth siqnalı zəifdir. Telefon spikerinə keçin."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Zəng keyfiyyəti bildirişi"</string>
+    <string name="notification_channel_sip_account" msgid="1261816025156179637">"Ləğv edilmiş SIP hesabları"</string>
 </resources>

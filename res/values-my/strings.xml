@@ -294,6 +294,9 @@
     <string name="limited_sim_function_notification_title" msgid="612715399099846281">"ကန့်သတ်ထားသော ဆင်းမ်ကတ် လုပ်ဆောင်ချက်"</string>
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"<xliff:g id="PHONE_NUMBER">%2$s</xliff:g>.အသုံးပြုနေစဉ် <xliff:g id="CARRIER_NAME">%1$s</xliff:g> ခေါ်ဆိုမှုများနှင့် ဒေတာဝန်ဆောင်မှုများကို ပိတ်ထားနိုင်သည်။"</string>
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"အခြားဆင်းမ်ကတ် သုံးနေစဉ် <xliff:g id="CARRIER_NAME">%1$s</xliff:g> ခေါ်ဆိုမှုနှင့် ဒေတာဝန်ဆောင်မှုများ ပိတ်ထားနိုင်သည်။"</string>
+    <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"ရပ်ဆိုင်းထားသော SIP အကောင့်များ တွေ့ရှိပြီး ဖယ်ရှားလိုက်သည်"</string>
+    <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"SIP ခေါ်ဆိုမှုကို Android စနစ်က မပံ့ပိုးတော့ပါ။\nသင်၏လက်ရှိ SIP အကောင့် <xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g> ကို ဖယ်ရှားလိုက်သည်။\nသင့်မူရင်း ခေါ်ဆိုမှုအကောင့်ဆက်တင်ကို အတည်ပြုပါ။"</string>
+    <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"ဆက်တင်များသို့ သွားရန်"</string>
     <string name="data_usage_title" msgid="8438592133893837464">"အက်ပ်ဒေတာ သုံးစွဲမှု"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"<xliff:g id="ID_2">%2$s</xliff:g> အထိ မိုဘိုင်းဒေတာ <xliff:g id="ID_1">%1$s</xliff:g> ကို အသုံးပြုထားပါသည်"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"အဆင့်မြင့်"</string>
@@ -921,4 +924,5 @@
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"အစပျိုးပေးသော ဖုန်းကုမ္ပဏီ ပံ့ပိုးမှု"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"သင်၏ ဘလူးတုသ်လိုင်းဆွဲအား မကောင်းပါ။ စပီကာဖုန်းသို့ ပြောင်းကြည့်ပါ။"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"ခေါ်ဆိုမှုအရည်အသွေး အကြောင်းကြားချက်"</string>
+    <string name="notification_channel_sip_account" msgid="1261816025156179637">"ရပ်ဆိုင်းထားသော SIP အကောင့်များ"</string>
 </resources>

@@ -294,6 +294,9 @@
     <string name="limited_sim_function_notification_title" msgid="612715399099846281">"SIM-kortets funktionalitet er begrænset"</string>
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"Opkalds- og datatjenester fra <xliff:g id="CARRIER_NAME">%1$s</xliff:g> blokeres muligvis, mens <xliff:g id="PHONE_NUMBER">%2$s</xliff:g> bruges."</string>
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"Opkalds- og datatjenester fra <xliff:g id="CARRIER_NAME">%1$s</xliff:g> blokeres muligvis, mens der bruges et andet SIM-kort."</string>
+    <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"Udfasede SIP-konti blev fundet og fjernet"</string>
+    <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"SIP-opkald understøttes ikke længere af Android-platformen.\nDine eksisterende SIP-konti <xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g> er blevet fjernet.\nBekræft din standardkontoindstilling for opkald."</string>
+    <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"Gå til Indstillinger"</string>
     <string name="data_usage_title" msgid="8438592133893837464">"Dataforbrug i apps"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"<xliff:g id="ID_1">%1$s</xliff:g> mobildata er brugt i perioden <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"Avanceret"</string>
@@ -921,4 +924,5 @@
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Aktivér mobilselskab"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Dit Bluetooth-signal er svagt. Prøv at skifte til medhør."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Notifikation om opkaldskvalitet"</string>
+    <string name="notification_channel_sip_account" msgid="1261816025156179637">"Udfasede SIP-konti"</string>
 </resources>

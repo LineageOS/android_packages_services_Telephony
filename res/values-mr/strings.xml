@@ -294,6 +294,9 @@
     <string name="limited_sim_function_notification_title" msgid="612715399099846281">"मर्यादित सिम फंक्शनॅलिटी"</string>
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> चे कॉल आणि डेटा सेवा <xliff:g id="PHONE_NUMBER">%2$s</xliff:g> वापरताना ब्लॉक केले जाऊ शकतात."</string>
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> चे कॉल आणि डेटा सेवा दुसरे सिम वापरताना ब्लॉक केले जाऊ शकतात."</string>
+    <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"आढळलेली आणि काढून टाकलेली कालबाह्य झालेली SIP खाती"</string>
+    <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"Android प्लॅटफॉर्मवर आता SIP कॉलिंगला सपोर्ट नाही.\nतुमची अस्तित्वात असलेली SIP खाती <xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g> काढून टाकली आहेत.\nकृपया तुमच्या कॉलिंगसंबंधित डीफॉल्ट खात्याचे सेटिंग कंफर्म करा."</string>
+    <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"सेटिंग्जवर जा"</string>
     <string name="data_usage_title" msgid="8438592133893837464">"अ‍ॅप डेटा वापर"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"<xliff:g id="ID_2">%2$s</xliff:g> दरम्यान <xliff:g id="ID_1">%1$s</xliff:g> मोबाइल डेटा वापरला गेला"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"प्रगत"</string>
@@ -921,4 +924,5 @@
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"वाहक सुविधा ट्रिगर करा"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"तुमचा ब्लूटूथ सिग्नल कमकुवत आहे. स्पीकरफोनवर स्विच करून पाहा."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"कॉल गुणवत्ता सूचना"</string>
+    <string name="notification_channel_sip_account" msgid="1261816025156179637">"कालबाह्य झालेली SIP खाती"</string>
 </resources>
