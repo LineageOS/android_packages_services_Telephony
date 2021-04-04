@@ -294,6 +294,9 @@
     <string name="limited_sim_function_notification_title" msgid="612715399099846281">"പരിമിതമായ സിം പ്രവർത്തനം"</string>
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"<xliff:g id="PHONE_NUMBER">%2$s</xliff:g> ഉപയോഗിക്കുമ്പോൾ <xliff:g id="CARRIER_NAME">%1$s</xliff:g> കോളുകളും ഡാറ്റാ സേവനങ്ങളും ബ്ലോക്ക് ചെയ്‌തേക്കാം."</string>
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"മറ്റൊരു SIM ഉപയോഗിക്കുമ്പോൾ <xliff:g id="CARRIER_NAME">%1$s</xliff:g> കോളുകളും ഡാറ്റാ സേവനവും ബ്ലോക്ക് ചെയ്‌തേക്കാം."</string>
+    <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"അവസാനിപ്പിച്ച SIP അക്കൗണ്ടുകൾ കണ്ടെത്തി നീക്കം ചെയ്‌തു"</string>
+    <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"SIP കോൾ ചെയ്യലിന് ഇനി Android പ്ലാറ്റ്‌ഫോമിൽ പിന്തുണയുണ്ടാകില്ല.\nനിലവിലെ നിങ്ങളുടെ SIP അക്കൗണ്ടുകളായ <xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g> എന്നിവ നീക്കം ചെയ്‌തിരിക്കുന്നു.\nനിങ്ങളുടെ ഡിഫോൾട്ട് കോൾ ചെയ്യൽ അക്കൗണ്ട് ക്രമീകരണം സ്ഥിരീകരിക്കുക."</string>
+    <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"ക്രമീകരണത്തിലേക്ക് പോകുക"</string>
     <string name="data_usage_title" msgid="8438592133893837464">"ആപ്പ് ഡാറ്റ ഉപയോഗം"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"<xliff:g id="ID_2">%2$s</xliff:g> തീയതികൾക്കിടയിൽ <xliff:g id="ID_1">%1$s</xliff:g> മൊബൈൽ ഡാറ്റ ഉപയോഗിച്ചു"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"വിപുലമായത്"</string>
@@ -921,4 +924,5 @@
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"കാരിയർ പ്രൊവിഷനിംഗ് തുടങ്ങുക"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"നിങ്ങളുടെ Bluetooth സിഗ്നൽ ദുർബലമാണ്. സ്‌പീക്കർഫോണിലേക്ക് മാറ്റി നോക്കൂ."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"കോൾ നിലവാര അറിയിപ്പ്"</string>
+    <string name="notification_channel_sip_account" msgid="1261816025156179637">"അവസാനിപ്പിച്ച SIP അക്കൗണ്ടുകൾ"</string>
 </resources>

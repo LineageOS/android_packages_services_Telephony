@@ -294,6 +294,9 @@
     <string name="limited_sim_function_notification_title" msgid="612715399099846281">"Ukusebenza okukhawulelwe kwe-SIM"</string>
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"Amakholi e-<xliff:g id="CARRIER_NAME">%1$s</xliff:g> namasevisi edatha angavinjelwa kusetshenziswa u-<xliff:g id="PHONE_NUMBER">%2$s</xliff:g>."</string>
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"Amakholi e-<xliff:g id="CARRIER_NAME">%1$s</xliff:g> namasevisi edatha angavinjelwa ngenkathi kusetshenziswa enye i-SIM."</string>
+    <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"Ama-akhawunti we-SIP eshlisiwe atholakele futhi asusiwe"</string>
+    <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"Ukufona kwe-SIP akusasekelwa ingxenyekazi ye-Android.\nAma-akhawunti akho e-SIP akhona <xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g> ahanjisiwe.\nSicela uqinisekise isethingi le-akhawunti yakho lokufona elizenzakalelayo."</string>
+    <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"Iya kumasethingi"</string>
     <string name="data_usage_title" msgid="8438592133893837464">"Ukusetshenziswa kwedatha yohlelo lokusebenza"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"<xliff:g id="ID_1">%1$s</xliff:g> kusetshenziswe idatha yeselula engu-<xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"Okuthuthukisiwe"</string>
@@ -315,9 +318,7 @@
     <string name="throttle_time_frame" msgid="1813452485948918791">"Isikhathi sokusebenzisa idatha"</string>
     <string name="throttle_rate" msgid="7641913901133634905">"Inqubomgomo yokukala idatha"</string>
     <string name="throttle_help" msgid="2624535757028809735">"Funda kabanzi"</string>
-    <!-- String.format failed for translation -->
-    <!-- no translation found for throttle_status_subtext (1110276415078236687) -->
-    <skip />
+    <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) ye <xliff:g id="USED_2">%3$s</xliff:g> isikhathi esingeqiwe \nIsikhathi esilandelayo siqala ezinsukwini ezingu-<xliff:g id="USED_3">%4$d</xliff:g> (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
     <string name="throttle_data_usage_subtext" msgid="3185429653996709840">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) ye- <xliff:g id="USED_2">%3$s</xliff:g> isikhathi esiphezulu"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"<xliff:g id="USED_0">%1$s</xliff:g>okuphezulu kufinyelelwe\nIsilinganiso sedatha sehliselwe ku- <xliff:g id="USED_1">%2$d</xliff:g> ama-Kb"</string>
     <string name="throttle_time_frame_subtext" msgid="6462089615392402127">"<xliff:g id="USED_0">%1$d</xliff:g>٪ lesikhathi esiphelile\nIsikhathi esilandelayo siqala ezinsukwini <xliff:g id="USED_1">%2$d</xliff:g> ezingu <xliff:g id="USED_2">%3$s</xliff:g>)"</string>
@@ -923,4 +924,5 @@
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Cupha ukunikezwa kwenkampani yenethiwekhi"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Isignali yakho ye-bluetooth ayiqinile. Zama ukushintshela kusipikhasefoni."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Isaziso Sekhwalithi"</string>
+    <string name="notification_channel_sip_account" msgid="1261816025156179637">"Ama-akhawunti we-SIP ehlisiwe"</string>
 </resources>

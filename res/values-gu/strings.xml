@@ -294,6 +294,9 @@
     <string name="limited_sim_function_notification_title" msgid="612715399099846281">"સિમની મર્યાદિત કાર્યક્ષમતા"</string>
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"<xliff:g id="PHONE_NUMBER">%2$s</xliff:g>નો ઉપયોગ કરતી વખતે <xliff:g id="CARRIER_NAME">%1$s</xliff:g>ના કૉલ અને ડેટાની સેવાઓ બ્લૉક થઈ શકે છે."</string>
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"બીજા સિમનો ઉપયોગ કરતી વખતે <xliff:g id="CARRIER_NAME">%1$s</xliff:g>ના કૉલ અને ડેટાની સેવાઓ બ્લૉક થઈ શકે છે."</string>
+    <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"ટાળવામાં આવેલા SIP એકાઉન્ટ મળી આવ્યા અને તેને કાઢી નાખ્યા"</string>
+    <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"SIP કૉલિંગની સુવિધાને હવે Android પ્લૅટફૉર્મ દ્વારા સપોર્ટ આપવામાં આવતો નથી.\n તમારા વર્તમાન SIP એકાઉન્ટ <xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g> કાઢી નાખવામાં આવ્યા છે.\nકૃપા કરીને તમારા ડિફૉલ્ટ કૉલિંગ એકાઉન્ટનું સેટિંગ કન્ફર્મ કરો."</string>
+    <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"સેટિંગ પર જાઓ"</string>
     <string name="data_usage_title" msgid="8438592133893837464">"ઍપ ડેટા વપરાશ"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"<xliff:g id="ID_1">%1$s</xliff:g> મોબાઇલ ડેટાનો ઉપયોગ <xliff:g id="ID_2">%2$s</xliff:g> ના રોજ સુધી કરવામાં આવ્યો"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"વિગતવાર"</string>
@@ -313,14 +316,14 @@
     <string name="throttle_data_usage" msgid="1944145350660420711">"ડેટા વપરાશ"</string>
     <string name="throttle_current_usage" msgid="7483859109708658613">"વર્તમાન અવધિમાં વપરાયેલ ડેટા"</string>
     <string name="throttle_time_frame" msgid="1813452485948918791">"ડેટા ઉપયોગ અવધિ"</string>
-    <string name="throttle_rate" msgid="7641913901133634905">"માહિતી રેટ નીતિ"</string>
+    <string name="throttle_rate" msgid="7641913901133634905">"માહિતી રેટ પૉલિસી"</string>
     <string name="throttle_help" msgid="2624535757028809735">"વધુ જાણો"</string>
     <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_2">%3$s</xliff:g> માંથી <xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) અવધિ મહત્તમ\nઆગલી અવધિ <xliff:g id="USED_3">%4$d</xliff:g> દિવસમાં પ્રારંભ થાય છે (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
     <string name="throttle_data_usage_subtext" msgid="3185429653996709840">"<xliff:g id="USED_2">%3$s</xliff:g> માંથી <xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) અવધિ મહત્તમ"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"<xliff:g id="USED_0">%1$s</xliff:g> મહત્તમ વટાવી દીધું\nડેટા રેટ <xliff:g id="USED_1">%2$d</xliff:g> Kb/s સુધી ઘટાડાશે"</string>
     <string name="throttle_time_frame_subtext" msgid="6462089615392402127">"<xliff:g id="USED_0">%1$d</xliff:g>٪ ચક્ર વીતાવ્યું\nઆગલી અવધિ <xliff:g id="USED_1">%2$d</xliff:g> દિવસમાં પ્રારંભ થાય છે (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
     <string name="throttle_rate_subtext" msgid="7221971817325779535">"જો ડેટા સીમા વટાવવામાં આવે તો ડેટા રેટ <xliff:g id="USED">%1$d</xliff:g> Kb/s સુધી ઘટાડવામાં આવે છે"</string>
-    <string name="throttle_help_subtext" msgid="2817114897095534807">"તમારા કેરિઅરની મોબાઇલ નેટવર્ક ડેટા ઉપયોગ નીતિ વિશે વધુ માહિતી"</string>
+    <string name="throttle_help_subtext" msgid="2817114897095534807">"તમારા કૅરિઅરની મોબાઇલ નેટવર્ક ડેટા ઉપયોગ પૉલિસી વિશે વધુ માહિતી"</string>
     <string name="cell_broadcast_sms" msgid="4053449797289031063">"સેલ બ્રોડકાસ્ટ SMS"</string>
     <string name="enable_disable_cell_bc_sms" msgid="4759958924031721350">"સેલ બ્રોડકાસ્ટ SMS"</string>
     <string name="cell_bc_sms_enable" msgid="2019708772024632073">"સેલ બ્રોડકાસ્ટ SMS સક્ષમ કરેલ છે"</string>
@@ -921,4 +924,5 @@
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"કૅરિઅરની જોગવાઈ ટ્રિગર કરો"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"તમારા બ્લૂટૂથનું સિગ્નલ નબળું છે. સ્પીકરફોન પર સ્વિચ કરવાનો પ્રયાસ કરો."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"કૉલની ક્વૉલિટી માટે નોટિફિકેશન"</string>
+    <string name="notification_channel_sip_account" msgid="1261816025156179637">"ટાળવામાં આવેલા SIP એકાઉન્ટ"</string>
 </resources>

@@ -294,6 +294,9 @@
     <string name="limited_sim_function_notification_title" msgid="612715399099846281">"Limited SIM functionality"</string>
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> calls and data services may be blocked while using <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>."</string>
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> calls and data services may be blocked while using another SIM."</string>
+    <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"Deprecated SIP accounts found and removed"</string>
+    <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"SIP calling is no longer supported by the Android platform.\nYour existing SIP accounts <xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g> have been removed.\nPlease confirm your default calling account setting."</string>
+    <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"Go to settings"</string>
     <string name="data_usage_title" msgid="8438592133893837464">"App data usage"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"<xliff:g id="ID_1">%1$s</xliff:g> mobile data used <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"Advanced"</string>
@@ -921,4 +924,5 @@
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Trigger operator provisioning"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Your Bluetooth signal is weak. Try switching to speakerphone."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Call quality notification"</string>
+    <string name="notification_channel_sip_account" msgid="1261816025156179637">"Deprecated SIP accounts"</string>
 </resources>

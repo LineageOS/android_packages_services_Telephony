@@ -294,6 +294,9 @@
     <string name="limited_sim_function_notification_title" msgid="612715399099846281">"ସୀମିତ SIM ପ୍ରକାର୍ଯ୍ୟ"</string>
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"<xliff:g id="PHONE_NUMBER">%2$s</xliff:g> ବ୍ୟବହାର କରିବା ସମୟରେ <xliff:g id="CARRIER_NAME">%1$s</xliff:g> କଲ୍ ଏବଂ ଡାଟା ସେବାଗୁଡ଼ିକ ବ୍ଲକ୍ କରାଯାଇପାରେ।"</string>
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"ଅନ୍ୟ SIM ବ୍ୟବହାର କରିବା ସମୟରେ <xliff:g id="CARRIER_NAME">%1$s</xliff:g> କଲ୍ ଏବଂ ଡାଟା ସେବାଗୁଡ଼ିକ ବ୍ଲକ୍ କରାଯାଇପାରେ।"</string>
+    <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"ଅସମର୍ଥିତ SIP ଆକାଉଣ୍ଟଗୁଡ଼ିକ ମିଳିଛି ଏବଂ କାଢ଼ି ଦିଆଯାଇଛି"</string>
+    <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"SIP କଲିଂ ଆଉ Android ପ୍ଲାଟଫର୍ମ ଦ୍ୱାରା ସମର୍ଥିତ ନୁହେଁ।\nଆପଣଙ୍କର ପୂର୍ବରୁ ଥିବା SIP ଆକାଉଣ୍ଟ <xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g>କୁ କାଢ଼ି ଦିଆଯାଇଛି।\nଦୟାକରି ଆପଣଙ୍କ ଡିଫଲ୍ଟ କଲିଂ ଆକାଉଣ୍ଟ ସେଟିଂକୁ ସୁନିଶ୍ଚିତ କରନ୍ତୁ।"</string>
+    <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"ସେଟିଂସକୁ ଯାଆନ୍ତୁ"</string>
     <string name="data_usage_title" msgid="8438592133893837464">"ଆପ୍‌ ଦ୍ୱାରା ଡାଟା ବ୍ୟବହାର"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"<xliff:g id="ID_2">%2$s</xliff:g>ରେ <xliff:g id="ID_1">%1$s</xliff:g> ମୋବାଇଲ୍ ଡାଟା ବ୍ୟବହାର କରାଯାଇଛି"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"ଉନ୍ନତ"</string>
@@ -921,4 +924,5 @@
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"କେରିଅର୍ ପ୍ରୋଭିଜନିଂ ଟ୍ରିଗର୍ କରନ୍ତୁ"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"ଆପଣଙ୍କ ବ୍ଲୁଟୁଥ୍ ସିଗନାଲ୍ ଦୁର୍ବଳ ଅଛି। ସ୍ପିକରଫୋନକୁ ସ୍ୱିଚ୍ କରିବା ପାଇଁ ଚେଷ୍ଟା କରନ୍ତୁ।"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"କଲ୍ ଗୁଣବତ୍ତା ବିଜ୍ଞପ୍ତି"</string>
+    <string name="notification_channel_sip_account" msgid="1261816025156179637">"ଅସମର୍ଥିତ SIP ଆକାଉଣ୍ଟଗୁଡ଼ିକ"</string>
 </resources>

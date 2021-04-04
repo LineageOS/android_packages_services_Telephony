@@ -294,6 +294,9 @@
     <string name="limited_sim_function_notification_title" msgid="612715399099846281">"Eingeschränkte SIM-Funktion"</string>
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"Anrufe und Datendienste über <xliff:g id="CARRIER_NAME">%1$s</xliff:g> stehen möglicherweise nicht zur Verfügung, während du <xliff:g id="PHONE_NUMBER">%2$s</xliff:g> nutzt."</string>
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"Anrufe/Datendienste über <xliff:g id="CARRIER_NAME">%1$s</xliff:g> sind bei Nutzung einer anderen SIM eventuell blockiert."</string>
+    <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"Eingestellte SIP-Konten gefunden und entfernt"</string>
+    <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"SIP-Anrufe werden von der Android-Plattform nicht mehr unterstützt.\nDie vorhandenen SIP-Konten (<xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g>) wurden entfernt.\nPrüfe die Einstellung für das Standardkonto für Anrufe."</string>
+    <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"Zu den Einstellungen"</string>
     <string name="data_usage_title" msgid="8438592133893837464">"Datenverbrauch durch Apps"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"Im Zeitraum <xliff:g id="ID_2">%2$s</xliff:g> genutzte mobile Daten: <xliff:g id="ID_1">%1$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"Erweitert"</string>
@@ -921,4 +924,5 @@
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Nutzerverwaltung durch den Anbieter auslösen"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Das Bluetooth-Signal ist schwach. Verwende die Freisprechfunktion."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Benachrichtigung zu Anrufqualität"</string>
+    <string name="notification_channel_sip_account" msgid="1261816025156179637">"Eingestellte SIP-Konten"</string>
 </resources>
