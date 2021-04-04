@@ -95,7 +95,7 @@
     <string name="sum_loading_settings" msgid="434063780286688775">"Тохиргоог ачаалж байна…"</string>
     <string name="sum_hide_caller_id" msgid="131100328602371933">"Залгасан дуудлагуудад дугаарыг нууцална"</string>
     <string name="sum_show_caller_id" msgid="3571854755324664591">"Залгасан дуудлагуудад дугаарыг харуулна"</string>
-    <string name="sum_default_caller_id" msgid="1767070797135682959">"Гарах дуудлагуудад миний дугаарыг харуулахдаа операторын үндсэн тохиргоог ашиглах"</string>
+    <string name="sum_default_caller_id" msgid="1767070797135682959">"Гарах дуудлагуудад миний дугаарыг харуулахдаа операторын өгөгдмөл тохиргоог ашиглах"</string>
     <string name="labelCW" msgid="8449327023861428622">"Дуудлага хүлээлгэх"</string>
     <string name="sum_cw_enabled" msgid="3977308526187139996">"Дуудлагын дундуур өөр дуудлага ирвэл надад мэдэгдэх"</string>
     <string name="sum_cw_disabled" msgid="3658094589461768637">"Дуудлагын дундуур өөр дуудлага ирвэл надад мэдэгдэх"</string>
