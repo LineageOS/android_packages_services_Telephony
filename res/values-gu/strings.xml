@@ -305,14 +305,14 @@
     <string name="throttle_data_usage" msgid="1944145350660420711">"ડેટા વપરાશ"</string>
     <string name="throttle_current_usage" msgid="7483859109708658613">"વર્તમાન અવધિમાં વપરાયેલ ડેટા"</string>
     <string name="throttle_time_frame" msgid="1813452485948918791">"ડેટા ઉપયોગ અવધિ"</string>
-    <string name="throttle_rate" msgid="7641913901133634905">"માહિતી રેટ નીતિ"</string>
+    <string name="throttle_rate" msgid="7641913901133634905">"માહિતી રેટ પૉલિસી"</string>
     <string name="throttle_help" msgid="2624535757028809735">"વધુ જાણો"</string>
     <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_2">%3$s</xliff:g> માંથી <xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) અવધિ મહત્તમ\nઆગલી અવધિ <xliff:g id="USED_3">%4$d</xliff:g> દિવસમાં પ્રારંભ થાય છે (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
     <string name="throttle_data_usage_subtext" msgid="3185429653996709840">"<xliff:g id="USED_2">%3$s</xliff:g> માંથી <xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) અવધિ મહત્તમ"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"<xliff:g id="USED_0">%1$s</xliff:g> મહત્તમ વટાવી દીધું\nડેટા રેટ <xliff:g id="USED_1">%2$d</xliff:g> Kb/s સુધી ઘટાડાશે"</string>
     <string name="throttle_time_frame_subtext" msgid="6462089615392402127">"<xliff:g id="USED_0">%1$d</xliff:g>٪ ચક્ર વીતાવ્યું\nઆગલી અવધિ <xliff:g id="USED_1">%2$d</xliff:g> દિવસમાં પ્રારંભ થાય છે (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
     <string name="throttle_rate_subtext" msgid="7221971817325779535">"જો ડેટા સીમા વટાવવામાં આવે તો ડેટા રેટ <xliff:g id="USED">%1$d</xliff:g> Kb/s સુધી ઘટાડવામાં આવે છે"</string>
-    <string name="throttle_help_subtext" msgid="2817114897095534807">"તમારા કેરિઅરની મોબાઇલ નેટવર્ક ડેટા ઉપયોગ નીતિ વિશે વધુ માહિતી"</string>
+    <string name="throttle_help_subtext" msgid="2817114897095534807">"તમારા કૅરિઅરની મોબાઇલ નેટવર્ક ડેટા ઉપયોગ પૉલિસી વિશે વધુ માહિતી"</string>
     <string name="cell_broadcast_sms" msgid="4053449797289031063">"સેલ બ્રોડકાસ્ટ SMS"</string>
     <string name="enable_disable_cell_bc_sms" msgid="4759958924031721350">"સેલ બ્રોડકાસ્ટ SMS"</string>
     <string name="cell_bc_sms_enable" msgid="2019708772024632073">"સેલ બ્રોડકાસ્ટ SMS સક્ષમ કરેલ છે"</string>
