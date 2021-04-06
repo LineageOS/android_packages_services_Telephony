@@ -294,6 +294,9 @@
     <string name="limited_sim_function_notification_title" msgid="612715399099846281">"Fonctionnalité de carte SIM limitée"</string>
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"Les services d\'appels et de données de <xliff:g id="CARRIER_NAME">%1$s</xliff:g> peuvent être bloqués lors de l\'utilisation du numéro <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>."</string>
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"Les données et appels de <xliff:g id="CARRIER_NAME">%1$s</xliff:g> peuvent être bloqués si vous utilisez une autre SIM."</string>
+    <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"Comptes SIP obsolètes trouvés et retirés"</string>
+    <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"Les appels SIP ne sont plus pris en charge par la plateforme Android.\nVos comptes SIP <xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g> existants ont été retirés.\nVeuillez confirmer votre paramètre de compte d\'appel par défaut."</string>
+    <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"Accéder aux paramètres"</string>
     <string name="data_usage_title" msgid="8438592133893837464">"Utilisation des données des applications"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"<xliff:g id="ID_1">%1$s</xliff:g> de données mobiles utilisées pendant la période suivante : <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"Avancés"</string>
@@ -921,4 +924,5 @@
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Déclencher l\'approvisionnement du fournisseur de services"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Votre signal Bluetooth est faible. Essayez de passer au haut-parleur mains libres."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Notification de qualité d\'appel"</string>
+    <string name="notification_channel_sip_account" msgid="1261816025156179637">"Comptes SIP obsolètes"</string>
 </resources>

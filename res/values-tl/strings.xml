@@ -294,6 +294,9 @@
     <string name="limited_sim_function_notification_title" msgid="612715399099846281">"Limitadong functionality ng SIM"</string>
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"Ang mga tawag at serbisyo ng data ng <xliff:g id="CARRIER_NAME">%1$s</xliff:g> ay puwedeng ma-block habang ginagamit ang <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>."</string>
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"Ang tawag at serbisyo ng data ng <xliff:g id="CARRIER_NAME">%1$s</xliff:g> ay maba-block habang ginagamit ang isa pang SIM."</string>
+    <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"Nakita at naalis ang mga hindi na ginagamit na SIP account"</string>
+    <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"Hindi na sinusuportahan ng Android Platform ang pagtawag sa pamamagitan ng SIP.\nNaalis na ang iyong mga kasalukuyang SIP account na <xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g>.\nPakikumpirma ang iyong default na setting ng account para sa pagtawag."</string>
+    <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"Pumunta sa mga setting"</string>
     <string name="data_usage_title" msgid="8438592133893837464">"Paggamit ng data ng app"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"<xliff:g id="ID_1">%1$s</xliff:g> na mobile data ang nagamit noong <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"Advanced"</string>
@@ -921,4 +924,5 @@
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"I-trigger ang Provisioning ng Carrier"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Mahina ang signal ng iyong bluetooth. Subukang lumipat sa speakerphone."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Notification sa Kalidad ng Tawag"</string>
+    <string name="notification_channel_sip_account" msgid="1261816025156179637">"Mga hindi na ginagamit na SIP account"</string>
 </resources>

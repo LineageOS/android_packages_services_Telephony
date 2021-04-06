@@ -294,6 +294,9 @@
     <string name="limited_sim_function_notification_title" msgid="612715399099846281">"SIMமின் செயல்பாடு வரம்பிடப்பட்டது"</string>
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"<xliff:g id="PHONE_NUMBER">%2$s</xliff:g> எண்ணைப் பயன்படுத்தும் போது <xliff:g id="CARRIER_NAME">%1$s</xliff:g> அழைப்புகளும் டேட்டா சேவைகளும் தடுக்கப்படக்கூடும்."</string>
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"வேறொரு SIMமில் <xliff:g id="CARRIER_NAME">%1$s</xliff:g> அழைப்புகளும் டேட்டா சேவைகளும் தடுக்கப்படக்கூடும்."</string>
+    <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"நிறுத்தப்பட்ட SIP கணக்குகள் கண்டறியப்பட்டு அகற்றப்பட்டன"</string>
+    <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"Android பிளாட்ஃபார்மில் இனி SIP அழைப்பைச் செய்ய முடியாது.\nஏற்கெனவே உள்ள <xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g> SIP கணக்குகள் அகற்றப்பட்டன.\nஅழைப்பைச் செய்வதற்கான இயல்புக் கணக்கு அமைப்பை உறுதிசெய்யவும்."</string>
+    <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"அமைப்புகளுக்குச் செல்"</string>
     <string name="data_usage_title" msgid="8438592133893837464">"ஆப்ஸ் டேட்டா உபயோகம்"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"<xliff:g id="ID_2">%2$s</xliff:g>: <xliff:g id="ID_1">%1$s</xliff:g> மொபைல் டேட்டா பயன்படுத்தப்பட்டது"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"மேம்பட்டவை"</string>
@@ -921,4 +924,5 @@
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Trigger Carrier Provisioning"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"புளூடூத் சிக்னல் வலுவற்றதாக உள்ளது. ஸ்பீக்கர் ஃபோனிற்கு மாற்றவும்."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"அழைப்பின் தரம் தொடர்பான அறிவிப்பு"</string>
+    <string name="notification_channel_sip_account" msgid="1261816025156179637">"நிறுத்தப்பட்ட SIP கணக்குகள்"</string>
 </resources>

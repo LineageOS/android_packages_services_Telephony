@@ -294,6 +294,9 @@
     <string name="limited_sim_function_notification_title" msgid="612715399099846281">"Funcionalitat de la SIM limitada"</string>
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"Pot ser que les trucades i els serveis de dades de <xliff:g id="CARRIER_NAME">%1$s</xliff:g> es bloquegin mentre fas servir el número <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>."</string>
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"Les trucades i dades que t\'ofereix <xliff:g id="CARRIER_NAME">%1$s</xliff:g> es poden bloquejar quan tens una altra SIM."</string>
+    <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"S\'han trobat comptes SIP obsolets i s\'han suprimit"</string>
+    <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"La plataforma Android ja no admet les trucades SIP.\nEls teus comptes SIP existents <xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g> s\'han suprimit.\nConfirma la configuració predeterminada de trucades del teu compte."</string>
+    <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"Ves a la configuració"</string>
     <string name="data_usage_title" msgid="8438592133893837464">"Ús de dades de l\'aplicació"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"S\'han utilitzat <xliff:g id="ID_1">%1$s</xliff:g> en el període <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"Configuració avançada"</string>
@@ -921,4 +924,5 @@
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Activa els serveis de l\'operador"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"El senyal del Bluetooth és feble. Fes servir l\'altaveu."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Notificació sobre la qualitat de la trucada"</string>
+    <string name="notification_channel_sip_account" msgid="1261816025156179637">"Comptes SIP obsolets"</string>
 </resources>

@@ -294,6 +294,9 @@
     <string name="limited_sim_function_notification_title" msgid="612715399099846281">"Ограничена функционалност на SIM-картичка"</string>
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"Повиците и услугите за интернет на <xliff:g id="CARRIER_NAME">%1$s</xliff:g> може да бидат блокирани додека се користи <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>."</string>
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"Повиците и услугите за интернет на <xliff:g id="CARRIER_NAME">%1$s</xliff:g> може да се блокирани со друга SIM-картичка."</string>
+    <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"Најдени и отстранети се неподдржани сметки на SIP"</string>
+    <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"Платформата Android веќе не поддржува повикување преку SIP.\nВашите постојни сметки на SIP <xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g> се отстранети.\nПотврдете ја вашата стандардна поставка за повикување."</string>
+    <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"Одете во „Поставки“"</string>
     <string name="data_usage_title" msgid="8438592133893837464">"Потрошен сообраќај на апликациите"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"<xliff:g id="ID_1">%1$s</xliff:g> потрошен мобилен интернет во периодот <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"Напредни"</string>
@@ -921,4 +924,5 @@
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Активирајте обезбедување оператор"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Вашиот сигнал на Bluetooth е слаб. Обидете се со префрлање на интерфон."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Известување за квалитет на повик"</string>
+    <string name="notification_channel_sip_account" msgid="1261816025156179637">"Неподдржани сметки на SIP"</string>
 </resources>

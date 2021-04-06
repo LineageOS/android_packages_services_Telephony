@@ -294,6 +294,9 @@
     <string name="limited_sim_function_notification_title" msgid="612715399099846281">"SIM картасының жұмысы шектеулі"</string>
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"<xliff:g id="PHONE_NUMBER">%2$s</xliff:g> нөмірін пайдаланған кезде <xliff:g id="CARRIER_NAME">%1$s</xliff:g> қоңыраулары мен дерек тасымалдау қызметтері бөгелуі мүмкін."</string>
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"Екінші SIM картасын пайдаланылғанда, <xliff:g id="CARRIER_NAME">%1$s</xliff:g> қоңырауы мен дерек қызметі бөгелуі мүмкін."</string>
+    <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"Қолданыстан шыққан SIP есептік жазбалары табылды және өшірілді"</string>
+    <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"Android платформасында бұдан былай SIP арқылы қоңырау шалу мүмкін емес.\nҚазіргі SIP есептік жазбаларыңыз (<xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g>) өшірілді.\nҚоңырау шалуға қолданылатын әдепкі есептік жазба параметрін растаңыз."</string>
+    <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"Параметрлерге өту"</string>
     <string name="data_usage_title" msgid="8438592133893837464">"Қолданба деректерінің трафигі"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"<xliff:g id="ID_2">%2$s</xliff:g> аралығында <xliff:g id="ID_1">%1$s</xliff:g> мобильдік дерек қолданылды"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"Қосымша"</string>
@@ -921,4 +924,5 @@
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Операторды инциализациялауды іске қосу"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Bluetooth сигналы нашар. Спикерфонға ауысып көріңіз."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Қоңырау сапасы туралы хабарландыру"</string>
+    <string name="notification_channel_sip_account" msgid="1261816025156179637">"Қолданыстан шыққан SIP есептік жазбалары"</string>
 </resources>
