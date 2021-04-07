@@ -28,7 +28,6 @@ import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.ArgumentMatchers.nullable;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doReturn;
-import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 
 import android.content.Intent;
@@ -149,6 +148,20 @@ public class CarrierConfigLoaderTest extends TelephonyTestBase {
     }
 
     /**
+     * Verifies that IllegalArgumentException should throw when call #updateConfigForPhoneId() with
+     * invalid phoneId.
+     */
+    @Test
+    public void testUpdateConfigForPhoneId_invalidPhoneId() throws Exception {
+        mContext.grantPermission(STUB_PERMISSION_ENABLE_ALL);
+
+        assertThrows(IllegalArgumentException.class,
+                () -> mCarrierConfigLoader.updateConfigForPhoneId(
+                        SubscriptionManager.INVALID_PHONE_INDEX,
+                        IccCardConstants.INTENT_VALUE_ICC_ABSENT));
+    }
+
+    /**
      * Verifies that when call #updateConfigForPhoneId() with SIM absence, both carrier config from
      * default app and carrier should be cleared but no-sim config should be loaded.
      */
@@ -219,6 +232,17 @@ public class CarrierConfigLoaderTest extends TelephonyTestBase {
     }
 
     /**
+     * Verifies IllegalArgumentException should throw if call #overrideConfig() with invalid subId.
+     */
+    @Test
+    public void testOverrideConfig_invalidSubId() throws Exception {
+        mContext.grantPermission(STUB_PERMISSION_ENABLE_ALL);
+
+        assertThrows(IllegalArgumentException.class, () -> mCarrierConfigLoader.overrideConfig(
+                SubscriptionManager.INVALID_SUBSCRIPTION_ID, new PersistableBundle(), false));
+    }
+
+    /**
      * Verifies that override config is not null when calling #overrideConfig with null bundle.
      */
     @Test
@@ -264,20 +288,16 @@ public class CarrierConfigLoaderTest extends TelephonyTestBase {
     }
 
     /**
-     * Verifies that calling #notifyConfigChangedForSubId() with invalid subId will be ignored.
+     * Verifies that IllegalArgumentException should throw when calling
+     * #notifyConfigChangedForSubId() with invalid subId.
      */
     @Test
     public void testNotifyConfigChangedForSubId_invalidSubId() throws Exception {
         mContext.grantPermission(STUB_PERMISSION_ENABLE_ALL);
 
-        mCarrierConfigLoader.notifyConfigChangedForSubId(
-                SubscriptionManager.INVALID_SUBSCRIPTION_ID);
-
-        // verifying the behavior following the permission check is not actually performed.
-        // It against "verify value instead of behavior", but we don't have other alternatives.
-        verify(mPackageManager, never()).getNameForUid(anyInt());
-        verify(mContext, never()).checkCallingOrSelfPermission(
-                eq(android.Manifest.permission.MODIFY_PHONE_STATE));
+        assertThrows(IllegalArgumentException.class,
+                () -> mCarrierConfigLoader.notifyConfigChangedForSubId(
+                        SubscriptionManager.INVALID_SUBSCRIPTION_ID));
     }
 
     // TODO(b/184040111): Enable test case when support disabling carrier privilege
