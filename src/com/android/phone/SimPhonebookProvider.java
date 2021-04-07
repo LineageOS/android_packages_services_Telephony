@@ -818,15 +818,15 @@ public class SimPhonebookProvider extends ContentProvider {
             int efid;
             if (efName != null) {
                 switch (efName) {
-                    case ElementaryFiles.EF_ADN_PATH_SEGMENT:
+                    case ElementaryFiles.PATH_SEGMENT_EF_ADN:
                         efType = ElementaryFiles.EF_ADN;
                         efid = IccConstants.EF_ADN;
                         break;
-                    case ElementaryFiles.EF_FDN_PATH_SEGMENT:
+                    case ElementaryFiles.PATH_SEGMENT_EF_FDN:
                         efType = ElementaryFiles.EF_FDN;
                         efid = IccConstants.EF_FDN;
                         break;
-                    case ElementaryFiles.EF_SDN_PATH_SEGMENT:
+                    case ElementaryFiles.PATH_SEGMENT_EF_SDN:
                         efType = ElementaryFiles.EF_SDN;
                         efid = IccConstants.EF_SDN;
                         break;
