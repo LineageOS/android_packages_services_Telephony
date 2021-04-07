@@ -1167,7 +1167,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     }
                     break;
                 }
-
                 case EVENT_PERFORM_NETWORK_SCAN_DONE:
                     ar = (AsyncResult) msg.obj;
                     request = (MainThreadRequest) ar.userObj;
@@ -6023,10 +6022,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     @Override
     public void getCallWaitingStatus(int subId, IIntegerConsumer callback) {
-        enforceReadPrivilegedPermission("getCallForwarding");
+        enforceReadPrivilegedPermission("getCallWaitingStatus");
         long identity = Binder.clearCallingIdentity();
         try {
-
             Phone phone = getPhone(subId);
             if (phone == null) {
                 try {
@@ -6036,11 +6034,35 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 }
                 return;
             }
-
-            Consumer<Integer> argument = FunctionalUtils.ignoreRemoteException(callback::accept);
+            CarrierConfigManager configManager = new CarrierConfigManager(phone.getContext());
+            PersistableBundle c = configManager.getConfigForSubId(subId);
+            boolean requireUssd = c.getBoolean(
+                    CarrierConfigManager.KEY_USE_CALL_WAITING_USSD_BOOL, false);
 
             if (DBG) log("getCallWaitingStatus: subId " + subId);
-            sendRequestAsync(CMD_GET_CALL_WAITING, argument, phone, null);
+            if (requireUssd) {
+                CarrierXmlParser carrierXmlParser = new CarrierXmlParser(phone.getContext(),
+                        getSubscriptionCarrierId(subId));
+                String newUssdCommand = "";
+                try {
+                    newUssdCommand = carrierXmlParser.getFeature(
+                            CarrierXmlParser.FEATURE_CALL_WAITING)
+                            .makeCommand(CarrierXmlParser.SsEntry.SSAction.QUERY, null);
+                } catch (NullPointerException e) {
+                    loge("Failed to generate USSD number" + e);
+                }
+                ResultReceiver wrappedCallback = new CallWaitingUssdResultReceiver(
+                        mMainThreadHandler, callback, carrierXmlParser,
+                        CarrierXmlParser.SsEntry.SSAction.QUERY);
+                final String ussdCommand = newUssdCommand;
+                Executors.newSingleThreadExecutor().execute(() -> {
+                    handleUssdRequest(subId, ussdCommand, wrappedCallback);
+                });
+            } else {
+                Consumer<Integer> argument = FunctionalUtils.ignoreRemoteException(
+                        callback::accept);
+                sendRequestAsync(CMD_GET_CALL_WAITING, argument, phone, null);
+            }
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -6066,10 +6088,38 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 return;
             }
 
-            Pair<Boolean, Consumer<Integer>> arguments = Pair.create(enable,
-                    FunctionalUtils.ignoreRemoteException(callback::accept));
+            CarrierConfigManager configManager = new CarrierConfigManager(phone.getContext());
+            PersistableBundle c = configManager.getConfigForSubId(subId);
+            boolean requireUssd = c.getBoolean(
+                    CarrierConfigManager.KEY_USE_CALL_WAITING_USSD_BOOL, false);
 
-            sendRequestAsync(CMD_SET_CALL_WAITING, arguments, phone, null);
+            if (DBG) log("getCallWaitingStatus: subId " + subId);
+            if (requireUssd) {
+                CarrierXmlParser carrierXmlParser = new CarrierXmlParser(phone.getContext(),
+                        getSubscriptionCarrierId(subId));
+                CarrierXmlParser.SsEntry.SSAction ssAction =
+                        enable ? CarrierXmlParser.SsEntry.SSAction.UPDATE_ACTIVATE
+                                : CarrierXmlParser.SsEntry.SSAction.UPDATE_DEACTIVATE;
+                String newUssdCommand = "";
+                try {
+                    newUssdCommand = carrierXmlParser.getFeature(
+                            CarrierXmlParser.FEATURE_CALL_WAITING)
+                            .makeCommand(ssAction, null);
+                } catch (NullPointerException e) {
+                    loge("Failed to generate USSD number" + e);
+                }
+                ResultReceiver wrappedCallback = new CallWaitingUssdResultReceiver(
+                        mMainThreadHandler, callback, carrierXmlParser, ssAction);
+                final String ussdCommand = newUssdCommand;
+                Executors.newSingleThreadExecutor().execute(() -> {
+                    handleUssdRequest(subId, ussdCommand, wrappedCallback);
+                });
+            } else {
+                Pair<Boolean, Consumer<Integer>> arguments = Pair.create(enable,
+                        FunctionalUtils.ignoreRemoteException(callback::accept));
+
+                sendRequestAsync(CMD_SET_CALL_WAITING, arguments, phone, null);
+            }
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
