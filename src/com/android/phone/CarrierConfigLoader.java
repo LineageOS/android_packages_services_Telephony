@@ -1178,20 +1178,20 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
 
     @Override
     @NonNull
-    public PersistableBundle getConfigForSubId(int subscriptionId, String callingPackage) {
-        return getConfigForSubIdWithFeature(subscriptionId, callingPackage, null);
+    public PersistableBundle getConfigForSubId(int subId, String callingPackage) {
+        return getConfigForSubIdWithFeature(subId, callingPackage, null);
     }
 
     @Override
     @NonNull
-    public PersistableBundle getConfigForSubIdWithFeature(int subscriptionId, String callingPackage,
+    public PersistableBundle getConfigForSubIdWithFeature(int subId, String callingPackage,
             String callingFeatureId) {
-        if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(mContext, subscriptionId,
-                callingPackage, callingFeatureId, "getCarrierConfig")) {
+        if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(mContext, subId, callingPackage,
+                callingFeatureId, "getCarrierConfig")) {
             return PersistableBundle.EMPTY;
         }
 
-        int phoneId = SubscriptionManager.getPhoneId(subscriptionId);
+        int phoneId = SubscriptionManager.getPhoneId(subId);
         PersistableBundle retConfig = CarrierConfigManager.getDefaultConfig();
         if (SubscriptionManager.isValidPhoneId(phoneId)) {
             PersistableBundle config = mConfigFromDefaultApp[phoneId];
@@ -1235,8 +1235,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         int phoneId = SubscriptionManager.getPhoneId(subscriptionId);
         if (!SubscriptionManager.isValidPhoneId(phoneId)) {
             logd("Ignore invalid phoneId: " + phoneId + " for subId: " + subscriptionId);
-            throw new IllegalArgumentException(
-                    "Invalid phoneId " + phoneId + " for subId " + subscriptionId);
+            return;
         }
         // Post to run on handler thread on which all states should be confined.
         mHandler.post(() -> {
@@ -1275,18 +1274,17 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
     }
 
     @Override
-    public void notifyConfigChangedForSubId(int subscriptionId) {
+    public void notifyConfigChangedForSubId(int subId) {
+        int phoneId = SubscriptionManager.getPhoneId(subId);
+        if (!SubscriptionManager.isValidPhoneId(phoneId)) {
+            logd("Ignore invalid phoneId: " + phoneId + " for subId: " + subId);
+            return;
+        }
+
         // Requires the calling app to be either a carrier privileged app for this subId or
         // system privileged app with MODIFY_PHONE_STATE permission.
-        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(mContext,
-                subscriptionId, "Require carrier privileges or MODIFY_PHONE_STATE permission.");
-
-        int phoneId = SubscriptionManager.getPhoneId(subscriptionId);
-        if (!SubscriptionManager.isValidPhoneId(phoneId)) {
-            logd("Ignore invalid phoneId: " + phoneId + " for subId: " + subscriptionId);
-            throw new IllegalArgumentException(
-                    "Invalid phoneId " + phoneId + " for subId " + subscriptionId);
-        }
+        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(mContext, subId,
+                "Require carrier privileges or MODIFY_PHONE_STATE permission.");
 
         // This method should block until deleting has completed, so that an error which prevents us
         // from clearing the cache is passed back to the carrier app. With the files successfully
@@ -1303,7 +1301,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                 android.Manifest.permission.MODIFY_PHONE_STATE, null);
         logdWithLocalLog("Update config for phoneId: " + phoneId + " simState: " + simState);
         if (!SubscriptionManager.isValidPhoneId(phoneId)) {
-            throw new IllegalArgumentException("Invalid phoneId: " + phoneId);
+            return;
         }
         // requires Java 7 for switch on string.
         switch (simState) {
