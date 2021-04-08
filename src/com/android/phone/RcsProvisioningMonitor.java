@@ -539,8 +539,15 @@ public class RcsProvisioningMonitor {
      */
     public boolean isRcsVolteSingleRegistrationEnabled(int subId) {
         if (mRcsProvisioningInfos.containsKey(subId)) {
-            return mRcsProvisioningInfos.get(subId).getSingleRegistrationCapability()
-                    == ProvisioningManager.STATUS_CAPABLE;
+            if (mRcsProvisioningInfos.get(subId).getSingleRegistrationCapability()
+                    == ProvisioningManager.STATUS_CAPABLE) {
+                try {
+                    RcsConfig rcsConfig = new RcsConfig(getConfig(subId));
+                    return rcsConfig.isRcsVolteSingleRegistrationSupported();
+                } catch (IllegalArgumentException e) {
+                    logd("fail to get rcs config for sub:" + subId);
+                }
+            }
         }
         return false;
     }
