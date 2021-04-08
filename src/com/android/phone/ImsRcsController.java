@@ -104,7 +104,7 @@ public class ImsRcsController extends IImsRcsController.Stub {
      */
     @Override
     public void registerImsRegistrationCallback(int subId, IImsRegistrationCallback callback) {
-        TelephonyPermissions.enforeceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
+        TelephonyPermissions.enforceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
                 mApp, subId, "registerImsRegistrationCallback");
         final long token = Binder.clearCallingIdentity();
         try {
@@ -122,7 +122,7 @@ public class ImsRcsController extends IImsRcsController.Stub {
      */
     @Override
     public void unregisterImsRegistrationCallback(int subId, IImsRegistrationCallback callback) {
-        TelephonyPermissions.enforeceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
+        TelephonyPermissions.enforceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
                 mApp, subId, "unregisterImsRegistrationCallback");
         final long token = Binder.clearCallingIdentity();
         try {
@@ -139,7 +139,7 @@ public class ImsRcsController extends IImsRcsController.Stub {
      */
     @Override
     public void getImsRcsRegistrationState(int subId, IIntegerConsumer consumer) {
-        TelephonyPermissions.enforeceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
+        TelephonyPermissions.enforceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
                 mApp, subId, "getImsRcsRegistrationState");
         final long token = Binder.clearCallingIdentity();
         try {
@@ -161,7 +161,7 @@ public class ImsRcsController extends IImsRcsController.Stub {
      */
     @Override
     public void getImsRcsRegistrationTransportType(int subId, IIntegerConsumer consumer) {
-        TelephonyPermissions.enforeceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
+        TelephonyPermissions.enforceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
                 mApp, subId, "getImsRcsRegistrationTransportType");
         final long token = Binder.clearCallingIdentity();
         try {
