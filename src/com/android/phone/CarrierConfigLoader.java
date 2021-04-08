@@ -36,6 +36,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
+import android.os.Looper;
 import android.os.Message;
 import android.os.PersistableBundle;
 import android.os.Process;
@@ -55,6 +56,7 @@ import android.util.ArraySet;
 import android.util.LocalLog;
 import android.util.Log;
 
+import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.telephony.ICarrierConfigLoader;
 import com.android.internal.telephony.IccCardConstants;
 import com.android.internal.telephony.Phone;
@@ -201,6 +203,10 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
     // 3. clearing config (e.g. due to sim removal)
     // 4. encountering bind or IPC error
     private class ConfigHandler extends Handler {
+        ConfigHandler(@NonNull Looper looper) {
+            super(looper);
+        }
+
         @Override
         public void handleMessage(Message msg) {
             final int phoneId = msg.arg1;
@@ -666,11 +672,13 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
      * Constructs a CarrierConfigLoader, registers it as a service, and registers a broadcast
      * receiver for relevant events.
      */
-    private CarrierConfigLoader(Context context) {
+    @VisibleForTesting
+    /* package */ CarrierConfigLoader(Context context,
+            SubscriptionInfoUpdater subscriptionInfoUpdater, @NonNull Looper looper) {
         mContext = context;
         mPlatformCarrierConfigPackage =
                 mContext.getString(R.string.platform_carrier_config_package);
-        mHandler = new ConfigHandler();
+        mHandler = new ConfigHandler(looper);
 
         IntentFilter bootFilter = new IntentFilter();
         bootFilter.addAction(Intent.ACTION_BOOT_COMPLETED);
@@ -701,7 +709,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         TelephonyFrameworkInitializer
                 .getTelephonyServiceManager().getCarrierConfigServiceRegisterer().register(this);
         logd("CarrierConfigLoader has started");
-        mSubscriptionInfoUpdater = PhoneFactory.getSubscriptionInfoUpdater();
+        mSubscriptionInfoUpdater = subscriptionInfoUpdater;
         mHandler.sendEmptyMessage(EVENT_CHECK_SYSTEM_UPDATE);
     }
 
@@ -710,11 +718,11 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
      *
      * This is only done once, at startup, from {@link com.android.phone.PhoneApp#onCreate}.
      */
-    /* package */
-    static CarrierConfigLoader init(Context context) {
+    /* package */ static CarrierConfigLoader init(Context context) {
         synchronized (CarrierConfigLoader.class) {
             if (sInstance == null) {
-                sInstance = new CarrierConfigLoader(context);
+                sInstance = new CarrierConfigLoader(context,
+                        PhoneFactory.getSubscriptionInfoUpdater(), Looper.myLooper());
             } else {
                 Log.wtf(LOG_TAG, "init() called multiple times!  sInstance = " + sInstance);
             }
@@ -722,7 +730,8 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         }
     }
 
-    private void clearConfigForPhone(int phoneId, boolean fetchNoSimConfig) {
+    @VisibleForTesting
+    /* package */ void clearConfigForPhone(int phoneId, boolean fetchNoSimConfig) {
         /* Ignore clear configuration request if device is being shutdown. */
         Phone phone = PhoneFactory.getPhone(phoneId);
         if (phone != null) {
@@ -844,7 +853,8 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         }
     }
 
-    private CarrierIdentifier getCarrierIdentifierForPhoneId(int phoneId) {
+    @VisibleForTesting
+    /* package */ CarrierIdentifier getCarrierIdentifierForPhoneId(int phoneId) {
         String mcc = "";
         String mnc = "";
         String imsi = "";
@@ -1000,12 +1010,14 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         }
     }
 
-    private void saveConfigToXml(String packageName, @NonNull String extraString, int phoneId,
+    @VisibleForTesting
+    /* package */ void saveConfigToXml(String packageName, @NonNull String extraString, int phoneId,
             CarrierIdentifier carrierId, PersistableBundle config) {
         saveConfigToXml(packageName, extraString, phoneId, carrierId, config, false);
     }
 
-    private void saveNoSimConfigToXml(String packageName, PersistableBundle config) {
+    @VisibleForTesting
+    /* package */ void saveNoSimConfigToXml(String packageName, PersistableBundle config) {
         saveConfigToXml(packageName, "", -1, null, config, true);
     }
 
@@ -1313,6 +1325,31 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                 android.Manifest.permission.READ_PRIVILEGED_PHONE_STATE,
                 "getDefaultCarrierServicePackageName");
         return mPlatformCarrierConfigPackage;
+    }
+
+    @VisibleForTesting
+    /* package */ Handler getHandler() {
+        return mHandler;
+    }
+
+    @VisibleForTesting
+    /* package */ PersistableBundle getConfigFromDefaultApp(int phoneId) {
+        return mConfigFromDefaultApp[phoneId];
+    }
+
+    @VisibleForTesting
+    /* package */ PersistableBundle getConfigFromCarrierApp(int phoneId) {
+        return mConfigFromCarrierApp[phoneId];
+    }
+
+    @VisibleForTesting
+     /* package */ PersistableBundle getNoSimConfig() {
+        return mNoSimConfig;
+    }
+
+    @VisibleForTesting
+    /* package */ PersistableBundle getOverrideConfig(int phoneId) {
+        return mOverrideConfigs[phoneId];
     }
 
     private void unbindIfBound(Context context, CarrierServiceConnection conn,
