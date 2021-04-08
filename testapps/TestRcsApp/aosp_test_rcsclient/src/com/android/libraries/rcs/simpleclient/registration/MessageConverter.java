@@ -88,7 +88,7 @@ public final class MessageConverter {
             return (Message)
                     method.invoke(
                             new StringMsgParser(),
-                            message.getEncodedMessage(),
+                            message.toEncodedMessage(),
                             true,
                             false,
                             (ParseExceptionListener)
@@ -98,7 +98,7 @@ public final class MessageConverter {
         } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
             try {
                 method = StringMsgParser.class.getDeclaredMethod("parseSIPMessage", byte[].class);
-                return (Message) method.invoke(new StringMsgParser(), message.getEncodedMessage());
+                return (Message) method.invoke(new StringMsgParser(), message.toEncodedMessage());
             } catch (IllegalAccessException | InvocationTargetException
                     | NoSuchMethodException ex) {
                 ex.printStackTrace();
