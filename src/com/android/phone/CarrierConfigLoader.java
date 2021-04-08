@@ -463,7 +463,15 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                                             resultData.getParcelable(KEY_CONFIG_BUNDLE);
                                     saveConfigToXml(getCarrierPackageForPhoneId(phoneId), "",
                                             phoneId, carrierId, config);
-                                    mConfigFromCarrierApp[phoneId] = config;
+                                    if (config != null) {
+                                        mConfigFromCarrierApp[phoneId] = config;
+                                    } else {
+                                        logdWithLocalLog("Config from carrier app is null "
+                                                + "for phoneId " + phoneId);
+                                        // Put a stub bundle in place so that the rest of the logic
+                                        // continues smoothly.
+                                        mConfigFromCarrierApp[phoneId] = new PersistableBundle();
+                                    }
                                     sendMessage(
                                             obtainMessage(
                                                     EVENT_FETCH_CARRIER_DONE, phoneId, -1));
