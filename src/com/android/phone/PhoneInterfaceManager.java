@@ -5823,8 +5823,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     private int getCarrierPrivilegeStatusFromCarrierConfigRules(int privilegeFromSim, int uid,
             Phone phone) {
-        if (uid == Process.SYSTEM_UID || uid == Process.PHONE_UID) {
-            // Skip the check if it's one of these special uids
+        if (uid == Process.PHONE_UID) {
+            // Skip the check if it's the phone UID (system UID removed in b/184713596)
+            // TODO (b/184954344): Check for system/phone UID at call site instead of here
             return TelephonyManager.CARRIER_PRIVILEGE_STATUS_HAS_ACCESS;
         }
 
