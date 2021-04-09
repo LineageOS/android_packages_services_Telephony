@@ -257,8 +257,7 @@ public class CarrierConfigLoaderTest extends TelephonyTestBase {
                 false/*persistent*/);
         mTestableLooper.processAllMessages();
 
-        assertThat(mCarrierConfigLoader.getOverrideConfig(DEFAULT_PHONE_ID)).isEqualTo(
-                PersistableBundle.EMPTY);
+        assertThat(mCarrierConfigLoader.getOverrideConfig(DEFAULT_PHONE_ID).isEmpty()).isTrue();
         verify(mSubscriptionInfoUpdater).updateSubscriptionByCarrierConfigAndNotifyComplete(
                 eq(DEFAULT_PHONE_ID), eq(PLATFORM_CARRIER_CONFIG_PACKAGE),
                 any(PersistableBundle.class), any(Message.class));
