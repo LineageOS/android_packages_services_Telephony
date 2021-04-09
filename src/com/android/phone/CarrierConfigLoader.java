@@ -293,7 +293,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                         } else {
                             // Put a stub bundle in place so that the rest of the logic continues
                             // smoothly.
-                            mConfigFromDefaultApp[phoneId] = PersistableBundle.EMPTY;
+                            mConfigFromDefaultApp[phoneId] = new PersistableBundle();
                             // Send broadcast if bind fails.
                             notifySubscriptionInfoUpdater(phoneId);
                             // TODO: We *must* call unbindService even if bindService returns false.
@@ -378,7 +378,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                         broadcastConfigChangedIntent(phoneId);
                     }
                     // Put a stub bundle in place so that the rest of the logic continues smoothly.
-                    mConfigFromDefaultApp[phoneId] = PersistableBundle.EMPTY;
+                    mConfigFromDefaultApp[phoneId] = new PersistableBundle();
                     notifySubscriptionInfoUpdater(phoneId);
                     break;
                 }
@@ -425,7 +425,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                         } else {
                             // Put a stub bundle in place so that the rest of the logic continues
                             // smoothly.
-                            mConfigFromCarrierApp[phoneId] = PersistableBundle.EMPTY;
+                            mConfigFromCarrierApp[phoneId] = new PersistableBundle();
                             // Send broadcast if bind fails.
                             broadcastConfigChangedIntent(phoneId);
                             loge("Bind to carrier app: " + carrierPackageName + " fails");
@@ -510,7 +510,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                         broadcastConfigChangedIntent(phoneId);
                     }
                     // Put a stub bundle in place so that the rest of the logic continues smoothly.
-                    mConfigFromCarrierApp[phoneId] = PersistableBundle.EMPTY;
+                    mConfigFromCarrierApp[phoneId] = new PersistableBundle();
                     notifySubscriptionInfoUpdater(phoneId);
                     break;
                 }
@@ -698,7 +698,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         mConfigFromCarrierApp = new PersistableBundle[numPhones];
         mPersistentOverrideConfigs = new PersistableBundle[numPhones];
         mOverrideConfigs = new PersistableBundle[numPhones];
-        mNoSimConfig = PersistableBundle.EMPTY;
+        mNoSimConfig = new PersistableBundle();
         mServiceConnection = new CarrierServiceConnection[numPhones];
         mServiceBound = new boolean[numPhones];
         mHasSentConfigChange = new boolean[numPhones];
@@ -768,7 +768,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         }
 
         if (configToSend == null) {
-            configToSend = PersistableBundle.EMPTY;
+            configToSend = new PersistableBundle();
         }
 
         // mOverrideConfigs is for testing. And it will override current configs.
@@ -1188,7 +1188,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
             String callingFeatureId) {
         if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(mContext, subscriptionId,
                 callingPackage, callingFeatureId, "getCarrierConfig")) {
-            return PersistableBundle.EMPTY;
+            return new PersistableBundle();
         }
 
         int phoneId = SubscriptionManager.getPhoneId(subscriptionId);
@@ -1266,7 +1266,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
     private void overrideConfig(@NonNull PersistableBundle[] currentOverrides, int phoneId,
             @Nullable PersistableBundle overrides) {
         if (overrides == null) {
-            currentOverrides[phoneId] = PersistableBundle.EMPTY;
+            currentOverrides[phoneId] = new PersistableBundle();
         } else if (currentOverrides[phoneId] == null) {
             currentOverrides[phoneId] = overrides;
         } else {
