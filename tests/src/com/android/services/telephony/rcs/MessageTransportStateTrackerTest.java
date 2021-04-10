@@ -173,12 +173,12 @@ public class MessageTransportStateTrackerTest extends TelephonyTestBase {
 
     @SmallTest
     @Test
-    public void testDelegateConnectionCloseDialog() throws Exception {
+    public void testDelegateConnectionCloseSession() throws Exception {
         MessageTransportStateTracker tracker = new MessageTransportStateTracker(TEST_SUB_ID,
                 Runnable::run, mDelegateMessageCallback);
         tracker.openTransport(mISipDelegate, Collections.emptySet());
-        tracker.getDelegateConnection().closeDialog("testCallId");
-        verify(mISipDelegate).closeDialog("testCallId");
+        tracker.getDelegateConnection().cleanupSession("testCallId");
+        verify(mISipDelegate).cleanupSession("testCallId");
     }
 
     @SmallTest

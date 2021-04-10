@@ -31,7 +31,7 @@
     <string name="sip_account_list" msgid="2596262496233721769">"SIP खाताहरू"</string>
     <string name="saving_account" msgid="3390358043846687266">"खाता बचत गर्दै..."</string>
     <string name="removing_account" msgid="1544132880414780408">"खाता हटाउँदै..."</string>
-    <string name="sip_menu_save" msgid="4377112554203123060">"सुरक्षित गर्नुहोस्"</string>
+    <string name="sip_menu_save" msgid="4377112554203123060">"सेभ गर्नुहोस्"</string>
     <string name="sip_menu_discard" msgid="1883166691772895243">"त्याग्नुहोस्"</string>
     <string name="alert_dialog_close" msgid="1734746505531110706">"प्रोफाइल बन्द गर्नुहोस्"</string>
     <string name="alert_dialog_ok" msgid="7806760618798687406">"ठिक छ"</string>

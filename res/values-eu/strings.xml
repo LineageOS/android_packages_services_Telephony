@@ -700,7 +700,7 @@
     <string name="change_pin_enter_new_pin_header" msgid="4739465616733486118">"Ezarri PIN kode berria"</string>
     <string name="change_pin_enter_new_pin_hint" msgid="2326038476516364210">"<xliff:g id="MIN">%1$d</xliff:g> eta <xliff:g id="MAX">%2$d</xliff:g> digituren artean izan behar ditu PIN kodeak."</string>
     <string name="change_pin_confirm_pin_header" msgid="2606303906320705726">"Berretsi PIN kodea"</string>
-    <string name="change_pin_confirm_pins_dont_match" msgid="305164501222587215">"Ez datoz bat PIN kodeak"</string>
+    <string name="change_pin_confirm_pins_dont_match" msgid="305164501222587215">"PINak ez datoz bat"</string>
     <string name="change_pin_succeeded" msgid="2504705600693014403">"Eguneratu da erantzungailuaren PIN kodea"</string>
     <string name="change_pin_system_error" msgid="7772788809875146873">"Ezin da ezarri PIN kodea"</string>
     <string name="mobile_data_status_roaming_turned_off_subtext" msgid="6840673347416227054">"Desaktibatuta daude ibiltaritzako datuak"</string>
