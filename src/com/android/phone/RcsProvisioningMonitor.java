@@ -840,10 +840,9 @@ public class RcsProvisioningMonitor {
     }
 
     void unregisterRcsFeatureListener(RcsProvisioningInfo info) {
-        int slotId = SubscriptionManager.getSlotIndex(info.getSubId());
-        RcsFeatureListener cb = mRcsFeatureListeners.get(slotId);
-        if (cb != null) {
-            cb.removeRcsProvisioningInfo(info);
+        // make sure the info to be removed in any case, even the slotId changed or invalid.
+        for (int i  = 0; i < mRcsFeatureListeners.size(); i++) {
+            mRcsFeatureListeners.valueAt(i).removeRcsProvisioningInfo(info);
         }
     }
 
