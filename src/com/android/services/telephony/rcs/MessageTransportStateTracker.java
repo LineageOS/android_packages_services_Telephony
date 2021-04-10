@@ -190,7 +190,7 @@ public class MessageTransportStateTracker implements DelegateBinderStateManager.
          * dialog be released as the SIP dialog is now closed.
          */
         @Override
-        public void closeDialog(String callId) {
+        public void cleanupSession(String callId) {
             long token = Binder.clearCallingIdentity();
             try {
                 mExecutor.execute(() -> {
@@ -202,7 +202,7 @@ public class MessageTransportStateTracker implements DelegateBinderStateManager.
                     try {
                         // TODO track the SIP Dialogs created/destroyed on the associated
                         // SipDelegate.
-                        mSipDelegate.closeDialog(callId);
+                        mSipDelegate.cleanupSession(callId);
                     } catch (RemoteException e) {
                         logw("SipDelegate not available when closeDialog was called "
                                 + "for call id: " + callId);
