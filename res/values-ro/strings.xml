@@ -50,6 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"Setările pentru mesagerie vocală pot fi modificate numai de utilizatorul principal."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"Cardul dvs. SIM a fost deblocat. Telefonul dvs. se deblochează..."</string>
     <string name="label_ndp" msgid="7617392683877410341">"Codul PIN de deblocare a rețelei SIM"</string>
+    <string name="label_phoneid" msgid="8775611434123577808">"Cardul SIM a fost blocat pentru operator"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"Deblocați"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"Renunțați"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"Se solicită deblocarea rețelei..."</string>
@@ -123,6 +124,13 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"Se redirecționează la <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Dezactivat"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Operatorul dvs. nu acceptă ca redirecționarea apelurilor să fie dezactivată atunci când telefonul nu este accesibil."</string>
+    <string name="registration_cf_forbidden" msgid="4386482610771190420">"Operatorul dvs. nu acceptă redirecționarea apelurilor."</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"Activați apelurile în așteptare?"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"În timpul unui apel, veți primi o notificare despre apelurile primite"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"Activați"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"Anulați"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"Apelurile în așteptare CDMA din IMS sunt activate"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"Apelurile în așteptare CDMA din IMS sunt dezactivate"</string>
     <string name="updating_title" msgid="6130548922615719689">"Setări pentru apeluri"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Numai administratorul poate să modifice setările pentru apeluri."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Setări (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -286,6 +294,9 @@
     <string name="limited_sim_function_notification_title" msgid="612715399099846281">"Funcționalitate SIM limitată"</string>
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"Este posibil ca apelurile și serviciile de date de la <xliff:g id="CARRIER_NAME">%1$s</xliff:g> să fie blocate în timp ce se folosește <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>."</string>
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"Apelurile și serviciile de date de la <xliff:g id="CARRIER_NAME">%1$s</xliff:g> pot fi blocate când folosiți alt card SIM"</string>
+    <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"Au fost găsite și eliminate conturi SIP învechite"</string>
+    <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"Platforma Android nu mai acceptă apelarea SIP.\nConturile dvs. SIP existente <xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g> au fost eliminate.\nConfirmați setarea prestabilită pentru apelare a contului."</string>
+    <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"Accesați setările"</string>
     <string name="data_usage_title" msgid="8438592133893837464">"Date utilizate de aplicație"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"<xliff:g id="ID_1">%1$s</xliff:g> de date mobile utilizate în intervalul <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"Avansate"</string>
@@ -639,6 +650,13 @@
     <string name="alert_dialog_yes" msgid="3532525979632841417">"Da"</string>
     <string name="alert_dialog_no" msgid="1075632654085988420">"Nu"</string>
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"Renunțați"</string>
+    <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"Telefonul va fi în modul Apelare inversă de urgență"</string>
+    <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"Până la <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
+    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
+      <item quantity="few">Telefonul va fi în modul Apelare inversă de urgență timp de <xliff:g id="COUNT_1">%s</xliff:g> minute.\nDoriți să ieșiți acum?</item>
+      <item quantity="other">Telefonul va fi în modul Apelare inversă de urgență timp de <xliff:g id="COUNT_1">%s</xliff:g> de minute.\nDoriți să ieșiți acum?</item>
+      <item quantity="one">Telefonul va fi în modul Apelare inversă de urgență timp de <xliff:g id="COUNT_0">%s</xliff:g> minut.\nDoriți să ieșiți acum?</item>
+    </plurals>
     <string name="voicemail_provider" msgid="4158806657253745294">"Serviciu"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"Configurare"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;Nesetat&gt;"</string>
@@ -863,7 +881,6 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"SubId pentru SIM-ul de date prestabilit:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Lățime de bandă de descărcare (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Lățime de bandă de încărcare (kbps):"</string>
-    <string name="radio_info_signal_location_label" msgid="6188435197086550049">"Informații despre localizarea celulei (învechite):"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Configurarea canalului fizic LTE:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Rata de actualizare a informațiilor despre celulă:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Toate informațiile de măsurare despre celulă:"</string>
@@ -894,6 +911,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Actualizați"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"Activați/dezactivați verificarea DNS"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"Informații/Setări caracteristice OEM"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"Disponibilă EN-DC:"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"Restricționată DCNR:"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"Disponibilă NR:"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"Stare NR:"</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"Frecvență NR:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Setați Modul bandă radio"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Se încarcă lista de benzi…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Setați"</string>
@@ -903,4 +925,7 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Informații despre telefon"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Informații despre provizionarea operatorului"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Declanșați provizionarea operatorului"</string>
+    <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Semnalul Bluetooth este slab. Încercați să folosiți difuzorul."</string>
+    <string name="call_quality_notification_name" msgid="3476828289553948830">"Notificare privind calitatea apelului"</string>
+    <string name="notification_channel_sip_account" msgid="1261816025156179637">"Conturi SIP învechite"</string>
 </resources>

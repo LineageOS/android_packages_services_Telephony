@@ -50,6 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"As configurações do correio de voz só podem ser modificadas pelo usuário principal."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"O seu chip foi desbloqueado. O seu telefone está desbloqueando…"</string>
     <string name="label_ndp" msgid="7617392683877410341">"PIN de desbloqueio da rede SIM"</string>
+    <string name="label_phoneid" msgid="8775611434123577808">"Chip bloqueado para o operador"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"Desbloquear"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"Dispensar"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"Solicitando o desbloqueio de rede…"</string>
@@ -91,14 +92,14 @@
     <string name="additional_cdma_call_settings" msgid="2178016561980611304">"Configurações de chamada CDMA adicionais"</string>
     <string name="sum_cdma_call_settings" msgid="3185825305136993636">"Configurações adicionais somente de chamada CDMA"</string>
     <string name="labelNwService" msgid="6015891883487125120">"Configurações do serviço de rede"</string>
-    <string name="labelCallerId" msgid="2090540744550903172">"ID da chamada"</string>
+    <string name="labelCallerId" msgid="2090540744550903172">"Identificador de chamadas"</string>
     <string name="sum_loading_settings" msgid="434063780286688775">"Carregando configurações…"</string>
     <string name="sum_hide_caller_id" msgid="131100328602371933">"Número oculto nas chamadas enviadas"</string>
     <string name="sum_show_caller_id" msgid="3571854755324664591">"Número exibido nas chamadas enviadas"</string>
-    <string name="sum_default_caller_id" msgid="1767070797135682959">"Usar configurações padrão da operadora para exibir meu número em chamadas efetuadas"</string>
+    <string name="sum_default_caller_id" msgid="1767070797135682959">"Usar configurações padrão da operadora para exibir meu número em chamadas realizadas"</string>
     <string name="labelCW" msgid="8449327023861428622">"Chamada em espera"</string>
-    <string name="sum_cw_enabled" msgid="3977308526187139996">"Notificar sobre a entrada de outras chamadas durante uma ligação"</string>
-    <string name="sum_cw_disabled" msgid="3658094589461768637">"Notificar sobre a entrada de outras chamadas durante uma ligação"</string>
+    <string name="sum_cw_enabled" msgid="3977308526187139996">"Notificar sobre outras chamadas recebidas durante uma ligação"</string>
+    <string name="sum_cw_disabled" msgid="3658094589461768637">"Notificar sobre outras chamadas recebidas durante uma ligação"</string>
     <string name="call_forwarding_settings" msgid="8937130467468257671">"Configurações de encaminhamento de chamada"</string>
     <string name="call_forwarding_settings_with_label" msgid="2345432813399564272">"Configurações de encaminhamento de chamada (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCF" msgid="3578719437928476078">"Encaminhamento de chamada"</string>
@@ -123,6 +124,13 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"Encaminhar para <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Desativado"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Sua operadora não suporta a desativação do encaminhamento de chamada quando seu telefone não está acessível."</string>
+    <string name="registration_cf_forbidden" msgid="4386482610771190420">"Sua operadora não é compatível com o encaminhamento de chamada."</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"Ativar chamada em espera?"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"Durante uma chamada, você receberá notificações das chamadas recebidas"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"Ativar"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"Cancelar"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"A chamada CDMA em espera está ativada no IMS"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"A chamada CDMA em espera está desativada no IMS"</string>
     <string name="updating_title" msgid="6130548922615719689">"Configurações de chamadas"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"As configurações de chamada só podem ser alteradas pelo usuário administrador."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Configurações (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -136,7 +144,7 @@
     <string name="stk_cc_ss_to_ussd_error" msgid="8330749347425752192">"Solicitação SS alterada para solicitação USSD"</string>
     <string name="stk_cc_ss_to_ss_error" msgid="8297155544652134278">"Alterada para uma nova solicitação SS"</string>
     <string name="stk_cc_ss_to_dial_video_error" msgid="4255261231466032505">"Solicitação SS alterada para videochamada"</string>
-    <string name="fdn_check_failure" msgid="1833769746374185247">"A configuração \"Números de discagem fixa\" do seu app Telefone está ativada. Por isso, alguns recursos relacionados a chamadas não funcionam."</string>
+    <string name="fdn_check_failure" msgid="1833769746374185247">"A configuração \"N fixa\" do seu app Telefone está ativada. Por isso, alguns recursos relacionados a chamadas não funcionam."</string>
     <string name="radio_off_error" msgid="8321564164914232181">"Ligue o rádio antes de ver essas configurações."</string>
     <string name="close_dialog" msgid="1074977476136119408">"OK"</string>
     <string name="enable" msgid="2636552299455477603">"Ativar"</string>
@@ -286,6 +294,9 @@
     <string name="limited_sim_function_notification_title" msgid="612715399099846281">"Funcionalidade limitada do chip"</string>
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"Talvez os serviços de dados e as chamadas da operadora <xliff:g id="CARRIER_NAME">%1$s</xliff:g> sejam bloqueados se você usar <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>."</string>
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"Talvez os serviços de dados e as chamadas da <xliff:g id="CARRIER_NAME">%1$s</xliff:g> sejam bloqueados com outro chip."</string>
+    <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"Contas SIP suspensas encontradas e removidas"</string>
+    <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"A chamada SIP não é mais compatível com a Plataforma Android.\nSuas contas SIP foram removidas: <xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g>.\nConfirme a configuração da conta padrão para chamadas."</string>
+    <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"Acessar configurações"</string>
     <string name="data_usage_title" msgid="8438592133893837464">"Uso de dados do app"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"<xliff:g id="ID_1">%1$s</xliff:g> de dados móveis usados em <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"Avançadas"</string>
@@ -425,8 +436,8 @@
     <string name="cdma_activate_device" msgid="5914720276140097632">"Ativar aparelho"</string>
     <string name="cdma_lte_data_service" msgid="359786441782404562">"Configurar serviço de dados"</string>
     <string name="carrier_settings_title" msgid="6292869148169850220">"Config. da operadora"</string>
-    <string name="fdn" msgid="2545904344666098749">"Números de discagem fixa"</string>
-    <string name="fdn_with_label" msgid="6412087553365709494">"Números de discagem fixa (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
+    <string name="fdn" msgid="2545904344666098749">"N fixa"</string>
+    <string name="fdn_with_label" msgid="6412087553365709494">"N fixa (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="manage_fdn_list" msgid="3341716430375195441">"Lista FDN"</string>
     <string name="fdn_list_with_label" msgid="1409655283510382556">"Lista de FDNs (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="fdn_activation" msgid="2178637004710435895">"Ativação do FDN"</string>
@@ -508,9 +519,9 @@
     <string name="pin2_error_exception" msgid="8116103864600823641">"Erro de rede ou do chip"</string>
     <string name="doneButton" msgid="7371209609238460207">"Concluído"</string>
     <string name="voicemail_settings_number_label" msgid="1265118640154688162">"Número correio de voz"</string>
-    <string name="card_title_dialing" msgid="8742182654254431781">"Discando"</string>
+    <string name="card_title_dialing" msgid="8742182654254431781">"Chamando..."</string>
     <string name="card_title_redialing" msgid="18130232613559964">"Rediscando"</string>
-    <string name="card_title_conf_call" msgid="901197309274457427">"teleconferência"</string>
+    <string name="card_title_conf_call" msgid="901197309274457427">"Teleconferência"</string>
     <string name="card_title_incoming_call" msgid="881424648458792430">"Recebendo chamada"</string>
     <string name="card_title_call_ended" msgid="650223980095026340">"Chamada encerrada"</string>
     <string name="card_title_on_hold" msgid="9028319436626975207">"Em espera"</string>
@@ -554,7 +565,7 @@
     <string name="emergency_enable_radio_dialog_retry" msgid="4329131876852608587">"Sem serviço. Tentando novamente..."</string>
     <string name="radio_off_during_emergency_call" msgid="8011154134040481609">"Não é possível usar o modo avião durante uma chamada de emergência."</string>
     <string name="dial_emergency_error" msgid="825822413209026039">"Não é possível realizar chamadas. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> não é um telefone de emergência."</string>
-    <string name="dial_emergency_empty_error" msgid="2785803395047793634">"Não é possível realizar chamadas. Disque o número de telefone de emergência."</string>
+    <string name="dial_emergency_empty_error" msgid="2785803395047793634">"Não é possível realizar chamadas. Ligue para o número de telefone de emergência."</string>
     <string name="dial_emergency_calling_not_available" msgid="6485846193794727823">"Chamada de emergência indisponível"</string>
     <string name="pin_puk_system_user_only" msgid="1045147220686867922">"Somente o proprietário do dispositivo pode digitar os códigos PIN/PUK."</string>
     <string name="police_type_description" msgid="2819533883972081757">"Polícia"</string>
@@ -572,7 +583,7 @@
     <string name="onscreenManageCallsText" msgid="1162047856081836469">"Gerenciar chamadas"</string>
     <string name="onscreenManageConferenceText" msgid="4700574060601755137">"Gerenciar conferência"</string>
     <string name="onscreenAudioText" msgid="7224226735052019986">"Áudio"</string>
-    <string name="onscreenVideoCallText" msgid="1743992456126258698">"Videocham."</string>
+    <string name="onscreenVideoCallText" msgid="1743992456126258698">"Vídeo"</string>
     <string name="importSimEntry" msgid="3892354284082689894">"Importar"</string>
     <string name="importAllSimEntries" msgid="2628391505643564007">"Importar tudo"</string>
     <string name="importingSimContacts" msgid="4995457122107888932">"Importando contatos do chip"</string>
@@ -637,6 +648,12 @@
     <string name="alert_dialog_yes" msgid="3532525979632841417">"Sim"</string>
     <string name="alert_dialog_no" msgid="1075632654085988420">"Não"</string>
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"Descartar"</string>
+    <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"O smartphone está no modo de retorno de chamada de emergência"</string>
+    <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"Até <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
+    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
+      <item quantity="one">O smartphone ficará no modo de retorno de chamada de emergência por <xliff:g id="COUNT_1">%s</xliff:g> minuto.\nVocê quer sair agora?</item>
+      <item quantity="other">O smartphone ficará no modo de retorno de chamada de emergência por <xliff:g id="COUNT_1">%s</xliff:g> minutos.\nVocê quer sair agora?</item>
+    </plurals>
     <string name="voicemail_provider" msgid="4158806657253745294">"Serviço"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"Configuração"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;Não definido&gt;"</string>
@@ -861,7 +878,6 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"Subcódigo do chip de dados padrão:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Largura de banda DL (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Largura de banda UL (kbps):"</string>
-    <string name="radio_info_signal_location_label" msgid="6188435197086550049">"Informações de local do celular (uso suspenso):"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Configuração do canal físico de LTE:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Taxa de atualização das informações do celular:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Todas as informações de medição do celular:"</string>
@@ -892,6 +908,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Atualizar"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"Ativar/desativar verificação do DNS"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"Informações/configurações específicas de OEM"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC disponível:"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR restrita:"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR disponível:"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"Estado do NR:"</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"Frequência do NR:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Definir modo de banda de rádio"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Carregando a lista de bandas…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Definir"</string>
@@ -901,4 +922,7 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Informações do telefone"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Informações de provisionamento da operadora"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Acionar provisionamento da operadora"</string>
+    <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"O sinal do Bluetooth está fraco. Mude para o viva-voz."</string>
+    <string name="call_quality_notification_name" msgid="3476828289553948830">"Notificação sobre a qualidade da chamada"</string>
+    <string name="notification_channel_sip_account" msgid="1261816025156179637">"Contas SIP suspensas"</string>
 </resources>

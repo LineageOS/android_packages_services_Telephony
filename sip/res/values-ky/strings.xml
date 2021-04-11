@@ -29,8 +29,8 @@
     <string name="add_sip_account" msgid="5754758646745144384">"Аккаунт кошуу"</string>
     <string name="remove_sip_account" msgid="8272617403399636513">"Аккаунтту өчүрүү"</string>
     <string name="sip_account_list" msgid="2596262496233721769">"SIP аккаунттары"</string>
-    <string name="saving_account" msgid="3390358043846687266">"Каттоо эсеби сакталууда…"</string>
-    <string name="removing_account" msgid="1544132880414780408">"Каттоо эсеби жок кылынууда…"</string>
+    <string name="saving_account" msgid="3390358043846687266">"Аккаунт сакталууда…"</string>
+    <string name="removing_account" msgid="1544132880414780408">"Аккаунт жок кылынууда…"</string>
     <string name="sip_menu_save" msgid="4377112554203123060">"Сактоо"</string>
     <string name="sip_menu_discard" msgid="1883166691772895243">"Жокко чыгаруу"</string>
     <string name="alert_dialog_close" msgid="1734746505531110706">"Профилди жабуу"</string>
@@ -40,7 +40,7 @@
     <string name="registration_status_registering" msgid="7986331597809521791">"Катталууда…"</string>
     <string name="registration_status_still_trying" msgid="7178623685868766282">"Дагы эле аракет жасалууда…"</string>
     <string name="registration_status_not_receiving" msgid="3873074208531938401">"Чалуулар кабыл алынбайт"</string>
-    <string name="registration_status_no_data" msgid="2987064560116584121">"Интернет байланышы жок болгондуктан, эсепти каттоо аракети токтотулду."</string>
+    <string name="registration_status_no_data" msgid="2987064560116584121">"Интернет жок болгондуктан, эсепти каттоо аракети токтотулду."</string>
     <string name="registration_status_no_wifi_data" msgid="685470618241482948">"Wi-Fi байланышы жок болгондуктан, эсепти каттоо аракети токтотулду."</string>
     <string name="registration_status_not_running" msgid="6236403137652262659">"Эсеп катталбай калды."</string>
     <string name="registration_status_done" msgid="6787397199273357721">"Чалуулар кабыл алынат."</string>

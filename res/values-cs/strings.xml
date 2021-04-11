@@ -50,6 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"Nastavení hlasové schránky může změnit pouze primární uživatel."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"SIM karta byla odblokována. Telefon se odblokovává..."</string>
     <string name="label_ndp" msgid="7617392683877410341">"Kód PIN odblokování sítě pro SIM kartu"</string>
+    <string name="label_phoneid" msgid="8775611434123577808">"Na kartě SIM je zámek operátora"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"Odemknout"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"Zavřít"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"Žádost o odblokování sítě..."</string>
@@ -123,6 +124,13 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"Hovory budou přesměrovány na číslo <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Vypnuto"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Váš operátor neumožňuje deaktivovat přesměrování hovorů, když je telefon nedostupný."</string>
+    <string name="registration_cf_forbidden" msgid="4386482610771190420">"Váš operátor nepodporuje přesměrování hovorů."</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"Zapnout funkci Další hovor na lince?"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"V průběhu hovoru budete dostávat upozornění na příchozí hovory."</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"Zap."</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"Zrušit"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"CDMA – další hovor na lince ve službě IMS – zapnuto"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"CDMA – další hovor na lince ve službě IMS – vypnuto"</string>
     <string name="updating_title" msgid="6130548922615719689">"Nastavení hovorů"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Nastavení hovorů může změnit pouze uživatel s oprávněním administrátora."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Nastavení (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -141,7 +149,7 @@
     <string name="close_dialog" msgid="1074977476136119408">"OK"</string>
     <string name="enable" msgid="2636552299455477603">"Zapnout"</string>
     <string name="disable" msgid="1122698860799462116">"Vypnout"</string>
-    <string name="change_num" msgid="6982164494063109334">"Aktualiz."</string>
+    <string name="change_num" msgid="6982164494063109334">"Aktualizovat"</string>
   <string-array name="clir_display_values">
     <item msgid="8477364191403806960">"Výchozí nastavení sítě"</item>
     <item msgid="6813323051965618926">"Skrýt číslo"</item>
@@ -286,6 +294,9 @@
     <string name="limited_sim_function_notification_title" msgid="612715399099846281">"Omezená funkčnost SIM karty"</string>
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"Hovory a datové služby operátora <xliff:g id="CARRIER_NAME">%1$s</xliff:g> mohou být zablokovány, když používáte číslo <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>."</string>
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"Hovory a datové služby operátora <xliff:g id="CARRIER_NAME">%1$s</xliff:g> mohou být s jinou SIM kartou blokovány."</string>
+    <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"Zastaralé účty SIP byly vyhledány a odstraněny"</string>
+    <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"Volání SIP už na platformě Android není podporováno.\nVaše stávající účty SIP (<xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g>) byly odstraněny.\nPotvrďte výchozí nastavení účtu pro volání."</string>
+    <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"Přejít do nastavení"</string>
     <string name="data_usage_title" msgid="8438592133893837464">"Využití dat aplikací"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"V období <xliff:g id="ID_2">%2$s</xliff:g> jste využili <xliff:g id="ID_1">%1$s</xliff:g> mobilních dat"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"Rozšířená nastavení"</string>
@@ -293,7 +304,7 @@
     <string name="keywords_carrier_settings_euicc" msgid="8540160967922063745">"operátor, esim, sim, euicc, přepnout operátora, přidat operátora"</string>
     <string name="carrier_settings_euicc_summary" msgid="2027941166597330117">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> – <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="7228249980933944101">"Mobilní data"</string>
-    <string name="mobile_data_settings_summary" msgid="5012570152029118471">"Přistupovat k datům přes mobilní síť"</string>
+    <string name="mobile_data_settings_summary" msgid="5012570152029118471">"Používat datové připojení přes mobilní síť"</string>
     <string name="data_usage_disable_mobile" msgid="5669109209055988308">"Vypnout mobilní data?"</string>
     <string name="sim_selection_required_pref" msgid="6985901872978341314">"Vyžadován výběr"</string>
     <string name="sim_change_data_title" msgid="9142726786345906606">"Změnit SIM kartu pro data?"</string>
@@ -641,6 +652,14 @@
     <string name="alert_dialog_yes" msgid="3532525979632841417">"Ano"</string>
     <string name="alert_dialog_no" msgid="1075632654085988420">"Ne"</string>
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"Zavřít"</string>
+    <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"Telefon je v režimu tísňového zpětného volání"</string>
+    <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"Do <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
+    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
+      <item quantity="few">Telefon bude v režimu tísňového zpětného volání po dobu <xliff:g id="COUNT_1">%s</xliff:g> minut.\nChcete tento režim ukončit?</item>
+      <item quantity="many">Telefon bude v režimu tísňového zpětného volání po dobu <xliff:g id="COUNT_1">%s</xliff:g> minuty.\nChcete tento režim ukončit?</item>
+      <item quantity="other">Telefon bude v režimu tísňového zpětného volání po dobu <xliff:g id="COUNT_1">%s</xliff:g> minut.\nChcete tento režim ukončit?</item>
+      <item quantity="one">Telefon bude v režimu tísňového zpětného volání po dobu <xliff:g id="COUNT_0">%s</xliff:g> minuty.\nChcete tento režim ukončit?</item>
+    </plurals>
     <string name="voicemail_provider" msgid="4158806657253745294">"Služba"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"Konfigurace"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;Nenastaveno&gt;"</string>
@@ -865,7 +884,6 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"SubId výchozí datové SIM karty:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Rychlost stahování (kB/s):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Rychlost nahrávání (kB/s):"</string>
-    <string name="radio_info_signal_location_label" msgid="6188435197086550049">"Informace o poloze mobilní sítě (podpora ukončena):"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Konfigurace fyzického kanálu LTE:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Interval obnovení informací o mobilní síti:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Všechny údaje o měření mobilní sítě:"</string>
@@ -896,6 +914,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Obnovit"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"Přepnout kontrolu DNS"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"Informace a nastavení specifické pro výrobce OEM"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC k dispozici:"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR zakázáno:"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR k dispozici:"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"Stav NR:"</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"Frekvence NR:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Nastavit režim pásma bezdrátového modulu"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Načítání seznamu pásem…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Nastavit"</string>
@@ -905,4 +928,7 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Informace o telefonu"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Informace o zprovoznění služby u operátora"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Spustit zprovoznění služby u operátora"</string>
+    <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Signál sítě Bluetooth je slabý. Zkuste přepnout na hlasitý odposlech."</string>
+    <string name="call_quality_notification_name" msgid="3476828289553948830">"Oznámení o kvalitě hovoru"</string>
+    <string name="notification_channel_sip_account" msgid="1261816025156179637">"Zastaralé účty SIP"</string>
 </resources>

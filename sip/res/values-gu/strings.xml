@@ -18,7 +18,7 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="sip_settings" msgid="7452587325305604702">"SIP સેટિંગ્સ"</string>
     <string name="sip_accounts" msgid="7297896885665783239">"SIP એકાઉન્ટ્સ"</string>
-    <string name="sip_accounts_title" msgid="3061686404598143943">"એકાઉન્ટ્સ"</string>
+    <string name="sip_accounts_title" msgid="3061686404598143943">"એકાઉન્ટ"</string>
     <string name="sip_receive_calls" msgid="3403644006618369349">"આવનારા કૉલ્સ પ્રાપ્ત કરો"</string>
     <string name="sip_receive_calls_summary" msgid="5306603671778761443">"બધુ બૅટરીની આવરદાનો ઉપયોગ કરે છે"</string>
     <string name="sip_call_options_title" msgid="5027066677561068192">"SIP કૉલિંગનો ઉપયોગ કરો"</string>

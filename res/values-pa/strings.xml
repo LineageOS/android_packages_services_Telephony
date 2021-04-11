@@ -50,6 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"ਵੌਇਸਮੇਲ ਸੈਟਿੰਗਾਂ ਸਿਰਫ਼ ਪ੍ਰਾਇਮਰੀ ਵਰਤੋਂਕਾਰ ਦੁਆਰਾ ਹੀ ਸੰਸ਼ੋਧਿਤ ਕੀਤੀਆਂ ਜਾ ਸਕਦੀਆਂ ਹਨ।"</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"ਤੁਹਾਡਾ SIM ਕਾਰਡ ਅਨਬਲੌਕ ਕਰ ਦਿੱਤਾ ਗਿਆ ਹੈ। ਤੁਹਾਡਾ ਫੋਨ ਅਨੌਲਕ ਹੋ ਰਿਹਾ ਹੈ..."</string>
     <string name="label_ndp" msgid="7617392683877410341">"SIM ਨੈਟਵਰਕ ਅਣਲਾਕ PIN"</string>
+    <string name="label_phoneid" msgid="8775611434123577808">"ਓਪਰੇਟਰ ਲਈ ਸਿਮ ਲਾਕ ਕੀਤਾ ਗਿਆ"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"ਅਣਲਾਕ ਕਰੋ"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"ਖਾਰਜ ਕਰੋ"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"ਨੈਟਵਰਕ ਅਣਲਾਕ ਦੀ ਬੇਨਤੀ ਕਰ ਰਿਹਾ ਹੈ…"</string>
@@ -123,6 +124,13 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"<xliff:g id="PHONENUMBER">{0}</xliff:g> ਨੂੰ ਫੌਰਵਾਰਡ ਕਰ ਰਿਹਾ ਹੈ"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"ਬੰਦ"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"ਜਦੋਂ ਤੁਹਾਡਾ ਫੋਨ ਨਾਪਹੁੰਚਯੋਗ ਹੁੰਦਾ ਹੈ ਤਾਂ ਤੁਹਾਡਾ ਕੈਰੀਅਰ ਕਾਲ ਫੌਰਵਾਰਡਿੰਗ ਨੂੰ ਅਸਮਰੱਥ ਬਣਾਉਣ ਦਾ ਸਮਰਥਨ ਨਹੀਂ ਕਰਦਾ।"</string>
+    <string name="registration_cf_forbidden" msgid="4386482610771190420">"ਤੁਹਾਡਾ ਕੈਰੀਅਰ ਕਾਲ ਫਾਰਵਰਡਿੰਗ ਦਾ ਸਮਰਥਨ ਨਹੀਂ ਕਰਦਾ ਹੈ।"</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"ਕੀ ਕਾਲ ਦੀ ਉਡੀਕ ਸੈਟਿੰਗ ਨੂੰ ਚਾਲੂ ਕਰਨਾ ਹੈ?"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"ਕਾਲ ਕਰਨ ਵੇਲੇ, ਤੁਹਾਨੂੰ ਇਨਕਮਿੰਗ ਕਾਲਾਂ ਬਾਰੇ ਸੂਚਿਤ ਕੀਤਾ ਜਾਵੇਗਾ"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"ਚਾਲੂ ਕਰੋ"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"ਰੱਦ ਕਰੋ"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"IMS ਦੇ ਅਧੀਨ CDMA ਕਾਲ ਦੀ ਉਡੀਕ ਵਾਲੀ ਸੁਵਿਧਾ ਚਾਲੂ ਹੈ"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"IMS ਦੇ ਅਧੀਨ CDMA ਕਾਲ ਦੀ ਉਡੀਕ ਵਾਲੀ ਸੁਵਿਧਾ ਬੰਦ ਹੈ"</string>
     <string name="updating_title" msgid="6130548922615719689">"ਕਾਲ ਸੈਟਿੰਗਾਂ"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"ਕਾਲ ਸੈਟਿੰਗਾਂ ਸਿਰਫ਼ ਪ੍ਰਸ਼ਾਸਕ ਵਰਤੋਂਕਾਰ ਵੱਲੋਂ ਹੀ ਬਦਲੀਆਂ ਜਾ ਸਕਦੀਆਂ ਹਨ।"</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"ਸੈਟਿੰਗਾਂ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -286,6 +294,9 @@
     <string name="limited_sim_function_notification_title" msgid="612715399099846281">"ਸੀਮਤ ਸਿਮ ਪ੍ਰਕਾਰਜਾਤਮਕਤਾ"</string>
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"<xliff:g id="PHONE_NUMBER">%2$s</xliff:g> ਨੂੰ ਵਰਤਣ ਵੇਲੇ ਸ਼ਾਇਦ <xliff:g id="CARRIER_NAME">%1$s</xliff:g> ਦੀਆਂ ਕਾਲਾਂ ਅਤੇ ਡਾਟਾ ਸੇਵਾਵਾਂ ਨੂੰ ਬਲਾਕ ਕੀਤਾ ਜਾਵੇ।"</string>
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"ਕੋਈ ਹੋਰ ਸਿਮ ਵਰਤਣ ਵੇਲੇ ਸ਼ਾਇਦ <xliff:g id="CARRIER_NAME">%1$s</xliff:g> ਦੀਆਂ ਕਾਲਾਂ ਅਤੇ ਡਾਟਾ ਸੇਵਾਵਾਂ ਨੂੰ ਬਲਾਕ ਕੀਤਾ ਜਾਵੇ।"</string>
+    <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"ਨਾਪਸੰਦ ਕੀਤੇ SIP ਖਾਤੇ ਮਿਲੇ ਅਤੇ ਹਟਾ ਦਿੱਤੇ ਗਏ"</string>
+    <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"SIP ਕਾਲਿੰਗ ਹੁਣ Android ਪਲੇਟਫਾਰਮ ਵੱਲੋਂ ਸਮਰਥਿਤ ਨਹੀਂ ਹੈ।\nਤੁਹਾਡੇ ਮੌਜੂਦਾ SIP ਖਾਤੇ <xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g> ਹਟਾ ਦਿੱਤੇ ਗਏ ਹਨ।\nਕਿਰਪਾ ਕਰਕੇ ਆਪਣੀ ਪੂਰਵ-ਨਿਰਧਾਰਿਤ ਕਾਲਿੰਗ ਖਾਤਾ ਸੈਟਿੰਗ ਦੀ ਤਸਦੀਕ ਕਰੋ।"</string>
+    <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"ਸੈਟਿੰਗਾਂ \'ਤੇ ਜਾਓ"</string>
     <string name="data_usage_title" msgid="8438592133893837464">"ਐਪ ਡਾਟਾ ਵਰਤੋਂ"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"<xliff:g id="ID_2">%2$s</xliff:g> ਤੱਕ <xliff:g id="ID_1">%1$s</xliff:g> ਮੋਬਾਈਲ ਡਾਟਾ ਵਰਤਿਆ ਗਿਆ"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"ਉੱਨਤ"</string>
@@ -637,6 +648,12 @@
     <string name="alert_dialog_yes" msgid="3532525979632841417">"ਹਾਂ"</string>
     <string name="alert_dialog_no" msgid="1075632654085988420">"ਨਹੀਂ"</string>
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"ਖਾਰਜ ਕਰੋ"</string>
+    <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"ਫ਼ੋਨ ਸੰਕਟਕਾਲੀਨ ਕਾਲ ਮੋਡ ਵਿੱਚ ਹੈ"</string>
+    <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"<xliff:g id="COMPLETETIME">%s</xliff:g> ਤੱਕ"</string>
+    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
+      <item quantity="one">ਫ਼ੋਨ <xliff:g id="COUNT_1">%s</xliff:g> ਮਿੰਟ ਲਈ ਸੰਕਟਕਾਲੀਨ ਕਾਲ ਮੋਡ ਵਿੱਚ ਹੋਵੇਗਾ।\nਕੀ ਤੁਸੀਂ ਹੁਣ ਬਾਹਰ ਜਾਣਾ ਚਾਹੁੰਦੇ ਹੋ?</item>
+      <item quantity="other">ਫ਼ੋਨ <xliff:g id="COUNT_1">%s</xliff:g> ਮਿੰਟਾਂ ਲਈ ਸੰਕਟਕਾਲੀਨ ਕਾਲ ਮੋਡ ਵਿੱਚ ਹੋਵੇਗਾ।\nਕੀ ਤੁਸੀਂ ਹੁਣ ਬਾਹਰ ਜਾਣਾ ਚਾਹੁੰਦੇ ਹੋ?</item>
+    </plurals>
     <string name="voicemail_provider" msgid="4158806657253745294">"ਸੇਵਾ"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"ਸੈੱਟਅੱਪ ਕਰੋ"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;ਸੈੱਟ ਨਹੀਂ ਕੀਤਾ&gt;"</string>
@@ -861,7 +878,6 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"ਪੂਰਵ-ਨਿਰਧਾਰਤ ਡਾਟਾ ਸਿਮ ਦਾ SubId:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DL ਬੈਂਡਵਿਡਥ (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL ਬੈਂਡਵਿਡਥ (kbps):"</string>
-    <string name="radio_info_signal_location_label" msgid="6188435197086550049">"ਸੈੱਲ ਦੀ ਟਿਕਾਣਾ ਜਾਣਕਾਰੀ (ਨਾਪਸੰਦ ਕੀਤੀ):"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"LTE ਭੌਤਿਕ ਚੈਨਲ ਸੰਰੂਪਣ:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"ਸੈੱਲ ਦੀ ਜਾਣਕਾਰੀ ਦੀ ਰਿਫ੍ਰੈਸ਼ ਦਰ:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"ਸਾਰੀ ਸੈੱਲ ਮਾਪ ਜਾਣਕਾਰੀ:"</string>
@@ -892,6 +908,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"ਰਿਫ੍ਰੈਸ਼ ਕਰੋ"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"DNS ਜਾਂਚ ਟੌਗਲ ਕਰੋ"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"OEM-ਵਿਸ਼ੇਸ਼ ਜਾਣਕਾਰੀ/ਸੈਟਿੰਗਾਂ"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC ਉਪਲਬਧ:"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR ਪ੍ਰਤਿਬੰਧਿਤ:"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR ਉਪਲਬਧ:"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"NR ਸਥਿਤੀ:"</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR ਵਾਰਵਾਰਤਾ:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"ਰੇਡੀਓ ਬੈਂਡ ਮੋਡ ਸੈੱਟ ਕਰੋ"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"ਬੈਂਡ ਸੂਚੀ ਲੋਡ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"ਸੈੱਟ ਕਰੋ"</string>
@@ -901,4 +922,7 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"ਫ਼ੋਨ ਜਾਣਕਾਰੀ"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"ਕੈਰੀਅਰ ਪ੍ਰੋਵਿਜ਼ਨਿੰਗ ਜਾਣਕਾਰੀ"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"ਕੈਰੀਅਰ ਪ੍ਰਵਿਜ਼ਨਿੰਗ ਨੂੰ ਟ੍ਰਿਗਰ ਕਰੋ"</string>
+    <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"ਤੁਹਾਡਾ ਬਲੂਟੁੱਥ ਸਿਗਨਲ ਕਮਜ਼ੋਰ ਹੈ। ਸਪੀਕਰਫ਼ੋਨ \'ਤੇ ਲਿਜਾ ਕੇ ਦੇਖੋ।"</string>
+    <string name="call_quality_notification_name" msgid="3476828289553948830">"ਕਾਲ ਦੀ ਕੁਆਲਿਟੀ ਸੰਬੰਧੀ ਸੂਚਨਾ"</string>
+    <string name="notification_channel_sip_account" msgid="1261816025156179637">"ਨਾਪਸੰਦ ਕੀਤੇ SIP ਖਾਤੇ"</string>
 </resources>

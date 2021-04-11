@@ -24,7 +24,7 @@
     <string name="unknown" msgid="8279698889921830815">"Haijulikani"</string>
     <string name="private_num" msgid="4487990167889159992">" Number isiyojulikana"</string>
     <string name="payphone" msgid="7936735771836716941">"Simu ya kulipia"</string>
-    <string name="onHold" msgid="6132725550015899006">"Inangoja"</string>
+    <string name="onHold" msgid="6132725550015899006">"Imesitishwa"</string>
     <string name="carrier_mmi_msg_title" msgid="6050165242447507034">"Ujumbe wa <xliff:g id="MMICARRIER">%s</xliff:g>"</string>
     <string name="default_carrier_mmi_msg_title" msgid="7754317179938537213">"Ujumbe wa Mtoa Huduma"</string>
     <string name="mmiStarted" msgid="9212975136944568623">"Msimbo wa MMI  umeanza"</string>
@@ -50,6 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"Mipangilio ya ujumbe wa sauti inaweza kubadilishwa na Mtumiaji wa Msingi Pekee."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"Kadi yako ya simu imefunguliwa. Simu yangu inafungua…."</string>
     <string name="label_ndp" msgid="7617392683877410341">"PIN ya kufungua mtandao wa SIM"</string>
+    <string name="label_phoneid" msgid="8775611434123577808">"SIM imefungwa kwa mtoa huduma"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"Fungua"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"Ondoa"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"Inaomba mtandao ufunguliwe…."</string>
@@ -91,11 +92,11 @@
     <string name="additional_cdma_call_settings" msgid="2178016561980611304">"Mipangilio ya ziada ya simu ya CDMA"</string>
     <string name="sum_cdma_call_settings" msgid="3185825305136993636">"Mipangilio ya ziada ya simu ya CDMA tu"</string>
     <string name="labelNwService" msgid="6015891883487125120">"Mipangilio ya huduma ya mtandao"</string>
-    <string name="labelCallerId" msgid="2090540744550903172">"Kitambulisho cha mpigaji SIM"</string>
+    <string name="labelCallerId" msgid="2090540744550903172">"Kitambulisho cha anayepiga"</string>
     <string name="sum_loading_settings" msgid="434063780286688775">"Mipangilio inapakia..."</string>
     <string name="sum_hide_caller_id" msgid="131100328602371933">"Nambari imefichwa kwa simu unayopiga"</string>
     <string name="sum_show_caller_id" msgid="3571854755324664591">"Namba inaonekana kwa simu zinazopigwa"</string>
-    <string name="sum_default_caller_id" msgid="1767070797135682959">"Tumia mipangilio ya kiendesha chaguomsingi kuonyesha namba kwa simu zinazopigwa"</string>
+    <string name="sum_default_caller_id" msgid="1767070797135682959">"Tumia mipangilio ya mtoa huduma chaguomsingi kuonyesha nambari kwa simu unazopiga"</string>
     <string name="labelCW" msgid="8449327023861428622">"Simu inayosubiri kupokewa"</string>
     <string name="sum_cw_enabled" msgid="3977308526187139996">"Wakati ninapokea simu, niarifu kuhusu simu zingine zinazoingia"</string>
     <string name="sum_cw_disabled" msgid="3658094589461768637">"Wakati ninapokea simu, niarifu kuhusu simu zingine zinazoingia"</string>
@@ -123,12 +124,19 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"Inasambaza kwa <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Imezimwa"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Mtoa huduma wako haauni ulemezaji wa kusambaza simu wakati simu yako haifikiwi."</string>
+    <string name="registration_cf_forbidden" msgid="4386482610771190420">"Kampuni inayokupa huduma za simu haina huduma ya kusambaza simu."</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"Ungependa kuwasha kipengele cha simu inayosubiri kupokewa?"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"Simu inapoendelea, utaarifiwa kuhusu simu unazopigiwa"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"Washa"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"Ghairi"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"Kipengele cha Simu Inayosubiri Kupokewa ya CDMA chini ya IMS Kimewashwa"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"Kipengele cha Simu Inayosubiri Kupokewa ya CDMA chini ya IMS Kimezimwa"</string>
     <string name="updating_title" msgid="6130548922615719689">"Mipangilio ya simu"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Mipangilio ya simu inaweza kubadilishwa na mtumiaji wa akaunti ya msimamizi."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Mipangilio (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Hitilafu ya mipangilio ya kupiga simu"</string>
     <string name="reading_settings" msgid="1605904432450871183">"Inasoma mipangilio…."</string>
-    <string name="updating_settings" msgid="3650396734816028808">"Inaboresha mipangilio…"</string>
+    <string name="updating_settings" msgid="3650396734816028808">"Inasasisha mipangilio…"</string>
     <string name="reverting_settings" msgid="7378668837291012205">"Inageuza mipangilio..."</string>
     <string name="response_error" msgid="3904481964024543330">"Jibu lisilotarajiwa kutoka kwa mtandao."</string>
     <string name="exception_error" msgid="330994460090467">"Hitilafu ya mtandao au SIM kadi."</string>
@@ -286,6 +294,9 @@
     <string name="limited_sim_function_notification_title" msgid="612715399099846281">"Matumizi ya SIM yana kikomo"</string>
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"Huenda huduma za simu na data za <xliff:g id="CARRIER_NAME">%1$s</xliff:g> zikazuiwa unapotumia <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>."</string>
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"Huenda huduma za simu na data za <xliff:g id="CARRIER_NAME">%1$s</xliff:g> zikazuiwa unapotumia SIM nyingine."</string>
+    <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"Akaunti za SIP ambazo zimefungwa zimepatikana na zikaondolewa"</string>
+    <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"Huduma ya kupiga simu kupitia SIP haipatikani tena kwenye mfumo wa Android.\nAkaunti zako za SIP zilizopo <xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g> zimeondolewa.\nTafadhali thibitisha mipangilio ya akaunti yako chaguomsingi ya kupiga simu."</string>
+    <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"Nenda kwenye mipangilio"</string>
     <string name="data_usage_title" msgid="8438592133893837464">"Matumizi ya data ya programu"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"<xliff:g id="ID_1">%1$s</xliff:g> za data ya mtandao wa simu zimetumika kuanzia <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"Mipangilio ya Kina"</string>
@@ -307,7 +318,7 @@
     <string name="throttle_time_frame" msgid="1813452485948918791">"Muda wa matumizi ya data"</string>
     <string name="throttle_rate" msgid="7641913901133634905">"Sera ya kasi ya data"</string>
     <string name="throttle_help" msgid="2624535757028809735">"Pata maelezo zaidi"</string>
-    <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) ya<xliff:g id="USED_2">%3$s</xliff:g> muda wa kiwango cha juu\nMuda unaofuata unaanza baada ya siku<xliff:g id="USED_3">%4$d</xliff:g>(<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
+    <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) imetumika kati ya kipindi cha juu cha <xliff:g id="USED_2">%3$s</xliff:g>\nKipindi kijacho kinaanza baada ya siku <xliff:g id="USED_3">%4$d</xliff:g> (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
     <string name="throttle_data_usage_subtext" msgid="3185429653996709840">"<xliff:g id="USED_0">%1$s</xliff:g> (asilimia <xliff:g id="USED_1">%2$d</xliff:g>) ya upeo wa muda wa <xliff:g id="USED_2">%3$s</xliff:g>"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"Upeo wa <xliff:g id="USED_0">%1$s</xliff:g> umepitwa\nKasi ya data imepunguzwa hadi kilobaiti <xliff:g id="USED_1">%2$d</xliff:g> kwa sekunde"</string>
     <string name="throttle_time_frame_subtext" msgid="6462089615392402127">"<xliff:g id="USED_0">%1$d</xliff:g>٪ ya mzunguko imekamilika\nMuda ufuatao unaanza baada ya siku <xliff:g id="USED_1">%2$d</xliff:g> (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
@@ -513,7 +524,7 @@
     <string name="card_title_conf_call" msgid="901197309274457427">"Simu ya kongamano"</string>
     <string name="card_title_incoming_call" msgid="881424648458792430">"Simu inayoingia"</string>
     <string name="card_title_call_ended" msgid="650223980095026340">"Simu imekamilika"</string>
-    <string name="card_title_on_hold" msgid="9028319436626975207">"Inangoja"</string>
+    <string name="card_title_on_hold" msgid="9028319436626975207">"Imesitishwa"</string>
     <string name="card_title_hanging_up" msgid="814874106866647871">"Kukata simu"</string>
     <string name="card_title_in_call" msgid="8231896539567594265">"Katika simu"</string>
     <string name="notification_voicemail_title" msgid="3932876181831601351">"Ujumbe mpya wa sauti"</string>
@@ -637,6 +648,12 @@
     <string name="alert_dialog_yes" msgid="3532525979632841417">"Ndiyo"</string>
     <string name="alert_dialog_no" msgid="1075632654085988420">"Hapana"</string>
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"Ondoa"</string>
+    <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"Simu hii iko katika hali ya kuomba upigiwe simu ya dharura"</string>
+    <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"Hadi <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
+    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
+      <item quantity="other">Simu hii itakuwa katika hali ya kuomba upigiwe simu ya dharura kwa dakika <xliff:g id="COUNT_1">%s</xliff:g>.\nJe, ungependa kuondoka sasa?</item>
+      <item quantity="one">Simu hii itakuwa katika hali ya kuomba upigiwe simu ya dharura kwa dakika <xliff:g id="COUNT_0">%s</xliff:g>.\nJe, ungependa kuondoka sasa?</item>
+    </plurals>
     <string name="voicemail_provider" msgid="4158806657253745294">"Huduma"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"Weka mipangilio"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;Haijawekwa&gt;"</string>
@@ -861,7 +878,6 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"SubId ya SIM chaguomsingi ya data:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Kipimo Data cha DL (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Kipimo Data cha UL (kbps):"</string>
-    <string name="radio_info_signal_location_label" msgid="6188435197086550049">"Maelezo ya Mahali Simu ya Mkononi Ilipo (huduma haipo tena):"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Mipangilio ya Kituo Halisi cha LTE:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Kasi ya Kuonyesha Upya Maelezo ya Simu:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Maelezo Yote ya Vipimo vya Simu:"</string>
@@ -892,6 +908,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Onyesha upya"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"Geuza Ukaguzi wa DNS"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"Maelezo/Mipangilio Mahususi kwa Kampuni Inayotengeneza Vifaa (OEM)"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC Inapatikana:"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR Imewekewa Vizuizi:"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR Inapatikana:"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"Hali ya NR:"</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"Masafa ya NR:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Weka Hali ya Bendi ya Redio"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Inapakia Orodha ya Bendi…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Weka"</string>
@@ -901,4 +922,7 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Maelezo ya simu"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Maelezo ya Utaratibu wa Kutayarisha Mtandao"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Anzisha Utaratibu wa Kutayarisha Mtandao"</string>
+    <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Muunganisho wako wa bluetooth ni dhaifu. Jaribu kubadilisha ili utumie spika ya simu."</string>
+    <string name="call_quality_notification_name" msgid="3476828289553948830">"Arifa ya Ubora wa Simu"</string>
+    <string name="notification_channel_sip_account" msgid="1261816025156179637">"Akaunti za SIP ambazo zimefungwa"</string>
 </resources>

@@ -50,6 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"Ձայնային փոստի կարգավորումները կարող է փոխել միայն հիմնական օգտագործողը:"</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"Ձեր SIM քարտը ապակողպված է: Ձեր հեռախոսը ապակողպվում է..."</string>
     <string name="label_ndp" msgid="7617392683877410341">"SIM ցանցով PIN-ի ապակողպում"</string>
+    <string name="label_phoneid" msgid="8775611434123577808">"Աշխատում է միայն այս օպերատորի SIM քարտով"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"Ապակողպել"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"Անտեսել"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"Հայցվում է ցանցի ապակողպում..."</string>
@@ -102,7 +103,7 @@
     <string name="call_forwarding_settings" msgid="8937130467468257671">"Վերահասցեավորում"</string>
     <string name="call_forwarding_settings_with_label" msgid="2345432813399564272">"Զանգի փոխանցման կարգավորումներ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCF" msgid="3578719437928476078">"Զանգի վերահասցեավորում"</string>
-    <string name="labelCFU" msgid="8870170873036279706">"Միշտ փոխանցել"</string>
+    <string name="labelCFU" msgid="8870170873036279706">"Միշտ վերահասցեավորել"</string>
     <string name="messageCFU" msgid="1361806450979589744">"Միշտ օգտագործել այս համարը"</string>
     <string name="sum_cfu_enabled_indicator" msgid="9030139213402432776">"Բոլոր զանգերը վերահասցեավորվում են"</string>
     <string name="sum_cfu_enabled" msgid="5806923046528144526">"Բոլոր զանգերը վերահասցեավորվում են <xliff:g id="PHONENUMBER">{0}</xliff:g>-ին"</string>
@@ -113,22 +114,29 @@
     <string name="sum_cfb_enabled" msgid="332037613072049492">"Վերահասցեավորվում է դեպի <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfb_disabled" msgid="3589913334164866035">"Անջատված է"</string>
     <string name="disable_cfb_forbidden" msgid="4831494744351633961">"Ձեր օպերատորը չի աջակցում զանգի վերահասցեավորման կասեցում, երբ ձեր հեռախոսը զբաղված է:"</string>
-    <string name="labelCFNRy" msgid="3403533792248457946">"Երբ պատասխան չկա"</string>
+    <string name="labelCFNRy" msgid="3403533792248457946">"Երբ չեմ պատասխանում"</string>
     <string name="messageCFNRy" msgid="7644434155765359009">"Թվել, երբ անպատասխան է"</string>
     <string name="sum_cfnry_enabled" msgid="3000500837493854799">"Վերահասցեավորվում է դեպի <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnry_disabled" msgid="1990563512406017880">"Անջատված է"</string>
     <string name="disable_cfnry_forbidden" msgid="3174731413216550689">"Ձեր օպերատորը չի աջակցում զանգի վերահասցեավորման կասեցում, երբ ձեր հեռախոսը չի պատասխանում:"</string>
-    <string name="labelCFNRc" msgid="4163399350778066013">"Երբ անհասանելի է"</string>
+    <string name="labelCFNRc" msgid="4163399350778066013">"Երբ անհասանելի եմ"</string>
     <string name="messageCFNRc" msgid="6980340731313007250">"Թվել, երբ անհասանելի է"</string>
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"Վերահասցեավորվում է դեպի <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Անջատված է"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Ձեր սպասարկողը չի աջակցում զանգի վերահասցեավորման կասեցում, երբ ձեր հեռախոսն անհասանելի է:"</string>
+    <string name="registration_cf_forbidden" msgid="4386482610771190420">"Ձեր օպերատորը չի աջակցում զանգի վերահասցեավորում։"</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"Միացնե՞լ զանգի սպասումը"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"Հեռախոսազրույցի ժամանակ դուք կծանուցվեք մուտքային զանգերի մասին"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"Միացնել"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"Չեղարկել"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"CDMA զանգի սպասումը IMS-ում միացված է"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"CDMA զանգի սպասումը IMS-ում անջատված է"</string>
     <string name="updating_title" msgid="6130548922615719689">"Զանգի կարգավորումներ"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Զանգի կարգավորումները կարող է փոխել միայն ադմինիստրատոր հանդիսացող օգտատերը:"</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Կարգավորումներ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Զանգի կարգավորումների սխալ"</string>
     <string name="reading_settings" msgid="1605904432450871183">"Ընթերցման կարգավորումներ..."</string>
-    <string name="updating_settings" msgid="3650396734816028808">"Թարմացվում են կարգավորումները..."</string>
+    <string name="updating_settings" msgid="3650396734816028808">"Կարգավորումների թարմացում..."</string>
     <string name="reverting_settings" msgid="7378668837291012205">"Կարգավորւմները հետադարձվում են..."</string>
     <string name="response_error" msgid="3904481964024543330">"Անակնկալ պատասխան ցանցից:"</string>
     <string name="exception_error" msgid="330994460090467">"Ցանցի կամ SIM քարտի սխալ"</string>
@@ -141,7 +149,7 @@
     <string name="close_dialog" msgid="1074977476136119408">"Լավ"</string>
     <string name="enable" msgid="2636552299455477603">"Միացնել"</string>
     <string name="disable" msgid="1122698860799462116">"Անջատել"</string>
-    <string name="change_num" msgid="6982164494063109334">"Նորացնել"</string>
+    <string name="change_num" msgid="6982164494063109334">"Թարմացնել"</string>
   <string-array name="clir_display_values">
     <item msgid="8477364191403806960">"Կանխադրված ցանց"</item>
     <item msgid="6813323051965618926">"Թաքցնել համարը"</item>
@@ -286,6 +294,9 @@
     <string name="limited_sim_function_notification_title" msgid="612715399099846281">"SIM քարտի սահմանափակ գործառույթներ"</string>
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"<xliff:g id="PHONE_NUMBER">%2$s</xliff:g> համարն օգտագործելիս <xliff:g id="CARRIER_NAME">%1$s</xliff:g>-ով զանգերն ու բջջային ինտերնետը կարող են արգելափակվել:"</string>
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"Այլ SIM քարտ օգտագործելիս <xliff:g id="CARRIER_NAME">%1$s</xliff:g>-ով զանգերն ու բջջային ինտերնետը կարող են արգելափակվել"</string>
+    <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"Հնացած SIP հաշիվներ են հայտնաբերվել և հեռացվել"</string>
+    <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"SIP-ի միջոցով զանգերն այլևս չեն աջակցվում Android հարթակի կողմից։\nՁեր ունեցած SIP հաշիվները <xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g> հեռացվել են։\nՀաստատեք զանգերի կանխադրված ծառայության հաշվի կարգավորումները։"</string>
+    <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"Անցնել կարգավորումներ"</string>
     <string name="data_usage_title" msgid="8438592133893837464">"Թրաֆիկի օգտագործումը հավելվածի կողմից"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"Oգտագործվել է <xliff:g id="ID_1">%1$s</xliff:g> բջջային ինտերնետ (<xliff:g id="ID_2">%2$s</xliff:g>)"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"Լրացուցիչ"</string>
@@ -307,9 +318,7 @@
     <string name="throttle_time_frame" msgid="1813452485948918791">"Տվյալների օգտագործման ժամանահատվածը"</string>
     <string name="throttle_rate" msgid="7641913901133634905">"Տվյալների սակագնային քաղաքականությունը"</string>
     <string name="throttle_help" msgid="2624535757028809735">"Իմանալ ավելին"</string>
-    <!-- String.format failed for translation -->
-    <!-- no translation found for throttle_status_subtext (1110276415078236687) -->
-    <skip />
+    <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) <xliff:g id="USED_2">%3$s</xliff:g>-ից (առավելագույն)\nՀաջորդ ժամանակահատվածը սկսվում է <xliff:g id="USED_3">%4$d</xliff:g> օրից (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
     <string name="throttle_data_usage_subtext" msgid="3185429653996709840">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) <xliff:g id="USED_2">%3$s</xliff:g>-ի ժամանակահատվածի առավելագույնը"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"<xliff:g id="USED_0">%1$s</xliff:g> առավելագույնը գերազանցվել է\nՏվյալների արժեքը նվազել է մինչև <xliff:g id="USED_1">%2$d</xliff:g> Կբիթ/վ"</string>
     <string name="throttle_time_frame_subtext" msgid="6462089615392402127">"Շրջանի <xliff:g id="USED_0">%1$d</xliff:g>٪ -ը լրացել է\nՀաջորդ ժամանակահատվածը սկսվում է <xliff:g id="USED_1">%2$d</xliff:g> օրից (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
@@ -639,6 +648,12 @@
     <string name="alert_dialog_yes" msgid="3532525979632841417">"Այո"</string>
     <string name="alert_dialog_no" msgid="1075632654085988420">"Ոչ"</string>
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"Անտեսել"</string>
+    <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"Հեռախոսը շտապ հետզանգի ռեժիմում է"</string>
+    <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"Մինչև <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
+    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
+      <item quantity="one">Շտապ հետզանգի ռեժիմը կգործի դեռ <xliff:g id="COUNT_1">%s</xliff:g> րոպե։\nԴո՞ւրս գալ։</item>
+      <item quantity="other">Շտապ հետզանգի ռեժիմը կգործի դեռ <xliff:g id="COUNT_1">%s</xliff:g> րոպե։\nԴո՞ւրս գալ։</item>
+    </plurals>
     <string name="voicemail_provider" msgid="4158806657253745294">"Ծառայություն"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"Կարգավորում"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;Նշված չէ&gt;"</string>
@@ -863,7 +878,6 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"SIM քարտի հավելյալ ID կանխադրված բջջային ինտերնետի համար՝"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DL թողունակությունը (կբ/վ)՝"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL թողունակությունը (կբ/վ)՝"</string>
-    <string name="radio_info_signal_location_label" msgid="6188435197086550049">"Բջիջի տեղադրության տվյալներ (հնացած)՝"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"LTE ֆիզիկական ալիքի կարգավորում՝"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Բջիջի տվյալների թարմացման հաճախականությունը՝"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Բոլոր բջիջների չափման տվյալները՝"</string>
@@ -894,6 +908,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Թարմացնել"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"Փոխարկել DNS ստուգումը"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"OEM-հատուկ տեղեկություններ/կարգավորումներ"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC-ն հասանելի է՝"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR-ը սահմանափակված է՝"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR-ը հասանելի է՝"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"NR-ի կարգավիճակը՝"</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR-ի հաճախականությունը՝"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Կարգավորել հաճախությունների շերտի ռեժիմը"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Շերտերի ցուցակը բեռնվում է…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Կարգավորել"</string>
@@ -903,4 +922,7 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Հեռախոսի տեղեկություններ"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Օպերատորի նախապատրաստման տվյալներ"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Գործարկել օպերատորի նախապատրաստումը"</string>
+    <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Ձեր Bluetooth-ի ազդանշանը թույլ է։ Փորձեք միացնել բարձրախոսը։"</string>
+    <string name="call_quality_notification_name" msgid="3476828289553948830">"Զանգի որակի մասին ծանուցում"</string>
+    <string name="notification_channel_sip_account" msgid="1261816025156179637">"Հնացած SIP հաշիվներ"</string>
 </resources>

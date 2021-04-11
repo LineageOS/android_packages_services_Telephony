@@ -50,6 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"Només l\'usuari principal pot modificar la configuració dels missatges de veu."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"La targeta SIM s\'ha desbloquejat. El telèfon s\'està desbloquejant..."</string>
     <string name="label_ndp" msgid="7617392683877410341">"PIN de desbloqueig de xarxa SIM"</string>
+    <string name="label_phoneid" msgid="8775611434123577808">"SIM bloquejada per a l\'operador"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"Desbloqueja"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"Ignora"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"S\'està sol·licitant el desbloqueig de la xarxa..."</string>
@@ -62,7 +63,7 @@
     <string name="labelCdmaMore_with_label" msgid="7759692829160238152">"Configuració de trucades CDMA (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="apn_settings" msgid="1978652203074756623">"Noms dels punts d\'accés"</string>
     <string name="settings_label" msgid="9101778088412567956">"Configuració de xarxa"</string>
-    <string name="phone_accounts" msgid="1216879437523774604">"Comptes de trucades"</string>
+    <string name="phone_accounts" msgid="1216879437523774604">"Comptes de trucada"</string>
     <string name="phone_accounts_make_calls_with" msgid="16747814788918145">"Truca amb"</string>
     <string name="phone_accounts_make_sip_calls_with" msgid="4691221006731847255">"Fes trucades SIP amb"</string>
     <string name="phone_accounts_ask_every_time" msgid="6192347582666047168">"Pregunta primer"</string>
@@ -95,7 +96,7 @@
     <string name="sum_loading_settings" msgid="434063780286688775">"Carregant la configuració..."</string>
     <string name="sum_hide_caller_id" msgid="131100328602371933">"Número amagat en trucades sortints"</string>
     <string name="sum_show_caller_id" msgid="3571854755324664591">"Número mostrat a les trucades de sortida"</string>
-    <string name="sum_default_caller_id" msgid="1767070797135682959">"Utilitza la configuració predeterminada de l\'operador per mostrar el meu número a les trucades de sortida"</string>
+    <string name="sum_default_caller_id" msgid="1767070797135682959">"Utilitza la configuració predeterminada de l\'operador per mostrar el meu número a les trucades sortints"</string>
     <string name="labelCW" msgid="8449327023861428622">"Trucada en espera"</string>
     <string name="sum_cw_enabled" msgid="3977308526187139996">"Durant una trucada, avisa\'m de les trucades entrants"</string>
     <string name="sum_cw_disabled" msgid="3658094589461768637">"Durant una trucada, avisa\'m de les trucades entrants"</string>
@@ -123,6 +124,13 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"S\'està desviant a <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Desactivat"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"El teu operador de telefonia mòbil no permet desactivar la desviació de trucades quan el telèfon estigui il·localitzable."</string>
+    <string name="registration_cf_forbidden" msgid="4386482610771190420">"El teu operador no admet la desviació de trucades."</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"Vols activar l\'opció de trucada en espera?"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"Durant una trucada, rebràs una notificació si tens cap trucada entrant"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"Activa"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"Cancel·la"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"L\'opció de trucada en espera de CDMA a IMS està activada"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"L\'opció de trucada en espera de CDMA a IMS està desactivada"</string>
     <string name="updating_title" msgid="6130548922615719689">"Configuració de trucada"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Només l\'administrador pot canviar la configuració de trucades."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Configuració (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -286,6 +294,9 @@
     <string name="limited_sim_function_notification_title" msgid="612715399099846281">"Funcionalitat de la SIM limitada"</string>
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"Pot ser que les trucades i els serveis de dades de <xliff:g id="CARRIER_NAME">%1$s</xliff:g> es bloquegin mentre fas servir el número <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>."</string>
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"Les trucades i dades que t\'ofereix <xliff:g id="CARRIER_NAME">%1$s</xliff:g> es poden bloquejar quan tens una altra SIM."</string>
+    <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"S\'han trobat comptes SIP obsolets i s\'han suprimit"</string>
+    <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"La plataforma Android ja no admet les trucades SIP.\nEls teus comptes SIP existents <xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g> s\'han suprimit.\nConfirma la configuració predeterminada de trucades del teu compte."</string>
+    <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"Ves a la configuració"</string>
     <string name="data_usage_title" msgid="8438592133893837464">"Ús de dades de l\'aplicació"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"S\'han utilitzat <xliff:g id="ID_1">%1$s</xliff:g> en el període <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"Configuració avançada"</string>
@@ -307,7 +318,7 @@
     <string name="throttle_time_frame" msgid="1813452485948918791">"Període d\'ús de dades"</string>
     <string name="throttle_rate" msgid="7641913901133634905">"Política de velocitat de dades"</string>
     <string name="throttle_help" msgid="2624535757028809735">"Més informació"</string>
-    <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) del període <xliff:g id="USED_2">%3$s</xliff:g> màxim\nEl període següent comença d\'aquí a <xliff:g id="USED_3">%4$d</xliff:g> dies (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
+    <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) del període màxim de <xliff:g id="USED_2">%3$s</xliff:g>.\nEl període següent comença d\'aquí a <xliff:g id="USED_3">%4$d</xliff:g> dies (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
     <string name="throttle_data_usage_subtext" msgid="3185429653996709840">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) de període <xliff:g id="USED_2">%3$s</xliff:g> màxim"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"<xliff:g id="USED_0">%1$s</xliff:g> màxim superat\nVelocitat de dades reduïda a <xliff:g id="USED_1">%2$d</xliff:g> kbps"</string>
     <string name="throttle_time_frame_subtext" msgid="6462089615392402127">"<xliff:g id="USED_0">%1$d</xliff:g>٪ del cicle transcorregut\nEl període següent comença d\'aquí a <xliff:g id="USED_1">%2$d</xliff:g> dies (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
@@ -583,7 +594,7 @@
     <string name="hac_mode_summary" msgid="7774989500136009881">"Activa la compatibilitat amb audiòfons"</string>
     <string name="rtt_mode_title" msgid="3075948111362818043">"Trucada de text en temps real (RTT)"</string>
     <string name="rtt_mode_summary" msgid="8631541375609989562">"Permet l\'ús de missatges en una trucada de veu"</string>
-    <string name="rtt_mode_more_information" msgid="587500128658756318">"La funció RTT ofereix assistència als usuaris que són sords, tenen problemes d\'audició o alteracions de la parla, o bé que necessiten un text a banda de la veu.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Més informació&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - Les trucades RTT es desen en forma de transcripció.\n       &lt;br&gt; - Aquesta funció no està disponible per a videotrucades."</string>
+    <string name="rtt_mode_more_information" msgid="587500128658756318">"La funció RTT ofereix assistència als usuaris que són sords, tenen deficiències auditives o alteracions de la parla, o bé que necessiten un text a banda de la veu.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Més informació&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - Les trucades RTT es desen en forma de transcripció.\n       &lt;br&gt; - Aquesta funció no està disponible per a videotrucades."</string>
     <string name="no_rtt_when_roaming" msgid="5268008247378355389">"Nota: la funció RTT no està disponible en itinerància"</string>
   <string-array name="tty_mode_entries">
     <item msgid="3238070884803849303">"TTY desactivat"</item>
@@ -637,6 +648,12 @@
     <string name="alert_dialog_yes" msgid="3532525979632841417">"Sí"</string>
     <string name="alert_dialog_no" msgid="1075632654085988420">"No"</string>
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"Ignora"</string>
+    <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"El telèfon està en el mode de devolució de trucada d\'emergència"</string>
+    <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"Fins a les <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
+    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
+      <item quantity="other">El telèfon estarà en el mode de devolució de trucada d\'emergència durant <xliff:g id="COUNT_1">%s</xliff:g> minuts.\nVols sortir-ne ara?</item>
+      <item quantity="one">El telèfon estarà en el mode de devolució de trucada d\'emergència durant <xliff:g id="COUNT_0">%s</xliff:g> minut.\nVols sortir-ne ara?</item>
+    </plurals>
     <string name="voicemail_provider" msgid="4158806657253745294">"Servei"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"Configuració"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;No definit&gt;"</string>
@@ -861,7 +878,6 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"Subidentificador de la SIM de dades predeterminada:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Amplada de banda de baixada (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Amplada de banda de pujada (kbps):"</string>
-    <string name="radio_info_signal_location_label" msgid="6188435197086550049">"Informació d\'ubicació del mòbil (obsoleta):"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Configuració del canal físic de LTE:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Freqüència d\'actualització de la informació del mòbil:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Tota la informació de mesures del mòbil:"</string>
@@ -892,6 +908,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Actualitza"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"Activa o desactiva la comprovació de DNS"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"Informació/configuració específica d\'OEM"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC disponible:"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR amb restriccions:"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR disponible:"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"Estat d\'NR:"</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"Freqüència d\'NR:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Configura el mode de banda de senyal mòbil"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"S\'està carregant la llista de bandes…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Defineix"</string>
@@ -901,4 +922,7 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Informació del telèfon"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Informació de serveis de l\'operador"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Activa els serveis de l\'operador"</string>
+    <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"El senyal del Bluetooth és feble. Fes servir l\'altaveu."</string>
+    <string name="call_quality_notification_name" msgid="3476828289553948830">"Notificació sobre la qualitat de la trucada"</string>
+    <string name="notification_channel_sip_account" msgid="1261816025156179637">"Comptes SIP obsolets"</string>
 </resources>
