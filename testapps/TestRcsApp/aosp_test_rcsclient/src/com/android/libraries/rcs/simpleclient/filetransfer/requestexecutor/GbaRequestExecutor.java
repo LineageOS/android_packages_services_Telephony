@@ -24,9 +24,12 @@ import com.google.common.util.concurrent.ListeningExecutorService;
 import com.google.common.util.concurrent.MoreExecutors;
 
 import org.apache.http.HttpResponse;
+import org.apache.http.auth.AuthScheme;
 import org.apache.http.auth.AuthScope;
+import org.apache.http.auth.AuthState;
 import org.apache.http.auth.Credentials;
 import org.apache.http.client.methods.HttpRequestBase;
+import org.apache.http.client.protocol.ClientContext;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.protocol.HttpContext;
 
@@ -48,7 +51,8 @@ public class GbaRequestExecutor implements HttpRequestExecutor {
     @Override
     @SuppressWarnings("CheckReturnValue")
     public ListenableFuture<HttpResponse> executeAuthenticatedRequest(
-            DefaultHttpClient httpClient, HttpContext context, HttpRequestBase request) {
+            DefaultHttpClient httpClient, HttpContext context, HttpRequestBase request,
+            AuthScheme authScheme) {
 
         // Set authentication for the client.
         ListenableFuture<Credentials> credentialsFuture =
@@ -61,8 +65,13 @@ public class GbaRequestExecutor implements HttpRequestExecutor {
                             Log.i(TAG,
                                     "Obtained credentialsFuture, making the POST with credentials"
                                             + ".");
-                            httpClient.getCredentialsProvider().setCredentials(AuthScope.ANY,
-                                    credentials);
+                            httpClient.addRequestInterceptor((req, ctx) -> {
+                                AuthState authState = (AuthState) context.getAttribute(
+                                        ClientContext.TARGET_AUTH_STATE);
+                                authState.setAuthScope(AuthScope.ANY);
+                                authState.setAuthScheme(authScheme);
+                                authState.setCredentials(credentials);
+                            }, /* index= */ 0);
 
                             // Make the first request.
                             return executor.submit(() -> httpClient.execute(request, context));
