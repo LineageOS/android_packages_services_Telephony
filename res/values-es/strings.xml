@@ -182,7 +182,7 @@
     <string name="connect_later" msgid="1950138106010005425">"No se puede conectar a la red en este momento. Inténtalo de nuevo más tarde."</string>
     <string name="registration_done" msgid="5337407023566953292">"Conexión con la red establecida"</string>
     <string name="already_auto" msgid="8607068290733079336">"Ya estás en la selección automática."</string>
-    <string name="select_automatically" msgid="779750291257872651">"Seleccionar una red automáticamente"</string>
+    <string name="select_automatically" msgid="779750291257872651">"Seleccionar red automáticamente"</string>
     <string name="manual_mode_disallowed_summary" msgid="3970048592179890197">"No disponible cuando se ha conectado con %1$s"</string>
     <string name="network_select_title" msgid="4117305053881611988">"Red"</string>
     <string name="register_automatically" msgid="3907580547590554834">"Registro automático..."</string>
