@@ -96,7 +96,8 @@ public class CallComposerPictureManager {
                 InputStream input,
                 Executor executor,
                 OutcomeReceiver<Uri, CallLog.CallComposerLoggingException> callback) {
-            CallLog.storeCallComposerPictureAsUser(context, user, input, executor, callback);
+            CallLog.storeCallComposerPicture(context.createContextAsUser(user, 0),
+                    input, executor, callback);
         }
     }
 
