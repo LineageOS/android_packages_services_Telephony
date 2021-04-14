@@ -285,7 +285,7 @@
     <string name="roaming_enable" msgid="6853685214521494819">"Роуминг кезінде дерек тасымалдау қызметтеріне қосылу"</string>
     <string name="roaming_disable" msgid="8856224638624592681">"Роуминг кезінде дерек тасымалдау қызметтеріне қосылу"</string>
     <string name="roaming_reenable_message" msgid="1951802463885727915">"Роуминг өшірулі. Қосу үшін түртіңіз."</string>
-    <string name="roaming_enabled_message" msgid="9022249120750897">"Роуминг ақылары алынуы мүмкін. Өзгерту үшін түртіңіз."</string>
+    <string name="roaming_enabled_message" msgid="9022249120750897">"Роуминг үшін ақы алынуы мүмкін. Өзгерту үшін түртіңіз."</string>
     <string name="roaming_notification_title" msgid="3590348480688047320">"Ұялы байланыс жоғалып кетті"</string>
     <string name="roaming_on_notification_title" msgid="7451473196411559173">"Деректер роумингі қосулы"</string>
     <string name="roaming_warning" msgid="7855681468067171971">"Қомақты ақы алынуы мүмкін."</string>

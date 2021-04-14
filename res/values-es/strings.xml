@@ -182,7 +182,7 @@
     <string name="connect_later" msgid="1950138106010005425">"No se puede conectar a la red en este momento. Inténtalo de nuevo más tarde."</string>
     <string name="registration_done" msgid="5337407023566953292">"Conexión con la red establecida"</string>
     <string name="already_auto" msgid="8607068290733079336">"Ya estás en la selección automática."</string>
-    <string name="select_automatically" msgid="779750291257872651">"Seleccionar una red automáticamente"</string>
+    <string name="select_automatically" msgid="779750291257872651">"Seleccionar red automáticamente"</string>
     <string name="manual_mode_disallowed_summary" msgid="3970048592179890197">"No disponible cuando se ha conectado con %1$s"</string>
     <string name="network_select_title" msgid="4117305053881611988">"Red"</string>
     <string name="register_automatically" msgid="3907580547590554834">"Registro automático..."</string>
@@ -308,7 +308,7 @@
     <string name="data_usage_disable_mobile" msgid="5669109209055988308">"¿Quieres desactivar los datos móviles?"</string>
     <string name="sim_selection_required_pref" msgid="6985901872978341314">"Debes seleccionar una opción"</string>
     <string name="sim_change_data_title" msgid="9142726786345906606">"¿Cambiar la SIM de datos?"</string>
-    <string name="sim_change_data_message" msgid="3567358694255933280">"¿Quieres usar la tarjeta <xliff:g id="NEW_SIM">%1$s</xliff:g> en lugar de <xliff:g id="OLD_SIM">%2$s</xliff:g> para los datos móviles?"</string>
+    <string name="sim_change_data_message" msgid="3567358694255933280">"¿Usar la tarjeta <xliff:g id="NEW_SIM">%1$s</xliff:g> en lugar de <xliff:g id="OLD_SIM">%2$s</xliff:g> para los datos móviles?"</string>
     <string name="wifi_calling_settings_title" msgid="5800018845662016507">"Llamadas por Wi-Fi"</string>
     <string name="video_calling_settings_title" msgid="342829454913266078">"Videollamadas a través del operador"</string>
     <string name="gsm_umts_options" msgid="4968446771519376808">"Opciones GSM/UMTS"</string>
@@ -483,7 +483,7 @@
     <string name="simContacts_empty" msgid="1135632055473689521">"No hay ningún contacto en la tarjeta SIM."</string>
     <string name="simContacts_title" msgid="2714029230160136647">"Seleccionar contactos para importar"</string>
     <string name="simContacts_airplaneMode" msgid="4654884030631503808">"Desactiva el modo avión para importar contactos de la tarjeta SIM."</string>
-    <string name="enable_pin" msgid="967674051730845376">"Habilitar/inhabilitar PIN de tarjeta SIM"</string>
+    <string name="enable_pin" msgid="967674051730845376">"Habilitar/Inhabilitar PIN de tarjeta SIM"</string>
     <string name="change_pin" msgid="3657869530942905790">"Cambiar PIN de tarjeta SIM"</string>
     <string name="enter_pin_text" msgid="3182311451978663356">"PIN de la tarjeta SIM:"</string>
     <string name="oldPinLabel" msgid="8618515202411987721">"PIN antiguo"</string>
