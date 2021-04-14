@@ -64,11 +64,12 @@ public class GbaAuthenticationProvider {
             Log.i(TAG, "organization:" + organization + ", protocol:" + protocol + ", cipherSuite:"
                     + cipherSuite + ", contentServerUrl:" + contentServerUrl);
 
-            builder.setOrg(UaSecurityProtocolIdentifier.ORG_3GPP)
-                    .setProtocol(
-                            UaSecurityProtocolIdentifier.UA_SECURITY_PROTOCOL_3GPP_TLS_DEFAULT);
+            builder.setOrg(organization)
+                    .setProtocol(protocol);
             if (cipherSuite == TlsParams.TLS_NULL_WITH_NULL_NULL) {
                 builder.setTlsCipherSuite(TlsParams.TLS_RSA_WITH_AES_128_CBC_SHA);
+            } else {
+                builder.setTlsCipherSuite(cipherSuite);
             }
         } catch (IllegalArgumentException e) {
             Log.e(TAG, e.getMessage());
