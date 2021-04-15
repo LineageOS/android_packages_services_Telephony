@@ -156,6 +156,7 @@ public class FileUploadActivity extends AppCompatActivity {
                     Log.i(TAG, "FileTransferController null");
                     return;
                 }
+                mUploadResult.setText("");
                 Futures.addCallback(
                         fileTransferController.uploadFile(UUID.randomUUID().toString(),
                                 mFile),
