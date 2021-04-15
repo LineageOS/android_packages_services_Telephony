@@ -19,6 +19,7 @@ package com.android.libraries.rcs.simpleclient.filetransfer.requestexecutor;
 import com.google.common.util.concurrent.ListenableFuture;
 
 import org.apache.http.HttpResponse;
+import org.apache.http.auth.AuthScheme;
 import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.protocol.HttpContext;
@@ -29,6 +30,7 @@ import java.io.IOException;
 public interface HttpRequestExecutor {
 
     ListenableFuture<HttpResponse> executeAuthenticatedRequest(
-            DefaultHttpClient httpClient, HttpContext context, HttpRequestBase request)
+            DefaultHttpClient httpClient, HttpContext context, HttpRequestBase request,
+            AuthScheme authScheme)
             throws IOException;
 }

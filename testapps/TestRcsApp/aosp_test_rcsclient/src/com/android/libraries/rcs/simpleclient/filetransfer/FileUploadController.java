@@ -34,10 +34,11 @@ import com.google.common.util.concurrent.ListeningExecutorService;
 import com.google.common.util.concurrent.MoreExecutors;
 
 import org.apache.http.Header;
-import org.apache.http.HeaderElement;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.auth.AUTH;
+import org.apache.http.auth.AuthScheme;
+import org.apache.http.auth.MalformedChallengeException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.params.AuthPolicy;
@@ -96,7 +97,7 @@ final class FileUploadController {
         ListenableFuture<HttpResponse> initialResponseFuture = sendEmptyPost(httpClient);
 
         BasicHttpContext httpContext = new BasicHttpContext();
-        ListenableFuture<Void> prepareAuthFuture =
+        ListenableFuture<AuthScheme> prepareAuthFuture =
                 Futures.transform(
                         initialResponseFuture,
                         initialResponse -> {
@@ -117,17 +118,16 @@ final class FileUploadController {
                             // Override nonce and realm in the HTTP context.
                             RFC2617Scheme authScheme = createAuthScheme(initialResponse);
                             httpContext.setAttribute(ATTRIBUTE_PREEMPTIVE_AUTH, authScheme);
-
-                            return null;
+                            return authScheme;
                         },
                         executor);
 
         // Executing the post with credentials.
         return Futures.transformAsync(
                 prepareAuthFuture,
-                unused ->
+                authScheme ->
                         executeAuthenticatedPost(
-                                httpClient, httpContext, transactionId, file),
+                                httpClient, httpContext, authScheme, transactionId, file),
                 executor);
     }
 
@@ -141,27 +141,12 @@ final class FileUploadController {
         String scheme = authHeader.getValue();
 
         if (scheme.contains(AuthPolicy.DIGEST)) {
-            HeaderElement[] elements = authHeader.getElements();
-
-            if (elements == null || elements.length == 0) {
-                throw new IllegalArgumentException(
-                        "Unable to find header elements. Cannot perform Digest authentication.");
-            }
-
             DigestScheme digestScheme = new DigestScheme();
-            for (HeaderElement element : elements) {
-                // TODO(b/180601658): Add checks for the realm, which should start with
-                //  3GPP-bootstrapping@.
-                if (element.getName().contains(PARAM_REALM)) {
-                    digestScheme.overrideParamter(PARAM_REALM, element.getValue());
-                    Log.i(TAG, "Realm: " + element.getValue());
-                }
-                if (element.getName().contains(PARAM_NONCE)) {
-                    digestScheme.overrideParamter(PARAM_NONCE, element.getValue());
-                    Log.i(TAG, "Nonce: " + element.getValue());
-                }
+            try {
+                digestScheme.processChallenge(authHeader);
+            } catch (MalformedChallengeException e) {
+                throw new IllegalArgumentException(e);
             }
-
             return digestScheme;
         } else {
             throw new IllegalArgumentException("Unable to create authentication scheme " + scheme);
@@ -195,13 +180,14 @@ final class FileUploadController {
     private ListenableFuture<String> executeAuthenticatedPost(
             DefaultHttpClient httpClient,
             HttpContext context,
+            AuthScheme authScheme,
             String transactionId,
             File file)
             throws IOException {
 
         Part[] parts = {
                 new StringPart(TRANSFER_ID_PART_NAME, transactionId),
-                new FilePart(file.getName(), file)
+                new FilePart(FILE_PART_NAME, file)
         };
         MultipartEntity entity = new MultipartEntity(parts);
 
@@ -211,7 +197,8 @@ final class FileUploadController {
         Log.i(TAG, "Created file upload POST:" + contentServerUri);
 
         ListenableFuture<HttpResponse> responseFuture =
-                requestExecutor.executeAuthenticatedRequest(httpClient, context, postRequest);
+                requestExecutor.executeAuthenticatedRequest(httpClient, context, postRequest,
+                        authScheme);
 
         Futures.addCallback(
                 responseFuture,
@@ -227,7 +214,7 @@ final class FileUploadController {
 
                     @Override
                     public void onFailure(Throwable t) {
-                        Log.i(TAG, "onFailure");
+                        Log.e(TAG, "onFailure", t);
                         throw new IllegalArgumentException(t);
                     }
                 },
