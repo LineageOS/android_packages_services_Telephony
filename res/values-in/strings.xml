@@ -282,8 +282,8 @@
     <string name="data_enable_summary" msgid="696860063456536557">"Izinkan penggunaan data"</string>
     <string name="dialog_alert_title" msgid="5260471806940268478">"Perhatian"</string>
     <string name="roaming" msgid="1576180772877858949">"Roaming"</string>
-    <string name="roaming_enable" msgid="6853685214521494819">"Sambungkan ke layanan data ketika roaming"</string>
-    <string name="roaming_disable" msgid="8856224638624592681">"Sambungkan ke layanan data ketika roaming"</string>
+    <string name="roaming_enable" msgid="6853685214521494819">"Hubungkan ke layanan data ketika roaming"</string>
+    <string name="roaming_disable" msgid="8856224638624592681">"Hubungkan ke layanan data ketika roaming"</string>
     <string name="roaming_reenable_message" msgid="1951802463885727915">"Roaming data dinonaktifkan. Ketuk untuk mengaktifkan."</string>
     <string name="roaming_enabled_message" msgid="9022249120750897">"Biaya roaming dapat berlaku. Ketuk untuk mengubah."</string>
     <string name="roaming_notification_title" msgid="3590348480688047320">"Koneksi data seluler terputus"</string>
