@@ -515,6 +515,8 @@
     <string name="puk2_requested" msgid="6992374450720307514">"လျှို့ဝှက်စကားလုံး မမှန်ကန်ပါ။ SIM ယခုသော့ခတ်လိုက်ပါပြီ။ PUK2 ရိုက်ထည့်ပါ။"</string>
     <string name="puk2_blocked" msgid="3131139031779319911">"PUK2 ကို ထာ၀ရ ပိတ်ထားပါသည်"</string>
     <string name="pin2_attempts" msgid="5625178102026453023">\n"သင့်တွင် လက်ကျန် ကြိုးစားခွင့် <xliff:g id="NUMBER">%d</xliff:g> ရှိသည်။"</string>
+    <!-- no translation found for puk2_locked (6497760825455461057) -->
+    <skip />
     <string name="pin2_unblocked" msgid="4481107908727789303">"ပင်နံပါတ်2 အား အဆက်မဖြတ်တော့ပါ။"</string>
     <string name="pin2_error_exception" msgid="8116103864600823641">"ကွန်ရက် သို့မဟုတ် ဆင်းမ်ကဒ်မှားယွင်းမှု"</string>
     <string name="doneButton" msgid="7371209609238460207">"ပြီးပါပြီ"</string>
