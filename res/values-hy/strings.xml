@@ -284,7 +284,7 @@
     <string name="roaming" msgid="1576180772877858949">"Ռոումինգ"</string>
     <string name="roaming_enable" msgid="6853685214521494819">"Միանալ տվյալների փոխանցման ծառայություններին ռոումինգում"</string>
     <string name="roaming_disable" msgid="8856224638624592681">"Միանալ տվյալների փոխանցման ծառայություններին ռոումինգում"</string>
-    <string name="roaming_reenable_message" msgid="1951802463885727915">"Ռոումինգում բջջային ինտերնետն անջատած է: Հպեք՝ միացնելու համար:"</string>
+    <string name="roaming_reenable_message" msgid="1951802463885727915">"Ռոումինգում բջջային ինտերնետն անջատված է: Հպեք՝ միացնելու համար:"</string>
     <string name="roaming_enabled_message" msgid="9022249120750897">"Ռոումինգի համար կարող է գումար գանձվել: Հպեք՝ փոփոխելու համար:"</string>
     <string name="roaming_notification_title" msgid="3590348480688047320">"Բջջային ինտերնետը կորավ"</string>
     <string name="roaming_on_notification_title" msgid="7451473196411559173">"Ինտերնետ ռոումինգը միացված է"</string>
@@ -515,6 +515,7 @@
     <string name="puk2_requested" msgid="6992374450720307514">"Գաղտնաբառը սխալ է: SIM քարտն այժմ կողպված է: Մուտքագրեք PUK2 կոդը:"</string>
     <string name="puk2_blocked" msgid="3131139031779319911">"PUK2-ն ընդմիշտ արգելափակված է:"</string>
     <string name="pin2_attempts" msgid="5625178102026453023">\n"Ձեզ մնացել է <xliff:g id="NUMBER">%d</xliff:g> փորձ:"</string>
+    <string name="puk2_locked" msgid="6497760825455461057">"Կողպված է PUK2-ով։ Ապակողպելու համար կապվեք ձեր օպերատորի հետ։"</string>
     <string name="pin2_unblocked" msgid="4481107908727789303">"PIN2 կոդն այլևս արգելափակված չէ"</string>
     <string name="pin2_error_exception" msgid="8116103864600823641">"Ցանցի կամ SIM քարտի սխալ"</string>
     <string name="doneButton" msgid="7371209609238460207">"Պատրաստ է"</string>
