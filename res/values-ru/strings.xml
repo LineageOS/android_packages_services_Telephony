@@ -515,6 +515,8 @@
     <string name="puk2_requested" msgid="6992374450720307514">"Неверный пароль. SIM-карта заблокирована. Введите код PUK2."</string>
     <string name="puk2_blocked" msgid="3131139031779319911">"Код PUK2 заблокирован навсегда"</string>
     <string name="pin2_attempts" msgid="5625178102026453023">\n"Осталось попыток: <xliff:g id="NUMBER">%d</xliff:g>."</string>
+    <!-- no translation found for puk2_locked (6497760825455461057) -->
+    <skip />
     <string name="pin2_unblocked" msgid="4481107908727789303">"Код PIN2 разблокирован."</string>
     <string name="pin2_error_exception" msgid="8116103864600823641">"Ошибка сети или SIM-карты"</string>
     <string name="doneButton" msgid="7371209609238460207">"Готово"</string>
