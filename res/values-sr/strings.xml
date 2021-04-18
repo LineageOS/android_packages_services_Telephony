@@ -472,9 +472,9 @@
     <string name="simContacts_empty" msgid="1135632055473689521">"Нема контаката на SIM картици."</string>
     <string name="simContacts_title" msgid="2714029230160136647">"Избор контаката за увоз"</string>
     <string name="simContacts_airplaneMode" msgid="4654884030631503808">"Искључите режим рада у авиону да бисте увезли контакте са SIM картице."</string>
-    <string name="enable_pin" msgid="967674051730845376">"Омогућавање/онемогућавање SIM PIN-а"</string>
-    <string name="change_pin" msgid="3657869530942905790">"Промена SIM PIN-а"</string>
-    <string name="enter_pin_text" msgid="3182311451978663356">"SIM PIN:"</string>
+    <string name="enable_pin" msgid="967674051730845376">"Омогућавање/онемогућавање PIN-а за SIM"</string>
+    <string name="change_pin" msgid="3657869530942905790">"Промена PIN-а за SIM"</string>
+    <string name="enter_pin_text" msgid="3182311451978663356">"PIN за SIM:"</string>
     <string name="oldPinLabel" msgid="8618515202411987721">"Стари PIN"</string>
     <string name="newPinLabel" msgid="3585899083055354732">"Нови PIN"</string>
     <string name="confirmPinLabel" msgid="7783531218662473778">"Потврдите нови PIN"</string>

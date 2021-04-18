@@ -274,8 +274,8 @@
     <string name="data_enable_summary" msgid="696860063456536557">"Дайындарды пайдаланууга уруксат берүү"</string>
     <string name="dialog_alert_title" msgid="5260471806940268478">"Көңүл буруңуз"</string>
     <string name="roaming" msgid="1576180772877858949">"Роуминг"</string>
-    <string name="roaming_enable" msgid="6853685214521494819">"Роуминг учурунда дайын-даректерди өткөрүүчү кызматтарга туташуу"</string>
-    <string name="roaming_disable" msgid="8856224638624592681">"Роуминг учурунда дайын-даректерди өткөрүүчү кызматтарга туташуу"</string>
+    <string name="roaming_enable" msgid="6853685214521494819">"Роуминг учурунда маалыматтарды өткөрүүчү кызматтарга туташасыз"</string>
+    <string name="roaming_disable" msgid="8856224638624592681">"Роуминг учурунда маалыматтарды өткөрүүчү кызматтарга туташасыз"</string>
     <string name="roaming_reenable_message" msgid="1951802463885727915">"Интернет-роуминг өчүрүлгөн. Күйгүзүү үчүн басыңыз."</string>
     <string name="roaming_enabled_message" msgid="9022249120750897">"Роуминг акысын төлөп калышыңыз мүмкүн. Өзгөртүү үчүн таптап коюңуз."</string>
     <string name="roaming_notification_title" msgid="3590348480688047320">"Мобилдик интернет туташуусу үзүлдү"</string>
@@ -400,7 +400,7 @@
     <string name="enable_disable_multi_category" msgid="5958248155437940625">"Мульти-категория"</string>
     <string name="multi_category_enable" msgid="4531915767817483960">"Мульти-категория иштетилген"</string>
     <string name="multi_category_disable" msgid="6325934413701238104">"Мульти-категория өчүрүлгөн"</string>
-    <string name="network_recommended" msgid="3444321100580250926">" (сунушталган)"</string>
+    <string name="network_recommended" msgid="3444321100580250926">" (сунушталат)"</string>
     <string name="network_lte" msgid="7206879277095094280">"LTE (сунушталат)"</string>
     <string name="network_4G" msgid="6800527815504223913">"4G (сунушталат)"</string>
     <string name="network_global" msgid="3289646154407617631">"Дүйнө жүзү"</string>
@@ -661,7 +661,7 @@
     <string name="preference_category_ringtone" msgid="8787281191375434976">"Рингтон жана Титирөө"</string>
     <string name="pstn_connection_service_label" msgid="9200102709997537069">"Кыналган SIM карталар"</string>
     <string name="enable_video_calling_title" msgid="7246600931634161830">"Видео чалууну күйгүзүү"</string>
-    <string name="enable_video_calling_dialog_msg" msgid="7141478720386203540">"Видео чалууну күйгүзүү үчүн, тармак жөндөөлөрүнөн Жакшыртылган 4G LTE режимин иштетишиңиз керек."</string>
+    <string name="enable_video_calling_dialog_msg" msgid="7141478720386203540">"Видео чалууну күйгүзүү үчүн тармак жөндөөлөрүнөн Жакшыртылган 4G LTE режимин иштетишиңиз керек."</string>
     <string name="enable_video_calling_dialog_settings" msgid="8697890611305307110">"Тармак жөндөөлөрү"</string>
     <string name="enable_video_calling_dialog_close" msgid="4298929725917045270">"Жабуу"</string>
     <string name="sim_label_emergency_calls" msgid="9078241989421522310">"Шашылыш чалуулар"</string>

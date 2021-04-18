@@ -276,7 +276,7 @@
     <string name="roaming" msgid="1576180772877858949">"Ռոումինգ"</string>
     <string name="roaming_enable" msgid="6853685214521494819">"Միանալ տվյալների փոխանցման ծառայություններին ռոումինգում"</string>
     <string name="roaming_disable" msgid="8856224638624592681">"Միանալ տվյալների փոխանցման ծառայություններին ռոումինգում"</string>
-    <string name="roaming_reenable_message" msgid="1951802463885727915">"Ռոումինգում բջջային ինտերնետն անջատած է: Հպեք՝ միացնելու համար:"</string>
+    <string name="roaming_reenable_message" msgid="1951802463885727915">"Ռոումինգում բջջային ինտերնետն անջատված է: Հպեք՝ միացնելու համար:"</string>
     <string name="roaming_enabled_message" msgid="9022249120750897">"Ռոումինգի համար կարող է գումար գանձվել: Հպեք՝ փոփոխելու համար:"</string>
     <string name="roaming_notification_title" msgid="3590348480688047320">"Բջջային ինտերնետը կորավ"</string>
     <string name="roaming_on_notification_title" msgid="7451473196411559173">"Ինտերնետ ռոումինգը միացված է"</string>
