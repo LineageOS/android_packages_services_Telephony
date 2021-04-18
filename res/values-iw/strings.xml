@@ -515,6 +515,8 @@
     <string name="puk2_requested" msgid="6992374450720307514">"‏סיסמה שגויה. ה-SIM נעול כעת. הזן PUK2."</string>
     <string name="puk2_blocked" msgid="3131139031779319911">"‏PUK2 נחסם לצמיתות."</string>
     <string name="pin2_attempts" msgid="5625178102026453023">\n"נותרו לך עוד <xliff:g id="NUMBER">%d</xliff:g> ניסיונות."</string>
+    <!-- no translation found for puk2_locked (6497760825455461057) -->
+    <skip />
     <string name="pin2_unblocked" msgid="4481107908727789303">"‏PIN2 אינו חסום עוד"</string>
     <string name="pin2_error_exception" msgid="8116103864600823641">"‏שגיאת רשת או כרטיס SIM"</string>
     <string name="doneButton" msgid="7371209609238460207">"סיום"</string>
