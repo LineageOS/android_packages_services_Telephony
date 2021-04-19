@@ -1645,8 +1645,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     if (ar.exception == null && ar.result != null) {
                         request.result = ar.result;
                     } else {
-                        request.result = new IllegalArgumentException(
-                                "Failed to retrieve system selection channels");
+                        request.result = new IllegalStateException(
+                                "Failed to retrieve system selecton channels");
                         if (ar.result == null) {
                             loge("getSystemSelectionChannels: Empty response");
                         } else {
@@ -9309,9 +9309,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         WorkSource workSource = getWorkSource(Binder.getCallingUid());
         final long identity = Binder.clearCallingIdentity();
         try {
-            List<RadioAccessSpecifier> specifiers =
-                    (List<RadioAccessSpecifier>) sendRequest(CMD_GET_SYSTEM_SELECTION_CHANNELS,
-                    null, subId, workSource);
+            Object result = sendRequest(CMD_GET_SYSTEM_SELECTION_CHANNELS, null, subId, workSource);
+            if (result instanceof IllegalStateException) {
+                throw (IllegalStateException) result;
+            }
+            List<RadioAccessSpecifier> specifiers = (List<RadioAccessSpecifier>) result;
             if (DBG) log("getSystemSelectionChannels: " + specifiers);
             return specifiers;
         } finally {
