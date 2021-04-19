@@ -95,7 +95,7 @@
     <string name="sum_loading_settings" msgid="434063780286688775">"सेटिङहरू लोड हुँदै..."</string>
     <string name="sum_hide_caller_id" msgid="131100328602371933">"बहिर्गमन कलहरूमा नम्बर लुकाइएको"</string>
     <string name="sum_show_caller_id" msgid="3571854755324664591">"बहिर्गमन कलहरूमा प्रदर्शित नम्बर"</string>
-    <string name="sum_default_caller_id" msgid="1767070797135682959">"बहिर्गमन कलमा मेरो नम्बर देखाउन पूर्वनिर्धारित अपरेटर सेटिङहरू प्रयोग गर्नुहोस्"</string>
+    <string name="sum_default_caller_id" msgid="1767070797135682959">"बहिर्गमन कलमा मेरो नम्बर देखाउन डिफल्ट अपरेटर सेटिङहरू प्रयोग गर्नुहोस्"</string>
     <string name="labelCW" msgid="8449327023861428622">"कल प्रतीक्षा गर्दै"</string>
     <string name="sum_cw_enabled" msgid="3977308526187139996">"कल गरेको बखत मलाई आगमन कलको जानकारी गराउनुहोस्"</string>
     <string name="sum_cw_disabled" msgid="3658094589461768637">"कल गरेको बेलामा आगमन कलहरूको बारेमा मलाई जानकारी गराउनुहोस्"</string>
@@ -143,7 +143,7 @@
     <string name="disable" msgid="1122698860799462116">"निस्कृय पार्नुहोस्"</string>
     <string name="change_num" msgid="6982164494063109334">"अपडेट गर्नुहोस्"</string>
   <string-array name="clir_display_values">
-    <item msgid="8477364191403806960">"नेटवर्क पूर्वनिर्धारित"</item>
+    <item msgid="8477364191403806960">"नेटवर्क डिफल्ट"</item>
     <item msgid="6813323051965618926">"सङ्ख्या लुकाउनुहोस्"</item>
     <item msgid="9150034130629852635">"सङ्ख्या देखाउनुहोस्"</item>
   </string-array>
@@ -473,7 +473,7 @@
     <string name="simContacts_title" msgid="2714029230160136647">"सम्पर्कहरू आयात गर्न चयन गर्नुहोस्"</string>
     <string name="simContacts_airplaneMode" msgid="4654884030631503808">"SIM कार्डबाट सम्पर्कहरू आयात गर्न हवाइजहाज मोड बन्द गर्नुहोस्।"</string>
     <string name="enable_pin" msgid="967674051730845376">"SIM PIN सक्षम/अक्षम गर्नुहोस्"</string>
-    <string name="change_pin" msgid="3657869530942905790">"SIM PIN परिवर्तन गर्नुहोस्"</string>
+    <string name="change_pin" msgid="3657869530942905790">"SIM को PIN परिवर्तन गर्नुहोस्"</string>
     <string name="enter_pin_text" msgid="3182311451978663356">"SIM PIN:"</string>
     <string name="oldPinLabel" msgid="8618515202411987721">"पुरानो PIN"</string>
     <string name="newPinLabel" msgid="3585899083055354732">"नयाँ PIN"</string>
@@ -556,7 +556,7 @@
     <string name="dial_emergency_error" msgid="825822413209026039">"कल गर्न सकिँदैन। <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> आपत्‌कालीन नम्बर होइन।"</string>
     <string name="dial_emergency_empty_error" msgid="2785803395047793634">"कल गर्न सकिँदैन। आपत्‌कालीन नम्बर डायल गर्नुहोस्।"</string>
     <string name="dial_emergency_calling_not_available" msgid="6485846193794727823">"आपत्‌कालीन कल सेवा उपलब्ध छैन"</string>
-    <string name="pin_puk_system_user_only" msgid="1045147220686867922">"यन्त्रका मालिक मात्र PIN/PUK कोडहरू प्रविष्टि गर्न सक्नुहुन्छ।"</string>
+    <string name="pin_puk_system_user_only" msgid="1045147220686867922">"डिभाइसका मालिक मात्र PIN/PUK कोडहरू प्रविष्टि गर्न सक्नुहुन्छ।"</string>
     <string name="police_type_description" msgid="2819533883972081757">"प्रहरी"</string>
     <string name="ambulance_type_description" msgid="6798237503553180461">"एम्बुलेन्स सेवा"</string>
     <string name="fire_type_description" msgid="6565200468934914930">"दमकल सेवा"</string>
@@ -581,7 +581,7 @@
     <string name="failedToImportSingleContactMsg" msgid="228095510489830266">"सम्पर्क आयात गर्न असफल"</string>
     <string name="hac_mode_title" msgid="4127986689621125468">"श्रवणका लागि सहयोगी यन्त्रहरू"</string>
     <string name="hac_mode_summary" msgid="7774989500136009881">"श्रवण सहायता अनुकूलता खोल्नुहोस्"</string>
-    <string name="rtt_mode_title" msgid="3075948111362818043">"द्रुत पाठ सन्देश (RTT) कल"</string>
+    <string name="rtt_mode_title" msgid="3075948111362818043">"द्रुत टेक्स्ट म्यासेज (RTT) कल"</string>
     <string name="rtt_mode_summary" msgid="8631541375609989562">"भ्वाइस कलभित्रै सन्देश प्रवाह गर्ने अनुमति दिनुहोस्"</string>
     <string name="rtt_mode_more_information" msgid="587500128658756318">"RTT ले बहिरा, सुन्नमा कठिन हुने, बोल्न नसक्ने र आवाज मात्र नभई कल गर्दा थप कुराहरू चाहिने  मान्छेहरूलाई सहायता गर्छ!&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;थप जान्नुहोस्&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT कलहरूलाई सन्देशसम्बन्धी ट्रान्सक्रिप्टका रूपमा सुरक्षित गरिन्छ\n      &lt;br&gt; - RTT भिडियो कलहरूमा उपलब्ध छैन"</string>
     <string name="no_rtt_when_roaming" msgid="5268008247378355389">"टिपोट: रोमिङमा हुँदा RTT उपलब्ध हुँदैन"</string>
@@ -645,7 +645,7 @@
     </plurals>
     <string name="voicemail_provider" msgid="4158806657253745294">"सेवा"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"सेटअप"</string>
-    <string name="voicemail_number_not_set" msgid="8831561283386938155">"सेट गरेको छैन"</string>
+    <string name="voicemail_number_not_set" msgid="8831561283386938155">"सेट गरिएको छैन"</string>
     <string name="other_settings" msgid="8895088007393598447">"अन्य कल सेटिङहरू"</string>
     <string name="calling_via_template" msgid="1791323450703751750">"<xliff:g id="PROVIDER_NAME">%s</xliff:g> को मार्फत कल गर्दै"</string>
     <string name="contactPhoto" msgid="7885089213135154834">"सम्पर्क फोटो"</string>
@@ -810,7 +810,7 @@
     <string name="supp_service_forwarded_call" msgid="6475776013771821457">"कल फर्वार्ड गरियो।"</string>
     <string name="supp_service_conference_call" msgid="4004193534408317148">"सम्मेलन कलमा सामेल हुँदै छ।"</string>
     <string name="supp_service_held_call_released" msgid="2847835124639112410">"होल्डमा राखिएको कललाई विच्छेद गरियो।"</string>
-    <string name="callFailed_otasp_provisioning_in_process" msgid="3345666183602879326">"यन्त्रमा हाल सेवाहरूको व्यवस्था गरिँदै हुनाले कल गर्न सकिँदैन।"</string>
+    <string name="callFailed_otasp_provisioning_in_process" msgid="3345666183602879326">"डिभाइसमा हाल सेवाहरूको व्यवस्था गरिँदै हुनाले कल गर्न सकिँदैन।"</string>
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"अर्को बहिर्गमन कल पहिले नै डायल भएका हुनाले कल गर्न सकिँदैन।"</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"जवाफ नदिइएको आगमन कल जारी रहेकाले नयाँ कल गर्न सकिँदैन। कुनै नयाँ कल गर्नुअघि आगमन कलको जवाफ दिनुहोस् वा त्यसलाई अस्वीकार गर्नुहोस्।"</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"ro.telephony.disable-call प्रणालीको गुण प्रयोग गरेर कल गर्ने सुविधा असक्षम पारिएको हुनाले कल गर्न सकिँदैन।"</string>
@@ -864,7 +864,7 @@
     <string name="radioInfo_lac" msgid="3892986460272607013">"LAC"</string>
     <string name="radioInfo_cid" msgid="1423185536264406705">"CID"</string>
     <string name="radio_info_subid" msgid="6839966868621703203">"हालको subId:"</string>
-    <string name="radio_info_dds" msgid="1122593144425697126">"पूर्वनिर्धारित डेटा SIM को SubId:"</string>
+    <string name="radio_info_dds" msgid="1122593144425697126">"डिफल्ट डेटा SIM को SubId:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DL ब्यान्डविथ (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL व्यान्डविथ (kbps):"</string>
     <string name="radio_info_signal_location_label" msgid="6188435197086550049">"सेलको स्थानबारे जानकारी (चल्तीबाट हटाइएको):"</string>

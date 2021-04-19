@@ -30,7 +30,7 @@
     <string name="mmiStarted" msgid="9212975136944568623">"MMI-koodi aloitettu"</string>
     <string name="ussdRunning" msgid="1163586813106772717">"USSD-koodi käytössä..."</string>
     <string name="mmiCancelled" msgid="5339191899200678272">"MMI-koodi peruutettu"</string>
-    <string name="cancel" msgid="8984206397635155197">"Peruuta"</string>
+    <string name="cancel" msgid="8984206397635155197">"Peru"</string>
     <string name="enter_input" msgid="6193628663039958990">"USSD-viestin pituuden täytyy olla <xliff:g id="MIN_LEN">%1$d</xliff:g>–<xliff:g id="MAX_LEN">%2$d</xliff:g> merkkiä. Yritä uudelleen."</string>
     <string name="manageConferenceLabel" msgid="8415044818156353233">"Hallinnoi puhelinneuvottelua"</string>
     <string name="ok" msgid="7818974223666140165">"OK"</string>
@@ -682,7 +682,7 @@
     <string name="callFailed_wfc_service_not_available_in_this_location" msgid="3624536608369524988">"Wi-Fi-puheluja ei voi soittaa tässä paikassa."</string>
     <string name="change_pin_title" msgid="3564254326626797321">"Vaihda vastaajan PIN-koodi."</string>
     <string name="change_pin_continue_label" msgid="5177011752453506371">"Jatka"</string>
-    <string name="change_pin_cancel_label" msgid="2301711566758827936">"Peruuta"</string>
+    <string name="change_pin_cancel_label" msgid="2301711566758827936">"Peru"</string>
     <string name="change_pin_ok_label" msgid="6861082678817785330">"OK"</string>
     <string name="change_pin_enter_old_pin_header" msgid="853151335217594829">"Vahvista vanha PIN-koodi."</string>
     <string name="change_pin_enter_old_pin_hint" msgid="8801292976275169367">"Jatka antamalla vastaajasi PIN-koodi."</string>
@@ -831,7 +831,7 @@
     <string name="dsds_dialog_title" msgid="8494569893941847575">"Käynnistä uudelleen?"</string>
     <string name="dsds_dialog_message" msgid="4047480385678538850">"Laite on käynnistettävä uudelleen asetuksen muuttamiseksi."</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"Käynnistä uudelleen"</string>
-    <string name="dsds_dialog_cancel" msgid="3245958947099586655">"Peruuta"</string>
+    <string name="dsds_dialog_cancel" msgid="3245958947099586655">"Peru"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"Mobiiliradion voimakkuus"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"Näytä SIM-kortin osoitekirja"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"Näytä sallitut numerot"</string>

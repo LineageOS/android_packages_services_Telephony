@@ -783,7 +783,7 @@
     <string name="call_barring_change_pwd" msgid="1730691950940338387">"Breyta aðgangsorði"</string>
     <string name="call_barring_change_pwd_description" msgid="1274245130382054227">"Breyta aðgangsorði fyrir útilokun símtala"</string>
     <string name="call_barring_change_pwd_description_disabled" msgid="2911647051915343920">"Ekki var hægt að breyta aðgangsorði fyrir útilokun símtala"</string>
-    <string name="call_barring_pwd_not_match" msgid="7638198747579019826">"Aðgangsorðin stemma ekki."</string>
+    <string name="call_barring_pwd_not_match" msgid="7638198747579019826">"Aðgangsorðin stemma ekki"</string>
     <string name="call_barring_right_pwd_number" msgid="3860630926460851330">"Sláðu inn aðgangsorð sem inniheldur fjóra tölustafi."</string>
     <string name="call_barring_change_pwd_success" msgid="1837437691277936903">"Aðgangsorði breytt"</string>
     <string name="call_barring_old_pwd" msgid="5500085633281388281">"Eldra aðgangsorð"</string>
