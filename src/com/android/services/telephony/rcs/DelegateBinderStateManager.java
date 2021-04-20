@@ -19,6 +19,7 @@ package com.android.services.telephony.rcs;
 import android.telephony.ims.DelegateRegistrationState;
 import android.telephony.ims.DelegateRequest;
 import android.telephony.ims.FeatureTagState;
+import android.telephony.ims.SipDelegateConfiguration;
 import android.telephony.ims.SipDelegateConnection;
 import android.telephony.ims.SipDelegateImsConfiguration;
 import android.telephony.ims.SipDelegateManager;
@@ -52,6 +53,11 @@ public interface DelegateBinderStateManager {
          * The SipDelegate has notified telephony that the IMS configuration has changed.
          */
         void onImsConfigurationChanged(SipDelegateImsConfiguration config);
+
+        /**
+         * The SipDelegate has notified telephony that the IMS configuration has changed.
+         */
+        void onConfigurationChanged(SipDelegateConfiguration config);
     }
 
     /** Allow for mocks to be created for testing. */

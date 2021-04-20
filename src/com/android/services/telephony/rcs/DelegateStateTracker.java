@@ -19,6 +19,7 @@ package com.android.services.telephony.rcs;
 import android.os.RemoteException;
 import android.telephony.ims.DelegateRegistrationState;
 import android.telephony.ims.FeatureTagState;
+import android.telephony.ims.SipDelegateConfiguration;
 import android.telephony.ims.SipDelegateImsConfiguration;
 import android.telephony.ims.aidl.ISipDelegate;
 import android.telephony.ims.aidl.ISipDelegateConnectionStateCallback;
@@ -154,6 +155,20 @@ public class DelegateStateTracker implements DelegateBinderStateManager.StateCal
         logi("onImsConfigurationChanged: Sending new IMS configuration.");
         try {
             mAppStateCallback.onImsConfigurationChanged(config);
+        } catch (RemoteException e) {
+            logw("onImsConfigurationChanged: IMS application is dead: " + e);
+        }
+    }
+
+    /**
+     * THe underlying SipDelegate has reported that the IMS configuration has changed.
+     * @param config The config to be sent to the IMS application.
+     */
+    @Override
+    public void onConfigurationChanged(SipDelegateConfiguration config) {
+        logi("onImsConfigurationChanged: Sending new IMS configuration.");
+        try {
+            mAppStateCallback.onConfigurationChanged(config);
         } catch (RemoteException e) {
             logw("onImsConfigurationChanged: IMS application is dead: " + e);
         }
