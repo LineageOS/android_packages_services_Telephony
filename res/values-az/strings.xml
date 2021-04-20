@@ -702,7 +702,7 @@
     <string name="change_pin_enter_new_pin_header" msgid="4739465616733486118">"Yeni PIN kodu təyin edin"</string>
     <string name="change_pin_enter_new_pin_hint" msgid="2326038476516364210">"PIN <xliff:g id="MIN">%1$d</xliff:g>-<xliff:g id="MAX">%2$d</xliff:g> rəqəm olmalıdır."</string>
     <string name="change_pin_confirm_pin_header" msgid="2606303906320705726">"PİN kodunuzu təsdiq edin"</string>
-    <string name="change_pin_confirm_pins_dont_match" msgid="305164501222587215">"PIN kodlar üst-üstə düşmür"</string>
+    <string name="change_pin_confirm_pins_dont_match" msgid="305164501222587215">"PIN-lər eyni deyil"</string>
     <string name="change_pin_succeeded" msgid="2504705600693014403">"Səsli poçtun PIN kodu yeniləndi"</string>
     <string name="change_pin_system_error" msgid="7772788809875146873">"PIN kodu ayarlamaq olmur"</string>
     <string name="mobile_data_status_roaming_turned_off_subtext" msgid="6840673347416227054">"Data rominq deaktivdir"</string>
