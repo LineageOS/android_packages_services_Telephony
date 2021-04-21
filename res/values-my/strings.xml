@@ -760,7 +760,7 @@
     <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="9203320572562697755">"ခေါ်ဆိုမှုကို မပြုလုပ်နိုင်ပါ။ အမှားကုဒ် ၁၁၁။"</string>
     <string name="clh_callFailed_interworking_unspecified_txt" msgid="7969686413930847182">"ခေါ်ဆိုမှုကို မပြုလုပ်နိုင်ပါ။ အမှားကုဒ် ၁၂၇။"</string>
     <string name="labelCallBarring" msgid="4180377113052853173">"ခေါ်ဆိုမှုကို ပိတ်ပင်ရန်"</string>
-    <string name="sum_call_barring_enabled" msgid="5184331188926370824">"ဖွင့်ထားသည်"</string>
+    <string name="sum_call_barring_enabled" msgid="5184331188926370824">"ဖွင့်"</string>
     <string name="sum_call_barring_disabled" msgid="5699448000600153096">"ပိတ်ထားသည်"</string>
     <string name="call_barring_baoc" msgid="7400892586336429326">"အထွက်ခေါ်ဆိုမှုအားလုံး"</string>
     <string name="call_barring_baoc_enabled" msgid="3131509193386668182">"အထွက်ခေါ်ဆိုမှုအားလုံး ပိတ်ထားခြင်းကို ပယ်ဖျက်မလား။"</string>
