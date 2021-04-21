@@ -515,8 +515,7 @@
     <string name="puk2_requested" msgid="6992374450720307514">"Contraseña incorrecta. SIM bloqueada. Ingresa el PUK2."</string>
     <string name="puk2_blocked" msgid="3131139031779319911">"El código PUK2 se bloqueó de forma permanente."</string>
     <string name="pin2_attempts" msgid="5625178102026453023">\n"Te quedan <xliff:g id="NUMBER">%d</xliff:g> intentos."</string>
-    <!-- no translation found for puk2_locked (6497760825455461057) -->
-    <skip />
+    <string name="puk2_locked" msgid="6497760825455461057">"SIM bloqueada con PUK2. Comunícate con el proveedor para desbloquearla."</string>
     <string name="pin2_unblocked" msgid="4481107908727789303">"El PIN2 ya no está bloqueado."</string>
     <string name="pin2_error_exception" msgid="8116103864600823641">"Error en la red o en la tarjeta SIM"</string>
     <string name="doneButton" msgid="7371209609238460207">"Finalizado"</string>

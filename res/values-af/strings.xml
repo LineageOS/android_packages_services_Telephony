@@ -515,8 +515,7 @@
     <string name="puk2_requested" msgid="6992374450720307514">"Wagwoord is verkeerd. SIM is nou geblokkeer. Voer PUK2 in."</string>
     <string name="puk2_blocked" msgid="3131139031779319911">"PUK2 is permanent geblokkeer."</string>
     <string name="pin2_attempts" msgid="5625178102026453023">\n"Jy het <xliff:g id="NUMBER">%d</xliff:g> oorblywende pogings."</string>
-    <!-- no translation found for puk2_locked (6497760825455461057) -->
-    <skip />
+    <string name="puk2_locked" msgid="6497760825455461057">"PUK2 is gesluit. Kontak diensverskaffer om te ontsluit."</string>
     <string name="pin2_unblocked" msgid="4481107908727789303">"PIN2 is nie meer geblokkeer nie"</string>
     <string name="pin2_error_exception" msgid="8116103864600823641">"Netwerk- of SIM-kaartfout"</string>
     <string name="doneButton" msgid="7371209609238460207">"Klaar"</string>
