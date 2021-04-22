@@ -4867,8 +4867,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     @Override
     public int getDataNetworkType(String callingPackage, String callingFeatureId) {
-        return getDataNetworkTypeForSubscriber(getDefaultSubscription(), callingPackage,
-                callingFeatureId);
+        return getDataNetworkTypeForSubscriber(mSubscriptionController.getDefaultDataSubId(),
+                callingPackage, callingFeatureId);
     }
 
     /**
@@ -6664,6 +6664,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     @Override
     public int checkCarrierPrivilegesForPackage(int subId, String pkgName) {
+        enforceReadPrivilegedPermission("checkCarrierPrivilegesForPackage");
         if (TextUtils.isEmpty(pkgName)) {
             return TelephonyManager.CARRIER_PRIVILEGE_STATUS_NO_ACCESS;
         }
@@ -6681,6 +6682,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     @Override
     public int checkCarrierPrivilegesForPackageAnyPhone(String pkgName) {
+        enforceReadPrivilegedPermission("checkCarrierPrivilegesForPackageAnyPhone");
         if (TextUtils.isEmpty(pkgName))
             return TelephonyManager.CARRIER_PRIVILEGE_STATUS_NO_ACCESS;
         int result = TelephonyManager.CARRIER_PRIVILEGE_STATUS_RULES_NOT_LOADED;
@@ -6704,6 +6706,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     @Override
     public List<String> getCarrierPackageNamesForIntentAndPhone(Intent intent, int phoneId) {
+        enforceReadPrivilegedPermission("getCarrierPackageNamesForIntentAndPhone");
         if (!SubscriptionManager.isValidPhoneId(phoneId)) {
             loge("phoneId " + phoneId + " is not valid.");
             return null;
@@ -6718,6 +6721,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     @Override
     public List<String> getPackagesWithCarrierPrivileges(int phoneId) {
+        enforceReadPrivilegedPermission("getPackagesWithCarrierPrivileges");
         PackageManager pm = mApp.getPackageManager();
         List<String> privilegedPackages = new ArrayList<>();
         List<PackageInfo> packages = null;
