@@ -22,8 +22,8 @@ import android.telephony.ims.DelegateRequest;
 import android.telephony.ims.FeatureTagState;
 import android.telephony.ims.ImsException;
 import android.telephony.ims.ImsManager;
+import android.telephony.ims.SipDelegateConfiguration;
 import android.telephony.ims.SipDelegateConnection;
-import android.telephony.ims.SipDelegateImsConfiguration;
 import android.telephony.ims.SipDelegateManager;
 import android.telephony.ims.SipMessage;
 import android.telephony.ims.stub.DelegateConnectionMessageCallback;
@@ -109,7 +109,7 @@ public class RegistrationControllerImpl implements RegistrationController {
         private final SettableFuture<SipSession> sessionFuture = SettableFuture.create();
 
         protected SipDelegateConnection sipDelegateConnection;
-        private SipDelegateImsConfiguration configuration;
+        private SipDelegateConfiguration mConfiguration;
         private final DelegateConnectionStateCallback connectionCallback =
                 new DelegateConnectionStateCallback() {
 
@@ -119,16 +119,15 @@ public class RegistrationControllerImpl implements RegistrationController {
                     }
 
                     @Override
-                    public void onImsConfigurationChanged(
-                            SipDelegateImsConfiguration registeredSipConfig) {
+                    public void onConfigurationChanged(
+                            SipDelegateConfiguration registeredSipConfig) {
                         Log.d(
                                 TAG,
                                 "onSipConfigurationChanged: version="
-                                        + registeredSipConfig.getVersion()
-                                        + " bundle="
-                                        + registeredSipConfig.copyBundle());
+                                        + registeredSipConfig.getVersion());
+                        Log.i(TAG, "onSipConfigurationChanged: " + registeredSipConfig);
                         dumpConfig(registeredSipConfig);
-                        RegistrationContext.this.configuration = registeredSipConfig;
+                        RegistrationContext.this.mConfiguration = registeredSipConfig;
                     }
 
                     @Override
@@ -233,84 +232,33 @@ public class RegistrationControllerImpl implements RegistrationController {
             Log.i(TAG, result);
         }
 
-        private void dumpConfig(SipDelegateImsConfiguration config) {
-            Log.i(TAG, "KEY_SIP_CONFIG_TRANSPORT_TYPE_STRING:" + config.getString(
-                    SipDelegateImsConfiguration.KEY_SIP_CONFIG_TRANSPORT_TYPE_STRING));
-            Log.i(TAG, "KEY_SIP_CONFIG_UE_PUBLIC_USER_ID_STRING:" + config.getString(
-                    SipDelegateImsConfiguration.KEY_SIP_CONFIG_UE_PUBLIC_USER_ID_STRING));
-            Log.i(TAG, "KEY_SIP_CONFIG_UE_PRIVATE_USER_ID_STRING:" + config.getString(
-                    SipDelegateImsConfiguration.KEY_SIP_CONFIG_UE_PRIVATE_USER_ID_STRING));
-            Log.i(TAG, "KEY_SIP_CONFIG_HOME_DOMAIN_STRING:" + config.getString(
-                    SipDelegateImsConfiguration.KEY_SIP_CONFIG_HOME_DOMAIN_STRING));
-            Log.i(TAG, "KEY_SIP_CONFIG_IMEI_STRING:" + config.getString(
-                    SipDelegateImsConfiguration.KEY_SIP_CONFIG_IMEI_STRING));
-            Log.i(TAG, "KEY_SIP_CONFIG_IPTYPE_STRING:" + config.getString(
-                    SipDelegateImsConfiguration.KEY_SIP_CONFIG_IPTYPE_STRING));
-            Log.i(TAG, "KEY_SIP_CONFIG_UE_DEFAULT_IPADDRESS_STRING:" + config.getString(
-                    SipDelegateImsConfiguration.KEY_SIP_CONFIG_UE_DEFAULT_IPADDRESS_STRING));
-            Log.i(TAG, "KEY_SIP_CONFIG_SERVER_DEFAULT_IPADDRESS_STRING:" + config.getString(
-                    SipDelegateImsConfiguration.KEY_SIP_CONFIG_SERVER_DEFAULT_IPADDRESS_STRING));
-            Log.i(TAG, "KEY_SIP_CONFIG_UE_PUBLIC_IPADDRESS_WITH_NAT_STRING:" +
-                    config.getString(SipDelegateImsConfiguration.
-                            KEY_SIP_CONFIG_UE_PUBLIC_IPADDRESS_WITH_NAT_STRING));
-            Log.i(TAG, "KEY_SIP_CONFIG_UE_PUBLIC_GRUU_STRING:" + config.getString(
-                    SipDelegateImsConfiguration.KEY_SIP_CONFIG_UE_PUBLIC_GRUU_STRING));
-            Log.i(TAG, "KEY_SIP_CONFIG_AUTHENTICATION_HEADER_STRING:" + config.getString(
-                    SipDelegateImsConfiguration.KEY_SIP_CONFIG_AUTHENTICATION_HEADER_STRING));
-            Log.i(TAG, "KEY_SIP_CONFIG_AUTHENTICATION_NONCE_STRING:" + config.getString(
-                    SipDelegateImsConfiguration.KEY_SIP_CONFIG_AUTHENTICATION_NONCE_STRING));
-            Log.i(TAG, "KEY_SIP_CONFIG_SERVICE_ROUTE_HEADER_STRING:" + config.getString(
-                    SipDelegateImsConfiguration.KEY_SIP_CONFIG_SERVICE_ROUTE_HEADER_STRING));
-            Log.i(TAG, "KEY_SIP_CONFIG_SECURITY_VERIFY_HEADER_STRING:" + config.getString(
-                    SipDelegateImsConfiguration.KEY_SIP_CONFIG_SECURITY_VERIFY_HEADER_STRING));
-            Log.i(TAG, "KEY_SIP_CONFIG_PATH_HEADER_STRING:" + config.getString(
-                    SipDelegateImsConfiguration.KEY_SIP_CONFIG_PATH_HEADER_STRING));
-            Log.i(TAG, "KEY_SIP_CONFIG_URI_USER_PART_STRING:" + config.getString(
-                    SipDelegateImsConfiguration.KEY_SIP_CONFIG_URI_USER_PART_STRING));
-            Log.i(TAG, "KEY_SIP_CONFIG_P_ACCESS_NETWORK_INFO_HEADER_STRING:" +
-                    config.getString(SipDelegateImsConfiguration.
-                            KEY_SIP_CONFIG_P_ACCESS_NETWORK_INFO_HEADER_STRING));
-            Log.i(TAG, "KEY_SIP_CONFIG_P_LAST_ACCESS_NETWORK_INFO_HEADER_STRING:" +
-                    config.getString(SipDelegateImsConfiguration.
-                            KEY_SIP_CONFIG_P_LAST_ACCESS_NETWORK_INFO_HEADER_STRING));
-            Log.i(TAG, "KEY_SIP_CONFIG_P_ASSOCIATED_URI_HEADER_STRING:" + config.getString(
-                    SipDelegateImsConfiguration.KEY_SIP_CONFIG_P_ASSOCIATED_URI_HEADER_STRING));
-            Log.i(TAG, "KEY_SIP_CONFIG_USER_AGENT_HEADER_STRING:" + config.getString(
-                    SipDelegateImsConfiguration.KEY_SIP_CONFIG_USER_AGENT_HEADER_STRING));
-
-            Log.i(TAG, "KEY_SIP_CONFIG_MAX_PAYLOAD_SIZE_ON_UDP_INT:" + config.getInt(
-                    SipDelegateImsConfiguration.KEY_SIP_CONFIG_MAX_PAYLOAD_SIZE_ON_UDP_INT, -99));
-            Log.i(TAG, "KEY_SIP_CONFIG_UE_DEFAULT_PORT_INT:" + config.getInt(
-                    SipDelegateImsConfiguration.KEY_SIP_CONFIG_UE_DEFAULT_PORT_INT, -99));
-            Log.i(TAG, "KEY_SIP_CONFIG_SERVER_DEFAULT_PORT_INT:" + config.getInt(
-                    SipDelegateImsConfiguration.KEY_SIP_CONFIG_SERVER_DEFAULT_PORT_INT, -99));
-            Log.i(TAG, "KEY_SIP_CONFIG_UE_PUBLIC_PORT_WITH_NAT_INT:" + config.getInt(
-                    SipDelegateImsConfiguration.KEY_SIP_CONFIG_UE_PUBLIC_PORT_WITH_NAT_INT, -99));
-            Log.i(TAG, "KEY_SIP_CONFIG_UE_IPSEC_CLIENT_PORT_INT:" + config.getInt(
-                    SipDelegateImsConfiguration.KEY_SIP_CONFIG_UE_IPSEC_CLIENT_PORT_INT, -99));
-            Log.i(TAG, "KEY_SIP_CONFIG_UE_IPSEC_SERVER_PORT_INT:" + config.getInt(
-                    SipDelegateImsConfiguration.KEY_SIP_CONFIG_UE_IPSEC_SERVER_PORT_INT, -99));
-            Log.i(TAG, "KEY_SIP_CONFIG_UE_IPSEC_OLD_CLIENT_PORT_INT:" + config.getInt(
-                    SipDelegateImsConfiguration.KEY_SIP_CONFIG_UE_IPSEC_OLD_CLIENT_PORT_INT, -99));
-            Log.i(TAG, "KEY_SIP_CONFIG_SERVER_IPSEC_CLIENT_PORT_INT:" + config.getInt(
-                    SipDelegateImsConfiguration.KEY_SIP_CONFIG_SERVER_IPSEC_CLIENT_PORT_INT, -99));
-            Log.i(TAG, "KEY_SIP_CONFIG_SERVER_IPSEC_SERVER_PORT_INT:" + config.getInt(
-                    SipDelegateImsConfiguration.KEY_SIP_CONFIG_SERVER_IPSEC_SERVER_PORT_INT, -99));
-            Log.i(TAG, "KEY_SIP_CONFIG_SERVER_IPSEC_OLD_CLIENT_PORT_INT:" + config.getInt(
-                    SipDelegateImsConfiguration.KEY_SIP_CONFIG_SERVER_IPSEC_OLD_CLIENT_PORT_INT,
-                    -99));
-
-            Log.i(TAG, "KEY_SIP_CONFIG_IS_COMPACT_FORM_ENABLED_BOOL:" + config.getBoolean(
-                    SipDelegateImsConfiguration.KEY_SIP_CONFIG_IS_COMPACT_FORM_ENABLED_BOOL,
-                    false));
-            Log.i(TAG, "KEY_SIP_CONFIG_IS_KEEPALIVE_ENABLED_BOOL:" + config.getBoolean(
-                    SipDelegateImsConfiguration.KEY_SIP_CONFIG_IS_KEEPALIVE_ENABLED_BOOL, false));
-            Log.i(TAG, "KEY_SIP_CONFIG_IS_NAT_ENABLED_BOOL:" + config.getBoolean(
-                    SipDelegateImsConfiguration.KEY_SIP_CONFIG_IS_NAT_ENABLED_BOOL, false));
-            Log.i(TAG, "KEY_SIP_CONFIG_IS_GRUU_ENABLED_BOOL:" + config.getBoolean(
-                    SipDelegateImsConfiguration.KEY_SIP_CONFIG_IS_GRUU_ENABLED_BOOL, false));
-            Log.i(TAG, "KEY_SIP_CONFIG_IS_IPSEC_ENABLED_BOOL:" + config.getBoolean(
-                    SipDelegateImsConfiguration.KEY_SIP_CONFIG_IS_IPSEC_ENABLED_BOOL, false));
+        private void dumpConfig(SipDelegateConfiguration config) {
+            String result = "SipDelegateConfiguration{"
+                    + "mVersion=" + config.getVersion()
+                    + ", \n\tmTransportType=" + config.getTransportType()
+                    + ", \n\tmLocalAddr=" + config.getLocalAddress()
+                    + ", \n\tmSipServerAddr=" + config.getSipServerAddress()
+                    + ", \n\tmIsSipCompactFormEnabled=" + config.isSipCompactFormEnabled()
+                    + ", \n\tmIsSipKeepaliveEnabled=" + config.isSipKeepaliveEnabled()
+                    + ", \n\tmMaxUdpPayloadSize=" + config.getMaxUdpPayloadSizeBytes()
+                    + ", \n\tmPublicUserIdentifier=" + config.getPublicUserIdentifier()
+                    + ", \n\tmPrivateUserIdentifier=" + config.getPrivateUserIdentifier()
+                    + ", \n\tmHomeDomain=" + config.getHomeDomain()
+                    + ", \n\tmImei=" + config.getImei()
+                    + ", \n\tmGruu=" + config.getPublicGruuUri()
+                    + ", \n\tmSipAuthHeader=" + config.getSipAuthenticationHeader()
+                    + ", \n\tmSipAuthNonce=" + config.getSipAuthenticationNonce()
+                    + ", \n\tmServiceRouteHeader=" + config.getSipServiceRouteHeader()
+                    + ", \n\tmPathHeader=" + config.getSipPathHeader()
+                    + ", \n\tmUserAgentHeader=" + config.getSipUserAgentHeader()
+                    + ", \n\tmContactUserParam=" + config.getSipContactUserParameter()
+                    + ", \n\tmPaniHeader=" + config.getSipPaniHeader()
+                    + ", \n\tmPlaniHeader=" + config.getSipPlaniHeader()
+                    + ", \n\tmCniHeader=" + config.getSipCniHeader()
+                    + ", \n\tmAssociatedUriHeader=" + config.getSipAssociatedUriHeader()
+                    + ", \n\tmIpSecConfiguration=" + config.getIpSecConfiguration()
+                    + ", \n\tmNatConfiguration=" + config.getNatSocketAddress() + '}';
+            Log.i(TAG, result);
         }
 
         @Override
@@ -330,54 +278,48 @@ public class RegistrationControllerImpl implements RegistrationController {
 
         @Override
         public long getVersion() {
-            return configuration.getVersion();
+            return mConfiguration.getVersion();
         }
 
         @Override
         public String getOutboundProxyAddr() {
-            return configuration.getString(SipDelegateImsConfiguration.
-                    KEY_SIP_CONFIG_SERVER_DEFAULT_IPADDRESS_STRING);
+            return mConfiguration.getSipServerAddress().getAddress().getHostAddress();
         }
 
         @Override
         public int getOutboundProxyPort() {
-            return configuration.getInt(
-                    SipDelegateImsConfiguration.KEY_SIP_CONFIG_SERVER_DEFAULT_PORT_INT, -1);
+            return mConfiguration.getSipServerAddress().getPort();
         }
 
         @Override
         public String getLocalIpAddress() {
-            return configuration.getString(
-                    SipDelegateImsConfiguration.KEY_SIP_CONFIG_UE_DEFAULT_IPADDRESS_STRING);
+            return mConfiguration.getLocalAddress().getAddress().getHostAddress();
         }
 
         @Override
         public int getLocalPort() {
-            return configuration.getInt(
-                    SipDelegateImsConfiguration.KEY_SIP_CONFIG_UE_DEFAULT_PORT_INT, -1);
+            return mConfiguration.getLocalAddress().getPort();
         }
 
         @Override
         public String getSipTransport() {
-            return configuration.getString(
-                    SipDelegateImsConfiguration.KEY_SIP_CONFIG_TRANSPORT_TYPE_STRING);
+            int sipTransport = mConfiguration.getTransportType();
+            return (sipTransport == SipDelegateConfiguration.SIP_TRANSPORT_TCP) ? "TCP" : "UDP";
         }
 
         @Override
         public String getPublicUserIdentity() {
-            return null;
+            return mConfiguration.getPublicUserIdentifier();
         }
 
         @Override
         public String getDomain() {
-            return configuration.getString(
-                    SipDelegateImsConfiguration.KEY_SIP_CONFIG_HOME_DOMAIN_STRING);
+            return mConfiguration.getHomeDomain();
         }
 
         @Override
         public List<String> getAssociatedUris() {
-            String associatedUris = configuration.getString(
-                    SipDelegateImsConfiguration.KEY_SIP_CONFIG_P_ASSOCIATED_URI_HEADER_STRING);
+            String associatedUris = mConfiguration.getSipAssociatedUriHeader();
             if (!TextUtils.isEmpty(associatedUris)) {
                 return Splitter.on(',').trimResults(CharMatcher.anyOf("<>")).splitToList(
                         associatedUris);
@@ -388,15 +330,17 @@ public class RegistrationControllerImpl implements RegistrationController {
 
         @Override
         public String getSecurityVerifyHeader() {
-            return configuration.getString(
-                    SipDelegateImsConfiguration.KEY_SIP_CONFIG_SECURITY_VERIFY_HEADER_STRING);
+            SipDelegateConfiguration.IpSecConfiguration c = mConfiguration.getIpSecConfiguration();
+            if (c == null) {
+                return null;
+            }
+            return c.getSipSecurityVerifyHeader();
         }
 
         @Override
         public List<String> getServiceRouteHeaders() {
             String serviceRoutes =
-                    configuration.getString(
-                            SipDelegateImsConfiguration.KEY_SIP_CONFIG_SERVICE_ROUTE_HEADER_STRING);
+                    mConfiguration.getSipServiceRouteHeader();
             if (TextUtils.isEmpty(serviceRoutes)) {
                 return Collections.emptyList();
             }
@@ -405,38 +349,33 @@ public class RegistrationControllerImpl implements RegistrationController {
 
         @Override
         public String getContactUser() {
-            return configuration.getString(
-                    SipDelegateImsConfiguration.KEY_SIP_CONFIG_URI_USER_PART_STRING);
+            return mConfiguration.getSipContactUserParameter();
         }
 
         @Override
         public String getImei() {
-            return configuration.getString(SipDelegateImsConfiguration.KEY_SIP_CONFIG_IMEI_STRING);
+            return mConfiguration.getImei();
         }
 
         @Override
         public String getPaniHeader() {
-            return configuration.getString(
-                    SipDelegateImsConfiguration.KEY_SIP_CONFIG_P_ACCESS_NETWORK_INFO_HEADER_STRING);
+            return mConfiguration.getSipPaniHeader();
         }
 
         @Override
         public String getPlaniHeader() {
-            return configuration.getString(
-                    SipDelegateImsConfiguration.
-                            KEY_SIP_CONFIG_P_LAST_ACCESS_NETWORK_INFO_HEADER_STRING);
+            return mConfiguration.getSipPlaniHeader();
         }
 
         @Override
         public String getUserAgentHeader() {
-            return configuration.getString(
-                    SipDelegateImsConfiguration.KEY_SIP_CONFIG_USER_AGENT_HEADER_STRING);
+            return mConfiguration.getSipUserAgentHeader();
         }
 
         @Override
         public int getMaxPayloadSizeOnUdp() {
-            return configuration.getInt(
-                    SipDelegateImsConfiguration.KEY_SIP_CONFIG_MAX_PAYLOAD_SIZE_ON_UDP_INT, 1500);
+            return mConfiguration.getMaxUdpPayloadSizeBytes() > 0
+                    ? mConfiguration.getMaxUdpPayloadSizeBytes() : 1500;
         }
 
         /**
