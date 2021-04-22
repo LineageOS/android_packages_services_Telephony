@@ -50,6 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"רק המשתמש הראשי יכול לשנות את ההגדרות של הדואר הקולי."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"‏בוטלה החסימה של כרטיס SIM. מבטל את חסימת הטלפון..."</string>
     <string name="label_ndp" msgid="7617392683877410341">"‏PIN לביטול נעילה של רשת SIM"</string>
+    <string name="label_phoneid" msgid="8775611434123577808">"‏כרטיס ה-SIM נעול על ידי הספק הסלולרי"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"בטל נעילה"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"סגור"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"מבקש ביטול נעילת רשת..."</string>
@@ -123,6 +124,13 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"מעביר אל <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"כבוי"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"הספק שלך לא תומך בהשבתה של העברת שיחות כאשר הטלפון כבוי."</string>
+    <string name="registration_cf_forbidden" msgid="4386482610771190420">"הספק הסלולרי שלך לא תומך בהעברת שיחות."</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"רוצה להפעיל את השיחה הממתינה?"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"יוצגו לך התראות על שיחות שנכנסות במהלך שיחות אחרות"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"הפעלה"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"ביטול"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"‏השיחה הממתינה ברשת CDMA ב-IMS פועלת"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"‏השיחה הממתינה ברשת CDMA ב-IMS מושבתת"</string>
     <string name="updating_title" msgid="6130548922615719689">"הגדרות שיחה"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"רק מנהל המערכת יכול לשנות הגדרות שיחה."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"הגדרות (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -286,6 +294,9 @@
     <string name="limited_sim_function_notification_title" msgid="612715399099846281">"‏יכולת השימוש בכרטיס ה-SIM עלולה להיות מוגבלת"</string>
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"יכול להיות שאי אפשר יהיה להתקשר ולהשתמש בחבילת הגלישה דרך <xliff:g id="CARRIER_NAME">%1$s</xliff:g> בזמן השימוש במספר <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>."</string>
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"‏ייתכן שאי אפשר להתקשר ולהשתמש בחבילת הגלישה דרך <xliff:g id="CARRIER_NAME">%1$s</xliff:g> בזמן השימוש בכרטיס SIM אחר."</string>
+    <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"‏נמצאו חשבונות SIP שהוצאו משימוש והם הוסרו"</string>
+    <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"‏שיחות SIP לא נתמכות יותר בפלטפורמת Android.\nלכן, חשבונות SIP שהיו לך <xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g> הוסרו.\nעליך לבחור איזה חשבון יוגדר כברירת מחדל לשיחות."</string>
+    <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"פתיחת ההגדרות"</string>
     <string name="data_usage_title" msgid="8438592133893837464">"שימוש בחבילת הגלישה דרך אפליקציות"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"השתמשת ב-<xliff:g id="ID_1">%1$s</xliff:g> מחבילת הגלישה בתאריכים <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"הגדרות מתקדמות"</string>
@@ -307,7 +318,7 @@
     <string name="throttle_time_frame" msgid="1813452485948918791">"תקופת השימוש בנתונים"</string>
     <string name="throttle_rate" msgid="7641913901133634905">"מדיניות קצב נתונים"</string>
     <string name="throttle_help" msgid="2624535757028809735">"למידע נוסף"</string>
-    <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>??) מתוך התקופה המרבית של <xliff:g id="USED_2">%3$s</xliff:g>\nהתקופה הבאה מתחילה בעוד <xliff:g id="USED_3">%4$d</xliff:g> ימים (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
+    <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>%%) מתוך התקופה המרבית של <xliff:g id="USED_2">%3$s</xliff:g>\nהתקופה הבאה מתחילה בעוד <xliff:g id="USED_3">%4$d</xliff:g> ימים (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
     <string name="throttle_data_usage_subtext" msgid="3185429653996709840">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>??)  מתוך התקופה המרבית של<xliff:g id="USED_2">%3$s</xliff:g>"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"‏<xliff:g id="USED_0">%1$s</xliff:g> חריגה מהמקסימום\nקצב הנתונים ירד ל-‏‎<xliff:g id="USED_1">%2$d</xliff:g> Kb לשנייה"</string>
     <string name="throttle_time_frame_subtext" msgid="6462089615392402127">"<xliff:g id="USED_0">%1$d</xliff:g>?? מהמחזור חלפו\nהתקופה הבאה מתחילה בעוד <xliff:g id="USED_1">%2$d</xliff:g> ימים (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
@@ -504,6 +515,7 @@
     <string name="puk2_requested" msgid="6992374450720307514">"‏סיסמה שגויה. ה-SIM נעול כעת. הזן PUK2."</string>
     <string name="puk2_blocked" msgid="3131139031779319911">"‏PUK2 נחסם לצמיתות."</string>
     <string name="pin2_attempts" msgid="5625178102026453023">\n"נותרו לך עוד <xliff:g id="NUMBER">%d</xliff:g> ניסיונות."</string>
+    <string name="puk2_locked" msgid="6497760825455461057">"‏נעילת PUK2. כדי לבטל את הנעילה, צריך לפנות לספק השירות."</string>
     <string name="pin2_unblocked" msgid="4481107908727789303">"‏PIN2 אינו חסום עוד"</string>
     <string name="pin2_error_exception" msgid="8116103864600823641">"‏שגיאת רשת או כרטיס SIM"</string>
     <string name="doneButton" msgid="7371209609238460207">"סיום"</string>
@@ -606,7 +618,7 @@
     <string name="ota_skip_activation_dialog_title" msgid="7666611236789203797">"לדלג על ההפעלה?"</string>
     <string name="ota_skip_activation_dialog_message" msgid="6691722887019708713">"‏אם מדלגים על ההפעלה, אי אפשר להתקשר או להתחבר לרשתות נתונים לנייד (אך אפשר להתחבר לרשתות Wi-Fi). עד להפעלת הטלפון תופיע הודעה שמבקשת לבצע את ההפעלה בכל פעם שמדליקים את הטלפון."</string>
     <string name="ota_skip_activation_dialog_skip_label" msgid="5908029466817825633">"דילוג"</string>
-    <string name="ota_activate" msgid="7939695753665438357">"הפעל"</string>
+    <string name="ota_activate" msgid="7939695753665438357">"הפעלה"</string>
     <string name="ota_title_activate_success" msgid="1272135024761004889">"הטלפון מופעל."</string>
     <string name="ota_title_problem_with_activation" msgid="7019745985413368726">"בעיה בהפעלה"</string>
     <string name="ota_listen" msgid="2772252405488894280">"בצע את ההוראות הנאמרות עד שתשמע שההפעלה הושלמה."</string>
@@ -641,6 +653,14 @@
     <string name="alert_dialog_yes" msgid="3532525979632841417">"כן"</string>
     <string name="alert_dialog_no" msgid="1075632654085988420">"לא"</string>
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"סגור"</string>
+    <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"הטלפון במצב \'התקשרות בחזרה בחירום\'"</string>
+    <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"עד <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
+    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
+      <item quantity="two">הטלפון יהיה במצב \'התקשרות בחזרה בחירום\' ל-<xliff:g id="COUNT_1">%s</xliff:g> דקות.\nרוצה לצאת מהמצב הזה?</item>
+      <item quantity="many">הטלפון יהיה במצב \'התקשרות בחזרה בחירום\' ל-<xliff:g id="COUNT_1">%s</xliff:g> דקות.\nרוצה לצאת מהמצב הזה?</item>
+      <item quantity="other">הטלפון יהיה במצב \'התקשרות בחזרה בחירום\' ל-<xliff:g id="COUNT_1">%s</xliff:g> דקות.\nרוצה לצאת מהמצב הזה?</item>
+      <item quantity="one">הטלפון יהיה במצב \'התקשרות בחזרה בחירום\' לדקה אחת (<xliff:g id="COUNT_0">%s</xliff:g>).\nרוצה לצאת מהמצב הזה?</item>
+    </plurals>
     <string name="voicemail_provider" msgid="4158806657253745294">"שירות"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"הגדרות"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;לא מוגדר&gt;"</string>
@@ -865,7 +885,6 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"‏תת-מזהה של כרטיס ה-SIM עם חבילת גלישה המוגדר כברירת מחדל:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"‏רוחב פס DL (ב-kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"‏רוחב פס UL (ב-kbps):"</string>
-    <string name="radio_info_signal_location_label" msgid="6188435197086550049">"מידע על מיקום סלולרי (הוצא משימוש):"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"‏תצורת ערוץ פיזי של LTE:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"קצב רענון של מידע סלולרי:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"כל המידע של מדידה סלולרית:"</string>
@@ -896,6 +915,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"רענון"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"‏החלפת מצב של בדיקת DNS"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"‏מידע/הגדרות ספציפיים ל-OEM"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"‏תומך ב-EN-DC:"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"‏לא תומך ב-5G NR:"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"‏תומך ב-5G NR:"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"‏מצב 5G NR:"</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"‏תדירות 5G NR:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"הגדרת מצב תדרים של רדיו"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"טוען רשימת תדרים…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"הגדרה"</string>
@@ -905,4 +929,7 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"פרטי טלפון"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"פרטי ניהול תצורה של ספק סלולרי"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"הפעלת ניהול תצורה של ספק סלולרי"</string>
+    <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"‏הקליטה של ה-Bluetooth חלשה. כדאי לעבור לדיבורית."</string>
+    <string name="call_quality_notification_name" msgid="3476828289553948830">"התראה על איכות השיחה"</string>
+    <string name="notification_channel_sip_account" msgid="1261816025156179637">"‏חשבונות SIP שהוצאו משימוש"</string>
 </resources>

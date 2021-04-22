@@ -47,7 +47,7 @@
     <string name="registration_status_failed_try_later" msgid="7855389184910312091">"O registo da conta não teve êxito: (<xliff:g id="REGISTRATION_ERROR_MESSAGE">%s</xliff:g>); tentaremos mais tarde"</string>
     <string name="registration_status_invalid_credentials" msgid="8896714049938660777">"O registo da conta não teve êxito: palavra-passe ou nome de utilizador incorreto"</string>
     <string name="registration_status_server_unreachable" msgid="3832339558868965604">"O registo da conta não teve êxito: verifique o nome do servidor."</string>
-    <string name="third_party_account_summary" msgid="5918779106950859167">"Esta conta está atualmente a ser utilizada pela aplicação <xliff:g id="ACCOUNT_OWNER">%s</xliff:g>."</string>
+    <string name="third_party_account_summary" msgid="5918779106950859167">"Esta conta está atualmente a ser utilizada pela app <xliff:g id="ACCOUNT_OWNER">%s</xliff:g>."</string>
     <string name="sip_edit_title" msgid="7438891546610820307">"Detalhes da conta SIP"</string>
     <string name="sip_edit_new_title" msgid="8394790068979636381">"Detalhes da conta SIP"</string>
     <string name="domain_address_title" msgid="8238078615181248579">"Servidor"</string>

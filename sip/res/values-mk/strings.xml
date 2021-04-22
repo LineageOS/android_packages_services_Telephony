@@ -26,7 +26,7 @@
     <string name="sip_call_options_entry_1" msgid="4722647332760934261">"За сите повици кога е достапна мрежа на податоци"</string>
     <string name="sip_call_options_entry_2" msgid="7338504256051655013">"Само за повици со SIP"</string>
     <string name="sip_call_options_wifi_only_entry_1" msgid="922329055414010991">"За сите повици"</string>
-    <string name="add_sip_account" msgid="5754758646745144384">"Додај сметка"</string>
+    <string name="add_sip_account" msgid="5754758646745144384">"Додајте сметка"</string>
     <string name="remove_sip_account" msgid="8272617403399636513">"Отстрани сметка"</string>
     <string name="sip_account_list" msgid="2596262496233721769">"Сметки за SIP"</string>
     <string name="saving_account" msgid="3390358043846687266">"Зачувување на сметката..."</string>
