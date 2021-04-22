@@ -515,8 +515,7 @@
     <string name="puk2_requested" msgid="6992374450720307514">"密码不正确。SIM 卡已锁定。请输入 PUK2 码。"</string>
     <string name="puk2_blocked" msgid="3131139031779319911">"PUK2码已被永远锁定。"</string>
     <string name="pin2_attempts" msgid="5625178102026453023">\n"您还可以尝试输入 <xliff:g id="NUMBER">%d</xliff:g> 次。"</string>
-    <!-- no translation found for puk2_locked (6497760825455461057) -->
-    <skip />
+    <string name="puk2_locked" msgid="6497760825455461057">"SIM 卡已通过 PUK2 进行锁定。请联系服务提供商来解锁。"</string>
     <string name="pin2_unblocked" msgid="4481107908727789303">"PIN2 码已解除锁定"</string>
     <string name="pin2_error_exception" msgid="8116103864600823641">"网络或 SIM 卡错误"</string>
     <string name="doneButton" msgid="7371209609238460207">"完成"</string>
