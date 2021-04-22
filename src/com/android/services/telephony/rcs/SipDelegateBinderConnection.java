@@ -22,6 +22,7 @@ import android.os.RemoteException;
 import android.telephony.ims.DelegateRegistrationState;
 import android.telephony.ims.DelegateRequest;
 import android.telephony.ims.FeatureTagState;
+import android.telephony.ims.SipDelegateConfiguration;
 import android.telephony.ims.SipDelegateImsConfiguration;
 import android.telephony.ims.SipDelegateManager;
 import android.telephony.ims.aidl.IImsRegistration;
@@ -100,6 +101,22 @@ public class SipDelegateBinderConnection implements DelegateBinderStateManager,
                             logi("onImsConfigurationChanged");
                             for (StateCallback c : mStateCallbacks) {
                                 c.onImsConfigurationChanged(registeredSipConfig);
+                            }
+                        });
+                    } finally {
+                        Binder.restoreCallingIdentity(token);
+                    }
+                }
+
+                @Override
+                public void onConfigurationChanged(
+                        SipDelegateConfiguration registeredSipConfig) {
+                    long token = Binder.clearCallingIdentity();
+                    try {
+                        mExecutor.execute(() -> {
+                            logi("onConfigurationChanged");
+                            for (StateCallback c : mStateCallbacks) {
+                                c.onConfigurationChanged(registeredSipConfig);
                             }
                         });
                     } finally {
