@@ -355,6 +355,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private ImsResolver mImsResolver;
     private UserManager mUserManager;
     private AppOpsManager mAppOps;
+    private PackageManager mPm;
     private MainThreadHandler mMainThreadHandler;
     private SubscriptionController mSubscriptionController;
     private SharedPreferences mTelephonySharedPreferences;
@@ -2165,6 +2166,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         mImsResolver = PhoneGlobals.getInstance().getImsResolver();
         mUserManager = (UserManager) app.getSystemService(Context.USER_SERVICE);
         mAppOps = (AppOpsManager)app.getSystemService(Context.APP_OPS_SERVICE);
+        mPm = app.getSystemService(PackageManager.class);
         mMainThreadHandler = new MainThreadHandler();
         mSubscriptionController = SubscriptionController.getInstance();
         mTelephonySharedPreferences =
@@ -3102,6 +3104,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             return null;
         }
         int subId = phone.getSubId();
+        enforceCallingPackage(callingPackage, Binder.getCallingUid(), "getImeiForSlot");
         if (!TelephonyPermissions.checkCallingOrSelfReadDeviceIdentifiers(mApp, subId,
                 callingPackage, callingFeatureId, "getImeiForSlot")) {
             return null;
@@ -3245,6 +3248,24 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     //
     // Internal helper methods.
     //
+
+    /**
+     * Make sure the caller is the calling package itself
+     *
+     * @throws SecurityException if the caller is not the calling package
+     */
+    private void enforceCallingPackage(String callingPackage, int callingUid, String message) {
+        int packageUid = -1;
+        try {
+            packageUid = mPm.getPackageUid(callingPackage, 0);
+        } catch (PackageManager.NameNotFoundException e) {
+            // packageUid is -1
+        }
+        if (packageUid != callingUid) {
+            throw new SecurityException(message + ": Package " + callingPackage
+                    + " does not belong to " + callingUid);
+        }
+    }
 
     /**
      * Make sure the caller has the MODIFY_PHONE_STATE permission.
