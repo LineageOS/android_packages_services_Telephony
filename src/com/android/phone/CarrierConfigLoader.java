@@ -1203,6 +1203,8 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         int phoneId = SubscriptionManager.getPhoneId(subscriptionId);
         PersistableBundle retConfig = CarrierConfigManager.getDefaultConfig();
         if (SubscriptionManager.isValidPhoneId(phoneId)) {
+            logd("getConfigForSubIdWithFeature: subscriptionId=" + subscriptionId
+                    + ", phoneId=" + phoneId);
             PersistableBundle config = mConfigFromDefaultApp[phoneId];
             if (config != null) {
                 retConfig.putAll(config);
