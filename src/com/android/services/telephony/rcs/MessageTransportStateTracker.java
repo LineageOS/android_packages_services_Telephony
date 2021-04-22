@@ -21,6 +21,7 @@ import android.os.RemoteException;
 import android.telephony.ims.DelegateMessageCallback;
 import android.telephony.ims.DelegateRegistrationState;
 import android.telephony.ims.FeatureTagState;
+import android.telephony.ims.SipDelegateConfiguration;
 import android.telephony.ims.SipDelegateImsConfiguration;
 import android.telephony.ims.SipDelegateManager;
 import android.telephony.ims.SipMessage;
@@ -325,6 +326,11 @@ public class MessageTransportStateTracker implements DelegateBinderStateManager.
 
     @Override
     public void onImsConfigurationChanged(SipDelegateImsConfiguration config) {
+        // Not needed for this Tracker
+    }
+
+    @Override
+    public void onConfigurationChanged(SipDelegateConfiguration config) {
         // Not needed for this Tracker
     }
 
