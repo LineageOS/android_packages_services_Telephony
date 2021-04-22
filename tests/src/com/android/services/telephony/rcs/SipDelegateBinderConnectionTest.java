@@ -25,12 +25,13 @@ import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.verify;
 
+import android.net.InetAddresses;
 import android.os.IBinder;
 import android.os.RemoteException;
 import android.telephony.ims.DelegateRegistrationState;
 import android.telephony.ims.DelegateRequest;
 import android.telephony.ims.FeatureTagState;
-import android.telephony.ims.SipDelegateImsConfiguration;
+import android.telephony.ims.SipDelegateConfiguration;
 import android.telephony.ims.SipDelegateManager;
 import android.telephony.ims.aidl.IImsRegistration;
 import android.telephony.ims.aidl.ISipDelegate;
@@ -51,6 +52,7 @@ import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 
+import java.net.InetSocketAddress;
 import java.util.ArrayList;
 import java.util.Set;
 import java.util.function.BiConsumer;
@@ -194,9 +196,14 @@ public class SipDelegateBinderConnectionTest extends TelephonyTestBase {
         cb.onCreated(mMockDelegate, new ArrayList<>(deniedTags));
         verify(mMockCreatedCallback).accept(mMockDelegate, deniedTags);
 
-        SipDelegateImsConfiguration config = new SipDelegateImsConfiguration.Builder(1).build();
-        cb.onImsConfigurationChanged(config);
-        verify(mMockStateCallback).onImsConfigurationChanged(config);
+        InetSocketAddress localAddr = new InetSocketAddress(
+                InetAddresses.parseNumericAddress("1.1.1.1"), 80);
+        InetSocketAddress serverAddr = new InetSocketAddress(
+                InetAddresses.parseNumericAddress("2.2.2.2"), 81);
+        SipDelegateConfiguration c = new SipDelegateConfiguration.Builder(1,
+                SipDelegateConfiguration.SIP_TRANSPORT_TCP, localAddr, serverAddr).build();
+        cb.onConfigurationChanged(c);
+        verify(mMockStateCallback).onConfigurationChanged(c);
 
         DelegateRegistrationState regState = new DelegateRegistrationState.Builder()
                 .addRegisteredFeatureTags(request.getFeatureTags()).build();
