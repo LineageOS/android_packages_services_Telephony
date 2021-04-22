@@ -50,6 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"Indstillingerne for telefonsvareren kan kun ændres af den primære bruger."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"Blokeringen af dit SIM-kort er blevet ophævet. Din telefon låser op ..."</string>
     <string name="label_ndp" msgid="7617392683877410341">"Pinkode til oplåsning af SIM-netværket"</string>
+    <string name="label_phoneid" msgid="8775611434123577808">"SIM-kortet er låst for operatøren"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"Lås op"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"Luk"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"Anmoder om oplåsning af netværk ..."</string>
@@ -123,6 +124,13 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"Viderestiller til <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Fra"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Dit mobilselskab understøtter ikke deaktivering af viderestilling af opkald, når telefonen ikke er tilgængelig."</string>
+    <string name="registration_cf_forbidden" msgid="4386482610771190420">"Dit mobilselskab understøtter ikke viderestilling af opkald."</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"Vil du aktivere ventende opkald?"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"Under et opkald får du en notifikation om indgående opkald."</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"Aktivér"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"Annuller"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"Ventende CDMA-opkald under IMS er aktiveret"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"Ventende CDMA-opkald under IMS er deaktiveret"</string>
     <string name="updating_title" msgid="6130548922615719689">"Indstillinger for opkald"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Opkaldsindstillingerne kan kun ændres af administratorbrugeren."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Indstillinger (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -168,7 +176,7 @@
     <string name="label_available" msgid="1316084116670821258">"Tilgængelige netværk"</string>
     <string name="load_networks_progress" msgid="4051433047717401683">"Søger..."</string>
     <string name="empty_networks_list" msgid="9216418268008582342">"Der blev ikke fundet nogen netværk."</string>
-    <string name="network_query_error" msgid="3862515805115145124">"Der kunne ikke findes netværk. Prøv igen."</string>
+    <string name="network_query_error" msgid="3862515805115145124">"Der blev ikke fundet netværk. Prøv igen."</string>
     <string name="register_on_network" msgid="4194770527833960423">"Registrerer på <xliff:g id="NETWORK">%s</xliff:g> ..."</string>
     <string name="not_allowed" msgid="8541221928746104798">"Dit SIM-kort tillader ikke en forbindelse til dette netværk."</string>
     <string name="connect_later" msgid="1950138106010005425">"Der kan ikke oprettes forbindelse til dette netværk lige nu. Prøv igen senere."</string>
@@ -286,6 +294,9 @@
     <string name="limited_sim_function_notification_title" msgid="612715399099846281">"SIM-kortets funktionalitet er begrænset"</string>
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"Opkalds- og datatjenester fra <xliff:g id="CARRIER_NAME">%1$s</xliff:g> blokeres muligvis, mens <xliff:g id="PHONE_NUMBER">%2$s</xliff:g> bruges."</string>
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"Opkalds- og datatjenester fra <xliff:g id="CARRIER_NAME">%1$s</xliff:g> blokeres muligvis, mens der bruges et andet SIM-kort."</string>
+    <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"Udfasede SIP-konti blev fundet og fjernet"</string>
+    <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"SIP-opkald understøttes ikke længere af Android-platformen.\nDine eksisterende SIP-konti <xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g> er blevet fjernet.\nBekræft din standardkontoindstilling for opkald."</string>
+    <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"Gå til Indstillinger"</string>
     <string name="data_usage_title" msgid="8438592133893837464">"Dataforbrug i apps"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"<xliff:g id="ID_1">%1$s</xliff:g> mobildata er brugt i perioden <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"Avanceret"</string>
@@ -307,9 +318,7 @@
     <string name="throttle_time_frame" msgid="1813452485948918791">"Periode for databrug"</string>
     <string name="throttle_rate" msgid="7641913901133634905">"Politik om datahastighed"</string>
     <string name="throttle_help" msgid="2624535757028809735">"Flere oplysninger"</string>
-    <!-- String.format failed for translation -->
-    <!-- no translation found for throttle_status_subtext (1110276415078236687) -->
-    <skip />
+    <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g> %%) af <xliff:g id="USED_2">%3$s</xliff:g> periodens maksimum\nNæste periode om <xliff:g id="USED_3">%4$d</xliff:g> dage (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
     <string name="throttle_data_usage_subtext" msgid="3185429653996709840">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g> ٪) af <xliff:g id="USED_2">%3$s</xliff:g> periodens maksimum"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"<xliff:g id="USED_0">%1$s</xliff:g> maksimum er overskredet\nDatahastigheden er nedsat til <xliff:g id="USED_1">%2$d</xliff:g> Kb/s"</string>
     <string name="throttle_time_frame_subtext" msgid="6462089615392402127">"<xliff:g id="USED_0">%1$d</xliff:g> ٪ af forløbet er gennemført\nNæste periode om <xliff:g id="USED_1">%2$d</xliff:g> dage (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
@@ -506,6 +515,7 @@
     <string name="puk2_requested" msgid="6992374450720307514">"Forkert adgangskode. SIM-kortet er nu låst. Angiv PUK-kode 2."</string>
     <string name="puk2_blocked" msgid="3131139031779319911">"PUK2 er permanent blokeret."</string>
     <string name="pin2_attempts" msgid="5625178102026453023">\n"Du har <xliff:g id="NUMBER">%d</xliff:g> forsøg tilbage."</string>
+    <string name="puk2_locked" msgid="6497760825455461057">"PUK2-låst. Kontakt din udbyder for at låse op."</string>
     <string name="pin2_unblocked" msgid="4481107908727789303">"Pinkode 2 er ikke længere blokeret"</string>
     <string name="pin2_error_exception" msgid="8116103864600823641">"Fejl i netværk eller SIM-kort"</string>
     <string name="doneButton" msgid="7371209609238460207">"Afslut"</string>
@@ -572,7 +582,7 @@
     <string name="onscreenMergeCallsText" msgid="3692389519611225407">"Slå opkald sammen"</string>
     <string name="onscreenSwapCallsText" msgid="2682542150803377991">"Skift"</string>
     <string name="onscreenManageCallsText" msgid="1162047856081836469">"Administrer opkald"</string>
-    <string name="onscreenManageConferenceText" msgid="4700574060601755137">"Admin. konference"</string>
+    <string name="onscreenManageConferenceText" msgid="4700574060601755137">"Admin. møde"</string>
     <string name="onscreenAudioText" msgid="7224226735052019986">"Lyd"</string>
     <string name="onscreenVideoCallText" msgid="1743992456126258698">"Videoopkald"</string>
     <string name="importSimEntry" msgid="3892354284082689894">"Importer"</string>
@@ -639,6 +649,12 @@
     <string name="alert_dialog_yes" msgid="3532525979632841417">"Ja"</string>
     <string name="alert_dialog_no" msgid="1075632654085988420">"Nej"</string>
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"Luk"</string>
+    <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"Telefonen er i nødtilbagekaldstilstand"</string>
+    <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"Indtil <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
+    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
+      <item quantity="one">Telefonen er i nødtilbagekaldstilstand i <xliff:g id="COUNT_1">%s</xliff:g> minut.\nVil du lukke nu?</item>
+      <item quantity="other">Telefonen er i nødtilbagekaldstilstand i <xliff:g id="COUNT_1">%s</xliff:g> minutter.\nVil du lukke nu?</item>
+    </plurals>
     <string name="voicemail_provider" msgid="4158806657253745294">"Tjeneste"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"Konfiguration"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;Ikke angivet&gt;"</string>
@@ -800,7 +816,7 @@
     <string name="supp_service_additional_call_forwarded" msgid="8772753260008398632">"Det andet opkald er videresendt."</string>
     <string name="supp_service_additional_ect_connected" msgid="8525934162945220237">"Opkaldet blev tilsluttet ECT."</string>
     <string name="supp_service_additional_ect_connecting" msgid="7046240728781222753">"Opkaldet tilsluttes ECT."</string>
-    <string name="supp_service_call_on_hold" msgid="2836811319594503059">"Parkeret opkald."</string>
+    <string name="supp_service_call_on_hold" msgid="2836811319594503059">"Opkald på hold."</string>
     <string name="supp_service_call_resumed" msgid="3786864005920743546">"Opkaldet er genoptaget."</string>
     <string name="supp_service_deflected_call" msgid="7565979024562921707">"Opkaldet blev viderestillet."</string>
     <string name="supp_service_forwarded_call" msgid="6475776013771821457">"Videresendt opkald."</string>
@@ -863,7 +879,6 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"Under-id for standard-SIM-kort til data:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Båndbredde til download (kB/sek.):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Båndbredde til upload (kB/sek.):"</string>
-    <string name="radio_info_signal_location_label" msgid="6188435197086550049">"Oplysning om placering af celle (udfaset):"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Fysisk kanalkonfiguration for LTE:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Opdateringsfrekvens for celleoplysninger:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Alle oplysninger om cellemåling:"</string>
@@ -894,6 +909,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Opdater"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"Skift DNS-kontrol"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"OEM-specifikke oplysninger/indstillinger"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"Tilgængelig for EN-DC:"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"Begrænset til DCNR"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"Tilgængelig for NR:"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"Status for NR:"</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"Frekvens for NR:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Konfigurer radiobåndstilstand"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Indlæser båndliste…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Angiv"</string>
@@ -903,4 +923,7 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Telefonoplysninger"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Oplysninger om mobilselskab"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Aktivér mobilselskab"</string>
+    <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Dit Bluetooth-signal er svagt. Prøv at skifte til medhør."</string>
+    <string name="call_quality_notification_name" msgid="3476828289553948830">"Notifikation om opkaldskvalitet"</string>
+    <string name="notification_channel_sip_account" msgid="1261816025156179637">"Udfasede SIP-konti"</string>
 </resources>

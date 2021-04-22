@@ -40,7 +40,7 @@
     <string name="registration_status_registering" msgid="7986331597809521791">"Mendaftarkan..."</string>
     <string name="registration_status_still_trying" msgid="7178623685868766282">"Masih mencoba..."</string>
     <string name="registration_status_not_receiving" msgid="3873074208531938401">"Tidak menerima panggilan."</string>
-    <string name="registration_status_no_data" msgid="2987064560116584121">"Pendaftaran akun terhenti karena tidak ada sambungan internet."</string>
+    <string name="registration_status_no_data" msgid="2987064560116584121">"Pendaftaran akun terhenti karena tidak ada koneksi internet."</string>
     <string name="registration_status_no_wifi_data" msgid="685470618241482948">"Pendaftaran akun terhenti karena tidak ada sambungan Wi-Fi."</string>
     <string name="registration_status_not_running" msgid="6236403137652262659">"Pendaftaran akun gagal."</string>
     <string name="registration_status_done" msgid="6787397199273357721">"Menerima panggilan."</string>
@@ -71,7 +71,7 @@
     <string name="all_empty_alert" msgid="6085603517610199098">"Masukkan detail akun SIP baru."</string>
     <string name="empty_alert" msgid="3693655518612836718">"<xliff:g id="INPUT_FIELD_NAME">%s</xliff:g> diwajibkan dan tidak boleh kosong."</string>
     <string name="not_a_valid_port" msgid="3664668836663491376">"Nomor port harus dalam rentang 1000 dan 65534."</string>
-    <string name="no_internet_available" msgid="161720645084325479">"Untuk melakukan panggilan SIP, periksa sambungan internet terlebih dahulu."</string>
+    <string name="no_internet_available" msgid="161720645084325479">"Untuk melakukan panggilan SIP, periksa koneksi internet terlebih dahulu."</string>
     <string name="no_wifi_available" msgid="1179092018692306312">"Anda harus tersambung ke jaringan Wi-Fi untuk melakukan panggilan SIP (gunakan setelan Nirkabel &amp; Jaringan)."</string>
     <string name="no_voip" msgid="3366395789297981738">"Panggilan SIP tidak didukung"</string>
     <string name="sip_system_decide" msgid="197230378376326430">"Otomatis"</string>

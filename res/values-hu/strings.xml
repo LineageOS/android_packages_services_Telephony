@@ -50,6 +50,7 @@
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"A hangposta-beállításokat csak az elsődleges felhasználó módosíthatja."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"SIM kártyája letiltása megszűnt. Feloldás folyamatban..."</string>
     <string name="label_ndp" msgid="7617392683877410341">"SIM hálózati függetlenítő PIN kódja"</string>
+    <string name="label_phoneid" msgid="8775611434123577808">"A SIM zárolva a szolgálató esetében"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"Feloldás"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"Elvetés"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"Függetlenítés kérése..."</string>
@@ -123,6 +124,13 @@
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"Átirányítás ide: <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Ki"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Szolgáltatója nem támogatja a hívásátirányítás letiltását, ha a telefon nem érhető el."</string>
+    <string name="registration_cf_forbidden" msgid="4386482610771190420">"A szolgáltatója nem teszi lehetővé a hívásátirányítást."</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"Bekapcsolja a hívásvárakoztatást?"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"Hívás közben értesítést kap a bejövő hívásokról"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"Igen"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"Mégse"</string>
+    <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"IMS alatti CDMA-hívásvárakoztatás bekapcsolva"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"IMS alatti CDMA-hívásvárakoztatás kikapcsolva"</string>
     <string name="updating_title" msgid="6130548922615719689">"Hívásbeállítások"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"A hívásbeállításokat csak a rendszergazda módosíthatja."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Beállítások (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -273,19 +281,22 @@
     <string name="data_enabled" msgid="22525832097434368">"Adatok engedélyezése"</string>
     <string name="data_enable_summary" msgid="696860063456536557">"Adatforgalom engedélyezése"</string>
     <string name="dialog_alert_title" msgid="5260471806940268478">"Figyelem"</string>
-    <string name="roaming" msgid="1576180772877858949">"Barangolás"</string>
-    <string name="roaming_enable" msgid="6853685214521494819">"Csatlakozás adatszolgáltatásokhoz barangolás során"</string>
-    <string name="roaming_disable" msgid="8856224638624592681">"Csatlakozás adatszolgáltatásokhoz barangolás során"</string>
+    <string name="roaming" msgid="1576180772877858949">"Roaming"</string>
+    <string name="roaming_enable" msgid="6853685214521494819">"Csatlakozás adatszolgáltatásokhoz roaming során"</string>
+    <string name="roaming_disable" msgid="8856224638624592681">"Csatlakozás adatszolgáltatásokhoz roaming során"</string>
     <string name="roaming_reenable_message" msgid="1951802463885727915">"Az adatbarangolás ki van kapcsolva. Koppintson a bekapcsolásához."</string>
     <string name="roaming_enabled_message" msgid="9022249120750897">"A szolgáltató adatroamingdíjat számíthat fel. Koppintson a módosításhoz."</string>
     <string name="roaming_notification_title" msgid="3590348480688047320">"Nincs mobiladat-kapcsolat"</string>
     <string name="roaming_on_notification_title" msgid="7451473196411559173">"Az adatroaming be van kapcsolva"</string>
     <string name="roaming_warning" msgid="7855681468067171971">"Lehet, hogy jelentős összeget számítanak fel érte."</string>
     <string name="roaming_check_price_warning" msgid="8212484083990570215">"Az árakat a szolgáltatótól tudhatja meg."</string>
-    <string name="roaming_alert_title" msgid="5689615818220960940">"Engedélyezi az adatbarangolást?"</string>
+    <string name="roaming_alert_title" msgid="5689615818220960940">"Engedélyezi az adatroamingot?"</string>
     <string name="limited_sim_function_notification_title" msgid="612715399099846281">"Korlátozott SIM-funkció"</string>
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"A(z) <xliff:g id="PHONE_NUMBER">%2$s</xliff:g> szám használatakor előfordulhat, hogy a(z) <xliff:g id="CARRIER_NAME">%1$s</xliff:g>-hívások és az adatszolgáltatások nem működnek."</string>
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"Másik SIM esetén lehet, hogy a(z) <xliff:g id="CARRIER_NAME">%1$s</xliff:g>-hívások és -adatszolgáltatások nem működnek."</string>
+    <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"Elavult SIP-fiókokat találtunk, és eltávolítottuk őket"</string>
+    <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"Az Android platform már nem támogatja a SIP-hívást.\nA meglévő SIP-fiókjait (<xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g>) eltávolítottuk.\nErősítse meg az alapértelmezett hívásfiók beállítását."</string>
+    <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"Ugrás a beállításokhoz"</string>
     <string name="data_usage_title" msgid="8438592133893837464">"Alkalmazás adathasználata"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"<xliff:g id="ID_1">%1$s</xliff:g> mobiladat felhasználva a következő dátumok között: <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"Speciális"</string>
@@ -504,6 +515,7 @@
     <string name="puk2_requested" msgid="6992374450720307514">"A jelszó helytelen. SIM kártya zárolva. Adja meg a PUK2 kódot."</string>
     <string name="puk2_blocked" msgid="3131139031779319911">"A PUK2 végleg letiltva."</string>
     <string name="pin2_attempts" msgid="5625178102026453023">\n"<xliff:g id="NUMBER">%d</xliff:g> próbálkozási lehetősége maradt."</string>
+    <string name="puk2_locked" msgid="6497760825455461057">"A PUK2 zárolva van. A feloldás ügyében forduljon a szolgáltatóhoz."</string>
     <string name="pin2_unblocked" msgid="4481107908727789303">"PIN2 kód letiltása feloldva"</string>
     <string name="pin2_error_exception" msgid="8116103864600823641">"Hálózattal vagy SIM kártyával kapcsolatos hiba"</string>
     <string name="doneButton" msgid="7371209609238460207">"Kész"</string>
@@ -637,6 +649,12 @@
     <string name="alert_dialog_yes" msgid="3532525979632841417">"Igen"</string>
     <string name="alert_dialog_no" msgid="1075632654085988420">"Nem"</string>
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"Elvetés"</string>
+    <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"A telefon sürgősségi visszahívás módban van."</string>
+    <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"Eddig: <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
+    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
+      <item quantity="other">A telefon <xliff:g id="COUNT_1">%s</xliff:g> percig sürgősségi visszahívás módban lesz.\nKilép?</item>
+      <item quantity="one">A telefon <xliff:g id="COUNT_0">%s</xliff:g> percig sürgősségi visszahívás módban lesz.\nKilép?</item>
+    </plurals>
     <string name="voicemail_provider" msgid="4158806657253745294">"Szolgáltatás"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"Beállítás"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;Nincs megadva&gt;"</string>
@@ -763,13 +781,13 @@
     <string name="call_barring_baoic_enabled" msgid="1203758092657630123">"Megszünteti a kimenő nemzetközi hívások letiltását?"</string>
     <string name="call_barring_baoic_disabled" msgid="5656889339002997449">"Letiltja a kimenő nemzetközi hívásokat?"</string>
     <string name="call_barring_baoicr" msgid="8566167764432343487">"Kimenő hívások nemzetközi barangoláskor"</string>
-    <string name="call_barring_baoicr_enabled" msgid="1615324165512798478">"Megszünteti a nemzetközi barangolás során kimenő hívások letiltását?"</string>
+    <string name="call_barring_baoicr_enabled" msgid="1615324165512798478">"Megszünteti a nemzetközi roaming során kimenő hívások letiltását?"</string>
     <string name="call_barring_baoicr_disabled" msgid="172010175248142831">"Letiltja a kimenő hívásokat nemzetközi barangoláskor?"</string>
     <string name="call_barring_baic" msgid="7941393541678658566">"Minden bejövő hívás"</string>
     <string name="call_barring_baic_enabled" msgid="4357332358020337470">"Megszünteti az összes bejövő hívás letiltását?"</string>
     <string name="call_barring_baic_disabled" msgid="2355945245938240958">"Letiltja az összes bejövő hívást?"</string>
     <string name="call_barring_baicr" msgid="8712249337313034226">"Bejövő hívások nemzetközi barangoláskor"</string>
-    <string name="call_barring_baicr_enabled" msgid="64774270234828175">"Megszünteti a nemzetközi barangolás során bejövő összes hívás letiltását?"</string>
+    <string name="call_barring_baicr_enabled" msgid="64774270234828175">"Megszünteti a nemzetközi roaming során bejövő összes hívás letiltását?"</string>
     <string name="call_barring_baicr_disabled" msgid="3488129262744027262">"Letiltja a bejövő hívásokat nemzetközi barangoláskor?"</string>
     <string name="call_barring_deactivate_all" msgid="7837931580047157328">"Az összes deaktiválása"</string>
     <string name="call_barring_deactivate_all_description" msgid="4474119585042121604">"Az összes híváskorlátozási beállítás deaktiválása"</string>
@@ -861,12 +879,11 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"Alapértelmezett adatok SIM-alazonosítója:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Letöltési sávszélesség (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Feltöltési sávszélesség (kbps):"</string>
-    <string name="radio_info_signal_location_label" msgid="6188435197086550049">"Mobilos helyadatok (megszűnt):"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"LTE fizikai csatorna konfigurációja:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Cellainformáció frissítési gyakorisága:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Minden cellamérési információ:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"Adatszolgáltatás:"</string>
-    <string name="radio_info_roaming_label" msgid="6636932886446857120">"Barangolás:"</string>
+    <string name="radio_info_roaming_label" msgid="6636932886446857120">"Roaming:"</string>
     <string name="radio_info_imei_label" msgid="8947899706930120368">"IMEI:"</string>
     <string name="radio_info_call_redirect_label" msgid="4526480903023362276">"Hívásátirányítás:"</string>
     <string name="radio_info_ppp_resets_label" msgid="9131901102339077661">"PPP-visszaállítások száma a legutolsó rendszerindítás óta:"</string>
@@ -892,6 +909,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Frissítés"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"DNS-ellenőrzés váltása"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"OEM-specifikus adatok és beállítások:"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC rendelkezésre áll:"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR korlátozva:"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR rendelkezésre áll:"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"NR-állapot:"</string>
+    <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR-frekvencia:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Rádióhullámsáv mód beállítása"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Sávlista betöltése…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Beállítás"</string>
@@ -901,4 +923,7 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Telefon adatai"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Információ a szolgáltatói ellátásról"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Szolgáltatói ellátás aktiválása"</string>
+    <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Gyenge a Bluetooth-jel. Próbáljon kihangosítóra váltani."</string>
+    <string name="call_quality_notification_name" msgid="3476828289553948830">"Értesítés a hívás minőségéről"</string>
+    <string name="notification_channel_sip_account" msgid="1261816025156179637">"Elavult SIP-fiókok"</string>
 </resources>
