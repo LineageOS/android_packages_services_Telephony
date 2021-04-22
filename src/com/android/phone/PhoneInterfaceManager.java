@@ -4867,8 +4867,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     @Override
     public int getDataNetworkType(String callingPackage, String callingFeatureId) {
-        return getDataNetworkTypeForSubscriber(getDefaultSubscription(), callingPackage,
-                callingFeatureId);
+        return getDataNetworkTypeForSubscriber(mSubscriptionController.getDefaultDataSubId(),
+                callingPackage, callingFeatureId);
     }
 
     /**
