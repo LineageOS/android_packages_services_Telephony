@@ -515,8 +515,7 @@
     <string name="puk2_requested" msgid="6992374450720307514">"‏كلمة المرور غير صحيحة. تم قفل شريحة SIM الآن. أدخل رمز PUK2."</string>
     <string name="puk2_blocked" msgid="3131139031779319911">"‏تم حظر PUK2 بشكل دائم."</string>
     <string name="pin2_attempts" msgid="5625178102026453023">\n"يتبقى لديك <xliff:g id="NUMBER">%d</xliff:g> من المحاولات."</string>
-    <!-- no translation found for puk2_locked (6497760825455461057) -->
-    <skip />
+    <string name="puk2_locked" msgid="6497760825455461057">"‏تم قفل شريحة SIM برمز PUK2. تواصَل مع مقدّم الخدمة لفتح قفل الشريحة."</string>
     <string name="pin2_unblocked" msgid="4481107908727789303">"‏لم يعد رمز PIN2 محظورًا"</string>
     <string name="pin2_error_exception" msgid="8116103864600823641">"‏حدث خطأ في الشبكة أو ببطاقة SIM"</string>
     <string name="doneButton" msgid="7371209609238460207">"تم"</string>
@@ -927,6 +926,8 @@
     <string name="radio_info_nr_available" msgid="1321318331361249997">"‏NR متوفر:"</string>
     <string name="radio_info_nr_state" msgid="1337571996788535356">"‏حالة NR:"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"‏تردد NR:"</string>
+    <!-- no translation found for radio_info_network_slicing_config (7675131833885031563) -->
+    <skip />
     <string name="band_mode_title" msgid="7988822920724576842">"تحديد وضع النطاق اللاسلكي"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"جارٍ تحميل قائمة النطاقات…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"ضبط"</string>

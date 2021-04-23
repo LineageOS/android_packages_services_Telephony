@@ -914,6 +914,8 @@
     <string name="radio_info_nr_available" msgid="1321318331361249997">"មាន NR៖"</string>
     <string name="radio_info_nr_state" msgid="1337571996788535356">"ស្ថានភាព NR៖"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"កម្រិត​ញឹកញាប់​នៃ NR៖"</string>
+    <!-- no translation found for radio_info_network_slicing_config (7675131833885031563) -->
+    <skip />
     <string name="band_mode_title" msgid="7988822920724576842">"កំណត់​មុខងារ​កម្រិត​បញ្ជូន​វិទ្យុ"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"កំពុងដំណើរការបញ្ជីក្រុម…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"កំណត់"</string>
