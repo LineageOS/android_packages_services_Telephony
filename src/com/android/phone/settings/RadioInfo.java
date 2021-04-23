@@ -56,6 +56,7 @@ import android.telephony.CellSignalStrengthGsm;
 import android.telephony.CellSignalStrengthLte;
 import android.telephony.CellSignalStrengthWcdma;
 import android.telephony.DataSpecificRegistrationInfo;
+import android.telephony.data.NetworkSlicingConfig;
 import android.telephony.NetworkRegistrationInfo;
 import android.telephony.PhysicalChannelConfig;
 import android.telephony.RadioAccessFamily;
@@ -245,6 +246,7 @@ public class RadioInfo extends AppCompatActivity {
     private TextView mNrAvailable;
     private TextView mNrState;
     private TextView mNrFrequency;
+    private TextView mNetworkSlicingConfig;
     private EditText mSmsc;
     private Switch mRadioPowerOnSwitch;
     private Button mCellInfoRefreshRateButton;
@@ -494,6 +496,7 @@ public class RadioInfo extends AppCompatActivity {
         mNrState = (TextView) findViewById(R.id.nr_state);
         mNrFrequency = (TextView) findViewById(R.id.nr_frequency);
         mPhyChanConfig = (TextView) findViewById(R.id.phy_chan_config);
+        mNetworkSlicingConfig = (TextView) findViewById(R.id.network_slicing_config);
 
         // hide 5G stats on devices that don't support 5G
         if ((mTelephonyManager.getSupportedRadioAccessFamily()
@@ -508,6 +511,8 @@ public class RadioInfo extends AppCompatActivity {
             mNrState.setVisibility(View.GONE);
             ((TextView) findViewById(R.id.nr_frequency_label)).setVisibility(View.GONE);
             mNrFrequency.setVisibility(View.GONE);
+            ((TextView) findViewById(R.id.network_slicing_config_label)).setVisibility(View.GONE);
+            mNetworkSlicingConfig.setVisibility(View.GONE);
         }
 
         mPreferredNetworkType = (Spinner) findViewById(R.id.preferredNetworkType);
@@ -1125,6 +1130,10 @@ public class RadioInfo extends AppCompatActivity {
             mNrState.setText(NetworkRegistrationInfo.nrStateToString(ss.getNrState()));
             mNrFrequency.setText(ServiceState.frequencyRangeToString(ss.getNrFrequencyRange()));
         }
+
+        NetworkSlicingConfig slicingConfig = new NetworkSlicingConfig();
+        mNetworkSlicingConfig.setText(slicingConfig.toString());
+
     }
 
     private void updateProperties() {
@@ -1331,7 +1340,7 @@ public class RadioInfo extends AppCompatActivity {
             new MenuItem.OnMenuItemClickListener() {
         public boolean onMenuItemClick(MenuItem item) {
             boolean isImsRegistered = mPhone.isImsRegistered();
-            boolean availableVolte = mPhone.isVolteEnabled();
+            boolean availableVolte = mPhone.isVoiceOverCellularImsEnabled();
             boolean availableWfc = mPhone.isWifiCallingEnabled();
             boolean availableVt = mPhone.isVideoEnabled();
             boolean availableUt = mPhone.isUtEnabled();

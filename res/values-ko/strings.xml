@@ -515,8 +515,7 @@
     <string name="puk2_requested" msgid="6992374450720307514">"비밀번호가 잘못되어 SIM이 잠겼습니다. PUK2를 입력하세요."</string>
     <string name="puk2_blocked" msgid="3131139031779319911">"PUK2가 완전히 차단되었습니다."</string>
     <string name="pin2_attempts" msgid="5625178102026453023">\n"<xliff:g id="NUMBER">%d</xliff:g>번의 기회가 남았습니다."</string>
-    <!-- no translation found for puk2_locked (6497760825455461057) -->
-    <skip />
+    <string name="puk2_locked" msgid="6497760825455461057">"PUK2로 잠금 설정되었습니다. 모든 통신사에서 사용할 수 있도록 하려면 서비스 제공업체에 문의하세요."</string>
     <string name="pin2_unblocked" msgid="4481107908727789303">"PIN2 차단이 해제되었습니다."</string>
     <string name="pin2_error_exception" msgid="8116103864600823641">"네트워크 또는 SIM 카드 오류"</string>
     <string name="doneButton" msgid="7371209609238460207">"완료"</string>

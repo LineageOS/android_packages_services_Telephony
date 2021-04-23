@@ -24,9 +24,10 @@ import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
+import android.net.InetAddresses;
 import android.telephony.ims.DelegateRegistrationState;
 import android.telephony.ims.FeatureTagState;
-import android.telephony.ims.SipDelegateImsConfiguration;
+import android.telephony.ims.SipDelegateConfiguration;
 import android.telephony.ims.SipDelegateManager;
 import android.telephony.ims.aidl.ISipDelegate;
 import android.telephony.ims.aidl.ISipDelegateConnectionStateCallback;
@@ -44,6 +45,7 @@ import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 
+import java.net.InetSocketAddress;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -85,13 +87,17 @@ public class DelegateStateTrackerTest extends TelephonyTestBase {
         DelegateRegistrationState regState = new DelegateRegistrationState.Builder()
                 .addRegisteredFeatureTag(ImsSignallingUtils.ONE_TO_ONE_CHAT_TAG)
                 .build();
-        SipDelegateImsConfiguration config = new SipDelegateImsConfiguration.Builder(1/*version*/)
-                .build();
+        InetSocketAddress localAddr = new InetSocketAddress(
+                InetAddresses.parseNumericAddress("1.1.1.1"), 80);
+        InetSocketAddress serverAddr = new InetSocketAddress(
+                InetAddresses.parseNumericAddress("2.2.2.2"), 81);
+        SipDelegateConfiguration c = new SipDelegateConfiguration.Builder(1,
+                SipDelegateConfiguration.SIP_TRANSPORT_TCP, localAddr, serverAddr).build();
         stateTracker.onRegistrationStateChanged(regState);
-        stateTracker.onImsConfigurationChanged(config);
+        stateTracker.onConfigurationChanged(c);
         verify(mAppCallback).onFeatureTagStatusChanged(eq(regState),
                 eq(new ArrayList<>(deniedTags)));
-        verify(mAppCallback).onImsConfigurationChanged(config);
+        verify(mAppCallback).onConfigurationChanged(c);
 
         verify(mAppCallback, never()).onDestroyed(anyInt());
     }
