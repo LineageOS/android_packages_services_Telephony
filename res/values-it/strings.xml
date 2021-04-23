@@ -515,8 +515,7 @@
     <string name="puk2_requested" msgid="6992374450720307514">"Password errata. SIM bloccata. Inserisci codice PUK2."</string>
     <string name="puk2_blocked" msgid="3131139031779319911">"PUK2 bloccato definitivamente."</string>
     <string name="pin2_attempts" msgid="5625178102026453023">\n"Hai a disposizione ancora <xliff:g id="NUMBER">%d</xliff:g> tentativi."</string>
-    <!-- no translation found for puk2_locked (6497760825455461057) -->
-    <skip />
+    <string name="puk2_locked" msgid="6497760825455461057">"PUK2 bloccato. Per sbloccarlo, contatta il fornitore di servizi."</string>
     <string name="pin2_unblocked" msgid="4481107908727789303">"PIN2 sbloccato"</string>
     <string name="pin2_error_exception" msgid="8116103864600823641">"Errore di rete o della SIM"</string>
     <string name="doneButton" msgid="7371209609238460207">"Fine"</string>
