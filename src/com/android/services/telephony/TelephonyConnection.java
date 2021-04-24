@@ -30,7 +30,6 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.Messenger;
 import android.os.PersistableBundle;
-import android.telecom.BluetoothCallQualityReport;
 import android.telecom.CallAudioState;
 import android.telecom.CallScreeningService;
 import android.telecom.Conference;
@@ -887,8 +886,6 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
     private final Set<TelephonyConnectionListener> mTelephonyListeners = Collections.newSetFromMap(
             new ConcurrentHashMap<TelephonyConnectionListener, Boolean>(8, 0.9f, 1));
 
-    private CallQualityManager mCallQualityManager;
-
     protected TelephonyConnection(com.android.internal.telephony.Connection originalConnection,
             String callId, @android.telecom.Call.Details.CallDirection int callDirection) {
         setCallDirection(callDirection);
@@ -901,12 +898,6 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
     @Override
     public void onCallEvent(String event, Bundle extras) {
         switch (event) {
-            case BluetoothCallQualityReport.EVENT_BLUETOOTH_CALL_QUALITY_REPORT:
-                if (mCallQualityManager == null) {
-                    mCallQualityManager = new CallQualityManager(getPhone().getContext());
-                }
-                mCallQualityManager.onBluetoothCallQualityReported(extras);
-                break;
             case Connection.EVENT_DEVICE_TO_DEVICE_MESSAGE:
                 // A Device to device message is being sent by a CallDiagnosticService.
                 handleOutgoingDeviceToDeviceMessage(extras);
@@ -3200,9 +3191,6 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
         setDisconnected(disconnectCause);
         notifyDisconnected(disconnectCause);
         notifyStateChanged(getState());
-        if (mCallQualityManager != null) {
-            mCallQualityManager.clearNotifications();
-        }
     }
 
     /**
