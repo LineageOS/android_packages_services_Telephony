@@ -361,6 +361,13 @@ public class MessageTransportStateTracker implements DelegateBinderStateManager.
     }
 
     /**
+     * @return The remote application's message callback.
+     */
+    public ISipDelegateMessageCallback getAppMessageCallback() {
+        return mAppCallback;
+    }
+
+    /**
      * @return MessageCallback implementation to be sent to the ImsService.
      */
     public ISipDelegateMessageCallback getMessageCallback() {

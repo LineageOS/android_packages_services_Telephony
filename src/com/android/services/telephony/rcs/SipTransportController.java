@@ -20,6 +20,7 @@ import android.app.role.OnRoleHoldersChangedListener;
 import android.app.role.RoleManager;
 import android.content.Context;
 import android.os.PersistableBundle;
+import android.os.RemoteCallbackList;
 import android.os.RemoteException;
 import android.os.UserHandle;
 import android.telephony.CarrierConfigManager;
@@ -172,6 +173,34 @@ public class SipTransportController implements RcsFeatureController.Feature,
     }
 
     /**
+     * Extends RemoteCallbackList to track callbacks to the IMS applications with
+     * SipDelegateConnections and cleans them up if they die.
+     */
+    private class TrackedAppBinders extends RemoteCallbackList<ISipDelegateMessageCallback> {
+        @Override
+        public void onCallbackDied(ISipDelegateMessageCallback callback, Object cookie) {
+            mExecutorService.execute(() -> {
+                if (cookie instanceof SipDelegateController) {
+                    SipDelegateController c = (SipDelegateController) cookie;
+                    logi("onCallbackDied - Cleaning up delegates associated with package: "
+                            + c.getPackageName());
+                    boolean isNewDestroyQueued = addPendingDestroy(c,
+                            SipDelegateManager.SIP_DELEGATE_DESTROY_REASON_SERVICE_DEAD);
+                    if (isNewDestroyQueued) {
+                        CompletableFuture<Void> f = new CompletableFuture<>();
+                        scheduleReevaluateNow(f);
+                        f.thenRun(() -> logi("onCallbackDied - clean up complete for package: "
+                                + c.getPackageName()));
+                    }
+                } else {
+                    logw("onCallbackDied: unexpected - cookie is not an instance of "
+                            + "SipDelegateController");
+                }
+            });
+        }
+    }
+
+    /**
      * Used in {@link #destroySipDelegate(int, ISipDelegate, int)} to store pending destroy
      * requests.
      */
@@ -190,13 +219,16 @@ public class SipTransportController implements RcsFeatureController.Feature,
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
             DestroyRequest that = (DestroyRequest) o;
-            return reason == that.reason
-                    && controller.equals(that.controller);
+            // Only use controller for comparison, as we want to only have one DestroyRequest active
+            // per controller.
+            return controller.equals(that.controller);
         }
 
         @Override
         public int hashCode() {
-            return java.util.Objects.hash(controller, reason);
+            // Only use controller for hash, as we want to only have one DestroyRequest active per
+            // controller.
+            return java.util.Objects.hash(controller);
         }
 
         @Override
@@ -233,6 +265,8 @@ public class SipTransportController implements RcsFeatureController.Feature,
     private final List<SipDelegateController> mDelegatePendingCreate = new ArrayList<>();
     // SipDelegateControllers that are pending to be destroyed.
     private final List<DestroyRequest> mDelegatePendingDestroy = new ArrayList<>();
+    // Cache of Binders to remote IMS applications for tracking their potential death
+    private final TrackedAppBinders mActiveAppBinders = new TrackedAppBinders();
 
     // Future scheduled for operations that require the list of SipDelegateControllers to
     // be evaluated. When the timer expires and triggers the reevaluate method, this controller
@@ -254,7 +288,7 @@ public class SipTransportController implements RcsFeatureController.Feature,
     // Callback to monitor rcs provisioning change
     private CarrierConfigManager mCarrierConfigManager;
     // Cached allowed feature tags from carrier config
-    ArraySet<String> mFeatureTagsAllowed = new ArraySet<>();
+    private ArraySet<String> mFeatureTagsAllowed = new ArraySet<>();
 
     /**
      * Create an instance of SipTransportController.
@@ -660,6 +694,11 @@ public class SipTransportController implements RcsFeatureController.Feature,
             return;
         }
 
+        // Remove tracking for all SipDelegates being destroyed first
+        for (DestroyRequest d : mDelegatePendingDestroy) {
+            logi("reevaluateDelegates: starting destroy for: " + d.controller.getPackageName());
+            mActiveAppBinders.unregister(d.controller.getAppMessageCallback());
+        }
         // Destroy all pending destroy delegates first. Order doesn't matter.
         List<CompletableFuture<Void>> pendingDestroyList = mDelegatePendingDestroy.stream()
                 .map(d -> triggerDestroy(d.controller, d.reason)).collect(
@@ -673,7 +712,8 @@ public class SipTransportController implements RcsFeatureController.Feature,
         // Add newly created SipDelegates to end of queue before evaluating associated features.
         mDelegatePriorityQueue.addAll(mDelegatePendingCreate);
         for (SipDelegateController c : mDelegatePendingCreate) {
-            logi("reevaluateDelegates: pending create: " + c);
+            logi("reevaluateDelegates: pending create: " + c.getPackageName());
+            mActiveAppBinders.register(c.getAppMessageCallback(), c);
         }
         mDelegatePendingCreate.clear();
 
@@ -704,8 +744,12 @@ public class SipTransportController implements RcsFeatureController.Feature,
 
         // Executor doesn't matter here, schedule an event to update the IMS registration.
         mEvaluateCompleteFuture = pendingChange
-                .thenAccept((associatedFeatures) -> {
-                    logi("reevaluateDelegates: reevaluate complete," + " feature tags associated: "
+                .whenComplete((f, ex) -> {
+                    if (ex != null) {
+                        logw("reevaluateDelegates: Exception caught: " + ex);
+                    }
+                }).thenAccept((associatedFeatures) -> {
+                    logi("reevaluateDelegates: reevaluate complete, feature tags associated: "
                             + associatedFeatures);
                     scheduleUpdateRegistration();
                 });

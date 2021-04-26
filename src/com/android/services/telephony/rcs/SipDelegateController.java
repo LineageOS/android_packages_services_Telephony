@@ -136,8 +136,18 @@ public class SipDelegateController {
         return mPackageName;
     }
 
+    /**
+     * @return The ImsService's SIP delegate binder impl associated with this controller.
+     */
     public ISipDelegate getSipDelegateInterface() {
         return mMessageTransportStateTracker.getDelegateConnection();
+    }
+
+    /**
+     * @return The IMS app's message callback binder.
+     */
+    public ISipDelegateMessageCallback getAppMessageCallback() {
+        return mMessageTransportStateTracker.getAppMessageCallback();
     }
 
     /**
