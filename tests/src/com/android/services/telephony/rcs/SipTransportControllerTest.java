@@ -62,6 +62,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 
 import java.util.ArrayList;
@@ -87,17 +88,25 @@ public class SipTransportControllerTest extends TelephonyTestBase {
         public final String packageName;
         public final DelegateRequest delegateRequest;
         public final SipDelegateController delegateController;
-        public final ISipDelegate mMockDelegate;
-        public final IBinder mMockDelegateBinder;
+        private final ISipDelegate mMockDelegate;
+        public final IBinder mockDelegateBinder;
+        public final ISipDelegateConnectionStateCallback mockDelegateConnectionCallback;
+        public final ISipDelegateMessageCallback mockMessageCallback;
+        public final IBinder mockMessageCallbackBinder;
 
         SipDelegateControllerContainer(int id, String name, DelegateRequest request) {
             delegateController = mock(SipDelegateController.class);
             mMockDelegate = mock(ISipDelegate.class);
-            mMockDelegateBinder = mock(IBinder.class);
-            doReturn(mMockDelegateBinder).when(mMockDelegate).asBinder();
+            mockDelegateBinder = mock(IBinder.class);
+            doReturn(mockDelegateBinder).when(mMockDelegate).asBinder();
+            mockDelegateConnectionCallback = mock(ISipDelegateConnectionStateCallback.class);
+            mockMessageCallback = mock(ISipDelegateMessageCallback.class);
+            mockMessageCallbackBinder = mock(IBinder.class);
+            doReturn(mockMessageCallbackBinder).when(mockMessageCallback).asBinder();
             doReturn(name).when(delegateController).getPackageName();
             doReturn(request).when(delegateController).getInitialRequest();
             doReturn(mMockDelegate).when(delegateController).getSipDelegateInterface();
+            doReturn(mockMessageCallback).when(delegateController).getAppMessageCallback();
             subId = id;
             packageName = name;
             delegateRequest = request;
@@ -107,8 +116,6 @@ public class SipTransportControllerTest extends TelephonyTestBase {
     @Mock private RcsFeatureManager mRcsManager;
     @Mock private ISipTransport mSipTransport;
     @Mock private IImsRegistration mImsRegistration;
-    @Mock private ISipDelegateConnectionStateCallback mMockStateCallback;
-    @Mock private ISipDelegateMessageCallback mMockMessageCallback;
     @Mock private SipTransportController.SipDelegateControllerFactory
             mMockDelegateControllerFactory;
     @Mock private SipTransportController.RoleManagerAdapter mMockRoleManager;
@@ -249,7 +256,8 @@ public class SipTransportControllerTest extends TelephonyTestBase {
         try {
             controller.createSipDelegate(TEST_SUB_ID + 1,
                     new DelegateRequest(Collections.emptySet()), TEST_PACKAGE_NAME,
-                    mMockStateCallback, mMockMessageCallback);
+                    mock(ISipDelegateConnectionStateCallback.class),
+                    mock(ISipDelegateMessageCallback.class));
             fail();
         } catch (ImsException e) {
             assertEquals(ImsException.CODE_ERROR_INVALID_SUBSCRIPTION, e.getCode());
@@ -265,7 +273,8 @@ public class SipTransportControllerTest extends TelephonyTestBase {
         try {
             controller.createSipDelegate(TEST_SUB_ID,
                     new DelegateRequest(Collections.emptySet()), TEST_PACKAGE_NAME,
-                    mMockStateCallback, mMockMessageCallback);
+                    mock(ISipDelegateConnectionStateCallback.class),
+                    mock(ISipDelegateMessageCallback.class));
             fail();
         } catch (ImsException e) {
             assertEquals(ImsException.CODE_ERROR_UNSUPPORTED_OPERATION, e.getCode());
@@ -282,7 +291,8 @@ public class SipTransportControllerTest extends TelephonyTestBase {
         try {
             controller.createSipDelegate(TEST_SUB_ID,
                     new DelegateRequest(Collections.emptySet()), TEST_PACKAGE_NAME,
-                    mMockStateCallback, mMockMessageCallback);
+                    mock(ISipDelegateConnectionStateCallback.class),
+                    mock(ISipDelegateMessageCallback.class));
             fail();
         } catch (ImsException e) {
             assertEquals(ImsException.CODE_ERROR_SERVICE_UNAVAILABLE, e.getCode());
@@ -296,9 +306,8 @@ public class SipTransportControllerTest extends TelephonyTestBase {
 
         DelegateRequest r = getBaseDelegateRequest();
 
-        SipDelegateController c = injectMockDelegateController(TEST_PACKAGE_NAME, r);
-        createDelegateAndVerify(controller, c, r, r.getFeatureTags(), Collections.emptySet(),
-                TEST_PACKAGE_NAME);
+        SipDelegateControllerContainer c = injectMockDelegateController(TEST_PACKAGE_NAME, r);
+        createDelegateAndVerify(controller, c, r.getFeatureTags(), Collections.emptySet());
         verifyDelegateRegistrationChangedEvent(1 /*times*/, 0 /*waitMs*/);
         triggerFullNetworkRegistrationAndVerify(controller, c);
     }
@@ -309,14 +318,40 @@ public class SipTransportControllerTest extends TelephonyTestBase {
         SipTransportController controller = setupLiveTransportController();
 
         DelegateRequest r = getBaseDelegateRequest();
-        SipDelegateController c = injectMockDelegateController(TEST_PACKAGE_NAME, r);
-        createDelegateAndVerify(controller, c, r, r.getFeatureTags(), Collections.emptySet(),
-                TEST_PACKAGE_NAME);
+        SipDelegateControllerContainer c = injectMockDelegateController(TEST_PACKAGE_NAME, r);
+        createDelegateAndVerify(controller, c, r.getFeatureTags(), Collections.emptySet());
+        verify(c.mockMessageCallbackBinder).linkToDeath(any(), anyInt());
         verifyDelegateRegistrationChangedEvent(1, 0 /*throttle*/);
 
         destroyDelegateAndVerify(controller, c, false,
                 SipDelegateManager.SIP_DELEGATE_DESTROY_REASON_REQUESTED_BY_APP);
+        verify(c.mockMessageCallbackBinder).unlinkToDeath(any(), anyInt());
         verifyDelegateRegistrationChangedEvent(2 /*times*/, 0 /*waitMs*/);
+        triggerFullNetworkRegistrationAndVerifyNever(controller, c);
+    }
+
+    @SmallTest
+    @Test
+    public void createDestroyAppDied() throws Exception {
+        SipTransportController controller = setupLiveTransportController();
+        DelegateRequest r = getBaseDelegateRequest();
+        SipDelegateControllerContainer c = injectMockDelegateController(TEST_PACKAGE_NAME, r);
+        createDelegateAndVerify(controller, c, r.getFeatureTags(), Collections.emptySet());
+        ArgumentCaptor<IBinder.DeathRecipient> captor =
+                ArgumentCaptor.forClass(IBinder.DeathRecipient.class);
+        verify(c.mockMessageCallbackBinder).linkToDeath(captor.capture(), anyInt());
+        IBinder.DeathRecipient deathRecipient = captor.getValue();
+        assertNotNull(deathRecipient);
+        verifyDelegateRegistrationChangedEvent(1, 0 /*throttle*/);
+
+        CompletableFuture<Integer> pendingDestroy = setDestroyFuture(c.delegateController, true,
+                SipDelegateManager.SIP_DELEGATE_DESTROY_REASON_SERVICE_DEAD);
+        // Simulate app dying
+        deathRecipient.binderDied();
+        waitForExecutorAction(mExecutorService, TIMEOUT_MS);
+        verifyDestroyDelegate(c.delegateController, pendingDestroy, true,
+                SipDelegateManager.SIP_DELEGATE_DESTROY_REASON_SERVICE_DEAD);
+        // If binderDied is called, then unregister does not lead to unlinkToDeath
         triggerFullNetworkRegistrationAndVerifyNever(controller, c);
     }
 
@@ -330,9 +365,8 @@ public class SipTransportControllerTest extends TelephonyTestBase {
                 SipDelegateManager.DENIED_REASON_NOT_ALLOWED);
 
         // Try to create a SipDelegate for a package that is not the default sms role.
-        SipDelegateController c = injectMockDelegateController(TEST_PACKAGE_NAME_2, r);
-        createDelegateAndVerify(controller, c, r, Collections.emptySet(), getDeniedTags,
-                TEST_PACKAGE_NAME_2);
+        SipDelegateControllerContainer c = injectMockDelegateController(TEST_PACKAGE_NAME_2, r);
+        createDelegateAndVerify(controller, c, Collections.emptySet(), getDeniedTags);
     }
 
     @SmallTest
@@ -345,10 +379,9 @@ public class SipTransportControllerTest extends TelephonyTestBase {
         ArraySet<String> firstDelegate = new ArraySet<>(getBaseDelegateRequest().getFeatureTags());
         firstDelegate.remove(ImsSignallingUtils.GROUP_CHAT_TAG);
         DelegateRequest firstDelegateRequest = new DelegateRequest(firstDelegate);
-        SipDelegateController c1 = injectMockDelegateController(TEST_PACKAGE_NAME,
+        SipDelegateControllerContainer c1 = injectMockDelegateController(TEST_PACKAGE_NAME,
                 firstDelegateRequest);
-        createDelegateAndVerify(controller, c1, firstDelegateRequest, firstDelegate,
-                Collections.emptySet(), TEST_PACKAGE_NAME);
+        createDelegateAndVerify(controller, c1, firstDelegate, Collections.emptySet());
         // there is a delay in the indication to update reg, so it should not happen yet.
         verifyNoDelegateRegistrationChangedEvent();
 
@@ -360,10 +393,10 @@ public class SipTransportControllerTest extends TelephonyTestBase {
         Pair<Set<String>, Set<FeatureTagState>> grantedAndDenied = getAllowedAndDeniedTagsForConfig(
                 secondDelegateRequest, SipDelegateManager.DENIED_REASON_IN_USE_BY_ANOTHER_DELEGATE,
                 firstDelegate);
-        SipDelegateController c2 = injectMockDelegateController(TEST_PACKAGE_NAME,
+        SipDelegateControllerContainer c2 = injectMockDelegateController(TEST_PACKAGE_NAME,
                 secondDelegateRequest);
-        createDelegateAndVerify(controller, c2, secondDelegateRequest, grantedAndDenied.first,
-                grantedAndDenied.second, TEST_PACKAGE_NAME, 1);
+        createDelegateAndVerify(controller, c2, grantedAndDenied.first,
+                grantedAndDenied.second, 1);
         // a reg changed event should happen after wait.
         verifyDelegateRegistrationChangedEvent(1, 2 * THROTTLE_MS);
     }
@@ -377,10 +410,10 @@ public class SipTransportControllerTest extends TelephonyTestBase {
         Set<FeatureTagState> firstDeniedTags = getDeniedTagsForReason(
                 firstDelegateRequest.getFeatureTags(),
                 SipDelegateManager.DENIED_REASON_NOT_ALLOWED);
-        SipDelegateController c1 = injectMockDelegateController(TEST_PACKAGE_NAME,
+        SipDelegateControllerContainer c1 = injectMockDelegateController(TEST_PACKAGE_NAME,
                 firstDelegateRequest);
-        createDelegateAndVerify(controller, c1, firstDelegateRequest,
-                firstDelegateRequest.getFeatureTags(), Collections.emptySet(), TEST_PACKAGE_NAME);
+        createDelegateAndVerify(controller, c1, firstDelegateRequest.getFeatureTags(),
+                Collections.emptySet());
         verifyDelegateRegistrationChangedEvent(1 /*times*/, THROTTLE_MS);
 
         DelegateRequest secondDelegateRequest = getBaseDelegateRequest();
@@ -388,16 +421,16 @@ public class SipTransportControllerTest extends TelephonyTestBase {
                 secondDelegateRequest.getFeatureTags(),
                 SipDelegateManager.DENIED_REASON_NOT_ALLOWED);
         // Try to create a SipDelegate for a package that is not the default sms role.
-        SipDelegateController c2 = injectMockDelegateController(TEST_PACKAGE_NAME_2,
+        SipDelegateControllerContainer c2 = injectMockDelegateController(TEST_PACKAGE_NAME_2,
                 secondDelegateRequest);
-        createDelegateAndVerify(controller, c2, secondDelegateRequest, Collections.emptySet(),
-                secondDeniedTags, TEST_PACKAGE_NAME_2, 1);
+        createDelegateAndVerify(controller, c2, Collections.emptySet(), secondDeniedTags, 1);
 
         // now swap the SMS role.
-        CompletableFuture<Boolean> pendingC1Change = setChangeSupportedFeatureTagsFuture(c1,
-                Collections.emptySet(), firstDeniedTags);
-        CompletableFuture<Boolean> pendingC2Change = setChangeSupportedFeatureTagsFuture(c2,
-                secondDelegateRequest.getFeatureTags(), Collections.emptySet());
+        CompletableFuture<Boolean> pendingC1Change = setChangeSupportedFeatureTagsFuture(
+                c1.delegateController, Collections.emptySet(), firstDeniedTags);
+        CompletableFuture<Boolean> pendingC2Change = setChangeSupportedFeatureTagsFuture(
+                c2.delegateController, secondDelegateRequest.getFeatureTags(),
+                Collections.emptySet());
         setSmsRoleAndEvaluate(controller, TEST_PACKAGE_NAME_2);
         // swapping roles should trigger a deregistration event on the ImsService side.
         verifyDelegateDeregistrationEvent();
@@ -405,17 +438,18 @@ public class SipTransportControllerTest extends TelephonyTestBase {
         verifyDelegateRegistrationChangedEvent(1 /*times*/, THROTTLE_MS);
         // trigger completion stage to run
         waitForExecutorAction(mExecutorService, TIMEOUT_MS);
-        verify(c1).changeSupportedFeatureTags(Collections.emptySet(), firstDeniedTags);
+        verify(c1.delegateController).changeSupportedFeatureTags(Collections.emptySet(),
+                firstDeniedTags);
         // we should not get a change for c2 until pendingC1Change completes.
-        verify(c2, never()).changeSupportedFeatureTags(secondDelegateRequest.getFeatureTags(),
-                Collections.emptySet());
+        verify(c2.delegateController, never()).changeSupportedFeatureTags(
+                secondDelegateRequest.getFeatureTags(), Collections.emptySet());
         // ensure we are not blocking executor here
         waitForExecutorAction(mExecutorService, TIMEOUT_MS);
         completePendingChange(pendingC1Change, true);
         // trigger completion stage to run
         waitForExecutorAction(mExecutorService, TIMEOUT_MS);
-        verify(c2).changeSupportedFeatureTags(secondDelegateRequest.getFeatureTags(),
-                Collections.emptySet());
+        verify(c2.delegateController).changeSupportedFeatureTags(
+                secondDelegateRequest.getFeatureTags(), Collections.emptySet());
         // ensure we are not blocking executor here
         waitForExecutorAction(mExecutorService, TIMEOUT_MS);
         completePendingChange(pendingC2Change, true);
@@ -432,10 +466,9 @@ public class SipTransportControllerTest extends TelephonyTestBase {
         ArraySet<String> firstDelegate = new ArraySet<>(getBaseDelegateRequest().getFeatureTags());
         firstDelegate.remove(ImsSignallingUtils.GROUP_CHAT_TAG);
         DelegateRequest firstDelegateRequest = new DelegateRequest(firstDelegate);
-        SipDelegateController c1 = injectMockDelegateController(TEST_PACKAGE_NAME,
+        SipDelegateControllerContainer c1 = injectMockDelegateController(TEST_PACKAGE_NAME,
                 firstDelegateRequest);
-        createDelegateAndVerify(controller, c1, firstDelegateRequest, firstDelegate,
-                Collections.emptySet(), TEST_PACKAGE_NAME);
+        createDelegateAndVerify(controller, c1, firstDelegate, Collections.emptySet());
         verifyNoDelegateRegistrationChangedEvent();
 
         // First delegate requests RCS message + Group RCS message. For this delegate, single RCS
@@ -446,21 +479,21 @@ public class SipTransportControllerTest extends TelephonyTestBase {
         Pair<Set<String>, Set<FeatureTagState>> grantedAndDenied = getAllowedAndDeniedTagsForConfig(
                 secondDelegateRequest, SipDelegateManager.DENIED_REASON_IN_USE_BY_ANOTHER_DELEGATE,
                 firstDelegate);
-        SipDelegateController c2 = injectMockDelegateController(TEST_PACKAGE_NAME,
+        SipDelegateControllerContainer c2 = injectMockDelegateController(TEST_PACKAGE_NAME,
                 secondDelegateRequest);
-        createDelegateAndVerify(controller, c2, secondDelegateRequest, grantedAndDenied.first,
-                grantedAndDenied.second, TEST_PACKAGE_NAME, 1);
+        createDelegateAndVerify(controller, c2, grantedAndDenied.first, grantedAndDenied.second, 1);
         verifyNoDelegateRegistrationChangedEvent();
 
         // Destroy the firstDelegate, which should now cause all previously denied tags to be
         // granted to the new delegate.
-        CompletableFuture<Boolean> pendingC2Change = setChangeSupportedFeatureTagsFuture(c2,
-                secondDelegate, Collections.emptySet());
+        CompletableFuture<Boolean> pendingC2Change = setChangeSupportedFeatureTagsFuture(
+                c2.delegateController, secondDelegate, Collections.emptySet());
         destroyDelegateAndVerify(controller, c1, false /*force*/,
                 SipDelegateManager.SIP_DELEGATE_DESTROY_REASON_REQUESTED_BY_APP);
         // wait for create to be processed.
         assertTrue(waitForExecutorAction(mExecutorService, TIMEOUT_MS));
-        verify(c2).changeSupportedFeatureTags(secondDelegate, Collections.emptySet());
+        verify(c2.delegateController).changeSupportedFeatureTags(secondDelegate,
+                Collections.emptySet());
         completePendingChange(pendingC2Change, true);
 
         verifyDelegateRegistrationChangedEvent(1 /*times*/, THROTTLE_MS);
@@ -475,10 +508,10 @@ public class SipTransportControllerTest extends TelephonyTestBase {
         ArraySet<String> firstDelegate = new ArraySet<>(getBaseDelegateRequest().getFeatureTags());
         firstDelegate.remove(ImsSignallingUtils.GROUP_CHAT_TAG);
         DelegateRequest firstDelegateRequest = new DelegateRequest(firstDelegate);
-        SipDelegateController c1 = injectMockDelegateController(TEST_PACKAGE_NAME,
+        SipDelegateControllerContainer c1 = injectMockDelegateController(TEST_PACKAGE_NAME,
                 firstDelegateRequest);
         CompletableFuture<Boolean> pendingC1Change = createDelegate(controller, c1,
-                firstDelegateRequest, firstDelegate, Collections.emptySet(), TEST_PACKAGE_NAME);
+                firstDelegate, Collections.emptySet());
 
         // Request RCS message + group RCS Message. For this delegate, single RCS message should be
         // denied.
@@ -488,11 +521,10 @@ public class SipTransportControllerTest extends TelephonyTestBase {
         Pair<Set<String>, Set<FeatureTagState>> grantedAndDeniedC2 =
                 getAllowedAndDeniedTagsForConfig(secondDelegateRequest,
                         SipDelegateManager.DENIED_REASON_IN_USE_BY_ANOTHER_DELEGATE, firstDelegate);
-        SipDelegateController c2 = injectMockDelegateController(TEST_PACKAGE_NAME,
+        SipDelegateControllerContainer c2 = injectMockDelegateController(TEST_PACKAGE_NAME,
                 secondDelegateRequest);
         CompletableFuture<Boolean> pendingC2Change = createDelegate(controller, c2,
-                secondDelegateRequest, grantedAndDeniedC2.first, grantedAndDeniedC2.second,
-                TEST_PACKAGE_NAME);
+                grantedAndDeniedC2.first, grantedAndDeniedC2.second);
 
         // Request group RCS message + file transfer. All should be denied at first
         ArraySet<String> thirdDelegate = new ArraySet<>(getBaseDelegateRequest().getFeatureTags());
@@ -502,42 +534,44 @@ public class SipTransportControllerTest extends TelephonyTestBase {
                 getAllowedAndDeniedTagsForConfig(thirdDelegateRequest,
                         SipDelegateManager.DENIED_REASON_IN_USE_BY_ANOTHER_DELEGATE, firstDelegate,
                         grantedAndDeniedC2.first);
-        SipDelegateController c3 = injectMockDelegateController(TEST_PACKAGE_NAME,
+        SipDelegateControllerContainer c3 = injectMockDelegateController(TEST_PACKAGE_NAME,
                 thirdDelegateRequest);
         CompletableFuture<Boolean> pendingC3Change = createDelegate(controller, c3,
-                thirdDelegateRequest, grantedAndDeniedC3.first, grantedAndDeniedC3.second,
-                TEST_PACKAGE_NAME);
+                grantedAndDeniedC3.first, grantedAndDeniedC3.second);
 
         verifyNoDelegateRegistrationChangedEvent();
         assertTrue(scheduleDelayedWait(2 * THROTTLE_MS));
-        verifyDelegateChanged(c1, pendingC1Change, firstDelegate, Collections.emptySet(), 0);
-        verifyDelegateChanged(c2, pendingC2Change, grantedAndDeniedC2.first,
+        verifyDelegateChanged(c1.delegateController, pendingC1Change, firstDelegate,
+                Collections.emptySet(), 0);
+        verifyDelegateChanged(c2.delegateController, pendingC2Change, grantedAndDeniedC2.first,
                 grantedAndDeniedC2.second, 0);
-        verifyDelegateChanged(c3, pendingC3Change, grantedAndDeniedC3.first,
+        verifyDelegateChanged(c3.delegateController, pendingC3Change, grantedAndDeniedC3.first,
                 grantedAndDeniedC3.second, 0);
         verifyDelegateRegistrationChangedEvent(1, 2 * THROTTLE_MS);
 
         // Destroy the first and second controller in quick succession, this should only generate
         // one reevaluate for the third controller.
         CompletableFuture<Boolean> pendingChangeC3 = setChangeSupportedFeatureTagsFuture(
-                c3, thirdDelegate, Collections.emptySet());
-        CompletableFuture<Integer> pendingDestroyC1 = destroyDelegate(controller, c1,
-                false /*force*/,
+                c3.delegateController, thirdDelegate, Collections.emptySet());
+        CompletableFuture<Integer> pendingDestroyC1 = destroyDelegate(controller,
+                c1.delegateController, false /*force*/,
                 SipDelegateManager.SIP_DELEGATE_DESTROY_REASON_REQUESTED_BY_APP);
-        CompletableFuture<Integer> pendingDestroyC2 = destroyDelegate(controller, c2,
-                false /*force*/,
+        CompletableFuture<Integer> pendingDestroyC2 = destroyDelegate(controller,
+                c2.delegateController, false /*force*/,
                 SipDelegateManager.SIP_DELEGATE_DESTROY_REASON_REQUESTED_BY_APP);
         assertTrue(scheduleDelayedWait(2 * THROTTLE_MS));
-        verifyDestroyDelegate(controller, c1, pendingDestroyC1, false /*force*/,
+        verifyDestroyDelegate(c1.delegateController, pendingDestroyC1, false /*force*/,
                 SipDelegateManager.SIP_DELEGATE_DESTROY_REASON_REQUESTED_BY_APP);
-        verifyDestroyDelegate(controller, c2, pendingDestroyC2, false /*force*/,
+        verifyDestroyDelegate(c2.delegateController, pendingDestroyC2, false /*force*/,
                 SipDelegateManager.SIP_DELEGATE_DESTROY_REASON_REQUESTED_BY_APP);
 
         // All requested features should now be granted
         completePendingChange(pendingChangeC3, true);
-        verify(c3).changeSupportedFeatureTags(thirdDelegate, Collections.emptySet());
+        verify(c3.delegateController)
+                .changeSupportedFeatureTags(thirdDelegate, Collections.emptySet());
         // In total reeval should have only been called twice.
-        verify(c3, times(2)).changeSupportedFeatureTags(any(), any());
+        verify(c3.delegateController, times(2))
+                .changeSupportedFeatureTags(any(), any());
         verifyDelegateRegistrationChangedEvent(2 /*times*/, 2 * THROTTLE_MS);
     }
 
@@ -548,17 +582,16 @@ public class SipTransportControllerTest extends TelephonyTestBase {
 
         ArraySet<String> firstDelegate = new ArraySet<>(getBaseDelegateRequest().getFeatureTags());
         DelegateRequest firstDelegateRequest = new DelegateRequest(firstDelegate);
-        SipDelegateController c1 = injectMockDelegateController(TEST_PACKAGE_NAME,
+        SipDelegateControllerContainer c = injectMockDelegateController(TEST_PACKAGE_NAME,
                 firstDelegateRequest);
-        createDelegateAndVerify(controller, c1, firstDelegateRequest, firstDelegate,
-                Collections.emptySet(), TEST_PACKAGE_NAME);
+        createDelegateAndVerify(controller, c, firstDelegate, Collections.emptySet());
         verifyDelegateRegistrationChangedEvent(1 /*times*/, 0 /*waitMs*/);
 
-        CompletableFuture<Integer> pendingDestroy =  setDestroyFuture(c1, true,
+        CompletableFuture<Integer> pendingDestroy =  setDestroyFuture(c.delegateController, true,
                 SipDelegateManager.SIP_DELEGATE_DESTROY_REASON_SUBSCRIPTION_TORN_DOWN);
         controller.onAssociatedSubscriptionUpdated(TEST_SUB_ID + 1);
         waitForExecutorAction(mExecutorService, TIMEOUT_MS);
-        verifyDestroyDelegate(controller, c1, pendingDestroy, true /*force*/,
+        verifyDestroyDelegate(c.delegateController, pendingDestroy, true /*force*/,
                 SipDelegateManager.SIP_DELEGATE_DESTROY_REASON_SUBSCRIPTION_TORN_DOWN);
         verifyDelegateRegistrationChangedEvent(2 /*times*/, 0 /*waitMs*/);
     }
@@ -570,16 +603,15 @@ public class SipTransportControllerTest extends TelephonyTestBase {
 
         ArraySet<String> firstDelegate = new ArraySet<>(getBaseDelegateRequest().getFeatureTags());
         DelegateRequest firstDelegateRequest = new DelegateRequest(firstDelegate);
-        SipDelegateController c1 = injectMockDelegateController(TEST_PACKAGE_NAME,
+        SipDelegateControllerContainer c = injectMockDelegateController(TEST_PACKAGE_NAME,
                 firstDelegateRequest);
-        createDelegateAndVerify(controller, c1, firstDelegateRequest, firstDelegate,
-                Collections.emptySet(), TEST_PACKAGE_NAME);
+        createDelegateAndVerify(controller, c, firstDelegate, Collections.emptySet());
 
-        CompletableFuture<Integer> pendingDestroy =  setDestroyFuture(c1, true,
+        CompletableFuture<Integer> pendingDestroy =  setDestroyFuture(c.delegateController, true,
                 SipDelegateManager.SIP_DELEGATE_DESTROY_REASON_SERVICE_DEAD);
         controller.onRcsDisconnected();
         waitForExecutorAction(mExecutorService, TIMEOUT_MS);
-        verifyDestroyDelegate(controller, c1, pendingDestroy, true /*force*/,
+        verifyDestroyDelegate(c.delegateController, pendingDestroy, true /*force*/,
                 SipDelegateManager.SIP_DELEGATE_DESTROY_REASON_SERVICE_DEAD);
         verifyDelegateRegistrationChangedEvent(1, 0 /*waitMs*/);
     }
@@ -591,18 +623,17 @@ public class SipTransportControllerTest extends TelephonyTestBase {
 
         ArraySet<String> firstDelegate = new ArraySet<>(getBaseDelegateRequest().getFeatureTags());
         DelegateRequest firstDelegateRequest = new DelegateRequest(firstDelegate);
-        SipDelegateController c1 = injectMockDelegateController(TEST_PACKAGE_NAME,
+        SipDelegateControllerContainer c = injectMockDelegateController(TEST_PACKAGE_NAME,
                 firstDelegateRequest);
-        createDelegateAndVerify(controller, c1, firstDelegateRequest, firstDelegate,
-                Collections.emptySet(), TEST_PACKAGE_NAME);
+        createDelegateAndVerify(controller, c, firstDelegate, Collections.emptySet());
 
-        CompletableFuture<Integer> pendingDestroy =  setDestroyFuture(c1, true,
-                SipDelegateManager.SIP_DELEGATE_DESTROY_REASON_SUBSCRIPTION_TORN_DOWN);
+        CompletableFuture<Integer> pendingDestroy =  setDestroyFuture(c.delegateController,
+                true, SipDelegateManager.SIP_DELEGATE_DESTROY_REASON_SUBSCRIPTION_TORN_DOWN);
         controller.onDestroy();
         waitForExecutorAction(mExecutorService, TIMEOUT_MS);
         verifyDelegateDeregistrationEvent();
         // verify change was called.
-        verify(c1).destroy(true /*force*/,
+        verify(c.delegateController).destroy(true /*force*/,
                 SipDelegateManager.SIP_DELEGATE_DESTROY_REASON_SUBSCRIPTION_TORN_DOWN);
         // ensure thread is not blocked while waiting for pending complete.
         waitForExecutorAction(mExecutorService, TIMEOUT_MS);
@@ -620,16 +651,17 @@ public class SipTransportControllerTest extends TelephonyTestBase {
 
         ArraySet<String> firstDelegate = new ArraySet<>(getBaseDelegateRequest().getFeatureTags());
         DelegateRequest firstDelegateRequest = new DelegateRequest(firstDelegate);
-        SipDelegateController c1 = injectMockDelegateController(TEST_PACKAGE_NAME,
+        SipDelegateControllerContainer c1 = injectMockDelegateController(TEST_PACKAGE_NAME,
                 firstDelegateRequest);
         CompletableFuture<Boolean> pendingC1Change = createDelegate(controller, c1,
-                firstDelegateRequest, firstDelegate, Collections.emptySet(), TEST_PACKAGE_NAME);
+                firstDelegate, Collections.emptySet());
         assertTrue(scheduleDelayedWait(2 * THROTTLE_MS));
-        verifyDelegateChanged(c1, pendingC1Change, firstDelegate, Collections.emptySet(), 0);
+        verifyDelegateChanged(c1.delegateController, pendingC1Change, firstDelegate,
+                Collections.emptySet(), 0);
 
 
-        CompletableFuture<Integer> pendingDestroy =  setDestroyFuture(c1, true,
-                SipDelegateManager.SIP_DELEGATE_DESTROY_REASON_SUBSCRIPTION_TORN_DOWN);
+        CompletableFuture<Integer> pendingDestroy =  setDestroyFuture(c1.delegateController,
+                true, SipDelegateManager.SIP_DELEGATE_DESTROY_REASON_SUBSCRIPTION_TORN_DOWN);
         // triggers reeval now.
         controller.onAssociatedSubscriptionUpdated(TEST_SUB_ID + 1);
         waitForExecutorAction(mExecutorService, TIMEOUT_MS);
@@ -639,18 +671,18 @@ public class SipTransportControllerTest extends TelephonyTestBase {
         secondDelegate.add(ImsSignallingUtils.ONE_TO_ONE_CHAT_TAG);
         secondDelegate.add(ImsSignallingUtils.FILE_TRANSFER_HTTP_TAG);
         DelegateRequest secondDelegateRequest = new DelegateRequest(secondDelegate);
-        SipDelegateController c2 = injectMockDelegateController(TEST_SUB_ID + 1,
+        SipDelegateControllerContainer c2 = injectMockDelegateController(TEST_SUB_ID + 1,
                 TEST_PACKAGE_NAME, secondDelegateRequest);
-        CompletableFuture<Boolean> pendingC2Change = createDelegate(controller, c2,
-                TEST_SUB_ID + 1, secondDelegateRequest, secondDelegate,
-                Collections.emptySet(), TEST_PACKAGE_NAME);
+        CompletableFuture<Boolean> pendingC2Change = createDelegate(controller, c2, secondDelegate,
+                Collections.emptySet());
         assertTrue(scheduleDelayedWait(THROTTLE_MS));
 
         //trigger destroyed event
-        verifyDestroyDelegate(controller, c1, pendingDestroy, true /*force*/,
+        verifyDestroyDelegate(c1.delegateController, pendingDestroy, true /*force*/,
                 SipDelegateManager.SIP_DELEGATE_DESTROY_REASON_SUBSCRIPTION_TORN_DOWN);
         assertTrue(scheduleDelayedWait(2 * THROTTLE_MS));
-        verifyDelegateChanged(c2, pendingC2Change, secondDelegate, Collections.emptySet(), 0);
+        verifyDelegateChanged(c2.delegateController, pendingC2Change, secondDelegate,
+                Collections.emptySet(), 0);
     }
 
     @SmallTest
@@ -664,16 +696,17 @@ public class SipTransportControllerTest extends TelephonyTestBase {
         ArraySet<String> allowedTags = new ArraySet<>(requestTags);
         ArraySet<String> deniedTags = new ArraySet<>();
         DelegateRequest delegateRequest = new DelegateRequest(requestTags);
-        SipDelegateController sc = injectMockDelegateController(TEST_PACKAGE_NAME,
+        SipDelegateControllerContainer c = injectMockDelegateController(TEST_PACKAGE_NAME,
                 delegateRequest);
-        CompletableFuture<Boolean> pendingScChange = createDelegate(controller, sc,
-                delegateRequest, requestTags, Collections.emptySet(), TEST_PACKAGE_NAME);
+        CompletableFuture<Boolean> pendingScChange = createDelegate(controller, c, requestTags,
+                Collections.emptySet());
         allowedTags.remove(ImsSignallingUtils.ONE_TO_ONE_CHAT_TAG);
         deniedTags.add(ImsSignallingUtils.ONE_TO_ONE_CHAT_TAG);
 
         assertTrue(scheduleDelayedWait(2 * THROTTLE_MS));
-        verifyDelegateChanged(sc, pendingScChange, allowedTags, getDeniedTagsForReason(
-                deniedTags, SipDelegateManager.DENIED_REASON_NOT_ALLOWED), 0);
+        verifyDelegateChanged(c.delegateController, pendingScChange, allowedTags,
+                getDeniedTagsForReason(deniedTags,
+                        SipDelegateManager.DENIED_REASON_NOT_ALLOWED), 0);
     }
 
     @SmallTest
@@ -685,14 +718,15 @@ public class SipTransportControllerTest extends TelephonyTestBase {
         ArraySet<String> requestTags = new ArraySet<>(getBaseDelegateRequest().getFeatureTags());
         ArraySet<String> deniedTags = new ArraySet<>(requestTags);
         DelegateRequest delegateRequest = new DelegateRequest(requestTags);
-        SipDelegateController sc = injectMockDelegateController(TEST_PACKAGE_NAME,
+        SipDelegateControllerContainer c = injectMockDelegateController(TEST_PACKAGE_NAME,
                 delegateRequest);
-        CompletableFuture<Boolean> pendingScChange = createDelegate(controller, sc,
-                delegateRequest, requestTags, Collections.emptySet(), TEST_PACKAGE_NAME);
+        CompletableFuture<Boolean> pendingScChange = createDelegate(controller, c, requestTags,
+                Collections.emptySet());
 
         assertTrue(scheduleDelayedWait(2 * THROTTLE_MS));
-        verifyDelegateChanged(sc, pendingScChange, Collections.emptySet(), getDeniedTagsForReason(
-                deniedTags, SipDelegateManager.DENIED_REASON_NOT_ALLOWED), 0);
+        verifyDelegateChanged(c.delegateController, pendingScChange, Collections.emptySet(),
+                getDeniedTagsForReason(deniedTags,
+                        SipDelegateManager.DENIED_REASON_NOT_ALLOWED), 0);
     }
 
     @SmallTest
@@ -705,13 +739,14 @@ public class SipTransportControllerTest extends TelephonyTestBase {
         ArraySet<String> requestTags = new ArraySet<>(getBaseDelegateRequest().getFeatureTags());
         ArraySet<String> allowedTags = new ArraySet<>(requestTags);
         DelegateRequest delegateRequest = new DelegateRequest(requestTags);
-        SipDelegateController sc = injectMockDelegateController(TEST_PACKAGE_NAME,
-                delegateRequest);
-        CompletableFuture<Boolean> pendingScChange = createDelegate(controller, sc,
-                delegateRequest, requestTags, Collections.emptySet(), TEST_PACKAGE_NAME);
+        SipDelegateControllerContainer controllerContainer =
+                injectMockDelegateController(TEST_PACKAGE_NAME, delegateRequest);
+        CompletableFuture<Boolean> pendingScChange = createDelegate(controller, controllerContainer,
+                requestTags, Collections.emptySet());
 
         assertTrue(scheduleDelayedWait(2 * THROTTLE_MS));
-        verifyDelegateChanged(sc, pendingScChange, allowedTags, Collections.emptySet(), 0);
+        verifyDelegateChanged(controllerContainer.delegateController, pendingScChange, allowedTags,
+                Collections.emptySet(), 0);
     }
 
     @SafeVarargs
@@ -756,31 +791,32 @@ public class SipTransportControllerTest extends TelephonyTestBase {
     }
 
     private void createDelegateAndVerify(SipTransportController controller,
-            SipDelegateController delegateController, DelegateRequest r, Set<String> allowedTags,
-            Set<FeatureTagState> deniedTags, String packageName,
-            int numPreviousChanges) throws ImsException {
+            SipDelegateControllerContainer controllerContainer, Set<String> allowedTags,
+            Set<FeatureTagState> deniedTags, int numPreviousChanges) {
 
-        CompletableFuture<Boolean> pendingChange = createDelegate(controller, delegateController, r,
-                allowedTags, deniedTags, packageName);
-        verifyDelegateChanged(delegateController, pendingChange, allowedTags, deniedTags,
-                numPreviousChanges);
+        CompletableFuture<Boolean> pendingChange = createDelegate(controller, controllerContainer,
+                allowedTags, deniedTags);
+        verifyDelegateChanged(controllerContainer.delegateController, pendingChange, allowedTags,
+                deniedTags, numPreviousChanges);
     }
 
     private void createDelegateAndVerify(SipTransportController controller,
-            SipDelegateController delegateController, DelegateRequest r, Set<String> allowedTags,
-            Set<FeatureTagState> deniedTags, String packageName) throws ImsException {
-        createDelegateAndVerify(controller, delegateController, r, allowedTags, deniedTags,
-                packageName, 0);
+            SipDelegateControllerContainer controllerContainer, Set<String> allowedTags,
+            Set<FeatureTagState> deniedTags) {
+        createDelegateAndVerify(controller, controllerContainer, allowedTags, deniedTags, 0);
     }
 
     private CompletableFuture<Boolean> createDelegate(SipTransportController controller,
-            SipDelegateController delegateController, int subId, DelegateRequest r,
-            Set<String> allowedTags, Set<FeatureTagState> deniedTags, String packageName) {
+            SipDelegateControllerContainer delegateControllerContainer, Set<String> allowedTags,
+            Set<FeatureTagState> deniedTags) {
         CompletableFuture<Boolean> pendingChange = setChangeSupportedFeatureTagsFuture(
-                delegateController, allowedTags, deniedTags);
+                delegateControllerContainer.delegateController, allowedTags, deniedTags);
         try {
-            controller.createSipDelegate(subId, r, packageName, mMockStateCallback,
-                    mMockMessageCallback);
+            controller.createSipDelegate(delegateControllerContainer.subId,
+                    delegateControllerContainer.delegateRequest,
+                    delegateControllerContainer.packageName,
+                    delegateControllerContainer.mockDelegateConnectionCallback,
+                    delegateControllerContainer.mockMessageCallback);
         } catch (ImsException e) {
             fail("ImsException thrown:" + e);
         }
@@ -789,13 +825,6 @@ public class SipTransportControllerTest extends TelephonyTestBase {
         // reeval
         waitForExecutorAction(mExecutorService, TIMEOUT_MS);
         return pendingChange;
-    }
-
-    private CompletableFuture<Boolean> createDelegate(SipTransportController controller,
-            SipDelegateController delegateController, DelegateRequest r, Set<String> allowedTags,
-            Set<FeatureTagState> deniedTags, String packageName) throws ImsException {
-        return createDelegate(controller, delegateController, TEST_SUB_ID, r, allowedTags,
-                deniedTags, packageName);
     }
 
     private void verifyDelegateChanged(SipDelegateController delegateController,
@@ -817,10 +846,11 @@ public class SipTransportControllerTest extends TelephonyTestBase {
     }
 
     private void destroyDelegateAndVerify(SipTransportController controller,
-            SipDelegateController delegateController, boolean force, int reason) {
+            SipDelegateControllerContainer controllerContainer, boolean force, int reason) {
+        SipDelegateController delegateController = controllerContainer.delegateController;
         CompletableFuture<Integer> pendingDestroy =  destroyDelegate(controller, delegateController,
                 force, reason);
-        verifyDestroyDelegate(controller, delegateController, pendingDestroy, force, reason);
+        verifyDestroyDelegate(delegateController, pendingDestroy, force, reason);
     }
 
     private CompletableFuture<Integer> destroyDelegate(SipTransportController controller,
@@ -836,9 +866,8 @@ public class SipTransportControllerTest extends TelephonyTestBase {
         return pendingDestroy;
     }
 
-    private void verifyDestroyDelegate(SipTransportController controller,
-            SipDelegateController delegateController, CompletableFuture<Integer> pendingDestroy,
-            boolean force, int reason) {
+    private void verifyDestroyDelegate(SipDelegateController delegateController,
+            CompletableFuture<Integer> pendingDestroy, boolean force, int reason) {
         // verify destroy was called.
         verify(delegateController).destroy(force, reason);
         // ensure thread is not blocked while waiting for pending complete.
@@ -847,7 +876,8 @@ public class SipTransportControllerTest extends TelephonyTestBase {
     }
 
     private void triggerFullNetworkRegistrationAndVerify(SipTransportController controller,
-            SipDelegateController delegateController) {
+            SipDelegateControllerContainer controllerContainer) {
+        SipDelegateController delegateController = controllerContainer.delegateController;
         controller.triggerFullNetworkRegistration(TEST_SUB_ID,
                 delegateController.getSipDelegateInterface(), 403, "forbidden");
         // move to internal & trigger event
@@ -856,7 +886,8 @@ public class SipTransportControllerTest extends TelephonyTestBase {
     }
 
     private void triggerFullNetworkRegistrationAndVerifyNever(SipTransportController controller,
-            SipDelegateController delegateController) {
+            SipDelegateControllerContainer controllerContainer) {
+        SipDelegateController delegateController = controllerContainer.delegateController;
         controller.triggerFullNetworkRegistration(TEST_SUB_ID,
                 delegateController.getSipDelegateInterface(), 403, "forbidden");
         // move to internal & potentially trigger event
@@ -872,29 +903,22 @@ public class SipTransportControllerTest extends TelephonyTestBase {
         return new DelegateRequest(featureTags);
     }
 
-    private Set<FeatureTagState> getBaseDeniedSet() {
-        Set<FeatureTagState> deniedTags = new ArraySet<>();
-        deniedTags.add(new FeatureTagState(ImsSignallingUtils.MMTEL_TAG,
-                SipDelegateManager.DENIED_REASON_IN_USE_BY_ANOTHER_DELEGATE));
-        return deniedTags;
-    }
-
     private Set<FeatureTagState> getDeniedTagsForReason(Set<String> deniedTags, int reason) {
         return deniedTags.stream().map(t -> new FeatureTagState(t, reason))
                 .collect(Collectors.toSet());
     }
 
-    private SipDelegateController injectMockDelegateController(String packageName,
+    private SipDelegateControllerContainer injectMockDelegateController(String packageName,
             DelegateRequest r) {
         return injectMockDelegateController(TEST_SUB_ID, packageName, r);
     }
 
-    private SipDelegateController injectMockDelegateController(int subId, String packageName,
-            DelegateRequest r) {
+    private SipDelegateControllerContainer injectMockDelegateController(int subId,
+            String packageName, DelegateRequest r) {
         SipDelegateControllerContainer c = new SipDelegateControllerContainer(subId,
                 packageName, r);
         mMockControllers.add(c);
-        return c.delegateController;
+        return c;
     }
 
     private SipDelegateController getMockDelegateController(int subId, String packageName,
