@@ -58,13 +58,14 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
 @RunWith(AndroidJUnit4.class)
 public class SipDelegateControllerTest extends TelephonyTestBase {
     private static final int TEST_SUB_ID = 1;
 
     @Mock private ISipDelegate mMockSipDelegate;
-    @Mock private MessageTransportStateTracker mMockMessageTracker;
+    @Mock private MessageTransportWrapper mMockMessageTracker;
     @Mock private ISipDelegateMessageCallback mMockMessageCallback;
     @Mock private DelegateStateTracker mMockDelegateStateTracker;
     @Mock private DelegateBinderStateManager mMockBinderConnection;
@@ -104,8 +105,40 @@ public class SipDelegateControllerTest extends TelephonyTestBase {
         assertFalse(future.isDone());
         consumer.accept(mMockSipDelegate, Collections.emptySet());
         assertTrue(future.get());
-        verify(mMockMessageTracker).openTransport(mMockSipDelegate, Collections.emptySet());
+        verify(mMockMessageTracker).openTransport(mMockSipDelegate, request.getFeatureTags(),
+                Collections.emptySet());
         verify(mMockDelegateStateTracker).sipDelegateConnected(Collections.emptySet());
+    }
+
+    @SmallTest
+    @Test
+    public void testCreateDeniedFeatures() throws Exception {
+        DelegateRequest request = getLargeDelegateRequest();
+        ArraySet<FeatureTagState> deniedTags = new ArraySet<>(1);
+        deniedTags.add(new FeatureTagState(ImsSignallingUtils.GROUP_CHAT_TAG,
+                SipDelegateManager.DENIED_REASON_NOT_ALLOWED));
+        SipDelegateController controller = getTestDelegateController(request,
+                deniedTags);
+
+        doReturn(true).when(mMockBinderConnection).create(eq(mMockMessageCallback), any());
+        CompletableFuture<Boolean> future = controller.create(request.getFeatureTags(),
+                deniedTags);
+        BiConsumer<ISipDelegate, Set<FeatureTagState>> consumer =
+                verifyConnectionCreated(1);
+        assertNotNull(consumer);
+
+        assertFalse(future.isDone());
+        // Send in additional tags denied by the service
+        deniedTags.add(new FeatureTagState(ImsSignallingUtils.FILE_TRANSFER_HTTP_TAG,
+                SipDelegateManager.DENIED_REASON_NOT_ALLOWED));
+        consumer.accept(mMockSipDelegate, deniedTags);
+        assertTrue(future.get());
+        // Allowed tags should be initial request set - denied tags
+        ArraySet<String> allowedTags = new ArraySet<>(request.getFeatureTags());
+        allowedTags.removeAll(deniedTags.stream().map(FeatureTagState::getFeatureTag)
+                .collect(Collectors.toSet()));
+        verify(mMockMessageTracker).openTransport(mMockSipDelegate, allowedTags, deniedTags);
+        verify(mMockDelegateStateTracker).sipDelegateConnected(deniedTags);
     }
 
     @SmallTest
@@ -212,7 +245,9 @@ public class SipDelegateControllerTest extends TelephonyTestBase {
         consumer.accept(mMockSipDelegate, Collections.emptySet());
         assertTrue(pendingChange.get());
 
-        verify(mMockMessageTracker, times(2)).openTransport(mMockSipDelegate,
+        verify(mMockMessageTracker).openTransport(mMockSipDelegate, request.getFeatureTags(),
+                Collections.emptySet());
+        verify(mMockMessageTracker).openTransport(mMockSipDelegate, newFts,
                 Collections.emptySet());
         verify(mMockDelegateStateTracker, times(2)).sipDelegateConnected(Collections.emptySet());
     }
@@ -235,8 +270,20 @@ public class SipDelegateControllerTest extends TelephonyTestBase {
         return request;
     }
 
+    private ArraySet<String> getLargeFTSet() {
+        ArraySet<String> request = new ArraySet<>();
+        request.add(ImsSignallingUtils.ONE_TO_ONE_CHAT_TAG);
+        request.add(ImsSignallingUtils.GROUP_CHAT_TAG);
+        request.add(ImsSignallingUtils.FILE_TRANSFER_HTTP_TAG);
+        return request;
+    }
+
     private DelegateRequest getBaseDelegateRequest() {
         return new DelegateRequest(getBaseFTSet());
+    }
+
+    private DelegateRequest getLargeDelegateRequest() {
+        return new DelegateRequest(getLargeFTSet());
     }
 
     private SipDelegateController getTestDelegateController(DelegateRequest request,
