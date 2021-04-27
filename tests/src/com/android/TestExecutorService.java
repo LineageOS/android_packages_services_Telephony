@@ -16,9 +16,11 @@
 
 package com.android;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.Callable;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Delayed;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
@@ -37,6 +39,8 @@ public class TestExecutorService implements ScheduledExecutorService {
 
         private final Callable<T> mTask;
         private final long mDelayMs;
+        // Wrap callable in a CompletableFuture to support delays in execution.
+        private final CompletableFuture<T> mFuture = new CompletableFuture<>();
 
         CompletedFuture(Callable<T> task) {
             mTask = task;
@@ -50,36 +54,29 @@ public class TestExecutorService implements ScheduledExecutorService {
 
         @Override
         public boolean cancel(boolean mayInterruptIfRunning) {
-            return false;
+            return mFuture.cancel(mayInterruptIfRunning);
         }
 
         @Override
         public boolean isCancelled() {
-            return false;
+            return mFuture.isCancelled();
         }
 
         @Override
         public boolean isDone() {
-            return true;
+            return mFuture.isDone();
         }
 
         @Override
         public T get() throws InterruptedException, ExecutionException {
-            try {
-                return mTask.call();
-            } catch (Exception e) {
-                throw new ExecutionException(e);
-            }
+            return mFuture.get();
         }
 
         @Override
         public T get(long timeout, TimeUnit unit)
                 throws InterruptedException, ExecutionException, TimeoutException {
-            try {
-                return mTask.call();
-            } catch (Exception e) {
-                throw new ExecutionException(e);
-            }
+            // delays not implemented, this should complete via completeTask for better control.
+            return mFuture.get(timeout, unit);
         }
 
         @Override
@@ -99,35 +96,71 @@ public class TestExecutorService implements ScheduledExecutorService {
             if (o.getDelay(TimeUnit.MILLISECONDS) < mDelayMs) return 1;
             return 0;
         }
+
+        public void completeTask() {
+            try {
+                mFuture.complete(mTask.call());
+            } catch (Exception e) {
+                mFuture.completeExceptionally(e);
+            }
+        }
+    }
+
+    private final ArrayList<Runnable> mPendingRunnables = new ArrayList<>();
+    private final boolean mWaitToComplete;
+    private boolean mIsShutdown = false;
+
+    public TestExecutorService() {
+        mWaitToComplete = false;
+    }
+
+    /**
+     * Create a test executor service that also allows the constructor to provide a parameter to
+     * control when pending Runnables are executed.
+     * @param waitToComplete If true, this executor will wait to complete any pending Runnables
+     *                       until {@link #executePending()}} is called.
+     */
+    public TestExecutorService(boolean waitToComplete) {
+        mWaitToComplete = waitToComplete;
     }
 
     @Override
     public void shutdown() {
+        mIsShutdown = true;
+        for (Runnable r : mPendingRunnables) {
+            r.run();
+        }
     }
 
     @Override
     public List<Runnable> shutdownNow() {
-        return null;
+        mIsShutdown = true;
+        List<Runnable> runnables = new ArrayList<>(mPendingRunnables);
+        mPendingRunnables.clear();
+        return runnables;
     }
 
     @Override
     public boolean isShutdown() {
-        return false;
+        return mIsShutdown;
     }
 
     @Override
     public boolean isTerminated() {
-        return false;
+        return mIsShutdown;
     }
 
     @Override
     public boolean awaitTermination(long timeout, TimeUnit unit) {
-        return false;
+        shutdown();
+        return true;
     }
 
     @Override
     public <T> Future<T> submit(Callable<T> task) {
-        return new CompletedFuture<>(task);
+        CompletedFuture<T> f = new CompletedFuture<>(task);
+        onExecute(f::completeTask);
+        return f;
     }
 
     @Override
@@ -137,8 +170,12 @@ public class TestExecutorService implements ScheduledExecutorService {
 
     @Override
     public Future<?> submit(Runnable task) {
-        task.run();
-        return new CompletedFuture<>(() -> null);
+        CompletedFuture<Void> f = new CompletedFuture<>(() -> {
+            task.run();
+            return null;
+        });
+        onExecute(f::completeTask);
+        return f;
     }
 
     @Override
@@ -164,14 +201,21 @@ public class TestExecutorService implements ScheduledExecutorService {
 
     @Override
     public ScheduledFuture<?> schedule(Runnable command, long delay, TimeUnit unit) {
-        // No need to worry about delays yet
-        command.run();
-        return new CompletedFuture<>(() -> null, delay);
+        long millisDelay = TimeUnit.MILLISECONDS.convert(delay, unit);
+        CompletedFuture<Void> f = new CompletedFuture<>(() -> {
+            command.run();
+            return null;
+        }, millisDelay);
+        onExecute(f::completeTask);
+        return f;
     }
 
     @Override
     public <V> ScheduledFuture<V> schedule(Callable<V> callable, long delay, TimeUnit unit) {
-        return new CompletedFuture<>(callable, delay);
+        long millisDelay = TimeUnit.MILLISECONDS.convert(delay, unit);
+        CompletedFuture<V> f = new CompletedFuture<>(callable, millisDelay);
+        onExecute(f::completeTask);
+        return f;
     }
 
     @Override
@@ -188,6 +232,21 @@ public class TestExecutorService implements ScheduledExecutorService {
 
     @Override
     public void execute(Runnable command) {
-        command.run();
+        onExecute(command);
+    }
+
+    private void onExecute(Runnable command) {
+        if (mWaitToComplete) {
+            mPendingRunnables.add(command);
+        } else {
+            command.run();
+        }
+    }
+
+    public void executePending() {
+        for (Runnable r : mPendingRunnables) {
+            r.run();
+        }
+        mPendingRunnables.clear();
     }
 }
