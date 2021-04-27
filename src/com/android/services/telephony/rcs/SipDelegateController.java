@@ -28,6 +28,7 @@ import android.telephony.ims.aidl.ISipDelegateMessageCallback;
 import android.telephony.ims.aidl.ISipTransport;
 import android.telephony.ims.stub.DelegateConnectionStateCallback;
 import android.telephony.ims.stub.SipDelegate;
+import android.util.ArraySet;
 import android.util.LocalLog;
 import android.util.Log;
 import android.util.Pair;
@@ -42,6 +43,7 @@ import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.stream.Collectors;
 
 /**
  * Created when an IMS application wishes to open up a {@link SipDelegateConnection} and manages the
@@ -78,7 +80,7 @@ public class SipDelegateController {
     private final String mPackageName;
     private final DelegateRequest mInitialRequest;
     private final ScheduledExecutorService mExecutorService;
-    private final MessageTransportStateTracker mMessageTransportStateTracker;
+    private final MessageTransportWrapper mMessageTransportWrapper;
     private final DelegateStateTracker mDelegateStateTracker;
     private final DelegateBinderStateManager.Factory mBinderConnectionFactory;
     private final LocalLog mLocalLog = new LocalLog(SipTransportController.LOG_SIZE);
@@ -97,10 +99,10 @@ public class SipDelegateController {
         mExecutorService = executorService;
         mBinderConnectionFactory = new BinderConnectionFactory(transportImpl, registrationImpl);
 
-        mMessageTransportStateTracker = new MessageTransportStateTracker(mSubId, executorService,
+        mMessageTransportWrapper = new MessageTransportWrapper(mSubId, executorService,
                 messageCallback);
         mDelegateStateTracker = new DelegateStateTracker(mSubId, stateCallback,
-                mMessageTransportStateTracker.getDelegateConnection());
+                mMessageTransportWrapper.getDelegateConnection());
     }
 
     /**
@@ -109,14 +111,14 @@ public class SipDelegateController {
     @VisibleForTesting
     public SipDelegateController(int subId, DelegateRequest initialRequest, String packageName,
             ScheduledExecutorService executorService,
-            MessageTransportStateTracker messageTransportStateTracker,
+            MessageTransportWrapper messageTransportWrapper,
             DelegateStateTracker delegateStateTracker,
             DelegateBinderStateManager.Factory connectionFactory) {
         mSubId = subId;
         mInitialRequest = initialRequest;
         mPackageName = packageName;
         mExecutorService = executorService;
-        mMessageTransportStateTracker = messageTransportStateTracker;
+        mMessageTransportWrapper = messageTransportWrapper;
         mDelegateStateTracker = delegateStateTracker;
         mBinderConnectionFactory = connectionFactory;
     }
@@ -140,14 +142,14 @@ public class SipDelegateController {
      * @return The ImsService's SIP delegate binder impl associated with this controller.
      */
     public ISipDelegate getSipDelegateInterface() {
-        return mMessageTransportStateTracker.getDelegateConnection();
+        return mMessageTransportWrapper.getDelegateConnection();
     }
 
     /**
      * @return The IMS app's message callback binder.
      */
     public ISipDelegateMessageCallback getAppMessageCallback() {
-        return mMessageTransportStateTracker.getAppMessageCallback();
+        return mMessageTransportWrapper.getAppMessageCallback();
     }
 
     /**
@@ -183,7 +185,12 @@ public class SipDelegateController {
             }
             mBinderConnection = connection;
             logi("create: created, delegate denied: " + resultPair.second);
-            mMessageTransportStateTracker.openTransport(resultPair.first, resultPair.second);
+            Set<String> allowedTags = new ArraySet<>(supportedSet);
+            // Start with the supported set and remove all tags that were denied.
+            allowedTags.removeAll(resultPair.second.stream().map(FeatureTagState::getFeatureTag)
+                    .collect(Collectors.toSet()));
+            mMessageTransportWrapper.openTransport(resultPair.first, allowedTags,
+                    resultPair.second);
             mDelegateStateTracker.sipDelegateConnected(resultPair.second);
             return true;
         });
@@ -323,10 +330,10 @@ public class SipDelegateController {
         CompletableFuture<Boolean> pendingTransportClosed = new CompletableFuture<>();
         if (force) {
             logi("destroySipDelegate, forced");
-            mMessageTransportStateTracker.close(messageDestroyedReason);
+            mMessageTransportWrapper.close(messageDestroyedReason);
             pendingTransportClosed.complete(true);
         } else {
-            mMessageTransportStateTracker.closeGracefully(messageDestroyingReason,
+            mMessageTransportWrapper.closeGracefully(messageDestroyingReason,
                     messageDestroyedReason, pendingTransportClosed::complete);
         }
 
@@ -356,7 +363,7 @@ public class SipDelegateController {
             DelegateBinderStateManager connection) {
         CompletableFuture<Pair<ISipDelegate, Set<FeatureTagState>>> createdFuture =
                 new CompletableFuture<>();
-        boolean isStarted = connection.create(mMessageTransportStateTracker.getMessageCallback(),
+        boolean isStarted = connection.create(mMessageTransportWrapper.getMessageCallback(),
                 (delegate, delegateDeniedTags) ->
                         createdFuture.complete(new Pair<>(delegate, delegateDeniedTags)));
         if (!isStarted) {
@@ -372,7 +379,7 @@ public class SipDelegateController {
 
         List<DelegateBinderStateManager.StateCallback> stateCallbacks = new ArrayList<>(2);
         stateCallbacks.add(mDelegateStateTracker);
-        stateCallbacks.add(mMessageTransportStateTracker);
+        stateCallbacks.add(mMessageTransportWrapper);
 
         return mBinderConnectionFactory.create(mSubId,
                 new DelegateRequest(supportedSet), deniedSet, mExecutorService, stateCallbacks);
@@ -400,7 +407,7 @@ public class SipDelegateController {
         pw.println();
         pw.println("MessageStateTracker:");
         pw.increaseIndent();
-        mMessageTransportStateTracker.dump(pw);
+        mMessageTransportWrapper.dump(pw);
         pw.decreaseIndent();
 
         pw.decreaseIndent();
