@@ -3256,8 +3256,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     private void enforceCallingPackage(String callingPackage, int callingUid, String message) {
         int packageUid = -1;
+        PackageManager pm = mApp.getBaseContext().createContextAsUser(
+                UserHandle.getUserHandleForUid(callingUid), 0).getPackageManager();
         try {
-            packageUid = mPm.getPackageUid(callingPackage, 0);
+            packageUid = pm.getPackageUid(callingPackage, 0);
         } catch (PackageManager.NameNotFoundException e) {
             // packageUid is -1
         }
