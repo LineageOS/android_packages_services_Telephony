@@ -31,6 +31,7 @@ import android.os.RemoteException;
 import android.os.ServiceSpecificException;
 import android.provider.BlockedNumberContract;
 import android.telephony.CarrierConfigManager;
+import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.telephony.emergency.EmergencyNumber;
@@ -140,6 +141,9 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
 
     // Check if a package has carrier privileges on any SIM, regardless of subId/phoneId.
     private static final String HAS_CARRIER_PRIVILEGES_COMMAND = "has-carrier-privileges";
+
+    private static final String DISABLE_PHYSICAL_SUBSCRIPTION = "disable-physical-subscription";
+    private static final String ENABLE_PHYSICAL_SUBSCRIPTION = "enable-physical-subscription";
 
     private static final String THERMAL_MITIGATION_COMMAND = "thermal-mitigation";
     private static final String ALLOW_THERMAL_MITIGATION_PACKAGE_SUBCOMMAND = "allow-package";
@@ -287,6 +291,10 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                 return handleHasCarrierPrivilegesCommand();
             case THERMAL_MITIGATION_COMMAND:
                 return handleThermalMitigationCommand();
+            case DISABLE_PHYSICAL_SUBSCRIPTION:
+                return handleEnablePhysicalSubscription(false);
+            case ENABLE_PHYSICAL_SUBSCRIPTION:
+                return handleEnablePhysicalSubscription(true);
             default: {
                 return handleDefaultCommands(cmd);
             }
@@ -330,6 +338,7 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         onHelpGba();
         onHelpSrc();
         onHelpD2D();
+        onHelpDisableOrEnablePhysicalSubscription();
     }
 
     private void onHelpD2D() {
@@ -444,6 +453,15 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         pw.println("  thermal-mitigation disallow-package PACKAGE_NAME");
         pw.println("    Remove the package from one of the authorized packages for thermal "
                 + "mitigation.");
+    }
+
+    private void onHelpDisableOrEnablePhysicalSubscription() {
+        PrintWriter pw = getOutPrintWriter();
+        pw.println("Disable or enable a physical subscription");
+        pw.println("  disable-physical-subscription SUB_ID");
+        pw.println("    Disable the physical subscription with the provided subId, if allowed.");
+        pw.println("  enable-physical-subscription SUB_ID");
+        pw.println("    Enable the physical subscription with the provided subId, if allowed.");
     }
 
     private void onHelpDataTestMode() {
@@ -754,6 +772,41 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         }
 
         return -1;
+    }
+
+    private boolean subIsEsim(int subId) {
+        SubscriptionInfo info = mSubscriptionManager.getActiveSubscriptionInfo(subId);
+        if (info != null) {
+            return info.isEmbedded();
+        }
+        return false;
+    }
+
+    private int handleEnablePhysicalSubscription(boolean enable) {
+        PrintWriter errPw = getErrPrintWriter();
+        int subId = 0;
+        try {
+            subId = Integer.parseInt(getNextArgRequired());
+        } catch (NumberFormatException e) {
+            errPw.println((enable ? "enable" : "disable")
+                    + "-physical-subscription requires an integer as a subId.");
+            return -1;
+        }
+        // Verify that the user is allowed to run the command. Only allowed in rooted device in a
+        // non user build.
+        if (Binder.getCallingUid() != Process.ROOT_UID || TelephonyUtils.IS_USER) {
+            errPw.println("cc: Permission denied.");
+            return -1;
+        }
+        // Verify that the subId represents a physical sub
+        if (subIsEsim(subId)) {
+            errPw.println("SubId " + subId + " is not for a physical subscription");
+            return -1;
+        }
+        Log.d(LOG_TAG, (enable ? "Enabling" : "Disabling")
+                + " physical subscription with subId=" + subId);
+        mSubscriptionManager.setUiccApplicationsEnabled(subId, enable);
+        return 0;
     }
 
     private int handleThermalMitigationCommand() {
