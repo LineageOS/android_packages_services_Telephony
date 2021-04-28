@@ -31,69 +31,32 @@ import android.telephony.ims.stub.SipDelegate;
 import android.util.LocalLog;
 import android.util.Log;
 
+import com.android.internal.annotations.VisibleForTesting;
+import com.android.internal.telephony.SipMessageParsingUtils;
+import com.android.internal.util.IndentingPrintWriter;
+import com.android.services.telephony.rcs.validator.ValidationResult;
+
 import java.io.PrintWriter;
+import java.util.List;
 import java.util.Set;
 import java.util.concurrent.Executor;
+import java.util.concurrent.ScheduledExecutorService;
 import java.util.function.Consumer;
 
 /**
- * Tracks the SIP message path both from the IMS application to the SipDelegate and from the
+ * Wraps the SIP message path both from the IMS application to the SipDelegate and from the
  * SipDelegate back to the IMS Application.
  * <p>
- * Responsibilities include:
- * 1) Queue incoming and outgoing SIP messages and deliver to IMS application and SipDelegate in
- *        order. If there is an error delivering the message, notify the caller.
- * 2) TODO Perform basic validation of outgoing messages.
- * 3) TODO Record the status of ongoing SIP Dialogs and trigger the completion of pending
- *         consumers when they are finished or call closeDialog to clean up the SIP
- *         dialogs that did not complete within the allotted timeout time.
+ * Queues incoming and outgoing SIP messages on an Executor and deliver to IMS application and
+ * SipDelegate in order. If there is an error delivering the message, the caller is notified.
+ * Uses {@link TransportSipSessionTracker} to track ongoing SIP dialogs and verify outgoing
+ * messages.
  * <p>
  * Note: This handles incoming binder calls, so all calls from other processes should be handled on
  * the provided Executor.
  */
-public class MessageTransportStateTracker implements DelegateBinderStateManager.StateCallback {
-    private static final String TAG = "MessageST";
-
-    /**
-     * Communicates the result of verifying whether a SIP message should be sent based on the
-     * contents of the SIP message as well as if the transport is in an available state for the
-     * intended recipient of the message.
-     */
-    private static class VerificationResult {
-        public static final VerificationResult SUCCESS = new VerificationResult();
-
-        /**
-         * If {@code true}, the requested SIP message has been verified to be sent to the remote. If
-         * {@code false}, the SIP message has failed verification and should not be sent to the
-         * result. The {@link #restrictedReason} field will contain the reason for the verification
-         * failure.
-         */
-        public final boolean isVerified;
-
-        /**
-         * The reason associated with why the SIP message was not verified and generated a
-         * {@code false} result for {@link #isVerified}.
-         */
-        public final int restrictedReason;
-
-        /**
-         * Communicates a verified result of success. Use {@link #SUCCESS} instead.
-         */
-        private VerificationResult() {
-            isVerified = true;
-            restrictedReason = SipDelegateManager.MESSAGE_FAILURE_REASON_UNKNOWN;
-        }
-
-        /**
-         * The result of verifying that the SIP Message should be sent.
-         * @param reason The reason associated with why the SIP message was not verified and
-         *               generated a {@code false} result for {@link #isVerified}.
-         */
-        VerificationResult(@SipDelegateManager.MessageFailureReason int reason) {
-            isVerified = false;
-            restrictedReason = reason;
-        }
-    }
+public class MessageTransportWrapper implements DelegateBinderStateManager.StateCallback {
+    private static final String TAG = "MessageTW";
 
     // SipDelegateConnection(IMS Application) -> SipDelegate(ImsService)
     private final ISipDelegate.Stub mSipDelegateConnection = new ISipDelegate.Stub() {
@@ -113,8 +76,7 @@ public class MessageTransportStateTracker implements DelegateBinderStateManager.
                         return;
                     }
                     try {
-                        // TODO track the SIP Dialogs created/destroyed on the associated
-                        // SipDelegate.
+                        mSipSessionTracker.acknowledgePendingMessage(viaTransactionId);
                         mSipDelegate.notifyMessageReceived(viaTransactionId);
                     } catch (RemoteException e) {
                         logw("SipDelegate not available when notifyMessageReceived was called "
@@ -142,8 +104,7 @@ public class MessageTransportStateTracker implements DelegateBinderStateManager.
                         return;
                     }
                     try {
-                        // TODO track the SIP Dialogs created/destroyed on the associated
-                        // SipDelegate.
+                        mSipSessionTracker.notifyPendingMessageFailed(viaTransactionId);
                         mSipDelegate.notifyMessageReceiveError(viaTransactionId, reason);
                     } catch (RemoteException e) {
                         logw("SipDelegate not available when notifyMessageReceiveError was called "
@@ -164,18 +125,23 @@ public class MessageTransportStateTracker implements DelegateBinderStateManager.
             long token = Binder.clearCallingIdentity();
             try {
                 mExecutor.execute(() -> {
-                    VerificationResult result = verifyOutgoingMessage(sipMessage);
-                    if (!result.isVerified) {
+                    ValidationResult result =
+                            mSipSessionTracker.verifyOutgoingMessage(sipMessage, configVersion);
+                    if (!result.isValidated) {
                         notifyDelegateSendError("Outgoing messages restricted", sipMessage,
                                 result.restrictedReason);
                         return;
                     }
                     try {
-                        // TODO track the SIP Dialogs created/destroyed on the associated
-                        // SipDelegate.
+                        if (mSipDelegate == null) {
+                            logw("sendMessage called when SipDelegate is not associated."
+                                    + sipMessage);
+                            notifyDelegateSendError("No SipDelegate", sipMessage,
+                                    SipDelegateManager.MESSAGE_FAILURE_REASON_DELEGATE_DEAD);
+
+                            return;
+                        }
                         mSipDelegate.sendMessage(sipMessage, configVersion);
-                        logi("sendMessage: message sent - " + sipMessage + ", configVersion: "
-                                + configVersion);
                     } catch (RemoteException e) {
                         notifyDelegateSendError("RemoteException: " + e, sipMessage,
                                 SipDelegateManager.MESSAGE_FAILURE_REASON_DELEGATE_DEAD);
@@ -194,21 +160,7 @@ public class MessageTransportStateTracker implements DelegateBinderStateManager.
         public void cleanupSession(String callId) {
             long token = Binder.clearCallingIdentity();
             try {
-                mExecutor.execute(() -> {
-                    if (mSipDelegate == null) {
-                        logw("closeDialog called when SipDelegate is not associated, callId: "
-                                + callId);
-                        return;
-                    }
-                    try {
-                        // TODO track the SIP Dialogs created/destroyed on the associated
-                        // SipDelegate.
-                        mSipDelegate.cleanupSession(callId);
-                    } catch (RemoteException e) {
-                        logw("SipDelegate not available when closeDialog was called "
-                                + "for call id: " + callId);
-                    }
-                });
+                mExecutor.execute(() -> cleanupSessionInternal(callId));
             } finally {
                 Binder.restoreCallingIdentity(token);
             }
@@ -230,17 +182,14 @@ public class MessageTransportStateTracker implements DelegateBinderStateManager.
             long token = Binder.clearCallingIdentity();
             try {
                 mExecutor.execute(() -> {
-                    VerificationResult result = verifyIncomingMessage(message);
-                    if (!result.isVerified) {
+                    ValidationResult result = mSipSessionTracker.verifyIncomingMessage(message);
+                    if (!result.isValidated) {
                         notifyAppReceiveError("Incoming messages restricted", message,
                                 result.restrictedReason);
                         return;
                     }
                     try {
-                        // TODO track the SIP Dialogs created/destroyed on the associated
-                        //  SipDelegate.
                         mAppCallback.onMessageReceived(message);
-                        logi("onMessageReceived: received " + message);
                     } catch (RemoteException e) {
                         notifyAppReceiveError("RemoteException: " + e, message,
                                 SipDelegateManager.MESSAGE_FAILURE_REASON_DELEGATE_DEAD);
@@ -253,7 +202,7 @@ public class MessageTransportStateTracker implements DelegateBinderStateManager.
 
         /**
          * An outgoing SIP message sent previously by the SipDelegateConnection to the SipDelegate
-         * using {@link ISipDelegate#sendMessage(SipMessage, int)} as been successfully sent.
+         * using {@link ISipDelegate#sendMessage(SipMessage, long)} as been successfully sent.
          */
         @Override
         public void onMessageSent(String viaTransactionId) {
@@ -265,6 +214,7 @@ public class MessageTransportStateTracker implements DelegateBinderStateManager.
                                 + "associated");
                     }
                     try {
+                        mSipSessionTracker.acknowledgePendingMessage(viaTransactionId);
                         mAppCallback.onMessageSent(viaTransactionId);
                     } catch (RemoteException e) {
                         logw("Error sending onMessageSent to SipDelegateConnection, remote not"
@@ -278,7 +228,7 @@ public class MessageTransportStateTracker implements DelegateBinderStateManager.
 
         /**
          * An outgoing SIP message sent previously by the SipDelegateConnection to the SipDelegate
-         * using {@link ISipDelegate#sendMessage(SipMessage, int)} failed to be sent.
+         * using {@link ISipDelegate#sendMessage(SipMessage, long)} failed to be sent.
          */
         @Override
         public void onMessageSendFailure(String viaTransactionId, int reason) {
@@ -290,6 +240,7 @@ public class MessageTransportStateTracker implements DelegateBinderStateManager.
                                 + "associated");
                     }
                     try {
+                        mSipSessionTracker.notifyPendingMessageFailed(viaTransactionId);
                         mAppCallback.onMessageSendFailure(viaTransactionId, reason);
                     } catch (RemoteException e) {
                         logw("Error sending onMessageSendFailure to SipDelegateConnection, remote"
@@ -305,52 +256,77 @@ public class MessageTransportStateTracker implements DelegateBinderStateManager.
     private final ISipDelegateMessageCallback mAppCallback;
     private final Executor mExecutor;
     private final int mSubId;
+    private final TransportSipSessionTracker mSipSessionTracker;
     private final LocalLog mLocalLog = new LocalLog(SipTransportController.LOG_SIZE);
 
     private ISipDelegate mSipDelegate;
-    private Consumer<Boolean> mPendingClosedConsumer;
-    private int mDelegateClosingReason = -1;
-    private int mDelegateClosedReason = -1;
 
-    public MessageTransportStateTracker(int subId, Executor executor,
+    public MessageTransportWrapper(int subId, ScheduledExecutorService executor,
             ISipDelegateMessageCallback appMessageCallback) {
         mSubId = subId;
         mAppCallback = appMessageCallback;
         mExecutor = executor;
+        mSipSessionTracker = new TransportSipSessionTracker(subId, executor);
+    }
+
+    /**
+     * Mock out dependencies for unit testing.
+     */
+    @VisibleForTesting
+    public MessageTransportWrapper(int subId, ScheduledExecutorService executor,
+            ISipDelegateMessageCallback appMessageCallback,
+            TransportSipSessionTracker sipSessionTracker) {
+        mSubId = subId;
+        mAppCallback = appMessageCallback;
+        mExecutor = executor;
+        mSipSessionTracker = sipSessionTracker;
     }
 
     @Override
     public void onRegistrationStateChanged(DelegateRegistrationState registrationState) {
-        // TODO: integrate registration changes to SipMessage verification checks.
+        mSipSessionTracker.onRegistrationStateChanged((List<String> callIds) -> {
+            for (String id : callIds)  {
+                cleanupSessionInternal(id);
+            }
+        }, registrationState);
     }
 
     @Override
     public void onImsConfigurationChanged(SipDelegateImsConfiguration config) {
-        // Not needed for this Tracker
+        mSipSessionTracker.onImsConfigurationChanged(config);
     }
 
     @Override
     public void onConfigurationChanged(SipDelegateConfiguration config) {
-        // Not needed for this Tracker
+        mSipSessionTracker.onConfigurationChanged(config);
     }
 
     /**
      * Open the transport and allow SIP messages to be sent/received on the delegate specified.
      * @param delegate The delegate connection to send SIP messages to on the ImsService.
+     * @param supportedFeatureTags Feature tags that are supported. Outgoing SIP messages relating
+     *                             to these tags will be allowed.
      * @param deniedFeatureTags Feature tags that have been denied. Outgoing SIP messages relating
      *         to these tags will be denied.
      */
-    public void openTransport(ISipDelegate delegate, Set<FeatureTagState> deniedFeatureTags) {
+    public void openTransport(ISipDelegate delegate, Set<String> supportedFeatureTags,
+            Set<FeatureTagState> deniedFeatureTags) {
+        logi("openTransport: delegate=" + delegate + ", supportedTags=" + supportedFeatureTags
+                + ", deniedTags=" + deniedFeatureTags);
+        mSipSessionTracker.onTransportOpened(supportedFeatureTags, deniedFeatureTags);
         mSipDelegate = delegate;
-        mDelegateClosingReason = -1;
-        mDelegateClosedReason = -1;
-        // TODO: integrate denied tags to SipMessage verification checks.
     }
 
     /** Dump state about this tracker that should be included in the dumpsys */
     public void dump(PrintWriter printWriter) {
-        printWriter.println("Most recent logs:");
+        IndentingPrintWriter pw = new IndentingPrintWriter(printWriter, "  ");
+        pw.println("Most recent logs:");
         mLocalLog.dump(printWriter);
+        pw.println();
+        pw.println("Dialog Tracker:");
+        pw.increaseIndent();
+        mSipSessionTracker.dump(pw);
+        pw.decreaseIndent();
     }
 
     /**
@@ -400,15 +376,15 @@ public class MessageTransportStateTracker implements DelegateBinderStateManager.
      */
     public void closeGracefully(int delegateClosingReason, int closedReason,
             Consumer<Boolean> resultConsumer) {
-        mDelegateClosingReason = delegateClosingReason;
-        mPendingClosedConsumer = resultConsumer;
-        mExecutor.execute(() -> {
-            // TODO: Track SIP Dialogs and complete when there are no SIP dialogs open anymore or
-            //  the timeout occurs.
-            mPendingClosedConsumer.accept(true);
-            mPendingClosedConsumer = null;
-            closeTransport(closedReason);
-        });
+        logi("closeGracefully: closingReason=" + delegateClosingReason + ", closedReason="
+                + closedReason + ", resultConsumer(" + resultConsumer.hashCode() + ")");
+        mSipSessionTracker.closeSessionsGracefully((openCallIds) -> {
+            logi("closeGracefully resultConsumer(" + resultConsumer.hashCode()
+                    + "): open call IDs:{" + openCallIds + "}");
+            closeTransport(openCallIds);
+            // propagate event to the consumer
+            resultConsumer.accept(openCallIds.isEmpty() /*successfullyClosed*/);
+        }, delegateClosingReason, closedReason);
     }
 
     /**
@@ -418,63 +394,53 @@ public class MessageTransportStateTracker implements DelegateBinderStateManager.
      *         if an attempt is made to send/receive a message after this method is called.
      */
     public void close(int closedReason) {
-        closeTransport(closedReason);
+        List<String> openDialogs = mSipSessionTracker.closeSessionsForcefully(closedReason);
+        logi("close: closedReason=" + closedReason + "open call IDs:{" + openDialogs + "}");
+        closeTransport(openDialogs);
     }
 
     // Clean up all state related to the existing SipDelegate immediately.
-    private void closeTransport(int closedReason) {
-        // TODO: add logic to forcefully close open SIP dialogs once they are being tracked.
+    private void closeTransport(List<String> openCallIds) {
+        for (String id : openCallIds) {
+            cleanupSessionInternal(id);
+        }
         mSipDelegate = null;
-        if (mPendingClosedConsumer != null) {
-            mExecutor.execute(() -> {
-                logw("closeTransport: transport close forced with pending consumer.");
-                mPendingClosedConsumer.accept(false /*closedGracefully*/);
-                mPendingClosedConsumer = null;
-            });
-        }
-        mDelegateClosingReason = -1;
-        mDelegateClosedReason = closedReason;
     }
 
-    private VerificationResult verifyOutgoingMessage(SipMessage message) {
-        if (mDelegateClosingReason > -1) {
-            return new VerificationResult(mDelegateClosingReason);
-        }
-        if (mDelegateClosedReason > -1) {
-            return new VerificationResult(mDelegateClosedReason);
-        }
+    private void cleanupSessionInternal(String callId) {
+        logi("cleanupSessionInternal: closing session with callId: " + callId);
+        mSipSessionTracker.onSipSessionCleanup(callId);
+
         if (mSipDelegate == null) {
-            logw("sendMessage called when SipDelegate is not associated." + message);
-            return new VerificationResult(SipDelegateManager.MESSAGE_FAILURE_REASON_DELEGATE_DEAD);
+            logw("cleanupSession called when SipDelegate is not associated, callId: "
+                    + callId);
+            return;
         }
-        return VerificationResult.SUCCESS;
-    }
-
-    private VerificationResult verifyIncomingMessage(SipMessage message) {
-        // Do not restrict incoming based on closing reason.
-        if (mDelegateClosedReason > -1) {
-            return new VerificationResult(mDelegateClosedReason);
+        try {
+            mSipDelegate.cleanupSession(callId);
+        } catch (RemoteException e) {
+            logw("SipDelegate not available when cleanupSession was called "
+                    + "for call id: " + callId);
         }
-        return VerificationResult.SUCCESS;
     }
 
     private void notifyDelegateSendError(String logReason, SipMessage message, int reasonCode) {
-        // TODO parse SipMessage header for viaTransactionId.
-        logw("Error sending SipMessage[id: " + null + ", code: " + reasonCode + "] -> SipDelegate "
-                + "for reason: " + logReason);
+        String transactionId = SipMessageParsingUtils.getTransactionId(message.getHeaderSection());
+        logi("Error sending SipMessage[id: " + transactionId + ", code: " + reasonCode
+                + "] -> SipDelegate for reason: " + logReason);
         try {
-            mAppCallback.onMessageSendFailure(null, reasonCode);
+            mAppCallback.onMessageSendFailure(transactionId, reasonCode);
         } catch (RemoteException e) {
             logw("notifyDelegateSendError, SipDelegate is not available: " + e);
         }
     }
 
     private void notifyAppReceiveError(String logReason, SipMessage message, int reasonCode) {
-        // TODO parse SipMessage header for viaTransactionId.
-        logw("Error sending SipMessage[id: " + null + ", code: " + reasonCode + "] -> "
+        String transactionId = SipMessageParsingUtils.getTransactionId(message.getHeaderSection());
+        logi("Error sending SipMessage[id: " + transactionId + ", code: " + reasonCode + "] -> "
                 + "SipDelegateConnection for reason: " + logReason);
         try {
-            mSipDelegate.notifyMessageReceiveError(null, reasonCode);
+            mSipDelegate.notifyMessageReceiveError(transactionId, reasonCode);
         } catch (RemoteException e) {
             logw("notifyAppReceiveError, SipDelegate is not available: " + e);
         }
