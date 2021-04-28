@@ -140,6 +140,7 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
     private static final int MSG_REDIAL_CONNECTION_CHANGED = 20;
     private static final int MSG_REJECT = 21;
     private static final int MSG_DTMF_DONE = 22;
+    private static final int MSG_MEDIA_ATTRIBUTES_CHANGED = 23;
 
     private static final String JAPAN_COUNTRY_CODE_WITH_PLUS_SIGN = "+81";
     private static final String JAPAN_ISO_COUNTRY_CODE = "JP";
@@ -253,6 +254,10 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
                 case MSG_SET_AUDIO_QUALITY:
                     int audioQuality = (int) msg.obj;
                     setAudioQuality(audioQuality);
+                    break;
+
+                case MSG_MEDIA_ATTRIBUTES_CHANGED:
+                    refreshCodec();
                     break;
 
                 case MSG_SET_CONFERENCE_PARTICIPANTS:
@@ -597,6 +602,12 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
         public void onAudioQualityChanged(int audioQuality) {
             mHandler.obtainMessage(MSG_SET_AUDIO_QUALITY, audioQuality).sendToTarget();
         }
+
+        @Override
+        public void onMediaAttributesChanged() {
+            mHandler.obtainMessage(MSG_MEDIA_ATTRIBUTES_CHANGED).sendToTarget();
+        }
+
         /**
          * Handles a change in the state of conference participant(s), as reported by the
          * {@link com.android.internal.telephony.Connection}.
@@ -1678,7 +1689,7 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
                 Connection.AUDIO_CODEC_NONE);
         if (newCodecType != oldCodecType) {
             newExtras.putInt(Connection.EXTRA_AUDIO_CODEC, newCodecType);
-            Log.i(this, "put audio codec:" + newCodecType);
+            Log.i(this, "refreshCodec: codec changed; old=%d, new=%d", oldCodecType, newCodecType);
             changed = true;
         }
         if (isImsConnection()) {
@@ -1686,7 +1697,8 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
             float oldBitrate = newExtras.getFloat(Connection.EXTRA_AUDIO_CODEC_BITRATE_KBPS, 0.0f);
             if (Math.abs(newBitrate - oldBitrate) > THRESHOLD) {
                 newExtras.putFloat(Connection.EXTRA_AUDIO_CODEC_BITRATE_KBPS, newBitrate);
-                Log.i(this, "put audio bitrate:" + newBitrate);
+                Log.i(this, "refreshCodec: bitrate changed; old=%f, new=%f", oldBitrate,
+                        newBitrate);
                 changed = true;
             }
 
@@ -1695,7 +1707,8 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
                     0.0f);
             if (Math.abs(newBandwidth - oldBandwidth) > THRESHOLD) {
                 newExtras.putFloat(Connection.EXTRA_AUDIO_CODEC_BANDWIDTH_KHZ, newBandwidth);
-                Log.i(this, "put audio bandwidth:" + newBandwidth);
+                Log.i(this, "refreshCodec: bandwidth changed; old=%f, new=%f", oldBandwidth,
+                        newBandwidth);
                 changed = true;
             }
         } else {
@@ -1706,7 +1719,7 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
         }
 
         if (changed) {
-            Log.i(this, "Audio attribute, Codec:"
+            Log.i(this, "refreshCodec: Codec:"
                     + newExtras.getInt(Connection.EXTRA_AUDIO_CODEC, Connection.AUDIO_CODEC_NONE)
                     + ", Bitrate:"
                     + newExtras.getFloat(Connection.EXTRA_AUDIO_CODEC_BITRATE_KBPS, 0.0f)
