@@ -25,8 +25,12 @@ import android.telephony.ims.SipMessage;
 import android.util.LocalLog;
 import android.util.Log;
 
+import com.android.internal.annotations.VisibleForTesting;
 import com.android.services.telephony.rcs.validator.IncomingTransportStateValidator;
+import com.android.services.telephony.rcs.validator.MalformedSipMessageValidator;
 import com.android.services.telephony.rcs.validator.OutgoingTransportStateValidator;
+import com.android.services.telephony.rcs.validator.RestrictedOutgoingSipRequestValidator;
+import com.android.services.telephony.rcs.validator.RestrictedOutgoingSubscribeValidator;
 import com.android.services.telephony.rcs.validator.SipMessageValidator;
 import com.android.services.telephony.rcs.validator.ValidationResult;
 
@@ -47,20 +51,20 @@ import java.util.function.Consumer;
  *    associated with a stale IMS configuration version.</li>
  *    <li>Track the SipDelegate open/close state to allow/deny outgoing messages based on the
  *    session's state.</li>
+ *    <li>Validate outgoing SIP messages for both restricted request methods as well as restricted/
+ *    malformed headers.</li>
  * </ul>
  */
-public class TransportSipSessionTracker {
+public class TransportSipMessageValidator {
 
-    private static final String LOG_TAG = "SipSessionT";
+    private static final String LOG_TAG = "SipMessageV";
 
     private final int mSubId;
     private final ScheduledExecutorService mExecutor;
     private final LocalLog mLocalLog = new LocalLog(SipTransportController.LOG_SIZE);
     // Validators
-    private final IncomingTransportStateValidator mIncomingTransportStateValidator =
-            new IncomingTransportStateValidator();
-    private final OutgoingTransportStateValidator mOutgoingTransportStateValidator =
-            new OutgoingTransportStateValidator();
+    private final IncomingTransportStateValidator mIncomingTransportStateValidator;
+    private final OutgoingTransportStateValidator mOutgoingTransportStateValidator;
     private final SipMessageValidator mOutgoingMessageValidator;
     private final SipMessageValidator mIncomingMessageValidator;
 
@@ -71,11 +75,25 @@ public class TransportSipSessionTracker {
     private Consumer<List<String>> mClosingCompleteConsumer;
     private Consumer<List<String>> mRegistrationAppliedConsumer;
 
+    public TransportSipMessageValidator(int subId, ScheduledExecutorService executor) {
+        this(subId, executor, new OutgoingTransportStateValidator(),
+                new IncomingTransportStateValidator(), new MalformedSipMessageValidator().andThen(
+                new RestrictedOutgoingSipRequestValidator()).andThen(
+                new RestrictedOutgoingSubscribeValidator()));
+    }
 
-    public TransportSipSessionTracker(int subId, ScheduledExecutorService executor) {
+
+    @VisibleForTesting
+    public TransportSipMessageValidator(int subId, ScheduledExecutorService executor,
+            OutgoingTransportStateValidator outgoingStateValidator,
+            IncomingTransportStateValidator incomingStateValidator,
+            SipMessageValidator statelessMessageValidator) {
         mSubId = subId;
         mExecutor = executor;
-        mOutgoingMessageValidator = mOutgoingTransportStateValidator;
+        mOutgoingTransportStateValidator = outgoingStateValidator;
+        mIncomingTransportStateValidator = incomingStateValidator;
+        mOutgoingMessageValidator = mOutgoingTransportStateValidator.andThen(
+                statelessMessageValidator);
         mIncomingMessageValidator = mIncomingTransportStateValidator;
     }
 

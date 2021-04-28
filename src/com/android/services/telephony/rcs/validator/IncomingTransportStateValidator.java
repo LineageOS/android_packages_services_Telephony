@@ -24,7 +24,7 @@ import android.util.ArrayMap;
  * Tracks the incoming SIP message transport state from the ImsService to the remote IMS
  * application. Validates incoming SIP messages based on this state.
  */
-public final class IncomingTransportStateValidator implements SipMessageValidator {
+public class IncomingTransportStateValidator implements SipMessageValidator {
 
     /**
      * The message transport is closed, meaning there can be no more incoming messages
