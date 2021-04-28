@@ -98,7 +98,8 @@ public class SipDelegateBinderConnection implements DelegateBinderStateManager,
                     long token = Binder.clearCallingIdentity();
                     try {
                         mExecutor.execute(() -> {
-                            logi("onImsConfigurationChanged");
+                            logi("onImsConfigurationChanged: version="
+                                    + registeredSipConfig.getVersion());
                             for (StateCallback c : mStateCallbacks) {
                                 c.onImsConfigurationChanged(registeredSipConfig);
                             }
