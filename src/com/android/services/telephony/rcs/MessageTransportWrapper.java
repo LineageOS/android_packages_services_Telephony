@@ -34,6 +34,7 @@ import android.util.Log;
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.telephony.SipMessageParsingUtils;
 import com.android.internal.util.IndentingPrintWriter;
+import com.android.phone.RcsProvisioningMonitor;
 import com.android.services.telephony.rcs.validator.ValidationResult;
 
 import java.io.PrintWriter;
@@ -49,7 +50,7 @@ import java.util.function.Consumer;
  * <p>
  * Queues incoming and outgoing SIP messages on an Executor and deliver to IMS application and
  * SipDelegate in order. If there is an error delivering the message, the caller is notified.
- * Uses {@link TransportSipSessionTracker} to track ongoing SIP dialogs and verify outgoing
+ * Uses {@link TransportSipMessageValidator} to track ongoing SIP dialogs and verify outgoing
  * messages.
  * <p>
  * Note: This handles incoming binder calls, so all calls from other processes should be handled on
@@ -127,6 +128,7 @@ public class MessageTransportWrapper implements DelegateBinderStateManager.State
                 mExecutor.execute(() -> {
                     ValidationResult result =
                             mSipSessionTracker.verifyOutgoingMessage(sipMessage, configVersion);
+                    result = maybeOverrideValidationForTesting(result);
                     if (!result.isValidated) {
                         notifyDelegateSendError("Outgoing messages restricted", sipMessage,
                                 result.restrictedReason);
@@ -253,10 +255,24 @@ public class MessageTransportWrapper implements DelegateBinderStateManager.State
         }
     };
 
+    /**
+     * Interface for injecting validator override dependencies for testing.
+     */
+    @VisibleForTesting
+    public interface ValidatorOverride {
+        /**
+         * @return {@code null} if the validation result should not be overridden, {@code true} if
+         * the validation result should always pass, {@code false} if the validation result should
+         * always fail.
+         */
+        Boolean getValidatorOverrideState();
+    }
+
+    private final ValidatorOverride mValidatorOverride;
     private final ISipDelegateMessageCallback mAppCallback;
     private final Executor mExecutor;
     private final int mSubId;
-    private final TransportSipSessionTracker mSipSessionTracker;
+    private final TransportSipMessageValidator mSipSessionTracker;
     private final LocalLog mLocalLog = new LocalLog(SipTransportController.LOG_SIZE);
 
     private ISipDelegate mSipDelegate;
@@ -266,7 +282,9 @@ public class MessageTransportWrapper implements DelegateBinderStateManager.State
         mSubId = subId;
         mAppCallback = appMessageCallback;
         mExecutor = executor;
-        mSipSessionTracker = new TransportSipSessionTracker(subId, executor);
+        mSipSessionTracker = new TransportSipMessageValidator(subId, executor);
+        mValidatorOverride = () -> RcsProvisioningMonitor.getInstance()
+                .getImsFeatureValidationOverride(mSubId);
     }
 
     /**
@@ -275,11 +293,13 @@ public class MessageTransportWrapper implements DelegateBinderStateManager.State
     @VisibleForTesting
     public MessageTransportWrapper(int subId, ScheduledExecutorService executor,
             ISipDelegateMessageCallback appMessageCallback,
-            TransportSipSessionTracker sipSessionTracker) {
+            TransportSipMessageValidator sipSessionTracker) {
         mSubId = subId;
         mAppCallback = appMessageCallback;
         mExecutor = executor;
         mSipSessionTracker = sipSessionTracker;
+        // Remove links to static methods calls querying overrides for testing.
+        mValidatorOverride = () -> null;
     }
 
     @Override
@@ -422,6 +442,21 @@ public class MessageTransportWrapper implements DelegateBinderStateManager.State
             logw("SipDelegate not available when cleanupSession was called "
                     + "for call id: " + callId);
         }
+    }
+
+    private ValidationResult maybeOverrideValidationForTesting(ValidationResult result) {
+        Boolean isValidatedOverride = mValidatorOverride.getValidatorOverrideState();
+        if (isValidatedOverride == null) {
+            return result;
+        }
+        if (isValidatedOverride) {
+            return ValidationResult.SUCCESS;
+        } else if (result.isValidated) {
+            // if override is set to false and the original result was validated, return a new
+            // restricted result with UNKNOWN reason.
+            return new ValidationResult(SipDelegateManager.MESSAGE_FAILURE_REASON_UNKNOWN);
+        }
+        return result;
     }
 
     private void notifyDelegateSendError(String logReason, SipMessage message, int reasonCode) {
