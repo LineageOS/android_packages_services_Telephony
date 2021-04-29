@@ -74,7 +74,7 @@ public class MessageTransportWrapperTest extends TelephonyTestBase {
     private static final String TEST_TRANSACTION_ID = "z9hG4bK776asdhds";
 
     @Mock private ISipDelegateMessageCallback mDelegateMessageCallback;
-    @Mock private TransportSipSessionTracker mTransportSipSessionTracker;
+    @Mock private TransportSipMessageValidator mTransportSipSessionValidator;
     @Mock private ISipDelegate mISipDelegate;
     @Mock private Consumer<Boolean> mMockCloseConsumer;
 
@@ -103,7 +103,7 @@ public class MessageTransportWrapperTest extends TelephonyTestBase {
                 SipDelegateConfiguration.SIP_TRANSPORT_TCP, localAddr, serverAddr).build();
         // Ensure IMS config changes are propagated to the message tracker.
         tracker.onConfigurationChanged(c);
-        verify(mTransportSipSessionTracker).onConfigurationChanged(c);
+        verify(mTransportSipSessionValidator).onConfigurationChanged(c);
     }
 
     @SmallTest
@@ -117,7 +117,7 @@ public class MessageTransportWrapperTest extends TelephonyTestBase {
         MessageTransportWrapper tracker = createTestMessageTransportWrapper();
         // Ensure openTransport passes denied tags to the session tracker
         tracker.openTransport(mISipDelegate, allowedTags, deniedTags);
-        verify(mTransportSipSessionTracker).onTransportOpened(allowedTags, deniedTags);
+        verify(mTransportSipSessionValidator).onTransportOpened(allowedTags, deniedTags);
     }
 
     @SmallTest
@@ -135,7 +135,7 @@ public class MessageTransportWrapperTest extends TelephonyTestBase {
         callIdConsumer.accept(callIds);
         // Verify that the pending call IDs are closed properly.
         for (String callId : callIds) {
-            verify(mTransportSipSessionTracker).onSipSessionCleanup(callId);
+            verify(mTransportSipSessionValidator).onSipSessionCleanup(callId);
             verify(mISipDelegate).cleanupSession(callId);
         }
     }
@@ -152,7 +152,7 @@ public class MessageTransportWrapperTest extends TelephonyTestBase {
                 closedReason, (r) -> result[0] = r);
         callIdConsumer.accept(Collections.emptyList());
         // Verify that the pending call IDs are closed properly.
-        verify(mTransportSipSessionTracker, never()).onSipSessionCleanup(anyString());
+        verify(mTransportSipSessionValidator, never()).onSipSessionCleanup(anyString());
         verify(mISipDelegate, never()).cleanupSession(anyString());
         // Result is true in the case that all call IDs were successfully closed.
         assertTrue(result[0]);
@@ -175,7 +175,7 @@ public class MessageTransportWrapperTest extends TelephonyTestBase {
         callIdConsumer.accept(callIds);
         // Verify that the pending call IDs are closed properly.
         for (String callId : callIds) {
-            verify(mTransportSipSessionTracker).onSipSessionCleanup(callId);
+            verify(mTransportSipSessionValidator).onSipSessionCleanup(callId);
             verify(mISipDelegate).cleanupSession(callId);
         }
         // Result is false in this case because there were still callIds left that were not
@@ -190,14 +190,14 @@ public class MessageTransportWrapperTest extends TelephonyTestBase {
         callIds.add("callId1");
         callIds.add("callId2");
         int closedReason = SipDelegateManager.MESSAGE_FAILURE_REASON_DELEGATE_CLOSED;
-        doReturn(callIds).when(mTransportSipSessionTracker).closeSessionsForcefully(closedReason);
+        doReturn(callIds).when(mTransportSipSessionValidator).closeSessionsForcefully(closedReason);
         MessageTransportWrapper tracker = createTestMessageTransportWrapper();
         tracker.openTransport(mISipDelegate, Collections.emptySet(), Collections.emptySet());
 
         tracker.close(closedReason);
         // Verify that the pending call IDs are closed properly.
         for (String callId : callIds) {
-            verify(mTransportSipSessionTracker).onSipSessionCleanup(callId);
+            verify(mTransportSipSessionValidator).onSipSessionCleanup(callId);
             verify(mISipDelegate).cleanupSession(callId);
         }
     }
@@ -209,7 +209,7 @@ public class MessageTransportWrapperTest extends TelephonyTestBase {
 
         tracker.openTransport(mISipDelegate, Collections.emptySet(), Collections.emptySet());
         doReturn(ValidationResult.SUCCESS)
-                .when(mTransportSipSessionTracker)
+                .when(mTransportSipSessionValidator)
                 .verifyOutgoingMessage(TEST_MESSAGE, 1 /*version*/);
         tracker.getDelegateConnection().sendMessage(TEST_MESSAGE, 1 /*version*/);
         verify(mISipDelegate).sendMessage(TEST_MESSAGE, 1 /*version*/);
@@ -221,7 +221,7 @@ public class MessageTransportWrapperTest extends TelephonyTestBase {
 
         doReturn(new ValidationResult(
                 SipDelegateManager.MESSAGE_FAILURE_REASON_DELEGATE_CLOSED))
-                .when(mTransportSipSessionTracker)
+                .when(mTransportSipSessionValidator)
                 .verifyOutgoingMessage(TEST_MESSAGE, 1 /*version*/);
         tracker.getDelegateConnection().sendMessage(TEST_MESSAGE, 1 /*version*/);
         verify(mDelegateMessageCallback).onMessageSendFailure(TEST_TRANSACTION_ID,
@@ -235,7 +235,7 @@ public class MessageTransportWrapperTest extends TelephonyTestBase {
         tracker.openTransport(mISipDelegate, Collections.emptySet(), Collections.emptySet());
         tracker.getDelegateConnection().notifyMessageReceived(TEST_TRANSACTION_ID);
         verify(mISipDelegate).notifyMessageReceived(TEST_TRANSACTION_ID);
-        verify(mTransportSipSessionTracker).acknowledgePendingMessage(TEST_TRANSACTION_ID);
+        verify(mTransportSipSessionValidator).acknowledgePendingMessage(TEST_TRANSACTION_ID);
     }
 
     @SmallTest
@@ -247,7 +247,7 @@ public class MessageTransportWrapperTest extends TelephonyTestBase {
                 SipDelegateManager.MESSAGE_FAILURE_REASON_NETWORK_NOT_AVAILABLE);
         verify(mISipDelegate).notifyMessageReceiveError(TEST_TRANSACTION_ID,
                 SipDelegateManager.MESSAGE_FAILURE_REASON_NETWORK_NOT_AVAILABLE);
-        verify(mTransportSipSessionTracker).notifyPendingMessageFailed(TEST_TRANSACTION_ID);
+        verify(mTransportSipSessionValidator).notifyPendingMessageFailed(TEST_TRANSACTION_ID);
     }
 
     @SmallTest
@@ -257,7 +257,7 @@ public class MessageTransportWrapperTest extends TelephonyTestBase {
         tracker.openTransport(mISipDelegate, Collections.emptySet(), Collections.emptySet());
         tracker.getDelegateConnection().cleanupSession("testCallId");
         verify(mISipDelegate).cleanupSession("testCallId");
-        verify(mTransportSipSessionTracker).onSipSessionCleanup("testCallId");
+        verify(mTransportSipSessionValidator).onSipSessionCleanup("testCallId");
     }
 
     @SmallTest
@@ -267,7 +267,7 @@ public class MessageTransportWrapperTest extends TelephonyTestBase {
         tracker.openTransport(mISipDelegate, Collections.emptySet(), Collections.emptySet());
 
         doReturn(ValidationResult.SUCCESS)
-                .when(mTransportSipSessionTracker).verifyIncomingMessage(TEST_MESSAGE);
+                .when(mTransportSipSessionValidator).verifyIncomingMessage(TEST_MESSAGE);
         tracker.getMessageCallback().onMessageReceived(TEST_MESSAGE);
         verify(mDelegateMessageCallback).onMessageReceived(TEST_MESSAGE);
 
@@ -278,7 +278,7 @@ public class MessageTransportWrapperTest extends TelephonyTestBase {
 
         doReturn(new ValidationResult(
                 SipDelegateManager.MESSAGE_FAILURE_REASON_DELEGATE_DEAD))
-                .when(mTransportSipSessionTracker).verifyIncomingMessage(TEST_MESSAGE);
+                .when(mTransportSipSessionValidator).verifyIncomingMessage(TEST_MESSAGE);
         tracker.getMessageCallback().onMessageReceived(TEST_MESSAGE);
         verify(mISipDelegate, times(2)).notifyMessageReceiveError(TEST_TRANSACTION_ID,
                 SipDelegateManager.MESSAGE_FAILURE_REASON_DELEGATE_DEAD);
@@ -290,7 +290,7 @@ public class MessageTransportWrapperTest extends TelephonyTestBase {
         MessageTransportWrapper tracker = createTestMessageTransportWrapper();
         tracker.openTransport(mISipDelegate, Collections.emptySet(), Collections.emptySet());
         tracker.getMessageCallback().onMessageSent(TEST_TRANSACTION_ID);
-        verify(mTransportSipSessionTracker).acknowledgePendingMessage(TEST_TRANSACTION_ID);
+        verify(mTransportSipSessionValidator).acknowledgePendingMessage(TEST_TRANSACTION_ID);
         verify(mDelegateMessageCallback).onMessageSent(TEST_TRANSACTION_ID);
     }
 
@@ -301,14 +301,14 @@ public class MessageTransportWrapperTest extends TelephonyTestBase {
         tracker.openTransport(mISipDelegate, Collections.emptySet(), Collections.emptySet());
         tracker.getMessageCallback().onMessageSendFailure(TEST_TRANSACTION_ID,
                 SipDelegateManager.MESSAGE_FAILURE_REASON_NETWORK_NOT_AVAILABLE);
-        verify(mTransportSipSessionTracker).notifyPendingMessageFailed(TEST_TRANSACTION_ID);
+        verify(mTransportSipSessionValidator).notifyPendingMessageFailed(TEST_TRANSACTION_ID);
         verify(mDelegateMessageCallback).onMessageSendFailure(TEST_TRANSACTION_ID,
                 SipDelegateManager.MESSAGE_FAILURE_REASON_NETWORK_NOT_AVAILABLE);
     }
 
     private MessageTransportWrapper createTestMessageTransportWrapper() {
         return new MessageTransportWrapper(TEST_SUB_ID,
-                mExecutor, mDelegateMessageCallback, mTransportSipSessionTracker);
+                mExecutor, mDelegateMessageCallback, mTransportSipSessionValidator);
     }
 
     private Consumer<List<String>> trackerRegStateChanged(MessageTransportWrapper tracker,
@@ -318,9 +318,9 @@ public class MessageTransportWrapperTest extends TelephonyTestBase {
             // Capture the consumer here.
             consumerCaptor.add(it.getArgument(0));
             return null;
-        }).when(mTransportSipSessionTracker).onRegistrationStateChanged(any(), eq(state));
+        }).when(mTransportSipSessionValidator).onRegistrationStateChanged(any(), eq(state));
         tracker.onRegistrationStateChanged(state);
-        verify(mTransportSipSessionTracker).onRegistrationStateChanged(any(), eq(state));
+        verify(mTransportSipSessionValidator).onRegistrationStateChanged(any(), eq(state));
         assertFalse(consumerCaptor.isEmpty());
         return consumerCaptor.get(0);
     }
@@ -332,10 +332,10 @@ public class MessageTransportWrapperTest extends TelephonyTestBase {
             // Capture the consumer here.
             consumerCaptor.add(it.getArgument(0));
             return null;
-        }).when(mTransportSipSessionTracker).closeSessionsGracefully(any(), eq(closingReason),
+        }).when(mTransportSipSessionValidator).closeSessionsGracefully(any(), eq(closingReason),
                 eq(closedReason));
         tracker.closeGracefully(closingReason, closedReason, resultConsumer);
-        verify(mTransportSipSessionTracker).closeSessionsGracefully(any(), eq(closingReason),
+        verify(mTransportSipSessionValidator).closeSessionsGracefully(any(), eq(closingReason),
                 eq(closedReason));
         assertFalse(consumerCaptor.isEmpty());
         return consumerCaptor.get(0);
