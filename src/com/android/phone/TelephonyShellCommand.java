@@ -126,6 +126,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
     private static final String UCE_SET_DEVICE_ENABLED = "set-device-enabled";
     private static final String UCE_OVERRIDE_PUBLISH_CAPS = "override-published-caps";
     private static final String UCE_GET_LAST_PIDF_XML = "get-last-publish-pidf";
+    private static final String UCE_REMOVE_REQUEST_DISALLOWED_STATUS =
+            "remove-request-disallowed-status";
 
     // Check if a package has carrier privileges on any SIM, regardless of subId/phoneId.
     private static final String HAS_CARRIER_PRIVILEGES_COMMAND = "has-carrier-privileges";
@@ -405,6 +407,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         pw.println("  uce get-last-publish-pidf [-s SLOT_ID]");
         pw.println("    Get the PIDF XML included in the last SIP PUBLISH, or \"none\" if no ");
         pw.println("    PUBLISH is active");
+        pw.println("  uce remove-request-disallowed-status [-s SLOT_ID]");
+        pw.println("    Remove the UCE is disallowed to execute UCE requests status");
     }
 
     private void onHelpNumberVerification() {
@@ -1809,6 +1813,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                 return handleUceOverridePublishCaps();
             case UCE_GET_LAST_PIDF_XML:
                 return handleUceGetPidfXml();
+            case UCE_REMOVE_REQUEST_DISALLOWED_STATUS:
+                return handleUceRemoveRequestDisallowedStatus();
         }
         return -1;
     }
@@ -1892,6 +1898,26 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             getErrPrintWriter().println("Exception: " + e.getMessage());
             return -1;
         }
+        return 0;
+    }
+
+    private int handleUceRemoveRequestDisallowedStatus() {
+        int subId = getSubId("uce remove-request-disallowed-status");
+        if (subId == SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
+            Log.w(LOG_TAG, "uce remove-request-disallowed-status, Invalid subscription ID");
+            return -1;
+        }
+        boolean result;
+        try {
+            result = mInterface.removeUceRequestDisallowedStatus(subId);
+        } catch (RemoteException e) {
+            Log.w(LOG_TAG, "uce remove-request-disallowed-status, error " + e.getMessage());
+            return -1;
+        }
+        if (VDBG) {
+            Log.v(LOG_TAG, "uce remove-request-disallowed-status, returned: " + result);
+        }
+        getOutPrintWriter().println(result);
         return 0;
     }
 
