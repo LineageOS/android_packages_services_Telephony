@@ -26,6 +26,7 @@ import android.util.LocalLog;
 import android.util.Log;
 
 import com.android.internal.annotations.VisibleForTesting;
+import com.android.internal.util.IndentingPrintWriter;
 import com.android.services.telephony.rcs.validator.IncomingTransportStateValidator;
 import com.android.services.telephony.rcs.validator.MalformedSipMessageValidator;
 import com.android.services.telephony.rcs.validator.OutgoingTransportStateValidator;
@@ -36,17 +37,21 @@ import com.android.services.telephony.rcs.validator.ValidationResult;
 
 import java.io.PrintWriter;
 import java.util.Collections;
-import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Track incoming and outgoing SIP messages passing through this delegate and verify these messages
  * by doing the following:
  *  <ul>
  *    <li>Track the SipDelegate's registration state to ensure that a registration event has
- *    occurred before allowing outgoing messages.</li>
+ *    occurred before allowing outgoing messages. Once it has occurred, filter outgoing SIP messages
+ *    based on the open/restricted feature tag registration state.</li>
  *    <li>Track the SipDelegate's IMS configuration version and deny any outgoing SipMessages
  *    associated with a stale IMS configuration version.</li>
  *    <li>Track the SipDelegate open/close state to allow/deny outgoing messages based on the
@@ -59,9 +64,74 @@ public class TransportSipMessageValidator {
 
     private static final String LOG_TAG = "SipMessageV";
 
+    /**
+     * the time in milliseconds that we will wait for SIP sessions to close before we will timeout
+     * and force the sessions to be cleaned up.
+     */
+    private static final int PENDING_CLOSE_TIMEOUT_MS = 1000;
+    /**
+     * time in milliseconds that we will wait for SIP sessions to be closed before we timeout and
+     * force the sessions associated with the deregistering feature tags to be cleaned up.
+     */
+    private static final int PENDING_REGISTRATION_CHANGE_TIMEOUT_MS = 1000;
+
+    /**
+     * Timeouts used in this class that are visible for testing.
+     */
+    @VisibleForTesting
+    public interface Timeouts {
+        /**
+         * @return the time in milliseconds that we will wait for SIP sessions to close before we
+         * will timeout and force the sessions to be cleaned up.
+         */
+        int getPendingCloseTimeoutMs();
+
+        /**
+         * @return the time in milliseconds that we will wait for SIP sessions to be closed before
+         * we timeout and force the sessions associated with the deregistering feature tags to be
+         * cleaned up.
+         */
+        int getPendingRegistrationChangeTimeoutMs();
+    }
+
+    /**
+     * Tracks a pending task that has been scheduled on the associated Executor.
+     */
+    private abstract static class PendingTask implements Runnable {
+
+        private ScheduledFuture<?> mFuture;
+
+        public void scheduleDelayed(ScheduledExecutorService executor, int timeMs) {
+            mFuture = executor.schedule(this, timeMs, TimeUnit.MILLISECONDS);
+        }
+
+        public boolean isDone() {
+            return mFuture != null && mFuture.isDone();
+        }
+
+        public void cancel() {
+            if (mFuture == null) return;
+            mFuture.cancel(false /*interrupt*/);
+        }
+    }
+
+    /**
+     * Tracks a pending reg cleanup task that has been scheduled on the associated Executor.
+     */
+    private abstract static class PendingRegCleanupTask extends PendingTask {
+        public final Set<String> pendingCallIds;
+        public final Set<String> featureTags;
+
+        PendingRegCleanupTask(Set<String> tags, Set<String> callIds) {
+            featureTags = tags;
+            pendingCallIds = callIds;
+        }
+    }
+
     private final int mSubId;
     private final ScheduledExecutorService mExecutor;
     private final LocalLog mLocalLog = new LocalLog(SipTransportController.LOG_SIZE);
+    private final SipSessionTracker mSipSessionTracker;
     // Validators
     private final IncomingTransportStateValidator mIncomingTransportStateValidator;
     private final OutgoingTransportStateValidator mOutgoingTransportStateValidator;
@@ -71,29 +141,35 @@ public class TransportSipMessageValidator {
     private Set<String> mSupportedFeatureTags;
     private Set<FeatureTagState> mDeniedFeatureTags;
     private long mConfigVersion = -1;
-    private DelegateRegistrationState mLatestRegistrationState;
-    private Consumer<List<String>> mClosingCompleteConsumer;
-    private Consumer<List<String>> mRegistrationAppliedConsumer;
+    private Consumer<Set<String>> mClosingCompleteConsumer;
+    private PendingTask mPendingClose;
+    private PendingRegCleanupTask mPendingRegCleanup;
+    private Consumer<Set<String>> mRegistrationAppliedConsumer;
 
     public TransportSipMessageValidator(int subId, ScheduledExecutorService executor) {
-        this(subId, executor, new OutgoingTransportStateValidator(),
-                new IncomingTransportStateValidator(), new MalformedSipMessageValidator().andThen(
+        mSubId = subId;
+        mExecutor = executor;
+        mSipSessionTracker = new SipSessionTracker();
+        mOutgoingTransportStateValidator = new OutgoingTransportStateValidator(mSipSessionTracker);
+        mIncomingTransportStateValidator = new IncomingTransportStateValidator();
+        mOutgoingMessageValidator = new MalformedSipMessageValidator().andThen(
                 new RestrictedOutgoingSipRequestValidator()).andThen(
-                new RestrictedOutgoingSubscribeValidator()));
+                new RestrictedOutgoingSubscribeValidator()).andThen(
+                        mOutgoingTransportStateValidator);
+        mIncomingMessageValidator = mIncomingTransportStateValidator;
     }
-
 
     @VisibleForTesting
     public TransportSipMessageValidator(int subId, ScheduledExecutorService executor,
+            SipSessionTracker sipSessionTracker,
             OutgoingTransportStateValidator outgoingStateValidator,
-            IncomingTransportStateValidator incomingStateValidator,
-            SipMessageValidator statelessMessageValidator) {
+            IncomingTransportStateValidator incomingStateValidator) {
         mSubId = subId;
         mExecutor = executor;
+        mSipSessionTracker = sipSessionTracker;
         mOutgoingTransportStateValidator = outgoingStateValidator;
         mIncomingTransportStateValidator = incomingStateValidator;
-        mOutgoingMessageValidator = mOutgoingTransportStateValidator.andThen(
-                statelessMessageValidator);
+        mOutgoingMessageValidator = mOutgoingTransportStateValidator;
         mIncomingMessageValidator = mIncomingTransportStateValidator;
     }
 
@@ -115,30 +191,27 @@ public class TransportSipMessageValidator {
      *         changes.
      * @param regState The new registration state.
      */
-    public void onRegistrationStateChanged(Consumer<List<String>> stateChangeComplete,
+    public void onRegistrationStateChanged(Consumer<Set<String>> stateChangeComplete,
             DelegateRegistrationState regState) {
         if (mRegistrationAppliedConsumer != null) {
             logw("onRegistrationStateChanged: pending registration change, completing now.");
             // complete the pending consumer with no dialogs pending, this will be re-evaluated
             // and new configuration will be applied.
-            mRegistrationAppliedConsumer.accept(Collections.emptyList());
+            cleanupAndNotifyRegistrationAppliedConsumer(Collections.emptySet());
         }
-        mLatestRegistrationState = regState;
-        // evaluate if this needs to be set based on reg state.
+        Set<String> restrictedTags = Stream.concat(
+                regState.getDeregisteringFeatureTags().stream(),
+                regState.getDeregisteredFeatureTags().stream()).map(FeatureTagState::getFeatureTag)
+                .collect(Collectors.toSet());
+        mOutgoingTransportStateValidator.restrictFeatureTags(restrictedTags);
         mRegistrationAppliedConsumer = stateChangeComplete;
-        // notify stateChangeComplete when reg state applied
-        mExecutor.execute(() -> {
-            // TODO: Track open regState & signal dialogs to close if required.
-            // Collect open dialogs associated with features that regState is signalling as
-            // DEREGISTERING. When PENDING_DIALOG_CLOSING_TIMEOUT_MS occurs, these dialogs need to
-            // close so that the features can move to DEREGISTERED.
-
-            // For now, just pass back an empty list and complete the Consumer.
-            if (mRegistrationAppliedConsumer != null) {
-                mRegistrationAppliedConsumer.accept(Collections.emptyList());
-                mRegistrationAppliedConsumer = null;
-            }
-        });
+        if (mPendingClose == null || mPendingClose.isDone()) {
+            // Only update the pending registration cleanup task if we do not already have a pending
+            // close in progress.
+            updatePendingRegCleanupTask(restrictedTags);
+        } else {
+            logi("skipping update reg cleanup due to pending close task.");
+        }
     }
 
     /**
@@ -184,7 +257,8 @@ public class TransportSipMessageValidator {
         logi("onTransportOpened: moving to open state");
         mSupportedFeatureTags = supportedFeatureTags;
         mDeniedFeatureTags = deniedFeatureTags;
-        mOutgoingTransportStateValidator.open();
+        mOutgoingTransportStateValidator.open(supportedFeatureTags, deniedFeatureTags.stream().map(
+                FeatureTagState::getFeatureTag).collect(Collectors.toSet()));
         mIncomingTransportStateValidator.open();
     }
 
@@ -193,7 +267,8 @@ public class TransportSipMessageValidator {
      * @param callId The call ID associated with the SIP session.
      */
     public void onSipSessionCleanup(String callId) {
-        //TODO track SIP sessions.
+        mSipSessionTracker.cleanupSession(callId);
+        onCallIdsChanged();
     }
 
     /**
@@ -213,54 +288,66 @@ public class TransportSipMessageValidator {
      * @param closedReason The reason that will be provided if any outgoing SIP message is sent
      *         once the transport is closed.
      */
-    public void closeSessionsGracefully(Consumer<List<String>> closingCompleteConsumer,
+    public void closeSessionsGracefully(Consumer<Set<String>> closingCompleteConsumer,
             int closingReason, int closedReason) {
-        if (mClosingCompleteConsumer != null) {
-            logw("closeSessionsGracefully: already pending close, completing consumer to unblock");
-            closingCompleteConsumer.accept(Collections.emptyList());
+        if (closingCompleteConsumer == null) {
+            logw("closeSessionsGracefully: unexpected - called with null consumer... closing now");
+            closeSessions(closedReason);
             return;
         }
+        if (mClosingCompleteConsumer != null) {
+            // In this case, all we can do is combine the consumers and wait for the other pending
+            // close to complete, finishing both.
+            logw("closeSessionsGracefully: unexpected - existing close pending, combining"
+                    + " consumers.");
+            mClosingCompleteConsumer = callIds -> {
+                mClosingCompleteConsumer.accept(callIds);
+                closingCompleteConsumer.accept(callIds);
+            };
+            return;
+        } else {
+            mClosingCompleteConsumer = closingCompleteConsumer;
+        }
+        if (getTrackedSipSessionCallIds().isEmpty()) {
+            logi("closeSessionsGracefully: moving to closed state now, reason=" + closedReason);
+            closeSessionsInternal(closedReason);
+            cancelClosingTimeoutAndSendComplete(Collections.emptySet());
+            return;
+        }
+        cancelPendingRegCleanupTask();
         logi("closeSessionsGracefully: moving to restricted state, reason=" + closingReason);
-        mClosingCompleteConsumer = closingCompleteConsumer;
         mOutgoingTransportStateValidator.restrict(closingReason);
-        mExecutor.execute(() -> {
-            logi("closeSessionsGracefully: moving to closed state, reason=" + closedReason);
-            mOutgoingTransportStateValidator.close(closedReason);
-            mIncomingTransportStateValidator.close(closedReason);
-            if (mClosingCompleteConsumer != null) {
-                // TODO: Track SIP sessions and complete when there are no SIP dialogs open anymore
-                //  or the timeout occurs.
-                mClosingCompleteConsumer.accept(Collections.emptyList());
-                mClosingCompleteConsumer = null;
+        mPendingClose = new PendingTask() {
+            @Override
+            public void run() {
+                closeSessions(closingReason);
             }
-        });
+        };
+        mPendingClose.scheduleDelayed(mExecutor, PENDING_CLOSE_TIMEOUT_MS);
     }
 
     /**
-     * The message transport must close now due to a configuration change (SIM subscription change,
-     * user disabled RCS, the service is dead, etc...).
+     * Close the transport now. If there are any open SIP sessions and this is closed due to a
+     * configuration change (SIM subscription change, user disabled RCS, the service is dead,
+     * etc...) then we will return the call IDs of all open sessions and ask them to be closed.
      * @param closedReason The error reason for why the message transport was closed that will be
      *         sent back to the caller if a new SIP message is sent.
      * @return A List of call IDs associated with sessions that were still open at the time that the
      * tracker closed the transport.
      */
-    public List<String> closeSessionsForcefully(int closedReason) {
-        logi("closeSessionsForcefully: moving to closed state, reason=" + closedReason);
-        mOutgoingTransportStateValidator.close(closedReason);
-        mIncomingTransportStateValidator.close(closedReason);
-        // TODO: add logic to collect open SIP dialogs to be forcefully closed once they are being
-        //  tracked.
-        List<String> openCallIds = Collections.emptyList();
-        if (mClosingCompleteConsumer != null) {
-            logi("closeSessionsForcefully: sending pending call ids through close consumer");
-            // send the call ID through the pending complete mechanism to unblock any previous
-            // graceful close command.
-            mClosingCompleteConsumer.accept(openCallIds);
-            mClosingCompleteConsumer = null;
-            return Collections.emptyList();
-        } else {
-            return openCallIds;
+    public Set<String> closeSessions(int closedReason) {
+        Set<String> openCallIds = getTrackedSipSessionCallIds();
+        logi("closeSessions: moving to closed state, reason=" + closedReason + ", open call ids: "
+                + openCallIds);
+        closeSessionsInternal(closedReason);
+        boolean consumerHandledPendingSessions = cancelClosingTimeoutAndSendComplete(openCallIds);
+        if (consumerHandledPendingSessions) {
+            logw("closeSessions: call ID closure handled through consumer");
+            // sent the open call IDs through the pending complete mechanism to unblock any previous
+            // graceful close command and close them early.
+            return Collections.emptySet();
         }
+        return openCallIds;
     }
 
     /**
@@ -270,20 +357,15 @@ public class TransportSipMessageValidator {
      */
 
     public ValidationResult verifyOutgoingMessage(SipMessage message, long configVersion) {
-        ValidationResult result = mOutgoingMessageValidator.validate(message);
-        if (!result.isValidated) return result;
-
         if (mConfigVersion != configVersion) {
-            logi("VerifyOutgoingMessage failed: for message: " + message + ", due to stale IMS "
-                    + "configuration: " + configVersion + ", expected: " + mConfigVersion);
             return new ValidationResult(
-                    SipDelegateManager.MESSAGE_FAILURE_REASON_STALE_IMS_CONFIGURATION);
+                    SipDelegateManager.MESSAGE_FAILURE_REASON_STALE_IMS_CONFIGURATION,
+                    "stale IMS configuration: "  + configVersion + ", expected: "
+                            + mConfigVersion);
         }
-        if (mLatestRegistrationState == null) {
-            result = new ValidationResult(
-                    SipDelegateManager.MESSAGE_FAILURE_REASON_NOT_REGISTERED);
-        }
-        logi("VerifyOutgoingMessage: " + result + ", message=" + message);
+        ValidationResult result = mOutgoingMessageValidator.validate(message);
+        logi("verifyOutgoingMessage: " + result + ", message=" + message);
+        if (result.isValidated) mSipSessionTracker.filterSipMessage(message);
         return result;
     }
 
@@ -294,7 +376,10 @@ public class TransportSipMessageValidator {
      * @return The result of verifying the incoming message.
      */
     public ValidationResult verifyIncomingMessage(SipMessage message) {
-        return mIncomingMessageValidator.validate(message);
+        ValidationResult result = mIncomingMessageValidator.validate(message);
+        logi("verifyIncomingMessage: " + result + ", message=" + message);
+        if (result.isValidated) mSipSessionTracker.filterSipMessage(message);
+        return result;
     }
 
     /**
@@ -304,33 +389,158 @@ public class TransportSipMessageValidator {
      */
     public void acknowledgePendingMessage(String transactionId) {
         logi("acknowledgePendingMessage: id=" + transactionId);
-        //TODO: keep track of pending messages to add to SIP session candidates.
+        mSipSessionTracker.acknowledgePendingMessage(transactionId);
+        onCallIdsChanged();
     }
 
     /**
      * A pending incoming or outgoing SIP message has failed and should not be tracked.
-     * @param transactionId
+     * @param transactionId The transaction ID associated with the message.
      */
     public void notifyPendingMessageFailed(String transactionId) {
         logi("notifyPendingMessageFailed: id=" + transactionId);
-        //TODO: keep track of pending messages to remove from SIP session candidates.
+        mSipSessionTracker.pendingMessageFailed(transactionId);
     }
 
     /** Dump state about this tracker that should be included in the dumpsys */
     public void dump(PrintWriter printWriter) {
-        printWriter.println("Supported Tags:" + mSupportedFeatureTags);
-        printWriter.println("Denied Tags:" + mDeniedFeatureTags);
-        printWriter.println(mOutgoingTransportStateValidator);
-        printWriter.println(mIncomingTransportStateValidator);
-        printWriter.println("Reg consumer pending: " + (mRegistrationAppliedConsumer != null));
-        printWriter.println("Close consumer pending: " + (mClosingCompleteConsumer != null));
-        printWriter.println();
-        printWriter.println("Most recent logs:");
+        IndentingPrintWriter pw = new IndentingPrintWriter(printWriter, "  ");
+        pw.println("Supported Tags:" + mSupportedFeatureTags);
+        pw.println("Denied Tags:" + mDeniedFeatureTags);
+        pw.println(mOutgoingTransportStateValidator);
+        pw.println(mIncomingTransportStateValidator);
+        pw.println("Reg consumer pending: " + (mRegistrationAppliedConsumer != null));
+        pw.println("Close consumer pending: " + (mClosingCompleteConsumer != null));
+        pw.println();
+        mSipSessionTracker.dump(pw);
+        pw.println();
+        pw.println("Most recent logs:");
         mLocalLog.dump(printWriter);
     }
 
+    /**
+     * A event has occurred that can change the list of active call IDs.
+     */
+    private void onCallIdsChanged() {
+        if (getTrackedSipSessionCallIds().isEmpty() && mPendingClose != null
+                && !mPendingClose.isDone()) {
+            logi("onCallIdsChanged: no open sessions, completing any pending close events.");
+            // do not wait for timeout if pending sessions closed.
+            mPendingClose.cancel();
+            mPendingClose.run();
+        }
+        if (mPendingRegCleanup != null && !mPendingRegCleanup.isDone()) {
+            logi("onCallIdsChanged: updating pending reg cleanup task.");
+            // Recalculate the open call IDs based on the same feature tag set in the case that the
+            // call ID change has caused a change in pending reg cleanup task.
+            updatePendingRegCleanupTask(mPendingRegCleanup.featureTags);
+        }
+    }
+
+    /**
+     * If there are any pending registration clean up tasks, cancel them and clean up consumers.
+     */
+    private void cancelPendingRegCleanupTask() {
+        if (mPendingRegCleanup != null && !mPendingRegCleanup.isDone()) {
+            logi("cancelPendingRegCleanupTask: cancelling...");
+            mPendingRegCleanup.cancel();
+        }
+        cleanupAndNotifyRegistrationAppliedConsumer(Collections.emptySet());
+    }
+
+    /**
+     * Update the pending registration change clean up task based on the new set of restricted
+     * feature tags generated from the deregistering/deregistered feature tags.
+     *
+     * <p>
+     * This set of restricted tags will generate a set of call IDs associated to dialogs that
+     * are active and associated with the restricted tags. If there is no pending cleanup task, it
+     * will create a new one. If there was already a pending reg cleanup task, it will compare them
+     * and create a new one and cancel the old one if the new set of call ids is different from the
+     * old one.
+     */
+    private void updatePendingRegCleanupTask(Set<String> restrictedTags) {
+        Set<String> pendingCallIds = mSipSessionTracker.getCallIdsAssociatedWithFeatureTag(
+                restrictedTags);
+        if (pendingCallIds.isEmpty()) {
+            if (mPendingRegCleanup != null && !mPendingRegCleanup.isDone()) {
+                logi("updatePendingRegCleanupTask: no remaining call ids, finish cleanup task "
+                        + "now.");
+                mPendingRegCleanup.cancel();
+                mPendingRegCleanup.run();
+            } else {
+                if (mRegistrationAppliedConsumer != null) {
+                    logi("updatePendingRegCleanupTask: notify no pending call ids.");
+                    cleanupAndNotifyRegistrationAppliedConsumer(Collections.emptySet());
+                }
+            }
+            return;
+        }
+        if (mPendingRegCleanup != null && !mPendingRegCleanup.isDone()) {
+            if (mPendingRegCleanup.pendingCallIds.equals(pendingCallIds)) {
+                logi("updatePendingRegCleanupTask: pending reg change has same set of pending call"
+                        + " IDs, so keeping pending task");
+                return;
+            }
+            logi("updatePendingRegCleanupTask: cancelling, call ids have changed.");
+            mPendingRegCleanup.cancel();
+        }
+        mPendingRegCleanup = new PendingRegCleanupTask(restrictedTags, pendingCallIds) {
+            @Override
+            public void run() {
+                cleanupAndNotifyRegistrationAppliedConsumer(pendingCallIds);
+            }
+        };
+        logi("updatePendingRegCleanupTask: scheduling for call ids: " + pendingCallIds);
+        mPendingRegCleanup.scheduleDelayed(mExecutor, PENDING_REGISTRATION_CHANGE_TIMEOUT_MS);
+    }
+
+    /**
+     * Notify the pending registration applied consumer of the call ids that need to be cleaned up.
+     */
+    private void cleanupAndNotifyRegistrationAppliedConsumer(Set<String> pendingCallIds) {
+        if (mRegistrationAppliedConsumer != null) {
+            mRegistrationAppliedConsumer.accept(pendingCallIds);
+            mRegistrationAppliedConsumer = null;
+        }
+    }
+
+    /**
+     * Cancel any pending timeout to close pending sessions and send the provided call IDs to any
+     * pending closing complete consumer.
+     * @return {@code true} if a consumer was notified, {@code false} if there were no consumers.
+     */
+    private boolean cancelClosingTimeoutAndSendComplete(Set<String> openCallIds) {
+        if (mPendingClose != null && !mPendingClose.isDone()) {
+            logi("completing pending close consumer");
+            mPendingClose.cancel();
+        }
+        // Complete the pending consumer with no open sessions.
+        if (mClosingCompleteConsumer != null) {
+            mClosingCompleteConsumer.accept(openCallIds);
+            mClosingCompleteConsumer = null;
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Close and clear all stateful trackers and validators.
+     */
+    private void closeSessionsInternal(int closedReason) {
+        cancelPendingRegCleanupTask();
+        mOutgoingTransportStateValidator.close(closedReason);
+        mIncomingTransportStateValidator.close(closedReason);
+        mSipSessionTracker.clearAllSessions();
+    }
+
+    private Set<String> getTrackedSipSessionCallIds() {
+        return mSipSessionTracker.getTrackedDialogs().stream().map(SipDialog::getCallId)
+                .collect(Collectors.toSet());
+    }
+
     private void logi(String log) {
-        Log.w(SipTransportController.LOG_TAG, LOG_TAG + "[" + mSubId + "] " + log);
+        Log.i(SipTransportController.LOG_TAG, LOG_TAG + "[" + mSubId + "] " + log);
         mLocalLog.log("[I] " + log);
     }
 

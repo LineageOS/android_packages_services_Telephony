@@ -43,12 +43,14 @@ public class RestrictedOutgoingSipRequestValidator implements SipMessageValidato
             String[] segments = SipMessageParsingUtils.splitStartLineAndVerify(startLine);
             if (segments == null) {
                 return new ValidationResult(
-                        SipDelegateManager.MESSAGE_FAILURE_REASON_INVALID_START_LINE);
+                        SipDelegateManager.MESSAGE_FAILURE_REASON_INVALID_START_LINE,
+                        "malformed start line: " + message.getStartLine());
             }
             if (Arrays.stream(IMS_SERVICE_HANDLED_REQUEST_METHODS).anyMatch(
                     s -> segments[0].toLowerCase().contains(s))) {
                 return new ValidationResult(
-                        SipDelegateManager.MESSAGE_FAILURE_REASON_INVALID_START_LINE);
+                        SipDelegateManager.MESSAGE_FAILURE_REASON_INVALID_START_LINE,
+                        "restricted method: " + segments[0]);
             }
         }
         return ValidationResult.SUCCESS;
