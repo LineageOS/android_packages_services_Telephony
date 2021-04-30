@@ -31,11 +31,11 @@ import android.os.Message;
 import android.os.Messenger;
 import android.os.PersistableBundle;
 import android.telecom.CallAudioState;
+import android.telecom.CallDiagnostics;
 import android.telecom.CallScreeningService;
 import android.telecom.Conference;
 import android.telecom.Connection;
 import android.telecom.ConnectionService;
-import android.telecom.DiagnosticCall;
 import android.telecom.PhoneAccount;
 import android.telecom.PhoneAccountHandle;
 import android.telecom.StatusHints;
@@ -3436,19 +3436,19 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
 
             Integer dcMsgValue;
             switch (msg.getType()) {
-                case DiagnosticCall.MESSAGE_CALL_AUDIO_CODEC:
+                case CallDiagnostics.MESSAGE_CALL_AUDIO_CODEC:
                     dcMsgValue = MessageTypeAndValueHelper.CODEC_TO_DC_CODEC.getValue(
                             msg.getValue());
                     break;
-                case DiagnosticCall.MESSAGE_CALL_NETWORK_TYPE:
+                case CallDiagnostics.MESSAGE_CALL_NETWORK_TYPE:
                     dcMsgValue = MessageTypeAndValueHelper.RAT_TYPE_TO_DC_NETWORK_TYPE.getValue(
                             msg.getValue());
                     break;
-                case DiagnosticCall.MESSAGE_DEVICE_BATTERY_STATE:
+                case CallDiagnostics.MESSAGE_DEVICE_BATTERY_STATE:
                     dcMsgValue = MessageTypeAndValueHelper.BATTERY_STATE_TO_DC_BATTERY_STATE
                             .getValue(msg.getValue());
                     break;
-                case DiagnosticCall.MESSAGE_DEVICE_NETWORK_COVERAGE:
+                case CallDiagnostics.MESSAGE_DEVICE_NETWORK_COVERAGE:
                     dcMsgValue = MessageTypeAndValueHelper.COVERAGE_TO_DC_COVERAGE
                             .getValue(msg.getValue());
                     break;
@@ -3676,7 +3676,7 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
     }
 
     /**
-     * Handles a device to device message which a {@link DiagnosticCall} wishes to send.
+     * Handles a device to device message which a {@link CallDiagnostics} wishes to send.
      * @param extras the call event extras bundle.
      */
     private void handleOutgoingDeviceToDeviceMessage(Bundle extras) {
@@ -3685,19 +3685,19 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
 
         Integer internalMessageValue;
         switch (messageType) {
-            case DiagnosticCall.MESSAGE_CALL_AUDIO_CODEC:
+            case CallDiagnostics.MESSAGE_CALL_AUDIO_CODEC:
                 internalMessageValue = MessageTypeAndValueHelper.CODEC_TO_DC_CODEC.getKey(
                         messageValue);
                 break;
-            case DiagnosticCall.MESSAGE_CALL_NETWORK_TYPE:
+            case CallDiagnostics.MESSAGE_CALL_NETWORK_TYPE:
                 internalMessageValue = MessageTypeAndValueHelper.RAT_TYPE_TO_DC_NETWORK_TYPE.getKey(
                         messageValue);
                 break;
-            case DiagnosticCall.MESSAGE_DEVICE_BATTERY_STATE:
+            case CallDiagnostics.MESSAGE_DEVICE_BATTERY_STATE:
                 internalMessageValue = MessageTypeAndValueHelper.BATTERY_STATE_TO_DC_BATTERY_STATE
                         .getKey(messageValue);
                 break;
-            case DiagnosticCall.MESSAGE_DEVICE_NETWORK_COVERAGE:
+            case CallDiagnostics.MESSAGE_DEVICE_NETWORK_COVERAGE:
                 internalMessageValue = MessageTypeAndValueHelper.COVERAGE_TO_DC_COVERAGE
                         .getKey(messageValue);
                 break;
