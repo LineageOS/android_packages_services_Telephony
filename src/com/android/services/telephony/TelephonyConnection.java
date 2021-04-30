@@ -3349,6 +3349,9 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
         }
         if (!isImsConnection()) {
             Log.i(this, "maybeConfigureDeviceToDeviceCommunication: not an IMS connection.");
+            if (mCommunicator != null) {
+                mCommunicator = null;
+            }
             return;
         }
         if (mTreatAsEmergencyCall || mIsNetworkIdentifiedEmergencyCall) {
