@@ -38,6 +38,7 @@ import android.telephony.ims.SipDelegateManager;
 import android.telephony.ims.SipMessage;
 import android.telephony.ims.aidl.ISipDelegate;
 import android.telephony.ims.aidl.ISipDelegateMessageCallback;
+import android.util.ArraySet;
 
 import androidx.test.filters.SmallTest;
 import androidx.test.runner.AndroidJUnit4;
@@ -57,7 +58,7 @@ import java.net.InetSocketAddress;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.List;
+import java.util.Set;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.function.Consumer;
 
@@ -76,7 +77,6 @@ public class MessageTransportWrapperTest extends TelephonyTestBase {
     @Mock private ISipDelegateMessageCallback mDelegateMessageCallback;
     @Mock private TransportSipMessageValidator mTransportSipSessionValidator;
     @Mock private ISipDelegate mISipDelegate;
-    @Mock private Consumer<Boolean> mMockCloseConsumer;
 
     // Test executor that just calls run on the Runnable provided in execute.
     private ScheduledExecutorService mExecutor = new TestExecutorService();
@@ -123,7 +123,7 @@ public class MessageTransportWrapperTest extends TelephonyTestBase {
     @SmallTest
     @Test
     public void testRegistrationStateChanged() throws Exception {
-        ArrayList<String> callIds = new ArrayList<>(2);
+        ArraySet<String> callIds = new ArraySet<>(2);
         callIds.add("callId1");
         callIds.add("callId2");
         // empty registration state for testing
@@ -131,7 +131,7 @@ public class MessageTransportWrapperTest extends TelephonyTestBase {
         MessageTransportWrapper tracker = createTestMessageTransportWrapper();
         tracker.openTransport(mISipDelegate, Collections.emptySet(), Collections.emptySet());
 
-        Consumer<List<String>> callIdConsumer = trackerRegStateChanged(tracker, state);
+        Consumer<Set<String>> callIdConsumer = trackerRegStateChanged(tracker, state);
         callIdConsumer.accept(callIds);
         // Verify that the pending call IDs are closed properly.
         for (String callId : callIds) {
@@ -148,9 +148,9 @@ public class MessageTransportWrapperTest extends TelephonyTestBase {
         MessageTransportWrapper tracker = createTestMessageTransportWrapper();
 
         Boolean[] result = new Boolean[1];
-        Consumer<List<String>> callIdConsumer = closeTrackerGracefully(tracker, closingReason,
+        Consumer<Set<String>> callIdConsumer = closeTrackerGracefully(tracker, closingReason,
                 closedReason, (r) -> result[0] = r);
-        callIdConsumer.accept(Collections.emptyList());
+        callIdConsumer.accept(Collections.emptySet());
         // Verify that the pending call IDs are closed properly.
         verify(mTransportSipSessionValidator, never()).onSipSessionCleanup(anyString());
         verify(mISipDelegate, never()).cleanupSession(anyString());
@@ -161,7 +161,7 @@ public class MessageTransportWrapperTest extends TelephonyTestBase {
     @SmallTest
     @Test
     public void testCloseGracefullyForceCloseCallIds() throws Exception {
-        ArrayList<String> callIds = new ArrayList<>(2);
+        ArraySet<String> callIds = new ArraySet<>(2);
         callIds.add("callId1");
         callIds.add("callId2");
         int closingReason = DelegateRegistrationState.DEREGISTERING_REASON_PROVISIONING_CHANGE;
@@ -170,7 +170,7 @@ public class MessageTransportWrapperTest extends TelephonyTestBase {
         tracker.openTransport(mISipDelegate, Collections.emptySet(), Collections.emptySet());
 
         Boolean[] result = new Boolean[1];
-        Consumer<List<String>> callIdConsumer = closeTrackerGracefully(tracker, closingReason,
+        Consumer<Set<String>> callIdConsumer = closeTrackerGracefully(tracker, closingReason,
                 closedReason, (r) -> result[0] = r);
         callIdConsumer.accept(callIds);
         // Verify that the pending call IDs are closed properly.
@@ -186,11 +186,11 @@ public class MessageTransportWrapperTest extends TelephonyTestBase {
     @SmallTest
     @Test
     public void testClose() throws Exception {
-        ArrayList<String> callIds = new ArrayList<>(2);
+        ArraySet<String> callIds = new ArraySet<>(2);
         callIds.add("callId1");
         callIds.add("callId2");
         int closedReason = SipDelegateManager.MESSAGE_FAILURE_REASON_DELEGATE_CLOSED;
-        doReturn(callIds).when(mTransportSipSessionValidator).closeSessionsForcefully(closedReason);
+        doReturn(callIds).when(mTransportSipSessionValidator).closeSessions(closedReason);
         MessageTransportWrapper tracker = createTestMessageTransportWrapper();
         tracker.openTransport(mISipDelegate, Collections.emptySet(), Collections.emptySet());
 
@@ -220,7 +220,7 @@ public class MessageTransportWrapperTest extends TelephonyTestBase {
                 eq(SipDelegateManager.MESSAGE_FAILURE_REASON_DELEGATE_DEAD));
 
         doReturn(new ValidationResult(
-                SipDelegateManager.MESSAGE_FAILURE_REASON_DELEGATE_CLOSED))
+                SipDelegateManager.MESSAGE_FAILURE_REASON_DELEGATE_CLOSED, ""))
                 .when(mTransportSipSessionValidator)
                 .verifyOutgoingMessage(TEST_MESSAGE, 1 /*version*/);
         tracker.getDelegateConnection().sendMessage(TEST_MESSAGE, 1 /*version*/);
@@ -277,7 +277,7 @@ public class MessageTransportWrapperTest extends TelephonyTestBase {
                 SipDelegateManager.MESSAGE_FAILURE_REASON_DELEGATE_DEAD);
 
         doReturn(new ValidationResult(
-                SipDelegateManager.MESSAGE_FAILURE_REASON_DELEGATE_DEAD))
+                SipDelegateManager.MESSAGE_FAILURE_REASON_DELEGATE_DEAD, ""))
                 .when(mTransportSipSessionValidator).verifyIncomingMessage(TEST_MESSAGE);
         tracker.getMessageCallback().onMessageReceived(TEST_MESSAGE);
         verify(mISipDelegate, times(2)).notifyMessageReceiveError(TEST_TRANSACTION_ID,
@@ -311,9 +311,9 @@ public class MessageTransportWrapperTest extends TelephonyTestBase {
                 mExecutor, mDelegateMessageCallback, mTransportSipSessionValidator);
     }
 
-    private Consumer<List<String>> trackerRegStateChanged(MessageTransportWrapper tracker,
+    private Consumer<Set<String>> trackerRegStateChanged(MessageTransportWrapper tracker,
             DelegateRegistrationState state) {
-        ArrayList<Consumer<List<String>>> consumerCaptor = new ArrayList<>(1);
+        ArrayList<Consumer<Set<String>>> consumerCaptor = new ArrayList<>(1);
         Mockito.doAnswer(it -> {
             // Capture the consumer here.
             consumerCaptor.add(it.getArgument(0));
@@ -325,9 +325,9 @@ public class MessageTransportWrapperTest extends TelephonyTestBase {
         return consumerCaptor.get(0);
     }
 
-    private Consumer<List<String>> closeTrackerGracefully(MessageTransportWrapper tracker,
+    private Consumer<Set<String>> closeTrackerGracefully(MessageTransportWrapper tracker,
             int closingReason, int closedReason, Consumer<Boolean> resultConsumer) {
-        ArrayList<Consumer<List<String>>> consumerCaptor = new ArrayList<>(1);
+        ArrayList<Consumer<Set<String>>> consumerCaptor = new ArrayList<>(1);
         Mockito.doAnswer(it -> {
             // Capture the consumer here.
             consumerCaptor.add(it.getArgument(0));
