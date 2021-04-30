@@ -30,6 +30,7 @@ import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.doAnswer;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
@@ -58,6 +59,8 @@ import android.test.suitebuilder.annotation.SmallTest;
 import androidx.test.runner.AndroidJUnit4;
 
 import com.android.TelephonyTestBase;
+import com.android.internal.telecom.IConnectionService;
+import com.android.internal.telephony.Call;
 import com.android.internal.telephony.CallStateException;
 import com.android.internal.telephony.Connection;
 import com.android.internal.telephony.Phone;
@@ -114,6 +117,12 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
     @Mock PhoneSwitcher mPhoneSwitcher;
     @Mock RadioOnHelper mRadioOnHelper;
     @Mock ServiceStateTracker mSST;
+    @Mock Call mCall;
+    @Mock Call mCall2;
+    @Mock com.android.internal.telephony.Connection mInternalConnection;
+    @Mock com.android.internal.telephony.Connection mInternalConnection2;
+    private Phone mPhone0;
+    private Phone mPhone1;
 
     private static class TestTelephonyConnectionService extends TelephonyConnectionService {
 
@@ -132,6 +141,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
     }
 
     private TelephonyConnectionService mTestConnectionService;
+    private IConnectionService.Stub mBinderStub;
 
     @Before
     public void setUp() throws Exception {
@@ -161,6 +171,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         mTestConnectionService.setDisconnectCauseFactory(mDisconnectCauseFactory);
         mTestConnectionService.onCreate();
         mTestConnectionService.setTelephonyManagerProxy(mTelephonyManagerProxy);
+        mBinderStub = (IConnectionService.Stub) mTestConnectionService.onBind(null);
     }
 
     @After
@@ -1155,6 +1166,131 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
     }
 
     /**
+     * Verifies for an incoming call on the same SIM that we don't set
+     * {@link android.telecom.Connection#EXTRA_ANSWERING_DROPS_FG_CALL} on the incoming call extras.
+     * @throws Exception
+     */
+    @Test
+    @SmallTest
+    public void testIncomingDoesntRequestDisconnect() throws Exception {
+        setupForCallTest();
+
+        mBinderStub.createConnection(PHONE_ACCOUNT_HANDLE_1, "TC@1",
+                new ConnectionRequest(PHONE_ACCOUNT_HANDLE_1, Uri.parse("tel:16505551212"),
+                        new Bundle()),
+                true, false, null);
+        waitForHandlerAction(mTestConnectionService.getHandler(), TIMEOUT_MS);
+        assertEquals(1, mTestConnectionService.getAllConnections().size());
+
+        // Make sure the extras do not indicate that it answering will disconnect another call.
+        android.telecom.Connection connection = (android.telecom.Connection)
+                mTestConnectionService.getAllConnections().toArray()[0];
+        assertFalse(connection.getExtras() != null && connection.getExtras().containsKey(
+                android.telecom.Connection.EXTRA_ANSWERING_DROPS_FG_CALL));
+    }
+
+    /**
+     * Verifies where there is another call on the same sub, we don't set
+     * {@link android.telecom.Connection#EXTRA_ANSWERING_DROPS_FG_CALL} on the incoming call extras.
+     * @throws Exception
+     */
+    @Test
+    @SmallTest
+    public void testSecondCallSameSubWontDisconnect() throws Exception {
+        // Previous test gets us into a good enough state
+        testIncomingDoesntRequestDisconnect();
+
+        when(mCall.getState()).thenReturn(Call.State.ACTIVE);
+        when(mCall2.getState()).thenReturn(Call.State.WAITING);
+        when(mCall2.getLatestConnection()).thenReturn(mInternalConnection2);
+        when(mPhone0.getRingingCall()).thenReturn(mCall2);
+
+        mBinderStub.createConnection(PHONE_ACCOUNT_HANDLE_1, "TC@2",
+                new ConnectionRequest(PHONE_ACCOUNT_HANDLE_1, Uri.parse("tel:16505551213"),
+                        new Bundle()),
+                true, false, null);
+        waitForHandlerAction(mTestConnectionService.getHandler(), TIMEOUT_MS);
+        assertEquals(2, mTestConnectionService.getAllConnections().size());
+
+        // None of the connections should have the extra set.
+        assertEquals(0, mTestConnectionService.getAllConnections().stream()
+                .filter(c -> c.getExtras() != null && c.getExtras().containsKey(
+                        android.telecom.Connection.EXTRA_ANSWERING_DROPS_FG_CALL))
+                .count());
+    }
+
+    /**
+     * Verifies where there is another call on the same sub, we don't set
+     * {@link android.telecom.Connection#EXTRA_ANSWERING_DROPS_FG_CALL} on the incoming call extras.
+     * @throws Exception
+     */
+    @Test
+    @SmallTest
+    public void testSecondCallDifferentSubWillDisconnect() throws Exception {
+        // Previous test gets us into a good enough state
+        testIncomingDoesntRequestDisconnect();
+
+        when(mCall.getState()).thenReturn(Call.State.ACTIVE);
+        when(mCall2.getState()).thenReturn(Call.State.WAITING);
+        when(mCall2.getLatestConnection()).thenReturn(mInternalConnection2);
+        // At this point the call is ringing on the second phone.
+        when(mPhone0.getRingingCall()).thenReturn(null);
+        when(mPhone1.getRingingCall()).thenReturn(mCall2);
+
+        mBinderStub.createConnection(PHONE_ACCOUNT_HANDLE_2, "TC@2",
+                new ConnectionRequest(PHONE_ACCOUNT_HANDLE_2, Uri.parse("tel:16505551213"),
+                        new Bundle()),
+                true, false, null);
+        waitForHandlerAction(mTestConnectionService.getHandler(), TIMEOUT_MS);
+        assertEquals(2, mTestConnectionService.getAllConnections().size());
+
+        // The incoming connection should have the extra set.
+        assertEquals(1, mTestConnectionService.getAllConnections().stream()
+                .filter(c -> c.getExtras() != null && c.getExtras().containsKey(
+                        android.telecom.Connection.EXTRA_ANSWERING_DROPS_FG_CALL))
+                .count());
+    }
+
+    /**
+     * Setup the mess of mocks for {@link #testSecondCallSameSubWontDisconnect()} and
+     * {@link #testIncomingDoesntRequestDisconnect()}.
+     */
+    private void setupForCallTest() {
+        // Setup a bunch of stuff.  Blech.
+        mTestConnectionService.setReadyForTest();
+        mPhone0 = makeTestPhone(0 /*phoneId*/, ServiceState.STATE_IN_SERVICE,
+                false /*isEmergencyOnly*/);
+        when(mCall.getState()).thenReturn(Call.State.INCOMING);
+        when(mCall.getPhone()).thenReturn(mPhone0);
+        when(mPhone0.getRingingCall()).thenReturn(mCall);
+        mPhone1 = makeTestPhone(1 /*phoneId*/, ServiceState.STATE_IN_SERVICE,
+                false /*isEmergencyOnly*/);
+        when(mCall2.getPhone()).thenReturn(mPhone1);
+        List<Phone> phones = new ArrayList<>(2);
+        doReturn(true).when(mPhone0).isRadioOn();
+        doReturn(true).when(mPhone1).isRadioOn();
+        doReturn(GSM_PHONE).when(mPhone0).getPhoneType();
+        doReturn(GSM_PHONE).when(mPhone1).getPhoneType();
+        phones.add(mPhone0);
+        phones.add(mPhone1);
+        setPhones(phones);
+        when(mPhoneUtilsProxy.getSubIdForPhoneAccountHandle(eq(PHONE_ACCOUNT_HANDLE_1)))
+                .thenReturn(0);
+        when(mSubscriptionManagerProxy.getPhoneId(0)).thenReturn(0);
+        when(mPhoneFactoryProxy.getPhone(eq(0))).thenReturn(mPhone0);
+        when(mPhoneUtilsProxy.getSubIdForPhoneAccountHandle(eq(PHONE_ACCOUNT_HANDLE_2)))
+                .thenReturn(1);
+        when(mSubscriptionManagerProxy.getPhoneId(1)).thenReturn(1);
+        when(mPhoneFactoryProxy.getPhone(eq(1))).thenReturn(mPhone1);
+        setupDeviceConfig(mPhone0, mPhone1, 1);
+
+        when(mInternalConnection.getCall()).thenReturn(mCall);
+        when(mInternalConnection.getState()).thenReturn(Call.State.ACTIVE);
+        when(mInternalConnection2.getCall()).thenReturn(mCall2);
+        when(mInternalConnection2.getState()).thenReturn(Call.State.WAITING);
+    }
+
+    /**
      * Set up a mock MSIM device with TEST_ADDRESS set as an emergency number.
      * @return the Phone associated with slot 0.
      */
@@ -1248,11 +1384,11 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         EmergencyNumber.EMERGENCY_CALL_ROUTING_EMERGENCY);
     }
 
-    private void setupHandleToPhoneMap(PhoneAccountHandle handle,  Phone phone) {
+    private void setupHandleToPhoneMap(PhoneAccountHandle handle, Phone phone) {
         // use subId 0
-        when(mPhoneUtilsProxy.getSubIdForPhoneAccountHandle(handle)).thenReturn(0);
-        when(mSubscriptionManagerProxy.getPhoneId(0)).thenReturn(0);
-        when(mPhoneFactoryProxy.getPhone(0)).thenReturn(phone);
+        when(mPhoneUtilsProxy.getSubIdForPhoneAccountHandle(eq(handle))).thenReturn(0);
+        when(mSubscriptionManagerProxy.getPhoneId(eq(0))).thenReturn(0);
+        when(mPhoneFactoryProxy.getPhone(eq(0))).thenReturn(phone);
     }
 
     private AsyncResult getSuppServiceNotification(int notificationType, int code) {
@@ -1273,6 +1409,8 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         when(phone.getDefaultPhone()).thenReturn(phone);
         when(phone.getEmergencyNumberTracker()).thenReturn(mEmergencyNumberTracker);
         when(phone.getServiceStateTracker()).thenReturn(mSST);
+        doNothing().when(phone).registerForPreciseCallStateChanged(any(Handler.class), anyInt(),
+                any(Object.class));
         when(mEmergencyNumberTracker.getEmergencyNumber(anyString())).thenReturn(null);
         return phone;
     }
