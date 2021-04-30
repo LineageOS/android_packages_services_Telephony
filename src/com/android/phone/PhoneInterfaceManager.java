@@ -6722,7 +6722,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     @Override
     public int checkCarrierPrivilegesForPackageAnyPhone(String pkgName) {
-        enforceReadPrivilegedPermission("checkCarrierPrivilegesForPackageAnyPhone");
+        // TODO(b/186774706): Remove @RequiresPermission from TelephonyManager API
         if (TextUtils.isEmpty(pkgName))
             return TelephonyManager.CARRIER_PRIVILEGE_STATUS_NO_ACCESS;
         int result = TelephonyManager.CARRIER_PRIVILEGE_STATUS_RULES_NOT_LOADED;
