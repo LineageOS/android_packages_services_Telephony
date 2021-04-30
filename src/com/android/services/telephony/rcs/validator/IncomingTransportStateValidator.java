@@ -65,7 +65,8 @@ public class IncomingTransportStateValidator implements SipMessageValidator {
     @Override
     public ValidationResult validate(SipMessage message) {
         if (mState != STATE_OPEN) {
-            return new ValidationResult(mReason);
+            return new ValidationResult(mReason,
+                    "incoming transport closed");
         }
         return ValidationResult.SUCCESS;
     }

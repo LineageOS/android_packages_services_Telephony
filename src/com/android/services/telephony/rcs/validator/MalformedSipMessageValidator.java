@@ -34,7 +34,8 @@ public class MalformedSipMessageValidator implements SipMessageValidator {
         if (!SipMessageParsingUtils.isSipRequest(message.getStartLine())
                 && !SipMessageParsingUtils.isSipResponse(message.getStartLine())) {
             return new ValidationResult(
-                    SipDelegateManager.MESSAGE_FAILURE_REASON_INVALID_START_LINE);
+                    SipDelegateManager.MESSAGE_FAILURE_REASON_INVALID_START_LINE,
+                    "malformed start line: " + message.getStartLine());
         }
         return ValidationResult.SUCCESS;
     }
