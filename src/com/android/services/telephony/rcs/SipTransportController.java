@@ -85,8 +85,8 @@ import java.util.stream.Collectors;
  */
 public class SipTransportController implements RcsFeatureController.Feature,
         OnRoleHoldersChangedListener {
+    public static final String LOG_TAG = "SipTransportC";
     static final int LOG_SIZE = 50;
-    static final String LOG_TAG = "SipTransportC";
 
     /**See {@link TimerAdapter#getReevaluateThrottleTimerMilliseconds()}.*/
     private static final int REEVALUATE_THROTTLE_DEFAULT_MS = 1000;

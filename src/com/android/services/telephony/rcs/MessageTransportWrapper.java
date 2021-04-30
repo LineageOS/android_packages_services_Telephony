@@ -38,7 +38,6 @@ import com.android.phone.RcsProvisioningMonitor;
 import com.android.services.telephony.rcs.validator.ValidationResult;
 
 import java.io.PrintWriter;
-import java.util.List;
 import java.util.Set;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ScheduledExecutorService;
@@ -130,8 +129,8 @@ public class MessageTransportWrapper implements DelegateBinderStateManager.State
                             mSipSessionTracker.verifyOutgoingMessage(sipMessage, configVersion);
                     result = maybeOverrideValidationForTesting(result);
                     if (!result.isValidated) {
-                        notifyDelegateSendError("Outgoing messages restricted", sipMessage,
-                                result.restrictedReason);
+                        notifyDelegateSendError("Outgoing - " + result.logReason,
+                                sipMessage, result.restrictedReason);
                         return;
                     }
                     try {
@@ -186,7 +185,7 @@ public class MessageTransportWrapper implements DelegateBinderStateManager.State
                 mExecutor.execute(() -> {
                     ValidationResult result = mSipSessionTracker.verifyIncomingMessage(message);
                     if (!result.isValidated) {
-                        notifyAppReceiveError("Incoming messages restricted", message,
+                        notifyAppReceiveError("Incoming - " + result.logReason, message,
                                 result.restrictedReason);
                         return;
                     }
@@ -304,7 +303,7 @@ public class MessageTransportWrapper implements DelegateBinderStateManager.State
 
     @Override
     public void onRegistrationStateChanged(DelegateRegistrationState registrationState) {
-        mSipSessionTracker.onRegistrationStateChanged((List<String> callIds) -> {
+        mSipSessionTracker.onRegistrationStateChanged((callIds) -> {
             for (String id : callIds)  {
                 cleanupSessionInternal(id);
             }
@@ -371,13 +370,14 @@ public class MessageTransportWrapper implements DelegateBinderStateManager.State
     }
 
     /**
-     * Gradually close all SIP Dialogs by:
+     * Gradually close all SIP Sessions by:
      * 1) denying all new outgoing SIP Dialog requests with the reason specified and
-     * 2) only allowing existing SIP Dialogs to continue.
+     * 2) only allowing existing SIP Sessions to continue.
      * <p>
-     * This will allow traffic to continue on existing SIP Dialogs until a BYE is sent and the
-     * SIP Dialogs are closed or a timeout is hit and {@link SipDelegate#closeDialog(String)} is
-     * forcefully called on all open SIP Dialogs.
+     * This will allow traffic to continue on existing SIP Sessions until a BYE is sent and the
+     * corresponding SIP Dialogs are closed or a timeout is hit and
+     * {@link SipDelegate#cleanupSession(String)} (String)} is forcefully called on all open SIP
+     * sessions.
      * <p>
      * Any outgoing out-of-dialog traffic on this transport will be denied with the provided reason.
      * <p>
@@ -408,19 +408,19 @@ public class MessageTransportWrapper implements DelegateBinderStateManager.State
     }
 
     /**
-     * Close all ongoing SIP Dialogs immediately and respond to any incoming/outgoing messages with
+     * Close all ongoing SIP sessions immediately and respond to any incoming/outgoing messages with
      * the provided reason.
      * @param closedReason The failure reason to provide to incoming/outgoing SIP messages
      *         if an attempt is made to send/receive a message after this method is called.
      */
     public void close(int closedReason) {
-        List<String> openDialogs = mSipSessionTracker.closeSessionsForcefully(closedReason);
-        logi("close: closedReason=" + closedReason + "open call IDs:{" + openDialogs + "}");
-        closeTransport(openDialogs);
+        Set<String> openSessions = mSipSessionTracker.closeSessions(closedReason);
+        logi("close: closedReason=" + closedReason + "open call IDs:{" + openSessions + "}");
+        closeTransport(openSessions);
     }
 
     // Clean up all state related to the existing SipDelegate immediately.
-    private void closeTransport(List<String> openCallIds) {
+    private void closeTransport(Set<String> openCallIds) {
         for (String id : openCallIds) {
             cleanupSessionInternal(id);
         }
@@ -428,20 +428,19 @@ public class MessageTransportWrapper implements DelegateBinderStateManager.State
     }
 
     private void cleanupSessionInternal(String callId) {
-        logi("cleanupSessionInternal: closing session with callId: " + callId);
-        mSipSessionTracker.onSipSessionCleanup(callId);
-
-        if (mSipDelegate == null) {
-            logw("cleanupSession called when SipDelegate is not associated, callId: "
-                    + callId);
-            return;
-        }
+        logi("cleanupSessionInternal: clean up session with callId: " + callId);
         try {
-            mSipDelegate.cleanupSession(callId);
+            if (mSipDelegate == null) {
+                logw("cleanupSessionInternal: SipDelegate is not associated, callId: " + callId);
+            } else {
+                // This will close the transport, so call cleanup on ImsService first.
+                mSipDelegate.cleanupSession(callId);
+            }
         } catch (RemoteException e) {
-            logw("SipDelegate not available when cleanupSession was called "
+            logw("cleanupSessionInternal: remote not available when cleanupSession was called "
                     + "for call id: " + callId);
         }
+        mSipSessionTracker.onSipSessionCleanup(callId);
     }
 
     private ValidationResult maybeOverrideValidationForTesting(ValidationResult result) {
@@ -454,7 +453,8 @@ public class MessageTransportWrapper implements DelegateBinderStateManager.State
         } else if (result.isValidated) {
             // if override is set to false and the original result was validated, return a new
             // restricted result with UNKNOWN reason.
-            return new ValidationResult(SipDelegateManager.MESSAGE_FAILURE_REASON_UNKNOWN);
+            return new ValidationResult(SipDelegateManager.MESSAGE_FAILURE_REASON_UNKNOWN,
+                    "validation failed due to a testing override being set");
         }
         return result;
     }

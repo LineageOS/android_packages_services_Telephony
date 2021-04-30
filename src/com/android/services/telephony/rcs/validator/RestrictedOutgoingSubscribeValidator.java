@@ -24,6 +24,7 @@ import com.android.internal.telephony.SipMessageParsingUtils;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Ensure that if there is an outgoing SUBSCRIBE request, that it does not contain the "Event"
@@ -45,7 +46,8 @@ public class RestrictedOutgoingSubscribeValidator implements SipMessageValidator
                 message.getStartLine());
         if (requestSegments == null) {
             return new ValidationResult(
-                    SipDelegateManager.MESSAGE_FAILURE_REASON_INVALID_START_LINE);
+                    SipDelegateManager.MESSAGE_FAILURE_REASON_INVALID_START_LINE,
+                    "malformed start line: " + message.getStartLine());
         }
         // Request-Line  =  Method SP Request-URI SP SIP-Version CRLF, verify Method
         if (!requestSegments[0].equalsIgnoreCase(SUBSCRIBE_REQUEST)) {
@@ -61,7 +63,9 @@ public class RestrictedOutgoingSubscribeValidator implements SipMessageValidator
                 .anyMatch(e -> Arrays.asList(RESTRICTED_EVENTS).contains(e.trim().toLowerCase()));
 
         return isRestricted ? new ValidationResult(
-                SipDelegateManager.MESSAGE_FAILURE_REASON_INVALID_HEADER_FIELDS) :
+                SipDelegateManager.MESSAGE_FAILURE_REASON_INVALID_HEADER_FIELDS,
+                "matched a restricted header field: " + eventHeaders.stream().map(e -> e.second)
+                        .collect(Collectors.toSet())) :
                 ValidationResult.SUCCESS;
     }
 }
