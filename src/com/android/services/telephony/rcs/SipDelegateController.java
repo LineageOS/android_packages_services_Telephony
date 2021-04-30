@@ -269,7 +269,7 @@ public class SipDelegateController {
                         DelegateRegistrationState.DEREGISTERING_REASON_DESTROY_PENDING,
                         destroyReason);
         return pendingOperationComplete.thenApplyAsync((reasonFromDelegate) -> {
-            logi("destroy, operation complete, notifying trackers, reason" + reasonFromDelegate);
+            logi("destroy, operation complete, notifying trackers, reason " + reasonFromDelegate);
             mDelegateStateTracker.sipDelegateDestroyed(reasonFromDelegate);
             return reasonFromDelegate;
         }, mExecutorService);
