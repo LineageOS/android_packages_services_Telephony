@@ -920,8 +920,7 @@
     <string name="radio_info_nr_available" msgid="1321318331361249997">"NR k dispozici:"</string>
     <string name="radio_info_nr_state" msgid="1337571996788535356">"Stav NR:"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"Frekvence NR:"</string>
-    <!-- no translation found for radio_info_network_slicing_config (7675131833885031563) -->
-    <skip />
+    <string name="radio_info_network_slicing_config" msgid="7675131833885031563">"Konfigurace dělení sítě:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Nastavit režim pásma bezdrátového modulu"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Načítání seznamu pásem…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Nastavit"</string>

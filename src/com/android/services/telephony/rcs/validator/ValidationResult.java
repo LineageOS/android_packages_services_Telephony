@@ -41,11 +41,17 @@ public class ValidationResult {
     public final int restrictedReason;
 
     /**
+     * The human readable reason for why the validation failed for logging.
+     */
+    public final String logReason;
+
+    /**
      * Communicates a validated result of success. Use {@link #SUCCESS} instead.
      */
     private ValidationResult() {
         isValidated = true;
         restrictedReason = SipDelegateManager.MESSAGE_FAILURE_REASON_UNKNOWN;
+        logReason = "";
     }
 
     /**
@@ -54,9 +60,10 @@ public class ValidationResult {
      * @param reason The reason associated with why the SIP message was not validated and
      *               generated a {@code false} result for {@link #isValidated}.
      */
-    public ValidationResult(@SipDelegateManager.MessageFailureReason int reason) {
+    public ValidationResult(@SipDelegateManager.MessageFailureReason int reason, String log) {
         isValidated = false;
         restrictedReason = reason;
+        logReason = log;
     }
 
     @Override
@@ -68,6 +75,8 @@ public class ValidationResult {
         if (!isValidated) {
             b.append(", restrictedReason=");
             b.append(restrictedReason);
+            b.append(", logReason=");
+            b.append(logReason);
         }
         b.append('}');
         return b.toString();
