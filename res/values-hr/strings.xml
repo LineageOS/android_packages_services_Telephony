@@ -917,8 +917,7 @@
     <string name="radio_info_nr_available" msgid="1321318331361249997">"Dostupno za NR:"</string>
     <string name="radio_info_nr_state" msgid="1337571996788535356">"Stanje NR-a:"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"Frekvencija NR-a:"</string>
-    <!-- no translation found for radio_info_network_slicing_config (7675131833885031563) -->
-    <skip />
+    <string name="radio_info_network_slicing_config" msgid="7675131833885031563">"Konfiguracija raščlanjivanja mreže:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Postavi način radijske frekvencije"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Učitavanje popisa frekvencija…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Postavi"</string>
