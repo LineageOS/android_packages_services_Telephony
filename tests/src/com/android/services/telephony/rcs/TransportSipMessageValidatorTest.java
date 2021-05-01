@@ -23,6 +23,7 @@ import static junit.framework.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 import android.net.InetAddresses;
@@ -30,6 +31,7 @@ import android.telephony.ims.DelegateRegistrationState;
 import android.telephony.ims.SipDelegateConfiguration;
 import android.telephony.ims.SipDelegateManager;
 import android.telephony.ims.SipMessage;
+import android.util.ArraySet;
 
 import androidx.test.runner.AndroidJUnit4;
 
@@ -37,7 +39,6 @@ import com.android.TelephonyTestBase;
 import com.android.TestExecutorService;
 import com.android.services.telephony.rcs.validator.IncomingTransportStateValidator;
 import com.android.services.telephony.rcs.validator.OutgoingTransportStateValidator;
-import com.android.services.telephony.rcs.validator.SipMessageValidator;
 import com.android.services.telephony.rcs.validator.ValidationResult;
 
 import org.junit.After;
@@ -48,6 +49,7 @@ import org.mockito.Mock;
 
 import java.net.InetSocketAddress;
 import java.util.Collections;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ScheduledExecutorService;
 
 @RunWith(AndroidJUnit4.class)
@@ -61,7 +63,7 @@ public class TransportSipMessageValidatorTest extends TelephonyTestBase {
                     + "Max-Forwards: 70\n"
                     + "To: Bob <sip:bob@biloxi.com>\n"
                     + "From: Alice <sip:alice@atlanta.com>;tag=1928301774\n"
-                    + "Call-ID: a84b4c76e66710@pc33.atlanta.com\n"
+                    + "Call-ID: testid\n"
                     + "CSeq: 314159 INVITE\n"
                     + "Contact: <sip:alice@pc33.atlanta.com>\n"
                     + "Content-Type: application/sdp\n"
@@ -69,11 +71,11 @@ public class TransportSipMessageValidatorTest extends TelephonyTestBase {
             new byte[0]);
 
     @Mock
+    private SipSessionTracker mSipSessionTracker;
+    @Mock
     private IncomingTransportStateValidator mIncomingStateValidator;
     @Mock
     private OutgoingTransportStateValidator mOutgoingStateValidator;
-    @Mock
-    private SipMessageValidator mStatelessValidator;
 
     @Before
     public void setUp() throws Exception {
@@ -90,19 +92,15 @@ public class TransportSipMessageValidatorTest extends TelephonyTestBase {
         TestExecutorService executor = new TestExecutorService();
         TransportSipMessageValidator tracker = getTestTracker(executor);
         tracker.onTransportOpened(Collections.emptySet(), Collections.emptySet());
-        verify(mOutgoingStateValidator).open();
+        verify(mOutgoingStateValidator).open(Collections.emptySet(), Collections.emptySet());
         verify(mIncomingStateValidator).open();
         // Incoming messages are already verified
         assertTrue(isIncomingTransportOpen(tracker));
-        // IMS config and registration state needs to be sent before outgoing messages can be
-        // verified.
+        // IMS config needs to be sent before outgoing messages can be verified.
         assertFalse(isOutgoingTransportOpen(tracker));
         tracker.onConfigurationChanged(getConfigBuilder(TEST_CONFIG_VERSION).build());
         // Incoming messages are already verified
-        assertTrue(isIncomingTransportOpen(tracker));
-        assertFalse(isOutgoingTransportOpen(tracker));
-        tracker.onRegistrationStateChanged((ignore) -> {}, getTestRegistrationState());
-        // Config set + IMS reg state sent, transport is now open.
+        // Config set, transport is now open.
         assertTrue(isIncomingTransportOpen(tracker));
         assertTrue(isOutgoingTransportOpen(tracker));
     }
@@ -110,13 +108,7 @@ public class TransportSipMessageValidatorTest extends TelephonyTestBase {
     @Test
     public void testTransportOpenConfigChange() {
         TestExecutorService executor = new TestExecutorService();
-        TransportSipMessageValidator tracker = getTestTracker(executor);
-        tracker.onTransportOpened(Collections.emptySet(), Collections.emptySet());
-        tracker.onConfigurationChanged(getConfigBuilder(TEST_CONFIG_VERSION).build());
-        tracker.onRegistrationStateChanged((ignore) -> {}, getTestRegistrationState());
-        // Config set + IMS reg state sent, transport is now open.
-        assertTrue(isIncomingTransportOpen(tracker));
-        assertTrue(isOutgoingTransportOpen(tracker));
+        TransportSipMessageValidator tracker = openTransport(executor);
 
         // Update IMS config version and send a message with an outdated version.
         tracker.onConfigurationChanged(getConfigBuilder(TEST_CONFIG_VERSION + 1).build());
@@ -125,25 +117,165 @@ public class TransportSipMessageValidatorTest extends TelephonyTestBase {
     }
 
     @Test
-    public void testTransportClosingGracefully() {
+    public void testSessionTrackerFiltering() {
+        TestExecutorService executor = new TestExecutorService();
+        TransportSipMessageValidator tracker = openTransport(executor);
+        // Since the incoming/outgoing messages were verified, there should have been two calls
+        // to filter the message.
+        verify(mSipSessionTracker, times(2)).filterSipMessage(TEST_MESSAGE);
+        // ensure pass through methods are working
+        tracker.acknowledgePendingMessage("abc");
+        verify(mSipSessionTracker).acknowledgePendingMessage("abc");
+        tracker.notifyPendingMessageFailed("abc");
+        verify(mSipSessionTracker).pendingMessageFailed("abc");
+        tracker.onSipSessionCleanup("abc");
+        verify(mSipSessionTracker).cleanupSession("abc");
+        // Now have validators return a non-successful result for validation and the tracker should
+        // not get the indication to filter the message.
+        doReturn(new ValidationResult(SipDelegateManager.MESSAGE_FAILURE_REASON_DELEGATE_CLOSED,
+                "")).when(mOutgoingStateValidator).validate(any());
+        doReturn(new ValidationResult(SipDelegateManager.MESSAGE_FAILURE_REASON_DELEGATE_CLOSED,
+                "")).when(mIncomingStateValidator).validate(any());
+        assertFalse(tracker.verifyIncomingMessage(TEST_MESSAGE).isValidated);
+        assertFalse(tracker.verifyOutgoingMessage(TEST_MESSAGE, TEST_CONFIG_VERSION).isValidated);
+        // The number of times the filter method was called should still only be two after these
+        // messages were not validated.
+        verify(mSipSessionTracker, times(2)).filterSipMessage(TEST_MESSAGE);
+    }
+
+
+    @Test
+    public void testTransportClosingGracefullyNoPendingSessions() {
         TestExecutorService executor = new TestExecutorService(true /*wait*/);
-        TransportSipMessageValidator tracker = getTestTracker(executor);
-        tracker.onTransportOpened(Collections.emptySet(), Collections.emptySet());
-        tracker.onConfigurationChanged(getConfigBuilder(TEST_CONFIG_VERSION).build());
-        tracker.onRegistrationStateChanged((ignore) -> {}, getTestRegistrationState());
-        // Config set + IMS reg state sent, transport is now open.
-        assertTrue(isIncomingTransportOpen(tracker));
-        assertTrue(isOutgoingTransportOpen(tracker));
+        TransportSipMessageValidator tracker = openTransport(executor);
 
-        tracker.closeSessionsGracefully((ignore) -> {},
-                SipDelegateManager.MESSAGE_FAILURE_REASON_INTERNAL_DELEGATE_STATE_TRANSITION,
+        doReturn(Collections.emptySet()).when(mSipSessionTracker).getTrackedDialogs();
+        ArraySet<String> pendingCallIds = new ArraySet<>();
+        CountDownLatch l = new CountDownLatch(1);
+        tracker.closeSessionsGracefully((ids) -> {
+            pendingCallIds.addAll(ids);
+            l.countDown();
+        }, SipDelegateManager.MESSAGE_FAILURE_REASON_INTERNAL_DELEGATE_STATE_TRANSITION,
                 SipDelegateManager.MESSAGE_FAILURE_REASON_DELEGATE_CLOSED);
+        // Since there are no pending call ids, this should be completed with no call ids pending.
+        assertEquals(0, l.getCount());
+        assertTrue(pendingCallIds.isEmpty());
+        verify(mOutgoingStateValidator).close(anyInt());
+        verify(mIncomingStateValidator).close(anyInt());
+    }
 
-        // Before executor executes, outgoing messages will be restricted.
+    @Test
+    public void testTransportClosingGracefullyCloseCallIds() {
+        TestExecutorService executor = new TestExecutorService(true /*wait*/);
+        TransportSipMessageValidator tracker = openTransport(executor);
+
+        ArraySet<SipDialog> dialogs = new ArraySet<>();
+        dialogs.add(SipDialog.fromSipMessage(TEST_MESSAGE));
+        doReturn(dialogs).when(mSipSessionTracker).getTrackedDialogs();
+        ArraySet<String> pendingCallIds = new ArraySet<>();
+        CountDownLatch l = new CountDownLatch(1);
+        tracker.closeSessionsGracefully((ids) -> {
+            pendingCallIds.addAll(ids);
+            l.countDown();
+        }, SipDelegateManager.MESSAGE_FAILURE_REASON_INTERNAL_DELEGATE_STATE_TRANSITION,
+                SipDelegateManager.MESSAGE_FAILURE_REASON_DELEGATE_CLOSED);
+        // Before executor executes, outgoing messages will be restricted due to pending call ids.
+        assertTrue(l.getCount() >= 1);
+        assertTrue(pendingCallIds.isEmpty());
         assertTrue(isIncomingTransportOpen(tracker));
         verify(mOutgoingStateValidator).restrict(anyInt());
+        // pretend a sip message has been acknowledged, which closed pending call id. Since there
+        // are no more pending call ids, the transport should move to closed.
+        dialogs.clear();
+        tracker.acknowledgePendingMessage("blah");
+        assertEquals(0, l.getCount());
+        assertTrue(pendingCallIds.isEmpty());
+        verify(mOutgoingStateValidator).close(anyInt());
+        verify(mIncomingStateValidator).close(anyInt());
+    }
+
+    @Test
+    public void testTransportClosingGracefullyThenForceClose() {
+        TestExecutorService executor = new TestExecutorService(true /*wait*/);
+        TransportSipMessageValidator tracker = openTransport(executor);
+
+        ArraySet<SipDialog> dialogs = new ArraySet<>();
+        dialogs.add(SipDialog.fromSipMessage(TEST_MESSAGE));
+        doReturn(dialogs).when(mSipSessionTracker).getTrackedDialogs();
+        ArraySet<String> pendingCallIds = new ArraySet<>();
+        CountDownLatch l = new CountDownLatch(1);
+        tracker.closeSessionsGracefully((ids) -> {
+            pendingCallIds.addAll(ids);
+            l.countDown();
+        }, SipDelegateManager.MESSAGE_FAILURE_REASON_INTERNAL_DELEGATE_STATE_TRANSITION,
+                SipDelegateManager.MESSAGE_FAILURE_REASON_DELEGATE_CLOSED);
+        // Before executor executes, outgoing messages will be restricted due to pending call ids.
+        assertTrue(l.getCount() >= 1);
+        assertTrue(pendingCallIds.isEmpty());
+        assertTrue(isIncomingTransportOpen(tracker));
+        verify(mOutgoingStateValidator).restrict(anyInt());
+        // force close amd ensure pending close is
+        assertTrue(tracker.closeSessions(
+                SipDelegateManager.MESSAGE_FAILURE_REASON_DELEGATE_CLOSED).isEmpty());
+        assertEquals(0, l.getCount());
+        assertEquals(pendingCallIds, pendingCallIds);
+        verify(mOutgoingStateValidator).close(anyInt());
+        verify(mIncomingStateValidator).close(anyInt());
+    }
+
+    @Test
+    public void testTransportClosingGracefullyTimeout() {
+        TestExecutorService executor = new TestExecutorService(true /*wait*/);
+        TransportSipMessageValidator tracker = openTransport(executor);
+
+        ArraySet<SipDialog> dialogs = new ArraySet<>();
+        dialogs.add(SipDialog.fromSipMessage(TEST_MESSAGE));
+        doReturn(dialogs).when(mSipSessionTracker).getTrackedDialogs();
+        ArraySet<String> pendingCallIds = new ArraySet<>();
+        CountDownLatch l = new CountDownLatch(1);
+        tracker.closeSessionsGracefully((ids) -> {
+            pendingCallIds.addAll(ids);
+            l.countDown();
+        }, SipDelegateManager.MESSAGE_FAILURE_REASON_INTERNAL_DELEGATE_STATE_TRANSITION,
+                SipDelegateManager.MESSAGE_FAILURE_REASON_DELEGATE_CLOSED);
+        // Before executor executes, outgoing messages will be restricted due to pending call ids.
+        assertTrue(l.getCount() >= 1);
+        assertTrue(pendingCallIds.isEmpty());
+        assertTrue(isIncomingTransportOpen(tracker));
+        verify(mOutgoingStateValidator).restrict(anyInt());
+        // Process timeout event - pending call id should be passed to transport.
         executor.executePending();
-        // After Executor executes, all messages will be rejected.
+        assertEquals(0, l.getCount());
+        assertTrue(pendingCallIds.contains("testid"));
+        verify(mOutgoingStateValidator).close(anyInt());
+        verify(mIncomingStateValidator).close(anyInt());
+    }
+
+    @Test
+    public void testTransportClosingGracefullyCleanup() {
+        TestExecutorService executor = new TestExecutorService(true /*wait*/);
+        TransportSipMessageValidator tracker = openTransport(executor);
+
+        ArraySet<SipDialog> dialogs = new ArraySet<>();
+        dialogs.add(SipDialog.fromSipMessage(TEST_MESSAGE));
+        doReturn(dialogs).when(mSipSessionTracker).getTrackedDialogs();
+        ArraySet<String> pendingCallIds = new ArraySet<>();
+        CountDownLatch l = new CountDownLatch(1);
+        tracker.closeSessionsGracefully((ids) -> {
+            pendingCallIds.addAll(ids);
+            l.countDown();
+        }, SipDelegateManager.MESSAGE_FAILURE_REASON_INTERNAL_DELEGATE_STATE_TRANSITION,
+                SipDelegateManager.MESSAGE_FAILURE_REASON_DELEGATE_CLOSED);
+        // Before executor executes, outgoing messages will be restricted due to pending call ids.
+        assertTrue(l.getCount() >= 1);
+        assertTrue(pendingCallIds.isEmpty());
+        assertTrue(isIncomingTransportOpen(tracker));
+        verify(mOutgoingStateValidator).restrict(anyInt());
+        // Mock cleanupSession event was called for pending callId
+        dialogs.clear();
+        tracker.onSipSessionCleanup("abc");
+        assertEquals(0, l.getCount());
+        assertTrue(pendingCallIds.isEmpty());
         verify(mOutgoingStateValidator).close(anyInt());
         verify(mIncomingStateValidator).close(anyInt());
     }
@@ -151,20 +283,160 @@ public class TransportSipMessageValidatorTest extends TelephonyTestBase {
     @Test
     public void testTransportClosingForcefully() {
         TestExecutorService executor = new TestExecutorService();
-        TransportSipMessageValidator tracker = getTestTracker(executor);
-        tracker.onTransportOpened(Collections.emptySet(), Collections.emptySet());
-        tracker.onConfigurationChanged(getConfigBuilder(TEST_CONFIG_VERSION).build());
-        tracker.onRegistrationStateChanged((ignore) -> {}, getTestRegistrationState());
-        // Config set + IMS reg state sent, transport is now open.
-        assertTrue(isIncomingTransportOpen(tracker));
-        assertTrue(isOutgoingTransportOpen(tracker));
+        TransportSipMessageValidator tracker = openTransport(executor);
 
-        tracker.closeSessionsForcefully(
-                SipDelegateManager.MESSAGE_FAILURE_REASON_DELEGATE_CLOSED);
+        tracker.closeSessions(SipDelegateManager.MESSAGE_FAILURE_REASON_DELEGATE_CLOSED);
 
         // All messages will be rejected.
         verify(mOutgoingStateValidator).close(anyInt());
         verify(mIncomingStateValidator).close(anyInt());
+    }
+
+    @Test
+    public void setRegStateChangedNoPendingCallIds() {
+        TestExecutorService executor = new TestExecutorService(true /*wait*/);
+        TransportSipMessageValidator tracker = openTransport(executor);
+
+        doReturn(Collections.emptySet()).when(mSipSessionTracker)
+                .getCallIdsAssociatedWithFeatureTag(any());
+        ArraySet<String> pendingCallIds = new ArraySet<>();
+        CountDownLatch l = new CountDownLatch(1);
+        // no feature tags are deregistering/deregistered, should return immediately
+        tracker.onRegistrationStateChanged((ids) -> {
+            pendingCallIds.addAll(ids);
+            l.countDown();
+        }, getTestRegistrationState());
+        verify(mOutgoingStateValidator, times(2)).restrictFeatureTags(Collections.emptySet());
+        assertTrue(pendingCallIds.isEmpty());
+        assertEquals(0, l.getCount());
+    }
+
+    @Test
+    public void setRegStateChangedPendingCallIdsMultipleCalls() {
+        TestExecutorService executor = new TestExecutorService(true /*wait*/);
+        TransportSipMessageValidator tracker = openTransport(executor);
+
+        ArraySet<String> callIds = new ArraySet<>(1);
+        callIds.add("abc");
+        doReturn(callIds).when(mSipSessionTracker)
+                .getCallIdsAssociatedWithFeatureTag(any());
+        ArraySet<String> pendingCallIds = new ArraySet<>();
+        CountDownLatch l = new CountDownLatch(2);
+        tracker.onRegistrationStateChanged((ids) -> {
+            pendingCallIds.addAll(ids);
+            l.countDown();
+        }, getTestRegistrationState());
+        assertEquals(2, l.getCount());
+        // If called again, the previous request will complete with no call ids
+        tracker.onRegistrationStateChanged((ids) -> {
+            pendingCallIds.addAll(ids);
+            l.countDown();
+        }, getTestRegistrationState());
+        assertEquals(1, l.getCount());
+        assertTrue(pendingCallIds.isEmpty());
+        // Simulate timeout - we should get callback with the pending call ids.
+        executor.executePending();
+        assertEquals(0, l.getCount());
+        assertEquals(callIds, pendingCallIds);
+    }
+
+    @Test
+    public void setRegStateChangedPendingCallIdsTimeout() {
+        TestExecutorService executor = new TestExecutorService(true /*wait*/);
+        TransportSipMessageValidator tracker = openTransport(executor);
+
+        ArraySet<String> callIds = new ArraySet<>(1);
+        callIds.add("abc");
+        doReturn(callIds).when(mSipSessionTracker)
+                .getCallIdsAssociatedWithFeatureTag(any());
+        ArraySet<String> pendingCallIds = new ArraySet<>();
+        CountDownLatch l = new CountDownLatch(1);
+        tracker.onRegistrationStateChanged((ids) -> {
+            pendingCallIds.addAll(ids);
+            l.countDown();
+        }, getTestRegistrationState());
+        assertEquals(1, l.getCount());
+        assertTrue(pendingCallIds.isEmpty());
+        // Simulate timeout - we should get callback with the pending call ids.
+        executor.executePending();
+        assertEquals(0, l.getCount());
+        assertEquals(callIds, pendingCallIds);
+    }
+
+    @Test
+    public void setRegStateChangedPendingCallIdsResolved() {
+        TestExecutorService executor = new TestExecutorService(true /*wait*/);
+        TransportSipMessageValidator tracker = openTransport(executor);
+
+        ArraySet<String> callIds = new ArraySet<>(1);
+        callIds.add("abc");
+        doReturn(callIds).when(mSipSessionTracker)
+                .getCallIdsAssociatedWithFeatureTag(any());
+        ArraySet<String> pendingCallIds = new ArraySet<>();
+        CountDownLatch l = new CountDownLatch(1);
+        tracker.onRegistrationStateChanged((ids) -> {
+            pendingCallIds.addAll(ids);
+            l.countDown();
+        }, getTestRegistrationState());
+        assertEquals(1, l.getCount());
+        assertTrue(pendingCallIds.isEmpty());
+        // Simulate ack pending SIP session, which has cleared pending call id
+        doReturn(Collections.emptySet()).when(mSipSessionTracker)
+                .getCallIdsAssociatedWithFeatureTag(any());
+        tracker.acknowledgePendingMessage("blah");
+        assertEquals(0, l.getCount());
+        assertEquals(callIds, pendingCallIds);
+    }
+
+    @Test
+    public void setRegStateChangedPendingCallIdsChanged() {
+        TestExecutorService executor = new TestExecutorService(true /*wait*/);
+        TransportSipMessageValidator tracker = openTransport(executor);
+
+        ArraySet<String> callIds = new ArraySet<>(1);
+        callIds.add("abc");
+        doReturn(callIds).when(mSipSessionTracker)
+                .getCallIdsAssociatedWithFeatureTag(any());
+        ArraySet<String> pendingCallIds = new ArraySet<>();
+        CountDownLatch l = new CountDownLatch(1);
+        tracker.onRegistrationStateChanged((ids) -> {
+            pendingCallIds.addAll(ids);
+            l.countDown();
+        }, getTestRegistrationState());
+        assertEquals(1, l.getCount());
+        assertTrue(pendingCallIds.isEmpty());
+        // Simulate pending callIds changed to add another session.
+        callIds.add("def");
+        executor.executePending();
+        assertEquals(0, l.getCount());
+        assertEquals(callIds, pendingCallIds);
+    }
+
+    @Test
+    public void setRegStateRegThenClose() {
+        TestExecutorService executor = new TestExecutorService(true /*wait*/);
+        TransportSipMessageValidator tracker = openTransport(executor);
+
+        ArraySet<String> callIds = new ArraySet<>(1);
+        callIds.add("abc");
+        doReturn(callIds).when(mSipSessionTracker)
+                .getCallIdsAssociatedWithFeatureTag(any());
+        ArraySet<String> pendingCallIds = new ArraySet<>();
+        CountDownLatch l = new CountDownLatch(1);
+        tracker.onRegistrationStateChanged((ids) -> {
+            pendingCallIds.addAll(ids);
+            l.countDown();
+        }, getTestRegistrationState());
+        assertEquals(1, l.getCount());
+        assertTrue(pendingCallIds.isEmpty());
+        // If close is called during pending reg state change, it should be completed with no
+        // pending call IDs (close will take care of closing everything).
+        ArraySet<SipDialog> dialogs = new ArraySet<>();
+        dialogs.add(SipDialog.fromSipMessage(TEST_MESSAGE));
+        doReturn(dialogs).when(mSipSessionTracker).getTrackedDialogs();
+        tracker.closeSessions(SipDelegateManager.MESSAGE_FAILURE_REASON_DELEGATE_DEAD);
+        assertEquals(0, l.getCount());
+        assertEquals(Collections.emptySet(), pendingCallIds);
     }
 
     private SipDelegateConfiguration.Builder getConfigBuilder(int version) {
@@ -175,7 +447,6 @@ public class TransportSipMessageValidatorTest extends TelephonyTestBase {
         return new SipDelegateConfiguration.Builder(version,
                 SipDelegateConfiguration.SIP_TRANSPORT_TCP, localAddr, serverAddr);
     }
-
 
     private boolean isIncomingTransportOpen(TransportSipMessageValidator tracker) {
         return tracker.verifyIncomingMessage(TEST_MESSAGE).isValidated;
@@ -195,15 +466,22 @@ public class TransportSipMessageValidatorTest extends TelephonyTestBase {
         return new DelegateRegistrationState.Builder().build();
     }
 
+    private TransportSipMessageValidator openTransport(ScheduledExecutorService executor) {
+        TransportSipMessageValidator tracker = getTestTracker(executor);
+        tracker.onTransportOpened(Collections.emptySet(), Collections.emptySet());
+        tracker.onConfigurationChanged(getConfigBuilder(TEST_CONFIG_VERSION).build());
+        tracker.onRegistrationStateChanged((ignore) -> {}, getTestRegistrationState());
+        // Config set + IMS reg state sent, transport is now open.
+        assertTrue(isIncomingTransportOpen(tracker));
+        assertTrue(isOutgoingTransportOpen(tracker));
+        return tracker;
+    }
+
     private TransportSipMessageValidator getTestTracker(ScheduledExecutorService executor) {
-        doReturn(ValidationResult.SUCCESS).when(mStatelessValidator).validate(any());
-        doReturn(mStatelessValidator).when(mStatelessValidator).andThen(any());
         doReturn(ValidationResult.SUCCESS).when(mOutgoingStateValidator).validate(any());
-        // recreate chain for mocked instances.
-        doReturn(mStatelessValidator).when(mOutgoingStateValidator).andThen(any());
         doReturn(ValidationResult.SUCCESS).when(mIncomingStateValidator).validate(any());
         doReturn(mIncomingStateValidator).when(mIncomingStateValidator).andThen(any());
-        return new TransportSipMessageValidator(TEST_SUB_ID, executor, mOutgoingStateValidator,
-                mIncomingStateValidator, mStatelessValidator);
+        return new TransportSipMessageValidator(TEST_SUB_ID, executor, mSipSessionTracker,
+                mOutgoingStateValidator, mIncomingStateValidator);
     }
 }

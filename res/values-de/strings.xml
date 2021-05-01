@@ -914,8 +914,7 @@
     <string name="radio_info_nr_available" msgid="1321318331361249997">"NR verfügbar:"</string>
     <string name="radio_info_nr_state" msgid="1337571996788535356">"NR-Status:"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR-Frequenz:"</string>
-    <!-- no translation found for radio_info_network_slicing_config (7675131833885031563) -->
-    <skip />
+    <string name="radio_info_network_slicing_config" msgid="7675131833885031563">"Konfiguration für Netzwerk-Slicing:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Frequenzbereichmodus festlegen"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Frequenzliste wird geladen…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Festlegen"</string>
