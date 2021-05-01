@@ -565,9 +565,10 @@ public class NotificationMgr {
                     .setChannelId(NotificationChannelController.CHANNEL_ID_CALL_FORWARD)
                     .setOnlyAlertOnce(isRefresh);
 
-            Intent intent = new Intent(Intent.ACTION_MAIN);
+            Intent intent = new Intent(TelecomManager.ACTION_SHOW_CALL_SETTINGS);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            intent.setClassName("com.android.phone", "com.android.phone.CallFeaturesSetting");
+            intent.setPackage(mContext.getResources().getString(
+                    R.string.call_settings_package_name));
             SubscriptionInfoHelper.addExtrasToIntent(
                     intent, mSubscriptionManager.getActiveSubscriptionInfo(subId));
             builder.setContentIntent(PendingIntent.getActivity(mContext, subId /* requestCode */,
