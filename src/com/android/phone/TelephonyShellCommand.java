@@ -130,6 +130,7 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
     private static final String D2D_SUBCOMMAND = "d2d";
     private static final String D2D_SEND = "send";
     private static final String D2D_TRANSPORT = "transport";
+    private static final String D2D_SET_DEVICE_SUPPORT = "set-device-support";
 
     private static final String RCS_UCE_COMMAND = "uce";
     private static final String UCE_GET_EAB_CONTACT = "get-eab-contact";
@@ -358,6 +359,10 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         pw.println("  d2d transport TYPE");
         pw.println("    Forces the specified D2D transport TYPE to be active.  Use the");
         pw.println("    short class name of the transport; i.e. DtmfTransport or RtpTransport.");
+        pw.println("  d2d set-device-support true/default");
+        pw.println("    true - forces device support to be enabled for D2D.");
+        pw.println("    default - clear any previously set force-enable of D2D, reverting to ");
+        pw.println("    the current device's configuration.");
     }
 
     private void onHelpIms() {
@@ -853,6 +858,9 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             case D2D_TRANSPORT: {
                 return handleD2dTransportCommand();
             }
+            case D2D_SET_DEVICE_SUPPORT: {
+                return handleD2dDeviceSupportedCommand();
+            }
         }
 
         return -1;
@@ -911,6 +919,26 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             mInterface.setActiveDeviceToDeviceTransport(arg);
         } catch (RemoteException e) {
             Log.w(LOG_TAG, "d2d transport error: " + e.getMessage());
+            errPw.println("Exception: " + e.getMessage());
+            return -1;
+        }
+        return 0;
+    }
+
+    private int handleD2dDeviceSupportedCommand() {
+        PrintWriter errPw = getErrPrintWriter();
+
+        String arg = getNextArg();
+        if (arg == null) {
+            onHelpD2D();
+            return 0;
+        }
+
+        boolean isEnabled = "true".equals(arg.toLowerCase());
+        try {
+            mInterface.setDeviceToDeviceForceEnabled(isEnabled);
+        } catch (RemoteException e) {
+            Log.w(LOG_TAG, "Error forcing D2D enabled: " + e.getMessage());
             errPw.println("Exception: " + e.getMessage());
             return -1;
         }
