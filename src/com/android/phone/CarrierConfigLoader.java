@@ -706,9 +706,6 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         mFromSystemUnlocked = new boolean[numPhones];
         mServiceConnectionForNoSimConfig = new CarrierServiceConnection[numPhones];
         mServiceBoundForNoSimConfig = new boolean[numPhones];
-        // Make this service available through ServiceManager.
-        TelephonyFrameworkInitializer
-                .getTelephonyServiceManager().getCarrierConfigServiceRegisterer().register(this);
         logd("CarrierConfigLoader has started");
         mSubscriptionInfoUpdater = subscriptionInfoUpdater;
         mHandler.sendEmptyMessage(EVENT_CHECK_SYSTEM_UPDATE);
@@ -724,6 +721,9 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
             if (sInstance == null) {
                 sInstance = new CarrierConfigLoader(context,
                         PhoneFactory.getSubscriptionInfoUpdater(), Looper.myLooper());
+                // Make this service available through ServiceManager.
+                TelephonyFrameworkInitializer.getTelephonyServiceManager()
+                        .getCarrierConfigServiceRegisterer().register(sInstance);
             } else {
                 Log.wtf(LOG_TAG, "init() called multiple times!  sInstance = " + sInstance);
             }
