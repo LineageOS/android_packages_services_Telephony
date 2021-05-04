@@ -914,7 +914,6 @@
     <string name="radio_info_nr_available" msgid="1321318331361249997">"NR ලබා ගත හැකි:"</string>
     <string name="radio_info_nr_state" msgid="1337571996788535356">"NR තත්ත්වය:"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR සංඛ්‍යාතය:"</string>
-    <string name="radio_info_network_slicing_config" msgid="7675131833885031563">"ජාල ලායන වින්‍යාසය:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"රේඩියෝ කලාප ප්‍රකාරය සකසන්න"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"කලාප ලැයිස්තුව පූරණය කරමින්…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"සකසන්න"</string>
