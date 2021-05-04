@@ -2539,18 +2539,22 @@ public class TelephonyConnectionService extends ConnectionService {
        getAllConnections().stream()
                .filter(f -> f instanceof TelephonyConnection)
                .forEach(t -> {
-                        TelephonyConnection tc = (TelephonyConnection) t;
-                        Communicator c = tc.getCommunicator();
-                        if (c == null) {
-                            Log.w(this, "sendTestDeviceToDeviceMessage: D2D not enabled");
-                            return;
-                        }
+                   TelephonyConnection tc = (TelephonyConnection) t;
+                   if (!tc.isImsConnection()) {
+                       Log.w(this, "sendTestDeviceToDeviceMessage: not an IMS connection");
+                       return;
+                   }
+                   Communicator c = tc.getCommunicator();
+                   if (c == null) {
+                       Log.w(this, "sendTestDeviceToDeviceMessage: D2D not enabled");
+                       return;
+                   }
 
-                        c.sendMessages(new HashSet<Communicator.Message>() {{
-                            add(new Communicator.Message(message, value));
-                        }});
+                   c.sendMessages(new HashSet<Communicator.Message>() {{
+                       add(new Communicator.Message(message, value));
+                   }});
 
-       });
+               });
     }
 
     /**
