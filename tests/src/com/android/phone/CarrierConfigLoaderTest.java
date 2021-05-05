@@ -133,6 +133,7 @@ public class CarrierConfigLoaderTest extends TelephonyTestBase {
     public void tearDown() throws Exception {
         mContext.revokeAllPermissions();
         mTestableLooper.destroy();
+        mHandlerThread.quit();
         super.tearDown();
     }
 
