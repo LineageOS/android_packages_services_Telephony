@@ -914,7 +914,6 @@
     <string name="radio_info_nr_available" msgid="1321318331361249997">"NR disponibile:"</string>
     <string name="radio_info_nr_state" msgid="1337571996788535356">"Stato NR:"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"Frequenza NR:"</string>
-    <string name="radio_info_network_slicing_config" msgid="7675131833885031563">"Configurazione network slicing:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Imposta modalità banda radio"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Caricamento elenco bande…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Imposta"</string>
