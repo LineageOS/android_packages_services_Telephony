@@ -5773,6 +5773,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                                 .setCallingUid(Binder.getCallingUid())
                                 .setMethod("getCellNetworkScanResults")
                                 .setMinSdkVersionForFine(Build.VERSION_CODES.Q)
+                                .setMinSdkVersionForCoarse(Build.VERSION_CODES.Q)
+                                .setMinSdkVersionForEnforcement(Build.VERSION_CODES.Q)
                                 .build());
         switch (locationResult) {
             case DENIED_HARD:
@@ -7453,6 +7455,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                                 .setMethod("getServiceStateForSubscriber")
                                 .setLogAsInfo(true)
                                 .setMinSdkVersionForFine(Build.VERSION_CODES.Q)
+                                .setMinSdkVersionForCoarse(Build.VERSION_CODES.Q)
+                                .setMinSdkVersionForEnforcement(Build.VERSION_CODES.Q)
                                 .build());
 
         LocationAccessPolicy.LocationPermissionResult coarseLocationResult =
@@ -7465,6 +7469,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                                 .setMethod("getServiceStateForSubscriber")
                                 .setLogAsInfo(true)
                                 .setMinSdkVersionForCoarse(Build.VERSION_CODES.Q)
+                                .setMinSdkVersionForFine(Integer.MAX_VALUE)
+                                .setMinSdkVersionForEnforcement(Build.VERSION_CODES.Q)
                                 .build());
         // We don't care about hard or soft here -- all we need to know is how much info to scrub.
         boolean hasFinePermission =
