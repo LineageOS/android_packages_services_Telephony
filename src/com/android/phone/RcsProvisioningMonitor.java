@@ -543,9 +543,13 @@ public class RcsProvisioningMonitor {
                     == ProvisioningManager.STATUS_CAPABLE) {
                 try {
                     RcsConfig rcsConfig = new RcsConfig(getConfig(subId));
-                    return rcsConfig.isRcsVolteSingleRegistrationSupported();
+                    return rcsConfig.isRcsVolteSingleRegistrationSupported(
+                            mPhone.getPhone(subId).getServiceState().getRoaming());
                 } catch (IllegalArgumentException e) {
                     logd("fail to get rcs config for sub:" + subId);
+                } catch (NullPointerException e) {
+                    // should not happen
+                    logd("fail to get roaming state for sub: " + subId);
                 }
             }
         }
