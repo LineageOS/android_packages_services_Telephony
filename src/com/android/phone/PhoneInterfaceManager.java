@@ -10475,6 +10475,23 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
+    /**
+     * Remove UCE requests cannot be sent to the network status.
+     */
+    // Used for SHELL command only right now.
+    @Override
+    public boolean removeUceRequestDisallowedStatus(int subId) {
+        TelephonyPermissions.enforceShellOnly(Binder.getCallingUid(), "uceRemoveDisallowedStatus");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return mApp.imsRcsController.removeUceRequestDisallowedStatus(subId);
+        } catch (ImsException e) {
+            throw new ServiceSpecificException(e.getCode(), e.getMessage());
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
 
     @Override
     public void setSignalStrengthUpdateRequest(int subId, SignalStrengthUpdateRequest request,
