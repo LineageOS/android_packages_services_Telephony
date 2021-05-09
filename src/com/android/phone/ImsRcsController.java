@@ -407,6 +407,20 @@ public class ImsRcsController extends IImsRcsController.Stub {
         return pidfXml == null ? "none" : pidfXml;
     }
 
+    /**
+     * Remove UCE requests cannot be sent to the network status.
+     * @return true if this command is successful.
+     */
+    // Used for SHELL command only right now.
+    public boolean removeUceRequestDisallowedStatus(int subId) throws ImsException {
+        UceControllerManager uceCtrlManager = getRcsFeatureController(subId).getFeature(
+                UceControllerManager.class);
+        if (uceCtrlManager == null) {
+            return false;
+        }
+        return uceCtrlManager.removeUceRequestDisallowedStatus();
+    }
+
     @Override
     public void registerUcePublishStateCallback(int subId, IRcsUcePublishStateCallback c) {
         enforceReadPrivilegedPermission("registerUcePublishStateCallback");
