@@ -243,8 +243,7 @@ public class UceControllerManagerTest extends TelephonyTestBase {
 
     private UceControllerManager getUceControllerManager() {
         UceControllerManager manager = new UceControllerManager(mContext, mSlotId, mSubId,
-                mExecutorService);
-        manager.setUceController(mUceController);
+                mExecutorService, mUceController);
         return manager;
     }
 }
