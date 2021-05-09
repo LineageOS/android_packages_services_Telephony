@@ -70,12 +70,13 @@ public class UceControllerManager implements RcsFeatureController.Feature {
      * Constructor to inject dependencies for testing.
      */
     @VisibleForTesting
-    public UceControllerManager(Context context, int slotId, int subId, ExecutorService executor) {
+    public UceControllerManager(Context context, int slotId, int subId, ExecutorService executor,
+            UceController uceController) {
         mSlotId = slotId;
         mSubId = subId;
         mContext = context;
         mExecutorService = executor;
-        mUceController = new UceController(mContext, subId);
+        mUceController = uceController;
     }
 
     @Override
@@ -138,11 +139,6 @@ public class UceControllerManager implements RcsFeatureController.Feature {
             Log.i(LOG_TAG, "onCarrierConfigChanged: subId=" + mSubId);
             mUceController.onCarrierConfigChanged();
         });
-    }
-
-    @VisibleForTesting
-    public void setUceController(UceController uceController) {
-        mUceController = uceController;
     }
 
     /**
@@ -324,6 +320,32 @@ public class UceControllerManager implements RcsFeatureController.Feature {
                 throw (ImsException) cause;
             }
             return null;
+        }
+    }
+
+    /**
+     * Remove UCE requests cannot be sent to the network status.
+     * @return true if this command is successful.
+     */
+    public boolean removeUceRequestDisallowedStatus() throws ImsException {
+        Future<Boolean> future = mExecutorService.submit(() -> {
+            if (mUceController == null) {
+                throw new ImsException("UCE controller is null",
+                        ImsException.CODE_ERROR_SERVICE_UNAVAILABLE);
+            }
+            mUceController.removeRequestDisallowedStatus();
+            return true;
+        });
+
+        try {
+            return future.get();
+        } catch (ExecutionException | InterruptedException e) {
+            Log.w(LOG_TAG, "removeUceRequestDisallowedStatus exception: " + e);
+            Throwable cause = e.getCause();
+            if (cause instanceof ImsException) {
+                throw (ImsException) cause;
+            }
+            return false;
         }
     }
 
