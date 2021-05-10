@@ -4348,8 +4348,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @Override
     public void setImsProvisioningStatusForCapability(int subId, int capability, int tech,
             boolean isProvisioned) {
-        if (tech != ImsRegistrationImplBase.REGISTRATION_TECH_IWLAN
-                && tech != ImsRegistrationImplBase.REGISTRATION_TECH_LTE) {
+        if (tech < ImsRegistrationImplBase.REGISTRATION_TECH_LTE
+                || tech > ImsRegistrationImplBase.REGISTRATION_TECH_NR) {
             throw new IllegalArgumentException("Registration technology '" + tech + "' is invalid");
         }
         checkModifyPhoneStatePermission(subId, "setImsProvisioningStatusForCapability");
@@ -4357,6 +4357,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         try {
             // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
             if (!isImsProvisioningRequired(subId, capability, true)) {
+                return;
+            }
+            if (tech != ImsRegistrationImplBase.REGISTRATION_TECH_LTE
+                    && tech != ImsRegistrationImplBase.REGISTRATION_TECH_IWLAN) {
+                loge("setImsProvisioningStatusForCapability: called for technology that does "
+                        + "not support provisioning - " + tech);
                 return;
             }
 
@@ -4386,7 +4392,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     }
                     cacheMmTelCapabilityProvisioning(subId, capability, tech, isProvisioned);
                     try {
-                        ims.changeMmTelCapability(capability, tech, isProvisioned);
+                        ims.changeMmTelCapability(isProvisioned, capability, tech);
                     } catch (com.android.ims.ImsException e) {
                         loge("setImsProvisioningStatusForCapability: couldn't change UT capability"
                                 + ", Exception" + e.getMessage());
@@ -4407,8 +4413,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     @Override
     public boolean getImsProvisioningStatusForCapability(int subId, int capability, int tech) {
-        if (tech != ImsRegistrationImplBase.REGISTRATION_TECH_IWLAN
-                && tech != ImsRegistrationImplBase.REGISTRATION_TECH_LTE) {
+        if (tech < ImsRegistrationImplBase.REGISTRATION_TECH_LTE
+                || tech > ImsRegistrationImplBase.REGISTRATION_TECH_NR) {
             throw new IllegalArgumentException("Registration technology '" + tech + "' is invalid");
         }
         enforceReadPrivilegedPermission("getProvisioningStatusForCapability");
@@ -4416,6 +4422,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         try {
             // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
             if (!isImsProvisioningRequired(subId, capability, true)) {
+                return true;
+            }
+
+            if (tech != ImsRegistrationImplBase.REGISTRATION_TECH_LTE
+                    && tech != ImsRegistrationImplBase.REGISTRATION_TECH_IWLAN) {
+                loge("getImsProvisioningStatusForCapability: called for technology that does "
+                        + "not support provisioning - " + tech);
                 return true;
             }
 

@@ -1598,7 +1598,7 @@ public class TelephonyConnectionService extends ConnectionService {
         Phone imsPhone = phone.getImsPhone();
 
         return imsPhone != null
-                && (imsPhone.isVolteEnabled() || imsPhone.isWifiCallingEnabled())
+                && (imsPhone.isVoiceOverCellularImsEnabled() || imsPhone.isWifiCallingEnabled())
                 && (imsPhone.getServiceState().getState() == ServiceState.STATE_IN_SERVICE);
     }
 
