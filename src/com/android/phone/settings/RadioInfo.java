@@ -1322,7 +1322,7 @@ public class RadioInfo extends AppCompatActivity {
             new MenuItem.OnMenuItemClickListener() {
         public boolean onMenuItemClick(MenuItem item) {
             boolean isImsRegistered = mPhone.isImsRegistered();
-            boolean availableVolte = mPhone.isVolteEnabled();
+            boolean availableVolte = mPhone.isVoiceOverCellularImsEnabled();
             boolean availableWfc = mPhone.isWifiCallingEnabled();
             boolean availableVt = mPhone.isVideoEnabled();
             boolean availableUt = mPhone.isUtEnabled();
