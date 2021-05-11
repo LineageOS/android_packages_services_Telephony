@@ -16,8 +16,10 @@
 
 package com.android.services.telephony.rcs;
 
+import android.annotation.Nullable;
 import android.content.Context;
 import android.net.Uri;
+import android.telephony.SubscriptionManager;
 import android.telephony.ims.ImsException;
 import android.telephony.ims.RcsContactUceCapability;
 import android.telephony.ims.RcsUceAdapter;
@@ -52,28 +54,24 @@ public class UceControllerManager implements RcsFeatureController.Feature {
     private final Context mContext;
     private final ExecutorService mExecutorService;
 
-    private volatile int mSubId;
-    private volatile UceController mUceController;
-    private volatile RcsFeatureManager mRcsFeatureManager;
+    private volatile @Nullable UceController mUceController;
+    private volatile @Nullable RcsFeatureManager mRcsFeatureManager;
 
     public UceControllerManager(Context context, int slotId, int subId) {
         Log.d(LOG_TAG, "create: slotId=" + slotId + ", subId=" + subId);
-
         mSlotId = slotId;
-        mSubId = subId;
         mContext = context;
         mExecutorService = Executors.newSingleThreadExecutor();
-        mUceController = new UceController(mContext, subId);
+        initUceController(subId);
     }
 
     /**
      * Constructor to inject dependencies for testing.
      */
     @VisibleForTesting
-    public UceControllerManager(Context context, int slotId, int subId, ExecutorService executor,
+    public UceControllerManager(Context context, int slotId, ExecutorService executor,
             UceController uceController) {
         mSlotId = slotId;
-        mSubId = subId;
         mContext = context;
         mExecutorService = executor;
         mUceController = uceController;
@@ -83,7 +81,11 @@ public class UceControllerManager implements RcsFeatureController.Feature {
     public void onRcsConnected(RcsFeatureManager manager) {
         mExecutorService.submit(() -> {
             mRcsFeatureManager = manager;
-            mUceController.onRcsConnected(manager);
+            if (mUceController != null) {
+                mUceController.onRcsConnected(manager);
+            } else {
+                Log.d(LOG_TAG, "onRcsConnected: UceController is null");
+            }
         });
     }
 
@@ -91,14 +93,22 @@ public class UceControllerManager implements RcsFeatureController.Feature {
     public void onRcsDisconnected() {
         mExecutorService.submit(() -> {
             mRcsFeatureManager = null;
-            mUceController.onRcsDisconnected();
+            if (mUceController != null) {
+                mUceController.onRcsDisconnected();
+            } else {
+                Log.d(LOG_TAG, "onRcsDisconnected: UceController is null");
+            }
         });
     }
 
     @Override
     public void onDestroy() {
-        Log.d(LOG_TAG, "onDestroy");
-        mExecutorService.submit(() -> mUceController.onDestroy());
+        mExecutorService.submit(() -> {
+            Log.d(LOG_TAG, "onDestroy");
+            if (mUceController != null) {
+                mUceController.onDestroy();
+            }
+        });
         // When the shutdown is called, it will refuse any new tasks and let existing tasks finish.
         mExecutorService.shutdown();
     }
@@ -108,22 +118,17 @@ public class UceControllerManager implements RcsFeatureController.Feature {
      * changed.
      */
     @Override
-    public void onAssociatedSubscriptionUpdated(int subId) {
+    public void onAssociatedSubscriptionUpdated(int newSubId) {
         mExecutorService.submit(() -> {
             Log.i(LOG_TAG, "onAssociatedSubscriptionUpdated: slotId=" + mSlotId
-                    + ", subId=" + mSubId + ", newSubId=" + subId);
-            if (mSubId == subId) {
-                Log.w(LOG_TAG, "onAssociatedSubscriptionUpdated called with the same subId");
-                return;
-            }
-            mSubId = subId;
-            // Destroy existing UceController and create a new one.
-            mUceController.onDestroy();
-            mUceController = new UceController(mContext, subId);
+                    + ", newSubId=" + newSubId);
+
+            // Check and create the UceController with the new updated subscription ID.
+            initUceController(newSubId);
 
             // The RCS should be connected when the mRcsFeatureManager is not null. Set it to the
             // new UceController instance.
-            if (mRcsFeatureManager != null) {
+            if (mUceController != null && mRcsFeatureManager != null) {
                 mUceController.onRcsConnected(mRcsFeatureManager);
             }
         });
@@ -136,8 +141,12 @@ public class UceControllerManager implements RcsFeatureController.Feature {
     @Override
     public void onCarrierConfigChanged() {
         mExecutorService.submit(() -> {
-            Log.i(LOG_TAG, "onCarrierConfigChanged: subId=" + mSubId);
-            mUceController.onCarrierConfigChanged();
+            Log.i(LOG_TAG, "onCarrierConfigChanged");
+            if (mUceController != null) {
+                mUceController.onCarrierConfigChanged();
+            } else {
+                Log.d(LOG_TAG, "onCarrierConfigChanged: UceController is null");
+            }
         });
     }
 
@@ -390,6 +399,31 @@ public class UceControllerManager implements RcsFeatureController.Feature {
         }
     }
 
+    /**
+     * Initialize the UceController instance associated with the given subscription ID.
+     * The existing UceController will be destroyed if the original subscription ID is different
+     * from the new subscription ID.
+     * If the new subscription ID is invalid, the UceController instance will be null.
+     */
+    private void initUceController(int newSubId) {
+        Log.d(LOG_TAG, "initUceController: newSubId=" + newSubId + ", current UceController subId="
+                + ((mUceController == null) ? "null" : mUceController.getSubId()));
+        if (mUceController == null) {
+            // Create new UceController only when the subscription ID is valid.
+            if (SubscriptionManager.isValidSubscriptionId(newSubId)) {
+                mUceController = new UceController(mContext, newSubId);
+            }
+        } else if (mUceController.getSubId() != newSubId) {
+            // The subscription ID is updated. Remove the old UceController instance.
+            mUceController.onDestroy();
+            mUceController = null;
+            // Create new UceController only when the subscription ID is valid.
+            if (SubscriptionManager.isValidSubscriptionId(newSubId)) {
+                mUceController = new UceController(mContext, newSubId);
+            }
+        }
+    }
+
     private boolean checkUceControllerState() throws ImsException {
         if (mUceController == null || mUceController.isUnavailable()) {
             throw new ImsException("UCE controller is unavailable",
@@ -398,13 +432,26 @@ public class UceControllerManager implements RcsFeatureController.Feature {
         return true;
     }
 
+    /**
+     * Get the UceController instance.
+     * <p>
+     * Used for testing ONLY.
+     */
+    @VisibleForTesting
+    public UceController getUceController() {
+        return mUceController;
+    }
 
     @Override
     public void dump(PrintWriter printWriter) {
         IndentingPrintWriter pw = new IndentingPrintWriter(printWriter, "  ");
         pw.println("UceControllerManager" + "[" + mSlotId + "]:");
         pw.increaseIndent();
-        mUceController.dump(pw);
+        if (mUceController != null) {
+            mUceController.dump(pw);
+        } else {
+            pw.println("UceController is null.");
+        }
         pw.decreaseIndent();
     }
 }
