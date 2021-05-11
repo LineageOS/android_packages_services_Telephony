@@ -17,6 +17,7 @@
 package com.android.services.telephony.rcs;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.fail;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.never;
@@ -105,6 +106,21 @@ public class UceControllerManagerTest extends TelephonyTestBase {
         // Updates with different subIds should trigger the creation of a new controller.
         uceCtrlManager.onAssociatedSubscriptionUpdated(mSubId + 1);
         verify(mUceController).onDestroy();
+    }
+
+    @Test
+    public void testSubIdAndCarrierConfigUpdateWithInvalidSubId() throws Exception {
+        UceControllerManager uceCtrlManager = getUceControllerManager();
+
+        // Updates with the same subId should not destroy the UceController
+        uceCtrlManager.onCarrierConfigChanged();
+        verify(mUceController, never()).onDestroy();
+
+        // Updates with invalid subscription ID
+        uceCtrlManager.onAssociatedSubscriptionUpdated(-1);
+
+        verify(mUceController).onDestroy();
+        assertNull(uceCtrlManager.getUceController());
     }
 
     @Test
@@ -242,7 +258,7 @@ public class UceControllerManagerTest extends TelephonyTestBase {
     }
 
     private UceControllerManager getUceControllerManager() {
-        UceControllerManager manager = new UceControllerManager(mContext, mSlotId, mSubId,
+        UceControllerManager manager = new UceControllerManager(mContext, mSlotId,
                 mExecutorService, mUceController);
         return manager;
     }
