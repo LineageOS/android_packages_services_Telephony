@@ -87,6 +87,24 @@ import java.util.List;
 
 @RunWith(AndroidJUnit4.class)
 public class TelephonyConnectionServiceTest extends TelephonyTestBase {
+    /**
+     * Unlike {@link TestTelephonyConnection}, a bare minimal {@link TelephonyConnection} impl
+     * that does not try to configure anything.
+     */
+    public static class SimpleTelephonyConnection extends TelephonyConnection {
+        public boolean wasDisconnected = false;
+
+        @Override
+        public TelephonyConnection cloneConnection() {
+            return null;
+        }
+
+
+        @Override
+        public void onDisconnect() {
+            wasDisconnected = true;
+        }
+    }
 
     private static final long TIMEOUT_MS = 100;
     private static final int SLOT_0_PHONE_ID = 0;
@@ -1249,6 +1267,79 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
                 .filter(c -> c.getExtras() != null && c.getExtras().containsKey(
                         android.telecom.Connection.EXTRA_ANSWERING_DROPS_FG_CALL))
                 .count());
+    }
+
+    private static final PhoneAccountHandle SUB1_HANDLE = new PhoneAccountHandle(
+            new ComponentName("test", "class"), "1");
+    private static final PhoneAccountHandle SUB2_HANDLE = new PhoneAccountHandle(
+            new ComponentName("test", "class"), "2");
+
+    @Test
+    @SmallTest
+    public void testDontDisconnectSameSub() {
+        ArrayList<android.telecom.Connection> tcs = new ArrayList<>();
+        SimpleTelephonyConnection tc1 = createTestConnection(SUB1_HANDLE, 0, false);
+        tcs.add(tc1);
+        TelephonyConnectionService.maybeDisconnectCallsOnOtherSubs(tcs, SUB1_HANDLE);
+        // Would've preferred to use mockito, but can't mock out TelephonyConnection/Connection
+        // easily.
+        assertFalse(tc1.wasDisconnected);
+    }
+
+    @Test
+    @SmallTest
+    public void testDontDisconnectEmergency() {
+        ArrayList<android.telecom.Connection> tcs = new ArrayList<>();
+        SimpleTelephonyConnection tc1 = createTestConnection(SUB1_HANDLE, 0, true);
+        tcs.add(tc1);
+        TelephonyConnectionService.maybeDisconnectCallsOnOtherSubs(tcs, SUB2_HANDLE);
+        // Other call is an emergency call, so don't disconnect it.
+        assertFalse(tc1.wasDisconnected);
+    }
+
+    @Test
+    @SmallTest
+    public void testDontDisconnectExternal() {
+        ArrayList<android.telecom.Connection> tcs = new ArrayList<>();
+        SimpleTelephonyConnection tc1 = createTestConnection(SUB1_HANDLE,
+                android.telecom.Connection.PROPERTY_IS_EXTERNAL_CALL, false);
+        tcs.add(tc1);
+        TelephonyConnectionService.maybeDisconnectCallsOnOtherSubs(tcs, SUB2_HANDLE);
+        // Other call is an external call, so don't disconnect it.
+        assertFalse(tc1.wasDisconnected);
+    }
+
+    @Test
+    @SmallTest
+    public void testDisconnectDifferentSub() {
+        ArrayList<android.telecom.Connection> tcs = new ArrayList<>();
+        SimpleTelephonyConnection tc1 = createTestConnection(SUB1_HANDLE, 0, false);
+        tcs.add(tc1);
+        TelephonyConnectionService.maybeDisconnectCallsOnOtherSubs(tcs, SUB2_HANDLE);
+        assertTrue(tc1.wasDisconnected);
+    }
+
+    @Test
+    @SmallTest
+    public void testDisconnectDifferentSubTwoCalls() {
+        ArrayList<android.telecom.Connection> tcs = new ArrayList<>();
+        SimpleTelephonyConnection tc1 = createTestConnection(SUB1_HANDLE, 0, false);
+        SimpleTelephonyConnection tc2 = createTestConnection(SUB1_HANDLE, 0, false);
+
+        tcs.add(tc1);
+        tcs.add(tc2);
+        TelephonyConnectionService.maybeDisconnectCallsOnOtherSubs(tcs, SUB2_HANDLE);
+        assertTrue(tc1.wasDisconnected);
+        assertTrue(tc2.wasDisconnected);
+    }
+
+    private SimpleTelephonyConnection createTestConnection(PhoneAccountHandle handle,
+            int properties, boolean isEmergency) {
+        SimpleTelephonyConnection connection = new SimpleTelephonyConnection();
+        connection.setShouldTreatAsEmergencyCall(isEmergency);
+        connection.setConnectionProperties(properties);
+        connection.setPhoneAccountHandle(handle);
+        return connection;
     }
 
     /**
