@@ -96,7 +96,7 @@ import javax.annotation.Nullable;
  * Service for making GSM and CDMA connections.
  */
 public class TelephonyConnectionService extends ConnectionService {
-
+    private static final String LOG_TAG = TelephonyConnectionService.class.getSimpleName();
     // Timeout before we continue with the emergency call without waiting for DDS switch response
     // from the modem.
     private static final int DEFAULT_DATA_SWITCH_TIMEOUT_MS = 1000;
@@ -2627,5 +2627,44 @@ public class TelephonyConnectionService extends ConnectionService {
                         // Include any calls not on same sub as current connection.
                         && !Objects.equals(c.getPhoneAccountHandle(), incomingHandle))
                 .count() > 0;
+    }
+
+    /**
+     * Where there are ongoing calls on another subscription other than the one specified,
+     * disconnect these calls.  This is used where there is an incoming call on one sub, but there
+     * are ongoing calls on another sub which need to be disconnected.
+     * @param incomingHandle The incoming {@link PhoneAccountHandle}.
+     */
+    public void maybeDisconnectCallsOnOtherSubs(@NonNull PhoneAccountHandle incomingHandle) {
+        Log.i(this, "maybeDisconnectCallsOnOtherSubs: check for calls not on %s", incomingHandle);
+        maybeDisconnectCallsOnOtherSubs(getAllConnections(), incomingHandle);
+    }
+
+    /**
+     * Used by {@link #maybeDisconnectCallsOnOtherSubs(PhoneAccountHandle)} to perform call
+     * disconnection.  This method exists as a convenience so that it is possible to unit test
+     * the core functionality.
+     * @param connections the calls to check.
+     * @param incomingHandle the incoming handle.
+     */
+    @VisibleForTesting
+    public static void maybeDisconnectCallsOnOtherSubs(@NonNull Collection<Connection> connections,
+            @NonNull PhoneAccountHandle incomingHandle) {
+        connections.stream()
+                .filter(c ->
+                        // Exclude multiendpoint calls as they're not on this device.
+                        (c.getConnectionProperties() & Connection.PROPERTY_IS_EXTERNAL_CALL) == 0
+                                // Include any calls not on same sub as current connection.
+                                && !Objects.equals(c.getPhoneAccountHandle(), incomingHandle))
+                .forEach(c -> {
+                    if (c instanceof TelephonyConnection) {
+                        TelephonyConnection tc = (TelephonyConnection) c;
+                        if (!tc.shouldTreatAsEmergencyCall()) {
+                            Log.i(LOG_TAG, "maybeDisconnectCallsOnOtherSubs: disconnect %s due to "
+                                    + "incoming call on other sub.", tc.getTelecomCallId());
+                            tc.onDisconnect();
+                        }
+                    }
+                });
     }
 }
