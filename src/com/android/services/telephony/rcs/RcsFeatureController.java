@@ -20,9 +20,7 @@ import android.annotation.AnyThread;
 import android.content.Context;
 import android.net.Uri;
 import android.telephony.ims.ImsException;
-import android.telephony.ims.ImsRcsManager;
 import android.telephony.ims.ImsReasonInfo;
-import android.telephony.ims.RegistrationManager;
 import android.telephony.ims.aidl.IImsCapabilityCallback;
 import android.telephony.ims.aidl.IImsRegistrationCallback;
 import android.telephony.ims.stub.ImsRegistrationImplBase;
@@ -135,6 +133,7 @@ public class RcsFeatureController {
                         logw("connectionReady returned null RcsFeatureManager");
                         return;
                     }
+                    logd("connectionReady");
                     try {
                         // May throw ImsException if for some reason the connection to the
                         // ImsService is gone.
@@ -153,6 +152,7 @@ public class RcsFeatureController {
                     if (reason == FeatureConnector.UNAVAILABLE_REASON_SERVER_UNAVAILABLE) {
                         loge("unexpected - connectionUnavailable due to server unavailable");
                     }
+                    logd("connectionUnavailable");
                     // Call before disabling connection to manager.
                     removeConnectionToService();
                     updateConnectionStatus(null /*manager*/);
@@ -411,6 +411,7 @@ public class RcsFeatureController {
     }
 
     private void setupConnectionToService(RcsFeatureManager manager) throws ImsException {
+        logd("setupConnectionToService");
         // Open persistent listener connection, sends RcsFeature#onFeatureReady.
         manager.openConnection();
         manager.updateCapabilities(mAssociatedSubId);
@@ -418,6 +419,7 @@ public class RcsFeatureController {
     }
 
     private void removeConnectionToService() {
+        logd("removeConnectionToService");
         RcsFeatureManager manager = getFeatureManager();
         if (manager != null) {
             manager.unregisterImsRegistrationCallback(
@@ -470,6 +472,10 @@ public class RcsFeatureController {
             }
             pw.decreaseIndent();
         }
+    }
+
+    private void logd(String log) {
+        Log.d(LOG_TAG, getLogPrefix().append(log).toString());
     }
 
     private void logw(String log) {
