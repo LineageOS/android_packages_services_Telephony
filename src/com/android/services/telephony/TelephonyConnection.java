@@ -3345,6 +3345,7 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
         if (!getPhone().getContext().getResources().getBoolean(
                 R.bool.config_use_device_to_device_communication)) {
             Log.i(this, "maybeConfigureDeviceToDeviceCommunication: not using D2D.");
+            notifyD2DAvailabilityChanged(false);
             return;
         }
         if (!isImsConnection()) {
@@ -3352,10 +3353,12 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
             if (mCommunicator != null) {
                 mCommunicator = null;
             }
+            notifyD2DAvailabilityChanged(false);
             return;
         }
         if (mTreatAsEmergencyCall || mIsNetworkIdentifiedEmergencyCall) {
             Log.i(this, "maybeConfigureDeviceToDeviceCommunication: emergency call; no D2D");
+            notifyD2DAvailabilityChanged(false);
             return;
         }
 
@@ -3409,7 +3412,19 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
             addTelephonyConnectionListener(mD2DCallStateAdapter);
         } else {
             Log.i(this, "maybeConfigureDeviceToDeviceCommunication: no transports; disabled.");
+            notifyD2DAvailabilityChanged(false);
         }
+    }
+
+    /**
+     * Notifies upper layers of the availability of D2D communication.
+     * @param isAvailable {@code true} if D2D is available, {@code false} otherwise.
+     */
+    private void notifyD2DAvailabilityChanged(boolean isAvailable) {
+        Bundle extras = new Bundle();
+        extras.putBoolean(Connection.EXTRA_IS_DEVICE_TO_DEVICE_COMMUNICATION_AVAILABLE,
+                isAvailable);
+        putTelephonyExtras(extras);
     }
 
     /**
@@ -3469,6 +3484,15 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
             extras.putInt(Connection.EXTRA_DEVICE_TO_DEVICE_MESSAGE_VALUE, dcMsgValue);
             sendConnectionEvent(Connection.EVENT_DEVICE_TO_DEVICE_MESSAGE, extras);
         }
+    }
+
+    /**
+     * Handles report from {@link Communicator} when the availability of D2D changes.
+     * @param isAvailable {@code true} if D2D is available, {@code false} if unavailable.
+     */
+    @Override
+    public void onD2DAvailabilitychanged(boolean isAvailable) {
+        notifyD2DAvailabilityChanged(isAvailable);
     }
 
     /**
