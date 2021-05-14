@@ -906,6 +906,11 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
         }
     }
 
+    @VisibleForTesting
+    protected TelephonyConnection() {
+        // Do nothing
+    }
+
     @Override
     public void onCallEvent(String event, Bundle extras) {
         switch (event) {
@@ -1238,6 +1243,8 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
         Log.v(this, "performAnswer");
         if (isValidRingingCall() && getPhone() != null) {
             try {
+                mTelephonyConnectionService.maybeDisconnectCallsOnOtherSubs(
+                        getPhoneAccountHandle());
                 getPhone().acceptCall(videoState);
             } catch (CallStateException e) {
                 Log.e(this, e, "Failed to accept call.");
@@ -2053,6 +2060,15 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
      */
     protected boolean shouldTreatAsEmergencyCall() {
         return mTreatAsEmergencyCall;
+    }
+
+    /**
+     * Sets whether to treat this call as an emergency call or not.
+     * @param shouldTreatAsEmergencyCall
+     */
+    @VisibleForTesting
+    public void setShouldTreatAsEmergencyCall(boolean shouldTreatAsEmergencyCall) {
+        mTreatAsEmergencyCall = shouldTreatAsEmergencyCall;
     }
 
     /**
