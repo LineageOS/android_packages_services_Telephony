@@ -157,6 +157,10 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
     private static final String ALLOW_THERMAL_MITIGATION_PACKAGE_SUBCOMMAND = "allow-package";
     private static final String DISALLOW_THERMAL_MITIGATION_PACKAGE_SUBCOMMAND = "disallow-package";
 
+    private static final String GET_ALLOWED_NETWORK_TYPES_FOR_USER =
+            "get-allowed-network-types-for-users";
+    private static final String SET_ALLOWED_NETWORK_TYPES_FOR_USER =
+            "set-allowed-network-types-for-users";
     // Take advantage of existing methods that already contain permissions checks when possible.
     private final ITelephony mInterface;
 
@@ -308,6 +312,9 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                 return handleEnablePhysicalSubscription(false);
             case ENABLE_PHYSICAL_SUBSCRIPTION:
                 return handleEnablePhysicalSubscription(true);
+            case GET_ALLOWED_NETWORK_TYPES_FOR_USER:
+            case SET_ALLOWED_NETWORK_TYPES_FOR_USER:
+                return handleAllowedNetworkTypesCommand(cmd);
             default: {
                 return handleDefaultCommands(cmd);
             }
@@ -342,6 +349,10 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         pw.println("    Prepare for unattended reboot.");
         pw.println("  has-carrier-privileges [package]");
         pw.println("    Query carrier privilege status for a package. Prints true or false.");
+        pw.println("  get-allowed-network-types-for-users");
+        pw.println("    Get the Allowed Network Types.");
+        pw.println("  set-allowed-network-types-for-users");
+        pw.println("    Set the Allowed Network Types.");
         onHelpIms();
         onHelpUce();
         onHelpEmergencyNumber();
@@ -352,6 +363,7 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         onHelpSrc();
         onHelpD2D();
         onHelpDisableOrEnablePhysicalSubscription();
+        onHelpAllowedNetworkTypes();
     }
 
     private void onHelpD2D() {
@@ -608,6 +620,30 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         pw.println("    Options are:");
         pw.println("      -s: The SIM slot ID to read the config value for. If no option");
         pw.println("          is specified, it will choose the default voice SIM slot.");
+    }
+
+    private void onHelpAllowedNetworkTypes() {
+        PrintWriter pw = getOutPrintWriter();
+        pw.println("Allowed Network Types Commands:");
+        pw.println("  get-allowed-network-types-for-users [-s SLOT_ID]");
+        pw.println("    Print allowed network types value.");
+        pw.println("    Options are:");
+        pw.println("      -s: The SIM slot ID to read allowed network types value for. If no");
+        pw.println("          option is specified, it will choose the default voice SIM slot.");
+        pw.println("  set-allowed-network-types-for-users [-s SLOT_ID] [NETWORK_TYPES_BITMASK]");
+        pw.println("    Sets allowed network types to NETWORK_TYPES_BITMASK.");
+        pw.println("    Options are:");
+        pw.println("      -s: The SIM slot ID to set allowed network types value for. If no");
+        pw.println("          option is specified, it will choose the default voice SIM slot.");
+        pw.println("    NETWORK_TYPES_BITMASK specifies the new network types value and this type");
+        pw.println("      is bitmask in binary format. Reference the NetworkTypeBitMask");
+        pw.println("      at TelephonyManager.java");
+        pw.println("      For example:");
+        pw.println("        NR only                    : 10000000000000000000");
+        pw.println("        NR|LTE                     : 11000001000000000000");
+        pw.println("        NR|LTE|CDMA|EVDO|GSM|WCDMA : 11001111101111111111");
+        pw.println("        LTE|CDMA|EVDO|GSM|WCDMA    : 01001111101111111111");
+        pw.println("        LTE only                   : 01000001000000000000");
     }
 
     private int handleImsCommand() {
@@ -2499,5 +2535,116 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
 
         getOutPrintWriter().println(hasCarrierPrivileges);
         return 0;
+    }
+
+    private int handleAllowedNetworkTypesCommand(String command) {
+        if (!checkShellUid()) {
+            return -1;
+        }
+
+        PrintWriter errPw = getErrPrintWriter();
+        String tag = command + ": ";
+        String opt;
+        int subId = -1;
+        Log.v(LOG_TAG, command + " start");
+
+        while ((opt = getNextOption()) != null) {
+            if (opt.equals("-s")) {
+                try {
+                    subId = slotStringToSubId(tag, getNextArgRequired());
+                    if (!SubscriptionManager.isValidSubscriptionId(subId)) {
+                        errPw.println(tag + "No valid subscription found.");
+                        return -1;
+                    }
+                } catch (IllegalArgumentException e) {
+                    // Missing slot id
+                    errPw.println(tag + "SLOT_ID expected after -s.");
+                    return -1;
+                }
+            } else {
+                errPw.println(tag + "Unknown option " + opt);
+                return -1;
+            }
+        }
+
+        if (GET_ALLOWED_NETWORK_TYPES_FOR_USER.equals(command)) {
+            return handleGetAllowedNetworkTypesCommand(subId);
+        }
+        if (SET_ALLOWED_NETWORK_TYPES_FOR_USER.equals(command)) {
+            return handleSetAllowedNetworkTypesCommand(subId);
+        }
+        return -1;
+    }
+
+    private int handleGetAllowedNetworkTypesCommand(int subId) {
+        PrintWriter errPw = getErrPrintWriter();
+
+        long result = -1;
+        try {
+            if (mInterface != null) {
+                result = mInterface.getAllowedNetworkTypesForReason(subId,
+                        TelephonyManager.ALLOWED_NETWORK_TYPES_REASON_USER);
+            } else {
+                throw new IllegalStateException("telephony service is null.");
+            }
+        } catch (RemoteException e) {
+            Log.e(TAG, "getAllowedNetworkTypesForReason RemoteException" + e);
+            errPw.println(GET_ALLOWED_NETWORK_TYPES_FOR_USER + "RemoteException " + e);
+            return -1;
+        }
+
+        getOutPrintWriter().println(TelephonyManager.convertNetworkTypeBitmaskToString(result));
+        return 0;
+    }
+
+    private int handleSetAllowedNetworkTypesCommand(int subId) {
+        PrintWriter errPw = getErrPrintWriter();
+
+        String bitmaskString = getNextArg();
+        if (TextUtils.isEmpty(bitmaskString)) {
+            errPw.println(SET_ALLOWED_NETWORK_TYPES_FOR_USER + " No NETWORK_TYPES_BITMASK");
+            return -1;
+        }
+        long allowedNetworkTypes = convertNetworkTypeBitmaskFromStringToLong(bitmaskString);
+        if (allowedNetworkTypes < 0) {
+            errPw.println(SET_ALLOWED_NETWORK_TYPES_FOR_USER + " No valid NETWORK_TYPES_BITMASK");
+            return -1;
+        }
+        boolean result = false;
+        try {
+            if (mInterface != null) {
+                result = mInterface.setAllowedNetworkTypesForReason(subId,
+                        TelephonyManager.ALLOWED_NETWORK_TYPES_REASON_USER, allowedNetworkTypes);
+            } else {
+                throw new IllegalStateException("telephony service is null.");
+            }
+        } catch (RemoteException e) {
+            Log.e(TAG, "setAllowedNetworkTypesForReason RemoteException" + e);
+            errPw.println(SET_ALLOWED_NETWORK_TYPES_FOR_USER + " RemoteException " + e);
+            return -1;
+        }
+
+        String resultMessage = SET_ALLOWED_NETWORK_TYPES_FOR_USER + " failed";
+        if (result) {
+            resultMessage = SET_ALLOWED_NETWORK_TYPES_FOR_USER + " completed";
+        }
+        getOutPrintWriter().println(resultMessage);
+        return 0;
+    }
+
+    private long convertNetworkTypeBitmaskFromStringToLong(String bitmaskString) {
+        if (TextUtils.isEmpty(bitmaskString)) {
+            return -1;
+        }
+        if (VDBG) {
+            Log.v(LOG_TAG, "AllowedNetworkTypes:" + bitmaskString
+                            + ", length: " + bitmaskString.length());
+        }
+        try {
+            return Long.parseLong(bitmaskString, 2);
+        } catch (NumberFormatException e) {
+            Log.e(LOG_TAG, "AllowedNetworkTypes: " + e);
+            return -1;
+        }
     }
 }
