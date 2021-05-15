@@ -7464,16 +7464,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public int getSubIdForPhoneAccount(PhoneAccount phoneAccount) {
-        final long identity = Binder.clearCallingIdentity();
-        try {
-            return PhoneUtils.getSubIdForPhoneAccount(phoneAccount);
-        } finally {
-            Binder.restoreCallingIdentity(identity);
-        }
-    }
-
-    @Override
     public int getSubIdForPhoneAccountHandle(
             PhoneAccountHandle phoneAccountHandle, String callingPackage, String callingFeatureId) {
         if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(mApp, getDefaultSubscription(),
