@@ -294,7 +294,7 @@
     <string name="limited_sim_function_notification_title" msgid="612715399099846281">"Абмежаваныя функцыі SIM-карты"</string>
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"Выклікі і перадача даных праз <xliff:g id="CARRIER_NAME">%1$s</xliff:g> могуць блакіравацца пры выкарыстанні нумара <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>."</string>
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"Выклікі і перадача даных праз <xliff:g id="CARRIER_NAME">%1$s</xliff:g> блакіруюцца пры выкарыстанні іншай SIM-карты."</string>
-    <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"Знойдзены і выдалены састарэлыя ўліковыя запісы SIP"</string>
+    <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"Знойдзены і выдалены ўстарэлыя ўліковыя запісы SIP"</string>
     <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"На платформе Android больш не падтрымліваецца SIP-тэлефанія.\nВашы існуючыя ўліковыя запісы SIP (<xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g>) выдалены.\nПацвердзіце стандартны ўліковы запіс для выклікаў."</string>
     <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"Перайсці ў налады"</string>
     <string name="data_usage_title" msgid="8438592133893837464">"Выкарыстанне трафіка"</string>
@@ -515,7 +515,6 @@
     <string name="puk2_requested" msgid="6992374450720307514">"Пароль няправільны. Зараз SIM-карта заблакіравана. Увядзіце код PUK2."</string>
     <string name="puk2_blocked" msgid="3131139031779319911">"Код PUK2 заблакіраваны назаўжды."</string>
     <string name="pin2_attempts" msgid="5625178102026453023">\n"У вас засталося спроб: <xliff:g id="NUMBER">%d</xliff:g>."</string>
-    <string name="puk2_locked" msgid="6497760825455461057">"Код PUK2 заблакіраваны. Для разблакіроўкі звярніцеся да пастаўшчыка паслуг."</string>
     <string name="pin2_unblocked" msgid="4481107908727789303">"Код PIN2 больш не заблакіраваны"</string>
     <string name="pin2_error_exception" msgid="8116103864600823641">"Памылка сеткі або SIM-карты"</string>
     <string name="doneButton" msgid="7371209609238460207">"Гатова"</string>
@@ -931,5 +930,5 @@
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Запусціць сінхранізацыю з аператарам"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Сігнал Bluetooth слабы. Паспрабуйце пераключыцца на гучную сувязь."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Апавяшчэнне пра якасць выкліку"</string>
-    <string name="notification_channel_sip_account" msgid="1261816025156179637">"Састарэлыя ўліковыя запісы SIP"</string>
+    <string name="notification_channel_sip_account" msgid="1261816025156179637">"Устарэлыя ўліковыя запісы SIP"</string>
 </resources>
