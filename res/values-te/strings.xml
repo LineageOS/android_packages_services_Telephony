@@ -144,7 +144,7 @@
     <string name="stk_cc_ss_to_ussd_error" msgid="8330749347425752192">"SS అభ్యర్థన USSD అభ్యర్థనకు మార్చబడింది"</string>
     <string name="stk_cc_ss_to_ss_error" msgid="8297155544652134278">"కొత్త SS అభ్యర్థనకు మార్చబడింది"</string>
     <string name="stk_cc_ss_to_dial_video_error" msgid="4255261231466032505">"SS అభ్యర్థన వీడియో కాల్‌కి మార్చబడింది"</string>
-    <string name="fdn_check_failure" msgid="1833769746374185247">"మీ ఫోన్ అనువర్తనం యొక్క ఫిక్స్‌డ్ డయలింగ్ నంబర్‌ల సెట్టింగ్ ప్రారంభించబడింది. తత్ఫలితంగా, కాల్ సంబంధిత లక్షణాల్లో కొన్ని పని చేయడం లేదు."</string>
+    <string name="fdn_check_failure" msgid="1833769746374185247">"మీ ఫోన్ యాప్‌ యొక్క ఫిక్స్‌డ్ డయలింగ్ నంబర్‌ల సెట్టింగ్ ప్రారంభించబడింది. తత్ఫలితంగా, కాల్ సంబంధిత లక్షణాల్లో కొన్ని పని చేయడం లేదు."</string>
     <string name="radio_off_error" msgid="8321564164914232181">"ఈ సెట్టింగ్‌లను వీక్షించడానికి ముందు రేడియోను ప్రారంభించండి."</string>
     <string name="close_dialog" msgid="1074977476136119408">"సరే"</string>
     <string name="enable" msgid="2636552299455477603">"ఆన్ చేయి"</string>
