@@ -155,7 +155,6 @@ public class PhoneGlobals extends ContextWrapper {
     CallNotifier notifier;
     CallerInfoCache callerInfoCache;
     NotificationMgr notificationMgr;
-    ImsResolver mImsResolver;
     TelephonyRcsService mTelephonyRcsService;
     public PhoneInterfaceManager phoneMgr;
     public ImsRcsController imsRcsController;
@@ -402,10 +401,10 @@ public class PhoneGlobals extends ContextWrapper {
                         R.string.config_ims_mmtel_package);
                 String defaultImsRcsPackage = getResources().getString(
                         R.string.config_ims_rcs_package);
-                mImsResolver = new ImsResolver(this, defaultImsMmtelPackage,
+                ImsResolver.make(this, defaultImsMmtelPackage,
                         defaultImsRcsPackage, PhoneFactory.getPhones().length,
                         new ImsFeatureBinderRepository());
-                mImsResolver.initialize();
+                ImsResolver.getInstance().initialize();
 
                 // With the IMS phone created, load static config.xml values from the phone process
                 // so that it can be provided to the ImsPhoneCallTracker.
@@ -550,10 +549,6 @@ public class PhoneGlobals extends ContextWrapper {
 
     public static Phone getPhone(int subId) {
         return PhoneFactory.getPhone(SubscriptionManager.getPhoneId(subId));
-    }
-
-    public ImsResolver getImsResolver() {
-        return mImsResolver;
     }
 
     /* package */ CallManager getCallManager() {
@@ -1021,7 +1016,7 @@ public class PhoneGlobals extends ContextWrapper {
         pw.println("ImsResolver:");
         pw.increaseIndent();
         try {
-            if (mImsResolver != null) mImsResolver.dump(fd, pw, args);
+            if (ImsResolver.getInstance() != null) ImsResolver.getInstance().dump(fd, pw, args);
         } catch (Exception e) {
             e.printStackTrace();
         }
