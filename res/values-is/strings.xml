@@ -515,6 +515,7 @@
     <string name="puk2_requested" msgid="6992374450720307514">"Rangt aðgangsorð. SIM-kortinu var læst. Sláðu inn PUK2-númerið."</string>
     <string name="puk2_blocked" msgid="3131139031779319911">"PUK2 er læst fyrir fullt og allt."</string>
     <string name="pin2_attempts" msgid="5625178102026453023">\n"<xliff:g id="NUMBER">%d</xliff:g> tilraunir eru eftir."</string>
+    <string name="puk2_locked" msgid="6497760825455461057">"Læst með PUK2. Hafðu samband við þjónustuaðila til að taka úr lás."</string>
     <string name="pin2_unblocked" msgid="4481107908727789303">"PIN2-númer ekki lengur læst"</string>
     <string name="pin2_error_exception" msgid="8116103864600823641">"Villa í símkerfi eða á SIM-korti"</string>
     <string name="doneButton" msgid="7371209609238460207">"Lokið"</string>

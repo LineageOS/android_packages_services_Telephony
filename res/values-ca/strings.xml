@@ -515,6 +515,7 @@
     <string name="puk2_requested" msgid="6992374450720307514">"La contrasenya no és correcta i la SIM s\'ha bloquejat. Introdueix el PUK2."</string>
     <string name="puk2_blocked" msgid="3131139031779319911">"El PUK2 s\'ha bloquejat permanentment."</string>
     <string name="pin2_attempts" msgid="5625178102026453023">\n"Et queden <xliff:g id="NUMBER">%d</xliff:g> intents."</string>
+    <string name="puk2_locked" msgid="6497760825455461057">"El PUK2 s\'ha bloquejat. Contacta amb el proveïdor de serveis per desbloquejar-lo."</string>
     <string name="pin2_unblocked" msgid="4481107908727789303">"El PIN2 ja no està bloquejat."</string>
     <string name="pin2_error_exception" msgid="8116103864600823641">"Error de la xarxa o de targeta SIM"</string>
     <string name="doneButton" msgid="7371209609238460207">"Fet"</string>
@@ -574,7 +575,7 @@
     <string name="description_concat_format" msgid="2014471565101724088">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="1115266533703764049">"Utilitzeu el teclat per marcar"</string>
     <string name="onscreenHoldText" msgid="4025348842151665191">"Posa en espera"</string>
-    <string name="onscreenEndCallText" msgid="6138725377654842757">"Final"</string>
+    <string name="onscreenEndCallText" msgid="6138725377654842757">"Finalitza"</string>
     <string name="onscreenShowDialpadText" msgid="658465753816164079">"Teclat"</string>
     <string name="onscreenMuteText" msgid="5470306116733843621">"Silencia"</string>
     <string name="onscreenAddCallText" msgid="9075675082903611677">"Afegeix una trucada"</string>

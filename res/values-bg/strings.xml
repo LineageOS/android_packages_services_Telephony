@@ -515,6 +515,7 @@
     <string name="puk2_requested" msgid="6992374450720307514">"Паролата е неправилна. SIM картата вече е заключена. Въведете PUK2 кода."</string>
     <string name="puk2_blocked" msgid="3131139031779319911">"PUK2 е блокиран завинаги."</string>
     <string name="pin2_attempts" msgid="5625178102026453023">\n"Остават ви <xliff:g id="NUMBER">%d</xliff:g> опита."</string>
+    <string name="puk2_locked" msgid="6497760825455461057">"Заключена с PUK2. За отключване се обърнете към оператора."</string>
     <string name="pin2_unblocked" msgid="4481107908727789303">"ПИН2 кодът вече не е блокиран"</string>
     <string name="pin2_error_exception" msgid="8116103864600823641">"Грешка в мрежата или SIM картата"</string>
     <string name="doneButton" msgid="7371209609238460207">"Готово"</string>

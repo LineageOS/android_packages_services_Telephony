@@ -515,6 +515,7 @@
     <string name="puk2_requested" msgid="6992374450720307514">"Le mot de passe est erroné. La carte SIM a été verrouillée. Entrez  le code PUK2."</string>
     <string name="puk2_blocked" msgid="3131139031779319911">"Le code PUK2 est bloqué définitivement."</string>
     <string name="pin2_attempts" msgid="5625178102026453023">\n"Il vous reste <xliff:g id="NUMBER">%d</xliff:g> tentatives."</string>
+    <string name="puk2_locked" msgid="6497760825455461057">"Verrouillage PUK2. Communiquez avec le fournisseur de services pour procéder au déverrouillage."</string>
     <string name="pin2_unblocked" msgid="4481107908727789303">"Le NIP2 n\'est plus bloqué."</string>
     <string name="pin2_error_exception" msgid="8116103864600823641">"Erreur de réseau ou de carte SIM"</string>
     <string name="doneButton" msgid="7371209609238460207">"Terminé"</string>

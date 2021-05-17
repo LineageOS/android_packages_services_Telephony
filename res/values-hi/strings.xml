@@ -515,6 +515,7 @@
     <string name="puk2_requested" msgid="6992374450720307514">"पासवर्ड गलत है. सिम अब लॉक हो गई है. PUK2 डालें."</string>
     <string name="puk2_blocked" msgid="3131139031779319911">"PUK2 स्थायी रूप से अवरोधित है."</string>
     <string name="pin2_attempts" msgid="5625178102026453023">\n"आपके पास <xliff:g id="NUMBER">%d</xliff:g> प्रयास शेष हैं."</string>
+    <string name="puk2_locked" msgid="6497760825455461057">"सिम कार्ड PUK2 से लॉक है. अनलॉक करने के लिए, सेवा देने वाली कंपनी से संपर्क करें."</string>
     <string name="pin2_unblocked" msgid="4481107908727789303">"PIN2 अब अवरोधित नहीं है"</string>
     <string name="pin2_error_exception" msgid="8116103864600823641">"नेटवर्क या SIM कार्ड गड़बड़ी"</string>
     <string name="doneButton" msgid="7371209609238460207">"पूरा हो गया"</string>
