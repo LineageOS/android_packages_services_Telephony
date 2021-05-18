@@ -186,9 +186,9 @@
     <string name="manual_mode_disallowed_summary" msgid="3970048592179890197">"‏هنگام اتصال به %1$s دردسترس نیست"</string>
     <string name="network_select_title" msgid="4117305053881611988">"شبکه"</string>
     <string name="register_automatically" msgid="3907580547590554834">"ثبت خودکار..."</string>
-    <string name="preferred_network_mode_title" msgid="5253395265169539830">"نوع شبکه برگزیده"</string>
+    <string name="preferred_network_mode_title" msgid="5253395265169539830">"نوع شبکه ترجیحی"</string>
     <string name="preferred_network_mode_summary" msgid="3787989000044330064">"تغییر حالت عملکرد شبکه"</string>
-    <string name="preferred_network_mode_dialogtitle" msgid="2781447433514459696">"نوع شبکه برگزیده"</string>
+    <string name="preferred_network_mode_dialogtitle" msgid="2781447433514459696">"نوع شبکه ترجیحی"</string>
     <string name="forbidden_network" msgid="5081729819561333023">"(ممنوع است)"</string>
     <string name="choose_network_title" msgid="5335832663422653082">"انتخاب شبکه"</string>
     <string name="network_disconnected" msgid="8844141106841160825">"قطع اتصال"</string>
@@ -231,44 +231,44 @@
     <item msgid="3869566732842046032">"NR/LTE/TDSCDMA/GSM/WCDMA"</item>
     <item msgid="3942770927563146543">"NR/LTE/TDSCDMA/CDMA/EvDo/GSM/WCDMA"</item>
   </string-array>
-    <string name="preferred_network_mode_wcdma_perf_summary" msgid="7851493369130750126">"‏حالت شبکه برگزیده: WCDMA برگزیده"</string>
-    <string name="preferred_network_mode_gsm_only_summary" msgid="4323367929994392830">"‏حالت شبکه برگزیده: فقط GSM"</string>
-    <string name="preferred_network_mode_wcdma_only_summary" msgid="3585482191951442207">"‏حالت شبکه برگزیده: فقط WCDMA"</string>
-    <string name="preferred_network_mode_gsm_wcdma_summary" msgid="2988950751948316810">"‏حالت شبکه برگزیده: GSM / WCDMA"</string>
+    <string name="preferred_network_mode_wcdma_perf_summary" msgid="7851493369130750126">"‏حالت شبکه ترجیحی: WCDMA برگزیده"</string>
+    <string name="preferred_network_mode_gsm_only_summary" msgid="4323367929994392830">"‏حالت شبکه ترجیحی: فقط GSM"</string>
+    <string name="preferred_network_mode_wcdma_only_summary" msgid="3585482191951442207">"‏حالت شبکه ترجیحی: فقط WCDMA"</string>
+    <string name="preferred_network_mode_gsm_wcdma_summary" msgid="2988950751948316810">"‏حالت شبکه ترجیحی: GSM / WCDMA"</string>
     <string name="preferred_network_mode_cdma_summary" msgid="9127141320343936911">"‏حالت شبکه ترجیحی: CDMA"</string>
     <string name="preferred_network_mode_cdma_evdo_summary" msgid="3629440709757307077">"‏حالت شبکه ترجیحی: CDMA / EvDo"</string>
-    <string name="preferred_network_mode_cdma_only_summary" msgid="211164451887102568">"‏حالت شبکه برگزیده: فقط CDMA"</string>
-    <string name="preferred_network_mode_evdo_only_summary" msgid="939116631952132878">"‏حالت شبکه برگزیده: فقط EvDo"</string>
-    <string name="preferred_network_mode_cdma_evdo_gsm_wcdma_summary" msgid="7891131456022601976">"‏حالت شبکه برگزیده: CDMA/EvDo/GSM/WCDMA"</string>
-    <string name="preferred_network_mode_lte_summary" msgid="8050539466545797149">"‏حالت شبکه برگزیده: LTE"</string>
-    <string name="preferred_network_mode_lte_gsm_wcdma_summary" msgid="2217794334331254936">"‏حالت شبکه برگزیده: GSM/WCDMA/LTE"</string>
-    <string name="preferred_network_mode_lte_cdma_evdo_summary" msgid="5559198623419981805">"‏حالت شبکه برگزیده: CDMA+LTE/EVDO"</string>
-    <string name="preferred_network_mode_lte_cdma_evdo_gsm_wcdma_summary" msgid="6707224437925495615">"‏حالت شبکه برگزیده: LTE/CDMA/EvDo/GSM/WCDMA"</string>
-    <string name="preferred_network_mode_global_summary" msgid="3847086258439582411">"حالت شبکه برگزیده: سراسری"</string>
-    <string name="preferred_network_mode_lte_wcdma_summary" msgid="7001804022020813865">"‏حالت شبکه برگزیده: LTE / WCDMA"</string>
-    <string name="preferred_network_mode_lte_gsm_umts_summary" msgid="6484203890156282179">"‏حالت شبکه برگزیده: LTE / GSM / UMTS"</string>
-    <string name="preferred_network_mode_lte_cdma_summary" msgid="8187929456614068518">"‏حالت شبکه برگزیده: LTE / CDMA"</string>
-    <string name="preferred_network_mode_tdscdma_summary" msgid="3602127224234207206">"‏حالت شبکه برگزیده: TDSCDMA"</string>
-    <string name="preferred_network_mode_tdscdma_wcdma_summary" msgid="7076968749402201123">"‏حالت شبکه برگزیده: TDSCDMA / WCDMA"</string>
-    <string name="preferred_network_mode_lte_tdscdma_summary" msgid="3001058390866953624">"‏حالت شبکه برگزیده: LTE / TDSCDMA"</string>
-    <string name="preferred_network_mode_tdscdma_gsm_summary" msgid="1716983444872465309">"‏حالت شبکه برگزیده: TDSCDMA / GSM"</string>
-    <string name="preferred_network_mode_lte_tdscdma_gsm_summary" msgid="1349057007230669585">"‏حالت شبکه برگزیده: LTE/GSM/TDSCDMA"</string>
-    <string name="preferred_network_mode_tdscdma_gsm_wcdma_summary" msgid="2092262901885164194">"‏حالت شبکه برگزیده: TDSCDMA/GSM/WCDMA"</string>
-    <string name="preferred_network_mode_lte_tdscdma_wcdma_summary" msgid="56422129430744466">"‏حالت شبکه برگزیده: LTE/TDSCDMA/WCDMA"</string>
-    <string name="preferred_network_mode_lte_tdscdma_gsm_wcdma_summary" msgid="2993923113350341106">"‏حالت شبکه برگزیده: LTE/TDSCDMA/GSM/WCDMA"</string>
-    <string name="preferred_network_mode_tdscdma_cdma_evdo_gsm_wcdma_summary" msgid="2779089629254220257">"‏حالت شبکه برگزیده: TDSCDMA/CDMA/EvDo/GSM/WCDMA"</string>
-    <string name="preferred_network_mode_lte_tdscdma_cdma_evdo_gsm_wcdma_summary" msgid="9065672185435798587">"‏حالت شبکه برگزیده: LTE/TDSCDMA/CDMA/EvDo/GSM/WCDMA"</string>
-    <string name="preferred_network_mode_nr_only_summary" msgid="1467452233297987391">"‏حالت شبکه برگزیده: فقط NR"</string>
-    <string name="preferred_network_mode_nr_lte_summary" msgid="5890170406507535976">"‏حالت شبکه برگزیده: NR / LTE"</string>
-    <string name="preferred_network_mode_nr_lte_cdma_evdo_summary" msgid="5507940227264296616">"‏حالت شبکه برگزیده: NR/LTE/CDMA/EvDo"</string>
-    <string name="preferred_network_mode_nr_lte_gsm_wcdma_summary" msgid="2811179121638665248">"‏حالت شبکه برگزیده: NR/LTE/GSM/WCDMA"</string>
-    <string name="preferred_network_mode_nr_lte_cdma_evdo_gsm_wcdma_summary" msgid="7631365223836621902">"‏حالت شبکه برگزیده: NR/LTE/CDMA/EvDo/GSM/WCDMA"</string>
-    <string name="preferred_network_mode_nr_lte_wcdma_summary" msgid="8696016062943591864">"‏حالت شبکه برگزیده: NR/LTE/WCDMA"</string>
-    <string name="preferred_network_mode_nr_lte_tdscdma_summary" msgid="1236182344680726751">"‏حالت شبکه برگزیده: NR/LTE/TDSCDMA"</string>
-    <string name="preferred_network_mode_nr_lte_tdscdma_gsm_summary" msgid="8384454155773415993">"‏حالت شبکه برگزیده: NR/LTE/TDSCDMA/GSM"</string>
-    <string name="preferred_network_mode_nr_lte_tdscdma_wcdma_summary" msgid="5912457779733343522">"‏حالت شبکه برگزیده: NR/LTE/TDSCDMA/WCDMA"</string>
-    <string name="preferred_network_mode_nr_lte_tdscdma_gsm_wcdma_summary" msgid="6769797110309412576">"‏حالت شبکه برگزیده: NR/LTE/TDSCDMA/GSM/WCDMA"</string>
-    <string name="preferred_network_mode_nr_lte_tdscdma_cdma_evdo_gsm_wcdma_summary" msgid="4260661428277578573">"‏حالت شبکه برگزیده: NR/LTE/TDSCDMA/CDMA/EvDo/GSM/WCDMA"</string>
+    <string name="preferred_network_mode_cdma_only_summary" msgid="211164451887102568">"‏حالت شبکه ترجیحی: فقط CDMA"</string>
+    <string name="preferred_network_mode_evdo_only_summary" msgid="939116631952132878">"‏حالت شبکه ترجیحی: فقط EvDo"</string>
+    <string name="preferred_network_mode_cdma_evdo_gsm_wcdma_summary" msgid="7891131456022601976">"‏حالت شبکه ترجیحی: CDMA/EvDo/GSM/WCDMA"</string>
+    <string name="preferred_network_mode_lte_summary" msgid="8050539466545797149">"‏حالت شبکه ترجیحی: LTE"</string>
+    <string name="preferred_network_mode_lte_gsm_wcdma_summary" msgid="2217794334331254936">"‏حالت شبکه ترجیحی: GSM/WCDMA/LTE"</string>
+    <string name="preferred_network_mode_lte_cdma_evdo_summary" msgid="5559198623419981805">"‏حالت شبکه ترجیحی: CDMA+LTE/EVDO"</string>
+    <string name="preferred_network_mode_lte_cdma_evdo_gsm_wcdma_summary" msgid="6707224437925495615">"‏حالت شبکه ترجیحی: LTE/CDMA/EvDo/GSM/WCDMA"</string>
+    <string name="preferred_network_mode_global_summary" msgid="3847086258439582411">"حالت شبکه ترجیحی: سراسری"</string>
+    <string name="preferred_network_mode_lte_wcdma_summary" msgid="7001804022020813865">"‏حالت شبکه ترجیحی: LTE / WCDMA"</string>
+    <string name="preferred_network_mode_lte_gsm_umts_summary" msgid="6484203890156282179">"‏حالت شبکه ترجیحی: LTE / GSM / UMTS"</string>
+    <string name="preferred_network_mode_lte_cdma_summary" msgid="8187929456614068518">"‏حالت شبکه ترجیحی: LTE / CDMA"</string>
+    <string name="preferred_network_mode_tdscdma_summary" msgid="3602127224234207206">"‏حالت شبکه ترجیحی: TDSCDMA"</string>
+    <string name="preferred_network_mode_tdscdma_wcdma_summary" msgid="7076968749402201123">"‏حالت شبکه ترجیحی: TDSCDMA / WCDMA"</string>
+    <string name="preferred_network_mode_lte_tdscdma_summary" msgid="3001058390866953624">"‏حالت شبکه ترجیحی: LTE / TDSCDMA"</string>
+    <string name="preferred_network_mode_tdscdma_gsm_summary" msgid="1716983444872465309">"‏حالت شبکه ترجیحی: TDSCDMA / GSM"</string>
+    <string name="preferred_network_mode_lte_tdscdma_gsm_summary" msgid="1349057007230669585">"‏حالت شبکه ترجیحی: LTE/GSM/TDSCDMA"</string>
+    <string name="preferred_network_mode_tdscdma_gsm_wcdma_summary" msgid="2092262901885164194">"‏حالت شبکه ترجیحی: TDSCDMA/GSM/WCDMA"</string>
+    <string name="preferred_network_mode_lte_tdscdma_wcdma_summary" msgid="56422129430744466">"‏حالت شبکه ترجیحی: LTE/TDSCDMA/WCDMA"</string>
+    <string name="preferred_network_mode_lte_tdscdma_gsm_wcdma_summary" msgid="2993923113350341106">"‏حالت شبکه ترجیحی: LTE/TDSCDMA/GSM/WCDMA"</string>
+    <string name="preferred_network_mode_tdscdma_cdma_evdo_gsm_wcdma_summary" msgid="2779089629254220257">"‏حالت شبکه ترجیحی: TDSCDMA/CDMA/EvDo/GSM/WCDMA"</string>
+    <string name="preferred_network_mode_lte_tdscdma_cdma_evdo_gsm_wcdma_summary" msgid="9065672185435798587">"‏حالت شبکه ترجیحی: LTE/TDSCDMA/CDMA/EvDo/GSM/WCDMA"</string>
+    <string name="preferred_network_mode_nr_only_summary" msgid="1467452233297987391">"‏حالت شبکه ترجیحی: فقط NR"</string>
+    <string name="preferred_network_mode_nr_lte_summary" msgid="5890170406507535976">"‏حالت شبکه ترجیحی: NR / LTE"</string>
+    <string name="preferred_network_mode_nr_lte_cdma_evdo_summary" msgid="5507940227264296616">"‏حالت شبکه ترجیحی: NR/LTE/CDMA/EvDo"</string>
+    <string name="preferred_network_mode_nr_lte_gsm_wcdma_summary" msgid="2811179121638665248">"‏حالت شبکه ترجیحی: NR/LTE/GSM/WCDMA"</string>
+    <string name="preferred_network_mode_nr_lte_cdma_evdo_gsm_wcdma_summary" msgid="7631365223836621902">"‏حالت شبکه ترجیحی: NR/LTE/CDMA/EvDo/GSM/WCDMA"</string>
+    <string name="preferred_network_mode_nr_lte_wcdma_summary" msgid="8696016062943591864">"‏حالت شبکه ترجیحی: NR/LTE/WCDMA"</string>
+    <string name="preferred_network_mode_nr_lte_tdscdma_summary" msgid="1236182344680726751">"‏حالت شبکه ترجیحی: NR/LTE/TDSCDMA"</string>
+    <string name="preferred_network_mode_nr_lte_tdscdma_gsm_summary" msgid="8384454155773415993">"‏حالت شبکه ترجیحی: NR/LTE/TDSCDMA/GSM"</string>
+    <string name="preferred_network_mode_nr_lte_tdscdma_wcdma_summary" msgid="5912457779733343522">"‏حالت شبکه ترجیحی: NR/LTE/TDSCDMA/WCDMA"</string>
+    <string name="preferred_network_mode_nr_lte_tdscdma_gsm_wcdma_summary" msgid="6769797110309412576">"‏حالت شبکه ترجیحی: NR/LTE/TDSCDMA/GSM/WCDMA"</string>
+    <string name="preferred_network_mode_nr_lte_tdscdma_cdma_evdo_gsm_wcdma_summary" msgid="4260661428277578573">"‏حالت شبکه ترجیحی: NR/LTE/TDSCDMA/CDMA/EvDo/GSM/WCDMA"</string>
     <string name="call_category" msgid="4394703838833058138">"درحال تماس"</string>
     <string name="network_operator_category" msgid="4992217193732304680">"شبکه"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="4213420368777080540">"‏حالت پیشرفته 4G LTE"</string>
@@ -515,6 +515,7 @@
     <string name="puk2_requested" msgid="6992374450720307514">"‏گذرواژه نادرست است. اکنون سیم‌کارت قفل شده است. PUK2 را وارد کنید."</string>
     <string name="puk2_blocked" msgid="3131139031779319911">"‏PUK2 به صورت دائمی مسدود شده است."</string>
     <string name="pin2_attempts" msgid="5625178102026453023">\n"<xliff:g id="NUMBER">%d</xliff:g> تلاش باقی‌مانده دارید."</string>
+    <string name="puk2_locked" msgid="6497760825455461057">"‏PUK2 قفل است. برای باز کردن قفل، با ارائه دهنده خدمات تماس بگیرید."</string>
     <string name="pin2_unblocked" msgid="4481107908727789303">"پین۲ دیگر مسدود نیست"</string>
     <string name="pin2_error_exception" msgid="8116103864600823641">"خطای شبکه یا سیم‌کارت"</string>
     <string name="doneButton" msgid="7371209609238460207">"تمام"</string>
@@ -898,7 +899,7 @@
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"نوع شبکه صوتی:"</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"نوع شبکه داده:"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"انتخاب نمایه تلفن"</string>
-    <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"تنظیم نوع شبکه برگزیده:"</string>
+    <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"تنظیم نوع شبکه ترجیحی:"</string>
     <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"‏پینگ کردن نام میزبان (www.google.com)‏ IPv4:"</string>
     <string name="radio_info_ping_hostname_v6" msgid="2748637889486554603">"‏پینگ کردن نام میزبان (www.google.com)‏ IPv6:"</string>
     <string name="radio_info_http_client_test" msgid="1329583721088428238">"‏آزمایش کارخواه HTTP:"</string>

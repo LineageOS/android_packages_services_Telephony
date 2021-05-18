@@ -515,6 +515,7 @@
     <string name="puk2_requested" msgid="6992374450720307514">"ពាក្យសម្ងាត់មិនត្រឹមត្រូវ។ ឥឡូវនេះស៊ីមកាតត្រូវបានចាក់សោ។ បញ្ចូល PUK2។"</string>
     <string name="puk2_blocked" msgid="3131139031779319911">"លេខ​កូដ PUK2 ត្រូវ​បាន​​ទប់ស្កាត់​ជា​អចិន្ត្រៃយ៍។"</string>
     <string name="pin2_attempts" msgid="5625178102026453023">\n"អ្នកនៅសល់ការព្យាយាមបញ្ចូល <xliff:g id="NUMBER">%d</xliff:g> ដងទៀត។"</string>
+    <string name="puk2_locked" msgid="6497760825455461057">"បាន​ចាក់​សោ​ដោយ​ប្រើ PUK2។ សូម​ទាក់ទង​ទៅ​ក្រុមហ៊ុនផ្ដល់សេវា ដើម្បី​ដោះ​សោ។"</string>
     <string name="pin2_unblocked" msgid="4481107908727789303">"លេខសម្ងាត់ PIN2 មិនត្រូវបានរារាំងទៀតទេ"</string>
     <string name="pin2_error_exception" msgid="8116103864600823641">"បញ្ហាស៊ីមកាត ឬបណ្ដាញ។"</string>
     <string name="doneButton" msgid="7371209609238460207">"រួចរាល់"</string>
