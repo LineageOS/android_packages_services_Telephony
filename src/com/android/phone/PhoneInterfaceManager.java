@@ -140,6 +140,7 @@ import com.android.ims.rcs.uce.eab.EabUtil;
 import com.android.internal.telephony.CallForwardInfo;
 import com.android.internal.telephony.CallManager;
 import com.android.internal.telephony.CallStateException;
+import com.android.internal.telephony.CallTracker;
 import com.android.internal.telephony.CarrierResolver;
 import com.android.internal.telephony.CellNetworkScanResult;
 import com.android.internal.telephony.CommandException;
@@ -10249,6 +10250,32 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 return;
             }
             service.setActiveDeviceToDeviceTransport(transport);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    @Override
+    public void setDeviceToDeviceForceEnabled(boolean isForceEnabled) {
+        TelephonyPermissions.enforceShellOnly(Binder.getCallingUid(),
+                "setDeviceToDeviceForceEnabled");
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            Arrays.stream(PhoneFactory.getPhones()).forEach(
+                    p -> {
+                        Phone thePhone = p.getImsPhone();
+                        if (thePhone != null && thePhone instanceof ImsPhone) {
+                            ImsPhone imsPhone = (ImsPhone) thePhone;
+                            CallTracker tracker = imsPhone.getCallTracker();
+                            if (tracker != null && tracker instanceof ImsPhoneCallTracker) {
+                                ImsPhoneCallTracker imsPhoneCallTracker =
+                                        (ImsPhoneCallTracker) tracker;
+                                imsPhoneCallTracker.setDeviceToDeviceForceEnabled(isForceEnabled);
+                            }
+                        }
+                    }
+            );
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
