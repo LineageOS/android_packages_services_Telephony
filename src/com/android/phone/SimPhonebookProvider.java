@@ -16,6 +16,9 @@
 
 package com.android.phone;
 
+import static com.android.internal.telephony.IccProvider.STR_NEW_TAG;
+import static com.android.internal.telephony.IccProvider.STR_NEW_NUMBER;
+
 import android.Manifest;
 import android.annotation.TestApi;
 import android.content.ContentProvider;
@@ -662,8 +665,11 @@ public class SimPhonebookProvider extends ContentProvider {
     private boolean updateRecord(PhonebookArgs args, AdnRecord existingRecord, String pin2,
             String newName, String newPhone) {
         try {
+            ContentValues values = new ContentValues();
+            values.put(STR_NEW_TAG, newName);
+            values.put(STR_NEW_NUMBER, newPhone);
             return mIccPhoneBookSupplier.get().updateAdnRecordsInEfByIndexForSubscriber(
-                    args.subscriptionId, existingRecord.getEfid(), newName, newPhone,
+                    args.subscriptionId, existingRecord.getEfid(), values,
                     existingRecord.getRecId(),
                     pin2);
         } catch (RemoteException e) {
