@@ -94,7 +94,7 @@ public class ImsRcsController extends IImsRcsController.Stub {
         mApp = app;
         TelephonyFrameworkInitializer
                 .getTelephonyServiceManager().getTelephonyImsServiceRegisterer().register(this);
-        mImsResolver = mApp.getImsResolver();
+        mImsResolver = ImsResolver.getInstance();
     }
 
     /**
