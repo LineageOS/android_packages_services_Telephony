@@ -9779,7 +9779,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 throw new IllegalArgumentException("modem returned INVALID_ARGUMENTS");
             } else if (thermalMitigationResult
                     == MODEM_DOES_NOT_SUPPORT_DATA_THROTTLING_ERROR_CODE) {
-                throw new IllegalArgumentException("modem does not support data throttling");
+                log("Modem likely does not support data throttling on secondary carrier. Data " +
+                        "throttling action = " + dataThrottlingRequest.getDataThrottlingAction());
+                return TelephonyManager.THERMAL_MITIGATION_RESULT_MODEM_ERROR;
             }
             return thermalMitigationResult;
         }
