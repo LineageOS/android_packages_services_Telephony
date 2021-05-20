@@ -2164,7 +2164,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private PhoneInterfaceManager(PhoneGlobals app) {
         mApp = app;
         mCM = PhoneGlobals.getInstance().mCM;
-        mImsResolver = PhoneGlobals.getInstance().getImsResolver();
+        mImsResolver = ImsResolver.getInstance();
         mUserManager = (UserManager) app.getSystemService(Context.USER_SERVICE);
         mAppOps = (AppOpsManager)app.getSystemService(Context.APP_OPS_SERVICE);
         mPm = app.getSystemService(PackageManager.class);
