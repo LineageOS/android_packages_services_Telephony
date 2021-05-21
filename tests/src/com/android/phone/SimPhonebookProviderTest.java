@@ -51,6 +51,7 @@ import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.rule.provider.ProviderTestRule;
 
 import com.android.internal.telephony.IIccPhoneBook;
+import com.android.internal.telephony.uicc.AdnCapacity;
 import com.android.internal.telephony.uicc.AdnRecord;
 import com.android.internal.telephony.uicc.IccConstants;
 
@@ -1394,15 +1395,18 @@ public final class SimPhonebookProviderTest {
         }
 
         @Override
-        public boolean updateAdnRecordsInEfBySearch(int efid, String oldTag, String oldPhoneNumber,
-                String newTag, String newPhoneNumber, String pin2) {
-            return updateAdnRecordsInEfBySearchForSubscriber(
-                    mDefaultSubscriptionId, efid,
-                    oldTag, oldPhoneNumber, newTag, newPhoneNumber, pin2);
+        public boolean updateAdnRecordsInEfBySearchForSubscriber(int subId, int efid,
+                ContentValues values, String pin2) {
+            final String oldTag = values.getAsString(IccProvider.STR_TAG);
+            final String oldPhoneNumber = values.getAsString(IccProvider.STR_NUMBER);
+            final String newTag = values.getAsString(IccProvider.STR_NEW_TAG);
+            final String newPhoneNumber = values.getAsString(IccProvider.STR_NEW_NUMBER);
+            return updateAdnRecordsInEfBySearchForSubscriber(subId, efid, oldTag, oldPhoneNumber,
+                    newTag, newPhoneNumber, pin2);
+
         }
 
-        @Override
-        public boolean updateAdnRecordsInEfBySearchForSubscriber(int subId, int efid, String oldTag,
+        private boolean updateAdnRecordsInEfBySearchForSubscriber(int subId, int efid, String oldTag,
                 String oldPhoneNumber, String newTag, String newPhoneNumber, String pin2) {
             if (!oldTag.isEmpty() || !oldPhoneNumber.isEmpty()) {
                 throw new IllegalArgumentException(
@@ -1413,14 +1417,16 @@ public final class SimPhonebookProviderTest {
         }
 
         @Override
-        public boolean updateAdnRecordsInEfByIndex(int efid, String newTag, String newPhoneNumber,
-                int index, String pin2) {
-            return updateAdnRecordsInEfByIndexForSubscriber(mDefaultSubscriptionId,
-                    efid, newTag, newPhoneNumber, index, pin2);
+        public boolean updateAdnRecordsInEfByIndexForSubscriber(int subId, int efid,
+                ContentValues values, int index, String pin2) {
+            final String newTag = values.getAsString(IccProvider.STR_NEW_TAG);
+            final String newPhoneNumber = values.getAsString(IccProvider.STR_NEW_NUMBER);
+            return updateAdnRecordsInEfByIndexForSubscriber(subId, efid, newTag, newPhoneNumber,
+                    index, pin2);
+
         }
 
-        @Override
-        public boolean updateAdnRecordsInEfByIndexForSubscriber(int subId, int efid, String newTag,
+        private boolean updateAdnRecordsInEfByIndexForSubscriber(int subId, int efid, String newTag,
                 String newPhoneNumber, int index, String pin2) {
             AdnRecord[] records = mRecords.computeIfAbsent(Pair.create(subId, efid), unused ->
                     createEmptyRecords(efid, 100));
@@ -1442,6 +1448,11 @@ public final class SimPhonebookProviderTest {
             }
             int count = mRecords.get(key).length;
             return new int[]{recordSize, recordSize * count, count};
+        }
+
+        @Override
+        public AdnCapacity getAdnRecordsCapacityForSubscriber(int subId) {
+            return new AdnCapacity(0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
         }
     }
 
