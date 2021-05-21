@@ -339,7 +339,7 @@
     <string name="maintenance_enable" msgid="2646784483222342290">"பராமரிப்பு இயக்கப்பட்டது"</string>
     <string name="maintenance_disable" msgid="2121032601497725602">"பராமரிப்பு முடக்கப்பட்டது"</string>
     <string name="general_news_settings" msgid="2670499575962080411">"பொது செய்திகள்"</string>
-    <string name="bf_news_settings" msgid="8571709425370794221">"வணிகம் மற்றும் நிதிசார்ந்த செய்திகள்"</string>
+    <string name="bf_news_settings" msgid="8571709425370794221">"பிசினஸ் மற்றும் நிதிசார்ந்த செய்திகள்"</string>
     <string name="sports_news_settings" msgid="2684364556989168438">"விளையாட்டுச் செய்திகள்"</string>
     <string name="entertainment_news_settings" msgid="4228527702346305543">"பொழுதுபோக்குச் செய்திகள்"</string>
     <string name="enable_disable_local" msgid="7654175079979415572">"உள்ளூர்"</string>
