@@ -2089,7 +2089,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 // Wait for at least timeoutInMs before returning null request result
                 long now = SystemClock.elapsedRealtime();
                 long deadline = now + timeoutInMs;
-                while (request == null && now < deadline) {
+                while (request.result == null && now < deadline) {
                     try {
                         request.wait(deadline - now);
                     } catch (InterruptedException e) {
