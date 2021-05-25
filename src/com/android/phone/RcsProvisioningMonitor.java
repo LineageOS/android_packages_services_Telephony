@@ -820,11 +820,6 @@ public class RcsProvisioningMonitor {
         }
     }
 
-    private IImsConfig getIImsConfig(int subId, int feature) {
-        return mPhone.getImsResolver().getImsConfig(
-                SubscriptionManager.getSlotIndex(subId), feature);
-    }
-
     private String getDmaPackageName() {
         try {
             return CollectionUtils.firstOrNull(mRoleManager.getRoleHolders(RoleManager.ROLE_SMS));
