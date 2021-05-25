@@ -964,7 +964,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         ArgumentCaptor<RadioOnStateListener.Callback> callback =
                 ArgumentCaptor.forClass(RadioOnStateListener.Callback.class);
         verify(mRadioOnHelper).triggerRadioOnAndListen(callback.capture(), eq(true),
-                eq(testPhone));
+                eq(testPhone), eq(false));
 
         assertFalse(callback.getValue().isOkToCall(testPhone, ServiceState.STATE_OUT_OF_SERVICE));
         when(mSST.isRadioOn()).thenReturn(true);
@@ -990,7 +990,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         ArgumentCaptor<RadioOnStateListener.Callback> callback =
                 ArgumentCaptor.forClass(RadioOnStateListener.Callback.class);
         verify(mRadioOnHelper).triggerRadioOnAndListen(callback.capture(), eq(true),
-                eq(testPhone));
+                eq(testPhone), eq(false));
 
         assertFalse(callback.getValue().isOkToCall(testPhone, ServiceState.STATE_OUT_OF_SERVICE));
         when(mSST.isRadioOn()).thenReturn(true);
