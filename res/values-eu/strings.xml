@@ -154,14 +154,14 @@
     <string name="no_change" msgid="3737264882821031892">"Ez da aldaketarik egin."</string>
     <string name="sum_voicemail_choose_provider" msgid="6750824719081403773">"Aukeratu erantzungailu-zerbitzua"</string>
     <string name="voicemail_default" msgid="6427575113775462077">"Operadorea"</string>
-    <string name="vm_change_pin_old_pin" msgid="7154951790929009241">"PIN kode zaharra"</string>
-    <string name="vm_change_pin_new_pin" msgid="2656200418481288069">"PIN kode berria"</string>
+    <string name="vm_change_pin_old_pin" msgid="7154951790929009241">"PIN zaharra"</string>
+    <string name="vm_change_pin_new_pin" msgid="2656200418481288069">"PIN berria"</string>
     <string name="vm_change_pin_progress_message" msgid="626015184502739044">"Itxaron, mesedez."</string>
-    <string name="vm_change_pin_error_too_short" msgid="1789139338449945483">"Laburregia da PIN kode berria."</string>
-    <string name="vm_change_pin_error_too_long" msgid="3634907034310018954">"Luzeegia da PIN kode berria."</string>
-    <string name="vm_change_pin_error_too_weak" msgid="8581892952627885719">"Ez da batere segurua PIN kode berria. Pasahitza segurua izan dadin, ez du izan behar zenbaki-segidarik edo errepikatutako zenbakirik."</string>
-    <string name="vm_change_pin_error_mismatch" msgid="5364847280026257331">"PIN kode zaharra ez dator bat."</string>
-    <string name="vm_change_pin_error_invalid" msgid="5230002671175580674">"Balio ez duten karaktereak ditu PIN kode berriak."</string>
+    <string name="vm_change_pin_error_too_short" msgid="1789139338449945483">"Laburregia da PIN berria."</string>
+    <string name="vm_change_pin_error_too_long" msgid="3634907034310018954">"Luzeegia da PIN berria."</string>
+    <string name="vm_change_pin_error_too_weak" msgid="8581892952627885719">"Ez da batere segurua PIN berria. Pasahitza segurua izan dadin, ez du izan behar zenbaki-segidarik edo errepikatutako zenbakirik."</string>
+    <string name="vm_change_pin_error_mismatch" msgid="5364847280026257331">"PIN zaharra ez dator bat."</string>
+    <string name="vm_change_pin_error_invalid" msgid="5230002671175580674">"Balio ez duten karaktereak ditu PIN berriak."</string>
     <string name="vm_change_pin_error_system_error" msgid="9116483527909681791">"Ezin da aldatu PIN kodea"</string>
     <string name="vvm_unsupported_message_format" msgid="4206402558577739713">"Ez dira onartzen mota honetako mezuak. Entzuteko, deitu <xliff:g id="NUMBER">%s</xliff:g> zenbakira."</string>
     <string name="network_settings_title" msgid="7560807107123171541">"Sare mugikorra"</string>
@@ -464,7 +464,7 @@
     <string name="delete_fdn_contact" msgid="7027405651994507077">"Ezabatu markatze finkoko zenbakia"</string>
     <string name="deleting_fdn_contact" msgid="6872320570844460428">"Markatze finkoko zenbakia ezabatzen…"</string>
     <string name="fdn_contact_deleted" msgid="1680714996763848838">"Markatze finkoko zenbakia ezabatu da."</string>
-    <string name="pin2_invalid" msgid="2313954262684494442">"Ez da eguneratu markatze finkoko zenbakia, PIN kode okerra idatzi duzulako."</string>
+    <string name="pin2_invalid" msgid="2313954262684494442">"Ez da eguneratu markatze finkoko zenbakia, PIN okerra idatzi duzulako."</string>
     <string name="fdn_invalid_number" msgid="9067189814657840439">"Ez da eguneratu markatze finkoko zenbakia, zenbakiak <xliff:g id="FDN_NUMBER_LIMIT_LENGTH">%d</xliff:g> digitu baino gehiago dituelako."</string>
     <string name="pin2_or_fdn_invalid" msgid="7542639487955868181">"Ez da eguneratu markatze finkoko zenbakia. PIN2 kodea ez da zuzena edo telefono-zenbakia baztertu da."</string>
     <string name="fdn_failed" msgid="216592346853420250">"Markatze finkoko zenbakiaren eragiketak huts egin du."</string>
@@ -477,8 +477,8 @@
     <string name="enter_pin_text" msgid="3182311451978663356">"SIM txartelaren PIN kodea:"</string>
     <string name="oldPinLabel" msgid="8618515202411987721">"PIN zaharra"</string>
     <string name="newPinLabel" msgid="3585899083055354732">"PIN berria"</string>
-    <string name="confirmPinLabel" msgid="7783531218662473778">"Berretsi PIN kode berria"</string>
-    <string name="badPin" msgid="4549286285015892321">"Idatzi duzun PIN kode zaharra ez da zuzena. Saiatu berriro."</string>
+    <string name="confirmPinLabel" msgid="7783531218662473778">"Berretsi PIN berria"</string>
+    <string name="badPin" msgid="4549286285015892321">"Idatzi duzun PIN zaharra ez da zuzena. Saiatu berriro."</string>
     <string name="mismatchPin" msgid="1467254768290323845">"Idatzi dituzun PIN kodeak ez datoz bat. Saiatu berriro."</string>
     <string name="invalidPin" msgid="7363723429414001979">"Idatzi 4 eta 8 zenbaki arteko PIN kodea."</string>
     <string name="disable_sim_pin" msgid="3112303905548613752">"Garbitu SIM txartelaren PIN kodea"</string>
@@ -684,9 +684,9 @@
     <string name="change_pin_continue_label" msgid="5177011752453506371">"Egin aurrera"</string>
     <string name="change_pin_cancel_label" msgid="2301711566758827936">"Utzi"</string>
     <string name="change_pin_ok_label" msgid="6861082678817785330">"Ados"</string>
-    <string name="change_pin_enter_old_pin_header" msgid="853151335217594829">"Berretsi PIN kode zaharra"</string>
+    <string name="change_pin_enter_old_pin_header" msgid="853151335217594829">"Berretsi PIN zaharra"</string>
     <string name="change_pin_enter_old_pin_hint" msgid="8801292976275169367">"Idatzi erantzungailuaren PIN kodea jarraitzeko."</string>
-    <string name="change_pin_enter_new_pin_header" msgid="4739465616733486118">"Ezarri PIN kode berria"</string>
+    <string name="change_pin_enter_new_pin_header" msgid="4739465616733486118">"Ezarri PIN berri bat"</string>
     <string name="change_pin_enter_new_pin_hint" msgid="2326038476516364210">"<xliff:g id="MIN">%1$d</xliff:g> eta <xliff:g id="MAX">%2$d</xliff:g> digituren artean izan behar ditu PIN kodeak."</string>
     <string name="change_pin_confirm_pin_header" msgid="2606303906320705726">"Berretsi PIN kodea"</string>
     <string name="change_pin_confirm_pins_dont_match" msgid="305164501222587215">"PINak ez datoz bat"</string>
