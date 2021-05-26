@@ -523,7 +523,7 @@
     <string name="card_title_dialing" msgid="8742182654254431781">"डायल करत आहे"</string>
     <string name="card_title_redialing" msgid="18130232613559964">"रीडायल करत आहे"</string>
     <string name="card_title_conf_call" msgid="901197309274457427">"कॉंफरन्स कॉल"</string>
-    <string name="card_title_incoming_call" msgid="881424648458792430">"येणारे कॉल"</string>
+    <string name="card_title_incoming_call" msgid="881424648458792430">"इनकमिंग कॉल"</string>
     <string name="card_title_call_ended" msgid="650223980095026340">"कॉल संपला"</string>
     <string name="card_title_on_hold" msgid="9028319436626975207">"होल्ड वर"</string>
     <string name="card_title_hanging_up" msgid="814874106866647871">"हँग अप करणेे"</string>
@@ -784,8 +784,8 @@
     <string name="call_barring_baoicr_enabled" msgid="1615324165512798478">"जाणारे इंटरनॅशनल रोमिंग ब्लॉक करणे बंद करायचे का?"</string>
     <string name="call_barring_baoicr_disabled" msgid="172010175248142831">"जाणारे इंटरनॅशनल रोमिंग ब्लॉक करायचे का?"</string>
     <string name="call_barring_baic" msgid="7941393541678658566">"सर्व येणारे"</string>
-    <string name="call_barring_baic_enabled" msgid="4357332358020337470">"सर्व येणारे कॉल ब्लॉक करणे बंद करायचे का?"</string>
-    <string name="call_barring_baic_disabled" msgid="2355945245938240958">"सर्व येणारे कॉल ब्लॉक करायचे का?"</string>
+    <string name="call_barring_baic_enabled" msgid="4357332358020337470">"सर्व इनकमिंग कॉल ब्लॉक करणे बंद करायचे का?"</string>
+    <string name="call_barring_baic_disabled" msgid="2355945245938240958">"सर्व इनकमिंग कॉल ब्लॉक करायचे का?"</string>
     <string name="call_barring_baicr" msgid="8712249337313034226">"येणारे इंटरनॅशनल रोमिंग"</string>
     <string name="call_barring_baicr_enabled" msgid="64774270234828175">"सर्व येणारे इंटरनॅशनल रोमिंग ब्लॉक करणे बंद करायचे का?"</string>
     <string name="call_barring_baicr_disabled" msgid="3488129262744027262">"येणारे इंटरनॅशनल रोमिंग ब्लॉक करायचे का?"</string>
@@ -810,7 +810,7 @@
     <string name="supp_service_notification_call_waiting" msgid="4577403881609445324">"कॉल प्रतीक्षेत आहे."</string>
     <string name="supp_service_clir_suppression_rejected" msgid="6105737020194776121">"क्रमांक ब्‍लॉक करणे रद्द केले."</string>
     <string name="supp_service_closed_user_group_call" msgid="2811636666505250689">"बंद वापरकर्ता गट कॉल."</string>
-    <string name="supp_service_incoming_calls_barred" msgid="2034627421274447674">"येणारे कॉल अवरोधित केले."</string>
+    <string name="supp_service_incoming_calls_barred" msgid="2034627421274447674">"इनकमिंग कॉल अवरोधित केले."</string>
     <string name="supp_service_outgoing_calls_barred" msgid="5205725332394087112">"जाणारे कॉल अवरोधित केले."</string>
     <string name="supp_service_call_forwarding_active" msgid="7910162960395132464">"कॉल फॉरवर्ड होत आहे."</string>
     <string name="supp_service_additional_call_forwarded" msgid="8772753260008398632">"अतिरिक्‍त कॉल फॉरवर्ड केला."</string>
