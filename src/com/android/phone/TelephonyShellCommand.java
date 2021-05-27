@@ -147,6 +147,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
     private static final String UCE_GET_LAST_PIDF_XML = "get-last-publish-pidf";
     private static final String UCE_REMOVE_REQUEST_DISALLOWED_STATUS =
             "remove-request-disallowed-status";
+    private static final String UCE_SET_CAPABILITY_REQUEST_TIMEOUT =
+            "set-capabilities-request-timeout";
 
     // Check if a package has carrier privileges on any SIM, regardless of subId/phoneId.
     private static final String HAS_CARRIER_PRIVILEGES_COMMAND = "has-carrier-privileges";
@@ -476,6 +478,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         pw.println("    PUBLISH is active");
         pw.println("  uce remove-request-disallowed-status [-s SLOT_ID]");
         pw.println("    Remove the UCE is disallowed to execute UCE requests status");
+        pw.println("  uce set-capabilities-request-timeout [-s SLOT_ID] [REQUEST_TIMEOUT_MS]");
+        pw.println("    Set the timeout for contact capabilities request.");
     }
 
     private void onHelpNumberVerification() {
@@ -2093,6 +2097,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                 return handleUceGetPidfXml();
             case UCE_REMOVE_REQUEST_DISALLOWED_STATUS:
                 return handleUceRemoveRequestDisallowedStatus();
+            case UCE_SET_CAPABILITY_REQUEST_TIMEOUT:
+                return handleUceSetCapRequestTimeout();
         }
         return -1;
     }
@@ -2194,6 +2200,27 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         }
         if (VDBG) {
             Log.v(LOG_TAG, "uce remove-request-disallowed-status, returned: " + result);
+        }
+        getOutPrintWriter().println(result);
+        return 0;
+    }
+
+    private int handleUceSetCapRequestTimeout() {
+        int subId = getSubId("uce set-capabilities-request-timeout");
+        if (subId == SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
+            Log.w(LOG_TAG, "uce set-capabilities-request-timeout, Invalid subscription ID");
+            return -1;
+        }
+        long timeoutAfterMs = Long.valueOf(getNextArg());
+        boolean result;
+        try {
+            result = mInterface.setCapabilitiesRequestTimeout(subId, timeoutAfterMs);
+        } catch (RemoteException e) {
+            Log.w(LOG_TAG, "uce set-capabilities-request-timeout, error " + e.getMessage());
+            return -1;
+        }
+        if (VDBG) {
+            Log.v(LOG_TAG, "uce set-capabilities-request-timeout, returned: " + result);
         }
         getOutPrintWriter().println(result);
         return 0;
