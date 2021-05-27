@@ -429,7 +429,7 @@
                 android:configChanges="orientation|screenSize|keyboardHidden"
                 android:exported="true"
                 android:theme="@style/DialerSettingsLight">
-            <intent-filter>
+            <intent-filter android:priority="1">
                 <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.telecom.action.SHOW_CALL_SETTINGS" />
