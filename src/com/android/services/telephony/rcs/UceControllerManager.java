@@ -359,6 +359,33 @@ public class UceControllerManager implements RcsFeatureController.Feature {
     }
 
     /**
+     * Set the timeout for contact capabilities request.
+     * @param timeoutAfterMs How long when the capabilities request will time up.
+     * @return true if this command is successful.
+     */
+    public boolean setCapabilitiesRequestTimeout(long timeoutAfterMs)  throws ImsException {
+        Future<Boolean> future = mExecutorService.submit(() -> {
+            if (mUceController == null) {
+                throw new ImsException("UCE controller is null",
+                        ImsException.CODE_ERROR_SERVICE_UNAVAILABLE);
+            }
+            mUceController.setCapabilitiesRequestTimeout(timeoutAfterMs);
+            return true;
+        });
+
+        try {
+            return future.get();
+        } catch (ExecutionException | InterruptedException e) {
+            Log.w(LOG_TAG, "setCapabilitiesRequestTimeout exception: " + e);
+            Throwable cause = e.getCause();
+            if (cause instanceof ImsException) {
+                throw (ImsException) cause;
+            }
+            return false;
+        }
+    }
+
+    /**
      * Register the Publish state changed callback.
      *
      * @throws ImsException if the ImsService connected to this controller is currently down.
