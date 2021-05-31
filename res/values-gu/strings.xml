@@ -409,7 +409,7 @@
     <string name="cdma_system_select_dialogtitle" msgid="5524639510676501802">"સિસ્ટમ પસંદગી"</string>
   <string-array name="cdma_system_select_choices">
     <item msgid="462340042928284921">"ફક્ત હોમ"</item>
-    <item msgid="6058010046783562674">"સ્વચલિત"</item>
+    <item msgid="6058010046783562674">"ઑટોમૅટિક"</item>
   </string-array>
     <string name="cdma_subscription_title" msgid="3449527179325589434">"CDMA સબ્સ્ક્રિપ્શન"</string>
     <string name="cdma_subscription_summary" msgid="5681152534466169001">"RUIM/SIM અને NV વચ્ચે બદલો"</string>
