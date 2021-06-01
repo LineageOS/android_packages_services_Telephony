@@ -26,7 +26,6 @@ import static junit.framework.Assert.fail;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.doAnswer;
@@ -43,8 +42,6 @@ import android.net.Uri;
 import android.os.AsyncResult;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Message;
 import android.telecom.ConnectionRequest;
 import android.telecom.DisconnectCause;
 import android.telecom.PhoneAccountHandle;
@@ -128,7 +125,6 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
     @Mock TelephonyConnectionService.PhoneSwitcherProxy mPhoneSwitcherProxy;
     @Mock TelephonyConnectionService.PhoneNumberUtilsProxy mPhoneNumberUtilsProxy;
     @Mock TelephonyConnectionService.PhoneUtilsProxy mPhoneUtilsProxy;
-    @Mock TelephonyConnectionService.HandlerFactory mHandlerFactory;
     @Mock TelephonyConnectionService.DisconnectCauseFactory mDisconnectCauseFactory;
     @Mock Handler mMockHandler;
     @Mock EmergencyNumberTracker mEmergencyNumberTracker;
@@ -175,11 +171,6 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
                 .thenAnswer(invocation -> invocation.getArgument(1));
         mTestConnectionService.setPhoneNumberUtilsProxy(mPhoneNumberUtilsProxy);
         mTestConnectionService.setPhoneUtilsProxy(mPhoneUtilsProxy);
-        HandlerThread mockHandlerThread = mock(HandlerThread.class);
-        doReturn(mockHandlerThread).when(mHandlerFactory).createHandlerThread(anyString());
-        doReturn(null).when(mockHandlerThread).getLooper();
-        doReturn(mMockHandler).when(mHandlerFactory).createHandler(any());
-        mTestConnectionService.setHandlerFactory(mHandlerFactory);
         mTestConnectionService.setDeviceState(mDeviceState);
         mTestConnectionService.setRadioOnHelper(mRadioOnHelper);
         doReturn(new DisconnectCause(DisconnectCause.UNKNOWN)).when(mDisconnectCauseFactory)
@@ -960,22 +951,20 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
     @Test
     @SmallTest
     public void testCreateOutgoingEmergencyConnection_delayDial_carrierconfig_dds() {
-        Phone testPhone = setupConnectionServiceForDelayDial();
-        Runnable delayDialRunnable = verifyRunnablePosted();
-
         // Setup test to not support SUPL on the non-DDS subscription
         doReturn(true).when(mDeviceState).isSuplDdsSwitchRequiredForEmergencyCall(any());
         getTestContext().getCarrierConfig(0 /*subId*/).putStringArray(
                 CarrierConfigManager.Gps.KEY_ES_SUPL_DATA_PLANE_ONLY_ROAMING_PLMN_STRING_ARRAY,
                 null);
-        testPhone.getServiceState().setRoaming(false);
         getTestContext().getCarrierConfig(0 /*subId*/).putInt(
                 CarrierConfigManager.Gps.KEY_ES_SUPL_CONTROL_PLANE_SUPPORT_INT,
                 CarrierConfigManager.Gps.SUPL_EMERGENCY_MODE_TYPE_DP_ONLY);
         getTestContext().getCarrierConfig(0 /*subId*/).putString(
                 CarrierConfigManager.Gps.KEY_ES_EXTENSION_SEC_STRING, "150");
-        delayDialRunnable.run();
 
+        Phone testPhone = setupConnectionServiceForDelayDial(
+                false /* isRoaming */, false /* setOperatorName */, null /* operator long name*/,
+                        null /* operator short name */, null /* operator numeric name */);
         verify(mPhoneSwitcher).overrideDefaultDataForEmergency(eq(0) /*phoneId*/ ,
                 eq(150) /*extensionTime*/, any());
     }
@@ -1026,11 +1015,9 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         assertTrue(callback.getValue().isOkToCall(testPhone, ServiceState.STATE_OUT_OF_SERVICE));
 
         callback.getValue().onComplete(null, true);
-        Runnable delayDialRunnable = verifyRunnablePosted();
 
         try {
             doAnswer(invocation -> null).when(mContext).startActivity(any());
-            delayDialRunnable.run();
             verify(testPhone).dial(anyString(), any());
         } catch (CallStateException e) {
             // This shouldn't happen
@@ -1045,22 +1032,20 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
     @Test
     @SmallTest
     public void testCreateOutgoingEmergencyConnection_delayDial_nocarrierconfig() {
-        Phone testPhone = setupConnectionServiceForDelayDial();
-        Runnable delayDialRunnable = verifyRunnablePosted();
-
         // Setup test to not support SUPL on the non-DDS subscription
         doReturn(true).when(mDeviceState).isSuplDdsSwitchRequiredForEmergencyCall(any());
         getTestContext().getCarrierConfig(0 /*subId*/).putStringArray(
                 CarrierConfigManager.Gps.KEY_ES_SUPL_DATA_PLANE_ONLY_ROAMING_PLMN_STRING_ARRAY,
                 null);
-        testPhone.getServiceState().setRoaming(false);
         getTestContext().getCarrierConfig(0 /*subId*/).putInt(
                 CarrierConfigManager.Gps.KEY_ES_SUPL_CONTROL_PLANE_SUPPORT_INT,
                 CarrierConfigManager.Gps.SUPL_EMERGENCY_MODE_TYPE_CP_FALLBACK);
         getTestContext().getCarrierConfig(0 /*subId*/).putString(
                 CarrierConfigManager.Gps.KEY_ES_EXTENSION_SEC_STRING, "0");
-        delayDialRunnable.run();
 
+        Phone testPhone = setupConnectionServiceForDelayDial(
+                false /* isRoaming */, false /* setOperatorName */, null /* operator long name*/,
+                        null /* operator short name */, null /* operator numeric name */);
         verify(mPhoneSwitcher, never()).overrideDefaultDataForEmergency(anyInt(), anyInt(), any());
     }
 
@@ -1071,22 +1056,20 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
     @Test
     @SmallTest
     public void testCreateOutgoingEmergencyConnection_delayDial_supportsuplondds() {
-        Phone testPhone = setupConnectionServiceForDelayDial();
-        Runnable delayDialRunnable = verifyRunnablePosted();
-
         // If the non-DDS supports SUPL, dont switch data
         doReturn(false).when(mDeviceState).isSuplDdsSwitchRequiredForEmergencyCall(any());
         getTestContext().getCarrierConfig(0 /*subId*/).putStringArray(
                 CarrierConfigManager.Gps.KEY_ES_SUPL_DATA_PLANE_ONLY_ROAMING_PLMN_STRING_ARRAY,
                 null);
-        testPhone.getServiceState().setRoaming(false);
         getTestContext().getCarrierConfig(0 /*subId*/).putInt(
                 CarrierConfigManager.Gps.KEY_ES_SUPL_CONTROL_PLANE_SUPPORT_INT,
                 CarrierConfigManager.Gps.SUPL_EMERGENCY_MODE_TYPE_DP_ONLY);
         getTestContext().getCarrierConfig(0 /*subId*/).putString(
                 CarrierConfigManager.Gps.KEY_ES_EXTENSION_SEC_STRING, "0");
-        delayDialRunnable.run();
 
+        Phone testPhone = setupConnectionServiceForDelayDial(
+                false /* isRoaming */, false /* setOperatorName */, null /* operator long name*/,
+                         null /* operator short name */, null /* operator numeric name */);
         verify(mPhoneSwitcher, never()).overrideDefaultDataForEmergency(anyInt(), anyInt(), any());
     }
 
@@ -1097,22 +1080,20 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
     @Test
     @SmallTest
     public void testCreateOutgoingEmergencyConnection_delayDial_roaming_nocarrierconfig() {
-        Phone testPhone = setupConnectionServiceForDelayDial();
-        Runnable delayDialRunnable = verifyRunnablePosted();
-
         // Setup test to not support SUPL on the non-DDS subscription
         doReturn(true).when(mDeviceState).isSuplDdsSwitchRequiredForEmergencyCall(any());
         getTestContext().getCarrierConfig(0 /*subId*/).putStringArray(
                 CarrierConfigManager.Gps.KEY_ES_SUPL_DATA_PLANE_ONLY_ROAMING_PLMN_STRING_ARRAY,
                 null);
-        testPhone.getServiceState().setRoaming(true);
         getTestContext().getCarrierConfig(0 /*subId*/).putInt(
                 CarrierConfigManager.Gps.KEY_ES_SUPL_CONTROL_PLANE_SUPPORT_INT,
                 CarrierConfigManager.Gps.SUPL_EMERGENCY_MODE_TYPE_DP_ONLY);
         getTestContext().getCarrierConfig(0 /*subId*/).putString(
                 CarrierConfigManager.Gps.KEY_ES_EXTENSION_SEC_STRING, "0");
-        delayDialRunnable.run();
 
+        Phone testPhone = setupConnectionServiceForDelayDial(
+                true /* isRoaming */, false /* setOperatorName */, null /* operator long name*/,
+                         null /* operator short name */, null /* operator numeric name */);
         verify(mPhoneSwitcher, never()).overrideDefaultDataForEmergency(anyInt(), anyInt(), any());
     }
 
@@ -1124,16 +1105,10 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
     @Test
     @SmallTest
     public void testCreateOutgoingEmergencyConnection_delayDial_roamingcarrierconfig() {
-        Phone testPhone = setupConnectionServiceForDelayDial();
-        Runnable delayDialRunnable = verifyRunnablePosted();
-
+        doReturn(true).when(mDeviceState).isSuplDdsSwitchRequiredForEmergencyCall(any());
         // Setup voice roaming scenario
         String testRoamingOperator = "001001";
-        // In some roaming conditions, we are not technically "roaming"
-        testPhone.getServiceState().setRoaming(false);
-        testPhone.getServiceState().setOperatorName("TestTel", "TestTel", testRoamingOperator);
         // Setup test to not support SUPL on the non-DDS subscription
-        doReturn(true).when(mDeviceState).isSuplDdsSwitchRequiredForEmergencyCall(any());
         String[] roamingPlmns = new String[1];
         roamingPlmns[0] = testRoamingOperator;
         getTestContext().getCarrierConfig(0 /*subId*/).putStringArray(
@@ -1144,8 +1119,11 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
                 CarrierConfigManager.Gps.SUPL_EMERGENCY_MODE_TYPE_CP_FALLBACK);
         getTestContext().getCarrierConfig(0 /*subId*/).putString(
                 CarrierConfigManager.Gps.KEY_ES_EXTENSION_SEC_STRING, "0");
-        delayDialRunnable.run();
 
+        Phone testPhone = setupConnectionServiceForDelayDial(
+                false /* isRoaming */, true /* setOperatorName */,
+                        "TestTel" /* operator long name*/, "TestTel" /* operator short name */,
+                                testRoamingOperator /* operator numeric name */);
         verify(mPhoneSwitcher).overrideDefaultDataForEmergency(eq(0) /*phoneId*/ ,
                 eq(0) /*extensionTime*/, any());
     }
@@ -1158,15 +1136,10 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
     @Test
     @SmallTest
     public void testCreateOutgoingEmergencyConnection_delayDial__roaming_roamingcarrierconfig() {
-        Phone testPhone = setupConnectionServiceForDelayDial();
-        Runnable delayDialRunnable = verifyRunnablePosted();
-
-        // Setup voice roaming scenario
-        String testRoamingOperator = "001001";
-        testPhone.getServiceState().setRoaming(true);
-        testPhone.getServiceState().setOperatorName("TestTel", "TestTel", testRoamingOperator);
         // Setup test to not support SUPL on the non-DDS subscription
         doReturn(true).when(mDeviceState).isSuplDdsSwitchRequiredForEmergencyCall(any());
+        // Setup voice roaming scenario
+        String testRoamingOperator = "001001";
         String[] roamingPlmns = new String[1];
         roamingPlmns[0] = testRoamingOperator;
         getTestContext().getCarrierConfig(0 /*subId*/).putStringArray(
@@ -1177,8 +1150,11 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
                 CarrierConfigManager.Gps.SUPL_EMERGENCY_MODE_TYPE_CP_FALLBACK);
         getTestContext().getCarrierConfig(0 /*subId*/).putString(
                 CarrierConfigManager.Gps.KEY_ES_EXTENSION_SEC_STRING, "0");
-        delayDialRunnable.run();
 
+        Phone testPhone = setupConnectionServiceForDelayDial(
+                false /* isRoaming */, true /* setOperatorName */,
+                        "TestTel" /* operator long name*/, "TestTel" /* operator short name */,
+                                testRoamingOperator /* operator numeric name */);
         verify(mPhoneSwitcher).overrideDefaultDataForEmergency(eq(0) /*phoneId*/ ,
                 eq(0) /*extensionTime*/, any());
     }
@@ -1383,9 +1359,16 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
 
     /**
      * Set up a mock MSIM device with TEST_ADDRESS set as an emergency number.
+     * @param isRoaming whether it is roaming
+     * @param setOperatorName whether operator name needs to set
+     * @param operatorNameLongName the operator long name if needs to set
+     * @param operatorNameShortName the operator short name if needs to set
+     * @param operatorNameNumeric the operator numeric name if needs to set
      * @return the Phone associated with slot 0.
      */
-    private Phone setupConnectionServiceForDelayDial() {
+    private Phone setupConnectionServiceForDelayDial(boolean isRoaming, boolean setOperatorName,
+            String operatorNameLongName, String operatorNameShortName,
+                    String operatorNameNumeric) {
         ConnectionRequest connectionRequest = new ConnectionRequest.Builder()
                 .setAccountHandle(PHONE_ACCOUNT_HANDLE_1)
                 .setAddress(TEST_ADDRESS)
@@ -1410,14 +1393,16 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         emergencyNumbers.put(0 /*subId*/, numbers);
         doReturn(emergencyNumbers).when(mTelephonyManagerProxy).getCurrentEmergencyNumberList();
         doReturn(2).when(mTelephonyManagerProxy).getPhoneCount();
-
+        testPhone0.getServiceState().setRoaming(isRoaming);
+        if (setOperatorName) {
+            testPhone0.getServiceState().setOperatorName(operatorNameLongName,
+                    operatorNameShortName, operatorNameNumeric);
+        }
         mConnection = mTestConnectionService.onCreateOutgoingConnection(
                 PHONE_ACCOUNT_HANDLE_1, connectionRequest);
         assertNotNull("test connection was not set up correctly.", mConnection);
-
         return testPhone0;
     }
-
 
     /**
      * Set up a mock MSIM device with TEST_ADDRESS set as an emergency number in airplane mode.
@@ -1456,15 +1441,6 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         assertNotNull("test connection was not set up correctly.", mConnection);
 
         return testPhone0;
-    }
-
-    private Runnable verifyRunnablePosted() {
-        ArgumentCaptor<Message> runnableCaptor = ArgumentCaptor.forClass(Message.class);
-        verify(mMockHandler).sendMessageDelayed(runnableCaptor.capture(), anyLong());
-        assertNotNull("Invalid Message created", runnableCaptor.getValue());
-        Runnable runnable = runnableCaptor.getValue().getCallback();
-        assertNotNull("sendMessageDelayed never occurred.", runnableCaptor);
-        return runnable;
     }
 
     private EmergencyNumber setupEmergencyNumber(Uri address) {
