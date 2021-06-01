@@ -490,7 +490,7 @@
     <string name="newPinLabel" msgid="3585899083055354732">"新しいPIN"</string>
     <string name="confirmPinLabel" msgid="7783531218662473778">"新しいPINを確認"</string>
     <string name="badPin" msgid="4549286285015892321">"入力した古いPINは正しくありません。入力し直してください。"</string>
-    <string name="mismatchPin" msgid="1467254768290323845">"入力したPINは一致しません。入力し直してください。"</string>
+    <string name="mismatchPin" msgid="1467254768290323845">"入力した PIN が一致しません。入力し直してください。"</string>
     <string name="invalidPin" msgid="7363723429414001979">"4～8桁の数字のPINを入力してください。"</string>
     <string name="disable_sim_pin" msgid="3112303905548613752">"SIM PINの消去"</string>
     <string name="enable_sim_pin" msgid="445461050748318980">"SIM PINの設定"</string>
