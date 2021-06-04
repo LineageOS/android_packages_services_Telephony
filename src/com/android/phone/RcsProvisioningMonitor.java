@@ -537,23 +537,12 @@ public class RcsProvisioningMonitor {
     /**
      * Returns whether Rcs Volte single registration is enabled for the sub.
      */
-    public boolean isRcsVolteSingleRegistrationEnabled(int subId) {
+    public Boolean isRcsVolteSingleRegistrationEnabled(int subId) {
         if (mRcsProvisioningInfos.containsKey(subId)) {
-            if (mRcsProvisioningInfos.get(subId).getSingleRegistrationCapability()
-                    == ProvisioningManager.STATUS_CAPABLE) {
-                try {
-                    RcsConfig rcsConfig = new RcsConfig(getConfig(subId));
-                    return rcsConfig.isRcsVolteSingleRegistrationSupported(
-                            mPhone.getPhone(subId).getServiceState().getRoaming());
-                } catch (IllegalArgumentException e) {
-                    logd("fail to get rcs config for sub:" + subId);
-                } catch (NullPointerException e) {
-                    // should not happen
-                    logd("fail to get roaming state for sub: " + subId);
-                }
-            }
+            return mRcsProvisioningInfos.get(subId).getSingleRegistrationCapability()
+                    == ProvisioningManager.STATUS_CAPABLE;
         }
-        return false;
+        return null;
     }
 
     /**
