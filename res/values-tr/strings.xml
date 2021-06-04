@@ -537,6 +537,7 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Telefon etmek için mobil ağı açın, uçak modunu veya pil tasarrufu modunu kapatın."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Telefon etmek için uçak modunu kapatın."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Telefon etmek için uçak modunu kapatın veya kablosuz ağa bağlanın."</string>
+    <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"Telefon çok ısındı"</b>\n\n"Bu arama tamamlanamıyor. Telefonunuz soğuyana kadar bekleyip tekrar deneyin.\n\nBu süre zarfında acil durum aramaları yapabilirsiniz."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Acil durum çağrısı dışında bir çağrı yapmak için acil durumda geri aranma modundan çıkın."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"Ağda kayıtlı değil."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"Mobil ağ kullanılamıyor."</string>
