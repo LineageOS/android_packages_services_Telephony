@@ -537,6 +537,7 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Чтобы позвонить, подключитесь к мобильной сети или отключите режим полета либо режим энергосбережения."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Чтобы позвонить, отключите режим полета."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Чтобы позвонить, отключите режим полета и подключитесь к Wi-Fi."</string>
+    <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"Телефон перегрелся."</b>\n\n"Не удалось совершить звонок. Повторите попытку, когда телефон остынет.\n\nЭто не касается экстренных вызовов."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Чтобы сделать обычный звонок, выйдите из режима экстренных обратных вызовов."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"Нет регистрации в сети."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"Мобильная сеть недоступна."</string>
