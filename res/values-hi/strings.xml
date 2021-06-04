@@ -178,9 +178,9 @@
     <string name="manual_mode_disallowed_summary" msgid="3970048592179890197">"%1$s से कनेक्ट किए जाने पर उपलब्ध नहीं है"</string>
     <string name="network_select_title" msgid="4117305053881611988">"नेटवर्क"</string>
     <string name="register_automatically" msgid="3907580547590554834">"स्वचालित पंजीकरण..."</string>
-    <string name="preferred_network_mode_title" msgid="5253395265169539830">"पसंदीदा नेटवर्क प्रकार"</string>
+    <string name="preferred_network_mode_title" msgid="5253395265169539830">"पसंदीदा नेटवर्क टाइप"</string>
     <string name="preferred_network_mode_summary" msgid="3787989000044330064">"नेटवर्क संचालन मोड बदलें"</string>
-    <string name="preferred_network_mode_dialogtitle" msgid="2781447433514459696">"पसंदीदा नेटवर्क प्रकार"</string>
+    <string name="preferred_network_mode_dialogtitle" msgid="2781447433514459696">"पसंदीदा नेटवर्क टाइप"</string>
     <string name="forbidden_network" msgid="5081729819561333023">"(मना है)"</string>
     <string name="choose_network_title" msgid="5335832663422653082">"नेटवर्क चुनें"</string>
     <string name="network_disconnected" msgid="8844141106841160825">"डिसकनेक्ट है"</string>

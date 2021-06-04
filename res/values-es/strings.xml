@@ -91,7 +91,7 @@
     <string name="additional_cdma_call_settings" msgid="2178016561980611304">"Ajustes adicionales de llamadas CDMA"</string>
     <string name="sum_cdma_call_settings" msgid="3185825305136993636">"Ajustes adicionales de llamadas solo CDMA"</string>
     <string name="labelNwService" msgid="6015891883487125120">"Ajustes del servicio de red"</string>
-    <string name="labelCallerId" msgid="2090540744550903172">"ID de llamada"</string>
+    <string name="labelCallerId" msgid="2090540744550903172">"Identificación de llamada"</string>
     <string name="sum_loading_settings" msgid="434063780286688775">"Cargando ajustes…"</string>
     <string name="sum_hide_caller_id" msgid="131100328602371933">"Número oculto en llamadas salientes"</string>
     <string name="sum_show_caller_id" msgid="3571854755324664591">"Número mostrado en llamadas salientes"</string>
