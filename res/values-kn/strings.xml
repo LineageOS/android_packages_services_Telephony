@@ -60,7 +60,7 @@
     <string name="labelGsmMore_with_label" msgid="3206015314393246224">"GSM ಕರೆ ಸೆಟ್ಟಿಂಗ್‌ಗಳು (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCDMAMore" msgid="7937441382611224632">"CDMA ಕರೆ ಸೆಟ್ಟಿಂಗ್‌ಗಳು"</string>
     <string name="labelCdmaMore_with_label" msgid="7759692829160238152">"CDMA ಕರೆ ಸೆಟ್ಟಿಂಗ್‌ಗಳು (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="apn_settings" msgid="1978652203074756623">"ಪ್ರವೇಶಿಸುವಿಕೆ ಕೇಂದ್ರದ ಹೆಸರುಗಳು"</string>
+    <string name="apn_settings" msgid="1978652203074756623">"ಆ್ಯಕ್ಸೆಸ್ ಪಾಯಿಂಟ್ ಹೆಸರುಗಳು"</string>
     <string name="settings_label" msgid="9101778088412567956">"ನೆಟ್‌ವರ್ಕ್‌ ಸೆಟ್ಟಿಂಗ್‌ಗಳು"</string>
     <string name="phone_accounts" msgid="1216879437523774604">"ಕರೆ ಮಾಡುವ ಖಾತೆಗಳು"</string>
     <string name="phone_accounts_make_calls_with" msgid="16747814788918145">"ಇದರೊಂದಿಗೆ ಕರೆಗಳನ್ನು ಮಾಡಿ"</string>

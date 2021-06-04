@@ -286,7 +286,7 @@
     <string name="limited_sim_function_notification_title" msgid="612715399099846281">"Matumizi ya SIM yana kikomo"</string>
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"Huenda huduma za simu na data za <xliff:g id="CARRIER_NAME">%1$s</xliff:g> zikazuiwa unapotumia <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>."</string>
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"Huenda huduma za simu na data za <xliff:g id="CARRIER_NAME">%1$s</xliff:g> zikazuiwa unapotumia SIM nyingine."</string>
-    <string name="data_usage_title" msgid="8438592133893837464">"Matumizi ya data ya programu"</string>
+    <string name="data_usage_title" msgid="8438592133893837464">"Programu inavyotumia data"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"<xliff:g id="ID_1">%1$s</xliff:g> za data ya mtandao wa simu zimetumika kuanzia <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"Mipangilio ya Kina"</string>
     <string name="carrier_settings_euicc" msgid="1190237227261337749">"Mtoa huduma"</string>
