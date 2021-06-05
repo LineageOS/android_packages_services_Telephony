@@ -537,6 +537,7 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Hidupkan rangkaian mudah alih, matikan mod pesawat atau matikan mod penjimat bateri untuk membuat panggilan."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Matikan mod pesawat untuk membuat panggilan."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Matikan mod pesawat atau sambungkan ke rangkaian wayarles untuk membuat panggilan."</string>
+    <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"Telefon terlalu panas"</b>\n\n"Tidak dapat melengkapkan panggilan ini. Cuba lagi apabila telefon anda menyejuk.\n\nAnda masih boleh membuat panggilan kecemasan."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Keluar daripada mod panggil balik kecemasan untuk membuat panggilan bukan kecemasan."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"Tidak didaftarkan pada rangkaian."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"Rangkaian mudah alih tidak tersedia."</string>
