@@ -537,6 +537,8 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Activa la red móvil y desactiva el modo de avión o el modo de ahorro de batería para realizar una llamada."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Desactivar modo de avión para hacer una llamada"</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Desactivar el modo de avión o conectarse a una red inalámbrica para hacer una llamada"</string>
+    <!-- no translation found for incall_error_power_off_thermal (8695809601655300168) -->
+    <skip />
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Para realizar una llamada que no sea de emergencia, sal del modo de devolución de llamada de emergencia."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"No registrado en la red."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"La red móvil no está disponible."</string>
