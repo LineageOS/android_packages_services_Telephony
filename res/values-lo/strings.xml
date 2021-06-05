@@ -537,6 +537,7 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"ເປີດໃຊ້ເຄືອຂ່າຍມືຖື, ປິດໂໝດຢູ່ໃນຍົນ ຫຼື ປິດໂໝດຕົວປະຢັດແບັດເຕີຣີເພື່ອໂທ."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"ປິດໂໝດເຄື່ອງບິນເພື່ອເຮັດການໂທ."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"ປິດໂໝດເຄື່ອງບິນ ຫຼືເຊື່ອມຕໍ່ກັບເຄືອຂ່າຍໄຮ້ສາຍເພື່ອເຮັດການໂທ."</string>
+    <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"ໂທລະສັບຮ້ອນເກີນໄປ"</b>\n\n"ບໍ່ສາມາດເຮັດການໂທນີ້ໄດ້. ກະລຸນາລອງອີກຄັ້ງເມື່ອໂທລະສັບຂອງທ່ານເຢັນລົງ.\n\nທ່ານຍັງສາມາດໂທສຸກເສີນໄດ້."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"ອອກ​ຈາກໂໝດ​ໂທ​ກັບ​ສຸກ​ເສີນ ເພື່ອ​ເຮັດ​ການ​ໂທ​ປົກກະຕິ."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"ບໍ່ໄດ້ລົງທະບຽນໃນເຄືອຂ່າຍ."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"ເຄືອຂ່າຍມືຖືບໍ່ສາມາດໃຊ້ໄດ້."</string>

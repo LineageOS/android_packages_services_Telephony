@@ -537,6 +537,8 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"전화를 걸려면 모바일 네트워크를 사용 설정하고 비행기 모드 또는 절전 모드를 사용 중지하세요."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"전화를 걸려면 비행기 모드를 사용 중지하세요."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"전화를 걸려면 비행기 모드를 사용 중지하거나 무선 네트워크에 연결하세요."</string>
+    <!-- no translation found for incall_error_power_off_thermal (8695809601655300168) -->
+    <skip />
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"일반 전화를 걸려면 긴급 콜백 모드를 해제하세요."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"네트워크에서 등록되지 않았습니다."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"모바일 네트워크를 사용할 수 없습니다."</string>

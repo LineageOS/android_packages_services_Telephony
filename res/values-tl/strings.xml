@@ -537,6 +537,8 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"I-on ang mobile network, i-off ang airplane mode o i-off ang battery saver mode upang tumawag."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"I-off ang airplane mode upang makatawag."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"I-off ang airplane mode o kumonekta sa isang wireless network upang makatawag."</string>
+    <!-- no translation found for incall_error_power_off_thermal (8695809601655300168) -->
+    <skip />
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Lumabas sa emergency callback mode upang makapagsagawa ng hindi pang-emergency na pagtawag."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"Hindi nakarehistro sa network."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"Hindi available ang mobile network."</string>
