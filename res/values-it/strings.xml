@@ -294,6 +294,9 @@
     <string name="limited_sim_function_notification_title" msgid="612715399099846281">"Funzionalità SIM limitata"</string>
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"Le chiamate e i servizi dati di <xliff:g id="CARRIER_NAME">%1$s</xliff:g> potrebbero essere bloccati quando utilizzi il numero <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>."</string>
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"Le chiamate e i servizi dati <xliff:g id="CARRIER_NAME">%1$s</xliff:g> possono essere bloccati quando usi un\'altra SIM."</string>
+    <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"Account SIP deprecati trovati e rimossi"</string>
+    <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"Le chiamate SIP non sono più supportate dalla piattaforma Android.\nI tuoi account SIP esistenti (<xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g>) sono stati rimossi.\nConferma l\'impostazione del tuo account predefinito per le chiamate."</string>
+    <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"Vai alle impostazioni"</string>
     <string name="data_usage_title" msgid="8438592133893837464">"Utilizzo dei dati delle app"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"Dati mobili usati: <xliff:g id="ID_1">%1$s</xliff:g> nel periodo <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"Avanzate"</string>
@@ -512,6 +515,7 @@
     <string name="puk2_requested" msgid="6992374450720307514">"Password errata. SIM bloccata. Inserisci codice PUK2."</string>
     <string name="puk2_blocked" msgid="3131139031779319911">"PUK2 bloccato definitivamente."</string>
     <string name="pin2_attempts" msgid="5625178102026453023">\n"Hai a disposizione ancora <xliff:g id="NUMBER">%d</xliff:g> tentativi."</string>
+    <string name="puk2_locked" msgid="6497760825455461057">"PUK2 bloccato. Per sbloccarlo, contatta il fornitore di servizi."</string>
     <string name="pin2_unblocked" msgid="4481107908727789303">"PIN2 sbloccato"</string>
     <string name="pin2_error_exception" msgid="8116103864600823641">"Errore di rete o della SIM"</string>
     <string name="doneButton" msgid="7371209609238460207">"Fine"</string>
@@ -533,6 +537,8 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Attiva la rete mobile e disattiva la modalità aereo o il risparmio energetico per effettuare una chiamata."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Disattiva la modalità aereo per effettuare una chiamata."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Disattiva la modalità aereo o connettiti a una rete wireless per effettuare una chiamata."</string>
+    <!-- no translation found for incall_error_power_off_thermal (8695809601655300168) -->
+    <skip />
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Per effettuare chiamate non di emergenza, esci dalla modalità di richiamata di emergenza."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"Non registrato sulla rete."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"Rete cellulare non disponibile."</string>
@@ -919,6 +925,7 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Info telefono"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Informazioni sul provisioning operatore"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Attiva provisioning operatore"</string>
-    <string name="call_quality_notification_bluetooth_details" msgid="219073466476340435">"Suggerimento: migliora la connettività Bluetooth"</string>
+    <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Il segnale del Bluetooth è debole. Prova a passare al vivavoce."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Notifica sulla qualità della chiamata"</string>
+    <string name="notification_channel_sip_account" msgid="1261816025156179637">"Account SIP deprecati"</string>
 </resources>

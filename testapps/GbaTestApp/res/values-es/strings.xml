@@ -10,7 +10,7 @@
     <string name="button_name_exit" msgid="8025683733431538975">"Salir"</string>
     <string name="label_test_result" msgid="892984695972956196">"Resultado de la prueba"</string>
     <string name="button_name_clear" msgid="436313515327318537">"Restablecer"</string>
-    <string name="button_name_done" msgid="6030406534322497491">"Listo"</string>
+    <string name="button_name_done" msgid="6030406534322497491">"Hecho"</string>
     <string name="title_activity_carrier_config" msgid="7807803900475957717">"CarrierConfigActivity"</string>
     <string name="title_activity_service_config" msgid="5394662739555577279">"ServiceConfigActivity"</string>
     <string name="title_activity_test_config" msgid="7585204485536359713">"TestConfigActivity"</string>
