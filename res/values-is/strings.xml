@@ -294,6 +294,9 @@
     <string name="limited_sim_function_notification_title" msgid="612715399099846281">"Takmörkuð virkni SIM-korts"</string>
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"Lokað gæti verið fyrir símtöl og gagnaþjónustu <xliff:g id="CARRIER_NAME">%1$s</xliff:g> þegar <xliff:g id="PHONE_NUMBER">%2$s</xliff:g> er notað."</string>
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"Lokað gæti verið fyrir símtöl og gagnaþjónustu <xliff:g id="CARRIER_NAME">%1$s</xliff:g> þegar annað SIM-kort er notað."</string>
+    <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"Úreldir SIP-reikningar fundust og voru fjarlægðir"</string>
+    <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"Android kerfið styður ekki lengur SIP-símtöl.\nNúverandi SIP-reikningarnir þínir <xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g> voru fjarlægðir.\nStaðfestu stillingar sjálfgefna símareikningsins."</string>
+    <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"Opna stillingar"</string>
     <string name="data_usage_title" msgid="8438592133893837464">"Gagnanotkun forrits"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"<xliff:g id="ID_1">%1$s</xliff:g> af farsímagögnum notuð <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"Ítarlegt"</string>
@@ -512,6 +515,7 @@
     <string name="puk2_requested" msgid="6992374450720307514">"Rangt aðgangsorð. SIM-kortinu var læst. Sláðu inn PUK2-númerið."</string>
     <string name="puk2_blocked" msgid="3131139031779319911">"PUK2 er læst fyrir fullt og allt."</string>
     <string name="pin2_attempts" msgid="5625178102026453023">\n"<xliff:g id="NUMBER">%d</xliff:g> tilraunir eru eftir."</string>
+    <string name="puk2_locked" msgid="6497760825455461057">"Læst með PUK2. Hafðu samband við þjónustuaðila til að taka úr lás."</string>
     <string name="pin2_unblocked" msgid="4481107908727789303">"PIN2-númer ekki lengur læst"</string>
     <string name="pin2_error_exception" msgid="8116103864600823641">"Villa í símkerfi eða á SIM-korti"</string>
     <string name="doneButton" msgid="7371209609238460207">"Lokið"</string>
@@ -533,6 +537,8 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Kveiktu á farsímakerfie eða slökktu á flugstillingu eða rafhlöðusparnaði til að hringja."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Slökktu á flugstillingu til að hringja."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Slökktu á flugstillingu eða tengstu þráðlausu neti til að hringja."</string>
+    <!-- no translation found for incall_error_power_off_thermal (8695809601655300168) -->
+    <skip />
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Hætta í stillingu fyrir svarhringingu neyðarsímtala til að hringja símtal sem ekki er neyðarsímtal."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"Ekki skráð á símkerfi."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"Farsímakerfi ekki tiltækt."</string>
@@ -791,7 +797,7 @@
     <string name="call_barring_change_pwd" msgid="1730691950940338387">"Breyta aðgangsorði"</string>
     <string name="call_barring_change_pwd_description" msgid="1274245130382054227">"Breyta aðgangsorði fyrir útilokun símtala"</string>
     <string name="call_barring_change_pwd_description_disabled" msgid="2911647051915343920">"Ekki var hægt að breyta aðgangsorði fyrir útilokun símtala"</string>
-    <string name="call_barring_pwd_not_match" msgid="7638198747579019826">"Aðgangsorðin stemma ekki."</string>
+    <string name="call_barring_pwd_not_match" msgid="7638198747579019826">"Aðgangsorðin stemma ekki"</string>
     <string name="call_barring_right_pwd_number" msgid="3860630926460851330">"Sláðu inn aðgangsorð sem inniheldur fjóra tölustafi."</string>
     <string name="call_barring_change_pwd_success" msgid="1837437691277936903">"Aðgangsorði breytt"</string>
     <string name="call_barring_old_pwd" msgid="5500085633281388281">"Eldra aðgangsorð"</string>
@@ -919,6 +925,7 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Upplýsingar um síma"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Úthlutunarupplýsingar símafyrirtækis"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Kveikja á úthlutun símafyrirtækis"</string>
-    <string name="call_quality_notification_bluetooth_details" msgid="219073466476340435">"Tillaga: Bæta tengigetu Bluetooth"</string>
+    <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Bluetooth-tengingin er léleg. Prófaðu að nota hátalara í staðinn."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Tilkynning um símtalsgæði"</string>
+    <string name="notification_channel_sip_account" msgid="1261816025156179637">"Úreldir SIP-reikningar"</string>
 </resources>

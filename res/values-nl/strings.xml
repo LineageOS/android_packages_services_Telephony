@@ -32,7 +32,7 @@
     <string name="mmiCancelled" msgid="5339191899200678272">"MMI-code geannuleerd"</string>
     <string name="cancel" msgid="8984206397635155197">"Annuleren"</string>
     <string name="enter_input" msgid="6193628663039958990">"USSD-bericht moet tussen <xliff:g id="MIN_LEN">%1$d</xliff:g> en <xliff:g id="MAX_LEN">%2$d</xliff:g> tekens lang zijn. Probeer het opnieuw."</string>
-    <string name="manageConferenceLabel" msgid="8415044818156353233">"Conferencecall beheren"</string>
+    <string name="manageConferenceLabel" msgid="8415044818156353233">"Telefonische vergadering beheren"</string>
     <string name="ok" msgid="7818974223666140165">"OK"</string>
     <string name="audio_mode_speaker" msgid="243689733219312360">"Luidspreker"</string>
     <string name="audio_mode_earpiece" msgid="2823700267171134282">"Oortelefoon van handset"</string>
@@ -294,6 +294,9 @@
     <string name="limited_sim_function_notification_title" msgid="612715399099846281">"Beperkte simkaartfunctionaliteit"</string>
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"Gesprekken en dataservices van <xliff:g id="CARRIER_NAME">%1$s</xliff:g> kunnen worden geblokkeerd terwijl je <xliff:g id="PHONE_NUMBER">%2$s</xliff:g> gebruikt."</string>
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g>-gesprekken en -dataservices kunnen worden geblokkeerd voor een andere simkaart."</string>
+    <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"Beëindigde SIP-accounts gevonden en verwijderd"</string>
+    <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"SIP-gesprekken worden niet meer ondersteund door het Android-platform.\nJe bestaande SIP-accounts <xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g> zijn verwijderd.\nBevestig de instelling voor je standaard belaccount."</string>
+    <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"Naar instellingen"</string>
     <string name="data_usage_title" msgid="8438592133893837464">"Datagebruik van app"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"<xliff:g id="ID_1">%1$s</xliff:g> mobiele data gebruikt van <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"Geavanceerd"</string>
@@ -512,13 +515,14 @@
     <string name="puk2_requested" msgid="6992374450720307514">"Wachtwoord onjuist. Simkaart nu vergrendeld. Geef PUK2 op."</string>
     <string name="puk2_blocked" msgid="3131139031779319911">"PUK2-code is definitief geblokkeerd."</string>
     <string name="pin2_attempts" msgid="5625178102026453023">\n"Je hebt nog <xliff:g id="NUMBER">%d</xliff:g> pogingen."</string>
+    <string name="puk2_locked" msgid="6497760825455461057">"PUK2 vergrendeld. Neem contact op met je serviceprovider om te ontgrendelen."</string>
     <string name="pin2_unblocked" msgid="4481107908727789303">"PIN2 niet langer geblokkeerd"</string>
     <string name="pin2_error_exception" msgid="8116103864600823641">"Netwerk- of simkaartfout"</string>
     <string name="doneButton" msgid="7371209609238460207">"Klaar"</string>
     <string name="voicemail_settings_number_label" msgid="1265118640154688162">"Voicemailnummer"</string>
     <string name="card_title_dialing" msgid="8742182654254431781">"Kiezen"</string>
     <string name="card_title_redialing" msgid="18130232613559964">"Opnieuw bellen"</string>
-    <string name="card_title_conf_call" msgid="901197309274457427">"Conferencecall"</string>
+    <string name="card_title_conf_call" msgid="901197309274457427">"Telefonische vergadering"</string>
     <string name="card_title_incoming_call" msgid="881424648458792430">"Inkomend gesprek"</string>
     <string name="card_title_call_ended" msgid="650223980095026340">"Gesprek beëindigd"</string>
     <string name="card_title_on_hold" msgid="9028319436626975207">"In de wacht"</string>
@@ -533,6 +537,7 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Schakel het mobiele netwerk in, schakel de vliegtuigmodus uit of schakel Batterijbesparing uit om te bellen."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Schakel de vliegtuigmodus uit om te bellen."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Schakel de vliegtuigmodus uit of maak verbinding met een draadloos netwerk om te bellen."</string>
+    <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"Telefoon te heet"</b>\n\n"Kan dit gesprek niet tot stand brengen. Probeer het opnieuw als je telefoon is afgekoeld.\n\nJe kunt nog steeds noodoproepen plaatsen."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Sluit de modus voor noodoproepen af om een niet-noodoproep te plaatsen."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"Niet geregistreerd op netwerk."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"Mobiel netwerk niet beschikbaar."</string>
@@ -919,6 +924,7 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Telefooninformatie"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Gegevens voor providerregistratie"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Providerregistratie activeren"</string>
-    <string name="call_quality_notification_bluetooth_details" msgid="219073466476340435">"Suggestie: verbeter de bluetooth-verbinding"</string>
+    <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Het bluetooth-signaal is zwak. Schakel over naar bellen op luidspreker."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Melding over gesprekskwaliteit"</string>
+    <string name="notification_channel_sip_account" msgid="1261816025156179637">"Beëindigde SIP-accounts"</string>
 </resources>

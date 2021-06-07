@@ -294,6 +294,9 @@
     <string name="limited_sim_function_notification_title" msgid="612715399099846281">"Περιορισμένη λειτουργικότητα SIM"</string>
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"Οι κλήσεις και οι υπηρεσίες δεδομένων από την <xliff:g id="CARRIER_NAME">%1$s</xliff:g> ενδέχεται να αποκλειστούν κατά τη χρήση του αριθμού <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>."</string>
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"Κλήσεις και υπηρεσίες δεδομένων από <xliff:g id="CARRIER_NAME">%1$s</xliff:g> ίσως αποκλειστούν κατά τη χρήση άλλης SIM."</string>
+    <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"Βρέθηκαν και καταργήθηκαν λογαριασμοί SIP, οι οποίοι έχουν καταργηθεί"</string>
+    <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"Η δυνατότητα κλήσεων SIP δεν υποστηρίζεται πλέον στην πλατφόρμα Android.\nΟι υπάρχοντες λογαριασμοί σας SIP <xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g> έχουν καταργηθεί.\nΕπιβεβαιώστε την προεπιλεγμένη σας ρύθμιση λογαριασμού κλήσεων."</string>
+    <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"Μετάβαση στις ρυθμίσεις"</string>
     <string name="data_usage_title" msgid="8438592133893837464">"Χρήση δεδομένων εφαρμογής"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"<xliff:g id="ID_1">%1$s</xliff:g> δεδομένων κινητής τηλεφωνίας χρησιμοποιήθηκαν μεταξύ <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"Σύνθετες ρυθμίσεις"</string>
@@ -512,6 +515,7 @@
     <string name="puk2_requested" msgid="6992374450720307514">"Ο κωδικός πρόσβασης είναι λανθασμένος. Η SIM κλειδώθηκε. Καταχωρίστε το PUK2."</string>
     <string name="puk2_blocked" msgid="3131139031779319911">"Ο κωδικός PUK2 έχει μπλοκαριστεί οριστικά."</string>
     <string name="pin2_attempts" msgid="5625178102026453023">\n"Απομένουν <xliff:g id="NUMBER">%d</xliff:g> προσπάθειες."</string>
+    <string name="puk2_locked" msgid="6497760825455461057">"Το PUK2 κλειδώθηκε. Επικοινωνήστε με τον πάροχο υπηρεσιών για ξεκλείδωμα."</string>
     <string name="pin2_unblocked" msgid="4481107908727789303">"Το PIN2 δεν είναι πλέον αποκλεισμένο"</string>
     <string name="pin2_error_exception" msgid="8116103864600823641">"Σφάλμα δικτύου ή κάρτας SIM"</string>
     <string name="doneButton" msgid="7371209609238460207">"Τέλος"</string>
@@ -533,6 +537,8 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Ενεργοποιήστε το δίκτυο κινητής τηλεφωνίας, απενεργοποιήστε τη λειτουργία πτήσης ή τη λειτουργία εξοικονόμησης μπαταρίας, για να πραγματοποιήσετε μια κλήση."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Απενεργοποιήστε τη λειτουργία κλήσης για να πραγματοποιήσετε μια κλήση."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Απενεργοποιήστε τη λειτουργία πτήσης ή συνδεθείτε σε ένα ασύρματο δίκτυο για να πραγματοποιήσετε μια κλήση."</string>
+    <!-- no translation found for incall_error_power_off_thermal (8695809601655300168) -->
+    <skip />
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Πραγματοποιήστε έξοδο από τη λειτουργία επιστροφής κλήσης έκτακτης ανάγκης για να πραγματοποιήσετε μια κλήση μη έκτακτης ανάγκης."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"Δεν έχετε εγγραφεί στο δίκτυο."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"Το δίκτυο κινητής τηλεφωνίας δεν είναι διαθέσιμο."</string>
@@ -919,6 +925,7 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Πληροφορίες τηλεφώνου"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Πληροφορίες παροχής εταιρείας κινητής τηλεφωνίας"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Ενεργοποίηση παροχής εταιρείας κινητής τηλεφωνίας"</string>
-    <string name="call_quality_notification_bluetooth_details" msgid="219073466476340435">"Πρόταση: Βελτιώστε τη συνδεσιμότητα Bluetooth"</string>
+    <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Το σήμα bluetooth είναι ασθενές. Δοκιμάστε να αλλάξετε σε ανοιχτή ακρόαση."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Ειδοποίηση ποιότητας κλήσης"</string>
+    <string name="notification_channel_sip_account" msgid="1261816025156179637">"Καταργημένοι λογαριασμοί SIP"</string>
 </resources>

@@ -294,6 +294,9 @@
     <string name="limited_sim_function_notification_title" msgid="612715399099846281">"Funcionalidade da SIM limitada"</string>
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"Pode que as chamadas e os servizos de datos de <xliff:g id="CARRIER_NAME">%1$s</xliff:g> se bloqueen cando se use o <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>."</string>
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"Pode que as chamadas e os servizos de datos de <xliff:g id="CARRIER_NAME">%1$s</xliff:g> se bloqueen ao usar outra SIM."</string>
+    <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"Quitáronse as contas SIP obsoletas que se atoparon"</string>
+    <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"Xa non se permiten as chamadas SIP na plataforma Android.\nQuitáronse as túas contas SIP (<xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g>).\nConfirma a configuración predeterminada da conta para as chamadas."</string>
+    <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"Ir á configuración"</string>
     <string name="data_usage_title" msgid="8438592133893837464">"Uso de datos da aplicación"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"Datos móbiles usados no período do <xliff:g id="ID_2">%2$s</xliff:g>: <xliff:g id="ID_1">%1$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"Configuración avanzada"</string>
@@ -512,6 +515,7 @@
     <string name="puk2_requested" msgid="6992374450720307514">"Contrasinal incorrecto. A SIM está bloqueada agora. Introduce o PUK2."</string>
     <string name="puk2_blocked" msgid="3131139031779319911">"O PUK2 está permanentemente bloqueado."</string>
     <string name="pin2_attempts" msgid="5625178102026453023">\n"Quédanche <xliff:g id="NUMBER">%d</xliff:g> intentos."</string>
+    <string name="puk2_locked" msgid="6497760825455461057">"PUK2 bloqueado. Contacta co fornecedor de servizo para desbloquealo."</string>
     <string name="pin2_unblocked" msgid="4481107908727789303">"O PIN2 xa non está bloqueado"</string>
     <string name="pin2_error_exception" msgid="8116103864600823641">"Erro de rede ou de tarxeta SIM"</string>
     <string name="doneButton" msgid="7371209609238460207">"Feito"</string>
@@ -533,6 +537,8 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Para facer unha chamada, activa a rede de telefonía móbil, desactiva o modo avión ou desactiva o modo Aforro de batería."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Desactiva o modo avión para facer unha chamada."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Desactiva o modo avión ou conéctate a unha rede sen fíos para facer unha chamada."</string>
+    <!-- no translation found for incall_error_power_off_thermal (8695809601655300168) -->
+    <skip />
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Sae do modo de devolución de chamada de emerxencia para facer unha chamada que non sexa de emerxencia."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"Sen rexistro na rede"</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"A rede móbil non está dispoñible."</string>
@@ -919,6 +925,7 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Información do teléfono"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Información de aprovisionamento do operador"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Aprovisionamento do operador do activador"</string>
-    <string name="call_quality_notification_bluetooth_details" msgid="219073466476340435">"Suxestión: Mellora a conectividade de Bluetooth"</string>
+    <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"O teu sinal de Bluetooth é feble. Proba a cambiar ao altofalante."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Notificación sobre a calidade da chamada"</string>
+    <string name="notification_channel_sip_account" msgid="1261816025156179637">"Contas SIP obsoletas"</string>
 </resources>
