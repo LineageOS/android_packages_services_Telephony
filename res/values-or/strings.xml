@@ -29,8 +29,8 @@
     <string name="default_carrier_mmi_msg_title" msgid="7754317179938537213">"ବାହକ ମେସେଜ୍"</string>
     <string name="mmiStarted" msgid="9212975136944568623">"MMI କୋଡ୍‌କୁ ଆରମ୍ଭ କରାଯାଇଛି"</string>
     <string name="ussdRunning" msgid="1163586813106772717">"USSD କୋଡ୍ ରନ୍ କରୁଛି…"</string>
-    <string name="mmiCancelled" msgid="5339191899200678272">"MMI କୋଡ୍‌କୁ କ୍ୟାନ୍ସଲ୍ କରାଯାଇଛି"</string>
-    <string name="cancel" msgid="8984206397635155197">"କ୍ୟାନ୍ସଲ୍‍ କରନ୍ତୁ"</string>
+    <string name="mmiCancelled" msgid="5339191899200678272">"MMI କୋଡ୍‌କୁ ବାତିଲ୍ କରାଯାଇଛି"</string>
+    <string name="cancel" msgid="8984206397635155197">"ବାତିଲ୍‍ କରନ୍ତୁ"</string>
     <string name="enter_input" msgid="6193628663039958990">"USSD ମେସେଜ୍ ନିଶ୍ଚିତରୂପେ <xliff:g id="MIN_LEN">%1$d</xliff:g> ଓ <xliff:g id="MAX_LEN">%2$d</xliff:g>ଟି ଅକ୍ଷର ମଧ୍ୟରେ ରହିବ। ଦୟାକରି ପୁଣି ଚେଷ୍ଟା କରନ୍ତୁ।"</string>
     <string name="manageConferenceLabel" msgid="8415044818156353233">"କନଫରେନ୍ସ କଲ୍‌କୁ ପରିଚାଳନା କରନ୍ତୁ"</string>
     <string name="ok" msgid="7818974223666140165">"ଠିକ୍ ଅଛି"</string>
@@ -682,7 +682,7 @@
     <string name="callFailed_wfc_service_not_available_in_this_location" msgid="3624536608369524988">"ଏହି ଲୋକେସନ୍‌ରେ ୱାଇ-ଫାଇ କଲିଂ ଉପଲବ୍ଧ ନାହିଁ।"</string>
     <string name="change_pin_title" msgid="3564254326626797321">"ଭଏସମେଲ୍ PINକୁ ବଦଳାନ୍ତୁ"</string>
     <string name="change_pin_continue_label" msgid="5177011752453506371">"ଜାରି ରଖନ୍ତୁ"</string>
-    <string name="change_pin_cancel_label" msgid="2301711566758827936">"କ୍ୟାନ୍ସଲ୍‍ କରନ୍ତୁ"</string>
+    <string name="change_pin_cancel_label" msgid="2301711566758827936">"ବାତିଲ୍‍ କରନ୍ତୁ"</string>
     <string name="change_pin_ok_label" msgid="6861082678817785330">"ଠିକ୍ ଅଛି"</string>
     <string name="change_pin_enter_old_pin_header" msgid="853151335217594829">"ଆପଣଙ୍କର ପୁରୁଣା PINକୁ ନିଶ୍ଚିତ କରନ୍ତୁ"</string>
     <string name="change_pin_enter_old_pin_hint" msgid="8801292976275169367">"ଜାରି ରଖିବା ପାଇଁ ଆପଣଙ୍କର ଭଏସମେଲ୍ PINକୁ ପ୍ରବେଶ କରନ୍ତୁ।"</string>
@@ -705,7 +705,7 @@
     <string name="mobile_data_activate_diag_title" msgid="5401741936224757312">"ଡାଟାକୁ ଯୋଡ଼ିବେ?"</string>
     <string name="mobile_data_activate_diag_message" msgid="3527260988020415441">"ଆପଣଙ୍କୁ <xliff:g id="PROVIDER_NAME">%s</xliff:g> ମାଧ୍ୟମରେ ଡାଟା ଯୋଡ଼ିବାକୁ ପଡ଼ିପାରେ"</string>
     <string name="mobile_data_activate_button" msgid="1139792516354374612">"ଡାଟା ଯୋଡ଼ନ୍ତୁ"</string>
-    <string name="mobile_data_activate_cancel_button" msgid="3530174817572005860">"କ୍ୟାନ୍ସଲ୍‍ କରନ୍ତୁ"</string>
+    <string name="mobile_data_activate_cancel_button" msgid="3530174817572005860">"ବାତିଲ୍‍ କରନ୍ତୁ"</string>
     <string name="clh_card_title_call_ended_txt" msgid="5977978317527299698">"କଲ୍ ସମାପ୍ତ ହୋ‌ଇଛି"</string>
     <string name="clh_callFailed_powerOff_txt" msgid="8279934912560765361">"ଏୟାରପ୍ଲେନ୍ ମୋଡ୍ ଅନ୍‌ ଅଛି"</string>
     <string name="clh_callFailed_simError_txt" msgid="5128538525762326413">"SIM କାର୍ଡକୁ ଆକ୍ସେସ୍ କରିହେଉନାହିଁ"</string>
