@@ -10070,9 +10070,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         try {
             RcsProvisioningMonitor rpm = RcsProvisioningMonitor.getInstance();
             if (rpm != null) {
-                return rpm.isRcsVolteSingleRegistrationEnabled(subId);
+                Boolean isCapable = rpm.isRcsVolteSingleRegistrationEnabled(subId);
+                if (isCapable != null) {
+                    return isCapable;
+                }
             }
-            return false;
+            throw new ServiceSpecificException(ImsException.CODE_ERROR_SERVICE_UNAVAILABLE,
+                    "service is temporarily unavailable.");
         } finally {
             Binder.restoreCallingIdentity(identity);
         }

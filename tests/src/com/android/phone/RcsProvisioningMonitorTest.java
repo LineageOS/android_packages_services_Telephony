@@ -512,7 +512,7 @@ public class RcsProvisioningMonitorTest {
 
         mRcsProvisioningMonitor.updateConfig(FAKE_SUB_ID_BASE, null, false);
         processAllMessages();
-        assertFalse(mRcsProvisioningMonitor.isRcsVolteSingleRegistrationEnabled(FAKE_SUB_ID_BASE));
+        assertTrue(mRcsProvisioningMonitor.isRcsVolteSingleRegistrationEnabled(FAKE_SUB_ID_BASE));
 
         mRcsProvisioningMonitor.updateConfig(FAKE_SUB_ID_BASE, CONFIG_DEFAULT.getBytes(), false);
         processAllMessages();
@@ -521,7 +521,10 @@ public class RcsProvisioningMonitorTest {
         mRcsProvisioningMonitor.updateConfig(FAKE_SUB_ID_BASE,
                 CONFIG_SINGLE_REGISTRATION_DISABLED.getBytes(), false);
         processAllMessages();
-        assertFalse(mRcsProvisioningMonitor.isRcsVolteSingleRegistrationEnabled(FAKE_SUB_ID_BASE));
+        assertTrue(mRcsProvisioningMonitor.isRcsVolteSingleRegistrationEnabled(FAKE_SUB_ID_BASE));
+
+        assertNull(mRcsProvisioningMonitor.isRcsVolteSingleRegistrationEnabled(
+                FAKE_SUB_ID_BASE + 1));
     }
 
     @Test
