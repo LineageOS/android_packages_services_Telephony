@@ -95,7 +95,7 @@
     <string name="sum_loading_settings" msgid="434063780286688775">"Тохиргоог ачаалж байна…"</string>
     <string name="sum_hide_caller_id" msgid="131100328602371933">"Залгасан дуудлагуудад дугаарыг нууцална"</string>
     <string name="sum_show_caller_id" msgid="3571854755324664591">"Залгасан дуудлагуудад дугаарыг харуулна"</string>
-    <string name="sum_default_caller_id" msgid="1767070797135682959">"Гарах дуудлагуудад миний дугаарыг харуулахдаа операторын үндсэн тохиргоог ашиглах"</string>
+    <string name="sum_default_caller_id" msgid="1767070797135682959">"Гарах дуудлагуудад миний дугаарыг харуулахдаа операторын өгөгдмөл тохиргоог ашиглах"</string>
     <string name="labelCW" msgid="8449327023861428622">"Дуудлага хүлээлгэх"</string>
     <string name="sum_cw_enabled" msgid="3977308526187139996">"Дуудлагын дундуур өөр дуудлага ирвэл надад мэдэгдэх"</string>
     <string name="sum_cw_disabled" msgid="3658094589461768637">"Дуудлагын дундуур өөр дуудлага ирвэл надад мэдэгдэх"</string>
@@ -283,9 +283,9 @@
     <string name="roaming_warning" msgid="7855681468067171971">"Таны төлбөр өндөр гарах магадлалтайг анхааруулж байна."</string>
     <string name="roaming_check_price_warning" msgid="8212484083990570215">"Үнийг нь өөрийн сүлжээний нийлүүлэгчээс шалгана уу."</string>
     <string name="roaming_alert_title" msgid="5689615818220960940">"Дата роуминг үйлчилгээг идэвхжүүлэх үү?"</string>
-    <string name="limited_sim_function_notification_title" msgid="612715399099846281">"Хязгаарлагдмал СИМ-н функц"</string>
+    <string name="limited_sim_function_notification_title" msgid="612715399099846281">"Хязгаарлагдмал SIM-н функц"</string>
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"<xliff:g id="PHONE_NUMBER">%2$s</xliff:g>-г ашиглах явцад <xliff:g id="CARRIER_NAME">%1$s</xliff:g>-н дуудлага болон дата үйлчилгээг блоклож болзошгүй."</string>
-    <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"Өөр СИМ ашиглах явцад <xliff:g id="CARRIER_NAME">%1$s</xliff:g>-н дуудлага болон дата үйлчилгээг хориглож болзошгүй."</string>
+    <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"Өөр SIM ашиглах явцад <xliff:g id="CARRIER_NAME">%1$s</xliff:g>-н дуудлага болон дата үйлчилгээг хориглож болзошгүй."</string>
     <string name="data_usage_title" msgid="8438592133893837464">"Аппын дата ашиглалт"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"<xliff:g id="ID_1">%1$s</xliff:g> мобайл дата ашигласан <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"Нарийвчилсан"</string>
@@ -471,7 +471,7 @@
     <string name="simContacts_emptyLoading" msgid="4989040293858675483">"SIM картаас уншиж байна…"</string>
     <string name="simContacts_empty" msgid="1135632055473689521">"Таны SIM картанд харилцагчид байхгүй байна."</string>
     <string name="simContacts_title" msgid="2714029230160136647">"Оруулах харилцагчдыг сонгоно уу"</string>
-    <string name="simContacts_airplaneMode" msgid="4654884030631503808">"Сим картнаас дугаар импортлохын тулд онгоцны горимыг унтраа"</string>
+    <string name="simContacts_airplaneMode" msgid="4654884030631503808">"SIM картнаас дугаар импортлохын тулд онгоцны горимыг унтраа"</string>
     <string name="enable_pin" msgid="967674051730845376">"SIM PIN Идэвхжүүлэх/идэвхгүйжүүлэх"</string>
     <string name="change_pin" msgid="3657869530942905790">"SIM PIN өөрчлөх"</string>
     <string name="enter_pin_text" msgid="3182311451978663356">"SIM PIN:"</string>
@@ -896,7 +896,7 @@
     <string name="radio_info_smsc_label" msgid="3749927072726033763">"SMSC:"</string>
     <string name="radio_info_smsc_update_label" msgid="5141996256097115753">"Шинэчлэх"</string>
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Сэргээх"</string>
-    <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"DNS шалгалтыг унтраах/асаах"</string>
+    <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"DNS шалгалтыг асаах/унтраах"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"OEM-тодорхой Мэдээлэл/Тохиргоо"</string>
     <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC боломжтой:"</string>
     <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR хязгаарласан:"</string>

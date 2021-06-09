@@ -274,8 +274,8 @@
     <string name="data_enable_summary" msgid="696860063456536557">"డేటా వినియోగాన్ని అనుమతించు"</string>
     <string name="dialog_alert_title" msgid="5260471806940268478">"హెచ్చరిక"</string>
     <string name="roaming" msgid="1576180772877858949">"రోమింగ్"</string>
-    <string name="roaming_enable" msgid="6853685214521494819">"రోమింగ్‌లో ఉన్నప్పుడు డేటా సేవలకు కనెక్ట్ చేయి"</string>
-    <string name="roaming_disable" msgid="8856224638624592681">"రోమింగ్‌లో ఉన్నప్పుడు డేటా సేవలకు కనెక్ట్ చేయి"</string>
+    <string name="roaming_enable" msgid="6853685214521494819">"రోమింగ్‌లో ఉన్నప్పుడు డేటా సర్వీసులకు కనెక్ట్ చేయండి"</string>
+    <string name="roaming_disable" msgid="8856224638624592681">"రోమింగ్‌లో ఉన్నప్పుడు డేటా సర్వీసులకు కనెక్ట్ చేయండి"</string>
     <string name="roaming_reenable_message" msgid="1951802463885727915">"డేటా రోమింగ్ ఆఫ్ చేయబడింది. ఆన్ చేయడానికి నొక్కండి."</string>
     <string name="roaming_enabled_message" msgid="9022249120750897">"రోమింగ్ ఛార్జీలు వర్తించవచ్చు. మార్చడానికి నొక్కండి."</string>
     <string name="roaming_notification_title" msgid="3590348480688047320">"మొబైల్ డేటా కనెక్షన్‌ని కోల్పోయారు"</string>
@@ -625,8 +625,8 @@
     <string name="phone_in_ecm_call_notification_text" msgid="653972232922670335">"డేటా కనెక్షన్ నిలిపివేయబడింది"</string>
     <string name="phone_in_ecm_notification_complete_time" msgid="7341624337163082759">"<xliff:g id="COMPLETETIME">%s</xliff:g> వరకు డేటా కనెక్షన్ ఉండదు"</string>
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="5425906903766466743">
-      <item quantity="other">ఫోన్ <xliff:g id="COUNT_1">%s</xliff:g> నిమిషాల పాటు అత్యవసర కాల్‌బ్యాక్ మోడ్‌లో ఉంటుంది. ఈ మోడ్‌లో ఉన్నప్పుడు, డేటా కనెక్షన్‌ను ఉపయోగించే అనువర్తనాలు ఏవీ ఉపయోగించబడవు. మీరు ఇప్పుడు నిష్క్రమించాలనుకుంటున్నారా?</item>
-      <item quantity="one">ఫోన్ <xliff:g id="COUNT_0">%s</xliff:g> నిమిషం పాటు అత్యవసర కాల్‌బ్యాక్ మోడ్‌లో ఉంటుంది. ఈ మోడ్‌లో ఉన్నప్పుడు, డేటా కనెక్షన్‌ను ఉపయోగించే అనువర్తనాలు ఏవీ ఉపయోగించబడవు. మీరు ఇప్పుడు నిష్క్రమించాలనుకుంటున్నారా?</item>
+      <item quantity="other">ఫోన్ <xliff:g id="COUNT_1">%s</xliff:g> నిమిషాల పాటు అత్యవసర కాల్‌బ్యాక్ మోడ్‌లో ఉంటుంది. ఈ మోడ్‌లో ఉన్నప్పుడు, డేటా కనెక్షన్‌ను ఉపయోగించే యాప్‌లు ఏవీ ఉపయోగించబడవు. మీరు ఇప్పుడు నిష్క్రమించాలనుకుంటున్నారా?</item>
+      <item quantity="one">ఫోన్ <xliff:g id="COUNT_0">%s</xliff:g> నిమిషం పాటు అత్యవసర కాల్‌బ్యాక్ మోడ్‌లో ఉంటుంది. ఈ మోడ్‌లో ఉన్నప్పుడు, డేటా కనెక్షన్‌ను ఉపయోగించే యాప్‌లు ఏవీ ఉపయోగించబడవు. మీరు ఇప్పుడు నిష్క్రమించాలనుకుంటున్నారా?</item>
     </plurals>
     <plurals name="alert_dialog_not_avaialble_in_ecm" formatted="false" msgid="1152682528741457004">
       <item quantity="other">అత్యవసర కాల్‌బ్యాక్ మోడ్‌లో ఉన్నప్పుడు, ఎంచుకున్న చర్య అందుబాటులో లేదు. ఫోన్ <xliff:g id="COUNT_1">%s</xliff:g> నిమిషాల పాటు ఈ మోడ్‌లో ఉంటుంది. మీరు ఇప్పుడు నిష్క్రమించాలనుకుంటున్నారా?</item>

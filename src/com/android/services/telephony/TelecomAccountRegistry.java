@@ -729,6 +729,15 @@ public class TelecomAccountRegistry {
         }
 
         /**
+         * Determines from carrier config whether to always allow RTT while roaming.
+         */
+        private boolean isCarrierAllowRttWhenRoaming() {
+            PersistableBundle b =
+                    PhoneGlobals.getInstance().getCarrierConfigForSubId(mPhone.getSubId());
+            return b.getBoolean(CarrierConfigManager.KEY_RTT_SUPPORTED_WHILE_ROAMING_BOOL);
+        }
+
+        /**
          * Where a device supports instant lettering and call subjects, retrieves the necessary
          * PhoneAccount extras for those features.
          *
@@ -869,11 +878,15 @@ public class TelecomAccountRegistry {
             boolean isRoaming = mTelephonyManager.isNetworkRoaming(mPhone.getSubId());
             boolean isOnWfc = mPhone.getImsRegistrationTech()
                     == ImsRegistrationImplBase.REGISTRATION_TECH_IWLAN;
+            boolean alwaysAllowWhileRoaming = isCarrierAllowRttWhenRoaming();
 
-            boolean shouldDisableBecauseRoamingOffWfc = isRoaming && !isOnWfc;
+            boolean shouldDisableBecauseRoamingOffWfc =
+                    (isRoaming && !isOnWfc) && !alwaysAllowWhileRoaming;
+
             Log.i(this, "isRttCurrentlySupported -- regular acct,"
                     + " hasVoiceAvailability: " + hasVoiceAvailability + "\n"
                     + " isRttSupported: " + isRttSupported + "\n"
+                    + " alwaysAllowWhileRoaming: " + alwaysAllowWhileRoaming + "\n"
                     + " isRoaming: " + isRoaming + "\n"
                     + " isOnWfc: " + isOnWfc + "\n");
 

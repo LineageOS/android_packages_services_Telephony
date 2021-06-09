@@ -561,7 +561,7 @@
     <string name="ambulance_type_description" msgid="6798237503553180461">"ஆம்புலன்ஸ்"</string>
     <string name="fire_type_description" msgid="6565200468934914930">"தீயணைப்பு"</string>
     <string name="description_concat_format" msgid="2014471565101724088">"%1$s, %2$s"</string>
-    <string name="dialerKeyboardHintText" msgid="1115266533703764049">"டயல் செய்வதற்கு விசைப்பலகையைப் பயன்படுத்துக"</string>
+    <string name="dialerKeyboardHintText" msgid="1115266533703764049">"டயல் செய்வதற்கு கீபோர்டைப் பயன்படுத்துக"</string>
     <string name="onscreenHoldText" msgid="4025348842151665191">"காத்திரு"</string>
     <string name="onscreenEndCallText" msgid="6138725377654842757">"முடி"</string>
     <string name="onscreenShowDialpadText" msgid="658465753816164079">"டயல்பேடு"</string>
@@ -842,7 +842,7 @@
     <string name="radio_info_ims_reg_status_not_registered" msgid="8045821447288876085">"பதிவுசெய்யப்படவில்லை"</string>
     <string name="radio_info_ims_feature_status_available" msgid="6493200914756969292">"இருக்கிறது"</string>
     <string name="radio_info_ims_feature_status_unavailable" msgid="8930391136839759778">"கிடைக்கவில்லை"</string>
-    <string name="radio_info_ims_reg_status" msgid="25582845222446390">"IMS பதிவு: <xliff:g id="STATUS">%1$s</xliff:g>\nவாய்ஸ் ஓவர் LTE: <xliff:g id="AVAILABILITY_0">%2$s</xliff:g>\nவாய்ஸ் ஓவர் WiFi: <xliff:g id="AVAILABILITY_1">%3$s</xliff:g>\nவீடியோ அழைப்பு: <xliff:g id="AVAILABILITY_2">%4$s</xliff:g>\nUT இடைமுகம்: <xliff:g id="AVAILABILITY_3">%5$s</xliff:g>"</string>
+    <string name="radio_info_ims_reg_status" msgid="25582845222446390">"IMS பதிவு: <xliff:g id="STATUS">%1$s</xliff:g>\nவாய்ஸ் ஓவர் LTE: <xliff:g id="AVAILABILITY_0">%2$s</xliff:g>\nவாய்ஸ் ஓவர் வைஃபை: <xliff:g id="AVAILABILITY_1">%3$s</xliff:g>\nவீடியோ அழைப்பு: <xliff:g id="AVAILABILITY_2">%4$s</xliff:g>\nUT இடைமுகம்: <xliff:g id="AVAILABILITY_3">%5$s</xliff:g>"</string>
     <string name="radioInfo_service_in" msgid="45753418231446400">"சேவையில் உள்ளது"</string>
     <string name="radioInfo_service_out" msgid="287972405416142312">"சேவையில் இல்லை"</string>
     <string name="radioInfo_service_emergency" msgid="4763879891415016848">"அவசர அழைப்புகள் மட்டும்"</string>

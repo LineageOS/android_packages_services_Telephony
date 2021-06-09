@@ -348,7 +348,7 @@
   <string-array name="list_language_entries">
     <item msgid="2347238508726934281">"Ingelesa"</item>
     <item msgid="5172468397620875174">"Frantsesa"</item>
-    <item msgid="3978110664146015398">"Espainiera"</item>
+    <item msgid="3978110664146015398">"Gaztelania"</item>
     <item msgid="2637764545851526369">"Japoniera"</item>
     <item msgid="6103816221834932751">"Koreera"</item>
     <item msgid="3127367370005168399">"Txinera"</item>
@@ -542,7 +542,7 @@
     <string name="incall_error_supp_service_hangup" msgid="836524952243836735">"Ezin dira deiak bereizi."</string>
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"Ezin dira zain utzi deiak."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"Deia egiteko, konektatu haririk gabeko sare batera."</string>
-    <string name="incall_error_promote_wfc" msgid="9164896813931363415">"Deia egiteko, gaitu Wi-Fi bidezko deiak."</string>
+    <string name="incall_error_promote_wfc" msgid="9164896813931363415">"Deia egiteko, gaitu wifi bidezko deiak."</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"Larrialdietarako informazioa"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"Jabea"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"Informazioa ikusteko, sakatu berriro"</string>
