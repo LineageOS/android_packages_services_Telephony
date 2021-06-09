@@ -1074,7 +1074,12 @@ public class ImsConference extends TelephonyConferenceBase implements Holdable {
 
             // If the conference is empty and we're supposed to do a local disconnect, do so now.
             if (mCarrierConfig.shouldLocalDisconnectEmptyConference()
-                    && oldParticipantCount > 0 && newParticipantCount == 0) {
+                    // If we dropped from > 0 participants to zero
+                    // OR if the conference had a single participant and is emulating a standalone
+                    // call.
+                    && (oldParticipantCount > 0 || !isMultiparty())
+                    // AND the CEP says there is nobody left any more.
+                    && newParticipantCount == 0) {
                 Log.i(this, "handleConferenceParticipantsUpdate: empty conference; "
                         + "local disconnect.");
                 onDisconnect();
