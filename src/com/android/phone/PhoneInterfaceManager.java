@@ -7215,11 +7215,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         try {
             if (!Objects.equals(mApp.getPackageManager().getPackageUid(callingPackage, 0),
                     Binder.getCallingUid())) {
-                throw new SecurityException("Package uid and package name do not match: "
-                        + "uid=" + Binder.getCallingUid() + ", packageName=" + callingPackage);
+                throw new SecurityException("Invalid package:" + callingPackage);
             }
         } catch (PackageManager.NameNotFoundException e) {
-            throw new SecurityException("Package name invalid:" + callingPackage);
+            throw new SecurityException("Invalid package:" + callingPackage);
         }
         RoleManager rm = mApp.getSystemService(RoleManager.class);
         List<String> dialerRoleHolders = rm.getRoleHolders(RoleManager.ROLE_DIALER);
