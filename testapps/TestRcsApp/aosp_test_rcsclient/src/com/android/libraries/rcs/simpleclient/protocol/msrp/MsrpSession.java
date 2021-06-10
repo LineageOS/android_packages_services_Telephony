@@ -27,6 +27,8 @@ import android.net.QosCallbackException;
 import android.net.QosSession;
 import android.net.QosSessionAttributes;
 import android.net.QosSocketInfo;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -53,6 +55,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class MsrpSession {
     private static final String DEDICATED_BEARER_SUCCESS = "Dedicated bearer succeeded";
     private static final String DEDICATED_BEARER_ERROR = "Dedicated bearer error";
+    private static final int TOAST_MSG = 1;
     private final Network network;
     private final Socket socket;
     private final InputStream input;
@@ -64,6 +67,7 @@ public class MsrpSession {
     private final ConnectivityManager connectivityManager;
     private final String LOG_TAG = MsrpSession.class.getSimpleName();
     private final Context context;
+    private Handler handler;
 
     /** Creates a new MSRP session on the given listener and the provided streams. */
     MsrpSession(ConnectivityManager connectivityManager, Context context, Network network,
@@ -76,31 +80,36 @@ public class MsrpSession {
         this.output = socket.getOutputStream();
         this.listener = listener;
 
+
+        handler = new Handler(context.getMainLooper()) {
+            @Override
+            public void handleMessage(Message msg) {
+                Toast.makeText(context, msg.obj.toString(), Toast.LENGTH_SHORT).show();
+            }
+        };
+
         listenForBearer();
     }
 
     private final QosCallback qosCallback = new QosCallback() {
         @Override
         public void onError(@NonNull QosCallbackException exception) {
-            Toast.makeText(context, DEDICATED_BEARER_ERROR, Toast.LENGTH_SHORT).show();
             Log.e(LOG_TAG, "onError: " + exception.toString());
-            super.onError(exception);
+            handler.sendMessage(handler.obtainMessage(TOAST_MSG, DEDICATED_BEARER_ERROR));
         }
 
         @Override
         public void onQosSessionAvailable(@NonNull QosSession session,
                 @NonNull QosSessionAttributes sessionAttributes) {
-            Toast.makeText(context, DEDICATED_BEARER_SUCCESS, Toast.LENGTH_SHORT).show();
             Log.d(LOG_TAG, "onQosSessionAvailable: " + session.toString() + ", "
                     + sessionAttributes.toString());
-            super.onQosSessionAvailable(session, sessionAttributes);
+            handler.sendMessage(handler.obtainMessage(TOAST_MSG, DEDICATED_BEARER_SUCCESS));
         }
 
         @Override
         public void onQosSessionLost(@NonNull QosSession session) {
-            Toast.makeText(context, DEDICATED_BEARER_ERROR, Toast.LENGTH_SHORT).show();
             Log.e(LOG_TAG, "onQosSessionLost: " + session.toString());
-            super.onQosSessionLost(session);
+            handler.sendMessage(handler.obtainMessage(TOAST_MSG, DEDICATED_BEARER_ERROR));
         }
     };
 
