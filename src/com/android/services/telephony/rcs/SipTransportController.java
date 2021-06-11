@@ -1072,7 +1072,7 @@ public class SipTransportController implements RcsFeatureController.Feature,
     }
 
     private void logi(String log) {
-        Log.w(LOG_TAG, "[" + mSlotId  + "->" + mSubId + "] " + log);
+        Log.i(LOG_TAG, "[" + mSlotId  + "->" + mSubId + "] " + log);
         mLocalLog.log("[I] " + log);
     }
 
