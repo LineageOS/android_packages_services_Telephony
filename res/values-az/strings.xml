@@ -592,7 +592,7 @@
     <string name="importToFDNfromContacts" msgid="5068664870738407341">"Kontaktlardan import edin"</string>
     <string name="singleContactImportedMsg" msgid="3619804066300998934">"Idxal olunmuş kontakt"</string>
     <string name="failedToImportSingleContactMsg" msgid="228095510489830266">"Kontakt idxalı uğursuz oldu"</string>
-    <string name="hac_mode_title" msgid="4127986689621125468">"Eşitmə yardımı"</string>
+    <string name="hac_mode_title" msgid="4127986689621125468">"Eşitmə cihazları"</string>
     <string name="hac_mode_summary" msgid="7774989500136009881">"Eşitmə yardımı uyğunluğunu aktivləşdirin"</string>
     <string name="rtt_mode_title" msgid="3075948111362818043">"Real zaman mətn (RTT) zəngi"</string>
     <string name="rtt_mode_summary" msgid="8631541375609989562">"Səsli zəng daxilində mesajlaşmaya icazə verin"</string>
