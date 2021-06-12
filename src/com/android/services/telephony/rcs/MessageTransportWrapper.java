@@ -482,7 +482,7 @@ public class MessageTransportWrapper implements DelegateBinderStateManager.State
     }
 
     private void logi(String log) {
-        Log.w(SipTransportController.LOG_TAG, TAG + "[" + mSubId + "] " + log);
+        Log.i(SipTransportController.LOG_TAG, TAG + "[" + mSubId + "] " + log);
         mLocalLog.log("[I] " + log);
     }
 
