@@ -537,8 +537,7 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"شغَّل شبكة الجوال، ثم أوقف تفعيل وضع الطيران أو أوقف تفعيل وضع توفير شحن البطارية لإجراء مكالمة."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"عليك إيقاف وضع الطيران لإجراء مكالمة."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"عليك إيقاف وضع الطيران أو الاتصال بشبكة لاسلكية لإجراء مكالمة."</string>
-    <!-- no translation found for incall_error_power_off_thermal (8695809601655300168) -->
-    <skip />
+    <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"الهاتف ساخن جدًا"</b>\n\n"يتعذّر إتمام هذه المكالمة. يمكن المحاولة مرة أخرى عندما تنخفض درجة حرارة الهاتف.\n\nسيظلّ بإمكانك إجراء مكالمات الطوارئ."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"ينبغي الخروج من وضع معاودة الاتصال بالطوارئ لإجراء مكالمة غير طارئة."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"غير مسجل على الشبكة."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"شبكة الجوال غير متاحة."</string>

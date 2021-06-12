@@ -75,7 +75,7 @@
     <string name="phone_accounts_configure_account_settings" msgid="6622119715253196586">"アカウントを設定"</string>
     <string name="phone_accounts_all_calling_accounts" msgid="1609600743500618823">"すべての通話アカウント"</string>
     <string name="phone_accounts_all_calling_accounts_summary" msgid="2214134955430107240">"通話できるアカウントを選択"</string>
-    <string name="wifi_calling" msgid="3650509202851355742">"Wi-Fi通話"</string>
+    <string name="wifi_calling" msgid="3650509202851355742">"Wi-Fi 通話"</string>
     <string name="connection_service_default_label" msgid="7332739049855715584">"組み込みの接続サービス"</string>
     <string name="voicemail" msgid="7697769412804195032">"ボイスメール"</string>
     <string name="voicemail_settings_with_label" msgid="4228431668214894138">"ボイスメール（<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>）"</string>
@@ -682,7 +682,7 @@
     <string name="sim_description_default" msgid="7474671114363724971">"SIMカード、スロット: <xliff:g id="SLOT_ID">%s</xliff:g>"</string>
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"ユーザー補助機能"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"Wi-Fi 通話の着信"</string>
-    <string name="status_hint_label_wifi_call" msgid="942993035689809853">"Wi-Fi通話"</string>
+    <string name="status_hint_label_wifi_call" msgid="942993035689809853">"Wi-Fi 通話"</string>
     <string name="emergency_action_launch_hint" msgid="2762016865340891314">"開くにはもう一度タップしてください"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"メッセージのデコード中にエラーが発生しました。"</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"SIMカードでサービスが有効になり、スマートフォンのローミング機能が更新されています。"</string>
