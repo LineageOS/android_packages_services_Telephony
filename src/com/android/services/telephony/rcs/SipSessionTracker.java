@@ -357,7 +357,7 @@ public class SipSessionTracker {
     }
 
     private void logi(String log) {
-        Log.w(SipTransportController.LOG_TAG, TAG + ": " + log);
+        Log.i(SipTransportController.LOG_TAG, TAG + ": " + log);
         mLocalLog.log("[I] " + log);
     }
 
