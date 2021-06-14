@@ -414,7 +414,7 @@ public class SipDelegateController {
     }
 
     private void logi(String log) {
-        Log.w(SipTransportController.LOG_TAG, LOG_TAG + "[" + mSubId + "] " + log);
+        Log.i(SipTransportController.LOG_TAG, LOG_TAG + "[" + mSubId + "] " + log);
         mLocalLog.log("[I] " + log);
     }
 
