@@ -537,8 +537,7 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Activez le réseau cellulaire ou désactivez le mode Avion ou le mode Économiseur de pile pour faire un appel."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Désactivez le mode Avion pour faire un appel."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Désactivez le mode Avion ou connectez-vous à un réseau Wi-Fi pour faire un appel."</string>
-    <!-- no translation found for incall_error_power_off_thermal (8695809601655300168) -->
-    <skip />
+    <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"Le téléphone est trop chaud"</b>\n\n"Impossible de passer cet appel. Réessayez plus tard quand le téléphone aura refroidi.\n\nVous pouvez toujours effectuer des appels d\'urgence."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Quittez le mode de rappel d\'urgence pour effectuer un appel non urgent."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"Non enregistré sur le réseau"</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"Réseau pour mobile non disponible"</string>
