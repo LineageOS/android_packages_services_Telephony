@@ -806,7 +806,7 @@ public class TelephonyConnectionService extends ConnectionService {
                                 || serviceState == ServiceState.STATE_IN_SERVICE;
                     }
                 }
-            }, isEmergencyNumber && !isTestEmergencyNumber, phone);
+            }, isEmergencyNumber && !isTestEmergencyNumber, phone, isTestEmergencyNumber);
             // Return the still unconnected GsmConnection and wait for the Radios to boot before
             // connecting it to the underlying Phone.
             return resultConnection;
