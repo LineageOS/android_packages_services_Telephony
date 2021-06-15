@@ -2097,7 +2097,8 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
         phone.unregisterForInCallVoicePrivacyOff(mHandler);
     }
 
-    protected void hangup(int telephonyDisconnectCode) {
+    @VisibleForTesting
+    public void hangup(int telephonyDisconnectCode) {
         if (mOriginalConnection != null) {
             mHangupDisconnectCause = telephonyDisconnectCode;
             try {
