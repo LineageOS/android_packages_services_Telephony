@@ -32,7 +32,6 @@ public class CdmaCallOptions extends TimeConsumingPreferenceActivity {
     private static final String BUTTON_VP_KEY = "button_voice_privacy_key";
     private static final String CALL_FORWARDING_KEY = "call_forwarding_key";
     private static final String CALL_WAITING_KEY = "call_waiting_key";
-    private CdmaVoicePrivacySwitchPreference mButtonVoicePrivacy;
 
     @Override
     protected void onCreate(Bundle icicle) {
@@ -44,8 +43,9 @@ public class CdmaCallOptions extends TimeConsumingPreferenceActivity {
         subInfoHelper.setActionBarTitle(
                 getActionBar(), getResources(), R.string.labelCdmaMore_with_label);
 
-        mButtonVoicePrivacy = (CdmaVoicePrivacySwitchPreference) findPreference(BUTTON_VP_KEY);
-        mButtonVoicePrivacy.setPhone(subInfoHelper.getPhone());
+        CdmaVoicePrivacySwitchPreference buttonVoicePrivacy =
+                (CdmaVoicePrivacySwitchPreference) findPreference(BUTTON_VP_KEY);
+        buttonVoicePrivacy.setPhone(subInfoHelper.getPhone());
         PersistableBundle carrierConfig;
         if (subInfoHelper.hasSubId()) {
             carrierConfig = PhoneGlobals.getInstance().getCarrierConfigForSubId(
@@ -55,16 +55,26 @@ public class CdmaCallOptions extends TimeConsumingPreferenceActivity {
         }
         if (subInfoHelper.getPhone().getPhoneType() != PhoneConstants.PHONE_TYPE_CDMA
                 || carrierConfig.getBoolean(CarrierConfigManager.KEY_VOICE_PRIVACY_DISABLE_UI_BOOL)) {
-            // disable the entire screen
-            mButtonVoicePrivacy.setEnabled(false);
+            buttonVoicePrivacy.setEnabled(false);
         }
 
         Preference callForwardingPref = getPreferenceScreen().findPreference(CALL_FORWARDING_KEY);
-        callForwardingPref.setIntent(subInfoHelper.getIntent(CdmaCallForwardOptions.class));
+        if (carrierConfig != null && carrierConfig.getBoolean(
+                CarrierConfigManager.KEY_CALL_FORWARDING_VISIBILITY_BOOL)) {
+            callForwardingPref.setIntent(
+                    subInfoHelper.getIntent(CdmaCallForwardOptions.class));
+        } else {
+            getPreferenceScreen().removePreference(callForwardingPref);
+        }
 
         CdmaCallWaitingPreference callWaitingPref = (CdmaCallWaitingPreference)getPreferenceScreen()
                                                      .findPreference(CALL_WAITING_KEY);
-        callWaitingPref.init(this, subInfoHelper.getPhone());
+        if (carrierConfig != null && carrierConfig.getBoolean(
+                CarrierConfigManager.KEY_ADDITIONAL_SETTINGS_CALL_WAITING_VISIBILITY_BOOL)) {
+            callWaitingPref.init(this, subInfoHelper.getPhone());
+        } else {
+            getPreferenceScreen().removePreference(callWaitingPref);
+        }
     }
 
     @Override
