@@ -96,9 +96,8 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
             return null;
         }
 
-
         @Override
-        public void onDisconnect() {
+        public void hangup(int telephonyDisconnectCode) {
             wasDisconnected = true;
         }
     }

@@ -398,7 +398,8 @@ public class CallFeaturesSetting extends PreferenceActivity
             cdmaOptions.setIntent(mSubscriptionInfoHelper.getIntent(CdmaCallOptions.class));
             gsmOptions.setIntent(mSubscriptionInfoHelper.getIntent(GsmUmtsCallOptions.class));
         } else {
-            prefSet.removePreference(cdmaOptions);
+            // Remove GSM options and repopulate the preferences in this Activity if phone type is
+            // GSM.
             prefSet.removePreference(gsmOptions);
 
             int phoneType = mPhone.getPhoneType();
@@ -406,12 +407,16 @@ public class CallFeaturesSetting extends PreferenceActivity
                 prefSet.removePreference(fdnButton);
             } else {
                 if (phoneType == PhoneConstants.PHONE_TYPE_CDMA) {
+                    // For now, just keep CdmaCallOptions as one entity. Eventually CDMA should
+                    // follow the same pattern as GSM below, where VP and Call forwarding are
+                    // populated here and Call waiting is populated in another "Additional Settings"
+                    // submenu for CDMA.
                     prefSet.removePreference(fdnButton);
-                    addPreferencesFromResource(R.xml.cdma_call_privacy);
-                    CdmaVoicePrivacySwitchPreference buttonVoicePrivacy =
-                            (CdmaVoicePrivacySwitchPreference) findPreference(BUTTON_VP_KEY);
-                    buttonVoicePrivacy.setPhone(mPhone);
+                    cdmaOptions.setSummary(null);
+                    cdmaOptions.setTitle(R.string.additional_gsm_call_settings);
+                    cdmaOptions.setIntent(mSubscriptionInfoHelper.getIntent(CdmaCallOptions.class));
                 } else if (phoneType == PhoneConstants.PHONE_TYPE_GSM) {
+                    prefSet.removePreference(cdmaOptions);
                     if (mPhone.getIccCard() == null || !mPhone.getIccCard().getIccFdnAvailable()) {
                         prefSet.removePreference(fdnButton);
                     }
