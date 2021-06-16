@@ -155,7 +155,6 @@ public class PhoneGlobals extends ContextWrapper {
 
     CallManager mCM;
     CallNotifier notifier;
-    CallerInfoCache callerInfoCache;
     NotificationMgr notificationMgr;
     TelephonyRcsService mTelephonyRcsService;
     public PhoneInterfaceManager phoneMgr;
@@ -457,12 +456,6 @@ public class PhoneGlobals extends ContextWrapper {
                     | PowerManager.ON_AFTER_RELEASE, LOG_TAG);
 
             mKeyguardManager = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
-
-            // Create the CallerInfoCache singleton, which remembers custom ring tone and
-            // send-to-voicemail settings.
-            //
-            // The asynchronous caching will start just after this call.
-            callerInfoCache = CallerInfoCache.init(this);
 
             phoneMgr = PhoneInterfaceManager.init(this);
 
