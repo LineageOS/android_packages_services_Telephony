@@ -96,7 +96,7 @@
     <string name="sum_loading_settings" msgid="434063780286688775">"सेटिङहरू लोड हुँदै..."</string>
     <string name="sum_hide_caller_id" msgid="131100328602371933">"बहिर्गमन कलहरूमा नम्बर लुकाइएको"</string>
     <string name="sum_show_caller_id" msgid="3571854755324664591">"बहिर्गमन कलहरूमा प्रदर्शित नम्बर"</string>
-    <string name="sum_default_caller_id" msgid="1767070797135682959">"बहिर्गमन कलमा मेरो नम्बर देखाउन डिफल्ट अपरेटर सेटिङहरू प्रयोग गर्नुहोस्"</string>
+    <string name="sum_default_caller_id" msgid="1767070797135682959">"बहिर्गमन कलमा मेरो नम्बर देखाउन पूर्वनिर्धारित अपरेटर सेटिङहरू प्रयोग गर्नुहोस्"</string>
     <string name="labelCW" msgid="8449327023861428622">"कल प्रतीक्षा गर्दै"</string>
     <string name="sum_cw_enabled" msgid="3977308526187139996">"कल गरेको बखत मलाई आगमन कलको जानकारी गराउनुहोस्"</string>
     <string name="sum_cw_disabled" msgid="3658094589461768637">"कल गरेको बेलामा आगमन कलहरूको बारेमा मलाई जानकारी गराउनुहोस्"</string>
@@ -151,7 +151,7 @@
     <string name="disable" msgid="1122698860799462116">"निस्कृय पार्नुहोस्"</string>
     <string name="change_num" msgid="6982164494063109334">"अपडेट गर्नुहोस्"</string>
   <string-array name="clir_display_values">
-    <item msgid="8477364191403806960">"नेटवर्क डिफल्ट"</item>
+    <item msgid="8477364191403806960">"नेटवर्क पूर्वनिर्धारित"</item>
     <item msgid="6813323051965618926">"सङ्ख्या लुकाउनुहोस्"</item>
     <item msgid="9150034130629852635">"सङ्ख्या देखाउनुहोस्"</item>
   </string-array>
@@ -295,7 +295,7 @@
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"<xliff:g id="PHONE_NUMBER">%2$s</xliff:g>.प्रयोग गर्दा <xliff:g id="CARRIER_NAME">%1$s</xliff:g> का कल तथा डेटा सेवाहरूलाई रोक लगाइन सक्छ"</string>
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"अर्को SIM प्रयोग गर्दा <xliff:g id="CARRIER_NAME">%1$s</xliff:g> कल तथा डेटा सेवहरूलाई रोक लगाइन सक्छ।"</string>
     <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"चल्तीबाट हटाइएका SIP खाताहरू भेट्टाइयो र हटाइयो"</string>
-    <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"अबदेखि Android प्लेटफर्ममा SIP कल गर्न मिल्दैन।\nतपाईंका हालका SIP खाताहरू <xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g> हटाइएका छन्।\nकृपया आफ्नो डिफल्ट कल गर्ने खाताको सेटिङ पुष्टि गर्नुहोस्।"</string>
+    <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"अबदेखि Android प्लेटफर्ममा SIP कल गर्न मिल्दैन।\nतपाईंका हालका SIP खाताहरू <xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g> हटाइएका छन्।\nकृपया आफ्नो पूर्वनिर्धारित कल गर्ने खाताको सेटिङ पुष्टि गर्नुहोस्।"</string>
     <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"सेटिङमा जानुहोस्"</string>
     <string name="data_usage_title" msgid="8438592133893837464">"अनुप्रयोगले गरेको डेटाको प्रयोग"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"<xliff:g id="ID_2">%2$s</xliff:g> सम्म <xliff:g id="ID_1">%1$s</xliff:g> मोबाइल डेटा प्रयोग भयो"</string>
@@ -515,7 +515,6 @@
     <string name="puk2_requested" msgid="6992374450720307514">"पासवर्ड गलत छ। सिम अब ब्लक गरिएको छ। PUK2 प्रविष्टि गर्नुहोस्।"</string>
     <string name="puk2_blocked" msgid="3131139031779319911">"PUK2 स्थायी रूपमा रोक्का गरियो।"</string>
     <string name="pin2_attempts" msgid="5625178102026453023">\n" तपाईंसँग <xliff:g id="NUMBER">%d</xliff:g> प्रयास बाँकी छन्।"</string>
-    <string name="puk2_locked" msgid="6497760825455461057">"SIM कार्ड PUK2 बाट लक गरिएको छ। अनलक गर्न सेवा प्रदायकलाई सम्पर्क गर्नुहोस्।"</string>
     <string name="pin2_unblocked" msgid="4481107908727789303">"PIN2 अब ब्लक गरिएको छैन"</string>
     <string name="pin2_error_exception" msgid="8116103864600823641">"नेटवर्क वा SIM कार्ड त्रुटि।"</string>
     <string name="doneButton" msgid="7371209609238460207">"सम्पन्न भयो"</string>
@@ -876,7 +875,7 @@
     <string name="radioInfo_lac" msgid="3892986460272607013">"LAC"</string>
     <string name="radioInfo_cid" msgid="1423185536264406705">"CID"</string>
     <string name="radio_info_subid" msgid="6839966868621703203">"हालको subId:"</string>
-    <string name="radio_info_dds" msgid="1122593144425697126">"डिफल्ट डेटा SIM को SubId:"</string>
+    <string name="radio_info_dds" msgid="1122593144425697126">"पूर्वनिर्धारित डेटा SIM को SubId:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DL ब्यान्डविथ (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL व्यान्डविथ (kbps):"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"LTE को भौतिक च्यानलको कन्फिगरेसन:"</string>

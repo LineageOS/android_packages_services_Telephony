@@ -515,7 +515,6 @@
     <string name="puk2_requested" msgid="6992374450720307514">"Parola nu este corectă. Cardul SIM a fost blocat. Introduceți codul PUK2."</string>
     <string name="puk2_blocked" msgid="3131139031779319911">"Codul PUK2 este blocat definitiv."</string>
     <string name="pin2_attempts" msgid="5625178102026453023">\n"V-au rămas <xliff:g id="NUMBER">%d</xliff:g> (de) încercări."</string>
-    <string name="puk2_locked" msgid="6497760825455461057">"Blocat cu PUK2. Contactați furnizorul de servicii pentru a debloca."</string>
     <string name="pin2_unblocked" msgid="4481107908727789303">"Codul PIN2 nu mai este blocat"</string>
     <string name="pin2_error_exception" msgid="8116103864600823641">"Eroare de rețea sau de card SIM"</string>
     <string name="doneButton" msgid="7371209609238460207">"Terminat"</string>

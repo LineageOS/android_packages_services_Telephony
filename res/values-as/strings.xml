@@ -515,7 +515,6 @@
     <string name="puk2_requested" msgid="6992374450720307514">"ভুল পাছৱৰ্ড। এতিয়া ছিম লক কৰা হৈছে। PUK2 লিখক।"</string>
     <string name="puk2_blocked" msgid="3131139031779319911">"PUK2 স্থায়ীভাৱে অৱৰোধ কৰা হৈছে।"</string>
     <string name="pin2_attempts" msgid="5625178102026453023">\n"আপোনাৰ হাতত <xliff:g id="NUMBER">%d</xliff:g>টা প্ৰয়াস বাকী আছে।"</string>
-    <string name="puk2_locked" msgid="6497760825455461057">"PUK2 লক কৰা আছে। আনলক কৰিবলৈ সেৱা প্ৰদানকাৰীৰ সৈতে যোগাযোগ কৰক।"</string>
     <string name="pin2_unblocked" msgid="4481107908727789303">"PIN2 আৰু অৱৰোধ হৈ থকা নাই"</string>
     <string name="pin2_error_exception" msgid="8116103864600823641">"নেটৱৰ্ক বা ছিম কাৰ্ডৰ আসোঁৱাহ।"</string>
     <string name="doneButton" msgid="7371209609238460207">"হ’ল"</string>
