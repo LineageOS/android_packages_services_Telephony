@@ -9930,13 +9930,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
                         TelephonyConnectionService service =
                                 registry.getTelephonyConnectionService();
-                        if (service == null) {
-                            Log.e(LOG_TAG, "TelephonyConnectionService is null");
-                            thermalMitigationResult =
-                                    TelephonyManager.THERMAL_MITIGATION_RESULT_INVALID_STATE;
-                            break;
-
-                        } else if (service.isEmergencyCallPending()) {
+                        if (service != null && service.isEmergencyCallPending()) {
                             Log.e(LOG_TAG, "An emergency call is pending");
                             thermalMitigationResult =
                                     TelephonyManager.THERMAL_MITIGATION_RESULT_INVALID_STATE;
