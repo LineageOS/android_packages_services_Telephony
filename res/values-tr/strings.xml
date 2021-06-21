@@ -515,7 +515,6 @@
     <string name="puk2_requested" msgid="6992374450720307514">"Şifre hatalı. SIM kilitlendi. PUK2\'yi girin."</string>
     <string name="puk2_blocked" msgid="3131139031779319911">"PUK2 kalıcı olarak engellendi."</string>
     <string name="pin2_attempts" msgid="5625178102026453023">\n"<xliff:g id="NUMBER">%d</xliff:g> deneme hakkınız kaldı."</string>
-    <string name="puk2_locked" msgid="6497760825455461057">"PUK2 kilitlendi. Kilidi açmak için servis sağlayıcıyla iletişime geçin."</string>
     <string name="pin2_unblocked" msgid="4481107908727789303">"PIN2 artık engellenmiş durumda değil"</string>
     <string name="pin2_error_exception" msgid="8116103864600823641">"Ağ veya SIM kart hatası"</string>
     <string name="doneButton" msgid="7371209609238460207">"Bitti"</string>
