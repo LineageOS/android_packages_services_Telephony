@@ -16,6 +16,7 @@
 
 package com.android.phone;
 
+import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static android.provider.Telephony.ServiceStateTable;
 import static android.provider.Telephony.ServiceStateTable.CONTENT_URI;
 import static android.provider.Telephony.ServiceStateTable.DATA_NETWORK_TYPE;
@@ -26,6 +27,7 @@ import static android.provider.Telephony.ServiceStateTable.VOICE_REG_STATE;
 import static android.provider.Telephony.ServiceStateTable.getUriForSubscriptionId;
 import static android.provider.Telephony.ServiceStateTable.getUriForSubscriptionIdAndField;
 
+import android.Manifest;
 import android.content.ContentProvider;
 import android.content.ContentValues;
 import android.content.Context;
@@ -33,16 +35,21 @@ import android.database.Cursor;
 import android.database.MatrixCursor;
 import android.database.MatrixCursor.RowBuilder;
 import android.net.Uri;
+import android.os.Binder;
+import android.os.Build;
 import android.os.Parcel;
+import android.telephony.LocationAccessPolicy;
 import android.telephony.ServiceState;
 import android.telephony.SubscriptionManager;
 import android.util.Log;
 
 import com.android.internal.annotations.VisibleForTesting;
+import com.android.internal.telephony.TelephonyPermissions;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * The class to provide base facility to access ServiceState related content,
@@ -223,7 +230,9 @@ public class ServiceStateProvider extends ContentProvider {
     public static final String OPERATOR_ALPHA_SHORT_RAW = "operator_alpha_short_raw";
 
     private final HashMap<Integer, ServiceState> mServiceStates = new HashMap<>();
-    private static final String[] sColumns = {
+
+    @VisibleForTesting
+    /* package */ static final String[] ALL_COLUMNS = {
         VOICE_REG_STATE,
         DATA_REG_STATE,
         VOICE_ROAMING_TYPE,
@@ -251,6 +260,34 @@ public class ServiceStateProvider extends ContentProvider {
         DATA_NETWORK_TYPE,
         DUPLEX_MODE,
     };
+
+    /**
+     * Columns that are exposed to public surface.
+     * These are the columns accessible to apps target S+ and lack
+     * {@link android.Manifest.permission#READ_PRIVILEGED_PHONE_STATE} permission.
+     */
+    @VisibleForTesting
+    /* package */ static final String[] PUBLIC_COLUMNS = {
+            VOICE_REG_STATE,
+            DATA_REG_STATE,
+            VOICE_OPERATOR_NUMERIC,
+            IS_MANUAL_NETWORK_SELECTION,
+            DATA_NETWORK_TYPE,
+            DUPLEX_MODE
+    };
+
+    /**
+     * Columns protected by location permissions (either FINE or COARSE).
+     * SecurityException will throw if applications without location permissions try to put those
+     * columns explicitly into cursor (e.g. through {@code projection} parameter in
+     * {@link #query(Uri, String[], String, String[], String)} method).
+     * Default (scrub-out) value will return if applications try to put all columns into cursor by
+     * specifying null of {@code projection} parameter and get values through the returned cursor.
+     */
+    private static final Set<String> LOCATION_PROTECTED_COLUMNS_SET = Set.of(
+            NETWORK_ID,
+            SYSTEM_ID
+    );
 
     @Override
     public boolean onCreate() {
@@ -354,10 +391,53 @@ public class ServiceStateProvider extends ContentProvider {
             }
 
             // Get the service state
-            ServiceState ss = getServiceState(subId);
-            if (ss == null) {
+            ServiceState unredactedServiceState = getServiceState(subId);
+            if (unredactedServiceState == null) {
                 Log.d(TAG, "returning null");
                 return null;
+            }
+
+            final boolean targetingAtLeastS = TelephonyPermissions.getTargetSdk(getContext(),
+                    getCallingPackage()) >= Build.VERSION_CODES.S;
+            final boolean canReadPrivilegedPhoneState = getContext().checkCallingOrSelfPermission(
+                    Manifest.permission.READ_PRIVILEGED_PHONE_STATE) == PERMISSION_GRANTED;
+
+            final String[] availableColumns;
+            final ServiceState ss;
+            if (targetingAtLeastS && !canReadPrivilegedPhoneState) {
+                // targetSdkVersion S+ without read privileged phone state permission can only
+                // access public columns which have no location sensitive info.
+                availableColumns = PUBLIC_COLUMNS;
+                ss = unredactedServiceState;
+            } else {
+                availableColumns = ALL_COLUMNS;
+
+                final boolean hasLocationPermission =
+                        hasFineLocationPermission() || hasCoarseLocationPermission();
+                if (hasLocationPermission) {
+                    ss = unredactedServiceState;
+                } else {
+                    // The caller has no location permission but explicitly requires for location
+                    // protected columns. Throw SecurityException to fail loudly.
+                    if (projection != null) {
+                        for (String requiredColumn : projection) {
+                            if (LOCATION_PROTECTED_COLUMNS_SET.contains(requiredColumn)) {
+                                throw new SecurityException("Column " + requiredColumn
+                                        + "requires location permissions to access.");
+                            }
+                        }
+                    }
+
+                    // The caller has no location permission but only requires columns without
+                    // location sensitive info or "all" columns, return result that scrub out all
+                    // sensitive info. In later case, we will not know which columns will be fetched
+                    // from the returned cursor until the result has been returned.
+                    ss = unredactedServiceState.createLocationInfoSanitizedCopy(
+                            true /*removeCoarseLocation*/);
+                    // TODO(b/188061647): remove the additional redaction once it is fixed in SS
+                    ss.setCdmaSystemAndNetworkId(ServiceState.UNKNOWN_ID,
+                            ServiceState.UNKNOWN_ID);
+                }
             }
 
             // Build the result
@@ -388,7 +468,8 @@ public class ServiceStateProvider extends ContentProvider {
             final int data_network_type = ss.getDataNetworkType();
             final int duplex_mode = ss.getDuplexMode();
 
-            return buildSingleRowResult(projection, sColumns, new Object[] {
+            Object[] data = availableColumns == ALL_COLUMNS ? new Object[]{
+                    // data for all columns
                     voice_reg_state,
                     data_reg_state,
                     voice_roaming_type,
@@ -415,7 +496,17 @@ public class ServiceStateProvider extends ContentProvider {
                     operator_alpha_short_raw,
                     data_network_type,
                     duplex_mode,
-            });
+            } : new Object[]{
+                    // data for public columns only
+                    voice_reg_state,
+                    data_reg_state,
+                    voice_operator_numeric,
+                    is_manual_network_selection,
+                    data_network_type,
+                    duplex_mode,
+            };
+
+            return buildSingleRowResult(projection, availableColumns, data);
         }
     }
 
@@ -568,5 +659,39 @@ public class ServiceStateProvider extends ContentProvider {
         // written into a persistent storage. ServiceStateProvider keeps values in the memory.
         values.put(SERVICE_STATE, p.marshall());
         return values;
+    }
+
+    private boolean hasFineLocationPermission() {
+        LocationAccessPolicy.LocationPermissionResult fineLocationResult =
+                LocationAccessPolicy.checkLocationPermission(getContext(),
+                        new LocationAccessPolicy.LocationPermissionQuery.Builder()
+                                .setCallingPackage(getCallingPackage())
+                                .setCallingFeatureId(getCallingAttributionTag())
+                                .setCallingPid(Binder.getCallingPid())
+                                .setCallingUid(Binder.getCallingUid())
+                                .setMethod("ServiceStateProvider#query")
+                                .setLogAsInfo(true)
+                                .setMinSdkVersionForFine(Build.VERSION_CODES.S)
+                                .setMinSdkVersionForCoarse(Build.VERSION_CODES.S)
+                                .setMinSdkVersionForEnforcement(Build.VERSION_CODES.S)
+                                .build());
+        return fineLocationResult == LocationAccessPolicy.LocationPermissionResult.ALLOWED;
+    }
+
+    private boolean hasCoarseLocationPermission() {
+        LocationAccessPolicy.LocationPermissionResult coarseLocationResult =
+                LocationAccessPolicy.checkLocationPermission(getContext(),
+                        new LocationAccessPolicy.LocationPermissionQuery.Builder()
+                                .setCallingPackage(getCallingPackage())
+                                .setCallingFeatureId(getCallingAttributionTag())
+                                .setCallingPid(Binder.getCallingPid())
+                                .setCallingUid(Binder.getCallingUid())
+                                .setMethod("ServiceStateProvider#query")
+                                .setLogAsInfo(true)
+                                .setMinSdkVersionForCoarse(Build.VERSION_CODES.S)
+                                .setMinSdkVersionForFine(Integer.MAX_VALUE)
+                                .setMinSdkVersionForEnforcement(Build.VERSION_CODES.S)
+                                .build());
+        return coarseLocationResult == LocationAccessPolicy.LocationPermissionResult.ALLOWED;
     }
 }
