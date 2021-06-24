@@ -483,7 +483,7 @@ public class PhoneGlobals extends ContextWrapper {
 
             // Initialize cell status using current airplane mode.
             handleAirplaneModeChange(this, Settings.Global.getInt(getContentResolver(),
-                    Settings.Global.AIRPLANE_MODE_ON, AIRPLANE_OFF));
+                    Settings.Global.AIRPLANE_MODE_ON, AIRPLANE_OFF) == AIRPLANE_ON);
 
             // Register for misc other intent broadcasts.
             IntentFilter intentFilter =
@@ -641,10 +641,9 @@ public class PhoneGlobals extends ContextWrapper {
         notifier.updateCallNotifierRegistrationsAfterRadioTechnologyChange();
     }
 
-    private void handleAirplaneModeChange(Context context, int newMode) {
+    private void handleAirplaneModeChange(Context context, boolean isAirplaneNewlyOn) {
         int cellState = Settings.Global.getInt(context.getContentResolver(),
                 Settings.Global.CELL_ON, PhoneConstants.CELL_ON_FLAG);
-        boolean isAirplaneNewlyOn = (newMode == 1);
         switch (cellState) {
             case PhoneConstants.CELL_OFF_FLAG:
                 // Airplane mode does not affect the cell radio if user
@@ -727,12 +726,7 @@ public class PhoneGlobals extends ContextWrapper {
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
             if (action.equals(Intent.ACTION_AIRPLANE_MODE_CHANGED)) {
-                int airplaneMode = Settings.Global.getInt(getContentResolver(),
-                        Settings.Global.AIRPLANE_MODE_ON, AIRPLANE_OFF);
-                // Treat any non-OFF values as ON.
-                if (airplaneMode != AIRPLANE_OFF) {
-                    airplaneMode = AIRPLANE_ON;
-                }
+                boolean airplaneMode = intent.getBooleanExtra("state", false);
                 handleAirplaneModeChange(context, airplaneMode);
             } else if (action.equals(TelephonyIntents.ACTION_SIM_STATE_CHANGED)) {
                 // re-register as it may be a new IccCard
