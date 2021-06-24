@@ -476,8 +476,12 @@ public class PhoneGlobals extends ContextWrapper {
             mCM.registerForMmiComplete(mHandler, MMI_COMPLETE, null);
 
             // Initialize cell status using current airplane mode.
-            handleAirplaneModeChange(this, Settings.Global.getInt(getContentResolver(),
-                    Settings.Global.AIRPLANE_MODE_ON, AIRPLANE_OFF) == AIRPLANE_ON);
+            handleAirplaneModeChange(
+                    Settings.Global.getInt(
+                                    getContentResolver(),
+                                    Settings.Global.AIRPLANE_MODE_ON,
+                                    AIRPLANE_OFF)
+                            == AIRPLANE_ON);
 
             // Register for misc other intent broadcasts.
             IntentFilter intentFilter =
@@ -629,19 +633,20 @@ public class PhoneGlobals extends ContextWrapper {
         notifier.updateCallNotifierRegistrationsAfterRadioTechnologyChange();
     }
 
-    private void handleAirplaneModeChange(Context context, boolean isAirplaneNewlyOn) {
-        int cellState = Settings.Global.getInt(context.getContentResolver(),
-                Settings.Global.CELL_ON, PhoneConstants.CELL_ON_FLAG);
+    private void handleAirplaneModeChange(boolean isAirplaneNewlyOn) {
+        int cellState =
+                Settings.Global.getInt(
+                        getContentResolver(), Settings.Global.CELL_ON, PhoneConstants.CELL_ON_FLAG);
         switch (cellState) {
             case PhoneConstants.CELL_OFF_FLAG:
                 // Airplane mode does not affect the cell radio if user
                 // has turned it off.
                 break;
             case PhoneConstants.CELL_ON_FLAG:
-                maybeTurnCellOff(context, isAirplaneNewlyOn);
+                maybeTurnCellOff(isAirplaneNewlyOn);
                 break;
             case PhoneConstants.CELL_OFF_DUE_TO_AIRPLANE_MODE_FLAG:
-                maybeTurnCellOn(context, isAirplaneNewlyOn);
+                maybeTurnCellOn(isAirplaneNewlyOn);
                 break;
         }
         for (Phone phone : PhoneFactory.getPhones()) {
@@ -652,57 +657,59 @@ public class PhoneGlobals extends ContextWrapper {
     /*
      * Returns true if the radio must be turned off when entering airplane mode.
      */
-    private boolean isCellOffInAirplaneMode(Context context) {
-        String airplaneModeRadios = Settings.Global.getString(context.getContentResolver(),
-                Settings.Global.AIRPLANE_MODE_RADIOS);
+    private boolean isCellOffInAirplaneMode() {
+        String airplaneModeRadios =
+                Settings.Global.getString(
+                        getContentResolver(), Settings.Global.AIRPLANE_MODE_RADIOS);
         return airplaneModeRadios == null
                 || airplaneModeRadios.contains(Settings.Global.RADIO_CELL);
     }
 
-    private void setRadioPowerOff(Context context) {
+    private void setRadioPowerOff() {
         Log.i(LOG_TAG, "Turning radio off - airplane");
-        Settings.Global.putInt(context.getContentResolver(), Settings.Global.CELL_ON,
-                 PhoneConstants.CELL_OFF_DUE_TO_AIRPLANE_MODE_FLAG);
-        TelephonyProperties.airplane_mode_on(true); // true means int value 1
+        Settings.Global.putInt(
+                getContentResolver(),
+                Settings.Global.CELL_ON,
+                PhoneConstants.CELL_OFF_DUE_TO_AIRPLANE_MODE_FLAG);
         Settings.Global.putInt(getContentResolver(), Settings.Global.ENABLE_CELLULAR_ON_BOOT, 0);
+        TelephonyProperties.airplane_mode_on(true); // true means int value 1
         PhoneUtils.setRadioPower(false);
     }
 
-    private void setRadioPowerOn(Context context) {
+    private void setRadioPowerOn() {
         Log.i(LOG_TAG, "Turning radio on - airplane");
-        Settings.Global.putInt(context.getContentResolver(), Settings.Global.CELL_ON,
-                PhoneConstants.CELL_ON_FLAG);
-        Settings.Global.putInt(getContentResolver(), Settings.Global.ENABLE_CELLULAR_ON_BOOT,
-                1);
+        Settings.Global.putInt(
+                getContentResolver(), Settings.Global.CELL_ON, PhoneConstants.CELL_ON_FLAG);
+        Settings.Global.putInt(getContentResolver(), Settings.Global.ENABLE_CELLULAR_ON_BOOT, 1);
         TelephonyProperties.airplane_mode_on(false); // false means int value 0
         PhoneUtils.setRadioPower(true);
     }
 
-    private void maybeTurnCellOff(Context context, boolean isAirplaneNewlyOn) {
+    private void maybeTurnCellOff(boolean isAirplaneNewlyOn) {
         if (isAirplaneNewlyOn) {
             // If we are trying to turn off the radio, make sure there are no active
             // emergency calls.  If there are, switch airplane mode back to off.
-            TelecomManager tm = (TelecomManager) context.getSystemService(TELECOM_SERVICE);
+            TelecomManager tm = (TelecomManager) getSystemService(TELECOM_SERVICE);
 
             if (tm != null && tm.isInEmergencyCall()) {
                 // Switch airplane mode back to off.
                 ConnectivityManager cm =
-                        (ConnectivityManager) context.getSystemService(CONNECTIVITY_SERVICE);
+                        (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
                 cm.setAirplaneMode(false);
                 Toast.makeText(this, R.string.radio_off_during_emergency_call, Toast.LENGTH_LONG)
                         .show();
                 Log.i(LOG_TAG, "Ignoring airplane mode: emergency call. Turning airplane off");
-            } else if (isCellOffInAirplaneMode(context)) {
-                setRadioPowerOff(context);
+            } else if (isCellOffInAirplaneMode()) {
+                setRadioPowerOff();
             } else {
                 Log.i(LOG_TAG, "Ignoring airplane mode: settings prevent cell radio power off");
             }
         }
     }
 
-    private void maybeTurnCellOn(Context context, boolean isAirplaneNewlyOn) {
+    private void maybeTurnCellOn(boolean isAirplaneNewlyOn) {
         if (!isAirplaneNewlyOn) {
-            setRadioPowerOn(context);
+            setRadioPowerOn();
         }
     }
 
@@ -715,7 +722,7 @@ public class PhoneGlobals extends ContextWrapper {
             String action = intent.getAction();
             if (action.equals(Intent.ACTION_AIRPLANE_MODE_CHANGED)) {
                 boolean airplaneMode = intent.getBooleanExtra("state", false);
-                handleAirplaneModeChange(context, airplaneMode);
+                handleAirplaneModeChange(airplaneMode);
             } else if (action.equals(TelephonyIntents.ACTION_SIM_STATE_CHANGED)) {
                 // re-register as it may be a new IccCard
                 int phoneId = intent.getIntExtra(PhoneConstants.PHONE_KEY,
