@@ -579,6 +579,18 @@ public class RcsProvisioningMonitorTest {
 
     @Test
     @SmallTest
+    public void testSendBroadcastWhenDmaChanged() throws Exception {
+        createMonitor(3);
+        verify(mPhone, times(3)).sendBroadcast(any(), any());
+
+        updateDefaultMessageApplication(DEFAULT_MESSAGING_APP2);
+        processAllMessages();
+
+        verify(mPhone, times(6)).sendBroadcast(any(), any());
+    }
+
+    @Test
+    @SmallTest
     public void testRcsConnectedAndDisconnected() throws Exception {
         createMonitor(1);
         mRcsProvisioningMonitor.registerRcsProvisioningCallback(
