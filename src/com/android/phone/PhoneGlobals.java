@@ -536,8 +536,9 @@ public class PhoneGlobals extends ContextWrapper {
         // Start tracking Binder latency for the phone process.
         mBinderCallsSettingsObserver = new BinderCallsStats.SettingsObserver(
             getApplicationContext(),
-            new BinderCallsStats(new BinderCallsStats.Injector()),
-            com.android.internal.os.BinderLatencyProto.Dims.TELEPHONY);
+            new BinderCallsStats(
+                    new BinderCallsStats.Injector(),
+                    com.android.internal.os.BinderLatencyProto.Dims.TELEPHONY));
     }
 
     /**
