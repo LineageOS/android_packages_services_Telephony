@@ -16,22 +16,44 @@
 
 package com.android.phone;
 
+import static android.content.pm.PackageManager.PERMISSION_DENIED;
+import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static android.provider.Telephony.ServiceStateTable;
+import static android.provider.Telephony.ServiceStateTable.DATA_NETWORK_TYPE;
+import static android.provider.Telephony.ServiceStateTable.DATA_REG_STATE;
+import static android.provider.Telephony.ServiceStateTable.DUPLEX_MODE;
+import static android.provider.Telephony.ServiceStateTable.VOICE_OPERATOR_NUMERIC;
+import static android.provider.Telephony.ServiceStateTable.VOICE_REG_STATE;
 import static android.provider.Telephony.ServiceStateTable.getUriForSubscriptionId;
 import static android.telephony.NetworkRegistrationInfo.REGISTRATION_STATE_HOME;
+
+import static com.android.phone.ServiceStateProvider.DATA_ROAMING_TYPE;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.ArgumentMatchers.nullable;
 import static org.mockito.Mockito.doReturn;
-import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
+import android.Manifest;
+import android.app.AppOpsManager;
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.content.pm.ProviderInfo;
 import android.database.ContentObserver;
 import android.database.Cursor;
+import android.location.LocationManager;
 import android.net.Uri;
+import android.os.Build;
+import android.os.UserHandle;
 import android.telephony.AccessNetworkConstants;
 import android.telephony.NetworkRegistrationInfo;
 import android.telephony.ServiceState;
@@ -40,8 +62,13 @@ import android.telephony.TelephonyManager;
 import android.test.mock.MockContentResolver;
 import android.test.suitebuilder.annotation.SmallTest;
 
+import androidx.test.ext.junit.runners.AndroidJUnit4;
+
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 /**
  * Tests for simple queries of ServiceStateProvider.
@@ -53,41 +80,18 @@ import org.junit.Test;
  *         runtest --path tests/src/com/android/phone/ServiceStateProviderTest.java \
  *                 --test-method testGetServiceState
  */
+@RunWith(AndroidJUnit4.class)
 public class ServiceStateProviderTest {
     private static final String TAG = "ServiceStateProviderTest";
 
-    private Context mContext;
     private MockContentResolver mContentResolver;
     private ServiceState mTestServiceState;
     private ServiceState mTestServiceStateForSubId1;
 
-    private final String[] mTestProjection =
-    {
-        ServiceStateTable.VOICE_REG_STATE,
-        ServiceStateTable.DATA_REG_STATE,
-        ServiceStateProvider.VOICE_OPERATOR_ALPHA_LONG,
-        ServiceStateProvider.VOICE_OPERATOR_ALPHA_SHORT,
-        ServiceStateTable.VOICE_OPERATOR_NUMERIC,
-        ServiceStateProvider.DATA_OPERATOR_ALPHA_LONG,
-        ServiceStateProvider.DATA_OPERATOR_ALPHA_SHORT,
-        ServiceStateProvider.DATA_OPERATOR_NUMERIC,
-        ServiceStateTable.IS_MANUAL_NETWORK_SELECTION,
-        ServiceStateProvider.RIL_VOICE_RADIO_TECHNOLOGY,
-        ServiceStateProvider.RIL_DATA_RADIO_TECHNOLOGY,
-        ServiceStateProvider.CSS_INDICATOR,
-        ServiceStateProvider.NETWORK_ID,
-        ServiceStateProvider.SYSTEM_ID,
-        ServiceStateProvider.CDMA_ROAMING_INDICATOR,
-        ServiceStateProvider.CDMA_DEFAULT_ROAMING_INDICATOR,
-        ServiceStateProvider.CDMA_ERI_ICON_INDEX,
-        ServiceStateProvider.CDMA_ERI_ICON_MODE,
-        ServiceStateProvider.IS_EMERGENCY_ONLY,
-        ServiceStateProvider.IS_USING_CARRIER_AGGREGATION,
-        ServiceStateProvider.OPERATOR_ALPHA_LONG_RAW,
-        ServiceStateProvider.OPERATOR_ALPHA_SHORT_RAW,
-        ServiceStateTable.DATA_NETWORK_TYPE,
-        ServiceStateTable.DUPLEX_MODE,
-    };
+    @Mock Context mContext;
+    @Mock AppOpsManager mAppOpsManager;
+    @Mock LocationManager mLocationManager;
+    @Mock PackageManager mPackageManager;
 
     // Exception used internally to verify if the Resolver#notifyChange has been called.
     private class TestNotifierException extends RuntimeException {
@@ -98,7 +102,11 @@ public class ServiceStateProviderTest {
 
     @Before
     public void setUp() throws Exception {
-        mContext = mock(Context.class);
+        MockitoAnnotations.initMocks(this);
+        mockSystemService(AppOpsManager.class, mAppOpsManager, Context.APP_OPS_SERVICE);
+        mockSystemService(LocationManager.class, mLocationManager, Context.LOCATION_SERVICE);
+        doReturn(mPackageManager).when(mContext).getPackageManager();
+
         mContentResolver = new MockContentResolver() {
             @Override
             public void notifyChange(Uri uri, ContentObserver observer, boolean syncToNetwork) {
@@ -141,62 +149,165 @@ public class ServiceStateProviderTest {
         providerInfo.authority = "service-state";
         provider.attachInfoForTesting(mContext, providerInfo);
         mContentResolver.addProvider("service-state", provider);
-    }
 
-    @Test
-    @SmallTest
-    public void testQueryServiceStateWithNoSubId() {
-        // Verify that when calling query with no subId in the uri the default ServiceState is
-        // returned.
-        // In this case the subId is set to 0 and the expected service state is
-        // mTestServiceState.
-        verifyServiceStateForSubId(ServiceStateTable.CONTENT_URI, mTestServiceState);
-    }
-
-    @Test
-    @SmallTest
-    public void testGetServiceStateWithDefaultSubId() {
-        // Verify that when calling with the DEFAULT_SUBSCRIPTION_ID the correct ServiceState is
-        // returned
-        // In this case the subId is set to 0 and the expected service state is
-        // mTestServiceState.
-        verifyServiceStateForSubId(
-                getUriForSubscriptionId(SubscriptionManager.DEFAULT_SUBSCRIPTION_ID),
-                mTestServiceState);
+        // By default, test with app target R, no READ_PRIVILEGED_PHONE_STATE permission
+        setTargetSdkVersion(Build.VERSION_CODES.R);
+        setCanReadPrivilegedPhoneState(false);
     }
 
     /**
-     * Test querying the service state for a given subId
+     * Verify that when calling query with no subId in the uri the default ServiceState is returned.
+     * In this case the subId is set to 0 and the expected service state is mTestServiceState.
      */
     @Test
     @SmallTest
-    public void testGetServiceStateForSubId() {
-        // Verify that when calling with a specific subId the correct ServiceState is returned
-        // In this case the subId is set to 1 and the expected service state is
-        // mTestServiceStateForSubId1
-        verifyServiceStateForSubId(getUriForSubscriptionId(1), mTestServiceStateForSubId1);
+    public void testQueryServiceState_withNoSubId_withoutLocation() {
+        setLocationPermissions(false);
+
+        verifyServiceStateForSubId(ServiceStateTable.CONTENT_URI, mTestServiceState,
+                false /*hasLocation*/);
     }
 
-    private void verifyServiceStateForSubId(Uri uri, ServiceState ss) {
-        Cursor cursor = mContentResolver.query(uri, mTestProjection, "",
+    @Test
+    @SmallTest
+    public void testQueryServiceState_withNoSubId_withLocation() {
+        setLocationPermissions(true);
+
+        verifyServiceStateForSubId(ServiceStateTable.CONTENT_URI, mTestServiceState,
+                true /*hasLocation*/);
+    }
+
+    /**
+     * Verify that when calling with the DEFAULT_SUBSCRIPTION_ID the correct ServiceState is
+     * returned. In this case the subId is set to 0 and the expected service state is
+     * mTestServiceState.
+     */
+    @Test
+    @SmallTest
+    public void testGetServiceState_withDefaultSubId_withoutLocation() {
+        setLocationPermissions(false);
+
+        verifyServiceStateForSubId(
+                getUriForSubscriptionId(SubscriptionManager.DEFAULT_SUBSCRIPTION_ID),
+                mTestServiceState, false /*hasLocation*/);
+    }
+
+    @Test
+    @SmallTest
+    public void testGetServiceState_withDefaultSubId_withLocation() {
+        setLocationPermissions(true);
+
+        verifyServiceStateForSubId(
+                getUriForSubscriptionId(SubscriptionManager.DEFAULT_SUBSCRIPTION_ID),
+                mTestServiceState, true /*hasLocation*/);
+    }
+
+    /**
+     * Verify that when calling with a specific subId the correct ServiceState is returned. In this
+     * case the subId is set to 1 and the expected service state is mTestServiceStateForSubId1
+     */
+    @Test
+    @SmallTest
+    public void testGetServiceStateForSubId_withoutLocation() {
+        setLocationPermissions(false);
+
+        verifyServiceStateForSubId(getUriForSubscriptionId(1), mTestServiceStateForSubId1,
+                false /*hasLocation*/);
+    }
+
+    @Test
+    @SmallTest
+    public void testGetServiceStateForSubId_withLocation() {
+        setLocationPermissions(true);
+
+        verifyServiceStateForSubId(getUriForSubscriptionId(1), mTestServiceStateForSubId1,
+                true /*hasLocation*/);
+    }
+
+    /**
+     * Verify that apps target S+ without READ_PRIVILEGED_PHONE_STATE permission can only access
+     * the public columns of ServiceStateTable.
+     */
+    @Test
+    public void testQueryAllColumns_targetS_noReadPrivilege() {
+        setTargetSdkVersion(Build.VERSION_CODES.S);
+        setCanReadPrivilegedPhoneState(false);
+
+        verifyServiceStateWithPublicColumns(mTestServiceState, null /*projection*/);
+    }
+
+    /**
+     * Verify that apps target S+ without READ_PRIVILEGED_PHONE_STATE permission try to access
+     * non-public columns should throw IllegalArgumentException.
+     */
+    @Test
+    public void testQueryNonPublicColumn_targetS_noReadPrivilege() {
+        setTargetSdkVersion(Build.VERSION_CODES.S);
+        setCanReadPrivilegedPhoneState(false);
+
+        // DATA_ROAMING_TYPE is a non-public column
+        String[] projection = new String[]{DATA_ROAMING_TYPE};
+
+        assertThrows(IllegalArgumentException.class,
+                () -> verifyServiceStateWithPublicColumns(mTestServiceState, projection));
+    }
+
+    /**
+     * Verify that apps target S+ with READ_PRIVILEGED_PHONE_STATE and location permissions should
+     * be able to access all columns.
+     */
+    @Test
+    public void testQueryAllColumn_targetS_withAllPermission() {
+        setTargetSdkVersion(Build.VERSION_CODES.S);
+        setCanReadPrivilegedPhoneState(true);
+        setLocationPermissions(true);
+
+        verifyServiceStateForSubId(
+                getUriForSubscriptionId(SubscriptionManager.DEFAULT_SUBSCRIPTION_ID),
+                mTestServiceState, true /*hasPermission*/);
+    }
+
+    private void verifyServiceStateWithPublicColumns(ServiceState ss, String[] projection) {
+        try (Cursor cursor = mContentResolver.query(ServiceStateTable.CONTENT_URI, projection, null,
+                null)) {
+            assertNotNull(cursor);
+            assertEquals(cursor.getColumnCount(), ServiceStateProvider.PUBLIC_COLUMNS.length);
+
+            cursor.moveToFirst();
+            assertEquals(ss.getVoiceRegState(),
+                    cursor.getInt(cursor.getColumnIndex(VOICE_REG_STATE)));
+            assertEquals(ss.getDataRegistrationState(),
+                    cursor.getInt(cursor.getColumnIndex(DATA_REG_STATE)));
+            assertEquals(ss.getOperatorNumeric(),
+                    cursor.getString(cursor.getColumnIndex(VOICE_OPERATOR_NUMERIC)));
+            assertEquals(ss.getDataNetworkType(),
+                    cursor.getInt(cursor.getColumnIndex(DATA_NETWORK_TYPE)));
+            assertEquals(ss.getDuplexMode(), cursor.getInt(cursor.getColumnIndex(DUPLEX_MODE)));
+        }
+    }
+
+    private void verifyServiceStateForSubId(Uri uri, ServiceState ss, boolean hasLocation) {
+        Cursor cursor = mContentResolver.query(uri, ServiceStateProvider.ALL_COLUMNS, "",
                 null, null);
         assertNotNull(cursor);
         cursor.moveToFirst();
 
         final int voiceRegState = ss.getState();
         final int dataRegState = ss.getDataRegistrationState();
-        final String voiceOperatorAlphaLong = ss.getOperatorAlphaLong();
-        final String voiceOperatorAlphaShort = ss.getOperatorAlphaShort();
-        final String voiceOperatorNumeric = ss.getOperatorNumeric();
-        final String dataOperatorAlphaLong = ss.getOperatorAlphaLong();
-        final String dataOperatorAlphaShort = ss.getOperatorAlphaShort();
-        final String dataOperatorNumeric = ss.getOperatorNumeric();
+        final int voiceRoamingType = ss.getVoiceRoamingType();
+        final int dataRoamingType = ss.getDataRoamingType();
+        final String voiceOperatorAlphaLong = hasLocation ? ss.getOperatorAlphaLong() : null;
+        final String voiceOperatorAlphaShort = hasLocation ? ss.getOperatorAlphaShort() : null;
+        final String voiceOperatorNumeric = hasLocation ? ss.getOperatorNumeric() : null;
+        final String dataOperatorAlphaLong = hasLocation ? ss.getOperatorAlphaLong() : null;
+        final String dataOperatorAlphaShort = hasLocation ? ss.getOperatorAlphaShort() : null;
+        final String dataOperatorNumeric = hasLocation ? ss.getOperatorNumeric() : null;
         final int isManualNetworkSelection = (ss.getIsManualSelection()) ? 1 : 0;
         final int rilVoiceRadioTechnology = ss.getRilVoiceRadioTechnology();
         final int rilDataRadioTechnology = ss.getRilDataRadioTechnology();
         final int cssIndicator = ss.getCssIndicator();
-        final int networkId = ss.getCdmaNetworkId();
-        final int systemId = ss.getCdmaSystemId();
+        final int networkId = hasLocation ? ss.getCdmaNetworkId() : ServiceState.UNKNOWN_ID;
+        final int systemId = hasLocation ? ss.getCdmaSystemId() : ServiceState.UNKNOWN_ID;
         final int cdmaRoamingIndicator = ss.getCdmaRoamingIndicator();
         final int cdmaDefaultRoamingIndicator = ss.getCdmaDefaultRoamingIndicator();
         final int cdmaEriIconIndex = ss.getCdmaEriIconIndex();
@@ -210,28 +321,30 @@ public class ServiceStateProviderTest {
 
         assertEquals(voiceRegState, cursor.getInt(0));
         assertEquals(dataRegState, cursor.getInt(1));
-        assertEquals(voiceOperatorAlphaLong, cursor.getString(2));
-        assertEquals(voiceOperatorAlphaShort, cursor.getString(3));
-        assertEquals(voiceOperatorNumeric, cursor.getString(4));
-        assertEquals(dataOperatorAlphaLong, cursor.getString(5));
-        assertEquals(dataOperatorAlphaShort, cursor.getString(6));
-        assertEquals(dataOperatorNumeric, cursor.getString(7));
-        assertEquals(isManualNetworkSelection, cursor.getInt(8));
-        assertEquals(rilVoiceRadioTechnology, cursor.getInt(9));
-        assertEquals(rilDataRadioTechnology, cursor.getInt(10));
-        assertEquals(cssIndicator, cursor.getInt(11));
-        assertEquals(networkId, cursor.getInt(12));
-        assertEquals(systemId, cursor.getInt(13));
-        assertEquals(cdmaRoamingIndicator, cursor.getInt(14));
-        assertEquals(cdmaDefaultRoamingIndicator, cursor.getInt(15));
-        assertEquals(cdmaEriIconIndex, cursor.getInt(16));
-        assertEquals(cdmaEriIconMode, cursor.getInt(17));
-        assertEquals(isEmergencyOnly, cursor.getInt(18));
-        assertEquals(isUsingCarrierAggregation, cursor.getInt(19));
-        assertEquals(operatorAlphaLongRaw, cursor.getString(20));
-        assertEquals(operatorAlphaShortRaw, cursor.getString(21));
-        assertEquals(dataNetworkType, cursor.getInt(22));
-        assertEquals(duplexMode, cursor.getInt(23));
+        assertEquals(voiceRoamingType, cursor.getInt(2));
+        assertEquals(dataRoamingType, cursor.getInt(3));
+        assertEquals(voiceOperatorAlphaLong, cursor.getString(4));
+        assertEquals(voiceOperatorAlphaShort, cursor.getString(5));
+        assertEquals(voiceOperatorNumeric, cursor.getString(6));
+        assertEquals(dataOperatorAlphaLong, cursor.getString(7));
+        assertEquals(dataOperatorAlphaShort, cursor.getString(8));
+        assertEquals(dataOperatorNumeric, cursor.getString(9));
+        assertEquals(isManualNetworkSelection, cursor.getInt(10));
+        assertEquals(rilVoiceRadioTechnology, cursor.getInt(11));
+        assertEquals(rilDataRadioTechnology, cursor.getInt(12));
+        assertEquals(cssIndicator, cursor.getInt(13));
+        assertEquals(networkId, cursor.getInt(14));
+        assertEquals(systemId, cursor.getInt(15));
+        assertEquals(cdmaRoamingIndicator, cursor.getInt(16));
+        assertEquals(cdmaDefaultRoamingIndicator, cursor.getInt(17));
+        assertEquals(cdmaEriIconIndex, cursor.getInt(18));
+        assertEquals(cdmaEriIconMode, cursor.getInt(19));
+        assertEquals(isEmergencyOnly, cursor.getInt(20));
+        assertEquals(isUsingCarrierAggregation, cursor.getInt(21));
+        assertEquals(operatorAlphaLongRaw, cursor.getString(22));
+        assertEquals(operatorAlphaShortRaw, cursor.getString(23));
+        assertEquals(dataNetworkType, cursor.getInt(24));
+        assertEquals(duplexMode, cursor.getInt(25));
     }
 
     /**
@@ -369,5 +482,51 @@ public class ServiceStateProviderTest {
             return true;
         }
         return false;
+    }
+
+    private void setLocationPermissions(boolean hasPermission) {
+        if (!hasPermission) {
+            // System location off, LocationAccessPolicy#checkLocationPermission returns DENIED_SOFT
+            when(mLocationManager.isLocationEnabledForUser(any(UserHandle.class)))
+                    .thenReturn(false);
+        } else {
+            // Turn on all to let LocationAccessPolicy#checkLocationPermission returns ALLOWED
+            when(mContext.checkPermission(eq(Manifest.permission.ACCESS_FINE_LOCATION),
+                    anyInt(), anyInt())).thenReturn(PackageManager.PERMISSION_GRANTED);
+
+            when(mContext.checkPermission(eq(Manifest.permission.ACCESS_COARSE_LOCATION),
+                    anyInt(), anyInt())).thenReturn(PackageManager.PERMISSION_GRANTED);
+
+            when(mAppOpsManager.noteOpNoThrow(eq(AppOpsManager.OPSTR_FINE_LOCATION),
+                    anyInt(), anyString(), nullable(String.class), nullable(String.class)))
+                    .thenReturn(AppOpsManager.MODE_ALLOWED);
+            when(mAppOpsManager.noteOpNoThrow(eq(AppOpsManager.OPSTR_COARSE_LOCATION),
+                    anyInt(), anyString(), nullable(String.class), nullable(String.class)))
+                    .thenReturn(AppOpsManager.MODE_ALLOWED);
+
+            when(mLocationManager.isLocationEnabledForUser(any(UserHandle.class))).thenReturn(true);
+            when(mContext.checkPermission(eq(Manifest.permission.INTERACT_ACROSS_USERS_FULL),
+                    anyInt(), anyInt())).thenReturn(PackageManager.PERMISSION_GRANTED);
+        }
+    }
+
+    private <T> void mockSystemService(Class<T> clazz , T obj, String serviceName) {
+        when(mContext.getSystemServiceName(eq(clazz))).thenReturn(serviceName);
+        when(mContext.getSystemService(eq(serviceName))).thenReturn(obj);
+    }
+
+    private void setTargetSdkVersion(int version) {
+        ApplicationInfo testAppInfo = new ApplicationInfo();
+        testAppInfo.targetSdkVersion = version;
+        try {
+            when(mPackageManager.getApplicationInfoAsUser(anyString(), anyInt(), any()))
+                    .thenReturn(testAppInfo);
+        } catch (Exception ignored) {
+        }
+    }
+
+    private void setCanReadPrivilegedPhoneState(boolean granted) {
+        doReturn(granted ? PERMISSION_GRANTED : PERMISSION_DENIED).when(mContext)
+                .checkCallingOrSelfPermission(Manifest.permission.READ_PRIVILEGED_PHONE_STATE);
     }
 }
