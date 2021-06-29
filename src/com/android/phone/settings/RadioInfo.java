@@ -17,6 +17,7 @@
 package com.android.phone.settings;
 
 import static android.net.ConnectivityManager.NetworkCallback;
+import static java.util.concurrent.TimeUnit.MILLISECONDS;
 
 import android.content.ComponentName;
 import android.content.Context;
@@ -96,8 +97,12 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Executor;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeoutException;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -300,6 +305,8 @@ public class RadioInfo extends AppCompatActivity {
             updateBandwidths(dlbw, ulbw);
         }
     };
+
+    private static final int DEFAULT_TIMEOUT_MS = 1000;
 
     // not final because we need to recreate this object to register on a new subId (b/117555407)
     private TelephonyCallback mTelephonyCallback = new RadioInfoTelephonyCallback();
@@ -1131,8 +1138,17 @@ public class RadioInfo extends AppCompatActivity {
             mNrFrequency.setText(ServiceState.frequencyRangeToString(ss.getNrFrequencyRange()));
         }
 
-        NetworkSlicingConfig slicingConfig = new NetworkSlicingConfig();
-        mNetworkSlicingConfig.setText(slicingConfig.toString());
+        Executor simpleExecutor = (r) -> r.run();
+        CompletableFuture<NetworkSlicingConfig> resultFuture = new CompletableFuture<>();
+        mTelephonyManager.getNetworkSlicingConfiguration(simpleExecutor, resultFuture::complete);
+        try {
+            NetworkSlicingConfig networkSlicingConfig =
+                resultFuture.get(DEFAULT_TIMEOUT_MS, MILLISECONDS);
+            mNetworkSlicingConfig.setText(networkSlicingConfig.toString());
+        } catch (ExecutionException | InterruptedException | TimeoutException e) {
+            Log.e(TAG, "Unable to get slicing config: " + e.toString());
+            mNetworkSlicingConfig.setText("Unable to get slicing config.");
+        }
 
     }
 
