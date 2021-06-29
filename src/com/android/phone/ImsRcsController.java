@@ -435,7 +435,7 @@ public class ImsRcsController extends IImsRcsController.Stub {
     // Used for SHELL command only right now.
     public boolean removeUceRequestDisallowedStatus(int subId) throws ImsException {
         try {
-            UceControllerManager uceCtrlManager = getRcsFeatureController(subId).getFeature(
+            UceControllerManager uceCtrlManager = getRcsFeatureController(subId, true).getFeature(
                     UceControllerManager.class);
             if (uceCtrlManager == null) {
                 return false;
@@ -452,7 +452,7 @@ public class ImsRcsController extends IImsRcsController.Stub {
     // Used for SHELL command only right now.
     public boolean setCapabilitiesRequestTimeout(int subId, long timeoutAfter) throws ImsException {
         try {
-            UceControllerManager uceCtrlManager = getRcsFeatureController(subId).getFeature(
+            UceControllerManager uceCtrlManager = getRcsFeatureController(subId, true).getFeature(
                     UceControllerManager.class);
             if (uceCtrlManager == null) {
                 return false;
@@ -730,6 +730,18 @@ public class ImsRcsController extends IImsRcsController.Stub {
      * @throws ServiceSpecificException if getting RcsFeatureManager instance failed.
      */
     private RcsFeatureController getRcsFeatureController(int subId) {
+        return getRcsFeatureController(subId, false /* skipVerifyingConfig */);
+    }
+
+    /**
+     * Retrieve RcsFeatureManager instance.
+     *
+     * @param subId the subscription ID
+     * @param skipVerifyingConfig If the RCS configuration can be skip.
+     * @return The RcsFeatureManager instance
+     * @throws ServiceSpecificException if getting RcsFeatureManager instance failed.
+     */
+    private RcsFeatureController getRcsFeatureController(int subId, boolean skipVerifyingConfig) {
         if (!ImsManager.isImsSupportedOnDevice(mApp)) {
             throw new ServiceSpecificException(ImsException.CODE_ERROR_UNSUPPORTED_OPERATION,
                     "IMS is not available on device.");
@@ -744,7 +756,9 @@ public class ImsRcsController extends IImsRcsController.Stub {
                     "Invalid subscription Id: " + subId);
         }
         int slotId = phone.getPhoneId();
-        verifyImsRcsConfiguredOrThrow(slotId);
+        if (!skipVerifyingConfig) {
+            verifyImsRcsConfiguredOrThrow(slotId);
+        }
         RcsFeatureController c = mRcsService.getFeatureController(slotId);
         if (c == null) {
             throw new ServiceSpecificException(ImsException.CODE_ERROR_UNSUPPORTED_OPERATION,
