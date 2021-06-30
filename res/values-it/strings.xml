@@ -668,7 +668,7 @@
     <string name="description_dial_button" msgid="8614631902795087259">"componi"</string>
     <string name="description_dialpad_button" msgid="7395114120463883623">"mostra tastierino"</string>
     <string name="pane_title_emergency_dialpad" msgid="3627372514638694401">"Tastierino di emergenza"</string>
-    <string name="voicemail_visual_voicemail_switch_title" msgid="6610414098912832120">"Leggi la segreteria"</string>
+    <string name="voicemail_visual_voicemail_switch_title" msgid="6610414098912832120">"Lettura della segreteria"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="7005128605986960003">"Imposta PIN"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="4633077715231764435">"Cambia PIN"</string>
     <string name="preference_category_ringtone" msgid="8787281191375434976">"Suoneria e vibrazione"</string>
