@@ -575,52 +575,6 @@
             </intent-filter>
         </activity>
 
-        <!-- Start SIP -->
-        <service android:name="com.android.services.telephony.sip.SipConnectionService"
-                 android:label="@string/sip_connection_service_label"
-                 android:singleUser="true"
-                 android:exported="true"
-                 android:permission="android.permission.BIND_TELECOM_CONNECTION_SERVICE" >
-            <intent-filter>
-                <action android:name="android.telecom.ConnectionService" />
-            </intent-filter>
-        </service>
-
-        <receiver android:name="com.android.services.telephony.sip.SipIncomingCallReceiver"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.net.sip.action.SIP_INCOMING_CALL" />
-            </intent-filter>
-        </receiver>
-
-        <activity android:label="Sip Settings"
-                  android:name="com.android.services.telephony.sip.SipSettings"
-                  android:theme="@style/DialerSettingsLight"
-                  android:launchMode="singleTop"
-                  android:configChanges="orientation|screenSize|keyboardHidden"
-                  android:uiOptions="splitActionBarWhenNarrow"
-                  android:exported="true"
-                  android:parentActivityName="com.android.phone.CallFeaturesSetting" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <action android:name="android.net.sip.NOTIFY" />
-            </intent-filter>
-        </activity>
-        <activity android:name="com.android.services.telephony.sip.SipEditor"
-                android:theme="@style/DialerSettingsLight"
-                android:configChanges="orientation|screenSize|keyboardHidden"
-                android:uiOptions="splitActionBarWhenNarrow">
-        </activity>
-
-        <service android:name="com.android.services.telephony.sip.components.TelephonySipService"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.net.sip.action.START_SIP" />
-            </intent-filter>
-        </service>
-
-        <!-- End SIP -->
-
         <activity android:name="MMIDialogActivity"
                 android:configChanges="orientation|screenSize|keyboardHidden"
                 android:excludeFromRecents="true"
