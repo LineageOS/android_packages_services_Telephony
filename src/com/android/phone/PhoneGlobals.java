@@ -31,7 +31,6 @@ import android.content.res.XmlResourceParser;
 import android.media.AudioManager;
 import android.net.ConnectivityManager;
 import android.net.Uri;
-import android.net.sip.SipManager;
 import android.os.AsyncResult;
 import android.os.Bundle;
 import android.os.Handler;
@@ -39,7 +38,6 @@ import android.os.Message;
 import android.os.PersistableBundle;
 import android.os.PowerManager;
 import android.os.SystemProperties;
-import android.os.UserManager;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.sysprop.TelephonyProperties;
@@ -79,8 +77,6 @@ import com.android.internal.util.IndentingPrintWriter;
 import com.android.phone.settings.SettingsConstants;
 import com.android.phone.vvm.CarrierVvmPackageInstalledReceiver;
 import com.android.services.telephony.rcs.TelephonyRcsService;
-import com.android.services.telephony.sip.SipAccountRegistry;
-import com.android.services.telephony.sip.SipUtil;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
@@ -124,7 +120,6 @@ public class PhoneGlobals extends ContextWrapper {
     private static final int EVENT_DATA_ROAMING_CONNECTED = 11;
     private static final int EVENT_DATA_ROAMING_OK = 12;
     private static final int EVENT_UNSOL_CDMA_INFO_RECORD = 13;
-    private static final int EVENT_RESTART_SIP = 14;
     private static final int EVENT_DATA_ROAMING_SETTINGS_CHANGED = 15;
     private static final int EVENT_MOBILE_DATA_SETTINGS_CHANGED = 16;
     private static final int EVENT_CARRIER_CONFIG_CHANGED = 17;
@@ -205,8 +200,6 @@ public class PhoneGlobals extends ContextWrapper {
 
     // Broadcast receiver for various intent broadcasts (see onCreate())
     private final BroadcastReceiver mReceiver = new PhoneAppBroadcastReceiver();
-    // Broadcast receiver for SIP based intents (see onCreate())
-    private final SipReceiver mSipReceiver = new SipReceiver();
 
     private final CarrierVvmPackageInstalledReceiver mCarrierVvmPackageInstalledReceiver =
             new CarrierVvmPackageInstalledReceiver();
@@ -335,17 +328,6 @@ public class PhoneGlobals extends ContextWrapper {
                 case EVENT_UNSOL_CDMA_INFO_RECORD:
                     //TODO: handle message here;
                     break;
-                case EVENT_RESTART_SIP:
-                    // This should only run if the Phone process crashed and was restarted. We do
-                    // not want this running if the device is still in the FBE encrypted state.
-                    // This is the same procedure that is triggered in the SipIncomingCallReceiver
-                    // upon BOOT_COMPLETED.
-                    UserManager userManager =
-                            (UserManager) sMe.getSystemService(Context.USER_SERVICE);
-                    if (userManager != null && userManager.isUserUnlocked()) {
-                        SipUtil.startSipService();
-                    }
-                    break;
                 case EVENT_DATA_ROAMING_SETTINGS_CHANGED:
                 case EVENT_MOBILE_DATA_SETTINGS_CHANGED:
                     updateDataRoamingStatus();
@@ -443,9 +425,6 @@ public class PhoneGlobals extends ContextWrapper {
             // status bar icons and control other status bar behavior.
             notificationMgr = NotificationMgr.init(this);
 
-            // If PhoneGlobals has crashed and is being restarted, then restart.
-            mHandler.sendEmptyMessage(EVENT_RESTART_SIP);
-
             // Create an instance of CdmaPhoneCallState and initialize it to IDLE
             cdmaPhoneCallState = new CdmaPhoneCallState();
             cdmaPhoneCallState.CdmaPhoneCallStateInit();
@@ -505,12 +484,6 @@ public class PhoneGlobals extends ContextWrapper {
             intentFilter.addAction(TelephonyIntents.ACTION_DEFAULT_DATA_SUBSCRIPTION_CHANGED);
             intentFilter.addAction(CarrierConfigManager.ACTION_CARRIER_CONFIG_CHANGED);
             registerReceiver(mReceiver, intentFilter);
-
-            IntentFilter sipIntentFilter = new IntentFilter(Intent.ACTION_BOOT_COMPLETED);
-            sipIntentFilter.addAction(SipManager.ACTION_SIP_SERVICE_UP);
-            sipIntentFilter.addAction(SipManager.ACTION_SIP_CALL_OPTION_CHANGED);
-            sipIntentFilter.addAction(SipManager.ACTION_SIP_REMOVE_PROFILE);
-            registerReceiver(mSipReceiver, sipIntentFilter);
 
             mCarrierVvmPackageInstalledReceiver.register(this);
 
@@ -804,31 +777,6 @@ public class PhoneGlobals extends ContextWrapper {
                 if (phone != null) {
                     updateDataRoamingStatus();
                 }
-            }
-        }
-    }
-
-    private class SipReceiver extends BroadcastReceiver {
-
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            String action = intent.getAction();
-
-            SipAccountRegistry sipAccountRegistry = SipAccountRegistry.getInstance();
-            if (action.equals(Intent.ACTION_BOOT_COMPLETED)) {
-                SipUtil.startSipService();
-            } else if (action.equals(SipManager.ACTION_SIP_SERVICE_UP)
-                    || action.equals(SipManager.ACTION_SIP_CALL_OPTION_CHANGED)) {
-                sipAccountRegistry.setup(context);
-            } else if (action.equals(SipManager.ACTION_SIP_REMOVE_PROFILE)) {
-                if (DBG) {
-                    Log.d(LOG_TAG, "SIP_REMOVE_PHONE "
-                            + intent.getStringExtra(SipManager.EXTRA_LOCAL_URI));
-                }
-                sipAccountRegistry.removeSipProfile(intent.getStringExtra(
-                        SipManager.EXTRA_LOCAL_URI));
-            } else {
-                if (DBG) Log.d(LOG_TAG, "onReceive, action not processed: " + action);
             }
         }
     }
