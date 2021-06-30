@@ -601,8 +601,11 @@ public class ImsRcsController extends IImsRcsController.Stub {
 
     @Override
     public void destroySipDelegate(int subId, ISipDelegate connection, int reason) {
-        enforceImsSingleRegistrationPermission("destroySipDelegate");
-
+        // Do not check permissions here - the caller needs to have a connection already from the
+        // create method to call this method.
+        if (connection == null) {
+            return;
+        }
         final long identity = Binder.clearCallingIdentity();
         try {
             SipTransportController transport = getRcsFeatureController(subId).getFeature(
