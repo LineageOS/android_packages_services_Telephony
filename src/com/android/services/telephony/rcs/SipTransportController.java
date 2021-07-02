@@ -803,7 +803,12 @@ public class SipTransportController implements RcsFeatureController.Feature,
         }
         boolean roleChanged = updateRoleCache();
         if (roleChanged) {
-            triggerDeregistrationEvent();
+            if (!TextUtils.isEmpty(mCachedSmsRolePackageName)) {
+                // the role change event will go A -> "" and then "" -> B. In order to not send two
+                // events to the modem, only trigger the deregistration event when we move to a
+                // non-empty package name.
+                triggerDeregistrationEvent();
+            }
             // new denied tags will be picked up when reevaluate completes.
             scheduleThrottledReevaluate();
         }
