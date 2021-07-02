@@ -1583,6 +1583,12 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
         mIsMultiParty = mOriginalConnection.isMultiparty();
 
         Bundle extrasToPut = new Bundle();
+        // Also stash the number verification status in a hidden extra key in the connection.
+        // We do this because a RemoteConnection DOES NOT include a getNumberVerificationStatus
+        // method and we need to be able to pass the number verification status up to Telecom
+        // despite the missing pathway in the RemoteConnectionService API surface.
+        extrasToPut.putInt(Connection.EXTRA_CALLER_NUMBER_VERIFICATION_STATUS,
+                mOriginalConnection.getNumberVerificationStatus());
         List<String> extrasToRemove = new ArrayList<>();
         if (mOriginalConnection.isActiveCallDisconnectedOnAnswer()) {
             extrasToPut.putBoolean(Connection.EXTRA_ANSWERING_DROPS_FG_CALL, true);
