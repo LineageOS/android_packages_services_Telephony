@@ -27,8 +27,6 @@ import static android.provider.Telephony.ServiceStateTable.VOICE_REG_STATE;
 import static android.provider.Telephony.ServiceStateTable.getUriForSubscriptionId;
 import static android.telephony.NetworkRegistrationInfo.REGISTRATION_STATE_HOME;
 
-import static com.android.phone.ServiceStateProvider.DATA_ROAMING_TYPE;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
@@ -64,7 +62,9 @@ import android.test.suitebuilder.annotation.SmallTest;
 
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
+import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -74,15 +74,13 @@ import org.mockito.MockitoAnnotations;
  * Tests for simple queries of ServiceStateProvider.
  *
  * Build, install and run the tests by running the commands below:
- *     runtest --path <dir or file>
- *     runtest --path <dir or file> --test-method <testMethodName>
- *     e.g.)
- *         runtest --path tests/src/com/android/phone/ServiceStateProviderTest.java \
- *                 --test-method testGetServiceState
+ *     atest ServiceStateProviderTest
  */
 @RunWith(AndroidJUnit4.class)
 public class ServiceStateProviderTest {
     private static final String TAG = "ServiceStateProviderTest";
+    private static final int TEST_NETWORK_ID = 123;
+    private static final int TEST_SYSTEM_ID = 123;
 
     private MockContentResolver mContentResolver;
     private ServiceState mTestServiceState;
@@ -117,6 +115,7 @@ public class ServiceStateProviderTest {
 
         mTestServiceState = new ServiceState();
         mTestServiceState.setStateOutOfService();
+        mTestServiceState.setCdmaSystemAndNetworkId(TEST_SYSTEM_ID, TEST_NETWORK_ID);
         mTestServiceStateForSubId1 = new ServiceState();
         mTestServiceStateForSubId1.setStateOff();
 
@@ -153,13 +152,23 @@ public class ServiceStateProviderTest {
         // By default, test with app target R, no READ_PRIVILEGED_PHONE_STATE permission
         setTargetSdkVersion(Build.VERSION_CODES.R);
         setCanReadPrivilegedPhoneState(false);
+
+        // TODO(b/191995565): Turn on all ignored cases once location access is allow to be off
+        // Do not allow phone process to always access location so we can test various scenarios
+        // LocationAccessPolicy.alwaysAllowPrivilegedProcessToAccessLocationForTesting(false);
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        // LocationAccessPolicy.alwaysAllowPrivilegedProcessToAccessLocationForTesting(true);
     }
 
     /**
      * Verify that when calling query with no subId in the uri the default ServiceState is returned.
      * In this case the subId is set to 0 and the expected service state is mTestServiceState.
      */
-    @Test
+    // TODO(b/191995565): Turn this on when location access can be off
+    @Ignore
     @SmallTest
     public void testQueryServiceState_withNoSubId_withoutLocation() {
         setLocationPermissions(false);
@@ -182,7 +191,8 @@ public class ServiceStateProviderTest {
      * returned. In this case the subId is set to 0 and the expected service state is
      * mTestServiceState.
      */
-    @Test
+    // TODO(b/191995565): Turn case on when location access can be off
+    @Ignore
     @SmallTest
     public void testGetServiceState_withDefaultSubId_withoutLocation() {
         setLocationPermissions(false);
@@ -225,11 +235,11 @@ public class ServiceStateProviderTest {
     }
 
     /**
-     * Verify that apps target S+ without READ_PRIVILEGED_PHONE_STATE permission can only access
-     * the public columns of ServiceStateTable.
+     * Verify that apps target S+ without READ_PRIVILEGED_PHONE_STATE permission can access the
+     * public columns of ServiceStateTable.
      */
     @Test
-    public void testQueryAllColumns_targetS_noReadPrivilege() {
+    public void query_publicColumns_targetS_noReadPrivilege_getPublicColumns() {
         setTargetSdkVersion(Build.VERSION_CODES.S);
         setCanReadPrivilegedPhoneState(false);
 
@@ -241,12 +251,12 @@ public class ServiceStateProviderTest {
      * non-public columns should throw IllegalArgumentException.
      */
     @Test
-    public void testQueryNonPublicColumn_targetS_noReadPrivilege() {
+    public void query_hideColumn_targetS_noReadPrivilege_throwIllegalArgumentException() {
         setTargetSdkVersion(Build.VERSION_CODES.S);
         setCanReadPrivilegedPhoneState(false);
 
         // DATA_ROAMING_TYPE is a non-public column
-        String[] projection = new String[]{DATA_ROAMING_TYPE};
+        String[] projection = new String[]{"data_roaming_type"};
 
         assertThrows(IllegalArgumentException.class,
                 () -> verifyServiceStateWithPublicColumns(mTestServiceState, projection));
@@ -257,7 +267,7 @@ public class ServiceStateProviderTest {
      * be able to access all columns.
      */
     @Test
-    public void testQueryAllColumn_targetS_withAllPermission() {
+    public void query_allColumn_targetS_withReadPrivilegedAndLocation_getAllStateUnredacted() {
         setTargetSdkVersion(Build.VERSION_CODES.S);
         setCanReadPrivilegedPhoneState(true);
         setLocationPermissions(true);
@@ -265,6 +275,60 @@ public class ServiceStateProviderTest {
         verifyServiceStateForSubId(
                 getUriForSubscriptionId(SubscriptionManager.DEFAULT_SUBSCRIPTION_ID),
                 mTestServiceState, true /*hasPermission*/);
+    }
+
+    /**
+     * Verify that apps target S+ with READ_PRIVILEGED_PHONE_STATE permission but no location
+     * permission, try to access location sensitive columns should throw SecurityException.
+     */
+    // TODO(b/191995565): Turn this on once b/191995565 is integrated
+    @Ignore
+    public void query_locationColumn_targetS_withReadPrivilegeNoLocation_throwSecurityExecption() {
+        setTargetSdkVersion(Build.VERSION_CODES.S);
+        setCanReadPrivilegedPhoneState(true);
+        setLocationPermissions(false);
+
+        // NETWORK_ID is a location-sensitive column
+        String[] projection = new String[]{"network_id"};
+
+        assertThrows(SecurityException.class,
+                () -> verifyServiceStateWithLocationColumns(mTestServiceState, projection));
+    }
+
+    /**
+     * Verify that apps target R- with location permissions should be able to access all columns.
+     */
+    @Test
+    public void query_allColumn_targetR_withLocation_getAllStateUnredacted() {
+        setTargetSdkVersion(Build.VERSION_CODES.R);
+        setLocationPermissions(true);
+
+        verifyServiceStateForSubId(
+                getUriForSubscriptionId(SubscriptionManager.DEFAULT_SUBSCRIPTION_ID),
+                mTestServiceState, true /*hasPermission*/);
+    }
+
+    /**
+     * Verify that apps target R- w/o location permissions should be able to access all columns but
+     * with redacted ServiceState.
+     */
+    // TODO(b/191995565): Turn case on when location access can be off
+    @Ignore
+    public void query_allColumn_targetR_noLocation_getRedacted() {
+        setTargetSdkVersion(Build.VERSION_CODES.R);
+        setLocationPermissions(false);
+
+        verifyServiceStateForSubId(
+                getUriForSubscriptionId(SubscriptionManager.DEFAULT_SUBSCRIPTION_ID),
+                ServiceStateProvider.getLocationRedactedServiceState(mTestServiceState),
+                true /*hasPermission*/);
+    }
+
+    private void verifyServiceStateWithLocationColumns(ServiceState ss, String[] projection) {
+        try (Cursor cursor = mContentResolver.query(ServiceStateTable.CONTENT_URI, projection, null,
+                null)) {
+            assertNotNull(cursor);
+        }
     }
 
     private void verifyServiceStateWithPublicColumns(ServiceState ss, String[] projection) {
