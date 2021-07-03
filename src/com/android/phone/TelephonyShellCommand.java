@@ -140,6 +140,7 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
 
     private static final String RCS_UCE_COMMAND = "uce";
     private static final String UCE_GET_EAB_CONTACT = "get-eab-contact";
+    private static final String UCE_GET_EAB_CAPABILITY = "get-eab-capability";
     private static final String UCE_REMOVE_EAB_CONTACT = "remove-eab-contact";
     private static final String UCE_GET_DEVICE_ENABLED = "get-device-enabled";
     private static final String UCE_SET_DEVICE_ENABLED = "set-device-enabled";
@@ -2087,6 +2088,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                 return handleRemovingEabContactCommand();
             case UCE_GET_EAB_CONTACT:
                 return handleGettingEabContactCommand();
+            case UCE_GET_EAB_CAPABILITY:
+                return handleGettingEabCapabilityCommand();
             case UCE_GET_DEVICE_ENABLED:
                 return handleUceGetDeviceEnabledCommand();
             case UCE_SET_DEVICE_ENABLED:
@@ -2136,7 +2139,6 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         String result = "";
         try {
             result = mInterface.getContactFromEab(phoneNumber);
-
         } catch (RemoteException e) {
             Log.w(LOG_TAG, "uce get-eab-contact, error " + e.getMessage());
             getErrPrintWriter().println("Exception: " + e.getMessage());
@@ -2145,6 +2147,27 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
 
         if (VDBG) {
             Log.v(LOG_TAG, "uce get-eab-contact, result: " + result);
+        }
+        getOutPrintWriter().println(result);
+        return 0;
+    }
+
+    private int handleGettingEabCapabilityCommand() {
+        String phoneNumber = getNextArgRequired();
+        if (TextUtils.isEmpty(phoneNumber)) {
+            return -1;
+        }
+        String result = "";
+        try {
+            result = mInterface.getCapabilityFromEab(phoneNumber);
+        } catch (RemoteException e) {
+            Log.w(LOG_TAG, "uce get-eab-capability, error " + e.getMessage());
+            getErrPrintWriter().println("Exception: " + e.getMessage());
+            return -1;
+        }
+
+        if (VDBG) {
+            Log.v(LOG_TAG, "uce get-eab-capability, result: " + result);
         }
         getOutPrintWriter().println(result);
         return 0;
