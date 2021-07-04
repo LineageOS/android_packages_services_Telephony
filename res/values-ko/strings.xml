@@ -515,6 +515,7 @@
     <string name="puk2_requested" msgid="6992374450720307514">"비밀번호가 잘못되어 SIM이 잠겼습니다. PUK2를 입력하세요."</string>
     <string name="puk2_blocked" msgid="3131139031779319911">"PUK2가 완전히 차단되었습니다."</string>
     <string name="pin2_attempts" msgid="5625178102026453023">\n"<xliff:g id="NUMBER">%d</xliff:g>번의 기회가 남았습니다."</string>
+    <string name="puk2_locked" msgid="6497760825455461057">"PUK2로 잠금 설정되었습니다. 모든 통신사에서 사용할 수 있도록 하려면 서비스 제공업체에 문의하세요."</string>
     <string name="pin2_unblocked" msgid="4481107908727789303">"PIN2 차단이 해제되었습니다."</string>
     <string name="pin2_error_exception" msgid="8116103864600823641">"네트워크 또는 SIM 카드 오류"</string>
     <string name="doneButton" msgid="7371209609238460207">"완료"</string>
@@ -536,6 +537,7 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"전화를 걸려면 모바일 네트워크를 사용 설정하고 비행기 모드 또는 절전 모드를 사용 중지하세요."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"전화를 걸려면 비행기 모드를 사용 중지하세요."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"전화를 걸려면 비행기 모드를 사용 중지하거나 무선 네트워크에 연결하세요."</string>
+    <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"휴대전화의 온도가 너무 높습니다."</b>\n\n"현재 전화를 걸 수 없습니다. 휴대전화의 온도가 내려가면 다시 시도해 보세요.\n\n긴급 전화 기능은 계속해서 사용할 수 있습니다."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"일반 전화를 걸려면 긴급 콜백 모드를 해제하세요."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"네트워크에서 등록되지 않았습니다."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"모바일 네트워크를 사용할 수 없습니다."</string>

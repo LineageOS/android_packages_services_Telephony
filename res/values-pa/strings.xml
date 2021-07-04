@@ -515,6 +515,7 @@
     <string name="puk2_requested" msgid="6992374450720307514">"ਪਾਸਵਰਡ ਗ਼ਲਤ। SIM ਹੁਣ ਲੌਕ ਹੈ। PUK2 ਦਰਜ ਕਰੋ।"</string>
     <string name="puk2_blocked" msgid="3131139031779319911">"PUK2 ਸਥਾਈ ਤੌਰ ਤੇ ਬਲੌਕ ਕੀਤਾ ਹੋਇਆ ਹੈ।"</string>
     <string name="pin2_attempts" msgid="5625178102026453023">\n"ਤੁਹਾਡੇ ਕੋਲ <xliff:g id="NUMBER">%d</xliff:g> ਕੋਸ਼ਿਸ਼ਾਂ ਬਾਕੀ ਹਨ।"</string>
+    <string name="puk2_locked" msgid="6497760825455461057">"PUK2 ਲਾਕ ਹੈ। ਅਣਲਾਕ ਕਰਨ ਲਈ ਸੇਵਾ ਪ੍ਰਦਾਨਕ ਨੂੰ ਸੰਪਰਕ ਕਰੋ।"</string>
     <string name="pin2_unblocked" msgid="4481107908727789303">"PIN2 ਹੁਣ ਬਲੌਕ ਨਹੀਂ ਹੈ"</string>
     <string name="pin2_error_exception" msgid="8116103864600823641">"ਨੈਟਵਰਕ ਜਾਂ SIM ਕਾਰਡ ਤਰੁੱਟੀ"</string>
     <string name="doneButton" msgid="7371209609238460207">"ਹੋ ਗਿਆ"</string>
@@ -536,6 +537,7 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"ਕਾਲ ਕਰਨ ਲਈ ਮੋਬਾਈਲ ਨੈੱਟਵਰਕ ਚਾਲੂ ਕਰੋ, ਜਹਾਜ਼ ਮੋਡ ਬੰਦ ਕਰੋ ਜਾਂ ਬੈਟਰੀ ਸੇਵਰ ਮੋਡ ਬੰਦ ਕਰੋ।"</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"ਇੱਕ ਕਾਲ ਕਰਨ ਲਈ ਏਅਰਪਲੇਨ ਮੋਡ ਬੰਦ ਕਰੋ।"</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"ਏਅਰਪਲੇਨ ਮੋਡ ਬੰਦ ਕਰੋ ਜਾਂ ਇੱਕ ਕਾਲ ਕਰਨ ਲਈ ਇੱਕ ਵਾਇਰਲੈਸ ਨੈਟਵਰਕ ਨਾਲ ਕਨੈਕਟ ਕਰੋ।"</string>
+    <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"ਫ਼ੋਨ ਬਹੁਤ ਗਰਮ ਹੋ ਗਿਆ ਹੈ"</b>\n\n"ਇਸ ਕਾਲ ਨੂੰ ਪੂਰਾ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਦਾ। ਫ਼ੋਨ ਦੇ ਠੰਡਾ ਹੋਣ ਜਾਣ \'ਤੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।\n\nਤੁਸੀਂ ਹਾਲੇ ਵੀ ਸੰਕਟਕਾਲੀਨ ਕਾਲਾਂ ਕਰ ਸਕਦੇ ਹੋ।"</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"ਇੱਕ ਗ਼ੈਰ-ਅਪਾਤਕਾਲ ਕਾਲ ਕਰਨ ਲਈ ਅਪਾਤਕਾਲ ਕਾਲਬੈਕ ਮੋਡ ਤੋਂ ਬਾਹਰ ਆਓ।"</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"ਨੈਟਵਰਕ ਤੇ ਰਜਿਸਟਰ ਨਹੀਂ ਕੀਤਾ।"</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"ਮੋਬਾਈਲ ਨੈਟਵਰਕ ਉਪਲਬਧ ਨਹੀਂ।"</string>

@@ -515,6 +515,7 @@
     <string name="puk2_requested" msgid="6992374450720307514">"Le mot de passe est erroné. La carte SIM est désormais verrouillée. Veuillez saisir le code PUK2."</string>
     <string name="puk2_blocked" msgid="3131139031779319911">"La clé PUK2 est bloquée de manière définitive."</string>
     <string name="pin2_attempts" msgid="5625178102026453023">\n"Il vous reste <xliff:g id="NUMBER">%d</xliff:g> tentatives."</string>
+    <string name="puk2_locked" msgid="6497760825455461057">"Verrouillage par clé PUK2. Contactez votre fournisseur de services pour déverrouiller la carte SIM."</string>
     <string name="pin2_unblocked" msgid="4481107908727789303">"Le code PIN2 n\'est plus bloqué."</string>
     <string name="pin2_error_exception" msgid="8116103864600823641">"Erreur de réseau ou de carte SIM."</string>
     <string name="doneButton" msgid="7371209609238460207">"OK"</string>
@@ -536,6 +537,7 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Pour passer un appel, activez le réseau mobile, et désactivez les modes Avion et Économiseur de batterie."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Désactivez le mode Avion pour passer un appel."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Désactivez le mode Avion ou connectez-vous à un réseau sans fil pour passer un appel."</string>
+    <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"Téléphone trop chaud"</b>\n\n"Impossible de passer cet appel. Réessayez lorsque votre téléphone aura refroidi.\n\nVous pouvez toujours passer des appels d\'urgence."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Veuillez quitter le mode de rappel d\'urgence pour passer un appel standard."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"Non enregistré sur le réseau."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"Réseau mobile non disponible"</string>

@@ -96,7 +96,7 @@
     <string name="sum_loading_settings" msgid="434063780286688775">"सेटिङहरू लोड हुँदै..."</string>
     <string name="sum_hide_caller_id" msgid="131100328602371933">"बहिर्गमन कलहरूमा नम्बर लुकाइएको"</string>
     <string name="sum_show_caller_id" msgid="3571854755324664591">"बहिर्गमन कलहरूमा प्रदर्शित नम्बर"</string>
-    <string name="sum_default_caller_id" msgid="1767070797135682959">"बहिर्गमन कलमा मेरो नम्बर देखाउन पूर्वनिर्धारित अपरेटर सेटिङहरू प्रयोग गर्नुहोस्"</string>
+    <string name="sum_default_caller_id" msgid="1767070797135682959">"बहिर्गमन कलमा मेरो नम्बर देखाउन डिफल्ट अपरेटर सेटिङहरू प्रयोग गर्नुहोस्"</string>
     <string name="labelCW" msgid="8449327023861428622">"कल प्रतीक्षा गर्दै"</string>
     <string name="sum_cw_enabled" msgid="3977308526187139996">"कल गरेको बखत मलाई आगमन कलको जानकारी गराउनुहोस्"</string>
     <string name="sum_cw_disabled" msgid="3658094589461768637">"कल गरेको बेलामा आगमन कलहरूको बारेमा मलाई जानकारी गराउनुहोस्"</string>
@@ -151,7 +151,7 @@
     <string name="disable" msgid="1122698860799462116">"निस्कृय पार्नुहोस्"</string>
     <string name="change_num" msgid="6982164494063109334">"अपडेट गर्नुहोस्"</string>
   <string-array name="clir_display_values">
-    <item msgid="8477364191403806960">"नेटवर्क पूर्वनिर्धारित"</item>
+    <item msgid="8477364191403806960">"नेटवर्क डिफल्ट"</item>
     <item msgid="6813323051965618926">"सङ्ख्या लुकाउनुहोस्"</item>
     <item msgid="9150034130629852635">"सङ्ख्या देखाउनुहोस्"</item>
   </string-array>
@@ -282,8 +282,8 @@
     <string name="data_enable_summary" msgid="696860063456536557">"डेटा उपयोगलाई अनुमति दिनुहोस्"</string>
     <string name="dialog_alert_title" msgid="5260471806940268478">"ध्यानाकर्षण"</string>
     <string name="roaming" msgid="1576180772877858949">"रोमिङ"</string>
-    <string name="roaming_enable" msgid="6853685214521494819">"रोमिङको समयमा डेटा सेवामा जडान गर्नुहोस्"</string>
-    <string name="roaming_disable" msgid="8856224638624592681">"रोमिङको समयमा डेटा सेवा जडान गर्नुहोस्"</string>
+    <string name="roaming_enable" msgid="6853685214521494819">"रोमिङको समयमा डेटा सेवामा कनेक्ट गर्नुहोस्"</string>
+    <string name="roaming_disable" msgid="8856224638624592681">"रोमिङको समयमा डेटा सेवा कनेक्ट गर्नुहोस्"</string>
     <string name="roaming_reenable_message" msgid="1951802463885727915">"डेटा रोमिङ सक्रिय गरियो। सक्रिय गर्न ट्याप गर्नुहोस्।"</string>
     <string name="roaming_enabled_message" msgid="9022249120750897">"रोमिङ शुल्क लाग्न सक्छ। परिमार्जन गर्न ट्याप गर्नुहोस्"</string>
     <string name="roaming_notification_title" msgid="3590348480688047320">"मोबाइल डेटाको जडान टुट्यो"</string>
@@ -295,7 +295,7 @@
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"<xliff:g id="PHONE_NUMBER">%2$s</xliff:g>.प्रयोग गर्दा <xliff:g id="CARRIER_NAME">%1$s</xliff:g> का कल तथा डेटा सेवाहरूलाई रोक लगाइन सक्छ"</string>
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"अर्को SIM प्रयोग गर्दा <xliff:g id="CARRIER_NAME">%1$s</xliff:g> कल तथा डेटा सेवहरूलाई रोक लगाइन सक्छ।"</string>
     <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"चल्तीबाट हटाइएका SIP खाताहरू भेट्टाइयो र हटाइयो"</string>
-    <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"अबदेखि Android प्लेटफर्ममा SIP कल गर्न मिल्दैन।\nतपाईंका हालका SIP खाताहरू <xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g> हटाइएका छन्।\nकृपया आफ्नो पूर्वनिर्धारित कल गर्ने खाताको सेटिङ पुष्टि गर्नुहोस्।"</string>
+    <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"अबदेखि Android प्लेटफर्ममा SIP कल गर्न मिल्दैन।\nतपाईंका हालका SIP खाताहरू <xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g> हटाइएका छन्।\nकृपया आफ्नो डिफल्ट कल गर्ने खाताको सेटिङ पुष्टि गर्नुहोस्।"</string>
     <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"सेटिङमा जानुहोस्"</string>
     <string name="data_usage_title" msgid="8438592133893837464">"अनुप्रयोगले गरेको डेटाको प्रयोग"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"<xliff:g id="ID_2">%2$s</xliff:g> सम्म <xliff:g id="ID_1">%1$s</xliff:g> मोबाइल डेटा प्रयोग भयो"</string>
@@ -515,6 +515,7 @@
     <string name="puk2_requested" msgid="6992374450720307514">"पासवर्ड गलत छ। सिम अब ब्लक गरिएको छ। PUK2 प्रविष्टि गर्नुहोस्।"</string>
     <string name="puk2_blocked" msgid="3131139031779319911">"PUK2 स्थायी रूपमा रोक्का गरियो।"</string>
     <string name="pin2_attempts" msgid="5625178102026453023">\n" तपाईंसँग <xliff:g id="NUMBER">%d</xliff:g> प्रयास बाँकी छन्।"</string>
+    <string name="puk2_locked" msgid="6497760825455461057">"SIM कार्ड PUK2 बाट लक गरिएको छ। अनलक गर्न सेवा प्रदायकलाई सम्पर्क गर्नुहोस्।"</string>
     <string name="pin2_unblocked" msgid="4481107908727789303">"PIN2 अब ब्लक गरिएको छैन"</string>
     <string name="pin2_error_exception" msgid="8116103864600823641">"नेटवर्क वा SIM कार्ड त्रुटि।"</string>
     <string name="doneButton" msgid="7371209609238460207">"सम्पन्न भयो"</string>
@@ -535,11 +536,12 @@
     <string name="notification_network_selection_text" msgid="553288408722427659">"चयन गरिएको नेटवर्क <xliff:g id="OPERATOR_NAME">%s</xliff:g> उपलब्ध छैन"</string>
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"मोबाइल नेटवर्क सक्रिय पार्नुहोस्, कल गर्न हवाइजहाज मोड वा ब्याट्री सेवर मोड निष्क्रिय पार्नुहोस्।"</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"एक कल गर्न हवाइजहाज मोड बन्द गर्नुहोस्।"</string>
-    <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"एक कल गर्न हवाइजहाज मोड बन्द गर्नुहोस् वा एक ताररहितको सञ्जालमा जडान गर्नुहोस्।"</string>
+    <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"एक कल गर्न हवाइजहाज मोड बन्द गर्नुहोस् वा एक ताररहितको सञ्जालमा कनेक्ट गर्नुहोस्।"</string>
+    <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"फोन ज्यादै तातेको छ"</b>\n\n"यो कल जारी राख्न सकिँदैन। फोन सेलाएपछि फेरि प्रयास गर्नुहोस्।\n\nतपाईं अझै पनि आपत्‌कालीन कलहरू गर्न सक्नुहुन्छ।"</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"गैर-आपत्‌कालीन कल गर्न आपत्‌कालीन कलब्याक मोडबाट निस्कनुहोस्।"</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"नेटवर्कमा दर्ता भएको छैन।"</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"मोबाइल नेटवर्क उपलब्ध छैन।"</string>
-    <string name="incall_error_out_of_service_wfc" msgid="4497663185857190885">"मोबाइल नेटवर्क उपलब्ध छैन। कल गर्न तारविनाको नेटवर्कमा जडान गर्नुहोस्।"</string>
+    <string name="incall_error_out_of_service_wfc" msgid="4497663185857190885">"मोबाइल नेटवर्क उपलब्ध छैन। कल गर्न तारविनाको नेटवर्कमा कनेक्ट गर्नुहोस्।"</string>
     <string name="incall_error_no_phone_number_supplied" msgid="8680831089508851894">"एक कल गर्नको लागि, एक वैध नम्बर प्रविष्टि गर्नुहोस्।"</string>
     <string name="incall_error_call_failed" msgid="393508653582682539">"कल विफल भयो।"</string>
     <string name="incall_error_cannot_add_call" msgid="5425764862628655443">"यतिबेला कल गर्न सकिएन। तपाईंले कुनै सन्देश पठाएर सम्पर्क गर्ने प्रयास गर्न सक्नुहुन्छ।"</string>
@@ -552,7 +554,7 @@
     <string name="incall_error_supp_service_reject" msgid="3044363092441655912">"कल अस्वीकार गर्न सक्दैन।"</string>
     <string name="incall_error_supp_service_hangup" msgid="836524952243836735">"कल (हरू) जारी गर्न सकिँदैन ।"</string>
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"कल सञ्चालन गर्न सकिँदैन।"</string>
-    <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"एक कल गर्न एक ताररहितको सञ्जालमा जडान गर्नुहोस्।"</string>
+    <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"एक कल गर्न एक ताररहितको सञ्जालमा कनेक्ट गर्नुहोस्।"</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"कल गर्नका लागि Wi-Fi कलिङ सक्षम गर्नुहोस्।"</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"आपत्‌कालीन जानकारी"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"मालिक"</string>
@@ -875,7 +877,7 @@
     <string name="radioInfo_lac" msgid="3892986460272607013">"LAC"</string>
     <string name="radioInfo_cid" msgid="1423185536264406705">"CID"</string>
     <string name="radio_info_subid" msgid="6839966868621703203">"हालको subId:"</string>
-    <string name="radio_info_dds" msgid="1122593144425697126">"पूर्वनिर्धारित डेटा SIM को SubId:"</string>
+    <string name="radio_info_dds" msgid="1122593144425697126">"डिफल्ट डेटा SIM को SubId:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DL ब्यान्डविथ (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL व्यान्डविथ (kbps):"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"LTE को भौतिक च्यानलको कन्फिगरेसन:"</string>

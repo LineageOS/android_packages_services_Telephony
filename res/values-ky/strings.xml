@@ -282,8 +282,8 @@
     <string name="data_enable_summary" msgid="696860063456536557">"Дайындарды пайдаланууга уруксат берүү"</string>
     <string name="dialog_alert_title" msgid="5260471806940268478">"Көңүл буруңуз"</string>
     <string name="roaming" msgid="1576180772877858949">"Роуминг"</string>
-    <string name="roaming_enable" msgid="6853685214521494819">"Роуминг учурунда маалыматтарды өткөрүүчү кызматтарга туташуу"</string>
-    <string name="roaming_disable" msgid="8856224638624592681">"Роуминг учурунда маалыматтарды өткөрүүчү кызматтарга туташуу"</string>
+    <string name="roaming_enable" msgid="6853685214521494819">"Роуминг учурунда маалыматтарды өткөрүүчү кызматтарга туташасыз"</string>
+    <string name="roaming_disable" msgid="8856224638624592681">"Роуминг учурунда маалыматтарды өткөрүүчү кызматтарга туташасыз"</string>
     <string name="roaming_reenable_message" msgid="1951802463885727915">"Интернет-роуминг өчүрүлгөн. Күйгүзүү үчүн басыңыз."</string>
     <string name="roaming_enabled_message" msgid="9022249120750897">"Роуминг акысын төлөп калышыңыз мүмкүн. Өзгөртүү үчүн таптап коюңуз."</string>
     <string name="roaming_notification_title" msgid="3590348480688047320">"Мобилдик интернет туташуусу үзүлдү"</string>
@@ -411,7 +411,7 @@
     <string name="enable_disable_multi_category" msgid="5958248155437940625">"Мульти-категория"</string>
     <string name="multi_category_enable" msgid="4531915767817483960">"Мульти-категория иштетилген"</string>
     <string name="multi_category_disable" msgid="6325934413701238104">"Мульти-категория өчүрүлгөн"</string>
-    <string name="network_recommended" msgid="3444321100580250926">" (сунушталган)"</string>
+    <string name="network_recommended" msgid="3444321100580250926">" (сунушталат)"</string>
     <string name="network_lte" msgid="7206879277095094280">"LTE (сунушталат)"</string>
     <string name="network_4G" msgid="6800527815504223913">"4G (сунушталат)"</string>
     <string name="network_global" msgid="3289646154407617631">"Дүйнө жүзү"</string>
@@ -515,6 +515,7 @@
     <string name="puk2_requested" msgid="6992374450720307514">"Сырсөз туура эмес. SIM азыр кулпуланды. PUK2 киргизиңиз."</string>
     <string name="puk2_blocked" msgid="3131139031779319911">"PUK2 биротоло бөгөттөлдү."</string>
     <string name="pin2_attempts" msgid="5625178102026453023">\n"Сизде <xliff:g id="NUMBER">%d</xliff:g> аракет калды."</string>
+    <string name="puk2_locked" msgid="6497760825455461057">"PUK2 кулпуланды. Кулпуну ачуу үчүн оператор менен байланышыңыз."</string>
     <string name="pin2_unblocked" msgid="4481107908727789303">"Мындан ары PIN2 бөгөттөлбөйт"</string>
     <string name="pin2_error_exception" msgid="8116103864600823641">"Тармак же SIM карта катасы"</string>
     <string name="doneButton" msgid="7371209609238460207">"Даяр"</string>
@@ -536,6 +537,7 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Мобилдик тармакты күйгүзүңүз, чалуу үчүн \"Учакта\" режимин же \"Батареяны үнөмдөө\" режимин өчүрүңүз."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Чалуу үчүн учак режимин өчүрүңүз."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Чалуу үчүн учак режимин өчүрүңүз же зымсыз тармакка туташыңыз."</string>
+    <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"Телефон ысып кетти"</b>\n\n"Бул чалуу аяктабай жатат. Телефон муздагандан кийин кайра аракет кылыңыз.\n\nШашылыш чалууларды аткара берсеңиз болот."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Кадимки шартта чалуу үчүн шашылыш кайра чалуу режиминен чыгыңыз."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"Тармакта катталган эмес."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"Мобилдик тармак жок."</string>
@@ -672,7 +674,7 @@
     <string name="preference_category_ringtone" msgid="8787281191375434976">"Рингтон жана Титирөө"</string>
     <string name="pstn_connection_service_label" msgid="9200102709997537069">"Кыналган SIM карталар"</string>
     <string name="enable_video_calling_title" msgid="7246600931634161830">"Видео чалууну күйгүзүү"</string>
-    <string name="enable_video_calling_dialog_msg" msgid="7141478720386203540">"Видео чалууну күйгүзүү үчүн, тармак жөндөөлөрүнөн Жакшыртылган 4G LTE режимин иштетишиңиз керек."</string>
+    <string name="enable_video_calling_dialog_msg" msgid="7141478720386203540">"Видео чалууну күйгүзүү үчүн тармак жөндөөлөрүнөн Жакшыртылган 4G LTE режимин иштетишиңиз керек."</string>
     <string name="enable_video_calling_dialog_settings" msgid="8697890611305307110">"Тармак жөндөөлөрү"</string>
     <string name="enable_video_calling_dialog_close" msgid="4298929725917045270">"Жабуу"</string>
     <string name="sim_label_emergency_calls" msgid="9078241989421522310">"Шашылыш чалуулар"</string>
