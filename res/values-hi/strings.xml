@@ -186,9 +186,9 @@
     <string name="manual_mode_disallowed_summary" msgid="3970048592179890197">"%1$s से कनेक्ट किए जाने पर उपलब्ध नहीं है"</string>
     <string name="network_select_title" msgid="4117305053881611988">"नेटवर्क"</string>
     <string name="register_automatically" msgid="3907580547590554834">"स्वचालित पंजीकरण..."</string>
-    <string name="preferred_network_mode_title" msgid="5253395265169539830">"पसंदीदा नेटवर्क प्रकार"</string>
+    <string name="preferred_network_mode_title" msgid="5253395265169539830">"पसंदीदा नेटवर्क टाइप"</string>
     <string name="preferred_network_mode_summary" msgid="3787989000044330064">"नेटवर्क संचालन मोड बदलें"</string>
-    <string name="preferred_network_mode_dialogtitle" msgid="2781447433514459696">"पसंदीदा नेटवर्क प्रकार"</string>
+    <string name="preferred_network_mode_dialogtitle" msgid="2781447433514459696">"पसंदीदा नेटवर्क टाइप"</string>
     <string name="forbidden_network" msgid="5081729819561333023">"(मना है)"</string>
     <string name="choose_network_title" msgid="5335832663422653082">"नेटवर्क चुनें"</string>
     <string name="network_disconnected" msgid="8844141106841160825">"डिसकनेक्ट है"</string>
@@ -515,6 +515,7 @@
     <string name="puk2_requested" msgid="6992374450720307514">"पासवर्ड गलत है. सिम अब लॉक हो गई है. PUK2 डालें."</string>
     <string name="puk2_blocked" msgid="3131139031779319911">"PUK2 स्थायी रूप से अवरोधित है."</string>
     <string name="pin2_attempts" msgid="5625178102026453023">\n"आपके पास <xliff:g id="NUMBER">%d</xliff:g> प्रयास शेष हैं."</string>
+    <string name="puk2_locked" msgid="6497760825455461057">"सिम कार्ड PUK2 से लॉक है. अनलॉक करने के लिए, सेवा देने वाली कंपनी से संपर्क करें."</string>
     <string name="pin2_unblocked" msgid="4481107908727789303">"PIN2 अब अवरोधित नहीं है"</string>
     <string name="pin2_error_exception" msgid="8116103864600823641">"नेटवर्क या SIM कार्ड गड़बड़ी"</string>
     <string name="doneButton" msgid="7371209609238460207">"पूरा हो गया"</string>
@@ -536,6 +537,7 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"कॉल करने के लिए मोबाइल नेटवर्क चालू करें, हवाई जहाज़ मोड या बैटरी सेवर मोड बंद करें."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"कॉल करने के लिए हवाई जहाज़ मोड बंद करें."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"कॉल करने के लिए हवाई जहाज़ मोड बंद करें या किसी वायरलेस नेटवर्क से कनेक्‍ट करें."</string>
+    <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"आपका फ़ोन बहुत गर्म हो गया है"</b>\n\n"यह कॉल नहीं लगाया जा सकता. फ़ोन का तापमान कम होने के बाद, फिर से कोशिश करें.\n\nहालांकि, आप अब भी आपातकालीन कॉल कर सकते हैं."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"गैर-आपातकालीन कॉल करने के लिए आपातकालीन कॉलबैक मोड से बाहर निकलें."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"नेटवर्क पर पंजीकृत नहीं."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"मोबाइल नेटवर्क उपलब्ध नहीं."</string>
@@ -676,7 +678,7 @@
     <string name="enable_video_calling_dialog_settings" msgid="8697890611305307110">"नेटवर्क सेटिंग"</string>
     <string name="enable_video_calling_dialog_close" msgid="4298929725917045270">"बंद करें"</string>
     <string name="sim_label_emergency_calls" msgid="9078241989421522310">"आपातकालीन कॉल"</string>
-    <string name="sim_description_emergency_calls" msgid="5146872803938897296">"केवल आपातकालीन कॉल"</string>
+    <string name="sim_description_emergency_calls" msgid="5146872803938897296">"सिर्फ़ आपातकालीन कॉल"</string>
     <string name="sim_description_default" msgid="7474671114363724971">"सिम कार्ड, स्‍लॉट: <xliff:g id="SLOT_ID">%s</xliff:g>"</string>
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"सुलभता"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"इससे वाई-फ़ाई कॉल"</string>

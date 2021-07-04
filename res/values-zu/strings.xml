@@ -515,6 +515,7 @@
     <string name="puk2_requested" msgid="6992374450720307514">"Iphasiwedi ayilungile. I-SIM manje ikhiyiwe. Faka i-PUK2."</string>
     <string name="puk2_blocked" msgid="3131139031779319911">"I-PUK2 ivinjiwe unaphakade."</string>
     <string name="pin2_attempts" msgid="5625178102026453023">\n"Unemizamo engu-<xliff:g id="NUMBER">%d</xliff:g> esele."</string>
+    <string name="puk2_locked" msgid="6497760825455461057">"I-PUK2 ikhiyiwe. Xhumana nomhlinzeki wesevisi ukuze uvule."</string>
     <string name="pin2_unblocked" msgid="4481107908727789303">"I-PIN2 ayisavinjiwe"</string>
     <string name="pin2_error_exception" msgid="8116103864600823641">"Iphutha lenethiwekhi noma lekhadi le-SIM"</string>
     <string name="doneButton" msgid="7371209609238460207">"Kwenziwe"</string>
@@ -536,6 +537,7 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Vula inethiwekhi yeselula, vala imodi yendiza noma vala imodi yokulondoloza ibhethri ukuze wenze ikholi."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Vala imodi yendiza ukuze wenze ikholi."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Vala imodi yendiza noma xhumeka kunethiwekhi engenantambo ukuze wenze ikholi."</string>
+    <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"Ifoni ishisa kakhulu"</b>\n\n"Ayikwazi ukwenza le kholi. Zama futhi lapho ifoni iphola.\n\nUsengakwazi ukwenza amakholi aphuthumayo."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Phuma kwimodi yokushayela emuva yesiko esiphuthumayo ukuze wenze ikholi yemodi engaphuthumi."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"Ayibhalisiwe kwinethiwekhi."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"Inethiwekhi yefoni ayitholakali"</string>

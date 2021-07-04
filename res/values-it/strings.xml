@@ -515,6 +515,7 @@
     <string name="puk2_requested" msgid="6992374450720307514">"Password errata. SIM bloccata. Inserisci codice PUK2."</string>
     <string name="puk2_blocked" msgid="3131139031779319911">"PUK2 bloccato definitivamente."</string>
     <string name="pin2_attempts" msgid="5625178102026453023">\n"Hai a disposizione ancora <xliff:g id="NUMBER">%d</xliff:g> tentativi."</string>
+    <string name="puk2_locked" msgid="6497760825455461057">"PUK2 bloccato. Per sbloccarlo, contatta il fornitore di servizi."</string>
     <string name="pin2_unblocked" msgid="4481107908727789303">"PIN2 sbloccato"</string>
     <string name="pin2_error_exception" msgid="8116103864600823641">"Errore di rete o della SIM"</string>
     <string name="doneButton" msgid="7371209609238460207">"Fine"</string>
@@ -536,6 +537,7 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Attiva la rete mobile e disattiva la modalità aereo o il risparmio energetico per effettuare una chiamata."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Disattiva la modalità aereo per effettuare una chiamata."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Disattiva la modalità aereo o connettiti a una rete wireless per effettuare una chiamata."</string>
+    <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"Telefono surriscaldato"</b>\n\n"Impossibile completare la chiamata. Riprova quando il telefono si sarà raffreddato.\n\nPuoi comunque effettuare chiamate di emergenza."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Per effettuare chiamate non di emergenza, esci dalla modalità di richiamata di emergenza."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"Non registrato sulla rete."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"Rete cellulare non disponibile."</string>
@@ -666,7 +668,7 @@
     <string name="description_dial_button" msgid="8614631902795087259">"componi"</string>
     <string name="description_dialpad_button" msgid="7395114120463883623">"mostra tastierino"</string>
     <string name="pane_title_emergency_dialpad" msgid="3627372514638694401">"Tastierino di emergenza"</string>
-    <string name="voicemail_visual_voicemail_switch_title" msgid="6610414098912832120">"Leggi la segreteria"</string>
+    <string name="voicemail_visual_voicemail_switch_title" msgid="6610414098912832120">"Lettura della segreteria"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="7005128605986960003">"Imposta PIN"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="4633077715231764435">"Cambia PIN"</string>
     <string name="preference_category_ringtone" msgid="8787281191375434976">"Suoneria e vibrazione"</string>

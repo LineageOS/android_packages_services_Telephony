@@ -515,6 +515,7 @@
     <string name="puk2_requested" msgid="6992374450720307514">"Fjalëkalimi është i pasaktë. Karta SIM tani është e kyçur. Fut PUK2-shin."</string>
     <string name="puk2_blocked" msgid="3131139031779319911">"PUK2-shi është i bllokuar përgjithmonë."</string>
     <string name="pin2_attempts" msgid="5625178102026453023">\n"Të kanë mbetur edhe <xliff:g id="NUMBER">%d</xliff:g> përpjekje."</string>
+    <string name="puk2_locked" msgid="6497760825455461057">"Kodi PUK2 i kyçur. Kontakto me ofruesin e shërbimit për ta shkyçur."</string>
     <string name="pin2_unblocked" msgid="4481107908727789303">"PIN2-shi nuk është më i bllokuar"</string>
     <string name="pin2_error_exception" msgid="8116103864600823641">"Gabim në rrjet ose në kartën SIM"</string>
     <string name="doneButton" msgid="7371209609238460207">"U krye"</string>
@@ -536,6 +537,7 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Aktivizo rrjetin celular, çaktivizo modalitetin e aeroplanit ose modalitetin e kursyesit të baterisë për të bërë një telefonatë."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Çaktivizo modalitetin e aeroplanit për të bërë telefonata."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Çaktivizo modalitetin e aeroplanit ose lidhu me ndonjë rrjet interneti valor për të bërë telefonata."</string>
+    <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"Telefoni është shumë i nxehtë"</b>\n\n"Kjo telefonatë nuk mund të kryhet. Provo përsëri kur të ftohet telefoni.\n\nMund të bësh përsëri telefonata të urgjencës."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Dil nga modaliteti i kthimit të telefonatës së urgjencës për të bërë një telefonatë jo urgjente."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"I paregjistruar në rrjet."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"Rrjeti celular nuk mundësohet."</string>
