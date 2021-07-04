@@ -297,7 +297,7 @@
     <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"Најдени и отстранети се неподдржани сметки на SIP"</string>
     <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"Платформата Android веќе не поддржува повикување преку SIP.\nВашите постојни сметки на SIP <xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g> се отстранети.\nПотврдете ја вашата стандардна поставка за повикување."</string>
     <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"Одете во „Поставки“"</string>
-    <string name="data_usage_title" msgid="8438592133893837464">"Потрошен сообраќај на апликациите"</string>
+    <string name="data_usage_title" msgid="8438592133893837464">"Потрошен интернет од апликации"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"<xliff:g id="ID_1">%1$s</xliff:g> потрошен мобилен интернет во периодот <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"Напредни"</string>
     <string name="carrier_settings_euicc" msgid="1190237227261337749">"Оператор"</string>
@@ -515,6 +515,7 @@
     <string name="puk2_requested" msgid="6992374450720307514">"Лозинката е неточна. SIM-картичката е сега заклучена. Внесете го ПУК2-кодот."</string>
     <string name="puk2_blocked" msgid="3131139031779319911">"ПУК2 кодот е трајно блокиран."</string>
     <string name="pin2_attempts" msgid="5625178102026453023">\n"Имате уште <xliff:g id="NUMBER">%d</xliff:g> обиди."</string>
+    <string name="puk2_locked" msgid="6497760825455461057">"PUK2-кодот е заклучен. Контактирајте со операторот за отклучување."</string>
     <string name="pin2_unblocked" msgid="4481107908727789303">"PIN2-кодот веќе не е блокиран"</string>
     <string name="pin2_error_exception" msgid="8116103864600823641">"Грешка со мрежа или SIM картичка"</string>
     <string name="doneButton" msgid="7371209609238460207">"Готово"</string>
@@ -536,6 +537,7 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Вклучете мобилна мрежа, исклучете го авионскиот режим или пак, штедачот на батеријата за да воспоставите повик."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Исклучете го авионскиот режим за да повикате."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Исклучете го авионскиот режим или поврзете се на безжична мрежа за да повикате."</string>
+    <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"Телефонот е премногу загреан"</b>\n\n"Повиков не може да се заврши. Обидете се повторно кога ќе се подизлади телефонот.\n\nСѐ уште може да воспоставувате итни повици."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Излезете од режимот на итен повратен повик за да направите обичен повик."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"Не е регистриран на мрежа."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"Не е достапна мобилна мрежа."</string>
@@ -613,9 +615,9 @@
     <string name="ota_title_activate" msgid="4049645324841263423">"Активирај го телефонот"</string>
     <string name="ota_touch_activate" msgid="838764494319694754">"Треба да се направи посебен повик за да ја активирате вашата телефонска услуга. \n\nПо притискање на „Активирај“, слушнете ги упатствата дадени за да го активирате вашиот телефон."</string>
     <string name="ota_hfa_activation_title" msgid="3300556778212729671">"Се активира..."</string>
-    <string name="ota_hfa_activation_dialog_message" msgid="7921718445773342996">"Телефонот ја активира услугата за мобилни податоци.\n\nОва може да потрае до 5 минути."</string>
+    <string name="ota_hfa_activation_dialog_message" msgid="7921718445773342996">"Телефонот ја активира услугата за мобилен интернет.\n\nОва може да потрае до 5 минути."</string>
     <string name="ota_skip_activation_dialog_title" msgid="7666611236789203797">"Прескокни активација?"</string>
-    <string name="ota_skip_activation_dialog_message" msgid="6691722887019708713">"Ако ја прескокнете активацијата, не може да воспоставувате повици или да се поврзувате на мрежи за мобилни податоци (иако може да се поврзувате со Wi-Fi мрежи). Додека не го активирате вашиот телефон, ќе ви стигнува порака да го активирате секој пат кога ќе го вклучите."</string>
+    <string name="ota_skip_activation_dialog_message" msgid="6691722887019708713">"Ако ја прескокнете активацијата, не може да воспоставувате повици или да се поврзувате на мрежи за мобилен интернет (иако може да се поврзувате со Wi-Fi мрежи). Додека не го активирате вашиот телефон, ќе ви стигнува порака да го активирате секој пат кога ќе го вклучите."</string>
     <string name="ota_skip_activation_dialog_skip_label" msgid="5908029466817825633">"Прескокни"</string>
     <string name="ota_activate" msgid="7939695753665438357">"Активирај"</string>
     <string name="ota_title_activate_success" msgid="1272135024761004889">"Телефонот е активиран."</string>

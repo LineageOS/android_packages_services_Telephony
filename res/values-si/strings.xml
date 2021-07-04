@@ -515,6 +515,7 @@
     <string name="puk2_requested" msgid="6992374450720307514">"මුරපදය වැරදිය. SIM දැන් අගුළු දමා තිබේ. PUK2 ඇතුළු කරන්න."</string>
     <string name="puk2_blocked" msgid="3131139031779319911">"PUK2 සදාකාලිකවම අවහිරයි."</string>
     <string name="pin2_attempts" msgid="5625178102026453023">\n"ඔබට නැවත උත්සාහ කිරීම් <xliff:g id="NUMBER">%d</xliff:g> ක් තිබේ."</string>
+    <string name="puk2_locked" msgid="6497760825455461057">"PUK2 අගුළු දැමිණි. අගුළු ඇරීමට සේවා සපයන්නා සම්බන්ධ කර ගන්න."</string>
     <string name="pin2_unblocked" msgid="4481107908727789303">"තව දුරටත් PIN2 අවහිර කර නොතිබේ"</string>
     <string name="pin2_error_exception" msgid="8116103864600823641">"ජාලයේ හෝ SIM කාඩ්පතෙහි දෝෂයක්"</string>
     <string name="doneButton" msgid="7371209609238460207">"හරි"</string>
@@ -536,6 +537,7 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"ජංගම ජාලය ක්‍රියාත්මක කරන්න, ඇමතුමක් ගැනීමට ගුවන් යානා ප්‍රකාරය හෝ බැටරි සුරැකුම් ප්‍රකාරය ක්‍රියාවිරහිත කරන්න."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"ඇමතුමක් ගැනීමට ගුවන් යානා මාදිලිය අක්‍රිය කරන්න."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"ඇමතුමක් ලබා ගැනීමට ගුවන් යානා මෝඩය අක්‍රිය කරන්න හෝ රැහැන් රහිත ජාලයකට සම්බන්ධ වෙන්න."</string>
+    <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"දුරකථනය ඉතා උණුසුම් ය"</b>\n\n"මෙම ඇමතුම සම්පූර්ණ කළ නොහැක. ඔබේ දුරකථනය සිසිල් වන විට නැවත උත්සාහ කරන්න.\n\nඔබට තවමත් හදිසි ඇමතුම් ලබා ගත හැක."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"හදිසි-නොවන ඇමතුමක් සිදු කිරීමට හදිසි අවස්ථා පසු ඇමතුම් ප්‍රකාරයෙන් ඉවත් වන්න."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"ජාලය මත ලියාපදිංචි වී නැත."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"ජංගම ජාලය නොමැත."</string>

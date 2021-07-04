@@ -515,6 +515,7 @@
     <string name="puk2_requested" msgid="6992374450720307514">"ভুল পাছৱৰ্ড। এতিয়া ছিম লক কৰা হৈছে। PUK2 লিখক।"</string>
     <string name="puk2_blocked" msgid="3131139031779319911">"PUK2 স্থায়ীভাৱে অৱৰোধ কৰা হৈছে।"</string>
     <string name="pin2_attempts" msgid="5625178102026453023">\n"আপোনাৰ হাতত <xliff:g id="NUMBER">%d</xliff:g>টা প্ৰয়াস বাকী আছে।"</string>
+    <string name="puk2_locked" msgid="6497760825455461057">"PUK2 লক কৰা আছে। আনলক কৰিবলৈ সেৱা প্ৰদানকাৰীৰ সৈতে যোগাযোগ কৰক।"</string>
     <string name="pin2_unblocked" msgid="4481107908727789303">"PIN2 আৰু অৱৰোধ হৈ থকা নাই"</string>
     <string name="pin2_error_exception" msgid="8116103864600823641">"নেটৱৰ্ক বা ছিম কাৰ্ডৰ আসোঁৱাহ।"</string>
     <string name="doneButton" msgid="7371209609238460207">"হ’ল"</string>
@@ -536,6 +537,7 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"কল কৰিবৰ কাৰণে ম’বাইল নেটৱৰ্ক অন কৰক, এয়াৰপ্লেইন ম\'ড অফ কৰক বা বেটাৰি সঞ্চয়কাৰী ম\'ড অফ কৰক।"</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"কল কৰিবৰ কাৰণে এয়াৰপ্লেইন ম\'ড অফ কৰক।"</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"কল কৰিবৰ কাৰণে এয়াৰপ্লেইন ম\'ড অফ কৰক বা কোনো বেতাঁৰ নেটৱৰ্কৰ সৈতে সংযোগ কৰক।"</string>
+    <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"ফ’নটো বেছি গৰম হৈছে"</b>\n\n"এই কলটো সম্পূৰ্ণ কৰিব নোৱাৰি। আপোনাৰ ফ’নটো ঠাণ্ডা হোৱাৰ পাছত পুনৰ চেষ্টা কৰক।\n\nআপুনি তথাপি জৰুৰীকালীন কল কৰিব পাৰিব।"</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"সাধাৰণ কল কৰিবৰ কাৰণে জৰুৰীকালীন কলবেক ম\'ডৰ পৰা বাহিৰ হওক।"</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"নেটৱৰ্কত পঞ্জীকৃত নহয়।"</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"ম’বাইল নেটৱৰ্ক উপলব্ধ নহয়।"</string>

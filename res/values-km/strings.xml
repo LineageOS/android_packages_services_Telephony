@@ -515,6 +515,7 @@
     <string name="puk2_requested" msgid="6992374450720307514">"ពាក្យសម្ងាត់មិនត្រឹមត្រូវ។ ឥឡូវនេះស៊ីមកាតត្រូវបានចាក់សោ។ បញ្ចូល PUK2។"</string>
     <string name="puk2_blocked" msgid="3131139031779319911">"លេខ​កូដ PUK2 ត្រូវ​បាន​​ទប់ស្កាត់​ជា​អចិន្ត្រៃយ៍។"</string>
     <string name="pin2_attempts" msgid="5625178102026453023">\n"អ្នកនៅសល់ការព្យាយាមបញ្ចូល <xliff:g id="NUMBER">%d</xliff:g> ដងទៀត។"</string>
+    <string name="puk2_locked" msgid="6497760825455461057">"បាន​ចាក់​សោ​ដោយ​ប្រើ PUK2។ សូម​ទាក់ទង​ទៅ​ក្រុមហ៊ុនផ្ដល់សេវា ដើម្បី​ដោះ​សោ។"</string>
     <string name="pin2_unblocked" msgid="4481107908727789303">"លេខសម្ងាត់ PIN2 មិនត្រូវបានរារាំងទៀតទេ"</string>
     <string name="pin2_error_exception" msgid="8116103864600823641">"បញ្ហាស៊ីមកាត ឬបណ្ដាញ។"</string>
     <string name="doneButton" msgid="7371209609238460207">"រួចរាល់"</string>
@@ -536,6 +537,7 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"បើក​បណ្ដាញ​ទូរសព្ទ​ចល័ត បិទ​មុខងារ​ពេល​ជិះ​យន្តហោះ ឬ​បិទ​មុខងារ​កម្មវិធី​សន្សំថ្ម ដើម្បី​ហៅ​ទូរសព្ទ។"</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"បិទរបៀបយន្តហោះដើម្បីធ្វើការហៅ។"</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"បិទរបៀបយន្តហោះ ឬភ្ជាប់ទៅបណ្តាញឥតខ្សែដើម្បីធ្វើការហៅ។"</string>
+    <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"ទូរសព្ទ​ក្ដៅ​ពេក"</b>\n\n"មិន​អាច​ធ្វើការហៅ​ទូរសព្ទ​នេះ​បាន​ទេ។ សូម​ព្យាយាម​ម្ដង​ទៀត នៅ​ពេល​ទូរសព្ទ​របស់​អ្នក​ចុះ​ត្រជាក់។\n\nអ្នក​នៅ​តែ​អាច​ធ្វើ​ការហៅ​ទៅ​លេខ​សង្គ្រោះ​បន្ទាន់​បាន។"</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"ចាកចេញពីរបៀបហៅទៅវិញពេលមានអាសន្នដើម្បីធ្វើការហៅធម្មតា។"</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"មិន​បាន​ចុះ​ឈ្មោះ​នៅ​លើ​បណ្ដាញ។"</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"បណ្ដាញ​​ឧបករណ៍​​ចល័ត​មិន​អាច​ប្រើ​បាន​។"</string>
