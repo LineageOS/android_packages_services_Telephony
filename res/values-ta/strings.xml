@@ -49,13 +49,13 @@
     <string name="add_vm_number_str" msgid="7368168964435881637">"எண்ணைச் சேர்"</string>
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"முதன்மை பயனர் மட்டுமே குரலஞ்சல் அமைப்புகளை மாற்ற முடியும்."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"சிம் கார்டின் தடுப்பு நீக்கப்பட்டது. மொபைல் திறக்கப்படுகிறது…"</string>
-    <string name="label_ndp" msgid="7617392683877410341">"சிம் நெட்வொர்க்கின் தடைநீக்க பின்"</string>
+    <string name="label_ndp" msgid="7617392683877410341">"சிம் நெட்வொர்க்கை அன்லாக் செய்யும் பின்"</string>
     <string name="label_phoneid" msgid="8775611434123577808">"ஆப்பரேட்டருக்கு சிம் பூட்டப்பட்டுள்ளது"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"அன்லாக் செய்"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"விலக்கு"</string>
-    <string name="requesting_unlock" msgid="930512210309437741">"நெட்வொர்க் தடைநீக்கத்தைக் கோருகிறது…"</string>
-    <string name="unlock_failed" msgid="7103543844840661366">"நெட்வொர்க் தடைநீக்கத்திற்கான கோரிக்கை தோல்வி."</string>
-    <string name="unlock_success" msgid="32681089371067565">"நெட்வொர்க்கின் தடைநீக்கப்பட்டது."</string>
+    <string name="requesting_unlock" msgid="930512210309437741">"நெட்வொர்க்கை அன்லாக் செய்யக் கோருகிறது…"</string>
+    <string name="unlock_failed" msgid="7103543844840661366">"நெட்வொர்க்கை அன்லாக் செய்வதற்கான கோரிக்கை தோல்வியடைந்தது."</string>
+    <string name="unlock_success" msgid="32681089371067565">"நெட்வொர்க் அன்லாக் செய்யப்பட்டது."</string>
     <string name="mobile_network_settings_not_available" msgid="8678168497517090039">"இவரால் மொபைல் நெட்வொர்க் அமைப்புகளை மாற்ற முடியாது"</string>
     <string name="labelGSMMore" msgid="7354182269461281543">"GSM அழைப்பு அமைப்பு"</string>
     <string name="labelGsmMore_with_label" msgid="3206015314393246224">"GSM அழைப்பு அமைப்புகள் (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
