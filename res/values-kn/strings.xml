@@ -541,7 +541,7 @@
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"ತುರ್ತು ರಹಿತ ಕರೆಯನ್ನು ಮಾಡಲು ತುರ್ತು ಮರು ಕರೆಮಾಡುವಿಕೆ ಮೋಡ್ ಅನ್ನು ನಿರ್ಗಮಿಸಿ."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"ನೆಟ್‌ವರ್ಕ್‌ನಲ್ಲಿ ಇನ್ನೂ ನೋಂದಣಿಯಾಗಿಲ್ಲ."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"ಮೊಬೈಲ್‌ ನೆಟ್‌ವರ್ಕ್‌ ಲಭ್ಯವಿಲ್ಲ."</string>
-    <string name="incall_error_out_of_service_wfc" msgid="4497663185857190885">"ಮೊಬೈಲ್ ನೆಟ್‌ವರ್ಕ್ ಲಭ್ಯವಿಲ್ಲ. ಕರೆ ಮಾಡಲು ವೈರ್‌ಲೆಸ್ ನೆಟ್‌ವರ್ಕ್‌ಗೆ ಸಂಪರ್ಕಿಸಿ."</string>
+    <string name="incall_error_out_of_service_wfc" msgid="4497663185857190885">"ಮೊಬೈಲ್ ನೆಟ್‌ವರ್ಕ್ ಲಭ್ಯವಿಲ್ಲ. ಕರೆ ಮಾಡಲು ವೈರ್‌ಲೆಸ್ ನೆಟ್‌ವರ್ಕ್‌ಗೆ ಕನೆಕ್ಟ್ ಮಾಡಿ."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="8680831089508851894">"ಕರೆಯನ್ನು ಮಾಡಲು, ಮಾನ್ಯವಾದ ಸಂಖ್ಯೆಯನ್ನು ನಮೂದಿಸಿ."</string>
     <string name="incall_error_call_failed" msgid="393508653582682539">"ಕರೆ ವಿಫಲವಾಗಿದೆ."</string>
     <string name="incall_error_cannot_add_call" msgid="5425764862628655443">"ಈ ಸಮಯದಲ್ಲಿ ಕರೆಯನ್ನು ಸೇರಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ. ಸಂದೇಶವನ್ನು ಕಳುಹಿಸುವ ಮೂಲಕ ನೀವು ಸಂಪರ್ಕಿಸಲು ಪ್ರಯತ್ನಿಸಬಹುದು."</string>
