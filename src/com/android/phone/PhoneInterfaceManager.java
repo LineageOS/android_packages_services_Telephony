@@ -4092,7 +4092,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         final long token = Binder.clearCallingIdentity();
         try {
             int slotId = getSlotIndexOrException(subId);
-            verifyImsMmTelConfiguredOrThrow(slotId);
+            // This setting doesn't require an active ImsService connection, so do not verify.
             return ImsManager.getInstance(mApp, slotId).isEnhanced4gLteModeSettingEnabledByUser();
         } catch (ImsException e) {
             throw new ServiceSpecificException(e.getCode());
@@ -4108,7 +4108,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         final long identity = Binder.clearCallingIdentity();
         try {
             int slotId = getSlotIndexOrException(subId);
-            verifyImsMmTelConfiguredOrThrow(slotId);
+            // This setting doesn't require an active ImsService connection, so do not verify. The
+            // new setting will be picked up when the ImsService comes up next if it isn't up.
             ImsManager.getInstance(mApp, slotId).setEnhanced4gLteModeSetting(isEnabled);
         } catch (ImsException e) {
             throw new ServiceSpecificException(e.getCode());
@@ -4128,7 +4129,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         final long identity = Binder.clearCallingIdentity();
         try {
             int slotId = getSlotIndexOrException(subId);
-            verifyImsMmTelConfiguredOrThrow(slotId);
+            // This setting doesn't require an active ImsService connection, so do not verify.
             return ImsManager.getInstance(mApp, slotId).isVtEnabledByUser();
         } catch (ImsException e) {
             throw new ServiceSpecificException(e.getCode());
@@ -4144,7 +4145,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         final long identity = Binder.clearCallingIdentity();
         try {
             int slotId = getSlotIndexOrException(subId);
-            verifyImsMmTelConfiguredOrThrow(slotId);
+            // This setting doesn't require an active ImsService connection, so do not verify. The
+            // new setting will be picked up when the ImsService comes up next if it isn't up.
             ImsManager.getInstance(mApp, slotId).setVtSetting(isEnabled);
         } catch (ImsException e) {
             throw new ServiceSpecificException(e.getCode());
@@ -4164,7 +4166,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         final long identity = Binder.clearCallingIdentity();
         try {
             int slotId = getSlotIndexOrException(subId);
-            verifyImsMmTelConfiguredOrThrow(slotId);
+            // This setting doesn't require an active ImsService connection, so do not verify.
             return ImsManager.getInstance(mApp, slotId).isWfcEnabledByUser();
         } catch (ImsException e) {
             throw new ServiceSpecificException(e.getCode());
@@ -4180,7 +4182,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         final long identity = Binder.clearCallingIdentity();
         try {
             int slotId = getSlotIndexOrException(subId);
-            verifyImsMmTelConfiguredOrThrow(slotId);
+            // This setting doesn't require an active ImsService connection, so do not verify. The
+            // new setting will be picked up when the ImsService comes up next if it isn't up.
             ImsManager.getInstance(mApp, slotId).setWfcSetting(isEnabled);
         } catch (ImsException e) {
             throw new ServiceSpecificException(e.getCode());
@@ -4201,7 +4204,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         final long identity = Binder.clearCallingIdentity();
         try {
             int slotId = getSlotIndexOrException(subId);
-            verifyImsMmTelConfiguredOrThrow(slotId);
+            // This setting doesn't require an active ImsService connection, so do not verify.
             return ImsManager.getInstance(mApp, slotId).isCrossSimCallingEnabledByUser();
         } catch (ImsException e) {
             throw new ServiceSpecificException(e.getCode());
@@ -4224,7 +4227,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         final long identity = Binder.clearCallingIdentity();
         try {
             int slotId = getSlotIndexOrException(subId);
-            verifyImsMmTelConfiguredOrThrow(slotId);
+            // This setting doesn't require an active ImsService connection, so do not verify. The
+            // new setting will be picked up when the ImsService comes up next if it isn't up.
             ImsManager.getInstance(mApp, slotId).setCrossSimCallingEnabled(isEnabled);
         } catch (ImsException e) {
             throw new ServiceSpecificException(e.getCode());
@@ -4245,7 +4249,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         final long identity = Binder.clearCallingIdentity();
         try {
             int slotId = getSlotIndexOrException(subId);
-            verifyImsMmTelConfiguredOrThrow(slotId);
+            // This setting doesn't require an active ImsService connection, so do not verify.
             return ImsManager.getInstance(mApp, slotId).isWfcRoamingEnabledByUser();
         } catch (ImsException e) {
             throw new ServiceSpecificException(e.getCode());
@@ -4261,7 +4265,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         final long identity = Binder.clearCallingIdentity();
         try {
             int slotId = getSlotIndexOrException(subId);
-            verifyImsMmTelConfiguredOrThrow(slotId);
+            // This setting doesn't require an active ImsService connection, so do not verify. The
+            // new setting will be picked up when the ImsService comes up next if it isn't up.
             ImsManager.getInstance(mApp, slotId).setWfcRoamingSetting(isEnabled);
         } catch (ImsException e) {
             throw new ServiceSpecificException(e.getCode());
@@ -4277,7 +4282,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         final long identity = Binder.clearCallingIdentity();
         try {
             int slotId = getSlotIndexOrException(subId);
-            verifyImsMmTelConfiguredOrThrow(slotId);
+            // This setting will be ignored if the ImsService isn't up.
             ImsManager.getInstance(mApp, slotId).setWfcNonPersistent(isCapable, mode);
         } catch (ImsException e) {
             throw new ServiceSpecificException(e.getCode());
@@ -4297,7 +4302,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         final long identity = Binder.clearCallingIdentity();
         try {
             int slotId = getSlotIndexOrException(subId);
-            verifyImsMmTelConfiguredOrThrow(slotId);
+            // This setting doesn't require an active ImsService connection, so do not verify.
             return ImsManager.getInstance(mApp, slotId).getWfcMode(false /*isRoaming*/);
         } catch (ImsException e) {
             throw new ServiceSpecificException(e.getCode());
@@ -4313,7 +4318,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         final long identity = Binder.clearCallingIdentity();
         try {
             int slotId = getSlotIndexOrException(subId);
-            verifyImsMmTelConfiguredOrThrow(slotId);
+            // This setting doesn't require an active ImsService connection, so do not verify. The
+            // new setting will be picked up when the ImsService comes up next if it isn't up.
             ImsManager.getInstance(mApp, slotId).setWfcMode(mode, false /*isRoaming*/);
         } catch (ImsException e) {
             throw new ServiceSpecificException(e.getCode());
@@ -4328,7 +4334,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         final long identity = Binder.clearCallingIdentity();
         try {
             int slotId = getSlotIndexOrException(subId);
-            verifyImsMmTelConfiguredOrThrow(slotId);
+            // This setting doesn't require an active ImsService connection, so do not verify.
             return ImsManager.getInstance(mApp, slotId).getWfcMode(true /*isRoaming*/);
         } catch (ImsException e) {
             throw new ServiceSpecificException(e.getCode());
@@ -4344,7 +4350,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         final long identity = Binder.clearCallingIdentity();
         try {
             int slotId = getSlotIndexOrException(subId);
-            verifyImsMmTelConfiguredOrThrow(slotId);
+            // This setting doesn't require an active ImsService connection, so do not verify. The
+            // new setting will be picked up when the ImsService comes up next if it isn't up.
             ImsManager.getInstance(mApp, slotId).setWfcMode(mode, true /*isRoaming*/);
         } catch (ImsException e) {
             throw new ServiceSpecificException(e.getCode());
@@ -4360,7 +4367,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         final long identity = Binder.clearCallingIdentity();
         try {
             int slotId = getSlotIndexOrException(subId);
-            verifyImsMmTelConfiguredOrThrow(slotId);
+            // This setting doesn't require an active ImsService connection, so do not verify. The
+            // new setting will be picked up when the ImsService comes up next if it isn't up.
             ImsManager.getInstance(mApp, slotId).setRttEnabled(isEnabled);
         } catch (ImsException e) {
             throw new ServiceSpecificException(e.getCode());
@@ -4380,7 +4388,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         final long identity = Binder.clearCallingIdentity();
         try {
             int slotId = getSlotIndexOrException(subId);
-            verifyImsMmTelConfiguredOrThrow(slotId);
+            // This setting doesn't require an active ImsService connection, so do not verify.
             return ImsManager.getInstance(mApp, slotId).isTtyOnVoLteCapable();
         } catch (ImsException e) {
             throw new ServiceSpecificException(e.getCode());
