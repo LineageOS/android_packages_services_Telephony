@@ -50,7 +50,8 @@ android_test {
         "telephony-common-testing",
         "testng",
         "truth-prebuilt",
-	"testables",
+        "testables",
+        "platform-compat-test-rules",
     ],
 
     test_suites: [
