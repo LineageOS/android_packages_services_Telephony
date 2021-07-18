@@ -720,7 +720,7 @@
     <string name="mobile_data_activate_button" msgid="1139792516354374612">"ଡାଟା ଯୋଡ଼ନ୍ତୁ"</string>
     <string name="mobile_data_activate_cancel_button" msgid="3530174817572005860">"ବାତିଲ୍‍ କରନ୍ତୁ"</string>
     <string name="clh_card_title_call_ended_txt" msgid="5977978317527299698">"କଲ୍ ସମାପ୍ତ ହୋ‌ଇଛି"</string>
-    <string name="clh_callFailed_powerOff_txt" msgid="8279934912560765361">"ଏୟାରପ୍ଲେନ୍ ମୋଡ୍ ଅନ୍‌ ଅଛି"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="8279934912560765361">"ଏୟାରପ୍ଲେନ୍ ମୋଡ୍ ଚାଲୁ ଅଛି"</string>
     <string name="clh_callFailed_simError_txt" msgid="5128538525762326413">"SIM କାର୍ଡକୁ ଆକ୍ସେସ୍ କରିହେଉନାହିଁ"</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="2736010617446749869">"ମୋବାଇଲ୍ ନେଟ୍‌ୱର୍କ ଉପଲବ୍ଧ ଅଛି"</string>
     <string name="clh_callFailed_unassigned_number_txt" msgid="141967660286695682">"ଆପଣ ଡାଏଲ୍ କରିବା ପାଇଁ ଚେଷ୍ଟା କରୁଥିବା ଫୋନ୍ ନମ୍ବର୍‌ରେ ସମସ୍ୟା ଅଛି। ତ୍ରୁଟି କୋଡ୍ 1।"</string>
