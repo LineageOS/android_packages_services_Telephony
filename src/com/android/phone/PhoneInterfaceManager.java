@@ -6214,7 +6214,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
                 mApp, subId, "setAllowedNetworkTypesForReason");
         if (!TelephonyManager.isValidAllowedNetworkTypesReason(reason)) {
-            Rlog.e(LOG_TAG, "Invalid allowed network type reason: " + reason);
+            loge("setAllowedNetworkTypesForReason: Invalid allowed network type reason: " + reason);
+            return false;
+        }
+        if (!SubscriptionManager.isUsableSubscriptionId(subId)) {
+            loge("setAllowedNetworkTypesForReason: Invalid subscriptionId:" + subId);
             return false;
         }
 
