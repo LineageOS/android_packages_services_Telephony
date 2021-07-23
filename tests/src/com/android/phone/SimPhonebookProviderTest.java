@@ -28,6 +28,7 @@ import static com.google.common.truth.Truth.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.times;
@@ -1148,6 +1149,10 @@ public final class SimPhonebookProviderTest {
     public void subscriptionsChange_callsNotifyChange() {
         // Clear invocations that happened in setUp
         Mockito.reset(mMockSubscriptionManager);
+        // Stubbing this prevents the spied instance from calling the listener when it is added
+        // which may cause flakiness.
+        doNothing().when(mMockSubscriptionManager)
+                .addOnSubscriptionsChangedListener(any(), any());
         setupSimsWithSubscriptionIds(1);
         mIccPhoneBook.makeAllEfsSupported(1);
         SimPhonebookProvider.ContentNotifier mockNotifier = mock(
@@ -1159,9 +1164,20 @@ public final class SimPhonebookProviderTest {
                 mResolver, mMockSubscriptionManager, mIccPhoneBook, mockNotifier);
         verify(mMockSubscriptionManager).addOnSubscriptionsChangedListener(
                 any(), listenerCaptor.capture());
+
+        // Fake the initial call that is made by SubscriptionManager when a listener is registered
+        // with addOnSubscriptionsChangedListener
         listenerCaptor.getValue().onSubscriptionsChanged();
+
+        // First subscription change
         setupSimsWithSubscriptionIds(1, 2);
         listenerCaptor.getValue().onSubscriptionsChanged();
+
+        // Second subscription change
+        setupSimsWithSubscriptionIds(1);
+        listenerCaptor.getValue().onSubscriptionsChanged();
+
+        // Listener is called but subscriptions didn't change so this won't notify
         listenerCaptor.getValue().onSubscriptionsChanged();
 
         verify(mockNotifier, times(2)).notifyChange(eq(SimPhonebookContract.AUTHORITY_URI));
