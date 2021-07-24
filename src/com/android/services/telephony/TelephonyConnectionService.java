@@ -1728,18 +1728,20 @@ public class TelephonyConnectionService extends ConnectionService {
                         }
                     }
                 }
-                connection.registerForCallEvents(phone);
                 originalConnection = phone.dial(number, new ImsPhone.ImsDialArgs.Builder()
                         .setVideoState(videoState)
                         .setIntentExtras(extras)
                         .setRttTextStream(connection.getRttTextStream())
-                        .build());
+                        .build(),
+                        // We need to wait until the phone has been chosen in GsmCdmaPhone to
+                        // register for the associated TelephonyConnection call event listeners.
+                        connection::registerForCallEvents);
             } else {
                 originalConnection = null;
             }
         } catch (CallStateException e) {
             Log.e(this, e, "placeOutgoingConnection, phone.dial exception: " + e);
-            connection.unregisterForCallEvents(phone);
+            connection.unregisterForCallEvents();
             handleCallStateException(e, connection, phone);
             return;
         }
@@ -1762,17 +1764,22 @@ public class TelephonyConnectionService extends ConnectionService {
                 startActivity(intent);
             }
             Log.d(this, "placeOutgoingConnection, phone.dial returned null");
-            connection.unregisterForCallEvents(phone);
             connection.setTelephonyConnectionDisconnected(
                     mDisconnectCauseFactory.toTelecomDisconnectCause(telephonyDisconnectCause,
                             "Connection is null", phone.getPhoneId()));
             connection.close();
         } else {
-            getMainThreadHandler().post(() -> {
-                if (connection.getOriginalConnection() == null) {
-                    connection.setOriginalConnection(originalConnection);
-                }
-            });
+            if (!getMainThreadHandler().getLooper().isCurrentThread()) {
+                Log.w(this, "placeOriginalConnection - Unexpected, this call "
+                        + "should always be on the main thread.");
+                getMainThreadHandler().post(() -> {
+                    if (connection.getOriginalConnection() == null) {
+                        connection.setOriginalConnection(originalConnection);
+                    }
+                });
+            } else {
+                connection.setOriginalConnection(originalConnection);
+            }
         }
     }
 
