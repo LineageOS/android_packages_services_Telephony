@@ -667,7 +667,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         // was redialed on the same slot
         assertEquals(0, c.getNotifyPhoneAccountChangedCount());
         try {
-            verify(slot0Phone).dial(anyString(), any());
+            verify(slot0Phone).dial(anyString(), any(), any());
         } catch (CallStateException e) {
             // This shouldn't happen
             fail();
@@ -698,7 +698,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         // was never redialed
         assertEquals(0, c.getNotifyPhoneAccountChangedCount());
         try {
-            verify(slot0Phone, never()).dial(anyString(), any());
+            verify(slot0Phone, never()).dial(anyString(), any(), any());
         } catch (CallStateException e) {
             // This shouldn't happen
             fail();
@@ -741,7 +741,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         // redialed on another slot
         assertEquals(1, c.getNotifyPhoneAccountChangedCount());
         try {
-            verify(slot1Phone).dial(anyString(), any());
+            verify(slot1Phone).dial(anyString(), any(), any());
         } catch (CallStateException e) {
             // This shouldn't happen
             fail();
@@ -782,7 +782,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         // redialed on another slot
         assertEquals(1, c.getNotifyPhoneAccountChangedCount());
         try {
-            verify(slot1Phone).dial(anyString(), any());
+            verify(slot1Phone).dial(anyString(), any(), any());
         } catch (CallStateException e) {
             // This shouldn't happen
             fail();
@@ -836,8 +836,8 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         // redialed on another slot
         assertEquals(2, c.getNotifyPhoneAccountChangedCount());
         try {
-            verify(slot0Phone).dial(anyString(), any());
-            verify(slot1Phone).dial(anyString(), any());
+            verify(slot0Phone).dial(anyString(), any(), any());
+            verify(slot1Phone).dial(anyString(), any(), any());
         } catch (CallStateException e) {
             // This shouldn't happen
             fail();
@@ -889,8 +889,8 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         // redialed on another slot
         assertEquals(1, c.getNotifyPhoneAccountChangedCount());
         try {
-            verify(slot1Phone).dial(anyString(), any());
-            verify(slot0Phone, never()).dial(anyString(), any());
+            verify(slot1Phone).dial(anyString(), any(), any());
+            verify(slot0Phone, never()).dial(anyString(), any(), any());
         } catch (CallStateException e) {
             // This shouldn't happen
             fail();
@@ -1017,7 +1017,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
 
         try {
             doAnswer(invocation -> null).when(mContext).startActivity(any());
-            verify(testPhone).dial(anyString(), any());
+            verify(testPhone).dial(anyString(), any(), any());
         } catch (CallStateException e) {
             // This shouldn't happen
             fail();
@@ -1512,7 +1512,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
 
     private void setPhonesDialConnection(Phone phone, Connection c) {
         try {
-            when(phone.dial(anyString(), any())).thenReturn(c);
+            when(phone.dial(anyString(), any(), any())).thenReturn(c);
         } catch (CallStateException e) {
             // this shouldn't happen
             fail();
