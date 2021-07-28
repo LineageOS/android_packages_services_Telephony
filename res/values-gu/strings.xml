@@ -113,17 +113,17 @@
     <string name="messageCFB" msgid="1958017270393563388">"જ્યારે વ્યસ્ત હોય તે સમય માટેનો નંબર"</string>
     <string name="sum_cfb_enabled" msgid="332037613072049492">"<xliff:g id="PHONENUMBER">{0}</xliff:g> પર ફોરવર્ડ કરી રહ્યાં છે"</string>
     <string name="sum_cfb_disabled" msgid="3589913334164866035">"બંધ"</string>
-    <string name="disable_cfb_forbidden" msgid="4831494744351633961">"જ્યારે તમારો ફોન વ્યસ્ત હોય ત્યારે તમારા ઓપરેટર કૉલ ફોરવર્ડિંગને અક્ષમ કરવાને સમર્થન આપતા નથી."</string>
+    <string name="disable_cfb_forbidden" msgid="4831494744351633961">"જ્યારે તમારો ફોન વ્યસ્ત હોય ત્યારે તમારા ઑપરેટર કૉલ ફૉરવર્ડિંગ બંધ કરવાને સપોર્ટ કરતા નથી."</string>
     <string name="labelCFNRy" msgid="3403533792248457946">"જ્યારે જવાબ આપેલ ન હોય ત્યારે"</string>
     <string name="messageCFNRy" msgid="7644434155765359009">"જ્યારે જવાબ ન આપેલ હોય તે સમય માટેનો નંબર"</string>
     <string name="sum_cfnry_enabled" msgid="3000500837493854799">"<xliff:g id="PHONENUMBER">{0}</xliff:g> પર ફોરવર્ડ કરી રહ્યાં છે"</string>
     <string name="sum_cfnry_disabled" msgid="1990563512406017880">"બંધ"</string>
-    <string name="disable_cfnry_forbidden" msgid="3174731413216550689">"જ્યારે તમારો ફોન જવાબ નહીં આપે ત્યારે તમારા ઓપરેટર કૉલ ફોરવર્ડિંગને અક્ષમ કરવાને સમર્થન આપતા નથી."</string>
+    <string name="disable_cfnry_forbidden" msgid="3174731413216550689">"જ્યારે તમારો ફોન જવાબ નહીં આપે ત્યારે તમારા ઑપરેટર કૉલ ફૉરવર્ડિંગ બંધ કરવાને સપોર્ટ કરતા નથી."</string>
     <string name="labelCFNRc" msgid="4163399350778066013">"જ્યારે પહોંચયોગ્ય ન હોય ત્યારે"</string>
     <string name="messageCFNRc" msgid="6980340731313007250">"જ્યારે પહોંચયોગ્ય ન હોય તે સમય માટેનો નંબર"</string>
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"<xliff:g id="PHONENUMBER">{0}</xliff:g> પર ફોરવર્ડ કરી રહ્યાં છે"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"બંધ"</string>
-    <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"જ્યારે તમારો ફોન પહોંચયોગ્ય ન હોય ત્યારે તમારા કેરિઅર કૉલ ફોરવર્ડિંગને અક્ષમ કરવાને સમર્થન આપતા નથી."</string>
+    <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"જ્યારે તમારો ફોન પહોંચયોગ્ય ન હોય ત્યારે તમારા કૅરિઅર કૉલ ફૉરવર્ડિંગ બંધ કરવાને સપોર્ટ કરતા નથી."</string>
     <string name="registration_cf_forbidden" msgid="4386482610771190420">"તમારા મોબાઇલ ઑપરેટર કૉલ ફૉર્વર્ડિંગને સપોર્ટ કરતા નથી."</string>
     <string name="cdma_call_waiting" msgid="4565070960879673216">"કૉલ પ્રતીક્ષા ચાલુ કરવા માગો છો?"</string>
     <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"કૉલ દરમ્યાન, તમને ઇનકમિંગ કૉલ વિશે નોટિફિકેશન આપવામાં આવશે"</string>
