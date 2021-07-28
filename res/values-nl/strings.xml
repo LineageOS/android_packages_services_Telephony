@@ -720,7 +720,7 @@
     <string name="mobile_data_activate_button" msgid="1139792516354374612">"DATA TOEVOEGEN"</string>
     <string name="mobile_data_activate_cancel_button" msgid="3530174817572005860">"ANNULEREN"</string>
     <string name="clh_card_title_call_ended_txt" msgid="5977978317527299698">"Gesprek beëindigd"</string>
-    <string name="clh_callFailed_powerOff_txt" msgid="8279934912560765361">"Vliegtuigmodus is ingeschakeld"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="8279934912560765361">"Vliegtuigmodus staat aan"</string>
     <string name="clh_callFailed_simError_txt" msgid="5128538525762326413">"Kan geen toegang tot simkaart krijgen"</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="2736010617446749869">"Mobiel netwerk niet beschikbaar"</string>
     <string name="clh_callFailed_unassigned_number_txt" msgid="141967660286695682">"Probleem met het telefoonnummer dat je probeert te bellen. Foutcode 1."</string>

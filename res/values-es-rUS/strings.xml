@@ -805,7 +805,7 @@
     <string name="messageCallBarring" msgid="5537730400652466912">"Ingresa la contraseña"</string>
     <string name="call_barring_settings" msgid="4616607285790258919">"Configuración de restricción de llamadas"</string>
     <string name="callFailed_NetworkBusy" msgid="5437103975842913681">"La red está ocupada. Vuelve a realizar la llamada más tarde."</string>
-    <string name="callFailed_NetworkCongested" msgid="6801283142342775380">"La red está congestionada. Comunícate con tu operador de telefonía móvil para recibir asistencia."</string>
+    <string name="callFailed_NetworkCongested" msgid="6801283142342775380">"La red está congestionada. Comunícate con tu operador de telefonía celular para recibir asistencia."</string>
     <string name="supp_service_notification_call_deflected" msgid="4980942818105909813">"Se desvió la llamada."</string>
     <string name="supp_service_notification_call_forwarded" msgid="7102930311735433088">"Se desvió la llamada."</string>
     <string name="supp_service_notification_call_waiting" msgid="4577403881609445324">"Llamada en espera."</string>
