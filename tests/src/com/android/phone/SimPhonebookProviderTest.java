@@ -235,6 +235,19 @@ public final class SimPhonebookProviderTest {
     }
 
     @Test
+    public void query_elementaryFilesItem_nonExistentSubscriptionId_returnsEmptyCursor() {
+        setupSimsWithSubscriptionIds(1);
+        mIccPhoneBook.makeAllEfsSupported(1);
+
+        // Subscription ID 2 does not exist
+        Uri nonExistentElementaryFileItemUri = ElementaryFiles.getItemUri(2, EF_ADN);
+
+        try (Cursor cursor = mResolver.query(nonExistentElementaryFileItemUri, null, null, null)) {
+            assertThat(Objects.requireNonNull(cursor)).hasCount(0);
+        }
+    }
+
+    @Test
     public void query_adnRecords_returnsCursorWithMatchingProjection() {
         setupSimsWithSubscriptionIds(1);
         mIccPhoneBook.makeAllEfsSupported(1);
