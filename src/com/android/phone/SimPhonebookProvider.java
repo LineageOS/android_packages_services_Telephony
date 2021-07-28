@@ -16,8 +16,8 @@
 
 package com.android.phone;
 
-import static com.android.internal.telephony.IccProvider.STR_NEW_TAG;
 import static com.android.internal.telephony.IccProvider.STR_NEW_NUMBER;
+import static com.android.internal.telephony.IccProvider.STR_NEW_TAG;
 
 import android.Manifest;
 import android.annotation.TestApi;
@@ -305,8 +305,10 @@ public class SimPhonebookProvider extends ContentProvider {
 
         MatrixCursor result = new MatrixCursor(projection);
         try {
-            addEfToCursor(
-                    result, getActiveSubscriptionInfo(args.subscriptionId), args.efType);
+            SubscriptionInfo info = getActiveSubscriptionInfo(args.subscriptionId);
+            if (info != null) {
+                addEfToCursor(result, info, args.efType);
+            }
         } catch (RemoteException e) {
             // Return an empty cursor. If service to access it is throwing remote
             // exceptions then it's basically the same as not having a SIM.
@@ -734,6 +736,7 @@ public class SimPhonebookProvider extends ContentProvider {
         }
     }
 
+    @Nullable
     private SubscriptionInfo getActiveSubscriptionInfo(int subId) {
         // Getting the SubscriptionInfo requires READ_PHONE_STATE.
         CallingIdentity identity = clearCallingIdentity();
