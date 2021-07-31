@@ -32,7 +32,7 @@
     <string name="mmiCancelled" msgid="5339191899200678272">"Código MMI cancelado"</string>
     <string name="cancel" msgid="8984206397635155197">"Cancelar"</string>
     <string name="enter_input" msgid="6193628663039958990">"A mensagem USSD deve ter de <xliff:g id="MIN_LEN">%1$d</xliff:g> a <xliff:g id="MAX_LEN">%2$d</xliff:g> caracteres. Tente novamente."</string>
-    <string name="manageConferenceLabel" msgid="8415044818156353233">"Gerenciar teleconferência"</string>
+    <string name="manageConferenceLabel" msgid="8415044818156353233">"Gerenciar conferência"</string>
     <string name="ok" msgid="7818974223666140165">"OK"</string>
     <string name="audio_mode_speaker" msgid="243689733219312360">"Alto-falante"</string>
     <string name="audio_mode_earpiece" msgid="2823700267171134282">"Minifone do aparelho"</string>
