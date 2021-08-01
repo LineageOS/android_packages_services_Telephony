@@ -282,8 +282,8 @@
     <string name="data_enable_summary" msgid="696860063456536557">"डेटा उपयोग करने दें"</string>
     <string name="dialog_alert_title" msgid="5260471806940268478">"ध्यान दें"</string>
     <string name="roaming" msgid="1576180772877858949">"रोमिंग"</string>
-    <string name="roaming_enable" msgid="6853685214521494819">"रोमिंग के समय डेटा सेवाएं कनेक्ट करें"</string>
-    <string name="roaming_disable" msgid="8856224638624592681">"रोमिंग के समय डेटा सेवाएं कनेक्ट करें"</string>
+    <string name="roaming_enable" msgid="6853685214521494819">"रोमिंग में डेटा चालू करें"</string>
+    <string name="roaming_disable" msgid="8856224638624592681">"रोमिंग में डेटा चालू करें"</string>
     <string name="roaming_reenable_message" msgid="1951802463885727915">"डेटा रोमिंग बंद है. चालू करने के लिए टैप करें."</string>
     <string name="roaming_enabled_message" msgid="9022249120750897">"रोमिंग शुल्क लागू हो सकते हैं. बदलाव करने के लिए टैप करें."</string>
     <string name="roaming_notification_title" msgid="3590348480688047320">"मोबाइल डेटा कनेक्शन उपलब्ध नहीं है"</string>
@@ -556,7 +556,7 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"कॉल होल्ड नहीं किए जा सकते."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"कॉल करने के लिए किसी वायरलेस नेटवर्क से कनेक्‍ट करें."</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"कॉल करने के लिए वाई-फ़ाई कॉलिंग सक्षम करें."</string>
-    <string name="emergency_information_hint" msgid="9208897544917793012">"आपातकालीन जानकारी"</string>
+    <string name="emergency_information_hint" msgid="9208897544917793012">"आपातकाल में दिखने वाली जानकारी"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"मालिक"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"जानकारी देखने के लिए फिर से टैप करें"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="2667568200755388829">"आपातकालीन कॉल"</string>
