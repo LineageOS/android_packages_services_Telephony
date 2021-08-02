@@ -1952,7 +1952,7 @@
     <string name="callFailed_calling_disabled">Cannot place a call as calling has been disabled using the ro.telephony.disable-call system property.</string>
     <!-- In-call screen: error message shown when the user attempts to place a call, but calling has
          been disabled using a debug property. -->
-    <string name="callFailed_too_many_calls">Cannot place a call a there are already two calls in progress.  Disconnect one of the calls or merge them into a conference prior to placing a new call.</string>
+    <string name="callFailed_too_many_calls">Cannot place a call as there are already two calls in progress.  Disconnect one of the calls or merge them into a conference prior to placing a new call.</string>
     <!-- Message displayed to the user when they attempt to edit options for a supplementary service
          (call waiting, call barring, call forwarding, and caller ID), but they are required to
          enable mobile data first. -->
