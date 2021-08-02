@@ -720,7 +720,7 @@
     <string name="mobile_data_activate_button" msgid="1139792516354374612">"DATEN HINZUFÜGEN"</string>
     <string name="mobile_data_activate_cancel_button" msgid="3530174817572005860">"ABBRECHEN"</string>
     <string name="clh_card_title_call_ended_txt" msgid="5977978317527299698">"Anruf beendet"</string>
-    <string name="clh_callFailed_powerOff_txt" msgid="8279934912560765361">"Flugzeugmodus aktiviert"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="8279934912560765361">"Flugmodus ist aktiviert"</string>
     <string name="clh_callFailed_simError_txt" msgid="5128538525762326413">"Zugriff auf SIM-Karte nicht möglich"</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="2736010617446749869">"Mobilfunknetz nicht verfügbar"</string>
     <string name="clh_callFailed_unassigned_number_txt" msgid="141967660286695682">"Problem mit der gewählten Telefonnummer. Fehlercode 1."</string>
