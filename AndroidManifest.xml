@@ -594,7 +594,7 @@
                 <action android:name="com.android.phone.CallFeaturesSetting.ADD_VOICEMAIL" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-            <intent-filter>
+            <intent-filter android:priority="1000">
                 <action android:name="android.telephony.action.CONFIGURE_VOICEMAIL" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
