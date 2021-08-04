@@ -833,7 +833,8 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"Negalite skambinti, nes šiuo metu vykdomas kitas siunčiamasis skambutis."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"Negalite skambinti, nes yra neatsakytas gaunamasis skambutis. Atsiliepkite arba atmeskite gaunamąjį skambutį prieš pradėdami naują."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"Negalite skambinti, nes skambinimo funkcija išjungta naudojant sistemos ypatybę „ro.telephony.disable-call“."</string>
-    <string name="callFailed_too_many_calls" msgid="5379426826618582180">"Negalite skambinti, nes jau dalyvaujate dviejuose skambučiuose. Užbaikite vieną iš skambučių arba sujunkite juos į konferenciją prieš pradėdami naują skambutį."</string>
+    <!-- no translation found for callFailed_too_many_calls (2761754044990799580) -->
+    <skip />
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"Norėdami naudoti paslaugą (<xliff:g id="SUPP_SERVICE">%s</xliff:g>), įsitikinkite, kad mobiliojo ryšio duomenys įjungti. Tai galite pakeisti apsilankę mobiliojo ryšio tinklo nustatymuose."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"Norėdami naudoti paslaugą (<xliff:g id="SUPP_SERVICE">%s</xliff:g>), įsitikinkite, kad mobiliojo ryšio duomenys ir tarptinklinis duomenų ryšys įjungti. Tai galite pakeisti apsilankę mobiliojo ryšio nustatymuose."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"Norėdami naudoti paslaugą (<xliff:g id="SUPP_SERVICE">%1$s</xliff:g>0, įsitikinkite, kad <xliff:g id="SIM_NUMBER">%2$d</xliff:g> SIM kortelės mobiliojo ryšio duomenys įjungti. Tai galite pakeisti apsilankę mobiliojo ryšio tinklo nustatymuose."</string>

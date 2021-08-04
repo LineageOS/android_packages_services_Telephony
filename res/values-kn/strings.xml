@@ -827,7 +827,8 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"ಹೊಸ ಕರೆಯನ್ನು ಮಾಡಲು ಸಾಧ್ಯವಿಲ್ಲ ಏಕೆಂದರೆ ಮತ್ತೊಂದು ಕರೆಯನ್ನು ಈಗಾಗಲೇ ಮಾಡಲಾಗುತ್ತಿದೆ."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"ಉತ್ತರಿಸದೇ ಒಳಬರುವ ಕರೆ ಬರುತ್ತಿರುವುದರಿಂದ ಕರೆ ಮಾಡಲು ಸಾಧ್ಯವಾಗುವುದಿಲ್ಲ. ಹೊಸ ಕರೆಯನ್ನು ಮಾಡುವ ಮೊದಲು ಕರೆಗೆ ಉತ್ತರ ನೀಡಿ ಅಥವಾ ತಿರಸ್ಕರಿಸಿ."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"ಕರೆ ವೈಶಿಷ್ಟ್ಯವನ್ನು ro.telephony.disable-call ಸಿಸ್ಟಂ ಗುಣಲಕ್ಷಣದಿಂದ ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಲಾಗಿರುತ್ತದೆ, ಆದ್ದರಿಂದ ಕರೆ ಮಾಡಲು ಸಾಧ್ಯವಿಲ್ಲ."</string>
-    <string name="callFailed_too_many_calls" msgid="5379426826618582180">"ಈಗಾಗಲೇ ಎರಡು ಕರೆಗಳು ಪ್ರಗತಿಯಲ್ಲಿರುವುದರಿಂದ, ಕರೆ ಮಾಡಲು ಸಾಧ್ಯವಾಗುವುದಿಲ್ಲ.ಒಂದು ಕರೆಯ ಸಂಪರ್ಕವನ್ನು ಕಡಿತಗೊಳಿಸಿ ಅಥವಾ ನೀವು ಹೊಸ ಕರೆಯನ್ನು ಮಾಡುವ ಮೊದಲು ಎರಡು ಕರೆಗಳನ್ನು ಒಂದೇ ಕಾನ್ಫರೆನ್ಸ್‌ನಲ್ಲಿ ವಿಲೀನಗೊಳಿಸಿ."</string>
+    <!-- no translation found for callFailed_too_many_calls (2761754044990799580) -->
+    <skip />
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"<xliff:g id="SUPP_SERVICE">%s</xliff:g> ಅನ್ನು ಬಳಸಲು, ಮೊಬೈಲ್ ಡೇಟಾ ಆನ್‌ ಆಗಿದೆಯೇ ಎಂದು ಖಚಿತಪಡಿಸಿಕೊಳ್ಳಿ. ನೀವು ಇದನ್ನು ಮೊಬೈಲ್‌ ನೆಟ್‌ವರ್ಕ್‌ ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ ಬದಲಾಯಿಸಬಹುದು."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"<xliff:g id="SUPP_SERVICE">%s</xliff:g> ಅನ್ನು ಬಳಸಲು, ಮೊಬೈಲ್ ಡೇಟಾ ಮತ್ತು ಡೇಟಾ ರೋಮಿಂಗ್ ಆನ್‌ ಆಗಿದೆಯೇ ಎಂದು ಖಚಿತಪಡಿಸಿಕೊಳ್ಳಿ. ನೀವು ಇದನ್ನು ಮೊಬೈಲ್‌ ನೆಟ್‌ವರ್ಕ್‌ ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ ಬದಲಾಯಿಸಬಹುದು."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"<xliff:g id="SUPP_SERVICE">%1$s</xliff:g> ಅನ್ನು ಬಳಸಲು, <xliff:g id="SIM_NUMBER">%2$d</xliff:g> ಸಿಮ್‌ಗಾಗಿ ಮೊಬೈಲ್ ಡೇಟಾ ಆನ್‌ ಆಗಿದೆಯೇ ಎಂದು ಖಚಿತಪಡಿಸಿಕೊಳ್ಳಿ. ನೀವು ಇದನ್ನು ಮೊಬೈಲ್‌ ನೆಟ್‌ವರ್ಕ್‌ ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ ಬದಲಾಯಿಸಬಹುದು."</string>

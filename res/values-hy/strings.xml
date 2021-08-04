@@ -827,7 +827,8 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"Հնարավոր չէ զանգել, քանի որ տվյալ պահին մեկ այլ ելքային զանգ է կատարվում:"</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"Հնարավոր չէ զանգել, քանի որ անպատասխան մուտքային զանգ կա: Նախքան նոր զանգ կատարելը պատասխանեք մուտքային զանգին կամ մերժեք այն:"</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"Հնարավոր չէ զանգել, քանի որ զանգելու գործառույթը զանգերի համակարգի ro.telephony.disable կարգավորման միջոցով կասեցվել է:"</string>
-    <string name="callFailed_too_many_calls" msgid="5379426826618582180">"Հնարավոր չէ զանգել, քանի որ արդեն երկու ընթացիկ զանգ կա: Նախքան նոր զանգ կատարելը ավարտեք զանգերից մեկը կամ միավորեք դրանք մեկ խմբային զանգում:"</string>
+    <!-- no translation found for callFailed_too_many_calls (2761754044990799580) -->
+    <skip />
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"<xliff:g id="SUPP_SERVICE">%s</xliff:g> ծառայությունից օգտվելու համար համոզվեք, որ բջջային ինտերնետը միացված է: Սա կարող եք փոխել բջջային ցանցի կարգավորումներում:"</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"<xliff:g id="SUPP_SERVICE">%s</xliff:g> ծառայությունից օգտվելու համար համոզվեք, որ բջջային ինտերնետը և ինտերնետը ռոումինգում միացված են: Սրանք կարող եք փոխել բջջային ցանցի կարգավորումներում:"</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"<xliff:g id="SUPP_SERVICE">%1$s</xliff:g> ծառայությունից օգտվելու համար համոզվեք, որ SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g> քարտի համար բջջային ինտերնետը միացված է: Սա կարող եք փոխել բջջային ցանցի կարգավորումներում:"</string>
