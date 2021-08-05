@@ -827,7 +827,8 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"മറ്റൊരു ഔട്ട്ഗോയിംഗ് കോൾ മുമ്പേ തന്നെ ഡയൽ ചെയ്യുന്നതിനാൽ, ഒരു കോൾ നടത്താനാവില്ല."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"മറുപടി ലഭിക്കാത്ത ഒരു ഇൻ‌കമിംഗ് കോൾ ഉള്ളതിനാൽ, ഒരു കോൾ നടത്താനാവില്ല. ഒരു പുതിയ കോൾ നടത്തുന്നതിന് മുൻപായി ഇൻകമിംഗ് കോളിന് മറുപടി നൽകുക അല്ലെങ്കിൽ നിരസിക്കുക."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"ro.telephony.disable-കോൾ സിസ്‌റ്റം പ്രോപ്പർട്ടി ഉപയോഗിച്ച് കോൾ ചെയ്യൽ പ്രവർത്തനരഹിതമാക്കിയതിനാൽ ഒരു കോൾ നടത്താനാവില്ല."</string>
-    <string name="callFailed_too_many_calls" msgid="5379426826618582180">"മുമ്പേ രണ്ട് കോളുകൾ പുരോഗതിയിൽ ആയതിനാൽ ഒരു പുതിയ കോൾ നടത്താനാവില്ല. ഒരു പുതിയ കോൾ നടത്താനായി, മുമ്പത്തെ കോളുകളിലൊന്ന് വിച്‌ഛേദിക്കുകയോ അല്ലെങ്കിൽ അവയെ ഒരു കോൺഫറൻസ് കോളിലേക്ക് ലയിപ്പിക്കുകയോ ചെയ്യുക."</string>
+    <!-- no translation found for callFailed_too_many_calls (2761754044990799580) -->
+    <skip />
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"<xliff:g id="SUPP_SERVICE">%s</xliff:g> എന്നത് ഉപയോഗിക്കാൻ, മൊബൈൽ ഡാറ്റ ഓണാണ് എന്ന് ഉറപ്പാക്കുക. നിങ്ങൾക്ക് ഇത് മൊബൈൽ നെറ്റ്‌വർക്ക് ക്രമീകരണത്തിൽ മാറ്റാം."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"<xliff:g id="SUPP_SERVICE">%s</xliff:g> എന്നത് ഉപയോഗിക്കാൻ, നിങ്ങളുടെ മൊബൈൽ ഡാറ്റയും ഡാറ്റ റോമിംഗും ഓണാണ് എന്ന് ഉറപ്പാക്കുക. നിങ്ങൾക്ക് ഇത് മൊബൈൽ നെറ്റ്‌വർക്ക് ക്രമീകരണത്തിൽ മാറ്റാം."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"<xliff:g id="SUPP_SERVICE">%1$s</xliff:g> ഉപയോഗിക്കാൻ, SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g> എന്നതിനായി മൊബൈൽ ഡാറ്റ ഓണാണ് എന്ന് ഉറപ്പാക്കുക. നിങ്ങൾക്ക് ഇത് മൊബൈൽ നെറ്റ്‌വർക്ക് ക്രമീകരണത്തിൽ മാറ്റാം."</string>

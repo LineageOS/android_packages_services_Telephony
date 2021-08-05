@@ -827,7 +827,8 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"Não é possível ligar porque há outra chamada sendo realizada."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"Não é possível ligar porque há uma chamada recebida que não foi atendida. Atenda ou rejeite essa chamada antes de fazer outra."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"Não é possível ligar porque as chamadas foram desativadas pela propriedade \"ro.telephony.disable-call system\"."</string>
-    <string name="callFailed_too_many_calls" msgid="5379426826618582180">"Não é possível ligar porque já há duas chamadas em andamento. Encerre uma das chamadas ou mescle-as em uma conferência antes de fazer outra."</string>
+    <!-- no translation found for callFailed_too_many_calls (2761754044990799580) -->
+    <skip />
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"Verifique se os dados móveis estão ativados para usar este serviço: <xliff:g id="SUPP_SERVICE">%s</xliff:g>. Você pode alterar essa opção nas configurações da rede móvel."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"Verifique se os dados móveis e o roaming de dados estão ativados para usar este serviço: <xliff:g id="SUPP_SERVICE">%s</xliff:g>. Você pode alterar essa opção nas configurações da rede móvel."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"Verifique se os dados móveis estão ativados para o SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g> para usar este serviço: <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>. Você pode alterar essa opção nas configurações da rede móvel."</string>

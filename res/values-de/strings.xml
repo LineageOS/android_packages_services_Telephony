@@ -827,7 +827,8 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"Anruf nicht möglich, da bereits ein anderer ausgehender Anruf aufgebaut wird."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"Anruf nicht möglich, da ein nicht angenommener eingehender Anruf vorhanden ist. Nimm den eingehenden Anruf an oder lehne ihn ab, bevor du einen neuen Anruf startest."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"Anruf nicht möglich, weil Anrufe über die Systemeigenschaft \"ro.telephony.disable-call\" deaktiviert wurden."</string>
-    <string name="callFailed_too_many_calls" msgid="5379426826618582180">"Anruf nicht möglich, weil bereits zwei Anrufe aktiv sind. Beenden einen der Anrufe oder führe beide Anrufe in einer Telefonkonferenz zusammen, bevor du einen neuen Anruf startest."</string>
+    <!-- no translation found for callFailed_too_many_calls (2761754044990799580) -->
+    <skip />
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"Damit du <xliff:g id="SUPP_SERVICE">%s</xliff:g> nutzen kannst, müssen mobile Daten aktiviert sein. Du kannst dies in den Einstellungen für das Mobilfunknetz ändern."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"Damit du <xliff:g id="SUPP_SERVICE">%s</xliff:g> nutzen kannst, müssen mobile Daten und Daten-Roaming aktiviert sein. Du kannst dies in den Einstellungen für das Mobilfunknetz ändern."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"Damit du <xliff:g id="SUPP_SERVICE">%1$s</xliff:g> nutzen kannst, müssen mobile Daten für SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g> aktiviert sein. Du kannst dies in den Einstellungen für das Mobilfunknetz ändern."</string>
