@@ -827,7 +827,8 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"আপনি আগেই আউটগোয়িং কল ডায়াল করেছেন তাই অন্য কল করা যাবে না।"</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"কল করতে পারবেন না কারণ এমন একটি ইনকামিং কল আছে যার উত্তর দেওয়া হয়নি। নতুন কল করতে বর্তমান কলটির উত্তর দিন অথবা প্রত্যাখান করুন।"</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"\'ro.telephony কল বন্ধ করা সিস্টেম প্রপার্টি\' ব্যবহার করে কল বন্ধ করা হয়েছে তাই কল করা যাবে না।"</string>
-    <string name="callFailed_too_many_calls" msgid="5379426826618582180">"আগে থেকেই দুটি কল চলছে তাই কল করা যাবে না। নতুন কল করতে একটি কল বন্ধ করুন অথবা কনফারেন্স কলে মার্জ করুন।"</string>
+    <!-- no translation found for callFailed_too_many_calls (2761754044990799580) -->
+    <skip />
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"<xliff:g id="SUPP_SERVICE">%s</xliff:g> ব্যবহার করতে হলে, মোবাইল ডেটা চালু আছে কিনা দেখে নিন। আপনি সেটিংস থেকে এটি পরিবর্তন করতে পারেন।"</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"<xliff:g id="SUPP_SERVICE">%s</xliff:g> ব্যবহার করতে হলে, মোবাইল ডেটা এবং ডেটা রোমিং চালু আছে কিনা দেখে নিন। আপনি সেটিংস থেকে এটি পরিবর্তন করতে পারেন।"</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"<xliff:g id="SUPP_SERVICE">%1$s</xliff:g>ব্যবহার করতে হলে, <xliff:g id="SIM_NUMBER">%2$d</xliff:g>-এ মোবাইল ডেটা চালু আছে কিনা দেখে নিন। আপনি সেটিংস থেকে এটি পরিবর্তন করতে পারেন।"</string>

@@ -839,7 +839,8 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"لا يمكن إجراء مكالمة لأنّ هناك مكالمة صادرة أخرى تجري بالفعل."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"لا يمكن إجراء مكالمة لأنّ هناك مكالمة واردة لم يتم الرد عليها. يُرجى الرد على المكالمة الواردة أو رفضها قبل إجراء مكالمة جديدة."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"‏لا يمكن إجراء مكالمة لأنّه قد تم إيقاف وظيفة الاتصال باستخدام ميزة النظام ro.telephony.disable-call."</string>
-    <string name="callFailed_too_many_calls" msgid="5379426826618582180">"لا يمكن إجراء مكالمة لأنّ هناك مكالمتين قيد التقدّم بالفعل. يمكنك إنهاء إحدى المكالمتين أو دمجهما في مكالمة جماعية قبل إجراء مكالمة جديدة."</string>
+    <!-- no translation found for callFailed_too_many_calls (2761754044990799580) -->
+    <skip />
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"لاستخدام <xliff:g id="SUPP_SERVICE">%s</xliff:g>، تأكّد من تفعيل بيانات الجوّال. يمكنك تغيير هذا الإعداد في إعدادات شبكة الجوّال."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"لاستخدام <xliff:g id="SUPP_SERVICE">%s</xliff:g>، تأكّد من تفعيل بيانات الجوّال وتجوال البيانات. يمكنك تغيير هذين الإعدادين في إعدادات شبكة الجوّال."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"‏لاستخدام <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>، تأكّد من تفعيل بيانات الجوّال لشريحة SIM رقم <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. يمكنك تغيير هذا الإعداد في إعدادات شبكة الجوّال."</string>

@@ -827,7 +827,8 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"অইন এটা বহিৰ্গামী কল ডায়েল কৰি থকাৰ কাৰণে বেলেগ কল কৰিব নোৱাৰি।"</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"বেলেগ কল কৰিব নোৱাৰি, কাৰণ এটা অন্তৰ্গামী কল এতিয়াও সক্ৰিয় হৈ আছে যাৰ উত্তৰ দিয়া হোৱা নাই। নতুন কল এটা কৰাৰ আগেয়ে সেই কলটোৰ উত্তৰ দিয়ক বা কলটো প্ৰত্যাখ্যান কৰক।"</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"কোনো কল কৰিব নোৱাৰি কাৰণ ro.telephony.disable-call ছিষ্টেম প্ৰ’পাৰ্টি ব্যৱহাৰ কৰি কল কৰাৰ সুবিধা অক্ষম কৰা হৈছে।"</string>
-    <string name="callFailed_too_many_calls" msgid="5379426826618582180">"কোনো কল কৰিব নোৱাৰি কাৰণ ইতিমধ্যে দুটা বেলেগ কল চলি আছে। নতুন এটা কল কৰাৰ আগেয়ে সেই দুটাৰ ভিতৰত এটাৰ সংযোগ বিচ্ছিন্ন কৰক বা কল দুটা একত্ৰিত কৰি এটা কনফাৰেন্স কললৈ সলনি কৰক।"</string>
+    <!-- no translation found for callFailed_too_many_calls (2761754044990799580) -->
+    <skip />
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"<xliff:g id="SUPP_SERVICE">%s</xliff:g> ব্যৱহাৰ কৰিবলৈ ম’বাইল ডেটা অন হৈ থকাটো নিশ্চিত কৰক। আপুনি ম’বাইল নেটৱৰ্ক ছেটিংসমূহ-লৈ গৈ ইয়াক সলনি কৰিব পাৰে।"</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"<xliff:g id="SUPP_SERVICE">%s</xliff:g> ব্যৱহাৰ কৰিবলৈ ম’বাইল ডেটা আৰু ডেটা ৰ’মিং অন হৈ থকাটো নিশ্চিত কৰক। আপুনি ম’বাইল নেটৱৰ্ক ছেটিংসমূহ-লৈ গৈ ইয়াক সলনি কৰিব পাৰে।"</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"<xliff:g id="SUPP_SERVICE">%1$s</xliff:g> ব্যৱহাৰ কৰিবলৈ <xliff:g id="SIM_NUMBER">%2$d</xliff:g> ছিমত ম’বাইল ডেটা অন হৈ থকাটো নিশ্চিত কৰক। আপুনি ম’বাইল নেটৱৰ্ক ছেটিংসমূহ-লৈ গৈ ইয়াক সলনি কৰিব পাৰে।"</string>

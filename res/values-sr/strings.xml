@@ -830,7 +830,8 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"Не можете да позовете јер се већ упућује други одлазни позив."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"Не можете да позовете јер имате долазни позив на који нисте одговорили. Одговорите на долазни позив или га одбијте пре упућивања новог позива."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"Не можете да позовете јер је позивање онемогућено преко својства система ro.telephony.disable-call."</string>
-    <string name="callFailed_too_many_calls" msgid="5379426826618582180">"Не можете да позовете јер су два позива већ у току. Прекините један од позива или их обједините у конференцију да бисте упутили нови позив."</string>
+    <!-- no translation found for callFailed_too_many_calls (2761754044990799580) -->
+    <skip />
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"Да бисте користили <xliff:g id="SUPP_SERVICE">%s</xliff:g>, уверите се да су укључени мобилни подаци. То можете да промените у подешавањима мобилне мреже."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"Да бисте користили <xliff:g id="SUPP_SERVICE">%s</xliff:g>, уверите се да су укључени мобилни подаци и пренос података у ромингу. То можете да промените у подешавањима мобилне мреже."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"Да бисте користили <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>, уверите се да су за SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g> укључени мобилни подаци. То можете да промените у подешавањима мобилне мреже."</string>

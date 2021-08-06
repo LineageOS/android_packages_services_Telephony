@@ -830,7 +830,8 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"Nevar veikt zvanu, jo jau tiek sastādīts numurs citam izejošajam zvanam."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"Nevar veikt zvanu, jo ir neatbildēts ienākošais zvans. Pirms jauna zvana veikšanas atbildiet uz ienākošo zvanu vai noraidiet to."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"Nevar veikt zvanu, jo zvanīšana ir atspējota, izmantojot sistēmas rekvizītu ro.telephony.disable-call."</string>
-    <string name="callFailed_too_many_calls" msgid="5379426826618582180">"Nevar veikt zvanu, jo pašlaik jau notiek divi zvani. Pirms jauna zvana veikšanas pārtrauciet vienu no pašreizējiem zvaniem vai apvienojiet tos konferences zvanā."</string>
+    <!-- no translation found for callFailed_too_many_calls (2761754044990799580) -->
+    <skip />
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"Lai izmantotu pakalpojumu <xliff:g id="SUPP_SERVICE">%s</xliff:g>, jāieslēdz mobilie dati. Tos var ieslēgt mobilā tīkla iestatījumos."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"Lai izmantotu pakalpojumu <xliff:g id="SUPP_SERVICE">%s</xliff:g>, jāieslēdz mobilie dati un datu viesabonēšana. Tos var ieslēgt mobilā tīkla iestatījumos."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"Lai izmantotu pakalpojumu <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>, jāieslēdz mobilie dati SIM kartei <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. Tos var ieslēgt mobilā tīkla iestatījumos."</string>

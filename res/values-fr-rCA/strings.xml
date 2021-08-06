@@ -827,7 +827,8 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"Impossible de passer un appel, car un autre appel sortant est déjà en cours de composition."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"Impossible de passer un appel, car il y a un appel entrant sans réponse. Répondez à l\'appel entrant ou refusez-le avant de passer un nouvel appel."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"Impossible de passer un appel, car la fonction d\'appel a été désactivée à l\'aide de la propriété système ro.telephony.disable-call."</string>
-    <string name="callFailed_too_many_calls" msgid="5379426826618582180">"Impossible de passer un appel, car deux appels sont déjà en cours. Déconnectez-en un ou fusionnez-les en conférence téléphonique avant de passer un nouvel appel."</string>
+    <!-- no translation found for callFailed_too_many_calls (2761754044990799580) -->
+    <skip />
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"Avant d\'utiliser <xliff:g id="SUPP_SERVICE">%s</xliff:g>, assurez-vous que les données cellulaires sont activées. Vous pouvez modifier cette option dans les paramètres du réseau cellulaire."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"Avant d\'utiliser <xliff:g id="SUPP_SERVICE">%s</xliff:g>, assurez-vous que les données cellulaires et l\'itinérance des données sont activées. Vous pouvez modifier ces options dans les paramètres du réseau cellulaire."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"Avant d\'utiliser <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>, assurez-vous que les données cellulaires sont activées pour la carte SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. Vous pouvez modifier cette option dans les paramètres du réseau cellulaire."</string>

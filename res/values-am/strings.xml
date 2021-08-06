@@ -827,7 +827,8 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"ሊላ ወጪ ጥሪ እየደወለ ስለሆነ ጥሪ ማድረግ አይቻልም።"</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"ያልተመለሰ ገቢ ጥሪ ስላለ ጥሪ ማድረግ አይቻልም። አዲስ ጥሪ ከማድረግዎ በፊት ገቢውን ጥሪ ይመልሱ ወይም ይዝጉ።"</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"ጥሪ ማድረግ አይቻልም ምክንያቱም ጥሪ ማድረግ በ ro.telephony.disable-call የስርዓት ባህሪ ተሰናክልሏል።"</string>
-    <string name="callFailed_too_many_calls" msgid="5379426826618582180">"ጥሪ ማድረግ አይቻልም ምክንያቱም ቀድሞ ሁለት ጥሪዎች በሂደት ላይ ናቸው። አዲስ ጥሪ ከማድረግዎ በፊት ከጥሪዎቹ አንዱን ያቋርጡ ወይም ወደ ጉባዔ ይቀይሯችው።"</string>
+    <!-- no translation found for callFailed_too_many_calls (2761754044990799580) -->
+    <skip />
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"<xliff:g id="SUPP_SERVICE">%s</xliff:g>ን ለመጠቀም፣ ሞባይል ውሂብ መብራቱን ያረጋግጡ። ይህን በሞባይል አውታረመረብ ቅንብሮች ውስጥ መለወጥ ይችላሉ።"</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"<xliff:g id="SUPP_SERVICE">%s</xliff:g>ን ለመጠቀም፣ ሞባይል ውሂብ እና የውሂብ ዝውውር መብራታቸውን ያረጋግጡ። እነዚህን በ ሞባይል አውታረመረብ ቅንብሮች ውስጥ መለወጥ ይችላሉ።"</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"<xliff:g id="SUPP_SERVICE">%1$s</xliff:g> ን ለመጠቀም ሞባይል ውሂብ ለ ሲም <xliff:g id="SIM_NUMBER">%2$d</xliff:g> መብራቱን ያረጋግጡ። ይህን በሞባይል አውታረመረብ ቅንብሮች ውስጥ መለወጥ ይችላሉ።"</string>

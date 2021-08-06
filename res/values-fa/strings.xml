@@ -827,7 +827,8 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"نمی‌توانید تماسی برقرار کنید، چون تماس خروجی دیگری درحال شماره‌گیری است."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"نمی‌توانید تماسی برقرار کنید، چون تماس ورودی بی‌پاسخی درحال شماره‌گیری است. قبل از برقراری تماس جدید، به آن پاسخ دهید یا آن را رد کنید."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"‏نمی‌توانید تماسی برقرار کنید چون برقراری تماس تلفنی با استفاده از مشخصه سیستم ro.telephony.disable-call غیرفعال شده است."</string>
-    <string name="callFailed_too_many_calls" msgid="5379426826618582180">"نمی‌توانید تماسی برقرار کنید، چون هم‌اکنون دو تماس دیگر درحال انجام است. قبل از برقراری تماس جدید، یکی از تماس‌ها را قطع کنید یا آن‌ها را به‌صورت کنفرانسی ادغام کنید."</string>
+    <!-- no translation found for callFailed_too_many_calls (2761754044990799580) -->
+    <skip />
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"برای استفاده از <xliff:g id="SUPP_SERVICE">%s</xliff:g>، مطمئن شوید داده‌ تلفن همراه روشن شده باشد. می‌توانید در تنظیمات شبکه تلفن همراه این تنظیم را تغییر دهید."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"برای استفاده از <xliff:g id="SUPP_SERVICE">%s</xliff:g>، مطمئن شوید داده‌ تلفن همراه و فراگردی داده روشن شده باشد. می‌توانید در تنظیمات شبکه تلفن همراه، این تنظیمات را تغییر دهید."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"برای استفاده از <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>، مطمئن شوید داده تلفن همراه برای سیم‌کارت <xliff:g id="SIM_NUMBER">%2$d</xliff:g> روشن باشد. می‌توانید در تنظیمات شبکه تلفن همراه این تنظیم را تغییر دهید."</string>
