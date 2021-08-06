@@ -827,7 +827,8 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"이미 다른 발신 전화에서 다이얼 중이므로 전화를 걸 수 없습니다."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"받지 않은 수신 전화가 있으므로 전화를 걸 수 없습니다. 새로 전화를 걸기 전에 수신 전화를 받거나 거절하세요."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"ro.telephony.disable-call 시스템 속성을 사용하여 통화 기능이 사용 중지되었으므로 전화를 걸 수 없습니다."</string>
-    <string name="callFailed_too_many_calls" msgid="5379426826618582180">"이미 진행 중인 두 건의 통화가 있으므로 전화를 걸 수 없습니다. 새로 전화를 걸기 전에 통화 중 하나를 연결 해제하거나 두 통화를 다자간 통화로 병합하세요."</string>
+    <!-- no translation found for callFailed_too_many_calls (2761754044990799580) -->
+    <skip />
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"<xliff:g id="SUPP_SERVICE">%s</xliff:g>을(를) 사용하려면 모바일 데이터가 사용 설정되어 있는지 확인하세요. 이 설정은 모바일 네트워크 설정에서 변경할 수 있습니다."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"<xliff:g id="SUPP_SERVICE">%s</xliff:g>을(를) 사용하려면 모바일 데이터 및 데이터 로밍이 사용 설정되어 있는지 확인하세요. 이 설정은 모바일 네트워크 설정에서 변경할 수 있습니다."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"<xliff:g id="SUPP_SERVICE">%1$s</xliff:g>을(를) 사용하려면 SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g>에 모바일 데이터가 사용 설정되어 있는지 확인하세요. 이 설정은 모바일 네트워크 설정에서 변경할 수 있습니다."</string>

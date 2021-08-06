@@ -827,7 +827,8 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"Không thể thực hiện cuộc gọi vì đang gọi đi số khác."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"Không thể thực hiện cuộc gọi vì chưa trả lời cuộc gọi đến. Hãy trả lời hoặc từ chối cuộc gọi đến trước khi thực hiện cuộc gọi mới."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"Không thể thực hiện cuộc gọi vì tính năng gọi điện đã bị tắt bằng cách sử dụng thuộc tính hệ thống ro.telephony.disable-call."</string>
-    <string name="callFailed_too_many_calls" msgid="5379426826618582180">"Không thể thực hiện cuộc gọi vì có 2 cuộc gọi đang diễn ra. Hãy ngắt kết nối một trong các cuộc gọi hoặc gộp thành cuộc gọi kiểu hội nghị trước khi thực hiện cuộc gọi mới."</string>
+    <!-- no translation found for callFailed_too_many_calls (2761754044990799580) -->
+    <skip />
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"Để sử dụng <xliff:g id="SUPP_SERVICE">%s</xliff:g>, hãy đảm bảo dữ liệu di động đang bật. Bạn có thể thay đổi tùy chọn cài đặt này trong mục cài đặt mạng di động."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"Để sử dụng <xliff:g id="SUPP_SERVICE">%s</xliff:g>, hãy đảm bảo dữ liệu di động và tính năng chuyển vùng dữ liệu đang bật. Bạn có thể thay đổi các tùy chọn này trong mục cài đặt mạng di động."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"Để sử dụng <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>, hãy đảm bảo dữ liệu di động cho SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g> đang bật. Bạn có thể thay đổi tùy chọn cài đặt này trong mục cài đặt mạng di động."</string>

@@ -827,7 +827,8 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"Ekki er hægt að hringja símtal þar sem þegar er verið að hringja annað símtal."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"Ekki er hægt að hringja símtal þar sem ósvarað símtal er að berast. Svaraðu eða hafnaðu símtalinu áður en þú hringir nýtt símtal."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"Ekki er hægt að hringja símtal þar sem símtöl hafa verið gerð óvirk með því að nota kerfiseiginleikann ro.telephony.disable-call."</string>
-    <string name="callFailed_too_many_calls" msgid="5379426826618582180">"Ekki er hægt að hringja símtal þar sem þegar eru tvö símtöl í gangi. Aftengdu annað símtalið eða sameinaðu þau í símafund áður en þú hringir nýtt símtal."</string>
+    <!-- no translation found for callFailed_too_many_calls (2761754044990799580) -->
+    <skip />
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"Til að nota <xliff:g id="SUPP_SERVICE">%s</xliff:g> skaltu ganga úr skugga um að kveikt sé á farsímagögnum. Þú getur breytt þessu í stillingum farsímakerfis."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"Til að nota <xliff:g id="SUPP_SERVICE">%s</xliff:g> skaltu ganga úr skugga um að kveikt sé á farsímagögnum og gagnareiki. Þú getur breytt þessu í stillingum farsímakerfis."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"Til að nota <xliff:g id="SUPP_SERVICE">%1$s</xliff:g> skaltu ganga úr skugga um að kveikt sé á farsímagögnum fyrir SIM-kortið <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. Þú getur breytt þessu í stillingum farsímakerfis."</string>
