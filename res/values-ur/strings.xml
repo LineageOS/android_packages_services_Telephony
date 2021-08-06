@@ -827,8 +827,7 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"کال نہیں کی جا سکتی کیونکہ باہر جانے والی دوسری کال پہلے سے ڈائل کی جا رہی ہے۔"</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"ایک جواب نہ ملنے والی اِن کمنگ کال کی وجہ سے کال نہیں کی جا سکتی۔ نئی کال کرنے کے لیے پہلے اِن کمنگ کال کا جواب دیں یا مسترد کریں۔"</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"‏ro.telephony.disable-call سسٹم کی خصوصیت کے ذریعے کال کرنے کو غیر فعال کر دیے جانے کی وجہ سے کال نہیں کی جا سکتی۔"</string>
-    <!-- no translation found for callFailed_too_many_calls (2761754044990799580) -->
-    <skip />
+    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"پہلے سے دو کالز کے پیش رفت میں ہونے کی وجہ سے کال نہیں کی جا سکتی۔ نئی کال کرنے کیلئے پہلے ان میں سے ایک کو غیر منسلک کریں یا انہیں کانفرنس میں ضم کریں۔"</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"<xliff:g id="SUPP_SERVICE">%s</xliff:g> استعمال کرنے کے لیے، یقینی بنائيں کہ موبائل ڈیٹا آن ہے۔ آپ موبائل یٹ ورک کی ترتیبات میں اسے تبدیل کر سکتے ہیں۔"</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"<xliff:g id="SUPP_SERVICE">%s</xliff:g> استعمال کرنے کے لیے، یقینی بنائيں کہ موبائل ڈیٹا اور ڈیٹا رومنگ آن ہیں۔ آپ موبائل نیٹ ورک کی ترتیبات میں انہیں تبدیل کر سکتے ہیں۔"</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"‏<xliff:g id="SUPP_SERVICE">%1$s</xliff:g> استعمال کرنے کے لیے، یقینی بنائيں کہ موبائل ڈیٹا SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g> کے لیے آن ہے۔ آپ موبائل نیٹ ورک کی ترتیبات میں اسے تبدیل کر سکتے ہیں۔"</string>

@@ -827,8 +827,7 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"ບໍ່ສາມາດໂທອອກໄດ້ເນື່ອງຈາກກຳລັງມີສາຍໂທອອກຢູ່ກ່ອນແລ້ວ."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"ບໍ່ສາມາດໂທອອກໄດ້ເນື່ອງຈາກມີສາຍທີ່ກຳລັງໂທເຂົ້າມາທີ່ຍັງບໍ່ໄດ້ຮັບຢູ່. ກະລຸນາຮັບສາຍ ຫຼື ວາງສາຍທີ່ກຳລັງໂທເຂົ້າມາກ່ອນຈະໂທໃໝ່."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"ບໍ່ສາມາດໂທໄດ້ເນື່ອງຈາກມີການປິດການໂທໂດຍໃຊ້ຄຸນສົມບັດລະບົບ ro.telephony.disable-call."</string>
-    <!-- no translation found for callFailed_too_many_calls (2761754044990799580) -->
-    <skip />
+    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"ບໍ່ສາມາດໂທໄດ້ເນື່ອງຈາກມີສອງສາຍກຳລັງໂທຢູ່. ກະລຸນາຕັດການເຊື່ອມຕໍ່ສາຍໃດໜຶ່ງອອກ ຫຼື ຮວມສາຍເປັນການປະຊຸມທາງໂທລະສັບກ່ອນໂທໃໝ່."</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"ເພື່ອໃຊ້ <xliff:g id="SUPP_SERVICE">%s</xliff:g>, ກະລຸນາກວດສອບວ່າເປີດໃຊ້ອິນເຕີເນັດມືຖືແລ້ວ. ທ່ານສາມາດປ່ຽນໄດ້ໃນການຕັ້ງຄ່າເຄືອຂ່າຍ."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"ເພື່ອໃຊ້ <xliff:g id="SUPP_SERVICE">%s</xliff:g>, ກະລຸນາກວດສອບວ່າເປີດໃຊ້ອິນເຕີເນັດມືຖື ແລະ ການໂຣມມິງອິນເຕີເນັດແລ້ວ. ທ່ານສາມາດປ່ຽນໄດ້ໃນການຕັ້ງຄ່າເຄືອຂ່າຍ."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"ເພື່ອໃຊ້ <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>, ກະລຸນາກວດສອບວ່າເປີດໃຊ້ອິນເຕີເນັດມືຖືສຳລັບຊິມ <xliff:g id="SIM_NUMBER">%2$d</xliff:g> ແລ້ວ. ທ່ານສາມາດປ່ຽນໄດ້ໃນການຕັ້ງຄ່າເຄືອຂ່າຍ."</string>

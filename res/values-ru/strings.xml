@@ -833,8 +833,7 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"Невозможно позвонить, поскольку ещё не завершен другой исходящий вызов."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"Невозможно позвонить, поскольку вы не ответили на входящий вызов. Примите или отклоните текущий звонок."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"Невозможно позвонить, поскольку вызовы запрещены системным свойством ro.telephony.disable-call."</string>
-    <!-- no translation found for callFailed_too_many_calls (2761754044990799580) -->
-    <skip />
+    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"Невозможно позвонить, поскольку ещё не завершены два текущих вызова. Сбросьте один из вызовов или объедините их в конференцию."</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"Для работы этого сервиса (<xliff:g id="SUPP_SERVICE">%s</xliff:g>) необходимо подключение к мобильному Интернету. Этот параметр можно изменить в настройках мобильной сети."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"Для работы этого сервиса (<xliff:g id="SUPP_SERVICE">%s</xliff:g>) необходимо подключение к мобильному Интернету и интернет-роумингу. Эти параметры можно изменить в настройках мобильной сети."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"Для работы этого сервиса (<xliff:g id="SUPP_SERVICE">%1$s</xliff:g>) необходимо подключение к мобильному Интернету через SIM-карту <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. Этот параметр можно изменить в настройках мобильной сети."</string>
