@@ -827,8 +827,7 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"Det går inte att ringa ett samtal eftersom ett annat utgående samtal ringer upp."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"Det går inte att ringa eftersom det finns ett obesvarat inkommande samtal. Svara eller avvisa det innan du ringer ett nytt samtal."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"Det går inte att ringa eftersom uppringning har inaktiverats med systemegenskapen ro.telephony.disable-call."</string>
-    <!-- no translation found for callFailed_too_many_calls (2761754044990799580) -->
-    <skip />
+    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"Det går inte att ringa eftersom det redan finns två pågående samtal. Koppla bort ett eller slå ihop dem till en konferens innan du ringer ett nytt samtal."</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"Använd <xliff:g id="SUPP_SERVICE">%s</xliff:g> genom att säkerställa att mobildata är aktiverat. Det går att ändra i inställningarna för mobilt nätverk."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"Använd <xliff:g id="SUPP_SERVICE">%s</xliff:g> genom att säkerställa att mobildata och dataroaming är aktiverat. Det går att ändra i inställningarna för mobilt nätverk."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"Använd <xliff:g id="SUPP_SERVICE">%1$s</xliff:g> genom att säkerställa att mobildata är aktiverat för SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. Det går att ändra i inställningarna för mobilt nätverk."</string>

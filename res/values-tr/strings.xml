@@ -827,8 +827,7 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"Zaten aranmakta olan bir numara olduğu için arama yapılamıyor."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"Cevaplanmamış bir gelen arama olduğu için arama yapılamıyor. Yeni bir arama yapmadan önce gelen aramayı cevaplayın veya reddedin."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"Telefon etme ro.telephony.disable-call sistem özelliği kullanılarak devre dışı bırakıldığı için arama yapılamıyor."</string>
-    <!-- no translation found for callFailed_too_many_calls (2761754044990799580) -->
-    <skip />
+    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"Devam eden iki arama olduğu için arama yapılamıyor. Yeni bir arama yapmadan önce aramalardan birini sonlandırın veya iki aramayı bir konferans aramasında birleştirin."</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"<xliff:g id="SUPP_SERVICE">%s</xliff:g> hizmetini kullanmak için mobil verinin etkin olduğundan emin olun. Bunu mobil ağ ayarlarından değiştirebilirsiniz."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"<xliff:g id="SUPP_SERVICE">%s</xliff:g> hizmetini kullanmak için mobil verinin ve veri dolaşımının etkin olduğundan emin olun. Bunları mobil ağ ayarlarından değiştirebilirsiniz."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"<xliff:g id="SUPP_SERVICE">%1$s</xliff:g> hizmetini kullanmak üzere, <xliff:g id="SIM_NUMBER">%2$d</xliff:g> numaralı SIM için mobil verinin etkin olduğundan emin olun. Bunu mobil ağ ayarlarından değiştirebilirsiniz."</string>

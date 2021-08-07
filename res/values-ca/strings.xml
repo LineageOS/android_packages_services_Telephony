@@ -827,8 +827,7 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"No es pot fer la trucada perquè ja hi ha una trucada sortint en curs."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"No es pot fer la trucada perquè hi ha una trucada entrant sense resposta. Respon-hi o rebutja-la abans de fer més trucades."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"No es pot fer la trucada perquè l\'opció de trucar s\'ha desactivat mitjançant la propietat del sistema ro.telephony.disable-call."</string>
-    <!-- no translation found for callFailed_too_many_calls (2761754044990799580) -->
-    <skip />
+    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"No es pot fer la trucada perquè ja n\'hi ha dues en curs. Desconnecta\'n una o combina-les en una conferència abans de fer-ne més de noves."</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"Comprova que les dades mòbils estiguin activades per utilitzar <xliff:g id="SUPP_SERVICE">%s</xliff:g>. Pots canviar aquesta opció a la configuració de xarxa mòbil."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"Comprova que les dades mòbils i la itinerància de dades estiguin activades per utilitzar <xliff:g id="SUPP_SERVICE">%s</xliff:g>. Pots canviar aquestes opcions a la configuració de xarxa mòbil."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"Comprova que les dades mòbils estiguin activades a la SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g> per utilitzar <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>. Pots canviar aquesta opció a la configuració de xarxa mòbil."</string>

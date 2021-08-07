@@ -827,8 +827,7 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"ପୂର୍ବରୁ ଅନ୍ୟ ଏକ ଆଉଟ୍‌ଗୋଇଂ କଲ୍ ଡାଏଲ୍ କରାଯାଉଥିବା ଯୋଗୁଁ ଏକ କଲ୍ କରିପାରିବେ ନାହିଁ।"</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"ଗୋଟିଏ ଉତ୍ତର ଦିଆଯାଇନଥିବା ଇନ୍‌କମିଂ କଲ୍ ଯୋଗୁଁ ଅନ୍ୟ ଏକ କଲ୍ କରିପାରିବେ ନାହିଁ । ଏକ ନୂତନ କଲ୍ କରିବା ପୂର୍ବରୁ ଇନ୍‌କମିଂ କଲ୍‌ଟିର ଉତ୍ତର ଦିଅନ୍ତୁ କିମ୍ବା ଏହାକୁ ଅଗ୍ରାହ୍ୟ କରନ୍ତୁ।"</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"ro.telephony.disable-call ସିଷ୍ଟମ୍ ଗୁଣର ପ୍ରୟୋଗ କରି କଲ୍ କରିବାର ସୁବିଧାକୁ ଅକ୍ଷମ କରାଯାଇଥିବା ଯୋଗୁଁ ଏକ କଲ୍ କରାଯାଇପାରିବ ନାହିଁ।"</string>
-    <!-- no translation found for callFailed_too_many_calls (2761754044990799580) -->
-    <skip />
+    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"ପୂର୍ବରୁ ଦୁଇଟି କଲ୍ ଚାଲୁଥିବା ଯୋଗୁଁ ଆଉ ଏକ କଲ୍ କରାଯାଇପାରିବ ନାହିଁ। ଏକ ନୂଆ କଲ୍ କରିବା ପୂର୍ବରୁ ଗୋଟିଏ କଲ୍ ବିଚ୍ଛିନ୍ନ କରନ୍ତୁ କିମ୍ବା ସେଗୁଡ଼ିକୁ ଏକ କନଫରେନ୍ସ କଲରେ ମର୍ଜ କରନ୍ତୁ।"</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"<xliff:g id="SUPP_SERVICE">%s</xliff:g> ବ୍ୟବହାର କରିବାକୁ, ମୋବାଇଲ୍ ଡାଟା ଚାଲୁଥିବା ସୁନିଶ୍ଚିତ କରନ୍ତୁ। ଆପଣ ଏହାକୁ ମୋବାଇଲ୍ ନେଟ୍‌ୱର୍କ ସେଟିଂସ୍‌ରେ ବଦଳାଇପାରିବେ।"</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"<xliff:g id="SUPP_SERVICE">%s</xliff:g> ବ୍ୟବହାର କରିବାକୁ, ମୋବାଇଲ୍ ଡାଟା ଏବଂ ଡାଟା ରୋମିଂ ଚାଲୁ ଥିବା ସୁନିଶ୍ଚିତ କରନ୍ତୁ। ଆପଣ ଏହାକୁ ମୋବାଇଲ୍ ନେଟ୍‌ୱର୍କ ସେଟିଂସ୍‌ରେ ବଦଳାଇପାରିବେ।"</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"<xliff:g id="SUPP_SERVICE">%1$s</xliff:g> ବ୍ୟବହାର କରିବାକୁ, ସିମ୍ <xliff:g id="SIM_NUMBER">%2$d</xliff:g>ରେ ମୋବାଇଲ୍ ଡାଟା ଚାଲୁ ଥିବା ସୁନିଶ୍ଚିତ କରନ୍ତୁ। ଆପଣ ଏହାକୁ ମୋବାଇଲ୍ ନେଟ୍‌ୱର୍କ ସେଟିଂସ୍‌ରେ ବଦଳାଇପାରିବେ।"</string>
