@@ -833,8 +833,7 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"Klica ni mogoče opraviti, ker že poteka vzpostavljanje drugega odhodnega klica."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"Klica ni mogoče opraviti, ker imate dohodni klic, na katerega še niste odgovorili. Preden začnete z opravljanjem novega klica, sprejmite ali zavrnite dohodni klic."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"Klica ni mogoče opraviti, ker je klicanje onemogočeno zaradi sistemske lastnosti ro.telephony.disable-call."</string>
-    <!-- no translation found for callFailed_too_many_calls (2761754044990799580) -->
-    <skip />
+    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"Klica ni mogoče opraviti, ker potekata že dva klica. Preden začnete nov klic, prekinite enega od klicev ali ju združite v konferenčni klic."</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"Če želite uporabiti storitev <xliff:g id="SUPP_SERVICE">%s</xliff:g>, najprej preverite, ali je vklopljen prenos podatkov v mobilnem omrežju. To izbiro lahko spremenite v nastavitvah mobilnega omrežja."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"Če želite uporabiti storitev <xliff:g id="SUPP_SERVICE">%s</xliff:g>, najprej preverite, ali sta vklopljena prenos podatkov v mobilnem omrežju in podatkovno gostovanje. Ti izbiri lahko spremenite v nastavitvah mobilnega omrežja."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"Če želite uporabiti storitev <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>, najprej preverite, ali je prenos podatkov v mobilnem omrežju vklopljen za kartico SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. To izbiro lahko spremenite v nastavitvah mobilnega omrežja."</string>
