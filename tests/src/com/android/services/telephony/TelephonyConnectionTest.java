@@ -8,11 +8,15 @@ import static junit.framework.Assert.fail;
 import static junit.framework.TestCase.assertFalse;
 
 import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import android.os.Bundle;
 import android.telecom.Connection;
 import android.telephony.CarrierConfigManager;
+import android.telephony.DisconnectCause;
 
 import androidx.test.runner.AndroidJUnit4;
 
@@ -129,6 +133,23 @@ public class TelephonyConnectionTest {
         assertEquals(1, c.getCommunicator().getTransportProtocols().size());
         assertTrue(c.getCommunicator().getTransportProtocols()
                 .stream().anyMatch(p -> p instanceof RtpTransport));
+    }
+
+    @Test
+    public void testHangupAfterRedial() throws Exception {
+        TestTelephonyConnection c = new TestTelephonyConnection();
+        c.hangup(DisconnectCause.LOCAL);
+        verify(c.mMockRadioConnection).hangup();
+
+        // hangup failed because redial was in progress... The new original connection has been sent
+        // to the TelephonyConnection
+        com.android.internal.telephony.Connection newMockRadioConnection =
+                mock(com.android.internal.telephony.Connection.class);
+        doReturn("5551212").when(c.mMockRadioConnection).getAddress();
+        doReturn("5551212").when(newMockRadioConnection).getAddress();
+        doReturn(Call.State.DIALING).when(newMockRadioConnection).getState();
+        c.onOriginalConnectionRedialed(newMockRadioConnection);
+        verify(newMockRadioConnection).hangup();
     }
 
     @Test
