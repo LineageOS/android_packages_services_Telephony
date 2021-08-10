@@ -833,8 +833,7 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"Неможливо здійснити виклик, оскільки ви вже телефонуєте на інший номер."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"Неможливо здійснити виклик. Прийміть або відхиліть вхідний виклик, перш ніж здійснювати новий."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"Неможливо здійснити виклик, оскільки дзвінки вимкнено за допомогою системного параметра ro.telephony.disable-call."</string>
-    <!-- no translation found for callFailed_too_many_calls (2761754044990799580) -->
-    <skip />
+    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"Неможливо зателефонувати, оскільки тривають уже два виклики. Припиніть один із них або об’єднайте їх у конференцію, перш ніж здійснити новий."</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"Щоб використовувати <xliff:g id="SUPP_SERVICE">%s</xliff:g>, потрібно ввімкнути мобільне передавання даних (у налаштуваннях мобільної мережі)."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"Щоб використовувати <xliff:g id="SUPP_SERVICE">%s</xliff:g>, потрібно ввімкнути мобільне передавання й роумінг даних (у налаштуваннях мобільної мережі)."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"Щоб використовувати <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>, потрібно ввімкнути мобільне передавання даних для SIM-карти <xliff:g id="SIM_NUMBER">%2$d</xliff:g> (у налаштуваннях мобільної мережі)."</string>

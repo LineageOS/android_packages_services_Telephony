@@ -339,7 +339,7 @@
     <string name="maintenance_enable" msgid="2646784483222342290">"నిర్వహణ ప్రారంభించబడింది"</string>
     <string name="maintenance_disable" msgid="2121032601497725602">"నిర్వహణ నిలిపివేయబడింది"</string>
     <string name="general_news_settings" msgid="2670499575962080411">"సాధారణ వార్తలు"</string>
-    <string name="bf_news_settings" msgid="8571709425370794221">"వ్యాపార మరియు ఆర్థిక వార్తలు"</string>
+    <string name="bf_news_settings" msgid="8571709425370794221">"బిజినెస్ మరియు ఆర్థిక వార్తలు"</string>
     <string name="sports_news_settings" msgid="2684364556989168438">"క్రీడల వార్తలు"</string>
     <string name="entertainment_news_settings" msgid="4228527702346305543">"వినోద సంబంధ వార్తలు"</string>
     <string name="enable_disable_local" msgid="7654175079979415572">"స్థానికం"</string>
@@ -378,9 +378,9 @@
     <string name="enable_disable_local_weather" msgid="7734933941872511543">"స్థానిక వాతావరణం"</string>
     <string name="local_weather_enable" msgid="2143929735295254729">"స్థానిక వాతావరణం ప్రారంభించబడింది"</string>
     <string name="local_weather_disable" msgid="4209936355998349647">"స్థానిక వాతావరణం నిలిపివేయబడింది"</string>
-    <string name="enable_disable_atr" msgid="821714821057385390">"ప్రాంతపు ట్రాఫిక్ నివేదికలు"</string>
-    <string name="atr_enable" msgid="1799097759998768186">"ప్రాంతపు ట్రాఫిక్ నివేదికలు ప్రారంభించబడ్డాయి"</string>
-    <string name="atr_disable" msgid="6456758173289065766">"ప్రాంతపు ట్రాఫిక్ నివేదికలు నిలిపివేయబడ్డాయి"</string>
+    <string name="enable_disable_atr" msgid="821714821057385390">"ప్రాంతపు ట్రాఫిక్ రిపోర్ట్‌లు"</string>
+    <string name="atr_enable" msgid="1799097759998768186">"ప్రాంతపు ట్రాఫిక్ రిపోర్ట్‌లు ప్రారంభించబడ్డాయి"</string>
+    <string name="atr_disable" msgid="6456758173289065766">"ప్రాంతపు ట్రాఫిక్ రిపోర్ట్‌లు నిలిపివేయబడ్డాయి"</string>
     <string name="enable_disable_lafs" msgid="7448060358300805661">"స్థానిక విమానాశ్రయ విమాన షెడ్యూల్‌లు"</string>
     <string name="lafs_enable" msgid="3125783406052655690">"స్థానిక విమానాశ్రయ విమాన షెడ్యూల్‌లు ప్రారంభించబడ్డాయి"</string>
     <string name="lafs_disable" msgid="7326815066813851447">"స్థానిక విమానాశ్రయ విమాన షెడ్యూల్‌లు నిలిపివేయబడ్డాయి"</string>
@@ -393,9 +393,9 @@
     <string name="enable_disable_retail_directory" msgid="9095153426757081972">"రీటైల్ డైరెక్టరీ"</string>
     <string name="retail_directory_enable" msgid="2532176568755452171">"రీటైల్ డైరెక్టరీ ప్రారంభించబడింది"</string>
     <string name="retail_directory_disable" msgid="7242451210736299193">"రీటైల్ డైరెక్టరీ నిలిపివేయబడింది"</string>
-    <string name="enable_disable_advertisements" msgid="8704125663718797151">"వ్యాపార ప్రకటనలు"</string>
-    <string name="advertisements_enable" msgid="8651409664217899145">"వ్యాపార ప్రకటనలు ప్రారంభించబడ్డాయి"</string>
-    <string name="advertisements_disable" msgid="2999957360508271492">"వ్యాపార ప్రకటనలు నిలిపివేయబడ్డాయి"</string>
+    <string name="enable_disable_advertisements" msgid="8704125663718797151">"బిజినెస్ ప్రకటనలు"</string>
+    <string name="advertisements_enable" msgid="8651409664217899145">"బిజినెస్ ప్రకటనలు ప్రారంభించబడ్డాయి"</string>
+    <string name="advertisements_disable" msgid="2999957360508271492">"బిజినెస్ ప్రకటనలు నిలిపివేయబడ్డాయి"</string>
     <string name="enable_disable_stock_quotes" msgid="631498357725951825">"స్టాక్ కోట్‌లు"</string>
     <string name="stock_quotes_enable" msgid="5104318195579771947">"స్టాక్ కోట్‌లు ప్రారంభించబడ్డాయి"</string>
     <string name="stock_quotes_disable" msgid="3126423481704498278">"స్టాక్ కోట్‌లు నిలిపివేయబడ్డాయి"</string>

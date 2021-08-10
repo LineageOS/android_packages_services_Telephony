@@ -827,8 +827,7 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"Tidak dapat melakukan panggilan karena panggilan keluar lainnya sedang berlangsung."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"Tidak dapat melakukan panggilan karena ada panggilan masuk yang belum terjawab. Jawab atau tolak panggilan masuk sebelum melakukan panggilan."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"Tidak dapat melakukan panggilan karena panggilan telah dinonaktifkan menggunakan properti sistem ro.telephony.disable-call"</string>
-    <!-- no translation found for callFailed_too_many_calls (2761754044990799580) -->
-    <skip />
+    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"Tidak dapat melakukan panggilan karena ada dua panggilan yang sedang berlangsung. Putuskan salah satu panggilan atau gabungkan keduanya menjadi satu konferensi sebelum melakukan panggilan baru."</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"Untuk menggunakan <xliff:g id="SUPP_SERVICE">%s</xliff:g>, pastikan kuota internet diaktifkan. Anda dapat mengubahnya di setelan jaringan seluler."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"Untuk menggunakan <xliff:g id="SUPP_SERVICE">%s</xliff:g>, pastikan kuota internet dan roaming data diaktifkan. Anda dapat mengubahnya di setelan jaringan seluler."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"Untuk menggunakan <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>, pastikan kuota internet diaktifkan untuk SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. Anda dapat mengubahnya di setelan jaringan seluler."</string>
