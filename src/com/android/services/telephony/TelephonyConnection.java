@@ -165,32 +165,7 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
                     AsyncResult ar = (AsyncResult) msg.obj;
                     com.android.internal.telephony.Connection connection =
                          (com.android.internal.telephony.Connection) ar.result;
-                    if (connection == null) {
-                        setDisconnected(DisconnectCauseUtil
-                                .toTelecomDisconnectCause(DisconnectCause.OUT_OF_NETWORK,
-                                        "handover failure, no connection"));
-                        close();
-                        break;
-                    }
-                    if (mOriginalConnection != null) {
-                        if (connection != null &&
-                            ((connection.getAddress() != null &&
-                            mOriginalConnection.getAddress() != null &&
-                            mOriginalConnection.getAddress().equals(connection.getAddress())) ||
-                            connection.getState() == mOriginalConnection.getStateBeforeHandover())) {
-                            Log.i(TelephonyConnection.this, "Setting original connection after"
-                                    + " handover or redial, current original connection="
-                                    + mOriginalConnection.toString()
-                                    + ", new original connection="
-                                    + connection.toString());
-                            setOriginalConnection(connection);
-                            mWasImsConnection = false;
-                        }
-                    } else {
-                        Log.w(TelephonyConnection.this,
-                                what + ": mOriginalConnection==null --"
-                                        + " invalid state (not cleaned up)");
-                    }
+                    onOriginalConnectionRedialed(connection);
                     break;
                 case MSG_RINGBACK_TONE:
                     Log.v(TelephonyConnection.this, "MSG_RINGBACK_TONE");
@@ -358,6 +333,54 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
     };
 
     private final Messenger mHandlerMessenger = new Messenger(mHandler);
+
+    /**
+     * The underlying telephony Connection has been redialed on a different domain (CS or IMS).
+     * Track the new telephony Connection and set back up appropriate callbacks.
+     * @param connection The new telephony Connection associated with this TelephonyConnection.
+     */
+    @VisibleForTesting
+    public void onOriginalConnectionRedialed(
+            com.android.internal.telephony.Connection connection) {
+        if (connection == null) {
+            setDisconnected(DisconnectCauseUtil
+                    .toTelecomDisconnectCause(DisconnectCause.OUT_OF_NETWORK,
+                            "handover failure, no connection"));
+            close();
+            return;
+        }
+        if (mOriginalConnection != null) {
+            if ((connection.getAddress() != null
+                    && mOriginalConnection.getAddress() != null
+                    && mOriginalConnection.getAddress().equals(connection.getAddress()))
+                    || connection.getState() == mOriginalConnection.getStateBeforeHandover()) {
+                Log.i(TelephonyConnection.this, "Setting original connection after"
+                        + " handover or redial, current original connection="
+                        + mOriginalConnection.toString()
+                        + ", new original connection="
+                        + connection.toString());
+                setOriginalConnection(connection);
+                mWasImsConnection = false;
+                if (mHangupDisconnectCause != DisconnectCause.NOT_VALID) {
+                    // A hangup request was initiated during the handover process, so
+                    // go ahead and initiate the hangup on the new connection.
+                    try {
+                        Log.i(TelephonyConnection.this, "user has tried to hangup "
+                                + "during handover, retrying hangup.");
+                        connection.hangup();
+                    } catch (CallStateException e) {
+                        // Call state exception may be thrown if the connection was
+                        // already disconnected, so just log this case.
+                        Log.w(TelephonyConnection.this, "hangup during "
+                                + "handover or redial resulted in an exception:" + e);
+                    }
+                }
+            }
+        } else {
+            Log.w(TelephonyConnection.this, " mOriginalConnection==null --"
+                    + " invalid state (not cleaned up)");
+        }
+    }
 
     /**
      * Handles {@link SuppServiceNotification}s pertinent to Telephony.
