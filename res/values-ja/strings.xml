@@ -827,8 +827,7 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"すでに別の通話を発信中のため、新しく通話を発信することはできません。"</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"通話を着信中のため、新しく通話を発信することはできません。着信中の通話に応答するか、通話を拒否すると、新しく通話を発信できるようになります。"</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"ro.telephony.disable-call システム プロパティを使用して通話機能が無効に設定されているため、通話を発信することはできません。"</string>
-    <!-- no translation found for callFailed_too_many_calls (2761754044990799580) -->
-    <skip />
+    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"進行中の通話がすでに 2 件あるため、新しく通話を発信することはできません。進行中の通話のどちらかを終了するか、2 件の通話を統合してグループ通話にすると、新しく通話を発信できるようになります。"</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"<xliff:g id="SUPP_SERVICE">%s</xliff:g>を利用するには、モバイルデータが ON になっている必要があります。モバイルデータの ON と OFF の切り替えは、モバイル ネットワーク設定で行えます。"</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"<xliff:g id="SUPP_SERVICE">%s</xliff:g>を利用するには、モバイルデータとデータ ローミングが ON になっている必要があります。これらの ON と OFF の切り替えは、モバイル ネットワーク設定で行えます。"</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"<xliff:g id="SUPP_SERVICE">%1$s</xliff:g>を利用するには、SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g> のモバイルデータが ON になっている必要があります。モバイルデータの ON と OFF の切り替えは、モバイル ネットワーク設定で行えます。"</string>

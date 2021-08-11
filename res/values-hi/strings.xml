@@ -827,8 +827,7 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"कॉल नहीं किया जा सकता, क्योंकि कोई दूसरा किया गया कॉल (आउटगोइंग) पहले से ही डायल हो रहा है."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"कॉल नहीं किया जा सकता, क्योंकि एक आने वाले कॉल (इनकमिंग) का जवाब नहीं दिया जा रहा है. नया कॉल करने से पहले आने वाले कॉल (इनकमिंग) का जवाब दें या उसे अस्वीकार करें."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"कॉल नहीं किया जा सकता क्योंकि कॉलिंग की सुविधा को ROS.टेलीफ़ोनी की कॉल बंद करें सिस्टम प्रॉपर्टी का उपयोग करके बंद कर दिया गया है."</string>
-    <!-- no translation found for callFailed_too_many_calls (2761754044990799580) -->
-    <skip />
+    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"कॉल नहीं किया जा सका, क्योंकि पहले से ही दो कॉल जारी हैं. नया कॉल करने से पहले, उनमें से किसी एक कॉल को बंद करें या उन्हें कॉन्फ़्रेंस कॉल में मर्ज करें."</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"<xliff:g id="SUPP_SERVICE">%s</xliff:g> का उपयोग करने के लिए, पक्का करें कि मोबाइल डेटा चालू है. आप मोबाइल नेटवर्क सेटिंग में जाकर इसे बदल सकते हैं."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"<xliff:g id="SUPP_SERVICE">%s</xliff:g> का उपयोग करने के लिए पक्का करें कि मोबाइल डेटा और डेटा रोमिंग चालू हैं. आप मोबाइल नेटवर्क सेटिंग में जाकर इन्हें बदल सकते हैं."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"<xliff:g id="SUPP_SERVICE">%1$s</xliff:g> का उपयोग करने के लिए पक्का करें कि सिम <xliff:g id="SIM_NUMBER">%2$d</xliff:g> का डेटा चालू है. आप मोबाइल नेटवर्क सेटिंग में जाकर इसे बदल सकते हैं."</string>

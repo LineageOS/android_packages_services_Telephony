@@ -827,8 +827,7 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"由于已在拨打另一个电话，因此无法拨打新电话。"</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"由于有未接来电，因此无法拨打电话。请先接听或拒绝来电，然后才能拨打新电话。"</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"通话功能已经由 ro.telephony.disable-call 系统属性停用，因此无法拨打电话。"</string>
-    <!-- no translation found for callFailed_too_many_calls (2761754044990799580) -->
-    <skip />
+    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"由于已有两个正在进行的通话，因此无法拨打电话。请先断开其中一个通话的连接或将两个通话合并到同一个会议中，然后才能拨打新电话。"</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"要使用<xliff:g id="SUPP_SERVICE">%s</xliff:g>服务，请确保已开启移动数据。您可以在移动网络设置中进行更改。"</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"要使用<xliff:g id="SUPP_SERVICE">%s</xliff:g>服务，请确保已开启移动数据和数据网络漫游。您可以在移动网路设置中进行更改。"</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"要使用<xliff:g id="SUPP_SERVICE">%1$s</xliff:g>服务，请确保已为 SIM (<xliff:g id="SIM_NUMBER">%2$d</xliff:g>) 开启移动数据。您可以在移动网络设置中进行更改。"</string>

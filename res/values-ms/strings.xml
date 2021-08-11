@@ -827,8 +827,7 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"Tidak dapat membuat panggilan kerana panggilan keluar lain sudah pun mendail."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"Tidak dapat membuat panggilan kerana terdapat panggilan masuk yang tidak dijawab. Jawab atau tolak panggilan masuk itu sebelum membuat panggilan baharu."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"Tidak dapat membuat panggilan kerana panggilan telah dilumpuhkan menggunakan sifat sistem ro.telephony.disable-call."</string>
-    <!-- no translation found for callFailed_too_many_calls (2761754044990799580) -->
-    <skip />
+    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"Tidak dapat membuat panggilan kerana sudah terdapat dua panggilan yang sedang berlangsung. Putuskan salah satu panggilan itu atau gabungkan panggilan tersebut menjadi panggilan sidang sebelum membuat panggilan baharu."</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"Untuk menggunakan <xliff:g id="SUPP_SERVICE">%s</xliff:g>, pastikan data mudah alih dihidupkan. Anda boleh menukar tetapan ini dalam tetapan rangkaian mudah alih."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"Untuk menggunakan <xliff:g id="SUPP_SERVICE">%s</xliff:g>, pastikan data mudah alih dan perayauan data dihidupkan. Anda boleh menukar tetapan ini dalam tetapan rangkaian mudah alih."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"Untuk menggunakan <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>, pastikan data mudah alih dihidupkan bagi SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. Anda boleh menukar tetapan ini dalam tetapan rangkaian mudah alih."</string>

@@ -827,8 +827,7 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"Nem kezdeményezhet hívást, mert folyamatban van egy másik kimenő hívás indítása."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"Nem kezdeményezhet hívást, mert folyamatban van egy megválaszolatlan bejövő hívás. Mielőtt új hívást indítana, vegye fel, vagy utasítsa el a bejövő hívást."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"Nem kezdeményezhet hívást, mivel a hívás le van tiltva ro.telephony.disable-call rendszertulajdonsággal."</string>
-    <!-- no translation found for callFailed_too_many_calls (2761754044990799580) -->
-    <skip />
+    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"Nem kezdeményezhet hívást, mert már két hívás van folyamatban. Mielőtt új hívást indítana, tegye le az egyiket, vagy egyesítse őket egy konferenciahívásban."</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"A(z) <xliff:g id="SUPP_SERVICE">%s</xliff:g> használatához győződjön meg róla, hogy a mobiladat-kapcsolat be van kapcsolva. Ezt a mobilhálózat beállításainál módosíthatja."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"A(z) <xliff:g id="SUPP_SERVICE">%s</xliff:g> használatához győződjön meg róla, hogy a mobiladat-kapcsolat és az adatbarangolás be van kapcsolva. Ezt a mobilhálózat beállításainál módosíthatja."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"A(z) <xliff:g id="SUPP_SERVICE">%1$s</xliff:g> használatához győződjön meg róla, hogy a mobiladat-kapcsolat be van kapcsolva a SIM-kártyán (<xliff:g id="SIM_NUMBER">%2$d</xliff:g>). Ezt a mobilhálózat beállításainál módosíthatja."</string>

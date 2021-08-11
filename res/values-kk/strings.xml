@@ -827,8 +827,7 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"Қоңырау шалу мүмкін емес, себебі басқа шығыс қоңырау орындалуда."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"Қоңырау шалу мүмкін емес, себебі жауап берілмеген кіріс қоңырау бар. Кіріс қоңырауға жауап беріңіз немесе оны өшіріңіз."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"Қоңырау шалу мүмкін емес, себебі қоңырау шалу функциясы ro.telephony.disable-call жүйелік параметрі арқылы өшірілген."</string>
-    <!-- no translation found for callFailed_too_many_calls (2761754044990799580) -->
-    <skip />
+    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"Қоңырау шалу мүмкін емес, себебі екі қоңырау орындалуда. Жаңа қоңырауды бастау үшін олардың біреуін тоқтатыңыз немесе бір конференцияға қосыңыз."</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"<xliff:g id="SUPP_SERVICE">%s</xliff:g> пайдалану үшін мобильді интернеттің қосылғанына көз жеткізіңіз. Оны мобильдік желі параметрлерінен өзгертуге болады."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"<xliff:g id="SUPP_SERVICE">%s</xliff:g> пайдалану үшін мобильді интернет пен деректер роумингінің қосылғанына көз жеткізіңіз. Оны мобильдік желі параметрлерінен өзгертуге болады."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"<xliff:g id="SUPP_SERVICE">%1$s</xliff:g> пайдалану үшін SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g> картасында мобильді интернеттің қосылғанына көз жеткізіңіз. Оны мобильдік желі параметрлерінен өзгертуге болады."</string>

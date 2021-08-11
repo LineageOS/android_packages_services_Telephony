@@ -833,8 +833,7 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"Nemůžete provést hovor, když už se jeden odchozí hovor vytáčí."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"Nemůžete provést hovor, protože máte nepřijatý příchozí hovor. Přijměte nebo odmítněte příchozí hovor, než provedete nový."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"Nemůžete provést hovor, protože volání bylo zakázáno systémovým příkazem ro.telephony.disable-call."</string>
-    <!-- no translation found for callFailed_too_many_calls (2761754044990799580) -->
-    <skip />
+    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"Nemůžete uskutečnit hovor, protože už probíhají dva hovory. Než zahájíte nový hovor, jeden ze stávajících odpojte nebo je slučte do konference."</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"Pokud chcete používat službu <xliff:g id="SUPP_SERVICE">%s</xliff:g>, zkontrolujte, že máte zapnutá mobilní data. Můžete to změnit v nastavení mobilní sítě."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"Pokud chcete používat službu <xliff:g id="SUPP_SERVICE">%s</xliff:g>, zkontrolujte, že máte zapnutá mobilní data a datový roaming. Můžete to změnit v nastavení mobilní sítě."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"Pokud chcete používat službu <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>, zkontrolujte, že máte zapnutá mobilní data pro SIM kartu <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. Můžete to změnit v nastavení mobilní sítě."</string>

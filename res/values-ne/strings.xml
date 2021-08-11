@@ -827,8 +827,7 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"अर्को बहिर्गमन कल पहिले नै डायल भएका हुनाले कल गर्न सकिँदैन।"</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"जवाफ नदिइएको आगमन कल जारी रहेकाले नयाँ कल गर्न सकिँदैन। कुनै नयाँ कल गर्नुअघि आगमन कलको जवाफ दिनुहोस् वा त्यसलाई अस्वीकार गर्नुहोस्।"</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"ro.telephony.disable-call प्रणालीको गुण प्रयोग गरेर कल गर्ने सुविधा असक्षम पारिएको हुनाले कल गर्न सकिँदैन।"</string>
-    <!-- no translation found for callFailed_too_many_calls (2761754044990799580) -->
-    <skip />
+    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"पहिले नै दुईवटा कलहरू जारी रहेकाले कुनै नयाँ कल गर्न सकिँदैन। नयाँ कल गर्नुअघि हाल जारी कलहरूमध्ये कुनै एउटा कल डिस्कनेक्ट गर्नुहोस् वा ती दुवैलाई सम्मेलन कलमा मर्ज गर्नुहोस्।"</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"<xliff:g id="SUPP_SERVICE">%s</xliff:g> प्रयोग गर्न मोबाइल डेटा सक्रिय गरिएको कुरा सुनिश्चित गर्नुहोस्। तपाईं मोबाइल नेटवर्कका सेटिङहरूमा गई यसलाई बदल्न सक्नुहुन्छ।"</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"<xliff:g id="SUPP_SERVICE">%s</xliff:g> प्रयोग गर्न मोबाइल डेटा र डेटा रोमिङ सक्रिय गरिएको कुरा सुनिश्चित गर्नुहोस्। तपाईं मोबाइल नेटवर्कका सेटिङहरूमा गई यी कुराहरू बदल्न सक्नुहुन्छ।"</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"<xliff:g id="SUPP_SERVICE">%1$s</xliff:g> प्रयोग गर्न SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g> मा मोबाइल डेटा सक्रिय गरिएको कुरा सुनिश्चित गर्नुहोस्। तपाईं मोबाइल नेटवर्कका सेटिङहरूमा गई यसलाई बदल्न सक्नुहुन्छ।"</string>

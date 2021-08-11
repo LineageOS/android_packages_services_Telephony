@@ -827,8 +827,7 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"Kan nie \'n oproep maak nie, aangesien \'n ander uitgaande oproep reeds besig is om te skakel."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"Kan nie \'n oproep maak nie, aangesien daar \'n onbeantwoorde inkomende oproep is. Beantwoord of weier die inkomende oproep voordat jy \'n nuwe oproep plaas."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"Kan nie \'n oproep maak nie, aangesien oproepmaking gedeaktiveer is deur die ro.telephony.disable-belstelseleienskap te gebruik."</string>
-    <!-- no translation found for callFailed_too_many_calls (2761754044990799580) -->
-    <skip />
+    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"Kan nie ’n oproep maak nie, aangesien twee oproepe reeds aan die gang is. Ontkoppel een van die oproepe of voeg dit saam in ’n konferensie voordat ’n nuwe oproep gemaak word."</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"Om <xliff:g id="SUPP_SERVICE">%s</xliff:g> te gebruik, maak seker dat mobiele data aangeskakel is. Jy kan dit in selnetwerk-instellings verander."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"Om <xliff:g id="SUPP_SERVICE">%s</xliff:g> te gebruik, maak seker dat mobiele data en dataswerwing aangeskakel is. Jy kan dit in selnetwerk-instellings verander."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"Om <xliff:g id="SUPP_SERVICE">%1$s</xliff:g> te gebruik, maak seker dat mobiele data vir SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g> aangeskakel is. Jy kan dit in selnetwerk-instellings verander."</string>

@@ -827,8 +827,7 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"ਕਾਲ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕਦੀ ਕਿਉਂਕਿ ਇੱਕ ਹੋਰ ਆਊਟਗੋਇੰਗ ਕਾਲ ਪਹਿਲਾਂ ਹੀ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ।"</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"ਕਾਲ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕਦੀ ਕਿਉਂਕਿ ਇੱਕ ਜਵਾਬ ਨਾ ਦਿੱਤੀ ਗਈ ਇਨਕਮਿੰਗ ਕਾਲ ਪਹਿਲਾਂ ਤੋਂ ਹੀ ਆ ਰਹੀ ਹੈ। ਨਵੀਂ ਕਾਲ ਕਰਨ ਤੋਂ ਪਹਿਲਾਂ ਇਨਕਮਿੰਗ ਕਾਲ ਦਾ ਜਵਾਬ ਦਿਓ ਜਾਂ ਅਸਵੀਕਾਰ ਕਰੋ।"</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"ਕਾਲ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕਦੀ ਕਿਉਂਕਿ ਕਾਲਿੰਗ ਨੂੰ ro.telephony.disable-call ਸਿਸਟਮ ਪ੍ਰਾਪਰਟੀ ਵਰਤ ਕੇ ਬੰਦ ਕਰ ਦਿੱਤਾ ਗਿਆ ਹੈ।"</string>
-    <!-- no translation found for callFailed_too_many_calls (2761754044990799580) -->
-    <skip />
+    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"ਪਹਿਲਾਂ ਤੋਂ ਦੋ ਕਾਲਾਂ ਚਾਲੂ ਹੋਣ ਕਰਕੇ ਕਾਲ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕਦੀ। ਨਵੀਂ ਕਾਲ ਕਰਨ ਤੋਂ ਪਹਿਲਾਂ ਇੱਕ ਕਾਲ ਨੂੰ ਡਿਸਕਨੈਕਟ ਕਰੋ ਜਾਂ ਦੋਨੋਂ ਕਾਲਾਂ ਨੂੰ ਮਿਲਾ ਕੇ ਕਾਨਫਰੰਸ ਕਾਲ ਵਿੱਚ ਬਦਲੋ।"</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"<xliff:g id="SUPP_SERVICE">%s</xliff:g> ਨੂੰ ਵਰਤਣ ਲਈ, ਪੱਕਾ ਕਰੋ ਕਿ ਮੋਬਾਈਲ ਡਾਟਾ ਚਾਲੂ ਹੋਵੇ। ਤੁਸੀਂ ਇਸਨੂੰ ਮੋਬਾਈਲ ਨੈੱਟਵਰਕ ਸੈਟਿੰਗਾਂ ਵਿੱਚ ਬਦਲ ਸਕਦੇ ਹੋ।"</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"<xliff:g id="SUPP_SERVICE">%s</xliff:g> ਨੂੰ ਵਰਤਣ ਲਈ, ਪੱਕਾ ਕਰੋ ਕਿ ਮੋਬਾਈਲ ਡਾਟਾ ਅਤੇ ਡਾਟਾ ਰੋਮਿੰਗ ਦੋਨੋਂ ਚਾਲੂ ਹੋਣ। ਤੁਸੀਂ ਇਹਨਾਂ ਨੂੰ ਮੋਬਾਈਲ ਨੈੱਟਵਰਕ ਸੈਟਿੰਗਾਂ ਵਿੱਚ ਬਦਲ ਸਕਦੇ ਹੋ।"</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"<xliff:g id="SUPP_SERVICE">%1$s</xliff:g> ਨੂੰ ਵਰਤਣ ਲਈ, ਪੱਕਾ ਕਰੋ ਕਿ ਸਿਮ <xliff:g id="SIM_NUMBER">%2$d</xliff:g> \'ਤੇ ਮੋਬਾਈਲ ਡਾਟਾ ਚਾਲੂ ਹੋਵੇ। ਤੁਸੀਂ ਇਸਨੂੰ ਮੋਬਾਈਲ ਨੈੱਟਵਰਕ ਸੈਟਿੰਗਾਂ ਵਿੱਚ ਬਦਲ ਸਕਦੇ ਹੋ।"</string>
