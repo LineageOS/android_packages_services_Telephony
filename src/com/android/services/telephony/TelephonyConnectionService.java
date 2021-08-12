@@ -1199,9 +1199,9 @@ public class TelephonyConnectionService extends ConnectionService {
             return connection;
         }
 
-        com.android.internal.telephony.Connection originalConnection =
-                call.getState() == Call.State.WAITING ?
-                    call.getLatestConnection() : call.getEarliestConnection();
+        // If there are multiple Connections tracked in a call, grab the latest, since it is most
+        // likely to be the incoming call.
+        com.android.internal.telephony.Connection originalConnection = call.getLatestConnection();
         if (isOriginalConnectionKnown(originalConnection)) {
             Log.i(this, "onCreateIncomingConnection, original connection already registered");
             return Connection.createCanceledConnection();

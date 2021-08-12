@@ -827,8 +827,7 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"Kõnet ei saa teha, kuna teist väljuvat kõnet juba valitakse."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"Kõnet ei saa teha, kuna telefonis on sissetulev vastamata kõne. Enne uue kõne tegemist vastake kõnele või katkestage see."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"Kõnet ei saa teha, kuna helistamine on süsteemi atribuudiga ro.telephony.disable-call keelatud."</string>
-    <!-- no translation found for callFailed_too_many_calls (2761754044990799580) -->
-    <skip />
+    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"Kõnet ei saa teha, kuna kaks kõnet on juba pooleli. Enne uue kõne tegemist katkestage üks kõnedest või liitke need konverentskõnedeks."</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"Teenuse <xliff:g id="SUPP_SERVICE">%s</xliff:g> kasutamiseks veenduge, et mobiilne andmeside oleks sisse lülitatud. Seda saab muuta mobiilsidevõrgu seadetes."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"Teenuse <xliff:g id="SUPP_SERVICE">%s</xliff:g> kasutamiseks veenduge, et mobiilne andmeside ja andmesiderändlus oleks sisse lülitatud. Seda saab muuta mobiilsidevõrgu seadetes."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"Teenuse <xliff:g id="SUPP_SERVICE">%1$s</xliff:g> kasutamiseks veenduge, et mobiilne andmeside oleks SIM-kaardil <xliff:g id="SIM_NUMBER">%2$d</xliff:g> sisse lülitatud. Seda saab muuta mobiilsidevõrgu seadetes."</string>

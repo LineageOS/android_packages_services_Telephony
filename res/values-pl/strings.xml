@@ -833,8 +833,7 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"Nie można nawiązać połączenia, ponieważ inne połączenie jest już nawiązywane."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"Nie można nawiązać połączenia, ponieważ masz nieodebrane połączenie przychodzące. Odbierz je lub odrzuć przed nawiązaniem nowego."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"Nie można nawiązać połączenia, ponieważ ta funkcja została wyłączona przy użyciu właściwości systemowej ro.telephony.disable-call."</string>
-    <!-- no translation found for callFailed_too_many_calls (2761754044990799580) -->
-    <skip />
+    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"Nie można nawiązać połączenia, ponieważ trwają już 2 inne połączenia. Aby nawiązać nowe połączenie, zakończ jedno z nich lub scal je w połączenie konferencyjne."</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"Aby używać usługi <xliff:g id="SUPP_SERVICE">%s</xliff:g>, włącz mobilną transmisję danych w ustawieniach sieci komórkowej."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"Aby używać usługi <xliff:g id="SUPP_SERVICE">%s</xliff:g>, włącz mobilną transmisję danych i roaming danych w ustawieniach sieci komórkowej."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"Aby używać usługi <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>, włącz mobilną transmisję danych dla karty SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g> w ustawieniach sieci komórkowej."</string>

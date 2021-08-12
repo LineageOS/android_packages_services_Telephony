@@ -827,8 +827,7 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"Не може да се извърши обаждане, тъй като в момента се набира друго изходящо обаждане."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"Не може да се извърши обаждане, тъй като има неотговорено входящо обаждане. Отговорете му или го отхвърлете, преди да извършите ново обаждане."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"Не може да се извърши обаждане, тъй като обажданията са деактивирани чрез системното свойство ro.telephony.disable-call."</string>
-    <!-- no translation found for callFailed_too_many_calls (2761754044990799580) -->
-    <skip />
+    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"Не може да се извърши обаждане, тъй като вече се провеждат две обаждания. Прекъснете едно от тях или ги обединете в конферентен разговор, преди да извършите ново обаждане."</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"За да използвате <xliff:g id="SUPP_SERVICE">%s</xliff:g>, мобилните данни трябва да са включени. Можете да промените това в настройките за мобилната мрежа."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"За да използвате <xliff:g id="SUPP_SERVICE">%s</xliff:g>, мобилните данни и роумингът на данни трябва да са включени. Можете да промените това в настройките за мобилната мрежа."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"За да използвате <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>, мобилните данни за SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g> трябва да са включени. Можете да промените това в настройките за мобилната мрежа."</string>
