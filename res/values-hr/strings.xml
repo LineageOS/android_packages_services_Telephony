@@ -830,8 +830,7 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"Nije moguće uputiti poziv jer se odlazni poziv već upućuje."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"Poziv se ne može uputiti jer postoji neodgovoreni dolazni poziv. Odgovorite ili odbijte dolazni poziv prije upućivanja novog poziva."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"Poziv se ne može uputiti jer je pozivanje onemogućeno pomoću entiteta sustava ro.telephony.disable-call."</string>
-    <!-- no translation found for callFailed_too_many_calls (2761754044990799580) -->
-    <skip />
+    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"Poziv se ne može uputiti jer su već dva poziva u tijeku. Prekinite jedan poziv ili spojite dva poziva u konferencijski poziv prije nego što uputite drugi poziv."</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"Da biste koristili uslugu <xliff:g id="SUPP_SERVICE">%s</xliff:g>, provjerite jesu li vaši mobilni podaci uključeni. Tu opciju možete promijeniti u postavkama mobilne mreže."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"Da biste koristili uslugu <xliff:g id="SUPP_SERVICE">%s</xliff:g>, provjerite jesu li mobilni podaci i roaming podataka uključeni. Tu opciju možete promijeniti u postavkama mobilne mreže."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"Da biste koristili uslugu <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>, provjerite jesu li mobilni podaci za SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g> uključeni. Tu opciju možete promijeniti u postavkama mobilne mreže."</string>

@@ -827,8 +827,7 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"Ezin da egin deia, beste dei bat abian delako."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"Ezin da egin deia, oraindik erantzun ez diozun dei bat jasotzen ari zarelako. Beste dei bat egin aurretik, erantzun deiari edo bazter ezazu."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"Ezin da egin deia, deiak egiteko aukera desgaitu egin delako sistemaren ro.telephony.disable-call propietatea erabilita."</string>
-    <!-- no translation found for callFailed_too_many_calls (2761754044990799580) -->
-    <skip />
+    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"Ezin da egin deia, dagoeneko bi dei daudelako abian. Beste dei bat egin aurretik, eten deietako bat edo bateratu deiak konferentzia-dei bakarrean."</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"<xliff:g id="SUPP_SERVICE">%s</xliff:g> erabiltzeko, ziurtatu datu-konexioa aktibatuta dagoela. Sare mugikorren ezarpenetan alda dezakezu aukera hau."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"<xliff:g id="SUPP_SERVICE">%s</xliff:g> erabiltzeko, ziurtatu datu-konexioa eta datu-ibiltaritza aktibatuta daudela. Sare mugikorren ezarpenetan alda ditzakezu aukera horiek."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"<xliff:g id="SUPP_SERVICE">%1$s</xliff:g> erabiltzeko, ziurtatu datu-konexioa aktibatuta dagoela <xliff:g id="SIM_NUMBER">%2$d</xliff:g> SIM txartelean. Sare mugikorren ezarpenetan alda dezakezu aukera hori."</string>

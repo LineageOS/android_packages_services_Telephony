@@ -827,8 +827,7 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"Не може да се воспостави повик затоа што веќе се бира друг појдовен повик."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"Не може да се воспостави повик затоа што има неодговорен дојдовен повик. Одговорете или одбијте го дојдовниот повик пред воспоставувањето на новиот повик."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"Не може да се воспостави повик затоа што повикувањето е оневозможено со системското својство ro.telephony.disable-call."</string>
-    <!-- no translation found for callFailed_too_many_calls (2761754044990799580) -->
-    <skip />
+    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"Не може да се воспостави повик затоа што веќе се во тек два повика. Исклучете го едниот од повиците или спојте ги во конференциски повик пред да воспоставите нов повик."</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"За користење <xliff:g id="SUPP_SERVICE">%s</xliff:g>, уверете се дека мобилниот интернет е вклучен. Тоа може да го промените во поставките за мобилна мрежа."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"За користење <xliff:g id="SUPP_SERVICE">%s</xliff:g>, уверете се дека мобилниот интернет и интернет роамингот се вклучени. Овие може да ги промените во поставките за мобилна мрежа."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"За користење <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>, уверете се дека мобилниот интернет е вклучен за SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. Тоа може да го промените во поставките за мобилна мрежа."</string>

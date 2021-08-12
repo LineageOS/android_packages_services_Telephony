@@ -827,8 +827,7 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"Impossibile effettuare una chiamata perché è già presente un\'altra chiamata in uscita in composizione."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"Impossibile effettuare una chiamata perché è presente una chiamata in arrivo senza risposta. Rispondi o rifiuta la chiamata in arrivo prima di effettuare una nuova chiamata."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"Impossibile effettuare una chiamata perché le chiamate sono state disattivate utilizzando la proprietà di sistema ro.telephony.disable-call."</string>
-    <!-- no translation found for callFailed_too_many_calls (2761754044990799580) -->
-    <skip />
+    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"Impossibile effettuare una chiamata perché due chiamate sono già in corso. Unisci le chiamate in una conferenza o scollegane una prima di effettuare una nuova chiamata."</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"Per utilizzare <xliff:g id="SUPP_SERVICE">%s</xliff:g>, assicurati che i dati mobili siano attivi. Puoi modificare questa opzione nelle impostazioni della rete mobile."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"Per utilizzare <xliff:g id="SUPP_SERVICE">%s</xliff:g>, assicurati che i dati mobili e il roaming dei dati siano attivi. Puoi modificare queste opzioni nelle impostazioni della rete mobile."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"Per utilizzare <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>, assicurati che i dati mobili siano attivi per la SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. Puoi modificare questa opzione nelle impostazioni della rete mobile."</string>

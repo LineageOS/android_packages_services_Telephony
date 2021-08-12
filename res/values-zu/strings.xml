@@ -827,8 +827,7 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"Ayikwazi ukubeka ikholi njengoba enye ikholi ephumayo isivele iyadayela."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"Ayikwazi ukubeka ikholi njengoba kunekholi engenayo engaphenduliwe. Phendula noma nqaba ikholi engenayo ngaphambi kokubeka ikholi entsha."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"Ayikwazi ukubeka ikholi njengoba ukushaya kukhutshaziwe kusetshenziswa isistimu ye-ro.telephony.disable-call."</string>
-    <!-- no translation found for callFailed_too_many_calls (2761754044990799580) -->
-    <skip />
+    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"Awukwazi ukubeka ikholi njengoba kunamakholi amabili aqhubekayo kakade. Nqamula eyodwa yamakholi noma wahlanganisele enkofeni ngaphambi kokubeka ikholi entsha."</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"Ukuze usebenzise i-<xliff:g id="SUPP_SERVICE">%s</xliff:g>, qiniseka ukuthi idatha yeselula ivuliwe. Ungashintsha lokhu kuzilungiselelo zenethiwekhi yeselula."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"Ukuze usebenzise i-<xliff:g id="SUPP_SERVICE">%s</xliff:g>, qiniseka ukuthi idatha yeselula kanye nokuzula kuvuliwe. Ungashintsha lokhu kuzilungiselelo zenethiwekhi yeselula."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"Ukuze usebenzise i-<xliff:g id="SUPP_SERVICE">%1$s</xliff:g>, qiniseka ukuthi idatha yeselula ivuliwe ku-SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. Ungashintsha lokhu kuzilungiselelo zenethiwekhi yeselula."</string>

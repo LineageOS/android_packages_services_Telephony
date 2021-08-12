@@ -827,8 +827,7 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"કૉલ કરી શકાતો નથી કારણ કે બીજો આઉટગોઇંગ કૉલ પહેલાંથી ડાયલ કરવામાં આવી રહ્યો છે."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"કૉલ કરી શકાતો નથી કારણ કે ઇનકમિંગ કૉલનો જવાબ આપવામાં આવી રહ્યો નથી. નવો કૉલ કરતા પૂર્વે ઇનકમિંગ કૉલનો જવાબ આપો અથવા નકારો."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"કૉલ કરી શકાતો નથી કેમકે કૉલિંગની સુવિધા ro.telephony.disable-call સિસ્ટમ પ્રોપર્ટીનો ઉપયોગ કરીને બંધ કરવામાં આવી છે."</string>
-    <!-- no translation found for callFailed_too_many_calls (2761754044990799580) -->
-    <skip />
+    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"કૉલ કરી શકાતો નથી, કારણ કે બે કૉલ પહેલાંથી ચાલુ છે. નવો કૉલ કરતા પહેલાં તેમાંથી એક કૉલને ડિસ્કનેક્ટ કરો અથવા તેને કૉન્ફરન્સમાં મર્જ કરો."</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"<xliff:g id="SUPP_SERVICE">%s</xliff:g>નો ઉપયોગ કરવા માટે, મોબાઇલ ડેટા ચાલુ હોવાની ખાતરી કરો. તમે આને મોબાઇલ નેટવર્ક સેટિંગમાં બદલી શકો છો."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"<xliff:g id="SUPP_SERVICE">%s</xliff:g>નો ઉપયોગ કરવા માટે, મોબાઇલ ડેટા અને ડેટા રોમિંગ ચાલુ હોવાની ખાતરી કરો. તમે આને મોબાઇલ નેટવર્ક સેટિંગમાં બદલી શકો છો."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"<xliff:g id="SUPP_SERVICE">%1$s</xliff:g>નો ઉપયોગ કરવા માટે, SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g> માટે મોબાઇલ ડેટા ચાલુ હોવાની ખાતરી કરો. તમે આને મોબાઇલ નેટવર્ક સેટિંગમાં બદલી શકો છો."</string>
