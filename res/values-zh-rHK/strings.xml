@@ -827,7 +827,7 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"系統正在撥打另一通電話，因此無法撥打電話。"</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"由於目前有尚未接聽的來電，因此無法撥打電話。請先接聽或拒絕來電，然後再撥打電話。"</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"通話功能已由 ro.telephony.disable-call 系統屬性停用，因此無法撥打電話。"</string>
-    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"目前有兩場正在進行的通話，因此無法撥打電話。你必須掛斷其中一場通話或將通話合併成會議，才能再撥打電話。"</string>
+    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"目前已有兩個通話正在進行，因此無法撥打電話。請先結束其中一個通話，或將兩個通話合併為一個會議，才撥打電話。"</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"如要使用<xliff:g id="SUPP_SERVICE">%s</xliff:g>，請確保流動數據已開啟。您可以在流動網絡設定中變更此設定。"</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"如要使用<xliff:g id="SUPP_SERVICE">%s</xliff:g>，請確保流動數據和數據漫遊已開啟。您可以在流動網絡設定中變更此設定。"</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"如要使用<xliff:g id="SUPP_SERVICE">%1$s</xliff:g>，請確保 SIM 卡 (<xliff:g id="SIM_NUMBER">%2$d</xliff:g>) 的流動數據已開啟。您可以在流動網絡設定中變更此設定。"</string>
