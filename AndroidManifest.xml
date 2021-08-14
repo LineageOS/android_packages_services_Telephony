@@ -38,6 +38,7 @@
     <protected-broadcast android:name="android.intent.action.ACTION_MDN_STATE_CHANGED" />
     <protected-broadcast android:name="android.telephony.action.SERVICE_PROVIDERS_UPDATED" />
     <protected-broadcast android:name="android.provider.Telephony.SIM_FULL" />
+    <protected-broadcast android:name="com.android.internal.telephony.carrier_key_download_alarm" />
     <protected-broadcast android:name="com.android.internal.telephony.data-restart-trysetup" />
     <protected-broadcast android:name="com.android.internal.telephony.data-stall" />
     <protected-broadcast android:name="com.android.internal.telephony.provisioning_apn_alarm" />
@@ -83,6 +84,7 @@
     <protected-broadcast android:name= "com.android.internal.telephony.CARRIER_VVM_PACKAGE_INSTALLED" />
     <protected-broadcast android:name= "com.android.cellbroadcastreceiver.GET_LATEST_CB_AREA_INFO" />
     <protected-broadcast android:name= "com.android.internal.telephony.ACTION_CARRIER_CERTIFICATE_DOWNLOAD" />
+    <protected-broadcast android:name= "com.android.internal.telephony.action.COUNTRY_OVERRIDE" />
     <protected-broadcast android:name= "com.android.internal.telephony.OPEN_DEFAULT_SMS_APP" />
     <protected-broadcast android:name= "com.android.internal.telephony.ACTION_TEST_OVERRIDE_CARRIER_ID" />
     <protected-broadcast android:name= "android.telephony.action.SIM_CARD_STATE_CHANGED" />
@@ -99,6 +101,9 @@
     <protected-broadcast android:name= "android.telephony.action.CARRIER_SIGNAL_DEFAULT_NETWORK_AVAILABLE" />
     <protected-broadcast android:name= "android.telephony.action.CARRIER_SIGNAL_REDIRECTED" />
     <protected-broadcast android:name= "android.telephony.action.CARRIER_SIGNAL_REQUEST_NETWORK_FAILED" />
+
+    <protected-broadcast android:name= "com.android.phone.settings.CARRIER_PROVISIONING" />
+    <protected-broadcast android:name= "com.android.phone.settings.TRIGGER_CARRIER_PROVISIONING" />
 
     <!-- For Vendor Debugging in Telephony -->
     <protected-broadcast android:name="android.telephony.action.ANOMALY_REPORTED" />
@@ -129,8 +134,8 @@
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.INTERNAL_SYSTEM_WINDOW" />
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.BLUETOOTH" />
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
     <uses-permission android:name="android.permission.REORDER_TASKS" />
     <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -227,13 +232,15 @@
          from the background.  -->
     <uses-permission android:name="android.permission.START_ACTIVITIES_FROM_BACKGROUND" />
     <uses-permission android:name="android.permission.NETWORK_STATS_PROVIDER" />
-    <uses-permission android:name="android.permission.HANDLE_CAR_MODE_CHANGES"/>
     <uses-permission android:name="android.permission.MANAGE_SUBSCRIPTION_PLANS"/>
     <uses-permission android:name="android.permission.OBSERVE_ROLE_HOLDERS"/>
     <uses-permission android:name="android.permission.BIND_GBA_SERVICE"/>
     <!-- Permissions required for reading and logging compat changes -->
     <uses-permission android:name="android.permission.LOG_COMPAT_CHANGE"/>
     <uses-permission android:name="android.permission.READ_COMPAT_CHANGE_CONFIG"/>
+
+    <!-- Needed to listen to changes in projection state. -->
+    <uses-permission android:name="android.permission.READ_PROJECTION_STATE"/>
 
     <application android:name="PhoneApp"
             android:persistent="true"

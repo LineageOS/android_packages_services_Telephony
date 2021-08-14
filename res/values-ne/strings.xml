@@ -282,8 +282,8 @@
     <string name="data_enable_summary" msgid="696860063456536557">"डेटा उपयोगलाई अनुमति दिनुहोस्"</string>
     <string name="dialog_alert_title" msgid="5260471806940268478">"ध्यानाकर्षण"</string>
     <string name="roaming" msgid="1576180772877858949">"रोमिङ"</string>
-    <string name="roaming_enable" msgid="6853685214521494819">"रोमिङको समयमा डेटा सेवामा कनेक्ट गर्नुहोस्"</string>
-    <string name="roaming_disable" msgid="8856224638624592681">"रोमिङको समयमा डेटा सेवा कनेक्ट गर्नुहोस्"</string>
+    <string name="roaming_enable" msgid="6853685214521494819">"रोमिङको समयमा डेटा सेवामा जडान गर्नुहोस्"</string>
+    <string name="roaming_disable" msgid="8856224638624592681">"रोमिङको समयमा डेटा सेवा जडान गर्नुहोस्"</string>
     <string name="roaming_reenable_message" msgid="1951802463885727915">"डेटा रोमिङ सक्रिय गरियो। सक्रिय गर्न ट्याप गर्नुहोस्।"</string>
     <string name="roaming_enabled_message" msgid="9022249120750897">"रोमिङ शुल्क लाग्न सक्छ। परिमार्जन गर्न ट्याप गर्नुहोस्"</string>
     <string name="roaming_notification_title" msgid="3590348480688047320">"मोबाइल डेटाको जडान टुट्यो"</string>
@@ -536,12 +536,11 @@
     <string name="notification_network_selection_text" msgid="553288408722427659">"चयन गरिएको नेटवर्क <xliff:g id="OPERATOR_NAME">%s</xliff:g> उपलब्ध छैन"</string>
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"मोबाइल नेटवर्क सक्रिय पार्नुहोस्, कल गर्न हवाइजहाज मोड वा ब्याट्री सेवर मोड निष्क्रिय पार्नुहोस्।"</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"एक कल गर्न हवाइजहाज मोड बन्द गर्नुहोस्।"</string>
-    <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"एक कल गर्न हवाइजहाज मोड बन्द गर्नुहोस् वा एक ताररहितको सञ्जालमा कनेक्ट गर्नुहोस्।"</string>
-    <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"फोन ज्यादै तातेको छ"</b>\n\n"यो कल जारी राख्न सकिँदैन। फोन सेलाएपछि फेरि प्रयास गर्नुहोस्।\n\nतपाईं अझै पनि आपत्‌कालीन कलहरू गर्न सक्नुहुन्छ।"</string>
+    <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"एक कल गर्न हवाइजहाज मोड बन्द गर्नुहोस् वा एक ताररहितको सञ्जालमा जडान गर्नुहोस्।"</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"गैर-आपत्‌कालीन कल गर्न आपत्‌कालीन कलब्याक मोडबाट निस्कनुहोस्।"</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"नेटवर्कमा दर्ता भएको छैन।"</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"मोबाइल नेटवर्क उपलब्ध छैन।"</string>
-    <string name="incall_error_out_of_service_wfc" msgid="4497663185857190885">"मोबाइल नेटवर्क उपलब्ध छैन। कल गर्न तारविनाको नेटवर्कमा कनेक्ट गर्नुहोस्।"</string>
+    <string name="incall_error_out_of_service_wfc" msgid="4497663185857190885">"मोबाइल नेटवर्क उपलब्ध छैन। कल गर्न तारविनाको नेटवर्कमा जडान गर्नुहोस्।"</string>
     <string name="incall_error_no_phone_number_supplied" msgid="8680831089508851894">"एक कल गर्नको लागि, एक वैध नम्बर प्रविष्टि गर्नुहोस्।"</string>
     <string name="incall_error_call_failed" msgid="393508653582682539">"कल विफल भयो।"</string>
     <string name="incall_error_cannot_add_call" msgid="5425764862628655443">"यतिबेला कल गर्न सकिएन। तपाईंले कुनै सन्देश पठाएर सम्पर्क गर्ने प्रयास गर्न सक्नुहुन्छ।"</string>
@@ -554,7 +553,7 @@
     <string name="incall_error_supp_service_reject" msgid="3044363092441655912">"कल अस्वीकार गर्न सक्दैन।"</string>
     <string name="incall_error_supp_service_hangup" msgid="836524952243836735">"कल (हरू) जारी गर्न सकिँदैन ।"</string>
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"कल सञ्चालन गर्न सकिँदैन।"</string>
-    <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"एक कल गर्न एक ताररहितको सञ्जालमा कनेक्ट गर्नुहोस्।"</string>
+    <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"एक कल गर्न एक ताररहितको सञ्जालमा जडान गर्नुहोस्।"</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"कल गर्नका लागि Wi-Fi कलिङ सक्षम गर्नुहोस्।"</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"आपत्‌कालीन जानकारी"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"मालिक"</string>
@@ -915,6 +914,8 @@
     <string name="radio_info_nr_available" msgid="1321318331361249997">"NR उपलब्ध छ:"</string>
     <string name="radio_info_nr_state" msgid="1337571996788535356">"NR को स्थिती:"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR फ्रिक्वेन्सी:"</string>
+    <!-- no translation found for radio_info_network_slicing_config (7675131833885031563) -->
+    <skip />
     <string name="band_mode_title" msgid="7988822920724576842">"रेडियोको ब्यान्डसम्बन्धी मोडलाई सेट गर्नुहोस्"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"ब्यान्डको सूची लोड गर्दै…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"सेट गर्नुहोस्"</string>

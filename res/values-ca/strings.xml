@@ -537,7 +537,6 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Per fer una trucada, activa la xarxa mòbil o desactiva el mode d\'avió o el mode d\'estalvi de bateria."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Per fer una trucada, desactiva el mode d\'avió."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Per fer una trucada, desactiva el mode d\'avió o connecta amb una xarxa sense fil."</string>
-    <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"El telèfon està massa calent"</b>\n\n"No es pot completar aquesta trucada. Torna-ho a provar quan el telèfon es refredi.\n\nPots fer trucades d\'emergència igualment."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Surt del mode de devolució de trucada d\'emergència per fer un altre tipus de trucada."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"No registrat a la xarxa."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"La xarxa mòbil no està disponible."</string>
@@ -915,6 +914,8 @@
     <string name="radio_info_nr_available" msgid="1321318331361249997">"NR disponible:"</string>
     <string name="radio_info_nr_state" msgid="1337571996788535356">"Estat d\'NR:"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"Freqüència d\'NR:"</string>
+    <!-- no translation found for radio_info_network_slicing_config (7675131833885031563) -->
+    <skip />
     <string name="band_mode_title" msgid="7988822920724576842">"Configura el mode de banda de senyal mòbil"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"S\'està carregant la llista de bandes…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Defineix"</string>

@@ -537,7 +537,6 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Bật mạng di động, tắt chế độ trên máy bay hoặc tắt chế độ trình tiết kiệm pin để thực hiện cuộc gọi."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Tắt chế độ trên máy bay để thực hiện cuộc gọi."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Tắt chế độ trên máy bay hoặc kết nối với mạng không dây để thực hiện cuộc gọi."</string>
-    <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"Điện thoại quá nóng"</b>\n\n"Không thể hoàn tất cuộc gọi này. Hãy thử lại khi điện thoại nguội bớt.\n\nBạn vẫn có thể thực hiện cuộc gọi khẩn cấp."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Thoát khỏi chế độ gọi lại khẩn cấp để thực hiện cuộc gọi không khẩn cấp."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"Chưa được đăng ký trên mạng."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"Mạng di động không khả dụng."</string>
@@ -915,6 +914,8 @@
     <string name="radio_info_nr_available" msgid="1321318331361249997">"Hỗ trợ NR:"</string>
     <string name="radio_info_nr_state" msgid="1337571996788535356">"Trạng thái NR:"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"Tần số NR:"</string>
+    <!-- no translation found for radio_info_network_slicing_config (7675131833885031563) -->
+    <skip />
     <string name="band_mode_title" msgid="7988822920724576842">"Đặt chế độ dải tần số"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Đang tải danh sách băng tần…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Đặt"</string>

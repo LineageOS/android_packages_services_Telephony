@@ -47,7 +47,7 @@
     <string name="registration_status_failed_try_later" msgid="7855389184910312091">"ఖాతా నమోదు విఫలమైంది: (<xliff:g id="REGISTRATION_ERROR_MESSAGE">%s</xliff:g>); తర్వాత ప్రయత్నిస్తుంది"</string>
     <string name="registration_status_invalid_credentials" msgid="8896714049938660777">"ఖాతా నమోదు విఫలమైంది: చెల్లని వినియోగదారు పేరు లేదా పాస్‌వర్డ్."</string>
     <string name="registration_status_server_unreachable" msgid="3832339558868965604">"ఖాతా నమోదు విఫలమైంది: సర్వర్ పేరు తనిఖీ చేయండి."</string>
-    <string name="third_party_account_summary" msgid="5918779106950859167">"ఈ ఖాతా ప్రస్తుతం <xliff:g id="ACCOUNT_OWNER">%s</xliff:g> యాప్‌ ద్వారా ఉపయోగంలో ఉంది."</string>
+    <string name="third_party_account_summary" msgid="5918779106950859167">"ఈ ఖాతా ప్రస్తుతం <xliff:g id="ACCOUNT_OWNER">%s</xliff:g> అనువర్తనం ద్వారా ఉపయోగంలో ఉంది."</string>
     <string name="sip_edit_title" msgid="7438891546610820307">"SIP ఖాతా వివరాలు"</string>
     <string name="sip_edit_new_title" msgid="8394790068979636381">"SIP ఖాతా వివరాలు"</string>
     <string name="domain_address_title" msgid="8238078615181248579">"సర్వర్"</string>

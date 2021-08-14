@@ -144,7 +144,7 @@
     <string name="stk_cc_ss_to_ussd_error" msgid="8330749347425752192">"SS అభ్యర్థన USSD అభ్యర్థనకు మార్చబడింది"</string>
     <string name="stk_cc_ss_to_ss_error" msgid="8297155544652134278">"కొత్త SS అభ్యర్థనకు మార్చబడింది"</string>
     <string name="stk_cc_ss_to_dial_video_error" msgid="4255261231466032505">"SS అభ్యర్థన వీడియో కాల్‌కి మార్చబడింది"</string>
-    <string name="fdn_check_failure" msgid="1833769746374185247">"మీ ఫోన్ యాప్‌ యొక్క ఫిక్స్‌డ్ డయలింగ్ నంబర్‌ల సెట్టింగ్ ప్రారంభించబడింది. తత్ఫలితంగా, కాల్ సంబంధిత లక్షణాల్లో కొన్ని పని చేయడం లేదు."</string>
+    <string name="fdn_check_failure" msgid="1833769746374185247">"మీ ఫోన్ అనువర్తనం యొక్క ఫిక్స్‌డ్ డయలింగ్ నంబర్‌ల సెట్టింగ్ ప్రారంభించబడింది. తత్ఫలితంగా, కాల్ సంబంధిత లక్షణాల్లో కొన్ని పని చేయడం లేదు."</string>
     <string name="radio_off_error" msgid="8321564164914232181">"ఈ సెట్టింగ్‌లను వీక్షించడానికి ముందు రేడియోను ప్రారంభించండి."</string>
     <string name="close_dialog" msgid="1074977476136119408">"సరే"</string>
     <string name="enable" msgid="2636552299455477603">"ఆన్ చేయి"</string>
@@ -537,7 +537,6 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"కాల్ చేయడానికి మొబైల్ నెట్‌వర్క్‌ను ఆన్ చేయండి, అలాగే ఎయిర్‌ప్లైన్ మోడ్ లేదా బ్యాటరీ సేవర్ మోడ్ ఆన్‌లో ఉంటే ఆఫ్ చేయండి."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"కాల్ చేయడానికి ఎయిర్‌ప్లైన్ మోడ్‌ను ఆఫ్ చేయండి."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"కాల్ చేయడానికి ఎయిర్‌ప్లైన్ మోడ్‌ను ఆఫ్ చేయండి లేదా వైర్‌లెస్ నెట్‌వర్క్‌కు కనెక్ట్ చేయండి."</string>
-    <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"ఫోన్ చాలా వేడిగా ఉంది"</b>\n\n"ఈ కాల్‌ను పూర్తి చేయడం సాధ్యపడదు. మీ ఫోన్ చల్లబడినప్పుడు మళ్లీ ట్రై చేయండి.\n\nమీరు ఇప్పటికీ ఎమర్జెన్సీ కాల్స్ చేయవచ్చు."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"సాధారణ కాల్ చేయడానికి అత్యవసర కాల్‌బ్యాక్ మోడ్ నుండి నిష్క్రమించండి."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"నెట్‌వర్క్‌లో నమోదు కాలేదు."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"మొబైల్ నెట్‌వర్క్ అందుబాటులో లేదు."</string>
@@ -915,6 +914,8 @@
     <string name="radio_info_nr_available" msgid="1321318331361249997">"NR అందుబాటులో ఉంది:"</string>
     <string name="radio_info_nr_state" msgid="1337571996788535356">"NR స్టేటస్:"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR ఫ్రీక్వెన్సీ:"</string>
+    <!-- no translation found for radio_info_network_slicing_config (7675131833885031563) -->
+    <skip />
     <string name="band_mode_title" msgid="7988822920724576842">"రేడియో బ్యాండ్ మోడ్‌ను సెట్ చేయండి"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"బ్యాండ్ జాబితాను లోడ్ చేస్తోంది…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"సెట్ చేయి"</string>
