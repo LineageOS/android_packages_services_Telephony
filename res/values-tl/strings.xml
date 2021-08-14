@@ -827,8 +827,7 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"Hindi maaaring tumawag dahil mayroon nang dina-dial na isa pang papalabas na tawag."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"Hindi maaaring tumawag dahil mayroong hindi nasagot na papasok na tawag. Sagutin o tanggihan ang papasok na tawag bago gumawa ng bagong pagtawag."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"Hindi maaaring tumawag dahil na-disable ang pagtawag gamit ang ro.telephony.disable-call na system property."</string>
-    <!-- no translation found for callFailed_too_many_calls (2761754044990799580) -->
-    <skip />
+    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"Hindi puwedeng tumawag dahil mayroon nang dalawang tawag na kasalukuyang nagaganap. Idiskonekta ang isa sa mga tawag o i-merge ang mga ito sa isang conference bago gumawa ng bagong pagtawag."</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"Para gamitin ang <xliff:g id="SUPP_SERVICE">%s</xliff:g>, tiyaking naka-on ang mobile data. Maaari mo itong baguhin sa mga setting ng mobile network."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"Para gamitin ang <xliff:g id="SUPP_SERVICE">%s</xliff:g>, tiyaking naka-on ang mobile data at data roaming. Maaari mong baguhin ang mga ito sa mga setting ng mobile network."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"Para gamitin ang <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>, tiyaking naka-on ang mobile data para sa SIM na <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. Maaari mo itong baguhin sa mga setting ng mobile network."</string>
