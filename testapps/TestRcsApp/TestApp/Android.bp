@@ -22,7 +22,6 @@ android_app {
     ],
 
     libs: ["org.apache.http.legacy"],
-    uses_libs: ["org.apache.http.legacy"],
 
     certificate: "platform",
     privileged: true,
