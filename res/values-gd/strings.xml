@@ -23,15 +23,18 @@
     <string name="private_num">Àireamh phrìobhaideach</string>
     <string name="payphone">Bothan-fòn</string>
     <string name="onHold">’Ga chumail</string>
+    <string name="carrier_mmi_msg_title">Teachdaireachd <xliff:g id="mmicarrier" example="T-Mobile">%s</xliff:g></string>
+    <string name="default_carrier_mmi_msg_title">Teachdaireachd a’ ghiùlanair</string>
     <string name="mmiStarted">Air còd MMI a thòiseachadh</string>
     <string name="ussdRunning">Tha còd USSD a ruith\u2026</string>
     <string name="mmiCancelled">Chaidh sgur dhen chòd MMI</string>
     <string name="cancel">Sguir dheth</string>
+    <string name="enter_input">Feumaidh teachdaireachd USSD a bhith eadar <xliff:g id="min_len">%1$d</xliff:g> ’s <xliff:g id="max_len">%2$d</xliff:g> caractar a dh’fhaid. Feuch ris a-rithist.</string>
     <string name="manageConferenceLabel">Stiùir a’ ghairm coinneimh</string>
     <string name="ok">Ceart ma-thà</string>
     <string name="audio_mode_speaker">Glaodhaire</string>
     <string name="audio_mode_earpiece">Cnap-cluaise a’ handset</string>
-    <string name="audio_mode_wired_headset">Headset uèirichte</string>
+    <string name="audio_mode_wired_headset">Seata-cinn uèirichte</string>
     <string name="audio_mode_bluetooth">Bluetooth</string>
     <string name="wait_prompt_str">An cuir thu na tònaichean seo?\n</string>
     <string name="pause_prompt_str">A’ cur thònaichean\n</string>
@@ -42,11 +45,12 @@
     <string name="no_vm_number">Tha àireamh a’ phuist-ghutha a dhìth</string>
     <string name="no_vm_number_msg">Chan eil àireamh puist-ghutha air a’ chairt SIM.</string>
     <string name="add_vm_number_str">Cuir àireamh ris</string>
+    <string name="voice_number_setting_primary_user_only">Chan urrainn ach am prìomh-chleachdaiche roghainnean ghairmean puist-ghutha atharrachadh.</string>
     <string name="puk_unlocked">Chaidh a’ chairt SIM agad a dhì-bhacadh. Tha a’ ghlas ’ga toirt far an fhòn agad\u2026</string>
     <string name="label_ndp">PIN airson an lìonraidh SIM a neo-ghlasadh</string>
     <string name="sim_ndp_unlock_text">Thoir a’ ghlas dheth</string>
     <string name="sim_ndp_dismiss_text">Leig seachad</string>
-    <string name="requesting_unlock">Ag iarraidh neo-ghlasadh lìonraidh…</string>
+    <string name="requesting_unlock">Ag iarraidh neo-ghlasadh lìonraidh\u2026</string>
     <string name="unlock_failed">Cha deach le iarrtas neo-ghlasadh an lìonraidh.</string>
     <string name="unlock_success">Chaidh a’ ghlas a thoirt far an lìonraidh.</string>
     <string name="mobile_network_settings_not_available">Chan eil roghainnean lìonra mobile ri fhaighinn airson a’ cleachdaiche seo</string>
@@ -73,6 +77,10 @@
     <string name="voicemail">Post-gutha</string>
     <string name="voicemail_settings_with_label">Post-gutha (<xliff:g id="subscriptionlabel" example="Mock Carrier">%s</xliff:g>)</string>
     <string name="voicemail_abbreviated">Post-g:</string>
+    <string name="make_and_receive_calls">Cuir ⁊ faigh gairmean</string>
+    <string name="smart_forwarding_settings_menu">Sìneadh air adhart tapaidh</string>
+    <string name="smart_forwarding_settings_menu_summary">Mura gabh an dàrna àireamh ruigsinn, sìn air adhart na gairmean gun àireamh eile agad an-còmhnaidh</string>
+    <string name="voicemail_notifications_preference_title">Brathan</string>
     <string name="cell_broadcast_settings">Craolaidhean èiginn</string>
     <string name="call_settings">Roghainnean ghairmean</string>
     <string name="additional_gsm_call_settings">Barrachd roghainnean</string>
@@ -117,9 +125,9 @@
     <string name="call_settings_admin_user_only">Chan urrainn ach cleachdaiche a tha ’na rianaire na roghainnean atharrachadh air na gairmean.</string>
     <string name="call_settings_with_label">Roghainnean (<xliff:g id="subscriptionlabel" example="Mock Carrier">%s</xliff:g>)</string>
     <string name="error_updating_title">Mearachd ann an roghainnean ghairmean</string>
-    <string name="reading_settings">A’ leughadh nan roghainnean…</string>
-    <string name="updating_settings">Ag ùrachadh nan roghainnean…</string>
-    <string name="reverting_settings">A’ tilleadh nan roghainnean…</string>
+    <string name="reading_settings">A’ leughadh nan roghainnean\u2026</string>
+    <string name="updating_settings">Ag ùrachadh nan roghainnean\u2026</string>
+    <string name="reverting_settings">A’ tilleadh nan roghainnean\u2026</string>
     <string name="response_error">Fhuaras freagairt ris nach robh dùil on lìonra.</string>
     <string name="exception_error">Thachair mearachd leis an lìonra no leis a’ chairt SIM.</string>
     <string name="stk_cc_ss_to_dial_error">Chaidh iarrtas SS atharrachadh gu gairm àbhaisteach</string>
@@ -150,10 +158,11 @@
     <string name="vm_change_pin_error_too_short">Tha an am PIN ùr ro ghoirid.</string>
     <string name="vm_change_pin_error_too_long">Tha an am PIN ùr ro fhada.</string>
     <string name="vm_change_pin_error_too_weak">Tha am PIN ùr ro lag. Cha bu chòir do shreath leantainneach a bhith a broinn facail-fhaire no an t-aon àireamh a-rithist.</string>
-    <string name="vm_change_pin_error_mismatch">Chan eil an seann PIN co-ionnann</string>
+    <string name="vm_change_pin_error_mismatch">Chan eil an seann PIN co-ionnann.</string>
     <string name="vm_change_pin_error_invalid">Tha caractaran mì-dhligheach sa PhIN ùr.</string>
     <string name="vm_change_pin_error_system_error">Cha deach leinn am PIN atharrachadh</string>
     <string name="vvm_unsupported_message_format">Cha chuirear taic ris an seòrsa de theachdaireachd seo, cuir fòn gu <xliff:g id="number" example="*86">%s</xliff:g> airson èisteachd.</string>
+    <string name="network_settings_title">Lìonra mobile</string>
     <string name="label_available">Lìonraidhean a tha ri làimh</string>
     <string name="load_networks_progress">’Gan lorg\u2026</string>
     <string name="empty_networks_list">Cha deach lìonra sam bith a lorg.</string>
@@ -163,10 +172,14 @@
     <string name="connect_later">Cha ghabh ceangal a dhèanamh ris an lìonra seo an-dràsta. Feuch ris a-rithist an ceann greis.</string>
     <string name="registration_done">Chaidh do chlàradh air an lìonra.</string>
     <string name="already_auto">Tha sinn ’ga thaghadh gu fèin-obrachail mu thràth.</string>
+    <string name="select_automatically">Tagh an lìonra gu fèin-obrachail</string>
+    <string name="manual_mode_disallowed_summary">Chan eil seo ri fhaighinn nuair a bhios tu ceangailte ri %1$s</string>
+    <string name="network_select_title">Lìonra</string>
     <string name="register_automatically">Clàradh fèin-obrachail\u2026</string>
     <string name="preferred_network_mode_title">An seòrsa lìonraidh as fheàrr leat</string>
     <string name="preferred_network_mode_summary">Atharraich modh obrachaidh an lìonraidh</string>
     <string name="preferred_network_mode_dialogtitle">An seòrsa lìonraidh as fheàrr leat</string>
+    <string name="forbidden_network">(toirmisgte)</string>
     <string name="choose_network_title">Tagh lìonraidh</string>
     <string name="network_disconnected">Gun cheangal</string>
     <string name="network_connected">Ceangailte</string>
@@ -196,7 +209,7 @@
         <item>LTE/TDSCDMA/GSM/WCDMA</item>
         <item>TDSCDMA/CDMA/EVDO/GSM/WCDMA </item>
         <item>LTE/TDSCDMA/CDMA/EVDO/GSM/WCDMA</item>
-        <item>NR only</item>
+        <item>NR a-mhàin</item>
         <item>NR/LTE</item>
         <item>NR/LTE/CDMA/EvDo</item>
         <item>NR/LTE/GSM/WCDMA</item>
@@ -208,7 +221,7 @@
         <item>NR/LTE/TDSCDMA/GSM/WCDMA</item>
         <item>NR/LTE/TDSCDMA/CDMA/EvDo/GSM/WCDMA</item>
     </string-array>
-    <string name="preferred_network_mode_wcdma_perf_summary">Modh lìonraidh as annsa: ’s fheàrr leam WCDMA</string>
+    <string name="preferred_network_mode_wcdma_perf_summary">Modh lìonraidh as annsa: B’ fheàrr leam WCDMA</string>
     <string name="preferred_network_mode_gsm_only_summary">Modh lìonraidh as annsa: GSM a-mhàin</string>
     <string name="preferred_network_mode_wcdma_only_summary">Modh lìonraidh as annsa: WCDMA a-mhàin</string>
     <string name="preferred_network_mode_gsm_wcdma_summary">Modh lìonraidh as annsa: GSM / WCDMA</string>
@@ -220,6 +233,7 @@
     <string name="preferred_network_mode_lte_summary">Modh lìonraidh as annsa: LTE </string>
     <string name="preferred_network_mode_lte_gsm_wcdma_summary">Modh lìonraidh as annsa: GSM/WCDMA/LTE</string>
     <string name="preferred_network_mode_lte_cdma_evdo_summary">Modh lìonraidh as annsa: CDMA+LTE/EvDo</string>
+    <string name="preferred_network_mode_lte_cdma_evdo_gsm_wcdma_summary">Modh lìonraidh as annsa: LTE/CDMA/EvDo/GSM/WCDMA</string>
     <string name="preferred_network_mode_global_summary">Modh lìonra as annsa: Uile-choitcheann</string>
     <string name="preferred_network_mode_lte_wcdma_summary">Modh lìonraidh as annsa: LTE / WCDMA</string>
     <string name="preferred_network_mode_lte_gsm_umts_summary">Modh lìonraidh as annsa: LTE / GSM / UMTS</string>
@@ -234,21 +248,57 @@
     <string name="preferred_network_mode_lte_tdscdma_gsm_wcdma_summary">Modh lìonraidh as annsa: LTE/TDSCDMA/GSM/WCDMA</string>
     <string name="preferred_network_mode_tdscdma_cdma_evdo_gsm_wcdma_summary">Modh lìonraidh as annsa: TDSCDMA/CDMA/EvDo/GSM/WCDMA</string>
     <string name="preferred_network_mode_lte_tdscdma_cdma_evdo_gsm_wcdma_summary">Modh lìonraidh as annsa: LTE/TDSCDMA/CDMA/EvDo/GSM/WCDMA</string>
+    <string name="preferred_network_mode_nr_only_summary">Modh lìonraidh as annsa: NR a-mhàin</string>
+    <string name="preferred_network_mode_nr_lte_summary">Modh lìonraidh as annsa: NR / LTE</string>
+    <string name="preferred_network_mode_nr_lte_cdma_evdo_summary">Modh lìonraidh as annsa: NR/LTE/CDMA/EvDo</string>
+    <string name="preferred_network_mode_nr_lte_gsm_wcdma_summary">Modh lìonraidh as annsa: NR/LTE/GSM/WCDMA</string>
+    <string name="preferred_network_mode_nr_lte_cdma_evdo_gsm_wcdma_summary">Modh lìonraidh as annsa: NR/LTE/CDMA/EvDo/GSM/WCDMA</string>
+    <string name="preferred_network_mode_nr_lte_wcdma_summary">Modh lìonraidh as annsa: NR/LTE/WCDMA</string>
+    <string name="preferred_network_mode_nr_lte_tdscdma_summary">Modh lìonraidh as annsa: NR/LTE/TDSCDMA</string>
+    <string name="preferred_network_mode_nr_lte_tdscdma_gsm_summary">Modh lìonraidh as annsa: NR/LTE/TDSCDMA/GSM</string>
+    <string name="preferred_network_mode_nr_lte_tdscdma_wcdma_summary">Modh lìonraidh as annsa: NR/LTE/TDSCDMA/WCDMA</string>
+    <string name="preferred_network_mode_nr_lte_tdscdma_gsm_wcdma_summary">Modh lìonraidh as annsa: NR/LTE/TDSCDMA/GSM/WCDMA</string>
+    <string name="preferred_network_mode_nr_lte_tdscdma_cdma_evdo_gsm_wcdma_summary">Modh lìonraidh as annsa: NR/LTE/TDSCDMA/CDMA/EvDo/GSM/WCDMA</string>
+    <string name="call_category">Gairmean</string>
+    <string name="network_operator_category">Lìonra</string>
     <string name="enhanced_4g_lte_mode_title">Modh 4G LTE leasaichte</string>
     <string name="enhanced_4g_lte_mode_summary">Cleachd seirbheisean LTE airson a’ ghuth is conaltradh eile a leasachadh (mholamaid seo)</string>
+    <string name="enhanced_4g_lte_mode_summary_o2">Cleachd seirbheisean 4G airson a’ ghuth is conaltradh eile a leasachadh (mholamaid seo)</string>
+    <string-array name="enhanced_4g_lte_mode_sumary_variant">
+        <item>@string/enhanced_4g_lte_mode_summary</item>
+        <item>@string/enhanced_4g_lte_mode_summary</item>
+        <item>@string/enhanced_4g_lte_mode_summary_o2</item>
+    </string-array>
     <string name="data_enabled">Tha an dàta an comas</string>
     <string name="data_enable_summary">Ceadaich cleachdadh dàta</string>
     <string name="dialog_alert_title">An aire</string>
+    <string name="roaming">Air fàrsan</string>
     <string name="roaming_enable">Ceangail ri seirbheisean dàta air fàrsan</string>
     <string name="roaming_disable">Ceangail ri seirbheisean dàta air fàrsan</string>
     <string name="roaming_reenable_message">Tha dàta air fàrsan dheth. Thoir gnogag airson a chur air.</string>
+    <string name="roaming_enabled_message">Dh’fhaoidte gun èirich cosgaisean air fàrsan. Thoir gnogag gus atharrachadh.</string>
     <string name="roaming_notification_title">Chaill sinn an ceangal ri dàta mobile</string>
+    <string name="roaming_on_notification_title">Tha dàta air fàrsan air</string>
     <string name="roaming_warning">Dh’fhaoidte gun èirich cosgaisean mòra.</string>
     <string name="roaming_check_price_warning">Bruidhinn ri solaraiche an lìonraidh agad a thaobh phrìsean.</string>
     <string name="roaming_alert_title">An ceadaich thu dàta air fàrsan?</string>
+    <string name="limited_sim_function_notification_title">Gleusan cuingichte an t-SIM</string>
+    <string name="limited_sim_function_with_phone_num_notification_message">Dh’fhaoidte gun dèid gairmean is seirbheisean le <xliff:g id="carrier_name">%1$s</xliff:g> a bhacadh fhad ’s a chleachdas tu <xliff:g id="phone_number">%2$s</xliff:g>.</string>
+    <string name="limited_sim_function_notification_message">Dh’fhaoidte gun dèid gairmean is seirbheisean le <xliff:g id="carrier_name">%1$s</xliff:g> a bhacadh fhad ’s a chleachdas tu SIM eile.</string>
     <string name="data_usage_title">Caitheamh dàta le aplacaidean</string>
+    <string name="data_usage_template">Chaidh <xliff:g name="amount" example="200 MB">%1$s</xliff:g> dhen dàta mobile a chaitheamh <xliff:g name="date_range" example="Jan 1 -- Feb 2">%2$s</xliff:g></string>
+    <string name="advanced_options_title">Adhartach</string>
+    <string name="carrier_settings_euicc">Giùlanair</string>
     <string name="keywords_carrier_settings_euicc">carrier, esim, sim, euicc, switch carriers, add carrier, giùlanair, geàrr leum gu giùlanair eile, cuir ris giùlanair</string>
+    <string name="carrier_settings_euicc_summary"><xliff:g id="carrier_name">%1$s</xliff:g> — <xliff:g id="phone_number">%2$s</xliff:g></string>
+    <string name="mobile_data_settings_title">Dàta mobile</string>
+    <string name="mobile_data_settings_summary">Inntrig dàta le lìonra mobile</string>
+    <string name="data_usage_disable_mobile">An cuir thu dheth dàta mobile?</string>
+    <string name="sim_selection_required_pref">Tha feum air taghadh</string>
+    <string name="sim_change_data_title">An atharraich thu SIM an dàta?</string>
+    <string name="sim_change_data_message">An cleachd thu <xliff:g id="new_sim">%1$s</xliff:g> an àite <xliff:g id="old_sim">%2$s</xliff:g> airson dàta mobile?</string>
     <string name="wifi_calling_settings_title">Gairm WiFi</string>
+    <string name="video_calling_settings_title">Gairm video giùlanair</string>
     <string name="gsm_umts_options">Roghainnean GSM/UMTS</string>
     <string name="cdma_options">Roghainnean CDMA</string>
     <string name="throttle_data_usage">Caitheamh dàta</string>
@@ -261,6 +311,7 @@
     <string name="throttle_data_rate_reduced_subtext">Chaidh thu thairis air a’ chrìoch de <xliff:g id="used">%1$s</xliff:g>\nThèid reat an dàta ìsleachadh gu <xliff:g id="used">%2$d</xliff:g> Kb/s</string>
     <string name="throttle_time_frame_subtext">Dh’fhalbh <xliff:g id="used">%1$d</xliff:g>\u066A dhen chuairt ort\nTòisichidh an ath-ùine an ceann <xliff:g id="used">%2$d</xliff:g> là(ithean) (<xliff:g id="used">%3$s</xliff:g>)</string>
     <string name="throttle_rate_subtext">Thèid reat an dàta ìsleachadh gu <xliff:g id="used">%1$d</xliff:g> Kb/s nuair a thèid thu thar crìoch cleachdadh dàta</string>
+    <string name="throttle_help_subtext">Barrachd fiosrachaidh mu phoileasaidh cleachdadh dàta mobile a’ ghiùlanair agad</string>
     <string name="cell_broadcast_sms">SMS craolaidh mobile</string>
     <string name="enable_disable_cell_bc_sms">SMS craolaidh mobile</string>
     <string name="cell_bc_sms_enable">Tha SMS craolaidh mobile air</string>
@@ -348,6 +399,7 @@
     <string name="enable_disable_multi_category">Roinnean-seòrsa iomadach</string>
     <string name="multi_category_enable">Tha na roinnean-seòrsa iomadach air</string>
     <string name="multi_category_disable">Tha na roinnean-seòrsa iomadach dheth</string>
+    <string name="network_recommended">\u0020(mholamaid seo)</string>
     <string name="network_lte">LTE (mholamaid seo)</string>
     <string name="network_4G">4G (mholamaid seo)</string>
     <string name="network_global">Uile-choitcheann</string>
@@ -397,13 +449,14 @@
     <string name="menu_add">Cuir neach-aithne ris</string>
     <string name="menu_edit">Deasaich an neach-aithne</string>
     <string name="menu_delete">Sguab às an neach-aithne</string>
+    <string name="menu_dial">Daitheal an neach-aithne</string>
     <string name="get_pin2">Sgrìobh PIN2</string>
     <string name="name">Ainm</string>
     <string name="number">Àireamh</string>
     <string name="save">Sàbhail</string>
     <string name="add_fdn_contact">Cuir àireamh daithealaidh socraichte ris</string>
     <string name="adding_fdn_contact">Cuir àireamh daithealaidh socraichte ris\u2026</string>
-    <string name="fdn_contact_added">Chaidh àireamh daithealaidh socraichte a chur ris</string>
+    <string name="fdn_contact_added">Chaidh àireamh daithealaidh socraichte a chur ris.</string>
     <string name="edit_fdn_contact">Deasaich àireamh daithealaidh socraichte</string>
     <string name="updating_fdn_contact">Ag ùrachadh àireamh daithealaidh socraichte\u2026</string>
     <string name="fdn_contact_updated">Chaidh àireamh daithealaidh socraichte ùrachadh.</string>
@@ -411,6 +464,7 @@
     <string name="deleting_fdn_contact">A’ sguabadh às àireamh daithealaidh socraichte\u2026</string>
     <string name="fdn_contact_deleted">Chaidh àireamh daithealaidh socraichte a sguabadh às.</string>
     <string name="pin2_invalid">Cha deach àireamh daithealaidh socraichte ùrachadh on a chuir thu PIN ceàrr a-steach.</string>
+    <string name="fdn_invalid_number">Cha deach an FDN ùrachadh on a tha an àireamh nas fhaide na <xliff:g id="FDN_NUMBER_LIMIT_LENGTH">%d</xliff:g> àireamh.</string>
     <string name="pin2_or_fdn_invalid">Cha deach àireamh daithealaidh socraichte ùrachadh. Bha PIN2 ceàrr no chaidh an àireamh fòn a dhiùltadh.</string>
     <string name="fdn_failed">Dh’fhàillig le gnìomh àireamhan daithealaidh socraichte.</string>
     <string name="simContacts_emptyLoading">’Gan leughadh o chairt SIM\u2026</string>
@@ -466,6 +520,8 @@
     <string name="notification_voicemail_text_format">Daitheal <xliff:g id="voicemail_number">%s</xliff:g></string>
     <string name="notification_voicemail_no_vm_number">Chan eil fios dè àireamh a’ phuist-ghutha</string>
     <string name="notification_network_selection_title">Gun seirbheis</string>
+    <string name="notification_network_selection_text">Chan eil lìonra<xliff:g id="operator_name">%s</xliff:g> a thagh thu ri fhaighinn</string>
+    <string name="incall_error_power_off" product="watch">Gus an lìonra mobile a chur air, cuir dheth am modh itealain no modh caomhnaiche a’ bhataraidh.</string>
     <string name="incall_error_power_off" product="default">Cuir dheth am modh itealain gus gairm a dhèanamh.</string>
     <string name="incall_error_power_off_wfc">Cuir dheth am modh itealain no ceangail ri lìonra uèirleas gus gairm a dhèanamh.</string>
     <string name="incall_error_ecm_emergency_only">Fàg modh gairm-èiginn air ais airson gairm neo-èiginneach a dhèanamh.</string>
@@ -474,10 +530,13 @@
     <string name="incall_error_out_of_service_wfc">Chan eil lìonra mobile ri làimh. Ceangail ri lìonra uèirleas gus gairm a dhèanamh.</string>
     <string name="incall_error_no_phone_number_supplied">Airson gairm a chur, cuir a-steach àireamh dhligheach.</string>
     <string name="incall_error_call_failed">Dh’fhàillig leis a’ ghairm.</string>
+    <string name="incall_error_cannot_add_call">Cha ghabh a’ ghairm a chur ris aig an àm seo. Feuch an dèan thu conaltradh le teachdaireachd.</string>
     <string name="incall_error_supp_service_unknown">Chan eil taic ann ris an t-seirbheis seo</string>
     <string name="incall_error_supp_service_switch">Chan urrainn dhuinn leum a ghearradh gu gairm eile.</string>
+    <string name="incall_error_supp_service_resume">Cha ghabh leantainn air a’ ghairm.</string>
     <string name="incall_error_supp_service_separate">Chan urrainn dhuinn a’ ghairm a sgaradh.</string>
     <string name="incall_error_supp_service_transfer">Cha ghabh a shìneadh air adhart.</string>
+    <string name="incall_error_supp_service_conference">Cha ghabh na gairmean co-aonadh.</string>
     <string name="incall_error_supp_service_reject">Cha ghabh a’ ghairm a dhiùltadh.</string>
     <string name="incall_error_supp_service_hangup">Cha ghabh crìoch a chur air a’ ghairm/na gairmean.</string>
     <string name="incall_error_supp_service_hold">Cha ghabh gairmean a chumail.</string>
@@ -490,12 +549,13 @@
     <string name="single_emergency_number_title">Àireamh èiginn</string>
     <string name="numerous_emergency_numbers_title">Àireamhan èiginn</string>
     <string name="emergency_call_shortcut_hint">Thoir gnogag air a-rithist gus fòn a chur gu <xliff:g id="emergency_number">%s</xliff:g></string>
-    <string name="emergency_enable_radio_dialog_message">A’ cur an rèidio air…</string>
+    <string name="emergency_enable_radio_dialog_message">A’ cur an rèidio air\u2026</string>
     <string name="emergency_enable_radio_dialog_retry">Chan eil seirbheis ann. A’ feuchainn ris a-rithist\u2026</string>
     <string name="radio_off_during_emergency_call">Chan urrainn dhut am modh itealain a chur air rè gairm-èiginn.</string>
     <string name="dial_emergency_error">Cha ghabh gairm a dhèanamh. Chan eil <xliff:g id="non_emergency_number">%s</xliff:g> ’na h-àireamh-èiginn.</string>
     <string name="dial_emergency_empty_error">Cha ghabh gairm a dhèanamh. Daitheal àireamh-èiginn.</string>
     <string name="dial_emergency_calling_not_available">Chan eil gairmean èiginn ri làimh</string>
+    <string name="pin_puk_system_user_only">Chan fhaod ach sealbhadair an uidheim còd PIN/PUK a chur a-steach.</string>
     <string name="police_type_description">Am poileas</string>
     <string name="ambulance_type_description">Carbad-eiridinn</string>
     <string name="fire_type_description">Seirbeis-smàlaidh</string>
@@ -527,6 +587,7 @@
        &lt;a href=\"<xliff:g example="http://www.google.com" id="url">http://support.google.com/mobile?p=telephony_rtt</xliff:g>\"&gt;Barrachd fiosrachaidh&lt;/a&gt;
        &lt;br&gt;&lt;br&gt; - Thèid gairmean RTT a shàbhaladh ’nan tar-sgrìobhaidhean teachdaireachd
        &lt;br&gt; - Chan eil RTT ri fhaighinn airson gairmean video</string>
+    <string name="no_rtt_when_roaming">An aire: Chan eil RTT ri fhaighinn fhad ’s a bhios tu air fàrsan</string>
     <string-array name="tty_mode_entries">
         <item>Tha am fònadh teacsa dheth</item>
         <item>Fònadh teacsa slàn</item>
@@ -568,6 +629,7 @@
     <string name="phone_entered_ecm_text">Chaidh thu dhan mhodh gairm-èiginn air ais</string>
     <string name="phone_in_ecm_notification_title">Modh gairm-èiginn air ais</string>
     <string name="phone_in_ecm_call_notification_text">Chaidh an ceangal dàta a chur à comas</string>
+    <string name="phone_in_ecm_notification_complete_time">Cha bhi ceangal dàta ann gu ruige <xliff:g id="completeTime">%s</xliff:g></string>
     <plurals name="alert_dialog_exit_ecm">
         <item quantity="one">Bidh am fòn agad sa mhodh gairm-èiginn air ais fad <xliff:g id="count">%s</xliff:g> mhionaid. Fhad ’s a bhios tu sa mhodh seo, chan urrainn dhut aplacaid le ceangal dàta a chleachdadh. A bheil thu airson fàgail an-dràsta?</item>
         <item quantity="two">Bidh am fòn agad sa mhodh gairm-èiginn air ais fad <xliff:g id="count">%s</xliff:g> mhionaid. Fhad ’s a bhios tu sa mhodh seo, chan urrainn dhut aplacaid le ceangal dàta a chleachdadh. A bheil thu airson fàgail an-dràsta?</item>
@@ -585,6 +647,14 @@
     <string name="alert_dialog_yes">Tha</string>
     <string name="alert_dialog_no">Chan eil</string>
     <string name="alert_dialog_dismiss">Leig seachad</string>
+    <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint">Tha am fòn sa mhodh gairm-èiginn air ais</string>
+    <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint">Gu ruige <xliff:g id="completeTime">%s</xliff:g></string>
+    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint">
+        <item quantity="one">Bidh am fòn sa mhodh gairm-èiginn air ais fad <xliff:g id="count">%s</xliff:g> mhionaid.\nA bheil thu airson fhàgail an-dràsta?</item>
+        <item quantity="two">Bidh am fòn sa mhodh gairm-èiginn air ais fad <xliff:g id="count">%s</xliff:g> mhionaid.\nA bheil thu airson fhàgail an-dràsta?</item>
+        <item quantity="few">Bidh am fòn sa mhodh gairm-èiginn air ais fad <xliff:g id="count">%s</xliff:g> mionaidean.\nA bheil thu airson fhàgail an-dràsta?</item>
+        <item quantity="other">Bidh am fòn sa mhodh gairm-èiginn air ais fad <xliff:g id="count">%s</xliff:g> mionaid.\nA bheil thu airson fhàgail an-dràsta?</item>
+    </plurals>
     <string name="voicemail_provider">Seirbheis</string>
     <string name="voicemail_settings">Suidheachadh</string>
     <string name="voicemail_number_not_set">&lt;Cha deach a suidheachadh&gt;</string>
@@ -623,6 +693,14 @@
     </string>
     <string name="callFailed_cdma_call_limit">        Tha cus ghairmean gnìomhach ann. Cuir crìoch air gairm no co-aonaich cuid dhen fheadhainn a tha ann mus cuir thu tè ùr.
     </string>
+    <string name="callFailed_imei_not_accepted">        Chan urrainn dhuinn ceangal a dhèanamh, cuir a-steach cairt SIM dhligheach.
+    </string>
+    <string name="callFailed_wifi_lost">        Chaidh an ceangal WiFi air chall.  Thàinig a’ ghairm gu crìoch.
+    </string>
+    <string name="dialFailed_low_battery">Cha ghabh a’ ghairm video a chur air sàilleibh bataraidh fann.</string>
+    <string name="callFailed_low_battery">Thàinig a’ ghairm video gu crìoch on a tha am bataraidh fann.</string>
+    <string name="callFailed_emergency_call_over_wfc_not_available">Chan eil gairmean-èiginn air WiFi ri fhaighinn far a bheil thu.</string>
+    <string name="callFailed_wfc_service_not_available_in_this_location">Chan eil gairmean air WiFi ri fhaighinn far a bheil thu.</string>
     <string name="change_pin_title">Atharraich PIN a’ phuist-gutha</string>
     <string name="change_pin_continue_label">Lean air adhart</string>
     <string name="change_pin_cancel_label">Sguir dheth</string>
@@ -635,12 +713,73 @@
     <string name="change_pin_confirm_pins_dont_match">Chan eil an dà PhIN co-ionnann</string>
     <string name="change_pin_succeeded">Chaidh PIN a’ phuist-ghutha ùrachadh</string>
     <string name="change_pin_system_error">Cha b’ urrainn dhuinn am PIN a shuidheachadh</string>
+    <string name="mobile_data_status_roaming_turned_off_subtext">Tha dàta air fàrsan dheth</string>
+    <string name="mobile_data_status_roaming_turned_on_subtext">Tha dàta air fàrsan air</string>
+    <string name="mobile_data_status_roaming_without_plan_subtext">Air fàrsan aig an àm seo, feumach air plana dàta</string>
+    <string name="mobile_data_status_roaming_with_plan_subtext">Air fàrsan aig an àm seo, tha plana dàta gnìomhach</string>
+    <string name="mobile_data_status_no_plan_subtext">Chan eil dàta mobile air fhàgail</string>
+    <string name="mobile_data_activate_prepaid">Chan eil dàta mobile air fhàgail</string>
+    <string name="mobile_data_activate_prepaid_summary">Cuir dàta mobile ris slighe <xliff:g id="provider_name">%s</xliff:g></string>
+    <string name="mobile_data_activate_roaming_plan">Chan eil plana air fàrsan ann</string>
+    <string name="mobile_data_activate_roaming_plan_summary">Cuir plana air fàrsan ris slighe <xliff:g id="provider_name">%s</xliff:g></string>
+    <string name="mobile_data_activate_footer">’S urrainn dhut dàta mobile no plana air fàrsan a chur ris leis a’ ghiùlanair agad, <xliff:g id="provider_name">%s</xliff:g>.</string>
+    <string name="mobile_data_activate_diag_title">An cuir thu dàta ris?</string>
+    <string name="mobile_data_activate_diag_message">Dh’fhaoidte gum feum thu dàta a chur ris slighe <xliff:g id="provider_name">%s</xliff:g></string>
+    <string name="mobile_data_activate_button">CUIR DÀTA RIS</string>
+    <string name="mobile_data_activate_cancel_button">SGUIR DHETH</string>
     <string name="clh_card_title_call_ended_txt">Crìoch na gairm</string>
+    <string name="clh_callFailed_powerOff_txt">Tha am modh itealain air</string>
+    <string name="clh_callFailed_simError_txt">Cha b’ urrainn dhuinn cairt SIM inntrigeadh</string>
     <string name="clh_incall_error_out_of_service_txt">Chan eil lìonra mobile ri làimh</string>
+    <string name="clh_callFailed_unassigned_number_txt">Tha duilgheadas leis an àireamh fòn a tha thu a’ daithealadh. Còd na mearachd: 1.</string>
+    <string name="clh_callFailed_no_route_to_destination_txt">Cha b’ urrainn dhuinn a’ ghairm a choileanadh. Còd na mearachd: 3.</string>
+    <string name="clh_callFailed_channel_unacceptable_txt">Cha b’ urrainn dhuinn a’ ghairm a choileanadh. Còd na mearachd: 6.</string>
+    <string name="clh_callFailed_operator_determined_barring_txt">Cha b’ urrainn dhuinn a’ ghairm a choileanadh. Còd na mearachd: 8.</string>
+    <string name="clh_callFailed_normal_call_clearing_txt">Cha b’ urrainn dhuinn a’ ghairm a choileanadh. Còd na mearachd: 16.</string>
     <string name="clh_callFailed_user_busy_txt">Tha an cleachdaiche trang</string>
+    <string name="clh_callFailed_no_user_responding_txt">Chan eil an cleachdaiche a’ freagairt</string>
+    <string name="clh_callFailed_user_alerting_txt">Cha b’ urrainn dhuinn a’ ghairm a choileanadh. Còd na mearachd: 19.</string>
     <string name="clh_callFailed_call_rejected_txt">Chaidh a’ ghairm a dhiùltadh</string>
     <string name="clh_callFailed_number_changed_txt">Tha an àireamh air atharrachadh</string>
+    <string name="clh_callFailed_pre_emption_txt">Cha b’ urrainn dhuinn a’ ghairm a choileanadh. Còd na mearachd: 25.</string>
+    <string name="clh_callFailed_non_selected_user_clearing_txt">Cha b’ urrainn dhuinn a’ ghairm a choileanadh. Còd na mearachd: 26.</string>
+    <string name="clh_callFailed_destination_out_of_order_txt">Cha b’ urrainn dhuinn a’ ghairm a choileanadh. Còd na mearachd: 27.</string>
     <string name="clh_callFailed_invalid_number_format_txt">Fòrmat àireamhan mì-dhligheach (àireamh neo-choileanta)</string>
+    <string name="clh_callFailed_facility_rejected_txt">Cha b’ urrainn dhuinn a’ ghairm a choileanadh. Còd na mearachd: 29.</string>
+    <string name="clh_callFailed_response_to_STATUS_ENQUIRY_txt">Cha b’ urrainn dhuinn a’ ghairm a choileanadh. Còd na mearachd: 30.</string>
+    <string name="clh_callFailed_normal_unspecified_txt">Cha b’ urrainn dhuinn a’ ghairm a choileanadh. Còd na mearachd: 31.</string>
+    <string name="clh_callFailed_no_circuit_available_txt">Cha b’ urrainn dhuinn a’ ghairm a choileanadh. Còd na mearachd: 34.</string>
+    <string name="clh_callFailed_network_out_of_order_txt">Cha b’ urrainn dhuinn a’ ghairm a choileanadh. Còd na mearachd: 38.</string>
+    <string name="clh_callFailed_temporary_failure_txt">Cha b’ urrainn dhuinn a’ ghairm a choileanadh. Còd na mearachd: 41.</string>
+    <string name="clh_callFailed_switching_equipment_congestion_txt">Cha b’ urrainn dhuinn a’ ghairm a choileanadh. Còd na mearachd: 42.</string>
+    <string name="clh_callFailed_access_information_discarded_txt">Cha b’ urrainn dhuinn a’ ghairm a choileanadh. Còd na mearachd: 43.</string>
+    <string name="clh_callFailed_requested_circuit_txt">Cha b’ urrainn dhuinn a’ ghairm a choileanadh. Còd na mearachd: 44.</string>
+    <string name="clh_callFailed_resources_unavailable_unspecified_txt">Cha b’ urrainn dhuinn a’ ghairm a choileanadh. Còd na mearachd: 47.</string>
+    <string name="clh_callFailed_quality_of_service_unavailable_txt">Cha b’ urrainn dhuinn a’ ghairm a choileanadh. Còd na mearachd: 49.</string>
+    <string name="clh_callFailed_requested_facility_not_subscribed_txt">Cha b’ urrainn dhuinn a’ ghairm a choileanadh. Còd na mearachd: 50.</string>
+    <string name="clh_callFailed_incoming_calls_barred_within_the_CUG_txt">Cha b’ urrainn dhuinn a’ ghairm a choileanadh. Còd na mearachd: 55.</string>
+    <string name="clh_callFailed_bearer_capability_not_authorized_txt">Cha b’ urrainn dhuinn a’ ghairm a choileanadh. Còd na mearachd: 57.</string>
+    <string name="clh_callFailed_bearer_capability_not_presently_available_txt">Cha b’ urrainn dhuinn a’ ghairm a choileanadh. Còd na mearachd: 58.</string>
+    <string name="clh_callFailed_service_or_option_not_available_unspecified_txt">Cha b’ urrainn dhuinn a’ ghairm a choileanadh. Còd na mearachd: 63.</string>
+    <string name="clh_callFailed_bearer_service_not_implemented_txt">Cha b’ urrainn dhuinn a’ ghairm a choileanadh. Còd na mearachd: 65.</string>
+    <string name="clh_callFailed_ACM_equal_to_or_greater_than_ACMmax_txt">Cha b’ urrainn dhuinn a’ ghairm a choileanadh. Còd na mearachd: 68.</string>
+    <string name="clh_callFailed_requested_facility_not_implemented_txt">Cha b’ urrainn dhuinn a’ ghairm a choileanadh. Còd na mearachd: 69.</string>
+    <string name="clh_callFailed_only_restricted_digital_information_bearer_capability_is_available_txt">Cha b’ urrainn dhuinn a’ ghairm a choileanadh. Còd na mearachd: 70.</string>
+    <string name="clh_callFailed_service_or_option_not_implemented_unspecified_txt">Cha b’ urrainn dhuinn a’ ghairm a choileanadh. Còd na mearachd: 79.</string>
+    <string name="clh_callFailed_invalid_transaction_identifier_value_txt">Cha b’ urrainn dhuinn a’ ghairm a choileanadh. Còd na mearachd: 81.</string>
+    <string name="clh_callFailed_user_not_member_of_CUG_txt">Cha b’ urrainn dhuinn a’ ghairm a choileanadh. Còd na mearachd: 87.</string>
+    <string name="clh_callFailed_incompatible_destination_txt">Cha b’ urrainn dhuinn a’ ghairm a choileanadh. Còd na mearachd: 88.</string>
+    <string name="clh_callFailed_invalid_transit_network_selection_txt">Cha b’ urrainn dhuinn a’ ghairm a choileanadh. Còd na mearachd: 91.</string>
+    <string name="clh_callFailed_semantically_incorrect_message_txt">Cha b’ urrainn dhuinn a’ ghairm a choileanadh. Còd na mearachd: 95.</string>
+    <string name="clh_callFailed_invalid_mandatory_information_txt">Cha b’ urrainn dhuinn a’ ghairm a choileanadh. Còd na mearachd: 96.</string>
+    <string name="clh_callFailed_message_type_non_existent_or_not_implemented_txt">Cha b’ urrainn dhuinn a’ ghairm a choileanadh. Còd na mearachd: 97.</string>
+    <string name="clh_callFailed_message_type_not_compatible_with_protocol_state_txt">Cha b’ urrainn dhuinn a’ ghairm a choileanadh. Còd na mearachd: 98.</string>
+    <string name="clh_callFailed_information_element_non_existent_or_not_implemented_txt">Cha b’ urrainn dhuinn a’ ghairm a choileanadh. Còd na mearachd: 99.</string>
+    <string name="clh_callFailed_conditional_IE_error_txt">Cha b’ urrainn dhuinn a’ ghairm a choileanadh. Còd na mearachd: 100.</string>
+    <string name="clh_callFailed_message_not_compatible_with_protocol_state_txt">Cha b’ urrainn dhuinn a’ ghairm a choileanadh. Còd na mearachd: 101.</string>
+    <string name="clh_callFailed_recovery_on_timer_expiry_txt">Cha b’ urrainn dhuinn a’ ghairm a choileanadh. Còd na mearachd: 102.</string>
+    <string name="clh_callFailed_protocol_Error_unspecified_txt">Cha b’ urrainn dhuinn a’ ghairm a choileanadh. Còd na mearachd: 111.</string>
+    <string name="clh_callFailed_interworking_unspecified_txt">Cha b’ urrainn dhuinn a’ ghairm a choileanadh. Còd na mearachd: 127.</string>
     <string name="labelCallBarring">Bacadh ghairmean</string>
     <string name="sum_call_barring_enabled">Air</string>
     <string name="sum_call_barring_disabled">Dheth</string>
@@ -664,6 +803,7 @@
     <string name="call_barring_deactivate_success">Chaidh bacadh ghairmean a chur à gnìomh</string>
     <string name="call_barring_change_pwd">Atharraich am facal-faire</string>
     <string name="call_barring_change_pwd_description">Atharraich am facal-faire airson bacadh ghairmean</string>
+    <string name="call_barring_change_pwd_description_disabled">Cha b’ urrainn dhuinn am facal-faire airson bacadh ghairmean atharrachadh</string>
     <string name="call_barring_pwd_not_match">Chan eil an dà fhacal-faire co-ionnann</string>
     <string name="call_barring_right_pwd_number">Cuir a-steach facal-faire aig a bheil 4 àireamhan</string>
     <string name="call_barring_change_pwd_success">Chaidh am facal-faire atharrachadh</string>
@@ -672,6 +812,9 @@
     <string name="call_barring_confirm_pwd">Dearbh am facal-faire</string>
     <string name="messageCallBarring">Cuir a-steach facal-faire</string>
     <string name="call_barring_settings">Roghainnean bacadh ghairmean</string>
+    <string name="callFailed_NetworkBusy">Tha an lìonra trang. Feuch ris a’ ghairm a-rithist an ceann greis.</string>
+    <string name="callFailed_NetworkCongested">Tha cus trafaig san lìonra.  Cuir fios gun ghiùlanair mobile agad
+    airson taic.</string>
     <string name="supp_service_notification_call_deflected">Chaidh a’ ghairm ath-stiùireadh.</string>
     <string name="supp_service_notification_call_forwarded">Chaidh a’ ghairm a shìneadh air adhart.</string>
     <string name="supp_service_notification_call_waiting">Tha a’ ghairm a’ feitheamh.</string>
@@ -689,10 +832,107 @@
     <string name="supp_service_forwarded_call">Gairm air a shìneadh air adhart.</string>
     <string name="supp_service_conference_call">A’ tighinn a-steach gu gairm coinneimh.</string>
     <string name="supp_service_held_call_released">Chaidh gairm a bha ’ga cumail a bhriseadh.</string>
+    <string name="callFailed_otasp_provisioning_in_process">Cha ghabh gairm a dhèanamh on a tha an t-uidheam ’ga sholar fhathast.</string>
+    <string name="callFailed_already_dialing">Cha ghabh gairm a dhèanamh on a tha gairm a-mach eile a’ daithealadh mu thràth.</string>
+    <string name="callFailed_already_ringing">Cha ghabh gairm a dhèanamh on a tha gairm a-steach gun fhreagairt ann. Freagair no diùlt a’ ghairm a tha a’ tighinn a-steach mus cuir thu gairm ùr.</string>
+    <string name="callFailed_calling_disabled">Cha ghabh gairm a dhèanamh on a chaidh cur ghairmean a chur à comas le roghainn ro.telephony.disable-call an t-siostaim.</string>
+    <string name="callFailed_too_many_calls">Tha ghabh gairm a dhèanamh on a tha dà ghairm ann mu thràth. Cuir crìoch air tè dhe na gairmean no co-aonaich iad ’nan gairm coinneimh mus tòisich thu air gairm ùr.</string>
+    <string name="supp_service_over_ut_precautions">Airson <xliff:g id="supp service">%s</xliff:g> a chleachdadh, dèan cinnteach gu bheil an dàta mobile air. ’S urrainn dhut seo atharrachadh ann an roghainnean an lìonraidh mobile.</string>
+    <string name="supp_service_over_ut_precautions_roaming">Airson <xliff:g id="supp service">%s</xliff:g> a chleachdadh, dèan cinnteach gu bheil an dàta mobile agus dàta air fàrsan air. ’S urrainn dhut seo atharrachadh ann an roghainnean an lìonraidh mobile.</string>
+    <string name="supp_service_over_ut_precautions_dual_sim">Airson <xliff:g id="supp service">%1$s</xliff:g> a chleachdadh, dèan cinnteach gu bheil an dàta mobile air airson SIM <xliff:g id="sim number">%2$d</xliff:g>. ’S urrainn dhut seo atharrachadh ann an roghainnean an lìonraidh mobile.</string>
+    <string name="supp_service_over_ut_precautions_roaming_dual_sim">Airson <xliff:g id="supp service">%1$s</xliff:g> a chleachdadh, dèan cinnteach gu bheil an dàta mobile agus dàta air fàrsan air airson SIM <xliff:g id="sim number">%2$d</xliff:g>. ’S urrainn dhut seo atharrachadh ann an roghainnean an lìonraidh mobile.</string>
     <string name="supp_service_over_ut_precautions_dialog_dismiss">Leig seachad</string>
+    <string name="radio_info_data_connection_enable">Cuir ceangal dàta an comas</string>
+    <string name="radio_info_data_connection_disable">Cuir ceangal dàta à comas</string>
+    <string name="volte_provisioned_switch_string">Solar VoLTE</string>
+    <string name="vt_provisioned_switch_string">Solar ghairmean video</string>
+    <string name="wfc_provisioned_switch_string">Solar ghairmean WiFi</string>
+    <string name="eab_provisioned_switch_string">Solar EAB/Presence</string>
+    <string name="cbrs_data_switch_string">Dàta cbrs</string>
+    <string name="dsds_switch_string">Cuir an comas DSDS</string>
+    <string name="dsds_dialog_title">An ath-thòisich thu an t-uidheam?</string>
+    <string name="dsds_dialog_message">Feumaidh thu an t-uidheam agad ath-thòiseachadh gus an roghainn seo atharrachadh.</string>
+    <string name="dsds_dialog_confirm">Ath-thòisich</string>
     <string name="dsds_dialog_cancel">Sguir dheth</string>
+    <string name="radio_info_radio_power">Cumhachd rèidio mobile</string>
+    <string name="radioInfo_menu_viewADN">Seall leabhar sheòlaidhean an t-SIM</string>
+    <string name="radioInfo_menu_viewFDN">Seall na h-àireamhan daithealaidh socraichte</string>
+    <string name="radioInfo_menu_viewSDN">Seall àireamhan daithealaidh na seirbheise</string>
+    <string name="radioInfo_menu_getIMS">Staid na seirbheise IMS</string>
+    <string name="radio_info_ims_reg_status_title">Staid IMS</string>
+    <string name="radio_info_ims_reg_status_registered">Clàraichte</string>
+    <string name="radio_info_ims_reg_status_not_registered">Gun chlàradh</string>
+    <string name="radio_info_ims_feature_status_available">Ri fhaighinn</string>
+    <string name="radio_info_ims_feature_status_unavailable">Chan eil seo ri fhaighinn</string>
+    <string name="radio_info_ims_reg_status">Clàradh IMS: <xliff:g id="status" example="registered">%1$s</xliff:g>\u000AVoice over LTE: <xliff:g id="availability" example="available">%2$s</xliff:g>\u000AVoice over WiFi: <xliff:g id="availability" example="available">%3$s</xliff:g>\u000AGairmean video: <xliff:g id="availability" example="available">%4$s</xliff:g>\u000AUT Eadar-aghaidh: <xliff:g id="availability" example="available">%5$s</xliff:g></string>
+    <string name="radioInfo_service_in">Fo seirbheiseadh</string>
+    <string name="radioInfo_service_out">Chan eil seirbheis ann</string>
+    <string name="radioInfo_service_emergency">Gairmean-èiginn a-mhàin</string>
+    <string name="radioInfo_service_off">Tha an rèidio dheth</string>
+    <string name="radioInfo_roaming_in">Air fàrsan</string>
+    <string name="radioInfo_roaming_not">Chan eil e air fàrsan</string>
+    <string name="radioInfo_phone_idle">’Na thàmh</string>
+    <string name="radioInfo_phone_ringing">A’ seirm</string>
+    <string name="radioInfo_phone_offhook">Gairm a’ dol air adhart</string>
     <string name="radioInfo_data_disconnected">Gun cheangal</string>
+    <string name="radioInfo_data_connecting">’Ga cheangal</string>
     <string name="radioInfo_data_connected">Ceangailte</string>
+    <string name="radioInfo_data_suspended">’Na dhàil</string>
     <string name="radioInfo_unknown">Neo-aithnichte</string>
+    <string name="radioInfo_display_packets">pacaid</string>
+    <string name="radioInfo_display_bytes">baidht</string>
+    <string name="radioInfo_display_dbm">dBm</string>
+    <string name="radioInfo_display_asu">asu</string>
+    <string name="radioInfo_lac">LAC</string>
+    <string name="radioInfo_cid">CID</string>
+    <string name="radio_info_subid">SubId an-dràsta:</string>
+    <string name="radio_info_dds">SubId an t-SIM dàta bhunaiteach:</string>
+    <string name="radio_info_dl_kbps">Leud banna an luchdaidh a-nuas (kbps):</string>
+    <string name="radio_info_ul_kbps">Leud banna an luchdaidh a-suas (kbps):</string>
+    <string name="radio_info_signal_location_label">Fiosrachadh ionad a’ chealla (cha mholar seo tuilleadh):</string>
+    <string name="radio_info_phy_chan_config">Rèiteachadh fiosaigeach seanail LTE:</string>
+    <string name="radio_info_cell_info_refresh_rate">Reat ath-nuadhachaidh air fiosrachadh a’ chealla:</string>
+    <string name="radio_info_cellinfo_label">Fiosrachadh tomhas nan ceallan uile:</string>
+    <string name="radio_info_gprs_service_label">Seirbheis dàta:</string>
+    <string name="radio_info_roaming_label">Air fàrsan:</string>
+    <string name="radio_info_imei_label">IMEI:</string>
+    <string name="radio_info_imsi_label">IMSI:</string>
+    <string name="radio_info_call_redirect_label">Sìneadh air adhart gairm:</string>
+    <string name="radio_info_ppp_resets_label">Co mheud turas a chaidh PPP ath-shuidheachadh o àm a’ bhùtaidh:</string>
+    <string name="radio_info_current_network_label">An lìonra làithreach:</string>
+    <string name="radio_info_ppp_received_label">Dàta air fhaighinn:</string>
+    <string name="radio_info_gsm_service_label">Seirbheis gutha:</string>
+    <string name="radio_info_signal_strength_label">Neart an t-siognail:</string>
+    <string name="radio_info_call_status_label">Staid na gairm gutha:</string>
+    <string name="radio_info_ppp_sent_label">Dàta air a chur:</string>
+    <string name="radio_info_message_waiting_label">Teachdaireachd a’ feitheamh:</string>
+    <string name="radio_info_phone_number_label">Àireamh fòn:</string>
+    <string name="radio_info_band_mode_label">Tagh bann rèidio</string>
+    <string name="radio_info_voice_network_type_label">Seòrsa an lìonraidh gutha:</string>
+    <string name="radio_info_data_network_type_label">Seòrsa an lìonraidh dàta:</string>
+    <string name="phone_index_label">Tagh inneacs fòn</string>
+    <string name="radio_info_set_perferred_label">Suidhich seòrsa an lìonraidh as fheàrr leat:</string>
+    <string name="radio_info_ping_hostname_v4">Cuir ping gu ainm-òstair (www.google.com) IPv4:</string>
+    <string name="radio_info_ping_hostname_v6">Cuir ping gu ainm-òstair (www.google.com) IPv6:</string>
+    <string name="radio_info_http_client_test">Deuchainn air cliant HTTP:</string>
+    <string name="ping_test_label">Ruith deuchainn ping</string>
+    <string name="radio_info_smsc_label">SMSC:</string>
     <string name="radio_info_smsc_update_label">Ùraich</string>
+    <string name="radio_info_smsc_refresh_label">Ath-nuadhaich</string>
+    <string name="radio_info_toggle_dns_check_label">Toglaich dearbhadh an DNS</string>
+    <string name="oem_radio_info_label">Fiosrachadh/Roghainnean sònraichte an OEM</string>
+    <string name="radio_info_endc_available">EN-DC ri fhaighinn:</string>
+    <string name="radio_info_dcnr_restricted">DCNR cuingichte:</string>
+    <string name="radio_info_nr_available">NR ri fhaighinn:</string>
+    <string name="radio_info_nr_state">Staid NR:</string>
+    <string name="radio_info_nr_frequency">Tricead NR:</string>
+    <string name="band_mode_title">Suidhich modh bann rèidio</string>
+    <string name="band_mode_loading">A’ luchdadh liosta nam bannan\u2026</string>
+    <string name="band_mode_set">Suidhich</string>
+    <string name="band_mode_failed">Cha deach leis</string>
+    <string name="band_mode_succeeded">Soirbheachail</string>
+    <string name="phone_info_label" product="tablet">Fiosrachadh na tablaid</string>
+    <string name="phone_info_label" product="default">Fiosrachadh an fhòn</string>
+    <string name="carrier_provisioning">Fiosrachadh solar a’ ghiùlanair</string>
+    <string name="trigger_carrier_provisioning">Thoir air adhart solar giùlanair</string>
 </resources>

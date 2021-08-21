@@ -27,8 +27,8 @@
     <string name="add_sip_account">Cuir cunntas ris</string>
     <string name="remove_sip_account">Thoir air falbh an cunntas</string>
     <string name="sip_account_list">Cunntasan SIP</string>
-    <string name="saving_account">A’ sàbhaladh a’ chunntais…</string>
-    <string name="removing_account">A’ toirt air falbh a’ chunntais…</string>
+    <string name="saving_account">A’ sàbhaladh a’ chunntais\u2026</string>
+    <string name="removing_account">A’ toirt air falbh a’ chunntais\u2026</string>
     <string name="sip_menu_save">Sàbhail</string>
     <string name="sip_menu_discard">Tilg air falbh</string>
     <string name="alert_dialog_close">Dùin a’ phròifil</string>

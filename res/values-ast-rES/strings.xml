@@ -23,6 +23,8 @@
     <string name="private_num">Númberu priváu</string>
     <string name="payphone">Teléfonu públicu</string>
     <string name="onHold">N\'espera</string>
+    <string name="carrier_mmi_msg_title">Mensaxe de <xliff:g id="mmicarrier" example="T-Mobile">%s</xliff:g></string>
+    <string name="default_carrier_mmi_msg_title">Mensaxe de la operadora</string>
     <string name="mmiStarted">Anicióse\'l códigu MMI</string>
     <string name="ussdRunning">Códigu USSD n\'execución\u2026</string>
     <string name="mmiCancelled">Encaboxóse\'l códigu MMI</string>
@@ -191,7 +193,7 @@
         <item>LTE/TDSCDMA/GSM/WCDMA</item>
         <item>TDSCDMA/CDMA/EVDO/GSM/WCDMA </item>
         <item>LTE/TDSCDMA/CDMA/EVDO/GSM/WCDMA</item>
-        <item>NR only</item>
+        <item>Namás NR</item>
         <item>NR/LTE</item>
         <item>NR/LTE/CDMA/EvDo</item>
         <item>NR/LTE/GSM/WCDMA</item>
@@ -661,9 +663,20 @@
     <string name="supp_service_conference_call">Xuncise a la llamada de conferencia.</string>
     <string name="supp_service_held_call_released">La llamada n\'espera lliberóse.</string>
     <string name="supp_service_over_ut_precautions_dialog_dismiss">Escartar</string>
+    <string name="dsds_dialog_message">Tienes de reaniciar el preséu pa camudar esti axuste.</string>
     <string name="dsds_dialog_cancel">Encaboxar</string>
+    <string name="radioInfo_phone_offhook">Llamada en cursu</string>
     <string name="radioInfo_data_disconnected">Desconeutáu</string>
     <string name="radioInfo_data_connected">Coneutáu</string>
     <string name="radioInfo_unknown">Desconozse</string>
+    <string name="radioInfo_display_bytes">bytes</string>
+    <string name="radioInfo_display_dbm">dBm</string>
+    <string name="radioInfo_display_asu">asu</string>
+    <string name="radioInfo_lac">LAC</string>
+    <string name="radioInfo_cid">CID</string>
+    <string name="radio_info_roaming_label">Roaming:</string>
+    <string name="radio_info_imei_label">IMEI:</string>
+    <string name="radio_info_imsi_label">IMSI:</string>
+    <string name="radio_info_smsc_label">SMSC:</string>
     <string name="radio_info_smsc_update_label">Anovar</string>
 </resources>
