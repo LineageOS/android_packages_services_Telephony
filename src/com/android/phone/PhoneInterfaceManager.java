@@ -1056,7 +1056,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                                     request.argument).first;
                     request.phone.setCallForwardingOption(
                             callForwardingInfoToSet.isEnabled()
-                                    ? CommandsInterface.CF_ACTION_ENABLE
+                                    ? CommandsInterface.CF_ACTION_REGISTRATION
                                     : CommandsInterface.CF_ACTION_DISABLE,
                             callForwardingInfoToSet.getReason(),
                             callForwardingInfoToSet.getNumber(),
