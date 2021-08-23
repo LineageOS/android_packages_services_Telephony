@@ -78,6 +78,9 @@ public class PhoneAccountSettingsFragment extends PreferenceFragment
             new SubscriptionManager.OnSubscriptionsChangedListener() {
         @Override
         public void onSubscriptionsChanged() {
+            if (getActivity() == null) {
+                return;
+            }
             updateAccounts();
         }
     };
