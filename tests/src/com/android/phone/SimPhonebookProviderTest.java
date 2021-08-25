@@ -57,6 +57,7 @@ import com.android.internal.telephony.uicc.AdnRecord;
 import com.android.internal.telephony.uicc.IccConstants;
 
 import com.google.common.collect.ImmutableList;
+import com.google.common.io.Closeables;
 import com.google.common.truth.Correspondence;
 
 import org.junit.Before;
@@ -286,6 +287,33 @@ public final class SimPhonebookProviderTest {
         try (Cursor cursor = mResolver.query(contentAdn, projection, null, null)) {
             assertThat(cursor).hasColumnNames(projection);
         }
+    }
+
+    @Test
+    public void query_adnRecords_invalidColumnProjection_throwsIllegalArgumentException() {
+        setupSimsWithSubscriptionIds(1);
+        mIccPhoneBook.makeAllEfsSupported(1);
+        Uri contentAdn = SimRecords.getContentUri(1, EF_ADN);
+
+        assertThrows(IllegalArgumentException.class, () -> Closeables.close(
+                mResolver.query(contentAdn, new String[] {
+                        "an_unsupported_column",
+                }, null, null), false)
+        );
+
+        assertThrows(IllegalArgumentException.class, () -> Closeables.close(
+                mResolver.query(contentAdn, new String[] {
+                        SimRecords.RECORD_NUMBER,
+                        "an_unsupported_column"
+                }, null, null), false)
+        );
+
+        assertThrows(IllegalArgumentException.class, () -> Closeables.close(
+                mResolver.query(contentAdn, new String[] {
+                        "an_unsupported_column",
+                        SimRecords.RECORD_NUMBER
+                }, null, null), false)
+        );
     }
 
     @Test
