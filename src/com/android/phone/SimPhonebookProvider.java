@@ -97,6 +97,8 @@ public class SimPhonebookProvider extends ContentProvider {
     private static final String TAG = "SimPhonebookProvider";
     private static final Set<String> ELEMENTARY_FILES_COLUMNS_SET =
             ImmutableSet.copyOf(ELEMENTARY_FILES_ALL_COLUMNS);
+    private static final Set<String> SIM_RECORDS_COLUMNS_SET =
+            ImmutableSet.copyOf(SIM_RECORDS_ALL_COLUMNS);
     private static final Set<String> SIM_RECORDS_WRITABLE_COLUMNS = ImmutableSet.of(
             SimRecords.NAME, SimRecords.PHONE_NUMBER
     );
@@ -355,6 +357,7 @@ public class SimPhonebookProvider extends ContentProvider {
     }
 
     private Cursor querySimRecords(PhonebookArgs args, String[] projection) {
+        validateProjection(SIM_RECORDS_COLUMNS_SET, projection);
         validateSubscriptionAndEf(args);
         if (projection == null) {
             projection = SIM_RECORDS_ALL_COLUMNS;
@@ -409,6 +412,7 @@ public class SimPhonebookProvider extends ContentProvider {
     }
 
     private Cursor querySimRecordsItem(PhonebookArgs args, String[] projection) {
+        validateProjection(SIM_RECORDS_COLUMNS_SET, projection);
         if (projection == null) {
             projection = SIM_RECORDS_ALL_COLUMNS;
         }
