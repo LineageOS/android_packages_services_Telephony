@@ -38,7 +38,7 @@
     <string name="audio_mode_earpiece" msgid="2823700267171134282">"హ్యాండ్‌సెట్ ఇయర్‌పీస్"</string>
     <string name="audio_mode_wired_headset" msgid="5028010823105817443">"వైర్ గల హెడ్‌సెట్"</string>
     <string name="audio_mode_bluetooth" msgid="25732183428018809">"బ్లూటూత్"</string>
-    <string name="wait_prompt_str" msgid="5136209532150094910">"క్రింది టోన్‌లు పంపాలా?\n"</string>
+    <string name="wait_prompt_str" msgid="5136209532150094910">"కింది టోన్‌లు పంపాలా?\n"</string>
     <string name="pause_prompt_str" msgid="2308897950360272213">"టోన్‌లు పంపుతోంది\n"</string>
     <string name="send_button" msgid="5070379600779031932">"పంపు"</string>
     <string name="pause_prompt_yes" msgid="8184132073048369575">"అవును"</string>
@@ -96,7 +96,7 @@
     <string name="sum_loading_settings" msgid="434063780286688775">"సెట్టింగ్‌లను లోడ్ చేస్తోంది…"</string>
     <string name="sum_hide_caller_id" msgid="131100328602371933">"అవుట్‌గోయింగ్ కాల్స్‌లో నంబర్ దాచబడుతుంది"</string>
     <string name="sum_show_caller_id" msgid="3571854755324664591">"అవుట్‌గోయింగ్ కాల్స్‌లో నంబర్ ప్రదర్శించబడుతుంది"</string>
-    <string name="sum_default_caller_id" msgid="1767070797135682959">"అవుట్‌గోయింగ్ కాల్స్‌లో నా నంబర్‌ను ప్రదర్శించడానికి డిఫాల్ట్ ఆపరేటర్ సెట్టింగ్‌లను ఉపయోగించు"</string>
+    <string name="sum_default_caller_id" msgid="1767070797135682959">"అవుట్‌గోయింగ్ కాల్స్‌లో నా నంబర్‌ను ప్రదర్శించడానికి ఆటోమేటిక్ ఆపరేటర్ సెట్టింగ్‌లను ఉపయోగించు"</string>
     <string name="labelCW" msgid="8449327023861428622">"కాల్ నిరీక్షణ"</string>
     <string name="sum_cw_enabled" msgid="3977308526187139996">"కాల్ సమయంలో, ఇన్‌కమింగ్ కాల్స్‌ల గురించి నాకు తెలియజేయి"</string>
     <string name="sum_cw_disabled" msgid="3658094589461768637">"కాల్ సమయంలో, ఇన్‌కమింగ్ కాల్స్‌ల గురించి నాకు తెలియజేయి"</string>
@@ -151,7 +151,7 @@
     <string name="disable" msgid="1122698860799462116">"ఆఫ్ చేయి"</string>
     <string name="change_num" msgid="6982164494063109334">"అప్‌డేట్ చేయి"</string>
   <string-array name="clir_display_values">
-    <item msgid="8477364191403806960">"నెట్‌వర్క్ డిఫాల్ట్"</item>
+    <item msgid="8477364191403806960">"నెట్‌వర్క్ ఆటోమేటిక్"</item>
     <item msgid="6813323051965618926">"నంబర్‌ను దాచు"</item>
     <item msgid="9150034130629852635">"నంబర్‌ను చూపు"</item>
   </string-array>
@@ -691,8 +691,8 @@
     <string name="callFailed_wifi_lost" msgid="1788036730589163141">"Wi-Fi కనెక్షన్ పోయింది. కాల్ ముగిసింది."</string>
     <string name="dialFailed_low_battery" msgid="6857904237423407056">"తక్కువ బ్యాటరీ కారణంగా మీ వీడియో కాల్ చేయడం సాధ్యపడదు."</string>
     <string name="callFailed_low_battery" msgid="4056828320214416182">"తక్కువ బ్యాటరీ కారణంగా వీడియో కాల్ ముగిసింది."</string>
-    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="5944309590693432042">"Wi-Fi కాలింగ్ ద్వారా అత్యవసర కాల్స్‌ ఈ స్థానంలో అందుబాటులో లేవు."</string>
-    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="3624536608369524988">"ఈ స్థానంలో Wi-Fi కాలింగ్ అందుబాటులో లేదు."</string>
+    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="5944309590693432042">"Wi-Fi కాలింగ్ ద్వారా అత్యవసర కాల్స్‌ ఈ లొకేషన్‌లో అందుబాటులో లేవు."</string>
+    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="3624536608369524988">"ఈ లొకేషన్‌లో Wi-Fi కాలింగ్ అందుబాటులో లేదు."</string>
     <string name="change_pin_title" msgid="3564254326626797321">"వాయిస్ మెయిల్ PINని మార్చండి"</string>
     <string name="change_pin_continue_label" msgid="5177011752453506371">"కొనసాగించండి"</string>
     <string name="change_pin_cancel_label" msgid="2301711566758827936">"రద్దు చేయి"</string>
@@ -877,7 +877,7 @@
     <string name="radioInfo_lac" msgid="3892986460272607013">"LAC"</string>
     <string name="radioInfo_cid" msgid="1423185536264406705">"CID"</string>
     <string name="radio_info_subid" msgid="6839966868621703203">"ప్రస్తుత subId:"</string>
-    <string name="radio_info_dds" msgid="1122593144425697126">"డిఫాల్ట్ డేటా SIM యొక్క SubId:"</string>
+    <string name="radio_info_dds" msgid="1122593144425697126">"ఆటోమేటిక్ డేటా SIM యొక్క SubId:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DL బ్యాండ్‌విడ్త్ (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL బ్యాండ్‌విడ్త్ (kbps):"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"LTE భౌతిక ఛానెల్ కాన్ఫిగరేషన్:"</string>
