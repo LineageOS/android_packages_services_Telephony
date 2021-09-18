@@ -62,18 +62,18 @@
     <string name="labelCdmaMore_with_label" msgid="7759692829160238152">"CDMA қоңырау параметрлері (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="apn_settings" msgid="1978652203074756623">"APN"</string>
     <string name="settings_label" msgid="9101778088412567956">"Желі параметрлері"</string>
-    <string name="phone_accounts" msgid="1216879437523774604">"Қоңырау шалу есептік жазбалары"</string>
+    <string name="phone_accounts" msgid="1216879437523774604">"Қоңырау шалу аккаунттары"</string>
     <string name="phone_accounts_make_calls_with" msgid="16747814788918145">"Келесінің көмегімен қоңыраулар шалу"</string>
     <string name="phone_accounts_make_sip_calls_with" msgid="4691221006731847255">"Келесінің көмегімен SIP қоңырауларын шалу"</string>
     <string name="phone_accounts_ask_every_time" msgid="6192347582666047168">"Алдымен сұрау"</string>
     <string name="phone_accounts_default_account_label" msgid="5107598881335931101">"Қолжетімді желі жоқ"</string>
     <string name="phone_accounts_settings_header" msgid="6296501692964706536">"Параметрлер"</string>
-    <string name="phone_accounts_choose_accounts" msgid="4748805293314824974">"Есептік жазбаларды таңдау"</string>
-    <string name="phone_accounts_selection_header" msgid="2945830843104108440">"Телефон есептік жазбалары"</string>
-    <string name="phone_accounts_add_sip_account" msgid="1437634802033309305">"SIP есептік жазбасын қосу"</string>
-    <string name="phone_accounts_configure_account_settings" msgid="6622119715253196586">"Есептік жазба параметрлерін конфигурациялау"</string>
-    <string name="phone_accounts_all_calling_accounts" msgid="1609600743500618823">"Барлық қоңырау шалу есептік жазбалары"</string>
-    <string name="phone_accounts_all_calling_accounts_summary" msgid="2214134955430107240">"Қай есептік жазбалардың қоңырау шала алатынын таңдау"</string>
+    <string name="phone_accounts_choose_accounts" msgid="4748805293314824974">"Аккаунттарды таңдау"</string>
+    <string name="phone_accounts_selection_header" msgid="2945830843104108440">"Телефон аккаунттары"</string>
+    <string name="phone_accounts_add_sip_account" msgid="1437634802033309305">"SIP аккаунтын қосу"</string>
+    <string name="phone_accounts_configure_account_settings" msgid="6622119715253196586">"Аккаунт параметрлерін конфигурациялау"</string>
+    <string name="phone_accounts_all_calling_accounts" msgid="1609600743500618823">"Барлық қоңырау шалу аккаунттары"</string>
+    <string name="phone_accounts_all_calling_accounts_summary" msgid="2214134955430107240">"Қай аккаунттардың қоңырау шала алатынын таңдау"</string>
     <string name="wifi_calling" msgid="3650509202851355742">"Wi-Fi қоңыраулары"</string>
     <string name="connection_service_default_label" msgid="7332739049855715584">"Кірістірілген байланыс қызметі"</string>
     <string name="voicemail" msgid="7697769412804195032">"Дауыстық пошта"</string>
