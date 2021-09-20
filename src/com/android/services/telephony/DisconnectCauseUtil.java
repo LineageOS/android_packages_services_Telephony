@@ -787,7 +787,7 @@ public class DisconnectCauseUtil {
             default:
                 break;
         }
-        return resourceId == null ? "" : context.getResources().getText(resourceId);
+        return resourceId == null ? "" : context.getResources().getString(resourceId);
     }
 
     private static boolean isRadioOffForThermalMitigation(int phoneId) {
