@@ -792,7 +792,7 @@ public class DisconnectCauseUtil {
 
     private static boolean isRadioOffForThermalMitigation(int phoneId) {
         Phone phone = PhoneFactory.getPhone(phoneId);
-        return phone.isRadioOffForThermalMitigation();
+        return phone == null ? false : phone.isRadioOffForThermalMitigation();
     }
 
     /**
