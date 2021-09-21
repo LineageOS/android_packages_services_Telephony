@@ -107,10 +107,6 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
     private CarrierServiceConnection[] mServiceConnection;
     // Service connection for binding to carrier config app for no SIM config.
     private CarrierServiceConnection[] mServiceConnectionForNoSimConfig;
-    // Whether we are bound to a service for each phone
-    private boolean[] mServiceBound;
-    // Whether we are bound to a service for no SIM config
-    private boolean[] mServiceBoundForNoSimConfig;
     // Whether we have sent config change broadcast for each phone id.
     private boolean[] mHasSentConfigChange;
     // Whether the broadcast was sent from EVENT_SYSTEM_UNLOCKED, to track rebroadcasts
@@ -311,7 +307,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                     final CarrierServiceConnection conn = (CarrierServiceConnection) msg.obj;
                     // If new service connection has been created, unbind.
                     if (mServiceConnection[phoneId] != conn || conn.service == null) {
-                        unbindIfBound(mContext, conn, phoneId);
+                        unbindIfBound(mContext, conn);
                         break;
                     }
                     final CarrierIdentifier carrierId = getCarrierIdentifierForPhoneId(phoneId);
@@ -320,7 +316,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                             new ResultReceiver(this) {
                                 @Override
                                 public void onReceiveResult(int resultCode, Bundle resultData) {
-                                    unbindIfBound(mContext, conn, phoneId);
+                                    unbindIfBound(mContext, conn);
                                     removeMessages(EVENT_FETCH_DEFAULT_TIMEOUT,
                                             getMessageToken(phoneId));
                                     // If new service connection has been created, this is stale.
@@ -355,7 +351,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                     } catch (RemoteException e) {
                         loge("Failed to get carrier config from default app: " +
                                 mPlatformCarrierConfigPackage + " err: " + e.toString());
-                        unbindIfBound(mContext, conn, phoneId);
+                        unbindIfBound(mContext, conn);
                         break; // So we don't set a timeout.
                     }
                     sendMessageDelayed(
@@ -375,7 +371,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                     if (mServiceConnection[phoneId] != null) {
                         // If a ResponseReceiver callback is in the queue when this happens, we will
                         // unbind twice and throw an exception.
-                        unbindIfBound(mContext, mServiceConnection[phoneId], phoneId);
+                        unbindIfBound(mContext, mServiceConnection[phoneId]);
                         broadcastConfigChangedIntent(phoneId);
                     }
                     // Put a stub bundle in place so that the rest of the logic continues smoothly.
@@ -441,7 +437,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                     final CarrierServiceConnection conn = (CarrierServiceConnection) msg.obj;
                     // If new service connection has been created, unbind.
                     if (mServiceConnection[phoneId] != conn || conn.service == null) {
-                        unbindIfBound(mContext, conn, phoneId);
+                        unbindIfBound(mContext, conn);
                         break;
                     }
                     final CarrierIdentifier carrierId = getCarrierIdentifierForPhoneId(phoneId);
@@ -450,7 +446,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                             new ResultReceiver(this) {
                                 @Override
                                 public void onReceiveResult(int resultCode, Bundle resultData) {
-                                    unbindIfBound(mContext, conn, phoneId);
+                                    unbindIfBound(mContext, conn);
                                     removeMessages(EVENT_FETCH_CARRIER_TIMEOUT,
                                             getMessageToken(phoneId));
                                     // If new service connection has been created, this is stale.
@@ -486,7 +482,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                                 + " carrierid: " + carrierId.toString());
                     } catch (RemoteException e) {
                         loge("Failed to get carrier config: " + e.toString());
-                        unbindIfBound(mContext, conn, phoneId);
+                        unbindIfBound(mContext, conn);
                         break; // So we don't set a timeout.
                     }
                     sendMessageDelayed(
@@ -507,7 +503,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                     if (mServiceConnection[phoneId] != null) {
                         // If a ResponseReceiver callback is in the queue when this happens, we will
                         // unbind twice and throw an exception.
-                        unbindIfBound(mContext, mServiceConnection[phoneId], phoneId);
+                        unbindIfBound(mContext, mServiceConnection[phoneId]);
                         broadcastConfigChangedIntent(phoneId);
                     }
                     // Put a stub bundle in place so that the rest of the logic continues smoothly.
@@ -601,8 +597,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                     if (mServiceConnectionForNoSimConfig[phoneId] != null) {
                         // If a ResponseReceiver callback is in the queue when this happens, we will
                         // unbind twice and throw an exception.
-                        unbindIfBoundForNoSimConfig(mContext,
-                                mServiceConnectionForNoSimConfig[phoneId], phoneId);
+                        unbindIfBound(mContext, mServiceConnectionForNoSimConfig[phoneId]);
                     }
                     broadcastConfigChangedIntent(phoneId, false);
                     break;
@@ -613,7 +608,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                     final CarrierServiceConnection conn = (CarrierServiceConnection) msg.obj;
                     // If new service connection has been created, unbind.
                     if (mServiceConnectionForNoSimConfig[phoneId] != conn || conn.service == null) {
-                        unbindIfBoundForNoSimConfig(mContext, conn, phoneId);
+                        unbindIfBound(mContext, conn);
                         break;
                     }
 
@@ -622,7 +617,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                             new ResultReceiver(this) {
                                 @Override
                                 public void onReceiveResult(int resultCode, Bundle resultData) {
-                                    unbindIfBoundForNoSimConfig(mContext, conn, phoneId);
+                                    unbindIfBound(mContext, conn);
                                     // If new service connection has been created, this is stale.
                                     if (mServiceConnectionForNoSimConfig[phoneId] != conn) {
                                         loge("Received response for stale request.");
@@ -654,7 +649,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                     } catch (RemoteException e) {
                         loge("Failed to get no sim carrier config from default app: " +
                                 mPlatformCarrierConfigPackage + " err: " + e.toString());
-                        unbindIfBoundForNoSimConfig(mContext, conn, phoneId);
+                        unbindIfBound(mContext, conn);
                         break; // So we don't set a timeout.
                     }
                     sendMessageDelayed(
@@ -701,11 +696,9 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         mOverrideConfigs = new PersistableBundle[numPhones];
         mNoSimConfig = new PersistableBundle();
         mServiceConnection = new CarrierServiceConnection[numPhones];
-        mServiceBound = new boolean[numPhones];
         mHasSentConfigChange = new boolean[numPhones];
         mFromSystemUnlocked = new boolean[numPhones];
         mServiceConnectionForNoSimConfig = new CarrierServiceConnection[numPhones];
-        mServiceBoundForNoSimConfig = new boolean[numPhones];
         logd("CarrierConfigLoader has started");
         mSubscriptionInfoUpdater = subscriptionInfoUpdater;
         mHandler.sendEmptyMessage(EVENT_CHECK_SYSTEM_UPDATE);
@@ -840,11 +833,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         try {
             if (mContext.bindService(carrierService, serviceConnection,
                     Context.BIND_AUTO_CREATE)) {
-                if (eventId == EVENT_CONNECTED_TO_DEFAULT_FOR_NO_SIM_CONFIG) {
-                    mServiceBoundForNoSimConfig[phoneId] = true;
-                } else {
-                    mServiceBound[phoneId] = true;
-                }
+                serviceConnection.isBound = true;
                 return true;
             } else {
                 return false;
@@ -1355,18 +1344,9 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         return mOverrideConfigs[phoneId];
     }
 
-    private void unbindIfBound(Context context, CarrierServiceConnection conn,
-            int phoneId) {
-        if (mServiceBound[phoneId]) {
-            mServiceBound[phoneId] = false;
-            context.unbindService(conn);
-        }
-    }
-
-    private void unbindIfBoundForNoSimConfig(Context context, CarrierServiceConnection conn,
-            int phoneId) {
-        if (mServiceBoundForNoSimConfig[phoneId]) {
-            mServiceBoundForNoSimConfig[phoneId] = false;
+    private void unbindIfBound(Context context, CarrierServiceConnection conn) {
+        if (conn.isBound) {
+            conn.isBound = false;
             context.unbindService(conn);
         }
     }
@@ -1591,11 +1571,15 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         final String pkgName;
         final int eventId;
         IBinder service;
+        // If bindService was called and return true which means unbindService
+        // must be called later to release the connection
+        boolean isBound;
 
         CarrierServiceConnection(int phoneId, String pkgName, int eventId) {
             this.phoneId = phoneId;
             this.pkgName = pkgName;
             this.eventId = eventId;
+            this.isBound = false;
         }
 
         @Override
