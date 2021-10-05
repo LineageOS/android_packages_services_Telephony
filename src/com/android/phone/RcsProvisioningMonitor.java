@@ -797,6 +797,10 @@ public class RcsProvisioningMonitor {
         logv("onConfigReceived, subId:" + subId + ", config:"
                 + config + ", isCompressed:" + isCompressed);
         RcsProvisioningInfo info = mRcsProvisioningInfos.get(subId);
+        if (info == null) {
+            logd("sub[" + subId + "] has been removed");
+            return;
+        }
         info.setConfig(isCompressed ? RcsConfig.decompressGzip(config) : config);
         updateConfigForSub(subId, config, isCompressed);
     }
