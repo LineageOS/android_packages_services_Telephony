@@ -129,7 +129,6 @@ public class RcsProvisioningMonitor {
         public void onRoleHoldersChanged(String role, UserHandle user) {
             if (RoleManager.ROLE_SMS.equals(role)) {
                 logv("default messaging application changed.");
-                String packageName = getDmaPackageName();
                 mHandler.sendEmptyMessage(EVENT_DMA_CHANGED);
             }
         }
@@ -676,6 +675,8 @@ public class RcsProvisioningMonitor {
             logv("new default messaging application " + mDmaPackageName);
 
             mRcsProvisioningInfos.forEach((k, v) -> {
+                notifyDmaForSub(k, v.getSingleRegistrationCapability());
+
                 byte[] cachedConfig = v.getConfig();
                 //clear old callbacks
                 v.clear();
@@ -803,7 +804,7 @@ public class RcsProvisioningMonitor {
         intent.setPackage(mDmaPackageName);
         intent.putExtra(ProvisioningManager.EXTRA_SUBSCRIPTION_ID, subId);
         intent.putExtra(ProvisioningManager.EXTRA_STATUS, capability);
-        logv("notify " + intent);
+        logv("notify " + intent + ", sub:" + subId + ", capability:" + capability);
         // Only send permission to the default sms app if it has the correct permissions
         // except test mode enabled
         if (!mTestModeEnabled) {

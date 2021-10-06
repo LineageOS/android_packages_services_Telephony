@@ -153,6 +153,12 @@
             <TextView android:id="@+id/nr_frequency" style="@style/info_value" />
         </LinearLayout>
 
+        <!-- NR Frequency -->
+        <LinearLayout style="@style/RadioInfo_entry_layout" android:orientation="horizontal">
+            <TextView android:id="@+id/network_slicing_config_label" android:text="@string/radio_info_network_slicing_config" style="@style/info_label" />
+            <TextView android:id="@+id/network_slicing_config" style="@style/info_value" />
+        </LinearLayout>
+
         <!-- Physical Channel Config -->
         <LinearLayout style="@style/RadioInfo_entry_layout">
             <TextView android:text="@string/radio_info_phy_chan_config" style="@style/info_label" />

@@ -17,6 +17,7 @@
 package com.android.phone.settings;
 
 import static android.net.ConnectivityManager.NetworkCallback;
+import static java.util.concurrent.TimeUnit.MILLISECONDS;
 
 import android.content.ComponentName;
 import android.content.Context;
@@ -56,9 +57,9 @@ import android.telephony.CellSignalStrengthGsm;
 import android.telephony.CellSignalStrengthLte;
 import android.telephony.CellSignalStrengthWcdma;
 import android.telephony.DataSpecificRegistrationInfo;
+import android.telephony.data.NetworkSlicingConfig;
 import android.telephony.NetworkRegistrationInfo;
 import android.telephony.PhysicalChannelConfig;
-import android.telephony.PreciseCallState;
 import android.telephony.RadioAccessFamily;
 import android.telephony.ServiceState;
 import android.telephony.SignalStrength;
@@ -96,8 +97,12 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Executor;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeoutException;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -211,6 +216,11 @@ public class RadioInfo extends AppCompatActivity {
     private static final int MENU_ITEM_GET_IMS_STATUS      = 4;
     private static final int MENU_ITEM_TOGGLE_DATA         = 5;
 
+    private static final String CARRIER_PROVISIONING_ACTION =
+            "com.android.phone.settings.CARRIER_PROVISIONING";
+    private static final String TRIGGER_CARRIER_PROVISIONING_ACTION =
+            "com.android.phone.settings.TRIGGER_CARRIER_PROVISIONING";
+
     private TextView mDeviceId; //DeviceId is the IMEI in GSM and the MEID in CDMA
     private TextView mLine1Number;
     private TextView mSubscriptionId;
@@ -241,6 +251,7 @@ public class RadioInfo extends AppCompatActivity {
     private TextView mNrAvailable;
     private TextView mNrState;
     private TextView mNrFrequency;
+    private TextView mNetworkSlicingConfig;
     private EditText mSmsc;
     private Switch mRadioPowerOnSwitch;
     private Button mCellInfoRefreshRateButton;
@@ -295,6 +306,8 @@ public class RadioInfo extends AppCompatActivity {
         }
     };
 
+    private static final int DEFAULT_TIMEOUT_MS = 1000;
+
     // not final because we need to recreate this object to register on a new subId (b/117555407)
     private TelephonyCallback mTelephonyCallback = new RadioInfoTelephonyCallback();
     private class RadioInfoTelephonyCallback extends TelephonyCallback implements
@@ -305,8 +318,7 @@ public class RadioInfo extends AppCompatActivity {
             TelephonyCallback.CallForwardingIndicatorListener,
             TelephonyCallback.CellInfoListener,
             TelephonyCallback.SignalStrengthsListener,
-            TelephonyCallback.ServiceStateListener, 
-            TelephonyCallback.PreciseCallStateListener {
+            TelephonyCallback.ServiceStateListener {
 
         @Override
         public void onDataConnectionStateChanged(int state, int networkType) {
@@ -320,14 +332,9 @@ public class RadioInfo extends AppCompatActivity {
         }
 
         @Override
-        public void onCallStateChanged(int state, String incomingNumber) {
+        public void onCallStateChanged(int state) {
             updateNetworkType();
             updatePhoneState(state);
-        }
-
-        @Override
-        public void onPreciseCallStateChanged(PreciseCallState preciseState) {
-            updateNetworkType();
         }
 
         @Override
@@ -496,6 +503,7 @@ public class RadioInfo extends AppCompatActivity {
         mNrState = (TextView) findViewById(R.id.nr_state);
         mNrFrequency = (TextView) findViewById(R.id.nr_frequency);
         mPhyChanConfig = (TextView) findViewById(R.id.phy_chan_config);
+        mNetworkSlicingConfig = (TextView) findViewById(R.id.network_slicing_config);
 
         // hide 5G stats on devices that don't support 5G
         if ((mTelephonyManager.getSupportedRadioAccessFamily()
@@ -510,6 +518,8 @@ public class RadioInfo extends AppCompatActivity {
             mNrState.setVisibility(View.GONE);
             ((TextView) findViewById(R.id.nr_frequency_label)).setVisibility(View.GONE);
             mNrFrequency.setVisibility(View.GONE);
+            ((TextView) findViewById(R.id.network_slicing_config_label)).setVisibility(View.GONE);
+            mNetworkSlicingConfig.setVisibility(View.GONE);
         }
 
         mPreferredNetworkType = (Spinner) findViewById(R.id.preferredNetworkType);
@@ -578,11 +588,20 @@ public class RadioInfo extends AppCompatActivity {
         mDnsCheckToggleButton = (Button) findViewById(R.id.dns_check_toggle);
         mDnsCheckToggleButton.setOnClickListener(mDnsCheckButtonHandler);
         mCarrierProvisioningButton = (Button) findViewById(R.id.carrier_provisioning);
-        mCarrierProvisioningButton.setOnClickListener(mCarrierProvisioningButtonHandler);
+        if (!TextUtils.isEmpty(getCarrierProvisioningAppString())) {
+            mCarrierProvisioningButton.setOnClickListener(mCarrierProvisioningButtonHandler);
+        } else {
+            mCarrierProvisioningButton.setEnabled(false);
+        }
+
         mTriggerCarrierProvisioningButton = (Button) findViewById(
                 R.id.trigger_carrier_provisioning);
-        mTriggerCarrierProvisioningButton.setOnClickListener(
-                mTriggerCarrierProvisioningButtonHandler);
+        if (!TextUtils.isEmpty(getCarrierProvisioningAppString())) {
+            mTriggerCarrierProvisioningButton.setOnClickListener(
+                    mTriggerCarrierProvisioningButtonHandler);
+        } else {
+            mTriggerCarrierProvisioningButton.setEnabled(false);
+        }
 
         mOemInfoButton = (Button) findViewById(R.id.oem_info);
         mOemInfoButton.setOnClickListener(mOemInfoButtonHandler);
@@ -647,6 +666,8 @@ public class RadioInfo extends AppCompatActivity {
         mCellInfoRefreshRateSpinner.setOnItemSelectedListener(mCellInfoRefreshRateHandler);
         //set selection after registering listener to force update
         mCellInfoRefreshRateSpinner.setSelection(mCellInfoRefreshRateIndex);
+        // Request cell information update from RIL.
+        mTelephonyManager.setCellInfoListRate(CELL_INFO_REFRESH_RATES[mCellInfoRefreshRateIndex]);
 
         //set selection before registering to prevent update
         mPreferredNetworkType.setSelection(mPreferredNetworkTypeResult, true);
@@ -1116,6 +1137,19 @@ public class RadioInfo extends AppCompatActivity {
             mNrState.setText(NetworkRegistrationInfo.nrStateToString(ss.getNrState()));
             mNrFrequency.setText(ServiceState.frequencyRangeToString(ss.getNrFrequencyRange()));
         }
+
+        Executor simpleExecutor = (r) -> r.run();
+        CompletableFuture<NetworkSlicingConfig> resultFuture = new CompletableFuture<>();
+        mTelephonyManager.getNetworkSlicingConfiguration(simpleExecutor, resultFuture::complete);
+        try {
+            NetworkSlicingConfig networkSlicingConfig =
+                resultFuture.get(DEFAULT_TIMEOUT_MS, MILLISECONDS);
+            mNetworkSlicingConfig.setText(networkSlicingConfig.toString());
+        } catch (ExecutionException | InterruptedException | TimeoutException e) {
+            Log.e(TAG, "Unable to get slicing config: " + e.toString());
+            mNetworkSlicingConfig.setText("Unable to get slicing config.");
+        }
+
     }
 
     private void updateProperties() {
@@ -1615,21 +1649,23 @@ public class RadioInfo extends AppCompatActivity {
         }
     };
 
-    OnClickListener mCarrierProvisioningButtonHandler = new OnClickListener() {
-        public void onClick(View v) {
-            final Intent intent = new Intent("com.android.settings.CARRIER_PROVISIONING");
-            final ComponentName serviceComponent = ComponentName.unflattenFromString(
-                    "com.android.omadm.service/.DMIntentReceiver");
+    OnClickListener mCarrierProvisioningButtonHandler = v -> {
+        String carrierProvisioningApp = getCarrierProvisioningAppString();
+        if (!TextUtils.isEmpty(carrierProvisioningApp)) {
+            final Intent intent = new Intent(CARRIER_PROVISIONING_ACTION);
+            final ComponentName serviceComponent =
+                    ComponentName.unflattenFromString(carrierProvisioningApp);
             intent.setComponent(serviceComponent);
             sendBroadcast(intent);
         }
     };
 
-    OnClickListener mTriggerCarrierProvisioningButtonHandler = new OnClickListener() {
-        public void onClick(View v) {
-            final Intent intent = new Intent("com.android.settings.TRIGGER_CARRIER_PROVISIONING");
-            final ComponentName serviceComponent = ComponentName.unflattenFromString(
-                    "com.android.omadm.service/.DMIntentReceiver");
+    OnClickListener mTriggerCarrierProvisioningButtonHandler = v -> {
+        String carrierProvisioningApp = getCarrierProvisioningAppString();
+        if (!TextUtils.isEmpty(carrierProvisioningApp)) {
+            final Intent intent = new Intent(TRIGGER_CARRIER_PROVISIONING_ACTION);
+            final ComponentName serviceComponent =
+                    ComponentName.unflattenFromString(carrierProvisioningApp);
             intent.setComponent(serviceComponent);
             sendBroadcast(intent);
         }
@@ -1693,6 +1729,19 @@ public class RadioInfo extends AppCompatActivity {
         public void onNothingSelected(AdapterView parent) {
         }
     };
+
+    private String getCarrierProvisioningAppString() {
+        if (mPhone != null) {
+            CarrierConfigManager configManager =
+                    mPhone.getContext().getSystemService(CarrierConfigManager.class);
+            PersistableBundle b = configManager.getConfigForSubId(mPhone.getSubId());
+            if (b != null) {
+                return b.getString(
+                        CarrierConfigManager.KEY_CARRIER_PROVISIONING_APP_STRING, "");
+            }
+        }
+        return "";
+    }
 
     boolean isCbrsSupported() {
         return getResources().getBoolean(

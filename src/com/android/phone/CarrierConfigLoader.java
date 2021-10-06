@@ -466,7 +466,15 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                                             resultData.getParcelable(KEY_CONFIG_BUNDLE);
                                     saveConfigToXml(getCarrierPackageForPhoneId(phoneId), "",
                                             phoneId, carrierId, config);
-                                    mConfigFromCarrierApp[phoneId] = config;
+                                    if (config != null) {
+                                        mConfigFromCarrierApp[phoneId] = config;
+                                    } else {
+                                        logdWithLocalLog("Config from carrier app is null "
+                                                + "for phoneId " + phoneId);
+                                        // Put a stub bundle in place so that the rest of the logic
+                                        // continues smoothly.
+                                        mConfigFromCarrierApp[phoneId] = new PersistableBundle();
+                                    }
                                     sendMessage(
                                             obtainMessage(
                                                     EVENT_FETCH_CARRIER_DONE, phoneId, -1));
@@ -873,9 +881,15 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
     /** Returns the package name of a priveleged carrier app, or null if there is none. */
     @Nullable
     private String getCarrierPackageForPhoneId(int phoneId) {
-        List<String> carrierPackageNames = TelephonyManager.from(mContext)
+        List<String> carrierPackageNames;
+        final long token = Binder.clearCallingIdentity();
+        try {
+            carrierPackageNames = TelephonyManager.from(mContext)
                 .getCarrierPackageNamesForIntentAndPhone(
-                        new Intent(CarrierService.CARRIER_SERVICE_INTERFACE), phoneId);
+                    new Intent(CarrierService.CARRIER_SERVICE_INTERFACE), phoneId);
+        } finally {
+            Binder.restoreCallingIdentity(token);
+        }
         if (carrierPackageNames != null && carrierPackageNames.size() > 0) {
             return carrierPackageNames.get(0);
         } else {
