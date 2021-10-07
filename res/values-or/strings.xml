@@ -537,7 +537,6 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"କଲ୍ କରିବା ପାଇଁ ମୋବାଇଲ୍ ନେଟ୍‌ୱର୍କକୁ ଚାଲୁ କରନ୍ତୁ, ଏୟାରପ୍ଲେନ୍ ମୋଡ୍‌କୁ ବନ୍ଦ କରନ୍ତୁ କିମ୍ବା ବ୍ୟାଟେରୀ ସେଭର୍‌କୁ ବନ୍ଦ କରନ୍ତୁ।"</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"ଗୋଟିଏ କଲ୍ କରିବା ପାଇଁ ଏୟାରପ୍ଲେନ୍ ମୋଡ୍‌କୁ ବନ୍ଦ କରନ୍ତୁ।"</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"ଗୋଟିଏ କଲ୍ କରିବା ପାଇଁ ଏୟାରପ୍ଲେନ୍ ମୋଡ୍‌କୁ ବନ୍ଦ କରନ୍ତୁ କିମ୍ବା ଏକ ତାରବିହୀନ ନେଟ୍‌ୱର୍କ ସହ କନେକ୍ଟ କରନ୍ତୁ।"</string>
-    <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"ଫୋନଟି ବହୁତ ଗରମ ହୋଇଯାଇଛି"</b>\n\n"ଏହି କଲକୁ ସମ୍ପୂର୍ଣ୍ଣ କରାଯାଇପାରିବ ନାହିଁ। ଆପଣଙ୍କ ଫୋନ୍ ଥଣ୍ଡା ହେବା ପରେ ପୁଣି ଚେଷ୍ଟା କରନ୍ତୁ। \n\nଆପଣ ଏବେ ବି ଜରୁରୀକାଳୀନ କଲ୍ କରିପାରିବେ।"</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"ଗୋଟିଏ ସାଧାରଣ କଲ୍ କରିବା ପାଇଁ ଜରୁରିକାଳୀନ କଲବ୍ୟାକ୍ ମୋଡ୍‌ରୁ ବାହାରି ଆସନ୍ତୁ।"</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"ନେଟ୍‌ୱର୍କରେ ପଞ୍ଜୀକୃତ କରାଯାଇନାହିଁ।"</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"ମୋବାଇଲ୍ ନେଟ୍‌ୱର୍କ ଉପଲବ୍ଧ ନାହିଁ।"</string>
@@ -915,6 +914,8 @@
     <string name="radio_info_nr_available" msgid="1321318331361249997">"NR ଉପଲବ୍ଧ:"</string>
     <string name="radio_info_nr_state" msgid="1337571996788535356">"NR ସ୍ଥିତି:"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR ଫ୍ରିକ୍ୱେନ୍ସୀ:"</string>
+    <!-- no translation found for radio_info_network_slicing_config (7675131833885031563) -->
+    <skip />
     <string name="band_mode_title" msgid="7988822920724576842">"ରେଡିଓ ବ୍ୟାଣ୍ଡ ମୋଡ୍ ସେଟ୍ କରନ୍ତୁ"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"ବ୍ୟାଣ୍ଡ ତାଲିକା ଲୋଡ୍ କରାଯାଉଛି…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"ସେଟ୍ କରନ୍ତୁ"</string>

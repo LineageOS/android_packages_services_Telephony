@@ -537,7 +537,6 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"បើក​បណ្ដាញ​ទូរសព្ទ​ចល័ត បិទ​មុខងារ​ពេល​ជិះ​យន្តហោះ ឬ​បិទ​មុខងារ​កម្មវិធី​សន្សំថ្ម ដើម្បី​ហៅ​ទូរសព្ទ។"</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"បិទរបៀបយន្តហោះដើម្បីធ្វើការហៅ។"</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"បិទរបៀបយន្តហោះ ឬភ្ជាប់ទៅបណ្តាញឥតខ្សែដើម្បីធ្វើការហៅ។"</string>
-    <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"ទូរសព្ទ​ក្ដៅ​ពេក"</b>\n\n"មិន​អាច​ធ្វើការហៅ​ទូរសព្ទ​នេះ​បាន​ទេ។ សូម​ព្យាយាម​ម្ដង​ទៀត នៅ​ពេល​ទូរសព្ទ​របស់​អ្នក​ចុះ​ត្រជាក់។\n\nអ្នក​នៅ​តែ​អាច​ធ្វើ​ការហៅ​ទៅ​លេខ​សង្គ្រោះ​បន្ទាន់​បាន។"</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"ចាកចេញពីរបៀបហៅទៅវិញពេលមានអាសន្នដើម្បីធ្វើការហៅធម្មតា។"</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"មិន​បាន​ចុះ​ឈ្មោះ​នៅ​លើ​បណ្ដាញ។"</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"បណ្ដាញ​​ឧបករណ៍​​ចល័ត​មិន​អាច​ប្រើ​បាន​។"</string>
@@ -915,6 +914,7 @@
     <string name="radio_info_nr_available" msgid="1321318331361249997">"មាន NR៖"</string>
     <string name="radio_info_nr_state" msgid="1337571996788535356">"ស្ថានភាព NR៖"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"កម្រិត​ញឹកញាប់​នៃ NR៖"</string>
+    <string name="radio_info_network_slicing_config" msgid="7675131833885031563">"ការកំណត់រចនាសម្ព័ន្ធ​ការបែងចែកបណ្ដាញ៖"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"កំណត់​មុខងារ​កម្រិត​បញ្ជូន​វិទ្យុ"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"កំពុងដំណើរការបញ្ជីក្រុម…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"កំណត់"</string>

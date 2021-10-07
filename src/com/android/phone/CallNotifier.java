@@ -720,7 +720,7 @@ public class CallNotifier extends Handler {
             mCFIStatus.put(this.mSubId, visible);
             updatePhoneStateListeners(false, UPDATE_TYPE_CFI, this.mSubId);
         }
-    };
+    }
 
     private void log(String msg) {
         Log.d(LOG_TAG, msg);

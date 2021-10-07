@@ -27,6 +27,7 @@ import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.os.Binder;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.PersistableBundle;
 import android.telecom.TelecomManager;
 import android.telephony.CarrierConfigManager;
@@ -158,6 +159,11 @@ public class TestContext extends MockContext {
             return Context.TELEPHONY_SUBSCRIPTION_SERVICE;
         }
         return null;
+    }
+
+    @Override
+    public Handler getMainThreadHandler() {
+        return new Handler(Looper.getMainLooper());
     }
 
     /**

@@ -537,7 +537,6 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Zəng etmək üçün mobil şəbəkəni aktiv edin, uçuş rejimini deaktiv edin və ya enerji qənaətini deaktiv edin."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Zəng etmək üçün təyyarə rejimini deaktiv edin."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Zəng etmək üçün təyyarə rejimini deaktiv edin və ya Wi-Fi şəbəkəsinə qoşulun."</string>
-    <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"Telefonunuz çox qızıb"</b>\n\n"Bu zəngi tamamlamaq mümkün deyil. Telefonunuz soyuduqda yenidən cəhd edin.\n\nHələ də təcili zənglər edə bilərsiniz."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Qeyri-fövqəladə zəng etmək üçün fövqəladə zəng rejimindən çıxın."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"Şəbəkədə qeydə alınmayıb."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"Mobil şəbəkə əlçatımlı deyil."</string>
@@ -592,7 +591,7 @@
     <string name="importToFDNfromContacts" msgid="5068664870738407341">"Kontaktlardan import edin"</string>
     <string name="singleContactImportedMsg" msgid="3619804066300998934">"Idxal olunmuş kontakt"</string>
     <string name="failedToImportSingleContactMsg" msgid="228095510489830266">"Kontakt idxalı uğursuz oldu"</string>
-    <string name="hac_mode_title" msgid="4127986689621125468">"Eşitmə cihazları"</string>
+    <string name="hac_mode_title" msgid="4127986689621125468">"Eşitmə yardımı"</string>
     <string name="hac_mode_summary" msgid="7774989500136009881">"Eşitmə yardımı uyğunluğunu aktivləşdirin"</string>
     <string name="rtt_mode_title" msgid="3075948111362818043">"Real zaman mətn (RTT) zəngi"</string>
     <string name="rtt_mode_summary" msgid="8631541375609989562">"Səsli zəng daxilində mesajlaşmaya icazə verin"</string>
@@ -915,6 +914,8 @@
     <string name="radio_info_nr_available" msgid="1321318331361249997">"NR Əlçatandır:"</string>
     <string name="radio_info_nr_state" msgid="1337571996788535356">"NR Statusu:"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR Tezliyi:"</string>
+    <!-- no translation found for radio_info_network_slicing_config (7675131833885031563) -->
+    <skip />
     <string name="band_mode_title" msgid="7988822920724576842">"Radio Diapazon Rejimini Quraşdırın"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Diapazon Siyahısı Yüklənir…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Ayarlayın"</string>

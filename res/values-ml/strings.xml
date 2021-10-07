@@ -537,7 +537,6 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"ഒരു കോൾ വിളിക്കാൻ മൊബൈൽ നെറ്റ്‌വർക്ക് ഓണാക്കുകയോ ഫ്ലൈറ്റ് മോഡ് അല്ലെങ്കിൽ ബാറ്ററി ലാഭിക്കൽ മോഡ് ഓഫാക്കുകയോ ചെയ്യുക."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"ഒരു കോൾ വിളിക്കാൻ വിമാന മോഡ് ഓഫാക്കുക."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"ഒരു കോൾ വിളിക്കാൻ വിമാന മോഡ് ഓഫാക്കുക അല്ലെങ്കിൽ വയർലെസ്സ് നെറ്റ്‌വർക്കിലേക്ക് കണക്റ്റുചെയ്യുക."</string>
-    <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"ഫോൺ വളരെയധികം ചൂടായിരിക്കുന്നു"</b>\n\n"ഈ കോൾ പൂർത്തിയാക്കാനാകില്ല. ഫോൺ തണുക്കുമ്പോൾ വീണ്ടും ശ്രമിക്കുക.\n\nഎമർജൻസി കോളുകൾ നിങ്ങൾക്ക് ഇപ്പോഴും ചെയ്യാവുന്നതാണ്."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"അടിയന്തിരമല്ലാത്ത കോൾ ചെയ്യാൻ അടിയന്തിര കോൾബാക്ക് മോഡിൽ നിന്ന് പുറത്തുകടക്കുക."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"നെറ്റ്‌വർക്കിൽ രജിസ്റ്റർ ചെയ്‌തിട്ടില്ല."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"മൊബൈൽ നെറ്റ്‌വർക്ക് ലഭ്യമല്ല."</string>
@@ -878,8 +877,8 @@
     <string name="radioInfo_cid" msgid="1423185536264406705">"CID"</string>
     <string name="radio_info_subid" msgid="6839966868621703203">"നിലവിലെ ഉപ‌ഐഡി:"</string>
     <string name="radio_info_dds" msgid="1122593144425697126">"ഡിഫോൾട്ട് ഡാറ്റാ സിമ്മിന്റെ ഉപഐഡി:"</string>
-    <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DL ബാൻഡ്‌വിഡ്‌ത് (kbps):"</string>
-    <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL ബാൻഡ്‌വിഡ്‌ത് (kbps):"</string>
+    <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DL ബാൻഡ്‌വിത്ത് (kbps):"</string>
+    <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL ബാൻഡ്‍വിത്ത് (kbps):"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"LTE ഫിസിക്കൽ ചാനൽ കോൺഫിഗറേഷൻ:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"സെൽ വിവരങ്ങൾ പുതുക്കിയെടുക്കൽ നിരക്ക്:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"എല്ലാ സെൽ അളവ് വിവരങ്ങളും:"</string>
@@ -915,6 +914,8 @@
     <string name="radio_info_nr_available" msgid="1321318331361249997">"NR ലഭ്യം:"</string>
     <string name="radio_info_nr_state" msgid="1337571996788535356">"NR നില:"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR ഫ്രീക്വൻസി:"</string>
+    <!-- no translation found for radio_info_network_slicing_config (7675131833885031563) -->
+    <skip />
     <string name="band_mode_title" msgid="7988822920724576842">"റേഡിയോ ബാൻഡ് മോഡ് സജ്ജീകരിക്കുക"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"ബാൻഡ് ലിസ്‌റ്റ് ലോഡ് ചെയ്യുന്നു…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"സജ്ജീകരിക്കുക"</string>

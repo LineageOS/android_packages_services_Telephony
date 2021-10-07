@@ -74,7 +74,7 @@
     <string name="no_internet_available" msgid="161720645084325479">"SIP કૉલ કરવા માટે, પ્રથમ તમારું ઇન્ટરનેટ કનેક્શન તપાસો."</string>
     <string name="no_wifi_available" msgid="1179092018692306312">"SIP કૉલ્સ માટે તમારે Wi-Fi નેટવર્કથી કનેક્ટ હોવું જરૂરી છે (વાયરલેસ અને નેટવર્ક સેટિંગ્સનો ઉપયોગ કરો)."</string>
     <string name="no_voip" msgid="3366395789297981738">"SIP કૉલિંગ સમર્થિત નથી"</string>
-    <string name="sip_system_decide" msgid="197230378376326430">"ઑટોમૅટિક"</string>
+    <string name="sip_system_decide" msgid="197230378376326430">"સ્વચલિત"</string>
     <string name="sip_always_send_keepalive" msgid="4986533673960084769">"હંમેશાં મોકલો"</string>
     <string name="sip_connection_service_label" msgid="8796284274240316006">"બિલ્ટ-ઇન SIP કૉલિંગ"</string>
 </resources>

@@ -21,16 +21,21 @@ import static com.android.internal.telephony.d2d.Communicator.MESSAGE_CALL_RADIO
 import static com.android.internal.telephony.d2d.Communicator.MESSAGE_DEVICE_BATTERY_STATE;
 import static com.android.internal.telephony.d2d.Communicator.MESSAGE_DEVICE_NETWORK_COVERAGE;
 
+import android.Manifest;
 import android.content.Context;
+import android.net.Uri;
 import android.os.Binder;
 import android.os.PersistableBundle;
 import android.os.Process;
 import android.os.RemoteException;
 import android.os.ServiceSpecificException;
 import android.provider.BlockedNumberContract;
+import android.telephony.BarringInfo;
 import android.telephony.CarrierConfigManager;
+import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
+import android.telephony.TelephonyRegistryManager;
 import android.telephony.emergency.EmergencyNumber;
 import android.telephony.ims.ImsException;
 import android.telephony.ims.RcsContactUceCapability;
@@ -39,6 +44,7 @@ import android.text.TextUtils;
 import android.util.ArrayMap;
 import android.util.ArraySet;
 import android.util.Log;
+import android.util.SparseArray;
 
 import com.android.ims.rcs.uce.util.FeatureTags;
 import com.android.internal.telephony.ITelephony;
@@ -48,6 +54,7 @@ import com.android.internal.telephony.d2d.Communicator;
 import com.android.internal.telephony.emergency.EmergencyNumberTracker;
 import com.android.internal.telephony.util.TelephonyUtils;
 import com.android.modules.utils.BasicShellCommandHandler;
+import com.android.phone.callcomposer.CallComposerPictureManager;
 
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -58,6 +65,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 
 /**
  * Takes actions based on the adb commands given by "adb shell cmd phone ...". Be careful, no
@@ -72,6 +81,7 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
     private static final boolean VDBG = true;
     private static final int DEFAULT_PHONE_ID = 0;
 
+    private static final String CALL_COMPOSER_SUBCOMMAND = "callcomposer";
     private static final String IMS_SUBCOMMAND = "ims";
     private static final String NUMBER_VERIFICATION_SUBCOMMAND = "numverify";
     private static final String EMERGENCY_CALLBACK_MODE = "emergency-callback-mode";
@@ -81,14 +91,17 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
     private static final String UNATTENDED_REBOOT = "unattended-reboot";
     private static final String CARRIER_CONFIG_SUBCOMMAND = "cc";
     private static final String DATA_TEST_MODE = "data";
-    private static final String DATA_ENABLE = "enable";
-    private static final String DATA_DISABLE = "disable";
+    private static final String ENABLE = "enable";
+    private static final String DISABLE = "disable";
+    private static final String QUERY = "query";
+
+    private static final String CALL_COMPOSER_TEST_MODE = "test-mode";
+    private static final String CALL_COMPOSER_SIMULATE_CALL = "simulate-outgoing-call";
+    private static final String CALL_COMPOSER_USER_SETTING = "user-setting";
 
     private static final String IMS_SET_IMS_SERVICE = "set-ims-service";
     private static final String IMS_GET_IMS_SERVICE = "get-ims-service";
     private static final String IMS_CLEAR_SERVICE_OVERRIDE = "clear-ims-service-override";
-    private static final String IMS_ENABLE = "enable";
-    private static final String IMS_DISABLE = "disable";
     // Used to disable or enable processing of conference event package data from the network.
     // This is handy for testing scenarios where CEP data does not exist on a network which does
     // support CEP data.
@@ -119,9 +132,15 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
 
     private static final String D2D_SUBCOMMAND = "d2d";
     private static final String D2D_SEND = "send";
+    private static final String D2D_TRANSPORT = "transport";
+    private static final String D2D_SET_DEVICE_SUPPORT = "set-device-support";
+
+    private static final String BARRING_SUBCOMMAND = "barring";
+    private static final String BARRING_SEND_INFO = "send";
 
     private static final String RCS_UCE_COMMAND = "uce";
     private static final String UCE_GET_EAB_CONTACT = "get-eab-contact";
+    private static final String UCE_GET_EAB_CAPABILITY = "get-eab-capability";
     private static final String UCE_REMOVE_EAB_CONTACT = "remove-eab-contact";
     private static final String UCE_GET_DEVICE_ENABLED = "get-device-enabled";
     private static final String UCE_SET_DEVICE_ENABLED = "set-device-enabled";
@@ -135,15 +154,23 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
     // Check if a package has carrier privileges on any SIM, regardless of subId/phoneId.
     private static final String HAS_CARRIER_PRIVILEGES_COMMAND = "has-carrier-privileges";
 
+    private static final String DISABLE_PHYSICAL_SUBSCRIPTION = "disable-physical-subscription";
+    private static final String ENABLE_PHYSICAL_SUBSCRIPTION = "enable-physical-subscription";
+
     private static final String THERMAL_MITIGATION_COMMAND = "thermal-mitigation";
     private static final String ALLOW_THERMAL_MITIGATION_PACKAGE_SUBCOMMAND = "allow-package";
     private static final String DISALLOW_THERMAL_MITIGATION_PACKAGE_SUBCOMMAND = "disallow-package";
 
+    private static final String GET_ALLOWED_NETWORK_TYPES_FOR_USER =
+            "get-allowed-network-types-for-users";
+    private static final String SET_ALLOWED_NETWORK_TYPES_FOR_USER =
+            "set-allowed-network-types-for-users";
     // Take advantage of existing methods that already contain permissions checks when possible.
     private final ITelephony mInterface;
 
     private SubscriptionManager mSubscriptionManager;
     private CarrierConfigManager mCarrierConfigManager;
+    private TelephonyRegistryManager mTelephonyRegistryManager;
     private Context mContext;
 
     private enum CcType {
@@ -237,6 +264,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                 (CarrierConfigManager) context.getSystemService(Context.CARRIER_CONFIG_SERVICE);
         mSubscriptionManager = (SubscriptionManager)
                 context.getSystemService(Context.TELEPHONY_SUBSCRIPTION_SERVICE);
+        mTelephonyRegistryManager = (TelephonyRegistryManager)
+                context.getSystemService(Context.TELEPHONY_REGISTRY_SERVICE);
         mContext = context;
     }
 
@@ -269,16 +298,27 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                 return handleGbaCommand();
             case D2D_SUBCOMMAND:
                 return handleD2dCommand();
+            case BARRING_SUBCOMMAND:
+                return handleBarringCommand();
             case SINGLE_REGISTATION_CONFIG:
                 return handleSingleRegistrationConfigCommand();
             case RESTART_MODEM:
                 return handleRestartModemCommand();
+            case CALL_COMPOSER_SUBCOMMAND:
+                return handleCallComposerCommand();
             case UNATTENDED_REBOOT:
                 return handleUnattendedReboot();
             case HAS_CARRIER_PRIVILEGES_COMMAND:
                 return handleHasCarrierPrivilegesCommand();
             case THERMAL_MITIGATION_COMMAND:
                 return handleThermalMitigationCommand();
+            case DISABLE_PHYSICAL_SUBSCRIPTION:
+                return handleEnablePhysicalSubscription(false);
+            case ENABLE_PHYSICAL_SUBSCRIPTION:
+                return handleEnablePhysicalSubscription(true);
+            case GET_ALLOWED_NETWORK_TYPES_FOR_USER:
+            case SET_ALLOWED_NETWORK_TYPES_FOR_USER:
+                return handleAllowedNetworkTypesCommand(cmd);
             default: {
                 return handleDefaultCommands(cmd);
             }
@@ -313,6 +353,10 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         pw.println("    Prepare for unattended reboot.");
         pw.println("  has-carrier-privileges [package]");
         pw.println("    Query carrier privilege status for a package. Prints true or false.");
+        pw.println("  get-allowed-network-types-for-users");
+        pw.println("    Get the Allowed Network Types.");
+        pw.println("  set-allowed-network-types-for-users");
+        pw.println("    Set the Allowed Network Types.");
         onHelpIms();
         onHelpUce();
         onHelpEmergencyNumber();
@@ -322,6 +366,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         onHelpGba();
         onHelpSrc();
         onHelpD2D();
+        onHelpDisableOrEnablePhysicalSubscription();
+        onHelpAllowedNetworkTypes();
     }
 
     private void onHelpD2D() {
@@ -338,6 +384,25 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                         MESSAGE_DEVICE_BATTERY_STATE));
         pw.println("    Type: " + MESSAGE_DEVICE_NETWORK_COVERAGE + " - "
                 + Communicator.messageToString(MESSAGE_DEVICE_NETWORK_COVERAGE));
+        pw.println("  d2d transport TYPE");
+        pw.println("    Forces the specified D2D transport TYPE to be active.  Use the");
+        pw.println("    short class name of the transport; i.e. DtmfTransport or RtpTransport.");
+        pw.println("  d2d set-device-support true/default");
+        pw.println("    true - forces device support to be enabled for D2D.");
+        pw.println("    default - clear any previously set force-enable of D2D, reverting to ");
+        pw.println("    the current device's configuration.");
+    }
+
+    private void onHelpBarring() {
+        PrintWriter pw = getOutPrintWriter();
+        pw.println("Barring Commands:");
+        pw.println("  barring send -s SLOT_ID -b BARRING_TYPE -c IS_CONDITIONALLY_BARRED"
+                + " -t CONDITIONAL_BARRING_TIME_SECS");
+        pw.println("    Notifies of a barring info change for the specified slot id.");
+        pw.println("    BARRING_TYPE: 0 for BARRING_TYPE_NONE");
+        pw.println("    BARRING_TYPE: 1 for BARRING_TYPE_UNCONDITIONAL");
+        pw.println("    BARRING_TYPE: 2 for BARRING_TYPE_CONDITIONAL");
+        pw.println("    BARRING_TYPE: -1 for BARRING_TYPE_UNKNOWN");
     }
 
     private void onHelpIms() {
@@ -437,6 +502,15 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         pw.println("  thermal-mitigation disallow-package PACKAGE_NAME");
         pw.println("    Remove the package from one of the authorized packages for thermal "
                 + "mitigation.");
+    }
+
+    private void onHelpDisableOrEnablePhysicalSubscription() {
+        PrintWriter pw = getOutPrintWriter();
+        pw.println("Disable or enable a physical subscription");
+        pw.println("  disable-physical-subscription SUB_ID");
+        pw.println("    Disable the physical subscription with the provided subId, if allowed.");
+        pw.println("  enable-physical-subscription SUB_ID");
+        pw.println("    Enable the physical subscription with the provided subId, if allowed.");
     }
 
     private void onHelpDataTestMode() {
@@ -558,6 +632,30 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         pw.println("          is specified, it will choose the default voice SIM slot.");
     }
 
+    private void onHelpAllowedNetworkTypes() {
+        PrintWriter pw = getOutPrintWriter();
+        pw.println("Allowed Network Types Commands:");
+        pw.println("  get-allowed-network-types-for-users [-s SLOT_ID]");
+        pw.println("    Print allowed network types value.");
+        pw.println("    Options are:");
+        pw.println("      -s: The SIM slot ID to read allowed network types value for. If no");
+        pw.println("          option is specified, it will choose the default voice SIM slot.");
+        pw.println("  set-allowed-network-types-for-users [-s SLOT_ID] [NETWORK_TYPES_BITMASK]");
+        pw.println("    Sets allowed network types to NETWORK_TYPES_BITMASK.");
+        pw.println("    Options are:");
+        pw.println("      -s: The SIM slot ID to set allowed network types value for. If no");
+        pw.println("          option is specified, it will choose the default voice SIM slot.");
+        pw.println("    NETWORK_TYPES_BITMASK specifies the new network types value and this type");
+        pw.println("      is bitmask in binary format. Reference the NetworkTypeBitMask");
+        pw.println("      at TelephonyManager.java");
+        pw.println("      For example:");
+        pw.println("        NR only                    : 10000000000000000000");
+        pw.println("        NR|LTE                     : 11000001000000000000");
+        pw.println("        NR|LTE|CDMA|EVDO|GSM|WCDMA : 11001111101111111111");
+        pw.println("        LTE|CDMA|EVDO|GSM|WCDMA    : 01001111101111111111");
+        pw.println("        LTE only                   : 01000001000000000000");
+    }
+
     private int handleImsCommand() {
         String arg = getNextArg();
         if (arg == null) {
@@ -575,10 +673,10 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             case IMS_CLEAR_SERVICE_OVERRIDE: {
                 return handleImsClearCarrierServiceCommand();
             }
-            case IMS_ENABLE: {
+            case ENABLE: {
                 return handleEnableIms();
             }
-            case IMS_DISABLE: {
+            case DISABLE: {
                 return handleDisableIms();
             }
             case IMS_CEP: {
@@ -597,7 +695,7 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             return 0;
         }
         switch (arg) {
-            case DATA_ENABLE: {
+            case ENABLE: {
                 try {
                     mInterface.enableDataConnectivity();
                 } catch (RemoteException ex) {
@@ -607,7 +705,7 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                 }
                 break;
             }
-            case DATA_DISABLE: {
+            case DISABLE: {
                 try {
                     mInterface.disableDataConnectivity();
                 } catch (RemoteException ex) {
@@ -749,6 +847,41 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         return -1;
     }
 
+    private boolean subIsEsim(int subId) {
+        SubscriptionInfo info = mSubscriptionManager.getActiveSubscriptionInfo(subId);
+        if (info != null) {
+            return info.isEmbedded();
+        }
+        return false;
+    }
+
+    private int handleEnablePhysicalSubscription(boolean enable) {
+        PrintWriter errPw = getErrPrintWriter();
+        int subId = 0;
+        try {
+            subId = Integer.parseInt(getNextArgRequired());
+        } catch (NumberFormatException e) {
+            errPw.println((enable ? "enable" : "disable")
+                    + "-physical-subscription requires an integer as a subId.");
+            return -1;
+        }
+        // Verify that the user is allowed to run the command. Only allowed in rooted device in a
+        // non user build.
+        if (Binder.getCallingUid() != Process.ROOT_UID || TelephonyUtils.IS_USER) {
+            errPw.println("cc: Permission denied.");
+            return -1;
+        }
+        // Verify that the subId represents a physical sub
+        if (subIsEsim(subId)) {
+            errPw.println("SubId " + subId + " is not for a physical subscription");
+            return -1;
+        }
+        Log.d(LOG_TAG, (enable ? "Enabling" : "Disabling")
+                + " physical subscription with subId=" + subId);
+        mSubscriptionManager.setUiccApplicationsEnabled(subId, enable);
+        return 0;
+    }
+
     private int handleThermalMitigationCommand() {
         String arg = getNextArg();
         String packageName = getNextArg();
@@ -790,6 +923,12 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             case D2D_SEND: {
                 return handleD2dSendCommand();
             }
+            case D2D_TRANSPORT: {
+                return handleD2dTransportCommand();
+            }
+            case D2D_SET_DEVICE_SUPPORT: {
+                return handleD2dDeviceSupportedCommand();
+            }
         }
 
         return -1;
@@ -797,10 +936,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
 
     private int handleD2dSendCommand() {
         PrintWriter errPw = getErrPrintWriter();
-        String opt;
         int messageType = -1;
         int messageValue = -1;
-
 
         String arg = getNextArg();
         if (arg == null) {
@@ -834,6 +971,132 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             return -1;
         }
 
+        return 0;
+    }
+
+    private int handleD2dTransportCommand() {
+        PrintWriter errPw = getErrPrintWriter();
+
+        String arg = getNextArg();
+        if (arg == null) {
+            onHelpD2D();
+            return 0;
+        }
+
+        try {
+            mInterface.setActiveDeviceToDeviceTransport(arg);
+        } catch (RemoteException e) {
+            Log.w(LOG_TAG, "d2d transport error: " + e.getMessage());
+            errPw.println("Exception: " + e.getMessage());
+            return -1;
+        }
+        return 0;
+    }
+    private int handleBarringCommand() {
+        String arg = getNextArg();
+        if (arg == null) {
+            onHelpBarring();
+            return 0;
+        }
+
+        switch (arg) {
+            case BARRING_SEND_INFO: {
+                return handleBarringSendCommand();
+            }
+        }
+        return -1;
+    }
+
+    private int handleBarringSendCommand() {
+        PrintWriter errPw = getErrPrintWriter();
+        int slotId = getDefaultSlot();
+        int subId = SubscriptionManager.getSubId(slotId)[0];
+        @BarringInfo.BarringServiceInfo.BarringType int barringType =
+                BarringInfo.BarringServiceInfo.BARRING_TYPE_UNCONDITIONAL;
+        boolean isConditionallyBarred = false;
+        int conditionalBarringTimeSeconds = 0;
+
+        String opt;
+        while ((opt = getNextOption()) != null) {
+            switch (opt) {
+                case "-s": {
+                    try {
+                        slotId = Integer.parseInt(getNextArgRequired());
+                        subId = SubscriptionManager.getSubId(slotId)[0];
+                    } catch (NumberFormatException e) {
+                        errPw.println("barring send requires an integer as a SLOT_ID.");
+                        return -1;
+                    }
+                    break;
+                }
+                case "-b": {
+                    try {
+                        barringType = Integer.parseInt(getNextArgRequired());
+                        if (barringType < -1 || barringType > 2) {
+                            throw new NumberFormatException();
+                        }
+
+                    } catch (NumberFormatException e) {
+                        errPw.println("barring send requires an integer in range [-1,2] as "
+                                + "a BARRING_TYPE.");
+                        return -1;
+                    }
+                    break;
+                }
+                case "-c": {
+                    try {
+                        isConditionallyBarred = Boolean.parseBoolean(getNextArgRequired());
+                    } catch (Exception e) {
+                        errPw.println("barring send requires a boolean after -c indicating"
+                                + " conditional barring");
+                        return -1;
+                    }
+                    break;
+                }
+                case "-t": {
+                    try {
+                        conditionalBarringTimeSeconds = Integer.parseInt(getNextArgRequired());
+                    } catch (NumberFormatException e) {
+                        errPw.println("barring send requires an integer for time of barring"
+                                + " in seconds after -t for conditional barring");
+                        return -1;
+                    }
+                    break;
+                }
+            }
+        }
+        SparseArray<BarringInfo.BarringServiceInfo> barringServiceInfos = new SparseArray<>();
+        BarringInfo.BarringServiceInfo bsi = new BarringInfo.BarringServiceInfo(
+                barringType, isConditionallyBarred, 0, conditionalBarringTimeSeconds);
+        barringServiceInfos.append(0, bsi);
+        BarringInfo barringInfo = new BarringInfo(null, barringServiceInfos);
+        try {
+            mTelephonyRegistryManager.notifyBarringInfoChanged(slotId, subId, barringInfo);
+        } catch (Exception e) {
+            Log.w(LOG_TAG, "barring send error: " + e.getMessage());
+            errPw.println("Exception: " + e.getMessage());
+            return -1;
+        }
+        return 0;
+    }
+
+    private int handleD2dDeviceSupportedCommand() {
+        PrintWriter errPw = getErrPrintWriter();
+
+        String arg = getNextArg();
+        if (arg == null) {
+            onHelpD2D();
+            return 0;
+        }
+
+        boolean isEnabled = "true".equals(arg.toLowerCase());
+        try {
+            mInterface.setDeviceToDeviceForceEnabled(isEnabled);
+        } catch (RemoteException e) {
+            Log.w(LOG_TAG, "Error forcing D2D enabled: " + e.getMessage());
+            errPw.println("Exception: " + e.getMessage());
+            return -1;
+        }
         return 0;
     }
 
@@ -1825,6 +2088,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                 return handleRemovingEabContactCommand();
             case UCE_GET_EAB_CONTACT:
                 return handleGettingEabContactCommand();
+            case UCE_GET_EAB_CAPABILITY:
+                return handleGettingEabCapabilityCommand();
             case UCE_GET_DEVICE_ENABLED:
                 return handleUceGetDeviceEnabledCommand();
             case UCE_SET_DEVICE_ENABLED:
@@ -1874,7 +2139,6 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         String result = "";
         try {
             result = mInterface.getContactFromEab(phoneNumber);
-
         } catch (RemoteException e) {
             Log.w(LOG_TAG, "uce get-eab-contact, error " + e.getMessage());
             getErrPrintWriter().println("Exception: " + e.getMessage());
@@ -1883,6 +2147,27 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
 
         if (VDBG) {
             Log.v(LOG_TAG, "uce get-eab-contact, result: " + result);
+        }
+        getOutPrintWriter().println(result);
+        return 0;
+    }
+
+    private int handleGettingEabCapabilityCommand() {
+        String phoneNumber = getNextArgRequired();
+        if (TextUtils.isEmpty(phoneNumber)) {
+            return -1;
+        }
+        String result = "";
+        try {
+            result = mInterface.getCapabilityFromEab(phoneNumber);
+        } catch (RemoteException e) {
+            Log.w(LOG_TAG, "uce get-eab-capability, error " + e.getMessage());
+            getErrPrintWriter().println("Exception: " + e.getMessage());
+            return -1;
+        }
+
+        if (VDBG) {
+            Log.v(LOG_TAG, "uce get-eab-capability, result: " + result);
         }
         getOutPrintWriter().println(result);
         return 0;
@@ -2225,10 +2510,95 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         return 0;
     }
 
+
+    private void onHelpCallComposer() {
+        PrintWriter pw = getOutPrintWriter();
+        pw.println("Call composer commands");
+        pw.println("  callcomposer test-mode enable|disable|query");
+        pw.println("    Enables or disables test mode for call composer. In test mode, picture");
+        pw.println("    upload/download from carrier servers is disabled, and operations are");
+        pw.println("    performed using emulated local files instead.");
+        pw.println("  callcomposer simulate-outgoing-call [subId] [UUID]");
+        pw.println("    Simulates an outgoing call being placed with the picture ID as");
+        pw.println("    the provided UUID. This triggers storage to the call log.");
+        pw.println("  callcomposer user-setting [subId] enable|disable|query");
+        pw.println("    Enables or disables the user setting for call composer, as set by");
+        pw.println("    TelephonyManager#setCallComposerStatus.");
+    }
+
+    private int handleCallComposerCommand() {
+        String arg = getNextArg();
+        if (arg == null) {
+            onHelpCallComposer();
+            return 0;
+        }
+
+        mContext.enforceCallingPermission(Manifest.permission.MODIFY_PHONE_STATE,
+                "MODIFY_PHONE_STATE required for call composer shell cmds");
+        switch (arg) {
+            case CALL_COMPOSER_TEST_MODE: {
+                String enabledStr = getNextArg();
+                if (ENABLE.equals(enabledStr)) {
+                    CallComposerPictureManager.sTestMode = true;
+                } else if (DISABLE.equals(enabledStr)) {
+                    CallComposerPictureManager.sTestMode = false;
+                } else if (QUERY.equals(enabledStr)) {
+                    getOutPrintWriter().println(CallComposerPictureManager.sTestMode);
+                } else {
+                    onHelpCallComposer();
+                    return 1;
+                }
+                break;
+            }
+            case CALL_COMPOSER_SIMULATE_CALL: {
+                int subscriptionId = Integer.valueOf(getNextArg());
+                String uuidString = getNextArg();
+                UUID uuid = UUID.fromString(uuidString);
+                CompletableFuture<Uri> storageUriFuture = new CompletableFuture<>();
+                Binder.withCleanCallingIdentity(() -> {
+                    CallComposerPictureManager.getInstance(mContext, subscriptionId)
+                            .storeUploadedPictureToCallLog(uuid, storageUriFuture::complete);
+                });
+                try {
+                    Uri uri = storageUriFuture.get();
+                    getOutPrintWriter().println(String.valueOf(uri));
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+                break;
+            }
+            case CALL_COMPOSER_USER_SETTING: {
+                try {
+                    int subscriptionId = Integer.valueOf(getNextArg());
+                    String enabledStr = getNextArg();
+                    if (ENABLE.equals(enabledStr)) {
+                        mInterface.setCallComposerStatus(subscriptionId,
+                                TelephonyManager.CALL_COMPOSER_STATUS_ON);
+                    } else if (DISABLE.equals(enabledStr)) {
+                        mInterface.setCallComposerStatus(subscriptionId,
+                                TelephonyManager.CALL_COMPOSER_STATUS_OFF);
+                    } else if (QUERY.equals(enabledStr)) {
+                        getOutPrintWriter().println(mInterface.getCallComposerStatus(subscriptionId)
+                                == TelephonyManager.CALL_COMPOSER_STATUS_ON);
+                    } else {
+                        onHelpCallComposer();
+                        return 1;
+                    }
+                } catch (RemoteException e) {
+                    e.printStackTrace(getOutPrintWriter());
+                    return 1;
+                }
+                break;
+            }
+        }
+        return 0;
+    }
+
     private int handleHasCarrierPrivilegesCommand() {
         String packageName = getNextArgRequired();
 
         boolean hasCarrierPrivileges;
+        final long token = Binder.clearCallingIdentity();
         try {
             hasCarrierPrivileges =
                     mInterface.checkCarrierPrivilegesForPackageAnyPhone(packageName)
@@ -2237,9 +2607,122 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             Log.w(LOG_TAG, HAS_CARRIER_PRIVILEGES_COMMAND + " exception", e);
             getErrPrintWriter().println("Exception: " + e.getMessage());
             return -1;
+        } finally {
+            Binder.restoreCallingIdentity(token);
         }
 
         getOutPrintWriter().println(hasCarrierPrivileges);
         return 0;
+    }
+
+    private int handleAllowedNetworkTypesCommand(String command) {
+        if (!checkShellUid()) {
+            return -1;
+        }
+
+        PrintWriter errPw = getErrPrintWriter();
+        String tag = command + ": ";
+        String opt;
+        int subId = -1;
+        Log.v(LOG_TAG, command + " start");
+
+        while ((opt = getNextOption()) != null) {
+            if (opt.equals("-s")) {
+                try {
+                    subId = slotStringToSubId(tag, getNextArgRequired());
+                    if (!SubscriptionManager.isValidSubscriptionId(subId)) {
+                        errPw.println(tag + "No valid subscription found.");
+                        return -1;
+                    }
+                } catch (IllegalArgumentException e) {
+                    // Missing slot id
+                    errPw.println(tag + "SLOT_ID expected after -s.");
+                    return -1;
+                }
+            } else {
+                errPw.println(tag + "Unknown option " + opt);
+                return -1;
+            }
+        }
+
+        if (GET_ALLOWED_NETWORK_TYPES_FOR_USER.equals(command)) {
+            return handleGetAllowedNetworkTypesCommand(subId);
+        }
+        if (SET_ALLOWED_NETWORK_TYPES_FOR_USER.equals(command)) {
+            return handleSetAllowedNetworkTypesCommand(subId);
+        }
+        return -1;
+    }
+
+    private int handleGetAllowedNetworkTypesCommand(int subId) {
+        PrintWriter errPw = getErrPrintWriter();
+
+        long result = -1;
+        try {
+            if (mInterface != null) {
+                result = mInterface.getAllowedNetworkTypesForReason(subId,
+                        TelephonyManager.ALLOWED_NETWORK_TYPES_REASON_USER);
+            } else {
+                throw new IllegalStateException("telephony service is null.");
+            }
+        } catch (RemoteException e) {
+            Log.e(TAG, "getAllowedNetworkTypesForReason RemoteException" + e);
+            errPw.println(GET_ALLOWED_NETWORK_TYPES_FOR_USER + "RemoteException " + e);
+            return -1;
+        }
+
+        getOutPrintWriter().println(TelephonyManager.convertNetworkTypeBitmaskToString(result));
+        return 0;
+    }
+
+    private int handleSetAllowedNetworkTypesCommand(int subId) {
+        PrintWriter errPw = getErrPrintWriter();
+
+        String bitmaskString = getNextArg();
+        if (TextUtils.isEmpty(bitmaskString)) {
+            errPw.println(SET_ALLOWED_NETWORK_TYPES_FOR_USER + " No NETWORK_TYPES_BITMASK");
+            return -1;
+        }
+        long allowedNetworkTypes = convertNetworkTypeBitmaskFromStringToLong(bitmaskString);
+        if (allowedNetworkTypes < 0) {
+            errPw.println(SET_ALLOWED_NETWORK_TYPES_FOR_USER + " No valid NETWORK_TYPES_BITMASK");
+            return -1;
+        }
+        boolean result = false;
+        try {
+            if (mInterface != null) {
+                result = mInterface.setAllowedNetworkTypesForReason(subId,
+                        TelephonyManager.ALLOWED_NETWORK_TYPES_REASON_USER, allowedNetworkTypes);
+            } else {
+                throw new IllegalStateException("telephony service is null.");
+            }
+        } catch (RemoteException e) {
+            Log.e(TAG, "setAllowedNetworkTypesForReason RemoteException" + e);
+            errPw.println(SET_ALLOWED_NETWORK_TYPES_FOR_USER + " RemoteException " + e);
+            return -1;
+        }
+
+        String resultMessage = SET_ALLOWED_NETWORK_TYPES_FOR_USER + " failed";
+        if (result) {
+            resultMessage = SET_ALLOWED_NETWORK_TYPES_FOR_USER + " completed";
+        }
+        getOutPrintWriter().println(resultMessage);
+        return 0;
+    }
+
+    private long convertNetworkTypeBitmaskFromStringToLong(String bitmaskString) {
+        if (TextUtils.isEmpty(bitmaskString)) {
+            return -1;
+        }
+        if (VDBG) {
+            Log.v(LOG_TAG, "AllowedNetworkTypes:" + bitmaskString
+                            + ", length: " + bitmaskString.length());
+        }
+        try {
+            return Long.parseLong(bitmaskString, 2);
+        } catch (NumberFormatException e) {
+            Log.e(LOG_TAG, "AllowedNetworkTypes: " + e);
+            return -1;
+        }
     }
 }

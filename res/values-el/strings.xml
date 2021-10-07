@@ -537,7 +537,6 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Ενεργοποιήστε το δίκτυο κινητής τηλεφωνίας, απενεργοποιήστε τη λειτουργία πτήσης ή τη λειτουργία εξοικονόμησης μπαταρίας, για να πραγματοποιήσετε μια κλήση."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Απενεργοποιήστε τη λειτουργία κλήσης για να πραγματοποιήσετε μια κλήση."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Απενεργοποιήστε τη λειτουργία πτήσης ή συνδεθείτε σε ένα ασύρματο δίκτυο για να πραγματοποιήσετε μια κλήση."</string>
-    <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"Το τηλέφωνο έχει υπερθερμανθεί"</b>\n\n"Δεν είναι δυνατή η ολοκλήρωση αυτής της κλήσης. Δοκιμάστε ξανά όταν η θερμοκρασία της συσκευής επανέλθει σε φυσιολογικά επίπεδα.\n\nΩστόσο, μπορείτε ακόμα να πραγματοποιείτε κλήσεις έκτακτης ανάγκης."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Πραγματοποιήστε έξοδο από τη λειτουργία επιστροφής κλήσης έκτακτης ανάγκης για να πραγματοποιήσετε μια κλήση μη έκτακτης ανάγκης."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"Δεν έχετε εγγραφεί στο δίκτυο."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"Το δίκτυο κινητής τηλεφωνίας δεν είναι διαθέσιμο."</string>
@@ -915,6 +914,8 @@
     <string name="radio_info_nr_available" msgid="1321318331361249997">"NR διαθέσιμο:"</string>
     <string name="radio_info_nr_state" msgid="1337571996788535356">"Κατάσταση NR:"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"Συχνότητα NR:"</string>
+    <!-- no translation found for radio_info_network_slicing_config (7675131833885031563) -->
+    <skip />
     <string name="band_mode_title" msgid="7988822920724576842">"Ρύθμιση λειτουργίας ζώνης συχνοτήτων πομπού"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Φόρτωση λίστας ζωνών…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Ορισμός"</string>

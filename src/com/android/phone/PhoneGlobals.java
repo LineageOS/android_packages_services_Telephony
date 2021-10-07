@@ -49,6 +49,7 @@ import android.telephony.CarrierConfigManager;
 import android.telephony.ServiceState;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
+import android.telephony.TelephonyLocalConnection;
 import android.telephony.TelephonyManager;
 import android.telephony.data.ApnSetting;
 import android.util.LocalLog;
@@ -56,6 +57,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.android.ims.ImsFeatureBinderRepository;
+import com.android.internal.os.BinderCallsStats;
 import com.android.internal.telephony.CallManager;
 import com.android.internal.telephony.IccCardConstants;
 import com.android.internal.telephony.MmiCode;
@@ -208,6 +210,7 @@ public class PhoneGlobals extends ContextWrapper {
             new CarrierVvmPackageInstalledReceiver();
 
     private final SettingsObserver mSettingsObserver;
+    private BinderCallsStats.SettingsObserver mBinderCallsSettingsObserver;
 
     private static class EventSimStateChangedBag {
         final int mPhoneId;
@@ -372,6 +375,9 @@ public class PhoneGlobals extends ContextWrapper {
 
         ContentResolver resolver = getContentResolver();
 
+        // Initialize the shim from frameworks/opt/telephony into packages/services/Telephony.
+        TelephonyLocalConnection.setInstance(new LocalConnectionImpl(this));
+
         // Cache the "voice capable" flag.
         // This flag currently comes from a resource (which is
         // overrideable on a per-product basis):
@@ -523,6 +529,13 @@ public class PhoneGlobals extends ContextWrapper {
                     SettingsConstants.HAC_KEY + "=" + (hac == SettingsConstants.HAC_ENABLED
                             ? SettingsConstants.HAC_VAL_ON : SettingsConstants.HAC_VAL_OFF));
         }
+
+        // Start tracking Binder latency for the phone process.
+        mBinderCallsSettingsObserver = new BinderCallsStats.SettingsObserver(
+            getApplicationContext(),
+            new BinderCallsStats(
+                    new BinderCallsStats.Injector(),
+                    com.android.internal.os.BinderLatencyProto.Dims.TELEPHONY));
     }
 
     /**

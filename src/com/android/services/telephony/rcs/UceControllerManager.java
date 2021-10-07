@@ -26,12 +26,12 @@ import android.telephony.ims.RcsUceAdapter;
 import android.telephony.ims.RcsUceAdapter.PublishState;
 import android.telephony.ims.aidl.IRcsUceControllerCallback;
 import android.telephony.ims.aidl.IRcsUcePublishStateCallback;
+import android.util.IndentingPrintWriter;
 import android.util.Log;
 
 import com.android.ims.RcsFeatureManager;
 import com.android.ims.rcs.uce.UceController;
 import com.android.internal.annotations.VisibleForTesting;
-import com.android.internal.util.IndentingPrintWriter;
 
 import java.io.PrintWriter;
 import java.util.List;
