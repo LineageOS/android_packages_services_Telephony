@@ -2055,7 +2055,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 case CMD_PREPARE_UNATTENDED_REBOOT:
                     request = (MainThreadRequest) msg.obj;
                     request.result =
-                            UiccController.getInstance().getPinStorage().prepareUnattendedReboot();
+                            UiccController.getInstance().getPinStorage()
+                                .prepareUnattendedReboot(request.workSource);
                     notifyRequester(request);
                     break;
 
@@ -10894,11 +10895,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @Override
     @TelephonyManager.PrepareUnattendedRebootResult
     public int prepareForUnattendedReboot() {
+        WorkSource workSource = getWorkSource(Binder.getCallingUid());
         enforceRebootPermission();
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            return (int) sendRequest(CMD_PREPARE_UNATTENDED_REBOOT, null);
+            return (int) sendRequest(CMD_PREPARE_UNATTENDED_REBOOT, null, workSource);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
