@@ -6938,7 +6938,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 for (int p = packages.size() - 1; p >= 0; p--) {
                     PackageInfo pkgInfo = packages.get(p);
                     if (pkgInfo != null && pkgInfo.packageName != null
-                            && port.getCarrierPrivilegeStatus(pkgInfo)
+                            && getCarrierPrivilegeStatusFromCarrierConfigRules(
+                                    port.getCarrierPrivilegeStatus(pkgInfo),
+                                    getPhone(phoneId), pkgInfo.packageName)
                             == TelephonyManager.CARRIER_PRIVILEGE_STATUS_HAS_ACCESS) {
                         privilegedPackages.add(pkgInfo.packageName);
                     }
