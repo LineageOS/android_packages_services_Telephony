@@ -664,7 +664,7 @@
     <string name="contactPhoto" msgid="7885089213135154834">"కాంటాక్ట్ ఫోటో"</string>
     <string name="goPrivate" msgid="4645108311382209551">"ప్రైవేట్‌గా వెళ్లు"</string>
     <string name="selectContact" msgid="1527612842599767382">"కాంటాక్ట్‌ను ఎంచుకోండి"</string>
-    <string name="not_voice_capable" msgid="2819996734252084253">"వాయిస్ కాలింగ్‌కు మద్దతు లేదు"</string>
+    <string name="not_voice_capable" msgid="2819996734252084253">"వాయిస్ కాలింగ్‌కు సపోర్ట్ లేదు"</string>
     <string name="description_dial_button" msgid="8614631902795087259">"డయల్ చేయి"</string>
     <string name="description_dialpad_button" msgid="7395114120463883623">"డయల్‌ప్యాడ్‌ను చూపు"</string>
     <string name="pane_title_emergency_dialpad" msgid="3627372514638694401">"అత్యవసర డయల్‌ప్యాడ్"</string>
@@ -890,9 +890,9 @@
     <string name="radio_info_ppp_resets_label" msgid="9131901102339077661">"బూట్ చేసినప్పటి నుండి PPP రీసెట్ సంఖ్య:"</string>
     <string name="radio_info_current_network_label" msgid="3052098695239642450">"ప్రస్తుత నెట్‌వర్క్:"</string>
     <string name="radio_info_ppp_received_label" msgid="5753592451640644889">"స్వీకరించిన డేటా:"</string>
-    <string name="radio_info_gsm_service_label" msgid="6443348321714241328">"వాయిస్ సేవ:"</string>
+    <string name="radio_info_gsm_service_label" msgid="6443348321714241328">"వాయిస్ సర్వీస్:"</string>
     <string name="radio_info_signal_strength_label" msgid="5545444702102543260">"సిగ్నల్ సామర్థ్యం:"</string>
-    <string name="radio_info_call_status_label" msgid="7693575431923095487">"వాయిస్ కాల్ స్థితి:"</string>
+    <string name="radio_info_call_status_label" msgid="7693575431923095487">"వాయిస్ కాల్ స్టేటస్:"</string>
     <string name="radio_info_ppp_sent_label" msgid="6542208429356199695">"పంపిన డేటా:"</string>
     <string name="radio_info_message_waiting_label" msgid="1886549432566952078">"సందేశ నిరీక్షణ:"</string>
     <string name="radio_info_phone_number_label" msgid="2533852539562512203">"ఫోన్ నంబర్:"</string>
