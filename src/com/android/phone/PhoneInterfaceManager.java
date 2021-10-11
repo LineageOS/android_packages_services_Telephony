@@ -1978,7 +1978,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                             (Pair<Integer, SignalStrengthUpdateRequest>) request.argument;
                     onCompleted = obtainMessage(EVENT_SET_SIGNAL_STRENGTH_UPDATE_REQUEST_DONE,
                             request);
-                    phone.getServiceStateTracker().setSignalStrengthUpdateRequest(
+                    phone.getSignalStrengthController().setSignalStrengthUpdateRequest(
                                     request.subId, pair.first /*callingUid*/,
                                     pair.second /*request*/, onCompleted);
                     break;
@@ -2006,7 +2006,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                             (Pair<Integer, SignalStrengthUpdateRequest>) request.argument;
                     onCompleted = obtainMessage(EVENT_CLEAR_SIGNAL_STRENGTH_UPDATE_REQUEST_DONE,
                             request);
-                    phone.getServiceStateTracker().clearSignalStrengthUpdateRequest(
+                    phone.getSignalStrengthController().clearSignalStrengthUpdateRequest(
                                     request.subId, pair.first /*callingUid*/,
                                     pair.second /*request*/, onCompleted);
                     break;
