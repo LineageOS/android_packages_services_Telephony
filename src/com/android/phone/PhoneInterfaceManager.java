@@ -185,7 +185,6 @@ import com.android.internal.telephony.uicc.IccCardApplicationStatus.AppType;
 import com.android.internal.telephony.uicc.IccIoResult;
 import com.android.internal.telephony.uicc.IccRecords;
 import com.android.internal.telephony.uicc.IccUtils;
-import com.android.internal.telephony.uicc.PinStorage;
 import com.android.internal.telephony.uicc.SIMRecords;
 import com.android.internal.telephony.uicc.UiccCard;
 import com.android.internal.telephony.uicc.UiccCardApplication;
@@ -1733,9 +1732,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                         // If the operation is successful, update the PIN storage
                         Pair<String, String> passwords = (Pair<String, String>) request.argument;
                         int phoneId = getPhoneFromRequest(request).getPhoneId();
-                        PinStorage pinStorage = UiccController.getInstance().getPinStorage();
-                        pinStorage.storePin(passwords.second, phoneId,
-                                pinStorage.getIccid(phoneId));
+                        UiccController.getInstance().getPinStorage()
+                                .storePin(passwords.second, phoneId);
                     } else {
                         request.result = msg.arg1;
                     }
@@ -1759,9 +1757,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                         Pair<Boolean, String> enabled = (Pair<Boolean, String>) request.argument;
                         int phoneId = getPhoneFromRequest(request).getPhoneId();
                         if (enabled.first) {
-                            PinStorage pinStorage = UiccController.getInstance().getPinStorage();
-                            pinStorage.storePin(enabled.second, phoneId,
-                                    pinStorage.getIccid(phoneId));
+                            UiccController.getInstance().getPinStorage()
+                                    .storePin(enabled.second, phoneId);
                         } else {
                             UiccController.getInstance().getPinStorage().clearPin(phoneId);
                         }
@@ -2460,8 +2457,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             resultArray[1] = mRetryCount;
 
             if (mResult == PhoneConstants.PIN_RESULT_SUCCESS && pin.length() > 0) {
-                PinStorage pinStorage = UiccController.getInstance().getPinStorage();
-                pinStorage.storePin(pin, mPhoneId, pinStorage.getIccid(mPhoneId));
+                UiccController.getInstance().getPinStorage().storePin(pin, mPhoneId);
             }
 
             return resultArray;
