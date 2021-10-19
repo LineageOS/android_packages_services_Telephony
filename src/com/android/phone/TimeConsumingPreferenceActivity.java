@@ -84,7 +84,7 @@ public class TimeConsumingPreferenceActivity extends PreferenceActivity
                 || id == FDN_CHECK_FAILURE || id == STK_CC_SS_TO_DIAL_ERROR
                 || id == STK_CC_SS_TO_USSD_ERROR || id == STK_CC_SS_TO_SS_ERROR
                 || id == STK_CC_SS_TO_DIAL_VIDEO_ERROR) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            AlertDialog.Builder builder = FrameworksUtils.makeAlertDialogBuilder(this);
 
             int msgId;
             int titleId = R.string.error_updating_title;

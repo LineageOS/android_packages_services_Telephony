@@ -220,7 +220,7 @@ public class CallFeaturesSetting extends PreferenceActivity
             if (mImsMgr.isEnhanced4gLteModeSettingEnabledByUser()) {
                 mImsMgr.setVtSetting((boolean) objValue);
             } else {
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                AlertDialog.Builder builder = FrameworksUtils.makeAlertDialogBuilder(this);
                 DialogInterface.OnClickListener networkSettingsClickListener =
                         new Dialog.OnClickListener() {
                             @Override
