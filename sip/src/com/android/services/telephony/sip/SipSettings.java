@@ -17,7 +17,6 @@
 package com.android.services.telephony.sip;
 
 import android.app.ActionBar;
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -39,6 +38,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.android.phone.FrameworksUtils;
 import com.android.phone.R;
 
 import java.io.IOException;
@@ -287,7 +287,7 @@ public class SipSettings extends PreferenceActivity {
             startSipEditor(profile);
             return;
         }
-        new AlertDialog.Builder(this)
+        FrameworksUtils.makeAlertDialogBuilder(this)
                 .setTitle(R.string.alert_dialog_close)
                 .setIconAttribute(android.R.attr.alertDialogIcon)
                 .setPositiveButton(R.string.close_profile,
