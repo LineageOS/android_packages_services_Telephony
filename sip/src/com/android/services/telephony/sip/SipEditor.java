@@ -16,7 +16,6 @@
 
 package com.android.services.telephony.sip;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Intent;
@@ -36,6 +35,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.android.phone.FrameworksUtils;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
@@ -93,7 +94,7 @@ public class SipEditor extends PreferenceActivity
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             String message = getArguments().getString(KEY_MESSAGE);
 
-            return new AlertDialog.Builder(getActivity())
+            return FrameworksUtils.makeAlertDialogBuilder(getActivity())
                     .setTitle(android.R.string.dialog_alert_title)
                     .setIconAttribute(android.R.attr.alertDialogIcon)
                     .setMessage(message)
