@@ -5512,11 +5512,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     public int setForbiddenPlmns(int subId, int appType, List<String> fplmns, String callingPackage,
             String callingFeatureId) {
-        if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(mApp, subId, callingPackage,
-                callingFeatureId, "setForbiddenPlmns")) {
-            if (DBG) logv("no permissions for setForbiddenplmns");
-            throw new IllegalStateException("No Permissions for setForbiddenPlmns");
-        }
+        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
+                mApp, subId, "setForbiddenPlmns");
+
         if (appType != TelephonyManager.APPTYPE_USIM && appType != TelephonyManager.APPTYPE_SIM) {
             loge("setForbiddenPlmnList(): App Type must be USIM or SIM");
             throw new IllegalArgumentException("Invalid appType: App Type must be USIM or SIM");
