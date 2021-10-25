@@ -152,6 +152,7 @@ import com.android.internal.telephony.GsmCdmaPhone;
 import com.android.internal.telephony.HalVersion;
 import com.android.internal.telephony.IBooleanConsumer;
 import com.android.internal.telephony.ICallForwardingInfoCallback;
+import com.android.internal.telephony.IImsStateCallback;
 import com.android.internal.telephony.IIntegerConsumer;
 import com.android.internal.telephony.INumberVerificationCallback;
 import com.android.internal.telephony.ITelephony;
@@ -10943,6 +10944,70 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             sendRequestAsync(CMD_GET_SLICING_CONFIG, callback, phone, null);
         } finally {
             Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Register an IMS connection state callback
+     */
+    @Override
+    public void registerImsStateCallback(int subId, int feature, IImsStateCallback cb) {
+        if (feature == ImsFeature.FEATURE_MMTEL) {
+            // ImsMmTelManager
+            // The following also checks READ_PRIVILEGED_PHONE_STATE.
+            TelephonyPermissions
+                    .enforceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
+                            mApp, subId, "registerImsStateCallback");
+        } else if (feature == ImsFeature.FEATURE_RCS) {
+            // ImsRcsManager or SipDelegateManager
+            TelephonyPermissions.enforceAnyPermissionGrantedOrCarrierPrivileges(mApp, subId,
+                    Binder.getCallingUid(), "registerImsStateCallback",
+                    Manifest.permission.READ_PRIVILEGED_PHONE_STATE,
+                    Manifest.permission.READ_PRECISE_PHONE_STATE,
+                    Manifest.permission.ACCESS_RCS_USER_CAPABILITY_EXCHANGE,
+                    Manifest.permission.PERFORM_IMS_SINGLE_REGISTRATION);
+        }
+
+        if (!ImsManager.isImsSupportedOnDevice(mApp)) {
+            throw new ServiceSpecificException(ImsException.CODE_ERROR_UNSUPPORTED_OPERATION,
+                    "IMS not available on device.");
+        }
+
+        if (subId == SubscriptionManager.DEFAULT_SUBSCRIPTION_ID) {
+            throw new ServiceSpecificException(ImsException.CODE_ERROR_INVALID_SUBSCRIPTION);
+        }
+
+        ImsStateCallbackController controller = ImsStateCallbackController.getInstance();
+        if (controller == null) {
+            throw new ServiceSpecificException(ImsException.CODE_ERROR_UNSUPPORTED_OPERATION,
+                    "IMS not available on device.");
+        }
+
+        final long token = Binder.clearCallingIdentity();
+        try {
+            int slotId = getSlotIndexOrException(subId);
+            controller.registerImsStateCallback(subId, feature, cb);
+        } catch (ImsException e) {
+            throw new ServiceSpecificException(e.getCode());
+        } finally {
+            Binder.restoreCallingIdentity(token);
+        }
+    }
+
+    /**
+     * Unregister an IMS connection state callback
+     */
+    @Override
+    public void unregisterImsStateCallback(IImsStateCallback cb) {
+        final long token = Binder.clearCallingIdentity();
+        ImsStateCallbackController controller = ImsStateCallbackController.getInstance();
+        if (controller == null) {
+            return;
+        }
+        try {
+            controller.unregisterImsStateCallback(cb);
+        } finally {
+            Binder.restoreCallingIdentity(token);
         }
     }
 }
