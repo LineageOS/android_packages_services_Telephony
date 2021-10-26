@@ -342,6 +342,7 @@
     <string name="enable_disable_multi_category">Categoría múltiple</string>
     <string name="multi_category_enable">Categoría múltiple habilitada</string>
     <string name="multi_category_disable">Categoría múltiple inhabilitada</string>
+    <string name="network_recommended">\u0020(aconséyase)</string>
     <string name="network_lte">LTE (aconséyase)</string>
     <string name="network_4G">4G (aconséyase)</string>
     <string name="network_global">Global</string>
@@ -669,6 +670,7 @@
     <string name="radioInfo_data_disconnected">Desconeutáu</string>
     <string name="radioInfo_data_connected">Coneutáu</string>
     <string name="radioInfo_unknown">Desconozse</string>
+    <string name="radioInfo_display_packets">pqts</string>
     <string name="radioInfo_display_bytes">bytes</string>
     <string name="radioInfo_display_dbm">dBm</string>
     <string name="radioInfo_display_asu">asu</string>

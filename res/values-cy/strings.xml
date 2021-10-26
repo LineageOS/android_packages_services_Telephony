@@ -815,9 +815,13 @@
     <string name="supp_service_over_ut_precautions_roaming_dual_sim">I ddefnyddio <xliff:g id="supp service">%1$s</xliff:g>, rhaid troi data symudol a data crwydro ymlaen ar gyfer SIM <xliff:g id="sim number">%2$d</xliff:g>. Gellir newid hyn yng ngosodiadau rhwydwaith symudol.</string>
     <string name="supp_service_over_ut_precautions_dialog_dismiss">Gwrthod</string>
     <string name="dsds_dialog_cancel">Diddymu</string>
+    <string name="radio_info_ims_reg_status_registered">Wedi Cofrestru</string>
     <string name="radioInfo_roaming_in">Crwydro</string>
+    <string name="radioInfo_phone_idle">Yn Segur</string>
     <string name="radioInfo_data_disconnected">Heb gysylltu</string>
     <string name="radioInfo_data_connected">Wedi cysylltu</string>
     <string name="radioInfo_unknown">Anhysybys</string>
     <string name="radio_info_smsc_update_label">Diweddaru</string>
+    <string name="radio_info_dcnr_restricted">DCNR Wedi\'i Rwystro:</string>
+    <string name="carrier_provisioning">Gwybodaeth Darpariaeth Darparwr</string>
 </resources>
