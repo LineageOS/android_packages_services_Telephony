@@ -1009,7 +1009,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                             // any service for voice call.
                             if ((callForwardInfo.serviceClass
                                     & CommandsInterface.SERVICE_CLASS_VOICE) > 0) {
-                                callForwardingInfo = new CallForwardingInfo(true,
+                                callForwardingInfo = new CallForwardingInfo(
+                                        callForwardInfo.status
+                                                == CommandsInterface.CF_ACTION_ENABLE,
                                         callForwardInfo.reason,
                                         callForwardInfo.number,
                                         callForwardInfo.timeSeconds);
