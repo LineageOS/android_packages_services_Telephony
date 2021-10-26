@@ -11088,4 +11088,37 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             Binder.restoreCallingIdentity(identity);
         }
     }
+
+    /**
+     * Sets the modem service class Name that Telephony will bind to.
+     *
+     * @param serviceName The class name of the modem service.
+     * @return true if the operation is succeed, otherwise false.
+     */
+    public boolean setModemService(String serviceName) {
+        Log.d(LOG_TAG, "setModemService - " + serviceName);
+        TelephonyPermissions.enforceShellOnly(Binder.getCallingUid(), "setModemService");
+        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(mApp,
+                        SubscriptionManager.INVALID_SUBSCRIPTION_ID,
+                        "setModemService");
+        return mPhoneConfigurationManager.setModemService(serviceName);
+    }
+
+    /**
+     * Return the class name of the currently bounded modem service.
+     *
+     * @return the class name of the modem service.
+     */
+    public String getModemService() {
+        String result;
+        Log.d(LOG_TAG, "getModemService");
+        TelephonyPermissions.enforceShellOnly(Binder.getCallingUid(), "getModemService");
+        TelephonyPermissions
+                        .enforceCallingOrSelfReadPrivilegedPhoneStatePermissionOrCarrierPrivilege(
+                        mApp, SubscriptionManager.INVALID_SUBSCRIPTION_ID,
+                        "getModemService");
+        result = mPhoneConfigurationManager.getModemService();
+        Log.d(LOG_TAG, "result = " + result);
+        return result;
+    }
 }
