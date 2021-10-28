@@ -8322,6 +8322,16 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             int result = (int) sendRequest(CMD_ENABLE_VONR, enabled, subId,
                     workSource);
             if (DBG) log("setVoNrEnabled result: " + result);
+
+            if (result == TelephonyManager.ENABLE_VONR_SUCCESS) {
+                if (DBG) {
+                    log("Set VoNR settings in siminfo db; subId=" + subId + ", value:" + enabled);
+                }
+                SubscriptionManager.setSubscriptionProperty(
+                        subId, SubscriptionManager.NR_ADVANCED_CALLING_ENABLED,
+                        (enabled ? "1" : "0"));
+            }
+
             return result;
         } finally {
             Binder.restoreCallingIdentity(identity);
