@@ -39,6 +39,7 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
+import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
 import android.telephony.CarrierConfigManager;
@@ -136,7 +137,7 @@ public class ImsStateCallbackController {
     private MmTelFeatureConnectorFactory mMmTelFeatureFactory;
     private RcsFeatureConnectorFactory mRcsFeatureFactory;
 
-    private HashMap<IImsStateCallback, CallbackWrapper> mWrappers = new HashMap<>();
+    private HashMap<IBinder, CallbackWrapper> mWrappers = new HashMap<>();
 
     private int mNumSlots;
 
@@ -408,11 +409,13 @@ public class ImsStateCallbackController {
         private final int mSubId;
         private final int mRequiredFeature;
         private final IImsStateCallback mCallback;
+        private final IBinder mBinder;
 
         CallbackWrapper(int subId, int feature, IImsStateCallback callback) {
             mSubId = subId;
             mRequiredFeature = feature;
             mCallback = callback;
+            mBinder = callback.asBinder();
         }
 
         /**
@@ -546,22 +549,22 @@ public class ImsStateCallbackController {
 
         if (mWrappers.size() == 0) return;
 
-        ArrayList<IImsStateCallback> inactiveCallbacks = new ArrayList<>();
+        ArrayList<IBinder> inactiveCallbacks = new ArrayList<>();
         final int[] activeSubs = mSubscriptionManager.getActiveSubscriptionIdList();
 
         logv("onSubChanged activeSubs=" + Arrays.toString(activeSubs));
 
         // Remove callbacks for inactive subscriptions
-        for (IImsStateCallback cb : mWrappers.keySet()) {
-            CallbackWrapper wrapper = mWrappers.get(cb);
+        for (IBinder binder : mWrappers.keySet()) {
+            CallbackWrapper wrapper = mWrappers.get(binder);
             if (wrapper != null) {
                 if (!isActive(activeSubs, wrapper.mSubId)) {
                     // inactive subscription
-                    inactiveCallbacks.add(cb);
+                    inactiveCallbacks.add(binder);
                 }
             } else {
                 // unexpected, remove it
-                inactiveCallbacks.add(cb);
+                inactiveCallbacks.add(binder);
             }
         }
         removeInactiveCallbacks(inactiveCallbacks, "onSubChanged");
@@ -573,13 +576,13 @@ public class ImsStateCallbackController {
                 + ", state=" + ImsFeature.STATE_LOG_MAP.get(state)
                 + ", reason=" + imsStateReasonToString(reason));
 
-        ArrayList<IImsStateCallback> inactiveCallbacks = new ArrayList<>();
+        ArrayList<IBinder> inactiveCallbacks = new ArrayList<>();
         mWrappers.values().forEach(wrapper -> {
             if (subId == wrapper.mSubId
                     && feature == wrapper.mRequiredFeature
                     && !wrapper.notifyState(subId, feature, state, reason)) {
                 // callback has exception, remove it
-                inactiveCallbacks.add(wrapper.mCallback);
+                inactiveCallbacks.add(wrapper.mBinder);
             }
         });
         removeInactiveCallbacks(inactiveCallbacks, "onFeatureStateChange");
@@ -599,14 +602,14 @@ public class ImsStateCallbackController {
         // The validity of the subId is checked PhoneInterfaceManager#registerImsStateCallback.
         // So, register the wrapper here before trying to notifyState.
         // TODO: implement the recovery for this case, notifying the current reson, in onSubChanged
-        mWrappers.put(wrapper.mCallback, wrapper);
+        mWrappers.put(wrapper.mBinder, wrapper);
 
         if (wrapper.mRequiredFeature == FEATURE_MMTEL) {
             for (int i = 0; i < mMmTelFeatureListeners.size(); i++) {
                 MmTelFeatureListener l = mMmTelFeatureListeners.valueAt(i);
                 if (l.mSubId == wrapper.mSubId
                         && !l.notifyState(wrapper)) {
-                    mWrappers.remove(wrapper.mCallback);
+                    mWrappers.remove(wrapper.mBinder);
                     break;
                 }
             }
@@ -615,7 +618,7 @@ public class ImsStateCallbackController {
                 RcsFeatureListener l = mRcsFeatureListeners.valueAt(i);
                 if (l.mSubId == wrapper.mSubId
                         && !l.notifyState(wrapper)) {
-                    mWrappers.remove(wrapper.mCallback);
+                    mWrappers.remove(wrapper.mBinder);
                     break;
                 }
             }
@@ -626,7 +629,7 @@ public class ImsStateCallbackController {
 
     private void onUnregisterCallback(IImsStateCallback cb) {
         if (cb == null) return;
-        mWrappers.remove(cb);
+        mWrappers.remove(cb.asBinder());
     }
 
     private void onCarrierConfigChanged(int slotId) {
@@ -681,17 +684,17 @@ public class ImsStateCallbackController {
     }
 
     private void removeInactiveCallbacks(
-            ArrayList<IImsStateCallback> inactiveCallbacks, String message) {
+            ArrayList<IBinder> inactiveCallbacks, String message) {
         if (inactiveCallbacks == null || inactiveCallbacks.size() == 0) return;
 
         logv("removeInactiveCallbacks size=" + inactiveCallbacks.size() + " from " + message);
 
-        for (IImsStateCallback cb : inactiveCallbacks) {
-            CallbackWrapper wrapper = mWrappers.get(cb);
+        for (IBinder binder : inactiveCallbacks) {
+            CallbackWrapper wrapper = mWrappers.get(binder);
             if (wrapper != null) {
                 // Send the reason REASON_SUBSCRIPTION_INACTIVE to the client
                 wrapper.notifyInactive();
-                mWrappers.remove(cb);
+                mWrappers.remove(binder);
             }
         }
         inactiveCallbacks.clear();
@@ -841,7 +844,7 @@ public class ImsStateCallbackController {
     @VisibleForTesting
     public boolean isRegistered(IImsStateCallback cb) {
         if (cb == null) return false;
-        return mWrappers.containsKey(cb);
+        return mWrappers.containsKey(cb.asBinder());
     }
 
     private static void logv(String msg) {

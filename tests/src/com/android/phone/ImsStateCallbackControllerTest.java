@@ -42,6 +42,7 @@ import static org.mockito.Mockito.when;
 import android.content.Context;
 import android.os.Handler;
 import android.os.HandlerThread;
+import android.os.IBinder;
 import android.os.Looper;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyRegistryManager;
@@ -108,6 +109,10 @@ public class ImsStateCallbackControllerTest {
     @Mock ImsStateCallbackController.PhoneFactoryProxy mPhoneFactoryProxy;
     @Mock Phone mPhoneSlot0;
     @Mock Phone mPhoneSlot1;
+    @Mock private IBinder mBinder0;
+    @Mock private IBinder mBinder1;
+    @Mock private IBinder mBinder2;
+    @Mock private IBinder mBinder3;
     @Mock private IImsStateCallback mCallback0;
     @Mock private IImsStateCallback mCallback1;
     @Mock private IImsStateCallback mCallback2;
@@ -138,6 +143,11 @@ public class ImsStateCallbackControllerTest {
         when(mPhoneFactoryProxy.getPhone(eq(1))).thenReturn(mPhoneSlot1);
         when(mPhoneSlot0.getSubId()).thenReturn(SLOT_0_SUB_ID);
         when(mPhoneSlot1.getSubId()).thenReturn(SLOT_1_SUB_ID);
+
+        when(mCallback0.asBinder()).thenReturn(mBinder0);
+        when(mCallback1.asBinder()).thenReturn(mBinder1);
+        when(mCallback2.asBinder()).thenReturn(mBinder2);
+        when(mCallback3.asBinder()).thenReturn(mBinder3);
 
         // slot 0
         when(mImsResolver.isImsServiceConfiguredForFeature(eq(0), eq(FEATURE_MMTEL)))
