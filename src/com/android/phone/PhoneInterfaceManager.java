@@ -10961,7 +10961,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * Register an IMS connection state callback
      */
     @Override
-    public void registerImsStateCallback(int subId, int feature, IImsStateCallback cb) {
+    public void registerImsStateCallback(int subId, int feature, IImsStateCallback cb,
+            String callingPackage) {
         if (feature == ImsFeature.FEATURE_MMTEL) {
             // ImsMmTelManager
             // The following also checks READ_PRIVILEGED_PHONE_STATE.
@@ -10993,10 +10994,14 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     "IMS not available on device.");
         }
 
+        if (callingPackage == null) {
+            callingPackage = getCurrentPackageName();
+        }
+
         final long token = Binder.clearCallingIdentity();
         try {
             int slotId = getSlotIndexOrException(subId);
-            controller.registerImsStateCallback(subId, feature, cb);
+            controller.registerImsStateCallback(subId, feature, cb, callingPackage);
         } catch (ImsException e) {
             throw new ServiceSpecificException(e.getCode());
         } finally {

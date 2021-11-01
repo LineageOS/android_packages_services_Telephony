@@ -195,7 +195,7 @@ public class ImsStateCallbackControllerTest {
         createController(1);
 
         mImsStateCallbackController
-                .registerImsStateCallback(SLOT_0_SUB_ID, FEATURE_MMTEL, mCallback0);
+                .registerImsStateCallback(SLOT_0_SUB_ID, FEATURE_MMTEL, mCallback0, "callback0");
         processAllMessages();
         assertTrue(mImsStateCallbackController.isRegistered(mCallback0));
         verify(mCallback0, times(1)).onUnavailable(REASON_IMS_SERVICE_DISCONNECTED);
@@ -211,7 +211,7 @@ public class ImsStateCallbackControllerTest {
         createController(1);
 
         mImsStateCallbackController
-                .registerImsStateCallback(SLOT_0_SUB_ID, FEATURE_MMTEL, mCallback0);
+                .registerImsStateCallback(SLOT_0_SUB_ID, FEATURE_MMTEL, mCallback0, "callback0");
         processAllMessages();
         assertTrue(mImsStateCallbackController.isRegistered(mCallback0));
         verify(mCallback0, times(1)).onUnavailable(REASON_IMS_SERVICE_DISCONNECTED);
@@ -237,7 +237,7 @@ public class ImsStateCallbackControllerTest {
         createController(1);
 
         mImsStateCallbackController
-                .registerImsStateCallback(SLOT_0_SUB_ID, FEATURE_MMTEL, mCallback0);
+                .registerImsStateCallback(SLOT_0_SUB_ID, FEATURE_MMTEL, mCallback0, "callback0");
         processAllMessages();
         assertTrue(mImsStateCallbackController.isRegistered(mCallback0));
         verify(mCallback0, times(1)).onUnavailable(REASON_IMS_SERVICE_DISCONNECTED);
@@ -258,7 +258,7 @@ public class ImsStateCallbackControllerTest {
         createController(1);
 
         mImsStateCallbackController
-                .registerImsStateCallback(SLOT_0_SUB_ID, FEATURE_MMTEL, mCallback0);
+                .registerImsStateCallback(SLOT_0_SUB_ID, FEATURE_MMTEL, mCallback0, "callback0");
         processAllMessages();
         assertTrue(mImsStateCallbackController.isRegistered(mCallback0));
         verify(mCallback0, times(1)).onUnavailable(REASON_IMS_SERVICE_DISCONNECTED);
@@ -284,7 +284,7 @@ public class ImsStateCallbackControllerTest {
         createController(1);
 
         mImsStateCallbackController
-                .registerImsStateCallback(SLOT_0_SUB_ID, FEATURE_RCS, mCallback0);
+                .registerImsStateCallback(SLOT_0_SUB_ID, FEATURE_RCS, mCallback0, "callback0");
         processAllMessages();
         assertTrue(mImsStateCallbackController.isRegistered(mCallback0));
         verify(mCallback0, times(1)).onUnavailable(REASON_IMS_SERVICE_DISCONNECTED);
@@ -300,7 +300,7 @@ public class ImsStateCallbackControllerTest {
         createController(1);
 
         mImsStateCallbackController
-                .registerImsStateCallback(SLOT_0_SUB_ID, FEATURE_RCS, mCallback0);
+                .registerImsStateCallback(SLOT_0_SUB_ID, FEATURE_RCS, mCallback0, "callback0");
         processAllMessages();
         assertTrue(mImsStateCallbackController.isRegistered(mCallback0));
         verify(mCallback0, times(1)).onUnavailable(REASON_IMS_SERVICE_DISCONNECTED);
@@ -330,7 +330,7 @@ public class ImsStateCallbackControllerTest {
         createController(1);
 
         mImsStateCallbackController
-                .registerImsStateCallback(SLOT_0_SUB_ID, FEATURE_RCS, mCallback0);
+                .registerImsStateCallback(SLOT_0_SUB_ID, FEATURE_RCS, mCallback0, "callback0");
         processAllMessages();
         assertTrue(mImsStateCallbackController.isRegistered(mCallback0));
         verify(mCallback0, times(1)).onUnavailable(REASON_IMS_SERVICE_DISCONNECTED);
@@ -383,7 +383,7 @@ public class ImsStateCallbackControllerTest {
         createController(1);
 
         mImsStateCallbackController
-                .registerImsStateCallback(SLOT_0_SUB_ID, FEATURE_RCS, mCallback0);
+                .registerImsStateCallback(SLOT_0_SUB_ID, FEATURE_RCS, mCallback0, "callback0");
         processAllMessages();
         assertTrue(mImsStateCallbackController.isRegistered(mCallback0));
         verify(mCallback0, times(1)).onUnavailable(REASON_IMS_SERVICE_DISCONNECTED);
@@ -413,7 +413,7 @@ public class ImsStateCallbackControllerTest {
         createController(1);
 
         mImsStateCallbackController
-                .registerImsStateCallback(SLOT_0_SUB_ID, FEATURE_RCS, mCallback0);
+                .registerImsStateCallback(SLOT_0_SUB_ID, FEATURE_RCS, mCallback0, "callback0");
         processAllMessages();
         assertTrue(mImsStateCallbackController.isRegistered(mCallback0));
         verify(mCallback0, times(1)).onUnavailable(REASON_IMS_SERVICE_DISCONNECTED);
@@ -443,9 +443,9 @@ public class ImsStateCallbackControllerTest {
         createController(2);
 
         mImsStateCallbackController
-                .registerImsStateCallback(SLOT_0_SUB_ID, FEATURE_MMTEL, mCallback0);
+                .registerImsStateCallback(SLOT_0_SUB_ID, FEATURE_MMTEL, mCallback0, "callback0");
         mImsStateCallbackController
-                .registerImsStateCallback(SLOT_1_SUB_ID, FEATURE_RCS, mCallback1);
+                .registerImsStateCallback(SLOT_1_SUB_ID, FEATURE_RCS, mCallback1, "callback1");
         processAllMessages();
         assertTrue(mImsStateCallbackController.isRegistered(mCallback0));
         assertTrue(mImsStateCallbackController.isRegistered(mCallback1));
@@ -473,11 +473,11 @@ public class ImsStateCallbackControllerTest {
                 .thenReturn(false);
 
         mImsStateCallbackController
-                .registerImsStateCallback(SLOT_0_SUB_ID, FEATURE_MMTEL, mCallback0);
+                .registerImsStateCallback(SLOT_0_SUB_ID, FEATURE_MMTEL, mCallback0, "callback0");
         mImsStateCallbackController
-                .registerImsStateCallback(SLOT_1_SUB_ID, FEATURE_MMTEL, mCallback1);
+                .registerImsStateCallback(SLOT_1_SUB_ID, FEATURE_MMTEL, mCallback1, "callback1");
         mImsStateCallbackController
-                .registerImsStateCallback(SLOT_1_SUB_ID, FEATURE_RCS, mCallback2);
+                .registerImsStateCallback(SLOT_1_SUB_ID, FEATURE_RCS, mCallback2, "callback2");
         processAllMessages();
         assertTrue(mImsStateCallbackController.isRegistered(mCallback0));
         assertTrue(mImsStateCallbackController.isRegistered(mCallback1));
@@ -609,13 +609,13 @@ public class ImsStateCallbackControllerTest {
 
         // registration
         mImsStateCallbackController
-                .registerImsStateCallback(SLOT_0_SUB_ID, FEATURE_MMTEL, mCallback0);
+                .registerImsStateCallback(SLOT_0_SUB_ID, FEATURE_MMTEL, mCallback0, "callback0");
         mImsStateCallbackController
-                .registerImsStateCallback(SLOT_0_SUB_ID, FEATURE_RCS, mCallback1);
+                .registerImsStateCallback(SLOT_0_SUB_ID, FEATURE_RCS, mCallback1, "callback1");
         mImsStateCallbackController
-                .registerImsStateCallback(SLOT_1_SUB_ID, FEATURE_MMTEL, mCallback2);
+                .registerImsStateCallback(SLOT_1_SUB_ID, FEATURE_MMTEL, mCallback2, "callback2");
         mImsStateCallbackController
-                .registerImsStateCallback(SLOT_1_SUB_ID, FEATURE_RCS, mCallback3);
+                .registerImsStateCallback(SLOT_1_SUB_ID, FEATURE_RCS, mCallback3, "callback3");
         processAllMessages();
         assertTrue(mImsStateCallbackController.isRegistered(mCallback0));
         assertTrue(mImsStateCallbackController.isRegistered(mCallback1));
