@@ -36,6 +36,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.AsyncResult;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
@@ -55,6 +56,7 @@ import com.android.ims.RcsFeatureManager;
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.telephony.IImsStateCallback;
 import com.android.internal.telephony.Phone;
+import com.android.internal.telephony.PhoneConfigurationManager;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.ims.ImsResolver;
 import com.android.internal.telephony.util.HandlerExecutor;
@@ -118,6 +120,7 @@ public class ImsStateCallbackController {
     private static final int EVENT_UNREGISTER_CALLBACK = 3;
     private static final int EVENT_CARRIER_CONFIG_CHANGED = 4;
     private static final int EVENT_EXTERNAL_RCS_STATE_CHANGED = 5;
+    private static final int EVENT_MSIM_CONFIGURATION_CHANGE = 6;
 
     private static ImsStateCallbackController sInstance;
 
@@ -215,6 +218,16 @@ public class ImsStateCallbackController {
                 case EVENT_EXTERNAL_RCS_STATE_CHANGED:
                     if (msg.obj == null) break;
                     onExternalRcsStateChanged((ExternalRcsFeatureState) msg.obj);
+                    break;
+
+                case EVENT_MSIM_CONFIGURATION_CHANGE:
+                    AsyncResult result = (AsyncResult) msg.obj;
+                    Integer numSlots = (Integer) result.result;
+                    if (numSlots == null) {
+                        Log.w(TAG, "msim config change with null num slots");
+                        break;
+                    }
+                    updateFeatureControllerSize(numSlots);
                     break;
 
                 default:
@@ -650,6 +663,9 @@ public class ImsStateCallbackController {
 
         mTelephonyRegistryManager.addOnSubscriptionsChangedListener(
                 mSubChangedListener, mSubChangedListener.getHandlerExecutor());
+
+        PhoneConfigurationManager.registerForMultiSimConfigChange(mHandler,
+                EVENT_MSIM_CONFIGURATION_CHANGE, null);
 
         mApp.registerReceiver(mReceiver, new IntentFilter(
                 CarrierConfigManager.ACTION_CARRIER_CONFIG_CHANGED));

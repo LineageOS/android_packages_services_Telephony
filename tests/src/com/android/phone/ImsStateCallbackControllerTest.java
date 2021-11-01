@@ -789,6 +789,39 @@ public class ImsStateCallbackControllerTest {
         assertFalse(mImsStateCallbackController.isRegistered(mCallback3));
     }
 
+    @Test
+    @SmallTest
+    public void testSlotUpdates() throws Exception {
+        createController(1);
+
+        verify(mMmTelFeatureConnectorSlot0, times(1)).connect();
+        verify(mRcsFeatureConnectorSlot0, times(1)).connect();
+        verify(mMmTelFeatureConnectorSlot0, times(0)).disconnect();
+        verify(mRcsFeatureConnectorSlot0, times(0)).disconnect();
+
+        // Add a new slot.
+        mImsStateCallbackController.updateFeatureControllerSize(2);
+
+        // connect in slot 1
+        verify(mMmTelFeatureConnectorSlot1, times(1)).connect();
+        verify(mRcsFeatureConnectorSlot1, times(1)).connect();
+
+        // no change in slot 0
+        verify(mMmTelFeatureConnectorSlot0, times(1)).connect();
+        verify(mRcsFeatureConnectorSlot0, times(1)).connect();
+
+        // Remove a slot.
+        mImsStateCallbackController.updateFeatureControllerSize(1);
+
+        // destroy in slot 1
+        verify(mMmTelFeatureConnectorSlot1, times(1)).disconnect();
+        verify(mRcsFeatureConnectorSlot1, times(1)).disconnect();
+
+        // no change in slot 0
+        verify(mMmTelFeatureConnectorSlot0, times(0)).disconnect();
+        verify(mRcsFeatureConnectorSlot0, times(0)).disconnect();
+    }
+
     private void createController(int slotCount) throws Exception {
         if (Looper.myLooper() == null) {
             Looper.prepare();
