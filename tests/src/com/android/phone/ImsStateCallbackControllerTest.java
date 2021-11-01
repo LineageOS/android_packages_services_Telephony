@@ -217,14 +217,14 @@ public class ImsStateCallbackControllerTest {
         verify(mCallback0, times(1)).onUnavailable(REASON_IMS_SERVICE_DISCONNECTED);
 
         mMmTelConnectorListenerSlot0.getValue()
-                .connectionUnavailable(UNAVAILABLE_REASON_IMS_UNSUPPORTED);
-        processAllMessages();
-        verify(mCallback0, times(1)).onUnavailable(REASON_NO_IMS_SERVICE_CONFIGURED);
-
-        mMmTelConnectorListenerSlot0.getValue()
                 .connectionUnavailable(UNAVAILABLE_REASON_NOT_READY);
         processAllMessages();
         verify(mCallback0, times(1)).onUnavailable(REASON_IMS_SERVICE_NOT_READY);
+
+        mMmTelConnectorListenerSlot0.getValue()
+                .connectionUnavailable(UNAVAILABLE_REASON_IMS_UNSUPPORTED);
+        processAllMessages();
+        verify(mCallback0, times(1)).onUnavailable(REASON_NO_IMS_SERVICE_CONFIGURED);
 
         mImsStateCallbackController.unregisterImsStateCallback(mCallback0);
         processAllMessages();
@@ -305,6 +305,10 @@ public class ImsStateCallbackControllerTest {
         assertTrue(mImsStateCallbackController.isRegistered(mCallback0));
         verify(mCallback0, times(1)).onUnavailable(REASON_IMS_SERVICE_DISCONNECTED);
 
+        // TelephonyRcsService notifying active features
+        mImsStateCallbackController.notifyExternalRcsStateChanged(SLOT_0, false, true);
+        processAllMessages();
+
         mRcsConnectorListenerSlot0.getValue()
                 .connectionUnavailable(UNAVAILABLE_REASON_NOT_READY);
         processAllMessages();
@@ -331,12 +335,21 @@ public class ImsStateCallbackControllerTest {
         assertTrue(mImsStateCallbackController.isRegistered(mCallback0));
         verify(mCallback0, times(1)).onUnavailable(REASON_IMS_SERVICE_DISCONNECTED);
 
+        // TelephonyRcsService notifying active features
+        mImsStateCallbackController.notifyExternalRcsStateChanged(SLOT_0, false, true);
+        processAllMessages();
+
         mRcsConnectorListenerSlot0.getValue()
                 .connectionUnavailable(UNAVAILABLE_REASON_NOT_READY);
         processAllMessages();
         verify(mCallback0, times(1)).onUnavailable(REASON_IMS_SERVICE_NOT_READY);
 
         mRcsConnectorListenerSlot0.getValue().connectionReady(null);
+        processAllMessages();
+        verify(mCallback0, times(0)).onAvailable();
+
+        // RcsFeatureController notifying STATE_READY
+        mImsStateCallbackController.notifyExternalRcsStateChanged(SLOT_0, true, true);
         processAllMessages();
         verify(mCallback0, times(1)).onAvailable();
 
@@ -350,9 +363,44 @@ public class ImsStateCallbackControllerTest {
         processAllMessages();
         verify(mCallback0, times(2)).onUnavailable(REASON_IMS_SERVICE_NOT_READY);
 
+        // RcsFeatureController notifying STATE_READY
+        mImsStateCallbackController.notifyExternalRcsStateChanged(SLOT_0, true, true);
+        processAllMessages();
+        verify(mCallback0, times(1)).onAvailable();
+
         mRcsConnectorListenerSlot0.getValue().connectionReady(null);
         processAllMessages();
         verify(mCallback0, times(2)).onAvailable();
+
+        mImsStateCallbackController.unregisterImsStateCallback(mCallback0);
+        processAllMessages();
+        assertFalse(mImsStateCallbackController.isRegistered(mCallback0));
+    }
+
+    @Test
+    @SmallTest
+    public void testRcsHasNoActiveFeature() throws Exception {
+        createController(1);
+
+        mImsStateCallbackController
+                .registerImsStateCallback(SLOT_0_SUB_ID, FEATURE_RCS, mCallback0);
+        processAllMessages();
+        assertTrue(mImsStateCallbackController.isRegistered(mCallback0));
+        verify(mCallback0, times(1)).onUnavailable(REASON_IMS_SERVICE_DISCONNECTED);
+
+        // TelephonyRcsService notifying NO active feature
+        mImsStateCallbackController.notifyExternalRcsStateChanged(SLOT_0, false, false);
+        processAllMessages();
+        verify(mCallback0, times(1)).onUnavailable(REASON_NO_IMS_SERVICE_CONFIGURED);
+
+        mRcsConnectorListenerSlot0.getValue()
+                .connectionUnavailable(UNAVAILABLE_REASON_NOT_READY);
+        processAllMessages();
+        verify(mCallback0, times(0)).onUnavailable(REASON_IMS_SERVICE_NOT_READY);
+
+        mRcsConnectorListenerSlot0.getValue().connectionReady(null);
+        processAllMessages();
+        verify(mCallback0, times(0)).onAvailable();
 
         mImsStateCallbackController.unregisterImsStateCallback(mCallback0);
         processAllMessages();
@@ -369,6 +417,10 @@ public class ImsStateCallbackControllerTest {
         processAllMessages();
         assertTrue(mImsStateCallbackController.isRegistered(mCallback0));
         verify(mCallback0, times(1)).onUnavailable(REASON_IMS_SERVICE_DISCONNECTED);
+
+        // TelephonyRcsService notifying active features
+        mImsStateCallbackController.notifyExternalRcsStateChanged(SLOT_0, false, true);
+        processAllMessages();
 
         mRcsConnectorListenerSlot0.getValue()
                 .connectionUnavailable(UNAVAILABLE_REASON_NOT_READY);
@@ -494,6 +546,48 @@ public class ImsStateCallbackControllerTest {
         verify(mCallback1, times(3)).onUnavailable(anyInt());
         verify(mCallback2, times(1)).onUnavailable(anyInt());
 
+        // carrier config changed, no MMTEL package for slot 1
+        when(mImsResolver.isImsServiceConfiguredForFeature(eq(1), eq(FEATURE_MMTEL)))
+                .thenReturn(false);
+        mImsStateCallbackController.notifyCarrierConfigChanged(SLOT_1);
+        mImsStateCallbackController.notifyCarrierConfigChanged(SLOT_1);
+        processAllMessages();
+        // only the callback for MMTEL of slot 1 received the reason
+        verify(mCallback0, times(0)).onUnavailable(REASON_NO_IMS_SERVICE_CONFIGURED);
+        verify(mCallback1, times(2)).onUnavailable(REASON_NO_IMS_SERVICE_CONFIGURED);
+        verify(mCallback2, times(0)).onUnavailable(REASON_NO_IMS_SERVICE_CONFIGURED);
+
+        // ensure no other reason repored
+        verify(mCallback0, times(1)).onUnavailable(anyInt());
+        verify(mCallback1, times(4)).onUnavailable(anyInt());
+        verify(mCallback2, times(1)).onUnavailable(anyInt());
+
+        mMmTelConnectorListenerSlot1.getValue()
+                .connectionUnavailable(UNAVAILABLE_REASON_NOT_READY);
+
+        // resons except REASON_NO_IMS_SERVICE_CONFIGURED are discared
+        verify(mCallback0, times(1)).onUnavailable(anyInt());
+        verify(mCallback1, times(4)).onUnavailable(anyInt());
+        verify(mCallback2, times(1)).onUnavailable(anyInt());
+
+        // IMS package for MMTEL of slot 1 is added
+        when(mImsResolver.isImsServiceConfiguredForFeature(eq(1), eq(FEATURE_MMTEL)))
+                .thenReturn(true);
+        mImsStateCallbackController.notifyCarrierConfigChanged(SLOT_1);
+        processAllMessages();
+
+        // ensure the callback to MMTEL of slot 1
+        // there is a pending reason UNAVAILABLE_REASON_NOT_READY
+        verify(mCallback0, times(1)).onUnavailable(REASON_IMS_SERVICE_DISCONNECTED);
+        verify(mCallback1, times(2)).onUnavailable(REASON_IMS_SERVICE_DISCONNECTED);
+        verify(mCallback1, times(1)).onUnavailable(REASON_IMS_SERVICE_NOT_READY);
+        verify(mCallback2, times(1)).onUnavailable(REASON_IMS_SERVICE_DISCONNECTED);
+
+        // ensure no other reason repored
+        verify(mCallback0, times(1)).onUnavailable(anyInt());
+        verify(mCallback1, times(5)).onUnavailable(anyInt());
+        verify(mCallback2, times(1)).onUnavailable(anyInt());
+
         assertTrue(mImsStateCallbackController.isRegistered(mCallback0));
         assertTrue(mImsStateCallbackController.isRegistered(mCallback1));
         assertTrue(mImsStateCallbackController.isRegistered(mCallback2));
@@ -531,6 +625,13 @@ public class ImsStateCallbackControllerTest {
         verify(mCallback1, times(1)).onUnavailable(REASON_IMS_SERVICE_DISCONNECTED);
         verify(mCallback2, times(1)).onUnavailable(REASON_IMS_SERVICE_DISCONNECTED);
         verify(mCallback3, times(1)).onUnavailable(REASON_IMS_SERVICE_DISCONNECTED);
+
+        // TelephonyRcsService notifying active features
+        // slot 0
+        mImsStateCallbackController.notifyExternalRcsStateChanged(SLOT_0, false, true);
+        // slot 1
+        mImsStateCallbackController.notifyExternalRcsStateChanged(SLOT_1, false, true);
+        processAllMessages();
 
         verify(mCallback0, times(1)).onUnavailable(anyInt());
         verify(mCallback1, times(1)).onUnavailable(anyInt());
@@ -606,6 +707,17 @@ public class ImsStateCallbackControllerTest {
         mRcsConnectorListenerSlot0.getValue().connectionReady(null);
         processAllMessages();
         verify(mCallback0, times(1)).onAvailable();
+        verify(mCallback1, times(0)).onAvailable();
+        verify(mCallback2, times(0)).onAvailable();
+        verify(mCallback3, times(0)).onAvailable();
+        verify(mCallback0, times(2)).onUnavailable(anyInt());
+        verify(mCallback1, times(2)).onUnavailable(anyInt());
+        verify(mCallback2, times(2)).onUnavailable(anyInt());
+        verify(mCallback3, times(2)).onUnavailable(anyInt());
+
+        mImsStateCallbackController.notifyExternalRcsStateChanged(SLOT_0, true, true);
+        processAllMessages();
+        verify(mCallback0, times(1)).onAvailable();
         verify(mCallback1, times(1)).onAvailable();
         verify(mCallback2, times(0)).onAvailable();
         verify(mCallback3, times(0)).onAvailable();
@@ -626,6 +738,17 @@ public class ImsStateCallbackControllerTest {
         verify(mCallback3, times(2)).onUnavailable(anyInt());
 
         mRcsConnectorListenerSlot1.getValue().connectionReady(null);
+        processAllMessages();
+        verify(mCallback0, times(1)).onAvailable();
+        verify(mCallback1, times(1)).onAvailable();
+        verify(mCallback2, times(1)).onAvailable();
+        verify(mCallback3, times(0)).onAvailable();
+        verify(mCallback0, times(2)).onUnavailable(anyInt());
+        verify(mCallback1, times(2)).onUnavailable(anyInt());
+        verify(mCallback2, times(2)).onUnavailable(anyInt());
+        verify(mCallback3, times(2)).onUnavailable(anyInt());
+
+        mImsStateCallbackController.notifyExternalRcsStateChanged(SLOT_1, true, true);
         processAllMessages();
         verify(mCallback0, times(1)).onAvailable();
         verify(mCallback1, times(1)).onAvailable();

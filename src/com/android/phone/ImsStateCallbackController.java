@@ -105,6 +105,9 @@ public class ImsStateCallbackController {
                 Executor executor, String logPrefix);
     }
 
+    /** Indicates that the state is not valid, used in ExternalRcsFeatureState only */
+    private static final int STATE_UNKNOWN = -1;
+
     /** The unavailable reason of ImsFeature is not initialized */
     private static final int NOT_INITIALIZED = -1;
     /** The ImsFeature is available. */
@@ -114,6 +117,7 @@ public class ImsStateCallbackController {
     private static final int EVENT_REGISTER_CALLBACK = 2;
     private static final int EVENT_UNREGISTER_CALLBACK = 3;
     private static final int EVENT_CARRIER_CONFIG_CHANGED = 4;
+    private static final int EVENT_EXTERNAL_RCS_STATE_CHANGED = 5;
 
     private static ImsStateCallbackController sInstance;
 
@@ -208,6 +212,11 @@ public class ImsStateCallbackController {
                     onCarrierConfigChanged(msg.arg1);
                     break;
 
+                case EVENT_EXTERNAL_RCS_STATE_CHANGED:
+                    if (msg.obj == null) break;
+                    onExternalRcsStateChanged((ExternalRcsFeatureState) msg.obj);
+                    break;
+
                 default:
                     loge("Unhandled event " + msg.what);
             }
@@ -219,9 +228,18 @@ public class ImsStateCallbackController {
         private int mSubId = SubscriptionManager.INVALID_SUBSCRIPTION_ID;
         private int mState = STATE_UNAVAILABLE;
         private int mReason = REASON_IMS_SERVICE_DISCONNECTED;
-        /**
+
+        /*
          * Remember the last return of verifyImsMmTelConfigured().
          * true means ImsResolver found an IMS package for FEATURE_MMTEL.
+         *
+         * mReason is updated through connectionUnavailable triggered by ImsResolver.
+         * mHasConfig is update through notifyConfigChanged triggered by mReceiver.
+         * mHasConfig can be a redundancy of (mReason == REASON_NO_IMS_SERVICE_CONFIGURED).
+         * However, when a carrier config changes, we are not sure the order
+         * of execution of connectionUnavailable and notifyConfigChanged.
+         * So, it's safe to use a separated state to retain it.
+         * We assume mHasConfig is true, until it's determined explicitly.
          */
         private boolean mHasConfig = true;
 
@@ -267,11 +285,16 @@ public class ImsStateCallbackController {
             reason = convertReasonType(reason);
             if (mReason == reason) return;
 
+            connectionUnavailableInternal(reason);
+        }
+
+        private void connectionUnavailableInternal(int reason) {
             mState = STATE_UNAVAILABLE;
+            mReason = reason;
+
             /* If having no IMS package for MMTEL,
              * dicard the reason except REASON_NO_IMS_SERVICE_CONFIGURED. */
             if (!mHasConfig && reason != REASON_NO_IMS_SERVICE_CONFIGURED) return;
-            mReason = reason;
 
             onFeatureStateChange(mSubId, FEATURE_MMTEL, mState, mReason);
         }
@@ -286,11 +309,19 @@ public class ImsStateCallbackController {
                 // REASON_NO_IMS_SERVICE_CONFIGURED is already reported to the clients,
                 // since there is no configuration of IMS package for MMTEL.
                 // Now, a carrier configuration change is notified and
-                // mHasConfig is changed from false to true.
-                // In this case, notify clients the reason, REASON_DISCONNCTED,
-                // to update the state.
-                if (mState != STATE_READY && mReason == REASON_NO_IMS_SERVICE_CONFIGURED) {
-                    connectionUnavailable(UNAVAILABLE_REASON_DISCONNECTED);
+                // the response from ImsResolver is changed from false to true.
+                if (mState != STATE_READY) {
+                    if (mReason == REASON_NO_IMS_SERVICE_CONFIGURED) {
+                        // In this case, notify clients the reason, REASON_DISCONNCTED,
+                        // to update the state.
+                        connectionUnavailable(UNAVAILABLE_REASON_DISCONNECTED);
+                    } else {
+                        // ImsResolver and ImsStateCallbackController run with different Looper.
+                        // In this case, FeatureConnectorListener is updated ahead of this.
+                        // But, connectionUnavailable didn't notify clients since mHasConfig is
+                        // false. So, notify clients here.
+                        connectionUnavailableInternal(mReason);
+                    }
                 }
             } else {
                 // FeatureConnector doesn't report UNAVAILABLE_REASON_IMS_UNSUPPORTED,
@@ -312,11 +343,35 @@ public class ImsStateCallbackController {
         private int mSubId = SubscriptionManager.INVALID_SUBSCRIPTION_ID;
         private int mState = STATE_UNAVAILABLE;
         private int mReason = REASON_IMS_SERVICE_DISCONNECTED;
-        /**
-         * Remember the last return of verifyImsRcsConfigured().
+
+        /*
+         * Remember the last return of verifyImsMmTelConfigured().
          * true means ImsResolver found an IMS package for FEATURE_RCS.
+         *
+         * mReason is updated through connectionUnavailable triggered by ImsResolver.
+         * mHasConfig is update through notifyConfigChanged triggered by mReceiver,
+         * and notifyExternalRcsState which triggered by TelephonyRcsService refers it.
+         * mHasConfig can be a redundancy of (mReason == REASON_NO_IMS_SERVICE_CONFIGURED).
+         * However, when a carrier config changes, we are not sure the order
+         * of execution of connectionUnavailable, notifyConfigChanged and notifyExternalRcsState.
+         * So, it's safe to use a separated state to retain it.
+         * We assume mHasConfig is true, until it's determined explicitly.
          */
         private boolean mHasConfig = true;
+
+        /*
+         * TelephonyRcsService doesn’t try to connect to RcsFeature if there is no active feature
+         * for a given subscription. The active features are declared by carrier configs and
+         * configuration resources. The APIs of ImsRcsManager and SipDelegateManager are available
+         * only when the RcsFeatureController has a STATE_READY state connection.
+         * This configuration is different from the configuration of IMS package for RCS.
+         * ImsStateCallbackController's FeatureConnectorListener can be STATE_READY state,
+         * even in case there is no active RCS feature. But Manager's APIs throws exception.
+         *
+         * For RCS, in addition to mHasConfig, the sate of TelephonyRcsService and
+         * RcsFeatureConnector will be traced to determine the state to be notified to clients.
+         */
+        private ExternalRcsFeatureState mExternalState = null;
 
         private int mSlotId = -1;
         private String mLogPrefix = "";
@@ -352,7 +407,10 @@ public class ImsStateCallbackController {
             mState = STATE_READY;
             mReason = AVAILABLE;
             mHasConfig = true;
-            onFeatureStateChange(mSubId, FEATURE_RCS, mState, mReason);
+
+            if (mExternalState != null && mExternalState.isReady()) {
+                onFeatureStateChange(mSubId, FEATURE_RCS, mState, mReason);
+            }
         }
 
         @Override
@@ -362,13 +420,32 @@ public class ImsStateCallbackController {
             reason = convertReasonType(reason);
             if (mReason == reason) return;
 
+            connectionUnavailableInternal(reason);
+        }
+
+        private void connectionUnavailableInternal(int reason) {
             mState = STATE_UNAVAILABLE;
+            mReason = reason;
+
             /* If having no IMS package for RCS,
              * dicard the reason except REASON_NO_IMS_SERVICE_CONFIGURED. */
             if (!mHasConfig && reason != REASON_NO_IMS_SERVICE_CONFIGURED) return;
-            mReason = reason;
 
-            onFeatureStateChange(mSubId, FEATURE_RCS, mState, mReason);
+            if (mExternalState == null && reason != REASON_NO_IMS_SERVICE_CONFIGURED) {
+                // Wait until TelephonyRcsService notifies its state.
+                return;
+            }
+
+            if (mExternalState != null && !mExternalState.hasActiveFeatures()) {
+                // notifyExternalState has notified REASON_NO_IMS_SERVICE_CONFIGURED already
+                // ignore it
+                return;
+            }
+
+            if ((mExternalState != null && mExternalState.hasActiveFeatures())
+                    || mReason == REASON_NO_IMS_SERVICE_CONFIGURED) {
+                onFeatureStateChange(mSubId, FEATURE_RCS, mState, mReason);
+            }
         }
 
         void notifyConfigChanged(boolean hasConfig) {
@@ -381,11 +458,19 @@ public class ImsStateCallbackController {
                 // REASON_NO_IMS_SERVICE_CONFIGURED is already reported to the clients,
                 // since there is no configuration of IMS package for RCS.
                 // Now, a carrier configuration change is notified and
-                // mHasConfig is changed from false to true.
-                // In this case, notify clients the reason, REASON_DISCONNCTED,
-                // to update the state.
-                if (mState != STATE_READY && mReason == REASON_NO_IMS_SERVICE_CONFIGURED) {
-                    connectionUnavailable(UNAVAILABLE_REASON_DISCONNECTED);
+                // the response from ImsResolver is changed from false to true.
+                if (mState != STATE_READY) {
+                    if (mReason == REASON_NO_IMS_SERVICE_CONFIGURED) {
+                        // In this case, notify clients the reason, REASON_DISCONNCTED,
+                        // to update the state.
+                        connectionUnavailable(UNAVAILABLE_REASON_DISCONNECTED);
+                    } else {
+                        // ImsResolver and ImsStateCallbackController run with different Looper.
+                        // In this case, FeatureConnectorListener is updated ahead of this.
+                        // But, connectionUnavailable didn't notify clients since mHasConfig is
+                        // false. So, notify clients here.
+                        connectionUnavailableInternal(mReason);
+                    }
                 }
             } else {
                 // FeatureConnector doesn't report UNAVAILABLE_REASON_IMS_UNSUPPORTED,
@@ -394,9 +479,65 @@ public class ImsStateCallbackController {
             }
         }
 
+        void notifyExternalRcsState(ExternalRcsFeatureState fs) {
+            logv(mLogPrefix + "notifyExternalRcsState"
+                    + " state=" + (fs.mState == STATE_UNKNOWN
+                            ? "" : ImsFeature.STATE_LOG_MAP.get(fs.mState))
+                    + ", reason=" + imsStateReasonToString(fs.mReason));
+
+            ExternalRcsFeatureState oldFs = mExternalState;
+            // External state is from TelephonyRcsService while a feature is added or removed.
+            if (fs.mState == STATE_UNKNOWN) {
+                if (oldFs != null) fs.mState = oldFs.mState;
+                else fs.mState = STATE_UNAVAILABLE;
+            }
+
+            mExternalState = fs;
+
+            // No IMS package found.
+            // REASON_NO_IMS_SERVICE_CONFIGURED is notified to clients already.
+            if (!mHasConfig) return;
+
+            if (fs.hasActiveFeatures()) {
+                if (mState == STATE_READY) {
+                    if ((oldFs == null || !oldFs.isReady()) && fs.isReady()) {
+                        // it is waiting RcsFeatureConnector's notification.
+                        // notify clients here.
+                        onFeatureStateChange(mSubId, FEATURE_RCS, mState, mReason);
+                    } else if (!fs.isReady()) {
+                        // Wait RcsFeatureConnector's notification
+                    } else {
+                        // ignore duplicated notification
+                    }
+                }
+            } else {
+                // notify only once
+                if (oldFs == null || oldFs.hasActiveFeatures()) {
+                    if (mReason != REASON_NO_IMS_SERVICE_CONFIGURED) {
+                        onFeatureStateChange(
+                                mSubId, FEATURE_RCS, STATE_UNAVAILABLE,
+                                REASON_NO_IMS_SERVICE_CONFIGURED);
+                    }
+                } else {
+                    // ignore duplicated notification
+                }
+            }
+        }
+
         // called from onRegisterCallback
         boolean notifyState(CallbackWrapper wrapper) {
             logv(mLogPrefix + "notifyState subId=" + wrapper.mSubId);
+
+            if (mHasConfig) {
+                if (mExternalState == null) {
+                    // Wait until TelephonyRcsService notifies its state.
+                    return wrapper.notifyState(mSubId, FEATURE_RCS, STATE_UNAVAILABLE,
+                            REASON_IMS_SERVICE_DISCONNECTED);
+                } else if (!mExternalState.hasActiveFeatures()) {
+                    return wrapper.notifyState(mSubId, FEATURE_RCS, STATE_UNAVAILABLE,
+                            REASON_NO_IMS_SERVICE_CONFIGURED);
+                }
+            }
 
             return wrapper.notifyState(mSubId, FEATURE_RCS, mState, mReason);
         }
@@ -452,6 +593,26 @@ public class ImsStateCallbackController {
             } catch (Exception e) {
                 // ignored
             }
+        }
+    }
+
+    private static class ExternalRcsFeatureState {
+        private int mSlotId;
+        private int mState = STATE_UNAVAILABLE;
+        private int mReason = NOT_INITIALIZED;
+
+        ExternalRcsFeatureState(int slotId, int state, int reason) {
+            mSlotId = slotId;
+            mState = state;
+            mReason = reason;
+        }
+
+        boolean hasActiveFeatures() {
+            return mReason != REASON_NO_IMS_SERVICE_CONFIGURED;
+        }
+
+        boolean isReady() {
+            return mState == STATE_READY;
         }
     }
 
@@ -652,6 +813,54 @@ public class ImsStateCallbackController {
             RcsFeatureListener listener = mRcsFeatureListeners.valueAt(slotId);
             listener.notifyConfigChanged(hasConfig);
         }
+    }
+
+    private void onExternalRcsStateChanged(ExternalRcsFeatureState fs) {
+        logv("onExternalRcsStateChanged slotId=" + fs.mSlotId
+                + ", state=" + (fs.mState == STATE_UNKNOWN
+                        ? "" : ImsFeature.STATE_LOG_MAP.get(fs.mState))
+                + ", reason=" + imsStateReasonToString(fs.mReason));
+
+        RcsFeatureListener listener = mRcsFeatureListeners.get(fs.mSlotId);
+        if (listener != null) {
+            listener.notifyExternalRcsState(fs);
+        } else {
+            // unexpected state
+            loge("onExternalRcsStateChanged slotId=" + fs.mSlotId + ", no listener.");
+        }
+    }
+
+    /**
+     * Interface to be notified from TelephonyRcsSerice and RcsFeatureController
+     *
+     * @param ready true if feature's state is STATE_READY. Valid only when it is true.
+     * @param hasActiveFeatures true if the RcsFeatureController has active features.
+     */
+    public void notifyExternalRcsStateChanged(
+            int slotId, boolean ready, boolean hasActiveFeatures) {
+        int state = STATE_UNKNOWN;
+        int reason = REASON_IMS_SERVICE_DISCONNECTED;
+
+        if (ready) {
+            // From RcsFeatureController
+            state = STATE_READY;
+            reason = AVAILABLE;
+        } else if (!hasActiveFeatures) {
+            // From TelephonyRcsService
+            reason = REASON_NO_IMS_SERVICE_CONFIGURED;
+            state = STATE_UNAVAILABLE;
+        } else {
+            // From TelephonyRcsService
+            // TelephonyRcsService doesn't know the exact state of FeatureConnection.
+            // Only when there is no feature, we can assume the state.
+        }
+
+        logv("notifyExternalRcsStateChanged slotId=" + slotId
+                + ", ready=" + ready
+                + ", hasActiveFeatures=" + hasActiveFeatures);
+
+        ExternalRcsFeatureState fs = new ExternalRcsFeatureState(slotId, state, reason);
+        mHandler.sendMessage(mHandler.obtainMessage(EVENT_EXTERNAL_RCS_STATE_CHANGED, fs));
     }
 
     /**
