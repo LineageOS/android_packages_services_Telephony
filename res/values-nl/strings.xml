@@ -125,9 +125,9 @@
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"Uit"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Je provider biedt geen ondersteuning voor het uitschakelen van oproepdoorschakelingen wanneer je telefoon niet bereikbaar is."</string>
     <string name="registration_cf_forbidden" msgid="4386482610771190420">"Je provider ondersteunt het doorschakelen van gesprekken niet."</string>
-    <string name="cdma_call_waiting" msgid="4565070960879673216">"Wisselgesprek inschakelen?"</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"Wisselgesprek aanzetten?"</string>
     <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"Tijdens een gesprek krijg je een melding over inkomende gesprekken"</string>
-    <string name="enable_cdma_cw" msgid="811047045863422232">"Inschakelen"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"Aanzetten"</string>
     <string name="disable_cdma_cw" msgid="7119290446496301734">"Annuleren"</string>
     <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"CDMA-wisselgesprek onder IMS aan"</string>
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"CDMA-wisselgesprek onder IMS uit"</string>
@@ -147,7 +147,7 @@
     <string name="fdn_check_failure" msgid="1833769746374185247">"De instelling \'Vaste nummers\' in je app Telefoon is ingeschakeld. Hierdoor werken sommige oproepgerelateerde functies niet."</string>
     <string name="radio_off_error" msgid="8321564164914232181">"Schakel de radio in voordat je deze instellingen bekijkt."</string>
     <string name="close_dialog" msgid="1074977476136119408">"OK"</string>
-    <string name="enable" msgid="2636552299455477603">"Inschakelen"</string>
+    <string name="enable" msgid="2636552299455477603">"Aanzetten"</string>
     <string name="disable" msgid="1122698860799462116">"Uit"</string>
     <string name="change_num" msgid="6982164494063109334">"Updaten"</string>
   <string-array name="clir_display_values">
@@ -443,20 +443,20 @@
     <string name="fdn_activation" msgid="2178637004710435895">"FDN-activering"</string>
     <string name="fdn_enabled" msgid="7017355494808056447">"Vaste nummers zijn ingeschakeld"</string>
     <string name="fdn_disabled" msgid="6696468878037736600">"Vaste nummers zijn uitgeschakeld"</string>
-    <string name="enable_fdn" msgid="4830555730418033723">"FDN inschakelen"</string>
+    <string name="enable_fdn" msgid="4830555730418033723">"FDN aanzetten"</string>
     <string name="disable_fdn" msgid="3918794950264647541">"FDN uitschakelen"</string>
     <string name="change_pin2" msgid="3110844547237754871">"PIN2-code wijzigen"</string>
     <string name="enable_fdn_ok" msgid="5080925177369329827">"FDN uitschakelen"</string>
-    <string name="disable_fdn_ok" msgid="3745475926874838676">"FDN inschakelen"</string>
+    <string name="disable_fdn_ok" msgid="3745475926874838676">"FDN aanzetten"</string>
     <string name="sum_fdn" msgid="6152246141642323582">"Vaste nummers beheren"</string>
     <string name="sum_fdn_change_pin" msgid="3510994280557335727">"Pincode voor FDN-toegang wijzigen"</string>
     <string name="sum_fdn_manage_list" msgid="3311397063233992907">"Lijst met telefoonnummers beheren"</string>
     <string name="voice_privacy" msgid="7346935172372181951">"Spraakprivacy"</string>
-    <string name="voice_privacy_summary" msgid="3556460926168473346">"Geavanceerde privacymodus inschakelen"</string>
+    <string name="voice_privacy_summary" msgid="3556460926168473346">"Geavanceerde privacymodus aanzetten"</string>
     <string name="tty_mode_option_title" msgid="3843817710032641703">"TTY-modus"</string>
     <string name="tty_mode_option_summary" msgid="4770510287236494371">"TTY-modus instellen"</string>
     <string name="auto_retry_mode_title" msgid="2985801935424422340">"Automatisch opnieuw proberen"</string>
-    <string name="auto_retry_mode_summary" msgid="2863919925349511402">"Modus voor automatisch opnieuw proberen inschakelen"</string>
+    <string name="auto_retry_mode_summary" msgid="2863919925349511402">"Modus voor automatisch opnieuw proberen aanzetten"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"De TTY-modus mag niet worden gewijzigd tijdens een videogesprek"</string>
     <string name="menu_add" msgid="5616487894975773141">"Contact toevoegen"</string>
     <string name="menu_edit" msgid="3593856941552460706">"Contact bewerken"</string>
@@ -593,7 +593,7 @@
     <string name="singleContactImportedMsg" msgid="3619804066300998934">"Contact geïmporteerd"</string>
     <string name="failedToImportSingleContactMsg" msgid="228095510489830266">"Kan contact niet importeren"</string>
     <string name="hac_mode_title" msgid="4127986689621125468">"Hoortoestellen"</string>
-    <string name="hac_mode_summary" msgid="7774989500136009881">"Compatibiliteit voor hoortoestel inschakelen"</string>
+    <string name="hac_mode_summary" msgid="7774989500136009881">"Compatibiliteit voor hoortoestel aanzetten"</string>
     <string name="rtt_mode_title" msgid="3075948111362818043">"Realtime tekstoproep (RTT)"</string>
     <string name="rtt_mode_summary" msgid="8631541375609989562">"Berichten in een audiogesprek toestaan"</string>
     <string name="rtt_mode_more_information" msgid="587500128658756318">"RTT helpt bellers die doof of slechthorend zijn, een spraakbeperking hebben of meer dan alleen een stem nodig hebben.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Meer informatie&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT-gesprekken worden opgeslagen als berichttranscript.\n       &lt;br&gt; - RTT is niet beschikbaar voor videogesprekken"</string>
@@ -673,8 +673,8 @@
     <string name="voicemail_change_pin_dialog_title" msgid="4633077715231764435">"Pincode wijzigen"</string>
     <string name="preference_category_ringtone" msgid="8787281191375434976">"Ringtone en trillen"</string>
     <string name="pstn_connection_service_label" msgid="9200102709997537069">"Ingebouwde simkaarten"</string>
-    <string name="enable_video_calling_title" msgid="7246600931634161830">"Videogesprekken inschakelen"</string>
-    <string name="enable_video_calling_dialog_msg" msgid="7141478720386203540">"Als je videogesprekken wilt inschakelen, moet je de geoptimaliseerde 4G LTE-modus inschakelen in de netwerkinstellingen."</string>
+    <string name="enable_video_calling_title" msgid="7246600931634161830">"Videogesprekken aanzetten"</string>
+    <string name="enable_video_calling_dialog_msg" msgid="7141478720386203540">"Als je videogesprekken wilt aanzetten, moet je de geoptimaliseerde 4G LTE-modus aanzetten in de netwerkinstellingen."</string>
     <string name="enable_video_calling_dialog_settings" msgid="8697890611305307110">"Netwerkinstellingen"</string>
     <string name="enable_video_calling_dialog_close" msgid="4298929725917045270">"Sluiten"</string>
     <string name="sim_label_emergency_calls" msgid="9078241989421522310">"Noodoproepen"</string>
@@ -833,14 +833,14 @@
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"Als je <xliff:g id="SUPP_SERVICE">%1$s</xliff:g> wilt gebruiken, zorg je dat je mobiele data hebt ingeschakeld voor sim <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. Je kunt dit wijzigen via de mobiele netwerkinstellingen."</string>
     <string name="supp_service_over_ut_precautions_roaming_dual_sim" msgid="6627654855191817965">"Als je <xliff:g id="SUPP_SERVICE">%1$s</xliff:g> wilt gebruiken, zorg je dat je mobiele data en dataroaming hebt ingeschakeld voor sim <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. Je kunt dit wijzigen via de mobiele netwerkinstellingen."</string>
     <string name="supp_service_over_ut_precautions_dialog_dismiss" msgid="5934541487903081652">"Sluiten"</string>
-    <string name="radio_info_data_connection_enable" msgid="6183729739783252840">"Dataverbinding inschakelen"</string>
+    <string name="radio_info_data_connection_enable" msgid="6183729739783252840">"Dataverbinding aanzetten"</string>
     <string name="radio_info_data_connection_disable" msgid="6404751291511368706">"Dataverbinding uitschakelen"</string>
     <string name="volte_provisioned_switch_string" msgid="4812874990480336178">"VoLTE-registratie"</string>
     <string name="vt_provisioned_switch_string" msgid="8295542122512195979">"Videogesprekken geregistreerd"</string>
     <string name="wfc_provisioned_switch_string" msgid="3835004640321078988">"Wifi-gesprekken geregistreerd"</string>
     <string name="eab_provisioned_switch_string" msgid="4449676720736033035">"EAB/aanwezigheid geregistreerd"</string>
     <string name="cbrs_data_switch_string" msgid="6060356430838077653">"CBRS-gegevens"</string>
-    <string name="dsds_switch_string" msgid="7564769822086764796">"DSDS inschakelen"</string>
+    <string name="dsds_switch_string" msgid="7564769822086764796">"DSDS aanzetten"</string>
     <string name="dsds_dialog_title" msgid="8494569893941847575">"Apparaat opnieuw opstarten?"</string>
     <string name="dsds_dialog_message" msgid="4047480385678538850">"Start het apparaat opnieuw op om de instelling te wijzigen."</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"Opnieuw opstarten"</string>
