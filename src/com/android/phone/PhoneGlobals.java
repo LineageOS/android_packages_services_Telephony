@@ -160,6 +160,7 @@ public class PhoneGlobals extends ContextWrapper {
     TelephonyRcsService mTelephonyRcsService;
     public PhoneInterfaceManager phoneMgr;
     public ImsRcsController imsRcsController;
+    public ImsStateCallbackController mImsStateCallbackController;
     CarrierConfigLoader configLoader;
 
     private Phone phoneInEcm;
@@ -463,6 +464,8 @@ public class PhoneGlobals extends ContextWrapper {
             imsRcsController = ImsRcsController.init(this);
 
             if (getPackageManager().hasSystemFeature(PackageManager.FEATURE_TELEPHONY_IMS)) {
+                mImsStateCallbackController =
+                        ImsStateCallbackController.make(this, PhoneFactory.getPhones().length);
                 mTelephonyRcsService = new TelephonyRcsService(this,
                         PhoneFactory.getPhones().length);
                 mTelephonyRcsService.initialize();
