@@ -152,6 +152,7 @@ import com.android.internal.telephony.GsmCdmaPhone;
 import com.android.internal.telephony.HalVersion;
 import com.android.internal.telephony.IBooleanConsumer;
 import com.android.internal.telephony.ICallForwardingInfoCallback;
+import com.android.internal.telephony.IImsStateCallback;
 import com.android.internal.telephony.IIntegerConsumer;
 import com.android.internal.telephony.INumberVerificationCallback;
 import com.android.internal.telephony.ITelephony;
@@ -3397,17 +3398,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         mApp.enforceCallingOrSelfPermission(android.Manifest.permission.MODIFY_PHONE_STATE, null);
     }
 
-    /**
-     * Make sure the caller is system.
-     *
-     * @throws SecurityException if the caller is not system.
-     */
-    private static void enforceSystemCaller() {
-        if (Binder.getCallingUid() != Process.SYSTEM_UID) {
-            throw new SecurityException("Caller must be system");
-        }
-    }
-
     private void enforceActiveEmergencySessionPermission() {
         mApp.enforceCallingOrSelfPermission(
                 android.Manifest.permission.READ_ACTIVE_EMERGENCY_SESSION, null);
@@ -6582,34 +6572,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 return phone.hasMatchedTetherApnSetting();
             } else {
                 return false;
-            }
-        } finally {
-            Binder.restoreCallingIdentity(identity);
-        }
-    }
-
-    /**
-     * Enable or disable always reporting signal strength changes from radio.
-     *
-     * @param isEnable {@code true} for enabling; {@code false} for disabling.
-     */
-    @Override
-    public void setAlwaysReportSignalStrength(int subId, boolean isEnable) {
-        enforceModifyPermission();
-        enforceSystemCaller();
-
-        final long identity = Binder.clearCallingIdentity();
-        final Phone phone = getPhone(subId);
-        try {
-            if (phone != null) {
-                if (DBG) {
-                    log("setAlwaysReportSignalStrength: subId=" + subId
-                            + " isEnable=" + isEnable);
-                }
-                phone.setAlwaysReportSignalStrength(isEnable);
-            } else {
-                loge("setAlwaysReportSignalStrength: no phone found for subId="
-                        + subId);
             }
         } finally {
             Binder.restoreCallingIdentity(identity);
@@ -10823,7 +10785,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         mApp.getSystemService(AppOpsManager.class)
                 .checkPackage(callingUid, callingPackage);
 
-        validateSignalStrengthUpdateRequest(request, callingUid);
+        validateSignalStrengthUpdateRequest(mApp, request, callingUid);
 
         final long identity = Binder.clearCallingIdentity();
         try {
@@ -10862,19 +10824,19 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
-    private static void validateSignalStrengthUpdateRequest(SignalStrengthUpdateRequest request,
-            int callingUid) {
+    private static void validateSignalStrengthUpdateRequest(Context context,
+            SignalStrengthUpdateRequest request, int callingUid) {
         if (callingUid == Process.PHONE_UID || callingUid == Process.SYSTEM_UID) {
             // phone/system process do not have further restriction on request
             return;
         }
 
         // Applications has restrictions on how to use the request:
-        // Only system caller can set mIsSystemThresholdReportingRequestedWhileIdle
+        // Non-system callers need permission to set mIsSystemThresholdReportingRequestedWhileIdle
         if (request.isSystemThresholdReportingRequestedWhileIdle()) {
-            // This is not system caller which has been checked above
-            throw new IllegalArgumentException(
-                    "Only system can set isSystemThresholdReportingRequestedWhileIdle");
+            context.enforceCallingOrSelfPermission(
+                    android.Manifest.permission.LISTEN_ALWAYS_REPORTED_SIGNAL_STRENGTH,
+                    "validateSignalStrengthUpdateRequest");
         }
 
         for (SignalThresholdInfo info : request.getSignalThresholdInfos()) {
@@ -10953,6 +10915,70 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             sendRequestAsync(CMD_GET_SLICING_CONFIG, callback, phone, null);
         } finally {
             Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Register an IMS connection state callback
+     */
+    @Override
+    public void registerImsStateCallback(int subId, int feature, IImsStateCallback cb) {
+        if (feature == ImsFeature.FEATURE_MMTEL) {
+            // ImsMmTelManager
+            // The following also checks READ_PRIVILEGED_PHONE_STATE.
+            TelephonyPermissions
+                    .enforceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
+                            mApp, subId, "registerImsStateCallback");
+        } else if (feature == ImsFeature.FEATURE_RCS) {
+            // ImsRcsManager or SipDelegateManager
+            TelephonyPermissions.enforceAnyPermissionGrantedOrCarrierPrivileges(mApp, subId,
+                    Binder.getCallingUid(), "registerImsStateCallback",
+                    Manifest.permission.READ_PRIVILEGED_PHONE_STATE,
+                    Manifest.permission.READ_PRECISE_PHONE_STATE,
+                    Manifest.permission.ACCESS_RCS_USER_CAPABILITY_EXCHANGE,
+                    Manifest.permission.PERFORM_IMS_SINGLE_REGISTRATION);
+        }
+
+        if (!ImsManager.isImsSupportedOnDevice(mApp)) {
+            throw new ServiceSpecificException(ImsException.CODE_ERROR_UNSUPPORTED_OPERATION,
+                    "IMS not available on device.");
+        }
+
+        if (subId == SubscriptionManager.DEFAULT_SUBSCRIPTION_ID) {
+            throw new ServiceSpecificException(ImsException.CODE_ERROR_INVALID_SUBSCRIPTION);
+        }
+
+        ImsStateCallbackController controller = ImsStateCallbackController.getInstance();
+        if (controller == null) {
+            throw new ServiceSpecificException(ImsException.CODE_ERROR_UNSUPPORTED_OPERATION,
+                    "IMS not available on device.");
+        }
+
+        final long token = Binder.clearCallingIdentity();
+        try {
+            int slotId = getSlotIndexOrException(subId);
+            controller.registerImsStateCallback(subId, feature, cb);
+        } catch (ImsException e) {
+            throw new ServiceSpecificException(e.getCode());
+        } finally {
+            Binder.restoreCallingIdentity(token);
+        }
+    }
+
+    /**
+     * Unregister an IMS connection state callback
+     */
+    @Override
+    public void unregisterImsStateCallback(IImsStateCallback cb) {
+        final long token = Binder.clearCallingIdentity();
+        ImsStateCallbackController controller = ImsStateCallbackController.getInstance();
+        if (controller == null) {
+            return;
+        }
+        try {
+            controller.unregisterImsStateCallback(cb);
+        } finally {
+            Binder.restoreCallingIdentity(token);
         }
     }
 }
