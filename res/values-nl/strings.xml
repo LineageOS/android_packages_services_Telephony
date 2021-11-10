@@ -846,9 +846,9 @@
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"Opnieuw opstarten"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"Annuleren"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"Mobiel radiovermogen"</string>
-    <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"Adresboek op simkaart weergeven"</string>
-    <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"Vaste nummers weergeven"</string>
-    <string name="radioInfo_menu_viewSDN" msgid="2613431584522392842">"Servicenummers weergeven"</string>
+    <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"Adresboek op simkaart bekijken"</string>
+    <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"Vaste nummers bekijken"</string>
+    <string name="radioInfo_menu_viewSDN" msgid="2613431584522392842">"Servicenummers bekijken"</string>
     <string name="radioInfo_menu_getIMS" msgid="1950869267853198232">"IMS-servicestatus"</string>
     <string name="radio_info_ims_reg_status_title" msgid="6875885401313992007">"IMS-status"</string>
     <string name="radio_info_ims_reg_status_registered" msgid="7095182114078864326">"Geregistreerd"</string>
