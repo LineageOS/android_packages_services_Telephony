@@ -1145,7 +1145,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                                     request.argument).first;
                     request.phone.setCallForwardingOption(
                             callForwardingInfoToSet.isEnabled()
-                                    ? CommandsInterface.CF_ACTION_ENABLE
+                                    ? CommandsInterface.CF_ACTION_REGISTRATION
                                     : CommandsInterface.CF_ACTION_DISABLE,
                             callForwardingInfoToSet.getReason(),
                             callForwardingInfoToSet.getNumber(),
@@ -3036,6 +3036,14 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @SuppressWarnings("unchecked")
     public List<NeighboringCellInfo> getNeighboringCellInfo(String callingPackage,
             String callingFeatureId) {
+        try {
+            mApp.getSystemService(AppOpsManager.class)
+                    .checkPackage(Binder.getCallingUid(), callingPackage);
+        } catch (SecurityException e) {
+            EventLog.writeEvent(0x534e4554, "190619791", Binder.getCallingUid());
+            throw e;
+        }
+
         final int targetSdk = TelephonyPermissions.getTargetSdk(mApp, callingPackage);
         if (targetSdk >= android.os.Build.VERSION_CODES.Q) {
             throw new SecurityException(
@@ -3227,6 +3235,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     @Override
     public String getMeidForSlot(int slotIndex, String callingPackage, String callingFeatureId) {
+        try {
+            mAppOps.checkPackage(Binder.getCallingUid(), callingPackage);
+        } catch (SecurityException se) {
+            EventLog.writeEvent(0x534e4554, "186530496", Binder.getCallingUid());
+            throw new SecurityException("Package " + callingPackage + " does not belong to "
+                    + Binder.getCallingUid());
+        }
         Phone phone = PhoneFactory.getPhone(slotIndex);
         if (phone == null) {
             return null;
@@ -4997,6 +5012,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @Override
     public int getNetworkTypeForSubscriber(int subId, String callingPackage,
             String callingFeatureId) {
+        try {
+            mAppOps.checkPackage(Binder.getCallingUid(), callingPackage);
+        } catch (SecurityException se) {
+            EventLog.writeEvent(0x534e4554, "186776740", Binder.getCallingUid());
+            throw new SecurityException("Package " + callingPackage + " does not belong to "
+                    + Binder.getCallingUid());
+        }
         final int targetSdk = TelephonyPermissions.getTargetSdk(mApp, callingPackage);
         if (targetSdk > android.os.Build.VERSION_CODES.Q) {
             return getDataNetworkTypeForSubscriber(subId, callingPackage, callingFeatureId);
@@ -7524,6 +7546,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     @Override
     public String getDeviceIdWithFeature(String callingPackage, String callingFeatureId) {
+        try {
+            mAppOps.checkPackage(Binder.getCallingUid(), callingPackage);
+        } catch (SecurityException se) {
+            EventLog.writeEvent(0x534e4554, "186530889", Binder.getCallingUid());
+            throw new SecurityException("Package " + callingPackage + " does not belong to "
+                    + Binder.getCallingUid());
+        }
         final Phone phone = PhoneFactory.getPhone(0);
         if (phone == null) {
             return null;
