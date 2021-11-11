@@ -6301,28 +6301,35 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * Starts a new network scan and returns the id of this scan.
      *
      * @param subId id of the subscription
+     * @param renounceFineLocationAccess Set this to true if the caller would not like to receive
+     * location related information which will be sent if the caller already possess
+     * {@android.Manifest.permission.ACCESS_FINE_LOCATION} and do not renounce the permission
      * @param request contains the radio access networks with bands/channels to scan
      * @param messenger callback messenger for scan results or errors
      * @param binder for the purpose of auto clean when the user thread crashes
      * @return the id of the requested scan which can be used to stop the scan.
      */
     @Override
-    public int requestNetworkScan(int subId, NetworkScanRequest request, Messenger messenger,
+    public int requestNetworkScan(int subId, boolean renounceFineLocationAccess,
+            NetworkScanRequest request, Messenger messenger,
             IBinder binder, String callingPackage, String callingFeatureId) {
         TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
                 mApp, subId, "requestNetworkScan");
         LocationAccessPolicy.LocationPermissionResult locationResult =
-                LocationAccessPolicy.checkLocationPermission(mApp,
-                        new LocationAccessPolicy.LocationPermissionQuery.Builder()
-                                .setCallingPackage(callingPackage)
-                                .setCallingFeatureId(callingFeatureId)
-                                .setCallingPid(Binder.getCallingPid())
-                                .setCallingUid(Binder.getCallingUid())
-                                .setMethod("requestNetworkScan")
-                                .setMinSdkVersionForFine(Build.VERSION_CODES.Q)
-                                .setMinSdkVersionForCoarse(Build.VERSION_CODES.Q)
-                                .setMinSdkVersionForEnforcement(Build.VERSION_CODES.Q)
-                                .build());
+                LocationAccessPolicy.LocationPermissionResult.DENIED_HARD;
+        if (!renounceFineLocationAccess) {
+            locationResult = LocationAccessPolicy.checkLocationPermission(mApp,
+                            new LocationAccessPolicy.LocationPermissionQuery.Builder()
+                                    .setCallingPackage(callingPackage)
+                                    .setCallingFeatureId(callingFeatureId)
+                                    .setCallingPid(Binder.getCallingPid())
+                                    .setCallingUid(Binder.getCallingUid())
+                                    .setMethod("requestNetworkScan")
+                                    .setMinSdkVersionForFine(Build.VERSION_CODES.Q)
+                                    .setMinSdkVersionForCoarse(Build.VERSION_CODES.Q)
+                                    .setMinSdkVersionForEnforcement(Build.VERSION_CODES.Q)
+                                    .build());
+        }
         if (locationResult != LocationAccessPolicy.LocationPermissionResult.ALLOWED) {
             SecurityException e = checkNetworkRequestForSanitizedLocationAccess(
                     request, subId, callingPackage);
@@ -6340,7 +6347,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         final long identity = Binder.clearCallingIdentity();
         try {
             return mNetworkScanRequestTracker.startNetworkScan(
-                    request, messenger, binder, getPhone(subId),
+                    renounceFineLocationAccess, request, messenger, binder, getPhone(subId),
                     callingUid, callingPid, callingPackage);
         } finally {
             Binder.restoreCallingIdentity(identity);
@@ -7864,49 +7871,54 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
-     * {@hide}
      * Returns the service state information on specified subscription.
      */
     @Override
-    public ServiceState getServiceStateForSubscriber(int subId, String callingPackage,
-            String callingFeatureId) {
+    public ServiceState getServiceStateForSubscriber(int subId,
+            boolean renounceFineLocationAccess, boolean renounceCoarseLocationAccess,
+            String callingPackage, String callingFeatureId) {
         if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(
                 mApp, subId, callingPackage, callingFeatureId, "getServiceStateForSubscriber")) {
             return null;
         }
 
-        LocationAccessPolicy.LocationPermissionResult fineLocationResult =
-                LocationAccessPolicy.checkLocationPermission(mApp,
-                        new LocationAccessPolicy.LocationPermissionQuery.Builder()
-                                .setCallingPackage(callingPackage)
-                                .setCallingFeatureId(callingFeatureId)
-                                .setCallingPid(Binder.getCallingPid())
-                                .setCallingUid(Binder.getCallingUid())
-                                .setMethod("getServiceStateForSubscriber")
-                                .setLogAsInfo(true)
-                                .setMinSdkVersionForFine(Build.VERSION_CODES.Q)
-                                .setMinSdkVersionForCoarse(Build.VERSION_CODES.Q)
-                                .setMinSdkVersionForEnforcement(Build.VERSION_CODES.Q)
-                                .build());
+        boolean hasFinePermission = false;
+        boolean hasCoarsePermission = false;
+        if (!renounceFineLocationAccess) {
+            LocationAccessPolicy.LocationPermissionResult fineLocationResult =
+                    LocationAccessPolicy.checkLocationPermission(mApp,
+                            new LocationAccessPolicy.LocationPermissionQuery.Builder()
+                                    .setCallingPackage(callingPackage)
+                                    .setCallingFeatureId(callingFeatureId)
+                                    .setCallingPid(Binder.getCallingPid())
+                                    .setCallingUid(Binder.getCallingUid())
+                                    .setMethod("getServiceStateForSubscriber")
+                                    .setLogAsInfo(true)
+                                    .setMinSdkVersionForFine(Build.VERSION_CODES.Q)
+                                    .setMinSdkVersionForCoarse(Build.VERSION_CODES.Q)
+                                    .setMinSdkVersionForEnforcement(Build.VERSION_CODES.Q)
+                                    .build());
+            hasFinePermission =
+                    fineLocationResult == LocationAccessPolicy.LocationPermissionResult.ALLOWED;
+        }
 
-        LocationAccessPolicy.LocationPermissionResult coarseLocationResult =
-                LocationAccessPolicy.checkLocationPermission(mApp,
-                        new LocationAccessPolicy.LocationPermissionQuery.Builder()
-                                .setCallingPackage(callingPackage)
-                                .setCallingFeatureId(callingFeatureId)
-                                .setCallingPid(Binder.getCallingPid())
-                                .setCallingUid(Binder.getCallingUid())
-                                .setMethod("getServiceStateForSubscriber")
-                                .setLogAsInfo(true)
-                                .setMinSdkVersionForCoarse(Build.VERSION_CODES.Q)
-                                .setMinSdkVersionForFine(Integer.MAX_VALUE)
-                                .setMinSdkVersionForEnforcement(Build.VERSION_CODES.Q)
-                                .build());
-        // We don't care about hard or soft here -- all we need to know is how much info to scrub.
-        boolean hasFinePermission =
-                fineLocationResult == LocationAccessPolicy.LocationPermissionResult.ALLOWED;
-        boolean hasCoarsePermission =
-                coarseLocationResult == LocationAccessPolicy.LocationPermissionResult.ALLOWED;
+        if (!renounceCoarseLocationAccess) {
+            LocationAccessPolicy.LocationPermissionResult coarseLocationResult =
+                    LocationAccessPolicy.checkLocationPermission(mApp,
+                            new LocationAccessPolicy.LocationPermissionQuery.Builder()
+                                    .setCallingPackage(callingPackage)
+                                    .setCallingFeatureId(callingFeatureId)
+                                    .setCallingPid(Binder.getCallingPid())
+                                    .setCallingUid(Binder.getCallingUid())
+                                    .setMethod("getServiceStateForSubscriber")
+                                    .setLogAsInfo(true)
+                                    .setMinSdkVersionForCoarse(Build.VERSION_CODES.Q)
+                                    .setMinSdkVersionForFine(Integer.MAX_VALUE)
+                                    .setMinSdkVersionForEnforcement(Build.VERSION_CODES.Q)
+                                    .build());
+            hasCoarsePermission =
+                    coarseLocationResult == LocationAccessPolicy.LocationPermissionResult.ALLOWED;
+        }
 
         final Phone phone = getPhone(subId);
         if (phone == null) {
