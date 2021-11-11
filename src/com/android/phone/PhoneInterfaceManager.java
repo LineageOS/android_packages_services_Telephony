@@ -749,6 +749,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                         }
                         openChannelResp = new IccOpenLogicalChannelResponse(channelId,
                             IccOpenLogicalChannelResponse.STATUS_NO_ERROR, selectResponse);
+
+                        uiccPort = getUiccPortFromRequest(request);
+                        IccLogicalChannelRequest channelRequest =
+                                (IccLogicalChannelRequest) request.argument;
+                        channelRequest.channel = channelId;
+                        uiccPort.onLogicalChannelOpened(channelRequest);
                     } else {
                         if (ar.result == null) {
                             loge("iccOpenLogicalChannel: Empty response");
@@ -791,6 +797,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     request = (MainThreadRequest) ar.userObj;
                     if (ar.exception == null) {
                         request.result = true;
+                        uiccPort = getUiccPortFromRequest(request);
+                        final int channelId = (Integer) request.argument;
+                        uiccPort.onLogicalChannelClosed(channelId);
                     } else {
                         request.result = false;
                         if (ar.exception instanceof CommandException) {
