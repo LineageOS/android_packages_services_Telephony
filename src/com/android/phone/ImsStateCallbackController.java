@@ -47,6 +47,7 @@ import android.telephony.CarrierConfigManager;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyRegistryManager;
 import android.telephony.ims.feature.ImsFeature;
+import android.util.LocalLog;
 import android.util.Log;
 import android.util.SparseArray;
 
@@ -60,6 +61,7 @@ import com.android.internal.telephony.PhoneConfigurationManager;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.ims.ImsResolver;
 import com.android.internal.telephony.util.HandlerExecutor;
+import com.android.internal.util.IndentingPrintWriter;
 import com.android.services.telephony.rcs.RcsFeatureController;
 import com.android.telephony.Rlog;
 
@@ -74,6 +76,7 @@ import java.util.concurrent.Executor;
 public class ImsStateCallbackController {
     private static final String TAG = "ImsStateCallbackController";
     private static final boolean VDBG = false;
+    private static final int LOG_SIZE = 50;
 
     /**
      * Create a FeatureConnector for this class to use to connect to an ImsManager.
@@ -123,6 +126,7 @@ public class ImsStateCallbackController {
     private static final int EVENT_MSIM_CONFIGURATION_CHANGE = 6;
 
     private static ImsStateCallbackController sInstance;
+    private static final LocalLog sLocalLog = new LocalLog(LOG_SIZE);
 
     /**
      * get the instance
@@ -145,6 +149,8 @@ public class ImsStateCallbackController {
     private RcsFeatureConnectorFactory mRcsFeatureFactory;
 
     private HashMap<IBinder, CallbackWrapper> mWrappers = new HashMap<>();
+
+    private final Object mDumpLock = new Object();
 
     private int mNumSlots;
 
@@ -197,41 +203,43 @@ public class ImsStateCallbackController {
 
         @Override
         public void handleMessage(Message msg) {
-            logv("handleMessage: " + msg);
-            switch (msg.what) {
-                case EVENT_SUB_CHANGED:
-                    onSubChanged();
-                    break;
-
-                case EVENT_REGISTER_CALLBACK:
-                    onRegisterCallback((ImsStateCallbackController.CallbackWrapper) msg.obj);
-                    break;
-
-                case EVENT_UNREGISTER_CALLBACK:
-                    onUnregisterCallback((IImsStateCallback) msg.obj);
-                    break;
-
-                case EVENT_CARRIER_CONFIG_CHANGED:
-                    onCarrierConfigChanged(msg.arg1);
-                    break;
-
-                case EVENT_EXTERNAL_RCS_STATE_CHANGED:
-                    if (msg.obj == null) break;
-                    onExternalRcsStateChanged((ExternalRcsFeatureState) msg.obj);
-                    break;
-
-                case EVENT_MSIM_CONFIGURATION_CHANGE:
-                    AsyncResult result = (AsyncResult) msg.obj;
-                    Integer numSlots = (Integer) result.result;
-                    if (numSlots == null) {
-                        Log.w(TAG, "msim config change with null num slots");
+            if (VDBG) logv("handleMessage: " + msg);
+            synchronized (mDumpLock) {
+                switch (msg.what) {
+                    case EVENT_SUB_CHANGED:
+                        onSubChanged();
                         break;
-                    }
-                    updateFeatureControllerSize(numSlots);
-                    break;
 
-                default:
-                    loge("Unhandled event " + msg.what);
+                    case EVENT_REGISTER_CALLBACK:
+                        onRegisterCallback((ImsStateCallbackController.CallbackWrapper) msg.obj);
+                        break;
+
+                    case EVENT_UNREGISTER_CALLBACK:
+                        onUnregisterCallback((IImsStateCallback) msg.obj);
+                        break;
+
+                    case EVENT_CARRIER_CONFIG_CHANGED:
+                        onCarrierConfigChanged(msg.arg1);
+                        break;
+
+                    case EVENT_EXTERNAL_RCS_STATE_CHANGED:
+                        if (msg.obj == null) break;
+                        onExternalRcsStateChanged((ExternalRcsFeatureState) msg.obj);
+                        break;
+
+                    case EVENT_MSIM_CONFIGURATION_CHANGE:
+                        AsyncResult result = (AsyncResult) msg.obj;
+                        Integer numSlots = (Integer) result.result;
+                        if (numSlots == null) {
+                            Log.w(TAG, "msim config change with null num slots");
+                            break;
+                        }
+                        updateFeatureControllerSize(numSlots);
+                        break;
+
+                    default:
+                        loge("Unhandled event " + msg.what);
+                }
             }
         }
     }
@@ -260,23 +268,25 @@ public class ImsStateCallbackController {
         private String mLogPrefix = "";
 
         MmTelFeatureListener(int slotId) {
-            mLogPrefix = "[MMTEL, " + slotId + "] ";
-            logv(mLogPrefix + "create");
+            mSlotId = slotId;
+            mLogPrefix = "[" + slotId + ", MMTEL] ";
+            if (VDBG) logv(mLogPrefix + "created");
+
             mConnector = mMmTelFeatureFactory.create(
                     mApp, slotId, TAG, this, new HandlerExecutor(mHandler));
             mConnector.connect();
         }
 
         void setSubId(int subId) {
-            logv(mLogPrefix + "setSubId mSubId=" + mSubId + ", subId=" + subId);
+            if (VDBG) logv(mLogPrefix + "setSubId mSubId=" + mSubId + ", subId=" + subId);
             if (mSubId == subId) return;
-            logd(mLogPrefix + "setSubId subId changed");
+            logd(mLogPrefix + "setSubId changed subId=" + subId);
 
             mSubId = subId;
         }
 
         void destroy() {
-            logv(mLogPrefix + "destroy");
+            if (VDBG) logv(mLogPrefix + "destroy");
             mConnector.disconnect();
             mConnector = null;
         }
@@ -345,9 +355,18 @@ public class ImsStateCallbackController {
 
         // called from onRegisterCallback
         boolean notifyState(CallbackWrapper wrapper) {
-            logv(mLogPrefix + "notifyState subId=" + wrapper.mSubId);
+            if (VDBG) logv(mLogPrefix + "notifyState subId=" + wrapper.mSubId);
 
             return wrapper.notifyState(mSubId, FEATURE_MMTEL, mState, mReason);
+        }
+
+        void dump(IndentingPrintWriter pw) {
+            pw.println("Listener={slotId=" + mSlotId
+                    + ", subId=" + mSubId
+                    + ", state=" + ImsFeature.STATE_LOG_MAP.get(mState)
+                    + ", reason=" + imsStateReasonToString(mReason)
+                    + ", hasConfig=" + mHasConfig
+                    + "}");
         }
     }
 
@@ -390,8 +409,9 @@ public class ImsStateCallbackController {
         private String mLogPrefix = "";
 
         RcsFeatureListener(int slotId) {
-            mLogPrefix = "[RCS, " + slotId + "] ";
-            logv(mLogPrefix + "create");
+            mSlotId = slotId;
+            mLogPrefix = "[" + slotId + ", RCS] ";
+            if (VDBG) logv(mLogPrefix + "created");
 
             mConnector = mRcsFeatureFactory.create(
                     mApp, slotId, this, new HandlerExecutor(mHandler), TAG);
@@ -399,15 +419,15 @@ public class ImsStateCallbackController {
         }
 
         void setSubId(int subId) {
-            logv(mLogPrefix + "setSubId mSubId=" + mSubId + ", subId=" + subId);
+            if (VDBG) logv(mLogPrefix + "setSubId mSubId=" + mSubId + ", subId=" + subId);
             if (mSubId == subId) return;
-            logd(mLogPrefix + "setSubId subId changed");
+            logd(mLogPrefix + "setSubId changed subId=" + subId);
 
             mSubId = subId;
         }
 
         void destroy() {
-            logv(mLogPrefix + "destroy");
+            if (VDBG) logv(mLogPrefix + "destroy");
 
             mConnector.disconnect();
             mConnector = null;
@@ -450,7 +470,7 @@ public class ImsStateCallbackController {
             }
 
             if (mExternalState != null && !mExternalState.hasActiveFeatures()) {
-                // notifyExternalState has notified REASON_NO_IMS_SERVICE_CONFIGURED already
+                // notifyExternalRcsState has notified REASON_NO_IMS_SERVICE_CONFIGURED already
                 // ignore it
                 return;
             }
@@ -493,10 +513,12 @@ public class ImsStateCallbackController {
         }
 
         void notifyExternalRcsState(ExternalRcsFeatureState fs) {
-            logv(mLogPrefix + "notifyExternalRcsState"
-                    + " state=" + (fs.mState == STATE_UNKNOWN
-                            ? "" : ImsFeature.STATE_LOG_MAP.get(fs.mState))
-                    + ", reason=" + imsStateReasonToString(fs.mReason));
+            if (VDBG) {
+                logv(mLogPrefix + "notifyExternalRcsState"
+                        + " state=" + (fs.mState == STATE_UNKNOWN
+                                ? "" : ImsFeature.STATE_LOG_MAP.get(fs.mState))
+                        + ", reason=" + imsStateReasonToString(fs.mReason));
+            }
 
             ExternalRcsFeatureState oldFs = mExternalState;
             // External state is from TelephonyRcsService while a feature is added or removed.
@@ -539,7 +561,7 @@ public class ImsStateCallbackController {
 
         // called from onRegisterCallback
         boolean notifyState(CallbackWrapper wrapper) {
-            logv(mLogPrefix + "notifyState subId=" + wrapper.mSubId);
+            if (VDBG) logv(mLogPrefix + "notifyState subId=" + wrapper.mSubId);
 
             if (mHasConfig) {
                 if (mExternalState == null) {
@@ -554,6 +576,18 @@ public class ImsStateCallbackController {
 
             return wrapper.notifyState(mSubId, FEATURE_RCS, mState, mReason);
         }
+
+        void dump(IndentingPrintWriter pw) {
+            pw.println("Listener={slotId=" + mSlotId
+                    + ", subId=" + mSubId
+                    + ", state=" + ImsFeature.STATE_LOG_MAP.get(mState)
+                    + ", reason=" + imsStateReasonToString(mReason)
+                    + ", hasConfig=" + mHasConfig
+                    + ", isReady=" + (mExternalState == null ? false : mExternalState.isReady())
+                    + ", hasFeatures=" + (mExternalState == null ? false
+                            : mExternalState.hasActiveFeatures())
+                    + "}");
+        }
     }
 
     /**
@@ -564,12 +598,16 @@ public class ImsStateCallbackController {
         private final int mRequiredFeature;
         private final IImsStateCallback mCallback;
         private final IBinder mBinder;
+        private final String mCallingPackage;
+        private int mLastReason = NOT_INITIALIZED;
 
-        CallbackWrapper(int subId, int feature, IImsStateCallback callback) {
+        CallbackWrapper(int subId, int feature, IImsStateCallback callback,
+                String callingPackage) {
             mSubId = subId;
             mRequiredFeature = feature;
             mCallback = callback;
             mBinder = callback.asBinder();
+            mCallingPackage = callingPackage;
         }
 
         /**
@@ -579,10 +617,12 @@ public class ImsStateCallbackController {
          * This instance shall be removed from the list.
          */
         boolean notifyState(int subId, int feature, int state, int reason) {
-            logv("CallbackWrapper notifyState subId=" + subId
-                    + ", feature=" + ImsFeature.FEATURE_LOG_MAP.get(feature)
-                    + ", state=" + ImsFeature.STATE_LOG_MAP.get(state)
-                    + ", reason=" + imsStateReasonToString(reason));
+            if (VDBG) {
+                logv("CallbackWrapper notifyState subId=" + subId
+                        + ", feature=" + ImsFeature.FEATURE_LOG_MAP.get(feature)
+                        + ", state=" + ImsFeature.STATE_LOG_MAP.get(state)
+                        + ", reason=" + imsStateReasonToString(reason));
+            }
 
             try {
                 if (state == STATE_READY) {
@@ -590,6 +630,7 @@ public class ImsStateCallbackController {
                 } else {
                     mCallback.onUnavailable(reason);
                 }
+                mLastReason = reason;
             } catch (Exception e) {
                 loge("CallbackWrapper notifyState e=" + e);
                 return false;
@@ -599,13 +640,21 @@ public class ImsStateCallbackController {
         }
 
         void notifyInactive() {
-            logv("CallbackWrapper notifyInactive subId=" + mSubId);
+            if (VDBG) logv("CallbackWrapper notifyInactive subId=" + mSubId);
 
             try {
                 mCallback.onUnavailable(REASON_SUBSCRIPTION_INACTIVE);
             } catch (Exception e) {
                 // ignored
             }
+        }
+
+        void dump(IndentingPrintWriter pw) {
+            pw.println("CallbackWrapper={subId=" + mSubId
+                    + ", feature=" + ImsFeature.FEATURE_LOG_MAP.get(mRequiredFeature)
+                    + ", reason=" + imsStateReasonToString(mLastReason)
+                    + ", pkg=" + mCallingPackage
+                    + "}");
         }
     }
 
@@ -680,7 +729,7 @@ public class ImsStateCallbackController {
     @VisibleForTesting
     public void updateFeatureControllerSize(int newNumSlots) {
         if (mNumSlots != newNumSlots) {
-            Log.d(TAG, "updateFeatures: oldSlots=" + mNumSlots
+            logd("updateFeatures: oldSlots=" + mNumSlots
                     + ", newNumSlots=" + newNumSlots);
             if (mNumSlots < newNumSlots) {
                 for (int i = mNumSlots; i < newNumSlots; i++) {
@@ -712,8 +761,6 @@ public class ImsStateCallbackController {
      */
     @VisibleForTesting
     public void onSubChanged() {
-        logv("onSubChanged size=" + mWrappers.size());
-
         for (int i = 0; i < mMmTelFeatureListeners.size(); i++) {
             MmTelFeatureListener l = mMmTelFeatureListeners.valueAt(i);
             l.setSubId(getSubId(i));
@@ -729,7 +776,7 @@ public class ImsStateCallbackController {
         ArrayList<IBinder> inactiveCallbacks = new ArrayList<>();
         final int[] activeSubs = mSubscriptionManager.getActiveSubscriptionIdList();
 
-        logv("onSubChanged activeSubs=" + Arrays.toString(activeSubs));
+        if (VDBG) logv("onSubChanged activeSubs=" + Arrays.toString(activeSubs));
 
         // Remove callbacks for inactive subscriptions
         for (IBinder binder : mWrappers.keySet()) {
@@ -748,10 +795,12 @@ public class ImsStateCallbackController {
     }
 
     private void onFeatureStateChange(int subId, int feature, int state, int reason) {
-        logv("onFeatureStateChange subId=" + subId
-                + ", feature=" + ImsFeature.FEATURE_LOG_MAP.get(feature)
-                + ", state=" + ImsFeature.STATE_LOG_MAP.get(state)
-                + ", reason=" + imsStateReasonToString(reason));
+        if (VDBG) {
+            logv("onFeatureStateChange subId=" + subId
+                    + ", feature=" + ImsFeature.FEATURE_LOG_MAP.get(feature)
+                    + ", state=" + ImsFeature.STATE_LOG_MAP.get(state)
+                    + ", reason=" + imsStateReasonToString(reason));
+        }
 
         ArrayList<IBinder> inactiveCallbacks = new ArrayList<>();
         mWrappers.values().forEach(wrapper -> {
@@ -768,9 +817,11 @@ public class ImsStateCallbackController {
     private void onRegisterCallback(CallbackWrapper wrapper) {
         if (wrapper == null) return;
 
-        logv("onRegisterCallback before size=" + mWrappers.size());
-        logv("onRegisterCallback subId=" + wrapper.mSubId
-                + ", feature=" + wrapper.mRequiredFeature);
+        if (VDBG) logv("onRegisterCallback before size=" + mWrappers.size());
+        if (VDBG) {
+            logv("onRegisterCallback subId=" + wrapper.mSubId
+                    + ", feature=" + wrapper.mRequiredFeature);
+        }
 
         // Not sure the following case can happen or not:
         // step1) Subscription changed
@@ -801,7 +852,7 @@ public class ImsStateCallbackController {
             }
         }
 
-        logv("onRegisterCallback after size=" + mWrappers.size());
+        if (VDBG) logv("onRegisterCallback after size=" + mWrappers.size());
     }
 
     private void onUnregisterCallback(IImsStateCallback cb) {
@@ -816,7 +867,7 @@ public class ImsStateCallbackController {
             return;
         }
 
-        logd("onCarrierConfigChanged slotId=" + slotId);
+        logv("onCarrierConfigChanged slotId=" + slotId);
 
         boolean hasConfig = verifyImsMmTelConfigured(slotId);
         if (slotId < mMmTelFeatureListeners.size()) {
@@ -871,9 +922,11 @@ public class ImsStateCallbackController {
             // Only when there is no feature, we can assume the state.
         }
 
-        logv("notifyExternalRcsStateChanged slotId=" + slotId
-                + ", ready=" + ready
-                + ", hasActiveFeatures=" + hasActiveFeatures);
+        if (VDBG) {
+            logv("notifyExternalRcsStateChanged slotId=" + slotId
+                    + ", ready=" + ready
+                    + ", hasActiveFeatures=" + hasActiveFeatures);
+        }
 
         ExternalRcsFeatureState fs = new ExternalRcsFeatureState(slotId, state, reason);
         mHandler.sendMessage(mHandler.obtainMessage(EVENT_EXTERNAL_RCS_STATE_CHANGED, fs));
@@ -884,7 +937,7 @@ public class ImsStateCallbackController {
      */
     @VisibleForTesting
     public void notifyCarrierConfigChanged(int slotId) {
-        logv("notifyCarrierConfigChanged slotId=" + slotId);
+        if (VDBG) logv("notifyCarrierConfigChanged slotId=" + slotId);
         mHandler.sendMessage(mHandler.obtainMessage(EVENT_CARRIER_CONFIG_CHANGED, slotId, 0));
     }
     /**
@@ -892,10 +945,14 @@ public class ImsStateCallbackController {
      *
      * @param feature for which state is changed, ImsFeature.FEATURE_*
      */
-    public void registerImsStateCallback(int subId, int feature, IImsStateCallback cb) {
-        logv("registerImsStateCallback subId=" + subId + ", feature=" + feature);
+    public void registerImsStateCallback(int subId, int feature, IImsStateCallback cb,
+            String callingPackage) {
+        if (VDBG) {
+            logv("registerImsStateCallback subId=" + subId
+                    + ", feature=" + feature + ", pkg=" + callingPackage);
+        }
 
-        CallbackWrapper wrapper = new CallbackWrapper(subId, feature, cb);
+        CallbackWrapper wrapper = new CallbackWrapper(subId, feature, cb, callingPackage);
         mHandler.sendMessage(mHandler.obtainMessage(EVENT_REGISTER_CALLBACK, wrapper));
     }
 
@@ -903,7 +960,7 @@ public class ImsStateCallbackController {
      * Unegister previously registered callback
      */
     public void unregisterImsStateCallback(IImsStateCallback cb) {
-        logv("unregisterImsStateCallback");
+        if (VDBG) logv("unregisterImsStateCallback");
 
         mHandler.sendMessage(mHandler.obtainMessage(EVENT_UNREGISTER_CALLBACK, cb));
     }
@@ -912,7 +969,10 @@ public class ImsStateCallbackController {
             ArrayList<IBinder> inactiveCallbacks, String message) {
         if (inactiveCallbacks == null || inactiveCallbacks.size() == 0) return;
 
-        logv("removeInactiveCallbacks size=" + inactiveCallbacks.size() + " from " + message);
+        if (VDBG) {
+            logv("removeInactiveCallbacks size="
+                    + inactiveCallbacks.size() + " from " + message);
+        }
 
         for (IBinder binder : inactiveCallbacks) {
             CallbackWrapper wrapper = mWrappers.get(binder);
@@ -958,7 +1018,7 @@ public class ImsStateCallbackController {
         } else {
             ret = mImsResolver.isImsServiceConfiguredForFeature(slotId, FEATURE_MMTEL);
         }
-        logv("verifyImsMmTelConfigured slotId=" + slotId + ", ret=" + ret);
+        if (VDBG) logv("verifyImsMmTelConfigured slotId=" + slotId + ", ret=" + ret);
         return ret;
     }
 
@@ -969,7 +1029,7 @@ public class ImsStateCallbackController {
         } else {
             ret = mImsResolver.isImsServiceConfiguredForFeature(slotId, FEATURE_RCS);
         }
-        logv("verifyImsRcsConfigured slotId=" + slotId + ", ret=" + ret);
+        if (VDBG) logv("verifyImsRcsConfigured slotId=" + slotId + ", ret=" + ret);
         return ret;
     }
 
@@ -991,6 +1051,8 @@ public class ImsStateCallbackController {
 
     private static String imsStateReasonToString(int reason) {
         switch(reason) {
+            case AVAILABLE:
+                return "READY";
             case REASON_UNKNOWN_TEMPORARY_ERROR:
                 return "UNKNOWN_TEMPORARY_ERROR";
             case REASON_UNKNOWN_PERMANENT_ERROR:
@@ -1028,7 +1090,7 @@ public class ImsStateCallbackController {
     };
 
     private void release() {
-        logv("release");
+        if (VDBG) logv("release");
 
         mTelephonyRegistryManager.removeOnSubscriptionsChangedListener(mSubChangedListener);
         mApp.unregisterReceiver(mReceiver);
@@ -1049,7 +1111,7 @@ public class ImsStateCallbackController {
      */
     @VisibleForTesting
     public void destroy() {
-        logv("destroy it");
+        if (VDBG) logv("destroy it");
 
         release();
         mHandler.getLooper().quit();
@@ -1072,17 +1134,51 @@ public class ImsStateCallbackController {
         return mWrappers.containsKey(cb.asBinder());
     }
 
-    private static void logv(String msg) {
-        if (VDBG) {
-            Rlog.d(TAG, msg);
+    /**
+     * Dump this instance into a readable format for dumpsys usage.
+     */
+    public void dump(IndentingPrintWriter pw) {
+        pw.increaseIndent();
+        synchronized (mDumpLock) {
+            pw.println("CallbackWrappers:");
+            pw.increaseIndent();
+            mWrappers.values().forEach(wrapper -> wrapper.dump(pw));
+            pw.decreaseIndent();
+            pw.println("MmTelFeatureListeners:");
+            pw.increaseIndent();
+            for (int i = 0; i < mNumSlots; i++) {
+                MmTelFeatureListener l = mMmTelFeatureListeners.get(i);
+                if (l == null) continue;
+                l.dump(pw);
+            }
+            pw.decreaseIndent();
+            pw.println("RcsFeatureListeners:");
+            pw.increaseIndent();
+            for (int i = 0; i < mNumSlots; i++) {
+                RcsFeatureListener l = mRcsFeatureListeners.get(i);
+                if (l == null) continue;
+                l.dump(pw);
+            }
+            pw.decreaseIndent();
+            pw.println("Most recent logs:");
+            pw.increaseIndent();
+            sLocalLog.dump(pw);
+            pw.decreaseIndent();
         }
+        pw.decreaseIndent();
+    }
+
+    private static void logv(String msg) {
+        Rlog.d(TAG, msg);
     }
 
     private static void logd(String msg) {
         Rlog.d(TAG, msg);
+        sLocalLog.log(msg);
     }
 
     private static void loge(String msg) {
         Rlog.e(TAG, msg);
+        sLocalLog.log(msg);
     }
 }
