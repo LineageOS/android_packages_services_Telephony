@@ -1038,6 +1038,12 @@ public class PhoneGlobals extends ContextWrapper {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        pw.println("ImsStateCallbackController:");
+        try {
+            if (mImsStateCallbackController != null) mImsStateCallbackController.dump(pw);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         pw.decreaseIndent();
         pw.println("------- End PhoneGlobals -------");
     }
