@@ -189,6 +189,7 @@ import com.android.internal.telephony.uicc.SIMRecords;
 import com.android.internal.telephony.uicc.UiccCard;
 import com.android.internal.telephony.uicc.UiccCardApplication;
 import com.android.internal.telephony.uicc.UiccController;
+import com.android.internal.telephony.uicc.UiccPort;
 import com.android.internal.telephony.uicc.UiccProfile;
 import com.android.internal.telephony.uicc.UiccSlot;
 import com.android.internal.telephony.util.LocaleUtils;
@@ -503,7 +504,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             MainThreadRequest request;
             Message onCompleted;
             AsyncResult ar;
-            UiccCard uiccCard;
+            UiccPort uiccPort;
             IccAPDUArgument iccArgument;
             final Phone defaultPhone = getDefaultPhone();
 
@@ -553,15 +554,15 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 case CMD_TRANSMIT_APDU_LOGICAL_CHANNEL:
                     request = (MainThreadRequest) msg.obj;
                     iccArgument = (IccAPDUArgument) request.argument;
-                    uiccCard = getUiccCardFromRequest(request);
-                    if (uiccCard == null) {
+                    uiccPort = getUiccPortFromRequest(request);
+                    if (uiccPort == null) {
                         loge("iccTransmitApduLogicalChannel: No UICC");
                         request.result = new IccIoResult(0x6F, 0, (byte[])null);
                         notifyRequester(request);
                     } else {
                         onCompleted = obtainMessage(EVENT_TRANSMIT_APDU_LOGICAL_CHANNEL_DONE,
                             request);
-                        uiccCard.iccTransmitApduLogicalChannel(
+                        uiccPort.iccTransmitApduLogicalChannel(
                             iccArgument.channel, iccArgument.cla, iccArgument.command,
                             iccArgument.p1, iccArgument.p2, iccArgument.p3, iccArgument.data,
                             onCompleted);
@@ -590,15 +591,15 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 case CMD_TRANSMIT_APDU_BASIC_CHANNEL:
                     request = (MainThreadRequest) msg.obj;
                     iccArgument = (IccAPDUArgument) request.argument;
-                    uiccCard = getUiccCardFromRequest(request);
-                    if (uiccCard == null) {
+                    uiccPort = getUiccPortFromRequest(request);
+                    if (uiccPort == null) {
                         loge("iccTransmitApduBasicChannel: No UICC");
                         request.result = new IccIoResult(0x6F, 0, (byte[])null);
                         notifyRequester(request);
                     } else {
                         onCompleted = obtainMessage(EVENT_TRANSMIT_APDU_BASIC_CHANNEL_DONE,
                             request);
-                        uiccCard.iccTransmitApduBasicChannel(
+                        uiccPort.iccTransmitApduBasicChannel(
                             iccArgument.cla, iccArgument.command, iccArgument.p1, iccArgument.p2,
                             iccArgument.p3, iccArgument.data, onCompleted);
                     }
@@ -626,15 +627,15 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 case CMD_EXCHANGE_SIM_IO:
                     request = (MainThreadRequest) msg.obj;
                     iccArgument = (IccAPDUArgument) request.argument;
-                    uiccCard = getUiccCardFromRequest(request);
-                    if (uiccCard == null) {
+                    uiccPort = getUiccPortFromRequest(request);
+                    if (uiccPort == null) {
                         loge("iccExchangeSimIO: No UICC");
                         request.result = new IccIoResult(0x6F, 0, (byte[])null);
                         notifyRequester(request);
                     } else {
                         onCompleted = obtainMessage(EVENT_EXCHANGE_SIM_IO_DONE,
                                 request);
-                        uiccCard.iccExchangeSimIO(iccArgument.cla, /* fileID */
+                        uiccPort.iccExchangeSimIO(iccArgument.cla, /* fileID */
                                 iccArgument.command, iccArgument.p1, iccArgument.p2, iccArgument.p3,
                                 iccArgument.data, onCompleted);
                     }
@@ -653,14 +654,14 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
                 case CMD_SEND_ENVELOPE:
                     request = (MainThreadRequest) msg.obj;
-                    uiccCard = getUiccCardFromRequest(request);
-                    if (uiccCard == null) {
+                    uiccPort = getUiccPortFromRequest(request);
+                    if (uiccPort == null) {
                         loge("sendEnvelopeWithStatus: No UICC");
                         request.result = new IccIoResult(0x6F, 0, (byte[])null);
                         notifyRequester(request);
                     } else {
                         onCompleted = obtainMessage(EVENT_SEND_ENVELOPE_DONE, request);
-                        uiccCard.sendEnvelopeWithStatus((String)request.argument, onCompleted);
+                        uiccPort.sendEnvelopeWithStatus((String)request.argument, onCompleted);
                     }
                     break;
 
@@ -685,16 +686,16 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
                 case CMD_OPEN_CHANNEL:
                     request = (MainThreadRequest) msg.obj;
-                    uiccCard = getUiccCardFromRequest(request);
+                    uiccPort = getUiccPortFromRequest(request);
                     Pair<String, Integer> openChannelArgs = (Pair<String, Integer>) request.argument;
-                    if (uiccCard == null) {
+                    if (uiccPort == null) {
                         loge("iccOpenLogicalChannel: No UICC");
                         request.result = new IccOpenLogicalChannelResponse(-1,
                             IccOpenLogicalChannelResponse.STATUS_MISSING_RESOURCE, null);
                         notifyRequester(request);
                     } else {
                         onCompleted = obtainMessage(EVENT_OPEN_CHANNEL_DONE, request);
-                        uiccCard.iccOpenLogicalChannel(openChannelArgs.first,
+                        uiccPort.iccOpenLogicalChannel(openChannelArgs.first,
                                 openChannelArgs.second, onCompleted);
                     }
                     break;
@@ -742,14 +743,14 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
                 case CMD_CLOSE_CHANNEL:
                     request = (MainThreadRequest) msg.obj;
-                    uiccCard = getUiccCardFromRequest(request);
-                    if (uiccCard == null) {
+                    uiccPort = getUiccPortFromRequest(request);
+                    if (uiccPort == null) {
                         loge("iccCloseLogicalChannel: No UICC");
                         request.result = false;
                         notifyRequester(request);
                     } else {
                         onCompleted = obtainMessage(EVENT_CLOSE_CHANNEL_DONE, request);
-                        uiccCard.iccCloseLogicalChannel((Integer) request.argument, onCompleted);
+                        uiccPort.iccCloseLogicalChannel((Integer) request.argument, onCompleted);
                     }
                     break;
 
@@ -1463,16 +1464,16 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
                 case CMD_GET_FORBIDDEN_PLMNS:
                     request = (MainThreadRequest) msg.obj;
-                    uiccCard = getUiccCardFromRequest(request);
-                    if (uiccCard == null) {
-                        loge("getForbiddenPlmns() UiccCard is null");
+                    uiccPort = getUiccPortFromRequest(request);
+                    if (uiccPort == null) {
+                        loge("getForbiddenPlmns() UiccPort is null");
                         request.result = new IllegalArgumentException(
-                                "getForbiddenPlmns() UiccCard is null");
+                                "getForbiddenPlmns() UiccPort is null");
                         notifyRequester(request);
                         break;
                     }
                     Integer appType = (Integer) request.argument;
-                    UiccCardApplication uiccApp = uiccCard.getApplicationByType(appType);
+                    UiccCardApplication uiccApp = uiccPort.getApplicationByType(appType);
                     if (uiccApp == null) {
                         loge("getForbiddenPlmns() no app with specified type -- "
                                 + appType);
@@ -1768,9 +1769,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     break;
                 case CMD_SET_FORBIDDEN_PLMNS:
                     request = (MainThreadRequest) msg.obj;
-                    uiccCard = getUiccCardFromRequest(request);
-                    if (uiccCard == null) {
-                        loge("setForbiddenPlmns: UiccCard is null");
+                    uiccPort = getUiccPortFromRequest(request);
+                    if (uiccPort == null) {
+                        loge("setForbiddenPlmns: UiccPort is null");
                         request.result = -1;
                         notifyRequester(request);
                         break;
@@ -1779,7 +1780,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                             (Pair<Integer, List<String>>) request.argument;
                     appType = setFplmnsArgs.first;
                     List<String> fplmns = setFplmnsArgs.second;
-                    uiccApp = uiccCard.getApplicationByType(appType);
+                    uiccApp = uiccPort.getApplicationByType(appType);
                     if (uiccApp == null) {
                         loge("setForbiddenPlmns: no app with specified type -- " + appType);
                         request.result = -1;
@@ -2297,10 +2298,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 ? getDefaultPhone() : getPhone(subId);
     }
 
-    private UiccCard getUiccCardFromRequest(MainThreadRequest request) {
+    private UiccPort getUiccPortFromRequest(MainThreadRequest request) {
         Phone phone = getPhoneFromRequest(request);
         return phone == null ? null :
-                UiccController.getInstance().getUiccCard(phone.getPhoneId());
+                UiccController.getInstance().getUiccPort(phone.getPhoneId());
     }
 
     // returns phone associated with the subId.
@@ -6785,14 +6786,14 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             loge("getCarrierPrivilegeStatus: Invalid subId");
             return TelephonyManager.CARRIER_PRIVILEGE_STATUS_NO_ACCESS;
         }
-        UiccCard card = UiccController.getInstance().getUiccCard(phone.getPhoneId());
-        if (card == null) {
+        UiccPort port = UiccController.getInstance().getUiccPort(phone.getPhoneId());
+        if (port == null) {
             loge("getCarrierPrivilegeStatus: No UICC");
             return TelephonyManager.CARRIER_PRIVILEGE_STATUS_RULES_NOT_LOADED;
         }
 
         return getCarrierPrivilegeStatusFromCarrierConfigRules(
-            card.getCarrierPrivilegeStatusForCurrentTransaction(
+            port.getCarrierPrivilegeStatusForCurrentTransaction(
                 phone.getContext().getPackageManager()), Binder.getCallingUid(), phone);
     }
 
@@ -6823,13 +6824,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
 
         int phoneId = SubscriptionManager.getPhoneId(subId);
-        UiccCard card = UiccController.getInstance().getUiccCard(phoneId);
-        if (card == null) {
+        UiccPort port = UiccController.getInstance().getUiccPort(phoneId);
+        if (port == null) {
             loge("checkCarrierPrivilegesForPackage: No UICC on subId " + subId);
             return TelephonyManager.CARRIER_PRIVILEGE_STATUS_RULES_NOT_LOADED;
         }
         return getCarrierPrivilegeStatusFromCarrierConfigRules(
-            card.getCarrierPrivilegeStatus(mApp.getPackageManager(), pkgName),
+            port.getCarrierPrivilegeStatus(mApp.getPackageManager(), pkgName),
             getPhone(phoneId), pkgName);
     }
 
@@ -6840,14 +6841,14 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             return TelephonyManager.CARRIER_PRIVILEGE_STATUS_NO_ACCESS;
         int result = TelephonyManager.CARRIER_PRIVILEGE_STATUS_RULES_NOT_LOADED;
         for (int i = 0; i < TelephonyManager.getDefault().getPhoneCount(); i++) {
-            UiccCard card = UiccController.getInstance().getUiccCard(i);
-            if (card == null) {
+            UiccPort port = UiccController.getInstance().getUiccPort(i);
+            if (port == null) {
               // No UICC in that slot.
               continue;
             }
 
             result = getCarrierPrivilegeStatusFromCarrierConfigRules(
-                card.getCarrierPrivilegeStatus(mApp.getPackageManager(), pkgName),
+                port.getCarrierPrivilegeStatus(mApp.getPackageManager(), pkgName),
                 getPhone(i), pkgName);
             if (result == TelephonyManager.CARRIER_PRIVILEGE_STATUS_HAS_ACCESS) {
                 break;
@@ -6864,12 +6865,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             loge("phoneId " + phoneId + " is not valid.");
             return null;
         }
-        UiccCard card = UiccController.getInstance().getUiccCard(phoneId);
-        if (card == null) {
+        UiccPort port = UiccController.getInstance().getUiccPort(phoneId);
+        if (port == null) {
             loge("getCarrierPackageNamesForIntentAndPhone: No UICC");
             return null ;
         }
-        return card.getCarrierPackageNamesForIntent(mApp.getPackageManager(), intent);
+        return port.getCarrierPackageNamesForIntent(mApp.getPackageManager(), intent);
     }
 
     @Override
@@ -6878,10 +6879,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         PackageManager pm = mApp.getPackageManager();
         List<String> privilegedPackages = new ArrayList<>();
         List<PackageInfo> packages = null;
-        UiccCard card = UiccController.getInstance().getUiccCard(phoneId);
+        UiccPort port = UiccController.getInstance().getUiccPort(phoneId);
         // has UICC in that slot.
-        if (card != null) {
-            if (card.hasCarrierPrivilegeRules()) {
+        if (port != null) {
+            if (port.hasCarrierPrivilegeRules()) {
                 if (packages == null) {
                     // Only check packages in user 0 for now
                     packages = pm.getInstalledPackagesAsUser(
@@ -6894,7 +6895,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     PackageInfo pkgInfo = packages.get(p);
                     if (pkgInfo != null && pkgInfo.packageName != null
                             && getCarrierPrivilegeStatusFromCarrierConfigRules(
-                                    card.getCarrierPrivilegeStatus(pkgInfo),
+                                    port.getCarrierPrivilegeStatus(pkgInfo),
                                     getPhone(phoneId), pkgInfo.packageName)
                             == TelephonyManager.CARRIER_PRIVILEGE_STATUS_HAS_ACCESS) {
                         privilegedPackages.add(pkgInfo.packageName);
@@ -6924,11 +6925,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     private String getIccId(int subId) {
         final Phone phone = getPhone(subId);
-        UiccCard card = phone == null ? null : phone.getUiccCard();
-        if (card == null) {
+        UiccPort port = phone == null ? null : phone.getUiccPort();
+        if (port == null) {
             return null;
         }
-        String iccId = card.getIccId();
+        String iccId = port.getIccId();
         if (TextUtils.isEmpty(iccId)) {
             return null;
         }
@@ -8106,7 +8107,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             }
             String aid = null;
             try {
-                aid = UiccController.getInstance().getUiccCard(phone.getPhoneId())
+                aid = UiccController.getInstance().getUiccPort(phone.getPhoneId())
                         .getApplicationByType(appType).getAid();
             } catch (Exception e) {
                 Log.e(LOG_TAG, "Not getting aid. Exception ex=" + e);
@@ -8693,6 +8694,22 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         return isAllowed;
     }
 
+    private boolean haveCarrierPrivilegeAccess(UiccCard card, String callingPackage) {
+        // TODO once MEP API refactoring CL is merged, loop port list from UiccCardInfo,
+        //  and if find the matching UiccPort by UiccController.getUiccPortForSlot(slot, portIdx)
+        //  Update each UiccPort object based on privilege access
+        UiccPort[] uiccPorts = card.getUiccPortList();
+        for (UiccPort port : uiccPorts) {
+            UiccProfile profile = port.getUiccProfile();
+            if (profile == null ||
+                    profile.getCarrierPrivilegeStatus(mApp.getPackageManager(), callingPackage)
+                    != TelephonyManager.CARRIER_PRIVILEGE_STATUS_HAS_ACCESS) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     @Override
     public List<UiccCardInfo> getUiccCardsInfo(String callingPackage) {
         // Verify that tha callingPackage belongs to the calling UID
@@ -8726,14 +8743,15 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 // For an inactive eUICC, the UiccCard will be null even though the UiccCardInfo
                 // is available
                 UiccCard card = uiccController.getUiccCardForSlot(cardInfo.getSlotIndex());
-                if (card == null || card.getUiccProfile() == null) {
-                    // assume no access if the card or profile is unavailable
+                // TODO remove card.getUiccPortList().length once MEP API refactoring CL is merged
+                //  Get UiccPortInfo from CardInfo and process further based on each UiccPort
+                if (card == null || card.getUiccPortList().length == 0) {
+                    // assume no access if the card or ports are unavailable
                     filteredInfos.add(cardInfo.getUnprivileged());
                     continue;
                 }
-                UiccProfile profile = card.getUiccProfile();
-                if (profile.getCarrierPrivilegeStatus(mApp.getPackageManager(), callingPackage)
-                        == TelephonyManager.CARRIER_PRIVILEGE_STATUS_HAS_ACCESS) {
+
+                if (haveCarrierPrivilegeAccess(card, callingPackage)) {
                     filteredInfos.add(cardInfo);
                 } else {
                     filteredInfos.add(cardInfo.getUnprivileged());
@@ -8854,11 +8872,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             if (phone == null) {
                 return;
             }
-            UiccCard uiccCard = phone.getUiccCard();
-            if (uiccCard == null) {
+            UiccPort uiccPort = phone.getUiccPort();
+            if (uiccPort == null) {
                 return;
             }
-            UiccProfile uiccProfile = uiccCard.getUiccProfile();
+            UiccProfile uiccProfile = uiccPort.getUiccProfile();
             if (uiccProfile == null) {
                 return;
             }
@@ -9365,11 +9383,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
         final long identity = Binder.clearCallingIdentity();
         try {
-            UiccCard uiccCard = phone.getUiccCard();
-            if (uiccCard == null) {
+            UiccPort uiccPort = phone.getUiccPort();
+            if (uiccPort == null) {
                 return false;
             }
-            UiccProfile uiccProfile = uiccCard.getUiccProfile();
+            UiccProfile uiccProfile = uiccPort.getUiccProfile();
             if (uiccProfile == null) {
                 return false;
             }

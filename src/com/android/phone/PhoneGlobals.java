@@ -74,6 +74,7 @@ import com.android.internal.telephony.ims.ImsResolver;
 import com.android.internal.telephony.imsphone.ImsPhone;
 import com.android.internal.telephony.imsphone.ImsPhoneCallTracker;
 import com.android.internal.telephony.uicc.UiccCard;
+import com.android.internal.telephony.uicc.UiccPort;
 import com.android.internal.telephony.uicc.UiccProfile;
 import com.android.internal.util.IndentingPrintWriter;
 import com.android.phone.settings.SettingsConstants;
@@ -241,13 +242,13 @@ public class PhoneGlobals extends ContextWrapper {
 
         // if passed in subType is unknown, retrieve it here.
         if (subType == -1) {
-            final UiccCard uiccCard = phone.getUiccCard();
-            if (uiccCard == null) {
+            final UiccPort uiccPort = phone.getUiccPort();
+            if (uiccPort == null) {
                 Log.e(LOG_TAG,
-                        "handleSimLock: uiccCard for phone " + phone.getPhoneId() + " is null");
+                        "handleSimLock: uiccPort for phone " + phone.getPhoneId() + " is null");
                 return;
             }
-            final UiccProfile uiccProfile = uiccCard.getUiccProfile();
+            final UiccProfile uiccProfile = uiccPort.getUiccProfile();
             if (uiccProfile == null) {
                 Log.e(LOG_TAG,
                         "handleSimLock: uiccProfile for phone " + phone.getPhoneId() + " is null");
