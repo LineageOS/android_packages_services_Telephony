@@ -75,6 +75,10 @@ public class RcsProvisioningMonitor {
     private static final int EVENT_RESET = 8;
     private static final int EVENT_FEATURE_ENABLED_OVERRIDE = 9;
 
+    // indicate that the carrier single registration capable is initial value as
+    // carrier config is not ready yet.
+    private static final int MASK_CAP_CARRIER_INIT = 0xF000;
+
     private final PhoneGlobals mPhone;
     private final Handler mHandler;
     // Cache the RCS provsioning info and related sub id
@@ -220,7 +224,19 @@ public class RcsProvisioningMonitor {
         }
 
         void setSingleRegistrationCapability(int singleRegistrationCapability) {
-            mSingleRegistrationCapability = singleRegistrationCapability;
+            if (mSingleRegistrationCapability != singleRegistrationCapability) {
+                mSingleRegistrationCapability = singleRegistrationCapability;
+                notifyDma();
+            }
+        }
+
+        void notifyDma() {
+            // notify only if capable value has been updated when carrier config ready.
+            if ((mSingleRegistrationCapability & MASK_CAP_CARRIER_INIT) != MASK_CAP_CARRIER_INIT) {
+                logi("notify default messaging app for sub:" + mSubId + " with capability:"
+                        + mSingleRegistrationCapability);
+                notifyDmaForSub(mSubId, mSingleRegistrationCapability);
+            }
         }
 
         int getSingleRegistrationCapability() {
@@ -675,7 +691,7 @@ public class RcsProvisioningMonitor {
             logv("new default messaging application " + mDmaPackageName);
 
             mRcsProvisioningInfos.forEach((k, v) -> {
-                notifyDmaForSub(k, v.getSingleRegistrationCapability());
+                v.notifyDma();
 
                 byte[] cachedConfig = v.getConfig();
                 //clear old callbacks
@@ -715,17 +731,20 @@ public class RcsProvisioningMonitor {
         return b.getBoolean(CarrierConfigManager.KEY_USE_ACS_FOR_RCS_BOOL);
     }
 
-    private boolean isSingleRegistrationRequiredByCarrier(int subId) {
+    private int getSingleRegistrationRequiredByCarrier(int subId) {
         Boolean enabledByOverride = mCarrierSingleRegistrationEnabledOverride.get(subId);
         if (enabledByOverride != null) {
-            return enabledByOverride;
+            return enabledByOverride ? ProvisioningManager.STATUS_CAPABLE
+                    : ProvisioningManager.STATUS_CARRIER_NOT_CAPABLE;
         }
 
         PersistableBundle b = mCarrierConfigManager.getConfigForSubId(subId);
-        if (b == null) {
-            return false;
+        if (!CarrierConfigManager.isConfigForIdentifiedCarrier(b)) {
+            return MASK_CAP_CARRIER_INIT;
         }
-        return b.getBoolean(CarrierConfigManager.Ims.KEY_IMS_SINGLE_REGISTRATION_REQUIRED_BOOL);
+        return b.getBoolean(CarrierConfigManager.Ims.KEY_IMS_SINGLE_REGISTRATION_REQUIRED_BOOL)
+                ? ProvisioningManager.STATUS_CAPABLE
+                : ProvisioningManager.STATUS_CARRIER_NOT_CAPABLE;
     }
 
     private int getSingleRegistrationCapableValue(int subId) {
@@ -735,10 +754,9 @@ public class RcsProvisioningMonitor {
                 : mPhone.getPackageManager().hasSystemFeature(
                         PackageManager.FEATURE_TELEPHONY_IMS_SINGLE_REGISTRATION);
 
-        int value = (isSingleRegistrationEnabledOnDevice ? 0
-                : ProvisioningManager.STATUS_DEVICE_NOT_CAPABLE) | (
-                isSingleRegistrationRequiredByCarrier(subId) ? 0
-                : ProvisioningManager.STATUS_CARRIER_NOT_CAPABLE);
+        int value = (isSingleRegistrationEnabledOnDevice ? ProvisioningManager.STATUS_CAPABLE
+                : ProvisioningManager.STATUS_DEVICE_NOT_CAPABLE)
+                | getSingleRegistrationRequiredByCarrier(subId);
         logv("SingleRegistrationCapableValue : " + value);
         return value;
     }
@@ -746,11 +764,8 @@ public class RcsProvisioningMonitor {
     private void onCarrierConfigChange() {
         logv("onCarrierConfigChange");
         mRcsProvisioningInfos.forEach((subId, info) -> {
-            int value = getSingleRegistrationCapableValue(subId);
-            if (value != info.getSingleRegistrationCapability()) {
-                info.setSingleRegistrationCapability(value);
-                notifyDmaForSub(subId, value);
-            }
+            info.setSingleRegistrationCapability(
+                    getSingleRegistrationCapableValue(subId));
         });
     }
 
@@ -765,9 +780,8 @@ public class RcsProvisioningMonitor {
                 byte[] data = loadConfigForSub(i);
                 int capability = getSingleRegistrationCapableValue(i);
                 logv("new info is created for sub : " + i + ", single registration capability :"
-                        + capability + ", rcs config : " + data);
+                        + capability + ", rcs config : " + Arrays.toString(data));
                 mRcsProvisioningInfos.put(i, new RcsProvisioningInfo(i, capability, data));
-                notifyDmaForSub(i, capability);
             }
         }
 
@@ -783,6 +797,10 @@ public class RcsProvisioningMonitor {
         logv("onConfigReceived, subId:" + subId + ", config:"
                 + config + ", isCompressed:" + isCompressed);
         RcsProvisioningInfo info = mRcsProvisioningInfos.get(subId);
+        if (info == null) {
+            logd("sub[" + subId + "] has been removed");
+            return;
+        }
         info.setConfig(isCompressed ? RcsConfig.decompressGzip(config) : config);
         updateConfigForSub(subId, config, isCompressed);
     }
@@ -850,6 +868,10 @@ public class RcsProvisioningMonitor {
         if (DBG) {
             Rlog.d(TAG, msg);
         }
+    }
+
+    private static void logi(String msg) {
+        Rlog.i(TAG, msg);
     }
 
     private static void logd(String msg) {
