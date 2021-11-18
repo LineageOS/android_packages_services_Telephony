@@ -338,24 +338,24 @@
     <string name="enable_disable_maintenance" msgid="3824817751053035017">"ਪ੍ਰਬੰਧਨ"</string>
     <string name="maintenance_enable" msgid="2646784483222342290">"ਪ੍ਰਬੰਧਨ ਸਮਰਥਿਤ"</string>
     <string name="maintenance_disable" msgid="2121032601497725602">"ਪ੍ਰਬੰਧਨ ਅਸਮਰਥਿਤ"</string>
-    <string name="general_news_settings" msgid="2670499575962080411">"ਸਧਾਰਨ ਖ਼ਬਰਾਂ"</string>
-    <string name="bf_news_settings" msgid="8571709425370794221">"ਵਪਾਰਕ ਅਤੇ ਵਿੱਤੀ ਖ਼ਬਰਾਂ"</string>
-    <string name="sports_news_settings" msgid="2684364556989168438">"ਖੇਡ ਦੀਆਂ ਖ਼ਬਰਾਂ"</string>
-    <string name="entertainment_news_settings" msgid="4228527702346305543">"ਮਨੋਰੰਜਕ ਖ਼ਬਰਾਂ"</string>
+    <string name="general_news_settings" msgid="2670499575962080411">"ਸਧਾਰਨ ਖਬਰਾਂ"</string>
+    <string name="bf_news_settings" msgid="8571709425370794221">"ਕਾਰੋਬਾਰੀ ਅਤੇ ਵਿੱਤੀ ਖਬਰਾਂ"</string>
+    <string name="sports_news_settings" msgid="2684364556989168438">"ਖੇਡਾਂ ਨਾਲ ਸੰਬੰਧਿਤ ਖਬਰਾਂ"</string>
+    <string name="entertainment_news_settings" msgid="4228527702346305543">"ਮਨੋਰੰਜਨ ਸੰਬੰਧੀ ਖਬਰਾਂ"</string>
     <string name="enable_disable_local" msgid="7654175079979415572">"ਸਥਾਨਕ"</string>
-    <string name="local_enable" msgid="790606890868710629">"ਸਥਾਨਕ ਖ਼ਬਰਾਂ ਸਮਰਥਿਤ"</string>
-    <string name="local_disable" msgid="7649945293198602877">"ਸਥਾਨਕ ਖ਼ਬਰਾਂ ਅਸਮਰਥਿਤ"</string>
+    <string name="local_enable" msgid="790606890868710629">"ਸਥਾਨਕ ਖਬਰਾਂ ਚਾਲੂ ਕੀਤੀਆਂ ਗਈਆਂ"</string>
+    <string name="local_disable" msgid="7649945293198602877">"ਸਥਾਨਕ ਖਬਰਾਂ ਬੰਦ ਕੀਤੀਆਂ ਗਈਆਂ"</string>
     <string name="enable_disable_regional" msgid="5783403191376564638">"ਖੇਤਰੀ"</string>
-    <string name="regional_enable" msgid="7730109417536296079">"ਖੇਤਰੀ ਖ਼ਬਰਾਂ ਸਮਰਥਿਤ"</string>
-    <string name="regional_disable" msgid="3781951818157772545">"ਖੇਤਰੀ ਖ਼ਬਰਾਂ ਅਸਮਰਥਿਤ"</string>
+    <string name="regional_enable" msgid="7730109417536296079">"ਖੇਤਰੀ ਖਬਰਾਂ ਚਾਲੂ ਕੀਤੀਆਂ ਗਈਆਂ"</string>
+    <string name="regional_disable" msgid="3781951818157772545">"ਖੇਤਰੀ ਖਬਰਾਂ ਬੰਦ ਕੀਤੀਆਂ ਗਈਆਂ"</string>
     <string name="enable_disable_national" msgid="6198481711934897632">"ਰਾਸ਼ਟਰੀ"</string>
-    <string name="national_enable" msgid="5159683504138239304">"ਰਾਸ਼ਟਰੀ ਖ਼ਬਰਾਂ ਸਮਰਥਿਤ"</string>
-    <string name="national_disable" msgid="8484356368757118987">"ਰਾਸ਼ਟਰੀ ਖ਼ਬਰਾਂ ਅਸਮਰਥਿਤ"</string>
+    <string name="national_enable" msgid="5159683504138239304">"ਰਾਸ਼ਟਰੀ ਖਬਰਾਂ ਚਾਲੂ ਕੀਤੀਆਂ ਗਈਆਂ"</string>
+    <string name="national_disable" msgid="8484356368757118987">"ਰਾਸ਼ਟਰੀ ਖਬਰਾਂ ਬੰਦ ਕੀਤੀਆਂ ਗਈਆਂ"</string>
     <string name="enable_disable_international" msgid="4204334217211198792">"ਅੰਤਰਰਾਸ਼ਟਰੀ"</string>
-    <string name="international_enable" msgid="8943466745792690340">"ਅੰਤਰਰਾਸ਼ਟਰੀ ਖ਼ਬਰਾਂ ਸਮਰਥਿਤ"</string>
-    <string name="international_disable" msgid="4803498658100318265">"ਅੰਤਰਰਾਸ਼ਟਰੀ ਖ਼ਬਰਾਂ ਅਸਮਰਥਿਤ"</string>
+    <string name="international_enable" msgid="8943466745792690340">"ਅੰਤਰਰਾਸ਼ਟਰੀ ਖਬਰਾਂ ਚਾਲੂ ਕੀਤੀਆਂ ਗਈਆਂ"</string>
+    <string name="international_disable" msgid="4803498658100318265">"ਅੰਤਰਰਾਸ਼ਟਰੀ ਖਬਰਾਂ ਬੰਦ ਕੀਤੀਆਂ ਗਈਆਂ"</string>
     <string name="list_language_title" msgid="1850167908665485738">"ਭਾਸ਼ਾ"</string>
-    <string name="list_language_summary" msgid="7921756070782277559">"ਖ਼ਬਰਾਂ ਦੀ ਭਾਸ਼ਾ ਚੁਣੋ"</string>
+    <string name="list_language_summary" msgid="7921756070782277559">"ਖਬਰਾਂ ਦੀ ਭਾਸ਼ਾ ਚੁਣੋ"</string>
   <string-array name="list_language_entries">
     <item msgid="2347238508726934281">"ਅੰਗ੍ਰੇਜ਼ੀ"</item>
     <item msgid="5172468397620875174">"ਫਰਾਂਸੀਸੀ"</item>
@@ -405,9 +405,9 @@
     <string name="enable_disable_mhh" msgid="715930476289202466">"ਚਿਕਿਤਸਾ, ਸਿਹਤ ਅਤੇ ਹਸਪਤਾਲ"</string>
     <string name="mhh_enable" msgid="7224396815285147008">"ਚਿਕਿਤਸਾ, ਸਿਹਤ ਅਤੇ ਹਸਪਤਾਲ ਸਮਰਥਿਤ"</string>
     <string name="mhh_disable" msgid="5503643028885686265">"ਚਿਕਿਤਸਾ, ਸਿਹਤ ਅਤੇ ਹਸਪਤਾਲ ਅਸਮਰਥਿਤ"</string>
-    <string name="enable_disable_technology_news" msgid="2794845609698078400">"ਟੈਕਨਾਲੋਜੀ ਖ਼ਬਰਾਂ"</string>
-    <string name="technology_news_enable" msgid="1908991199492598311">"ਟੈਕਨਾਲੋਜੀ ਖ਼ਬਰਾਂ ਸਮਰਥਿਤ"</string>
-    <string name="technology_news_disable" msgid="8388582607149800889">"ਟੈਕਨਾਲੋਜੀ ਖ਼ਬਰਾਂ ਅਸਮਰਥਿਤ"</string>
+    <string name="enable_disable_technology_news" msgid="2794845609698078400">"ਤਕਨਾਲੋਜੀ ਖਬਰਾਂ"</string>
+    <string name="technology_news_enable" msgid="1908991199492598311">"ਤਕਨਾਲੋਜੀ ਖਬਰਾਂ ਚਾਲੂ ਕੀਤੀਆਂ ਗਈਆਂ"</string>
+    <string name="technology_news_disable" msgid="8388582607149800889">"ਤਕਨਾਲੋਜੀ ਖਬਰਾਂ ਬੰਦ ਕੀਤੀਆਂ ਗਈਆਂ"</string>
     <string name="enable_disable_multi_category" msgid="5958248155437940625">"ਮਲਟੀ-ਸ਼੍ਰੇਣੀ"</string>
     <string name="multi_category_enable" msgid="4531915767817483960">"ਮਲਟੀ-ਸ਼੍ਰੇਣੀ ਸਮਰਥਿਤ"</string>
     <string name="multi_category_disable" msgid="6325934413701238104">"ਮਲਟੀ-ਸ਼੍ਰੇਣੀ ਅਸਮਰਥਿਤ"</string>
