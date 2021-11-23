@@ -348,7 +348,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                     try {
                         ICarrierService carrierService =
                                 ICarrierService.Stub.asInterface(conn.service);
-                        carrierService.getCarrierConfig(carrierId, resultReceiver);
+                        carrierService.getCarrierConfig(phoneId, carrierId, resultReceiver);
                         logdWithLocalLog("Fetch config for default app: "
                                 + mPlatformCarrierConfigPackage
                                 + " carrierid: " + carrierId.toString());
@@ -488,7 +488,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                     try {
                         ICarrierService carrierService =
                                 ICarrierService.Stub.asInterface(conn.service);
-                        carrierService.getCarrierConfig(carrierId, resultReceiver);
+                        carrierService.getCarrierConfig(phoneId, carrierId, resultReceiver);
                         logdWithLocalLog("Fetch config for carrier app: "
                                 + getCarrierPackageForPhoneId(phoneId)
                                 + " carrierid: " + carrierId.toString());
@@ -656,7 +656,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                     try {
                         ICarrierService carrierService =
                                 ICarrierService.Stub.asInterface(conn.service);
-                        carrierService.getCarrierConfig(null, resultReceiver);
+                        carrierService.getCarrierConfig(phoneId, null, resultReceiver);
                         logdWithLocalLog("Fetch no sim config from default app: "
                                 + mPlatformCarrierConfigPackage);
                     } catch (RemoteException e) {
