@@ -8722,7 +8722,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     @Override
     public List<UiccCardInfo> getUiccCardsInfo(String callingPackage) {
-        // Verify that tha callingPackage belongs to the calling UID
+        // Verify that the callingPackage belongs to the calling UID
         mApp.getSystemService(AppOpsManager.class)
                 .checkPackage(Binder.getCallingUid(), callingPackage);
 
@@ -8767,7 +8767,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     filteredInfos.add(getUiccCardInfoUnPrivileged(cardInfo));
                     continue;
                 }
-
                 if (haveCarrierPrivilegeAccess(card, callingPackage)) {
                     filteredInfos.add(cardInfo);
                 } else {
@@ -8819,7 +8818,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
     @Override
     public UiccSlotInfo[] getUiccSlotsInfo(String callingPackage) {
-        // Verify that tha callingPackage belongs to the calling UID
+        // Verify that the callingPackage belongs to the calling UID
         mApp.getSystemService(AppOpsManager.class)
                 .checkPackage(Binder.getCallingUid(), callingPackage);
 
@@ -8864,12 +8863,16 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 if (hasReadPermission) {
                     iccId = slot.getIccId();
                 } else {
-                    // if no read permission checking carrier
-                    if (haveCarrierPrivilegeAccess(card, callingPackage)) {
-                        iccId = slot.getIccId();
+                    if (card != null) {
+                        // if no read permission checking carrier
+                        if (haveCarrierPrivilegeAccess(card, callingPackage)) {
+                            iccId = slot.getIccId();
+                        } else {
+                            //if no carrier permission redact ICCID
+                            iccId = IccUtils.TEST_ICCID;
+                        }
                     } else {
-                        //if no carrier permission redact ICCID
-                        iccId = IccUtils.TEST_ICCID;
+                        iccId = null;
                     }
                 }
                 if (card != null) {
@@ -9540,21 +9543,26 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public int[] getSlotsMapping(@NonNull String callingPackage) {
+    public List<UiccSlotMapping> getSlotsMapping(String callingPackage) {
         enforceReadPrivilegedPermission("getSlotsMapping");
-
+        // Verify that the callingPackage belongs to the calling UID
+        mApp.getSystemService(AppOpsManager.class)
+                .checkPackage(Binder.getCallingUid(), callingPackage);
         final long identity = Binder.clearCallingIdentity();
+        List<UiccSlotMapping> slotMap = new ArrayList<>();
         try {
-            int phoneCount = TelephonyManager.getDefault().getPhoneCount();
-            // All logical slots should have a mapping to a physical slot.
-            int[] logicalSlotsMapping = new int[phoneCount];
-            UiccSlotInfo[] slotInfos = getUiccSlotsInfo(callingPackage);
-            for (int i = 0; i < slotInfos.length; i++) {
-                if (SubscriptionManager.isValidPhoneId(slotInfos[i].getLogicalSlotIdx())) {
-                    logicalSlotsMapping[slotInfos[i].getLogicalSlotIdx()] = i;
+            UiccSlotInfo[] slotInfos = getUiccSlotsInfo(mApp.getOpPackageName());
+            if (slotInfos != null) {
+                for (int i = 0; i < slotInfos.length; i++) {
+                    for (UiccPortInfo portInfo : slotInfos[i].getPorts()) {
+                        if (SubscriptionManager.isValidPhoneId(portInfo.getLogicalSlotIndex())) {
+                            slotMap.add(new UiccSlotMapping(portInfo.getPortIndex(), i,
+                                    portInfo.getLogicalSlotIndex()));
+                        }
+                    }
                 }
             }
-            return logicalSlotsMapping;
+            return slotMap;
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
