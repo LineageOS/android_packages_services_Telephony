@@ -224,7 +224,6 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -5244,11 +5243,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         return TelephonyManager.WifiCallingChoices.ALWAYS_USE;
     }
 
-    private Phone getPhoneFromSlotIdOrThrowException(int slotIndex) {
-        int phoneId = UiccController.getInstance().getPhoneIdFromSlotId(slotIndex);
+    private Phone getPhoneFromSlotPortIndexOrThrowException(int slotIndex, int portIndex) {
+        int phoneId = UiccController.getInstance().getPhoneIdFromSlotPortIndex(slotIndex,
+                portIndex);
         if (phoneId == -1) {
-            throw new IllegalArgumentException("Given slot index: " + slotIndex
-                    + " does not correspond to an active phone");
+            throw new IllegalArgumentException("Given slot index: " + slotIndex + " port index: "
+                     + portIndex + " does not correspond to an active phone");
         }
         return PhoneFactory.getPhone(phoneId);
     }
@@ -5268,15 +5268,16 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
 
     @Override
-    public IccOpenLogicalChannelResponse iccOpenLogicalChannelBySlot(
-            int slotIndex, String callingPackage, String aid, int p2) {
+    public IccOpenLogicalChannelResponse iccOpenLogicalChannelByPort(
+            int slotIndex, int portIndex, String callingPackage, String aid, int p2) {
         enforceModifyPermission();
         mAppOps.checkPackage(Binder.getCallingUid(), callingPackage);
         if (DBG) {
-            log("iccOpenLogicalChannelBySlot: slot=" + slotIndex + " aid=" + aid + " p2=" + p2);
+            log("iccOpenLogicalChannelByPort: slot=" + slotIndex + " port=" + portIndex + " aid="
+                     + aid + " p2=" + p2);
         }
-        return iccOpenLogicalChannelWithPermission(getPhoneFromSlotIdOrThrowException(slotIndex),
-                callingPackage, aid, p2);
+        return iccOpenLogicalChannelWithPermission(getPhoneFromSlotPortIndexOrThrowException(
+                slotIndex, portIndex), callingPackage, aid, p2);
     }
 
     private IccOpenLogicalChannelResponse iccOpenLogicalChannelWithPermission(Phone phone,
@@ -5314,11 +5315,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public boolean iccCloseLogicalChannelBySlot(int slotIndex, int channel) {
+    public boolean iccCloseLogicalChannelByPort(int slotIndex, int portIndex, int channel) {
         enforceModifyPermission();
-        if (DBG) log("iccCloseLogicalChannelBySlot: slotIndex=" + slotIndex + " chnl=" + channel);
-        return iccCloseLogicalChannelWithPermission(getPhoneFromSlotIdOrThrowException(slotIndex),
-                channel);
+        if (DBG) log("iccCloseLogicalChannelByPort: slotIndex=" + slotIndex + " portIndex="
+                         + portIndex + " chnl=" + channel);
+        return iccCloseLogicalChannelWithPermission(
+                getPhoneFromSlotPortIndexOrThrowException(slotIndex, portIndex), channel);
     }
 
     private boolean iccCloseLogicalChannelWithPermission(Phone phone, int channel) {
@@ -5351,17 +5353,17 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public String iccTransmitApduLogicalChannelBySlot(int slotIndex, int channel, int cla,
-            int command, int p1, int p2, int p3, String data) {
+    public String iccTransmitApduLogicalChannelByPort(int slotIndex, int portIndex, int channel,
+             int cla, int command, int p1, int p2, int p3, String data) {
         enforceModifyPermission();
         if (DBG) {
-            log("iccTransmitApduLogicalChannelBySlot: slotIndex=" + slotIndex + " chnl=" + channel
-                    + " cla=" + cla + " cmd=" + command + " p1=" + p1 + " p2=" + p2 + " p3="
-                    + p3 + " data=" + data);
+            log("iccTransmitApduLogicalChannelByPort: slotIndex=" + slotIndex + " portIndex="
+                     + portIndex + " chnl=" + channel + " cla=" + cla + " cmd=" + command + " p1="
+                     + p1 + " p2=" + p2 + " p3=" + p3 + " data=" + data);
         }
         return iccTransmitApduLogicalChannelWithPermission(
-                getPhoneFromSlotIdOrThrowException(slotIndex), channel, cla, command, p1, p2, p3,
-                data);
+                getPhoneFromSlotPortIndexOrThrowException(slotIndex, portIndex), channel, cla,
+                command, p1, p2, p3, data);
     }
 
     private String iccTransmitApduLogicalChannelWithPermission(Phone phone, int channel, int cla,
@@ -5404,19 +5406,19 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public String iccTransmitApduBasicChannelBySlot(int slotIndex, String callingPackage, int cla,
-            int command, int p1, int p2, int p3, String data) {
+    public String iccTransmitApduBasicChannelByPort(int slotIndex, int portIndex,
+             String callingPackage, int cla, int command, int p1, int p2, int p3, String data) {
         enforceModifyPermission();
         mAppOps.checkPackage(Binder.getCallingUid(), callingPackage);
         if (DBG) {
-            log("iccTransmitApduBasicChannelBySlot: slotIndex=" + slotIndex + " cla=" + cla
-                    + " cmd=" + command + " p1=" + p1 + " p2=" + p2 + " p3=" + p3
-                    + " data=" + data);
+            log("iccTransmitApduBasicChannelByPort: slotIndex=" + slotIndex + " portIndex="
+                     + portIndex + " cla=" + cla + " cmd=" + command + " p1=" + p1 + " p2="
+                     + p2 + " p3=" + p3 + " data=" + data);
         }
 
         return iccTransmitApduBasicChannelWithPermission(
-                getPhoneFromSlotIdOrThrowException(slotIndex), callingPackage, cla, command, p1,
-                p2, p3, data);
+                getPhoneFromSlotPortIndexOrThrowException(slotIndex, portIndex), callingPackage,
+                cla, command, p1, p2, p3, data);
     }
 
     // open APDU basic channel assuming the caller has sufficient permissions
