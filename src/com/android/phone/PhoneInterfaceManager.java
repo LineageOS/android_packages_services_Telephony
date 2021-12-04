@@ -11244,4 +11244,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             Binder.restoreCallingIdentity(identity);
         }
     }
+
+    @Override
+    public boolean isUsingNewDataStack() {
+        TelephonyPermissions.enforceShellOnly(Binder.getCallingUid(), "isUsingNewDataStack");
+        return getDefaultPhone().isUsingNewDataStack();
+    }
 }
