@@ -6698,11 +6698,16 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         final long identity = Binder.clearCallingIdentity();
         try {
             int phoneId = mSubscriptionController.getPhoneId(subId);
-            if (DBG) log("isDataEnabled: subId=" + subId + " phoneId=" + phoneId);
             Phone phone = PhoneFactory.getPhone(phoneId);
             if (phone != null) {
-                boolean retVal = phone.getDataEnabledSettings().isDataEnabled();
-                if (DBG) log("isDataEnabled: subId=" + subId + " retVal=" + retVal);
+                boolean retVal;
+                if (phone.isUsingNewDataStack()) {
+                    retVal = phone.getDataNetworkController().getDataSettingsManager()
+                            .isDataEnabled();
+                } else {
+                    retVal = phone.getDataEnabledSettings().isDataEnabled();
+                }
+                if (DBG) log("isDataEnabled: " + retVal + ", subId=" + subId);
                 return retVal;
             } else {
                 if (DBG) loge("isDataEnabled: no phone subId=" + subId + " retVal=false");
