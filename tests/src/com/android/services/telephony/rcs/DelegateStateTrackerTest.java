@@ -234,6 +234,9 @@ public class DelegateStateTrackerTest extends TelephonyTestBase {
      * When registration states are changed in a case that an application doesn't support the new
      * 'registering' state the 'registering' state will be moved to the 'registered' state
      * as the old behavior.
+     *
+     * This method tests the case where the application doesn't support consuming the
+     * DEREGISTERING_REASON_LOSING_PDN reason.
      */
     @Test
     public void testDelegateChangingRegisteredTagsRegisteringDisable() throws Exception {
@@ -250,7 +253,7 @@ public class DelegateStateTrackerTest extends TelephonyTestBase {
                 .addRegisteredFeatureTag(ImsSignallingUtils.ONE_TO_ONE_CHAT_TAG)
                 .addRegisteringFeatureTags(registeringTags)
                 .addDeregisteringFeatureTag(ImsSignallingUtils.FILE_TRANSFER_HTTP_TAG,
-                        DelegateRegistrationState.DEREGISTERING_REASON_PROVISIONING_CHANGE)
+                        DelegateRegistrationState.DEREGISTERING_REASON_LOSING_PDN)
                 .addDeregisteredFeatureTag(ImsSignallingUtils.GROUP_CHAT_TAG,
                         DelegateRegistrationState.DEREGISTERED_REASON_NOT_PROVISIONED)
                 .build();
@@ -259,7 +262,7 @@ public class DelegateStateTrackerTest extends TelephonyTestBase {
         DelegateRegistrationState.Builder builder = new DelegateRegistrationState.Builder()
                 .addRegisteredFeatureTag(ImsSignallingUtils.ONE_TO_ONE_CHAT_TAG)
                 .addDeregisteringFeatureTag(ImsSignallingUtils.FILE_TRANSFER_HTTP_TAG,
-                        DelegateRegistrationState.DEREGISTERING_REASON_PROVISIONING_CHANGE)
+                        DelegateRegistrationState.DEREGISTERING_REASON_PDN_CHANGE)
                 .addDeregisteredFeatureTag(ImsSignallingUtils.GROUP_CHAT_TAG,
                         DelegateRegistrationState.DEREGISTERED_REASON_NOT_PROVISIONED);
         for (String tag : registeringTags) {
@@ -283,6 +286,9 @@ public class DelegateStateTrackerTest extends TelephonyTestBase {
     /**
      * When registration states are changed in a case that an application supports the new
      * 'registering' state the state will be kept.
+     *
+     *  This method tests the case where the application supports consuming the
+     *  DEREGISTERING_REASON_LOSING_PDN reason.
      */
     @Test
     public void testDelegateChangingRegisteredTagsRegisteringEnable() throws Exception {
@@ -300,7 +306,7 @@ public class DelegateStateTrackerTest extends TelephonyTestBase {
                 .addRegisteredFeatureTag(ImsSignallingUtils.ONE_TO_ONE_CHAT_TAG)
                 .addRegisteringFeatureTags(registeringTags)
                 .addDeregisteringFeatureTag(ImsSignallingUtils.FILE_TRANSFER_HTTP_TAG,
-                        DelegateRegistrationState.DEREGISTERING_REASON_PROVISIONING_CHANGE)
+                        DelegateRegistrationState.DEREGISTERING_REASON_LOSING_PDN)
                 .addDeregisteredFeatureTag(ImsSignallingUtils.GROUP_CHAT_TAG,
                         DelegateRegistrationState.DEREGISTERED_REASON_NOT_PROVISIONED)
                 .build();
