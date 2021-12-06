@@ -239,6 +239,7 @@
     <uses-permission android:name="android.permission.READ_PROJECTION_STATE"/>
     <!-- Needed to access TelephonyProvider SIMINFO table. -->
     <uses-permission android:name="android.permission.ACCESS_TELEPHONY_SIMINFO_DB"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application android:name="PhoneApp"
             android:persistent="true"
