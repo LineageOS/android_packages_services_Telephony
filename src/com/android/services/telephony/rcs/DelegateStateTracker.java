@@ -16,6 +16,10 @@
 
 package com.android.services.telephony.rcs;
 
+import android.app.compat.CompatChanges;
+import android.compat.annotation.ChangeId;
+import android.compat.annotation.EnabledAfter;
+import android.os.Build;
 import android.os.RemoteException;
 import android.telephony.ims.DelegateRegistrationState;
 import android.telephony.ims.FeatureTagState;
@@ -28,6 +32,7 @@ import android.util.ArraySet;
 import android.util.LocalLog;
 import android.util.Log;
 
+import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.telephony.metrics.RcsStats;
 
 import java.io.PrintWriter;
@@ -43,25 +48,58 @@ public class DelegateStateTracker implements DelegateBinderStateManager.StateCal
     private static final String LOG_TAG = "DelegateST";
 
     private final int mSubId;
+    private final int mUid;
     private final ISipDelegateConnectionStateCallback mAppStateCallback;
     private final ISipDelegate mLocalDelegateImpl;
 
     private final LocalLog mLocalLog = new LocalLog(SipTransportController.LOG_SIZE);
 
+    private final RcsStats mRcsStats;
+
     private List<FeatureTagState> mDelegateDeniedTags;
     private DelegateRegistrationState mLastRegState;
     private boolean mCreatedCalled = false;
     private int mRegistrationStateOverride = -1;
-
+    private CompatChangesFactory mCompatChangesFactory;
     private Set<String> mDelegateSupportedTags;
-    private final RcsStats mRcsStats;
 
-    public DelegateStateTracker(int subId, ISipDelegateConnectionStateCallback appStateCallback,
+    /**
+     * Interface for checking compatibility of apps
+     */
+    public interface CompatChangesFactory {
+        /**
+         *  @param changeId The ID of the compatibility change.
+         *  @param uid      The UID of the app.
+         *  @return {@code true} if the change is enabled for the current app.
+         */
+        boolean isChangeEnabled(long changeId, int uid);
+    }
+
+    /**
+     * For apps targeting Android T and above, support the REGISTERING state on APIs, such as
+     * {@code DelegateRegistrationState#addRegisteringFeatureTags} and
+     * {@code DelegateRegistrationState#getRegisteringFeatureTags}
+     * @hide
+     */
+    @ChangeId
+    @EnabledAfter(targetSdkVersion = Build.VERSION_CODES.S)
+    @VisibleForTesting
+    public static final long SUPPORT_REGISTERING_DELEGATE_STATE = 205194548;
+
+    public DelegateStateTracker(int subId, int uid,
+            ISipDelegateConnectionStateCallback appStateCallback,
             ISipDelegate localDelegateImpl, RcsStats rcsStats) {
         mSubId = subId;
+        mUid = uid;
         mAppStateCallback = appStateCallback;
         mLocalDelegateImpl = localDelegateImpl;
         mRcsStats = rcsStats;
+        setCompatChangesFactory((changeId, uid1) -> CompatChanges.isChangeEnabled(changeId, uid1));
+    }
+
+    @VisibleForTesting
+    protected void setCompatChangesFactory(CompatChangesFactory factory) {
+        mCompatChangesFactory = factory;
     }
 
     /**
@@ -140,6 +178,9 @@ public class DelegateStateTracker implements DelegateBinderStateManager.StateCal
      */
     @Override
     public void onRegistrationStateChanged(DelegateRegistrationState registrationState) {
+        if (!mCompatChangesFactory.isChangeEnabled(SUPPORT_REGISTERING_DELEGATE_STATE, mUid)) {
+            registrationState = overrideRegistrationForCompatibility(registrationState);
+        }
         if (mRegistrationStateOverride > DelegateRegistrationState.DEREGISTERED_REASON_UNKNOWN) {
             logi("onRegistrationStateChanged: overriding registered state to "
                     + mRegistrationStateOverride);
@@ -204,6 +245,7 @@ public class DelegateStateTracker implements DelegateBinderStateManager.StateCal
     private DelegateRegistrationState overrideRegistrationForDelegateChange(
             int registerOverrideReason, DelegateRegistrationState state) {
         Set<String> registeredFeatures = state.getRegisteredFeatureTags();
+        Set<String> registeringFeatures = state.getRegisteringFeatureTags();
         DelegateRegistrationState.Builder overriddenState = new DelegateRegistrationState.Builder();
         // keep other deregistering/deregistered tags the same.
         for (FeatureTagState dereging : state.getDeregisteringFeatureTags()) {
@@ -214,10 +256,38 @@ public class DelegateStateTracker implements DelegateBinderStateManager.StateCal
             overriddenState.addDeregisteredFeatureTag(dereged.getFeatureTag(),
                     dereged.getState());
         }
-        // Override REGISTERED only
+        // Override REGISTERING/REGISTERED
+        for (String ft : registeringFeatures) {
+            overriddenState.addDeregisteringFeatureTag(ft, registerOverrideReason);
+        }
         for (String ft : registeredFeatures) {
             overriddenState.addDeregisteringFeatureTag(ft, registerOverrideReason);
         }
+        return overriddenState.build();
+    }
+
+    private DelegateRegistrationState overrideRegistrationForCompatibility(
+            DelegateRegistrationState state) {
+        Set<String> registeredFeatures = state.getRegisteredFeatureTags();
+        Set<String> registeringFeatures = state.getRegisteringFeatureTags();
+        DelegateRegistrationState.Builder overriddenState = new DelegateRegistrationState.Builder();
+        // keep other registered/deregistering/deregistered tags the same.
+        for (FeatureTagState dereging : state.getDeregisteringFeatureTags()) {
+            overriddenState.addDeregisteringFeatureTag(dereging.getFeatureTag(),
+                    dereging.getState());
+        }
+        for (FeatureTagState dereged : state.getDeregisteredFeatureTags()) {
+            overriddenState.addDeregisteredFeatureTag(dereged.getFeatureTag(),
+                    dereged.getState());
+        }
+        overriddenState.addRegisteredFeatureTags(registeredFeatures);
+
+        // move the REGISTERING state to the DEREGISTERED state.
+        for (String tag : registeringFeatures) {
+            overriddenState.addDeregisteredFeatureTag(tag,
+                    DelegateRegistrationState.DEREGISTERED_REASON_NOT_REGISTERED);
+        }
+
         return overriddenState.build();
     }
 
