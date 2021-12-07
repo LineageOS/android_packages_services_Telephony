@@ -86,6 +86,17 @@ public class DelegateStateTracker implements DelegateBinderStateManager.StateCal
     @VisibleForTesting
     public static final long SUPPORT_REGISTERING_DELEGATE_STATE = 205194548;
 
+    /**
+     * For apps targeting Android T and above, support the DEREGISTERING_REASON_LOSING_PDN state
+     * on APIs, such as {@code DelegateRegistrationState#addDeregisteringFeatureTag} and
+     * {@code DelegateRegistrationState#getDeregisteringFeatureTags}
+     * @hide
+     */
+    @ChangeId
+    @EnabledAfter(targetSdkVersion = Build.VERSION_CODES.S)
+    @VisibleForTesting
+    public static final long SUPPORT_DEREGISTERING_LOSING_PDN_STATE = 201522903;
+
     public DelegateStateTracker(int subId, int uid,
             ISipDelegateConnectionStateCallback appStateCallback,
             ISipDelegate localDelegateImpl, RcsStats rcsStats) {
@@ -178,9 +189,13 @@ public class DelegateStateTracker implements DelegateBinderStateManager.StateCal
      */
     @Override
     public void onRegistrationStateChanged(DelegateRegistrationState registrationState) {
+        if (!mCompatChangesFactory.isChangeEnabled(SUPPORT_DEREGISTERING_LOSING_PDN_STATE, mUid)) {
+            registrationState = overrideDeregisteringStateForCompatibility(registrationState);
+        }
         if (!mCompatChangesFactory.isChangeEnabled(SUPPORT_REGISTERING_DELEGATE_STATE, mUid)) {
             registrationState = overrideRegistrationForCompatibility(registrationState);
         }
+
         if (mRegistrationStateOverride > DelegateRegistrationState.DEREGISTERED_REASON_UNKNOWN) {
             logi("onRegistrationStateChanged: overriding registered state to "
                     + mRegistrationStateOverride);
@@ -289,6 +304,43 @@ public class DelegateStateTracker implements DelegateBinderStateManager.StateCal
         }
 
         return overriddenState.build();
+    }
+
+    /**
+     * @param state The RegistrationState reported by the SipDelegate to be sent to the
+     *              IMS application .
+     * @return DEREGISTERING_REASON_PDN_CHANGE instead of DEREGISTERING_REASON_LOSING_PDN
+     * if the SUPPORT_DEREGISTERING_LOSING_PDN_STATE compat key is not enabled for the application
+     * consuming the registration change events.
+     */
+    private DelegateRegistrationState overrideDeregisteringStateForCompatibility(
+            DelegateRegistrationState state) {
+        Set<String> registeredFeatures = state.getRegisteredFeatureTags();
+        Set<String> registeringFeatures = state.getRegisteringFeatureTags();
+        DelegateRegistrationState.Builder overriddenState = new DelegateRegistrationState.Builder();
+
+        // keep other registered/registering/deregistered tags the same.
+        for (FeatureTagState dereged : state.getDeregisteredFeatureTags()) {
+            overriddenState.addDeregisteredFeatureTag(dereged.getFeatureTag(),
+                    dereged.getState());
+        }
+        overriddenState.addRegisteredFeatureTags(registeredFeatures);
+        overriddenState.addRegisteringFeatureTags(registeringFeatures);
+
+        // change DEREGISTERING_REASON_LOSING_PDN to DEREGISTERING_REASON_PDN_CHANGE
+        for (FeatureTagState dereging : state.getDeregisteringFeatureTags()) {
+            overriddenState.addDeregisteringFeatureTag(dereging.getFeatureTag(),
+                    getDeregisteringReasonForCompatibility(dereging.getState()));
+        }
+
+        return overriddenState.build();
+    }
+
+    private int getDeregisteringReasonForCompatibility(int reason) {
+        if (reason == DelegateRegistrationState.DEREGISTERING_REASON_LOSING_PDN) {
+            reason = DelegateRegistrationState.DEREGISTERING_REASON_PDN_CHANGE;
+        }
+        return reason;
     }
 
     private void notifySipDelegateCreated() {
