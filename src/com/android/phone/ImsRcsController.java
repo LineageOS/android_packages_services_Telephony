@@ -582,6 +582,7 @@ public class ImsRcsController extends IImsRcsController.Stub {
             throw new SecurityException("Passed in PackageName can not be found on device");
         }
 
+        final int uid = Binder.getCallingUid();
         final long identity = Binder.clearCallingIdentity();
         SipTransportController transport = getRcsFeatureController(subId).getFeature(
                 SipTransportController.class);
@@ -590,7 +591,7 @@ public class ImsRcsController extends IImsRcsController.Stub {
                     "This subscription does not support the creation of SIP delegates");
         }
         try {
-            transport.createSipDelegate(subId, request, packageName, delegateState,
+            transport.createSipDelegate(subId, uid, request, packageName, delegateState,
                     delegateMessage);
         } catch (ImsException e) {
             throw new ServiceSpecificException(e.getCode(), e.getMessage());
