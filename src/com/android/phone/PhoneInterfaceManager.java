@@ -11002,4 +11002,54 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             Binder.restoreCallingIdentity(token);
         }
     }
+
+    /**
+     * @return {@CellIdentity} last known cell identity {@CellIdentity}.
+     *
+     * Require {@link android.Manifest.permission#ACCESS_FINE_LOCATION} and
+     * com.android.phone.permission.ACCESS_LAST_KNOWN_CELL_ID, otherwise throws
+     * SecurityException.
+     * If there is current registered network this value will be same as the registered cell
+     * identity. If the device goes out of service the previous cell identity is cached and
+     * will be returned. If the cache age of the Cell identity is more than 24 hours
+     * it will be cleared and null will be returned.
+     *
+     */
+    @Override
+    public @Nullable CellIdentity getLastKnownCellIdentity(int subId, String callingPackage,
+            String callingFeatureId) {
+        mAppOps.checkPackage(Binder.getCallingUid(), callingPackage);
+        LocationAccessPolicy.LocationPermissionResult fineLocationResult =
+                LocationAccessPolicy.checkLocationPermission(mApp,
+                        new LocationAccessPolicy.LocationPermissionQuery.Builder()
+                                .setCallingPackage(callingPackage)
+                                .setCallingFeatureId(callingFeatureId)
+                                .setCallingPid(Binder.getCallingPid())
+                                .setCallingUid(Binder.getCallingUid())
+                                .setMethod("getLastKnownCellIdentity")
+                                .setLogAsInfo(true)
+                                .setMinSdkVersionForFine(Build.VERSION_CODES.Q)
+                                .setMinSdkVersionForCoarse(Build.VERSION_CODES.Q)
+                                .setMinSdkVersionForEnforcement(Build.VERSION_CODES.Q)
+                                .build());
+
+        boolean hasFinePermission =
+                fineLocationResult == LocationAccessPolicy.LocationPermissionResult.ALLOWED;
+        if (!hasFinePermission
+                || !TelephonyPermissions.checkLastKnownCellIdAccessPermission(mApp)) {
+            throw new SecurityException("getLastKnownCellIdentity need ACCESS_FINE_LOCATION "
+                    + "and BIND_CONNECTION_SERVICE permission.");
+        }
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            Phone phone = getPhone(subId);
+            if (phone == null) return null;
+            ServiceStateTracker sst = phone.getServiceStateTracker();
+            if (sst == null) return null;
+            return sst.getLastKnownCellIdentity();
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
 }
