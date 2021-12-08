@@ -242,6 +242,10 @@
     <!-- Needed to listen to changes in projection state. -->
     <uses-permission android:name="android.permission.READ_PROJECTION_STATE"/>
 
+    <permission android:name="com.android.phone.permission.ACCESS_LAST_KNOWN_CELL_ID"
+                android:label="Access last known cell identity."
+                android:protectionLevel="signature"/>
+
     <application android:name="PhoneApp"
             android:persistent="true"
             android:label="@string/phoneAppLabel"
