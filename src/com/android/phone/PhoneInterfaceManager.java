@@ -163,6 +163,7 @@ import com.android.internal.telephony.IIntegerConsumer;
 import com.android.internal.telephony.INumberVerificationCallback;
 import com.android.internal.telephony.ITelephony;
 import com.android.internal.telephony.IccCard;
+import com.android.internal.telephony.IccLogicalChannelRequest;
 import com.android.internal.telephony.LocaleTracker;
 import com.android.internal.telephony.NetworkScanRequestTracker;
 import com.android.internal.telephony.OperatorInfo;
@@ -706,7 +707,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 case CMD_OPEN_CHANNEL:
                     request = (MainThreadRequest) msg.obj;
                     uiccPort = getUiccPortFromRequest(request);
-                    Pair<String, Integer> openChannelArgs = (Pair<String, Integer>) request.argument;
+                    IccLogicalChannelRequest openChannelRequest =
+                            (IccLogicalChannelRequest) request.argument;
                     if (uiccPort == null) {
                         loge("iccOpenLogicalChannel: No UICC");
                         request.result = new IccOpenLogicalChannelResponse(-1,
@@ -714,8 +716,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                         notifyRequester(request);
                     } else {
                         onCompleted = obtainMessage(EVENT_OPEN_CHANNEL_DONE, request);
-                        uiccPort.iccOpenLogicalChannel(openChannelArgs.first,
-                                openChannelArgs.second, onCompleted);
+                        uiccPort.iccOpenLogicalChannel(openChannelRequest.aid,
+                                openChannelRequest.p2, onCompleted);
                     }
                     break;
 
@@ -5261,41 +5263,43 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     @Override
     public IccOpenLogicalChannelResponse iccOpenLogicalChannel(
-            int subId, String callingPackage, String aid, int p2) {
-        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
-                mApp, subId, "iccOpenLogicalChannel");
-        mAppOps.checkPackage(Binder.getCallingUid(), callingPackage);
-        if (DBG) {
-            log("iccOpenLogicalChannel: subId=" + subId + " aid=" + aid + " p2=" + p2);
-        }
-        return iccOpenLogicalChannelWithPermission(getPhoneFromSubId(subId), callingPackage, aid,
-                p2);
+            @NonNull IccLogicalChannelRequest request) {
+        Phone phone = getPhoneFromValidIccLogicalChannelRequest(request,
+                /*message=*/ "iccOpenLogicalChannel");
+
+        if (DBG) log("iccOpenLogicalChannel: request=" + request);
+        // Verify that the callingPackage in the request belongs to the calling UID
+        mAppOps.checkPackage(Binder.getCallingUid(), request.callingPackage);
+
+        return iccOpenLogicalChannelWithPermission(phone, request);
     }
 
-
-    @Override
-    public IccOpenLogicalChannelResponse iccOpenLogicalChannelByPort(
-            int slotIndex, int portIndex, String callingPackage, String aid, int p2) {
-        enforceModifyPermission();
-        mAppOps.checkPackage(Binder.getCallingUid(), callingPackage);
-        if (DBG) {
-            log("iccOpenLogicalChannelByPort: slot=" + slotIndex + " port=" + portIndex + " aid="
-                     + aid + " p2=" + p2);
+    private Phone getPhoneFromValidIccLogicalChannelRequest(
+            @NonNull IccLogicalChannelRequest request, String message) {
+        Phone phone;
+        if (request.subId != SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
+            TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
+                    mApp, request.subId, message);
+            phone = getPhoneFromSubId(request.subId);
+        } else if (request.slotIndex != SubscriptionManager.INVALID_SIM_SLOT_INDEX) {
+            enforceModifyPermission();
+            phone = getPhoneFromSlotPortIndexOrThrowException(request.slotIndex, request.portIndex);
+        } else {
+            throw new IllegalArgumentException("Both subId and slotIndex in request are invalid.");
         }
-        return iccOpenLogicalChannelWithPermission(getPhoneFromSlotPortIndexOrThrowException(
-                slotIndex, portIndex), callingPackage, aid, p2);
+        return phone;
     }
 
     private IccOpenLogicalChannelResponse iccOpenLogicalChannelWithPermission(Phone phone,
-            String callingPackage, String aid, int p2) {
+            IccLogicalChannelRequest channelRequest) {
         final long identity = Binder.clearCallingIdentity();
         try {
-            if (TextUtils.equals(ISDR_AID, aid)) {
+            if (TextUtils.equals(ISDR_AID, channelRequest.aid)) {
                 // Only allows LPA to open logical channel to ISD-R.
                 ComponentInfo bestComponent = EuiccConnector.findBestComponent(getDefaultPhone()
                         .getContext().getPackageManager());
-                if (bestComponent == null
-                        || !TextUtils.equals(callingPackage, bestComponent.packageName)) {
+                if (bestComponent == null || !TextUtils.equals(channelRequest.callingPackage,
+                        bestComponent.packageName)) {
                     loge("The calling package is not allowed to access ISD-R.");
                     throw new SecurityException(
                             "The calling package is not allowed to access ISD-R.");
@@ -5303,9 +5307,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             }
 
             IccOpenLogicalChannelResponse response = (IccOpenLogicalChannelResponse) sendRequest(
-                    CMD_OPEN_CHANNEL, new Pair<String, Integer>(aid, p2), phone,
-                    null /* workSource */);
-            if (DBG) log("iccOpenLogicalChannelWithPermission: " + response);
+                    CMD_OPEN_CHANNEL, channelRequest, phone, null /* workSource */);
+            if (DBG) log("iccOpenLogicalChannelWithPermission: response=" + response);
             return response;
         } finally {
             Binder.restoreCallingIdentity(identity);
@@ -5313,31 +5316,25 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public boolean iccCloseLogicalChannel(int subId, int channel) {
-        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
-                mApp, subId, "iccCloseLogicalChannel");
-        if (DBG) log("iccCloseLogicalChannel: subId=" + subId + " chnl=" + channel);
-        return iccCloseLogicalChannelWithPermission(getPhoneFromSubId(subId), channel);
+    public boolean iccCloseLogicalChannel(@NonNull IccLogicalChannelRequest request) {
+        Phone phone = getPhoneFromValidIccLogicalChannelRequest(request,
+                /*message=*/"iccCloseLogicalChannel");
+
+        if (DBG) log("iccCloseLogicalChannel: request=" + request);
+
+        return iccCloseLogicalChannelWithPermission(phone, request);
     }
 
-    @Override
-    public boolean iccCloseLogicalChannelByPort(int slotIndex, int portIndex, int channel) {
-        enforceModifyPermission();
-        if (DBG) log("iccCloseLogicalChannelByPort: slotIndex=" + slotIndex + " portIndex="
-                         + portIndex + " chnl=" + channel);
-        return iccCloseLogicalChannelWithPermission(
-                getPhoneFromSlotPortIndexOrThrowException(slotIndex, portIndex), channel);
-    }
-
-    private boolean iccCloseLogicalChannelWithPermission(Phone phone, int channel) {
+    private boolean iccCloseLogicalChannelWithPermission(Phone phone,
+            IccLogicalChannelRequest request) {
         final long identity = Binder.clearCallingIdentity();
         try {
-            if (channel < 0) {
+            if (request.channel < 0) {
                 return false;
             }
-            Boolean success = (Boolean) sendRequest(CMD_CLOSE_CHANNEL, channel, phone,
+            Boolean success = (Boolean) sendRequest(CMD_CLOSE_CHANNEL, request.channel, phone,
                     null /* workSource */);
-            if (DBG) log("iccCloseLogicalChannelWithPermission: " + success);
+            if (DBG) log("iccCloseLogicalChannelWithPermission: success=" + success);
             return success;
         } finally {
             Binder.restoreCallingIdentity(identity);
