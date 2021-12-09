@@ -240,6 +240,10 @@
     <!-- Needed to access TelephonyProvider SIMINFO table. -->
     <uses-permission android:name="android.permission.ACCESS_TELEPHONY_SIMINFO_DB"/>
 
+    <permission android:name="com.android.phone.permission.ACCESS_LAST_KNOWN_CELL_ID"
+                android:label="Access last known cell identity."
+                android:protectionLevel="signature"/>
+
     <application android:name="PhoneApp"
             android:persistent="true"
             android:label="@string/phoneAppLabel"
