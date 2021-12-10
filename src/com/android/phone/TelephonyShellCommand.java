@@ -30,6 +30,7 @@ import android.os.Process;
 import android.os.RemoteException;
 import android.os.ServiceSpecificException;
 import android.provider.BlockedNumberContract;
+import android.provider.DeviceConfig;
 import android.telephony.BarringInfo;
 import android.telephony.CarrierConfigManager;
 import android.telephony.SubscriptionInfo;
@@ -165,6 +166,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             "get-allowed-network-types-for-users";
     private static final String SET_ALLOWED_NETWORK_TYPES_FOR_USER =
             "set-allowed-network-types-for-users";
+    // Check if telephony new data stack is enabled.
+    private static final String GET_DATA_MODE = "get-data-mode";
     // Take advantage of existing methods that already contain permissions checks when possible.
     private final ITelephony mInterface;
 
@@ -319,6 +322,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             case GET_ALLOWED_NETWORK_TYPES_FOR_USER:
             case SET_ALLOWED_NETWORK_TYPES_FOR_USER:
                 return handleAllowedNetworkTypesCommand(cmd);
+            case GET_DATA_MODE:
+                return handleGetDataMode();
             default: {
                 return handleDefaultCommands(cmd);
             }
@@ -2724,5 +2729,36 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             Log.e(LOG_TAG, "AllowedNetworkTypes: " + e);
             return -1;
         }
+    }
+
+    private int handleGetDataMode() {
+        if (!checkShellUid()) {
+            return -1;
+        }
+
+        boolean newDataStackEnabled = false;
+        try {
+            newDataStackEnabled = mInterface.isUsingNewDataStack();
+        } catch (RemoteException e) {
+            getOutPrintWriter().println("Something went wrong. " + e);
+            return -1;
+        }
+
+        getOutPrintWriter().println("Telephony new data stack is "
+                + (newDataStackEnabled ? "enabled." : "disabled."));
+
+        boolean configEnabled = Boolean.parseBoolean(DeviceConfig.getProperty(
+                DeviceConfig.NAMESPACE_TELEPHONY, "new_telephony_data_enabled"));
+        if (configEnabled != newDataStackEnabled) {
+            getOutPrintWriter().println("The config has been "
+                    + (configEnabled ? "enabled" : "disabled") + ". Need to reboot the device.");
+        } else {
+            getOutPrintWriter().println("Run the following command to "
+                    + (configEnabled ? "disable" : "enable") + " the new telephony data stack.");
+            getOutPrintWriter().println("adb root && adb shell device_config put telephony "
+                    + "new_telephony_data_enabled " + (configEnabled ? "false" : "true")
+                    + " && adb reboot");
+        }
+        return 0;
     }
 }
