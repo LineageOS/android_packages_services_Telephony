@@ -196,7 +196,7 @@
     <string name="network_connecting" msgid="160901383582774987">"Povezivanje…"</string>
     <string name="network_could_not_connect" msgid="6547460848093727998">"Povezivanje nije uspjelo"</string>
   <string-array name="preferred_network_mode_choices">
-    <item msgid="4531933377509551889">"Preferiraj GSM/WCDMA"</item>
+    <item msgid="4531933377509551889">"Preferira se GSM/WCDMA"</item>
     <item msgid="5120532750027435355">"Samo GSM"</item>
     <item msgid="8973311380798000102">"Samo WCDMA"</item>
     <item msgid="4139961027147085705">"Automatski GSM/WCDMA"</item>
