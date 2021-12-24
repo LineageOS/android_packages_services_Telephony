@@ -284,7 +284,7 @@
     <string name="roaming" msgid="1576180772877858949">"Roaming"</string>
     <string name="roaming_enable" msgid="6853685214521494819">"Verbinding maken met dataservices tijdens roaming"</string>
     <string name="roaming_disable" msgid="8856224638624592681">"Verbinding maken met dataservices tijdens roaming"</string>
-    <string name="roaming_reenable_message" msgid="1951802463885727915">"Dataroaming staat uit. Tik om in te schakelen."</string>
+    <string name="roaming_reenable_message" msgid="1951802463885727915">"Dataroaming staat uit. Tik om aan te zetten."</string>
     <string name="roaming_enabled_message" msgid="9022249120750897">"Er kunnen kosten voor roaming in rekening worden gebracht. Tik om te wijzigen."</string>
     <string name="roaming_notification_title" msgid="3590348480688047320">"Mobiele internetverbinding is verbroken"</string>
     <string name="roaming_on_notification_title" msgid="7451473196411559173">"Dataroaming staat aan"</string>
@@ -442,7 +442,7 @@
     <string name="fdn_list_with_label" msgid="1409655283510382556">"FDN-lijst (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="fdn_activation" msgid="2178637004710435895">"FDN-activering"</string>
     <string name="fdn_enabled" msgid="7017355494808056447">"Vaste nummers staan aan"</string>
-    <string name="fdn_disabled" msgid="6696468878037736600">"Vaste nummers zijn uitgeschakeld"</string>
+    <string name="fdn_disabled" msgid="6696468878037736600">"Vaste nummers staan uit"</string>
     <string name="enable_fdn" msgid="4830555730418033723">"FDN aanzetten"</string>
     <string name="disable_fdn" msgid="3918794950264647541">"FDN uitzetten"</string>
     <string name="change_pin2" msgid="3110844547237754871">"PIN2-code wijzigen"</string>
