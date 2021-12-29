@@ -1125,24 +1125,28 @@ public class RadioInfo extends AppCompatActivity {
                 & TelephonyManager.NETWORK_TYPE_BITMASK_NR) == 0) {
             return;
         }
-
         ServiceState ss = serviceState;
         if (ss == null && mPhone != null) {
             ss = mPhone.getServiceState();
         }
         if (ss != null) {
+            boolean isNrSa = ss.getDataNetworkType() == TelephonyManager.NETWORK_TYPE_NR;
             NetworkRegistrationInfo nri = ss.getNetworkRegistrationInfo(
                     NetworkRegistrationInfo.DOMAIN_PS, AccessNetworkConstants.TRANSPORT_TYPE_WWAN);
             if (nri != null) {
                 DataSpecificRegistrationInfo dsri = nri.getDataSpecificInfo();
                 if (dsri != null) {
-                    mEndcAvailable.setText(dsri.isEnDcAvailable ? "True" : "False");
-                    mDcnrRestricted.setText(dsri.isDcNrRestricted ? "True" : "False");
-                    mNrAvailable.setText(dsri.isNrAvailable ? "True" : "False");
+                    mEndcAvailable.setText(isNrSa ? "N/A"
+                            : dsri.isEnDcAvailable ? "True" : "False");
+                    mDcnrRestricted.setText(isNrSa ? "N/A"
+                            : dsri.isDcNrRestricted ? "True" : "False");
+                    mNrAvailable.setText(isNrSa ? "N/A" : dsri.isNrAvailable ? "True" : "False");
                 }
             }
-            mNrState.setText(NetworkRegistrationInfo.nrStateToString(ss.getNrState()));
-            mNrFrequency.setText(ServiceState.frequencyRangeToString(ss.getNrFrequencyRange()));
+            mNrState.setText(isNrSa ? "N/A"
+                    : NetworkRegistrationInfo.nrStateToString(ss.getNrState()));
+            mNrFrequency.setText(isNrSa ? "N/A"
+                    : ServiceState.frequencyRangeToString(ss.getNrFrequencyRange()));
         }
 
         Executor simpleExecutor = (r) -> r.run();
