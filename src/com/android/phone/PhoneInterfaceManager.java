@@ -27,10 +27,13 @@ import android.Manifest;
 import android.Manifest.permission;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
+import android.annotation.RequiresPermission;
 import android.app.AppOpsManager;
 import android.app.PendingIntent;
 import android.app.compat.CompatChanges;
 import android.app.role.RoleManager;
+import android.compat.annotation.ChangeId;
+import android.compat.annotation.EnabledSince;
 import android.content.ComponentName;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -104,7 +107,9 @@ import android.telephony.TelephonyManager;
 import android.telephony.TelephonyScanManager;
 import android.telephony.ThermalMitigationRequest;
 import android.telephony.UiccCardInfo;
+import android.telephony.UiccPortInfo;
 import android.telephony.UiccSlotInfo;
+import android.telephony.UiccSlotMapping;
 import android.telephony.UssdResponse;
 import android.telephony.VisualVoicemailSmsFilterSettings;
 import android.telephony.data.ApnSetting;
@@ -216,6 +221,7 @@ import java.io.InputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -402,6 +408,16 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             "reset_network_erase_modem_config_enabled";
 
     private static final int SET_NETWORK_SELECTION_MODE_AUTOMATIC_TIMEOUT_MS = 2000; // 2 seconds
+    /**
+     * With support for MEP(multiple enabled profile) in Android T, a SIM card can have more than
+     * one ICCID active at the same time.
+     * Apps should use below API signatures if targeting SDK is T and beyond.
+     *
+     * @hide
+     */
+    @ChangeId
+    @EnabledSince(targetSdkVersion = Build.VERSION_CODES.TIRAMISU)
+    public static final long GET_API_SIGNATURES_FROM_UICC_PORT_INFO = 202110963L;
 
     /**
      * A request object to use for transmitting data to an ICC.
@@ -8762,6 +8778,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 .checkPackage(Binder.getCallingUid(), callingPackage);
 
         boolean hasReadPermission = false;
+        boolean isIccIdAccessRestricted = false;
         try {
             enforceReadPrivilegedPermission("getUiccCardsInfo");
             hasReadPermission = true;
@@ -8773,7 +8790,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 throw new SecurityException("Caller does not have permission.");
             }
         }
-
+        // checking compatibility, if calling app's target SDK is T and beyond.
+        if (CompatChanges.isChangeEnabled(GET_API_SIGNATURES_FROM_UICC_PORT_INFO,
+                Binder.getCallingUid())) {
+            isIccIdAccessRestricted = true;
+        }
         final long identity = Binder.clearCallingIdentity();
         try {
             UiccController uiccController = UiccController.getInstance();
@@ -8785,21 +8806,23 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             // Remove private info if the caller doesn't have access
             ArrayList<UiccCardInfo> filteredInfos = new ArrayList<>();
             for (UiccCardInfo cardInfo : cardInfos) {
+                //setting the value after compatibility check
+                cardInfo.setIccIdAccessRestricted(isIccIdAccessRestricted);
                 // For an inactive eUICC, the UiccCard will be null even though the UiccCardInfo
                 // is available
-                UiccCard card = uiccController.getUiccCardForSlot(cardInfo.getSlotIndex());
+                UiccCard card = uiccController.getUiccCardForSlot(cardInfo.getPhysicalSlotIndex());
                 // TODO remove card.getUiccPortList().length once MEP API refactoring CL is merged
                 //  Get UiccPortInfo from CardInfo and process further based on each UiccPort
                 if (card == null || card.getUiccPortList().length == 0) {
                     // assume no access if the card or ports are unavailable
-                    filteredInfos.add(cardInfo.getUnprivileged());
+                    filteredInfos.add(getUiccCardInfoUnPrivileged(cardInfo));
                     continue;
                 }
 
                 if (haveCarrierPrivilegeAccess(card, callingPackage)) {
                     filteredInfos.add(cardInfo);
                 } else {
-                    filteredInfos.add(cardInfo.getUnprivileged());
+                    filteredInfos.add(getUiccCardInfoUnPrivileged(cardInfo));
                 }
             }
             return filteredInfos;
@@ -8808,10 +8831,70 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
-    @Override
-    public UiccSlotInfo[] getUiccSlotsInfo() {
-        enforceReadPrivilegedPermission("getUiccSlotsInfo");
+    /**
+     * Returns a copy of the UiccCardinfo with the EID and ICCID set to null. These values are
+     * generally private and require carrier privileges to view.
+     *
+     * @hide
+     */
+    @NonNull
+    public UiccCardInfo getUiccCardInfoUnPrivileged(UiccCardInfo cardInfo) {
+        List<UiccPortInfo> portinfo = new  ArrayList<>();
+        for (UiccPortInfo portinfos : cardInfo.getPorts()) {
+            portinfo.add(getUiccPortInfoUnPrivileged(portinfos));
+        }
+        return new UiccCardInfo(
+                cardInfo.isEuicc(),
+                cardInfo.getCardId(),
+                null,
+                cardInfo.getPhysicalSlotIndex(),
+                cardInfo.isRemovable(),
+                cardInfo.isMultipleEnabledProfilesSupported(),
+                portinfo
+        );
+    }
 
+    /**
+     * @hide
+     * @return a copy of the UiccPortInfo with ICCID set to {@link UiccPortInfo#ICCID_REDACTED}.
+     * These values are generally private and require carrier privileges to view.
+     */
+    @NonNull
+    public UiccPortInfo getUiccPortInfoUnPrivileged(UiccPortInfo portInfo) {
+        return new UiccPortInfo(
+                UiccPortInfo.ICCID_REDACTED,
+                portInfo.getPortIndex(),
+                portInfo.getLogicalSlotIndex(),
+                portInfo.isActive()
+        );
+    }
+    @Override
+    public UiccSlotInfo[] getUiccSlotsInfo(String callingPackage) {
+        // Verify that tha callingPackage belongs to the calling UID
+        mApp.getSystemService(AppOpsManager.class)
+                .checkPackage(Binder.getCallingUid(), callingPackage);
+
+        boolean hasReadPermission = false;
+        boolean isLogicalSlotAccessRestricted = false;
+        String iccId;
+
+        try {
+            enforceReadPrivilegedPermission("getUiccSlotsInfo");
+            hasReadPermission = true;
+        } catch (SecurityException e) {
+            // even without READ_PRIVILEGED_PHONE_STATE, we allow the call to continue if the caller
+            // has carrier privileges on an active UICC
+            if (checkCarrierPrivilegesForPackageAnyPhone(callingPackage)
+                    == TelephonyManager.CARRIER_PRIVILEGE_STATUS_HAS_ACCESS) {
+                hasReadPermission = true;
+            }
+        }
+
+        // checking compatibility, if calling app's target SDK is T and beyond.
+        if (CompatChanges.isChangeEnabled(GET_API_SIGNATURES_FROM_UICC_PORT_INFO,
+                Binder.getCallingUid())) {
+            isLogicalSlotAccessRestricted  = true;
+        }
         final long identity = Binder.clearCallingIdentity();
         try {
             UiccSlot[] slots = UiccController.getInstance().getUiccSlots();
@@ -8819,7 +8902,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 Rlog.i(LOG_TAG, "slots is null.");
                 return null;
             }
-
             UiccSlotInfo[] infos = new UiccSlotInfo[slots.length];
             for (int i = 0; i < slots.length; i++) {
                 UiccSlot slot = slots[i];
@@ -8829,12 +8911,24 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
                 String cardId;
                 UiccCard card = slot.getUiccCard();
+                //if has read permission
+                if (hasReadPermission) {
+                    iccId = slot.getIccId();
+                } else {
+                    // if no read permission checking carrier
+                    if (haveCarrierPrivilegeAccess(card, callingPackage)) {
+                        iccId = slot.getIccId();
+                    } else {
+                        //if no carrier permission redact ICCID
+                        iccId = IccUtils.TEST_ICCID;
+                    }
+                }
                 if (card != null) {
                     cardId = card.getCardId();
                 } else {
                     cardId = slot.getEid();
                     if (TextUtils.isEmpty(cardId)) {
-                        cardId = slot.getIccId();
+                        cardId = iccId;
                     }
                 }
 
@@ -8862,15 +8956,19 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                         break;
 
                 }
-
                 infos[i] = new UiccSlotInfo(
-                        slot.isActive(),
                         slot.isEuicc(),
                         cardId,
                         cardState,
-                        slot.getPhoneId(),
                         slot.isExtendedApduSupported(),
-                        slot.isRemovable());
+                        slot.isRemovable(), Collections.singletonList(
+                        new UiccPortInfo(
+                                iccId,
+                                0 /* TODO: to use portList from UiccSlots */,
+                                slot.getPhoneId(),
+                                slot.isActive())));
+                //setting the value after compatibility check
+                infos[i].setLogicalSlotAccessRestricted(isLogicalSlotAccessRestricted);
             }
             return infos;
         } finally {
@@ -8879,11 +8977,31 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
+    @Deprecated
+    //TODO : once integrating with HAL Changes we can clean up this Internal API.
     public boolean switchSlots(int[] physicalSlots) {
         enforceModifyPermission();
 
         final long identity = Binder.clearCallingIdentity();
         try {
+            return (Boolean) sendRequest(CMD_SWITCH_SLOTS, physicalSlots);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    @Override
+    @RequiresPermission(android.Manifest.permission.MODIFY_PHONE_STATE)
+    public boolean setSimSlotMapping(@NonNull List<UiccSlotMapping> slotMapping) {
+        enforceModifyPermission();
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            //TODO: once integrating the HAL changes we can proceed with to work on the parsing side
+            int[] physicalSlots = new int[slotMapping.size()];
+            for (int i = 0; i < physicalSlots.length; i++) {
+                physicalSlots[i] = slotMapping.get(i).getPhysicalSlotIndex();
+            }
             return (Boolean) sendRequest(CMD_SWITCH_SLOTS, physicalSlots);
         } finally {
             Binder.restoreCallingIdentity(identity);
@@ -9473,7 +9591,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public int[] getSlotsMapping() {
+    public int[] getSlotsMapping(@NonNull String callingPackage) {
         enforceReadPrivilegedPermission("getSlotsMapping");
 
         final long identity = Binder.clearCallingIdentity();
@@ -9481,7 +9599,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             int phoneCount = TelephonyManager.getDefault().getPhoneCount();
             // All logical slots should have a mapping to a physical slot.
             int[] logicalSlotsMapping = new int[phoneCount];
-            UiccSlotInfo[] slotInfos = getUiccSlotsInfo();
+            UiccSlotInfo[] slotInfos = getUiccSlotsInfo(callingPackage);
             for (int i = 0; i < slotInfos.length; i++) {
                 if (SubscriptionManager.isValidPhoneId(slotInfos[i].getLogicalSlotIdx())) {
                     logicalSlotsMapping[slotInfos[i].getLogicalSlotIdx()] = i;
