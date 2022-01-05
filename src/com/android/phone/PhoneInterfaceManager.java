@@ -543,7 +543,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     request = (MainThreadRequest) msg.obj;
                     final Phone phone = getPhoneFromRequest(request);
                     Pair<String, ResultReceiver> ussdObject = (Pair) request.argument;
-                    String ussdRequest =  ussdObject.first;
+                    String ussdRequest = ussdObject.first;
                     ResultReceiver wrappedCallback = ussdObject.second;
 
                     if (!isUssdApiAllowed(request.subId)) {
@@ -587,15 +587,15 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     uiccPort = getUiccPortFromRequest(request);
                     if (uiccPort == null) {
                         loge("iccTransmitApduLogicalChannel: No UICC");
-                        request.result = new IccIoResult(0x6F, 0, (byte[])null);
+                        request.result = new IccIoResult(0x6F, 0, (byte[]) null);
                         notifyRequester(request);
                     } else {
                         onCompleted = obtainMessage(EVENT_TRANSMIT_APDU_LOGICAL_CHANNEL_DONE,
-                            request);
+                                request);
                         uiccPort.iccTransmitApduLogicalChannel(
-                            iccArgument.channel, iccArgument.cla, iccArgument.command,
-                            iccArgument.p1, iccArgument.p2, iccArgument.p3, iccArgument.data,
-                            onCompleted);
+                                iccArgument.channel, iccArgument.cla, iccArgument.command,
+                                iccArgument.p1, iccArgument.p2, iccArgument.p3, iccArgument.data,
+                                onCompleted);
                     }
                     break;
 
@@ -605,7 +605,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     if (ar.exception == null && ar.result != null) {
                         request.result = ar.result;
                     } else {
-                        request.result = new IccIoResult(0x6F, 0, (byte[])null);
+                        request.result = new IccIoResult(0x6F, 0, (byte[]) null);
                         if (ar.result == null) {
                             loge("iccTransmitApduLogicalChannel: Empty response");
                         } else if (ar.exception instanceof CommandException) {
@@ -624,14 +624,15 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     uiccPort = getUiccPortFromRequest(request);
                     if (uiccPort == null) {
                         loge("iccTransmitApduBasicChannel: No UICC");
-                        request.result = new IccIoResult(0x6F, 0, (byte[])null);
+                        request.result = new IccIoResult(0x6F, 0, (byte[]) null);
                         notifyRequester(request);
                     } else {
                         onCompleted = obtainMessage(EVENT_TRANSMIT_APDU_BASIC_CHANNEL_DONE,
-                            request);
+                                request);
                         uiccPort.iccTransmitApduBasicChannel(
-                            iccArgument.cla, iccArgument.command, iccArgument.p1, iccArgument.p2,
-                            iccArgument.p3, iccArgument.data, onCompleted);
+                                iccArgument.cla, iccArgument.command, iccArgument.p1,
+                                iccArgument.p2,
+                                iccArgument.p3, iccArgument.data, onCompleted);
                     }
                     break;
 
@@ -641,7 +642,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     if (ar.exception == null && ar.result != null) {
                         request.result = ar.result;
                     } else {
-                        request.result = new IccIoResult(0x6F, 0, (byte[])null);
+                        request.result = new IccIoResult(0x6F, 0, (byte[]) null);
                         if (ar.result == null) {
                             loge("iccTransmitApduBasicChannel: Empty response");
                         } else if (ar.exception instanceof CommandException) {
@@ -660,7 +661,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     uiccPort = getUiccPortFromRequest(request);
                     if (uiccPort == null) {
                         loge("iccExchangeSimIO: No UICC");
-                        request.result = new IccIoResult(0x6F, 0, (byte[])null);
+                        request.result = new IccIoResult(0x6F, 0, (byte[]) null);
                         notifyRequester(request);
                     } else {
                         onCompleted = obtainMessage(EVENT_EXCHANGE_SIM_IO_DONE,
@@ -677,7 +678,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     if (ar.exception == null && ar.result != null) {
                         request.result = ar.result;
                     } else {
-                        request.result = new IccIoResult(0x6f, 0, (byte[])null);
+                        request.result = new IccIoResult(0x6f, 0, (byte[]) null);
                     }
                     notifyRequester(request);
                     break;
@@ -687,11 +688,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     uiccPort = getUiccPortFromRequest(request);
                     if (uiccPort == null) {
                         loge("sendEnvelopeWithStatus: No UICC");
-                        request.result = new IccIoResult(0x6F, 0, (byte[])null);
+                        request.result = new IccIoResult(0x6F, 0, (byte[]) null);
                         notifyRequester(request);
                     } else {
                         onCompleted = obtainMessage(EVENT_SEND_ENVELOPE_DONE, request);
-                        uiccPort.sendEnvelopeWithStatus((String)request.argument, onCompleted);
+                        uiccPort.sendEnvelopeWithStatus((String) request.argument, onCompleted);
                     }
                     break;
 
@@ -701,7 +702,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     if (ar.exception == null && ar.result != null) {
                         request.result = ar.result;
                     } else {
-                        request.result = new IccIoResult(0x6F, 0, (byte[])null);
+                        request.result = new IccIoResult(0x6F, 0, (byte[]) null);
                         if (ar.result == null) {
                             loge("sendEnvelopeWithStatus: Empty response");
                         } else if (ar.exception instanceof CommandException) {
@@ -722,7 +723,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     if (uiccPort == null) {
                         loge("iccOpenLogicalChannel: No UICC");
                         request.result = new IccOpenLogicalChannelResponse(-1,
-                            IccOpenLogicalChannelResponse.STATUS_MISSING_RESOURCE, null);
+                                IccOpenLogicalChannelResponse.STATUS_MISSING_RESOURCE, null);
                         notifyRequester(request);
                     } else {
                         onCompleted = obtainMessage(EVENT_OPEN_CHANNEL_DONE, request);
@@ -746,7 +747,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                             }
                         }
                         openChannelResp = new IccOpenLogicalChannelResponse(channelId,
-                            IccOpenLogicalChannelResponse.STATUS_NO_ERROR, selectResponse);
+                                IccOpenLogicalChannelResponse.STATUS_NO_ERROR, selectResponse);
 
                         uiccPort = getUiccPortFromRequest(request);
                         IccLogicalChannelRequest channelRequest =
@@ -764,7 +765,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                         int errorCode = IccOpenLogicalChannelResponse.STATUS_UNKNOWN_ERROR;
                         if (ar.exception instanceof CommandException) {
                             CommandException.Error error =
-                                ((CommandException) (ar.exception)).getCommandError();
+                                    ((CommandException) (ar.exception)).getCommandError();
                             if (error == CommandException.Error.MISSING_RESOURCE) {
                                 errorCode = IccOpenLogicalChannelResponse.STATUS_MISSING_RESOURCE;
                             } else if (error == CommandException.Error.NO_SUCH_ELEMENT) {
@@ -772,7 +773,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                             }
                         }
                         openChannelResp = new IccOpenLogicalChannelResponse(
-                            IccOpenLogicalChannelResponse.INVALID_CHANNEL, errorCode, null);
+                                IccOpenLogicalChannelResponse.INVALID_CHANNEL, errorCode, null);
                     }
                     request.result = openChannelResp;
                     notifyRequester(request);
@@ -783,7 +784,16 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     uiccPort = getUiccPortFromRequest(request);
                     if (uiccPort == null) {
                         loge("iccCloseLogicalChannel: No UICC");
-                        throw new IllegalArgumentException("iccCloseLogicalChannel: No UICC");
+                        // before this feature is enabled, this API should only return false if
+                        // the operation fails instead of throwing runtime exception for
+                        // backward-compatibility.
+                        if (Compatibility.isChangeEnabled(ICC_CLOSE_CHANNEL_EXCEPTION_ON_FAILURE)) {
+                            request.result = new IllegalArgumentException(
+                                    "iccCloseLogicalChannel: No UICC");
+                        } else {
+                            request.result = false;
+                        }
+                        notifyRequester(request);
                     } else {
                         onCompleted = obtainMessage(EVENT_CLOSE_CHANNEL_DONE, request);
                         uiccPort.iccCloseLogicalChannel((Integer) request.argument, onCompleted);
@@ -800,26 +810,26 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                         uiccPort.onLogicalChannelClosed(channelId);
                     } else {
                         request.result = false;
+                        Exception exception = null;
                         if (ar.exception instanceof CommandException) {
                             loge("iccCloseLogicalChannel: CommandException: " + ar.exception);
                             CommandException.Error error =
                                     ((CommandException) (ar.exception)).getCommandError();
-                            // before this feature is enabled, this API should only return false if
-                            // the operation fails instead of throwing runtime exception for
-                            // backward-compatibility.
-                            if (Compatibility.isChangeEnabled(
-                                    ICC_CLOSE_CHANNEL_EXCEPTION_ON_FAILURE)
-                                    && error == CommandException.Error.INVALID_ARGUMENTS) {
-                                throw new IllegalArgumentException(
+                            if (error == CommandException.Error.INVALID_ARGUMENTS) {
+                                // should only throw exceptions from the binder threads.
+                                exception = new IllegalArgumentException(
                                         "iccCloseLogicalChannel: invalid argument ");
                             }
                         } else {
                             loge("iccCloseLogicalChannel: Unknown exception");
                         }
-                        if (Compatibility.isChangeEnabled(ICC_CLOSE_CHANNEL_EXCEPTION_ON_FAILURE)) {
-                            throw new IllegalStateException(
-                                    "exception from modem to close iccLogical Channel");
-                        }
+                        // before this feature is enabled, this API should only return false if
+                        // the operation fails instead of throwing runtime exception for
+                        // backward-compatibility.
+                        if (Compatibility.isChangeEnabled(ICC_CLOSE_CHANNEL_EXCEPTION_ON_FAILURE))
+                            request.result = (exception != null) ? exception :
+                                    new IllegalStateException(
+                                            "exception from modem to close iccLogical Channel");
                     }
                     notifyRequester(request);
                     break;
@@ -5387,8 +5397,17 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             if (request.channel < 0) {
                 throw new IllegalArgumentException("request.channel is less than 0");
             }
-            Boolean success = (Boolean) sendRequest(CMD_CLOSE_CHANNEL, request.channel, phone,
+            Object result = sendRequest(CMD_CLOSE_CHANNEL, request.channel, phone,
                     null /* workSource */);
+            Boolean success = false;
+            if (result instanceof RuntimeException) {
+                // if there is an exception returned, throw from the binder thread here.
+                throw (RuntimeException) result;
+            } else if (result instanceof Boolean) {
+                success = (Boolean) result;
+            } else {
+                loge("iccCloseLogicalChannelWithPermission: supported return type " + result);
+            }
             if (DBG) log("iccCloseLogicalChannelWithPermission: success=" + success);
             return success;
         } finally {
