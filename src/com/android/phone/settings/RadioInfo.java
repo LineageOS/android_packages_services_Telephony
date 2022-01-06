@@ -1175,9 +1175,16 @@ public class RadioInfo extends AppCompatActivity {
         if (s == null) s = r.getString(R.string.radioInfo_unknown);
         mSubscriberId.setText(s);
 
-        //FIXME: Replace with a TelephonyManager call
-        s = mPhone.getLine1Number();
-        if (s == null) s = r.getString(R.string.radioInfo_unknown);
+        SubscriptionManager subMgr = getSystemService(SubscriptionManager.class);
+        int subId = mPhone.getSubId();
+        s = subMgr.getPhoneNumber(subId)
+                + " { CARRIER:"
+                + subMgr.getPhoneNumber(subId, SubscriptionManager.PHONE_NUMBER_SOURCE_CARRIER)
+                + ", UICC:"
+                + subMgr.getPhoneNumber(subId, SubscriptionManager.PHONE_NUMBER_SOURCE_UICC)
+                + ", IMS:"
+                + subMgr.getPhoneNumber(subId, SubscriptionManager.PHONE_NUMBER_SOURCE_IMS)
+                + " }";
         mLine1Number.setText(s);
     }
 
