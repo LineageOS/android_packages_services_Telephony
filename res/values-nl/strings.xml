@@ -327,33 +327,33 @@
     <string name="cell_broadcast_sms" msgid="4053449797289031063">"Infodienstbericht"</string>
     <string name="enable_disable_cell_bc_sms" msgid="4759958924031721350">"SMS Infodienstbericht"</string>
     <string name="cell_bc_sms_enable" msgid="2019708772024632073">"SMS Infodienstbericht ingeschakeld"</string>
-    <string name="cell_bc_sms_disable" msgid="1214238639910875347">"Infodienstbericht uitgeschakeld"</string>
+    <string name="cell_bc_sms_disable" msgid="1214238639910875347">"Infodienstbericht staat uit"</string>
     <string name="cb_sms_settings" msgid="6858093721831312036">"Instellingen voor SMS infodienstberichten"</string>
     <string name="enable_disable_emergency_broadcast" msgid="6325655044472196496">"Bericht bij noodsituatie"</string>
     <string name="emergency_broadcast_enable" msgid="5759610647771102442">"Bericht bij noodsituatie ingeschakeld"</string>
-    <string name="emergency_broadcast_disable" msgid="2844904734469323266">"Bericht bij noodsituatie uitgeschakeld"</string>
+    <string name="emergency_broadcast_disable" msgid="2844904734469323266">"Bericht bij noodsituatie staat uit"</string>
     <string name="enable_disable_administrative" msgid="7825925366822117961">"Beheer"</string>
     <string name="administrative_enable" msgid="5717963431079532028">"Beheer ingeschakeld"</string>
-    <string name="administrative_disable" msgid="156796633660118691">"Beheer uitgeschakeld"</string>
+    <string name="administrative_disable" msgid="156796633660118691">"Beheer staat uit"</string>
     <string name="enable_disable_maintenance" msgid="3824817751053035017">"Onderhoud"</string>
     <string name="maintenance_enable" msgid="2646784483222342290">"Onderhoud ingeschakeld"</string>
-    <string name="maintenance_disable" msgid="2121032601497725602">"Onderhoud uitgeschakeld"</string>
+    <string name="maintenance_disable" msgid="2121032601497725602">"Onderhoud staat uit"</string>
     <string name="general_news_settings" msgid="2670499575962080411">"Algemeen nieuws"</string>
     <string name="bf_news_settings" msgid="8571709425370794221">"Zakelijk en financieel nieuws"</string>
     <string name="sports_news_settings" msgid="2684364556989168438">"Sportnieuws"</string>
     <string name="entertainment_news_settings" msgid="4228527702346305543">"Amusementsnieuws"</string>
     <string name="enable_disable_local" msgid="7654175079979415572">"Lokaal"</string>
     <string name="local_enable" msgid="790606890868710629">"Lokaal nieuws ingeschakeld"</string>
-    <string name="local_disable" msgid="7649945293198602877">"Lokaal nieuws uitgeschakeld"</string>
+    <string name="local_disable" msgid="7649945293198602877">"Lokaal nieuws staat uit"</string>
     <string name="enable_disable_regional" msgid="5783403191376564638">"Regionaal"</string>
     <string name="regional_enable" msgid="7730109417536296079">"Regionaal nieuws ingeschakeld"</string>
-    <string name="regional_disable" msgid="3781951818157772545">"Regionaal nieuws uitgeschakeld"</string>
+    <string name="regional_disable" msgid="3781951818157772545">"Regionaal nieuws staat uit"</string>
     <string name="enable_disable_national" msgid="6198481711934897632">"Binnenlands"</string>
     <string name="national_enable" msgid="5159683504138239304">"Binnenlands nieuws ingeschakeld"</string>
-    <string name="national_disable" msgid="8484356368757118987">"Binnenlands nieuws uitgeschakeld"</string>
+    <string name="national_disable" msgid="8484356368757118987">"Binnenlands nieuws staat uit"</string>
     <string name="enable_disable_international" msgid="4204334217211198792">"Buitenlands"</string>
     <string name="international_enable" msgid="8943466745792690340">"Buitenlands nieuws ingeschakeld"</string>
-    <string name="international_disable" msgid="4803498658100318265">"Buitenlands nieuws uitgeschakeld"</string>
+    <string name="international_disable" msgid="4803498658100318265">"Buitenlands nieuws staat uit"</string>
     <string name="list_language_title" msgid="1850167908665485738">"Taal"</string>
     <string name="list_language_summary" msgid="7921756070782277559">"De taal voor het nieuws selecteren"</string>
   <string-array name="list_language_entries">
@@ -377,7 +377,7 @@
     <string name="list_language_dtitle" msgid="7457017255633587047">"Talen"</string>
     <string name="enable_disable_local_weather" msgid="7734933941872511543">"Lokaal weerbericht"</string>
     <string name="local_weather_enable" msgid="2143929735295254729">"Lokaal weerbericht ingeschakeld"</string>
-    <string name="local_weather_disable" msgid="4209936355998349647">"Lokaal weerbericht uitgeschakeld"</string>
+    <string name="local_weather_disable" msgid="4209936355998349647">"Lokaal weerbericht staat uit"</string>
     <string name="enable_disable_atr" msgid="821714821057385390">"Verkeersberichten"</string>
     <string name="atr_enable" msgid="1799097759998768186">"Verkeersberichten ingeschakeld"</string>
     <string name="atr_disable" msgid="6456758173289065766">"Verkeersberichten uitgeschakeld"</string>
@@ -392,7 +392,7 @@
     <string name="lodgings_disable" msgid="5145649659459722661">"Overnachtingen uitgeschakeld"</string>
     <string name="enable_disable_retail_directory" msgid="9095153426757081972">"Winkeloverzicht"</string>
     <string name="retail_directory_enable" msgid="2532176568755452171">"Winkeloverzicht ingeschakeld"</string>
-    <string name="retail_directory_disable" msgid="7242451210736299193">"Winkeloverzicht uitgeschakeld"</string>
+    <string name="retail_directory_disable" msgid="7242451210736299193">"Winkeloverzicht staat uit"</string>
     <string name="enable_disable_advertisements" msgid="8704125663718797151">"Advertenties"</string>
     <string name="advertisements_enable" msgid="8651409664217899145">"Advertenties ingeschakeld"</string>
     <string name="advertisements_disable" msgid="2999957360508271492">"Advertenties uitgeschakeld"</string>
@@ -404,10 +404,10 @@
     <string name="eo_disable" msgid="3955421278929647485">"Vacatures uitgeschakeld"</string>
     <string name="enable_disable_mhh" msgid="715930476289202466">"Medisch, gezondheid en ziekenhuis"</string>
     <string name="mhh_enable" msgid="7224396815285147008">"Medisch, gezondheid en ziekenhuis ingeschakeld"</string>
-    <string name="mhh_disable" msgid="5503643028885686265">"Medisch, gezondheid en ziekenhuis uitgeschakeld"</string>
+    <string name="mhh_disable" msgid="5503643028885686265">"Medisch, gezondheid en ziekenhuis staat uit"</string>
     <string name="enable_disable_technology_news" msgid="2794845609698078400">"Technologienieuws"</string>
     <string name="technology_news_enable" msgid="1908991199492598311">"Technologienieuws ingeschakeld"</string>
-    <string name="technology_news_disable" msgid="8388582607149800889">"Technologienieuws uitgeschakeld"</string>
+    <string name="technology_news_disable" msgid="8388582607149800889">"Technologienieuws staat uit"</string>
     <string name="enable_disable_multi_category" msgid="5958248155437940625">"Meerdere categorieën"</string>
     <string name="multi_category_enable" msgid="4531915767817483960">"Meerdere categorieën ingeschakeld"</string>
     <string name="multi_category_disable" msgid="6325934413701238104">"Meerdere categorieën uitgeschakeld"</string>
@@ -617,7 +617,7 @@
     <string name="ota_hfa_activation_title" msgid="3300556778212729671">"Activeren..."</string>
     <string name="ota_hfa_activation_dialog_message" msgid="7921718445773342996">"De telefoon activeert je mobiele-dataservice.\n\nDit kan tot vijf minuten duren."</string>
     <string name="ota_skip_activation_dialog_title" msgid="7666611236789203797">"Activering overslaan?"</string>
-    <string name="ota_skip_activation_dialog_message" msgid="6691722887019708713">"Als je de activering overslaat, kun je niet bellen of verbinding maken met mobiele-datanetwerken (je kunt wel verbinding maken met wifi-netwerken). Tot je de telefoon activeert, wordt je gevraagd deze te activeren telkens wanneer je de telefoon inschakelt."</string>
+    <string name="ota_skip_activation_dialog_message" msgid="6691722887019708713">"Als je de activering overslaat, kun je niet bellen of verbinding maken met mobiele-datanetwerken (je kunt wel verbinding maken met wifi-netwerken). Tot je de telefoon activeert, wordt je gevraagd deze te activeren telkens wanneer je de telefoon aanzet."</string>
     <string name="ota_skip_activation_dialog_skip_label" msgid="5908029466817825633">"Overslaan"</string>
     <string name="ota_activate" msgid="7939695753665438357">"Activeren"</string>
     <string name="ota_title_activate_success" msgid="1272135024761004889">"De telefoon is geactiveerd."</string>
@@ -635,7 +635,7 @@
     <string name="ecm_exit_dialog" msgid="4200691880721429078">"EcmExitDialog"</string>
     <string name="phone_entered_ecm_text" msgid="8431238297843035842">"Modus voor noodoproepen ingeschakeld"</string>
     <string name="phone_in_ecm_notification_title" msgid="6825016389926367946">"Modus voor noodoproepen"</string>
-    <string name="phone_in_ecm_call_notification_text" msgid="653972232922670335">"Gegevensverbinding uitgeschakeld"</string>
+    <string name="phone_in_ecm_call_notification_text" msgid="653972232922670335">"Gegevensverbinding staat uit"</string>
     <string name="phone_in_ecm_notification_complete_time" msgid="7341624337163082759">"Geen dataverbinding tot <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="5425906903766466743">
       <item quantity="other">De telefoon bevindt zich <xliff:g id="COUNT_1">%s</xliff:g> minuten in de modus voor noodoproepen. In deze modus kunnen geen apps worden gebruikt waarvoor een gegevensverbinding nodig is. Wil je nu afsluiten?</item>
@@ -828,10 +828,10 @@
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"Kan gesprek niet plaatsen omdat er een niet-beantwoord inkomend gesprek is. Beantwoord of weiger het inkomende gesprek voordat je een nieuw gesprek plaatst."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"Kan gesprek niet plaatsen omdat bellen is uitgezet via de systeemeigenschap ro.telephony.disable-call."</string>
     <string name="callFailed_too_many_calls" msgid="5379426826618582180">"Kan gesprek niet plaatsen omdat er al twee actieve gesprekken zijn. Verbreek de verbinding in een van de gesprekken of voeg ze samen tot een conferencecall voordat je een nieuw gesprek plaatst."</string>
-    <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"Als je <xliff:g id="SUPP_SERVICE">%s</xliff:g> wilt gebruiken, zorg je dat je mobiele data hebt ingeschakeld. Je kunt dit wijzigen via de mobiele netwerkinstellingen."</string>
-    <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"Als je <xliff:g id="SUPP_SERVICE">%s</xliff:g> wilt gebruiken, zorg je dat je mobiele data en dataroaming hebt ingeschakeld. Je kunt dit wijzigen via de mobiele netwerkinstellingen."</string>
-    <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"Als je <xliff:g id="SUPP_SERVICE">%1$s</xliff:g> wilt gebruiken, zorg je dat je mobiele data hebt ingeschakeld voor sim <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. Je kunt dit wijzigen via de mobiele netwerkinstellingen."</string>
-    <string name="supp_service_over_ut_precautions_roaming_dual_sim" msgid="6627654855191817965">"Als je <xliff:g id="SUPP_SERVICE">%1$s</xliff:g> wilt gebruiken, zorg je dat je mobiele data en dataroaming hebt ingeschakeld voor sim <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. Je kunt dit wijzigen via de mobiele netwerkinstellingen."</string>
+    <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"Als je <xliff:g id="SUPP_SERVICE">%s</xliff:g> wilt gebruiken, zorg je dat je mobiele data hebt aangezet. Je kunt dit wijzigen via de mobiele netwerkinstellingen."</string>
+    <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"Als je <xliff:g id="SUPP_SERVICE">%s</xliff:g> wilt gebruiken, zorg je dat je mobiele data en dataroaming hebt aangezet. Je kunt dit wijzigen via de mobiele netwerkinstellingen."</string>
+    <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"Als je <xliff:g id="SUPP_SERVICE">%1$s</xliff:g> wilt gebruiken, zorg je dat je mobiele data hebt aangezet voor sim <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. Je kunt dit wijzigen via de mobiele netwerkinstellingen."</string>
+    <string name="supp_service_over_ut_precautions_roaming_dual_sim" msgid="6627654855191817965">"Als je <xliff:g id="SUPP_SERVICE">%1$s</xliff:g> wilt gebruiken, zorg je dat je mobiele data en dataroaming hebt aangezet voor sim <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. Je kunt dit wijzigen via de mobiele netwerkinstellingen."</string>
     <string name="supp_service_over_ut_precautions_dialog_dismiss" msgid="5934541487903081652">"Sluiten"</string>
     <string name="radio_info_data_connection_enable" msgid="6183729739783252840">"Dataverbinding aanzetten"</string>
     <string name="radio_info_data_connection_disable" msgid="6404751291511368706">"Dataverbinding uitzetten"</string>
