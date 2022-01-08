@@ -72,7 +72,5 @@
     <string name="no_internet_available">Pa facer una llamada SIP, comprueba la conexón a internet.</string>
     <string name="no_wifi_available">Precises tar coneutáu a una rede Wi-FI pa facer llamaes SIP (usa los axustes de Conexones y redes).</string>
     <string name="no_voip">Nun se sofiten les llamaes SIP</string>
-    <string translatable="true" name="sip_system_decide">Automáticu</string>
-    <string translatable="true" name="sip_always_send_keepalive">Unviar siempres</string>
     <string name="sip_connection_service_label">Llamaes SIP integraes</string>
 </resources>
