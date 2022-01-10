@@ -75,7 +75,7 @@
     <string name="phone_accounts_configure_account_settings" msgid="6622119715253196586">"アカウントを設定"</string>
     <string name="phone_accounts_all_calling_accounts" msgid="1609600743500618823">"すべての通話アカウント"</string>
     <string name="phone_accounts_all_calling_accounts_summary" msgid="2214134955430107240">"通話できるアカウントを選択"</string>
-    <string name="wifi_calling" msgid="3650509202851355742">"Wi-Fi通話"</string>
+    <string name="wifi_calling" msgid="3650509202851355742">"Wi-Fi 通話"</string>
     <string name="connection_service_default_label" msgid="7332739049855715584">"組み込みの接続サービス"</string>
     <string name="voicemail" msgid="7697769412804195032">"ボイスメール"</string>
     <string name="voicemail_settings_with_label" msgid="4228431668214894138">"ボイスメール（<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>）"</string>
@@ -490,7 +490,7 @@
     <string name="newPinLabel" msgid="3585899083055354732">"新しいPIN"</string>
     <string name="confirmPinLabel" msgid="7783531218662473778">"新しいPINを確認"</string>
     <string name="badPin" msgid="4549286285015892321">"入力した古いPINは正しくありません。入力し直してください。"</string>
-    <string name="mismatchPin" msgid="1467254768290323845">"入力したPINは一致しません。入力し直してください。"</string>
+    <string name="mismatchPin" msgid="1467254768290323845">"入力した PIN が一致しません。入力し直してください。"</string>
     <string name="invalidPin" msgid="7363723429414001979">"4～8桁の数字のPINを入力してください。"</string>
     <string name="disable_sim_pin" msgid="3112303905548613752">"SIM PINの消去"</string>
     <string name="enable_sim_pin" msgid="445461050748318980">"SIM PINの設定"</string>
@@ -537,6 +537,7 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"通話を発信するには、モバイル ネットワークを ON にし、機内モードまたはバッテリー セーバー モードを OFF にしてください。"</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"電話をかけるには機内モードをオフにしてください。"</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"電話をかけるには、機内モードをオフにするか無線ネットワークに接続してください。"</string>
+    <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"スマートフォンが熱くなりすぎています"</b>\n\n"この通話を完了できません。スマートフォンの熱が冷めてから、もう一度お試しください。\n\n緊急通報は通常どおり発信できます。"</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"緊急通報以外の通話を発信するには、緊急通報待機モードを終了してください。"</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"ご加入の通信サービスがありません"</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"モバイルネットワークが利用できません。"</string>
@@ -681,7 +682,7 @@
     <string name="sim_description_default" msgid="7474671114363724971">"SIMカード、スロット: <xliff:g id="SLOT_ID">%s</xliff:g>"</string>
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"ユーザー補助機能"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"Wi-Fi 通話の着信"</string>
-    <string name="status_hint_label_wifi_call" msgid="942993035689809853">"Wi-Fi通話"</string>
+    <string name="status_hint_label_wifi_call" msgid="942993035689809853">"Wi-Fi 通話"</string>
     <string name="emergency_action_launch_hint" msgid="2762016865340891314">"開くにはもう一度タップしてください"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"メッセージのデコード中にエラーが発生しました。"</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"SIMカードでサービスが有効になり、スマートフォンのローミング機能が更新されています。"</string>
@@ -826,7 +827,7 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"すでに別の通話を発信中のため、新しく通話を発信することはできません。"</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"通話を着信中のため、新しく通話を発信することはできません。着信中の通話に応答するか、通話を拒否すると、新しく通話を発信できるようになります。"</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"ro.telephony.disable-call システム プロパティを使用して通話機能が無効に設定されているため、通話を発信することはできません。"</string>
-    <string name="callFailed_too_many_calls" msgid="5379426826618582180">"通話中の電話がすでに 2 件あるため、新しく通話を発信することはできません。通話中の電話のどちらかを終了するか、2 件の通話を統合してグループ通話にすると、新しく通話を発信できるようになります。"</string>
+    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"進行中の通話がすでに 2 件あるため、新しく通話を発信することはできません。進行中の通話のどちらかを終了するか、2 件の通話を統合してグループ通話にすると、新しく通話を発信できるようになります。"</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"<xliff:g id="SUPP_SERVICE">%s</xliff:g>を利用するには、モバイルデータが ON になっている必要があります。モバイルデータの ON と OFF の切り替えは、モバイル ネットワーク設定で行えます。"</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"<xliff:g id="SUPP_SERVICE">%s</xliff:g>を利用するには、モバイルデータとデータ ローミングが ON になっている必要があります。これらの ON と OFF の切り替えは、モバイル ネットワーク設定で行えます。"</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"<xliff:g id="SUPP_SERVICE">%1$s</xliff:g>を利用するには、SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g> のモバイルデータが ON になっている必要があります。モバイルデータの ON と OFF の切り替えは、モバイル ネットワーク設定で行えます。"</string>
@@ -914,8 +915,6 @@
     <string name="radio_info_nr_available" msgid="1321318331361249997">"NR 利用可能:"</string>
     <string name="radio_info_nr_state" msgid="1337571996788535356">"NR ステータス:"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR 周波数:"</string>
-    <!-- no translation found for radio_info_network_slicing_config (7675131833885031563) -->
-    <skip />
     <string name="band_mode_title" msgid="7988822920724576842">"無線バンドモードの設定"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"バンドリストを読み込み中…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"設定"</string>

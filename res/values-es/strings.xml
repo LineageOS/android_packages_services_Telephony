@@ -92,7 +92,7 @@
     <string name="additional_cdma_call_settings" msgid="2178016561980611304">"Ajustes adicionales de llamadas CDMA"</string>
     <string name="sum_cdma_call_settings" msgid="3185825305136993636">"Ajustes adicionales de llamadas solo CDMA"</string>
     <string name="labelNwService" msgid="6015891883487125120">"Ajustes del servicio de red"</string>
-    <string name="labelCallerId" msgid="2090540744550903172">"ID de llamada"</string>
+    <string name="labelCallerId" msgid="2090540744550903172">"Identificación de llamada"</string>
     <string name="sum_loading_settings" msgid="434063780286688775">"Cargando ajustes…"</string>
     <string name="sum_hide_caller_id" msgid="131100328602371933">"Número oculto en llamadas salientes"</string>
     <string name="sum_show_caller_id" msgid="3571854755324664591">"Número mostrado en llamadas salientes"</string>
@@ -537,6 +537,7 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Activa la red móvil o desactiva el modo avión o el modo de ahorro de batería para hacer una llamada."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Desactiva el modo avión parra hacer llamadas."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Desactiva el modo avión o conéctate a una red inalámbrica para hacer llamadas."</string>
+    <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"El teléfono está demasiado caliente"</b>\n\n"No se ha podido completar esta llamada. Vuelve a intentarlo cuando el teléfono se enfríe.\n\nNo obstante, puedes hacer llamadas de emergencia."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Sal del modo de devolución de llamada de emergencia para hacer otro tipo de llamada."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"No se ha podido conectar a la red"</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"La red móvil no está disponible."</string>
@@ -826,7 +827,7 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"No se puede llamar porque ya se está realizando otra llamada."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"No se puede llamar porque hay una llamada entrante sin responder. Contéstala o recházala para poder llamar de nuevo."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"No se puede llamar porque se han inhabilitado las llamadas mediante la propiedad del sistema ro.telephony.disable-call."</string>
-    <string name="callFailed_too_many_calls" msgid="5379426826618582180">"No se puede llamar porque ya hay dos llamadas en curso. Interrumpe una de ellas o combínalas en una conferencia para poder llamar de nuevo."</string>
+    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"No se puede llamar porque ya hay dos llamadas en curso. Interrumpe una de ellas o combínalas en una conferencia antes de hacer otra llamada."</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"Para utilizar <xliff:g id="SUPP_SERVICE">%s</xliff:g>, los datos móviles deben estar activados. Puedes cambiar esta opción en los ajustes de red móvil."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"Para utilizar <xliff:g id="SUPP_SERVICE">%s</xliff:g>, los datos móviles y el roaming de datos deben estar activados. Puedes cambiar estas opciones en los ajustes de red móvil."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"Para utilizar <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>, los datos móviles deben estar activados en la SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. Puedes cambiar esta opción en los ajustes de red móvil."</string>
@@ -914,8 +915,6 @@
     <string name="radio_info_nr_available" msgid="1321318331361249997">"NR disponible:"</string>
     <string name="radio_info_nr_state" msgid="1337571996788535356">"Estado de NR:"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"Frecuencia de NR:"</string>
-    <!-- no translation found for radio_info_network_slicing_config (7675131833885031563) -->
-    <skip />
     <string name="band_mode_title" msgid="7988822920724576842">"Establecer modo de banda de señal móvil"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Cargando lista de bandas…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Seleccionar"</string>

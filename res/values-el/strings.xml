@@ -537,6 +537,7 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Ενεργοποιήστε το δίκτυο κινητής τηλεφωνίας, απενεργοποιήστε τη λειτουργία πτήσης ή τη λειτουργία εξοικονόμησης μπαταρίας, για να πραγματοποιήσετε μια κλήση."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Απενεργοποιήστε τη λειτουργία κλήσης για να πραγματοποιήσετε μια κλήση."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Απενεργοποιήστε τη λειτουργία πτήσης ή συνδεθείτε σε ένα ασύρματο δίκτυο για να πραγματοποιήσετε μια κλήση."</string>
+    <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"Το τηλέφωνο έχει υπερθερμανθεί"</b>\n\n"Δεν είναι δυνατή η ολοκλήρωση αυτής της κλήσης. Δοκιμάστε ξανά όταν η θερμοκρασία της συσκευής επανέλθει σε φυσιολογικά επίπεδα.\n\nΩστόσο, μπορείτε ακόμα να πραγματοποιείτε κλήσεις έκτακτης ανάγκης."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Πραγματοποιήστε έξοδο από τη λειτουργία επιστροφής κλήσης έκτακτης ανάγκης για να πραγματοποιήσετε μια κλήση μη έκτακτης ανάγκης."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"Δεν έχετε εγγραφεί στο δίκτυο."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"Το δίκτυο κινητής τηλεφωνίας δεν είναι διαθέσιμο."</string>
@@ -820,13 +821,13 @@
     <string name="supp_service_call_resumed" msgid="3786864005920743546">"Η κλήση συνεχίστηκε."</string>
     <string name="supp_service_deflected_call" msgid="7565979024562921707">"Έγινε εκτροπή της κλήσης."</string>
     <string name="supp_service_forwarded_call" msgid="6475776013771821457">"Έγινε προώθηση της κλήσης."</string>
-    <string name="supp_service_conference_call" msgid="4004193534408317148">"Συμμετοχή σε κλήση διάσκεψης."</string>
+    <string name="supp_service_conference_call" msgid="4004193534408317148">"Συμμετοχή σε τηλεδιάσκεψη."</string>
     <string name="supp_service_held_call_released" msgid="2847835124639112410">"Έγινε αποδέσμευση της κλήσης σε κράτηση."</string>
     <string name="callFailed_otasp_provisioning_in_process" msgid="3345666183602879326">"Δεν είναι δυνατή η πραγματοποίηση κλήσης, καθώς εκτελείται παροχή υπηρεσιών στη συσκευή αυτήν τη στιγμή."</string>
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"Δεν είναι δυνατή η πραγματοποίηση της κλήσης, επειδή βρίσκεται ήδη σε εξέλιξη εξερχόμενη κλήση."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"Δεν είναι δυνατή η πραγματοποίηση κλήσης, επειδή υπάρχει αναπάντητη εισερχόμενη κλήση. Απαντήστε ή απορρίψτε την εισερχόμενη κλήση, προτού πραγματοποιήσετε μια νέα κλήση."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"Δεν είναι δυνατή η πραγματοποίηση κλήσης επειδή η κλήση έχει απενεργοποιηθεί μέσω της ιδιότητας συστήματος ro.telephony.disable-call."</string>
-    <string name="callFailed_too_many_calls" msgid="5379426826618582180">"Δεν είναι δυνατή η πραγματοποίηση κλήσης, επειδή υπάρχουν ήδη δύο κλήσεις σε εξέλιξη. Αποσυνδέστε μια από τις κλήσεις ή συγχωνεύστε τες σε μια διάσκεψη, προτού πραγματοποιήσετε μια νέα κλήση."</string>
+    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"Δεν είναι δυνατή η πραγματοποίηση κλήσης, επειδή υπάρχουν ήδη δύο κλήσεις σε εξέλιξη. Αποσυνδέστε μια από τις κλήσεις ή συγχωνεύστε τες σε μια συνδιάσκεψη, προτού πραγματοποιήσετε μια νέα κλήση."</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"Για να χρησιμοποιήσετε την υπηρεσία \"<xliff:g id="SUPP_SERVICE">%s</xliff:g>\", βεβαιωθείτε ότι τα δεδομένα κινητής τηλεφωνίας είναι ενεργοποιημένα. Μπορείτε να το αλλάξετε αυτό από τις ρυθμίσεις δικτύου κινητής τηλεφωνίας."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"Για να χρησιμοποιήσετε την υπηρεσία \"<xliff:g id="SUPP_SERVICE">%s</xliff:g>\", βεβαιωθείτε ότι τα δεδομένα κινητής τηλεφωνίας, καθώς και η περιαγωγή δεδομένων, είναι ενεργοποιημένα. Μπορείτε να το αλλάξετε αυτό από τις ρυθμίσεις δικτύου κινητής τηλεφωνίας."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"Για να χρησιμοποιήσετε την υπηρεσία \"<xliff:g id="SUPP_SERVICE">%1$s</xliff:g>\", βεβαιωθείτε ότι τα δεδομένα κινητής τηλεφωνίας είναι ενεργοποιημένα για τη SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. Μπορείτε να το αλλάξετε αυτό από τις ρυθμίσεις δικτύου κινητής τηλεφωνίας."</string>
@@ -914,8 +915,6 @@
     <string name="radio_info_nr_available" msgid="1321318331361249997">"NR διαθέσιμο:"</string>
     <string name="radio_info_nr_state" msgid="1337571996788535356">"Κατάσταση NR:"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"Συχνότητα NR:"</string>
-    <!-- no translation found for radio_info_network_slicing_config (7675131833885031563) -->
-    <skip />
     <string name="band_mode_title" msgid="7988822920724576842">"Ρύθμιση λειτουργίας ζώνης συχνοτήτων πομπού"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Φόρτωση λίστας ζωνών…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Ορισμός"</string>

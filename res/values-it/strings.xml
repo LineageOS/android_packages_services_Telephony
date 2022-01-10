@@ -297,7 +297,7 @@
     <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"Account SIP deprecati trovati e rimossi"</string>
     <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"Le chiamate SIP non sono più supportate dalla piattaforma Android.\nI tuoi account SIP esistenti (<xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g>) sono stati rimossi.\nConferma l\'impostazione del tuo account predefinito per le chiamate."</string>
     <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"Vai alle impostazioni"</string>
-    <string name="data_usage_title" msgid="8438592133893837464">"Utilizzo dei dati delle app"</string>
+    <string name="data_usage_title" msgid="8438592133893837464">"Utilizzo dati delle app"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"Dati mobili usati: <xliff:g id="ID_1">%1$s</xliff:g> nel periodo <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"Avanzate"</string>
     <string name="carrier_settings_euicc" msgid="1190237227261337749">"Operatore"</string>
@@ -537,6 +537,7 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Attiva la rete mobile e disattiva la modalità aereo o il risparmio energetico per effettuare una chiamata."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Disattiva la modalità aereo per effettuare una chiamata."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Disattiva la modalità aereo o connettiti a una rete wireless per effettuare una chiamata."</string>
+    <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"Telefono surriscaldato"</b>\n\n"Impossibile completare la chiamata. Riprova quando il telefono si sarà raffreddato.\n\nPuoi comunque effettuare chiamate di emergenza."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Per effettuare chiamate non di emergenza, esci dalla modalità di richiamata di emergenza."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"Non registrato sulla rete."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"Rete cellulare non disponibile."</string>
@@ -637,12 +638,12 @@
     <string name="phone_in_ecm_call_notification_text" msgid="653972232922670335">"Connessione dati disabilitata"</string>
     <string name="phone_in_ecm_notification_complete_time" msgid="7341624337163082759">"Nessuna connessione dati fino alle ore <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
     <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="5425906903766466743">
+      <item quantity="one">The phone will be in Emergency Callback mode for <xliff:g id="COUNT_1">%s</xliff:g> minutes. While in this mode no applications using a data connection can be used. Do you want to exit now?</item>
       <item quantity="other">Il telefono sarà in modalità Richiamata di emergenza per <xliff:g id="COUNT_1">%s</xliff:g> minuti. In questa modalità non è possibile utilizzare applicazioni che impiegano una connessione dati. Vuoi uscire ora?</item>
-      <item quantity="one">Il telefono sarà in modalità Richiamata di emergenza per <xliff:g id="COUNT_0">%s</xliff:g> minuto. In questa modalità non è possibile utilizzare app che impiegano una connessione dati. Vuoi uscire ora?</item>
     </plurals>
     <plurals name="alert_dialog_not_avaialble_in_ecm" formatted="false" msgid="1152682528741457004">
+      <item quantity="one">The selected action isn\'t available while in the Emergency Callback mode. The phone will be in this mode for <xliff:g id="COUNT_1">%s</xliff:g> minutes. Do you want to exit now?</item>
       <item quantity="other">L\'azione selezionata non è disponibile in modalità Richiamata di emergenza. Il telefono sarà in questa modalità per <xliff:g id="COUNT_1">%s</xliff:g> minuti. Vuoi uscire ora?</item>
-      <item quantity="one">L\'azione selezionata non è disponibile in modalità Richiamata di emergenza. Il telefono sarà in questa modalità per <xliff:g id="COUNT_0">%s</xliff:g> minuto. Vuoi uscire ora?</item>
     </plurals>
     <string name="alert_dialog_in_ecm_call" msgid="1207545603149771978">"L\'azione selezionata non è disponibile in modalità di chiamata di emergenza."</string>
     <string name="progress_dialog_exiting_ecm" msgid="9159080081676927217">"Uscita dalla modalità di richiamata di emergenza"</string>
@@ -652,8 +653,8 @@
     <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"Il telefono è in modalità di richiamata di emergenza"</string>
     <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"Fino alle ore <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
     <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
+      <item quantity="one">Il telefono sarà in modalità di richiamata di emergenza per <xliff:g id="COUNT_1">%s</xliff:g> minuti.\nVuoi uscire ora?</item>
       <item quantity="other">Il telefono sarà in modalità di richiamata di emergenza per <xliff:g id="COUNT_1">%s</xliff:g> minuti.\nVuoi uscire ora?</item>
-      <item quantity="one">Il telefono sarà in modalità di richiamata di emergenza per <xliff:g id="COUNT_0">%s</xliff:g> minuto.\nVuoi uscire ora?</item>
     </plurals>
     <string name="voicemail_provider" msgid="4158806657253745294">"Servizio"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"Configurazione"</string>
@@ -667,7 +668,7 @@
     <string name="description_dial_button" msgid="8614631902795087259">"componi"</string>
     <string name="description_dialpad_button" msgid="7395114120463883623">"mostra tastierino"</string>
     <string name="pane_title_emergency_dialpad" msgid="3627372514638694401">"Tastierino di emergenza"</string>
-    <string name="voicemail_visual_voicemail_switch_title" msgid="6610414098912832120">"Leggi la segreteria"</string>
+    <string name="voicemail_visual_voicemail_switch_title" msgid="6610414098912832120">"Lettura della segreteria"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="7005128605986960003">"Imposta PIN"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="4633077715231764435">"Cambia PIN"</string>
     <string name="preference_category_ringtone" msgid="8787281191375434976">"Suoneria e vibrazione"</string>
@@ -826,7 +827,7 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"Impossibile effettuare una chiamata perché è già presente un\'altra chiamata in uscita in composizione."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"Impossibile effettuare una chiamata perché è presente una chiamata in arrivo senza risposta. Rispondi o rifiuta la chiamata in arrivo prima di effettuare una nuova chiamata."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"Impossibile effettuare una chiamata perché le chiamate sono state disattivate utilizzando la proprietà di sistema ro.telephony.disable-call."</string>
-    <string name="callFailed_too_many_calls" msgid="5379426826618582180">"Impossibile effettuare una chiamata perché sono già presenti due chiamate in corso. Unisci le chiamate in una conferenza o scollegane una prima di effettuare una nuova chiamata."</string>
+    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"Impossibile effettuare una chiamata perché due chiamate sono già in corso. Unisci le chiamate in una conferenza o scollegane una prima di effettuare una nuova chiamata."</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"Per utilizzare <xliff:g id="SUPP_SERVICE">%s</xliff:g>, assicurati che i dati mobili siano attivi. Puoi modificare questa opzione nelle impostazioni della rete mobile."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"Per utilizzare <xliff:g id="SUPP_SERVICE">%s</xliff:g>, assicurati che i dati mobili e il roaming dei dati siano attivi. Puoi modificare queste opzioni nelle impostazioni della rete mobile."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"Per utilizzare <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>, assicurati che i dati mobili siano attivi per la SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. Puoi modificare questa opzione nelle impostazioni della rete mobile."</string>
@@ -914,7 +915,6 @@
     <string name="radio_info_nr_available" msgid="1321318331361249997">"NR disponibile:"</string>
     <string name="radio_info_nr_state" msgid="1337571996788535356">"Stato NR:"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"Frequenza NR:"</string>
-    <string name="radio_info_network_slicing_config" msgid="7675131833885031563">"Configurazione network slicing:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Imposta modalità banda radio"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Caricamento elenco bande…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Imposta"</string>

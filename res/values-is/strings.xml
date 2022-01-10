@@ -537,6 +537,7 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Kveiktu á farsímakerfie eða slökktu á flugstillingu eða rafhlöðusparnaði til að hringja."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Slökktu á flugstillingu til að hringja."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Slökktu á flugstillingu eða tengstu þráðlausu neti til að hringja."</string>
+    <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"Síminn er of heitur"</b>\n\n"Ekki er hægt að ljúka þessu símtali. Reyndu aftur þegar síminn hefur kólnað.\n\nÞú getur ennþá hringt neyðarsímtöl."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Hætta í stillingu fyrir svarhringingu neyðarsímtala til að hringja símtal sem ekki er neyðarsímtal."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"Ekki skráð á símkerfi."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"Farsímakerfi ekki tiltækt."</string>
@@ -826,7 +827,7 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"Ekki er hægt að hringja símtal þar sem þegar er verið að hringja annað símtal."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"Ekki er hægt að hringja símtal þar sem ósvarað símtal er að berast. Svaraðu eða hafnaðu símtalinu áður en þú hringir nýtt símtal."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"Ekki er hægt að hringja símtal þar sem símtöl hafa verið gerð óvirk með því að nota kerfiseiginleikann ro.telephony.disable-call."</string>
-    <string name="callFailed_too_many_calls" msgid="5379426826618582180">"Ekki er hægt að hringja símtal þar sem þegar eru tvö símtöl í gangi. Aftengdu annað símtalið eða sameinaðu þau í símafund áður en þú hringir nýtt símtal."</string>
+    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"Ekki er hægt að hringja símtal vegna þess að þegar eru tvö símtöl í gangi. Aftengdu annað símtalið eða sameinaðu þau í símafund áður en þú hringir nýtt símtal."</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"Til að nota <xliff:g id="SUPP_SERVICE">%s</xliff:g> skaltu ganga úr skugga um að kveikt sé á farsímagögnum. Þú getur breytt þessu í stillingum farsímakerfis."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"Til að nota <xliff:g id="SUPP_SERVICE">%s</xliff:g> skaltu ganga úr skugga um að kveikt sé á farsímagögnum og gagnareiki. Þú getur breytt þessu í stillingum farsímakerfis."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"Til að nota <xliff:g id="SUPP_SERVICE">%1$s</xliff:g> skaltu ganga úr skugga um að kveikt sé á farsímagögnum fyrir SIM-kortið <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. Þú getur breytt þessu í stillingum farsímakerfis."</string>
@@ -914,8 +915,6 @@
     <string name="radio_info_nr_available" msgid="1321318331361249997">"NR tiltækt:"</string>
     <string name="radio_info_nr_state" msgid="1337571996788535356">"NR staða:"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR tíðni:"</string>
-    <!-- no translation found for radio_info_network_slicing_config (7675131833885031563) -->
-    <skip />
     <string name="band_mode_title" msgid="7988822920724576842">"Velja útvarpstíðni"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Hleður lista yfir tíðnisvið…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Stilla"</string>

@@ -537,6 +537,7 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"전화를 걸려면 모바일 네트워크를 사용 설정하고 비행기 모드 또는 절전 모드를 사용 중지하세요."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"전화를 걸려면 비행기 모드를 사용 중지하세요."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"전화를 걸려면 비행기 모드를 사용 중지하거나 무선 네트워크에 연결하세요."</string>
+    <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"휴대전화의 온도가 너무 높습니다."</b>\n\n"현재 전화를 걸 수 없습니다. 휴대전화의 온도가 내려가면 다시 시도해 보세요.\n\n긴급 전화 기능은 계속해서 사용할 수 있습니다."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"일반 전화를 걸려면 긴급 콜백 모드를 해제하세요."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"네트워크에서 등록되지 않았습니다."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"모바일 네트워크를 사용할 수 없습니다."</string>
@@ -826,7 +827,7 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"이미 다른 발신 전화에서 다이얼 중이므로 전화를 걸 수 없습니다."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"받지 않은 수신 전화가 있으므로 전화를 걸 수 없습니다. 새로 전화를 걸기 전에 수신 전화를 받거나 거절하세요."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"ro.telephony.disable-call 시스템 속성을 사용하여 통화 기능이 사용 중지되었으므로 전화를 걸 수 없습니다."</string>
-    <string name="callFailed_too_many_calls" msgid="5379426826618582180">"이미 진행 중인 두 건의 통화가 있으므로 전화를 걸 수 없습니다. 새로 전화를 걸기 전에 통화 중 하나를 연결 해제하거나 두 통화를 다자간 통화로 병합하세요."</string>
+    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"이미 진행 중인 두 건의 통화가 있으므로 전화를 걸 수 없습니다. 새로 전화를 걸기 전에 통화 중 하나를 연결 해제하거나 두 통화를 다자간 통화로 병합하세요."</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"<xliff:g id="SUPP_SERVICE">%s</xliff:g>을(를) 사용하려면 모바일 데이터가 사용 설정되어 있는지 확인하세요. 이 설정은 모바일 네트워크 설정에서 변경할 수 있습니다."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"<xliff:g id="SUPP_SERVICE">%s</xliff:g>을(를) 사용하려면 모바일 데이터 및 데이터 로밍이 사용 설정되어 있는지 확인하세요. 이 설정은 모바일 네트워크 설정에서 변경할 수 있습니다."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"<xliff:g id="SUPP_SERVICE">%1$s</xliff:g>을(를) 사용하려면 SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g>에 모바일 데이터가 사용 설정되어 있는지 확인하세요. 이 설정은 모바일 네트워크 설정에서 변경할 수 있습니다."</string>
@@ -914,8 +915,6 @@
     <string name="radio_info_nr_available" msgid="1321318331361249997">"NR 사용 가능:"</string>
     <string name="radio_info_nr_state" msgid="1337571996788535356">"NR 상태:"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR 빈도:"</string>
-    <!-- no translation found for radio_info_network_slicing_config (7675131833885031563) -->
-    <skip />
     <string name="band_mode_title" msgid="7988822920724576842">"무선 주파수 대역 모드 설정"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"대역 목록 로드 중…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"설정"</string>

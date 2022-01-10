@@ -32,7 +32,7 @@
     <string name="mmiCancelled" msgid="5339191899200678272">"Código MMI cancelado"</string>
     <string name="cancel" msgid="8984206397635155197">"Cancelar"</string>
     <string name="enter_input" msgid="6193628663039958990">"A mensagem USSD deve ter de <xliff:g id="MIN_LEN">%1$d</xliff:g> a <xliff:g id="MAX_LEN">%2$d</xliff:g> caracteres. Tente novamente."</string>
-    <string name="manageConferenceLabel" msgid="8415044818156353233">"Gerenciar teleconferência"</string>
+    <string name="manageConferenceLabel" msgid="8415044818156353233">"Gerenciar conferência"</string>
     <string name="ok" msgid="7818974223666140165">"OK"</string>
     <string name="audio_mode_speaker" msgid="243689733219312360">"Alto-falante"</string>
     <string name="audio_mode_earpiece" msgid="2823700267171134282">"Minifone do aparelho"</string>
@@ -537,6 +537,7 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Ative a rede móvel e desative o modo avião ou o modo de economia de bateria para ligar."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Desative o modo avião para fazer uma chamada."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Desative o modo avião ou conecte-se a uma rede sem fio para fazer uma chamada."</string>
+    <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"O smartphone está muito quente"</b>\n\n"Não é possível completar esta chamada. Tente de novo quando seu smartphone esfriar.\n\nVocê ainda pode fazer chamadas de emergência."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Saia do modo de retorno de chamada de emergência para fazer uma chamada que não seja de emergência."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"Não registrado na rede."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"Rede móvel não disponível."</string>
@@ -826,7 +827,7 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"Não é possível ligar porque há outra chamada sendo realizada."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"Não é possível ligar porque há uma chamada recebida que não foi atendida. Atenda ou rejeite essa chamada antes de fazer outra."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"Não é possível ligar porque as chamadas foram desativadas pela propriedade \"ro.telephony.disable-call system\"."</string>
-    <string name="callFailed_too_many_calls" msgid="5379426826618582180">"Não é possível ligar porque já há duas chamadas em andamento. Encerre uma das chamadas ou mescle-as em uma conferência antes de fazer outra."</string>
+    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"Não é possível ligar porque já há duas chamadas em andamento. Encerre uma das chamadas ou mescle-as em uma conferência antes de fazer outra."</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"Verifique se os dados móveis estão ativados para usar este serviço: <xliff:g id="SUPP_SERVICE">%s</xliff:g>. Você pode alterar essa opção nas configurações da rede móvel."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"Verifique se os dados móveis e o roaming de dados estão ativados para usar este serviço: <xliff:g id="SUPP_SERVICE">%s</xliff:g>. Você pode alterar essa opção nas configurações da rede móvel."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"Verifique se os dados móveis estão ativados para o SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g> para usar este serviço: <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>. Você pode alterar essa opção nas configurações da rede móvel."</string>
@@ -914,8 +915,6 @@
     <string name="radio_info_nr_available" msgid="1321318331361249997">"NR disponível:"</string>
     <string name="radio_info_nr_state" msgid="1337571996788535356">"Estado do NR:"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"Frequência do NR:"</string>
-    <!-- no translation found for radio_info_network_slicing_config (7675131833885031563) -->
-    <skip />
     <string name="band_mode_title" msgid="7988822920724576842">"Definir modo de banda de rádio"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Carregando a lista de bandas…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Definir"</string>

@@ -537,6 +537,7 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Skakel selnetwerk aan, skakel vliegtuigmodus af of skakel batterybespaardermodus af om \'n oproep te maak."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Skakel vliegtuigmodus af om \'n oproep te maak."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Skakel vliegtuigmodus af of koppel aan \'n draadlose netwerk om \'n oproep te maak."</string>
+    <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"Foon is te warm"</b>\n\n"Kan nie hierdie oproep voltooi nie. Probeer weer wanneer jou foon afkoel.\n\nJy kan nog noodoproepe maak."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Verlaat noodterugbelmodus om \'n nienoodoproep te maak."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"Nie geregistreer op netwerk nie."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"Mobiele netwerk nie beskikbaar nie."</string>
@@ -826,7 +827,7 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"Kan nie \'n oproep maak nie, aangesien \'n ander uitgaande oproep reeds besig is om te skakel."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"Kan nie \'n oproep maak nie, aangesien daar \'n onbeantwoorde inkomende oproep is. Beantwoord of weier die inkomende oproep voordat jy \'n nuwe oproep plaas."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"Kan nie \'n oproep maak nie, aangesien oproepmaking gedeaktiveer is deur die ro.telephony.disable-belstelseleienskap te gebruik."</string>
-    <string name="callFailed_too_many_calls" msgid="5379426826618582180">"Kan nie \'n oproep maak nie, aangesien daar reeds twee oproepe aan die gang is. Ontkoppel een van die oproepe of voeg dit saam in \'n konferensie voordat \'n nuwe oproep gemaak word."</string>
+    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"Kan nie ’n oproep maak nie, aangesien twee oproepe reeds aan die gang is. Ontkoppel een van die oproepe of voeg dit saam in ’n konferensie voordat ’n nuwe oproep gemaak word."</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"Om <xliff:g id="SUPP_SERVICE">%s</xliff:g> te gebruik, maak seker dat mobiele data aangeskakel is. Jy kan dit in selnetwerk-instellings verander."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"Om <xliff:g id="SUPP_SERVICE">%s</xliff:g> te gebruik, maak seker dat mobiele data en dataswerwing aangeskakel is. Jy kan dit in selnetwerk-instellings verander."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"Om <xliff:g id="SUPP_SERVICE">%1$s</xliff:g> te gebruik, maak seker dat mobiele data vir SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g> aangeskakel is. Jy kan dit in selnetwerk-instellings verander."</string>
@@ -914,8 +915,6 @@
     <string name="radio_info_nr_available" msgid="1321318331361249997">"NR is beskikbaar:"</string>
     <string name="radio_info_nr_state" msgid="1337571996788535356">"NR-status:"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR-frekwensie:"</string>
-    <!-- no translation found for radio_info_network_slicing_config (7675131833885031563) -->
-    <skip />
     <string name="band_mode_title" msgid="7988822920724576842">"Stel radiobandmodus"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Laai tans bandlys …"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Stel"</string>
