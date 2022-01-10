@@ -340,22 +340,22 @@
     <string name="maintenance_disable" msgid="2121032601497725602">"അറ്റകുറ്റപ്പണി സേവനങ്ങൾ പ്രവർത്തനരഹിതമാക്കി"</string>
     <string name="general_news_settings" msgid="2670499575962080411">"പൊതുവായ വാർത്തകൾ"</string>
     <string name="bf_news_settings" msgid="8571709425370794221">"ബിസിനസ്സ്, സാമ്പത്തിക വാർത്തകൾ"</string>
-    <string name="sports_news_settings" msgid="2684364556989168438">"കായിക വാർത്ത"</string>
-    <string name="entertainment_news_settings" msgid="4228527702346305543">"വിനോദവാർത്ത"</string>
+    <string name="sports_news_settings" msgid="2684364556989168438">"കായിക വാർത്തകൾ"</string>
+    <string name="entertainment_news_settings" msgid="4228527702346305543">"വിനോദ വാർത്തകൾ"</string>
     <string name="enable_disable_local" msgid="7654175079979415572">"പ്രാദേശികം"</string>
-    <string name="local_enable" msgid="790606890868710629">"പ്രാദേശിക വാർത്ത പ്രവർത്തനക്ഷമമാക്കി"</string>
-    <string name="local_disable" msgid="7649945293198602877">"പ്രാദേശിക വാർത്ത പ്രവർത്തനരഹിതമാക്കി"</string>
+    <string name="local_enable" msgid="790606890868710629">"പ്രാദേശിക വാർത്തകൾ പ്രവർത്തനക്ഷമമാക്കി"</string>
+    <string name="local_disable" msgid="7649945293198602877">"പ്രാദേശിക വാർത്തകൾ പ്രവർത്തനരഹിതമാക്കി"</string>
     <string name="enable_disable_regional" msgid="5783403191376564638">"പ്രാദേശികം"</string>
     <string name="regional_enable" msgid="7730109417536296079">"പ്രാദേശിക വാർത്തകൾ പ്രവർത്തനക്ഷമമാക്കി"</string>
     <string name="regional_disable" msgid="3781951818157772545">"പ്രാദേശിക വാർത്തകൾ പ്രവർത്തനരഹിതമാക്കി"</string>
     <string name="enable_disable_national" msgid="6198481711934897632">"ദേശീയം"</string>
-    <string name="national_enable" msgid="5159683504138239304">"ദേശീയ വാർത്ത പ്രവർത്തനക്ഷമമാക്കി"</string>
-    <string name="national_disable" msgid="8484356368757118987">"ദേശീയ വാർത്ത പ്രവർത്തനരഹിതമാക്കി"</string>
+    <string name="national_enable" msgid="5159683504138239304">"ദേശീയ വാർത്തകൾ പ്രവർത്തനക്ഷമമാക്കി"</string>
+    <string name="national_disable" msgid="8484356368757118987">"ദേശീയ വാർത്തകൾ പ്രവർത്തനരഹിതമാക്കി"</string>
     <string name="enable_disable_international" msgid="4204334217211198792">"അന്തര്‍‌ദ്ദേശീയം"</string>
-    <string name="international_enable" msgid="8943466745792690340">"അന്തർദ്ദേശീയ വാർത്ത പ്രവർത്തനക്ഷമമാക്കി"</string>
+    <string name="international_enable" msgid="8943466745792690340">"അന്തർദ്ദേശീയ വാർത്തകൾ പ്രവർത്തനക്ഷമമാക്കി"</string>
     <string name="international_disable" msgid="4803498658100318265">"അന്തർദ്ദേശീയ വാർത്തകൾ പ്രവർത്തനരഹിതമാക്കി"</string>
     <string name="list_language_title" msgid="1850167908665485738">"ഭാഷ"</string>
-    <string name="list_language_summary" msgid="7921756070782277559">"വാർത്താഭാഷ തിരഞ്ഞെടുക്"</string>
+    <string name="list_language_summary" msgid="7921756070782277559">"വാർത്താഭാഷ തിരഞ്ഞെടുക്കുക"</string>
   <string-array name="list_language_entries">
     <item msgid="2347238508726934281">"ഇംഗ്ലീഷ്"</item>
     <item msgid="5172468397620875174">"ഫ്രഞ്ച്"</item>
@@ -405,9 +405,9 @@
     <string name="enable_disable_mhh" msgid="715930476289202466">"മെഡിക്കൽ, ആരോഗ്യം, ആശുപത്രി എന്നിവ"</string>
     <string name="mhh_enable" msgid="7224396815285147008">"മെഡിക്കൽ, ആരോഗ്യം, ആശുപത്രി എന്നിവ പ്രവർത്തനക്ഷമമാക്കി"</string>
     <string name="mhh_disable" msgid="5503643028885686265">"മെഡിക്കൽ, ആരോഗ്യം, ആശുപത്രി എന്നിവ പ്രവർത്തനരഹിതമാക്കി"</string>
-    <string name="enable_disable_technology_news" msgid="2794845609698078400">"സാങ്കേതിക വാർത്ത"</string>
-    <string name="technology_news_enable" msgid="1908991199492598311">"സാങ്കേതിക വാർത്ത പ്രവർത്തനക്ഷമമാക്കി"</string>
-    <string name="technology_news_disable" msgid="8388582607149800889">"സാങ്കേതിക വാർത്ത പ്രവർത്തനരഹിതമാക്കി"</string>
+    <string name="enable_disable_technology_news" msgid="2794845609698078400">"സാങ്കേതിക വാർത്തകൾ"</string>
+    <string name="technology_news_enable" msgid="1908991199492598311">"സാങ്കേതിക വാർത്തകൾ പ്രവർത്തനക്ഷമമാക്കി"</string>
+    <string name="technology_news_disable" msgid="8388582607149800889">"സാങ്കേതിക വാർത്തകൾ പ്രവർത്തനരഹിതമാക്കി"</string>
     <string name="enable_disable_multi_category" msgid="5958248155437940625">"ഒന്നിലധികം വിഭാഗം"</string>
     <string name="multi_category_enable" msgid="4531915767817483960">"ഒന്നിലധികം വിഭാഗം പ്രവർത്തനക്ഷമമാക്കി"</string>
     <string name="multi_category_disable" msgid="6325934413701238104">"ഒന്നിലധികം വിഭാഗം പ്രവർത്തനരഹിതമാക്കി"</string>
@@ -537,6 +537,7 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"ഒരു കോൾ വിളിക്കാൻ മൊബൈൽ നെറ്റ്‌വർക്ക് ഓണാക്കുകയോ ഫ്ലൈറ്റ് മോഡ് അല്ലെങ്കിൽ ബാറ്ററി ലാഭിക്കൽ മോഡ് ഓഫാക്കുകയോ ചെയ്യുക."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"ഒരു കോൾ വിളിക്കാൻ വിമാന മോഡ് ഓഫാക്കുക."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"ഒരു കോൾ വിളിക്കാൻ വിമാന മോഡ് ഓഫാക്കുക അല്ലെങ്കിൽ വയർലെസ്സ് നെറ്റ്‌വർക്കിലേക്ക് കണക്റ്റുചെയ്യുക."</string>
+    <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"ഫോൺ വളരെയധികം ചൂടായിരിക്കുന്നു"</b>\n\n"ഈ കോൾ പൂർത്തിയാക്കാനാകില്ല. ഫോൺ തണുക്കുമ്പോൾ വീണ്ടും ശ്രമിക്കുക.\n\nഎമർജൻസി കോളുകൾ നിങ്ങൾക്ക് ഇപ്പോഴും ചെയ്യാവുന്നതാണ്."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"അടിയന്തിരമല്ലാത്ത കോൾ ചെയ്യാൻ അടിയന്തിര കോൾബാക്ക് മോഡിൽ നിന്ന് പുറത്തുകടക്കുക."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"നെറ്റ്‌വർക്കിൽ രജിസ്റ്റർ ചെയ്‌തിട്ടില്ല."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"മൊബൈൽ നെറ്റ്‌വർക്ക് ലഭ്യമല്ല."</string>
@@ -826,7 +827,7 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"മറ്റൊരു ഔട്ട്ഗോയിംഗ് കോൾ മുമ്പേ തന്നെ ഡയൽ ചെയ്യുന്നതിനാൽ, ഒരു കോൾ നടത്താനാവില്ല."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"മറുപടി ലഭിക്കാത്ത ഒരു ഇൻ‌കമിംഗ് കോൾ ഉള്ളതിനാൽ, ഒരു കോൾ നടത്താനാവില്ല. ഒരു പുതിയ കോൾ നടത്തുന്നതിന് മുൻപായി ഇൻകമിംഗ് കോളിന് മറുപടി നൽകുക അല്ലെങ്കിൽ നിരസിക്കുക."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"ro.telephony.disable-കോൾ സിസ്‌റ്റം പ്രോപ്പർട്ടി ഉപയോഗിച്ച് കോൾ ചെയ്യൽ പ്രവർത്തനരഹിതമാക്കിയതിനാൽ ഒരു കോൾ നടത്താനാവില്ല."</string>
-    <string name="callFailed_too_many_calls" msgid="5379426826618582180">"മുമ്പേ രണ്ട് കോളുകൾ പുരോഗതിയിൽ ആയതിനാൽ ഒരു പുതിയ കോൾ നടത്താനാവില്ല. ഒരു പുതിയ കോൾ നടത്താനായി, മുമ്പത്തെ കോളുകളിലൊന്ന് വിച്‌ഛേദിക്കുകയോ അല്ലെങ്കിൽ അവയെ ഒരു കോൺഫറൻസ് കോളിലേക്ക് ലയിപ്പിക്കുകയോ ചെയ്യുക."</string>
+    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"മുമ്പേ തന്നെ രണ്ട് കോളുകൾ പുരോഗതിയിൽ ആയതിനാൽ പുതിയൊരു കോൾ ചെയ്യാനാകില്ല. പുതിയൊരു കോൾ ചെയ്യുന്നതിന് മുമ്പത്തെ കോളുകളിലൊന്ന് വിച്‌ഛേദിക്കുകയോ അവയെ ഒരു കോൺഫറൻസ് കോളിലേക്ക് ലയിപ്പിക്കുകയോ ചെയ്യുക."</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"<xliff:g id="SUPP_SERVICE">%s</xliff:g> എന്നത് ഉപയോഗിക്കാൻ, മൊബൈൽ ഡാറ്റ ഓണാണ് എന്ന് ഉറപ്പാക്കുക. നിങ്ങൾക്ക് ഇത് മൊബൈൽ നെറ്റ്‌വർക്ക് ക്രമീകരണത്തിൽ മാറ്റാം."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"<xliff:g id="SUPP_SERVICE">%s</xliff:g> എന്നത് ഉപയോഗിക്കാൻ, നിങ്ങളുടെ മൊബൈൽ ഡാറ്റയും ഡാറ്റ റോമിംഗും ഓണാണ് എന്ന് ഉറപ്പാക്കുക. നിങ്ങൾക്ക് ഇത് മൊബൈൽ നെറ്റ്‌വർക്ക് ക്രമീകരണത്തിൽ മാറ്റാം."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"<xliff:g id="SUPP_SERVICE">%1$s</xliff:g> ഉപയോഗിക്കാൻ, SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g> എന്നതിനായി മൊബൈൽ ഡാറ്റ ഓണാണ് എന്ന് ഉറപ്പാക്കുക. നിങ്ങൾക്ക് ഇത് മൊബൈൽ നെറ്റ്‌വർക്ക് ക്രമീകരണത്തിൽ മാറ്റാം."</string>
@@ -877,8 +878,8 @@
     <string name="radioInfo_cid" msgid="1423185536264406705">"CID"</string>
     <string name="radio_info_subid" msgid="6839966868621703203">"നിലവിലെ ഉപ‌ഐഡി:"</string>
     <string name="radio_info_dds" msgid="1122593144425697126">"ഡിഫോൾട്ട് ഡാറ്റാ സിമ്മിന്റെ ഉപഐഡി:"</string>
-    <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DL ബാൻഡ്‌വിത്ത് (kbps):"</string>
-    <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL ബാൻഡ്‍വിത്ത് (kbps):"</string>
+    <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DL ബാൻഡ്‌വിഡ്‌ത് (kbps):"</string>
+    <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL ബാൻഡ്‌വിഡ്‌ത് (kbps):"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"LTE ഫിസിക്കൽ ചാനൽ കോൺഫിഗറേഷൻ:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"സെൽ വിവരങ്ങൾ പുതുക്കിയെടുക്കൽ നിരക്ക്:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"എല്ലാ സെൽ അളവ് വിവരങ്ങളും:"</string>
@@ -914,8 +915,6 @@
     <string name="radio_info_nr_available" msgid="1321318331361249997">"NR ലഭ്യം:"</string>
     <string name="radio_info_nr_state" msgid="1337571996788535356">"NR നില:"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR ഫ്രീക്വൻസി:"</string>
-    <!-- no translation found for radio_info_network_slicing_config (7675131833885031563) -->
-    <skip />
     <string name="band_mode_title" msgid="7988822920724576842">"റേഡിയോ ബാൻഡ് മോഡ് സജ്ജീകരിക്കുക"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"ബാൻഡ് ലിസ്‌റ്റ് ലോഡ് ചെയ്യുന്നു…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"സജ്ജീകരിക്കുക"</string>

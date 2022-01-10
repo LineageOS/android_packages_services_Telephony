@@ -537,6 +537,7 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Uključite mobilnu mrežu i isključite režim rada u avionu ili režim uštede baterije da biste uputili poziv."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Isključite režim rada u avionu da biste uputili poziv."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Isključite režim rada u avionu ili se povežite na bežičnu mrežu da biste uputili poziv."</string>
+    <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"Telefon je previše vruć"</b>\n\n"Poziv ne može da se završi. Probajte ponovo kada se telefon ohladi.\n\nI dalje možete da upućujete hitne pozive."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Izađite iz režima hitnog povratnog poziva da biste uputili poziv koji nije hitan."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"Nije registrovano na mreži."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"Mobilna mreža nije dostupna."</string>
@@ -829,7 +830,7 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"Ne možete da pozovete jer se već upućuje drugi odlazni poziv."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"Ne možete da pozovete jer imate dolazni poziv na koji niste odgovorili. Odgovorite na dolazni poziv ili ga odbijte pre upućivanja novog poziva."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"Ne možete da pozovete jer je pozivanje onemogućeno preko svojstva sistema ro.telephony.disable-call."</string>
-    <string name="callFailed_too_many_calls" msgid="5379426826618582180">"Ne možete da pozovete jer su dva poziva već u toku. Prekinite jedan od poziva ili ih objedinite u konferenciju da biste uputili novi poziv."</string>
+    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"Ne možete da pozovete jer su dva poziva već u toku. Prekinite jedan od njih ili ih objedinite u konferenciju da biste uputili novi poziv."</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"Da biste koristili <xliff:g id="SUPP_SERVICE">%s</xliff:g>, uverite se da su uključeni mobilni podaci. To možete da promenite u podešavanjima mobilne mreže."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"Da biste koristili <xliff:g id="SUPP_SERVICE">%s</xliff:g>, uverite se da su uključeni mobilni podaci i prenos podataka u romingu. To možete da promenite u podešavanjima mobilne mreže."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"Da biste koristili <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>, uverite se da su za SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g> uključeni mobilni podaci. To možete da promenite u podešavanjima mobilne mreže."</string>
@@ -917,8 +918,6 @@
     <string name="radio_info_nr_available" msgid="1321318331361249997">"NR dostupno:"</string>
     <string name="radio_info_nr_state" msgid="1337571996788535356">"NR stanje:"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR učestalost:"</string>
-    <!-- no translation found for radio_info_network_slicing_config (7675131833885031563) -->
-    <skip />
     <string name="band_mode_title" msgid="7988822920724576842">"Podesite režim radijskog opsega"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Učitava se lista opsega…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Podesi"</string>

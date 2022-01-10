@@ -537,6 +537,7 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Aktivizo rrjetin celular, çaktivizo modalitetin e aeroplanit ose modalitetin e kursyesit të baterisë për të bërë një telefonatë."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Çaktivizo modalitetin e aeroplanit për të bërë telefonata."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Çaktivizo modalitetin e aeroplanit ose lidhu me ndonjë rrjet interneti valor për të bërë telefonata."</string>
+    <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"Telefoni është shumë i nxehtë"</b>\n\n"Kjo telefonatë nuk mund të kryhet. Provo përsëri kur të ftohet telefoni.\n\nMund të bësh përsëri telefonata të urgjencës."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Dil nga modaliteti i kthimit të telefonatës së urgjencës për të bërë një telefonatë jo urgjente."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"I paregjistruar në rrjet."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"Rrjeti celular nuk mundësohet."</string>
@@ -826,7 +827,7 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"Nuk mund të kryhet një telefonatë pasi një telefonatë tjetër dalëse është duke u kryer tashmë."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"Nuk mund të kryhet një telefonatë sepse është një telefonatë hyrëse që nuk ka marrë përgjigje. Përgjigju ose refuzoje telefonatën hyrëse para se të kryesh një telefonatë të re."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"Nuk mund të kryhet një telefonatë sepse telefonata është çaktivizuar duke përdorur vetinë e sistemit ro.telephony.disable-call."</string>
-    <string name="callFailed_too_many_calls" msgid="5379426826618582180">"Nuk mund të kryhet një telefonatë sepse janë tashmë dy telefonata në vazhdim. Shkëput një nga telefonatat ose shkriji ato në një konferencë para se të kryesh një telefonatë të re."</string>
+    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"Nuk mund të kryhet një telefonatë sepse janë tashmë dy telefonata në vazhdim. Shkëput një nga telefonatat ose shkriji ato në një konferencë para se të kryesh një telefonatë të re."</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"Për të përdorur <xliff:g id="SUPP_SERVICE">%s</xliff:g>, sigurohu që të dhënat celulare janë të aktivizuara. Mund ta ndryshosh këtë te cilësimet e rrjetit celular."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"Për të përdorur <xliff:g id="SUPP_SERVICE">%s</xliff:g>, sigurohu që të dhënat celulare dhe roaming për të dhënat janë aktivizuar. Mund ta ndryshosh këtë te cilësimet e rrjetit celular."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"Për të përdorur <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>, sigurohu që të dhënat celulare janë të aktivizuara për kartën SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. Mund ta ndryshosh këtë te cilësimet e rrjetit celular."</string>
@@ -914,8 +915,6 @@
     <string name="radio_info_nr_available" msgid="1321318331361249997">"Ofrohet NR:"</string>
     <string name="radio_info_nr_state" msgid="1337571996788535356">"Gjendja e NR-së:"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"Frekuenca e NR-së:"</string>
-    <!-- no translation found for radio_info_network_slicing_config (7675131833885031563) -->
-    <skip />
     <string name="band_mode_title" msgid="7988822920724576842">"Cakto modalitetin e brezit të radios"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Po ngarkon listën e brezave…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Cakto"</string>

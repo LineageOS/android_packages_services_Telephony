@@ -534,9 +534,10 @@
     <string name="notification_voicemail_no_vm_number" msgid="3423686009815186750">"ভইচমেইলৰ নম্বৰ অজ্ঞাত"</string>
     <string name="notification_network_selection_title" msgid="255595526707809121">"কোনো সেৱা নাই"</string>
     <string name="notification_network_selection_text" msgid="553288408722427659">"বাছনি কৰা (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) নেটৱৰ্কটো উপলব্ধ নহয়"</string>
-    <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"কল কৰিবৰ কাৰণে ম’বাইল নেটৱৰ্ক অন কৰক, এয়াৰপ্লেইন ম\'ড অফ কৰক বা বেটাৰি সঞ্চয়কাৰী ম\'ড অফ কৰক।"</string>
+    <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"কল কৰিবৰ কাৰণে ম’বাইল নেটৱৰ্ক অন কৰক, এয়াৰপ্লেইন ম’ড অফ কৰক বা বেটাৰী সঞ্চয়কাৰী ম’ড অফ কৰক।"</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"কল কৰিবৰ কাৰণে এয়াৰপ্লেইন ম\'ড অফ কৰক।"</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"কল কৰিবৰ কাৰণে এয়াৰপ্লেইন ম\'ড অফ কৰক বা কোনো বেতাঁৰ নেটৱৰ্কৰ সৈতে সংযোগ কৰক।"</string>
+    <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"ফ’নটো বেছি গৰম হৈছে"</b>\n\n"এই কলটো সম্পূৰ্ণ কৰিব নোৱাৰি। আপোনাৰ ফ’নটো ঠাণ্ডা হোৱাৰ পাছত পুনৰ চেষ্টা কৰক।\n\nআপুনি তথাপি জৰুৰীকালীন কল কৰিব পাৰিব।"</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"সাধাৰণ কল কৰিবৰ কাৰণে জৰুৰীকালীন কলবেক ম\'ডৰ পৰা বাহিৰ হওক।"</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"নেটৱৰ্কত পঞ্জীকৃত নহয়।"</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"ম’বাইল নেটৱৰ্ক উপলব্ধ নহয়।"</string>
@@ -688,8 +689,8 @@
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"কেইবাটাও কল ইতিমধ্যে সক্ৰিয় হৈ আছে। নতুন কল এটা কৰাৰ আগেয়ে অনুগ্ৰহ কৰি সেইবোৰ একেলগ কৰক বা সমাপ্ত কৰক।"</string>
     <string name="callFailed_imei_not_accepted" msgid="7257903653685147251">"সংযোগ কৰিব পৰা নাই, অনুগ্ৰহ কৰি এখন মান্য ছিম কাৰ্ড ভৰাওক।"</string>
     <string name="callFailed_wifi_lost" msgid="1788036730589163141">"ৱাই-ফাইৰ সৈতে সংযোগ বিচ্ছিন্ন হৈছে। কলৰ অন্ত পৰিছে।"</string>
-    <string name="dialFailed_low_battery" msgid="6857904237423407056">"বেটাৰি কম থকাৰ বাবে ভিডিঅ\' কল কৰিব নোৱাৰি।"</string>
-    <string name="callFailed_low_battery" msgid="4056828320214416182">"বেটাৰি কম থকাৰ বাবে ভিডিঅ\' কলৰ অন্ত পৰিছে।"</string>
+    <string name="dialFailed_low_battery" msgid="6857904237423407056">"বেটাৰী কম থকাৰ বাবে ভিডিঅ’ কল কৰিব নোৱাৰি।"</string>
+    <string name="callFailed_low_battery" msgid="4056828320214416182">"বেটাৰী কম থকাৰ বাবে ভিডিঅ’ কল সমাপ্ত হৈছে।"</string>
     <string name="callFailed_emergency_call_over_wfc_not_available" msgid="5944309590693432042">"এই অৱস্থানটোত ৱাই-ফাই কলিঙৰ জৰিয়তে জৰুৰীকালীন কল কৰাৰ সুবিধা উপলব্ধ নহয়।"</string>
     <string name="callFailed_wfc_service_not_available_in_this_location" msgid="3624536608369524988">"এই অৱস্থানটোত ৱাই-ফাই কলিং উপলব্ধ নহয়।"</string>
     <string name="change_pin_title" msgid="3564254326626797321">"ভইচমেইলৰ পিন সলনি কৰক"</string>
@@ -826,7 +827,7 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"অইন এটা বহিৰ্গামী কল ডায়েল কৰি থকাৰ কাৰণে বেলেগ কল কৰিব নোৱাৰি।"</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"বেলেগ কল কৰিব নোৱাৰি, কাৰণ এটা অন্তৰ্গামী কল এতিয়াও সক্ৰিয় হৈ আছে যাৰ উত্তৰ দিয়া হোৱা নাই। নতুন কল এটা কৰাৰ আগেয়ে সেই কলটোৰ উত্তৰ দিয়ক বা কলটো প্ৰত্যাখ্যান কৰক।"</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"কোনো কল কৰিব নোৱাৰি কাৰণ ro.telephony.disable-call ছিষ্টেম প্ৰ’পাৰ্টি ব্যৱহাৰ কৰি কল কৰাৰ সুবিধা অক্ষম কৰা হৈছে।"</string>
-    <string name="callFailed_too_many_calls" msgid="5379426826618582180">"কোনো কল কৰিব নোৱাৰি কাৰণ ইতিমধ্যে দুটা বেলেগ কল চলি আছে। নতুন এটা কল কৰাৰ আগেয়ে সেই দুটাৰ ভিতৰত এটাৰ সংযোগ বিচ্ছিন্ন কৰক বা কল দুটা একত্ৰিত কৰি এটা কনফাৰেন্স কললৈ সলনি কৰক।"</string>
+    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"কল কৰিব নোৱাৰি, কাৰণ ইতিমধ্যে দুটা কল চলি আছে। এটা নতুন কল কৰাৰ আগতে সেই দুটা কলৰ এটাৰ সংযোগ বিচ্ছিন্ন কৰক অথবা কল দুটা একত্ৰিত কৰি এটা কনফাৰেন্স কললৈ সলনি কৰক।"</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"<xliff:g id="SUPP_SERVICE">%s</xliff:g> ব্যৱহাৰ কৰিবলৈ ম’বাইল ডেটা অন হৈ থকাটো নিশ্চিত কৰক। আপুনি ম’বাইল নেটৱৰ্ক ছেটিংসমূহ-লৈ গৈ ইয়াক সলনি কৰিব পাৰে।"</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"<xliff:g id="SUPP_SERVICE">%s</xliff:g> ব্যৱহাৰ কৰিবলৈ ম’বাইল ডেটা আৰু ডেটা ৰ’মিং অন হৈ থকাটো নিশ্চিত কৰক। আপুনি ম’বাইল নেটৱৰ্ক ছেটিংসমূহ-লৈ গৈ ইয়াক সলনি কৰিব পাৰে।"</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"<xliff:g id="SUPP_SERVICE">%1$s</xliff:g> ব্যৱহাৰ কৰিবলৈ <xliff:g id="SIM_NUMBER">%2$d</xliff:g> ছিমত ম’বাইল ডেটা অন হৈ থকাটো নিশ্চিত কৰক। আপুনি ম’বাইল নেটৱৰ্ক ছেটিংসমূহ-লৈ গৈ ইয়াক সলনি কৰিব পাৰে।"</string>
@@ -914,7 +915,6 @@
     <string name="radio_info_nr_available" msgid="1321318331361249997">"NR উপলব্ধ:"</string>
     <string name="radio_info_nr_state" msgid="1337571996788535356">"NR স্থিতি:"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR ফ্ৰিকুৱেন্সী:"</string>
-    <string name="radio_info_network_slicing_config" msgid="7675131833885031563">"নেটৱৰ্ক বিভাজনৰ কনফিগাৰেশ্বন:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"ৰেডিঅ’ৰ বেণ্ড ম’ড ছেট কৰক"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"বেণ্ড সূচীখন ল’ড কৰি থকা হৈছে…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"ছেট কৰক"</string>

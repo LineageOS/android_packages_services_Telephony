@@ -19,7 +19,7 @@
     <string name="sip_settings" msgid="7452587325305604702">"SIP सेटिंग्ज"</string>
     <string name="sip_accounts" msgid="7297896885665783239">"SIP खाती"</string>
     <string name="sip_accounts_title" msgid="3061686404598143943">"खाती"</string>
-    <string name="sip_receive_calls" msgid="3403644006618369349">"येणारे कॉल घ्या"</string>
+    <string name="sip_receive_calls" msgid="3403644006618369349">"इनकमिंग कॉल घ्या"</string>
     <string name="sip_receive_calls_summary" msgid="5306603671778761443">"अधिक बॅटरी वापरते"</string>
     <string name="sip_call_options_title" msgid="5027066677561068192">"SIP कॉलिंग वापरा"</string>
     <string name="sip_call_options_wifi_only_title" msgid="6663105297927456484">"SIP कॉलिंग वापरा (वाय-फाय केवळ)"</string>

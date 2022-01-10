@@ -537,6 +537,7 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Vula inethiwekhi yeselula, vala imodi yendiza noma vala imodi yokulondoloza ibhethri ukuze wenze ikholi."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Vala imodi yendiza ukuze wenze ikholi."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Vala imodi yendiza noma xhumeka kunethiwekhi engenantambo ukuze wenze ikholi."</string>
+    <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"Ifoni ishisa kakhulu"</b>\n\n"Ayikwazi ukwenza le kholi. Zama futhi lapho ifoni iphola.\n\nUsengakwazi ukwenza amakholi aphuthumayo."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Phuma kwimodi yokushayela emuva yesiko esiphuthumayo ukuze wenze ikholi yemodi engaphuthumi."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"Ayibhalisiwe kwinethiwekhi."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"Inethiwekhi yefoni ayitholakali"</string>
@@ -826,7 +827,7 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"Ayikwazi ukubeka ikholi njengoba enye ikholi ephumayo isivele iyadayela."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"Ayikwazi ukubeka ikholi njengoba kunekholi engenayo engaphenduliwe. Phendula noma nqaba ikholi engenayo ngaphambi kokubeka ikholi entsha."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"Ayikwazi ukubeka ikholi njengoba ukushaya kukhutshaziwe kusetshenziswa isistimu ye-ro.telephony.disable-call."</string>
-    <string name="callFailed_too_many_calls" msgid="5379426826618582180">"Ayikwazi ukubeka ikholi njengoba sekuvele kunamakholi amabili aqhubekayo. Nqamula eyodwa yamakholi noma ahlanganise ngaphambi ngaphambi kokubeka ikholi entsha."</string>
+    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"Awukwazi ukubeka ikholi njengoba kunamakholi amabili aqhubekayo kakade. Nqamula eyodwa yamakholi noma wahlanganisele enkofeni ngaphambi kokubeka ikholi entsha."</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"Ukuze usebenzise i-<xliff:g id="SUPP_SERVICE">%s</xliff:g>, qiniseka ukuthi idatha yeselula ivuliwe. Ungashintsha lokhu kuzilungiselelo zenethiwekhi yeselula."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"Ukuze usebenzise i-<xliff:g id="SUPP_SERVICE">%s</xliff:g>, qiniseka ukuthi idatha yeselula kanye nokuzula kuvuliwe. Ungashintsha lokhu kuzilungiselelo zenethiwekhi yeselula."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"Ukuze usebenzise i-<xliff:g id="SUPP_SERVICE">%1$s</xliff:g>, qiniseka ukuthi idatha yeselula ivuliwe ku-SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. Ungashintsha lokhu kuzilungiselelo zenethiwekhi yeselula."</string>
@@ -914,8 +915,6 @@
     <string name="radio_info_nr_available" msgid="1321318331361249997">"I-NR Iyatholakala:"</string>
     <string name="radio_info_nr_state" msgid="1337571996788535356">"Isimo se-NR:"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"Imvamisa ye-NR:"</string>
-    <!-- no translation found for radio_info_network_slicing_config (7675131833885031563) -->
-    <skip />
     <string name="band_mode_title" msgid="7988822920724576842">"Isetha imodi yebhendi yerediyo"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Ilayisha uhlu lwebhendi…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Setha"</string>

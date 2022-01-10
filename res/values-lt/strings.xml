@@ -537,6 +537,7 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Įjunkite mobiliojo ryšio tinklą, išjunkite lėktuvo arba akumuliatoriaus tausojimo priemonės režimą, kad galėtumėte skambinti."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Išjunkite lėktuvo režimą, kad galėtumėte skambinti."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Išjunkite lėktuvo režimą arba prisijunkite prie belaidžio ryšio tinklo, kad galėtumėte skambinti."</string>
+    <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"Telefonas per karštas"</b>\n\n"Negalima užbaigti šio skambučio. Bandykite dar kartą, kai telefonas atvės.\n\nJūs vis dar galite skambinti pagalbos numeriais."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Jei norite skambinti ne pagalbos numeriu, išjunkite atgalinio skambinimo pagalbos numeriu režimą."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"Neregistruota tinkle."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"Mobilusis tinklas negalimas."</string>
@@ -832,7 +833,7 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"Negalite skambinti, nes šiuo metu vykdomas kitas siunčiamasis skambutis."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"Negalite skambinti, nes yra neatsakytas gaunamasis skambutis. Atsiliepkite arba atmeskite gaunamąjį skambutį prieš pradėdami naują."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"Negalite skambinti, nes skambinimo funkcija išjungta naudojant sistemos ypatybę „ro.telephony.disable-call“."</string>
-    <string name="callFailed_too_many_calls" msgid="5379426826618582180">"Negalite skambinti, nes jau dalyvaujate dviejuose skambučiuose. Užbaikite vieną iš skambučių arba sujunkite juos į konferenciją prieš pradėdami naują skambutį."</string>
+    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"Negalite skambinti, nes jau dalyvaujate dviejuose skambučiuose. Prieš pradėdami naują skambutį užbaikite vieną iš skambučių arba sujunkite juos į konferenciją."</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"Norėdami naudoti paslaugą (<xliff:g id="SUPP_SERVICE">%s</xliff:g>), įsitikinkite, kad mobiliojo ryšio duomenys įjungti. Tai galite pakeisti apsilankę mobiliojo ryšio tinklo nustatymuose."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"Norėdami naudoti paslaugą (<xliff:g id="SUPP_SERVICE">%s</xliff:g>), įsitikinkite, kad mobiliojo ryšio duomenys ir tarptinklinis duomenų ryšys įjungti. Tai galite pakeisti apsilankę mobiliojo ryšio nustatymuose."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"Norėdami naudoti paslaugą (<xliff:g id="SUPP_SERVICE">%1$s</xliff:g>0, įsitikinkite, kad <xliff:g id="SIM_NUMBER">%2$d</xliff:g> SIM kortelės mobiliojo ryšio duomenys įjungti. Tai galite pakeisti apsilankę mobiliojo ryšio tinklo nustatymuose."</string>
@@ -920,8 +921,6 @@
     <string name="radio_info_nr_available" msgid="1321318331361249997">"NR (pasiekiama):"</string>
     <string name="radio_info_nr_state" msgid="1337571996788535356">"NR būsena:"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR dažnis:"</string>
-    <!-- no translation found for radio_info_network_slicing_config (7675131833885031563) -->
-    <skip />
     <string name="band_mode_title" msgid="7988822920724576842">"Nustatyti radijo dažnių režimą"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Įkeliamas dažnių sąrašas…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Nustatyti"</string>
