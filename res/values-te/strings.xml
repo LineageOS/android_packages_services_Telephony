@@ -619,7 +619,7 @@
     <string name="ota_skip_activation_dialog_title" msgid="7666611236789203797">"సక్రియం చేయడాన్ని దాటవేయాలా?"</string>
     <string name="ota_skip_activation_dialog_message" msgid="6691722887019708713">"మీరు సక్రియం చేయడాన్ని దాటవేస్తే, కాల్స్‌ చేయలేరు లేదా మొబైల్ డేటా నెట్‌వర్క్‌లకు కనెక్ట్ చేయలేరు (మీరు Wi-Fi నెట్‌వర్క్‌లకు కనెక్ట్ చేయగలిగినప్పటికీ). మీరు మీ ఫోన్‌ను సక్రియం చేసేవరకు, దాన్ని ప్రారంభించే ప్రతిసారీ సక్రియం చేయమని మిమ్మల్ని అడుగుతుంది."</string>
     <string name="ota_skip_activation_dialog_skip_label" msgid="5908029466817825633">"దాటవేయి"</string>
-    <string name="ota_activate" msgid="7939695753665438357">"సక్రియం చేయి"</string>
+    <string name="ota_activate" msgid="7939695753665438357">"యాక్టివేట్ చేయండి"</string>
     <string name="ota_title_activate_success" msgid="1272135024761004889">"ఫోన్ సక్రియం చేయబడింది."</string>
     <string name="ota_title_problem_with_activation" msgid="7019745985413368726">"సక్రియం చేయడంలో సమస్య"</string>
     <string name="ota_listen" msgid="2772252405488894280">"సక్రియం చేయడం పూర్తయిందని మీకు వినిపించేవరకు చదివి వినిపించే సూచనలను అనుసరించండి."</string>
