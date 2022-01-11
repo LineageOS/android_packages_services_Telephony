@@ -186,9 +186,9 @@
     <string name="manual_mode_disallowed_summary" msgid="3970048592179890197">"%1$s से कनेक्ट किए जाने पर उपलब्ध नहीं है"</string>
     <string name="network_select_title" msgid="4117305053881611988">"नेटवर्क"</string>
     <string name="register_automatically" msgid="3907580547590554834">"स्वचालित पंजीकरण..."</string>
-    <string name="preferred_network_mode_title" msgid="5253395265169539830">"पसंदीदा नेटवर्क प्रकार"</string>
+    <string name="preferred_network_mode_title" msgid="5253395265169539830">"पसंदीदा नेटवर्क टाइप"</string>
     <string name="preferred_network_mode_summary" msgid="3787989000044330064">"नेटवर्क संचालन मोड बदलें"</string>
-    <string name="preferred_network_mode_dialogtitle" msgid="2781447433514459696">"पसंदीदा नेटवर्क प्रकार"</string>
+    <string name="preferred_network_mode_dialogtitle" msgid="2781447433514459696">"पसंदीदा नेटवर्क टाइप"</string>
     <string name="forbidden_network" msgid="5081729819561333023">"(मना है)"</string>
     <string name="choose_network_title" msgid="5335832663422653082">"नेटवर्क चुनें"</string>
     <string name="network_disconnected" msgid="8844141106841160825">"डिसकनेक्ट है"</string>
@@ -282,8 +282,8 @@
     <string name="data_enable_summary" msgid="696860063456536557">"डेटा उपयोग करने दें"</string>
     <string name="dialog_alert_title" msgid="5260471806940268478">"ध्यान दें"</string>
     <string name="roaming" msgid="1576180772877858949">"रोमिंग"</string>
-    <string name="roaming_enable" msgid="6853685214521494819">"रोमिंग के समय डेटा सेवाएं कनेक्ट करें"</string>
-    <string name="roaming_disable" msgid="8856224638624592681">"रोमिंग के समय डेटा सेवाएं कनेक्ट करें"</string>
+    <string name="roaming_enable" msgid="6853685214521494819">"रोमिंग में डेटा चालू करें"</string>
+    <string name="roaming_disable" msgid="8856224638624592681">"रोमिंग में डेटा चालू करें"</string>
     <string name="roaming_reenable_message" msgid="1951802463885727915">"डेटा रोमिंग बंद है. चालू करने के लिए टैप करें."</string>
     <string name="roaming_enabled_message" msgid="9022249120750897">"रोमिंग शुल्क लागू हो सकते हैं. बदलाव करने के लिए टैप करें."</string>
     <string name="roaming_notification_title" msgid="3590348480688047320">"मोबाइल डेटा कनेक्शन उपलब्ध नहीं है"</string>
@@ -537,6 +537,7 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"कॉल करने के लिए मोबाइल नेटवर्क चालू करें, हवाई जहाज़ मोड या बैटरी सेवर मोड बंद करें."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"कॉल करने के लिए हवाई जहाज़ मोड बंद करें."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"कॉल करने के लिए हवाई जहाज़ मोड बंद करें या किसी वायरलेस नेटवर्क से कनेक्‍ट करें."</string>
+    <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"आपका फ़ोन बहुत गर्म हो गया है"</b>\n\n"यह कॉल नहीं लगाया जा सकता. फ़ोन का तापमान कम होने के बाद, फिर से कोशिश करें.\n\nहालांकि, आप अब भी आपातकालीन कॉल कर सकते हैं."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"गैर-आपातकालीन कॉल करने के लिए आपातकालीन कॉलबैक मोड से बाहर निकलें."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"नेटवर्क पर पंजीकृत नहीं."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"मोबाइल नेटवर्क उपलब्ध नहीं."</string>
@@ -555,7 +556,7 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"कॉल होल्ड नहीं किए जा सकते."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"कॉल करने के लिए किसी वायरलेस नेटवर्क से कनेक्‍ट करें."</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"कॉल करने के लिए वाई-फ़ाई कॉलिंग सक्षम करें."</string>
-    <string name="emergency_information_hint" msgid="9208897544917793012">"आपातकालीन जानकारी"</string>
+    <string name="emergency_information_hint" msgid="9208897544917793012">"आपातकाल में दिखने वाली जानकारी"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"मालिक"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"जानकारी देखने के लिए फिर से टैप करें"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="2667568200755388829">"आपातकालीन कॉल"</string>
@@ -677,7 +678,7 @@
     <string name="enable_video_calling_dialog_settings" msgid="8697890611305307110">"नेटवर्क सेटिंग"</string>
     <string name="enable_video_calling_dialog_close" msgid="4298929725917045270">"बंद करें"</string>
     <string name="sim_label_emergency_calls" msgid="9078241989421522310">"आपातकालीन कॉल"</string>
-    <string name="sim_description_emergency_calls" msgid="5146872803938897296">"केवल आपातकालीन कॉल"</string>
+    <string name="sim_description_emergency_calls" msgid="5146872803938897296">"सिर्फ़ आपातकालीन कॉल"</string>
     <string name="sim_description_default" msgid="7474671114363724971">"सिम कार्ड, स्‍लॉट: <xliff:g id="SLOT_ID">%s</xliff:g>"</string>
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"सुलभता"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"इससे वाई-फ़ाई कॉल"</string>
@@ -826,7 +827,7 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"कॉल नहीं किया जा सकता, क्योंकि कोई दूसरा किया गया कॉल (आउटगोइंग) पहले से ही डायल हो रहा है."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"कॉल नहीं किया जा सकता, क्योंकि एक आने वाले कॉल (इनकमिंग) का जवाब नहीं दिया जा रहा है. नया कॉल करने से पहले आने वाले कॉल (इनकमिंग) का जवाब दें या उसे अस्वीकार करें."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"कॉल नहीं किया जा सकता क्योंकि कॉलिंग की सुविधा को ROS.टेलीफ़ोनी की कॉल बंद करें सिस्टम प्रॉपर्टी का उपयोग करके बंद कर दिया गया है."</string>
-    <string name="callFailed_too_many_calls" msgid="5379426826618582180">"कॉल नहीं किया जा सकता, क्योंकि पहले से ही दो कॉल जारी हैं. नया कॉल करने से पहले उनमें से किसी एक कॉल को बंद करें या उन्हें कॉन्फ़्रेंस में मर्ज करें."</string>
+    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"कॉल नहीं किया जा सका, क्योंकि पहले से ही दो कॉल जारी हैं. नया कॉल करने से पहले, उनमें से किसी एक कॉल को बंद करें या उन्हें कॉन्फ़्रेंस कॉल में मर्ज करें."</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"<xliff:g id="SUPP_SERVICE">%s</xliff:g> का उपयोग करने के लिए, पक्का करें कि मोबाइल डेटा चालू है. आप मोबाइल नेटवर्क सेटिंग में जाकर इसे बदल सकते हैं."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"<xliff:g id="SUPP_SERVICE">%s</xliff:g> का उपयोग करने के लिए पक्का करें कि मोबाइल डेटा और डेटा रोमिंग चालू हैं. आप मोबाइल नेटवर्क सेटिंग में जाकर इन्हें बदल सकते हैं."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"<xliff:g id="SUPP_SERVICE">%1$s</xliff:g> का उपयोग करने के लिए पक्का करें कि सिम <xliff:g id="SIM_NUMBER">%2$d</xliff:g> का डेटा चालू है. आप मोबाइल नेटवर्क सेटिंग में जाकर इसे बदल सकते हैं."</string>
@@ -889,14 +890,14 @@
     <string name="radio_info_ppp_resets_label" msgid="9131901102339077661">"चालू करने के बाद से पीपीपी रीसेट की संख्या:"</string>
     <string name="radio_info_current_network_label" msgid="3052098695239642450">"मौजूदा नेटवर्क:"</string>
     <string name="radio_info_ppp_received_label" msgid="5753592451640644889">"मिलने वाला डेटा :"</string>
-    <string name="radio_info_gsm_service_label" msgid="6443348321714241328">"Voice की सेवा:"</string>
+    <string name="radio_info_gsm_service_label" msgid="6443348321714241328">"वॉइस सेवा:"</string>
     <string name="radio_info_signal_strength_label" msgid="5545444702102543260">"सिग्नल कितना अच्छा है:"</string>
-    <string name="radio_info_call_status_label" msgid="7693575431923095487">"Voice कॉल की स्थिति:"</string>
+    <string name="radio_info_call_status_label" msgid="7693575431923095487">"वॉइस कॉल की स्थिति:"</string>
     <string name="radio_info_ppp_sent_label" msgid="6542208429356199695">"भेजा गया डेटा :"</string>
     <string name="radio_info_message_waiting_label" msgid="1886549432566952078">"मैसेज वेटिंग:"</string>
     <string name="radio_info_phone_number_label" msgid="2533852539562512203">"फ़ोन नंबर:"</string>
     <string name="radio_info_band_mode_label" msgid="23480556225515290">"रेडियो का बैंड चुनें"</string>
-    <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"Voice के नेटवर्क प्रकार:"</string>
+    <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"वॉइस नेटवर्क टाइप:"</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"डेटा नेटवर्क प्रकार:"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"फ़ोन इंडेक्स चुनें"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"पसंदीदा नेटवर्क प्रकार सेट करें:"</string>
@@ -914,8 +915,6 @@
     <string name="radio_info_nr_available" msgid="1321318331361249997">"NR उपलब्ध है:"</string>
     <string name="radio_info_nr_state" msgid="1337571996788535356">"NR की स्थिति:"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR की फ़्रीक्वेंसी:"</string>
-    <!-- no translation found for radio_info_network_slicing_config (7675131833885031563) -->
-    <skip />
     <string name="band_mode_title" msgid="7988822920724576842">"\'रेडियो बैंड\' मोड सेट करें"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"बैंड सूची लोड की जा रही है…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"सेट करें"</string>

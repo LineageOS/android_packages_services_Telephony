@@ -537,6 +537,7 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Вклучете мобилна мрежа, исклучете го авионскиот режим или пак, штедачот на батеријата за да воспоставите повик."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Исклучете го авионскиот режим за да повикате."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Исклучете го авионскиот режим или поврзете се на безжична мрежа за да повикате."</string>
+    <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"Телефонот е премногу загреан"</b>\n\n"Повиков не може да се заврши. Обидете се повторно кога ќе се подизлади телефонот.\n\nСѐ уште може да воспоставувате итни повици."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Излезете од режимот на итен повратен повик за да направите обичен повик."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"Не е регистриран на мрежа."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"Не е достапна мобилна мрежа."</string>
@@ -614,9 +615,9 @@
     <string name="ota_title_activate" msgid="4049645324841263423">"Активирај го телефонот"</string>
     <string name="ota_touch_activate" msgid="838764494319694754">"Треба да се направи посебен повик за да ја активирате вашата телефонска услуга. \n\nПо притискање на „Активирај“, слушнете ги упатствата дадени за да го активирате вашиот телефон."</string>
     <string name="ota_hfa_activation_title" msgid="3300556778212729671">"Се активира..."</string>
-    <string name="ota_hfa_activation_dialog_message" msgid="7921718445773342996">"Телефонот ја активира услугата за мобилни податоци.\n\nОва може да потрае до 5 минути."</string>
+    <string name="ota_hfa_activation_dialog_message" msgid="7921718445773342996">"Телефонот ја активира услугата за мобилен интернет.\n\nОва може да потрае до 5 минути."</string>
     <string name="ota_skip_activation_dialog_title" msgid="7666611236789203797">"Прескокни активација?"</string>
-    <string name="ota_skip_activation_dialog_message" msgid="6691722887019708713">"Ако ја прескокнете активацијата, не може да воспоставувате повици или да се поврзувате на мрежи за мобилни податоци (иако може да се поврзувате со Wi-Fi мрежи). Додека не го активирате вашиот телефон, ќе ви стигнува порака да го активирате секој пат кога ќе го вклучите."</string>
+    <string name="ota_skip_activation_dialog_message" msgid="6691722887019708713">"Ако ја прескокнете активацијата, не може да воспоставувате повици или да се поврзувате на мрежи за мобилен интернет (иако може да се поврзувате со Wi-Fi мрежи). Додека не го активирате вашиот телефон, ќе ви стигнува порака да го активирате секој пат кога ќе го вклучите."</string>
     <string name="ota_skip_activation_dialog_skip_label" msgid="5908029466817825633">"Прескокни"</string>
     <string name="ota_activate" msgid="7939695753665438357">"Активирај"</string>
     <string name="ota_title_activate_success" msgid="1272135024761004889">"Телефонот е активиран."</string>
@@ -826,7 +827,7 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"Не може да се воспостави повик затоа што веќе се бира друг појдовен повик."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"Не може да се воспостави повик затоа што има неодговорен дојдовен повик. Одговорете или одбијте го дојдовниот повик пред воспоставувањето на новиот повик."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"Не може да се воспостави повик затоа што повикувањето е оневозможено со системското својство ro.telephony.disable-call."</string>
-    <string name="callFailed_too_many_calls" msgid="5379426826618582180">"Не може да се воспостави повик затоа што два повика веќе се во тек. Исклучете го едниот од повиците или спојте ги во конференциски повик пред да воспоставите нов повик."</string>
+    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"Не може да се воспостави повик затоа што веќе се во тек два повика. Исклучете го едниот од повиците или спојте ги во конференциски повик пред да воспоставите нов повик."</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"За користење <xliff:g id="SUPP_SERVICE">%s</xliff:g>, уверете се дека мобилниот интернет е вклучен. Тоа може да го промените во поставките за мобилна мрежа."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"За користење <xliff:g id="SUPP_SERVICE">%s</xliff:g>, уверете се дека мобилниот интернет и интернет роамингот се вклучени. Овие може да ги промените во поставките за мобилна мрежа."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"За користење <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>, уверете се дека мобилниот интернет е вклучен за SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. Тоа може да го промените во поставките за мобилна мрежа."</string>
@@ -914,8 +915,6 @@
     <string name="radio_info_nr_available" msgid="1321318331361249997">"Достапно за NR:"</string>
     <string name="radio_info_nr_state" msgid="1337571996788535356">"Состојба на NR:"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"Фреквенција на NR:"</string>
-    <!-- no translation found for radio_info_network_slicing_config (7675131833885031563) -->
-    <skip />
     <string name="band_mode_title" msgid="7988822920724576842">"Поставете режим на појас на радио"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Се вчитува список на појаси…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Постави"</string>

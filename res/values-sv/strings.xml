@@ -75,7 +75,7 @@
     <string name="phone_accounts_configure_account_settings" msgid="6622119715253196586">"Konfigurera kontoinställningar"</string>
     <string name="phone_accounts_all_calling_accounts" msgid="1609600743500618823">"Alla konton för samtal"</string>
     <string name="phone_accounts_all_calling_accounts_summary" msgid="2214134955430107240">"Välj vilka konton som kan ringa samtal"</string>
-    <string name="wifi_calling" msgid="3650509202851355742">"Wi-Fi-samtal"</string>
+    <string name="wifi_calling" msgid="3650509202851355742">"wifi-samtal"</string>
     <string name="connection_service_default_label" msgid="7332739049855715584">"Inbyggd anslutningstjänst"</string>
     <string name="voicemail" msgid="7697769412804195032">"Röstbrevlåda"</string>
     <string name="voicemail_settings_with_label" msgid="4228431668214894138">"Röstbrevlåda (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -309,7 +309,7 @@
     <string name="sim_selection_required_pref" msgid="6985901872978341314">"Du måste välja något"</string>
     <string name="sim_change_data_title" msgid="9142726786345906606">"Vill du ändra data-SIM?"</string>
     <string name="sim_change_data_message" msgid="3567358694255933280">"Vill du använda <xliff:g id="NEW_SIM">%1$s</xliff:g> i stället för <xliff:g id="OLD_SIM">%2$s</xliff:g> för mobildata?"</string>
-    <string name="wifi_calling_settings_title" msgid="5800018845662016507">"Wi-Fi-samtal"</string>
+    <string name="wifi_calling_settings_title" msgid="5800018845662016507">"wifi-samtal"</string>
     <string name="video_calling_settings_title" msgid="342829454913266078">"Videosamtal via operatören"</string>
     <string name="gsm_umts_options" msgid="4968446771519376808">"Alternativ för GSM/UMTS"</string>
     <string name="cdma_options" msgid="3669592472226145665">"CDMA-alternativ"</string>
@@ -451,8 +451,8 @@
     <string name="sum_fdn" msgid="6152246141642323582">"Hantera fasta nummer"</string>
     <string name="sum_fdn_change_pin" msgid="3510994280557335727">"Ändra PIN-kod för FDN-åtkomst"</string>
     <string name="sum_fdn_manage_list" msgid="3311397063233992907">"Hantera nummerlistan"</string>
-    <string name="voice_privacy" msgid="7346935172372181951">"Sekretess för Voice"</string>
-    <string name="voice_privacy_summary" msgid="3556460926168473346">"Aktivera avancerat sekretessläge"</string>
+    <string name="voice_privacy" msgid="7346935172372181951">"Integritet för Voice"</string>
+    <string name="voice_privacy_summary" msgid="3556460926168473346">"Aktivera avancerat integritetsläge"</string>
     <string name="tty_mode_option_title" msgid="3843817710032641703">"TTY-läge"</string>
     <string name="tty_mode_option_summary" msgid="4770510287236494371">"Ange TTY-läge"</string>
     <string name="auto_retry_mode_title" msgid="2985801935424422340">"Försök igen automatiskt"</string>
@@ -537,6 +537,7 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Aktivera mobilt nätverk, stäng av flygplansläget eller batterisparläget för att ringa ett samtal."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Inaktivera flygplansläget om du vill ringa."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Inaktivera flygplansläget eller anslut till ett trådlöst nätverk om du vill ringa."</string>
+    <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"Telefonen för varm"</b>\n\n"Det går inte att genomföra samtalet. Försök igen när telefonen svalnar.\n\nDet går fortfarande att ringa nödsamtal."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Avsluta läget för återuppringning vid nödsamtal om du vill ringa ett vanligt samtal."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"Inte registrerat på nätverk."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"Inget mobilt nätverk är tillgängligt."</string>
@@ -554,7 +555,7 @@
     <string name="incall_error_supp_service_hangup" msgid="836524952243836735">"Det gick inte att släppa samtal."</string>
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"Det går inte att hålla kvar samtal."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"Anslut till ett trådlöst nätverk om du vill ringa."</string>
-    <string name="incall_error_promote_wfc" msgid="9164896813931363415">"Aktivera Wi-Fi-samtal för att ringa."</string>
+    <string name="incall_error_promote_wfc" msgid="9164896813931363415">"Aktivera wifi-samtal för att ringa."</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"Nödinformation"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"Ägare"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"Tryck igen för att visa information"</string>
@@ -616,7 +617,7 @@
     <string name="ota_hfa_activation_title" msgid="3300556778212729671">"Aktiveras ..."</string>
     <string name="ota_hfa_activation_dialog_message" msgid="7921718445773342996">"Din mobila datatjänst aktiveras av mobilen.\n\nDetta kan ta upp till fem minuter."</string>
     <string name="ota_skip_activation_dialog_title" msgid="7666611236789203797">"Vill du hoppa över aktiveringen?"</string>
-    <string name="ota_skip_activation_dialog_message" msgid="6691722887019708713">"Om du hoppar över aktiveringen kan du inte ringa samtal eller ansluta till mobila datanätverk (men du kan ansluta till Wi-Fi-nätverk). Du kommer att påminnas om att aktivera telefonen varje gång du sätter på den, tills du har aktiverat den."</string>
+    <string name="ota_skip_activation_dialog_message" msgid="6691722887019708713">"Om du hoppar över aktiveringen kan du inte ringa samtal eller ansluta till mobila datanätverk (men du kan ansluta till wifi-nätverk). Du kommer att påminnas om att aktivera telefonen varje gång du sätter på den, tills du har aktiverat den."</string>
     <string name="ota_skip_activation_dialog_skip_label" msgid="5908029466817825633">"Hoppa över"</string>
     <string name="ota_activate" msgid="7939695753665438357">"Aktivera"</string>
     <string name="ota_title_activate_success" msgid="1272135024761004889">"Telefonen är aktiverad."</string>
@@ -680,18 +681,18 @@
     <string name="sim_description_emergency_calls" msgid="5146872803938897296">"Endast nödsamtal"</string>
     <string name="sim_description_default" msgid="7474671114363724971">"SIM-kortsplats: <xliff:g id="SLOT_ID">%s</xliff:g>"</string>
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"Tillgänglighet"</string>
-    <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"Wi-Fi-samtal från"</string>
-    <string name="status_hint_label_wifi_call" msgid="942993035689809853">"Wi-Fi-samtal"</string>
+    <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"wifi-samtal från"</string>
+    <string name="status_hint_label_wifi_call" msgid="942993035689809853">"wifi-samtal"</string>
     <string name="emergency_action_launch_hint" msgid="2762016865340891314">"Tryck igen för att öppna"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"Ett fel inträffade när meddelandet avkodades."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"Ett SIM-kort har använts för att aktivera tjänsten och uppdatera roamingfunktionerna i mobilen."</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"Det finns för många aktiva samtal. Avsluta eller slå samman pågående samtal innan du ringer ett nytt."</string>
     <string name="callFailed_imei_not_accepted" msgid="7257903653685147251">"Det går inte att ansluta. Sätt i ett giltigt SIM-kort."</string>
-    <string name="callFailed_wifi_lost" msgid="1788036730589163141">"Wi-Fi-anslutningen bruten. Samtal avslutat."</string>
+    <string name="callFailed_wifi_lost" msgid="1788036730589163141">"wifi-anslutningen bruten. Samtal avslutat."</string>
     <string name="dialFailed_low_battery" msgid="6857904237423407056">"Det går inte att ringa videosamtal på grund av svagt batteri."</string>
     <string name="callFailed_low_battery" msgid="4056828320214416182">"Videosamtalet slutade på grund av svagt batteri."</string>
-    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="5944309590693432042">"Nödsamtal via Wi-Fi är inte tillgängligt på den här platsen."</string>
-    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="3624536608369524988">"Wi-Fi-samtal är inte tillgängligt på den här platsen."</string>
+    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="5944309590693432042">"Nödsamtal via wifi är inte tillgängligt på den här platsen."</string>
+    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="3624536608369524988">"wifi-samtal är inte tillgängligt på den här platsen."</string>
     <string name="change_pin_title" msgid="3564254326626797321">"Ändra röstbrevlådans pinkod"</string>
     <string name="change_pin_continue_label" msgid="5177011752453506371">"Fortsätt"</string>
     <string name="change_pin_cancel_label" msgid="2301711566758827936">"Avbryt"</string>
@@ -826,7 +827,7 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"Det går inte att ringa ett samtal eftersom ett annat utgående samtal ringer upp."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"Det går inte att ringa eftersom det finns ett obesvarat inkommande samtal. Svara eller avvisa det innan du ringer ett nytt samtal."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"Det går inte att ringa eftersom uppringning har inaktiverats med systemegenskapen ro.telephony.disable-call."</string>
-    <string name="callFailed_too_many_calls" msgid="5379426826618582180">"Det går inte att ringa eftersom det redan finns två pågående samtal. Koppla bort ett eller slå ihop dem till en konferens innan du ringer ett nytt samtal."</string>
+    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"Det går inte att ringa eftersom det redan finns två pågående samtal. Koppla bort ett eller slå ihop dem till en konferens innan du ringer ett nytt samtal."</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"Använd <xliff:g id="SUPP_SERVICE">%s</xliff:g> genom att säkerställa att mobildata är aktiverat. Det går att ändra i inställningarna för mobilt nätverk."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"Använd <xliff:g id="SUPP_SERVICE">%s</xliff:g> genom att säkerställa att mobildata och dataroaming är aktiverat. Det går att ändra i inställningarna för mobilt nätverk."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"Använd <xliff:g id="SUPP_SERVICE">%1$s</xliff:g> genom att säkerställa att mobildata är aktiverat för SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. Det går att ändra i inställningarna för mobilt nätverk."</string>
@@ -836,7 +837,7 @@
     <string name="radio_info_data_connection_disable" msgid="6404751291511368706">"Inaktivera dataanslutning"</string>
     <string name="volte_provisioned_switch_string" msgid="4812874990480336178">"VoLTE-administrerad"</string>
     <string name="vt_provisioned_switch_string" msgid="8295542122512195979">"Videosamtal tillhandahålls"</string>
-    <string name="wfc_provisioned_switch_string" msgid="3835004640321078988">"Wi-Fi-samtal tillhandahålls"</string>
+    <string name="wfc_provisioned_switch_string" msgid="3835004640321078988">"wifi-samtal tillhandahålls"</string>
     <string name="eab_provisioned_switch_string" msgid="4449676720736033035">"EAB/Presence tillhandahålls"</string>
     <string name="cbrs_data_switch_string" msgid="6060356430838077653">"Data via CBRS"</string>
     <string name="dsds_switch_string" msgid="7564769822086764796">"Aktivera DSDS"</string>
@@ -854,7 +855,7 @@
     <string name="radio_info_ims_reg_status_not_registered" msgid="8045821447288876085">"Inte registrerad"</string>
     <string name="radio_info_ims_feature_status_available" msgid="6493200914756969292">"Tillgänglig"</string>
     <string name="radio_info_ims_feature_status_unavailable" msgid="8930391136839759778">"Inte tillgängligt"</string>
-    <string name="radio_info_ims_reg_status" msgid="25582845222446390">"IMS-registrering: <xliff:g id="STATUS">%1$s</xliff:g>\nRöst via LTE: <xliff:g id="AVAILABILITY_0">%2$s</xliff:g>\nRöst via Wi-Fi: <xliff:g id="AVAILABILITY_1">%3$s</xliff:g>\nVideosamtal: <xliff:g id="AVAILABILITY_2">%4$s</xliff:g>\nUT-gränssnitt: <xliff:g id="AVAILABILITY_3">%5$s</xliff:g>"</string>
+    <string name="radio_info_ims_reg_status" msgid="25582845222446390">"IMS-registrering: <xliff:g id="STATUS">%1$s</xliff:g>\nRöst via LTE: <xliff:g id="AVAILABILITY_0">%2$s</xliff:g>\nRöst via wifi: <xliff:g id="AVAILABILITY_1">%3$s</xliff:g>\nVideosamtal: <xliff:g id="AVAILABILITY_2">%4$s</xliff:g>\nUT-gränssnitt: <xliff:g id="AVAILABILITY_3">%5$s</xliff:g>"</string>
     <string name="radioInfo_service_in" msgid="45753418231446400">"I tjänst"</string>
     <string name="radioInfo_service_out" msgid="287972405416142312">"Ur funktion"</string>
     <string name="radioInfo_service_emergency" msgid="4763879891415016848">"Endast nödsamtal"</string>
@@ -914,7 +915,6 @@
     <string name="radio_info_nr_available" msgid="1321318331361249997">"NR tillgänglig:"</string>
     <string name="radio_info_nr_state" msgid="1337571996788535356">"NR-status:"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR-frekvens:"</string>
-    <string name="radio_info_network_slicing_config" msgid="7675131833885031563">"Nätverkets uppdelningskonfiguration:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Konfigurera radiobandsläget"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Läser in bandlista …"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Ange"</string>

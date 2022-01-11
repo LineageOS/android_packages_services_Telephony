@@ -49,13 +49,13 @@
     <string name="add_vm_number_str" msgid="7368168964435881637">"எண்ணைச் சேர்"</string>
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"முதன்மை பயனர் மட்டுமே குரலஞ்சல் அமைப்புகளை மாற்ற முடியும்."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"சிம் கார்டின் தடுப்பு நீக்கப்பட்டது. மொபைல் திறக்கப்படுகிறது…"</string>
-    <string name="label_ndp" msgid="7617392683877410341">"சிம் நெட்வொர்க்கின் தடைநீக்க பின்"</string>
+    <string name="label_ndp" msgid="7617392683877410341">"சிம் நெட்வொர்க்கை அன்லாக் செய்யும் பின்"</string>
     <string name="label_phoneid" msgid="8775611434123577808">"ஆப்பரேட்டருக்கு சிம் பூட்டப்பட்டுள்ளது"</string>
-    <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"தடைநீக்கு"</string>
+    <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"அன்லாக் செய்"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"விலக்கு"</string>
-    <string name="requesting_unlock" msgid="930512210309437741">"நெட்வொர்க் தடைநீக்கத்தைக் கோருகிறது…"</string>
-    <string name="unlock_failed" msgid="7103543844840661366">"நெட்வொர்க் தடைநீக்கத்திற்கான கோரிக்கை தோல்வி."</string>
-    <string name="unlock_success" msgid="32681089371067565">"நெட்வொர்க்கின் தடைநீக்கப்பட்டது."</string>
+    <string name="requesting_unlock" msgid="930512210309437741">"நெட்வொர்க்கை அன்லாக் செய்யக் கோருகிறது…"</string>
+    <string name="unlock_failed" msgid="7103543844840661366">"நெட்வொர்க்கை அன்லாக் செய்வதற்கான கோரிக்கை தோல்வியடைந்தது."</string>
+    <string name="unlock_success" msgid="32681089371067565">"நெட்வொர்க் அன்லாக் செய்யப்பட்டது."</string>
     <string name="mobile_network_settings_not_available" msgid="8678168497517090039">"இவரால் மொபைல் நெட்வொர்க் அமைப்புகளை மாற்ற முடியாது"</string>
     <string name="labelGSMMore" msgid="7354182269461281543">"GSM அழைப்பு அமைப்பு"</string>
     <string name="labelGsmMore_with_label" msgid="3206015314393246224">"GSM அழைப்பு அமைப்புகள் (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -339,7 +339,7 @@
     <string name="maintenance_enable" msgid="2646784483222342290">"பராமரிப்பு இயக்கப்பட்டது"</string>
     <string name="maintenance_disable" msgid="2121032601497725602">"பராமரிப்பு முடக்கப்பட்டது"</string>
     <string name="general_news_settings" msgid="2670499575962080411">"பொது செய்திகள்"</string>
-    <string name="bf_news_settings" msgid="8571709425370794221">"வணிகம் மற்றும் நிதிசார்ந்த செய்திகள்"</string>
+    <string name="bf_news_settings" msgid="8571709425370794221">"பிசினஸ் மற்றும் நிதிசார்ந்த செய்திகள்"</string>
     <string name="sports_news_settings" msgid="2684364556989168438">"விளையாட்டுச் செய்திகள்"</string>
     <string name="entertainment_news_settings" msgid="4228527702346305543">"பொழுதுபோக்குச் செய்திகள்"</string>
     <string name="enable_disable_local" msgid="7654175079979415572">"உள்ளூர்"</string>
@@ -537,6 +537,7 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"அழைக்க, மொபைல் நெட்வொர்க்கை இயக்கவும், விமானப் பயன்முறை அல்லது பேட்டரி சேமிப்பான் பயன்முறையை முடக்கவும்."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"அழைக்க, விமானப் பயன்முறையை முடக்கவும்."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"அழைக்க, விமானப் பயன்முறையை முடக்கவும் அல்லது வயர்லெஸ் நெட்வொர்க்குடன் இணைக்கவும்."</string>
+    <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"மொபைல் மிகச் சூடாக உள்ளது"</b>\n\n"இந்த அழைப்பைத் தொடர முடியவில்லை. மொபைலின் சூடு முழுமையாகத் தணிந்ததும் மீண்டும் அழைக்கவும்.\n\nஇருப்பினும் அவசர அழைப்புகளைச் செய்யலாம்."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"வழக்கமான அழைப்பிற்கு, அவசரகாலத் திரும்ப அழைக்கும் பயன்முறையிலிருந்து வெளியேறவும்."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"நெட்வொர்க்கில் பதிவுசெய்யப்படவில்லை."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"மொபைல் நெட்வொர்க் கிடைக்கவில்லை."</string>
@@ -826,7 +827,7 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"ஏற்கனவே ஒரு அழைப்பு டயல் ஆகிக்கொண்டிருப்பதால், இந்த அழைப்பைச் செய்ய முடியாது."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"உள்வரும் அழைப்பிற்கு இன்னும் பதிலளிக்காததால், இந்த அழைப்பைச் செய்ய முடியாது. புதிதாக ஒரு அழைப்பைச் செய்வதற்கு முன்னர், உள்வரும் அழைப்பிற்குப் பதிலளிக்கவும் அல்லது நிராகரிக்கவும்."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"ro.telephony.disable-call எனும் சிஸ்டம் பிராப்பர்ட்டியைப் பயன்படுத்தி அழைப்பதற்கான வசதி முடக்கப்பட்டுள்ளதால், இந்த அழைப்பைச் செய்ய முடியாது."</string>
-    <string name="callFailed_too_many_calls" msgid="5379426826618582180">"இரண்டு அழைப்புகள் ஏற்கனவே செயலில் இருப்பதால், இந்த அழைப்பைச் செய்ய முடியாது. புதிதாக ஒரு அழைப்பைச் செய்வதற்கு முன்னர், ஏதாவது ஒரு அழைப்பைத் துண்டிக்கவும் அல்லது அவற்றை இணைத்து குழு அழைப்பாக மாற்றவும்."</string>
+    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"இரண்டு அழைப்புகள் செயலில் இருப்பதால் தற்போது அழைப்பைச் செய்ய முடியாது. அழைப்பைச் செய்ய வேண்டுமெனில், செயலில் உள்ள அழைப்புகளில் ஏதேனும் ஒன்றைத் துண்டிக்கவும் அல்லது அழைப்பதற்கு முன் அவற்றை இணைத்து குழு அழைப்பாக மாற்றவும்."</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"<xliff:g id="SUPP_SERVICE">%s</xliff:g>ஐப் பயன்படுத்த, மொபைல் டேட்டா இயக்கத்தில் இருப்பதை உறுதிப்படுத்திக் கொள்ளவும். இதை மொபைல் நெட்வொர்க் அமைப்புகளில் மாற்றலாம்."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"<xliff:g id="SUPP_SERVICE">%s</xliff:g>ஐப் பயன்படுத்த, மொபைல் டேட்டாவும் டேட்டா ரோமிங்கும் இயக்கத்தில் இருப்பதை உறுதிப்படுத்திக் கொள்ளவும். இவற்றை மொபைல் நெட்வொர்க் அமைப்புகளில் மாற்றலாம்."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"<xliff:g id="SUPP_SERVICE">%1$s</xliff:g>ஐப் பயன்படுத்த, <xliff:g id="SIM_NUMBER">%2$d</xliff:g> சிம்மிற்கான மொபைல் டேட்டா இயக்கத்தில் இருப்பதை உறுதிப்படுத்திக் கொள்ளவும். இதை மொபைல் நெட்வொர்க் அமைப்புகளில் மாற்றலாம்."</string>
@@ -914,8 +915,6 @@
     <string name="radio_info_nr_available" msgid="1321318331361249997">"NR உள்ளது:"</string>
     <string name="radio_info_nr_state" msgid="1337571996788535356">"NR நிலை:"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR அலைவரிசை:"</string>
-    <!-- no translation found for radio_info_network_slicing_config (7675131833885031563) -->
-    <skip />
     <string name="band_mode_title" msgid="7988822920724576842">"ரேடியோ பேண்டு பயன்முறையை அமை"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"பேண்டு பட்டியலை ஏற்றுகிறது…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"அமை"</string>

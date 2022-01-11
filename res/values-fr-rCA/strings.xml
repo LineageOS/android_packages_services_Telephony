@@ -537,6 +537,7 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Activez le réseau cellulaire ou désactivez le mode Avion ou le mode Économiseur de pile pour faire un appel."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Désactivez le mode Avion pour faire un appel."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Désactivez le mode Avion ou connectez-vous à un réseau Wi-Fi pour faire un appel."</string>
+    <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"Le téléphone est trop chaud"</b>\n\n"Impossible de passer cet appel. Réessayez plus tard quand le téléphone aura refroidi.\n\nVous pouvez toujours effectuer des appels d\'urgence."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Quittez le mode de rappel d\'urgence pour effectuer un appel non urgent."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"Non enregistré sur le réseau"</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"Réseau pour mobile non disponible"</string>
@@ -577,7 +578,7 @@
     <string name="onscreenHoldText" msgid="4025348842151665191">"Attente"</string>
     <string name="onscreenEndCallText" msgid="6138725377654842757">"Terminé"</string>
     <string name="onscreenShowDialpadText" msgid="658465753816164079">"Clavier numérique"</string>
-    <string name="onscreenMuteText" msgid="5470306116733843621">"Ignorer"</string>
+    <string name="onscreenMuteText" msgid="5470306116733843621">"Couper le son"</string>
     <string name="onscreenAddCallText" msgid="9075675082903611677">"Autre appel"</string>
     <string name="onscreenMergeCallsText" msgid="3692389519611225407">"Fusionner les appels"</string>
     <string name="onscreenSwapCallsText" msgid="2682542150803377991">"Permuter"</string>
@@ -826,7 +827,7 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"Impossible de passer un appel, car un autre appel sortant est déjà en cours de composition."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"Impossible de passer un appel, car il y a un appel entrant sans réponse. Répondez à l\'appel entrant ou refusez-le avant de passer un nouvel appel."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"Impossible de passer un appel, car la fonction d\'appel a été désactivée à l\'aide de la propriété système ro.telephony.disable-call."</string>
-    <string name="callFailed_too_many_calls" msgid="5379426826618582180">"Impossible de passer un appel, car deux appels sont déjà en cours. Déconnectez-en un ou fusionnez-les en conférence téléphonique avant de passer un nouvel appel."</string>
+    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"Impossible de passer un appel, car deux appels sont déjà en cours. Déconnectez-en un ou fusionnez-les en conférence téléphonique avant de passer un nouvel appel."</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"Avant d\'utiliser <xliff:g id="SUPP_SERVICE">%s</xliff:g>, assurez-vous que les données cellulaires sont activées. Vous pouvez modifier cette option dans les paramètres du réseau cellulaire."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"Avant d\'utiliser <xliff:g id="SUPP_SERVICE">%s</xliff:g>, assurez-vous que les données cellulaires et l\'itinérance des données sont activées. Vous pouvez modifier ces options dans les paramètres du réseau cellulaire."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"Avant d\'utiliser <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>, assurez-vous que les données cellulaires sont activées pour la carte SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. Vous pouvez modifier cette option dans les paramètres du réseau cellulaire."</string>
@@ -914,8 +915,6 @@
     <string name="radio_info_nr_available" msgid="1321318331361249997">"NR disponible :"</string>
     <string name="radio_info_nr_state" msgid="1337571996788535356">"État NR :"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"Fréquence NR :"</string>
-    <!-- no translation found for radio_info_network_slicing_config (7675131833885031563) -->
-    <skip />
     <string name="band_mode_title" msgid="7988822920724576842">"Définir le mode de bande radio"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Chargement de la liste de bandes en cours…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Définir"</string>

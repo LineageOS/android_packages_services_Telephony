@@ -537,6 +537,7 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"ජංගම ජාලය ක්‍රියාත්මක කරන්න, ඇමතුමක් ගැනීමට ගුවන් යානා ප්‍රකාරය හෝ බැටරි සුරැකුම් ප්‍රකාරය ක්‍රියාවිරහිත කරන්න."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"ඇමතුමක් ගැනීමට ගුවන් යානා මාදිලිය අක්‍රිය කරන්න."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"ඇමතුමක් ලබා ගැනීමට ගුවන් යානා මෝඩය අක්‍රිය කරන්න හෝ රැහැන් රහිත ජාලයකට සම්බන්ධ වෙන්න."</string>
+    <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"දුරකථනය ඉතා උණුසුම් ය"</b>\n\n"මෙම ඇමතුම සම්පූර්ණ කළ නොහැක. ඔබේ දුරකථනය සිසිල් වන විට නැවත උත්සාහ කරන්න.\n\nඔබට තවමත් හදිසි ඇමතුම් ලබා ගත හැක."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"හදිසි-නොවන ඇමතුමක් සිදු කිරීමට හදිසි අවස්ථා පසු ඇමතුම් ප්‍රකාරයෙන් ඉවත් වන්න."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"ජාලය මත ලියාපදිංචි වී නැත."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"ජංගම ජාලය නොමැත."</string>
@@ -826,7 +827,7 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"තවත් යන ඇමතුමක් දැනටමත් ඩයල් කරමින් පවතින නිසා අැමතුමක් ගැනීමට නොහැකිය."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"පිළිතුරු නොදුන් එන ඇමතුමක් තිබෙන නිසා අැමතුමක් ගැනීමට නොහැකිය. නව ඇමතුමක් ගැනීමට පෙර එන අැමතුමට පිළිතුරු දෙන්න නැතහොත් ප්‍රතික්ෂේප කරන්න."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"ඇමතුම ro.telephony.disable-call පද්ධති ගුණාංගය භාවිතයෙන් ඇමතුම අබල කර ඇති නිසා ඇමතුමක් ගැනීමට නොහැකිය."</string>
-    <string name="callFailed_too_many_calls" msgid="5379426826618582180">"දැනටමත් ඇමතුම් දෙකක් කෙරෙමින් පවතින නිසා ඇමතුමක් ගැනීමට නොහැකිය. නව ඇමතුමක් ගැනීමට පෙරාතුව ඇමතුම්වලින් එකක් විසන්ධි කරන්න නැතහොත් ඒවා සම්මන්ත්‍රණයකට ඒකාබද්ධ කරන්න."</string>
+    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"දැනටමත් ඇමතුම් දෙකක් කෙරෙමින් පවතින නිසා ඇමතුමක් ගැනීමට නොහැක. නව ඇමතුමක් ගැනීමට පෙරාතුව ඇමතුම්වලින් එකක් විසන්ධි කරන්න නැතහොත් ඒවා සම්මන්ත්‍රණයකට ඒකාබද්ධ කරන්න."</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"<xliff:g id="SUPP_SERVICE">%s</xliff:g> භාවිත කිරීමට, ඔබේ ජංගම දත්ත ක්‍රියාත්මක කර ඇති බව සහතික කර ගන්න. ඔබට මෙය ජංගම ජාල සැකසීම් තුළ වෙනස් කිරීමට හැකිය."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"<xliff:g id="SUPP_SERVICE">%s</xliff:g> භාවිත කිරීමට, ජංගම දත්ත සහ දත්ත රෝමිං ක්‍රියාත්මක කර ඇති බව සහතික කර ගන්න. ඔබට මේවා ජංගම ජාල සැකසීම් තුළ වෙනස් කිරීමට හැකිය."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"<xliff:g id="SUPP_SERVICE">%1$s</xliff:g> භාවිත කිරීමට, SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g> සඳහා ජංගම දත්ත ක්‍රියාත්මක කර ඇති බව සහතික කර ගන්න. ඔබට මෙය ජංගම ජාල සැකසීම් තුළ වෙනස් කිරීමට හැකිය."</string>
@@ -914,8 +915,6 @@
     <string name="radio_info_nr_available" msgid="1321318331361249997">"NR ලබා ගත හැකි:"</string>
     <string name="radio_info_nr_state" msgid="1337571996788535356">"NR තත්ත්වය:"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR සංඛ්‍යාතය:"</string>
-    <!-- no translation found for radio_info_network_slicing_config (7675131833885031563) -->
-    <skip />
     <string name="band_mode_title" msgid="7988822920724576842">"රේඩියෝ කලාප ප්‍රකාරය සකසන්න"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"කලාප ලැයිස්තුව පූරණය කරමින්…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"සකසන්න"</string>

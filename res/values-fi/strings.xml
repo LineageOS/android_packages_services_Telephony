@@ -537,6 +537,7 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Ota mobiiliverkko käyttöön tai poista lentokonetila ja virransäästötila käytöstä, jos haluat soittaa puhelun."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Poista lentokonetila käytöstä, jos haluat soittaa puhelun."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Poista lentokonetila käytöstä tai yhdistä langattomaan verkkoon, jos haluat soittaa puhelun."</string>
+    <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"Liian kuuma puhelin"</b>\n\n"Puhelua ei voida soittaa. Yritä uudelleen, kun puhelin on jäähtynyt.\n\nVoit silti soittaa hätäpuheluita."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Poistu hätäpuhelujen takaisinsoittotilasta soittaaksesi muun kuin hätäpuhelun."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"Ei rekisteröity verkkoon."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"Mobiiliverkko ei käytettävissä."</string>
@@ -826,7 +827,7 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"Puhelua ei voida soittaa, koska toisen lähtevän puhelun soittaminen on kesken."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"Puhelua ei voida soittaa, koska saapuvaan puheluun ei ole vielä vastattu. Vastaa saapuvaan puheluun tai hylkää se, ennen kuin soitat uuden puhelun."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"Puhelua ei voida soittaa, koska soittaminen on poistettu käytöstä ro.telephony.disable-call-järjestelmätoiminnolla."</string>
-    <string name="callFailed_too_many_calls" msgid="5379426826618582180">"Puhelua ei voida soittaa, koska kaksi puhelua on jo käynnissä. Katkaise toinen puheluista tai yhdistä puhelut puhelinneuvotteluksi ennen uuden puhelun soittamista."</string>
+    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"Puhelua ei voida soittaa, koska kaksi puhelua on jo käynnissä. Katkaise toinen puheluista tai yhdistä puhelut neuvotteluksi ennen uuden puhelun soittamista."</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"<xliff:g id="SUPP_SERVICE">%s</xliff:g> toimii, jos mobiilidata on käytössä. Voit ottaa mobiilidatan käyttöön mobiiliverkkoasetuksista."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"<xliff:g id="SUPP_SERVICE">%s</xliff:g> toimii, jos mobiilidata ja roaming ovat käytössä. Voit ottaa ne käyttöön mobiiliverkkoasetuksista."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"<xliff:g id="SUPP_SERVICE">%1$s</xliff:g> toimii, jos mobiilidata on käytössä SIM-kortilla <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. Voit ottaa mobiilidatan käyttöön mobiiliverkkoasetuksista."</string>
@@ -914,8 +915,6 @@
     <string name="radio_info_nr_available" msgid="1321318331361249997">"NR saatavilla:"</string>
     <string name="radio_info_nr_state" msgid="1337571996788535356">"NR:n tila:"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR:n taajuus:"</string>
-    <!-- no translation found for radio_info_network_slicing_config (7675131833885031563) -->
-    <skip />
     <string name="band_mode_title" msgid="7988822920724576842">"Radion taajuustilan valinta"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Ladataan taajuusluetteloa…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Aseta"</string>

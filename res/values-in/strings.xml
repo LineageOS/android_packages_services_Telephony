@@ -183,7 +183,7 @@
     <string name="registration_done" msgid="5337407023566953292">"Terdaftar pada jaringan."</string>
     <string name="already_auto" msgid="8607068290733079336">"Sudah ada di pemilihan otomatis."</string>
     <string name="select_automatically" msgid="779750291257872651">"Pilih jaringan secara otomatis"</string>
-    <string name="manual_mode_disallowed_summary" msgid="3970048592179890197">"Tidak tersedia saat tersambung ke %1$s"</string>
+    <string name="manual_mode_disallowed_summary" msgid="3970048592179890197">"Tidak tersedia saat terhubung ke %1$s"</string>
     <string name="network_select_title" msgid="4117305053881611988">"Jaringan"</string>
     <string name="register_automatically" msgid="3907580547590554834">"Pendaftaran otomatis..."</string>
     <string name="preferred_network_mode_title" msgid="5253395265169539830">"Jenis jaringan yang dipilih"</string>
@@ -194,7 +194,7 @@
     <string name="network_disconnected" msgid="8844141106841160825">"Terputus"</string>
     <string name="network_connected" msgid="2760235679963580224">"Terhubung"</string>
     <string name="network_connecting" msgid="160901383582774987">"Menghubungkan..."</string>
-    <string name="network_could_not_connect" msgid="6547460848093727998">"Tidak dapat tersambung"</string>
+    <string name="network_could_not_connect" msgid="6547460848093727998">"Tidak dapat terhubung"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="4531933377509551889">"GSM/WCDMA lebih disukai"</item>
     <item msgid="5120532750027435355">"GSM saja"</item>
@@ -313,7 +313,7 @@
     <string name="video_calling_settings_title" msgid="342829454913266078">"Panggilan video operator"</string>
     <string name="gsm_umts_options" msgid="4968446771519376808">"Opsi GSM//UMTS"</string>
     <string name="cdma_options" msgid="3669592472226145665">"Opsi CDMA"</string>
-    <string name="throttle_data_usage" msgid="1944145350660420711">"Penggunaan kuota"</string>
+    <string name="throttle_data_usage" msgid="1944145350660420711">"Penggunaan data"</string>
     <string name="throttle_current_usage" msgid="7483859109708658613">"Data yang digunakan dalam periode saat ini"</string>
     <string name="throttle_time_frame" msgid="1813452485948918791">"Periode penggunaan data"</string>
     <string name="throttle_rate" msgid="7641913901133634905">"Kebijakan kecepatan data"</string>
@@ -537,6 +537,7 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Aktifkan jaringan seluler, lalu nonaktifkan mode pesawat atau penghemat baterai untuk melakukan panggilan."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Nonaktifkan mode pesawat untuk melakukan panggilan"</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Nonaktifkan mode pesawat atau sambungkan ke jaringan nirkabel untuk melakukan panggilan"</string>
+    <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"Ponsel terlalu panas"</b>\n\n"Tidak dapat menyelesaikan panggilan ini. Coba lagi saat ponsel mendingin.\n\nAnda masih dapat melakukan panggilan darurat."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Keluar dari mode telepon balik darurat untuk melakukan panggilan non-darurat."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"Tidak terdaftar pada jaringan."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"Jaringan seluler tidak tersedia."</string>
@@ -686,7 +687,7 @@
     <string name="message_decode_error" msgid="1061856591500290887">"Terjadi kesalahan saat mendekode pesan."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"Kartu SIM telah mengaktifkan layanan dan memperbarui kemampuan roaming ponsel."</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"Ada terlalu banyak panggilan aktif. Akhiri atau gabungkan panggilan yang ada sebelum melakukan panggilan baru."</string>
-    <string name="callFailed_imei_not_accepted" msgid="7257903653685147251">"Tidak dapat tersambung, masukkan kartu SIM yang valid."</string>
+    <string name="callFailed_imei_not_accepted" msgid="7257903653685147251">"Tidak dapat terhubung, masukkan kartu SIM yang valid."</string>
     <string name="callFailed_wifi_lost" msgid="1788036730589163141">"Sambungan Wi-Fi terputus. Panggilan diakhiri."</string>
     <string name="dialFailed_low_battery" msgid="6857904237423407056">"Panggilan video tidak bisa dilakukan karena daya baterai lemah."</string>
     <string name="callFailed_low_battery" msgid="4056828320214416182">"Panggilan video berakhir karena daya baterai lemah."</string>
@@ -826,7 +827,7 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"Tidak dapat melakukan panggilan karena panggilan keluar lainnya sedang berlangsung."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"Tidak dapat melakukan panggilan karena ada panggilan masuk yang belum terjawab. Jawab atau tolak panggilan masuk sebelum melakukan panggilan."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"Tidak dapat melakukan panggilan karena panggilan telah dinonaktifkan menggunakan properti sistem ro.telephony.disable-call"</string>
-    <string name="callFailed_too_many_calls" msgid="5379426826618582180">"Tidak dapat melakukan panggilan karena ada dua panggilan yang sedang berlangsung. Putuskan salah satu panggilan atau gabungkan keduanya menjadi konferensi sebelum melakukan panggilan baru."</string>
+    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"Tidak dapat melakukan panggilan karena ada dua panggilan yang sedang berlangsung. Putuskan salah satu panggilan atau gabungkan keduanya menjadi satu konferensi sebelum melakukan panggilan baru."</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"Untuk menggunakan <xliff:g id="SUPP_SERVICE">%s</xliff:g>, pastikan kuota internet diaktifkan. Anda dapat mengubahnya di setelan jaringan seluler."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"Untuk menggunakan <xliff:g id="SUPP_SERVICE">%s</xliff:g>, pastikan kuota internet dan roaming data diaktifkan. Anda dapat mengubahnya di setelan jaringan seluler."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"Untuk menggunakan <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>, pastikan kuota internet diaktifkan untuk SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. Anda dapat mengubahnya di setelan jaringan seluler."</string>
@@ -914,8 +915,6 @@
     <string name="radio_info_nr_available" msgid="1321318331361249997">"NR Tersedia:"</string>
     <string name="radio_info_nr_state" msgid="1337571996788535356">"Status NR:"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"Frekuensi NR:"</string>
-    <!-- no translation found for radio_info_network_slicing_config (7675131833885031563) -->
-    <skip />
     <string name="band_mode_title" msgid="7988822920724576842">"Setel Mode Band Radio"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Memuat Daftar Band…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Setel"</string>

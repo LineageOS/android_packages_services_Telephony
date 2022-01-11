@@ -537,6 +537,7 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Slå på mobilnettverket, slå av flymodus eller slå av batterisparingsmodus for å ringe ut."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Slå av flymodus for å ringe."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Slå av flymodus eller koble til et trådløst nettverk for å ringe."</string>
+    <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"Telefonen er for varm"</b>\n\n"Kan ikke fullføre dette anropet. Prøv igjen når telefonen har kjølt seg ned.\n\nDu kan fortsatt foreta nødanrop."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Avslutt modusen for nødanrop for å gjøre et vanlig anrop."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"Ikke registrert på nettverket."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"Mobilnettverket er ikke tilgjengelig."</string>
@@ -595,7 +596,7 @@
     <string name="hac_mode_summary" msgid="7774989500136009881">"Slå på kompatibilitet med høreapparater"</string>
     <string name="rtt_mode_title" msgid="3075948111362818043">"Sanntidstekst-anrop (STT)"</string>
     <string name="rtt_mode_summary" msgid="8631541375609989562">"Tillat meldingsutveksling i talesamtaler"</string>
-    <string name="rtt_mode_more_information" msgid="587500128658756318">"STT er til hjelp for brukere som er døve, tunghørte, har talefunksjonshemning eller trenger mer enn bare tale.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Finn ut mer&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; – STT-anrop lagres som meldingstranskripsjoner\n       &lt;br&gt; – STT er ikke tilgjengelig for videoanrop"</string>
+    <string name="rtt_mode_more_information" msgid="587500128658756318">"STT er til hjelp for brukere som er døve, hørselshemmede, har taleproblemer eller trenger mer enn bare tale.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Finn ut mer&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; – STT-anrop lagres som meldingstranskripsjoner\n       &lt;br&gt; – STT er ikke tilgjengelig for videoanrop"</string>
     <string name="no_rtt_when_roaming" msgid="5268008247378355389">"Merk: RTT er ikke tilgjengelig ved roaming"</string>
   <string-array name="tty_mode_entries">
     <item msgid="3238070884803849303">"TTY av"</item>
@@ -826,7 +827,7 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"Du kan ikke ringe fordi telefonen allerede slår nummeret for et annet utgående anrop."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"Du kan ikke ringe fordi du ikke har svart på et innkommende anrop. Svar på eller avvis det innkommende anropet før du ringer på nytt."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"Du kan ikke ringe fordi anrop er deaktivert ved hjelp av systemegenskapen ro.telephony.disable-call."</string>
-    <string name="callFailed_too_many_calls" msgid="5379426826618582180">"Du kan ikke ringe fordi to andre anrop allerede pågår. Koble fra ett av anropene eller slå dem sammen i en konferansesamtale, før du ringer på nytt."</string>
+    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"Du kan ikke ringe fordi to andre anrop allerede pågår. Koble fra ett av anropene eller slå dem sammen i en konferansesamtale, før du ringer på nytt."</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"Før du bruker <xliff:g id="SUPP_SERVICE">%s</xliff:g>, må du sørge for at mobildata er slått på. Du kan endre dette i mobilnettverksinnstillingene."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"Før du bruker <xliff:g id="SUPP_SERVICE">%s</xliff:g>, må du sørge for at mobildata og data-roaming er slått på. Du kan endre dette i mobilnettverksinnstillingene."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"Før du bruker <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>, må du sørge for at mobildata er slått på for SIM-kortet <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. Du kan endre dette i mobilnettverksinnstillingene."</string>
@@ -914,8 +915,6 @@
     <string name="radio_info_nr_available" msgid="1321318331361249997">"NR tilgjengelig:"</string>
     <string name="radio_info_nr_state" msgid="1337571996788535356">"NR-tilstand:"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR-frekvens:"</string>
-    <!-- no translation found for radio_info_network_slicing_config (7675131833885031563) -->
-    <skip />
     <string name="band_mode_title" msgid="7988822920724576842">"Angi båndmodus for radio"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Laster inn båndlisten …"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Angi"</string>
