@@ -39,6 +39,7 @@ import static android.telephony.ims.stub.ImsRegistrationImplBase.REGISTRATION_TE
 
 import android.annotation.Nullable;
 import android.content.Context;
+import android.os.AsyncResult;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
@@ -64,6 +65,7 @@ import com.android.ims.ImsException;
 import com.android.ims.ImsManager;
 import com.android.ims.RcsFeatureManager;
 import com.android.internal.annotations.VisibleForTesting;
+import com.android.internal.telephony.PhoneConfigurationManager;
 import com.android.internal.telephony.util.HandlerExecutor;
 import com.android.telephony.Rlog;
 
@@ -82,6 +84,8 @@ public class ImsProvisioningController {
 
     private static final int EVENT_SUB_CHANGED = 1;
     private static final int EVENT_PROVISIONING_CAPABILITY_CHANGED = 2;
+    @VisibleForTesting
+    protected static final int EVENT_MULTI_SIM_CONFIGURATION_CHANGE = 3;
 
     // Provisioning Keys that are handled via AOSP cache and not sent to the ImsService
     private static final int[] LOCAL_IMS_CONFIG_KEYS = {
@@ -207,6 +211,10 @@ public class ImsProvisioningController {
                         logw(LOG_PREFIX, msg.arg1,
                                 "can not find callback manager message" + msg.what);
                     }
+                    break;
+                case EVENT_MULTI_SIM_CONFIGURATION_CHANGE:
+                    int activeModemCount = (int) ((AsyncResult) msg.obj).result;
+                    onMultiSimConfigChanged(activeModemCount);
                     break;
                 default:
                     log("unknown message " + msg);
@@ -677,6 +685,9 @@ public class ImsProvisioningController {
                 mSubChangedListener, mSubChangedListener.getHandlerExecutor());
         mImsProvisioningLoader = imsProvisioningLoader;
 
+        PhoneConfigurationManager.registerForMultiSimConfigChange(mHandler,
+                EVENT_MULTI_SIM_CONFIGURATION_CHANGE, null);
+
         initialize(numSlot);
     }
 
@@ -691,6 +702,39 @@ public class ImsProvisioningController {
             ProvisioningCallbackManager p = new ProvisioningCallbackManager(i);
             mProvisioningCallbackManagersSlotMap.put(i, p);
         }
+    }
+
+    private void onMultiSimConfigChanged(int newNumSlot) {
+        log("onMultiSimConfigChanged: NumSlot " + mNumSlot + " newNumSlot " + newNumSlot);
+
+        if (mNumSlot < newNumSlot) {
+            for (int i = mNumSlot; i < newNumSlot; i++) {
+                MmTelFeatureListener m = new MmTelFeatureListener(i);
+                mMmTelFeatureListenersSlotMap.put(i, m);
+
+                RcsFeatureListener r = new RcsFeatureListener(i);
+                mRcsFeatureListenersSlotMap.put(i, r);
+
+                ProvisioningCallbackManager p = new ProvisioningCallbackManager(i);
+                mProvisioningCallbackManagersSlotMap.put(i, p);
+            }
+        } else if (mNumSlot > newNumSlot) {
+            for (int i = (mNumSlot - 1); i > (newNumSlot - 1); i--) {
+                MmTelFeatureListener m = mMmTelFeatureListenersSlotMap.get(i);
+                mMmTelFeatureListenersSlotMap.remove(i);
+                m.destroy();
+
+                RcsFeatureListener r = mRcsFeatureListenersSlotMap.get(i);
+                mRcsFeatureListenersSlotMap.remove(i);
+                r.destroy();
+
+                ProvisioningCallbackManager p = mProvisioningCallbackManagersSlotMap.get(i);
+                mProvisioningCallbackManagersSlotMap.remove(i);
+                p.clear();
+            }
+        }
+
+        mNumSlot = newNumSlot;
     }
 
     /**

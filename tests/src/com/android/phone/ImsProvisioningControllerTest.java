@@ -35,7 +35,6 @@ import static android.telephony.ims.stub.ImsRegistrationImplBase.REGISTRATION_TE
 import static android.telephony.ims.stub.ImsRegistrationImplBase.REGISTRATION_TECH_NR;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyBoolean;
 import static org.mockito.ArgumentMatchers.anyInt;
@@ -51,6 +50,7 @@ import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 
 import android.content.Context;
+import android.os.AsyncResult;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.IBinder;
@@ -299,7 +299,7 @@ public class ImsProvisioningControllerTest {
         try {
             mTestImsProvisioningController.addFeatureProvisioningChangedCallback(mSubId0, null);
         } catch (IllegalArgumentException e) {
-            assertTrue(true);
+            // expected result
         } catch (Exception e) {
             throw new AssertionError("not expected exception", e);
         }
@@ -314,7 +314,7 @@ public class ImsProvisioningControllerTest {
         try {
             mTestImsProvisioningController.removeFeatureProvisioningChangedCallback(mSubId0, null);
         } catch (IllegalArgumentException e) {
-            assertTrue(true);
+            // expected result
         } catch (Exception e) {
             throw new AssertionError("not expected exception", e);
         }
@@ -412,7 +412,7 @@ public class ImsProvisioningControllerTest {
             mTestImsProvisioningController.isImsProvisioningRequiredForCapability(
                     mSubId0, MMTEL_CAPA_INVALID, RADIO_TECHS[0]);
         } catch (IllegalArgumentException e) {
-            assertTrue(true);
+            // expected result
         } catch (Exception e) {
             throw new AssertionError("not expected exception", e);
         }
@@ -422,7 +422,7 @@ public class ImsProvisioningControllerTest {
             mTestImsProvisioningController.isImsProvisioningRequiredForCapability(
                     mSubId0, MMTEL_CAPAS[0], RADIO_TECH_INVALID);
         } catch (IllegalArgumentException e) {
-            assertTrue(true);
+            // expected result
         } catch (Exception e) {
             throw new AssertionError("not expected exception", e);
         }
@@ -473,7 +473,7 @@ public class ImsProvisioningControllerTest {
             mTestImsProvisioningController.isRcsProvisioningRequiredForCapability(
                     mSubId0, RCS_CAPA_INVALID, RADIO_TECHS[0]);
         } catch (IllegalArgumentException e) {
-            assertTrue(true);
+            // expected result
         } catch (Exception e) {
             throw new AssertionError("not expected exception", e);
         }
@@ -483,7 +483,7 @@ public class ImsProvisioningControllerTest {
             mTestImsProvisioningController.isRcsProvisioningRequiredForCapability(
                     mSubId0, CAPABILITY_TYPE_PRESENCE_UCE, RADIO_TECH_INVALID);
         } catch (IllegalArgumentException e) {
-            assertTrue(true);
+            // expected result
         } catch (Exception e) {
             throw new AssertionError("not expected exception", e);
         }
@@ -919,7 +919,6 @@ public class ImsProvisioningControllerTest {
         verifyNoMoreInteractions(mImsConfig);
         verifyNoMoreInteractions(mImsProvisioningLoader);
     }
-
 
     @Test
     @SmallTest
@@ -1412,6 +1411,89 @@ public class ImsProvisioningControllerTest {
         verifyNoMoreInteractions(mIFeatureProvisioningCallback1);
         verifyNoMoreInteractions(mImsConfig);
         verifyNoMoreInteractions(mImsProvisioningLoader);
+    }
+
+    @Test
+    @SmallTest
+    public void onMultiSimConfigChanged() throws Exception {
+        createImsProvisioningController();
+
+        // change number of slot 2 -> 1
+        mHandler.sendMessage(mHandler.obtainMessage(
+                mTestImsProvisioningController.EVENT_MULTI_SIM_CONFIGURATION_CHANGE,
+                0, 0, (Object) new AsyncResult(null, 1, null)));
+        processAllMessages();
+
+        // add callback with mSubId0, mPhoneId0 : Ok.
+        try {
+            mTestImsProvisioningController.addFeatureProvisioningChangedCallback(
+                    mSubId0, mIFeatureProvisioningCallback0);
+        } catch (Exception e) {
+            throw new AssertionError("not expected exception", e);
+        }
+
+        // add callbacks with new mSubId1, mPhoneId1 : IllegalArgumentException.
+        try {
+            mTestImsProvisioningController.addFeatureProvisioningChangedCallback(
+                    mSubId1, mIFeatureProvisioningCallback1);
+        } catch (IllegalArgumentException e) {
+            // expected result
+        } catch (Exception e) {
+            throw new AssertionError("not expected exception", e);
+        }
+        // check isImsProvisioningRequiredForCapability with mSubId1 : IllegalArgumentException
+        try {
+            mTestImsProvisioningController.isImsProvisioningRequiredForCapability(
+                    mSubId1, CAPABILITY_TYPE_VOICE, REGISTRATION_TECH_LTE);
+        } catch (IllegalArgumentException e) {
+            // expected result
+        } catch (Exception e) {
+            throw new AssertionError("not expected exception", e);
+        }
+        clearInvocations(mIFeatureProvisioningCallback0);
+        clearInvocations(mIFeatureProvisioningCallback1);
+
+        // change number of slot 1 -> 2
+        mHandler.sendMessage(mHandler.obtainMessage(
+                mTestImsProvisioningController.EVENT_MULTI_SIM_CONFIGURATION_CHANGE,
+                0, 0, (Object) new AsyncResult(null, 2, null)));
+        processAllMessages();
+
+        // add callback with mSubId0, mPhoneId0 : Ok.
+        try {
+            mTestImsProvisioningController.addFeatureProvisioningChangedCallback(
+                    mSubId0, mIFeatureProvisioningCallback0);
+        } catch (Exception e) {
+            throw new AssertionError("not expected exception", e);
+        }
+
+        // add callbacks with new mSubId1, mPhoneId1 : Ok.
+        try {
+            mTestImsProvisioningController.addFeatureProvisioningChangedCallback(
+                    mSubId1, mIFeatureProvisioningCallback1);
+        } catch (Exception e) {
+            throw new AssertionError("not expected exception", e);
+        }
+        clearInvocations(mIFeatureProvisioningCallback0);
+        clearInvocations(mIFeatureProvisioningCallback1);
+
+        // check get,setImsProvisioningRequiredForCapability with mSubId1, mPhoneId1 : Ok
+        int capability = CAPABILITY_TYPE_VOICE;
+        int tech = REGISTRATION_TECH_LTE;
+        boolean provisioned;
+        provisioned = mTestImsProvisioningController.getImsProvisioningStatusForCapability(
+                mSubId1, capability, tech);
+        mTestImsProvisioningController.setImsProvisioningStatusForCapability(mSubId1,
+                capability, tech, !provisioned);
+        processAllMessages();
+
+        // verify weather Callback is called or not
+        verify(mIFeatureProvisioningCallback1, times(1))
+                .onFeatureProvisioningChanged(eq(capability), eq(tech), eq(!provisioned));
+
+        clearInvocations(mIFeatureProvisioningCallback0);
+        clearInvocations(mIFeatureProvisioningCallback1);
+        clearInvocations(mImsConfig);
     }
 
     private void createImsProvisioningController() throws Exception {
