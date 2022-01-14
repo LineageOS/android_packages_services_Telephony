@@ -250,13 +250,13 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                 FeatureTags.FEATURE_TAG_CHATBOT_VERSION_SUPPORTED)));
         map.put("chatbot_v2", new ArraySet<>(Arrays.asList(
                 FeatureTags.FEATURE_TAG_CHATBOT_COMMUNICATION_USING_SESSION,
-                FeatureTags.FEATURE_TAG_CHATBOT_VERSION_SUPPORTED)));
+                FeatureTags.FEATURE_TAG_CHATBOT_VERSION_V2_SUPPORTED)));
         map.put("chatbot_sa", new ArraySet<>(Arrays.asList(
                 FeatureTags.FEATURE_TAG_CHATBOT_COMMUNICATION_USING_STANDALONE_MSG,
                 FeatureTags.FEATURE_TAG_CHATBOT_VERSION_SUPPORTED)));
         map.put("chatbot_sa_v2", new ArraySet<>(Arrays.asList(
                 FeatureTags.FEATURE_TAG_CHATBOT_COMMUNICATION_USING_STANDALONE_MSG,
-                FeatureTags.FEATURE_TAG_CHATBOT_VERSION_SUPPORTED)));
+                FeatureTags.FEATURE_TAG_CHATBOT_VERSION_V2_SUPPORTED)));
         map.put("chatbot_role", Collections.singleton(FeatureTags.FEATURE_TAG_CHATBOT_ROLE));
         TEST_FEATURE_TAG_MAP = Collections.unmodifiableMap(map);
     }
