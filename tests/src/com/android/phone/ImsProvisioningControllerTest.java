@@ -28,6 +28,7 @@ import static android.telephony.ims.feature.MmTelFeature.MmTelCapabilities.CAPAB
 import static android.telephony.ims.feature.MmTelFeature.MmTelCapabilities.CAPABILITY_TYPE_UT;
 import static android.telephony.ims.feature.MmTelFeature.MmTelCapabilities.CAPABILITY_TYPE_VIDEO;
 import static android.telephony.ims.feature.MmTelFeature.MmTelCapabilities.CAPABILITY_TYPE_VOICE;
+import static android.telephony.ims.feature.RcsFeature.RcsImsCapabilities.CAPABILITY_TYPE_OPTIONS_UCE;
 import static android.telephony.ims.feature.RcsFeature.RcsImsCapabilities.CAPABILITY_TYPE_PRESENCE_UCE;
 import static android.telephony.ims.stub.ImsRegistrationImplBase.REGISTRATION_TECH_CROSS_SIM;
 import static android.telephony.ims.stub.ImsRegistrationImplBase.REGISTRATION_TECH_IWLAN;
@@ -69,6 +70,7 @@ import android.telephony.ims.stub.ImsRegistrationImplBase;
 import android.test.suitebuilder.annotation.SmallTest;
 import android.testing.TestableLooper;
 import android.util.Log;
+import android.util.SparseArray;
 
 import com.android.ims.FeatureConnector;
 import com.android.ims.ImsConfig;
@@ -176,8 +178,9 @@ public class ImsProvisioningControllerTest {
     int mSubId0 = 1234;
     int mSubId1 = 5678;
 
-    String[] mMmTelStringArray;
-    String[] mRcsStringArray;
+    SparseArray<int[]> mMmTelTechMap = new SparseArray<>();
+    SparseArray<int[]> mRcsTechMap = new SparseArray<>();
+
     int[][] mMmTelProvisioningStorage;
     int[][] mRcsProvisioningStorage;
     int[][] mImsConfigStorage;
@@ -207,12 +210,12 @@ public class ImsProvisioningControllerTest {
             return mImsConfig;
         }
 
-        protected String[] getMmTelStringArrayFromCarrierConfig(int subId) {
-            return mMmTelStringArray;
-        }
-
-        protected String[] getRcsStringArrayFromCarrierConfig(int subId) {
-            return mRcsStringArray;
+        protected int[] getTechsFromCarrierConfig(int subId, int capability, boolean isMmtel) {
+            if (isMmtel) {
+                return mMmTelTechMap.get(capability);
+            } else {
+                return mRcsTechMap.get(capability);
+            }
         }
 
         protected boolean isValidSubId(int subId) {
@@ -437,11 +440,16 @@ public class ImsProvisioningControllerTest {
         // voice, all tech
         // video, all tech
         // UT, all tech
-        mMmTelStringArray = new String[] {
-                "1,0", "1,1", "1,2", "1,3",
-                "2,0", "2,1", "2,2", "2,3",
-                "4,0", "4,1", "4,2", "4,3"
-        };
+        mMmTelTechMap.clear();
+        mMmTelTechMap.put(CAPABILITY_TYPE_VOICE,
+                new int[] {REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN,
+                        REGISTRATION_TECH_CROSS_SIM, REGISTRATION_TECH_NR});
+        mMmTelTechMap.put(CAPABILITY_TYPE_VIDEO,
+                new int[] {REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN,
+                        REGISTRATION_TECH_CROSS_SIM, REGISTRATION_TECH_NR});
+        mMmTelTechMap.put(CAPABILITY_TYPE_UT,
+                new int[] {REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN,
+                        REGISTRATION_TECH_CROSS_SIM, REGISTRATION_TECH_NR});
 
         boolean[][] expectedRequired = new boolean[][] {
                 {true, true, true, true},
@@ -495,9 +503,10 @@ public class ImsProvisioningControllerTest {
         createImsProvisioningController();
 
         // provisioning required capability : PRESENCE, tech : all
-        mRcsStringArray = new String[] {
-                "2,0", "2,1", "2,2", "2,3"
-        };
+        mRcsTechMap.clear();
+        mRcsTechMap.put(CAPABILITY_TYPE_PRESENCE_UCE,
+                new int[] {REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN,
+                        REGISTRATION_TECH_CROSS_SIM, REGISTRATION_TECH_NR});
 
         boolean[] expectedRequired = new boolean[] {true, true, true, true};
 
@@ -519,11 +528,17 @@ public class ImsProvisioningControllerTest {
         // voice, all tech
         // video, all tech
         // UT, all tech
-        mMmTelStringArray = new String[] {
-                "1,0", "1,1", "1,2", "1,3",
-                "2,0", "2,1", "2,2", "2,3",
-                "4,0", "4,1", "4,2", "4,3"
-        };
+        mMmTelTechMap.clear();
+        mMmTelTechMap.put(CAPABILITY_TYPE_VOICE,
+                new int[] {REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN,
+                        REGISTRATION_TECH_CROSS_SIM, REGISTRATION_TECH_NR});
+        mMmTelTechMap.put(CAPABILITY_TYPE_VIDEO,
+                new int[] {REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN,
+                        REGISTRATION_TECH_CROSS_SIM, REGISTRATION_TECH_NR});
+        mMmTelTechMap.put(CAPABILITY_TYPE_UT,
+                new int[] {REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN,
+                        REGISTRATION_TECH_CROSS_SIM, REGISTRATION_TECH_NR});
+
         // provisioning Status
         mMmTelProvisioningStorage = new int[][] {
                 {CAPABILITY_TYPE_VOICE, REGISTRATION_TECH_LTE, 0},
@@ -607,10 +622,12 @@ public class ImsProvisioningControllerTest {
         // provisioning required capability
         // voice, LTE, IWLAN
         // video, LTE
-        mMmTelStringArray = new String[]{
-                "1,0", "1,1",
-                "2,0"
-        };
+        mMmTelTechMap.clear();
+        mMmTelTechMap.put(CAPABILITY_TYPE_VOICE,
+                new int[] {REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN});
+        mMmTelTechMap.put(CAPABILITY_TYPE_VIDEO,
+                new int[] {REGISTRATION_TECH_LTE});
+
         // provisioning StatusP, all of provisioning status is not provisioned
         mMmTelProvisioningStorage = new int[][]{
                 {CAPABILITY_TYPE_VOICE, REGISTRATION_TECH_LTE, -1},
@@ -680,9 +697,11 @@ public class ImsProvisioningControllerTest {
 
         // provisioning required capability
         // PRESENCE, all tech
-        mRcsStringArray = new String[] {
-                "2,0", "2,1", "2,2", "2,3"
-        };
+        mRcsTechMap.clear();
+        mRcsTechMap.put(CAPABILITY_TYPE_PRESENCE_UCE,
+                new int[] {REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN,
+                        REGISTRATION_TECH_CROSS_SIM, REGISTRATION_TECH_NR});
+
         // provisioning Status
         mRcsProvisioningStorage = new int[][] {
                 {CAPABILITY_TYPE_PRESENCE_UCE, REGISTRATION_TECH_LTE, 1},
@@ -724,9 +743,10 @@ public class ImsProvisioningControllerTest {
 
         // provisioning required capability
         // PRESENCE, LTE, IWLAN
-        mRcsStringArray = new String[]{
-                "2,0", "2,1"
-        };
+        mRcsTechMap.clear();
+        mRcsTechMap.put(CAPABILITY_TYPE_PRESENCE_UCE,
+                new int[] {REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN});
+
         // provisioning Status, all of provisioning status is not provisioned
         mRcsProvisioningStorage = new int[][]{
                 {CAPABILITY_TYPE_PRESENCE_UCE, REGISTRATION_TECH_LTE, -1},
@@ -785,9 +805,11 @@ public class ImsProvisioningControllerTest {
 
         // provisioning required capability
         // voice, all tech
-        mMmTelStringArray = new String[] {
-                "1,0", "1,1", "1,2", "1,3"
-        };
+        mMmTelTechMap.clear();
+        mMmTelTechMap.put(CAPABILITY_TYPE_VOICE,
+                new int[] {REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN,
+                        REGISTRATION_TECH_CROSS_SIM, REGISTRATION_TECH_NR});
+
         // provisioning Status, all of provisioning status is not provisioned
         mMmTelProvisioningStorage = new int[][] {
                 {CAPABILITY_TYPE_VOICE, REGISTRATION_TECH_LTE, 0},
@@ -864,9 +886,11 @@ public class ImsProvisioningControllerTest {
 
         // provisioning required capability
         // video, all tech
-        mMmTelStringArray = new String[] {
-                "2,0", "2,1", "2,2", "2,3"
-        };
+        mMmTelTechMap.clear();
+        mMmTelTechMap.put(CAPABILITY_TYPE_VIDEO,
+                new int[] {REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN,
+                        REGISTRATION_TECH_CROSS_SIM, REGISTRATION_TECH_NR});
+
         // provisioning Status, all of provisioning status is not provisioned
         mMmTelProvisioningStorage = new int[][] {
                 {CAPABILITY_TYPE_VIDEO, REGISTRATION_TECH_LTE, 0},
@@ -941,9 +965,11 @@ public class ImsProvisioningControllerTest {
 
         // provisioning required capability
         // PRESENCE, all tech
-        mRcsStringArray = new String[] {
-                "2,0", "2,1", "2,2", "2,3"
-        };
+        mRcsTechMap.clear();
+        mRcsTechMap.put(CAPABILITY_TYPE_PRESENCE_UCE,
+                new int[] {REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN,
+                        REGISTRATION_TECH_CROSS_SIM, REGISTRATION_TECH_NR});
+
         // provisioning Status, all of provisioning status is not provisioned
         mRcsProvisioningStorage = new int[][] {
                 {CAPABILITY_TYPE_PRESENCE_UCE, REGISTRATION_TECH_LTE, 0},
@@ -1034,10 +1060,14 @@ public class ImsProvisioningControllerTest {
         // provisioning required capability
         // voice, all tech
         // video, all tech
-        mMmTelStringArray = new String[] {
-                "1,0", "1,1", "1,2", "1,3",
-                "2,0", "2,1", "2,2", "2,3"
-        };
+        mMmTelTechMap.clear();
+        mMmTelTechMap.put(CAPABILITY_TYPE_VOICE,
+                new int[] {REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN,
+                        REGISTRATION_TECH_CROSS_SIM, REGISTRATION_TECH_NR});
+        mMmTelTechMap.put(CAPABILITY_TYPE_VIDEO,
+                new int[] {REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN,
+                        REGISTRATION_TECH_CROSS_SIM, REGISTRATION_TECH_NR});
+
         // provisioning Status, all of provisioning status is not set
         mMmTelProvisioningStorage = new int[][] {
                 {CAPABILITY_TYPE_VOICE, REGISTRATION_TECH_LTE, -1},
@@ -1114,9 +1144,11 @@ public class ImsProvisioningControllerTest {
 
         // provisioning required capability
         // presence, all tech
-        mRcsStringArray = new String[] {
-                "2,0", "2,1", "2,2", "2,3"
-        };
+        mRcsTechMap.clear();
+        mRcsTechMap.put(CAPABILITY_TYPE_PRESENCE_UCE,
+                new int[] {REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN,
+                        REGISTRATION_TECH_CROSS_SIM, REGISTRATION_TECH_NR});
+
         // provisioning Status, all of provisioning status is not set
         mRcsProvisioningStorage = new int[][]{
                 {CAPABILITY_TYPE_PRESENCE_UCE, REGISTRATION_TECH_LTE, -1},
@@ -1214,10 +1246,12 @@ public class ImsProvisioningControllerTest {
         // provisioning required capability
         // voice, LTE, IWLAN
         // video, LTE
-        mMmTelStringArray = new String[] {
-                "1,0", "1,1",
-                "2,0"
-        };
+        mMmTelTechMap.clear();
+        mMmTelTechMap.put(CAPABILITY_TYPE_VOICE,
+                new int[] {REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN});
+        mMmTelTechMap.put(CAPABILITY_TYPE_VIDEO,
+                new int[] {REGISTRATION_TECH_LTE});
+
         // provisioning Status, all of provisioning status is not set
         mMmTelProvisioningStorage = new int[][] {
                 {CAPABILITY_TYPE_VOICE, REGISTRATION_TECH_LTE, 1},
@@ -1227,9 +1261,11 @@ public class ImsProvisioningControllerTest {
 
         // provisioning required capability
         // presence, all tech
-        mRcsStringArray = new String[] {
-                "2,0", "2,1", "2,2", "2,3"
-        };
+        mRcsTechMap.clear();
+        mRcsTechMap.put(CAPABILITY_TYPE_PRESENCE_UCE,
+                new int[] {REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN,
+                        REGISTRATION_TECH_CROSS_SIM, REGISTRATION_TECH_NR});
+
         // provisioning Status, all of provisioning status is not set
         mRcsProvisioningStorage = new int[][]{
                 {CAPABILITY_TYPE_PRESENCE_UCE, REGISTRATION_TECH_LTE, 1},
@@ -1310,10 +1346,12 @@ public class ImsProvisioningControllerTest {
         // provisioning required capability
         // voice, LTE, IWLAN
         // video, LTE
-        mMmTelStringArray = new String[] {
-                "1,0", "1,1",
-                "2,0"
-        };
+        mMmTelTechMap.clear();
+        mMmTelTechMap.put(CAPABILITY_TYPE_VOICE,
+                new int[] {REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN});
+        mMmTelTechMap.put(CAPABILITY_TYPE_VIDEO,
+                new int[] {REGISTRATION_TECH_LTE});
+
         // provisioning Status, all of provisioning status is not set
         mMmTelProvisioningStorage = new int[][] {
                 {CAPABILITY_TYPE_VOICE, REGISTRATION_TECH_LTE, -1},
@@ -1323,9 +1361,11 @@ public class ImsProvisioningControllerTest {
 
         // provisioning required capability
         // presence, all tech
-        mRcsStringArray = new String[] {
-                "2,0", "2,1", "2,2", "2,3"
-        };
+        mRcsTechMap.clear();
+        mRcsTechMap.put(CAPABILITY_TYPE_PRESENCE_UCE,
+                new int[] {REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN,
+                        REGISTRATION_TECH_CROSS_SIM, REGISTRATION_TECH_NR});
+
         // provisioning Status, all of provisioning status is not set
         mRcsProvisioningStorage = new int[][]{
                 {CAPABILITY_TYPE_PRESENCE_UCE, REGISTRATION_TECH_LTE, -1},
@@ -1589,13 +1629,22 @@ public class ImsProvisioningControllerTest {
     }
 
     private void initializeDefaultData() throws Exception {
-        mMmTelStringArray = new String[]{
-                "1,0", "1,1", "1,2", "1,3",
-                "2,0", "2,1", "2,2", "2,3",
-                "4,0", "4,1", "4,2", "4,3",
-                "8,0", "8,1", "8,2", "8,3",
-                "16,0", "16,1", "16,2", "16,3"
-        };
+        mMmTelTechMap.clear();
+        mMmTelTechMap.put(CAPABILITY_TYPE_VOICE,
+                new int[] {REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN,
+                        REGISTRATION_TECH_CROSS_SIM, REGISTRATION_TECH_NR});
+        mMmTelTechMap.put(CAPABILITY_TYPE_VIDEO,
+                new int[] {REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN,
+                        REGISTRATION_TECH_CROSS_SIM, REGISTRATION_TECH_NR});
+        mMmTelTechMap.put(CAPABILITY_TYPE_UT,
+                new int[] {REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN,
+                        REGISTRATION_TECH_CROSS_SIM, REGISTRATION_TECH_NR});
+        mMmTelTechMap.put(CAPABILITY_TYPE_SMS,
+                new int[] {REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN,
+                        REGISTRATION_TECH_CROSS_SIM, REGISTRATION_TECH_NR});
+        mMmTelTechMap.put(CAPABILITY_TYPE_CALL_COMPOSER,
+                new int[] {REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN,
+                        REGISTRATION_TECH_CROSS_SIM, REGISTRATION_TECH_NR});
         mMmTelProvisioningStorage = new int[][]{
                 {CAPABILITY_TYPE_VOICE, REGISTRATION_TECH_LTE, 1},
                 {CAPABILITY_TYPE_VOICE, REGISTRATION_TECH_IWLAN, 1},
@@ -1618,10 +1667,14 @@ public class ImsProvisioningControllerTest {
                 {CAPABILITY_TYPE_CALL_COMPOSER, REGISTRATION_TECH_CROSS_SIM, 1},
                 {CAPABILITY_TYPE_CALL_COMPOSER, REGISTRATION_TECH_NR, 1}
         };
-        mRcsStringArray = new String[]{
-                "1,0", "1,1", "1,2", "1,3",
-                "2,0", "2,1", "2,2", "2,3"
-        };
+
+        mRcsTechMap.clear();
+        mRcsTechMap.put(CAPABILITY_TYPE_OPTIONS_UCE,
+                new int[] {REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN,
+                        REGISTRATION_TECH_CROSS_SIM, REGISTRATION_TECH_NR});
+        mRcsTechMap.put(CAPABILITY_TYPE_PRESENCE_UCE,
+                new int[] {REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN,
+                        REGISTRATION_TECH_CROSS_SIM, REGISTRATION_TECH_NR});
         mRcsProvisioningStorage = new int[][]{
                 {CAPABILITY_TYPE_PRESENCE_UCE, REGISTRATION_TECH_LTE, 1},
                 {CAPABILITY_TYPE_PRESENCE_UCE, REGISTRATION_TECH_IWLAN, 1},
