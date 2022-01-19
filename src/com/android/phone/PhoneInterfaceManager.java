@@ -9002,8 +9002,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         final long identity = Binder.clearCallingIdentity();
         try {
             UiccSlot[] slots = UiccController.getInstance().getUiccSlots();
-            if (slots == null) {
-                Rlog.i(LOG_TAG, "slots is null.");
+            if (slots == null || slots.length == 0) {
+                Rlog.i(LOG_TAG, "slots is null or empty.");
                 return null;
             }
             UiccSlotInfo[] infos = new UiccSlotInfo[slots.length];
