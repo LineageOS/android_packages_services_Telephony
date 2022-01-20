@@ -9063,13 +9063,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 for (int portIdx : portIndexes) {
                     String iccId = IccUtils.stripTrailingFs(getIccId(slot, portIdx,
                             callingPackage, hasReadPermission));
-                    if (slot.isPortActive(portIdx)) {
-                        UiccPort port = slot.getUiccCard().getUiccPort(portIdx);
-                        portInfos.add(new UiccPortInfo(iccId, port.getPortIdx(),
-                                port.getPhoneId(), true));
-                    } else {
-                        portInfos.add(new UiccPortInfo(iccId, portIdx, -1, false));
-                    }
+                    portInfos.add(new UiccPortInfo(iccId, portIdx,
+                            slot.getPhoneIdFromPortIndex(portIdx), slot.isPortActive(portIdx)));
                 }
                 infos[i] = new UiccSlotInfo(
                         slot.isEuicc(),
