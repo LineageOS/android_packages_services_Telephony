@@ -726,7 +726,7 @@ public class ImsStateCallbackControllerTest {
         verify(mCallback2, times(2)).onUnavailable(anyInt());
         verify(mCallback3, times(2)).onUnavailable(anyInt());
 
-        mMmTelConnectorListenerSlot1.getValue().connectionReady(null, SLOT_0_SUB_ID);
+        mMmTelConnectorListenerSlot1.getValue().connectionReady(null, SLOT_1_SUB_ID);
         processAllMessages();
         verify(mCallback0, times(1)).onAvailable();
         verify(mCallback1, times(1)).onAvailable();
@@ -737,7 +737,7 @@ public class ImsStateCallbackControllerTest {
         verify(mCallback2, times(2)).onUnavailable(anyInt());
         verify(mCallback3, times(2)).onUnavailable(anyInt());
 
-        mRcsConnectorListenerSlot1.getValue().connectionReady(null, SLOT_0_SUB_ID);
+        mRcsConnectorListenerSlot1.getValue().connectionReady(null, SLOT_1_SUB_ID);
         processAllMessages();
         verify(mCallback0, times(1)).onAvailable();
         verify(mCallback1, times(1)).onAvailable();
