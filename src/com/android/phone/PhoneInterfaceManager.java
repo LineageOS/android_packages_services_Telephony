@@ -149,6 +149,7 @@ import com.android.internal.telephony.CallForwardInfo;
 import com.android.internal.telephony.CallManager;
 import com.android.internal.telephony.CallStateException;
 import com.android.internal.telephony.CallTracker;
+import com.android.internal.telephony.CarrierPrivilegesTracker;
 import com.android.internal.telephony.CarrierResolver;
 import com.android.internal.telephony.CellNetworkScanResult;
 import com.android.internal.telephony.CommandException;
@@ -1269,7 +1270,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     ar = (AsyncResult) msg.obj;
                     request = (MainThreadRequest) ar.userObj;
                     Consumer<Integer> callback = (Consumer<Integer>) request.argument;
-                    int callForwardingStatus = TelephonyManager.CALL_WAITING_STATUS_UNKNOWN_ERROR;
+                    int callWaitingStatus = TelephonyManager.CALL_WAITING_STATUS_UNKNOWN_ERROR;
                     if (ar.exception == null && ar.result != null) {
                         int[] callForwardResults = (int[]) ar.result;
                         // Service Class is a bit mask per 3gpp 27.007.
@@ -1277,11 +1278,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                         if (callForwardResults.length > 1
                                 && ((callForwardResults[1]
                                 & CommandsInterface.SERVICE_CLASS_VOICE) > 0)) {
-                            callForwardingStatus = callForwardResults[0] == 0
+                            callWaitingStatus = callForwardResults[0] == 0
                                     ? TelephonyManager.CALL_WAITING_STATUS_DISABLED
                                     : TelephonyManager.CALL_WAITING_STATUS_ENABLED;
                         } else {
-                            callForwardingStatus = TelephonyManager.CALL_WAITING_STATUS_DISABLED;
+                            callWaitingStatus = TelephonyManager.CALL_WAITING_STATUS_DISABLED;
                         }
                     } else {
                         if (ar.result == null) {
@@ -1294,12 +1295,15 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                             CommandException.Error error =
                                     ((CommandException) (ar.exception)).getCommandError();
                             if (error == CommandException.Error.REQUEST_NOT_SUPPORTED) {
-                                callForwardingStatus =
+                                callWaitingStatus =
                                         TelephonyManager.CALL_WAITING_STATUS_NOT_SUPPORTED;
+                            } else if (error == CommandException.Error.FDN_CHECK_FAILURE) {
+                                callWaitingStatus =
+                                        TelephonyManager.CALL_WAITING_STATUS_FDN_CHECK_FAILURE;
                             }
                         }
                     }
-                    callback.accept(callForwardingStatus);
+                    callback.accept(callWaitingStatus);
                     break;
                 }
 
@@ -1324,6 +1328,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                                     ((CommandException) (ar.exception)).getCommandError();
                             if (error == CommandException.Error.REQUEST_NOT_SUPPORTED) {
                                 callback.accept(TelephonyManager.CALL_WAITING_STATUS_NOT_SUPPORTED);
+                            } else if (error == CommandException.Error.FDN_CHECK_FAILURE) {
+                                callback.accept(
+                                        TelephonyManager.CALL_WAITING_STATUS_FDN_CHECK_FAILURE);
                             } else {
                                 callback.accept(TelephonyManager.CALL_WAITING_STATUS_UNKNOWN_ERROR);
                             }
@@ -9057,13 +9064,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 for (int portIdx : portIndexes) {
                     String iccId = IccUtils.stripTrailingFs(getIccId(slot, portIdx,
                             callingPackage, hasReadPermission));
-                    if (slot.isPortActive(portIdx)) {
-                        UiccPort port = slot.getUiccCard().getUiccPort(portIdx);
-                        portInfos.add(new UiccPortInfo(iccId, port.getPortIdx(),
-                                port.getPhoneId(), true));
-                    } else {
-                        portInfos.add(new UiccPortInfo(iccId, portIdx, -1, false));
-                    }
+                    portInfos.add(new UiccPortInfo(iccId, portIdx,
+                            slot.getPhoneIdFromPortIndex(portIdx), slot.isPortActive(portIdx)));
                 }
                 infos[i] = new UiccSlotInfo(
                         slot.isEuicc(),
@@ -9218,6 +9220,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 loge("setCarrierTestOverride fails with invalid subId: " + subId);
                 return;
             }
+            CarrierPrivilegesTracker cpt = phone.getCarrierPrivilegesTracker();
+            if (cpt != null) {
+                cpt.setTestOverrideCarrierPrivilegeRules(carrierPrivilegeRules);
+            }
+            // TODO(b/211796398): remove the legacy logic below once CPT migration is done.
             phone.setCarrierTestOverride(mccmnc, imsi, iccid, gid1, gid2, plmn, spn,
                     carrierPrivilegeRules, apn);
             if (carrierPrivilegeRules == null) {
