@@ -1446,19 +1446,19 @@
     <!-- ECM: Displays the time when ECM will end, Example: "No Data Connection until 10:45 AM" -->
     <string name="phone_in_ecm_notification_complete_time">No data connection until <xliff:g id="completeTime">%s</xliff:g></string>
     <!-- ECM: Dialog box message for exiting from the notifications screen -->
-    <plurals name="alert_dialog_exit_ecm">
+    <string name="alert_dialog_exit_ecm"> {count, plural,
         <!-- number of minutes is one -->
-        <item quantity="one">The phone will be in Emergency Callback mode for <xliff:g id="count">%s</xliff:g> minute. While in this mode no apps using a data connection can be used. Do you want to exit now?</item>
+        =1    {The phone will be in Emergency Callback mode for one minute. While in this mode no apps using a data connection can be used. Do you want to exit now?}
         <!-- number of minutes is not equal to one -->
-        <item quantity="other">The phone will be in Emergency Callback mode for <xliff:g id="count">%s</xliff:g> minutes. While in this mode no applications using a data connection can be used. Do you want to exit now?</item>
-    </plurals>
+        other {The phone will be in Emergency Callback mode for %s minutes. While in this mode no applications using a data connection can be used. Do you want to exit now?}
+    }</string>
     <!-- ECM: Dialog box message for exiting from any other app -->
-    <plurals name="alert_dialog_not_avaialble_in_ecm">
+    <string name="alert_dialog_not_avaialble_in_ecm"> {count, plural,
         <!-- number of minutes is one -->
-        <item quantity="one">The selected action isn\'t available while in the Emergency Callback mode. The phone will be in this mode for <xliff:g id="count">%s</xliff:g> minute. Do you want to exit now?</item>
+        =1    {The selected action isn\'t available while in the Emergency Callback mode. The phone will be in this mode for one minute. Do you want to exit now?}
         <!-- number of minutes is not equal to one -->
-        <item quantity="other">The selected action isn\'t available while in the Emergency Callback mode. The phone will be in this mode for <xliff:g id="count">%s</xliff:g> minutes. Do you want to exit now?</item>
-    </plurals>
+        other {The selected action isn\'t available while in the Emergency Callback mode. The phone will be in this mode for %s minutes. Do you want to exit now?}
+    }</string>
     <!-- ECM: Dialog box message while in emergency call -->
     <string name="alert_dialog_in_ecm_call">The selected action isn\'t available while in an emergency call.</string>
     <!-- ECM: Progress text -->
@@ -1474,12 +1474,12 @@
     <!-- ECM: Displays the time when ECM will end without data restriction hint, Example: "Until 10:45 AM" -->
     <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint">Until <xliff:g id="completeTime">%s</xliff:g></string>
     <!-- ECM: Dialog box message without data restriction hint for exiting from the notifications screen -->
-    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint">
+    <string name="alert_dialog_exit_ecm_without_data_restriction_hint"> {count, plural,
         <!-- number of minutes is one -->
-        <item quantity="one">The phone will be in emergency callback mode for <xliff:g id="count">%s</xliff:g> minute.\nDo you want to exit now?</item>
+        =1    {The phone will be in emergency callback mode for one minute.\nDo you want to exit now?}
         <!-- number of minutes is not equal to one -->
-        <item quantity="other">The phone will be in emergency callback mode for <xliff:g id="count">%s</xliff:g> minutes.\nDo you want to exit now?</item>
-    </plurals>
+        other {The phone will be in emergency callback mode for %s minutes.\nDo you want to exit now?}
+    }</string>
 
     <!-- For incoming calls, this is a string we can get from a CDMA network instead of
          the actual phone number, to indicate there's no number present.  DO NOT TRANSLATE. -->
