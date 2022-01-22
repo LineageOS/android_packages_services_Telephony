@@ -124,6 +124,7 @@ import android.telephony.ims.ProvisioningManager;
 import android.telephony.ims.RcsClientConfiguration;
 import android.telephony.ims.RcsContactUceCapability;
 import android.telephony.ims.RegistrationManager;
+import android.telephony.ims.aidl.IFeatureProvisioningCallback;
 import android.telephony.ims.aidl.IImsCapabilityCallback;
 import android.telephony.ims.aidl.IImsConfig;
 import android.telephony.ims.aidl.IImsConfigCallback;
@@ -4602,6 +4603,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @Override
     public void registerImsProvisioningChangedCallback(int subId, IImsConfigCallback callback) {
         enforceReadPrivilegedPermission("registerImsProvisioningChangedCallback");
+
         final long identity = Binder.clearCallingIdentity();
         try {
             if (!isImsAvailableOnDevice()) {
@@ -4622,6 +4624,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @Override
     public void unregisterImsProvisioningChangedCallback(int subId, IImsConfigCallback callback) {
         enforceReadPrivilegedPermission("unregisterImsProvisioningChangedCallback");
+
         final long identity = Binder.clearCallingIdentity();
         if (!SubscriptionManager.isValidSubscriptionId(subId)) {
             throw new IllegalArgumentException("Invalid Subscription ID: " + subId);
@@ -4639,6 +4642,39 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
+    @Override
+    public void registerFeatureProvisioningChangedCallback(int subId,
+            IFeatureProvisioningCallback callback) {
+        TelephonyPermissions.enforceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
+                mApp, subId, "registerFeatureProvisioningChangedCallback");
+
+        final long identity = Binder.clearCallingIdentity();
+        if (!SubscriptionManager.isValidSubscriptionId(subId)) {
+            throw new IllegalArgumentException("Invalid Subscription ID: " + subId);
+        }
+
+        ImsProvisioningController.getInstance()
+                .addFeatureProvisioningChangedCallback(subId, callback);
+
+        Binder.restoreCallingIdentity(identity);
+    }
+
+    @Override
+    public void unregisterFeatureProvisioningChangedCallback(int subId,
+            IFeatureProvisioningCallback callback) {
+        TelephonyPermissions.enforceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
+                mApp, subId, "unregisterFeatureProvisioningChangedCallback");
+
+        final long identity = Binder.clearCallingIdentity();
+        if (!SubscriptionManager.isValidSubscriptionId(subId)) {
+            throw new IllegalArgumentException("Invalid Subscription ID: " + subId);
+        }
+
+        ImsProvisioningController.getInstance()
+                .removeFeatureProvisioningChangedCallback(subId, callback);
+
+        Binder.restoreCallingIdentity(identity);
+    }
 
     private void checkModifyPhoneStatePermission(int subId, String message) {
         TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(mApp, subId,
@@ -4665,60 +4701,30 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public void setRcsProvisioningStatusForCapability(int subId, int capability,
+    public void setRcsProvisioningStatusForCapability(int subId, int capability, int tech,
             boolean isProvisioned) {
         checkModifyPhoneStatePermission(subId, "setRcsProvisioningStatusForCapability");
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
-            if (!isImsProvisioningRequired(subId, capability, false)) {
-                return;
-            }
-
-            // this capability requires provisioning, route to the correct API.
-            ImsManager ims = ImsManager.getInstance(mApp, getSlotIndex(subId));
-            switch (capability) {
-                case RcsFeature.RcsImsCapabilities.CAPABILITY_TYPE_OPTIONS_UCE:
-                case RcsFeature.RcsImsCapabilities.CAPABILITY_TYPE_PRESENCE_UCE:
-                    ims.setEabProvisioned(isProvisioned);
-                    break;
-                default: {
-                    throw new IllegalArgumentException("Tried to set provisioning for "
-                            + "rcs capability '" + capability + "', which does not require "
-                            + "provisioning.");
-                }
-            }
+            ImsProvisioningController.getInstance()
+                    .setRcsProvisioningStatusForCapability(subId, capability, tech, isProvisioned);
+            return;
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
-
     }
 
 
     @Override
-    public boolean getRcsProvisioningStatusForCapability(int subId, int capability) {
-        enforceReadPrivilegedPermission("getRcsProvisioningStatusForCapability");
+    public boolean getRcsProvisioningStatusForCapability(int subId, int capability, int tech) {
+        TelephonyPermissions.enforceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
+                mApp, subId, "getRcsProvisioningStatusForCapability");
+
         final long identity = Binder.clearCallingIdentity();
         try {
-            // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
-            if (!isImsProvisioningRequired(subId, capability, false)) {
-                return true;
-            }
-
-            ImsManager ims = ImsManager.getInstance(mApp, getSlotIndex(subId));
-            switch (capability) {
-                case RcsFeature.RcsImsCapabilities.CAPABILITY_TYPE_OPTIONS_UCE:
-                case RcsFeature.RcsImsCapabilities.CAPABILITY_TYPE_PRESENCE_UCE:
-                    return ims.isEabProvisionedOnDevice();
-
-                default: {
-                    throw new IllegalArgumentException("Tried to get rcs provisioning for "
-                            + "capability '" + capability + "', which does not require "
-                            + "provisioning.");
-                }
-            }
-
+            return ImsProvisioningController.getInstance()
+                    .getRcsProvisioningStatusForCapability(subId, capability, tech);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -4727,66 +4733,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @Override
     public void setImsProvisioningStatusForCapability(int subId, int capability, int tech,
             boolean isProvisioned) {
-        if (tech != ImsRegistrationImplBase.REGISTRATION_TECH_IWLAN
-                && tech != ImsRegistrationImplBase.REGISTRATION_TECH_LTE
-                && tech != ImsRegistrationImplBase.REGISTRATION_TECH_NR
-                && tech != ImsRegistrationImplBase.REGISTRATION_TECH_CROSS_SIM) {
-            throw new IllegalArgumentException("Registration technology '" + tech + "' is invalid");
-        }
         checkModifyPhoneStatePermission(subId, "setImsProvisioningStatusForCapability");
+
         final long identity = Binder.clearCallingIdentity();
         try {
-            // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
-            if (!isImsProvisioningRequired(subId, capability, true)) {
-                return;
-            }
-            if (tech == ImsRegistrationImplBase.REGISTRATION_TECH_NR
-                    || tech == ImsRegistrationImplBase.REGISTRATION_TECH_CROSS_SIM) {
-                loge("setImsProvisioningStatusForCapability: called for technology that does "
-                        + "not support provisioning - " + tech);
-                return;
-            }
-
-            // this capability requires provisioning, route to the correct API.
-            ImsManager ims = ImsManager.getInstance(mApp, getSlotIndex(subId));
-            switch (capability) {
-                case MmTelFeature.MmTelCapabilities.CAPABILITY_TYPE_VOICE: {
-                    if (tech == ImsRegistrationImplBase.REGISTRATION_TECH_LTE) {
-                        ims.setVolteProvisioned(isProvisioned);
-                    } else if (tech == ImsRegistrationImplBase.REGISTRATION_TECH_IWLAN) {
-                        ims.setWfcProvisioned(isProvisioned);
-                    }
-                    break;
-                }
-                case MmTelFeature.MmTelCapabilities.CAPABILITY_TYPE_VIDEO: {
-                    // There is currently no difference in VT provisioning type.
-                    ims.setVtProvisioned(isProvisioned);
-                    break;
-                }
-                case MmTelFeature.MmTelCapabilities.CAPABILITY_TYPE_UT: {
-                    // There is no "deprecated" UT provisioning mechanism through ImsConfig, so
-                    // change the capability of the feature instead if needed.
-                    if (isMmTelCapabilityProvisionedInCache(subId, capability, tech)
-                            == isProvisioned) {
-                        // No change in provisioning.
-                        return;
-                    }
-                    cacheMmTelCapabilityProvisioning(subId, capability, tech, isProvisioned);
-                    try {
-                        ims.changeMmTelCapability(isProvisioned, capability, tech);
-                    } catch (com.android.ims.ImsException e) {
-                        loge("setImsProvisioningStatusForCapability: couldn't change UT capability"
-                                + ", Exception" + e.getMessage());
-                    }
-                    break;
-                }
-                default: {
-                    throw new IllegalArgumentException("Tried to set provisioning for "
-                            + "MmTel capability '" + capability + "', which does not require "
-                            + "provisioning. ");
-                }
-            }
-
+            ImsProvisioningController.getInstance()
+                    .setImsProvisioningStatusForCapability(subId, capability, tech, isProvisioned);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -4794,54 +4746,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     @Override
     public boolean getImsProvisioningStatusForCapability(int subId, int capability, int tech) {
-        if (tech != ImsRegistrationImplBase.REGISTRATION_TECH_IWLAN
-                && tech != ImsRegistrationImplBase.REGISTRATION_TECH_LTE
-                && tech != ImsRegistrationImplBase.REGISTRATION_TECH_NR
-                && tech != ImsRegistrationImplBase.REGISTRATION_TECH_CROSS_SIM) {
-            throw new IllegalArgumentException("Registration technology '" + tech + "' is invalid");
-        }
-        enforceReadPrivilegedPermission("getProvisioningStatusForCapability");
+        TelephonyPermissions.enforceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
+                mApp, subId, "getProvisioningStatusForCapability");
+
         final long identity = Binder.clearCallingIdentity();
         try {
-            // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
-            if (!isImsProvisioningRequired(subId, capability, true)) {
-                return true;
-            }
-
-            if (tech == ImsRegistrationImplBase.REGISTRATION_TECH_NR
-                    || tech == ImsRegistrationImplBase.REGISTRATION_TECH_CROSS_SIM) {
-                loge("getImsProvisioningStatusForCapability: called for technology that does "
-                        + "not support provisioning - " + tech);
-                return true;
-            }
-
-            ImsManager ims = ImsManager.getInstance(mApp, getSlotIndex(subId));
-            switch (capability) {
-                case MmTelFeature.MmTelCapabilities.CAPABILITY_TYPE_VOICE: {
-                    if (tech == ImsRegistrationImplBase.REGISTRATION_TECH_LTE) {
-                        return ims.isVolteProvisionedOnDevice();
-                    } else if (tech == ImsRegistrationImplBase.REGISTRATION_TECH_IWLAN) {
-                        return ims.isWfcProvisionedOnDevice();
-                    }
-                    // This should never happen, since we are checking tech above to make sure it
-                    // is either LTE or IWLAN.
-                    throw new IllegalArgumentException("Invalid radio technology for voice "
-                            + "capability.");
-                }
-                case MmTelFeature.MmTelCapabilities.CAPABILITY_TYPE_VIDEO: {
-                    // There is currently no difference in VT provisioning type.
-                    return ims.isVtProvisionedOnDevice();
-                }
-                case MmTelFeature.MmTelCapabilities.CAPABILITY_TYPE_UT: {
-                    // There is no "deprecated" UT provisioning mechanism, so get from shared prefs.
-                    return isMmTelCapabilityProvisionedInCache(subId, capability, tech);
-                }
-                default: {
-                    throw new IllegalArgumentException(
-                            "Tried to get provisioning for MmTel capability '" + capability
-                                    + "', which does not require provisioning.");
-                }
-            }
+            return ImsProvisioningController.getInstance()
+                    .getImsProvisioningStatusForCapability(subId, capability, tech);
 
         } finally {
             Binder.restoreCallingIdentity(identity);
@@ -4849,61 +4760,31 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public boolean isMmTelCapabilityProvisionedInCache(int subId, int capability, int tech) {
-        if (tech != ImsRegistrationImplBase.REGISTRATION_TECH_IWLAN
-                && tech != ImsRegistrationImplBase.REGISTRATION_TECH_LTE) {
-            throw new IllegalArgumentException("Registration technology '" + tech + "' is invalid");
+    public boolean isProvisioningRequiredForCapability(int subId, int capability, int tech) {
+        TelephonyPermissions.enforceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
+                mApp, subId, "isProvisioningRequiredForCapability");
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return ImsProvisioningController.getInstance()
+                    .isImsProvisioningRequiredForCapability(subId, capability, tech);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
         }
-        enforceReadPrivilegedPermission("isMmTelCapabilityProvisionedInCache");
-        int provisionedBits = getMmTelCapabilityProvisioningBitfield(subId, tech);
-        return (provisionedBits & capability) > 0;
     }
 
     @Override
-    public void cacheMmTelCapabilityProvisioning(int subId, int capability, int tech,
-            boolean isProvisioned) {
-        if (tech != ImsRegistrationImplBase.REGISTRATION_TECH_IWLAN
-                && tech != ImsRegistrationImplBase.REGISTRATION_TECH_LTE) {
-            throw new IllegalArgumentException("Registration technology '" + tech + "' is invalid");
-        }
-        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(mApp, subId,
-                "setProvisioningStatusForCapability");
-        int provisionedBits = getMmTelCapabilityProvisioningBitfield(subId, tech);
-        // If the current provisioning status for capability already matches isProvisioned,
-        // do nothing.
-        if (((provisionedBits & capability) > 0) == isProvisioned) {
-            return;
-        }
-        if (isProvisioned) {
-            setMmTelCapabilityProvisioningBitfield(subId, tech, (provisionedBits | capability));
-        } else {
-            setMmTelCapabilityProvisioningBitfield(subId, tech, (provisionedBits & ~capability));
-        }
-    }
+    public boolean isRcsProvisioningRequiredForCapability(int subId, int capability, int tech) {
+        TelephonyPermissions.enforceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
+                mApp, subId, "isProvisioningRequiredForCapability");
 
-    /**
-     * @return the bitfield containing the MmTel provisioning for the provided subscription and
-     * technology. The bitfield should mirror the bitfield defined by
-     * {@link MmTelFeature.MmTelCapabilities.MmTelCapability}.
-     */
-    private int getMmTelCapabilityProvisioningBitfield(int subId, int tech) {
-        String key = getMmTelProvisioningKey(subId, tech);
-        // Default is no capabilities are provisioned.
-        return mTelephonySharedPreferences.getInt(key, 0 /*default*/);
-    }
-
-    /**
-     * Sets the MmTel capability provisioning bitfield (defined by
-     *     {@link MmTelFeature.MmTelCapabilities.MmTelCapability}) for the subscription and
-     *     technology specified.
-     *
-     * Note: This is a synchronous command and should not be called on UI thread.
-     */
-    private void setMmTelCapabilityProvisioningBitfield(int subId, int tech, int newField) {
-        final SharedPreferences.Editor editor = mTelephonySharedPreferences.edit();
-        String key = getMmTelProvisioningKey(subId, tech);
-        editor.putInt(key, newField);
-        editor.commit();
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return ImsProvisioningController.getInstance()
+                    .isRcsProvisioningRequiredForCapability(subId, capability, tech);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
     }
 
     private static String getMmTelProvisioningKey(int subId, int tech) {
@@ -4976,7 +4857,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         if (!SubscriptionManager.isValidSubscriptionId(subId)) {
             throw new IllegalArgumentException("Invalid Subscription id '" + subId + "'");
         }
-        enforceReadPrivilegedPermission("getImsProvisioningInt");
+        TelephonyPermissions.enforceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
+                mApp, subId, "getImsProvisioningInt");
+
         final long identity = Binder.clearCallingIdentity();
         try {
             // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
@@ -4986,6 +4869,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                         + subId + "' for key:" + key);
                 return ImsConfigImplBase.CONFIG_RESULT_UNKNOWN;
             }
+
+            int retVal = ImsProvisioningController.getInstance().getProvisioningValue(subId, key);
+            if (retVal != ImsConfigImplBase.CONFIG_RESULT_UNKNOWN) {
+                return retVal;
+            }
+
             return ImsManager.getInstance(mApp, slotId).getConfigInt(key);
         } catch (com.android.ims.ImsException e) {
             Log.w(LOG_TAG, "getImsProvisioningInt: ImsService is not available for subscription '"
@@ -5001,7 +4890,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         if (!SubscriptionManager.isValidSubscriptionId(subId)) {
             throw new IllegalArgumentException("Invalid Subscription id '" + subId + "'");
         }
-        enforceReadPrivilegedPermission("getImsProvisioningString");
+        TelephonyPermissions.enforceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
+                mApp, subId, "getImsProvisioningString");
+
         final long identity = Binder.clearCallingIdentity();
         try {
             // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
@@ -5028,6 +4919,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
         TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(mApp, subId,
                 "setImsProvisioningInt");
+
         final long identity = Binder.clearCallingIdentity();
         try {
             // TODO: Refactor to remove ImsManager dependence and query through ImsPhone directly.
@@ -5037,6 +4929,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                         + subId + "' for key:" + key);
                 return ImsConfigImplBase.CONFIG_RESULT_FAILED;
             }
+
+            int retVal = ImsProvisioningController.getInstance()
+                    .setProvisioningValue(subId, key, value);
+            if (retVal != ImsConfigImplBase.CONFIG_RESULT_UNKNOWN) {
+                return retVal;
+            }
+
             return ImsManager.getInstance(mApp, slotId).setConfig(key, value);
         } catch (com.android.ims.ImsException | RemoteException e) {
             Log.w(LOG_TAG, "setImsProvisioningInt: ImsService unavailable for sub '" + subId
