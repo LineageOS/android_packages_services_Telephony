@@ -2768,20 +2768,15 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             return -1;
         }
 
-        getOutPrintWriter().println("Telephony new data stack is "
-                + (newDataStackEnabled ? "enabled." : "disabled."));
+        getOutPrintWriter().println("Telephony is running with the "
+                + (newDataStackEnabled ? "new" : "old") + " data stack.");
 
         boolean configEnabled = Boolean.parseBoolean(DeviceConfig.getProperty(
                 DeviceConfig.NAMESPACE_TELEPHONY, "enable_new_data_stack"));
         if (configEnabled != newDataStackEnabled) {
-            getOutPrintWriter().println("The config has been "
-                    + (configEnabled ? "enabled" : "disabled") + ". Need to reboot the device.");
-        } else {
-            getOutPrintWriter().println("Run the following command to "
-                    + (configEnabled ? "disable" : "enable") + " the new telephony data stack.");
-            getOutPrintWriter().println("adb root && adb shell device_config put telephony "
-                    + "enable_new_data_stack " + (configEnabled ? "false" : "true")
-                    + " && adb reboot");
+            getOutPrintWriter().println("The new data config has been "
+                    + (configEnabled ? "enabled" : "disabled")
+                    + ". It will be effective after reboot.");
         }
         return 0;
     }

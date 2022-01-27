@@ -11305,4 +11305,21 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         Log.d(LOG_TAG, "result = " + result);
         return result;
     }
+
+    @Override
+    public void setVoiceServiceStateOverride(int subId, boolean hasService, String callingPackage) {
+        // Only telecom (and shell, for CTS purposes) is allowed to call this method.
+        mApp.enforceCallingOrSelfPermission(
+                permission.BIND_TELECOM_CONNECTION_SERVICE, "setVoiceServiceStateOverride");
+        mAppOps.checkPackage(Binder.getCallingUid(), callingPackage);
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            Phone phone = getPhone(subId);
+            if (phone == null) return;
+            phone.setVoiceServiceStateOverride(hasService);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
 }
