@@ -182,7 +182,7 @@
     <string name="connect_later" msgid="1950138106010005425">"ବର୍ତ୍ତମାନ ଏହି ନେଟ୍‌ୱର୍କରେ କନେକ୍ଟ ହୋ‌ଇପାରିବ ନାହିଁ। ପରେ ପୁଣି ଚେଷ୍ଟା କରନ୍ତୁ।"</string>
     <string name="registration_done" msgid="5337407023566953292">"ଏହି ନେଟ୍‌ୱର୍କରେ ପଞ୍ଜୀକୃତ କରାଯାଇଛି।"</string>
     <string name="already_auto" msgid="8607068290733079336">"ପୂର୍ବରୁ ସ୍ଵାଚାଳିତ ଚୟନରେ ଅଛି।"</string>
-    <string name="select_automatically" msgid="779750291257872651">"ସ୍ଵଚାଳିତ ଭାବେ ନେଟ୍‌ୱର୍କ ଚୟନ କରନ୍ତୁ"</string>
+    <string name="select_automatically" msgid="779750291257872651">"ସ୍ଵଚାଳିତ ଭାବେ ନେଟୱାର୍କ ଚୟନ କରନ୍ତୁ"</string>
     <string name="manual_mode_disallowed_summary" msgid="3970048592179890197">"%1$s ସହ କନେକ୍ଟ ହେଲେ ଉପଲବ୍ଧ ହେବ ନାହିଁ"</string>
     <string name="network_select_title" msgid="4117305053881611988">"ନେଟ୍‌ୱାର୍କ"</string>
     <string name="register_automatically" msgid="3907580547590554834">"ସ୍ଵଚାଳିତ ପଞ୍ଜୀକରଣ…"</string>
