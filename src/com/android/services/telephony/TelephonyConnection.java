@@ -2016,32 +2016,47 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
     }
 
     @VisibleForTesting
-    public PersistableBundle getCarrierConfig() {
+    public @NonNull PersistableBundle getCarrierConfig() {
         Phone phone = getPhone();
         if (phone == null) {
-            return null;
+            Log.w(this,
+                    "getCarrierConfig: phone is null. Returning CarrierConfigManager"
+                            + ".getDefaultConfig()");
+            return CarrierConfigManager.getDefaultConfig();
         }
-        return PhoneGlobals.getInstance().getCarrierConfigForSubId(phone.getSubId());
+
+        // potential null returned from .getCarrierConfigForSubId() and method guarantees non-null.
+        // hence, need for try/finally block
+        PersistableBundle pb = null;
+        try {
+            pb = PhoneGlobals.getInstance().getCarrierConfigForSubId(phone.getSubId());
+        } catch (Exception e) {
+            Log.e(this, e,
+                    "getCarrierConfig: caught Exception when calling "
+                            + "PhoneGlobals.getCarrierConfigForSubId(phone.getSubId()). Returning "
+                            + "CarrierConfigManager.getDefaultConfig()");
+        } finally {
+            if (pb == null) {
+                pb = CarrierConfigManager.getDefaultConfig();
+            }
+        }
+        return pb;
+    }
+
+    @VisibleForTesting
+    public boolean isRttMergeSupported(@NonNull PersistableBundle pb) {
+        return pb.getBoolean(CarrierConfigManager.KEY_ALLOW_MERGING_RTT_CALLS_BOOL);
     }
 
     private boolean canDeflectImsCalls() {
-        PersistableBundle b = getCarrierConfig();
-        // Return false if the CarrierConfig is unavailable
-        if (b != null) {
-            return b.getBoolean(
-                    CarrierConfigManager.KEY_CARRIER_ALLOW_DEFLECT_IMS_CALL_BOOL) &&
-                    isValidRingingCall();
-        }
-        return false;
+        return getCarrierConfig().getBoolean(
+                CarrierConfigManager.KEY_CARRIER_ALLOW_DEFLECT_IMS_CALL_BOOL)
+                && isValidRingingCall();
     }
 
     private boolean isCallTransferSupported() {
-        PersistableBundle b = getCarrierConfig();
-        // Return false if the CarrierConfig is unavailable
-        if (b != null) {
-            return b.getBoolean(CarrierConfigManager.KEY_CARRIER_ALLOW_TRANSFER_IMS_CALL_BOOL);
-        }
-        return false;
+        return getCarrierConfig().getBoolean(
+                CarrierConfigManager.KEY_CARRIER_ALLOW_TRANSFER_IMS_CALL_BOOL);
     }
 
     private boolean canTransfer(TelephonyConnection c) {
@@ -3038,8 +3053,6 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
         if (isIms) {
             isVoWifiEnabled = isWfcEnabled(phone);
         }
-        boolean isRttMergeSupported = getCarrierConfig()
-                .getBoolean(CarrierConfigManager.KEY_ALLOW_MERGING_RTT_CALLS_BOOL);
         PhoneAccountHandle phoneAccountHandle = isIms ? PhoneUtils
                 .makePstnPhoneAccountHandle(phone.getDefaultPhone())
                 : PhoneUtils.makePstnPhoneAccountHandle(phone);
@@ -3077,7 +3090,7 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
         if (mTreatAsEmergencyCall) {
             isConferenceSupported = false;
             Log.d(this, "refreshConferenceSupported = false; emergency call");
-        } else if (isRtt() && !isRttMergeSupported) {
+        } else if (isRtt() && !isRttMergeSupported(getCarrierConfig())) {
             isConferenceSupported = false;
             Log.d(this, "refreshConferenceSupported = false; rtt call");
         } else if (!isConferencingSupported || isIms && !isImsConferencingSupported) {
@@ -3134,12 +3147,9 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
         Phone phone = getPhone();
         if (phone != null && (phone.getPhoneType() == TelephonyManager.PHONE_TYPE_CDMA)
                 && !mOriginalConnection.isIncoming()) {
-            PersistableBundle pb = getCarrierConfig();
-            if (pb != null) {
-                showOrigDialString = pb.getBoolean(CarrierConfigManager
-                        .KEY_CONFIG_SHOW_ORIG_DIAL_STRING_FOR_CDMA_BOOL);
-                Log.d(this, "showOrigDialString: " + showOrigDialString);
-            }
+            showOrigDialString = getCarrierConfig().getBoolean(CarrierConfigManager
+                    .KEY_CONFIG_SHOW_ORIG_DIAL_STRING_FOR_CDMA_BOOL);
+            Log.d(this, "showOrigDialString: " + showOrigDialString);
         }
         return showOrigDialString;
     }
@@ -3716,8 +3726,7 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
         if (mOriginalConnection.isIncoming()
                 && !TextUtils.isEmpty(mOriginalConnection.getAddress())
                 && mOriginalConnection.getAddress().startsWith(JAPAN_COUNTRY_CODE_WITH_PLUS_SIGN)) {
-            PersistableBundle b = getCarrierConfig();
-            return b != null && b.getBoolean(
+            return getCarrierConfig().getBoolean(
                     CarrierConfigManager.KEY_FORMAT_INCOMING_NUMBER_TO_NATIONAL_FOR_JP_BOOL);
         }
         return false;
@@ -3742,8 +3751,7 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
      * otherwise.
      */
     private boolean supportsD2DUsingRtp() {
-        PersistableBundle b = getCarrierConfig();
-        return b != null && b.getBoolean(
+        return getCarrierConfig().getBoolean(
                 CarrierConfigManager.KEY_SUPPORTS_DEVICE_TO_DEVICE_COMMUNICATION_USING_RTP_BOOL);
     }
 
@@ -3751,8 +3759,7 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
      * @return {@code true} if the carrier supports D2D using DTMF digits, {@code false} otherwise.
      */
     private boolean supportsD2DUsingDtmf() {
-        PersistableBundle b = getCarrierConfig();
-        return b != null && b.getBoolean(
+        return getCarrierConfig().getBoolean(
                 CarrierConfigManager.KEY_SUPPORTS_DEVICE_TO_DEVICE_COMMUNICATION_USING_DTMF_BOOL);
     }
 
@@ -3761,8 +3768,7 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
      * extensions used in D2D comms, {@code false} otherwise.
      */
     private boolean supportsSdpNegotiationOfRtpHeaderExtensions() {
-        PersistableBundle b = getCarrierConfig();
-        return b != null && b.getBoolean(
+        return getCarrierConfig().getBoolean(
                 CarrierConfigManager
                         .KEY_SUPPORTS_SDP_NEGOTIATION_OF_D2D_RTP_HEADER_EXTENSIONS_BOOL);
     }
