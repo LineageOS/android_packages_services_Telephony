@@ -637,18 +637,8 @@
     <string name="phone_in_ecm_notification_title" msgid="6825016389926367946">"Režim tísňového zpětného volání"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="653972232922670335">"Datové spojení zakázáno"</string>
     <string name="phone_in_ecm_notification_complete_time" msgid="7341624337163082759">"Datové připojení nebude dostupné do <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
-    <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="5425906903766466743">
-      <item quantity="few">]Telefon bude <xliff:g id="COUNT_1">%s</xliff:g> minuty v režimu zpětného tísňového volání. V tomto režimu nelze používat aplikace, které používají datové připojení. Chcete akci teď ukončit?</item>
-      <item quantity="many">]Telefon bude <xliff:g id="COUNT_1">%s</xliff:g> minuty v režimu zpětného tísňového volání. V tomto režimu nelze používat aplikace, které používají datové připojení. Chcete akci teď ukončit?</item>
-      <item quantity="other">]Telefon bude <xliff:g id="COUNT_1">%s</xliff:g> minut v režimu zpětného tísňového volání. V tomto režimu nelze používat aplikace, které používají datové připojení. Chcete akci teď ukončit?</item>
-      <item quantity="one">Telefon bude <xliff:g id="COUNT_0">%s</xliff:g> minutu v režimu zpětného tísňového volání. V tomto režimu nelze používat aplikace, které používají datové připojení. Chcete akci teď ukončit?</item>
-    </plurals>
-    <plurals name="alert_dialog_not_avaialble_in_ecm" formatted="false" msgid="1152682528741457004">
-      <item quantity="few">V režimu zpětného tísňového volání vybraná akce není k dispozici. Telefon v tomto režimu bude <xliff:g id="COUNT_1">%s</xliff:g> minuty. Chcete akci teď ukončit?</item>
-      <item quantity="many">V režimu zpětného tísňového volání vybraná akce není k dispozici. Telefon v tomto režimu bude <xliff:g id="COUNT_1">%s</xliff:g> minuty. Chcete akci teď ukončit?</item>
-      <item quantity="other">V režimu zpětného tísňového volání vybraná akce není k dispozici. Telefon v tomto režimu bude <xliff:g id="COUNT_1">%s</xliff:g> minut. Chcete akci teď ukončit?</item>
-      <item quantity="one">V režimu zpětného tísňového volání vybraná akce není k dispozici. Telefon v tomto režimu bude <xliff:g id="COUNT_0">%s</xliff:g> minutu. Chcete akci teď ukončit?</item>
-    </plurals>
+    <!-- format error in translation for alert_dialog_exit_ecm (7661603870224398025) -->
+    <!-- format error in translation for alert_dialog_not_avaialble_in_ecm (8717711120099503279) -->
     <string name="alert_dialog_in_ecm_call" msgid="1207545603149771978">"Během tísňového volání není vybraná akce k dispozici."</string>
     <string name="progress_dialog_exiting_ecm" msgid="9159080081676927217">"Ukončení režimu tísňového zpětného volání"</string>
     <string name="alert_dialog_yes" msgid="3532525979632841417">"Ano"</string>
@@ -656,12 +646,7 @@
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"Zavřít"</string>
     <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"Telefon je v režimu tísňového zpětného volání"</string>
     <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"Do <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
-    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
-      <item quantity="few">Telefon bude v režimu tísňového zpětného volání po dobu <xliff:g id="COUNT_1">%s</xliff:g> minut.\nChcete tento režim ukončit?</item>
-      <item quantity="many">Telefon bude v režimu tísňového zpětného volání po dobu <xliff:g id="COUNT_1">%s</xliff:g> minuty.\nChcete tento režim ukončit?</item>
-      <item quantity="other">Telefon bude v režimu tísňového zpětného volání po dobu <xliff:g id="COUNT_1">%s</xliff:g> minut.\nChcete tento režim ukončit?</item>
-      <item quantity="one">Telefon bude v režimu tísňového zpětného volání po dobu <xliff:g id="COUNT_0">%s</xliff:g> minuty.\nChcete tento režim ukončit?</item>
-    </plurals>
+    <!-- format error in translation for alert_dialog_exit_ecm_without_data_restriction_hint (7549850847524907932) -->
     <string name="voicemail_provider" msgid="4158806657253745294">"Služba"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"Konfigurace"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;Nenastaveno&gt;"</string>
