@@ -6902,16 +6902,15 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @Override
     public List<String> getCarrierPackageNamesForIntentAndPhone(Intent intent, int phoneId) {
         enforceReadPrivilegedPermission("getCarrierPackageNamesForIntentAndPhone");
-        if (!SubscriptionManager.isValidPhoneId(phoneId)) {
-            loge("phoneId " + phoneId + " is not valid.");
-            return null;
+        Phone phone = PhoneFactory.getPhone(phoneId);
+        if (phone == null) {
+            return Collections.emptyList();
         }
-        UiccPort port = UiccController.getInstance().getUiccPort(phoneId);
-        if (port == null) {
-            loge("getCarrierPackageNamesForIntentAndPhone: No UICC");
-            return null ;
+        CarrierPrivilegesTracker cpt = phone.getCarrierPrivilegesTracker();
+        if (cpt == null) {
+            return Collections.emptyList();
         }
-        return port.getCarrierPackageNamesForIntent(mApp.getPackageManager(), intent);
+        return cpt.getCarrierPackageNamesForIntent(intent);
     }
 
     @Override
