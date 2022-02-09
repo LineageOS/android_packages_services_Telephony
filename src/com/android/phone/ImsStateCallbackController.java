@@ -292,7 +292,7 @@ public class ImsStateCallbackController {
         }
 
         @Override
-        public void connectionReady(ImsManager manager) {
+        public void connectionReady(ImsManager manager, int subId) {
             logd(mLogPrefix + "connectionReady");
 
             mState = STATE_READY;
@@ -434,7 +434,7 @@ public class ImsStateCallbackController {
         }
 
         @Override
-        public void connectionReady(RcsFeatureManager manager) {
+        public void connectionReady(RcsFeatureManager manager, int subId) {
             logd(mLogPrefix + "connectionReady");
 
             mState = STATE_READY;
