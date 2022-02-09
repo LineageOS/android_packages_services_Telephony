@@ -73,7 +73,6 @@ import com.android.internal.telephony.dataconnection.DataConnectionReasons.DataD
 import com.android.internal.telephony.ims.ImsResolver;
 import com.android.internal.telephony.imsphone.ImsPhone;
 import com.android.internal.telephony.imsphone.ImsPhoneCallTracker;
-import com.android.internal.telephony.uicc.UiccCard;
 import com.android.internal.telephony.uicc.UiccPort;
 import com.android.internal.telephony.uicc.UiccProfile;
 import com.android.internal.util.IndentingPrintWriter;
@@ -161,6 +160,7 @@ public class PhoneGlobals extends ContextWrapper {
     public PhoneInterfaceManager phoneMgr;
     public ImsRcsController imsRcsController;
     public ImsStateCallbackController mImsStateCallbackController;
+    public ImsProvisioningController mImsProvisioningController;
     CarrierConfigLoader configLoader;
 
     private Phone phoneInEcm;
@@ -470,6 +470,8 @@ public class PhoneGlobals extends ContextWrapper {
                         PhoneFactory.getPhones().length);
                 mTelephonyRcsService.initialize();
                 imsRcsController.setRcsService(mTelephonyRcsService);
+                mImsProvisioningController =
+                        ImsProvisioningController.make(this, PhoneFactory.getPhones().length);
             }
 
             configLoader = CarrierConfigLoader.init(this);
