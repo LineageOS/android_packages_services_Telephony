@@ -128,7 +128,7 @@ public class RcsFeatureController {
     private FeatureConnector.Listener<RcsFeatureManager> mFeatureConnectorListener =
             new FeatureConnector.Listener<RcsFeatureManager>() {
                 @Override
-                public void connectionReady(RcsFeatureManager manager)
+                public void connectionReady(RcsFeatureManager manager, int subId)
                         throws com.android.ims.ImsException {
                     if (manager == null) {
                         logw("connectionReady returned null RcsFeatureManager");
