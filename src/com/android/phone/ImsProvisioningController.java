@@ -29,6 +29,7 @@ import static android.telephony.ims.feature.MmTelFeature.MmTelCapabilities.CAPAB
 import static android.telephony.ims.feature.MmTelFeature.MmTelCapabilities.CAPABILITY_TYPE_UT;
 import static android.telephony.ims.feature.MmTelFeature.MmTelCapabilities.CAPABILITY_TYPE_VIDEO;
 import static android.telephony.ims.feature.MmTelFeature.MmTelCapabilities.CAPABILITY_TYPE_VOICE;
+import static android.telephony.ims.feature.RcsFeature.RcsImsCapabilities.CAPABILITY_TYPE_OPTIONS_UCE;
 import static android.telephony.ims.feature.RcsFeature.RcsImsCapabilities.CAPABILITY_TYPE_PRESENCE_UCE;
 import static android.telephony.ims.stub.ImsRegistrationImplBase.REGISTRATION_TECH_CROSS_SIM;
 import static android.telephony.ims.stub.ImsRegistrationImplBase.REGISTRATION_TECH_IWLAN;
@@ -48,6 +49,7 @@ import android.os.PersistableBundle;
 import android.os.RemoteCallbackList;
 import android.os.RemoteException;
 import android.telephony.CarrierConfigManager;
+import android.telephony.CarrierConfigManager.Ims;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyRegistryManager;
 import android.telephony.ims.ProvisioningManager;
@@ -70,6 +72,7 @@ import com.android.internal.telephony.util.HandlerExecutor;
 import com.android.telephony.Rlog;
 
 import java.util.Arrays;
+import java.util.Map;
 import java.util.concurrent.Executor;
 
 /**
@@ -114,6 +117,32 @@ public class ImsProvisioningController {
             CAPABILITY_TYPE_SMS,
             CAPABILITY_TYPE_CALL_COMPOSER
     };
+
+    /**
+     * map the MmTelCapabilities.MmTelCapability and
+     * CarrierConfigManager.Ims.KEY_CAPABILITY_TYPE_VOICE_INT
+     * CarrierConfigManager.Ims.KEY_CAPABILITY_TYPE_VIDEO_INT
+     * CarrierConfigManager.Ims.KEY_CAPABILITY_TYPE_UT_INT
+     * CarrierConfigManager.Ims.KEY_CAPABILITY_TYPE_SMS_INT
+     * CarrierConfigManager.Ims.KEY_CAPABILITY_CALL_COMPOSER_INT
+     */
+    private static final Map<Integer, String> KEYS_MMTEL_CAPABILITY = Map.of(
+            CAPABILITY_TYPE_VOICE, Ims.KEY_CAPABILITY_TYPE_VOICE_INT_ARRAY,
+            CAPABILITY_TYPE_VIDEO, Ims.KEY_CAPABILITY_TYPE_VIDEO_INT_ARRAY,
+            CAPABILITY_TYPE_UT, Ims.KEY_CAPABILITY_TYPE_UT_INT_ARRAY,
+            CAPABILITY_TYPE_SMS, Ims.KEY_CAPABILITY_TYPE_SMS_INT_ARRAY,
+            CAPABILITY_TYPE_CALL_COMPOSER, Ims.KEY_CAPABILITY_CALL_COMPOSER_INT_ARRAY
+    );
+
+    /**
+     * map the RcsImsCapabilities.RcsImsCapabilityFlag and
+     * CarrierConfigManager.Ims.KEY_CAPABILITY_TYPE_OPTIONS_UCE
+     * CarrierConfigManager.Ims.KEY_CAPABILITY_TYPE_PRESENCE_UCE
+     */
+    private static final Map<Integer, String> KEYS_RCS_CAPABILITY = Map.of(
+            CAPABILITY_TYPE_OPTIONS_UCE, Ims.KEY_CAPABILITY_TYPE_OPTIONS_UCE_INT_ARRAY,
+            CAPABILITY_TYPE_PRESENCE_UCE, Ims.KEY_CAPABILITY_TYPE_PRESENCE_UCE_INT_ARRAY
+    );
 
     /**
      * Create a FeatureConnector for this class to use to connect to an ImsManager.
@@ -838,7 +867,7 @@ public class ImsProvisioningController {
     }
 
     /**
-     * return the boolean whether MmTel capability is required provisiong or not
+     * return the boolean whether MmTel capability is required provisioning or not
      */
     @VisibleForTesting
     public boolean isImsProvisioningRequiredForCapability(int subId, int capability, int tech) {
@@ -869,7 +898,7 @@ public class ImsProvisioningController {
     }
 
     /**
-     * return the boolean whether RCS capability is required provisiong or not
+     * return the boolean whether RCS capability is required provisioning or not
      */
     @VisibleForTesting
     public boolean isRcsProvisioningRequiredForCapability(int subId, int capability, int tech) {
@@ -1170,29 +1199,18 @@ public class ImsProvisioningController {
     }
 
     private boolean isProvisioningRequired(int subId, int capability, int tech, boolean isMmTel) {
-        String[] dataArray;
-        if (isMmTel) {
-            dataArray = getMmTelStringArrayFromCarrierConfig(subId);
-        } else {
-            dataArray = getRcsStringArrayFromCarrierConfig(subId);
-        }
-        if (dataArray == null) {
-            logw("isProvisioningRequired : retrieve data from carrier config failed");
-
-            // KEY_MMTEL/RCS_REQUIRES_PROVISIONING_STRING_ARRAY is not exist in CarrierConfig that
-            // means provisioning is not required
+        int[] techArray;
+        techArray = getTechsFromCarrierConfig(subId, capability, isMmTel);
+        if (techArray == null) {
+            logw("isProvisioningRequired : getTechsFromCarrierConfig failed");
+            // not exist in CarrierConfig that means provisioning is not required
             return false;
         }
 
-        // create String with capability and tech
-        String comp = capability + "," + tech;
-
         // compare with carrier config
-        for (String data : dataArray) {
-            // existing same String {capability,tech} means provisioning required
-            if (data.replaceAll("\\s", "").equals(comp)) {
-                return true;
-            }
+        if (Arrays.stream(techArray).anyMatch(keyValue -> keyValue == tech)) {
+            // existing same tech means provisioning required
+            return true;
         }
 
         log("isProvisioningRequired : not matched capability " + capability + " tech " + tech);
@@ -1200,19 +1218,35 @@ public class ImsProvisioningController {
     }
 
     @VisibleForTesting
-    protected String[] getMmTelStringArrayFromCarrierConfig(int subId) {
-        PersistableBundle imsCarrierConfigs = mCarrierConfigManager.getConfigByComponentForSubId(
-                CarrierConfigManager.Ims.KEY_PREFIX, subId);
-        return imsCarrierConfigs.getStringArray(
-                CarrierConfigManager.Ims.KEY_MMTEL_REQUIRES_PROVISIONING_STRING_ARRAY);
-    }
+    protected int[] getTechsFromCarrierConfig(int subId, int capability, boolean isMmTel) {
+        String featureKey;
+        String capabilityKey;
+        if (isMmTel) {
+            featureKey = CarrierConfigManager.Ims.KEY_MMTEL_REQUIRES_PROVISIONING_BUNDLE;
+            capabilityKey = KEYS_MMTEL_CAPABILITY.get(capability);
+        } else {
+            featureKey = CarrierConfigManager.Ims.KEY_RCS_REQUIRES_PROVISIONING_BUNDLE;
+            capabilityKey = KEYS_RCS_CAPABILITY.get(capability);
+        }
 
-    @VisibleForTesting
-    protected String[] getRcsStringArrayFromCarrierConfig(int subId) {
-        PersistableBundle imsCarrierConfigs = mCarrierConfigManager.getConfigByComponentForSubId(
-                CarrierConfigManager.Ims.KEY_PREFIX, subId);
-        return imsCarrierConfigs.getStringArray(
-                CarrierConfigManager.Ims.KEY_RCS_REQUIRES_PROVISIONING_STRING_ARRAY);
+        if (capabilityKey != null) {
+            PersistableBundle imsCarrierConfigs = mCarrierConfigManager.getConfigForSubId(subId);
+            if (imsCarrierConfigs == null) {
+                log("getTechsFromCarrierConfig : imsCarrierConfigs null");
+                return null;
+            }
+
+            PersistableBundle provisioningBundle =
+                    imsCarrierConfigs.getPersistableBundle(featureKey);
+            if (provisioningBundle == null) {
+                log("getTechsFromCarrierConfig : provisioningBundle null");
+                return null;
+            }
+
+            return provisioningBundle.getIntArray(capabilityKey);
+        }
+
+        return null;
     }
 
     private int getValueFromImsService(int subId, int capability, int tech) {
