@@ -173,6 +173,7 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
     // Check if telephony new data stack is enabled.
     private static final String GET_DATA_MODE = "get-data-mode";
     private static final String GET_IMEI = "get-imei";
+    private static final String GET_SIM_SLOTS_MAPPING = "get-sim-slots-mapping";
     // Take advantage of existing methods that already contain permissions checks when possible.
     private final ITelephony mInterface;
 
@@ -331,6 +332,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                 return handleGetDataMode();
             case GET_IMEI:
                 return handleGetImei();
+            case GET_SIM_SLOTS_MAPPING:
+                return handleGetSimSlotsMapping();
             case RADIO_SUBCOMMAND:
                 return handleRadioCommand();
             default: {
@@ -1975,6 +1978,20 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         getOutPrintWriter().println("result: " + result);
 
         return result != TelephonyManager.PREPARE_UNATTENDED_REBOOT_ERROR ? 0 : -1;
+    }
+
+    private int handleGetSimSlotsMapping() {
+        // Verify that the user is allowed to run the command. Only allowed in rooted device in a
+        // non user build.
+        if (Binder.getCallingUid() != Process.ROOT_UID || TelephonyUtils.IS_USER) {
+            getErrPrintWriter().println("GetSimSlotsMapping: Permission denied.");
+            return -1;
+        }
+        TelephonyManager telephonyManager = mContext.getSystemService(TelephonyManager.class);
+        String result = telephonyManager.getSimSlotMapping().toString();
+        getOutPrintWriter().println("simSlotsMapping: " + result);
+
+        return 0;
     }
 
     private int handleGbaCommand() {
