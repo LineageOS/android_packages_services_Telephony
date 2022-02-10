@@ -42,7 +42,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ComponentInfo;
-import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.AsyncResult;
@@ -228,6 +227,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -6832,39 +6832,28 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     @Override
     public int getCarrierPrivilegeStatus(int subId) {
-        final Phone phone = getPhone(subId);
-        if (phone == null) {
-            loge("getCarrierPrivilegeStatus: Invalid subId");
-            return TelephonyManager.CARRIER_PRIVILEGE_STATUS_NO_ACCESS;
-        }
-        UiccPort port = UiccController.getInstance().getUiccPort(phone.getPhoneId());
-        if (port == null) {
-            loge("getCarrierPrivilegeStatus: No UICC");
-            return TelephonyManager.CARRIER_PRIVILEGE_STATUS_RULES_NOT_LOADED;
-        }
-
-        return getCarrierPrivilegeStatusFromCarrierConfigRules(
-            port.getCarrierPrivilegeStatusForCurrentTransaction(
-                phone.getContext().getPackageManager()), Binder.getCallingUid(), phone);
+        // No permission needed; this only lets the caller inspect their own status.
+        return getCarrierPrivilegeStatusForUidWithPermission(subId, Binder.getCallingUid());
     }
 
     @Override
     public int getCarrierPrivilegeStatusForUid(int subId, int uid) {
         enforceReadPrivilegedPermission("getCarrierPrivilegeStatusForUid");
-        final Phone phone = getPhone(subId);
+        return getCarrierPrivilegeStatusForUidWithPermission(subId, uid);
+    }
+
+    private int getCarrierPrivilegeStatusForUidWithPermission(int subId, int uid) {
+        Phone phone = getPhone(subId);
         if (phone == null) {
             loge("getCarrierPrivilegeStatusForUid: Invalid subId");
             return TelephonyManager.CARRIER_PRIVILEGE_STATUS_NO_ACCESS;
         }
-        UiccProfile profile =
-                UiccController.getInstance().getUiccProfileForPhone(phone.getPhoneId());
-        if (profile == null) {
-            loge("getCarrierPrivilegeStatusForUid: No UICC");
+        CarrierPrivilegesTracker cpt = phone.getCarrierPrivilegesTracker();
+        if (cpt == null) {
+            loge("getCarrierPrivilegeStatusForUid: No CarrierPrivilegesTracker");
             return TelephonyManager.CARRIER_PRIVILEGE_STATUS_RULES_NOT_LOADED;
         }
-        return getCarrierPrivilegeStatusFromCarrierConfigRules(
-                profile.getCarrierPrivilegeStatusForUid(
-                        phone.getContext().getPackageManager(), uid), uid, phone);
+        return cpt.getCarrierPrivilegeStatusForUid(uid);
     }
 
     @Override
@@ -6873,97 +6862,76 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         if (TextUtils.isEmpty(pkgName)) {
             return TelephonyManager.CARRIER_PRIVILEGE_STATUS_NO_ACCESS;
         }
-
-        int phoneId = SubscriptionManager.getPhoneId(subId);
-        UiccPort port = UiccController.getInstance().getUiccPort(phoneId);
-        if (port == null) {
-            loge("checkCarrierPrivilegesForPackage: No UICC on subId " + subId);
+        Phone phone = getPhone(subId);
+        if (phone == null) {
+            loge("checkCarrierPrivilegesForPackage: Invalid subId");
+            return TelephonyManager.CARRIER_PRIVILEGE_STATUS_NO_ACCESS;
+        }
+        CarrierPrivilegesTracker cpt = phone.getCarrierPrivilegesTracker();
+        if (cpt == null) {
+            loge("checkCarrierPrivilegesForPackage: No CarrierPrivilegesTracker");
             return TelephonyManager.CARRIER_PRIVILEGE_STATUS_RULES_NOT_LOADED;
         }
-        return getCarrierPrivilegeStatusFromCarrierConfigRules(
-            port.getCarrierPrivilegeStatus(mApp.getPackageManager(), pkgName),
-            getPhone(phoneId), pkgName);
+        return cpt.getCarrierPrivilegeStatusForPackage(pkgName);
     }
 
     @Override
     public int checkCarrierPrivilegesForPackageAnyPhone(String pkgName) {
-        // TODO(b/186774706): Remove @RequiresPermission from TelephonyManager API
-        if (TextUtils.isEmpty(pkgName))
+        enforceReadPrivilegedPermission("checkCarrierPrivilegesForPackageAnyPhone");
+        if (TextUtils.isEmpty(pkgName)) {
             return TelephonyManager.CARRIER_PRIVILEGE_STATUS_NO_ACCESS;
+        }
         int result = TelephonyManager.CARRIER_PRIVILEGE_STATUS_RULES_NOT_LOADED;
-        for (int i = 0; i < TelephonyManager.getDefault().getPhoneCount(); i++) {
-            UiccPort port = UiccController.getInstance().getUiccPort(i);
-            if (port == null) {
-              // No UICC in that slot.
-              continue;
+        for (int phoneId = 0; phoneId < TelephonyManager.getDefault().getPhoneCount(); phoneId++) {
+            Phone phone = PhoneFactory.getPhone(phoneId);
+            if (phone == null) {
+                continue;
             }
-
-            result = getCarrierPrivilegeStatusFromCarrierConfigRules(
-                port.getCarrierPrivilegeStatus(mApp.getPackageManager(), pkgName),
-                getPhone(i), pkgName);
+            CarrierPrivilegesTracker cpt = phone.getCarrierPrivilegesTracker();
+            if (cpt == null) {
+                continue;
+            }
+            result = cpt.getCarrierPrivilegeStatusForPackage(pkgName);
             if (result == TelephonyManager.CARRIER_PRIVILEGE_STATUS_HAS_ACCESS) {
                 break;
             }
         }
-
         return result;
     }
 
     @Override
     public List<String> getCarrierPackageNamesForIntentAndPhone(Intent intent, int phoneId) {
         enforceReadPrivilegedPermission("getCarrierPackageNamesForIntentAndPhone");
-        if (!SubscriptionManager.isValidPhoneId(phoneId)) {
-            loge("phoneId " + phoneId + " is not valid.");
-            return null;
+        Phone phone = PhoneFactory.getPhone(phoneId);
+        if (phone == null) {
+            return Collections.emptyList();
         }
-        UiccPort port = UiccController.getInstance().getUiccPort(phoneId);
-        if (port == null) {
-            loge("getCarrierPackageNamesForIntentAndPhone: No UICC");
-            return null ;
+        CarrierPrivilegesTracker cpt = phone.getCarrierPrivilegesTracker();
+        if (cpt == null) {
+            return Collections.emptyList();
         }
-        return port.getCarrierPackageNamesForIntent(mApp.getPackageManager(), intent);
+        return cpt.getCarrierPackageNamesForIntent(intent);
     }
 
     @Override
     public List<String> getPackagesWithCarrierPrivileges(int phoneId) {
         enforceReadPrivilegedPermission("getPackagesWithCarrierPrivileges");
-        PackageManager pm = mApp.getPackageManager();
-        List<String> privilegedPackages = new ArrayList<>();
-        List<PackageInfo> packages = null;
-        UiccPort port = UiccController.getInstance().getUiccPort(phoneId);
-        // has UICC in that slot.
-        if (port != null) {
-            if (port.hasCarrierPrivilegeRules()) {
-                if (packages == null) {
-                    // Only check packages in user 0 for now
-                    packages = pm.getInstalledPackagesAsUser(
-                        PackageManager.MATCH_DISABLED_COMPONENTS
-                            | PackageManager.MATCH_DISABLED_UNTIL_USED_COMPONENTS
-                            | PackageManager.GET_SIGNING_CERTIFICATES,
-                            UserHandle.SYSTEM.getIdentifier());
-                }
-                for (int p = packages.size() - 1; p >= 0; p--) {
-                    PackageInfo pkgInfo = packages.get(p);
-                    if (pkgInfo != null && pkgInfo.packageName != null
-                            && getCarrierPrivilegeStatusFromCarrierConfigRules(
-                                    port.getCarrierPrivilegeStatus(pkgInfo),
-                                    getPhone(phoneId), pkgInfo.packageName)
-                            == TelephonyManager.CARRIER_PRIVILEGE_STATUS_HAS_ACCESS) {
-                        privilegedPackages.add(pkgInfo.packageName);
-                    }
-                }
-            }
+        Phone phone = PhoneFactory.getPhone(phoneId);
+        if (phone == null) {
+            return Collections.emptyList();
         }
-        return privilegedPackages;
+        CarrierPrivilegesTracker cpt = phone.getCarrierPrivilegesTracker();
+        if (cpt == null) {
+            return Collections.emptyList();
+        }
+        return new ArrayList<>(cpt.getPackagesWithCarrierPrivileges());
     }
 
     @Override
     public List<String> getPackagesWithCarrierPrivilegesForAllPhones() {
         enforceReadPrivilegedPermission("getPackagesWithCarrierPrivilegesForAllPhones");
-
+        Set<String> privilegedPackages = new ArraySet<>();
         final long identity = Binder.clearCallingIdentity();
-
-        List<String> privilegedPackages = new ArrayList<>();
         try {
             for (int i = 0; i < TelephonyManager.getDefault().getPhoneCount(); i++) {
                 privilegedPackages.addAll(getPackagesWithCarrierPrivileges(i));
@@ -6971,7 +6939,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
-        return privilegedPackages;
+        return new ArrayList<>(privilegedPackages);
     }
 
     private String getIccId(int subId) {
@@ -8754,12 +8722,16 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     private boolean haveCarrierPrivilegeAccess(UiccPort port, String callingPackage) {
         UiccProfile profile = port.getUiccProfile();
-        if (profile == null ||
-                profile.getCarrierPrivilegeStatus(mApp.getPackageManager(), callingPackage)
-                != TelephonyManager.CARRIER_PRIVILEGE_STATUS_HAS_ACCESS) {
+        if (profile == null) {
             return false;
         }
-        return true;
+        Phone phone = PhoneFactory.getPhone(profile.getPhoneId());
+        if (phone == null) {
+            return false;
+        }
+        CarrierPrivilegesTracker cpt = phone.getCarrierPrivilegesTracker();
+        return cpt != null && cpt.getCarrierPrivilegeStatusForPackage(callingPackage)
+                == TelephonyManager.CARRIER_PRIVILEGE_STATUS_HAS_ACCESS;
     }
 
     @Override
