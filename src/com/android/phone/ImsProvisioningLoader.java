@@ -110,6 +110,8 @@ public class ImsProvisioningLoader {
                 subIdBundle = new PersistableBundle();
                 for (int tech : regTech) {
                     int UtProvisioningStatus = getUTProvisioningStatus(subId, tech);
+                    logd("check UT provisioning status " + UtProvisioningStatus);
+
                     if (STATUS_PROVISIONED == UtProvisioningStatus) {
                         setProvisioningStatusToSubIdBundle(ImsFeature.FEATURE_MMTEL, tech,
                                 MmTelFeature.MmTelCapabilities.CAPABILITY_TYPE_UT, subIdBundle,
@@ -178,6 +180,9 @@ public class ImsProvisioningLoader {
 
     private void setProvisioningStatusToSubIdBundle(int imsFeature, int tech,
             int capability, PersistableBundle subIdBundle, int newStatus) {
+        logd("set provisioning status " + newStatus + " ImsFeature "
+                + imsFeature + " tech " + tech + " capa " + capability);
+
         PersistableBundle regTechBundle = subIdBundle.getPersistableBundle(
                 String.valueOf(imsFeature));
         if (regTechBundle == null) {
@@ -197,7 +202,9 @@ public class ImsProvisioningLoader {
 
     // Default value is STATUS_NOT_SET
     private int getIntValueFromBundle(String key, PersistableBundle bundle) {
-        return bundle.getInt(key, STATUS_NOT_SET);
+        int value = bundle.getInt(key, STATUS_NOT_SET);
+        logd("get value " + value);
+        return value;
     }
 
     // Return subIdBundle from imsprovisioningstatus_{subId}.xml
