@@ -637,18 +637,8 @@
     <string name="phone_in_ecm_notification_title" msgid="6825016389926367946">"מצב חירום של התקשרות חזרה"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="653972232922670335">"חיבור נתונים מושבת"</string>
     <string name="phone_in_ecm_notification_complete_time" msgid="7341624337163082759">"אין חיבור לרשת נתונים עד <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
-    <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="5425906903766466743">
-      <item quantity="two">הטלפון יהיה במצב חירום של התקשרות חזרה למשך <xliff:g id="COUNT_1">%s</xliff:g> דקות. בזמן שהטלפון במצב הזה, לא ניתן להשתמש באפליקציות הזקוקות לחבילת גלישה. האם ברצונך לצאת כעת?</item>
-      <item quantity="many">הטלפון יהיה במצב חירום של התקשרות חזרה למשך <xliff:g id="COUNT_1">%s</xliff:g> דקות. בזמן שהטלפון במצב הזה, לא ניתן להשתמש באפליקציות הזקוקות לחבילת גלישה. האם ברצונך לצאת כעת?</item>
-      <item quantity="other">הטלפון יהיה במצב חירום של התקשרות חזרה למשך <xliff:g id="COUNT_1">%s</xliff:g> דקות. בזמן שהטלפון במצב הזה, לא ניתן להשתמש באפליקציות הזקוקות לחבילת גלישה. האם ברצונך לצאת כעת?</item>
-      <item quantity="one">הטלפון יהיה במצב חירום של התקשרות חזרה למשך דקה <xliff:g id="COUNT_0">%s</xliff:g>. בזמן שהטלפון במצב הזה, לא ניתן להשתמש באפליקציות הזקוקות לחבילת גלישה. האם ברצונך לצאת כעת?</item>
-    </plurals>
-    <plurals name="alert_dialog_not_avaialble_in_ecm" formatted="false" msgid="1152682528741457004">
-      <item quantity="two">הפעולה הנבחרת אינה זמינה במצב חירום של התקשרות חזרה. הטלפון יהיה במצב זה למשך <xliff:g id="COUNT_1">%s</xliff:g> דקות. האם ברצונך לצאת כעת?</item>
-      <item quantity="many">הפעולה הנבחרת אינה זמינה במצב חירום של התקשרות חזרה. הטלפון יהיה במצב זה למשך <xliff:g id="COUNT_1">%s</xliff:g> דקות. האם ברצונך לצאת כעת?</item>
-      <item quantity="other">הפעולה הנבחרת אינה זמינה במצב חירום של התקשרות חזרה. הטלפון יהיה במצב זה למשך <xliff:g id="COUNT_1">%s</xliff:g> דקות. האם ברצונך לצאת כעת?</item>
-      <item quantity="one">הפעולה הנבחרת אינה זמינה במצב חירום של התקשרות חזרה. הטלפון יהיה במצב זה למשך דקה <xliff:g id="COUNT_0">%s</xliff:g>. האם ברצונך לצאת כעת?</item>
-    </plurals>
+    <!-- format error in translation for alert_dialog_exit_ecm (7661603870224398025) -->
+    <!-- format error in translation for alert_dialog_not_avaialble_in_ecm (8717711120099503279) -->
     <string name="alert_dialog_in_ecm_call" msgid="1207545603149771978">"הפעולה שנבחרה אינה זמינה במהלך שיחת חירום."</string>
     <string name="progress_dialog_exiting_ecm" msgid="9159080081676927217">"יציאה ממצב התקשרות חזרה בחירום"</string>
     <string name="alert_dialog_yes" msgid="3532525979632841417">"כן"</string>
@@ -656,12 +646,7 @@
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"סגירה"</string>
     <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"הטלפון במצב \'התקשרות בחזרה בחירום\'"</string>
     <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"עד <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
-    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
-      <item quantity="two">הטלפון יהיה במצב \'התקשרות בחזרה בחירום\' ל-<xliff:g id="COUNT_1">%s</xliff:g> דקות.\nרוצה לצאת מהמצב הזה?</item>
-      <item quantity="many">הטלפון יהיה במצב \'התקשרות בחזרה בחירום\' ל-<xliff:g id="COUNT_1">%s</xliff:g> דקות.\nרוצה לצאת מהמצב הזה?</item>
-      <item quantity="other">הטלפון יהיה במצב \'התקשרות בחזרה בחירום\' ל-<xliff:g id="COUNT_1">%s</xliff:g> דקות.\nרוצה לצאת מהמצב הזה?</item>
-      <item quantity="one">הטלפון יהיה במצב \'התקשרות בחזרה בחירום\' לדקה אחת (<xliff:g id="COUNT_0">%s</xliff:g>).\nרוצה לצאת מהמצב הזה?</item>
-    </plurals>
+    <!-- format error in translation for alert_dialog_exit_ecm_without_data_restriction_hint (7549850847524907932) -->
     <string name="voicemail_provider" msgid="4158806657253745294">"שירות"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"הגדרות"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;לא מוגדר&gt;"</string>
