@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2013-2015 The CyanogenMod Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="incall_screen_settings">Roghainnean na sgrìn am broinn gairm</string>
+    <string name="show_ssn_label">Brath air tachartas</string>
+    <string name="show_ssn_summary">Seall brath airson caochladh thachartasan an lìonraidh a tha co-cheangailte ri làimhseachadh gairme</string>
+    <string name="incall_echo_cancellation">Glanadh faraim am broinn gairme</string>
+    <string name="enable_aec_label">Cur às mhac-talla</string>
+    <string name="enable_aec_summary">Ìslich faram na h-àrainneachd dhan taobh chèin rè gairmean gutha</string>
+    <string name="blacklist_title">Liosta luchd-gairm bacte</string>
+    <string name="blacklist_summary_disabled">À comas</string>
+    <string name="blacklist_summary">Chan fhaigh thu gairmean no teachdaireachdan o àireamhan fòn a tha air liosta an luchd-ghairm bhacte</string>
+    <string name="mwi_notification_title">Taisbeanair feitheamh theachdaireachdan</string>
+    <string name="mwi_notification_summary">Seall brath nuair a bhios teachdaireachd post-gutha a’ feitheamh ort (bidh feum air ath-thòiseachadh)</string>
+    <string name="phone_number_label">An àireamh fòn agam</string>
+    <string name="phone_number_summary">Suidhich an àireamh fòn airson an uidheim seo</string>
+    <string name="set_my_number_failed">Dh’fhàillig le suidheachadh na h-àireimh fòn</string>
+    <string name="call_notif_unconditionalCF">Tha sìneadh air adhart nan gairmean gun chumha gnìomhach</string>
+    <string name="call_notif_conditionalCF">Tha sìneadh air adhart nan gairmean le cumha gnìomhach</string>
+    <string name="call_notif_MOcall_forwarding">Chaidh a’ ghairm a-mach a shìneadh air adhart</string>
+    <string name="call_notif_cugcall">Gairm ann am buidheann chleachdaichean dùinte</string>
+    <string name="call_notif_outgoing_barred">Tha gairmean a-mach ’gam bacadh</string>
+    <string name="call_notif_incoming_barred">Tha gairmean a-steach ’gam bacadh aig a’ phàrtaidh chèin</string>
+    <string name="call_notif_clir_suppression_rejected">Chaidh mùchadh d’ àireamh fhèin a dhiùltadh leis an lìonra</string>
+    <string name="call_notif_call_deflected">Chaidh a’ ghairm a shìneadh air adhart le pàrtaidh cèin</string>
+    <string name="call_notif_MTcall_forwarding">Tha gairm a-steach ’ga sìneadh air adhart</string>
+    <string name="call_notif_multipartycall">Gairm ioma-phàrtaidh</string>
+    <string name="call_notif_callonhold_released">Chaidh leantainn leis a’ ghairm on taobh thall</string>
+    <string name="call_notif_forwardcheckreceived">Chaidh a’ ghairm a shìneadh air adhart</string>
+    <string name="call_notif_callconnectingect">Tha gairm ’ga ceangal le tar-chur sònraichte na gairme</string>
+    <string name="call_notif_callconnectedect">Chaidh a’ ghairm a cheangal le tar-chur sònraichte na gairme</string>
+    <string name="requesting_unlock_cm">Ag iarraidh neo-ghlasadh lìonra SIM\u2026</string>
+    <string name="unlock_failed_cm">Cha deach le iarrtas neo-ghlasadh lìonra an t-SIM.</string>
+    <string name="unlock_success_cm">Chaidh lìonra an t-SIM a neo-ghlasadh.</string>
+    <string name="all_day">Fad an latha</string>
+    <string name="time_start">O</string>
+    <string name="time_end">Gu</string>
+    <string name="time_hour">Uair a thìde</string>
+    <string name="time_minute">Mionaid</string>
+    <string name="time_formate_am">m</string>
+    <string name="time_formate_pm">f</string>
+    <string name="preferred_network_mode_global_summary_cm">Modh lìonra as annsa: Uile-choitcheann (CDMA/EvDo/LTE/GSM/WCDMA)</string>
+    <string name="callFailed_incoming_cb_enabled">Bhac an neach gach gairm o thighinn a-steach.</string>
+    <string name="callUnanswered_forwarded">Cha deach a’ ghairm a fhreagairt is chaidh a shìneadh air adhart</string>
+    <string name="preferred_network_mode_td_scdma_wcdma_summary">Modh lìonra as annsa: TD-SCDMA/WCDMA</string>
+    <string name="preferred_network_mode_td_scdma_lte_summary">Modh lìonra as annsa: TD-SCDMA/LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_summary">Modh lìonra as annsa: TD-SCDMA/GSM</string>
+    <string name="preferred_network_mode_td_scdma_gsm_lte_summary">Modh lìonra as annsa: TD-SCDMA/GSM/LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_summary">Modh lìonra as annsa: TD-SCDMA/GSM/WCDMA</string>
+    <string name="preferred_network_mode_td_scdma_wcdma_lte_summary">Modh lìonra as annsa: TD-SCDMA/WCDMA/LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_lte_summary">Modh lìonra as annsa: TD-SCDMA/GSM/WCDMA/LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_cdma_evdo_summary">Modh lìonra as annsa: TD-SCDMA/GSM/WCDMA/CDMA/EvDo</string>
+    <string name="preferred_network_mode_td_scdma_lte_cdma_evdo_gsm_wcdma_summary">Modh lìonra as annsa: TD-SCDMA/LTE/CDMA/EvDo/GSM/WCDMA</string>
+    <string name="preferred_network_mode_td_scdma_lte_gsm_wcdma_cdma_evdo_choice">TD-SCDMA/LTE/GSM/WCDMA/CDMA/EvDo</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_cdma_evdo_choice">TD-SCDMA/GSM/WCDMA/CDMA/EvDo</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_lte_choice">TD-SCDMA/GSM/WCDMA/LTE</string>
+    <string name="preferred_network_mode_td_scdma_wcdma_lte_choice">TD-SCDMA/WCDMA/LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_choice">TD-SCDMA/GSM/WCDMA</string>
+    <string name="preferred_network_mode_td_scdma_gsm_lte_choice">TD-SCDMA/GSM/LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_choice">TD-SCDMA/GSM</string>
+    <string name="preferred_network_mode_td_scdma_lte_choice">TD-SCDMA/LTE</string>
+    <string name="preferred_network_mode_td_scdma_wcdma_choice">TD-SCDMA/WCDMA</string>
+    <string name="preferred_network_mode_td_scdma_only_choice">TD-SCDMA a-mhàin</string>
+    <string name="preferred_network_mode_lte_wcdma_choice">LTE/WCDMA</string>
+    <string name="preferred_network_mode_lte_choice">LTE</string>
+    <string name="preferred_network_mode_global_choice">Uile-choitcheann</string>
+    <string name="preferred_network_mode_gsm_wcdma_lte_choice">GSM/WCDMA/LTE</string>
+    <string name="preferred_network_mode_cdma_lte_evdo_choice">CDMA ⁊ LTE/EvDo</string>
+    <string name="preferred_network_mode_cdma_evdo_gsm_wcdma_choice">CDMA/EvDo/GSM/WCDMA</string>
+    <string name="preferred_network_mode_evdo_only_choice">EvDo a-mhàin</string>
+    <string name="preferred_network_mode_cdma_wo_evdo_choice">CDMA gun EvDo</string>
+    <string name="preferred_network_mode_cdma_evdo_auto_choice">CDMA/EvDo fèin-obrachail</string>
+    <string name="preferred_network_mode_gsm_wcdma_auto_choice">GSM/WCDMA fèin-obrachail</string>
+    <string name="preferred_network_mode_wcdma_only_choice">WCDMA a-mhàin</string>
+    <string name="preferred_network_mode_gsm_only_choice">GSM a-mhàin</string>
+    <string name="preferred_network_mode_gsm_wcdma_preferred_choice">’S mithich GSM/WCDMA</string>
+    <string name="call_barring">Bacadh ghairmean</string>
+    <string name="call_barring_outgoing">Bacadh ghairmean a-mach</string>
+    <string-array name="call_barring_outgoing_display_values">
+        <item>Dheth</item>
+        <item>Gairmean eadar-nàiseanta air fàrsan</item>
+        <item>Gairmean eadar-nàiseanta</item>
+        <item>Gairmean a-mach</item>
+    </string-array>
+    <string-array name="call_barring_incoming_display_values">
+        <item>Dheth</item>
+        <item>Air fàrsan</item>
+        <item>Na h-uile</item>
+    </string-array>
+    <string name="call_barring_incoming">Bacadh ghairmean a-steach</string>
+    <string name="input_password">Cuir a-steach am facal-faire agad</string>
+    <string name="invalidPsw">Cuir a-steach facal-faire dligheach (4-8 àireamhan)</string>
+    <string name="labelCbCancelAll">Cuir bacadh ghairmean à comas</string>
+    <string name="labelCbChangePassword">Atharraich am facal-faire</string>
+    <string name="psw_enter_old">An seann fhacal-faire</string>
+    <string name="psw_enter_new">Facal-faire ùr</string>
+    <string name="psw_reenter_new">Cuir a-steach am facal-faire agad a-rithist</string>
+    <string name="no_call_barring">Chaidh bacadh ghairmean a chur à comas</string>
+    <string name="cb_psw_dont_match">Chan eil an dà fhacal-faire co-ionnann</string>
+    <string name="fdn_invalid_number_cm">Cha deach àireamh daithealaidh socraichte ùrachadh on a tha an àireamh falamh no nas fhaide na 20 àireamh.</string>
+    <string name="fdn_service_unavailable">Chan eil seirbheis àireamhan daithealaidh socraichte ri fhaighinn.</string>
+    <string name="exportContacts">Ag às-phortadh an luchd-aithne dhan chairt SIM\u2026</string>
+    <string name="simContacts_title_cm">Stiùir luchd-aithne a’ chairt SIM</string>
+    <string name="incall_error_local_low_battery">Dh’fhàillig leis a’ ghairm on a tha am bataraidh fann.</string>
+    <string name="incall_error_low_battery">Dh’fhàillig leis a’ ghairm on a tha bataraidh an uidheim chèin fann.</string>
+    <string name="contactScreen">Stiùir luchd-aithne an t-SIM</string>
+    <string name="exportContactScreen">Às-phortaich an luchd-aithne dhan t-SIM</string>
+    <string name="addSimEntries">Cuir neach-aithne ris an t-SIM</string>
+    <string name="deleteAllSimEntries">Sguab às gach neach-aithne on t-SIM</string>
+    <string name="deleteSimContacts">A’ sguabadh às luchd-aithne an t-SIM\u2026</string>
+    <string name="editContact">Deasaich</string>
+    <string name="sendSms">Cuir SMS</string>
+    <string name="delete">Sguab às</string>
+    <string name="dial">Daitheal</string>
+    <string name="enterName">Cuir a-steach ainm:</string>
+    <string name="enterNumber">Cuir a-steach àireamh fòn:</string>
+    <string name="hintName">Ainm</string>
+    <string name="hintPhonenumber">Àireamh fòn</string>
+    <string name="contactAddSuccess">Chaidh an neach-aithne a chur ris an t-SIM</string>
+    <string name="contactAddFailed">Cha deach leinn an neach-aithne a chur ris an t-SIM</string>
+    <string name="contactUpdateSuccess">Chaidh an neach-aithne ùrachadh air an t-SIM</string>
+    <string name="contactUpdateFailed">Cha deach leinn an neach-aithne ùrachadh air an t-SIM</string>
+    <string name="contactdeleteSuccess">Chaidh an neach-aithne a sguabadh às on t-SIM</string>
+    <string name="contactdeleteFailed">Cha deach leinn an neach-aithne a sguabadh às on t-SIM</string>
+    <string name="allContactdeleteSuccess">Chaidh a h-uile luchd-aithne a sguabadh às on t-SIM</string>
+    <string name="allContactdeleteFailed">Cha deach leinn a h-uile luchd-aithne a sguabadh às on t-SIM</string>
+    <string name="exportAllcontatsSuccess">Chaidh a h-uile luchd-aithne às-phortadh gun t-SIM</string>
+    <string name="exportAllcontatsFailed">Cha deach leinn a h-uile luchd-aithne às-phortadh gun t-SIM</string>
+    <string name="exportAllcontatsNoContacts">Cha do lorg sinn neach-aithne a dh’às-phortaicheadh sinn gun t-SIM</string>
+    <string name="msim_mobile_network_settings_title">Roghainnean an lìonraidh mobile airson SIM %d</string>
+    <string name="perm_change_mobile_network">modh an lìonraidh atharrachadh</string>
+    <string name="perm_change_mobile_network_desc">Leigidh seo le aplacaid modh làithreach an lìonraidh atharrachadh.</string>
+    <string name="connected_line_identification_title">Aithneachadh loidhnichean ceangailte</string>
+    <string name="connected_line_identification_summary">Cuir an roghainn seo à comas mura nochd àireamh nam faightearan ann an eachdraidh nan gairmean</string>
+    <string name="choose_network_mode_title">Tagh modh an lìonraidh</string>
+    <string name="choose_network_mode_system_default">Bun-roghainn an t-siostaim</string>
+    <string name="unlock_failed_remaining_retries">Cha deach le iarrtas neo-ghlasaidh, faodaidh tu fheuchainn %1$d tura(i)s eile.</string>
+    <string name="labelCFType">Roghainnean sìneadh air adhart nan gairmean</string>
+    <string name="labelCFVoice">Guth</string>
+    <string name="labelCFVideo">Video</string>
+    <string name="call_forward_option">Roghainnean sìneadh air adhart nan gairmean</string>
+</resources>

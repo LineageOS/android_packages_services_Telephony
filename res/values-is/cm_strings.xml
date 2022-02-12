@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2013-2015 The CyanogenMod Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="show_ssn_label">Tilkynning um atburð</string>
+    <string name="call_notif_multipartycall">Margra-aðila símtal</string>
+    <string name="call_notif_forwardcheckreceived">Símtal var áframsent</string>
+    <string name="preferred_network_mode_global_summary_cm">Æskilegur netkerfishamur: Global (CDMA/EvDo/LTE/GSM/WCDMA)</string>
+    <string name="preferred_network_mode_td_scdma_wcdma_summary">Æskilegur netkerfishamur: TD-SCDMA/WCDMA</string>
+    <string name="preferred_network_mode_td_scdma_lte_summary">Æskilegur netkerfishamur: TD-SCDMA/LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_summary">Æskilegur netkerfishamur: TD-SCDMA/GSM</string>
+    <string name="preferred_network_mode_td_scdma_gsm_lte_summary">Æskilegur netkerfishamur: TD-SCDMA/GSM/LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_summary">Æskilegur netkerfishamur: TD-SCDMA/GSM/WCDMA</string>
+    <string name="preferred_network_mode_td_scdma_wcdma_lte_summary">Æskilegur netkerfishamur: TD-SCDMA/WCDMA/LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_lte_summary">Æskilegur netkerfishamur: TD-SCDMA/GSM/WCDMA/LTE</string>
+    <string name="preferred_network_mode_td_scdma_gsm_wcdma_cdma_evdo_summary">Æskilegur netkerfishamur: TD-SCDMA/GSM/WCDMA/CDMA/EvDo</string>
+    <string name="preferred_network_mode_td_scdma_lte_cdma_evdo_gsm_wcdma_summary">Æskilegur netkerfishamur: TD-SCDMA/LTE/CDMA/EvDo/GSM/WCDMA</string>
+    <string name="call_barring">Lokað á símtöl</string>
+    <string name="call_barring_outgoing">Lokað á úthringingar</string>
+    <string-array name="call_barring_outgoing_display_values">
+        <item>Off</item>
+        <item>International roaming calls</item>
+        <item>International calls</item>
+        <item>Úthringingar</item>
+    </string-array>
+    <string-array name="call_barring_incoming_display_values">
+        <item>Off</item>
+        <item>Reiki</item>
+        <item>All</item>
+    </string-array>
+    <string name="call_barring_incoming">útilokun innhringinga</string>
+    <string name="labelCbCancelAll">Gera útilokun símtala óvirka</string>
+    <string name="no_call_barring">Lokun á símtöl óvirk</string>
+    <string name="fdn_invalid_number_cm">FDN var ekki uppfært vegna þess að númerið er autt eða er með fleiri en 20 stafi.</string>
+    <string name="fdn_service_unavailable">FDN-þjónusta er ekki tiltæk.</string>
+    <string name="contactScreen">Sýsla með SIM-tengiliði</string>
+    <string name="exportContactScreen">Flytja tengiliði símans út á SIM-kort</string>
+    <string name="addSimEntries">Bæta við SIM-tengilið</string>
+    <string name="deleteAllSimEntries">Eyða öllum SIM-tengiliðum</string>
+    <string name="deleteSimContacts">Eyði SIM-tengiliðum\u2026</string>
+    <string name="contactAddSuccess">Tókst að bæta tengilið á SIM-kort</string>
+    <string name="contactAddFailed">Tókst ekki að bæta tengilið á SIM-kort</string>
+    <string name="contactUpdateSuccess">Tókst að uppfæra tengilið á SIM-korti</string>
+    <string name="contactUpdateFailed">Tókst ekki að uppfæra tengilið á SIM-korti</string>
+    <string name="contactdeleteSuccess">Tókst að eyða tengilið af SIM-korti</string>
+    <string name="contactdeleteFailed">Tókst ekki að eyða tengilið af SIM-korti</string>
+    <string name="allContactdeleteSuccess">Tókst að eyða öllum tengiliðum af SIM-korti</string>
+    <string name="allContactdeleteFailed">Tókst ekki að eyða öllum tengiliðum af SIM-korti</string>
+    <string name="exportAllcontatsSuccess">Tókst að flytja alla tengiliði út á SIM-kort</string>
+    <string name="exportAllcontatsFailed">Tókst ekki að flytja alla tengiliði út á SIM-kort</string>
+    <string name="exportAllcontatsNoContacts">Engir tengiliðir fundust til útflutnings á SIM-kort</string>
+    <string name="msim_mobile_network_settings_title">Stillingar símaþjónustu SIM %d</string>
+    <string name="perm_change_mobile_network">breyta netkerfisham</string>
+    <string name="connected_line_identification_title">Auðkenning tengdrar línu</string>
+    <string name="choose_network_mode_title">Veldu netkerfisham</string>
+    <string name="labelCFType">Stillingar framsendingar símtala</string>
+    <string name="call_forward_option">Valkostir áframsendinga símtala</string>
+</resources>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2015, The Linux Foundation. All rights reserved.
+  ~
+  ~ Redistribution and use in source and binary forms, with or without
+  ~ modification, are permitted provided that the following conditions are
+  ~ met:
+  ~      Redistributions of source code must retain the above copyright
+  ~       notice, this list of conditions and the following disclaimer.
+  ~      Redistributions in binary form must reproduce the above
+  ~       copyright notice, this list of conditions and the following
+  ~       disclaimer in the documentation and/or other materials provided
+  ~       with the distribution.
+  ~      Neither the name of The Linux Foundation nor the names of its
+  ~       contributors may be used to endorse or promote products derived
+  ~       from this software without specific prior written permission.
+  ~
+  ~ THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
+  ~ WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+  ~ MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
+  ~ ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
+  ~ BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+  ~ CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+  ~ SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+  ~ BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  ~ WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+  ~ OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+  ~ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  ~
+  -->
+<!-- The xml contains Qti specific resource strings neede for any value added features. -->
+<resources>
+    <string name="ims_settings">IMS அமைப்பு</string>
+    <string name="label_nsdp">SIM பிணைய துணைதொகுப்பு பூட்டுநீக்க PIN</string>
+    <string name="label_cdp">SIM கார்ப்பரேட் பூட்டுநீக்க PIN</string>
+    <string name="label_spdp">SIM சேவை வழங்குநர் பூட்டுநீக்க PIN</string>
+    <string name="label_sdp">SIM பூட்டுநீக்க PIN</string>
+    <string name="label_rn1dp">RUIM பிணையம் 1 பூட்டுநீக்க PIN</string>
+    <string name="label_rn2dp">RUIM பிணையம் 2 பூட்டுநீக்க PIN</string>
+    <string name="label_rhrpd">RUIM HRPD பூட்டுநீக்க PIN</string>
+    <string name="label_rcdp">RUIM கார்ப்பரேட் பூட்டுநீக்க PIN</string>
+    <string name="label_rspdp">RUIM சேவை வழங்குநர் பூட்டுநீக்க PIN</string>
+    <string name="label_rdp">RUIM பூட்டுநீக்க PIN</string>
+    <string name="label_puk">PUK உள்ளிடவும்</string>
+    <string name="requesting_nw_subset_unlock">SIM பிணைய துணைதொகுப்பு பூட்டுநீக்கம்\u2026</string>
+    <string name="requesting_sp_unlock">SIM சேவை வழங்குநர் பூட்டுநீக்கம் கோருகிறது\u2026</string>
+    <string name="requesting_corporate_unlock">SIM கார்ப்பரேட் பூட்டுநீக்கம் கோருகிறது\u2026</string>
+    <string name="requesting_sim_unlock">SIM பூட்டுநீக்கம் கோருகிறது\u2026</string>
+    <string name="requesting_rnw1_unlock">RUIM பிணையம் 1 பூட்டுநீக்கம் கோருகிறது\u2026</string>
+    <string name="requesting_rnw2_unlock">RUIM பிணையம் 2 பூட்டுநீக்கம் கோருகிறது\u2026</string>
+    <string name="requesting_rhrpd_unlock">RUIM HRPD பூட்டுநீக்கம் கோருகிறது \u2026</string>
+    <string name="requesting_rsp_unlock">RUIM சேவை வழங்குநர் பூட்டுநீக்கம் கோருகிறது\u2026</string>
+    <string name="requesting_rc_unlock">RUIM கார்ப்பரேட் பூட்டுநீக்கம்\u2026</string>
+    <string name="requesting_ruim_unlock">RUIM பூட்டுநீக்கம் கோருகிறது\u2026</string>
+    <string name="requesting_puk_unlock">PUK பூட்டுநீக்கம் கோருகிறது\u2026</string>
+    <string name="nw_subset_unlock_failed">SIM பிணைய துணைதொகுப்பு பூட்டுநீக்கம் வெற்றியடையவில்லை</string>
+    <string name="sp_unlock_failed">SIM சேவை வழங்குநர் பூட்டுநீக்கம் வெற்றியடையவில்லை.</string>
+    <string name="corporate_unlock_failed">SIM  கார்ப்பரேட் பூட்டுநீக்க கோரிக்கை வெற்றியடையவில்லை.</string>
+    <string name="sim_unlock_failed">SIM பூட்டுநீக்க கோரிக்கை வெற்றியடையவில்லை.</string>
+    <string name="rnw1_unlock_failed">RUIM நெட்வொர்க் 1 பூட்டுநீக்கம் வெற்றியடையவில்லை.</string>
+    <string name="rnw2_unlock_failed">RUIM நெட்வொர்க் 2 பூட்டுநீக்கம் வெற்றியடையவில்லை.</string>
+    <string name="rhrpd_unlock_failed">RUIM HRPD பூட்டுநீக்கம் வெற்றியடையவில்லை.</string>
+    <string name="rsp_unlock_failed">RUIM சேவை வழங்குநர் பூட்டுநீக்க கோரிக்கை வெற்றியடையவில்லை.</string>
+    <string name="rc_unlock_failed">RUIM கார்ப்பரேட் பூட்டுநீக்க கோரிக்கை வெற்றியடையவில்லை</string>
+    <string name="ruim_unlock_failed">RUIM பூட்டுநீக்கம் வெற்றியடையவில்லை.</string>
+    <string name="puk_unlock_failed">PUK பூட்டுநீக்கம் வெற்றியடையவில்லை.</string>
+    <string name="nw_subset_unlock_success">SIM பிணைய துணைதொகுப்பு பூட்டுநீக்கம் வெற்றி.</string>
+    <string name="sp_unlock_success">SIM சேவை வழங்குநர் பூட்டுநீக்கம் வெற்றி.</string>
+    <string name="corporate_unlock_success">SIM கார்ப்பரேட் பூட்டுநீக்கம் வெற்றி.</string>
+    <string name="sim_unlock_success">SIM பூட்டுநீக்கம் வெற்றியடைந்தது.</string>
+    <string name="rnw1_unlock_success">RUIM நெட்வொர்க் 1 பூட்டுநீக்கம் வெற்றியடைந்தது.</string>
+    <string name="rnw2_unlock_success">RUIM நெட்வொர்க் 2 பூட்டுநீக்கம் வெற்றியடைந்தது.</string>
+    <string name="rhrpd_unlock_success">RUIM HRPD பூட்டுநீக்கம் வெற்றியடைந்தது.</string>
+    <string name="rsp_unlock_success">RUIM சேவை வழங்குநர் பூட்டுநீக்கம் வெற்றி.</string>
+    <string name="rc_unlock_success">RUIM கார்ப்பரேட் பூட்டுநீக்கம் வெற்றி.</string>
+    <string name="ruim_unlock_success">RUIM பூட்டுநீக்கம் வெற்றியடைந்தது.</string>
+    <string name="puk_unlock_success">PUK பூட்டுநீக்கம் வெற்றியடைந்தது.</string>
+</resources>
