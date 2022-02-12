@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2015, The Linux Foundation. All rights reserved.
+  ~
+  ~ Redistribution and use in source and binary forms, with or without
+  ~ modification, are permitted provided that the following conditions are
+  ~ met:
+  ~      Redistributions of source code must retain the above copyright
+  ~       notice, this list of conditions and the following disclaimer.
+  ~      Redistributions in binary form must reproduce the above
+  ~       copyright notice, this list of conditions and the following
+  ~       disclaimer in the documentation and/or other materials provided
+  ~       with the distribution.
+  ~      Neither the name of The Linux Foundation nor the names of its
+  ~       contributors may be used to endorse or promote products derived
+  ~       from this software without specific prior written permission.
+  ~
+  ~ THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
+  ~ WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+  ~ MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
+  ~ ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
+  ~ BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+  ~ CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+  ~ SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+  ~ BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  ~ WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+  ~ OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+  ~ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  ~
+  -->
+<!-- The xml contains Qti specific resource strings neede for any value added features. -->
+<resources>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ENTRY">සිම් ජාල උපකුලකය අගුළු ඇරීමේ PIN</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_ENTRY">සිම් සංස්ථාපිත අගුළු ඇරීමේ PIN</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ENTRY">සිම් සේවා ප්‍රතිපාදක අගුළු ඇරීමේ PIN</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_ENTRY">සිම් අගුළු ඇරීමේ PIN</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_ENTRY">RUIM 1 ජාලය අගුළු ඇරීමේ PIN</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_ENTRY">RUIM 2 ජාලය අගුළු ඇරීමේ PIN</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_ENTRY">RUIM HRPD අගුළු ඇරීමේ PIN</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_ENTRY">RUIM සංස්ථාපිත අගුළු ඇරීමේ PIN</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ENTRY">RUIM සේවා ප්‍රතිපාදක අගුළු ඇරීමේ PIN</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_ENTRY">RUIM අගුළු ඇරීමේ PIN</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_ENTRY">PUK ඇතුළත් කරන්න</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_IN_PROGRESS">සිම් ජාල උපකුලකය අගුළු ඇරීම අයදුම් කරමින්\u2026</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_IN_PROGRESS">සිම් සේවා ප්‍රතිපාදක අගුළු ඇරීම අයදුම් කරමින්\u2026</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_IN_PROGRESS">සිම් සංස්ථාපිත අගුළු ඇරීම අයදුම් කරමින්\u2026</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_IN_PROGRESS">සිම් අගුළු ඇරීම අයදුම් කරමින්\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_IN_PROGRESS">RUIM 1 ජාලය අගුළු ඇරීම අයදුම් කරමින්\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_IN_PROGRESS">RUIM 2 ජාලය අගුළු ඇරීම අයදුම් කරමින්\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_IN_PROGRESS">RUIM HRPD අගුළු ඇරීම අයදුම් කරමින්\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_IN_PROGRESS">RUIM සේවා ප්‍රතිපාදක අගුළු ඇරීම අයදුම් කරමින්\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_IN_PROGRESS">RUIM සංස්ථාපිත අගුළු ඇරීම අයදුම් කරමින්\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_IN_PROGRESS">RUIM අගුළු ඇරීම අයදුම් කරමින්\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_IN_PROGRESS">PUK අගුළු ඇරීම අයදුම් කරමින්\u2026</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ERROR">SIM ජාල උපකුලකය අගුළු ඇරීමේ අයදුම අසාර්ථකයි.</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ERROR">SIM සේවා ප්‍රතිපාදක අගුළු ඇරීමේ අයදුම අසාර්ථකයි.</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_ERROR">SIM සංස්ථාපිත අගුළු ඇරීමේ අයදුම අසාර්ථකයි.</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_ERROR">SIM අගුළු ඇරීමේ අයදුම අසාර්ථකයි.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_ERROR">RUIM 1 ජාලය අගුළු ඇරීමේ අයදුම අසාර්ථකයි.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_ERROR">RUIM 2 ජාලය අගුළු ඇරීමේ අයදුම අසාර්ථකයි.</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_ERROR">RUIM HRPD අගුළු ඇරීමේ අයදුම අසාර්ථකයි.</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ERROR">RUIM සේවා ප්‍රතිපාදක අගුළු ඇරීමේ අයදුම අසාර්ථකයි.</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">RUIM සංස්ථාපිත අගුළු ඇරීමේ අයදුම අසාර්ථකයි.</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">RUIM අගුළු ඇරීමේ අයදුම අසාර්ථකයි.</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_PUK_ERROR">PUK අගුළු ඇරීම අසාර්ථකයි.</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_PUK_ERROR">PUK අගුළු ඇරීම අසාර්ථකයි.</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_PUK_ERROR">PUK අගුළු ඇරීම අසාර්ථකයි.</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_PUK_ERROR">PUK අගුළු ඇරීම අසාර්ථකයි.</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_PUK_ERROR">PUK අගුළු ඇරීම අසාර්ථකයි.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_ERROR">PUK අගුළු ඇරීම අසාර්ථකයි.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_ERROR">PUK අගුළු ඇරීම අසාර්ථකයි.</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_PUK_ERROR">PUK අගුළු ඇරීම අසාර්ථකයි.</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_PUK_ERROR">PUK අගුළු ඇරීම අසාර්ථකයි.</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">PUK අගුළු ඇරීම අසාර්ථකයි.</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">PUK අගුළු ඇරීම අසාර්ථකයි.</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_SUCCESS">සිම් ජාල උපකුලකය අගුළු ඇරීම සාර්ථකයි.</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_SUCCESS">සිම් සේවා ප්‍රතිපාදක අගුළු ඇරීම සාර්ථකයි.</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_SUCCESS">සිම් සංස්ථාපිත අගුළු ඇරීම සාර්ථකයි.</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_SUCCESS">සිම් අගුළු ඇරීම සාර්ථකයි.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_SUCCESS">RUIM 1 ජාලය අගුළු ඇරීම සාර්ථකයි.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">RUIM 2 ජාලය අගුළු ඇරීම සාර්ථකයි.</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_SUCCESS">RUIM HRPD අගුළු ඇරීම සාර්ථකයි.</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_SUCCESS">RUIM සේවා ප්‍රතිපාදක අගුළු ඇරීම සාර්ථකයි.</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_SUCCESS">RUIM සංස්ථාපිත අගුළු ඇරීම සාර්ථකයි.</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_SUCCESS">RUIM අගුළු ඇරීම සාර්ථකයි.</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_PUK_SUCCESS">PUK අගුළු ඇරීම සාර්ථකයි.</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_PUK_SUCCESS">PUK අගුළු ඇරීම සාර්ථකයි.</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_PUK_SUCCESS">PUK අගුළු ඇරීම සාර්ථකයි.</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_PUK_SUCCESS">PUK අගුළු ඇරීම සාර්ථකයි.</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_PUK_SUCCESS">PUK අගුළු ඇරීම සාර්ථකයි.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_SUCCESS">PUK අගුළු ඇරීම සාර්ථකයි.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">PUK අගුළු ඇරීම සාර්ථකයි.</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_PUK_SUCCESS">PUK අගුළු ඇරීම සාර්ථකයි.</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_SUCCESS">PUK අගුළු ඇරීම සාර්ථකයි.</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_PUK_SUCCESS">PUK අගුළු ඇරීම සාර්ථකයි.</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_SUCCESS">PUK අගුළු ඇරීම සාර්ථකයි.</string>
+</resources>

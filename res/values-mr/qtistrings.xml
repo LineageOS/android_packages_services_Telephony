@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2015, The Linux Foundation. All rights reserved.
+  ~
+  ~ Redistribution and use in source and binary forms, with or without
+  ~ modification, are permitted provided that the following conditions are
+  ~ met:
+  ~      Redistributions of source code must retain the above copyright
+  ~       notice, this list of conditions and the following disclaimer.
+  ~      Redistributions in binary form must reproduce the above
+  ~       copyright notice, this list of conditions and the following
+  ~       disclaimer in the documentation and/or other materials provided
+  ~       with the distribution.
+  ~      Neither the name of The Linux Foundation nor the names of its
+  ~       contributors may be used to endorse or promote products derived
+  ~       from this software without specific prior written permission.
+  ~
+  ~ THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
+  ~ WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+  ~ MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
+  ~ ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
+  ~ BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+  ~ CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+  ~ SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+  ~ BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  ~ WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+  ~ OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+  ~ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  ~
+  -->
+<!-- The xml contains Qti specific resource strings neede for any value added features. -->
+<resources>
+    <string name="ims_settings">IMS सेटिंग्ज</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ENTRY">सिम नेटवर्क उपसेट अनलॉक पिन</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_ENTRY">सिम कॉर्पोरेट अनलॉक पिन</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ENTRY">सिम सेवा प्रदाता अनलॉक पिन</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_ENTRY">सिम अनलॉक पिन</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_ENTRY">RUIM नेटवर्क 1 अनलॉक पिन</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_ENTRY">RUIM नेटवर्क 2 अनलॉक पिन</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_ENTRY">RUIM HRPD अनलॉक पिन</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_ENTRY">RUIM सिम कॉर्पोरेट अनलॉक पिन</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ENTRY">RUIM सेवा प्रदाता अनलॉक पिन</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_ENTRY">RUIM अनलॉक पिन</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_ENTRY">PUK प्रविष्ठ करा</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_IN_PROGRESS">सिम नेटवर्क उपसेट अनलॉकची विनंती करत आहे\u2026</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_IN_PROGRESS">सिम सेवा प्रदाता अनलॉकची विनंती करत आहे\u2026</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_IN_PROGRESS">सिम कॉर्पोरेट अनलॉकची विनंती करत आहे\u2026</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_IN_PROGRESS">सिम अनलॉकची विनंती करत आहे\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_IN_PROGRESS">RUIM नेटवर्क 1 अनलॉकची विनंती करत आहे\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_IN_PROGRESS">RUIM नेटवर्क 2 अनलॉकची विनंती करत आहे\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_IN_PROGRESS">RUIM HRPD अनलॉकची विनंती करत आहे\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_IN_PROGRESS">RUIM सेवा प्रदाता अनलॉकची विनंती करत आहे\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_IN_PROGRESS">RUIM कॉर्पोरेट अनलॉकची विनंती करत आहे\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_IN_PROGRESS">RUIM अनलॉकची विनंती करत आहे\u2026</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_IN_PROGRESS">PUK अनलॉकची विनंती करत आहे\u2026</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_ERROR">सिम नेटवर्क उपसेट अनलॉक विनंती अयशस्वी.</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_ERROR">सिम सेवा प्रदाता अनलॉक विनंती अयशस्वी.</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_ERROR">सिम कॉर्पोरेट अनलॉक विनंती अयशस्वी.</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_ERROR">सिम अनलॉक विनंती अयशस्वी.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_ERROR">RUIM नेटवर्क 1 अनलॉक विनंती अयशस्वी.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_ERROR">RUIM नेटवर्क 2 अनलॉक विनंती अयशस्वी.</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_ERROR">RUIM HRPD अनलॉक विनंती अयशस्वी.</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_ERROR">RUIM सेवा प्रदाता अनलॉक विनंती अयशस्वी.</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">RUIM कॉर्पोरेट अनलॉक विनंती अयशस्वी.</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">RUIM अनलॉक विनंती अयशस्वी.</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_PUK_ERROR">PUK अनलॉक अयशस्वी.</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_PUK_ERROR">PUK अनलॉक अयशस्वी.</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_PUK_ERROR">PUK अनलॉक अयशस्वी.</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_PUK_ERROR">PUK अनलॉक अयशस्वी.</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_PUK_ERROR">PUK अनलॉक अयशस्वी.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_ERROR">PUK अनलॉक अयशस्वी.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_ERROR">PUK अनलॉक अयशस्वी.</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_PUK_ERROR">PUK अनलॉक अयशस्वी.</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_PUK_ERROR">PUK अनलॉक अयशस्वी.</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_ERROR">PUK अनलॉक अयशस्वी.</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_ERROR">PUK अनलॉक अयशस्वी.</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_SUCCESS">सिम नेटवर्क उपसेट अनलॉक यशस्वी.</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_SUCCESS">सिम सेवा प्रदाता अनलॉक यशस्वी.</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_SUCCESS">सिम कॉर्पोरेट अनलॉक यशस्वी.</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_SUCCESS">सिम अनलॉक यशस्वी.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_SUCCESS">RUIM नेटवर्क 1 अनलॉक यशस्वी.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">RUIM नेटवर्क 2 अनलॉक यशस्वी.</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_SUCCESS">RUIM HRPD अनलॉक यशस्वी.</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_SUCCESS">RUIM सेवा प्रदाता अनलॉक यशस्वी.</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_SUCCESS">RUIM कॉर्पोरेट अनलॉक यशस्वी.</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_SUCCESS">RUIM अनलॉक यशस्वी.</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_PUK_SUCCESS">RUIM अनलॉक यशस्वी.</string>
+    <string name="PERSOSUBSTATE_SIM_NETWORK_SUBSET_PUK_SUCCESS">RUIM अनलॉक यशस्वी.</string>
+    <string name="PERSOSUBSTATE_SIM_CORPORATE_PUK_SUCCESS">RUIM अनलॉक यशस्वी.</string>
+    <string name="PERSOSUBSTATE_SIM_SERVICE_PROVIDER_PUK_SUCCESS">RUIM अनलॉक यशस्वी.</string>
+    <string name="PERSOSUBSTATE_SIM_SIM_PUK_SUCCESS">RUIM अनलॉक यशस्वी.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK1_PUK_SUCCESS">RUIM अनलॉक यशस्वी.</string>
+    <string name="PERSOSUBSTATE_RUIM_NETWORK2_PUK_SUCCESS">RUIM अनलॉक यशस्वी.</string>
+    <string name="PERSOSUBSTATE_RUIM_HRPD_PUK_SUCCESS">RUIM अनलॉक यशस्वी.</string>
+    <string name="PERSOSUBSTATE_RUIM_CORPORATE_PUK_SUCCESS">RUIM अनलॉक यशस्वी.</string>
+    <string name="PERSOSUBSTATE_RUIM_SERVICE_PROVIDER_PUK_SUCCESS">RUIM अनलॉक यशस्वी.</string>
+    <string name="PERSOSUBSTATE_RUIM_RUIM_PUK_SUCCESS">RUIM अनलॉक यशस्वी.</string>
+</resources>
