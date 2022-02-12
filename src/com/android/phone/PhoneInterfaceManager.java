@@ -786,15 +786,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     uiccPort = getUiccPortFromRequest(request);
                     if (uiccPort == null) {
                         loge("iccCloseLogicalChannel: No UICC");
-                        // before this feature is enabled, this API should only return false if
-                        // the operation fails instead of throwing runtime exception for
-                        // backward-compatibility.
-                        if (Compatibility.isChangeEnabled(ICC_CLOSE_CHANNEL_EXCEPTION_ON_FAILURE)) {
-                            request.result = new IllegalArgumentException(
+                        request.result = new IllegalArgumentException(
                                     "iccCloseLogicalChannel: No UICC");
-                        } else {
-                            request.result = false;
-                        }
                         notifyRequester(request);
                     } else {
                         onCompleted = obtainMessage(EVENT_CLOSE_CHANNEL_DONE, request);
@@ -825,13 +818,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                         } else {
                             loge("iccCloseLogicalChannel: Unknown exception");
                         }
-                        // before this feature is enabled, this API should only return false if
-                        // the operation fails instead of throwing runtime exception for
-                        // backward-compatibility.
-                        if (Compatibility.isChangeEnabled(ICC_CLOSE_CHANNEL_EXCEPTION_ON_FAILURE))
-                            request.result = (exception != null) ? exception :
-                                    new IllegalStateException(
-                                            "exception from modem to close iccLogical Channel");
+                        request.result = (exception != null) ? exception :
+                                new IllegalStateException(
+                                        "exception from modem to close iccLogical Channel");
                     }
                     notifyRequester(request);
                     break;
@@ -5298,6 +5287,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     private boolean iccCloseLogicalChannelWithPermission(Phone phone,
             IccLogicalChannelRequest request) {
+        // before this feature is enabled, this API should only return false if
+        // the operation fails instead of throwing runtime exception for
+        // backward-compatibility.
+        final boolean shouldThrowExceptionOnFailure = CompatChanges.isChangeEnabled(
+                ICC_CLOSE_CHANNEL_EXCEPTION_ON_FAILURE, Binder.getCallingUid());
         final long identity = Binder.clearCallingIdentity();
         try {
             if (request.channel < 0) {
@@ -5308,7 +5302,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             Boolean success = false;
             if (result instanceof RuntimeException) {
                 // if there is an exception returned, throw from the binder thread here.
-                throw (RuntimeException) result;
+                if (shouldThrowExceptionOnFailure) {
+                    throw (RuntimeException) result;
+                } else {
+                    return false;
+                }
             } else if (result instanceof Boolean) {
                 success = (Boolean) result;
             } else {
