@@ -23,6 +23,8 @@
     <string name="private_num">Rhif preifat</string>
     <string name="payphone">Ffôn cyhoeddus</string>
     <string name="onHold">Yn disgwyl</string>
+    <string name="carrier_mmi_msg_title">Neges <xliff:g id="mmicarrier" example="T-Mobile">%s</xliff:g></string>
+    <string name="default_carrier_mmi_msg_title">Neges Darparwr Gwasanaeth</string>
     <string name="mmiStarted">Cod MMI wedi dechrau</string>
     <string name="ussdRunning">Cod USSD yn rhedeg\u2026</string>
     <string name="mmiCancelled">Diddymwyd modd MMI</string>
@@ -207,7 +209,7 @@
         <item>LTE/TDSCDMA/GSM/WCDMA</item>
         <item>TDSCDMA/CDMA/EVDO/GSM/WCDMA </item>
         <item>LTE/TDSCDMA/CDMA/EVDO/GSM/WCDMA</item>
-        <item>NR only</item>
+        <item>NR yn unig</item>
         <item>NR/LTE</item>
         <item>NR/LTE/CDMA/EvDo</item>
         <item>NR/LTE/GSM/WCDMA</item>
@@ -231,6 +233,7 @@
     <string name="preferred_network_mode_lte_summary">Modd rhwydwaith a ffafrir: LTE </string>
     <string name="preferred_network_mode_lte_gsm_wcdma_summary">Modd rhwydwaith a ffafrir: GSM/WCDMA/LTE</string>
     <string name="preferred_network_mode_lte_cdma_evdo_summary">Modd rhwydwaith a ffafrir: CDMA+LTE/EvDo</string>
+    <string name="preferred_network_mode_lte_cdma_evdo_gsm_wcdma_summary">Modd rhwydwaith a ffafrir: CDMA/EvDo/GSM/WCDMA</string>
     <string name="preferred_network_mode_global_summary">Modd rhwydwaith a ffafrir: Byd-eang</string>
     <string name="preferred_network_mode_lte_wcdma_summary">Modd rhwydwaith a ffafrir: LTE/WCDMA</string>
     <string name="preferred_network_mode_lte_gsm_umts_summary">Modd rhwydwaith a ffafrir: LTE/GSM/UMTS</string>
@@ -245,6 +248,17 @@
     <string name="preferred_network_mode_lte_tdscdma_gsm_wcdma_summary">Modd rhwydwaith a ffafrir: LTE/TDSCDMA/GSM/WCDMA</string>
     <string name="preferred_network_mode_tdscdma_cdma_evdo_gsm_wcdma_summary">Modd rhwydwaith a ffafrir: TDSCDMA/CDMA/EvDo/GSM/WCDMA</string>
     <string name="preferred_network_mode_lte_tdscdma_cdma_evdo_gsm_wcdma_summary">Modd rhwydwaith a ffafrir: LTE/TDSCDMA/CDMA/EvDo/GSM/WCDMA</string>
+    <string name="preferred_network_mode_nr_only_summary">Modd rhwydwaith a ffafrir: NR yn unig</string>
+    <string name="preferred_network_mode_nr_lte_summary">Modd rhwydwaith a ffafrir: NR/LTE</string>
+    <string name="preferred_network_mode_nr_lte_cdma_evdo_summary">Modd rhwydwaith a ffafrir: NR/LTE/CDMA/EvDo</string>
+    <string name="preferred_network_mode_nr_lte_gsm_wcdma_summary">Modd rhwydwaith a ffafrir: NR/LTE/GSM/WCDMA</string>
+    <string name="preferred_network_mode_nr_lte_cdma_evdo_gsm_wcdma_summary">Modd rhwydwaith a ffafrir: NR/LTE/CDMA/EvDo/GSM/WCDMA</string>
+    <string name="preferred_network_mode_nr_lte_wcdma_summary">Modd rhwydwaith a ffafrir: NR/LTE/WCDMA</string>
+    <string name="preferred_network_mode_nr_lte_tdscdma_summary">Modd rhwydwaith a ffafrir: NR/LTE/TDSCDMA</string>
+    <string name="preferred_network_mode_nr_lte_tdscdma_gsm_summary">Modd rhwydwaith a ffafrir: NR/LTE/TDSCDMA/GSM</string>
+    <string name="preferred_network_mode_nr_lte_tdscdma_wcdma_summary">Modd rhwydwaith a ffafrir: NR/LTE/TDSCDMA/WCDMA</string>
+    <string name="preferred_network_mode_nr_lte_tdscdma_gsm_wcdma_summary">Modd rhwydwaith a ffafrir: NR/LTE/TDSCDMA/GSM/WCDMA</string>
+    <string name="preferred_network_mode_nr_lte_tdscdma_cdma_evdo_gsm_wcdma_summary">Modd rhwydwaith a ffafrir: NR/LTE/TDSCDMA/CDMA/EvDo/GSM/WCDMA</string>
     <string name="call_category">Galw</string>
     <string name="network_operator_category">Rhwydwaith</string>
     <string name="enhanced_4g_lte_mode_title">Modd 4G LTE Gwell</string>
@@ -385,6 +399,7 @@
     <string name="enable_disable_multi_category">Aml-gategori</string>
     <string name="multi_category_enable">Galluogwyd aml-gategori</string>
     <string name="multi_category_disable">Analluogwyd aml-gategori</string>
+    <string name="network_recommended">\u0020(argymhellir)</string>
     <string name="network_lte">LTE (argymhellir)</string>
     <string name="network_4G">4G (argymhellir)</string>
     <string name="network_global">Byd-eang</string>
@@ -449,6 +464,7 @@
     <string name="deleting_fdn_contact">Yn dileu rhif deialu gosodedig\u2026</string>
     <string name="fdn_contact_deleted">Wedi dileu’r rhif deialu gosodedig.</string>
     <string name="pin2_invalid">Ni ddiweddarwyd y rhif deialu gosodedig am fod y PIN yn anghywir.</string>
+    <string name="fdn_invalid_number">Ni ddiweddarwyd FDN am fod dros <xliff:g id="FDN_NUMBER_LIMIT_LENGTH">%d</xliff:g> digid yn y rhif.</string>
     <string name="pin2_or_fdn_invalid">Ni ddiweddarwyd y rhif deialu gosodedig. Roedd y PIN2 yn anghywir, neu cafodd y rhif ffôn ei wrthod.</string>
     <string name="fdn_failed">Methodd y weithred rhif deialu gosodedig.</string>
     <string name="simContacts_emptyLoading">Yn darllen o gerdyn SIM\u2026</string>
@@ -539,6 +555,7 @@
     <string name="dial_emergency_error">Methu â galw. Dyw <xliff:g id="non_emergency_number">%s</xliff:g> ddim yn rif argyfwng.</string>
     <string name="dial_emergency_empty_error">Methu â galw. Deiala rif argyfwng.</string>
     <string name="dial_emergency_calling_not_available">Dyw galwadau brys ddim ar gael</string>
+    <string name="pin_puk_system_user_only">Dim ond perchennog y ddyfais all roi codau PIN/PUK.</string>
     <string name="police_type_description">Heddlu</string>
     <string name="ambulance_type_description">Ambiwlans</string>
     <string name="fire_type_description">Tân</string>
@@ -569,6 +586,7 @@
        &lt;a href=\"<xliff:g example="http://www.google.com" id="url">http://support.google.com/mobile?p=telephony_rtt</xliff:g>\"&gt;Dysgu mwy&lt;/a&gt;
        &lt;br&gt;&lt;br&gt; - Mae galwadau RTT yn cael eu cadw fel trawsgrifiadau negeseuon
        &lt;br&gt; - Dyw RTT ddim ar gael ar gyfer galwadau fideo</string>
+    <string name="no_rtt_when_roaming">Noder: Nid yw RTT ar gael tra\'n crwydro.</string>
     <string-array name="tty_mode_entries">
         <item>TTY i ffwrdd</item>
         <item>TTY Llawn</item>
@@ -632,6 +650,16 @@
     <string name="alert_dialog_yes">Gadael</string>
     <string name="alert_dialog_no">Peidio â Gadael</string>
     <string name="alert_dialog_dismiss">Gwrthod</string>
+    <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint">Mae\'r ffôn ym modd galwad nôl mewn argyfwng.</string>
+    <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint">Hyd at <xliff:g id="date">%s</xliff:g></string>
+    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint">
+        <item quantity="zero">Bydd y ffôn ym modd galwad nôl mewn argyfwng am <xliff:g id="count">%s</xliff:g> munudau.\nWyt ti am adael nawr?</item>
+        <item quantity="one">Bydd y ffôn ym modd galwad nôl mewn argyfwng am <xliff:g id="count">%s</xliff:g> funud.\nWyt ti am adael nawr?</item>
+        <item quantity="two">Bydd y ffôn ym modd galwad nôl mewn argyfwng am <xliff:g id="count">%s</xliff:g> funud.\nWyt ti am adael nawr?</item>
+        <item quantity="few">Bydd y ffôn ym modd galwad nôl mewn argyfwng am <xliff:g id="count">%s</xliff:g> munud.\nWyt ti am adael nawr?</item>
+        <item quantity="many">Bydd y ffôn ym modd galwad nôl mewn argyfwng am <xliff:g id="count">%s</xliff:g> munud.\nWyt ti am adael nawr?</item>
+        <item quantity="other">Bydd y ffôn ym modd galwad nôl mewn argyfwng am <xliff:g id="count">%s</xliff:g> munud.\nWyt ti am adael nawr?</item>
+    </plurals>
     <string name="voicemail_provider">Gwasanaeth</string>
     <string name="voicemail_settings">Gosod</string>
     <string name="voicemail_number_not_set">&lt;Heb ei osod&gt;</string>
@@ -661,6 +689,7 @@
     <string name="status_hint_label_incoming_wifi_call">Galwad Wi-Fi oddi wrth</string>
     <string name="status_hint_label_wifi_call">Galwad Wi-Fi</string>
     <string name="voicemail_visual_voicemail_key">voicemail_visual_voicemail_key</string>
+    <string name="voicemail_change_pin_key">voicemail_change_pin_key</string>
     <string name="tty_mode_key">button_tty_mode_key</string>
     <string name="wifi_calling_settings_key">button_wifi_calling_settings_key</string>
     <string name="emergency_action_launch_hint">Tapia eto i agor</string>
@@ -777,6 +806,7 @@
     <string name="call_barring_deactivate_success">Wedi analluogi cyfyngu galwadau</string>
     <string name="call_barring_change_pwd">Newid cyfrinair</string>
     <string name="call_barring_change_pwd_description">Newid cyfrinair cyfyngu galwadau</string>
+    <string name="call_barring_change_pwd_description_disabled">Ni ellir newid cyfrinair cyfyngu galwadau.</string>
     <string name="call_barring_pwd_not_match">Dyw\'r cyfrineiriau ddim yr un fath</string>
     <string name="call_barring_right_pwd_number">Rho gyfrinair gyda 4 rhif</string>
     <string name="call_barring_change_pwd_success">Wedi newid y cyfrinair</string>
@@ -814,14 +844,96 @@
     <string name="supp_service_over_ut_precautions_dual_sim">I ddefnyddio <xliff:g id="supp service">%1$s</xliff:g>, rhaid troi data symudol ymlaen ar gyfer SIM <xliff:g id="sim number">%2$d</xliff:g>. Gellir newid hyn yng ngosodiadau rhwydwaith symudol.</string>
     <string name="supp_service_over_ut_precautions_roaming_dual_sim">I ddefnyddio <xliff:g id="supp service">%1$s</xliff:g>, rhaid troi data symudol a data crwydro ymlaen ar gyfer SIM <xliff:g id="sim number">%2$d</xliff:g>. Gellir newid hyn yng ngosodiadau rhwydwaith symudol.</string>
     <string name="supp_service_over_ut_precautions_dialog_dismiss">Gwrthod</string>
+    <string name="radio_info_data_connection_enable">Galluogi Cysylltiad Data</string>
+    <string name="radio_info_data_connection_disable">Analluogi Cysylltiad Data</string>
+    <string name="volte_provisioned_switch_string">Darpariaeth VoLTE</string>
+    <string name="vt_provisioned_switch_string">Darpariaeth Galwadau Fideo</string>
+    <string name="wfc_provisioned_switch_string">Darpariaeth Galwadau Wi-Fi</string>
+    <string name="eab_provisioned_switch_string">Darpariaeth EAB/Presence</string>
+    <string name="cbrs_data_switch_string">Data Cbrs</string>
+    <string name="dsds_switch_string">Galluogi DSDS</string>
+    <string name="dsds_dialog_title">Ailgychwyn y Ddyfais?</string>
+    <string name="dsds_dialog_message">Mae angen ailgychwyn dy ddyfais i newid yr osodiad hwn.</string>
+    <string name="dsds_dialog_confirm">Ailgychwyn</string>
     <string name="dsds_dialog_cancel">Diddymu</string>
+    <string name="radio_info_radio_power">Pŵer Radio Symudol</string>
+    <string name="radioInfo_menu_viewADN">Gweld Llyfr Gyfeiriadau\'r SIM</string>
+    <string name="radioInfo_menu_viewFDN">Gweld Rhifau Deialu Gosodedig (FDN)</string>
+    <string name="radioInfo_menu_viewSDN">Gweld Rhifau Deialu Gwasanaeth</string>
+    <string name="radioInfo_menu_getIMS">Statws Gwasanaeth IMS</string>
+    <string name="radio_info_ims_reg_status_title">Statws IMS</string>
     <string name="radio_info_ims_reg_status_registered">Wedi Cofrestru</string>
+    <string name="radio_info_ims_reg_status_not_registered">Heb Gofrestru</string>
+    <string name="radio_info_ims_feature_status_available">Ar gael</string>
+    <string name="radio_info_ims_feature_status_unavailable">Dim ar gael</string>
+    <string name="radio_info_ims_reg_status">Cofrestriad IMS: <xliff:g id="status" example="registered">%1$s</xliff:g>\u000ALlais dros LTE: <xliff:g id="availability" example="available">%2$s</xliff:g>\u000ALlais dros WiFi: <xliff:g id="availability" example="available">%3$s</xliff:g>\u000AGalwadau fideo: <xliff:g id="availability" example="available">%4$s</xliff:g>\u000ARhyngwyneb UT:<xliff:g id="availability" example="available">%5$s</xliff:g></string>
+    <string name="radioInfo_service_in">Mewn Gwasanaeth</string>
+    <string name="radioInfo_service_out">Allan o Wasanaeth</string>
+    <string name="radioInfo_service_emergency">Galwadau Brys yn Unig</string>
+    <string name="radioInfo_service_off">Radio i Ffwrdd</string>
     <string name="radioInfo_roaming_in">Crwydro</string>
+    <string name="radioInfo_roaming_not">Dim yn Crwydro</string>
     <string name="radioInfo_phone_idle">Yn Segur</string>
+    <string name="radioInfo_phone_ringing">Yn canu</string>
+    <string name="radioInfo_phone_offhook">Galwad ar y Gweill</string>
     <string name="radioInfo_data_disconnected">Heb gysylltu</string>
+    <string name="radioInfo_data_connecting">Yn cysylltu</string>
     <string name="radioInfo_data_connected">Wedi cysylltu</string>
+    <string name="radioInfo_data_suspended">Wedi\'i atal</string>
     <string name="radioInfo_unknown">Anhysybys</string>
+    <string name="radioInfo_display_packets">pkts</string>
+    <string name="radioInfo_display_bytes">beitiau</string>
+    <string name="radioInfo_display_dbm">dBm</string>
+    <string name="radioInfo_display_asu">asu</string>
+    <string name="radioInfo_lac">LAC</string>
+    <string name="radioInfo_cid">CID</string>
+    <string name="radio_info_subid">SubId cyfredol:</string>
+    <string name="radio_info_dds">SubId y SIM data rhagosodedig:</string>
+    <string name="radio_info_dl_kbps">Cyflymder Lawrlwytho (kb/e):</string>
+    <string name="radio_info_ul_kbps">Cyflymder Uwchlwytho (kb/e):</string>
+    <string name="radio_info_signal_location_label">Cell Location Info (deprecated):</string>
+    <string name="radio_info_cell_info_refresh_rate">Cell Info Refresh Rate:</string>
+    <string name="radio_info_cellinfo_label">All Cell Measurement Info:</string>
+    <string name="radio_info_gprs_service_label">Gwasanaeth Data:</string>
+    <string name="radio_info_roaming_label">Crwydro:</string>
+    <string name="radio_info_imei_label">IMEI:</string>
+    <string name="radio_info_imsi_label">IMSI:</string>
+    <string name="radio_info_call_redirect_label">Ailgyfeirio Galwadau:</string>
+    <string name="radio_info_ppp_resets_label">Nifer o Droeon Ailosod PPP ers Gychwyn:</string>
+    <string name="radio_info_current_network_label">Rhwydwaith Cyfredol:</string>
+    <string name="radio_info_ppp_received_label">Data a Dderbyniwyd:</string>
+    <string name="radio_info_gsm_service_label">Gwasanaeth Llais:</string>
+    <string name="radio_info_signal_strength_label">Cryfder Signal:</string>
+    <string name="radio_info_call_status_label">Statws Galwad Llais:</string>
+    <string name="radio_info_ppp_sent_label">Data a Anfonwyd:</string>
+    <string name="radio_info_message_waiting_label">Neges yn Disgwyl:</string>
+    <string name="radio_info_phone_number_label">Rhif Ffôn:</string>
+    <string name="radio_info_band_mode_label">Dewis Band Radio</string>
+    <string name="radio_info_voice_network_type_label">Math y Rhwydwaith Llais:</string>
+    <string name="radio_info_data_network_type_label">Math y Rhwydwaith Data:</string>
+    <string name="phone_index_label">Dewis mynegai\'r ffôn</string>
+    <string name="radio_info_set_perferred_label">Gosod pa Fath o Rwydwaith i\'w Ffafrio:</string>
+    <string name="radio_info_ping_hostname_v4">Ping Hostname(www.google.com) IPv4:</string>
+    <string name="radio_info_ping_hostname_v6">Ping Hostname(www.google.com) IPv6:</string>
+    <string name="radio_info_http_client_test">Prawf Cleient HTTP:</string>
+    <string name="ping_test_label">Rhedeg Prawf Ping</string>
+    <string name="radio_info_smsc_label">SMSC:</string>
     <string name="radio_info_smsc_update_label">Diweddaru</string>
+    <string name="radio_info_smsc_refresh_label">Ail-lwytho</string>
+    <string name="radio_info_toggle_dns_check_label">Toglo Gwiriad DNS</string>
+    <string name="oem_radio_info_label">Gwybodaeth/Gosodiadau penodol i OEM</string>
+    <string name="radio_info_endc_available">EN-DC Ar gael:</string>
     <string name="radio_info_dcnr_restricted">DCNR Wedi\'i Rwystro:</string>
+    <string name="radio_info_nr_available">NR Ar Gael:</string>
+    <string name="radio_info_nr_state">Statws NR:</string>
+    <string name="radio_info_nr_frequency">Amlder NR:</string>
+    <string name="band_mode_title">Gosod Modd Band Radio</string>
+    <string name="band_mode_loading">Yn Llwytho Rhestr Bandiau\u2026</string>
+    <string name="band_mode_set">Gosod</string>
+    <string name="band_mode_failed">Aflwyddiannus</string>
+    <string name="band_mode_succeeded">Llwyddiannus</string>
+    <string name="phone_info_label" product="tablet">Gwybodaeth y llechen</string>
+    <string name="phone_info_label" product="default">Gwybodaeth y ffôn</string>
     <string name="carrier_provisioning">Gwybodaeth Darpariaeth Darparwr</string>
+    <string name="trigger_carrier_provisioning">Sbarduno Darpariaeth Darparwr</string>
 </resources>
