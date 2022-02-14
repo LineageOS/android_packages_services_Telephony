@@ -700,8 +700,6 @@ public class ServiceStateProvider extends ContentProvider {
     /* package */ static ServiceState getLocationRedactedServiceState(ServiceState serviceState) {
         ServiceState ss =
                 serviceState.createLocationInfoSanitizedCopy(true /*removeCoarseLocation*/);
-        // TODO(b/188061647): remove the additional redaction once it is fixed in SS
-        ss.setCdmaSystemAndNetworkId(ServiceState.UNKNOWN_ID, ServiceState.UNKNOWN_ID);
         return ss;
     }
 }
