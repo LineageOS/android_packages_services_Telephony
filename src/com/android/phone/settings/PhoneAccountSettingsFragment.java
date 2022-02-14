@@ -174,6 +174,7 @@ public class PhoneAccountSettingsFragment extends PreferenceFragment
      */
     @Override
     public boolean onAccountSelected(AccountSelectionPreference pref, PhoneAccountHandle account) {
+        Log.d(LOG_TAG, String.format("onAccountSelected:  pref=[%s], account=[%s]", pref, account));
         if (pref == mDefaultOutgoingAccount) {
             mTelecomManager.setUserSelectedOutgoingPhoneAccount(account);
             return true;
