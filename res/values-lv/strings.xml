@@ -637,16 +637,8 @@
     <string name="phone_in_ecm_notification_title" msgid="6825016389926367946">"Ārkārtas atzvana režīms"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="653972232922670335">"Datu savienojums ir atspējots."</string>
     <string name="phone_in_ecm_notification_complete_time" msgid="7341624337163082759">"Datu savienojums nebūs pieejams līdz plkst. <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
-    <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="5425906903766466743">
-      <item quantity="zero">Tālrunī <xliff:g id="COUNT_1">%s</xliff:g> minūtes būs aktivizēts ārkārtas atzvana režīms. Šajā režīmā nevar izmantot lietotnes, kurās tiek lietots datu savienojums. Vai vēlaties to aizvērt tūlīt?</item>
-      <item quantity="one">Tālrunī <xliff:g id="COUNT_1">%s</xliff:g> minūti būs aktivizēts ārkārtas atzvana režīms. Šajā režīmā nevar izmantot lietotnes, kurās tiek lietots datu savienojums. Vai vēlaties to aizvērt tūlīt?</item>
-      <item quantity="other">Tālrunī <xliff:g id="COUNT_1">%s</xliff:g> minūtes būs aktivizēts ārkārtas atzvana režīms. Šajā režīmā nevar izmantot lietotnes, kurās tiek lietots datu savienojums. Vai vēlaties to aizvērt tūlīt?</item>
-    </plurals>
-    <plurals name="alert_dialog_not_avaialble_in_ecm" formatted="false" msgid="1152682528741457004">
-      <item quantity="zero">Atlasītā darbība nav pieejama ārkārtas atzvana režīmā. Šis režīms tālrunī būs aktivizēts <xliff:g id="COUNT_1">%s</xliff:g> minūtes. Vai vēlaties to aizvērt tūlīt?</item>
-      <item quantity="one">Atlasītā darbība nav pieejama ārkārtas atzvana režīmā. Šis režīms tālrunī būs aktivizēts <xliff:g id="COUNT_1">%s</xliff:g> minūti. Vai vēlaties to aizvērt tūlīt?</item>
-      <item quantity="other">Atlasītā darbība nav pieejama ārkārtas atzvana režīmā. Šis režīms tālrunī būs aktivizēts <xliff:g id="COUNT_1">%s</xliff:g> minūtes. Vai vēlaties to aizvērt tūlīt?</item>
-    </plurals>
+    <!-- format error in translation for alert_dialog_exit_ecm (7661603870224398025) -->
+    <!-- format error in translation for alert_dialog_not_avaialble_in_ecm (8717711120099503279) -->
     <string name="alert_dialog_in_ecm_call" msgid="1207545603149771978">"Atlasītā darbība nav pieejama, veicot ārkārtas izsaukumu."</string>
     <string name="progress_dialog_exiting_ecm" msgid="9159080081676927217">"Notiek iziešana no ārkārtas atzvana režīma"</string>
     <string name="alert_dialog_yes" msgid="3532525979632841417">"Jā"</string>
@@ -654,11 +646,7 @@
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"Noraidīt"</string>
     <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"Tālrunis atrodas ārkārtas atzvana režīmā."</string>
     <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"Līdz plkst. <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
-    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
-      <item quantity="zero">Tālrunis atradīsies ārkārtas atzvana režīmā <xliff:g id="COUNT_1">%s</xliff:g> minūtes.\nVai vēlaties iziet tūlīt?</item>
-      <item quantity="one">Tālrunis atradīsies ārkārtas atzvana režīmā <xliff:g id="COUNT_1">%s</xliff:g> minūti.\nVai vēlaties iziet tūlīt?</item>
-      <item quantity="other">Tālrunis atradīsies ārkārtas atzvana režīmā <xliff:g id="COUNT_1">%s</xliff:g> minūtes.\nVai vēlaties iziet tūlīt?</item>
-    </plurals>
+    <!-- format error in translation for alert_dialog_exit_ecm_without_data_restriction_hint (7549850847524907932) -->
     <string name="voicemail_provider" msgid="4158806657253745294">"Pakalpojums"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"Iestatīšana"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;Nav iestatīts&gt;"</string>

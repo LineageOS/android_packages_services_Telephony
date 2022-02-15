@@ -411,7 +411,7 @@
     <string name="enable_disable_multi_category" msgid="5958248155437940625">"Multicategoria"</string>
     <string name="multi_category_enable" msgid="4531915767817483960">"Multicategoria activada"</string>
     <string name="multi_category_disable" msgid="6325934413701238104">"Multicategoria desactivada"</string>
-    <string name="network_recommended" msgid="3444321100580250926">" (recomanat)"</string>
+    <string name="network_recommended" msgid="3444321100580250926">" (opció recomanada)"</string>
     <string name="network_lte" msgid="7206879277095094280">"LTE (opció recomanada)"</string>
     <string name="network_4G" msgid="6800527815504223913">"4G (opció recomanada)"</string>
     <string name="network_global" msgid="3289646154407617631">"Global"</string>
@@ -637,14 +637,8 @@
     <string name="phone_in_ecm_notification_title" msgid="6825016389926367946">"Mode de devolució de trucada d\'emergència"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="653972232922670335">"Connexió de dades desactivada"</string>
     <string name="phone_in_ecm_notification_complete_time" msgid="7341624337163082759">"No hi haurà connexió de dades fins a les <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
-    <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="5425906903766466743">
-      <item quantity="other">El telèfon estarà en mode de devolució de trucades d\'emergència durant <xliff:g id="COUNT_1">%s</xliff:g> minuts. Durant aquest temps, no es podrà utilitzar cap aplicació que faci servir una connexió de dades. Vols sortir ara?</item>
-      <item quantity="one">El telèfon estarà en mode de devolució de trucades d\'emergència durant <xliff:g id="COUNT_0">%s</xliff:g> minut. Durant aquest temps, no es podrà utilitzar cap aplicació que faci servir una connexió de dades. Vols sortir ara?</item>
-    </plurals>
-    <plurals name="alert_dialog_not_avaialble_in_ecm" formatted="false" msgid="1152682528741457004">
-      <item quantity="other">L\'acció seleccionada no està disponible amb el mode de devolució de trucades d\'emergència. El telèfon tindrà aquest mode activat durant <xliff:g id="COUNT_1">%s</xliff:g> minuts. Vols sortir ara?</item>
-      <item quantity="one">L\'acció seleccionada no està disponible amb el mode de devolució de trucades d\'emergència. El telèfon tindrà aquest mode activat durant <xliff:g id="COUNT_0">%s</xliff:g> minut. Vols sortir ara?</item>
-    </plurals>
+    <string name="alert_dialog_exit_ecm" msgid="7661603870224398025">"{count,plural, =1{El telèfon estarà en mode de devolució de trucada d\'emergència durant 1 minut. Mentre estigui en aquest mode, no es podran fer servir aplicacions que utilitzin una connexió de dades. En vols sortir ara?}other{El telèfon estarà en mode de devolució de trucada d\'emergència durant %s minuts. Mentre estigui en aquest mode, no es podran fer servir aplicacions que utilitzin una connexió de dades. En vols sortir ara?}}"</string>
+    <string name="alert_dialog_not_avaialble_in_ecm" msgid="8717711120099503279">"{count,plural, =1{L\'acció seleccionada no està disponible mentre tens activat el mode de devolució de trucada d\'emergència. El telèfon estarà en aquest mode durant 1 minut. En vols sortir ara?}other{L\'acció seleccionada no està disponible mentre tens activat el mode de devolució de trucada d\'emergència. El telèfon estarà en aquest mode durant %s minuts. En vols sortir ara?}}"</string>
     <string name="alert_dialog_in_ecm_call" msgid="1207545603149771978">"L\'acció seleccionada no està disponible en una trucada d\'emergència."</string>
     <string name="progress_dialog_exiting_ecm" msgid="9159080081676927217">"S\'està sortint del mode de devolució de trucades d\'emergència"</string>
     <string name="alert_dialog_yes" msgid="3532525979632841417">"Sí"</string>
@@ -652,10 +646,7 @@
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"Ignora"</string>
     <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"El telèfon està en el mode de devolució de trucada d\'emergència"</string>
     <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"Fins a les <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
-    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
-      <item quantity="other">El telèfon estarà en el mode de devolució de trucada d\'emergència durant <xliff:g id="COUNT_1">%s</xliff:g> minuts.\nVols sortir-ne ara?</item>
-      <item quantity="one">El telèfon estarà en el mode de devolució de trucada d\'emergència durant <xliff:g id="COUNT_0">%s</xliff:g> minut.\nVols sortir-ne ara?</item>
-    </plurals>
+    <string name="alert_dialog_exit_ecm_without_data_restriction_hint" msgid="7549850847524907932">"{count,plural, =1{El telèfon estarà en el mode de devolució de trucada d\'emergència durant 1 minut.\nEn vols sortir ara?}other{El telèfon estarà en el mode de devolució de trucada d\'emergència durant %s minuts.\nEn vols sortir ara?}}"</string>
     <string name="voicemail_provider" msgid="4158806657253745294">"Servei"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"Configuració"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;No definit&gt;"</string>
@@ -857,7 +848,7 @@
     <string name="radio_info_ims_feature_status_unavailable" msgid="8930391136839759778">"No disponible"</string>
     <string name="radio_info_ims_reg_status" msgid="25582845222446390">"Registre de MI: <xliff:g id="STATUS">%1$s</xliff:g>\nVeu per LTE: <xliff:g id="AVAILABILITY_0">%2$s</xliff:g>\nVeu per Wi-Fi: <xliff:g id="AVAILABILITY_1">%3$s</xliff:g>\nVideotrucades: <xliff:g id="AVAILABILITY_2">%4$s</xliff:g>\nInterfície d\'UT: <xliff:g id="AVAILABILITY_3">%5$s</xliff:g>"</string>
     <string name="radioInfo_service_in" msgid="45753418231446400">"En servei"</string>
-    <string name="radioInfo_service_out" msgid="287972405416142312">"Sense servei"</string>
+    <string name="radioInfo_service_out" msgid="287972405416142312">"Fora de servei"</string>
     <string name="radioInfo_service_emergency" msgid="4763879891415016848">"Només trucades d\'emergència"</string>
     <string name="radioInfo_service_off" msgid="3456583511226783064">"Senyal mòbil desactivat"</string>
     <string name="radioInfo_roaming_in" msgid="3156335577793145965">"Itinerància"</string>

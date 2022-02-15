@@ -58,10 +58,10 @@ import com.android.internal.telephony.IccCardConstants;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.PhoneFactory;
-import com.android.internal.telephony.PhoneSwitcher;
 import com.android.internal.telephony.RIL;
 import com.android.internal.telephony.SubscriptionController;
 import com.android.internal.telephony.d2d.Communicator;
+import com.android.internal.telephony.data.PhoneSwitcher;
 import com.android.internal.telephony.imsphone.ImsExternalCallTracker;
 import com.android.internal.telephony.imsphone.ImsPhone;
 import com.android.internal.telephony.imsphone.ImsPhoneConnection;
@@ -500,7 +500,7 @@ public class TelephonyConnectionService extends ConnectionService {
         IntentFilter intentFilter = new IntentFilter(
                 TelecomManager.ACTION_TTY_PREFERRED_MODE_CHANGED);
         registerReceiver(mTtyBroadcastReceiver, intentFilter,
-                android.Manifest.permission.MODIFY_PHONE_STATE, null);
+                android.Manifest.permission.MODIFY_PHONE_STATE, null, Context.RECEIVER_EXPORTED);
     }
 
     @Override

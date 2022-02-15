@@ -637,14 +637,8 @@
     <string name="phone_in_ecm_notification_title" msgid="6825016389926367946">"Stilling fyrir svarhringingu neyðarsímtala"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="653972232922670335">"Slökkt á gagnatengingu"</string>
     <string name="phone_in_ecm_notification_complete_time" msgid="7341624337163082759">"Engin gagnatenging þangað til <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
-    <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="5425906903766466743">
-      <item quantity="one">Síminn verður í stillingu fyrir svarhringingu neyðarsímtala í <xliff:g id="COUNT_1">%s</xliff:g> mínútu. Þegar hann er í þessari stillingu er ekki hægt að nota nein forrit sem krefjast gagnatengingar. Viltu hætta núna?</item>
-      <item quantity="other">Síminn verður í stillingu fyrir svarhringingu neyðarsímtala í <xliff:g id="COUNT_1">%s</xliff:g> mínútur. Þegar hann er í þessari stillingu er ekki hægt að nota nein forrit sem krefjast gagnatengingar. Viltu hætta núna?</item>
-    </plurals>
-    <plurals name="alert_dialog_not_avaialble_in_ecm" formatted="false" msgid="1152682528741457004">
-      <item quantity="one">Þessi aðgerð er ekki í boði þegar síminn er í stillingu fyrir svarhringingu neyðarsímtala. Síminn verður í þessari stillingu í <xliff:g id="COUNT_1">%s</xliff:g> mínútu. Viltu hætta núna?</item>
-      <item quantity="other">Þessi aðgerð er ekki í boði þegar síminn er í stillingu fyrir svarhringingu neyðarsímtala. Síminn verður í þessari stillingu í <xliff:g id="COUNT_1">%s</xliff:g> mínútur. Viltu hætta núna?</item>
-    </plurals>
+    <!-- format error in translation for alert_dialog_exit_ecm (7661603870224398025) -->
+    <!-- format error in translation for alert_dialog_not_avaialble_in_ecm (8717711120099503279) -->
     <string name="alert_dialog_in_ecm_call" msgid="1207545603149771978">"Þessi aðgerð er ekki í boði í neyðarsímtali."</string>
     <string name="progress_dialog_exiting_ecm" msgid="9159080081676927217">"Fer úr stillingu fyrir svarhringingu neyðarsímtala"</string>
     <string name="alert_dialog_yes" msgid="3532525979632841417">"Já"</string>
@@ -652,10 +646,7 @@
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"Hunsa"</string>
     <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"Síminn er í stillingu fyrir svarhringingu neyðarsímtala"</string>
     <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"Til <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
-    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
-      <item quantity="one">Síminn verður í stillingu fyrir svarhringingu neyðarsímtala í <xliff:g id="COUNT_1">%s</xliff:g> mínútu.\nViltu hætta núna?</item>
-      <item quantity="other">Síminn verður í stillingu fyrir svarhringingu neyðarsímtala í <xliff:g id="COUNT_1">%s</xliff:g> mínútur.\nViltu hætta núna?</item>
-    </plurals>
+    <!-- format error in translation for alert_dialog_exit_ecm_without_data_restriction_hint (7549850847524907932) -->
     <string name="voicemail_provider" msgid="4158806657253745294">"Þjónusta"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"Uppsetning"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;Ekki valið&gt;"</string>

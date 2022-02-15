@@ -619,7 +619,7 @@
     <string name="ota_skip_activation_dialog_title" msgid="7666611236789203797">"ಸಕ್ರಿಯಗೊಳಿಸುವುದನ್ನು ಸ್ಕಿಪ್‌ ಮಾಡುವುದೇ?"</string>
     <string name="ota_skip_activation_dialog_message" msgid="6691722887019708713">"ನೀವು ಸಕ್ರಿಯಗೊಳಿಸುವುದನ್ನು ಸ್ಕಿಪ್‌ ಮಾಡಿದರೆ, ನೀವು ಕರೆಗಳನ್ನು ಮಾಡಲು ಅಥವಾ ಮೊಬೈಲ್‌ ಡೇಟಾ ನೆಟ್‌ವರ್ಕ್‌ಗಳಿಗೆ ಸಂಪರ್ಕಗೊಳಿಸಲು ಸಾಧ್ಯವಾಗುವುದಿಲ್ಲ (ಆದರೂ ನೀವು ವೈ-ಫೈ ನೆಟ್‌ವರ್ಕ್‌ಗಳಿಗೆ ಸಂಪರ್ಕಗೊಳಿಸಬಹುದು). ನಿಮ್ಮ ಫೋನ್ ಅನ್ನು ನೀವು ಸಕ್ರಿಯಗೊಳಿಸುವವರೆಗೂ, ನೀವು ಅದನ್ನು ಪ್ರತಿಬಾರಿ ಆನ್‌ ಮಾಡಿದಾಗಲೆಲ್ಲಾ ಅದನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಲು ನಿಮಗೆ ತಿಳಿಸಲಾಗುತ್ತದೆ."</string>
     <string name="ota_skip_activation_dialog_skip_label" msgid="5908029466817825633">"ಸ್ಕಿಪ್"</string>
-    <string name="ota_activate" msgid="7939695753665438357">"ಸಕ್ರಿಯಗೊಳಿಸು"</string>
+    <string name="ota_activate" msgid="7939695753665438357">"ಸಕ್ರಿಯಗೊಳಿಸಿ"</string>
     <string name="ota_title_activate_success" msgid="1272135024761004889">"ಫೋನ್‌ ಸಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ."</string>
     <string name="ota_title_problem_with_activation" msgid="7019745985413368726">"ಸಕ್ರಿಯಗೊಳಿಸುವಲ್ಲಿ ಸಮಸ್ಯೆ"</string>
     <string name="ota_listen" msgid="2772252405488894280">"ಸಕ್ರಿಯಗೊಳಿಸುವಿಕೆ ಪೂರ್ಣಗೊಂಡಿದೆ ಎಂಬುದು ನಿಮ್ಮ ಕಿವಿಗೆ ಬೀಳುವ ತನಕ ಧ್ವನಿ ಸೂಚನೆಗಳನ್ನು ಅನುಸರಿಸಿ."</string>
@@ -637,14 +637,8 @@
     <string name="phone_in_ecm_notification_title" msgid="6825016389926367946">"ತುರ್ತು ಕಾಲ್‌ಬ್ಯಾಕ್‌ ಮೋಡ್‌"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="653972232922670335">"ಡೇಟಾ ಸಂಪರ್ಕ ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ"</string>
     <string name="phone_in_ecm_notification_complete_time" msgid="7341624337163082759">"<xliff:g id="COMPLETETIME">%s</xliff:g> ರವರೆಗೆ ಯಾವುದೇ ಡೇಟಾ ಸಂಪರ್ಕವಿಲ್ಲ"</string>
-    <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="5425906903766466743">
-      <item quantity="one">ಪೋನ್‌ <xliff:g id="COUNT_1">%s</xliff:g> ನಿಮಿಷಗಳ ಕಾಲ ತುರ್ತು ಮರಳಿ ಕರೆಮಾಡು ಮೋಡ್‌ನಲ್ಲಿರುತ್ತದೆ. ಈ ಮೋಡ್‌ನಲ್ಲಿರುವಾಗ ಯಾವುದೇ ಅಪ್ಲಿಕೇಶನ್‌ಗಳನ್ನು ಡೇಟಾ ಸಂಪರ್ಕವನ್ನು ಬಳಸಿಕೊಂಡು ಬಳಸಲು ಸಾಧ್ಯವಾಗುವುದಿಲ್ಲ. ನೀವು ಇದೀಗ ನಿರ್ಗಮಿಸಲು ಬಯಸುವಿರಾ?</item>
-      <item quantity="other">ಪೋನ್‌ <xliff:g id="COUNT_1">%s</xliff:g> ನಿಮಿಷಗಳ ಕಾಲ ತುರ್ತು ಮರಳಿ ಕರೆಮಾಡು ಮೋಡ್‌ನಲ್ಲಿರುತ್ತದೆ. ಈ ಮೋಡ್‌ನಲ್ಲಿರುವಾಗ ಯಾವುದೇ ಅಪ್ಲಿಕೇಶನ್‌ಗಳನ್ನು ಡೇಟಾ ಸಂಪರ್ಕವನ್ನು ಬಳಸಿಕೊಂಡು ಬಳಸಲು ಸಾಧ್ಯವಾಗುವುದಿಲ್ಲ. ನೀವು ಇದೀಗ ನಿರ್ಗಮಿಸಲು ಬಯಸುವಿರಾ?</item>
-    </plurals>
-    <plurals name="alert_dialog_not_avaialble_in_ecm" formatted="false" msgid="1152682528741457004">
-      <item quantity="one">ತುರ್ತು ಮರಳಿ ಕರೆಮಾಡು ಮೋಡ್‌ನಲ್ಲಿರುವಾಗ ಆಯ್ಕೆಮಾಡಿದ ಕ್ರಿಯೆಯು ಲಭ್ಯವಿರುವುದಿಲ್ಲ. ಫೋನ್‌ <xliff:g id="COUNT_1">%s</xliff:g> ನಿಮಿಷಗಳ ಕಾಲ ಈ ಮೋಡ್‌ನಲ್ಲಿರುತ್ತದೆ. ನೀವು ಇದೀಗ ನಿರ್ಗಮಿಸಲು ಬಯಸುವಿರಾ?</item>
-      <item quantity="other">ತುರ್ತು ಮರಳಿ ಕರೆಮಾಡು ಮೋಡ್‌ನಲ್ಲಿರುವಾಗ ಆಯ್ಕೆಮಾಡಿದ ಕ್ರಿಯೆಯು ಲಭ್ಯವಿರುವುದಿಲ್ಲ. ಫೋನ್‌ <xliff:g id="COUNT_1">%s</xliff:g> ನಿಮಿಷಗಳ ಕಾಲ ಈ ಮೋಡ್‌ನಲ್ಲಿರುತ್ತದೆ. ನೀವು ಇದೀಗ ನಿರ್ಗಮಿಸಲು ಬಯಸುವಿರಾ?</item>
-    </plurals>
+    <!-- format error in translation for alert_dialog_exit_ecm (7661603870224398025) -->
+    <!-- format error in translation for alert_dialog_not_avaialble_in_ecm (8717711120099503279) -->
     <string name="alert_dialog_in_ecm_call" msgid="1207545603149771978">"ತುರ್ತು ಕರೆಯಲ್ಲಿರುವಾಗ ಆಯ್ಕೆಮಾಡಿದ ಕ್ರಿಯೆಯು ಲಭ್ಯವಿರುವುದಿಲ್ಲ."</string>
     <string name="progress_dialog_exiting_ecm" msgid="9159080081676927217">"ತುರ್ತು ಕಾಲ್‌ಬ್ಯಾಕ್‌ ಮೋಡ್‌ನಿಂದ ನಿರ್ಗಮಿಸಲಾಗುತ್ತಿದೆ"</string>
     <string name="alert_dialog_yes" msgid="3532525979632841417">"ಹೌದು"</string>
@@ -652,10 +646,7 @@
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"ವಜಾಗೊಳಿಸಿ"</string>
     <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"ಫೋನ್‌‌, ತುರ್ತು ಕಾಲ್‌ಬ್ಯಾಕ್ ಮೋಡ್‌ನಲ್ಲಿದೆ"</string>
     <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"<xliff:g id="COMPLETETIME">%s</xliff:g> ವರೆಗೆ"</string>
-    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
-      <item quantity="one">ಫೋನ್‌‌ <xliff:g id="COUNT_1">%s</xliff:g> ನಿಮಿಷಗಳವರೆಗೆ ತುರ್ತು ಕಾಲ್‌ಬ್ಯಾಕ್ ಮೋಡ್‌ನಲ್ಲಿರುತ್ತದೆ.\n ನೀವು ಈಗಲೇ ನಿರ್ಗಮಿಸಲು ಬಯಸುತ್ತೀರಾ?</item>
-      <item quantity="other">ಫೋನ್‌‌ <xliff:g id="COUNT_1">%s</xliff:g> ನಿಮಿಷಗಳವರೆಗೆ ತುರ್ತು ಕಾಲ್‌ಬ್ಯಾಕ್ ಮೋಡ್‌ನಲ್ಲಿರುತ್ತದೆ.\n ನೀವು ಈಗಲೇ ನಿರ್ಗಮಿಸಲು ಬಯಸುತ್ತೀರಾ?</item>
-    </plurals>
+    <!-- format error in translation for alert_dialog_exit_ecm_without_data_restriction_hint (7549850847524907932) -->
     <string name="voicemail_provider" msgid="4158806657253745294">"ಸೇವೆ"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"ಸೆಟಪ್"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;ಹೊಂದಿಸಿಲ್ಲ&gt;"</string>

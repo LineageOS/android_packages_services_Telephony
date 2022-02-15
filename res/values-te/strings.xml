@@ -393,9 +393,9 @@
     <string name="enable_disable_retail_directory" msgid="9095153426757081972">"రీటైల్ డైరెక్టరీ"</string>
     <string name="retail_directory_enable" msgid="2532176568755452171">"రీటైల్ డైరెక్టరీ ప్రారంభించబడింది"</string>
     <string name="retail_directory_disable" msgid="7242451210736299193">"రీటైల్ డైరెక్టరీ నిలిపివేయబడింది"</string>
-    <string name="enable_disable_advertisements" msgid="8704125663718797151">"బిజినెస్ ప్రకటనలు"</string>
-    <string name="advertisements_enable" msgid="8651409664217899145">"బిజినెస్ ప్రకటనలు ప్రారంభించబడ్డాయి"</string>
-    <string name="advertisements_disable" msgid="2999957360508271492">"బిజినెస్ ప్రకటనలు నిలిపివేయబడ్డాయి"</string>
+    <string name="enable_disable_advertisements" msgid="8704125663718797151">"అడ్వర్టయిజ్‌మెంట్‌లు"</string>
+    <string name="advertisements_enable" msgid="8651409664217899145">"అడ్వర్టయిజ్‌మెంట్‌లు ఎనేబుల్ చేయబడ్డాయి"</string>
+    <string name="advertisements_disable" msgid="2999957360508271492">"అడ్వర్టయిజ్‌మెంట్‌లు డిజేబుల్ చేయబడ్డాయి"</string>
     <string name="enable_disable_stock_quotes" msgid="631498357725951825">"స్టాక్ కోట్‌లు"</string>
     <string name="stock_quotes_enable" msgid="5104318195579771947">"స్టాక్ కోట్‌లు ప్రారంభించబడ్డాయి"</string>
     <string name="stock_quotes_disable" msgid="3126423481704498278">"స్టాక్ కోట్‌లు నిలిపివేయబడ్డాయి"</string>
@@ -470,7 +470,7 @@
     <string name="adding_fdn_contact" msgid="3112531600824361259">"ఫిక్స్‌డ్ డయలింగ్ నంబర్‌ను జోడిస్తోంది..."</string>
     <string name="fdn_contact_added" msgid="2840016151693394596">"ఫిక్స్‌డ్ డయలింగ్ నంబర్ జోడించబడింది."</string>
     <string name="edit_fdn_contact" msgid="6030829994819587408">"ఫిక్స్‌డ్ డయలింగ్ నంబర్‌ను ఎడిట్ చేయండి"</string>
-    <string name="updating_fdn_contact" msgid="6989341376868227150">"ఫిక్స్‌డ్ డయలింగ్ నంబర్‌ను నవీకరిస్తోంది..."</string>
+    <string name="updating_fdn_contact" msgid="6989341376868227150">"ఫిక్స్‌డ్ డయలింగ్ నంబర్‌ను అప్‌డేట్ చేస్తోంది..."</string>
     <string name="fdn_contact_updated" msgid="6876330243323118937">"ఫిక్స్‌డ్ డయలింగ్ నంబర్ నవీకరించబడింది."</string>
     <string name="delete_fdn_contact" msgid="7027405651994507077">"ఫిక్స్‌డ్ డయలింగ్ నంబర్‌ను తొలగించండి"</string>
     <string name="deleting_fdn_contact" msgid="6872320570844460428">"ఫిక్స్‌డ్ డయలింగ్ నంబర్‌ను తొలగిస్తోంది..."</string>
@@ -589,7 +589,7 @@
     <string name="importSimEntry" msgid="3892354284082689894">"దిగుమతి చేయి"</string>
     <string name="importAllSimEntries" msgid="2628391505643564007">"అన్నింటినీ దిగుమతి చేయి"</string>
     <string name="importingSimContacts" msgid="4995457122107888932">"SIM కాంటాక్ట్‌లను దిగుమతి చేస్తోంది"</string>
-    <string name="importToFDNfromContacts" msgid="5068664870738407341">"పరిచయాల నుండి దిగుమతి చేయి"</string>
+    <string name="importToFDNfromContacts" msgid="5068664870738407341">"కాంటాక్ట్‌ల నుండి దిగుమతి చేయి"</string>
     <string name="singleContactImportedMsg" msgid="3619804066300998934">"కాంటాక్ట్ దిగుమతి చేయబడింది"</string>
     <string name="failedToImportSingleContactMsg" msgid="228095510489830266">"కాంటాక్ట్‌ను దిగుమతి చేయడంలో విఫలమైంది"</string>
     <string name="hac_mode_title" msgid="4127986689621125468">"వినికిడి సహాయక సాధనాలు"</string>
@@ -619,7 +619,7 @@
     <string name="ota_skip_activation_dialog_title" msgid="7666611236789203797">"సక్రియం చేయడాన్ని దాటవేయాలా?"</string>
     <string name="ota_skip_activation_dialog_message" msgid="6691722887019708713">"మీరు సక్రియం చేయడాన్ని దాటవేస్తే, కాల్స్‌ చేయలేరు లేదా మొబైల్ డేటా నెట్‌వర్క్‌లకు కనెక్ట్ చేయలేరు (మీరు Wi-Fi నెట్‌వర్క్‌లకు కనెక్ట్ చేయగలిగినప్పటికీ). మీరు మీ ఫోన్‌ను సక్రియం చేసేవరకు, దాన్ని ప్రారంభించే ప్రతిసారీ సక్రియం చేయమని మిమ్మల్ని అడుగుతుంది."</string>
     <string name="ota_skip_activation_dialog_skip_label" msgid="5908029466817825633">"దాటవేయి"</string>
-    <string name="ota_activate" msgid="7939695753665438357">"సక్రియం చేయి"</string>
+    <string name="ota_activate" msgid="7939695753665438357">"యాక్టివేట్ చేయండి"</string>
     <string name="ota_title_activate_success" msgid="1272135024761004889">"ఫోన్ సక్రియం చేయబడింది."</string>
     <string name="ota_title_problem_with_activation" msgid="7019745985413368726">"సక్రియం చేయడంలో సమస్య"</string>
     <string name="ota_listen" msgid="2772252405488894280">"సక్రియం చేయడం పూర్తయిందని మీకు వినిపించేవరకు చదివి వినిపించే సూచనలను అనుసరించండి."</string>
@@ -637,14 +637,8 @@
     <string name="phone_in_ecm_notification_title" msgid="6825016389926367946">"అత్యవసర కాల్‌బ్యాక్ మోడ్"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="653972232922670335">"డేటా కనెక్షన్ నిలిపివేయబడింది"</string>
     <string name="phone_in_ecm_notification_complete_time" msgid="7341624337163082759">"<xliff:g id="COMPLETETIME">%s</xliff:g> వరకు డేటా కనెక్షన్ ఉండదు"</string>
-    <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="5425906903766466743">
-      <item quantity="other">ఫోన్ <xliff:g id="COUNT_1">%s</xliff:g> నిమిషాల పాటు అత్యవసర కాల్‌బ్యాక్ మోడ్‌లో ఉంటుంది. ఈ మోడ్‌లో ఉన్నప్పుడు, డేటా కనెక్షన్‌ను ఉపయోగించే యాప్‌లు ఏవీ ఉపయోగించబడవు. మీరు ఇప్పుడు నిష్క్రమించాలనుకుంటున్నారా?</item>
-      <item quantity="one">ఫోన్ <xliff:g id="COUNT_0">%s</xliff:g> నిమిషం పాటు అత్యవసర కాల్‌బ్యాక్ మోడ్‌లో ఉంటుంది. ఈ మోడ్‌లో ఉన్నప్పుడు, డేటా కనెక్షన్‌ను ఉపయోగించే యాప్‌లు ఏవీ ఉపయోగించబడవు. మీరు ఇప్పుడు నిష్క్రమించాలనుకుంటున్నారా?</item>
-    </plurals>
-    <plurals name="alert_dialog_not_avaialble_in_ecm" formatted="false" msgid="1152682528741457004">
-      <item quantity="other">అత్యవసర కాల్‌బ్యాక్ మోడ్‌లో ఉన్నప్పుడు, ఎంచుకున్న చర్య అందుబాటులో లేదు. ఫోన్ <xliff:g id="COUNT_1">%s</xliff:g> నిమిషాల పాటు ఈ మోడ్‌లో ఉంటుంది. మీరు ఇప్పుడు నిష్క్రమించాలనుకుంటున్నారా?</item>
-      <item quantity="one">అత్యవసర కాల్‌బ్యాక్ మోడ్‌లో ఉన్నప్పుడు, ఎంచుకున్న చర్య అందుబాటులో లేదు. ఫోన్ <xliff:g id="COUNT_0">%s</xliff:g> నిమిషం పాటు ఈ మోడ్‌లో ఉంటుంది. మీరు ఇప్పుడు నిష్క్రమించాలనుకుంటున్నారా?</item>
-    </plurals>
+    <string name="alert_dialog_exit_ecm" msgid="7661603870224398025">"{count,plural, =1{ఫోన్ ఒక నిమిషం పాటు ఎమర్జెన్సీ కాల్‌బ్యాక్ మోడ్‌లో ఉంటుంది. ఈ మోడ్‌లో ఉన్నప్పుడు డేటా కనెక్షన్‌ను ఉపయోగించే యాప్‌లు ఏవీ ఉపయోగించబడవు. మీరు ఇప్పుడు నిష్క్రమించాలనుకుంటున్నారా?}other{ఫోన్ %s నిమిషాల పాటు ఎమర్జెన్సీ కాల్‌బ్యాక్ మోడ్‌లో ఉంటుంది. ఈ మోడ్‌లో ఉన్నప్పుడు డేటా కనెక్షన్‌ను ఉపయోగించే యాప్‌లు ఏవీ ఉపయోగించబడవు. మీరు ఇప్పుడు నిష్క్రమించాలనుకుంటున్నారా?}}"</string>
+    <string name="alert_dialog_not_avaialble_in_ecm" msgid="8717711120099503279">"{count,plural, =1{ఎమర్జెన్సీ కాల్‌బ్యాక్ మోడ్‌లో ఉన్నప్పుడు ఎంచుకున్న చర్య అందుబాటులో ఉండదు. ఫోన్ ఈ మోడ్‌లో ఒక నిమిషం పాటు ఉంటుంది. మీరు ఇప్పుడే నిష్క్రమించాలనుకుంటున్నారా?}other{ఎమర్జెన్సీ కాల్‌బ్యాక్ మోడ్‌లో ఉన్నప్పుడు ఎంచుకున్న చర్య అందుబాటులో ఉండదు. ఫోన్ ఈ మోడ్‌లో %s నిమిషాల పాటు ఉంటుంది. మీరు ఇప్పుడే నిష్క్రమించాలనుకుంటున్నారా?}}"</string>
     <string name="alert_dialog_in_ecm_call" msgid="1207545603149771978">"ఎంచుకున్న చర్య అత్యవసర కాల్‌లో ఉన్నప్పుడు అందుబాటులో ఉండదు."</string>
     <string name="progress_dialog_exiting_ecm" msgid="9159080081676927217">"అత్యవసర కాల్‌బ్యాక్ మోడ్ నుండి నిష్క్రమిస్తోంది"</string>
     <string name="alert_dialog_yes" msgid="3532525979632841417">"అవును"</string>
@@ -652,10 +646,7 @@
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"తీసివేయి"</string>
     <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"ఫోన్ అత్యవసర కాల్‌బ్యాక్ మోడ్‌లో ఉంది"</string>
     <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"<xliff:g id="COMPLETETIME">%s</xliff:g> వరకు"</string>
-    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
-      <item quantity="other">ఫోన్ అత్యవసర కాల్‌బ్యాక్ మోడ్‌లో <xliff:g id="COUNT_1">%s</xliff:g> నిమిషాల పాటు ఉంటుంది.\n మీరు ఇప్పుడే నిష్క్రమించాలనుకుంటున్నారా?</item>
-      <item quantity="one">ఫోన్ అత్యవసర కాల్‌బ్యాక్ మోడ్‌లో <xliff:g id="COUNT_0">%s</xliff:g> నిమిషం పాటు ఉంటుంది. \n మీరు ఇప్పుడే నిష్క్రమించాలనుకుంటున్నారా?</item>
-    </plurals>
+    <string name="alert_dialog_exit_ecm_without_data_restriction_hint" msgid="7549850847524907932">"{count,plural, =1{ఫోన్ ఒక నిమిషం పాటు ఎమర్జెన్సీ కాల్‌బ్యాక్ మోడ్‌లో ఉంటుంది.\nమీరు ఇప్పుడే నిష్క్రమించాలనుకుంటున్నారా?}other{ఫోన్ %s నిమిషాల పాటు ఎమర్జెన్సీ కాల్‌బ్యాక్ మోడ్‌లో ఉంటుంది.\nమీరు ఇప్పుడే నిష్క్రమించాలనుకుంటున్నారా?}}"</string>
     <string name="voicemail_provider" msgid="4158806657253745294">"సేవ"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"సెటప్"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;సెట్ చేయలేదు&gt;"</string>

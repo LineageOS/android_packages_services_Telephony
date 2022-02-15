@@ -637,16 +637,8 @@
     <string name="phone_in_ecm_notification_title" msgid="6825016389926367946">"Mod de apelare inversă de urgență"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="653972232922670335">"Conexiune de date dezactivată"</string>
     <string name="phone_in_ecm_notification_complete_time" msgid="7341624337163082759">"Nicio conexiune de date până la <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
-    <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="5425906903766466743">
-      <item quantity="few">Telefonul va fi în modul Apelare inversă de urgență pentru <xliff:g id="COUNT_1">%s</xliff:g> minute. Când telefonul este în acest mod, nu se poate folosi nicio aplicație care necesită o conexiune de date. Doriți să ieșiți acum?</item>
-      <item quantity="other">Telefonul va fi în modul Apelare inversă de urgență pentru <xliff:g id="COUNT_1">%s</xliff:g> de minute. Când telefonul este în acest mod, nu se poate folosi nicio aplicație care necesită o conexiune de date. Doriți să ieșiți acum?</item>
-      <item quantity="one">Telefonul va fi în modul Apelare inversă de urgență pentru <xliff:g id="COUNT_0">%s</xliff:g> minut. Când telefonul este în acest mod, nu se poate folosi nicio aplicație care necesită o conexiune de date. Doriți să ieșiți acum?</item>
-    </plurals>
-    <plurals name="alert_dialog_not_avaialble_in_ecm" formatted="false" msgid="1152682528741457004">
-      <item quantity="few">Acțiunea selectată nu este disponibilă când telefonul este în modul Apelare inversă de urgență. Telefonul va fi în acest mod pentru <xliff:g id="COUNT_1">%s</xliff:g> minute. Doriți să ieșiți acum?</item>
-      <item quantity="other">Acțiunea selectată nu este disponibilă când telefonul este în modul Apelare inversă de urgență. Telefonul va fi în acest mod pentru <xliff:g id="COUNT_1">%s</xliff:g> de minute. Doriți să ieșiți acum?</item>
-      <item quantity="one">Acțiunea selectată nu este disponibilă când telefonul este în modul Apelare inversă de urgență. Telefonul va fi în acest mod pentru <xliff:g id="COUNT_0">%s</xliff:g> minut. Doriți să ieșiți acum?</item>
-    </plurals>
+    <!-- format error in translation for alert_dialog_exit_ecm (7661603870224398025) -->
+    <!-- format error in translation for alert_dialog_not_avaialble_in_ecm (8717711120099503279) -->
     <string name="alert_dialog_in_ecm_call" msgid="1207545603149771978">"Acțiunea selectată nu este disponibilă în timpul efectuării unui apel de urgență."</string>
     <string name="progress_dialog_exiting_ecm" msgid="9159080081676927217">"Se iese din modul Apelare inversă de urgență"</string>
     <string name="alert_dialog_yes" msgid="3532525979632841417">"Da"</string>
@@ -654,11 +646,7 @@
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"Renunțați"</string>
     <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"Telefonul va fi în modul Apelare inversă de urgență"</string>
     <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"Până la <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
-    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
-      <item quantity="few">Telefonul va fi în modul Apelare inversă de urgență timp de <xliff:g id="COUNT_1">%s</xliff:g> minute.\nDoriți să ieșiți acum?</item>
-      <item quantity="other">Telefonul va fi în modul Apelare inversă de urgență timp de <xliff:g id="COUNT_1">%s</xliff:g> de minute.\nDoriți să ieșiți acum?</item>
-      <item quantity="one">Telefonul va fi în modul Apelare inversă de urgență timp de <xliff:g id="COUNT_0">%s</xliff:g> minut.\nDoriți să ieșiți acum?</item>
-    </plurals>
+    <!-- format error in translation for alert_dialog_exit_ecm_without_data_restriction_hint (7549850847524907932) -->
     <string name="voicemail_provider" msgid="4158806657253745294">"Serviciu"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"Configurare"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;Nesetat&gt;"</string>
