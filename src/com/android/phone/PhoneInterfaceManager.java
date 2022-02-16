@@ -72,6 +72,8 @@ import android.sysprop.TelephonyProperties;
 import android.telecom.PhoneAccount;
 import android.telecom.PhoneAccountHandle;
 import android.telecom.TelecomManager;
+import android.telephony.AccessNetworkConstants;
+import android.telephony.ActivityStatsTechSpecificInfo;
 import android.telephony.Annotation.ApnType;
 import android.telephony.Annotation.ThermalMitigationResult;
 import android.telephony.CallForwardingInfo;
@@ -786,15 +788,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     uiccPort = getUiccPortFromRequest(request);
                     if (uiccPort == null) {
                         loge("iccCloseLogicalChannel: No UICC");
-                        // before this feature is enabled, this API should only return false if
-                        // the operation fails instead of throwing runtime exception for
-                        // backward-compatibility.
-                        if (Compatibility.isChangeEnabled(ICC_CLOSE_CHANNEL_EXCEPTION_ON_FAILURE)) {
-                            request.result = new IllegalArgumentException(
+                        request.result = new IllegalArgumentException(
                                     "iccCloseLogicalChannel: No UICC");
-                        } else {
-                            request.result = false;
-                        }
                         notifyRequester(request);
                     } else {
                         onCompleted = obtainMessage(EVENT_CLOSE_CHANNEL_DONE, request);
@@ -825,13 +820,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                         } else {
                             loge("iccCloseLogicalChannel: Unknown exception");
                         }
-                        // before this feature is enabled, this API should only return false if
-                        // the operation fails instead of throwing runtime exception for
-                        // backward-compatibility.
-                        if (Compatibility.isChangeEnabled(ICC_CLOSE_CHANNEL_EXCEPTION_ON_FAILURE))
-                            request.result = (exception != null) ? exception :
-                                    new IllegalStateException(
-                                            "exception from modem to close iccLogical Channel");
+                        request.result = (exception != null) ? exception :
+                                new IllegalStateException(
+                                        "exception from modem to close iccLogical Channel");
                     }
                     notifyRequester(request);
                     break;
@@ -1417,43 +1408,39 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     ar = (AsyncResult) msg.obj;
                     request = (MainThreadRequest) ar.userObj;
                     ResultReceiver result = (ResultReceiver) request.argument;
-
-                    ModemActivityInfo ret = null;
                     int error = 0;
+                    if (mLastModemActivityInfo == null) {
+                        mLastModemActivitySpecificInfo = new ActivityStatsTechSpecificInfo[1];
+                        mLastModemActivitySpecificInfo[0] =
+                                new ActivityStatsTechSpecificInfo(
+                                        0,
+                                        0,
+                                        new int[ModemActivityInfo.getNumTxPowerLevels()],
+                                        0);
+                        mLastModemActivityInfo =
+                                new ModemActivityInfo(0, 0, 0, mLastModemActivitySpecificInfo);
+                    }
+
                     if (ar.exception == null && ar.result != null) {
                         // Update the last modem activity info and the result of the request.
                         ModemActivityInfo info = (ModemActivityInfo) ar.result;
                         if (isModemActivityInfoValid(info)) {
-                            int[] mergedTxTimeMs = new int[ModemActivityInfo.getNumTxPowerLevels()];
-                            int[] txTimeMs = info.getTransmitTimeMillis();
-                            int[] lastModemTxTimeMs = mLastModemActivityInfo
-                                    .getTransmitTimeMillis();
-                            for (int i = 0; i < mergedTxTimeMs.length; i++) {
-                                mergedTxTimeMs[i] = txTimeMs[i] + lastModemTxTimeMs[i];
-                            }
-                            mLastModemActivityInfo.setTimestamp(info.getTimestampMillis());
-                            mLastModemActivityInfo.setSleepTimeMillis(info.getSleepTimeMillis()
-                                    + mLastModemActivityInfo.getSleepTimeMillis());
-                            mLastModemActivityInfo.setIdleTimeMillis(info.getIdleTimeMillis()
-                                    + mLastModemActivityInfo.getIdleTimeMillis());
-                            mLastModemActivityInfo.setTransmitTimeMillis(mergedTxTimeMs);
-                            mLastModemActivityInfo.setReceiveTimeMillis(
-                                    info.getReceiveTimeMillis()
-                                            + mLastModemActivityInfo.getReceiveTimeMillis());
+                            mergeModemActivityInfo(info);
                         }
-                        ret = new ModemActivityInfo(mLastModemActivityInfo.getTimestampMillis(),
-                                mLastModemActivityInfo.getSleepTimeMillis(),
-                                mLastModemActivityInfo.getIdleTimeMillis(),
-                                mLastModemActivityInfo.getTransmitTimeMillis(),
-                                mLastModemActivityInfo.getReceiveTimeMillis());
+                        mLastModemActivityInfo =
+                                new ModemActivityInfo(
+                                        mLastModemActivityInfo.getTimestampMillis(),
+                                        mLastModemActivityInfo.getSleepTimeMillis(),
+                                        mLastModemActivityInfo.getIdleTimeMillis(),
+                                        mLastModemActivitySpecificInfo);
+
                     } else {
                         if (ar.result == null) {
                             loge("queryModemActivityInfo: Empty response");
                             error = TelephonyManager.ModemActivityInfoException
                                     .ERROR_INVALID_INFO_RECEIVED;
                         } else if (ar.exception instanceof CommandException) {
-                            loge("queryModemActivityInfo: CommandException: " +
-                                    ar.exception);
+                            loge("queryModemActivityInfo: CommandException: " + ar.exception);
                             error = TelephonyManager.ModemActivityInfoException
                                     .ERROR_MODEM_RESPONSE_ERROR;
                         } else {
@@ -1463,8 +1450,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                         }
                     }
                     Bundle bundle = new Bundle();
-                    if (ret != null) {
-                        bundle.putParcelable(TelephonyManager.MODEM_ACTIVITY_RESULT_KEY, ret);
+                    if (mLastModemActivityInfo != null) {
+                        bundle.putParcelable(
+                                TelephonyManager.MODEM_ACTIVITY_RESULT_KEY,
+                                mLastModemActivityInfo);
                     } else {
                         bundle.putInt(TelephonyManager.EXCEPTION_RESULT_KEY, error);
                     }
@@ -5298,6 +5287,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     private boolean iccCloseLogicalChannelWithPermission(Phone phone,
             IccLogicalChannelRequest request) {
+        // before this feature is enabled, this API should only return false if
+        // the operation fails instead of throwing runtime exception for
+        // backward-compatibility.
+        final boolean shouldThrowExceptionOnFailure = CompatChanges.isChangeEnabled(
+                ICC_CLOSE_CHANNEL_EXCEPTION_ON_FAILURE, Binder.getCallingUid());
         final long identity = Binder.clearCallingIdentity();
         try {
             if (request.channel < 0) {
@@ -5308,7 +5302,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             Boolean success = false;
             if (result instanceof RuntimeException) {
                 // if there is an exception returned, throw from the binder thread here.
-                throw (RuntimeException) result;
+                if (shouldThrowExceptionOnFailure) {
+                    throw (RuntimeException) result;
+                } else {
+                    return false;
+                }
             } else if (result instanceof Boolean) {
                 success = (Boolean) result;
             } else {
@@ -7823,8 +7821,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 mApp.getAttributionTag());
     }
 
-    private final ModemActivityInfo mLastModemActivityInfo =
-            new ModemActivityInfo(0, 0, 0, new int[ModemActivityInfo.getNumTxPowerLevels()], 0);
+    private ActivityStatsTechSpecificInfo[] mLastModemActivitySpecificInfo = null;
+    private ModemActivityInfo mLastModemActivityInfo = null;
 
     /**
      * Responds to the ResultReceiver with the {@link android.telephony.ModemActivityInfo} object
@@ -7862,6 +7860,91 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             && (info.getIdleTimeMillis() <= activityDurationMs)
             && (info.getReceiveTimeMillis() <= activityDurationMs)
             && (totalTxTimeMs <= activityDurationMs));
+    }
+
+    private void updateLastModemActivityInfo(ModemActivityInfo info, int rat, int freq) {
+        int[] mergedTxTimeMs = new int [ModemActivityInfo.getNumTxPowerLevels()];
+        int[] txTimeMs = info.getTransmitTimeMillis(rat, freq);
+        int[] lastModemTxTimeMs = mLastModemActivityInfo.getTransmitTimeMillis(rat, freq);
+
+        for (int lvl = 0; lvl < mergedTxTimeMs.length; lvl++) {
+            mergedTxTimeMs[lvl] = txTimeMs[lvl] + lastModemTxTimeMs[lvl];
+        }
+
+        mLastModemActivityInfo.setTransmitTimeMillis(rat, freq, mergedTxTimeMs);
+        mLastModemActivityInfo.setReceiveTimeMillis(
+                rat,
+                freq,
+                info.getReceiveTimeMillis(rat, freq)
+                        + mLastModemActivityInfo.getReceiveTimeMillis(rat, freq));
+    }
+
+    private void updateLastModemActivityInfo(ModemActivityInfo info, int rat) {
+        int[] mergedTxTimeMs = new int [ModemActivityInfo.getNumTxPowerLevels()];
+        int[] txTimeMs = info.getTransmitTimeMillis(rat);
+        int[] lastModemTxTimeMs = mLastModemActivityInfo.getTransmitTimeMillis(rat);
+
+        for (int lvl = 0; lvl < mergedTxTimeMs.length; lvl++) {
+            mergedTxTimeMs[lvl] = txTimeMs[lvl] + lastModemTxTimeMs[lvl];
+        }
+        mLastModemActivityInfo.setTransmitTimeMillis(rat, mergedTxTimeMs);
+        mLastModemActivityInfo.setReceiveTimeMillis(
+                rat,
+                info.getReceiveTimeMillis(rat) + mLastModemActivityInfo.getReceiveTimeMillis(rat));
+    }
+
+   /**
+    * Merge this ModemActivityInfo with mLastModemActivitySpecificInfo
+    * @param info recent ModemActivityInfo
+    */
+    private void mergeModemActivityInfo(ModemActivityInfo info) {
+        List<ActivityStatsTechSpecificInfo> merged = new ArrayList<>();
+        ActivityStatsTechSpecificInfo mDeltaSpecificInfo;
+        boolean matched;
+        for (int i = 0; i < info.getSpecificInfoLength(); i++) {
+            matched = false;
+            int rat = info.getSpecificInfoRat(i);
+            int freq = info.getSpecificInfoFrequencyRange(i);
+            //Check each ActivityStatsTechSpecificInfo in this ModemActivityInfo for new rat returns
+            //Add a new ActivityStatsTechSpecificInfo if is a new rat, and merge with the original
+            //if it already exists
+            for (int j = 0; j < mLastModemActivitySpecificInfo.length; j++) {
+                if (rat == mLastModemActivityInfo.getSpecificInfoRat(j) && !matched) {
+                    //Merged based on frequency range (MMWAVE vs SUB6) for 5G
+                    if (rat == AccessNetworkConstants.AccessNetworkType.NGRAN) {
+                        if (freq == mLastModemActivityInfo.getSpecificInfoFrequencyRange(j)) {
+                            updateLastModemActivityInfo(info, rat, freq);
+                            matched = true;
+                        }
+                    } else {
+                        updateLastModemActivityInfo(info, rat);
+                        matched = true;
+                    }
+                }
+            }
+
+            if (!matched) {
+                mDeltaSpecificInfo =
+                        new ActivityStatsTechSpecificInfo(
+                                rat,
+                                freq,
+                                info.getTransmitTimeMillis(rat, freq),
+                                (int) info.getReceiveTimeMillis(rat, freq));
+                merged.addAll(Arrays.asList(mDeltaSpecificInfo));
+            }
+        }
+        merged.addAll(Arrays.asList(mLastModemActivitySpecificInfo));
+        mLastModemActivitySpecificInfo =
+                new ActivityStatsTechSpecificInfo[merged.size()];
+        merged.toArray(mLastModemActivitySpecificInfo);
+
+        mLastModemActivityInfo.setTimestamp(info.getTimestampMillis());
+        mLastModemActivityInfo.setSleepTimeMillis(
+                info.getSleepTimeMillis()
+                + mLastModemActivityInfo.getSleepTimeMillis());
+        mLastModemActivityInfo.setIdleTimeMillis(
+                info.getIdleTimeMillis()
+                + mLastModemActivityInfo.getIdleTimeMillis());
     }
 
     /**
