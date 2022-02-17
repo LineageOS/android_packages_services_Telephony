@@ -244,6 +244,22 @@ public class TelephonyRcsService {
     }
 
     /**
+     * Verifies the subId supplied is the active subId for the slotId specified.
+     * If we have not processed a CARRIER_CONFIG_CHANGED indication for this subscription yet,
+     * either the subscription is not active or we have not finished setting up the feature yet.
+     * @param slotId The slotId we are verifying
+     * @param subId The subId we are verifying
+     * @return true if the subId is the active subId we are tracking for the slotId specified.
+     */
+    public boolean verifyActiveSubId(int slotId, int subId) {
+        synchronized (mLock) {
+            int currId = mSlotToAssociatedSubIds.get(slotId,
+                    SubscriptionManager.INVALID_SUBSCRIPTION_ID);
+            return subId == currId;
+        }
+    }
+
+    /**
      * ACTION_CARRIER_CONFIG_CHANGED was received by this service for a specific slot.
      * @param slotId The slotId associated with the event.
      * @param subId The subId associated with the event. May cause the subId associated with the

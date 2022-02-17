@@ -19,6 +19,7 @@ package com.android.services.telephony.rcs;
 import android.annotation.AnyThread;
 import android.content.Context;
 import android.net.Uri;
+import android.telephony.SubscriptionManager;
 import android.telephony.ims.ImsException;
 import android.telephony.ims.ImsReasonInfo;
 import android.telephony.ims.aidl.IImsCapabilityCallback;
@@ -400,6 +401,17 @@ public class RcsFeatureController {
      */
     public void getRegistrationState(Consumer<Integer> callback) {
         callback.accept(mImsRcsRegistrationHelper.getImsRegistrationState());
+    }
+
+    /**
+     * @return the subscription ID that is currently associated with this RCS feature.
+     */
+    public int getAssociatedSubId() {
+        RcsFeatureManager manager = getFeatureManager();
+        if (manager != null) {
+            return manager.getSubId();
+        }
+        return SubscriptionManager.INVALID_SUBSCRIPTION_ID;
     }
 
     private void updateCapabilities() {
