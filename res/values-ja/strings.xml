@@ -44,10 +44,10 @@
     <string name="pause_prompt_yes" msgid="8184132073048369575">"はい"</string>
     <string name="pause_prompt_no" msgid="2145264674774138579">"いいえ"</string>
     <string name="wild_prompt_str" msgid="5858910969703305375">"ワイルド文字を置換:"</string>
-    <string name="no_vm_number" msgid="6623853880546176930">"ボイスメール番号がありません"</string>
-    <string name="no_vm_number_msg" msgid="5165161462411372504">"SIMカードにボイスメールの番号がありません。"</string>
+    <string name="no_vm_number" msgid="6623853880546176930">"留守番電話の番号がありません"</string>
+    <string name="no_vm_number_msg" msgid="5165161462411372504">"SIMカードに留守番電話の番号がありません。"</string>
     <string name="add_vm_number_str" msgid="7368168964435881637">"番号を追加"</string>
-    <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"ボイスメール設定を変更できるのはメインユーザーのみに限られています。"</string>
+    <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"留守番電話の設定を変更できるのはメインユーザーのみに限られています。"</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"SIMカードロックを解除しました。デバイスのロックを解除しています..."</string>
     <string name="label_ndp" msgid="7617392683877410341">"SIM のネットワーク ロック解除 PIN"</string>
     <string name="label_phoneid" msgid="8775611434123577808">"携帯通信会社の SIM ロックがかかっています"</string>
@@ -77,8 +77,8 @@
     <string name="phone_accounts_all_calling_accounts_summary" msgid="2214134955430107240">"通話できるアカウントを選択"</string>
     <string name="wifi_calling" msgid="3650509202851355742">"Wi-Fi 通話"</string>
     <string name="connection_service_default_label" msgid="7332739049855715584">"組み込みの接続サービス"</string>
-    <string name="voicemail" msgid="7697769412804195032">"ボイスメール"</string>
-    <string name="voicemail_settings_with_label" msgid="4228431668214894138">"ボイスメール（<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>）"</string>
+    <string name="voicemail" msgid="7697769412804195032">"留守番電話"</string>
+    <string name="voicemail_settings_with_label" msgid="4228431668214894138">"留守番電話（<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>）"</string>
     <string name="voicemail_abbreviated" msgid="7746778673131551185">"VM:"</string>
     <string name="make_and_receive_calls" msgid="4868913166494621109">"通話の発着と着信"</string>
     <string name="smart_forwarding_settings_menu" msgid="8850429887958938540">"スマート転送"</string>
@@ -155,12 +155,12 @@
     <item msgid="6813323051965618926">"番号を非通知"</item>
     <item msgid="9150034130629852635">"番号を通知"</item>
   </string-array>
-    <string name="vm_changed" msgid="4739599044379692505">"ボイスメールの番号が変更されました。"</string>
+    <string name="vm_changed" msgid="4739599044379692505">"留守番電話の番号が変更されました。"</string>
     <string name="vm_change_failed" msgid="7877733929455763566">"ボイスメール番号を変更できませんでした。\nこの問題が続くようであれば携帯通信会社にお問い合わせください。"</string>
     <string name="fw_change_failed" msgid="9179241823460192148">"転送番号を変更できませんでした。\nこの問題が続くようであれば携帯通信会社にお問い合わせください。"</string>
     <string name="fw_get_in_vm_failed" msgid="2432678237218183844">"現在の転送先番号設定の取得と保存ができませんでした。\nかまわず新しい携帯通信会社に切り替えますか？"</string>
     <string name="no_change" msgid="3737264882821031892">"変更されていません。"</string>
-    <string name="sum_voicemail_choose_provider" msgid="6750824719081403773">"ボイスメールサービスを選択"</string>
+    <string name="sum_voicemail_choose_provider" msgid="6750824719081403773">"留守番電話サービスを選択"</string>
     <string name="voicemail_default" msgid="6427575113775462077">"携帯通信会社"</string>
     <string name="vm_change_pin_old_pin" msgid="7154951790929009241">"古い PIN"</string>
     <string name="vm_change_pin_new_pin" msgid="2656200418481288069">"新しい PIN"</string>
@@ -519,7 +519,7 @@
     <string name="pin2_unblocked" msgid="4481107908727789303">"PIN2はブロックされなくなりました"</string>
     <string name="pin2_error_exception" msgid="8116103864600823641">"ネットワークまたはSIMカードのエラー"</string>
     <string name="doneButton" msgid="7371209609238460207">"完了"</string>
-    <string name="voicemail_settings_number_label" msgid="1265118640154688162">"ボイスメールの番号"</string>
+    <string name="voicemail_settings_number_label" msgid="1265118640154688162">"留守番電話の番号"</string>
     <string name="card_title_dialing" msgid="8742182654254431781">"発信中"</string>
     <string name="card_title_redialing" msgid="18130232613559964">"リダイヤル中"</string>
     <string name="card_title_conf_call" msgid="901197309274457427">"グループ通話"</string>
@@ -528,10 +528,10 @@
     <string name="card_title_on_hold" msgid="9028319436626975207">"保留中"</string>
     <string name="card_title_hanging_up" msgid="814874106866647871">"通話終了"</string>
     <string name="card_title_in_call" msgid="8231896539567594265">"着信"</string>
-    <string name="notification_voicemail_title" msgid="3932876181831601351">"新しいボイスメール"</string>
-    <string name="notification_voicemail_title_count" msgid="2806950319222327082">"新しいボイスメール（<xliff:g id="COUNT">%d</xliff:g>）"</string>
+    <string name="notification_voicemail_title" msgid="3932876181831601351">"新しい留守番電話"</string>
+    <string name="notification_voicemail_title_count" msgid="2806950319222327082">"新しい留守番電話（<xliff:g id="COUNT">%d</xliff:g>）"</string>
     <string name="notification_voicemail_text_format" msgid="5720947141702312537">"<xliff:g id="VOICEMAIL_NUMBER">%s</xliff:g>にダイヤル"</string>
-    <string name="notification_voicemail_no_vm_number" msgid="3423686009815186750">"ボイスメールの番号が不明です"</string>
+    <string name="notification_voicemail_no_vm_number" msgid="3423686009815186750">"留守番電話の番号が不明です"</string>
     <string name="notification_network_selection_title" msgid="255595526707809121">"通信サービスなし"</string>
     <string name="notification_network_selection_text" msgid="553288408722427659">"選択したネットワーク（<xliff:g id="OPERATOR_NAME">%s</xliff:g>）は利用できません"</string>
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"通話を発信するには、モバイル ネットワークを ON にし、機内モードまたはバッテリー セーバー モードを OFF にしてください。"</string>
@@ -668,7 +668,7 @@
     <string name="description_dial_button" msgid="8614631902795087259">"発信"</string>
     <string name="description_dialpad_button" msgid="7395114120463883623">"ダイヤルパッドを表示"</string>
     <string name="pane_title_emergency_dialpad" msgid="3627372514638694401">"緊急通報ダイヤルパッド"</string>
-    <string name="voicemail_visual_voicemail_switch_title" msgid="6610414098912832120">"ビジュアルボイスメール"</string>
+    <string name="voicemail_visual_voicemail_switch_title" msgid="6610414098912832120">"ビジュアル留守番電話"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="7005128605986960003">"PIN の設定"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="4633077715231764435">"PIN の変更"</string>
     <string name="preference_category_ringtone" msgid="8787281191375434976">"着信音とバイブレーション"</string>
@@ -693,17 +693,17 @@
     <string name="callFailed_low_battery" msgid="4056828320214416182">"電池残量が低下したため、ビデオハングアウトが終了しました。"</string>
     <string name="callFailed_emergency_call_over_wfc_not_available" msgid="5944309590693432042">"この場所では Wi-Fi 通話による緊急通報はご利用いただけません。"</string>
     <string name="callFailed_wfc_service_not_available_in_this_location" msgid="3624536608369524988">"この場所では Wi-Fi 通話はご利用いただけません。"</string>
-    <string name="change_pin_title" msgid="3564254326626797321">"ボイスメール PIN の変更"</string>
+    <string name="change_pin_title" msgid="3564254326626797321">"留守番電話 PIN の変更"</string>
     <string name="change_pin_continue_label" msgid="5177011752453506371">"続行"</string>
     <string name="change_pin_cancel_label" msgid="2301711566758827936">"キャンセル"</string>
     <string name="change_pin_ok_label" msgid="6861082678817785330">"OK"</string>
     <string name="change_pin_enter_old_pin_header" msgid="853151335217594829">"古い PIN の確認"</string>
-    <string name="change_pin_enter_old_pin_hint" msgid="8801292976275169367">"続行するにはボイスメール PIN を入力してください。"</string>
+    <string name="change_pin_enter_old_pin_hint" msgid="8801292976275169367">"続行するには留守番電話 PIN を入力してください。"</string>
     <string name="change_pin_enter_new_pin_header" msgid="4739465616733486118">"新しい PIN の設定"</string>
     <string name="change_pin_enter_new_pin_hint" msgid="2326038476516364210">"PIN は <xliff:g id="MIN">%1$d</xliff:g>～<xliff:g id="MAX">%2$d</xliff:g> 桁にしてください。"</string>
     <string name="change_pin_confirm_pin_header" msgid="2606303906320705726">"PIN の確認"</string>
     <string name="change_pin_confirm_pins_dont_match" msgid="305164501222587215">"PIN が一致しません"</string>
-    <string name="change_pin_succeeded" msgid="2504705600693014403">"ボイスメール PIN を更新しました"</string>
+    <string name="change_pin_succeeded" msgid="2504705600693014403">"留守番電話 PIN を更新しました"</string>
     <string name="change_pin_system_error" msgid="7772788809875146873">"PIN を設定できません"</string>
     <string name="mobile_data_status_roaming_turned_off_subtext" msgid="6840673347416227054">"データ ローミングが OFF になっています"</string>
     <string name="mobile_data_status_roaming_turned_on_subtext" msgid="5615757897768777865">"データ ローミングが ON になっています"</string>
