@@ -17,11 +17,13 @@
 package com.android.services.telephony.rcs;
 
 import android.annotation.AnyThread;
+import android.annotation.NonNull;
 import android.content.Context;
 import android.net.Uri;
 import android.telephony.SubscriptionManager;
 import android.telephony.ims.ImsException;
 import android.telephony.ims.ImsReasonInfo;
+import android.telephony.ims.ImsRegistrationAttributes;
 import android.telephony.ims.aidl.IImsCapabilityCallback;
 import android.telephony.ims.aidl.IImsRegistrationCallback;
 import android.telephony.ims.stub.ImsRegistrationImplBase;
@@ -166,7 +168,7 @@ public class RcsFeatureController {
     private ImsRegistrationCallbackHelper.ImsRegistrationUpdate mRcsRegistrationUpdate = new
             ImsRegistrationCallbackHelper.ImsRegistrationUpdate() {
                 @Override
-                public void handleImsRegistered(int imsRadioTech) {
+                public void handleImsRegistered(@NonNull ImsRegistrationAttributes attributes) {
                 }
 
                 @Override
@@ -174,7 +176,8 @@ public class RcsFeatureController {
                 }
 
                 @Override
-                public void handleImsUnregistered(ImsReasonInfo imsReasonInfo) {
+                public void handleImsUnregistered(ImsReasonInfo imsReasonInfo,
+                        int suggestedAction) {
                 }
 
                 @Override
