@@ -4031,16 +4031,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             throws RemoteException {
         TelephonyPermissions.enforceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
                 mApp, subId, "registerImsRegistrationCallback");
-
-        if (!ImsManager.isImsSupportedOnDevice(mApp)) {
-            throw new ServiceSpecificException(ImsException.CODE_ERROR_UNSUPPORTED_OPERATION,
-                    "IMS not available on device.");
-        }
         final long token = Binder.clearCallingIdentity();
         try {
-            int slotId = getSlotIndexOrException(subId);
-            verifyImsMmTelConfiguredOrThrow(slotId);
-            ImsManager.getInstance(mApp, slotId).addRegistrationCallbackForSubscription(c, subId);
+            runUsingImsManagerOrThrow(subId, (ImsFunction<Void>) manager -> {
+                manager.addRegistrationCallbackForSubscription(c, subId);
+                return null;
+            });
         } catch (ImsException e) {
             throw new ServiceSpecificException(e.getCode());
         } finally {
@@ -4153,15 +4149,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             throws RemoteException {
         TelephonyPermissions.enforceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
                 mApp, subId, "registerMmTelCapabilityCallback");
-        if (!ImsManager.isImsSupportedOnDevice(mApp)) {
-            throw new ServiceSpecificException(ImsException.CODE_ERROR_UNSUPPORTED_OPERATION,
-                    "IMS not available on device.");
-        }
         final long token = Binder.clearCallingIdentity();
         try {
-            int slotId = getSlotIndexOrException(subId);
-            verifyImsMmTelConfiguredOrThrow(slotId);
-            ImsManager.getInstance(mApp, slotId).addCapabilitiesCallbackForSubscription(c, subId);
+            runUsingImsManagerOrThrow(subId, (ImsFunction<Void>) manager -> {
+                manager.addCapabilitiesCallbackForSubscription(c, subId);
+                return null;
+            });
         } catch (ImsException e) {
             throw new ServiceSpecificException(e.getCode());
         } finally {
@@ -4201,12 +4194,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         enforceReadPrivilegedPermission("isCapable");
         final long token = Binder.clearCallingIdentity();
         try {
-            int slotId = getSlotIndexOrException(subId);
-            verifyImsMmTelConfiguredOrThrow(slotId);
-            return ImsManager.getInstance(mApp, slotId).queryMmTelCapability(capability, regTech);
-        } catch (com.android.ims.ImsException e) {
-            Log.w(LOG_TAG, "IMS isCapable - service unavailable: " + e.getMessage());
-            return false;
+            return runUsingImsManagerOrThrow(subId,
+                    manager -> manager.queryMmTelCapability(capability, regTech));
         } catch (ImsException e) {
             Log.i(LOG_TAG, "isCapable: " + subId + " is inactive, returning false.");
             return false;
@@ -4243,28 +4232,19 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     public void isMmTelCapabilitySupported(int subId, IIntegerConsumer callback, int capability,
             int transportType) {
         enforceReadPrivilegedPermission("isMmTelCapabilitySupported");
-        if (!ImsManager.isImsSupportedOnDevice(mApp)) {
-            throw new ServiceSpecificException(ImsException.CODE_ERROR_UNSUPPORTED_OPERATION,
-                    "IMS not available on device.");
-        }
         final long token = Binder.clearCallingIdentity();
         try {
-            int slotId = getSlotIndex(subId);
-            if (slotId <= SubscriptionManager.INVALID_SIM_SLOT_INDEX) {
-                Log.w(LOG_TAG, "isMmTelCapabilitySupported: called with an inactive subscription '"
-                        + subId + "'");
-                throw new ServiceSpecificException(ImsException.CODE_ERROR_INVALID_SUBSCRIPTION);
-            }
-            verifyImsMmTelConfiguredOrThrow(slotId);
-            ImsManager.getInstance(mApp, slotId).isSupported(capability,
-                    transportType, aBoolean -> {
-                        try {
-                            callback.accept((aBoolean == null) ? 0 : (aBoolean ? 1 : 0));
-                        } catch (RemoteException e) {
-                            Log.w(LOG_TAG, "isMmTelCapabilitySupported: remote caller is not "
-                                    + "running. Ignore");
-                        }
-                    });
+            runUsingImsManagerOrThrow(subId, (ImsFunction<Void>) manager -> {
+                manager.isSupported(capability, transportType, aBoolean -> {
+                    try {
+                        callback.accept((aBoolean == null) ? 0 : (aBoolean ? 1 : 0));
+                    } catch (RemoteException e) {
+                        Log.w(LOG_TAG, "isMmTelCapabilitySupported: remote caller is not "
+                                        + "running. Ignore");
+                    }
+                });
+                return null;
+            });
         } catch (ImsException e) {
             throw new ServiceSpecificException(e.getCode());
         } finally {
@@ -4595,14 +4575,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            if (!isImsAvailableOnDevice()) {
-                throw new ServiceSpecificException(ImsException.CODE_ERROR_UNSUPPORTED_OPERATION,
-                        "IMS not available on device.");
-            }
-            int slotId = getSlotIndexOrException(subId);
-            verifyImsMmTelConfiguredOrThrow(slotId);
-            ImsManager.getInstance(mApp, slotId)
-                    .addProvisioningCallbackForSubscription(callback, subId);
+            runUsingImsManagerOrThrow(subId, (ImsFunction<Void>) manager -> {
+                manager.addProvisioningCallbackForSubscription(callback, subId);
+                return null;
+            });
         } catch (ImsException e) {
             throw new ServiceSpecificException(e.getCode());
         } finally {
@@ -4972,6 +4948,54 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 ImsFeature.FEATURE_MMTEL)) {
             throw new ImsException("This subscription does not support MMTEL over IMS",
                     ImsException.CODE_ERROR_UNSUPPORTED_OPERATION);
+        }
+    }
+
+    //
+
+    /**
+     * Functional interface for encapsulating IMS related commands that should be sent to
+     * ImsManager for processing.
+     * @param <V> The return type
+     */
+    private interface ImsFunction<V> {
+        V call(ImsManager manager) throws Exception;
+    }
+
+    /**
+     * Run the specified command on the ImsManager for the subscription specified or throw an
+     * {@link ImsException} if the IMS is not available for any reason.
+     * @param subId The subscription to use
+     * @param func The function to run on the given ImsManager instance.
+     * @param <V> The return type of the function
+     * @return The result of the evaluated command
+     * @throws ImsException if the IMS service is not available for any reason.
+     */
+    private <V> V runUsingImsManagerOrThrow(int subId, ImsFunction<V> func) throws ImsException {
+        if (!ImsManager.isImsSupportedOnDevice(mApp)) {
+            throw new ServiceSpecificException(ImsException.CODE_ERROR_UNSUPPORTED_OPERATION,
+                    "IMS not available on device.");
+        }
+        int slotId = getSlotIndexOrException(subId);
+        verifyImsMmTelConfiguredOrThrow(slotId);
+        ImsManager manager = ImsManager.getInstance(mApp, slotId);
+        if (manager.getSubId() != subId || !manager.isServiceReady()) {
+            Log.w(LOG_TAG, "getImsManagerForSubIdOrThrow: couldn't  resolve ImsManager, ready= "
+                    + manager.isServiceReady() + ", manager subId= " + manager.getSubId()
+                    + ", request subId= " + subId);
+            // if we have hit this point, getSlotIndexOrException has already checked that the subId
+            // is active for a phone, but ImsManager currently doesn't have the correct subId set or
+            // the ImsService has crashed/is not ready. The caller will have to wait for the service
+            // to be available before calling again.
+            throw new ImsException("The ImsService is not available for the subId specified.",
+                    ImsException.CODE_ERROR_SERVICE_UNAVAILABLE);
+        }
+        try {
+            return func.call(manager);
+        } catch (Exception e) {
+            // Some methods internally report RuntimeExceptions. Repackage those exceptions as well
+            // defined ImsExceptions.
+            throw new ImsException(e.getMessage(), ImsException.CODE_ERROR_SERVICE_UNAVAILABLE);
         }
     }
 
@@ -5950,26 +5974,19 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @Override
     public void getImsMmTelFeatureState(int subId, IIntegerConsumer callback) {
         enforceReadPrivilegedPermission("getImsMmTelFeatureState");
-        if (!ImsManager.isImsSupportedOnDevice(mApp)) {
-            throw new ServiceSpecificException(ImsException.CODE_ERROR_UNSUPPORTED_OPERATION,
-                    "IMS not available on device.");
-        }
         final long token = Binder.clearCallingIdentity();
         try {
-            int slotId = getSlotIndex(subId);
-            if (slotId <= SubscriptionManager.INVALID_SIM_SLOT_INDEX) {
-                Log.w(LOG_TAG, "getImsMmTelFeatureState: called with an inactive subscription '"
-                        + subId + "'");
-                throw new ServiceSpecificException(ImsException.CODE_ERROR_INVALID_SUBSCRIPTION);
-            }
-            verifyImsMmTelConfiguredOrThrow(slotId);
-            ImsManager.getInstance(mApp, slotId).getImsServiceState(anInteger -> {
-                try {
-                    callback.accept(anInteger == null ? ImsFeature.STATE_UNAVAILABLE : anInteger);
-                } catch (RemoteException e) {
-                    Log.w(LOG_TAG, "getImsMmTelFeatureState: remote caller is no longer running. "
-                            + "Ignore");
-                }
+            runUsingImsManagerOrThrow(subId, (ImsFunction<Void>) manager -> {
+                manager.getImsServiceState(anInteger -> {
+                    try {
+                        callback.accept(anInteger == null
+                                ? ImsFeature.STATE_UNAVAILABLE : anInteger);
+                    } catch (RemoteException e) {
+                        Log.w(LOG_TAG, "getImsMmTelFeatureState: remote caller is no longer "
+                                + "running. Ignore");
+                    }
+                });
+                return null;
             });
         } catch (ImsException e) {
             throw new ServiceSpecificException(e.getCode());
