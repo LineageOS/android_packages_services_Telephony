@@ -615,7 +615,7 @@
     <string name="ota_title_activate" msgid="4049645324841263423">"Aktivirajte telefon"</string>
     <string name="ota_touch_activate" msgid="838764494319694754">"Potrebno je da uputite poseban poziv da biste aktivirali uslugu svoj telefona. \n\nNakon što pritisnete dugme „Aktiviraj“, slušajte data uputstva da biste da biste aktivirali svoj telefon."</string>
     <string name="ota_hfa_activation_title" msgid="3300556778212729671">"Aktiviranje..."</string>
-    <string name="ota_hfa_activation_dialog_message" msgid="7921718445773342996">"Telefon aktivira uslugu mobilnog prenosa podataka.\n\nTo može da potraje i do 5 minuta."</string>
+    <string name="ota_hfa_activation_dialog_message" msgid="7921718445773342996">"Telefon aktivira uslugu mobilnih podataka.\n\nTo može da potraje i do 5 minuta."</string>
     <string name="ota_skip_activation_dialog_title" msgid="7666611236789203797">"Želite li da preskočite aktivaciju?"</string>
     <string name="ota_skip_activation_dialog_message" msgid="6691722887019708713">"Ako preskočite aktivaciju, ne možete da upućujete pozive ili da se povezujete sa mrežama za mobilni prenos podataka (iako možete da se povežete sa WiFi mrežama). Sve dok ne aktivirate svoj telefon, bićete upitani da to učinite svaki put kada ga uključite."</string>
     <string name="ota_skip_activation_dialog_skip_label" msgid="5908029466817825633">"Preskoči"</string>
