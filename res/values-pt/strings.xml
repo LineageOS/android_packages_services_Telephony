@@ -86,11 +86,11 @@
     <string name="voicemail_notifications_preference_title" msgid="7829238858063382977">"Notificações"</string>
     <string name="cell_broadcast_settings" msgid="8135324242541809924">"Transmissões de emergência"</string>
     <string name="call_settings" msgid="3677282690157603818">"Configurações de chamadas"</string>
-    <string name="additional_gsm_call_settings" msgid="1561980168685658846">"Configurações adicionais"</string>
-    <string name="additional_gsm_call_settings_with_label" msgid="7973920539979524908">"Configurações adicionais (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="sum_gsm_call_settings" msgid="7964692601608878138">"Configurações adicionais somente de chamada GSM"</string>
+    <string name="additional_gsm_call_settings" msgid="1561980168685658846">"Configurações avançadas"</string>
+    <string name="additional_gsm_call_settings_with_label" msgid="7973920539979524908">"Configurações avançadas (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
+    <string name="sum_gsm_call_settings" msgid="7964692601608878138">"Configurações avançadas somente de chamada GSM"</string>
     <string name="additional_cdma_call_settings" msgid="2178016561980611304">"Configurações de chamada CDMA adicionais"</string>
-    <string name="sum_cdma_call_settings" msgid="3185825305136993636">"Configurações adicionais somente de chamada CDMA"</string>
+    <string name="sum_cdma_call_settings" msgid="3185825305136993636">"Configurações avançadas somente de chamada CDMA"</string>
     <string name="labelNwService" msgid="6015891883487125120">"Configurações do serviço de rede"</string>
     <string name="labelCallerId" msgid="2090540744550903172">"Identificador de chamadas"</string>
     <string name="sum_loading_settings" msgid="434063780286688775">"Carregando configurações…"</string>

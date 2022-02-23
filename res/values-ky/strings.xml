@@ -341,7 +341,7 @@
     <string name="general_news_settings" msgid="2670499575962080411">"Жалпы жаңылыктар"</string>
     <string name="bf_news_settings" msgid="8571709425370794221">"Ишкердик жана каржы жаңылыктары"</string>
     <string name="sports_news_settings" msgid="2684364556989168438">"Спорт жаңылыктары"</string>
-    <string name="entertainment_news_settings" msgid="4228527702346305543">"Көңүл ачуу жаңылыктары"</string>
+    <string name="entertainment_news_settings" msgid="4228527702346305543">"Көңүл ачуу жаатындагы жаңылыктар"</string>
     <string name="enable_disable_local" msgid="7654175079979415572">"Жергиликтүү"</string>
     <string name="local_enable" msgid="790606890868710629">"Жергиликтүү жаңылыктар иштетилген"</string>
     <string name="local_disable" msgid="7649945293198602877">"Жергиликтүү жаңылыктар өчүрүлгөн"</string>
