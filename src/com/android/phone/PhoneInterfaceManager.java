@@ -33,7 +33,6 @@ import android.app.AppOpsManager;
 import android.app.PendingIntent;
 import android.app.compat.CompatChanges;
 import android.app.role.RoleManager;
-import android.compat.Compatibility;
 import android.compat.annotation.ChangeId;
 import android.compat.annotation.EnabledSince;
 import android.content.ComponentName;
@@ -6876,6 +6875,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @Override
     public int checkCarrierPrivilegesForPackageAnyPhone(String pkgName) {
         enforceReadPrivilegedPermission("checkCarrierPrivilegesForPackageAnyPhone");
+        return checkCarrierPrivilegesForPackageAnyPhoneWithPermission(pkgName);
+    }
+
+    private int checkCarrierPrivilegesForPackageAnyPhoneWithPermission(String pkgName) {
         if (TextUtils.isEmpty(pkgName)) {
             return TelephonyManager.CARRIER_PRIVILEGE_STATUS_NO_ACCESS;
         }
@@ -8831,7 +8834,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         } catch (SecurityException e) {
             // even without READ_PRIVILEGED_PHONE_STATE, we allow the call to continue if the caller
             // has carrier privileges on an active UICC
-            if (checkCarrierPrivilegesForPackageAnyPhone(callingPackage)
+            if (checkCarrierPrivilegesForPackageAnyPhoneWithPermission(callingPackage)
                         != TelephonyManager.CARRIER_PRIVILEGE_STATUS_HAS_ACCESS) {
                 throw new SecurityException("Caller does not have permission.");
             }
@@ -8949,7 +8952,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         } catch (SecurityException e) {
             // even without READ_PRIVILEGED_PHONE_STATE, we allow the call to continue if the caller
             // has carrier privileges on an active UICC
-            if (checkCarrierPrivilegesForPackageAnyPhone(callingPackage)
+            if (checkCarrierPrivilegesForPackageAnyPhoneWithPermission(callingPackage)
                     == TelephonyManager.CARRIER_PRIVILEGE_STATUS_HAS_ACCESS) {
                 hasReadPermission = true;
             }
