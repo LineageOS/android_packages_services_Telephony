@@ -14,6 +14,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.telecom.Connection;
 import android.telephony.CarrierConfigManager;
 import android.telephony.DisconnectCause;
@@ -25,6 +26,7 @@ import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.d2d.DtmfTransport;
 import com.android.internal.telephony.d2d.RtpTransport;
 import com.android.internal.telephony.imsphone.ImsPhoneConnection;
+import com.android.phone.PhoneGlobals;
 import com.android.phone.R;
 
 import org.junit.Before;
@@ -212,4 +214,47 @@ public class TelephonyConnectionTest {
             fail("refreshConferenceSupported threw ClassCastException");
         }
     }
+
+    /**
+     * Tests TelephonyConnection#getCarrierConfig never returns a null given all cases that can
+     * cause a potential null.
+     */
+    @Test
+    public void testGetCarrierConfigBehaviorWithNull() throws Exception {
+        TestTelephonyConnectionSimple c = new TestTelephonyConnectionSimple();
+
+        // case: return a valid carrier config (good case)
+        when(c.mPhoneGlobals.getCarrierConfigForSubId(c.getPhone().getSubId())).
+                thenReturn(CarrierConfigManager.getDefaultConfig());
+        assertNotNull(c.getCarrierConfig());
+
+        // case: PhoneGlobals.getInstance().getCarrierConfigForSubId(int) returns null
+        when(c.mPhoneGlobals.getCarrierConfigForSubId(c.getPhone().getSubId()))
+                .thenReturn(null);
+        assertNotNull(c.getCarrierConfig());
+
+        // case: phone is null
+        c.setMockPhone(null);
+        assertNull(c.getPhone());
+        assertNotNull(c.getCarrierConfig());
+    }
+
+    /**
+     * Tests the behavior of TelephonyConnection#isRttMergeSupported(@NonNull PersistableBundle).
+     * Note, the function should be able to handle an empty PersistableBundle and should NEVER
+     * receive a null object as denoted in by @NonNull annotation.
+     */
+    @Test
+    public void testIsRttMergeSupportedBehavior() {
+        TestTelephonyConnection c = new TestTelephonyConnection();
+        //  ensure isRttMergeSupported(PersistableBundle) does not throw NPE when given an Empty PB
+        assertFalse(c.isRttMergeSupported(new PersistableBundle()));
+
+        // simulate the passing situation
+        c.getCarrierConfigBundle().putBoolean(
+                CarrierConfigManager.KEY_ALLOW_MERGING_RTT_CALLS_BOOL,
+                true);
+        assertTrue(c.isRttMergeSupported(c.getCarrierConfig()));
+    }
+
 }
