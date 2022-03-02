@@ -28,6 +28,7 @@ import static android.provider.Telephony.ServiceStateTable.getUriForSubscription
 import static android.telephony.NetworkRegistrationInfo.REGISTRATION_STATE_HOME;
 
 import static com.android.phone.ServiceStateProvider.ENFORCE_LOCATION_PERMISSION_CHECK;
+import static com.android.phone.ServiceStateProvider.NETWORK_ID;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -40,6 +41,8 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.ArgumentMatchers.nullable;
 import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import android.Manifest;
@@ -332,11 +335,8 @@ public class ServiceStateProviderTest {
         setCanReadPrivilegedPhoneState(true);
         setLocationPermissions(false);
 
-        // NETWORK_ID is a location-sensitive column
-        String[] projection = new String[]{"network_id"};
-
         assertThrows(SecurityException.class,
-                () -> verifyServiceStateWithLocationColumns(mTestServiceState, projection));
+                () -> verifyServiceStateWithLocationColumns(mTestServiceState));
     }
 
     /**
@@ -345,7 +345,7 @@ public class ServiceStateProviderTest {
      */
     @Test
     @CoreCompatChangeRule.EnableCompatChanges({ENFORCE_LOCATION_PERMISSION_CHECK})
-    public void query_allColumn_enforceLoationEnabled_targetR_withLocation_getUnredacted() {
+    public void query_allColumn_enforceLocationEnabled_targetR_withLocation_getUnredacted() {
         setTargetSdkVersion(Build.VERSION_CODES.R);
         setLocationPermissions(true);
 
@@ -402,9 +402,24 @@ public class ServiceStateProviderTest {
                 mTestServiceState, true /*hasPermission*/);
     }
 
-    private void verifyServiceStateWithLocationColumns(ServiceState ss, String[] projection) {
-        try (Cursor cursor = mContentResolver.query(ServiceStateTable.CONTENT_URI, projection, null,
-                null)) {
+    /**
+     * Verify that when caller with targetSDK S+ has location permission and try to query
+     * location non-sensitive info, it should not get blamed.
+     */
+    @Test
+    @CoreCompatChangeRule.EnableCompatChanges({ENFORCE_LOCATION_PERMISSION_CHECK})
+    public void testQuery_noLocationBlamed_whenQueryNonLocationInfo_withPermission() {
+        setTargetSdkVersion(Build.VERSION_CODES.S);
+        setLocationPermissions(true);
+
+        verifyServiceStateWithPublicColumns(mTestServiceState, null /*projection*/);
+        verify(mAppOpsManager, never()).noteOpNoThrow(any(), anyInt(), any(), any(), any());
+    }
+
+    private void verifyServiceStateWithLocationColumns(ServiceState ss) {
+        // NETWORK_ID is a location-sensitive column
+        try (Cursor cursor = mContentResolver.query(ServiceStateTable.CONTENT_URI,
+                new String[]{NETWORK_ID}, null, null)) {
             assertNotNull(cursor);
         }
     }
