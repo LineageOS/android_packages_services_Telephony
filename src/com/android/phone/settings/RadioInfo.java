@@ -1049,6 +1049,8 @@ public class RadioInfo extends AppCompatActivity {
                 display = r.getString(R.string.radioInfo_service_in);
                 break;
             case ServiceState.STATE_OUT_OF_SERVICE:
+                display = r.getString(R.string.radioInfo_service_out);
+                break;
             case ServiceState.STATE_EMERGENCY_ONLY:
                 display = r.getString(R.string.radioInfo_service_emergency);
                 break;
