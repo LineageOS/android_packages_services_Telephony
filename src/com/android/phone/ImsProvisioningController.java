@@ -992,9 +992,6 @@ public class ImsProvisioningController {
             try {
                 // set key and value to vendor ImsService for MmTel
                 mMmTelFeatureListenersSlotMap.get(slotId).setProvisioningValue(key, value);
-
-                // notify provisioning status changed to ImsManager
-                updateImsServiceConfig(subId);
             } catch (NullPointerException e) {
                 loge("can not access MmTelFeatureListener with capability " + capability);
             }
@@ -1113,11 +1110,6 @@ public class ImsProvisioningController {
 
         // update and notify provisioning status changed capability and tech from key
         updateCapabilityTechFromKey(subId, key, value);
-
-        if (key != KEY_EAB_PROVISIONING_STATUS) {
-            // notify provisioning status changed to ImsManager
-            updateImsServiceConfig(subId);
-        }
 
         return retVal;
     }
@@ -1456,17 +1448,6 @@ public class ImsProvisioningController {
         }
 
         return isChanged;
-    }
-
-    private void updateImsServiceConfig(int subId) {
-        try {
-            ImsManager imsManager = mMmTelFeatureListenersSlotMap.get(getSlotId(subId))
-                    .getImsManager();
-            imsManager.updateImsServiceConfig();
-            log("updateImsServiceConfig");
-        } catch (NullPointerException e) {
-            loge("updateImsServiceConfig : ImsService not ready");
-        }
     }
 
     protected boolean isValidSubId(int subId) {
