@@ -104,6 +104,7 @@
 
     <protected-broadcast android:name= "com.android.phone.settings.CARRIER_PROVISIONING" />
     <protected-broadcast android:name= "com.android.phone.settings.TRIGGER_CARRIER_PROVISIONING" />
+    <protected-broadcast android:name= "com.android.internal.telephony.ACTION_VOWIFI_ENABLED" />
 
     <!-- For Vendor Debugging in Telephony -->
     <protected-broadcast android:name="android.telephony.action.ANOMALY_REPORTED" />
@@ -572,6 +573,17 @@
                 <action android:name="com.android.phone.action.ACTION_SHOW_ECM_EXIT_DIALOG" />
                 <action android:name="android.telephony.action.SHOW_NOTICE_ECM_BLOCK_OTHERS" />
                 <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="LimitedServiceActivity"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:taskAffinity=""
+            android:theme="@android:style/Theme.Translucent.NoTitleBar">
+            <intent-filter android:priority="1000">
+                <action android:name = "com.android.internal.telephony.ACTION_VOWIFI_ENABLED" />
             </intent-filter>
         </activity>
 
