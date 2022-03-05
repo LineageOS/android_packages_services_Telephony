@@ -2196,4 +2196,16 @@
     <!-- Telephony notification channel name for a channel containing SIP accounts removed
      notificatios -->
     <string name="notification_channel_sip_account">Deprecated SIP accounts</string>
+
+    <!-- Instruction text to notify user that emergency calls may not be possible when voice is
+    enabled over wifi. [CHAR LIMIT=NONE] -->
+    <string name="limited_service_alert_dialog_description"><xliff:g id="spn" example="Operator">%s</xliff:g> doesn\'t support emergency calls over Wi-Fi.
+\n\nEmergency calls will be placed through a mobile network. If there\'s limited mobile coverage,
+ your emergency call may not go through.
+</string>
+    <!-- Option to hide the popup dialog if it is not necessary for the user. [CHAR LIMIT=40] -->
+    <string name="do_not_show_again">Don\'t show again</string>
+    <!-- Option to turn off wifi calling -->
+    <string name="turn_off_wfc">Turn off Wi-Fi calling</string>
+    <string name="unavailable_emergency_calls_notification_name">Emergency calls may be unavailable</string>
 </resources>
