@@ -225,4 +225,10 @@
     <dimen name="dialpad_button_height">43dp</dimen>
     <dimen name="dialpad_button_width">43dp</dimen>
     <!-- End of Shortcut view vertical dimens. -->
+
+    <!-- values for limited service -->
+    <dimen name="limited_service_top_padding">24dp</dimen>
+    <dimen name="limited_service_bottom_padding">4dp</dimen>
+    <dimen name="limited_service_margin_start_end">24dp</dimen>
+    <dimen name="limited_service_text_bottom_padding">10dp</dimen>
 </resources>
