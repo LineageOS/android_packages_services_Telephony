@@ -323,8 +323,6 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             case GET_ALLOWED_NETWORK_TYPES_FOR_USER:
             case SET_ALLOWED_NETWORK_TYPES_FOR_USER:
                 return handleAllowedNetworkTypesCommand(cmd);
-            case RADIO_SUBCOMMAND:
-                return handleRadioCommand();
             default: {
                 return handleDefaultCommands(cmd);
             }
