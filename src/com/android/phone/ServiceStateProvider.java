@@ -413,29 +413,37 @@ public class ServiceStateProvider extends ContentProvider {
                 ss = unredactedServiceState;
             } else {
                 availableColumns = ALL_COLUMNS;
-
-                final boolean hasLocationPermission = hasLocationPermission();
-                if (hasLocationPermission) {
-                    // No matter the targetSdkVersion, return unredacted ServiceState if caller does
-                    // have location permission.
-                    ss = unredactedServiceState;
-                } else {
-                    // The caller has targetSdkVersion S+ but no location permission. It explicitly
-                    // requires location protected columns. Throw SecurityException to fail loudly.
-                    if (targetingAtLeastS && projection != null) {
-                        for (String requiredColumn : projection) {
-                            if (LOCATION_PROTECTED_COLUMNS_SET.contains(requiredColumn)) {
-                                throw new SecurityException("Column " + requiredColumn
-                                        + "requires location permissions to access.");
-                            }
+                boolean implicitlyQueryLocation = projection == null;
+                boolean explicitlyQueryLocation = false;
+                if (projection != null) {
+                    for (String requiredColumn : projection) {
+                        if (LOCATION_PROTECTED_COLUMNS_SET.contains(requiredColumn)) {
+                            explicitlyQueryLocation = true;
+                            break;
                         }
                     }
+                }
 
-                    // In all other cases, return the redacted ServiceState.
-                    // The caller has no location permission but only requires columns without
-                    // location sensitive info or "all" columns, return result that scrub out all
-                    // sensitive info. In later case, we will not know which columns will be fetched
-                    // from the returned cursor until the result has been returned.
+                // Check location permission only when location sensitive info are queried
+                // (either explicitly or implicitly) to avoid caller get blamed with location
+                // permission when query non sensitive info.
+                if (implicitlyQueryLocation || explicitlyQueryLocation) {
+                    if (hasLocationPermission()) {
+                        ss = unredactedServiceState;
+                    } else {
+                        if (targetingAtLeastS) {
+                            // Throw SecurityException to fail loudly if caller is targetSDK S+
+                            throw new SecurityException(
+                                    "Querying location sensitive info requires location "
+                                            + "permissions");
+                        } else {
+                            // For backward compatibility, return redacted value for old SDK
+                            ss = getLocationRedactedServiceState(unredactedServiceState);
+                        }
+                    }
+                } else {
+                    // The caller is not interested in location sensitive info, return result
+                    // that scrub out all sensitive info. And no permission check is needed.
                     ss = getLocationRedactedServiceState(unredactedServiceState);
                 }
             }
