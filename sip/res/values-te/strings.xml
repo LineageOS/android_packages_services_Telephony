@@ -36,7 +36,7 @@
     <string name="alert_dialog_close" msgid="1734746505531110706">"ప్రొఫైల్‌ను మూసివేయండి"</string>
     <string name="alert_dialog_ok" msgid="7806760618798687406">"సరే"</string>
     <string name="close_profile" msgid="3756064641769751774">"మూసివేయి"</string>
-    <string name="registration_status_checking_status" msgid="884179594507591180">"స్థితిని తనిఖీ చేస్తోంది..."</string>
+    <string name="registration_status_checking_status" msgid="884179594507591180">"స్టేటస్‌ని తనిఖీ చేస్తోంది..."</string>
     <string name="registration_status_registering" msgid="7986331597809521791">"నమోదు చేస్తోంది…"</string>
     <string name="registration_status_still_trying" msgid="7178623685868766282">"ఇప్పటికీ ప్రయత్నిస్తోంది..."</string>
     <string name="registration_status_not_receiving" msgid="3873074208531938401">"కాల్స్‌ను స్వీకరించడం లేదు."</string>

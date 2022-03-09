@@ -393,9 +393,9 @@
     <string name="enable_disable_retail_directory" msgid="9095153426757081972">"రీటైల్ డైరెక్టరీ"</string>
     <string name="retail_directory_enable" msgid="2532176568755452171">"రీటైల్ డైరెక్టరీ ప్రారంభించబడింది"</string>
     <string name="retail_directory_disable" msgid="7242451210736299193">"రీటైల్ డైరెక్టరీ నిలిపివేయబడింది"</string>
-    <string name="enable_disable_advertisements" msgid="8704125663718797151">"బిజినెస్ ప్రకటనలు"</string>
-    <string name="advertisements_enable" msgid="8651409664217899145">"బిజినెస్ ప్రకటనలు ప్రారంభించబడ్డాయి"</string>
-    <string name="advertisements_disable" msgid="2999957360508271492">"బిజినెస్ ప్రకటనలు నిలిపివేయబడ్డాయి"</string>
+    <string name="enable_disable_advertisements" msgid="8704125663718797151">"అడ్వర్టయిజ్‌మెంట్‌లు"</string>
+    <string name="advertisements_enable" msgid="8651409664217899145">"అడ్వర్టయిజ్‌మెంట్‌లు ఎనేబుల్ చేయబడ్డాయి"</string>
+    <string name="advertisements_disable" msgid="2999957360508271492">"అడ్వర్టయిజ్‌మెంట్‌లు డిజేబుల్ చేయబడ్డాయి"</string>
     <string name="enable_disable_stock_quotes" msgid="631498357725951825">"స్టాక్ కోట్‌లు"</string>
     <string name="stock_quotes_enable" msgid="5104318195579771947">"స్టాక్ కోట్‌లు ప్రారంభించబడ్డాయి"</string>
     <string name="stock_quotes_disable" msgid="3126423481704498278">"స్టాక్ కోట్‌లు నిలిపివేయబడ్డాయి"</string>
@@ -619,7 +619,7 @@
     <string name="ota_skip_activation_dialog_title" msgid="7666611236789203797">"సక్రియం చేయడాన్ని దాటవేయాలా?"</string>
     <string name="ota_skip_activation_dialog_message" msgid="6691722887019708713">"మీరు సక్రియం చేయడాన్ని దాటవేస్తే, కాల్స్‌ చేయలేరు లేదా మొబైల్ డేటా నెట్‌వర్క్‌లకు కనెక్ట్ చేయలేరు (మీరు Wi-Fi నెట్‌వర్క్‌లకు కనెక్ట్ చేయగలిగినప్పటికీ). మీరు మీ ఫోన్‌ను సక్రియం చేసేవరకు, దాన్ని ప్రారంభించే ప్రతిసారీ సక్రియం చేయమని మిమ్మల్ని అడుగుతుంది."</string>
     <string name="ota_skip_activation_dialog_skip_label" msgid="5908029466817825633">"దాటవేయి"</string>
-    <string name="ota_activate" msgid="7939695753665438357">"సక్రియం చేయి"</string>
+    <string name="ota_activate" msgid="7939695753665438357">"యాక్టివేట్ చేయండి"</string>
     <string name="ota_title_activate_success" msgid="1272135024761004889">"ఫోన్ సక్రియం చేయబడింది."</string>
     <string name="ota_title_problem_with_activation" msgid="7019745985413368726">"సక్రియం చేయడంలో సమస్య"</string>
     <string name="ota_listen" msgid="2772252405488894280">"సక్రియం చేయడం పూర్తయిందని మీకు వినిపించేవరకు చదివి వినిపించే సూచనలను అనుసరించండి."</string>
@@ -849,8 +849,8 @@
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"SIM అడ్రస్‌ పుస్తకాన్ని చూడండి"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"ఫిక్స్‌డ్ డయలింగ్ నంబర్‌లను చూడండి"</string>
     <string name="radioInfo_menu_viewSDN" msgid="2613431584522392842">"సర్వీస్ డయలింగ్ నంబర్‌లను చూడండి"</string>
-    <string name="radioInfo_menu_getIMS" msgid="1950869267853198232">"IMS సేవ స్థితి"</string>
-    <string name="radio_info_ims_reg_status_title" msgid="6875885401313992007">"IMS స్థితి"</string>
+    <string name="radioInfo_menu_getIMS" msgid="1950869267853198232">"IMS సేవ స్టేటస్‌"</string>
+    <string name="radio_info_ims_reg_status_title" msgid="6875885401313992007">"IMS స్టేటస్‌"</string>
     <string name="radio_info_ims_reg_status_registered" msgid="7095182114078864326">"నమోదు చేయబడింది"</string>
     <string name="radio_info_ims_reg_status_not_registered" msgid="8045821447288876085">"నమోదు కాలేదు"</string>
     <string name="radio_info_ims_feature_status_available" msgid="6493200914756969292">"అందుబాటులో ఉన్నారు"</string>
