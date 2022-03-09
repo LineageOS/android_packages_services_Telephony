@@ -709,7 +709,7 @@
                 <action android:name="android.telephony.NetworkService" />
             </intent-filter>
         </service>
-        <service android:name="com.android.internal.telephony.dataconnection.CellularDataService"
+        <service android:name="com.android.internal.telephony.data.CellularDataService"
             android:exported="true"
             android:permission="android.permission.BIND_TELEPHONY_DATA_SERVICE" >
             <intent-filter>
