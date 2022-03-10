@@ -6685,8 +6685,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             if (phone != null) {
                 boolean retVal;
                 if (phone.isUsingNewDataStack()) {
-                    retVal = phone.getDataNetworkController().getDataSettingsManager()
-                            .isDataEnabled();
+                    retVal = phone.getDataSettingsManager().isDataEnabled();
                 } else {
                     retVal = phone.getDataEnabledSettings().isDataEnabled();
                 }
