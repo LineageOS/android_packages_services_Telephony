@@ -6926,6 +6926,21 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         return new ArrayList<>(privilegedPackages);
     }
 
+    @Override
+    public @Nullable String getCarrierServicePackageNameForLogicalSlot(int logicalSlotIndex) {
+        enforceReadPrivilegedPermission("getCarrierServicePackageNameForLogicalSlot");
+
+        final Phone phone = PhoneFactory.getPhone(logicalSlotIndex);
+        if (phone == null) {
+            return null;
+        }
+        final CarrierPrivilegesTracker cpt = phone.getCarrierPrivilegesTracker();
+        if (cpt == null) {
+            return null;
+        }
+        return cpt.getCarrierServicePackageName();
+    }
+
     private String getIccId(int subId) {
         final Phone phone = getPhone(subId);
         UiccPort port = phone == null ? null : phone.getUiccPort();
