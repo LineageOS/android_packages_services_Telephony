@@ -6747,69 +6747,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
-    private int getCarrierPrivilegeStatusFromCarrierConfigRules(int privilegeFromSim, int uid,
-            Phone phone) {
-        if (uid == Process.PHONE_UID) {
-            // Skip the check if it's the phone UID (system UID removed in b/184713596)
-            // TODO (b/184954344): Check for system/phone UID at call site instead of here
-            return TelephonyManager.CARRIER_PRIVILEGE_STATUS_HAS_ACCESS;
-        }
-
-        //load access rules from carrier configs, and check those as well: b/139133814
-        SubscriptionController subController = SubscriptionController.getInstance();
-        if (privilegeFromSim == TelephonyManager.CARRIER_PRIVILEGE_STATUS_HAS_ACCESS
-                || subController == null) return privilegeFromSim;
-
-        PackageManager pkgMgr = phone.getContext().getPackageManager();
-        String[] packages = pkgMgr.getPackagesForUid(uid);
-
-        final long identity = Binder.clearCallingIdentity();
-        try {
-            int subId = phone.getSubId();
-            if (mCarrierPrivilegeTestOverrideSubIds.contains(subId)) {
-                // A test override is in place for the privileges for this subId, so don't try to
-                // read the subscription privileges.
-                return privilegeFromSim;
-            }
-            SubscriptionInfo subInfo = subController.getSubscriptionInfo(subId);
-            SubscriptionManager subManager = (SubscriptionManager)
-                    phone.getContext().getSystemService(Context.TELEPHONY_SUBSCRIPTION_SERVICE);
-            for (String pkg : packages) {
-                if (subManager.canManageSubscription(subInfo, pkg)) {
-                    return TelephonyManager.CARRIER_PRIVILEGE_STATUS_HAS_ACCESS;
-                }
-            }
-            return privilegeFromSim;
-        } finally {
-            Binder.restoreCallingIdentity(identity);
-        }
-    }
-
-    private int getCarrierPrivilegeStatusFromCarrierConfigRules(int privilegeFromSim, Phone phone,
-            String pkgName) {
-        //load access rules from carrier configs, and check those as well: b/139133814
-        SubscriptionController subController = SubscriptionController.getInstance();
-        if (privilegeFromSim == TelephonyManager.CARRIER_PRIVILEGE_STATUS_HAS_ACCESS
-                || subController == null) return privilegeFromSim;
-
-        final long identity = Binder.clearCallingIdentity();
-        try {
-            int subId = phone.getSubId();
-            if (mCarrierPrivilegeTestOverrideSubIds.contains(subId)) {
-                // A test override is in place for the privileges for this subId, so don't try to
-                // read the subscription privileges.
-                return privilegeFromSim;
-            }
-            SubscriptionInfo subInfo = subController.getSubscriptionInfo(subId);
-            SubscriptionManager subManager = (SubscriptionManager)
-                    phone.getContext().getSystemService(Context.TELEPHONY_SUBSCRIPTION_SERVICE);
-            return subManager.canManageSubscription(subInfo, pkgName)
-                ? TelephonyManager.CARRIER_PRIVILEGE_STATUS_HAS_ACCESS : privilegeFromSim;
-        } finally {
-            Binder.restoreCallingIdentity(identity);
-        }
-    }
-
     @Override
     public int getCarrierPrivilegeStatus(int subId) {
         // No permission needed; this only lets the caller inspect their own status.
