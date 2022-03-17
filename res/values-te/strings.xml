@@ -499,7 +499,7 @@
     <string name="disable_pin_ok" msgid="888505244389647754">"PIN తీసివేయబడింది"</string>
     <string name="pin_failed" msgid="4527347792881939652">"PIN చెల్లదు"</string>
     <string name="pin_changed" msgid="7291153750090452808">"PIN నవీకరించబడింది"</string>
-    <string name="puk_requested" msgid="2061337960609806851">"పాస్‌వర్డ్ చెల్లదు. PIN ఇప్పుడు బ్లాక్ చేయబడింది. PUK అభ్యర్థించబడింది."</string>
+    <string name="puk_requested" msgid="2061337960609806851">"పాస్‌వర్డ్ చెల్లదు. PIN ఇప్పుడు బ్లాక్ చేయబడింది. PUK రిక్వెస్ట్ చేయబడింది."</string>
     <string name="enter_pin2_text" msgid="7266379426804295979">"PIN2"</string>
     <string name="oldPin2Label" msgid="4648543187859997203">"పాత PIN2"</string>
     <string name="newPin2Label" msgid="1840905981784453939">"కొత్త PIN2"</string>
