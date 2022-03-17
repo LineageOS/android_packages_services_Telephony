@@ -11178,7 +11178,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     @Override
     public void getSlicingConfig(ResultReceiver callback) {
-        enforceReadPrivilegedPermission("getSlicingConfig");
+        TelephonyPermissions
+                .enforceCallingOrSelfReadPrivilegedPhoneStatePermissionOrCarrierPrivilege(
+                        mApp, SubscriptionManager.INVALID_SUBSCRIPTION_ID, "getSlicingConfig");
 
         final long identity = Binder.clearCallingIdentity();
         try {
