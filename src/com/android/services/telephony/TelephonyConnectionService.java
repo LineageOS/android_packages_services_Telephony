@@ -1834,6 +1834,9 @@ public class TelephonyConnectionService extends ConnectionService {
             case CallStateException.ERROR_OTASP_PROVISIONING_IN_PROCESS:
                  cause = android.telephony.DisconnectCause.OTASP_PROVISIONING_IN_PROCESS;
                  break;
+            case CallStateException.ERROR_FDN_BLOCKED:
+                 cause = android.telephony.DisconnectCause.FDN_BLOCKED;
+                 break;
         }
         connection.setTelephonyConnectionDisconnected(
                 DisconnectCauseUtil.toTelecomDisconnectCause(cause, e.getMessage(),
