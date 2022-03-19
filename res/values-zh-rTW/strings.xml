@@ -81,7 +81,7 @@
     <string name="voicemail_settings_with_label" msgid="4228431668214894138">"語音信箱 (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="7746778673131551185">"語音信箱："</string>
     <string name="make_and_receive_calls" msgid="4868913166494621109">"撥打及接聽電話"</string>
-    <string name="smart_forwarding_settings_menu" msgid="8850429887958938540">"智慧轉寄"</string>
+    <string name="smart_forwarding_settings_menu" msgid="8850429887958938540">"智慧轉接"</string>
     <string name="smart_forwarding_settings_menu_summary" msgid="5096947726032885325">"如果某組電話號碼無法使用，系統會一律將來電轉接到其他號碼"</string>
     <string name="voicemail_notifications_preference_title" msgid="7829238858063382977">"通知"</string>
     <string name="cell_broadcast_settings" msgid="8135324242541809924">"緊急廣播"</string>
@@ -918,4 +918,12 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"你的藍牙訊號微弱，建議你改用擴音模式。"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"通話品質通知"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"不適用的 SIP 帳戶"</string>
+    <!-- no translation found for limited_service_alert_dialog_description (6686928033670697313) -->
+    <skip />
+    <!-- no translation found for do_not_show_again (8923026903375124550) -->
+    <skip />
+    <!-- no translation found for turn_off_wfc (2346229945400554258) -->
+    <skip />
+    <!-- no translation found for unavailable_emergency_calls_notification_name (4390236789690885552) -->
+    <skip />
 </resources>

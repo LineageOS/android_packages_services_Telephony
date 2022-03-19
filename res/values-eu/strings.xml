@@ -313,7 +313,7 @@
     <string name="video_calling_settings_title" msgid="342829454913266078">"Operadorearen bideo-deiak"</string>
     <string name="gsm_umts_options" msgid="4968446771519376808">"GSM/UMTS aukerak"</string>
     <string name="cdma_options" msgid="3669592472226145665">"CDMA aukerak"</string>
-    <string name="throttle_data_usage" msgid="1944145350660420711">"Datuen erabilera"</string>
+    <string name="throttle_data_usage" msgid="1944145350660420711">"Datu-erabilera"</string>
     <string name="throttle_current_usage" msgid="7483859109708658613">"Une honetan erabilitako datuak"</string>
     <string name="throttle_time_frame" msgid="1813452485948918791">"Datuak erabiltzeko epea"</string>
     <string name="throttle_rate" msgid="7641913901133634905">"Datu-abiaduraren gidalerroak"</string>
@@ -918,4 +918,12 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Bluetooth seinalea ahula da. Erabili telefonoko bozgorailua."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Deien kalitateari buruzko jakinarazpena"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"SIP-eko kontu zaharkituak"</string>
+    <!-- no translation found for limited_service_alert_dialog_description (6686928033670697313) -->
+    <skip />
+    <!-- no translation found for do_not_show_again (8923026903375124550) -->
+    <skip />
+    <!-- no translation found for turn_off_wfc (2346229945400554258) -->
+    <skip />
+    <!-- no translation found for unavailable_emergency_calls_notification_name (4390236789690885552) -->
+    <skip />
 </resources>
