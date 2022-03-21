@@ -31,6 +31,7 @@ import android.annotation.Nullable;
 import android.annotation.RequiresPermission;
 import android.app.AppOpsManager;
 import android.app.PendingIntent;
+import android.app.PropertyInvalidatedCache;
 import android.app.compat.CompatChanges;
 import android.app.role.RoleManager;
 import android.compat.annotation.ChangeId;
@@ -2340,7 +2341,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         mPhoneConfigurationManager = PhoneConfigurationManager.getInstance();
         mRadioInterfaceCapabilities = RadioInterfaceCapabilityController.getInstance();
         mNotifyUserActivity = new AtomicBoolean(false);
-
+        PropertyInvalidatedCache.invalidateCache(TelephonyManager.CACHE_KEY_PHONE_ACCOUNT_TO_SUBID);
         publish();
     }
 
