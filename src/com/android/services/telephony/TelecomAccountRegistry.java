@@ -16,6 +16,7 @@
 
 package com.android.services.telephony;
 
+import android.app.PropertyInvalidatedCache;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
@@ -1593,6 +1594,9 @@ public class TelecomAccountRegistry {
             }
             mAccounts.clear();
         }
+        // Invalidate the TelephonyManager cache which maps phone account handles to sub ids since
+        // all the phone account handles are being recreated at this point.
+        PropertyInvalidatedCache.invalidateCache(TelephonyManager.CACHE_KEY_PHONE_ACCOUNT_TO_SUBID);
     }
 
     /**
