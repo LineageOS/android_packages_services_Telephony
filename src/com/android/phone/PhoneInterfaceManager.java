@@ -149,6 +149,7 @@ import com.android.internal.telephony.CallForwardInfo;
 import com.android.internal.telephony.CallManager;
 import com.android.internal.telephony.CallStateException;
 import com.android.internal.telephony.CallTracker;
+import com.android.internal.telephony.CarrierPrivilegesTracker;
 import com.android.internal.telephony.CarrierResolver;
 import com.android.internal.telephony.CellNetworkScanResult;
 import com.android.internal.telephony.CommandException;
@@ -9061,6 +9062,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 loge("setCarrierTestOverride fails with invalid subId: " + subId);
                 return;
             }
+            CarrierPrivilegesTracker cpt = phone.getCarrierPrivilegesTracker();
+            if (cpt != null) {
+                cpt.setTestOverrideCarrierPrivilegeRules(carrierPrivilegeRules);
+            }
+            // TODO(b/211796398): remove the legacy logic below once CPT migration is done.
             phone.setCarrierTestOverride(mccmnc, imsi, iccid, gid1, gid2, plmn, spn,
                     carrierPrivilegeRules, apn);
             if (carrierPrivilegeRules == null) {
