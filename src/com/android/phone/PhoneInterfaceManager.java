@@ -197,7 +197,6 @@ import com.android.internal.telephony.metrics.RcsStats;
 import com.android.internal.telephony.metrics.TelephonyMetrics;
 import com.android.internal.telephony.uicc.IccCardApplicationStatus.AppType;
 import com.android.internal.telephony.uicc.IccIoResult;
-import com.android.internal.telephony.uicc.IccRecords;
 import com.android.internal.telephony.uicc.IccUtils;
 import com.android.internal.telephony.uicc.SIMRecords;
 import com.android.internal.telephony.uicc.UiccCard;
@@ -8880,20 +8879,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         mApp.getSystemService(AppOpsManager.class)
                 .checkPackage(Binder.getCallingUid(), callingPackage);
 
-        boolean hasReadPermission = false;
         boolean isLogicalSlotAccessRestricted = false;
 
-        try {
-            enforceReadPrivilegedPermission("getUiccSlotsInfo");
-            hasReadPermission = true;
-        } catch (SecurityException e) {
-            // even without READ_PRIVILEGED_PHONE_STATE, we allow the call to continue if the caller
-            // has carrier privileges on an active UICC
-            if (checkCarrierPrivilegesForPackageAnyPhoneWithPermission(callingPackage)
-                    == TelephonyManager.CARRIER_PRIVILEGE_STATUS_HAS_ACCESS) {
-                hasReadPermission = true;
-            }
-        }
+        // This will make sure caller has the READ_PRIVILEGED_PHONE_STATE. Do not remove this as
+        // we are reading iccId which is PII data.
+        enforceReadPrivilegedPermission("getUiccSlotsInfo");
 
         // checking compatibility, if calling app's target SDK is T and beyond.
         if (CompatChanges.isChangeEnabled(GET_API_SIGNATURES_FROM_UICC_PORT_INFO,
@@ -8921,11 +8911,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 } else {
                     cardId = slot.getEid();
                     if (TextUtils.isEmpty(cardId)) {
-                        // If cardId is null, use iccId of default port as cardId. Check if has
-                        // read permission otherwise set to null.(card is null which means no
-                        // carrier permission)
-                       cardId = hasReadPermission ? slot.getIccId(
-                               TelephonyManager.DEFAULT_PORT_INDEX) : null;
+                        // If cardId is null, use iccId of default port as cardId.
+                        cardId = slot.getIccId(TelephonyManager.DEFAULT_PORT_INDEX);
                     }
                 }
 
@@ -8957,7 +8944,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 int[] portIndexes = slot.getPortList();
                 for (int portIdx : portIndexes) {
                     String iccId = IccUtils.stripTrailingFs(getIccId(slot, portIdx,
-                            callingPackage, hasReadPermission));
+                            callingPackage, /* hasReadPermission= */ true));
                     portInfos.add(new UiccPortInfo(iccId, portIdx,
                             slot.getPhoneIdFromPortIndex(portIdx), slot.isPortActive(portIdx)));
                 }
@@ -9778,15 +9765,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public boolean isMvnoMatched(int subId, int mvnoType, @NonNull String mvnoMatchData) {
+    public boolean isMvnoMatched(int slotIndex, int mvnoType, @NonNull String mvnoMatchData) {
         enforceReadPrivilegedPermission("isMvnoMatched");
-        IccRecords iccRecords = UiccController.getInstance().getIccRecords(
-                SubscriptionManager.getPhoneId(subId), UiccController.APP_FAM_3GPP);
-        if (iccRecords == null) {
-            Log.d(LOG_TAG, "isMvnoMatched# IccRecords is null");
-            return false;
-        }
-        return ApnSettingUtils.mvnoMatches(iccRecords, mvnoType, mvnoMatchData);
+        return UiccController.getInstance().mvnoMatches(slotIndex, mvnoType, mvnoMatchData);
     }
 
     @Override
