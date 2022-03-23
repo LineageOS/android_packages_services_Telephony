@@ -113,7 +113,6 @@ import android.telephony.UiccSlotInfo;
 import android.telephony.UiccSlotMapping;
 import android.telephony.UssdResponse;
 import android.telephony.VisualVoicemailSmsFilterSettings;
-import android.telephony.data.ApnSetting;
 import android.telephony.data.NetworkSlicingConfig;
 import android.telephony.emergency.EmergencyNumber;
 import android.telephony.gba.GbaAuthRequest;
@@ -2897,7 +2896,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         try {
             final Phone phone = getPhone(subId);
             if (phone != null) {
-                return phone.isDataAllowed(ApnSetting.TYPE_DEFAULT);
+                return phone.isDataAllowed();
             } else {
                 return false;
             }
