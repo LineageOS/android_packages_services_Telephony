@@ -341,7 +341,7 @@
     <string name="general_news_settings" msgid="2670499575962080411">"Жалпы жаңылыктар"</string>
     <string name="bf_news_settings" msgid="8571709425370794221">"Ишкердик жана каржы жаңылыктары"</string>
     <string name="sports_news_settings" msgid="2684364556989168438">"Спорт жаңылыктары"</string>
-    <string name="entertainment_news_settings" msgid="4228527702346305543">"Көңүл ачуу жаңылыктары"</string>
+    <string name="entertainment_news_settings" msgid="4228527702346305543">"Көңүл ачуу жаатындагы жаңылыктар"</string>
     <string name="enable_disable_local" msgid="7654175079979415572">"Жергиликтүү"</string>
     <string name="local_enable" msgid="790606890868710629">"Жергиликтүү жаңылыктар иштетилген"</string>
     <string name="local_disable" msgid="7649945293198602877">"Жергиликтүү жаңылыктар өчүрүлгөн"</string>
@@ -918,4 +918,12 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Bluetooth сигналыңыз начар. Спикерфонго которулуп көрүңүз."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Чалуунун сапаты тууралуу билдирме"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Колдонуудан чыккан SIP аккаунттары"</string>
+    <!-- no translation found for limited_service_alert_dialog_description (6686928033670697313) -->
+    <skip />
+    <!-- no translation found for do_not_show_again (8923026903375124550) -->
+    <skip />
+    <!-- no translation found for turn_off_wfc (2346229945400554258) -->
+    <skip />
+    <!-- no translation found for unavailable_emergency_calls_notification_name (4390236789690885552) -->
+    <skip />
 </resources>

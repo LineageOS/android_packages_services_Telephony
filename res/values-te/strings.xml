@@ -499,7 +499,7 @@
     <string name="disable_pin_ok" msgid="888505244389647754">"PIN తీసివేయబడింది"</string>
     <string name="pin_failed" msgid="4527347792881939652">"PIN చెల్లదు"</string>
     <string name="pin_changed" msgid="7291153750090452808">"PIN నవీకరించబడింది"</string>
-    <string name="puk_requested" msgid="2061337960609806851">"పాస్‌వర్డ్ చెల్లదు. PIN ఇప్పుడు బ్లాక్ చేయబడింది. PUK అభ్యర్థించబడింది."</string>
+    <string name="puk_requested" msgid="2061337960609806851">"పాస్‌వర్డ్ చెల్లదు. PIN ఇప్పుడు బ్లాక్ చేయబడింది. PUK రిక్వెస్ట్ చేయబడింది."</string>
     <string name="enter_pin2_text" msgid="7266379426804295979">"PIN2"</string>
     <string name="oldPin2Label" msgid="4648543187859997203">"పాత PIN2"</string>
     <string name="newPin2Label" msgid="1840905981784453939">"కొత్త PIN2"</string>
@@ -918,4 +918,12 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"మీ బ్లూటూత్ సిగ్నల్ బలహీనంగా ఉంది. స్పీకర్‌ఫోన్‌కు స్విచ్ అవ్వడానికి ట్రై చేయండి."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"కాల్ క్వాలిటీ నోటిఫికేషన్"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"తీసివేయబడిన SIP ఖాతాలు"</string>
+    <!-- no translation found for limited_service_alert_dialog_description (6686928033670697313) -->
+    <skip />
+    <!-- no translation found for do_not_show_again (8923026903375124550) -->
+    <skip />
+    <!-- no translation found for turn_off_wfc (2346229945400554258) -->
+    <skip />
+    <!-- no translation found for unavailable_emergency_calls_notification_name (4390236789690885552) -->
+    <skip />
 </resources>
