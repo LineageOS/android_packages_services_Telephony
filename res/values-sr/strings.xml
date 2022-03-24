@@ -615,7 +615,7 @@
     <string name="ota_title_activate" msgid="4049645324841263423">"Активирајте телефон"</string>
     <string name="ota_touch_activate" msgid="838764494319694754">"Потребно је да упутите посебан позив да бисте активирали услугу свој телефона. \n\nНакон што притиснете дугме „Активирај“, слушајте дата упутства да бисте да бисте активирали свој телефон."</string>
     <string name="ota_hfa_activation_title" msgid="3300556778212729671">"Активирање..."</string>
-    <string name="ota_hfa_activation_dialog_message" msgid="7921718445773342996">"Телефон активира услугу мобилног преноса података.\n\nТо може да потраје и до 5 минута."</string>
+    <string name="ota_hfa_activation_dialog_message" msgid="7921718445773342996">"Телефон активира услугу мобилних података.\n\nТо може да потраје и до 5 минута."</string>
     <string name="ota_skip_activation_dialog_title" msgid="7666611236789203797">"Желите ли да прескочите активацију?"</string>
     <string name="ota_skip_activation_dialog_message" msgid="6691722887019708713">"Ако прескочите активацију, не можете да упућујете позиве или да се повезујете са мрежама за мобилни пренос података (иако можете да се повежете са WiFi мрежама). Све док не активирате свој телефон, бићете упитани да то учините сваки пут када га укључите."</string>
     <string name="ota_skip_activation_dialog_skip_label" msgid="5908029466817825633">"Прескочи"</string>
@@ -918,4 +918,12 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Bluetooth сигнал је слаб. Пробајте да пређете на спикерфон."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Обавештење о квалитету позива"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Застарели SIP налози"</string>
+    <!-- no translation found for limited_service_alert_dialog_description (6686928033670697313) -->
+    <skip />
+    <!-- no translation found for do_not_show_again (8923026903375124550) -->
+    <skip />
+    <!-- no translation found for turn_off_wfc (2346229945400554258) -->
+    <skip />
+    <!-- no translation found for unavailable_emergency_calls_notification_name (4390236789690885552) -->
+    <skip />
 </resources>

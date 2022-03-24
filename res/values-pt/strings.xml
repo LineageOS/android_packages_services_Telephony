@@ -86,11 +86,11 @@
     <string name="voicemail_notifications_preference_title" msgid="7829238858063382977">"Notificações"</string>
     <string name="cell_broadcast_settings" msgid="8135324242541809924">"Transmissões de emergência"</string>
     <string name="call_settings" msgid="3677282690157603818">"Configurações de chamadas"</string>
-    <string name="additional_gsm_call_settings" msgid="1561980168685658846">"Configurações adicionais"</string>
-    <string name="additional_gsm_call_settings_with_label" msgid="7973920539979524908">"Configurações adicionais (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="sum_gsm_call_settings" msgid="7964692601608878138">"Configurações adicionais somente de chamada GSM"</string>
+    <string name="additional_gsm_call_settings" msgid="1561980168685658846">"Configurações avançadas"</string>
+    <string name="additional_gsm_call_settings_with_label" msgid="7973920539979524908">"Configurações avançadas (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
+    <string name="sum_gsm_call_settings" msgid="7964692601608878138">"Configurações avançadas somente de chamada GSM"</string>
     <string name="additional_cdma_call_settings" msgid="2178016561980611304">"Configurações de chamada CDMA adicionais"</string>
-    <string name="sum_cdma_call_settings" msgid="3185825305136993636">"Configurações adicionais somente de chamada CDMA"</string>
+    <string name="sum_cdma_call_settings" msgid="3185825305136993636">"Configurações avançadas somente de chamada CDMA"</string>
     <string name="labelNwService" msgid="6015891883487125120">"Configurações do serviço de rede"</string>
     <string name="labelCallerId" msgid="2090540744550903172">"Identificador de chamadas"</string>
     <string name="sum_loading_settings" msgid="434063780286688775">"Carregando configurações…"</string>
@@ -918,4 +918,12 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"O sinal do Bluetooth está fraco. Mude para o viva-voz."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Notificação sobre a qualidade da chamada"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Contas SIP suspensas"</string>
+    <!-- no translation found for limited_service_alert_dialog_description (6686928033670697313) -->
+    <skip />
+    <!-- no translation found for do_not_show_again (8923026903375124550) -->
+    <skip />
+    <!-- no translation found for turn_off_wfc (2346229945400554258) -->
+    <skip />
+    <!-- no translation found for unavailable_emergency_calls_notification_name (4390236789690885552) -->
+    <skip />
 </resources>
