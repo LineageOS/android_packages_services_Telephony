@@ -1601,9 +1601,6 @@
     <!-- DO NOT TRANSLATE. Internal key for a voicemail notification preference. -->
     <string name="wifi_calling_settings_key">button_wifi_calling_settings_key</string>
 
-    <!-- Hint appearing below a selected action on the emergency dialer telling user to tap again to execute the action [CHAR LIMIT=NONE] -->
-    <string name="emergency_action_launch_hint">Tap again to open</string>
-
     <!-- Strings for IMAP -->
 
     <!-- String used in place of a message that could not be properly decoded (e.g. bad base64
