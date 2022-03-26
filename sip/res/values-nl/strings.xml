@@ -66,7 +66,7 @@
     <string name="default_preference_summary_domain_address" msgid="443247296785732364">"&lt;Niet ingesteld&gt;"</string>
     <string name="display_name_summary" msgid="6749135030093260358">"&lt;Gelijk aan gebruikersnaam&gt;"</string>
     <string name="optional_summary" msgid="620379377865437488">"&lt;Optioneel&gt;"</string>
-    <string name="advanced_settings_show" msgid="2318728080037568529">"▷ Tik om alles weer te geven"</string>
+    <string name="advanced_settings_show" msgid="2318728080037568529">"▷ Tik om alles te tonen"</string>
     <string name="advanced_settings_hide" msgid="6200816937370652083">"▽ Tik om alles te verbergen"</string>
     <string name="all_empty_alert" msgid="6085603517610199098">"Geef details op voor nieuw SIP-account."</string>
     <string name="empty_alert" msgid="3693655518612836718">"<xliff:g id="INPUT_FIELD_NAME">%s</xliff:g> is verplicht en mag niet leeg worden gelaten."</string>
