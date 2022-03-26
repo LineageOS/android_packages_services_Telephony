@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"Dostupnosť"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"Hovor cez Wi‑Fi od:"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"Hovor cez Wi‑Fi"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"Otvoríte opätovným klepnutím"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"Pri dekódovaní správy sa vyskytla chyba"</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"SIM karta aktivovala vašu službu a aktualizovala možnosti roamingu vášho telefónu"</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"Prebieha príliš veľa aktívnych hovorov. Skôr ako uskutočníte nový hovor, ukončite existujúce hovory alebo ich zlúčte."</string>

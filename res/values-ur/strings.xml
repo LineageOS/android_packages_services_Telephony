@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"ایکسیسبیلٹی"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"‏Wi-Fi کال منجانب"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"‏Wi-Fi کال"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"کھولنے کیلئے دوبارہ تھپتھپائیں"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"پیغام کو ڈیکوڈ کرتے وقت ایک خرابی پیش آ گئی۔"</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"‏ایک SIM کارڈ نے آپ کی سروس فعال کر دی ہے اور آپ کے فون کی رومنگ اہلیتیں اپ ڈیٹ کر دی ہیں۔"</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"بہت زیادہ فعال کالیں ہیں۔ براہ کرم نئی کال کرنے سے پہلے موجودہ کالوں کو ضم کریں یا ختم کریں۔"</string>
