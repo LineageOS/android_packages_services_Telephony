@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"접근성"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"Wi-Fi 수신 전화:"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"Wi-Fi 통화"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"다시 탭하여 열기"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"메시지를 디코딩하는 중에 오류가 발생했습니다."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"SIM 카드로 서비스가 활성화되었으며 휴대전화 로밍 기능이 업데이트되었습니다."</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"활성화된 통화가 너무 많습니다. 새로운 전화를 걸기 전에 기존의 통화를 끝내거나 합치세요."</string>

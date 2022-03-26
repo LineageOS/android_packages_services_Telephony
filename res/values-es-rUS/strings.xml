@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"Accesibilidad"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"Llamada con Wi-Fi de"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"Llamada por Wi-Fi"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"Presionar de nuevo para abrir"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"Se produjo un error al decodificar el mensaje."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"Una tarjeta SIM activó tu servicio y actualizó las capacidades de roaming del teléfono."</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"Hay demasiadas llamadas activas. Finaliza o combina las llamadas existentes antes de realizar una llamada nueva."</string>

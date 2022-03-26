@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"Kebolehaksesan"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"Panggilan Wi-Fi daripada"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"Panggilan Wi-Fi"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"Ketik lagi untuk membuka"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"Terdapat ralat semasa menyahkodkan mesej."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"Kad SIM telah mengaktifkan perkhidmatan anda dan mengemas kini keupayaan perayauan telefon anda."</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"Terlalu banyak panggilan aktif. Sila tamatkan atau gabungkan panggilan yang sedia ada sebelum membuat panggilan baharu."</string>
