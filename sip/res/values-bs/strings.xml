@@ -58,7 +58,7 @@
     <string name="port_title" msgid="1703586046264385110">"Broj priključka"</string>
     <string name="transport_title" msgid="1661659138226029178">"Vrsta prijenosa"</string>
     <string name="send_keepalive_title" msgid="5319788151608946049">"Pošalji keep-alive poruku"</string>
-    <string name="advanced_settings" msgid="2704644977548662872">"Opcionalne postavke"</string>
+    <string name="advanced_settings" msgid="2704644977548662872">"Neobavezne postavke"</string>
     <string name="auth_username_title" msgid="9002505242616662698">"Korisničko ime za autentifikaciju"</string>
     <string name="auth_username_summary" msgid="6346313945275377230">"Korisničko ime upotrijebljeno za autentifikaciju"</string>
     <string name="default_preference_summary_username" msgid="8788114717555599222">"&lt;Nije postavljeno&gt;"</string>
