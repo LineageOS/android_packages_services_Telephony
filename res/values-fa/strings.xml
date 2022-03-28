@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"دسترس‌پذیری"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"‏تماس Wi-Fi از"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"‏تماس Wi-Fi"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"دوباره ضربه بزنید تا باز شود"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"هنگام رمزگشایی پیام، خطایی روی داد."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"یک سیم‌کارت سرویس شما را فعال کرده است و قابلیت‌های فراگردی تلفنتان را به‌روز کرده است."</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"تعداد زیادی تماس فعال وجود دارد. قبل از برقراری تماس جدید، لطفاً به تماس‌های موجود پایان دهید یا آنها را ادغام کنید."</string>

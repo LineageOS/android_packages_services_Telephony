@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"அணுகல் தன்மை"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"வைஃபை அழைப்பு:"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"வைஃபை அழைப்பு"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"திறக்க, மீண்டும் தட்டவும்"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"செய்தியைக் குறிவிலக்கும்போது பிழை ஏற்பட்டது."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"ஏற்கனவே சிம் கார்டைப் பயன்படுத்தி சேவை இயக்கப்பட்டது மற்றும் மொபைலின் ரோமிங் செயல்திறன்கள் புதுப்பிக்கப்பட்டன."</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"மிகவும் அதிக அளவிலான அழைப்புகள் செயலில் உள்ளன. புதிய அழைப்பை மேற்கொள்ளும் முன், ஏற்கனவேயுள்ள அழைப்புகளைத் துண்டிக்கவும் அல்லது ஒன்றாகப் பிணைக்கவும்."</string>

@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"ਪਹੁੰਚਯੋਗਤਾ"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"ਇਸ ਤੋਂ Wi-Fi ਕਾਲ"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"Wi-Fi ਕਾਲ"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"ਖੋਲ੍ਹਣ ਲਈ ਦੁਬਾਰਾ ਟੈਪ ਕਰੋ"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"ਸੁਨੇਹਾ ਡੀਕੋਡ ਕਰਦੇ ਸਮੇਂ ਇੱਕ ਅਸ਼ੁੱਧੀ ਹੋਈ ਸੀ।"</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"ਇੱਕ SIM ਕਾਰਡ ਨੇ ਤੁਹਾਡੀ ਸੇਵਾ ਸਕਿਰਿਆ ਕੀਤੀ ਹੈ ਅਤੇ ਤੁਹਾਡੇ ਫੋਨ ਦੀਆਂ ਰੋਮਿੰਗ ਸਮਰੱਥਤਾਵਾਂ ਅੱਪਡੇਟ ਕੀਤੀਆਂ ਹਨ।"</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"ਇੱਥੇ ਬਹੁਤ ਸਾਰੀਆਂ ਕਿਰਿਆਸ਼ੀਲ ਕਾਲਾਂ ਹਨ। ਕਿਰਪਾ ਕਰਕੇ ਇੱਕ ਨਵੀਂ ਕਾਲ ਕਰਨ ਤੋਂ ਪਹਿਲਾਂ ਮੌਜੂਦਾ ਕਾਲਾਂ ਨੂੰ ਸਮਾਪਤ ਜਾਂ ਮਿਲਾਓ।"</string>
