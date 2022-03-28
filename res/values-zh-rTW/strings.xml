@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"無障礙設定"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"Wi-Fi 通話來電："</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"Wi-Fi 通話"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"再次輕觸即可開啟"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"為郵件解碼時發生錯誤。"</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"SIM 卡已啟用您的服務並更新了手機的漫遊功能。"</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"進行中的通話過多。請先結束或合併現有通話，再撥打新的電話。"</string>

@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"ភាពងាយស្រួល"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"ការហៅតាម Wi-Fi ពី"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"ហៅតាម Wi-Fi"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"ប៉ះម្ដងទៀតដើម្បីបើក"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"មានកំហុសខណៈពេលឌិកូដសារ។"</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"ស៊ីមកាតបានធ្វើឲ្យសេវាកម្មរបស់អ្នកសកម្ម និងបានធ្វើបច្ចុប្បន្នភាពសមត្ថភាពរ៉ូមីងសម្រាប់ទូរស័ព្ទរបស់អ្នក។"</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"មាន​ការ​ហៅ​ដែល​សកម្ម​ច្រើន​ពេក។ សូម​បញ្ចប់ ឬ​​ដាក់​​បញ្ចូល​គ្នា​ការ​ហៅ​ដែល​មាន​ស្រាប់​​មុន​ពេល​ដាក់​ការ​ហៅ​ថ្មី។"</string>

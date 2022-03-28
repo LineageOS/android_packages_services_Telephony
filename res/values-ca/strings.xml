@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"Accessibilitat"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"Trucada per Wi-Fi de"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"Trucada per Wi-Fi"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"Torna a tocar per obrir"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"S\'ha produït un error en descodificar el missatge."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"Una targeta SIM ha activat el servei, i s\'ha actualitzat la funció d\'itinerància del telèfon."</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"Hi ha massa trucades actives. Finalitza\'n alguna o combina-les abans de fer-ne una de nova."</string>
@@ -918,12 +917,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"El senyal del Bluetooth és feble. Fes servir l\'altaveu."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Notificació sobre la qualitat de la trucada"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Comptes SIP obsolets"</string>
-    <!-- no translation found for limited_service_alert_dialog_description (6686928033670697313) -->
-    <skip />
-    <!-- no translation found for do_not_show_again (8923026903375124550) -->
-    <skip />
-    <!-- no translation found for turn_off_wfc (2346229945400554258) -->
-    <skip />
-    <!-- no translation found for unavailable_emergency_calls_notification_name (4390236789690885552) -->
-    <skip />
+    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g> no admet les trucades d\'emergència per Wi‑Fi. \n\nAquestes trucades es faran mitjançant una xarxa mòbil. Si la cobertura del mòbil és limitada, és possible que la trucada d\'emergència no es pugui efectuar."</string>
+    <string name="do_not_show_again" msgid="8923026903375124550">"No ho tornis a mostrar"</string>
+    <string name="turn_off_wfc" msgid="2346229945400554258">"Desactiva Trucades per Wi-Fi"</string>
+    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"És possible que les trucades d\'emergència no estiguin disponibles"</string>
 </resources>

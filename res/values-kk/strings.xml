@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"Арнайы мүмкіндіктер"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"Wi-Fi қоңырауын шалушы:"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"Wi-Fi қоңырауы"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"Ашу үшін қайта түртіңіз"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"Хабарды кодтан шығару кезінде қате пайда болды."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"SIM карта қызметті белсендіріп, телефонның роуминг мүмкіндіктерін жаңартты."</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"Белсенді қоңыраулар тым көп. Жаңа қоңырау шалудан бұрын бар қоңырауларды аяқтаңыз немесе біріктіріңіз."</string>

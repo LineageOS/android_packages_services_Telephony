@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"Ukufinyeleleka"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"Ikholi ye-Wi-Fi kusukela ku-"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"Ikholi ye-Wi-Fi"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"Thepha futhi ukuze uvule"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"Kube nephutha ngenkathi kukhishwa ikhodi kumlayezo."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"Ikhadi le-SIM lenze kwasebenza isevisi yakho laphinde labuyekeza amakhono okuzula wefoni yakho."</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"Kunamakholi amaningi asebenzayo. Sicela uphelise noma uhlanganise amakholi akhona ngaphambi kokubeka eyodwa."</string>
