@@ -917,12 +917,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"ब्लुटुथको सिग्नल कमजोर छ। स्पिकरफोन प्रयोग गरी हेर्नुहोस्।"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"कलको गुणस्तरसम्बन्धी सूचना"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"चल्तीबाट हटाइएका SIP खाताहरू"</string>
-    <!-- no translation found for limited_service_alert_dialog_description (6686928033670697313) -->
-    <skip />
-    <!-- no translation found for do_not_show_again (8923026903375124550) -->
-    <skip />
-    <!-- no translation found for turn_off_wfc (2346229945400554258) -->
-    <skip />
-    <!-- no translation found for unavailable_emergency_calls_notification_name (4390236789690885552) -->
-    <skip />
+    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g> प्रयोग गरेर Wi-Fi मार्फत आपत्कालीन कल गर्न मिल्दैन। \n\nआपत्कालीन कल गर्दा मोबाइल नेटवर्क प्रयोग गरिने छ। मोबाइल नेटवर्क कभरेज पर्याप्त नभएका खण्डमा तपाईंको आपत्कालीन कल सफल नहुन सक्छ।"</string>
+    <string name="do_not_show_again" msgid="8923026903375124550">"फेरि नदेखाइयोस्"</string>
+    <string name="turn_off_wfc" msgid="2346229945400554258">"Wi-Fi कलिङ अफ गर्नुहोस्"</string>
+    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"आपत्कालीन कल गर्ने सुविधा उपलब्ध नहुन सक्छ"</string>
 </resources>
