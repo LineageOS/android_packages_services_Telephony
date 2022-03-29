@@ -56,6 +56,7 @@ import com.android.internal.telephony.util.TelephonyUtils;
 import com.android.modules.utils.BasicShellCommandHandler;
 import com.android.phone.callcomposer.CallComposerPictureManager;
 
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -112,6 +113,7 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
 
     private static final String CC_GET_VALUE = "get-value";
     private static final String CC_SET_VALUE = "set-value";
+    private static final String CC_SET_VALUES_FROM_XML = "set-values-from-xml";
     private static final String CC_CLEAR_VALUES = "clear-values";
 
     private static final String GBA_SUBCOMMAND = "gba";
@@ -179,7 +181,7 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
 
     private enum CcType {
         BOOLEAN, DOUBLE, DOUBLE_ARRAY, INT, INT_ARRAY, LONG, LONG_ARRAY, STRING,
-                STRING_ARRAY, UNKNOWN
+                STRING_ARRAY, PERSISTABLE_BUNDLE, UNKNOWN
     }
 
     private class CcOptionParseResult {
@@ -568,9 +570,17 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         pw.println("      used if NEW_VALUE is not set. Strings should be encapsulated with");
         pw.println("      quotation marks. Spaces needs to be escaped. Example: \"Hello\\ World\"");
         pw.println("      Separate items in arrays with space . Example: \"item1\" \"item2\"");
+        pw.println("  cc set-values-from-xml [-s SLOT_ID] [-p] < XML_FILE_PATH");
+        pw.println("    Set carrier config based on the contents of the XML_FILE. File must be");
+        pw.println("    provided through standard input and follow CarrierConfig XML format.");
+        pw.println("    Example: packages/apps/CarrierConfig/assets/*.xml");
+        pw.println("    Options are:");
+        pw.println("      -s: The SIM slot ID to set carrier config value for. If no option");
+        pw.println("          is specified, it will choose the default voice SIM slot.");
+        pw.println("      -p: Value will be stored persistent");
         pw.println("  cc clear-values [-s SLOT_ID]");
         pw.println("    Clear all carrier override values that has previously been set");
-        pw.println("    with set-value");
+        pw.println("    with set-value or set-values-from-xml");
         pw.println("    Options are:");
         pw.println("      -s: The SIM slot ID to clear carrier config values for. If no option");
         pw.println("          is specified, it will choose the default voice SIM slot.");
@@ -1480,6 +1490,9 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             case CC_SET_VALUE: {
                 return handleCcSetValue();
             }
+            case CC_SET_VALUES_FROM_XML: {
+                return handleCcSetValuesFromXml();
+            }
             case CC_CLEAR_VALUES: {
                 return handleCcClearValues();
             }
@@ -1497,7 +1510,7 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         String key = null;
 
         // Parse all options
-        CcOptionParseResult options =  parseCcOptions(tag, false);
+        CcOptionParseResult options = parseCcOptions(tag, false);
         if (options == null) {
             return -1;
         }
@@ -1537,7 +1550,7 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         String tag = CARRIER_CONFIG_SUBCOMMAND + " " + CC_SET_VALUE + ": ";
 
         // Parse all options
-        CcOptionParseResult options =  parseCcOptions(tag, true);
+        CcOptionParseResult options = parseCcOptions(tag, true);
         if (options == null) {
             return -1;
         }
@@ -1574,6 +1587,11 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             errPw.println(tag + "ERROR: Not possible to override key with unknown type.");
             return -1;
         }
+        if (type == CcType.PERSISTABLE_BUNDLE) {
+            errPw.println(tag + "ERROR: Overriding of persistable bundle type is not supported. "
+                    + "Use set-values-from-xml instead.");
+            return -1;
+        }
 
         // Create an override bundle containing the key and value that should be overriden.
         PersistableBundle overrideBundle = getOverrideBundle(tag, type, key, valueList);
@@ -1600,13 +1618,79 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         return 0;
     }
 
+    // cc set-values-from-xml
+    private int handleCcSetValuesFromXml() {
+        PrintWriter errPw = getErrPrintWriter();
+        String tag = CARRIER_CONFIG_SUBCOMMAND + " " + CC_SET_VALUES_FROM_XML + ": ";
+
+        // Parse all options
+        CcOptionParseResult options = parseCcOptions(tag, false);
+        if (options == null) {
+            return -1;
+        }
+
+        // Get bundle containing all current carrier configuration values.
+        PersistableBundle originalValues = mCarrierConfigManager.getConfigForSubId(options.mSubId);
+        if (originalValues == null) {
+            errPw.println(tag + "No carrier config values found for subId " + options.mSubId + ".");
+            return -1;
+        }
+
+        PersistableBundle overrideBundle = readPersistableBundleFromXml(tag);
+        if (overrideBundle == null) {
+            return -1;
+        }
+
+        // Verify all values are valid types
+        for (String key : overrideBundle.keySet()) {
+            CcType type = getType(tag, key, originalValues);
+            if (type == CcType.UNKNOWN) {
+                errPw.println(tag + "ERROR: Not possible to override key with unknown type.");
+                return -1;
+            }
+        }
+
+        // Override the value
+        mCarrierConfigManager.overrideConfig(options.mSubId, overrideBundle, options.mPersistent);
+
+        // Find bundle containing all new carrier configuration values after the override.
+        PersistableBundle newValues = mCarrierConfigManager.getConfigForSubId(options.mSubId);
+        if (newValues == null) {
+            errPw.println(tag + "No carrier config values found for subId " + options.mSubId + ".");
+            return -1;
+        }
+
+        // Print the original and new values
+        overrideBundle.keySet().forEach(key -> {
+            CcType type = getType(tag, key, originalValues);
+            String originalValueString = ccValueToString(key, type, originalValues);
+            String newValueString = ccValueToString(key, type, newValues);
+            getOutPrintWriter().println("Previous value: \n" + originalValueString);
+            getOutPrintWriter().println("New value: \n" + newValueString);
+        });
+
+        return 0;
+    }
+
+    private PersistableBundle readPersistableBundleFromXml(String tag) {
+        PersistableBundle subIdBundles;
+        try {
+            subIdBundles = PersistableBundle.readFromStream(getRawInputStream());
+        } catch (IOException | RuntimeException e) {
+            PrintWriter errPw = getErrPrintWriter();
+            errPw.println(tag + e);
+            return null;
+        }
+
+        return subIdBundles;
+    }
+
     // cc clear-values
     private int handleCcClearValues() {
-        PrintWriter errPw = getErrPrintWriter();
         String tag = CARRIER_CONFIG_SUBCOMMAND + " " + CC_CLEAR_VALUES + ": ";
 
         // Parse all options
-        CcOptionParseResult options =  parseCcOptions(tag, false);
+        CcOptionParseResult options = parseCcOptions(tag, false);
         if (options == null) {
             return -1;
         }
@@ -1627,22 +1711,33 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         } else if (value != null) {
             if (value instanceof Boolean) {
                 return CcType.BOOLEAN;
-            } else if (value instanceof Double) {
+            }
+            if (value instanceof Double) {
                 return CcType.DOUBLE;
-            } else if (value instanceof double[]) {
+            }
+            if (value instanceof double[]) {
                 return CcType.DOUBLE_ARRAY;
-            } else if (value instanceof Integer) {
+            }
+            if (value instanceof Integer) {
                 return CcType.INT;
-            } else if (value instanceof int[]) {
+            }
+            if (value instanceof int[]) {
                 return CcType.INT_ARRAY;
-            } else if (value instanceof Long) {
+            }
+            if (value instanceof Long) {
                 return CcType.LONG;
-            } else if (value instanceof long[]) {
+            }
+            if (value instanceof long[]) {
                 return CcType.LONG_ARRAY;
-            } else if (value instanceof String) {
+            }
+            if (value instanceof String) {
                 return CcType.STRING;
-            } else if (value instanceof String[]) {
+            }
+            if (value instanceof String[]) {
                 return CcType.STRING_ARRAY;
+            }
+            if (value instanceof PersistableBundle) {
+                return CcType.PERSISTABLE_BUNDLE;
             }
         } else {
             // Current value was null and can therefore not be used in order to find the type.
@@ -1662,6 +1757,9 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             }
             if (key.endsWith("string_array") || key.endsWith("strings")) {
                 return CcType.STRING_ARRAY;
+            }
+            if (key.endsWith("bundle")) {
+                return CcType.PERSISTABLE_BUNDLE;
             }
         }
 
