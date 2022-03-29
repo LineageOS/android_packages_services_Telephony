@@ -917,12 +917,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"រលកសញ្ញាប៊្លូធូសរបស់អ្នក​មានកម្រិតខ្សោយ។ សូមសាកល្បងប្ដូរ​ទៅឧបករណ៍បំពងសំឡេងទូរសព្ទ។"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"ការជូនដំណឹង​អំពីគុណភាព​ហៅទូរសព្ទ"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"គណនី SIP ដែលបានបញ្ឈប់"</string>
-    <!-- no translation found for limited_service_alert_dialog_description (6686928033670697313) -->
-    <skip />
-    <!-- no translation found for do_not_show_again (8923026903375124550) -->
-    <skip />
-    <!-- no translation found for turn_off_wfc (2346229945400554258) -->
-    <skip />
-    <!-- no translation found for unavailable_emergency_calls_notification_name (4390236789690885552) -->
-    <skip />
+    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g> មិនអាចហៅទៅលេខសង្គ្រោះបន្ទាន់តាម Wi-Fi បានទេ។ \n\nការហៅ​ទៅលេខ​សង្គ្រោះ​បន្ទាន់​ត្រូវ​បាន​ធ្វើ​ឡើង​តាម​រយៈ​បណ្ដាញ​ទូរសព្ទ​ចល័ត។ ប្រសិន​បើ​ការគ្រប​ដណ្ដប់​សេវា​ទូរសព្ទ​ច័ត​មាន​កម្រិត នោះ​អ្នក​ប្រហែល​មិន​អាច​ហៅ​ទៅ​លេខ​សង្គ្រោះ​បន្ទាន់​បាន​ទេ។"</string>
+    <string name="do_not_show_again" msgid="8923026903375124550">"កុំ​បង្ហាញ​ទៀត"</string>
+    <string name="turn_off_wfc" msgid="2346229945400554258">"បិទ​ការហៅ​តាម Wi-Fi"</string>
+    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"ប្រហែល​មិន​អាច​ហៅ​ទៅ​លេខ​សង្គ្រោះ​បន្ទាន់​បាន​ទេ"</string>
 </resources>
