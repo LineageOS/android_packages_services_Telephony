@@ -917,12 +917,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Het bluetooth-signaal is zwak. Schakel over naar bellen op luidspreker."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Melding over gesprekskwaliteit"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Beëindigde SIP-accounts"</string>
-    <!-- no translation found for limited_service_alert_dialog_description (6686928033670697313) -->
-    <skip />
-    <!-- no translation found for do_not_show_again (8923026903375124550) -->
-    <skip />
-    <!-- no translation found for turn_off_wfc (2346229945400554258) -->
-    <skip />
-    <!-- no translation found for unavailable_emergency_calls_notification_name (4390236789690885552) -->
-    <skip />
+    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g> biedt geen ondersteuning voor noodoproepen via wifi. \n\nNoodoproepen worden geplaatst via een mobiel netwerk. Als er beperkte mobiele dekking is, kan je noodoproep mislukken."</string>
+    <string name="do_not_show_again" msgid="8923026903375124550">"Niet meer tonen"</string>
+    <string name="turn_off_wfc" msgid="2346229945400554258">"Bellen via wifi uitzetten"</string>
+    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"Noodoproepen zijn misschien niet beschikbaar"</string>
 </resources>
