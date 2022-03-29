@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"ಪ್ರವೇಶಿಸುವಿಕೆ"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"ಅವರಿಂದ ವೈ-ಫೈ ಕರೆ"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"ವೈ-ಫೈ ಕರೆ"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"ತೆರೆಯಲು ಮತ್ತೆ ಟ್ಯಾಪ್‌ ಮಾಡಿ"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"ಸಂದೇಶವನ್ನು ಡೀಕೋಡ್ ಮಾಡುವಾಗ ದೋಷವುಂಟಾಗಿದೆ."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"ನಿಮ್ಮ ಸೇವೆಯನ್ನು ಸಿಮ್‌ ಕಾರ್ಡ್‌ ಸಕ್ರಿಯಗೊಳಿಸಿದೆ ಮತ್ತು ನಿಮ್ಮ ಫೋನ್‌ನ ರೋಮಿಂಗ್ ಸಾಮರ್ಥ್ಯವನ್ನು ಅಪ್‌ಡೇಟ್‌ ಮಾಡಲಾಗಿದೆ."</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"ಹಲವಾರು ಸಕ್ರಿಯ ಕರೆಗಳು. ಹೊಸ ಕರೆ ಮಾಡುವ ಮೊದಲು ಅಸ್ತಿತ್ವದಲ್ಲಿರುವ ಕರೆಗಳನ್ನು ಅಂತ್ಯಗೊಳಿಸಿ ಅಥವಾ ವಿಲೀನಗೊಳಿಸಿ."</string>

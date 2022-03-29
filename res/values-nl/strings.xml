@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"Toegankelijkheid"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"Wifi-gesprek van"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"Wifi-gesprek"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"Tik nogmaals om te openen"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"Er is een fout opgetreden tijdens het decoderen van het bericht."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"Een simkaart heeft je service geactiveerd en heeft de roaming-mogelijkheden van je telefoon geüpdatet."</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"Er zijn te veel actieve gesprekken. Beëindig bestaande gesprekken of voeg ze samen voordat je een nieuw gesprek start."</string>

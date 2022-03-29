@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"Zana za ufikivu"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"Simu ya Wi-Fi kutoka kwa"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"Simu ya Wi-Fi"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"Gusa tena ili ufungue"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"Hitilafu imetokea wakati wa usimbuaji wa ujumbe."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"SIM kadi yako imeanzisha huduma yako na kusasisha uwezo wa simu yako wa kutumia mitandao mingine."</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"Kuna simu nyingi mno zinazoendelea. Tafadhali kata au uunganishe simu zinazoendelea kabla hujapiga nyingine."</string>
