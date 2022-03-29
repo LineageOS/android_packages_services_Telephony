@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"सुलभता"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"इससे वाई-फ़ाई कॉल"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"वाई-फ़ाई कॉल"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"खोलने के लिए फिर से टैप करें"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"संदेश डीकोड करते समय कोई गड़बड़ी हुई थी."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"सिम कार्ड द्वारा आपकी सेवा को सक्रिय किया गया है और आपके फ़ोन की रोमिंग क्षमताओं को अपडेट किया गया है."</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"बहुत ज़्यादा कॉल सक्रिय हैं. नया कॉल करने से पहले कृपया मौजूदा कॉल खत्म करें या उन्हें मिला दें."</string>
