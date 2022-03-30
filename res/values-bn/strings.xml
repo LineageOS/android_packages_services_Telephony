@@ -917,12 +917,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"আপনার ডিভাইসের ব্লুটুথ সিগনাল ভাল না। বদল করে স্পিকারফোন বেছে নিন।"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"ফোন কলের কোয়ালিটি সংক্রান্ত বিজ্ঞপ্তি"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"পুরনো SIP অ্যাকাউন্ট"</string>
-    <!-- no translation found for limited_service_alert_dialog_description (6686928033670697313) -->
-    <skip />
-    <!-- no translation found for do_not_show_again (8923026903375124550) -->
-    <skip />
-    <!-- no translation found for turn_off_wfc (2346229945400554258) -->
-    <skip />
-    <!-- no translation found for unavailable_emergency_calls_notification_name (4390236789690885552) -->
-    <skip />
+    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g>-এ, ওয়াই-ফাইয়ের মাধ্যমে জরুরি কল পরিষেবা কাজ করে না। \n\nমোবাইল নেটওয়ার্কের মাধ্যমে জরুরি কল করা হবে। সীমিত মোবাইল কভারেজ থাকলে, জরুরি কলের সুবিধা নাও পেতে পারেন।"</string>
+    <string name="do_not_show_again" msgid="8923026903375124550">"আর দেখতে চাই না"</string>
+    <string name="turn_off_wfc" msgid="2346229945400554258">"\'Wi-Fi কলিং\' বন্ধ করুন"</string>
+    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"জরুরি কল উপলভ্য নাও হতে পারে"</string>
 </resources>
