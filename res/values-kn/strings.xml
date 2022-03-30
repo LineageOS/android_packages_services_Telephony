@@ -917,12 +917,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"ನಿಮ್ಮ ಬ್ಲೂಟೂತ್ ಸಿಗ್ನಲ್ ದುರ್ಬಲವಾಗಿದೆ. ಸ್ಪೀಕರ್‌ಫೋನ್‌ಗೆ ಬದಲಾಯಿಸಲು ಪ್ರಯತ್ನಿಸಿ."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"ಕರೆ ಗುಣಮಟ್ಟದ ಅಧಿಸೂಚನೆ"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"ತಡೆಹಿಡಿಯಲಾಗಿರುವ SIP ಖಾತೆಗಳು"</string>
-    <!-- no translation found for limited_service_alert_dialog_description (6686928033670697313) -->
-    <skip />
-    <!-- no translation found for do_not_show_again (8923026903375124550) -->
-    <skip />
-    <!-- no translation found for turn_off_wfc (2346229945400554258) -->
-    <skip />
-    <!-- no translation found for unavailable_emergency_calls_notification_name (4390236789690885552) -->
-    <skip />
+    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"ವೈ-ಫೈ ಮೂಲಕ ತುರ್ತು ಕರೆಗಳನ್ನು <xliff:g id="SPN">%s</xliff:g> ಬೆಂಬಲಿಸುವುದಿಲ್ಲ. \n\nತುರ್ತು ಕರೆಗಳನ್ನು ಮೊಬೈಲ್ ನೆಟ್ ವರ್ಕ್ ಮೂಲಕ ಮಾಡಲಾಗುತ್ತದೆ. ಸೀಮಿತ ಮೊಬೈಲ್ ಕವರೇಜ್ ಲಭ್ಯವಿದ್ದಾಗ, ನಿಮ್ಮ ತುರ್ತು ಕರೆಗಳು ಕನೆಕ್ಟ್ ಆಗದೇ ಇರಬಹುದು."</string>
+    <string name="do_not_show_again" msgid="8923026903375124550">"ಮತ್ತೊಮ್ಮೆ ತೋರಿಸಬೇಡಿ"</string>
+    <string name="turn_off_wfc" msgid="2346229945400554258">"ವೈ-ಫೈ ಕರೆ ಮಾಡುವಿಕೆಯನ್ನು ಆಫ್ ಮಾಡಿ"</string>
+    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"ತುರ್ತು ಕರೆಗಳು ಲಭ್ಯವಿಲ್ಲದಿರಬಹುದು"</string>
 </resources>

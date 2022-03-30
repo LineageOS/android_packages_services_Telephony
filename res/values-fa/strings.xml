@@ -917,12 +917,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"سیگنال بلوتوث شما ضعیف است. از بلندگوی تلفن استفاده کنید."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"اعلان کیفیت تماس"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"‏حساب‌های SIP منسوخ‌شده"</string>
-    <!-- no translation found for limited_service_alert_dialog_description (6686928033670697313) -->
-    <skip />
-    <!-- no translation found for do_not_show_again (8923026903375124550) -->
-    <skip />
-    <!-- no translation found for turn_off_wfc (2346229945400554258) -->
-    <skip />
-    <!-- no translation found for unavailable_emergency_calls_notification_name (4390236789690885552) -->
-    <skip />
+    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"‏<xliff:g id="SPN">%s</xliff:g> از تماس‌های اضطراری ازطریق Wi-Fi پشتیبانی نمی‌کند. \n\nتماس‌های اضطراری ازطریق شبکه تلفن همراه برقرار خواهد شد. اگر پوشش تلفن همراه محدود باشد، ممکن است تماس اضطراری برقرار نشود."</string>
+    <string name="do_not_show_again" msgid="8923026903375124550">"دیگر نشان داده نشود"</string>
+    <string name="turn_off_wfc" msgid="2346229945400554258">"‏خاموش کردن تماس ازطریق Wi-Fi"</string>
+    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"ممکن است تماس‌های اضطراری دردسترس نباشد"</string>
 </resources>
