@@ -8510,6 +8510,16 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     private WorkSource getWorkSource(int uid) {
         String packageName = mApp.getPackageManager().getNameForUid(uid);
+        if (uid == Process.ROOT_UID && packageName == null) {
+            // Downstream WorkSource attribution inside the RIL requires both a UID and package name
+            // to be set for wakelock tracking, otherwise RIL requests fail with a runtime
+            // exception. ROOT_UID seems not to have a valid package name returned by
+            // PackageManager, so just fake it here to avoid issues when running telephony shell
+            // commands that plumb through the RIL as root, like so:
+            // $ adb root
+            // $ adb shell cmd phone ...
+            packageName = "root";
+        }
         return new WorkSource(uid, packageName);
     }
 
