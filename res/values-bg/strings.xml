@@ -889,6 +889,8 @@
     <string name="radio_info_band_mode_label" msgid="23480556225515290">"Избиране на радиодиапазон"</string>
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"Тип на гласовата мрежа:"</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"Тип на мрежата за данни:"</string>
+    <!-- no translation found for radio_info_override_network_type_label (4176280017221092005) -->
+    <skip />
     <string name="phone_index_label" msgid="6222406512768964268">"Избиране на индекс за телефон"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"Задаване на предпочитан тип мрежа:"</string>
     <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"Име на хост за позив (www.google.com) IPv4:"</string>
@@ -900,10 +902,14 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Опресняване"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"Превключване на проверката на DNS"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"Информация/настройки, специфични за ОЕМ"</string>
-    <string name="radio_info_endc_available" msgid="4410653375290113436">"Налично EN-DC:"</string>
-    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"Ограничено DCNR:"</string>
-    <string name="radio_info_nr_available" msgid="1321318331361249997">"Налично NR:"</string>
-    <string name="radio_info_nr_state" msgid="1337571996788535356">"Състояние на NR:"</string>
+    <!-- no translation found for radio_info_endc_available (2983767110681230019) -->
+    <skip />
+    <!-- no translation found for radio_info_dcnr_restricted (7147511536420148173) -->
+    <skip />
+    <!-- no translation found for radio_info_nr_available (3383388088451237182) -->
+    <skip />
+    <!-- no translation found for radio_info_nr_state (4158805093187555149) -->
+    <skip />
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"Честота за NR:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Задаване на режима за радиодиапазона"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Списъкът с диапазони се зарежда…"</string>
@@ -917,12 +923,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Сигналът ви за Bluetooth е слаб. Опитайте да превключите на високоговорител."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Известия за качеството на обаждането"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Оттеглени профили за SIP"</string>
-    <!-- no translation found for limited_service_alert_dialog_description (6686928033670697313) -->
-    <skip />
-    <!-- no translation found for do_not_show_again (8923026903375124550) -->
-    <skip />
-    <!-- no translation found for turn_off_wfc (2346229945400554258) -->
-    <skip />
-    <!-- no translation found for unavailable_emergency_calls_notification_name (4390236789690885552) -->
-    <skip />
+    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g> не поддържа спешни обаждания през Wi-Fi. \n\nСпешните обаждания ще се извършват през мобилна мрежа. Ако покритието на мобилната мрежа е лошо, е възможно спешното обаждане да не се осъществи."</string>
+    <string name="do_not_show_again" msgid="8923026903375124550">"Да не се показва отново"</string>
+    <string name="turn_off_wfc" msgid="2346229945400554258">"Включване на обажданията през Wi-Fi"</string>
+    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"Спешните обаждания може да не са налице"</string>
 </resources>
