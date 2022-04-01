@@ -296,6 +296,8 @@ public class ImsStateCallbackController {
             logd(mLogPrefix + "connectionReady " + subId);
 
             mSubId = subId;
+            if (subId == SubscriptionManager.INVALID_SUBSCRIPTION_ID) return;
+
             mState = STATE_READY;
             mReason = AVAILABLE;
             mHasConfig = true;
@@ -439,6 +441,8 @@ public class ImsStateCallbackController {
             logd(mLogPrefix + "connectionReady " + subId);
 
             mSubId = subId;
+            if (subId == SubscriptionManager.INVALID_SUBSCRIPTION_ID) return;
+
             mState = STATE_READY;
             mReason = AVAILABLE;
             mHasConfig = true;
@@ -642,7 +646,7 @@ public class ImsStateCallbackController {
         }
 
         void notifyInactive() {
-            if (VDBG) logv("CallbackWrapper notifyInactive subId=" + mSubId);
+            logd("CallbackWrapper notifyInactive subId=" + mSubId);
 
             try {
                 mCallback.onUnavailable(REASON_SUBSCRIPTION_INACTIVE);
