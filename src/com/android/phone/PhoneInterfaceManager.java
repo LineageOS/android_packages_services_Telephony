@@ -11219,11 +11219,17 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         Log.d(LOG_TAG, "getModemService");
         TelephonyPermissions.enforceShellOnly(Binder.getCallingUid(), "getModemService");
         TelephonyPermissions
-                        .enforceCallingOrSelfReadPrivilegedPhoneStatePermissionOrCarrierPrivilege(
+                .enforceCallingOrSelfReadPrivilegedPhoneStatePermissionOrCarrierPrivilege(
                         mApp, SubscriptionManager.INVALID_SUBSCRIPTION_ID,
                         "getModemService");
         result = mPhoneConfigurationManager.getModemService();
         Log.d(LOG_TAG, "result = " + result);
         return result;
+    }
+
+    @Override
+    public boolean isUsingNewDataStack() {
+        TelephonyPermissions.enforceShellOnly(Binder.getCallingUid(), "isUsingNewDataStack");
+        return getDefaultPhone().isUsingNewDataStack();
     }
 }
