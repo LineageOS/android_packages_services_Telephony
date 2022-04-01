@@ -734,7 +734,7 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         switch (arg) {
             case ENABLE: {
                 try {
-                    mInterface.enableDataConnectivity();
+                    mInterface.enableDataConnectivity(mContext.getOpPackageName());
                 } catch (RemoteException ex) {
                     Log.w(LOG_TAG, "data enable, error " + ex.getMessage());
                     errPw.println("Exception: " + ex.getMessage());
@@ -744,7 +744,7 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             }
             case DISABLE: {
                 try {
-                    mInterface.disableDataConnectivity();
+                    mInterface.disableDataConnectivity(mContext.getOpPackageName());
                 } catch (RemoteException ex) {
                     Log.w(LOG_TAG, "data disable, error " + ex.getMessage());
                     errPw.println("Exception: " + ex.getMessage());
