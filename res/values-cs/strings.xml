@@ -537,7 +537,6 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Pokud chcete volat, zapněte mobilní síť a vypněte režim letadla nebo spořič baterie."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Chcete-li provést hovor, vypněte režim Letadlo."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Chcete-li se připojit k bezdrátové síti a provést hovor, vypněte režim Letadlo."</string>
-    <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"Telefon je příliš zahřátý"</b>\n\n"Hovor nelze provést. Zkuste to znovu, až telefon vychladne.\n\nTísňové volání máte pořád k dispozici."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Chcete-li uskutečnit běžný hovor, opusťte režim tísňového volání."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"Přihlášení k síti nebylo úspěšné."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"Mobilní síť je nedostupná."</string>
@@ -637,8 +636,18 @@
     <string name="phone_in_ecm_notification_title" msgid="6825016389926367946">"Režim tísňového zpětného volání"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="653972232922670335">"Datové spojení zakázáno"</string>
     <string name="phone_in_ecm_notification_complete_time" msgid="7341624337163082759">"Datové připojení nebude dostupné do <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
-    <!-- format error in translation for alert_dialog_exit_ecm (7661603870224398025) -->
-    <!-- format error in translation for alert_dialog_not_avaialble_in_ecm (8717711120099503279) -->
+    <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="5425906903766466743">
+      <item quantity="few">]Telefon bude <xliff:g id="COUNT_1">%s</xliff:g> minuty v režimu zpětného tísňového volání. V tomto režimu nelze používat aplikace, které používají datové připojení. Chcete akci teď ukončit?</item>
+      <item quantity="many">]Telefon bude <xliff:g id="COUNT_1">%s</xliff:g> minuty v režimu zpětného tísňového volání. V tomto režimu nelze používat aplikace, které používají datové připojení. Chcete akci teď ukončit?</item>
+      <item quantity="other">]Telefon bude <xliff:g id="COUNT_1">%s</xliff:g> minut v režimu zpětného tísňového volání. V tomto režimu nelze používat aplikace, které používají datové připojení. Chcete akci teď ukončit?</item>
+      <item quantity="one">Telefon bude <xliff:g id="COUNT_0">%s</xliff:g> minutu v režimu zpětného tísňového volání. V tomto režimu nelze používat aplikace, které používají datové připojení. Chcete akci teď ukončit?</item>
+    </plurals>
+    <plurals name="alert_dialog_not_avaialble_in_ecm" formatted="false" msgid="1152682528741457004">
+      <item quantity="few">V režimu zpětného tísňového volání vybraná akce není k dispozici. Telefon v tomto režimu bude <xliff:g id="COUNT_1">%s</xliff:g> minuty. Chcete akci teď ukončit?</item>
+      <item quantity="many">V režimu zpětného tísňového volání vybraná akce není k dispozici. Telefon v tomto režimu bude <xliff:g id="COUNT_1">%s</xliff:g> minuty. Chcete akci teď ukončit?</item>
+      <item quantity="other">V režimu zpětného tísňového volání vybraná akce není k dispozici. Telefon v tomto režimu bude <xliff:g id="COUNT_1">%s</xliff:g> minut. Chcete akci teď ukončit?</item>
+      <item quantity="one">V režimu zpětného tísňového volání vybraná akce není k dispozici. Telefon v tomto režimu bude <xliff:g id="COUNT_0">%s</xliff:g> minutu. Chcete akci teď ukončit?</item>
+    </plurals>
     <string name="alert_dialog_in_ecm_call" msgid="1207545603149771978">"Během tísňového volání není vybraná akce k dispozici."</string>
     <string name="progress_dialog_exiting_ecm" msgid="9159080081676927217">"Ukončení režimu tísňového zpětného volání"</string>
     <string name="alert_dialog_yes" msgid="3532525979632841417">"Ano"</string>
@@ -646,7 +655,12 @@
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"Zavřít"</string>
     <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"Telefon je v režimu tísňového zpětného volání"</string>
     <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"Do <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
-    <!-- format error in translation for alert_dialog_exit_ecm_without_data_restriction_hint (7549850847524907932) -->
+    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
+      <item quantity="few">Telefon bude v režimu tísňového zpětného volání po dobu <xliff:g id="COUNT_1">%s</xliff:g> minut.\nChcete tento režim ukončit?</item>
+      <item quantity="many">Telefon bude v režimu tísňového zpětného volání po dobu <xliff:g id="COUNT_1">%s</xliff:g> minuty.\nChcete tento režim ukončit?</item>
+      <item quantity="other">Telefon bude v režimu tísňového zpětného volání po dobu <xliff:g id="COUNT_1">%s</xliff:g> minut.\nChcete tento režim ukončit?</item>
+      <item quantity="one">Telefon bude v režimu tísňového zpětného volání po dobu <xliff:g id="COUNT_0">%s</xliff:g> minuty.\nChcete tento režim ukončit?</item>
+    </plurals>
     <string name="voicemail_provider" msgid="4158806657253745294">"Služba"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"Konfigurace"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;Nenastaveno&gt;"</string>
@@ -818,7 +832,7 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"Nemůžete provést hovor, když už se jeden odchozí hovor vytáčí."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"Nemůžete provést hovor, protože máte nepřijatý příchozí hovor. Přijměte nebo odmítněte příchozí hovor, než provedete nový."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"Nemůžete provést hovor, protože volání bylo zakázáno systémovým příkazem ro.telephony.disable-call."</string>
-    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"Nemůžete uskutečnit hovor, protože už probíhají dva hovory. Než zahájíte nový hovor, jeden ze stávajících odpojte nebo je slučte do konference."</string>
+    <string name="callFailed_too_many_calls" msgid="5379426826618582180">"Nemůžete provést hovor, protože už probíhají dva hovory. Odpojte jeden hovor nebo je slučte do konference, než provedete nový hovor."</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"Pokud chcete používat službu <xliff:g id="SUPP_SERVICE">%s</xliff:g>, zkontrolujte, že máte zapnutá mobilní data. Můžete to změnit v nastavení mobilní sítě."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"Pokud chcete používat službu <xliff:g id="SUPP_SERVICE">%s</xliff:g>, zkontrolujte, že máte zapnutá mobilní data a datový roaming. Můžete to změnit v nastavení mobilní sítě."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"Pokud chcete používat službu <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>, zkontrolujte, že máte zapnutá mobilní data pro SIM kartu <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. Můžete to změnit v nastavení mobilní sítě."</string>
@@ -906,6 +920,8 @@
     <string name="radio_info_nr_available" msgid="1321318331361249997">"NR k dispozici:"</string>
     <string name="radio_info_nr_state" msgid="1337571996788535356">"Stav NR:"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"Frekvence NR:"</string>
+    <!-- no translation found for radio_info_network_slicing_config (7675131833885031563) -->
+    <skip />
     <string name="band_mode_title" msgid="7988822920724576842">"Nastavit režim pásma bezdrátového modulu"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Načítání seznamu pásem…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Nastavit"</string>
