@@ -355,7 +355,7 @@
                 android:label="@string/labelCF"
                 android:configChanges="orientation|screenSize|keyboardHidden"
                 android:exported="true"
-                android:theme="@style/DialerSettingsLight">
+                android:theme="@style/CallSettingsWithoutDividerTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
@@ -365,7 +365,7 @@
                 android:label="@string/labelCF"
                 android:configChanges="orientation|screenSize|keyboardHidden"
                 android:exported="true"
-                android:theme="@style/DialerSettingsLight">
+                android:theme="@style/CallSettingsWithoutDividerTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
@@ -385,7 +385,7 @@
                 android:label="@string/labelGSMMore"
                 android:configChanges="orientation|screenSize|keyboardHidden"
                 android:exported="true"
-                android:theme="@style/DialerSettingsLight">
+                android:theme="@style/CallSettingsWithoutDividerTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
@@ -395,7 +395,7 @@
         <activity android:name="com.android.phone.settings.fdn.FdnSetting"
                 android:label="@string/fdn"
                 android:exported="true"
-                android:theme="@style/DialerSettingsLight">
+                android:theme="@style/CallSettingsWithoutDividerTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
@@ -443,7 +443,7 @@
                 android:label="@string/call_settings"
                 android:configChanges="orientation|screenSize|keyboardHidden"
                 android:exported="true"
-                android:theme="@style/DialerSettingsLight">
+                android:theme="@style/CallSettingsWithoutDividerTheme">
             <intent-filter android:priority="1">
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.telecom.action.SHOW_CALL_SETTINGS" />
@@ -609,7 +609,7 @@
             android:configChanges="orientation|screenSize|keyboardHidden|screenLayout"
             android:screenOrientation="portrait"
             android:exported="true"
-            android:theme="@style/DialerSettingsLight">
+            android:theme="@style/CallSettingsWithoutDividerTheme">
             <intent-filter >
                 <!-- DO NOT RENAME. There are existing apps which use this string. -->
                 <action android:name="com.android.phone.CallFeaturesSetting.ADD_VOICEMAIL" />
