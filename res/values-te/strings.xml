@@ -408,9 +408,9 @@
     <string name="enable_disable_technology_news" msgid="2794845609698078400">"సాంకేతిక వార్తలు"</string>
     <string name="technology_news_enable" msgid="1908991199492598311">"సాంకేతిక వార్తలు ప్రారంభించబడ్డాయి"</string>
     <string name="technology_news_disable" msgid="8388582607149800889">"సాంకేతిక వార్తలు నిలిపివేయబడ్డాయి"</string>
-    <string name="enable_disable_multi_category" msgid="5958248155437940625">"బహుళ-వర్గాలు"</string>
-    <string name="multi_category_enable" msgid="4531915767817483960">"బహుళ-వర్గాలు ప్రారంభించబడ్డాయి"</string>
-    <string name="multi_category_disable" msgid="6325934413701238104">"బహుళ-వర్గాలు నిలిపివేయబడ్డాయి"</string>
+    <string name="enable_disable_multi_category" msgid="5958248155437940625">"బహుళ-కేటగిరీలు"</string>
+    <string name="multi_category_enable" msgid="4531915767817483960">"బహుళ-కేటగిరీలు ప్రారంభించబడ్డాయి"</string>
+    <string name="multi_category_disable" msgid="6325934413701238104">"బహుళ-కేటగిరీలు నిలిపివేయబడ్డాయి"</string>
     <string name="network_recommended" msgid="3444321100580250926">" (సిఫార్సు చేయడమైనది)"</string>
     <string name="network_lte" msgid="7206879277095094280">"LTE (సిఫార్సు చేయబడింది)"</string>
     <string name="network_4G" msgid="6800527815504223913">"4G (సిఫార్సు చేయబడింది)"</string>
@@ -596,7 +596,7 @@
     <string name="hac_mode_summary" msgid="7774989500136009881">"వినికిడి సహాయక సాధనం అనుకూలతను ప్రారంభించండి"</string>
     <string name="rtt_mode_title" msgid="3075948111362818043">"రియ‌ల్‌-టైమ్‌ టెక్స్ట్ (RTT) కాల్"</string>
     <string name="rtt_mode_summary" msgid="8631541375609989562">"వాయిస్ కాల్‌లో మెసేజ్‌లు పంపడానికి అనుమతించండి"</string>
-    <string name="rtt_mode_more_information" msgid="587500128658756318">"బధిరులు, వినికిడి సమస్యలు ఉన్న వారు, మాట్లాడటంలో సమస్యలు ఉన్న వారు లేదా కేవలం వాయిస్‌తో అర్థం చేసుకోలేని కాలర్‌లకు RTT సహాయపడుతుంది.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;మరింత తెలుసుకోండి&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT కాల్స్‌ సందేశ లిపి మార్పు వలె సేవ్ చేయబడతాయి\n       &lt;br&gt; - వీడియో కాల్స్‌ల కోసం RTT అందుబాటులో లేదు"</string>
+    <string name="rtt_mode_more_information" msgid="587500128658756318">"బధిరులు, వినికిడి సమస్యలు ఉన్న వారు, మాట్లాడటంలో సమస్యలు ఉన్న వారు లేదా కేవలం వాయిస్‌తో అర్థం చేసుకోలేని కాలర్‌లకు RTT సహాయపడుతుంది.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;మరింత తెలుసుకోండి&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT కాల్స్‌ సందేశ లిపి మార్పు లాగా సేవ్ చేయబడతాయి\n       &lt;br&gt; - వీడియో కాల్స్‌ల కోసం RTT అందుబాటులో లేదు"</string>
     <string name="no_rtt_when_roaming" msgid="5268008247378355389">"గమనిక: రోమింగ్‌లో ఉండగా RTTఅందుబాటులో ఉండదు"</string>
   <string-array name="tty_mode_entries">
     <item msgid="3238070884803849303">"TTY ఆఫ్‌లో ఉంది"</item>
@@ -680,7 +680,7 @@
     <string name="sim_label_emergency_calls" msgid="9078241989421522310">"అత్యవసర కాల్స్‌"</string>
     <string name="sim_description_emergency_calls" msgid="5146872803938897296">"అత్యవసర కాలింగ్ మాత్రమే"</string>
     <string name="sim_description_default" msgid="7474671114363724971">"SIM కార్డ్, స్లాట్: <xliff:g id="SLOT_ID">%s</xliff:g>"</string>
-    <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"యాక్సెస్‌ సామర్థ్యం"</string>
+    <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"యాక్సెసిబిలిటీ"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"వీరి నుండి Wi-Fi కాల్"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"Wi-Fi కాల్"</string>
     <string name="emergency_action_launch_hint" msgid="2762016865340891314">"తెరవడానికి మళ్లీ నొక్కండి"</string>

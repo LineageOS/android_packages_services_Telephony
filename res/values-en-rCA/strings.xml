@@ -534,7 +534,7 @@
     <string name="notification_voicemail_no_vm_number" msgid="3423686009815186750">"Voicemail number unknown"</string>
     <string name="notification_network_selection_title" msgid="255595526707809121">"No service"</string>
     <string name="notification_network_selection_text" msgid="553288408722427659">"Selected network<xliff:g id="OPERATOR_NAME">%s</xliff:g> unavailable"</string>
-    <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Turn on mobile network, turn off airplane mode or turn off battery saver mode to make a call."</string>
+    <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Turn on mobile network, turn off Airplane mode or turn off Battery Saver mode to make a call."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Turn off Airplane mode to make a call."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Turn off Airplane mode or connect to a wireless network to make a call."</string>
     <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"Phone too hot"</b>\n\n"Can\'t complete this call. Try again when your phone cools down.\n\nYou can still make emergency calls."</string>
@@ -565,7 +565,7 @@
     <string name="emergency_call_shortcut_hint" msgid="1290485125107779500">"Tap again to call <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="1695305158151408629">"Turning on radio…"</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="4329131876852608587">"No service. Trying again…"</string>
-    <string name="radio_off_during_emergency_call" msgid="8011154134040481609">"Cannot enter Airplane mode during an emergency call."</string>
+    <string name="radio_off_during_emergency_call" msgid="8011154134040481609">"Can\'t enter Airplane mode during an emergency call."</string>
     <string name="dial_emergency_error" msgid="825822413209026039">"Can\'t call. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> is not an emergency number."</string>
     <string name="dial_emergency_empty_error" msgid="2785803395047793634">"Can\'t call. Dial an emergency number."</string>
     <string name="dial_emergency_calling_not_available" msgid="6485846193794727823">"Emergency calling not available"</string>
