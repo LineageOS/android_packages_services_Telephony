@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"ភាពងាយស្រួល"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"ការហៅតាម Wi-Fi ពី"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"ហៅតាម Wi-Fi"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"ប៉ះម្ដងទៀតដើម្បីបើក"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"មានកំហុសខណៈពេលឌិកូដសារ។"</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"ស៊ីមកាតបានធ្វើឲ្យសេវាកម្មរបស់អ្នកសកម្ម និងបានធ្វើបច្ចុប្បន្នភាពសមត្ថភាពរ៉ូមីងសម្រាប់ទូរស័ព្ទរបស់អ្នក។"</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"មាន​ការ​ហៅ​ដែល​សកម្ម​ច្រើន​ពេក។ សូម​បញ្ចប់ ឬ​​ដាក់​​បញ្ចូល​គ្នា​ការ​ហៅ​ដែល​មាន​ស្រាប់​​មុន​ពេល​ដាក់​ការ​ហៅ​ថ្មី។"</string>
@@ -890,6 +889,7 @@
     <string name="radio_info_band_mode_label" msgid="23480556225515290">"ជ្រើសរើស​កម្រិត​បញ្ជូន​វិទ្យុ"</string>
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"ប្រភេទបណ្តាញសំឡេង៖"</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"ប្រភេទបណ្តាញទិន្នន័យ៖"</string>
+    <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"លុប​ពី​លើ​ប្រភេទ​បណ្ដាញ៖"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"ជ្រើសរើស​សន្ទស្សន៍​ទូរសព្ទ"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"កំណត់ប្រភេទបណ្ដាញដែលពេញចិត្ត៖"</string>
     <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"ភីង​ឈ្មោះ​ម៉ាស៊ីន (www.google.com) IPv4 ៖"</string>
@@ -901,10 +901,10 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"ផ្ទុកឡើងវិញ"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"បិទ/បើកការពិនិត្យ DNS"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"ការ​កំណត់/ព័ត៌មាន​ជាក់លាក់ OEM"</string>
-    <string name="radio_info_endc_available" msgid="4410653375290113436">"មាន EN-DC៖"</string>
-    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR ត្រូវ​បាន​រឹតត្បិត៖"</string>
-    <string name="radio_info_nr_available" msgid="1321318331361249997">"មាន NR៖"</string>
-    <string name="radio_info_nr_state" msgid="1337571996788535356">"ស្ថានភាព NR៖"</string>
+    <string name="radio_info_endc_available" msgid="2983767110681230019">"អាច​ប្រើ EN-DC បាន (NSA)៖"</string>
+    <string name="radio_info_dcnr_restricted" msgid="7147511536420148173">"បាន​ដាក់​កំហិត DCNR (NSA)៖"</string>
+    <string name="radio_info_nr_available" msgid="3383388088451237182">"អាច​ប្រើ NR បាន (NSA)៖"</string>
+    <string name="radio_info_nr_state" msgid="4158805093187555149">"ស្ថានភាព NR (NSA)៖"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"កម្រិត​ញឹកញាប់​នៃ NR៖"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"កំណត់​មុខងារ​កម្រិត​បញ្ជូន​វិទ្យុ"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"កំពុងដំណើរការបញ្ជីក្រុម…"</string>
@@ -918,12 +918,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"រលកសញ្ញាប៊្លូធូសរបស់អ្នក​មានកម្រិតខ្សោយ។ សូមសាកល្បងប្ដូរ​ទៅឧបករណ៍បំពងសំឡេងទូរសព្ទ។"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"ការជូនដំណឹង​អំពីគុណភាព​ហៅទូរសព្ទ"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"គណនី SIP ដែលបានបញ្ឈប់"</string>
-    <!-- no translation found for limited_service_alert_dialog_description (6686928033670697313) -->
-    <skip />
-    <!-- no translation found for do_not_show_again (8923026903375124550) -->
-    <skip />
-    <!-- no translation found for turn_off_wfc (2346229945400554258) -->
-    <skip />
-    <!-- no translation found for unavailable_emergency_calls_notification_name (4390236789690885552) -->
-    <skip />
+    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g> មិនអាចហៅទៅលេខសង្គ្រោះបន្ទាន់តាម Wi-Fi បានទេ។ \n\nការហៅ​ទៅលេខ​សង្គ្រោះ​បន្ទាន់​ត្រូវ​បាន​ធ្វើ​ឡើង​តាម​រយៈ​បណ្ដាញ​ទូរសព្ទ​ចល័ត។ ប្រសិន​បើ​ការគ្រប​ដណ្ដប់​សេវា​ទូរសព្ទ​ច័ត​មាន​កម្រិត នោះ​អ្នក​ប្រហែល​មិន​អាច​ហៅ​ទៅ​លេខ​សង្គ្រោះ​បន្ទាន់​បាន​ទេ។"</string>
+    <string name="do_not_show_again" msgid="8923026903375124550">"កុំ​បង្ហាញ​ទៀត"</string>
+    <string name="turn_off_wfc" msgid="2346229945400554258">"បិទ​ការហៅ​តាម Wi-Fi"</string>
+    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"ប្រហែល​មិន​អាច​ហៅ​ទៅ​លេខ​សង្គ្រោះ​បន្ទាន់​បាន​ទេ"</string>
 </resources>

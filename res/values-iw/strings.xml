@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"נגישות"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"‏שיחת Wi-Fi מאת"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"‏שיחת Wi-Fi"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"יש להקיש שוב כדי לפתוח"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"אירעה שגיאה בעת פענוח ההודעה."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"‏כרטיס SIM הפעיל את השירות שלך ועדכן את יכולות הנדידה של הטלפון."</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"יש יותר מדי שיחות פעילות. כדי להתחיל שיחה חדשה עליך לסיים או למזג חלק מהשיחות הפעילות."</string>
@@ -890,6 +889,7 @@
     <string name="radio_info_band_mode_label" msgid="23480556225515290">"בחירת תדר רדיו"</string>
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"סוג רשת קולית:"</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"סוג רשת נתונים:"</string>
+    <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"שינוי מברירת המחדל של סוג הרשת:"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"בחירת אינדקס טלפון"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"הגדרת סוג רשת מועדף:"</string>
     <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"‏נדנוד לשם המארח (www.google.com) מסוג IPv4:"</string>
@@ -901,10 +901,10 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"רענון"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"‏החלפת מצב של בדיקת DNS"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"‏מידע/הגדרות ספציפיים ל-OEM"</string>
-    <string name="radio_info_endc_available" msgid="4410653375290113436">"‏תומך ב-EN-DC:"</string>
-    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"‏לא תומך ב-5G NR:"</string>
-    <string name="radio_info_nr_available" msgid="1321318331361249997">"‏תומך ב-5G NR:"</string>
-    <string name="radio_info_nr_state" msgid="1337571996788535356">"‏מצב 5G NR:"</string>
+    <string name="radio_info_endc_available" msgid="2983767110681230019">"‏זמין ל-EN-DC‏ (NSA):"</string>
+    <string name="radio_info_dcnr_restricted" msgid="7147511536420148173">"‏מוגבל על ידי DCNR‏ (NSA):"</string>
+    <string name="radio_info_nr_available" msgid="3383388088451237182">"‏זמין ל-NR‏ (NSA):"</string>
+    <string name="radio_info_nr_state" msgid="4158805093187555149">"‏מצב NR‏ (NSA):"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"‏תדירות 5G NR:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"הגדרת מצב תדרים של רדיו"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"הטעינה של רשימת התדרים מתבצעת…"</string>
@@ -918,12 +918,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"‏הקליטה של ה-Bluetooth חלשה. כדאי לעבור לדיבורית."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"התראה על איכות השיחה"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"‏חשבונות SIP שהוצאו משימוש"</string>
-    <!-- no translation found for limited_service_alert_dialog_description (6686928033670697313) -->
-    <skip />
-    <!-- no translation found for do_not_show_again (8923026903375124550) -->
-    <skip />
-    <!-- no translation found for turn_off_wfc (2346229945400554258) -->
-    <skip />
-    <!-- no translation found for unavailable_emergency_calls_notification_name (4390236789690885552) -->
-    <skip />
+    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"‏אי אפשר להתקשר למוקדי חירום באמצעות Wi-Fi עם <xliff:g id="SPN">%s</xliff:g>. \n\nשיחות החירום יהיו באמצעות הרשת הסלולרית. אם לא תהיה קליטה טובה, יכול להיות שלא תהיה לך אפשרות להתקשר למוקד החירום."</string>
+    <string name="do_not_show_again" msgid="8923026903375124550">"אין צורך להציג את זה שוב"</string>
+    <string name="turn_off_wfc" msgid="2346229945400554258">"‏השבתת השיחות באמצעות Wi-Fi"</string>
+    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"יכול להיות שאי אפשר יהיה להתקשר למוקדי חירום"</string>
 </resources>

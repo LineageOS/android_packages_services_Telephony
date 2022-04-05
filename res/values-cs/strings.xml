@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"Přístupnost"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"Hovor přes Wi-Fi:"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"Volání přes Wi-Fi"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"Akci provedete opětovným klepnutím"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"Při dekódování zprávy došlo k chybě."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"SIM karta aktivovala vaši službu a byly aktualizovány roamingové možnosti telefonu."</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"Máte příliš mnoho aktivních hovorů. Ukončete nebo spojte stávající hovory, než zahájíte nový."</string>
@@ -890,6 +889,7 @@
     <string name="radio_info_band_mode_label" msgid="23480556225515290">"Zvolit pásmo bezdrátového modulu"</string>
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"Typ hlasové sítě:"</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"Typ datové sítě:"</string>
+    <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"Přepsat typ sítě:"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"Vybrat telefonní seznam"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"Nastavit upřednostňovaný typ sítě:"</string>
     <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"Ping názvu hostitele (www.google.com) IPv4:"</string>
@@ -901,10 +901,10 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Obnovit"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"Přepnout kontrolu DNS"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"Informace a nastavení specifické pro výrobce OEM"</string>
-    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC k dispozici:"</string>
-    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR zakázáno:"</string>
-    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR k dispozici:"</string>
-    <string name="radio_info_nr_state" msgid="1337571996788535356">"Stav NR:"</string>
+    <string name="radio_info_endc_available" msgid="2983767110681230019">"EN-DC k dispozici (NSA):"</string>
+    <string name="radio_info_dcnr_restricted" msgid="7147511536420148173">"DCNR – omezeno (NSA):"</string>
+    <string name="radio_info_nr_available" msgid="3383388088451237182">"NR k dispozici (NSA):"</string>
+    <string name="radio_info_nr_state" msgid="4158805093187555149">"Stav NR (NSA):"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"Frekvence NR:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Nastavit režim pásma bezdrátového modulu"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Načítání seznamu pásem…"</string>
@@ -918,12 +918,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Signál sítě Bluetooth je slabý. Zkuste přepnout na hlasitý odposlech."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Oznámení o kvalitě hovoru"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Zastaralé účty SIP"</string>
-    <!-- no translation found for limited_service_alert_dialog_description (6686928033670697313) -->
-    <skip />
-    <!-- no translation found for do_not_show_again (8923026903375124550) -->
-    <skip />
-    <!-- no translation found for turn_off_wfc (2346229945400554258) -->
-    <skip />
-    <!-- no translation found for unavailable_emergency_calls_notification_name (4390236789690885552) -->
-    <skip />
+    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"Operátor <xliff:g id="SPN">%s</xliff:g> nepodporuje tísňové volání přes Wi-Fi. \n\nTísňové hovory se proto uskuteční v mobilní síti. Pokud mobilní síť nemá dostatečné pokrytí, tísňové volání se nemusí spojit."</string>
+    <string name="do_not_show_again" msgid="8923026903375124550">"Už nezobrazovat"</string>
+    <string name="turn_off_wfc" msgid="2346229945400554258">"Vypnout volání přes Wi-Fi"</string>
+    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"Tísňové volání může být nedostupné"</string>
 </resources>

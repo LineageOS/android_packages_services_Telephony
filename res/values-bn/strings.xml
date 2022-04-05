@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"অ্যাক্সেসযোগ্যতা"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"এর থেকে Wi-Fi কল"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"ওয়াই-ফাই কল"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"খোলার জন্য আবার আলতো চাপুন"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"বার্তাটি ডিকোড করার সময় একটি ত্রুটি ঘটেছে৷"</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"একটি সিম কার্ড আপনার পরিষেবা সক্রিয় করেছে এবং আপনার ফোনের রোমিং ক্ষমতা আপডেট করা হয়েছে৷"</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"অনেকগুলি কল সক্রিয় রয়েছে। অনুগ্রহ করে একটি নতুন কল করার আগে বিদ্যমান কলগুলি কেটে দিন বা এটিকে সেই কলগুলিতে অন্তর্ভুক্ত করুন।"</string>
@@ -890,6 +889,7 @@
     <string name="radio_info_band_mode_label" msgid="23480556225515290">"রেডিও ব্যান্ড বেছে নিন"</string>
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"ভয়েস নেটওয়ার্কের প্রকার:"</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"ডেটা নেটওয়ার্কের প্রকার:"</string>
+    <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"ওভাররাইড নেটওয়ার্কের ধরন:"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"ফোনের ইন্ডেক্স বেছে নিন"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"পছন্দের নেটওয়ার্ক সেট করুন:"</string>
     <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"হোস্টনামে(www.google.com) IPv4 পিং করুন:"</string>
@@ -901,10 +901,10 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"রিফ্রেশ"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"DNS চেক টগল করুন"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"OEM-নির্দিষ্ট তথ্য/সেটিংস"</string>
-    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC উপলভ্য:"</string>
-    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR সীমাবদ্ধ করা আছে:"</string>
-    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR উপলভ্য:"</string>
-    <string name="radio_info_nr_state" msgid="1337571996788535356">"NR স্ট্যাটাস:"</string>
+    <string name="radio_info_endc_available" msgid="2983767110681230019">"এন-ডিসি (EN-DC) উপলভ্য (এনএসএ) (NSA):"</string>
+    <string name="radio_info_dcnr_restricted" msgid="7147511536420148173">"ডিসিএনআর (DCNR) সীমাবদ্ধ (এনএসএ) (NSA):"</string>
+    <string name="radio_info_nr_available" msgid="3383388088451237182">"এনআর (NR) উপলভ্য (এনএসএ) (NSA):"</string>
+    <string name="radio_info_nr_state" msgid="4158805093187555149">"এনআর (NR) স্ট্যাটাস (এনএসএ) (NSA):"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR ফ্রিকোয়েন্সি:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"রেডিও ব্যান্ড মোড সেট করুন"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"ব্যান্ড তালিকা লোড হচ্ছে..."</string>
@@ -918,12 +918,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"আপনার ডিভাইসের ব্লুটুথ সিগনাল ভাল না। বদল করে স্পিকারফোন বেছে নিন।"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"ফোন কলের কোয়ালিটি সংক্রান্ত বিজ্ঞপ্তি"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"পুরনো SIP অ্যাকাউন্ট"</string>
-    <!-- no translation found for limited_service_alert_dialog_description (6686928033670697313) -->
-    <skip />
-    <!-- no translation found for do_not_show_again (8923026903375124550) -->
-    <skip />
-    <!-- no translation found for turn_off_wfc (2346229945400554258) -->
-    <skip />
-    <!-- no translation found for unavailable_emergency_calls_notification_name (4390236789690885552) -->
-    <skip />
+    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g>-এ, ওয়াই-ফাইয়ের মাধ্যমে জরুরি কল পরিষেবা কাজ করে না। \n\nমোবাইল নেটওয়ার্কের মাধ্যমে জরুরি কল করা হবে। সীমিত মোবাইল কভারেজ থাকলে, জরুরি কলের সুবিধা নাও পেতে পারেন।"</string>
+    <string name="do_not_show_again" msgid="8923026903375124550">"আর দেখতে চাই না"</string>
+    <string name="turn_off_wfc" msgid="2346229945400554258">"\'Wi-Fi কলিং\' বন্ধ করুন"</string>
+    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"জরুরি কল উপলভ্য নাও হতে পারে"</string>
 </resources>
