@@ -889,7 +889,6 @@
     <string name="radio_info_band_mode_label" msgid="23480556225515290">"ເລືອກແຖບຄວາມຖີ່ວິທະຍຸ"</string>
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"ປະເພດເຄືອຂ່າຍສຽງ:"</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"ປະເພດເຄືອຂ່າຍຂໍ້ມູນ:"</string>
-    <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"ຍົກເລີກປະເພດເຄືອຂ່າຍ:"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"ເລືອກດັດຊະນີໂທລະສັບ"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"ເລືອກປະເພດເຄືອຂ່າຍທີ່ຕ້ອງການໃຊ້:"</string>
     <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"Ping Hostname(www.google.com) IPv4:"</string>
@@ -901,10 +900,10 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"ໂຫຼດຂໍ້ມູນໃໝ່"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"ເປີດ/ປິດ ການກວດ DNS"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"ຂໍ້ມູນ/ການຕັ້ງຄ່າສະເພາະ OEM"</string>
-    <string name="radio_info_endc_available" msgid="2983767110681230019">"ສາມາດໃຊ້ EN-DC ໄດ້ (NSA):"</string>
-    <string name="radio_info_dcnr_restricted" msgid="7147511536420148173">"ຈຳກັດ DCNR (NSA):"</string>
-    <string name="radio_info_nr_available" msgid="3383388088451237182">"ສາມາດໃຊ້ NR ໄດ້ (NSA):"</string>
-    <string name="radio_info_nr_state" msgid="4158805093187555149">"ສະຖານະ NR (NSA):"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"ມີ EN-DC:"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"ຈຳກັດ DCNR ໄວ້ແລ້ວ:"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"ມີ NR:"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"ສະຖານະ NR:"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"ຄວາມຖີ່ NR:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"ຕັ້ງໂໝດແຖບຄວາມຖີ່ວິທະຍຸ"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"ກຳລັງດາວໂຫລດລາຍຊື່ແຖບຄວາມຖີ່..."</string>

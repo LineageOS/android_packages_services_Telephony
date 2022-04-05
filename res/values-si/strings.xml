@@ -889,7 +889,6 @@
     <string name="radio_info_band_mode_label" msgid="23480556225515290">"රේඩියෝ කලාපය තෝරන්න"</string>
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"හඬ ජාල වර්ගය:"</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"දත්ත ජාල වර්ගය:"</string>
-    <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"ජාල වර්ගය ප්‍රතික්ෂේප කරන්න:"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"දුරකථන දර්ශකය තෝරන්න"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"වඩා කැමති ජාල වර්ගය සකසන්න:"</string>
     <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"සත්කාරක නම පිං කරන්න(www.google.com) IPv4:"</string>
@@ -901,10 +900,10 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"නැවුම් කරන්න"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"DNS පරීක්ෂාව ටොගල කරන්න"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"OEM-විශේෂිත තොරතුරු/සැකසීම්"</string>
-    <string name="radio_info_endc_available" msgid="2983767110681230019">"EN-DC තිබේ (NSA):"</string>
-    <string name="radio_info_dcnr_restricted" msgid="7147511536420148173">"DCNR සීමිතයි (NSA):"</string>
-    <string name="radio_info_nr_available" msgid="3383388088451237182">"NR තිබේ (NSA):"</string>
-    <string name="radio_info_nr_state" msgid="4158805093187555149">"NR තත්ත්වය (NSA):"</string>
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC ලබා ගත හැකි:"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR සීමා කළ:"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR ලබා ගත හැකි:"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"NR තත්ත්වය:"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR සංඛ්‍යාතය:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"රේඩියෝ කලාප ප්‍රකාරය සකසන්න"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"කලාප ලැයිස්තුව පූරණය කරමින්…"</string>
@@ -918,8 +917,12 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"ඔබේ බ්ලූටූත් සංඥාව දුර්වලයි. ස්පීකර් දුරකථනයට මාරු වීමට උත්සාහ කරන්න."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"ඇමතුම් ගුණත්ව දැනුම්දීම"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"අතහැර දැමූ SIP ගිණුම්"</string>
-    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g> Wi-Fi ඔස්සේ හදිසි ඇමතුම් වෙත සහාය නොදක්වයි. \n\nහදිසි ඇමතුම් ජංගම ජාලයක් හරහා ගනු ලැබේ. සීමිත ජංගම ආවරණයක් තිබේ නම්, ඔබේ හදිසි ඇමතුම නොයාමට ඉඩ ඇත."</string>
-    <string name="do_not_show_again" msgid="8923026903375124550">"නැවත නොපෙන්වන්න"</string>
-    <string name="turn_off_wfc" msgid="2346229945400554258">"Wi-Fi ඇමතීම ක්‍රියාවිරහිත කරන්න"</string>
-    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"හදිසි ඇමතුම් ලබා ගත නොහැකි වීමට ඉඩ ඇත"</string>
+    <!-- no translation found for limited_service_alert_dialog_description (6686928033670697313) -->
+    <skip />
+    <!-- no translation found for do_not_show_again (8923026903375124550) -->
+    <skip />
+    <!-- no translation found for turn_off_wfc (2346229945400554258) -->
+    <skip />
+    <!-- no translation found for unavailable_emergency_calls_notification_name (4390236789690885552) -->
+    <skip />
 </resources>

@@ -889,8 +889,6 @@
     <string name="radio_info_band_mode_label" msgid="23480556225515290">"Selectați banda radio"</string>
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"Tipul rețelei de voce:"</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"Tipul rețelei de date:"</string>
-    <!-- no translation found for radio_info_override_network_type_label (4176280017221092005) -->
-    <skip />
     <string name="phone_index_label" msgid="6222406512768964268">"Selectați indexul telefonului"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"Setați tipul preferat de rețea:"</string>
     <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"Dați ping adresei IPv4 a numelui de gazdă (www.google.com):"</string>
@@ -902,14 +900,10 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Actualizați"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"Activați/dezactivați verificarea DNS"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"Informații/Setări caracteristice OEM"</string>
-    <!-- no translation found for radio_info_endc_available (2983767110681230019) -->
-    <skip />
-    <!-- no translation found for radio_info_dcnr_restricted (7147511536420148173) -->
-    <skip />
-    <!-- no translation found for radio_info_nr_available (3383388088451237182) -->
-    <skip />
-    <!-- no translation found for radio_info_nr_state (4158805093187555149) -->
-    <skip />
+    <string name="radio_info_endc_available" msgid="4410653375290113436">"Disponibilă EN-DC:"</string>
+    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"Restricționată DCNR:"</string>
+    <string name="radio_info_nr_available" msgid="1321318331361249997">"Disponibilă NR:"</string>
+    <string name="radio_info_nr_state" msgid="1337571996788535356">"Stare NR:"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"Frecvență NR:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Setați Modul bandă radio"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Se încarcă lista de benzi…"</string>
@@ -923,8 +917,12 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Semnalul Bluetooth este slab. Încercați să folosiți difuzorul."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Notificare privind calitatea apelului"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Conturi SIP învechite"</string>
-    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g> nu acceptă apelurile de urgență prin Wi-Fi. \n\nApelurile de urgență vor fi inițiate printr-o rețea mobilă. Dacă acoperirea mobilă este limitată, este posibil ca apelul dvs. de urgență să nu fie inițiat."</string>
-    <string name="do_not_show_again" msgid="8923026903375124550">"Nu mai afișa"</string>
-    <string name="turn_off_wfc" msgid="2346229945400554258">"Dezactivați apelarea prin Wi-Fi"</string>
-    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"Este posibil ca apelurile de urgență să nu fie disponibile"</string>
+    <!-- no translation found for limited_service_alert_dialog_description (6686928033670697313) -->
+    <skip />
+    <!-- no translation found for do_not_show_again (8923026903375124550) -->
+    <skip />
+    <!-- no translation found for turn_off_wfc (2346229945400554258) -->
+    <skip />
+    <!-- no translation found for unavailable_emergency_calls_notification_name (4390236789690885552) -->
+    <skip />
 </resources>
