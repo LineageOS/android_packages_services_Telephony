@@ -889,6 +889,7 @@
     <string name="radio_info_band_mode_label" msgid="23480556225515290">"Frequenzbereich auswählen"</string>
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"Sprachnetzwerktyp:"</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"Datennetzwerktyp:"</string>
+    <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"Netzwerktyp überschreiben:"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"Smartphone-Index auswählen"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"Bevorzugten Netzwerktyp festlegen:"</string>
     <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"Hostname (www.google.com) pingen, IPv4:"</string>
@@ -900,10 +901,10 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Aktualisieren"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"DNS-Überprüfung ein-/ausschalten"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"OEM-spezifische Infos/Einstellungen"</string>
-    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC verfügbar:"</string>
-    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR eingeschränkt:"</string>
-    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR verfügbar:"</string>
-    <string name="radio_info_nr_state" msgid="1337571996788535356">"NR-Status:"</string>
+    <string name="radio_info_endc_available" msgid="2983767110681230019">"EN-DC verfügbar (NSA):"</string>
+    <string name="radio_info_dcnr_restricted" msgid="7147511536420148173">"DCNR eingeschränkt (NSA):"</string>
+    <string name="radio_info_nr_available" msgid="3383388088451237182">"NR verfügbar (NSA):"</string>
+    <string name="radio_info_nr_state" msgid="4158805093187555149">"NR-Status (NSA):"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR-Frequenz:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Frequenzbereichmodus festlegen"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Frequenzliste wird geladen…"</string>
@@ -917,12 +918,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Das Bluetooth-Signal ist schwach. Verwende die Freisprechfunktion."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Benachrichtigung zu Anrufqualität"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Eingestellte SIP-Konten"</string>
-    <!-- no translation found for limited_service_alert_dialog_description (6686928033670697313) -->
-    <skip />
-    <!-- no translation found for do_not_show_again (8923026903375124550) -->
-    <skip />
-    <!-- no translation found for turn_off_wfc (2346229945400554258) -->
-    <skip />
-    <!-- no translation found for unavailable_emergency_calls_notification_name (4390236789690885552) -->
-    <skip />
+    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g> unterstützt keine Notrufe über WLAN. \n\nNotrufe erfolgen über ein Mobilfunknetz. Wenn die Netzabdeckung nicht ausreicht, kann der Notruf möglicherweise nicht getätigt werden."</string>
+    <string name="do_not_show_again" msgid="8923026903375124550">"Nicht mehr anzeigen"</string>
+    <string name="turn_off_wfc" msgid="2346229945400554258">"WLAN-Telefonie deaktivieren"</string>
+    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"Notrufe sind eventuell nicht verfügbar"</string>
 </resources>
