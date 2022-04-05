@@ -889,8 +889,7 @@
     <string name="radio_info_band_mode_label" msgid="23480556225515290">"ரேடியோ பேண்டைத் தேர்ந்தெடுக்கவும்"</string>
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"குரல் நெட்வொர்க் வகை:"</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"டேட்டா நெட்வொர்க்கின் வகை:"</string>
-    <!-- no translation found for radio_info_override_network_type_label (4176280017221092005) -->
-    <skip />
+    <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"மீறிச் செயல்படும் நெட்வொர்க் வகை:"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"ஃபோன் அட்டவணையைத் தேர்ந்தெடுக்கவும்"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"விரும்பப்படும் நெட்வொர்க் வகையை அமைக்கவும்:"</string>
     <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"ஹோஸ்ட்பெயர்(www.google.com) IPv4ஐப் பிங் செய்:"</string>
@@ -902,14 +901,10 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"புதுப்பி"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"DNS சரிபார்ப்பை நிலைமாற்று"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"OEM சார்ந்த தகவல்/அமைப்புகள்"</string>
-    <!-- no translation found for radio_info_endc_available (2983767110681230019) -->
-    <skip />
-    <!-- no translation found for radio_info_dcnr_restricted (7147511536420148173) -->
-    <skip />
-    <!-- no translation found for radio_info_nr_available (3383388088451237182) -->
-    <skip />
-    <!-- no translation found for radio_info_nr_state (4158805093187555149) -->
-    <skip />
+    <string name="radio_info_endc_available" msgid="2983767110681230019">"EN-DC உள்ளது (NSA):"</string>
+    <string name="radio_info_dcnr_restricted" msgid="7147511536420148173">"DCNR கட்டுப்படுத்தப்பட்டது (NSA):"</string>
+    <string name="radio_info_nr_available" msgid="3383388088451237182">"NR உள்ளது (NSA):"</string>
+    <string name="radio_info_nr_state" msgid="4158805093187555149">"NR நிலை (NSA):"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR அலைவரிசை:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"ரேடியோ பேண்டு பயன்முறையை அமை"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"பேண்டு பட்டியலை ஏற்றுகிறது…"</string>
@@ -923,12 +918,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"புளூடூத் சிக்னல் வலுவற்றதாக உள்ளது. ஸ்பீக்கர் ஃபோனிற்கு மாற்றவும்."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"அழைப்பின் தரம் தொடர்பான அறிவிப்பு"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"நிறுத்தப்பட்ட SIP கணக்குகள்"</string>
-    <!-- no translation found for limited_service_alert_dialog_description (6686928033670697313) -->
-    <skip />
-    <!-- no translation found for do_not_show_again (8923026903375124550) -->
-    <skip />
-    <!-- no translation found for turn_off_wfc (2346229945400554258) -->
-    <skip />
-    <!-- no translation found for unavailable_emergency_calls_notification_name (4390236789690885552) -->
-    <skip />
+    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"வைஃபை மூலம் அவசர அழைப்புகள் செய்வதை <xliff:g id="SPN">%s</xliff:g> ஆதரிக்கவில்லை. \n\nமொபைல் நெட்வொர்க் மூலம் அவசர அழைப்புகள் செய்யப்படும். மொபைல் கவரேஜ் குறைவாக இருந்தால் அவசர அழைப்புகள் செல்வது சாத்தியமில்லாமல் போகக்கூடும்."</string>
+    <string name="do_not_show_again" msgid="8923026903375124550">"மீண்டும் காட்டாதே"</string>
+    <string name="turn_off_wfc" msgid="2346229945400554258">"வைஃபை அழைப்பை முடக்கு"</string>
+    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"அவசர அழைப்புகளை மேற்கொள்ள முடியாமல் போகலாம்"</string>
 </resources>
