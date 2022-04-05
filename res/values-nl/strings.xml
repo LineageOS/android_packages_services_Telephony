@@ -558,7 +558,7 @@
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"Zet bellen via wifi aan om te bellen."</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"Noodinformatie"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"Eigenaar"</string>
-    <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"Tik nogmaals om informatie weer te geven"</string>
+    <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"Tik nogmaals om informatie te bekijken"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="2667568200755388829">"Noodoproep"</string>
     <string name="single_emergency_number_title" msgid="8413371079579067196">"Alarmnummer"</string>
     <string name="numerous_emergency_numbers_title" msgid="8972398932506755510">"Alarmnummers"</string>
