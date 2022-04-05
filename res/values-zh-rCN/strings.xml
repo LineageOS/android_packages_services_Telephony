@@ -889,6 +889,7 @@
     <string name="radio_info_band_mode_label" msgid="23480556225515290">"选择无线装置频道"</string>
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"语音网络类型："</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"数据网络类型："</string>
+    <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"覆盖网络类型："</string>
     <string name="phone_index_label" msgid="6222406512768964268">"选择电话号码索引"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"设置首选网络类型："</string>
     <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"ping 主机名(www.google.com) IPv4："</string>
@@ -900,10 +901,10 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"刷新"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"切换 DNS 检查"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"特定 OEM 的信息/设置"</string>
-    <string name="radio_info_endc_available" msgid="4410653375290113436">"4G/5G 双连接可用："</string>
-    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"5G 双连接受限："</string>
-    <string name="radio_info_nr_available" msgid="1321318331361249997">"5G 可用："</string>
-    <string name="radio_info_nr_state" msgid="1337571996788535356">"5G 状态："</string>
+    <string name="radio_info_endc_available" msgid="2983767110681230019">"EN-DC 可用 (NSA)："</string>
+    <string name="radio_info_dcnr_restricted" msgid="7147511536420148173">"DCNR 受限 (NSA)："</string>
+    <string name="radio_info_nr_available" msgid="3383388088451237182">"NR 可用 (NSA)："</string>
+    <string name="radio_info_nr_state" msgid="4158805093187555149">"NR 状态 (NSA)："</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"5G 频率："</string>
     <string name="band_mode_title" msgid="7988822920724576842">"设置无线装置频道模式"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"正在加载频道列表…"</string>
@@ -917,12 +918,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"您的蓝牙信号较弱。请尝试切换为扬声器模式。"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"通话质量通知"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"已弃用的 SIP 帐号"</string>
-    <!-- no translation found for limited_service_alert_dialog_description (6686928033670697313) -->
-    <skip />
-    <!-- no translation found for do_not_show_again (8923026903375124550) -->
-    <skip />
-    <!-- no translation found for turn_off_wfc (2346229945400554258) -->
-    <skip />
-    <!-- no translation found for unavailable_emergency_calls_notification_name (4390236789690885552) -->
-    <skip />
+    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g>不支持通过 WLAN 进行紧急呼叫。\n\n系统会通过移动网络拨打紧急呼叫电话。如果移动网络覆盖面有限，您可能无法进行紧急呼叫。"</string>
+    <string name="do_not_show_again" msgid="8923026903375124550">"不再显示"</string>
+    <string name="turn_off_wfc" msgid="2346229945400554258">"关闭 WLAN 通话功能"</string>
+    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"可能无法进行紧急呼叫"</string>
 </resources>
