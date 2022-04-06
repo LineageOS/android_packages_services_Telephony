@@ -132,8 +132,6 @@ import android.telephony.ims.aidl.IImsRegistration;
 import android.telephony.ims.aidl.IImsRegistrationCallback;
 import android.telephony.ims.aidl.IRcsConfigCallback;
 import android.telephony.ims.feature.ImsFeature;
-import android.telephony.ims.feature.MmTelFeature;
-import android.telephony.ims.feature.RcsFeature;
 import android.telephony.ims.stub.ImsConfigImplBase;
 import android.telephony.ims.stub.ImsRegistrationImplBase;
 import android.text.TextUtils;
@@ -4669,25 +4667,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 message);
     }
 
-    private boolean isImsProvisioningRequired(int subId, int capability,
-            boolean isMmtelCapability) {
-        Phone phone = getPhone(subId);
-        if (phone == null) {
-            loge("phone instance null for subid " + subId);
-            return false;
-        }
-        if (isMmtelCapability) {
-            if (!doesImsCapabilityRequireProvisioning(phone.getContext(), subId, capability)) {
-                return false;
-            }
-        } else {
-            if (!doesRcsCapabilityRequireProvisioning(phone.getContext(), subId, capability)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
     @Override
     public void setRcsProvisioningStatusForCapability(int subId, int capability, int tech,
             boolean isProvisioned) {
@@ -4773,71 +4752,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
-    }
-
-    private static String getMmTelProvisioningKey(int subId, int tech) {
-        // resulting key is provision_ims_mmtel_{subId}_{tech}
-        return PREF_PROVISION_IMS_MMTEL_PREFIX + subId + "_" + tech;
-    }
-
-    /**
-     * Query CarrierConfig to see if the specified capability requires provisioning for the
-     * carrier associated with the subscription id.
-     */
-    private boolean doesImsCapabilityRequireProvisioning(Context context, int subId,
-            int capability) {
-        CarrierConfigManager configManager = new CarrierConfigManager(context);
-        PersistableBundle c = configManager.getConfigForSubId(subId);
-        boolean requireUtProvisioning = c.getBoolean(
-                CarrierConfigManager.KEY_CARRIER_SUPPORTS_SS_OVER_UT_BOOL, false)
-                && c.getBoolean(CarrierConfigManager.KEY_CARRIER_UT_PROVISIONING_REQUIRED_BOOL,
-                false);
-        boolean requireVoiceVtProvisioning = c.getBoolean(
-                CarrierConfigManager.KEY_CARRIER_VOLTE_PROVISIONING_REQUIRED_BOOL, false);
-
-        // First check to make sure that the capability requires provisioning.
-        switch (capability) {
-            case MmTelFeature.MmTelCapabilities.CAPABILITY_TYPE_VOICE:
-                // intentional fallthrough
-            case MmTelFeature.MmTelCapabilities.CAPABILITY_TYPE_VIDEO: {
-                if (requireVoiceVtProvisioning) {
-                    // Voice and Video requires provisioning
-                    return true;
-                }
-                break;
-            }
-            case MmTelFeature.MmTelCapabilities.CAPABILITY_TYPE_UT: {
-                if (requireUtProvisioning) {
-                    // UT requires provisioning
-                    return true;
-                }
-                break;
-            }
-        }
-        return false;
-    }
-
-    private boolean doesRcsCapabilityRequireProvisioning(Context context, int subId,
-            int capability) {
-        CarrierConfigManager configManager = new CarrierConfigManager(context);
-        PersistableBundle c = configManager.getConfigForSubId(subId);
-
-        boolean requireRcsProvisioning = c.getBoolean(
-                CarrierConfigManager.KEY_CARRIER_RCS_PROVISIONING_REQUIRED_BOOL, false);
-
-        // First check to make sure that the capability requires provisioning.
-        switch (capability) {
-            case RcsFeature.RcsImsCapabilities.CAPABILITY_TYPE_PRESENCE_UCE:
-                // intentional fallthrough
-            case RcsFeature.RcsImsCapabilities.CAPABILITY_TYPE_OPTIONS_UCE: {
-                if (requireRcsProvisioning) {
-                    // OPTION or PRESENCE requires provisioning
-                    return true;
-                }
-                break;
-            }
-        }
-        return false;
     }
 
     @Override
