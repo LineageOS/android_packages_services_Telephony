@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"Přístupnost"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"Hovor přes Wi-Fi:"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"Volání přes Wi-Fi"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"Akci provedete opětovným klepnutím"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"Při dekódování zprávy došlo k chybě."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"SIM karta aktivovala vaši službu a byly aktualizovány roamingové možnosti telefonu."</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"Máte příliš mnoho aktivních hovorů. Ukončete nebo spojte stávající hovory, než zahájíte nový."</string>
@@ -918,4 +917,12 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Signál sítě Bluetooth je slabý. Zkuste přepnout na hlasitý odposlech."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Oznámení o kvalitě hovoru"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Zastaralé účty SIP"</string>
+    <!-- no translation found for limited_service_alert_dialog_description (6686928033670697313) -->
+    <skip />
+    <!-- no translation found for do_not_show_again (8923026903375124550) -->
+    <skip />
+    <!-- no translation found for turn_off_wfc (2346229945400554258) -->
+    <skip />
+    <!-- no translation found for unavailable_emergency_calls_notification_name (4390236789690885552) -->
+    <skip />
 </resources>

@@ -637,8 +637,8 @@
     <string name="phone_in_ecm_notification_title" msgid="6825016389926367946">"Modalità di richiamata di emergenza"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="653972232922670335">"Connessione dati disabilitata"</string>
     <string name="phone_in_ecm_notification_complete_time" msgid="7341624337163082759">"Nessuna connessione dati fino alle ore <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
-    <!-- format error in translation for alert_dialog_exit_ecm (7661603870224398025) -->
-    <!-- format error in translation for alert_dialog_not_avaialble_in_ecm (8717711120099503279) -->
+    <string name="alert_dialog_exit_ecm" msgid="7661603870224398025">"{count,plural, =1{Il telefono sarà in modalità Richiamata di emergenza per un minuto. In questa modalità non è possibile utilizzare app che impiegano una connessione dati. Vuoi uscire ora?}other{Il telefono sarà in modalità Richiamata di emergenza per %s minuti. In questa modalità non è possibile utilizzare app che impiegano una connessione dati. Vuoi uscire ora?}}"</string>
+    <string name="alert_dialog_not_avaialble_in_ecm" msgid="8717711120099503279">"{count,plural, =1{L\'azione selezionata non è disponibile in modalità Richiamata di emergenza. Il telefono sarà in questa modalità per un minuto. Vuoi uscire ora?}other{L\'azione selezionata non è disponibile in modalità Richiamata di emergenza. Il telefono sarà in questa modalità per %s minuti. Vuoi uscire ora?}}"</string>
     <string name="alert_dialog_in_ecm_call" msgid="1207545603149771978">"L\'azione selezionata non è disponibile in modalità di chiamata di emergenza."</string>
     <string name="progress_dialog_exiting_ecm" msgid="9159080081676927217">"Uscita dalla modalità di richiamata di emergenza"</string>
     <string name="alert_dialog_yes" msgid="3532525979632841417">"Sì"</string>
@@ -646,7 +646,7 @@
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"Ignora"</string>
     <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"Il telefono è in modalità di richiamata di emergenza"</string>
     <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"Fino alle ore <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
-    <!-- format error in translation for alert_dialog_exit_ecm_without_data_restriction_hint (7549850847524907932) -->
+    <string name="alert_dialog_exit_ecm_without_data_restriction_hint" msgid="7549850847524907932">"{count,plural, =1{Il telefono sarà in modalità di richiamata di emergenza per un minuto.\nVuoi uscire ora?}other{Il telefono sarà in modalità di richiamata di emergenza per %s minuti.\nVuoi uscire ora?}}"</string>
     <string name="voicemail_provider" msgid="4158806657253745294">"Servizio"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"Configurazione"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;Non impostato&gt;"</string>
@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"Accessibilità"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"Chiamata Wi-Fi da"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"Chiamata Wi-Fi"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"Tocca di nuovo per aprire"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"Si è verificato un errore durante la decodifica del messaggio."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"Una scheda SIM ha attivato il tuo servizio e ha aggiornato le funzionalità di roaming del telefono."</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"Ci sono troppe chiamate attive. Termina o unisci le chiamate esistenti prima di effettuarne una nuova."</string>
@@ -918,4 +917,12 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Il segnale del Bluetooth è debole. Prova a passare al vivavoce."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Notifica sulla qualità della chiamata"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Account SIP deprecati"</string>
+    <!-- no translation found for limited_service_alert_dialog_description (6686928033670697313) -->
+    <skip />
+    <!-- no translation found for do_not_show_again (8923026903375124550) -->
+    <skip />
+    <!-- no translation found for turn_off_wfc (2346229945400554258) -->
+    <skip />
+    <!-- no translation found for unavailable_emergency_calls_notification_name (4390236789690885552) -->
+    <skip />
 </resources>

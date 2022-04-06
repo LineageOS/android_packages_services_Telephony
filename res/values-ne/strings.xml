@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"पहुँचता"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"बाट Wi-Fi मार्फत आएको कल"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"Wi-Fi कल"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"खोल्न पुनः ट्याप गर्नुहोस्"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"सन्देश डिकोड गर्दा एउटा समस्या भयो।"</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"SIM कार्डले तपाईँको सेवा सक्रिय गर्नुका तथा फोनको रोमिङ क्षमताहरू पनि अद्यावधिक गरिदिएको छ।"</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"धेरै सक्रिय कलहरू छन्। कृपया कुनै नयाँ राख्नु अघि विद्यमान कलहरूलाई अन्त्य वा मर्ज गर्नुहोस्।"</string>
@@ -918,4 +917,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"ब्लुटुथको सिग्नल कमजोर छ। स्पिकरफोन प्रयोग गरी हेर्नुहोस्।"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"कलको गुणस्तरसम्बन्धी सूचना"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"चल्तीबाट हटाइएका SIP खाताहरू"</string>
+    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g> प्रयोग गरेर Wi-Fi मार्फत आपत्कालीन कल गर्न मिल्दैन। \n\nआपत्कालीन कल गर्दा मोबाइल नेटवर्क प्रयोग गरिने छ। मोबाइल नेटवर्क कभरेज पर्याप्त नभएका खण्डमा तपाईंको आपत्कालीन कल सफल नहुन सक्छ।"</string>
+    <string name="do_not_show_again" msgid="8923026903375124550">"फेरि नदेखाइयोस्"</string>
+    <string name="turn_off_wfc" msgid="2346229945400554258">"Wi-Fi कलिङ अफ गर्नुहोस्"</string>
+    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"आपत्कालीन कल गर्ने सुविधा उपलब्ध नहुन सक्छ"</string>
 </resources>

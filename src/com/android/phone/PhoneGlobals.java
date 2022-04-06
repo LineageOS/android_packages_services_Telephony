@@ -66,6 +66,7 @@ import com.android.internal.telephony.SettingsObserver;
 import com.android.internal.telephony.TelephonyCapabilities;
 import com.android.internal.telephony.TelephonyComponentFactory;
 import com.android.internal.telephony.TelephonyIntents;
+import com.android.internal.telephony.data.DataEvaluation.DataDisallowedReason;
 import com.android.internal.telephony.dataconnection.DataConnectionReasons;
 import com.android.internal.telephony.dataconnection.DataConnectionReasons.DataDisallowedReasonType;
 import com.android.internal.telephony.ims.ImsResolver;
@@ -834,11 +835,26 @@ public class PhoneGlobals extends ContextWrapper {
             return;
         }
 
-        DataConnectionReasons reasons = new DataConnectionReasons();
-        boolean dataAllowed = phone.isDataAllowed(ApnSetting.TYPE_DEFAULT, reasons);
-        mDataRoamingNotifLog.log("dataAllowed=" + dataAllowed + ", reasons=" + reasons);
-        if (VDBG) Log.v(LOG_TAG, "dataAllowed=" + dataAllowed + ", reasons=" + reasons);
-        if (!dataAllowed && reasons.containsOnly(DataDisallowedReasonType.ROAMING_DISABLED)) {
+        boolean dataAllowed;
+        boolean notAllowedDueToRoamingOff;
+        if (phone.isUsingNewDataStack()) {
+            List<DataDisallowedReason> reasons = phone.getDataNetworkController()
+                    .getInternetDataDisallowedReasons();
+            dataAllowed = reasons.isEmpty();
+            notAllowedDueToRoamingOff = (reasons.size() == 1
+                    && reasons.contains(DataDisallowedReason.ROAMING_DISABLED));
+            mDataRoamingNotifLog.log("dataAllowed=" + dataAllowed + ", reasons=" + reasons);
+            if (VDBG) Log.v(LOG_TAG, "dataAllowed=" + dataAllowed + ", reasons=" + reasons);
+        } else {
+            DataConnectionReasons reasons = new DataConnectionReasons();
+            dataAllowed = phone.isDataAllowed(ApnSetting.TYPE_DEFAULT, reasons);
+            notAllowedDueToRoamingOff = reasons.containsOnly(
+                    DataDisallowedReasonType.ROAMING_DISABLED);
+            mDataRoamingNotifLog.log("dataAllowed=" + dataAllowed + ", reasons=" + reasons);
+            if (VDBG) Log.v(LOG_TAG, "dataAllowed=" + dataAllowed + ", reasons=" + reasons);
+        }
+
+        if (!dataAllowed && notAllowedDueToRoamingOff) {
             // No need to show it again if we never cancelled it explicitly.
             if (mPrevRoamingNotification == ROAMING_NOTIFICATION_DISCONNECTED) return;
             // If the only reason of no data is data roaming disabled, then we notify the user
@@ -866,7 +882,7 @@ public class PhoneGlobals extends ContextWrapper {
             // showed earlier.
             mPrevRoamingNotification = ROAMING_NOTIFICATION_NO_NOTIFICATION;
             Log.d(LOG_TAG, "Dismiss roaming notification");
-            mDataRoamingNotifLog.log("Hide. data allowed=" + dataAllowed + ", reasons=" + reasons);
+            mDataRoamingNotifLog.log("Hide. data allowed=" + dataAllowed);
             mHandler.sendEmptyMessage(EVENT_DATA_ROAMING_OK);
         }
     }

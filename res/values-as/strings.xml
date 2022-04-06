@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"সাধ্য সুবিধাসমূহ"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"এওঁৰ পৰা ৱাই-ফাই কল আহিছে"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"ৱাই-ফাই কল"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"খুলিবলৈ পুনৰাই টিপক"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"বাৰ্তাটো ডিক\'ড কৰোঁতে আসোঁৱাহৰ সৃষ্টি হৈছিল।"</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"এখন ছিম কাৰ্ডে আপোনাৰ সেৱাসমূহ সক্ৰিয় কৰিছে আৰু আপোনাৰ ফ\'নটোৰ ৰ\'মিং সক্ষমতাসমূহো আপডে’ট কৰিছে।"</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"কেইবাটাও কল ইতিমধ্যে সক্ৰিয় হৈ আছে। নতুন কল এটা কৰাৰ আগেয়ে অনুগ্ৰহ কৰি সেইবোৰ একেলগ কৰক বা সমাপ্ত কৰক।"</string>
@@ -918,4 +917,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"আপোনাৰ ব্লুটুথৰ ছিগনেল দুৰ্বল। স্পীকাৰফ’নলৈ সলনি কৰি চাওক।"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"কলৰ গুণগত মানৰ জাননী"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"বন্ধ হৈ যোৱা SIP একাউণ্ট"</string>
+    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g>এ ৱাই-ফাইৰ জৰিয়তে জৰুৰীকালীন কল কৰাটো সমৰ্থন নকৰে। \n\nএটা ম’বাইল নেটৱৰ্কৰ জৰিয়তে জৰুৰীকালীন কল কৰা হ’ব। যদি ম’বাইল ক’ভাৰেজ সীমিত হয়, তেন্তে আপোনাৰ জৰুৰীকালীন কল সংযুক্ত নহ’বও পাৰে।"</string>
+    <string name="do_not_show_again" msgid="8923026903375124550">"পুনৰাই নেদেখুৱাব"</string>
+    <string name="turn_off_wfc" msgid="2346229945400554258">"ৱাই-ফাই কলিঙৰ সুবিধাটো বন্ধ কৰক"</string>
+    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"জৰুৰীকালীন কল কৰাৰ সুবিধাটো উপলব্ধ নহ’বও পাৰে"</string>
 </resources>

@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"ප්‍රවේශ්‍යතාව"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"වෙතින් Wi-Fi ඇමතුම"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"Wi-Fi ඇමතුම"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"විවෘත කිරීමට නැවත තට්ටු කරන්න"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"පණිවිඩය විකේතනය කරන අතරතුර දෝෂයක් සිදු විය."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"SIM කාඩ්පතක් ඔබේ සේවාව සක්‍රිය කර ඔබේ දුරකථනයේ රෝමිං හැකියා යාවත්කාලීන කර තිබේ."</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"සක්‍රිය ඇමතුම් ඉතා විශාල ගණනක් ඇත. කරුණාකර නව ඇමතුමක් ගැනීමට පෙර පවතින ඇමතුම් අවසන් හෝ ඒකාබද්ධ කරන්න."</string>
@@ -918,4 +917,12 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"ඔබේ බ්ලූටූත් සංඥාව දුර්වලයි. ස්පීකර් දුරකථනයට මාරු වීමට උත්සාහ කරන්න."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"ඇමතුම් ගුණත්ව දැනුම්දීම"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"අතහැර දැමූ SIP ගිණුම්"</string>
+    <!-- no translation found for limited_service_alert_dialog_description (6686928033670697313) -->
+    <skip />
+    <!-- no translation found for do_not_show_again (8923026903375124550) -->
+    <skip />
+    <!-- no translation found for turn_off_wfc (2346229945400554258) -->
+    <skip />
+    <!-- no translation found for unavailable_emergency_calls_notification_name (4390236789690885552) -->
+    <skip />
 </resources>

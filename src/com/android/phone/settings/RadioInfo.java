@@ -65,6 +65,7 @@ import android.telephony.ServiceState;
 import android.telephony.SignalStrength;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyCallback;
+import android.telephony.TelephonyDisplayInfo;
 import android.telephony.TelephonyManager;
 import android.telephony.data.NetworkSlicingConfig;
 import android.text.TextUtils;
@@ -100,7 +101,6 @@ import java.net.URL;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Executor;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -234,6 +234,7 @@ public class RadioInfo extends AppCompatActivity {
     private TextView mGprsState;
     private TextView mVoiceNetwork;
     private TextView mDataNetwork;
+    private TextView mOverrideNetwork;
     private TextView mDBm;
     private TextView mMwi;
     private TextView mCfi;
@@ -319,7 +320,8 @@ public class RadioInfo extends AppCompatActivity {
             TelephonyCallback.CallForwardingIndicatorListener,
             TelephonyCallback.CellInfoListener,
             TelephonyCallback.SignalStrengthsListener,
-            TelephonyCallback.ServiceStateListener {
+            TelephonyCallback.ServiceStateListener,
+            TelephonyCallback.DisplayInfoListener {
 
         @Override
         public void onDataConnectionStateChanged(int state, int networkType) {
@@ -373,6 +375,10 @@ public class RadioInfo extends AppCompatActivity {
             updateNrStats(serviceState);
         }
 
+        @Override
+        public void onDisplayInfoChanged(TelephonyDisplayInfo displayInfo) {
+            updateNetworkType();
+        }
     }
 
     private void updatePhysicalChannelConfiguration(List<PhysicalChannelConfig> configs) {
@@ -485,6 +491,7 @@ public class RadioInfo extends AppCompatActivity {
         mGprsState = (TextView) findViewById(R.id.gprs);
         mVoiceNetwork = (TextView) findViewById(R.id.voice_network);
         mDataNetwork = (TextView) findViewById(R.id.data_network);
+        mOverrideNetwork = (TextView) findViewById(R.id.override_network);
         mDBm = (TextView) findViewById(R.id.dbm);
         mMwi = (TextView) findViewById(R.id.mwi);
         mCfi = (TextView) findViewById(R.id.cfi);
@@ -509,18 +516,7 @@ public class RadioInfo extends AppCompatActivity {
         // hide 5G stats on devices that don't support 5G
         if ((mTelephonyManager.getSupportedRadioAccessFamily()
                 & TelephonyManager.NETWORK_TYPE_BITMASK_NR) == 0) {
-            ((TextView) findViewById(R.id.endc_available_label)).setVisibility(View.GONE);
-            mEndcAvailable.setVisibility(View.GONE);
-            ((TextView) findViewById(R.id.dcnr_restricted_label)).setVisibility(View.GONE);
-            mDcnrRestricted.setVisibility(View.GONE);
-            ((TextView) findViewById(R.id.nr_available_label)).setVisibility(View.GONE);
-            mNrAvailable.setVisibility(View.GONE);
-            ((TextView) findViewById(R.id.nr_state_label)).setVisibility(View.GONE);
-            mNrState.setVisibility(View.GONE);
-            ((TextView) findViewById(R.id.nr_frequency_label)).setVisibility(View.GONE);
-            mNrFrequency.setVisibility(View.GONE);
-            ((TextView) findViewById(R.id.network_slicing_config_label)).setVisibility(View.GONE);
-            mNetworkSlicingConfig.setVisibility(View.GONE);
+            setNrStatsVisibility(View.GONE);
         }
 
         mPreferredNetworkType = (Spinner) findViewById(R.id.preferredNetworkType);
@@ -676,8 +672,8 @@ public class RadioInfo extends AppCompatActivity {
 
         new Thread(() -> {
             int networkType = (int) mTelephonyManager.getPreferredNetworkTypeBitmask();
-            updatePreferredNetworkType(
-                    RadioAccessFamily.getNetworkTypeFromRaf(networkType));
+            runOnUiThread(() -> updatePreferredNetworkType(
+                    RadioAccessFamily.getNetworkTypeFromRaf(networkType)));
         }).start();
 
         // set phone index
@@ -820,6 +816,7 @@ public class RadioInfo extends AppCompatActivity {
         mOperatorName.setText("");
         mGprsState.setText("");
         mDataNetwork.setText("");
+        mOverrideNetwork.setText("");
         mVoiceNetwork.setText("");
         mSent.setText("");
         mReceived.setText("");
@@ -842,6 +839,21 @@ public class RadioInfo extends AppCompatActivity {
                 mTelephonyCallback);
     }
 
+    private void setNrStatsVisibility(int visibility) {
+        ((TextView) findViewById(R.id.endc_available_label)).setVisibility(visibility);
+        mEndcAvailable.setVisibility(visibility);
+        ((TextView) findViewById(R.id.dcnr_restricted_label)).setVisibility(visibility);
+        mDcnrRestricted.setVisibility(visibility);
+        ((TextView) findViewById(R.id.nr_available_label)).setVisibility(visibility);
+        mNrAvailable.setVisibility(visibility);
+        ((TextView) findViewById(R.id.nr_state_label)).setVisibility(visibility);
+        mNrState.setVisibility(visibility);
+        ((TextView) findViewById(R.id.nr_frequency_label)).setVisibility(visibility);
+        mNrFrequency.setVisibility(visibility);
+        ((TextView) findViewById(R.id.network_slicing_config_label)).setVisibility(visibility);
+        mNetworkSlicingConfig.setVisibility(visibility);
+    }
+
     private void updateDnsCheckState() {
         //FIXME: Replace with a TelephonyManager call
         mDnsCheckState.setText(mPhone.isDnsCheckDisabled()
@@ -854,7 +866,6 @@ public class RadioInfo extends AppCompatActivity {
         mDownlinkKbps.setText(String.format("%-5d", dlbw));
         mUplinkKbps.setText(String.format("%-5d", ulbw));
     }
-
 
     private void updateSignalStrength(SignalStrength signalStrength) {
         Resources r = getResources();
@@ -1114,11 +1125,14 @@ public class RadioInfo extends AppCompatActivity {
 
     private void updateNetworkType() {
         if (mPhone != null) {
-            ServiceState ss = mPhone.getServiceState();
             mDataNetwork.setText(ServiceState.rilRadioTechnologyToString(
                     mPhone.getServiceState().getRilDataRadioTechnology()));
             mVoiceNetwork.setText(ServiceState.rilRadioTechnologyToString(
                     mPhone.getServiceState().getRilVoiceRadioTechnology()));
+            int overrideNetwork = mPhone.getDisplayInfoController().getTelephonyDisplayInfo()
+                    .getOverrideNetworkType();
+            mOverrideNetwork.setText(
+                    TelephonyDisplayInfo.overrideNetworkTypeToString(overrideNetwork));
         }
     }
 
@@ -1132,31 +1146,25 @@ public class RadioInfo extends AppCompatActivity {
             ss = mPhone.getServiceState();
         }
         if (ss != null) {
-            boolean isNrSa = ss.getDataNetworkType() == TelephonyManager.NETWORK_TYPE_NR;
             NetworkRegistrationInfo nri = ss.getNetworkRegistrationInfo(
                     NetworkRegistrationInfo.DOMAIN_PS, AccessNetworkConstants.TRANSPORT_TYPE_WWAN);
             if (nri != null) {
                 DataSpecificRegistrationInfo dsri = nri.getDataSpecificInfo();
                 if (dsri != null) {
-                    mEndcAvailable.setText(isNrSa ? "N/A"
-                            : dsri.isEnDcAvailable ? "True" : "False");
-                    mDcnrRestricted.setText(isNrSa ? "N/A"
-                            : dsri.isDcNrRestricted ? "True" : "False");
-                    mNrAvailable.setText(isNrSa ? "N/A" : dsri.isNrAvailable ? "True" : "False");
+                    mEndcAvailable.setText(String.valueOf(dsri.isEnDcAvailable));
+                    mDcnrRestricted.setText(String.valueOf(dsri.isDcNrRestricted));
+                    mNrAvailable.setText(String.valueOf(dsri.isNrAvailable));
                 }
             }
-            mNrState.setText(isNrSa ? "N/A"
-                    : NetworkRegistrationInfo.nrStateToString(ss.getNrState()));
-            mNrFrequency.setText(isNrSa ? "N/A"
-                    : ServiceState.frequencyRangeToString(ss.getNrFrequencyRange()));
+            mNrState.setText(NetworkRegistrationInfo.nrStateToString(ss.getNrState()));
+            mNrFrequency.setText(ServiceState.frequencyRangeToString(ss.getNrFrequencyRange()));
         }
 
-        Executor simpleExecutor = (r) -> r.run();
         CompletableFuture<NetworkSlicingConfig> resultFuture = new CompletableFuture<>();
-        mTelephonyManager.getNetworkSlicingConfiguration(simpleExecutor, resultFuture::complete);
+        mTelephonyManager.getNetworkSlicingConfiguration(Runnable::run, resultFuture::complete);
         try {
             NetworkSlicingConfig networkSlicingConfig =
-                resultFuture.get(DEFAULT_TIMEOUT_MS, MILLISECONDS);
+                    resultFuture.get(DEFAULT_TIMEOUT_MS, MILLISECONDS);
             mNetworkSlicingConfig.setText(networkSlicingConfig.toString());
         } catch (ExecutionException | InterruptedException | TimeoutException e) {
             Log.e(TAG, "Unable to get slicing config: " + e.toString());

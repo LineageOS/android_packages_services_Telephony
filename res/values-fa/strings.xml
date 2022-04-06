@@ -18,7 +18,7 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="phoneAppLabel" product="tablet" msgid="1916019789885839910">"داده‌های تلفن همراه"</string>
     <string name="phoneAppLabel" product="default" msgid="130465039375347763">"سرویس‌های تلفن"</string>
-    <string name="emergencyDialerIconLabel" msgid="8668005772339436680">"شماره گیری اضطراری"</string>
+    <string name="emergencyDialerIconLabel" msgid="8668005772339436680">"شماره‌گیر اضطراری"</string>
     <string name="phoneIconLabel" msgid="3015941229249651419">"تلفن"</string>
     <string name="fdnListLabel" msgid="4119121875004244097">"‏فهرست FDN"</string>
     <string name="unknown" msgid="8279698889921830815">"ناشناس"</string>
@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"دسترس‌پذیری"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"‏تماس Wi-Fi از"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"‏تماس Wi-Fi"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"دوباره ضربه بزنید تا باز شود"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"هنگام رمزگشایی پیام، خطایی روی داد."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"یک سیم‌کارت سرویس شما را فعال کرده است و قابلیت‌های فراگردی تلفنتان را به‌روز کرده است."</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"تعداد زیادی تماس فعال وجود دارد. قبل از برقراری تماس جدید، لطفاً به تماس‌های موجود پایان دهید یا آنها را ادغام کنید."</string>
@@ -918,4 +917,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"سیگنال بلوتوث شما ضعیف است. از بلندگوی تلفن استفاده کنید."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"اعلان کیفیت تماس"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"‏حساب‌های SIP منسوخ‌شده"</string>
+    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"‏<xliff:g id="SPN">%s</xliff:g> از تماس‌های اضطراری ازطریق Wi-Fi پشتیبانی نمی‌کند. \n\nتماس‌های اضطراری ازطریق شبکه تلفن همراه برقرار خواهد شد. اگر پوشش تلفن همراه محدود باشد، ممکن است تماس اضطراری برقرار نشود."</string>
+    <string name="do_not_show_again" msgid="8923026903375124550">"دیگر نشان داده نشود"</string>
+    <string name="turn_off_wfc" msgid="2346229945400554258">"‏خاموش کردن تماس ازطریق Wi-Fi"</string>
+    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"ممکن است تماس‌های اضطراری دردسترس نباشد"</string>
 </resources>

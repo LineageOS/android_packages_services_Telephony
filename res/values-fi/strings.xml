@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"Esteettömyys"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"Wi-Fi-puhelu henkilöltä"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"Wi-Fi-puhelu"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"Avaa koskettamalla uudelleen."</string>
     <string name="message_decode_error" msgid="1061856591500290887">"Virhe purettaessa viestiä."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"SIM-kortti on aktivoinut palvelusi ja päivittänyt puhelimesi roaming-toiminnot."</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"Aktiivisia puheluja on liian monta. Lopeta puheluita tai yhdistä niitä ennen uuden puhelun aloittamista."</string>
@@ -918,4 +917,12 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Bluetooth-signaali on heikko. Kokeile vaihtaa kaiutinpuhelimeen."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Puhelun laatua koskeva ilmoitus"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Käytöstä poistetut SIP-tilit"</string>
+    <!-- no translation found for limited_service_alert_dialog_description (6686928033670697313) -->
+    <skip />
+    <!-- no translation found for do_not_show_again (8923026903375124550) -->
+    <skip />
+    <!-- no translation found for turn_off_wfc (2346229945400554258) -->
+    <skip />
+    <!-- no translation found for unavailable_emergency_calls_notification_name (4390236789690885552) -->
+    <skip />
 </resources>
