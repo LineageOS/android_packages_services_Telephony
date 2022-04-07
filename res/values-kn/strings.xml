@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"ಪ್ರವೇಶಿಸುವಿಕೆ"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"ಅವರಿಂದ ವೈ-ಫೈ ಕರೆ"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"ವೈ-ಫೈ ಕರೆ"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"ತೆರೆಯಲು ಮತ್ತೆ ಟ್ಯಾಪ್‌ ಮಾಡಿ"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"ಸಂದೇಶವನ್ನು ಡೀಕೋಡ್ ಮಾಡುವಾಗ ದೋಷವುಂಟಾಗಿದೆ."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"ನಿಮ್ಮ ಸೇವೆಯನ್ನು ಸಿಮ್‌ ಕಾರ್ಡ್‌ ಸಕ್ರಿಯಗೊಳಿಸಿದೆ ಮತ್ತು ನಿಮ್ಮ ಫೋನ್‌ನ ರೋಮಿಂಗ್ ಸಾಮರ್ಥ್ಯವನ್ನು ಅಪ್‌ಡೇಟ್‌ ಮಾಡಲಾಗಿದೆ."</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"ಹಲವಾರು ಸಕ್ರಿಯ ಕರೆಗಳು. ಹೊಸ ಕರೆ ಮಾಡುವ ಮೊದಲು ಅಸ್ತಿತ್ವದಲ್ಲಿರುವ ಕರೆಗಳನ್ನು ಅಂತ್ಯಗೊಳಿಸಿ ಅಥವಾ ವಿಲೀನಗೊಳಿಸಿ."</string>
@@ -890,6 +889,7 @@
     <string name="radio_info_band_mode_label" msgid="23480556225515290">"ರೇಡಿಯೋ ಬ್ಯಾಂಡ್ ಆಯ್ಕೆಮಾಡಿ"</string>
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"ಧ್ವನಿ ನೆಟ್‌ವರ್ಕ್‌ ಪ್ರಕಾರ:"</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"ಡೇಟಾ ನೆಟ್‌ವರ್ಕ್ ಪ್ರಕಾರ:"</string>
+    <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"ನೆಟ್‌ವರ್ಕ್ ಪ್ರಕಾರವನ್ನು ಅತಿಕ್ರಮಿಸಿ:"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"ಫೋನ್ ಸೂಚಿಕೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"ಆದ್ಯತೆಯ ನೆಟ್‌ವರ್ಕ್‌ ಪ್ರಕಾರವನ್ನು ಹೊಂದಿಸಿ:"</string>
     <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"ಹೋಸ್ಟ್‌ ಹೆಸರನ್ನು ಪಿಂಗ್ ಮಾಡಿ(www.google.com) IPv4:"</string>
@@ -901,10 +901,10 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"ರಿಫ್ರೆಶ್ ಮಾಡಿ"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"DNS ಪರಿಶೀಲನೆ ಟಾಗಲ್ ಮಾಡಿ"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"OEM-ನಿರ್ದಿಷ್ಟ ಮಾಹಿತಿ/ಸೆಟ್ಟಿಂಗ್‌ಗಳು"</string>
-    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC ಲಭ್ಯವಿದೆ:"</string>
-    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"ನಿರ್ಬಂಧಿತ DCNR:"</string>
-    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR ಲಭ್ಯವಿದೆ:"</string>
-    <string name="radio_info_nr_state" msgid="1337571996788535356">"NR ಸ್ಥಿತಿ:"</string>
+    <string name="radio_info_endc_available" msgid="2983767110681230019">"EN-DC ಲಭ್ಯವಿದೆ (NSA):"</string>
+    <string name="radio_info_dcnr_restricted" msgid="7147511536420148173">"DCNR ನಿರ್ಬಂಧಿತ (NSA):"</string>
+    <string name="radio_info_nr_available" msgid="3383388088451237182">"NR ಲಭ್ಯವಿದೆ (NSA):"</string>
+    <string name="radio_info_nr_state" msgid="4158805093187555149">"NR ಸ್ಥಿತಿ (NSA):"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR ಫ್ರೀಕ್ವೆನ್ಸಿ:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"ರೇಡಿಯೋ ಬ್ಯಾಂಡ್ ಮೋಡ್ ಹೊಂದಿಸಿ"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"ಬ್ಯಾಂಡ್ ಪಟ್ಟಿಯನ್ನು ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ…"</string>
@@ -918,12 +918,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"ನಿಮ್ಮ ಬ್ಲೂಟೂತ್ ಸಿಗ್ನಲ್ ದುರ್ಬಲವಾಗಿದೆ. ಸ್ಪೀಕರ್‌ಫೋನ್‌ಗೆ ಬದಲಾಯಿಸಲು ಪ್ರಯತ್ನಿಸಿ."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"ಕರೆ ಗುಣಮಟ್ಟದ ಅಧಿಸೂಚನೆ"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"ತಡೆಹಿಡಿಯಲಾಗಿರುವ SIP ಖಾತೆಗಳು"</string>
-    <!-- no translation found for limited_service_alert_dialog_description (6686928033670697313) -->
-    <skip />
-    <!-- no translation found for do_not_show_again (8923026903375124550) -->
-    <skip />
-    <!-- no translation found for turn_off_wfc (2346229945400554258) -->
-    <skip />
-    <!-- no translation found for unavailable_emergency_calls_notification_name (4390236789690885552) -->
-    <skip />
+    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"ವೈ-ಫೈ ಮೂಲಕ ತುರ್ತು ಕರೆಗಳನ್ನು <xliff:g id="SPN">%s</xliff:g> ಬೆಂಬಲಿಸುವುದಿಲ್ಲ. \n\nತುರ್ತು ಕರೆಗಳನ್ನು ಮೊಬೈಲ್ ನೆಟ್ ವರ್ಕ್ ಮೂಲಕ ಮಾಡಲಾಗುತ್ತದೆ. ಸೀಮಿತ ಮೊಬೈಲ್ ಕವರೇಜ್ ಲಭ್ಯವಿದ್ದಾಗ, ನಿಮ್ಮ ತುರ್ತು ಕರೆಗಳು ಕನೆಕ್ಟ್ ಆಗದೇ ಇರಬಹುದು."</string>
+    <string name="do_not_show_again" msgid="8923026903375124550">"ಮತ್ತೊಮ್ಮೆ ತೋರಿಸಬೇಡಿ"</string>
+    <string name="turn_off_wfc" msgid="2346229945400554258">"ವೈ-ಫೈ ಕರೆ ಮಾಡುವಿಕೆಯನ್ನು ಆಫ್ ಮಾಡಿ"</string>
+    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"ತುರ್ತು ಕರೆಗಳು ಲಭ್ಯವಿಲ್ಲದಿರಬಹುದು"</string>
 </resources>

@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"Ukufinyeleleka"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"Ikholi ye-Wi-Fi kusukela ku-"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"Ikholi ye-Wi-Fi"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"Thepha futhi ukuze uvule"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"Kube nephutha ngenkathi kukhishwa ikhodi kumlayezo."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"Ikhadi le-SIM lenze kwasebenza isevisi yakho laphinde labuyekeza amakhono okuzula wefoni yakho."</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"Kunamakholi amaningi asebenzayo. Sicela uphelise noma uhlanganise amakholi akhona ngaphambi kokubeka eyodwa."</string>
@@ -890,6 +889,7 @@
     <string name="radio_info_band_mode_label" msgid="23480556225515290">"Khetha ibhendi yerediyo"</string>
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"Uhlobo lwenethiwekhi yezwi:"</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"Uhlobo lwenethiwekhi yedatha:"</string>
+    <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"Khipha Uhlobo Lwenethiwekhi:"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"Khetha inkomba yefoni"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"Setha uhlobo lwenethiwekhi olufisekayo:"</string>
     <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"Qhweba i-Hostname(www.google.com) IPv4:"</string>
@@ -901,10 +901,10 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Vuselela"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"Guqula ukuhlola i-DNS"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"Ulwazi oucacile kwe-OEM/Izilungiselelo"</string>
-    <string name="radio_info_endc_available" msgid="4410653375290113436">"I-EN-DC Iyatholakala:"</string>
-    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"Okukhawulelwe kwe-DCNR:"</string>
-    <string name="radio_info_nr_available" msgid="1321318331361249997">"I-NR Iyatholakala:"</string>
-    <string name="radio_info_nr_state" msgid="1337571996788535356">"Isimo se-NR:"</string>
+    <string name="radio_info_endc_available" msgid="2983767110681230019">"I-EN-DC Iyatholakala (NSA):"</string>
+    <string name="radio_info_dcnr_restricted" msgid="7147511536420148173">"Ikhawulewe nge-DCNR (NSA):"</string>
+    <string name="radio_info_nr_available" msgid="3383388088451237182">"I-NR Iyatholakala (NSA):"</string>
+    <string name="radio_info_nr_state" msgid="4158805093187555149">"Isimo se-NR (NSA):"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"Imvamisa ye-NR:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Isetha imodi yebhendi yerediyo"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Ilayisha uhlu lwebhendi…"</string>
@@ -918,12 +918,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Isignali yakho ye-bluetooth ayiqinile. Zama ukushintshela kusipikhasefoni."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Isaziso Sekhwalithi"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Ama-akhawunti we-SIP ehlisiwe"</string>
-    <!-- no translation found for limited_service_alert_dialog_description (6686928033670697313) -->
-    <skip />
-    <!-- no translation found for do_not_show_again (8923026903375124550) -->
-    <skip />
-    <!-- no translation found for turn_off_wfc (2346229945400554258) -->
-    <skip />
-    <!-- no translation found for unavailable_emergency_calls_notification_name (4390236789690885552) -->
-    <skip />
+    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"I-<xliff:g id="SPN">%s</xliff:g> ayisekeli amakholi aphuthumayo nge-Wi-Fi. \n\nAmakholi aphuthumayo azokwenziwa ngenethiwekhi yeselula. Uma kunenethiwekhi yeselula elinganiselwe, kungenzeka ikholi yakho ephuthumayo ingenzeki."</string>
+    <string name="do_not_show_again" msgid="8923026903375124550">"Ungabonisi futhi"</string>
+    <string name="turn_off_wfc" msgid="2346229945400554258">"Vala ukushaya kwe-Wi-Fi"</string>
+    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"Amakholi aphuthumayo angase angatholakali"</string>
 </resources>

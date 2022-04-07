@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"Accessibilitat"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"Trucada per Wi-Fi de"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"Trucada per Wi-Fi"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"Torna a tocar per obrir"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"S\'ha produït un error en descodificar el missatge."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"Una targeta SIM ha activat el servei, i s\'ha actualitzat la funció d\'itinerància del telèfon."</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"Hi ha massa trucades actives. Finalitza\'n alguna o combina-les abans de fer-ne una de nova."</string>
@@ -890,6 +889,7 @@
     <string name="radio_info_band_mode_label" msgid="23480556225515290">"Selecciona la banda de senyal mòbil"</string>
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"Tipus de xarxa de veu:"</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"Tipus de xarxa de dades:"</string>
+    <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"Substitució de tipus de xarxa:"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"Selecciona la guia telefònica"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"Defineix el tipus de xarxa preferit:"</string>
     <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"Fer ping a IPv4 de nom d\'amfitrió (www.google.com):"</string>
@@ -901,10 +901,10 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Actualitza"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"Activa o desactiva la comprovació de DNS"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"Informació/configuració específica d\'OEM"</string>
-    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC disponible:"</string>
-    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR amb restriccions:"</string>
-    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR disponible:"</string>
-    <string name="radio_info_nr_state" msgid="1337571996788535356">"Estat d\'NR:"</string>
+    <string name="radio_info_endc_available" msgid="2983767110681230019">"EN-DC disponible (NSA):"</string>
+    <string name="radio_info_dcnr_restricted" msgid="7147511536420148173">"DCNR amb restriccions (NSA):"</string>
+    <string name="radio_info_nr_available" msgid="3383388088451237182">"NR disponible (NSA):"</string>
+    <string name="radio_info_nr_state" msgid="4158805093187555149">"Estat d\'NR (NSA):"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"Freqüència d\'NR:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Configura el mode de banda de senyal mòbil"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"S\'està carregant la llista de bandes…"</string>
@@ -918,12 +918,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"El senyal del Bluetooth és feble. Fes servir l\'altaveu."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Notificació sobre la qualitat de la trucada"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Comptes SIP obsolets"</string>
-    <!-- no translation found for limited_service_alert_dialog_description (6686928033670697313) -->
-    <skip />
-    <!-- no translation found for do_not_show_again (8923026903375124550) -->
-    <skip />
-    <!-- no translation found for turn_off_wfc (2346229945400554258) -->
-    <skip />
-    <!-- no translation found for unavailable_emergency_calls_notification_name (4390236789690885552) -->
-    <skip />
+    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g> no admet les trucades d\'emergència per Wi‑Fi. \n\nAquestes trucades es faran mitjançant una xarxa mòbil. Si la cobertura del mòbil és limitada, és possible que la trucada d\'emergència no es pugui efectuar."</string>
+    <string name="do_not_show_again" msgid="8923026903375124550">"No ho tornis a mostrar"</string>
+    <string name="turn_off_wfc" msgid="2346229945400554258">"Desactiva Trucades per Wi-Fi"</string>
+    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"És possible que les trucades d\'emergència no estiguin disponibles"</string>
 </resources>

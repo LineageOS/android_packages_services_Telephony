@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"အများသုံးနိုင်မှု"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"အောက်ပါမှ Wi-Fi ခေါ်ခြင်း"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"ဝိုင်ဖိုင်ခေါ်ဆိုမှု"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"ဖွင့်ရန် ထပ်တို့ပါ"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"စာကို ကုဒ်ဖွင့်နေစဉ် အမှားရှိခဲ့သည်။"</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"SIM ကဒ်သည် သင့် ဖုန်းဝန်ဆောင်မှုအား အသက်သွင်းခဲ့ပြီး သင့်ဖုန်း၏ ကွန်ယက်ပြင်ပဒေတာသုံးနိုင်စွမ်းအား ပြင်ဆင်မွမ်းမံပြီးဖြစ်၏။"</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"လက်ရှိခေါ်ဆိုမှုများ အလွန်များနေပါသည်။ ခေါ်ဆိုမှုအသစ်တစ်ခု မပြုလုပ်ခင် လက်ရှိဖုန်းခေါ်ဆိုမှုများကို အဆုံးသတ် (သို့) ပေါင်း လိုက်ပါ။"</string>
@@ -890,6 +889,7 @@
     <string name="radio_info_band_mode_label" msgid="23480556225515290">"ရေဒီယိုလိုင်း ရွေးချယ်ပါ"</string>
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"အသံကွန်ရက် အမျိုးအစား −"</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"ဒေတာကွန်ရက် အမျိုးအစား −"</string>
+    <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"အစားထိုး ကွန်ရက်အမျိုးအစား-"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"ဖုန်းအညွှန်း ရွေးရန်"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"ပိုနှစ်သက်သည့် ကွန်ရက်အမျိုးအစားကို သတ်မှတ်ပါ −"</string>
     <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"ပင်ကို လက်ခံဝန်ဆောင်ပေးသူအမည်(www.google.com) မှာ IPv4 -"</string>
@@ -901,10 +901,10 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"ပြန်စရန်"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"DNS စစ်ဆေးမှုခလုတ်ကို နှိပ်ပါ"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"ထုတ်လုပ်သူနှင့် သက်ဆိုင်သော အချက်အလက်/ဆက်တင်များ"</string>
-    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC အသုံးပြုနိုင်သည် -"</string>
-    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR ကန့်သတ်ထားသည် -"</string>
-    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR အသုံးပြုနိုင်သည် -"</string>
-    <string name="radio_info_nr_state" msgid="1337571996788535356">"NR အခြေအနေ -"</string>
+    <string name="radio_info_endc_available" msgid="2983767110681230019">"EN-DC ရနိုင်သည် (NSA)-"</string>
+    <string name="radio_info_dcnr_restricted" msgid="7147511536420148173">"DCNR ကန့်သတ်ထားသည် (NSA)-"</string>
+    <string name="radio_info_nr_available" msgid="3383388088451237182">"NR ရနိုင်သည် (NSA)-"</string>
+    <string name="radio_info_nr_state" msgid="4158805093187555149">"NR အခြေအနေ (NSA)-"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR ကြိမ်နှုန်း -"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"ရေဒီယိုလိုင်းမုဒ်အဖြစ် သတ်မှတ်ပါ"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"ရေဒီယိုလိုင်းစာရင်းကို ဖွင့်နေသည်…"</string>
@@ -918,12 +918,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"သင်၏ ဘလူးတုသ်လိုင်းဆွဲအား မကောင်းပါ။ စပီကာဖုန်းသို့ ပြောင်းကြည့်ပါ။"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"ခေါ်ဆိုမှုအရည်အသွေး အကြောင်းကြားချက်"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"ရပ်ဆိုင်းထားသော SIP အကောင့်များ"</string>
-    <!-- no translation found for limited_service_alert_dialog_description (6686928033670697313) -->
-    <skip />
-    <!-- no translation found for do_not_show_again (8923026903375124550) -->
-    <skip />
-    <!-- no translation found for turn_off_wfc (2346229945400554258) -->
-    <skip />
-    <!-- no translation found for unavailable_emergency_calls_notification_name (4390236789690885552) -->
-    <skip />
+    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"Wi-Fi ဖြင့် အရေးပေါ်ဖုန်းခေါ်ခြင်းများကို <xliff:g id="SPN">%s</xliff:g> က ပံ့ပိုးမထားပါ။ \n\nအရေးပေါ်ဖုန်းခေါ်ခြင်းများကို မိုဘိုင်းကွန်ရက်မှတစ်ဆင့် ပြုလုပ်ပါမည်။ မိုဘိုင်းလိုင်းဆွဲအားကို ကန့်သတ်ထားပါက အရေးပေါ်ဖုန်းခေါ်ခြင်း မပြုလုပ်နိုင်ပါ။"</string>
+    <string name="do_not_show_again" msgid="8923026903375124550">"ထပ်မပြပါနှင့်"</string>
+    <string name="turn_off_wfc" msgid="2346229945400554258">"Wi-Fi ခေါ်ဆိုမှု ပိတ်ရန်"</string>
+    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"အရေးပေါ်ဖုန်းခေါ်ခြင်းများ မရနိုင်ပါ"</string>
 </resources>
