@@ -408,9 +408,9 @@
     <string name="enable_disable_technology_news" msgid="2794845609698078400">"సాంకేతిక వార్తలు"</string>
     <string name="technology_news_enable" msgid="1908991199492598311">"సాంకేతిక వార్తలు ప్రారంభించబడ్డాయి"</string>
     <string name="technology_news_disable" msgid="8388582607149800889">"సాంకేతిక వార్తలు నిలిపివేయబడ్డాయి"</string>
-    <string name="enable_disable_multi_category" msgid="5958248155437940625">"బహుళ-వర్గాలు"</string>
-    <string name="multi_category_enable" msgid="4531915767817483960">"బహుళ-వర్గాలు ప్రారంభించబడ్డాయి"</string>
-    <string name="multi_category_disable" msgid="6325934413701238104">"బహుళ-వర్గాలు నిలిపివేయబడ్డాయి"</string>
+    <string name="enable_disable_multi_category" msgid="5958248155437940625">"బహుళ-కేటగిరీలు"</string>
+    <string name="multi_category_enable" msgid="4531915767817483960">"బహుళ-కేటగిరీలు ప్రారంభించబడ్డాయి"</string>
+    <string name="multi_category_disable" msgid="6325934413701238104">"బహుళ-కేటగిరీలు నిలిపివేయబడ్డాయి"</string>
     <string name="network_recommended" msgid="3444321100580250926">" (సిఫార్సు చేయడమైనది)"</string>
     <string name="network_lte" msgid="7206879277095094280">"LTE (సిఫార్సు చేయబడింది)"</string>
     <string name="network_4G" msgid="6800527815504223913">"4G (సిఫార్సు చేయబడింది)"</string>
@@ -596,7 +596,7 @@
     <string name="hac_mode_summary" msgid="7774989500136009881">"వినికిడి సహాయక సాధనం అనుకూలతను ప్రారంభించండి"</string>
     <string name="rtt_mode_title" msgid="3075948111362818043">"రియ‌ల్‌-టైమ్‌ టెక్స్ట్ (RTT) కాల్"</string>
     <string name="rtt_mode_summary" msgid="8631541375609989562">"వాయిస్ కాల్‌లో మెసేజ్‌లు పంపడానికి అనుమతించండి"</string>
-    <string name="rtt_mode_more_information" msgid="587500128658756318">"బధిరులు, వినికిడి సమస్యలు ఉన్న వారు, మాట్లాడటంలో సమస్యలు ఉన్న వారు లేదా కేవలం వాయిస్‌తో అర్థం చేసుకోలేని కాలర్‌లకు RTT సహాయపడుతుంది.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;మరింత తెలుసుకోండి&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT కాల్స్‌ సందేశ లిపి మార్పు వలె సేవ్ చేయబడతాయి\n       &lt;br&gt; - వీడియో కాల్స్‌ల కోసం RTT అందుబాటులో లేదు"</string>
+    <string name="rtt_mode_more_information" msgid="587500128658756318">"బధిరులు, వినికిడి సమస్యలు ఉన్న వారు, మాట్లాడటంలో సమస్యలు ఉన్న వారు లేదా కేవలం వాయిస్‌తో అర్థం చేసుకోలేని కాలర్‌లకు RTT సహాయపడుతుంది.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;మరింత తెలుసుకోండి&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT కాల్స్‌ సందేశ లిపి మార్పు లాగా సేవ్ చేయబడతాయి\n       &lt;br&gt; - వీడియో కాల్స్‌ల కోసం RTT అందుబాటులో లేదు"</string>
     <string name="no_rtt_when_roaming" msgid="5268008247378355389">"గమనిక: రోమింగ్‌లో ఉండగా RTTఅందుబాటులో ఉండదు"</string>
   <string-array name="tty_mode_entries">
     <item msgid="3238070884803849303">"TTY ఆఫ్‌లో ఉంది"</item>
@@ -671,7 +671,7 @@
     <string name="sim_label_emergency_calls" msgid="9078241989421522310">"అత్యవసర కాల్స్‌"</string>
     <string name="sim_description_emergency_calls" msgid="5146872803938897296">"అత్యవసర కాలింగ్ మాత్రమే"</string>
     <string name="sim_description_default" msgid="7474671114363724971">"SIM కార్డ్, స్లాట్: <xliff:g id="SLOT_ID">%s</xliff:g>"</string>
-    <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"యాక్సెస్‌ సామర్థ్యం"</string>
+    <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"యాక్సెసిబిలిటీ"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"వీరి నుండి Wi-Fi కాల్"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"Wi-Fi కాల్"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"మెసేజ్‌ను డీకోడ్ చేస్తున్నప్పుడు లోపం సంభవించింది."</string>
@@ -889,6 +889,7 @@
     <string name="radio_info_band_mode_label" msgid="23480556225515290">"రేడియో బ్యాండ్‌ను ఎంచుకోండి"</string>
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"వాయిస్ నెట్‌వర్క్ రకం:"</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"డేటా నెట్‌వర్క్ రకం:"</string>
+    <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"నెట్‌వర్క్ రకాన్ని ఓవర్‌రైడ్ చేయండి:"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"ఫోన్ సూచికను ఎంచుకోండి"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"సెట్ చేసిన ప్రాధాన్య నెట్‌వర్క్ రకం:"</string>
     <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"పింగ్ హోస్ట్ పేరు(www.google.com) IPv4:"</string>
@@ -900,10 +901,10 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"రిఫ్రెష్ చేయి"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"DNS తనిఖీని టోగుల్ చేయండి"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"OEM-నిర్దిష్ట సమాచారం/సెట్టింగ్‌లు"</string>
-    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC అందుబాటులో ఉంది:"</string>
-    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR నియంత్రించబడింది:"</string>
-    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR అందుబాటులో ఉంది:"</string>
-    <string name="radio_info_nr_state" msgid="1337571996788535356">"NR స్టేటస్:"</string>
+    <string name="radio_info_endc_available" msgid="2983767110681230019">"EN-DC అందుబాటులో ఉన్న (NSA):"</string>
+    <string name="radio_info_dcnr_restricted" msgid="7147511536420148173">"DCNR పరిమితం చేయబడిన (NSA):"</string>
+    <string name="radio_info_nr_available" msgid="3383388088451237182">"NR అందుబాటులో ఉన్న (NSA):"</string>
+    <string name="radio_info_nr_state" msgid="4158805093187555149">"NR స్టేట్ (NSA):"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR ఫ్రీక్వెన్సీ:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"రేడియో బ్యాండ్ మోడ్‌ను సెట్ చేయండి"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"బ్యాండ్ లిస్ట్‌ను లోడ్ చేస్తోంది…"</string>
@@ -917,12 +918,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"మీ బ్లూటూత్ సిగ్నల్ బలహీనంగా ఉంది. స్పీకర్‌ఫోన్‌కు స్విచ్ అవ్వడానికి ట్రై చేయండి."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"కాల్ క్వాలిటీ నోటిఫికేషన్"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"తీసివేయబడిన SIP ఖాతాలు"</string>
-    <!-- no translation found for limited_service_alert_dialog_description (6686928033670697313) -->
-    <skip />
-    <!-- no translation found for do_not_show_again (8923026903375124550) -->
-    <skip />
-    <!-- no translation found for turn_off_wfc (2346229945400554258) -->
-    <skip />
-    <!-- no translation found for unavailable_emergency_calls_notification_name (4390236789690885552) -->
-    <skip />
+    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"Wi-Fi ద్వారా ఎమర్జెన్సీ కాల్స్‌కు <xliff:g id="SPN">%s</xliff:g> సపోర్ట్ చేయదు. \n\nమొబైల్ నెట్‌వర్క్ ద్వారా ఎమర్జెన్సీ కాల్స్ చేయబడతాయి. పరిమిత మొబైల్ కవరేజీ ఉన్నట్లయితే, మీ ఎమర్జెన్సీ కాల్ కనెక్ట్ అవ్వకపోవచ్చు."</string>
+    <string name="do_not_show_again" msgid="8923026903375124550">"మళ్లీ చూపవద్దు"</string>
+    <string name="turn_off_wfc" msgid="2346229945400554258">"Wi-Fi కాలింగ్‌ను ఆఫ్ చేయండి"</string>
+    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"ఎమర్జెన్సీ కాల్స్ అందుబాటులో ఉండకపోవచ్చు"</string>
 </resources>
