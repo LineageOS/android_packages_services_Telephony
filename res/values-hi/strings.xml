@@ -889,6 +889,7 @@
     <string name="radio_info_band_mode_label" msgid="23480556225515290">"रेडियो का बैंड चुनें"</string>
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"वॉइस नेटवर्क टाइप:"</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"डेटा नेटवर्क प्रकार:"</string>
+    <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"नेटवर्क टाइप बदलें:"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"फ़ोन इंडेक्स चुनें"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"पसंदीदा नेटवर्क प्रकार सेट करें:"</string>
     <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"होस्टनाम(www.google.com) IPv4 पिंग करें:"</string>
@@ -900,10 +901,10 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"रीफ़्रेश करें"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"डीएनएस जांच टॉगल करें"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"ओईएम-खास जानकारी/सेटिंग"</string>
-    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC उपलब्ध है:"</string>
-    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR प्रतिबंधित है:"</string>
-    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR उपलब्ध है:"</string>
-    <string name="radio_info_nr_state" msgid="1337571996788535356">"NR की स्थिति:"</string>
+    <string name="radio_info_endc_available" msgid="2983767110681230019">"EN-DC उपलब्ध है (NSA):"</string>
+    <string name="radio_info_dcnr_restricted" msgid="7147511536420148173">"DCNR प्रतिबंधित है (NSA):"</string>
+    <string name="radio_info_nr_available" msgid="3383388088451237182">"NR उपलब्ध है (NSA):"</string>
+    <string name="radio_info_nr_state" msgid="4158805093187555149">"NR की स्थिति (NSA):"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR की फ़्रीक्वेंसी:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"\'रेडियो बैंड\' मोड सेट करें"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"बैंड सूची लोड की जा रही है…"</string>
@@ -917,12 +918,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"आपका ब्लूटूथ सिग्नल कमज़ोर है. स्पीकरफ़ोन की सुविधा का इस्तेमाल करें."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"कॉल की क्वालिटी की सूचना"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"ऐसे SIP खाते जिनका समर्थन रोक दिया गया है"</string>
-    <!-- no translation found for limited_service_alert_dialog_description (6686928033670697313) -->
-    <skip />
-    <!-- no translation found for do_not_show_again (8923026903375124550) -->
-    <skip />
-    <!-- no translation found for turn_off_wfc (2346229945400554258) -->
-    <skip />
-    <!-- no translation found for unavailable_emergency_calls_notification_name (4390236789690885552) -->
-    <skip />
+    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g> आपातकालीन कॉल के लिए, वाई-फ़ाई कॉलिंग की सुविधा नहीं देता. \n\nआपातकालीन कॉल के लिए, मोबाइल नेटवर्क का इस्तेमाल किया जाएगा. अगर मोबाइल नेटवर्क का कवरेज सीमित क्षेत्र में है, तो हो सकता है कि आपातकालीन कॉल न लगे."</string>
+    <string name="do_not_show_again" msgid="8923026903375124550">"फिर से न दिखाएं"</string>
+    <string name="turn_off_wfc" msgid="2346229945400554258">"वाई-फ़ाई कॉलिंग बंद करें"</string>
+    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"शायद आपातकालीन कॉल करने की सुविधा उपलब्ध न हो"</string>
 </resources>

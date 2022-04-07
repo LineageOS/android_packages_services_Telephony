@@ -889,6 +889,7 @@
     <string name="radio_info_band_mode_label" msgid="23480556225515290">"เลือกย่านความถี่วิทยุ"</string>
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"ประเภทของเครือข่ายเสียง:"</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"ประเภทเครือข่ายข้อมูล:"</string>
+    <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"ประเภทการลบล้างเครือข่าย:"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"เลือกดัชนีโทรศัพท์"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"ตั้งค่าประเภทเครือข่ายที่ต้องการ:"</string>
     <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"ใช้คำสั่ง ping ชื่อโฮสต์ (www.google.com) IPv4:"</string>
@@ -900,10 +901,10 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"รีเฟรช"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"สลับการตรวจสอบ DNS"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"ข้อมูล/การตั้งค่าเฉพาะตาม OEM"</string>
-    <string name="radio_info_endc_available" msgid="4410653375290113436">"มี EN-DC:"</string>
-    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR ถูกจำกัด:"</string>
-    <string name="radio_info_nr_available" msgid="1321318331361249997">"มี NR:"</string>
-    <string name="radio_info_nr_state" msgid="1337571996788535356">"สถานะ NR:"</string>
+    <string name="radio_info_endc_available" msgid="2983767110681230019">"EN-DC ที่พร้อมใช้งาน (NSA):"</string>
+    <string name="radio_info_dcnr_restricted" msgid="7147511536420148173">"DCNR ที่จำกัด (NSA):"</string>
+    <string name="radio_info_nr_available" msgid="3383388088451237182">"NR ที่พร้อมใช้งาน (NSA):"</string>
+    <string name="radio_info_nr_state" msgid="4158805093187555149">"สถานะ NR (NSA):"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"ความถี่ NR:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"ตั้งค่าโหมดย่านความถี่วิทยุ"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"กำลังโหลดรายการย่านความถี่…"</string>
@@ -917,12 +918,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"สัญญาณบลูทูธอ่อน ลองเปลี่ยนไปใช้ลำโพงแทน"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"การแจ้งเตือนคุณภาพการโทร"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"บัญชี SIP ที่เลิกใช้งาน"</string>
-    <!-- no translation found for limited_service_alert_dialog_description (6686928033670697313) -->
-    <skip />
-    <!-- no translation found for do_not_show_again (8923026903375124550) -->
-    <skip />
-    <!-- no translation found for turn_off_wfc (2346229945400554258) -->
-    <skip />
-    <!-- no translation found for unavailable_emergency_calls_notification_name (4390236789690885552) -->
-    <skip />
+    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g> ไม่รองรับการโทรไปยังหมายเลขฉุกเฉินผ่าน Wi-Fi \n\nระบบจะต่อสายหมายเลขฉุกเฉินผ่านเครือข่ายมือถือ หากสัญญาณมือถือมีไม่มากพอ การโทรหมายเลขฉุกเฉินของคุณก็อาจส่งไปไม่ถึง"</string>
+    <string name="do_not_show_again" msgid="8923026903375124550">"ไม่ต้องแสดงอีก"</string>
+    <string name="turn_off_wfc" msgid="2346229945400554258">"ปิดการโทรผ่าน Wi-Fi"</string>
+    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"หมายเลขฉุกเฉินอาจไม่สามารถใช้งานได้"</string>
 </resources>
