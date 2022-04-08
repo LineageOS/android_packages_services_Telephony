@@ -889,8 +889,7 @@
     <string name="radio_info_band_mode_label" msgid="23480556225515290">"ရေဒီယိုလိုင်း ရွေးချယ်ပါ"</string>
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"အသံကွန်ရက် အမျိုးအစား −"</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"ဒေတာကွန်ရက် အမျိုးအစား −"</string>
-    <!-- no translation found for radio_info_override_network_type_label (4176280017221092005) -->
-    <skip />
+    <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"အစားထိုး ကွန်ရက်အမျိုးအစား-"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"ဖုန်းအညွှန်း ရွေးရန်"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"ပိုနှစ်သက်သည့် ကွန်ရက်အမျိုးအစားကို သတ်မှတ်ပါ −"</string>
     <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"ပင်ကို လက်ခံဝန်ဆောင်ပေးသူအမည်(www.google.com) မှာ IPv4 -"</string>
@@ -902,14 +901,10 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"ပြန်စရန်"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"DNS စစ်ဆေးမှုခလုတ်ကို နှိပ်ပါ"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"ထုတ်လုပ်သူနှင့် သက်ဆိုင်သော အချက်အလက်/ဆက်တင်များ"</string>
-    <!-- no translation found for radio_info_endc_available (2983767110681230019) -->
-    <skip />
-    <!-- no translation found for radio_info_dcnr_restricted (7147511536420148173) -->
-    <skip />
-    <!-- no translation found for radio_info_nr_available (3383388088451237182) -->
-    <skip />
-    <!-- no translation found for radio_info_nr_state (4158805093187555149) -->
-    <skip />
+    <string name="radio_info_endc_available" msgid="2983767110681230019">"EN-DC ရနိုင်သည် (NSA)-"</string>
+    <string name="radio_info_dcnr_restricted" msgid="7147511536420148173">"DCNR ကန့်သတ်ထားသည် (NSA)-"</string>
+    <string name="radio_info_nr_available" msgid="3383388088451237182">"NR ရနိုင်သည် (NSA)-"</string>
+    <string name="radio_info_nr_state" msgid="4158805093187555149">"NR အခြေအနေ (NSA)-"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR ကြိမ်နှုန်း -"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"ရေဒီယိုလိုင်းမုဒ်အဖြစ် သတ်မှတ်ပါ"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"ရေဒီယိုလိုင်းစာရင်းကို ဖွင့်နေသည်…"</string>
