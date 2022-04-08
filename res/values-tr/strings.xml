@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"Erişilebilirlik"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"Gelen çağrı (kablosuz):"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"Kablosuz çağrı"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"Açmak için tekrar dokunun"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"İletinin kodu çözülürken bir hata oluştu."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"Bir SIM kart, hizmetinizi etkinleştirdi ve telefonunuzun dolaşım özelliklerini güncelledi."</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"Etkin çağrıların sayısı çok fazla. Yeni bir çağrı yapmadan önce lütfen mevcut çağrıları sonlandırın veya birleştirin."</string>
@@ -890,6 +889,7 @@
     <string name="radio_info_band_mode_label" msgid="23480556225515290">"Radyo Bandını Seç"</string>
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"Sesli Ağ Türü:"</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"Veri Ağı Türü:"</string>
+    <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"Ağ Türünü Geçersiz Kıl:"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"Telefon dizinini seç"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"Tercih Edilen Ağ Türünü Ayarla:"</string>
     <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"Ping Ana Makine Adı (www.google.com) IPv4:"</string>
@@ -901,10 +901,10 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Yenile"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"DNS Denetimini Aç/Kapat"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"OEM\'e Özgü Bilgiler/Ayarlar"</string>
-    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC Kullanılabilir:"</string>
-    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR Kısıtlanmış:"</string>
-    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR Kullanılabilir:"</string>
-    <string name="radio_info_nr_state" msgid="1337571996788535356">"NR Durumu:"</string>
+    <string name="radio_info_endc_available" msgid="2983767110681230019">"EN-DC Kullanılabilir (NSA):"</string>
+    <string name="radio_info_dcnr_restricted" msgid="7147511536420148173">"DCNR Kısıtlanmış (NSA):"</string>
+    <string name="radio_info_nr_available" msgid="3383388088451237182">"NR Kullanılabilir (NSA):"</string>
+    <string name="radio_info_nr_state" msgid="4158805093187555149">"NR Durumu (NSA):"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR Frekansı:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Radyo Bant Modunu Ayarla"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Bant Listesi Yükleniyor…"</string>
@@ -918,12 +918,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Bluetooth sinyaliniz zayıf. Hoparlöre geçmeyi deneyin."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Arama Kalitesiyle İlgili Bildirim"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Kullanımdan kaldırılan SIP hesapları"</string>
-    <!-- no translation found for limited_service_alert_dialog_description (6686928033670697313) -->
-    <skip />
-    <!-- no translation found for do_not_show_again (8923026903375124550) -->
-    <skip />
-    <!-- no translation found for turn_off_wfc (2346229945400554258) -->
-    <skip />
-    <!-- no translation found for unavailable_emergency_calls_notification_name (4390236789690885552) -->
-    <skip />
+    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g>, kablosuz bağlantı üzerinden acil durum aramalarını desteklemiyor. \n\nAcil durum aramaları mobil ağ üzerinden yapılacak. Mobil ağ kapsamınız sınırlıysa acil durum aramanız yapılamayabilir."</string>
+    <string name="do_not_show_again" msgid="8923026903375124550">"Tekrar gösterme"</string>
+    <string name="turn_off_wfc" msgid="2346229945400554258">"Kablosuz çağrıyı devre dışı bırak"</string>
+    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"Acil durum aramaları kullanılamayabilir"</string>
 </resources>

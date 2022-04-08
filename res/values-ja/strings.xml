@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"ユーザー補助機能"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"Wi-Fi 通話の着信"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"Wi-Fi 通話"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"開くにはもう一度タップしてください"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"メッセージのデコード中にエラーが発生しました。"</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"SIMカードでサービスが有効になり、スマートフォンのローミング機能が更新されています。"</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"通話中の電話の数が多すぎます。新しく通話を発信するには、まず既存の通話を終了するか、統合してグループ通話にしてください。"</string>
@@ -890,6 +889,7 @@
     <string name="radio_info_band_mode_label" msgid="23480556225515290">"無線バンドを選択"</string>
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"音声ネットワークの種類:"</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"データ ネットワークの種類:"</string>
+    <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"優先ネットワークの種類:"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"スマートフォンのインデックスを選択"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"優先ネットワークの種類を設定:"</string>
     <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"ホスト名（www.google.com）の ping（IPv4）:"</string>
@@ -901,10 +901,10 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"更新"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"DNS チェックを切り替え"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"OEM 固有の情報 / 設定"</string>
-    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC 利用可能:"</string>
-    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR 制限あり:"</string>
-    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR 利用可能:"</string>
-    <string name="radio_info_nr_state" msgid="1337571996788535356">"NR ステータス:"</string>
+    <string name="radio_info_endc_available" msgid="2983767110681230019">"EN-DC 利用可能（NSA）:"</string>
+    <string name="radio_info_dcnr_restricted" msgid="7147511536420148173">"DCNR 制限あり（NSA）:"</string>
+    <string name="radio_info_nr_available" msgid="3383388088451237182">"NR 利用可能（NSA）:"</string>
+    <string name="radio_info_nr_state" msgid="4158805093187555149">"NR ステータス（NSA）:"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR 周波数:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"無線バンドモードの設定"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"バンドリストを読み込み中…"</string>
@@ -918,12 +918,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Bluetooth の信号強度が十分ではありません。スピーカーフォンに切り替えてみてください。"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"通話品質に関するお知らせ"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"サポートが終了した SIP アカウント"</string>
-    <!-- no translation found for limited_service_alert_dialog_description (6686928033670697313) -->
-    <skip />
-    <!-- no translation found for do_not_show_again (8923026903375124550) -->
-    <skip />
-    <!-- no translation found for turn_off_wfc (2346229945400554258) -->
-    <skip />
-    <!-- no translation found for unavailable_emergency_calls_notification_name (4390236789690885552) -->
-    <skip />
+    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g> は Wi-Fi 経由の緊急通報をサポートしていません。\n\n緊急通報はモバイル ネットワークを通じて発信されます。モバイル ネットワークの通信状態が良好でない場合は、緊急通報を発信できない場合があります。"</string>
+    <string name="do_not_show_again" msgid="8923026903375124550">"今後表示しない"</string>
+    <string name="turn_off_wfc" msgid="2346229945400554258">"[Wi-Fi 通話] をオフにする"</string>
+    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"緊急通報が利用できない可能性があります"</string>
 </resources>
