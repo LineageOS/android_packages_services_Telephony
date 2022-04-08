@@ -47,15 +47,18 @@ import android.telephony.CarrierConfigManager;
 import android.telephony.CellIdentityCdma;
 import android.telephony.CellIdentityGsm;
 import android.telephony.CellIdentityLte;
+import android.telephony.CellIdentityNr;
 import android.telephony.CellIdentityWcdma;
 import android.telephony.CellInfo;
 import android.telephony.CellInfoCdma;
 import android.telephony.CellInfoGsm;
 import android.telephony.CellInfoLte;
+import android.telephony.CellInfoNr;
 import android.telephony.CellInfoWcdma;
 import android.telephony.CellSignalStrengthCdma;
 import android.telephony.CellSignalStrengthGsm;
 import android.telephony.CellSignalStrengthLte;
+import android.telephony.CellSignalStrengthNr;
 import android.telephony.CellSignalStrengthWcdma;
 import android.telephony.DataSpecificRegistrationInfo;
 import android.telephony.NetworkRegistrationInfo;
@@ -962,6 +965,23 @@ public class RadioInfo extends AppCompatActivity {
                 getCellInfoDisplayString(ssLte.getTimingAdvance()));
     }
 
+    private String buildNrInfoString(CellInfoNr ci) {
+        CellIdentityNr cidNr = (CellIdentityNr) ci.getCellIdentity();
+        CellSignalStrengthNr ssNr = (CellSignalStrengthNr) ci.getCellSignalStrength();
+
+        return String.format(
+                "%-3.3s %-3.3s %-3.3s %-5.5s %-5.5s %-3.3s %-6.6s %-4.4s %-4.4s\n",
+                getConnectionStatusString(ci),
+                cidNr.getMccString(),
+                cidNr.getMncString(),
+                getCellInfoDisplayString(cidNr.getTac()),
+                getCellInfoDisplayString(cidNr.getNci()),
+                getCellInfoDisplayString(cidNr.getPci()),
+                getCellInfoDisplayString(cidNr.getNrarfcn()),
+                getCellInfoDisplayString(ssNr.getSsRsrp()),
+                getCellInfoDisplayString(ssNr.getSsRsrq()));
+    }
+
     private String buildWcdmaInfoString(CellInfoWcdma ci) {
         CellIdentityWcdma cidWcdma = ci.getCellIdentity();
         CellSignalStrengthWcdma ssWcdma = ci.getCellSignalStrength();
@@ -982,7 +1002,8 @@ public class RadioInfo extends AppCompatActivity {
         StringBuilder cdmaCells = new StringBuilder(),
                 gsmCells = new StringBuilder(),
                 lteCells = new StringBuilder(),
-                wcdmaCells = new StringBuilder();
+                wcdmaCells = new StringBuilder(),
+                nrCells = new StringBuilder();
 
         if (arrayCi != null) {
             for (CellInfo ci : arrayCi) {
@@ -995,8 +1016,19 @@ public class RadioInfo extends AppCompatActivity {
                     gsmCells.append(buildGsmInfoString((CellInfoGsm) ci));
                 } else if (ci instanceof CellInfoCdma) {
                     cdmaCells.append(buildCdmaInfoString((CellInfoCdma) ci));
+                } else if (ci instanceof CellInfoNr) {
+                    nrCells.append(buildNrInfoString((CellInfoNr) ci));
                 }
             }
+            if (nrCells.length() != 0) {
+                value += String.format(
+                        "NR\n%-3.3s %-3.3s %-3.3s %-5.5s %-5.5s %-3.3s"
+                                + " %-6.6s %-4.4s %-4.4s\n",
+                        "SRV", "MCC", "MNC", "TAC", "NCI", "PCI",
+                        "NRARFCN", "SS-RSRP", "SS-RSRQ");
+                value += nrCells.toString();
+            }
+
             if (lteCells.length() != 0) {
                 value += String.format(
                         "LTE\n%-3.3s %-3.3s %-3.3s %-5.5s %-5.5s %-3.3s"
