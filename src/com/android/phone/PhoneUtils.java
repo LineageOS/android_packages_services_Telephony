@@ -716,7 +716,7 @@ public class PhoneUtils {
         // TODO: Should use some sort of special hidden flag to decorate this account as
         // an emergency-only account
         String id = isEmergency ? EMERGENCY_ACCOUNT_HANDLE_ID : prefix +
-                String.valueOf(phone.getFullIccSerialNumber());
+                String.valueOf(phone.getSubId());
         return makePstnPhoneAccountHandleWithPrefix(id, prefix, isEmergency);
     }
 
@@ -744,7 +744,7 @@ public class PhoneUtils {
 
     public static Phone getPhoneForPhoneAccountHandle(PhoneAccountHandle handle) {
         if (handle != null && handle.getComponentName().equals(getPstnConnectionServiceName())) {
-            return getPhoneFromIccId(handle.getId());
+            return getPhoneFromSubId(handle.getId());
         }
         return null;
     }
@@ -759,18 +759,18 @@ public class PhoneUtils {
      * {@code false} otherwise.
      */
     public static boolean isPhoneAccountActive(SubscriptionManager sm, PhoneAccountHandle handle) {
-        return sm.getActiveSubscriptionInfoForIcc(handle.getId()) != null;
+        return sm.getActiveSubscriptionInfo(Integer.parseInt(handle.getId())) != null;
     }
 
     private static ComponentName getPstnConnectionServiceName() {
         return PSTN_CONNECTION_SERVICE_COMPONENT;
     }
 
-    private static Phone getPhoneFromIccId(String iccId) {
-        if (!TextUtils.isEmpty(iccId)) {
+    private static Phone getPhoneFromSubId(String subId) {
+        if (!TextUtils.isEmpty(subId)) {
             for (Phone phone : PhoneFactory.getPhones()) {
-                String phoneIccId = phone.getFullIccSerialNumber();
-                if (iccId.equals(phoneIccId)) {
+                String phoneSubId = Integer.toString(phone.getSubId());
+                if (subId.equals(phoneSubId)) {
                     return phone;
                 }
             }
