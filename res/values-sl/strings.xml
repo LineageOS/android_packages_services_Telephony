@@ -889,6 +889,7 @@
     <string name="radio_info_band_mode_label" msgid="23480556225515290">"Izbira radijskega območja"</string>
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"Vrsta glasovnega omrežja:"</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"Vrsta podatkovnega omrežja:"</string>
+    <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"Preglasi vrsto omrežja:"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"Izberite indeks telefona"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"Nastavitev vrste prednostnega omrežja:"</string>
     <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"Preverjanje imena gostitelja (www.google.com) za IPv4:"</string>
@@ -900,10 +901,10 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Osveži"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"Preklop preverjanja DNS"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"Informacije/nastavitve za OEM"</string>
-    <string name="radio_info_endc_available" msgid="4410653375290113436">"Razpoložljivo za EN-DC:"</string>
-    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"Omejeno za DCNR:"</string>
-    <string name="radio_info_nr_available" msgid="1321318331361249997">"Razpoložljivo za NR:"</string>
-    <string name="radio_info_nr_state" msgid="1337571996788535356">"Stanje NR:"</string>
+    <string name="radio_info_endc_available" msgid="2983767110681230019">"Razpoložljivo za EN-DC (NSA):"</string>
+    <string name="radio_info_dcnr_restricted" msgid="7147511536420148173">"Omejeno za DCNR (NSA):"</string>
+    <string name="radio_info_nr_available" msgid="3383388088451237182">"Razpoložljivo za NR (NSA):"</string>
+    <string name="radio_info_nr_state" msgid="4158805093187555149">"Stanje NR (NSA):"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"Frekvenca NR:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Nastavljanje načina radijskega območja"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Nalaganje seznama frekvenčnih pasov …"</string>
@@ -917,12 +918,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Signal povezave Bluetooth je šibek. Poskusite preklopiti na zvočnik."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Obvestilo o kakovosti klica"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Opuščeni računi SIP"</string>
-    <!-- no translation found for limited_service_alert_dialog_description (6686928033670697313) -->
-    <skip />
-    <!-- no translation found for do_not_show_again (8923026903375124550) -->
-    <skip />
-    <!-- no translation found for turn_off_wfc (2346229945400554258) -->
-    <skip />
-    <!-- no translation found for unavailable_emergency_calls_notification_name (4390236789690885552) -->
-    <skip />
+    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g> ne podpira klicev v sili prek Wi-Fi-ja. \n\nKlici v sili bodo opravljeni prek mobilnega omrežja. Če je dostopnost mobilnega omrežja omejena, klic v sili morda ne bo vzpostavljen."</string>
+    <string name="do_not_show_again" msgid="8923026903375124550">"Tega ne prikaži več"</string>
+    <string name="turn_off_wfc" msgid="2346229945400554258">"Vklopi klicanje prek Wi-Fi-ja"</string>
+    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"Klici v sili morda niso na voljo."</string>
 </resources>

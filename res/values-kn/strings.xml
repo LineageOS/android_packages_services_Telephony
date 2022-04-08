@@ -889,6 +889,7 @@
     <string name="radio_info_band_mode_label" msgid="23480556225515290">"ರೇಡಿಯೋ ಬ್ಯಾಂಡ್ ಆಯ್ಕೆಮಾಡಿ"</string>
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"ಧ್ವನಿ ನೆಟ್‌ವರ್ಕ್‌ ಪ್ರಕಾರ:"</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"ಡೇಟಾ ನೆಟ್‌ವರ್ಕ್ ಪ್ರಕಾರ:"</string>
+    <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"ನೆಟ್‌ವರ್ಕ್ ಪ್ರಕಾರವನ್ನು ಅತಿಕ್ರಮಿಸಿ:"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"ಫೋನ್ ಸೂಚಿಕೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"ಆದ್ಯತೆಯ ನೆಟ್‌ವರ್ಕ್‌ ಪ್ರಕಾರವನ್ನು ಹೊಂದಿಸಿ:"</string>
     <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"ಹೋಸ್ಟ್‌ ಹೆಸರನ್ನು ಪಿಂಗ್ ಮಾಡಿ(www.google.com) IPv4:"</string>
@@ -900,10 +901,10 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"ರಿಫ್ರೆಶ್ ಮಾಡಿ"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"DNS ಪರಿಶೀಲನೆ ಟಾಗಲ್ ಮಾಡಿ"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"OEM-ನಿರ್ದಿಷ್ಟ ಮಾಹಿತಿ/ಸೆಟ್ಟಿಂಗ್‌ಗಳು"</string>
-    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC ಲಭ್ಯವಿದೆ:"</string>
-    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"ನಿರ್ಬಂಧಿತ DCNR:"</string>
-    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR ಲಭ್ಯವಿದೆ:"</string>
-    <string name="radio_info_nr_state" msgid="1337571996788535356">"NR ಸ್ಥಿತಿ:"</string>
+    <string name="radio_info_endc_available" msgid="2983767110681230019">"EN-DC ಲಭ್ಯವಿದೆ (NSA):"</string>
+    <string name="radio_info_dcnr_restricted" msgid="7147511536420148173">"DCNR ನಿರ್ಬಂಧಿತ (NSA):"</string>
+    <string name="radio_info_nr_available" msgid="3383388088451237182">"NR ಲಭ್ಯವಿದೆ (NSA):"</string>
+    <string name="radio_info_nr_state" msgid="4158805093187555149">"NR ಸ್ಥಿತಿ (NSA):"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR ಫ್ರೀಕ್ವೆನ್ಸಿ:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"ರೇಡಿಯೋ ಬ್ಯಾಂಡ್ ಮೋಡ್ ಹೊಂದಿಸಿ"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"ಬ್ಯಾಂಡ್ ಪಟ್ಟಿಯನ್ನು ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ…"</string>
