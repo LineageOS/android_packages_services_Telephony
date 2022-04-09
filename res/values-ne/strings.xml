@@ -127,7 +127,7 @@
     <string name="registration_cf_forbidden" msgid="4386482610771190420">"तपाईंको सेवा प्रदायकले कल फर्वार्ड गर्ने सुविधा उपलब्ध गराउँदैन।"</string>
     <string name="cdma_call_waiting" msgid="4565070960879673216">"कल प्रतीक्षाको सुविधा सक्रिय गर्ने हो?"</string>
     <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"कल हुँदै गर्दा, तपाईंलाई आगमन कलबारे जानकारी दिइने छ"</string>
-    <string name="enable_cdma_cw" msgid="811047045863422232">"सक्रिय गर्नुहोस्"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"अन गर्नुहोस्"</string>
     <string name="disable_cdma_cw" msgid="7119290446496301734">"रद्द गर्नुहोस्"</string>
     <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"IMS अन्तर्गत CDMA कल प्रतीक्षाको सुविधा सक्रिय छ"</string>
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"IMS अन्तर्गत CDMA कल प्रतीक्षाको सुविधा निष्क्रिय छ"</string>
@@ -612,7 +612,7 @@
   </string-array>
     <string name="network_info_message" msgid="7599413947016532355">"सञ्जाल सन्देश"</string>
     <string name="network_error_message" msgid="4271579424089326618">"त्रुटिसम्बन्धी सन्देश"</string>
-    <string name="ota_title_activate" msgid="4049645324841263423">"तपाईंको फोन सक्रिय गर्नुहोस्"</string>
+    <string name="ota_title_activate" msgid="4049645324841263423">"तपाईंको फोन अन गर्नुहोस्"</string>
     <string name="ota_touch_activate" msgid="838764494319694754">"विशेष कललाई तपाईंको फोन सेवा सक्रिय गर्न जरुरी हुन्छ। \n \n \"सक्रिय\" थिचेर तपाईंको फोन  सक्रिय गर्न दिएका निर्देशनहरू सुन्नुहोस्।"</string>
     <string name="ota_hfa_activation_title" msgid="3300556778212729671">"सक्रिय गर्दै…"</string>
     <string name="ota_hfa_activation_dialog_message" msgid="7921718445773342996">"फोनले तपाईँको मोबाइल डेटा सेवा सक्रिय पार्दै छ। \n\nयसले ५ मिनेटसम्म समय लिन सक्छ।"</string>
