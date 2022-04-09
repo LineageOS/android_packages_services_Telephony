@@ -134,12 +134,12 @@
     <string name="updating_title" msgid="6130548922615719689">"కాల్ సెట్టింగ్‌లు"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"కాల్ సెట్టింగ్‌లను నిర్వాహక వినియోగదారు మాత్రమే మార్చగలరు."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"సెట్టింగ్‌లు (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="error_updating_title" msgid="2024290892676808965">"కాల్ సెట్టింగ్‌ల లోపం"</string>
+    <string name="error_updating_title" msgid="2024290892676808965">"కాల్ సెట్టింగ్‌ల ఎర్రర్"</string>
     <string name="reading_settings" msgid="1605904432450871183">"సెట్టింగ్‌లను చదువుతోంది…"</string>
     <string name="updating_settings" msgid="3650396734816028808">"సెట్టింగ్‌లను అప్‌డేట్ చేస్తోంది…"</string>
     <string name="reverting_settings" msgid="7378668837291012205">"సెట్టింగ్‌లను తిరిగి మారుస్తోంది…"</string>
     <string name="response_error" msgid="3904481964024543330">"నెట్‌వర్క్ నుండి ఊహించని ప్రతిస్పందన."</string>
-    <string name="exception_error" msgid="330994460090467">"నెట్‌వర్క్ లేదా SIM కార్డు లోపం."</string>
+    <string name="exception_error" msgid="330994460090467">"నెట్‌వర్క్ లేదా SIM కార్డు ఎర్రర్."</string>
     <string name="stk_cc_ss_to_dial_error" msgid="5147693491690618704">"SS రిక్వెస్ట్‌ సాధారణ కాల్‌కు మార్చబడింది"</string>
     <string name="stk_cc_ss_to_ussd_error" msgid="8330749347425752192">"SS రిక్వెస్ట్‌ USSD రిక్వెస్ట్‌కు మార్చబడింది"</string>
     <string name="stk_cc_ss_to_ss_error" msgid="8297155544652134278">"కొత్త SS రిక్వెస్ట్‌కు మార్చబడింది"</string>
@@ -517,7 +517,7 @@
     <string name="pin2_attempts" msgid="5625178102026453023">\n"మీకు <xliff:g id="NUMBER">%d</xliff:g> ప్రయత్నాలు మిగిలి ఉన్నాయి."</string>
     <string name="puk2_locked" msgid="6497760825455461057">"PUK2 లాక్ చేయబడింది. అన్‌లాక్ చేయడానికి సర్వీస్ ప్రొవైడర్‌ను కాంటాక్ట్ చేయండి."</string>
     <string name="pin2_unblocked" msgid="4481107908727789303">"PIN2 ఇప్పుడు బ్లాక్ అయ్యి లేదు"</string>
-    <string name="pin2_error_exception" msgid="8116103864600823641">"నెట్‌వర్క్ లేదా SIM కార్డ్ లోపం"</string>
+    <string name="pin2_error_exception" msgid="8116103864600823641">"నెట్‌వర్క్ లేదా SIM కార్డ్ ఎర్రర్"</string>
     <string name="doneButton" msgid="7371209609238460207">"పూర్తయింది"</string>
     <string name="voicemail_settings_number_label" msgid="1265118640154688162">"వాయిస్ మెయిల్ నంబర్"</string>
     <string name="card_title_dialing" msgid="8742182654254431781">"డయల్ చేస్తోంది"</string>
@@ -674,7 +674,7 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"యాక్సెసిబిలిటీ"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"వీరి నుండి Wi-Fi కాల్"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"Wi-Fi కాల్"</string>
-    <string name="message_decode_error" msgid="1061856591500290887">"మెసేజ్‌ను డీకోడ్ చేస్తున్నప్పుడు లోపం సంభవించింది."</string>
+    <string name="message_decode_error" msgid="1061856591500290887">"మెసేజ్‌ను డీకోడ్ చేస్తున్నప్పుడు ఎర్రర్ ఏర్పడింది."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"SIM కార్డ్ మీ సేవను సక్రియం చేసింది మరియు మీ ఫోన్ రోమింగ్ సామర్థ్యాలను నవీకరించింది."</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"చాలా ఎక్కువ కాల్స్‌ సక్రియంగా ఉన్నాయి. దయచేసి మరొక కొత్త కాల్ చేసే ముందు ఇప్పటికే ఉన్న కాల్స్‌ను ముగించండి లేదా విలీనం చేయండి."</string>
     <string name="callFailed_imei_not_accepted" msgid="7257903653685147251">"కనెక్ట్ చేయడం సాధ్యపడలేదు, దయచేసి చెల్లుబాటు అయ్యే SIM కార్డ్‌ను చొప్పించండి."</string>
@@ -918,8 +918,4 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"మీ బ్లూటూత్ సిగ్నల్ బలహీనంగా ఉంది. స్పీకర్‌ఫోన్‌కు స్విచ్ అవ్వడానికి ట్రై చేయండి."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"కాల్ క్వాలిటీ నోటిఫికేషన్"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"తీసివేయబడిన SIP ఖాతాలు"</string>
-    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"Wi-Fi ద్వారా ఎమర్జెన్సీ కాల్స్‌కు <xliff:g id="SPN">%s</xliff:g> సపోర్ట్ చేయదు. \n\nమొబైల్ నెట్‌వర్క్ ద్వారా ఎమర్జెన్సీ కాల్స్ చేయబడతాయి. పరిమిత మొబైల్ కవరేజీ ఉన్నట్లయితే, మీ ఎమర్జెన్సీ కాల్ కనెక్ట్ అవ్వకపోవచ్చు."</string>
-    <string name="do_not_show_again" msgid="8923026903375124550">"మళ్లీ చూపవద్దు"</string>
-    <string name="turn_off_wfc" msgid="2346229945400554258">"Wi-Fi కాలింగ్‌ను ఆఫ్ చేయండి"</string>
-    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"ఎమర్జెన్సీ కాల్స్ అందుబాటులో ఉండకపోవచ్చు"</string>
 </resources>
