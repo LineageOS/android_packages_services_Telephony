@@ -486,17 +486,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="LimitedServiceActivity"
-            android:exported="true"
-            android:excludeFromRecents="true"
-            android:launchMode="singleTask"
-            android:taskAffinity=""
-            android:theme="@android:style/Theme.Translucent.NoTitleBar">
-            <intent-filter android:priority="1000">
-                <action android:name = "com.android.internal.telephony.ACTION_VOWIFI_ENABLED" />
-            </intent-filter>
-        </activity>
-
         <activity android:name="MMIDialogActivity"
                 android:configChanges="orientation|screenSize|keyboardHidden"
                 android:excludeFromRecents="true"
