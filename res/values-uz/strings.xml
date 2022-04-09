@@ -358,8 +358,8 @@
     <string name="list_language_summary" msgid="7921756070782277559">"Yangiliklar tilini tanlang"</string>
   <string-array name="list_language_entries">
     <item msgid="2347238508726934281">"Ingliz tili"</item>
-    <item msgid="5172468397620875174">"Fransuzcha"</item>
-    <item msgid="3978110664146015398">"Ispancha"</item>
+    <item msgid="5172468397620875174">"Fransuz"</item>
+    <item msgid="3978110664146015398">"Ispan"</item>
     <item msgid="2637764545851526369">"Yaponcha"</item>
     <item msgid="6103816221834932751">"Koreyscha"</item>
     <item msgid="3127367370005168399">"Xitoycha"</item>
@@ -918,8 +918,4 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Bluetooth signali kuchsiz. Baland ovoz rejimini yoqish tavsiya etiladi."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Chaqiruv sifati haqida bildirishnoma"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"To‘xtatilgan SIP hisoblar"</string>
-    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g> orqali favqulodda chaqiruvlarni Wi-Fi yordamida amalga oshirish imkonsiz. \n\nFavqulodda chaqiruvlar mobil tarmoq orqali amalga oshiriladi. Mobil aloqa qamrovi cheklangan ekanligida favqulodda chaqiruvingiz amalga oshirilmasligi mumkin."</string>
-    <string name="do_not_show_again" msgid="8923026903375124550">"Boshqa chiqmasin"</string>
-    <string name="turn_off_wfc" msgid="2346229945400554258">"Wi-Fi orqali chaqiruvlarni faolsizlantirish"</string>
-    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"Favqulodda chaqiruvlarni amalga oshirish imkonsiz bo‘lishi mumkin"</string>
 </resources>

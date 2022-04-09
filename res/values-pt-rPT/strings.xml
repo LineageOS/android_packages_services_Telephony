@@ -918,8 +918,4 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"O seu sinal Bluetooth é fraco. Tente mudar para o altifalante."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Notificação de qualidade da chamada"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Contas SIP descontinuadas"</string>
-    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g> não suporta chamadas de emergência através de Wi-Fi. \n\nAs chamadas de emergência serão efetuadas através de uma rede móvel. Se a cobertura de rede móvel for limitada, a chamada de emergência poderá não ser efetuada."</string>
-    <string name="do_not_show_again" msgid="8923026903375124550">"Não mostrar novamente"</string>
-    <string name="turn_off_wfc" msgid="2346229945400554258">"Desativar a funcionalidade Chamadas Wi-Fi"</string>
-    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"As chamadas de emergência podem estar indisponíveis"</string>
 </resources>
