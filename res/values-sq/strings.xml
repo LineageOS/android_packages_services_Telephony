@@ -918,8 +918,4 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Sinjali i Bluetooth-it është i dobët. Provo të kalosh te altoparlanti."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Njoftim për cilësinë e telefonatës"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Llogaritë e zhvlerësuara SIP"</string>
-    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g> nuk i mbështet telefonatat e urgjencës nëpërmjet Wi-Fi. \n\nTelefonatat e urgjencës do të kryhen nëpërmjet një rrjeti celular. Nëse ka mbulim të kufizuar të rrjetit celular, telefonata jote e urgjencës mund të mos kryhet."</string>
-    <string name="do_not_show_again" msgid="8923026903375124550">"Mos e shfaq më"</string>
-    <string name="turn_off_wfc" msgid="2346229945400554258">"Çaktivizo telefonatat me Wi-Fi"</string>
-    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"Telefonatat e urgjencës mund të mos ofrohen"</string>
 </resources>

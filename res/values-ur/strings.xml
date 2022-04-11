@@ -918,8 +918,4 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"آپ کا بلوٹوتھ سگنل کمزور ہے۔ اسپیکر فون پر سوئچ کر کے آزمائیں۔"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"کال کی کوالٹی کی اطلاع"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"‏فرسودہ SIP اکاؤنٹس"</string>
-    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"‏<xliff:g id="SPN">%s</xliff:g> Wi-Fi پر ہنگامی کالز کو سپورٹ نہیں کرتا ہے۔ \n\nموبائل نیٹ ورک کے ذریعے ہنگامی کالز کی جائیں گی۔ اگر موبائل کوریج محدود ہے تو ممکن ہے کہ آپ کی ہنگامی کال پوری نہ ہو۔"</string>
-    <string name="do_not_show_again" msgid="8923026903375124550">"دوبارہ نہ دکھائیں"</string>
-    <string name="turn_off_wfc" msgid="2346229945400554258">"‏Wi-Fi کالنگ آف کریں"</string>
-    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"ممکن ہے کہ ہنگامی کالز دستیاب نہ ہوں"</string>
 </resources>
