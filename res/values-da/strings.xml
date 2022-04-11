@@ -918,8 +918,4 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Dit Bluetooth-signal er svagt. Prøv at skifte til medhør."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Notifikation om opkaldskvalitet"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Udfasede SIP-konti"</string>
-    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g> understøtter ikke nødopkald via Wi-Fi. \n\nNødopkald foretages via et mobilnetværk. Hvis der er begrænset mobildækning, går dit nødopkald muligvis ikke igennem."</string>
-    <string name="do_not_show_again" msgid="8923026903375124550">"Vis ikke igen"</string>
-    <string name="turn_off_wfc" msgid="2346229945400554258">"Deaktiver Wi-Fi-opkald"</string>
-    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"Der kan muligvis ikke foretages nødopkald"</string>
 </resources>

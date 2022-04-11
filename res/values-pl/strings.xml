@@ -918,8 +918,4 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Twój sygnał Bluetooth jest słaby. Spróbuj przełączyć na głośnik."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Powiadomienie o jakości połączenia"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Wycofane konta SIP"</string>
-    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g> nie obsługuje połączeń alarmowych przez Wi-Fi. \n\nPołączenia alarmowe będą nawiązywane przez sieć komórkową. Jeśli występują problemy z zasięgiem sieci komórkowej, może nie udać się nawiązać połączenia alarmowego."</string>
-    <string name="do_not_show_again" msgid="8923026903375124550">"Nie pokazuj ponownie"</string>
-    <string name="turn_off_wfc" msgid="2346229945400554258">"Wyłącz Połączenia przez Wi-Fi"</string>
-    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"Połączenia alarmowe mogą nie być dostępne"</string>
 </resources>
