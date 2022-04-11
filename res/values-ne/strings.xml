@@ -127,7 +127,7 @@
     <string name="registration_cf_forbidden" msgid="4386482610771190420">"तपाईंको सेवा प्रदायकले कल फर्वार्ड गर्ने सुविधा उपलब्ध गराउँदैन।"</string>
     <string name="cdma_call_waiting" msgid="4565070960879673216">"कल प्रतीक्षाको सुविधा सक्रिय गर्ने हो?"</string>
     <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"कल हुँदै गर्दा, तपाईंलाई आगमन कलबारे जानकारी दिइने छ"</string>
-    <string name="enable_cdma_cw" msgid="811047045863422232">"सक्रिय गर्नुहोस्"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"अन गर्नुहोस्"</string>
     <string name="disable_cdma_cw" msgid="7119290446496301734">"रद्द गर्नुहोस्"</string>
     <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"IMS अन्तर्गत CDMA कल प्रतीक्षाको सुविधा सक्रिय छ"</string>
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"IMS अन्तर्गत CDMA कल प्रतीक्षाको सुविधा निष्क्रिय छ"</string>
@@ -612,7 +612,7 @@
   </string-array>
     <string name="network_info_message" msgid="7599413947016532355">"सञ्जाल सन्देश"</string>
     <string name="network_error_message" msgid="4271579424089326618">"त्रुटिसम्बन्धी सन्देश"</string>
-    <string name="ota_title_activate" msgid="4049645324841263423">"तपाईंको फोन सक्रिय गर्नुहोस्"</string>
+    <string name="ota_title_activate" msgid="4049645324841263423">"तपाईंको फोन अन गर्नुहोस्"</string>
     <string name="ota_touch_activate" msgid="838764494319694754">"विशेष कललाई तपाईंको फोन सेवा सक्रिय गर्न जरुरी हुन्छ। \n \n \"सक्रिय\" थिचेर तपाईंको फोन  सक्रिय गर्न दिएका निर्देशनहरू सुन्नुहोस्।"</string>
     <string name="ota_hfa_activation_title" msgid="3300556778212729671">"सक्रिय गर्दै…"</string>
     <string name="ota_hfa_activation_dialog_message" msgid="7921718445773342996">"फोनले तपाईँको मोबाइल डेटा सेवा सक्रिय पार्दै छ। \n\nयसले ५ मिनेटसम्म समय लिन सक्छ।"</string>
@@ -918,8 +918,4 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"ब्लुटुथको सिग्नल कमजोर छ। स्पिकरफोन प्रयोग गरी हेर्नुहोस्।"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"कलको गुणस्तरसम्बन्धी सूचना"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"चल्तीबाट हटाइएका SIP खाताहरू"</string>
-    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g> प्रयोग गरेर Wi-Fi मार्फत आपत्कालीन कल गर्न मिल्दैन। \n\nआपत्कालीन कल गर्दा मोबाइल नेटवर्क प्रयोग गरिने छ। मोबाइल नेटवर्क कभरेज पर्याप्त नभएका खण्डमा तपाईंको आपत्कालीन कल सफल नहुन सक्छ।"</string>
-    <string name="do_not_show_again" msgid="8923026903375124550">"फेरि नदेखाइयोस्"</string>
-    <string name="turn_off_wfc" msgid="2346229945400554258">"Wi-Fi कलिङ अफ गर्नुहोस्"</string>
-    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"आपत्कालीन कल गर्ने सुविधा उपलब्ध नहुन सक्छ"</string>
 </resources>

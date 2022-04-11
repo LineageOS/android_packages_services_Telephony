@@ -918,8 +918,4 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Das Bluetooth-Signal ist schwach. Verwende die Freisprechfunktion."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Benachrichtigung zu Anrufqualität"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Eingestellte SIP-Konten"</string>
-    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g> unterstützt keine Notrufe über WLAN. \n\nNotrufe erfolgen über ein Mobilfunknetz. Wenn die Netzabdeckung nicht ausreicht, kann der Notruf möglicherweise nicht getätigt werden."</string>
-    <string name="do_not_show_again" msgid="8923026903375124550">"Nicht mehr anzeigen"</string>
-    <string name="turn_off_wfc" msgid="2346229945400554258">"WLAN-Telefonie deaktivieren"</string>
-    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"Notrufe sind eventuell nicht verfügbar"</string>
 </resources>

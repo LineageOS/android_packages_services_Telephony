@@ -918,8 +918,4 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"ଆପଣଙ୍କ ବ୍ଲୁଟୁଥ୍ ସିଗନାଲ୍ ଦୁର୍ବଳ ଅଛି। ସ୍ପିକରଫୋନକୁ ସ୍ୱିଚ୍ କରିବା ପାଇଁ ଚେଷ୍ଟା କରନ୍ତୁ।"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"କଲ୍ ଗୁଣବତ୍ତା ବିଜ୍ଞପ୍ତି"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"ଅସମର୍ଥିତ SIP ଆକାଉଣ୍ଟଗୁଡ଼ିକ"</string>
-    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g> ୱାଇ-ଫାଇ ମାଧ୍ୟମରେ ଜରୁରୀକାଳୀନ କଲଗୁଡ଼ିକୁ ସମର୍ଥନ କରେ ନାହିଁ। \n\nଜରୁରୀକାଳୀନ କଲଗୁଡ଼ିକୁ ଏକ ମୋବାଇଲ ନେଟୱାର୍କ ମାଧ୍ୟମରେ କରାଯିବ। ଯଦି ମୋବାଇଲ କଭରେଜ ସୀମିତ ହୋଇଥାଏ, ତେବେ ଆପଣଙ୍କ ଜରୁରୀକାଳୀନ କଲ କାର୍ଯ୍ୟକାରୀ ହୋଇନପାରେ।"</string>
-    <string name="do_not_show_again" msgid="8923026903375124550">"ପୁଣି ଦେଖାନ୍ତୁ ନାହିଁ"</string>
-    <string name="turn_off_wfc" msgid="2346229945400554258">"ୱାଇ-ଫାଇ କଲିଂ ବନ୍ଦ କରନ୍ତୁ"</string>
-    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"ଜରୁରୀକାଳୀନ କଲଗୁଡ଼ିକ ଉପଲବ୍ଧ ହୋଇନପାରେ"</string>
 </resources>
