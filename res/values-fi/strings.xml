@@ -918,8 +918,4 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Bluetooth-signaali on heikko. Kokeile vaihtaa kaiutinpuhelimeen."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Puhelun laatua koskeva ilmoitus"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Käytöstä poistetut SIP-tilit"</string>
-    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g> ei tue hätäpuheluita Wi-Fi-yhteydellä. \n\nHätäpuhelut soitetaan mobiiliverkon kautta. Jos mobiiliverkon kattavuus on rajallinen, hätäpuhelua ei välttämättä saada yhdistettyä."</string>
-    <string name="do_not_show_again" msgid="8923026903375124550">"Älä näytä uudelleen"</string>
-    <string name="turn_off_wfc" msgid="2346229945400554258">"Laita Wi-Fi-puhelut pois päältä"</string>
-    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"Hätäpuhelut eivät välttämättä ole käytettävissä"</string>
 </resources>

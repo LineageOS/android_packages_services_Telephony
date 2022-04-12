@@ -918,8 +918,4 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"您的蓝牙信号较弱。请尝试切换为扬声器模式。"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"通话质量通知"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"已弃用的 SIP 帐号"</string>
-    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g>不支持通过 WLAN 进行紧急呼叫。\n\n系统会通过移动网络拨打紧急呼叫电话。如果移动网络覆盖面有限，您可能无法进行紧急呼叫。"</string>
-    <string name="do_not_show_again" msgid="8923026903375124550">"不再显示"</string>
-    <string name="turn_off_wfc" msgid="2346229945400554258">"关闭 WLAN 通话功能"</string>
-    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"可能无法进行紧急呼叫"</string>
 </resources>

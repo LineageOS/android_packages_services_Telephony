@@ -918,8 +918,4 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"สัญญาณบลูทูธอ่อน ลองเปลี่ยนไปใช้ลำโพงแทน"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"การแจ้งเตือนคุณภาพการโทร"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"บัญชี SIP ที่เลิกใช้งาน"</string>
-    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g> ไม่รองรับการโทรไปยังหมายเลขฉุกเฉินผ่าน Wi-Fi \n\nระบบจะต่อสายหมายเลขฉุกเฉินผ่านเครือข่ายมือถือ หากสัญญาณมือถือมีไม่มากพอ การโทรหมายเลขฉุกเฉินของคุณก็อาจส่งไปไม่ถึง"</string>
-    <string name="do_not_show_again" msgid="8923026903375124550">"ไม่ต้องแสดงอีก"</string>
-    <string name="turn_off_wfc" msgid="2346229945400554258">"ปิดการโทรผ่าน Wi-Fi"</string>
-    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"หมายเลขฉุกเฉินอาจไม่สามารถใช้งานได้"</string>
 </resources>

@@ -918,8 +918,4 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"আপোনাৰ ব্লুটুথৰ ছিগনেল দুৰ্বল। স্পীকাৰফ’নলৈ সলনি কৰি চাওক।"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"কলৰ গুণগত মানৰ জাননী"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"বন্ধ হৈ যোৱা SIP একাউণ্ট"</string>
-    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g>এ ৱাই-ফাইৰ জৰিয়তে জৰুৰীকালীন কল কৰাটো সমৰ্থন নকৰে। \n\nএটা ম’বাইল নেটৱৰ্কৰ জৰিয়তে জৰুৰীকালীন কল কৰা হ’ব। যদি ম’বাইল ক’ভাৰেজ সীমিত হয়, তেন্তে আপোনাৰ জৰুৰীকালীন কল সংযুক্ত নহ’বও পাৰে।"</string>
-    <string name="do_not_show_again" msgid="8923026903375124550">"পুনৰাই নেদেখুৱাব"</string>
-    <string name="turn_off_wfc" msgid="2346229945400554258">"ৱাই-ফাই কলিঙৰ সুবিধাটো বন্ধ কৰক"</string>
-    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"জৰুৰীকালীন কল কৰাৰ সুবিধাটো উপলব্ধ নহ’বও পাৰে"</string>
 </resources>
