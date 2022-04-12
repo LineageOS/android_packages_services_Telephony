@@ -918,8 +918,4 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"आपका ब्लूटूथ सिग्नल कमज़ोर है. स्पीकरफ़ोन की सुविधा का इस्तेमाल करें."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"कॉल की क्वालिटी की सूचना"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"ऐसे SIP खाते जिनका समर्थन रोक दिया गया है"</string>
-    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g> आपातकालीन कॉल के लिए, वाई-फ़ाई कॉलिंग की सुविधा नहीं देता. \n\nआपातकालीन कॉल के लिए, मोबाइल नेटवर्क का इस्तेमाल किया जाएगा. अगर मोबाइल नेटवर्क का कवरेज सीमित क्षेत्र में है, तो हो सकता है कि आपातकालीन कॉल न लगे."</string>
-    <string name="do_not_show_again" msgid="8923026903375124550">"फिर से न दिखाएं"</string>
-    <string name="turn_off_wfc" msgid="2346229945400554258">"वाई-फ़ाई कॉलिंग बंद करें"</string>
-    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"शायद आपातकालीन कॉल करने की सुविधा उपलब्ध न हो"</string>
 </resources>

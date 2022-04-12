@@ -918,8 +918,4 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Isignali yakho ye-bluetooth ayiqinile. Zama ukushintshela kusipikhasefoni."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Isaziso Sekhwalithi"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Ama-akhawunti we-SIP ehlisiwe"</string>
-    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"I-<xliff:g id="SPN">%s</xliff:g> ayisekeli amakholi aphuthumayo nge-Wi-Fi. \n\nAmakholi aphuthumayo azokwenziwa ngenethiwekhi yeselula. Uma kunenethiwekhi yeselula elinganiselwe, kungenzeka ikholi yakho ephuthumayo ingenzeki."</string>
-    <string name="do_not_show_again" msgid="8923026903375124550">"Ungabonisi futhi"</string>
-    <string name="turn_off_wfc" msgid="2346229945400554258">"Vala ukushaya kwe-Wi-Fi"</string>
-    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"Amakholi aphuthumayo angase angatholakali"</string>
 </resources>

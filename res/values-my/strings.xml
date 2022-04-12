@@ -918,8 +918,4 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"သင်၏ ဘလူးတုသ်လိုင်းဆွဲအား မကောင်းပါ။ စပီကာဖုန်းသို့ ပြောင်းကြည့်ပါ။"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"ခေါ်ဆိုမှုအရည်အသွေး အကြောင်းကြားချက်"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"ရပ်ဆိုင်းထားသော SIP အကောင့်များ"</string>
-    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"Wi-Fi ဖြင့် အရေးပေါ်ဖုန်းခေါ်ခြင်းများကို <xliff:g id="SPN">%s</xliff:g> က ပံ့ပိုးမထားပါ။ \n\nအရေးပေါ်ဖုန်းခေါ်ခြင်းများကို မိုဘိုင်းကွန်ရက်မှတစ်ဆင့် ပြုလုပ်ပါမည်။ မိုဘိုင်းလိုင်းဆွဲအားကို ကန့်သတ်ထားပါက အရေးပေါ်ဖုန်းခေါ်ခြင်း မပြုလုပ်နိုင်ပါ။"</string>
-    <string name="do_not_show_again" msgid="8923026903375124550">"ထပ်မပြပါနှင့်"</string>
-    <string name="turn_off_wfc" msgid="2346229945400554258">"Wi-Fi ခေါ်ဆိုမှု ပိတ်ရန်"</string>
-    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"အရေးပေါ်ဖုန်းခေါ်ခြင်းများ မရနိုင်ပါ"</string>
 </resources>

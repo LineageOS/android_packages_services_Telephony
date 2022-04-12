@@ -918,8 +918,4 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Сігнал Bluetooth слабы. Паспрабуйце пераключыцца на гучную сувязь."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Апавяшчэнне пра якасць выкліку"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Састарэлыя ўліковыя запісы SIP"</string>
-    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g> не падтрымлівае экстранныя выклікі праз Wi-Fi. \n\nЭкстранныя выклікі будуць рабіцца па мабільнай сетцы. Пры абмежаваным пакрыцці экстранны выклік можа быць недаступны."</string>
-    <string name="do_not_show_again" msgid="8923026903375124550">"Больш не паказваць"</string>
-    <string name="turn_off_wfc" msgid="2346229945400554258">"Выключыць Wi-Fi-тэлефанію"</string>
-    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"Экстранныя выклікі могуць быць недаступнымі"</string>
 </resources>
