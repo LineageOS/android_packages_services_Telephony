@@ -48,7 +48,6 @@ android_app {
     srcs: [
         ":framework-telephony-common-shared-srcs",
         "src/**/*.java",
-        "sip/src/**/*.java",
         "ecc/proto/**/*.proto",
         "src/com/android/phone/EventLogTags.logtags",
     ],
@@ -57,16 +56,11 @@ android_app {
 
     resource_dirs: [
         "res",
-        "sip/res",
     ],
 
     asset_dirs: [
         "assets",
         "ecc/output",
-    ],
-
-    aaptflags: [
-        "--extra-packages com.android.services.telephony.sip",
     ],
 
     platform_apis: true,
@@ -77,7 +71,6 @@ android_app {
     optimize: {
         proguard_flags_files: [
             "proguard.flags",
-            "sip/proguard.flags",
         ],
     },
 
