@@ -16,6 +16,8 @@
 package com.google.android.sample.testsliceapp;
 
 import android.net.Network;
+import android.os.AsyncTask;
+import android.util.Log;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
@@ -23,7 +25,11 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-class RequestTask{
+class RequestTask extends AsyncTask<Network, Integer, Integer> {
+    protected Integer doInBackground(Network... network) {
+        ping(network[0]);
+        return 0;
+    }
     String ping(Network network) {
         URL url = null;
         try {
@@ -32,8 +38,12 @@ class RequestTask{
         }
         if (url != null) {
             try {
-                return httpGet(network, url);
+                Log.d("SliceTest", "ping " + url);
+                String result = httpGet(network, url);
+                Log.d("SliceTest", "result " + result);
+                return result;
             } catch (Exception e) {
+                Log.d("SliceTest", "exception: " + e);
             }
         }
         return "";
@@ -47,6 +57,7 @@ class RequestTask{
         HttpURLConnection connection = (HttpURLConnection) network.openConnection(httpUrl);
         try {
             InputStream inputStream = connection.getInputStream();
+            Log.d("httpGet", "httpUrl + " + httpUrl);
             return new BufferedInputStream(inputStream).toString();
         } finally {
             connection.disconnect();

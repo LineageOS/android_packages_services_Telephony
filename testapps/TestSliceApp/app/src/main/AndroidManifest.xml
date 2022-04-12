@@ -3,6 +3,8 @@
     package="com.google.android.sample.testsliceapp">
 
   <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+  <uses-permission android:name="android.permission.MODIFY_PHONE_STATE" />
+  <uses-permission android:name="android.permission.INTERNET" />
   <application
       android:allowBackup="true"
       android:icon="@mipmap/ic_launcher"
@@ -10,7 +12,8 @@
       android:roundIcon="@mipmap/ic_launcher_round"
       android:supportsRtl="true"
       android:theme="@style/Theme.AppCompat"
-      android:versionCode="34">
+      android:versionCode="34"
+      android:usesCleartextTraffic="true">
     <activity
         android:name=".MainActivity"
         android:exported="true">
