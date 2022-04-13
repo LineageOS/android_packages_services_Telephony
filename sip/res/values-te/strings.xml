@@ -27,7 +27,7 @@
     <string name="sip_call_options_entry_2" msgid="7338504256051655013">"SIP కాల్స్‌ల కోసం మాత్రమే"</string>
     <string name="sip_call_options_wifi_only_entry_1" msgid="922329055414010991">"అన్ని కాల్స్‌ల కోసం"</string>
     <string name="add_sip_account" msgid="5754758646745144384">"ఖాతాను జోడించు"</string>
-    <string name="remove_sip_account" msgid="8272617403399636513">"ఖాతాను తీసివేయి"</string>
+    <string name="remove_sip_account" msgid="8272617403399636513">"ఖాతాను తీసివేయండి"</string>
     <string name="sip_account_list" msgid="2596262496233721769">"SIP ఖాతాలు"</string>
     <string name="saving_account" msgid="3390358043846687266">"ఖాతాను సేవ్ చేస్తోంది…"</string>
     <string name="removing_account" msgid="1544132880414780408">"ఖాతాను తీసివేస్తోంది…"</string>
