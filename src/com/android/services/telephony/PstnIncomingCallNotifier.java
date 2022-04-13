@@ -38,6 +38,8 @@ import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.cdma.CdmaCallWaitingNotification;
 import com.android.internal.telephony.imsphone.ImsExternalCallTracker;
 import com.android.internal.telephony.imsphone.ImsExternalConnection;
+import com.android.internal.telephony.imsphone.ImsPhone;
+import com.android.internal.telephony.imsphone.ImsPhoneCallTracker;
 import com.android.internal.telephony.imsphone.ImsPhoneConnection;
 import com.android.phone.NumberVerificationManager;
 import com.android.phone.PhoneUtils;
@@ -458,6 +460,7 @@ final class PstnIncomingCallNotifier {
                 return false;
             }
 
+            Log.i(this, "maybeSwapWithUnknownConnection: swapping %s with %s", original, unknown);
             telephonyConnection.setOriginalConnection(unknown);
 
             // Do not call hang up if the original connection is an ImsExternalConnection, it is
@@ -475,6 +478,15 @@ final class PstnIncomingCallNotifier {
                 phone.getCallTracker().cleanupCalls();
                 Log.i(this, "maybeSwapWithUnknownConnection - Invoking call tracker cleanup "
                         + "for connection: " + original);
+            } else if (original.getCall() != null && original.getCall().getPhone() != null
+                    && original.getCall().getPhone() instanceof ImsPhone
+                    && original instanceof ImsPhoneConnection) {
+                // We're replacing an existing ImsPhoneConnection; ensure we don't orhan the
+                // original connection.
+                ImsPhone phone = (ImsPhone) original.getCall().getPhone();
+                ImsPhoneCallTracker tracker = (ImsPhoneCallTracker) phone.getCallTracker();
+                tracker.cleanupAndRemoveConnection((ImsPhoneConnection) original);
+                Log.i(this, "maybeSwapWithUnknownConnection - cleanup/remove: " + original);
             }
             return true;
         }
