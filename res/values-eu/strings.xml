@@ -875,7 +875,7 @@
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Sare mugikorraren neurketa guztien informazioa:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"Datu-zerbitzua:"</string>
     <string name="radio_info_roaming_label" msgid="6636932886446857120">"Ibiltaritza:"</string>
-    <string name="radio_info_imei_label" msgid="8947899706930120368">"IMEI:"</string>
+    <string name="radio_info_imei_label" msgid="8947899706930120368">"IMEIa:"</string>
     <string name="radio_info_call_redirect_label" msgid="4526480903023362276">"Dei-desbideratzea:"</string>
     <string name="radio_info_ppp_resets_label" msgid="9131901102339077661">"PPP berrezarpen kopurua abiarazi ezkero:"</string>
     <string name="radio_info_current_network_label" msgid="3052098695239642450">"Oraingo sarea:"</string>
