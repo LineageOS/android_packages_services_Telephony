@@ -30,7 +30,6 @@ import android.os.Process;
 import android.os.RemoteException;
 import android.os.ServiceSpecificException;
 import android.provider.BlockedNumberContract;
-import android.provider.DeviceConfig;
 import android.telephony.BarringInfo;
 import android.telephony.CarrierConfigManager;
 import android.telephony.SubscriptionInfo;
@@ -2929,14 +2928,6 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
 
         getOutPrintWriter().println("Telephony is running with the "
                 + (newDataStackEnabled ? "new" : "old") + " data stack.");
-
-        boolean configEnabled = Boolean.parseBoolean(DeviceConfig.getProperty(
-                DeviceConfig.NAMESPACE_TELEPHONY, "enable_new_data_stack"));
-        if (configEnabled != newDataStackEnabled) {
-            getOutPrintWriter().println("The new data config has been "
-                    + (configEnabled ? "enabled" : "disabled")
-                    + ". It will be effective after reboot.");
-        }
         return 0;
     }
 
