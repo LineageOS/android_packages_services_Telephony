@@ -71,6 +71,8 @@ import android.telephony.TelephonyCallback;
 import android.telephony.TelephonyDisplayInfo;
 import android.telephony.TelephonyManager;
 import android.telephony.data.NetworkSlicingConfig;
+import android.telephony.ims.ProvisioningManager;
+import android.telephony.ims.stub.ImsConfigImplBase;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
@@ -186,6 +188,9 @@ public class RadioInfo extends AppCompatActivity {
     private static final int EAB_PROVISIONED_CONFIG_ID =
             ImsConfig.ConfigConstants.EAB_SETTING_ENABLED;
 
+    private static final int KEY_VOICE_OVER_WIFI_ENTITLEMENT_ID =
+            ProvisioningManager.KEY_VOICE_OVER_WIFI_ENTITLEMENT_ID;
+
     //Values in must match CELL_INFO_REFRESH_RATES
     private static final String[] CELL_INFO_REFRESH_RATE_LABELS = {
             "Disabled",
@@ -212,6 +217,8 @@ public class RadioInfo extends AppCompatActivity {
     private static final int EVENT_QUERY_SMSC_DONE = 1005;
     private static final int EVENT_UPDATE_SMSC_DONE = 1006;
     private static final int EVENT_PHYSICAL_CHANNEL_CONFIG_CHANGED = 1007;
+    private static final int EVENT_QUERY_WFC_ENTILEMENT_ID_DONE = 1008;
+    private static final int EVENT_UPDATE_WFC_ENTILEMENT_ID_DONE = 1009;
 
     private static final int MENU_ITEM_SELECT_BAND         = 0;
     private static final int MENU_ITEM_VIEW_ADN            = 1;
@@ -258,6 +265,7 @@ public class RadioInfo extends AppCompatActivity {
     private TextView mNrFrequency;
     private TextView mNetworkSlicingConfig;
     private EditText mSmsc;
+    private EditText mWfcEntitlementId;
     private Switch mRadioPowerOnSwitch;
     private Button mCellInfoRefreshRateButton;
     private Button mDnsCheckToggleButton;
@@ -276,6 +284,8 @@ public class RadioInfo extends AppCompatActivity {
     private Spinner mPreferredNetworkType;
     private Spinner mSelectPhoneIndex;
     private Spinner mCellInfoRefreshRateSpinner;
+    private Button mUpdateWfcEntitlementIdButton;
+    private Button mRefreshWfcEntitlementIdButton;
 
     private static final long RUNNABLE_TIMEOUT_MS = 5 * 60 * 1000L;
 
@@ -285,6 +295,7 @@ public class RadioInfo extends AppCompatActivity {
     private TelephonyManager mTelephonyManager;
     private ImsManager mImsManager = null;
     private Phone mPhone = null;
+    private ProvisioningManager mProvisioningManager = null;
 
     private String mPingHostnameResultV4;
     private String mPingHostnameResultV6;
@@ -415,6 +426,7 @@ public class RadioInfo extends AppCompatActivity {
 
         // update the subId
         mTelephonyManager = mTelephonyManager.createForSubscriptionId(subId);
+        mProvisioningManager = ProvisioningManager.createForSubscriptionId(subId);
 
         // update the phoneId
         mImsManager = ImsManager.getInstance(getApplicationContext(), phoneIndex);
@@ -450,6 +462,13 @@ public class RadioInfo extends AppCompatActivity {
                     }
                     updatePhysicalChannelConfiguration((List<PhysicalChannelConfig>) ar.result);
                     break;
+                case EVENT_QUERY_WFC_ENTILEMENT_ID_DONE:
+                    mWfcEntitlementId.setText((String) msg.obj);
+                    break;
+                case EVENT_UPDATE_WFC_ENTILEMENT_ID_DONE:
+                    mUpdateWfcEntitlementIdButton.setEnabled(true);
+                    mWfcEntitlementId.setText((String) msg.obj);
+                    break;
                 default:
                     super.handleMessage(msg);
                     break;
@@ -480,6 +499,8 @@ public class RadioInfo extends AppCompatActivity {
 
         mImsManager = ImsManager.getInstance(getApplicationContext(), mPhone.getPhoneId());
 
+        mProvisioningManager = ProvisioningManager.createForSubscriptionId(mPhone.getSubId());
+
         sPhoneIndexLabels = getPhoneIndexLabels(mTelephonyManager);
 
         mDeviceId = (TextView) findViewById(R.id.imei);
@@ -504,6 +525,8 @@ public class RadioInfo extends AppCompatActivity {
         mSent = (TextView) findViewById(R.id.sent);
         mReceived = (TextView) findViewById(R.id.received);
         mSmsc = (EditText) findViewById(R.id.smsc);
+        mWfcEntitlementId = (EditText) findViewById(R.id.edit_wfc_entitlement_id);
+        mWfcEntitlementId.setVisibility(!IS_USER_BUILD ? View.VISIBLE : View.GONE);
         mDnsCheckState = (TextView) findViewById(R.id.dnsCheckState);
         mPingHostnameV4 = (TextView) findViewById(R.id.pingHostnameV4);
         mPingHostnameV6 = (TextView) findViewById(R.id.pingHostnameV6);
@@ -585,6 +608,12 @@ public class RadioInfo extends AppCompatActivity {
         mUpdateSmscButton.setOnClickListener(mUpdateSmscButtonHandler);
         mRefreshSmscButton = (Button) findViewById(R.id.refresh_smsc);
         mRefreshSmscButton.setOnClickListener(mRefreshSmscButtonHandler);
+        mUpdateWfcEntitlementIdButton = (Button) findViewById(R.id.update_wfc_entitlement_id);
+        mUpdateWfcEntitlementIdButton.setOnClickListener(mUpdateWfcEntitlementIdButtonHandler);
+        mUpdateWfcEntitlementIdButton.setVisibility(!IS_USER_BUILD ? View.VISIBLE : View.GONE);
+        mRefreshWfcEntitlementIdButton = (Button) findViewById(R.id.refresh_wfc_entitlement_id);
+        mRefreshWfcEntitlementIdButton.setOnClickListener(mRefreshWfcEntitlementIdButtonHandler);
+        mRefreshWfcEntitlementIdButton.setVisibility(!IS_USER_BUILD ? View.VISIBLE : View.GONE);
         mDnsCheckToggleButton = (Button) findViewById(R.id.dns_check_toggle);
         mDnsCheckToggleButton.setOnClickListener(mDnsCheckButtonHandler);
         mCarrierProvisioningButton = (Button) findViewById(R.id.carrier_provisioning);
@@ -611,6 +640,9 @@ public class RadioInfo extends AppCompatActivity {
         if (oemInfoIntentList.size() == 0) {
             mOemInfoButton.setEnabled(false);
         }
+
+        TextView textView = (TextView) findViewById(R.id.wfc_entitlement_id);
+        textView.setVisibility(!IS_USER_BUILD ? View.VISIBLE : View.GONE);
 
         mCellInfoRefreshRateIndex = 0; //disabled
         mPreferredNetworkTypeResult = PREFERRED_NETWORK_LABELS.length - 1; //Unknown
@@ -703,6 +735,7 @@ public class RadioInfo extends AppCompatActivity {
                 mDefaultNetworkRequest, mNetworkCallback, mHandler);
 
         mSmsc.clearFocus();
+        mWfcEntitlementId.clearFocus();
     }
 
     @Override
@@ -1309,6 +1342,25 @@ public class RadioInfo extends AppCompatActivity {
         });
     }
 
+    private void refreshWfcEntitilementId() {
+        mQueuedWork.execute(() -> {
+            String result = null;
+            Message msg = mHandler.obtainMessage(EVENT_QUERY_WFC_ENTILEMENT_ID_DONE);
+            try {
+               result =
+                        mProvisioningManager.getProvisioningStringValue(
+                                KEY_VOICE_OVER_WIFI_ENTITLEMENT_ID);
+               if (result == null) {
+                    result = "key not exist";
+                }
+            } catch (RuntimeException e) {
+                result = "refresh error";
+            }
+            msg.obj = result;
+            msg.sendToTarget();
+        });
+    }
+
     private void updateAllCellInfo() {
 
         mCellInfo.setText("");
@@ -1708,6 +1760,27 @@ public class RadioInfo extends AppCompatActivity {
             refreshSmsc();
         }
     };
+
+    OnClickListener mUpdateWfcEntitlementIdButtonHandler = v -> {
+        mUpdateWfcEntitlementIdButton.setEnabled(false);
+        mQueuedWork.execute(() -> {
+            String value = mWfcEntitlementId.getText().toString();
+            String result = null;
+            Message msg = mHandler.obtainMessage(EVENT_UPDATE_WFC_ENTILEMENT_ID_DONE);
+            try {
+                result = (mProvisioningManager.setProvisioningStringValue(
+                            KEY_VOICE_OVER_WIFI_ENTITLEMENT_ID, value)
+                                    == ImsConfigImplBase.CONFIG_RESULT_SUCCESS)
+                                            ? value : "update failure";
+            } catch (RuntimeException e) {
+                result = "update error";
+            }
+            msg.obj = result;
+            msg.sendToTarget();
+        });
+    };
+
+    OnClickListener mRefreshWfcEntitlementIdButtonHandler = v -> refreshWfcEntitilementId();
 
     OnClickListener mCarrierProvisioningButtonHandler = v -> {
         String carrierProvisioningApp = getCarrierProvisioningAppString();
