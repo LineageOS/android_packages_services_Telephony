@@ -857,7 +857,7 @@
     <string name="radioInfo_phone_offhook" msgid="7564601639749936170">"Chaqiruv"</string>
     <string name="radioInfo_data_disconnected" msgid="8085447971880814541">"Ulanmagan"</string>
     <string name="radioInfo_data_connecting" msgid="925092271092152472">"Ulanmoqda"</string>
-    <string name="radioInfo_data_connected" msgid="7637335645634239508">"Ulandi"</string>
+    <string name="radioInfo_data_connected" msgid="7637335645634239508">"Ulangan"</string>
     <string name="radioInfo_data_suspended" msgid="8695262782642002785">"Bloklangan"</string>
     <string name="radioInfo_unknown" msgid="5401423738500672850">"Noma’lum"</string>
     <string name="radioInfo_display_packets" msgid="6794302192441084157">"pkts"</string>
@@ -915,6 +915,12 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Telefon haqida"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Operator sinxronizatsiyasi haqida"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Operator sinxronizatsiyasini yoqish/o‘chirish"</string>
+    <!-- no translation found for provisioning_info_wfc_entitlement_id (8845188780811890910) -->
+    <skip />
+    <!-- no translation found for update_provisioning_info_wfc_entitlement_id (7044171908781134221) -->
+    <skip />
+    <!-- no translation found for refresh_provisioning_info_wfc_entitlement_id (738894335351353407) -->
+    <skip />
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Bluetooth signali kuchsiz. Baland ovoz rejimini yoqish tavsiya etiladi."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Chaqiruv sifati haqida bildirishnoma"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"To‘xtatilgan SIP hisoblar"</string>
