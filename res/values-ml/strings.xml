@@ -915,6 +915,9 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"ഫോൺ വിവരം"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"കാരിയർ പ്രൊവിഷനിംഗ് വിവരം"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"കാരിയർ പ്രൊവിഷനിംഗ് തുടങ്ങുക"</string>
+    <string name="provisioning_info_wfc_entitlement_id" msgid="8845188780811890910">"WFC എൻടെെറ്റിൽമെന്റ് ഐഡി:"</string>
+    <string name="update_provisioning_info_wfc_entitlement_id" msgid="7044171908781134221">"അപ്‌ഡേറ്റ് ചെയ്യുക"</string>
+    <string name="refresh_provisioning_info_wfc_entitlement_id" msgid="738894335351353407">"റീഫ്രഷ് ചെയ്യുക"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"നിങ്ങളുടെ Bluetooth സിഗ്നൽ ദുർബലമാണ്. സ്‌പീക്കർഫോണിലേക്ക് മാറ്റി നോക്കൂ."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"കോൾ നിലവാര അറിയിപ്പ്"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"അവസാനിപ്പിച്ച SIP അക്കൗണ്ടുകൾ"</string>
