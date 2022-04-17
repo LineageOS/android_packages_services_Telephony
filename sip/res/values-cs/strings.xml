@@ -27,7 +27,7 @@
     <string name="sip_call_options_entry_2" msgid="7338504256051655013">"Pouze pro volání SIP"</string>
     <string name="sip_call_options_wifi_only_entry_1" msgid="922329055414010991">"Pro všechny hovory"</string>
     <string name="add_sip_account" msgid="5754758646745144384">"Přidat účet"</string>
-    <string name="remove_sip_account" msgid="8272617403399636513">"Odebrat účet"</string>
+    <string name="remove_sip_account" msgid="8272617403399636513">"Odstranit účet"</string>
     <string name="sip_account_list" msgid="2596262496233721769">"Účty SIP"</string>
     <string name="saving_account" msgid="3390358043846687266">"Ukládání účtu…"</string>
     <string name="removing_account" msgid="1544132880414780408">"Odstraňování účtu…"</string>
