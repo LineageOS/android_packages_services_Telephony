@@ -73,6 +73,7 @@ import android.telecom.PhoneAccount;
 import android.telecom.PhoneAccountHandle;
 import android.telecom.TelecomManager;
 import android.telephony.Annotation.ApnType;
+import android.telephony.Annotation.DataActivityType;
 import android.telephony.Annotation.ThermalMitigationResult;
 import android.telephony.CallForwardingInfo;
 import android.telephony.CarrierConfigManager;
@@ -153,7 +154,6 @@ import com.android.internal.telephony.CarrierResolver;
 import com.android.internal.telephony.CellNetworkScanResult;
 import com.android.internal.telephony.CommandException;
 import com.android.internal.telephony.CommandsInterface;
-import com.android.internal.telephony.DefaultPhoneNotifier;
 import com.android.internal.telephony.GbaManager;
 import com.android.internal.telephony.GsmCdmaPhone;
 import com.android.internal.telephony.HalVersion;
@@ -3010,17 +3010,17 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public int getDataActivity() {
+    public @DataActivityType int getDataActivity() {
         return getDataActivityForSubId(mSubscriptionController.getDefaultDataSubId());
     }
 
     @Override
-    public int getDataActivityForSubId(int subId) {
+    public @DataActivityType int getDataActivityForSubId(int subId) {
         final long identity = Binder.clearCallingIdentity();
         try {
             final Phone phone = getPhone(subId);
             if (phone != null) {
-                return DefaultPhoneNotifier.convertDataActivityState(phone.getDataActivityState());
+                return phone.getDataActivityState();
             } else {
                 return TelephonyManager.DATA_ACTIVITY_NONE;
             }
