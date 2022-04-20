@@ -694,7 +694,7 @@
     <string name="callFailed_emergency_call_over_wfc_not_available" msgid="5944309590693432042">"ಈ ಸ್ಥಳದಲ್ಲಿ ವೈ-ಫೈ ಕರೆ ಮಾಡುವಿಕೆ ಮೂಲಕ ತುರ್ತು ಕರೆಗಳು ಲಭ್ಯವಿರುವುದಿಲ್ಲ."</string>
     <string name="callFailed_wfc_service_not_available_in_this_location" msgid="3624536608369524988">"ಈ ಸ್ಥಳದಲ್ಲಿ ವೈ-ಫೈ ಕರೆಮಾಡುವಿಕೆ ಲಭ್ಯವಿಲ್ಲ."</string>
     <string name="change_pin_title" msgid="3564254326626797321">"ಧ್ವನಿಮೇಲ್ ಪಿನ್‌ ಬದಲಾಯಿಸಿ"</string>
-    <string name="change_pin_continue_label" msgid="5177011752453506371">"ಮುಂದುವರಿಸು"</string>
+    <string name="change_pin_continue_label" msgid="5177011752453506371">"ಮುಂದುವರಿಸಿ"</string>
     <string name="change_pin_cancel_label" msgid="2301711566758827936">"ರದ್ದುಮಾಡಿ"</string>
     <string name="change_pin_ok_label" msgid="6861082678817785330">"ಸರಿ"</string>
     <string name="change_pin_enter_old_pin_header" msgid="853151335217594829">"ನಿಮ್ಮ ಹಳೆಯ ಪಿನ್‌ ಅನ್ನು ದೃಢೀಕರಿಸಿ"</string>
