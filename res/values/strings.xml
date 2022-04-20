@@ -2183,13 +2183,6 @@
     <!-- Trigger Carrier Provisioning [CHAR LIMIT=NONE] -->
     <string name="trigger_carrier_provisioning">Trigger Carrier Provisioning</string>
 
-    <!-- Provisionin WFC Entitlement ID  -->
-    <string name="provisioning_info_wfc_entitlement_id">WFC Entitlement ID:</string>
-    <!-- Update Provisionin WFC Entitlement ID -->
-    <string name="update_provisioning_info_wfc_entitlement_id">Update</string>
-    <!-- Refresh Provisionin WFC Entitlement ID -->
-    <string name="refresh_provisioning_info_wfc_entitlement_id">Refresh</string>
-
     <!-- details of the message popped up when there is
     bad call quality caused by bluetooth connection-->
     <string name="call_quality_notification_bluetooth_details">
