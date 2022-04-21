@@ -1321,7 +1321,6 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
             boolean persistent) {
         mContext.enforceCallingOrSelfPermission(
                 android.Manifest.permission.MODIFY_PHONE_STATE, null);
-        //TODO: Also check for SHELL UID to restrict this method to testing only (b/131326259)
         int phoneId = SubscriptionManager.getPhoneId(subscriptionId);
         if (!SubscriptionManager.isValidPhoneId(phoneId)) {
             logd("Ignore invalid phoneId: " + phoneId + " for subId: " + subscriptionId);
