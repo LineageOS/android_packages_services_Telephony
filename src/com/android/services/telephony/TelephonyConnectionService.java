@@ -232,6 +232,7 @@ public class TelephonyConnectionService extends ConnectionService {
         boolean hasIccCard(int slotId);
         boolean isCurrentEmergencyNumber(String number);
         Map<Integer, List<EmergencyNumber>> getCurrentEmergencyNumberList();
+        boolean isConcurrentCallsPossible();
     }
 
     private TelephonyManagerProxy mTelephonyManagerProxy;
@@ -270,6 +271,12 @@ public class TelephonyConnectionService extends ConnectionService {
             } catch (IllegalStateException ise) {
                 return new HashMap<>();
             }
+        }
+
+        @Override
+        public boolean isConcurrentCallsPossible() {
+            // Under DSDA, need to be determined by voice capabilities
+            return mTelephonyManager.getMaxNumberOfSimultaneouslyActiveSims() > 1;
         }
     }
 
@@ -1636,7 +1643,13 @@ public class TelephonyConnectionService extends ConnectionService {
             Bundle connExtras = c.getExtras();
             Log.i(this, "retryOutgoingOriginalConnection, redialing on Phone Id: " + newPhoneToUse);
             c.clearOriginalConnection();
-            if (phoneId != newPhoneToUse.getPhoneId()) updatePhoneAccount(c, newPhoneToUse);
+            if (phoneId != newPhoneToUse.getPhoneId()) {
+                if (!mTelephonyManagerProxy.isConcurrentCallsPossible()) {
+                    disconnectAllCallsOnOtherSubs(
+                            mPhoneUtilsProxy.makePstnPhoneAccountHandle(newPhoneToUse));
+                }
+                updatePhoneAccount(c, newPhoneToUse);
+            }
             placeOutgoingConnection(c, newPhoneToUse, videoState, connExtras);
         } else {
             // We have run out of Phones to use. Disconnect the call and destroy the connection.
@@ -2642,6 +2655,25 @@ public class TelephonyConnectionService extends ConnectionService {
                             // disconnection will take place AFTER we answer the incoming call.
                             tc.hangup(android.telephony.DisconnectCause.LOCAL);
                         }
+                    }
+                });
+    }
+
+    private void disconnectAllCallsOnOtherSubs (@NonNull PhoneAccountHandle handle) {
+        Collection<Connection>connections = getAllConnections();
+        connections.stream()
+                .filter(c ->
+                        (c.getState() == Connection.STATE_ACTIVE
+                                || c.getState() == Connection.STATE_HOLDING)
+                                // Include any calls not on same sub as current connection.
+                                && !Objects.equals(c.getPhoneAccountHandle(), handle))
+                .forEach(c -> {
+                    if (c instanceof TelephonyConnection) {
+                        TelephonyConnection tc = (TelephonyConnection) c;
+                        Log.i(LOG_TAG, "disconnectAllCallsOnOtherSubs: disconnect" +
+                                " %s due to redial happened on other sub.",
+                                tc.getTelecomCallId());
+                        tc.hangup(android.telephony.DisconnectCause.LOCAL);
                     }
                 });
     }
