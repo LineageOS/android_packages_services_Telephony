@@ -170,7 +170,7 @@
     <string name="vm_change_pin_error_too_weak" msgid="8581892952627885719">"Жаңы PIN код өтө эле жөнөкөй. Сырсөз күчтүү болушу үчүн анда сандар үзгүлтүксүз катардан турбашы же сандар кайталанбашы керек."</string>
     <string name="vm_change_pin_error_mismatch" msgid="5364847280026257331">"Эски PIN код дал келген жок."</string>
     <string name="vm_change_pin_error_invalid" msgid="5230002671175580674">"Жаңы PIN коддо жараксыз белгилер бар."</string>
-    <string name="vm_change_pin_error_system_error" msgid="9116483527909681791">"PIN код өзгөртүлгөн жок"</string>
+    <string name="vm_change_pin_error_system_error" msgid="9116483527909681791">"PIN код өзгөргөн жок"</string>
     <string name="vvm_unsupported_message_format" msgid="4206402558577739713">"Колдоого алынбаган билдирүү, угуу үчүн <xliff:g id="NUMBER">%s</xliff:g> чалыңыз."</string>
     <string name="network_settings_title" msgid="7560807107123171541">"Мобилдик тармак"</string>
     <string name="label_available" msgid="1316084116670821258">"Жеткиликтүү тармактар"</string>
