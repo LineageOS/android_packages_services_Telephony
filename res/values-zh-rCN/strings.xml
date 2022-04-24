@@ -915,9 +915,6 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"手机信息"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"运营商配置信息"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"触发运营商配置"</string>
-    <string name="provisioning_info_wfc_entitlement_id" msgid="8845188780811890910">"WFC 权限 ID："</string>
-    <string name="update_provisioning_info_wfc_entitlement_id" msgid="7044171908781134221">"更新"</string>
-    <string name="refresh_provisioning_info_wfc_entitlement_id" msgid="738894335351353407">"刷新"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"您的蓝牙信号较弱。请尝试切换为扬声器模式。"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"通话质量通知"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"已弃用的 SIP 帐号"</string>
