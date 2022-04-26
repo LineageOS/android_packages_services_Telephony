@@ -618,8 +618,8 @@ public class RadioInfo extends AppCompatActivity {
 
         new Thread(() -> {
             int networkType = (int) mTelephonyManager.getPreferredNetworkTypeBitmask();
-            updatePreferredNetworkType(
-                    RadioAccessFamily.getNetworkTypeFromRaf(networkType));
+            runOnUiThread(() -> updatePreferredNetworkType(
+                    RadioAccessFamily.getNetworkTypeFromRaf(networkType)));
         }).start();
 
         restoreFromBundle(icicle);
