@@ -11166,7 +11166,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         if (!hasFinePermission
                 || !TelephonyPermissions.checkLastKnownCellIdAccessPermission(mApp)) {
             throw new SecurityException("getLastKnownCellIdentity need ACCESS_FINE_LOCATION "
-                    + "and BIND_CONNECTION_SERVICE permission.");
+                    + "and ACCESS_LAST_KNOWN_CELL_ID permission.");
         }
 
         final long identity = Binder.clearCallingIdentity();
