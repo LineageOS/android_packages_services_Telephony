@@ -915,9 +915,6 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Maelezo ya simu"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Maelezo ya Utaratibu wa Kutayarisha Mtandao"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Anzisha Utaratibu wa Kutayarisha Mtandao"</string>
-    <string name="provisioning_info_wfc_entitlement_id" msgid="8845188780811890910">"Kitambulisho cha Idhini ya WFC:"</string>
-    <string name="update_provisioning_info_wfc_entitlement_id" msgid="7044171908781134221">"Sasisha"</string>
-    <string name="refresh_provisioning_info_wfc_entitlement_id" msgid="738894335351353407">"Onyesha upya"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Muunganisho wako wa bluetooth ni dhaifu. Jaribu kubadilisha ili utumie spika ya simu."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Arifa ya Ubora wa Simu"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Akaunti za SIP ambazo zimefungwa"</string>
