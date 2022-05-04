@@ -4639,10 +4639,16 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             throw new IllegalArgumentException("Invalid Subscription ID: " + subId);
         }
 
-        ImsProvisioningController.getInstance()
-                .addFeatureProvisioningChangedCallback(subId, callback);
-
-        Binder.restoreCallingIdentity(identity);
+        try {
+            ImsProvisioningController controller = ImsProvisioningController.getInstance();
+            if (controller == null) {
+                throw new ServiceSpecificException(ImsException.CODE_ERROR_UNSUPPORTED_OPERATION,
+                        "Device does not support IMS");
+            }
+            controller.addFeatureProvisioningChangedCallback(subId, callback);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
     }
 
     @Override
@@ -4656,10 +4662,16 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             throw new IllegalArgumentException("Invalid Subscription ID: " + subId);
         }
 
-        ImsProvisioningController.getInstance()
-                .removeFeatureProvisioningChangedCallback(subId, callback);
-
-        Binder.restoreCallingIdentity(identity);
+        try {
+            ImsProvisioningController controller = ImsProvisioningController.getInstance();
+            if (controller == null) {
+                loge("unregisterFeatureProvisioningChangedCallback: Device does not support IMS");
+                return;
+            }
+            controller.removeFeatureProvisioningChangedCallback(subId, callback);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
     }
 
     private void checkModifyPhoneStatePermission(int subId, String message) {
@@ -4674,9 +4686,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            ImsProvisioningController.getInstance()
-                    .setRcsProvisioningStatusForCapability(subId, capability, tech, isProvisioned);
-            return;
+            ImsProvisioningController controller = ImsProvisioningController.getInstance();
+            if (controller == null) {
+                loge("setRcsProvisioningStatusForCapability: Device does not support IMS");
+                return;
+            }
+            controller.setRcsProvisioningStatusForCapability(
+                    subId, capability, tech, isProvisioned);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -4690,8 +4706,14 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            return ImsProvisioningController.getInstance()
-                    .getRcsProvisioningStatusForCapability(subId, capability, tech);
+            ImsProvisioningController controller = ImsProvisioningController.getInstance();
+            if (controller == null) {
+                loge("getRcsProvisioningStatusForCapability: Device does not support IMS");
+
+                // device does not support IMS, this method will return true always.
+                return true;
+            }
+            return controller.getRcsProvisioningStatusForCapability(subId, capability, tech);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -4704,8 +4726,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            ImsProvisioningController.getInstance()
-                    .setImsProvisioningStatusForCapability(subId, capability, tech, isProvisioned);
+            ImsProvisioningController controller = ImsProvisioningController.getInstance();
+            if (controller == null) {
+                loge("setImsProvisioningStatusForCapability: Device does not support IMS");
+                return;
+            }
+            controller.setImsProvisioningStatusForCapability(
+                    subId, capability, tech, isProvisioned);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -4718,9 +4745,14 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            return ImsProvisioningController.getInstance()
-                    .getImsProvisioningStatusForCapability(subId, capability, tech);
+            ImsProvisioningController controller = ImsProvisioningController.getInstance();
+            if (controller == null) {
+                loge("getImsProvisioningStatusForCapability: Device does not support IMS");
 
+                // device does not support IMS, this method will return true always.
+                return true;
+            }
+            return controller.getImsProvisioningStatusForCapability(subId, capability, tech);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -4733,8 +4765,14 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            return ImsProvisioningController.getInstance()
-                    .isImsProvisioningRequiredForCapability(subId, capability, tech);
+            ImsProvisioningController controller = ImsProvisioningController.getInstance();
+            if (controller == null) {
+                loge("isProvisioningRequiredForCapability: Device does not support IMS");
+
+                // device does not support IMS, this method will return false
+                return false;
+            }
+            return controller.isImsProvisioningRequiredForCapability(subId, capability, tech);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -4747,8 +4785,14 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            return ImsProvisioningController.getInstance()
-                    .isRcsProvisioningRequiredForCapability(subId, capability, tech);
+            ImsProvisioningController controller = ImsProvisioningController.getInstance();
+            if (controller == null) {
+                loge("isRcsProvisioningRequiredForCapability: Device does not support IMS");
+
+                // device does not support IMS, this method will return false
+                return false;
+            }
+            return controller.isRcsProvisioningRequiredForCapability(subId, capability, tech);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -4772,7 +4816,14 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 return ImsConfigImplBase.CONFIG_RESULT_UNKNOWN;
             }
 
-            int retVal = ImsProvisioningController.getInstance().getProvisioningValue(subId, key);
+            ImsProvisioningController controller = ImsProvisioningController.getInstance();
+            if (controller == null) {
+                loge("getImsProvisioningInt: Device does not support IMS");
+
+                // device does not support IMS, this method will return CONFIG_RESULT_UNKNOWN.
+                return ImsConfigImplBase.CONFIG_RESULT_UNKNOWN;
+            }
+            int retVal = controller.getProvisioningValue(subId, key);
             if (retVal != ImsConfigImplBase.CONFIG_RESULT_UNKNOWN) {
                 return retVal;
             }
@@ -4832,8 +4883,14 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 return ImsConfigImplBase.CONFIG_RESULT_FAILED;
             }
 
-            int retVal = ImsProvisioningController.getInstance()
-                    .setProvisioningValue(subId, key, value);
+            ImsProvisioningController controller = ImsProvisioningController.getInstance();
+            if (controller == null) {
+                loge("setImsProvisioningInt: Device does not support IMS");
+
+                // device does not support IMS, this method will return CONFIG_RESULT_FAILED.
+                return ImsConfigImplBase.CONFIG_RESULT_FAILED;
+            }
+            int retVal = controller.setProvisioningValue(subId, key, value);
             if (retVal != ImsConfigImplBase.CONFIG_RESULT_UNKNOWN) {
                 return retVal;
             }
