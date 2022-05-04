@@ -889,7 +889,26 @@ public class ImsProvisioningController {
             throw new IllegalArgumentException("Registration technology '" + tech + "' is invalid");
         }
 
+        // check new carrier config first KEY_MMTEL_REQUIRES_PROVISIONING_BUNDLE
         boolean retVal = isProvisioningRequired(subId, capability, tech, /*isMmTel*/true);
+
+        // if that returns false, check deprecated carrier config
+        // KEY_CARRIER_VOLTE_PROVISIONING_REQUIRED_BOOL, KEY_CARRIER_UT_PROVISIONING_REQUIRED_BOOL
+        if (!retVal && (capability == CAPABILITY_TYPE_VOICE
+                || capability == CAPABILITY_TYPE_VIDEO
+                || capability == CAPABILITY_TYPE_UT)) {
+            String key = CarrierConfigManager.KEY_CARRIER_VOLTE_PROVISIONING_REQUIRED_BOOL;
+            if (capability == CAPABILITY_TYPE_UT) {
+                key = CarrierConfigManager.KEY_CARRIER_UT_PROVISIONING_REQUIRED_BOOL;
+            }
+
+            PersistableBundle imsCarrierConfigs = mCarrierConfigManager.getConfigForSubId(subId);
+            if (imsCarrierConfigs != null) {
+                retVal = imsCarrierConfigs.getBoolean(key);
+            } else {
+                retVal = CarrierConfigManager.getDefaultConfig().getBoolean(key);
+            }
+        }
 
         log("isImsProvisioningRequiredForCapability capability " + capability
                 + " tech " + tech + " return value " + retVal);
@@ -920,7 +939,21 @@ public class ImsProvisioningController {
             throw new IllegalArgumentException("Registration technology '" + tech + "' is invalid");
         }
 
+        // check new carrier config first KEY_RCS_REQUIRES_PROVISIONING_BUNDLE
         boolean retVal = isProvisioningRequired(subId, capability, tech, /*isMmTel*/false);
+
+        // if that returns false, check deprecated carrier config
+        // KEY_CARRIER_RCS_PROVISIONING_REQUIRED_BOOL
+        if (!retVal) {
+            PersistableBundle imsCarrierConfigs = mCarrierConfigManager.getConfigForSubId(subId);
+            if (imsCarrierConfigs != null) {
+                retVal = imsCarrierConfigs.getBoolean(
+                        CarrierConfigManager.KEY_CARRIER_RCS_PROVISIONING_REQUIRED_BOOL);
+            } else {
+                retVal = CarrierConfigManager.getDefaultConfig().getBoolean(
+                        CarrierConfigManager.KEY_CARRIER_RCS_PROVISIONING_REQUIRED_BOOL);
+            }
+        }
 
         log("isRcsProvisioningRequiredForCapability capability " + capability
                 + " tech " + tech + " return value " + retVal);
@@ -1212,8 +1245,7 @@ public class ImsProvisioningController {
         return false;
     }
 
-    @VisibleForTesting
-    protected int[] getTechsFromCarrierConfig(int subId, int capability, boolean isMmTel) {
+    private int[] getTechsFromCarrierConfig(int subId, int capability, boolean isMmTel) {
         String featureKey;
         String capabilityKey;
         if (isMmTel) {

@@ -915,9 +915,6 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"மொபைலின் தகவல்"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Carrier Provisioning Info"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Trigger Carrier Provisioning"</string>
-    <string name="provisioning_info_wfc_entitlement_id" msgid="8845188780811890910">"WFC உரிமை வழங்கல் ஐடி:"</string>
-    <string name="update_provisioning_info_wfc_entitlement_id" msgid="7044171908781134221">"புதுப்பி"</string>
-    <string name="refresh_provisioning_info_wfc_entitlement_id" msgid="738894335351353407">"ரெஃப்ரெஷ் செய்"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"புளூடூத் சிக்னல் வலுவற்றதாக உள்ளது. ஸ்பீக்கர் ஃபோனிற்கு மாற்றவும்."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"அழைப்பின் தரம் தொடர்பான அறிவிப்பு"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"நிறுத்தப்பட்ட SIP கணக்குகள்"</string>
