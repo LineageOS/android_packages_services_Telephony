@@ -2840,7 +2840,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     // FIXME: subId version needed
     @Override
-    public boolean enableDataConnectivity() {
+    public boolean enableDataConnectivity(String callingPackage) {
         enforceModifyPermission();
 
         final long identity = Binder.clearCallingIdentity();
@@ -2850,7 +2850,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             if (phone != null) {
                 if (phone.isUsingNewDataStack()) {
                     phone.getDataSettingsManager().setDataEnabled(
-                            TelephonyManager.DATA_ENABLED_REASON_USER, true);
+                            TelephonyManager.DATA_ENABLED_REASON_USER, true, callingPackage);
                 } else {
                     phone.getDataEnabledSettings().setDataEnabled(
                             TelephonyManager.DATA_ENABLED_REASON_USER, true);
@@ -2866,7 +2866,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     // FIXME: subId version needed
     @Override
-    public boolean disableDataConnectivity() {
+    public boolean disableDataConnectivity(String callingPackage) {
         enforceModifyPermission();
 
         final long identity = Binder.clearCallingIdentity();
@@ -2876,7 +2876,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             if (phone != null) {
                 if (phone.isUsingNewDataStack()) {
                     phone.getDataSettingsManager().setDataEnabled(
-                            TelephonyManager.DATA_ENABLED_REASON_USER, false);
+                            TelephonyManager.DATA_ENABLED_REASON_USER, false, callingPackage);
                 } else {
                     phone.getDataEnabledSettings().setDataEnabled(
                             TelephonyManager.DATA_ENABLED_REASON_USER, false);
@@ -7613,7 +7613,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public void factoryReset(int subId) {
+    public void factoryReset(int subId, String callingPackage) {
         enforceSettingsPermission();
         if (mUserManager.hasUserRestriction(UserManager.DISALLOW_NETWORK_RESET)) {
             return;
@@ -7629,7 +7629,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             if (SubscriptionManager.isUsableSubIdValue(subId) && !mUserManager.hasUserRestriction(
                     UserManager.DISALLOW_CONFIG_MOBILE_NETWORKS)) {
                 setDataEnabledForReason(subId, TelephonyManager.DATA_ENABLED_REASON_USER,
-                        getDefaultDataEnabled());
+                        getDefaultDataEnabled(), callingPackage);
                 setNetworkSelectionModeAutomatic(subId);
                 Phone phone = getPhone(subId);
                 cleanUpAllowedNetworkTypes(phone, subId);
@@ -8345,13 +8345,14 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     /**
      * Policy control of data connection with reason {@@TelephonyManager.DataEnabledReason}
      * @param subId Subscription index
-     * @param reason the reason the data enable change is taking place
+     * @param reason The reason the data enable change is taking place.
      * @param enabled True if enabling the data, otherwise disabling.
+     * @param callingPackage The package that changed the data enabled state.
      * @hide
      */
     @Override
     public void setDataEnabledForReason(int subId, @TelephonyManager.DataEnabledReason int reason,
-            boolean enabled) {
+            boolean enabled, String callingPackage) {
         if (reason == TelephonyManager.DATA_ENABLED_REASON_USER
                 || reason == TelephonyManager.DATA_ENABLED_REASON_CARRIER) {
             try {
@@ -8372,7 +8373,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     phone.carrierActionSetMeteredApnsEnabled(enabled);
                 } else {
                     if (phone.isUsingNewDataStack()) {
-                        phone.getDataSettingsManager().setDataEnabled(reason, enabled);
+                        phone.getDataSettingsManager().setDataEnabled(
+                                reason, enabled, callingPackage);
                     } else {
                         phone.getDataEnabledSettings().setDataEnabled(reason, enabled);
                     }
@@ -10094,7 +10096,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     private int handleDataThrottlingRequest(int subId,
-            DataThrottlingRequest dataThrottlingRequest) {
+            DataThrottlingRequest dataThrottlingRequest, String callingPackage) {
         boolean isDataThrottlingSupported = isRadioInterfaceCapabilitySupported(
                 TelephonyManager.CAPABILITY_THERMAL_MITIGATION_DATA_THROTTLING);
         if (!isDataThrottlingSupported && dataThrottlingRequest.getDataThrottlingAction()
@@ -10108,7 +10110,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             return TelephonyManager.THERMAL_MITIGATION_RESULT_MODEM_NOT_AVAILABLE;
         }
 
-        setDataEnabledForReason(subId, TelephonyManager.DATA_ENABLED_REASON_THERMAL, true);
+        setDataEnabledForReason(
+                subId, TelephonyManager.DATA_ENABLED_REASON_THERMAL, true, callingPackage);
 
         if (isDataThrottlingSupported) {
             int thermalMitigationResult =
@@ -10210,7 +10213,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 case ThermalMitigationRequest.THERMAL_MITIGATION_ACTION_DATA_THROTTLING:
                     thermalMitigationResult =
                         handleDataThrottlingRequest(subId,
-                                thermalMitigationRequest.getDataThrottlingRequest());
+                                thermalMitigationRequest.getDataThrottlingRequest(),
+                                callingPackage);
                     break;
                 case ThermalMitigationRequest.THERMAL_MITIGATION_ACTION_VOICE_ONLY:
                     if (thermalMitigationRequest.getDataThrottlingRequest() != null) {
@@ -10227,7 +10231,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     }
 
                     setDataEnabledForReason(subId, TelephonyManager.DATA_ENABLED_REASON_THERMAL,
-                            false);
+                            false, callingPackage);
                     thermalMitigationResult = TelephonyManager.THERMAL_MITIGATION_RESULT_SUCCESS;
                     break;
                 case ThermalMitigationRequest.THERMAL_MITIGATION_ACTION_RADIO_OFF:
