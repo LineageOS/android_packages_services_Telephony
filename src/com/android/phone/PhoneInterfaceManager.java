@@ -751,10 +751,14 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                                 IccOpenLogicalChannelResponse.STATUS_NO_ERROR, selectResponse);
 
                         uiccPort = getUiccPortFromRequest(request);
-                        IccLogicalChannelRequest channelRequest =
-                                (IccLogicalChannelRequest) request.argument;
-                        channelRequest.channel = channelId;
-                        uiccPort.onLogicalChannelOpened(channelRequest);
+                        if (uiccPort == null) {
+                            loge("EVENT_OPEN_CHANNEL_DONE: UiccPort is null");
+                        } else {
+                            IccLogicalChannelRequest channelRequest =
+                                    (IccLogicalChannelRequest) request.argument;
+                            channelRequest.channel = channelId;
+                            uiccPort.onLogicalChannelOpened(channelRequest);
+                        }
                     } else {
                         if (ar.result == null) {
                             loge("iccOpenLogicalChannel: Empty response");
@@ -800,8 +804,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     if (ar.exception == null) {
                         request.result = true;
                         uiccPort = getUiccPortFromRequest(request);
-                        final int channelId = (Integer) request.argument;
-                        uiccPort.onLogicalChannelClosed(channelId);
+                        if (uiccPort == null) {
+                            loge("EVENT_CLOSE_CHANNEL_DONE: UiccPort is null");
+                        } else {
+                            final int channelId = (Integer) request.argument;
+                            uiccPort.onLogicalChannelClosed(channelId);
+                        }
                     } else {
                         request.result = false;
                         Exception exception = null;
@@ -2369,7 +2377,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 ? getDefaultPhone() : getPhone(subId);
     }
 
-    private UiccPort getUiccPortFromRequest(MainThreadRequest request) {
+    @Nullable
+    private UiccPort getUiccPortFromRequest(@NonNull MainThreadRequest request) {
         Phone phone = getPhoneFromRequest(request);
         return phone == null ? null :
                 UiccController.getInstance().getUiccPort(phone.getPhoneId());
