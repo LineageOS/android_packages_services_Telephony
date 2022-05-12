@@ -2130,6 +2130,8 @@
     <!-- Radio Info screen. Label for a status item.  Used for diagnostic info screens, precise translation isn't needed -->
     <string name="radio_info_data_network_type_label">Data Network Type:</string>
     <!-- Radio Info screen. Label for a status item.  Used for diagnostic info screens, precise translation isn't needed -->
+    <string name="radio_info_override_network_type_label">Override Network Type:</string>
+    <!-- Radio Info screen. Label for a status item.  Used for diagnostic info screens, precise translation isn't needed -->
     <string name="phone_index_label">Select phone index</string>
     <!-- Radio Info screen. Label for a status item.  Used for diagnostic info screens, precise translation isn't needed -->
     <string name="radio_info_set_perferred_label">Set Preferred Network Type:</string>
@@ -2152,17 +2154,17 @@
     <!-- Radio Info screen. Label for a status item.  Used for diagnostic info screens, precise translation isn't needed -->
     <string name="oem_radio_info_label">OEM-specific Info/Settings</string>
     <!-- Radio Info screen. Label for a status item.  Used for diagnostic info screens, precise translation isn't needed -->
-    <string name="radio_info_endc_available">EN-DC Available:</string>
+    <string name="radio_info_endc_available">EN-DC Available (NSA):</string>
     <!-- Radio Info screen. Label for a status item.  Used for diagnostic info screens, precise translation isn't needed -->
-    <string name="radio_info_dcnr_restricted">DCNR Restricted:</string>
+    <string name="radio_info_dcnr_restricted">DCNR Restricted (NSA):</string>
     <!-- Radio Info screen. Label for a status item.  Used for diagnostic info screens, precise translation isn't needed -->
-    <string name="radio_info_nr_available">NR Available:</string>
+    <string name="radio_info_nr_available">NR Available (NSA):</string>
     <!-- Radio Info screen. Label for a status item.  Used for diagnostic info screens, precise translation isn't needed -->
-    <string name="radio_info_nr_state">NR State:</string>
+    <string name="radio_info_nr_state">NR State (NSA):</string>
     <!-- Radio Info screen. Label for a status item.  Used for diagnostic info screens, precise translation isn't needed -->
     <string name="radio_info_nr_frequency">NR Frequency:</string>
     <!-- Radio Info screen. Label for a status item.  Used for diagnostic info screens, precise translation isn't needed -->
-    <string name="radio_info_network_slicing_config" translatable="false">Network slicing config:</string>
+    <string name="radio_info_network_slicing_config" translatable="false">Network Slicing Config:</string>
 
     <!-- Band Mode Selection -->
     <!-- Band mode screen.  Title of activity. -->
