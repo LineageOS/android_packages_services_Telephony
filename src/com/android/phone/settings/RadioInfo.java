@@ -24,6 +24,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ComponentInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.res.Resources;
@@ -96,6 +97,7 @@ import com.android.ims.ImsException;
 import com.android.ims.ImsManager;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
+import com.android.internal.telephony.euicc.EuiccConnector;
 import com.android.phone.R;
 
 import java.io.IOException;
@@ -225,6 +227,9 @@ public class RadioInfo extends AppCompatActivity {
     private static final String TRIGGER_CARRIER_PROVISIONING_ACTION =
             "com.android.phone.settings.TRIGGER_CARRIER_PROVISIONING";
 
+    private static final String ACTION_REMOVABLE_ESIM_AS_DEFAULT =
+            "android.telephony.euicc.action.REMOVABLE_ESIM_AS_DEFAULT";
+
     private TextView mDeviceId; //DeviceId is the IMEI in GSM and the MEID in CDMA
     private TextView mLine1Number;
     private TextView mSubscriptionId;
@@ -273,6 +278,7 @@ public class RadioInfo extends AppCompatActivity {
     private Switch mEabProvisionedSwitch;
     private Switch mCbrsDataSwitch;
     private Switch mDsdsSwitch;
+    private Switch mRemovableEsimSwitch;
     private Spinner mPreferredNetworkType;
     private Spinner mSelectPhoneIndex;
     private Spinner mCellInfoRefreshRateSpinner;
@@ -571,6 +577,13 @@ public class RadioInfo extends AppCompatActivity {
             mDsdsSwitch.setChecked(isDsdsEnabled());
         } else {
             mDsdsSwitch.setVisibility(View.GONE);
+        }
+
+        mRemovableEsimSwitch = (Switch) findViewById(R.id.removable_esim_switch);
+        mRemovableEsimSwitch.setEnabled(!IS_USER_BUILD && isDsdsEnabled());
+        if (!IS_USER_BUILD) {
+            mRemovableEsimSwitch.setChecked(mTelephonyManager.isRemovableEsimDefaultEuicc());
+            mRemovableEsimSwitch.setOnCheckedChangeListener(mRemovableEsimChangeListener);
         }
 
         mRadioPowerOnSwitch = (Switch) findViewById(R.id.radio_power);
@@ -1857,6 +1870,9 @@ public class RadioInfo extends AppCompatActivity {
 
     private void performDsdsSwitch() {
         mTelephonyManager.switchMultiSimConfig(mDsdsSwitch.isChecked() ? 2 : 1);
+        if (!IS_USER_BUILD) {
+            mRemovableEsimSwitch.setEnabled(mDsdsSwitch.isChecked());
+        }
     }
 
     /**
@@ -1877,4 +1893,27 @@ public class RadioInfo extends AppCompatActivity {
             }
         }
     };
+
+    OnCheckedChangeListener mRemovableEsimChangeListener = new OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            setRemovableEsimAsDefaultEuicc(isChecked);
+        }
+    };
+
+    private void setRemovableEsimAsDefaultEuicc(boolean isChecked) {
+        Log.d(TAG, "setRemovableEsimAsDefaultEuicc isChecked: " + isChecked);
+        mTelephonyManager.setRemovableEsimAsDefaultEuicc(isChecked);
+        // TODO(b/232528117): Instead of sending intent, add new APIs in platform,
+        //  LPA can directly use the API.
+        ComponentInfo componentInfo = EuiccConnector.findBestComponent(getPackageManager());
+        if (componentInfo == null) {
+            Log.d(TAG, "setRemovableEsimAsDefaultEuicc: unable to find suitable component info");
+            return;
+        }
+        final Intent intent = new Intent(ACTION_REMOVABLE_ESIM_AS_DEFAULT);
+        intent.setPackage(componentInfo.packageName);
+        intent.putExtra("isDefault", isChecked);
+        sendBroadcast(intent);
+    }
 }

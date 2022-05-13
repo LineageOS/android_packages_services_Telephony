@@ -11302,4 +11302,42 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             Binder.restoreCallingIdentity(identity);
         }
     }
+
+    /**
+     * set removable eSIM as default eUICC.
+     *
+     * @hide
+     */
+    @Override
+    public void setRemovableEsimAsDefaultEuicc(boolean isDefault, String callingPackage) {
+        enforceModifyPermission();
+        mAppOps.checkPackage(Binder.getCallingUid(), callingPackage);
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            UiccController.getInstance().setRemovableEsimAsDefaultEuicc(isDefault);
+        }  finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Returns whether the removable eSIM is default eUICC or not.
+     *
+     * @hide
+     */
+    @Override
+    public boolean isRemovableEsimDefaultEuicc(String callingPackage) {
+        enforceReadPrivilegedPermission("isRemovableEsimDefaultEuicc");
+        mAppOps.checkPackage(Binder.getCallingUid(), callingPackage);
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return UiccController.getInstance().isRemovableEsimDefaultEuicc();
+        }  finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+
 }
