@@ -2004,6 +2004,9 @@
     <!-- UI debug setting: Enable/Disable DSDS [CHAR LIMIT=none] -->
     <string name="dsds_dialog_cancel">Cancel</string>
 
+    <!-- Setting Removable esim as default. Only shown in diagnostic screen, so precise translation is not needed -->
+    <string name="removable_esim_string">Set Removable eSIM as Default</string>
+
     <!-- Title for controlling on/off for Mobile phone's radio power. Only shown in diagnostic screen, so precise translation is not needed. -->
     <string name="radio_info_radio_power">Mobile Radio Power</string>
 
