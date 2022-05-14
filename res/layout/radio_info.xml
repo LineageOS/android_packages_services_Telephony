@@ -258,6 +258,14 @@
                 android:layout_height="wrap_content"
                 android:text="@string/dsds_switch_string" />
 
+        <!-- Set removable eSIM as default eUICC. -->
+        <Switch android:id="@+id/removable_esim_switch"
+                android:textSize="14sp"
+                android:layout_marginTop="8dip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/removable_esim_string" />
+
         <!-- Horizontal Rule -->
         <View
             android:layout_width="fill_parent"
