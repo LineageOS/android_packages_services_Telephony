@@ -52,7 +52,7 @@
     <string name="label_ndp" msgid="7617392683877410341">"Розбл. PIN-код мережі SIM"</string>
     <string name="label_phoneid" msgid="8775611434123577808">"Заблокована SIM-карта оператора"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"Розблок."</string>
-    <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"Відхилити"</string>
+    <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"Закрити"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"Запитув. розблок. мережі..."</string>
     <string name="unlock_failed" msgid="7103543844840661366">"Не здійсн. запит розблокування мережі"</string>
     <string name="unlock_success" msgid="32681089371067565">"Мережу успішно розблоковано."</string>
@@ -653,7 +653,7 @@
     <string name="progress_dialog_exiting_ecm" msgid="9159080081676927217">"Вихід із режиму екстреного зворотного виклику"</string>
     <string name="alert_dialog_yes" msgid="3532525979632841417">"Так"</string>
     <string name="alert_dialog_no" msgid="1075632654085988420">"Ні"</string>
-    <string name="alert_dialog_dismiss" msgid="1336356286354517054">"Відхилити"</string>
+    <string name="alert_dialog_dismiss" msgid="1336356286354517054">"Закрити"</string>
     <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"Телефон перебуває в режимі екстреного зворотного виклику"</string>
     <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"До <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
     <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
