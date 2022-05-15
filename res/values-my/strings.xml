@@ -835,6 +835,8 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"ဤဆက်တင်ကိုပြောင်းရန် သင့်စက်ကို ပြန်စတင်ရပါမည်။"</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"ပြန်စရန်"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"မလုပ်တော့ပါ"</string>
+    <!-- no translation found for removable_esim_string (7931369811671787649) -->
+    <skip />
     <string name="radio_info_radio_power" msgid="8805595022160471587">"မိုဘိုင်း ရေဒီယိုစွမ်းအား"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"SIM ထဲရှိ လိပ်စာ စာအုပ်ကိုကြည့်ပါ"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"ခေါ်ဆိုရန် ကန့်သတ် နံပါတ်ကို ကြည့်မည်"</string>
