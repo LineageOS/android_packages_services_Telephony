@@ -835,6 +835,8 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"ଏହି ସେଟିଂ ବଦଳାଇବାକୁ ଆପଣଙ୍କୁ ଆପଣଙ୍କର ଡିଭାଇସ୍ ରିଷ୍ଟାର୍ଟ କରିବାକୁ ହେବ।"</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"ରିଷ୍ଟାର୍ଟ କରନ୍ତୁ"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"ବାତିଲ୍ କରନ୍ତୁ"</string>
+    <!-- no translation found for removable_esim_string (7931369811671787649) -->
+    <skip />
     <string name="radio_info_radio_power" msgid="8805595022160471587">"ମୋବାଇଲ୍ ରେଡିଓ ପାୱାର୍"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"ସିମ୍‌ରେ ଥିବା ଠିକଣା ପୁସ୍ତକ ଦେଖନ୍ତୁ"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"ସ୍ଥାୟୀ ଡାଏଲିଂ ନମ୍ୱରଗୁଡ଼ିକୁ ଦେଖନ୍ତୁ"</string>
