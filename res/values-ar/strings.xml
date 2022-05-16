@@ -835,6 +835,8 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"عليك إعادة تشغيل جهازك لتغيير هذا الإعداد."</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"إعادة التشغيل"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"إلغاء"</string>
+    <!-- no translation found for removable_esim_string (7931369811671787649) -->
+    <skip />
     <string name="radio_info_radio_power" msgid="8805595022160471587">"طاقة اللاسلكي للجوّال"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"‏عرض دفتر عناوين SIM"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"عرض أرقام الطلب الثابت"</string>
