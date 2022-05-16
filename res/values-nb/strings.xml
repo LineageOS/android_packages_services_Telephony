@@ -835,6 +835,8 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"Du må starte enheten din på nytt for å endre innstillingen."</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"Start på nytt"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"Avbryt"</string>
+    <!-- no translation found for removable_esim_string (7931369811671787649) -->
+    <skip />
     <string name="radio_info_radio_power" msgid="8805595022160471587">"Strømforsyning for mobilradio"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"Se adressebok for SIM-kort"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"Vis forhåndsbestemte numre"</string>
