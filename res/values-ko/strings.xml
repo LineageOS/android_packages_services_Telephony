@@ -835,6 +835,8 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"설정을 변경하려면 기기를 다시 시작해야 합니다."</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"다시 시작"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"취소"</string>
+    <!-- no translation found for removable_esim_string (7931369811671787649) -->
+    <skip />
     <string name="radio_info_radio_power" msgid="8805595022160471587">"모바일 무선 전력"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"SIM 주소록 보기"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"발신 허용 번호 보기"</string>
