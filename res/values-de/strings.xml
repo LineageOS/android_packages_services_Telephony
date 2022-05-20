@@ -664,7 +664,7 @@
     <string name="contactPhoto" msgid="7885089213135154834">"Kontaktbild"</string>
     <string name="goPrivate" msgid="4645108311382209551">"privat sprechen"</string>
     <string name="selectContact" msgid="1527612842599767382">"Kontakt wählen"</string>
-    <string name="not_voice_capable" msgid="2819996734252084253">"Audioanruf wird nicht unterstützt."</string>
+    <string name="not_voice_capable" msgid="2819996734252084253">"Sprachanruf wird nicht unterstützt."</string>
     <string name="description_dial_button" msgid="8614631902795087259">"Wählen"</string>
     <string name="description_dialpad_button" msgid="7395114120463883623">"Wähltasten anzeigen"</string>
     <string name="pane_title_emergency_dialpad" msgid="3627372514638694401">"Wähltasten für Notruf"</string>
@@ -892,7 +892,7 @@
     <string name="radio_info_ppp_received_label" msgid="5753592451640644889">"Empfangene Daten:"</string>
     <string name="radio_info_gsm_service_label" msgid="6443348321714241328">"Sprachdienst:"</string>
     <string name="radio_info_signal_strength_label" msgid="5545444702102543260">"Signalstärke:"</string>
-    <string name="radio_info_call_status_label" msgid="7693575431923095487">"Status für Audioanruf:"</string>
+    <string name="radio_info_call_status_label" msgid="7693575431923095487">"Status für Sprachanruf:"</string>
     <string name="radio_info_ppp_sent_label" msgid="6542208429356199695">"Gesendete Daten:"</string>
     <string name="radio_info_message_waiting_label" msgid="1886549432566952078">"Nachricht liegt vor:"</string>
     <string name="radio_info_phone_number_label" msgid="2533852539562512203">"Telefonnummer:"</string>
