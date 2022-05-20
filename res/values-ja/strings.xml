@@ -835,8 +835,7 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"この設定を変更するには、デバイスの再起動が必要です。"</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"再起動"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"キャンセル"</string>
-    <!-- no translation found for removable_esim_string (7931369811671787649) -->
-    <skip />
+    <string name="removable_esim_string" msgid="7931369811671787649">"リムーバブル eSIM をデフォルトに設定"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"モバイル無線電力"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"SIM のアドレス帳を表示"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"発信番号制限を表示"</string>
