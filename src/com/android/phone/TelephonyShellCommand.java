@@ -1629,7 +1629,7 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         String tag = CARRIER_CONFIG_SUBCOMMAND + " " + CC_SET_VALUES_FROM_XML + ": ";
 
         // Parse all options
-        CcOptionParseResult options = parseCcOptions(tag, false);
+        CcOptionParseResult options = parseCcOptions(tag, true);
         if (options == null) {
             return -1;
         }
