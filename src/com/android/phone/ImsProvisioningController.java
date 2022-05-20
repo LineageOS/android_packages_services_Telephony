@@ -496,8 +496,15 @@ public class ImsProvisioningController {
             int value = ImsProvisioningLoader.STATUS_NOT_SET;
 
             // updating KEY_VOLTE_PROVISIONING_STATUS
-            required = isProvisioningRequired(subId, CAPABILITY_TYPE_VOICE, REGISTRATION_TECH_LTE,
-                    /*isMmTel*/true);
+            try {
+                required = isImsProvisioningRequiredForCapability(subId, CAPABILITY_TYPE_VOICE,
+                        REGISTRATION_TECH_LTE);
+            } catch (IllegalArgumentException e) {
+                logw("setInitialProvisioningKeys: KEY_VOLTE_PROVISIONING_STATUS failed for"
+                        + " subId=" + subId + ", exception: " + e.getMessage());
+                return;
+            }
+
             log(LOG_PREFIX, mSlotId,
                     "setInitialProvisioningKeys provisioning required(voice, lte) " + required);
             if (required) {
@@ -511,8 +518,15 @@ public class ImsProvisioningController {
             }
 
             // updating KEY_VT_PROVISIONING_STATUS
-            required = isProvisioningRequired(subId, CAPABILITY_TYPE_VIDEO, REGISTRATION_TECH_LTE,
-                    /*isMmTel*/true);
+            try {
+                required = isImsProvisioningRequiredForCapability(subId, CAPABILITY_TYPE_VIDEO,
+                        REGISTRATION_TECH_LTE);
+            } catch (IllegalArgumentException e) {
+                logw("setInitialProvisioningKeys: KEY_VT_PROVISIONING_STATUS failed for"
+                        + " subId=" + subId + ", exception: " + e.getMessage());
+                return;
+            }
+
             log(LOG_PREFIX, mSlotId,
                     "setInitialProvisioningKeys provisioning required(video, lte) " + required);
             if (required) {
@@ -526,8 +540,15 @@ public class ImsProvisioningController {
             }
 
             // updating KEY_VOICE_OVER_WIFI_ENABLED_OVERRIDE
-            required = isProvisioningRequired(subId, CAPABILITY_TYPE_VOICE,
-                    REGISTRATION_TECH_IWLAN, /*isMmTel*/true);
+            try {
+                required = isImsProvisioningRequiredForCapability(subId, CAPABILITY_TYPE_VOICE,
+                        REGISTRATION_TECH_IWLAN);
+            } catch (IllegalArgumentException e) {
+                logw("setInitialProvisioningKeys: KEY_VOICE_OVER_WIFI_ENABLED_OVERRIDE failed"
+                        + " for subId=" + subId + ", exception: " + e.getMessage());
+                return;
+            }
+
             log(LOG_PREFIX, mSlotId,
                     "setInitialProvisioningKeys provisioning required(voice, iwlan) " + required);
             if (required) {
@@ -681,7 +702,14 @@ public class ImsProvisioningController {
             // Assume that all radio techs have the same provisioning value
             int tech = REGISTRATION_TECH_LTE;
 
-            required = isProvisioningRequired(subId, capability, tech, /*isMmTel*/false);
+            try {
+                required = isRcsProvisioningRequiredForCapability(subId, capability, tech);
+            } catch (IllegalArgumentException e) {
+                logw("setInitialProvisioningKeys: KEY_EAB_PROVISIONING_STATUS failed for"
+                        + " subId=" + subId + ", exception: " + e.getMessage());
+                return;
+            }
+
             if (required) {
                 value = mImsProvisioningLoader.getProvisioningStatus(subId, FEATURE_RCS,
                         capability, tech);
