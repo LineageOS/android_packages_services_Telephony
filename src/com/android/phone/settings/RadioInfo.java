@@ -580,8 +580,8 @@ public class RadioInfo extends AppCompatActivity {
         }
 
         mRemovableEsimSwitch = (Switch) findViewById(R.id.removable_esim_switch);
-        mRemovableEsimSwitch.setEnabled(!IS_USER_BUILD && isDsdsEnabled());
         if (!IS_USER_BUILD) {
+            mRemovableEsimSwitch.setEnabled(true);
             mRemovableEsimSwitch.setChecked(mTelephonyManager.isRemovableEsimDefaultEuicc());
             mRemovableEsimSwitch.setOnCheckedChangeListener(mRemovableEsimChangeListener);
         }
@@ -1870,9 +1870,6 @@ public class RadioInfo extends AppCompatActivity {
 
     private void performDsdsSwitch() {
         mTelephonyManager.switchMultiSimConfig(mDsdsSwitch.isChecked() ? 2 : 1);
-        if (!IS_USER_BUILD) {
-            mRemovableEsimSwitch.setEnabled(mDsdsSwitch.isChecked());
-        }
     }
 
     /**
