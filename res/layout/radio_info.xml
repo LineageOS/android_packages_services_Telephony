@@ -264,6 +264,7 @@
                 android:layout_marginTop="8dip"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:enabled="false"
                 android:text="@string/removable_esim_string" />
 
         <!-- Horizontal Rule -->
