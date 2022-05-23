@@ -835,8 +835,7 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"আপুনি এই ছেটিংটো সলনি কৰিবলৈ আপোনাৰ ডিভাইচটো ৰিষ্টার্ট কৰিব লাগিব।"</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"ৰিষ্টাৰ্ট কৰক"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"বাতিল কৰক"</string>
-    <!-- no translation found for removable_esim_string (7931369811671787649) -->
-    <skip />
+    <string name="removable_esim_string" msgid="7931369811671787649">"আঁতৰাব পৰা ই-ছিম ডিফ’ল্ট হিচাপে ছেট কৰক"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"ম’বাইলৰ ৰেডিঅ’ পাৱাৰ"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"ছিম ঠিকনা সূচী চাওক"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"ফিক্সড্ ডায়েলিং নম্বৰসমূহ চাওক"</string>
