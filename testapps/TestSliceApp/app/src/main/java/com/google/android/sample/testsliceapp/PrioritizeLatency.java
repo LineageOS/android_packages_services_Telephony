@@ -21,6 +21,7 @@ import android.net.Network;
 import android.net.NetworkCapabilities;
 import android.net.NetworkRequest;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -61,6 +62,7 @@ public class PrioritizeLatency extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mConnectivityManager = getContext().getSystemService(ConnectivityManager.class);
     }
 
     @Override
@@ -79,22 +81,29 @@ public class PrioritizeLatency extends Fragment {
         mRelease.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                mConnectivityManager.unregisterNetworkCallback(mProfileCheckNetworkCallback);
+                try {
+                    mConnectivityManager.unregisterNetworkCallback(
+                            mProfileCheckNetworkCallback);
+                } catch (Exception e) {
+                    Log.d("SliceTest", "Exception: " + e);
+                }
             }
         });
         mRequest = view.findViewById(R.id.requestlatency);
         mRequest.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                NetworkCallback mProfileCheckNetworkCallback = new NetworkCallback() {
+                mProfileCheckNetworkCallback = new NetworkCallback() {
                     @Override
                     public void onAvailable(final Network network) {
+                        Log.d("PrioritizeLatency", "onAvailable + " + network);
                         mNetwork = network;
                     }
                 };
                 NetworkRequest.Builder builder = new NetworkRequest.Builder();
                 builder.addCapability(NetworkCapabilities.NET_CAPABILITY_PRIORITIZE_LATENCY);
                 mConnectivityManager.requestNetwork(builder.build(), mProfileCheckNetworkCallback);
+                Log.d("PrioritizeLatency", "onClick + " + builder.build());
             }
         });
         mPing = view.findViewById(R.id.pinglatency);
@@ -106,6 +115,7 @@ public class PrioritizeLatency extends Fragment {
                     try {
                         new RequestTask().ping(mNetwork);
                     } catch (Exception e) {
+                        Log.d("SliceTest", "Exception: " + e);
                     }
                 }
             }
