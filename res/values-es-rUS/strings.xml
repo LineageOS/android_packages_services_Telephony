@@ -115,7 +115,7 @@
     <string name="sum_cfb_disabled" msgid="3589913334164866035">"Desactivado"</string>
     <string name="disable_cfb_forbidden" msgid="4831494744351633961">"Tu proveedor no admite la inhabilitación del desvío de llamadas cuando tu teléfono está ocupado."</string>
     <string name="labelCFNRy" msgid="3403533792248457946">"Cuando no haya respuesta"</string>
-    <string name="messageCFNRy" msgid="7644434155765359009">"Número cuando no contesta"</string>
+    <string name="messageCFNRy" msgid="7644434155765359009">"Número cuando no hay respuesta"</string>
     <string name="sum_cfnry_enabled" msgid="3000500837493854799">"Reenviar a <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnry_disabled" msgid="1990563512406017880">"Desactivado"</string>
     <string name="disable_cfnry_forbidden" msgid="3174731413216550689">"Tu proveedor no admite la inhabilitación del desvío de llamadas cuando tu teléfono no responde."</string>
