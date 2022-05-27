@@ -183,6 +183,7 @@ import com.android.internal.telephony.SmsPermissions;
 import com.android.internal.telephony.SubscriptionController;
 import com.android.internal.telephony.TelephonyIntents;
 import com.android.internal.telephony.TelephonyPermissions;
+import com.android.internal.telephony.data.DataUtils;
 import com.android.internal.telephony.dataconnection.ApnSettingUtils;
 import com.android.internal.telephony.emergency.EmergencyNumberTracker;
 import com.android.internal.telephony.euicc.EuiccConnector;
@@ -193,7 +194,6 @@ import com.android.internal.telephony.metrics.RcsStats;
 import com.android.internal.telephony.metrics.TelephonyMetrics;
 import com.android.internal.telephony.uicc.IccCardApplicationStatus.AppType;
 import com.android.internal.telephony.uicc.IccIoResult;
-import com.android.internal.telephony.uicc.IccRecords;
 import com.android.internal.telephony.uicc.IccUtils;
 import com.android.internal.telephony.uicc.SIMRecords;
 import com.android.internal.telephony.uicc.UiccCard;
@@ -9611,11 +9611,15 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             Phone phone = getPhone(subId);
             if (phone == null) return false;
 
-            boolean isMetered = ApnSettingUtils.isMeteredApnType(apnType, phone);
+            boolean isMetered;
             boolean isDataEnabled;
             if (phone.isUsingNewDataStack()) {
+                isMetered = phone.getDataNetworkController().getDataConfigManager()
+                        .isMeteredCapability(DataUtils.apnTypeToNetworkCapability(apnType),
+                                phone.getServiceState().getDataRoaming());
                 isDataEnabled = phone.getDataSettingsManager().isDataEnabled(apnType);
             } else {
+                isMetered = ApnSettingUtils.isMeteredApnType(apnType, phone);
                 isDataEnabled = phone.getDataEnabledSettings().isDataEnabled(apnType);
             }
             return !isMetered || isDataEnabled;
@@ -9633,6 +9637,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         try {
             Phone phone = getPhone(subId);
             if (phone == null) return true; // By default return true.
+            if (phone.isUsingNewDataStack()) {
+                return phone.getDataNetworkController().getDataConfigManager().isMeteredCapability(
+                        DataUtils.apnTypeToNetworkCapability(apnType),
+                        phone.getServiceState().getDataRoaming());
+            }
 
             return ApnSettingUtils.isMeteredApnType(apnType, phone);
         } finally {
@@ -9694,15 +9703,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public boolean isMvnoMatched(int subId, int mvnoType, @NonNull String mvnoMatchData) {
+    public boolean isMvnoMatched(int slotIndex, int mvnoType, @NonNull String mvnoMatchData) {
         enforceReadPrivilegedPermission("isMvnoMatched");
-        IccRecords iccRecords = UiccController.getInstance().getIccRecords(
-                SubscriptionManager.getPhoneId(subId), UiccController.APP_FAM_3GPP);
-        if (iccRecords == null) {
-            Log.d(LOG_TAG, "isMvnoMatched# IccRecords is null");
-            return false;
-        }
-        return ApnSettingUtils.mvnoMatches(iccRecords, mvnoType, mvnoMatchData);
+        return UiccController.getInstance().mvnoMatches(slotIndex, mvnoType, mvnoMatchData);
     }
 
     @Override
