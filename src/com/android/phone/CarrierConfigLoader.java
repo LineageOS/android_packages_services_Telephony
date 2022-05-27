@@ -128,6 +128,8 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
     // Broadcast receiver for SIM and pkg intents, register intent filter in constructor.
     @NonNull private final BroadcastReceiver mPackageReceiver = new ConfigLoaderBroadcastReceiver();
     @NonNull private final LocalLog mCarrierConfigLoadingLog = new LocalLog(100);
+    // Number of phone instances (active modem count)
+    private int mNumPhones;
 
 
     // Message codes; see mHandler below.
@@ -228,8 +230,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                 }
 
                 case EVENT_SYSTEM_UNLOCKED: {
-                    for (int i = 0; i < TelephonyManager.from(mContext).getActiveModemCount();
-                            ++i) {
+                    for (int i = 0; i < mNumPhones; ++i) {
                         // When the user unlocks the device, send the broadcast again (with a
                         // rebroadcast extra) if we have sent it before unlock. This will avoid
                         // trying to load the carrier config when the SIM is still loading when the
@@ -248,8 +249,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                     // Only update if there are cached config removed to avoid updating config for
                     // unrelated packages.
                     if (clearCachedConfigForPackage(carrierPackageName)) {
-                        int numPhones = TelephonyManager.from(mContext).getActiveModemCount();
-                        for (int i = 0; i < numPhones; ++i) {
+                        for (int i = 0; i < mNumPhones; ++i) {
                             logdWithLocalLog("Package changed: " + carrierPackageName
                                     + ", phone=" + i);
                             updateConfigForPhoneId(i);
@@ -694,10 +694,12 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                 mContext.getString(R.string.platform_carrier_config_package);
         mHandler = new ConfigHandler(looper);
 
-        IntentFilter bootFilter = new IntentFilter();
-        bootFilter.addAction(Intent.ACTION_BOOT_COMPLETED);
-        context.registerReceiver(mBootReceiver, bootFilter);
+        IntentFilter systemEventsFilter = new IntentFilter();
+        systemEventsFilter.addAction(Intent.ACTION_BOOT_COMPLETED);
+        systemEventsFilter.addAction(TelephonyManager.ACTION_MULTI_SIM_CONFIG_CHANGED);
+        context.registerReceiver(mBootReceiver, systemEventsFilter);
 
+        // TODO(b/200277555): Switch to CarrierPrivilegesCallback to monitor carrier app change
         // Register for package updates. Update app or uninstall app update will have all 3 intents,
         // in the order or removed, added, replaced, all with extra_replace set to true.
         IntentFilter pkgFilter = new IntentFilter();
@@ -707,18 +709,18 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         pkgFilter.addDataScheme("package");
         context.registerReceiver(mPackageReceiver, pkgFilter);
 
-        int numPhones = TelephonyManager.from(context).getSupportedModemCount();
-        mConfigFromDefaultApp = new PersistableBundle[numPhones];
-        mConfigFromCarrierApp = new PersistableBundle[numPhones];
-        mPersistentOverrideConfigs = new PersistableBundle[numPhones];
-        mOverrideConfigs = new PersistableBundle[numPhones];
+        mNumPhones = TelephonyManager.from(context).getActiveModemCount();
+        mConfigFromDefaultApp = new PersistableBundle[mNumPhones];
+        mConfigFromCarrierApp = new PersistableBundle[mNumPhones];
+        mPersistentOverrideConfigs = new PersistableBundle[mNumPhones];
+        mOverrideConfigs = new PersistableBundle[mNumPhones];
         mNoSimConfig = new PersistableBundle();
-        mServiceConnection = new CarrierServiceConnection[numPhones];
-        mServiceBound = new boolean[numPhones];
-        mHasSentConfigChange = new boolean[numPhones];
-        mFromSystemUnlocked = new boolean[numPhones];
-        mServiceConnectionForNoSimConfig = new CarrierServiceConnection[numPhones];
-        mServiceBoundForNoSimConfig = new boolean[numPhones];
+        mServiceConnection = new CarrierServiceConnection[mNumPhones];
+        mServiceBound = new boolean[mNumPhones];
+        mHasSentConfigChange = new boolean[mNumPhones];
+        mFromSystemUnlocked = new boolean[mNumPhones];
+        mServiceConnectionForNoSimConfig = new CarrierServiceConnection[mNumPhones];
+        mServiceBoundForNoSimConfig = new boolean[mNumPhones];
         logd("CarrierConfigLoader has started");
         mSubscriptionInfoUpdater = subscriptionInfoUpdater;
         mHandler.sendEmptyMessage(EVENT_CHECK_SYSTEM_UPDATE);
@@ -1221,9 +1223,41 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
     }
 
     private void onMultiSimConfigChanged() {
-        for (int i = TelephonyManager.from(mContext).getActiveModemCount();
-                i < mConfigFromDefaultApp.length; i++) {
-            clearConfigForPhone(i, false);
+        int oldNumPhones = mNumPhones;
+        mNumPhones = TelephonyManager.from(mContext).getActiveModemCount();
+        if (mNumPhones == oldNumPhones) {
+            return;
+        }
+        logdWithLocalLog("mNumPhones change from " + oldNumPhones + " to " + mNumPhones);
+
+        // If DS -> SS switch, release the resources BEFORE truncating the arrays
+        for (int phoneId = mNumPhones; phoneId < oldNumPhones; phoneId++) {
+            if (mServiceConnection[phoneId] != null) {
+                unbindIfBound(mContext, mServiceConnection[phoneId], phoneId);
+            }
+            if (mServiceConnectionForNoSimConfig[phoneId] != null) {
+                unbindIfBoundForNoSimConfig(mContext, mServiceConnectionForNoSimConfig[phoneId],
+                        phoneId);
+            }
+        }
+
+        // Copy the original arrays, truncate or padding with zeros (if necessary) to new length
+        mConfigFromDefaultApp = Arrays.copyOf(mConfigFromDefaultApp, mNumPhones);
+        mConfigFromCarrierApp = Arrays.copyOf(mConfigFromCarrierApp, mNumPhones);
+        mPersistentOverrideConfigs = Arrays.copyOf(mPersistentOverrideConfigs, mNumPhones);
+        mOverrideConfigs = Arrays.copyOf(mOverrideConfigs, mNumPhones);
+        mServiceConnection = Arrays.copyOf(mServiceConnection, mNumPhones);
+        mServiceConnectionForNoSimConfig =
+                Arrays.copyOf(mServiceConnectionForNoSimConfig, mNumPhones);
+        mServiceBound = Arrays.copyOf(mServiceBound, mNumPhones);
+        mServiceBoundForNoSimConfig = Arrays.copyOf(mServiceBoundForNoSimConfig, mNumPhones);
+        mHasSentConfigChange = Arrays.copyOf(mHasSentConfigChange, mNumPhones);
+        mFromSystemUnlocked = Arrays.copyOf(mFromSystemUnlocked, mNumPhones);
+
+        // If SS -> DS switch, load the config for all the phones AFTER padding the arrays above.
+        // The logical modems for old phones may not map to the same slot.
+        for (int phoneId = 0; phoneId < mNumPhones; phoneId++) {
+            updateConfigForPhoneId(phoneId);
         }
     }
 
@@ -1411,6 +1445,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         return mOverrideConfigs[phoneId];
     }
 
+    // TODO(b/185129900): always call unbindService after bind, no matter if it succeeded
     private void unbindIfBound(@NonNull Context context, @NonNull CarrierServiceConnection conn,
             int phoneId) {
         if (mServiceBound[phoneId]) {
@@ -1468,7 +1503,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         }
 
         indentPW.println("CarrierConfigLoader: " + this);
-        for (int i = 0; i < TelephonyManager.from(mContext).getActiveModemCount(); i++) {
+        for (int i = 0; i < mNumPhones; i++) {
             indentPW.println("Phone Id = " + i);
             // display default values in CarrierConfigManager
             printConfig(CarrierConfigManager.getDefaultConfig(), indentPW,
@@ -1695,6 +1730,10 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
             switch (action) {
                 case Intent.ACTION_BOOT_COMPLETED:
                     mHandler.sendMessage(mHandler.obtainMessage(EVENT_SYSTEM_UNLOCKED, null));
+                    break;
+
+                case TelephonyManager.ACTION_MULTI_SIM_CONFIG_CHANGED:
+                    mHandler.sendEmptyMessage(EVENT_MULTI_SIM_CONFIG_CHANGED);
                     break;
 
                 case Intent.ACTION_PACKAGE_ADDED:
