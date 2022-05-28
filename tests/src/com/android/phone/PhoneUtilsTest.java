@@ -96,11 +96,13 @@ public class PhoneUtilsTest {
         when(mMockSubscriptionManager.getActiveSubscriptionInfo(
                 eq(mPhoneAccountHandleIdInteger))).thenReturn(mMockSubscriptionInfo);
         when(mMockPhone.getSubId()).thenReturn(mPhoneAccountHandleIdInteger);
-        setSinglePhone();
+        Phone[] mPhones = new Phone[] {mMockPhone};
+        replaceInstance(PhoneFactory.class, "sPhones", null, mPhones);
     }
 
     @After
     public void tearDown() throws Exception {
+        restoreInstance(PhoneFactory.class, "sPhones", null);
     }
 
     protected synchronized void replaceInstance(final Class c, final String instanceName,
@@ -117,9 +119,16 @@ public class PhoneUtilsTest {
         field.set(obj, newValue);
     }
 
-    private void setSinglePhone() throws Exception {
-        Phone[] mPhones = new Phone[] {mMockPhone};
-        replaceInstance(PhoneFactory.class, "sPhones", null, mPhones);
+    protected synchronized void restoreInstance(final Class c, final String instanceName,
+            final Object obj) throws Exception {
+        InstanceKey key = new InstanceKey(c, instanceName, obj);
+        if (mOldInstances.containsKey(key)) {
+            Field field = c.getDeclaredField(instanceName);
+            field.setAccessible(true);
+            field.set(obj, mOldInstances.get(key));
+            mOldInstances.remove(key);
+            mInstanceKeys.remove(key);
+        }
     }
 
     @Test
