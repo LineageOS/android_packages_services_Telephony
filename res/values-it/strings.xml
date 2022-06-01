@@ -572,7 +572,7 @@
     <string name="pin_puk_system_user_only" msgid="1045147220686867922">"Solo il proprietario del dispositivo può inserire i codici PIN/PUK."</string>
     <string name="police_type_description" msgid="2819533883972081757">"Polizia"</string>
     <string name="ambulance_type_description" msgid="6798237503553180461">"Ambulanza"</string>
-    <string name="fire_type_description" msgid="6565200468934914930">"Vigili del fuoco"</string>
+    <string name="fire_type_description" msgid="6565200468934914930">"Pompieri"</string>
     <string name="description_concat_format" msgid="2014471565101724088">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="1115266533703764049">"Usa tastiera"</string>
     <string name="onscreenHoldText" msgid="4025348842151665191">"In attesa"</string>
