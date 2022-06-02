@@ -835,8 +835,7 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"এই সেটিং পরিবর্তন করতে আপনার ডিভাইস রিস্টার্ট করতে হবে।"</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"রিস্টার্ট করুন"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"বাদ দিন"</string>
-    <!-- no translation found for removable_esim_string (7931369811671787649) -->
-    <skip />
+    <string name="removable_esim_string" msgid="7931369811671787649">"সরিয়ে দেওয়া যায় এমন eSIM ডিফল্ট হিসেবে সেট করুন"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"মোবাইল রেডিওর গুণমান"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"সিম অ্যাড্রেস বুক দেখুন"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"স্থায়ী ডায়াল নম্বরগুলি দেখুন"</string>
