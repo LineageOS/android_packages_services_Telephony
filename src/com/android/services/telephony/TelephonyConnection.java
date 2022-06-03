@@ -142,6 +142,7 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
     private static final int MSG_REJECT = 21;
     private static final int MSG_DTMF_DONE = 22;
     private static final int MSG_MEDIA_ATTRIBUTES_CHANGED = 23;
+    private static final int MSG_ON_RTT_INITIATED = 24;
 
     private static final String JAPAN_COUNTRY_CODE_WITH_PLUS_SIGN = "+81";
     private static final String JAPAN_ISO_COUNTRY_CODE = "JP";
@@ -328,6 +329,15 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
                     } finally {
                         args.recycle();
                     }
+                    break;
+                case MSG_ON_RTT_INITIATED:
+                    if (mOriginalConnection != null) {
+                        // if mOriginalConnection is null, the properties will get set when
+                        // mOriginalConnection gets set.
+                        updateConnectionProperties();
+                        refreshConferenceSupported();
+                    }
+                    sendRttInitiationSuccess();
                     break;
             }
         }
@@ -750,13 +760,11 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
 
         @Override
         public void onRttInitiated() {
-            if (mOriginalConnection != null) {
-                // if mOriginalConnection is null, the properties will get set when
-                // mOriginalConnection gets set.
-                updateConnectionProperties();
-                refreshConferenceSupported();
-            }
-            sendRttInitiationSuccess();
+            Log.i(TelephonyConnection.this, "onRttInitiated: callId=%s", getTelecomCallId());
+            // Post RTT initiation to the Handler associated with this TelephonyConnection.
+            // This avoids a race condition where a call starts as RTT but ConnectionService call to
+            // handleCreateConnectionComplete happens AFTER the RTT status is reported to Telecom.
+            mHandler.obtainMessage(MSG_ON_RTT_INITIATED).sendToTarget();
         }
 
         @Override
