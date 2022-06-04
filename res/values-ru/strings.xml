@@ -685,7 +685,7 @@
     <string name="enable_video_calling_dialog_close" msgid="4298929725917045270">"Закрыть"</string>
     <string name="sim_label_emergency_calls" msgid="9078241989421522310">"Экстренные вызовы"</string>
     <string name="sim_description_emergency_calls" msgid="5146872803938897296">"Только экстренные вызовы"</string>
-    <string name="sim_description_default" msgid="7474671114363724971">"SIM-карта, слот: <xliff:g id="SLOT_ID">%s</xliff:g>"</string>
+    <string name="sim_description_default" msgid="7474671114363724971">"SIM-карта <xliff:g id="SLOT_ID">%s</xliff:g>"</string>
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"Специальные возможности"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"Вызов по Wi-Fi от"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"Wi-Fi-звонок"</string>
