@@ -18,7 +18,7 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="phoneAppLabel" product="tablet" msgid="1916019789885839910">"Բջջային տվյալներ"</string>
     <string name="phoneAppLabel" product="default" msgid="130465039375347763">"Հեռախոսի ծառայություններ"</string>
-    <string name="emergencyDialerIconLabel" msgid="8668005772339436680">"Արտակարգ իրավիճակների համարհավաքիչ"</string>
+    <string name="emergencyDialerIconLabel" msgid="8668005772339436680">"Արտակարգ իրավիճակների համարահավաքիչ"</string>
     <string name="phoneIconLabel" msgid="3015941229249651419">"Հեռախոս"</string>
     <string name="fdnListLabel" msgid="4119121875004244097">"FDN ցուցակ"</string>
     <string name="unknown" msgid="8279698889921830815">"Անհայտ"</string>
@@ -284,7 +284,7 @@
     <string name="roaming" msgid="1576180772877858949">"Ռոումինգ"</string>
     <string name="roaming_enable" msgid="6853685214521494819">"Միանալ տվյալների փոխանցման ծառայություններին ռոումինգում"</string>
     <string name="roaming_disable" msgid="8856224638624592681">"Միանալ տվյալների փոխանցման ծառայություններին ռոումինգում"</string>
-    <string name="roaming_reenable_message" msgid="1951802463885727915">"Ռոումինգում բջջային ինտերնետն անջատված է: Հպեք՝ միացնելու համար:"</string>
+    <string name="roaming_reenable_message" msgid="1951802463885727915">"Ռոումինգում բջջային ինտերնետն անջատված է: Հպեք միացնելու համար:"</string>
     <string name="roaming_enabled_message" msgid="9022249120750897">"Ռոումինգի համար կարող է գումար գանձվել: Հպեք՝ փոփոխելու համար:"</string>
     <string name="roaming_notification_title" msgid="3590348480688047320">"Բջջային ինտերնետը կորավ"</string>
     <string name="roaming_on_notification_title" msgid="7451473196411559173">"Ինտերնետ ռոումինգը միացված է"</string>
@@ -890,6 +890,7 @@
     <string name="radio_info_band_mode_label" msgid="23480556225515290">"Ընտրել հաճախությունների շերտը"</string>
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"Ձայնային ցանցի տեսակը՝"</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"Տվյալների ցանցի տեսակը՝"</string>
+    <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"Փոխարինման ցանցի տեսակը՝"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"Ընտրեք հեռախոսային կոդ"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"Կարգավորեք ցանկալի ցանցի տեսակը՝"</string>
     <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"Փինգ հանգույցի անուն(www.google.com) IPv4՝"</string>
@@ -901,10 +902,10 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Թարմացնել"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"Փոխարկել DNS ստուգումը"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"OEM-հատուկ տեղեկություններ/կարգավորումներ"</string>
-    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC-ն հասանելի է՝"</string>
-    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR-ը սահմանափակված է՝"</string>
-    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR-ը հասանելի է՝"</string>
-    <string name="radio_info_nr_state" msgid="1337571996788535356">"NR-ի կարգավիճակը՝"</string>
+    <string name="radio_info_endc_available" msgid="2983767110681230019">"EN-DC հասանելի (NSA)՝"</string>
+    <string name="radio_info_dcnr_restricted" msgid="7147511536420148173">"DCNR սահմանափակ (NSA)՝"</string>
+    <string name="radio_info_nr_available" msgid="3383388088451237182">"NR հասանելի (NSA)՝"</string>
+    <string name="radio_info_nr_state" msgid="4158805093187555149">"NR կարգավիճակը (NSA)՝"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR-ի հաճախականությունը՝"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Կարգավորել հաճախությունների շերտի ռեժիմը"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Շերտերի ցուցակը բեռնվում է…"</string>

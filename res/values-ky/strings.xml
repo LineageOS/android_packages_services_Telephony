@@ -170,7 +170,7 @@
     <string name="vm_change_pin_error_too_weak" msgid="8581892952627885719">"Жаңы PIN код өтө эле жөнөкөй. Сырсөз күчтүү болушу үчүн анда сандар үзгүлтүксүз катардан турбашы же сандар кайталанбашы керек."</string>
     <string name="vm_change_pin_error_mismatch" msgid="5364847280026257331">"Эски PIN код дал келген жок."</string>
     <string name="vm_change_pin_error_invalid" msgid="5230002671175580674">"Жаңы PIN коддо жараксыз белгилер бар."</string>
-    <string name="vm_change_pin_error_system_error" msgid="9116483527909681791">"PIN код өзгөртүлгөн жок"</string>
+    <string name="vm_change_pin_error_system_error" msgid="9116483527909681791">"PIN код өзгөргөн жок"</string>
     <string name="vvm_unsupported_message_format" msgid="4206402558577739713">"Колдоого алынбаган билдирүү, угуу үчүн <xliff:g id="NUMBER">%s</xliff:g> чалыңыз."</string>
     <string name="network_settings_title" msgid="7560807107123171541">"Мобилдик тармак"</string>
     <string name="label_available" msgid="1316084116670821258">"Жеткиликтүү тармактар"</string>
@@ -890,6 +890,7 @@
     <string name="radio_info_band_mode_label" msgid="23480556225515290">"Радио жыштыгын тандоо"</string>
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"Үн кызматынын тармагы:"</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"Мобилдик тармагынын түрү:"</string>
+    <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"Тармактын түрүн өзгөртүп коюу:"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"Телефондун индексин тандоо"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"Тандалган тармак түрүн коюу:"</string>
     <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"www.google.com, IPv4 үчүн ping сурамы:"</string>
@@ -901,10 +902,10 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Жаңылоо"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"DNS текшерүүнү которуштуруу"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"OEM\'ге тиешелүү Маалымат/Жөндөөлөр"</string>
-    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC жеткиликтүү:"</string>
-    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR чектелген:"</string>
-    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR жеткиликтүү:"</string>
-    <string name="radio_info_nr_state" msgid="1337571996788535356">"NR абалы:"</string>
+    <string name="radio_info_endc_available" msgid="2983767110681230019">"EN-DC жеткиликтүү (NSA):"</string>
+    <string name="radio_info_dcnr_restricted" msgid="7147511536420148173">"DCNR чектелген (NSA):"</string>
+    <string name="radio_info_nr_available" msgid="3383388088451237182">"NR жеткиликтүү (NSA):"</string>
+    <string name="radio_info_nr_state" msgid="4158805093187555149">"NR абалы (NSA):"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR жыштыгы:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Радио жыштыгынын режимин коюу"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Жыштык режиминин тизмеси жүктөлүүдө…"</string>

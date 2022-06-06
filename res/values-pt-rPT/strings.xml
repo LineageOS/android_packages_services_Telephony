@@ -104,7 +104,7 @@
     <string name="call_forwarding_settings_with_label" msgid="2345432813399564272">"Definições de encaminhamento de chamadas (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCF" msgid="3578719437928476078">"Encaminhamento de chamadas"</string>
     <string name="labelCFU" msgid="8870170873036279706">"Encaminhar sempre"</string>
-    <string name="messageCFU" msgid="1361806450979589744">"Utilizar sempre este número"</string>
+    <string name="messageCFU" msgid="1361806450979589744">"Usar sempre este número"</string>
     <string name="sum_cfu_enabled_indicator" msgid="9030139213402432776">"A reencaminhar todas as chamadas"</string>
     <string name="sum_cfu_enabled" msgid="5806923046528144526">"A encaminhar todas as chamadas para <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfu_enabled_no_number" msgid="7287752761743377930">"O número está indisponível"</string>
@@ -305,7 +305,7 @@
     <string name="carrier_settings_euicc_summary" msgid="2027941166597330117">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> – <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="7228249980933944101">"Dados móveis"</string>
     <string name="mobile_data_settings_summary" msgid="5012570152029118471">"Aceder aos dados através de rede móvel"</string>
-    <string name="data_usage_disable_mobile" msgid="5669109209055988308">"Pretende desativar os dados móveis?"</string>
+    <string name="data_usage_disable_mobile" msgid="5669109209055988308">"Desativar os dados móveis?"</string>
     <string name="sim_selection_required_pref" msgid="6985901872978341314">"A seleção é necessária"</string>
     <string name="sim_change_data_title" msgid="9142726786345906606">"Pretende alterar o SIM de dados?"</string>
     <string name="sim_change_data_message" msgid="3567358694255933280">"Pretende utilizar o <xliff:g id="NEW_SIM">%1$s</xliff:g> em vez do <xliff:g id="OLD_SIM">%2$s</xliff:g> para os dados móveis?"</string>
@@ -890,10 +890,11 @@
     <string name="radio_info_band_mode_label" msgid="23480556225515290">"Selecionar banda de rádio"</string>
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"Tipo de rede de voz:"</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"Tipo de rede de dados:"</string>
+    <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"Substituir tipo de rede:"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"Selecionar lista telefónica"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"Definir tipo de rede preferido:"</string>
-    <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"Nome de anfitrião de ping (www.google.com) IPv4:"</string>
-    <string name="radio_info_ping_hostname_v6" msgid="2748637889486554603">"Nome de anfitrião de ping (www.google.com) IPv6:"</string>
+    <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"Nome do anfitrião de ping (www.google.com) IPv4:"</string>
+    <string name="radio_info_ping_hostname_v6" msgid="2748637889486554603">"Nome do anfitrião de ping (www.google.com) IPv6:"</string>
     <string name="radio_info_http_client_test" msgid="1329583721088428238">"Teste de Cliente HTTP:"</string>
     <string name="ping_test_label" msgid="448617502935719694">"Executar teste de ping"</string>
     <string name="radio_info_smsc_label" msgid="3749927072726033763">"SMSC:"</string>
@@ -901,10 +902,10 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Atualizar"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"Ativar/desativar verificação de DNS"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"Informações/definições específicas de OEM"</string>
-    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC disponível:"</string>
-    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR restrito:"</string>
-    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR disponível:"</string>
-    <string name="radio_info_nr_state" msgid="1337571996788535356">"Estado NR:"</string>
+    <string name="radio_info_endc_available" msgid="2983767110681230019">"EN-DC disponível (NSA):"</string>
+    <string name="radio_info_dcnr_restricted" msgid="7147511536420148173">"DCNR restrito (NSA):"</string>
+    <string name="radio_info_nr_available" msgid="3383388088451237182">"NR disponível (NSA):"</string>
+    <string name="radio_info_nr_state" msgid="4158805093187555149">"Estado NR (NSA):"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"Frequência NR:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Definir modo de banda de rádio"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"A carregar lista de bandas…"</string>

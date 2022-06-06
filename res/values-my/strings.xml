@@ -631,7 +631,7 @@
     <string name="ota_spc_failure" msgid="904092035241370080">"အလွန်အကျွံ SPC မအောင်မြင်မှုများ"</string>
     <string name="ota_call_end" msgid="8657746378290737034">"နောက်သို့"</string>
     <string name="ota_try_again" msgid="6914781945599998550">"ပြန်ကြိုးစားပါ"</string>
-    <string name="ota_next" msgid="2041016619313475914">"ရှေ့ဆက်သွားရန်"</string>
+    <string name="ota_next" msgid="2041016619313475914">"ရှေ့သို့"</string>
     <string name="ecm_exit_dialog" msgid="4200691880721429078">"EcmExitDialog"</string>
     <string name="phone_entered_ecm_text" msgid="8431238297843035842">"အရေးပေါ်ပြန်လည်ခေါ်ဆိုမှုအား ရိုက်သွင်းပြီး"</string>
     <string name="phone_in_ecm_notification_title" msgid="6825016389926367946">"အရေးပေါ်ပြန်လည်ခေါ်ဆိုမှု"</string>
@@ -890,6 +890,7 @@
     <string name="radio_info_band_mode_label" msgid="23480556225515290">"ရေဒီယိုလိုင်း ရွေးချယ်ပါ"</string>
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"အသံကွန်ရက် အမျိုးအစား −"</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"ဒေတာကွန်ရက် အမျိုးအစား −"</string>
+    <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"အစားထိုး ကွန်ရက်အမျိုးအစား-"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"ဖုန်းအညွှန်း ရွေးရန်"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"ပိုနှစ်သက်သည့် ကွန်ရက်အမျိုးအစားကို သတ်မှတ်ပါ −"</string>
     <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"ပင်ကို လက်ခံဝန်ဆောင်ပေးသူအမည်(www.google.com) မှာ IPv4 -"</string>
@@ -901,10 +902,10 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"ပြန်စရန်"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"DNS စစ်ဆေးမှုခလုတ်ကို နှိပ်ပါ"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"ထုတ်လုပ်သူနှင့် သက်ဆိုင်သော အချက်အလက်/ဆက်တင်များ"</string>
-    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC အသုံးပြုနိုင်သည် -"</string>
-    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR ကန့်သတ်ထားသည် -"</string>
-    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR အသုံးပြုနိုင်သည် -"</string>
-    <string name="radio_info_nr_state" msgid="1337571996788535356">"NR အခြေအနေ -"</string>
+    <string name="radio_info_endc_available" msgid="2983767110681230019">"EN-DC ရနိုင်သည် (NSA)-"</string>
+    <string name="radio_info_dcnr_restricted" msgid="7147511536420148173">"DCNR ကန့်သတ်ထားသည် (NSA)-"</string>
+    <string name="radio_info_nr_available" msgid="3383388088451237182">"NR ရနိုင်သည် (NSA)-"</string>
+    <string name="radio_info_nr_state" msgid="4158805093187555149">"NR အခြေအနေ (NSA)-"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR ကြိမ်နှုန်း -"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"ရေဒီယိုလိုင်းမုဒ်အဖြစ် သတ်မှတ်ပါ"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"ရေဒီယိုလိုင်းစာရင်းကို ဖွင့်နေသည်…"</string>

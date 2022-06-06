@@ -52,7 +52,7 @@
     <string name="label_ndp" msgid="7617392683877410341">"Розбл. PIN-код мережі SIM"</string>
     <string name="label_phoneid" msgid="8775611434123577808">"Заблокована SIM-карта оператора"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"Розблок."</string>
-    <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"Відхилити"</string>
+    <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"Закрити"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"Запитув. розблок. мережі..."</string>
     <string name="unlock_failed" msgid="7103543844840661366">"Не здійсн. запит розблокування мережі"</string>
     <string name="unlock_success" msgid="32681089371067565">"Мережу успішно розблоковано."</string>
@@ -643,7 +643,7 @@
     <string name="progress_dialog_exiting_ecm" msgid="9159080081676927217">"Вихід із режиму екстреного зворотного виклику"</string>
     <string name="alert_dialog_yes" msgid="3532525979632841417">"Так"</string>
     <string name="alert_dialog_no" msgid="1075632654085988420">"Ні"</string>
-    <string name="alert_dialog_dismiss" msgid="1336356286354517054">"Відхилити"</string>
+    <string name="alert_dialog_dismiss" msgid="1336356286354517054">"Закрити"</string>
     <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"Телефон перебуває в режимі екстреного зворотного виклику"</string>
     <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"До <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
     <!-- format error in translation for alert_dialog_exit_ecm_without_data_restriction_hint (7549850847524907932) -->
@@ -890,6 +890,7 @@
     <string name="radio_info_band_mode_label" msgid="23480556225515290">"Виберіть радіодіапазон"</string>
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"Тип мережі голосових дзвінків:"</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"Тип мережі передавання даних:"</string>
+    <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"Перевизначити тип мережі:"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"Виберіть телефонний код"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"Установити потрібний тип мережі:"</string>
     <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"Надіслати запит ping на ім\'я хосту (www.google.com) через IPv4:"</string>
@@ -901,10 +902,10 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Оновити"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"Увімк./вимк. перевірку DNS"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"Інформація/налаштування OEM"</string>
-    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC доступно:"</string>
-    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR обмежено:"</string>
-    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR доступно:"</string>
-    <string name="radio_info_nr_state" msgid="1337571996788535356">"Статус NR:"</string>
+    <string name="radio_info_endc_available" msgid="2983767110681230019">"З доступом EN-DC (NSA):"</string>
+    <string name="radio_info_dcnr_restricted" msgid="7147511536420148173">"З обмеженням DCNR (NSA):"</string>
+    <string name="radio_info_nr_available" msgid="3383388088451237182">"З доступом NR (NSA):"</string>
+    <string name="radio_info_nr_state" msgid="4158805093187555149">"Статус NR (NSA):"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"Частота NR:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Установити режим радіодіапазону"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Завантаження списку діапазонів частот…"</string>

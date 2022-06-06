@@ -127,7 +127,7 @@
     <string name="registration_cf_forbidden" msgid="4386482610771190420">"तपाईंको सेवा प्रदायकले कल फर्वार्ड गर्ने सुविधा उपलब्ध गराउँदैन।"</string>
     <string name="cdma_call_waiting" msgid="4565070960879673216">"कल प्रतीक्षाको सुविधा सक्रिय गर्ने हो?"</string>
     <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"कल हुँदै गर्दा, तपाईंलाई आगमन कलबारे जानकारी दिइने छ"</string>
-    <string name="enable_cdma_cw" msgid="811047045863422232">"सक्रिय गर्नुहोस्"</string>
+    <string name="enable_cdma_cw" msgid="811047045863422232">"अन गर्नुहोस्"</string>
     <string name="disable_cdma_cw" msgid="7119290446496301734">"रद्द गर्नुहोस्"</string>
     <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"IMS अन्तर्गत CDMA कल प्रतीक्षाको सुविधा सक्रिय छ"</string>
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"IMS अन्तर्गत CDMA कल प्रतीक्षाको सुविधा निष्क्रिय छ"</string>
@@ -612,7 +612,7 @@
   </string-array>
     <string name="network_info_message" msgid="7599413947016532355">"सञ्जाल सन्देश"</string>
     <string name="network_error_message" msgid="4271579424089326618">"त्रुटिसम्बन्धी सन्देश"</string>
-    <string name="ota_title_activate" msgid="4049645324841263423">"तपाईंको फोन सक्रिय गर्नुहोस्"</string>
+    <string name="ota_title_activate" msgid="4049645324841263423">"तपाईंको फोन अन गर्नुहोस्"</string>
     <string name="ota_touch_activate" msgid="838764494319694754">"विशेष कललाई तपाईंको फोन सेवा सक्रिय गर्न जरुरी हुन्छ। \n \n \"सक्रिय\" थिचेर तपाईंको फोन  सक्रिय गर्न दिएका निर्देशनहरू सुन्नुहोस्।"</string>
     <string name="ota_hfa_activation_title" msgid="3300556778212729671">"सक्रिय गर्दै…"</string>
     <string name="ota_hfa_activation_dialog_message" msgid="7921718445773342996">"फोनले तपाईँको मोबाइल डेटा सेवा सक्रिय पार्दै छ। \n\nयसले ५ मिनेटसम्म समय लिन सक्छ।"</string>
@@ -890,6 +890,7 @@
     <string name="radio_info_band_mode_label" msgid="23480556225515290">"रेडियोको ब्यान्ड चयन गर्नुहोस्"</string>
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"Voice नेटवर्कको प्रकार:"</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"डेटा नेटवर्कको प्रकार:"</string>
+    <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"ओभरराइड नेटवर्कको प्रकार:"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"फोनको सूचक चयन गर्नुहोस्"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"रुचाइएको नेटवर्कको प्रकार सेट गर्नुहोस्:"</string>
     <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"होस्टनाम (www.google.com) IPv4 मा पिङ गर्नुहोस्:"</string>
@@ -901,10 +902,10 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"पुनः ताजा गर्नुहोस्"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"DNS को जाँचलाई टगल गर्नुहोस्"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"OEM-विशिष्ट जानकारी/सेटिङ"</string>
-    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC उपलब्ध छ:"</string>
-    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR प्रतिबन्धित छ:"</string>
-    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR उपलब्ध छ:"</string>
-    <string name="radio_info_nr_state" msgid="1337571996788535356">"NR को स्थिती:"</string>
+    <string name="radio_info_endc_available" msgid="2983767110681230019">"EN-DC उपलब्ध छ (NSA):"</string>
+    <string name="radio_info_dcnr_restricted" msgid="7147511536420148173">"DCNR प्रतिबन्धित छ (NSA):"</string>
+    <string name="radio_info_nr_available" msgid="3383388088451237182">"NR उपलब्ध छ (NSA):"</string>
+    <string name="radio_info_nr_state" msgid="4158805093187555149">"NR को स्थिति (NSA):"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR फ्रिक्वेन्सी:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"रेडियोको ब्यान्डसम्बन्धी मोडलाई सेट गर्नुहोस्"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"ब्यान्डको सूची लोड गर्दै…"</string>

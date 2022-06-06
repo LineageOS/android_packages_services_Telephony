@@ -558,7 +558,7 @@
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"Zet bellen via wifi aan om te bellen."</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"Noodinformatie"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"Eigenaar"</string>
-    <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"Tik nogmaals om informatie weer te geven"</string>
+    <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"Tik nogmaals om informatie te bekijken"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="2667568200755388829">"Noodoproep"</string>
     <string name="single_emergency_number_title" msgid="8413371079579067196">"Alarmnummer"</string>
     <string name="numerous_emergency_numbers_title" msgid="8972398932506755510">"Alarmnummers"</string>
@@ -890,6 +890,7 @@
     <string name="radio_info_band_mode_label" msgid="23480556225515290">"Radioband selecteren"</string>
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"Type spraaknetwerk:"</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"Type gegevensnetwerk:"</string>
+    <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"Netwerktype overschrijven:"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"Telefoonindex selecteren"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"Voorkeursnetwerktype instellen:"</string>
     <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"IPv4 van hostnaam (www.google.com) pingen:"</string>
@@ -901,10 +902,10 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Vernieuwen"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"DNS-controle aan-/uitzetten"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"OEM-specifieke gegevens/instellingen"</string>
-    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC beschikbaar:"</string>
-    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR beperkt:"</string>
-    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR beschikbaar:"</string>
-    <string name="radio_info_nr_state" msgid="1337571996788535356">"NR-status:"</string>
+    <string name="radio_info_endc_available" msgid="2983767110681230019">"EN-DC beschikbaar (NSA):"</string>
+    <string name="radio_info_dcnr_restricted" msgid="7147511536420148173">"DCNR beperkt (NSA):"</string>
+    <string name="radio_info_nr_available" msgid="3383388088451237182">"NR beschikbaar (NSA):"</string>
+    <string name="radio_info_nr_state" msgid="4158805093187555149">"NR-status (NSA):"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR-frequentie:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Modus voor radioband instellen"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Bandlijst laden…"</string>

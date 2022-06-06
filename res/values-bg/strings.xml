@@ -890,6 +890,7 @@
     <string name="radio_info_band_mode_label" msgid="23480556225515290">"Избиране на радиодиапазон"</string>
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"Тип на гласовата мрежа:"</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"Тип на мрежата за данни:"</string>
+    <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"Замяна на типа на мрежата:"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"Избиране на индекс за телефон"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"Задаване на предпочитан тип мрежа:"</string>
     <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"Име на хост за позив (www.google.com) IPv4:"</string>
@@ -901,10 +902,10 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Опресняване"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"Превключване на проверката на DNS"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"Информация/настройки, специфични за ОЕМ"</string>
-    <string name="radio_info_endc_available" msgid="4410653375290113436">"Налично EN-DC:"</string>
-    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"Ограничено DCNR:"</string>
-    <string name="radio_info_nr_available" msgid="1321318331361249997">"Налично NR:"</string>
-    <string name="radio_info_nr_state" msgid="1337571996788535356">"Състояние на NR:"</string>
+    <string name="radio_info_endc_available" msgid="2983767110681230019">"EN-DC е налице (NSA):"</string>
+    <string name="radio_info_dcnr_restricted" msgid="7147511536420148173">"DCNR е ограничено (NSA):"</string>
+    <string name="radio_info_nr_available" msgid="3383388088451237182">"NR е налице (NSA):"</string>
+    <string name="radio_info_nr_state" msgid="4158805093187555149">"Състояние на NR (NSA):"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"Честота за NR:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Задаване на режима за радиодиапазона"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Списъкът с диапазони се зарежда…"</string>

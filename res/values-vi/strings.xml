@@ -890,6 +890,7 @@
     <string name="radio_info_band_mode_label" msgid="23480556225515290">"Chọn dải tần số"</string>
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"Loại mạng thoại:"</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"Loại mạng dữ liệu:"</string>
+    <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"Ghi đè loại mạng:"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"Chọn chỉ mục điện thoại"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"Đặt loại mạng ưu tiên:"</string>
     <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"Tên máy chủ Ping (www.google.com) IPv4:"</string>
@@ -901,10 +902,10 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Làm mới"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"Bật/tắt chế độ kiểm tra DNS"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"Thông tin/Cài đặt dành riêng cho OEM"</string>
-    <string name="radio_info_endc_available" msgid="4410653375290113436">"Hỗ trợ EN-DC:"</string>
-    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"Hạn chế DCNR:"</string>
-    <string name="radio_info_nr_available" msgid="1321318331361249997">"Hỗ trợ NR:"</string>
-    <string name="radio_info_nr_state" msgid="1337571996788535356">"Trạng thái NR:"</string>
+    <string name="radio_info_endc_available" msgid="2983767110681230019">"Hỗ trợ EN-DC (NSA):"</string>
+    <string name="radio_info_dcnr_restricted" msgid="7147511536420148173">"Hạn chế DCNR (NSA):"</string>
+    <string name="radio_info_nr_available" msgid="3383388088451237182">"Hỗ trợ NR (NSA):"</string>
+    <string name="radio_info_nr_state" msgid="4158805093187555149">"Trạng thái NR (NSA):"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"Tần số NR:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Đặt chế độ dải tần số"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Đang tải danh sách băng tần…"</string>
