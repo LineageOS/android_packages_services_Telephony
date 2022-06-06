@@ -631,7 +631,7 @@
     <string name="ota_spc_failure" msgid="904092035241370080">"DËSHTIME TË SHUMTA SPC"</string>
     <string name="ota_call_end" msgid="8657746378290737034">"Prapa"</string>
     <string name="ota_try_again" msgid="6914781945599998550">"Provo sërish"</string>
-    <string name="ota_next" msgid="2041016619313475914">"Përpara"</string>
+    <string name="ota_next" msgid="2041016619313475914">"Para"</string>
     <string name="ecm_exit_dialog" msgid="4200691880721429078">"EcmExitDialog"</string>
     <string name="phone_entered_ecm_text" msgid="8431238297843035842">"Hyri në modalitetin e \"Kthimit të telefonatës së urgjencës\""</string>
     <string name="phone_in_ecm_notification_title" msgid="6825016389926367946">"Modaliteti i \"Kthimit të telefonatës së urgjencës\""</string>
@@ -890,6 +890,7 @@
     <string name="radio_info_band_mode_label" msgid="23480556225515290">"Përzgjidh brezin e radios"</string>
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"Lloji i rrjetit të zërit:"</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"Lloji i rrjetit të të dhënave:"</string>
+    <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"Anulo llojin e rrjetit:"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"Zgjidh indeksin e telefonit"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"Cakto llojin e preferuar të rrjetit:"</string>
     <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"Verifiko emrin e pritësit (www.google.com) IPv4:"</string>
@@ -901,10 +902,10 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Rifresko"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"Ndrysho kontrollin e DNS-së"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"Informacion/cilësime specifike për OEM"</string>
-    <string name="radio_info_endc_available" msgid="4410653375290113436">"Ofrohet EN-DC:"</string>
-    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR me kufizime:"</string>
-    <string name="radio_info_nr_available" msgid="1321318331361249997">"Ofrohet NR:"</string>
-    <string name="radio_info_nr_state" msgid="1337571996788535356">"Gjendja e NR-së:"</string>
+    <string name="radio_info_endc_available" msgid="2983767110681230019">"EN-DC në dispozicion (NSA):"</string>
+    <string name="radio_info_dcnr_restricted" msgid="7147511536420148173">"DCNR me kufizime (NSA):"</string>
+    <string name="radio_info_nr_available" msgid="3383388088451237182">"NR në dispozicion (NSA):"</string>
+    <string name="radio_info_nr_state" msgid="4158805093187555149">"Gjendja e NR-së (NSA):"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"Frekuenca e NR-së:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Cakto modalitetin e brezit të radios"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Po ngarkon listën e brezave…"</string>

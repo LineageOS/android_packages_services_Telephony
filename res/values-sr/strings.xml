@@ -305,7 +305,7 @@
     <string name="carrier_settings_euicc_summary" msgid="2027941166597330117">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> – <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="7228249980933944101">"Мобилни подаци"</string>
     <string name="mobile_data_settings_summary" msgid="5012570152029118471">"Користи податке преко мобилне мреже"</string>
-    <string name="data_usage_disable_mobile" msgid="5669109209055988308">"Желите ли да искључите мобилне податке?"</string>
+    <string name="data_usage_disable_mobile" msgid="5669109209055988308">"Желите да искључите мобилне податке?"</string>
     <string name="sim_selection_required_pref" msgid="6985901872978341314">"Потребно је да изаберете нешто"</string>
     <string name="sim_change_data_title" msgid="9142726786345906606">"Да променимо SIM за податке?"</string>
     <string name="sim_change_data_message" msgid="3567358694255933280">"Желите ли да за мобилне податке користите <xliff:g id="NEW_SIM">%1$s</xliff:g> уместо <xliff:g id="OLD_SIM">%2$s</xliff:g>?"</string>
@@ -858,7 +858,7 @@
     <string name="radioInfo_phone_offhook" msgid="7564601639749936170">"Позив је у току"</string>
     <string name="radioInfo_data_disconnected" msgid="8085447971880814541">"Веза је прекинута"</string>
     <string name="radioInfo_data_connecting" msgid="925092271092152472">"Повезује се"</string>
-    <string name="radioInfo_data_connected" msgid="7637335645634239508">"Повезано је"</string>
+    <string name="radioInfo_data_connected" msgid="7637335645634239508">"Повезано"</string>
     <string name="radioInfo_data_suspended" msgid="8695262782642002785">"Суспендовано"</string>
     <string name="radioInfo_unknown" msgid="5401423738500672850">"Непознато"</string>
     <string name="radioInfo_display_packets" msgid="6794302192441084157">"пак."</string>
@@ -890,6 +890,7 @@
     <string name="radio_info_band_mode_label" msgid="23480556225515290">"Изаберите радијски опсег"</string>
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"Тип гласовне мреже:"</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"Тип мреже за пренос података:"</string>
+    <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"Замени тип мреже:"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"Изаберите индекс телефона"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"Подесите жељени тип мреже:"</string>
     <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"IPv4 имена хоста за пинговање (www.google.com):"</string>
@@ -901,10 +902,10 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Освежи"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"Укључи/искључи проверу DNS-а"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"Информације/подешавања специфична за произвођача оригиналне опреме"</string>
-    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC доступно:"</string>
-    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR ограничено:"</string>
-    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR доступно:"</string>
-    <string name="radio_info_nr_state" msgid="1337571996788535356">"NR стање:"</string>
+    <string name="radio_info_endc_available" msgid="2983767110681230019">"EN-DC доступно (NSA):"</string>
+    <string name="radio_info_dcnr_restricted" msgid="7147511536420148173">"DCNR ограничено (NSA):"</string>
+    <string name="radio_info_nr_available" msgid="3383388088451237182">"NR доступно (NSA):"</string>
+    <string name="radio_info_nr_state" msgid="4158805093187555149">"NR стање (NSA):"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR учесталост:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Подесите режим радијског опсега"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Учитава се листа опсега…"</string>

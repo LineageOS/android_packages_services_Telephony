@@ -115,7 +115,7 @@
     <string name="sum_cfb_disabled" msgid="3589913334164866035">"Desactivado"</string>
     <string name="disable_cfb_forbidden" msgid="4831494744351633961">"Tu proveedor no admite la inhabilitación del desvío de llamadas cuando tu teléfono está ocupado."</string>
     <string name="labelCFNRy" msgid="3403533792248457946">"Cuando no haya respuesta"</string>
-    <string name="messageCFNRy" msgid="7644434155765359009">"Número cuando no contesta"</string>
+    <string name="messageCFNRy" msgid="7644434155765359009">"Número cuando no hay respuesta"</string>
     <string name="sum_cfnry_enabled" msgid="3000500837493854799">"Reenviar a <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnry_disabled" msgid="1990563512406017880">"Desactivado"</string>
     <string name="disable_cfnry_forbidden" msgid="3174731413216550689">"Tu proveedor no admite la inhabilitación del desvío de llamadas cuando tu teléfono no responde."</string>
@@ -890,6 +890,7 @@
     <string name="radio_info_band_mode_label" msgid="23480556225515290">"Seleccionar banda de radio"</string>
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"Tipo de red de voz:"</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"Tipo de red de datos:"</string>
+    <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"Anular tipo de red:"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"Seleccionar guía telefónica"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"Establecer el tipo de red preferida:"</string>
     <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"Hacer ping a IPv4 de nombre de host (www.google.com):"</string>
@@ -901,10 +902,10 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Actualizar"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"Activar o desactivar la comprobación de DNS"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"Configuración/Datos específicos del OEM"</string>
-    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC disponible:"</string>
-    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR restringida:"</string>
-    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR disponible:"</string>
-    <string name="radio_info_nr_state" msgid="1337571996788535356">"Estado de NR:"</string>
+    <string name="radio_info_endc_available" msgid="2983767110681230019">"EN-DC disponible (NSA):"</string>
+    <string name="radio_info_dcnr_restricted" msgid="7147511536420148173">"DCNR restringido (NSA):"</string>
+    <string name="radio_info_nr_available" msgid="3383388088451237182">"NR disponible (NSA):"</string>
+    <string name="radio_info_nr_state" msgid="4158805093187555149">"Estado de NR (NSA):"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"Frecuencia de NR:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Establecer modo de banda de radio"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Cargando lista de bandas…"</string>

@@ -890,6 +890,7 @@
     <string name="radio_info_band_mode_label" msgid="23480556225515290">"Pumili ng Band ng Radyo"</string>
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"Uri ng Voice Network:"</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"Uri ng Data Network:"</string>
+    <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"I-override ang Network Type:"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"Pumili ng index ng telepono"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"Itakda ang Uri ng Gustong Network:"</string>
     <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"I-ping ang Hostname(www.google.com) IPv4:"</string>
@@ -901,10 +902,10 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"I-refresh"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"I-toggle ang DNS Check"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"Impormasyon/Mga Setting na partikular sa OEM"</string>
-    <string name="radio_info_endc_available" msgid="4410653375290113436">"Available ang EN-DC:"</string>
-    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"Pinaghihigpitan ang DCNR:"</string>
-    <string name="radio_info_nr_available" msgid="1321318331361249997">"Available ang NR:"</string>
-    <string name="radio_info_nr_state" msgid="1337571996788535356">"Status ng NR:"</string>
+    <string name="radio_info_endc_available" msgid="2983767110681230019">"Available ang EN-DC (NSA):"</string>
+    <string name="radio_info_dcnr_restricted" msgid="7147511536420148173">"Pinaghihigpitang DCNR (NSA):"</string>
+    <string name="radio_info_nr_available" msgid="3383388088451237182">"Available ang NR (NSA):"</string>
+    <string name="radio_info_nr_state" msgid="4158805093187555149">"Status ng NR (NSA):"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"Frequency ng NR:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"Itakda ang Band Mode ng Radyo"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"Nilo-load ang Listahan ng Band…"</string>

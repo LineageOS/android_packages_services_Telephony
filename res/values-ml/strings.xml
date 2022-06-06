@@ -890,6 +890,7 @@
     <string name="radio_info_band_mode_label" msgid="23480556225515290">"റേഡിയോ ബാൻഡ് തിരഞ്ഞെടുക്കുക"</string>
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"വോയ്സ് നെറ്റ്‌വർക്ക് തരം:"</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"ഡാറ്റ നെറ്റ്‌വർക്ക് തരം:"</string>
+    <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"അസാധുവാക്കൽ നെറ്റ്‌വർക്ക് തരം:"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"ഫോൺ സൂചിക തിരഞ്ഞെടുക്കുക"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"തിരഞ്ഞെടുത്ത നെറ്റ്‌വർക്ക് തരം സജ്ജീകരിക്കുക:"</string>
     <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"ഹോസ്റ്റുനാമം(www.google.com) IPv4 പിംഗ് ചെയ്യുക:"</string>
@@ -898,13 +899,13 @@
     <string name="ping_test_label" msgid="448617502935719694">"പിംഗ് പരിശോധന റൺ ചെയ്യുക"</string>
     <string name="radio_info_smsc_label" msgid="3749927072726033763">"SMSC:"</string>
     <string name="radio_info_smsc_update_label" msgid="5141996256097115753">"അപ്ഡേറ്റ് ചെയ്യുക"</string>
-    <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"പുതുക്കിയെടുക്കുക"</string>
+    <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"റീഫ്രഷ് ചെയ്യുക"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"DNS പരിശോധന മാറ്റുക"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"OEM-നിർദ്ദിഷ്‌ട വിവരം/ക്രമീകരണം"</string>
-    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC ലഭ്യം:"</string>
-    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR നിയന്ത്രിച്ചിരിക്കുന്നു:"</string>
-    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR ലഭ്യം:"</string>
-    <string name="radio_info_nr_state" msgid="1337571996788535356">"NR നില:"</string>
+    <string name="radio_info_endc_available" msgid="2983767110681230019">"EN-DC ലഭ്യമാണ് (NSA):"</string>
+    <string name="radio_info_dcnr_restricted" msgid="7147511536420148173">"DCNR നിയന്ത്രിച്ചിരിക്കുന്നു (NSA):"</string>
+    <string name="radio_info_nr_available" msgid="3383388088451237182">"NR ലഭ്യമാണ് (NSA):"</string>
+    <string name="radio_info_nr_state" msgid="4158805093187555149">"NR നില (NSA):"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR ഫ്രീക്വൻസി:"</string>
     <string name="band_mode_title" msgid="7988822920724576842">"റേഡിയോ ബാൻഡ് മോഡ് സജ്ജീകരിക്കുക"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"ബാൻഡ് ലിസ്‌റ്റ് ലോഡ് ചെയ്യുന്നു…"</string>

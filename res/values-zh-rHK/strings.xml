@@ -890,6 +890,7 @@
     <string name="radio_info_band_mode_label" msgid="23480556225515290">"選擇無線電波段"</string>
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"語音網絡類型："</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"數據網絡類型："</string>
+    <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"覆寫網絡類型："</string>
     <string name="phone_index_label" msgid="6222406512768964268">"選取手機索引"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"設定偏好的網絡類型："</string>
     <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"連線偵測主機名稱 (www.google.com) IPv4："</string>
@@ -901,10 +902,10 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"重新整理"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"切換 DNS 檢查"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"OEM 專用資訊/設定"</string>
-    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC 可用："</string>
-    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR 受限："</string>
-    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR 可用："</string>
-    <string name="radio_info_nr_state" msgid="1337571996788535356">"NR 狀態："</string>
+    <string name="radio_info_endc_available" msgid="2983767110681230019">"EN-DC 可用 (NSA)："</string>
+    <string name="radio_info_dcnr_restricted" msgid="7147511536420148173">"DCNR 受限 (NSA)："</string>
+    <string name="radio_info_nr_available" msgid="3383388088451237182">"NR 可用 (NSA)："</string>
+    <string name="radio_info_nr_state" msgid="4158805093187555149">"NR 狀態 (NSA)："</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR 頻率："</string>
     <string name="band_mode_title" msgid="7988822920724576842">"設定無線電頻段模式"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"正在載入頻段清單…"</string>
