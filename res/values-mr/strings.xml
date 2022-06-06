@@ -48,7 +48,7 @@
     <string name="no_vm_number_msg" msgid="5165161462411372504">"सिम कार्डवर कोणताही व्हॉइसमेल नंबर स्टोअर केला नाही."</string>
     <string name="add_vm_number_str" msgid="7368168964435881637">"नंबर जोडा"</string>
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"केवळ प्राथमिक वापरकर्ता व्हॉइसमेल सेटिंग्ज बदलू शकतो."</string>
-    <string name="puk_unlocked" msgid="4627340655215746511">"तुमचे सिम कार्ड अवरोधित करणे रद्द केले गेले आहे. तुमचा फोन अनलॉक होत आहे…"</string>
+    <string name="puk_unlocked" msgid="4627340655215746511">"तुमचे सिम कार्ड ब्लॉक करणे रद्द केले गेले आहे. तुमचा फोन अनलॉक होत आहे…"</string>
     <string name="label_ndp" msgid="7617392683877410341">"सिम नेटवर्क अनलॉक पिन"</string>
     <string name="label_phoneid" msgid="8775611434123577808">"ऑपरेटरसाठी सिम लॉक केले आहे"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"अनलॉक करा"</string>
@@ -499,7 +499,7 @@
     <string name="disable_pin_ok" msgid="888505244389647754">"पिन साफ केला"</string>
     <string name="pin_failed" msgid="4527347792881939652">"पिन चुकीचा आहे"</string>
     <string name="pin_changed" msgid="7291153750090452808">"पिन अपडेट केला"</string>
-    <string name="puk_requested" msgid="2061337960609806851">"पासवर्ड चुकीचा आहे. पिन आता अवरोधित केला. PUK ची विनंती केली."</string>
+    <string name="puk_requested" msgid="2061337960609806851">"पासवर्ड चुकीचा आहे. पिन आता ब्लॉक केला. PUK ची विनंती केली."</string>
     <string name="enter_pin2_text" msgid="7266379426804295979">"PIN2"</string>
     <string name="oldPin2Label" msgid="4648543187859997203">"जुना PIN2"</string>
     <string name="newPin2Label" msgid="1840905981784453939">"नवीन PIN2"</string>
@@ -511,19 +511,19 @@
     <string name="invalidPuk2" msgid="713729511903849544">"8 अंक असलेला एक PUK2 प्रविष्‍ट करा."</string>
     <string name="pin2_changed" msgid="5710551850481287821">"पिन2 अपडेट केला"</string>
     <string name="label_puk2_code" msgid="2852217004288085562">"PUK2 कोड प्रविष्‍ट करा"</string>
-    <string name="fdn_enable_puk2_requested" msgid="5793652792131588041">"पासवर्ड चुकीचा आहे. पिन2 आता अवरोधित केला. पुन्हा प्रयत्न करण्‍यासाठी, पिन 2 बदला."</string>
+    <string name="fdn_enable_puk2_requested" msgid="5793652792131588041">"पासवर्ड चुकीचा आहे. पिन2 आता ब्लॉक केला. पुन्हा प्रयत्न करण्‍यासाठी, पिन 2 बदला."</string>
     <string name="puk2_requested" msgid="6992374450720307514">"पासवर्ड चुकीचा आहे. सिम आता लॉक केले आहे. PUK2 प्रविष्‍ट करा."</string>
-    <string name="puk2_blocked" msgid="3131139031779319911">"PUK2 कायमचे अवरोधित केले आहे."</string>
+    <string name="puk2_blocked" msgid="3131139031779319911">"PUK2 कायमचे ब्लॉक केले आहे."</string>
     <string name="pin2_attempts" msgid="5625178102026453023">\n"आपल्‍याकडे <xliff:g id="NUMBER">%d</xliff:g> शिल्लक प्रयत्न आहेत."</string>
     <string name="puk2_locked" msgid="6497760825455461057">"PUK2 द्वारे लॉक केले आहे. ते अनलॉक करण्यासाठी सेवा पुरवठादाराशी संपर्क साधा."</string>
-    <string name="pin2_unblocked" msgid="4481107908727789303">"पिन2 अवरोधित केला नाही"</string>
+    <string name="pin2_unblocked" msgid="4481107908727789303">"पिन2 ब्लॉक केला नाही"</string>
     <string name="pin2_error_exception" msgid="8116103864600823641">"नेटवर्क किंवा सिम कार्ड एरर"</string>
     <string name="doneButton" msgid="7371209609238460207">"पूर्ण झाले"</string>
     <string name="voicemail_settings_number_label" msgid="1265118640154688162">"व्हॉइसमेल नंबर"</string>
     <string name="card_title_dialing" msgid="8742182654254431781">"डायल करत आहे"</string>
     <string name="card_title_redialing" msgid="18130232613559964">"रीडायल करत आहे"</string>
     <string name="card_title_conf_call" msgid="901197309274457427">"कॉंफरन्स कॉल"</string>
-    <string name="card_title_incoming_call" msgid="881424648458792430">"येणारे कॉल"</string>
+    <string name="card_title_incoming_call" msgid="881424648458792430">"इनकमिंग कॉल"</string>
     <string name="card_title_call_ended" msgid="650223980095026340">"कॉल संपला"</string>
     <string name="card_title_on_hold" msgid="9028319436626975207">"होल्ड वर"</string>
     <string name="card_title_hanging_up" msgid="814874106866647871">"हँग अप करणेे"</string>
@@ -537,6 +537,7 @@
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"कॉल करण्‍यासाठी मोबाइल नेटवर्क सुरू करा, विमान मोड बंद करा किंवा बॅटरी बचकर्ता मोड बंद करा."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"कॉल करण्‍यासाठी विमान मोड बंद करा."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"कॉल करण्‍यासाठी विमान मोड बंद करा किंवा वायरलेस नेटवर्कशी कनेक्‍ट करा."</string>
+    <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"फोन खूप गरम झाला आहे"</b>\n\n"हा कॉल पूर्ण करू शकत नाही. तुमचा फोन थंड झाल्यावर पुन्हा प्रयत्न करा.\n\nतुम्ही अजूनही आणीबाणी कॉल करू शकता."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"आणीबाणी नसलेला कॉल करण्‍यासाठी आणीबाणी कॉलबॅक मोडमधून बाहेर पडा."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"नेटवर्कवर नोंदणीकृत नाही."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"मोबाइल नेटवर्क उपलब्ध नाही."</string>
@@ -636,14 +637,8 @@
     <string name="phone_in_ecm_notification_title" msgid="6825016389926367946">"आणीबाणी कॉलबॅक मोड"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="653972232922670335">"डेटा कनेक्शन अक्षम केले"</string>
     <string name="phone_in_ecm_notification_complete_time" msgid="7341624337163082759">"<xliff:g id="COMPLETETIME">%s</xliff:g> पर्यंत कोणतेही डेटा कनेक्‍शन नाही"</string>
-    <plurals name="alert_dialog_exit_ecm" formatted="false" msgid="5425906903766466743">
-      <item quantity="other">फोन <xliff:g id="COUNT_1">%s</xliff:g> मिनिटांसाठी आणीबाणी कॉलबॅक मोडमध्ये राहील. या मोडमध्ये असताना डेटा कनेक्शन वापरणारे कोणतेही अ‍ॅप्लिकेशन वापरले जाऊ शकत नाहीत. तुम्ही आता बाहेर पडू इच्छिता?</item>
-      <item quantity="one">फोन <xliff:g id="COUNT_0">%s</xliff:g> मिनिटासाठी आणीबाणी कॉलबॅक मोडमध्ये राहील. या मोडमध्ये असताना डेटा कनेक्शन वापरणारे कोणतेही अ‍ॅप वापरले जाऊ शकत नाहीत. तुम्ही आता बाहेर पडू इच्छिता?</item>
-    </plurals>
-    <plurals name="alert_dialog_not_avaialble_in_ecm" formatted="false" msgid="1152682528741457004">
-      <item quantity="other">आणीबाणी कॉलबॅक मोडमध्ये असताना निवडलेली क्रिया उपलब्ध नसते. फोन <xliff:g id="COUNT_1">%s</xliff:g> मिनिटांसाठी या मोडमध्ये राहील. तुम्ही आता बाहेर पडू इच्छिता?</item>
-      <item quantity="one">आणीबाणी कॉलबॅक मोडमध्ये असताना निवडलेली क्रिया उपलब्ध नसते. फोन <xliff:g id="COUNT_0">%s</xliff:g> मिनिटासाठी या मोडमध्ये राहील. तुम्ही आता बाहेर पडू इच्छिता?</item>
-    </plurals>
+    <string name="alert_dialog_exit_ecm" msgid="7661603870224398025">"{count,plural, =1{फोन एका मिनिटासाठी आणीबाणी कॉलबॅक मोडमध्‍ये राहील. या मोडमध्‍ये असताना डेटा कनेक्‍शन वापरणारी कोणतीही अ‍ॅप्‍स वापरली जाऊ शकत नाहीत. तुम्हाला आता बाहेर पडायचे आहे का?}other{फोन %s मिनिटांसाठी आणीबाणी कॉलबॅक मोडमध्‍ये राहील. या मोडमध्‍ये असताना डेटा कनेक्‍शन वापरणारी कोणतीही अ‍ॅप्‍स वापरली जाऊ शकत नाहीत. तुम्हाला आता बाहेर पडायचे आहे का?}}"</string>
+    <string name="alert_dialog_not_avaialble_in_ecm" msgid="8717711120099503279">"{count,plural, =1{आणीबाणी कॉलबॅक मोडमध्‍ये असताना निवडलेली कृती उपलब्‍ध नाही. फोन एका मिनिटासाठी या मोडमध्‍ये राहील. तुम्हाला आता बाहेर पडायचे आहे का?}other{आणीबाणी कॉलबॅक मोडमध्‍ये असताना निवडलेली कृती उपलब्‍ध नाही. फोन %s मिनिटांसाठी या मोडमध्‍ये राहील. तुम्हाला आता बाहेर पडायचे आहे का?}}"</string>
     <string name="alert_dialog_in_ecm_call" msgid="1207545603149771978">"आणीबाणीच्‍या कॉलमध्‍ये असताना निवडलेली क्रिया उपलब्‍ध नसते."</string>
     <string name="progress_dialog_exiting_ecm" msgid="9159080081676927217">"आणीबाणी कॉलबॅक मोडमधून बाहेर पडत आहे"</string>
     <string name="alert_dialog_yes" msgid="3532525979632841417">"होय"</string>
@@ -651,10 +646,7 @@
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"डिसमिस करा"</string>
     <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"फोन आणीबाणी कॉलबॅक मोडमध्ये आहे"</string>
     <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"<xliff:g id="COMPLETETIME">%s</xliff:g> पर्यंत"</string>
-    <plurals name="alert_dialog_exit_ecm_without_data_restriction_hint" formatted="false" msgid="6477733043040328640">
-      <item quantity="other">फोन <xliff:g id="COUNT_1">%s</xliff:g> मिनिटे आणीबाणी कॉलबॅक मोडमध्ये राहील.\nतुम्हाला आता बाहेर पडायचे आहे का?</item>
-      <item quantity="one">फोन <xliff:g id="COUNT_0">%s</xliff:g> मिनिट आणीबाणी कॉलबॅक मोडमध्ये राहील.\nतुम्हाला आता बाहेर पडायचे आहे का?</item>
-    </plurals>
+    <string name="alert_dialog_exit_ecm_without_data_restriction_hint" msgid="7549850847524907932">"{count,plural, =1{फोन एका मिनिटासाठी आणीबाणी कॉलबॅक मोडमध्ये राहील.\nतुम्हाला आता बाहेर पडायचे आहे का?}other{फोन %s मिनिटांसाठी आणीबाणी कॉलबॅक मोडमध्ये राहील.\nतुम्हाला आता बाहेर पडायचे आहे का?}}"</string>
     <string name="voicemail_provider" msgid="4158806657253745294">"सेवा"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"सेटअप"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;सेट नाही&gt;"</string>
@@ -784,8 +776,8 @@
     <string name="call_barring_baoicr_enabled" msgid="1615324165512798478">"जाणारे इंटरनॅशनल रोमिंग ब्लॉक करणे बंद करायचे का?"</string>
     <string name="call_barring_baoicr_disabled" msgid="172010175248142831">"जाणारे इंटरनॅशनल रोमिंग ब्लॉक करायचे का?"</string>
     <string name="call_barring_baic" msgid="7941393541678658566">"सर्व येणारे"</string>
-    <string name="call_barring_baic_enabled" msgid="4357332358020337470">"सर्व येणारे कॉल ब्लॉक करणे बंद करायचे का?"</string>
-    <string name="call_barring_baic_disabled" msgid="2355945245938240958">"सर्व येणारे कॉल ब्लॉक करायचे का?"</string>
+    <string name="call_barring_baic_enabled" msgid="4357332358020337470">"सर्व इनकमिंग कॉल ब्लॉक करणे बंद करायचे का?"</string>
+    <string name="call_barring_baic_disabled" msgid="2355945245938240958">"सर्व इनकमिंग कॉल ब्लॉक करायचे का?"</string>
     <string name="call_barring_baicr" msgid="8712249337313034226">"येणारे इंटरनॅशनल रोमिंग"</string>
     <string name="call_barring_baicr_enabled" msgid="64774270234828175">"सर्व येणारे इंटरनॅशनल रोमिंग ब्लॉक करणे बंद करायचे का?"</string>
     <string name="call_barring_baicr_disabled" msgid="3488129262744027262">"येणारे इंटरनॅशनल रोमिंग ब्लॉक करायचे का?"</string>
@@ -810,8 +802,8 @@
     <string name="supp_service_notification_call_waiting" msgid="4577403881609445324">"कॉल प्रतीक्षेत आहे."</string>
     <string name="supp_service_clir_suppression_rejected" msgid="6105737020194776121">"क्रमांक ब्‍लॉक करणे रद्द केले."</string>
     <string name="supp_service_closed_user_group_call" msgid="2811636666505250689">"बंद वापरकर्ता गट कॉल."</string>
-    <string name="supp_service_incoming_calls_barred" msgid="2034627421274447674">"येणारे कॉल अवरोधित केले."</string>
-    <string name="supp_service_outgoing_calls_barred" msgid="5205725332394087112">"जाणारे कॉल अवरोधित केले."</string>
+    <string name="supp_service_incoming_calls_barred" msgid="2034627421274447674">"इनकमिंग कॉल ब्लॉक केले."</string>
+    <string name="supp_service_outgoing_calls_barred" msgid="5205725332394087112">"आउटगोइंग कॉल ब्लॉक केले."</string>
     <string name="supp_service_call_forwarding_active" msgid="7910162960395132464">"कॉल फॉरवर्ड होत आहे."</string>
     <string name="supp_service_additional_call_forwarded" msgid="8772753260008398632">"अतिरिक्‍त कॉल फॉरवर्ड केला."</string>
     <string name="supp_service_additional_ect_connected" msgid="8525934162945220237">"भडक कॉल ट्रान्सफर करणे पूर्ण झाले."</string>
@@ -826,7 +818,7 @@
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"दुसरा आउटगोइंग कॉल आधीच डायल होत असल्यामुळे कॉल करू शकत नाही."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"अनुत्तरित इनकमिंग कॉल असल्यामुळे कॉल करू शकत नाही. नवीन कॉल करण्याआधी इनकमिंग कॉलला उत्तर द्या किंवा तो नाकारा."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"ro.telephony.disable-call सिस्टम प्रॉपर्टी वापरून कॉल करणे बंद केले गेल्यामुळे कॉल करू शकत नाही."</string>
-    <string name="callFailed_too_many_calls" msgid="5379426826618582180">"दोन कॉल आधीच प्रगतीपथावर असल्यामुळे कॉल करू शकत नाही. नवीन कॉल करण्याआधी एक कॉल डिस्कनेक्ट करा किंवा त्यांना कॉन्फरंस कॉलमध्ये विलीन करा."</string>
+    <string name="callFailed_too_many_calls" msgid="2761754044990799580">"दोन कॉल आधीच प्रगतीपथावर असल्यामुळे कॉल करू शकत नाही. नवीन कॉल करण्याआधी एक कॉल डिस्कनेक्ट करा किंवा त्यांना कॉंफरन्स कॉलमध्ये मर्ज करा."</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"<xliff:g id="SUPP_SERVICE">%s</xliff:g> वापरण्यासाठी, मोबाइल डेटा सुरू केलेला आहे याची खात्री करा. तुम्ही हे मोबाइल नेटवर्क सेटिंग्जमध्ये बदलू शकता."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"<xliff:g id="SUPP_SERVICE">%s</xliff:g> वापरण्यासाठी, मोबाइल डेटा आणि डेटा रोमिंग सुरू केलेले आहेत याची खात्री करा. तुम्ही हे मोबाइल नेटवर्क सेटिंग्जमध्ये बदलू शकता."</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"<xliff:g id="SUPP_SERVICE">%1$s</xliff:g> वापरण्यासाठी, सिम <xliff:g id="SIM_NUMBER">%2$d</xliff:g> साठी मोबाइल डेटा सुरू केलेला आहे याची खात्री करा. तुम्ही हे मोबाइल नेटवर्क सेटिंग्जमध्ये बदलू शकता."</string>
@@ -845,8 +837,8 @@
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"रीस्टार्ट करा"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"रद्द करा"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"मोबाइल रेडिओ पॉवर"</string>
-    <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"सिम ॲड्रेस बुक पाहा"</string>
-    <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"निश्चित डायलिंग नंबर पाहा"</string>
+    <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"सिम ॲड्रेस बुक पहा"</string>
+    <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"निश्चित डायलिंग नंबर पहा"</string>
     <string name="radioInfo_menu_viewSDN" msgid="2613431584522392842">"सर्व्हिस डायलिंग नंबर पहा"</string>
     <string name="radioInfo_menu_getIMS" msgid="1950869267853198232">"IMS सेवा स्थिती"</string>
     <string name="radio_info_ims_reg_status_title" msgid="6875885401313992007">"IMS स्थिती"</string>
@@ -898,6 +890,7 @@
     <string name="radio_info_band_mode_label" msgid="23480556225515290">"रेडिओ बँड निवडा"</string>
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"व्हॉइस नेटवर्कचा प्रकार:"</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"डेटा नेटवर्कचा प्रकार:"</string>
+    <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"नेटवर्क प्रकार ओव्हरराइड करा:"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"फोनची अनुक्रमणिका निवडा"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"प्राधान्य दिलेला नेटवर्कचा प्रकार सेट करा:"</string>
     <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"पिंग होस्ट नाव(www.google.com) IPv4:"</string>
@@ -909,13 +902,11 @@
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"रिफ्रेश करा"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"DNS तपासणी टॉगल करा"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"OEM-विशिष्ट माहिती/सेटिंग्ज"</string>
-    <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC उपलब्ध:"</string>
-    <string name="radio_info_dcnr_restricted" msgid="2469125498066960807">"DCNR प्रतिबंधित:"</string>
-    <string name="radio_info_nr_available" msgid="1321318331361249997">"NR उपलब्ध:"</string>
-    <string name="radio_info_nr_state" msgid="1337571996788535356">"NR स्थिती:"</string>
+    <string name="radio_info_endc_available" msgid="2983767110681230019">"EN-DC उपलब्ध (NSA):"</string>
+    <string name="radio_info_dcnr_restricted" msgid="7147511536420148173">"DCNR प्रतिबंधित (NSA):"</string>
+    <string name="radio_info_nr_available" msgid="3383388088451237182">"NR उपलब्ध (NSA):"</string>
+    <string name="radio_info_nr_state" msgid="4158805093187555149">"NR स्थिती (NSA):"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR वारंवारता:"</string>
-    <!-- no translation found for radio_info_network_slicing_config (7675131833885031563) -->
-    <skip />
     <string name="band_mode_title" msgid="7988822920724576842">"रेडिओ बँड मोड सेट करा"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"बँड सूची लोड करत आहे…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"सेट करा"</string>
@@ -925,7 +916,7 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"फोनची माहिती"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"वाहक सुविधा माहिती"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"वाहक सुविधा ट्रिगर करा"</string>
-    <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"तुमचा ब्लूटूथ सिग्नल कमकुवत आहे. स्पीकरफोनवर स्विच करून पाहा."</string>
+    <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"तुमचा ब्लूटूथ सिग्नल कमकुवत आहे. स्पीकरफोनवर स्विच करून पहा."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"कॉल गुणवत्ता सूचना"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"कालबाह्य झालेली SIP खाती"</string>
 </resources>
