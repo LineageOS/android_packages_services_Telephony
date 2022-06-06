@@ -47,7 +47,7 @@
     <string name="no_vm_number" msgid="6623853880546176930">"ହଜିଯାଇଥିବା ଭଏସମେଲ୍ ନମ୍ବର୍"</string>
     <string name="no_vm_number_msg" msgid="5165161462411372504">"SIM କାର୍ଡରେ କୌଣସି ଭଏସମେଲ୍ ନମ୍ବର୍ ଷ୍ଟୋର୍ କରାଯାଇନାହିଁ।"</string>
     <string name="add_vm_number_str" msgid="7368168964435881637">"ନମ୍ବର୍ ଯୋଡ଼ନ୍ତୁ"</string>
-    <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"କେବଳ ପ୍ରାଥମିକ ୟୁଜରଙ୍କ ଦ୍ଵାରା ଭଏସମେଲ୍ ସେଟିଙ୍ଗକୁ ସଂଶୋଧିତ କରାଯାଇପାରିବ।"</string>
+    <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"ଭଏସମେଲ ସେଟିଂସକୁ ପ୍ରାଥମିକ ଉପଯୋଗକର୍ତ୍ତା କେବଳ ପରିବର୍ତ୍ତିତ କରିପାରିବେ।"</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"ଆପଣଙ୍କର SIM କାର୍ଡକୁ ଅବରୋଧ କରିଦିଆଯାଇଛି। ଆପଣଙ୍କର ଫୋନ୍ ଅନଲକ୍ ହେଉଛି…"</string>
     <string name="label_ndp" msgid="7617392683877410341">"SIM ନେଟ୍‌ୱର୍କ‌କୁ ଅନଲକ୍ କରିବା ପାଇଁ PIN"</string>
     <string name="label_phoneid" msgid="8775611434123577808">"ଅପରେଟର୍ ପାଇଁ SIM ଲକ୍ କରାଯାଇଛି"</string>
@@ -57,10 +57,10 @@
     <string name="unlock_failed" msgid="7103543844840661366">"ନେଟ୍‌ୱର୍କ ଅନଲକ୍ କରିବା ପାଇଁ ଅନୁରୋଧ ବିଫଳ ହୋ‌ଇଛି।"</string>
     <string name="unlock_success" msgid="32681089371067565">"ନେଟ୍‌ୱର୍କ ଅନଲକ୍ କରିବା ସଫଳ ହେଲା।"</string>
     <string name="mobile_network_settings_not_available" msgid="8678168497517090039">"ଏହି ୟୁଜରଙ୍କ ପାଇଁ ମୋବାଇଲ୍ ନେଟ୍‌ୱର୍କ ସେଟିଙ୍ଗ ଉପଲବ୍ଧ ନାହିଁ"</string>
-    <string name="labelGSMMore" msgid="7354182269461281543">"GSM କଲ୍ ସେଟିଙ୍ଗ"</string>
-    <string name="labelGsmMore_with_label" msgid="3206015314393246224">"GSM କଲ୍ ସେଟିଙ୍ଗ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
+    <string name="labelGSMMore" msgid="7354182269461281543">"GSM କଲ ସେଟିଂସ"</string>
+    <string name="labelGsmMore_with_label" msgid="3206015314393246224">"GSM କଲ ସେଟିଂସ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCDMAMore" msgid="7937441382611224632">"CDMA କଲ୍ ସେଟିଙ୍ଗ"</string>
-    <string name="labelCdmaMore_with_label" msgid="7759692829160238152">"CDMA କଲ୍ ସେଟିଙ୍ଗ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
+    <string name="labelCdmaMore_with_label" msgid="7759692829160238152">"CDMA କଲ ସେଟିଂସ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="apn_settings" msgid="1978652203074756623">"ଆକ୍ସେସ୍ ପଏଣ୍ଟ ନାମ"</string>
     <string name="settings_label" msgid="9101778088412567956">"ନେଟ୍‍ୱର୍କ ସେଟିଙ୍ଗ"</string>
     <string name="phone_accounts" msgid="1216879437523774604">"କଲ୍ କରିବା ଆକାଉଣ୍ଟ"</string>
@@ -86,7 +86,7 @@
     <string name="voicemail_notifications_preference_title" msgid="7829238858063382977">"ବିଜ୍ଞପ୍ତି"</string>
     <string name="cell_broadcast_settings" msgid="8135324242541809924">"ଜରୁରିକାଳୀନ ପ୍ରସାରଣ"</string>
     <string name="call_settings" msgid="3677282690157603818">"କଲ୍‌ ସେଟିଂସ୍"</string>
-    <string name="additional_gsm_call_settings" msgid="1561980168685658846">"ଅତିରିକ୍ତ ସେଟିଙ୍ଗ"</string>
+    <string name="additional_gsm_call_settings" msgid="1561980168685658846">"ଅତିରିକ୍ତ ସେଟିଂସ"</string>
     <string name="additional_gsm_call_settings_with_label" msgid="7973920539979524908">"ଅତିରିକ୍ତ ସେଟିଙ୍ଗ(<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="sum_gsm_call_settings" msgid="7964692601608878138">"ଅତିରିକ୍ତ କେବଳ GSM କଲ୍ ସେଟିଙ୍ଗ"</string>
     <string name="additional_cdma_call_settings" msgid="2178016561980611304">"ଅତିରିକ୍ତ CDMA କଲ୍ ସେଟିଙ୍ଗ"</string>
@@ -96,11 +96,11 @@
     <string name="sum_loading_settings" msgid="434063780286688775">"ସେଟିଙ୍ଗ ଲୋଡ୍ ହେଉଛି…"</string>
     <string name="sum_hide_caller_id" msgid="131100328602371933">"ଆଉଟ୍‌ଗୋ‌ଇଙ୍ଗ କଲ୍‌ରେ ଲୁଚିଥିବା କଲ୍"</string>
     <string name="sum_show_caller_id" msgid="3571854755324664591">"ଆଉଟ୍‌ଗୋ‌ଇଙ୍ଗ କଲ୍‌ରେ ନମ୍ବର୍ ଡିସପ୍ଲେ ହୋ‌ଇଛି"</string>
-    <string name="sum_default_caller_id" msgid="1767070797135682959">"ଆଉଟ୍‌ଗୋ‌ଇଙ୍ଗ କଲ୍‌ରେ ମୋର ନମ୍ବର୍‌କୁ ଡିସପ୍ଲେ କରିବା ପାଇଁ ଡିଫଲ୍ଟ ଅପରେଟର୍ ସେଟିଂସକୁ ବ୍ୟବହାର କରନ୍ତୁ"</string>
+    <string name="sum_default_caller_id" msgid="1767070797135682959">"ଆଉଟଗୋ‌ଇଂ କଲରେ ମୋର ନମ୍ବରକୁ ଡିସପ୍ଲେ କରିବା ପାଇଁ ଡିଫଲ୍ଟ ଅପରେଟର ସେଟିଂସକୁ ବ୍ୟବହାର କରନ୍ତୁ"</string>
     <string name="labelCW" msgid="8449327023861428622">"କଲ୍‌ ଅପେକ୍ଷାରେ ଅଛି"</string>
     <string name="sum_cw_enabled" msgid="3977308526187139996">"ଗୋଟିଏ କଲ୍ ସମୟରେ ଇନକମିଙ୍ଗ କଲ୍ ପାଇଁ ମୋତେ ସୂଚିତ କରନ୍ତୁ"</string>
     <string name="sum_cw_disabled" msgid="3658094589461768637">"ଗୋଟିଏ କଲ୍ ସମୟରେ ଇନକମିଙ୍ଗ କଲ୍ ପାଇଁ ମୋତେ ସୂଚିତ କରନ୍ତୁ"</string>
-    <string name="call_forwarding_settings" msgid="8937130467468257671">"କଲ୍ ଫରୱାର୍ଡିଂ ସେଟିଂସ୍"</string>
+    <string name="call_forwarding_settings" msgid="8937130467468257671">"କଲ ଫରୱାର୍ଡିଂ ସେଟିଂସ"</string>
     <string name="call_forwarding_settings_with_label" msgid="2345432813399564272">"କଲ୍ ଫର୍‌ୱାର୍ଡିଂ ସେଟିଂସ୍ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCF" msgid="3578719437928476078">"କଲ୍‌ ଫର୍‌ୱାର୍ଡିଙ୍ଗ"</string>
     <string name="labelCFU" msgid="8870170873036279706">"ସର୍ବଦା ଫର୍‌ୱାର୍ଡ କରନ୍ତୁ"</string>
@@ -131,7 +131,7 @@
     <string name="disable_cdma_cw" msgid="7119290446496301734">"ବାତିଲ୍ କରନ୍ତୁ"</string>
     <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"IMSରେ CDMA \'କଲ୍ ୱେଟିଂ\' ସୁବିଧା ଚାଲୁ ଅଛି"</string>
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"IMSରେ CDMA \'କଲ୍ ୱେଟିଂ\' ସୁବିଧା ବନ୍ଦ ଅଛି"</string>
-    <string name="updating_title" msgid="6130548922615719689">"କଲ୍‌ ସେଟିଂସ୍"</string>
+    <string name="updating_title" msgid="6130548922615719689">"କଲ ସେଟିଂସ"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"କଲ୍ ସେଟିଙ୍ଗକୁ କେବଳ ଆଡମିନ୍ ୟୁଜର୍‌ ବଦଳାଇପାରିବେ।"</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"ସେଟିଙ୍ଗ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"କଲ୍ ସେଟିଙ୍ଗରେ ତ୍ରୁଟି"</string>
@@ -145,7 +145,7 @@
     <string name="stk_cc_ss_to_ss_error" msgid="8297155544652134278">"ନୂଆ SS ଅନୁରୋଧରେ ପରିବର୍ତ୍ତନ ହେଲା"</string>
     <string name="stk_cc_ss_to_dial_video_error" msgid="4255261231466032505">"SS ଅନୁରୋଧକୁ ଭିଡିଓ କଲ୍‌ରେ ପରିବର୍ତ୍ତନ କରାଗଲା"</string>
     <string name="fdn_check_failure" msgid="1833769746374185247">"ଆପଣଙ୍କ ଫୋନ୍ ଆପ୍‌ର ଫିକ୍ସଡ୍ ଡାଏଲିଙ୍ଗ ନମ୍ବର୍ ସେଟିଙ୍ଗ ଚାଲୁଅଛି। ପରିଣାମସ୍ଵରୂପ କଲ୍ ସମ୍ପର୍କିତ କିଛି ଫିଚର୍ କାମ କରୁନାହିଁ।"</string>
-    <string name="radio_off_error" msgid="8321564164914232181">"ଏହି ସେଟିଙ୍ଗକୁ ଦେଖିବା ପୂର୍ବରୁ ରେଡିଓକୁ ଚାଲୁ କରନ୍ତୁ।"</string>
+    <string name="radio_off_error" msgid="8321564164914232181">"ଏହି ସେଟିଂସକୁ ଦେଖିବା ପୂର୍ବରୁ ରେଡିଓକୁ ଚାଲୁ କରନ୍ତୁ।"</string>
     <string name="close_dialog" msgid="1074977476136119408">"ଠିକ୍ ଅଛି"</string>
     <string name="enable" msgid="2636552299455477603">"ଚାଲୁ କରନ୍ତୁ"</string>
     <string name="disable" msgid="1122698860799462116">"ବନ୍ଦ କରନ୍ତୁ"</string>
@@ -158,7 +158,7 @@
     <string name="vm_changed" msgid="4739599044379692505">"ଭଏସମେଲ୍ ନମ୍ବର୍ ବଦଳିଗଲା।"</string>
     <string name="vm_change_failed" msgid="7877733929455763566">"ଭଏସମେଲ୍ ନମ୍ବର୍ ବଦଳାଯାଇପାରିଲା ନାହିଁ। \nଯଦି ଏହି ସମସ୍ୟା ଜାରିରୁହେ ତେବେ ନିଜର କେରିଅର୍‌ଙ୍କ ସହ ସମ୍ପର୍କ କରନ୍ତୁ।"</string>
     <string name="fw_change_failed" msgid="9179241823460192148">"ଫଏ‌ୱାର୍ଡିଙ୍ଗ ନମ୍ବର୍‌କୁ ବଦଳାଇହେଲା ନାହିଁ। \n ଯଦି ଏହି ସମସ୍ୟା ଜାରିରୁହେ ତେବେ ନିଜର କେରିଅର୍‌ଙ୍କ ସହ ସମ୍ପର୍କ କରନ୍ତୁ।"</string>
-    <string name="fw_get_in_vm_failed" msgid="2432678237218183844">"ସାମ୍ପ୍ରତିକ ଫର୍‌ୱାର୍ଡିଙ୍ଗ ନମ୍ବର୍ ସେଟିଙ୍ଗକୁ ପୁନଃପ୍ରାପ୍ତ ଓ ସେଭ୍ କରିହେଲା ନାହିଁ। \nଯେକୌଣସି ଭାବେ ନୂଆ ପ୍ରଦାତାଙ୍କୁ ସ୍ଵିଚ୍ କରିବେ?"</string>
+    <string name="fw_get_in_vm_failed" msgid="2432678237218183844">"ବର୍ତ୍ତମାନର ଫରୱାର୍ଡିଂ ନମ୍ବର ସେଟିଂସକୁ ପୁନରୁଦ୍ଧାର ଓ ସେଭ କରାଯାଇପାରିଲା ନାହିଁ। \nନୂଆ ପ୍ରଦାନକାରୀକୁ ଯେ କୌଣସି ମତେ ସ୍ଵିଚ କରିବେ?"</string>
     <string name="no_change" msgid="3737264882821031892">"କୌଣସି ପରିବର୍ତ୍ତନ କରାଯାଇନାହିଁ|"</string>
     <string name="sum_voicemail_choose_provider" msgid="6750824719081403773">"ଭଏସ୍‌ମେଲ୍ ସେବାକୁ ଚୟନ କରନ୍ତୁ"</string>
     <string name="voicemail_default" msgid="6427575113775462077">"ଆପଣଙ୍କ କେରିଅର୍"</string>
@@ -182,7 +182,7 @@
     <string name="connect_later" msgid="1950138106010005425">"ବର୍ତ୍ତମାନ ଏହି ନେଟ୍‌ୱର୍କରେ କନେକ୍ଟ ହୋ‌ଇପାରିବ ନାହିଁ। ପରେ ପୁଣି ଚେଷ୍ଟା କରନ୍ତୁ।"</string>
     <string name="registration_done" msgid="5337407023566953292">"ଏହି ନେଟ୍‌ୱର୍କରେ ପଞ୍ଜୀକୃତ କରାଯାଇଛି।"</string>
     <string name="already_auto" msgid="8607068290733079336">"ପୂର୍ବରୁ ସ୍ଵାଚାଳିତ ଚୟନରେ ଅଛି।"</string>
-    <string name="select_automatically" msgid="779750291257872651">"ସ୍ଵଚାଳିତ ଭାବେ ନେଟ୍‌ୱର୍କ ଚୟନ କରନ୍ତୁ"</string>
+    <string name="select_automatically" msgid="779750291257872651">"ସ୍ଵଚାଳିତ ଭାବେ ନେଟୱାର୍କ ଚୟନ କରନ୍ତୁ"</string>
     <string name="manual_mode_disallowed_summary" msgid="3970048592179890197">"%1$s ସହ କନେକ୍ଟ ହେଲେ ଉପଲବ୍ଧ ହେବ ନାହିଁ"</string>
     <string name="network_select_title" msgid="4117305053881611988">"ନେଟ୍‌ୱାର୍କ"</string>
     <string name="register_automatically" msgid="3907580547590554834">"ସ୍ଵଚାଳିତ ପଞ୍ଜୀକରଣ…"</string>
@@ -435,7 +435,7 @@
   </string-array>
     <string name="cdma_activate_device" msgid="5914720276140097632">"ସକ୍ରିୟ ଡିଭାଇସ୍"</string>
     <string name="cdma_lte_data_service" msgid="359786441782404562">"ଡାଟା ସେବାକୁ ସେଟ‌ଅପ୍ କରନ୍ତୁ"</string>
-    <string name="carrier_settings_title" msgid="6292869148169850220">"କେରିଅର୍‍ ସେଟିଙ୍ଗ"</string>
+    <string name="carrier_settings_title" msgid="6292869148169850220">"କ୍ୟାରିଅର ସେଟିଂସ"</string>
     <string name="fdn" msgid="2545904344666098749">"ଫିକ୍ସଡ୍ ଡାଏଲିଙ୍ଗ ନମ୍ବର୍"</string>
     <string name="fdn_with_label" msgid="6412087553365709494">"ଫିକ୍ସଡ୍ ଡାଏଲିଂ ନମ୍ବର୍ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="manage_fdn_list" msgid="3341716430375195441">"FDN ତାଲିକା"</string>
@@ -828,7 +828,7 @@
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"ଗୋଟିଏ ଉତ୍ତର ଦିଆଯାଇନଥିବା ଇନ୍‌କମିଂ କଲ୍ ଯୋଗୁଁ ଅନ୍ୟ ଏକ କଲ୍ କରିପାରିବେ ନାହିଁ । ଏକ ନୂତନ କଲ୍ କରିବା ପୂର୍ବରୁ ଇନ୍‌କମିଂ କଲ୍‌ଟିର ଉତ୍ତର ଦିଅନ୍ତୁ କିମ୍ବା ଏହାକୁ ଅଗ୍ରାହ୍ୟ କରନ୍ତୁ।"</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"ro.telephony.disable-call ସିଷ୍ଟମ୍ ଗୁଣର ପ୍ରୟୋଗ କରି କଲ୍ କରିବାର ସୁବିଧାକୁ ଅକ୍ଷମ କରାଯାଇଥିବା ଯୋଗୁଁ ଏକ କଲ୍ କରାଯାଇପାରିବ ନାହିଁ।"</string>
     <string name="callFailed_too_many_calls" msgid="5379426826618582180">"ଏକାସଙ୍ଗେ ଦୁଇଟି କଲ୍ ପ୍ରକ୍ରିୟାରେ ଥିବା ଯୋଗୁଁ ଏକ କଲ୍ କରାଯାଇପାରିବ ନାହିଁ। ଏକ ନୂତନ କଲ୍ କରିବା ପୂର୍ବରୁ ଗୋଟିଏ କଲ୍‌କୁ ବିଚ୍ଛିନ୍ନ କରନ୍ତୁ କିମ୍ବା ଉଭୟ କଲ୍‌କୁ ଯୋଡ଼ି ଏକ କନ୍ଫରେନସ୍ କଲ୍‌ରେ ପରିଣତ କରନ୍ତୁ।"</string>
-    <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"<xliff:g id="SUPP_SERVICE">%s</xliff:g> ବ୍ୟବହାର କରିବାକୁ, ମୋବାଇଲ୍ ଡାଟା ଚାଲୁଥିବା ସୁନିଶ୍ଚିତ କରନ୍ତୁ। ଆପଣ ଏହାକୁ ମୋବାଇଲ୍ ନେଟ୍‌ୱର୍କ ସେଟିଂସ୍‌ରେ ବଦଳାଇପାରିବେ।"</string>
+    <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"<xliff:g id="SUPP_SERVICE">%s</xliff:g> ବ୍ୟବହାର କରିବାକୁ, ମୋବାଇଲ ଡାଟା ଚାଲୁଥିବା ସୁନିଶ୍ଚିତ କରନ୍ତୁ। ଆପଣ ଏହାକୁ ମୋବାଇଲ ନେଟୱାର୍କ ସେଟିଂସରେ ପରିବର୍ତ୍ତନ କରିପାରିବେ।"</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"<xliff:g id="SUPP_SERVICE">%s</xliff:g> ବ୍ୟବହାର କରିବାକୁ, ମୋବାଇଲ୍ ଡାଟା ଏବଂ ଡାଟା ରୋମିଂ ଚାଲୁ ଥିବା ସୁନିଶ୍ଚିତ କରନ୍ତୁ। ଆପଣ ଏହାକୁ ମୋବାଇଲ୍ ନେଟ୍‌ୱର୍କ ସେଟିଂସ୍‌ରେ ବଦଳାଇପାରିବେ।"</string>
     <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"<xliff:g id="SUPP_SERVICE">%1$s</xliff:g> ବ୍ୟବହାର କରିବାକୁ, ସିମ୍ <xliff:g id="SIM_NUMBER">%2$d</xliff:g>ରେ ମୋବାଇଲ୍ ଡାଟା ଚାଲୁ ଥିବା ସୁନିଶ୍ଚିତ କରନ୍ତୁ। ଆପଣ ଏହାକୁ ମୋବାଇଲ୍ ନେଟ୍‌ୱର୍କ ସେଟିଂସ୍‌ରେ ବଦଳାଇପାରିବେ।"</string>
     <string name="supp_service_over_ut_precautions_roaming_dual_sim" msgid="6627654855191817965">"<xliff:g id="SUPP_SERVICE">%1$s</xliff:g> ବ୍ୟବହାର କରିବାକୁ, ସିମ୍ <xliff:g id="SIM_NUMBER">%2$d</xliff:g>ରେ ମୋବାଇଲ୍ ଡାଟା ଏବଂ ଡାଟା ରୋମିଂ ଚାଲୁ ଥିବା ସୁନିଶ୍ଚିତ କରନ୍ତୁ। ଆପଣ ଏହାକୁ ମୋବାଇଲ୍ ନେଟ୍‌ୱର୍କ ସେଟିଂସ୍‌ରେ ବଦଳାଇପାରିବେ।"</string>

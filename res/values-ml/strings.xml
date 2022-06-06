@@ -907,7 +907,7 @@
     <string name="ping_test_label" msgid="448617502935719694">"പിംഗ് പരിശോധന റൺ ചെയ്യുക"</string>
     <string name="radio_info_smsc_label" msgid="3749927072726033763">"SMSC:"</string>
     <string name="radio_info_smsc_update_label" msgid="5141996256097115753">"അപ്ഡേറ്റ് ചെയ്യുക"</string>
-    <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"പുതുക്കിയെടുക്കുക"</string>
+    <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"റീഫ്രഷ് ചെയ്യുക"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"DNS പരിശോധന മാറ്റുക"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"OEM-നിർദ്ദിഷ്‌ട വിവരം/ക്രമീകരണം"</string>
     <string name="radio_info_endc_available" msgid="4410653375290113436">"EN-DC ലഭ്യം:"</string>

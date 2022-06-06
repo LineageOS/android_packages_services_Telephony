@@ -27,6 +27,8 @@ import static android.provider.Telephony.ServiceStateTable.VOICE_REG_STATE;
 import static android.provider.Telephony.ServiceStateTable.getUriForSubscriptionId;
 import static android.telephony.NetworkRegistrationInfo.REGISTRATION_STATE_HOME;
 
+import static com.android.phone.ServiceStateProvider.NETWORK_ID;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
@@ -38,6 +40,8 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.ArgumentMatchers.nullable;
 import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import android.Manifest;
@@ -288,11 +292,8 @@ public class ServiceStateProviderTest {
         setCanReadPrivilegedPhoneState(true);
         setLocationPermissions(false);
 
-        // NETWORK_ID is a location-sensitive column
-        String[] projection = new String[]{"network_id"};
-
         assertThrows(SecurityException.class,
-                () -> verifyServiceStateWithLocationColumns(mTestServiceState, projection));
+                () -> verifyServiceStateWithLocationColumns(mTestServiceState));
     }
 
     /**
@@ -324,9 +325,22 @@ public class ServiceStateProviderTest {
                 true /*hasPermission*/);
     }
 
-    private void verifyServiceStateWithLocationColumns(ServiceState ss, String[] projection) {
-        try (Cursor cursor = mContentResolver.query(ServiceStateTable.CONTENT_URI, projection, null,
-                null)) {
+    /**
+     * Verify that when caller with targetSDK S+ has location permission and try to query
+     * location non-sensitive info, it should not get blamed.
+     */
+    @Test
+    public void testQuery_noLocationBlamed_whenQueryNonLocationInfo_withPermission() {
+        setTargetSdkVersion(Build.VERSION_CODES.S);
+        setLocationPermissions(true);
+
+        verifyServiceStateWithPublicColumns(mTestServiceState, null /*projection*/);
+        verify(mAppOpsManager, never()).noteOpNoThrow(any(), anyInt(), any(), any(), any());
+    }
+
+    private void verifyServiceStateWithLocationColumns(ServiceState ss) {
+        try (Cursor cursor = mContentResolver.query(ServiceStateTable.CONTENT_URI,
+                new String[]{NETWORK_ID}, null, null)) {
             assertNotNull(cursor);
         }
     }

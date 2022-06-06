@@ -18,7 +18,7 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="phoneAppLabel" product="tablet" msgid="1916019789885839910">"داده‌های تلفن همراه"</string>
     <string name="phoneAppLabel" product="default" msgid="130465039375347763">"سرویس‌های تلفن"</string>
-    <string name="emergencyDialerIconLabel" msgid="8668005772339436680">"شماره گیری اضطراری"</string>
+    <string name="emergencyDialerIconLabel" msgid="8668005772339436680">"شماره‌گیر اضطراری"</string>
     <string name="phoneIconLabel" msgid="3015941229249651419">"تلفن"</string>
     <string name="fdnListLabel" msgid="4119121875004244097">"‏فهرست FDN"</string>
     <string name="unknown" msgid="8279698889921830815">"ناشناس"</string>
@@ -881,7 +881,7 @@
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"‏پهنای باند DL (کیلوبیت بر ثانیه):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"‏پهنای باند UL (کیلوبیت بر ثانیه):"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"‏پیکربندی کانال فیزیکی LTE:"</string>
-    <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"نرخ بازخوانی اطلاعات شبکه همراه:"</string>
+    <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"نرخ بازآوری اطلاعات شبکه همراه:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"همه اطلاعات اندازه‌گیری شبکه همراه:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"سرویس داده:"</string>
     <string name="radio_info_roaming_label" msgid="6636932886446857120">"فراگردی:"</string>
