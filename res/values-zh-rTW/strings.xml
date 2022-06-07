@@ -81,7 +81,7 @@
     <string name="voicemail_settings_with_label" msgid="4228431668214894138">"語音信箱 (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="voicemail_abbreviated" msgid="7746778673131551185">"語音信箱："</string>
     <string name="make_and_receive_calls" msgid="4868913166494621109">"撥打及接聽電話"</string>
-    <string name="smart_forwarding_settings_menu" msgid="8850429887958938540">"智慧轉寄"</string>
+    <string name="smart_forwarding_settings_menu" msgid="8850429887958938540">"智慧轉接"</string>
     <string name="smart_forwarding_settings_menu_summary" msgid="5096947726032885325">"如果某組電話號碼無法使用，系統會一律將來電轉接到其他號碼"</string>
     <string name="voicemail_notifications_preference_title" msgid="7829238858063382977">"通知"</string>
     <string name="cell_broadcast_settings" msgid="8135324242541809924">"緊急廣播"</string>

@@ -411,7 +411,7 @@
     <string name="enable_disable_multi_category" msgid="5958248155437940625">"Multicategoria"</string>
     <string name="multi_category_enable" msgid="4531915767817483960">"Multicategoria activada"</string>
     <string name="multi_category_disable" msgid="6325934413701238104">"Multicategoria desactivada"</string>
-    <string name="network_recommended" msgid="3444321100580250926">" (recomanat)"</string>
+    <string name="network_recommended" msgid="3444321100580250926">" (opció recomanada)"</string>
     <string name="network_lte" msgid="7206879277095094280">"LTE (opció recomanada)"</string>
     <string name="network_4G" msgid="6800527815504223913">"4G (opció recomanada)"</string>
     <string name="network_global" msgid="3289646154407617631">"Global"</string>
