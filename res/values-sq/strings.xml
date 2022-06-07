@@ -631,7 +631,7 @@
     <string name="ota_spc_failure" msgid="904092035241370080">"DËSHTIME TË SHUMTA SPC"</string>
     <string name="ota_call_end" msgid="8657746378290737034">"Prapa"</string>
     <string name="ota_try_again" msgid="6914781945599998550">"Provo sërish"</string>
-    <string name="ota_next" msgid="2041016619313475914">"Përpara"</string>
+    <string name="ota_next" msgid="2041016619313475914">"Para"</string>
     <string name="ecm_exit_dialog" msgid="4200691880721429078">"EcmExitDialog"</string>
     <string name="phone_entered_ecm_text" msgid="8431238297843035842">"Hyri në modalitetin e \"Kthimit të telefonatës së urgjencës\""</string>
     <string name="phone_in_ecm_notification_title" msgid="6825016389926367946">"Modaliteti i \"Kthimit të telefonatës së urgjencës\""</string>
