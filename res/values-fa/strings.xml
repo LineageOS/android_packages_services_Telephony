@@ -592,9 +592,9 @@
     <string name="importToFDNfromContacts" msgid="5068664870738407341">"وارد کردن از مخاطبین"</string>
     <string name="singleContactImportedMsg" msgid="3619804066300998934">"مخاطب واردشده"</string>
     <string name="failedToImportSingleContactMsg" msgid="228095510489830266">"مخاطب وارد نشد"</string>
-    <string name="hac_mode_title" msgid="4127986689621125468">"دستگاه‌های کمک‌شنوایی"</string>
+    <string name="hac_mode_title" msgid="4127986689621125468">"سمعک"</string>
     <string name="hac_mode_summary" msgid="7774989500136009881">"روشن کردن سازگاری دستگاه کمک‌شنوایی"</string>
-    <string name="rtt_mode_title" msgid="3075948111362818043">"‏تماس نوشتار هم‌زمان (RTT)"</string>
+    <string name="rtt_mode_title" msgid="3075948111362818043">"‏تماس با نوشتار هم‌زمان (RTT)"</string>
     <string name="rtt_mode_summary" msgid="8631541375609989562">"پیام‌رسانی در تماس صوتی مجاز است"</string>
     <string name="rtt_mode_more_information" msgid="587500128658756318">"‏«نوشتار هم‌زمان» به تماس گیرندگان ناشنوا، دارای مشکل شنوایی، دارای ناتوانی گفتاری یا افرادی که به چیزی بیش از صدا نیاز دارند کمک می‌کند.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;بیشتر بدانید&lt;/a&gt;\n       ‏&lt;br&gt;&lt;br&gt; تماس‌های «نوشتار هم‌زمان» به‌صورت ترانویسی پیام ذخیره می‌شود\n       &lt;br&gt; «نوشتار هم‌زمان» برای تماس‌های ویدیویی دردسترس نیست"</string>
     <string name="no_rtt_when_roaming" msgid="5268008247378355389">"نکته: «نوشتار هم‌زمان» در هنگام فراگردی دردسترس نیست"</string>
