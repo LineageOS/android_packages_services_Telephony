@@ -357,13 +357,13 @@
     <string name="list_language_title" msgid="1850167908665485738">"Ulimi"</string>
     <string name="list_language_summary" msgid="7921756070782277559">"Khetha ulimi lwezindaba"</string>
   <string-array name="list_language_entries">
-    <item msgid="2347238508726934281">"i-English"</item>
+    <item msgid="2347238508726934281">"English"</item>
     <item msgid="5172468397620875174">"isi-French"</item>
     <item msgid="3978110664146015398">"isi-Spanish"</item>
     <item msgid="2637764545851526369">"isi-Japanese"</item>
-    <item msgid="6103816221834932751">"isi-Korean"</item>
-    <item msgid="3127367370005168399">"isi-Chinese"</item>
-    <item msgid="9130651361816196355">"isi-Hebrew"</item>
+    <item msgid="6103816221834932751">"Korean"</item>
+    <item msgid="3127367370005168399">"Chinese"</item>
+    <item msgid="9130651361816196355">"Hebrew"</item>
   </string-array>
   <string-array name="list_language_values">
     <item msgid="798673247233934667">"1"</item>
