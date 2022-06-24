@@ -668,6 +668,10 @@ public class ImsProvisioningController {
             return retValue;
         }
 
+        public boolean isConnectionReady() {
+            return mReady;
+        }
+
         public void onRcsAvailable() {
             log(LOG_PREFIX, mSlotId, "onRcsAvailable");
 
@@ -1117,8 +1121,19 @@ public class ImsProvisioningController {
         int key =  ProvisioningManager.KEY_EAB_PROVISIONING_STATUS;
         int value = getIntValue(isProvisioned);
         try {
-            // set key and value to vendor ImsService for Rcs
-            mRcsFeatureListenersSlotMap.get(slotId).setProvisioningValue(key, value);
+            // On some older devices, EAB is managed on the MmTel ImsService when the RCS
+            // ImsService is not configured. If there is no RCS ImsService defined, fallback to
+            // MmTel. In the rare case that we hit a race condition where the RCS ImsService has
+            // crashed or has not come up yet, the value will be synchronized via
+            // setInitialProvisioningKeys().
+            if (mRcsFeatureListenersSlotMap.get(slotId).isConnectionReady()) {
+                mRcsFeatureListenersSlotMap.get(slotId).setProvisioningValue(key, value);
+            }
+
+            // EAB provisioning status should be updated to both the Rcs and MmTel ImsService,
+            // because the provisioning callback is listening to only MmTel provisioning key
+            // changes.
+            mMmTelFeatureListenersSlotMap.get(slotId).setProvisioningValue(key, value);
         } catch (NullPointerException e) {
             loge("can not access RcsFeatureListener with capability " + capability);
         }
@@ -1155,14 +1170,21 @@ public class ImsProvisioningController {
         }
 
         try {
-            if (key == KEY_EAB_PROVISIONING_STATUS) {
-                // set key and value to vendor ImsService for Rcs
-                retVal = mRcsFeatureListenersSlotMap.get(slotId)
-                        .setProvisioningValue(key, value);
-            } else {
-                // set key and value to vendor ImsService for MmTel
-                retVal = mMmTelFeatureListenersSlotMap.get(slotId)
-                        .setProvisioningValue(key, value);
+            // set key and value to vendor ImsService for MmTel
+            // EAB provisioning status should be updated to both the Rcs and MmTel ImsService,
+            // because the provisioning callback is listening to only MmTel provisioning key
+            // changes.
+            retVal = mMmTelFeatureListenersSlotMap.get(slotId).setProvisioningValue(key, value);
+
+            // If the  Rcs ImsService is not available, the EAB provisioning status will be written
+            // to the MmTel ImsService for backwards compatibility. In the rare case that this is
+            // hit due to RCS ImsService temporarily unavailable, the value will be synchronized
+            // via setInitialProvisioningKeys() when the RCS ImsService comes back up.
+            if (key == KEY_EAB_PROVISIONING_STATUS
+                    && mRcsFeatureListenersSlotMap.get(slotId).isConnectionReady()) {
+                // set key and value to vendor ImsService for RCS and use retVal from RCS if
+                // related to EAB when possible.
+                retVal = mRcsFeatureListenersSlotMap.get(slotId).setProvisioningValue(key, value);
             }
         } catch (NullPointerException e) {
             loge("can not access FeatureListener to set provisioning value");
@@ -1332,16 +1354,24 @@ public class ImsProvisioningController {
 
     private int getRcsValueFromImsService(int subId, int capability) {
         int config = ImsConfigImplBase.CONFIG_RESULT_UNKNOWN;
+        int slotId = getSlotId(subId);
 
-        if (capability == CAPABILITY_TYPE_PRESENCE_UCE) {
-            try {
-                config = mRcsFeatureListenersSlotMap.get(getSlotId(subId))
-                        .getProvisioningValue(ProvisioningManager.KEY_EAB_PROVISIONING_STATUS);
-            } catch (NullPointerException e) {
-                logw("can not access RcsFeatureListener");
-            }
-        } else {
+        if (capability != CAPABILITY_TYPE_PRESENCE_UCE) {
             log("Capability " + capability + " has been provisioning");
+            return config;
+        }
+        try {
+            if (mRcsFeatureListenersSlotMap.get(slotId).isConnectionReady()) {
+                config = mRcsFeatureListenersSlotMap.get(slotId)
+                        .getProvisioningValue(ProvisioningManager.KEY_EAB_PROVISIONING_STATUS);
+            } else {
+                log("Rcs ImsService is not available, "
+                        + "EAB provisioning status should be read from MmTel ImsService");
+                config = mMmTelFeatureListenersSlotMap.get(slotId)
+                        .getProvisioningValue(ProvisioningManager.KEY_EAB_PROVISIONING_STATUS);
+            }
+        } catch (NullPointerException e) {
+            logw("can not access FeatureListener : " + e.getMessage());
         }
 
         return config;
