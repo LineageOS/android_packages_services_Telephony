@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"נגישות"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"‏שיחת Wi-Fi מאת"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"‏שיחת Wi-Fi"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"יש להקיש שוב כדי לפתוח"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"אירעה שגיאה בעת פענוח ההודעה."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"‏כרטיס SIM הפעיל את השירות שלך ועדכן את יכולות הנדידה של הטלפון."</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"יש יותר מדי שיחות פעילות. כדי להתחיל שיחה חדשה עליך לסיים או למזג חלק מהשיחות הפעילות."</string>
@@ -916,6 +915,9 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"פרטי טלפון"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"פרטי ניהול תצורה של ספק סלולרי"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"הפעלת ניהול תצורה של ספק סלולרי"</string>
+    <string name="provisioning_info_wfc_entitlement_id" msgid="8845188780811890910">"‏מזהה הרשאת WFC:"</string>
+    <string name="update_provisioning_info_wfc_entitlement_id" msgid="7044171908781134221">"עדכון"</string>
+    <string name="refresh_provisioning_info_wfc_entitlement_id" msgid="738894335351353407">"רענון"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"‏הקליטה של ה-Bluetooth חלשה. כדאי לעבור לדיבורית."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"התראה על איכות השיחה"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"‏חשבונות SIP שהוצאו משימוש"</string>

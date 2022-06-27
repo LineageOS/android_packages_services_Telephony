@@ -482,7 +482,7 @@
     <string name="simContacts_emptyLoading" msgid="4989040293858675483">"Leyendo desde tarjeta SIM…"</string>
     <string name="simContacts_empty" msgid="1135632055473689521">"No hay ningún contacto en la tarjeta SIM."</string>
     <string name="simContacts_title" msgid="2714029230160136647">"Seleccionar contactos para importar"</string>
-    <string name="simContacts_airplaneMode" msgid="4654884030631503808">"Desactiva el modo Avión para importar contactos de la tarjeta SIM."</string>
+    <string name="simContacts_airplaneMode" msgid="4654884030631503808">"Desactiva el modo avión para importar contactos de la tarjeta SIM."</string>
     <string name="enable_pin" msgid="967674051730845376">"Habilitar/Inhabilitar PIN de tarjeta SIM"</string>
     <string name="change_pin" msgid="3657869530942905790">"Cambiar PIN de tarjeta SIM"</string>
     <string name="enter_pin_text" msgid="3182311451978663356">"PIN de la tarjeta SIM:"</string>
@@ -534,9 +534,9 @@
     <string name="notification_voicemail_no_vm_number" msgid="3423686009815186750">"Número del buzón de voz desconocido"</string>
     <string name="notification_network_selection_title" msgid="255595526707809121">"Sin servicio"</string>
     <string name="notification_network_selection_text" msgid="553288408722427659">"La red seleccionada (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) no está disponible"</string>
-    <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Activa la red móvil o desactiva el modo Avión o el modo de ahorro de batería para hacer una llamada."</string>
-    <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Desactiva el modo Avión parra hacer llamadas."</string>
-    <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Desactiva el modo Avión o conéctate a una red inalámbrica para hacer llamadas."</string>
+    <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Activa la red móvil o desactiva el modo avión o el modo de ahorro de batería para hacer una llamada."</string>
+    <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Desactiva el modo avión parra hacer llamadas."</string>
+    <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Desactiva el modo avión o conéctate a una red inalámbrica para hacer llamadas."</string>
     <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"El teléfono está demasiado caliente"</b>\n\n"No se ha podido completar esta llamada. Vuelve a intentarlo cuando el teléfono se enfríe.\n\nNo obstante, puedes hacer llamadas de emergencia."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Sal del modo de devolución de llamada de emergencia para hacer otro tipo de llamada."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"No se ha podido conectar a la red"</string>
@@ -565,7 +565,7 @@
     <string name="emergency_call_shortcut_hint" msgid="1290485125107779500">"Tocar de nuevo para llamar al <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="1695305158151408629">"Activando señal móvil…"</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="4329131876852608587">"Sin servicio. Reintentado…"</string>
-    <string name="radio_off_during_emergency_call" msgid="8011154134040481609">"Durante una llamada de emergencia no se puede entrar en el modo Avión."</string>
+    <string name="radio_off_during_emergency_call" msgid="8011154134040481609">"Durante una llamada de emergencia no se puede entrar en el modo avión."</string>
     <string name="dial_emergency_error" msgid="825822413209026039">"No se puede establecer la llamada. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> no es un número de emergencia."</string>
     <string name="dial_emergency_empty_error" msgid="2785803395047793634">"No se puede establecer la llamada. Marca un número de emergencia."</string>
     <string name="dial_emergency_calling_not_available" msgid="6485846193794727823">"No se pueden hacer llamadas de emergencia"</string>
@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"Accesibilidad"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"Llamada por Wi-Fi de"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"Llamada Wi-Fi"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"Toca de nuevo para abrir"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"Se ha producido un error al decodificar el mensaje."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"Una tarjeta SIM ha activado tu servicio y actualizado la función de roaming del teléfono."</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"Hay demasiadas llamadas activas. Finaliza o combina las llamadas que tienes antes de iniciar otra."</string>
@@ -711,7 +710,7 @@
     <string name="mobile_data_activate_button" msgid="1139792516354374612">"AÑADIR DATOS"</string>
     <string name="mobile_data_activate_cancel_button" msgid="3530174817572005860">"CANCELAR"</string>
     <string name="clh_card_title_call_ended_txt" msgid="5977978317527299698">"Llamada finalizada"</string>
-    <string name="clh_callFailed_powerOff_txt" msgid="8279934912560765361">"Está activado el modo Avión"</string>
+    <string name="clh_callFailed_powerOff_txt" msgid="8279934912560765361">"Está activado el modo avión"</string>
     <string name="clh_callFailed_simError_txt" msgid="5128538525762326413">"No se puede acceder a la tarjeta SIM"</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="2736010617446749869">"Red móvil no disponible"</string>
     <string name="clh_callFailed_unassigned_number_txt" msgid="141967660286695682">"No se ha podido conectar con el número de teléfono al que estás llamando. Código de error 1."</string>
@@ -916,6 +915,12 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Información sobre el teléfono"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Información de servicios del operador"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Activar servicios del operador"</string>
+    <!-- no translation found for provisioning_info_wfc_entitlement_id (8845188780811890910) -->
+    <skip />
+    <!-- no translation found for update_provisioning_info_wfc_entitlement_id (7044171908781134221) -->
+    <skip />
+    <!-- no translation found for refresh_provisioning_info_wfc_entitlement_id (738894335351353407) -->
+    <skip />
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Tu señal de Bluetooth es débil. Prueba a cambiar al altavoz."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Notificación de calidad de la llamada"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Cuentas SIP obsoletas"</string>

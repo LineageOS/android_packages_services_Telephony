@@ -18,7 +18,7 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="phoneAppLabel" product="tablet" msgid="1916019789885839910">"Բջջային տվյալներ"</string>
     <string name="phoneAppLabel" product="default" msgid="130465039375347763">"Հեռախոսի ծառայություններ"</string>
-    <string name="emergencyDialerIconLabel" msgid="8668005772339436680">"Արտակարգ իրավիճակների համարահավաքիչ"</string>
+    <string name="emergencyDialerIconLabel" msgid="8668005772339436680">"Արտակարգ իրավիճակների համարհավաքիչ"</string>
     <string name="phoneIconLabel" msgid="3015941229249651419">"Հեռախոս"</string>
     <string name="fdnListLabel" msgid="4119121875004244097">"FDN ցուցակ"</string>
     <string name="unknown" msgid="8279698889921830815">"Անհայտ"</string>
@@ -284,7 +284,7 @@
     <string name="roaming" msgid="1576180772877858949">"Ռոումինգ"</string>
     <string name="roaming_enable" msgid="6853685214521494819">"Միանալ տվյալների փոխանցման ծառայություններին ռոումինգում"</string>
     <string name="roaming_disable" msgid="8856224638624592681">"Միանալ տվյալների փոխանցման ծառայություններին ռոումինգում"</string>
-    <string name="roaming_reenable_message" msgid="1951802463885727915">"Ռոումինգում բջջային ինտերնետն անջատված է: Հպեք միացնելու համար:"</string>
+    <string name="roaming_reenable_message" msgid="1951802463885727915">"Ռոումինգում բջջային ինտերնետն անջատված է: Հպեք՝ միացնելու համար:"</string>
     <string name="roaming_enabled_message" msgid="9022249120750897">"Ռոումինգի համար կարող է գումար գանձվել: Հպեք՝ փոփոխելու համար:"</string>
     <string name="roaming_notification_title" msgid="3590348480688047320">"Բջջային ինտերնետը կորավ"</string>
     <string name="roaming_on_notification_title" msgid="7451473196411559173">"Ինտերնետ ռոումինգը միացված է"</string>
@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"Հատուկ գործառույթներ"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"Wi-Fi զանգ այս օգտվողից՝"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"Զանգ Wi-Fi-ի միջոցով"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"Կրկին հպեք՝ բացելու համար"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"Հաղորդագրությունն ապակոդավորելիս սխալ առաջացավ:"</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"SIM քարտն ակտիվացրել է ծառայությունը և թարմացրել ձեր հեռախոսի ռոումինգի հնարավորությունները:"</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"Չափազանց շատ ընթացիկ զանգեր կան: Ավարտեք կամ միավորեք առկա զանգերը՝ նախքան նորն զանգ կատարելը:"</string>
@@ -916,6 +915,12 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Հեռախոսի տեղեկություններ"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Օպերատորի նախապատրաստման տվյալներ"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Գործարկել օպերատորի նախապատրաստումը"</string>
+    <!-- no translation found for provisioning_info_wfc_entitlement_id (8845188780811890910) -->
+    <skip />
+    <!-- no translation found for update_provisioning_info_wfc_entitlement_id (7044171908781134221) -->
+    <skip />
+    <!-- no translation found for refresh_provisioning_info_wfc_entitlement_id (738894335351353407) -->
+    <skip />
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Ձեր Bluetooth-ի ազդանշանը թույլ է։ Փորձեք միացնել բարձրախոսը։"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Զանգի որակի մասին ծանուցում"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Հնացած SIP հաշիվներ"</string>

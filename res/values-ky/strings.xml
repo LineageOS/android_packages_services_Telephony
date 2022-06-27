@@ -170,7 +170,7 @@
     <string name="vm_change_pin_error_too_weak" msgid="8581892952627885719">"Жаңы PIN код өтө эле жөнөкөй. Сырсөз күчтүү болушу үчүн анда сандар үзгүлтүксүз катардан турбашы же сандар кайталанбашы керек."</string>
     <string name="vm_change_pin_error_mismatch" msgid="5364847280026257331">"Эски PIN код дал келген жок."</string>
     <string name="vm_change_pin_error_invalid" msgid="5230002671175580674">"Жаңы PIN коддо жараксыз белгилер бар."</string>
-    <string name="vm_change_pin_error_system_error" msgid="9116483527909681791">"PIN код өзгөргөн жок"</string>
+    <string name="vm_change_pin_error_system_error" msgid="9116483527909681791">"PIN код өзгөртүлгөн жок"</string>
     <string name="vvm_unsupported_message_format" msgid="4206402558577739713">"Колдоого алынбаган билдирүү, угуу үчүн <xliff:g id="NUMBER">%s</xliff:g> чалыңыз."</string>
     <string name="network_settings_title" msgid="7560807107123171541">"Мобилдик тармак"</string>
     <string name="label_available" msgid="1316084116670821258">"Жеткиликтүү тармактар"</string>
@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"Атайын мүмкүнчүлүктөр"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"Wi-Fi аркылуу чалуу:"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"Wi-Fi чалуу"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"Ачуу үчүн кайра таптап коюңуз"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"Билдирүү дешифрленип жатканда ката кеткен."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"SIM-карта кызматыңызды жандырып, телефонуңуздун роуминг мүмкүнчүлүктөрүн жаңыртты."</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"Учурда жигердүү чалуулар өтө көп. Чалуу үчүн учурдагы чалууларды бүтүрүңүз же бириктириңиз."</string>
@@ -916,6 +915,9 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Телефондун маалыматы"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Байланыш оператору жөнүндө маалымат"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Байланыш операторун өзгөртүү"</string>
+    <string name="provisioning_info_wfc_entitlement_id" msgid="8845188780811890910">"WFC Entitlement идентификатору:"</string>
+    <string name="update_provisioning_info_wfc_entitlement_id" msgid="7044171908781134221">"Жаңыртуу"</string>
+    <string name="refresh_provisioning_info_wfc_entitlement_id" msgid="738894335351353407">"Жаңыртуу"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Bluetooth сигналыңыз начар. Спикерфонго которулуп көрүңүз."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Чалуунун сапаты тууралуу билдирме"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Колдонуудан чыккан SIP аккаунттары"</string>

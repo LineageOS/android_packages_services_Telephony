@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"Hỗ trợ tiếp cận"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"Cuộc gọi qua Wi-Fi từ"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"Cuộc gọi qua Wi-Fi"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"Nhấn lại để mở"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"Đã xảy ra lỗi khi giải mã tin nhắn."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"Thẻ SIM đã kích hoạt dịch vụ của bạn và đã cập nhật chức năng chuyển vùng của điện thoại."</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"Có quá nhiều cuộc gọi hiện hoạt. Vui lòng kết thúc hoặc hợp nhất các cuộc gọi hiện có trước khi thực hiện cuộc gọi mới."</string>
@@ -916,6 +915,12 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Thông tin điện thoại"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Thông tin cấp phép của nhà mạng"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Kích hoạt dịch vụ cấp phép của nhà mạng"</string>
+    <!-- no translation found for provisioning_info_wfc_entitlement_id (8845188780811890910) -->
+    <skip />
+    <!-- no translation found for update_provisioning_info_wfc_entitlement_id (7044171908781134221) -->
+    <skip />
+    <!-- no translation found for refresh_provisioning_info_wfc_entitlement_id (738894335351353407) -->
+    <skip />
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Tín hiệu Bluetooth của bạn đang yếu. Hãy thử chuyển sang loa ngoài."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Thông báo về chất lượng cuộc gọi"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Tài khoản SIP không dùng nữa"</string>

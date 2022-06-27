@@ -199,8 +199,8 @@
     <item msgid="4531933377509551889">"GSM/WCDMAకు ప్రాధాన్యత"</item>
     <item msgid="5120532750027435355">"GSM మాత్రమే"</item>
     <item msgid="8973311380798000102">"WCDMA మాత్రమే"</item>
-    <item msgid="4139961027147085705">"GSM/WCDMA ఆటోమేటిక్‌"</item>
-    <item msgid="4024581977690585814">"CDMA/EvDo ఆటోమేటిక్‌"</item>
+    <item msgid="4139961027147085705">"GSM/WCDMA స్వయంచాలకం"</item>
+    <item msgid="4024581977690585814">"CDMA/EvDo స్వయంచాలకం"</item>
     <item msgid="7199560024080522581">"EvDo లేని CDMA"</item>
     <item msgid="3160291725308400608">"EvDo మాత్రమే"</item>
     <item msgid="2319217472852426965">"CDMA/EvDo/GSM/WCDMA"</item>
@@ -618,7 +618,7 @@
     <string name="ota_hfa_activation_dialog_message" msgid="7921718445773342996">"ఫోన్ మీ మొబైల్ డేటా సేవను సక్రియం చేస్తోంది.\n\nదీనికి గరిష్టంగా 5 నిమిషాలు పట్టవచ్చు."</string>
     <string name="ota_skip_activation_dialog_title" msgid="7666611236789203797">"సక్రియం చేయడాన్ని దాటవేయాలా?"</string>
     <string name="ota_skip_activation_dialog_message" msgid="6691722887019708713">"మీరు సక్రియం చేయడాన్ని దాటవేస్తే, కాల్స్‌ చేయలేరు లేదా మొబైల్ డేటా నెట్‌వర్క్‌లకు కనెక్ట్ చేయలేరు (మీరు Wi-Fi నెట్‌వర్క్‌లకు కనెక్ట్ చేయగలిగినప్పటికీ). మీరు మీ ఫోన్‌ను సక్రియం చేసేవరకు, దాన్ని ప్రారంభించే ప్రతిసారీ సక్రియం చేయమని మిమ్మల్ని అడుగుతుంది."</string>
-    <string name="ota_skip_activation_dialog_skip_label" msgid="5908029466817825633">"స్కిప్ చేయండి"</string>
+    <string name="ota_skip_activation_dialog_skip_label" msgid="5908029466817825633">"దాటవేయి"</string>
     <string name="ota_activate" msgid="7939695753665438357">"యాక్టివేట్ చేయండి"</string>
     <string name="ota_title_activate_success" msgid="1272135024761004889">"ఫోన్ సక్రియం చేయబడింది."</string>
     <string name="ota_title_problem_with_activation" msgid="7019745985413368726">"సక్రియం చేయడంలో సమస్య"</string>
@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"యాక్సెసిబిలిటీ"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"వీరి నుండి Wi-Fi కాల్"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"Wi-Fi కాల్"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"తెరవడానికి మళ్లీ నొక్కండి"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"మెసేజ్‌ను డీకోడ్ చేస్తున్నప్పుడు ఎర్రర్ ఏర్పడింది."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"SIM కార్డ్ మీ సేవను సక్రియం చేసింది మరియు మీ ఫోన్ రోమింగ్ సామర్థ్యాలను నవీకరించింది."</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"చాలా ఎక్కువ కాల్స్‌ సక్రియంగా ఉన్నాయి. దయచేసి మరొక కొత్త కాల్ చేసే ముందు ఇప్పటికే ఉన్న కాల్స్‌ను ముగించండి లేదా విలీనం చేయండి."</string>
@@ -916,6 +915,12 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"ఫోన్ సమాచారం"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"క్యారియర్ కేటాయింపు సమాచారం"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"క్యారియర్ కేటాయింపు సక్రియం చేయండి"</string>
+    <!-- no translation found for provisioning_info_wfc_entitlement_id (8845188780811890910) -->
+    <skip />
+    <!-- no translation found for update_provisioning_info_wfc_entitlement_id (7044171908781134221) -->
+    <skip />
+    <!-- no translation found for refresh_provisioning_info_wfc_entitlement_id (738894335351353407) -->
+    <skip />
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"మీ బ్లూటూత్ సిగ్నల్ బలహీనంగా ఉంది. స్పీకర్‌ఫోన్‌కు స్విచ్ అవ్వడానికి ట్రై చేయండి."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"కాల్ క్వాలిటీ నోటిఫికేషన్"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"తీసివేయబడిన SIP ఖాతాలు"</string>

@@ -115,7 +115,7 @@
     <string name="sum_cfb_disabled" msgid="3589913334164866035">"Desactivado"</string>
     <string name="disable_cfb_forbidden" msgid="4831494744351633961">"Tu proveedor no admite la inhabilitación del desvío de llamadas cuando tu teléfono está ocupado."</string>
     <string name="labelCFNRy" msgid="3403533792248457946">"Cuando no haya respuesta"</string>
-    <string name="messageCFNRy" msgid="7644434155765359009">"Número cuando no hay respuesta"</string>
+    <string name="messageCFNRy" msgid="7644434155765359009">"Número cuando no contesta"</string>
     <string name="sum_cfnry_enabled" msgid="3000500837493854799">"Reenviar a <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnry_disabled" msgid="1990563512406017880">"Desactivado"</string>
     <string name="disable_cfnry_forbidden" msgid="3174731413216550689">"Tu proveedor no admite la inhabilitación del desvío de llamadas cuando tu teléfono no responde."</string>
@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"Accesibilidad"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"Llamada con Wi-Fi de"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"Llamada por Wi-Fi"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"Presionar de nuevo para abrir"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"Se produjo un error al decodificar el mensaje."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"Una tarjeta SIM activó tu servicio y actualizó las capacidades de roaming del teléfono."</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"Hay demasiadas llamadas activas. Finaliza o combina las llamadas existentes antes de realizar una llamada nueva."</string>
@@ -916,6 +915,9 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Información del teléfono"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Información del aprovisionamiento del proveedor"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Activar aprovisionamiento del proveedor"</string>
+    <string name="provisioning_info_wfc_entitlement_id" msgid="8845188780811890910">"ID de derecho de WFC:"</string>
+    <string name="update_provisioning_info_wfc_entitlement_id" msgid="7044171908781134221">"Actualizar"</string>
+    <string name="refresh_provisioning_info_wfc_entitlement_id" msgid="738894335351353407">"Actualizar"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Tu señal de Bluetooth es débil. Intenta cambiar al altavoz."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Notificación de calidad de llamada"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Cuentas SIP obsoletas"</string>

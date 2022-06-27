@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"অ্যাক্সেসযোগ্যতা"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"এর থেকে Wi-Fi কল"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"ওয়াই-ফাই কল"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"খোলার জন্য আবার আলতো চাপুন"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"বার্তাটি ডিকোড করার সময় একটি ত্রুটি ঘটেছে৷"</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"একটি সিম কার্ড আপনার পরিষেবা সক্রিয় করেছে এবং আপনার ফোনের রোমিং ক্ষমতা আপডেট করা হয়েছে৷"</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"অনেকগুলি কল সক্রিয় রয়েছে। অনুগ্রহ করে একটি নতুন কল করার আগে বিদ্যমান কলগুলি কেটে দিন বা এটিকে সেই কলগুলিতে অন্তর্ভুক্ত করুন।"</string>
@@ -916,6 +915,12 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"ফোনের তথ্য"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"পরিষেবা প্রদানকারীর ব্যবস্থামূলক তথ্য"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"ট্রিগার পরিষেবা প্রদানকারীর ব্যবস্থা"</string>
+    <!-- no translation found for provisioning_info_wfc_entitlement_id (8845188780811890910) -->
+    <skip />
+    <!-- no translation found for update_provisioning_info_wfc_entitlement_id (7044171908781134221) -->
+    <skip />
+    <!-- no translation found for refresh_provisioning_info_wfc_entitlement_id (738894335351353407) -->
+    <skip />
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"আপনার ডিভাইসের ব্লুটুথ সিগনাল ভাল না। বদল করে স্পিকারফোন বেছে নিন।"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"ফোন কলের কোয়ালিটি সংক্রান্ত বিজ্ঞপ্তি"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"পুরনো SIP অ্যাকাউন্ট"</string>

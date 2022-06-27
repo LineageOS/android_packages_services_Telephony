@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"Funkcije za ljudi s posebnimi potrebami"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"Klic prek Wi-Fi-ja osebe"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"Klic Wi-Fi"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"Znova se dotaknite, če želite odpreti"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"Napaka pri dekodiranju sporočila."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"Kartica SIM je aktivirala vašo storitev in posodobila zmožnosti telefona za gostovanje."</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"Preveč aktivnih klicev. Preden začnete nov klic, končajte ali združite obstoječe klice."</string>
@@ -916,6 +915,9 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Informacije o telefonu"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Podatki o omogočanju uporabe operaterja"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Sproži omogočanje uporabe operaterja"</string>
+    <string name="provisioning_info_wfc_entitlement_id" msgid="8845188780811890910">"ID upravičenosti za WFC:"</string>
+    <string name="update_provisioning_info_wfc_entitlement_id" msgid="7044171908781134221">"Posodobi"</string>
+    <string name="refresh_provisioning_info_wfc_entitlement_id" msgid="738894335351353407">"Osveži"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Signal povezave Bluetooth je šibek. Poskusite preklopiti na zvočnik."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Obvestilo o kakovosti klica"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Opuščeni računi SIP"</string>

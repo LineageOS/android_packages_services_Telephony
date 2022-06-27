@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"Accesibilitate"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"Apel prin Wi-Fi de la"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"Apel prin Wi-Fi"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"Atingeți din nou pentru a deschide"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"A apărut o eroare la decodificarea mesajului."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"Un card SIM a activat serviciul și a actualizat funcțiile de roaming ale telefonului."</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"Prea multe apeluri active. Încheiați sau îmbinați apeluri existente înainte de a iniția unul nou."</string>
@@ -916,6 +915,12 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Informații despre telefon"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Informații despre provizionarea operatorului"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Declanșați provizionarea operatorului"</string>
+    <!-- no translation found for provisioning_info_wfc_entitlement_id (8845188780811890910) -->
+    <skip />
+    <!-- no translation found for update_provisioning_info_wfc_entitlement_id (7044171908781134221) -->
+    <skip />
+    <!-- no translation found for refresh_provisioning_info_wfc_entitlement_id (738894335351353407) -->
+    <skip />
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Semnalul Bluetooth este slab. Încercați să folosiți difuzorul."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Notificare privind calitatea apelului"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Conturi SIP învechite"</string>

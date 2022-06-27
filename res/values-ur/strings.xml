@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"ایکسیسبیلٹی"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"‏Wi-Fi کال منجانب"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"‏Wi-Fi کال"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"کھولنے کیلئے دوبارہ تھپتھپائیں"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"پیغام کو ڈیکوڈ کرتے وقت ایک خرابی پیش آ گئی۔"</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"‏ایک SIM کارڈ نے آپ کی سروس فعال کر دی ہے اور آپ کے فون کی رومنگ اہلیتیں اپ ڈیٹ کر دی ہیں۔"</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"بہت زیادہ فعال کالیں ہیں۔ براہ کرم نئی کال کرنے سے پہلے موجودہ کالوں کو ضم کریں یا ختم کریں۔"</string>
@@ -916,6 +915,12 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"فون کی معلومات"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"کیرئیر فراہمی معلومات"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"ٹرگر کیرئیر فراہمی"</string>
+    <!-- no translation found for provisioning_info_wfc_entitlement_id (8845188780811890910) -->
+    <skip />
+    <!-- no translation found for update_provisioning_info_wfc_entitlement_id (7044171908781134221) -->
+    <skip />
+    <!-- no translation found for refresh_provisioning_info_wfc_entitlement_id (738894335351353407) -->
+    <skip />
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"آپ کا بلوٹوتھ سگنل کمزور ہے۔ اسپیکر فون پر سوئچ کر کے آزمائیں۔"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"کال کی کوالٹی کی اطلاع"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"‏فرسودہ SIP اکاؤنٹس"</string>

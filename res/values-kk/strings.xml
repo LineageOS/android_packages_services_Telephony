@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"Арнайы мүмкіндіктер"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"Wi-Fi қоңырауын шалушы:"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"Wi-Fi қоңырауы"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"Ашу үшін қайта түртіңіз"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"Хабарды кодтан шығару кезінде қате пайда болды."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"SIM карта қызметті белсендіріп, телефонның роуминг мүмкіндіктерін жаңартты."</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"Белсенді қоңыраулар тым көп. Жаңа қоңырау шалудан бұрын бар қоңырауларды аяқтаңыз немесе біріктіріңіз."</string>
@@ -916,6 +915,12 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Телефон ақпараты"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Операторды инициализациялау туралы ақпарат"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Операторды инциализациялауды іске қосу"</string>
+    <!-- no translation found for provisioning_info_wfc_entitlement_id (8845188780811890910) -->
+    <skip />
+    <!-- no translation found for update_provisioning_info_wfc_entitlement_id (7044171908781134221) -->
+    <skip />
+    <!-- no translation found for refresh_provisioning_info_wfc_entitlement_id (738894335351353407) -->
+    <skip />
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Bluetooth сигналы нашар. Спикерфонға ауысып көріңіз."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Қоңырау сапасы туралы хабарландыру"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Қолданыстан шыққан SIP аккаунттары"</string>

@@ -572,7 +572,7 @@
     <string name="pin_puk_system_user_only" msgid="1045147220686867922">"Solo il proprietario del dispositivo può inserire i codici PIN/PUK."</string>
     <string name="police_type_description" msgid="2819533883972081757">"Polizia"</string>
     <string name="ambulance_type_description" msgid="6798237503553180461">"Ambulanza"</string>
-    <string name="fire_type_description" msgid="6565200468934914930">"Pompieri"</string>
+    <string name="fire_type_description" msgid="6565200468934914930">"Vigili del fuoco"</string>
     <string name="description_concat_format" msgid="2014471565101724088">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="1115266533703764049">"Usa tastiera"</string>
     <string name="onscreenHoldText" msgid="4025348842151665191">"In attesa"</string>
@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"Accessibilità"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"Chiamata Wi-Fi da"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"Chiamata Wi-Fi"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"Tocca di nuovo per aprire"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"Si è verificato un errore durante la decodifica del messaggio."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"Una scheda SIM ha attivato il tuo servizio e ha aggiornato le funzionalità di roaming del telefono."</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"Ci sono troppe chiamate attive. Termina o unisci le chiamate esistenti prima di effettuarne una nuova."</string>
@@ -916,6 +915,12 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Info telefono"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Informazioni sul provisioning operatore"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Attiva provisioning operatore"</string>
+    <!-- no translation found for provisioning_info_wfc_entitlement_id (8845188780811890910) -->
+    <skip />
+    <!-- no translation found for update_provisioning_info_wfc_entitlement_id (7044171908781134221) -->
+    <skip />
+    <!-- no translation found for refresh_provisioning_info_wfc_entitlement_id (738894335351353407) -->
+    <skip />
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Il segnale del Bluetooth è debole. Prova a passare al vivavoce."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Notifica sulla qualità della chiamata"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Account SIP deprecati"</string>

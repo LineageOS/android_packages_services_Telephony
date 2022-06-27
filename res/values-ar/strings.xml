@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"إعدادات تمكين الوصول"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"‏مكالمة Wi-Fi من"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"‏مكالمة عبر Wi-Fi"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"انقر مرة أخرى للفتح."</string>
     <string name="message_decode_error" msgid="1061856591500290887">"حدث خطأ أثناء فك ترميز الرسالة."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"‏نشطت شريحة SIM خدمتك وحدّثت إمكانات التجوال لهاتفك."</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"هناك الكثير من المكالمات النشطة. يرجى إنهاء أو دمج المكالمات الموجودة قبل إجراء مكالمة جديدة."</string>
@@ -693,7 +692,7 @@
     <string name="change_pin_enter_new_pin_header" msgid="4739465616733486118">"تعيين رقم تعريف شخصي جديد"</string>
     <string name="change_pin_enter_new_pin_hint" msgid="2326038476516364210">"ينبغي لرقم التعريف الشخصي أن يتكون من <xliff:g id="MIN">%1$d</xliff:g>-<xliff:g id="MAX">%2$d</xliff:g> أرقام."</string>
     <string name="change_pin_confirm_pin_header" msgid="2606303906320705726">"تأكيد رقم التعريف الشخصي"</string>
-    <string name="change_pin_confirm_pins_dont_match" msgid="305164501222587215">"رقما التعريف الشخصي غير متطابقَين"</string>
+    <string name="change_pin_confirm_pins_dont_match" msgid="305164501222587215">"أرقام التعريف الشخصي غير متطابقة"</string>
     <string name="change_pin_succeeded" msgid="2504705600693014403">"تمّ تحديث رقم التعريف الشخصي للبريد الصوتي"</string>
     <string name="change_pin_system_error" msgid="7772788809875146873">"يتعذر تعيين رقم التعريف الشخصي"</string>
     <string name="mobile_data_status_roaming_turned_off_subtext" msgid="6840673347416227054">"تم إيقاف تجوال البيانات"</string>
@@ -916,6 +915,12 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"معلومات الهاتف"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"معلومات توفير خدمة مشغّل شبكة الجوّال"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"توفير خدمة مشغّل شبكة الجوّال"</string>
+    <!-- no translation found for provisioning_info_wfc_entitlement_id (8845188780811890910) -->
+    <skip />
+    <!-- no translation found for update_provisioning_info_wfc_entitlement_id (7044171908781134221) -->
+    <skip />
+    <!-- no translation found for refresh_provisioning_info_wfc_entitlement_id (738894335351353407) -->
+    <skip />
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"إشارة البلوتوث ضعيفة. حاوِل التبديل إلى مكبّر الصوت."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"إشعار بشأن جودة المكالمة"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"‏حسابات SIP المتوقّفة"</string>

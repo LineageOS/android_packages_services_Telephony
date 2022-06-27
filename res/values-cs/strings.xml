@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"Přístupnost"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"Hovor přes Wi-Fi:"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"Volání přes Wi-Fi"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"Akci provedete opětovným klepnutím"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"Při dekódování zprávy došlo k chybě."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"SIM karta aktivovala vaši službu a byly aktualizovány roamingové možnosti telefonu."</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"Máte příliš mnoho aktivních hovorů. Ukončete nebo spojte stávající hovory, než zahájíte nový."</string>
@@ -916,6 +915,12 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Informace o telefonu"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Informace o zprovoznění služby u operátora"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Spustit zprovoznění služby u operátora"</string>
+    <!-- no translation found for provisioning_info_wfc_entitlement_id (8845188780811890910) -->
+    <skip />
+    <!-- no translation found for update_provisioning_info_wfc_entitlement_id (7044171908781134221) -->
+    <skip />
+    <!-- no translation found for refresh_provisioning_info_wfc_entitlement_id (738894335351353407) -->
+    <skip />
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Signál sítě Bluetooth je slabý. Zkuste přepnout na hlasitý odposlech."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Oznámení o kvalitě hovoru"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Zastaralé účty SIP"</string>

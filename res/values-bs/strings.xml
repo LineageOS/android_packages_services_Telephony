@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"Pristupačnost"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"WiFi poziv od"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"WiFi poziv"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"Dodirnite ponovo da otvorite"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"Došlo je do greške prilikom dekodiranja poruke."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"SIM kartica je aktivirala vašu uslugu i ažurirala mogućnosti rominga za telefon."</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"Previše aktivnih poziva. Prekinite ili spojite postojeće pozive prije upućivanja novog poziva."</string>
@@ -916,6 +915,9 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Informacije o telefonu"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Operater koji pruža informacije"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Aktiviranje dodjele resursa operatera"</string>
+    <string name="provisioning_info_wfc_entitlement_id" msgid="8845188780811890910">"ID za WFC Entitlement:"</string>
+    <string name="update_provisioning_info_wfc_entitlement_id" msgid="7044171908781134221">"Ažuriraj"</string>
+    <string name="refresh_provisioning_info_wfc_entitlement_id" msgid="738894335351353407">"Osvježi"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Vaš Bluetooth signal je slab. Pokušajte prebaciti na zvučnik."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Obavještenje o kvalitetu poziva"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Zastarjeli SIP računi"</string>

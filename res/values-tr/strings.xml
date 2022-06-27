@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"Erişilebilirlik"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"Gelen çağrı (kablosuz):"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"Kablosuz çağrı"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"Açmak için tekrar dokunun"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"İletinin kodu çözülürken bir hata oluştu."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"Bir SIM kart, hizmetinizi etkinleştirdi ve telefonunuzun dolaşım özelliklerini güncelledi."</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"Etkin çağrıların sayısı çok fazla. Yeni bir çağrı yapmadan önce lütfen mevcut çağrıları sonlandırın veya birleştirin."</string>
@@ -916,6 +915,12 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Telefon bilgileri"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Operatör Temel Hazırlık Bilgileri"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Tetikleyici Operatör Temel Hazırlığı"</string>
+    <!-- no translation found for provisioning_info_wfc_entitlement_id (8845188780811890910) -->
+    <skip />
+    <!-- no translation found for update_provisioning_info_wfc_entitlement_id (7044171908781134221) -->
+    <skip />
+    <!-- no translation found for refresh_provisioning_info_wfc_entitlement_id (738894335351353407) -->
+    <skip />
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Bluetooth sinyaliniz zayıf. Hoparlöre geçmeyi deneyin."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Arama Kalitesiyle İlgili Bildirim"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Kullanımdan kaldırılan SIP hesapları"</string>
