@@ -584,7 +584,7 @@
     <string name="onscreenSwapCallsText" msgid="2682542150803377991">"ಸ್ವ್ಯಾಪ್‌ ಮಾಡು"</string>
     <string name="onscreenManageCallsText" msgid="1162047856081836469">"ಕರೆಗಳನ್ನು ನಿರ್ವಹಿಸಿ"</string>
     <string name="onscreenManageConferenceText" msgid="4700574060601755137">"ಕಾನ್ಫರೆನ್ಸ್ ನಿರ್ವಹಿಸಿ"</string>
-    <string name="onscreenAudioText" msgid="7224226735052019986">"ಆಡಿಯೊ"</string>
+    <string name="onscreenAudioText" msgid="7224226735052019986">"ಆಡಿಯೋ"</string>
     <string name="onscreenVideoCallText" msgid="1743992456126258698">"ವೀಡಿಯೊ ಕರೆ"</string>
     <string name="importSimEntry" msgid="3892354284082689894">"ಆಮದು"</string>
     <string name="importAllSimEntries" msgid="2628391505643564007">"ಎಲ್ಲವನ್ನೂ ಆಮದು ಮಾಡು"</string>
@@ -684,7 +684,7 @@
     <string name="callFailed_emergency_call_over_wfc_not_available" msgid="5944309590693432042">"ಈ ಸ್ಥಳದಲ್ಲಿ ವೈ-ಫೈ ಕರೆ ಮಾಡುವಿಕೆ ಮೂಲಕ ತುರ್ತು ಕರೆಗಳು ಲಭ್ಯವಿರುವುದಿಲ್ಲ."</string>
     <string name="callFailed_wfc_service_not_available_in_this_location" msgid="3624536608369524988">"ಈ ಸ್ಥಳದಲ್ಲಿ ವೈ-ಫೈ ಕರೆಮಾಡುವಿಕೆ ಲಭ್ಯವಿಲ್ಲ."</string>
     <string name="change_pin_title" msgid="3564254326626797321">"ಧ್ವನಿಮೇಲ್ ಪಿನ್‌ ಬದಲಾಯಿಸಿ"</string>
-    <string name="change_pin_continue_label" msgid="5177011752453506371">"ಮುಂದುವರಿಸು"</string>
+    <string name="change_pin_continue_label" msgid="5177011752453506371">"ಮುಂದುವರಿಸಿ"</string>
     <string name="change_pin_cancel_label" msgid="2301711566758827936">"ರದ್ದುಮಾಡಿ"</string>
     <string name="change_pin_ok_label" msgid="6861082678817785330">"ಸರಿ"</string>
     <string name="change_pin_enter_old_pin_header" msgid="853151335217594829">"ನಿಮ್ಮ ಹಳೆಯ ಪಿನ್‌ ಅನ್ನು ದೃಢೀಕರಿಸಿ"</string>
@@ -835,6 +835,7 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"ಈ ಸೆಟ್ಟಿಂಗ್ ಅನ್ನು ಬದಲಾಯಿಸಲು ನೀವು ಸಾಧನವನ್ನು ಮರುಪ್ರಾರಂಭಿಸುವ ಅಗತ್ಯವಿದೆ."</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"ಮರುಪ್ರಾರಂಭಿಸಿ"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"ರದ್ದುಮಾಡಿ"</string>
+    <string name="removable_esim_string" msgid="7931369811671787649">"ತೆಗೆದುಹಾಕಬಹುದಾದ eSIM ಅನ್ನು ಡೀಫಾಲ್ಟ್ ಆಗಿ ಸೆಟ್ ಮಾಡಿ"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"ಮೊಬೈಲ್ ರೇಡಿಯೋ ಪವರ್"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"ಸಿಮ್ ವಿಳಾಸ ಪುಸ್ತಕವನ್ನು ವೀಕ್ಷಿಸಿ"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"ಸ್ಥಿರ ಡಯಲಿಂಗ್ ಸಂಖ್ಯೆಗಳನ್ನು ವೀಕ್ಷಿಸಿ"</string>
@@ -915,12 +916,6 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"ಫೋನ್ ಮಾಹಿತಿ"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"ವಾಹಕ ಪೂರೈಕೆಯ ಮಾಹಿತಿ"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"ಟ್ರಿಗರ್‌ ವಾಹಕ ಪೂರೈಕೆ"</string>
-    <!-- no translation found for provisioning_info_wfc_entitlement_id (8845188780811890910) -->
-    <skip />
-    <!-- no translation found for update_provisioning_info_wfc_entitlement_id (7044171908781134221) -->
-    <skip />
-    <!-- no translation found for refresh_provisioning_info_wfc_entitlement_id (738894335351353407) -->
-    <skip />
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"ನಿಮ್ಮ ಬ್ಲೂಟೂತ್ ಸಿಗ್ನಲ್ ದುರ್ಬಲವಾಗಿದೆ. ಸ್ಪೀಕರ್‌ಫೋನ್‌ಗೆ ಬದಲಾಯಿಸಲು ಪ್ರಯತ್ನಿಸಿ."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"ಕರೆ ಗುಣಮಟ್ಟದ ಅಧಿಸೂಚನೆ"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"ತಡೆಹಿಡಿಯಲಾಗಿರುವ SIP ಖಾತೆಗಳು"</string>

@@ -835,6 +835,7 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"Anda perlu memulai ulang perangkat untuk mengubah setelan."</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"Mulai ulang"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"Batal"</string>
+    <string name="removable_esim_string" msgid="7931369811671787649">"Tetapkan eSIM yang Dapat Dilepas sebagai Default"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"Daya Radio Seluler"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"Lihat Buku Alamat SIM"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"Lihat Panggilan Terbatas"</string>
@@ -915,12 +916,6 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Info telepon"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Info Provisioning Operator"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Memicu Provisioning Operator"</string>
-    <!-- no translation found for provisioning_info_wfc_entitlement_id (8845188780811890910) -->
-    <skip />
-    <!-- no translation found for update_provisioning_info_wfc_entitlement_id (7044171908781134221) -->
-    <skip />
-    <!-- no translation found for refresh_provisioning_info_wfc_entitlement_id (738894335351353407) -->
-    <skip />
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Sinyal bluetooth Anda lemah. Coba beralih ke speaker ponsel."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Notifikasi Kualitas Panggilan"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Akun SIP yang tidak digunakan lagi"</string>

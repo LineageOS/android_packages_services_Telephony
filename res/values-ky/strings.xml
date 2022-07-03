@@ -170,7 +170,7 @@
     <string name="vm_change_pin_error_too_weak" msgid="8581892952627885719">"Жаңы PIN код өтө эле жөнөкөй. Сырсөз күчтүү болушу үчүн анда сандар үзгүлтүксүз катардан турбашы же сандар кайталанбашы керек."</string>
     <string name="vm_change_pin_error_mismatch" msgid="5364847280026257331">"Эски PIN код дал келген жок."</string>
     <string name="vm_change_pin_error_invalid" msgid="5230002671175580674">"Жаңы PIN коддо жараксыз белгилер бар."</string>
-    <string name="vm_change_pin_error_system_error" msgid="9116483527909681791">"PIN код өзгөртүлгөн жок"</string>
+    <string name="vm_change_pin_error_system_error" msgid="9116483527909681791">"PIN код өзгөргөн жок"</string>
     <string name="vvm_unsupported_message_format" msgid="4206402558577739713">"Колдоого алынбаган билдирүү, угуу үчүн <xliff:g id="NUMBER">%s</xliff:g> чалыңыз."</string>
     <string name="network_settings_title" msgid="7560807107123171541">"Мобилдик тармак"</string>
     <string name="label_available" msgid="1316084116670821258">"Жеткиликтүү тармактар"</string>
@@ -835,6 +835,7 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"Бул жөндөөнү өзгөртүү үчүн түзмөгүңүздү өчүрүп күйгүзүңүз."</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"Өчүрүп-күйгүзүү"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"Жокко чыгаруу"</string>
+    <string name="removable_esim_string" msgid="7931369811671787649">"Чыгарылуучу eSIM-картаны демейки катары коюу"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"Мобилдик радионун кубаты"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"SIM картадагы дарек китепчесин көрүү"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"Туруктуу терүү номерлерин көрүү"</string>
@@ -915,9 +916,6 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Телефондун маалыматы"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Байланыш оператору жөнүндө маалымат"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Байланыш операторун өзгөртүү"</string>
-    <string name="provisioning_info_wfc_entitlement_id" msgid="8845188780811890910">"WFC Entitlement идентификатору:"</string>
-    <string name="update_provisioning_info_wfc_entitlement_id" msgid="7044171908781134221">"Жаңыртуу"</string>
-    <string name="refresh_provisioning_info_wfc_entitlement_id" msgid="738894335351353407">"Жаңыртуу"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Bluetooth сигналыңыз начар. Спикерфонго которулуп көрүңүз."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Чалуунун сапаты тууралуу билдирме"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Колдонуудан чыккан SIP аккаунттары"</string>

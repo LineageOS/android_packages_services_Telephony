@@ -458,7 +458,7 @@
     <string name="auto_retry_mode_title" msgid="2985801935424422340">"ଅଟୋ-ରିଟ୍ରାଏ କରନ୍ତୁ"</string>
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"ଅଟୋ-ରିଟ୍ରାଏ ମୋଡ୍‌କୁ ସକ୍ଷମ କରନ୍ତୁ"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"ଭିଡିଓ କଲ୍ କରିବା ସମୟରେ TTY ମୋଡ୍‌କୁ ପରିବର୍ତ୍ତନ କରିବା ପାଇଁ ଅନୁମତି ନାହିଁ"</string>
-    <string name="menu_add" msgid="5616487894975773141">"ଯୋଗାଯୋଗକୁ ଯୋଡ଼ନ୍ତୁ"</string>
+    <string name="menu_add" msgid="5616487894975773141">"ଯୋଗାଯୋଗକୁ ଯୋଗ କରନ୍ତୁ"</string>
     <string name="menu_edit" msgid="3593856941552460706">"ଯୋଗାଯୋଗକୁ ଏଡିଟ୍‍ କରନ୍ତୁ"</string>
     <string name="menu_delete" msgid="6326861853830546488">"ଯୋଗାଯୋଗକୁ ଡିଲିଟ୍ କରନ୍ତୁ"</string>
     <string name="menu_dial" msgid="4178537318419450012">"ଯୋଗାଯୋଗକୁ ଡାଏଲ୍ କରନ୍ତୁ"</string>
@@ -835,6 +835,7 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"ଏହି ସେଟିଂ ବଦଳାଇବାକୁ ଆପଣଙ୍କୁ ଆପଣଙ୍କର ଡିଭାଇସ୍ ରିଷ୍ଟାର୍ଟ କରିବାକୁ ହେବ।"</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"ରିଷ୍ଟାର୍ଟ କରନ୍ତୁ"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"ବାତିଲ୍ କରନ୍ତୁ"</string>
+    <string name="removable_esim_string" msgid="7931369811671787649">"କାଢ଼ି ହେଉଥିବା eSIMକୁ ଡିଫଲ୍ଟ ଭାବେ ସେଟ କରନ୍ତୁ"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"ମୋବାଇଲ୍ ରେଡିଓ ପାୱାର୍"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"ସିମ୍‌ରେ ଥିବା ଠିକଣା ପୁସ୍ତକ ଦେଖନ୍ତୁ"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"ସ୍ଥାୟୀ ଡାଏଲିଂ ନମ୍ୱରଗୁଡ଼ିକୁ ଦେଖନ୍ତୁ"</string>
@@ -915,9 +916,6 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"ଫୋନ୍ ସୂଚନା"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"ମୋବାଇଲ୍ କମ୍ପାନୀ ପ୍ରାବଧାନ ସୂଚନା"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"କେରିଅର୍ ପ୍ରୋଭିଜନିଂ ଟ୍ରିଗର୍ କରନ୍ତୁ"</string>
-    <string name="provisioning_info_wfc_entitlement_id" msgid="8845188780811890910">"WFC ଏନଟାଇଟେଲମେଣ୍ଟ ID:"</string>
-    <string name="update_provisioning_info_wfc_entitlement_id" msgid="7044171908781134221">"ଅପଡେଟ କରନ୍ତୁ"</string>
-    <string name="refresh_provisioning_info_wfc_entitlement_id" msgid="738894335351353407">"ରିଫ୍ରେସ କରନ୍ତୁ"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"ଆପଣଙ୍କ ବ୍ଲୁଟୁଥ୍ ସିଗନାଲ୍ ଦୁର୍ବଳ ଅଛି। ସ୍ପିକରଫୋନକୁ ସ୍ୱିଚ୍ କରିବା ପାଇଁ ଚେଷ୍ଟା କରନ୍ତୁ।"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"କଲ୍ ଗୁଣବତ୍ତା ବିଜ୍ଞପ୍ତି"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"ଅସମର୍ଥିତ SIP ଆକାଉଣ୍ଟଗୁଡ଼ିକ"</string>
