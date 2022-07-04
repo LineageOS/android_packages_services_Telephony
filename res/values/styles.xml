@@ -34,7 +34,7 @@
         <item name="android:paddingStart">10dip</item>
         <item name="android:paddingTop">10dip</item>
         <item name="android:paddingEnd">10dip</item>
-        <item name="android:paddingBottom">10dip</item>
+        <item name="android:paddingBottom">120dip</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
     </style>
@@ -363,5 +363,17 @@
            parent="@android:style/TextAppearance.Material.Subhead">
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textSize">@dimen/emergency_shortcut_tap_hint_text_size</item>
+    </style>
+
+    <style name="RadioPrimaryButton" parent="android:Widget.DeviceDefault.Button.Colored">
+        <item name="android:theme">@style/RoundedCornerThemeOverlay</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@*android:string/config_bodyFontFamilyMedium</item>
+    </style>
+
+    <style name="RoundedCornerThemeOverlay">
+        <item name="android:buttonCornerRadius">24dp</item>
+        <item name="android:paddingHorizontal">16dp</item>
+        <item name="android:colorControlHighlight">@*android:color/ripple_material_dark</item>
     </style>
 </resources>

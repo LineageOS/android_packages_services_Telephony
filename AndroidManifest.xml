@@ -612,7 +612,7 @@
             android:name=".settings.RadioInfo"
             android:label="@string/phone_info_label"
             android:exported="true"
-            android:theme="@style/Theme.AppCompat.DayNight">
+            android:theme="@style/Theme.SubSettingsBase">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.DEVELOPMENT_PREFERENCE" />
