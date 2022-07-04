@@ -298,6 +298,7 @@
         <!-- Ping stats -->
         <Button android:id="@+id/ping_test"
                 android:textSize="14sp"
+                style="@style/RadioPrimaryButton"
                 android:layout_marginTop="8dip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -419,6 +420,7 @@
         <LinearLayout style="@style/RadioInfo_entry_layout"
                       android:orientation="horizontal" >
             <Button android:id="@+id/carrier_provisioning"
+                    style="@style/RadioPrimaryButton"
                     android:layout_marginTop="8dip"
                     android:layout_weight="1"
                     android:layout_width="0dp"
@@ -426,6 +428,7 @@
                     android:text="@string/carrier_provisioning"
                     android:textSize="14sp"/>
             <Button android:id="@+id/trigger_carrier_provisioning"
+                    style="@style/RadioPrimaryButton"
                     android:layout_marginTop="8dip"
                     android:layout_weight="1"
                     android:layout_width="0dp"
@@ -433,6 +436,7 @@
                     android:text="@string/trigger_carrier_provisioning"
                     android:textSize="14sp"/>
             <Button android:id="@+id/oem_info"
+                    style="@style/RadioPrimaryButton"
                     android:layout_marginTop="8dip"
                     android:layout_weight="1"
                     android:layout_width="0dp"
@@ -449,6 +453,7 @@
                       android:layout_alignBaseline="@+id/update_smsc"
                       style="@style/info_label" />
             <Button android:id="@+id/refresh_smsc"
+                    style="@style/RadioPrimaryButton"
                     android:textSize="14sp"
                     android:layout_marginTop="8dip"
                     android:layout_width="wrap_content"
@@ -457,6 +462,7 @@
                     android:layout_alignParentEnd="true"
                     />
             <Button android:id="@+id/update_smsc"
+                    style="@style/RadioPrimaryButton"
                     android:textSize="14sp"
                     android:layout_marginTop="8dip"
                     android:layout_width="wrap_content"
@@ -475,6 +481,7 @@
         <!-- Test setting to ignore bad DNS, useful in lab environments -->
         <LinearLayout style="@style/RadioInfo_entry_layout">
             <Button android:id="@+id/dns_check_toggle"
+                    style="@style/RadioPrimaryButton"
                     android:textSize="14sp"
                     android:layout_marginTop="8dip"
                     android:layout_width="wrap_content"
@@ -483,7 +490,5 @@
                     />
             <TextView android:id="@+id/dnsCheckState" style="@style/info_value" />
         </LinearLayout>
-
-
     </LinearLayout>
 </ScrollView>
