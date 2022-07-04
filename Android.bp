@@ -51,6 +51,8 @@ android_app {
         "dropbox_flags_lib",
     ],
 
+    defaults: ["SettingsLibDefaults"],
+
     srcs: [
         ":framework-telephony-common-shared-srcs",
         "src/**/*.java",
