@@ -167,7 +167,7 @@
     <string name="vm_change_pin_progress_message" msgid="626015184502739044">"దయచేసి వేచి ఉండండి."</string>
     <string name="vm_change_pin_error_too_short" msgid="1789139338449945483">"కొత్త PIN చాలా చిన్నదిగా ఉంది."</string>
     <string name="vm_change_pin_error_too_long" msgid="3634907034310018954">"కొత్త PIN చాలా పొడవు ఉంది."</string>
-    <string name="vm_change_pin_error_too_weak" msgid="8581892952627885719">"కొత్త PIN చాలా బలహీనంగా ఉంది. శక్తివంతమైన పాస్‌వర్డ్‌లో వరుస శ్రేణిలో అక్షరాలు/అంకెలు లేదా పునరావృత అంకెలు ఉండకూడదు."</string>
+    <string name="vm_change_pin_error_too_weak" msgid="8581892952627885719">"కొత్త PIN చాలా బలహీనంగా ఉంది. శక్తివంతమైన పాస్‌వర్డ్‌లో వరుస శ్రేణిలో అక్షరాలు/అంకెలు లేదా రిపీట్ అంకెలు ఉండకూడదు."</string>
     <string name="vm_change_pin_error_mismatch" msgid="5364847280026257331">"పాత PIN సరిపోలలేదు."</string>
     <string name="vm_change_pin_error_invalid" msgid="5230002671175580674">"కొత్త PIN చెల్లని అక్షరాలను కలిగి ఉంది."</string>
     <string name="vm_change_pin_error_system_error" msgid="9116483527909681791">"PINని మార్చడం సాధ్యపడలేదు"</string>
