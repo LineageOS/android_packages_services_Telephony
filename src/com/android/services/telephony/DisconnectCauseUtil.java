@@ -729,6 +729,10 @@ public class DisconnectCauseUtil {
                 resourceId = R.string.incall_error_emergency_only;
                 break;
 
+            case android.telephony.DisconnectCause.ICC_ERROR:
+                resourceId = R.string.callFailed_simError;
+                break;
+
             case android.telephony.DisconnectCause.OUT_OF_SERVICE:
                 // No network connection.
                 if (ImsUtil.shouldPromoteWfc(context, phoneId)) {
