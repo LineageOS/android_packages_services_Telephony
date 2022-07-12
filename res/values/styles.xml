@@ -207,8 +207,6 @@
     <style name="DialerAlertDialogTheme"
         parent="@android:style/Theme.Material.Light.Dialog">
         <item name="android:forceDarkAllowed">true</item>
-        <item name="android:colorAccent">@color/dialer_theme_color</item>
-        <item name="android:textColor">?android:attr/textColorPrimaryInverseDisableOnly</item>
     </style>
 
     <style name="Empty" parent="@android:style/Theme.Material.Light">
