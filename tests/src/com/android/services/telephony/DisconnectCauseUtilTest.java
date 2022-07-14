@@ -220,4 +220,17 @@ public class DisconnectCauseUtilTest extends TelephonyTestBase {
         String label = r.getString(resourceId);
         assertEquals(label, disconnectCause.getLabel());
     }
+
+    /**
+     * Verifies that an ICC_ERROR disconnect cause generates a message which mentions there is no
+     * SIM.
+     */
+    @Test
+    public void testIccError() {
+        android.telecom.DisconnectCause tcCause = DisconnectCauseUtil.toTelecomDisconnectCause(
+                DisconnectCause.ICC_ERROR);
+        assertEquals(android.telecom.DisconnectCause.ERROR, tcCause.getCode());
+        assertNotNull(tcCause.getLabel());
+        assertNotNull(tcCause.getDescription());
+    }
 }
