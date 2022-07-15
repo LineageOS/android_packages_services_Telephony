@@ -2850,6 +2850,95 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
+    /**
+     * Vote on powering off the radio for a reason. The radio will be turned on only when there is
+     * no reason to power it off. When any of the voters want to power it off, it will be turned
+     * off. In case of emergency, the radio will be turned on even if there are some reasons for
+     * powering it off, and these radio off votes will be cleared.
+     * Multiple apps can vote for the same reason and the last vote will take effect. Each app is
+     * responsible for its vote. A powering-off vote of a reason will be maintained until it is
+     * cleared by calling {@link clearRadioPowerOffForReason} for that reason, or an emergency call
+     * is made, or the device is rebooted. When an app comes backup from a crash, it needs to make
+     * sure if its vote is as expected. An app can use the API {@link getRadioPowerOffReasons} to
+     * check its vote.
+     *
+     * @param subId The subscription ID.
+     * @param reason The reason for powering off radio.
+     * @return true on success and false on failure.
+     */
+    public boolean requestRadioPowerOffForReason(int subId,
+            @TelephonyManager.RadioPowerReason int reason) {
+        enforceModifyPermission();
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            final Phone phone = getPhone(subId);
+            if (phone != null) {
+                phone.setRadioPowerForReason(false, reason);
+                return true;
+            } else {
+                return false;
+            }
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Remove the vote on powering off the radio for a reason, as requested by
+     * {@link requestRadioPowerOffForReason}.
+     *
+     * @param subId The subscription ID.
+     * @param reason The reason for powering off radio.
+     * @return true on success and false on failure.
+     */
+    public boolean clearRadioPowerOffForReason(int subId,
+            @TelephonyManager.RadioPowerReason int reason) {
+        enforceModifyPermission();
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            final Phone phone = getPhone(subId);
+            if (phone != null) {
+                phone.setRadioPowerForReason(true, reason);
+                return true;
+            } else {
+                return false;
+            }
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Get reasons for powering off radio, as requested by {@link requestRadioPowerOffForReason}.
+     *
+     * @param subId The subscription ID.
+     * @param callingPackage The package making the call.
+     * @param callingFeatureId The feature in the package.
+     * @return List of reasons for powering off radio.
+     */
+    public List getRadioPowerOffReasons(int subId, String callingPackage, String callingFeatureId) {
+        enforceReadPrivilegedPermission("getRadioPowerOffReasons");
+
+        final long identity = Binder.clearCallingIdentity();
+        List result = new ArrayList();
+        try {
+            if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(mApp, subId,
+                    callingPackage, callingFeatureId, "getRadioPowerOffReasons")) {
+                return result;
+            }
+
+            final Phone phone = getPhone(subId);
+            if (phone != null) {
+                result.addAll(phone.getRadioPowerOffReasons());
+            }
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+        return result;
+    }
+
     // FIXME: subId version needed
     @Override
     public boolean enableDataConnectivity(String callingPackage) {
@@ -10095,7 +10184,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         for (int i = 0; i < TelephonyManager.getDefault().getActiveModemCount(); i++) {
             Phone phone = PhoneFactory.getPhone(i);
             if (phone != null) {
-                phone.setRadioPowerForReason(enable, Phone.RADIO_POWER_REASON_THERMAL);
+                phone.setRadioPowerForReason(enable, TelephonyManager.RADIO_POWER_REASON_THERMAL);
                 isPhoneAvailable = true;
             }
         }
