@@ -805,8 +805,8 @@
     <string name="supp_service_outgoing_calls_barred" msgid="5205725332394087112">"ወጪ ጥሪዎች ተከልክለዋል።"</string>
     <string name="supp_service_call_forwarding_active" msgid="7910162960395132464">"ጥሪ ማስተላለፍ ንቁ።"</string>
     <string name="supp_service_additional_call_forwarded" msgid="8772753260008398632">"ተጨማሪ ጥሪ ተላልፏል።"</string>
-    <string name="supp_service_additional_ect_connected" msgid="8525934162945220237">"ግልጽ የጥሪ ማስተላለፍ ተጠናቅቋል።"</string>
-    <string name="supp_service_additional_ect_connecting" msgid="7046240728781222753">"ግልጽ የጥሪ ማስተላለፍ በሂደት ላይ።"</string>
+    <string name="supp_service_additional_ect_connected" msgid="8525934162945220237">"ግልፅ የጥሪ ማስተላለፍ ተጠናቅቋል።"</string>
+    <string name="supp_service_additional_ect_connecting" msgid="7046240728781222753">"ግልፅ የጥሪ ማስተላለፍ በሂደት ላይ።"</string>
     <string name="supp_service_call_on_hold" msgid="2836811319594503059">"ጥሪ በይቆይ ላይ።"</string>
     <string name="supp_service_call_resumed" msgid="3786864005920743546">"ጥሪ ከቆመበት ቀጥሏል።"</string>
     <string name="supp_service_deflected_call" msgid="7565979024562921707">"ጥሪው አቅጣጫው ተቀይሯል።"</string>
