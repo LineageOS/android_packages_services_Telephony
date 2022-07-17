@@ -75,7 +75,7 @@
     <string name="phone_accounts_configure_account_settings" msgid="6622119715253196586">"Konfigurer kontoinnstillingene"</string>
     <string name="phone_accounts_all_calling_accounts" msgid="1609600743500618823">"Alle ringekontoer"</string>
     <string name="phone_accounts_all_calling_accounts_summary" msgid="2214134955430107240">"Velg hvilke kontoer som kan ringe"</string>
-    <string name="wifi_calling" msgid="3650509202851355742">"Wi-Fi-anrop"</string>
+    <string name="wifi_calling" msgid="3650509202851355742">"Wifi-anrop"</string>
     <string name="connection_service_default_label" msgid="7332739049855715584">"Innebygd tilkoblingstjeneste"</string>
     <string name="voicemail" msgid="7697769412804195032">"Talepostkasse"</string>
     <string name="voicemail_settings_with_label" msgid="4228431668214894138">"Talepostkasse (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -309,7 +309,7 @@
     <string name="sim_selection_required_pref" msgid="6985901872978341314">"Du må velge en SIM-innstilling"</string>
     <string name="sim_change_data_title" msgid="9142726786345906606">"Endre SIM-kort for databruk?"</string>
     <string name="sim_change_data_message" msgid="3567358694255933280">"Vil du bruke <xliff:g id="NEW_SIM">%1$s</xliff:g> i stedet for <xliff:g id="OLD_SIM">%2$s</xliff:g> for mobildata?"</string>
-    <string name="wifi_calling_settings_title" msgid="5800018845662016507">"Wi-Fi-anrop"</string>
+    <string name="wifi_calling_settings_title" msgid="5800018845662016507">"Wifi-anrop"</string>
     <string name="video_calling_settings_title" msgid="342829454913266078">"Videoanrop via mobiloperatør"</string>
     <string name="gsm_umts_options" msgid="4968446771519376808">"GSM/UMTS-innstillinger"</string>
     <string name="cdma_options" msgid="3669592472226145665">"CDMA-innstillinger"</string>
@@ -672,7 +672,7 @@
     <string name="sim_description_emergency_calls" msgid="5146872803938897296">"Kun nødanrop"</string>
     <string name="sim_description_default" msgid="7474671114363724971">"SIM-kort, spor: <xliff:g id="SLOT_ID">%s</xliff:g>"</string>
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"Tilgjengelighet"</string>
-    <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"Wi-Fi-anrop fra"</string>
+    <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"Wifi-anrop fra"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"Oppringing via Wi-Fi"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"Det oppsto en feil under dekoding av meldingen."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"Et SIM-kort har aktivert tjenesten din og oppdatert roamingfunksjonene for telefonen din."</string>
@@ -681,8 +681,8 @@
     <string name="callFailed_wifi_lost" msgid="1788036730589163141">"Samtalen ble avsluttet fordi Wi-Fi-forbindelsen ble brutt."</string>
     <string name="dialFailed_low_battery" msgid="6857904237423407056">"Kan ikke utføre videoanropet på grunn av lite batteristrøm."</string>
     <string name="callFailed_low_battery" msgid="4056828320214416182">"Videosamtalen ble avsluttet på grunn av lite batteristrøm."</string>
-    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="5944309590693432042">"Nødanrop via Wi-Fi-anrop er ikke tilgjengelig på dette stedet."</string>
-    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="3624536608369524988">"Wi-Fi-anrop er ikke tilgjengelige på dette stedet."</string>
+    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="5944309590693432042">"Nødanrop via wifi-anrop er ikke tilgjengelig på dette stedet."</string>
+    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="3624536608369524988">"Wifi-anrop er ikke tilgjengelige på dette stedet."</string>
     <string name="change_pin_title" msgid="3564254326626797321">"Endre PIN-kode for talemeldinger"</string>
     <string name="change_pin_continue_label" msgid="5177011752453506371">"Fortsett"</string>
     <string name="change_pin_cancel_label" msgid="2301711566758827936">"Avbryt"</string>
@@ -827,7 +827,7 @@
     <string name="radio_info_data_connection_disable" msgid="6404751291511368706">"Slå av datatilkobling"</string>
     <string name="volte_provisioned_switch_string" msgid="4812874990480336178">"VoLTE-tildelt"</string>
     <string name="vt_provisioned_switch_string" msgid="8295542122512195979">"Identitetshåndtering aktiv for videoanrop"</string>
-    <string name="wfc_provisioned_switch_string" msgid="3835004640321078988">"Identitetshåndtering aktiv for Wi-Fi-anrop"</string>
+    <string name="wfc_provisioned_switch_string" msgid="3835004640321078988">"Identitetshåndtering aktiv for wifi-anrop"</string>
     <string name="eab_provisioned_switch_string" msgid="4449676720736033035">"EAB/Presence er klargjort"</string>
     <string name="cbrs_data_switch_string" msgid="6060356430838077653">"CBRS-data"</string>
     <string name="dsds_switch_string" msgid="7564769822086764796">"Slå på DSDS"</string>
