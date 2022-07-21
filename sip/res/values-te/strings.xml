@@ -36,7 +36,7 @@
     <string name="alert_dialog_close" msgid="1734746505531110706">"ప్రొఫైల్‌ను మూసివేయండి"</string>
     <string name="alert_dialog_ok" msgid="7806760618798687406">"సరే"</string>
     <string name="close_profile" msgid="3756064641769751774">"మూసివేయి"</string>
-    <string name="registration_status_checking_status" msgid="884179594507591180">"స్టేటస్‌ని తనిఖీ చేస్తోంది..."</string>
+    <string name="registration_status_checking_status" msgid="884179594507591180">"స్టేటస్‌ని చెక్ చేస్తోంది..."</string>
     <string name="registration_status_registering" msgid="7986331597809521791">"నమోదు చేస్తోంది…"</string>
     <string name="registration_status_still_trying" msgid="7178623685868766282">"ఇప్పటికీ ప్రయత్నిస్తోంది..."</string>
     <string name="registration_status_not_receiving" msgid="3873074208531938401">"కాల్స్‌ను స్వీకరించడం లేదు."</string>
@@ -46,7 +46,7 @@
     <string name="registration_status_done" msgid="6787397199273357721">"కాల్స్‌ను స్వీకరిస్తోంది."</string>
     <string name="registration_status_failed_try_later" msgid="7855389184910312091">"ఖాతా నమోదు విఫలమైంది: (<xliff:g id="REGISTRATION_ERROR_MESSAGE">%s</xliff:g>); తర్వాత ప్రయత్నిస్తుంది"</string>
     <string name="registration_status_invalid_credentials" msgid="8896714049938660777">"ఖాతా నమోదు విఫలమైంది: చెల్లని వినియోగదారు పేరు లేదా పాస్‌వర్డ్."</string>
-    <string name="registration_status_server_unreachable" msgid="3832339558868965604">"ఖాతా నమోదు విఫలమైంది: సర్వర్ పేరు తనిఖీ చేయండి."</string>
+    <string name="registration_status_server_unreachable" msgid="3832339558868965604">"ఖాతా నమోదు విఫలమైంది: సర్వర్ పేరు చెక్ చేయండి."</string>
     <string name="third_party_account_summary" msgid="5918779106950859167">"ఈ ఖాతా ప్రస్తుతం <xliff:g id="ACCOUNT_OWNER">%s</xliff:g> యాప్‌ ద్వారా ఉపయోగంలో ఉంది."</string>
     <string name="sip_edit_title" msgid="7438891546610820307">"SIP ఖాతా వివరాలు"</string>
     <string name="sip_edit_new_title" msgid="8394790068979636381">"SIP ఖాతా వివరాలు"</string>
@@ -71,7 +71,7 @@
     <string name="all_empty_alert" msgid="6085603517610199098">"కొత్త SIP ఖాతా వివరాలను నమోదు చేయండి."</string>
     <string name="empty_alert" msgid="3693655518612836718">"<xliff:g id="INPUT_FIELD_NAME">%s</xliff:g> అవసరం కావున ఖాళీగా వదిలిపెట్టకూడదు."</string>
     <string name="not_a_valid_port" msgid="3664668836663491376">"పోర్ట్ సంఖ్య 1000 మరియు 65534 మధ్య ఉండాలి."</string>
-    <string name="no_internet_available" msgid="161720645084325479">"SIP కాల్ చేయడానికి, ముందుగా మీ ఇంటర్నెట్ కనెక్షన్‌ను తనిఖీ చేయండి."</string>
+    <string name="no_internet_available" msgid="161720645084325479">"SIP కాల్ చేయడానికి, ముందుగా మీ ఇంటర్నెట్ కనెక్షన్‌ను చెక్ చేయండి."</string>
     <string name="no_wifi_available" msgid="1179092018692306312">"మీరు SIP కాల్స్‌ చేయడం కోసం Wi-Fi నెట్‌వర్క్‌కు కనెక్ట్ అవ్వడం అవసరం (వైర్‌లెస్ &amp; నెట్‌వర్క్ సెట్టింగ్‌లను ఉపయోగించండి)."</string>
     <string name="no_voip" msgid="3366395789297981738">"SIP కాలింగ్‌కి మద్దతు లేదు"</string>
     <string name="sip_system_decide" msgid="197230378376326430">"1205664026446156265"</string>
