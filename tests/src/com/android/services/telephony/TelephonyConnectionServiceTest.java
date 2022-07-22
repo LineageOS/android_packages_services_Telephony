@@ -49,6 +49,7 @@ import android.telecom.TelecomManager;
 import android.telephony.CarrierConfigManager;
 import android.telephony.RadioAccessFamily;
 import android.telephony.ServiceState;
+import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.telephony.emergency.EmergencyNumber;
 import android.test.suitebuilder.annotation.SmallTest;
@@ -396,9 +397,6 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         // Slot 1 has more capabilities
         setPhoneRadioAccessFamily(slot0Phone, RadioAccessFamily.RAF_GSM);
         setPhoneRadioAccessFamily(slot1Phone, RadioAccessFamily.RAF_LTE);
-        // Slot 1 has SIM inserted.
-        setSlotHasIccCard(SLOT_0_PHONE_ID, false /*isInserted*/);
-        setSlotHasIccCard(SLOT_1_PHONE_ID, true /*isInserted*/);
 
         Phone resultPhone = mTestConnectionService.getFirstPhoneForEmergencyCall();
 
@@ -511,9 +509,6 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         // Make Capability the same
         setPhoneRadioAccessFamily(slot0Phone, RadioAccessFamily.RAF_LTE);
         setPhoneRadioAccessFamily(slot1Phone, RadioAccessFamily.RAF_LTE);
-        // Two SIMs inserted
-        setSlotHasIccCard(SLOT_0_PHONE_ID, true /*isInserted*/);
-        setSlotHasIccCard(SLOT_1_PHONE_ID, true /*isInserted*/);
 
         Phone resultPhone = mTestConnectionService.getFirstPhoneForEmergencyCall();
 
@@ -542,9 +537,6 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         // Make Capability the same
         setPhoneRadioAccessFamily(slot0Phone, RadioAccessFamily.RAF_LTE);
         setPhoneRadioAccessFamily(slot1Phone, RadioAccessFamily.RAF_LTE);
-        // Slot 0 has SIM inserted.
-        setSlotHasIccCard(SLOT_0_PHONE_ID, true /*isInserted*/);
-        setSlotHasIccCard(SLOT_1_PHONE_ID, false /*isInserted*/);
 
         Phone resultPhone = mTestConnectionService.getFirstPhoneForEmergencyCall();
 
@@ -573,9 +565,35 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         // Make Capability the same
         setPhoneRadioAccessFamily(slot0Phone, RadioAccessFamily.RAF_LTE);
         setPhoneRadioAccessFamily(slot1Phone, RadioAccessFamily.RAF_LTE);
-        // Slot 1 has SIM inserted.
-        setSlotHasIccCard(SLOT_0_PHONE_ID, false /*isInserted*/);
-        setSlotHasIccCard(SLOT_1_PHONE_ID, true /*isInserted*/);
+
+        Phone resultPhone = mTestConnectionService.getFirstPhoneForEmergencyCall();
+
+        assertEquals(slot1Phone, resultPhone);
+    }
+
+    /**
+     * Prerequisites:
+     * - MSIM Device with one ESIM, only slot 1 inserted has PSIM inserted
+     * - Both phones have the same capability
+     *
+     * Result: getFirstPhoneForEmergencyCall returns the slot 1 phone because it is the only one
+     * with a SIM inserted
+     */
+    @Test
+    @SmallTest
+    public void testEqualCapabilitySim1Inserted_WithOneEsim() {
+        Phone slot0Phone = makeTestPhone(SLOT_0_PHONE_ID, ServiceState.STATE_OUT_OF_SERVICE,
+            false /*isEmergencyOnly*/);
+        Phone slot1Phone = makeTestPhone(SLOT_1_PHONE_ID, ServiceState.STATE_OUT_OF_SERVICE,
+            false /*isEmergencyOnly*/);
+        setDefaultPhone(slot0Phone);
+        setupDeviceConfig(slot0Phone, slot1Phone, SLOT_0_PHONE_ID);
+        when(slot0Phone.getSubId()).thenReturn(SubscriptionManager.INVALID_SUBSCRIPTION_ID);
+        setPhoneSlotState(SLOT_0_PHONE_ID, TelephonyManager.SIM_STATE_READY);
+        setPhoneSlotState(SLOT_1_PHONE_ID, TelephonyManager.SIM_STATE_READY);
+        // Make Capability the same
+        setPhoneRadioAccessFamily(slot0Phone, RadioAccessFamily.RAF_LTE);
+        setPhoneRadioAccessFamily(slot1Phone, RadioAccessFamily.RAF_LTE);
 
         Phone resultPhone = mTestConnectionService.getFirstPhoneForEmergencyCall();
 
@@ -604,9 +622,6 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         // Make Capability the same
         setPhoneRadioAccessFamily(slot0Phone, RadioAccessFamily.RAF_GSM);
         setPhoneRadioAccessFamily(slot1Phone, RadioAccessFamily.RAF_LTE);
-        // No SIMs inserted
-        setSlotHasIccCard(SLOT_0_PHONE_ID, false /*isInserted*/);
-        setSlotHasIccCard(SLOT_1_PHONE_ID, false /*isInserted*/);
 
         Phone resultPhone = mTestConnectionService.getFirstPhoneForEmergencyCall();
 
@@ -634,9 +649,63 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         // Make Capability the same
         setPhoneRadioAccessFamily(slot0Phone, RadioAccessFamily.RAF_UNKNOWN);
         setPhoneRadioAccessFamily(slot1Phone, RadioAccessFamily.RAF_UNKNOWN);
-        // No SIMs inserted
-        setSlotHasIccCard(SLOT_0_PHONE_ID, false /*isInserted*/);
-        setSlotHasIccCard(SLOT_1_PHONE_ID, false /*isInserted*/);
+
+        Phone resultPhone = mTestConnectionService.getFirstPhoneForEmergencyCall();
+
+        assertEquals(slot0Phone, resultPhone);
+    }
+
+    /**
+     * Prerequisites:
+     * - MSIM Device, no SIMs inserted (one ESIM)
+     * - Both SIMs have the same capability (Unknown)
+     *
+     * Result: getFirstPhoneForEmergencyCall returns the slot 0 phone, since it is the first slot.
+     */
+    @Test
+    @SmallTest
+    public void testEqualCapabilityNoSimsInserted_WithOneESim() {
+        Phone slot0Phone = makeTestPhone(SLOT_0_PHONE_ID, ServiceState.STATE_OUT_OF_SERVICE,
+            false /*isEmergencyOnly*/);
+        Phone slot1Phone = makeTestPhone(SLOT_1_PHONE_ID, ServiceState.STATE_OUT_OF_SERVICE,
+            false /*isEmergencyOnly*/);
+        setDefaultPhone(slot0Phone);
+        setupDeviceConfig(slot0Phone, slot1Phone, SLOT_0_PHONE_ID);
+        setPhoneSlotState(SLOT_0_PHONE_ID, TelephonyManager.SIM_STATE_ABSENT);
+        when(slot1Phone.getSubId()).thenReturn(SubscriptionManager.INVALID_SUBSCRIPTION_ID);
+        setPhoneSlotState(SLOT_1_PHONE_ID, TelephonyManager.SIM_STATE_READY);
+        // Make Capability the samesvim
+        setPhoneRadioAccessFamily(slot0Phone, RadioAccessFamily.RAF_UNKNOWN);
+        setPhoneRadioAccessFamily(slot1Phone, RadioAccessFamily.RAF_UNKNOWN);
+
+        Phone resultPhone = mTestConnectionService.getFirstPhoneForEmergencyCall();
+
+        assertEquals(slot0Phone, resultPhone);
+    }
+
+    /**
+     * Prerequisites:
+     * - MSIM Device, both ESIMS (no profile activated)
+     * - Both phones have the same capability (Unknown)
+     *
+     * Result: getFirstPhoneForEmergencyCall returns the slot 0 phone, since it is the first slot.
+     */
+    @Test
+    @SmallTest
+    public void testEqualCapabilityNoSimsInserted_WithTwoESims() {
+        Phone slot0Phone = makeTestPhone(SLOT_0_PHONE_ID, ServiceState.STATE_OUT_OF_SERVICE,
+            false /*isEmergencyOnly*/);
+        Phone slot1Phone = makeTestPhone(SLOT_1_PHONE_ID, ServiceState.STATE_OUT_OF_SERVICE,
+            false /*isEmergencyOnly*/);
+        setDefaultPhone(slot0Phone);
+        setupDeviceConfig(slot0Phone, slot1Phone, SLOT_0_PHONE_ID);
+        when(slot0Phone.getSubId()).thenReturn(SubscriptionManager.INVALID_SUBSCRIPTION_ID);
+        setPhoneSlotState(SLOT_0_PHONE_ID, TelephonyManager.SIM_STATE_READY);
+        when(slot1Phone.getSubId()).thenReturn(SubscriptionManager.INVALID_SUBSCRIPTION_ID);
+        setPhoneSlotState(SLOT_1_PHONE_ID, TelephonyManager.SIM_STATE_READY);
+        // Make Capability the sames
+        setPhoneRadioAccessFamily(slot0Phone, RadioAccessFamily.RAF_UNKNOWN);
+        setPhoneRadioAccessFamily(slot1Phone, RadioAccessFamily.RAF_UNKNOWN);
 
         Phone resultPhone = mTestConnectionService.getFirstPhoneForEmergencyCall();
 
@@ -1495,10 +1564,6 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
 
     private void setPhoneSlotState(int slotId, int slotState) {
         when(mSubscriptionManagerProxy.getSimStateForSlotIdx(slotId)).thenReturn(slotState);
-    }
-
-    private void setSlotHasIccCard(int slotId, boolean isInserted) {
-        when(mTelephonyManagerProxy.hasIccCard(slotId)).thenReturn(isInserted);
     }
 
     private void setDefaultPhone(Phone phone) {
