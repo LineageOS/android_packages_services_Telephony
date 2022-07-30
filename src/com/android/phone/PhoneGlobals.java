@@ -549,15 +549,15 @@ public class PhoneGlobals extends ContextWrapper {
                     mHandler, EVENT_MULTI_SIM_CONFIG_CHANGED, null);
 
             mTelephonyCallbacks = new PhoneAppCallback[tm.getSupportedModemCount()];
-
-            for (Phone phone : PhoneFactory.getPhones()) {
-                int subId = phone.getSubId();
-                PhoneAppCallback callback = new PhoneAppCallback(subId);
-                tm.createForSubscriptionId(subId).registerTelephonyCallback(
-                        TelephonyManager.INCLUDE_LOCATION_DATA_NONE, mHandler::post, callback);
-                mTelephonyCallbacks[phone.getPhoneId()] = callback;
+            if (tm.getSupportedModemCount() > 0) {
+                for (Phone phone : PhoneFactory.getPhones()) {
+                    int subId = phone.getSubId();
+                    PhoneAppCallback callback = new PhoneAppCallback(subId);
+                    tm.createForSubscriptionId(subId).registerTelephonyCallback(
+                            TelephonyManager.INCLUDE_LOCATION_DATA_NONE, mHandler::post, callback);
+                    mTelephonyCallbacks[phone.getPhoneId()] = callback;
+                }
             }
-
             mCarrierVvmPackageInstalledReceiver.register(this);
 
             //set the default values for the preferences in the phone.
