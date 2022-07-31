@@ -456,11 +456,7 @@ public class CallFeaturesSetting extends PreferenceActivity
                     CarrierConfigManager.KEY_USE_WFC_HOME_NETWORK_MODE_IN_ROAMING_NETWORK_BOOL,
                     false);
         boolean isDataEnabled;
-        if (mPhone.isUsingNewDataStack()) {
-            isDataEnabled = mPhone.getDataSettingsManager().isDataEnabled();
-        } else {
-            isDataEnabled = mPhone.getDataEnabledSettings().isDataEnabled();
-        }
+        isDataEnabled = mPhone.getDataSettingsManager().isDataEnabled();
         if (mImsMgr.isVtEnabledByPlatform() && mImsMgr.isVtProvisionedOnDevice()
                 && (carrierConfig.getBoolean(
                         CarrierConfigManager.KEY_IGNORE_DATA_ENABLED_CHANGED_FOR_VIDEO_CALLS)
