@@ -171,8 +171,6 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             "get-allowed-network-types-for-users";
     private static final String SET_ALLOWED_NETWORK_TYPES_FOR_USER =
             "set-allowed-network-types-for-users";
-    // Check if telephony new data stack is enabled.
-    private static final String GET_DATA_MODE = "get-data-mode";
     private static final String GET_IMEI = "get-imei";
     private static final String GET_SIM_SLOTS_MAPPING = "get-sim-slots-mapping";
     // Take advantage of existing methods that already contain permissions checks when possible.
@@ -329,8 +327,6 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             case GET_ALLOWED_NETWORK_TYPES_FOR_USER:
             case SET_ALLOWED_NETWORK_TYPES_FOR_USER:
                 return handleAllowedNetworkTypesCommand(cmd);
-            case GET_DATA_MODE:
-                return handleGetDataMode();
             case GET_IMEI:
                 return handleGetImei();
             case GET_SIM_SLOTS_MAPPING:
@@ -2911,24 +2907,6 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             Log.e(LOG_TAG, "AllowedNetworkTypes: " + e);
             return -1;
         }
-    }
-
-    private int handleGetDataMode() {
-        if (!checkShellUid()) {
-            return -1;
-        }
-
-        boolean newDataStackEnabled = false;
-        try {
-            newDataStackEnabled = mInterface.isUsingNewDataStack();
-        } catch (RemoteException e) {
-            getOutPrintWriter().println("Something went wrong. " + e);
-            return -1;
-        }
-
-        getOutPrintWriter().println("Telephony is running with the "
-                + (newDataStackEnabled ? "new" : "old") + " data stack.");
-        return 0;
     }
 
     private int handleRadioSetModemServiceCommand() {
