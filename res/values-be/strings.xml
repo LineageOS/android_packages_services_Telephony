@@ -20,7 +20,7 @@
     <string name="phoneAppLabel" product="default" msgid="130465039375347763">"Тэлефонныя службы"</string>
     <string name="emergencyDialerIconLabel" msgid="8668005772339436680">"Экстраныя выклікі"</string>
     <string name="phoneIconLabel" msgid="3015941229249651419">"Тэлефон"</string>
-    <string name="fdnListLabel" msgid="4119121875004244097">"Спіс FDN"</string>
+    <string name="fdnListLabel" msgid="4119121875004244097">"Спіс дазволеных нумароў"</string>
     <string name="unknown" msgid="8279698889921830815">"Невядомы"</string>
     <string name="private_num" msgid="4487990167889159992">"Прыватны нумар"</string>
     <string name="payphone" msgid="7936735771836716941">"Таксафон"</string>
@@ -438,18 +438,18 @@
     <string name="carrier_settings_title" msgid="6292869148169850220">"Налады аператара"</string>
     <string name="fdn" msgid="2545904344666098749">"Фіксаваныя нумары"</string>
     <string name="fdn_with_label" msgid="6412087553365709494">"Нумары закрытай абаненцкай групы (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="manage_fdn_list" msgid="3341716430375195441">"Спіс FDN"</string>
-    <string name="fdn_list_with_label" msgid="1409655283510382556">"Спіс закрытай абаненцкай групы (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="fdn_activation" msgid="2178637004710435895">"Актывацыя FDN"</string>
+    <string name="manage_fdn_list" msgid="3341716430375195441">"Спіс дазволеных нумароў"</string>
+    <string name="fdn_list_with_label" msgid="1409655283510382556">"Спіс дазволеных нумароў (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
+    <string name="fdn_activation" msgid="2178637004710435895">"Актывацыя дазволеных нумароў"</string>
     <string name="fdn_enabled" msgid="7017355494808056447">"Фіксаваныя нумары ўключаны"</string>
     <string name="fdn_disabled" msgid="6696468878037736600">"Фіксаваныя нумары адключаны"</string>
-    <string name="enable_fdn" msgid="4830555730418033723">"Уключыць FDN"</string>
-    <string name="disable_fdn" msgid="3918794950264647541">"Адключыць FDN"</string>
+    <string name="enable_fdn" msgid="4830555730418033723">"Уключыць дазволеныя нумары"</string>
+    <string name="disable_fdn" msgid="3918794950264647541">"Адключыць дазволеныя нумары"</string>
     <string name="change_pin2" msgid="3110844547237754871">"Змяніць PIN2"</string>
-    <string name="enable_fdn_ok" msgid="5080925177369329827">"Адключыць FDN"</string>
-    <string name="disable_fdn_ok" msgid="3745475926874838676">"Уключыць FDN"</string>
+    <string name="enable_fdn_ok" msgid="5080925177369329827">"Адключыць дазволеныя нумары"</string>
+    <string name="disable_fdn_ok" msgid="3745475926874838676">"Уключыць дазволеныя нумары"</string>
     <string name="sum_fdn" msgid="6152246141642323582">"Кіраванне зафіксаванымі нумарамі"</string>
-    <string name="sum_fdn_change_pin" msgid="3510994280557335727">"Змяніць PIN-код для доступу FDN"</string>
+    <string name="sum_fdn_change_pin" msgid="3510994280557335727">"Змяніць PIN-код для доступу да дазволеных нумароў"</string>
     <string name="sum_fdn_manage_list" msgid="3311397063233992907">"Кіраванне спісам тэлефонных нумароў"</string>
     <string name="voice_privacy" msgid="7346935172372181951">"Палiтыка прыватнасцi Voice"</string>
     <string name="voice_privacy_summary" msgid="3556460926168473346">"Уключыць пашыраны рэжым прыватнасці"</string>
@@ -475,10 +475,10 @@
     <string name="delete_fdn_contact" msgid="7027405651994507077">"Выдаліць дазволены нумар"</string>
     <string name="deleting_fdn_contact" msgid="6872320570844460428">"Выдаленне дазволенага нумару..."</string>
     <string name="fdn_contact_deleted" msgid="1680714996763848838">"Дазволены нумар выдалены."</string>
-    <string name="pin2_invalid" msgid="2313954262684494442">"FDN не быў абноўлены, таму што вы набралі няправільны PIN-код."</string>
-    <string name="fdn_invalid_number" msgid="9067189814657840439">"Фіксаваны нумар не абноўлены, бо не можа складацца больш чым з <xliff:g id="FDN_NUMBER_LIMIT_LENGTH">%d</xliff:g> лічбаў."</string>
+    <string name="pin2_invalid" msgid="2313954262684494442">"Дазволены нумар не быў абноўлены, таму што вы набралі няправільны PIN-код."</string>
+    <string name="fdn_invalid_number" msgid="9067189814657840439">"Дазволены нумар не абноўлены, бо не можа складацца больш чым з <xliff:g id="FDN_NUMBER_LIMIT_LENGTH">%d</xliff:g> лічбаў."</string>
     <string name="pin2_or_fdn_invalid" msgid="7542639487955868181">"Cпiс дазволеных нумароў не адноўлены. PIN2 ўведзены няправiльна, або нумар быў адхiлены."</string>
-    <string name="fdn_failed" msgid="216592346853420250">"Аперацыя ў закрытай абаненцкай групе не ўдалася."</string>
+    <string name="fdn_failed" msgid="216592346853420250">"Аперацыя з дазволеным нумарам не ўдалася."</string>
     <string name="simContacts_emptyLoading" msgid="4989040293858675483">"Чытанне з SIM-карты..."</string>
     <string name="simContacts_empty" msgid="1135632055473689521">"На вашай SIM-карце няма кантактаў."</string>
     <string name="simContacts_title" msgid="2714029230160136647">"Выберыце кантакты для імпарту"</string>
