@@ -92,7 +92,7 @@
     <string name="additional_cdma_call_settings" msgid="2178016561980611304">"CDMA deien ezarpen gehigarriak"</string>
     <string name="sum_cdma_call_settings" msgid="3185825305136993636">"CDMA soilik motako deietarako ezarpen gehigarriak"</string>
     <string name="labelNwService" msgid="6015891883487125120">"Sareko zerbitzuen ezarpenak"</string>
-    <string name="labelCallerId" msgid="2090540744550903172">"Deitzailearen IDa"</string>
+    <string name="labelCallerId" msgid="2090540744550903172">"Deitzailearen identitatea"</string>
     <string name="sum_loading_settings" msgid="434063780286688775">"Ezarpenak kargatzen…"</string>
     <string name="sum_hide_caller_id" msgid="131100328602371933">"Ezkutatu zenbakia irteerako deietan"</string>
     <string name="sum_show_caller_id" msgid="3571854755324664591">"Erakutsi zenbakia irteerako deietan"</string>
