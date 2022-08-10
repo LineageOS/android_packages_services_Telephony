@@ -16,6 +16,26 @@
 
 package com.android.phone;
 
+import static android.telephony.RadioAccessFamily.RAF_1xRTT;
+import static android.telephony.RadioAccessFamily.RAF_EDGE;
+import static android.telephony.RadioAccessFamily.RAF_EHRPD;
+import static android.telephony.RadioAccessFamily.RAF_EVDO_0;
+import static android.telephony.RadioAccessFamily.RAF_EVDO_A;
+import static android.telephony.RadioAccessFamily.RAF_EVDO_B;
+import static android.telephony.RadioAccessFamily.RAF_GPRS;
+import static android.telephony.RadioAccessFamily.RAF_GSM;
+import static android.telephony.RadioAccessFamily.RAF_HSDPA;
+import static android.telephony.RadioAccessFamily.RAF_HSPA;
+import static android.telephony.RadioAccessFamily.RAF_HSPAP;
+import static android.telephony.RadioAccessFamily.RAF_HSUPA;
+import static android.telephony.RadioAccessFamily.RAF_IS95A;
+import static android.telephony.RadioAccessFamily.RAF_IS95B;
+import static android.telephony.RadioAccessFamily.RAF_LTE;
+import static android.telephony.RadioAccessFamily.RAF_LTE_CA;
+import static android.telephony.RadioAccessFamily.RAF_TD_SCDMA;
+import static android.telephony.RadioAccessFamily.RAF_UMTS;
+import static android.telephony.SubscriptionManager.INVALID_SUBSCRIPTION_ID;
+
 import static com.android.phone.NotificationMgr.DATA_ROAMING_NOTIFICATION;
 import static com.android.phone.NotificationMgr.LIMITED_SIM_FUNCTION_NOTIFICATION;
 
@@ -37,9 +57,11 @@ import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.res.Resources;
 import android.os.Build;
+import android.os.PersistableBundle;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.telecom.TelecomManager;
+import android.telephony.CarrierConfigManager;
 import android.telephony.ServiceState;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
@@ -90,6 +112,7 @@ public class NotificationMgrTest {
     @Mock SubscriptionInfo mSubscriptionInfo;
     @Mock Resources mResources;
     @Mock ServiceState mServiceState;
+    @Mock CarrierConfigManager mCarrierConfigManager;
 
     private Phone[] mPhones;
     private NotificationMgr mNotificationMgr;
@@ -110,6 +133,12 @@ public class NotificationMgrTest {
         when(mApp.getSystemServiceName(TelecomManager.class)).thenReturn(Context.TELECOM_SERVICE);
         when(mApp.getSystemService(TelecomManager.class)).thenReturn(mTelecomManager);
         when(mApp.getSystemService(Context.TELEPHONY_SERVICE)).thenReturn(mTelephonyManager);
+        when(mApp.getSystemServiceName(CarrierConfigManager.class)).thenReturn(
+                Context.CARRIER_CONFIG_SERVICE);
+        when(mApp.getSystemService(CarrierConfigManager.class)).thenReturn(mCarrierConfigManager);
+        when(mApp.getSystemServiceName(CarrierConfigManager.class)).thenReturn(
+                Context.CARRIER_CONFIG_SERVICE);
+        when(mApp.getSystemService(CarrierConfigManager.class)).thenReturn(mCarrierConfigManager);
 
         when(mApp.createPackageContextAsUser(any(), eq(0), any())).thenReturn(mApp);
         when(mApp.getSystemService(Context.NOTIFICATION_SERVICE)).thenReturn(mNotificationManager);
@@ -141,8 +170,7 @@ public class NotificationMgrTest {
     }
 
     @Test
-    public void testUpdateCfi_visible_hasActiveSub_singleSIM_notificationSent()
-            throws Exception {
+    public void testUpdateCfi_visible_hasActiveSub_singleSIM_notificationSent() throws Exception {
         when(mTelephonyManager.getPhoneCount()).thenReturn(1);
         when(mSubscriptionManager.getActiveSubscriptionInfo(eq(TEST_SUB_ID))).thenReturn(
                 mSubscriptionInfo);
@@ -231,14 +259,22 @@ public class NotificationMgrTest {
             Thread.sleep(2000);
         } catch (InterruptedException ignored) {
         }
+        mNotificationMgr.updateNetworkSelection(ServiceState.STATE_OUT_OF_SERVICE, TEST_SUB_ID);
 
         verify(mNotificationManager, never()).notify(any(), anyInt(), any());
     }
 
     @Test
-    public void testUpdateNetworkSelection_outOfServiceForEnoughTime_notificationSent()
+    public void testUpdateNetworkSelection_oosEnoughTime_selectionVisibleToUser_notificationSent()
             throws Exception {
         prepareResourcesForNetworkSelection();
+        when(mTelephonyManager.isManualNetworkSelectionAllowed()).thenReturn(true);
+        PersistableBundle config = new PersistableBundle();
+        config.putBoolean(CarrierConfigManager.KEY_OPERATOR_SELECTION_EXPAND_BOOL, true);
+        config.putBoolean(CarrierConfigManager.KEY_HIDE_CARRIER_NETWORK_SETTINGS_BOOL, false);
+        config.putBoolean(CarrierConfigManager.KEY_CSP_ENABLED_BOOL, false);
+        config.putBoolean(CarrierConfigManager.KEY_WORLD_PHONE_BOOL, true);
+        when(mCarrierConfigManager.getConfigForSubId(TEST_SUB_ID)).thenReturn(config);
 
         mNotificationMgr.updateNetworkSelection(ServiceState.STATE_OUT_OF_SERVICE, TEST_SUB_ID);
         // TODO: use effective TestLooper time eclipse instead of sleeping
@@ -249,6 +285,287 @@ public class NotificationMgrTest {
         mNotificationMgr.updateNetworkSelection(ServiceState.STATE_OUT_OF_SERVICE, TEST_SUB_ID);
 
         verifyNotificationSentWithChannelId(NotificationChannelController.CHANNEL_ID_ALERT);
+    }
+
+    @Test
+    public void testUpdateNetworkSelection_invalidSubscription_notificationNotSent()
+            throws Exception {
+        prepareResourcesForNetworkSelection();
+        when(mTelephonyManager.isManualNetworkSelectionAllowed()).thenReturn(true);
+        PersistableBundle config = new PersistableBundle();
+        config.putBoolean(CarrierConfigManager.KEY_OPERATOR_SELECTION_EXPAND_BOOL, true);
+        config.putBoolean(CarrierConfigManager.KEY_HIDE_CARRIER_NETWORK_SETTINGS_BOOL, false);
+        config.putBoolean(CarrierConfigManager.KEY_CSP_ENABLED_BOOL, false);
+        config.putBoolean(CarrierConfigManager.KEY_WORLD_PHONE_BOOL, true);
+        when(mCarrierConfigManager.getConfigForSubId(TEST_SUB_ID)).thenReturn(config);
+
+        mNotificationMgr.updateNetworkSelection(ServiceState.STATE_OUT_OF_SERVICE,
+                INVALID_SUBSCRIPTION_ID);
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException ignored) {
+        }
+        mNotificationMgr.updateNetworkSelection(ServiceState.STATE_OUT_OF_SERVICE,
+                INVALID_SUBSCRIPTION_ID);
+
+        verify(mNotificationManager, never()).notify(any(), anyInt(), any());
+    }
+
+    @Test
+    public void testUpdateNetworkSelection_nullCarrierConfig_notificationNotSent()
+            throws Exception {
+        prepareResourcesForNetworkSelection();
+
+        when(mCarrierConfigManager.getConfigForSubId(TEST_SUB_ID)).thenReturn(null);
+
+        mNotificationMgr.updateNetworkSelection(ServiceState.STATE_OUT_OF_SERVICE, TEST_SUB_ID);
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException ignored) {
+        }
+        mNotificationMgr.updateNetworkSelection(ServiceState.STATE_OUT_OF_SERVICE, TEST_SUB_ID);
+
+        verify(mNotificationManager, never()).notify(any(), anyInt(), any());
+    }
+
+    @Test
+    public void testUpdateNetworkSelection_userNotAllowedToChooseOperator_notificationNotSent()
+            throws Exception {
+        prepareResourcesForNetworkSelection();
+
+        PersistableBundle config = new PersistableBundle();
+        // User is NOT allowed to choose operator
+        config.putBoolean(CarrierConfigManager.KEY_OPERATOR_SELECTION_EXPAND_BOOL, false);
+        config.putBoolean(CarrierConfigManager.KEY_HIDE_CARRIER_NETWORK_SETTINGS_BOOL, false);
+        config.putBoolean(CarrierConfigManager.KEY_CSP_ENABLED_BOOL, false);
+        when(mTelephonyManager.isManualNetworkSelectionAllowed()).thenReturn(false);
+        config.putBoolean(CarrierConfigManager.KEY_WORLD_PHONE_BOOL, true);
+        when(mCarrierConfigManager.getConfigForSubId(TEST_SUB_ID)).thenReturn(config);
+
+        mNotificationMgr.updateNetworkSelection(ServiceState.STATE_OUT_OF_SERVICE, TEST_SUB_ID);
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException ignored) {
+        }
+        mNotificationMgr.updateNetworkSelection(ServiceState.STATE_OUT_OF_SERVICE, TEST_SUB_ID);
+
+        verify(mNotificationManager, never()).notify(any(), anyInt(), any());
+    }
+
+    @Test
+    public void testUpdateNetworkSelection_OverrideHideCarrierNetworkSelection_notificationNotSent()
+            throws Exception {
+        prepareResourcesForNetworkSelection();
+
+        PersistableBundle config = new PersistableBundle();
+        // Hide network selection menu
+        config.putBoolean(CarrierConfigManager.KEY_HIDE_CARRIER_NETWORK_SETTINGS_BOOL, true);
+        config.putBoolean(CarrierConfigManager.KEY_OPERATOR_SELECTION_EXPAND_BOOL, true);
+        config.putBoolean(CarrierConfigManager.KEY_CSP_ENABLED_BOOL, false);
+        when(mTelephonyManager.isManualNetworkSelectionAllowed()).thenReturn(false);
+        config.putBoolean(CarrierConfigManager.KEY_WORLD_PHONE_BOOL, true);
+        when(mCarrierConfigManager.getConfigForSubId(TEST_SUB_ID)).thenReturn(config);
+
+        mNotificationMgr.updateNetworkSelection(ServiceState.STATE_OUT_OF_SERVICE, TEST_SUB_ID);
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException ignored) {
+        }
+        mNotificationMgr.updateNetworkSelection(ServiceState.STATE_OUT_OF_SERVICE, TEST_SUB_ID);
+
+        verify(mNotificationManager, never()).notify(any(), anyInt(), any());
+    }
+
+    @Test
+    public void testUpdateNetworkSelection_simPreventManualSelection_notificationNotSent()
+            throws Exception {
+        prepareResourcesForNetworkSelection();
+
+        PersistableBundle config = new PersistableBundle();
+        config.putBoolean(CarrierConfigManager.KEY_OPERATOR_SELECTION_EXPAND_BOOL, true);
+        config.putBoolean(CarrierConfigManager.KEY_HIDE_CARRIER_NETWORK_SETTINGS_BOOL, false);
+        // SIM card can prevent manual network selection which is forbidden
+        config.putBoolean(CarrierConfigManager.KEY_CSP_ENABLED_BOOL, true);
+        when(mTelephonyManager.isManualNetworkSelectionAllowed()).thenReturn(false);
+        config.putBoolean(CarrierConfigManager.KEY_WORLD_PHONE_BOOL, true);
+        when(mCarrierConfigManager.getConfigForSubId(TEST_SUB_ID)).thenReturn(config);
+
+        mNotificationMgr.updateNetworkSelection(ServiceState.STATE_OUT_OF_SERVICE, TEST_SUB_ID);
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException ignored) {
+        }
+        mNotificationMgr.updateNetworkSelection(ServiceState.STATE_OUT_OF_SERVICE, TEST_SUB_ID);
+
+        verify(mNotificationManager, never()).notify(any(), anyInt(), any());
+    }
+
+    @Test
+    public void testUpdateNetworkSelection_worldMode_userSetLTE_notificationNotSent()
+            throws Exception {
+        prepareResourcesForNetworkSelection();
+
+        PersistableBundle config = new PersistableBundle();
+        config.putBoolean(CarrierConfigManager.KEY_OPERATOR_SELECTION_EXPAND_BOOL, true);
+        config.putBoolean(CarrierConfigManager.KEY_HIDE_CARRIER_NETWORK_SETTINGS_BOOL, false);
+        config.putBoolean(CarrierConfigManager.KEY_CSP_ENABLED_BOOL, false);
+        config.putBoolean(CarrierConfigManager.KEY_WORLD_PHONE_BOOL, true);
+
+        // World mode is on
+        config.putBoolean(CarrierConfigManager.KEY_WORLD_MODE_ENABLED_BOOL, true);
+        // User set Network mode as LTE
+        when(mTelephonyManager.getAllowedNetworkTypesForReason(
+                        TelephonyManager.ALLOWED_NETWORK_TYPES_REASON_USER)).thenReturn(
+                (long) (RAF_LTE | RAF_LTE_CA | RAF_IS95A | RAF_IS95B | RAF_1xRTT | RAF_EVDO_0
+                        | RAF_EVDO_A | RAF_EVDO_B | RAF_EHRPD));
+        when(mCarrierConfigManager.getConfigForSubId(TEST_SUB_ID)).thenReturn(config);
+
+        mNotificationMgr.updateNetworkSelection(ServiceState.STATE_OUT_OF_SERVICE, TEST_SUB_ID);
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException ignored) {
+        }
+        mNotificationMgr.updateNetworkSelection(ServiceState.STATE_OUT_OF_SERVICE, TEST_SUB_ID);
+
+        verify(mNotificationManager, never()).notify(any(), anyInt(), any());
+    }
+
+    @Test
+    public void testUpdateNetworkSelection_worldMode_userSetTDSCDMA_notSupported_notifNotSent()
+            throws Exception {
+        prepareResourcesForNetworkSelection();
+
+        PersistableBundle config = new PersistableBundle();
+        config.putBoolean(CarrierConfigManager.KEY_OPERATOR_SELECTION_EXPAND_BOOL, true);
+        config.putBoolean(CarrierConfigManager.KEY_HIDE_CARRIER_NETWORK_SETTINGS_BOOL, false);
+        config.putBoolean(CarrierConfigManager.KEY_CSP_ENABLED_BOOL, false);
+        config.putBoolean(CarrierConfigManager.KEY_WORLD_PHONE_BOOL, true);
+
+        // World mode is on
+        config.putBoolean(CarrierConfigManager.KEY_WORLD_MODE_ENABLED_BOOL, true);
+        // User set Network mode as NETWORK_MODE_LTE_TDSCDMA_GSM
+        when(mTelephonyManager.getAllowedNetworkTypesForReason(
+                TelephonyManager.ALLOWED_NETWORK_TYPES_REASON_USER)).thenReturn(
+                (long) (RAF_LTE | RAF_LTE_CA | RAF_TD_SCDMA | RAF_GSM | RAF_GPRS | RAF_EDGE));
+        // But TDSCDMA is NOT supported
+        config.putBoolean(CarrierConfigManager.KEY_SUPPORT_TDSCDMA_BOOL, false);
+        when(mCarrierConfigManager.getConfigForSubId(TEST_SUB_ID)).thenReturn(config);
+
+        mNotificationMgr.updateNetworkSelection(ServiceState.STATE_OUT_OF_SERVICE, TEST_SUB_ID);
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException ignored) {
+        }
+        mNotificationMgr.updateNetworkSelection(ServiceState.STATE_OUT_OF_SERVICE, TEST_SUB_ID);
+
+        verify(mNotificationManager, never()).notify(any(), anyInt(), any());
+    }
+
+    @Test
+    public void testUpdateNetworkSelection_worldMode_userSetWCDMA_notificationSent()
+            throws Exception {
+        prepareResourcesForNetworkSelection();
+
+        PersistableBundle config = new PersistableBundle();
+        config.putBoolean(CarrierConfigManager.KEY_OPERATOR_SELECTION_EXPAND_BOOL, true);
+        config.putBoolean(CarrierConfigManager.KEY_HIDE_CARRIER_NETWORK_SETTINGS_BOOL, false);
+        config.putBoolean(CarrierConfigManager.KEY_CSP_ENABLED_BOOL, false);
+        config.putBoolean(CarrierConfigManager.KEY_WORLD_PHONE_BOOL, true);
+
+        // World mode is on
+        config.putBoolean(CarrierConfigManager.KEY_WORLD_MODE_ENABLED_BOOL, true);
+        // User set Network mode as NETWORK_MODE_LTE_TDSCDMA_GSM
+        when(mTelephonyManager.getAllowedNetworkTypesForReason(
+                        TelephonyManager.ALLOWED_NETWORK_TYPES_REASON_USER)).thenReturn(
+                (long) (RAF_LTE | RAF_LTE_CA | RAF_GSM | RAF_GPRS | RAF_EDGE | RAF_HSUPA | RAF_HSDPA
+                        | RAF_HSPA | RAF_HSPAP | RAF_UMTS));
+        // But TDSCDMA is NOT supported
+        config.putBoolean(CarrierConfigManager.KEY_SUPPORT_TDSCDMA_BOOL, false);
+        when(mCarrierConfigManager.getConfigForSubId(TEST_SUB_ID)).thenReturn(config);
+
+        mNotificationMgr.updateNetworkSelection(ServiceState.STATE_OUT_OF_SERVICE, TEST_SUB_ID);
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException ignored) {
+        }
+        mNotificationMgr.updateNetworkSelection(ServiceState.STATE_OUT_OF_SERVICE, TEST_SUB_ID);
+
+        verifyNotificationSentWithChannelId(NotificationChannelController.CHANNEL_ID_ALERT);
+    }
+
+    @Test
+    public void testUpdateNetworkSelection_worldPhone_networkSelectionNotHide_notificationSent()
+            throws Exception {
+        prepareResourcesForNetworkSelection();
+
+        PersistableBundle config = new PersistableBundle();
+        config.putBoolean(CarrierConfigManager.KEY_OPERATOR_SELECTION_EXPAND_BOOL, true);
+        config.putBoolean(CarrierConfigManager.KEY_HIDE_CARRIER_NETWORK_SETTINGS_BOOL, false);
+        config.putBoolean(CarrierConfigManager.KEY_CSP_ENABLED_BOOL, false);
+        // World mode is off
+        config.putBoolean(CarrierConfigManager.KEY_WORLD_MODE_ENABLED_BOOL, false);
+        // World phone is on
+        config.putBoolean(CarrierConfigManager.KEY_WORLD_PHONE_BOOL, true);
+        when(mCarrierConfigManager.getConfigForSubId(TEST_SUB_ID)).thenReturn(config);
+
+        mNotificationMgr.updateNetworkSelection(ServiceState.STATE_OUT_OF_SERVICE, TEST_SUB_ID);
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException ignored) {
+        }
+        mNotificationMgr.updateNetworkSelection(ServiceState.STATE_OUT_OF_SERVICE, TEST_SUB_ID);
+
+        verifyNotificationSentWithChannelId(NotificationChannelController.CHANNEL_ID_ALERT);
+    }
+
+    @Test
+    public void testUpdateNetworkSelection_gsmBasicOptionOn_notificationSent()
+            throws Exception {
+        prepareResourcesForNetworkSelection();
+
+        PersistableBundle config = new PersistableBundle();
+        config.putBoolean(CarrierConfigManager.KEY_OPERATOR_SELECTION_EXPAND_BOOL, true);
+        config.putBoolean(CarrierConfigManager.KEY_HIDE_CARRIER_NETWORK_SETTINGS_BOOL, false);
+        config.putBoolean(CarrierConfigManager.KEY_CSP_ENABLED_BOOL, false);
+        // World phone is on
+        config.putBoolean(CarrierConfigManager.KEY_WORLD_PHONE_BOOL, true);
+        // World mode is off
+        config.putBoolean(CarrierConfigManager.KEY_WORLD_MODE_ENABLED_BOOL, false);
+        when(mTelephonyManager.getPhoneType()).thenReturn(TelephonyManager.PHONE_TYPE_GSM);
+        when(mCarrierConfigManager.getConfigForSubId(TEST_SUB_ID)).thenReturn(config);
+
+        mNotificationMgr.updateNetworkSelection(ServiceState.STATE_OUT_OF_SERVICE, TEST_SUB_ID);
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException ignored) {
+        }
+        mNotificationMgr.updateNetworkSelection(ServiceState.STATE_OUT_OF_SERVICE, TEST_SUB_ID);
+
+        verifyNotificationSentWithChannelId(NotificationChannelController.CHANNEL_ID_ALERT);
+    }
+
+    @Test
+    public void testUpdateNetworkSelection_gsmBasicOptionOff_notificationNotSent()
+            throws Exception {
+        prepareResourcesForNetworkSelection();
+
+        PersistableBundle config = new PersistableBundle();
+        config.putBoolean(CarrierConfigManager.KEY_OPERATOR_SELECTION_EXPAND_BOOL, true);
+        config.putBoolean(CarrierConfigManager.KEY_HIDE_CARRIER_NETWORK_SETTINGS_BOOL, false);
+        config.putBoolean(CarrierConfigManager.KEY_CSP_ENABLED_BOOL, false);
+        // World mode is off
+        config.putBoolean(CarrierConfigManager.KEY_WORLD_MODE_ENABLED_BOOL, false);
+        when(mCarrierConfigManager.getConfigForSubId(TEST_SUB_ID)).thenReturn(config);
+        when(mTelephonyManager.getPhoneType()).thenReturn(TelephonyManager.PHONE_TYPE_CDMA);
+
+        mNotificationMgr.updateNetworkSelection(ServiceState.STATE_OUT_OF_SERVICE, TEST_SUB_ID);
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException ignored) {
+        }
+        mNotificationMgr.updateNetworkSelection(ServiceState.STATE_OUT_OF_SERVICE, TEST_SUB_ID);
+
+        verify(mNotificationManager, never()).notify(any(), anyInt(), any());
     }
 
     @Test
