@@ -459,7 +459,7 @@
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"ଅଟୋ-ରିଟ୍ରାଏ ମୋଡ୍‌କୁ ସକ୍ଷମ କରନ୍ତୁ"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"ଭିଡିଓ କଲ୍ କରିବା ସମୟରେ TTY ମୋଡ୍‌କୁ ପରିବର୍ତ୍ତନ କରିବା ପାଇଁ ଅନୁମତି ନାହିଁ"</string>
     <string name="menu_add" msgid="5616487894975773141">"ଯୋଗାଯୋଗକୁ ଯୋଗ କରନ୍ତୁ"</string>
-    <string name="menu_edit" msgid="3593856941552460706">"ଯୋଗାଯୋଗ ଏଡିଟ କରନ୍ତୁ"</string>
+    <string name="menu_edit" msgid="3593856941552460706">"କଣ୍ଟାକ୍ଟ ଏଡିଟ କରନ୍ତୁ"</string>
     <string name="menu_delete" msgid="6326861853830546488">"ଯୋଗାଯୋଗକୁ ଡିଲିଟ୍ କରନ୍ତୁ"</string>
     <string name="menu_dial" msgid="4178537318419450012">"ଯୋଗାଯୋଗକୁ ଡାଏଲ୍ କରନ୍ତୁ"</string>
     <string name="get_pin2" msgid="4221654606863196332">"PIN2 ଟାଇପ୍ କରନ୍ତୁ"</string>
