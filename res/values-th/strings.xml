@@ -585,7 +585,7 @@
     <string name="onscreenManageCallsText" msgid="1162047856081836469">"จัดการการโทร"</string>
     <string name="onscreenManageConferenceText" msgid="4700574060601755137">"จัดการการประชุม"</string>
     <string name="onscreenAudioText" msgid="7224226735052019986">"เสียง"</string>
-    <string name="onscreenVideoCallText" msgid="1743992456126258698">" Hangouts วิดีโอ"</string>
+    <string name="onscreenVideoCallText" msgid="1743992456126258698">"วิดีโอคอล"</string>
     <string name="importSimEntry" msgid="3892354284082689894">"นำเข้า"</string>
     <string name="importAllSimEntries" msgid="2628391505643564007">"นำเข้าทั้งหมด"</string>
     <string name="importingSimContacts" msgid="4995457122107888932">"กำลังนำเข้าสมุดโทรศัพท์ในซิม"</string>
