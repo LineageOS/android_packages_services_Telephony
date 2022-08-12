@@ -11193,6 +11193,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
+    @Override
+    public boolean isUsingNewDataStack() {
+        TelephonyPermissions.enforceShellOnly(Binder.getCallingUid(), "isUsingNewDataStack");
+        return getDefaultPhone().isUsingNewDataStack();
+    }
+
     /**
      * Sets the modem service class Name that Telephony will bind to.
      *
@@ -11227,8 +11233,19 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public boolean isUsingNewDataStack() {
-        TelephonyPermissions.enforceShellOnly(Binder.getCallingUid(), "isUsingNewDataStack");
-        return getDefaultPhone().isUsingNewDataStack();
+    public void setVoiceServiceStateOverride(int subId, boolean hasService, String callingPackage) {
+        // Only telecom (and shell, for CTS purposes) is allowed to call this method.
+        mApp.enforceCallingOrSelfPermission(
+                permission.BIND_TELECOM_CONNECTION_SERVICE, "setVoiceServiceStateOverride");
+        mAppOps.checkPackage(Binder.getCallingUid(), callingPackage);
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            Phone phone = getPhone(subId);
+            if (phone == null) return;
+            phone.setVoiceServiceStateOverride(hasService);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
     }
 }
