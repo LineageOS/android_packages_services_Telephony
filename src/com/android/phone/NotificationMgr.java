@@ -57,6 +57,7 @@ import android.util.Log;
 import android.util.SparseArray;
 import android.widget.Toast;
 
+import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.TelephonyCapabilities;
@@ -163,7 +164,8 @@ public class NotificationMgr {
      * Private constructor (this is a singleton).
      * @see #init(PhoneGlobals)
      */
-    private NotificationMgr(PhoneGlobals app) {
+    @VisibleForTesting
+    /* package */ NotificationMgr(PhoneGlobals app) {
         mApp = app;
         mContext = app;
         mStatusBarManager =
