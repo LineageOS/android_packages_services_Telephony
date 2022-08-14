@@ -92,7 +92,7 @@
     <string name="additional_cdma_call_settings" msgid="2178016561980611304">"CDMA deien ezarpen gehigarriak"</string>
     <string name="sum_cdma_call_settings" msgid="3185825305136993636">"CDMA soilik motako deietarako ezarpen gehigarriak"</string>
     <string name="labelNwService" msgid="6015891883487125120">"Sareko zerbitzuen ezarpenak"</string>
-    <string name="labelCallerId" msgid="2090540744550903172">"Deitzailearen IDa"</string>
+    <string name="labelCallerId" msgid="2090540744550903172">"Deitzailearen identitatea"</string>
     <string name="sum_loading_settings" msgid="434063780286688775">"Ezarpenak kargatzen…"</string>
     <string name="sum_hide_caller_id" msgid="131100328602371933">"Ezkutatu zenbakia irteerako deietan"</string>
     <string name="sum_show_caller_id" msgid="3571854755324664591">"Erakutsi zenbakia irteerako deietan"</string>
@@ -534,7 +534,7 @@
     <string name="notification_voicemail_no_vm_number" msgid="3423686009815186750">"Erantzungailuaren zenbakia ezezaguna da"</string>
     <string name="notification_network_selection_title" msgid="255595526707809121">"Ez dago zerbitzurik"</string>
     <string name="notification_network_selection_text" msgid="553288408722427659">"Hautatutako sarea (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) ez dago erabilgarri"</string>
-    <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Deitzeko, aktibatu sare mugikorra, desaktibatu hegaldi modua edo desaktibatu bateria-aurrezlea."</string>
+    <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Deitzeko, aktibatu sare mugikorra, desaktibatu hegaldi modua edo desaktibatu bateria-aurreztailea."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Deia egiteko, desaktibatu hegaldi modua."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Deia egiteko, desaktibatu hegaldi modua edo konektatu haririk gabeko sare batera."</string>
     <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"Telefonoa beroegi dago"</b>\n\n"Ezin da egin deia. Saiatu berriro telefonoa hozten denean.\n\nHala ere, larrialdi-deiak egin ditzakezu."</string>
