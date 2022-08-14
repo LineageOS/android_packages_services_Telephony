@@ -674,7 +674,7 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"Aksesibilitas"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"Panggilan Wi-Fi dari"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"Panggilan Wi-Fi"</string>
-    <string name="message_decode_error" msgid="1061856591500290887">"Terjadi kesalahan saat mendekode pesan."</string>
+    <string name="message_decode_error" msgid="1061856591500290887">"Terjadi error saat mendekode pesan."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"Kartu SIM telah mengaktifkan layanan dan memperbarui kemampuan roaming ponsel."</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"Ada terlalu banyak panggilan aktif. Akhiri atau gabungkan panggilan yang ada sebelum melakukan panggilan baru."</string>
     <string name="callFailed_imei_not_accepted" msgid="7257903653685147251">"Tidak dapat terhubung, masukkan kartu SIM yang valid."</string>
