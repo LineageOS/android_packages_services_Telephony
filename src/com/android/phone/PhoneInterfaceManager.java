@@ -184,6 +184,7 @@ import com.android.internal.telephony.SubscriptionController;
 import com.android.internal.telephony.TelephonyIntents;
 import com.android.internal.telephony.TelephonyPermissions;
 import com.android.internal.telephony.data.DataUtils;
+import com.android.internal.telephony.dataconnection.ApnSettingUtils;
 import com.android.internal.telephony.emergency.EmergencyNumberTracker;
 import com.android.internal.telephony.euicc.EuiccConnector;
 import com.android.internal.telephony.ims.ImsResolver;
@@ -2860,8 +2861,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             int subId = mSubscriptionController.getDefaultDataSubId();
             final Phone phone = getPhone(subId);
             if (phone != null) {
-                phone.getDataSettingsManager().setDataEnabled(
-                        TelephonyManager.DATA_ENABLED_REASON_USER, true, callingPackage);
+                if (phone.isUsingNewDataStack()) {
+                    phone.getDataSettingsManager().setDataEnabled(
+                            TelephonyManager.DATA_ENABLED_REASON_USER, true, callingPackage);
+                } else {
+                    phone.getDataEnabledSettings().setDataEnabled(
+                            TelephonyManager.DATA_ENABLED_REASON_USER, true);
+                }
                 return true;
             } else {
                 return false;
@@ -2881,8 +2887,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             int subId = mSubscriptionController.getDefaultDataSubId();
             final Phone phone = getPhone(subId);
             if (phone != null) {
-                phone.getDataSettingsManager().setDataEnabled(
-                        TelephonyManager.DATA_ENABLED_REASON_USER, false, callingPackage);
+                if (phone.isUsingNewDataStack()) {
+                    phone.getDataSettingsManager().setDataEnabled(
+                            TelephonyManager.DATA_ENABLED_REASON_USER, false, callingPackage);
+                } else {
+                    phone.getDataEnabledSettings().setDataEnabled(
+                            TelephonyManager.DATA_ENABLED_REASON_USER, false);
+                }
                 return true;
             } else {
                 return false;
@@ -2998,7 +3009,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         try {
             final Phone phone = getPhone(subId);
             if (phone != null) {
-                return phone.getDataNetworkController().getInternetDataNetworkState();
+                if (phone.isUsingNewDataStack()) {
+                    return phone.getDataNetworkController().getInternetDataNetworkState();
+                }
+                return PhoneConstantConversions.convertDataState(phone.getDataConnectionState());
             } else {
                 return PhoneConstantConversions.convertDataState(
                         PhoneConstants.DataState.DISCONNECTED);
@@ -6634,7 +6648,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             Phone phone = PhoneFactory.getPhone(phoneId);
             if (phone != null) {
                 boolean retVal;
-                retVal = phone.getDataSettingsManager().isDataEnabled();
+                if (phone.isUsingNewDataStack()) {
+                    retVal = phone.getDataSettingsManager().isDataEnabled();
+                } else {
+                    retVal = phone.getDataEnabledSettings().isDataEnabled();
+                }
                 if (DBG) log("isDataEnabled: " + retVal + ", subId=" + subId);
                 return retVal;
             } else {
@@ -6686,7 +6704,15 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             Phone phone = PhoneFactory.getPhone(phoneId);
             if (phone != null) {
                 boolean retVal;
-                retVal = phone.getDataSettingsManager().isDataEnabledForReason(reason);
+                if (phone.isUsingNewDataStack()) {
+                    retVal = phone.getDataSettingsManager().isDataEnabledForReason(reason);
+                } else {
+                    if (reason == TelephonyManager.DATA_ENABLED_REASON_USER) {
+                        retVal = phone.isUserDataEnabled();
+                    } else {
+                        retVal = phone.getDataEnabledSettings().isDataEnabledForReason(reason);
+                    }
+                }
                 if (DBG) log("isDataEnabledForReason: retVal=" + retVal);
                 return retVal;
             } else {
@@ -8425,8 +8451,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 if (reason == TelephonyManager.DATA_ENABLED_REASON_CARRIER) {
                     phone.carrierActionSetMeteredApnsEnabled(enabled);
                 } else {
-                    phone.getDataSettingsManager().setDataEnabled(
-                            reason, enabled, callingPackage);
+                    if (phone.isUsingNewDataStack()) {
+                        phone.getDataSettingsManager().setDataEnabled(
+                                reason, enabled, callingPackage);
+                    } else {
+                        phone.getDataEnabledSettings().setDataEnabled(reason, enabled);
+                    }
                 }
             }
         } finally {
@@ -9636,10 +9666,15 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
             boolean isMetered;
             boolean isDataEnabled;
-            isMetered = phone.getDataNetworkController().getDataConfigManager()
-                    .isMeteredCapability(DataUtils.apnTypeToNetworkCapability(apnType),
-                            phone.getServiceState().getDataRoaming());
-            isDataEnabled = phone.getDataSettingsManager().isDataEnabled(apnType);
+            if (phone.isUsingNewDataStack()) {
+                isMetered = phone.getDataNetworkController().getDataConfigManager()
+                        .isMeteredCapability(DataUtils.apnTypeToNetworkCapability(apnType),
+                                phone.getServiceState().getDataRoaming());
+                isDataEnabled = phone.getDataSettingsManager().isDataEnabled(apnType);
+            } else {
+                isMetered = ApnSettingUtils.isMeteredApnType(apnType, phone);
+                isDataEnabled = phone.getDataEnabledSettings().isDataEnabled(apnType);
+            }
             return !isMetered || isDataEnabled;
         } finally {
             Binder.restoreCallingIdentity(identity);
@@ -9655,9 +9690,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         try {
             Phone phone = getPhone(subId);
             if (phone == null) return true; // By default return true.
-            return phone.getDataNetworkController().getDataConfigManager().isMeteredCapability(
-                    DataUtils.apnTypeToNetworkCapability(apnType),
-                    phone.getServiceState().getDataRoaming());
+            if (phone.isUsingNewDataStack()) {
+                return phone.getDataNetworkController().getDataConfigManager().isMeteredCapability(
+                        DataUtils.apnTypeToNetworkCapability(apnType),
+                        phone.getServiceState().getDataRoaming());
+            }
+
+            return ApnSettingUtils.isMeteredApnType(apnType, phone);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -9789,9 +9828,17 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
             switch (policy) {
                 case TelephonyManager.MOBILE_DATA_POLICY_DATA_ON_NON_DEFAULT_DURING_VOICE_CALL:
-                    return phone.getDataSettingsManager().isDataAllowedInVoiceCall();
+                    if (phone.isUsingNewDataStack()) {
+                        return phone.getDataSettingsManager().isDataAllowedInVoiceCall();
+                    } else {
+                        return phone.getDataEnabledSettings().isDataAllowedInVoiceCall();
+                    }
                 case TelephonyManager.MOBILE_DATA_POLICY_MMS_ALWAYS_ALLOWED:
-                    return phone.getDataSettingsManager().isMmsAlwaysAllowed();
+                    if (phone.isUsingNewDataStack()) {
+                        return phone.getDataSettingsManager().isMmsAlwaysAllowed();
+                    } else {
+                        return phone.getDataEnabledSettings().isMmsAlwaysAllowed();
+                    }
                 default:
                     throw new IllegalArgumentException(policy + " is not a valid policy");
             }
@@ -9812,10 +9859,18 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
             switch (policy) {
                 case TelephonyManager.MOBILE_DATA_POLICY_DATA_ON_NON_DEFAULT_DURING_VOICE_CALL:
-                    phone.getDataSettingsManager().setAllowDataDuringVoiceCall(enabled);
+                    if (phone.isUsingNewDataStack()) {
+                        phone.getDataSettingsManager().setAllowDataDuringVoiceCall(enabled);
+                    } else {
+                        phone.getDataEnabledSettings().setAllowDataDuringVoiceCall(enabled);
+                    }
                     break;
                 case TelephonyManager.MOBILE_DATA_POLICY_MMS_ALWAYS_ALLOWED:
-                    phone.getDataSettingsManager().setAlwaysAllowMmsData(enabled);
+                    if (phone.isUsingNewDataStack()) {
+                        phone.getDataSettingsManager().setAlwaysAllowMmsData(enabled);
+                    } else {
+                        phone.getDataEnabledSettings().setAlwaysAllowMmsData(enabled);
+                    }
                     break;
                 default:
                     throw new IllegalArgumentException(policy + " is not a valid policy");
@@ -11190,6 +11245,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
+    }
+
+    @Override
+    public boolean isUsingNewDataStack() {
+        TelephonyPermissions.enforceShellOnly(Binder.getCallingUid(), "isUsingNewDataStack");
+        return getDefaultPhone().isUsingNewDataStack();
     }
 
     /**
