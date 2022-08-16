@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"Kebolehaksesan"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"Panggilan Wi-Fi daripada"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"Panggilan Wi-Fi"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"Ketik lagi untuk membuka"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"Terdapat ralat semasa menyahkodkan mesej."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"Kad SIM telah mengaktifkan perkhidmatan anda dan mengemas kini keupayaan perayauan telefon anda."</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"Terlalu banyak panggilan aktif. Sila tamatkan atau gabungkan panggilan yang sedia ada sebelum membuat panggilan baharu."</string>
@@ -836,6 +835,7 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"Anda perlu memulakan semula peranti untuk menukar tetapan ini."</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"Mulakan semula"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"Batal"</string>
+    <string name="removable_esim_string" msgid="7931369811671787649">"Tetapkan eSIM Boleh Tanggal sebagai Lalai"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"Kuasa Radio Mudah Alih"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"Lihat Buku Alamat SIM"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"Lihat Nombor Dailan Tetap"</string>

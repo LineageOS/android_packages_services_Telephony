@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"إعدادات تمكين الوصول"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"‏مكالمة Wi-Fi من"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"‏مكالمة عبر Wi-Fi"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"انقر مرة أخرى للفتح."</string>
     <string name="message_decode_error" msgid="1061856591500290887">"حدث خطأ أثناء فك ترميز الرسالة."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"‏نشطت شريحة SIM خدمتك وحدّثت إمكانات التجوال لهاتفك."</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"هناك الكثير من المكالمات النشطة. يرجى إنهاء أو دمج المكالمات الموجودة قبل إجراء مكالمة جديدة."</string>
@@ -836,6 +835,7 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"عليك إعادة تشغيل جهازك لتغيير هذا الإعداد."</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"إعادة التشغيل"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"إلغاء"</string>
+    <string name="removable_esim_string" msgid="7931369811671787649">"‏ضبط شريحة eSIM القابلة للإزالة كشريحة تلقائية"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"طاقة اللاسلكي للجوّال"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"‏عرض دفتر عناوين SIM"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"عرض أرقام الطلب الثابت"</string>

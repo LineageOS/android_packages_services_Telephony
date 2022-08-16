@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"Hỗ trợ tiếp cận"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"Cuộc gọi qua Wi-Fi từ"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"Cuộc gọi qua Wi-Fi"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"Nhấn lại để mở"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"Đã xảy ra lỗi khi giải mã tin nhắn."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"Thẻ SIM đã kích hoạt dịch vụ của bạn và đã cập nhật chức năng chuyển vùng của điện thoại."</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"Có quá nhiều cuộc gọi hiện hoạt. Vui lòng kết thúc hoặc hợp nhất các cuộc gọi hiện có trước khi thực hiện cuộc gọi mới."</string>
@@ -836,6 +835,7 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"Bạn cần khởi động lại thiết bị để thay đổi chế độ cài đặt này."</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"Khởi động lại"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"Hủy"</string>
+    <string name="removable_esim_string" msgid="7931369811671787649">"Đặt eSIM có thể tháo rời là Mặc định"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"Cường độ của sóng di động"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"Xem sổ địa chỉ trên SIM"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"Xem số gọi định sẵn"</string>

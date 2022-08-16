@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"无障碍功能"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"WLAN 通话来电："</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"WLAN 通话"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"再次点按即可打开"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"对邮件解码时出错。"</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"SIM 卡已启用您的服务，并更新了您手机的漫游功能。"</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"进行中的通话过多。请结束现有通话或将其合并，然后再拨打新的电话。"</string>
@@ -836,6 +835,7 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"您需要重启设备才能让这项设置更改生效。"</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"重启"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"取消"</string>
+    <string name="removable_esim_string" msgid="7931369811671787649">"将可卸载的 eSIM 卡设为默认 eSIM 卡"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"移动无线装置电源"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"查看 SIM 卡通讯录"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"查看固定拨号号码"</string>

@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"נגישות"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"‏שיחת Wi-Fi מאת"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"‏שיחת Wi-Fi"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"יש להקיש שוב כדי לפתוח"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"אירעה שגיאה בעת פענוח ההודעה."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"‏כרטיס SIM הפעיל את השירות שלך ועדכן את יכולות הנדידה של הטלפון."</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"יש יותר מדי שיחות פעילות. כדי להתחיל שיחה חדשה עליך לסיים או למזג חלק מהשיחות הפעילות."</string>
@@ -836,6 +835,7 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"עליך להפעיל מחדש את המכשיר כדי לשנות הגדרה זו."</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"הפעלה מחדש"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"ביטול"</string>
+    <string name="removable_esim_string" msgid="7931369811671787649">"‏הגדרת eSIM נשלף כברירת המחדל"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"הפעלה של רדיו סלולרי"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"‏הצגת פנקס כתובות של SIM"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"הצגת מספרי חיוג קבועים"</string>

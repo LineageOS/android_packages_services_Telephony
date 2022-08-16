@@ -1601,9 +1601,6 @@
     <!-- DO NOT TRANSLATE. Internal key for a voicemail notification preference. -->
     <string name="wifi_calling_settings_key">button_wifi_calling_settings_key</string>
 
-    <!-- Hint appearing below a selected action on the emergency dialer telling user to tap again to execute the action [CHAR LIMIT=NONE] -->
-    <string name="emergency_action_launch_hint">Tap again to open</string>
-
     <!-- Strings for IMAP -->
 
     <!-- String used in place of a message that could not be properly decoded (e.g. bad base64
@@ -2006,6 +2003,9 @@
 
     <!-- UI debug setting: Enable/Disable DSDS [CHAR LIMIT=none] -->
     <string name="dsds_dialog_cancel">Cancel</string>
+
+    <!-- Setting Removable esim as default. Only shown in diagnostic screen, so precise translation is not needed -->
+    <string name="removable_esim_string">Set Removable eSIM as Default</string>
 
     <!-- Title for controlling on/off for Mobile phone's radio power. Only shown in diagnostic screen, so precise translation is not needed. -->
     <string name="radio_info_radio_power">Mobile Radio Power</string>
