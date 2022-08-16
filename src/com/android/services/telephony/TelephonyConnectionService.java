@@ -2085,7 +2085,7 @@ public class TelephonyConnectionService extends ConnectionService {
         for (Phone phone : mPhoneFactoryProxy.getPhones()) {
             if (phone.getEmergencyNumberTracker() != null) {
                 if (phone.getEmergencyNumberTracker().isEmergencyNumber(
-                        emergencyNumberAddress, true)) {
+                        emergencyNumberAddress)) {
                     if (isAvailableForEmergencyCalls(phone)) {
                         // a)
                         if (phone.getPhoneId() == defaultVoicePhoneId) {
