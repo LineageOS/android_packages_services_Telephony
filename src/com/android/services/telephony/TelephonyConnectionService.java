@@ -507,7 +507,7 @@ public class TelephonyConnectionService extends ConnectionService {
         IntentFilter intentFilter = new IntentFilter(
                 TelecomManager.ACTION_TTY_PREFERRED_MODE_CHANGED);
         registerReceiver(mTtyBroadcastReceiver, intentFilter,
-                android.Manifest.permission.MODIFY_PHONE_STATE, null);
+                android.Manifest.permission.MODIFY_PHONE_STATE, null, Context.RECEIVER_EXPORTED);
     }
 
     @Override

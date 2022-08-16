@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"Accessibilitat"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"Trucada per Wi-Fi de"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"Trucada per Wi-Fi"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"Torna a tocar per obrir"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"S\'ha produït un error en descodificar el missatge."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"Una targeta SIM ha activat el servei, i s\'ha actualitzat la funció d\'itinerància del telèfon."</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"Hi ha massa trucades actives. Finalitza\'n alguna o combina-les abans de fer-ne una de nova."</string>
@@ -836,6 +835,7 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"Has de reiniciar el dispositiu per canviar aquesta opció."</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"Reinicia"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"Cancel·la"</string>
+    <string name="removable_esim_string" msgid="7931369811671787649">"Defineix l\'eSIM extraïble com a opció predeterminada"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"Potència del senyal mòbil"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"Mostra la llibreta d\'adreces de la SIM"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"Mostra els números de marcatge fix"</string>

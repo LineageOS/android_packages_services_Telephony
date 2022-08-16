@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"সাধ্য সুবিধাসমূহ"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"এওঁৰ পৰা ৱাই-ফাই কল আহিছে"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"ৱাই-ফাই কল"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"খুলিবলৈ পুনৰাই টিপক"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"বাৰ্তাটো ডিক\'ড কৰোঁতে আসোঁৱাহৰ সৃষ্টি হৈছিল।"</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"এখন ছিম কাৰ্ডে আপোনাৰ সেৱাসমূহ সক্ৰিয় কৰিছে আৰু আপোনাৰ ফ\'নটোৰ ৰ\'মিং সক্ষমতাসমূহো আপডে’ট কৰিছে।"</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"কেইবাটাও কল ইতিমধ্যে সক্ৰিয় হৈ আছে। নতুন কল এটা কৰাৰ আগেয়ে অনুগ্ৰহ কৰি সেইবোৰ একেলগ কৰক বা সমাপ্ত কৰক।"</string>
@@ -836,6 +835,7 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"আপুনি এই ছেটিংটো সলনি কৰিবলৈ আপোনাৰ ডিভাইচটো ৰিষ্টার্ট কৰিব লাগিব।"</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"ৰিষ্টাৰ্ট কৰক"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"বাতিল কৰক"</string>
+    <string name="removable_esim_string" msgid="7931369811671787649">"আঁতৰাব পৰা ই-ছিম ডিফ’ল্ট হিচাপে ছেট কৰক"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"ম’বাইলৰ ৰেডিঅ’ পাৱাৰ"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"ছিম ঠিকনা সূচী চাওক"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"ফিক্সড্ ডায়েলিং নম্বৰসমূহ চাওক"</string>

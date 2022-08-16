@@ -32,7 +32,6 @@ import android.media.AudioManager;
 import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.AsyncResult;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.PersistableBundle;
@@ -47,6 +46,7 @@ import android.telephony.CarrierConfigManager;
 import android.telephony.ServiceState;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
+import android.telephony.TelephonyCallback;
 import android.telephony.TelephonyLocalConnection;
 import android.telephony.TelephonyManager;
 import android.telephony.data.ApnSetting;
@@ -60,6 +60,7 @@ import com.android.internal.telephony.CallManager;
 import com.android.internal.telephony.IccCardConstants;
 import com.android.internal.telephony.MmiCode;
 import com.android.internal.telephony.Phone;
+import com.android.internal.telephony.PhoneConfigurationManager;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.SettingsObserver;
@@ -124,6 +125,7 @@ public class PhoneGlobals extends ContextWrapper {
     private static final int EVENT_DATA_ROAMING_SETTINGS_CHANGED = 15;
     private static final int EVENT_MOBILE_DATA_SETTINGS_CHANGED = 16;
     private static final int EVENT_CARRIER_CONFIG_CHANGED = 17;
+    private static final int EVENT_MULTI_SIM_CONFIG_CHANGED = 18;
 
     // The MMI codes are also used by the InCallScreen.
     public static final int MMI_INITIATE = 51;
@@ -207,6 +209,30 @@ public class PhoneGlobals extends ContextWrapper {
 
     private final SettingsObserver mSettingsObserver;
     private BinderCallsStats.SettingsObserver mBinderCallsSettingsObserver;
+
+    // Mapping of phone ID to the associated TelephonyCallback. These should be registered without
+    // fine or coarse location since we only use ServiceState for
+    private PhoneAppCallback[] mTelephonyCallbacks;
+
+    private class PhoneAppCallback extends TelephonyCallback implements
+            TelephonyCallback.ServiceStateListener {
+        private final int mSubId;
+
+        PhoneAppCallback(int subId) {
+            mSubId = subId;
+        }
+
+        @Override
+        public void onServiceStateChanged(ServiceState serviceState) {
+            // Note when registering that we should be registering with INCLUDE_LOCATION_DATA_NONE.
+            // PhoneGlobals only uses the state and roaming status, which does not require location.
+            handleServiceStateChanged(serviceState, mSubId);
+        }
+
+        public int getSubId() {
+            return mSubId;
+        }
+    }
 
     private static class EventSimStateChangedBag {
         final int mPhoneId;
@@ -339,10 +365,44 @@ public class PhoneGlobals extends ContextWrapper {
                     // refresh the message waiting (voicemail) indicator.
                     refreshMwiIndicator(subId);
                     phone = getPhone(subId);
-                    if (phone != null && isSimLocked(phone)) {
-                        // pass in subType=-1 so handleSimLock can find the actual subType if
-                        // needed. This is safe as valid values for subType are >= 0
-                        handleSimLock(-1, phone);
+                    if (phone != null) {
+                        if (isSimLocked(phone)) {
+                            // pass in subType=-1 so handleSimLock can find the actual subType if
+                            // needed. This is safe as valid values for subType are >= 0
+                            handleSimLock(-1, phone);
+                        }
+                        TelephonyManager tm = getSystemService(TelephonyManager.class);
+                        PhoneAppCallback callback = mTelephonyCallbacks[phone.getPhoneId()];
+                        // TODO: We may need to figure out a way to unregister if subId is invalid
+                        tm.createForSubscriptionId(callback.getSubId())
+                                .unregisterTelephonyCallback(callback);
+                        callback = new PhoneAppCallback(subId);
+                        tm.createForSubscriptionId(subId).registerTelephonyCallback(
+                                TelephonyManager.INCLUDE_LOCATION_DATA_NONE, mHandler::post,
+                                callback);
+                        mTelephonyCallbacks[phone.getPhoneId()] = callback;
+                    }
+                    break;
+                case EVENT_MULTI_SIM_CONFIG_CHANGED:
+                    int activeModems = (int) ((AsyncResult) msg.obj).result;
+                    TelephonyManager tm = getSystemService(TelephonyManager.class);
+                    // Unregister all previous callbacks
+                    for (int phoneId = 0; phoneId < mTelephonyCallbacks.length; phoneId++) {
+                        PhoneAppCallback callback = mTelephonyCallbacks[phoneId];
+                        if (callback != null) {
+                            tm.createForSubscriptionId(callback.getSubId())
+                                    .unregisterTelephonyCallback(callback);
+                            mTelephonyCallbacks[phoneId] = null;
+                        }
+                    }
+                    // Register callbacks for all active modems
+                    for (int phoneId = 0; phoneId < activeModems; phoneId++) {
+                        int sub = PhoneFactory.getPhone(phoneId).getSubId();
+                        PhoneAppCallback callback = new PhoneAppCallback(sub);
+                        tm.createForSubscriptionId(sub).registerTelephonyCallback(
+                                TelephonyManager.INCLUDE_LOCATION_DATA_NONE, mHandler::post,
+                                callback);
+                        mTelephonyCallbacks[phoneId] = callback;
                     }
                     break;
             }
@@ -363,11 +423,11 @@ public class PhoneGlobals extends ContextWrapper {
         // Initialize the shim from frameworks/opt/telephony into packages/services/Telephony.
         TelephonyLocalConnection.setInstance(new LocalConnectionImpl(this));
 
+        TelephonyManager tm = getSystemService(TelephonyManager.class);
         // Cache the "voice capable" flag.
         // This flag currently comes from a resource (which is
         // overrideable on a per-product basis):
-        sVoiceCapable = ((TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE))
-                .isVoiceCapable();
+        sVoiceCapable = tm.isVoiceCapable();
         // ...but this might eventually become a PackageManager "system
         // feature" instead, in which case we'd do something like:
         // sVoiceCapable =
@@ -480,12 +540,24 @@ public class PhoneGlobals extends ContextWrapper {
                     new IntentFilter(Intent.ACTION_AIRPLANE_MODE_CHANGED);
             intentFilter.addAction(TelephonyIntents.ACTION_SIM_STATE_CHANGED);
             intentFilter.addAction(TelephonyIntents.ACTION_RADIO_TECHNOLOGY_CHANGED);
-            intentFilter.addAction(TelephonyIntents.ACTION_SERVICE_STATE_CHANGED);
             intentFilter.addAction(TelephonyIntents.ACTION_EMERGENCY_CALLBACK_MODE_CHANGED);
             intentFilter.addAction(TelephonyIntents.ACTION_DEFAULT_DATA_SUBSCRIPTION_CHANGED);
             intentFilter.addAction(CarrierConfigManager.ACTION_CARRIER_CONFIG_CHANGED);
             registerReceiver(mReceiver, intentFilter);
 
+            PhoneConfigurationManager.registerForMultiSimConfigChange(
+                    mHandler, EVENT_MULTI_SIM_CONFIG_CHANGED, null);
+
+            mTelephonyCallbacks = new PhoneAppCallback[tm.getSupportedModemCount()];
+            if (tm.getSupportedModemCount() > 0) {
+                for (Phone phone : PhoneFactory.getPhones()) {
+                    int subId = phone.getSubId();
+                    PhoneAppCallback callback = new PhoneAppCallback(subId);
+                    tm.createForSubscriptionId(subId).registerTelephonyCallback(
+                            TelephonyManager.INCLUDE_LOCATION_DATA_NONE, mHandler::post, callback);
+                    mTelephonyCallbacks[phone.getPhoneId()] = callback;
+                }
+            }
             mCarrierVvmPackageInstalledReceiver.register(this);
 
             //set the default values for the preferences in the phone.
@@ -731,8 +803,6 @@ public class PhoneGlobals extends ContextWrapper {
                 String newPhone = intent.getStringExtra(PhoneConstants.PHONE_NAME_KEY);
                 Log.d(LOG_TAG, "Radio technology switched. Now " + newPhone + " is active.");
                 initForNewRadioTechnology();
-            } else if (action.equals(TelephonyIntents.ACTION_SERVICE_STATE_CHANGED)) {
-                handleServiceStateChanged(intent);
             } else if (action.equals(TelephonyIntents.ACTION_EMERGENCY_CALLBACK_MODE_CHANGED)) {
                 int phoneId = intent.getIntExtra(PhoneConstants.PHONE_KEY, 0);
                 phoneInEcm = PhoneFactory.getPhone(phoneId);
@@ -782,33 +852,17 @@ public class PhoneGlobals extends ContextWrapper {
         }
     }
 
-    private void handleServiceStateChanged(Intent intent) {
-        /**
-         * This used to handle updating EriTextWidgetProvider this routine
-         * and and listening for ACTION_SERVICE_STATE_CHANGED intents could
-         * be removed. But leaving just in case it might be needed in the near
-         * future.
-         */
-
+    private void handleServiceStateChanged(ServiceState serviceState, int subId) {
         if (VDBG) Log.v(LOG_TAG, "handleServiceStateChanged");
-        // If service just returned, start sending out the queued messages
-        Bundle extras = intent.getExtras();
-        if (extras != null) {
-            ServiceState ss = ServiceState.newFromBundle(extras);
-            if (ss != null) {
-                int state = ss.getState();
-                int subId = intent.getIntExtra(PhoneConstants.SUBSCRIPTION_KEY,
-                        SubscriptionManager.INVALID_SUBSCRIPTION_ID);
-                notificationMgr.updateNetworkSelection(state, subId);
+        int state = serviceState.getState();
+        notificationMgr.updateNetworkSelection(state, subId);
 
-                if (VDBG) {
-                    Log.v(LOG_TAG, "subId=" + subId + ",mDefaultDataSubId="
-                            + mDefaultDataSubId + ",ss roaming=" + ss.getDataRoaming());
-                }
-                if (subId == mDefaultDataSubId) {
-                    updateDataRoamingStatus();
-                }
-            }
+        if (VDBG) {
+            Log.v(LOG_TAG, "subId=" + subId + ", mDefaultDataSubId="
+                    + mDefaultDataSubId + ", ss roaming=" + serviceState.getDataRoaming());
+        }
+        if (subId == mDefaultDataSubId) {
+            updateDataRoamingStatus();
         }
     }
 

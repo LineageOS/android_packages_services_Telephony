@@ -674,7 +674,6 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"ප්‍රවේශ්‍යතාව"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"වෙතින් Wi-Fi ඇමතුම"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"Wi-Fi ඇමතුම"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"විවෘත කිරීමට නැවත තට්ටු කරන්න"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"පණිවිඩය විකේතනය කරන අතරතුර දෝෂයක් සිදු විය."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"SIM කාඩ්පතක් ඔබේ සේවාව සක්‍රිය කර ඔබේ දුරකථනයේ රෝමිං හැකියා යාවත්කාලීන කර තිබේ."</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"සක්‍රිය ඇමතුම් ඉතා විශාල ගණනක් ඇත. කරුණාකර නව ඇමතුමක් ගැනීමට පෙර පවතින ඇමතුම් අවසන් හෝ ඒකාබද්ධ කරන්න."</string>
@@ -836,6 +835,7 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"මෙම සැකසීම වෙනස් කිරීමට ඔබ ඔබේ උපාංගය යළි ඇරඹීමට අවශ්‍යයි."</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"යළි අරඹන්න"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"අවලංගු කරන්න"</string>
+    <string name="removable_esim_string" msgid="7931369811671787649">"ඉවත් කළ හැකි eSIM පෙරනිමිය ලෙස සකසන්න"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"ජංගම රේඩියෝ බලය"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"SIM ලිපින පොත බලන්න"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"ස්ථාවර ඇමතුම් අංක පෙන්වන්න"</string>

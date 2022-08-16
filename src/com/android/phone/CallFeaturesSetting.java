@@ -225,7 +225,7 @@ public class CallFeaturesSetting extends PreferenceActivity
                         new Dialog.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Intent intent = new Intent(Intent.ACTION_MAIN);
+                                Intent intent = new Intent();
                                 ComponentName mobileNetworkSettingsComponent = new ComponentName(
                                         getString(R.string.mobile_network_settings_package),
                                         getString(R.string.mobile_network_settings_class));

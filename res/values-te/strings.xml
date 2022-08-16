@@ -167,7 +167,7 @@
     <string name="vm_change_pin_progress_message" msgid="626015184502739044">"దయచేసి వేచి ఉండండి."</string>
     <string name="vm_change_pin_error_too_short" msgid="1789139338449945483">"కొత్త PIN చాలా చిన్నదిగా ఉంది."</string>
     <string name="vm_change_pin_error_too_long" msgid="3634907034310018954">"కొత్త PIN చాలా పొడవు ఉంది."</string>
-    <string name="vm_change_pin_error_too_weak" msgid="8581892952627885719">"కొత్త PIN చాలా బలహీనంగా ఉంది. శక్తివంతమైన పాస్‌వర్డ్‌లో వరుస శ్రేణిలో అక్షరాలు/అంకెలు లేదా పునరావృత అంకెలు ఉండకూడదు."</string>
+    <string name="vm_change_pin_error_too_weak" msgid="8581892952627885719">"కొత్త PIN చాలా బలహీనంగా ఉంది. శక్తివంతమైన పాస్‌వర్డ్‌లో వరుస శ్రేణిలో అక్షరాలు/అంకెలు లేదా రిపీట్ అంకెలు ఉండకూడదు."</string>
     <string name="vm_change_pin_error_mismatch" msgid="5364847280026257331">"పాత PIN సరిపోలలేదు."</string>
     <string name="vm_change_pin_error_invalid" msgid="5230002671175580674">"కొత్త PIN చెల్లని అక్షరాలను కలిగి ఉంది."</string>
     <string name="vm_change_pin_error_system_error" msgid="9116483527909681791">"PINని మార్చడం సాధ్యపడలేదు"</string>
@@ -433,7 +433,7 @@
     <item msgid="2953825013895327785">"0"</item>
     <item msgid="7970797749269738435">"1"</item>
   </string-array>
-    <string name="cdma_activate_device" msgid="5914720276140097632">"పరికరాన్ని సక్రియం చేయండి"</string>
+    <string name="cdma_activate_device" msgid="5914720276140097632">"పరికరాన్ని యాక్టివేట్ చేయండి"</string>
     <string name="cdma_lte_data_service" msgid="359786441782404562">"డేటా సేవను సెటప్ చేయండి"</string>
     <string name="carrier_settings_title" msgid="6292869148169850220">"క్యారియర్ సెట్టింగ్‌లు"</string>
     <string name="fdn" msgid="2545904344666098749">"ఫిక్సెడ్ డయలింగ్ నంబర్‌లు"</string>
@@ -612,8 +612,8 @@
   </string-array>
     <string name="network_info_message" msgid="7599413947016532355">"నెట్‌వర్క్ మెసేజ్‌"</string>
     <string name="network_error_message" msgid="4271579424089326618">"లోప మెసేజ్‌"</string>
-    <string name="ota_title_activate" msgid="4049645324841263423">"మీ ఫోన్‌ను సక్రియం చేయండి"</string>
-    <string name="ota_touch_activate" msgid="838764494319694754">"మీ ఫోన్ సేవను సక్రియం చేయడానికి ప్రత్యేక కాల్ చేయాల్సి ఉంటుంది. \n\n“సక్రియం చేయి” నొక్కిన తర్వాత, మీ ఫోన్‌ను సక్రియం చేయడానికి అందించబడే సూచనలను వినండి."</string>
+    <string name="ota_title_activate" msgid="4049645324841263423">"మీ ఫోన్‌ను యాక్టివేట్ చేయండి"</string>
+    <string name="ota_touch_activate" msgid="838764494319694754">"మీ ఫోన్ సేవను సక్రియం చేయడానికి ప్రత్యేక కాల్ చేయాల్సి ఉంటుంది. \n\n“యాక్టివేట్ చేయండి” నొక్కిన తర్వాత, మీ ఫోన్‌ను సక్రియం చేయడానికి అందించబడే సూచనలను వినండి."</string>
     <string name="ota_hfa_activation_title" msgid="3300556778212729671">"సక్రియం చేస్తోంది..."</string>
     <string name="ota_hfa_activation_dialog_message" msgid="7921718445773342996">"ఫోన్ మీ మొబైల్ డేటా సేవను సక్రియం చేస్తోంది.\n\nదీనికి గరిష్టంగా 5 నిమిషాలు పట్టవచ్చు."</string>
     <string name="ota_skip_activation_dialog_title" msgid="7666611236789203797">"సక్రియం చేయడాన్ని దాటవేయాలా?"</string>
@@ -674,10 +674,9 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"యాక్సెసిబిలిటీ"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"వీరి నుండి Wi-Fi కాల్"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"Wi-Fi కాల్"</string>
-    <string name="emergency_action_launch_hint" msgid="2762016865340891314">"తెరవడానికి మళ్లీ నొక్కండి"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"మెసేజ్‌ను డీకోడ్ చేస్తున్నప్పుడు ఎర్రర్ ఏర్పడింది."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"SIM కార్డ్ మీ సేవను సక్రియం చేసింది మరియు మీ ఫోన్ రోమింగ్ సామర్థ్యాలను నవీకరించింది."</string>
-    <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"చాలా ఎక్కువ కాల్స్‌ సక్రియంగా ఉన్నాయి. దయచేసి మరొక కొత్త కాల్ చేసే ముందు ఇప్పటికే ఉన్న కాల్స్‌ను ముగించండి లేదా విలీనం చేయండి."</string>
+    <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"చాలా ఎక్కువ కాల్స్‌ యాక్టివ్‌గా ఉన్నాయి. దయచేసి మరొక కొత్త కాల్ చేసే ముందు ఇప్పటికే ఉన్న కాల్స్‌ను ముగించండి లేదా విలీనం చేయండి."</string>
     <string name="callFailed_imei_not_accepted" msgid="7257903653685147251">"కనెక్ట్ చేయడం సాధ్యపడలేదు, దయచేసి చెల్లుబాటు అయ్యే SIM కార్డ్‌ను చొప్పించండి."</string>
     <string name="callFailed_wifi_lost" msgid="1788036730589163141">"Wi-Fi కనెక్షన్ పోయింది. కాల్ ముగిసింది."</string>
     <string name="dialFailed_low_battery" msgid="6857904237423407056">"తక్కువ బ్యాటరీ కారణంగా మీ వీడియో కాల్ చేయడం సాధ్యపడదు."</string>
@@ -699,7 +698,7 @@
     <string name="mobile_data_status_roaming_turned_off_subtext" msgid="6840673347416227054">"డేటా రోమింగ్ ఆఫ్ చేయబడింది"</string>
     <string name="mobile_data_status_roaming_turned_on_subtext" msgid="5615757897768777865">"డేటా రోమింగ్ ఆన్ చేయబడింది"</string>
     <string name="mobile_data_status_roaming_without_plan_subtext" msgid="6536671968072284677">"ప్రస్తుతం రోమింగ్‌లో ఉంది, డేటా ప్లాన్ అవసరం"</string>
-    <string name="mobile_data_status_roaming_with_plan_subtext" msgid="2576177169108123095">"ప్రస్తుతం రోమింగ్‌లో ఉంది, డేటా ప్లాన్ సక్రియంగా ఉంది"</string>
+    <string name="mobile_data_status_roaming_with_plan_subtext" msgid="2576177169108123095">"ప్రస్తుతం రోమింగ్‌లో ఉంది, డేటా ప్లాన్ యాక్టివ్‌గా ఉంది"</string>
     <string name="mobile_data_status_no_plan_subtext" msgid="170331026419263657">"మొబైల్ డేటా ఏదీ మిగిలి లేదు"</string>
     <string name="mobile_data_activate_prepaid" msgid="4276738964416795596">"మొబైల్ డేటా ఏదీ మిగిలి లేదు"</string>
     <string name="mobile_data_activate_prepaid_summary" msgid="6846085278531605925">"<xliff:g id="PROVIDER_NAME">%s</xliff:g> ద్వారా మొబైల్ డేటాను జోడించండి"</string>
@@ -804,7 +803,7 @@
     <string name="supp_service_closed_user_group_call" msgid="2811636666505250689">"దగ్గరి వినియోగదారు సమూహ కాల్."</string>
     <string name="supp_service_incoming_calls_barred" msgid="2034627421274447674">"ఇన్‌కమింగ్ కాల్స్‌ నిరోధించబడ్డాయి"</string>
     <string name="supp_service_outgoing_calls_barred" msgid="5205725332394087112">"అవుట్‌గోయింగ్ కాల్స్‌ నిరోధించబడ్డాయి."</string>
-    <string name="supp_service_call_forwarding_active" msgid="7910162960395132464">"కాల్ ఫార్వర్డింగ్ సక్రియంగా ఉంది."</string>
+    <string name="supp_service_call_forwarding_active" msgid="7910162960395132464">"కాల్ ఫార్వర్డింగ్ యాక్టివ్‌గా ఉంది."</string>
     <string name="supp_service_additional_call_forwarded" msgid="8772753260008398632">"అదనపు కాల్ ఫార్వార్డ్ చేయబడింది."</string>
     <string name="supp_service_additional_ect_connected" msgid="8525934162945220237">"అభ్యంతరకరమైన కాల్ బదిలీ పూర్తయింది."</string>
     <string name="supp_service_additional_ect_connecting" msgid="7046240728781222753">"అభ్యంతరకరమైన కాల్ బదిలీ ప్రోగ్రెస్‌లో ఉంది."</string>
@@ -836,6 +835,7 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"మీరు ఈ సెట్టింగ్‌ను మార్చడానికి మీ పరికరాన్ని మళ్లీ ప్రారంభించాలి."</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"పునఃప్రారంభించు"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"రద్దు చేయండి"</string>
+    <string name="removable_esim_string" msgid="7931369811671787649">"తీసివేయగలిగే eSIMని ఆటోమేటిక్ సెట్టింగ్‌గా సెట్ చేయండి"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"మొబైల్ రేడియో పవర్"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"SIM అడ్రస్‌ పుస్తకాన్ని చూడండి"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"ఫిక్స్‌డ్ డయలింగ్ నంబర్‌లను చూడండి"</string>
@@ -915,7 +915,7 @@
     <string name="phone_info_label" product="tablet" msgid="7477478709388477397">"టాబ్లెట్ సమాచారం"</string>
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"ఫోన్ సమాచారం"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"క్యారియర్ కేటాయింపు సమాచారం"</string>
-    <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"క్యారియర్ కేటాయింపు సక్రియం చేయండి"</string>
+    <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"క్యారియర్ కేటాయింపు యాక్టివేట్ చేయండి"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"మీ బ్లూటూత్ సిగ్నల్ బలహీనంగా ఉంది. స్పీకర్‌ఫోన్‌కు స్విచ్ అవ్వడానికి ట్రై చేయండి."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"కాల్ క్వాలిటీ నోటిఫికేషన్"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"తీసివేయబడిన SIP ఖాతాలు"</string>

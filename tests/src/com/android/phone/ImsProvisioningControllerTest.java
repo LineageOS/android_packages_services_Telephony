@@ -16,10 +16,12 @@
 
 package com.android.phone;
 
+import static android.telephony.ims.ImsRcsManager.CAPABILITY_TYPE_PRESENCE_UCE;
 import static android.telephony.ims.ProvisioningManager.KEY_EAB_PROVISIONING_STATUS;
 import static android.telephony.ims.ProvisioningManager.KEY_VOICE_OVER_WIFI_ENABLED_OVERRIDE;
 import static android.telephony.ims.ProvisioningManager.KEY_VOLTE_PROVISIONING_STATUS;
 import static android.telephony.ims.ProvisioningManager.KEY_VT_PROVISIONING_STATUS;
+import static android.telephony.ims.ProvisioningManager.PROVISIONING_VALUE_DISABLED;
 import static android.telephony.ims.ProvisioningManager.PROVISIONING_VALUE_ENABLED;
 import static android.telephony.ims.feature.ImsFeature.FEATURE_MMTEL;
 import static android.telephony.ims.feature.ImsFeature.FEATURE_RCS;
@@ -28,8 +30,6 @@ import static android.telephony.ims.feature.MmTelFeature.MmTelCapabilities.CAPAB
 import static android.telephony.ims.feature.MmTelFeature.MmTelCapabilities.CAPABILITY_TYPE_UT;
 import static android.telephony.ims.feature.MmTelFeature.MmTelCapabilities.CAPABILITY_TYPE_VIDEO;
 import static android.telephony.ims.feature.MmTelFeature.MmTelCapabilities.CAPABILITY_TYPE_VOICE;
-import static android.telephony.ims.feature.RcsFeature.RcsImsCapabilities.CAPABILITY_TYPE_OPTIONS_UCE;
-import static android.telephony.ims.feature.RcsFeature.RcsImsCapabilities.CAPABILITY_TYPE_PRESENCE_UCE;
 import static android.telephony.ims.stub.ImsRegistrationImplBase.REGISTRATION_TECH_CROSS_SIM;
 import static android.telephony.ims.stub.ImsRegistrationImplBase.REGISTRATION_TECH_IWLAN;
 import static android.telephony.ims.stub.ImsRegistrationImplBase.REGISTRATION_TECH_LTE;
@@ -70,7 +70,6 @@ import android.telephony.ims.stub.ImsRegistrationImplBase;
 import android.test.suitebuilder.annotation.SmallTest;
 import android.testing.TestableLooper;
 import android.util.Log;
-import android.util.SparseArray;
 
 import com.android.ims.FeatureConnector;
 import com.android.ims.ImsConfig;
@@ -178,9 +177,6 @@ public class ImsProvisioningControllerTest {
     int mSubId0 = 1234;
     int mSubId1 = 5678;
 
-    SparseArray<int[]> mMmTelTechMap = new SparseArray<>();
-    SparseArray<int[]> mRcsTechMap = new SparseArray<>();
-
     int[][] mMmTelProvisioningStorage;
     int[][] mRcsProvisioningStorage;
     int[][] mImsConfigStorage;
@@ -208,14 +204,6 @@ public class ImsProvisioningControllerTest {
 
         protected ImsConfig getImsConfig(IImsConfig iImsConfig) {
             return mImsConfig;
-        }
-
-        protected int[] getTechsFromCarrierConfig(int subId, int capability, boolean isMmtel) {
-            if (isMmtel) {
-                return mMmTelTechMap.get(capability);
-            } else {
-                return mRcsTechMap.get(capability);
-            }
         }
 
         protected boolean isValidSubId(int subId) {
@@ -328,6 +316,14 @@ public class ImsProvisioningControllerTest {
     public void connectionReady_MmTelFeatureListener() throws Exception {
         createImsProvisioningController();
 
+        // provisioning required capability
+        // voice, all tech
+        // video, all tech
+        setCarrierConfig(mSubId0, CarrierConfigManager.Ims.KEY_CAPABILITY_TYPE_VOICE_INT_ARRAY,
+                RADIO_TECHS);
+        setCarrierConfig(mSubId0, CarrierConfigManager.Ims.KEY_CAPABILITY_TYPE_VIDEO_INT_ARRAY,
+                RADIO_TECHS);
+
         try {
             mTestImsProvisioningController.addFeatureProvisioningChangedCallback(
                     mSubId0, mIFeatureProvisioningCallback0);
@@ -375,6 +371,10 @@ public class ImsProvisioningControllerTest {
     @SmallTest
     public void connectionReady_RcsFeatureListener() throws Exception {
         createImsProvisioningController();
+
+        // provisioning required capability : PRESENCE, tech : all
+        setCarrierConfig(mSubId0,
+                CarrierConfigManager.Ims.KEY_CAPABILITY_TYPE_PRESENCE_UCE_INT_ARRAY, RADIO_TECHS);
 
         try {
             mTestImsProvisioningController.addFeatureProvisioningChangedCallback(
@@ -440,22 +440,24 @@ public class ImsProvisioningControllerTest {
         // voice, all tech
         // video, all tech
         // UT, all tech
-        mMmTelTechMap.clear();
-        mMmTelTechMap.put(CAPABILITY_TYPE_VOICE,
-                new int[] {REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN,
-                        REGISTRATION_TECH_CROSS_SIM, REGISTRATION_TECH_NR});
-        mMmTelTechMap.put(CAPABILITY_TYPE_VIDEO,
-                new int[] {REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN,
-                        REGISTRATION_TECH_CROSS_SIM, REGISTRATION_TECH_NR});
-        mMmTelTechMap.put(CAPABILITY_TYPE_UT,
-                new int[] {REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN,
-                        REGISTRATION_TECH_CROSS_SIM, REGISTRATION_TECH_NR});
+        setCarrierConfig(mSubId0, CarrierConfigManager.Ims.KEY_CAPABILITY_TYPE_VOICE_INT_ARRAY,
+                RADIO_TECHS);
+        setCarrierConfig(mSubId0, CarrierConfigManager.Ims.KEY_CAPABILITY_TYPE_VIDEO_INT_ARRAY,
+                RADIO_TECHS);
+        setCarrierConfig(mSubId0, CarrierConfigManager.Ims.KEY_CAPABILITY_TYPE_UT_INT_ARRAY,
+                RADIO_TECHS);
 
+        // provisioning required for each capability
         boolean[][] expectedRequired = new boolean[][] {
+                //voice - LTE, WLAN, CROSS-SIM, NR
                 {true, true, true, true},
+                //video - LTE, WLAN, CROSS-SIM, NR
                 {true, true, true, true},
+                //UT - LTE, WLAN, CROSS-SIM, NR
                 {true, true, true, true},
+                //SMS not required
                 {false, false, false, false},
+                //Call composer not required
                 {false, false, false, false}
         };
 
@@ -465,6 +467,45 @@ public class ImsProvisioningControllerTest {
                 isRequired = mTestImsProvisioningController
                 .isImsProvisioningRequiredForCapability(
                         mSubId0, MMTEL_CAPAS[i], RADIO_TECHS[j]);
+                assertEquals(expectedRequired[i][j], isRequired);
+            }
+        }
+    }
+
+    @Test
+    @SmallTest
+    public void isImsProvisioningRequiredForCapability_withDeprecatedKey() throws Exception {
+        createImsProvisioningController();
+
+        // provisioning required capability
+        // KEY_MMTEL_REQUIRES_PROVISIONING_BUNDLE is not defined
+        // but KEY_CARRIER_VOLTE_PROVISIONING_REQUIRED_BOOL and
+        // KEY_CARRIER_SUPPORTS_SS_OVER_UT_BOOL are defined
+        setDeprecatedCarrierConfig(
+                CarrierConfigManager.KEY_CARRIER_VOLTE_PROVISIONING_REQUIRED_BOOL, true);
+        setDeprecatedCarrierConfig(
+                CarrierConfigManager.KEY_CARRIER_UT_PROVISIONING_REQUIRED_BOOL, true);
+
+        // provisioning required for each capability
+        boolean[][] expectedRequired = new boolean[][] {
+                //voice - LTE, WLAN, CROSS-SIM, NR
+                {true, true, true, true},
+                //video - LTE, WLAN, CROSS-SIM, NR
+                {true, true, true, true},
+                //UT - LTE, WLAN, CROSS-SIM, NR
+                {true, true, true, true},
+                //SMS not required
+                {false, false, false, false},
+                //Call composer not required
+                {false, false, false, false}
+        };
+
+        boolean isRequired;
+        for (int i = 0; i < MMTEL_CAPAS.length; i++) {
+            for (int j = 0; j < RADIO_TECHS.length; j++) {
+                isRequired = mTestImsProvisioningController
+                        .isImsProvisioningRequiredForCapability(
+                                mSubId0, MMTEL_CAPAS[i], RADIO_TECHS[j]);
                 assertEquals(expectedRequired[i][j], isRequired);
             }
         }
@@ -503,18 +544,44 @@ public class ImsProvisioningControllerTest {
         createImsProvisioningController();
 
         // provisioning required capability : PRESENCE, tech : all
-        mRcsTechMap.clear();
-        mRcsTechMap.put(CAPABILITY_TYPE_PRESENCE_UCE,
-                new int[] {REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN,
-                        REGISTRATION_TECH_CROSS_SIM, REGISTRATION_TECH_NR});
+        setCarrierConfig(mSubId0,
+                CarrierConfigManager.Ims.KEY_CAPABILITY_TYPE_PRESENCE_UCE_INT_ARRAY, RADIO_TECHS);
 
-        boolean[] expectedRequired = new boolean[] {true, true, true, true};
+        // PRESENCE provisioning required on
+        boolean[] expectedRequired = new boolean[]
+                //LTE, WLAN, CROSS-SIM, NR
+                {true, true, true, true};
 
         boolean isRequired;
         for (int i = 0; i < RADIO_TECHS.length; i++) {
             isRequired = mTestImsProvisioningController
             .isRcsProvisioningRequiredForCapability(
                     mSubId0, CAPABILITY_TYPE_PRESENCE_UCE, RADIO_TECHS[i]);
+            assertEquals(expectedRequired[i], isRequired);
+        }
+    }
+
+    @Test
+    @SmallTest
+    public void isRcsProvisioningRequiredForCapability_withDeprecatedKey() throws Exception {
+        createImsProvisioningController();
+
+        // provisioning required capability
+        // KEY_MMTEL_REQUIRES_PROVISIONING_BUNDLE is not defined
+        // but KEY_CARRIER_RCS_PROVISIONING_REQUIRED_BOOL is defined
+        setDeprecatedCarrierConfig(
+                CarrierConfigManager.KEY_CARRIER_RCS_PROVISIONING_REQUIRED_BOOL, true);
+
+        // PRESENCE provisioning required on
+        boolean[] expectedRequired = new boolean[]
+                //LTE, WLAN, CROSS-SIM, NR
+                {true, true, true, true};
+
+        boolean isRequired;
+        for (int i = 0; i < RADIO_TECHS.length; i++) {
+            isRequired = mTestImsProvisioningController
+                    .isRcsProvisioningRequiredForCapability(
+                            mSubId0, CAPABILITY_TYPE_PRESENCE_UCE, RADIO_TECHS[i]);
             assertEquals(expectedRequired[i], isRequired);
         }
     }
@@ -528,16 +595,12 @@ public class ImsProvisioningControllerTest {
         // voice, all tech
         // video, all tech
         // UT, all tech
-        mMmTelTechMap.clear();
-        mMmTelTechMap.put(CAPABILITY_TYPE_VOICE,
-                new int[] {REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN,
-                        REGISTRATION_TECH_CROSS_SIM, REGISTRATION_TECH_NR});
-        mMmTelTechMap.put(CAPABILITY_TYPE_VIDEO,
-                new int[] {REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN,
-                        REGISTRATION_TECH_CROSS_SIM, REGISTRATION_TECH_NR});
-        mMmTelTechMap.put(CAPABILITY_TYPE_UT,
-                new int[] {REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN,
-                        REGISTRATION_TECH_CROSS_SIM, REGISTRATION_TECH_NR});
+        setCarrierConfig(mSubId0, CarrierConfigManager.Ims.KEY_CAPABILITY_TYPE_VOICE_INT_ARRAY,
+                RADIO_TECHS);
+        setCarrierConfig(mSubId0, CarrierConfigManager.Ims.KEY_CAPABILITY_TYPE_VIDEO_INT_ARRAY,
+                RADIO_TECHS);
+        setCarrierConfig(mSubId0, CarrierConfigManager.Ims.KEY_CAPABILITY_TYPE_UT_INT_ARRAY,
+                RADIO_TECHS);
 
         // provisioning Status
         mMmTelProvisioningStorage = new int[][] {
@@ -569,7 +632,7 @@ public class ImsProvisioningControllerTest {
             // verify return value
             assertEquals(expectedVoiceProvisioningStatus[i], provisioned);
 
-            // verify weather ImsProvisioningLoader is called or not
+            // verify whether ImsProvisioningLoader is called or not
             verify(mImsProvisioningLoader, times(1))
                     .getProvisioningStatus(eq(mSubId0), eq(FEATURE_MMTEL), eq(capability),
                             eq(RADIO_TECHS[i]));
@@ -584,7 +647,7 @@ public class ImsProvisioningControllerTest {
             // verify return value
             assertEquals(expectedVideoProvisioningStatus[i], provisioned);
 
-            // verify weather ImsProvisioningLoader is called or not
+            // verify whether ImsProvisioningLoader is called or not
             verify(mImsProvisioningLoader, times(1))
                     .getProvisioningStatus(eq(mSubId0), eq(FEATURE_MMTEL), eq(capability),
                             eq(RADIO_TECHS[i]));
@@ -599,7 +662,7 @@ public class ImsProvisioningControllerTest {
             // verify return value
             assertEquals(expectedUtProvisioningStatus[i], provisioned);
 
-            // verify weather ImsProvisioningLoader is called or not
+            // verify whether ImsProvisioningLoader is called or not
             verify(mImsProvisioningLoader, times(1))
                     .getProvisioningStatus(eq(mSubId0), eq(FEATURE_MMTEL), eq(capability),
                             eq(RADIO_TECHS[i]));
@@ -622,11 +685,10 @@ public class ImsProvisioningControllerTest {
         // provisioning required capability
         // voice, LTE, IWLAN
         // video, LTE
-        mMmTelTechMap.clear();
-        mMmTelTechMap.put(CAPABILITY_TYPE_VOICE,
-                new int[] {REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN});
-        mMmTelTechMap.put(CAPABILITY_TYPE_VIDEO,
-                new int[] {REGISTRATION_TECH_LTE});
+        setCarrierConfig(mSubId0, CarrierConfigManager.Ims.KEY_CAPABILITY_TYPE_VOICE_INT_ARRAY,
+                REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN);
+        setCarrierConfig(mSubId0, CarrierConfigManager.Ims.KEY_CAPABILITY_TYPE_VIDEO_INT_ARRAY,
+                REGISTRATION_TECH_LTE);
 
         // provisioning StatusP, all of provisioning status is not provisioned
         mMmTelProvisioningStorage = new int[][]{
@@ -655,10 +717,10 @@ public class ImsProvisioningControllerTest {
         verify(mImsProvisioningLoader, times(1))
                 .getProvisioningStatus(eq(mSubId0), eq(FEATURE_MMTEL), eq(capability), eq(tech));
 
-        // verify weather ImsProvisioningLoader is called or not
+        // verify whether ImsProvisioningLoader is called or not
         verify(mImsConfig, times(1)).getConfigInt(eq(KEY_VOLTE_PROVISIONING_STATUS));
 
-        // verify weather ImsProvisioningLoader is called or not
+        // verify whether ImsProvisioningLoader is called or not
         verify(mImsProvisioningLoader, times(1))
                 .setProvisioningStatus(eq(mSubId0), eq(FEATURE_MMTEL), eq(capability), eq(tech),
                         eq(provisioned));
@@ -678,10 +740,10 @@ public class ImsProvisioningControllerTest {
         verify(mImsProvisioningLoader, times(1))
                 .getProvisioningStatus(eq(mSubId0), eq(FEATURE_MMTEL), eq(capability), eq(tech));
 
-        // verify weather ImsProvisioningLoader is called or not
+        // verify whether ImsProvisioningLoader is called or not
         verify(mImsConfig, times(1)).getConfigInt(eq(KEY_VT_PROVISIONING_STATUS));
 
-        // verify weather ImsProvisioningLoader is called or not
+        // verify whether ImsProvisioningLoader is called or not
         verify(mImsProvisioningLoader, times(1))
                 .setProvisioningStatus(eq(mSubId0), eq(FEATURE_MMTEL), eq(capability), eq(tech),
                         eq(provisioned));
@@ -697,10 +759,8 @@ public class ImsProvisioningControllerTest {
 
         // provisioning required capability
         // PRESENCE, all tech
-        mRcsTechMap.clear();
-        mRcsTechMap.put(CAPABILITY_TYPE_PRESENCE_UCE,
-                new int[] {REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN,
-                        REGISTRATION_TECH_CROSS_SIM, REGISTRATION_TECH_NR});
+        setCarrierConfig(mSubId0,
+                CarrierConfigManager.Ims.KEY_CAPABILITY_TYPE_PRESENCE_UCE_INT_ARRAY, RADIO_TECHS);
 
         // provisioning Status
         mRcsProvisioningStorage = new int[][] {
@@ -722,7 +782,7 @@ public class ImsProvisioningControllerTest {
             // verify return value
             assertEquals(expectedPresenceProvisioningStatus[i], provisioned);
 
-            // verify weather ImsProvisioningLoader is called or not
+            // verify whether ImsProvisioningLoader is called or not
             verify(mImsProvisioningLoader, times(1)).getProvisioningStatus(
                     eq(mSubId0), eq(FEATURE_RCS), eq(capability), eq(RADIO_TECHS[i]));
         }
@@ -743,9 +803,9 @@ public class ImsProvisioningControllerTest {
 
         // provisioning required capability
         // PRESENCE, LTE, IWLAN
-        mRcsTechMap.clear();
-        mRcsTechMap.put(CAPABILITY_TYPE_PRESENCE_UCE,
-                new int[] {REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN});
+        setCarrierConfig(mSubId0,
+                CarrierConfigManager.Ims.KEY_CAPABILITY_TYPE_PRESENCE_UCE_INT_ARRAY,
+                REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN);
 
         // provisioning Status, all of provisioning status is not provisioned
         mRcsProvisioningStorage = new int[][]{
@@ -773,10 +833,10 @@ public class ImsProvisioningControllerTest {
         verify(mImsProvisioningLoader, times(1)).getProvisioningStatus(
                 eq(mSubId0), eq(FEATURE_RCS), eq(capability), eq(tech));
 
-        // verify weather ImsProvisioningLoader is called or not
+        // verify whether ImsProvisioningLoader is called or not
         verify(mImsConfig, times(1)).getConfigInt(eq(KEY_EAB_PROVISIONING_STATUS));
 
-        // verify weather ImsProvisioningLoader is called or not
+        // verify whether ImsProvisioningLoader is called or not
         verify(mImsProvisioningLoader, times(RADIO_TECHS.length)).setProvisioningStatus(
                 eq(mSubId0), eq(FEATURE_RCS), eq(capability), anyInt(), eq(provisioned));
 
@@ -805,10 +865,8 @@ public class ImsProvisioningControllerTest {
 
         // provisioning required capability
         // voice, all tech
-        mMmTelTechMap.clear();
-        mMmTelTechMap.put(CAPABILITY_TYPE_VOICE,
-                new int[] {REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN,
-                        REGISTRATION_TECH_CROSS_SIM, REGISTRATION_TECH_NR});
+        setCarrierConfig(mSubId0, CarrierConfigManager.Ims.KEY_CAPABILITY_TYPE_VOICE_INT_ARRAY,
+                RADIO_TECHS);
 
         // provisioning Status, all of provisioning status is not provisioned
         mMmTelProvisioningStorage = new int[][] {
@@ -839,7 +897,7 @@ public class ImsProvisioningControllerTest {
             // verify return value default false - provisioned
             assertEquals(!provisionedFirst, provisionedSecond);
 
-            // verify weather ImsProvisioningLoader is called or not
+            // verify whether ImsProvisioningLoader is called or not
             verify(mImsProvisioningLoader, times(2))
                     .getProvisioningStatus(eq(mSubId0), eq(FEATURE_MMTEL), eq(capability),
                             eq(RADIO_TECHS[i]));
@@ -847,13 +905,13 @@ public class ImsProvisioningControllerTest {
                     .setProvisioningStatus(eq(mSubId0), eq(FEATURE_MMTEL), eq(capability),
                             eq(RADIO_TECHS[i]), eq(provisionedSecond));
 
-            // verify weather Callback is called or not
+            // verify whether Callback is called or not
             verify(mIFeatureProvisioningCallback0, times(1))
                     .onFeatureProvisioningChanged(eq(capability), eq(RADIO_TECHS[i]),
                             eq(provisionedSecond));
         }
 
-        // verify weather ImsConfig is called or not
+        // verify whether ImsConfig is called or not
         verify(mImsConfig, times(1)).setConfig(
                 eq(KEY_VOLTE_PROVISIONING_STATUS), eq(PROVISIONING_VALUE_ENABLED));
         verify(mImsConfig, times(1)).setConfig(
@@ -886,10 +944,8 @@ public class ImsProvisioningControllerTest {
 
         // provisioning required capability
         // video, all tech
-        mMmTelTechMap.clear();
-        mMmTelTechMap.put(CAPABILITY_TYPE_VIDEO,
-                new int[] {REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN,
-                        REGISTRATION_TECH_CROSS_SIM, REGISTRATION_TECH_NR});
+        setCarrierConfig(mSubId0, CarrierConfigManager.Ims.KEY_CAPABILITY_TYPE_VIDEO_INT_ARRAY,
+                RADIO_TECHS);
 
         // provisioning Status, all of provisioning status is not provisioned
         mMmTelProvisioningStorage = new int[][] {
@@ -920,7 +976,7 @@ public class ImsProvisioningControllerTest {
             // verify return value default false - provisioned
             assertEquals(!provisionedFirst, provisionedSecond);
 
-            // verify weather ImsProvisioningLoader is called or not
+            // verify whether ImsProvisioningLoader is called or not
             verify(mImsProvisioningLoader, times(2))
                     .getProvisioningStatus(eq(mSubId0), eq(FEATURE_MMTEL), eq(capability),
                             eq(RADIO_TECHS[i]));
@@ -928,13 +984,13 @@ public class ImsProvisioningControllerTest {
                     .setProvisioningStatus(eq(mSubId0), eq(FEATURE_MMTEL), eq(capability),
                             eq(RADIO_TECHS[i]), eq(provisionedSecond));
 
-            // verify weather Callback is called or not
+            // verify whether Callback is called or not
             verify(mIFeatureProvisioningCallback0, times(1))
                     .onFeatureProvisioningChanged(eq(capability), eq(RADIO_TECHS[i]),
                             eq(provisionedSecond));
         }
 
-        // verify weather ImsConfig is called or not
+        // verify whether ImsConfig is called or not
         verify(mImsConfig, times(1)).setConfig(
                 eq(KEY_VT_PROVISIONING_STATUS), eq(PROVISIONING_VALUE_ENABLED));
 
@@ -949,6 +1005,7 @@ public class ImsProvisioningControllerTest {
     public void setRcsProvisioningRequiredForCapability_withPresence() throws Exception {
         createImsProvisioningController();
 
+        mMmTelConnectorListener0.getValue().connectionReady(mImsManager, mSubId0);
         mRcsConnectorListener0.getValue().connectionReady(mRcsFeatureManager, mSubId0);
         processAllMessages();
 
@@ -965,10 +1022,8 @@ public class ImsProvisioningControllerTest {
 
         // provisioning required capability
         // PRESENCE, all tech
-        mRcsTechMap.clear();
-        mRcsTechMap.put(CAPABILITY_TYPE_PRESENCE_UCE,
-                new int[] {REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN,
-                        REGISTRATION_TECH_CROSS_SIM, REGISTRATION_TECH_NR});
+        setCarrierConfig(mSubId0,
+                CarrierConfigManager.Ims.KEY_CAPABILITY_TYPE_PRESENCE_UCE_INT_ARRAY, RADIO_TECHS);
 
         // provisioning Status, all of provisioning status is not provisioned
         mRcsProvisioningStorage = new int[][] {
@@ -999,20 +1054,21 @@ public class ImsProvisioningControllerTest {
         // verify return value default false - provisioned
         assertEquals(!provisionedFirst, provisionedSecond);
 
-        // verify weather ImsProvisioningLoader is called or not
+        // verify whether ImsProvisioningLoader is called or not
         verify(mImsProvisioningLoader, times(2)).getProvisioningStatus(
                 eq(mSubId0), eq(FEATURE_RCS), eq(capability), eq(REGISTRATION_TECH_LTE));
         // verify setProvisioningStatus is called RADIO_TECHS.length times for all tech or not
         verify(mImsProvisioningLoader, times(1)).setProvisioningStatus(
                 eq(mSubId0), eq(FEATURE_RCS), eq(capability), anyInt(), eq(provisionedSecond));
 
-        // verify weather Callback is called RADIO_TECHS.length times for all tech or not
+        // verify whether Callback is called RADIO_TECHS.length times for all tech or not
         verify(mIFeatureProvisioningCallback0, times(1))
                 .onRcsFeatureProvisioningChanged(eq(capability), eq(REGISTRATION_TECH_LTE),
                         eq(provisionedSecond));
 
-        // verify weather ImsConfig is called or not
-        verify(mImsConfig, times(1)).setConfig(
+        // verify whether ImsConfig is called or not
+        // EAB provisioning status should be updated to both the Rcs and MmTel ImsService
+        verify(mImsConfig, times(2)).setConfig(
                 eq(KEY_EAB_PROVISIONING_STATUS), eq(PROVISIONING_VALUE_ENABLED));
 
         // verify reset
@@ -1027,7 +1083,7 @@ public class ImsProvisioningControllerTest {
             // verify return value
             assertEquals(expected[i], provisionedSecond);
 
-            // verify weather ImsProvisioningLoader is called or not
+            // verify whether ImsProvisioningLoader is called or not
             verify(mImsProvisioningLoader, times(1)).getProvisioningStatus(
                     eq(mSubId0), eq(FEATURE_RCS), eq(capability), eq(RADIO_TECHS[i]));
         }
@@ -1060,13 +1116,10 @@ public class ImsProvisioningControllerTest {
         // provisioning required capability
         // voice, all tech
         // video, all tech
-        mMmTelTechMap.clear();
-        mMmTelTechMap.put(CAPABILITY_TYPE_VOICE,
-                new int[] {REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN,
-                        REGISTRATION_TECH_CROSS_SIM, REGISTRATION_TECH_NR});
-        mMmTelTechMap.put(CAPABILITY_TYPE_VIDEO,
-                new int[] {REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN,
-                        REGISTRATION_TECH_CROSS_SIM, REGISTRATION_TECH_NR});
+        setCarrierConfig(mSubId0, CarrierConfigManager.Ims.KEY_CAPABILITY_TYPE_VIDEO_INT_ARRAY,
+                RADIO_TECHS);
+        setCarrierConfig(mSubId0, CarrierConfigManager.Ims.KEY_CAPABILITY_TYPE_VIDEO_INT_ARRAY,
+                RADIO_TECHS);
 
         // provisioning Status, all of provisioning status is not set
         mMmTelProvisioningStorage = new int[][] {
@@ -1107,7 +1160,7 @@ public class ImsProvisioningControllerTest {
             // check return value
             assertEquals(ImsConfig.OperationStatusConstants.SUCCESS, result);
 
-            // check weather to save
+            // check whether to save
             verify(mImsProvisioningLoader, times(1)).setProvisioningStatus(
                     eq(mSubId0), eq(FEATURE_MMTEL), eq(capas[i]), eq(techs[i]), eq(true));
 
@@ -1128,6 +1181,7 @@ public class ImsProvisioningControllerTest {
     public void setProvisioningValue_withRcsKey() throws Exception {
         createImsProvisioningController();
 
+        mMmTelConnectorListener0.getValue().connectionReady(mImsManager, mSubId0);
         mRcsConnectorListener0.getValue().connectionReady(mRcsFeatureManager, mSubId0);
         processAllMessages();
 
@@ -1144,10 +1198,8 @@ public class ImsProvisioningControllerTest {
 
         // provisioning required capability
         // presence, all tech
-        mRcsTechMap.clear();
-        mRcsTechMap.put(CAPABILITY_TYPE_PRESENCE_UCE,
-                new int[] {REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN,
-                        REGISTRATION_TECH_CROSS_SIM, REGISTRATION_TECH_NR});
+        setCarrierConfig(mSubId0,
+                CarrierConfigManager.Ims.KEY_CAPABILITY_TYPE_PRESENCE_UCE_INT_ARRAY, RADIO_TECHS);
 
         // provisioning Status, all of provisioning status is not set
         mRcsProvisioningStorage = new int[][]{
@@ -1167,14 +1219,16 @@ public class ImsProvisioningControllerTest {
         // check return value
         assertEquals(ImsConfig.OperationStatusConstants.SUCCESS, result);
 
-        // check weather to save, for all techs 4 times
+        // check to save, for all techs 4 times
         verify(mImsProvisioningLoader, times(RADIO_TECHS.length)).setProvisioningStatus(
                 eq(mSubId0), eq(FEATURE_RCS), eq(capa), anyInt(), eq(true));
 
         verify(mIFeatureProvisioningCallback0, times(RADIO_TECHS.length))
                 .onRcsFeatureProvisioningChanged(eq(capa), anyInt(), eq(true));
 
-        verify(mImsConfig, times(1)).setConfig(eq(key), eq(PROVISIONING_VALUE_ENABLED));
+        // verify whether ImsConfig is called or not
+        // EAB provisioning status should be updated to both the Rcs and MmTel ImsService
+        verify(mImsConfig, times(2)).setConfig(eq(key), eq(PROVISIONING_VALUE_ENABLED));
 
         verifyNoMoreInteractions(mIFeatureProvisioningCallback0);
         verifyNoMoreInteractions(mIFeatureProvisioningCallback1);
@@ -1246,11 +1300,10 @@ public class ImsProvisioningControllerTest {
         // provisioning required capability
         // voice, LTE, IWLAN
         // video, LTE
-        mMmTelTechMap.clear();
-        mMmTelTechMap.put(CAPABILITY_TYPE_VOICE,
-                new int[] {REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN});
-        mMmTelTechMap.put(CAPABILITY_TYPE_VIDEO,
-                new int[] {REGISTRATION_TECH_LTE});
+        setCarrierConfig(mSubId0, CarrierConfigManager.Ims.KEY_CAPABILITY_TYPE_VOICE_INT_ARRAY,
+                REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN);
+        setCarrierConfig(mSubId0, CarrierConfigManager.Ims.KEY_CAPABILITY_TYPE_VIDEO_INT_ARRAY,
+                REGISTRATION_TECH_LTE);
 
         // provisioning Status, all of provisioning status is not set
         mMmTelProvisioningStorage = new int[][] {
@@ -1261,10 +1314,8 @@ public class ImsProvisioningControllerTest {
 
         // provisioning required capability
         // presence, all tech
-        mRcsTechMap.clear();
-        mRcsTechMap.put(CAPABILITY_TYPE_PRESENCE_UCE,
-                new int[] {REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN,
-                        REGISTRATION_TECH_CROSS_SIM, REGISTRATION_TECH_NR});
+        setCarrierConfig(mSubId0,
+                CarrierConfigManager.Ims.KEY_CAPABILITY_TYPE_PRESENCE_UCE_INT_ARRAY, RADIO_TECHS);
 
         // provisioning Status, all of provisioning status is not set
         mRcsProvisioningStorage = new int[][]{
@@ -1297,7 +1348,7 @@ public class ImsProvisioningControllerTest {
             // check return value
             assertEquals(PROVISIONING_VALUE_ENABLED, result);
 
-            // verify weather ImsProvisioningLoader is called or not
+            // verify whether ImsProvisioningLoader is called or not
             verify(mImsProvisioningLoader, times(1)).getProvisioningStatus(eq(mSubId0),
                     eq(FEATURE_MMTEL), eq(capas[i]), eq(techs[i]));
         }
@@ -1313,7 +1364,7 @@ public class ImsProvisioningControllerTest {
         // check return value
         assertEquals(PROVISIONING_VALUE_ENABLED, result);
 
-        // verify weather ImsProvisioningLoader is called or not
+        // verify whether ImsProvisioningLoader is called or not
         verify(mImsProvisioningLoader, times(1)).getProvisioningStatus(
                 eq(mSubId0), eq(FEATURE_RCS), eq(capa), anyInt());
 
@@ -1346,11 +1397,10 @@ public class ImsProvisioningControllerTest {
         // provisioning required capability
         // voice, LTE, IWLAN
         // video, LTE
-        mMmTelTechMap.clear();
-        mMmTelTechMap.put(CAPABILITY_TYPE_VOICE,
-                new int[] {REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN});
-        mMmTelTechMap.put(CAPABILITY_TYPE_VIDEO,
-                new int[] {REGISTRATION_TECH_LTE});
+        setCarrierConfig(mSubId0, CarrierConfigManager.Ims.KEY_CAPABILITY_TYPE_VOICE_INT_ARRAY,
+                REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN);
+        setCarrierConfig(mSubId0, CarrierConfigManager.Ims.KEY_CAPABILITY_TYPE_VIDEO_INT_ARRAY,
+                REGISTRATION_TECH_LTE);
 
         // provisioning Status, all of provisioning status is not set
         mMmTelProvisioningStorage = new int[][] {
@@ -1361,10 +1411,8 @@ public class ImsProvisioningControllerTest {
 
         // provisioning required capability
         // presence, all tech
-        mRcsTechMap.clear();
-        mRcsTechMap.put(CAPABILITY_TYPE_PRESENCE_UCE,
-                new int[] {REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN,
-                        REGISTRATION_TECH_CROSS_SIM, REGISTRATION_TECH_NR});
+        setCarrierConfig(mSubId0,
+                CarrierConfigManager.Ims.KEY_CAPABILITY_TYPE_PRESENCE_UCE_INT_ARRAY, RADIO_TECHS);
 
         // provisioning Status, all of provisioning status is not set
         mRcsProvisioningStorage = new int[][]{
@@ -1404,18 +1452,18 @@ public class ImsProvisioningControllerTest {
             // check return value
             assertEquals(PROVISIONING_VALUE_ENABLED, result);
 
-            // verify weather ImsProvisioningLoader is called or not
+            // verify whether ImsProvisioningLoader is called or not
             verify(mImsProvisioningLoader, times(1)).getProvisioningStatus(eq(mSubId0),
                     eq(FEATURE_MMTEL), eq(capas[i]), eq(techs[i]));
 
-            // verify weather ImsConfig is called or not
+            // verify whether ImsConfig is called or not
             verify(mImsConfig, times(1)).getConfigInt(eq(keys[i]));
 
-            // verify weather ImsProvisioningLoader is called or not
+            // verify whether ImsProvisioningLoader is called or not
             verify(mImsProvisioningLoader, times(1)).setProvisioningStatus(eq(mSubId0),
                     eq(FEATURE_MMTEL), eq(capas[i]), eq(techs[i]), eq(true));
 
-            // verify weather callback is called or not
+            // verify whether callback is called or not
             verify(mIFeatureProvisioningCallback0, times(1)).onFeatureProvisioningChanged(
                     eq(capas[i]), eq(techs[i]), eq(true));
         }
@@ -1432,18 +1480,18 @@ public class ImsProvisioningControllerTest {
         // check return value
         assertEquals(PROVISIONING_VALUE_ENABLED, result);
 
-        // verify weather ImsProvisioningLoader is called or not
+        // verify whether ImsProvisioningLoader is called or not
         verify(mImsProvisioningLoader, times(1)).getProvisioningStatus(
                 eq(mSubId0), eq(FEATURE_RCS), eq(capa), anyInt());
 
-        // verify weather ImsConfig is called or not
+        // verify whether ImsConfig is called or not
         verify(mImsConfig, times(1)).getConfigInt(eq(key));
 
-        // verify weather ImsProvisioningLoader is called or not
+        // verify whether ImsProvisioningLoader is called or not
         verify(mImsProvisioningLoader, times(RADIO_TECHS.length)).setProvisioningStatus(
                 eq(mSubId0), eq(FEATURE_RCS), eq(capa), anyInt(), eq(true));
 
-        // verify weather callback is called or not
+        // verify whether callback is called or not
         verify(mIFeatureProvisioningCallback0, times(RADIO_TECHS.length))
                 .onRcsFeatureProvisioningChanged(eq(capa), anyInt(), eq(true));
 
@@ -1457,6 +1505,14 @@ public class ImsProvisioningControllerTest {
     @SmallTest
     public void onMultiSimConfigChanged() throws Exception {
         createImsProvisioningController();
+
+        // provisioning required capability
+        // voice, all tech
+        // video, all tech
+        setCarrierConfig(mSubId0, CarrierConfigManager.Ims.KEY_CAPABILITY_TYPE_VOICE_INT_ARRAY,
+                RADIO_TECHS);
+        setCarrierConfig(mSubId0, CarrierConfigManager.Ims.KEY_CAPABILITY_TYPE_VIDEO_INT_ARRAY,
+                RADIO_TECHS);
 
         // change number of slot 2 -> 1
         mHandler.sendMessage(mHandler.obtainMessage(
@@ -1517,6 +1573,11 @@ public class ImsProvisioningControllerTest {
         clearInvocations(mIFeatureProvisioningCallback0);
         clearInvocations(mIFeatureProvisioningCallback1);
 
+        // provisioning required capability
+        // voice, all tech
+        setCarrierConfig(mSubId1, CarrierConfigManager.Ims.KEY_CAPABILITY_TYPE_VOICE_INT_ARRAY,
+                RADIO_TECHS);
+
         // check get,setImsProvisioningRequiredForCapability with mSubId1, mPhoneId1 : Ok
         int capability = CAPABILITY_TYPE_VOICE;
         int tech = REGISTRATION_TECH_LTE;
@@ -1527,13 +1588,152 @@ public class ImsProvisioningControllerTest {
                 capability, tech, !provisioned);
         processAllMessages();
 
-        // verify weather Callback is called or not
+        // verify whether Callback is called or not
         verify(mIFeatureProvisioningCallback1, times(1))
                 .onFeatureProvisioningChanged(eq(capability), eq(tech), eq(!provisioned));
 
         clearInvocations(mIFeatureProvisioningCallback0);
         clearInvocations(mIFeatureProvisioningCallback1);
         clearInvocations(mImsConfig);
+    }
+
+    @Test
+    @SmallTest
+    public void eabProvisioningStatus_onlyMmTelConnectionReady() throws Exception {
+        createImsProvisioningController();
+
+        mMmTelConnectorListener0.getValue().connectionReady(mImsManager, mSubId0);
+        processAllMessages();
+
+        // add callback with valid obj
+        mTestImsProvisioningController.addFeatureProvisioningChangedCallback(
+                mSubId0, mIFeatureProvisioningCallback0);
+
+        clearInvocations(mIFeatureProvisioningCallback0);
+        clearInvocations(mImsConfig);
+        clearInvocations(mImsProvisioningLoader);
+
+        // provisioning required capability
+        // presence, all tech
+        setCarrierConfig(mSubId0,
+                CarrierConfigManager.Ims.KEY_CAPABILITY_TYPE_PRESENCE_UCE_INT_ARRAY, RADIO_TECHS);
+
+        // provisioning Status, all of provisioning status is not set
+        mRcsProvisioningStorage = new int[][]{
+                {CAPABILITY_TYPE_PRESENCE_UCE, REGISTRATION_TECH_LTE, -1},
+                {CAPABILITY_TYPE_PRESENCE_UCE, REGISTRATION_TECH_IWLAN, -1},
+                {CAPABILITY_TYPE_PRESENCE_UCE, REGISTRATION_TECH_CROSS_SIM, -1},
+                {CAPABILITY_TYPE_PRESENCE_UCE, REGISTRATION_TECH_NR, -1}
+        };
+
+        // provisioning status in ImsService
+        mImsConfigStorage = new int[][] {
+                {KEY_EAB_PROVISIONING_STATUS, 1}
+        };
+
+        // Rcs keys
+        int key = KEY_EAB_PROVISIONING_STATUS;
+        int capa = CAPABILITY_TYPE_PRESENCE_UCE;
+        int tech = REGISTRATION_TECH_LTE;
+
+        int result = mTestImsProvisioningController.getProvisioningValue(mSubId0, key);
+        processAllMessages();
+
+        // check return value
+        assertEquals(PROVISIONING_VALUE_ENABLED, result);
+
+        // verify whether ImsProvisioningLoader is called or not
+        verify(mImsProvisioningLoader, times(1)).getProvisioningStatus(
+                eq(mSubId0), eq(FEATURE_RCS), eq(capa), anyInt());
+
+        // even if ImsConfig is not available in RcsFeatureListener, ImsConfig in
+        // MmTelFeatureListener will be called.
+        verify(mImsConfig, times(1)).getConfigInt(
+                eq(KEY_EAB_PROVISIONING_STATUS));
+
+        // verify whether ImsProvisioningLoader is called or not
+        verify(mImsProvisioningLoader, times(RADIO_TECHS.length)).setProvisioningStatus(
+                eq(mSubId0), eq(FEATURE_RCS), eq(capa), anyInt(), eq(true));
+
+        verifyNoMoreInteractions(mImsConfig);
+        verifyNoMoreInteractions(mImsProvisioningLoader);
+
+        clearInvocations(mImsConfig);
+        clearInvocations(mImsProvisioningLoader);
+
+        mTestImsProvisioningController.setProvisioningValue(mSubId0, key,
+                PROVISIONING_VALUE_DISABLED);
+        processAllMessages();
+
+        // verify whether ImsProvisioningLoader is called or not
+        verify(mImsProvisioningLoader, times(RADIO_TECHS.length)).setProvisioningStatus(
+                eq(mSubId0), eq(FEATURE_RCS), eq(capa), anyInt(), eq(false));
+
+        // even if ImsConfig is not available in RcsFeatureListener, ImsConfig in
+        // MmTelFeatureListener will be called.
+        verify(mImsConfig, times(1)).setConfig(
+                eq(KEY_EAB_PROVISIONING_STATUS), eq(PROVISIONING_VALUE_DISABLED));
+
+        verifyNoMoreInteractions(mImsConfig);
+        verifyNoMoreInteractions(mImsProvisioningLoader);
+
+        clearInvocations(mImsConfig);
+        clearInvocations(mImsProvisioningLoader);
+
+        // reset provisioning status, all of provisioning status is not set
+        mRcsProvisioningStorage = new int[][]{
+                {CAPABILITY_TYPE_PRESENCE_UCE, REGISTRATION_TECH_LTE, -1},
+                {CAPABILITY_TYPE_PRESENCE_UCE, REGISTRATION_TECH_IWLAN, -1},
+                {CAPABILITY_TYPE_PRESENCE_UCE, REGISTRATION_TECH_CROSS_SIM, -1},
+                {CAPABILITY_TYPE_PRESENCE_UCE, REGISTRATION_TECH_NR, -1}
+        };
+
+        // reset provisioning status in ImsService
+        mImsConfigStorage = new int[][] {
+                {KEY_EAB_PROVISIONING_STATUS, 1}
+        };
+
+        boolean expected = true;
+        boolean provisioned = mTestImsProvisioningController.getRcsProvisioningStatusForCapability(
+                mSubId0, capa, tech);
+        processAllMessages();
+
+        assertEquals(expected, provisioned);
+
+        // verify whether ImsProvisioningLoader is called or not
+        verify(mImsProvisioningLoader, times(1)).getProvisioningStatus(
+                eq(mSubId0), eq(FEATURE_RCS), eq(capa), eq(tech));
+
+        // even if ImsConfig is not available in RcsFeatureListener, ImsConfig in
+        // MmTelFeatureListener will be called.
+        verify(mImsConfig, times(1)).getConfigInt(
+                eq(KEY_EAB_PROVISIONING_STATUS));
+
+        // verify whether ImsProvisioningLoader is called or not
+        verify(mImsProvisioningLoader, times(RADIO_TECHS.length)).setProvisioningStatus(
+                eq(mSubId0), eq(FEATURE_RCS), eq(capa), anyInt(), eq(true));
+
+        verifyNoMoreInteractions(mImsConfig);
+        verifyNoMoreInteractions(mImsProvisioningLoader);
+
+        clearInvocations(mImsConfig);
+        clearInvocations(mImsProvisioningLoader);
+
+        mTestImsProvisioningController.setRcsProvisioningStatusForCapability(
+                mSubId0, capa, tech, !expected);
+        processAllMessages();
+
+        // verify whether ImsProvisioningLoader is called or not
+        verify(mImsProvisioningLoader, times(1)).setProvisioningStatus(
+                eq(mSubId0), eq(FEATURE_RCS), eq(capa), eq(tech), eq(!expected));
+
+        // even if ImsConfig is not available in RcsFeatureListener, ImsConfig in
+        // MmTelFeatureListener will be called.
+        verify(mImsConfig, times(1)).setConfig(
+                eq(KEY_EAB_PROVISIONING_STATUS), eq(PROVISIONING_VALUE_DISABLED));
+
+        verifyNoMoreInteractions(mImsConfig);
+        verifyNoMoreInteractions(mImsProvisioningLoader);
     }
 
     private void createImsProvisioningController() throws Exception {
@@ -1629,22 +1829,22 @@ public class ImsProvisioningControllerTest {
     }
 
     private void initializeDefaultData() throws Exception {
-        mMmTelTechMap.clear();
-        mMmTelTechMap.put(CAPABILITY_TYPE_VOICE,
-                new int[] {REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN,
-                        REGISTRATION_TECH_CROSS_SIM, REGISTRATION_TECH_NR});
-        mMmTelTechMap.put(CAPABILITY_TYPE_VIDEO,
-                new int[] {REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN,
-                        REGISTRATION_TECH_CROSS_SIM, REGISTRATION_TECH_NR});
-        mMmTelTechMap.put(CAPABILITY_TYPE_UT,
-                new int[] {REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN,
-                        REGISTRATION_TECH_CROSS_SIM, REGISTRATION_TECH_NR});
-        mMmTelTechMap.put(CAPABILITY_TYPE_SMS,
-                new int[] {REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN,
-                        REGISTRATION_TECH_CROSS_SIM, REGISTRATION_TECH_NR});
-        mMmTelTechMap.put(CAPABILITY_TYPE_CALL_COMPOSER,
-                new int[] {REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN,
-                        REGISTRATION_TECH_CROSS_SIM, REGISTRATION_TECH_NR});
+        mPersistableBundle0.clear();
+        mPersistableBundle0.putPersistableBundle(
+                CarrierConfigManager.Ims.KEY_MMTEL_REQUIRES_PROVISIONING_BUNDLE,
+                new PersistableBundle());
+        mPersistableBundle0.putPersistableBundle(
+                CarrierConfigManager.Ims.KEY_RCS_REQUIRES_PROVISIONING_BUNDLE,
+                new PersistableBundle());
+
+        mPersistableBundle1.clear();
+        mPersistableBundle1.putPersistableBundle(
+                CarrierConfigManager.Ims.KEY_MMTEL_REQUIRES_PROVISIONING_BUNDLE,
+                new PersistableBundle());
+        mPersistableBundle1.putPersistableBundle(
+                CarrierConfigManager.Ims.KEY_RCS_REQUIRES_PROVISIONING_BUNDLE,
+                new PersistableBundle());
+
         mMmTelProvisioningStorage = new int[][]{
                 {CAPABILITY_TYPE_VOICE, REGISTRATION_TECH_LTE, 1},
                 {CAPABILITY_TYPE_VOICE, REGISTRATION_TECH_IWLAN, 1},
@@ -1668,13 +1868,6 @@ public class ImsProvisioningControllerTest {
                 {CAPABILITY_TYPE_CALL_COMPOSER, REGISTRATION_TECH_NR, 1}
         };
 
-        mRcsTechMap.clear();
-        mRcsTechMap.put(CAPABILITY_TYPE_OPTIONS_UCE,
-                new int[] {REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN,
-                        REGISTRATION_TECH_CROSS_SIM, REGISTRATION_TECH_NR});
-        mRcsTechMap.put(CAPABILITY_TYPE_PRESENCE_UCE,
-                new int[] {REGISTRATION_TECH_LTE, REGISTRATION_TECH_IWLAN,
-                        REGISTRATION_TECH_CROSS_SIM, REGISTRATION_TECH_NR});
         mRcsProvisioningStorage = new int[][]{
                 {CAPABILITY_TYPE_PRESENCE_UCE, REGISTRATION_TECH_LTE, 1},
                 {CAPABILITY_TYPE_PRESENCE_UCE, REGISTRATION_TECH_IWLAN, 1},
@@ -1688,6 +1881,29 @@ public class ImsProvisioningControllerTest {
                 {KEY_VOICE_OVER_WIFI_ENABLED_OVERRIDE, 1},
                 {KEY_EAB_PROVISIONING_STATUS, 1}
         };
+    }
+
+    private void setCarrierConfig(int subId, String capabilityKey, int... techs) {
+        PersistableBundle imsCarrierConfig = mPersistableBundle0;
+        if (subId == mSubId1) {
+            imsCarrierConfig = mPersistableBundle1;
+        }
+
+        PersistableBundle requiredBundle;
+        if (capabilityKey.equals(
+                CarrierConfigManager.Ims.KEY_CAPABILITY_TYPE_PRESENCE_UCE_INT_ARRAY)) {
+            requiredBundle = imsCarrierConfig.getPersistableBundle(
+                    CarrierConfigManager.Ims.KEY_RCS_REQUIRES_PROVISIONING_BUNDLE);
+        } else {
+            requiredBundle = imsCarrierConfig.getPersistableBundle(
+                    CarrierConfigManager.Ims.KEY_MMTEL_REQUIRES_PROVISIONING_BUNDLE);
+        }
+
+        requiredBundle.putIntArray(capabilityKey, techs);
+    }
+
+    private void setDeprecatedCarrierConfig(String key, boolean value) {
+        mPersistableBundle0.putBoolean(key, value);
     }
 
     private int getProvisionedValue(int i, int j) {
