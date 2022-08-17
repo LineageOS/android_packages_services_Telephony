@@ -49,6 +49,7 @@ import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyCallback;
 import android.telephony.TelephonyLocalConnection;
 import android.telephony.TelephonyManager;
+import android.telephony.data.ApnSetting;
 import android.util.LocalLog;
 import android.util.Log;
 import android.widget.Toast;
@@ -67,6 +68,8 @@ import com.android.internal.telephony.TelephonyCapabilities;
 import com.android.internal.telephony.TelephonyComponentFactory;
 import com.android.internal.telephony.TelephonyIntents;
 import com.android.internal.telephony.data.DataEvaluation.DataDisallowedReason;
+import com.android.internal.telephony.dataconnection.DataConnectionReasons;
+import com.android.internal.telephony.dataconnection.DataConnectionReasons.DataDisallowedReasonType;
 import com.android.internal.telephony.ims.ImsResolver;
 import com.android.internal.telephony.imsphone.ImsPhone;
 import com.android.internal.telephony.imsphone.ImsPhoneCallTracker;
@@ -888,13 +891,22 @@ public class PhoneGlobals extends ContextWrapper {
 
         boolean dataAllowed;
         boolean notAllowedDueToRoamingOff;
-        List<DataDisallowedReason> reasons = phone.getDataNetworkController()
-                .getInternetDataDisallowedReasons();
-        dataAllowed = reasons.isEmpty();
-        notAllowedDueToRoamingOff = (reasons.size() == 1
-                && reasons.contains(DataDisallowedReason.ROAMING_DISABLED));
-        mDataRoamingNotifLog.log("dataAllowed=" + dataAllowed + ", reasons=" + reasons);
-        if (VDBG) Log.v(LOG_TAG, "dataAllowed=" + dataAllowed + ", reasons=" + reasons);
+        if (phone.isUsingNewDataStack()) {
+            List<DataDisallowedReason> reasons = phone.getDataNetworkController()
+                    .getInternetDataDisallowedReasons();
+            dataAllowed = reasons.isEmpty();
+            notAllowedDueToRoamingOff = (reasons.size() == 1
+                    && reasons.contains(DataDisallowedReason.ROAMING_DISABLED));
+            mDataRoamingNotifLog.log("dataAllowed=" + dataAllowed + ", reasons=" + reasons);
+            if (VDBG) Log.v(LOG_TAG, "dataAllowed=" + dataAllowed + ", reasons=" + reasons);
+        } else {
+            DataConnectionReasons reasons = new DataConnectionReasons();
+            dataAllowed = phone.isDataAllowed(ApnSetting.TYPE_DEFAULT, reasons);
+            notAllowedDueToRoamingOff = reasons.containsOnly(
+                    DataDisallowedReasonType.ROAMING_DISABLED);
+            mDataRoamingNotifLog.log("dataAllowed=" + dataAllowed + ", reasons=" + reasons);
+            if (VDBG) Log.v(LOG_TAG, "dataAllowed=" + dataAllowed + ", reasons=" + reasons);
+        }
 
         if (!dataAllowed && notAllowedDueToRoamingOff) {
             // No need to show it again if we never cancelled it explicitly.

@@ -184,6 +184,7 @@ import com.android.internal.telephony.SubscriptionController;
 import com.android.internal.telephony.TelephonyIntents;
 import com.android.internal.telephony.TelephonyPermissions;
 import com.android.internal.telephony.data.DataUtils;
+import com.android.internal.telephony.dataconnection.ApnSettingUtils;
 import com.android.internal.telephony.emergency.EmergencyNumberTracker;
 import com.android.internal.telephony.euicc.EuiccConnector;
 import com.android.internal.telephony.ims.ImsResolver;
@@ -2850,6 +2851,95 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
+    /**
+     * Vote on powering off the radio for a reason. The radio will be turned on only when there is
+     * no reason to power it off. When any of the voters want to power it off, it will be turned
+     * off. In case of emergency, the radio will be turned on even if there are some reasons for
+     * powering it off, and these radio off votes will be cleared.
+     * Multiple apps can vote for the same reason and the last vote will take effect. Each app is
+     * responsible for its vote. A powering-off vote of a reason will be maintained until it is
+     * cleared by calling {@link clearRadioPowerOffForReason} for that reason, or an emergency call
+     * is made, or the device is rebooted. When an app comes backup from a crash, it needs to make
+     * sure if its vote is as expected. An app can use the API {@link getRadioPowerOffReasons} to
+     * check its vote.
+     *
+     * @param subId The subscription ID.
+     * @param reason The reason for powering off radio.
+     * @return true on success and false on failure.
+     */
+    public boolean requestRadioPowerOffForReason(int subId,
+            @TelephonyManager.RadioPowerReason int reason) {
+        enforceModifyPermission();
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            final Phone phone = getPhone(subId);
+            if (phone != null) {
+                phone.setRadioPowerForReason(false, reason);
+                return true;
+            } else {
+                return false;
+            }
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Remove the vote on powering off the radio for a reason, as requested by
+     * {@link requestRadioPowerOffForReason}.
+     *
+     * @param subId The subscription ID.
+     * @param reason The reason for powering off radio.
+     * @return true on success and false on failure.
+     */
+    public boolean clearRadioPowerOffForReason(int subId,
+            @TelephonyManager.RadioPowerReason int reason) {
+        enforceModifyPermission();
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            final Phone phone = getPhone(subId);
+            if (phone != null) {
+                phone.setRadioPowerForReason(true, reason);
+                return true;
+            } else {
+                return false;
+            }
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Get reasons for powering off radio, as requested by {@link requestRadioPowerOffForReason}.
+     *
+     * @param subId The subscription ID.
+     * @param callingPackage The package making the call.
+     * @param callingFeatureId The feature in the package.
+     * @return List of reasons for powering off radio.
+     */
+    public List getRadioPowerOffReasons(int subId, String callingPackage, String callingFeatureId) {
+        enforceReadPrivilegedPermission("getRadioPowerOffReasons");
+
+        final long identity = Binder.clearCallingIdentity();
+        List result = new ArrayList();
+        try {
+            if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(mApp, subId,
+                    callingPackage, callingFeatureId, "getRadioPowerOffReasons")) {
+                return result;
+            }
+
+            final Phone phone = getPhone(subId);
+            if (phone != null) {
+                result.addAll(phone.getRadioPowerOffReasons());
+            }
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+        return result;
+    }
+
     // FIXME: subId version needed
     @Override
     public boolean enableDataConnectivity(String callingPackage) {
@@ -2860,8 +2950,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             int subId = mSubscriptionController.getDefaultDataSubId();
             final Phone phone = getPhone(subId);
             if (phone != null) {
-                phone.getDataSettingsManager().setDataEnabled(
-                        TelephonyManager.DATA_ENABLED_REASON_USER, true, callingPackage);
+                if (phone.isUsingNewDataStack()) {
+                    phone.getDataSettingsManager().setDataEnabled(
+                            TelephonyManager.DATA_ENABLED_REASON_USER, true, callingPackage);
+                } else {
+                    phone.getDataEnabledSettings().setDataEnabled(
+                            TelephonyManager.DATA_ENABLED_REASON_USER, true);
+                }
                 return true;
             } else {
                 return false;
@@ -2881,8 +2976,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             int subId = mSubscriptionController.getDefaultDataSubId();
             final Phone phone = getPhone(subId);
             if (phone != null) {
-                phone.getDataSettingsManager().setDataEnabled(
-                        TelephonyManager.DATA_ENABLED_REASON_USER, false, callingPackage);
+                if (phone.isUsingNewDataStack()) {
+                    phone.getDataSettingsManager().setDataEnabled(
+                            TelephonyManager.DATA_ENABLED_REASON_USER, false, callingPackage);
+                } else {
+                    phone.getDataEnabledSettings().setDataEnabled(
+                            TelephonyManager.DATA_ENABLED_REASON_USER, false);
+                }
                 return true;
             } else {
                 return false;
@@ -2998,7 +3098,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         try {
             final Phone phone = getPhone(subId);
             if (phone != null) {
-                return phone.getDataNetworkController().getInternetDataNetworkState();
+                if (phone.isUsingNewDataStack()) {
+                    return phone.getDataNetworkController().getInternetDataNetworkState();
+                }
+                return PhoneConstantConversions.convertDataState(phone.getDataConnectionState());
             } else {
                 return PhoneConstantConversions.convertDataState(
                         PhoneConstants.DataState.DISCONNECTED);
@@ -6634,7 +6737,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             Phone phone = PhoneFactory.getPhone(phoneId);
             if (phone != null) {
                 boolean retVal;
-                retVal = phone.getDataSettingsManager().isDataEnabled();
+                if (phone.isUsingNewDataStack()) {
+                    retVal = phone.getDataSettingsManager().isDataEnabled();
+                } else {
+                    retVal = phone.getDataEnabledSettings().isDataEnabled();
+                }
                 if (DBG) log("isDataEnabled: " + retVal + ", subId=" + subId);
                 return retVal;
             } else {
@@ -6686,7 +6793,15 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             Phone phone = PhoneFactory.getPhone(phoneId);
             if (phone != null) {
                 boolean retVal;
-                retVal = phone.getDataSettingsManager().isDataEnabledForReason(reason);
+                if (phone.isUsingNewDataStack()) {
+                    retVal = phone.getDataSettingsManager().isDataEnabledForReason(reason);
+                } else {
+                    if (reason == TelephonyManager.DATA_ENABLED_REASON_USER) {
+                        retVal = phone.isUserDataEnabled();
+                    } else {
+                        retVal = phone.getDataEnabledSettings().isDataEnabledForReason(reason);
+                    }
+                }
                 if (DBG) log("isDataEnabledForReason: retVal=" + retVal);
                 return retVal;
             } else {
@@ -8425,8 +8540,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 if (reason == TelephonyManager.DATA_ENABLED_REASON_CARRIER) {
                     phone.carrierActionSetMeteredApnsEnabled(enabled);
                 } else {
-                    phone.getDataSettingsManager().setDataEnabled(
-                            reason, enabled, callingPackage);
+                    if (phone.isUsingNewDataStack()) {
+                        phone.getDataSettingsManager().setDataEnabled(
+                                reason, enabled, callingPackage);
+                    } else {
+                        phone.getDataEnabledSettings().setDataEnabled(reason, enabled);
+                    }
                 }
             }
         } finally {
@@ -9636,10 +9755,15 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
             boolean isMetered;
             boolean isDataEnabled;
-            isMetered = phone.getDataNetworkController().getDataConfigManager()
-                    .isMeteredCapability(DataUtils.apnTypeToNetworkCapability(apnType),
-                            phone.getServiceState().getDataRoaming());
-            isDataEnabled = phone.getDataSettingsManager().isDataEnabled(apnType);
+            if (phone.isUsingNewDataStack()) {
+                isMetered = phone.getDataNetworkController().getDataConfigManager()
+                        .isMeteredCapability(DataUtils.apnTypeToNetworkCapability(apnType),
+                                phone.getServiceState().getDataRoaming());
+                isDataEnabled = phone.getDataSettingsManager().isDataEnabled(apnType);
+            } else {
+                isMetered = ApnSettingUtils.isMeteredApnType(apnType, phone);
+                isDataEnabled = phone.getDataEnabledSettings().isDataEnabled(apnType);
+            }
             return !isMetered || isDataEnabled;
         } finally {
             Binder.restoreCallingIdentity(identity);
@@ -9655,9 +9779,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         try {
             Phone phone = getPhone(subId);
             if (phone == null) return true; // By default return true.
-            return phone.getDataNetworkController().getDataConfigManager().isMeteredCapability(
-                    DataUtils.apnTypeToNetworkCapability(apnType),
-                    phone.getServiceState().getDataRoaming());
+            if (phone.isUsingNewDataStack()) {
+                return phone.getDataNetworkController().getDataConfigManager().isMeteredCapability(
+                        DataUtils.apnTypeToNetworkCapability(apnType),
+                        phone.getServiceState().getDataRoaming());
+            }
+
+            return ApnSettingUtils.isMeteredApnType(apnType, phone);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -9789,9 +9917,17 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
             switch (policy) {
                 case TelephonyManager.MOBILE_DATA_POLICY_DATA_ON_NON_DEFAULT_DURING_VOICE_CALL:
-                    return phone.getDataSettingsManager().isDataAllowedInVoiceCall();
+                    if (phone.isUsingNewDataStack()) {
+                        return phone.getDataSettingsManager().isDataAllowedInVoiceCall();
+                    } else {
+                        return phone.getDataEnabledSettings().isDataAllowedInVoiceCall();
+                    }
                 case TelephonyManager.MOBILE_DATA_POLICY_MMS_ALWAYS_ALLOWED:
-                    return phone.getDataSettingsManager().isMmsAlwaysAllowed();
+                    if (phone.isUsingNewDataStack()) {
+                        return phone.getDataSettingsManager().isMmsAlwaysAllowed();
+                    } else {
+                        return phone.getDataEnabledSettings().isMmsAlwaysAllowed();
+                    }
                 default:
                     throw new IllegalArgumentException(policy + " is not a valid policy");
             }
@@ -9812,10 +9948,18 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
             switch (policy) {
                 case TelephonyManager.MOBILE_DATA_POLICY_DATA_ON_NON_DEFAULT_DURING_VOICE_CALL:
-                    phone.getDataSettingsManager().setAllowDataDuringVoiceCall(enabled);
+                    if (phone.isUsingNewDataStack()) {
+                        phone.getDataSettingsManager().setAllowDataDuringVoiceCall(enabled);
+                    } else {
+                        phone.getDataEnabledSettings().setAllowDataDuringVoiceCall(enabled);
+                    }
                     break;
                 case TelephonyManager.MOBILE_DATA_POLICY_MMS_ALWAYS_ALLOWED:
-                    phone.getDataSettingsManager().setAlwaysAllowMmsData(enabled);
+                    if (phone.isUsingNewDataStack()) {
+                        phone.getDataSettingsManager().setAlwaysAllowMmsData(enabled);
+                    } else {
+                        phone.getDataEnabledSettings().setAlwaysAllowMmsData(enabled);
+                    }
                     break;
                 default:
                     throw new IllegalArgumentException(policy + " is not a valid policy");
@@ -10095,7 +10239,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         for (int i = 0; i < TelephonyManager.getDefault().getActiveModemCount(); i++) {
             Phone phone = PhoneFactory.getPhone(i);
             if (phone != null) {
-                phone.setRadioPowerForReason(enable, Phone.RADIO_POWER_REASON_THERMAL);
+                phone.setRadioPowerForReason(enable, TelephonyManager.RADIO_POWER_REASON_THERMAL);
                 isPhoneAvailable = true;
             }
         }
@@ -11190,6 +11334,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
+    }
+
+    @Override
+    public boolean isUsingNewDataStack() {
+        TelephonyPermissions.enforceShellOnly(Binder.getCallingUid(), "isUsingNewDataStack");
+        return getDefaultPhone().isUsingNewDataStack();
     }
 
     /**
