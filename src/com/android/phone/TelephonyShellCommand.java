@@ -63,6 +63,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
@@ -166,6 +167,13 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
     private static final String THERMAL_MITIGATION_COMMAND = "thermal-mitigation";
     private static final String ALLOW_THERMAL_MITIGATION_PACKAGE_SUBCOMMAND = "allow-package";
     private static final String DISALLOW_THERMAL_MITIGATION_PACKAGE_SUBCOMMAND = "disallow-package";
+
+    private static final String INVALID_ENTRY_ERROR = "An emergency number (only allow '0'-'9', "
+            + "'*', '#' or '+') needs to be specified after -a in the command ";
+
+    private static final int[] ROUTING_TYPES = {EmergencyNumber.EMERGENCY_CALL_ROUTING_UNKNOWN,
+            EmergencyNumber.EMERGENCY_CALL_ROUTING_EMERGENCY,
+            EmergencyNumber.EMERGENCY_CALL_ROUTING_NORMAL};
 
     private static final String GET_ALLOWED_NETWORK_TYPES_FOR_USER =
             "get-allowed-network-types-for-users";
@@ -789,6 +797,24 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         return 0;
     }
 
+    private void removeEmergencyNumberTestMode(String emergencyNumber) {
+        PrintWriter errPw = getErrPrintWriter();
+        for (int routingType : ROUTING_TYPES) {
+            try {
+                mInterface.updateEmergencyNumberListTestMode(
+                        EmergencyNumberTracker.REMOVE_EMERGENCY_NUMBER_TEST_MODE,
+                        new EmergencyNumber(emergencyNumber, "", "",
+                                EmergencyNumber.EMERGENCY_SERVICE_CATEGORY_UNSPECIFIED,
+                                new ArrayList<String>(),
+                                EmergencyNumber.EMERGENCY_NUMBER_SOURCE_TEST,
+                                routingType));
+            } catch (RemoteException ex) {
+                Log.w(LOG_TAG, "emergency-number-test-mode " + "error " + ex.getMessage());
+                errPw.println("Exception: " + ex.getMessage());
+            }
+        }
+    }
+
     private int handleEmergencyNumberTestModeCommand() {
         PrintWriter errPw = getErrPrintWriter();
         String opt = getNextOption();
@@ -796,26 +822,52 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             onHelpEmergencyNumber();
             return 0;
         }
-
         switch (opt) {
             case "-a": {
                 String emergencyNumberCmd = getNextArgRequired();
-                if (emergencyNumberCmd == null
-                        || !EmergencyNumber.validateEmergencyNumberAddress(emergencyNumberCmd)) {
-                    errPw.println("An emergency number (only allow '0'-'9', '*', '#' or '+') needs"
-                            + " to be specified after -a in the command ");
+                if (emergencyNumberCmd == null){
+                    errPw.println(INVALID_ENTRY_ERROR);
                     return -1;
+                }
+                String[] params = emergencyNumberCmd.split(":");
+                String emergencyNumber;
+                if (params[0] == null ||
+                        !EmergencyNumber.validateEmergencyNumberAddress(params[0])){
+                    errPw.println(INVALID_ENTRY_ERROR);
+                    return -1;
+                } else {
+                    emergencyNumber = params[0];
+                }
+                removeEmergencyNumberTestMode(emergencyNumber);
+                int emergencyCallRouting = EmergencyNumber.EMERGENCY_CALL_ROUTING_UNKNOWN;
+                if (params.length > 1) {
+                    switch (params[1].toLowerCase(Locale.ROOT)) {
+                        case "emergency":
+                            emergencyCallRouting = EmergencyNumber.EMERGENCY_CALL_ROUTING_EMERGENCY;
+                            break;
+                        case "normal":
+                            emergencyCallRouting = EmergencyNumber.EMERGENCY_CALL_ROUTING_NORMAL;
+                            break;
+                        case "unknown":
+                            break;
+                        default:
+                            errPw.println("\"" + params[1] + "\" is not a valid specification for "
+                                    + "emergency call routing. Please enter either \"normal\", "
+                                    + "\"unknown\", or \"emergency\" for call routing. "
+                                    + "(-a 1234:normal)");
+                            return -1;
+                    }
                 }
                 try {
                     mInterface.updateEmergencyNumberListTestMode(
                             EmergencyNumberTracker.ADD_EMERGENCY_NUMBER_TEST_MODE,
-                            new EmergencyNumber(emergencyNumberCmd, "", "",
+                            new EmergencyNumber(emergencyNumber, "", "",
                                     EmergencyNumber.EMERGENCY_SERVICE_CATEGORY_UNSPECIFIED,
                                     new ArrayList<String>(),
                                     EmergencyNumber.EMERGENCY_NUMBER_SOURCE_TEST,
-                                    EmergencyNumber.EMERGENCY_CALL_ROUTING_UNKNOWN));
+                                    emergencyCallRouting));
                 } catch (RemoteException ex) {
-                    Log.w(LOG_TAG, "emergency-number-test-mode -a " + emergencyNumberCmd
+                    Log.w(LOG_TAG, "emergency-number-test-mode -a " + emergencyNumber
                             + ", error " + ex.getMessage());
                     errPw.println("Exception: " + ex.getMessage());
                     return -1;
@@ -841,20 +893,7 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                             + " to be specified after -r in the command ");
                     return -1;
                 }
-                try {
-                    mInterface.updateEmergencyNumberListTestMode(
-                            EmergencyNumberTracker.REMOVE_EMERGENCY_NUMBER_TEST_MODE,
-                            new EmergencyNumber(emergencyNumberCmd, "", "",
-                                    EmergencyNumber.EMERGENCY_SERVICE_CATEGORY_UNSPECIFIED,
-                                    new ArrayList<String>(),
-                                    EmergencyNumber.EMERGENCY_NUMBER_SOURCE_TEST,
-                                    EmergencyNumber.EMERGENCY_CALL_ROUTING_UNKNOWN));
-                } catch (RemoteException ex) {
-                    Log.w(LOG_TAG, "emergency-number-test-mode -r " + emergencyNumberCmd
-                            + ", error " + ex.getMessage());
-                    errPw.println("Exception: " + ex.getMessage());
-                    return -1;
-                }
+                removeEmergencyNumberTestMode(emergencyNumberCmd);
                 break;
             }
             case "-p": {
