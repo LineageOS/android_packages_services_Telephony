@@ -105,23 +105,23 @@
     <string name="labelCF" msgid="3578719437928476078">"కాల్ ఫార్వార్డింగ్"</string>
     <string name="labelCFU" msgid="8870170873036279706">"ఎల్లప్పుడూ ఫార్వర్డ్ చేయి"</string>
     <string name="messageCFU" msgid="1361806450979589744">"ఎల్లప్పుడూ ఈ నంబర్‌ను ఉపయోగించు"</string>
-    <string name="sum_cfu_enabled_indicator" msgid="9030139213402432776">"అన్ని కాల్స్‌ను ఫార్వార్డ్ చేస్తోంది"</string>
-    <string name="sum_cfu_enabled" msgid="5806923046528144526">"అన్ని కాల్స్‌ను <xliff:g id="PHONENUMBER">{0}</xliff:g>కి ఫార్వార్డ్ చేస్తోంది"</string>
+    <string name="sum_cfu_enabled_indicator" msgid="9030139213402432776">"అన్ని కాల్స్‌ను ఫార్వర్డ్ చేస్తోంది"</string>
+    <string name="sum_cfu_enabled" msgid="5806923046528144526">"అన్ని కాల్స్‌ను <xliff:g id="PHONENUMBER">{0}</xliff:g>కి ఫార్వర్డ్ చేస్తోంది"</string>
     <string name="sum_cfu_enabled_no_number" msgid="7287752761743377930">"నంబర్ అందుబాటులో లేదు"</string>
     <string name="sum_cfu_disabled" msgid="5010617134210809853">"ఆఫ్‌లో ఉంది"</string>
     <string name="labelCFB" msgid="615265213360512768">"బిజీగా ఉన్నప్పుడు"</string>
     <string name="messageCFB" msgid="1958017270393563388">"బిజీగా ఉన్నప్పుడు ఫార్వర్డ్ చేయాల్సిన నంబర్"</string>
-    <string name="sum_cfb_enabled" msgid="332037613072049492">"<xliff:g id="PHONENUMBER">{0}</xliff:g>కి ఫార్వార్డ్ చేస్తోంది"</string>
+    <string name="sum_cfb_enabled" msgid="332037613072049492">"<xliff:g id="PHONENUMBER">{0}</xliff:g>కి ఫార్వర్డ్ చేస్తోంది"</string>
     <string name="sum_cfb_disabled" msgid="3589913334164866035">"ఆఫ్‌లో ఉంది"</string>
     <string name="disable_cfb_forbidden" msgid="4831494744351633961">"మీ ఫోన్ బిజీగా ఉన్నప్పుడు కాల్ ఫార్వర్డింగ్‌ను నిలిపివేయడానికి మీ ఆపరేటర్ మద్దతు ఇవ్వరు."</string>
     <string name="labelCFNRy" msgid="3403533792248457946">"సమాధానం ఇవ్వనప్పుడు"</string>
     <string name="messageCFNRy" msgid="7644434155765359009">"సమాధానం ఇవ్వనప్పుడు నంబర్"</string>
-    <string name="sum_cfnry_enabled" msgid="3000500837493854799">"<xliff:g id="PHONENUMBER">{0}</xliff:g>కి ఫార్వార్డ్ చేస్తోంది"</string>
+    <string name="sum_cfnry_enabled" msgid="3000500837493854799">"<xliff:g id="PHONENUMBER">{0}</xliff:g>కి ఫార్వర్డ్ చేస్తోంది"</string>
     <string name="sum_cfnry_disabled" msgid="1990563512406017880">"ఆఫ్‌లో ఉంది"</string>
     <string name="disable_cfnry_forbidden" msgid="3174731413216550689">"మీ ఫోన్ సమాధానం ఇవ్వలేనప్పుడు కాల్ ఫార్వర్డింగ్‌ను నిలిపివేయడానికి మీ ఆపరేటర్ మద్దతు ఇవ్వరు."</string>
     <string name="labelCFNRc" msgid="4163399350778066013">"చేరుకోలేనప్పుడు"</string>
     <string name="messageCFNRc" msgid="6980340731313007250">"చేరుకోవడం సాధ్యపడనప్పుడు నంబర్"</string>
-    <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"<xliff:g id="PHONENUMBER">{0}</xliff:g>కి ఫార్వార్డ్ చేస్తోంది"</string>
+    <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"<xliff:g id="PHONENUMBER">{0}</xliff:g>కి ఫార్వర్డ్ చేస్తోంది"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"ఆఫ్‌లో ఉంది"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"మీ ఫోన్‌ను చేరుకోవడం సాధ్యపడనప్పుడు కాల్ ఫార్వర్డింగ్‌ను నిలిపివేయడానికి మీ క్యారియర్ మద్దతు ఇవ్వదు."</string>
     <string name="registration_cf_forbidden" msgid="4386482610771190420">"కాల్ ఫార్వర్డింగ్‌ను మీ క్యారియర్ సపోర్ట్ చేయదు."</string>
@@ -797,20 +797,20 @@
     <string name="callFailed_NetworkBusy" msgid="5437103975842913681">"నెట్‌వర్క్ బిజీగా ఉంది. దయచేసి తిరిగి తర్వాత కాల్ చేయండి."</string>
     <string name="callFailed_NetworkCongested" msgid="6801283142342775380">"నెట్‌వర్క్‌లో అంతరాయం ఏర్పడింది. సహాయం కోసం మీ మొబైల్ ఆపరేటర్‌ను సంప్రదించండి."</string>
     <string name="supp_service_notification_call_deflected" msgid="4980942818105909813">"కాల్ మళ్లించబడింది."</string>
-    <string name="supp_service_notification_call_forwarded" msgid="7102930311735433088">"కాల్ ఫార్వార్డ్ చేయబడింది."</string>
+    <string name="supp_service_notification_call_forwarded" msgid="7102930311735433088">"కాల్ ఫార్వర్డ్ చేయబడింది."</string>
     <string name="supp_service_notification_call_waiting" msgid="4577403881609445324">"కాల్ నిరీక్షణలో ఉంది."</string>
     <string name="supp_service_clir_suppression_rejected" msgid="6105737020194776121">"నంబర్ బ్లాకింగ్ తిరస్కరించబడింది."</string>
     <string name="supp_service_closed_user_group_call" msgid="2811636666505250689">"దగ్గరి వినియోగదారు సమూహ కాల్."</string>
     <string name="supp_service_incoming_calls_barred" msgid="2034627421274447674">"ఇన్‌కమింగ్ కాల్స్‌ నిరోధించబడ్డాయి"</string>
     <string name="supp_service_outgoing_calls_barred" msgid="5205725332394087112">"అవుట్‌గోయింగ్ కాల్స్‌ నిరోధించబడ్డాయి."</string>
     <string name="supp_service_call_forwarding_active" msgid="7910162960395132464">"కాల్ ఫార్వర్డింగ్ యాక్టివ్‌గా ఉంది."</string>
-    <string name="supp_service_additional_call_forwarded" msgid="8772753260008398632">"అదనపు కాల్ ఫార్వార్డ్ చేయబడింది."</string>
+    <string name="supp_service_additional_call_forwarded" msgid="8772753260008398632">"అదనపు కాల్ ఫార్వర్డ్ చేయబడింది."</string>
     <string name="supp_service_additional_ect_connected" msgid="8525934162945220237">"అభ్యంతరకరమైన కాల్ బదిలీ పూర్తయింది."</string>
     <string name="supp_service_additional_ect_connecting" msgid="7046240728781222753">"అభ్యంతరకరమైన కాల్ బదిలీ ప్రోగ్రెస్‌లో ఉంది."</string>
     <string name="supp_service_call_on_hold" msgid="2836811319594503059">"కాల్ హోల్డ్‌లో ఉంది."</string>
     <string name="supp_service_call_resumed" msgid="3786864005920743546">"కాల్ మళ్లీ ప్రారంభించబడింది."</string>
     <string name="supp_service_deflected_call" msgid="7565979024562921707">"కాల్ మళ్లించబడింది."</string>
-    <string name="supp_service_forwarded_call" msgid="6475776013771821457">"కాల్ ఫార్వార్డ్ చేయబడింది."</string>
+    <string name="supp_service_forwarded_call" msgid="6475776013771821457">"కాల్ ఫార్వర్డ్ చేయబడింది."</string>
     <string name="supp_service_conference_call" msgid="4004193534408317148">"కాన్ఫరెన్స్ కాల్‌లో చేరుతున్నారు"</string>
     <string name="supp_service_held_call_released" msgid="2847835124639112410">"హోల్డ్‌లో ఉంచిన కాల్ ప్రారంభించబడింది."</string>
     <string name="callFailed_otasp_provisioning_in_process" msgid="3345666183602879326">"వినియోగదారుకు ప్రస్తుతం ఏ సేవలు అందుబాటులో ఉన్నాయనే విచారణ పనిలో పరికరం ఉన్నందున కాల్ చేయడం సాధ్యం కాదు."</string>
