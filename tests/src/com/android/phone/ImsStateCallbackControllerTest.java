@@ -28,6 +28,8 @@ import static com.android.ims.FeatureConnector.UNAVAILABLE_REASON_IMS_UNSUPPORTE
 import static com.android.ims.FeatureConnector.UNAVAILABLE_REASON_NOT_READY;
 
 import static junit.framework.Assert.assertFalse;
+import static junit.framework.Assert.assertNotNull;
+import static junit.framework.Assert.assertNull;
 import static junit.framework.Assert.assertTrue;
 
 import static org.mockito.Matchers.any;
@@ -872,6 +874,36 @@ public class ImsStateCallbackControllerTest {
         mImsStateCallbackController.unregisterImsStateCallback(mCallback1);
         processAllMessages();
         assertFalse(mImsStateCallbackController.isRegistered(mCallback1));
+    }
+
+    @Test
+    @SmallTest
+    public void testImsManagerInstance() throws Exception {
+        createController(1);
+
+        // MmTelConnection not ready
+        // check ImsManager instance
+        ImsManager imsManager = mImsStateCallbackController.getImsManager(SLOT_0_SUB_ID);
+        assertNull(imsManager);
+
+        // MmTelConnection ready
+        mMmTelConnectorListenerSlot0.getValue()
+                .connectionReady(mMmTelFeatureManager, SLOT_0_SUB_ID);
+        processAllMessages();
+
+        // check ImsManager instance
+        imsManager = mImsStateCallbackController.getImsManager(SLOT_0_SUB_ID);
+        assertNotNull(imsManager);
+
+        // MmTelConnection unavailable
+        mMmTelConnectorListenerSlot0.getValue()
+                .connectionUnavailable(UNAVAILABLE_REASON_NOT_READY);
+        processAllMessages();
+
+        // MmTelConnection unavailable
+        // check ImsManager instance
+        imsManager = mImsStateCallbackController.getImsManager(SLOT_0_SUB_ID);
+        assertNull(imsManager);
     }
 
     private void createController(int slotCount) throws Exception {
