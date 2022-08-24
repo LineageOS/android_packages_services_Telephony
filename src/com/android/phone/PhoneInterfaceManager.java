@@ -3278,13 +3278,18 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    public void setCellInfoListRate(int rateInMillis) {
+    public void setCellInfoListRate(int rateInMillis, int subId) {
         enforceModifyPermission();
         WorkSource workSource = getWorkSource(Binder.getCallingUid());
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            getDefaultPhone().setCellInfoListRate(rateInMillis, workSource);
+            Phone phone = getPhone(subId);
+            if (phone == null) {
+                getDefaultPhone().setCellInfoListRate(rateInMillis, workSource);
+            } else {
+                phone.setCellInfoListRate(rateInMillis, workSource);
+            }
         } finally {
             Binder.restoreCallingIdentity(identity);
         }

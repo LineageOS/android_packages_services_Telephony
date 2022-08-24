@@ -417,7 +417,7 @@ public class RadioInfo extends AppCompatActivity {
     private void updatePhoneIndex(int phoneIndex, int subId) {
         // unregister listeners on the old subId
         unregisterPhoneStateListener();
-        mTelephonyManager.setCellInfoListRate(sCellInfoListRateDisabled);
+        mTelephonyManager.setCellInfoListRate(sCellInfoListRateDisabled, mPhone.getSubId());
 
         // update the subId
         mTelephonyManager = mTelephonyManager.createForSubscriptionId(subId);
@@ -680,7 +680,8 @@ public class RadioInfo extends AppCompatActivity {
         //set selection after registering listener to force update
         mCellInfoRefreshRateSpinner.setSelection(mCellInfoRefreshRateIndex);
         // Request cell information update from RIL.
-        mTelephonyManager.setCellInfoListRate(CELL_INFO_REFRESH_RATES[mCellInfoRefreshRateIndex]);
+        mTelephonyManager.setCellInfoListRate(CELL_INFO_REFRESH_RATES[mCellInfoRefreshRateIndex],
+                mPhone.getSubId());
 
         //set selection before registering to prevent update
         mPreferredNetworkType.setSelection(mPreferredNetworkTypeResult, true);
@@ -725,7 +726,7 @@ public class RadioInfo extends AppCompatActivity {
         log("onPause: unregister phone & data intents");
 
         mTelephonyManager.unregisterTelephonyCallback(mTelephonyCallback);
-        mTelephonyManager.setCellInfoListRate(sCellInfoListRateDisabled);
+        mTelephonyManager.setCellInfoListRate(sCellInfoListRateDisabled, mPhone.getSubId());
         mConnectivityManager.unregisterNetworkCallback(mNetworkCallback);
 
     }
@@ -1795,7 +1796,7 @@ public class RadioInfo extends AppCompatActivity {
 
         public void onItemSelected(AdapterView parent, View v, int pos, long id) {
             mCellInfoRefreshRateIndex = pos;
-            mTelephonyManager.setCellInfoListRate(CELL_INFO_REFRESH_RATES[pos]);
+            mTelephonyManager.setCellInfoListRate(CELL_INFO_REFRESH_RATES[pos], mPhone.getSubId());
             updateAllCellInfo();
         }
 
