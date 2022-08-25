@@ -73,7 +73,7 @@
     <string name="not_a_valid_port" msgid="3664668836663491376">"पोर्ट नंबर 1000 आणि 65534 मध्‍ये असावा."</string>
     <string name="no_internet_available" msgid="161720645084325479">"एक SIP कॉल करण्‍यासाठी, प्रथम तुमचे इंटरनेट कनेक्‍शन तपासा."</string>
     <string name="no_wifi_available" msgid="1179092018692306312">"SIP कॉलसाठी तुम्ही वाय-फाय नेटवर्कशी कनेक्‍ट केलेले असणे आवश्‍यक आहे (वायरलेस &amp; नेटवर्क सेटिंग्ज वापरा)."</string>
-    <string name="no_voip" msgid="3366395789297981738">"SIP कॉल करणे समर्थित नाही"</string>
+    <string name="no_voip" msgid="3366395789297981738">"SIP कॉल करणे याला सपोर्ट नाही"</string>
     <string name="sip_system_decide" msgid="197230378376326430">"स्वयंचलित"</string>
     <string name="sip_always_send_keepalive" msgid="4986533673960084769">"नेहमी पाठवा"</string>
     <string name="sip_connection_service_label" msgid="8796284274240316006">"अंगभूत SIP कॉल करणे"</string>

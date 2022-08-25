@@ -27,7 +27,7 @@
     <string name="sip_call_options_entry_2" msgid="7338504256051655013">"Uniquement pour les appels SIP"</string>
     <string name="sip_call_options_wifi_only_entry_1" msgid="922329055414010991">"Pour tous les appels"</string>
     <string name="add_sip_account" msgid="5754758646745144384">"Ajouter un compte"</string>
-    <string name="remove_sip_account" msgid="8272617403399636513">"Supprimer le compte"</string>
+    <string name="remove_sip_account" msgid="8272617403399636513">"Retirer le compte"</string>
     <string name="sip_account_list" msgid="2596262496233721769">"Comptes SIP"</string>
     <string name="saving_account" msgid="3390358043846687266">"Enregistrement du compte en cours…"</string>
     <string name="removing_account" msgid="1544132880414780408">"Suppression du compte en cours..."</string>
