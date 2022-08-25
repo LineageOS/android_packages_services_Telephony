@@ -4135,7 +4135,18 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         try {
             int slotId = getSlotIndexOrException(subId);
             verifyImsMmTelConfiguredOrThrow(slotId);
-            ImsManager.getInstance(mApp, slotId).addRegistrationCallbackForSubscription(c, subId);
+
+            ImsStateCallbackController controller = ImsStateCallbackController.getInstance();
+            if (controller != null) {
+                ImsManager imsManager = controller.getImsManager(subId);
+                if (imsManager != null) {
+                    imsManager.addRegistrationCallbackForSubscription(c, subId);
+                } else {
+                    throw new ServiceSpecificException(ImsException.CODE_ERROR_SERVICE_UNAVAILABLE);
+                }
+            } else {
+                throw new ServiceSpecificException(ImsException.CODE_ERROR_UNSUPPORTED_OPERATION);
+            }
         } catch (ImsException e) {
             throw new ServiceSpecificException(e.getCode());
         } finally {
@@ -4156,14 +4167,20 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             throw new IllegalArgumentException("Invalid Subscription ID: " + subId);
         }
         final long token = Binder.clearCallingIdentity();
+
         try {
-            ImsManager.getInstance(mApp, getSlotIndexOrException(subId))
-                    .removeRegistrationCallbackForSubscription(c, subId);
-        } catch (ImsException e) {
-            Log.i(LOG_TAG, "unregisterImsRegistrationCallback: " + subId
-                    + "is inactive, ignoring unregister.");
-            // If the subscription is no longer active, just return, since the callback
-            // will already have been removed internally.
+            ImsStateCallbackController controller = ImsStateCallbackController.getInstance();
+            if (controller != null) {
+                ImsManager imsManager = controller.getImsManager(subId);
+                if (imsManager != null) {
+                    imsManager.removeRegistrationCallbackForSubscription(c, subId);
+                } else {
+                    Log.i(LOG_TAG, "unregisterImsRegistrationCallback: " + subId
+                            + "is inactive, ignoring unregister.");
+                    // If the ImsManager is not valid, just return, since the callback
+                    // will already have been removed internally.
+                }
+            }
         } finally {
             Binder.restoreCallingIdentity(token);
         }
