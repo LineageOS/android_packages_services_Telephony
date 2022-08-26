@@ -6692,10 +6692,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             try {
                 mApp.enforceCallingOrSelfPermission(permission.READ_BASIC_PHONE_STATE,
                         functionName);
-            } catch (Exception e) {
+            } catch (SecurityException e) {
                 mApp.enforceCallingOrSelfPermission(permission.ACCESS_NETWORK_STATE, functionName);
             }
-        } catch (Exception e) {
+        } catch (SecurityException e) {
             TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
                     mApp, subId, functionName);
 
@@ -6734,17 +6734,17 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 mApp.enforceCallingOrSelfPermission(
                         android.Manifest.permission.ACCESS_NETWORK_STATE,
                         functionName);
-            } catch (Exception e) {
+            } catch (SecurityException e) {
                 try {
                     mApp.enforceCallingOrSelfPermission(
                             android.Manifest.permission.READ_PHONE_STATE,
                             functionName);
-                } catch (Exception e2) {
+                } catch (SecurityException e2) {
                     mApp.enforceCallingOrSelfPermission(
                             permission.READ_BASIC_PHONE_STATE, functionName);
                 }
             }
-        } catch (Exception e) {
+        } catch (SecurityException e) {
             enforceReadPrivilegedPermission(functionName);
         }
 
@@ -6785,15 +6785,15 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 mApp.enforceCallingOrSelfPermission(
                         android.Manifest.permission.ACCESS_NETWORK_STATE,
                         functionName);
-            } catch (Exception e) {
+            } catch (SecurityException e) {
                 mApp.enforceCallingOrSelfPermission(permission.READ_BASIC_PHONE_STATE,
                         functionName);
             }
-        } catch (Exception e) {
+        } catch (SecurityException e) {
             try {
                 mApp.enforceCallingOrSelfPermission(android.Manifest.permission.READ_PHONE_STATE,
                         functionName);
-            } catch (Exception e2) {
+            } catch (SecurityException e2) {
                 TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
                         mApp, subId, functionName);
             }
@@ -8772,11 +8772,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 mApp.enforceCallingOrSelfPermission(
                         android.Manifest.permission.ACCESS_NETWORK_STATE,
                         functionName);
-            } catch (Exception e) {
+            } catch (SecurityException e) {
                 mApp.enforceCallingOrSelfPermission(
                         permission.READ_BASIC_PHONE_STATE, functionName);
             }
-        } catch (Exception e) {
+        } catch (SecurityException e) {
             TelephonyPermissions.enforceCallingOrSelfReadPhoneStatePermissionOrCarrierPrivilege(
                     mApp, subId, functionName);
         }
