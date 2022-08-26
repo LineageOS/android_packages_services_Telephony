@@ -9338,9 +9338,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         final long identity = Binder.clearCallingIdentity();
         try {
             for (Phone phone: PhoneFactory.getPhones()) {
+                //Note: we ignore passed in param exactMatch. We can remove it once
+                // TelephonyManager#isPotentialEmergencyNumber is removed completely
                 if (phone.getEmergencyNumberTracker() != null
                         && phone.getEmergencyNumberTracker()
-                                .isEmergencyNumber(number, exactMatch)) {
+                                .isEmergencyNumber(number)) {
                     return true;
                 }
             }
