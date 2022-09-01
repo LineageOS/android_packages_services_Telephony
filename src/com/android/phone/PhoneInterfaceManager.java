@@ -77,6 +77,7 @@ import android.telephony.ActivityStatsTechSpecificInfo;
 import android.telephony.Annotation.ApnType;
 import android.telephony.Annotation.DataActivityType;
 import android.telephony.Annotation.ThermalMitigationResult;
+import android.telephony.AnomalyReporter;
 import android.telephony.CallForwardingInfo;
 import android.telephony.CarrierConfigManager;
 import android.telephony.CarrierRestrictionRules;
@@ -210,6 +211,7 @@ import com.android.phone.callcomposer.CallComposerPictureManager;
 import com.android.phone.callcomposer.CallComposerPictureTransfer;
 import com.android.phone.callcomposer.ImageData;
 import com.android.phone.settings.PickSmsSubscriptionActivity;
+import com.android.phone.slicestore.SliceStore;
 import com.android.phone.vvm.PhoneAccountHandleConverter;
 import com.android.phone.vvm.RemoteVvmTaskManager;
 import com.android.phone.vvm.VisualVoicemailSettingsUtil;
@@ -235,6 +237,7 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.Set;
+import java.util.UUID;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Consumer;
@@ -358,6 +361,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private static final int EVENT_ENABLE_VONR_DONE = 114;
     private static final int CMD_IS_VONR_ENABLED = 115;
     private static final int EVENT_IS_VONR_ENABLED_DONE = 116;
+    private static final int CMD_PURCHASE_PREMIUM_CAPABILITY = 117;
+    private static final int EVENT_PURCHASE_PREMIUM_CAPABILITY_DONE = 118;
 
     // Parameters of select command.
     private static final int SELECT_COMMAND = 0xA4;
@@ -405,6 +410,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     private static final int SET_DATA_THROTTLING_MODEM_THREW_INVALID_PARAMS = -1;
     private static final int MODEM_DOES_NOT_SUPPORT_DATA_THROTTLING_ERROR_CODE = -2;
+
+    private static final String PURCHASE_PREMIUM_CAPABILITY_ERROR_UUID =
+            "24bf97a6-e8a6-44d8-a6a4-255d7548733c";
 
     /**
      * Experiment flag to enable erase modem config on reset network, default value is false
@@ -2132,6 +2140,36 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     notifyRequester(request);
                     break;
                 }
+
+                case CMD_PURCHASE_PREMIUM_CAPABILITY:
+                    request = (MainThreadRequest) msg.obj;
+                    onCompleted = obtainMessage(EVENT_PURCHASE_PREMIUM_CAPABILITY_DONE, request);
+                    SliceStore.getInstance(request.phone).purchasePremiumCapability(
+                            ((Pair<Integer, IIntegerConsumer>) request.argument).first,
+                            onCompleted);
+                    break;
+
+                case EVENT_PURCHASE_PREMIUM_CAPABILITY_DONE:
+                    ar = (AsyncResult) msg.obj;
+                    request = (MainThreadRequest) ar.userObj;
+                    Pair<Integer, IIntegerConsumer> pair =
+                            (Pair<Integer, IIntegerConsumer>) request.argument;
+                    try {
+                        int result = (int) ar.result;
+                        pair.second.accept(result);
+                        log("purchasePremiumCapability: capability="
+                                + TelephonyManager.convertPremiumCapabilityToString(pair.first)
+                                + ", result= "
+                                + TelephonyManager.convertPurchaseResultToString(result));
+                    } catch (RemoteException e) {
+                        String logStr = "Purchase premium capability "
+                                + TelephonyManager.convertPremiumCapabilityToString(pair.first)
+                                + " failed: " + e;
+                        if (DBG) log(logStr);
+                        AnomalyReporter.reportAnomaly(
+                                UUID.fromString(PURCHASE_PREMIUM_CAPABILITY_ERROR_UUID), logStr);
+                    }
+                    break;
 
                 case CMD_PREPARE_UNATTENDED_REBOOT:
                     request = (MainThreadRequest) msg.obj;
@@ -11238,6 +11276,62 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
+    }
+
+    /**
+     * Check whether the given premium capability is available for purchase from the carrier.
+     *
+     * @param capability The premium capability to check.
+     * @param subId The subId to check the premium capability for.
+     *
+     * @return Whether the given premium capability is available to purchase.
+     */
+    @Override
+    public boolean isPremiumCapabilityAvailableForPurchase(int capability, int subId) {
+        if (!TelephonyPermissions.checkCallingOrSelfReadNonDangerousPhoneStateNoThrow(
+                mApp, "isPremiumCapabilityAvailableForPurchase")) {
+            log("Premium capability "
+                    + TelephonyManager.convertPremiumCapabilityToString(capability)
+                    + " is not available for purchase due to missing permissions.");
+            throw new SecurityException("isPremiumCapabilityAvailableForPurchase requires "
+                    + "permission READ_BASIC_PHONE_STATE.");
+        }
+
+        Phone phone = getPhone(subId);
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return SliceStore.getInstance(phone)
+                    .isPremiumCapabilityAvailableForPurchase(capability);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Purchase the given premium capability from the carrier.
+     *
+     * @param capability The premium capability to purchase.
+     * @param callback The result of the purchase request.
+     * @param subId The subId to purchase the premium capability for.
+     */
+    @Override
+    public void purchasePremiumCapability(int capability, IIntegerConsumer callback, int subId) {
+        log("purchasePremiumCapability: capability="
+                + TelephonyManager.convertPremiumCapabilityToString(capability) + ", caller="
+                + getCurrentPackageName());
+
+        if (!TelephonyPermissions.checkCallingOrSelfReadNonDangerousPhoneStateNoThrow(
+                mApp, "purchasePremiumCapability")) {
+            log("purchasePremiumCapability "
+                    + TelephonyManager.convertPremiumCapabilityToString(capability)
+                    + " failed due to missing permissions.");
+            throw new SecurityException("purchasePremiumCapability requires permission "
+                    + "READ_BASIC_PHONE_STATE.");
+        }
+
+        Phone phone = getPhone(subId);
+        Pair<Integer, IIntegerConsumer> argument = new Pair<>(capability, callback);
+        sendRequestAsync(CMD_PURCHASE_PREMIUM_CAPABILITY, argument, phone, null);
     }
 
     /**
