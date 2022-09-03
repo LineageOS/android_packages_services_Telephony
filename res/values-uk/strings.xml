@@ -919,4 +919,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Сигнал Bluetooth заслабкий. Спробуйте переключитися на гучний зв\'язок."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Сповіщення про якість виклику"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Облікові записи SIP, що не підтримуються"</string>
+    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g> не підтримує екстрені виклики через Wi-Fi. \n\nЕкстрені виклики здійснюватимуться через мобільну мережу. Якщо мобільна мережа має погане покриття то, можливо, виклик не вдасться здійснити."</string>
+    <string name="do_not_show_again" msgid="8923026903375124550">"Більше не показувати"</string>
+    <string name="turn_off_wfc" msgid="2346229945400554258">"Вимкнути дзвінки через Wi-Fi"</string>
+    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"Екстрені виклики можуть бути недоступні"</string>
 </resources>

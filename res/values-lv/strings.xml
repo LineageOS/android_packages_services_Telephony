@@ -919,4 +919,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Bluetooth signāls ir vājš. Mēģiniet pārslēgties uz skaļruni."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Paziņojums par zvana kvalitāti"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"SIP konti, kuru darbība ir pārtraukta"</string>
+    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g> neatbalsta ārkārtas izsaukumus Wi-Fi tīklā. \n\nĀrkārtas izsaukumi tiks veikti, izmantojot mobilo tīklu. Ja mobilo sakaru pārklājums ir nepietiekams, ārkārtas izsaukums var neizdoties."</string>
+    <string name="do_not_show_again" msgid="8923026903375124550">"Vairs nerādīt"</string>
+    <string name="turn_off_wfc" msgid="2346229945400554258">"Izslēgt Wi-Fi zvanus"</string>
+    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"Ārkārtas izsaukumi var nebūt pieejami"</string>
 </resources>

@@ -893,8 +893,8 @@
     <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"Ohita verkon tyyppi:"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"Valitse puhelimen hakemisto"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"Aseta ensisijainen verkon tyyppi:"</string>
-    <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"Ping-kutsu isäntänimelle (www.google.com), IPv4:"</string>
-    <string name="radio_info_ping_hostname_v6" msgid="2748637889486554603">"Ping-kutsu isäntänimelle (www.google.com), IPv6:"</string>
+    <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"Ping isäntänimelle (www.google.com), IPv4:"</string>
+    <string name="radio_info_ping_hostname_v6" msgid="2748637889486554603">"Ping isäntänimelle (www.google.com), IPv6:"</string>
     <string name="radio_info_http_client_test" msgid="1329583721088428238">"HTTP-asiakastesti:"</string>
     <string name="ping_test_label" msgid="448617502935719694">"Suorita ping-testi"</string>
     <string name="radio_info_smsc_label" msgid="3749927072726033763">"SMSC:"</string>
@@ -919,4 +919,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Bluetooth-signaali on heikko. Kokeile vaihtaa kaiutinpuhelimeen."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Puhelun laatua koskeva ilmoitus"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Käytöstä poistetut SIP-tilit"</string>
+    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g> ei tue hätäpuheluita Wi-Fi-yhteydellä. \n\nHätäpuhelut soitetaan mobiiliverkon kautta. Jos mobiiliverkon kattavuus on rajallinen, hätäpuhelua ei välttämättä saada yhdistettyä."</string>
+    <string name="do_not_show_again" msgid="8923026903375124550">"Älä näytä uudelleen"</string>
+    <string name="turn_off_wfc" msgid="2346229945400554258">"Laita Wi-Fi-puhelut pois päältä"</string>
+    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"Hätäpuhelut eivät välttämättä ole käytettävissä"</string>
 </resources>

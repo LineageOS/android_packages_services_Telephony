@@ -919,4 +919,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"إشارة البلوتوث ضعيفة. حاوِل التبديل إلى مكبّر الصوت."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"إشعار بشأن جودة المكالمة"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"‏حسابات SIP المتوقّفة"</string>
+    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"‏لا تعمل خدمة مكالمات الطوارئ على شبكة Wi-Fi في <xliff:g id="SPN">%s</xliff:g>. \n\nسيتم إجراء مكالمات الطوارئ من خلال شبكة الجوّال. وإذا كانت تغطية الهاتف الجوّال محدودة، قد لا يتم إجراء مكالمة الطوارئ."</string>
+    <string name="do_not_show_again" msgid="8923026903375124550">"عدم الإظهار مرة أخرى"</string>
+    <string name="turn_off_wfc" msgid="2346229945400554258">"‏إيقاف الاتصال عبر Wi-Fi"</string>
+    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"قد لا تكون مكالمات الطوارئ متوفّرة."</string>
 </resources>

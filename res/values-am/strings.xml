@@ -805,8 +805,8 @@
     <string name="supp_service_outgoing_calls_barred" msgid="5205725332394087112">"ወጪ ጥሪዎች ተከልክለዋል።"</string>
     <string name="supp_service_call_forwarding_active" msgid="7910162960395132464">"ጥሪ ማስተላለፍ ንቁ።"</string>
     <string name="supp_service_additional_call_forwarded" msgid="8772753260008398632">"ተጨማሪ ጥሪ ተላልፏል።"</string>
-    <string name="supp_service_additional_ect_connected" msgid="8525934162945220237">"ግልጽ የጥሪ ማስተላለፍ ተጠናቅቋል።"</string>
-    <string name="supp_service_additional_ect_connecting" msgid="7046240728781222753">"ግልጽ የጥሪ ማስተላለፍ በሂደት ላይ።"</string>
+    <string name="supp_service_additional_ect_connected" msgid="8525934162945220237">"ግልፅ የጥሪ ማስተላለፍ ተጠናቅቋል።"</string>
+    <string name="supp_service_additional_ect_connecting" msgid="7046240728781222753">"ግልፅ የጥሪ ማስተላለፍ በሂደት ላይ።"</string>
     <string name="supp_service_call_on_hold" msgid="2836811319594503059">"ጥሪ በይቆይ ላይ።"</string>
     <string name="supp_service_call_resumed" msgid="3786864005920743546">"ጥሪ ከቆመበት ቀጥሏል።"</string>
     <string name="supp_service_deflected_call" msgid="7565979024562921707">"ጥሪው አቅጣጫው ተቀይሯል።"</string>
@@ -919,4 +919,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"የእርስዎ የብሉቱዝ ሲግናል ደካማ ነው። ወደ የስልክ ድምፅ ማጉያ ለመቀየር ይሞክሩ።"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"የጥሪ ጥራት ማሳወቂያ"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"የተቋረጡ የSIP መለያዎች"</string>
+    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g> በWi-Fi ላይ የአደጋ ጊዜ ጥሪዎችን አይደግፍም። \n\nየአደጋ ጊዜ ጥሪዎች በተንቀሳቃሽ ስልክ አውታረ መረብ በኩል ይደረጋሉ። የሞባይል ሽፋኑ ውስን ከሆነ፣ እርስዎ የአደጋ ጊዜ ጥሪ ማድረግ አይችሉ ይሆናል።"</string>
+    <string name="do_not_show_again" msgid="8923026903375124550">"ዳግም አታሳይ"</string>
+    <string name="turn_off_wfc" msgid="2346229945400554258">"የWi-Fi ጥሪ ማድረጊያን አጥፋ"</string>
+    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"የአደጋ ጊዜ ጥሪዎች ላይገኙ ይችላሉ"</string>
 </resources>

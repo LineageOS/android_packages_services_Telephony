@@ -919,4 +919,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Таны Bluetooth-н дохио сул байна. Чанга яригчтай утас руу сэлгэж үзнэ үү."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Дуудлагын чанарын мэдэгдэл"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"SIP-н зогсоосон бүртгэлүүд"</string>
+    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g> Wi-Fi-р яаралтай дуудлага хийхийг дэмждэггүй. \n\nЯаралтай дуудлагыг мобайл сүлжээгээр хийнэ. Хэрэв мобайлын хамрах хүрээ хязгаарлагдмал байвал таны яаралтай дуудлага хийгдэхгүй байж магадгүй."</string>
+    <string name="do_not_show_again" msgid="8923026903375124550">"Дахиж бүү харуул"</string>
+    <string name="turn_off_wfc" msgid="2346229945400554258">"Wi-Fi дуудлагыг унтраах"</string>
+    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"Яаралтай дуудлага боломжгүй байж магадгүй"</string>
 </resources>

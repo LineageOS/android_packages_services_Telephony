@@ -596,7 +596,7 @@
     <string name="hac_mode_summary" msgid="7774989500136009881">"ਸੁਣਨ ਲਈ ਸਹਾਇਕ ਸਾਧਨ ਅਨੁਕੂਲਤਾ ਚਾਲੂ ਕਰੋ"</string>
     <string name="rtt_mode_title" msgid="3075948111362818043">"ਨਾਲ-ਦੀ-ਨਾਲ ਦਿਸਦੀ ਲਿਖਤ (RTT) ਵਾਲੀ ਕਾਲ"</string>
     <string name="rtt_mode_summary" msgid="8631541375609989562">"ਕਿਸੇ ਅਵਾਜ਼ੀ ਕਾਲ ਦੌਰਾਨ ਸੁਨੇਹਾ ਭੇਜਣ ਦਿਓ"</string>
-    <string name="rtt_mode_more_information" msgid="587500128658756318">"RTT ਅਜਿਹੇ ਕਾਲ ਕਰਨ ਵਾਲੇ ਲੋਕਾਂ ਦੀ ਸਹਾਇਤਾ ਕਰਦਾ ਹੈ ਜੋ ਬੋਲੇ, ਘੱਟ ਸੁਣਨ ਵਾਲੇ, ਬੋਲਣ ਵਿੱਚ ਅਸਮਰਥ ਜਾਂ ਜਿਨ੍ਹਾਂ ਲਈ ਸਿਰਫ਼ ਅਵਾਜ਼ ਕਾਫ਼ੀ ਨਹੀਂ ਹੁੰਦੀ।&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;ਹੋਰ ਜਾਣੋ&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT ਕਾਲਾਂ ਨੂੰ ਇੱਕ ਪ੍ਰਤਿਲਿਪੀ ਸੁਨੇਹੇ ਵਜੋਂ ਰੱਖਿਅਤ ਕੀਤਾ ਜਾਂਦਾ ਹੈ\n       &lt;br&gt; - RTT ਵੀਡੀਓ ਕਾਲਾਂ ਲਈ ਉਪਲਬਧ ਨਹੀਂ ਹੈ"</string>
+    <string name="rtt_mode_more_information" msgid="587500128658756318">"RTT ਅਜਿਹੇ ਕਾਲ ਕਰਨ ਵਾਲੇ ਲੋਕਾਂ ਦੀ ਸਹਾਇਤਾ ਕਰਦਾ ਹੈ ਜੋ ਬੋਲੇ, ਘੱਟ ਸੁਣਨ ਵਾਲੇ, ਬੋਲਣ ਵਿੱਚ ਅਸਮਰੱਥ ਜਾਂ ਜਿਨ੍ਹਾਂ ਲਈ ਸਿਰਫ਼ ਅਵਾਜ਼ ਕਾਫ਼ੀ ਨਹੀਂ ਹੁੰਦੀ।&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;ਹੋਰ ਜਾਣੋ&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT ਕਾਲਾਂ ਨੂੰ ਇੱਕ ਪ੍ਰਤੀਲਿਪੀਕਰਨ ਸੁਨੇਹੇ ਵਜੋਂ ਰੱਖਿਅਤ ਕੀਤਾ ਜਾਂਦਾ ਹੈ\n       &lt;br&gt; - RTT ਵੀਡੀਓ ਕਾਲਾਂ ਲਈ ਉਪਲਬਧ ਨਹੀਂ ਹੈ"</string>
     <string name="no_rtt_when_roaming" msgid="5268008247378355389">"ਨੋਟ ਕਥਨ:ਵੇਲੇ RTT ਉਪਲਬਧ ਨਹੀਂ ਹੈ"</string>
   <string-array name="tty_mode_entries">
     <item msgid="3238070884803849303">"TTY ਬੰਦ"</item>
@@ -919,4 +919,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"ਤੁਹਾਡਾ ਬਲੂਟੁੱਥ ਸਿਗਨਲ ਕਮਜ਼ੋਰ ਹੈ। ਸਪੀਕਰਫ਼ੋਨ \'ਤੇ ਲਿਜਾ ਕੇ ਦੇਖੋ।"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"ਕਾਲ ਦੀ ਕੁਆਲਿਟੀ ਸੰਬੰਧੀ ਸੂਚਨਾ"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"ਨਾਪਸੰਦ ਕੀਤੇ SIP ਖਾਤੇ"</string>
+    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g> ਵੱਲੋਂ ਵਾਈ-ਫਾਈ \'ਤੇ ਐਮਰਜੈਂਸੀ ਕਾਲਾਂ ਦਾ ਸਮਰਥਨ ਨਹੀਂ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। \n\nਐਮਰਜੈਂਸੀ ਕਾਲਾਂ ਮੋਬਾਈਲ ਨੈੱਟਵਰਕ ਰਾਹੀਂ ਕੀਤੀਆਂ ਜਾਣਗੀਆਂ। ਸੀਮਤ ਮੋਬਾਈਲ ਕਵਰੇਜ ਹੋਣ \'ਤੇ ਸ਼ਾਇਦ ਤੁਹਾਡੀ ਐਮਰਜੈਂਸੀ ਕਾਲ ਨਾ ਲੱਗੇ।"</string>
+    <string name="do_not_show_again" msgid="8923026903375124550">"ਦੁਬਾਰਾ ਨਾ ਦਿਖਾਓ"</string>
+    <string name="turn_off_wfc" msgid="2346229945400554258">"ਵਾਈ-ਫਾਈ ਕਾਲਿੰਗ ਬੰਦ ਕਰੋ"</string>
+    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"ਸ਼ਾਇਦ ਐਮਰਜੈਂਸੀ ਕਾਲਾਂ ਉਪਲਬਧ ਨਾ ਹੋਣ"</string>
 </resources>

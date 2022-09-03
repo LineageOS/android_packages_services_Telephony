@@ -919,4 +919,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"您的藍牙訊號微弱。請改用擴音器。"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"通話品質通知"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"已停用的 SIP 帳戶"</string>
+    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g>不支援透過 Wi-Fi 撥打緊急電話。\n\n緊急電話會透過流動網絡撥打。如果流動網絡涵蓋率不高，可能就無法撥通緊急電話。"</string>
+    <string name="do_not_show_again" msgid="8923026903375124550">"不要再顯示"</string>
+    <string name="turn_off_wfc" msgid="2346229945400554258">"關閉 Wi-Fi 通話"</string>
+    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"可能無法撥打緊急電話"</string>
 </resources>

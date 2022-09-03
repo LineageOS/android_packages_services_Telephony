@@ -919,4 +919,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"നിങ്ങളുടെ Bluetooth സിഗ്നൽ ദുർബലമാണ്. സ്‌പീക്കർഫോണിലേക്ക് മാറ്റി നോക്കൂ."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"കോൾ നിലവാര അറിയിപ്പ്"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"അവസാനിപ്പിച്ച SIP അക്കൗണ്ടുകൾ"</string>
+    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"വൈഫൈ ഉപയോഗിച്ചുള്ള എമർജൻസി കോളുകൾ <xliff:g id="SPN">%s</xliff:g> പിന്തുണയ്‌ക്കുന്നില്ല. \n\nമൊബൈൽ നെറ്റ്‌വർക്ക് ഉപയോഗിച്ച് എമർജൻസി കോളുകൾ ചെയ്യുന്നതാണ്. മൊബൈൽ കവറേജ് പരിമിതമാണെങ്കിൽ, നിങ്ങളുടെ എമർജൻസി കോൾ പൂർത്തിയാക്കാനായേക്കില്ല."</string>
+    <string name="do_not_show_again" msgid="8923026903375124550">"വീണ്ടും കാണിക്കരുത്"</string>
+    <string name="turn_off_wfc" msgid="2346229945400554258">"വൈഫൈ കോളിംഗ് ഓഫാക്കുക"</string>
+    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"എമർജൻസി കോളുകൾ ലഭ്യമായിരിക്കില്ല"</string>
 </resources>
