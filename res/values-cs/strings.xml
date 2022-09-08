@@ -919,4 +919,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Signál sítě Bluetooth je slabý. Zkuste přepnout na hlasitý odposlech."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Oznámení o kvalitě hovoru"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Zastaralé účty SIP"</string>
+    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"Operátor <xliff:g id="SPN">%s</xliff:g> nepodporuje tísňové volání přes Wi-Fi. \n\nTísňové hovory se proto uskuteční v mobilní síti. Pokud mobilní síť nemá dostatečné pokrytí, tísňové volání se nemusí spojit."</string>
+    <string name="do_not_show_again" msgid="8923026903375124550">"Už nezobrazovat"</string>
+    <string name="turn_off_wfc" msgid="2346229945400554258">"Vypnout volání přes Wi-Fi"</string>
+    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"Tísňové volání může být nedostupné"</string>
 </resources>

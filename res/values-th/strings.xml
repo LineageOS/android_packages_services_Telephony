@@ -585,7 +585,7 @@
     <string name="onscreenManageCallsText" msgid="1162047856081836469">"จัดการการโทร"</string>
     <string name="onscreenManageConferenceText" msgid="4700574060601755137">"จัดการการประชุม"</string>
     <string name="onscreenAudioText" msgid="7224226735052019986">"เสียง"</string>
-    <string name="onscreenVideoCallText" msgid="1743992456126258698">" Hangouts วิดีโอ"</string>
+    <string name="onscreenVideoCallText" msgid="1743992456126258698">"วิดีโอคอล"</string>
     <string name="importSimEntry" msgid="3892354284082689894">"นำเข้า"</string>
     <string name="importAllSimEntries" msgid="2628391505643564007">"นำเข้าทั้งหมด"</string>
     <string name="importingSimContacts" msgid="4995457122107888932">"กำลังนำเข้าสมุดโทรศัพท์ในซิม"</string>
@@ -919,4 +919,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"สัญญาณบลูทูธอ่อน ลองเปลี่ยนไปใช้ลำโพงแทน"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"การแจ้งเตือนคุณภาพการโทร"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"บัญชี SIP ที่เลิกใช้งาน"</string>
+    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g> ไม่รองรับการโทรไปยังหมายเลขฉุกเฉินผ่าน Wi-Fi \n\nระบบจะต่อสายหมายเลขฉุกเฉินผ่านเครือข่ายมือถือ หากสัญญาณมือถือมีไม่มากพอ การโทรหมายเลขฉุกเฉินของคุณก็อาจส่งไปไม่ถึง"</string>
+    <string name="do_not_show_again" msgid="8923026903375124550">"ไม่ต้องแสดงอีก"</string>
+    <string name="turn_off_wfc" msgid="2346229945400554258">"ปิดการโทรผ่าน Wi-Fi"</string>
+    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"หมายเลขฉุกเฉินอาจไม่สามารถใช้งานได้"</string>
 </resources>

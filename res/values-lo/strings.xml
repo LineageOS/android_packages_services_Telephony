@@ -919,4 +919,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"ສັນຍານ Bluetooth ຂອງທ່ານອ່ອນ. ລອງສະຫຼັບລຳໂພງໂທລະສັບ."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"ການແຈ້ງເຕືອນຄຸນນະພາບການໂທ"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"ບັນຊີ SIP ທີ່ເຊົາສະໜັບສະໜູນ"</string>
+    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g> ບໍ່ຮອງຮັບການໂທ​ສຸກ​ເສີນຜ່ານ Wi-Fi. \n\nການໂທ​ສຸກ​ເສີນຈະເກີດຂຶ້ນຜ່ານເຄືອຂ່າຍມືຖື. ຫາກມີສັນຍານມືຖືຈຳກັດ, ການໂທ​ສຸກ​ເສີນຂອງທ່ານອາດບໍ່ສຳເລັດ."</string>
+    <string name="do_not_show_again" msgid="8923026903375124550">"ບໍ່ຕ້ອງສະແດງອີກ"</string>
+    <string name="turn_off_wfc" msgid="2346229945400554258">"ປິດການ​ໂທ Wi-Fi ໄວ້"</string>
+    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"ການໂທ​ສຸກ​ເສີນອາດບໍ່ສາມາດໃຊ້ໄດ້"</string>
 </resources>

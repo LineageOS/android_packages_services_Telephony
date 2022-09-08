@@ -919,4 +919,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Silpnas „Bluetooth“ signalas. Pabandykite perjungti garsiakalbį."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Pranešimas apie skambučio kokybę"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Nebenaudojamos SIP paskyros"</string>
+    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"„<xliff:g id="SPN">%s</xliff:g>“ nepalaiko skambučių pagalbos numeriu „Wi-Fi“ ryšiu. \n\nSkambučiai pagalbos numeriu bus atliekami mobiliojo ryšio tinklu. Jei mobiliojo ryšio aprėptis yra ribota, jūsų skambutis pagalbos numeriu gali būti neatliktas."</string>
+    <string name="do_not_show_again" msgid="8923026903375124550">"Neberodyti"</string>
+    <string name="turn_off_wfc" msgid="2346229945400554258">"Išjungti „Wi-Fi“ skambinimą"</string>
+    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"Skambučiai pagalbos numeriu gali būti nepasiekiami"</string>
 </resources>

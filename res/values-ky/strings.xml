@@ -919,4 +919,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Bluetooth сигналыңыз начар. Спикерфонго которулуп көрүңүз."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Чалуунун сапаты тууралуу билдирме"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Колдонуудан чыккан SIP аккаунттары"</string>
+    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g> Wi-Fi аркылуу шашылыш чалууларды колдоого албайт. \n\nШашылыш чалуулар мобилдик тармак аркылуу аткарылат. Мобилдик тармак чектелсе, шашылыш чалууңуз өткөрүлбөй калышы мүмкүн."</string>
+    <string name="do_not_show_again" msgid="8923026903375124550">"Экинчи көрүнбөсүн"</string>
+    <string name="turn_off_wfc" msgid="2346229945400554258">"Wi-Fi аркылуу чалууну өчүрүү"</string>
+    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"Шашылыш чалуулар жеткиликсиз болушу мүмкүн"</string>
 </resources>

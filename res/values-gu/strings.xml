@@ -919,4 +919,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"તમારા બ્લૂટૂથનું સિગ્નલ નબળું છે. સ્પીકરફોન પર સ્વિચ કરવાનો પ્રયાસ કરો."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"કૉલની ક્વૉલિટી માટે નોટિફિકેશન"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"ટાળવામાં આવેલા SIP એકાઉન્ટ"</string>
+    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g> વાઇ-ફાઇ પર ઇમર્જન્સી કૉલને સપોર્ટ કરતા નથી. \n\nઇમર્જન્સી કૉલ મોબાઇલ નેટવર્ક મારફતે કરવામાં આવશે. જો મોબાઇલ કવરેજ મર્યાદિત હોય તો તમારો ઇમર્જન્સી કૉલ ન પણ થાય."</string>
+    <string name="do_not_show_again" msgid="8923026903375124550">"ફરી બતાવશો નહીં"</string>
+    <string name="turn_off_wfc" msgid="2346229945400554258">"વાઇ-ફાઇ કૉલિંગ બંધ કરો"</string>
+    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"ઇમર્જન્સી કૉલ કદાચ ઉપલબ્ધ ન હોય"</string>
 </resources>

@@ -919,4 +919,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Votre signal Bluetooth est faible. Essayez de passer au haut-parleur mains libres."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Notification de qualité d\'appel"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Comptes SIP obsolètes"</string>
+    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g> ne prend pas en charge les appels d\'urgence par Wi-Fi. \n\nLes appels d\'urgence seront effectués en passant par un réseau cellulaire. Votre appel d\'urgence pourrait ne pas être effectué si la couverture du réseau cellulaire est limitée."</string>
+    <string name="do_not_show_again" msgid="8923026903375124550">"Ne plus afficher"</string>
+    <string name="turn_off_wfc" msgid="2346229945400554258">"Désactiver les appels Wi-Fi"</string>
+    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"Les appels d\'urgence peuvent ne pas être disponibles"</string>
 </resources>

@@ -919,4 +919,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Сигналът ви за Bluetooth е слаб. Опитайте да превключите на високоговорител."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Известия за качеството на обаждането"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Оттеглени профили за SIP"</string>
+    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g> не поддържа спешни обаждания през Wi-Fi. \n\nСпешните обаждания ще се извършват през мобилна мрежа. Ако покритието на мобилната мрежа е лошо, е възможно спешното обаждане да не се осъществи."</string>
+    <string name="do_not_show_again" msgid="8923026903375124550">"Да не се показва отново"</string>
+    <string name="turn_off_wfc" msgid="2346229945400554258">"Включване на обажданията през Wi-Fi"</string>
+    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"Спешните обаждания може да не са налице"</string>
 </resources>

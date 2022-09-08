@@ -919,4 +919,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Tín hiệu Bluetooth của bạn đang yếu. Hãy thử chuyển sang loa ngoài."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Thông báo về chất lượng cuộc gọi"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Tài khoản SIP không dùng nữa"</string>
+    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g> không hỗ trợ cuộc gọi khẩn cấp qua Wi-Fi. \n\nCác cuộc gọi khẩn cấp sẽ được thực hiện thông qua mạng di động. Nếu vùng phủ sóng di động bị hạn chế, thì cuộc gọi khẩn cấp của bạn có thể không thực hiện được."</string>
+    <string name="do_not_show_again" msgid="8923026903375124550">"Không hiện lại"</string>
+    <string name="turn_off_wfc" msgid="2346229945400554258">"Tắt tính năng gọi qua Wi-Fi"</string>
+    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"Cuộc gọi khẩn cấp có thể không hoạt động"</string>
 </resources>

@@ -674,7 +674,7 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"Aksesibilitas"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"Panggilan Wi-Fi dari"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"Panggilan Wi-Fi"</string>
-    <string name="message_decode_error" msgid="1061856591500290887">"Terjadi kesalahan saat mendekode pesan."</string>
+    <string name="message_decode_error" msgid="1061856591500290887">"Terjadi error saat mendekode pesan."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"Kartu SIM telah mengaktifkan layanan dan memperbarui kemampuan roaming ponsel."</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"Ada terlalu banyak panggilan aktif. Akhiri atau gabungkan panggilan yang ada sebelum melakukan panggilan baru."</string>
     <string name="callFailed_imei_not_accepted" msgid="7257903653685147251">"Tidak dapat terhubung, masukkan kartu SIM yang valid."</string>
@@ -919,4 +919,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Sinyal bluetooth Anda lemah. Coba beralih ke speaker ponsel."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Notifikasi Kualitas Panggilan"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Akun SIP yang tidak digunakan lagi"</string>
+    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g> tidak mendukung panggilan darurat melalui Wi-Fi. \n\nPanggilan darurat akan dilakukan melalui jaringan seluler. Jika cakupan seluler terbatas, panggilan darurat Anda mungkin tidak dapat tersambung."</string>
+    <string name="do_not_show_again" msgid="8923026903375124550">"Jangan tampilkan lagi"</string>
+    <string name="turn_off_wfc" msgid="2346229945400554258">"Nonaktifkan panggilan Wi-Fi"</string>
+    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"Panggilan darurat mungkin tidak tersedia"</string>
 </resources>
