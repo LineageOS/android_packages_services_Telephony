@@ -1170,10 +1170,22 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         });
         if (packageFiles == null || packageFiles.length < 1) return false;
         for (File f : packageFiles) {
-            logd("Deleting " + f.getName());
+            logd("Deleting " + getFilePathForLogging(f.getName()));
             f.delete();
         }
         return true;
+    }
+
+    private String getFilePathForLogging(String filePath) {
+        if (!TextUtils.isEmpty(filePath)) {
+            String[] fileTokens = filePath.split("-");
+            if (fileTokens != null && fileTokens.length > 2) {
+                String iccid = fileTokens[fileTokens.length -2];
+                return getFilePathForLogging(filePath, iccid);
+            }
+            return filePath;
+        }
+        return filePath;
     }
 
     /** Builds a canonical file name for a config file. */
