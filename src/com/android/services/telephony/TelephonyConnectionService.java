@@ -16,6 +16,8 @@
 
 package com.android.services.telephony;
 
+import static android.telephony.TelephonyManager.HAL_SERVICE_VOICE;
+
 import android.annotation.NonNull;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -823,7 +825,8 @@ public class TelephonyConnectionService extends ConnectionService {
                     // an isTesting parameter. For HAL 1.4+, do not wait for IN_SERVICE, this will
                     // be handled at the RIL/vendor level by emergencyDial(...).
                     boolean waitForInServiceToDialEmergency = isTestEmergencyNumber
-                            && phone.getHalVersion().less(RIL.RADIO_HAL_VERSION_1_4);
+                            && phone.getHalVersion(HAL_SERVICE_VOICE)
+                            .less(RIL.RADIO_HAL_VERSION_1_4);
                     if (isEmergencyNumber && !waitForInServiceToDialEmergency) {
                         // We currently only look to make sure that the radio is on before dialing.
                         // We should be able to make emergency calls at any time after the radio has
