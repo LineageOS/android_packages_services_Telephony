@@ -91,9 +91,8 @@ public class TelephonyDomainSelectionService extends DomainSelectionService {
                         selector = new EmergencyCallDomainSelector(context, slotId, subId, looper,
                                 imsStateTracker, listener);
                     } else {
-                        // TODO(ag/20024470) uncomment when normal call domain selector is ready.
-                        /*selector = new NormalCallDomainSelector(context, slotId, subId, looper,
-                                imsStateTracker, listener);*/
+                        selector = new NormalCallDomainSelector(context, slotId, subId, looper,
+                                imsStateTracker, listener);
                     }
                     break;
                 case SELECTOR_TYPE_SMS:
