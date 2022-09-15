@@ -5800,8 +5800,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 // may happen if the does not support IMS.
                 return;
             }
-            mImsResolver.disableIms(slotIndex);
-            mImsResolver.enableIms(slotIndex);
+            mImsResolver.resetIms(slotIndex);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
