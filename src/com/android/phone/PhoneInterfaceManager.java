@@ -9845,14 +9845,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             Phone phone = getPhone(subscriptionId);
             if (phone == null) return false;
 
-            switch (policy) {
-                case TelephonyManager.MOBILE_DATA_POLICY_DATA_ON_NON_DEFAULT_DURING_VOICE_CALL:
-                    return phone.getDataSettingsManager().isDataAllowedInVoiceCall();
-                case TelephonyManager.MOBILE_DATA_POLICY_MMS_ALWAYS_ALLOWED:
-                    return phone.getDataSettingsManager().isMmsAlwaysAllowed();
-                default:
-                    throw new IllegalArgumentException(policy + " is not a valid policy");
-            }
+            return phone.getDataSettingsManager().isMobileDataPolicyEnabled(policy);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -9868,16 +9861,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             Phone phone = getPhone(subscriptionId);
             if (phone == null) return;
 
-            switch (policy) {
-                case TelephonyManager.MOBILE_DATA_POLICY_DATA_ON_NON_DEFAULT_DURING_VOICE_CALL:
-                    phone.getDataSettingsManager().setAllowDataDuringVoiceCall(enabled);
-                    break;
-                case TelephonyManager.MOBILE_DATA_POLICY_MMS_ALWAYS_ALLOWED:
-                    phone.getDataSettingsManager().setAlwaysAllowMmsData(enabled);
-                    break;
-                default:
-                    throw new IllegalArgumentException(policy + " is not a valid policy");
-            }
+            phone.getDataSettingsManager().setMobileDataPolicy(policy, enabled);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
