@@ -88,9 +88,8 @@ public class TelephonyDomainSelectionService extends DomainSelectionService {
             switch (selectorType) {
                 case SELECTOR_TYPE_CALLING:
                     if (isEmergency) {
-                        // TODO(ag/19990283) uncomment when emergency call domain selector is ready.
-                        /*selector = new EmergencyCallDomainSelector(context, slotId, subId, looper,
-                                imsStateTracker, listener);*/
+                        selector = new EmergencyCallDomainSelector(context, slotId, subId, looper,
+                                imsStateTracker, listener);
                     } else {
                         // TODO(ag/20024470) uncomment when normal call domain selector is ready.
                         /*selector = new NormalCallDomainSelector(context, slotId, subId, looper,
