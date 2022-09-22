@@ -49,6 +49,7 @@ public class EccDataTest extends TelephonyTestBase {
 
         HashSet loadedIsos = new HashSet(300);
         HashSet loadedNumbers = new HashSet(5);
+        HashSet loadedMncs = new HashSet(5);
 
         for (ProtobufEccData.CountryInfo countryInfo : allEccMessages.countries) {
             assertThat(countryInfo.isoCode).isNotEmpty();
@@ -63,6 +64,17 @@ public class EccDataTest extends TelephonyTestBase {
                 assertThat(loadedNumbers.contains(eccInfo.phoneNumber)).isFalse();
                 assertThat(eccInfo.types).isNotEmpty();
                 loadedNumbers.add(eccInfo.phoneNumber);
+                if (eccInfo.isNormalRouted) {
+                    loadedMncs.clear();
+                    for (String mnc : eccInfo.normalRoutingMncs) {
+                        assertThat(mnc).isNotEmpty();
+                        assertThat(mnc).isEqualTo(mnc.trim());
+                        assertThat(loadedMncs.contains(mnc)).isFalse();
+                        assertThat(mnc.length()).isGreaterThan(1);
+                        assertThat(mnc.length()).isLessThan(4);
+                        loadedMncs.add(mnc);
+                    }
+                }
             }
         }
     }
