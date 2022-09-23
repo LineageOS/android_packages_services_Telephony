@@ -627,7 +627,7 @@
     <string name="ota_progress" msgid="8837259285255700132">"ስልክዎን ፕሮግራም በማድረግ ላይ…"</string>
     <string name="ota_failure" msgid="5674217489921481576">"ስልክዎን ፕሮግራም ማድረግ አልተቻለም"</string>
     <string name="ota_successful" msgid="1106825981548107774">"አሁን ስልክዎ አግብሯል።አገልግሎቱ ለመጀመር እስከ 15 ደቂቃዎች ሊፈጅ ይችላል።"</string>
-    <string name="ota_unsuccessful" msgid="8531037653803955754">"ስልክህ አላገበረም።\n ጥሩ ሽፋን ያለበት አካባቢ ማግኘት ያስፈልግሃል (መስኮት፣ ወይም ውጪ አካባቢ)።ለበለጠ አማራጮች የደንበኞች አገልግሎት ደውል ወይም \n\nእንደገና ሞክር።"</string>
+    <string name="ota_unsuccessful" msgid="8531037653803955754">"ስልክህ አላገበረም።\n ጥሩ ሽፋን ያለበት አካባቢ ማግኘት ያስፈልግሃል (መስኮት፣ ወይም ውጭ አካባቢ)።ለበለጠ አማራጮች የደንበኞች አገልግሎት ደውል ወይም \n\nእንደገና ሞክር።"</string>
     <string name="ota_spc_failure" msgid="904092035241370080">"ከልክ ያለፈ የSPC  መታወክ"</string>
     <string name="ota_call_end" msgid="8657746378290737034">"ተመለስ"</string>
     <string name="ota_try_again" msgid="6914781945599998550">"በድጋሚ ሞክር"</string>
@@ -848,7 +848,7 @@
     <string name="radio_info_ims_feature_status_unavailable" msgid="8930391136839759778">"አይገኝም"</string>
     <string name="radio_info_ims_reg_status" msgid="25582845222446390">"የIMS ምዝገባ፦ <xliff:g id="STATUS">%1$s</xliff:g>\n የድምጽ ቅጂ LTE፡ <xliff:g id="AVAILABILITY_0">%2$s</xliff:g>\nየድምጽ ቅጂ WiFi፡ <xliff:g id="AVAILABILITY_1">%3$s</xliff:g>\nየቪድዮ ጥሪ፦ <xliff:g id="AVAILABILITY_2">%4$s</xliff:g>\nUT በይነገጽ፡ <xliff:g id="AVAILABILITY_3">%5$s</xliff:g>"</string>
     <string name="radioInfo_service_in" msgid="45753418231446400">"በአገልግሎት ውስጥ"</string>
-    <string name="radioInfo_service_out" msgid="287972405416142312">"ከአገልግሎት ውጪ"</string>
+    <string name="radioInfo_service_out" msgid="287972405416142312">"ከአገልግሎት ውጭ"</string>
     <string name="radioInfo_service_emergency" msgid="4763879891415016848">"የአደጋ ጊዜ ጥሪዎች ብቻ"</string>
     <string name="radioInfo_service_off" msgid="3456583511226783064">"ሬዲዮ ጠፍቷል"</string>
     <string name="radioInfo_roaming_in" msgid="3156335577793145965">"በማዘዋወር ላይ"</string>
