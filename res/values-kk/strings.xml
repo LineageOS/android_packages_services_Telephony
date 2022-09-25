@@ -303,7 +303,7 @@
     <string name="carrier_settings_euicc" msgid="1190237227261337749">"Оператор"</string>
     <string name="keywords_carrier_settings_euicc" msgid="8540160967922063745">"оператор, esim, sim, euicc, операторларды ауыстыру, оператор қосу"</string>
     <string name="carrier_settings_euicc_summary" msgid="2027941166597330117">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <string name="mobile_data_settings_title" msgid="7228249980933944101">"Мобильдік деректер"</string>
+    <string name="mobile_data_settings_title" msgid="7228249980933944101">"Мобильдік интернет"</string>
     <string name="mobile_data_settings_summary" msgid="5012570152029118471">"Деректерге мобильдік желі арқылы кіру"</string>
     <string name="data_usage_disable_mobile" msgid="5669109209055988308">"Мобильдік байланысты өшіру қажет пе?"</string>
     <string name="sim_selection_required_pref" msgid="6985901872978341314">"Таңдау қажет"</string>
