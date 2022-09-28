@@ -19,14 +19,18 @@ package com.android.phone.settings;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.view.MenuItem;
+import android.view.WindowManager;
 
 import com.android.phone.R;
 
 public class AccessibilitySettingsActivity extends PreferenceActivity {
 
-   @Override
+    @Override
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
+
+        getWindow().addPrivateFlags(
+                WindowManager.LayoutParams.PRIVATE_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);
 
         getActionBar().setTitle(R.string.accessibility_settings_activity_title);
         getFragmentManager().beginTransaction().replace(
