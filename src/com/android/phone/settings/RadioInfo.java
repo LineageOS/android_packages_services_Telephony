@@ -102,6 +102,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.euicc.EuiccConnector;
+import com.android.internal.telephony.util.TelephonyUtils;
 import com.android.phone.R;
 
 import java.io.IOException;
@@ -256,6 +257,7 @@ public class RadioInfo extends AppCompatActivity {
     private TextView mNetworkSlicingConfig;
     private EditText mSmsc;
     private Switch mRadioPowerOnSwitch;
+    private Switch mSimulateOutOfServiceSwitch;
     private Button mCellInfoRefreshRateButton;
     private Button mDnsCheckToggleButton;
     private Button mPingTestButton;
@@ -292,6 +294,7 @@ public class RadioInfo extends AppCompatActivity {
     private boolean mCfiValue = false;
 
     private List<CellInfo> mCellInfoResult = null;
+    private final boolean[] mSimulateOos = new boolean[2];
 
     private int mPreferredNetworkTypeResult;
     private int mCellInfoRefreshRateIndex;
@@ -583,6 +586,11 @@ public class RadioInfo extends AppCompatActivity {
 
         mRadioPowerOnSwitch = (Switch) findViewById(R.id.radio_power);
 
+        mSimulateOutOfServiceSwitch = (Switch) findViewById(R.id.simulate_out_of_service);
+        if (!TelephonyUtils.IS_DEBUGGABLE) {
+            mSimulateOutOfServiceSwitch.setVisibility(View.GONE);
+        }
+
         mDownlinkKbps = (TextView) findViewById(R.id.dl_kbps);
         mUplinkKbps = (TextView) findViewById(R.id.ul_kbps);
         updateBandwidths(0, 0);
@@ -693,6 +701,8 @@ public class RadioInfo extends AppCompatActivity {
         mSelectPhoneIndex.setOnItemSelectedListener(mSelectPhoneIndexHandler);
 
         mRadioPowerOnSwitch.setOnCheckedChangeListener(mRadioPowerOnChangeListener);
+        mSimulateOutOfServiceSwitch.setOnCheckedChangeListener(mSimulateOosOnChangeListener);
+        mSimulateOutOfServiceSwitch.setChecked(mSimulateOos[mPhone.getPhoneId()]);
         mImsVolteProvisionedSwitch.setOnCheckedChangeListener(mImsVolteCheckedChangeListener);
         mImsVtProvisionedSwitch.setOnCheckedChangeListener(mImsVtCheckedChangeListener);
         mImsWfcProvisionedSwitch.setOnCheckedChangeListener(mImsWfcCheckedChangeListener);
@@ -1619,6 +1629,22 @@ public class RadioInfo extends AppCompatActivity {
                 }
             }
         }
+    };
+
+    private final OnCheckedChangeListener mSimulateOosOnChangeListener =
+            (buttonView, isChecked) -> {
+        Intent intent = new Intent("com.android.internal.telephony.TestServiceState");
+        if (isChecked) {
+            log("Send OOS override broadcast intent.");
+            intent.putExtra("data_reg_state", 1);
+            mSimulateOos[mPhone.getPhoneId()] = true;
+        } else {
+            log("Remove OOS override.");
+            intent.putExtra("action", "reset");
+            mSimulateOos[mPhone.getPhoneId()] = false;
+        }
+
+        mPhone.getTelephonyTester().setServiceStateTestIntent(intent);
     };
 
     private boolean isImsVolteProvisioned() {
