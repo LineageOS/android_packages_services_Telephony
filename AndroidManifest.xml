@@ -228,6 +228,9 @@
     <uses-permission android:name="android.permission.HANDLE_CAR_MODE_CHANGES"/>
     <uses-permission android:name="android.permission.MANAGE_SUBSCRIPTION_PLANS"/>
 
+    <!-- Needed to block unwanted malicious pop up overlays -->
+    <uses-permission android:name="android.permission.HIDE_NON_SYSTEM_OVERLAY_WINDOWS"/>
+
     <application android:name="PhoneApp"
             android:persistent="true"
             android:label="@string/phoneAppLabel"
