@@ -343,6 +343,9 @@ public class VoicemailChangePinActivity extends Activity implements OnClickListe
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        getWindow().addPrivateFlags(
+                WindowManager.LayoutParams.PRIVATE_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);
+
         mPhoneAccountHandle = getIntent().getParcelableExtra(EXTRA_PHONE_ACCOUNT_HANDLE);
         mConfig = new OmtpVvmCarrierConfigHelper(this, mPhoneAccountHandle);
         setContentView(R.layout.voicemail_change_pin);
