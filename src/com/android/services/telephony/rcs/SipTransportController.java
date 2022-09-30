@@ -56,6 +56,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Set;
 import java.util.concurrent.Callable;
 import java.util.concurrent.CompletableFuture;
@@ -917,7 +918,7 @@ public class SipTransportController implements RcsFeatureController.Feature,
                     it.remove();
                     deniedTags.add(new FeatureTagState(tag,
                             SipDelegateManager.DENIED_REASON_IN_USE_BY_ANOTHER_DELEGATE));
-                } else if (!mFeatureTagsAllowed.contains(tag.trim().toLowerCase())) {
+                } else if (!mFeatureTagsAllowed.contains(tag.trim().toLowerCase(Locale.ROOT))) {
                     logi(tag + " is not allowed per config.");
                     it.remove();
                     deniedTags.add(new FeatureTagState(tag,
@@ -1032,7 +1033,7 @@ public class SipTransportController implements RcsFeatureController.Feature,
                 CarrierConfigManager.Ims.KEY_RCS_FEATURE_TAG_ALLOWED_STRING_ARRAY);
         if (tagConfigs != null && tagConfigs.length > 0) {
             for (String tag : tagConfigs) {
-                mFeatureTagsAllowed.add(tag.trim().toLowerCase());
+                mFeatureTagsAllowed.add(tag.trim().toLowerCase(Locale.ROOT));
             }
         }
     }
