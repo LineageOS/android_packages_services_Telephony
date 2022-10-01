@@ -95,6 +95,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -1673,7 +1674,8 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
         if (filteredCnapNames != null) {
             long cnapNameMatches = Arrays.asList(filteredCnapNames)
                     .stream()
-                    .filter(filteredCnapName -> filteredCnapName.equals(cnapName.toUpperCase()))
+                    .filter(filteredCnapName -> filteredCnapName.equals(
+                            cnapName.toUpperCase(Locale.ROOT)))
                     .count();
             if (cnapNameMatches > 0) {
                 Log.i(this, "filterCnapName: Filtered CNAP Name: " + cnapName);

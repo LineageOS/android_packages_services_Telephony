@@ -32,6 +32,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashSet;
+import java.util.Locale;
 import java.util.zip.GZIPInputStream;
 
 /**
@@ -53,7 +54,8 @@ public class EccDataTest extends TelephonyTestBase {
 
         for (ProtobufEccData.CountryInfo countryInfo : allEccMessages.countries) {
             assertThat(countryInfo.isoCode).isNotEmpty();
-            assertThat(countryInfo.isoCode).isEqualTo(countryInfo.isoCode.toUpperCase().trim());
+            assertThat(countryInfo.isoCode).isEqualTo(countryInfo.isoCode.toUpperCase(
+                    Locale.ROOT).trim());
             assertThat(loadedIsos.contains(countryInfo.isoCode)).isFalse();
             loadedIsos.add(countryInfo.isoCode);
 

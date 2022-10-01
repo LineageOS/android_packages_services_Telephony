@@ -1178,7 +1178,7 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             return 0;
         }
 
-        boolean isEnabled = "true".equals(arg.toLowerCase());
+        boolean isEnabled = "true".equals(arg.toLowerCase(Locale.ROOT));
         try {
             mInterface.setDeviceToDeviceForceEnabled(isEnabled);
         } catch (RemoteException e) {
