@@ -42,6 +42,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyZeroInteractions;
 import static org.mockito.Mockito.when;
 
 import android.content.ComponentName;
@@ -77,6 +78,7 @@ import com.android.internal.telephony.ServiceStateTracker;
 import com.android.internal.telephony.data.PhoneSwitcher;
 import com.android.internal.telephony.domainselection.DomainSelectionResolver;
 import com.android.internal.telephony.domainselection.EmergencyCallDomainSelectionConnection;
+import com.android.internal.telephony.domainselection.NormalCallDomainSelectionConnection;
 import com.android.internal.telephony.emergency.EmergencyNumberTracker;
 import com.android.internal.telephony.emergency.EmergencyStateTracker;
 import com.android.internal.telephony.gsm.SuppServiceNotification;
@@ -157,6 +159,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
     @Mock com.android.internal.telephony.Connection mInternalConnection2;
     @Mock DomainSelectionResolver mDomainSelectionResolver;
     @Mock EmergencyCallDomainSelectionConnection mEmergencyCallDomainSelectionConnection;
+    @Mock NormalCallDomainSelectionConnection mNormalCallDomainSelectionConnection;
     @Mock ImsPhone mImsPhone;
     private EmergencyStateTracker mEmergencyStateTracker;
     private Phone mPhone0;
@@ -1592,6 +1595,66 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         assertEquals(eccCategory, dialArgs.eccCategory);
     }
 
+    @Test
+    public void testDomainSelectionWithMmiCode() {
+        //UT domain selection should not be handled by new domain selector.
+        doNothing().when(mContext).startActivity(any());
+        setupForCallTest();
+        setupForDialForDomainSelection(mPhone0, 0, false);
+        mTestConnectionService.onCreateOutgoingConnection(PHONE_ACCOUNT_HANDLE_1,
+                createConnectionRequest(PHONE_ACCOUNT_HANDLE_1, "*%2321%23", TELECOM_CALL_ID1));
+
+        verifyZeroInteractions(mNormalCallDomainSelectionConnection);
+    }
+
+    @Test
+    public void testNormalCallPsDomainSelection() throws Exception {
+        setupForCallTest();
+        int selectedDomain = DOMAIN_PS;
+        setupForDialForDomainSelection(mPhone0, selectedDomain, false);
+
+        mTestConnectionService.onCreateOutgoingConnection(PHONE_ACCOUNT_HANDLE_1,
+                createConnectionRequest(PHONE_ACCOUNT_HANDLE_1, "1234", TELECOM_CALL_ID1));
+
+        verify(mDomainSelectionResolver)
+                .getDomainSelectionConnection(eq(mPhone0), eq(SELECTOR_TYPE_CALLING), eq(false));
+        verify(mNormalCallDomainSelectionConnection).createNormalConnection(any(), any());
+
+        ArgumentCaptor<DialArgs> argsCaptor = ArgumentCaptor.forClass(DialArgs.class);
+
+        verify(mPhone0).dial(anyString(), argsCaptor.capture(), any());
+        DialArgs dialArgs = argsCaptor.getValue();
+        assertNotNull("DialArgs param is null", dialArgs);
+        assertNotNull("intentExtras is null", dialArgs.intentExtras);
+        assertTrue(dialArgs.intentExtras.containsKey(PhoneConstants.EXTRA_DIAL_DOMAIN));
+        assertEquals(
+                selectedDomain, dialArgs.intentExtras.getInt(PhoneConstants.EXTRA_DIAL_DOMAIN, -1));
+    }
+
+    @Test
+    public void testNormalCallCsDomainSelection() throws Exception {
+        setupForCallTest();
+        int selectedDomain = DOMAIN_CS;
+        setupForDialForDomainSelection(mPhone0, selectedDomain, false);
+
+        mTestConnectionService.onCreateOutgoingConnection(PHONE_ACCOUNT_HANDLE_1,
+                createConnectionRequest(PHONE_ACCOUNT_HANDLE_1, "1234", TELECOM_CALL_ID1));
+
+        verify(mDomainSelectionResolver)
+                .getDomainSelectionConnection(eq(mPhone0), eq(SELECTOR_TYPE_CALLING), eq(false));
+        verify(mNormalCallDomainSelectionConnection).createNormalConnection(any(), any());
+
+        ArgumentCaptor<DialArgs> argsCaptor = ArgumentCaptor.forClass(DialArgs.class);
+
+        verify(mPhone0).dial(anyString(), argsCaptor.capture(), any());
+        DialArgs dialArgs = argsCaptor.getValue();
+        assertNotNull("DialArgs param is null", dialArgs);
+        assertNotNull("intentExtras is null", dialArgs.intentExtras);
+        assertTrue(dialArgs.intentExtras.containsKey(PhoneConstants.EXTRA_DIAL_DOMAIN));
+        assertEquals(
+                selectedDomain, dialArgs.intentExtras.getInt(PhoneConstants.EXTRA_DIAL_DOMAIN, -1));
+    }
+
     private void setupForDialForDomainSelection(Phone mockPhone, int domain, boolean isEmergency) {
         if (isEmergency) {
             doReturn(mEmergencyCallDomainSelectionConnection).when(mDomainSelectionResolver)
@@ -1600,6 +1663,13 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
                     .when(mEmergencyCallDomainSelectionConnection)
                     .createEmergencyConnection(any(), any());
             doReturn(true).when(mTelephonyManagerProxy).isCurrentEmergencyNumber(anyString());
+        } else {
+            doReturn(mNormalCallDomainSelectionConnection).when(mDomainSelectionResolver)
+                    .getDomainSelectionConnection(any(), eq(SELECTOR_TYPE_CALLING), eq(false));
+            doReturn(CompletableFuture.completedFuture(domain))
+                    .when(mNormalCallDomainSelectionConnection)
+                    .createNormalConnection(any(), any());
+            doReturn(false).when(mTelephonyManagerProxy).isCurrentEmergencyNumber(anyString());
         }
 
         doReturn(true).when(mDomainSelectionResolver).isDomainSelectionSupported();
@@ -1619,6 +1689,11 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
                         mTestConnectionService, mEmergencyCallDomainSelectionConnection);
                 replaceInstance(TelephonyConnectionService.class, "mEmergencyCallId",
                         mTestConnectionService, TELECOM_CALL_ID1);
+            } else {
+                doReturn(CompletableFuture.completedFuture(domain))
+                        .when(mNormalCallDomainSelectionConnection).reselectDomain(any());
+                replaceInstance(TelephonyConnectionService.class, "mDomainSelectionConnection",
+                        mTestConnectionService, mNormalCallDomainSelectionConnection);
             }
         } catch (Exception e) {
             // This shouldn't happen
