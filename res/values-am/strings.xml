@@ -805,8 +805,8 @@
     <string name="supp_service_outgoing_calls_barred" msgid="5205725332394087112">"ወጪ ጥሪዎች ተከልክለዋል።"</string>
     <string name="supp_service_call_forwarding_active" msgid="7910162960395132464">"ጥሪ ማስተላለፍ ንቁ።"</string>
     <string name="supp_service_additional_call_forwarded" msgid="8772753260008398632">"ተጨማሪ ጥሪ ተላልፏል።"</string>
-    <string name="supp_service_additional_ect_connected" msgid="8525934162945220237">"ግልፅ የጥሪ ማስተላለፍ ተጠናቅቋል።"</string>
-    <string name="supp_service_additional_ect_connecting" msgid="7046240728781222753">"ግልፅ የጥሪ ማስተላለፍ በሂደት ላይ።"</string>
+    <string name="supp_service_additional_ect_connected" msgid="8525934162945220237">"ግልጽ የጥሪ ማስተላለፍ ተጠናቅቋል።"</string>
+    <string name="supp_service_additional_ect_connecting" msgid="7046240728781222753">"ግልጽ የጥሪ ማስተላለፍ በሂደት ላይ።"</string>
     <string name="supp_service_call_on_hold" msgid="2836811319594503059">"ጥሪ በይቆይ ላይ።"</string>
     <string name="supp_service_call_resumed" msgid="3786864005920743546">"ጥሪ ከቆመበት ቀጥሏል።"</string>
     <string name="supp_service_deflected_call" msgid="7565979024562921707">"ጥሪው አቅጣጫው ተቀይሯል።"</string>
@@ -835,7 +835,6 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"ይህን ቅንብር ለመለወጥ መሣሪያዎትን ዳግም ማስጀመር ያስፈልግዎታል።"</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"ዳግም አስጀምር"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"ይቅር"</string>
-    <string name="removable_esim_string" msgid="7931369811671787649">"የሚወገድን ኢሲም ነባሪ በሚል አቀናብር"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"የሞባይል ሬዲዮ ኃይል"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"የሲም አድራሻ ደብተር አሳይ"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"በቋሚነት የሚደወልባቸው ቁጥሮች"</string>
@@ -916,6 +915,9 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"የስልክ መረጃ"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"የአገልግሎት አቅራቢ አቅርቦት መረጃ"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"የቀስቅሴ አገልግሎት አቅራቢ አቅርቦት"</string>
+    <string name="provisioning_info_wfc_entitlement_id" msgid="8845188780811890910">"WFC የባለመብትነት መታወቂያ፦"</string>
+    <string name="update_provisioning_info_wfc_entitlement_id" msgid="7044171908781134221">"አዘምን"</string>
+    <string name="refresh_provisioning_info_wfc_entitlement_id" msgid="738894335351353407">"አድስ"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"የእርስዎ የብሉቱዝ ሲግናል ደካማ ነው። ወደ የስልክ ድምፅ ማጉያ ለመቀየር ይሞክሩ።"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"የጥሪ ጥራት ማሳወቂያ"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"የተቋረጡ የSIP መለያዎች"</string>
