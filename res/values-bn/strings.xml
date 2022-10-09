@@ -837,8 +837,7 @@
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"বাদ দিন"</string>
     <string name="removable_esim_string" msgid="7931369811671787649">"সরিয়ে দেওয়া যায় এমন eSIM ডিফল্ট হিসেবে সেট করুন"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"মোবাইল রেডিওর গুণমান"</string>
-    <!-- no translation found for simulate_out_of_service_string (7787925611727597193) -->
-    <skip />
+    <string name="simulate_out_of_service_string" msgid="7787925611727597193">"আউট-অফ-সার্ভিস সিমুলেট করা (শুধুমাত্র ডিবাগ বিল্ডের জন্য)"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"সিম অ্যাড্রেস বুক দেখুন"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"স্থায়ী ডায়াল নম্বরগুলি দেখুন"</string>
     <string name="radioInfo_menu_viewSDN" msgid="2613431584522392842">"সার্ভিস ডায়াল নম্বরগুলি দেখুন"</string>
