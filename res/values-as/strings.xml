@@ -711,7 +711,7 @@
     <string name="mobile_data_activate_cancel_button" msgid="3530174817572005860">"বাতিল কৰক"</string>
     <string name="clh_card_title_call_ended_txt" msgid="5977978317527299698">"কল শেষ হ’ল"</string>
     <string name="clh_callFailed_powerOff_txt" msgid="8279934912560765361">"এয়াৰপ্লেইন ম\'ড অন হৈ আছে"</string>
-    <string name="clh_callFailed_simError_txt" msgid="5128538525762326413">"ছিম কাৰ্ডত প্ৰৱেশ কৰিব পৰা নাই"</string>
+    <string name="clh_callFailed_simError_txt" msgid="5128538525762326413">"ছিম কাৰ্ড এক্সেছ কৰিব নোৱাৰি"</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="2736010617446749869">"ম’বাইল নেটৱৰ্ক উপলব্ধ নহয়"</string>
     <string name="clh_callFailed_unassigned_number_txt" msgid="141967660286695682">"আপুনি ডায়েল কৰিব খোজা ফ\'ন নম্বৰত আসোঁৱাহ আছে। আসোঁৱাহ ক\'ড ১।"</string>
     <string name="clh_callFailed_no_route_to_destination_txt" msgid="4805015149822352308">"কলটো সম্পূৰ্ণ কৰিব পৰা নগ\'ল। আসোঁৱাহ ক\'ড ৩।"</string>
