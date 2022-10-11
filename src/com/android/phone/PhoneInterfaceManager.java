@@ -472,6 +472,19 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
+    private static final class PurchasePremiumCapabilityArgument {
+        public @TelephonyManager.PremiumCapability int capability;
+        public @NonNull String appName;
+        public @NonNull IIntegerConsumer callback;
+
+        PurchasePremiumCapabilityArgument(@TelephonyManager.PremiumCapability int capability,
+                @NonNull String appName, @NonNull IIntegerConsumer callback) {
+            this.capability = capability;
+            this.appName = appName;
+            this.callback = callback;
+        }
+    }
+
     /**
      * A request object for use with {@link MainThreadHandler}. Requesters should wait() on the
      * request after sending. The main thread will notify the request when it is complete.
@@ -2140,35 +2153,38 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     break;
                 }
 
-                case CMD_PURCHASE_PREMIUM_CAPABILITY:
+                case CMD_PURCHASE_PREMIUM_CAPABILITY: {
                     request = (MainThreadRequest) msg.obj;
                     onCompleted = obtainMessage(EVENT_PURCHASE_PREMIUM_CAPABILITY_DONE, request);
+                    PurchasePremiumCapabilityArgument arg =
+                            (PurchasePremiumCapabilityArgument) request.argument;
                     SliceStore.getInstance(request.phone).purchasePremiumCapability(
-                            ((Pair<Integer, IIntegerConsumer>) request.argument).first,
-                            onCompleted);
+                            arg.capability, arg.appName, onCompleted);
                     break;
+                }
 
-                case EVENT_PURCHASE_PREMIUM_CAPABILITY_DONE:
+                case EVENT_PURCHASE_PREMIUM_CAPABILITY_DONE: {
                     ar = (AsyncResult) msg.obj;
                     request = (MainThreadRequest) ar.userObj;
-                    Pair<Integer, IIntegerConsumer> pair =
-                            (Pair<Integer, IIntegerConsumer>) request.argument;
+                    PurchasePremiumCapabilityArgument arg =
+                            (PurchasePremiumCapabilityArgument) request.argument;
                     try {
                         int result = (int) ar.result;
-                        pair.second.accept(result);
+                        arg.callback.accept(result);
                         log("purchasePremiumCapability: capability="
-                                + TelephonyManager.convertPremiumCapabilityToString(pair.first)
+                                + TelephonyManager.convertPremiumCapabilityToString(arg.capability)
                                 + ", result= "
                                 + TelephonyManager.convertPurchaseResultToString(result));
                     } catch (RemoteException e) {
                         String logStr = "Purchase premium capability "
-                                + TelephonyManager.convertPremiumCapabilityToString(pair.first)
+                                + TelephonyManager.convertPremiumCapabilityToString(arg.capability)
                                 + " failed: " + e;
                         if (DBG) log(logStr);
                         AnomalyReporter.reportAnomaly(
                                 UUID.fromString(PURCHASE_PREMIUM_CAPABILITY_ERROR_UUID), logStr);
                     }
                     break;
+                }
 
                 case CMD_PREPARE_UNATTENDED_REBOOT:
                     request = (MainThreadRequest) msg.obj;
@@ -11258,8 +11274,15 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
 
         Phone phone = getPhone(subId);
-        Pair<Integer, IIntegerConsumer> argument = new Pair<>(capability, callback);
-        sendRequestAsync(CMD_PURCHASE_PREMIUM_CAPABILITY, argument, phone, null);
+        String appName;
+        try {
+            appName = mApp.getPackageManager().getApplicationLabel(mApp.getPackageManager()
+                    .getApplicationInfo(getCurrentPackageName(), 0)).toString();
+        } catch (PackageManager.NameNotFoundException e) {
+            appName = "An application";
+        }
+        sendRequestAsync(CMD_PURCHASE_PREMIUM_CAPABILITY,
+                new PurchasePremiumCapabilityArgument(capability, appName, callback), phone, null);
     }
 
     /**
