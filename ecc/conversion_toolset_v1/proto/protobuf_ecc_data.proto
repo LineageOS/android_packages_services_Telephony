@@ -54,6 +54,13 @@ message CountryInfo {
     // Per http://www.etsi.org/deliver/etsi_ts/122100_122199/122101/09.01.00_60/ts_122101v090100p.pdf,
     // 112 and 911 shall always be available.
     optional string ecc_fallback = 3;
+
+    // Required: Every CountryInfo shall specify whether emergency numbers sourced from modem config
+    // should be ignored.
+    //
+    // If this value is set to true, we have a pretty good authority of emergency numbers in the
+    // android emergency number db for this country.
+    optional bool ignore_modem_config = 4 [default = false];
 }
 
 message AllInfo {
