@@ -30,7 +30,7 @@
     <string name="mmiStarted" msgid="9212975136944568623">"MMI କୋଡ୍‌କୁ ଆରମ୍ଭ କରାଯାଇଛି"</string>
     <string name="ussdRunning" msgid="1163586813106772717">"USSD କୋଡ୍ ରନ୍ କରୁଛି…"</string>
     <string name="mmiCancelled" msgid="5339191899200678272">"MMI କୋଡ୍‌କୁ ବାତିଲ୍ କରାଯାଇଛି"</string>
-    <string name="cancel" msgid="8984206397635155197">"ବାତିଲ୍‍ କରନ୍ତୁ"</string>
+    <string name="cancel" msgid="8984206397635155197">"ବାତିଲ କରନ୍ତୁ"</string>
     <string name="enter_input" msgid="6193628663039958990">"USSD ମେସେଜ୍ ନିଶ୍ଚିତରୂପେ <xliff:g id="MIN_LEN">%1$d</xliff:g> ଓ <xliff:g id="MAX_LEN">%2$d</xliff:g>ଟି ଅକ୍ଷର ମଧ୍ୟରେ ରହିବ। ଦୟାକରି ପୁଣି ଚେଷ୍ଟା କରନ୍ତୁ।"</string>
     <string name="manageConferenceLabel" msgid="8415044818156353233">"କନଫରେନ୍ସ କଲ୍‌କୁ ପରିଚାଳନା କରନ୍ତୁ"</string>
     <string name="ok" msgid="7818974223666140165">"ଠିକ୍ ଅଛି"</string>
@@ -128,7 +128,7 @@
     <string name="cdma_call_waiting" msgid="4565070960879673216">"\'କଲ୍ ୱେଟିଂ\' ସୁବିଧା ଚାଲୁ କରିବେ?"</string>
     <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"କଲ୍ ସମୟରେ, ଇନକମିଂ କଲଗୁଡ଼ିକ ବିଷୟରେ ଆପଣଙ୍କୁ ସୂଚିତ କରାଯିବ"</string>
     <string name="enable_cdma_cw" msgid="811047045863422232">"ଚାଲୁ କରନ୍ତୁ"</string>
-    <string name="disable_cdma_cw" msgid="7119290446496301734">"ବାତିଲ୍ କରନ୍ତୁ"</string>
+    <string name="disable_cdma_cw" msgid="7119290446496301734">"ବାତିଲ କରନ୍ତୁ"</string>
     <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"IMSରେ CDMA \'କଲ୍ ୱେଟିଂ\' ସୁବିଧା ଚାଲୁ ଅଛି"</string>
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"IMSରେ CDMA \'କଲ୍ ୱେଟିଂ\' ସୁବିଧା ବନ୍ଦ ଅଛି"</string>
     <string name="updating_title" msgid="6130548922615719689">"କଲ ସେଟିଂସ"</string>
@@ -459,7 +459,7 @@
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"ଅଟୋ-ରିଟ୍ରାଏ ମୋଡ୍‌କୁ ସକ୍ଷମ କରନ୍ତୁ"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"ଭିଡିଓ କଲ୍ କରିବା ସମୟରେ TTY ମୋଡ୍‌କୁ ପରିବର୍ତ୍ତନ କରିବା ପାଇଁ ଅନୁମତି ନାହିଁ"</string>
     <string name="menu_add" msgid="5616487894975773141">"ଯୋଗାଯୋଗକୁ ଯୋଗ କରନ୍ତୁ"</string>
-    <string name="menu_edit" msgid="3593856941552460706">"ଯୋଗାଯୋଗକୁ ଏଡିଟ୍‍ କରନ୍ତୁ"</string>
+    <string name="menu_edit" msgid="3593856941552460706">"ଯୋଗାଯୋଗ ଏଡିଟ କରନ୍ତୁ"</string>
     <string name="menu_delete" msgid="6326861853830546488">"ଯୋଗାଯୋଗକୁ ଡିଲିଟ୍ କରନ୍ତୁ"</string>
     <string name="menu_dial" msgid="4178537318419450012">"ଯୋଗାଯୋଗକୁ ଡାଏଲ୍ କରନ୍ତୁ"</string>
     <string name="get_pin2" msgid="4221654606863196332">"PIN2 ଟାଇପ୍ କରନ୍ତୁ"</string>
@@ -469,7 +469,7 @@
     <string name="add_fdn_contact" msgid="1169713422306640887">"ଫିକ୍ସଡ୍ ଡାଏଲିଙ୍ଗ ନମ୍ବର୍‌ ଯୋଡ଼ନ୍ତୁ"</string>
     <string name="adding_fdn_contact" msgid="3112531600824361259">"ଫିକ୍ସଡ୍ ଡାଏଲିଙ୍ଗ ନମ୍ବର୍‌କୁ ଯୋଡ଼ାଯାଉଛି…"</string>
     <string name="fdn_contact_added" msgid="2840016151693394596">"ଫିକ୍ସଡ୍ ଡାଏଲିଙ୍ଗ ନମ୍ବର୍ ଯୋଡ଼ାଗଲା।"</string>
-    <string name="edit_fdn_contact" msgid="6030829994819587408">"ଫିକ୍ସଡ୍ ଡାଏଲିଙ୍ଗ ନମ୍ବର୍‌କୁ ଏଡିଟ୍ କରନ୍ତୁ"</string>
+    <string name="edit_fdn_contact" msgid="6030829994819587408">"ଫିକ୍ସଡ ଡାଏଲିଙ୍ଗ ନମ୍ବରକୁ ଏଡିଟ କରନ୍ତୁ"</string>
     <string name="updating_fdn_contact" msgid="6989341376868227150">"ଫିକ୍ସଡ୍ ଡାଏଲିଙ୍ଗ ନମ୍ବର୍ ଅପଡେଟ୍ ହେଉଛି…"</string>
     <string name="fdn_contact_updated" msgid="6876330243323118937">"ଫିକ୍ସଡ୍ ଡାଏଲିଙ୍ଗ ନମ୍ବର୍ ଅପଡେଟ୍ କରାଗଲା।"</string>
     <string name="delete_fdn_contact" msgid="7027405651994507077">"ଫିକ୍ସଡ୍ ଡାଏଲିଙ୍ଗ ନମ୍ବର୍‌କୁ ଡିଲିଟ୍ କରନ୍ତୁ"</string>
@@ -685,7 +685,7 @@
     <string name="callFailed_wfc_service_not_available_in_this_location" msgid="3624536608369524988">"ଏହି ଲୋକେସନ୍‌ରେ ୱାଇ-ଫାଇ କଲିଂ ଉପଲବ୍ଧ ନାହିଁ।"</string>
     <string name="change_pin_title" msgid="3564254326626797321">"ଭଏସମେଲ୍ PINକୁ ବଦଳାନ୍ତୁ"</string>
     <string name="change_pin_continue_label" msgid="5177011752453506371">"ଜାରି ରଖନ୍ତୁ"</string>
-    <string name="change_pin_cancel_label" msgid="2301711566758827936">"ବାତିଲ୍‍ କରନ୍ତୁ"</string>
+    <string name="change_pin_cancel_label" msgid="2301711566758827936">"ବାତିଲ କରନ୍ତୁ"</string>
     <string name="change_pin_ok_label" msgid="6861082678817785330">"ଠିକ୍ ଅଛି"</string>
     <string name="change_pin_enter_old_pin_header" msgid="853151335217594829">"ଆପଣଙ୍କର ପୁରୁଣା PINକୁ ନିଶ୍ଚିତ କରନ୍ତୁ"</string>
     <string name="change_pin_enter_old_pin_hint" msgid="8801292976275169367">"ଜାରି ରଖିବା ପାଇଁ ଆପଣଙ୍କର ଭଏସମେଲ୍ PINକୁ ପ୍ରବେଶ କରନ୍ତୁ।"</string>
@@ -708,7 +708,7 @@
     <string name="mobile_data_activate_diag_title" msgid="5401741936224757312">"ଡାଟାକୁ ଯୋଡ଼ିବେ?"</string>
     <string name="mobile_data_activate_diag_message" msgid="3527260988020415441">"ଆପଣଙ୍କୁ <xliff:g id="PROVIDER_NAME">%s</xliff:g> ମାଧ୍ୟମରେ ଡାଟା ଯୋଡ଼ିବାକୁ ପଡ଼ିପାରେ"</string>
     <string name="mobile_data_activate_button" msgid="1139792516354374612">"ଡାଟା ଯୋଡ଼ନ୍ତୁ"</string>
-    <string name="mobile_data_activate_cancel_button" msgid="3530174817572005860">"ବାତିଲ୍‍ କରନ୍ତୁ"</string>
+    <string name="mobile_data_activate_cancel_button" msgid="3530174817572005860">"ବାତିଲ କରନ୍ତୁ"</string>
     <string name="clh_card_title_call_ended_txt" msgid="5977978317527299698">"କଲ୍ ସମାପ୍ତ ହୋ‌ଇଛି"</string>
     <string name="clh_callFailed_powerOff_txt" msgid="8279934912560765361">"ଏୟାରପ୍ଲେନ୍ ମୋଡ୍ ଚାଲୁ ଅଛି"</string>
     <string name="clh_callFailed_simError_txt" msgid="5128538525762326413">"SIM କାର୍ଡକୁ ଆକ୍ସେସ୍ କରିହେଉନାହିଁ"</string>
@@ -834,7 +834,7 @@
     <string name="dsds_dialog_title" msgid="8494569893941847575">"ଡିଭାଇସ୍ ରିଷ୍ଟାର୍ଟ କରିବେ?"</string>
     <string name="dsds_dialog_message" msgid="4047480385678538850">"ଏହି ସେଟିଂ ବଦଳାଇବାକୁ ଆପଣଙ୍କୁ ଆପଣଙ୍କର ଡିଭାଇସ୍ ରିଷ୍ଟାର୍ଟ କରିବାକୁ ହେବ।"</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"ରିଷ୍ଟାର୍ଟ କରନ୍ତୁ"</string>
-    <string name="dsds_dialog_cancel" msgid="3245958947099586655">"ବାତିଲ୍ କରନ୍ତୁ"</string>
+    <string name="dsds_dialog_cancel" msgid="3245958947099586655">"ବାତିଲ କରନ୍ତୁ"</string>
     <string name="removable_esim_string" msgid="7931369811671787649">"କାଢ଼ି ହେଉଥିବା eSIMକୁ ଡିଫଲ୍ଟ ଭାବେ ସେଟ କରନ୍ତୁ"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"ମୋବାଇଲ୍ ରେଡିଓ ପାୱାର୍"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"ସିମ୍‌ରେ ଥିବା ଠିକଣା ପୁସ୍ତକ ଦେଖନ୍ତୁ"</string>
