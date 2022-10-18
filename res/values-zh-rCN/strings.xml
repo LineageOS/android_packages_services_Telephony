@@ -920,4 +920,14 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"您的蓝牙信号较弱。请尝试切换为扬声器模式。"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"通话质量通知"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"已弃用的 SIP 帐号"</string>
+    <!-- no translation found for network_boost_notification_channel (6145599461080341442) -->
+    <skip />
+    <!-- no translation found for network_boost_notification_title (131686574937713484) -->
+    <skip />
+    <!-- no translation found for network_boost_notification_detail (1974754783765469505) -->
+    <skip />
+    <!-- no translation found for network_boost_notification_button_delay (5925240423743432175) -->
+    <skip />
+    <!-- no translation found for network_boost_notification_button_manage (7715960210252266573) -->
+    <skip />
 </resources>
