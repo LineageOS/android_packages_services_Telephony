@@ -16,6 +16,7 @@
 
 package com.android.phone;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -268,6 +269,12 @@ public class CallFeaturesSetting extends PreferenceActivity
                 getActionBar(), getResourcesForSubId(), R.string.call_settings_with_label);
         mTelecomManager = getSystemService(TelecomManager.class);
         mTelephonyCallback = new CallFeaturesTelephonyCallback();
+
+        ActionBar actionBar = getActionBar();
+        if (actionBar != null) {
+            // sets the talkback voice prompt to say "Back" instead of "Navigate Up"
+            actionBar.setHomeActionContentDescription(R.string.ota_call_end);
+        }
     }
 
     private void updateImsManager(Phone phone) {
