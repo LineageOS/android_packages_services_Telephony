@@ -70,6 +70,7 @@ import com.android.internal.telephony.TelephonyComponentFactory;
 import com.android.internal.telephony.TelephonyIntents;
 import com.android.internal.telephony.data.DataEvaluation.DataDisallowedReason;
 import com.android.internal.telephony.domainselection.DomainSelectionResolver;
+import com.android.internal.telephony.emergency.EmergencyStateTracker;
 import com.android.internal.telephony.ims.ImsResolver;
 import com.android.internal.telephony.imsphone.ImsPhone;
 import com.android.internal.telephony.imsphone.ImsPhoneCallTracker;
@@ -460,6 +461,10 @@ public class PhoneGlobals extends ContextWrapper {
             if (DomainSelectionResolver.getInstance().isDomainSelectionSupported()) {
                 mDomainSelectionService = new TelephonyDomainSelectionService(this);
                 DomainSelectionResolver.getInstance().initialize(mDomainSelectionService);
+                // Initialize EmergencyStateTracker if domain selection is supported
+                boolean isSuplDdsSwitchRequiredForEmergencyCall = getResources()
+                        .getBoolean(R.bool.config_gnss_supl_requires_default_data_for_emergency);
+                EmergencyStateTracker.make(this, isSuplDdsSwitchRequiredForEmergencyCall);
             }
 
             // Only bring up ImsResolver if the device supports having an IMS stack.
