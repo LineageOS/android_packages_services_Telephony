@@ -746,6 +746,7 @@ public class RadioInfo extends AppCompatActivity {
         mCellInfoRefreshRateIndex = b.getInt("mCellInfoRefreshRateIndex", 0);
     }
 
+    @SuppressWarnings("MissingSuperCall") // TODO: Fix me
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         outState.putString("mPingHostnameResultV4", mPingHostnameResultV4);
