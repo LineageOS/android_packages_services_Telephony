@@ -20,6 +20,7 @@ import android.app.ActionBar;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.view.MenuItem;
+import android.view.WindowManager;
 
 import com.android.phone.R;
 
@@ -28,6 +29,9 @@ public class PhoneAccountSettingsActivity extends PreferenceActivity {
     @Override
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
+        getWindow().addSystemFlags(
+                android.view.WindowManager.LayoutParams
+                        .SYSTEM_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);
         final ActionBar actionBar = getActionBar();
         if (actionBar != null) {
             actionBar.setTitle(R.string.phone_accounts);
