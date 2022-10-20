@@ -39,6 +39,7 @@ import android.text.TextDirectionHeuristics;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.WindowManager;
 import android.widget.ListAdapter;
 import android.widget.Toast;
 
@@ -211,6 +212,9 @@ public class VoicemailSettingsActivity extends PreferenceActivity
     @Override
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
+        getWindow().addSystemFlags(
+                android.view.WindowManager.LayoutParams
+                        .SYSTEM_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);
         // Make sure we are running as the primary user only
         UserManager userManager = getApplicationContext().getSystemService(UserManager.class);
         if (!userManager.isPrimaryUser()) {
