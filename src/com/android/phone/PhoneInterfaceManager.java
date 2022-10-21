@@ -7842,7 +7842,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 if (!localeFromDefaultSim.getCountry().isEmpty()) {
                     if (DBG) log("Using locale from subId: " + subId + " locale: "
                             + localeFromDefaultSim);
-                    return matchLocaleFromSupportedLocaleList(localeFromDefaultSim);
+                    return matchLocaleFromSupportedLocaleList(phone, localeFromDefaultSim);
                 } else {
                     simLanguage = localeFromDefaultSim.getLanguage();
                 }
@@ -7855,7 +7855,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             final Locale mccLocale = LocaleUtils.getLocaleFromMcc(mApp, mcc, simLanguage);
             if (mccLocale != null) {
                 if (DBG) log("No locale from SIM, using mcc locale:" + mccLocale);
-                return matchLocaleFromSupportedLocaleList(mccLocale);
+                return matchLocaleFromSupportedLocaleList(phone, localeFromDefaultSim);
             }
 
             if (DBG) log("No locale found - returning null");
@@ -7866,9 +7866,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @VisibleForTesting
-    String matchLocaleFromSupportedLocaleList(@NonNull Locale inputLocale) {
+    String matchLocaleFromSupportedLocaleList(Phone phone, @NonNull Locale inputLocale) {
         String[] supportedLocale = com.android.internal.app.LocalePicker.getSupportedLocales(
-                getDefaultPhone().getContext());
+                phone.getContext());
         for (String localeTag : supportedLocale) {
             if (LocaleList.matchesLanguageAndScript(
                     inputLocale, Locale.forLanguageTag(localeTag))
