@@ -18,15 +18,12 @@ package com.android.phone.slicestore;
 
 import android.annotation.NonNull;
 import android.annotation.Nullable;
-import android.app.Notification;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.graphics.drawable.Icon;
 import android.net.ConnectivityManager;
 import android.os.AsyncResult;
 import android.os.Handler;
@@ -39,12 +36,14 @@ import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.telephony.data.NetworkSliceInfo;
 import android.telephony.data.NetworkSlicingConfig;
+import android.text.TextUtils;
 import android.util.Log;
 import android.webkit.WebView;
 
 import com.android.internal.telephony.Phone;
-import com.android.phone.R;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -68,6 +67,10 @@ import java.util.function.Consumer;
  */
 public class SliceStore extends Handler {
     @NonNull private static final String TAG = "SliceStore";
+
+    /** Value for an invalid premium capability. */
+    public static final int PREMIUM_CAPABILITY_INVALID = -1;
+
     /** Purchasing the premium capability is no longer throttled. */
     private static final int EVENT_PURCHASE_UNTHROTTLED = 1;
     /** Slicing config changed. */
@@ -80,30 +83,78 @@ public class SliceStore extends Handler {
     /** UUID to report an anomaly when a premium capability is throttled twice in a row. */
     private static final String UUID_CAPABILITY_THROTTLED_TWICE =
             "15574927-e2e2-4593-99d4-2f340d22b383";
-    /** UUID to report an anomaly when the BroadcastReceiver receives an invalid phone ID. */
+    /** UUID to report an anomaly when receiving an invalid phone ID. */
     private static final String UUID_INVALID_PHONE_ID = "ced79f1a-8ac0-4260-8cf3-08b54c0494f3";
-    /** UUID to report an anomaly when the BroadcastReceiver receives an unknown action. */
+    /** UUID to report an anomaly when receiving an unknown action. */
     private static final String UUID_UNKNOWN_ACTION = "0197efb0-dab1-4b0a-abaf-ac9336ec7923";
 
-    /** Channel ID for the network boost notification. */
-    private static final String NETWORK_BOOST_NOTIFICATION_CHANNEL_ID = "network_boost";
-    /** Tag for the network boost notification. */
-    private static final String NETWORK_BOOST_NOTIFICATION_TAG = "SliceStore.Notification";
+    /** Action to start the SliceStore application and display the network boost notification. */
+    public static final String ACTION_START_SLICE_STORE =
+            "com.android.phone.slicestore.action.START_SLICE_STORE";
+    /** Action indicating the SliceStore purchase was not completed in time. */
+    public static final String ACTION_SLICE_STORE_RESPONSE_TIMEOUT =
+            "com.android.phone.slicestore.action.SLICE_STORE_RESPONSE_TIMEOUT";
+    /** Action indicating the network boost notification or WebView was canceled. */
+    private static final String ACTION_SLICE_STORE_RESPONSE_CANCELED =
+            "com.android.phone.slicestore.action.SLICE_STORE_RESPONSE_CANCELED";
+    /** Action indicating a carrier error prevented premium capability purchase. */
+    private static final String ACTION_SLICE_STORE_RESPONSE_CARRIER_ERROR =
+            "com.android.phone.slicestore.action.SLICE_STORE_RESPONSE_CARRIER_ERROR";
+    /** Action indicating a Telephony or SliceStore error prevented premium capability purchase. */
+    private static final String ACTION_SLICE_STORE_RESPONSE_REQUEST_FAILED =
+            "com.android.phone.slicestore.action.SLICE_STORE_RESPONSE_REQUEST_FAILED";
+    /** Action indicating the purchase request was not made on the default data subscription. */
+    private static final String ACTION_SLICE_STORE_RESPONSE_NOT_DEFAULT_DATA =
+            "com.android.phone.slicestore.action.SLICE_STORE_RESPONSE_NOT_DEFAULT_DATA";
 
-    /** Action for when the network boost notification is cancelled. */
-    private static final String ACTION_NOTIFICATION_CANCELED =
-            "com.android.phone.slicestore.action.NOTIFICATION_CANCELED";
-    /** Action for when the user clicks the "Not now" button on the network boost notification. */
-    private static final String ACTION_NOTIFICATION_DELAYED =
-            "com.android.phone.slicestore.action.NOTIFICATION_DELAYED";
-    /** Action for when the user clicks the "Manage" button on the network boost notification. */
-    private static final String ACTION_NOTIFICATION_MANAGE =
-            "com.android.phone.slicestore.action.NOTIFICATION_MANAGE";
-    /** Extra for phone ID to send from the network boost notification. */
-    private static final String EXTRA_PHONE_ID = "com.android.phone.slicestore.extra.PHONE_ID";
-    /** Extra for premium capability to send from the network boost notification. */
-    private static final String EXTRA_PREMIUM_CAPABILITY =
+    /** Extra for the phone index to send to the SliceStore application. */
+    public static final String EXTRA_PHONE_ID = "com.android.phone.slicestore.extra.PHONE_ID";
+    /** Extra for the subscription ID to send to the SliceStore application. */
+    public static final String EXTRA_SUB_ID = "com.android.phone.slicestore.extra.SUB_ID";
+    /** Extra for the requested premium capability to purchase from the SliceStore application. */
+    public static final String EXTRA_PREMIUM_CAPABILITY =
             "com.android.phone.slicestore.extra.PREMIUM_CAPABILITY";
+    /**
+     * Extra for the application name requesting to purchase the premium capability
+     * from the SliceStore application.
+     */
+    public static final String EXTRA_REQUESTING_APP_NAME =
+            "com.android.phone.slicestore.extra.REQUESTING_APP_NAME";
+    /**
+     * Extra for the canceled PendingIntent that the SliceStore application can send as a response
+     * if the network boost notification or WebView was canceled by the user.
+     * Sends {@link #ACTION_SLICE_STORE_RESPONSE_CANCELED}.
+     */
+    public static final String EXTRA_INTENT_CANCELED =
+            "com.android.phone.slicestore.extra.INTENT_CANCELED";
+    /**
+     * Extra for the carrier error PendingIntent that the SliceStore application can send as a
+     * response if the premium capability purchase request failed due to a carrier error.
+     * Sends {@link #ACTION_SLICE_STORE_RESPONSE_CARRIER_ERROR}.
+     */
+    public static final String EXTRA_INTENT_CARRIER_ERROR =
+            "com.android.phone.slicestore.extra.INTENT_CARRIER_ERROR";
+    /**
+     * Extra for the request failed PendingIntent that the SliceStore application can send as a
+     * response if the premium capability purchase request failed due to an error in Telephony or
+     * the SliceStore application.
+     * Sends {@link #ACTION_SLICE_STORE_RESPONSE_REQUEST_FAILED}.
+     */
+    public static final String EXTRA_INTENT_REQUEST_FAILED =
+            "com.android.phone.slicestore.extra.INTENT_REQUEST_FAILED";
+    /**
+     * Extra for the not-default data subscription ID PendingIntent that the SliceStore application
+     * can send as a response if the premium capability purchase request failed because it was not
+     * requested on the default data subscription.
+     * Sends {@link #ACTION_SLICE_STORE_RESPONSE_NOT_DEFAULT_DATA}.
+     */
+    public static final String EXTRA_INTENT_NOT_DEFAULT_DATA =
+            "com.android.phone.slicestore.extra.INTENT_NOT_DEFAULT_DATA";
+
+    /** Component name to send an explicit broadcast to SliceStoreBroadcastReceiver. */
+    private static final ComponentName SLICE_STORE_COMPONENT_NAME =
+            ComponentName.unflattenFromString(
+                    "com.android.carrierdefaultapp/.SliceStoreBroadcastReceiver");
 
     /** Map of phone ID -> SliceStore instances. */
     @NonNull private static final Map<Integer, SliceStore> sInstances = new HashMap<>();
@@ -116,54 +167,80 @@ public class SliceStore extends Handler {
     @NonNull private final Set<Integer> mThrottledCapabilities = new HashSet<>();
     /** A map of pending capabilities to the onComplete message for the purchase request. */
     @NonNull private final Map<Integer, Message> mPendingPurchaseCapabilities = new HashMap<>();
-    /** A map of capabilities to the CapabilityBroadcastReceiver for the boost notification. */
-    @NonNull private final Map<Integer, CapabilityBroadcastReceiver> mBroadcastReceivers =
+    /** A map of capabilities to the SliceStoreBroadcastReceiver for SliceStore responses. */
+    @NonNull private final Map<Integer, SliceStoreBroadcastReceiver> mSliceStoreBroadcastReceivers =
             new HashMap<>();
     /** The current network slicing configuration. */
     @Nullable private NetworkSlicingConfig mSlicingConfig;
 
-    private final class CapabilityBroadcastReceiver extends BroadcastReceiver {
-        @TelephonyManager.PremiumCapability final int mCapability;
+    private class SliceStoreBroadcastReceiver extends BroadcastReceiver {
+        private final @TelephonyManager.PremiumCapability int mCapability;
 
-        CapabilityBroadcastReceiver(@TelephonyManager.PremiumCapability int capability) {
+        SliceStoreBroadcastReceiver(@TelephonyManager.PremiumCapability int capability) {
             mCapability = capability;
         }
 
         @Override
         public void onReceive(@NonNull Context context, @NonNull Intent intent) {
             String action = intent.getAction();
-            log("CapabilityBroadcastReceiver("
+            logd("SliceStoreBroadcastReceiver("
                     + TelephonyManager.convertPremiumCapabilityToString(mCapability)
                     + ") received action: " + action);
             int phoneId = intent.getIntExtra(EXTRA_PHONE_ID,
                     SubscriptionManager.INVALID_PHONE_INDEX);
-            int capability = intent.getIntExtra(EXTRA_PREMIUM_CAPABILITY, -1);
+            int capability = intent.getIntExtra(EXTRA_PREMIUM_CAPABILITY,
+                    PREMIUM_CAPABILITY_INVALID);
             if (SliceStore.getInstance(phoneId) == null) {
-                String logStr = "CapabilityBroadcastReceiver( "
+                String logStr = "SliceStoreBroadcastReceiver( "
                         + TelephonyManager.convertPremiumCapabilityToString(mCapability)
                         + ") received invalid phoneId: " + phoneId;
                 loge(logStr);
                 AnomalyReporter.reportAnomaly(UUID.fromString(UUID_INVALID_PHONE_ID), logStr);
                 return;
             } else if (capability != mCapability) {
-                log("CapabilityBroadcastReceiver("
+                logd("SliceStoreBroadcastReceiver("
                         + TelephonyManager.convertPremiumCapabilityToString(mCapability)
-                        + ") received invalid capability: "
+                        + ") ignoring intent for capability "
                         + TelephonyManager.convertPremiumCapabilityToString(capability));
                 return;
             }
             switch (action) {
-                case ACTION_NOTIFICATION_CANCELED:
-                    SliceStore.getInstance(phoneId).onUserCanceled(capability);
+                case ACTION_SLICE_STORE_RESPONSE_CANCELED: {
+                    logd("SliceStore canceled for capability: "
+                            + TelephonyManager.convertPremiumCapabilityToString(capability));
+                    SliceStore.getInstance(phoneId).sendPurchaseResultFromSliceStore(capability,
+                            TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_USER_CANCELED,
+                            true);
                     break;
-                case ACTION_NOTIFICATION_DELAYED:
-                    SliceStore.getInstance(phoneId).onUserDelayed(capability);
+                }
+                case ACTION_SLICE_STORE_RESPONSE_CARRIER_ERROR: {
+                    logd("Carrier error for capability: "
+                            + TelephonyManager.convertPremiumCapabilityToString(capability));
+                    SliceStore.getInstance(phoneId).sendPurchaseResultFromSliceStore(capability,
+                            TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_CARRIER_ERROR,
+                            true);
                     break;
-                case ACTION_NOTIFICATION_MANAGE:
-                    SliceStore.getInstance(phoneId).onUserManage(capability);
+                }
+                case ACTION_SLICE_STORE_RESPONSE_REQUEST_FAILED: {
+                    logd("Purchase premium capability request failed for capability: "
+                            + TelephonyManager.convertPremiumCapabilityToString(capability));
+                    SliceStore.getInstance(phoneId).sendPurchaseResultFromSliceStore(capability,
+                            TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_REQUEST_FAILED,
+                            false);
                     break;
+                }
+                case ACTION_SLICE_STORE_RESPONSE_NOT_DEFAULT_DATA: {
+                    logd("Purchase premium capability request was not made on the default data "
+                            + "subscription for capability: "
+                            + TelephonyManager.convertPremiumCapabilityToString(capability));
+                    // TODO: change to RESULT_NOT_DEFAULT_DATA after ag/20196642 is merged
+                    SliceStore.getInstance(phoneId).sendPurchaseResultFromSliceStore(capability,
+                            TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_REQUEST_FAILED,
+                            false);
+                    break;
+                }
                 default:
-                    String logStr = "CapabilityBroadcastReceiver("
+                    String logStr = "SliceStoreBroadcastReceiver("
                             + TelephonyManager.convertPremiumCapabilityToString(mCapability)
                             + ") received unknown action: " + action;
                     loge(logStr);
@@ -211,7 +288,7 @@ public class SliceStore extends Handler {
         switch (msg.what) {
             case EVENT_PURCHASE_UNTHROTTLED: {
                 int capability = (int) msg.obj;
-                log("EVENT_PURCHASE_UNTHROTTLED: for capability "
+                logd("EVENT_PURCHASE_UNTHROTTLED: for capability "
                         + TelephonyManager.convertPremiumCapabilityToString(capability));
                 mThrottledCapabilities.remove(capability);
                 break;
@@ -219,25 +296,27 @@ public class SliceStore extends Handler {
             case EVENT_SLICING_CONFIG_CHANGED: {
                 AsyncResult ar = (AsyncResult) msg.obj;
                 NetworkSlicingConfig config = (NetworkSlicingConfig) ar.result;
-                log("EVENT_SLICING_CONFIG_CHANGED: from " + mSlicingConfig + " to " + config);
+                logd("EVENT_SLICING_CONFIG_CHANGED: from " + mSlicingConfig + " to " + config);
                 mSlicingConfig = config;
                 break;
             }
             case EVENT_DISPLAY_BOOSTER_NOTIFICATION: {
                 int capability = msg.arg1;
                 String appName = (String) msg.obj;
-                log("EVENT_DISPLAY_BOOSTER_NOTIFICATION: " + appName + " requests capability "
+                logd("EVENT_DISPLAY_BOOSTER_NOTIFICATION: " + appName + " requests capability "
                         + TelephonyManager.convertPremiumCapabilityToString(capability));
                 onDisplayBoosterNotification(capability, appName);
                 break;
             }
             case EVENT_PURCHASE_TIMEOUT: {
                 int capability = (int) msg.obj;
-                log("EVENT_PURCHASE_TIMEOUT: for capability "
+                logd("EVENT_PURCHASE_TIMEOUT: for capability "
                         + TelephonyManager.convertPremiumCapabilityToString(capability));
                 onTimeout(capability);
                 break;
             }
+            default:
+                loge("Unknown event: " + msg.obj);
         }
     }
 
@@ -250,20 +329,20 @@ public class SliceStore extends Handler {
     public boolean isPremiumCapabilityAvailableForPurchase(
             @TelephonyManager.PremiumCapability int capability) {
         if (!arePremiumCapabilitiesSupportedByDevice()) {
-            log("Premium capabilities unsupported by the device.");
+            logd("Premium capabilities unsupported by the device.");
             return false;
         }
         if (!isPremiumCapabilitySupportedByCarrier(capability)) {
-            log("Premium capability "
+            logd("Premium capability "
                     + TelephonyManager.convertPremiumCapabilityToString(capability)
                     + " unsupported by the carrier.");
             return false;
         }
         if (!arePremiumCapabilitiesEnabledByUser()) {
-            log("Premium capabilities disabled by the user.");
+            logd("Premium capabilities disabled by the user.");
             return false;
         }
-        log("Premium capability "
+        logd("Premium capability "
                 + TelephonyManager.convertPremiumCapabilityToString(capability)
                 + " is available for purchase.");
         return true;
@@ -279,7 +358,7 @@ public class SliceStore extends Handler {
     public synchronized void purchasePremiumCapability(
             @TelephonyManager.PremiumCapability int capability, @NonNull String appName,
             @NonNull Message onComplete) {
-        log("purchasePremiumCapability: " + appName + " requests capability "
+        logd("purchasePremiumCapability: " + appName + " requests capability "
                 + TelephonyManager.convertPremiumCapabilityToString(capability));
         // Check whether the premium capability can be purchased.
         if (!arePremiumCapabilitiesSupportedByDevice()) {
@@ -345,11 +424,22 @@ public class SliceStore extends Handler {
             @TelephonyManager.PurchasePremiumCapabilityResult int result,
             @NonNull Message onComplete) {
         // Send the onComplete message with the purchase result.
-        log("Purchase result for capability "
+        logd("Purchase result for capability "
                 + TelephonyManager.convertPremiumCapabilityToString(capability)
                 + ": " + TelephonyManager.convertPurchaseResultToString(result));
         AsyncResult.forMessage(onComplete, result, null);
         onComplete.sendToTarget();
+    }
+
+    private void sendPurchaseResultFromSliceStore(
+            @TelephonyManager.PremiumCapability int capability,
+            @TelephonyManager.PurchasePremiumCapabilityResult int result, boolean throttle) {
+        mPhone.getContext().unregisterReceiver(mSliceStoreBroadcastReceivers.remove(capability));
+        removeMessages(EVENT_PURCHASE_TIMEOUT, capability);
+        if (throttle) {
+            throttleCapability(capability, getThrottleDuration(result));
+        }
+        sendPurchaseResult(capability, result, mPendingPurchaseCapabilities.remove(capability));
     }
 
     private void throttleCapability(@TelephonyManager.PremiumCapability int capability,
@@ -357,7 +447,7 @@ public class SliceStore extends Handler {
         // Throttle subsequent requests if necessary.
         if (!mThrottledCapabilities.contains(capability)) {
             if (throttleDuration > 0) {
-                log("Throttle purchase requests for capability "
+                logd("Throttle purchase requests for capability "
                         + TelephonyManager.convertPremiumCapabilityToString(capability) + " for "
                         + TimeUnit.MILLISECONDS.toMinutes(throttleDuration) + " minutes.");
                 mThrottledCapabilities.add(capability);
@@ -374,168 +464,75 @@ public class SliceStore extends Handler {
 
     private void onDisplayBoosterNotification(@TelephonyManager.PremiumCapability int capability,
             @NonNull String appName) {
-        // Start timeout on handler instead of setTimeoutAfter to differentiate cancel and timeout.
+        // Start timeout for purchase completion.
         long timeout = getCarrierConfigs().getLong(CarrierConfigManager
                 .KEY_PREMIUM_CAPABILITY_NOTIFICATION_DISPLAY_TIMEOUT_MILLIS_LONG);
-        sendMessageDelayed(obtainMessage(EVENT_PURCHASE_TIMEOUT, capability), timeout);
-
-        log("Display the booster notification for capability "
+        logd("Start purchase timeout for "
                 + TelephonyManager.convertPremiumCapabilityToString(capability) + " for "
                 + TimeUnit.MILLISECONDS.toMinutes(timeout) + " minutes.");
+        sendMessageDelayed(obtainMessage(EVENT_PURCHASE_TIMEOUT, capability), timeout);
 
-        mPhone.getContext().getSystemService(NotificationManager.class).createNotificationChannel(
-                new NotificationChannel(NETWORK_BOOST_NOTIFICATION_CHANNEL_ID,
-                        mPhone.getContext().getResources().getString(
-                                R.string.network_boost_notification_channel),
-                        NotificationManager.IMPORTANCE_DEFAULT));
-        mBroadcastReceivers.put(capability, new CapabilityBroadcastReceiver(capability));
+        // Broadcast start intent to start the SliceStore application
+        Intent intent = new Intent(ACTION_START_SLICE_STORE);
+        intent.setComponent(SLICE_STORE_COMPONENT_NAME);
+        intent.putExtra(EXTRA_PHONE_ID, mPhone.getPhoneId());
+        intent.putExtra(EXTRA_SUB_ID, mPhone.getSubId());
+        intent.putExtra(EXTRA_PREMIUM_CAPABILITY, capability);
+        intent.putExtra(EXTRA_REQUESTING_APP_NAME, appName);
+        intent.putExtra(EXTRA_INTENT_CANCELED,
+                createPendingIntent(ACTION_SLICE_STORE_RESPONSE_CANCELED, capability));
+        intent.putExtra(EXTRA_INTENT_CARRIER_ERROR,
+                createPendingIntent(ACTION_SLICE_STORE_RESPONSE_CARRIER_ERROR, capability));
+        intent.putExtra(EXTRA_INTENT_REQUEST_FAILED,
+                createPendingIntent(ACTION_SLICE_STORE_RESPONSE_REQUEST_FAILED, capability));
+        intent.putExtra(EXTRA_INTENT_NOT_DEFAULT_DATA,
+                createPendingIntent(ACTION_SLICE_STORE_RESPONSE_NOT_DEFAULT_DATA, capability));
+        logd("Broadcasting start intent to SliceStoreBroadcastReceiver.");
+        mPhone.getContext().sendBroadcast(intent);
+
+        // Listen for responses from the SliceStore application
+        mSliceStoreBroadcastReceivers.put(capability, new SliceStoreBroadcastReceiver(capability));
         IntentFilter filter = new IntentFilter();
-        filter.addAction(ACTION_NOTIFICATION_CANCELED);
-        filter.addAction(ACTION_NOTIFICATION_DELAYED);
-        filter.addAction(ACTION_NOTIFICATION_MANAGE);
-        mPhone.getContext().registerReceiver(mBroadcastReceivers.get(capability), filter);
-
-        Notification notification =
-                new Notification.Builder(mPhone.getContext(), NETWORK_BOOST_NOTIFICATION_CHANNEL_ID)
-                .setContentTitle(String.format(mPhone.getContext().getResources().getString(
-                        R.string.network_boost_notification_title), appName))
-                .setContentText(mPhone.getContext().getResources().getString(
-                        R.string.network_boost_notification_detail))
-                .setSmallIcon(R.drawable.ic_network_boost)
-                .setContentIntent(getContentIntent(capability))
-                .setDeleteIntent(getDeleteIntent(capability))
-                .addAction(new Notification.Action.Builder(
-                        Icon.createWithResource(mPhone.getContext(), R.drawable.ic_network_boost),
-                        mPhone.getContext().getResources().getString(
-                                R.string.network_boost_notification_button_delay),
-                        getDelayIntent(capability)).build())
-                .addAction(new Notification.Action.Builder(
-                        Icon.createWithResource(mPhone.getContext(), R.drawable.ic_network_boost),
-                        mPhone.getContext().getResources().getString(
-                                R.string.network_boost_notification_button_manage),
-                        getManageIntent(capability)).build())
-                .setAutoCancel(true)
-                .build();
-
-        mPhone.getContext().getSystemService(NotificationManager.class)
-                .notify(NETWORK_BOOST_NOTIFICATION_TAG, capability, notification);
+        filter.addAction(ACTION_SLICE_STORE_RESPONSE_CANCELED);
+        filter.addAction(ACTION_SLICE_STORE_RESPONSE_CARRIER_ERROR);
+        filter.addAction(ACTION_SLICE_STORE_RESPONSE_REQUEST_FAILED);
+        filter.addAction(ACTION_SLICE_STORE_RESPONSE_NOT_DEFAULT_DATA);
+        mPhone.getContext().registerReceiver(mSliceStoreBroadcastReceivers.get(capability), filter);
     }
 
     /**
-     * Create the content intent for when the user clicks on the network boost notification.
-     * Ths will start the {@link SliceStoreActivity} and display the {@link android.webkit.WebView}
-     * to purchase the premium capability from the carrier.
+     * Create the PendingIntent to allow SliceStore to send back responses.
      *
+     * @param action The action that will be sent for this PendingIntent
      * @param capability The premium capability that was requested.
-     * @return The content intent.
+     * @return The PendingIntent for the given action and capability.
      */
-    @NonNull private PendingIntent getContentIntent(
+    @NonNull private PendingIntent createPendingIntent(@NonNull String action,
             @TelephonyManager.PremiumCapability int capability) {
-        Intent intent = new Intent(mPhone.getContext(), SliceStoreActivity.class);
-        intent.putExtra(EXTRA_PHONE_ID, mPhone.getPhoneId());
-        intent.putExtra(EXTRA_PREMIUM_CAPABILITY, capability);
-        return PendingIntent.getActivity(mPhone.getContext(), 0, intent,
-                PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_MUTABLE);
-    }
-
-    /**
-     * Create the delete intent for when the user cancels the network boost notification.
-     * This will send {@link #ACTION_NOTIFICATION_CANCELED}.
-     *
-     * @param capability The premium capability that was requested.
-     * @return The delete intent.
-     */
-    @NonNull private PendingIntent getDeleteIntent(
-            @TelephonyManager.PremiumCapability int capability) {
-        Intent intent = new Intent(ACTION_NOTIFICATION_CANCELED);
+        Intent intent = new Intent(action);
         intent.putExtra(EXTRA_PHONE_ID, mPhone.getPhoneId());
         intent.putExtra(EXTRA_PREMIUM_CAPABILITY, capability);
         return PendingIntent.getBroadcast(mPhone.getContext(), 0, intent,
                 PendingIntent.FLAG_CANCEL_CURRENT | PendingIntent.FLAG_MUTABLE);
-    }
-
-    /**
-     * Create the delay intent for when the user clicks the "Not now" button on the network boost
-     * notification. This will send {@link #ACTION_NOTIFICATION_DELAYED}.
-     *
-     * @param capability The premium capability that was requested.
-     * @return The delay intent.
-     */
-    @NonNull private PendingIntent getDelayIntent(
-            @TelephonyManager.PremiumCapability int capability) {
-        Intent intent = new Intent(ACTION_NOTIFICATION_DELAYED);
-        intent.putExtra(EXTRA_PHONE_ID, mPhone.getPhoneId());
-        intent.putExtra(EXTRA_PREMIUM_CAPABILITY, capability);
-        return PendingIntent.getBroadcast(mPhone.getContext(), 0, intent,
-                PendingIntent.FLAG_CANCEL_CURRENT | PendingIntent.FLAG_MUTABLE);
-    }
-
-    /**
-     * Create the manage intent for when the user clicks the "Manage" button on the network boost
-     * notification. This will send {@link #ACTION_NOTIFICATION_MANAGE}.
-     *
-     * @param capability The premium capability that was requested.
-     * @return The manage intent.
-     */
-    @NonNull private PendingIntent getManageIntent(
-            @TelephonyManager.PremiumCapability int capability) {
-        Intent intent = new Intent(ACTION_NOTIFICATION_MANAGE);
-        intent.putExtra(EXTRA_PHONE_ID, mPhone.getPhoneId());
-        intent.putExtra(EXTRA_PREMIUM_CAPABILITY, capability);
-        return PendingIntent.getBroadcast(mPhone.getContext(), 0, intent,
-                PendingIntent.FLAG_CANCEL_CURRENT | PendingIntent.FLAG_MUTABLE);
-    }
-
-    private void cleanupBoosterNotification(@TelephonyManager.PremiumCapability int capability,
-            @TelephonyManager.PurchasePremiumCapabilityResult int result) {
-        mPhone.getContext().getSystemService(NotificationManager.class)
-                .cancel(NETWORK_BOOST_NOTIFICATION_TAG, capability);
-        mPhone.getContext().unregisterReceiver(mBroadcastReceivers.remove(capability));
-        Message onComplete = mPendingPurchaseCapabilities.remove(capability);
-        throttleCapability(capability, getThrottleDuration(result));
-        sendPurchaseResult(capability, result, onComplete);
     }
 
     private void onTimeout(@TelephonyManager.PremiumCapability int capability) {
-        log("onTimeout: " + TelephonyManager.convertPremiumCapabilityToString(capability));
-        cleanupBoosterNotification(capability,
-                TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_TIMEOUT);
-        // TODO: Cancel SliceStoreActivity as well.
-    }
+        logd("onTimeout: " + TelephonyManager.convertPremiumCapabilityToString(capability));
+        // Broadcast timeout intent to clean up the SliceStore notification and activity
+        Intent intent = new Intent(ACTION_SLICE_STORE_RESPONSE_TIMEOUT);
+        intent.setComponent(SLICE_STORE_COMPONENT_NAME);
+        intent.putExtra(EXTRA_PHONE_ID, mPhone.getPhoneId());
+        intent.putExtra(EXTRA_PREMIUM_CAPABILITY, capability);
+        logd("Broadcasting timeout intent to SliceStoreBroadcastReceiver.");
+        mPhone.getContext().sendBroadcast(intent);
 
-    private void onUserCanceled(@TelephonyManager.PremiumCapability int capability) {
-        log("onUserCanceled: " + TelephonyManager.convertPremiumCapabilityToString(capability));
-        if (hasMessages(EVENT_PURCHASE_TIMEOUT, capability)) {
-            log("onUserCanceled: Removing timeout for capability "
-                    + TelephonyManager.convertPremiumCapabilityToString(capability));
-            removeMessages(EVENT_PURCHASE_TIMEOUT, capability);
-        }
-        cleanupBoosterNotification(capability,
-                TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_USER_CANCELED);
-    }
-
-    private void onUserDelayed(@TelephonyManager.PremiumCapability int capability) {
-        log("onUserDelayed: " + TelephonyManager.convertPremiumCapabilityToString(capability));
-        // TODO(b/245882092): implement
-    }
-
-    private void onUserManage(@TelephonyManager.PremiumCapability int capability) {
-        log("onUserManage: " + TelephonyManager.convertPremiumCapabilityToString(capability));
-        // TODO(b/245882092): implement
-    }
-
-    private void onUserConfirmed(@TelephonyManager.PremiumCapability int capability) {
-        // TODO(b/245882092, b/245882601): Open webview listening for carrier response
-        //  --> EVENT_CARRIER_SUCCESS or EVENT_CARRIER_ERROR
+        sendPurchaseResultFromSliceStore(
+                capability, TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_TIMEOUT, true);
     }
 
     private void onCarrierSuccess(@TelephonyManager.PremiumCapability int capability) {
         // TODO(b/245882601): Process and return success.
         //  Probably need to handle capability expiry as well
-    }
-
-    private void onCarrierError(@TelephonyManager.PremiumCapability int capability) {
-        // TODO(b/245882601): Process and return carrier error; throttle
     }
 
     @Nullable private PersistableBundle getCarrierConfigs() {
@@ -559,6 +556,17 @@ public class SliceStore extends Handler {
 
     private boolean isPremiumCapabilitySupportedByCarrier(
             @TelephonyManager.PremiumCapability int capability) {
+        String url = getCarrierConfigs().getString(
+                CarrierConfigManager.KEY_PREMIUM_CAPABILITY_PURCHASE_URL_STRING);
+        if (TextUtils.isEmpty(url)) {
+            return false;
+        } else {
+            try {
+                new URL(url);
+            } catch (MalformedURLException e) {
+                return false;
+            }
+        }
         int[] supportedCapabilities = getCarrierConfigs().getIntArray(
                 CarrierConfigManager.KEY_SUPPORTED_PREMIUM_CAPABILITIES_INT_ARRAY);
         if (supportedCapabilities == null) {
@@ -606,7 +614,7 @@ public class SliceStore extends Handler {
         return true;
     }
 
-    private void log(String s) {
+    private void logd(String s) {
         Log.d(TAG + "-" + mPhone.getPhoneId(), s);
     }
 
