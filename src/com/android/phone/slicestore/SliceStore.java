@@ -233,9 +233,8 @@ public class SliceStore extends Handler {
                     logd("Purchase premium capability request was not made on the default data "
                             + "subscription for capability: "
                             + TelephonyManager.convertPremiumCapabilityToString(capability));
-                    // TODO: change to RESULT_NOT_DEFAULT_DATA after ag/20196642 is merged
                     SliceStore.getInstance(phoneId).sendPurchaseResultFromSliceStore(capability,
-                            TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_REQUEST_FAILED,
+                            TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_NOT_DEFAULT_DATA,
                             false);
                     break;
                 }
@@ -338,8 +337,10 @@ public class SliceStore extends Handler {
                     + " unsupported by the carrier.");
             return false;
         }
-        if (!arePremiumCapabilitiesEnabledByUser()) {
-            logd("Premium capabilities disabled by the user.");
+        if (!isDefaultData()) {
+            logd("Premium capability "
+                    + TelephonyManager.convertPremiumCapabilityToString(capability)
+                    + " unavailable on the non-default data subscription.");
             return false;
         }
         logd("Premium capability "
@@ -373,9 +374,9 @@ public class SliceStore extends Handler {
                     onComplete);
             return;
         }
-        if (!arePremiumCapabilitiesEnabledByUser()) {
+        if (!isDefaultData()) {
             sendPurchaseResult(capability,
-                    TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_USER_DISABLED,
+                    TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_NOT_DEFAULT_DATA,
                     onComplete);
             return;
         }
@@ -392,7 +393,7 @@ public class SliceStore extends Handler {
                     onComplete);
             return;
         }
-        if (mPhone.getServiceState().getDataNetworkType() != TelephonyManager.NETWORK_TYPE_NR) {
+        if (!isNetworkAvailable()) {
             sendPurchaseResult(capability,
                     TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_NETWORK_NOT_AVAILABLE,
                     onComplete);
@@ -583,9 +584,8 @@ public class SliceStore extends Handler {
                 & TelephonyManager.NETWORK_TYPE_BITMASK_NR) != 0;
     }
 
-    private boolean arePremiumCapabilitiesEnabledByUser() {
-        // TODO(b/245882396): Create and set user settings
-        return false;
+    private boolean isDefaultData() {
+        return mPhone.getSubId() == SubscriptionManager.getDefaultDataSubscriptionId();
     }
 
     private boolean isSlicingConfigActive(@TelephonyManager.PremiumCapability int capability) {
@@ -607,6 +607,20 @@ public class SliceStore extends Handler {
             @TelephonyManager.PremiumCapability int capability) {
         // TODO: Implement properly -- potentially need to add new slice service types?
         return NetworkSliceInfo.SLICE_SERVICE_TYPE_NONE;
+    }
+
+    private boolean isNetworkAvailable() {
+        // TODO (b/251558673): Create a listener for data network type changed to dismiss
+        //  notification and activity when the network is no longer available.
+        switch (mPhone.getServiceState().getDataNetworkType()) {
+            case TelephonyManager.NETWORK_TYPE_NR:
+                return true;
+            case TelephonyManager.NETWORK_TYPE_LTE:
+            case TelephonyManager.NETWORK_TYPE_LTE_CA:
+                return getCarrierConfigs().getBoolean(
+                        CarrierConfigManager.KEY_PREMIUM_CAPABILITY_SUPPORTED_ON_LTE_BOOL);
+        }
+        return false;
     }
 
     private boolean isNetworkCongested(@TelephonyManager.PremiumCapability int capability) {
