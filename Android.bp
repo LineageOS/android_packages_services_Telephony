@@ -83,7 +83,7 @@ android_app {
 java_library {
     name: "SliceStore",
     srcs: ["src/com/android/phone/slicestore/SliceStore.java",],
-    static_libs: ["telephony-common"],
+    libs: ["telephony-common"],
 }
 
 platform_compat_config {
