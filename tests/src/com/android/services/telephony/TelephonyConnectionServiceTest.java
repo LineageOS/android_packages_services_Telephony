@@ -1282,7 +1282,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
     }
 
     /**
-     * Verifies where there is another call on the same sub, we don't set
+     * Verifies where there is another call on a different sub, we set
      * {@link android.telecom.Connection#EXTRA_ANSWERING_DROPS_FG_CALL} on the incoming call extras.
      * @throws Exception
      */
@@ -1313,6 +1313,40 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
                 .count());
     }
 
+    /**
+     * For virtual DSDA-enabled devices, verifies where there is another call on the same sub, we
+     * don't set {@link android.telecom.Connection#EXTRA_ANSWERING_DROPS_FG_CALL} on the incoming
+     * call extras.
+     * @throws Exception
+     */
+    @Test
+    @SmallTest
+    public void testSecondCallDifferentSubWontDisconnectForDsdaDevice() throws Exception {
+        // Re-uses existing test for setup, then configures device as virtual DSDA for test duration
+        testIncomingDoesntRequestDisconnect();
+        when(mTelephonyManagerProxy.isConcurrentCallsPossible()).thenReturn(true);
+
+        when(mCall.getState()).thenReturn(Call.State.ACTIVE);
+        when(mCall2.getState()).thenReturn(Call.State.WAITING);
+        when(mCall2.getLatestConnection()).thenReturn(mInternalConnection2);
+        // At this point the call is ringing on the second phone.
+        when(mPhone0.getRingingCall()).thenReturn(null);
+        when(mPhone1.getRingingCall()).thenReturn(mCall2);
+
+        mBinderStub.createConnection(PHONE_ACCOUNT_HANDLE_2, "TC@2",
+                new ConnectionRequest(PHONE_ACCOUNT_HANDLE_2, Uri.parse("tel:16505551213"),
+                        new Bundle()),
+                true, false, null);
+        waitForHandlerAction(mTestConnectionService.getHandler(), TIMEOUT_MS);
+        assertEquals(2, mTestConnectionService.getAllConnections().size());
+
+        // None of the connections should have the extra set.
+        assertEquals(0, mTestConnectionService.getAllConnections().stream()
+                .filter(c -> c.getExtras() != null && c.getExtras().containsKey(
+                        android.telecom.Connection.EXTRA_ANSWERING_DROPS_FG_CALL))
+                .count());
+    }
+
     private static final PhoneAccountHandle SUB1_HANDLE = new PhoneAccountHandle(
             new ComponentName("test", "class"), "1");
     private static final PhoneAccountHandle SUB2_HANDLE = new PhoneAccountHandle(
@@ -1324,7 +1358,8 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         ArrayList<android.telecom.Connection> tcs = new ArrayList<>();
         SimpleTelephonyConnection tc1 = createTestConnection(SUB1_HANDLE, 0, false);
         tcs.add(tc1);
-        TelephonyConnectionService.maybeDisconnectCallsOnOtherSubs(tcs, SUB1_HANDLE);
+        TelephonyConnectionService.maybeDisconnectCallsOnOtherSubs(
+                tcs, SUB1_HANDLE, mTelephonyManagerProxy);
         // Would've preferred to use mockito, but can't mock out TelephonyConnection/Connection
         // easily.
         assertFalse(tc1.wasDisconnected);
@@ -1336,7 +1371,8 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         ArrayList<android.telecom.Connection> tcs = new ArrayList<>();
         SimpleTelephonyConnection tc1 = createTestConnection(SUB1_HANDLE, 0, true);
         tcs.add(tc1);
-        TelephonyConnectionService.maybeDisconnectCallsOnOtherSubs(tcs, SUB2_HANDLE);
+        TelephonyConnectionService.maybeDisconnectCallsOnOtherSubs(
+                tcs, SUB2_HANDLE, mTelephonyManagerProxy);
         // Other call is an emergency call, so don't disconnect it.
         assertFalse(tc1.wasDisconnected);
     }
@@ -1348,7 +1384,8 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         SimpleTelephonyConnection tc1 = createTestConnection(SUB1_HANDLE,
                 android.telecom.Connection.PROPERTY_IS_EXTERNAL_CALL, false);
         tcs.add(tc1);
-        TelephonyConnectionService.maybeDisconnectCallsOnOtherSubs(tcs, SUB2_HANDLE);
+        TelephonyConnectionService.maybeDisconnectCallsOnOtherSubs(
+                tcs, SUB2_HANDLE, mTelephonyManagerProxy);
         // Other call is an external call, so don't disconnect it.
         assertFalse(tc1.wasDisconnected);
     }
@@ -1359,7 +1396,8 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         ArrayList<android.telecom.Connection> tcs = new ArrayList<>();
         SimpleTelephonyConnection tc1 = createTestConnection(SUB1_HANDLE, 0, false);
         tcs.add(tc1);
-        TelephonyConnectionService.maybeDisconnectCallsOnOtherSubs(tcs, SUB2_HANDLE);
+        TelephonyConnectionService.maybeDisconnectCallsOnOtherSubs(
+                tcs, SUB2_HANDLE, mTelephonyManagerProxy);
         assertTrue(tc1.wasDisconnected);
     }
 
@@ -1372,9 +1410,27 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
 
         tcs.add(tc1);
         tcs.add(tc2);
-        TelephonyConnectionService.maybeDisconnectCallsOnOtherSubs(tcs, SUB2_HANDLE);
+        TelephonyConnectionService.maybeDisconnectCallsOnOtherSubs(
+                tcs, SUB2_HANDLE, mTelephonyManagerProxy);
         assertTrue(tc1.wasDisconnected);
         assertTrue(tc2.wasDisconnected);
+    }
+
+    /**
+     * Verifies that DSDA or virtual DSDA-enabled devices can support active non-emergency calls on
+     * separate subs.
+     */
+    @Test
+    @SmallTest
+    public void testDontDisconnectDifferentSubForVirtualDsdaDevice() {
+        when(mTelephonyManagerProxy.isConcurrentCallsPossible()).thenReturn(true);
+
+        ArrayList<android.telecom.Connection> tcs = new ArrayList<>();
+        SimpleTelephonyConnection tc1 = createTestConnection(SUB1_HANDLE, 0, false);
+        tcs.add(tc1);
+        TelephonyConnectionService.maybeDisconnectCallsOnOtherSubs(
+                tcs, SUB2_HANDLE, mTelephonyManagerProxy);
+        assertFalse(tc1.wasDisconnected);
     }
 
     private SimpleTelephonyConnection createTestConnection(PhoneAccountHandle handle,
@@ -1553,6 +1609,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
     // Setup 2 SIM device
     private void setupDeviceConfig(Phone slot0Phone, Phone slot1Phone, int defaultVoicePhoneId) {
         when(mTelephonyManagerProxy.getPhoneCount()).thenReturn(2);
+        when(mTelephonyManagerProxy.isConcurrentCallsPossible()).thenReturn(false);
         when(mSubscriptionManagerProxy.getDefaultVoicePhoneId()).thenReturn(defaultVoicePhoneId);
         when(mPhoneFactoryProxy.getPhone(eq(SLOT_0_PHONE_ID))).thenReturn(slot0Phone);
         when(mPhoneFactoryProxy.getPhone(eq(SLOT_1_PHONE_ID))).thenReturn(slot1Phone);

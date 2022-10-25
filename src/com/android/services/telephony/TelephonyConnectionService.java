@@ -241,7 +241,18 @@ public class TelephonyConnectionService extends ConnectionService {
         int getPhoneCount();
         boolean isCurrentEmergencyNumber(String number);
         Map<Integer, List<EmergencyNumber>> getCurrentEmergencyNumberList();
+
+        /**
+         * Determines whether concurrent IMS calls across both SIMs are possible, based on whether
+         * the device is DSDA capable, or if the DSDS device supports virtual DSDA.
+         */
         boolean isConcurrentCallsPossible();
+
+        /**
+         * Gets the maximum number of SIMs that can be active, based on the device's multisim
+         * configuration. Returns 1 for DSDS, 2 for DSDA.
+         */
+        int getMaxNumberOfSimultaneouslyActiveSims();
     }
 
     private TelephonyManagerProxy mTelephonyManagerProxy;
@@ -278,9 +289,22 @@ public class TelephonyConnectionService extends ConnectionService {
         }
 
         @Override
+        public int getMaxNumberOfSimultaneouslyActiveSims() {
+            try {
+                return mTelephonyManager.getMaxNumberOfSimultaneouslyActiveSims();
+            } catch (IllegalStateException ise) {
+                return 1;
+            }
+        }
+
+        @Override
         public boolean isConcurrentCallsPossible() {
-            // Under DSDA, need to be determined by voice capabilities
-            return mTelephonyManager.getMaxNumberOfSimultaneouslyActiveSims() > 1;
+            try {
+                return getMaxNumberOfSimultaneouslyActiveSims() > 1
+                    || mTelephonyManager.getPhoneCapability().getMaxActiveVoiceSubscriptions() > 1;
+            } catch (IllegalStateException ise) {
+                return false;
+            }
         }
     }
 
@@ -1653,7 +1677,7 @@ public class TelephonyConnectionService extends ConnectionService {
             Log.i(this, "retryOutgoingOriginalConnection, redialing on Phone Id: " + newPhoneToUse);
             c.clearOriginalConnection();
             if (phoneId != newPhoneToUse.getPhoneId()) {
-                if (!mTelephonyManagerProxy.isConcurrentCallsPossible()) {
+                if (mTelephonyManagerProxy.getMaxNumberOfSimultaneouslyActiveSims() < 2) {
                     disconnectAllCallsOnOtherSubs(
                             mPhoneUtilsProxy.makePstnPhoneAccountHandle(newPhoneToUse));
                 }
@@ -2597,8 +2621,8 @@ public class TelephonyConnectionService extends ConnectionService {
     }
 
     /**
-     * For the passed in incoming {@link TelephonyConnection}, add
-     * {@link Connection#EXTRA_ANSWERING_DROPS_FG_CALL} if there are ongoing calls on another
+     * For the passed in incoming {@link TelephonyConnection}, for non- dual active voice devices,
+     * adds {@link Connection#EXTRA_ANSWERING_DROPS_FG_CALL} if there are ongoing calls on another
      * subscription (ie phone account handle) than the one passed in.
      * @param connection The connection.
      * @param phoneAccountHandle The {@link PhoneAccountHandle} the incoming call originated on;
@@ -2609,6 +2633,9 @@ public class TelephonyConnectionService extends ConnectionService {
      */
     public void maybeIndicateAnsweringWillDisconnect(@NonNull TelephonyConnection connection,
             @NonNull PhoneAccountHandle phoneAccountHandle) {
+        if (mTelephonyManagerProxy.isConcurrentCallsPossible()) {
+            return;
+        }
         if (isCallPresentOnOtherSub(phoneAccountHandle)) {
             Log.i(this, "maybeIndicateAnsweringWillDisconnect; answering call %s will cause a call "
                     + "on another subscription to drop.", connection.getTelecomCallId());
@@ -2634,37 +2661,46 @@ public class TelephonyConnectionService extends ConnectionService {
 
     /**
      * Where there are ongoing calls on another subscription other than the one specified,
-     * disconnect these calls.  This is used where there is an incoming call on one sub, but there
-     * are ongoing calls on another sub which need to be disconnected.
+     * disconnect these calls for non-DSDA devices. This is used where there is an incoming call on
+     * one sub, but there are ongoing calls on another sub which need to be disconnected.
      * @param incomingHandle The incoming {@link PhoneAccountHandle}.
      */
     public void maybeDisconnectCallsOnOtherSubs(@NonNull PhoneAccountHandle incomingHandle) {
         Log.i(this, "maybeDisconnectCallsOnOtherSubs: check for calls not on %s", incomingHandle);
-        maybeDisconnectCallsOnOtherSubs(getAllConnections(), incomingHandle);
+        maybeDisconnectCallsOnOtherSubs(getAllConnections(), incomingHandle,
+                mTelephonyManagerProxy);
     }
 
     /**
-     * Used by {@link #maybeDisconnectCallsOnOtherSubs(PhoneAccountHandle)} to perform call
-     * disconnection.  This method exists as a convenience so that it is possible to unit test
+     * Used by {@link #maybeDisconnectCallsOnOtherSubs(PhoneAccountHandle)} to evaluate and perform
+     * call disconnection. This method exists as a convenience so that it is possible to unit test
      * the core functionality.
      * @param connections the calls to check.
      * @param incomingHandle the incoming handle.
+     * @param telephonyManagerProxy the proxy to the {@link TelephonyManager} instance.
      */
     @VisibleForTesting
     public static void maybeDisconnectCallsOnOtherSubs(@NonNull Collection<Connection> connections,
-            @NonNull PhoneAccountHandle incomingHandle) {
+            @NonNull PhoneAccountHandle incomingHandle,
+            TelephonyManagerProxy telephonyManagerProxy) {
+        if (telephonyManagerProxy.isConcurrentCallsPossible()) {
+            return;
+        }
         connections.stream()
                 .filter(c ->
                         // Exclude multiendpoint calls as they're not on this device.
-                        (c.getConnectionProperties() & Connection.PROPERTY_IS_EXTERNAL_CALL) == 0
+                        (c.getConnectionProperties() & Connection.PROPERTY_IS_EXTERNAL_CALL)
+                                == 0
                                 // Include any calls not on same sub as current connection.
                                 && !Objects.equals(c.getPhoneAccountHandle(), incomingHandle))
                 .forEach(c -> {
                     if (c instanceof TelephonyConnection) {
                         TelephonyConnection tc = (TelephonyConnection) c;
                         if (!tc.shouldTreatAsEmergencyCall()) {
-                            Log.i(LOG_TAG, "maybeDisconnectCallsOnOtherSubs: disconnect %s due to "
-                                    + "incoming call on other sub.", tc.getTelecomCallId());
+                            Log.i(LOG_TAG,
+                                    "maybeDisconnectCallsOnOtherSubs: disconnect %s due to "
+                                            + "incoming call on other sub.",
+                                    tc.getTelecomCallId());
                             // Note: intentionally calling hangup instead of onDisconnect.
                             // onDisconnect posts the disconnection to a handle which means that the
                             // disconnection will take place AFTER we answer the incoming call.

@@ -920,9 +920,4 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‏‏‏‏‏‏‎‎‏‏‏‏‎‏‏‏‎‏‎‏‏‎‏‏‏‎‎‎‎‏‎‏‏‏‏‎‎‏‎‎‎‎‏‏‎‎‏‎‏‏‏‏‎‎‏‏‏‏‎‎‎‏‎‏‏‏‎Your bluetooth signal is weak. Try switching to speakerphone.‎‏‎‎‏‎"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‏‏‎‏‏‎‎‎‎‎‏‎‎‎‎‎‎‎‎‏‎‏‏‎‎‏‏‏‎‏‎‎‎‏‎‎‎‎‏‏‏‏‏‏‎‎‏‎‎‎‏‏‎‎‎‎‎‏‎‎‏‏‏‏‎‎Call Quality Notification‎‏‎‎‏‎"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‏‎‏‏‎‎‎‏‏‎‎‎‎‎‏‎‏‏‎‏‏‏‏‎‏‏‏‏‏‏‎‏‎‏‎‎‏‏‏‏‎‏‎‏‎‏‎‎‎‏‎‏‎‏‏‎‏‎‏‏‎‏‎‏‎Deprecated SIP accounts‎‏‎‎‏‎"</string>
-    <string name="network_boost_notification_channel" msgid="6145599461080341442">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‏‏‏‏‎‏‎‏‎‏‎‏‎‎‏‎‎‏‏‎‎‎‏‏‏‎‎‎‏‎‎‏‏‎‎‎‏‎‏‎‎‏‏‎‎‎‎‏‏‎‏‎‎‏‏‎‏‏‏‏‎‎‎‎‏‎‎Network Boost‎‏‎‎‏‎"</string>
-    <string name="network_boost_notification_title" msgid="131686574937713484">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‎‎‏‏‏‏‎‏‎‎‏‏‏‏‎‏‏‎‎‎‎‎‏‏‏‏‏‎‎‎‎‎‎‎‎‎‏‏‎‏‏‎‎‏‏‎‏‎‏‎‏‏‎‏‎‎‏‏‎‎‎%s recommends a data boost‎‏‎‎‏‎"</string>
-    <string name="network_boost_notification_detail" msgid="1974754783765469505">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‏‎‏‏‏‎‏‏‎‏‏‎‎‏‏‏‏‎‏‏‏‏‎‏‎‎‎‎‎‎‏‏‎‏‎‏‏‏‎‎‏‏‎‏‏‎‎‎‎‎‎‏‏‎‎‏‎‏‎‎‎‎‎‏‎Buy a network boost for better performance‎‏‎‎‏‎"</string>
-    <string name="network_boost_notification_button_delay" msgid="5925240423743432175">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‏‏‏‏‎‏‎‎‏‎‎‎‏‏‏‎‏‎‏‎‏‎‏‏‏‎‏‏‎‎‎‏‎‏‏‎‏‎‏‎‏‎‎‎‎‎‎‎‏‏‎‎‏‎‎‏‎‏‏‏‏‎‏‏‏‏‎Not now‎‏‎‎‏‎"</string>
-    <string name="network_boost_notification_button_manage" msgid="7715960210252266573">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‏‏‏‏‏‎‏‎‏‏‎‎‎‏‎‏‎‎‏‎‎‏‏‎‎‎‏‏‏‎‏‏‏‎‎‎‏‎‏‎‎‏‎‎‏‎‎‎‏‎‎‏‏‏‏‏‎‎‎‏‎‎‏‏‎‏‎Manage‎‏‎‎‏‎"</string>
 </resources>
