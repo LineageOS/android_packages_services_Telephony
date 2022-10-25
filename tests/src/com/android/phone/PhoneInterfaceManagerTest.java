@@ -17,11 +17,16 @@
 package com.android.phone;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
+import android.content.Context;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.telephony.RadioAccessFamily;
 import android.telephony.TelephonyManager;
 
@@ -91,14 +96,22 @@ public class PhoneInterfaceManagerTest extends TelephonyTestBase {
 
     @Test
     public void matchLocaleFromSupportedLocaleList_inputLocaleChangeToSupportedLocale() {
+        Context context = mock(Context.class);
+        Resources resources = mock(Resources.class);
+        when(mPhone.getContext()).thenReturn(context);
+        when(context.getResources()).thenReturn(resources);
+        when(resources.getStringArray(anyInt())).thenReturn(new String[]{"zh-Hant-TW"});
         // Input zh-TW, then look up the matched supported locale, zh-Hant-TW, instead.
-        String result1 = mPhoneInterfaceManager.matchLocaleFromSupportedLocaleList(
+        String result1 = mPhoneInterfaceManager.matchLocaleFromSupportedLocaleList(mPhone,
                 Locale.forLanguageTag("zh-TW"));
 
         assertEquals(result1, "zh-Hant-TW");
 
+        when(resources.getStringArray(anyInt())).thenReturn(
+                new String[]{"fi-FI", "ff-Adlm-BF", "ff-Latn-BF"});
+
         // Input ff-BF, then find the matched supported locale, ff-Latn-BF, instead.
-        String result2 = mPhoneInterfaceManager.matchLocaleFromSupportedLocaleList(
+        String result2 = mPhoneInterfaceManager.matchLocaleFromSupportedLocaleList(mPhone,
                 Locale.forLanguageTag("ff-BF"));
 
         assertEquals(result2, "ff-Latn-BF");
