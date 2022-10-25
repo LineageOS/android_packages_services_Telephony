@@ -22,6 +22,7 @@ import static org.mockito.Mockito.eq;
 import static org.mockito.Mockito.when;
 
 import android.content.ComponentName;
+import android.os.UserHandle;
 import android.telecom.PhoneAccountHandle;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
@@ -82,6 +83,15 @@ public class PhoneUtilsTest extends TelephonyTestBase {
         PhoneAccountHandle phoneAccountHandleTest = new PhoneAccountHandle(
                 PSTN_CONNECTION_SERVICE_COMPONENT, mPhoneAccountHandleIdString);
         assertEquals(phoneAccountHandleTest, PhoneUtils.makePstnPhoneAccountHandleWithPrefix(
-                mPhoneAccountHandleIdString, "", false));
+                mPhoneAccountHandleIdString, "", false, null));
+    }
+
+    @Test
+    public void testMakePstnPhoneAccountHandleWithPrefixForAnotherUser() throws Exception {
+        UserHandle userHandle = new UserHandle(10);
+        PhoneAccountHandle phoneAccountHandleTest = new PhoneAccountHandle(
+                PSTN_CONNECTION_SERVICE_COMPONENT, mPhoneAccountHandleIdString, userHandle);
+        assertEquals(phoneAccountHandleTest, PhoneUtils.makePstnPhoneAccountHandleWithPrefix(
+                mPhoneAccountHandleIdString, "", false, userHandle));
     }
 }
