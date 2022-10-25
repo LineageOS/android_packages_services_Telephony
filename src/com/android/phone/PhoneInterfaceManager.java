@@ -6488,8 +6488,14 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     private SecurityException checkNetworkRequestForSanitizedLocationAccess(
             NetworkScanRequest request, int subId, String callingPackage) {
-        boolean hasCarrierPriv = checkCarrierPrivilegesForPackage(subId, callingPackage)
-                == TelephonyManager.CARRIER_PRIVILEGE_STATUS_HAS_ACCESS;
+        boolean hasCarrierPriv;
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            hasCarrierPriv = checkCarrierPrivilegesForPackage(subId, callingPackage)
+                    == TelephonyManager.CARRIER_PRIVILEGE_STATUS_HAS_ACCESS;
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
         boolean hasNetworkScanPermission =
                 mApp.checkCallingOrSelfPermission(android.Manifest.permission.NETWORK_SCAN)
                 == PERMISSION_GRANTED;
