@@ -27,7 +27,6 @@ import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.AsyncResult;
 import android.os.Handler;
-import android.os.Looper;
 import android.os.Message;
 import android.os.PersistableBundle;
 import android.telephony.AnomalyReporter;
@@ -276,7 +275,7 @@ public class SliceStore extends Handler {
     }
 
     private SliceStore(@NonNull Phone phone) {
-        super(Looper.myLooper());
+        super(phone.getLooper());
         mPhone = phone;
         // TODO: Create a cached value for slicing config in DataIndication and initialize here
         mPhone.mCi.registerForSlicingConfigChanged(this, EVENT_SLICING_CONFIG_CHANGED, null);
