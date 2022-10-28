@@ -1433,6 +1433,24 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         assertFalse(tc1.wasDisconnected);
     }
 
+    /**
+     * Verifies that TelephonyManager is used to determine whether a connection is Emergency when
+     * creating an outgoing connection.
+     */
+    @Test
+    @SmallTest
+    public void testIsEmergencyDeterminedByTelephonyManager() {
+        ConnectionRequest connectionRequest = new ConnectionRequest.Builder()
+                .setAccountHandle(PHONE_ACCOUNT_HANDLE_1)
+                .setAddress(TEST_ADDRESS)
+                .build();
+        mConnection = mTestConnectionService.onCreateOutgoingConnection(
+                PHONE_ACCOUNT_HANDLE_1, connectionRequest);
+
+        verify(mTelephonyManagerProxy)
+                .isCurrentEmergencyNumber(TEST_ADDRESS.getSchemeSpecificPart());
+    }
+
     private SimpleTelephonyConnection createTestConnection(PhoneAccountHandle handle,
             int properties, boolean isEmergency) {
         SimpleTelephonyConnection connection = new SimpleTelephonyConnection();

@@ -1737,9 +1737,8 @@ public class TelephonyConnectionService extends ConnectionService {
         final com.android.internal.telephony.Connection originalConnection;
         try {
             if (phone != null) {
-                EmergencyNumber emergencyNumber =
-                        phone.getEmergencyNumberTracker().getEmergencyNumber(number);
-                if (emergencyNumber != null) {
+                boolean isEmergency = mTelephonyManagerProxy.isCurrentEmergencyNumber(number);
+                if (isEmergency) {
                     if (!getAllConnections().isEmpty()) {
                         if (!shouldHoldForEmergencyCall(phone)) {
                             // If we do not support holding ongoing calls for an outgoing
