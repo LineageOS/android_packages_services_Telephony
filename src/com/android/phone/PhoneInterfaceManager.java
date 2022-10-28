@@ -94,6 +94,7 @@ import android.telephony.TelephonyFrameworkInitializer;
 import android.telephony.TelephonyHistogram;
 import android.telephony.TelephonyManager;
 import android.telephony.TelephonyScanManager;
+import android.telephony.UiccAccessRule;
 import android.telephony.UiccCardInfo;
 import android.telephony.UiccSlotInfo;
 import android.telephony.UssdResponse;
@@ -5836,14 +5837,18 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         PackageManager pkgMgr = phone.getContext().getPackageManager();
         String[] packages = pkgMgr.getPackagesForUid(uid);
+        if (packages == null) {
+            return privilegeFromSim;
+        }
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            SubscriptionInfo subInfo = subController.getSubscriptionInfo(phone.getSubId());
-            SubscriptionManager subManager = (SubscriptionManager)
-                    phone.getContext().getSystemService(Context.TELEPHONY_SUBSCRIPTION_SERVICE);
+            int subId = phone.getSubId();
+            SubscriptionInfo subInfo = subController.getSubscriptionInfo(subId);
+            List<UiccAccessRule> carrierConfigAccessRules = subInfo.getCarrierConfigAccessRules();
+
             for (String pkg : packages) {
-                if (subManager.canManageSubscription(subInfo, pkg)) {
+                if (hasCarrierConfigAccess(pkg, pkgMgr, carrierConfigAccessRules)) {
                     return TelephonyManager.CARRIER_PRIVILEGE_STATUS_HAS_ACCESS;
                 }
             }
@@ -5862,14 +5867,49 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            SubscriptionInfo subInfo = subController.getSubscriptionInfo(phone.getSubId());
-            SubscriptionManager subManager = (SubscriptionManager)
-                    phone.getContext().getSystemService(Context.TELEPHONY_SUBSCRIPTION_SERVICE);
-            return subManager.canManageSubscription(subInfo, pkgName)
+            int subId = phone.getSubId();
+            SubscriptionInfo subInfo = subController.getSubscriptionInfo(subId);
+            List<UiccAccessRule> carrierConfigAccessRules = subInfo.getCarrierConfigAccessRules();
+
+            return hasCarrierConfigAccess(pkgName, phone.getContext().getPackageManager(),
+                carrierConfigAccessRules)
                 ? TelephonyManager.CARRIER_PRIVILEGE_STATUS_HAS_ACCESS : privilegeFromSim;
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
+    }
+
+    /**
+     * Check whether carrier privilege status can be granted to the provided app for this
+     * subscription based on the carrier config access rules of the subscription.
+     *
+     * @param packageName package name of the app to check
+     * @param packageManager package manager
+     * @param carrierConfigAccessRules carrier config access rules of the subscription
+     * @return true if the app is included in the mCarrierConfigAccessRules of this subscription.
+     */
+    private boolean hasCarrierConfigAccess(String packageName, PackageManager packageManager,
+        @NonNull List<UiccAccessRule> carrierConfigAccessRules) {
+        if ((packageName == null) || (carrierConfigAccessRules.isEmpty())) {
+            return false;
+        }
+
+        PackageInfo packageInfo;
+        try {
+            packageInfo = packageManager.getPackageInfo(packageName,
+                PackageManager.GET_SIGNING_CERTIFICATES);
+        } catch (PackageManager.NameNotFoundException e) {
+            logv("Unknown package: " + packageName);
+            return false;
+        }
+
+        for (UiccAccessRule rule : carrierConfigAccessRules) {
+            if (rule.getCarrierPrivilegeStatus(packageInfo)
+                == TelephonyManager.CARRIER_PRIVILEGE_STATUS_HAS_ACCESS) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
