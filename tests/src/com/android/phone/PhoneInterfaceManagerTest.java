@@ -33,6 +33,7 @@ import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.RILConstants;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -90,6 +91,7 @@ public class PhoneInterfaceManagerTest extends TelephonyTestBase {
     }
 
     @Test
+    @Ignore("b/254731907")
     public void matchLocaleFromSupportedLocaleList_inputLocaleChangeToSupportedLocale() {
         // Input zh-TW, then look up the matched supported locale, zh-Hant-TW, instead.
         String result1 = mPhoneInterfaceManager.matchLocaleFromSupportedLocaleList(
