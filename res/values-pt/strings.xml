@@ -579,7 +579,7 @@
     <string name="onscreenEndCallText" msgid="6138725377654842757">"Finalizar"</string>
     <string name="onscreenShowDialpadText" msgid="658465753816164079">"Teclado"</string>
     <string name="onscreenMuteText" msgid="5470306116733843621">"Desativar som"</string>
-    <string name="onscreenAddCallText" msgid="9075675082903611677">"Adicionar chamada"</string>
+    <string name="onscreenAddCallText" msgid="9075675082903611677">"Adicionar ligação"</string>
     <string name="onscreenMergeCallsText" msgid="3692389519611225407">"Juntar chamadas"</string>
     <string name="onscreenSwapCallsText" msgid="2682542150803377991">"Trocar"</string>
     <string name="onscreenManageCallsText" msgid="1162047856081836469">"Gerenciar chamadas"</string>
