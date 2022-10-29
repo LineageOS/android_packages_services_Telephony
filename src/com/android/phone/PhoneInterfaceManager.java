@@ -6805,7 +6805,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             Phone phone = PhoneFactory.getPhone(phoneId);
             if (phone != null) {
                 boolean retVal;
-                retVal = phone.getDataSettingsManager().isDataEnabled();
+                if (phone.getDataSettingsManager() == null) {
+                    retVal = false;
+                } else {
+                    retVal = phone.getDataSettingsManager().isDataEnabled();
+                }
                 if (DBG) log("isDataEnabled: " + retVal + ", subId=" + subId);
                 return retVal;
             } else {
