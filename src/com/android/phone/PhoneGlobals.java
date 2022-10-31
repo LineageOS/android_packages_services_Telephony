@@ -938,7 +938,11 @@ public class PhoneGlobals extends ContextWrapper {
      * @return whether we have transitioned to dataRoaming
      */
     private boolean dataIsNowRoaming(int subId) {
-        return getPhone(subId).getServiceState().getDataRoaming();
+        if (getPhone(subId).getServiceState() == null) {
+            return false;
+        } else {
+            return getPhone(subId).getServiceState().getDataRoaming();
+        }
     }
 
     private void updateLimitedSimFunctionForDualSim() {
