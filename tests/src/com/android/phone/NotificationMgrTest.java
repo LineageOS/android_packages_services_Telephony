@@ -73,6 +73,7 @@ import com.android.TelephonyTestBase;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.PhoneFactory;
+import com.android.internal.telephony.data.DataConfigManager;
 import com.android.internal.telephony.data.DataNetworkController;
 import com.android.internal.telephony.data.DataSettingsManager;
 import com.android.internal.telephony.util.NotificationChannelController;
@@ -118,6 +119,7 @@ public class NotificationMgrTest extends TelephonyTestBase {
     @Mock CarrierConfigManager mCarrierConfigManager;
     @Mock DataNetworkController mDataNetworkController;
     @Mock DataSettingsManager mDataSettingsManager;
+    @Mock DataConfigManager mDataConfigManager;
 
     private Phone[] mPhones;
     private NotificationMgr mNotificationMgr;
@@ -134,6 +136,7 @@ public class NotificationMgrTest extends TelephonyTestBase {
         when(mPhone.getDataNetworkController()).thenReturn(mDataNetworkController);
         when(mDataNetworkController.getInternetDataDisallowedReasons()).thenReturn(
                 Collections.emptyList());
+        when(mDataNetworkController.getDataConfigManager()).thenReturn(mDataConfigManager);
         when(mPhone.getDataSettingsManager()).thenReturn(mDataSettingsManager);
         when(mDataSettingsManager.isDataEnabledForReason(anyInt())).thenReturn(true);
         when(mApp.getSharedPreferences(anyString(), anyInt())).thenReturn(mSharedPreferences);
