@@ -16,6 +16,7 @@
 
 package com.android.phone.slicestore;
 
+import android.annotation.IntDef;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.app.PendingIntent;
@@ -42,6 +43,8 @@ import android.webkit.WebView;
 
 import com.android.internal.telephony.Phone;
 
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Arrays;
@@ -68,6 +71,29 @@ import java.util.function.Consumer;
 public class SliceStore extends Handler {
     @NonNull private static final String TAG = "SliceStore";
 
+    /** Unknown failure code. */
+    public static final int FAILURE_CODE_UNKNOWN = 0;
+    /** Network boost purchase failed because the carrier URL is unavailable. */
+    public static final int FAILURE_CODE_CARRIER_URL_UNAVAILABLE = 1;
+    /** Network boost purchase failed because the server is unreachable. */
+    public static final int FAILURE_CODE_SERVER_UNREACHABLE = 2;
+    /** Network boost purchase failed because user authentication failed. */
+    public static final int FAILURE_CODE_AUTHENTICATION_FAILED = 3;
+    /** Network boost purchase failed because the payment failed. */
+    public static final int FAILURE_CODE_PAYMENT_FAILED = 4;
+
+    /**
+     * Failure codes that the carrier website can return when a premium capability purchase fails.
+     */
+    @Retention(RetentionPolicy.SOURCE)
+    @IntDef(prefix = { "FAILURE_CODE_" }, value = {
+            FAILURE_CODE_UNKNOWN,
+            FAILURE_CODE_CARRIER_URL_UNAVAILABLE,
+            FAILURE_CODE_SERVER_UNREACHABLE,
+            FAILURE_CODE_AUTHENTICATION_FAILED,
+            FAILURE_CODE_PAYMENT_FAILED})
+    public @interface FailureCode {}
+
     /** Value for an invalid premium capability. */
     public static final int PREMIUM_CAPABILITY_INVALID = -1;
 
@@ -77,8 +103,16 @@ public class SliceStore extends Handler {
     private static final int EVENT_SLICING_CONFIG_CHANGED = 2;
     /** Display booster notification. */
     private static final int EVENT_DISPLAY_BOOSTER_NOTIFICATION = 3;
-    /** Boost was not purchased within the timeout specified by carrier configs. */
+    /**
+     * Premium capability was not purchased within the timeout specified by
+     * {@link CarrierConfigManager#KEY_PREMIUM_CAPABILITY_NOTIFICATION_DISPLAY_TIMEOUT_MILLIS_LONG}.
+     */
     private static final int EVENT_PURCHASE_TIMEOUT = 4;
+    /**
+     * Network did not set up the slicing configuration within the timeout specified by
+     * {@link CarrierConfigManager#KEY_PREMIUM_CAPABILITY_NETWORK_SETUP_TIME_MILLIS_LONG}.
+     */
+    private static final int EVENT_SETUP_TIMEOUT = 5;
 
     /** UUID to report an anomaly when a premium capability is throttled twice in a row. */
     private static final String UUID_CAPABILITY_THROTTLED_TWICE =
@@ -87,6 +121,13 @@ public class SliceStore extends Handler {
     private static final String UUID_INVALID_PHONE_ID = "ced79f1a-8ac0-4260-8cf3-08b54c0494f3";
     /** UUID to report an anomaly when receiving an unknown action. */
     private static final String UUID_UNKNOWN_ACTION = "0197efb0-dab1-4b0a-abaf-ac9336ec7923";
+    /** UUID to report an anomaly when receiving an unknown failure code with a non-empty reason. */
+    private static final String UUID_UNKNOWN_FAILURE_CODE = "76943b23-4415-400c-9855-b534fc4fc62c";
+    /**
+     * UUID to report an anomaly when the network fails to set up a slicing configuration after
+     * the user purchases a premium capability.
+     */
+    private static final String UUID_NETWORK_SETUP_FAILED = "12eeffbf-08f8-40ed-9a00-d344199552fc";
 
     /** Action to start the SliceStore application and display the network boost notification. */
     public static final String ACTION_START_SLICE_STORE =
@@ -106,6 +147,9 @@ public class SliceStore extends Handler {
     /** Action indicating the purchase request was not made on the default data subscription. */
     private static final String ACTION_SLICE_STORE_RESPONSE_NOT_DEFAULT_DATA =
             "com.android.phone.slicestore.action.SLICE_STORE_RESPONSE_NOT_DEFAULT_DATA";
+    /** Action indicating the purchase request was successful. */
+    private static final String ACTION_SLICE_STORE_RESPONSE_SUCCESS =
+            "com.android.phone.slicestore.action.SLICE_STORE_RESPONSE_SUCCESS";
 
     /** Extra for the phone index to send to the SliceStore application. */
     public static final String EXTRA_PHONE_ID = "com.android.phone.slicestore.extra.PHONE_ID";
@@ -114,6 +158,15 @@ public class SliceStore extends Handler {
     /** Extra for the requested premium capability to purchase from the SliceStore application. */
     public static final String EXTRA_PREMIUM_CAPABILITY =
             "com.android.phone.slicestore.extra.PREMIUM_CAPABILITY";
+    /** Extra for the duration of the purchased premium capability. */
+    public static final String EXTRA_PURCHASE_DURATION =
+            "com.android.phone.slicestore.extra.PURCHASE_DURATION";
+    /** Extra for the {@link FailureCode} why the premium capability purchase failed. */
+    public static final String EXTRA_FAILURE_CODE =
+            "com.android.phone.slicestore.extra.FAILURE_CODE";
+    /** Extra for the human-readable reason why the premium capability purchase failed. */
+    public static final String EXTRA_FAILURE_REASON =
+            "com.android.phone.slicestore.extra.FAILURE_REASON";
     /**
      * Extra for the application name requesting to purchase the premium capability
      * from the SliceStore application.
@@ -131,6 +184,8 @@ public class SliceStore extends Handler {
      * Extra for the carrier error PendingIntent that the SliceStore application can send as a
      * response if the premium capability purchase request failed due to a carrier error.
      * Sends {@link #ACTION_SLICE_STORE_RESPONSE_CARRIER_ERROR}.
+     * Sender can modify the intent to specify the failure code and reason for failure with
+     * {@link #EXTRA_FAILURE_CODE} and {@link #EXTRA_FAILURE_REASON}.
      */
     public static final String EXTRA_INTENT_CARRIER_ERROR =
             "com.android.phone.slicestore.extra.INTENT_CARRIER_ERROR";
@@ -150,6 +205,15 @@ public class SliceStore extends Handler {
      */
     public static final String EXTRA_INTENT_NOT_DEFAULT_DATA =
             "com.android.phone.slicestore.extra.INTENT_NOT_DEFAULT_DATA";
+    /**
+     * Extra for the success PendingIntent that the SliceStore application can send as a response
+     * if the premium capability purchase request was successful.
+     * Sends {@link #ACTION_SLICE_STORE_RESPONSE_SUCCESS}.
+     * Sender can modify the intent to specify a purchase duration with
+     * {@link #EXTRA_PURCHASE_DURATION}.
+     */
+    public static final String EXTRA_INTENT_SUCCESS =
+            "com.android.phone.slicestore.extra.INTENT_SUCCESS";
 
     /** Component name to send an explicit broadcast to SliceStoreBroadcastReceiver. */
     private static final ComponentName SLICE_STORE_COMPONENT_NAME =
@@ -161,8 +225,8 @@ public class SliceStore extends Handler {
 
     /** The Phone instance used to create the SliceStore */
     @NonNull private final Phone mPhone;
-    /** The set of purchased capabilities. */
-    @NonNull private final Set<Integer> mPurchasedCapabilities = new HashSet<>();
+    /** The set of capabilities that are pending network setup. */
+    @NonNull private final Set<Integer> mPendingSetupCapabilities = new HashSet<>();
     /** The set of throttled capabilities. */
     @NonNull private final Set<Integer> mThrottledCapabilities = new HashSet<>();
     /** A map of pending capabilities to the onComplete message for the purchase request. */
@@ -174,7 +238,7 @@ public class SliceStore extends Handler {
     @Nullable private NetworkSlicingConfig mSlicingConfig;
 
     private class SliceStoreBroadcastReceiver extends BroadcastReceiver {
-        private final @TelephonyManager.PremiumCapability int mCapability;
+        @TelephonyManager.PremiumCapability private final int mCapability;
 
         SliceStoreBroadcastReceiver(@TelephonyManager.PremiumCapability int capability) {
             mCapability = capability;
@@ -191,11 +255,9 @@ public class SliceStore extends Handler {
             int capability = intent.getIntExtra(EXTRA_PREMIUM_CAPABILITY,
                     PREMIUM_CAPABILITY_INVALID);
             if (SliceStore.getInstance(phoneId) == null) {
-                String logStr = "SliceStoreBroadcastReceiver( "
+                reportAnomaly(UUID_INVALID_PHONE_ID, "SliceStoreBroadcastReceiver( "
                         + TelephonyManager.convertPremiumCapabilityToString(mCapability)
-                        + ") received invalid phoneId: " + phoneId;
-                loge(logStr);
-                AnomalyReporter.reportAnomaly(UUID.fromString(UUID_INVALID_PHONE_ID), logStr);
+                        + ") received invalid phoneId: " + phoneId);
                 return;
             } else if (capability != mCapability) {
                 logd("SliceStoreBroadcastReceiver("
@@ -214,11 +276,10 @@ public class SliceStore extends Handler {
                     break;
                 }
                 case ACTION_SLICE_STORE_RESPONSE_CARRIER_ERROR: {
-                    logd("Carrier error for capability: "
-                            + TelephonyManager.convertPremiumCapabilityToString(capability));
-                    SliceStore.getInstance(phoneId).sendPurchaseResultFromSliceStore(capability,
-                            TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_CARRIER_ERROR,
-                            true);
+                    int failureCode = intent.getIntExtra(EXTRA_FAILURE_CODE, FAILURE_CODE_UNKNOWN);
+                    String failureReason = intent.getStringExtra(EXTRA_FAILURE_REASON);
+                    SliceStore.getInstance(phoneId).onCarrierError(
+                            capability, failureCode, failureReason);
                     break;
                 }
                 case ACTION_SLICE_STORE_RESPONSE_REQUEST_FAILED: {
@@ -238,12 +299,15 @@ public class SliceStore extends Handler {
                             false);
                     break;
                 }
+                case ACTION_SLICE_STORE_RESPONSE_SUCCESS: {
+                    long duration = intent.getLongExtra(EXTRA_PURCHASE_DURATION, 0);
+                    SliceStore.getInstance(phoneId).onCarrierSuccess(capability, duration);
+                    break;
+                }
                 default:
-                    String logStr = "SliceStoreBroadcastReceiver("
+                    reportAnomaly(UUID_UNKNOWN_ACTION, "SliceStoreBroadcastReceiver("
                             + TelephonyManager.convertPremiumCapabilityToString(mCapability)
-                            + ") received unknown action: " + action;
-                    loge(logStr);
-                    AnomalyReporter.reportAnomaly(UUID.fromString(UUID_UNKNOWN_ACTION), logStr);
+                            + ") received unknown action: " + action);
                     break;
             }
         }
@@ -297,6 +361,7 @@ public class SliceStore extends Handler {
                 NetworkSlicingConfig config = (NetworkSlicingConfig) ar.result;
                 logd("EVENT_SLICING_CONFIG_CHANGED: from " + mSlicingConfig + " to " + config);
                 mSlicingConfig = config;
+                onSlicingConfigChanged();
                 break;
             }
             case EVENT_DISPLAY_BOOSTER_NOTIFICATION: {
@@ -314,6 +379,12 @@ public class SliceStore extends Handler {
                 onTimeout(capability);
                 break;
             }
+            case EVENT_SETUP_TIMEOUT:
+                int capability = (int) msg.obj;
+                logd("EVENT_SETUP_TIMEOUT: for capability "
+                        + TelephonyManager.convertPremiumCapabilityToString(capability));
+                onSetupTimeout(capability);
+                break;
             default:
                 loge("Unknown event: " + msg.obj);
         }
@@ -380,10 +451,15 @@ public class SliceStore extends Handler {
                     onComplete);
             return;
         }
-        if (mPurchasedCapabilities.contains(capability) || isSlicingConfigActive(capability)) {
-            // TODO (b/245882601): Handle capability expiry
+        if (isSlicingConfigActive(capability)) {
             sendPurchaseResult(capability,
                     TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_ALREADY_PURCHASED,
+                    onComplete);
+            return;
+        }
+        if (mPendingSetupCapabilities.contains(capability)) {
+            sendPurchaseResult(capability,
+                    TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_PENDING_NETWORK_SETUP,
                     onComplete);
             return;
         }
@@ -456,10 +532,20 @@ public class SliceStore extends Handler {
                         throttleDuration);
             }
         } else {
-            String logStr = TelephonyManager.convertPremiumCapabilityToString(capability)
-                    + " is already throttled.";
-            loge(logStr);
-            AnomalyReporter.reportAnomaly(UUID.fromString(UUID_CAPABILITY_THROTTLED_TWICE), logStr);
+            reportAnomaly(UUID_CAPABILITY_THROTTLED_TWICE,
+                    TelephonyManager.convertPremiumCapabilityToString(capability)
+                            + " is already throttled.");
+        }
+    }
+
+    private void onSlicingConfigChanged() {
+        for (int capability : new int[] {TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY}) {
+            if (isSlicingConfigActive(capability) && hasMessages(EVENT_SETUP_TIMEOUT, capability)) {
+                logd("Successfully set up slicing configuration for "
+                        + TelephonyManager.convertPremiumCapabilityToString(capability));
+                mPendingSetupCapabilities.remove(capability);
+                removeMessages(EVENT_SETUP_TIMEOUT, capability);
+            }
         }
     }
 
@@ -481,13 +567,16 @@ public class SliceStore extends Handler {
         intent.putExtra(EXTRA_PREMIUM_CAPABILITY, capability);
         intent.putExtra(EXTRA_REQUESTING_APP_NAME, appName);
         intent.putExtra(EXTRA_INTENT_CANCELED,
-                createPendingIntent(ACTION_SLICE_STORE_RESPONSE_CANCELED, capability));
+                createPendingIntent(ACTION_SLICE_STORE_RESPONSE_CANCELED, capability, false));
         intent.putExtra(EXTRA_INTENT_CARRIER_ERROR,
-                createPendingIntent(ACTION_SLICE_STORE_RESPONSE_CARRIER_ERROR, capability));
+                createPendingIntent(ACTION_SLICE_STORE_RESPONSE_CARRIER_ERROR, capability, true));
         intent.putExtra(EXTRA_INTENT_REQUEST_FAILED,
-                createPendingIntent(ACTION_SLICE_STORE_RESPONSE_REQUEST_FAILED, capability));
+                createPendingIntent(ACTION_SLICE_STORE_RESPONSE_REQUEST_FAILED, capability, false));
         intent.putExtra(EXTRA_INTENT_NOT_DEFAULT_DATA,
-                createPendingIntent(ACTION_SLICE_STORE_RESPONSE_NOT_DEFAULT_DATA, capability));
+                createPendingIntent(ACTION_SLICE_STORE_RESPONSE_NOT_DEFAULT_DATA, capability,
+                        false));
+        intent.putExtra(EXTRA_INTENT_SUCCESS,
+                createPendingIntent(ACTION_SLICE_STORE_RESPONSE_SUCCESS, capability, true));
         logd("Broadcasting start intent to SliceStoreBroadcastReceiver.");
         mPhone.getContext().sendBroadcast(intent);
 
@@ -498,6 +587,7 @@ public class SliceStore extends Handler {
         filter.addAction(ACTION_SLICE_STORE_RESPONSE_CARRIER_ERROR);
         filter.addAction(ACTION_SLICE_STORE_RESPONSE_REQUEST_FAILED);
         filter.addAction(ACTION_SLICE_STORE_RESPONSE_NOT_DEFAULT_DATA);
+        filter.addAction(ACTION_SLICE_STORE_RESPONSE_SUCCESS);
         mPhone.getContext().registerReceiver(mSliceStoreBroadcastReceivers.get(capability), filter);
     }
 
@@ -506,15 +596,18 @@ public class SliceStore extends Handler {
      *
      * @param action The action that will be sent for this PendingIntent
      * @param capability The premium capability that was requested.
+     * @param mutable {@code true} if the PendingIntent should be mutable and
+     *                {@code false} if it should be immutable.
      * @return The PendingIntent for the given action and capability.
      */
     @NonNull private PendingIntent createPendingIntent(@NonNull String action,
-            @TelephonyManager.PremiumCapability int capability) {
+            @TelephonyManager.PremiumCapability int capability, boolean mutable) {
         Intent intent = new Intent(action);
         intent.putExtra(EXTRA_PHONE_ID, mPhone.getPhoneId());
         intent.putExtra(EXTRA_PREMIUM_CAPABILITY, capability);
-        return PendingIntent.getBroadcast(mPhone.getContext(), 0, intent,
-                PendingIntent.FLAG_CANCEL_CURRENT | PendingIntent.FLAG_MUTABLE);
+        return PendingIntent.getBroadcast(mPhone.getContext(), capability, intent,
+                PendingIntent.FLAG_CANCEL_CURRENT
+                        | (mutable ? PendingIntent.FLAG_MUTABLE : PendingIntent.FLAG_IMMUTABLE));
     }
 
     private void onTimeout(@TelephonyManager.PremiumCapability int capability) {
@@ -531,9 +624,43 @@ public class SliceStore extends Handler {
                 capability, TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_TIMEOUT, true);
     }
 
-    private void onCarrierSuccess(@TelephonyManager.PremiumCapability int capability) {
-        // TODO(b/245882601): Process and return success.
-        //  Probably need to handle capability expiry as well
+    private void onCarrierError(@TelephonyManager.PremiumCapability int capability,
+            @FailureCode int failureCode, @Nullable String failureReason) {
+        logd("Carrier error for capability: "
+                + TelephonyManager.convertPremiumCapabilityToString(capability) + " with code: "
+                + convertFailureCodeToString(failureCode) + " and reason: " + failureReason);
+        if (failureCode == FAILURE_CODE_UNKNOWN && !TextUtils.isEmpty(failureReason)) {
+            reportAnomaly(UUID_UNKNOWN_FAILURE_CODE,
+                    "Failure code needs to be added for: " + failureReason);
+        }
+        sendPurchaseResultFromSliceStore(capability,
+                TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_CARRIER_ERROR, true);
+    }
+
+    private void onCarrierSuccess(@TelephonyManager.PremiumCapability int capability,
+            long duration) {
+        logd("Successfully purchased premium capability "
+                + TelephonyManager.convertPremiumCapabilityToString(capability)
+                + " for " + TimeUnit.MILLISECONDS.toMinutes(duration) + " minutes.");
+        mPendingSetupCapabilities.add(capability);
+        long setupDuration = getCarrierConfigs().getLong(
+                CarrierConfigManager.KEY_PREMIUM_CAPABILITY_NETWORK_SETUP_TIME_MILLIS_LONG);
+        logd("Waiting " + TimeUnit.MILLISECONDS.toMinutes(setupDuration) + " minutes for the "
+                + "network to set up the slicing configuration.");
+        sendMessageDelayed(obtainMessage(EVENT_SETUP_TIMEOUT, capability), setupDuration);
+        sendPurchaseResultFromSliceStore(
+                capability, TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_SUCCESS, false);
+    }
+
+    private void onSetupTimeout(@TelephonyManager.PremiumCapability int capability) {
+        logd("onSetupTimeout: " + TelephonyManager.convertPremiumCapabilityToString(capability));
+        mPendingSetupCapabilities.remove(capability);
+        if (!isSlicingConfigActive(capability)) {
+            reportAnomaly(UUID_NETWORK_SETUP_FAILED,
+                    "Failed to set up slicing configuration for capability "
+                            + TelephonyManager.convertPremiumCapabilityToString(capability)
+                            + " within the time specified.");
+        }
     }
 
     @Nullable private PersistableBundle getCarrierConfigs() {
@@ -626,6 +753,29 @@ public class SliceStore extends Handler {
     private boolean isNetworkCongested(@TelephonyManager.PremiumCapability int capability) {
         // TODO: Implement TS43
         return true;
+    }
+
+    /**
+     * Returns the failure code {@link FailureCode} as a String.
+     *
+     * @param failureCode The failure code.
+     * @return The failure code as a String.
+     */
+    @NonNull public static String convertFailureCodeToString(@FailureCode int failureCode) {
+        switch (failureCode) {
+            case FAILURE_CODE_UNKNOWN: return "UNKNOWN";
+            case FAILURE_CODE_CARRIER_URL_UNAVAILABLE: return "CARRIER_URL_UNAVAILABLE";
+            case FAILURE_CODE_SERVER_UNREACHABLE: return "SERVER_UNREACHABLE";
+            case FAILURE_CODE_AUTHENTICATION_FAILED: return "AUTHENTICATION_FAILED";
+            case FAILURE_CODE_PAYMENT_FAILED: return "PAYMENT_FAILED";
+            default:
+                return "UNKNOWN(" + failureCode + ")";
+        }
+    }
+
+    private void reportAnomaly(@NonNull String uuid, @NonNull String log) {
+        loge(log);
+        AnomalyReporter.reportAnomaly(UUID.fromString(uuid), log);
     }
 
     private void logd(String s) {
