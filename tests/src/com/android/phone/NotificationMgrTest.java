@@ -69,9 +69,12 @@ import android.telephony.TelephonyManager;
 import android.testing.AndroidTestingRunner;
 import android.testing.TestableLooper;
 
+import com.android.TelephonyTestBase;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.PhoneFactory;
+import com.android.internal.telephony.data.DataNetworkController;
+import com.android.internal.telephony.data.DataSettingsManager;
 import com.android.internal.telephony.util.NotificationChannelController;
 
 import org.junit.Before;
@@ -81,15 +84,14 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import java.lang.reflect.Field;
+import java.util.Collections;
 
 /**
  * Unit Test for NotificationMgr
  */
 @RunWith(AndroidTestingRunner.class)
 @TestableLooper.RunWithLooper
-public class NotificationMgrTest {
-
+public class NotificationMgrTest extends TelephonyTestBase {
     private static final int TEST_SUB_ID = 1;
     private static final long SERIAL_NUMBER_OF_USER = 1234567L;
     private static final String TEST_LABEL_CF = "test_call_forwarding";
@@ -111,8 +113,11 @@ public class NotificationMgrTest {
     @Mock NotificationManager mNotificationManager;
     @Mock SubscriptionInfo mSubscriptionInfo;
     @Mock Resources mResources;
+    @Mock Context mMockedContext;
     @Mock ServiceState mServiceState;
     @Mock CarrierConfigManager mCarrierConfigManager;
+    @Mock DataNetworkController mDataNetworkController;
+    @Mock DataSettingsManager mDataSettingsManager;
 
     private Phone[] mPhones;
     private NotificationMgr mNotificationMgr;
@@ -123,6 +128,14 @@ public class NotificationMgrTest {
         mPhones = new Phone[]{mPhone};
         replaceInstance(PhoneFactory.class, "sPhones", null, mPhones);
         when(mPhone.getPhoneType()).thenReturn(PhoneConstants.PHONE_TYPE_GSM);
+        when(mPhone.getContext()).thenReturn(mMockedContext);
+        when(mMockedContext.getResources()).thenReturn(mResources);
+        when(mPhone.getServiceState()).thenReturn(mServiceState);
+        when(mPhone.getDataNetworkController()).thenReturn(mDataNetworkController);
+        when(mDataNetworkController.getInternetDataDisallowedReasons()).thenReturn(
+                Collections.emptyList());
+        when(mPhone.getDataSettingsManager()).thenReturn(mDataSettingsManager);
+        when(mDataSettingsManager.isDataEnabledForReason(anyInt())).thenReturn(true);
         when(mApp.getSharedPreferences(anyString(), anyInt())).thenReturn(mSharedPreferences);
 
         when(mApp.getPackageName()).thenReturn(TEST_PACKAGE_NAME);
@@ -157,8 +170,7 @@ public class NotificationMgrTest {
     }
 
     @Test
-    public void testUpdateCfi_visible_noActiveSubscription_notificationNeverSent()
-            throws Exception {
+    public void testUpdateCfi_visible_noActiveSubscription_notificationNeverSent() {
         // Given no active subscription available
         when(mSubscriptionManager.getActiveSubscriptionInfo(eq(TEST_SUB_ID))).thenReturn(null);
 
@@ -170,7 +182,7 @@ public class NotificationMgrTest {
     }
 
     @Test
-    public void testUpdateCfi_visible_hasActiveSub_singleSIM_notificationSent() throws Exception {
+    public void testUpdateCfi_visible_hasActiveSub_singleSIM_notificationSent() {
         when(mTelephonyManager.getPhoneCount()).thenReturn(1);
         when(mSubscriptionManager.getActiveSubscriptionInfo(eq(TEST_SUB_ID))).thenReturn(
                 mSubscriptionInfo);
@@ -181,8 +193,7 @@ public class NotificationMgrTest {
     }
 
     @Test
-    public void testUpdateCfi_visible_hasActiveSub_multiSIM_notificationSentWithoutDisplayName()
-            throws Exception {
+    public void testUpdateCfi_visible_hasActiveSub_multiSIM_notificationSentWithoutDisplayName() {
         when(mTelephonyManager.getPhoneCount()).thenReturn(2);
         when(mSubscriptionManager.getActiveSubscriptionInfo(eq(TEST_SUB_ID))).thenReturn(
                 mSubscriptionInfo);
@@ -194,8 +205,7 @@ public class NotificationMgrTest {
     }
 
     @Test
-    public void testUpdateCfi_visible_hasActiveSub_multiSIM_notificationSentWithDisplayName()
-            throws Exception {
+    public void testUpdateCfi_visible_hasActiveSub_multiSIM_notificationSentWithDisplayName() {
         when(mTelephonyManager.getPhoneCount()).thenReturn(2);
         when(mSubscriptionManager.getActiveSubscriptionInfo(eq(TEST_SUB_ID))).thenReturn(
                 mSubscriptionInfo);
@@ -207,8 +217,7 @@ public class NotificationMgrTest {
     }
 
     @Test
-    public void testUpdateCfi_invisible_hasUnmanagedProfile_notificationCanceled()
-            throws Exception {
+    public void testUpdateCfi_invisible_hasUnmanagedProfile_notificationCanceled() {
         when(mUserManager.isManagedProfile(anyInt())).thenReturn(false);
 
         mNotificationMgr.updateCfi(TEST_SUB_ID, /*visible=*/false, /*isFresh=*/false);
@@ -217,8 +226,7 @@ public class NotificationMgrTest {
     }
 
     @Test
-    public void testUpdateCfi_invisible_allProfilesAreManaged_notificationNeverCanceled()
-            throws Exception {
+    public void testUpdateCfi_invisible_allProfilesAreManaged_notificationNeverCanceled() {
         when(mUserManager.isManagedProfile(anyInt())).thenReturn(true);
 
         mNotificationMgr.updateCfi(TEST_SUB_ID, /*visible=*/false, /*isFresh=*/false);
@@ -227,7 +235,7 @@ public class NotificationMgrTest {
     }
 
     @Test
-    public void testShowDataRoamingNotification_roamingOn() throws Exception {
+    public void testShowDataRoamingNotification_roamingOn() {
         mNotificationMgr.showDataRoamingNotification(TEST_SUB_ID, /*roamingOn=*/true);
 
         verifyNotificationSentWithChannelId(
@@ -235,7 +243,7 @@ public class NotificationMgrTest {
     }
 
     @Test
-    public void testShowDataRoamingNotification_roamingOff() throws Exception {
+    public void testShowDataRoamingNotification_roamingOff() {
         mNotificationMgr.showDataRoamingNotification(TEST_SUB_ID, /*roamingOn=*/false);
 
         verifyNotificationSentWithChannelId(
@@ -250,8 +258,7 @@ public class NotificationMgrTest {
     }
 
     @Test
-    public void testUpdateNetworkSelection_justOutOfService_notificationNeverSent()
-            throws Exception {
+    public void testUpdateNetworkSelection_justOutOfService_notificationNeverSent() {
         prepareResourcesForNetworkSelection();
 
         mNotificationMgr.updateNetworkSelection(ServiceState.STATE_OUT_OF_SERVICE, TEST_SUB_ID);
@@ -265,8 +272,7 @@ public class NotificationMgrTest {
     }
 
     @Test
-    public void testUpdateNetworkSelection_oosEnoughTime_selectionVisibleToUser_notificationSent()
-            throws Exception {
+    public void testUpdateNetworkSelection_oosEnoughTime_selectionVisibleToUser_notificationSent() {
         prepareResourcesForNetworkSelection();
         when(mTelephonyManager.isManualNetworkSelectionAllowed()).thenReturn(true);
         PersistableBundle config = new PersistableBundle();
@@ -288,8 +294,7 @@ public class NotificationMgrTest {
     }
 
     @Test
-    public void testUpdateNetworkSelection_invalidSubscription_notificationNotSent()
-            throws Exception {
+    public void testUpdateNetworkSelection_invalidSubscription_notificationNotSent() {
         prepareResourcesForNetworkSelection();
         when(mTelephonyManager.isManualNetworkSelectionAllowed()).thenReturn(true);
         PersistableBundle config = new PersistableBundle();
@@ -312,8 +317,7 @@ public class NotificationMgrTest {
     }
 
     @Test
-    public void testUpdateNetworkSelection_nullCarrierConfig_notificationNotSent()
-            throws Exception {
+    public void testUpdateNetworkSelection_nullCarrierConfig_notificationNotSent() {
         prepareResourcesForNetworkSelection();
 
         when(mCarrierConfigManager.getConfigForSubId(TEST_SUB_ID)).thenReturn(null);
@@ -329,8 +333,7 @@ public class NotificationMgrTest {
     }
 
     @Test
-    public void testUpdateNetworkSelection_userNotAllowedToChooseOperator_notificationNotSent()
-            throws Exception {
+    public void testUpdateNetworkSelection_userNotAllowedToChooseOperator_notificationNotSent() {
         prepareResourcesForNetworkSelection();
 
         PersistableBundle config = new PersistableBundle();
@@ -353,8 +356,8 @@ public class NotificationMgrTest {
     }
 
     @Test
-    public void testUpdateNetworkSelection_OverrideHideCarrierNetworkSelection_notificationNotSent()
-            throws Exception {
+    public void
+            testUpdateNetworkSelection_OverrideHideCarrierNetworkSelection_notificationNotSent() {
         prepareResourcesForNetworkSelection();
 
         PersistableBundle config = new PersistableBundle();
@@ -401,8 +404,7 @@ public class NotificationMgrTest {
     }
 
     @Test
-    public void testUpdateNetworkSelection_worldMode_userSetLTE_notificationNotSent()
-            throws Exception {
+    public void testUpdateNetworkSelection_worldMode_userSetLTE_notificationNotSent() {
         prepareResourcesForNetworkSelection();
 
         PersistableBundle config = new PersistableBundle();
@@ -431,8 +433,7 @@ public class NotificationMgrTest {
     }
 
     @Test
-    public void testUpdateNetworkSelection_worldMode_userSetTDSCDMA_notSupported_notifNotSent()
-            throws Exception {
+    public void testUpdateNetworkSelection_worldMode_userSetTDSCDMA_notSupported_notifNotSent() {
         prepareResourcesForNetworkSelection();
 
         PersistableBundle config = new PersistableBundle();
@@ -462,8 +463,7 @@ public class NotificationMgrTest {
     }
 
     @Test
-    public void testUpdateNetworkSelection_worldMode_userSetWCDMA_notificationSent()
-            throws Exception {
+    public void testUpdateNetworkSelection_worldMode_userSetWCDMA_notificationSent() {
         prepareResourcesForNetworkSelection();
 
         PersistableBundle config = new PersistableBundle();
@@ -494,8 +494,7 @@ public class NotificationMgrTest {
     }
 
     @Test
-    public void testUpdateNetworkSelection_worldPhone_networkSelectionNotHide_notificationSent()
-            throws Exception {
+    public void testUpdateNetworkSelection_worldPhone_networkSelectionNotHide_notificationSent() {
         prepareResourcesForNetworkSelection();
 
         PersistableBundle config = new PersistableBundle();
@@ -519,8 +518,7 @@ public class NotificationMgrTest {
     }
 
     @Test
-    public void testUpdateNetworkSelection_gsmBasicOptionOn_notificationSent()
-            throws Exception {
+    public void testUpdateNetworkSelection_gsmBasicOptionOn_notificationSent() {
         prepareResourcesForNetworkSelection();
 
         PersistableBundle config = new PersistableBundle();
@@ -545,8 +543,7 @@ public class NotificationMgrTest {
     }
 
     @Test
-    public void testUpdateNetworkSelection_gsmBasicOptionOff_notificationNotSent()
-            throws Exception {
+    public void testUpdateNetworkSelection_gsmBasicOptionOff_notificationNotSent() {
         prepareResourcesForNetworkSelection();
 
         PersistableBundle config = new PersistableBundle();
@@ -569,8 +566,7 @@ public class NotificationMgrTest {
     }
 
     @Test
-    public void testShowLimitedSimFunctionWarningNotification_forTheFirstTime_notificationSent()
-            throws Exception {
+    public void testShowLimitedSimFunctionWarningNotification_forTheFirstTime_notificationSent() {
         when(mResources.getText(R.string.limited_sim_function_notification_message)).thenReturn(
                 CARRIER_NAME);
         when(mResources.getText(
@@ -584,8 +580,8 @@ public class NotificationMgrTest {
     }
 
     @Test
-    public void testShowLimitedSimFunctionWarningNotification_consecutiveCall_notificationSentOnce()
-            throws Exception {
+    public void
+            testShowLimitedSimFunctionWarningNotification_consecutiveCall_notificationSentOnce() {
         when(mResources.getText(R.string.limited_sim_function_notification_message)).thenReturn(
                 CARRIER_NAME);
         when(mResources.getText(
@@ -602,8 +598,7 @@ public class NotificationMgrTest {
     }
 
     @Test
-    public void testDismissLimitedSimFunctionWarningNotification_noShowCalledBefore_noCancelSent()
-            throws Exception {
+    public void testDismissLimitedSimFunctionWarningNotification_noShowCalledBefore_noCancelSent() {
         // showLimitedSimFunctionWarningNotification was never called before
 
         mNotificationMgr.dismissLimitedSimFunctionWarningNotification(TEST_SUB_ID);
@@ -612,8 +607,7 @@ public class NotificationMgrTest {
     }
 
     @Test
-    public void testDismissLimitedSimFunctionWarningNotification_showCalledBefore_cancelSent()
-            throws Exception {
+    public void testDismissLimitedSimFunctionWarningNotification_showCalledBefore_cancelSent() {
         when(mResources.getText(R.string.limited_sim_function_notification_message)).thenReturn(
                 CARRIER_NAME);
         when(mResources.getText(
@@ -650,12 +644,5 @@ public class NotificationMgrTest {
                 MOBILE_NETWORK_SELECTION_PACKAGE);
         when(mApp.getString(R.string.mobile_network_settings_class)).thenReturn(
                 MOBILE_NETWORK_SELECTION_CLASS);
-    }
-
-    private static void replaceInstance(final Class c,
-            final String instanceName, final Object obj, final Object newValue) throws Exception {
-        Field field = c.getDeclaredField(instanceName);
-        field.setAccessible(true);
-        field.set(obj, newValue);
     }
 }

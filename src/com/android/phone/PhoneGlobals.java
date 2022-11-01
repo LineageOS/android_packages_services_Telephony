@@ -81,7 +81,6 @@ import java.io.FileDescriptor;
 import java.io.PrintWriter;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -889,10 +888,8 @@ public class PhoneGlobals extends ContextWrapper {
 
         boolean dataAllowed;
         boolean notAllowedDueToRoamingOff;
-        List<DataDisallowedReason> reasons = new ArrayList<>();
-        if (phone.getDataNetworkController() != null) {
-            reasons = phone.getDataNetworkController().getInternetDataDisallowedReasons();
-        }
+        List<DataDisallowedReason> reasons = phone.getDataNetworkController()
+                .getInternetDataDisallowedReasons();
         dataAllowed = reasons.isEmpty();
         notAllowedDueToRoamingOff = (reasons.size() == 1
                 && reasons.contains(DataDisallowedReason.ROAMING_DISABLED));
@@ -938,11 +935,7 @@ public class PhoneGlobals extends ContextWrapper {
      * @return whether we have transitioned to dataRoaming
      */
     private boolean dataIsNowRoaming(int subId) {
-        if (getPhone(subId).getServiceState() == null) {
-            return false;
-        } else {
-            return getPhone(subId).getServiceState().getDataRoaming();
-        }
+        return getPhone(subId).getServiceState().getDataRoaming();
     }
 
     private void updateLimitedSimFunctionForDualSim() {

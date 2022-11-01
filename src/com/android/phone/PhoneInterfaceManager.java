@@ -6804,12 +6804,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             int phoneId = mSubscriptionController.getPhoneId(subId);
             Phone phone = PhoneFactory.getPhone(phoneId);
             if (phone != null) {
-                boolean retVal;
-                if (phone.getDataSettingsManager() == null) {
-                    retVal = false;
-                } else {
-                    retVal = phone.getDataSettingsManager().isDataEnabled();
-                }
+                boolean retVal = phone.getDataSettingsManager().isDataEnabled();
                 if (DBG) log("isDataEnabled: " + retVal + ", subId=" + subId);
                 return retVal;
             } else {
