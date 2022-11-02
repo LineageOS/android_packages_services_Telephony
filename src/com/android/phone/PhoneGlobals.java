@@ -81,7 +81,6 @@ import java.io.FileDescriptor;
 import java.io.PrintWriter;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -889,10 +888,8 @@ public class PhoneGlobals extends ContextWrapper {
 
         boolean dataAllowed;
         boolean notAllowedDueToRoamingOff;
-        List<DataDisallowedReason> reasons = new ArrayList<>();
-        if (phone.getDataNetworkController() != null) {
-            reasons = phone.getDataNetworkController().getInternetDataDisallowedReasons();
-        }
+        List<DataDisallowedReason> reasons = phone.getDataNetworkController()
+                .getInternetDataDisallowedReasons();
         dataAllowed = reasons.isEmpty();
         notAllowedDueToRoamingOff = (reasons.size() == 1
                 && reasons.contains(DataDisallowedReason.ROAMING_DISABLED));

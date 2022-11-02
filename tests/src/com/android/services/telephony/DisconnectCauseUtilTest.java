@@ -38,18 +38,13 @@ import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.phone.common.R;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 
-import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Locale;
-
 
 @RunWith(AndroidJUnit4.class)
 public class DisconnectCauseUtilTest extends TelephonyTestBase {
@@ -60,41 +55,10 @@ public class DisconnectCauseUtilTest extends TelephonyTestBase {
 
     // dynamic
     private Context mContext;
-    private HashMap<InstanceKey, Object> mOldInstances = new HashMap<InstanceKey, Object>();
-    private ArrayList<InstanceKey> mInstanceKeys = new ArrayList<InstanceKey>();
 
     //Mocks
     @Mock
     private GsmCdmaPhone mMockPhone;
-
-    // inner classes
-    private static class InstanceKey {
-        public final Class mClass;
-        public final String mInstName;
-        public final Object mObj;
-
-        InstanceKey(final Class c, final String instName, final Object obj) {
-            mClass = c;
-            mInstName = instName;
-            mObj = obj;
-        }
-
-        @Override
-        public int hashCode() {
-            return (mClass.getName().hashCode() * 31 + mInstName.hashCode()) * 31;
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            if (obj == null || !(obj instanceof InstanceKey)) {
-                return false;
-            }
-
-            InstanceKey other = (InstanceKey) obj;
-            return (other.mClass == mClass && other.mInstName.equals(mInstName)
-                    && other.mObj == mObj);
-        }
-    }
 
     @Before
     public void setUp() throws Exception {
@@ -105,15 +69,6 @@ public class DisconnectCauseUtilTest extends TelephonyTestBase {
         // set mocks
         setSinglePhone();
     }
-
-    @After
-    public void tearDown() throws Exception {
-        // restoreInstance.
-        // Not doing so will potentially "confuse" other tests with the mocked instance
-        restoreInstance(PhoneFactory.class, "sPhones", null);
-        super.tearDown();
-    }
-
 
     /**
      * Verifies that a call drop due to loss of WIFI results in a disconnect cause of error and that
@@ -174,33 +129,6 @@ public class DisconnectCauseUtilTest extends TelephonyTestBase {
     private void setSinglePhone() throws Exception {
         Phone[] mPhones = new Phone[]{mMockPhone};
         replaceInstance(PhoneFactory.class, "sPhones", null, mPhones);
-    }
-
-
-    protected synchronized void replaceInstance(final Class c, final String instanceName,
-            final Object obj, final Object newValue)
-            throws Exception {
-        Field field = c.getDeclaredField(instanceName);
-        field.setAccessible(true);
-
-        InstanceKey key = new InstanceKey(c, instanceName, obj);
-        if (!mOldInstances.containsKey(key)) {
-            mOldInstances.put(key, field.get(obj));
-            mInstanceKeys.add(key);
-        }
-        field.set(obj, newValue);
-    }
-
-    protected synchronized void restoreInstance(final Class c, final String instanceName,
-            final Object obj) throws Exception {
-        InstanceKey key = new InstanceKey(c, instanceName, obj);
-        if (mOldInstances.containsKey(key)) {
-            Field field = c.getDeclaredField(instanceName);
-            field.setAccessible(true);
-            field.set(obj, mOldInstances.get(key));
-            mOldInstances.remove(key);
-            mInstanceKeys.remove(key);
-        }
     }
 
     private Resources getResourcesForLocale(Context context, Locale locale) {
