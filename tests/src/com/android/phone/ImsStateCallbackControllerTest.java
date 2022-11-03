@@ -52,6 +52,7 @@ import android.test.suitebuilder.annotation.SmallTest;
 import android.testing.TestableLooper;
 import android.util.Log;
 
+import com.android.TelephonyTestBase;
 import com.android.ims.FeatureConnector;
 import com.android.ims.ImsManager;
 import com.android.ims.RcsFeatureManager;
@@ -70,13 +71,12 @@ import org.mockito.MockitoAnnotations;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
-import java.lang.reflect.Field;
 import java.util.concurrent.Executor;
 
 /**
  * Unit tests for RcsProvisioningMonitor
  */
-public class ImsStateCallbackControllerTest {
+public class ImsStateCallbackControllerTest extends TelephonyTestBase {
     private static final String TAG = "ImsStateCallbackControllerTest";
     private static final int FAKE_SUB_ID_BASE = 0x0FFFFFF0;
 
@@ -189,6 +189,7 @@ public class ImsStateCallbackControllerTest {
             mLooper.destroy();
             mLooper = null;
         }
+        super.tearDown();
     }
 
     @Test
@@ -950,13 +951,6 @@ public class ImsStateCallbackControllerTest {
             verify(mRcsFeatureConnectorSlot1, atLeastOnce()).connect();
             verify(mMmTelFeatureConnectorSlot1, atLeastOnce()).connect();
         }
-    }
-
-    private static void replaceInstance(final Class c,
-            final String instanceName, final Object obj, final Object newValue) throws Exception {
-        Field field = c.getDeclaredField(instanceName);
-        field.setAccessible(true);
-        field.set(obj, newValue);
     }
 
     private void makeFakeActiveSubIds(int count) {

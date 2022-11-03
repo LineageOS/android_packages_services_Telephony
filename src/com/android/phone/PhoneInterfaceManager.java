@@ -385,6 +385,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private SharedPreferences mTelephonySharedPreferences;
     private PhoneConfigurationManager mPhoneConfigurationManager;
     private final RadioInterfaceCapabilityController mRadioInterfaceCapabilities;
+    private final Telephony2gUpdater mTelephony2gUpdater;
 
     /** User Activity */
     private AtomicBoolean mNotifyUserActivity;
@@ -2401,6 +2402,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         mRadioInterfaceCapabilities = RadioInterfaceCapabilityController.getInstance();
         mNotifyUserActivity = new AtomicBoolean(false);
         PropertyInvalidatedCache.invalidateCache(TelephonyManager.CACHE_KEY_PHONE_ACCOUNT_TO_SUBID);
+        mTelephony2gUpdater = new Telephony2gUpdater(
+                Executors.newSingleThreadExecutor(), mApp);
+        mTelephony2gUpdater.init();
         publish();
     }
 
@@ -6804,12 +6808,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             int phoneId = mSubscriptionController.getPhoneId(subId);
             Phone phone = PhoneFactory.getPhone(phoneId);
             if (phone != null) {
-                boolean retVal;
-                if (phone.getDataSettingsManager() == null) {
-                    retVal = false;
-                } else {
-                    retVal = phone.getDataSettingsManager().isDataEnabled();
-                }
+                boolean retVal = phone.getDataSettingsManager().isDataEnabled();
                 if (DBG) log("isDataEnabled: " + retVal + ", subId=" + subId);
                 return retVal;
             } else {
@@ -7852,7 +7851,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 if (!localeFromDefaultSim.getCountry().isEmpty()) {
                     if (DBG) log("Using locale from subId: " + subId + " locale: "
                             + localeFromDefaultSim);
-                    return matchLocaleFromSupportedLocaleList(localeFromDefaultSim);
+                    return matchLocaleFromSupportedLocaleList(phone, localeFromDefaultSim);
                 } else {
                     simLanguage = localeFromDefaultSim.getLanguage();
                 }
@@ -7865,7 +7864,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             final Locale mccLocale = LocaleUtils.getLocaleFromMcc(mApp, mcc, simLanguage);
             if (mccLocale != null) {
                 if (DBG) log("No locale from SIM, using mcc locale:" + mccLocale);
-                return matchLocaleFromSupportedLocaleList(mccLocale);
+                return matchLocaleFromSupportedLocaleList(phone, mccLocale);
             }
 
             if (DBG) log("No locale found - returning null");
@@ -7876,13 +7875,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @VisibleForTesting
-    String matchLocaleFromSupportedLocaleList(@NonNull Locale inputLocale) {
+    String matchLocaleFromSupportedLocaleList(Phone phone, @NonNull Locale inputLocale) {
         String[] supportedLocale = com.android.internal.app.LocalePicker.getSupportedLocales(
-                getDefaultPhone().getContext());
+                phone.getContext());
         for (String localeTag : supportedLocale) {
-            if (LocaleList.matchesLanguageAndScript(
-                    inputLocale, Locale.forLanguageTag(localeTag))
-                    && inputLocale.getCountry().equals(
+            if (LocaleList.matchesLanguageAndScript(inputLocale, Locale.forLanguageTag(localeTag))
+                    && TextUtils.equals(inputLocale.getCountry(),
                     Locale.forLanguageTag(localeTag).getCountry())) {
                 return localeTag;
             }
