@@ -192,6 +192,7 @@ public class CarrierConfigLoaderTest extends TelephonyTestBase {
      * will return the right config in the XML.
      */
     @Test
+    @Ignore("b/257169357")
     public void testUpdateConfigForPhoneId_simLoaded_withCachedConfigInXml() throws Exception {
         // Bypass case if default subId is not supported by device to reduce flakiness
         if (!SubscriptionManager.isValidPhoneId(SubscriptionManager.getPhoneId(DEFAULT_SUB_ID))) {
