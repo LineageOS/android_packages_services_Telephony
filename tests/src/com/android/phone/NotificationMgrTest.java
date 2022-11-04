@@ -62,6 +62,7 @@ import android.os.UserHandle;
 import android.os.UserManager;
 import android.telecom.TelecomManager;
 import android.telephony.CarrierConfigManager;
+import android.telephony.NetworkRegistrationInfo;
 import android.telephony.ServiceState;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
@@ -73,6 +74,8 @@ import com.android.TelephonyTestBase;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.PhoneFactory;
+import com.android.internal.telephony.ServiceStateTracker;
+import com.android.internal.telephony.SignalStrengthController;
 import com.android.internal.telephony.data.DataConfigManager;
 import com.android.internal.telephony.data.DataNetworkController;
 import com.android.internal.telephony.data.DataSettingsManager;
@@ -115,11 +118,13 @@ public class NotificationMgrTest extends TelephonyTestBase {
     @Mock SubscriptionInfo mSubscriptionInfo;
     @Mock Resources mResources;
     @Mock Context mMockedContext;
+    @Mock ServiceStateTracker mServiceStateTracker;
     @Mock ServiceState mServiceState;
     @Mock CarrierConfigManager mCarrierConfigManager;
     @Mock DataNetworkController mDataNetworkController;
     @Mock DataSettingsManager mDataSettingsManager;
     @Mock DataConfigManager mDataConfigManager;
+    @Mock SignalStrengthController mSignalStrengthController;
 
     private Phone[] mPhones;
     private NotificationMgr mNotificationMgr;
@@ -133,6 +138,14 @@ public class NotificationMgrTest extends TelephonyTestBase {
         when(mPhone.getContext()).thenReturn(mMockedContext);
         when(mMockedContext.getResources()).thenReturn(mResources);
         when(mPhone.getServiceState()).thenReturn(mServiceState);
+        when(mServiceState.getNetworkRegistrationInfo(anyInt(), anyInt())).thenReturn(
+                new NetworkRegistrationInfo.Builder()
+                        .setAccessNetworkTechnology(TelephonyManager.NETWORK_TYPE_LTE)
+                        .setRegistrationState(NetworkRegistrationInfo.REGISTRATION_STATE_HOME)
+                        .build());
+        when(mPhone.getServiceStateTracker()).thenReturn(mServiceStateTracker);
+        mServiceStateTracker.mSS = mServiceState;
+        when(mPhone.getSignalStrengthController()).thenReturn(mSignalStrengthController);
         when(mPhone.getDataNetworkController()).thenReturn(mDataNetworkController);
         when(mDataNetworkController.getInternetDataDisallowedReasons()).thenReturn(
                 Collections.emptyList());
