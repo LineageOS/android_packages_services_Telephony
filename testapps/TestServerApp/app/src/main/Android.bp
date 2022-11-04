@@ -1,0 +1,30 @@
+package {
+    // See: http://go/android-license-faq
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+java_import {
+    name: "sun-http-server",
+    jars: ["libs/http-2.2.1.jar", "libs/sun-common-server.jar"],
+}
+
+android_app {
+    name: "TestServerApp",
+    srcs: [
+        "java/com/google/android/testserverapp/*.java",
+    ],
+    static_libs: [
+        "androidx-constraintlayout_constraintlayout",
+        "androidx.appcompat_appcompat",
+        "sun-http-server",
+    ],
+    libs: ["org.apache.http.legacy"],
+    certificate: "platform",
+    privileged: true,
+    product_specific: true,
+    sdk_version: "system_current",
+    min_sdk_version: "30",
+    optimize: {
+        proguard_flags_files: ["proguard.flags"],
+    },
+}
