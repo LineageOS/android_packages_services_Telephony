@@ -17,7 +17,7 @@
       android:id="@+id/textView3"
       android:layout_width="342dp"
       android:layout_height="49dp"
-      android:text="CBS"
+      android:text="@string/cbs_title"
       tools:layout_editor_absoluteX="19dp"
       tools:layout_editor_absoluteY="7dp" />
   <Button
@@ -25,7 +25,7 @@
       android:layout_width="186dp"
       android:layout_height="57dp"
       android:layout_marginTop="164dp"
-      android:text="Request Network"
+      android:text="@string/request_network"
       app:layout_constraintTop_toTopOf="parent"
       tools:layout_editor_absoluteX="112dp" />
   <Button
@@ -33,14 +33,14 @@
       android:layout_width="187dp"
       android:layout_height="61dp"
       android:layout_marginTop="124dp"
-      android:text="Release Network"
+      android:text="@string/release_network"
       app:layout_constraintTop_toBottomOf="@+id/requestcbs"
       tools:layout_editor_absoluteX="119dp" />
   <Button
       android:id="@+id/pingcbs"
       android:layout_width="186dp"
       android:layout_height="55dp"
-      android:text="Ping"
+      android:text="@string/ping"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/releasecbs"
       tools:layout_editor_absoluteX="120dp" />
