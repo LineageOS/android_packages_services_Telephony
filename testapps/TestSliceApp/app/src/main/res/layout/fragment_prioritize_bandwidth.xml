@@ -8,7 +8,9 @@
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:id="@+id/frameLayoutBW">
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/frameLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -17,7 +19,7 @@
       android:id="@+id/textView2"
       android:layout_width="371dp"
       android:layout_height="52dp"
-      android:text="@string/bw_title"
+      android:text="Prioritize Bandwidth"
       tools:layout_editor_absoluteX="20dp"
       tools:layout_editor_absoluteY="4dp" />
   <Button
@@ -25,7 +27,7 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginBottom="64dp"
-      android:text="@string/release_network"
+      android:text="Release Network"
       app:layout_constraintBottom_toTopOf="@+id/requestbw"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
@@ -36,7 +38,7 @@
       android:layout_width="182dp"
       android:layout_height="42dp"
       android:layout_marginBottom="228dp"
-      android:text="@string/ping"
+      android:text="Ping"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.493"
@@ -46,7 +48,7 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginTop="308dp"
-      android:text="@string/request_network"
+      android:text="RequestNetwork"
       app:layout_constraintBottom_toTopOf="@+id/pingbw"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.495"

@@ -21,9 +21,9 @@
         android:sharedUserId="android.uid.phone"
         android:sharedUserLabel="@string/phoneAppLabel">
 
-    <!-- Allows broadcasting for SlicePurchaseController events. -->
-    <protected-broadcast android:name="com.android.phone.slice.action.START_SLICE_PURCHASE_APP" />
-    <protected-broadcast android:name="com.android.phone.slice.action.SLICE_PURCHASE_APP_RESPONSE_TIMEOUT" />
+    <!-- Allows broadcasting for SliceStore events. -->
+    <protected-broadcast android:name="com.android.phone.slicestore.action.START_SLICE_STORE" />
+    <protected-broadcast android:name="com.android.phone.slicestore.action.SLICE_STORE_RESPONSE_TIMEOUT" />
 
     <original-package android:name="com.android.phone" />
     <!-- Allows granting runtime permissions to telephony related components. -->

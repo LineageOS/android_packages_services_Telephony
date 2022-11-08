@@ -211,7 +211,7 @@ import com.android.phone.callcomposer.CallComposerPictureManager;
 import com.android.phone.callcomposer.CallComposerPictureTransfer;
 import com.android.phone.callcomposer.ImageData;
 import com.android.phone.settings.PickSmsSubscriptionActivity;
-import com.android.phone.slice.SlicePurchaseController;
+import com.android.phone.slicestore.SliceStore;
 import com.android.phone.vvm.PhoneAccountHandleConverter;
 import com.android.phone.vvm.RemoteVvmTaskManager;
 import com.android.phone.vvm.VisualVoicemailSettingsUtil;
@@ -2160,7 +2160,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     onCompleted = obtainMessage(EVENT_PURCHASE_PREMIUM_CAPABILITY_DONE, request);
                     PurchasePremiumCapabilityArgument arg =
                             (PurchasePremiumCapabilityArgument) request.argument;
-                    SlicePurchaseController.getInstance(request.phone).purchasePremiumCapability(
+                    SliceStore.getInstance(request.phone).purchasePremiumCapability(
                             arg.capability, arg.appName, onCompleted);
                     break;
                 }
@@ -11268,7 +11268,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         Phone phone = getPhone(subId);
         final long identity = Binder.clearCallingIdentity();
         try {
-            return SlicePurchaseController.getInstance(phone)
+            return SliceStore.getInstance(phone)
                     .isPremiumCapabilityAvailableForPurchase(capability);
         } finally {
             Binder.restoreCallingIdentity(identity);

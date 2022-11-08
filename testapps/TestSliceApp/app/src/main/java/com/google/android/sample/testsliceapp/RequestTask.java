@@ -35,7 +35,6 @@ class RequestTask extends AsyncTask<Network, Integer, Integer> {
         try {
             url = new URL("http://www.google.com");
         } catch (Exception e) {
-            Log.d("SliceTest", "exception: " + e);
         }
         if (url != null) {
             try {
