@@ -2243,7 +2243,7 @@ public class TelephonyConnectionService extends ConnectionService {
             return true;
         }
 
-        return false;
+        return maybeReselectDomainForNormalCall(c, callFailCause, reasonInfo);
     }
 
     private boolean maybeReselectDomainForEmergencyCall(final TelephonyConnection c,
@@ -2285,6 +2285,42 @@ public class TelephonyConnectionService extends ConnectionService {
         mEmergencyStateTracker.endCall(c.getTelecomCallId());
         releaseEmergencyCallDomainSelection(true);
 
+        return false;
+    }
+
+    private boolean maybeReselectDomainForNormalCall(
+            final TelephonyConnection c, int callFailCause, ImsReasonInfo reasonInfo) {
+
+        Log.i(LOG_TAG, "maybeReselectDomainForNormalCall " + "csCause:" +  callFailCause
+                + ", psCause:" + reasonInfo);
+
+        if (mDomainSelectionConnection != null && c.getOriginalConnection() != null) {
+            Phone phone = c.getPhone();
+            final String number = c.getAddress().getSchemeSpecificPart();
+            int videoState = c.getOriginalConnection().getVideoState();
+            SelectionAttributes selectionAttributes = NormalCallDomainSelectionConnection
+                    .getSelectionAttributes(phone.getPhoneId(), phone.getSubId(),
+                            c.getTelecomCallId(), number, VideoProfile.isVideo(videoState),
+                            callFailCause, reasonInfo);
+
+            Log.d(LOG_TAG, "Reselecting the domain for call");
+            CompletableFuture<Integer> future = mDomainSelectionConnection
+                    .reselectDomain(selectionAttributes);
+            if (future != null) {
+                future.thenAcceptAsync((result) -> {
+                    onNormalCallRedial(c, result, videoState);
+                }, mDomainSelectionMainExecutor);
+                return true;
+            }
+        }
+
+        c.removeTelephonyConnectionListener(mTelephonyConnectionListener);
+        if (mDomainSelectionConnection != null) {
+            mDomainSelectionConnection.finishSelection();
+            mDomainSelectionConnection = null;
+        }
+        mNormalCallConnection = null;
+        Log.d(LOG_TAG, "Reselecting the domain for call failed");
         return false;
     }
 
@@ -2437,6 +2473,51 @@ public class TelephonyConnectionService extends ConnectionService {
             }
         }
         onEmergencyRedialOnDomain(connection, phone, result);
+    }
+
+    private void onNormalCallRedial(TelephonyConnection connection,
+            @NetworkRegistrationInfo.Domain int domain, int videocallState) {
+
+        Log.v(LOG_TAG, "Redialing the call in domain:"
+                + DomainSelectionService.getDomainName(domain));
+
+        String number = connection.getAddress().getSchemeSpecificPart();
+        Phone phone = connection.getPhone();
+
+        Bundle extras = new Bundle();
+        extras.putInt(PhoneConstants.EXTRA_DIAL_DOMAIN, domain);
+
+        com.android.internal.telephony.Connection originalConnection =
+                connection.getOriginalConnection();
+        if (originalConnection instanceof ImsPhoneConnection) {
+            if (((ImsPhoneConnection) originalConnection).isRttEnabledForCall()) {
+                extras.putBoolean(TelecomManager.EXTRA_START_CALL_WITH_RTT, true);
+            }
+        }
+
+        try {
+            if (phone != null) {
+                Log.d(LOG_TAG, "Redialing Call.");
+                originalConnection = phone.dial(number, new ImsPhone.ImsDialArgs.Builder()
+                                .setVideoState(videocallState)
+                                .setIntentExtras(extras)
+                                .setRttTextStream(connection.getRttTextStream())
+                                .setIsEmergency(false)
+                                .build(),
+                        connection::registerForCallEvents);
+            }
+        } catch (Exception e) {
+            Log.e(LOG_TAG, e, "Call redial exception: " + e);
+        }
+        if (originalConnection == null) {
+            Log.e(LOG_TAG, new Exception("Phone is null"),
+                    "Call redial failure due to phone.dial returned null");
+            connection.setDisconnected(mDisconnectCauseFactory.toTelecomDisconnectCause(
+                    android.telephony.DisconnectCause.OUTGOING_FAILURE, "connection is null"));
+            connection.close();
+        } else {
+            connection.setOriginalConnection(originalConnection);
+        }
     }
 
     protected void onLocalHangup(TelephonyConnection c) {
