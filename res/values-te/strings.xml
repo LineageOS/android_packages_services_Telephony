@@ -582,8 +582,8 @@
     <string name="onscreenAddCallText" msgid="9075675082903611677">"కాల్‌ను జోడించు"</string>
     <string name="onscreenMergeCallsText" msgid="3692389519611225407">"కాల్స్‌ను విలీనం చేయి"</string>
     <string name="onscreenSwapCallsText" msgid="2682542150803377991">"స్వాప్ చేయి"</string>
-    <string name="onscreenManageCallsText" msgid="1162047856081836469">"కాల్స్‌ను నిర్వహించు"</string>
-    <string name="onscreenManageConferenceText" msgid="4700574060601755137">"కాన్ఫరెన్స్‌ను నిర్వహించు"</string>
+    <string name="onscreenManageCallsText" msgid="1162047856081836469">"కాల్స్‌ను మేనేజ్ చేయండి"</string>
+    <string name="onscreenManageConferenceText" msgid="4700574060601755137">"కాన్ఫరెన్స్‌ను మేనేజ్ చేయండి"</string>
     <string name="onscreenAudioText" msgid="7224226735052019986">"ఆడియో"</string>
     <string name="onscreenVideoCallText" msgid="1743992456126258698">"వీడియో కాల్"</string>
     <string name="importSimEntry" msgid="3892354284082689894">"దిగుమతి చేయండి"</string>
