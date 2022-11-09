@@ -79,10 +79,10 @@ android_app {
     },
 }
 
-// Allow other applications to use public constants from SliceStore
+// Allow other applications to use public constants from SlicePurchaseController
 java_library {
-    name: "SliceStore",
-    srcs: ["src/com/android/phone/slicestore/SliceStore.java",],
+    name: "SlicePurchaseController",
+    srcs: ["src/com/android/phone/slice/SlicePurchaseController.java",],
     libs: ["telephony-common"],
 }
 
