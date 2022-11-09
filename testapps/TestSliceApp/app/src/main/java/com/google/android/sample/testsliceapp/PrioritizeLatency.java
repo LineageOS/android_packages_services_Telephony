@@ -22,7 +22,7 @@ import static android.telephony.TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RES
 import static android.telephony.TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_ENTITLEMENT_CHECK_FAILED;
 import static android.telephony.TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_FEATURE_NOT_SUPPORTED;
 import static android.telephony.TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_NETWORK_NOT_AVAILABLE;
-import static android.telephony.TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_NOT_DEFAULT_DATA_SUB;
+import static android.telephony.TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_NOT_DEFAULT_DATA_SUBSCRIPTION;
 import static android.telephony.TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_OVERRIDDEN;
 import static android.telephony.TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_PENDING_NETWORK_SETUP;
 import static android.telephony.TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_SUCCESS;
@@ -272,8 +272,8 @@ public class PrioritizeLatency extends Fragment {
                 return "Network not available";
             case PURCHASE_PREMIUM_CAPABILITY_RESULT_ENTITLEMENT_CHECK_FAILED:
                 return "Entitlement check failed";
-            case PURCHASE_PREMIUM_CAPABILITY_RESULT_NOT_DEFAULT_DATA_SUB:
-                return "No default data";
+            case PURCHASE_PREMIUM_CAPABILITY_RESULT_NOT_DEFAULT_DATA_SUBSCRIPTION:
+                return "Not default data subscription";
             case PURCHASE_PREMIUM_CAPABILITY_RESULT_PENDING_NETWORK_SETUP:
                 return "Pending network setup";
             default:
