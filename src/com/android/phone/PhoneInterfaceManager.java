@@ -180,6 +180,7 @@ import com.android.internal.telephony.RIL;
 import com.android.internal.telephony.RILConstants;
 import com.android.internal.telephony.RadioInterfaceCapabilityController;
 import com.android.internal.telephony.ServiceStateTracker;
+import com.android.internal.telephony.SmsApplication;
 import com.android.internal.telephony.SmsController;
 import com.android.internal.telephony.SmsPermissions;
 import com.android.internal.telephony.SubscriptionController;
@@ -204,6 +205,7 @@ import com.android.internal.telephony.uicc.UiccPort;
 import com.android.internal.telephony.uicc.UiccProfile;
 import com.android.internal.telephony.uicc.UiccSlot;
 import com.android.internal.telephony.util.LocaleUtils;
+import com.android.internal.telephony.util.TelephonyUtils;
 import com.android.internal.telephony.util.VoicemailNotificationSettingsUtil;
 import com.android.internal.util.FunctionalUtils;
 import com.android.internal.util.HexDump;
@@ -8242,6 +8244,16 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
+     * Make sure either called from same process as self (phone) or IPC caller has interact across
+     * users permission.
+     *
+     * @throws SecurityException if the caller does not have the required permission
+     */
+    private void enforceInteractAcrossUsersPermission(String message) {
+        mApp.enforceCallingOrSelfPermission(permission.INTERACT_ACROSS_USERS, message);
+    }
+
+    /**
      * Make sure called from the package in charge of visual voicemail.
      *
      * @throws SecurityException if the caller is not the visual voicemail package.
@@ -11514,5 +11526,28 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
+    /**
+     * Get the component name of the default app to direct respond-via-message intent for the
+     * user associated with this subscription, update the cache if there is no respond-via-message
+     * application currently configured for this user.
+     * @return component name of the app and class to direct Respond Via Message intent to, or
+     * {@code null} if the functionality is not supported.
+     * @hide
+     */
+    @Override
+    public @Nullable ComponentName getDefaultRespondViaMessageApplication(int subId,
+            boolean updateIfNeeded) {
+        enforceInteractAcrossUsersPermission("getDefaultRespondViaMessageApplication");
 
+        Context context = getPhone(subId).getContext();
+        UserHandle userHandle = null;
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            userHandle = TelephonyUtils.getSubscriptionUserHandle(context, subId);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+        return SmsApplication.getDefaultRespondViaMessageApplicationAsUser(context,
+                updateIfNeeded, userHandle);
+    }
 }
