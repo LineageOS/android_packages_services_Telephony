@@ -50,6 +50,7 @@ import android.util.Log;
 import com.android.ims.ImsManager;
 import com.android.ims.internal.IImsServiceFeatureCallback;
 import com.android.internal.telephony.IIntegerConsumer;
+import com.android.internal.telephony.ISipDialogStateCallback;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.TelephonyPermissions;
 import com.android.internal.telephony.ims.ImsResolver;
@@ -661,6 +662,60 @@ public class ImsRcsController extends IImsRcsController.Stub {
             transport.triggerFullNetworkRegistration(subId, connection, sipCode, sipReason);
         } catch (ServiceSpecificException e) {
             Log.e(TAG, "triggerNetworkRegistration: error=" + e.errorCode);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Register a state of Sip Dialog callback
+     */
+    @Override
+    public void registerSipDialogStateCallback(int subId, ISipDialogStateCallback cb) {
+        enforceReadPrivilegedPermission("registerSipDialogStateCallback");
+        if (cb == null) {
+            throw new IllegalArgumentException("SipDialogStateCallback is null");
+        }
+        final long identity = Binder.clearCallingIdentity();
+        if (!SubscriptionManager.isValidSubscriptionId(subId)) {
+            throw new IllegalArgumentException("Invalid Subscription ID: " + subId);
+        }
+        try {
+            SipTransportController transport = getRcsFeatureController(subId).getFeature(
+                    SipTransportController.class);
+            if (transport == null) {
+                throw new ServiceSpecificException(ImsException.CODE_ERROR_SERVICE_UNAVAILABLE,
+                        "This transport does not support the registerSipDialogStateCallback"
+                                + " of SIP delegates");
+            }
+            transport.addCallbackForSipDialogState(subId, cb);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Unregister a state of Sip Dialog callback
+     */
+    @Override
+    public  void unregisterSipDialogStateCallback(int subId, ISipDialogStateCallback cb) {
+        enforceReadPrivilegedPermission("unregisterSipDialogStateCallback");
+        if (cb == null) {
+            throw new IllegalArgumentException("SipDialogStateCallback is null");
+        }
+        final long identity = Binder.clearCallingIdentity();
+        if (!SubscriptionManager.isValidSubscriptionId(subId)) {
+            throw new IllegalArgumentException("Invalid Subscription ID: " + subId);
+        }
+        try {
+            SipTransportController transport = getRcsFeatureController(subId).getFeature(
+                    SipTransportController.class);
+            if (transport == null) {
+                throw new ServiceSpecificException(ImsException.CODE_ERROR_SERVICE_UNAVAILABLE,
+                        "This transport does not support the unregisterSipDialogStateCallback"
+                                + " of SIP delegates");
+            }
+            transport.removeCallbackForSipDialogState(subId, cb);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
