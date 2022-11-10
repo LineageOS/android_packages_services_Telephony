@@ -18,7 +18,6 @@ package com.android.phone.slice;
 
 import android.annotation.NonNull;
 import android.annotation.Nullable;
-import android.content.Context;
 import android.os.PersistableBundle;
 import android.provider.DeviceConfig;
 import android.telephony.AnomalyReporter;
@@ -37,8 +36,12 @@ import org.json.JSONObject;
 
 import java.util.UUID;
 
-class PremiumNetworkEntitlementApi {
-    private static final String TAG = "PremiumNetworkEntitlementApi";
+/**
+ * Premium network entitlement API class to check the premium network slice entitlement result
+ * from carrier API over the network.
+ */
+public class PremiumNetworkEntitlementApi {
+    private static final String TAG = "PremiumNwEntitlementApi";
     private static final String ENTITLEMENT_STATUS_KEY = "EntitlementStatus";
     private static final String PROVISION_STATUS_KEY = "ProvisionStatus";
     private static final String SERVICE_FLOW_URL_KEY = "ServiceFlow_URL";
@@ -61,12 +64,11 @@ class PremiumNetworkEntitlementApi {
             "bypass_eap_aka_auth_for_slice_purchase_enabled";
 
     @NonNull private final Phone mPhone;
-    @NonNull private final PersistableBundle mCarrierConfig;
     @NonNull private final ServiceEntitlement mServiceEntitlement;
 
-    PremiumNetworkEntitlementApi(@NonNull Phone phone, PersistableBundle carrierConfig) {
+    public PremiumNetworkEntitlementApi(@NonNull Phone phone,
+            @NonNull PersistableBundle carrierConfig) {
         mPhone = phone;
-        mCarrierConfig = carrierConfig;
         if (isBypassEapAkaAuthForSlicePurchaseEnabled()) {
             mServiceEntitlement =
                     new ServiceEntitlement(
@@ -89,8 +91,7 @@ class PremiumNetworkEntitlementApi {
      * or {@code null} on unrecoverable network issue or malformed server response.
      * This is blocking call sending HTTP request and should not be called on main thread.
      */
-    @Nullable
-    public PremiumNetworkEntitlementResponse checkEntitlementStatus(
+    @Nullable public PremiumNetworkEntitlementResponse checkEntitlementStatus(
             @TelephonyManager.PremiumCapability int capability) {
         Log.d(TAG, "checkEntitlementStatus subId=" + mPhone.getSubId());
         ServiceEntitlementRequest.Builder requestBuilder = ServiceEntitlementRequest.builder();
@@ -132,24 +133,28 @@ class PremiumNetworkEntitlementApi {
                         return null;
                     }
                     premiumNetworkEntitlementResponse.mEntitlementStatus =
-                            Integer.valueOf(entitlementStatus);
+                            Integer.parseInt(entitlementStatus);
                 }
                 if (jsonToken.has(PROVISION_STATUS_KEY)) {
                     provisionStatus = jsonToken.getString(PROVISION_STATUS_KEY);
                     if (provisionStatus != null) {
                         premiumNetworkEntitlementResponse.mProvisionStatus =
-                                Integer.valueOf(provisionStatus);
+                                Integer.parseInt(provisionStatus);
                     }
                 }
                 if (jsonToken.has(PROVISION_TIME_LEFT_KEY)) {
                     provisionTimeLeft = jsonToken.getString(PROVISION_TIME_LEFT_KEY);
                     if (provisionTimeLeft != null) {
                         premiumNetworkEntitlementResponse.mEntitlementStatus =
-                                Integer.valueOf(provisionTimeLeft);
+                                Integer.parseInt(provisionTimeLeft);
                     }
                 }
                 if (jsonToken.has(SERVICE_FLOW_URL_KEY)) {
                     provisionStatus = jsonToken.getString(SERVICE_FLOW_URL_KEY);
+                    if (provisionStatus != null) {
+                        premiumNetworkEntitlementResponse.mProvisionStatus =
+                                Integer.parseInt(provisionStatus);
+                    }
                     premiumNetworkEntitlementResponse.mServiceFlowURL =
                             jsonToken.getString(SERVICE_FLOW_URL_KEY);
                 }
@@ -160,6 +165,10 @@ class PremiumNetworkEntitlementApi {
             Log.e(TAG, "queryEntitlementStatus failed", e);
             reportAnomaly(UUID_ENTITLEMENT_CHECK_UNEXPECTED_ERROR,
                     "checkEntitlementStatus failed with JSONException");
+        } catch (NumberFormatException e) {
+            Log.e(TAG, "queryEntitlementStatus failed", e);
+            reportAnomaly(UUID_ENTITLEMENT_CHECK_UNEXPECTED_ERROR,
+                    "checkEntitlementStatus failed with NumberFormatException");
         }
 
         return premiumNetworkEntitlementResponse;
@@ -169,31 +178,20 @@ class PremiumNetworkEntitlementApi {
         AnomalyReporter.reportAnomaly(UUID.fromString(uuid), log);
     }
 
-
-    /** Returns carrier config for the {@code subId}. */
-    private static PersistableBundle getConfigForSubId(Context context, int subId) {
-        CarrierConfigManager carrierConfigManager =
-                context.getSystemService(CarrierConfigManager.class);
-        PersistableBundle carrierConfig = carrierConfigManager.getConfigForSubId(subId);
-        if (carrierConfig == null) {
-            Log.d(TAG, "getDefaultConfig");
-            carrierConfig = CarrierConfigManager.getDefaultConfig();
-        }
-        return carrierConfig;
-    }
-
     /**
-     * Returns entitlement server url for the {@code subId} or
-     * a default empty string if it is not available.
+     * Returns entitlement server url from the given carrier configs or a default empty string
+     * if it is not available.
      */
-    public static String getEntitlementServerUrl(PersistableBundle carrierConfig, int subId) {
+    @NonNull public static String getEntitlementServerUrl(
+            @NonNull PersistableBundle carrierConfig) {
         return carrierConfig.getString(
                 CarrierConfigManager.ImsServiceEntitlement.KEY_ENTITLEMENT_SERVER_URL_STRING,
                 "");
     }
 
-    private CarrierConfig getEntitlementServerCarrierConfig(PersistableBundle carrierConfig) {
-        String entitlementServiceUrl = getEntitlementServerUrl(carrierConfig, mPhone.getSubId());
+    @NonNull private CarrierConfig getEntitlementServerCarrierConfig(
+            @NonNull PersistableBundle carrierConfig) {
+        String entitlementServiceUrl = getEntitlementServerUrl(carrierConfig);
         return CarrierConfig.builder().setServerUrl(entitlementServiceUrl).build();
     }
 

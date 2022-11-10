@@ -47,6 +47,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.webkit.WebView;
 
+import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.telephony.Phone;
 
 import java.lang.annotation.Retention;
@@ -252,8 +253,8 @@ public class SlicePurchaseController extends Handler {
             mSlicePurchaseControllerBroadcastReceivers = new HashMap<>();
     /** The current network slicing configuration. */
     @Nullable private NetworkSlicingConfig mSlicingConfig;
-    /* Premium network entitlement query API */
-    @NonNull private PremiumNetworkEntitlementApi mPremiumNetworkEntitlementApi;
+    /** Premium network entitlement query API */
+    @NonNull private final PremiumNetworkEntitlementApi mPremiumNetworkEntitlementApi;
 
     private class SlicePurchaseControllerBroadcastReceiver extends BroadcastReceiver {
         @TelephonyManager.PremiumCapability private final int mCapability;
@@ -367,7 +368,8 @@ public class SlicePurchaseController extends Handler {
         return sInstances.get(phoneId);
     }
 
-    private SlicePurchaseController(@NonNull Phone phone, @NonNull Looper looper) {
+    @VisibleForTesting
+    public SlicePurchaseController(@NonNull Phone phone, @NonNull Looper looper) {
         super(looper);
         mPhone = phone;
         // TODO: Create a cached value for slicing config in DataIndication and initialize here
