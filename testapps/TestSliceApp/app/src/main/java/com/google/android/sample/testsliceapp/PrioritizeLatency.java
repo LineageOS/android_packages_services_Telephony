@@ -19,8 +19,8 @@ import static android.telephony.TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RES
 import static android.telephony.TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_ALREADY_PURCHASED;
 import static android.telephony.TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_CARRIER_DISABLED;
 import static android.telephony.TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_CARRIER_ERROR;
+import static android.telephony.TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_ENTITLEMENT_CHECK_FAILED;
 import static android.telephony.TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_FEATURE_NOT_SUPPORTED;
-import static android.telephony.TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_NETWORK_CONGESTED;
 import static android.telephony.TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_NETWORK_NOT_AVAILABLE;
 import static android.telephony.TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_NOT_DEFAULT_DATA_SUB;
 import static android.telephony.TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_OVERRIDDEN;
@@ -270,8 +270,8 @@ public class PrioritizeLatency extends Fragment {
                 return "Feature not supported";
             case PURCHASE_PREMIUM_CAPABILITY_RESULT_NETWORK_NOT_AVAILABLE:
                 return "Network not available";
-            case PURCHASE_PREMIUM_CAPABILITY_RESULT_NETWORK_CONGESTED:
-                return "Network congested";
+            case PURCHASE_PREMIUM_CAPABILITY_RESULT_ENTITLEMENT_CHECK_FAILED:
+                return "Entitlement check failed";
             case PURCHASE_PREMIUM_CAPABILITY_RESULT_NOT_DEFAULT_DATA_SUB:
                 return "No default data";
             case PURCHASE_PREMIUM_CAPABILITY_RESULT_PENDING_NETWORK_SETUP:
