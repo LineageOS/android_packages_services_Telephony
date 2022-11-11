@@ -310,8 +310,8 @@ public class TelecomAccountRegistry {
                 subNumber = "";
             }
 
-            String label;
-            String description;
+            String label = "";
+            String description = "";
             Icon icon = null;
 
             // We can only get the real slotId from the SubInfoRecord, we can't calculate the
@@ -327,7 +327,9 @@ public class TelecomAccountRegistry {
             } else if (mTelephonyManager.getPhoneCount() == 1) {
                 // For single-SIM devices, we show the label and description as whatever the name of
                 // the network is.
-                description = label = tm.getNetworkOperatorName();
+                if (record != null) {
+                    description = label = String.valueOf(record.getDisplayName());
+                }
             } else {
                 CharSequence subDisplayName = null;
 
