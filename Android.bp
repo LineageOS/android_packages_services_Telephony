@@ -43,6 +43,7 @@ android_app {
         "PlatformProperties",
         "modules-utils-os",
         "nist-sip",
+        "service-entitlement"
     ],
 
     srcs: [
@@ -82,8 +83,11 @@ android_app {
 // Allow other applications to use public constants from SlicePurchaseController
 java_library {
     name: "SlicePurchaseController",
-    srcs: ["src/com/android/phone/slice/SlicePurchaseController.java",],
-    libs: ["telephony-common"],
+    srcs: ["src/com/android/phone/slice/*.java",],
+    libs: [
+        "telephony-common",
+        "service-entitlement"
+        ],
 }
 
 platform_compat_config {
