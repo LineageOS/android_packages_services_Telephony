@@ -17,9 +17,13 @@
 package com.android.phone.slice;
 
 import android.annotation.IntDef;
+import android.annotation.NonNull;
 
-class PremiumNetworkEntitlementResponse {
-
+/**
+ * Response class containing the entitlement status, provisioning status, and service flow URL
+ * for premium network entitlement checks.
+ */
+public class PremiumNetworkEntitlementResponse {
     public static final int PREMIUM_NETWORK_ENTITLEMENT_STATUS_DISABLED = 0;
     public static final int PREMIUM_NETWORK_ENTITLEMENT_STATUS_ENABLED = 1;
     public static final int PREMIUM_NETWORK_ENTITLEMENT_STATUS_INCOMPATIBLE = 2;
@@ -50,28 +54,32 @@ class PremiumNetworkEntitlementResponse {
             })
     public @interface PremiumNetworkProvisionStatus {}
 
-    @PremiumNetworkEntitlementStatus int mEntitlementStatus;
-    @PremiumNetworkProvisionStatus int mProvisionStatus;
-    int mProvisionTimeLeftInSeconds;
-    String mServiceFlowURL;
+    @PremiumNetworkEntitlementStatus public int mEntitlementStatus;
+    @PremiumNetworkProvisionStatus public int mProvisionStatus;
+    @NonNull public String mServiceFlowURL;
 
-    boolean isProvisioned() {
-        if (mProvisionStatus == PREMIUM_NETWORK_PROVISION_STATUS_PROVISIONED
-                || mEntitlementStatus == PREMIUM_NETWORK_ENTITLEMENT_STATUS_INCLUDED) {
-            return true;
-        }
-        return false;
+    /**
+     * @return {@code true} if the premium network is provisioned and {@code false} otherwise.
+     */
+    public boolean isProvisioned() {
+        return mProvisionStatus == PREMIUM_NETWORK_PROVISION_STATUS_PROVISIONED
+                || mEntitlementStatus == PREMIUM_NETWORK_ENTITLEMENT_STATUS_INCLUDED;
     }
 
-    boolean isProvisioningInProgress() {
-        if (mProvisionStatus == PREMIUM_NETWORK_PROVISION_STATUS_IN_PROGRESS
-                || mEntitlementStatus == PREMIUM_NETWORK_ENTITLEMENT_STATUS_PROVISIONING) {
-            return true;
-        }
-        return false;
+    /**
+     * @return {@code true} if provisioning the premium network is in progress and
+     *         {@code false} otherwise.
+     */
+    public boolean isProvisioningInProgress() {
+        return mProvisionStatus == PREMIUM_NETWORK_PROVISION_STATUS_IN_PROGRESS
+                || mEntitlementStatus == PREMIUM_NETWORK_ENTITLEMENT_STATUS_PROVISIONING;
     }
 
-    boolean isPremiumNetworkCapabilityAllowed() {
+    /**
+     * @return {@code true} if the premium network capability is allowed and
+     *         {@code false} otherwise.
+     */
+    public boolean isPremiumNetworkCapabilityAllowed() {
         switch (mEntitlementStatus) {
             case PREMIUM_NETWORK_ENTITLEMENT_STATUS_INCOMPATIBLE:
             case PREMIUM_NETWORK_ENTITLEMENT_STATUS_DISABLED:
