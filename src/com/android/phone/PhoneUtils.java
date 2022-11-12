@@ -31,7 +31,6 @@ import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
 import android.os.PersistableBundle;
-import android.os.UserHandle;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.telecom.PhoneAccount;
@@ -703,7 +702,7 @@ public class PhoneUtils {
     }
 
     public static PhoneAccountHandle makePstnPhoneAccountHandle(String id) {
-        return makePstnPhoneAccountHandleWithPrefix(id, "", false, null);
+        return makePstnPhoneAccountHandleWithPrefix(id, "", false);
     }
 
     public static PhoneAccountHandle makePstnPhoneAccountHandle(int phoneId) {
@@ -711,26 +710,22 @@ public class PhoneUtils {
     }
 
     public static PhoneAccountHandle makePstnPhoneAccountHandle(Phone phone) {
-        return makePstnPhoneAccountHandleWithPrefix(phone, "", false, null);
+        return makePstnPhoneAccountHandleWithPrefix(phone, "", false);
     }
 
     public static PhoneAccountHandle makePstnPhoneAccountHandleWithPrefix(
-            Phone phone, String prefix, boolean isEmergency, UserHandle userHandle) {
+            Phone phone, String prefix, boolean isEmergency) {
         // TODO: Should use some sort of special hidden flag to decorate this account as
         // an emergency-only account
         String id = isEmergency ? EMERGENCY_ACCOUNT_HANDLE_ID : prefix +
                 String.valueOf(phone.getSubId());
-        return makePstnPhoneAccountHandleWithPrefix(id, prefix, isEmergency, userHandle);
+        return makePstnPhoneAccountHandleWithPrefix(id, prefix, isEmergency);
     }
 
     public static PhoneAccountHandle makePstnPhoneAccountHandleWithPrefix(
-            String id, String prefix, boolean isEmergency, UserHandle userHandle) {
+            String id, String prefix, boolean isEmergency) {
         ComponentName pstnConnectionServiceName = getPstnConnectionServiceName();
-        // If user handle is null, resort to default constructor to use phone process's
-        // user handle
-        return userHandle == null
-                ? new PhoneAccountHandle(pstnConnectionServiceName, id)
-                : new PhoneAccountHandle(pstnConnectionServiceName, id, userHandle);
+        return new PhoneAccountHandle(pstnConnectionServiceName, id);
     }
 
     public static int getSubIdForPhoneAccount(PhoneAccount phoneAccount) {

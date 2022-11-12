@@ -360,8 +360,7 @@ public class TelephonyConnectionService extends ConnectionService {
         @Override
         public PhoneAccountHandle makePstnPhoneAccountHandleWithPrefix(Phone phone, String prefix,
                 boolean isEmergency) {
-            return PhoneUtils.makePstnPhoneAccountHandleWithPrefix(
-                    phone, prefix, isEmergency, null);
+            return PhoneUtils.makePstnPhoneAccountHandleWithPrefix(phone, prefix, isEmergency);
         }
     };
 
