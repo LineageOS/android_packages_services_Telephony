@@ -387,7 +387,7 @@ public class PhoneAccountSettingsFragment extends PreferenceFragment
 
     private PhoneAccountHandle getEmergencyPhoneAccount() {
         return PhoneUtils.makePstnPhoneAccountHandleWithPrefix(
-                (Phone) null, "" /* prefix */, true /* isEmergency */, null /* userHandle */);
+                (Phone) null, "" /* prefix */, true /* isEmergency */);
     }
 
     public static Intent buildPhoneAccountConfigureIntent(
