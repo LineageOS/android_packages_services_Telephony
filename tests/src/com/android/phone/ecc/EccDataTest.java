@@ -66,7 +66,7 @@ public class EccDataTest extends TelephonyTestBase {
                 assertThat(loadedNumbers.contains(eccInfo.phoneNumber)).isFalse();
                 assertThat(eccInfo.types).isNotEmpty();
                 loadedNumbers.add(eccInfo.phoneNumber);
-                if (eccInfo.isNormalRouted) {
+                if (eccInfo.routing == ProtobufEccData.EccInfo.Routing.NORMAL) {
                     loadedMncs.clear();
                     for (String mnc : eccInfo.normalRoutingMncs) {
                         assertThat(mnc).isNotEmpty();
