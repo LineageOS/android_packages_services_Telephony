@@ -258,7 +258,11 @@ public class SlicePurchaseController extends Handler {
     /** Premium network entitlement query API */
     @NonNull private final PremiumNetworkEntitlementApi mPremiumNetworkEntitlementApi;
 
-    private class SlicePurchaseControllerBroadcastReceiver extends BroadcastReceiver {
+    /**
+     * BroadcastReceiver to receive responses from the slice purchase application.
+     */
+    @VisibleForTesting
+    public class SlicePurchaseControllerBroadcastReceiver extends BroadcastReceiver {
         @TelephonyManager.PremiumCapability private final int mCapability;
 
         SlicePurchaseControllerBroadcastReceiver(
@@ -369,6 +373,11 @@ public class SlicePurchaseController extends Handler {
         return sInstances.get(phoneId);
     }
 
+    /**
+     * Create a SlicePurchaseController for the given phone on the given looper.
+     * @param phone The Phone to create the SlicePurchaseController for.
+     * @param looper The Looper to run the SlicePurchaseController on.
+     */
     @VisibleForTesting
     public SlicePurchaseController(@NonNull Phone phone, @NonNull Looper looper) {
         super(looper);
@@ -537,8 +546,11 @@ public class SlicePurchaseController extends Handler {
     private void handlePurchaseResult(
             @TelephonyManager.PremiumCapability int capability,
             @TelephonyManager.PurchasePremiumCapabilityResult int result, boolean throttle) {
-        mPhone.getContext().unregisterReceiver(
-                mSlicePurchaseControllerBroadcastReceivers.remove(capability));
+        SlicePurchaseControllerBroadcastReceiver receiver =
+                mSlicePurchaseControllerBroadcastReceivers.remove(capability);
+        if (receiver != null) {
+            mPhone.getContext().unregisterReceiver(receiver);
+        }
         removeMessages(EVENT_PURCHASE_TIMEOUT, capability);
         if (throttle) {
             throttleCapability(capability, getThrottleDuration(result));
@@ -581,7 +593,7 @@ public class SlicePurchaseController extends Handler {
         PremiumNetworkEntitlementResponse premiumNetworkEntitlementResponse =
                 mPremiumNetworkEntitlementApi.checkEntitlementStatus(capability);
 
-        /* invalid response for entitlement check */
+        // invalid response for entitlement check
         if (premiumNetworkEntitlementResponse == null) {
             logd("Invalid response for entitlement check.");
             handlePurchaseResult(capability,
@@ -660,7 +672,8 @@ public class SlicePurchaseController extends Handler {
      *                {@code false} if it should be immutable.
      * @return The PendingIntent for the given action and capability.
      */
-    @NonNull private PendingIntent createPendingIntent(@NonNull String action,
+    @VisibleForTesting
+    @NonNull public PendingIntent createPendingIntent(@NonNull String action,
             @TelephonyManager.PremiumCapability int capability, boolean mutable) {
         Intent intent = new Intent(action);
         intent.putExtra(EXTRA_PHONE_ID, mPhone.getPhoneId());
