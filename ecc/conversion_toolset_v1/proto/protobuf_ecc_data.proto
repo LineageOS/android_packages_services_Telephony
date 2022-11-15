@@ -19,6 +19,12 @@ message EccInfo {
         AIEC = 7;
     }
 
+    enum Routing {
+        UNKNOWN = 0;
+        EMERGENCY = 1;
+        NORMAL= 2;
+    }
+
     // Required: Every EccInfo shall contain a phone number.
     optional string phone_number = 1;
 
@@ -26,11 +32,11 @@ message EccInfo {
     repeated Type types = 2 [packed=true];
 
 
-    //Optional: By default, the emergency number is assumed to be 'emergency routed'
-    optional bool is_normal_routed = 3 [default = false];
+    //Optional: By default, routing is assumed to be 'UNKNOWN'
+    optional Routing routing = 3 [default = UNKNOWN];
 
-    //Optional: This field is evaluated only if is_normal_routed is set to true
-    //If the field is empty, normal routing is used for all MNCs
+    //Optional: This field is evaluated only if routing is set to NORMAL
+    //If the field is empty, NORMAL routing is used for all MNCs
     //Else normal routing is used only for list of MNCs specified
     repeated string normal_routing_mncs = 4;
 
