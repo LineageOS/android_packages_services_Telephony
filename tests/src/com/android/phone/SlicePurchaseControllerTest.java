@@ -70,7 +70,6 @@ import java.util.Map;
 @RunWith(AndroidJUnit4.class)
 public class SlicePurchaseControllerTest extends TelephonyTestBase {
     private static final String TAG = "SlicePurchaseControllerTest";
-    private static final String URL = "file:///android_asset/slice_purchase_test.html";
     private static final int PHONE_ID = 0;
     private static final long NOTIFICATION_TIMEOUT = 1000;
     private static final long PURCHASE_CONDITION_TIMEOUT = 2000;
@@ -158,11 +157,45 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
                 .getCachedAllowedNetworkTypesBitmask();
         mBundle.putIntArray(CarrierConfigManager.KEY_SUPPORTED_PREMIUM_CAPABILITIES_INT_ARRAY,
                 new int[]{TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY});
-        mBundle.putString(CarrierConfigManager.KEY_PREMIUM_CAPABILITY_PURCHASE_URL_STRING, URL);
+        mBundle.putString(CarrierConfigManager.KEY_PREMIUM_CAPABILITY_PURCHASE_URL_STRING,
+                SlicePurchaseController.SLICE_PURCHASE_TEST_FILE);
         doReturn(mBundle).when(mCarrierConfigManager).getConfigForSubId(anyInt());
         doReturn(SubscriptionManager.getDefaultDataSubscriptionId()).when(mPhone).getSubId();
 
         // retry to verify available
+        assertTrue(mSlicePurchaseController.isPremiumCapabilityAvailableForPurchase(
+                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY));
+    }
+
+    @Test
+    public void testIsUrlValid() {
+        // all other conditions met
+        doReturn((int) TelephonyManager.NETWORK_TYPE_BITMASK_NR).when(mPhone)
+                .getCachedAllowedNetworkTypesBitmask();
+        mBundle.putIntArray(CarrierConfigManager.KEY_SUPPORTED_PREMIUM_CAPABILITIES_INT_ARRAY,
+                new int[]{TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY});
+        doReturn(SubscriptionManager.getDefaultDataSubscriptionId()).when(mPhone).getSubId();
+
+        String[] invalidUrls = new String[] {
+                null,
+                "",
+                "www.google.com",
+                "htt://www.google.com",
+                "http//www.google.com",
+                "http:/www.google.com",
+                "file:///android_asset/",
+                "file:///android_asset/slice_store_test.html"
+        };
+        for (String url : invalidUrls) {
+            mBundle.putString(CarrierConfigManager.KEY_PREMIUM_CAPABILITY_PURCHASE_URL_STRING, url);
+            doReturn(mBundle).when(mCarrierConfigManager).getConfigForSubId(anyInt());
+            assertFalse(mSlicePurchaseController.isPremiumCapabilityAvailableForPurchase(
+                    TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY));
+        }
+
+        mBundle.putString(CarrierConfigManager.KEY_PREMIUM_CAPABILITY_PURCHASE_URL_STRING,
+                SlicePurchaseController.SLICE_PURCHASE_TEST_FILE);
+        doReturn(mBundle).when(mCarrierConfigManager).getConfigForSubId(anyInt());
         assertTrue(mSlicePurchaseController.isPremiumCapabilityAvailableForPurchase(
                 TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY));
     }
@@ -202,7 +235,8 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
         // retry after enabling carrier configs
         mBundle.putIntArray(CarrierConfigManager.KEY_SUPPORTED_PREMIUM_CAPABILITIES_INT_ARRAY,
                 new int[]{TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY});
-        mBundle.putString(CarrierConfigManager.KEY_PREMIUM_CAPABILITY_PURCHASE_URL_STRING, URL);
+        mBundle.putString(CarrierConfigManager.KEY_PREMIUM_CAPABILITY_PURCHASE_URL_STRING,
+                SlicePurchaseController.SLICE_PURCHASE_TEST_FILE);
         doReturn(mBundle).when(mCarrierConfigManager).getConfigForSubId(anyInt());
 
         mSlicePurchaseController.purchasePremiumCapability(
@@ -219,7 +253,8 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
                 .getCachedAllowedNetworkTypesBitmask();
         mBundle.putIntArray(CarrierConfigManager.KEY_SUPPORTED_PREMIUM_CAPABILITIES_INT_ARRAY,
                 new int[]{TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY});
-        mBundle.putString(CarrierConfigManager.KEY_PREMIUM_CAPABILITY_PURCHASE_URL_STRING, URL);
+        mBundle.putString(CarrierConfigManager.KEY_PREMIUM_CAPABILITY_PURCHASE_URL_STRING,
+                SlicePurchaseController.SLICE_PURCHASE_TEST_FILE);
         doReturn(mBundle).when(mCarrierConfigManager).getConfigForSubId(anyInt());
 
         mSlicePurchaseController.purchasePremiumCapability(
@@ -248,7 +283,8 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
                 .getCachedAllowedNetworkTypesBitmask();
         mBundle.putIntArray(CarrierConfigManager.KEY_SUPPORTED_PREMIUM_CAPABILITIES_INT_ARRAY,
                 new int[]{TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY});
-        mBundle.putString(CarrierConfigManager.KEY_PREMIUM_CAPABILITY_PURCHASE_URL_STRING, URL);
+        mBundle.putString(CarrierConfigManager.KEY_PREMIUM_CAPABILITY_PURCHASE_URL_STRING,
+                SlicePurchaseController.SLICE_PURCHASE_TEST_FILE);
         doReturn(mBundle).when(mCarrierConfigManager).getConfigForSubId(anyInt());
         doReturn(SubscriptionManager.getDefaultDataSubscriptionId()).when(mPhone).getSubId();
 
@@ -276,7 +312,8 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
                 .getCachedAllowedNetworkTypesBitmask();
         mBundle.putIntArray(CarrierConfigManager.KEY_SUPPORTED_PREMIUM_CAPABILITIES_INT_ARRAY,
                 new int[]{TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY});
-        mBundle.putString(CarrierConfigManager.KEY_PREMIUM_CAPABILITY_PURCHASE_URL_STRING, URL);
+        mBundle.putString(CarrierConfigManager.KEY_PREMIUM_CAPABILITY_PURCHASE_URL_STRING,
+                SlicePurchaseController.SLICE_PURCHASE_TEST_FILE);
         doReturn(mBundle).when(mCarrierConfigManager).getConfigForSubId(anyInt());
         doReturn(SubscriptionManager.getDefaultDataSubscriptionId()).when(mPhone).getSubId();
         doReturn(TelephonyManager.NETWORK_TYPE_NR).when(mServiceState).getDataNetworkType();
@@ -564,7 +601,8 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
         // carrier supported
         mBundle.putIntArray(CarrierConfigManager.KEY_SUPPORTED_PREMIUM_CAPABILITIES_INT_ARRAY,
                 new int[]{TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY});
-        mBundle.putString(CarrierConfigManager.KEY_PREMIUM_CAPABILITY_PURCHASE_URL_STRING, URL);
+        mBundle.putString(CarrierConfigManager.KEY_PREMIUM_CAPABILITY_PURCHASE_URL_STRING,
+                SlicePurchaseController.SLICE_PURCHASE_TEST_FILE);
         mBundle.putLong(CarrierConfigManager
                 .KEY_PREMIUM_CAPABILITY_NOTIFICATION_DISPLAY_TIMEOUT_MILLIS_LONG,
                 NOTIFICATION_TIMEOUT);

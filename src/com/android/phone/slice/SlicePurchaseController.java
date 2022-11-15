@@ -46,6 +46,7 @@ import android.telephony.data.NetworkSliceInfo;
 import android.telephony.data.NetworkSlicingConfig;
 import android.text.TextUtils;
 import android.util.Log;
+import android.webkit.URLUtil;
 import android.webkit.WebView;
 
 import com.android.internal.annotations.VisibleForTesting;
@@ -54,6 +55,7 @@ import com.android.internal.telephony.Phone;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.net.MalformedURLException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -104,6 +106,10 @@ public class SlicePurchaseController extends Handler {
 
     /** Value for an invalid premium capability. */
     public static final int PREMIUM_CAPABILITY_INVALID = -1;
+
+    /** Asset URL for the slice_purchase_test.html file. */
+    public static final String SLICE_PURCHASE_TEST_FILE =
+            "file:///android_asset/slice_purchase_test.html";
 
     /** Purchasing the premium capability is no longer throttled. */
     private static final int EVENT_PURCHASE_UNTHROTTLED = 1;
@@ -759,14 +765,8 @@ public class SlicePurchaseController extends Handler {
             @TelephonyManager.PremiumCapability int capability) {
         String url = getCarrierConfigs().getString(
                 CarrierConfigManager.KEY_PREMIUM_CAPABILITY_PURCHASE_URL_STRING);
-        if (TextUtils.isEmpty(url)) {
+        if (!isUrlValid(url)) {
             return false;
-        } else {
-            try {
-                new URL(url);
-            } catch (MalformedURLException e) {
-                return false;
-            }
         }
         int[] supportedCapabilities = getCarrierConfigs().getIntArray(
                 CarrierConfigManager.KEY_SUPPORTED_PREMIUM_CAPABILITIES_INT_ARRAY);
@@ -775,6 +775,25 @@ public class SlicePurchaseController extends Handler {
         }
         return Arrays.stream(supportedCapabilities)
                 .anyMatch(supportedCapability -> supportedCapability == capability);
+    }
+
+    private boolean isUrlValid(@Nullable String url) {
+        if (!URLUtil.isValidUrl(url)) {
+            loge("Invalid URL: " + url);
+            return false;
+        }
+        if (URLUtil.isAssetUrl(url) && !url.equals(SLICE_PURCHASE_TEST_FILE)) {
+            loge("Invalid asset: " + url);
+            return false;
+        }
+        try {
+            new URL(url).toURI();
+        } catch (MalformedURLException | URISyntaxException e) {
+            loge("Invalid URI: " + url);
+            return false;
+        }
+        logd("Valid URL: " + url);
+        return true;
     }
 
     private boolean arePremiumCapabilitiesSupportedByDevice() {
