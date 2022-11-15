@@ -182,14 +182,16 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
         doReturn(mBundle).when(mCarrierConfigManager).getConfigForSubId(anyInt());
 
         tryPurchasePremiumCapability();
-        assertEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_NOT_DEFAULT_DATA_SUB,
+        assertEquals(
+                TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_NOT_DEFAULT_DATA_SUBSCRIPTION,
                 mResult);
 
         // retry on default data subscription
         doReturn(SubscriptionManager.getDefaultDataSubscriptionId()).when(mPhone).getSubId();
 
         tryPurchasePremiumCapability();
-        assertNotEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_NOT_DEFAULT_DATA_SUB,
+        assertNotEquals(
+                TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_NOT_DEFAULT_DATA_SUBSCRIPTION,
                 mResult);
     }
 
@@ -443,13 +445,14 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
         sendValidPurchaseRequest();
 
         Intent intent = new Intent();
-        intent.setAction(
-                "com.android.phone.slice.action.SLICE_PURCHASE_APP_RESPONSE_NOT_DEFAULT_DATA_SUB");
+        intent.setAction("com.android.phone.slice.action."
+                + "SLICE_PURCHASE_APP_RESPONSE_NOT_DEFAULT_DATA_SUBSCRIPTION");
         intent.putExtra(SlicePurchaseController.EXTRA_PHONE_ID, PHONE_ID);
         intent.putExtra(SlicePurchaseController.EXTRA_PREMIUM_CAPABILITY,
                 TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY);
         receiveSlicePurchaseResponse(intent);
-        assertEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_NOT_DEFAULT_DATA_SUB,
+        assertEquals(
+                TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_NOT_DEFAULT_DATA_SUBSCRIPTION,
                 mResult);
 
         // retry to verify no throttling

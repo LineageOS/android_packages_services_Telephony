@@ -192,6 +192,54 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
     /**
      * Prerequisites:
      * - MSIM Device, two slots with SIMs inserted
+     * - Slot 0 is IN_SERVICE, Slot 1 is OUT_OF_SERVICE (emergency calls only)
+     * - Slot 1 is in Emergency SMS Mode
+     *
+     * Result: getFirstPhoneForEmergencyCall returns the slot 1 phone
+     */
+    @Test
+    @SmallTest
+    public void testEmergencySmsModeSimEmergencyOnly() {
+        Phone slot0Phone = makeTestPhone(SLOT_0_PHONE_ID, ServiceState.STATE_IN_SERVICE,
+                false /*isEmergencyOnly*/);
+        Phone slot1Phone = makeTestPhone(SLOT_1_PHONE_ID, ServiceState.STATE_OUT_OF_SERVICE,
+                true /*isEmergencyOnly*/);
+        setDefaultPhone(slot0Phone);
+        setupDeviceConfig(slot0Phone, slot1Phone, SLOT_0_PHONE_ID);
+        setEmergencySmsMode(slot1Phone, true);
+
+        Phone resultPhone = mTestConnectionService.getFirstPhoneForEmergencyCall();
+
+        assertEquals(slot1Phone, resultPhone);
+    }
+
+    /**
+     * Prerequisites:
+     * - MSIM Device, two slots with SIMs inserted
+     * - Slot 0 is IN_SERVICE, Slot 1 is OUT_OF_SERVICE
+     * - Slot 1 is in Emergency SMS Mode
+     *
+     * Result: getFirstPhoneForEmergencyCall returns the slot 0 phone
+     */
+    @Test
+    @SmallTest
+    public void testEmergencySmsModeSimOutOfService() {
+        Phone slot0Phone = makeTestPhone(SLOT_0_PHONE_ID, ServiceState.STATE_IN_SERVICE,
+                false /*isEmergencyOnly*/);
+        Phone slot1Phone = makeTestPhone(SLOT_1_PHONE_ID, ServiceState.STATE_OUT_OF_SERVICE,
+                false /*isEmergencyOnly*/);
+        setDefaultPhone(slot0Phone);
+        setupDeviceConfig(slot0Phone, slot1Phone, SLOT_0_PHONE_ID);
+        setEmergencySmsMode(slot1Phone, true);
+
+        Phone resultPhone = mTestConnectionService.getFirstPhoneForEmergencyCall();
+
+        assertEquals(slot0Phone, resultPhone);
+    }
+
+    /**
+     * Prerequisites:
+     * - MSIM Device, two slots with SIMs inserted
      * - Users default Voice SIM choice is IN_SERVICE
      *
      * Result: getFirstPhoneForEmergencyCall returns the default Voice SIM choice.
@@ -205,6 +253,52 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
                 true /*isEmergencyOnly*/);
         setDefaultPhone(slot0Phone);
         setupDeviceConfig(slot0Phone, slot1Phone, SLOT_0_PHONE_ID);
+
+        Phone resultPhone = mTestConnectionService.getFirstPhoneForEmergencyCall();
+
+        assertEquals(slot0Phone, resultPhone);
+    }
+
+    /**
+     * Prerequisites:
+     * - MSIM Device, two slots with SIMs inserted
+     * - Users default data SIM choice is OUT_OF_SERVICE (emergency calls only)
+     *
+     * Result: getFirstPhoneForEmergencyCall returns the default data SIM choice.
+     */
+    @Test
+    @SmallTest
+    public void testDefaultDataSimEmergencyOnly() {
+        Phone slot0Phone = makeTestPhone(SLOT_0_PHONE_ID, ServiceState.STATE_IN_SERVICE,
+                false /*isEmergencyOnly*/);
+        Phone slot1Phone = makeTestPhone(SLOT_1_PHONE_ID, ServiceState.STATE_OUT_OF_SERVICE,
+                true /*isEmergencyOnly*/);
+        setDefaultPhone(slot0Phone);
+        setupDeviceConfig(slot0Phone, slot1Phone, SubscriptionManager.INVALID_SUBSCRIPTION_ID);
+        setDefaultDataPhoneId(SLOT_1_PHONE_ID);
+
+        Phone resultPhone = mTestConnectionService.getFirstPhoneForEmergencyCall();
+
+        assertEquals(slot1Phone, resultPhone);
+    }
+
+    /**
+     * Prerequisites:
+     * - MSIM Device, two slots with SIMs inserted
+     * - Users default data SIM choice is OUT_OF_SERVICE
+     *
+     * Result: getFirstPhoneForEmergencyCall does not return the default data SIM choice.
+     */
+    @Test
+    @SmallTest
+    public void testDefaultDataSimOutOfService() {
+        Phone slot0Phone = makeTestPhone(SLOT_0_PHONE_ID, ServiceState.STATE_IN_SERVICE,
+                false /*isEmergencyOnly*/);
+        Phone slot1Phone = makeTestPhone(SLOT_1_PHONE_ID, ServiceState.STATE_OUT_OF_SERVICE,
+                false /*isEmergencyOnly*/);
+        setDefaultPhone(slot0Phone);
+        setupDeviceConfig(slot0Phone, slot1Phone, SubscriptionManager.INVALID_SUBSCRIPTION_ID);
+        setDefaultDataPhoneId(SLOT_1_PHONE_ID);
 
         Phone resultPhone = mTestConnectionService.getFirstPhoneForEmergencyCall();
 
@@ -1615,8 +1709,16 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         when(mPhoneFactoryProxy.getPhone(eq(SLOT_1_PHONE_ID))).thenReturn(slot1Phone);
     }
 
+    private void setDefaultDataPhoneId(int defaultDataPhoneId) {
+        when(mSubscriptionManagerProxy.getDefaultDataPhoneId()).thenReturn(defaultDataPhoneId);
+    }
+
     private void setPhoneRadioAccessFamily(Phone phone, int radioAccessFamily) {
         when(phone.getRadioAccessFamily()).thenReturn(radioAccessFamily);
+    }
+
+    private void setEmergencySmsMode(Phone phone, boolean isInEmergencySmsMode) {
+        when(phone.isInEmergencySmsMode()).thenReturn(isInEmergencySmsMode);
     }
 
     private void setPhoneSlotState(int slotId, int slotState) {
