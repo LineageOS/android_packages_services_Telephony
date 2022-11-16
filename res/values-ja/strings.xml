@@ -662,7 +662,7 @@
     <string name="voicemail_visual_voicemail_switch_title" msgid="6610414098912832120">"ビジュアル留守番電話"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="7005128605986960003">"PIN の設定"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="4633077715231764435">"PIN の変更"</string>
-    <string name="preference_category_ringtone" msgid="8787281191375434976">"着信音とバイブレーション"</string>
+    <string name="preference_category_ringtone" msgid="8787281191375434976">"サウンドとバイブレーション"</string>
     <string name="pstn_connection_service_label" msgid="9200102709997537069">"内蔵のSIMカード"</string>
     <string name="enable_video_calling_title" msgid="7246600931634161830">"ビデオハングアウトを有効にする"</string>
     <string name="enable_video_calling_dialog_msg" msgid="7141478720386203540">"ビデオハングアウトをONにするには、ネットワーク設定で4G LTE拡張モードを有効にする必要があります。"</string>
