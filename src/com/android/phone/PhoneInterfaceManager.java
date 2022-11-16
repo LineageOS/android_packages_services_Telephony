@@ -17,6 +17,7 @@
 package com.android.phone;
 
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
+import static android.telephony.TelephonyManager.HAL_SERVICE_RADIO;
 
 import static com.android.internal.telephony.PhoneConstants.PHONE_TYPE_CDMA;
 import static com.android.internal.telephony.PhoneConstants.PHONE_TYPE_GSM;
@@ -9779,12 +9780,22 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     /**
      * Get the IRadio HAL Version
+     * @deprecated use getHalVersion instead
      */
+    @Deprecated
     @Override
     public int getRadioHalVersion() {
+        return getHalVersion(HAL_SERVICE_RADIO);
+    }
+
+    /**
+     * Get the HAL Version of a specific service
+     */
+    @Override
+    public int getHalVersion(int service) {
         Phone phone = getDefaultPhone();
         if (phone == null) return -1;
-        HalVersion hv = phone.getHalVersion();
+        HalVersion hv = phone.getHalVersion(service);
         if (hv.equals(HalVersion.UNKNOWN)) return -1;
         return hv.major * 100 + hv.minor;
     }
