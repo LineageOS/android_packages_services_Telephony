@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name" msgid="2894617184221823208">"TestServerApp"</string>
+    <string name="action_settings" msgid="1335152369747372374">"設定"</string>
+    <string name="server_running" msgid="2780193626090379172">"伺服器正在運作中..."</string>
+    <string name="stop_server" msgid="6192029827529013598">"停止伺服器"</string>
+    <string name="server_down" msgid="1030249207496490556">"伺服器發生問題"</string>
+    <string name="start_server" msgid="3878573341408591975">"啟動伺服器"</string>
+  <string-array name="entitlement_status">
+    <item msgid="5560300387618996934">"已停用"</item>
+    <item msgid="3193389681837907872">"已啟用"</item>
+    <item msgid="3124590179479393815">"不相容"</item>
+    <item msgid="1606753456265236910">"佈建中"</item>
+    <item msgid="3930807209231347454">"已納入"</item>
+  </string-array>
+  <string-array name="provision_status">
+    <item msgid="3486273747926710021">"尚未佈建"</item>
+    <item msgid="7598231293776486217">"已佈建"</item>
+    <item msgid="3720547957514534185">"非必要"</item>
+    <item msgid="1264673582354896949">"進行中"</item>
+  </string-array>
+</resources>
