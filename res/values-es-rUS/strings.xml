@@ -34,7 +34,7 @@
     <string name="enter_input" msgid="6193628663039958990">"El mensaje USSD debe tener entre <xliff:g id="MIN_LEN">%1$d</xliff:g> y <xliff:g id="MAX_LEN">%2$d</xliff:g> caracteres. Vuelve a intentarlo."</string>
     <string name="manageConferenceLabel" msgid="8415044818156353233">"Administrar conferencia telefónica"</string>
     <string name="ok" msgid="7818974223666140165">"Aceptar"</string>
-    <string name="audio_mode_speaker" msgid="243689733219312360">"Altavoz"</string>
+    <string name="audio_mode_speaker" msgid="243689733219312360">"Bocina"</string>
     <string name="audio_mode_earpiece" msgid="2823700267171134282">"Auricular"</string>
     <string name="audio_mode_wired_headset" msgid="5028010823105817443">"Auriculares con cable"</string>
     <string name="audio_mode_bluetooth" msgid="25732183428018809">"Bluetooth"</string>
@@ -916,7 +916,7 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Información del teléfono"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Información del aprovisionamiento del proveedor"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Activar aprovisionamiento del proveedor"</string>
-    <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Tu señal de Bluetooth es débil. Intenta cambiar al altavoz."</string>
+    <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Tu señal de Bluetooth es débil. Intenta cambiar a la bocina."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Notificación de calidad de llamada"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Cuentas SIP obsoletas"</string>
 </resources>
