@@ -20,12 +20,21 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+import static org.mockito.Mockito.any;
+import static org.mockito.Mockito.anyBoolean;
 import static org.mockito.Mockito.anyInt;
+import static org.mockito.Mockito.anyString;
+import static org.mockito.Mockito.clearInvocations;
+import static org.mockito.Mockito.doCallRealMethod;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.eq;
+import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.verify;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.AsyncResult;
 import android.os.Handler;
 import android.os.HandlerThread;
@@ -38,7 +47,6 @@ import android.telephony.TelephonyManager;
 import android.telephony.data.NetworkSliceInfo;
 import android.telephony.data.NetworkSlicingConfig;
 import android.testing.TestableLooper;
-import android.util.Log;
 
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
@@ -48,21 +56,20 @@ import com.android.internal.telephony.Phone;
 import com.android.phone.slice.PremiumNetworkEntitlementApi;
 import com.android.phone.slice.PremiumNetworkEntitlementResponse;
 import com.android.phone.slice.SlicePurchaseController;
+import com.android.phone.slice.SlicePurchaseController.SlicePurchaseControllerBroadcastReceiver;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Method;
 import java.util.Collections;
 import java.util.Map;
 
 @RunWith(AndroidJUnit4.class)
 public class SlicePurchaseControllerTest extends TelephonyTestBase {
     private static final String TAG = "SlicePurchaseControllerTest";
-    private static final String URL = "file:///android_asset/slice_purchase_test.html";
     private static final int PHONE_ID = 0;
     private static final long NOTIFICATION_TIMEOUT = 1000;
     private static final long PURCHASE_CONDITION_TIMEOUT = 2000;
@@ -77,6 +84,7 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
     @Mock PremiumNetworkEntitlementApi mPremiumNetworkEntitlementApi;
 
     private SlicePurchaseController mSlicePurchaseController;
+    private SlicePurchaseControllerBroadcastReceiver mBroadcastReceiver;
     private PersistableBundle mBundle;
     private PremiumNetworkEntitlementResponse mEntitlementResponse;
     private Handler mHandler;
@@ -109,7 +117,12 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
         mBundle = new PersistableBundle();
         doReturn(mBundle).when(mCarrierConfigManager).getConfigForSubId(anyInt());
 
-        mSlicePurchaseController = new SlicePurchaseController(mPhone, mHandler.getLooper());
+        // create a spy to mock final PendingIntent methods
+        SlicePurchaseController slicePurchaseController =
+                new SlicePurchaseController(mPhone, mHandler.getLooper());
+        mSlicePurchaseController = spy(slicePurchaseController);
+        doReturn(null).when(mSlicePurchaseController).createPendingIntent(
+                anyString(), anyInt(), anyBoolean());
         replaceInstance(SlicePurchaseController.class, "sInstances", mSlicePurchaseController,
                 Map.of(PHONE_ID, mSlicePurchaseController));
         replaceInstance(SlicePurchaseController.class, "mPremiumNetworkEntitlementApi",
@@ -117,6 +130,21 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
         mEntitlementResponse = new PremiumNetworkEntitlementResponse();
         doReturn(mEntitlementResponse).when(mPremiumNetworkEntitlementApi)
                 .checkEntitlementStatus(anyInt());
+    }
+
+    @Test
+    public void testCreatePendingIntent() {
+        doCallRealMethod().when(mSlicePurchaseController).createPendingIntent(
+                anyString(), anyInt(), anyBoolean());
+        try {
+            mSlicePurchaseController.createPendingIntent(
+                    "com.android.phone.slice.action.SLICE_PURCHASE_APP_RESPONSE_CANCELED",
+                    TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY,
+                    true);
+        } catch (Exception expected) {
+            return;
+        }
+        fail("Expected createPendingIntent to throw an exception");
     }
 
     @Test
@@ -129,7 +157,8 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
                 .getCachedAllowedNetworkTypesBitmask();
         mBundle.putIntArray(CarrierConfigManager.KEY_SUPPORTED_PREMIUM_CAPABILITIES_INT_ARRAY,
                 new int[]{TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY});
-        mBundle.putString(CarrierConfigManager.KEY_PREMIUM_CAPABILITY_PURCHASE_URL_STRING, URL);
+        mBundle.putString(CarrierConfigManager.KEY_PREMIUM_CAPABILITY_PURCHASE_URL_STRING,
+                SlicePurchaseController.SLICE_PURCHASE_TEST_FILE);
         doReturn(mBundle).when(mCarrierConfigManager).getConfigForSubId(anyInt());
         doReturn(SubscriptionManager.getDefaultDataSubscriptionId()).when(mPhone).getSubId();
 
@@ -139,8 +168,44 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
     }
 
     @Test
+    public void testIsUrlValid() {
+        // all other conditions met
+        doReturn((int) TelephonyManager.NETWORK_TYPE_BITMASK_NR).when(mPhone)
+                .getCachedAllowedNetworkTypesBitmask();
+        mBundle.putIntArray(CarrierConfigManager.KEY_SUPPORTED_PREMIUM_CAPABILITIES_INT_ARRAY,
+                new int[]{TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY});
+        doReturn(SubscriptionManager.getDefaultDataSubscriptionId()).when(mPhone).getSubId();
+
+        String[] invalidUrls = new String[] {
+                null,
+                "",
+                "www.google.com",
+                "htt://www.google.com",
+                "http//www.google.com",
+                "http:/www.google.com",
+                "file:///android_asset/",
+                "file:///android_asset/slice_store_test.html"
+        };
+        for (String url : invalidUrls) {
+            mBundle.putString(CarrierConfigManager.KEY_PREMIUM_CAPABILITY_PURCHASE_URL_STRING, url);
+            doReturn(mBundle).when(mCarrierConfigManager).getConfigForSubId(anyInt());
+            assertFalse(mSlicePurchaseController.isPremiumCapabilityAvailableForPurchase(
+                    TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY));
+        }
+
+        mBundle.putString(CarrierConfigManager.KEY_PREMIUM_CAPABILITY_PURCHASE_URL_STRING,
+                SlicePurchaseController.SLICE_PURCHASE_TEST_FILE);
+        doReturn(mBundle).when(mCarrierConfigManager).getConfigForSubId(anyInt());
+        assertTrue(mSlicePurchaseController.isPremiumCapabilityAvailableForPurchase(
+                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY));
+    }
+
+    @Test
     public void testPurchasePremiumCapabilityResultFeatureNotSupported() {
-        tryPurchasePremiumCapability();
+        mSlicePurchaseController.purchasePremiumCapability(
+                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, TAG,
+                mHandler.obtainMessage());
+        mTestableLooper.processAllMessages();
         assertEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_FEATURE_NOT_SUPPORTED,
                 mResult);
 
@@ -148,7 +213,10 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
         doReturn((int) TelephonyManager.NETWORK_TYPE_BITMASK_NR).when(mPhone)
                 .getCachedAllowedNetworkTypesBitmask();
 
-        tryPurchasePremiumCapability();
+        mSlicePurchaseController.purchasePremiumCapability(
+                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, TAG,
+                mHandler.obtainMessage());
+        mTestableLooper.processAllMessages();
         assertNotEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_FEATURE_NOT_SUPPORTED,
                 mResult);
     }
@@ -158,16 +226,23 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
         doReturn((int) TelephonyManager.NETWORK_TYPE_BITMASK_NR).when(mPhone)
                 .getCachedAllowedNetworkTypesBitmask();
 
-        tryPurchasePremiumCapability();
+        mSlicePurchaseController.purchasePremiumCapability(
+                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, TAG,
+                mHandler.obtainMessage());
+        mTestableLooper.processAllMessages();
         assertEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_CARRIER_DISABLED, mResult);
 
         // retry after enabling carrier configs
         mBundle.putIntArray(CarrierConfigManager.KEY_SUPPORTED_PREMIUM_CAPABILITIES_INT_ARRAY,
                 new int[]{TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY});
-        mBundle.putString(CarrierConfigManager.KEY_PREMIUM_CAPABILITY_PURCHASE_URL_STRING, URL);
+        mBundle.putString(CarrierConfigManager.KEY_PREMIUM_CAPABILITY_PURCHASE_URL_STRING,
+                SlicePurchaseController.SLICE_PURCHASE_TEST_FILE);
         doReturn(mBundle).when(mCarrierConfigManager).getConfigForSubId(anyInt());
 
-        tryPurchasePremiumCapability();
+        mSlicePurchaseController.purchasePremiumCapability(
+                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, TAG,
+                mHandler.obtainMessage());
+        mTestableLooper.processAllMessages();
         assertNotEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_CARRIER_DISABLED,
                 mResult);
     }
@@ -178,10 +253,14 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
                 .getCachedAllowedNetworkTypesBitmask();
         mBundle.putIntArray(CarrierConfigManager.KEY_SUPPORTED_PREMIUM_CAPABILITIES_INT_ARRAY,
                 new int[]{TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY});
-        mBundle.putString(CarrierConfigManager.KEY_PREMIUM_CAPABILITY_PURCHASE_URL_STRING, URL);
+        mBundle.putString(CarrierConfigManager.KEY_PREMIUM_CAPABILITY_PURCHASE_URL_STRING,
+                SlicePurchaseController.SLICE_PURCHASE_TEST_FILE);
         doReturn(mBundle).when(mCarrierConfigManager).getConfigForSubId(anyInt());
 
-        tryPurchasePremiumCapability();
+        mSlicePurchaseController.purchasePremiumCapability(
+                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, TAG,
+                mHandler.obtainMessage());
+        mTestableLooper.processAllMessages();
         assertEquals(
                 TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_NOT_DEFAULT_DATA_SUBSCRIPTION,
                 mResult);
@@ -189,7 +268,10 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
         // retry on default data subscription
         doReturn(SubscriptionManager.getDefaultDataSubscriptionId()).when(mPhone).getSubId();
 
-        tryPurchasePremiumCapability();
+        mSlicePurchaseController.purchasePremiumCapability(
+                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, TAG,
+                mHandler.obtainMessage());
+        mTestableLooper.processAllMessages();
         assertNotEquals(
                 TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_NOT_DEFAULT_DATA_SUBSCRIPTION,
                 mResult);
@@ -201,35 +283,46 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
                 .getCachedAllowedNetworkTypesBitmask();
         mBundle.putIntArray(CarrierConfigManager.KEY_SUPPORTED_PREMIUM_CAPABILITIES_INT_ARRAY,
                 new int[]{TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY});
-        mBundle.putString(CarrierConfigManager.KEY_PREMIUM_CAPABILITY_PURCHASE_URL_STRING, URL);
+        mBundle.putString(CarrierConfigManager.KEY_PREMIUM_CAPABILITY_PURCHASE_URL_STRING,
+                SlicePurchaseController.SLICE_PURCHASE_TEST_FILE);
         doReturn(mBundle).when(mCarrierConfigManager).getConfigForSubId(anyInt());
         doReturn(SubscriptionManager.getDefaultDataSubscriptionId()).when(mPhone).getSubId();
 
-        tryPurchasePremiumCapability();
+        mSlicePurchaseController.purchasePremiumCapability(
+                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, TAG,
+                mHandler.obtainMessage());
+        mTestableLooper.processAllMessages();
         assertEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_NETWORK_NOT_AVAILABLE,
                 mResult);
 
         // retry with valid network
         doReturn(TelephonyManager.NETWORK_TYPE_NR).when(mServiceState).getDataNetworkType();
 
-        tryPurchasePremiumCapability();
+        mSlicePurchaseController.purchasePremiumCapability(
+                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, TAG,
+                mHandler.obtainMessage());
+        mTestableLooper.processAllMessages();
         assertNotEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_NETWORK_NOT_AVAILABLE,
                 mResult);
     }
 
     @Test
-    public void testPurchasePremiumCapabilityResultEntitlementCheckFailed() throws Exception {
+    public void testPurchasePremiumCapabilityResultEntitlementCheckFailed() {
         doReturn((int) TelephonyManager.NETWORK_TYPE_BITMASK_NR).when(mPhone)
                 .getCachedAllowedNetworkTypesBitmask();
         mBundle.putIntArray(CarrierConfigManager.KEY_SUPPORTED_PREMIUM_CAPABILITIES_INT_ARRAY,
                 new int[]{TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY});
-        mBundle.putString(CarrierConfigManager.KEY_PREMIUM_CAPABILITY_PURCHASE_URL_STRING, URL);
+        mBundle.putString(CarrierConfigManager.KEY_PREMIUM_CAPABILITY_PURCHASE_URL_STRING,
+                SlicePurchaseController.SLICE_PURCHASE_TEST_FILE);
         doReturn(mBundle).when(mCarrierConfigManager).getConfigForSubId(anyInt());
         doReturn(SubscriptionManager.getDefaultDataSubscriptionId()).when(mPhone).getSubId();
         doReturn(TelephonyManager.NETWORK_TYPE_NR).when(mServiceState).getDataNetworkType();
         doReturn(null).when(mPremiumNetworkEntitlementApi).checkEntitlementStatus(anyInt());
 
-        tryPurchasePremiumCapability();
+        mSlicePurchaseController.purchasePremiumCapability(
+                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, TAG,
+                mHandler.obtainMessage());
+        mTestableLooper.processAllMessages();
         assertEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_ENTITLEMENT_CHECK_FAILED,
                 mResult);
 
@@ -239,7 +332,10 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
         doReturn(mEntitlementResponse).when(mPremiumNetworkEntitlementApi)
                 .checkEntitlementStatus(anyInt());
 
-        tryPurchasePremiumCapability();
+        mSlicePurchaseController.purchasePremiumCapability(
+                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, TAG,
+                mHandler.obtainMessage());
+        mTestableLooper.processAllMessages();
         assertEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_ALREADY_PURCHASED,
                 mResult);
 
@@ -249,7 +345,10 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
         doReturn(mEntitlementResponse).when(mPremiumNetworkEntitlementApi)
                 .checkEntitlementStatus(anyInt());
 
-        tryPurchasePremiumCapability();
+        mSlicePurchaseController.purchasePremiumCapability(
+                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, TAG,
+                mHandler.obtainMessage());
+        mTestableLooper.processAllMessages();
         assertEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_ALREADY_IN_PROGRESS,
                 mResult);
 
@@ -265,12 +364,18 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
                 PURCHASE_CONDITION_TIMEOUT);
         doReturn(mBundle).when(mCarrierConfigManager).getConfigForSubId(anyInt());
 
-        tryPurchasePremiumCapability();
+        mSlicePurchaseController.purchasePremiumCapability(
+                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, TAG,
+                mHandler.obtainMessage());
+        mTestableLooper.processAllMessages();
         assertEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_ENTITLEMENT_CHECK_FAILED,
                 mResult);
 
         // retry to verify throttled
-        tryPurchasePremiumCapability();
+        mSlicePurchaseController.purchasePremiumCapability(
+                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, TAG,
+                mHandler.obtainMessage());
+        mTestableLooper.processAllMessages();
         assertEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_THROTTLED, mResult);
 
         // retry with valid entitlement check to verify unthrottled
@@ -284,18 +389,24 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
     public void testPurchasePremiumCapabilityResultAlreadyInProgress() {
         sendValidPurchaseRequest();
 
-        tryPurchasePremiumCapability();
+        mSlicePurchaseController.purchasePremiumCapability(
+                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, TAG,
+                mHandler.obtainMessage());
+        mTestableLooper.processAllMessages();
         assertEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_ALREADY_IN_PROGRESS,
                 mResult);
 
         // retry to verify same result
-        tryPurchasePremiumCapability();
+        mSlicePurchaseController.purchasePremiumCapability(
+                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, TAG,
+                mHandler.obtainMessage());
+        mTestableLooper.processAllMessages();
         assertEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_ALREADY_IN_PROGRESS,
                 mResult);
     }
 
     @Test
-    public void testPurchasePremiumCapabilityResultSuccess() throws Exception {
+    public void testPurchasePremiumCapabilityResultSuccess() {
         sendValidPurchaseRequest();
 
         Intent intent = new Intent();
@@ -303,17 +414,21 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
         intent.putExtra(SlicePurchaseController.EXTRA_PHONE_ID, PHONE_ID);
         intent.putExtra(SlicePurchaseController.EXTRA_PREMIUM_CAPABILITY,
                 TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY);
-        receiveSlicePurchaseResponse(intent);
+        mBroadcastReceiver.onReceive(mMockedContext, intent);
+        mTestableLooper.processAllMessages();
         assertEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_SUCCESS, mResult);
 
         // retry tested in testPurchasePremiumCapabilityResultPendingNetworkSetup
     }
 
     @Test
-    public void testPurchasePremiumCapabilityResultPendingNetworkSetup() throws Exception {
+    public void testPurchasePremiumCapabilityResultPendingNetworkSetup() {
         testPurchasePremiumCapabilityResultSuccess();
 
-        tryPurchasePremiumCapability();
+        mSlicePurchaseController.purchasePremiumCapability(
+                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, TAG,
+                mHandler.obtainMessage());
+        mTestableLooper.processAllMessages();
         assertEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_PENDING_NETWORK_SETUP,
                 mResult);
 
@@ -325,7 +440,7 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
     }
 
     @Test
-    public void testPurchasePremiumCapabilityResultAlreadyPurchased() throws Exception {
+    public void testPurchasePremiumCapabilityResultAlreadyPurchased() {
         testPurchasePremiumCapabilityResultSuccess();
 
         // TODO: implement slicing config logic properly
@@ -336,12 +451,18 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
                 new AsyncResult(null, slicingConfig, null)).sendToTarget();
         mTestableLooper.processAllMessages();
 
-        tryPurchasePremiumCapability();
+        mSlicePurchaseController.purchasePremiumCapability(
+                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, TAG,
+                mHandler.obtainMessage());
+        mTestableLooper.processAllMessages();
         assertEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_ALREADY_PURCHASED,
                 mResult);
 
         // retry to verify same result
-        tryPurchasePremiumCapability();
+        mSlicePurchaseController.purchasePremiumCapability(
+                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, TAG,
+                mHandler.obtainMessage());
+        mTestableLooper.processAllMessages();
         assertEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_ALREADY_PURCHASED,
                 mResult);
 
@@ -355,7 +476,7 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
     }
 
     @Test
-    public void testPurchasePremiumCapabilityResultTimeout() throws Exception {
+    public void testPurchasePremiumCapabilityResultTimeout() {
         sendValidPurchaseRequest();
 
         mTestableLooper.moveTimeForward(NOTIFICATION_TIMEOUT);
@@ -363,7 +484,10 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
         assertEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_TIMEOUT, mResult);
 
         // retry to verify throttled
-        tryPurchasePremiumCapability();
+        mSlicePurchaseController.purchasePremiumCapability(
+                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, TAG,
+                mHandler.obtainMessage());
+        mTestableLooper.processAllMessages();
         assertEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_THROTTLED, mResult);
 
         // retry to verify unthrottled
@@ -374,7 +498,7 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
     }
 
     @Test
-    public void testPurchasePremiumCapabilityResultUserCanceled() throws Exception {
+    public void testPurchasePremiumCapabilityResultUserCanceled() {
         sendValidPurchaseRequest();
 
         Intent intent = new Intent();
@@ -382,11 +506,15 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
         intent.putExtra(SlicePurchaseController.EXTRA_PHONE_ID, PHONE_ID);
         intent.putExtra(SlicePurchaseController.EXTRA_PREMIUM_CAPABILITY,
                 TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY);
-        receiveSlicePurchaseResponse(intent);
+        mBroadcastReceiver.onReceive(mMockedContext, intent);
+        mTestableLooper.processAllMessages();
         assertEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_USER_CANCELED, mResult);
 
         // retry to verify throttled
-        tryPurchasePremiumCapability();
+        mSlicePurchaseController.purchasePremiumCapability(
+                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, TAG,
+                mHandler.obtainMessage());
+        mTestableLooper.processAllMessages();
         assertEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_THROTTLED, mResult);
 
         // retry to verify unthrottled
@@ -397,7 +525,7 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
     }
 
     @Test
-    public void testPurchasePremiumCapabilityResultCarrierError() throws Exception {
+    public void testPurchasePremiumCapabilityResultCarrierError() {
         sendValidPurchaseRequest();
 
         Intent intent = new Intent();
@@ -408,11 +536,15 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
                 TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY);
         intent.putExtra(SlicePurchaseController.EXTRA_FAILURE_CODE,
                 SlicePurchaseController.FAILURE_CODE_SERVER_UNREACHABLE);
-        receiveSlicePurchaseResponse(intent);
+        mBroadcastReceiver.onReceive(mMockedContext, intent);
+        mTestableLooper.processAllMessages();
         assertEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_CARRIER_ERROR, mResult);
 
         // retry to verify throttled
-        tryPurchasePremiumCapability();
+        mSlicePurchaseController.purchasePremiumCapability(
+                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, TAG,
+                mHandler.obtainMessage());
+        mTestableLooper.processAllMessages();
         assertEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_THROTTLED, mResult);
 
         // retry to verify unthrottled
@@ -423,7 +555,7 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
     }
 
     @Test
-    public void testPurchasePremiumCapabilityResultRequestFailed() throws Exception {
+    public void testPurchasePremiumCapabilityResultRequestFailed() {
         sendValidPurchaseRequest();
 
         Intent intent = new Intent();
@@ -432,7 +564,8 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
         intent.putExtra(SlicePurchaseController.EXTRA_PHONE_ID, PHONE_ID);
         intent.putExtra(SlicePurchaseController.EXTRA_PREMIUM_CAPABILITY,
                 TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY);
-        receiveSlicePurchaseResponse(intent);
+        mBroadcastReceiver.onReceive(mMockedContext, intent);
+        mTestableLooper.processAllMessages();
         assertEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_REQUEST_FAILED, mResult);
 
         // retry to verify no throttling
@@ -440,8 +573,7 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
     }
 
     @Test
-    public void testPurchasePremiumCapabilityResultNotDefaultDataSubscriptionResponse()
-            throws Exception {
+    public void testPurchasePremiumCapabilityResultNotDefaultDataSubscriptionResponse() {
         sendValidPurchaseRequest();
 
         Intent intent = new Intent();
@@ -450,7 +582,8 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
         intent.putExtra(SlicePurchaseController.EXTRA_PHONE_ID, PHONE_ID);
         intent.putExtra(SlicePurchaseController.EXTRA_PREMIUM_CAPABILITY,
                 TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY);
-        receiveSlicePurchaseResponse(intent);
+        mBroadcastReceiver.onReceive(mMockedContext, intent);
+        mTestableLooper.processAllMessages();
         assertEquals(
                 TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_NOT_DEFAULT_DATA_SUBSCRIPTION,
                 mResult);
@@ -460,13 +593,16 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
     }
 
     private void sendValidPurchaseRequest() {
+        clearInvocations(mMockedContext);
+
         // feature supported
         doReturn((int) TelephonyManager.NETWORK_TYPE_BITMASK_NR).when(mPhone)
                 .getCachedAllowedNetworkTypesBitmask();
         // carrier supported
         mBundle.putIntArray(CarrierConfigManager.KEY_SUPPORTED_PREMIUM_CAPABILITIES_INT_ARRAY,
                 new int[]{TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY});
-        mBundle.putString(CarrierConfigManager.KEY_PREMIUM_CAPABILITY_PURCHASE_URL_STRING, URL);
+        mBundle.putString(CarrierConfigManager.KEY_PREMIUM_CAPABILITY_PURCHASE_URL_STRING,
+                SlicePurchaseController.SLICE_PURCHASE_TEST_FILE);
         mBundle.putLong(CarrierConfigManager
                 .KEY_PREMIUM_CAPABILITY_NOTIFICATION_DISPLAY_TIMEOUT_MILLIS_LONG,
                 NOTIFICATION_TIMEOUT);
@@ -489,37 +625,25 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
         doReturn(mEntitlementResponse).when(mPremiumNetworkEntitlementApi)
                 .checkEntitlementStatus(anyInt());
 
-        tryPurchasePremiumCapability();
-        // verify that the purchase request was sent successfully and purchase timeout started
+        // send purchase request
+        mSlicePurchaseController.purchasePremiumCapability(
+                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, TAG,
+                mHandler.obtainMessage());
+        mTestableLooper.processAllMessages();
+
+        // verify that the purchase request was sent successfully
+        ArgumentCaptor<Intent> intentCaptor = ArgumentCaptor.forClass(Intent.class);
+        verify(mMockedContext).sendBroadcast(intentCaptor.capture());
+        Intent intent = intentCaptor.getValue();
+        assertEquals(SlicePurchaseController.ACTION_START_SLICE_PURCHASE_APP, intent.getAction());
         assertTrue(mSlicePurchaseController.hasMessages(4 /* EVENT_PURCHASE_TIMEOUT */,
                 TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY));
-    }
 
-    private void tryPurchasePremiumCapability() {
-        try {
-            mSlicePurchaseController.purchasePremiumCapability(
-                    TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, TAG,
-                    mHandler.obtainMessage());
-            mTestableLooper.processAllMessages();
-        } catch (Exception expected) {
-            // SecurityException rethrown as RuntimeException when broadcasting intent
-            Log.d(TAG, expected.getMessage());
-        }
-        mTestableLooper.processAllMessages();
-    }
-
-    private void receiveSlicePurchaseResponse(Intent intent) throws Exception {
-        Class<?> receiverClass = Class.forName("com.android.phone.slice.SlicePurchaseController"
-                + "$SlicePurchaseControllerBroadcastReceiver");
-        Constructor<?> constructor = receiverClass.getDeclaredConstructor(
-                SlicePurchaseController.class, int.class);
-        constructor.setAccessible(true);
-        Object receiver = constructor.newInstance(mSlicePurchaseController,
-                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY);
-
-        Method method = receiver.getClass().getDeclaredMethod(
-                "onReceive", Context.class, Intent.class);
-        method.invoke(receiver, mMockedContext, intent);
-        mTestableLooper.processAllMessages();
+        // capture the broadcast receiver to fake responses from the slice purchase application
+        ArgumentCaptor<SlicePurchaseControllerBroadcastReceiver> broadcastReceiverCaptor =
+                ArgumentCaptor.forClass(SlicePurchaseControllerBroadcastReceiver.class);
+        verify(mMockedContext).registerReceiver(
+                broadcastReceiverCaptor.capture(), any(IntentFilter.class));
+        mBroadcastReceiver = broadcastReceiverCaptor.getValue();
     }
 }
