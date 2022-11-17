@@ -6661,6 +6661,17 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             @TelephonyManager.NetworkTypeBitMask long allowedNetworkTypes) {
         TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(
                 mApp, subId, "setAllowedNetworkTypesForReason");
+        // If the caller only has carrier privileges, then they should not be able to override
+        // any network types which were set for security reasons.
+        if (mApp.checkCallingOrSelfPermission(Manifest.permission.MODIFY_PHONE_STATE)
+                != PERMISSION_GRANTED
+                && (reason == TelephonyManager.ALLOWED_NETWORK_TYPES_REASON_ENABLE_2G
+                || reason == TelephonyManager.ALLOWED_NETWORK_TYPES_REASON_USER_RESTRICTIONS)) {
+            throw new SecurityException(
+                    "setAllowedNetworkTypesForReason cannot be called with carrier privileges for"
+                            + " reason "
+                            + reason);
+        }
         if (!TelephonyManager.isValidAllowedNetworkTypesReason(reason)) {
             loge("setAllowedNetworkTypesForReason: Invalid allowed network type reason: " + reason);
             return false;
