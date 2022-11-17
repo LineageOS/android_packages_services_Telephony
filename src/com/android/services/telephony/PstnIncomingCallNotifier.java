@@ -403,7 +403,8 @@ final class PstnIncomingCallNotifier {
         // receives an MT call while in ECM. Use the Emergency PhoneAccount to receive the account
         // if it exists.
         PhoneAccountHandle emergencyHandle =
-                PhoneUtils.makePstnPhoneAccountHandleWithPrefix(mPhone, "", true);
+                PhoneUtils.makePstnPhoneAccountHandleWithPrefix(mPhone,
+                        "", true, mPhone.getUserHandle());
         if(telecomAccountRegistry.hasAccountEntryForPhoneAccount(emergencyHandle)) {
             Log.i(this, "Receiving MT call in ECM. Using Emergency PhoneAccount Instead.");
             return emergencyHandle;
