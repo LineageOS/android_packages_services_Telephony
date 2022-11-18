@@ -285,13 +285,18 @@ public class TelecomAccountRegistry {
         private PhoneAccount buildPstnPhoneAccount(boolean isEmergency, boolean isTestAccount) {
             String testPrefix = isTestAccount ? "Test " : "";
 
+            // Check if we are registering another user. If we are, ensure that the account
+            // is registered to that user handle.
+            int subId = mPhone.getSubId();
+            // Get user handle from phone's sub id (if we get null, then system user will be used)
+            UserHandle userToRegister = mPhone.getUserHandle();
+
             // Build the Phone account handle.
             PhoneAccountHandle phoneAccountHandle =
                     PhoneUtils.makePstnPhoneAccountHandleWithPrefix(
-                            mPhone, testPrefix, isEmergency);
+                            mPhone, testPrefix, isEmergency, userToRegister);
 
             // Populate the phone account data.
-            int subId = mPhone.getSubId();
             String subscriberId = mPhone.getSubscriberId();
             int color = PhoneAccount.NO_HIGHLIGHT_COLOR;
             int slotId = SubscriptionManager.INVALID_SIM_SLOT_INDEX;
@@ -357,8 +362,12 @@ public class TelecomAccountRegistry {
 
             // By default all SIM phone accounts can place emergency calls.
             int capabilities = PhoneAccount.CAPABILITY_SIM_SUBSCRIPTION |
-                    PhoneAccount.CAPABILITY_CALL_PROVIDER |
-                    PhoneAccount.CAPABILITY_MULTI_USER;
+                    PhoneAccount.CAPABILITY_CALL_PROVIDER;
+
+            // This is enabled by default. To support work profiles, it should not be enabled.
+            if (userToRegister == null) {
+                capabilities |= PhoneAccount.CAPABILITY_MULTI_USER;
+            }
 
             if (mContext.getResources().getBoolean(R.bool.config_pstnCanPlaceEmergencyCalls)) {
                 capabilities |= PhoneAccount.CAPABILITY_PLACE_EMERGENCY_CALLS;
