@@ -61,7 +61,11 @@ public class TestContext extends MockContext {
     @Mock ImsManager mMockImsManager;
     @Mock UserManager mMockUserManager;
 
-    private SparseArray<PersistableBundle> mCarrierConfigs = new SparseArray<>();
+    private final SparseArray<PersistableBundle> mCarrierConfigs = new SparseArray<>();
+
+    private Intent mIntent;
+
+    private BroadcastReceiver mReceiver;
 
     private final HashSet<String> mPermissionTable = new HashSet<>();
 
@@ -105,25 +109,39 @@ public class TestContext extends MockContext {
     }
 
     @Override
+    public void sendBroadcast(Intent intent) {
+        mIntent = intent;
+    }
+
+    @Override
     public Intent registerReceiver(BroadcastReceiver receiver, IntentFilter filter) {
+        mReceiver = receiver;
         return null;
     }
 
     @Override
     public Intent registerReceiver(BroadcastReceiver receiver, IntentFilter filter, int flags) {
+        mReceiver = receiver;
         return null;
     }
 
     @Override
     public Intent registerReceiver(BroadcastReceiver receiver, IntentFilter filter,
             String broadcastPermission, Handler scheduler) {
+        mReceiver = receiver;
         return null;
     }
 
     @Override
     public Intent registerReceiver(BroadcastReceiver receiver, IntentFilter filter,
             String broadcastPermission, Handler scheduler, int flags) {
+        mReceiver = receiver;
         return null;
+    }
+
+    @Override
+    public void unregisterReceiver(BroadcastReceiver receiver) {
+        mReceiver = null;
     }
 
     @Override
@@ -134,22 +152,22 @@ public class TestContext extends MockContext {
     @Override
     public Object getSystemService(String name) {
         switch (name) {
-            case (Context.CARRIER_CONFIG_SERVICE) : {
+            case Context.CARRIER_CONFIG_SERVICE: {
                 return mMockCarrierConfigManager;
             }
-            case (Context.TELECOM_SERVICE) : {
+            case Context.TELECOM_SERVICE: {
                 return mMockTelecomManager;
             }
-            case (Context.TELEPHONY_SERVICE) : {
+            case Context.TELEPHONY_SERVICE: {
                 return mMockTelephonyManager;
             }
-            case (Context.TELEPHONY_SUBSCRIPTION_SERVICE) : {
+            case Context.TELEPHONY_SUBSCRIPTION_SERVICE: {
                 return mMockSubscriptionManager;
             }
-            case(Context.TELEPHONY_IMS_SERVICE) : {
+            case Context.TELEPHONY_IMS_SERVICE: {
                 return mMockImsManager;
             }
-            case(Context.USER_SERVICE) : {
+            case Context.USER_SERVICE: {
                 return mMockUserManager;
             }
         }
@@ -169,6 +187,9 @@ public class TestContext extends MockContext {
         }
         if (serviceClass == SubscriptionManager.class) {
             return Context.TELEPHONY_SUBSCRIPTION_SERVICE;
+        }
+        if (serviceClass == ImsManager.class) {
+            return Context.TELEPHONY_IMS_SERVICE;
         }
         if (serviceClass == UserManager.class) {
             return Context.USER_SERVICE;
@@ -250,6 +271,14 @@ public class TestContext extends MockContext {
         synchronized (mPermissionTable) {
             mPermissionTable.clear();
         }
+    }
+
+    public Intent getBroadcast() {
+        return mIntent;
+    }
+
+    public BroadcastReceiver getBroadcastReceiver() {
+        return mReceiver;
     }
 
     private static void logd(String s) {
