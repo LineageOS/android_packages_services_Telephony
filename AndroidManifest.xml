@@ -515,7 +515,6 @@
         <activity android:name="com.android.phone.settings.VoicemailSettingsActivity"
             android:label="@string/voicemail"
             android:configChanges="orientation|screenSize|keyboardHidden|screenLayout"
-            android:screenOrientation="portrait"
             android:exported="true"
             android:theme="@style/CallSettingsWithoutDividerTheme">
             <intent-filter >
