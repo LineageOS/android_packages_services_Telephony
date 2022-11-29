@@ -627,6 +627,7 @@ countries {
     types: POLICE
     types: AMBULANCE
     types: FIRE
+    routing: EMERGENCY
   }
   ecc_fallback: "112"
 }
@@ -739,6 +740,7 @@ countries {
     types: POLICE
     types: AMBULANCE
     types: FIRE
+    routing: EMERGENCY
   }
   ecc_fallback: "112"
 }
@@ -2311,6 +2313,7 @@ countries {
     types: POLICE
     types: AMBULANCE
     types: FIRE
+    routing: EMERGENCY
   }
   ecc_fallback: "112"
 }
@@ -2731,6 +2734,7 @@ countries {
     types: POLICE
     types: AMBULANCE
     types: FIRE
+    routing: EMERGENCY
   }
   ecc_fallback: "911"
 }
