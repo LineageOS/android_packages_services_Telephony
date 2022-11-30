@@ -56,6 +56,7 @@ public class PremiumNetworkEntitlementResponse {
 
     @PremiumNetworkEntitlementStatus public int mEntitlementStatus;
     @PremiumNetworkProvisionStatus public int mProvisionStatus;
+    public int mProvisionTimeLeft;
     @NonNull public String mServiceFlowURL;
 
     /**
