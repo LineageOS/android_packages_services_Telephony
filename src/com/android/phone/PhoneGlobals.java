@@ -67,6 +67,7 @@ import com.android.internal.telephony.TelephonyCapabilities;
 import com.android.internal.telephony.TelephonyComponentFactory;
 import com.android.internal.telephony.TelephonyIntents;
 import com.android.internal.telephony.data.DataEvaluation.DataDisallowedReason;
+import com.android.internal.telephony.domainselection.DomainSelectionResolver;
 import com.android.internal.telephony.ims.ImsResolver;
 import com.android.internal.telephony.imsphone.ImsPhone;
 import com.android.internal.telephony.imsphone.ImsPhoneCallTracker;
@@ -75,6 +76,7 @@ import com.android.internal.telephony.uicc.UiccProfile;
 import com.android.internal.util.IndentingPrintWriter;
 import com.android.phone.settings.SettingsConstants;
 import com.android.phone.vvm.CarrierVvmPackageInstalledReceiver;
+import com.android.services.telephony.domainselection.TelephonyDomainSelectionService;
 import com.android.services.telephony.rcs.TelephonyRcsService;
 
 import java.io.FileDescriptor;
@@ -157,6 +159,7 @@ public class PhoneGlobals extends ContextWrapper {
     public ImsStateCallbackController mImsStateCallbackController;
     public ImsProvisioningController mImsProvisioningController;
     CarrierConfigLoader configLoader;
+    TelephonyDomainSelectionService mDomainSelectionService;
 
     private Phone phoneInEcm;
 
@@ -437,8 +440,22 @@ public class PhoneGlobals extends ContextWrapper {
             // Inject telephony component factory if configured using other jars.
             XmlResourceParser parser = getResources().getXml(R.xml.telephony_injection);
             TelephonyComponentFactory.getInstance().injectTheComponentFactory(parser);
+
+            // Create DomainSelectionResolver always, but it MUST be initialized only when
+            // the device supports AOSP domain selection architecture and
+            // has new IRadio that supports its related HAL APIs.
+            DomainSelectionResolver.make(this,
+                    getResources().getBoolean(R.bool.config_enable_aosp_domain_selection));
+
             // Initialize the telephony framework
             PhoneFactory.makeDefaultPhones(this);
+
+            // Initialize the DomainSelectionResolver after creating the Phone instance
+            // to check the Radio HAL version.
+            if (DomainSelectionResolver.getInstance().isDomainSelectionSupported()) {
+                mDomainSelectionService = new TelephonyDomainSelectionService(this);
+                DomainSelectionResolver.getInstance().initialize(mDomainSelectionService);
+            }
 
             // Only bring up ImsResolver if the device supports having an IMS stack.
             if (getPackageManager().hasSystemFeature(
@@ -1051,6 +1068,19 @@ public class PhoneGlobals extends ContextWrapper {
             if (mImsStateCallbackController != null) mImsStateCallbackController.dump(pw);
         } catch (Exception e) {
             e.printStackTrace();
+        }
+        pw.println("DomainSelectionResolver:");
+        pw.increaseIndent();
+        try {
+            if (DomainSelectionResolver.getInstance() != null) {
+                DomainSelectionResolver.getInstance().dump(fd, pw, args);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        pw.decreaseIndent();
+        if (mDomainSelectionService != null) {
+            mDomainSelectionService.dump(fd, pw, args);
         }
         pw.decreaseIndent();
         pw.println("------- End PhoneGlobals -------");
