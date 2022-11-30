@@ -43,7 +43,7 @@ import java.util.UUID;
 public class PremiumNetworkEntitlementApi {
     private static final String TAG = "PremiumNwEntitlementApi";
     private static final String ENTITLEMENT_STATUS_KEY = "EntitlementStatus";
-    private static final String PROVISION_STATUS_KEY = "ProvisionStatus";
+    private static final String PROVISION_STATUS_KEY = "ProvStatus";
     private static final String SERVICE_FLOW_URL_KEY = "ServiceFlow_URL";
     private static final String PROVISION_TIME_LEFT_KEY = "ProvisionTimeLeft";
     private static final String DEFAULT_EAP_AKA_RESPONSE = "Default EAP AKA response";
@@ -145,16 +145,11 @@ public class PremiumNetworkEntitlementApi {
                 if (jsonToken.has(PROVISION_TIME_LEFT_KEY)) {
                     provisionTimeLeft = jsonToken.getString(PROVISION_TIME_LEFT_KEY);
                     if (provisionTimeLeft != null) {
-                        premiumNetworkEntitlementResponse.mEntitlementStatus =
+                        premiumNetworkEntitlementResponse.mProvisionTimeLeft =
                                 Integer.parseInt(provisionTimeLeft);
                     }
                 }
                 if (jsonToken.has(SERVICE_FLOW_URL_KEY)) {
-                    provisionStatus = jsonToken.getString(SERVICE_FLOW_URL_KEY);
-                    if (provisionStatus != null) {
-                        premiumNetworkEntitlementResponse.mProvisionStatus =
-                                Integer.parseInt(provisionStatus);
-                    }
                     premiumNetworkEntitlementResponse.mServiceFlowURL =
                             jsonToken.getString(SERVICE_FLOW_URL_KEY);
                 }
