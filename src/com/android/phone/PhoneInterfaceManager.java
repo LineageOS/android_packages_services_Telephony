@@ -11294,6 +11294,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
 
         Phone phone = getPhone(subId);
+        if (phone == null) {
+            loge("isPremiumCapabilityAvailableForPurchase: phone is null, subId=" + subId);
+            return false;
+        }
         final long identity = Binder.clearCallingIdentity();
         try {
             return SlicePurchaseController.getInstance(phone)
