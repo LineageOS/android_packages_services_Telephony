@@ -24,11 +24,14 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.sun.net.httpserver.Headers;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
+
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
@@ -177,22 +180,22 @@ public class MainActivity extends AppCompatActivity {
 
   private String getTS43Response() {
     return "{"
-        + "  \"Vers\":{"
-        + "    \"version\": \"1\","
-        + "    \"validity\": \"1728000\""
-        + "  },"
-        + "  \"Token\":{"
-        + "    \"token\": \"kZYfCEpSsMr88KZVmab5UsZVzl+nWSsX\""
-        + "  },"
-        + "  \"ap2012\":{"
-        + "    \"EntitlementStatus\": " + mEntitlementStatus + ","
-        + "    \"ServiceFlow_URL\": \"file:///android_asset/slice_purchase_test.html\","
-        + "    \"ServiceFlow_UserData\": \"PostData=U6%2FbQ%2BEP&amp;amp;l=en_US\","
-        + "    \"ProvStatus\": "+ mProvisionStatus + ","
-        + "    \"ProvTimeLeft\": 0"
-        + "  },"
-        + "  \"eap-relay-packet\":\"EapAkaChallengeRequest\""
-        + "}";
+            + "  \"Vers\":{"
+            + "    \"version\": \"1\","
+            + "    \"validity\": \"1728000\""
+            + "  },"
+            + "  \"Token\":{"
+            + "    \"token\": \"kZYfCEpSsMr88KZVmab5UsZVzl+nWSsX\""
+            + "  },"
+            + "  \"ap2012\":{"
+            + "    \"EntitlementStatus\": " + mEntitlementStatus + ","
+            + "    \"ServiceFlow_URL\": \"file:///android_asset/slice_purchase_test.html\","
+            + "    \"ServiceFlow_UserData\": \"PostData=U6%2FbQ%2BEP&amp;amp;l=en_US\","
+            + "    \"ProvStatus\": "+ mProvisionStatus + ","
+            + "    \"ProvisionTimeLeft\": 0"
+            + "  },"
+            + "  \"eap-relay-packet\":\"EapAkaChallengeRequest\""
+            + "}";
   }
 
   private void updateClientRequestTextView(String status) {
