@@ -193,6 +193,7 @@
             android:label="@string/emergencyDialerIconLabel"
             android:theme="@style/EmergencyDialerTheme"
             android:screenOrientation="portrait"
+            android:showWhenLocked="true"
             android:exported="true"
             android:resizeableActivity="false">
             <intent-filter>
