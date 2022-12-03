@@ -179,7 +179,7 @@
     <string name="network_query_error" msgid="3862515805115145124">"Não foi possível localizar nenhuma rede. Tente novamente."</string>
     <string name="register_on_network" msgid="4194770527833960423">"A registar em <xliff:g id="NETWORK">%s</xliff:g>..."</string>
     <string name="not_allowed" msgid="8541221928746104798">"O cartão SIM não permite uma ligação a esta rede."</string>
-    <string name="connect_later" msgid="1950138106010005425">"De momento, não é possível estabelecer ligação com esta rede. Tente novamente mais tarde."</string>
+    <string name="connect_later" msgid="1950138106010005425">"De momento, não é possível estabelecer ligação com esta rede. Tente mais tarde."</string>
     <string name="registration_done" msgid="5337407023566953292">"Registado na rede."</string>
     <string name="already_auto" msgid="8607068290733079336">"A seleção automática já está ativada."</string>
     <string name="select_automatically" msgid="779750291257872651">"Selecionar automaticamente a rede"</string>
