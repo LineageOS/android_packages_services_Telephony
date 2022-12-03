@@ -835,6 +835,7 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"Bu ayarı değiştirmek için cihazınızı yeniden başlatın."</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"Yeniden başlat"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"İptal"</string>
+    <string name="removable_esim_string" msgid="7931369811671787649">"Çıkarılabilir eSIM\'i Varsayılan Yap"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"Mobil Radyo Gücü"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"SIM Adres Defterini Görüntüle"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"Sabit Arama Numaralarını Görüntüle"</string>
@@ -915,9 +916,6 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Telefon bilgileri"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Operatör Temel Hazırlık Bilgileri"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Tetikleyici Operatör Temel Hazırlığı"</string>
-    <string name="provisioning_info_wfc_entitlement_id" msgid="8845188780811890910">"WFC Yararlanma Hakkı Kimliği:"</string>
-    <string name="update_provisioning_info_wfc_entitlement_id" msgid="7044171908781134221">"Güncelle"</string>
-    <string name="refresh_provisioning_info_wfc_entitlement_id" msgid="738894335351353407">"Yenile"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Bluetooth sinyaliniz zayıf. Hoparlöre geçmeyi deneyin."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Arama Kalitesiyle İlgili Bildirim"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Kullanımdan kaldırılan SIP hesapları"</string>

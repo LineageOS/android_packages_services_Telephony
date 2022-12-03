@@ -835,6 +835,7 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"এই সেটিং পরিবর্তন করতে আপনার ডিভাইস রিস্টার্ট করতে হবে।"</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"রিস্টার্ট করুন"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"বাদ দিন"</string>
+    <string name="removable_esim_string" msgid="7931369811671787649">"সরিয়ে দেওয়া যায় এমন eSIM ডিফল্ট হিসেবে সেট করুন"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"মোবাইল রেডিওর গুণমান"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"সিম অ্যাড্রেস বুক দেখুন"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"স্থায়ী ডায়াল নম্বরগুলি দেখুন"</string>
@@ -915,12 +916,6 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"ফোনের তথ্য"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"পরিষেবা প্রদানকারীর ব্যবস্থামূলক তথ্য"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"ট্রিগার পরিষেবা প্রদানকারীর ব্যবস্থা"</string>
-    <!-- no translation found for provisioning_info_wfc_entitlement_id (8845188780811890910) -->
-    <skip />
-    <!-- no translation found for update_provisioning_info_wfc_entitlement_id (7044171908781134221) -->
-    <skip />
-    <!-- no translation found for refresh_provisioning_info_wfc_entitlement_id (738894335351353407) -->
-    <skip />
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"আপনার ডিভাইসের ব্লুটুথ সিগনাল ভাল না। বদল করে স্পিকারফোন বেছে নিন।"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"ফোন কলের কোয়ালিটি সংক্রান্ত বিজ্ঞপ্তি"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"পুরনো SIP অ্যাকাউন্ট"</string>
