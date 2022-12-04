@@ -34,7 +34,7 @@
     <string name="enter_input" msgid="6193628663039958990">"የUSSD መልዕክት በ<xliff:g id="MIN_LEN">%1$d</xliff:g> እና <xliff:g id="MAX_LEN">%2$d</xliff:g> ቁምፊዎች መካከል መሆን አለበት። እባክዎ እንደገና ይሞክሩ።"</string>
     <string name="manageConferenceLabel" msgid="8415044818156353233">"የስብሰባስልክ ጥሪ አደራጅ"</string>
     <string name="ok" msgid="7818974223666140165">"እሺ"</string>
-    <string name="audio_mode_speaker" msgid="243689733219312360">"ድምጽ ማጉያ"</string>
+    <string name="audio_mode_speaker" msgid="243689733219312360">"ድምፅ ማጉያ"</string>
     <string name="audio_mode_earpiece" msgid="2823700267171134282">"የስልክ እጀታ ጆሮማዳመጫ"</string>
     <string name="audio_mode_wired_headset" msgid="5028010823105817443">"ባለ ገመድ የጆሮ ማዳመጫ"</string>
     <string name="audio_mode_bluetooth" msgid="25732183428018809">"ብሉቱዝ"</string>
@@ -623,7 +623,7 @@
     <string name="ota_title_activate_success" msgid="1272135024761004889">"ስልክ አግብረሃል!"</string>
     <string name="ota_title_problem_with_activation" msgid="7019745985413368726">"ከአግብር ጋር ያለ ችግር"</string>
     <string name="ota_listen" msgid="2772252405488894280">"አግብር መጠናቀቁን እስኪሰሙ የተነገሩትን መመሪያዎች ይከተሉ።"</string>
-    <string name="ota_speaker" msgid="1086766980329820528">"ድምጽ ማጉያ"</string>
+    <string name="ota_speaker" msgid="1086766980329820528">"ድምፅ ማጉያ"</string>
     <string name="ota_progress" msgid="8837259285255700132">"ስልክዎን ፕሮግራም በማድረግ ላይ…"</string>
     <string name="ota_failure" msgid="5674217489921481576">"ስልክዎን ፕሮግራም ማድረግ አልተቻለም"</string>
     <string name="ota_successful" msgid="1106825981548107774">"አሁን ስልክዎ አግብሯል።አገልግሎቱ ለመጀመር እስከ 15 ደቂቃዎች ሊፈጅ ይችላል።"</string>
