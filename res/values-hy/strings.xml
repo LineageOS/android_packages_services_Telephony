@@ -18,7 +18,7 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="phoneAppLabel" product="tablet" msgid="1916019789885839910">"Բջջային տվյալներ"</string>
     <string name="phoneAppLabel" product="default" msgid="130465039375347763">"Հեռախոսի ծառայություններ"</string>
-    <string name="emergencyDialerIconLabel" msgid="8668005772339436680">"Արտակարգ իրավիճակների համարհավաքիչ"</string>
+    <string name="emergencyDialerIconLabel" msgid="8668005772339436680">"Արտակարգ իրավիճակների համարահավաքիչ"</string>
     <string name="phoneIconLabel" msgid="3015941229249651419">"Հեռախոս"</string>
     <string name="fdnListLabel" msgid="4119121875004244097">"FDN ցուցակ"</string>
     <string name="unknown" msgid="8279698889921830815">"Անհայտ"</string>
@@ -284,7 +284,7 @@
     <string name="roaming" msgid="1576180772877858949">"Ռոումինգ"</string>
     <string name="roaming_enable" msgid="6853685214521494819">"Միանալ տվյալների փոխանցման ծառայություններին ռոումինգում"</string>
     <string name="roaming_disable" msgid="8856224638624592681">"Միանալ տվյալների փոխանցման ծառայություններին ռոումինգում"</string>
-    <string name="roaming_reenable_message" msgid="1951802463885727915">"Ռոումինգում բջջային ինտերնետն անջատված է: Հպեք՝ միացնելու համար:"</string>
+    <string name="roaming_reenable_message" msgid="1951802463885727915">"Ռոումինգում բջջային ինտերնետն անջատված է: Հպեք միացնելու համար:"</string>
     <string name="roaming_enabled_message" msgid="9022249120750897">"Ռոումինգի համար կարող է գումար գանձվել: Հպեք՝ փոփոխելու համար:"</string>
     <string name="roaming_notification_title" msgid="3590348480688047320">"Բջջային ինտերնետը կորավ"</string>
     <string name="roaming_on_notification_title" msgid="7451473196411559173">"Ինտերնետ ռոումինգը միացված է"</string>
@@ -575,7 +575,7 @@
     <string name="fire_type_description" msgid="6565200468934914930">"Հրշեջ ծառայություն"</string>
     <string name="description_concat_format" msgid="2014471565101724088">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="1115266533703764049">"Օգտագործեք ստեղնաշարը՝ համարհավաքման համար"</string>
-    <string name="onscreenHoldText" msgid="4025348842151665191">"Պահել"</string>
+    <string name="onscreenHoldText" msgid="4025348842151665191">"Սպասման մեջ դնել"</string>
     <string name="onscreenEndCallText" msgid="6138725377654842757">"Ավարտել"</string>
     <string name="onscreenShowDialpadText" msgid="658465753816164079">"Թվաշար"</string>
     <string name="onscreenMuteText" msgid="5470306116733843621">"Խլացնել"</string>
@@ -835,6 +835,7 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"Վերագործարկեք սարքը՝ այս կարգավորումը փոխելու համար:"</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"Վերագործարկել"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"Չեղարկել"</string>
+    <string name="removable_esim_string" msgid="7931369811671787649">"Սահմանել հեռացվելի eSIM քարտը որպես կանխադրված"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"Բջջային ռադիոազդանշանի հզորությունը"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"Դիտել SIM քարտի հասցեագիրքը"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"Տեսնել ամրակցված հեռախոսահամարները"</string>
@@ -915,9 +916,6 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Հեռախոսի տեղեկություններ"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Օպերատորի նախապատրաստման տվյալներ"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Գործարկել օպերատորի նախապատրաստումը"</string>
-    <string name="provisioning_info_wfc_entitlement_id" msgid="8845188780811890910">"WFC թույլտվության ID՝"</string>
-    <string name="update_provisioning_info_wfc_entitlement_id" msgid="7044171908781134221">"Թարմացնել"</string>
-    <string name="refresh_provisioning_info_wfc_entitlement_id" msgid="738894335351353407">"Թարմացնել"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Ձեր Bluetooth-ի ազդանշանը թույլ է։ Փորձեք միացնել բարձրախոսը։"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Զանգի որակի մասին ծանուցում"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Հնացած SIP հաշիվներ"</string>

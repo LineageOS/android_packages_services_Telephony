@@ -357,13 +357,13 @@
     <string name="list_language_title" msgid="1850167908665485738">"Ulimi"</string>
     <string name="list_language_summary" msgid="7921756070782277559">"Khetha ulimi lwezindaba"</string>
   <string-array name="list_language_entries">
-    <item msgid="2347238508726934281">"i-English"</item>
+    <item msgid="2347238508726934281">"English"</item>
     <item msgid="5172468397620875174">"isi-French"</item>
     <item msgid="3978110664146015398">"isi-Spanish"</item>
     <item msgid="2637764545851526369">"isi-Japanese"</item>
-    <item msgid="6103816221834932751">"isi-Korean"</item>
-    <item msgid="3127367370005168399">"isi-Chinese"</item>
-    <item msgid="9130651361816196355">"isi-Hebrew"</item>
+    <item msgid="6103816221834932751">"Korean"</item>
+    <item msgid="3127367370005168399">"Chinese"</item>
+    <item msgid="9130651361816196355">"Hebrew"</item>
   </string-array>
   <string-array name="list_language_values">
     <item msgid="798673247233934667">"1"</item>
@@ -835,6 +835,7 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"Udinga ukuqalisa kabusha idivayisi yakho ukushintsha lesi silungiselelo."</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"Qala kabusha"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"Khansela"</string>
+    <string name="removable_esim_string" msgid="7931369811671787649">"Setha i-eSim Esusekayo Njengezenzakalelayo"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"Amandla erediyo yeselula"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"Buka incwadi yekheli le-SIM"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"Buka Izinombolo Zokudayela Okungaguquki"</string>
@@ -915,9 +916,6 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Ulwazi lwefoni"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Ulwazi lokuhlinzeka lenkampani yenethiwekhi"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Cupha ukunikezwa kwenkampani yenethiwekhi"</string>
-    <string name="provisioning_info_wfc_entitlement_id" msgid="8845188780811890910">"I-ID WFC Entitlement:"</string>
-    <string name="update_provisioning_info_wfc_entitlement_id" msgid="7044171908781134221">"Vuselela"</string>
-    <string name="refresh_provisioning_info_wfc_entitlement_id" msgid="738894335351353407">"Vuselela"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Isignali yakho ye-bluetooth ayiqinile. Zama ukushintshela kusipikhasefoni."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Isaziso Sekhwalithi"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Ama-akhawunti we-SIP ehlisiwe"</string>
