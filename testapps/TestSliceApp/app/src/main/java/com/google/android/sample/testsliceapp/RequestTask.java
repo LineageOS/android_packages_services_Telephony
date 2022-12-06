@@ -19,11 +19,11 @@ import android.net.Network;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.Scanner;
 
 class RequestTask extends AsyncTask<Network, Integer, Integer> {
     protected Integer doInBackground(Network... network) {
@@ -59,8 +59,7 @@ class RequestTask extends AsyncTask<Network, Integer, Integer> {
         try {
             InputStream inputStream = connection.getInputStream();
             Log.d("httpGet", "httpUrl + " + httpUrl);
-            Scanner scanner = new Scanner(inputStream).useDelimiter("\\A");
-            return scanner.hasNext() ? scanner.next() : "";
+            return new BufferedInputStream(inputStream).toString();
         } finally {
             connection.disconnect();
         }
