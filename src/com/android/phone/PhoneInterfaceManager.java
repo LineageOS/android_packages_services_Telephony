@@ -8095,8 +8095,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             }
             String vvmPackage = componentName.getPackageName();
             if (!callingPackage.equals(vvmPackage)) {
-                throw new SecurityException("Caller not current active visual voicemail package["
-                        + vvmPackage + "]");
+                throw new SecurityException("Caller not current active visual voicemail package");
             }
         } finally {
             Binder.restoreCallingIdentity(identity);

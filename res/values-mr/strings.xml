@@ -545,7 +545,7 @@
     <string name="incall_error_no_phone_number_supplied" msgid="8680831089508851894">"कॉल करण्यासाठी, एक वैध नंबर एंटर करा."</string>
     <string name="incall_error_call_failed" msgid="393508653582682539">"कॉल अयशस्वी झाला."</string>
     <string name="incall_error_cannot_add_call" msgid="5425764862628655443">"या वेळी कॉल जोडू शकत नाही. तुम्ही मेसेज पाठवून संपर्क करण्याचा प्रयत्न करू शकता."</string>
-    <string name="incall_error_supp_service_unknown" msgid="8751177117194592623">"सेवा समर्थित नाही"</string>
+    <string name="incall_error_supp_service_unknown" msgid="8751177117194592623">"सेवेला सपोर्ट नाही"</string>
     <string name="incall_error_supp_service_switch" msgid="5272822448189448479">"कॉल स्विच करू शकत नाही."</string>
     <string name="incall_error_supp_service_resume" msgid="1276861499306817035">"कॉल पुन्‍हा सुरू करू शकत नाही."</string>
     <string name="incall_error_supp_service_separate" msgid="8932660028965274353">"कॉल विभक्त करू शकत नाही."</string>
@@ -655,7 +655,7 @@
     <string name="contactPhoto" msgid="7885089213135154834">"संपर्क फोटो"</string>
     <string name="goPrivate" msgid="4645108311382209551">"खाजगी जा"</string>
     <string name="selectContact" msgid="1527612842599767382">"संपर्क निवडा"</string>
-    <string name="not_voice_capable" msgid="2819996734252084253">"व्‍हॉइस कॉलिंंग समर्थित नाही"</string>
+    <string name="not_voice_capable" msgid="2819996734252084253">"व्‍हॉइस कॉलिंंग याला सपोर्ट नाही"</string>
     <string name="description_dial_button" msgid="8614631902795087259">"डायल करा"</string>
     <string name="description_dialpad_button" msgid="7395114120463883623">"डायलपॅड दाखवा"</string>
     <string name="pane_title_emergency_dialpad" msgid="3627372514638694401">"आणीबाणी डायलपॅड"</string>
