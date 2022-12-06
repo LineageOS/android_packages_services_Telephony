@@ -130,12 +130,18 @@ public class PrioritizeLatency extends Fragment {
         mPing.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.d(LOG_TAG, "Clicking Ping button");
                 if (mNetwork != null) {
-                    try {
-                        new RequestTask().ping(mNetwork);
-                    } catch (Exception e) {
-                        Log.e(LOG_TAG, "Exception at ping: " + e);
-                    }
+                    mFixedThreadPool.execute(() -> {
+                        try {
+                            RequestTask requestTask = new RequestTask();
+                            requestTask.ping(mNetwork);
+                            updateResultTextView("Result: Ping is done successfully!");
+                        } catch (Exception e) {
+                            Log.e(LOG_TAG, "Exception at ping: " + e);
+                            updateResultTextView("Result: Got exception with ping!!!");
+                        }
+                    });
                 }
             }
         });
@@ -149,9 +155,7 @@ public class PrioritizeLatency extends Fragment {
                 public void onAvailable(final Network network) {
                     Log.d(LOG_TAG, "onAvailable + " + network);
                     mNetwork = network;
-                    mPing.setEnabled(true);
-                    mNetworkRequestRelease.setText(R.string.release_network);
-                    mResultTextView.setText(R.string.network_available);
+                    updateUIOnNetworkAvailable();
                 }
             };
             NetworkRequest.Builder builder = new NetworkRequest.Builder();
@@ -242,6 +246,17 @@ public class PrioritizeLatency extends Fragment {
             @Override
             public void run() {
                 mResultTextView.setText(status);
+            }
+        });
+    }
+
+    private void updateUIOnNetworkAvailable() {
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mPing.setEnabled(true);
+                mNetworkRequestRelease.setText(R.string.release_network);
+                mResultTextView.setText(R.string.network_available);
             }
         });
     }
