@@ -436,6 +436,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     private static final int SET_NETWORK_SELECTION_MODE_AUTOMATIC_TIMEOUT_MS = 2000; // 2 seconds
 
+    private static final int MODEM_ACTIVITY_TIME_OFFSET_CORRECTION_MS = 50;
+
     /**
      * With support for MEP(multiple enabled profile) in Android T, a SIM card can have more than
      * one ICCID active at the same time.
@@ -1467,6 +1469,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                         ModemActivityInfo info = (ModemActivityInfo) ar.result;
                         if (isModemActivityInfoValid(info)) {
                             mergeModemActivityInfo(info);
+                        } else {
+                            loge("queryModemActivityInfo: invalid response");
                         }
                         // This is needed to decouple ret from mLastModemActivityInfo
                         // We don't want to return mLastModemActivityInfo which is updated
@@ -8015,7 +8019,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
-    // Checks that ModemActivityInfo is valid. Sleep time, Idle time, Rx time and Tx time should be
+    // Checks that ModemActivityInfo is valid. Sleep time and Idle time should be
     // less than total activity duration.
     private boolean isModemActivityInfoValid(ModemActivityInfo info) {
         if (info == null) {
@@ -8023,13 +8027,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
         int activityDurationMs =
                 (int) (info.getTimestampMillis() - mLastModemActivityInfo.getTimestampMillis());
+        activityDurationMs += MODEM_ACTIVITY_TIME_OFFSET_CORRECTION_MS;
+
         int totalTxTimeMs = Arrays.stream(info.getTransmitTimeMillis()).sum();
 
         return (info.isValid()
             && (info.getSleepTimeMillis() <= activityDurationMs)
-            && (info.getIdleTimeMillis() <= activityDurationMs)
-            && (info.getReceiveTimeMillis() <= activityDurationMs)
-            && (totalTxTimeMs <= activityDurationMs));
+            && (info.getIdleTimeMillis() <= activityDurationMs));
     }
 
     private void updateLastModemActivityInfo(ModemActivityInfo info, int rat, int freq) {
