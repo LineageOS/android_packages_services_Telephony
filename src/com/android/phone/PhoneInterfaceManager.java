@@ -11395,6 +11395,21 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
 
         Phone phone = getPhone(subId);
+        if (phone == null) {
+            try {
+                int result = TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_REQUEST_FAILED;
+                callback.accept(result);
+                loge("purchasePremiumCapability: phone is null, subId=" + subId);
+            } catch (RemoteException e) {
+                String logStr = "Purchase premium capability "
+                        + TelephonyManager.convertPremiumCapabilityToString(capability)
+                        + " failed due to RemoteException handling null phone: " + e;
+                if (DBG) log(logStr);
+                AnomalyReporter.reportAnomaly(
+                        UUID.fromString(PURCHASE_PREMIUM_CAPABILITY_ERROR_UUID), logStr);
+            }
+            return;
+        }
         String appName;
         try {
             appName = mApp.getPackageManager().getApplicationLabel(mApp.getPackageManager()
