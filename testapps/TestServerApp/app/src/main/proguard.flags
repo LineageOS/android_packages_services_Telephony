@@ -1,4 +1,0 @@
--dontobfuscate
--dontoptimize
-
--keep class com.google.android.testserverapp.*
