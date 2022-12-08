@@ -978,7 +978,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         if (isNoSimConfig) {
             fileName = getFilenameForNoSimConfig(packageName);
         } else {
-            if (SubscriptionManager.getSimStateForSlotIndex(phoneId)
+            if (TelephonyManager.getSimStateForSlotIndex(phoneId)
                     != TelephonyManager.SIM_STATE_LOADED) {
                 loge("Skip save config because SIM records are not loaded.");
                 return;
@@ -1069,7 +1069,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         if (isNoSimConfig) {
             fileName = getFilenameForNoSimConfig(packageName);
         } else {
-            if (SubscriptionManager.getSimStateForSlotIndex(phoneId)
+            if (TelephonyManager.getSimStateForSlotIndex(phoneId)
                     != TelephonyManager.SIM_STATE_LOADED) {
                 loge("Skip restore config because SIM records are not loaded.");
                 return null;
