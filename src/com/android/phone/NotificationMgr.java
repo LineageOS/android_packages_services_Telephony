@@ -18,6 +18,7 @@ package com.android.phone;
 
 import static android.Manifest.permission.READ_PHONE_STATE;
 
+import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.app.BroadcastOptions;
 import android.app.Notification;
@@ -47,6 +48,7 @@ import android.telecom.PhoneAccountHandle;
 import android.telecom.TelecomManager;
 import android.telephony.CarrierConfigManager;
 import android.telephony.PhoneNumberUtils;
+import android.telephony.RadioAccessFamily;
 import android.telephony.ServiceState;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
@@ -59,6 +61,7 @@ import android.widget.Toast;
 
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
+import com.android.internal.telephony.RILConstants;
 import com.android.internal.telephony.TelephonyCapabilities;
 import com.android.internal.telephony.util.NotificationChannelController;
 import com.android.phone.settings.VoicemailSettingsActivity;
@@ -895,15 +898,21 @@ public class NotificationMgr {
         Log.i(LOG_TAG, msg);
     }
 
-    /**
-     * In case network selection notification shows up repeatedly under
-     * unstable network condition. The logic is to check whether or not
-     * the service state keeps in no service condition for at least
-     * {@link #NETWORK_SELECTION_NOTIFICATION_MAX_PENDING_TIME_IN_MS}.
-     * And checking {@link #NETWORK_SELECTION_NOTIFICATION_MAX_PENDING_TIMES} times.
-     * To avoid the notification showing up for the momentary state.
-     */
     private void shouldShowNotification(int serviceState, int subId) {
+        // "Network selection unavailable" notification should only show when network selection is
+        // visible to the end user. Some CC items e.g. KEY_HIDE_CARRIER_NETWORK_SETTINGS_BOOL
+        // can be overridden to hide the network selection to the end user. In this case, the
+        // notification is not shown to avoid confusion to the end user.
+        if (!shouldDisplayNetworkSelectOptions(subId)) {
+            logi("Skipping network selection unavailable notification due to carrier policy.");
+            return;
+        }
+
+        // In unstable network condition, the phone may go in and out of service. Add logic here to
+        // debounce the network selection notification. The notification only shows after phone is
+        // out of service, AND fulfills one of the two conditions below:
+        // - Out of service lasts {@link #NETWORK_SELECTION_NOTIFICATION_MAX_PENDING_TIME_IN_MS}
+        // - Or has checked {@link #NETWORK_SELECTION_NOTIFICATION_MAX_PENDING_TIMES} times
         if (serviceState == ServiceState.STATE_OUT_OF_SERVICE) {
             if (mPreviousServiceState.get(subId, STATE_UNKNOWN_SERVICE)
                     != ServiceState.STATE_OUT_OF_SERVICE) {
@@ -955,4 +964,111 @@ public class NotificationMgr {
     private static long getTimeStamp() {
         return SystemClock.elapsedRealtime();
     }
+
+    // TODO(b/243010310): merge methods below with Settings#MobileNetworkUtils and optimize them.
+    // The methods below are copied from com.android.settings.network.telephony.MobileNetworkUtils
+    // to make sure the network selection unavailable notification should not show when network
+    // selection menu is not visible to the end user in Settings app.
+    private boolean shouldDisplayNetworkSelectOptions(int subId) {
+        final TelephonyManager telephonyManager = mTelephonyManager.createForSubscriptionId(subId);
+        final CarrierConfigManager carrierConfigManager = mContext.getSystemService(
+                CarrierConfigManager.class);
+        final PersistableBundle carrierConfig = carrierConfigManager.getConfigForSubId(subId);
+
+        if (subId == SubscriptionManager.INVALID_SUBSCRIPTION_ID
+                || carrierConfig == null
+                || !carrierConfig.getBoolean(
+                CarrierConfigManager.KEY_OPERATOR_SELECTION_EXPAND_BOOL)
+                || carrierConfig.getBoolean(
+                CarrierConfigManager.KEY_HIDE_CARRIER_NETWORK_SETTINGS_BOOL)
+                || (carrierConfig.getBoolean(CarrierConfigManager.KEY_CSP_ENABLED_BOOL)
+                && !telephonyManager.isManualNetworkSelectionAllowed())) {
+            return false;
+        }
+
+        if (isWorldMode(carrierConfig)) {
+            final int networkMode = RadioAccessFamily.getNetworkTypeFromRaf(
+                    (int) telephonyManager.getAllowedNetworkTypesForReason(
+                            TelephonyManager.ALLOWED_NETWORK_TYPES_REASON_USER));
+            if (networkMode == RILConstants.NETWORK_MODE_LTE_CDMA_EVDO) {
+                return false;
+            }
+            if (shouldSpeciallyUpdateGsmCdma(telephonyManager, carrierConfig)) {
+                return false;
+            }
+            if (networkMode == RILConstants.NETWORK_MODE_LTE_GSM_WCDMA) {
+                return true;
+            }
+        }
+
+        return isGsmBasicOptions(telephonyManager, carrierConfig);
+    }
+
+    private static boolean isWorldMode(@NonNull PersistableBundle carrierConfig) {
+        return carrierConfig.getBoolean(CarrierConfigManager.KEY_WORLD_MODE_ENABLED_BOOL);
+    }
+
+    private static boolean shouldSpeciallyUpdateGsmCdma(@NonNull TelephonyManager telephonyManager,
+            @NonNull PersistableBundle carrierConfig) {
+        if (!isWorldMode(carrierConfig)) {
+            return false;
+        }
+
+        final int networkMode = RadioAccessFamily.getNetworkTypeFromRaf(
+                (int) telephonyManager.getAllowedNetworkTypesForReason(
+                        TelephonyManager.ALLOWED_NETWORK_TYPES_REASON_USER));
+        if (networkMode == RILConstants.NETWORK_MODE_LTE_TDSCDMA_GSM
+                || networkMode == RILConstants.NETWORK_MODE_LTE_TDSCDMA_GSM_WCDMA
+                || networkMode == RILConstants.NETWORK_MODE_LTE_TDSCDMA
+                || networkMode == RILConstants.NETWORK_MODE_LTE_TDSCDMA_WCDMA
+                || networkMode
+                == RILConstants.NETWORK_MODE_LTE_TDSCDMA_CDMA_EVDO_GSM_WCDMA
+                || networkMode == RILConstants.NETWORK_MODE_LTE_CDMA_EVDO_GSM_WCDMA) {
+            if (!isTdscdmaSupported(telephonyManager, carrierConfig)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private static boolean isTdscdmaSupported(@NonNull TelephonyManager telephonyManager,
+            @NonNull PersistableBundle carrierConfig) {
+        if (carrierConfig.getBoolean(CarrierConfigManager.KEY_SUPPORT_TDSCDMA_BOOL)) {
+            return true;
+        }
+        final String[] numericArray = carrierConfig.getStringArray(
+                CarrierConfigManager.KEY_SUPPORT_TDSCDMA_ROAMING_NETWORKS_STRING_ARRAY);
+        if (numericArray == null) {
+            return false;
+        }
+        final ServiceState serviceState = telephonyManager.getServiceState();
+        final String operatorNumeric =
+                (serviceState != null) ? serviceState.getOperatorNumeric() : null;
+        if (operatorNumeric == null) {
+            return false;
+        }
+        for (String numeric : numericArray) {
+            if (operatorNumeric.equals(numeric)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static boolean isGsmBasicOptions(@NonNull TelephonyManager telephonyManager,
+            @NonNull PersistableBundle carrierConfig) {
+        if (!carrierConfig.getBoolean(
+                CarrierConfigManager.KEY_HIDE_CARRIER_NETWORK_SETTINGS_BOOL)
+                && carrierConfig.getBoolean(CarrierConfigManager.KEY_WORLD_PHONE_BOOL)) {
+            return true;
+        }
+
+        if (telephonyManager.getPhoneType() == TelephonyManager.PHONE_TYPE_GSM) {
+            return true;
+        }
+
+        return false;
+    }
+    // END of TODO:(b/243010310): merge methods above with Settings#MobileNetworkUtils and optimize.
 }

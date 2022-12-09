@@ -919,8 +919,4 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Gyenge a Bluetooth-jel. Próbáljon kihangosítóra váltani."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Értesítés a hívás minőségéről"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Elavult SIP-fiókok"</string>
-    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"A(z) <xliff:g id="SPN">%s</xliff:g> nem támogatja segélyhívás indítását Wi-Fi-n keresztül. \n\nA segélyhívásokat mobilhálózaton indítja el. Ha nem megfelelő a térerő, előfordulhat, hogy nem sikerül kapcsolni a vészhívást."</string>
-    <string name="do_not_show_again" msgid="8923026903375124550">"Ne jelenjen meg többé"</string>
-    <string name="turn_off_wfc" msgid="2346229945400554258">"A Wi-Fi-hívás kikapcsolása"</string>
-    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"Előfordulhat, hogy a segélyhívás funkció nem áll rendelkezésre"</string>
 </resources>

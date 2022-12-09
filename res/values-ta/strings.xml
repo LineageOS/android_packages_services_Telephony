@@ -919,8 +919,4 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"புளூடூத் சிக்னல் வலுவற்றதாக உள்ளது. ஸ்பீக்கர் ஃபோனிற்கு மாற்றவும்."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"அழைப்பின் தரம் தொடர்பான அறிவிப்பு"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"நிறுத்தப்பட்ட SIP கணக்குகள்"</string>
-    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"வைஃபை மூலம் அவசர அழைப்புகள் செய்வதை <xliff:g id="SPN">%s</xliff:g> ஆதரிக்கவில்லை. \n\nமொபைல் நெட்வொர்க் மூலம் அவசர அழைப்புகள் செய்யப்படும். மொபைல் கவரேஜ் குறைவாக இருந்தால் அவசர அழைப்புகள் செல்வது சாத்தியமில்லாமல் போகக்கூடும்."</string>
-    <string name="do_not_show_again" msgid="8923026903375124550">"மீண்டும் காட்டாதே"</string>
-    <string name="turn_off_wfc" msgid="2346229945400554258">"வைஃபை அழைப்பை முடக்கு"</string>
-    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"அவசர அழைப்புகளை மேற்கொள்ள முடியாமல் போகலாம்"</string>
 </resources>

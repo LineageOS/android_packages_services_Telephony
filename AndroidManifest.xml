@@ -23,8 +23,6 @@
 >
 
     <original-package android:name="com.android.phone" />
-    <protected-broadcast android:name= "com.android.internal.telephony.ACTION_VOWIFI_ENABLED" />
-
     <!-- Allows granting runtime permissions to telephony related components. -->
     <uses-permission android:name="android.permission.GRANT_RUNTIME_PERMISSIONS_TO_TELEPHONY_DEFAULTS" />
 
@@ -485,17 +483,6 @@
                 <action android:name="com.android.phone.action.ACTION_SHOW_ECM_EXIT_DIALOG" />
                 <action android:name="android.telephony.action.SHOW_NOTICE_ECM_BLOCK_OTHERS" />
                 <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-
-        <activity android:name="LimitedServiceActivity"
-            android:exported="true"
-            android:excludeFromRecents="true"
-            android:launchMode="singleTask"
-            android:taskAffinity=""
-            android:theme="@android:style/Theme.Translucent.NoTitleBar">
-            <intent-filter android:priority="1000">
-                <action android:name = "com.android.internal.telephony.ACTION_VOWIFI_ENABLED" />
             </intent-filter>
         </activity>
 

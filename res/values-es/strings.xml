@@ -919,8 +919,4 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Tu señal de Bluetooth es débil. Prueba a cambiar al altavoz."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Notificación de calidad de la llamada"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Cuentas SIP obsoletas"</string>
-    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g> no permite hacer llamadas de emergencia por Wi-Fi. \n\nLas llamadas de emergencia se harán a través de una red móvil. Si hay poca cobertura móvil, puede que la llamada de emergencia no se realice."</string>
-    <string name="do_not_show_again" msgid="8923026903375124550">"No volver a mostrar"</string>
-    <string name="turn_off_wfc" msgid="2346229945400554258">"Desactivar llamadas por Wi-Fi"</string>
-    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"Las llamadas de emergencia pueden no estar disponibles"</string>
 </resources>

@@ -919,8 +919,4 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Teie Bluetoothi signaal on nõrk. Lülitage valjuhääldile."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Kõnekvaliteedi märguanne"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Katkestatud toega SIP-kontod"</string>
-    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g> ei toeta WiFi kaudu hädaabikõnede tegemist. \n\nHädaabikõnede tegemiseks kasutatakse mobiilsidevõrku. Kui mobiilside leviala on piiratud, ei pruugi hädaabikõne õnnestuda."</string>
-    <string name="do_not_show_again" msgid="8923026903375124550">"Ära kuva uuesti"</string>
-    <string name="turn_off_wfc" msgid="2346229945400554258">"Lülita WiFi-kõned välja"</string>
-    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"Hädaabikõnesid ei pruugi olla võimalik teha"</string>
 </resources>

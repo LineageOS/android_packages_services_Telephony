@@ -919,8 +919,4 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"ਤੁਹਾਡਾ ਬਲੂਟੁੱਥ ਸਿਗਨਲ ਕਮਜ਼ੋਰ ਹੈ। ਸਪੀਕਰਫ਼ੋਨ \'ਤੇ ਲਿਜਾ ਕੇ ਦੇਖੋ।"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"ਕਾਲ ਦੀ ਕੁਆਲਿਟੀ ਸੰਬੰਧੀ ਸੂਚਨਾ"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"ਨਾਪਸੰਦ ਕੀਤੇ SIP ਖਾਤੇ"</string>
-    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g> ਵੱਲੋਂ ਵਾਈ-ਫਾਈ \'ਤੇ ਐਮਰਜੈਂਸੀ ਕਾਲਾਂ ਦਾ ਸਮਰਥਨ ਨਹੀਂ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। \n\nਐਮਰਜੈਂਸੀ ਕਾਲਾਂ ਮੋਬਾਈਲ ਨੈੱਟਵਰਕ ਰਾਹੀਂ ਕੀਤੀਆਂ ਜਾਣਗੀਆਂ। ਸੀਮਤ ਮੋਬਾਈਲ ਕਵਰੇਜ ਹੋਣ \'ਤੇ ਸ਼ਾਇਦ ਤੁਹਾਡੀ ਐਮਰਜੈਂਸੀ ਕਾਲ ਨਾ ਲੱਗੇ।"</string>
-    <string name="do_not_show_again" msgid="8923026903375124550">"ਦੁਬਾਰਾ ਨਾ ਦਿਖਾਓ"</string>
-    <string name="turn_off_wfc" msgid="2346229945400554258">"ਵਾਈ-ਫਾਈ ਕਾਲਿੰਗ ਬੰਦ ਕਰੋ"</string>
-    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"ਸ਼ਾਇਦ ਐਮਰਜੈਂਸੀ ਕਾਲਾਂ ਉਪਲਬਧ ਨਾ ਹੋਣ"</string>
 </resources>

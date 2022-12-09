@@ -919,8 +919,4 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Bluetooth signal je slab. Probajte da pređete na spikerfon."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Obaveštenje o kvalitetu poziva"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Zastareli SIP nalozi"</string>
-    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g> ne podržava hitne pozive preko WiFi-ja. \n\nHitni pozivi se upućuju preko mobilne mreže. Ako nemate domet, hitni poziv neće uspeti."</string>
-    <string name="do_not_show_again" msgid="8923026903375124550">"Ne prikazuj ponovo"</string>
-    <string name="turn_off_wfc" msgid="2346229945400554258">"Isključi pozivanje preko WiFi-ja"</string>
-    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"Hitni pozivi možda nisu dostupni"</string>
 </resources>

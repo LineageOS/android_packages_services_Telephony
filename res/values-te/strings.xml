@@ -919,8 +919,4 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"మీ బ్లూటూత్ సిగ్నల్ బలహీనంగా ఉంది. స్పీకర్‌ఫోన్‌కు స్విచ్ అవ్వడానికి ట్రై చేయండి."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"కాల్ క్వాలిటీ నోటిఫికేషన్"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"తీసివేయబడిన SIP ఖాతాలు"</string>
-    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"Wi-Fi ద్వారా ఎమర్జెన్సీ కాల్స్‌కు <xliff:g id="SPN">%s</xliff:g> సపోర్ట్ చేయదు. \n\nమొబైల్ నెట్‌వర్క్ ద్వారా ఎమర్జెన్సీ కాల్స్ చేయబడతాయి. పరిమిత మొబైల్ కవరేజీ ఉన్నట్లయితే, మీ ఎమర్జెన్సీ కాల్ కనెక్ట్ అవ్వకపోవచ్చు."</string>
-    <string name="do_not_show_again" msgid="8923026903375124550">"మళ్లీ చూపవద్దు"</string>
-    <string name="turn_off_wfc" msgid="2346229945400554258">"Wi-Fi కాలింగ్‌ను ఆఫ్ చేయండి"</string>
-    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"ఎమర్జెన్సీ కాల్స్ అందుబాటులో ఉండకపోవచ్చు"</string>
 </resources>

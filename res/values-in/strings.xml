@@ -919,8 +919,4 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Sinyal bluetooth Anda lemah. Coba beralih ke speaker ponsel."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Notifikasi Kualitas Panggilan"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Akun SIP yang tidak digunakan lagi"</string>
-    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g> tidak mendukung panggilan darurat melalui Wi-Fi. \n\nPanggilan darurat akan dilakukan melalui jaringan seluler. Jika cakupan seluler terbatas, panggilan darurat Anda mungkin tidak dapat tersambung."</string>
-    <string name="do_not_show_again" msgid="8923026903375124550">"Jangan tampilkan lagi"</string>
-    <string name="turn_off_wfc" msgid="2346229945400554258">"Nonaktifkan panggilan Wi-Fi"</string>
-    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"Panggilan darurat mungkin tidak tersedia"</string>
 </resources>
