@@ -53,6 +53,7 @@ import android.telephony.ims.ImsReasonInfo;
 import android.telephony.ims.ImsStreamMediaProfile;
 import android.telephony.ims.RtpHeaderExtension;
 import android.telephony.ims.RtpHeaderExtensionType;
+import android.telephony.ims.feature.MmTelFeature;
 import android.text.TextUtils;
 import android.util.ArraySet;
 import android.util.Pair;
@@ -800,6 +801,13 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
             }
             Log.i(this, "onReceivedDtmfDigit: digit=%c", digit);
             mDtmfTransport.onDtmfReceived(digit);
+        }
+
+        @Override
+        public void onAudioModeIsVoipChanged(int imsAudioHandler) {
+            boolean isVoip = imsAudioHandler == MmTelFeature.AUDIO_HANDLER_ANDROID;
+            Log.i(this, "onAudioModeIsVoipChanged isVoip =" + isVoip);
+            setAudioModeIsVoip(isVoip);
         }
     };
 
