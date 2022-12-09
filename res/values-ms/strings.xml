@@ -919,8 +919,4 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Isyarat bluetooth anda lemah. Cuba beralih kepada fon pembesar suara."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Pemberitahuan Kualiti Panggilan"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Akaun SIP ditamatkan"</string>
-    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g> tidak menyokong panggilan kecemasan melalui Wi-Fi. \n\nPanggilan kecemasan akan dibuat melalui rangkaian mudah alih. Jika terdapat liputan mudah alih terhad, panggilan kecemasan anda mungkin tidak dapat dibuat."</string>
-    <string name="do_not_show_again" msgid="8923026903375124550">"Jangan tunjukkan lagi"</string>
-    <string name="turn_off_wfc" msgid="2346229945400554258">"Matikan panggilan Wi-Fi"</string>
-    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"Panggilan kecemasan mungkin tidak tersedia"</string>
 </resources>

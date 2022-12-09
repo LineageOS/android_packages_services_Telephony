@@ -919,8 +919,4 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Bluetooth signali kuchsiz. Baland ovoz rejimini yoqish tavsiya etiladi."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Chaqiruv sifati haqida bildirishnoma"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"To‘xtatilgan SIP hisoblar"</string>
-    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g> orqali favqulodda chaqiruvlarni Wi-Fi yordamida amalga oshirish imkonsiz. \n\nFavqulodda chaqiruvlar mobil tarmoq orqali amalga oshiriladi. Mobil aloqa qamrovi cheklangan ekanligida favqulodda chaqiruvingiz amalga oshirilmasligi mumkin."</string>
-    <string name="do_not_show_again" msgid="8923026903375124550">"Boshqa chiqmasin"</string>
-    <string name="turn_off_wfc" msgid="2346229945400554258">"Wi-Fi orqali chaqiruvlarni faolsizlantirish"</string>
-    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"Favqulodda chaqiruvlarni amalga oshirish imkonsiz bo‘lishi mumkin"</string>
 </resources>

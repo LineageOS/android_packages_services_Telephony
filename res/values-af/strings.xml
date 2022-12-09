@@ -919,8 +919,4 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Jou bluetooth-sein is swak. Probeer om na luidsprekerfoon oor te skakel."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Kennisgewing oor oproepgehalte"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Opgeskorte SIP-rekeninge"</string>
-    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g> steun nie noodoproepe oor wi-fi nie. \n\nNoodoproepe sal deur ’n selnetwerk gemaak word. As daar beperkte selnetwerkopvangs is, sal jou noodoproep dalk nie deurgaan nie."</string>
-    <string name="do_not_show_again" msgid="8923026903375124550">"Moenie weer wys nie"</string>
-    <string name="turn_off_wfc" msgid="2346229945400554258">"Skakel wi-fi-oproepe af"</string>
-    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"Noodoproepe is dalk nie beskikbaar nie"</string>
 </resources>

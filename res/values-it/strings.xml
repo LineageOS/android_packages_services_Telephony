@@ -919,8 +919,4 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Il segnale del Bluetooth è debole. Prova a passare al vivavoce."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Notifica sulla qualità della chiamata"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Account SIP deprecati"</string>
-    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g> non supporta le chiamate di emergenza tramite Wi-Fi. \n\nLe chiamate di emergenza verranno effettuate mediante una rete mobile. Se la copertura di rete mobile è insufficiente, la chiamata di emergenza potrebbe non riuscire."</string>
-    <string name="do_not_show_again" msgid="8923026903375124550">"Non mostrare più"</string>
-    <string name="turn_off_wfc" msgid="2346229945400554258">"Disattiva la funzionalità Chiamate Wi-Fi"</string>
-    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"Le chiamate di emergenza potrebbero non essere disponibili"</string>
 </resources>

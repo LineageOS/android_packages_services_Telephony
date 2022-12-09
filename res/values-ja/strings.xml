@@ -919,8 +919,4 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Bluetooth の信号強度が十分ではありません。スピーカーフォンに切り替えてみてください。"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"通話品質に関するお知らせ"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"サポートが終了した SIP アカウント"</string>
-    <string name="limited_service_alert_dialog_description" msgid="6686928033670697313">"<xliff:g id="SPN">%s</xliff:g> は Wi-Fi 経由の緊急通報をサポートしていません。\n\n緊急通報はモバイル ネットワークを通じて発信されます。モバイル ネットワークの通信状態が良好でない場合は、緊急通報を発信できない場合があります。"</string>
-    <string name="do_not_show_again" msgid="8923026903375124550">"今後表示しない"</string>
-    <string name="turn_off_wfc" msgid="2346229945400554258">"[Wi-Fi 通話] をオフにする"</string>
-    <string name="unavailable_emergency_calls_notification_name" msgid="4390236789690885552">"緊急通報が利用できない可能性があります"</string>
 </resources>
