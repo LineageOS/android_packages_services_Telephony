@@ -876,25 +876,6 @@ public class PhoneGlobals extends ContextWrapper {
     }
 
     /**
-     * @param subId The sub Id for querying carrier config
-     * @param roamingOperatorNumeric The operator numeric for the current roaming. {@code null} if
-     *                               the current roaming operator numeric didn't change.
-     * @return whether or not we should show a notification when connecting to data roaming if the
-     * user has data roaming enabled
-     */
-    private boolean shouldShowDataConnectedRoaming(int subId,
-            @Nullable String roamingOperatorNumeric) {
-        boolean configAllows = getCarrierConfigForSubId(subId)
-                .getBoolean(CarrierConfigManager
-                        .KEY_SHOW_DATA_CONNECTED_ROAMING_NOTIFICATION_BOOL);
-        if (!configAllows) return false;
-        // If config/settings changed, always consider show roaming notification
-        if (roamingOperatorNumeric == null) return true;
-        // Show roaming notification if we are roaming using a new network
-        return mPrevRoamingOperatorNumerics.add(roamingOperatorNumeric);
-    }
-
-    /**
      * When roaming, if mobile data cannot be established due to data roaming not enabled, we need
      * to notify the user so they can enable it through settings. Vise versa if the condition
      * changes, we need to dismiss the notification.
@@ -933,6 +914,13 @@ public class PhoneGlobals extends ContextWrapper {
         }
 
         if (!dataAllowed && notAllowedDueToRoamingOff) {
+            // Don't show roaming notification if we've already shown for this MccMnc
+            if (roamingOperatorNumeric != null
+                    && !mPrevRoamingOperatorNumerics.add(roamingOperatorNumeric)) {
+                Log.d(LOG_TAG, "Skip roaming disconnected notification since already shown in "
+                        + "MccMnc " + roamingOperatorNumeric);
+                return;
+            }
             // No need to show it again if we never cancelled it explicitly.
             if (mPrevRoamingNotification == ROAMING_NOTIFICATION_DISCONNECTED) return;
             // If the only reason of no data is data roaming disabled, then we notify the user
@@ -944,7 +932,17 @@ public class PhoneGlobals extends ContextWrapper {
             msg.arg1 = mDefaultDataSubId;
             msg.sendToTarget();
         } else if (dataAllowed && dataIsNowRoaming(mDefaultDataSubId)) {
-            if (!shouldShowDataConnectedRoaming(mDefaultDataSubId, roamingOperatorNumeric)) return;
+            boolean isShowRoamingNotificationEnabled = getCarrierConfigForSubId(mDefaultDataSubId)
+                    .getBoolean(CarrierConfigManager
+                            .KEY_SHOW_DATA_CONNECTED_ROAMING_NOTIFICATION_BOOL);
+            if (!isShowRoamingNotificationEnabled) return;
+            // Don't show roaming notification if we've already shown for this MccMnc
+            if (roamingOperatorNumeric != null
+                    && !mPrevRoamingOperatorNumerics.add(roamingOperatorNumeric)) {
+                Log.d(LOG_TAG, "Skip roaming connected notification since already shown in "
+                        + "MccMnc " + roamingOperatorNumeric);
+                return;
+            }
             // No need to show it again if we never cancelled it explicitly, or carrier config
             // indicates this is not needed.
             if (mPrevRoamingNotification == ROAMING_NOTIFICATION_CONNECTED) return;
