@@ -3472,6 +3472,26 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
+    public String getPrimaryImei(String callingPackage, String callingFeatureId) {
+        enforceCallingPackage(callingPackage, Binder.getCallingUid(), "getPrimaryImei");
+        if (!checkCallingOrSelfReadDeviceIdentifiersForAnySub(mApp, callingPackage,
+                callingFeatureId, "getPrimaryImei")) {
+            throw new SecurityException("Caller does not have permission");
+        }
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            for (Phone phone : PhoneFactory.getPhones()) {
+                if (phone.getImeiType() == Phone.IMEI_TYPE_PRIMARY) {
+                    return phone.getImei();
+                }
+            }
+            throw new UnsupportedOperationException("Operation not supported");
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    @Override
     public String getTypeAllocationCodeForSlot(int slotIndex) {
         Phone phone = PhoneFactory.getPhone(slotIndex);
         String tac = null;
@@ -11822,5 +11842,29 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }  finally {
             Binder.restoreCallingIdentity(identity);
         }
+    }
+
+    /**
+     * Check whether the caller (or self, if not processing an IPC) can read device identifiers.
+     *
+     * <p>This method behaves in one of the following ways:
+     * <ul>
+     *     <li>return true : if the calling package has the appop permission {@link
+     *     Manifest.permission#USE_ICC_AUTH_WITH_DEVICE_IDENTIFIER} in the manifest </>
+     *     <li>return true : if any one subscription has the READ_PRIVILEGED_PHONE_STATE
+     *     permission, the calling package passes a DevicePolicyManager Device Owner / Profile
+     *     Owner device identifier access check, or the calling package has carrier privileges</>
+     *     <li>throw SecurityException: if the caller does not meet any of the requirements.
+     * </ul>
+     */
+    private static boolean checkCallingOrSelfReadDeviceIdentifiersForAnySub(Context context,
+            String callingPackage, @Nullable String callingFeatureId, String message) {
+        for (Phone phone : PhoneFactory.getPhones()) {
+            if (TelephonyPermissions.checkCallingOrSelfReadDeviceIdentifiers(context,
+                    phone.getSubId(), callingPackage, callingFeatureId, message)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
