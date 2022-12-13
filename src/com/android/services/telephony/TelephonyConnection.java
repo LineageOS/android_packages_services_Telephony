@@ -48,6 +48,7 @@ import android.telephony.ServiceState;
 import android.telephony.ServiceState.RilRadioTechnology;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
+import android.telephony.emergency.EmergencyNumber;
 import android.telephony.ims.ImsCallProfile;
 import android.telephony.ims.ImsReasonInfo;
 import android.telephony.ims.ImsStreamMediaProfile;
@@ -932,6 +933,8 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
      */
     private final Set<TelephonyConnectionListener> mTelephonyListeners = Collections.newSetFromMap(
             new ConcurrentHashMap<TelephonyConnectionListener, Boolean>(8, 0.9f, 1));
+
+    private Integer mEmergencyServiceCategory = null;
 
     protected TelephonyConnection(com.android.internal.telephony.Connection originalConnection,
             String callId, @android.telecom.Call.Details.CallDirection int callDirection) {
@@ -2166,7 +2169,7 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
         mPhoneForEvents = null;
     }
 
-    @VisibleForTesting
+    @VisibleForTesting(visibility = VisibleForTesting.Visibility.PROTECTED)
     public void hangup(int telephonyDisconnectCode) {
         if (mOriginalConnection != null) {
             mHangupDisconnectCause = telephonyDisconnectCode;
@@ -2192,6 +2195,7 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
                 Log.e(this, e, "Call to Connection.hangup failed with exception");
             }
         } else {
+            mTelephonyConnectionService.onLocalHangup(this);
             if (getState() == STATE_DISCONNECTED) {
                 Log.i(this, "hangup called on an already disconnected call!");
                 close();
@@ -2452,6 +2456,29 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
                     setTelephonyConnectionRinging();
                     break;
                 case DISCONNECTED:
+                    if (mTelephonyConnectionService != null) {
+                        ImsReasonInfo reasonInfo = null;
+                        if (isImsConnection()) {
+                            ImsPhoneConnection imsPhoneConnection =
+                                    (ImsPhoneConnection) mOriginalConnection;
+                            reasonInfo = imsPhoneConnection.getImsReasonInfo();
+                            if (reasonInfo != null && reasonInfo.getCode()
+                                    == ImsReasonInfo.CODE_SIP_ALTERNATE_EMERGENCY_CALL) {
+                                EmergencyNumber emergencyNumber =
+                                        imsPhoneConnection.getEmergencyNumberInfo();
+                                if (emergencyNumber != null) {
+                                    mEmergencyServiceCategory =
+                                            emergencyNumber.getEmergencyServiceCategoryBitmask();
+                                }
+                            }
+                        }
+
+                        if (mTelephonyConnectionService.maybeReselectDomain(this,
+                                  mOriginalConnection.getPreciseDisconnectCause(), reasonInfo)) {
+                            break;
+                        }
+                    }
+
                     if (shouldTreatAsEmergencyCall()
                             && (cause
                             == android.telephony.DisconnectCause.EMERGENCY_TEMP_FAILURE
@@ -3838,5 +3865,22 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
     @VisibleForTesting
     public List<TelephonyConnectionListener> getTelephonyConnectionListeners() {
         return new ArrayList<>(mTelephonyListeners);
+    }
+
+    /**
+     * @return An {@link Integer} instance of the emergency service category.
+     */
+    public @Nullable Integer getEmergencyServiceCategory() {
+        return mEmergencyServiceCategory;
+    }
+
+    /**
+     * Sets the emergency service category.
+     *
+     * @param eccCategory The emergency service category.
+     */
+    @VisibleForTesting
+    public void setEmergencyServiceCategory(int eccCategory) {
+        mEmergencyServiceCategory = eccCategory;
     }
 }
