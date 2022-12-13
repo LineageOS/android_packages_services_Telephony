@@ -192,13 +192,16 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
     }
 
     @Test
-    public void testIsUrlValid() {
-        // all other conditions met
-        doReturn((int) TelephonyManager.NETWORK_TYPE_BITMASK_NR).when(mPhone)
-                .getCachedAllowedNetworkTypesBitmask();
-        mBundle.putIntArray(CarrierConfigManager.KEY_SUPPORTED_PREMIUM_CAPABILITIES_INT_ARRAY,
-                new int[]{TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY});
-        doReturn(SubscriptionManager.getDefaultDataSubscriptionId()).when(mPhone).getSubId();
+    public void testGetPurchaseURL() {
+        mEntitlementResponse.mServiceFlowURL = SlicePurchaseController.SLICE_PURCHASE_TEST_FILE;
+        String purchaseUrl = mSlicePurchaseController.getPurchaseUrl(mEntitlementResponse);
+        assertEquals(purchaseUrl, SlicePurchaseController.SLICE_PURCHASE_TEST_FILE);
+
+        mEntitlementResponse.mServiceFlowURL = null;
+        mBundle.putString(CarrierConfigManager.KEY_PREMIUM_CAPABILITY_PURCHASE_URL_STRING,
+                SlicePurchaseController.SLICE_PURCHASE_TEST_FILE);
+        purchaseUrl = mSlicePurchaseController.getPurchaseUrl(mEntitlementResponse);
+        assertEquals(purchaseUrl, SlicePurchaseController.SLICE_PURCHASE_TEST_FILE);
 
         String[] invalidUrls = new String[] {
                 null,
@@ -212,14 +215,8 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
         };
         for (String url : invalidUrls) {
             mBundle.putString(CarrierConfigManager.KEY_PREMIUM_CAPABILITY_PURCHASE_URL_STRING, url);
-            assertFalse(mSlicePurchaseController.isPremiumCapabilityAvailableForPurchase(
-                    TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY));
+            assertEquals("", mSlicePurchaseController.getPurchaseUrl(mEntitlementResponse));
         }
-
-        mBundle.putString(CarrierConfigManager.KEY_PREMIUM_CAPABILITY_PURCHASE_URL_STRING,
-                SlicePurchaseController.SLICE_PURCHASE_TEST_FILE);
-        assertTrue(mSlicePurchaseController.isPremiumCapabilityAvailableForPurchase(
-                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY));
     }
 
     @Test
