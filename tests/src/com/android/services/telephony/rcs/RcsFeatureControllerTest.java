@@ -172,12 +172,13 @@ public class RcsFeatureControllerTest extends TelephonyTestBase {
         verify(mFeatureManager).registerImsRegistrationCallback(captor.capture());
         assertNotNull(captor.getValue());
 
-        captor.getValue().onDeregistered(REASON_DISCONNECTED, 0);
+        captor.getValue().onDeregistered(REASON_DISCONNECTED, 0, 0);
         controller.getRegistrationState(result -> {
             assertNotNull(result);
             assertEquals(RegistrationManager.REGISTRATION_STATE_NOT_REGISTERED, result.intValue());
         });
-        verify(mRegistrationCallback).handleImsUnregistered(eq(REASON_DISCONNECTED), anyInt());
+        verify(mRegistrationCallback).handleImsUnregistered(eq(REASON_DISCONNECTED),
+                anyInt(), anyInt());
 
         ImsRegistrationAttributes attr = new ImsRegistrationAttributes.Builder(
                 ImsRegistrationImplBase.REGISTRATION_TECH_LTE).build();
