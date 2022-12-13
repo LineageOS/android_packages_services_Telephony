@@ -39,6 +39,7 @@ import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.Message;
 import android.os.PersistableBundle;
+import android.provider.DeviceConfig;
 import android.telephony.AnomalyReporter;
 import android.telephony.CarrierConfigManager;
 import android.telephony.SubscriptionManager;
@@ -131,6 +132,8 @@ public class SlicePurchaseController extends Handler {
      * {@link CarrierConfigManager#KEY_PREMIUM_CAPABILITY_NETWORK_SETUP_TIME_MILLIS_LONG}.
      */
     private static final int EVENT_SETUP_TIMEOUT = 5;
+    /** Device config changed. */
+    private static final int EVENT_DEVICE_CONFIG_CHANGED = 6;
 
     /** UUID to report an anomaly when a premium capability is throttled twice in a row. */
     private static final String UUID_CAPABILITY_THROTTLED_TWICE =
@@ -264,6 +267,8 @@ public class SlicePurchaseController extends Handler {
     private static final String KEY_DAILY_NOTIFICATION_COUNT = "daily_notification_count";
     /** Shared preference key for monthly count of network boost notifications. */
     private static final String KEY_MONTHLY_NOTIFICATION_COUNT = "monthly_notification_count";
+    /** DeviceConfig key for whether the slicing upsell feature is enabled. */
+    private static final String KEY_ENABLE_SLICING_UPSELL = "enable_slicing_upsell";
     /**
      * Shared preference key for the date the daily or monthly counts of network boost notifications
      * were last reset.
@@ -301,6 +306,8 @@ public class SlicePurchaseController extends Handler {
     private int mDailyCount;
     /** The number of times the network boost notification has been shown this month. */
     private int mMonthlyCount;
+    /** {@code true} if the slicing upsell feature is enabled and {@code false} otherwise. */
+    private boolean mIsSlicingUpsellEnabled;
 
     /**
      * BroadcastReceiver to receive responses from the slice purchase application.
@@ -445,6 +452,16 @@ public class SlicePurchaseController extends Handler {
         mPhone.mCi.registerForSlicingConfigChanged(this, EVENT_SLICING_CONFIG_CHANGED, null);
         mPremiumNetworkEntitlementApi =
                 new PremiumNetworkEntitlementApi(mPhone, getCarrierConfigs());
+        mIsSlicingUpsellEnabled = DeviceConfig.getBoolean(
+                DeviceConfig.NAMESPACE_TELEPHONY, KEY_ENABLE_SLICING_UPSELL, false);
+        DeviceConfig.addOnPropertiesChangedListener(
+                DeviceConfig.NAMESPACE_TELEPHONY, this::post,
+                properties -> {
+                    if (TextUtils.equals(DeviceConfig.NAMESPACE_TELEPHONY,
+                            properties.getNamespace())) {
+                        sendEmptyMessage(EVENT_DEVICE_CONFIG_CHANGED);
+                    }
+                });
         updateNotificationCounts();
     }
 
@@ -496,6 +513,15 @@ public class SlicePurchaseController extends Handler {
                 logd("EVENT_SETUP_TIMEOUT: for capability "
                         + TelephonyManager.convertPremiumCapabilityToString(capability));
                 onSetupTimeout(capability);
+                break;
+            case EVENT_DEVICE_CONFIG_CHANGED:
+                boolean isSlicingUpsellEnabled = DeviceConfig.getBoolean(
+                        DeviceConfig.NAMESPACE_TELEPHONY, KEY_ENABLE_SLICING_UPSELL, false);
+                if (isSlicingUpsellEnabled != mIsSlicingUpsellEnabled) {
+                    logd("EVENT_DEVICE_CONFIG_CHANGED: from " + mIsSlicingUpsellEnabled + " to "
+                            + isSlicingUpsellEnabled);
+                    mIsSlicingUpsellEnabled = isSlicingUpsellEnabled;
+                }
                 break;
             default:
                 loge("Unknown event: " + msg.obj);
@@ -965,10 +991,11 @@ public class SlicePurchaseController extends Handler {
     }
 
     private boolean arePremiumCapabilitiesSupportedByDevice() {
-        // TODO: Add more checks?
-        //  Maybe device resource overlay to enable/disable in addition to carrier configs
-        return (mPhone.getCachedAllowedNetworkTypesBitmask()
-                & TelephonyManager.NETWORK_TYPE_BITMASK_NR) != 0;
+        if ((mPhone.getCachedAllowedNetworkTypesBitmask()
+                & TelephonyManager.NETWORK_TYPE_BITMASK_NR) == 0) {
+            return false;
+        }
+        return mIsSlicingUpsellEnabled;
     }
 
     private boolean isDefaultDataSub() {
