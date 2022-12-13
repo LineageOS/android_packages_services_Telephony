@@ -17,6 +17,7 @@
 package com.android.phone;
 
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
+import static android.telephony.TelephonyManager.HAL_SERVICE_NETWORK;
 import static android.telephony.TelephonyManager.HAL_SERVICE_RADIO;
 
 import static com.android.internal.telephony.PhoneConstants.PHONE_TYPE_CDMA;
@@ -376,6 +377,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private static final int SELECT_P1 = 0x04;
     private static final int SELECT_P2 = 0;
     private static final int SELECT_P3 = 0x10;
+
+    // Toggling null cipher and integrity support was added in IRadioNetwork 2.1
+    private static final int MIN_NULL_CIPHER_AND_INTEGRITY_VERSION = 201;
 
     /** The singleton instance. */
     private static PhoneInterfaceManager sInstance;
@@ -2418,6 +2422,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         publish();
     }
 
+    @VisibleForTesting
+    public SharedPreferences getSharedPreferences() {
+        return mTelephonySharedPreferences;
+    }
+
     private Phone getDefaultPhone() {
         Phone thePhone = getPhone(getDefaultSubscription());
         return (thePhone != null) ? thePhone : PhoneFactory.getDefaultPhone();
@@ -3634,8 +3643,19 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      *
      * @throws SecurityException if the caller does not have the required permission
      */
-    private void enforceModifyPermission() {
+    @VisibleForTesting
+    public void enforceModifyPermission() {
         mApp.enforceCallingOrSelfPermission(android.Manifest.permission.MODIFY_PHONE_STATE, null);
+    }
+
+    /**
+     * Make sure the caller has the MODIFY_PHONE_STATE permission.
+     *
+     * @throws SecurityException if the caller does not have the required permission
+     */
+    @VisibleForTesting
+    public void enforceReadPermission() {
+        mApp.enforceCallingOrSelfPermission(android.Manifest.permission.READ_PHONE_STATE, null);
     }
 
     private void enforceActiveEmergencySessionPermission() {
@@ -11651,6 +11671,57 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
         return SmsApplication.getDefaultRespondViaMessageApplicationAsUser(context,
                 updateIfNeeded, userHandle);
+    }
+
+    /**
+     * Set whether the device is able to connect with null ciphering or integrity
+     * algorithms. This is a global setting and will apply to all active subscriptions
+     * and all new subscriptions after this.
+     *
+     * @param enabled when true, null  cipher and integrity algorithms are allowed.
+     * @hide
+     */
+    @Override
+    @RequiresPermission(android.Manifest.permission.MODIFY_PHONE_STATE)
+    public void setNullCipherAndIntegrityEnabled(boolean enabled) {
+        enforceModifyPermission();
+        checkForNullCipherAndIntegritySupport();
+
+        // Persist the state of our preference. Each GsmCdmaPhone instance is responsible
+        // for listening to these preference changes and applying them immediately.
+        SharedPreferences.Editor editor = mTelephonySharedPreferences.edit();
+        editor.putBoolean(Phone.PREF_NULL_CIPHER_AND_INTEGRITY_ENABLED, enabled);
+        editor.apply();
+
+        for (Phone phone: PhoneFactory.getPhones()) {
+            phone.handleNullCipherEnabledChange();
+        }
+    }
+
+
+    /**
+     * Get whether the device is able to connect with null ciphering or integrity
+     * algorithms. Note that this retrieves the phone-global preference and not
+     * the state of the radio.
+     *
+     * @throws SecurityException if {@link permission#MODIFY_PHONE_STATE} is not satisfied
+     * @throws UnsupportedOperationException if the device does not support the minimum HAL
+     * version for this feature.
+     * @hide
+     */
+    @Override
+    @RequiresPermission(android.Manifest.permission.READ_PHONE_STATE)
+    public boolean isNullCipherAndIntegrityPreferenceEnabled() {
+        enforceReadPermission();
+        checkForNullCipherAndIntegritySupport();
+        return getDefaultPhone().getNullCipherAndIntegrityEnabledPreference();
+    }
+
+    private void checkForNullCipherAndIntegritySupport() {
+        if (getHalVersion(HAL_SERVICE_NETWORK) < MIN_NULL_CIPHER_AND_INTEGRITY_VERSION) {
+            throw new UnsupportedOperationException(
+                    "Null cipher and integrity operations require HAL 2.1 or above");
+        }
     }
 
     /**

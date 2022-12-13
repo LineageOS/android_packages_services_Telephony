@@ -17,15 +17,21 @@
 package com.android.phone;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertThrows;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import android.content.Context;
-import android.content.pm.PackageManager;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.telephony.RadioAccessFamily;
 import android.telephony.TelephonyManager;
@@ -50,22 +56,24 @@ import java.util.Locale;
 @RunWith(AndroidJUnit4.class)
 public class PhoneInterfaceManagerTest extends TelephonyTestBase {
     private PhoneInterfaceManager mPhoneInterfaceManager;
+    private SharedPreferences mSharedPreferences;
 
     @Mock
     PhoneGlobals mPhoneGlobals;
     @Mock
     Phone mPhone;
-    @Mock
-    PackageManager mPackageManager;
 
     @Before
     @UiThreadTest
     public void setUp() throws Exception {
         super.setUp();
-        doReturn(mPackageManager).when(mPhoneGlobals).getPackageManager();
-        doReturn(false).when(mPackageManager).hasSystemFeature(
-                PackageManager.FEATURE_TELEPHONY_IMS);
-        mPhoneInterfaceManager = PhoneInterfaceManager.init(mPhoneGlobals);
+        // Note that PhoneInterfaceManager is a singleton. Calling init gives us a handle to the
+        // global singleton, but the context that is passed in is unused if the phone app is already
+        // alive on a test devices. You must use the spy to mock behavior. Mocks stemming from the
+        // passed context will remain unused.
+        mPhoneInterfaceManager = spy(PhoneInterfaceManager.init(mPhoneGlobals));
+        mSharedPreferences = mPhoneInterfaceManager.getSharedPreferences();
+        mSharedPreferences.edit().remove(Phone.PREF_NULL_CIPHER_AND_INTEGRITY_ENABLED).commit();
     }
 
     @Test
@@ -137,5 +145,82 @@ public class PhoneInterfaceManagerTest extends TelephonyTestBase {
                 Locale.forLanguageTag("ff-BF"));
 
         assertEquals("ff-Latn-BF", resultFfBf);
+    }
+
+    @Test
+    public void setNullCipherAndIntegrityEnabled_successfullyEnable() {
+        doReturn(201).when(mPhoneInterfaceManager).getHalVersion(anyInt());
+        doNothing().when(mPhoneInterfaceManager).enforceModifyPermission();
+        assertFalse(mSharedPreferences.contains(Phone.PREF_NULL_CIPHER_AND_INTEGRITY_ENABLED));
+
+        mPhoneInterfaceManager.setNullCipherAndIntegrityEnabled(true);
+
+        assertTrue(
+                mSharedPreferences.getBoolean(Phone.PREF_NULL_CIPHER_AND_INTEGRITY_ENABLED, false));
+    }
+
+    @Test
+    public void setNullCipherAndIntegrityEnabled_successfullyDisable() {
+        doReturn(201).when(mPhoneInterfaceManager).getHalVersion(anyInt());
+        doNothing().when(mPhoneInterfaceManager).enforceModifyPermission();
+        assertFalse(mSharedPreferences.contains(Phone.PREF_NULL_CIPHER_AND_INTEGRITY_ENABLED));
+
+        mPhoneInterfaceManager.setNullCipherAndIntegrityEnabled(false);
+
+        assertFalse(
+                mSharedPreferences.getBoolean(Phone.PREF_NULL_CIPHER_AND_INTEGRITY_ENABLED, true));
+    }
+
+    @Test
+    public void setNullCipherAndIntegrityEnabled_lackingNecessaryHal() {
+        doReturn(101).when(mPhoneInterfaceManager).getHalVersion(anyInt());
+        doNothing().when(mPhoneInterfaceManager).enforceModifyPermission();
+
+        assertThrows(UnsupportedOperationException.class, () -> {
+            mPhoneInterfaceManager.setNullCipherAndIntegrityEnabled(true);
+        });
+
+    }
+
+    @Test
+    public void setNullCipherAndIntegrityEnabled_lackingPermissions() {
+        doReturn(201).when(mPhoneInterfaceManager).getHalVersion(anyInt());
+        doThrow(SecurityException.class).when(mPhoneInterfaceManager).enforceModifyPermission();
+
+        assertThrows(SecurityException.class, () -> {
+            mPhoneInterfaceManager.setNullCipherAndIntegrityEnabled(true);
+        });
+    }
+
+    @Test
+    public void isNullCipherAndIntegrityPreferenceEnabled() {
+        doReturn(201).when(mPhoneInterfaceManager).getHalVersion(anyInt());
+        doNothing().when(mPhoneInterfaceManager).enforceModifyPermission();
+
+        assertTrue(mPhoneInterfaceManager.isNullCipherAndIntegrityPreferenceEnabled());
+        mPhoneInterfaceManager.setNullCipherAndIntegrityEnabled(false);
+        assertFalse(
+                mSharedPreferences.getBoolean(Phone.PREF_NULL_CIPHER_AND_INTEGRITY_ENABLED, true));
+    }
+
+    @Test
+    public void isNullCipherAndIntegrityPreferenceEnabled_lackingNecessaryHal() {
+        doReturn(101).when(mPhoneInterfaceManager).getHalVersion(anyInt());
+        doNothing().when(mPhoneInterfaceManager).enforceModifyPermission();
+
+        assertThrows(UnsupportedOperationException.class, () -> {
+            mPhoneInterfaceManager.isNullCipherAndIntegrityPreferenceEnabled();
+        });
+
+    }
+
+    @Test
+    public void isNullCipherAndIntegrityPreferenceEnabled_lackingPermissions() {
+        doReturn(201).when(mPhoneInterfaceManager).getHalVersion(anyInt());
+        doThrow(SecurityException.class).when(mPhoneInterfaceManager).enforceReadPermission();
+
+        assertThrows(SecurityException.class, () -> {
+            mPhoneInterfaceManager.isNullCipherAndIntegrityPreferenceEnabled();
+        });
     }
 }
