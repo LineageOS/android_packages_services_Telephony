@@ -21,6 +21,8 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.anyList;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.doThrow;
@@ -42,6 +44,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 import com.android.TelephonyTestBase;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.RILConstants;
+import com.android.internal.telephony.IIntegerConsumer;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -57,6 +60,7 @@ import java.util.Locale;
 public class PhoneInterfaceManagerTest extends TelephonyTestBase {
     private PhoneInterfaceManager mPhoneInterfaceManager;
     private SharedPreferences mSharedPreferences;
+    private IIntegerConsumer mIIntegerConsumer;
 
     @Mock
     PhoneGlobals mPhoneGlobals;
@@ -74,6 +78,7 @@ public class PhoneInterfaceManagerTest extends TelephonyTestBase {
         mPhoneInterfaceManager = spy(PhoneInterfaceManager.init(mPhoneGlobals));
         mSharedPreferences = mPhoneInterfaceManager.getSharedPreferences();
         mSharedPreferences.edit().remove(Phone.PREF_NULL_CIPHER_AND_INTEGRITY_ENABLED).commit();
+        mIIntegerConsumer = mock(IIntegerConsumer.class);
     }
 
     @Test
@@ -248,5 +253,28 @@ public class PhoneInterfaceManagerTest extends TelephonyTestBase {
         doReturn(true).when(mPhone).isNullCipherAndIntegritySupported();
         doReturn(mPhone).when(
                 mPhoneInterfaceManager).getDefaultPhone();
+    }
+
+    /**
+     * Verify getCarrierRestrictionStatus throws exception for invalid caller package name.
+     */
+    @Test
+    public void getCarrierRestrictionStatus_ReadPrivilegedException2() {
+        doThrow(SecurityException.class).when(
+                mPhoneInterfaceManager).enforceReadPrivilegedPermission(anyString());
+        assertThrows(SecurityException.class, () -> {
+            mPhoneInterfaceManager.getCarrierRestrictionStatus(mIIntegerConsumer, "");
+        });
+    }
+
+    /**
+     * Verify getCarrierRestrictionStatus doesn't throw any exception with valid package name
+     * and with READ_PHONE_STATE permission granted.
+     */
+    @Test
+    public void getCarrierRestrictionStatus() {
+        when(mPhoneInterfaceManager.validateCallerAndGetCarrierId(anyString())).thenReturn(1);
+        mPhoneInterfaceManager.getCarrierRestrictionStatus(mIIntegerConsumer,
+                "com.test.package");
     }
 }

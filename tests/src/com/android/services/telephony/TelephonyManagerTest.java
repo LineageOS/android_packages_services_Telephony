@@ -56,6 +56,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.TimeUnit;
 
 /** Unit tests for {@link TelephonyManager}. */
 @RunWith(AndroidJUnit4.class)
@@ -270,5 +274,25 @@ public class TelephonyManagerTest {
                 "12345");
         assertEquals("12345", mTelephonyManager.getPrimaryImei());
         verify(mMockITelephony, times(1)).getPrimaryImei(anyString(), anyString());
+    }
+
+    /**
+     * Verify calling getCarrierRestrictionStatus() with out exception
+     */
+    @Test
+    public void getCarrierRestrictionStatus() {
+        int TIMEOUT = 2 * 60; // 2 minutes
+        LinkedBlockingQueue<Integer> carrierRestrictionStatusResult = new LinkedBlockingQueue<>(1);
+        Executor executor = Executors.newSingleThreadExecutor();
+        mTelephonyManager.getCarrierRestrictionStatus(executor,
+                carrierRestrictionStatusResult::offer);
+        executor.execute(() -> {
+            try {
+                carrierRestrictionStatusResult.poll(TIMEOUT, TimeUnit.SECONDS);
+            } catch (InterruptedException e) {
+                fail();
+            }
+        });
+
     }
 }
