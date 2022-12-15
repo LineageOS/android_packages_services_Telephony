@@ -97,14 +97,13 @@ public class TelephonyDomainSelectionService extends DomainSelectionService {
                     }
                     break;
                 case SELECTOR_TYPE_SMS:
-                    // TODO(ag/20075167) uncomment when SMS domain selector is ready.
-                    /*if (isEmergency) {
+                    if (isEmergency) {
                         selector = new EmergencySmsDomainSelector(context, slotId, subId, looper,
                                 imsStateTracker, listener);
                     } else {
                         selector = new SmsDomainSelector(context, slotId, subId, looper,
                                 imsStateTracker, listener);
-                    }*/
+                    }
                     break;
                 default:
                     // Not reachable.
