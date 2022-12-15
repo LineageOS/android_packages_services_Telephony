@@ -28,7 +28,9 @@ import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
@@ -44,6 +46,7 @@ import android.service.carrier.CarrierIdentifier;
 import android.telephony.CarrierConfigManager;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
+import android.telephony.TelephonyRegistryManager;
 import android.testing.TestableLooper;
 
 import androidx.test.InstrumentationRegistry;
@@ -85,6 +88,7 @@ public class CarrierConfigLoaderTest extends TelephonyTestBase {
     @Mock PackageInfo mPackageInfo;
     @Mock SubscriptionInfoUpdater mSubscriptionInfoUpdater;
     @Mock SharedPreferences mSharedPreferences;
+    @Mock TelephonyRegistryManager mTelephonyRegistryManager;
 
     private TelephonyManager mTelephonyManager;
     private CarrierConfigLoader mCarrierConfigLoader;
@@ -96,6 +100,7 @@ public class CarrierConfigLoaderTest extends TelephonyTestBase {
     public void setUp() throws Exception {
         super.setUp();
 
+        // TODO: replace doReturn/when with when/thenReturn which is more readable
         doReturn(mSharedPreferences).when(mContext).getSharedPreferences(anyString(), anyInt());
         doReturn(Build.FINGERPRINT).when(mSharedPreferences).getString(eq("build_fingerprint"),
                 any());
@@ -114,6 +119,10 @@ public class CarrierConfigLoaderTest extends TelephonyTestBase {
                 eq(PLATFORM_CARRIER_CONFIG_PACKAGE), eq(0) /*flags*/);
         doReturn(PLATFORM_CARRIER_CONFIG_PACKAGE_VERSION_CODE).when(
                 mPackageInfo).getLongVersionCode();
+        when(mContext.getSystemServiceName(TelephonyRegistryManager.class)).thenReturn(
+                Context.TELEPHONY_REGISTRY_SERVICE);
+        when(mContext.getSystemService(TelephonyRegistryManager.class)).thenReturn(
+                mTelephonyRegistryManager);
 
         mHandlerThread = new HandlerThread("CarrierConfigLoaderTest");
         mHandlerThread.start();
@@ -185,6 +194,11 @@ public class CarrierConfigLoaderTest extends TelephonyTestBase {
         assertThat(mCarrierConfigLoader.getNoSimConfig().getInt(CARRIER_CONFIG_EXAMPLE_KEY))
                 .isEqualTo(CARRIER_CONFIG_EXAMPLE_VALUE);
         verify(mContext).sendBroadcastAsUser(any(Intent.class), any(UserHandle.class));
+        verify(mTelephonyRegistryManager).notifyCarrierConfigChanged(
+                eq(DEFAULT_PHONE_ID),
+                eq(SubscriptionManager.INVALID_SUBSCRIPTION_ID),
+                eq(TelephonyManager.UNKNOWN_CARRIER_ID),
+                eq(TelephonyManager.UNKNOWN_CARRIER_ID));
     }
 
     /**

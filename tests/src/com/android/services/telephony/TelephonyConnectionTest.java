@@ -1,5 +1,7 @@
 package com.android.services.telephony;
 
+import static android.telecom.Connection.STATE_DISCONNECTED;
+
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNotNull;
 import static junit.framework.Assert.assertNull;
@@ -7,6 +9,9 @@ import static junit.framework.Assert.assertTrue;
 import static junit.framework.Assert.fail;
 import static junit.framework.TestCase.assertFalse;
 
+import static org.junit.Assert.assertNotEquals;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
@@ -26,7 +31,6 @@ import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.d2d.DtmfTransport;
 import com.android.internal.telephony.d2d.RtpTransport;
 import com.android.internal.telephony.imsphone.ImsPhoneConnection;
-import com.android.phone.PhoneGlobals;
 import com.android.phone.R;
 
 import org.junit.Before;
@@ -39,6 +43,8 @@ import org.mockito.MockitoAnnotations;
 public class TelephonyConnectionTest {
     @Mock
     private ImsPhoneConnection mImsPhoneConnection;
+    @Mock
+    private TelephonyConnectionService mTelephonyConnectionService;
 
     @Before
     public void setUp() throws Exception {
@@ -257,4 +263,44 @@ public class TelephonyConnectionTest {
         assertTrue(c.isRttMergeSupported(c.getCarrierConfig()));
     }
 
+    @Test
+    public void testDomainSelectionDisconnected() {
+        TestTelephonyConnection c = new TestTelephonyConnection();
+        c.setOriginalConnection(mImsPhoneConnection);
+        doReturn(Call.State.DISCONNECTED).when(mImsPhoneConnection)
+                .getState();
+        c.setTelephonyConnectionService(mTelephonyConnectionService);
+        c.updateState();
+
+        verify(mTelephonyConnectionService)
+                .maybeReselectDomain(any(), anyInt(), any());
+    }
+
+    @Test
+    public void testDomainSelectionDisconnected_NoRedial() {
+        TestTelephonyConnection c = new TestTelephonyConnection();
+        c.setOriginalConnection(mImsPhoneConnection);
+        doReturn(Call.State.DISCONNECTED).when(mImsPhoneConnection)
+                .getState();
+        c.setTelephonyConnectionService(mTelephonyConnectionService);
+        doReturn(false).when(mTelephonyConnectionService)
+                .maybeReselectDomain(any(), anyInt(), any());
+        c.updateState();
+
+        assertEquals(STATE_DISCONNECTED, c.getState());
+    }
+
+    @Test
+    public void testDomainSelectionDisconnected_Redial() {
+        TestTelephonyConnection c = new TestTelephonyConnection();
+        c.setOriginalConnection(mImsPhoneConnection);
+        doReturn(Call.State.DISCONNECTED).when(mImsPhoneConnection)
+                .getState();
+        c.setTelephonyConnectionService(mTelephonyConnectionService);
+        doReturn(true).when(mTelephonyConnectionService)
+                .maybeReselectDomain(any(), anyInt(), any());
+        c.updateState();
+
+        assertNotEquals(STATE_DISCONNECTED, c.getState());
+    }
 }
