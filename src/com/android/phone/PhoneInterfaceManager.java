@@ -84,6 +84,7 @@ import android.telephony.AnomalyReporter;
 import android.telephony.CallForwardingInfo;
 import android.telephony.CarrierConfigManager;
 import android.telephony.CarrierRestrictionRules;
+import android.telephony.CellBroadcastIdRange;
 import android.telephony.CellIdentity;
 import android.telephony.CellIdentityCdma;
 import android.telephony.CellIdentityGsm;
@@ -11755,5 +11756,52 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             }
         }
         return simState.ordinal();
+    }
+
+    /**
+     * Get current cell broadcast ranges.
+     */
+    @Override
+    @RequiresPermission(android.Manifest.permission.MODIFY_CELL_BROADCASTS)
+    public List<CellBroadcastIdRange> getCellBroadcastIdRanges(int subId) {
+        mApp.enforceCallingPermission(android.Manifest.permission.MODIFY_CELL_BROADCASTS,
+                "getCellBroadcastIdRanges");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return getPhone(subId).getCellBroadcastIdRanges();
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Set reception of cell broadcast messages with the list of the given ranges
+     *
+     * @param ranges the list of {@link CellBroadcastIdRange} to be enabled
+     */
+    @Override
+    @RequiresPermission(android.Manifest.permission.MODIFY_CELL_BROADCASTS)
+    public void setCellBroadcastIdRanges(int subId, @NonNull List<CellBroadcastIdRange> ranges,
+            @Nullable IIntegerConsumer callback) {
+        mApp.enforceCallingPermission(android.Manifest.permission.MODIFY_CELL_BROADCASTS,
+                "setCellBroadcastIdRanges");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            Phone phone = getPhoneFromSubId(subId);
+            if (DBG) {
+                log("setCellBroadcastIdRanges for subId :" + subId + ", phone:" + phone);
+            }
+            phone.setCellBroadcastIdRanges(ranges, result -> {
+                if (callback != null) {
+                    try {
+                        callback.accept(result);
+                    } catch (RemoteException e) {
+                        Log.w(LOG_TAG, "setCellBroadcastIdRanges: callback not available.");
+                    }
+                }
+            });
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
     }
 }
