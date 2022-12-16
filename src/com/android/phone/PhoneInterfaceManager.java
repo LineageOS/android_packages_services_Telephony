@@ -394,7 +394,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private AppOpsManager mAppOps;
     private PackageManager mPm;
     private MainThreadHandler mMainThreadHandler;
-    private SubscriptionController mSubscriptionController;
+    private final SubscriptionController mSubscriptionController;
     private SharedPreferences mTelephonySharedPreferences;
     private PhoneConfigurationManager mPhoneConfigurationManager;
     private final RadioInterfaceCapabilityController mRadioInterfaceCapabilities;
@@ -2410,7 +2410,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         mAppOps = (AppOpsManager)app.getSystemService(Context.APP_OPS_SERVICE);
         mPm = app.getSystemService(PackageManager.class);
         mMainThreadHandler = new MainThreadHandler();
-        mSubscriptionController = SubscriptionController.getInstance();
+        if (!PhoneFactory.isSubscriptionManagerServiceEnabled()) {
+            mSubscriptionController = SubscriptionController.getInstance();
+        } else {
+            mSubscriptionController = null;
+        }
         mTelephonySharedPreferences =
                 PreferenceManager.getDefaultSharedPreferences(mApp);
         mNetworkScanRequestTracker = new NetworkScanRequestTracker();
@@ -6730,11 +6734,15 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             return false;
         }
 
-        log("setAllowedNetworkTypesForReason: " + reason + " value: "
+        log("setAllowedNetworkTypesForReason: subId=" + subId + ", reason=" + reason + " value: "
                 + TelephonyManager.convertNetworkTypeBitmaskToString(allowedNetworkTypes));
 
+        Phone phone = getPhone(subId);
+        if (phone == null) {
+            return false;
+        }
 
-        if (allowedNetworkTypes == getPhoneFromSubId(subId).getAllowedNetworkTypes(reason)) {
+        if (allowedNetworkTypes == phone.getAllowedNetworkTypes(reason)) {
             log("setAllowedNetworkTypesForReason: " + reason + "does not change value");
             return true;
         }
