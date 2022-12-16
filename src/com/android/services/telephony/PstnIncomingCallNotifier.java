@@ -393,9 +393,8 @@ final class PstnIncomingCallNotifier {
      */
     private PhoneAccountHandle findCorrectPhoneAccountHandle() {
         TelecomAccountRegistry telecomAccountRegistry = TelecomAccountRegistry.getInstance(null);
-        // Check to see if a SIM PhoneAccountHandle Exists for the Call.
-        PhoneAccountHandle handle = telecomAccountRegistry.getPhoneAccountHandleForSubId(
-                mPhone.getSubId());
+        // Check to see if a the SIM PhoneAccountHandle Exists for the Call.
+        PhoneAccountHandle handle = PhoneUtils.makePstnPhoneAccountHandle(mPhone);
         if (telecomAccountRegistry.hasAccountEntryForPhoneAccount(handle)) {
             return handle;
         }
