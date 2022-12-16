@@ -956,7 +956,6 @@ public class SlicePurchaseController extends Handler {
         }
         int capabilityServiceType = getSliceServiceType(capability);
         for (NetworkSliceInfo sliceInfo : mSlicingConfig.getSliceInfo()) {
-            // TODO: check if TrafficDescriptor has realtime capability slice
             if (sliceInfo.getSliceServiceType() == capabilityServiceType
                     && sliceInfo.getStatus() == NetworkSliceInfo.SLICE_STATUS_ALLOWED) {
                 return true;
@@ -967,7 +966,9 @@ public class SlicePurchaseController extends Handler {
 
     @NetworkSliceInfo.SliceServiceType private int getSliceServiceType(
             @TelephonyManager.PremiumCapability int capability) {
-        // TODO: Implement properly -- potentially need to add new slice service types?
+        if (capability == TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY) {
+            return NetworkSliceInfo.SLICE_SERVICE_TYPE_URLLC;
+        }
         return NetworkSliceInfo.SLICE_SERVICE_TYPE_NONE;
     }
 

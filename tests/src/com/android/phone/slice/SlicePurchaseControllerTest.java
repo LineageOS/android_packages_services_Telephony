@@ -505,7 +505,7 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
     public void testPurchasePremiumCapabilityResultAlreadyPurchased() {
         testPurchasePremiumCapabilityResultSuccess();
 
-        sendNetworkSlicingConfig(true);
+        sendNetworkSlicingConfig(TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, true);
 
         mSlicePurchaseController.purchasePremiumCapability(
                 TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, TAG,
@@ -523,7 +523,7 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
                 mResult);
 
         // retry to verify purchase expired
-        sendNetworkSlicingConfig(false);
+        sendNetworkSlicingConfig(TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, false);
 
         testPurchasePremiumCapabilityResultSuccess();
     }
@@ -705,9 +705,9 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
         assertEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_SUCCESS, mResult);
 
         // complete network setup
-        sendNetworkSlicingConfig(true);
+        sendNetworkSlicingConfig(TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, true);
         // purchase expired
-        sendNetworkSlicingConfig(false);
+        sendNetworkSlicingConfig(TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, false);
     }
 
     private void sendValidPurchaseRequest() {
@@ -755,13 +755,17 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
         verify(mContext).registerReceiver(any(BroadcastReceiver.class), any(IntentFilter.class));
     }
 
-    private void sendNetworkSlicingConfig(boolean configExists) {
-        // TODO: implement slicing config logic properly
+    private void sendNetworkSlicingConfig(int capability, boolean configActive) {
+        int sliceServiceType = capability == TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY
+                ? NetworkSliceInfo.SLICE_SERVICE_TYPE_URLLC
+                : NetworkSliceInfo.SLICE_SERVICE_TYPE_NONE;
+        NetworkSliceInfo sliceInfo = new NetworkSliceInfo.Builder()
+                .setStatus(configActive ? NetworkSliceInfo.SLICE_STATUS_ALLOWED
+                        : NetworkSliceInfo.SLICE_STATUS_UNKNOWN)
+                .setSliceServiceType(sliceServiceType)
+                .build();
         NetworkSlicingConfig slicingConfig = new NetworkSlicingConfig(Collections.emptyList(),
-                configExists
-                        ? Collections.singletonList(new NetworkSliceInfo.Builder()
-                                .setStatus(NetworkSliceInfo.SLICE_STATUS_ALLOWED).build())
-                        : Collections.emptyList());
+                Collections.singletonList(sliceInfo));
         mSlicePurchaseController.obtainMessage(2 /* EVENT_SLICING_CONFIG_CHANGED */,
                 new AsyncResult(null, slicingConfig, null)).sendToTarget();
         mTestableLooper.processAllMessages();
