@@ -177,7 +177,7 @@ public class RcsFeatureController {
 
                 @Override
                 public void handleImsUnregistered(ImsReasonInfo imsReasonInfo,
-                        int suggestedAction) {
+                        int suggestedAction, int imsRadioTech) {
                 }
 
                 @Override
