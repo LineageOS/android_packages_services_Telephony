@@ -192,6 +192,7 @@ import com.android.internal.telephony.SubscriptionController;
 import com.android.internal.telephony.TelephonyIntents;
 import com.android.internal.telephony.TelephonyPermissions;
 import com.android.internal.telephony.data.DataUtils;
+import com.android.internal.telephony.domainselection.DomainSelectionResolver;
 import com.android.internal.telephony.emergency.EmergencyNumberTracker;
 import com.android.internal.telephony.euicc.EuiccConnector;
 import com.android.internal.telephony.ims.ImsResolver;
@@ -11801,6 +11802,24 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 }
             });
         } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Returns whether the device supports the domain selection service.
+     *
+     * @return {@code true} if the device supports the domain selection service.
+     */
+    @Override
+    public boolean isDomainSelectionSupported() {
+        mApp.enforceCallingOrSelfPermission(Manifest.permission.READ_PRIVILEGED_PHONE_STATE,
+                "isDomainSelectionSupported");
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return DomainSelectionResolver.getInstance().isDomainSelectionSupported();
+        }  finally {
             Binder.restoreCallingIdentity(identity);
         }
     }
