@@ -15,6 +15,8 @@
  */
 
 package com.android.services.telephony;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.fail;
 import static org.junit.Assume.assumeFalse;
 import static org.junit.Assume.assumeTrue;
 import static org.junit.Assert.assertEquals;
@@ -259,5 +261,14 @@ public class TelephonyManagerTest {
                 .when(mPackageManager).hasSystemFeature(
                         PackageManager.FEATURE_TELEPHONY_SUBSCRIPTION);
         return mContext.getPackageManager().hasSystemFeature(feature);
+    }
+
+    @Test
+    public void getPrimaryImei() throws RemoteException {
+        assumeTrue(hasFeature(PackageManager.FEATURE_TELEPHONY_SUBSCRIPTION, true));
+        when(mMockITelephony.getPrimaryImei(anyString(), anyString())).thenReturn(
+                "12345");
+        assertEquals("12345", mTelephonyManager.getPrimaryImei());
+        verify(mMockITelephony, times(1)).getPrimaryImei(anyString(), anyString());
     }
 }
