@@ -11303,9 +11303,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
 
         for (SignalThresholdInfo info : request.getSignalThresholdInfos()) {
-            // Only system caller can set mHysteresisMs/mHysteresisDb/mIsEnabled.
+            // Only system caller can set mHysteresisMs/mIsEnabled.
             if (info.getHysteresisMs() != SignalThresholdInfo.HYSTERESIS_MS_DISABLED
-                    || info.getHysteresisDb() != SignalThresholdInfo.HYSTERESIS_DB_DISABLED
                     || info.isEnabled()) {
                 throw new IllegalArgumentException(
                         "Only system can set hide fields in SignalThresholdInfo");

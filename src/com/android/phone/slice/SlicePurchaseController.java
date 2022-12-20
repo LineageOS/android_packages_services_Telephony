@@ -187,6 +187,8 @@ public class SlicePurchaseController extends Handler {
      */
     public static final String EXTRA_PREMIUM_CAPABILITY =
             "com.android.phone.slice.extra.PREMIUM_CAPABILITY";
+    /** Extra for the carrier URL to display to the user to allow premium capability purchase. */
+    public static final String EXTRA_PURCHASE_URL = "com.android.phone.slice.extra.PURCHASE_URL";
     /** Extra for the duration of the purchased premium capability. */
     public static final String EXTRA_PURCHASE_DURATION =
             "com.android.phone.slice.extra.PURCHASE_DURATION";
@@ -689,6 +691,13 @@ public class SlicePurchaseController extends Handler {
             return;
         }
 
+        String purchaseUrl = getPurchaseUrl(premiumNetworkEntitlementResponse);
+        if (TextUtils.isEmpty(purchaseUrl)) {
+            handlePurchaseResult(capability,
+                    PURCHASE_PREMIUM_CAPABILITY_RESULT_CARRIER_DISABLED, false);
+            return;
+        }
+
         updateNotificationCounts();
         if (mMonthlyCount >= getCarrierConfigs().getInt(
                 CarrierConfigManager.KEY_PREMIUM_CAPABILITY_MAXIMUM_MONTHLY_NOTIFICATION_COUNT_INT)
@@ -714,6 +723,7 @@ public class SlicePurchaseController extends Handler {
         intent.putExtra(EXTRA_PHONE_ID, mPhone.getPhoneId());
         intent.putExtra(EXTRA_SUB_ID, mPhone.getSubId());
         intent.putExtra(EXTRA_PREMIUM_CAPABILITY, capability);
+        intent.putExtra(EXTRA_PURCHASE_URL, purchaseUrl);
         intent.putExtra(EXTRA_REQUESTING_APP_NAME, appName);
         intent.putExtra(EXTRA_INTENT_CANCELED, createPendingIntent(
                 ACTION_SLICE_PURCHASE_APP_RESPONSE_CANCELED, capability, false));
@@ -743,6 +753,26 @@ public class SlicePurchaseController extends Handler {
         filter.addAction(ACTION_SLICE_PURCHASE_APP_RESPONSE_NOTIFICATION_SHOWN);
         mPhone.getContext().registerReceiver(
                 mSlicePurchaseControllerBroadcastReceivers.get(capability), filter);
+    }
+
+    /**
+     * Get a valid purchase URL from either entitlement response or carrier configs, if one exists.
+     *
+     * @param entitlementResponse The entitlement response to get the purchase URL from.
+     * @return A valid purchase URL or an empty string if one doesn't exist.
+     */
+    @VisibleForTesting
+    @NonNull public String getPurchaseUrl(
+            @NonNull PremiumNetworkEntitlementResponse entitlementResponse) {
+        String purchaseUrl = entitlementResponse.mServiceFlowURL;
+        if (!isUrlValid(purchaseUrl)) {
+            purchaseUrl = getCarrierConfigs().getString(
+                    CarrierConfigManager.KEY_PREMIUM_CAPABILITY_PURCHASE_URL_STRING);
+            if (!isUrlValid(purchaseUrl)) {
+                purchaseUrl = "";
+            }
+        }
+        return purchaseUrl;
     }
 
     /**
@@ -906,11 +936,6 @@ public class SlicePurchaseController extends Handler {
 
     private boolean isPremiumCapabilitySupportedByCarrier(
             @TelephonyManager.PremiumCapability int capability) {
-        String url = getCarrierConfigs().getString(
-                CarrierConfigManager.KEY_PREMIUM_CAPABILITY_PURCHASE_URL_STRING);
-        if (!isUrlValid(url)) {
-            return false;
-        }
         int[] supportedCapabilities = getCarrierConfigs().getIntArray(
                 CarrierConfigManager.KEY_SUPPORTED_PREMIUM_CAPABILITIES_INT_ARRAY);
         if (supportedCapabilities == null) {
