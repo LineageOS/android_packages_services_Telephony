@@ -39,6 +39,7 @@ import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.Message;
 import android.os.PersistableBundle;
+import android.provider.DeviceConfig;
 import android.telephony.AnomalyReporter;
 import android.telephony.CarrierConfigManager;
 import android.telephony.SubscriptionManager;
@@ -87,13 +88,13 @@ public class SlicePurchaseController extends Handler {
 
     /** Unknown failure code. */
     public static final int FAILURE_CODE_UNKNOWN = 0;
-    /** Network boost purchase failed because the carrier URL is unavailable. */
+    /** Performance boost purchase failed because the carrier URL is unavailable. */
     public static final int FAILURE_CODE_CARRIER_URL_UNAVAILABLE = 1;
-    /** Network boost purchase failed because the server is unreachable. */
+    /** Performance boost purchase failed because the server is unreachable. */
     public static final int FAILURE_CODE_SERVER_UNREACHABLE = 2;
-    /** Network boost purchase failed because user authentication failed. */
+    /** Performance boost purchase failed because user authentication failed. */
     public static final int FAILURE_CODE_AUTHENTICATION_FAILED = 3;
-    /** Network boost purchase failed because the payment failed. */
+    /** Performance boost purchase failed because the payment failed. */
     public static final int FAILURE_CODE_PAYMENT_FAILED = 4;
 
     /**
@@ -131,6 +132,8 @@ public class SlicePurchaseController extends Handler {
      * {@link CarrierConfigManager#KEY_PREMIUM_CAPABILITY_NETWORK_SETUP_TIME_MILLIS_LONG}.
      */
     private static final int EVENT_SETUP_TIMEOUT = 5;
+    /** Device config changed. */
+    private static final int EVENT_DEVICE_CONFIG_CHANGED = 6;
 
     /** UUID to report an anomaly when a premium capability is throttled twice in a row. */
     private static final String UUID_CAPABILITY_THROTTLED_TWICE =
@@ -148,14 +151,15 @@ public class SlicePurchaseController extends Handler {
     private static final String UUID_NETWORK_SETUP_FAILED = "12eeffbf-08f8-40ed-9a00-d344199552fc";
 
     /**
-     * Action to start the slice purchase application and display the network boost notification.
+     * Action to start the slice purchase application and display the
+     * performance boost notification.
      */
     public static final String ACTION_START_SLICE_PURCHASE_APP =
             "com.android.phone.slice.action.START_SLICE_PURCHASE_APP";
     /** Action indicating the premium capability purchase was not completed in time. */
     public static final String ACTION_SLICE_PURCHASE_APP_RESPONSE_TIMEOUT =
             "com.android.phone.slice.action.SLICE_PURCHASE_APP_RESPONSE_TIMEOUT";
-    /** Action indicating the network boost notification or WebView was canceled. */
+    /** Action indicating the performance boost notification or WebView was canceled. */
     private static final String ACTION_SLICE_PURCHASE_APP_RESPONSE_CANCELED =
             "com.android.phone.slice.action.SLICE_PURCHASE_APP_RESPONSE_CANCELED";
     /** Action indicating a carrier error prevented premium capability purchase. */
@@ -174,7 +178,9 @@ public class SlicePurchaseController extends Handler {
     /** Action indicating the purchase request was successful. */
     private static final String ACTION_SLICE_PURCHASE_APP_RESPONSE_SUCCESS =
             "com.android.phone.slice.action.SLICE_PURCHASE_APP_RESPONSE_SUCCESS";
-    /** Action indicating the slice purchase application showed the network boost notification. */
+    /**
+     * Action indicating the slice purchase application showed the performance boost notification.
+     */
     private static final String ACTION_SLICE_PURCHASE_APP_RESPONSE_NOTIFICATION_SHOWN =
             "com.android.phone.slice.action.SLICE_PURCHASE_APP_RESPONSE_NOTIFICATION_SHOWN";
 
@@ -205,7 +211,7 @@ public class SlicePurchaseController extends Handler {
             "com.android.phone.slice.extra.REQUESTING_APP_NAME";
     /**
      * Extra for the canceled PendingIntent that the slice purchase application can send as a
-     * response if the network boost notification or WebView was canceled by the user.
+     * response if the performance boost notification or WebView was canceled by the user.
      * Sends {@link #ACTION_SLICE_PURCHASE_APP_RESPONSE_CANCELED}.
      */
     public static final String EXTRA_INTENT_CANCELED =
@@ -246,7 +252,7 @@ public class SlicePurchaseController extends Handler {
             "com.android.phone.slice.extra.INTENT_SUCCESS";
     /**
      * Extra for the PendingIntent that the slice purchase application can send to indicate
-     * that it displayed the network boost notification to the user.
+     * that it displayed the performance boost notification to the user.
      * Sends {@link #ACTION_SLICE_PURCHASE_APP_RESPONSE_NOTIFICATION_SHOWN}.
      */
     public static final String EXTRA_INTENT_NOTIFICATION_SHOWN =
@@ -257,16 +263,18 @@ public class SlicePurchaseController extends Handler {
             ComponentName.unflattenFromString(
                     "com.android.carrierdefaultapp/.SlicePurchaseBroadcastReceiver");
 
-    /** Shared preference name for network boost notification preferences. */
-    private static final String NETWORK_BOOST_NOTIFICATION_PREFERENCES =
-            "network_boost_notification_preferences";
-    /** Shared preference key for daily count of network boost notifications. */
+    /** Shared preference name for performance boost notification preferences. */
+    private static final String PERFORMANCE_BOOST_NOTIFICATION_PREFERENCES =
+            "performance_boost_notification_preferences";
+    /** Shared preference key for daily count of performance boost notifications. */
     private static final String KEY_DAILY_NOTIFICATION_COUNT = "daily_notification_count";
-    /** Shared preference key for monthly count of network boost notifications. */
+    /** Shared preference key for monthly count of performance boost notifications. */
     private static final String KEY_MONTHLY_NOTIFICATION_COUNT = "monthly_notification_count";
+    /** DeviceConfig key for whether the slicing upsell feature is enabled. */
+    private static final String KEY_ENABLE_SLICING_UPSELL = "enable_slicing_upsell";
     /**
-     * Shared preference key for the date the daily or monthly counts of network boost notifications
-     * were last reset.
+     * Shared preference key for the date the daily or monthly counts of performance boost
+     * notifications were last reset.
      * A String with ISO-8601 format {@code YYYY-MM-DD}, from {@link LocalDate#toString}.
      * For example, if the count was last updated on December 25, 2020, this would be `2020-12-25`.
      */
@@ -297,10 +305,12 @@ public class SlicePurchaseController extends Handler {
     @NonNull private final PremiumNetworkEntitlementApi mPremiumNetworkEntitlementApi;
     /** LocalDate to use when resetting notification counts. {@code null} except when testing. */
     @Nullable private LocalDate mLocalDate;
-    /** The number of times the network boost notification has been shown today. */
+    /** The number of times the performance boost notification has been shown today. */
     private int mDailyCount;
-    /** The number of times the network boost notification has been shown this month. */
+    /** The number of times the performance boost notification has been shown this month. */
     private int mMonthlyCount;
+    /** {@code true} if the slicing upsell feature is enabled and {@code false} otherwise. */
+    private boolean mIsSlicingUpsellEnabled;
 
     /**
      * BroadcastReceiver to receive responses from the slice purchase application.
@@ -445,6 +455,16 @@ public class SlicePurchaseController extends Handler {
         mPhone.mCi.registerForSlicingConfigChanged(this, EVENT_SLICING_CONFIG_CHANGED, null);
         mPremiumNetworkEntitlementApi =
                 new PremiumNetworkEntitlementApi(mPhone, getCarrierConfigs());
+        mIsSlicingUpsellEnabled = DeviceConfig.getBoolean(
+                DeviceConfig.NAMESPACE_TELEPHONY, KEY_ENABLE_SLICING_UPSELL, false);
+        DeviceConfig.addOnPropertiesChangedListener(
+                DeviceConfig.NAMESPACE_TELEPHONY, this::post,
+                properties -> {
+                    if (TextUtils.equals(DeviceConfig.NAMESPACE_TELEPHONY,
+                            properties.getNamespace())) {
+                        sendEmptyMessage(EVENT_DEVICE_CONFIG_CHANGED);
+                    }
+                });
         updateNotificationCounts();
     }
 
@@ -496,6 +516,15 @@ public class SlicePurchaseController extends Handler {
                 logd("EVENT_SETUP_TIMEOUT: for capability "
                         + TelephonyManager.convertPremiumCapabilityToString(capability));
                 onSetupTimeout(capability);
+                break;
+            case EVENT_DEVICE_CONFIG_CHANGED:
+                boolean isSlicingUpsellEnabled = DeviceConfig.getBoolean(
+                        DeviceConfig.NAMESPACE_TELEPHONY, KEY_ENABLE_SLICING_UPSELL, false);
+                if (isSlicingUpsellEnabled != mIsSlicingUpsellEnabled) {
+                    logd("EVENT_DEVICE_CONFIG_CHANGED: from " + mIsSlicingUpsellEnabled + " to "
+                            + isSlicingUpsellEnabled);
+                    mIsSlicingUpsellEnabled = isSlicingUpsellEnabled;
+                }
                 break;
             default:
                 loge("Unknown event: " + msg.obj);
@@ -703,7 +732,7 @@ public class SlicePurchaseController extends Handler {
                 CarrierConfigManager.KEY_PREMIUM_CAPABILITY_MAXIMUM_MONTHLY_NOTIFICATION_COUNT_INT)
                 || mDailyCount >= getCarrierConfigs().getInt(
                 CarrierConfigManager.KEY_PREMIUM_CAPABILITY_MAXIMUM_DAILY_NOTIFICATION_COUNT_INT)) {
-            logd("Reached maximum number of network boost notifications.");
+            logd("Reached maximum number of performance boost notifications.");
             handlePurchaseResult(capability,
                     TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_THROTTLED, false);
             return;
@@ -849,11 +878,11 @@ public class SlicePurchaseController extends Handler {
     }
 
     private void onNotificationShown() {
-        SharedPreferences sp =
-                mPhone.getContext().getSharedPreferences(NETWORK_BOOST_NOTIFICATION_PREFERENCES, 0);
+        SharedPreferences sp = mPhone.getContext().getSharedPreferences(
+                PERFORMANCE_BOOST_NOTIFICATION_PREFERENCES, 0);
         mDailyCount = sp.getInt((KEY_DAILY_NOTIFICATION_COUNT + mPhone.getPhoneId()), 0) + 1;
         mMonthlyCount = sp.getInt((KEY_MONTHLY_NOTIFICATION_COUNT + mPhone.getPhoneId()), 0) + 1;
-        logd("Network boost notification was shown " + mDailyCount + " times today and "
+        logd("Performance boost notification was shown " + mDailyCount + " times today and "
                 + mMonthlyCount + " times this month.");
 
         SharedPreferences.Editor editor = sp.edit();
@@ -866,14 +895,14 @@ public class SlicePurchaseController extends Handler {
     }
 
     /**
-     * Update the current daily and monthly network boost notification counts.
+     * Update the current daily and monthly performance boost notification counts.
      * If it has been at least a day since the last daily reset or at least a month since the last
      * monthly reset, reset the current daily or monthly notification counts.
      */
     @VisibleForTesting
     public void updateNotificationCounts() {
-        SharedPreferences sp =
-                mPhone.getContext().getSharedPreferences(NETWORK_BOOST_NOTIFICATION_PREFERENCES, 0);
+        SharedPreferences sp = mPhone.getContext().getSharedPreferences(
+                PERFORMANCE_BOOST_NOTIFICATION_PREFERENCES, 0);
         mDailyCount = sp.getInt((KEY_DAILY_NOTIFICATION_COUNT + mPhone.getPhoneId()), 0);
         mMonthlyCount = sp.getInt((KEY_MONTHLY_NOTIFICATION_COUNT + mPhone.getPhoneId()), 0);
 
@@ -965,10 +994,11 @@ public class SlicePurchaseController extends Handler {
     }
 
     private boolean arePremiumCapabilitiesSupportedByDevice() {
-        // TODO: Add more checks?
-        //  Maybe device resource overlay to enable/disable in addition to carrier configs
-        return (mPhone.getCachedAllowedNetworkTypesBitmask()
-                & TelephonyManager.NETWORK_TYPE_BITMASK_NR) != 0;
+        if ((mPhone.getCachedAllowedNetworkTypesBitmask()
+                & TelephonyManager.NETWORK_TYPE_BITMASK_NR) == 0) {
+            return false;
+        }
+        return mIsSlicingUpsellEnabled;
     }
 
     private boolean isDefaultDataSub() {
