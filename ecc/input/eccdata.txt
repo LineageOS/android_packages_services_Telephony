@@ -215,6 +215,19 @@ countries {
     types: POLICE
     types: AMBULANCE
     types: FIRE
+    routing: EMERGENCY
+  }
+  eccs {
+    phone_number: "100"
+    types: POLICE
+    types: AMBULANCE
+    types: FIRE
+    routing: EMERGENCY
+  }
+  eccs {
+    phone_number: "101"
+    types: TYPE_UNSPECIFIED
+    routing: NORMAL
   }
   ecc_fallback: "112"
 }
@@ -482,6 +495,7 @@ countries {
   eccs {
     phone_number: "133"
     types: POLICE
+    routing: EMERGENCY
   }
   eccs {
     phone_number: "131"
@@ -678,6 +692,7 @@ countries {
     types: POLICE
     types: AMBULANCE
     types: FIRE
+    routing: EMERGENCY
   }
   ecc_fallback: "112"
 }
@@ -847,6 +862,11 @@ countries {
   }
   eccs {
     phone_number: "119"
+    types: TYPE_UNSPECIFIED
+    routing: NORMAL
+  }
+  eccs {
+    phone_number: "116111"
     types: TYPE_UNSPECIFIED
     routing: NORMAL
   }
@@ -1374,11 +1394,42 @@ countries {
   eccs {
     phone_number: "112"
     types: POLICE
+    routing: EMERGENCY
   }
   eccs {
     phone_number: "119"
-    types: AMBULANCE
     types: FIRE
+    routing: EMERGENCY
+  }
+  eccs {
+    phone_number: "122"
+    types: MARINE_GUARD
+    routing: EMERGENCY
+  }
+  eccs {
+    phone_number: "111"
+    types: TYPE_UNSPECIFIED
+    routing: EMERGENCY
+  }
+  eccs {
+    phone_number: "113"
+    types: TYPE_UNSPECIFIED
+    routing: EMERGENCY
+  }
+  eccs {
+    phone_number: "117"
+    types: TYPE_UNSPECIFIED
+    routing: EMERGENCY
+  }
+  eccs {
+    phone_number: "118"
+    types: TYPE_UNSPECIFIED
+    routing: EMERGENCY
+  }
+  eccs {
+    phone_number: "125"
+    types: TYPE_UNSPECIFIED
+    routing: EMERGENCY
   }
   ecc_fallback: "112"
 }
@@ -1513,6 +1564,7 @@ countries {
     types: POLICE
     types: AMBULANCE
     types: FIRE
+    routing: EMERGENCY
   }
   ecc_fallback: "112"
 }
@@ -1802,6 +1854,7 @@ countries {
     types: POLICE
     types: AMBULANCE
     types: FIRE
+    routing: EMERGENCY
   }
   ecc_fallback: "911"
 }
@@ -1917,8 +1970,17 @@ countries {
   eccs {
     phone_number: "112"
     types: POLICE
+    routing: EMERGENCY
+  }
+  eccs {
+    phone_number: "113"
     types: AMBULANCE
+    routing: EMERGENCY
+  }
+  eccs {
+    phone_number: "110"
     types: FIRE
+    routing: EMERGENCY
   }
   ecc_fallback: "112"
 }
@@ -2017,6 +2079,7 @@ countries {
   eccs {
     phone_number: "105"
     types: POLICE
+    routing: EMERGENCY
   }
   eccs {
     phone_number: "110"
