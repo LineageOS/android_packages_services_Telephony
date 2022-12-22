@@ -602,18 +602,21 @@ public class TelephonyConnectionService extends ConnectionService {
                         // code from original connection.
                         com.android.internal.telephony.Connection connection =
                                 mNormalCallConnection.getOriginalConnection();
-                        if (cause == android.telephony.DisconnectCause.NOT_VALID) {
-                            cause = connection.getDisconnectCause();
+                        if (connection != null) {
+                            if (cause == android.telephony.DisconnectCause.NOT_VALID) {
+                                cause = connection.getDisconnectCause();
+                            }
+
+                            String reason = connection.getVendorDisconnectCause();
+
+                            mNormalCallConnection.setTelephonyConnectionDisconnected(
+                                    mDisconnectCauseFactory.toTelecomDisconnectCause(
+                                            cause, reason));
+                            Log.d(this, "Call connection closed. Cause: " + cause
+                                    + " Reason: " + reason);
                         }
-
-                        String reason = connection.getVendorDisconnectCause();
-                        mNormalCallConnection.setTelephonyConnectionDisconnected(
-                                mDisconnectCauseFactory.toTelecomDisconnectCause(cause, reason));
-
                         mNormalCallConnection.close();
                         mNormalCallConnection = null;
-                        Log.d(this, "Call connection closed. Cause: " + cause
-                                + " Reason: " + reason);
                     }
 
                 }
