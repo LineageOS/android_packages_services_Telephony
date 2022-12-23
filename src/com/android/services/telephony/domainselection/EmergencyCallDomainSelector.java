@@ -68,6 +68,7 @@ import android.telephony.AccessNetworkConstants.RadioAccessNetworkType;
 import android.telephony.AccessNetworkConstants.TransportType;
 import android.telephony.BarringInfo;
 import android.telephony.CarrierConfigManager;
+import android.telephony.DisconnectCause;
 import android.telephony.DomainSelectionService;
 import android.telephony.DomainSelectionService.SelectionAttributes;
 import android.telephony.EmergencyRegResult;
@@ -105,6 +106,18 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
     private static final int NOT_SUPPORTED = -1;
 
     private static final LocalLog sLocalLog = new LocalLog(LOG_SIZE);
+
+    private static final ArrayList<String> sAllowOnlyWithSimReady = new ArrayList<>();
+
+    static {
+        // b/177967010, JP
+        sAllowOnlyWithSimReady.add("jp"); // Japan
+        // b/198393826, DE
+        sAllowOnlyWithSimReady.add("de"); // Germany
+        // b/230443699, IN and SG
+        sAllowOnlyWithSimReady.add("in"); // India
+        sAllowOnlyWithSimReady.add("sg"); // Singapore
+    }
 
     /**
      * Network callback used to determine whether Wi-Fi is connected or not.
@@ -167,6 +180,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
     private boolean mRequiresVoLteEnabled;
     private boolean mLtePreferredAfterNrFailure;
     private boolean mTryCsWhenPsFails;
+    private int mModemCount;
 
     /** Indicates whether this instance is deactivated. */
     private boolean mDestroyed = false;
@@ -228,6 +242,12 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
     private void handleScanResult(EmergencyRegResult result) {
         logi("handleScanResult result=" + result);
 
+        // Detected the country and found that emergency calls are not allowed with this slot.
+        if (!allowEmergencyCalls(result)) {
+            terminateSelectionPermanentlyForSlot();
+            return;
+        }
+
         if (result.getAccessNetwork() == UNKNOWN) {
             if ((mPreferredNetworkScanType == SCAN_TYPE_FULL_SERVICE_FOLLOWED_BY_LIMITED_SERVICE)
                       || (mScanType == DomainSelectionService.SCAN_TYPE_FULL_SERVICE)) {
@@ -247,7 +267,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
 
         removeMessages(MSG_NETWORK_SCAN_TIMEOUT);
         onWwanNetworkTypeSelected(result.getAccessNetwork());
-        mIsScanRequested = false;
+        mCancelSignal = null;
     }
 
     @Override
@@ -318,11 +338,14 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         mTransportSelectorCallback = cb;
         mSelectionAttributes = attr;
 
+        TelephonyManager tm = mContext.getSystemService(TelephonyManager.class);
+        mModemCount = tm.getActiveModemCount();
+
         sendEmptyMessage(MSG_START_DOMAIN_SELECTION);
     }
 
     private void startDomainSelection() {
-        logi("startDomainSelection");
+        logi("startDomainSelection modemCount=" + mModemCount);
         updateCarrierConfiguration();
         mDomainSelectionRequested = true;
         if (SubscriptionManager.isValidSubscriptionId(getSubId())) {
@@ -455,6 +478,12 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         if (!mBarringInfoReceived || !mImsRegStateReceived || !mMmTelCapabilitiesReceived) {
             logi("selectDomain not received"
                     + " BarringInfo, IMS registration state, or MMTEL capabilities");
+            return;
+        }
+
+        if (!allowEmergencyCalls(mSelectionAttributes.getEmergencyRegResult())) {
+            // Detected the country and found that emergency calls are not allowed with this slot.
+            terminateSelectionPermanentlyForSlot();
             return;
         }
 
@@ -793,7 +822,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         List<Integer> ratList = getImsNetworkTypeConfiguration();
         if (ratList.contains(accessNetwork)) {
             if (mIsEmergencyBarred) {
-                logi("sgetSelectablePsNetworkType barred");
+                logi("getSelectablePsNetworkType barred");
                 return UNKNOWN;
             }
             if (accessNetwork == NGRAN) {
@@ -1097,6 +1126,36 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
             logi("unregisterForConnectivityChanges");
             cm.unregisterNetworkCallback(mNetworkCallback);
             mIsMonitoringConnectivity = false;
+        }
+    }
+
+    private boolean allowEmergencyCalls(EmergencyRegResult regResult) {
+        if (mModemCount < 2) return true;
+        if (regResult == null) {
+            loge("allowEmergencyCalls null regResult");
+            return true;
+        }
+
+        String iso = regResult.getIso();
+        if (sAllowOnlyWithSimReady.contains(iso)) {
+            TelephonyManager tm = mContext.getSystemService(TelephonyManager.class);
+            int simState = tm.getSimState(getSlotId());
+            if (simState != TelephonyManager.SIM_STATE_READY) {
+                logi("allowEmergencyCalls not ready, simState=" + simState + ", iso=" + iso);
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private void terminateSelectionPermanentlyForSlot() {
+        logi("terminateSelectionPermanentlyForSlot");
+        mTransportSelectorCallback.onSelectionTerminated(DisconnectCause.EMERGENCY_PERM_FAILURE);
+
+        if (mIsScanRequested && mCancelSignal != null) {
+            mCancelSignal.cancel();
+            mCancelSignal = null;
         }
     }
 
