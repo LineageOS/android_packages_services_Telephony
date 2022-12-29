@@ -31,6 +31,7 @@ import android.Manifest.permission;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.annotation.RequiresPermission;
+import android.app.ActivityManager;
 import android.app.AppOpsManager;
 import android.app.PendingIntent;
 import android.app.PropertyInvalidatedCache;
@@ -11439,6 +11440,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     + " failed due to missing permissions.");
             throw new SecurityException("purchasePremiumCapability requires permission "
                     + "READ_BASIC_PHONE_STATE.");
+        } else if (!TelephonyPermissions.checkInternetPermissionNoThrow(
+                mApp, "purchasePremiumCapability")) {
+            log("purchasePremiumCapability "
+                    + TelephonyManager.convertPremiumCapabilityToString(capability)
+                    + " failed due to missing permissions.");
+            throw new SecurityException("purchasePremiumCapability requires permission INTERNET.");
         }
 
         Phone phone = getPhone(subId);
@@ -11457,15 +11464,51 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             }
             return;
         }
-        String appName;
+
+        String callingProcess;
         try {
-            appName = mApp.getPackageManager().getApplicationLabel(mApp.getPackageManager()
-                    .getApplicationInfo(getCurrentPackageName(), 0)).toString();
+            callingProcess = mApp.getPackageManager().getApplicationInfo(
+                    getCurrentPackageName(), 0).processName;
         } catch (PackageManager.NameNotFoundException e) {
-            appName = "An application";
+            callingProcess = getCurrentPackageName();
         }
+
+        boolean isVisible = false;
+        ActivityManager am = mApp.getSystemService(ActivityManager.class);
+        if (am != null) {
+            List<ActivityManager.RunningAppProcessInfo> processes = am.getRunningAppProcesses();
+            if (processes != null) {
+                for (ActivityManager.RunningAppProcessInfo process : processes) {
+                    log("purchasePremiumCapability: process " + process.processName
+                            + "has importance " + process.importance);
+                    if (process.processName.equals(callingProcess) && process.importance
+                            <= ActivityManager.RunningAppProcessInfo.IMPORTANCE_VISIBLE) {
+                        isVisible = true;
+                        break;
+                    }
+                }
+            }
+        }
+
+        if (!isVisible) {
+            try {
+                int result = TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_NOT_FOREGROUND;
+                callback.accept(result);
+                loge("purchasePremiumCapability: " + callingProcess + " is not in the foreground.");
+            } catch (RemoteException e) {
+                String logStr = "Purchase premium capability "
+                        + TelephonyManager.convertPremiumCapabilityToString(capability)
+                        + " failed due to RemoteException handling background application: " + e;
+                if (DBG) log(logStr);
+                AnomalyReporter.reportAnomaly(
+                        UUID.fromString(PURCHASE_PREMIUM_CAPABILITY_ERROR_UUID), logStr);
+            }
+            return;
+        }
+
         sendRequestAsync(CMD_PURCHASE_PREMIUM_CAPABILITY,
-                new PurchasePremiumCapabilityArgument(capability, appName, callback), phone, null);
+                new PurchasePremiumCapabilityArgument(capability, callingProcess, callback), phone,
+                null);
     }
 
     /**
