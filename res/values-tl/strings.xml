@@ -511,7 +511,7 @@
     <string name="invalidPuk2" msgid="713729511903849544">"Maglagay ng PUK2 na 8 numero."</string>
     <string name="pin2_changed" msgid="5710551850481287821">"Na-update na ang PIN2"</string>
     <string name="label_puk2_code" msgid="2852217004288085562">"Ilagay ang PUK2 code"</string>
-    <string name="fdn_enable_puk2_requested" msgid="5793652792131588041">"Mali ang password. Naka-block na ngayon ang PIN2. Upang subukang muli, baguhin ang PIN 2."</string>
+    <string name="fdn_enable_puk2_requested" msgid="5793652792131588041">"Mali ang password. Naka-block na ngayon ang PIN2. Upang subukan ulit, baguhin ang PIN 2."</string>
     <string name="puk2_requested" msgid="6992374450720307514">"Mali ang password. Naka-lock na ngayon ang SIM. Ilagay ang PUK2."</string>
     <string name="puk2_blocked" msgid="3131139031779319911">"Permanenteng na-block ang PUK2."</string>
     <string name="pin2_attempts" msgid="5625178102026453023">\n"Mayroon ka na lang <xliff:g id="NUMBER">%d</xliff:g> (na) natitirang pagsubok."</string>
