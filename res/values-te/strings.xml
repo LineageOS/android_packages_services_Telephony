@@ -96,7 +96,7 @@
     <string name="sum_loading_settings" msgid="434063780286688775">"సెట్టింగ్‌లను లోడ్ చేస్తోంది…"</string>
     <string name="sum_hide_caller_id" msgid="131100328602371933">"అవుట్‌గోయింగ్ కాల్స్‌లో నంబర్ దాచబడుతుంది"</string>
     <string name="sum_show_caller_id" msgid="3571854755324664591">"అవుట్‌గోయింగ్ కాల్స్‌లో నంబర్ ప్రదర్శించబడుతుంది"</string>
-    <string name="sum_default_caller_id" msgid="1767070797135682959">"అవుట్‌గోయింగ్ కాల్స్‌లో నా నంబర్‌ను ప్రదర్శించడానికి ఆటోమేటిక్ ఆపరేటర్ సెట్టింగ్‌లను ఉపయోగించు"</string>
+    <string name="sum_default_caller_id" msgid="1767070797135682959">"అవుట్‌గోయింగ్ కాల్స్‌లో నా నంబర్‌ను ప్రదర్శించడానికి ఆటోమేటిక్ ఆపరేటర్ సెట్టింగ్‌లను ఉపయోగించండి"</string>
     <string name="labelCW" msgid="8449327023861428622">"కాల్ నిరీక్షణ"</string>
     <string name="sum_cw_enabled" msgid="3977308526187139996">"కాల్ సమయంలో, ఇన్‌కమింగ్ కాల్స్‌ల గురించి నాకు తెలియజేయి"</string>
     <string name="sum_cw_disabled" msgid="3658094589461768637">"కాల్ సమయంలో, ఇన్‌కమింగ్ కాల్స్‌ల గురించి నాకు తెలియజేయి"</string>
@@ -104,7 +104,7 @@
     <string name="call_forwarding_settings_with_label" msgid="2345432813399564272">"కాల్ ఫార్వార్డింగ్ సెట్టింగ్‌లు (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCF" msgid="3578719437928476078">"కాల్ ఫార్వార్డింగ్"</string>
     <string name="labelCFU" msgid="8870170873036279706">"ఎల్లప్పుడూ ఫార్వర్డ్ చేయి"</string>
-    <string name="messageCFU" msgid="1361806450979589744">"ఎల్లప్పుడూ ఈ నంబర్‌ను ఉపయోగించు"</string>
+    <string name="messageCFU" msgid="1361806450979589744">"ఎల్లప్పుడూ ఈ నంబర్‌ను ఉపయోగించండి"</string>
     <string name="sum_cfu_enabled_indicator" msgid="9030139213402432776">"అన్ని కాల్స్‌ను ఫార్వర్డ్ చేస్తోంది"</string>
     <string name="sum_cfu_enabled" msgid="5806923046528144526">"అన్ని కాల్స్‌ను <xliff:g id="PHONENUMBER">{0}</xliff:g>కి ఫార్వర్డ్ చేస్తోంది"</string>
     <string name="sum_cfu_enabled_no_number" msgid="7287752761743377930">"నంబర్ అందుబాటులో లేదు"</string>
@@ -273,7 +273,7 @@
     <string name="network_operator_category" msgid="4992217193732304680">"నెట్‌వర్క్"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="4213420368777080540">"మెరుగుపరిచిన 4G LTE మోడ్"</string>
     <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (7240155150166394308) -->
-    <string name="enhanced_4g_lte_mode_summary" msgid="7725708511804143638">"వాయిస్, ఇతర కమ్యూనికే. మెరుగుపరచడానికి LTE సేవలను ఉపయోగించు (సిఫార్సు చేయబడింది)"</string>
+    <string name="enhanced_4g_lte_mode_summary" msgid="7725708511804143638">"వాయిస్, ఇతర కమ్యూనికే. మెరుగుపరచడానికి LTE సేవలను ఉపయోగించండి (సిఫార్సు చేయబడింది)"</string>
     <string name="enhanced_4g_lte_mode_summary_o2" msgid="2521108446409016542">"వాయిస్, ఇతర కమ్యూనికేషన్‌లను మెరుగుపరచడానికి 4G సేవలను ఉపయోగించండి (సిఫార్సు చేయబడింది)"</string>
     <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:0 (2943982616649705147) -->
     <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:1 (5262249464504131443) -->
@@ -465,7 +465,7 @@
     <string name="get_pin2" msgid="4221654606863196332">"PIN2ని టైప్ చేయండి"</string>
     <string name="name" msgid="1347432469852527784">"పేరు"</string>
     <string name="number" msgid="1564053487748491000">"నంబర్"</string>
-    <string name="save" msgid="983805790346099749">"సేవ్ చేయి"</string>
+    <string name="save" msgid="983805790346099749">"సేవ్ చేయండి"</string>
     <string name="add_fdn_contact" msgid="1169713422306640887">"ఫిక్స్‌డ్ డయలింగ్ నంబర్‌ను జోడించండి"</string>
     <string name="adding_fdn_contact" msgid="3112531600824361259">"ఫిక్స్‌డ్ డయలింగ్ నంబర్‌ను జోడిస్తోంది..."</string>
     <string name="fdn_contact_added" msgid="2840016151693394596">"ఫిక్స్‌డ్ డయలింగ్ నంబర్ జోడించబడింది."</string>
