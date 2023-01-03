@@ -563,6 +563,7 @@ public class TelephonyConnectionService extends ConnectionService {
                             c.removeTelephonyConnectionListener(mNormalCallConnectionListener);
                             mDomainSelectionConnection.finishSelection();
                             mDomainSelectionConnection = null;
+                            mNormalCallConnection = null;
                         }
                     }
                 }
