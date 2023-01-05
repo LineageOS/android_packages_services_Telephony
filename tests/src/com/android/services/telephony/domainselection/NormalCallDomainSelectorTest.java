@@ -31,7 +31,9 @@ import android.content.Context;
 import android.os.CancellationSignal;
 import android.os.HandlerThread;
 import android.os.Looper;
+import android.os.PersistableBundle;
 import android.telephony.AccessNetworkConstants;
+import android.telephony.CarrierConfigManager;
 import android.telephony.DisconnectCause;
 import android.telephony.DomainSelectionService;
 import android.telephony.DomainSelector;
@@ -75,6 +77,7 @@ public class NormalCallDomainSelectorTest {
     private NormalCallDomainSelector mNormalCallDomainSelector;
 
     @Mock private Context mMockContext;
+    @Mock private CarrierConfigManager mMockCarrierConfigMgr;
     @Mock private ImsManager mMockImsManager;
     @Mock private ImsMmTelManager mMockMmTelManager;
     @Mock private ImsStateTracker mMockImsStateTracker;
@@ -83,10 +86,17 @@ public class NormalCallDomainSelectorTest {
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
+
         doReturn(Context.TELEPHONY_IMS_SERVICE).when(mMockContext)
                 .getSystemServiceName(ImsManager.class);
         doReturn(mMockImsManager).when(mMockContext)
                 .getSystemService(Context.TELEPHONY_IMS_SERVICE);
+
+        doReturn(Context.CARRIER_CONFIG_SERVICE).when(mMockContext)
+                .getSystemServiceName(CarrierConfigManager.class);
+        doReturn(mMockCarrierConfigMgr).when(mMockContext)
+                .getSystemService(Context.CARRIER_CONFIG_SERVICE);
+
         doReturn(mMockMmTelManager).when(mMockImsManager).getImsMmTelManager(SUB_ID_1);
         doReturn(mMockMmTelManager).when(mMockImsManager).getImsMmTelManager(SUB_ID_2);
         doNothing().when(mMockImsStateTracker).removeServiceStateListener(any());
@@ -308,6 +318,49 @@ public class NormalCallDomainSelectorTest {
         initialize(serviceState, true, true, true, true);
         mNormalCallDomainSelector.selectDomain(attributes, transportSelectorCallback);
         assertTrue(transportSelectorCallback.verifyOnWlanSelected());
+    }
+
+    @Test
+    public void testWPSCallDomainSelection() {
+        MockTransportSelectorCallback transportSelectorCallback =
+                new MockTransportSelectorCallback();
+        DomainSelectionService.SelectionAttributes attributes =
+                new DomainSelectionService.SelectionAttributes.Builder(
+                        SLOT_ID, SUB_ID_1, SELECTOR_TYPE_CALLING)
+                        .setNumber("*272121")
+                        .setCallId(TEST_CALLID)
+                        .setEmergency(false)
+                        .setVideoCall(false)
+                        .setExitedFromAirplaneMode(false)
+                        .build();
+
+        //Case 1: WPS not supported by IMS
+        PersistableBundle config = new PersistableBundle();
+        config.putBoolean(CarrierConfigManager.KEY_SUPPORT_WPS_OVER_IMS_BOOL, false);
+        doReturn(config).when(mMockCarrierConfigMgr).getConfigForSubId(SUB_ID_1);
+        ServiceState serviceState = new ServiceState();
+        serviceState.setState(ServiceState.STATE_IN_SERVICE);
+        initialize(serviceState, true, true, true, true);
+        mNormalCallDomainSelector.selectDomain(attributes, transportSelectorCallback);
+        assertTrue(transportSelectorCallback.verifyOnWwanSelected());
+        assertTrue(transportSelectorCallback
+                .verifyOnDomainSelected(NetworkRegistrationInfo.DOMAIN_CS));
+
+        //Case 2: WPS supported by IMS and WLAN registered
+        config.putBoolean(CarrierConfigManager.KEY_SUPPORT_WPS_OVER_IMS_BOOL, true);
+        serviceState.setState(ServiceState.STATE_IN_SERVICE);
+        initialize(serviceState, true, true, true, true);
+        mNormalCallDomainSelector.selectDomain(attributes, transportSelectorCallback);
+        assertTrue(transportSelectorCallback.verifyOnWlanSelected());
+
+        //Case 2: WPS supported by IMS and LTE registered
+        config.putBoolean(CarrierConfigManager.KEY_SUPPORT_WPS_OVER_IMS_BOOL, true);
+        serviceState.setState(ServiceState.STATE_IN_SERVICE);
+        initialize(serviceState, true, false, true, true);
+        mNormalCallDomainSelector.selectDomain(attributes, transportSelectorCallback);
+        assertTrue(transportSelectorCallback.verifyOnWwanSelected());
+        assertTrue(transportSelectorCallback
+                .verifyOnDomainSelected(NetworkRegistrationInfo.DOMAIN_PS));
     }
 
     static class MockTransportSelectorCallback implements TransportSelectorCallback,
