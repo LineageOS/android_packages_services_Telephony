@@ -65,7 +65,6 @@ import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.SubscriptionInfoUpdater;
 import com.android.internal.telephony.TelephonyPermissions;
-import com.android.internal.telephony.subscription.SubscriptionManagerService;
 import com.android.internal.telephony.util.ArrayUtils;
 import com.android.internal.util.IndentingPrintWriter;
 import com.android.telephony.Rlog;
@@ -310,7 +309,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                             // smoothly.
                             mConfigFromDefaultApp[phoneId] = new PersistableBundle();
                             // Send broadcast if bind fails.
-                            updateSubscriptionDatabase(phoneId);
+                            notifySubscriptionInfoUpdater(phoneId);
                             // TODO: We *must* call unbindService even if bindService returns false.
                             // (And possibly if SecurityException was thrown.)
                             loge("binding to default app: "
@@ -345,7 +344,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                                     if (resultCode == RESULT_ERROR || resultData == null) {
                                         // On error, abort config fetching.
                                         loge("Failed to get carrier config");
-                                        updateSubscriptionDatabase(phoneId);
+                                        notifySubscriptionInfoUpdater(phoneId);
                                         return;
                                     }
                                     PersistableBundle config =
@@ -394,7 +393,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                     }
                     // Put a stub bundle in place so that the rest of the logic continues smoothly.
                     mConfigFromDefaultApp[phoneId] = new PersistableBundle();
-                    updateSubscriptionDatabase(phoneId);
+                    notifySubscriptionInfoUpdater(phoneId);
                     break;
                 }
 
@@ -410,7 +409,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                         logd("Found carrier config app: " + carrierPackageName);
                         sendMessage(obtainMessage(EVENT_DO_FETCH_CARRIER, phoneId, -1));
                     } else {
-                        updateSubscriptionDatabase(phoneId);
+                        notifySubscriptionInfoUpdater(phoneId);
                     }
                     break;
                 }
@@ -444,7 +443,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                             // Send broadcast if bind fails.
                             broadcastConfigChangedIntent(phoneId);
                             loge("Bind to carrier app: " + carrierPackageName + " fails");
-                            updateSubscriptionDatabase(phoneId);
+                            notifySubscriptionInfoUpdater(phoneId);
                         }
                     }
                     break;
@@ -477,7 +476,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                                         loge("Failed to get carrier config from carrier app: "
                                                 + getCarrierPackageForPhoneId(phoneId));
                                         broadcastConfigChangedIntent(phoneId);
-                                        updateSubscriptionDatabase(phoneId);
+                                        notifySubscriptionInfoUpdater(phoneId);
                                         return;
                                     }
                                     PersistableBundle config =
@@ -534,7 +533,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                     }
                     // Put a stub bundle in place so that the rest of the logic continues smoothly.
                     mConfigFromCarrierApp[phoneId] = new PersistableBundle();
-                    updateSubscriptionDatabase(phoneId);
+                    notifySubscriptionInfoUpdater(phoneId);
                     break;
                 }
                 case EVENT_FETCH_CARRIER_DONE: {
@@ -544,7 +543,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                             && mServiceConnection[phoneId] == null) {
                         break;
                     }
-                    updateSubscriptionDatabase(phoneId);
+                    notifySubscriptionInfoUpdater(phoneId);
                     break;
                 }
 
@@ -697,8 +696,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
      */
     @VisibleForTesting
     /* package */ CarrierConfigLoader(@NonNull Context context,
-            //TODO: Remove SubscriptionInfoUpdater.
-            @Nullable SubscriptionInfoUpdater subscriptionInfoUpdater, @NonNull Looper looper) {
+            @NonNull SubscriptionInfoUpdater subscriptionInfoUpdater, @NonNull Looper looper) {
         mContext = context;
         mPlatformCarrierConfigPackage =
                 mContext.getString(R.string.platform_carrier_config_package);
@@ -776,17 +774,17 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         }
     }
 
-    private void updateSubscriptionDatabase(int phoneId) {
-        String configPackageName;
+    private void notifySubscriptionInfoUpdater(int phoneId) {
+        String configPackagename;
         PersistableBundle configToSend;
         int carrierId = getSpecificCarrierIdForPhoneId(phoneId);
         // Prefer the carrier privileged carrier app, but if there is not one, use the platform
         // default carrier app.
         if (mConfigFromCarrierApp[phoneId] != null) {
-            configPackageName = getCarrierPackageForPhoneId(phoneId);
+            configPackagename = getCarrierPackageForPhoneId(phoneId);
             configToSend = mConfigFromCarrierApp[phoneId];
         } else {
-            configPackageName = mPlatformCarrierConfigPackage;
+            configPackagename = mPlatformCarrierConfigPackage;
             configToSend = mConfigFromDefaultApp[phoneId];
         }
 
@@ -801,16 +799,9 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
             configToSend.putAll(config);
         }
 
-        if (PhoneFactory.isSubscriptionManagerServiceEnabled()) {
-            SubscriptionManagerService.getInstance().updateSubscriptionByCarrierConfig(
-                    phoneId, configPackageName, configToSend,
-                    () -> mHandler.obtainMessage(EVENT_SUBSCRIPTION_INFO_UPDATED, phoneId, -1)
-                            .sendToTarget());
-        } else {
-            mSubscriptionInfoUpdater.updateSubscriptionByCarrierConfigAndNotifyComplete(
-                    phoneId, configPackageName, configToSend,
-                    mHandler.obtainMessage(EVENT_SUBSCRIPTION_INFO_UPDATED, phoneId, -1));
-        }
+        mSubscriptionInfoUpdater.updateSubscriptionByCarrierConfigAndNotifyComplete(
+                phoneId, configPackagename, configToSend,
+                mHandler.obtainMessage(EVENT_SUBSCRIPTION_INFO_UPDATED, phoneId, -1));
     }
 
     private void broadcastConfigChangedIntent(int phoneId) {
@@ -1443,7 +1434,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                     fileToDelete.delete();
                 }
             }
-            updateSubscriptionDatabase(phoneId);
+            notifySubscriptionInfoUpdater(phoneId);
         });
     }
 
