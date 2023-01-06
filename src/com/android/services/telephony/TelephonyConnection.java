@@ -823,6 +823,7 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
     private RttTextStream mRttTextStream = null;
 
     private boolean mWasImsConnection;
+    private boolean mWasCrossSim;
 
     /**
      * Tracks the multiparty state of the ImsCall so that changes in the bit state can be detected.
@@ -2372,6 +2373,16 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
                             || mOriginalConnectionExtras.containsKey(
                                 ImsCallProfile.EXTRA_CONFERENCE_AVAIL)) {
                         updateConnectionCapabilities();
+                    }
+                    // If extras contain or contained Cross Sim information,
+                    // then ensure connection properties are updated and propagated to Telecom.
+                    // Also, update the status hints in the case the call has
+                    // has moved from cross sim call back to wifi
+                    mWasCrossSim |= mOriginalConnectionExtras.containsKey(
+                                ImsCallProfile.EXTRA_IS_CROSS_SIM_CALL);
+                    if (mWasCrossSim) {
+                        updateStatusHints();
+                        updateConnectionProperties();
                     }
                 } else {
                     Log.d(this, "Extras update not required");
