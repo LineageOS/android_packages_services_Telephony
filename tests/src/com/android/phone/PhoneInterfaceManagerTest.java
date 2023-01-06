@@ -149,6 +149,7 @@ public class PhoneInterfaceManagerTest extends TelephonyTestBase {
 
     @Test
     public void setNullCipherAndIntegrityEnabled_successfullyEnable() {
+        whenModemSupportsNullCiphers();
         doReturn(201).when(mPhoneInterfaceManager).getHalVersion(anyInt());
         doNothing().when(mPhoneInterfaceManager).enforceModifyPermission();
         assertFalse(mSharedPreferences.contains(Phone.PREF_NULL_CIPHER_AND_INTEGRITY_ENABLED));
@@ -161,6 +162,7 @@ public class PhoneInterfaceManagerTest extends TelephonyTestBase {
 
     @Test
     public void setNullCipherAndIntegrityEnabled_successfullyDisable() {
+        whenModemSupportsNullCiphers();
         doReturn(201).when(mPhoneInterfaceManager).getHalVersion(anyInt());
         doNothing().when(mPhoneInterfaceManager).enforceModifyPermission();
         assertFalse(mSharedPreferences.contains(Phone.PREF_NULL_CIPHER_AND_INTEGRITY_ENABLED));
@@ -194,10 +196,10 @@ public class PhoneInterfaceManagerTest extends TelephonyTestBase {
 
     @Test
     public void isNullCipherAndIntegrityPreferenceEnabled() {
+        whenModemSupportsNullCiphers();
         doReturn(201).when(mPhoneInterfaceManager).getHalVersion(anyInt());
         doNothing().when(mPhoneInterfaceManager).enforceModifyPermission();
 
-        assertTrue(mPhoneInterfaceManager.isNullCipherAndIntegrityPreferenceEnabled());
         mPhoneInterfaceManager.setNullCipherAndIntegrityEnabled(false);
         assertFalse(
                 mSharedPreferences.getBoolean(Phone.PREF_NULL_CIPHER_AND_INTEGRITY_ENABLED, true));
@@ -215,6 +217,18 @@ public class PhoneInterfaceManagerTest extends TelephonyTestBase {
     }
 
     @Test
+    public void isNullCipherAndIntegrityPreferenceEnabled_lackingModemSupport() {
+        whenModemDoesNotSupportNullCiphers();
+        doReturn(201).when(mPhoneInterfaceManager).getHalVersion(anyInt());
+        doNothing().when(mPhoneInterfaceManager).enforceModifyPermission();
+
+        assertThrows(UnsupportedOperationException.class, () -> {
+            mPhoneInterfaceManager.isNullCipherAndIntegrityPreferenceEnabled();
+        });
+
+    }
+
+    @Test
     public void isNullCipherAndIntegrityPreferenceEnabled_lackingPermissions() {
         doReturn(201).when(mPhoneInterfaceManager).getHalVersion(anyInt());
         doThrow(SecurityException.class).when(mPhoneInterfaceManager).enforceReadPermission();
@@ -222,5 +236,17 @@ public class PhoneInterfaceManagerTest extends TelephonyTestBase {
         assertThrows(SecurityException.class, () -> {
             mPhoneInterfaceManager.isNullCipherAndIntegrityPreferenceEnabled();
         });
+    }
+
+    private void whenModemDoesNotSupportNullCiphers() {
+        doReturn(false).when(mPhone).isNullCipherAndIntegritySupported();
+        doReturn(mPhone).when(
+                mPhoneInterfaceManager).getDefaultPhone();
+    }
+
+    private void whenModemSupportsNullCiphers() {
+        doReturn(true).when(mPhone).isNullCipherAndIntegritySupported();
+        doReturn(mPhone).when(
+                mPhoneInterfaceManager).getDefaultPhone();
     }
 }
