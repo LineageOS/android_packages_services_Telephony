@@ -862,6 +862,7 @@
     <string name="radioInfo_data_connected" msgid="7637335645634239508">"Холбогдсон"</string>
     <string name="radioInfo_data_suspended" msgid="8695262782642002785">"Түр хаасан"</string>
     <string name="radioInfo_unknown" msgid="5401423738500672850">"Тодорхойгүй"</string>
+    <string name="radioInfo_imei_primary" msgid="5948747378637224400">"Үндсэн"</string>
     <string name="radioInfo_display_packets" msgid="6794302192441084157">"pkts"</string>
     <string name="radioInfo_display_bytes" msgid="7701006329222413797">"байт"</string>
     <string name="radioInfo_display_dbm" msgid="7491944975710865703">"dBm"</string>
