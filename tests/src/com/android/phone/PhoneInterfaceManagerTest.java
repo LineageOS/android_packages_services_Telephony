@@ -16,6 +16,7 @@
 
 package com.android.phone;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
@@ -35,6 +36,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+
+import java.util.Locale;
 
 /**
  * Unit Test for CarrierConfigLoader.
@@ -54,6 +58,7 @@ public class PhoneInterfaceManagerTest extends TelephonyTestBase {
     @UiThreadTest
     public void setUp() throws Exception {
         super.setUp();
+        MockitoAnnotations.initMocks(this);
         doReturn(mPackageManager).when(mPhoneGlobals).getPackageManager();
         doReturn(false).when(mPackageManager).hasSystemFeature(
                 PackageManager.FEATURE_TELEPHONY_IMS);
@@ -82,5 +87,20 @@ public class PhoneInterfaceManagerTest extends TelephonyTestBase {
         verify(mPhone, never()).loadAllowedNetworksFromSubscriptionDatabase();
         verify(mPhone, never()).setAllowedNetworkTypes(
                 TelephonyManager.ALLOWED_NETWORK_TYPES_REASON_USER, defaultNetworkType, null);
+    }
+
+    @Test
+    public void matchLocaleFromSupportedLocaleList_inputLocaleChangeToSupportedLocale() {
+        // Input zh-TW, then look up the matched supported locale, zh-Hant-TW, instead.
+        String result1 = mPhoneInterfaceManager.matchLocaleFromSupportedLocaleList(
+                Locale.forLanguageTag("zh-TW"));
+
+        assertEquals(result1, "zh-Hant-TW");
+
+        // Input ff-BF, then find the matched supported locale, ff-Latn-BF, instead.
+        String result2 = mPhoneInterfaceManager.matchLocaleFromSupportedLocaleList(
+                Locale.forLanguageTag("ff-BF"));
+
+        assertEquals(result2, "ff-Latn-BF");
     }
 }

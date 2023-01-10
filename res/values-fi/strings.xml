@@ -893,8 +893,8 @@
     <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"Ohita verkon tyyppi:"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"Valitse puhelimen hakemisto"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"Aseta ensisijainen verkon tyyppi:"</string>
-    <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"Ping-kutsu isäntänimelle (www.google.com), IPv4:"</string>
-    <string name="radio_info_ping_hostname_v6" msgid="2748637889486554603">"Ping-kutsu isäntänimelle (www.google.com), IPv6:"</string>
+    <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"Ping isäntänimelle (www.google.com), IPv4:"</string>
+    <string name="radio_info_ping_hostname_v6" msgid="2748637889486554603">"Ping isäntänimelle (www.google.com), IPv6:"</string>
     <string name="radio_info_http_client_test" msgid="1329583721088428238">"HTTP-asiakastesti:"</string>
     <string name="ping_test_label" msgid="448617502935719694">"Suorita ping-testi"</string>
     <string name="radio_info_smsc_label" msgid="3749927072726033763">"SMSC:"</string>
