@@ -2429,7 +2429,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         return mTelephonySharedPreferences;
     }
 
-    private Phone getDefaultPhone() {
+    /**
+     * Get the default phone for this device.
+     */
+    @VisibleForTesting
+    public Phone getDefaultPhone() {
         Phone thePhone = getPhone(getDefaultSubscription());
         return (thePhone != null) ? thePhone : PhoneFactory.getDefaultPhone();
     }
@@ -11742,6 +11746,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         if (getHalVersion(HAL_SERVICE_NETWORK) < MIN_NULL_CIPHER_AND_INTEGRITY_VERSION) {
             throw new UnsupportedOperationException(
                     "Null cipher and integrity operations require HAL 2.1 or above");
+        }
+        if (!getDefaultPhone().isNullCipherAndIntegritySupported()) {
+            throw new UnsupportedOperationException(
+                    "Null cipher and integrity operations unsupported by modem");
         }
     }
 
