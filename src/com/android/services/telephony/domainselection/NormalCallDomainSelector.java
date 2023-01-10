@@ -215,6 +215,12 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
         }
     }
 
+    private boolean isOutOfService() {
+        return (mServiceState.getState() == ServiceState.STATE_OUT_OF_SERVICE
+                || mServiceState.getState() == ServiceState.STATE_POWER_OFF
+                || mServiceState.getState() == ServiceState.STATE_EMERGENCY_ONLY);
+    }
+
     private synchronized void selectDomain() {
         if (mStopDomainSelection || mSelectionAttributes == null
                 || mTransportSelectorCallback == null) {
@@ -225,12 +231,6 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
         if (mServiceState == null) {
             logd("Waiting for ServiceState callback.");
             return;
-        } else if (mServiceState.getState() == ServiceState.STATE_OUT_OF_SERVICE
-                || mServiceState.getState() == ServiceState.STATE_POWER_OFF
-                || mServiceState.getState() == ServiceState.STATE_EMERGENCY_ONLY) {
-            loge("Cannot place call in current ServiceState: " + mServiceState.getState());
-            notifySelectionTerminated(DisconnectCause.OUT_OF_SERVICE);
-            return;
         }
 
         // Check if this is a re-dial scenario
@@ -240,8 +240,13 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
             logd("PsDisconnectCause:" + imsReasonInfo.mCode);
             mReselectDomain = false;
             if (imsReasonInfo.mCode == ImsReasonInfo.CODE_LOCAL_CALL_CS_RETRY_REQUIRED) {
-                logd("Redialing over CS");
-                notifyCsSelected();
+                if (isOutOfService()) {
+                    loge("Cannot place call in current ServiceState: " + mServiceState.getState());
+                    notifySelectionTerminated(DisconnectCause.OUT_OF_SERVICE);
+                } else {
+                    logd("Redialing over CS");
+                    notifyCsSelected();
+                }
                 return;
             } else {
                 logd("Redialing cancelled.");
@@ -269,7 +274,12 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
 
             if (!mImsStateTracker.isImsRegistered()) {
                 logd("IMS is NOT registered");
-                notifyCsSelected();
+                if (isOutOfService()) {
+                    loge("Cannot place call in current ServiceState: " + mServiceState.getState());
+                    notifySelectionTerminated(DisconnectCause.OUT_OF_SERVICE);
+                } else {
+                    notifyCsSelected();
+                }
                 return;
             }
 
@@ -289,11 +299,21 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
             } else {
                 logd("IMS is not voice capable");
                 // Voice call CS fallback
-                notifyCsSelected();
+                if (isOutOfService()) {
+                    loge("Cannot place call in current ServiceState: " + mServiceState.getState());
+                    notifySelectionTerminated(DisconnectCause.OUT_OF_SERVICE);
+                } else {
+                    notifyCsSelected();
+                }
             }
         } else {
             logd("IMS is not registered or unavailable");
-            notifyCsSelected();
+            if (isOutOfService()) {
+                loge("Cannot place call in current ServiceState: " + mServiceState.getState());
+                notifySelectionTerminated(DisconnectCause.OUT_OF_SERVICE);
+            } else {
+                notifyCsSelected();
+            }
         }
     }
 }

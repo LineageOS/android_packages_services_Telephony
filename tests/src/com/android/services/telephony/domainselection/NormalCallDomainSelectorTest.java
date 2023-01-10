@@ -238,10 +238,10 @@ public class NormalCallDomainSelectorTest {
                         .setVideoCall(true)
                         .setExitedFromAirplaneMode(false)
                         .build();
-        mNormalCallDomainSelector.selectDomain(attributes, transportSelectorCallback);
         ServiceState serviceState = new ServiceState();
         serviceState.setStateOutOfService();
-        mNormalCallDomainSelector.onServiceStateUpdated(serviceState);
+        initialize(serviceState, false, false, false, false);
+        mNormalCallDomainSelector.selectDomain(attributes, transportSelectorCallback);
         assertTrue(transportSelectorCallback
                 .verifyOnSelectionTerminated(DisconnectCause.OUT_OF_SERVICE));
     }
@@ -302,6 +302,12 @@ public class NormalCallDomainSelectorTest {
         assertTrue(transportSelectorCallback.verifyOnWwanSelected());
         assertTrue(transportSelectorCallback
                 .verifyOnDomainSelected(NetworkRegistrationInfo.DOMAIN_CS));
+
+        //Case 5: Backup calling
+        serviceState.setStateOutOfService();
+        initialize(serviceState, true, true, true, true);
+        mNormalCallDomainSelector.selectDomain(attributes, transportSelectorCallback);
+        assertTrue(transportSelectorCallback.verifyOnWlanSelected());
     }
 
     static class MockTransportSelectorCallback implements TransportSelectorCallback,
