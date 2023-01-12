@@ -773,6 +773,7 @@ public class ImsStateTracker {
             case ImsRegistrationImplBase.REGISTRATION_TECH_NR:
                 return AccessNetworkType.NGRAN;
             case ImsRegistrationImplBase.REGISTRATION_TECH_IWLAN:
+            case ImsRegistrationImplBase.REGISTRATION_TECH_CROSS_SIM:
                 return AccessNetworkType.IWLAN;
             default:
                 return AccessNetworkType.UNKNOWN;
