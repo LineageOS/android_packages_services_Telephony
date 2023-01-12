@@ -528,6 +528,14 @@ public class ImsStateTrackerTest {
         assertEquals(AccessNetworkType.IWLAN, mImsStateTracker.getImsAccessNetworkType());
 
         callback.onRegistered(new ImsRegistrationAttributes.Builder(
+                ImsRegistrationImplBase.REGISTRATION_TECH_CROSS_SIM).build());
+
+        assertFalse(mImsStateTracker.isImsStateReady());
+        assertTrue(mImsStateTracker.isImsRegistered());
+        assertTrue(mImsStateTracker.isImsRegisteredOverWlan());
+        assertEquals(AccessNetworkType.IWLAN, mImsStateTracker.getImsAccessNetworkType());
+
+        callback.onRegistered(new ImsRegistrationAttributes.Builder(
                 ImsRegistrationImplBase.REGISTRATION_TECH_NONE).build());
 
         assertFalse(mImsStateTracker.isImsStateReady());
@@ -535,7 +543,7 @@ public class ImsStateTrackerTest {
         assertFalse(mImsStateTracker.isImsRegisteredOverWlan());
         assertEquals(AccessNetworkType.UNKNOWN, mImsStateTracker.getImsAccessNetworkType());
 
-        verify(mImsStateListener, times(4)).onImsRegistrationStateChanged();
+        verify(mImsStateListener, times(5)).onImsRegistrationStateChanged();
     }
 
     @Test
