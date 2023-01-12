@@ -221,8 +221,14 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
 
     @Override
     public void reselectDomain(SelectionAttributes attr) {
-        logi("reselectDomain tryCsWhenPsFails=" + mTryCsWhenPsFails + ", attr=" + attr);
+        logi("reselectDomain attr=" + attr);
         mSelectionAttributes = attr;
+        post(() -> { reselectDomain(); });
+    }
+
+    private void reselectDomain() {
+        logi("reselectDomain tryCsWhenPsFails=" + mTryCsWhenPsFails);
+
         if (mTryCsWhenPsFails) {
             mTryCsWhenPsFails = false;
             mCsNetworkType = getSelectableCsNetworkType();
@@ -241,15 +247,19 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
 
         if (mLastTransportType == TRANSPORT_TYPE_WLAN) {
             // Dialing over Wi-Fi failed. Try scanning cellular networks.
-            onWwanSelected(() -> {
-                requestScan(true, false, true);
-                mDomainSelected = false;
-            });
+            onWwanSelected(this::reselectDomainInternal);
             return;
         }
 
         requestScan(true);
         mDomainSelected = false;
+    }
+
+    private void reselectDomainInternal() {
+        post(() -> {
+            requestScan(true, false, true);
+            mDomainSelected = false;
+        });
     }
 
     @Override
@@ -422,6 +432,10 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
     }
 
     private void selectDomainInternal() {
+        post(this::selectDomainFromInitialState);
+    }
+
+    private void selectDomainFromInitialState() {
         if (getImsNetworkTypeConfiguration().isEmpty()
                 || (mRequiresVoLteEnabled && !isAdvancedCallingSettingEnabled())) {
             // Emergency call over IMS is not supported.
@@ -896,6 +910,12 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
 
     private void onWlanSelected() {
         logi("onWlanSelected");
+        if (mLastTransportType == TRANSPORT_TYPE_WLAN) {
+            logi("onWlanSelected ignore duplicated callback");
+            return;
+        }
+
+        mDomainSelected = true;
         mLastTransportType = TRANSPORT_TYPE_WLAN;
         mVoWifiTrialCount++;
         mTransportSelectorCallback.onWlanSelected();
@@ -904,10 +924,8 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
 
     private void onWwanSelected(Runnable runnable) {
         logi("onWwanSelected");
-        if (mLastTransportType == TRANSPORT_TYPE_WWAN
-                && mWwanSelectorCallback != null) {
-            logi("onWwanSelected already notified");
-            runnable.run();
+        if (mLastTransportType == TRANSPORT_TYPE_WWAN) {
+            logi("onWwanSelected ignore duplicated callback");
             return;
         }
 
