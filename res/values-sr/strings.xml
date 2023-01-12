@@ -305,7 +305,7 @@
     <string name="carrier_settings_euicc_summary" msgid="2027941166597330117">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> – <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="7228249980933944101">"Мобилни подаци"</string>
     <string name="mobile_data_settings_summary" msgid="5012570152029118471">"Користи податке преко мобилне мреже"</string>
-    <string name="data_usage_disable_mobile" msgid="5669109209055988308">"Желите да искључите мобилне податке?"</string>
+    <string name="data_usage_disable_mobile" msgid="5669109209055988308">"Желите ли да искључите мобилне податке?"</string>
     <string name="sim_selection_required_pref" msgid="6985901872978341314">"Потребно је да изаберете нешто"</string>
     <string name="sim_change_data_title" msgid="9142726786345906606">"Да променимо SIM за податке?"</string>
     <string name="sim_change_data_message" msgid="3567358694255933280">"Желите ли да за мобилне податке користите <xliff:g id="NEW_SIM">%1$s</xliff:g> уместо <xliff:g id="OLD_SIM">%2$s</xliff:g>?"</string>
@@ -835,7 +835,6 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"Треба да рестартујте уређај да бисте променили ово подешавање."</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"Рестартуј"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"Откажи"</string>
-    <string name="removable_esim_string" msgid="7931369811671787649">"Подеси преносиви eSIM као подразумевани"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"Напајање за радио на мобилним уређајима"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"Прикажи адресар SIM-а"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"Прикажи бројеве за фиксно бирање"</string>
@@ -916,6 +915,9 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Информације о телефону"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Информације о додели мобилног оператера"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Покретање доделе мобилног оператера"</string>
+    <string name="provisioning_info_wfc_entitlement_id" msgid="8845188780811890910">"ИД права на WFC:"</string>
+    <string name="update_provisioning_info_wfc_entitlement_id" msgid="7044171908781134221">"Ажурирај"</string>
+    <string name="refresh_provisioning_info_wfc_entitlement_id" msgid="738894335351353407">"Освежи"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Bluetooth сигнал је слаб. Пробајте да пређете на спикерфон."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Обавештење о квалитету позива"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Застарели SIP налози"</string>

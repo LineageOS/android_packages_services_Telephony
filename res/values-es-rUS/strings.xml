@@ -34,7 +34,7 @@
     <string name="enter_input" msgid="6193628663039958990">"El mensaje USSD debe tener entre <xliff:g id="MIN_LEN">%1$d</xliff:g> y <xliff:g id="MAX_LEN">%2$d</xliff:g> caracteres. Vuelve a intentarlo."</string>
     <string name="manageConferenceLabel" msgid="8415044818156353233">"Administrar conferencia telefónica"</string>
     <string name="ok" msgid="7818974223666140165">"Aceptar"</string>
-    <string name="audio_mode_speaker" msgid="243689733219312360">"Bocina"</string>
+    <string name="audio_mode_speaker" msgid="243689733219312360">"Altavoz"</string>
     <string name="audio_mode_earpiece" msgid="2823700267171134282">"Auricular"</string>
     <string name="audio_mode_wired_headset" msgid="5028010823105817443">"Auriculares con cable"</string>
     <string name="audio_mode_bluetooth" msgid="25732183428018809">"Bluetooth"</string>
@@ -115,7 +115,7 @@
     <string name="sum_cfb_disabled" msgid="3589913334164866035">"Desactivado"</string>
     <string name="disable_cfb_forbidden" msgid="4831494744351633961">"Tu proveedor no admite la inhabilitación del desvío de llamadas cuando tu teléfono está ocupado."</string>
     <string name="labelCFNRy" msgid="3403533792248457946">"Cuando no haya respuesta"</string>
-    <string name="messageCFNRy" msgid="7644434155765359009">"Número cuando no hay respuesta"</string>
+    <string name="messageCFNRy" msgid="7644434155765359009">"Número cuando no contesta"</string>
     <string name="sum_cfnry_enabled" msgid="3000500837493854799">"Reenviar a <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfnry_disabled" msgid="1990563512406017880">"Desactivado"</string>
     <string name="disable_cfnry_forbidden" msgid="3174731413216550689">"Tu proveedor no admite la inhabilitación del desvío de llamadas cuando tu teléfono no responde."</string>
@@ -575,7 +575,7 @@
     <string name="fire_type_description" msgid="6565200468934914930">"Bomberos"</string>
     <string name="description_concat_format" msgid="2014471565101724088">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="1115266533703764049">"Utilizar teclado para marcar"</string>
-    <string name="onscreenHoldText" msgid="4025348842151665191">"Pausar"</string>
+    <string name="onscreenHoldText" msgid="4025348842151665191">"Retener"</string>
     <string name="onscreenEndCallText" msgid="6138725377654842757">"Finalizar"</string>
     <string name="onscreenShowDialpadText" msgid="658465753816164079">"Teclado telefónico"</string>
     <string name="onscreenMuteText" msgid="5470306116733843621">"Silenciar"</string>
@@ -835,7 +835,6 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"Debes reiniciar el dispositivo para cambiar este parámetro de configuración."</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"Reiniciar"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"Cancelar"</string>
-    <string name="removable_esim_string" msgid="7931369811671787649">"Establecer eSIM extraíble como predeterminada"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"Potencia de la señal móvil"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"Ver libreta de direcciones de SIM"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"Ver números de marcación fija"</string>
@@ -916,7 +915,10 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Información del teléfono"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Información del aprovisionamiento del proveedor"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Activar aprovisionamiento del proveedor"</string>
-    <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Tu señal de Bluetooth es débil. Intenta cambiar a la bocina."</string>
+    <string name="provisioning_info_wfc_entitlement_id" msgid="8845188780811890910">"ID de derecho de WFC:"</string>
+    <string name="update_provisioning_info_wfc_entitlement_id" msgid="7044171908781134221">"Actualizar"</string>
+    <string name="refresh_provisioning_info_wfc_entitlement_id" msgid="738894335351353407">"Actualizar"</string>
+    <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Tu señal de Bluetooth es débil. Intenta cambiar al altavoz."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Notificación de calidad de llamada"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Cuentas SIP obsoletas"</string>
 </resources>

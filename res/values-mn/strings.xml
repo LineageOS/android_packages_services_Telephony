@@ -534,7 +534,7 @@
     <string name="notification_voicemail_no_vm_number" msgid="3423686009815186750">"Дуут шуудангийн дугаар тодорхойгүй"</string>
     <string name="notification_network_selection_title" msgid="255595526707809121">"Үйлчилгээ байхгүй"</string>
     <string name="notification_network_selection_text" msgid="553288408722427659">"Сонгосон <xliff:g id="OPERATOR_NAME">%s</xliff:g> сүлжээг ашиглах боломжгүй"</string>
-    <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Дуудлага хийхийн тулд мобайл сүлжээг асаах, нислэгийн горим буюу батарей хэмнэх горимыг идэвхгүй болгоно уу."</string>
+    <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Дуудлага хийхийн тулд мобайл сүлжээг асаах, нислэгийн горим буюу батерей хэмнэх горимыг идэвхгүй болгоно уу."</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Дуудлага хийхийн тулд онгоцны горимыг унтраа."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Дуудлага хийхийн тулд онгоцны горимыг унтраа эсвэл утасгүй интернетэд холбогдоно уу."</string>
     <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"Утас хэт халуун байна"</b>\n\n"Энэ дуудлагыг гүйцээх боломжгүй. Та утсаа хөрсөн үед дахин оролдоно уу.\n\nТа яаралтай дуудлага хийх боломжтой хэвээр байна."</string>
@@ -835,7 +835,6 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"Та энэ тохиргоог өөрчлөхийн тулд төхөөрөмжөө дахин эхлүүлэх шаардлагатай."</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"Дахин эхлүүлэх"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"Цуцлах"</string>
-    <string name="removable_esim_string" msgid="7931369811671787649">"Салгах боломжтой eSIM-г өгөгдмөлөөр тохируулах"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"Мобайл радио цахилгаан"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"SIM хаягийн лавлахыг харах"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"Залгахаар тохируулсан дугаарыг харах"</string>
@@ -916,6 +915,9 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Утасны мэдээлэл"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Оператор компанийн хангалтын мэдээлэл"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Оператор компанийн хангалтыг эхлүүлэх"</string>
+    <string name="provisioning_info_wfc_entitlement_id" msgid="8845188780811890910">"WFC Entitlement ID:"</string>
+    <string name="update_provisioning_info_wfc_entitlement_id" msgid="7044171908781134221">"Шинэчлэх"</string>
+    <string name="refresh_provisioning_info_wfc_entitlement_id" msgid="738894335351353407">"Сэргээх"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Таны Bluetooth-н дохио сул байна. Чанга яригчтай утас руу сэлгэж үзнэ үү."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Дуудлагын чанарын мэдэгдэл"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"SIP-н зогсоосон бүртгэлүүд"</string>

@@ -835,7 +835,6 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"Vous devez redémarrer l\'appareil pour modifier ce paramètre."</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"Redémarrer"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"Annuler"</string>
-    <string name="removable_esim_string" msgid="7931369811671787649">"Définir l\'eSIM amovible comme SIM par défaut"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"Alimentation radio mobile"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"Afficher le carnet d\'adresses de la carte SIM"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"Afficher les numéros autorisés"</string>
@@ -916,6 +915,12 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Informations sur le téléphone"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Informations de gestion des comptes opérateur"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Déclencher la gestion des comptes opérateur"</string>
+    <!-- no translation found for provisioning_info_wfc_entitlement_id (8845188780811890910) -->
+    <skip />
+    <!-- no translation found for update_provisioning_info_wfc_entitlement_id (7044171908781134221) -->
+    <skip />
+    <!-- no translation found for refresh_provisioning_info_wfc_entitlement_id (738894335351353407) -->
+    <skip />
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Votre signal Bluetooth est faible. Essayez d\'utiliser le haut-parleur."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Notification concernant la qualité de l\'appel"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Comptes SIP obsolètes"</string>

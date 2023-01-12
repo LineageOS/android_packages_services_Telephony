@@ -24,7 +24,9 @@ import android.util.Log;
 
 import com.android.internal.telephony.PhoneConfigurationManager;
 
-import org.mockito.MockitoAnnotations;
+import org.junit.Rule;
+import org.mockito.junit.MockitoJUnit;
+import org.mockito.junit.MockitoRule;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Executor;
@@ -34,11 +36,11 @@ import java.util.concurrent.TimeUnit;
  * Helper class to load Mockito Resources into a test.
  */
 public class TelephonyTestBase {
+    @Rule public final MockitoRule mocks = MockitoJUnit.rule();
 
     protected TestContext mContext;
 
     public void setUp() throws Exception {
-        MockitoAnnotations.initMocks(this);
         mContext = spy(new TestContext());
         // Set up the looper if it does not exist on the test thread.
         if (Looper.myLooper() == null) {
