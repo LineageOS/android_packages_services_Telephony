@@ -903,6 +903,39 @@ public class EmergencyCallDomainSelectorTest {
         verify(mTransportSelectorCallback, times(1)).onWlanSelected();
     }
 
+    @Test
+    public void testIgnoreDuplicatedCallbacks() throws Exception {
+        createSelector(SLOT_0_SUB_ID);
+        unsolBarringInfoChanged(true);
+
+        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+                NetworkRegistrationInfo.DOMAIN_PS,
+                true, true, 0, 0, "", "");
+        SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
+        mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
+        processAllMessages();
+
+        bindImsService(true);
+
+        verify(mTransportSelectorCallback, times(1)).onWwanSelected(any());
+
+        // duplicated event
+        unsolBarringInfoChanged(true);
+
+        // ignore duplicated callback, no change in interaction
+        verify(mTransportSelectorCallback, times(1)).onWwanSelected(any());
+
+        mDomainSelector.handleMessage(mDomainSelector.obtainMessage(MSG_NETWORK_SCAN_TIMEOUT));
+
+        verify(mTransportSelectorCallback, times(1)).onWlanSelected();
+
+        // duplicated event
+        mDomainSelector.handleMessage(mDomainSelector.obtainMessage(MSG_NETWORK_SCAN_TIMEOUT));
+
+        // ignore duplicated callback, no change in interaction
+        verify(mTransportSelectorCallback, times(1)).onWlanSelected();
+    }
+
     private void createSelector(int subId) throws Exception {
         mDomainSelector = new EmergencyCallDomainSelector(
                 mContext, SLOT_0, subId, mHandlerThread.getLooper(),
@@ -913,10 +946,12 @@ public class EmergencyCallDomainSelectorTest {
     }
 
     private void verifyCsDialed() {
+        processAllMessages();
         verify(mWwanSelectorCallback, times(1)).onDomainSelected(eq(DOMAIN_CS));
     }
 
     private void verifyPsDialed() {
+        processAllMessages();
         verify(mWwanSelectorCallback, times(1)).onDomainSelected(eq(DOMAIN_PS));
     }
 
@@ -929,6 +964,7 @@ public class EmergencyCallDomainSelectorTest {
     }
 
     private void verifyScanPreferred(int scanType, int expectedPreferredAccessNetwork) {
+        processAllMessages();
         verify(mWwanSelectorCallback, times(1)).onRequestEmergencyNetworkScan(
                 any(), eq(scanType), any(), any());
         assertEquals(expectedPreferredAccessNetwork, (int) mAccessNetwork.get(0));
