@@ -70,7 +70,7 @@ import java.util.Map;
 
 @RunWith(AndroidJUnit4.class)
 public class SlicePurchaseControllerTest extends TelephonyTestBase {
-    private static final String TAG = "SlicePurchaseControllerTest";
+    private static final String CARRIER = "Some Carrier";
     private static final String DAILY_NOTIFICATION_COUNT_KEY = "daily_notification_count0";
     private static final String MONTHLY_NOTIFICATION_COUNT_KEY = "monthly_notification_count0";
     private static final int YEAR = 2000;
@@ -148,6 +148,7 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
         mSlicePurchaseController = spy(slicePurchaseController);
         doReturn(null).when(mSlicePurchaseController).createPendingIntent(
                 anyString(), anyInt(), anyBoolean());
+        doReturn(CARRIER).when(mSlicePurchaseController).getSimOperator();
         replaceInstance(SlicePurchaseController.class, "sInstances", mSlicePurchaseController,
                 Map.of(PHONE_ID, mSlicePurchaseController));
         replaceInstance(SlicePurchaseController.class, "mPremiumNetworkEntitlementApi",
@@ -272,8 +273,7 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
     @Test
     public void testPurchasePremiumCapabilityResultFeatureNotSupported() {
         mSlicePurchaseController.purchasePremiumCapability(
-                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, TAG,
-                mHandler.obtainMessage());
+                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, mHandler.obtainMessage());
         mTestableLooper.processAllMessages();
         assertEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_FEATURE_NOT_SUPPORTED,
                 mResult);
@@ -283,8 +283,7 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
                 .getCachedAllowedNetworkTypesBitmask();
 
         mSlicePurchaseController.purchasePremiumCapability(
-                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, TAG,
-                mHandler.obtainMessage());
+                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, mHandler.obtainMessage());
         mTestableLooper.processAllMessages();
         assertNotEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_FEATURE_NOT_SUPPORTED,
                 mResult);
@@ -296,8 +295,7 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
                 .getCachedAllowedNetworkTypesBitmask();
 
         mSlicePurchaseController.purchasePremiumCapability(
-                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, TAG,
-                mHandler.obtainMessage());
+                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, mHandler.obtainMessage());
         mTestableLooper.processAllMessages();
         assertEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_CARRIER_DISABLED, mResult);
 
@@ -308,8 +306,7 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
                 SlicePurchaseController.SLICE_PURCHASE_TEST_FILE);
 
         mSlicePurchaseController.purchasePremiumCapability(
-                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, TAG,
-                mHandler.obtainMessage());
+                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, mHandler.obtainMessage());
         mTestableLooper.processAllMessages();
         assertNotEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_CARRIER_DISABLED,
                 mResult);
@@ -325,8 +322,7 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
                 SlicePurchaseController.SLICE_PURCHASE_TEST_FILE);
 
         mSlicePurchaseController.purchasePremiumCapability(
-                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, TAG,
-                mHandler.obtainMessage());
+                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, mHandler.obtainMessage());
         mTestableLooper.processAllMessages();
         assertEquals(
                 TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_NOT_DEFAULT_DATA_SUBSCRIPTION,
@@ -336,8 +332,7 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
         doReturn(SubscriptionManager.getDefaultDataSubscriptionId()).when(mPhone).getSubId();
 
         mSlicePurchaseController.purchasePremiumCapability(
-                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, TAG,
-                mHandler.obtainMessage());
+                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, mHandler.obtainMessage());
         mTestableLooper.processAllMessages();
         assertNotEquals(
                 TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_NOT_DEFAULT_DATA_SUBSCRIPTION,
@@ -355,8 +350,7 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
         doReturn(SubscriptionManager.getDefaultDataSubscriptionId()).when(mPhone).getSubId();
 
         mSlicePurchaseController.purchasePremiumCapability(
-                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, TAG,
-                mHandler.obtainMessage());
+                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, mHandler.obtainMessage());
         mTestableLooper.processAllMessages();
         assertEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_NETWORK_NOT_AVAILABLE,
                 mResult);
@@ -365,8 +359,7 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
         doReturn(TelephonyManager.NETWORK_TYPE_NR).when(mServiceState).getDataNetworkType();
 
         mSlicePurchaseController.purchasePremiumCapability(
-                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, TAG,
-                mHandler.obtainMessage());
+                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, mHandler.obtainMessage());
         mTestableLooper.processAllMessages();
         assertNotEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_NETWORK_NOT_AVAILABLE,
                 mResult);
@@ -385,8 +378,7 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
         doReturn(null).when(mPremiumNetworkEntitlementApi).checkEntitlementStatus(anyInt());
 
         mSlicePurchaseController.purchasePremiumCapability(
-                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, TAG,
-                mHandler.obtainMessage());
+                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, mHandler.obtainMessage());
         mTestableLooper.processAllMessages();
         assertEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_ENTITLEMENT_CHECK_FAILED,
                 mResult);
@@ -398,8 +390,7 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
                 .checkEntitlementStatus(anyInt());
 
         mSlicePurchaseController.purchasePremiumCapability(
-                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, TAG,
-                mHandler.obtainMessage());
+                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, mHandler.obtainMessage());
         mTestableLooper.processAllMessages();
         assertEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_ALREADY_PURCHASED,
                 mResult);
@@ -409,8 +400,7 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
                 PremiumNetworkEntitlementResponse.PREMIUM_NETWORK_PROVISION_STATUS_IN_PROGRESS;
 
         mSlicePurchaseController.purchasePremiumCapability(
-                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, TAG,
-                mHandler.obtainMessage());
+                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, mHandler.obtainMessage());
         mTestableLooper.processAllMessages();
         assertEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_ALREADY_IN_PROGRESS,
                 mResult);
@@ -425,16 +415,14 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
                 PURCHASE_CONDITION_TIMEOUT);
 
         mSlicePurchaseController.purchasePremiumCapability(
-                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, TAG,
-                mHandler.obtainMessage());
+                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, mHandler.obtainMessage());
         mTestableLooper.processAllMessages();
         assertEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_ENTITLEMENT_CHECK_FAILED,
                 mResult);
 
         // retry to verify throttled
         mSlicePurchaseController.purchasePremiumCapability(
-                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, TAG,
-                mHandler.obtainMessage());
+                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, mHandler.obtainMessage());
         mTestableLooper.processAllMessages();
         assertEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_THROTTLED, mResult);
 
@@ -450,16 +438,14 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
         sendValidPurchaseRequest();
 
         mSlicePurchaseController.purchasePremiumCapability(
-                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, TAG,
-                mHandler.obtainMessage());
+                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, mHandler.obtainMessage());
         mTestableLooper.processAllMessages();
         assertEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_ALREADY_IN_PROGRESS,
                 mResult);
 
         // retry to verify same result
         mSlicePurchaseController.purchasePremiumCapability(
-                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, TAG,
-                mHandler.obtainMessage());
+                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, mHandler.obtainMessage());
         mTestableLooper.processAllMessages();
         assertEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_ALREADY_IN_PROGRESS,
                 mResult);
@@ -487,8 +473,7 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
         testPurchasePremiumCapabilityResultSuccess();
 
         mSlicePurchaseController.purchasePremiumCapability(
-                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, TAG,
-                mHandler.obtainMessage());
+                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, mHandler.obtainMessage());
         mTestableLooper.processAllMessages();
         assertEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_PENDING_NETWORK_SETUP,
                 mResult);
@@ -507,16 +492,14 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
         sendNetworkSlicingConfig(TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, true);
 
         mSlicePurchaseController.purchasePremiumCapability(
-                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, TAG,
-                mHandler.obtainMessage());
+                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, mHandler.obtainMessage());
         mTestableLooper.processAllMessages();
         assertEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_ALREADY_PURCHASED,
                 mResult);
 
         // retry to verify same result
         mSlicePurchaseController.purchasePremiumCapability(
-                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, TAG,
-                mHandler.obtainMessage());
+                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, mHandler.obtainMessage());
         mTestableLooper.processAllMessages();
         assertEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_ALREADY_PURCHASED,
                 mResult);
@@ -537,8 +520,7 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
 
         // retry to verify throttled
         mSlicePurchaseController.purchasePremiumCapability(
-                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, TAG,
-                mHandler.obtainMessage());
+                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, mHandler.obtainMessage());
         mTestableLooper.processAllMessages();
         assertEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_THROTTLED, mResult);
 
@@ -565,8 +547,7 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
 
         // retry to verify throttled
         mSlicePurchaseController.purchasePremiumCapability(
-                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, TAG,
-                mHandler.obtainMessage());
+                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, mHandler.obtainMessage());
         mTestableLooper.processAllMessages();
         assertEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_THROTTLED, mResult);
 
@@ -596,8 +577,7 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
 
         // retry to verify throttled
         mSlicePurchaseController.purchasePremiumCapability(
-                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, TAG,
-                mHandler.obtainMessage());
+                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, mHandler.obtainMessage());
         mTestableLooper.processAllMessages();
         assertEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_THROTTLED, mResult);
 
@@ -660,8 +640,7 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
 
         // retry to verify throttled
         mSlicePurchaseController.purchasePremiumCapability(
-                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, TAG,
-                mHandler.obtainMessage());
+                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, mHandler.obtainMessage());
         mTestableLooper.processAllMessages();
         assertEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_THROTTLED, mResult);
 
@@ -678,8 +657,7 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
 
         // retry to verify throttled
         mSlicePurchaseController.purchasePremiumCapability(
-                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, TAG,
-                mHandler.obtainMessage());
+                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, mHandler.obtainMessage());
         mTestableLooper.processAllMessages();
         assertEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_THROTTLED, mResult);
     }
@@ -741,8 +719,7 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
 
         // send purchase request
         mSlicePurchaseController.purchasePremiumCapability(
-                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, TAG,
-                mHandler.obtainMessage());
+                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, mHandler.obtainMessage());
         mTestableLooper.processAllMessages();
 
         // verify that the purchase request was sent successfully
