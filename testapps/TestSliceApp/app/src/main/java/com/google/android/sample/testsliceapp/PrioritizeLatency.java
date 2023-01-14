@@ -23,7 +23,7 @@ import static android.telephony.TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RES
 import static android.telephony.TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_FEATURE_NOT_SUPPORTED;
 import static android.telephony.TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_NETWORK_NOT_AVAILABLE;
 import static android.telephony.TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_NOT_DEFAULT_DATA_SUBSCRIPTION;
-import static android.telephony.TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_OVERRIDDEN;
+import static android.telephony.TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_NOT_FOREGROUND;
 import static android.telephony.TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_PENDING_NETWORK_SETUP;
 import static android.telephony.TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_SUCCESS;
 import static android.telephony.TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_THROTTLED;
@@ -271,8 +271,8 @@ public class PrioritizeLatency extends Fragment {
                 return "Already purchased";
             case PURCHASE_PREMIUM_CAPABILITY_RESULT_ALREADY_IN_PROGRESS:
                 return "Already in progress";
-            case PURCHASE_PREMIUM_CAPABILITY_RESULT_OVERRIDDEN:
-                return "Overridden";
+            case PURCHASE_PREMIUM_CAPABILITY_RESULT_NOT_FOREGROUND:
+                return "Not foreground";
             case PURCHASE_PREMIUM_CAPABILITY_RESULT_USER_CANCELED:
                 return "User canceled";
             case PURCHASE_PREMIUM_CAPABILITY_RESULT_CARRIER_DISABLED:
