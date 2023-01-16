@@ -40,6 +40,7 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.PersistableBundle;
 import android.provider.DeviceConfig;
+import android.sysprop.TelephonyProperties;
 import android.telephony.AnomalyReporter;
 import android.telephony.CarrierConfigManager;
 import android.telephony.SubscriptionManager;
@@ -204,11 +205,9 @@ public class SlicePurchaseController extends Handler {
     public static final String EXTRA_FAILURE_REASON =
             "com.android.phone.slice.extra.FAILURE_REASON";
     /**
-     * Extra for the application name requesting to purchase the premium capability
-     * from the slice purchase application.
+     * Extra for the user's carrier.
      */
-    public static final String EXTRA_REQUESTING_APP_NAME =
-            "com.android.phone.slice.extra.REQUESTING_APP_NAME";
+    public static final String EXTRA_CARRIER = "com.android.phone.slice.extra.CARRIER";
     /**
      * Extra for the canceled PendingIntent that the slice purchase application can send as a
      * response if the performance boost notification or WebView was canceled by the user.
@@ -497,11 +496,10 @@ public class SlicePurchaseController extends Handler {
                 break;
             }
             case EVENT_START_SLICE_PURCHASE_APP: {
-                int capability = msg.arg1;
-                String appName = (String) msg.obj;
-                logd("EVENT_START_SLICE_PURCHASE_APP: " + appName + " requests capability "
+                int capability = (int) msg.obj;
+                logd("EVENT_START_SLICE_PURCHASE_APP: "
                         + TelephonyManager.convertPremiumCapabilityToString(capability));
-                onStartSlicePurchaseApplication(capability, appName);
+                onStartSlicePurchaseApplication(capability);
                 break;
             }
             case EVENT_PURCHASE_TIMEOUT: {
@@ -565,13 +563,11 @@ public class SlicePurchaseController extends Handler {
      * Purchase the given premium capability from the carrier.
      *
      * @param capability The premium capability to purchase.
-     * @param appName The name of the application requesting premium capabilities.
      * @param onComplete The callback message to send when the purchase request is complete.
      */
     public synchronized void purchasePremiumCapability(
-            @TelephonyManager.PremiumCapability int capability, @NonNull String appName,
-            @NonNull Message onComplete) {
-        logd("purchasePremiumCapability: " + appName + " requests capability "
+            @TelephonyManager.PremiumCapability int capability, @NonNull Message onComplete) {
+        logd("purchasePremiumCapability: "
                 + TelephonyManager.convertPremiumCapabilityToString(capability));
         // Check whether the premium capability can be purchased.
         if (!arePremiumCapabilitiesSupportedByDevice()) {
@@ -627,8 +623,7 @@ public class SlicePurchaseController extends Handler {
         // All state checks passed. Mark purchase pending and start the slice purchase application.
         // Process through the handler since this method is synchronized.
         mPendingPurchaseCapabilities.put(capability, onComplete);
-        sendMessage(obtainMessage(EVENT_START_SLICE_PURCHASE_APP, capability, 0 /* unused */,
-                appName));
+        sendMessage(obtainMessage(EVENT_START_SLICE_PURCHASE_APP, capability));
     }
 
     private void sendPurchaseResult(@TelephonyManager.PremiumCapability int capability,
@@ -687,8 +682,8 @@ public class SlicePurchaseController extends Handler {
         }
     }
 
-    private void onStartSlicePurchaseApplication(@TelephonyManager.PremiumCapability int capability,
-            @NonNull String appName) {
+    private void onStartSlicePurchaseApplication(
+            @TelephonyManager.PremiumCapability int capability) {
         PremiumNetworkEntitlementResponse premiumNetworkEntitlementResponse =
                 mPremiumNetworkEntitlementApi.checkEntitlementStatus(capability);
 
@@ -721,7 +716,8 @@ public class SlicePurchaseController extends Handler {
         }
 
         String purchaseUrl = getPurchaseUrl(premiumNetworkEntitlementResponse);
-        if (TextUtils.isEmpty(purchaseUrl)) {
+        String carrier = getSimOperator();
+        if (TextUtils.isEmpty(purchaseUrl) || TextUtils.isEmpty(carrier)) {
             handlePurchaseResult(capability,
                     PURCHASE_PREMIUM_CAPABILITY_RESULT_CARRIER_DISABLED, false);
             return;
@@ -753,7 +749,7 @@ public class SlicePurchaseController extends Handler {
         intent.putExtra(EXTRA_SUB_ID, mPhone.getSubId());
         intent.putExtra(EXTRA_PREMIUM_CAPABILITY, capability);
         intent.putExtra(EXTRA_PURCHASE_URL, purchaseUrl);
-        intent.putExtra(EXTRA_REQUESTING_APP_NAME, appName);
+        intent.putExtra(EXTRA_CARRIER, carrier);
         intent.putExtra(EXTRA_INTENT_CANCELED, createPendingIntent(
                 ACTION_SLICE_PURCHASE_APP_RESPONSE_CANCELED, capability, false));
         intent.putExtra(EXTRA_INTENT_CARRIER_ERROR, createPendingIntent(
@@ -802,6 +798,20 @@ public class SlicePurchaseController extends Handler {
             }
         }
         return purchaseUrl;
+    }
+
+    /**
+     * Get the SIM operator. This is the carrier name from the SIM rather than from the network,
+     * which will be the same regardless of whether the user is roaming or not.
+     *
+     * @return The operator name from the SIM.
+     */
+    @VisibleForTesting
+    @Nullable public String getSimOperator() {
+        if (mPhone.getPhoneId() < TelephonyProperties.icc_operator_alpha().size()) {
+            return TelephonyProperties.icc_operator_alpha().get(mPhone.getPhoneId());
+        }
+        return null;
     }
 
     /**
@@ -1028,6 +1038,11 @@ public class SlicePurchaseController extends Handler {
     }
 
     private boolean isNetworkAvailable() {
+        if (mPhone.getServiceState().getDataRoaming()) {
+            logd("Network unavailable because it is roaming.");
+            return false;
+        }
+
         // TODO (b/251558673): Create a listener for data network type changed to dismiss
         //  notification and activity when the network is no longer available.
         switch (mPhone.getServiceState().getDataNetworkType()) {

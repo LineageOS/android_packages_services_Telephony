@@ -492,13 +492,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     private static final class PurchasePremiumCapabilityArgument {
         public @TelephonyManager.PremiumCapability int capability;
-        public @NonNull String appName;
         public @NonNull IIntegerConsumer callback;
 
         PurchasePremiumCapabilityArgument(@TelephonyManager.PremiumCapability int capability,
-                @NonNull String appName, @NonNull IIntegerConsumer callback) {
+                @NonNull IIntegerConsumer callback) {
             this.capability = capability;
-            this.appName = appName;
             this.callback = callback;
         }
     }
@@ -2182,7 +2180,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     PurchasePremiumCapabilityArgument arg =
                             (PurchasePremiumCapabilityArgument) request.argument;
                     SlicePurchaseController.getInstance(request.phone).purchasePremiumCapability(
-                            arg.capability, arg.appName, onCompleted);
+                            arg.capability, onCompleted);
                     break;
                 }
 
@@ -11519,8 +11517,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
 
         sendRequestAsync(CMD_PURCHASE_PREMIUM_CAPABILITY,
-                new PurchasePremiumCapabilityArgument(capability, callingProcess, callback), phone,
-                null);
+                new PurchasePremiumCapabilityArgument(capability, callback), phone, null);
     }
 
     /**
