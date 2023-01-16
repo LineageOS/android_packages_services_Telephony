@@ -68,7 +68,7 @@
     <string name="phone_accounts_make_sip_calls_with" msgid="4691221006731847255">"SIP чалууларын төмөнкү менен жасоо"</string>
     <string name="phone_accounts_ask_every_time" msgid="6192347582666047168">"Биринчи сурасын"</string>
     <string name="phone_accounts_default_account_label" msgid="5107598881335931101">"Тармак жок"</string>
-    <string name="phone_accounts_settings_header" msgid="6296501692964706536">"Жөндөөлөр"</string>
+    <string name="phone_accounts_settings_header" msgid="6296501692964706536">"Параметрлер"</string>
     <string name="phone_accounts_choose_accounts" msgid="4748805293314824974">"Аккаунттарды тандоо"</string>
     <string name="phone_accounts_selection_header" msgid="2945830843104108440">"Телефон каттоо эсептери"</string>
     <string name="phone_accounts_add_sip_account" msgid="1437634802033309305">"SIP аккаунтун кошуу"</string>
@@ -93,7 +93,7 @@
     <string name="sum_cdma_call_settings" msgid="3185825305136993636">"CDMA менен гана чалуунун кошумча жөндөөлөрү"</string>
     <string name="labelNwService" msgid="6015891883487125120">"Тармак кызматынын жөндөөлөрү"</string>
     <string name="labelCallerId" msgid="2090540744550903172">"Чалуучуну аныктоо"</string>
-    <string name="sum_loading_settings" msgid="434063780286688775">"Жөндөөлөр жүктөлүүдө…"</string>
+    <string name="sum_loading_settings" msgid="434063780286688775">"Параметрлер жүктөлүүдө…"</string>
     <string name="sum_hide_caller_id" msgid="131100328602371933">"Чыгуучу чалууларда номер жашырылган"</string>
     <string name="sum_show_caller_id" msgid="3571854755324664591">"Чыгуучу чалууларда көрсөтүлчү номер"</string>
     <string name="sum_default_caller_id" msgid="1767070797135682959">"Кимдир-бирөөгө чалып жатканда ага номерим көрүнүшү үчүн байланыш операторунун стандарттуу жөндөөлөрү колдонулат."</string>
@@ -133,11 +133,11 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"IMS платформасында CDMA чалуу күтүүcү өчүрүлгөн"</string>
     <string name="updating_title" msgid="6130548922615719689">"Чалуу жөндөөлөрү"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Чалуу жөндөөлөрүн администратор гана өзгөртө алат."</string>
-    <string name="call_settings_with_label" msgid="8460230435361579511">"Жөндөөлөр (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
+    <string name="call_settings_with_label" msgid="8460230435361579511">"Параметрлер (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Чалуу жөндөөлөрүндө ката кетти"</string>
-    <string name="reading_settings" msgid="1605904432450871183">"Жөндөөлөр окулууда…"</string>
-    <string name="updating_settings" msgid="3650396734816028808">"Жөндөөлөр жаңыртылууда…"</string>
-    <string name="reverting_settings" msgid="7378668837291012205">"Жөндөөлөр артка кайтарылууда…"</string>
+    <string name="reading_settings" msgid="1605904432450871183">"Параметрлер окулууда…"</string>
+    <string name="updating_settings" msgid="3650396734816028808">"Параметрлер жаңыртылууда…"</string>
+    <string name="reverting_settings" msgid="7378668837291012205">"Параметрлер артка кайтарылууда…"</string>
     <string name="response_error" msgid="3904481964024543330">"Тармактан күтүлбөгөн жооп алынды."</string>
     <string name="exception_error" msgid="330994460090467">"Тармак же SIM карта катасы."</string>
     <string name="stk_cc_ss_to_dial_error" msgid="5147693491690618704">"SS сурамы демейки чалууга өзгөртүлдү"</string>
@@ -901,7 +901,7 @@
     <string name="radio_info_smsc_update_label" msgid="5141996256097115753">"Жаңыртуу"</string>
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Жаңылоо"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"DNS текшерүүнү которуштуруу"</string>
-    <string name="oem_radio_info_label" msgid="2914167475119997456">"OEM\'ге тиешелүү Маалымат/Жөндөөлөр"</string>
+    <string name="oem_radio_info_label" msgid="2914167475119997456">"OEM\'ге тиешелүү Маалымат/Параметрлер"</string>
     <string name="radio_info_endc_available" msgid="2983767110681230019">"EN-DC жеткиликтүү (NSA):"</string>
     <string name="radio_info_dcnr_restricted" msgid="7147511536420148173">"DCNR чектелген (NSA):"</string>
     <string name="radio_info_nr_available" msgid="3383388088451237182">"NR жеткиликтүү (NSA):"</string>
