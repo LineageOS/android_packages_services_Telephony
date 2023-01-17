@@ -1,0 +1,4 @@
+{
+  "_comment": "Operator should register with its application package name, carrierId and all the corresponding  SHAIDs",
+  "_comment": "Example format :: << \"packageName\" : {\"carrierId\":<int>, \"callerSHA1Id\":[<SHAID1>, <SHAID2>]} >>"
+}
