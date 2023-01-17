@@ -2351,8 +2351,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         mRadioInterfaceCapabilities = RadioInterfaceCapabilityController.getInstance();
         mNotifyUserActivity = new AtomicBoolean(false);
         PropertyInvalidatedCache.invalidateCache(TelephonyManager.CACHE_KEY_PHONE_ACCOUNT_TO_SUBID);
-        mTelephony2gUpdater = new Telephony2gUpdater(
-                Executors.newSingleThreadExecutor(), mApp);
+        mTelephony2gUpdater = new Telephony2gUpdater(mApp);
         mTelephony2gUpdater.init();
         publish();
     }

@@ -30,8 +30,13 @@ import android.util.Log;
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.telephony.RILConstants;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 /**
  * A {@link BroadcastReceiver} that ensures that user restrictions are correctly applied to
@@ -39,27 +44,50 @@ import java.util.concurrent.Executor;
  * This includes handling broadcasts from user restriction state changes, as well as ensuring that
  * SIM-specific settings are correctly applied when new subscriptions become active.
  *
+ * <p>
  * Callers are expected to call {@code init()} and keep an instance of this class alive.
+ * </p>
  */
 public class Telephony2gUpdater extends BroadcastReceiver {
-    private static final String TAG = "TelephonyUserManagerReceiver";
+    private static final String TAG = "Telephony2gUpdater";
 
     // We can't interact with the HAL on the main thread of the phone process (where
     // receivers are run by default), so we execute our logic from a separate thread.
+    // The correctness of this implementation relies heavily on this executor ensuring
+    // tasks are serially executed i.e. ExecutorService.newSingleThreadExecutor()
     private final Executor mExecutor;
     private final Context mContext;
     private final long mBaseAllowedNetworks;
 
-    public Telephony2gUpdater(Executor executor, Context context) {
-        this(executor, context,
+    private UserManager mUserManager;
+    private TelephonyManager mTelephonyManager;
+    private SubscriptionManager mSubscriptionManager;
+
+    // The current subscription ids
+    // Ensure this value is never accessed concurrently
+    private Set<Integer> mCurrentSubscriptions;
+    // We keep track of the last value to avoid updating when unrelated user restrictions change
+    // Ensure this value is never accessed concurrently
+    private boolean mDisallowCellular2gRestriction;
+
+    public Telephony2gUpdater(Context context) {
+        this(Executors.newSingleThreadExecutor(), context,
                 RadioAccessFamily.getRafFromNetworkType(RILConstants.PREFERRED_NETWORK_MODE));
     }
 
-    public Telephony2gUpdater(Executor executor, Context context,
-            long baseAllowedNetworks) {
+    @VisibleForTesting
+    public Telephony2gUpdater(Executor executor, Context context, long baseAllowedNetworks) {
         mExecutor = executor;
         mContext = context;
         mBaseAllowedNetworks = baseAllowedNetworks;
+
+        mUserManager = mContext.getSystemService(UserManager.class);
+        mTelephonyManager = mContext.getSystemService(TelephonyManager.class);
+        mSubscriptionManager = mContext.getSystemService(SubscriptionManager.class);
+
+        // All user restrictions are false by default
+        mDisallowCellular2gRestriction = false;
+        mCurrentSubscriptions = new HashSet<>();
     }
 
     /**
@@ -80,41 +108,42 @@ public class Telephony2gUpdater extends BroadcastReceiver {
         Log.i(TAG, "Received callback for action " + intent.getAction());
         final PendingResult result = goAsync();
         mExecutor.execute(() -> {
-            Log.i(TAG, "Running handler for action " + intent.getAction());
-            handleUserRestrictionsChanged(context);
-            result.finish();
+            boolean disallow2g = mUserManager.hasUserRestriction(UserManager.DISALLOW_CELLULAR_2G);
+            if (mDisallowCellular2gRestriction == disallow2g) {
+                Log.i(TAG, "No update to DISALLOW_CELLULAR_2G restriction.");
+                return;
+            }
+
+            mDisallowCellular2gRestriction = disallow2g;
+
+            Log.i(TAG, "Running handler for all subscriptions based on DISALLOW_CELLULAR_2G change."
+                    + " Restriction value: " + mDisallowCellular2gRestriction);
+            handleUserRestrictionsChanged(mCurrentSubscriptions);
+            if (result != null) {
+                result.finish();
+            }
         });
     }
 
     /**
-     * Update all active subscriptions with allowed network types depending on the current state
-     * of the {@link UserManager.DISALLOW_2G}.
+     * Update subscriptions with allowed network types depending on the current state
+     * of the {@link UserManager#DISALLOW_CELLULAR_2G}.
+     *
+     * @param subIds A list of subIds to update.
      */
-    @VisibleForTesting
-    public void handleUserRestrictionsChanged(Context context) {
-        UserManager um = context.getSystemService(UserManager.class);
-        TelephonyManager tm = context.getSystemService(TelephonyManager.class);
-        SubscriptionManager sm = context.getSystemService(SubscriptionManager.class);
+    private void handleUserRestrictionsChanged(Collection<Integer> subIds) {
         final long twoGBitmask = TelephonyManager.NETWORK_CLASS_BITMASK_2G;
-
-        boolean shouldDisable2g = um.hasUserRestriction(UserManager.DISALLOW_CELLULAR_2G);
-
-        // This is expected when subscription info cannot be determined. We'll get another
-        // callback in the future from our SubscriptionListener once we have valid subscriptions.
-        List<SubscriptionInfo> subscriptionInfoList = sm.getAvailableSubscriptionInfoList();
-        if (subscriptionInfoList == null) {
-            return;
-        }
 
         long allowedNetworkTypes = mBaseAllowedNetworks;
 
         // 2G device admin controls are global
-        for (SubscriptionInfo info : subscriptionInfoList) {
-            TelephonyManager telephonyManager = tm.createForSubscriptionId(
-                    info.getSubscriptionId());
-            if (shouldDisable2g) {
+        for (Integer subId : subIds) {
+            TelephonyManager telephonyManager = mTelephonyManager.createForSubscriptionId(subId);
+            if (mDisallowCellular2gRestriction) {
+                Log.i(TAG, "Disabling 2g based on user restriction for subId: " + subId);
                 allowedNetworkTypes &= ~twoGBitmask;
             } else {
+                Log.i(TAG, "Enabling 2g based on user restriction for subId: " + subId);
                 allowedNetworkTypes |= twoGBitmask;
             }
             telephonyManager.setAllowedNetworkTypesForReason(
@@ -126,8 +155,30 @@ public class Telephony2gUpdater extends BroadcastReceiver {
     private class SubscriptionListener extends SubscriptionManager.OnSubscriptionsChangedListener {
         @Override
         public void onSubscriptionsChanged() {
-            Log.i(TAG, "Running handler for subscription change.");
-            handleUserRestrictionsChanged(mContext);
+            // Note that this entire callback gets invoked in the single threaded executor
+            List<SubscriptionInfo> allSubscriptions =
+                    mSubscriptionManager.getCompleteActiveSubscriptionInfoList();
+
+            HashSet<Integer> updatedSubIds = new HashSet<>(allSubscriptions.size());
+            List<Integer> newSubIds = new ArrayList<>();
+
+            for (SubscriptionInfo info : allSubscriptions) {
+                updatedSubIds.add(info.getSubscriptionId());
+                if (!mCurrentSubscriptions.contains(info.getSubscriptionId())) {
+                    newSubIds.add(info.getSubscriptionId());
+                }
+            }
+
+            mCurrentSubscriptions = updatedSubIds;
+
+            if (newSubIds.isEmpty()) {
+                Log.d(TAG, "No new subIds. Skipping update.");
+                return;
+            }
+
+            Log.i(TAG, "New subscriptions found. Running handler to update 2g restrictions with "
+                    + "subIds " + newSubIds.toString());
+            handleUserRestrictionsChanged(newSubIds);
         }
     }
 
