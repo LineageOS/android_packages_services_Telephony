@@ -125,7 +125,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
     private int mScanTimeout;
     private int mMaxNumOfVoWifiTries;
     private @CarrierConfigManager.ImsEmergency.EmergencyScanType int mPreferredNetworkScanType;
-    private int mCallSetupTimerOnCurrentRatSec;
+    private int mCallSetupTimerOnCurrentRat;
     private boolean mRequiresImsRegistration;
     private boolean mRequiresVoLteEnabled;
     private boolean mLtePreferredAfterNrFailure;
@@ -353,11 +353,11 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         mDomainPreferenceRoam = b.getIntArray(KEY_EMERGENCY_DOMAIN_PREFERENCE_ROAMING_INT_ARRAY);
         mPreferImsWhenCallsOnCs = b.getBoolean(
                 KEY_PREFER_IMS_EMERGENCY_WHEN_VOICE_CALLS_ON_CS_BOOL);
-        mScanTimeout = b.getInt(KEY_EMERGENCY_SCAN_TIMER_SEC_INT);
+        mScanTimeout = b.getInt(KEY_EMERGENCY_SCAN_TIMER_SEC_INT) * 1000;
         mMaxNumOfVoWifiTries = b.getInt(KEY_MAXIMUM_NUMBER_OF_EMERGENCY_TRIES_OVER_VOWIFI_INT);
         mPreferredNetworkScanType = b.getInt(KEY_EMERGENCY_NETWORK_SCAN_TYPE_INT);
-        mCallSetupTimerOnCurrentRatSec = b.getInt(
-                KEY_EMERGENCY_CALL_SETUP_TIMER_ON_CURRENT_NETWORK_SEC_INT);
+        mCallSetupTimerOnCurrentRat = b.getInt(
+                KEY_EMERGENCY_CALL_SETUP_TIMER_ON_CURRENT_NETWORK_SEC_INT) * 1000;
         mRequiresImsRegistration = b.getBoolean(KEY_EMERGENCY_REQUIRES_IMS_REGISTRATION_BOOL);
         mRequiresVoLteEnabled = b.getBoolean(KEY_EMERGENCY_REQUIRES_VOLTE_ENABLED_BOOL);
         mLtePreferredAfterNrFailure = b.getBoolean(
@@ -390,7 +390,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
                 + ", maxNumOfVoWifiTries=" + mMaxNumOfVoWifiTries
                 + ", preferredScanType=" + carrierConfigNetworkScanTypeToString(
                         mPreferredNetworkScanType)
-                + ", callSetupTimer=" + mCallSetupTimerOnCurrentRatSec
+                + ", callSetupTimer=" + mCallSetupTimerOnCurrentRat
                 + ", requiresImsReg=" + mRequiresImsRegistration
                 + ", requiresVoLteEnabled=" + mRequiresVoLteEnabled
                 + ", ltePreferredAfterNr=" + mLtePreferredAfterNrFailure
