@@ -10198,8 +10198,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             throw new IllegalArgumentException("Invalid Subscription ID: " + subId);
         }
         if (!isImsAvailableOnDevice()) {
-            throw new ServiceSpecificException(ImsException.CODE_ERROR_UNSUPPORTED_OPERATION,
-                    "IMS not available on device.");
+            // ProvisioningManager can not handle ServiceSpecificException.
+            // Throw the IllegalStateException and annotate ProvisioningManager.
+            throw new IllegalStateException("IMS not available on device.");
         }
 
         final long identity = Binder.clearCallingIdentity();
@@ -10798,8 +10799,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             throw new IllegalArgumentException("Invalid Subscription ID: " + subId);
         }
         if (!isImsAvailableOnDevice()) {
-            throw new ServiceSpecificException(ImsException.CODE_ERROR_UNSUPPORTED_OPERATION,
-                    "IMS not available on device.");
+            // operation failed silently
+            Rlog.w(LOG_TAG, "IMS not available on device.");
+            return;
         }
 
         final long identity = Binder.clearCallingIdentity();
@@ -10823,8 +10825,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             throw new IllegalArgumentException("Invalid Subscription ID: " + subId);
         }
         if (!isImsAvailableOnDevice()) {
-            throw new ServiceSpecificException(ImsException.CODE_ERROR_UNSUPPORTED_OPERATION,
-                    "IMS not available on device.");
+            // ProvisioningManager can not handle ServiceSpecificException.
+            // Throw the IllegalStateException and annotate ProvisioningManager.
+            throw new IllegalStateException("IMS not available on device.");
         }
 
         final long identity = Binder.clearCallingIdentity();
