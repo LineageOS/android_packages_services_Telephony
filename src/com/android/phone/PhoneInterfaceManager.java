@@ -6727,11 +6727,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             throw new SecurityException(
                     "setAllowedNetworkTypesForReason cannot be called with carrier privileges for"
                             + " reason "
-                            + TelephonyManager.allowedNetworkTypesReasonToString(reason));
+                            + reason);
         }
         if (!TelephonyManager.isValidAllowedNetworkTypesReason(reason)) {
-            loge("setAllowedNetworkTypesForReason: Invalid allowed network type reason: "
-                    + TelephonyManager.allowedNetworkTypesReasonToString(reason));
+            loge("setAllowedNetworkTypesForReason: Invalid allowed network type reason: " + reason);
             return false;
         }
         if (!SubscriptionManager.isUsableSubscriptionId(subId)) {
@@ -6739,10 +6738,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             return false;
         }
 
-        log("setAllowedNetworkTypesForReason: subId=" + subId + ", reason="
-                + TelephonyManager.allowedNetworkTypesReasonToString(reason) + ", network types: "
-                + TelephonyManager.convertNetworkTypeBitmaskToString(allowedNetworkTypes)
-                + ", callingPackage=" + getCurrentPackageName());
+        log("setAllowedNetworkTypesForReason: subId=" + subId + ", reason=" + reason + " value: "
+                + TelephonyManager.convertNetworkTypeBitmaskToString(allowedNetworkTypes));
 
         Phone phone = getPhone(subId);
         if (phone == null) {
@@ -6750,9 +6747,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
 
         if (allowedNetworkTypes == phone.getAllowedNetworkTypes(reason)) {
-            log("setAllowedNetworkTypesForReason: "
-                    + TelephonyManager.allowedNetworkTypesReasonToString(reason)
-                    + " already has the specified network types.");
+            log("setAllowedNetworkTypesForReason: " + reason + "does not change value");
             return true;
         }
 
