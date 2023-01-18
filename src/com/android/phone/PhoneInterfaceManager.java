@@ -2425,8 +2425,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         mRadioInterfaceCapabilities = RadioInterfaceCapabilityController.getInstance();
         mNotifyUserActivity = new AtomicBoolean(false);
         PropertyInvalidatedCache.invalidateCache(TelephonyManager.CACHE_KEY_PHONE_ACCOUNT_TO_SUBID);
-        mTelephony2gUpdater = new Telephony2gUpdater(
-                Executors.newSingleThreadExecutor(), mApp);
+        mTelephony2gUpdater = new Telephony2gUpdater(mApp);
         mTelephony2gUpdater.init();
         publish();
     }
@@ -6730,10 +6729,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             throw new SecurityException(
                     "setAllowedNetworkTypesForReason cannot be called with carrier privileges for"
                             + " reason "
-                            + reason);
+                            + TelephonyManager.allowedNetworkTypesReasonToString(reason));
         }
         if (!TelephonyManager.isValidAllowedNetworkTypesReason(reason)) {
-            loge("setAllowedNetworkTypesForReason: Invalid allowed network type reason: " + reason);
+            loge("setAllowedNetworkTypesForReason: Invalid allowed network type reason: "
+                    + TelephonyManager.allowedNetworkTypesReasonToString(reason));
             return false;
         }
         if (!SubscriptionManager.isUsableSubscriptionId(subId)) {
@@ -6741,8 +6741,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             return false;
         }
 
-        log("setAllowedNetworkTypesForReason: subId=" + subId + ", reason=" + reason + " value: "
-                + TelephonyManager.convertNetworkTypeBitmaskToString(allowedNetworkTypes));
+        log("setAllowedNetworkTypesForReason: subId=" + subId + ", reason="
+                + TelephonyManager.allowedNetworkTypesReasonToString(reason) + ", network types: "
+                + TelephonyManager.convertNetworkTypeBitmaskToString(allowedNetworkTypes)
+                + ", callingPackage=" + getCurrentPackageName());
 
         Phone phone = getPhone(subId);
         if (phone == null) {
@@ -6750,7 +6752,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
 
         if (allowedNetworkTypes == phone.getAllowedNetworkTypes(reason)) {
-            log("setAllowedNetworkTypesForReason: " + reason + "does not change value");
+            log("setAllowedNetworkTypesForReason: "
+                    + TelephonyManager.allowedNetworkTypesReasonToString(reason)
+                    + " already has the specified network types.");
             return true;
         }
 

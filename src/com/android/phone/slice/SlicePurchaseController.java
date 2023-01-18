@@ -829,6 +829,7 @@ public class SlicePurchaseController extends Handler {
         Intent intent = new Intent(action);
         intent.putExtra(EXTRA_PHONE_ID, mPhone.getPhoneId());
         intent.putExtra(EXTRA_PREMIUM_CAPABILITY, capability);
+        intent.setPackage(mPhone.getContext().getPackageName());
         return PendingIntent.getBroadcast(mPhone.getContext(), capability, intent,
                 PendingIntent.FLAG_CANCEL_CURRENT
                         | (mutable ? PendingIntent.FLAG_MUTABLE : PendingIntent.FLAG_IMMUTABLE));
