@@ -130,6 +130,7 @@ public class ImsStateTracker {
     /** The IMS registration state and the network type that performed IMS registration. */
     private Boolean mImsRegistered;
     private @RadioAccessNetworkType int mImsAccessNetworkType = AccessNetworkType.UNKNOWN;
+    private Boolean mImsRegisteredOverCrossSim;
     /** The MMTEL capabilities - Voice, Video, SMS, and Ut. */
     private MmTelCapabilities mMmTelCapabilities;
     private final Runnable mMmTelFeatureUnavailableRunnable = new Runnable() {
@@ -361,6 +362,13 @@ public class ImsStateTracker {
     }
 
     /**
+     * Returns {@code true} if IMS is registered over the mobile data of another subscription.
+     */
+    public boolean isImsRegisteredOverCrossSim() {
+        return mImsRegisteredOverCrossSim != null && mImsRegisteredOverCrossSim;
+    }
+
+    /**
      * Returns {@code true} if IMS voice call is capable, {@code false} otherwise.
      */
     public boolean isImsVoiceCapable() {
@@ -406,6 +414,7 @@ public class ImsStateTracker {
         mMmTelFeatureAvailable = null;
         mImsRegistered = null;
         mImsAccessNetworkType = AccessNetworkType.UNKNOWN;
+        mImsRegisteredOverCrossSim = null;
         mMmTelCapabilities = null;
     }
 
@@ -418,6 +427,7 @@ public class ImsStateTracker {
         setMmTelFeatureAvailable(false);
         setImsRegistered(false);
         setImsAccessNetworkType(AccessNetworkType.UNKNOWN);
+        setImsRegisteredOverCrossSim(false);
         setMmTelCapabilities(new MmTelCapabilities());
     }
 
@@ -447,6 +457,13 @@ public class ImsStateTracker {
         if (!Objects.equals(mMmTelCapabilities, capabilities)) {
             logi("MMTEL capabilities: " + mMmTelCapabilities + " >> " + capabilities);
             mMmTelCapabilities = capabilities;
+        }
+    }
+
+    private void setImsRegisteredOverCrossSim(boolean crossSim) {
+        if (!Objects.equals(mImsRegisteredOverCrossSim, Boolean.valueOf(crossSim))) {
+            logi("setImsRegisteredOverCrossSim: " + mImsRegisteredOverCrossSim + " >> " + crossSim);
+            mImsRegisteredOverCrossSim = Boolean.valueOf(crossSim);
         }
     }
 
@@ -565,6 +582,8 @@ public class ImsStateTracker {
         setImsRegistered(true);
         setImsAccessNetworkType(
                 imsRegTechToAccessNetworkType(attributes.getRegistrationTechnology()));
+        setImsRegisteredOverCrossSim(attributes.getRegistrationTechnology()
+                == ImsRegistrationImplBase.REGISTRATION_TECH_CROSS_SIM);
         notifyImsRegistrationStateChanged();
     }
 
@@ -575,6 +594,7 @@ public class ImsStateTracker {
         logd("onImsUnregistered: " + info);
         setImsRegistered(false);
         setImsAccessNetworkType(AccessNetworkType.UNKNOWN);
+        setImsRegisteredOverCrossSim(false);
         setMmTelCapabilities(new MmTelCapabilities());
         notifyImsRegistrationStateChanged();
     }
