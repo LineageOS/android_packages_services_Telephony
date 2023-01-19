@@ -548,6 +548,8 @@ public class ImsStateTracker {
             setImsStateAsUnavailable();
             unregisterImsRegistrationCallback();
             unregisterMmTelCapabilityCallback();
+            // ImsStateCallback has already been removed after calling onUnavailable.
+            mImsStateCallback = null;
             notifyImsMmTelFeatureAvailableChanged();
         } else {
             logw("onMmTelFeatureUnavailable: unexpected reason=" + reason);
