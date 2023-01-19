@@ -835,7 +835,7 @@ public class EmergencyCallDomainSelectorTest {
     }
 
     @Test
-    public void testVoLteOffEpsImsNotRegisteredSelectCs() throws Exception {
+    public void testVoLteOffEpsImsNotRegisteredScanCsPreferred() throws Exception {
         PersistableBundle bundle = getDefaultPersistableBundle();
         bundle.putBoolean(KEY_EMERGENCY_REQUIRES_VOLTE_ENABLED_BOOL, true);
         when(mCarrierConfigManager.getConfigForSubId(anyInt())).thenReturn(bundle);
@@ -856,7 +856,7 @@ public class EmergencyCallDomainSelectorTest {
         bindImsServiceUnregistered();
 
         // Requires VoLTE enabled but VoLTE is'nt enabled.
-        verifyCsDialed();
+        verifyScanCsPreferred();
     }
 
     @Test
