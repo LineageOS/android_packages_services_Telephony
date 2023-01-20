@@ -210,6 +210,23 @@ public class ImsStateTrackerTest {
 
     @Test
     @SmallTest
+    public void testStartAfterUnavailableWithReasonSubscriptionInactive() throws ImsException {
+        ImsStateCallback callback = setUpImsStateCallback();
+        callback.onUnavailable(ImsStateCallback.REASON_SUBSCRIPTION_INACTIVE);
+
+        mImsStateTracker.start(SUB_1);
+
+        assertTrue(isImsStateInit());
+        // One is invoked in setUpImsStateCallback and the other is invoked in start(int).
+        verify(mMmTelManager, times(2)).registerImsStateCallback(
+                any(Executor.class), any(ImsStateCallback.class));
+        // ImsStateCallback has already been set to null when onUnavailable is called.
+        verify(mMmTelManager, never()).unregisterImsStateCallback(
+                any(ImsStateCallback.class));
+    }
+
+    @Test
+    @SmallTest
     public void testUpdateServiceStateBeforeAddingListener() {
         mImsStateTracker.updateServiceState(mServiceState);
         mImsStateTracker.addServiceStateListener(mServiceStateListener);
@@ -509,6 +526,7 @@ public class ImsStateTrackerTest {
         assertFalse(mImsStateTracker.isImsStateReady());
         assertTrue(mImsStateTracker.isImsRegistered());
         assertFalse(mImsStateTracker.isImsRegisteredOverWlan());
+        assertFalse(mImsStateTracker.isImsRegisteredOverCrossSim());
         assertEquals(AccessNetworkType.EUTRAN, mImsStateTracker.getImsAccessNetworkType());
 
         callback.onRegistered(new ImsRegistrationAttributes.Builder(
@@ -517,6 +535,7 @@ public class ImsStateTrackerTest {
         assertFalse(mImsStateTracker.isImsStateReady());
         assertTrue(mImsStateTracker.isImsRegistered());
         assertFalse(mImsStateTracker.isImsRegisteredOverWlan());
+        assertFalse(mImsStateTracker.isImsRegisteredOverCrossSim());
         assertEquals(AccessNetworkType.NGRAN, mImsStateTracker.getImsAccessNetworkType());
 
         callback.onRegistered(new ImsRegistrationAttributes.Builder(
@@ -525,6 +544,7 @@ public class ImsStateTrackerTest {
         assertFalse(mImsStateTracker.isImsStateReady());
         assertTrue(mImsStateTracker.isImsRegistered());
         assertTrue(mImsStateTracker.isImsRegisteredOverWlan());
+        assertFalse(mImsStateTracker.isImsRegisteredOverCrossSim());
         assertEquals(AccessNetworkType.IWLAN, mImsStateTracker.getImsAccessNetworkType());
 
         callback.onRegistered(new ImsRegistrationAttributes.Builder(
@@ -533,6 +553,7 @@ public class ImsStateTrackerTest {
         assertFalse(mImsStateTracker.isImsStateReady());
         assertTrue(mImsStateTracker.isImsRegistered());
         assertTrue(mImsStateTracker.isImsRegisteredOverWlan());
+        assertTrue(mImsStateTracker.isImsRegisteredOverCrossSim());
         assertEquals(AccessNetworkType.IWLAN, mImsStateTracker.getImsAccessNetworkType());
 
         callback.onRegistered(new ImsRegistrationAttributes.Builder(
@@ -541,6 +562,7 @@ public class ImsStateTrackerTest {
         assertFalse(mImsStateTracker.isImsStateReady());
         assertTrue(mImsStateTracker.isImsRegistered());
         assertFalse(mImsStateTracker.isImsRegisteredOverWlan());
+        assertFalse(mImsStateTracker.isImsRegisteredOverCrossSim());
         assertEquals(AccessNetworkType.UNKNOWN, mImsStateTracker.getImsAccessNetworkType());
 
         verify(mImsStateListener, times(5)).onImsRegistrationStateChanged();
