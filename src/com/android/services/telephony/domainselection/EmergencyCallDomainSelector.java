@@ -41,14 +41,22 @@ import static android.telephony.CarrierConfigManager.ImsEmergency.KEY_EMERGENCY_
 import static android.telephony.CarrierConfigManager.ImsEmergency.KEY_EMERGENCY_REQUIRES_IMS_REGISTRATION_BOOL;
 import static android.telephony.CarrierConfigManager.ImsEmergency.KEY_EMERGENCY_REQUIRES_VOLTE_ENABLED_BOOL;
 import static android.telephony.CarrierConfigManager.ImsEmergency.KEY_EMERGENCY_SCAN_TIMER_SEC_INT;
+import static android.telephony.CarrierConfigManager.ImsEmergency.KEY_EMERGENCY_VOWIFI_REQUIRES_CONDITION_INT;
 import static android.telephony.CarrierConfigManager.ImsEmergency.KEY_MAXIMUM_NUMBER_OF_EMERGENCY_TRIES_OVER_VOWIFI_INT;
 import static android.telephony.CarrierConfigManager.ImsEmergency.KEY_PREFER_IMS_EMERGENCY_WHEN_VOICE_CALLS_ON_CS_BOOL;
 import static android.telephony.CarrierConfigManager.ImsEmergency.SCAN_TYPE_FULL_SERVICE_FOLLOWED_BY_LIMITED_SERVICE;
+import static android.telephony.CarrierConfigManager.ImsEmergency.VOWIFI_REQUIRES_SETTING_ENABLED;
+import static android.telephony.CarrierConfigManager.ImsEmergency.VOWIFI_REQUIRES_VALID_EID;
+import static android.telephony.CarrierConfigManager.ImsWfc.KEY_EMERGENCY_CALL_OVER_EMERGENCY_PDN_BOOL;
 import static android.telephony.NetworkRegistrationInfo.REGISTRATION_STATE_HOME;
 import static android.telephony.NetworkRegistrationInfo.REGISTRATION_STATE_ROAMING;
 
 import android.annotation.NonNull;
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.Network;
+import android.net.NetworkCapabilities;
+import android.net.NetworkRequest;
 import android.os.CancellationSignal;
 import android.os.Looper;
 import android.os.Message;
@@ -69,6 +77,7 @@ import android.telephony.TelephonyManager;
 import android.telephony.TransportSelectorCallback;
 import android.telephony.ims.ImsManager;
 import android.telephony.ims.ImsMmTelManager;
+import android.telephony.ims.ProvisioningManager;
 import android.text.TextUtils;
 import android.util.LocalLog;
 
@@ -97,6 +106,30 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
 
     private static final LocalLog sLocalLog = new LocalLog(LOG_SIZE);
 
+    /**
+     * Network callback used to determine whether Wi-Fi is connected or not.
+     */
+    private ConnectivityManager.NetworkCallback mNetworkCallback =
+            new ConnectivityManager.NetworkCallback() {
+                @Override
+                public void onAvailable(Network network) {
+                    logi("onAvailable: " + network);
+                    mWiFiAvailable = true;
+                }
+
+                @Override
+                public void onLost(Network network) {
+                    logi("onLost: " + network);
+                    mWiFiAvailable = false;
+                }
+
+                @Override
+                public void onUnavailable() {
+                    logi("onUnavailable");
+                    mWiFiAvailable = false;
+                }
+            };
+
     private boolean mIsEmergencyBarred;
     private boolean mImsRegistered;
     private boolean mIsVoiceCapable;
@@ -122,8 +155,12 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
     private @CarrierConfigManager.ImsEmergency.EmergencyDomain int[] mDomainPreferenceRoam;
     private List<String> mCdmaPreferredNumbers;
     private boolean mPreferImsWhenCallsOnCs;
+    private int mVoWifiRequiresCondition;
+    private boolean mIsMonitoringConnectivity;
+    private boolean mWiFiAvailable;
     private int mScanTimeout;
     private int mMaxNumOfVoWifiTries;
+    private boolean mVoWifiOverEmergencyPdn;
     private @CarrierConfigManager.ImsEmergency.EmergencyScanType int mPreferredNetworkScanType;
     private int mCallSetupTimerOnCurrentRat;
     private boolean mRequiresImsRegistration;
@@ -353,8 +390,10 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         mDomainPreferenceRoam = b.getIntArray(KEY_EMERGENCY_DOMAIN_PREFERENCE_ROAMING_INT_ARRAY);
         mPreferImsWhenCallsOnCs = b.getBoolean(
                 KEY_PREFER_IMS_EMERGENCY_WHEN_VOICE_CALLS_ON_CS_BOOL);
+        mVoWifiRequiresCondition = b.getInt(KEY_EMERGENCY_VOWIFI_REQUIRES_CONDITION_INT);
         mScanTimeout = b.getInt(KEY_EMERGENCY_SCAN_TIMER_SEC_INT) * 1000;
         mMaxNumOfVoWifiTries = b.getInt(KEY_MAXIMUM_NUMBER_OF_EMERGENCY_TRIES_OVER_VOWIFI_INT);
+        mVoWifiOverEmergencyPdn = b.getBoolean(KEY_EMERGENCY_CALL_OVER_EMERGENCY_PDN_BOOL);
         mPreferredNetworkScanType = b.getInt(KEY_EMERGENCY_NETWORK_SCAN_TYPE_INT);
         mCallSetupTimerOnCurrentRat = b.getInt(
                 KEY_EMERGENCY_CALL_SETUP_TIMER_ON_CURRENT_NETWORK_SEC_INT) * 1000;
@@ -386,8 +425,10 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
                 + ", domainPrefRoam=" + arrayToString(mDomainPreferenceRoam,
                         EmergencyCallDomainSelector::domainPreferenceToString)
                 + ", preferImsOnCs=" + mPreferImsWhenCallsOnCs
+                + ", voWifiRequiresCondition=" + mVoWifiRequiresCondition
                 + ", scanTimeout=" + mScanTimeout
                 + ", maxNumOfVoWifiTries=" + mMaxNumOfVoWifiTries
+                + ", voWifiOverEmergencyPdn=" + mVoWifiOverEmergencyPdn
                 + ", preferredScanType=" + carrierConfigNetworkScanTypeToString(
                         mPreferredNetworkScanType)
                 + ", callSetupTimer=" + mCallSetupTimerOnCurrentRat
@@ -560,6 +601,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
                 // remove any pending timers.
                 removeMessages(MSG_NETWORK_SCAN_TIMEOUT);
                 sendEmptyMessageDelayed(MSG_NETWORK_SCAN_TIMEOUT, mScanTimeout);
+                registerForConnectivityChanges();
             }
         }
     }
@@ -639,8 +681,33 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
     }
 
     private void handleNetworkScanTimeout() {
-        if (isImsRegisteredWithVoiceCapability()
-                && isImsRegisteredOverWifi()) {
+        logi("handleNetworkScanTimeout overEmergencyPdn=" + mVoWifiOverEmergencyPdn
+                + ", wifiAvailable=" + mWiFiAvailable);
+        boolean available = mWiFiAvailable;
+        if (mVoWifiOverEmergencyPdn) {
+            // SOS APN
+            if (!available && isImsRegisteredOverCrossSim()) {
+                available = true;
+            }
+            if (available) {
+                switch (mVoWifiRequiresCondition) {
+                    case VOWIFI_REQUIRES_SETTING_ENABLED:
+                        available = isWifiCallingSettingEnabled();
+                        break;
+                    case VOWIFI_REQUIRES_VALID_EID:
+                        available = isWifiCallingActivated();
+                        break;
+                    default:
+                        break;
+                }
+            }
+        } else {
+            // IMS APN. When IMS is already registered over Wi-Fi.
+            available = isImsRegisteredWithVoiceCapability() && isImsRegisteredOverWifi();
+        }
+
+        logi("handleNetworkScanTimeout VoWi-Fi available=" + available);
+        if (available) {
             if (mCancelSignal != null) {
                 mCancelSignal.cancel();
                 mCancelSignal = null;
@@ -811,6 +878,41 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         return true;
     }
 
+    private boolean isWifiCallingActivated() {
+        try {
+            ImsManager imsMngr = mContext.getSystemService(ImsManager.class);
+            ProvisioningManager pm = imsMngr.getProvisioningManager(getSubId());
+            String eid = pm.getProvisioningStringValue(
+                    ProvisioningManager.KEY_VOICE_OVER_WIFI_ENTITLEMENT_ID);
+            boolean activated = (!TextUtils.isEmpty(eid)) && (!TextUtils.equals("0", eid));
+            logi("isWifiCallingActivated " + activated);
+            return activated;
+        } catch (Exception e) {
+            logi("isWifiCallingActivated e=" + e);
+        }
+        return false;
+    }
+
+    private boolean isWifiCallingSettingEnabled() {
+        boolean result = false;
+        try {
+            if (SubscriptionManager.isValidSubscriptionId(getSubId())) {
+                ImsManager imsMngr = mContext.getSystemService(ImsManager.class);
+                ImsMmTelManager mmTelManager = imsMngr.getImsMmTelManager(getSubId());
+                if (isInRoaming()) {
+                    result = mmTelManager.isVoWiFiRoamingSettingEnabled();
+                } else {
+                    result = mmTelManager.isVoWiFiSettingEnabled();
+                }
+                logi("isWifiCallingSettingEnabled " + result);
+                return result;
+            }
+        } catch (Exception e) {
+            logi("isWifiCallingSettingEnabled e=" + e);
+        }
+        return result;
+    }
+
     private @NonNull List<Integer> getImsNetworkTypeConfiguration() {
         int[] rats = mImsRatsConfig;
         if (isInRoaming()) rats = mImsRoamRatsConfig;
@@ -897,6 +999,21 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
     }
 
     /**
+     * Determines whether IMS is registered over the mobile data of another subscription.
+     *
+     * @return {@code true} if IMS is registered over the mobile data of another subscription.
+     */
+    private boolean isImsRegisteredOverCrossSim() {
+        boolean ret = false;
+        if (SubscriptionManager.isValidSubscriptionId(getSubId())) {
+            ret = mImsStateTracker.isImsRegisteredOverCrossSim();
+        }
+
+        logi("isImsRegisteredOverCrossSim " + ret);
+        return ret;
+    }
+
+    /**
      * Determines whether IMS is registered with voice capability.
      *
      * @return {@code true} if IMS is registered with voice capability.
@@ -950,6 +1067,40 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
             domain = NetworkRegistrationInfo.DOMAIN_PS;
         }
         mWwanSelectorCallback.onDomainSelected(domain);
+    }
+
+    /**
+     * Registers for changes to network connectivity.
+     */
+    private void registerForConnectivityChanges() {
+        if (mIsMonitoringConnectivity) {
+            return;
+        }
+
+        ConnectivityManager cm = mContext.getSystemService(ConnectivityManager.class);
+        if (cm != null) {
+            logi("registerForConnectivityChanges");
+            NetworkRequest.Builder builder = new NetworkRequest.Builder();
+            builder.addTransportType(NetworkCapabilities.TRANSPORT_WIFI);
+            cm.registerNetworkCallback(builder.build(), mNetworkCallback);
+            mIsMonitoringConnectivity = true;
+        }
+    }
+
+    /**
+     * Unregisters for connectivity changes.
+     */
+    private void unregisterForConnectivityChanges() {
+        if (!mIsMonitoringConnectivity) {
+            return;
+        }
+
+        ConnectivityManager cm = mContext.getSystemService(ConnectivityManager.class);
+        if (cm != null) {
+            logi("unregisterForConnectivityChanges");
+            cm.unregisterNetworkCallback(mNetworkCallback);
+            mIsMonitoringConnectivity = false;
+        }
     }
 
     private static String arrayToString(int[] intArray, IntFunction<String> func) {
@@ -1027,6 +1178,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         mDestroyed = true;
         mImsStateTracker.removeBarringInfoListener(this);
         mImsStateTracker.removeImsStateListener(this);
+        unregisterForConnectivityChanges();
 
         super.destroy();
     }

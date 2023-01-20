@@ -57,6 +57,7 @@ import com.android.internal.telephony.emergency.EmergencyNumberTracker;
 import com.android.internal.telephony.util.TelephonyUtils;
 import com.android.modules.utils.BasicShellCommandHandler;
 import com.android.phone.callcomposer.CallComposerPictureManager;
+import com.android.phone.utils.CarrierAllowListInfo;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -97,6 +98,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
     private static final String ENABLE = "enable";
     private static final String DISABLE = "disable";
     private static final String QUERY = "query";
+    private static final String CARRIER_RESTRICTION_STATUS_TEST = "carrier_restriction_status_test";
+    private final String QUOTES = "\"";
 
     private static final String CALL_COMPOSER_TEST_MODE = "test-mode";
     private static final String CALL_COMPOSER_SIMULATE_CALL = "simulate-outgoing-call";
@@ -341,6 +344,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                 return handleGetSimSlotsMapping();
             case RADIO_SUBCOMMAND:
                 return handleRadioCommand();
+            case CARRIER_RESTRICTION_STATUS_TEST:
+                return handleCarrierRestrictionStatusCommand();
             default: {
                 return handleDefaultCommands(cmd);
             }
@@ -3010,5 +3015,75 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         }
 
         return -1;
+    }
+
+    private int handleCarrierRestrictionStatusCommand() {
+        try {
+            String MOCK_MODEM_SERVICE_NAME = "android.telephony.mockmodem.MockModemService";
+            if (!(checkShellUid() && MOCK_MODEM_SERVICE_NAME.equalsIgnoreCase(
+                    mInterface.getModemService()))) {
+                Log.v(LOG_TAG,
+                        "handleCarrierRestrictionStatusCommand, MockModem service check fails or "
+                                + " checkShellUid fails");
+                return -1;
+            }
+        } catch (RemoteException ex) {
+            ex.printStackTrace();
+        }
+        String callerInfo = getNextOption();
+        CarrierAllowListInfo allowListInfo = CarrierAllowListInfo.loadInstance(mContext);
+        if (TextUtils.isEmpty(callerInfo)) {
+            // reset the Json content after testing
+            allowListInfo.updateJsonForTest(null);
+            return 0;
+        }
+        if (callerInfo.startsWith("--")) {
+            callerInfo = callerInfo.replace("--", "");
+        }
+        String params[] = callerInfo.split(",");
+        StringBuffer jsonStrBuffer = new StringBuffer();
+        String tokens;
+        for (int index = 0; index < params.length; index++) {
+            tokens = convertToJsonString(index, params[index]);
+            if (TextUtils.isEmpty(tokens)) {
+                // received wrong format from CTS
+                if (VDBG) {
+                    Log.v(LOG_TAG,
+                            "handleCarrierRestrictionStatusCommand, Shell command parsing error");
+                }
+                return -1;
+            }
+            jsonStrBuffer.append(tokens);
+        }
+        int result = allowListInfo.updateJsonForTest(jsonStrBuffer.toString());
+        return result;
+    }
+
+
+    /**
+     * Building the string that can be used to build the JsonObject which supports to stub the data
+     * in CarrierAllowListInfo for CTS testing. sample format is like
+     * {"com.android.example":{"carrierId":"10000","callerSHA1Id":["XXXXXXXXXXXXXX"]}}
+     */
+    private String convertToJsonString(int index, String param) {
+
+        String token[] = param.split(":");
+        String jSonString;
+        switch (index) {
+            case 0:
+                jSonString = "{" + QUOTES + token[1] + QUOTES + ":";
+                break;
+            case 1:
+                jSonString =
+                        "{" + QUOTES + token[0] + QUOTES + ":" + QUOTES + token[1] + QUOTES + ",";
+                break;
+            case 2:
+                jSonString =
+                        QUOTES + token[0] + QUOTES + ":" + "[" + QUOTES + token[1] + QUOTES + "]}}";
+                break;
+            default:
+                jSonString = null;
+        }
+        return jSonString;
     }
 }
