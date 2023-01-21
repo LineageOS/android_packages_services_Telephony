@@ -274,12 +274,6 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
                 onWwanNetworkTypeSelected(mCsNetworkType);
                 return;
             }
-        } else if (getImsNetworkTypeConfiguration().isEmpty()
-                || (mRequiresVoLteEnabled && !isAdvancedCallingSettingEnabled())) {
-            // Emergency call over IMS is not supported.
-            mCsNetworkType = UTRAN;
-            onWwanNetworkTypeSelected(mCsNetworkType);
-            return;
         }
 
         if (mLastTransportType == TRANSPORT_TYPE_WLAN) {
@@ -477,14 +471,6 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
     }
 
     private void selectDomainFromInitialState() {
-        if (getImsNetworkTypeConfiguration().isEmpty()
-                || (mRequiresVoLteEnabled && !isAdvancedCallingSettingEnabled())) {
-            // Emergency call over IMS is not supported.
-            mCsNetworkType = UTRAN;
-            onWwanNetworkTypeSelected(mCsNetworkType);
-            return;
-        }
-
         boolean csInService = isCsInService();
         boolean psInService = isPsInService();
 
@@ -613,6 +599,12 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
      * @return The list of preferred network types.
      */
     private @RadioAccessNetworkType List<Integer> getNextPreferredNetworks(boolean csPreferred) {
+        if (mRequiresVoLteEnabled && !isAdvancedCallingSettingEnabled()) {
+            // Emergency call over IMS is not supported.
+            logi("getNextPreferredNetworks VoLte setting is not enabled.");
+            return generatePreferredNetworks(getCsNetworkTypeConfiguration());
+        }
+
         List<Integer> preferredNetworks = new ArrayList<>();
 
         List<Integer> domains = getDomainPreference();
@@ -791,6 +783,11 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         EmergencyRegResult regResult = mSelectionAttributes.getEmergencyRegResult();
         logi("getSelectablePsNetworkType regResult=" + regResult);
         if (regResult == null) return UNKNOWN;
+        if (mRequiresVoLteEnabled && !isAdvancedCallingSettingEnabled()) {
+            // Emergency call over IMS is not supported.
+            logi("getSelectablePsNetworkType VoLte setting is not enabled.");
+            return UNKNOWN;
+        }
 
         int accessNetwork = regResult.getAccessNetwork();
         List<Integer> ratList = getImsNetworkTypeConfiguration();

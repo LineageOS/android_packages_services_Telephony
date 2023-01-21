@@ -532,7 +532,17 @@ public class TelephonyConnectionService extends ConnectionService {
      */
     private final TelephonyConnection.TelephonyConnectionListener mEmergencyConnectionListener =
             new TelephonyConnection.TelephonyConnectionListener() {
-        @Override
+                @Override
+                public void onOriginalConnectionConfigured(TelephonyConnection c) {
+                    com.android.internal.telephony.Connection origConn = c.getOriginalConnection();
+                    if (origConn == null) return;
+                    // Update the domain in the case that it changes,for example during initial
+                    // setup or when there was an srvcc or internal redial.
+                    mEmergencyStateTracker.onEmergencyCallDomainUpdated(
+                            origConn.getPhoneType(), c.getTelecomCallId());
+                }
+
+                @Override
         public void onStateChanged(Connection connection, @Connection.ConnectionState int state) {
             if (connection != null) {
                 TelephonyConnection c = (TelephonyConnection) connection;
