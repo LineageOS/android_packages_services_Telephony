@@ -777,6 +777,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
     }
 
     private void updateSubscriptionDatabase(int phoneId) {
+        logd("updateSubscriptionDatabase: phoneId=" + phoneId);
         String configPackageName;
         PersistableBundle configToSend;
         int carrierId = getSpecificCarrierIdForPhoneId(phoneId);
