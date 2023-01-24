@@ -11807,6 +11807,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         try {
             Phone phone = getPhone(subId);
             if (phone == null) return;
+            Log.i(LOG_TAG, "setVoiceServiceStateOverride: subId=" + subId + ", phone=" + phone
+                    + ", hasService=" + hasService + ", callingPackage=" + callingPackage);
             phone.setVoiceServiceStateOverride(hasService);
         } finally {
             Binder.restoreCallingIdentity(identity);
