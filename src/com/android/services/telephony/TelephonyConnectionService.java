@@ -955,7 +955,8 @@ public class TelephonyConnectionService extends ConnectionService {
                 handle == null ? null : handle.getSchemeSpecificPart());
 
         if (mDomainSelectionResolver.isDomainSelectionSupported()) {
-            if (isEmergencyNumber) {
+            // Normal routing emergency number shall be handled by normal call domain selctor.
+            if (isEmergencyNumber && !isNormalRouting(phone, number)) {
                 final Connection resultConnection =
                         placeEmergencyConnection(phone,
                                 request, numberToDial, isTestEmergencyNumber,
@@ -1965,6 +1966,16 @@ public class TelephonyConnectionService extends ConnectionService {
                             }
                         }
                     }
+                    if (mDomainSelectionResolver.isDomainSelectionSupported()) {
+                        if (isNormalRouting(phone, number)
+                                    && handleOutgoingCallConnection(number, connection,
+                                            phone, videoState)) {
+                            /** Normal routing emergency number shall be handled
+                             * by normal call domain selctor.*/
+                            Log.i(this, "placeOutgoingConnection normal routing number");
+                            return;
+                        }
+                    }
                 } else if (handleOutgoingCallConnection(number, connection,
                         phone, videoState)) {
                     return;
@@ -2328,6 +2339,17 @@ public class TelephonyConnectionService extends ConnectionService {
         mEmergencyStateTracker.endCall(c.getTelecomCallId());
         releaseEmergencyCallDomainSelection(true);
 
+        return false;
+    }
+
+    private boolean isNormalRouting(Phone phone, String number) {
+        if (phone.getEmergencyNumberTracker() != null) {
+            EmergencyNumber num = phone.getEmergencyNumberTracker().getEmergencyNumber(number);
+            if (num != null) {
+                return num.getEmergencyCallRouting()
+                        == EmergencyNumber.EMERGENCY_CALL_ROUTING_NORMAL;
+            }
+        }
         return false;
     }
 
