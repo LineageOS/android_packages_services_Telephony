@@ -6810,12 +6810,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         // any network types which were set for security reasons.
         if (mApp.checkCallingOrSelfPermission(Manifest.permission.MODIFY_PHONE_STATE)
                 != PERMISSION_GRANTED
-                && (reason == TelephonyManager.ALLOWED_NETWORK_TYPES_REASON_ENABLE_2G
-                || reason == TelephonyManager.ALLOWED_NETWORK_TYPES_REASON_USER_RESTRICTIONS)) {
+                && reason == TelephonyManager.ALLOWED_NETWORK_TYPES_REASON_ENABLE_2G) {
             throw new SecurityException(
                     "setAllowedNetworkTypesForReason cannot be called with carrier privileges for"
-                            + " reason "
-                            + reason);
+                            + " reason " + reason);
         }
         if (!TelephonyManager.isValidAllowedNetworkTypesReason(reason)) {
             loge("setAllowedNetworkTypesForReason: Invalid allowed network type reason: " + reason);
