@@ -44,8 +44,10 @@ import static com.google.common.truth.Truth.assertThat;
 import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.anyInt;
 import static org.mockito.Mockito.anyString;
+import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.eq;
 import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -58,6 +60,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.PersistableBundle;
+import android.os.SystemClock;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.telecom.TelecomManager;
@@ -89,6 +92,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import java.util.Collections;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Unit Test for NotificationMgr
@@ -128,6 +132,7 @@ public class NotificationMgrTest extends TelephonyTestBase {
 
     private Phone[] mPhones;
     private NotificationMgr mNotificationMgr;
+    private TestableLooper mTestableLooper;
 
     @Before
     public void setUp() throws Exception {
@@ -182,7 +187,10 @@ public class NotificationMgrTest extends TelephonyTestBase {
         when(mTelephonyManager.createForSubscriptionId(anyInt())).thenReturn(mTelephonyManager);
         when(mTelephonyManager.getServiceState()).thenReturn(mServiceState);
 
-        mNotificationMgr = new NotificationMgr(mApp);
+        mTestableLooper = TestableLooper.get(this);
+        // Spy it only to avoid sleep for SystemClock.elapsedRealtime()
+        mNotificationMgr = spy(new NotificationMgr(mApp));
+        mTestableLooper.processAllMessages();
     }
 
     @Test
@@ -278,10 +286,7 @@ public class NotificationMgrTest extends TelephonyTestBase {
         prepareResourcesForNetworkSelection();
 
         mNotificationMgr.updateNetworkSelection(ServiceState.STATE_OUT_OF_SERVICE, TEST_SUB_ID);
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException ignored) {
-        }
+        moveTimeForward(2 /* seconds */);
         mNotificationMgr.updateNetworkSelection(ServiceState.STATE_OUT_OF_SERVICE, TEST_SUB_ID);
 
         verify(mNotificationManager, never()).notify(any(), anyInt(), any());
@@ -298,12 +303,11 @@ public class NotificationMgrTest extends TelephonyTestBase {
         config.putBoolean(CarrierConfigManager.KEY_WORLD_PHONE_BOOL, true);
         when(mCarrierConfigManager.getConfigForSubId(TEST_SUB_ID)).thenReturn(config);
 
+        // update to OOS as base state
         mNotificationMgr.updateNetworkSelection(ServiceState.STATE_OUT_OF_SERVICE, TEST_SUB_ID);
-        // TODO: use effective TestLooper time eclipse instead of sleeping
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException ignored) {
-        }
+        // 10 seconds later
+        moveTimeForward(10 /* seconds */);
+        // verify the behavior on new request
         mNotificationMgr.updateNetworkSelection(ServiceState.STATE_OUT_OF_SERVICE, TEST_SUB_ID);
 
         verifyNotificationSentWithChannelId(NotificationChannelController.CHANNEL_ID_ALERT);
@@ -322,10 +326,7 @@ public class NotificationMgrTest extends TelephonyTestBase {
 
         mNotificationMgr.updateNetworkSelection(ServiceState.STATE_OUT_OF_SERVICE,
                 INVALID_SUBSCRIPTION_ID);
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException ignored) {
-        }
+        moveTimeForward(10 /* seconds */);
         mNotificationMgr.updateNetworkSelection(ServiceState.STATE_OUT_OF_SERVICE,
                 INVALID_SUBSCRIPTION_ID);
 
@@ -339,10 +340,7 @@ public class NotificationMgrTest extends TelephonyTestBase {
         when(mCarrierConfigManager.getConfigForSubId(TEST_SUB_ID)).thenReturn(null);
 
         mNotificationMgr.updateNetworkSelection(ServiceState.STATE_OUT_OF_SERVICE, TEST_SUB_ID);
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException ignored) {
-        }
+        moveTimeForward(10 /* seconds */);
         mNotificationMgr.updateNetworkSelection(ServiceState.STATE_OUT_OF_SERVICE, TEST_SUB_ID);
 
         verify(mNotificationManager, never()).notify(any(), anyInt(), any());
@@ -362,10 +360,7 @@ public class NotificationMgrTest extends TelephonyTestBase {
         when(mCarrierConfigManager.getConfigForSubId(TEST_SUB_ID)).thenReturn(config);
 
         mNotificationMgr.updateNetworkSelection(ServiceState.STATE_OUT_OF_SERVICE, TEST_SUB_ID);
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException ignored) {
-        }
+        moveTimeForward(10 /* seconds */);
         mNotificationMgr.updateNetworkSelection(ServiceState.STATE_OUT_OF_SERVICE, TEST_SUB_ID);
 
         verify(mNotificationManager, never()).notify(any(), anyInt(), any());
@@ -386,10 +381,7 @@ public class NotificationMgrTest extends TelephonyTestBase {
         when(mCarrierConfigManager.getConfigForSubId(TEST_SUB_ID)).thenReturn(config);
 
         mNotificationMgr.updateNetworkSelection(ServiceState.STATE_OUT_OF_SERVICE, TEST_SUB_ID);
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException ignored) {
-        }
+        moveTimeForward(10 /* seconds */);
         mNotificationMgr.updateNetworkSelection(ServiceState.STATE_OUT_OF_SERVICE, TEST_SUB_ID);
 
         verify(mNotificationManager, never()).notify(any(), anyInt(), any());
@@ -410,10 +402,7 @@ public class NotificationMgrTest extends TelephonyTestBase {
         when(mCarrierConfigManager.getConfigForSubId(TEST_SUB_ID)).thenReturn(config);
 
         mNotificationMgr.updateNetworkSelection(ServiceState.STATE_OUT_OF_SERVICE, TEST_SUB_ID);
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException ignored) {
-        }
+        moveTimeForward(10 /* seconds */);
         mNotificationMgr.updateNetworkSelection(ServiceState.STATE_OUT_OF_SERVICE, TEST_SUB_ID);
 
         verify(mNotificationManager, never()).notify(any(), anyInt(), any());
@@ -439,10 +428,7 @@ public class NotificationMgrTest extends TelephonyTestBase {
         when(mCarrierConfigManager.getConfigForSubId(TEST_SUB_ID)).thenReturn(config);
 
         mNotificationMgr.updateNetworkSelection(ServiceState.STATE_OUT_OF_SERVICE, TEST_SUB_ID);
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException ignored) {
-        }
+        moveTimeForward(10 /* seconds */);
         mNotificationMgr.updateNetworkSelection(ServiceState.STATE_OUT_OF_SERVICE, TEST_SUB_ID);
 
         verify(mNotificationManager, never()).notify(any(), anyInt(), any());
@@ -469,10 +455,7 @@ public class NotificationMgrTest extends TelephonyTestBase {
         when(mCarrierConfigManager.getConfigForSubId(TEST_SUB_ID)).thenReturn(config);
 
         mNotificationMgr.updateNetworkSelection(ServiceState.STATE_OUT_OF_SERVICE, TEST_SUB_ID);
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException ignored) {
-        }
+        moveTimeForward(10 /* seconds */);
         mNotificationMgr.updateNetworkSelection(ServiceState.STATE_OUT_OF_SERVICE, TEST_SUB_ID);
 
         verify(mNotificationManager, never()).notify(any(), anyInt(), any());
@@ -500,10 +483,7 @@ public class NotificationMgrTest extends TelephonyTestBase {
         when(mCarrierConfigManager.getConfigForSubId(TEST_SUB_ID)).thenReturn(config);
 
         mNotificationMgr.updateNetworkSelection(ServiceState.STATE_OUT_OF_SERVICE, TEST_SUB_ID);
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException ignored) {
-        }
+        moveTimeForward(10 /* seconds */);
         mNotificationMgr.updateNetworkSelection(ServiceState.STATE_OUT_OF_SERVICE, TEST_SUB_ID);
 
         verifyNotificationSentWithChannelId(NotificationChannelController.CHANNEL_ID_ALERT);
@@ -524,10 +504,7 @@ public class NotificationMgrTest extends TelephonyTestBase {
         when(mCarrierConfigManager.getConfigForSubId(TEST_SUB_ID)).thenReturn(config);
 
         mNotificationMgr.updateNetworkSelection(ServiceState.STATE_OUT_OF_SERVICE, TEST_SUB_ID);
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException ignored) {
-        }
+        moveTimeForward(10 /* seconds */);
         mNotificationMgr.updateNetworkSelection(ServiceState.STATE_OUT_OF_SERVICE, TEST_SUB_ID);
 
         verifyNotificationSentWithChannelId(NotificationChannelController.CHANNEL_ID_ALERT);
@@ -549,10 +526,7 @@ public class NotificationMgrTest extends TelephonyTestBase {
         when(mCarrierConfigManager.getConfigForSubId(TEST_SUB_ID)).thenReturn(config);
 
         mNotificationMgr.updateNetworkSelection(ServiceState.STATE_OUT_OF_SERVICE, TEST_SUB_ID);
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException ignored) {
-        }
+        moveTimeForward(10 /* seconds */);
         mNotificationMgr.updateNetworkSelection(ServiceState.STATE_OUT_OF_SERVICE, TEST_SUB_ID);
 
         verifyNotificationSentWithChannelId(NotificationChannelController.CHANNEL_ID_ALERT);
@@ -572,10 +546,7 @@ public class NotificationMgrTest extends TelephonyTestBase {
         when(mTelephonyManager.getPhoneType()).thenReturn(TelephonyManager.PHONE_TYPE_CDMA);
 
         mNotificationMgr.updateNetworkSelection(ServiceState.STATE_OUT_OF_SERVICE, TEST_SUB_ID);
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException ignored) {
-        }
+        moveTimeForward(10 /* seconds */);
         mNotificationMgr.updateNetworkSelection(ServiceState.STATE_OUT_OF_SERVICE, TEST_SUB_ID);
 
         verify(mNotificationManager, never()).notify(any(), anyInt(), any());
@@ -660,5 +631,12 @@ public class NotificationMgrTest extends TelephonyTestBase {
                 MOBILE_NETWORK_SELECTION_PACKAGE);
         when(mApp.getString(R.string.mobile_network_settings_class)).thenReturn(
                 MOBILE_NETWORK_SELECTION_CLASS);
+    }
+
+    private void moveTimeForward(long seconds) {
+        final long millis = TimeUnit.SECONDS.toMillis(seconds);
+        mTestableLooper.moveTimeForward(millis);
+        mTestableLooper.processAllMessages();
+        doReturn(SystemClock.elapsedRealtime() + millis).when(mNotificationMgr).getTimeStamp();
     }
 }
