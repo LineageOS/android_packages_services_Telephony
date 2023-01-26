@@ -1527,9 +1527,10 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         int selectedDomain = DOMAIN_CS;
 
         setupForDialForDomainSelection(mPhone0, selectedDomain, true);
+        doReturn(mPhone0).when(mImsPhone).getDefaultPhone();
 
         TestTelephonyConnection c = setupForReDialForDomainSelection(
-                mPhone0, selectedDomain, preciseDisconnectCause, disconnectCause, false);
+                mImsPhone, selectedDomain, preciseDisconnectCause, disconnectCause, false);
         c.setEmergencyServiceCategory(eccCategory);
         c.setAddress(TEST_ADDRESS, TelecomManager.PRESENTATION_ALLOWED);
 
@@ -1566,9 +1567,10 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         int selectedDomain = DOMAIN_PS;
 
         setupForDialForDomainSelection(mPhone0, selectedDomain, true);
+        doReturn(mPhone0).when(mImsPhone).getDefaultPhone();
 
         TestTelephonyConnection c = setupForReDialForDomainSelection(
-                mPhone0, selectedDomain, preciseDisconnectCause, disconnectCause, false);
+                mImsPhone, selectedDomain, preciseDisconnectCause, disconnectCause, false);
         c.setEmergencyServiceCategory(eccCategory);
         c.setAddress(TEST_ADDRESS, TelecomManager.PRESENTATION_ALLOWED);
 
