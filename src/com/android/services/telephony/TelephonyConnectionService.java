@@ -2282,7 +2282,7 @@ public class TelephonyConnectionService extends ConnectionService {
 
         if (reasonInfo != null
                 && reasonInfo.getCode() == ImsReasonInfo.CODE_SIP_ALTERNATE_EMERGENCY_CALL) {
-            onEmergencyRedial(c, c.getPhone());
+            onEmergencyRedial(c, c.getPhone().getDefaultPhone());
             return true;
         }
 
@@ -2317,7 +2317,7 @@ public class TelephonyConnectionService extends ConnectionService {
             if (future != null) {
                 future.thenAcceptAsync((result) -> {
                     Log.d(this, "reselectDomain-complete");
-                    onEmergencyRedialOnDomain(c, c.getPhone(), result);
+                    onEmergencyRedialOnDomain(c, c.getPhone().getDefaultPhone(), result);
                 }, mDomainSelectionMainExecutor);
                 return true;
             }
