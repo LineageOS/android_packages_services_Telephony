@@ -400,7 +400,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private SharedPreferences mTelephonySharedPreferences;
     private PhoneConfigurationManager mPhoneConfigurationManager;
     private final RadioInterfaceCapabilityController mRadioInterfaceCapabilities;
-    private final Telephony2gUpdater mTelephony2gUpdater;
 
     /** User Activity */
     private AtomicBoolean mNotifyUserActivity;
@@ -2458,8 +2457,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         mRadioInterfaceCapabilities = RadioInterfaceCapabilityController.getInstance();
         mNotifyUserActivity = new AtomicBoolean(false);
         PropertyInvalidatedCache.invalidateCache(TelephonyManager.CACHE_KEY_PHONE_ACCOUNT_TO_SUBID);
-        mTelephony2gUpdater = new Telephony2gUpdater(mApp);
-        mTelephony2gUpdater.init();
         publish();
         CarrierAllowListInfo.loadInstance(mApp);
     }
