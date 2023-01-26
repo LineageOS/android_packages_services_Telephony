@@ -21,7 +21,9 @@ import static android.telephony.DomainSelectionService.SELECTOR_TYPE_CALLING;
 import android.annotation.NonNull;
 import android.content.Context;
 import android.os.Looper;
+import android.os.PersistableBundle;
 import android.telephony.Annotation.DisconnectCauses;
+import android.telephony.CarrierConfigManager;
 import android.telephony.DisconnectCause;
 import android.telephony.DomainSelectionService.SelectionAttributes;
 import android.telephony.NetworkRegistrationInfo;
@@ -29,6 +31,8 @@ import android.telephony.ServiceState;
 import android.telephony.SubscriptionManager;
 import android.telephony.TransportSelectorCallback;
 import android.telephony.ims.ImsReasonInfo;
+
+import com.android.internal.telephony.domainselection.NormalCallDomainSelectionConnection;
 
 /**
  * Implements domain selector for outgoing non-emergency calls.
@@ -131,14 +135,16 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
 
     @Override
     public void onImsRegistrationStateChanged() {
-        logd("onImsRegistrationStateChanged");
+        logd("onImsRegistrationStateChanged. IsImsRegistered: "
+                + mImsStateTracker.isImsRegistered());
         mImsRegStateReceived = true;
         selectDomain();
     }
 
     @Override
     public void onImsMmTelCapabilitiesChanged() {
-        logd("onImsMmTelCapabilitiesChanged");
+        logd("onImsMmTelCapabilitiesChanged. ImsVoiceCap: " + mImsStateTracker.isImsVoiceCapable()
+                + " ImsVideoCap: " + mImsStateTracker.isImsVideoCapable());
         mMmTelCapabilitiesReceived = true;
         selectDomain();
     }
@@ -221,6 +227,33 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
                 || mServiceState.getState() == ServiceState.STATE_EMERGENCY_ONLY);
     }
 
+    private boolean isWpsCallSupportedByIms() {
+        CarrierConfigManager configManager = mContext.getSystemService(CarrierConfigManager.class);
+
+        PersistableBundle config = null;
+        if (configManager != null) {
+            config = configManager.getConfigForSubId(mSelectionAttributes.getSubId());
+        }
+
+        return (config != null)
+                ? config.getBoolean(CarrierConfigManager.KEY_SUPPORT_WPS_OVER_IMS_BOOL) : false;
+    }
+
+    private void handleWpsCall() {
+        if (isWpsCallSupportedByIms()) {
+            logd("WPS call placed over PS");
+            notifyPsSelected();
+        } else {
+            if (isOutOfService()) {
+                loge("Cannot place call in current ServiceState: " + mServiceState.getState());
+                notifySelectionTerminated(DisconnectCause.OUT_OF_SERVICE);
+            } else {
+                logd("WPS call placed over CS");
+                notifyCsSelected();
+            }
+        }
+    }
+
     private synchronized void selectDomain() {
         if (mStopDomainSelection || mSelectionAttributes == null
                 || mTransportSelectorCallback == null) {
@@ -294,8 +327,13 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
                 }
             } else if (mImsStateTracker.isImsVoiceCapable()) {
                 logd("IMS is voice capable");
-                // Voice call over PS
-                notifyPsSelected();
+                // TODO(b/266175810) Remove this dependency.
+                if (NormalCallDomainSelectionConnection
+                        .isWpsCall(mSelectionAttributes.getNumber())) {
+                    handleWpsCall();
+                } else {
+                    notifyPsSelected();
+                }
             } else {
                 logd("IMS is not voice capable");
                 // Voice call CS fallback
