@@ -32,6 +32,7 @@ import android.os.CancellationSignal;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.PersistableBundle;
+import android.telecom.TelecomManager;
 import android.telephony.AccessNetworkConstants;
 import android.telephony.CarrierConfigManager;
 import android.telephony.DisconnectCause;
@@ -82,6 +83,7 @@ public class NormalCallDomainSelectorTest {
     @Mock private ImsMmTelManager mMockMmTelManager;
     @Mock private ImsStateTracker mMockImsStateTracker;
     @Mock private DomainSelectorBase.DestroyListener mMockDestroyListener;
+    @Mock private TelecomManager mMockTelecomManager;
 
     @Before
     public void setUp() throws Exception {
@@ -96,6 +98,11 @@ public class NormalCallDomainSelectorTest {
                 .getSystemServiceName(CarrierConfigManager.class);
         doReturn(mMockCarrierConfigMgr).when(mMockContext)
                 .getSystemService(Context.CARRIER_CONFIG_SERVICE);
+
+        doReturn(Context.TELECOM_SERVICE).when(mMockContext)
+                .getSystemServiceName(TelecomManager.class);
+        doReturn(mMockTelecomManager).when(mMockContext)
+                .getSystemService(Context.TELECOM_SERVICE);
 
         doReturn(mMockMmTelManager).when(mMockImsManager).getImsMmTelManager(SUB_ID_1);
         doReturn(mMockMmTelManager).when(mMockImsManager).getImsMmTelManager(SUB_ID_2);
@@ -357,6 +364,47 @@ public class NormalCallDomainSelectorTest {
         config.putBoolean(CarrierConfigManager.KEY_SUPPORT_WPS_OVER_IMS_BOOL, true);
         serviceState.setState(ServiceState.STATE_IN_SERVICE);
         initialize(serviceState, true, false, true, true);
+        mNormalCallDomainSelector.selectDomain(attributes, transportSelectorCallback);
+        assertTrue(transportSelectorCallback.verifyOnWwanSelected());
+        assertTrue(transportSelectorCallback
+                .verifyOnDomainSelected(NetworkRegistrationInfo.DOMAIN_PS));
+    }
+
+    @Test
+    public void testTtyCallDomainSelection() {
+        MockTransportSelectorCallback transportSelectorCallback =
+                new MockTransportSelectorCallback();
+        DomainSelectionService.SelectionAttributes attributes =
+                new DomainSelectionService.SelectionAttributes.Builder(
+                        SLOT_ID, SUB_ID_1, SELECTOR_TYPE_CALLING)
+                        .setCallId(TEST_CALLID)
+                        .setEmergency(false)
+                        .setVideoCall(false)
+                        .setExitedFromAirplaneMode(false)
+                        .build();
+
+        //Case 1: TTY not supported by IMS and TTY enabled
+        doReturn(TelecomManager.TTY_MODE_FULL).when(mMockTelecomManager).getCurrentTtyMode();
+        PersistableBundle config = new PersistableBundle();
+        config.putBoolean(CarrierConfigManager.KEY_CARRIER_VOLTE_TTY_SUPPORTED_BOOL, false);
+        doReturn(config).when(mMockCarrierConfigMgr).getConfigForSubId(SUB_ID_1);
+        ServiceState serviceState = new ServiceState();
+        serviceState.setState(ServiceState.STATE_IN_SERVICE);
+        initialize(serviceState, true, false, true, true);
+        mNormalCallDomainSelector.selectDomain(attributes, transportSelectorCallback);
+        assertTrue(transportSelectorCallback.verifyOnWwanSelected());
+        assertTrue(transportSelectorCallback
+                .verifyOnDomainSelected(NetworkRegistrationInfo.DOMAIN_CS));
+
+        //Case 2: TTY supported by IMS and TTY enabled
+        config.putBoolean(CarrierConfigManager.KEY_CARRIER_VOLTE_TTY_SUPPORTED_BOOL, true);
+        mNormalCallDomainSelector.selectDomain(attributes, transportSelectorCallback);
+        assertTrue(transportSelectorCallback.verifyOnWwanSelected());
+        assertTrue(transportSelectorCallback
+                .verifyOnDomainSelected(NetworkRegistrationInfo.DOMAIN_PS));
+
+        //Case 3: TTY supported by IMS and TTY disabled
+        doReturn(TelecomManager.TTY_MODE_OFF).when(mMockTelecomManager).getCurrentTtyMode();
         mNormalCallDomainSelector.selectDomain(attributes, transportSelectorCallback);
         assertTrue(transportSelectorCallback.verifyOnWwanSelected());
         assertTrue(transportSelectorCallback
