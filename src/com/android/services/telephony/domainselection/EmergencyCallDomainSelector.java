@@ -747,7 +747,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
 
         if ((regResult.getAccessNetwork() == EUTRAN)
                 && ((regResult.getDomain() & NetworkRegistrationInfo.DOMAIN_CS) > 0)) {
-            return UTRAN;
+            if (ratList.contains(UTRAN)) return UTRAN;
         }
 
         return UNKNOWN;
