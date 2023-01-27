@@ -2040,6 +2040,8 @@ public class TelephonyConnectionService extends ConnectionService {
                                         .setVideoState(videoState)
                                         .setIntentExtras(extras)
                                         .setRttTextStream(mNormalCallConnection.getRttTextStream())
+                                        .setIsWpsCall(NormalCallDomainSelectionConnection
+                                                .isWpsCall(number))
                                         .build(),
                                 mNormalCallConnection::registerForCallEvents);
 
@@ -2093,12 +2095,14 @@ public class TelephonyConnectionService extends ConnectionService {
         // If the number is both an MMI code and a supplementary service code,
         // it shall be treated as UT. In this case, domain selection is not performed.
         if (isMmiCode && isSuppServiceCode) {
+            Log.v(LOG_TAG, "UT code not handled by call domain selection.");
             return false;
         }
 
         // Check and select same domain as ongoing call on the same subscription (if exists)
         int activeCallDomain = getActiveCallDomain(phone.getSubId());
-        if (activeCallDomain != NetworkRegistrationInfo.DOMAIN_UNKNOWN) {
+        if (activeCallDomain != NetworkRegistrationInfo.DOMAIN_UNKNOWN
+                && !NormalCallDomainSelectionConnection.isWpsCall(number)) {
             Log.d(LOG_TAG, "Selecting same domain as ongoing call on same subId");
             mNormalCallConnection = connection;
             handleOutgoingCallConnectionByCallDomainSelection(
@@ -2115,6 +2119,7 @@ public class TelephonyConnectionService extends ConnectionService {
         SelectionAttributes selectionAttributes =
                 new SelectionAttributes.Builder(phone.getPhoneId(), phone.getSubId(),
                         SELECTOR_TYPE_CALLING)
+                        .setNumber(number)
                         .setEmergency(false)
                         .setVideoCall(VideoProfile.isVideo(videoState))
                         .build();

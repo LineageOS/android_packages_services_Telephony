@@ -21,7 +21,10 @@ import static android.telephony.DomainSelectionService.SELECTOR_TYPE_CALLING;
 import android.annotation.NonNull;
 import android.content.Context;
 import android.os.Looper;
+import android.os.PersistableBundle;
+import android.telecom.TelecomManager;
 import android.telephony.Annotation.DisconnectCauses;
+import android.telephony.CarrierConfigManager;
 import android.telephony.DisconnectCause;
 import android.telephony.DomainSelectionService.SelectionAttributes;
 import android.telephony.NetworkRegistrationInfo;
@@ -29,6 +32,8 @@ import android.telephony.ServiceState;
 import android.telephony.SubscriptionManager;
 import android.telephony.TransportSelectorCallback;
 import android.telephony.ims.ImsReasonInfo;
+
+import com.android.internal.telephony.domainselection.NormalCallDomainSelectionConnection;
 
 /**
  * Implements domain selector for outgoing non-emergency calls.
@@ -131,14 +136,16 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
 
     @Override
     public void onImsRegistrationStateChanged() {
-        logd("onImsRegistrationStateChanged");
+        logd("onImsRegistrationStateChanged. IsImsRegistered: "
+                + mImsStateTracker.isImsRegistered());
         mImsRegStateReceived = true;
         selectDomain();
     }
 
     @Override
     public void onImsMmTelCapabilitiesChanged() {
-        logd("onImsMmTelCapabilitiesChanged");
+        logd("onImsMmTelCapabilitiesChanged. ImsVoiceCap: " + mImsStateTracker.isImsVoiceCapable()
+                + " ImsVideoCap: " + mImsStateTracker.isImsVideoCapable());
         mMmTelCapabilitiesReceived = true;
         selectDomain();
     }
@@ -221,6 +228,54 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
                 || mServiceState.getState() == ServiceState.STATE_EMERGENCY_ONLY);
     }
 
+    private boolean isWpsCallSupportedByIms() {
+        CarrierConfigManager configManager = mContext.getSystemService(CarrierConfigManager.class);
+
+        PersistableBundle config = null;
+        if (configManager != null) {
+            config = configManager.getConfigForSubId(mSelectionAttributes.getSubId());
+        }
+
+        return (config != null)
+                ? config.getBoolean(CarrierConfigManager.KEY_SUPPORT_WPS_OVER_IMS_BOOL) : false;
+    }
+
+    private void handleWpsCall() {
+        if (isWpsCallSupportedByIms()) {
+            logd("WPS call placed over PS");
+            notifyPsSelected();
+        } else {
+            if (isOutOfService()) {
+                loge("Cannot place call in current ServiceState: " + mServiceState.getState());
+                notifySelectionTerminated(DisconnectCause.OUT_OF_SERVICE);
+            } else {
+                logd("WPS call placed over CS");
+                notifyCsSelected();
+            }
+        }
+    }
+
+    private boolean isTtySupportedByIms() {
+        CarrierConfigManager configManager = mContext.getSystemService(CarrierConfigManager.class);
+
+        PersistableBundle config = null;
+        if (configManager != null) {
+            config = configManager.getConfigForSubId(mSelectionAttributes.getSubId());
+        }
+
+        return (config != null)
+                && config.getBoolean(CarrierConfigManager.KEY_CARRIER_VOLTE_TTY_SUPPORTED_BOOL);
+    }
+
+    private boolean isTtyModeEnabled() {
+        TelecomManager tm = mContext.getSystemService(TelecomManager.class);
+        if (tm == null) {
+            loge("isTtyModeEnabled: telecom not available");
+            return false;
+        }
+        return tm.getCurrentTtyMode() != TelecomManager.TTY_MODE_OFF;
+    }
+
     private synchronized void selectDomain() {
         if (mStopDomainSelection || mSelectionAttributes == null
                 || mTransportSelectorCallback == null) {
@@ -265,49 +320,71 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
             return;
         }
 
-        if (mImsStateTracker.isMmTelFeatureAvailable()) {
-
-            if (!mImsRegStateReceived || !mMmTelCapabilitiesReceived) {
-                loge("Waiting for ImsState and MmTelCapabilities callbacks");
-                return;
+        if (!mImsStateTracker.isMmTelFeatureAvailable()) {
+            logd("MmTelFeatureAvailable unavailable");
+            if (isOutOfService()) {
+                loge("Cannot place call in current ServiceState: " + mServiceState.getState());
+                notifySelectionTerminated(DisconnectCause.OUT_OF_SERVICE);
+            } else {
+                notifyCsSelected();
             }
+            return;
+        }
 
-            if (!mImsStateTracker.isImsRegistered()) {
-                logd("IMS is NOT registered");
-                if (isOutOfService()) {
-                    loge("Cannot place call in current ServiceState: " + mServiceState.getState());
-                    notifySelectionTerminated(DisconnectCause.OUT_OF_SERVICE);
-                } else {
-                    notifyCsSelected();
-                }
-                return;
+        if (!mImsRegStateReceived || !mMmTelCapabilitiesReceived) {
+            loge("Waiting for ImsState and MmTelCapabilities callbacks");
+            return;
+        }
+
+        // Check IMS registration state.
+        if (!mImsStateTracker.isImsRegistered()) {
+            logd("IMS is NOT registered");
+            if (isOutOfService()) {
+                loge("Cannot place call in current ServiceState: " + mServiceState.getState());
+                notifySelectionTerminated(DisconnectCause.OUT_OF_SERVICE);
+            } else {
+                notifyCsSelected();
             }
+            return;
+        }
 
-            if (mSelectionAttributes.isVideoCall()) {
-                logd("It's a video call");
-                if (mImsStateTracker.isImsVideoCapable()) {
-                    logd("IMS is video capable");
-                    notifyPsSelected();
-                } else {
-                    logd("IMS is not video capable. Ending the call");
-                    notifySelectionTerminated(DisconnectCause.OUTGOING_FAILURE);
-                }
-            } else if (mImsStateTracker.isImsVoiceCapable()) {
-                logd("IMS is voice capable");
-                // Voice call over PS
+        // Check TTY
+        if (isTtyModeEnabled() && !isTtySupportedByIms()) {
+            if (isOutOfService()) {
+                loge("Cannot place call in current ServiceState: " + mServiceState.getState());
+                notifySelectionTerminated(DisconnectCause.OUT_OF_SERVICE);
+            } else {
+                notifyCsSelected();
+            }
+            return;
+        }
+
+        // Handle video call.
+        if (mSelectionAttributes.isVideoCall()) {
+            logd("It's a video call");
+            if (mImsStateTracker.isImsVideoCapable()) {
+                logd("IMS is video capable");
                 notifyPsSelected();
             } else {
-                logd("IMS is not voice capable");
-                // Voice call CS fallback
-                if (isOutOfService()) {
-                    loge("Cannot place call in current ServiceState: " + mServiceState.getState());
-                    notifySelectionTerminated(DisconnectCause.OUT_OF_SERVICE);
-                } else {
-                    notifyCsSelected();
-                }
+                logd("IMS is not video capable. Ending the call");
+                notifySelectionTerminated(DisconnectCause.OUTGOING_FAILURE);
+            }
+            return;
+        }
+
+        // Handle voice call.
+        if (mImsStateTracker.isImsVoiceCapable()) {
+            logd("IMS is voice capable");
+            // TODO(b/266175810) Remove this dependency.
+            if (NormalCallDomainSelectionConnection
+                    .isWpsCall(mSelectionAttributes.getNumber())) {
+                handleWpsCall();
+            } else {
+                notifyPsSelected();
             }
         } else {
-            logd("IMS is not registered or unavailable");
+            logd("IMS is not voice capable");
+            // Voice call CS fallback
             if (isOutOfService()) {
                 loge("Cannot place call in current ServiceState: " + mServiceState.getState());
                 notifySelectionTerminated(DisconnectCause.OUT_OF_SERVICE);
