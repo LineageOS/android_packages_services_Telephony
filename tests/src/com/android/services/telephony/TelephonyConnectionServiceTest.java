@@ -207,7 +207,6 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         mTestConnectionService.setDisconnectCauseFactory(mDisconnectCauseFactory);
         mTestConnectionService.onCreate();
         mTestConnectionService.setTelephonyManagerProxy(mTelephonyManagerProxy);
-        DomainSelectionResolver.setDomainSelectionResolver(mDomainSelectionResolver);
         replaceInstance(TelephonyConnectionService.class, "mDomainSelectionResolver",
                 mTestConnectionService, mDomainSelectionResolver);
         mEmergencyStateTracker = Mockito.mock(EmergencyStateTracker.class);
