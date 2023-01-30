@@ -294,13 +294,16 @@ public class TelephonyConnectionTest {
     public void testDomainSelectionDisconnected_Redial() {
         TestTelephonyConnection c = new TestTelephonyConnection();
         c.setOriginalConnection(mImsPhoneConnection);
+
         doReturn(Call.State.DISCONNECTED).when(mImsPhoneConnection)
                 .getState();
         c.setTelephonyConnectionService(mTelephonyConnectionService);
         doReturn(true).when(mTelephonyConnectionService)
                 .maybeReselectDomain(any(), anyInt(), any());
+        c.resetOriginalConnectionCleared();
         c.updateState();
 
         assertNotEquals(STATE_DISCONNECTED, c.getState());
+        assertTrue(c.isOriginalConnectionCleared());
     }
 }
