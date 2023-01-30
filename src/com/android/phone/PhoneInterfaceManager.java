@@ -10204,6 +10204,16 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
+    public void showSwitchToManagedProfileDialog() {
+        enforceModifyPermission();
+
+        Intent intent = new Intent();
+        intent.setClass(mApp, ErrorDialogActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        mApp.startActivity(intent);
+    }
+
+    @Override
     public String getMmsUAProfUrl(int subId) {
         //TODO investigate if this API should require proper permission check in R b/133791609
         final long identity = Binder.clearCallingIdentity();

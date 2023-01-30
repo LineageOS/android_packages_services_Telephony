@@ -573,6 +573,14 @@
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:theme="@style/Theme.Transparent"/>
 
+        <activity
+            android:name="com.android.phone.ErrorDialogActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTop"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:theme="@style/Theme.Telephony.Transparent"/>
+
         <service
             android:name="com.android.phone.vvm.RemoteVvmTaskManager"
             android:exported="false"/>
