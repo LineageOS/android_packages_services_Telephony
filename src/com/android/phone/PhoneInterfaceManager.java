@@ -2953,6 +2953,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     public boolean setRadioPower(boolean turnOn) {
         enforceModifyPermission();
 
+        if (!turnOn) {
+            log("setRadioPower off: callingPackage=" + getCurrentPackageName());
+        }
+
         final long identity = Binder.clearCallingIdentity();
         try {
             final Phone defaultPhone = PhoneFactory.getDefaultPhone();
@@ -2971,6 +2975,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     public boolean setRadioPowerForSubscriber(int subId, boolean turnOn) {
         enforceModifyPermission();
 
+        if (!turnOn) {
+            log("setRadioPowerForSubscriber off: subId=" + subId
+                    + ",callingPackage=" + getCurrentPackageName());
+        }
         final long identity = Binder.clearCallingIdentity();
         try {
             final Phone phone = getPhone(subId);
@@ -3005,6 +3013,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             @TelephonyManager.RadioPowerReason int reason) {
         enforceModifyPermission();
 
+        log("requestRadioPowerOffForReason: subId=" + subId
+                + ",reason=" + reason + ",callingPackage=" + getCurrentPackageName());
         final long identity = Binder.clearCallingIdentity();
         try {
             final Phone phone = getPhone(subId);
@@ -3776,7 +3786,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     private static void log(String msg) {
-        Log.d(LOG_TAG, "[PhoneIntfMgr] " + msg);
+        Log.d(LOG_TAG, msg);
     }
 
     private static void logv(String msg) {
