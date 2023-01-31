@@ -2330,10 +2330,12 @@ public class TelephonyConnectionService extends ConnectionService {
 
             CompletableFuture<Integer> future =
                     mEmergencyCallDomainSelectionConnection.reselectDomain(attr);
+            // TeleponyConnection will clear original connection. Keep the reference to Phone.
+            final Phone phone = c.getPhone().getDefaultPhone();
             if (future != null) {
                 future.thenAcceptAsync((result) -> {
                     Log.d(this, "reselectDomain-complete");
-                    onEmergencyRedialOnDomain(c, c.getPhone().getDefaultPhone(), result);
+                    onEmergencyRedialOnDomain(c, phone, result);
                 }, mDomainSelectionMainExecutor);
                 return true;
             }
