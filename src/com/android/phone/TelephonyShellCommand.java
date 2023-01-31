@@ -57,6 +57,7 @@ import com.android.internal.telephony.emergency.EmergencyNumberTracker;
 import com.android.internal.telephony.util.TelephonyUtils;
 import com.android.modules.utils.BasicShellCommandHandler;
 import com.android.phone.callcomposer.CallComposerPictureManager;
+import com.android.phone.euicc.EuiccUiDispatcherActivity;
 import com.android.phone.utils.CarrierAllowListInfo;
 
 import java.io.IOException;
@@ -120,6 +121,9 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
     private static final String CC_SET_VALUE = "set-value";
     private static final String CC_SET_VALUES_FROM_XML = "set-values-from-xml";
     private static final String CC_CLEAR_VALUES = "clear-values";
+
+    private static final String EUICC_SUBCOMMAND = "euicc";
+    private static final String EUICC_SET_UI_COMPONENT = "set-euicc-uicomponent";
 
     private static final String GBA_SUBCOMMAND = "gba";
     private static final String GBA_SET_SERVICE = "set-service";
@@ -313,6 +317,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                 return handleDataTestModeCommand();
             case END_BLOCK_SUPPRESSION:
                 return handleEndBlockSuppressionCommand();
+            case EUICC_SUBCOMMAND:
+                return handleEuiccCommand();
             case GBA_SUBCOMMAND:
                 return handleGbaCommand();
             case D2D_SUBCOMMAND:
@@ -606,6 +612,15 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         pw.println("    Options are:");
         pw.println("      -s: The SIM slot ID to clear carrier config values for. If no option");
         pw.println("          is specified, it will choose the default voice SIM slot.");
+    }
+
+    private void onHelpEuicc() {
+        PrintWriter pw = getOutPrintWriter();
+        pw.println("Euicc Commands:");
+        pw.println("  euicc set-euicc-uicomponent COMPONENT_NAME PACKAGE_NAME");
+        pw.println("  Sets the Euicc Ui-Component which handles EuiccService Actions.");
+        pw.println("  COMPONENT_NAME: The component name which handles UI Actions.");
+        pw.println("  PACKAGE_NAME: THe package name in which ui component belongs.");
     }
 
     private void onHelpGba() {
@@ -2054,6 +2069,35 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
 
         if (BlockedNumberContract.SystemContract.getBlockSuppressionStatus(mContext).isSuppressed) {
             BlockedNumberContract.SystemContract.endBlockSuppression(mContext);
+        }
+        return 0;
+    }
+
+    private int handleEuiccCommand() {
+        String arg = getNextArg();
+        if (arg == null) {
+            onHelpEuicc();
+            return 0;
+        }
+
+        switch (arg) {
+            case EUICC_SET_UI_COMPONENT: {
+                return handleEuiccServiceCommand();
+            }
+        }
+        return -1;
+    }
+
+    private int handleEuiccServiceCommand() {
+        String uiComponent = getNextArg();
+        String packageName = getNextArg();
+        if (packageName == null || uiComponent == null) {
+            return -1;
+        }
+        EuiccUiDispatcherActivity.setTestEuiccUiComponent(packageName, uiComponent);
+        if (VDBG) {
+            Log.v(LOG_TAG, "euicc set-euicc-uicomponent " + uiComponent +" "
+                    + packageName);
         }
         return 0;
     }
