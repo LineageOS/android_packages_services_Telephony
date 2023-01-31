@@ -595,6 +595,30 @@ public class TelephonyConnectionService extends ConnectionService {
         public void onSelectionTerminated(@DisconnectCauses int cause) {
             if (mEmergencyCallDomainSelectionConnection != null) {
                 Log.i(this, "onSelectionTerminated cause=" + cause);
+
+                // Cross stack redial
+                if (cause == android.telephony.DisconnectCause.EMERGENCY_TEMP_FAILURE
+                        || cause == android.telephony.DisconnectCause.EMERGENCY_PERM_FAILURE) {
+                    if (mEmergencyConnection != null) {
+                        final boolean isPermanentFailure =
+                                cause == android.telephony.DisconnectCause.EMERGENCY_PERM_FAILURE;
+                        Log.i(this, "onSelectionTerminated trigger cross stack redial"
+                                + " permanent=" + isPermanentFailure);
+                        mDomainSelectionMainExecutor.execute(() -> {
+                            Log.i(this, "onSelectionTerminated execute cross stack redial"
+                                    + " permanent=" + isPermanentFailure);
+                            TelephonyConnection c = mEmergencyConnection;
+                            Phone phone = mEmergencyCallDomainSelectionConnection.getPhone();
+                            mEmergencyConnection.removeTelephonyConnectionListener(
+                                    mEmergencyConnectionListener);
+                            mEmergencyStateTracker.endCall(
+                                    mEmergencyConnection.getTelecomCallId());
+                            releaseEmergencyCallDomainSelection(true);
+                            retryOutgoingOriginalConnection(c, phone, isPermanentFailure);
+                        });
+                        return;
+                    }
+                }
                 mEmergencyCallDomainSelectionConnection = null;
                 if (mEmergencyConnection != null) {
                     mEmergencyConnection.hangup(android.telephony.DisconnectCause.OUT_OF_NETWORK);
@@ -658,7 +682,7 @@ public class TelephonyConnectionService extends ConnectionService {
 
         @Override
         public void onOriginalConnectionRetry(TelephonyConnection c, boolean isPermanentFailure) {
-            retryOutgoingOriginalConnection(c, isPermanentFailure);
+            retryOutgoingOriginalConnection(c, c.getPhone(), isPermanentFailure);
         }
     };
 
@@ -1809,7 +1833,7 @@ public class TelephonyConnectionService extends ConnectionService {
     // Update the mEmergencyRetryCache by removing the Phone used to call the last failed emergency
     // number and then moving it to the back of the queue if it is not a permanent failure cause
     // from the modem.
-    private void updateCachedConnectionPhonePair(TelephonyConnection c,
+    private void updateCachedConnectionPhonePair(TelephonyConnection c, Phone phone,
             boolean isPermanentFailure) {
         // No cache exists, create a new one.
         if (mEmergencyRetryCache == null) {
@@ -1824,7 +1848,7 @@ public class TelephonyConnectionService extends ConnectionService {
         Queue<Phone> cachedPhones = mEmergencyRetryCache.second;
         // Need to refer default phone considering ImsPhone because
         // cachedPhones is a list that contains default phones.
-        Phone phoneUsed = c.getPhone().getDefaultPhone();
+        Phone phoneUsed = phone.getDefaultPhone();
         if (phoneUsed == null) {
             return;
         }
@@ -1853,9 +1877,10 @@ public class TelephonyConnectionService extends ConnectionService {
      * This will continue until there are no more slots to dial on.
      */
     @VisibleForTesting
-    public void retryOutgoingOriginalConnection(TelephonyConnection c, boolean isPermanentFailure) {
-        int phoneId = (c.getPhone() == null) ? -1 : c.getPhone().getPhoneId();
-        updateCachedConnectionPhonePair(c, isPermanentFailure);
+    public void retryOutgoingOriginalConnection(TelephonyConnection c,
+            Phone phone, boolean isPermanentFailure) {
+        int phoneId = (phone == null) ? -1 : phone.getPhoneId();
+        updateCachedConnectionPhonePair(c, phone, isPermanentFailure);
         // Pull next phone to use from the cache or null if it is empty
         Phone newPhoneToUse = (mEmergencyRetryCache.second != null)
                 ? mEmergencyRetryCache.second.peek() : null;

@@ -80,6 +80,7 @@ import android.telephony.AccessNetworkConstants;
 import android.telephony.BarringInfo;
 import android.telephony.CarrierConfigManager;
 import android.telephony.CellIdentityLte;
+import android.telephony.DisconnectCause;
 import android.telephony.DomainSelectionService;
 import android.telephony.DomainSelectionService.SelectionAttributes;
 import android.telephony.EmergencyRegResult;
@@ -1106,6 +1107,27 @@ public class EmergencyCallDomainSelectorTest {
         verify(mTransportSelectorCallback, times(1)).onWlanSelected();
     }
 
+    @Test
+    public void testDualSimInvalidSubscription() throws Exception {
+        createSelector(SLOT_0_SUB_ID);
+        unsolBarringInfoChanged(false);
+        doReturn(2).when(mTelephonyManager).getActiveModemCount();
+        doReturn(TelephonyManager.SIM_STATE_PIN_REQUIRED)
+                .when(mTelephonyManager).getSimState(anyInt());
+
+        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_UNKNOWN,
+                0, false, false, 0, 0, "", "", "jp");
+        SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
+        mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
+        processAllMessages();
+
+        bindImsServiceUnregistered();
+        processAllMessages();
+
+        verify(mTransportSelectorCallback, times(1))
+                .onSelectionTerminated(eq(DisconnectCause.EMERGENCY_PERM_FAILURE));
+    }
+
     private void createSelector(int subId) throws Exception {
         mDomainSelector = new EmergencyCallDomainSelector(
                 mContext, SLOT_0, subId, mHandlerThread.getLooper(),
@@ -1174,9 +1196,19 @@ public class EmergencyCallDomainSelectorTest {
             @NetworkRegistrationInfo.Domain int domain,
             boolean isVopsSupported, boolean isEmcBearerSupported, int emc, int emf,
             @NonNull String mcc, @NonNull String mnc) {
+        return getEmergencyRegResult(accessNetwork, regState, domain, isVopsSupported,
+                isEmcBearerSupported, emc, emf, mcc, mnc, "");
+    }
+
+    private static EmergencyRegResult getEmergencyRegResult(
+            @AccessNetworkConstants.RadioAccessNetworkType int accessNetwork,
+            @NetworkRegistrationInfo.RegistrationState int regState,
+            @NetworkRegistrationInfo.Domain int domain,
+            boolean isVopsSupported, boolean isEmcBearerSupported, int emc, int emf,
+            @NonNull String mcc, @NonNull String mnc, @NonNull String iso) {
         return new EmergencyRegResult(accessNetwork, regState,
                 domain, isVopsSupported, isEmcBearerSupported,
-                emc, emf, mcc, mnc, "");
+                emc, emf, mcc, mnc, iso);
     }
 
     private static PersistableBundle getDefaultPersistableBundle() {
