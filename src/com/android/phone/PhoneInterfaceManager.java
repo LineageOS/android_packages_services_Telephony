@@ -143,6 +143,9 @@ import android.telephony.ims.aidl.IRcsConfigCallback;
 import android.telephony.ims.feature.ImsFeature;
 import android.telephony.ims.stub.ImsConfigImplBase;
 import android.telephony.ims.stub.ImsRegistrationImplBase;
+import android.telephony.satellite.ISatellitePositionUpdateCallback;
+import android.telephony.satellite.PointingInfo;
+import android.telephony.satellite.SatelliteManager;
 import android.text.TextUtils;
 import android.util.ArraySet;
 import android.util.EventLog;
@@ -185,6 +188,7 @@ import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.ProxyController;
 import com.android.internal.telephony.RIL;
 import com.android.internal.telephony.RILConstants;
+import com.android.internal.telephony.RILUtils;
 import com.android.internal.telephony.RadioInterfaceCapabilityController;
 import com.android.internal.telephony.ServiceStateTracker;
 import com.android.internal.telephony.SmsApplication;
@@ -251,6 +255,7 @@ import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Consumer;
@@ -376,6 +381,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private static final int EVENT_IS_VONR_ENABLED_DONE = 116;
     private static final int CMD_PURCHASE_PREMIUM_CAPABILITY = 117;
     private static final int EVENT_PURCHASE_PREMIUM_CAPABILITY_DONE = 118;
+    private static final int CMD_START_SATELLITE_POSITION_UPDATES = 119;
+    private static final int EVENT_START_SATELLITE_POSITION_UPDATES_DONE = 120;
+    private static final int CMD_STOP_SATELLITE_POSITION_UPDATES = 121;
+    private static final int EVENT_STOP_SATELLITE_POSITION_UPDATES_DONE = 122;
     // Parameters of select command.
     private static final int SELECT_COMMAND = 0xA4;
     private static final int SELECT_P1 = 0x04;
@@ -406,6 +415,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private static final int USER_ACTIVITY_NOTIFICATION_DELAY = 200;
 
     private Set<Integer> mCarrierPrivilegeTestOverrideSubIds = new ArraySet<>();
+    private Map<Integer, SatellitePositionUpdateHandler> mSatellitePositionUpdateHandlers =
+            new ConcurrentHashMap<>();
 
     private static final String PREF_CARRIERS_ALPHATAG_PREFIX = "carrier_alphtag_";
     private static final String PREF_CARRIERS_NUMBER_PREFIX = "carrier_number_";
@@ -498,6 +509,46 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 @NonNull IIntegerConsumer callback) {
             this.capability = capability;
             this.callback = callback;
+        }
+    }
+
+    private static final class SatellitePositionUpdateHandler extends Handler {
+        public static final int EVENT_POSITION_UPDATE = 1;
+        public static final int EVENT_MESSAGE_TRANSFER_STATE_UPDATE = 2;
+
+        private final ISatellitePositionUpdateCallback mCallback;
+
+        SatellitePositionUpdateHandler(ISatellitePositionUpdateCallback callback, Looper looper) {
+            super(looper);
+            mCallback = callback;
+        }
+
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            switch (msg.what) {
+                case EVENT_POSITION_UPDATE: {
+                    AsyncResult ar = (AsyncResult) msg.obj;
+                    PointingInfo pointingInfo = (PointingInfo) ar.result;
+                    try {
+                        mCallback.onSatellitePositionUpdate(pointingInfo);
+                    } catch (RemoteException e) {
+                        loge("EVENT_POSITION_UPDATE RemoteException: " + e);
+                    }
+                    break;
+                }
+                case EVENT_MESSAGE_TRANSFER_STATE_UPDATE: {
+                    AsyncResult ar = (AsyncResult) msg.obj;
+                    int state = (int) ar.result;
+                    try {
+                        mCallback.onMessageTransferStateUpdate(state);
+                    } catch (RemoteException e) {
+                        loge("EVENT_MESSAGE_TRANSFER_STATE_UPDATE RemoteException: " + e);
+                    }
+                    break;
+                }
+                default:
+                    loge("SatellitePositionUpdateHandler unknown event: " + msg.what);
+            }
         }
     }
 
@@ -2246,6 +2297,76 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                                 .prepareUnattendedReboot(request.workSource);
                     notifyRequester(request);
                     break;
+
+                case CMD_START_SATELLITE_POSITION_UPDATES: {
+                    request = (MainThreadRequest) msg.obj;
+                    onCompleted =
+                            obtainMessage(EVENT_START_SATELLITE_POSITION_UPDATES_DONE, request);
+                    Phone phone = getPhoneFromRequest(request);
+                    if (phone != null) {
+                        phone.startSatellitePositionUpdates(onCompleted);
+                    } else {
+                        loge("startSatellitePositionUpdates: No phone object");
+                        request.result = SatelliteManager.SATELLITE_SERVICE_REQUEST_FAILED;
+                        notifyRequester(request);
+                    }
+                    break;
+                }
+
+                case EVENT_START_SATELLITE_POSITION_UPDATES_DONE: {
+                    ar = (AsyncResult) msg.obj;
+                    request = (MainThreadRequest) ar.userObj;
+                    if (ar.exception == null) {
+                        request.result = SatelliteManager.SATELLITE_SERVICE_SUCCESS;
+                    } else {
+                        request.result = SatelliteManager.SATELLITE_SERVICE_ERROR;
+                        if (ar.exception instanceof CommandException) {
+                            CommandException.Error error =
+                                    ((CommandException) (ar.exception)).getCommandError();
+                            request.result = RILUtils.convertToSatelliteError(error);
+                            loge("startSatellitePositionUpdates CommandException: " + ar.exception);
+                        } else {
+                            loge("startSatellitePositionUpdates unknown exception:" + ar.exception);
+                        }
+                    }
+                    notifyRequester(request);
+                    break;
+                }
+
+                case CMD_STOP_SATELLITE_POSITION_UPDATES: {
+                    request = (MainThreadRequest) msg.obj;
+                    onCompleted =
+                            obtainMessage(EVENT_STOP_SATELLITE_POSITION_UPDATES_DONE, request);
+                    Phone phone = getPhoneFromRequest(request);
+                    if (phone != null) {
+                        phone.stopSatellitePositionUpdates(onCompleted);
+                    } else {
+                        loge("stopSatellitePositionUpdates: No phone object");
+                        request.result = SatelliteManager.SATELLITE_SERVICE_REQUEST_FAILED;
+                        notifyRequester(request);
+                    }
+                    break;
+                }
+
+                case EVENT_STOP_SATELLITE_POSITION_UPDATES_DONE: {
+                    ar = (AsyncResult) msg.obj;
+                    request = (MainThreadRequest) ar.userObj;
+                    if (ar.exception == null) {
+                        request.result = SatelliteManager.SATELLITE_SERVICE_SUCCESS;
+                    } else {
+                        request.result = SatelliteManager.SATELLITE_SERVICE_ERROR;
+                        if (ar.exception instanceof CommandException) {
+                            CommandException.Error error =
+                                    ((CommandException) (ar.exception)).getCommandError();
+                            request.result = RILUtils.convertToSatelliteError(error);
+                            loge("stopSatellitePositionUpdates CommandException: " + ar.exception);
+                        } else {
+                            loge("stopSatellitePositionUpdates unknown exception:" + ar.exception);
+                        }
+                    }
+                    notifyRequester(request);
+                    break;
+                }
 
                 default:
                     Log.w(LOG_TAG, "MainThreadHandler: unexpected message code: " + msg.what);
@@ -12043,6 +12164,94 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }  finally {
             Binder.restoreCallingIdentity(identity);
         }
+    }
+
+    /**
+     * Start receiving satellite position updates.
+     * This can be called by the pointing UI when the user starts pointing to the satellite.
+     * Modem should continue to report the pointing input as the device or satellite moves.
+     *
+     * @param subId The subId to start satellite position updates for.
+     * @param callbackId The callback ID associating the public SatellitePositionUpdateCallback to
+     *                   the internal ISatellitePositionUpdateCallback below.
+     * @param callback The callback to notify of changes in satellite position.
+     * @return The result of the operation.
+     */
+    @Override
+    @SatelliteManager.SatelliteServiceResult public int startSatellitePositionUpdates(int subId,
+            int callbackId, @NonNull ISatellitePositionUpdateCallback callback) {
+        // TODO: check for SATELLITE_COMMUNICATION permission
+        Phone phone = getPhone(subId);
+        if (phone == null) {
+            loge("startSatellitePositionUpdates called with invalid subId: " + subId
+                    + ". Retrying with default phone.");
+            phone = getDefaultPhone();
+            if (phone == null) {
+                loge("startSatellitePositionUpdates failed with no phone object.");
+                return SatelliteManager.SATELLITE_SERVICE_REQUEST_FAILED;
+            }
+        }
+
+        if (mSatellitePositionUpdateHandlers.containsKey(callbackId)) {
+            log("startSatellitePositionUpdates: callback already registered: " + callbackId);
+            return SatelliteManager.SATELLITE_SERVICE_SUCCESS;
+        }
+
+        SatellitePositionUpdateHandler handler =
+                new SatellitePositionUpdateHandler(callback, Looper.getMainLooper());
+        phone.registerForSatellitePointingInfoChanged(handler,
+                SatellitePositionUpdateHandler.EVENT_POSITION_UPDATE, null);
+        phone.registerForSatelliteMessagesTransferComplete(handler,
+                SatellitePositionUpdateHandler.EVENT_MESSAGE_TRANSFER_STATE_UPDATE, null);
+        mSatellitePositionUpdateHandlers.put(callbackId, handler);
+
+        int result = (int) sendRequest(CMD_START_SATELLITE_POSITION_UPDATES, null, subId);
+        if (DBG) log("startSatellitePositionUpdates result: " + result);
+        return result;
+    }
+
+    /**
+     * Stop receiving satellite position updates.
+     * This can be called by the pointing UI when the user stops pointing to the satellite.
+     *
+     * @param subId The subId to stop satellite position updates for.
+     * @param callbackId The ID of the callback that was passed in {@link
+     *                   #startSatellitePositionUpdates(int, int, ISatellitePositionUpdateCallback)}
+     * @return The result of the operation.
+     */
+    @Override
+    @SatelliteManager.SatelliteServiceResult public int stopSatellitePositionUpdates(int subId,
+            int callbackId) {
+        // TODO: check for SATELLITE_COMMUNICATION permission
+        Phone phone = getPhone(subId);
+        if (phone == null) {
+            loge("stopSatellitePositionUpdates called with invalid subId: " + subId
+                    + ". Retrying with default phone.");
+            phone = getDefaultPhone();
+            if (phone == null) {
+                loge("stopSatellitePositionUpdates failed with no phone object.");
+                return SatelliteManager.SATELLITE_SERVICE_REQUEST_FAILED;
+            }
+        }
+
+        SatellitePositionUpdateHandler handler =
+                mSatellitePositionUpdateHandlers.remove(callbackId);
+        if (handler == null) {
+            loge("stopSatellitePositionUpdates: No SatellitePositionArgument");
+            return SatelliteManager.SATELLITE_SERVICE_REQUEST_FAILED;
+        } else {
+            phone.unregisterForSatellitePointingInfoChanged(handler);
+            phone.unregisterForSatelliteMessagesTransferComplete(handler);
+        }
+
+        if (!mSatellitePositionUpdateHandlers.isEmpty()) {
+            log("stopSatellitePositionUpdates: other listeners still exist.");
+            return SatelliteManager.SATELLITE_SERVICE_SUCCESS;
+        }
+
+        int result = (int) sendRequest(CMD_STOP_SATELLITE_POSITION_UPDATES, null, subId);
+        if (DBG) log("stopSatellitePositionUpdates result: " + result);
+        return result;
     }
 
     /**
