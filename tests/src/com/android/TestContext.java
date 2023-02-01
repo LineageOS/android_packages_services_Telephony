@@ -17,6 +17,7 @@
 package com.android;
 
 import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.doAnswer;
 
 import android.content.AttributionSource;
@@ -73,13 +74,12 @@ public class TestContext extends MockContext {
         MockitoAnnotations.initMocks(this);
         doAnswer((Answer<PersistableBundle>) invocation -> {
             int subId = (int) invocation.getArguments()[0];
-            if (subId < 0) {
-                return new PersistableBundle();
-            }
-            PersistableBundle b = mCarrierConfigs.get(subId);
-
-            return (b != null ? b : new PersistableBundle());
+            return getTestConfigs(subId);
         }).when(mMockCarrierConfigManager).getConfigForSubId(anyInt());
+        doAnswer((Answer<PersistableBundle>) invocation -> {
+            int subId = (int) invocation.getArguments()[0];
+            return getTestConfigs(subId);
+        }).when(mMockCarrierConfigManager).getConfigForSubId(anyInt(), anyString());
     }
 
     @Override
@@ -252,18 +252,16 @@ public class TestContext extends MockContext {
 
     public void grantPermission(String permission) {
         synchronized (mPermissionTable) {
-            if (mPermissionTable != null && permission != null) {
-                mPermissionTable.remove(STUB_PERMISSION_ENABLE_ALL);
-                mPermissionTable.add(permission);
-            }
+            if (permission == null) return;
+            mPermissionTable.remove(STUB_PERMISSION_ENABLE_ALL);
+            mPermissionTable.add(permission);
         }
     }
 
     public void revokePermission(String permission) {
         synchronized (mPermissionTable) {
-            if (mPermissionTable != null && permission != null) {
-                mPermissionTable.remove(permission);
-            }
+            if (permission == null) return;
+            mPermissionTable.remove(permission);
         }
     }
 
@@ -279,6 +277,14 @@ public class TestContext extends MockContext {
 
     public BroadcastReceiver getBroadcastReceiver() {
         return mReceiver;
+    }
+
+    private PersistableBundle getTestConfigs(int subId) {
+        if (subId < 0) {
+            return new PersistableBundle();
+        }
+        PersistableBundle b = getCarrierConfig(subId);
+        return (b != null ? b : new PersistableBundle());
     }
 
     private static void logd(String s) {
