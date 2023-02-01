@@ -242,6 +242,11 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
     private void handleScanResult(EmergencyRegResult result) {
         logi("handleScanResult result=" + result);
 
+        if (mLastTransportType == TRANSPORT_TYPE_WLAN) {
+            logi("handleScanResult timer expired, WLAN has been selected, ignore stale result");
+            return;
+        }
+
         // Detected the country and found that emergency calls are not allowed with this slot.
         if (!allowEmergencyCalls(result)) {
             terminateSelectionPermanentlyForSlot();
