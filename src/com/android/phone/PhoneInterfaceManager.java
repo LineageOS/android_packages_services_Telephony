@@ -2309,7 +2309,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                         phone.startSatellitePositionUpdates(onCompleted);
                     } else {
                         loge("startSatellitePositionUpdates: No phone object");
-                        request.result = SatelliteManager.SATELLITE_SERVICE_REQUEST_FAILED;
+                        request.result =
+                                SatelliteManager.SATELLITE_SERVICE_TELEPHONY_INTERNAL_ERROR;
                         notifyRequester(request);
                     }
                     break;
@@ -2344,7 +2345,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                         phone.stopSatellitePositionUpdates(onCompleted);
                     } else {
                         loge("stopSatellitePositionUpdates: No phone object");
-                        request.result = SatelliteManager.SATELLITE_SERVICE_REQUEST_FAILED;
+                        request.result =
+                                SatelliteManager.SATELLITE_SERVICE_TELEPHONY_INTERNAL_ERROR;
                         notifyRequester(request);
                     }
                     break;
@@ -12238,7 +12240,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @Override
     @SatelliteManager.SatelliteServiceResult public int startSatellitePositionUpdates(int subId,
             int callbackId, @NonNull ISatellitePositionUpdateCallback callback) {
-        // TODO: check for SATELLITE_COMMUNICATION permission
+        enforceSatelliteCommunicationPermission("startSatellitePositionUpdates");
+
+        if (!isSatelliteEnabled(subId)) {
+            return SatelliteManager.SATELLITE_SERVICE_DISABLED;
+        }
+
         Phone phone = getPhone(subId);
         if (phone == null) {
             loge("startSatellitePositionUpdates called with invalid subId: " + subId
@@ -12246,7 +12253,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             phone = getDefaultPhone();
             if (phone == null) {
                 loge("startSatellitePositionUpdates failed with no phone object.");
-                return SatelliteManager.SATELLITE_SERVICE_REQUEST_FAILED;
+                return SatelliteManager.SATELLITE_SERVICE_TELEPHONY_INTERNAL_ERROR;
             }
         }
 
@@ -12280,7 +12287,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @Override
     @SatelliteManager.SatelliteServiceResult public int stopSatellitePositionUpdates(int subId,
             int callbackId) {
-        // TODO: check for SATELLITE_COMMUNICATION permission
+        enforceSatelliteCommunicationPermission("stopSatellitePositionUpdates");
+
+        if (!isSatelliteEnabled(subId)) {
+            return SatelliteManager.SATELLITE_SERVICE_DISABLED;
+        }
+
         Phone phone = getPhone(subId);
         if (phone == null) {
             loge("stopSatellitePositionUpdates called with invalid subId: " + subId
@@ -12288,7 +12300,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             phone = getDefaultPhone();
             if (phone == null) {
                 loge("stopSatellitePositionUpdates failed with no phone object.");
-                return SatelliteManager.SATELLITE_SERVICE_REQUEST_FAILED;
+                return SatelliteManager.SATELLITE_SERVICE_TELEPHONY_INTERNAL_ERROR;
             }
         }
 
@@ -12296,7 +12308,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 mSatellitePositionUpdateHandlers.remove(callbackId);
         if (handler == null) {
             loge("stopSatellitePositionUpdates: No SatellitePositionArgument");
-            return SatelliteManager.SATELLITE_SERVICE_REQUEST_FAILED;
+            return SatelliteManager.SATELLITE_SERVICE_TELEPHONY_INTERNAL_ERROR;
         } else {
             phone.unregisterForSatellitePointingInfoChanged(handler);
             phone.unregisterForSatelliteMessagesTransferComplete(handler);
