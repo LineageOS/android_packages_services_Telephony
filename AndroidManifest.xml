@@ -424,6 +424,10 @@
                             "android.telephony.euicc.action.MANAGE_EMBEDDED_SUBSCRIPTIONS" />
                 <action android:name=
                             "android.telephony.euicc.action.PROVISION_EMBEDDED_SUBSCRIPTION" />
+                <action android:name=
+                    "android.telephony.euicc.action.TRANSFER_EMBEDDED_SUBSCRIPTIONS" />
+                <action android:name=
+                    "android.telephony.euicc.action.CONVERT_TO_EMBEDDED_SUBSCRIPTION" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -572,6 +576,14 @@
             android:launchMode="singleTop"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:theme="@style/Theme.Transparent"/>
+
+        <activity
+            android:name="com.android.phone.ErrorDialogActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTop"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:theme="@style/Theme.Telephony.Transparent"/>
 
         <service
             android:name="com.android.phone.vvm.RemoteVvmTaskManager"

@@ -16,6 +16,8 @@
 
 package com.android.services.telephony;
 
+import static android.telephony.DisconnectCause.EMERGENCY_PERM_FAILURE;
+import static android.telephony.DisconnectCause.EMERGENCY_TEMP_FAILURE;
 import static android.telephony.DisconnectCause.NOT_DISCONNECTED;
 import static android.telephony.DomainSelectionService.SELECTOR_TYPE_CALLING;
 import static android.telephony.NetworkRegistrationInfo.DOMAIN_CS;
@@ -55,6 +57,7 @@ import android.telecom.ConnectionRequest;
 import android.telecom.DisconnectCause;
 import android.telecom.PhoneAccountHandle;
 import android.telecom.TelecomManager;
+import android.telephony.DomainSelectionService;
 import android.telephony.RadioAccessFamily;
 import android.telephony.ServiceState;
 import android.telephony.SubscriptionManager;
@@ -76,6 +79,7 @@ import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.PhoneInternalInterface.DialArgs;
 import com.android.internal.telephony.ServiceStateTracker;
 import com.android.internal.telephony.data.PhoneSwitcher;
+import com.android.internal.telephony.domainselection.DomainSelectionConnection;
 import com.android.internal.telephony.domainselection.DomainSelectionResolver;
 import com.android.internal.telephony.domainselection.EmergencyCallDomainSelectionConnection;
 import com.android.internal.telephony.domainselection.NormalCallDomainSelectionConnection;
@@ -207,7 +211,6 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         mTestConnectionService.setDisconnectCauseFactory(mDisconnectCauseFactory);
         mTestConnectionService.onCreate();
         mTestConnectionService.setTelephonyManagerProxy(mTelephonyManagerProxy);
-        DomainSelectionResolver.setDomainSelectionResolver(mDomainSelectionResolver);
         replaceInstance(TelephonyConnectionService.class, "mDomainSelectionResolver",
                 mTestConnectionService, mDomainSelectionResolver);
         mEmergencyStateTracker = Mockito.mock(EmergencyStateTracker.class);
@@ -865,7 +868,8 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         setPhones(phones);
         c.setAddress(TEST_ADDRESS, TelecomManager.PRESENTATION_ALLOWED);
 
-        mTestConnectionService.retryOutgoingOriginalConnection(c, false /*isPermanentFailure*/);
+        mTestConnectionService.retryOutgoingOriginalConnection(c,
+                c.getPhone(), false /*isPermanentFailure*/);
 
         // We never need to be notified in telecom that the PhoneAccount has changed, because it
         // was redialed on the same slot
@@ -896,7 +900,8 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         setPhones(phones);
         c.setAddress(TEST_ADDRESS, TelecomManager.PRESENTATION_ALLOWED);
 
-        mTestConnectionService.retryOutgoingOriginalConnection(c, true /*isPermanentFailure*/);
+        mTestConnectionService.retryOutgoingOriginalConnection(c,
+                c.getPhone(), true /*isPermanentFailure*/);
 
         // We never need to be notified in telecom that the PhoneAccount has changed, because it
         // was never redialed
@@ -937,7 +942,8 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         doReturn(PHONE_ACCOUNT_HANDLE_2).when(mPhoneUtilsProxy).makePstnPhoneAccountHandle(
                 slot1Phone);
 
-        mTestConnectionService.retryOutgoingOriginalConnection(c, false /*isPermanentFailure*/);
+        mTestConnectionService.retryOutgoingOriginalConnection(c,
+                c.getPhone(), false /*isPermanentFailure*/);
 
         // The cache should still contain all of the Phones, since it was a temporary failure.
         assertEquals(2, mTestConnectionService.mEmergencyRetryCache.second.size());
@@ -978,7 +984,8 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         doReturn(PHONE_ACCOUNT_HANDLE_2).when(mPhoneUtilsProxy).makePstnPhoneAccountHandle(
                 slot1Phone);
 
-        mTestConnectionService.retryOutgoingOriginalConnection(c, true /*isPermanentFailure*/);
+        mTestConnectionService.retryOutgoingOriginalConnection(c,
+                c.getPhone(), true /*isPermanentFailure*/);
 
         // The cache should only contain the slot1Phone.
         assertEquals(1, mTestConnectionService.mEmergencyRetryCache.second.size());
@@ -1020,7 +1027,8 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
                 slot1Phone);
 
         // First Temporary failure
-        mTestConnectionService.retryOutgoingOriginalConnection(c, false /*isPermanentFailure*/);
+        mTestConnectionService.retryOutgoingOriginalConnection(c,
+                c.getPhone(), false /*isPermanentFailure*/);
         // Set the Phone to the new phone that was just used to dial.
         c.setMockPhone(slot1Phone);
         // The cache should still contain all of the Phones, since it was a temporary failure.
@@ -1028,7 +1036,8 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         // Make sure slot 1 is next in the queue.
         assertEquals(slot1Phone, mTestConnectionService.mEmergencyRetryCache.second.peek());
         // Second Temporary failure
-        mTestConnectionService.retryOutgoingOriginalConnection(c, false /*isPermanentFailure*/);
+        mTestConnectionService.retryOutgoingOriginalConnection(c,
+                c.getPhone(), false /*isPermanentFailure*/);
         // Set the Phone to the new phone that was just used to dial.
         c.setMockPhone(slot0Phone);
         // The cache should still contain all of the Phones, since it was a temporary failure.
@@ -1075,7 +1084,8 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
                 slot1Phone);
 
         // First Permanent failure
-        mTestConnectionService.retryOutgoingOriginalConnection(c, true /*isPermanentFailure*/);
+        mTestConnectionService.retryOutgoingOriginalConnection(c,
+                c.getPhone(), true /*isPermanentFailure*/);
         // Set the Phone to the new phone that was just used to dial.
         c.setMockPhone(slot1Phone);
         // The cache should only contain one phone
@@ -1083,7 +1093,8 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         // Make sure slot 1 is next in the queue.
         assertEquals(slot1Phone, mTestConnectionService.mEmergencyRetryCache.second.peek());
         // Second Permanent failure
-        mTestConnectionService.retryOutgoingOriginalConnection(c, true /*isPermanentFailure*/);
+        mTestConnectionService.retryOutgoingOriginalConnection(c,
+                c.getPhone(), true /*isPermanentFailure*/);
         // The cache should be empty
         assertEquals(true, mTestConnectionService.mEmergencyRetryCache.second.isEmpty());
 
@@ -1629,6 +1640,98 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
                 dialArgs.intentExtras.getInt(PhoneConstants.EXTRA_DIAL_DOMAIN, -1));
         assertTrue(dialArgs.isEmergency);
         assertEquals(eccCategory, dialArgs.eccCategory);
+    }
+
+    @Test
+    public void testOnSelectionTerminatedPerm() throws Exception {
+        setupForCallTest();
+
+        doReturn(mEmergencyCallDomainSelectionConnection).when(mDomainSelectionResolver)
+                .getDomainSelectionConnection(any(), anyInt(), eq(true));
+        doReturn(mPhone0).when(mEmergencyCallDomainSelectionConnection).getPhone();
+        doReturn(true).when(mTelephonyManagerProxy).isCurrentEmergencyNumber(anyString());
+
+        doReturn(true).when(mDomainSelectionResolver).isDomainSelectionSupported();
+        doReturn(mImsPhone).when(mPhone0).getImsPhone();
+
+        mTestConnectionService.onCreateOutgoingConnection(PHONE_ACCOUNT_HANDLE_1,
+                createConnectionRequest(PHONE_ACCOUNT_HANDLE_1,
+                        TEST_EMERGENCY_NUMBER, TELECOM_CALL_ID1));
+
+        ArgumentCaptor<DomainSelectionConnection.DomainSelectionConnectionCallback> callbackCaptor =
+                ArgumentCaptor.forClass(
+                        DomainSelectionConnection.DomainSelectionConnectionCallback.class);
+
+        verify(mEmergencyCallDomainSelectionConnection).createEmergencyConnection(
+                any(), callbackCaptor.capture());
+
+        DomainSelectionConnection.DomainSelectionConnectionCallback callback =
+                callbackCaptor.getValue();
+
+        assertNotNull(callback);
+
+        EmergencyCallDomainSelectionConnection ecdsc =
+                Mockito.mock(EmergencyCallDomainSelectionConnection.class);
+        doReturn(ecdsc).when(mDomainSelectionResolver)
+                .getDomainSelectionConnection(any(), anyInt(), eq(true));
+
+        callback.onSelectionTerminated(EMERGENCY_PERM_FAILURE);
+
+        ArgumentCaptor<DomainSelectionService.SelectionAttributes> attrCaptor =
+                ArgumentCaptor.forClass(
+                        DomainSelectionService.SelectionAttributes.class);
+
+        verify(ecdsc).createEmergencyConnection(attrCaptor.capture(), any());
+
+        DomainSelectionService.SelectionAttributes attr = attrCaptor.getValue();
+
+        assertEquals(mPhone1.getPhoneId(), attr.getSlotId());
+    }
+
+    @Test
+    public void testOnSelectionTerminatedTemp() throws Exception {
+        setupForCallTest();
+
+        doReturn(mEmergencyCallDomainSelectionConnection).when(mDomainSelectionResolver)
+                .getDomainSelectionConnection(any(), anyInt(), eq(true));
+        doReturn(mPhone0).when(mEmergencyCallDomainSelectionConnection).getPhone();
+        doReturn(true).when(mTelephonyManagerProxy).isCurrentEmergencyNumber(anyString());
+
+        doReturn(true).when(mDomainSelectionResolver).isDomainSelectionSupported();
+        doReturn(mImsPhone).when(mPhone0).getImsPhone();
+
+        mTestConnectionService.onCreateOutgoingConnection(PHONE_ACCOUNT_HANDLE_1,
+                createConnectionRequest(PHONE_ACCOUNT_HANDLE_1,
+                        TEST_EMERGENCY_NUMBER, TELECOM_CALL_ID1));
+
+        ArgumentCaptor<DomainSelectionConnection.DomainSelectionConnectionCallback> callbackCaptor =
+                ArgumentCaptor.forClass(
+                        DomainSelectionConnection.DomainSelectionConnectionCallback.class);
+
+        verify(mEmergencyCallDomainSelectionConnection).createEmergencyConnection(
+                any(), callbackCaptor.capture());
+
+        DomainSelectionConnection.DomainSelectionConnectionCallback callback =
+                callbackCaptor.getValue();
+
+        assertNotNull(callback);
+
+        EmergencyCallDomainSelectionConnection ecdsc =
+                Mockito.mock(EmergencyCallDomainSelectionConnection.class);
+        doReturn(ecdsc).when(mDomainSelectionResolver)
+                .getDomainSelectionConnection(any(), anyInt(), eq(true));
+
+        callback.onSelectionTerminated(EMERGENCY_TEMP_FAILURE);
+
+        ArgumentCaptor<DomainSelectionService.SelectionAttributes> attrCaptor =
+                ArgumentCaptor.forClass(
+                        DomainSelectionService.SelectionAttributes.class);
+
+        verify(ecdsc).createEmergencyConnection(attrCaptor.capture(), any());
+
+        DomainSelectionService.SelectionAttributes attr = attrCaptor.getValue();
+
+        assertEquals(mPhone1.getPhoneId(), attr.getSlotId());
     }
 
     @Test
