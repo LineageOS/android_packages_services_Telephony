@@ -632,7 +632,8 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
      * @param csPreferred Indicates whether CS preferred scan is requested.
      * @return The list of preferred network types.
      */
-    private @RadioAccessNetworkType List<Integer> getNextPreferredNetworks(boolean csPreferred) {
+    @VisibleForTesting
+    public @RadioAccessNetworkType List<Integer> getNextPreferredNetworks(boolean csPreferred) {
         if (mRequiresVoLteEnabled && !isAdvancedCallingSettingEnabled()) {
             // Emergency call over IMS is not supported.
             logi("getNextPreferredNetworks VoLte setting is not enabled.");
@@ -652,7 +653,9 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
             // Generate the list per the domain preference.
 
             if (psPriority == NOT_SUPPORTED && csPriority == NOT_SUPPORTED) {
-                // should not reach here.
+                // should not reach here. However, to avoid unexpected problems.
+                preferredNetworks = generatePreferredNetworks(getCsNetworkTypeConfiguration(),
+                        getImsNetworkTypeConfiguration());
             } else if (psPriority == NOT_SUPPORTED && csPriority > NOT_SUPPORTED) {
                 // CS networks only.
                 preferredNetworks = generatePreferredNetworks(getCsNetworkTypeConfiguration());
@@ -665,7 +668,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
                         getCsNetworkTypeConfiguration());
             } else {
                 // CS preferred.
-                generatePreferredNetworks(getCsNetworkTypeConfiguration(),
+                preferredNetworks = generatePreferredNetworks(getCsNetworkTypeConfiguration(),
                         getImsNetworkTypeConfiguration());
             }
         } else if (csPreferred || mLastNetworkType == EUTRAN || mLastNetworkType == NGRAN) {
@@ -681,7 +684,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
                         getImsNetworkTypeConfiguration());
             } else {
                 // CS not suppored.
-                generatePreferredNetworks(getImsNetworkTypeConfiguration());
+                preferredNetworks = generatePreferredNetworks(getImsNetworkTypeConfiguration());
             }
         } else {
             // CS tried, generate the list with PS preferred.
