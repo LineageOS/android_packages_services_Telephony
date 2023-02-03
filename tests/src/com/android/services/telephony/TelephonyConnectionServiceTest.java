@@ -38,6 +38,7 @@ import static org.mockito.ArgumentMatchers.anyBoolean;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Matchers.eq;
+import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
@@ -57,6 +58,7 @@ import android.telecom.ConnectionRequest;
 import android.telecom.DisconnectCause;
 import android.telecom.PhoneAccountHandle;
 import android.telecom.TelecomManager;
+import android.telephony.CarrierConfigManager;
 import android.telephony.DomainSelectionService;
 import android.telephony.RadioAccessFamily;
 import android.telephony.ServiceState;
@@ -1156,6 +1158,221 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
                 extras.getInt(TelephonyManager.EXTRA_NOTIFICATION_TYPE));
         assertEquals(SuppServiceNotification.CODE_1_CALL_IS_WAITING,
                 extras.getInt(TelephonyManager.EXTRA_NOTIFICATION_CODE));
+    }
+
+    /**
+     * Test that the TelephonyConnectionService successfully performs a DDS switch before a call
+     * when we are not roaming and the carrier only supports SUPL over the data plane.
+     */
+    @Test
+    @SmallTest
+    public void testCreateOutgoingEmergencyConnection_delayDial_carrierconfig_dds() {
+        // Setup test to not support SUPL on the non-DDS subscription
+        doReturn(true).when(mDeviceState).isSuplDdsSwitchRequiredForEmergencyCall(any());
+        getTestContext().getCarrierConfig(0 /*subId*/).putStringArray(
+                CarrierConfigManager.Gps.KEY_ES_SUPL_DATA_PLANE_ONLY_ROAMING_PLMN_STRING_ARRAY,
+                null);
+        getTestContext().getCarrierConfig(0 /*subId*/).putInt(
+                CarrierConfigManager.Gps.KEY_ES_SUPL_CONTROL_PLANE_SUPPORT_INT,
+                CarrierConfigManager.Gps.SUPL_EMERGENCY_MODE_TYPE_DP_ONLY);
+        getTestContext().getCarrierConfig(0 /*subId*/).putString(
+                CarrierConfigManager.Gps.KEY_ES_EXTENSION_SEC_STRING, "150");
+
+        Phone testPhone = setupConnectionServiceForDelayDial(
+                false /* isRoaming */, false /* setOperatorName */, null /* operator long name*/,
+                        null /* operator short name */, null /* operator numeric name */);
+        verify(mPhoneSwitcher).overrideDefaultDataForEmergency(eq(0) /*phoneId*/ ,
+                eq(150) /*extensionTime*/, any());
+    }
+
+    /**
+     * Test that the TelephonyConnectionService successfully turns radio on before placing the
+     * emergency call.
+     */
+    @Test
+    @SmallTest
+    public void testCreateOutgoingEmerge_exitingApm_disconnected() {
+        when(mDeviceState.isAirplaneModeOn(any())).thenReturn(true);
+        Phone testPhone = setupConnectionServiceInApm();
+
+        ArgumentCaptor<RadioOnStateListener.Callback> callback =
+                ArgumentCaptor.forClass(RadioOnStateListener.Callback.class);
+        verify(mRadioOnHelper).triggerRadioOnAndListen(callback.capture(), eq(true),
+                eq(testPhone), eq(false));
+
+        assertFalse(callback.getValue().isOkToCall(testPhone, ServiceState.STATE_OUT_OF_SERVICE));
+        when(mSST.isRadioOn()).thenReturn(true);
+        assertTrue(callback.getValue().isOkToCall(testPhone, ServiceState.STATE_OUT_OF_SERVICE));
+
+        mConnection.setDisconnected(null);
+        callback.getValue().onComplete(null, true);
+        for (Phone phone : mPhoneFactoryProxy.getPhones()) {
+            verify(phone).setRadioPower(true, false, false, true);
+        }
+    }
+
+    /**
+     * Test that the TelephonyConnectionService successfully turns radio on before placing the
+     * emergency call.
+     */
+    @Test
+    @SmallTest
+    public void testCreateOutgoingEmergencyConnection_exitingApm_placeCall() {
+        when(mDeviceState.isAirplaneModeOn(any())).thenReturn(true);
+        Phone testPhone = setupConnectionServiceInApm();
+
+        ArgumentCaptor<RadioOnStateListener.Callback> callback =
+                ArgumentCaptor.forClass(RadioOnStateListener.Callback.class);
+        verify(mRadioOnHelper).triggerRadioOnAndListen(callback.capture(), eq(true),
+                eq(testPhone), eq(false));
+
+        assertFalse(callback.getValue().isOkToCall(testPhone, ServiceState.STATE_OUT_OF_SERVICE));
+        when(mSST.isRadioOn()).thenReturn(true);
+        assertTrue(callback.getValue().isOkToCall(testPhone, ServiceState.STATE_OUT_OF_SERVICE));
+
+        callback.getValue().onComplete(null, true);
+
+        try {
+            doAnswer(invocation -> null).when(mContext).startActivity(any());
+            verify(testPhone).dial(anyString(), any(), any());
+        } catch (CallStateException e) {
+            // This shouldn't happen
+            fail();
+        }
+    }
+
+    /**
+     * Test that the TelephonyConnectionService does not perform a DDS switch when the carrier
+     * supports control-plane fallback.
+     */
+    @Test
+    @SmallTest
+    public void testCreateOutgoingEmergencyConnection_delayDial_nocarrierconfig() {
+        // Setup test to not support SUPL on the non-DDS subscription
+        doReturn(true).when(mDeviceState).isSuplDdsSwitchRequiredForEmergencyCall(any());
+        getTestContext().getCarrierConfig(0 /*subId*/).putStringArray(
+                CarrierConfigManager.Gps.KEY_ES_SUPL_DATA_PLANE_ONLY_ROAMING_PLMN_STRING_ARRAY,
+                null);
+        getTestContext().getCarrierConfig(0 /*subId*/).putInt(
+                CarrierConfigManager.Gps.KEY_ES_SUPL_CONTROL_PLANE_SUPPORT_INT,
+                CarrierConfigManager.Gps.SUPL_EMERGENCY_MODE_TYPE_CP_FALLBACK);
+        getTestContext().getCarrierConfig(0 /*subId*/).putString(
+                CarrierConfigManager.Gps.KEY_ES_EXTENSION_SEC_STRING, "0");
+
+        Phone testPhone = setupConnectionServiceForDelayDial(
+                false /* isRoaming */, false /* setOperatorName */, null /* operator long name*/,
+                        null /* operator short name */, null /* operator numeric name */);
+        verify(mPhoneSwitcher, never()).overrideDefaultDataForEmergency(anyInt(), anyInt(), any());
+    }
+
+    /**
+     * Test that the TelephonyConnectionService does not perform a DDS switch when the carrier
+     * supports control-plane fallback.
+     */
+    @Test
+    @SmallTest
+    public void testCreateOutgoingEmergencyConnection_delayDial_supportsuplondds() {
+        // If the non-DDS supports SUPL, don't switch data
+        doReturn(false).when(mDeviceState).isSuplDdsSwitchRequiredForEmergencyCall(any());
+        getTestContext().getCarrierConfig(0 /*subId*/).putStringArray(
+                CarrierConfigManager.Gps.KEY_ES_SUPL_DATA_PLANE_ONLY_ROAMING_PLMN_STRING_ARRAY,
+                null);
+        getTestContext().getCarrierConfig(0 /*subId*/).putInt(
+                CarrierConfigManager.Gps.KEY_ES_SUPL_CONTROL_PLANE_SUPPORT_INT,
+                CarrierConfigManager.Gps.SUPL_EMERGENCY_MODE_TYPE_DP_ONLY);
+        getTestContext().getCarrierConfig(0 /*subId*/).putString(
+                CarrierConfigManager.Gps.KEY_ES_EXTENSION_SEC_STRING, "0");
+
+        Phone testPhone = setupConnectionServiceForDelayDial(
+                false /* isRoaming */, false /* setOperatorName */, null /* operator long name*/,
+                         null /* operator short name */, null /* operator numeric name */);
+        verify(mPhoneSwitcher, never()).overrideDefaultDataForEmergency(anyInt(), anyInt(), any());
+    }
+
+    /**
+     * Test that the TelephonyConnectionService does not perform a DDS switch when the carrier does
+     * not support control-plane fallback CarrierConfig while roaming.
+     */
+    @Test
+    @SmallTest
+    public void testCreateOutgoingEmergencyConnection_delayDial_roaming_nocarrierconfig() {
+        // Setup test to not support SUPL on the non-DDS subscription
+        doReturn(true).when(mDeviceState).isSuplDdsSwitchRequiredForEmergencyCall(any());
+        getTestContext().getCarrierConfig(0 /*subId*/).putStringArray(
+                CarrierConfigManager.Gps.KEY_ES_SUPL_DATA_PLANE_ONLY_ROAMING_PLMN_STRING_ARRAY,
+                null);
+        getTestContext().getCarrierConfig(0 /*subId*/).putInt(
+                CarrierConfigManager.Gps.KEY_ES_SUPL_CONTROL_PLANE_SUPPORT_INT,
+                CarrierConfigManager.Gps.SUPL_EMERGENCY_MODE_TYPE_DP_ONLY);
+        getTestContext().getCarrierConfig(0 /*subId*/).putString(
+                CarrierConfigManager.Gps.KEY_ES_EXTENSION_SEC_STRING, "0");
+
+        Phone testPhone = setupConnectionServiceForDelayDial(
+                true /* isRoaming */, false /* setOperatorName */, null /* operator long name*/,
+                         null /* operator short name */, null /* operator numeric name */);
+        verify(mPhoneSwitcher, never()).overrideDefaultDataForEmergency(anyInt(), anyInt(), any());
+    }
+
+    /**
+     * Test that the TelephonyConnectionService does perform a DDS switch even though the carrier
+     * supports control-plane fallback CarrierConfig and the roaming partner is configured to look
+     * like a home network.
+     */
+    @Test
+    @SmallTest
+    public void testCreateOutgoingEmergencyConnection_delayDial_roamingcarrierconfig() {
+        doReturn(true).when(mDeviceState).isSuplDdsSwitchRequiredForEmergencyCall(any());
+        // Setup voice roaming scenario
+        String testRoamingOperator = "001001";
+        // Setup test to not support SUPL on the non-DDS subscription
+        String[] roamingPlmns = new String[1];
+        roamingPlmns[0] = testRoamingOperator;
+        getTestContext().getCarrierConfig(0 /*subId*/).putStringArray(
+                CarrierConfigManager.Gps.KEY_ES_SUPL_DATA_PLANE_ONLY_ROAMING_PLMN_STRING_ARRAY,
+                roamingPlmns);
+        getTestContext().getCarrierConfig(0 /*subId*/).putInt(
+                CarrierConfigManager.Gps.KEY_ES_SUPL_CONTROL_PLANE_SUPPORT_INT,
+                CarrierConfigManager.Gps.SUPL_EMERGENCY_MODE_TYPE_CP_FALLBACK);
+        getTestContext().getCarrierConfig(0 /*subId*/).putString(
+                CarrierConfigManager.Gps.KEY_ES_EXTENSION_SEC_STRING, "0");
+
+        Phone testPhone = setupConnectionServiceForDelayDial(
+                false /* isRoaming */, true /* setOperatorName */,
+                        "TestTel" /* operator long name*/, "TestTel" /* operator short name */,
+                                testRoamingOperator /* operator numeric name */);
+        verify(mPhoneSwitcher).overrideDefaultDataForEmergency(eq(0) /*phoneId*/ ,
+                eq(0) /*extensionTime*/, any());
+    }
+
+    /**
+     * Test that the TelephonyConnectionService does perform a DDS switch even though the carrier
+     * supports control-plane fallback CarrierConfig if we are roaming and the roaming partner is
+     * configured to use data plane only SUPL.
+     */
+    @Test
+    @SmallTest
+    public void testCreateOutgoingEmergencyConnection_delayDial__roaming_roamingcarrierconfig() {
+        // Setup test to not support SUPL on the non-DDS subscription
+        doReturn(true).when(mDeviceState).isSuplDdsSwitchRequiredForEmergencyCall(any());
+        // Setup voice roaming scenario
+        String testRoamingOperator = "001001";
+        String[] roamingPlmns = new String[1];
+        roamingPlmns[0] = testRoamingOperator;
+        getTestContext().getCarrierConfig(0 /*subId*/).putStringArray(
+                CarrierConfigManager.Gps.KEY_ES_SUPL_DATA_PLANE_ONLY_ROAMING_PLMN_STRING_ARRAY,
+                roamingPlmns);
+        getTestContext().getCarrierConfig(0 /*subId*/).putInt(
+                CarrierConfigManager.Gps.KEY_ES_SUPL_CONTROL_PLANE_SUPPORT_INT,
+                CarrierConfigManager.Gps.SUPL_EMERGENCY_MODE_TYPE_CP_FALLBACK);
+        getTestContext().getCarrierConfig(0 /*subId*/).putString(
+                CarrierConfigManager.Gps.KEY_ES_EXTENSION_SEC_STRING, "0");
+
+        Phone testPhone = setupConnectionServiceForDelayDial(
+                false /* isRoaming */, true /* setOperatorName */,
+                        "TestTel" /* operator long name*/, "TestTel" /* operator short name */,
+                                testRoamingOperator /* operator numeric name */);
+        verify(mPhoneSwitcher).overrideDefaultDataForEmergency(eq(0) /*phoneId*/ ,
+                eq(0) /*extensionTime*/, any());
     }
 
     /**

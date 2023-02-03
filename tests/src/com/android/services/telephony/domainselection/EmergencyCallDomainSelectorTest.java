@@ -52,6 +52,7 @@ import static android.telephony.NetworkRegistrationInfo.REGISTRATION_STATE_UNKNO
 import static com.android.services.telephony.domainselection.EmergencyCallDomainSelector.MSG_NETWORK_SCAN_TIMEOUT;
 
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertTrue;
 
 import static org.mockito.ArgumentMatchers.any;
@@ -1126,6 +1127,280 @@ public class EmergencyCallDomainSelectorTest {
 
         verify(mTransportSelectorCallback, times(1))
                 .onSelectionTerminated(eq(DisconnectCause.EMERGENCY_PERM_FAILURE));
+    }
+
+    @Test
+    public void testCsThenPsPreference() throws Exception {
+        PersistableBundle bundle = getDefaultPersistableBundle();
+        int[] domainPreference = new int[] {
+                CarrierConfigManager.ImsEmergency.DOMAIN_CS,
+                CarrierConfigManager.ImsEmergency.DOMAIN_PS_3GPP,
+                };
+        bundle.putIntArray(KEY_EMERGENCY_DOMAIN_PREFERENCE_INT_ARRAY, domainPreference);
+
+        setupForScanListTest(bundle);
+
+        verifyCsPreferredScanList(mDomainSelector.getNextPreferredNetworks(false));
+    }
+
+    @Test
+    public void testPsThenCsPreference() throws Exception {
+        PersistableBundle bundle = getDefaultPersistableBundle();
+        int[] domainPreference = new int[] {
+                CarrierConfigManager.ImsEmergency.DOMAIN_PS_3GPP,
+                CarrierConfigManager.ImsEmergency.DOMAIN_CS,
+                };
+        bundle.putIntArray(KEY_EMERGENCY_DOMAIN_PREFERENCE_INT_ARRAY, domainPreference);
+
+        setupForScanListTest(bundle);
+
+        verifyPsPreferredScanList(mDomainSelector.getNextPreferredNetworks(false));
+    }
+
+    @Test
+    public void testPsOnlyPreference() throws Exception {
+        PersistableBundle bundle = getDefaultPersistableBundle();
+        int[] domainPreference = new int[] {
+                CarrierConfigManager.ImsEmergency.DOMAIN_PS_3GPP,
+                };
+        bundle.putIntArray(KEY_EMERGENCY_DOMAIN_PREFERENCE_INT_ARRAY, domainPreference);
+        bundle.putIntArray(KEY_EMERGENCY_OVER_CS_SUPPORTED_ACCESS_NETWORK_TYPES_INT_ARRAY,
+                new int[0]);
+
+        setupForScanListTest(bundle);
+
+        verifyPsOnlyScanList(mDomainSelector.getNextPreferredNetworks(false));
+    }
+
+    @Test
+    public void testCsOnlyPreference() throws Exception {
+        PersistableBundle bundle = getDefaultPersistableBundle();
+        int[] domainPreference = new int[] {
+                CarrierConfigManager.ImsEmergency.DOMAIN_CS,
+                };
+        bundle.putIntArray(KEY_EMERGENCY_DOMAIN_PREFERENCE_INT_ARRAY, domainPreference);
+        bundle.putIntArray(KEY_EMERGENCY_OVER_IMS_SUPPORTED_3GPP_NETWORK_TYPES_INT_ARRAY,
+                new int[0]);
+
+        setupForScanListTest(bundle);
+
+        verifyCsOnlyScanList(mDomainSelector.getNextPreferredNetworks(false));
+
+    }
+
+    @Test
+    public void testCsThenPsPreferenceCsPreferred() throws Exception {
+        PersistableBundle bundle = getDefaultPersistableBundle();
+        int[] domainPreference = new int[] {
+                CarrierConfigManager.ImsEmergency.DOMAIN_CS,
+                CarrierConfigManager.ImsEmergency.DOMAIN_PS_3GPP,
+                };
+        bundle.putIntArray(KEY_EMERGENCY_DOMAIN_PREFERENCE_INT_ARRAY, domainPreference);
+
+        setupForScanListTest(bundle);
+
+        verifyCsPreferredScanList(mDomainSelector.getNextPreferredNetworks(true));
+    }
+
+    @Test
+    public void testPsThenCsPreferenceCsPreferred() throws Exception {
+        PersistableBundle bundle = getDefaultPersistableBundle();
+        int[] domainPreference = new int[] {
+                CarrierConfigManager.ImsEmergency.DOMAIN_PS_3GPP,
+                CarrierConfigManager.ImsEmergency.DOMAIN_CS,
+                };
+        bundle.putIntArray(KEY_EMERGENCY_DOMAIN_PREFERENCE_INT_ARRAY, domainPreference);
+
+        setupForScanListTest(bundle);
+
+        verifyCsPreferredScanList(mDomainSelector.getNextPreferredNetworks(true));
+    }
+
+    @Test
+    public void testPsOnlyPreferenceCsPreferred() throws Exception {
+        PersistableBundle bundle = getDefaultPersistableBundle();
+        int[] domainPreference = new int[] {
+                CarrierConfigManager.ImsEmergency.DOMAIN_PS_3GPP,
+                CarrierConfigManager.ImsEmergency.DOMAIN_CS,
+                };
+        bundle.putIntArray(KEY_EMERGENCY_DOMAIN_PREFERENCE_INT_ARRAY, domainPreference);
+        bundle.putIntArray(KEY_EMERGENCY_OVER_CS_SUPPORTED_ACCESS_NETWORK_TYPES_INT_ARRAY,
+                new int[0]);
+
+        setupForScanListTest(bundle);
+
+        verifyPsOnlyScanList(mDomainSelector.getNextPreferredNetworks(true));
+    }
+
+    @Test
+    public void testCsOnlyPreferenceCsPreferred() throws Exception {
+        PersistableBundle bundle = getDefaultPersistableBundle();
+        int[] domainPreference = new int[] {
+                CarrierConfigManager.ImsEmergency.DOMAIN_CS,
+                };
+        bundle.putIntArray(KEY_EMERGENCY_DOMAIN_PREFERENCE_INT_ARRAY, domainPreference);
+        bundle.putIntArray(KEY_EMERGENCY_OVER_IMS_SUPPORTED_3GPP_NETWORK_TYPES_INT_ARRAY,
+                new int[0]);
+
+        setupForScanListTest(bundle);
+
+        verifyCsOnlyScanList(mDomainSelector.getNextPreferredNetworks(true));
+    }
+
+    @Test
+    public void testCsThenPsPreferencePsFail() throws Exception {
+        PersistableBundle bundle = getDefaultPersistableBundle();
+        int[] domainPreference = new int[] {
+                CarrierConfigManager.ImsEmergency.DOMAIN_CS,
+                CarrierConfigManager.ImsEmergency.DOMAIN_PS_3GPP,
+                };
+        bundle.putIntArray(KEY_EMERGENCY_DOMAIN_PREFERENCE_INT_ARRAY, domainPreference);
+
+        setupForScanListTest(bundle, true);
+
+        bindImsService();
+        processAllMessages();
+
+        verifyCsPreferredScanList(mDomainSelector.getNextPreferredNetworks(false));
+    }
+
+    @Test
+    public void testPsThenCsPreferencePsFail() throws Exception {
+        PersistableBundle bundle = getDefaultPersistableBundle();
+        int[] domainPreference = new int[] {
+                CarrierConfigManager.ImsEmergency.DOMAIN_PS_3GPP,
+                CarrierConfigManager.ImsEmergency.DOMAIN_CS,
+                };
+        bundle.putIntArray(KEY_EMERGENCY_DOMAIN_PREFERENCE_INT_ARRAY, domainPreference);
+
+        setupForScanListTest(bundle, true);
+
+        bindImsService();
+        processAllMessages();
+
+        verifyCsPreferredScanList(mDomainSelector.getNextPreferredNetworks(false));
+    }
+
+    @Test
+    public void testPsOnlyPreferencePsFail() throws Exception {
+        PersistableBundle bundle = getDefaultPersistableBundle();
+        int[] domainPreference = new int[] {
+                CarrierConfigManager.ImsEmergency.DOMAIN_PS_3GPP,
+                };
+        bundle.putIntArray(KEY_EMERGENCY_DOMAIN_PREFERENCE_INT_ARRAY, domainPreference);
+        bundle.putIntArray(KEY_EMERGENCY_OVER_CS_SUPPORTED_ACCESS_NETWORK_TYPES_INT_ARRAY,
+                new int[0]);
+
+        setupForScanListTest(bundle, true);
+
+        bindImsService();
+        processAllMessages();
+
+        verifyPsOnlyScanList(mDomainSelector.getNextPreferredNetworks(false));
+    }
+
+    @Test
+    public void testCsThenPsPreferencePsFailCsPreferred() throws Exception {
+        PersistableBundle bundle = getDefaultPersistableBundle();
+        int[] domainPreference = new int[] {
+                CarrierConfigManager.ImsEmergency.DOMAIN_CS,
+                CarrierConfigManager.ImsEmergency.DOMAIN_PS_3GPP,
+                };
+        bundle.putIntArray(KEY_EMERGENCY_DOMAIN_PREFERENCE_INT_ARRAY, domainPreference);
+
+        setupForScanListTest(bundle, true);
+
+        bindImsService();
+        processAllMessages();
+
+        verifyCsPreferredScanList(mDomainSelector.getNextPreferredNetworks(true));
+    }
+
+    @Test
+    public void testPsThenCsPreferencePsFailCsPreferred() throws Exception {
+        PersistableBundle bundle = getDefaultPersistableBundle();
+        int[] domainPreference = new int[] {
+                CarrierConfigManager.ImsEmergency.DOMAIN_PS_3GPP,
+                CarrierConfigManager.ImsEmergency.DOMAIN_CS,
+                };
+        bundle.putIntArray(KEY_EMERGENCY_DOMAIN_PREFERENCE_INT_ARRAY, domainPreference);
+
+        setupForScanListTest(bundle, true);
+
+        bindImsService();
+        processAllMessages();
+
+        verifyCsPreferredScanList(mDomainSelector.getNextPreferredNetworks(true));
+    }
+
+    @Test
+    public void testPsOnlyPreferencePsFailCsPreferred() throws Exception {
+        PersistableBundle bundle = getDefaultPersistableBundle();
+        int[] domainPreference = new int[] {
+                CarrierConfigManager.ImsEmergency.DOMAIN_PS_3GPP,
+                CarrierConfigManager.ImsEmergency.DOMAIN_CS,
+                };
+        bundle.putIntArray(KEY_EMERGENCY_DOMAIN_PREFERENCE_INT_ARRAY, domainPreference);
+        bundle.putIntArray(KEY_EMERGENCY_OVER_CS_SUPPORTED_ACCESS_NETWORK_TYPES_INT_ARRAY,
+                new int[0]);
+
+        setupForScanListTest(bundle, true);
+
+        bindImsService();
+        processAllMessages();
+
+        verifyPsOnlyScanList(mDomainSelector.getNextPreferredNetworks(true));
+    }
+
+    private void setupForScanListTest(PersistableBundle bundle) throws Exception {
+        setupForScanListTest(bundle, false);
+    }
+
+    private void setupForScanListTest(PersistableBundle bundle, boolean psFailed) throws Exception {
+        when(mCarrierConfigManager.getConfigForSubId(anyInt())).thenReturn(bundle);
+
+        createSelector(SLOT_0_SUB_ID);
+        unsolBarringInfoChanged(false);
+        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_UNKNOWN,
+                0, false, false, 0, 0, "", "");
+        if (psFailed) {
+            regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+                    NetworkRegistrationInfo.DOMAIN_PS, true, true, 0, 0, "", "");
+        }
+
+        SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
+        mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
+        processAllMessages();
+    }
+
+    private void verifyCsPreferredScanList(List<Integer> networks) {
+        assertFalse(networks.isEmpty());
+        assertTrue(networks.contains(EUTRAN));
+        assertTrue(networks.contains(UTRAN));
+        assertTrue(networks.contains(GERAN));
+        assertTrue(networks.indexOf(UTRAN) < networks.indexOf(EUTRAN));
+    }
+
+    private void verifyPsPreferredScanList(List<Integer> networks) {
+        assertFalse(networks.isEmpty());
+        assertTrue(networks.contains(EUTRAN));
+        assertTrue(networks.contains(UTRAN));
+        assertTrue(networks.contains(GERAN));
+        assertTrue(networks.indexOf(EUTRAN) < networks.indexOf(UTRAN));
+    }
+
+    private void verifyPsOnlyScanList(List<Integer> networks) {
+        assertFalse(networks.isEmpty());
+        assertTrue(networks.contains(EUTRAN));
+        assertFalse(networks.contains(UTRAN));
+        assertFalse(networks.contains(GERAN));
+    }
+
+    private void verifyCsOnlyScanList(List<Integer> networks) {
+        assertFalse(networks.isEmpty());
+        assertFalse(networks.contains(EUTRAN));
+        assertTrue(networks.contains(UTRAN));
+        assertTrue(networks.contains(GERAN));
     }
 
     private void createSelector(int subId) throws Exception {
