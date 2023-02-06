@@ -2198,6 +2198,10 @@ public class TelephonyConnectionService extends ConnectionService {
                     phone, mEmergencyCallId, isTestEmergencyNumber);
             future.thenAccept((result) -> {
                 Log.d(this, "startEmergencyCall-complete result=" + result);
+                if (mEmergencyCallId == null) {
+                    Log.i(this, "startEmergencyCall-complete dialing canceled");
+                    return;
+                }
                 if (result == android.telephony.DisconnectCause.NOT_DISCONNECTED) {
                     createEmergencyConnection(phone, (TelephonyConnection) resultConnection,
                             numberToDial, request, needToTurnOnRadio,
@@ -2272,6 +2276,10 @@ public class TelephonyConnectionService extends ConnectionService {
                         attr, mEmergencyDomainSelectionConnectionCallback);
         future.thenAcceptAsync((result) -> {
             Log.d(this, "createEmergencyConnection-complete result=" + result);
+            if (mEmergencyCallId == null) {
+                Log.i(this, "createEmergencyConnection-complete dialing canceled");
+                return;
+            }
             Bundle extras = request.getExtras();
             extras.putInt(PhoneConstants.EXTRA_DIAL_DOMAIN, result);
             placeOutgoingConnection(request, resultConnection, phone);
@@ -2285,7 +2293,13 @@ public class TelephonyConnectionService extends ConnectionService {
         Bundle extras = request.getExtras();
         extras.putInt(PhoneConstants.EXTRA_DIAL_DOMAIN, NetworkRegistrationInfo.DOMAIN_CS);
         mDomainSelectionMainExecutor.execute(
-                () -> placeOutgoingConnection(request, resultConnection, phone));
+                () -> {
+                    if (mEmergencyCallId == null) {
+                        Log.i(this, "dialCsEmergencyCall dialing canceled");
+                        return;
+                    }
+                    placeOutgoingConnection(request, resultConnection, phone);
+                });
     }
 
     private void releaseEmergencyCallDomainSelection(boolean cancel) {
@@ -2360,6 +2374,10 @@ public class TelephonyConnectionService extends ConnectionService {
             if (future != null) {
                 future.thenAcceptAsync((result) -> {
                     Log.d(this, "reselectDomain-complete");
+                    if (mEmergencyCallId == null) {
+                        Log.i(this, "reselectDomain-complete dialing canceled");
+                        return;
+                    }
                     onEmergencyRedialOnDomain(c, phone, result);
                 }, mDomainSelectionMainExecutor);
                 return true;
@@ -2487,8 +2505,11 @@ public class TelephonyConnectionService extends ConnectionService {
                 phone, mEmergencyCallId, isTestEmergencyNumber);
         future.thenAccept((result) -> {
             Log.d(this, "onEmergencyRedial-complete result=" + result);
+            if (mEmergencyCallId == null) {
+                Log.i(this, "onEmergencyRedial-complete dialing canceled");
+                return;
+            }
             if (result == android.telephony.DisconnectCause.NOT_DISCONNECTED) {
-
                 DomainSelectionConnection selectConnection =
                         mDomainSelectionResolver.getDomainSelectionConnection(
                                 phone, SELECTOR_TYPE_CALLING, true);
@@ -2536,6 +2557,10 @@ public class TelephonyConnectionService extends ConnectionService {
     private void recreateEmergencyConnection(final TelephonyConnection connection,
             final Phone phone, final @NetworkRegistrationInfo.Domain int result) {
         Log.d(this, "recreateEmergencyConnection result=" + result);
+        if (mEmergencyCallId == null) {
+            Log.i(this, "recreateEmergencyConnection dialing canceled");
+            return;
+        }
         if (!getAllConnections().isEmpty()) {
             if (!shouldHoldForEmergencyCall(phone)) {
                 // If we do not support holding ongoing calls for an outgoing
