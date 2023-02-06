@@ -921,4 +921,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"您的藍牙訊號微弱。請改用擴音器。"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"通話品質通知"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"已停用的 SIP 帳戶"</string>
+    <string name="send_from_work_profile_title" msgid="9201528838448432473">"無法從此個人檔案傳送訊息"</string>
+    <string name="send_from_work_profile_description" msgid="5002701841936861636">"您的工作政策只允許透過工作設定檔傳送訊息"</string>
+    <string name="send_from_work_profile_cancel" msgid="177746511030381711">"取消"</string>
+    <string name="send_from_work_profile_action_str" msgid="6892775562934243337">"切換至工作設定檔"</string>
 </resources>

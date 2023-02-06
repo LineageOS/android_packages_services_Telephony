@@ -921,4 +921,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"तुमचा ब्लूटूथ सिग्नल कमकुवत आहे. स्पीकरफोनवर स्विच करून पहा."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"कॉल गुणवत्ता सूचना"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"कालबाह्य झालेली SIP खाती"</string>
+    <string name="send_from_work_profile_title" msgid="9201528838448432473">"या प्रोफाइलवरून मेसेज पाठवू शकत नाही"</string>
+    <string name="send_from_work_profile_description" msgid="5002701841936861636">"तुमचे कामाशी संबंधित धोरण हे तुम्हाला फक्त तुमच्या कार्य प्रोफाइलवरून मेसेज पाठवण्याची अनुमती देते"</string>
+    <string name="send_from_work_profile_cancel" msgid="177746511030381711">"रद्द करा"</string>
+    <string name="send_from_work_profile_action_str" msgid="6892775562934243337">"कार्य प्रोफाइलवर स्विच करा"</string>
 </resources>

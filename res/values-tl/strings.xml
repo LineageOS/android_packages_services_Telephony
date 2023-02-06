@@ -921,4 +921,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Mahina ang signal ng iyong bluetooth. Subukang lumipat sa speakerphone."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Notification sa Kalidad ng Tawag"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Mga hindi na ginagamit na SIP account"</string>
+    <string name="send_from_work_profile_title" msgid="9201528838448432473">"Hindi makakapagpadala ng mensahe mula sa profile na ito"</string>
+    <string name="send_from_work_profile_description" msgid="5002701841936861636">"Pinapayagan ka ng iyong patakaran sa trabaho na magpadala ng mensahe mula lang sa profile sa trabaho"</string>
+    <string name="send_from_work_profile_cancel" msgid="177746511030381711">"Kanselahin"</string>
+    <string name="send_from_work_profile_action_str" msgid="6892775562934243337">"Lumipat sa profile sa trabaho"</string>
 </resources>
