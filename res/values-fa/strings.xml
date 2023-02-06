@@ -191,7 +191,7 @@
     <string name="preferred_network_mode_dialogtitle" msgid="2781447433514459696">"نوع شبکه ترجیحی"</string>
     <string name="forbidden_network" msgid="5081729819561333023">"(ممنوع است)"</string>
     <string name="choose_network_title" msgid="5335832663422653082">"انتخاب شبکه"</string>
-    <string name="network_disconnected" msgid="8844141106841160825">"قطع اتصال"</string>
+    <string name="network_disconnected" msgid="8844141106841160825">"متصل نیست"</string>
     <string name="network_connected" msgid="2760235679963580224">"متصل"</string>
     <string name="network_connecting" msgid="160901383582774987">"درحال اتصال…"</string>
     <string name="network_could_not_connect" msgid="6547460848093727998">"متصل نشد"</string>
