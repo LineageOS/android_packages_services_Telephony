@@ -921,4 +921,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"మీ బ్లూటూత్ సిగ్నల్ బలహీనంగా ఉంది. స్పీకర్‌ఫోన్‌కు స్విచ్ అవ్వడానికి ట్రై చేయండి."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"కాల్ క్వాలిటీ నోటిఫికేషన్"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"తీసివేయబడిన SIP ఖాతాలు"</string>
+    <string name="send_from_work_profile_title" msgid="9201528838448432473">"ఈ ప్రొఫైల్ నుండి మెసేజ్ పంపడం సాధ్యపడలేదు"</string>
+    <string name="send_from_work_profile_description" msgid="5002701841936861636">"మీ వర్క్ పాలసీ మిమ్మల్ని వర్క్ ప్రొఫైల్ నుండి మాత్రమే మెసేజ్ పంపడానికి అనుమతిస్తుంది"</string>
+    <string name="send_from_work_profile_cancel" msgid="177746511030381711">"రద్దు చేయండి"</string>
+    <string name="send_from_work_profile_action_str" msgid="6892775562934243337">"వర్క్ ప్రొఫైల్‌కు స్విచ్ అవ్వండి"</string>
 </resources>

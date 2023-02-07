@@ -921,4 +921,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Bluetooth сигнал је слаб. Пробајте да пређете на спикерфон."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Обавештење о квалитету позива"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Застарели SIP налози"</string>
+    <string name="send_from_work_profile_title" msgid="9201528838448432473">"Не можете да пошаљете поруку са овог профила"</string>
+    <string name="send_from_work_profile_description" msgid="5002701841936861636">"Смернице за посао вам омогућавају да шаљете поруке само са пословног профила"</string>
+    <string name="send_from_work_profile_cancel" msgid="177746511030381711">"Откажи"</string>
+    <string name="send_from_work_profile_action_str" msgid="6892775562934243337">"Пређи на пословни профил"</string>
 </resources>

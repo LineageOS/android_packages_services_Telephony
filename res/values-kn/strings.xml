@@ -921,4 +921,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"ನಿಮ್ಮ ಬ್ಲೂಟೂತ್ ಸಿಗ್ನಲ್ ದುರ್ಬಲವಾಗಿದೆ. ಸ್ಪೀಕರ್‌ಫೋನ್‌ಗೆ ಬದಲಾಯಿಸಲು ಪ್ರಯತ್ನಿಸಿ."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"ಕರೆ ಗುಣಮಟ್ಟದ ಅಧಿಸೂಚನೆ"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"ತಡೆಹಿಡಿಯಲಾಗಿರುವ SIP ಖಾತೆಗಳು"</string>
+    <string name="send_from_work_profile_title" msgid="9201528838448432473">"ಈ ಪ್ರೊಫೈಲ್‌ನಿಂದ ಸಂದೇಶವನ್ನು ಕಳುಹಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ"</string>
+    <string name="send_from_work_profile_description" msgid="5002701841936861636">"ನಿಮ್ಮ ಉದ್ಯೋಗದ ನೀತಿಯು ಉದ್ಯೋಗ ಪ್ರೊಫೈಲ್‌ನಿಂದ ಮಾತ್ರ ಸಂದೇಶವನ್ನು ಕಳುಹಿಸಲು ನಿಮಗೆ ಅನುಮತಿಸುತ್ತದೆ"</string>
+    <string name="send_from_work_profile_cancel" msgid="177746511030381711">"ರದ್ದುಮಾಡಿ"</string>
+    <string name="send_from_work_profile_action_str" msgid="6892775562934243337">"ಉದ್ಯೋಗ ಪ್ರೊಫೈಲ್‌ಗೆ ಬದಲಿಸಿ"</string>
 </resources>
