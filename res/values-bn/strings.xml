@@ -921,4 +921,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"আপনার ডিভাইসের ব্লুটুথ সিগনাল ভাল না। বদল করে স্পিকারফোন বেছে নিন।"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"ফোন কলের কোয়ালিটি সংক্রান্ত বিজ্ঞপ্তি"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"পুরনো SIP অ্যাকাউন্ট"</string>
+    <string name="send_from_work_profile_title" msgid="9201528838448432473">"এই প্রোফাইল থেকে মেসেজ পাঠানো যাচ্ছে না"</string>
+    <string name="send_from_work_profile_description" msgid="5002701841936861636">"কাজ সংক্রান্ত নীতি, আপনাকে শুধুমাত্র অফিস প্রোফাইল থেকে মেসেজ করার অনুমতি দেয়"</string>
+    <string name="send_from_work_profile_cancel" msgid="177746511030381711">"বাতিল করুন"</string>
+    <string name="send_from_work_profile_action_str" msgid="6892775562934243337">"অফিস প্রোফাইলে পাল্টে নিন"</string>
 </resources>

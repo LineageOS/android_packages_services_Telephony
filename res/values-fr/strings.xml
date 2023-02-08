@@ -921,4 +921,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Votre signal Bluetooth est faible. Essayez d\'utiliser le haut-parleur."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Notification concernant la qualité de l\'appel"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Comptes SIP obsolètes"</string>
+    <string name="send_from_work_profile_title" msgid="9201528838448432473">"Impossible d\'envoyer un message depuis ce profil"</string>
+    <string name="send_from_work_profile_description" msgid="5002701841936861636">"Votre règle professionnelle ne vous permet d\'envoyer des messages que depuis le profil professionnel"</string>
+    <string name="send_from_work_profile_cancel" msgid="177746511030381711">"Annuler"</string>
+    <string name="send_from_work_profile_action_str" msgid="6892775562934243337">"Passer au profil professionnel"</string>
 </resources>

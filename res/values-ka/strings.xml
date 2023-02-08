@@ -921,4 +921,12 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"თქვენი Bluetooth სიგნალი სუსტია. სცადეთ სპიკერფონზე გადართვა."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"შეტყობინება ზარის ხარისხის შესახებ"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"მოძველებული SIP ანგარიშები"</string>
+    <!-- no translation found for send_from_work_profile_title (9201528838448432473) -->
+    <skip />
+    <!-- no translation found for send_from_work_profile_description (5002701841936861636) -->
+    <skip />
+    <!-- no translation found for send_from_work_profile_cancel (177746511030381711) -->
+    <skip />
+    <!-- no translation found for send_from_work_profile_action_str (6892775562934243337) -->
+    <skip />
 </resources>
