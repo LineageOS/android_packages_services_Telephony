@@ -405,6 +405,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private static final int EVENT_GET_SATELLITE_CAPABILITIES_DONE = 136;
     private static final int CMD_POLL_PENDING_SATELLITE_DATAGRAMS = 137;
     private static final int EVENT_POLL_PENDING_SATELLITE_DATAGRAMS_DONE = 138;
+    private static final int CMD_SEND_SATELLITE_DATAGRAM = 139;
+    private static final int EVENT_SEND_SATELLITE_DATAGRAM_DONE = 140;
 
     // Parameters of select command.
     private static final int SELECT_COMMAND = 0xA4;
@@ -572,6 +574,19 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             this.token = token;
             this.callback = callback;
             this.subId = subId;
+        }
+    }
+
+    private static final class SendSatelliteDatagramArgument {
+        public @SatelliteManager.DatagramType int datagramType;
+        public @NonNull SatelliteDatagram datagram;
+        public @NonNull Consumer<Integer> callback;
+
+        SendSatelliteDatagramArgument(@SatelliteManager.DatagramType int datagramType,
+                SatelliteDatagram datagram, Consumer<Integer> callback) {
+            this.datagramType = datagramType;
+            this.datagram = datagram;
+            this.callback = callback;
         }
     }
 
@@ -2815,6 +2830,34 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                         request.result = SatelliteManager.SATELLITE_ERROR_NONE;
                     }
                     notifyRequester(request);
+                    break;
+                }
+
+                case CMD_SEND_SATELLITE_DATAGRAM: {
+                    request = (MainThreadRequest) msg.obj;
+                    onCompleted =
+                            obtainMessage(EVENT_SEND_SATELLITE_DATAGRAM_DONE, request);
+                    Phone phone = getPhoneFromRequest(request);
+                    SendSatelliteDatagramArgument argument =
+                            (SendSatelliteDatagramArgument) request.argument;
+                    if (phone != null) {
+                        phone.sendSatelliteDatagram(onCompleted, argument.datagram);
+                    } else {
+                        loge("sendSatelliteDatagram: No phone object");
+                        argument.callback
+                                .accept(SatelliteManager.SATELLITE_INVALID_TELEPHONY_STATE);
+                    }
+                    break;
+                }
+
+                case EVENT_SEND_SATELLITE_DATAGRAM_DONE: {
+                    ar = (AsyncResult) msg.obj;
+                    request = (MainThreadRequest) ar.userObj;
+                    int error = getSatelliteError(ar, "sendSatelliteDatagram",
+                            false);
+                    SendSatelliteDatagramArgument argument =
+                            (SendSatelliteDatagramArgument) request.argument;
+                    argument.callback.accept(error);
                     break;
                 }
 
@@ -13226,6 +13269,39 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         int result = (int) sendRequest(CMD_POLL_PENDING_SATELLITE_DATAGRAMS, null, validSubId);
         if (DBG) log("pollPendingSatelliteDatagrams result: " + result);
         return result;
+    }
+
+    /**
+     * Send datagram over satellite.
+     * @param subId - The subId of the subscription used to send datagram
+     * @param datagramType - type of datagram
+     * @param datagram - datagram to send over satellite
+     * @param callback - The callback that will be used to send result of the operation.
+     * @throws SecurityException if the caller doesn't have the required permission.
+     */
+    @Override
+    public void sendSatelliteDatagram(int subId, @SatelliteManager.DatagramType int datagramType,
+            SatelliteDatagram datagram, IIntegerConsumer callback) {
+        enforceSatelliteCommunicationPermission("sendSatelliteDatagram");
+        Consumer<Integer> result = FunctionalUtils.ignoreRemoteException(callback::accept);
+
+        final int validSubId = getValidSatelliteSubId(subId);
+        if (!isSatelliteProvisioned(validSubId)) {
+            result.accept(SatelliteManager.SATELLITE_SERVICE_NOT_PROVISIONED);
+            return;
+        }
+
+        Phone phone = getPhoneOrDefault(validSubId, "sendSatelliteDatagram");
+        if (phone == null) {
+            result.accept(SatelliteManager.SATELLITE_INVALID_TELEPHONY_STATE);
+            return;
+        }
+
+        // check if we need to start PointingUI.
+
+        sendRequestAsync(CMD_SEND_SATELLITE_DATAGRAM,
+                new SendSatelliteDatagramArgument(datagramType, datagram, result),
+                phone, null);
     }
 
     private void handleCmdProvisionSatelliteService(@NonNull ProvisionSatelliteServiceArgument arg,
