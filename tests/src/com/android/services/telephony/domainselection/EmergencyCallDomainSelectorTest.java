@@ -53,6 +53,7 @@ import static com.android.services.telephony.domainselection.EmergencyCallDomain
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertFalse;
+import static junit.framework.Assert.assertNotNull;
 import static junit.framework.Assert.assertTrue;
 
 import static org.mockito.ArgumentMatchers.any;
@@ -139,6 +140,7 @@ public class EmergencyCallDomainSelectorTest {
     private @AccessNetworkConstants.RadioAccessNetworkType List<Integer> mAccessNetwork;
     private PowerManager mPowerManager;
     private ConnectivityManager.NetworkCallback mNetworkCallback;
+    private Consumer<EmergencyRegResult> mResultConsumer;
 
     @Before
     public void setUp() throws Exception {
@@ -237,6 +239,7 @@ public class EmergencyCallDomainSelectorTest {
             @Override
             public Void answer(InvocationOnMock invocation) throws Throwable {
                 mAccessNetwork = (List<Integer>) invocation.getArguments()[0];
+                mResultConsumer = (Consumer<EmergencyRegResult>) invocation.getArguments()[3];
                 return null;
             }
         }).when(mWwanSelectorCallback).onRequestEmergencyNetworkScan(
@@ -1130,6 +1133,18 @@ public class EmergencyCallDomainSelectorTest {
     }
 
     @Test
+    public void testEutranWithCsDomainOnly() throws Exception {
+        setupForHandleScanResult();
+
+        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+                DOMAIN_CS, false, false, 0, 0, "", "");
+        mResultConsumer.accept(regResult);
+        processAllMessages();
+
+        verifyCsDialed();
+    }
+
+    @Test
     public void testCsThenPsPreference() throws Exception {
         PersistableBundle bundle = getDefaultPersistableBundle();
         int[] domainPreference = new int[] {
@@ -1401,6 +1416,25 @@ public class EmergencyCallDomainSelectorTest {
         assertFalse(networks.contains(EUTRAN));
         assertTrue(networks.contains(UTRAN));
         assertTrue(networks.contains(GERAN));
+    }
+
+    private void setupForHandleScanResult() throws Exception {
+        mResultConsumer = null;
+        createSelector(SLOT_0_SUB_ID);
+        unsolBarringInfoChanged(true);
+
+        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_UNKNOWN,
+                0, false, false, 0, 0, "", "");
+        SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
+        mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
+        processAllMessages();
+
+        bindImsServiceUnregistered();
+        processAllMessages();
+
+        verify(mWwanSelectorCallback, times(1)).onRequestEmergencyNetworkScan(
+                any(), anyInt(), any(), any());
+        assertNotNull(mResultConsumer);
     }
 
     private void createSelector(int subId) throws Exception {
