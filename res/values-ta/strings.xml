@@ -921,12 +921,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"புளூடூத் சிக்னல் வலுவற்றதாக உள்ளது. ஸ்பீக்கர் ஃபோனிற்கு மாற்றவும்."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"அழைப்பின் தரம் தொடர்பான அறிவிப்பு"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"நிறுத்தப்பட்ட SIP கணக்குகள்"</string>
-    <!-- no translation found for send_from_work_profile_title (9201528838448432473) -->
-    <skip />
-    <!-- no translation found for send_from_work_profile_description (5002701841936861636) -->
-    <skip />
-    <!-- no translation found for send_from_work_profile_cancel (177746511030381711) -->
-    <skip />
-    <!-- no translation found for send_from_work_profile_action_str (6892775562934243337) -->
-    <skip />
+    <string name="send_from_work_profile_title" msgid="9201528838448432473">"இந்தச் சுயவிவரத்தில் இருந்து மெசேஜ் அனுப்ப முடியாது"</string>
+    <string name="send_from_work_profile_description" msgid="5002701841936861636">"உங்கள் பணிக் கொள்கையின்படி நீங்கள் பணிக் கணக்கில் இருந்து மட்டுமே மெசேஜ் அனுப்ப முடியும்"</string>
+    <string name="send_from_work_profile_cancel" msgid="177746511030381711">"ரத்துசெய்"</string>
+    <string name="send_from_work_profile_action_str" msgid="6892775562934243337">"பணிக் கணக்கிற்கு மாறு"</string>
 </resources>

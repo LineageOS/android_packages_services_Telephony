@@ -921,12 +921,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Bluetooth signāls ir vājš. Mēģiniet pārslēgties uz skaļruni."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Paziņojums par zvana kvalitāti"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"SIP konti, kuru darbība ir pārtraukta"</string>
-    <!-- no translation found for send_from_work_profile_title (9201528838448432473) -->
-    <skip />
-    <!-- no translation found for send_from_work_profile_description (5002701841936861636) -->
-    <skip />
-    <!-- no translation found for send_from_work_profile_cancel (177746511030381711) -->
-    <skip />
-    <!-- no translation found for send_from_work_profile_action_str (6892775562934243337) -->
-    <skip />
+    <string name="send_from_work_profile_title" msgid="9201528838448432473">"Nevar nosūtīt ziņojumu no šī profila"</string>
+    <string name="send_from_work_profile_description" msgid="5002701841936861636">"Saskaņā ar darbavietas politiku drīkstat sūtīt ziņojumus tikai no darba profila."</string>
+    <string name="send_from_work_profile_cancel" msgid="177746511030381711">"Atcelt"</string>
+    <string name="send_from_work_profile_action_str" msgid="6892775562934243337">"Pārslēgties uz darba profilu"</string>
 </resources>
