@@ -21,7 +21,6 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.ArgumentMatchers.anyList;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doReturn;
@@ -42,9 +41,10 @@ import androidx.test.annotation.UiThreadTest;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 import com.android.TelephonyTestBase;
+import com.android.internal.telephony.IIntegerConsumer;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.RILConstants;
-import com.android.internal.telephony.IIntegerConsumer;
+import com.android.internal.telephony.subscription.SubscriptionManagerService;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -54,7 +54,7 @@ import org.mockito.Mock;
 import java.util.Locale;
 
 /**
- * Unit Test for CarrierConfigLoader.
+ * Unit Test for PhoneInterfaceManager.
  */
 @RunWith(AndroidJUnit4.class)
 public class PhoneInterfaceManagerTest extends TelephonyTestBase {
@@ -67,6 +67,9 @@ public class PhoneInterfaceManagerTest extends TelephonyTestBase {
     @Mock
     Phone mPhone;
 
+    @Mock
+    private SubscriptionManagerService mSubscriptionManagerService;
+
     @Before
     @UiThreadTest
     public void setUp() throws Exception {
@@ -76,6 +79,9 @@ public class PhoneInterfaceManagerTest extends TelephonyTestBase {
         // alive on a test devices. You must use the spy to mock behavior. Mocks stemming from the
         // passed context will remain unused.
         mPhoneInterfaceManager = spy(PhoneInterfaceManager.init(mPhoneGlobals));
+        doReturn(mSubscriptionManagerService).when(mPhoneInterfaceManager)
+                .getSubscriptionManagerService();
+        TelephonyManager.setupISubForTest(mSubscriptionManagerService);
         mSharedPreferences = mPhoneInterfaceManager.getSharedPreferences();
         mSharedPreferences.edit().remove(Phone.PREF_NULL_CIPHER_AND_INTEGRITY_ENABLED).commit();
         mIIntegerConsumer = mock(IIntegerConsumer.class);
