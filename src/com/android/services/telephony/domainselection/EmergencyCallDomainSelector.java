@@ -271,8 +271,31 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         }
 
         removeMessages(MSG_NETWORK_SCAN_TIMEOUT);
-        onWwanNetworkTypeSelected(result.getAccessNetwork());
+        onWwanNetworkTypeSelected(getAccessNetworkType(result));
         mCancelSignal = null;
+    }
+
+    /**
+     * Determines the scanned network type.
+     *
+     * @param result The result of network scan.
+     * @return The selected network type.
+     */
+    private @RadioAccessNetworkType int getAccessNetworkType(EmergencyRegResult result) {
+        int accessNetworkType = result.getAccessNetwork();
+        if (accessNetworkType != EUTRAN) return accessNetworkType;
+
+        int regState = result.getRegState();
+        int domain = result.getDomain();
+
+        // Emergency is not supported with LTE, but CSFB is possible.
+        if ((regState == REGISTRATION_STATE_HOME || regState == REGISTRATION_STATE_ROAMING)
+                && (domain == NetworkRegistrationInfo.DOMAIN_CS)) {
+            logi("getAccessNetworkType emergency not supported but CSFB is possible");
+            accessNetworkType = UTRAN;
+        }
+
+        return accessNetworkType;
     }
 
     @Override

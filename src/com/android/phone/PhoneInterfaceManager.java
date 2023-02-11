@@ -145,8 +145,10 @@ import android.telephony.ims.aidl.IRcsConfigCallback;
 import android.telephony.ims.feature.ImsFeature;
 import android.telephony.ims.stub.ImsConfigImplBase;
 import android.telephony.ims.stub.ImsRegistrationImplBase;
+import android.telephony.satellite.ISatelliteCapabilitiesConsumer;
 import android.telephony.satellite.ISatelliteStateListener;
 import android.telephony.satellite.PointingInfo;
+import android.telephony.satellite.SatelliteCapabilities;
 import android.telephony.satellite.SatelliteManager;
 import android.text.TextUtils;
 import android.util.ArraySet;
@@ -396,7 +398,14 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private static final int EVENT_CANCEL_PROVISION_SATELLITE_SERVICE_DONE = 128;
     private static final int CMD_GET_PROVISIONED_SATELLITE_FEATURES = 129;
     private static final int EVENT_GET_PROVISIONED_SATELLITE_FEATURES_DONE = 130;
-
+    private static final int CMD_SET_SATELLITE_POWER = 131;
+    private static final int EVENT_SET_SATELLITE_POWER_DONE = 132;
+    private static final int CMD_IS_SATELLITE_POWER_ON = 133;
+    private static final int EVENT_IS_SATELLITE_POWER_ON_DONE = 134;
+    private static final int CMD_IS_SATELLITE_SUPPORTED = 135;
+    private static final int EVENT_IS_SATELLITE_SUPPORTED_DONE = 136;
+    private static final int CMD_GET_SATELLITE_CAPABILITIES = 137;
+    private static final int EVENT_GET_SATELLITE_CAPABILITIES_DONE = 138;
     // Parameters of select command.
     private static final int SELECT_COMMAND = 0xA4;
     private static final int SELECT_P1 = 0x04;
@@ -2504,8 +2513,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     } else {
                         request.result = SatelliteManager.SATELLITE_SERVICE_SUCCESS;
                         int maxCharLimit = ((int[]) ar.result)[0];
-                        if(DBG) log("getMaxCharactersPerSatelliteTextMessage "
-                                + "maxCharLimit:" + maxCharLimit);
+                        if (DBG) log("getMaxCharactersPerSatelliteTextMessage: " + maxCharLimit);
                         callback.accept(maxCharLimit);
                     }
                     notifyRequester(request);
@@ -2637,6 +2645,164 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                         } else {
                             log("getProvisionedSatelliteFeatures: callback is null");
                         }
+                    }
+                    notifyRequester(request);
+                    break;
+                }
+
+                case CMD_SET_SATELLITE_POWER: {
+                    request = (MainThreadRequest) msg.obj;
+                    onCompleted = obtainMessage(EVENT_SET_SATELLITE_POWER_DONE, request);
+                    Phone phone = getPhoneFromRequest(request);
+                    if (phone != null) {
+                        phone.setSatellitePower(onCompleted, (boolean) request.argument);
+                    } else {
+                        loge("setSatellitePower: No phone object");
+                        request.result = SatelliteManager.SATELLITE_SERVICE_INVALID_TELEPHONY_STATE;
+                        notifyRequester(request);
+                    }
+                    break;
+                }
+
+                case EVENT_SET_SATELLITE_POWER_DONE: {
+                    ar = (AsyncResult) msg.obj;
+                    request = (MainThreadRequest) ar.userObj;
+                    if (ar.exception == null) {
+                        request.result = SatelliteManager.SATELLITE_SERVICE_SUCCESS;
+                    } else {
+                        request.result = SatelliteManager.SATELLITE_SERVICE_ERROR;
+                        if (ar.exception instanceof CommandException) {
+                            CommandException.Error error =
+                                    ((CommandException) (ar.exception)).getCommandError();
+                            request.result = RILUtils.convertToSatelliteError(error);
+                            loge("setSatellitePower CommandException: " + ar.exception);
+                        } else {
+                            loge("setSatellitePower unknown exception:" + ar.exception);
+                        }
+                    }
+                    notifyRequester(request);
+                    break;
+                }
+
+                case CMD_IS_SATELLITE_POWER_ON: {
+                    request = (MainThreadRequest) msg.obj;
+                    onCompleted = obtainMessage(EVENT_IS_SATELLITE_POWER_ON_DONE, request);
+                    Phone phone = getPhoneFromRequest(request);
+                    if (phone != null) {
+                        phone.isSatellitePowerOn(onCompleted);
+                    } else {
+                        loge("isSatellitePowerOn: No phone object");
+                        request.result = SatelliteManager.SATELLITE_SERVICE_INVALID_TELEPHONY_STATE;
+                        notifyRequester(request);
+                    }
+                    break;
+                }
+
+                case EVENT_IS_SATELLITE_POWER_ON_DONE: {
+                    ar = (AsyncResult) msg.obj;
+                    request = (MainThreadRequest) ar.userObj;
+                    Consumer<Boolean> callback = (Consumer<Boolean>) request.argument;
+                    if (ar.exception != null) {
+                        request.result = SatelliteManager.SATELLITE_SERVICE_ERROR;
+                        if (ar.exception instanceof CommandException) {
+                            CommandException.Error error =
+                                    ((CommandException) (ar.exception)).getCommandError();
+                            request.result = RILUtils.convertToSatelliteError(error);
+                            loge("isSatellitePowerOn CommandException: " + ar.exception);
+                        } else {
+                            loge("isSatellitePowerOn unknown exception:" + ar.exception);
+                        }
+                    } else if (ar.result == null) {
+                        request.result = SatelliteManager.SATELLITE_SERVICE_INVALID_TELEPHONY_STATE;
+                        loge("isSatellitePowerOn: result is null");
+                    } else {
+                        request.result = SatelliteManager.SATELLITE_SERVICE_SUCCESS;
+                        boolean powerOn = ((int[]) ar.result)[0] == 1;
+                        if (DBG) log("isSatellitePowerOn: " + powerOn);
+                        callback.accept(powerOn);
+                    }
+                    notifyRequester(request);
+                    break;
+                }
+
+                case CMD_IS_SATELLITE_SUPPORTED: {
+                    request = (MainThreadRequest) msg.obj;
+                    onCompleted = obtainMessage(EVENT_IS_SATELLITE_SUPPORTED_DONE, request);
+                    Phone phone = getPhoneFromRequest(request);
+                    if (phone != null) {
+                        phone.isSatelliteSupported(onCompleted);
+                    } else {
+                        loge("isSatelliteSupported: No phone object");
+                        request.result = SatelliteManager.SATELLITE_SERVICE_INVALID_TELEPHONY_STATE;
+                        notifyRequester(request);
+                    }
+                    break;
+                }
+
+                case EVENT_IS_SATELLITE_SUPPORTED_DONE: {
+                    ar = (AsyncResult) msg.obj;
+                    request = (MainThreadRequest) ar.userObj;
+                    Consumer<Boolean> callback = (Consumer<Boolean>) request.argument;
+                    if (ar.exception != null) {
+                        request.result = SatelliteManager.SATELLITE_SERVICE_ERROR;
+                        if (ar.exception instanceof CommandException) {
+                            CommandException.Error error =
+                                    ((CommandException) (ar.exception)).getCommandError();
+                            request.result = RILUtils.convertToSatelliteError(error);
+                            loge("isSatelliteSupported CommandException: " + ar.exception);
+                        } else {
+                            loge("isSatelliteSupported unknown exception:" + ar.exception);
+                        }
+                    } else if (ar.result == null) {
+                        request.result = SatelliteManager.SATELLITE_SERVICE_INVALID_TELEPHONY_STATE;
+                        loge("isSatelliteSupported: result is null");
+                    } else {
+                        request.result = SatelliteManager.SATELLITE_SERVICE_SUCCESS;
+                        boolean powerOn = ((int[]) ar.result)[0] == 1;
+                        if (DBG) log("isSatelliteSupported: " + powerOn);
+                        callback.accept(powerOn);
+                    }
+                    notifyRequester(request);
+                    break;
+                }
+
+                case CMD_GET_SATELLITE_CAPABILITIES: {
+                    request = (MainThreadRequest) msg.obj;
+                    onCompleted = obtainMessage(EVENT_GET_SATELLITE_CAPABILITIES_DONE, request);
+                    Phone phone = getPhoneFromRequest(request);
+                    if (phone != null) {
+                        phone.getSatelliteCapabilities(onCompleted);
+                    } else {
+                        loge("getSatelliteCapabilities: No phone object");
+                        request.result = SatelliteManager.SATELLITE_SERVICE_INVALID_TELEPHONY_STATE;
+                        notifyRequester(request);
+                    }
+                    break;
+                }
+
+                case EVENT_GET_SATELLITE_CAPABILITIES_DONE: {
+                    ar = (AsyncResult) msg.obj;
+                    request = (MainThreadRequest) ar.userObj;
+                    Consumer<SatelliteCapabilities> callback =
+                            (Consumer<SatelliteCapabilities>) request.argument;
+                    if (ar.exception != null) {
+                        request.result = SatelliteManager.SATELLITE_SERVICE_ERROR;
+                        if (ar.exception instanceof CommandException) {
+                            CommandException.Error error =
+                                    ((CommandException) (ar.exception)).getCommandError();
+                            request.result = RILUtils.convertToSatelliteError(error);
+                            loge("getSatelliteCapabilities CommandException: " + ar.exception);
+                        } else {
+                            loge("getSatelliteCapabilities unknown exception:" + ar.exception);
+                        }
+                    } else if (ar.result == null) {
+                        request.result = SatelliteManager.SATELLITE_SERVICE_INVALID_TELEPHONY_STATE;
+                        loge("getSatelliteCapabilities: result is null");
+                    } else {
+                        request.result = SatelliteManager.SATELLITE_SERVICE_SUCCESS;
+                        SatelliteCapabilities capabilities = (SatelliteCapabilities) ar.result;
+                        if (DBG) log("getSatelliteCapabilities: " + capabilities);
+                        callback.accept(capabilities);
                     }
                     notifyRequester(request);
                     break;
@@ -12453,6 +12619,123 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
+     * Power on or off the satellite modem.
+     *
+     * @param subId The subId to set satellite power for.
+     * @param powerOn {@code true} to power on the satellite modem and {@code false} to power off.
+     * @return The result of the operation.
+     *
+     * @throws SecurityException if the caller doesn't have the required permission.
+     */
+    @Override
+    @SatelliteManager.SatelliteServiceResult public int setSatellitePower(int subId,
+            boolean powerOn) {
+        enforceSatelliteCommunicationPermission("setSatellitePower");
+
+        final int validSubId = getValidSatelliteSubId(subId);
+        if (!isSatelliteEnabled(validSubId)) {
+            return SatelliteManager.SATELLITE_SERVICE_DISABLED;
+        }
+
+        Phone phone = getPhoneOrDefault(validSubId, "setSatellitePower");
+        if (phone == null) {
+            return SatelliteManager.SATELLITE_SERVICE_INVALID_TELEPHONY_STATE;
+        }
+
+        int result = (int) sendRequest(CMD_SET_SATELLITE_POWER, powerOn, subId);
+        if (DBG) log("setSatellitePower result: " + result);
+        return result;
+    }
+
+    /**
+     * Check whether the satellite modem is powered on.
+     *
+     * @param subId The subId to check satellite power for.
+     * @param callback The callback that will be used to send the result if the operation is
+     *                 successful. Returns {@code true} if the satellite modem is powered on and
+     *                 {@code false} otherwise.
+     * @return The result of the operation.
+     *
+     * @throws SecurityException if the caller doesn't have the required permission.
+     */
+    @Override
+    @SatelliteManager.SatelliteServiceResult public int isSatellitePowerOn(int subId,
+            @NonNull IBooleanConsumer callback) {
+        enforceSatelliteCommunicationPermission("isSatellitePowerOn");
+
+        final int validSubId = getValidSatelliteSubId(subId);
+        if (!isSatelliteEnabled(validSubId)) {
+            return SatelliteManager.SATELLITE_SERVICE_DISABLED;
+        }
+
+        Phone phone = getPhoneOrDefault(validSubId, "isSatellitePowerOn");
+        if (phone == null) {
+            return SatelliteManager.SATELLITE_SERVICE_INVALID_TELEPHONY_STATE;
+        }
+
+        Consumer<Boolean> argument = FunctionalUtils.ignoreRemoteException(callback::accept);
+        int result = (int) sendRequest(CMD_IS_SATELLITE_POWER_ON, argument, subId);
+        if (DBG) log("isSatellitePowerOn result: " + result);
+        return result;
+    }
+
+    /**
+     * Check whether the satellite service is supported on the device.
+     *
+     * @param subId The subId to check satellite service support for.
+     * @param callback The callback that will be used to send the result if the operation is
+     *                 successful. Returns {@code true} if the satellite service is supported on
+     *                 the device and {@code false} otherwise.
+     * @return The result of the operation.
+     *
+     * @throws SecurityException if the caller doesn't have the required permission.
+     */
+    @Override
+    @SatelliteManager.SatelliteServiceResult public int isSatelliteSupported(int subId,
+            @NonNull IBooleanConsumer callback) {
+        enforceSatelliteCommunicationPermission("isSatelliteSupported");
+
+        final int validSubId = getValidSatelliteSubId(subId);
+        Phone phone = getPhoneOrDefault(validSubId, "isSatelliteSupported");
+        if (phone == null) {
+            return SatelliteManager.SATELLITE_SERVICE_INVALID_TELEPHONY_STATE;
+        }
+
+        Consumer<Boolean> argument = FunctionalUtils.ignoreRemoteException(callback::accept);
+        int result = (int) sendRequest(CMD_IS_SATELLITE_SUPPORTED, argument, subId);
+        if (DBG) log("isSatelliteSupported result: " + result);
+        return result;
+    }
+
+    /**
+     * Get the {@link SatelliteCapabilities} with all capabilities of the satellite service.
+     *
+     * @param subId The subId to get the satellite capabilities for.
+     * @param callback The callback that will be used to send the {@link SatelliteCapabilities}
+     *                 if the operation is successful.
+     * @return The result of the operation.
+     *
+     * @throws SecurityException if the caller doesn't have required permission.
+     */
+    @Override
+    @SatelliteManager.SatelliteServiceResult public int getSatelliteCapabilities(int subId,
+            @NonNull ISatelliteCapabilitiesConsumer callback) {
+        enforceSatelliteCommunicationPermission("getSatelliteCapabilities");
+
+        final int validSubId = getValidSatelliteSubId(subId);
+        Phone phone = getPhoneOrDefault(validSubId, "getSatelliteCapabilities");
+        if (phone == null) {
+            return SatelliteManager.SATELLITE_SERVICE_INVALID_TELEPHONY_STATE;
+        }
+
+        Consumer<SatelliteCapabilities> argument =
+                FunctionalUtils.ignoreRemoteException(callback::accept);
+        int result = (int) sendRequest(CMD_GET_SATELLITE_CAPABILITIES, argument, subId);
+        if (DBG) log("getSatelliteCapabilities result: " + result);
+        return result;
+    }
+
+    /**
      * Start receiving satellite position updates.
      * This can be called by the pointing UI when the user starts pointing to the satellite.
      * Modem should continue to report the pointing input as the device or satellite moves.
@@ -12460,6 +12743,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * @param subId The subId to start satellite position updates for.
      * @param callback The callback to notify of changes in satellite position.
      * @return The result of the operation.
+     *
+     * @throws SecurityException if the caller doesn't have the required permission.
      */
     @Override
     @SatelliteManager.SatelliteServiceResult public int startSatellitePositionUpdates(int subId,
@@ -12503,6 +12788,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * @param callback The callback that was passed in {@link
      *                   #startSatellitePositionUpdates(int, ISatelliteStateListener)}
      * @return The result of the operation.
+     *
+     * @throws SecurityException if the caller doesn't have the required permission.
      */
     @Override
     @SatelliteManager.SatelliteServiceResult public int stopSatellitePositionUpdates(int subId,
