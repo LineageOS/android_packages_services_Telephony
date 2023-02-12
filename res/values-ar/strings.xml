@@ -921,12 +921,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"إشارة البلوتوث ضعيفة. حاوِل التبديل إلى مكبّر الصوت."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"إشعار بشأن جودة المكالمة"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"‏حسابات SIP المتوقّفة"</string>
-    <!-- no translation found for send_from_work_profile_title (9201528838448432473) -->
-    <skip />
-    <!-- no translation found for send_from_work_profile_description (5002701841936861636) -->
-    <skip />
-    <!-- no translation found for send_from_work_profile_cancel (177746511030381711) -->
-    <skip />
-    <!-- no translation found for send_from_work_profile_action_str (6892775562934243337) -->
-    <skip />
+    <string name="send_from_work_profile_title" msgid="9201528838448432473">"لا يمكن إرسال رسالة من هذا الملف الشخصي"</string>
+    <string name="send_from_work_profile_description" msgid="5002701841936861636">"تسمح لك سياسة العمل بإرسال الرسائل من الملف الشخصي للعمل فقط."</string>
+    <string name="send_from_work_profile_cancel" msgid="177746511030381711">"إلغاء"</string>
+    <string name="send_from_work_profile_action_str" msgid="6892775562934243337">"التبديل إلى الملف الشخصي للعمل"</string>
 </resources>

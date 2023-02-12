@@ -921,12 +921,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"ब्लुटुथको सिग्नल कमजोर छ। स्पिकरफोन प्रयोग गरी हेर्नुहोस्।"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"कलको गुणस्तरसम्बन्धी सूचना"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"चल्तीबाट हटाइएका SIP खाताहरू"</string>
-    <!-- no translation found for send_from_work_profile_title (9201528838448432473) -->
-    <skip />
-    <!-- no translation found for send_from_work_profile_description (5002701841936861636) -->
-    <skip />
-    <!-- no translation found for send_from_work_profile_cancel (177746511030381711) -->
-    <skip />
-    <!-- no translation found for send_from_work_profile_action_str (6892775562934243337) -->
-    <skip />
+    <string name="send_from_work_profile_title" msgid="9201528838448432473">"यो प्रोफाइलबाट म्यासेज पठाउन सकिँदैन"</string>
+    <string name="send_from_work_profile_description" msgid="5002701841936861636">"तपाईंको कामसम्बन्धी नीतिअनुसार कार्य प्रोफाइलबाट मात्र म्यासेज पठाउन सकिन्छ"</string>
+    <string name="send_from_work_profile_cancel" msgid="177746511030381711">"रद्द गर्नुहोस्"</string>
+    <string name="send_from_work_profile_action_str" msgid="6892775562934243337">"कार्य प्रोफाइल प्रयोग गर्नुहोस्"</string>
 </resources>

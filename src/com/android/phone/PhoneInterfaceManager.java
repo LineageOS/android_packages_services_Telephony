@@ -6041,7 +6041,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     private boolean isActiveSubscription(int subId) {
         if (PhoneFactory.isSubscriptionManagerServiceEnabled()) {
-            return SubscriptionManagerService.getInstance().isActiveSubId(subId,
+            return getSubscriptionManagerService().isActiveSubId(subId,
                     mApp.getOpPackageName(), mApp.getFeatureId());
         }
         return mSubscriptionController.isActiveSubId(subId);
@@ -8007,7 +8007,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
             ParcelUuid groupUuid;
             if (PhoneFactory.isSubscriptionManagerServiceEnabled()) {
-                final SubscriptionInfo info = SubscriptionManagerService.getInstance()
+                final SubscriptionInfo info = getSubscriptionManagerService()
                         .getSubscriptionInfo(subId);
                 groupUuid = info.getGroupUuid();
             } else {
@@ -8024,7 +8024,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             final List<String> mergedSubscriberIds = new ArrayList<>();
             List<SubscriptionInfo> groupInfos;
             if (PhoneFactory.isSubscriptionManagerServiceEnabled()) {
-                groupInfos = SubscriptionManagerService.getInstance()
+                groupInfos = getSubscriptionManagerService()
                         .getSubscriptionsInGroup(groupUuid, mApp.getOpPackageName(),
                                 mApp.getAttributionTag());
             } else {
@@ -8594,7 +8594,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         try {
             SubscriptionInfo info;
             if (PhoneFactory.isSubscriptionManagerServiceEnabled()) {
-                info = SubscriptionManagerService.getInstance().getActiveSubscriptionInfo(subId,
+                info = getSubscriptionManagerService().getActiveSubscriptionInfo(subId,
                         phone.getContext().getOpPackageName(),
                         phone.getContext().getAttributionTag());
                 if (info == null) {
@@ -8661,7 +8661,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     private List<SubscriptionInfo> getActiveSubscriptionInfoListPrivileged() {
         if (PhoneFactory.isSubscriptionManagerServiceEnabled()) {
-            return SubscriptionManagerService.getInstance().getActiveSubscriptionInfoList(
+            return getSubscriptionManagerService().getActiveSubscriptionInfoList(
                     mApp.getOpPackageName(), mApp.getAttributionTag());
         }
         return mSubscriptionController.getActiveSubscriptionInfoList(mApp.getOpPackageName(),
@@ -8876,7 +8876,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         try {
             // isActiveSubId requires READ_PHONE_STATE, which we already check for above
             if (PhoneFactory.isSubscriptionManagerServiceEnabled()) {
-                SubscriptionInfoInternal subInfo = SubscriptionManagerService.getInstance()
+                SubscriptionInfoInternal subInfo = getSubscriptionManagerService()
                         .getSubscriptionInfoInternal(subId);
                 if (subInfo == null || !subInfo.isActive()) {
                     Rlog.d(LOG_TAG, "getServiceStateForSubscriber returning null for inactive "
@@ -13187,6 +13187,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             }
         }
         return false;
+    }
+
+    /**
+     * @return The subscription manager service instance.
+     */
+    public SubscriptionManagerService getSubscriptionManagerService() {
+        return SubscriptionManagerService.getInstance();
     }
 
     /**

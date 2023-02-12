@@ -921,12 +921,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"O seu sinal Bluetooth é fraco. Tente mudar para o altifalante."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Notificação de qualidade da chamada"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Contas SIP descontinuadas"</string>
-    <!-- no translation found for send_from_work_profile_title (9201528838448432473) -->
-    <skip />
-    <!-- no translation found for send_from_work_profile_description (5002701841936861636) -->
-    <skip />
-    <!-- no translation found for send_from_work_profile_cancel (177746511030381711) -->
-    <skip />
-    <!-- no translation found for send_from_work_profile_action_str (6892775562934243337) -->
-    <skip />
+    <string name="send_from_work_profile_title" msgid="9201528838448432473">"Não é possível enviar mensagens a partir deste perfil"</string>
+    <string name="send_from_work_profile_description" msgid="5002701841936861636">"A sua Política de Trabalho permite-lhe enviar mensagens apenas a partir do perfil de trabalho"</string>
+    <string name="send_from_work_profile_cancel" msgid="177746511030381711">"Cancelar"</string>
+    <string name="send_from_work_profile_action_str" msgid="6892775562934243337">"Mudar para perfil de trabalho"</string>
 </resources>
