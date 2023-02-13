@@ -18,6 +18,7 @@ package com.android.services.telephony;
 
 import static android.telephony.DisconnectCause.EMERGENCY_PERM_FAILURE;
 import static android.telephony.DisconnectCause.EMERGENCY_TEMP_FAILURE;
+import static android.telephony.DisconnectCause.ERROR_UNSPECIFIED;
 import static android.telephony.DisconnectCause.NOT_DISCONNECTED;
 import static android.telephony.DomainSelectionService.SELECTOR_TYPE_CALLING;
 import static android.telephony.NetworkRegistrationInfo.DOMAIN_CS;
@@ -1949,6 +1950,40 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         DomainSelectionService.SelectionAttributes attr = attrCaptor.getValue();
 
         assertEquals(mPhone1.getPhoneId(), attr.getSlotId());
+    }
+
+    @Test
+    public void testOnSelectionTerminatedUnspecified() throws Exception {
+        setupForCallTest();
+
+        doReturn(mEmergencyCallDomainSelectionConnection).when(mDomainSelectionResolver)
+                .getDomainSelectionConnection(any(), anyInt(), eq(true));
+        doReturn(mPhone0).when(mEmergencyCallDomainSelectionConnection).getPhone();
+        doReturn(true).when(mTelephonyManagerProxy).isCurrentEmergencyNumber(anyString());
+
+        doReturn(true).when(mDomainSelectionResolver).isDomainSelectionSupported();
+        doReturn(mImsPhone).when(mPhone0).getImsPhone();
+
+        mTestConnectionService.onCreateOutgoingConnection(PHONE_ACCOUNT_HANDLE_1,
+                createConnectionRequest(PHONE_ACCOUNT_HANDLE_1,
+                        TEST_EMERGENCY_NUMBER, TELECOM_CALL_ID1));
+
+        ArgumentCaptor<DomainSelectionConnection.DomainSelectionConnectionCallback> callbackCaptor =
+                ArgumentCaptor.forClass(
+                        DomainSelectionConnection.DomainSelectionConnectionCallback.class);
+
+        verify(mEmergencyCallDomainSelectionConnection).createEmergencyConnection(
+                any(), callbackCaptor.capture());
+
+        DomainSelectionConnection.DomainSelectionConnectionCallback callback =
+                callbackCaptor.getValue();
+
+        assertNotNull(callback);
+
+        callback.onSelectionTerminated(ERROR_UNSPECIFIED);
+
+        verify(mEmergencyCallDomainSelectionConnection).cancelSelection();
+        verify(mEmergencyStateTracker).endCall(eq(TELECOM_CALL_ID1));
     }
 
     @Test
