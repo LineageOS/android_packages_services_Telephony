@@ -2410,7 +2410,7 @@ public class TelephonyConnectionService extends ConnectionService {
                 + ", psCause:" + reasonInfo);
 
         if (mDomainSelectionConnection != null && c.getOriginalConnection() != null) {
-            Phone phone = c.getPhone();
+            Phone phone = c.getPhone().getDefaultPhone();
             final String number = c.getAddress().getSchemeSpecificPart();
             int videoState = c.getOriginalConnection().getVideoState();
             SelectionAttributes selectionAttributes = NormalCallDomainSelectionConnection
@@ -2424,7 +2424,7 @@ public class TelephonyConnectionService extends ConnectionService {
                     .reselectDomain(selectionAttributes);
             if (future != null) {
                 future.thenAcceptAsync((result) -> {
-                    onNormalCallRedial(c, result, videoState);
+                    onNormalCallRedial(c, phone, result, videoState);
                 }, mDomainSelectionMainExecutor);
                 return true;
             }
@@ -2598,14 +2598,13 @@ public class TelephonyConnectionService extends ConnectionService {
         onEmergencyRedialOnDomain(connection, phone, result);
     }
 
-    private void onNormalCallRedial(TelephonyConnection connection,
+    private void onNormalCallRedial(TelephonyConnection connection, Phone phone,
             @NetworkRegistrationInfo.Domain int domain, int videocallState) {
 
         Log.v(LOG_TAG, "Redialing the call in domain:"
                 + DomainSelectionService.getDomainName(domain));
 
         String number = connection.getAddress().getSchemeSpecificPart();
-        Phone phone = connection.getPhone();
 
         Bundle extras = new Bundle();
         extras.putInt(PhoneConstants.EXTRA_DIAL_DOMAIN, domain);
