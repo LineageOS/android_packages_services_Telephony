@@ -921,12 +921,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"သင်၏ ဘလူးတုသ်လိုင်းဆွဲအား မကောင်းပါ။ စပီကာဖုန်းသို့ ပြောင်းကြည့်ပါ။"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"ခေါ်ဆိုမှုအရည်အသွေး အကြောင်းကြားချက်"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"ရပ်ဆိုင်းထားသော SIP အကောင့်များ"</string>
-    <!-- no translation found for send_from_work_profile_title (9201528838448432473) -->
-    <skip />
-    <!-- no translation found for send_from_work_profile_description (5002701841936861636) -->
-    <skip />
-    <!-- no translation found for send_from_work_profile_cancel (177746511030381711) -->
-    <skip />
-    <!-- no translation found for send_from_work_profile_action_str (6892775562934243337) -->
-    <skip />
+    <string name="send_from_work_profile_title" msgid="9201528838448432473">"ဤပရိုဖိုင်မှ မက်ဆေ့ဂျ်ပို့၍ မရပါ"</string>
+    <string name="send_from_work_profile_description" msgid="5002701841936861636">"သင့်အလုပ်ခွင်မူဝါဒသည် အလုပ်ပရိုဖိုင်မှသာ မက်ဆေ့ဂျ်ပို့ခွင့်ပြုသည်"</string>
+    <string name="send_from_work_profile_cancel" msgid="177746511030381711">"မလုပ်တော့"</string>
+    <string name="send_from_work_profile_action_str" msgid="6892775562934243337">"အလုပ်ပရိုဖိုင်သို့ ပြောင်းရန်"</string>
 </resources>
