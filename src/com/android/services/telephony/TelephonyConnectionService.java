@@ -611,9 +611,8 @@ public class TelephonyConnectionService extends ConnectionService {
                             Phone phone = mEmergencyCallDomainSelectionConnection.getPhone();
                             mEmergencyConnection.removeTelephonyConnectionListener(
                                     mEmergencyConnectionListener);
-                            mEmergencyStateTracker.endCall(
-                                    mEmergencyConnection.getTelecomCallId());
                             releaseEmergencyCallDomainSelection(true);
+                            mEmergencyStateTracker.endCall(mEmergencyCallId);
                             retryOutgoingOriginalConnection(c, phone, isPermanentFailure);
                         });
                         return;
@@ -2386,8 +2385,8 @@ public class TelephonyConnectionService extends ConnectionService {
 
         Log.i(this, "maybeReselectDomainForEmergencyCall endCall()");
         c.removeTelephonyConnectionListener(mEmergencyConnectionListener);
-        mEmergencyStateTracker.endCall(c.getTelecomCallId());
         releaseEmergencyCallDomainSelection(true);
+        mEmergencyStateTracker.endCall(c.getTelecomCallId());
 
         return false;
     }
@@ -2647,8 +2646,8 @@ public class TelephonyConnectionService extends ConnectionService {
         if (TextUtils.equals(mEmergencyCallId, c.getTelecomCallId())) {
             Log.i(this, "onLocalHangup " + mEmergencyCallId);
             c.removeTelephonyConnectionListener(mEmergencyConnectionListener);
-            mEmergencyStateTracker.endCall(c.getTelecomCallId());
             releaseEmergencyCallDomainSelection(true);
+            mEmergencyStateTracker.endCall(c.getTelecomCallId());
             mEmergencyCallId = null;
         }
     }
