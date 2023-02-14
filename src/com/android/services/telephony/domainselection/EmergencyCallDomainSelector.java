@@ -255,7 +255,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
 
         if (result.getAccessNetwork() == UNKNOWN) {
             if ((mPreferredNetworkScanType == SCAN_TYPE_FULL_SERVICE_FOLLOWED_BY_LIMITED_SERVICE)
-                      || (mScanType == DomainSelectionService.SCAN_TYPE_FULL_SERVICE)) {
+                      && (mScanType == DomainSelectionService.SCAN_TYPE_FULL_SERVICE)) {
                 mScanType = DomainSelectionService.SCAN_TYPE_LIMITED_SERVICE;
                 mWwanSelectorCallback.onRequestEmergencyNetworkScan(
                         mLastPreferredNetworks, mScanType, mCancelSignal,
