@@ -13417,10 +13417,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
-     * Request to get the time after which the satellite will next be visible
+     * Request to get the time after which the satellite will be visible
      *
-     * @param subId The subId to get the time after which the satellite will next be visible for.
-     * @param result The result receiver that returns the time after which the satellite will next
+     * @param subId The subId to get the time after which the satellite will be visible for.
+     * @param result The result receiver that returns the time after which the satellite will
      *               be visible if the request is successful or an error code if the request failed.
      *
      * @throws SecurityException if the caller doesn't have the required permission.
