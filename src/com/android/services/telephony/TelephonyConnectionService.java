@@ -593,37 +593,36 @@ public class TelephonyConnectionService extends ConnectionService {
                     new DomainSelectionConnection.DomainSelectionConnectionCallback() {
         @Override
         public void onSelectionTerminated(@DisconnectCauses int cause) {
-            if (mEmergencyCallDomainSelectionConnection != null) {
+            mDomainSelectionMainExecutor.execute(() -> {
                 Log.i(this, "onSelectionTerminated cause=" + cause);
+                if (mEmergencyCallDomainSelectionConnection == null) {
+                    Log.i(this, "onSelectionTerminated no DomainSelectionConnection");
+                    return;
+                }
 
                 // Cross stack redial
                 if (cause == android.telephony.DisconnectCause.EMERGENCY_TEMP_FAILURE
                         || cause == android.telephony.DisconnectCause.EMERGENCY_PERM_FAILURE) {
                     if (mEmergencyConnection != null) {
-                        final boolean isPermanentFailure =
+                        boolean isPermanentFailure =
                                 cause == android.telephony.DisconnectCause.EMERGENCY_PERM_FAILURE;
-                        Log.i(this, "onSelectionTerminated trigger cross stack redial"
-                                + " permanent=" + isPermanentFailure);
-                        mDomainSelectionMainExecutor.execute(() -> {
-                            Log.i(this, "onSelectionTerminated execute cross stack redial"
-                                    + " permanent=" + isPermanentFailure);
-                            TelephonyConnection c = mEmergencyConnection;
-                            Phone phone = mEmergencyCallDomainSelectionConnection.getPhone();
-                            mEmergencyConnection.removeTelephonyConnectionListener(
-                                    mEmergencyConnectionListener);
-                            releaseEmergencyCallDomainSelection(true);
-                            mEmergencyStateTracker.endCall(mEmergencyCallId);
-                            retryOutgoingOriginalConnection(c, phone, isPermanentFailure);
-                        });
+                        Log.i(this, "onSelectionTerminated permanent=" + isPermanentFailure);
+                        TelephonyConnection c = mEmergencyConnection;
+                        Phone phone = mEmergencyCallDomainSelectionConnection.getPhone();
+                        mEmergencyConnection.removeTelephonyConnectionListener(
+                                mEmergencyConnectionListener);
+                        releaseEmergencyCallDomainSelection(true);
+                        mEmergencyStateTracker.endCall(mEmergencyCallId);
+                        mEmergencyCallId = null;
+                        retryOutgoingOriginalConnection(c, phone, isPermanentFailure);
                         return;
                     }
                 }
-                mEmergencyCallDomainSelectionConnection = null;
                 if (mEmergencyConnection != null) {
                     mEmergencyConnection.hangup(android.telephony.DisconnectCause.OUT_OF_NETWORK);
                     mEmergencyConnection = null;
                 }
-            }
+            });
         }
     };
 
@@ -2387,7 +2386,7 @@ public class TelephonyConnectionService extends ConnectionService {
         c.removeTelephonyConnectionListener(mEmergencyConnectionListener);
         releaseEmergencyCallDomainSelection(true);
         mEmergencyStateTracker.endCall(c.getTelecomCallId());
-
+        mEmergencyCallId = null;
         return false;
     }
 
