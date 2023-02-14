@@ -407,7 +407,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private static final int EVENT_POLL_PENDING_SATELLITE_DATAGRAMS_DONE = 138;
     private static final int CMD_SEND_SATELLITE_DATAGRAM = 139;
     private static final int EVENT_SEND_SATELLITE_DATAGRAM_DONE = 140;
-
+    private static final int CMD_IS_SATELLITE_COMMUNICATION_ALLOWED = 141;
+    private static final int EVENT_IS_SATELLITE_COMMUNICATION_ALLOWED_DONE = 142;
+    private static final int CMD_GET_TIME_SATELLITE_NEXT_VISIBLE = 143;
+    private static final int EVENT_GET_TIME_SATELLITE_NEXT_VISIBLE_DONE = 144;
     // Parameters of select command.
     private static final int SELECT_COMMAND = 0xA4;
     private static final int SELECT_P1 = 0x04;
@@ -618,7 +621,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     AsyncResult ar = (AsyncResult) msg.obj;
                     int state = (int) ar.result;
                     try {
-                        mCallback.onMessageTransferStateUpdate(state);
+                        // TODO: get correct responses back from indication
+                        mCallback.onMessageTransferStateUpdate(state, 0, 0, 0);
                     } catch (RemoteException e) {
                         loge("EVENT_MESSAGE_TRANSFER_STATE_UPDATE RemoteException: " + e);
                     }
@@ -2858,6 +2862,73 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     SendSatelliteDatagramArgument argument =
                             (SendSatelliteDatagramArgument) request.argument;
                     argument.callback.accept(error);
+                    break;
+                }
+
+                case CMD_IS_SATELLITE_COMMUNICATION_ALLOWED: {
+                    request = (MainThreadRequest) msg.obj;
+                    onCompleted = obtainMessage(EVENT_IS_SATELLITE_COMMUNICATION_ALLOWED_DONE,
+                            request);
+                    Phone phone = getPhoneFromRequest(request);
+                    if (phone != null) {
+                        phone.isSatelliteCommunicationAllowedForCurrentLocation(onCompleted);
+                    } else {
+                        loge("isSatelliteCommunicationAllowedForCurrentLocation: No phone object");
+                        ((ResultReceiver) request.argument).send(
+                                SatelliteManager.SATELLITE_INVALID_TELEPHONY_STATE, null);
+                    }
+                    break;
+                }
+
+                case EVENT_IS_SATELLITE_COMMUNICATION_ALLOWED_DONE: {
+                    ar = (AsyncResult) msg.obj;
+                    request = (MainThreadRequest) ar.userObj;
+                    int error = getSatelliteError(
+                            ar, "isSatelliteCommunicationAllowedForCurrentLocation", true);
+                    Bundle bundle = new Bundle();
+                    if (error == SatelliteManager.SATELLITE_ERROR_NONE) {
+                        boolean communicationAllowed = ((int[]) ar.result)[0] == 1;
+                        if (DBG) {
+                            log("isSatelliteCommunicationAllowedForCurrentLocation: "
+                                    + communicationAllowed);
+                        }
+                        bundle.putBoolean(SatelliteManager.KEY_SATELLITE_COMMUNICATION_ALLOWED,
+                                communicationAllowed);
+                    }
+                    ((ResultReceiver) request.argument).send(error, bundle);
+                    break;
+                }
+
+                case CMD_GET_TIME_SATELLITE_NEXT_VISIBLE: {
+                    request = (MainThreadRequest) msg.obj;
+                    onCompleted = obtainMessage(EVENT_GET_TIME_SATELLITE_NEXT_VISIBLE_DONE,
+                            request);
+                    Phone phone = getPhoneFromRequest(request);
+                    if (phone != null) {
+                        phone.requestTimeForNextSatelliteVisibility(onCompleted);
+                    } else {
+                        loge("requestTimeForNextSatelliteVisibility: No phone object");
+                        ((ResultReceiver) request.argument).send(
+                                SatelliteManager.SATELLITE_INVALID_TELEPHONY_STATE, null);
+                    }
+                    break;
+                }
+
+                case EVENT_GET_TIME_SATELLITE_NEXT_VISIBLE_DONE: {
+                    ar = (AsyncResult) msg.obj;
+                    request = (MainThreadRequest) ar.userObj;
+                    int error =
+                            getSatelliteError(ar, "requestTimeForNextSatelliteVisibility", true);
+                    Bundle bundle = new Bundle();
+                    if (error == SatelliteManager.SATELLITE_ERROR_NONE) {
+                        int nextVisibilityDuration = ((int[]) ar.result)[0];
+                        if (DBG) {
+                            log("requestTimeForNextSatelliteVisibility: " + nextVisibilityDuration);
+                        }
+                        bundle.putInt(SatelliteManager.KEY_SATELLITE_NEXT_VISIBILITY,
+                                nextVisibilityDuration);
+                    }
+                    ((ResultReceiver) request.argument).send(error, bundle);
                     break;
                 }
 
@@ -12694,7 +12765,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * disable the cellular modem, and if the satellite modem is disabled, this will also re-enable
      * the cellular modem.
      *
-     * @param subId The subId to set satellite enabled for.
+     * @param subId The subId of the subscription to set satellite enabled for.
      * @param enable {@code true} to enable the satellite modem and {@code false} to disable.
      * @param callback The callback to get the error code of the request.
      *
@@ -12728,7 +12799,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     /**
      * Request to get whether the satellite modem is enabled.
      *
-     * @param subId The subId to check whether satellite is enabled for.
+     * @param subId The subId of the subscription to check whether satellite is enabled for.
      * @param result The result receiver that returns whether the satellite modem is enabled
      *               if the request is successful or an error code if the request failed.
      *
@@ -12760,7 +12831,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     /**
      * Request to get whether the satellite service is supported on the device.
      *
-     * @param subId The subId to check satellite service support for.
+     * @param subId The subId of the subscription to check satellite service support for.
      * @param result The result receiver that returns whether the satellite service is supported on
      *               the device if the request is successful or an error code if the request failed.
      */
@@ -12789,7 +12860,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     /**
      * Request to get the {@link SatelliteCapabilities} of the satellite service.
      *
-     * @param subId The subId to get the satellite capabilities for.
+     * @param subId The subId of the subscription to get the satellite capabilities for.
      * @param result The result receiver that returns the {@link SatelliteCapabilities}
      *               if the request is successful or an error code if the request failed.
      *
@@ -12818,7 +12889,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * This can be called by the pointing UI when the user starts pointing to the satellite.
      * Modem should continue to report the pointing input as the device or satellite moves.
      *
-     * @param subId The subId to start satellite position updates for.
+     * @param subId The subId of the subscription to start satellite position updates for.
      * @param errorCallback The callback to get the error code of the request.
      * @param callback The callback to notify of changes in satellite position.
      *
@@ -12870,7 +12941,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * Stop receiving satellite position updates.
      * This can be called by the pointing UI when the user stops pointing to the satellite.
      *
-     * @param subId The subId to stop satellite position updates for.
+     * @param subId The subId of the subscription to stop satellite position updates for.
      * @param errorCallback The callback to get the error code of the request.
      * @param callback The callback that was passed to {@link
      * #startSatellitePositionUpdates(int, IIntegerConsumer, ISatelliteStateListener)}
@@ -12902,7 +12973,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         SatellitePositionUpdateHandler handler =
                 mSatellitePositionUpdateHandlers.remove(callback.asBinder());
         if (handler == null) {
-            loge("stopSatellitePositionUpdates: No SatellitePositionArgument");
+            loge("stopSatellitePositionUpdates: No SatellitePositionUpdateHandler");
             result.accept(SatelliteManager.SATELLITE_INVALID_ARGUMENTS);
             return;
         } else {
@@ -12922,7 +12993,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     /**
      * Request to get the maximum number of characters per text message on satellite.
      *
-     * @param subId The subId of the subscription.
+     * @param subId The subId of the subscription to get the maximum number of characters for.
      * @param result The result receiver that returns the maximum number of characters per text
      *               message on satellite if the request is successful or an error code
      *               if the request failed.
@@ -12961,6 +13032,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * @param token The token to be used as a unique identifier for provisioning with satellite
      *              gateway.
      * @param callback The callback to get the error code of the request.
+     *
      * @return The signal transport used by the caller to cancel the provision request,
      *         or {@code null} if the request failed.
      *
@@ -13046,37 +13118,38 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     /**
      * Register for the satellite provision state change.
      *
-     * @param subId The subId of the subscription associated with the satellite service.
-     * @param errorCallback The callback to get the error code of the request.
+     * @param subId The subId of the subscription to register for provision state changes.
      * @param callback The callback to handle the satellite provision state changed event.
+     *
+     * @return The {@link SatelliteManager.SatelliteError} result of the operation.
      *
      * @throws SecurityException if the caller doesn't have the required permission.
      */
     @Override
-    public void registerForSatelliteProvisionStateChanged(int subId,
-            @NonNull IIntegerConsumer errorCallback, @NonNull ISatelliteStateListener callback) {
+    @SatelliteManager.SatelliteError public int registerForSatelliteProvisionStateChanged(int subId,
+            @NonNull ISatelliteStateListener callback) {
         enforceSatelliteCommunicationPermission("registerForSatelliteProvisionStateChanged");
-        registerForSatelliteProvisionStateChangedInternal(subId, errorCallback, callback);
+        return registerForSatelliteProvisionStateChangedInternal(subId, callback);
     }
 
     /**
      * Unregister for the satellite provision state change.
      *
-     * @param subId The subId of the subscription associated with the satellite service.
+     * @param subId The subId of the subscription to unregister for provision state changes.
      * @param errorCallback The callback to get the error code of the request.
      * @param callback The callback that was passed to {@link
-     * #registerForSatelliteProvisionStateChanged(int, IIntegerConsumer, ISatelliteStateListener)}.
+     *                 #registerForSatelliteProvisionStateChanged(int, ISatelliteStateListener)}.
+     *
+     * @return The {@link SatelliteManager.SatelliteError} result of the operation.
      *
      * @throws SecurityException if the caller doesn't have the required permission.
      */
     @Override
-    public void unregisterForSatelliteProvisionStateChanged(int subId,
-            @NonNull IIntegerConsumer errorCallback, @NonNull ISatelliteStateListener callback) {
+    @SatelliteManager.SatelliteError public int unregisterForSatelliteProvisionStateChanged(
+            int subId, @NonNull ISatelliteStateListener callback) {
         enforceSatelliteCommunicationPermission("unregisterForSatelliteProvisionStateChanged");
-        Consumer<Integer> result = FunctionalUtils.ignoreRemoteException(errorCallback::accept);
         if (!isSatelliteSupported()) {
-            result.accept(SatelliteManager.SATELLITE_NOT_SUPPORTED);
-            return;
+            return SatelliteManager.SATELLITE_NOT_SUPPORTED;
         }
 
         final int validSubId = getValidSatelliteSubId(subId);
@@ -13084,17 +13157,16 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 mSatelliteProvisionStateChangedHandlers.get(validSubId);
         if (satelliteProvisionStateChangedHandler != null) {
             if (satelliteProvisionStateChangedHandler.removeListener(callback)) {
-                result.accept(SatelliteManager.SATELLITE_ERROR_NONE);
-                return;
+                return SatelliteManager.SATELLITE_ERROR_NONE;
             }
         }
-        result.accept(SatelliteManager.SATELLITE_INVALID_ARGUMENTS);
+        return SatelliteManager.SATELLITE_INVALID_ARGUMENTS;
     }
 
     /**
      * Request to get whether the device is provisioned with a satellite provider.
      *
-     * @param subId The subId of the subscription associated with the satellite service.
+     * @param subId The subId of the subscription to get whether the device is provisioned for.
      * @param result The result receiver that returns whether the device is provisioned with a
      *               satellite provider if the request is successful or an error code if the
      *               request failed.
@@ -13119,14 +13191,15 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     /**
      * Register for listening to satellite state changes.
      *
-     * @param subId - The subId to start listening to satellite state changes for.
-     * @param callback - The callback to handle the satellite state change event.
-     * @return The result of the operation.
+     * @param subId The subId of the subscription to register for satellite modem state changes.
+     * @param callback The callback to handle the satellite state change event.
+     *
+     * @return The {@link SatelliteManager.SatelliteError} result of the operation.
+     *
      * @throws SecurityException if the caller doesn't have the required permission.
      */
     @Override
-    @SatelliteManager.SatelliteError
-    public int registerForSatelliteModemStateChange(int subId,
+    @SatelliteManager.SatelliteError public int registerForSatelliteModemStateChange(int subId,
             @NonNull ISatelliteStateListener callback) {
         enforceSatelliteCommunicationPermission("registerForSatelliteModemStateChange");
 
@@ -13156,16 +13229,16 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     /**
      * Unregister from listening to satellite state changes.
      *
-     * @param subId -  The subId to stop listening to satellite state changes for.
-     * @param callback - The callback that was passed to
-     * {@link #registerForSatelliteModemStateChange(int, ISatelliteStateListener)}
-     * @return The result of the operation.
+     * @param subId The subId of the subscription to unregister for satellite modem state changes.
+     * @param callback The callback that was passed to
+     *                 {@link #registerForSatelliteModemStateChange(int, ISatelliteStateListener)}.
+     *
+     * @return The {@link SatelliteManager.SatelliteError} result of the operation.
      *
      * @throws SecurityException if the caller doesn't have the required permission.
      */
     @Override
-    @SatelliteManager.SatelliteError
-    public int unregisterForSatelliteModemStateChange(int subId,
+    @SatelliteManager.SatelliteError public int unregisterForSatelliteModemStateChange(int subId,
             @NonNull ISatelliteStateListener callback) {
         enforceSatelliteCommunicationPermission("unregisterForSatelliteModemStateChange");
 
@@ -13183,22 +13256,22 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     /**
      * Register to receive incoming datagrams over satellite.
      *
-     * @param subId - The subId to start receiving datagrams over satellite.
-     * @param datagramType - type of datagram
-     * @param callback - The callback to handle incoming datagrams over satellite.
-     * @return The result of the operation.
+     * @param subId The subId of the subscription to register for incoming satellite datagrams.
+     * @param datagramType Type of datagram.
+     * @param callback The callback to handle incoming datagrams over satellite.
+     *
+     * @return The {@link SatelliteManager.SatelliteError} result of the operation.
+     *
      * @throws SecurityException if the caller doesn't have the required permission.
      */
     @Override
-    @SatelliteManager.SatelliteError
-    public int registerForSatelliteDatagram(int subId,
+    @SatelliteManager.SatelliteError public int registerForSatelliteDatagram(int subId,
             @SatelliteManager.DatagramType int datagramType,
             @NonNull ISatelliteStateListener callback) {
         enforceSatelliteCommunicationPermission("registerForSatelliteDatagram");
 
         final int validSubId = getValidSatelliteSubId(subId);
-        Phone phone = getPhoneOrDefault(
-                validSubId, "registerForSatelliteDatagram");
+        Phone phone = getPhoneOrDefault(validSubId, "registerForSatelliteDatagram");
         if (phone == null) {
             return SatelliteManager.SATELLITE_INVALID_TELEPHONY_STATE;
         }
@@ -13220,16 +13293,16 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     /**
      * Unregister to stop receiving incoming datagrams over satellite.
      *
-     * @param subId -  The subId to stop listening incoming datagrams over satellite.
-     * @param callback - The callback that was passed to
-     * {@link #registerForSatelliteDatagram(int, int, ISatelliteStateListener)}
-     * @return The result of the operation.
+     * @param subId The subId of the subscription to unregister for incoming satellite datagrams.
+     * @param callback The callback that was passed to
+     *                 {@link #registerForSatelliteDatagram(int, int, ISatelliteStateListener)}.
+     *
+     * @return The {@link SatelliteManager.SatelliteError} result of the operation.
      *
      * @throws SecurityException if the caller doesn't have the required permission.
      */
     @Override
-    @SatelliteManager.SatelliteError
-    public int unregisterForSatelliteDatagram(int subId,
+    @SatelliteManager.SatelliteError public int unregisterForSatelliteDatagram(int subId,
             @NonNull ISatelliteStateListener callback) {
         enforceSatelliteCommunicationPermission("unregisterForSatelliteDatagram");
 
@@ -13244,16 +13317,16 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         return SatelliteManager.SATELLITE_INVALID_ARGUMENTS;
     }
 
-
     /**
      * Poll pending satellite datagrams over satellite.
-     * @param subId - The subId of the subscription used for receiving datagrams.
-     * @return The result of the operation.
+     *
+     * @param subId The subId of the subscription to poll pending satellite datagrams for.
+     *
+     * @return The {@link SatelliteManager.SatelliteError} result of the operation.
+     *
      * @throws SecurityException if the caller doesn't have the required permission.
      */
-    @Override
-    @SatelliteManager.SatelliteError
-    public int pollPendingSatelliteDatagrams(int subId) {
+    @Override @SatelliteManager.SatelliteError public int pollPendingSatelliteDatagrams(int subId) {
         enforceSatelliteCommunicationPermission("pollPendingSatelliteDatagrams");
 
         final int validSubId = getValidSatelliteSubId(subId);
@@ -13273,10 +13346,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     /**
      * Send datagram over satellite.
-     * @param subId - The subId of the subscription used to send datagram
-     * @param datagramType - type of datagram
-     * @param datagram - datagram to send over satellite
-     * @param callback - The callback that will be used to send result of the operation.
+     *
+     * @param subId The subId of the subscription to send satellite datagrams for.
+     * @param datagramType Type of datagram.
+     * @param datagram Datagram to send over satellite.
+     * @param callback The callback to get the error code of the request.
+     *
      * @throws SecurityException if the caller doesn't have the required permission.
      */
     @Override
@@ -13302,6 +13377,75 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         sendRequestAsync(CMD_SEND_SATELLITE_DATAGRAM,
                 new SendSatelliteDatagramArgument(datagramType, datagram, result),
                 phone, null);
+    }
+
+    /**
+     * Request to get whether satellite communication is allowed for the current location.
+     *
+     * @param subId The subId of the subscription to check whether satellite communication is
+     *              allowed for the current location for.
+     * @param result The result receiver that returns whether satellite communication is allowed
+     *               for the current location if the request is successful or an error code
+     *               if the request failed.
+     *
+     * @throws SecurityException if the caller doesn't have the required permission.
+     */
+    @Override
+    public void requestIsSatelliteCommunicationAllowedForCurrentLocation(int subId,
+            @NonNull ResultReceiver result) {
+        enforceSatelliteCommunicationPermission(
+                "requestIsSatelliteCommunicationAllowedForCurrentLocation");
+        if (!isSatelliteSupported()) {
+            result.send(SatelliteManager.SATELLITE_NOT_SUPPORTED, null);
+            return;
+        }
+
+        final int validSubId = getValidSatelliteSubId(subId);
+        if (!isSatelliteProvisioned(validSubId)) {
+            result.send(SatelliteManager.SATELLITE_SERVICE_NOT_PROVISIONED, null);
+            return;
+        }
+
+        Phone phone = getPhoneOrDefault(validSubId,
+                "requestIsSatelliteCommunicationAllowedForCurrentLocation");
+        if (phone == null) {
+            result.send(SatelliteManager.SATELLITE_INVALID_TELEPHONY_STATE, null);
+            return;
+        }
+
+        sendRequest(CMD_IS_SATELLITE_COMMUNICATION_ALLOWED, result, subId);
+    }
+
+    /**
+     * Request to get the time after which the satellite will next be visible
+     *
+     * @param subId The subId to get the time after which the satellite will next be visible for.
+     * @param result The result receiver that returns the time after which the satellite will next
+     *               be visible if the request is successful or an error code if the request failed.
+     *
+     * @throws SecurityException if the caller doesn't have the required permission.
+     */
+    @Override
+    public void requestTimeForNextSatelliteVisibility(int subId, @NonNull ResultReceiver result) {
+        enforceSatelliteCommunicationPermission("requestTimeForNextSatelliteVisibility");
+        if (!isSatelliteSupported()) {
+            result.send(SatelliteManager.SATELLITE_NOT_SUPPORTED, null);
+            return;
+        }
+
+        final int validSubId = getValidSatelliteSubId(subId);
+        if (!isSatelliteProvisioned(validSubId)) {
+            result.send(SatelliteManager.SATELLITE_SERVICE_NOT_PROVISIONED, null);
+            return;
+        }
+
+        Phone phone = getPhoneOrDefault(validSubId, "requestTimeForNextSatelliteVisibility");
+        if (phone == null) {
+            result.send(SatelliteManager.SATELLITE_INVALID_TELEPHONY_STATE, null);
+            return;
+        }
+
+        sendRequestAsync(CMD_GET_TIME_SATELLITE_NEXT_VISIBLE, result, phone, null);
     }
 
     private void handleCmdProvisionSatelliteService(@NonNull ProvisionSatelliteServiceArgument arg,
@@ -13337,12 +13481,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
          * or SatelliteController.
          * TODO (b/267826133) we need to do this for all subscriptions on the device.
          */
-        registerForSatelliteProvisionStateChangedInternal(arg.subId, null, null);
+        registerForSatelliteProvisionStateChangedInternal(arg.subId, null);
     }
 
     private void handleCmdDeprovisionSatelliteService(
-            @NonNull ProvisionSatelliteServiceArgument arg,
-            @NonNull Phone phone, Message onCompleted) {
+            @NonNull ProvisionSatelliteServiceArgument arg, @NonNull Phone phone,
+            @NonNull Message onCompleted) {
         if (arg == null) {
             loge("handleCmdDeprovisionSatelliteService: arg is null");
             return;
@@ -13476,9 +13620,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     /**
      * Get the {@link SatelliteManager.SatelliteError} from the provided result.
+     *
      * @param ar AsyncResult used to determine the error code.
      * @param caller The satellite request.
      * @param checkResult Whether to check if the result exists.
+     *
      * @return The {@link SatelliteManager.SatelliteError} error code from the request.
      */
     @SatelliteManager.SatelliteError private int getSatelliteError(@NonNull AsyncResult ar,
@@ -13509,29 +13655,20 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * Register for the satellite provision state change.
      *
      * @param subId The subId of the subscription associated with the satellite service.
-     * @param errorCallback The callback to get the error code of the request.
      * @param callback The callback to handle the satellite provision state changed event.
+     *
+     * @return The {@link SatelliteManager.SatelliteError} result of the operation.
      */
-    private void registerForSatelliteProvisionStateChangedInternal(int subId,
-            @Nullable IIntegerConsumer errorCallback, @Nullable ISatelliteStateListener callback) {
-        Consumer<Integer> result = null;
-        if (errorCallback != null) {
-            result = FunctionalUtils.ignoreRemoteException(errorCallback::accept);
-        }
+    @SatelliteManager.SatelliteError private int registerForSatelliteProvisionStateChangedInternal(
+            int subId, @Nullable ISatelliteStateListener callback) {
         if (!isSatelliteSupported()) {
-            if (result != null) {
-                result.accept(SatelliteManager.SATELLITE_NOT_SUPPORTED);
-            }
-            return;
+            return SatelliteManager.SATELLITE_NOT_SUPPORTED;
         }
 
         final int validSubId = getValidSatelliteSubId(subId);
         Phone phone = getPhoneOrDefault(validSubId, "registerForSatelliteProvisionStateChanged");
         if (phone == null) {
-            if (result != null) {
-                result.accept(SatelliteManager.SATELLITE_INVALID_TELEPHONY_STATE);
-            }
-            return;
+            return SatelliteManager.SATELLITE_INVALID_TELEPHONY_STATE;
         }
 
         SatelliteProvisionStateChangedHandler satelliteProvisionStateChangedHandler =
@@ -13548,9 +13685,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
         mSatelliteProvisionStateChangedHandlers.put(
                 validSubId, satelliteProvisionStateChangedHandler);
-        if (result != null) {
-            result.accept(SatelliteManager.SATELLITE_ERROR_NONE);
-        }
+        return SatelliteManager.SATELLITE_ERROR_NONE;
     }
 
     /**
