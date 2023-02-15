@@ -2160,6 +2160,88 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
     }
 
     @Test
+    public void testDomainSelectionListenOriginalConnectionConfigChange() throws Exception {
+        setupForCallTest();
+
+        int selectedDomain = DOMAIN_PS;
+
+        setupForDialForDomainSelection(mPhone0, selectedDomain, true);
+
+        mTestConnectionService.onCreateOutgoingConnection(PHONE_ACCOUNT_HANDLE_1,
+                createConnectionRequest(PHONE_ACCOUNT_HANDLE_1,
+                        TEST_EMERGENCY_NUMBER, TELECOM_CALL_ID1));
+
+        verify(mDomainSelectionResolver)
+                .getDomainSelectionConnection(eq(mPhone0), eq(SELECTOR_TYPE_CALLING), eq(true));
+        verify(mEmergencyStateTracker)
+                .startEmergencyCall(eq(mPhone0), eq(TELECOM_CALL_ID1), eq(false));
+        verify(mEmergencyCallDomainSelectionConnection).createEmergencyConnection(any(), any());
+        verify(mPhone0).dial(anyString(), any(), any());
+
+        TestTelephonyConnection c = new TestTelephonyConnection();
+        c.setTelecomCallId(TELECOM_CALL_ID1);
+        c.setIsImsConnection(true);
+        Connection orgConn = c.getOriginalConnection();
+        doReturn(PhoneConstants.PHONE_TYPE_IMS).when(orgConn).getPhoneType();
+
+        TelephonyConnection.TelephonyConnectionListener connectionListener =
+                mTestConnectionService.getEmergencyConnectionListener();
+
+        connectionListener.onOriginalConnectionConfigured(c);
+
+        verify(mEmergencyStateTracker, times(1)).onEmergencyCallDomainUpdated(
+                eq(PhoneConstants.PHONE_TYPE_IMS), eq(TELECOM_CALL_ID1));
+
+        verify(mEmergencyStateTracker, times(0)).onEmergencyCallStateChanged(
+                any(), eq(TELECOM_CALL_ID1));
+
+        c.setActive();
+        doReturn(Call.State.ACTIVE).when(orgConn).getState();
+        connectionListener.onStateChanged(c, c.getState());
+
+        // ACTIVE sate is notified
+        verify(mEmergencyStateTracker, times(1)).onEmergencyCallStateChanged(
+                eq(Call.State.ACTIVE), eq(TELECOM_CALL_ID1));
+
+        // state change to HOLDING
+        c.setOnHold();
+        doReturn(Call.State.HOLDING).when(orgConn).getState();
+        connectionListener.onStateChanged(c, c.getState());
+
+        // state change not notified any more after CONNECTED once
+        verify(mEmergencyStateTracker, times(1)).onEmergencyCallStateChanged(
+                any(), eq(TELECOM_CALL_ID1));
+
+        // state change to ACTIVE again
+        c.setActive();
+        doReturn(Call.State.ACTIVE).when(orgConn).getState();
+        connectionListener.onStateChanged(c, c.getState());
+
+        // state change not notified any more after CONNECTED once
+        verify(mEmergencyStateTracker, times(1)).onEmergencyCallStateChanged(
+                any(), eq(TELECOM_CALL_ID1));
+
+        // SRVCC happens
+        c.setIsImsConnection(false);
+        orgConn = c.getOriginalConnection();
+        doReturn(PhoneConstants.PHONE_TYPE_GSM).when(orgConn).getPhoneType();
+        connectionListener.onOriginalConnectionConfigured(c);
+
+         // domain change notified
+        verify(mEmergencyStateTracker, times(1)).onEmergencyCallDomainUpdated(
+                eq(PhoneConstants.PHONE_TYPE_GSM), eq(TELECOM_CALL_ID1));
+
+        // state change to DISCONNECTED
+        c.setDisconnected(null);
+        doReturn(Call.State.DISCONNECTED).when(orgConn).getState();
+        connectionListener.onStateChanged(c, c.getState());
+
+        // state change not notified
+        verify(mEmergencyStateTracker, times(1)).onEmergencyCallStateChanged(
+                any(), eq(TELECOM_CALL_ID1));
+    }
+
+    @Test
     public void testDomainSelectionWithMmiCode() {
         //UT domain selection should not be handled by new domain selector.
         doNothing().when(mContext).startActivity(any());
