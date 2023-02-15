@@ -147,6 +147,7 @@ import android.telephony.ims.stub.ImsConfigImplBase;
 import android.telephony.ims.stub.ImsRegistrationImplBase;
 import android.telephony.satellite.ISatelliteStateListener;
 import android.telephony.satellite.PointingInfo;
+import android.telephony.satellite.SatelliteCallback;
 import android.telephony.satellite.SatelliteCapabilities;
 import android.telephony.satellite.SatelliteDatagram;
 import android.telephony.satellite.SatelliteManager;
@@ -694,7 +695,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     private static final class SatelliteStateListenerHandler extends Handler {
         public static final int EVENT_SATELLITE_MODEM_STATE_CHANGE = 1;
-        public static final int EVENT_PENDING_MESSAGE_COUNT = 2;
+        public static final int EVENT_PENDING_DATAGRAM_COUNT = 2;
 
         private ConcurrentHashMap<IBinder, ISatelliteStateListener> mListeners;
         private final int mSubId;
@@ -730,16 +731,16 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     });
                     break;
                 }
-                case EVENT_PENDING_MESSAGE_COUNT: {
+                case EVENT_PENDING_DATAGRAM_COUNT: {
                     AsyncResult ar = (AsyncResult) msg.obj;
                     int count = (int) ar.result;
-                    log("Received EVENT_PENDING_MESSAGE_COUNT for subId=" + mSubId
+                    log("Received EVENT_PENDING_DATAGRAM_COUNT for subId=" + mSubId
                             + ", count=" + count);
                     mListeners.values().forEach(listener -> {
                         try {
-                            listener.onPendingMessageCount(count);
+                            listener.onPendingDatagramCount(count);
                         } catch (RemoteException e) {
-                            log("EVENT_PENDING_MESSAGE_COUNT RemoteException: " + e);
+                            log("EVENT_PENDING_DATAGRAM_COUNT RemoteException: " + e);
                         }
                     });
                     break;
@@ -2804,9 +2805,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                         phone.pollPendingSatelliteDatagrams(onCompleted);
                     } else {
                         loge("pollPendingSatelliteDatagrams: No phone object");
-                        request.result = SatelliteManager
-                                .SATELLITE_INVALID_TELEPHONY_STATE;
-                        notifyRequester(request);
+                        ((Consumer<Integer>) request.argument)
+                                .accept(SatelliteManager.SATELLITE_INVALID_TELEPHONY_STATE);
                     }
                     break;
                 }
@@ -2814,26 +2814,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 case EVENT_POLL_PENDING_SATELLITE_DATAGRAMS_DONE: {
                     ar = (AsyncResult) msg.obj;
                     request = (MainThreadRequest) ar.userObj;
-                    if (ar.exception != null) {
-                        request.result = SatelliteManager.SATELLITE_SERVICE_ERROR;
-                        if (ar.exception instanceof CommandException) {
-                            CommandException.Error error =
-                                    ((CommandException) (ar.exception)).getCommandError();
-                            request.result = RILUtils.convertToSatelliteError(error);
-                            loge("pollPendingSatelliteDatagrams: "
-                                    + "CommandException: " + ar.exception);
-                        } else {
-                            loge("pollPendingSatelliteDatagrams: "
-                                    + "unknown exception:" + ar.exception);
-                        }
-                    } else if (ar.result == null) {
-                        request.result = SatelliteManager
-                                .SATELLITE_INVALID_TELEPHONY_STATE;
-                        loge("pollPendingSatelliteDatagrams: result is null");
-                    } else {
-                        request.result = SatelliteManager.SATELLITE_ERROR_NONE;
-                    }
-                    notifyRequester(request);
+                    int error = getSatelliteError(ar, "pollPendingSatelliteDatagrams", false);
+                    ((Consumer<Integer>) request.argument).accept(error);
                     break;
                 }
 
@@ -13136,7 +13118,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * Unregister for the satellite provision state change.
      *
      * @param subId The subId of the subscription to unregister for provision state changes.
-     * @param errorCallback The callback to get the error code of the request.
      * @param callback The callback that was passed to {@link
      *                 #registerForSatelliteProvisionStateChanged(int, ISatelliteStateListener)}.
      *
@@ -13189,10 +13170,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
-     * Register for listening to satellite state changes.
+     * Register for listening to satellite modem state changes.
      *
      * @param subId The subId of the subscription to register for satellite modem state changes.
-     * @param callback The callback to handle the satellite state change event.
+     * @param callback The callback to handle the satellite modem state change event.
      *
      * @return The {@link SatelliteManager.SatelliteError} result of the operation.
      *
@@ -13217,8 +13198,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     Looper.getMainLooper(), validSubId);
             phone.registerForSatelliteModemStateChange(satelliteStateListenerHandler,
                     SatelliteStateListenerHandler.EVENT_SATELLITE_MODEM_STATE_CHANGE, null);
-            phone.registerForPendingMessageCount(satelliteStateListenerHandler,
-                    SatelliteStateListenerHandler.EVENT_PENDING_MESSAGE_COUNT, null);
+            phone.registerForPendingDatagramCount(satelliteStateListenerHandler,
+                    SatelliteStateListenerHandler.EVENT_PENDING_DATAGRAM_COUNT, null);
         }
 
         satelliteStateListenerHandler.addListener(callback);
@@ -13227,7 +13208,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
-     * Unregister from listening to satellite state changes.
+     * Unregister from listening to satellite modem state changes.
      *
      * @param subId The subId of the subscription to unregister for satellite modem state changes.
      * @param callback The callback that was passed to
@@ -13257,7 +13238,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * Register to receive incoming datagrams over satellite.
      *
      * @param subId The subId of the subscription to register for incoming satellite datagrams.
-     * @param datagramType Type of datagram.
+     * @param datagramType datagram type indicating whether the datagram is of type
+     *                     SOS_SMS or LOCATION_SHARING.
      * @param callback The callback to handle incoming datagrams over satellite.
      *
      * @return The {@link SatelliteManager.SatelliteError} result of the operation.
@@ -13320,39 +13302,50 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     /**
      * Poll pending satellite datagrams over satellite.
      *
-     * @param subId The subId of the subscription to poll pending satellite datagrams for.
+     * This method requests modem to check if there are any pending datagrams to be received over
+     * satellite. If there are any incoming datagrams, they will be received via
+     * {@link SatelliteCallback.SatelliteDatagramListener#onSatelliteDatagrams(SatelliteDatagram[])}
      *
-     * @return The {@link SatelliteManager.SatelliteError} result of the operation.
+     * @param subId The subId of the subscription used for receiving datagrams.
+     * @param callback The callback to get {@link SatelliteManager.SatelliteError} of the request.
      *
-     * @throws SecurityException if the caller doesn't have the required permission.
+     * @throws SecurityException if the caller doesn't have required permission.
      */
-    @Override @SatelliteManager.SatelliteError public int pollPendingSatelliteDatagrams(int subId) {
+    @Override
+    public void pollPendingSatelliteDatagrams(int subId, IIntegerConsumer callback) {
         enforceSatelliteCommunicationPermission("pollPendingSatelliteDatagrams");
+        Consumer<Integer> result = FunctionalUtils.ignoreRemoteException(callback::accept);
 
         final int validSubId = getValidSatelliteSubId(subId);
         if (!isSatelliteProvisioned(validSubId)) {
-            return SatelliteManager.SATELLITE_SERVICE_NOT_PROVISIONED;
+            result.accept(SatelliteManager.SATELLITE_SERVICE_NOT_PROVISIONED);
+            return;
         }
 
         Phone phone = getPhoneOrDefault(validSubId, "pollPendingSatelliteDatagrams");
         if (phone == null) {
-            return SatelliteManager.SATELLITE_INVALID_TELEPHONY_STATE;
+            result.accept(SatelliteManager.SATELLITE_INVALID_TELEPHONY_STATE);
+            return;
         }
 
-        int result = (int) sendRequest(CMD_POLL_PENDING_SATELLITE_DATAGRAMS, null, validSubId);
-        if (DBG) log("pollPendingSatelliteDatagrams result: " + result);
-        return result;
+        sendRequestAsync(CMD_POLL_PENDING_SATELLITE_DATAGRAMS, result, phone, null);
     }
 
     /**
      * Send datagram over satellite.
      *
-     * @param subId The subId of the subscription to send satellite datagrams for.
-     * @param datagramType Type of datagram.
-     * @param datagram Datagram to send over satellite.
-     * @param callback The callback to get the error code of the request.
+     * Gateway encodes SOS SMS or location sharing message into a datagram and passes it as input to
+     * this method. Datagram received here will be passed down to modem without any encoding or
+     * encryption.
      *
-     * @throws SecurityException if the caller doesn't have the required permission.
+     * @param subId The subId of the subscription to send satellite datagrams for.
+     * @param datagramType datagram type indicating whether the datagram is of type
+     *                     SOS_SMS or LOCATION_SHARING.
+     * @param datagram encoded gateway datagram which is encrypted by the caller.
+     *                 Datagram will be passed down to modem without any encoding or encryption.
+     * @param callback The callback to get {@link SatelliteManager.SatelliteError} of the request.
+     *
+     * @throws SecurityException if the caller doesn't have required permission.
      */
     @Override
     public void sendSatelliteDatagram(int subId, @SatelliteManager.DatagramType int datagramType,
