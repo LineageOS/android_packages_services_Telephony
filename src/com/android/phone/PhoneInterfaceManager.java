@@ -145,12 +145,16 @@ import android.telephony.ims.aidl.IRcsConfigCallback;
 import android.telephony.ims.feature.ImsFeature;
 import android.telephony.ims.stub.ImsConfigImplBase;
 import android.telephony.ims.stub.ImsRegistrationImplBase;
-import android.telephony.satellite.ISatelliteStateListener;
+import android.telephony.satellite.ISatelliteDatagramCallback;
+import android.telephony.satellite.ISatellitePositionUpdateCallback;
+import android.telephony.satellite.ISatelliteProvisionStateCallback;
+import android.telephony.satellite.ISatelliteStateCallback;
 import android.telephony.satellite.PointingInfo;
-import android.telephony.satellite.SatelliteCallback;
 import android.telephony.satellite.SatelliteCapabilities;
 import android.telephony.satellite.SatelliteDatagram;
+import android.telephony.satellite.SatelliteDatagramCallback;
 import android.telephony.satellite.SatelliteManager;
+import android.telephony.satellite.SatelliteProvisionStateCallback;
 import android.text.TextUtils;
 import android.util.ArraySet;
 import android.util.EventLog;
@@ -452,7 +456,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     /**
      * Map key: subId, value: SatellitePositionUpdateHandler to notify registrants.
      */
-    private final ConcurrentHashMap<IBinder, SatellitePositionUpdateHandler>
+    private final ConcurrentHashMap<Integer, SatellitePositionUpdateHandler>
             mSatellitePositionUpdateHandlers = new ConcurrentHashMap<>();
     /**
      * Map key: subId, value: SatelliteProvisionStateChangedHandler to notify registrants.
@@ -599,15 +603,39 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
+    private static final class SatellitePositionUpdateArgument {
+        public @NonNull Consumer<Integer> errorCallback;
+        public @NonNull ISatellitePositionUpdateCallback callback;
+        public int subId;
+
+        SatellitePositionUpdateArgument(Consumer<Integer> errorCallback,
+                ISatellitePositionUpdateCallback callback, int subId) {
+            this.errorCallback = errorCallback;
+            this.callback = callback;
+            this.subId = subId;
+        }
+    }
+
     private static final class SatellitePositionUpdateHandler extends Handler {
         public static final int EVENT_POSITION_UPDATE = 1;
         public static final int EVENT_MESSAGE_TRANSFER_STATE_UPDATE = 2;
 
-        private final ISatelliteStateListener mCallback;
-
-        SatellitePositionUpdateHandler(ISatelliteStateListener callback, Looper looper) {
+        private final ConcurrentHashMap<IBinder, ISatellitePositionUpdateCallback> mListeners;
+        SatellitePositionUpdateHandler(Looper looper) {
             super(looper);
-            mCallback = callback;
+            mListeners = new ConcurrentHashMap<>();
+        }
+
+        public void addListener(ISatellitePositionUpdateCallback listener) {
+            mListeners.put(listener.asBinder(), listener);
+        }
+
+        public void removeListener(ISatellitePositionUpdateCallback listener) {
+            mListeners.remove(listener.asBinder());
+        }
+
+        public boolean hasListeners() {
+            return !mListeners.isEmpty();
         }
 
         @Override
@@ -616,22 +644,26 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 case EVENT_POSITION_UPDATE: {
                     AsyncResult ar = (AsyncResult) msg.obj;
                     PointingInfo pointingInfo = (PointingInfo) ar.result;
-                    try {
-                        mCallback.onSatellitePositionUpdate(pointingInfo);
-                    } catch (RemoteException e) {
-                        loge("EVENT_POSITION_UPDATE RemoteException: " + e);
-                    }
+                    mListeners.values().forEach(listener -> {
+                        try {
+                            listener.onSatellitePositionUpdate(pointingInfo);
+                        } catch (RemoteException e) {
+                            log("EVENT_POSITION_UPDATE RemoteException: " + e);
+                        }
+                    });
                     break;
                 }
                 case EVENT_MESSAGE_TRANSFER_STATE_UPDATE: {
                     AsyncResult ar = (AsyncResult) msg.obj;
                     int state = (int) ar.result;
-                    try {
-                        // TODO: get correct responses back from indication
-                        mCallback.onMessageTransferStateUpdate(state, 0, 0, 0);
-                    } catch (RemoteException e) {
-                        loge("EVENT_MESSAGE_TRANSFER_STATE_UPDATE RemoteException: " + e);
-                    }
+                    mListeners.values().forEach(listener -> {
+                        try {
+                            // TODO: get correct responses back from indication
+                            listener.onDatagramTransferStateUpdate(state, 0, 0, 0);
+                        } catch (RemoteException e) {
+                            log("EVENT_MESSAGE_TRANSFER_STATE_UPDATE RemoteException: " + e);
+                        }
+                    });
                     break;
                 }
                 default:
@@ -643,7 +675,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private static final class SatelliteProvisionStateChangedHandler extends Handler {
         public static final int EVENT_PROVISION_STATE_CHANGED = 1;
 
-        private ConcurrentHashMap<IBinder, ISatelliteStateListener> mListeners;
+        private final ConcurrentHashMap<IBinder, ISatelliteProvisionStateCallback> mListeners;
         private final int mSubId;
 
         SatelliteProvisionStateChangedHandler(Looper looper, int subId) {
@@ -652,12 +684,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             mSubId = subId;
         }
 
-        public void addListener(ISatelliteStateListener listener) {
+        public void addListener(ISatelliteProvisionStateCallback listener) {
             mListeners.put(listener.asBinder(), listener);
         }
 
-        public boolean removeListener(ISatelliteStateListener listener) {
-            return (mListeners.remove(listener.asBinder()) != null);
+        public void removeListener(ISatelliteProvisionStateCallback listener) {
+            mListeners.remove(listener.asBinder());
         }
 
         @Override
@@ -702,7 +734,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         public static final int EVENT_SATELLITE_MODEM_STATE_CHANGE = 1;
         public static final int EVENT_PENDING_DATAGRAM_COUNT = 2;
 
-        private ConcurrentHashMap<IBinder, ISatelliteStateListener> mListeners;
+        private final ConcurrentHashMap<IBinder, ISatelliteStateCallback> mListeners;
         private final int mSubId;
 
         SatelliteStateListenerHandler(Looper looper, int subId) {
@@ -711,12 +743,16 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             mListeners = new ConcurrentHashMap<>();
         }
 
-        public void addListener(ISatelliteStateListener listener) {
+        public void addListener(ISatelliteStateCallback listener) {
             mListeners.put(listener.asBinder(), listener);
         }
 
-        public boolean removeListener(ISatelliteStateListener listener) {
-            return (mListeners.remove(listener.asBinder()) != null);
+        public void removeListener(ISatelliteStateCallback listener) {
+            mListeners.remove(listener.asBinder());
+        }
+
+        public boolean hasListeners() {
+            return !mListeners.isEmpty();
         }
 
         @Override
@@ -759,7 +795,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private static final class SatelliteDatagramListenerHandler extends Handler {
         public static final int EVENT_SATELLITE_DATAGRAMS_RECEIVED = 1;
 
-        private ConcurrentHashMap<IBinder, ISatelliteStateListener> mListeners;
+        private final ConcurrentHashMap<IBinder, ISatelliteDatagramCallback> mListeners;
         private final int mSubId;
 
         SatelliteDatagramListenerHandler(Looper looper, int subId) {
@@ -768,12 +804,16 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             mListeners = new ConcurrentHashMap<>();
         }
 
-        public void addListener(ISatelliteStateListener listener) {
+        public void addListener(ISatelliteDatagramCallback listener) {
             mListeners.put(listener.asBinder(), listener);
         }
 
-        public boolean removeListener(ISatelliteStateListener listener) {
-            return (mListeners.remove(listener.asBinder()) != null);
+        public void removeListener(ISatelliteDatagramCallback listener) {
+            mListeners.remove(listener.asBinder());
+        }
+
+        public boolean hasListeners() {
+            return !mListeners.isEmpty();
         }
 
         @Override
@@ -2562,17 +2602,16 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                         phone.startSatellitePositionUpdates(onCompleted);
                     } else {
                         loge("startSatellitePositionUpdates: No phone object");
-                        ((Consumer<Integer>) request.argument).accept(
+                        SatellitePositionUpdateArgument arg =
+                                (SatellitePositionUpdateArgument) request.argument;
+                        arg.errorCallback.accept(
                                 SatelliteManager.SATELLITE_INVALID_TELEPHONY_STATE);
                     }
                     break;
                 }
 
                 case EVENT_START_SATELLITE_POSITION_UPDATES_DONE: {
-                    ar = (AsyncResult) msg.obj;
-                    request = (MainThreadRequest) ar.userObj;
-                    int error = getSatelliteError(ar, "startSatellitePositionUpdates", false);
-                    ((Consumer<Integer>) request.argument).accept(error);
+                    handleStartSatellitePositionUpdatesDone((AsyncResult) msg.obj);
                     break;
                 }
 
@@ -12809,9 +12848,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
-     * Enable or disable the satellite modem. If the satellite modem is enabled, this will also
-     * disable the cellular modem, and if the satellite modem is disabled, this will also re-enable
-     * the cellular modem.
+     * Request to enable or disable the satellite modem. If the satellite modem is enabled, this
+     * will also disable the cellular modem, and if the satellite modem is disabled, this will also
+     * re-enable the cellular modem.
      *
      * @param subId The subId of the subscription to set satellite enabled for.
      * @param enable {@code true} to enable the satellite modem and {@code false} to disable.
@@ -12820,8 +12859,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * @throws SecurityException if the caller doesn't have the required permission.
      */
     @Override
-    public void setSatelliteEnabled(int subId, boolean enable, @NonNull IIntegerConsumer callback) {
-        enforceSatelliteCommunicationPermission("setSatelliteEnabled");
+    public void requestSatelliteEnabled(
+            int subId, boolean enable, @NonNull IIntegerConsumer callback) {
+        enforceSatelliteCommunicationPermission("requestSatelliteEnabled");
         Consumer<Integer> result = FunctionalUtils.ignoreRemoteException(callback::accept);
         if (!isSatelliteSupported()) {
             result.accept(SatelliteManager.SATELLITE_NOT_SUPPORTED);
@@ -12834,7 +12874,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             return;
         }
 
-        Phone phone = getPhoneOrDefault(validSubId, "setSatelliteEnabled");
+        Phone phone = getPhoneOrDefault(validSubId, "requestSatelliteEnabled");
         if (phone == null) {
             result.accept(SatelliteManager.SATELLITE_INVALID_TELEPHONY_STATE);
             return;
@@ -12945,7 +12985,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     @Override
     public void startSatellitePositionUpdates(int subId, @NonNull IIntegerConsumer errorCallback,
-            @NonNull ISatelliteStateListener callback) {
+            @NonNull ISatellitePositionUpdateCallback callback) {
         enforceSatelliteCommunicationPermission("startSatellitePositionUpdates");
         Consumer<Integer> result = FunctionalUtils.ignoreRemoteException(errorCallback::accept);
         if (!isSatelliteSupported()) {
@@ -12965,24 +13005,24 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             return;
         }
 
-        if (mSatellitePositionUpdateHandlers.containsKey(callback.asBinder())) {
-            if (DBG) {
-                log("startSatellitePositionUpdates: callback already registered: "
-                        + callback.asBinder());
-            }
-            result.accept(SatelliteManager.SATELLITE_ERROR_NONE);
+        SatellitePositionUpdateHandler handler =
+                mSatellitePositionUpdateHandlers.get(validSubId);
+        if (handler != null) {
+            handler.addListener(callback);
             return;
+        } else {
+            handler = new SatellitePositionUpdateHandler(Looper.getMainLooper());
+            handler.addListener(callback);
+            mSatellitePositionUpdateHandlers.put(validSubId, handler);
+            phone.registerForSatellitePointingInfoChanged(handler,
+                    SatellitePositionUpdateHandler.EVENT_POSITION_UPDATE, null);
+            phone.registerForSatelliteDatagramsDelivered(handler,
+                    SatellitePositionUpdateHandler.EVENT_MESSAGE_TRANSFER_STATE_UPDATE,
+                    null);
         }
 
-        SatellitePositionUpdateHandler handler =
-                new SatellitePositionUpdateHandler(callback, Looper.getMainLooper());
-        phone.registerForSatellitePointingInfoChanged(handler,
-                SatellitePositionUpdateHandler.EVENT_POSITION_UPDATE, null);
-        phone.registerForSatelliteMessagesTransferComplete(handler,
-                SatellitePositionUpdateHandler.EVENT_MESSAGE_TRANSFER_STATE_UPDATE, null);
-        mSatellitePositionUpdateHandlers.put(callback.asBinder(), handler);
-
-        sendRequestAsync(CMD_START_SATELLITE_POSITION_UPDATES, result, phone, null);
+        sendRequestAsync(CMD_START_SATELLITE_POSITION_UPDATES,
+                new SatellitePositionUpdateArgument(result, callback, validSubId), phone, null);
     }
 
     /**
@@ -12992,13 +13032,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * @param subId The subId of the subscription to stop satellite position updates for.
      * @param errorCallback The callback to get the error code of the request.
      * @param callback The callback that was passed to {@link
-     * #startSatellitePositionUpdates(int, IIntegerConsumer, ISatelliteStateListener)}
+     * #startSatellitePositionUpdates(int, IIntegerConsumer, ISatellitePositionUpdateCallback)}
      *
      * @throws SecurityException if the caller doesn't have the required permission.
      */
     @Override
     public void stopSatellitePositionUpdates(int subId, @NonNull IIntegerConsumer errorCallback,
-            @NonNull ISatelliteStateListener callback) {
+            @NonNull ISatellitePositionUpdateCallback callback) {
         enforceSatelliteCommunicationPermission("stopSatellitePositionUpdates");
         Consumer<Integer> result = FunctionalUtils.ignoreRemoteException(errorCallback::accept);
         if (!isSatelliteSupported()) {
@@ -13018,23 +13058,32 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             return;
         }
 
-        SatellitePositionUpdateHandler handler =
-                mSatellitePositionUpdateHandlers.remove(callback.asBinder());
-        if (handler == null) {
-            loge("stopSatellitePositionUpdates: No SatellitePositionUpdateHandler");
-            result.accept(SatelliteManager.SATELLITE_INVALID_ARGUMENTS);
-            return;
-        } else {
+        SatellitePositionUpdateHandler handler = mSatellitePositionUpdateHandlers.get(validSubId);
+        if (handler != null) {
+            handler.removeListener(callback);
+
+            if (handler.hasListeners()) {
+                /**
+                 * TODO (b/269194948): If the calling apps crash, the handler will always have some
+                 * listener. That is, we will not request modem to stop position update and
+                 * cleaning our resources. We need to monitor the calling apps and clean up the
+                 * resources when the apps die. We need to this for other satellite callbacks
+                 * as well.
+                 */
+                result.accept(SatelliteManager.SATELLITE_ERROR_NONE);
+                return;
+            }
+
+            mSatellitePositionUpdateHandlers.remove(validSubId);
             phone.unregisterForSatellitePointingInfoChanged(handler);
-            phone.unregisterForSatelliteMessagesTransferComplete(handler);
+            phone.unregisterForSatelliteDatagramsDelivered(handler);
         }
 
-        if (!mSatellitePositionUpdateHandlers.isEmpty()) {
-            log("stopSatellitePositionUpdates: other listeners still exist.");
-            result.accept(SatelliteManager.SATELLITE_ERROR_NONE);
-            return;
-        }
-
+        /**
+         * Even if handler is null - which means there are not any listeners, the command to stop
+         * satellite position updates sent to the modem might have failed. The callers might want to
+         * retry sending the command. Thus, we always need to send this command to the modem.
+         */
         sendRequestAsync(CMD_STOP_SATELLITE_POSITION_UPDATES, result, phone, null);
     }
 
@@ -13128,7 +13177,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     /**
      * Unregister the device/subscription with the satellite provider.
      * This is needed if the provider allows dynamic registration. Once deprovisioned,
-     * {@link SatelliteCallback.SatelliteProvisionStateListener#onSatelliteProvisionStateChanged}
+     * {@link SatelliteProvisionStateCallback#onSatelliteProvisionStateChanged(boolean)}
      * should report as deprovisioned.
      *
      * @param subId The subId of the subscription to be deprovisioned.
@@ -13175,39 +13224,32 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     @Override
     @SatelliteManager.SatelliteError public int registerForSatelliteProvisionStateChanged(int subId,
-            @NonNull ISatelliteStateListener callback) {
+            @NonNull ISatelliteProvisionStateCallback callback) {
         enforceSatelliteCommunicationPermission("registerForSatelliteProvisionStateChanged");
         return registerForSatelliteProvisionStateChangedInternal(subId, callback);
     }
 
     /**
      * Unregister for the satellite provision state change.
+     * If callback was not registered before, the request will be ignored.
      *
      * @param subId The subId of the subscription to unregister for provision state changes.
-     * @param callback The callback that was passed to {@link
-     *                 #registerForSatelliteProvisionStateChanged(int, ISatelliteStateListener)}.
-     *
-     * @return The {@link SatelliteManager.SatelliteError} result of the operation.
+     * @param callback The callback that was passed to
+     * {@link #registerForSatelliteProvisionStateChanged(int, ISatelliteProvisionStateCallback)}.
      *
      * @throws SecurityException if the caller doesn't have the required permission.
      */
     @Override
-    @SatelliteManager.SatelliteError public int unregisterForSatelliteProvisionStateChanged(
-            int subId, @NonNull ISatelliteStateListener callback) {
+    public void unregisterForSatelliteProvisionStateChanged(
+            int subId, @NonNull ISatelliteProvisionStateCallback callback) {
         enforceSatelliteCommunicationPermission("unregisterForSatelliteProvisionStateChanged");
-        if (!isSatelliteSupported()) {
-            return SatelliteManager.SATELLITE_NOT_SUPPORTED;
-        }
 
         final int validSubId = getValidSatelliteSubId(subId);
         SatelliteProvisionStateChangedHandler satelliteProvisionStateChangedHandler =
                 mSatelliteProvisionStateChangedHandlers.get(validSubId);
         if (satelliteProvisionStateChangedHandler != null) {
-            if (satelliteProvisionStateChangedHandler.removeListener(callback)) {
-                return SatelliteManager.SATELLITE_ERROR_NONE;
-            }
+            satelliteProvisionStateChangedHandler.removeListener(callback);
         }
-        return SatelliteManager.SATELLITE_INVALID_ARGUMENTS;
     }
 
     /**
@@ -13247,7 +13289,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     @Override
     @SatelliteManager.SatelliteError public int registerForSatelliteModemStateChange(int subId,
-            @NonNull ISatelliteStateListener callback) {
+            @NonNull ISatelliteStateCallback callback) {
         enforceSatelliteCommunicationPermission("registerForSatelliteModemStateChange");
 
         final int validSubId = getValidSatelliteSubId(subId);
@@ -13275,29 +13317,37 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     /**
      * Unregister from listening to satellite modem state changes.
+     * If callback was not registered before, the request will be ignored.
      *
      * @param subId The subId of the subscription to unregister for satellite modem state changes.
      * @param callback The callback that was passed to
-     *                 {@link #registerForSatelliteModemStateChange(int, ISatelliteStateListener)}.
-     *
-     * @return The {@link SatelliteManager.SatelliteError} result of the operation.
+     *                 {@link #registerForSatelliteModemStateChange(int, ISatelliteStateCallback)}.
      *
      * @throws SecurityException if the caller doesn't have the required permission.
      */
     @Override
-    @SatelliteManager.SatelliteError public int unregisterForSatelliteModemStateChange(int subId,
-            @NonNull ISatelliteStateListener callback) {
+    public void unregisterForSatelliteModemStateChange(int subId,
+            @NonNull ISatelliteStateCallback callback) {
         enforceSatelliteCommunicationPermission("unregisterForSatelliteModemStateChange");
 
         final int validSubId = getValidSatelliteSubId(subId);
         SatelliteStateListenerHandler satelliteStateListenerHandler =
                 mSatelliteStateListenerHandlers.get(validSubId);
         if (satelliteStateListenerHandler != null) {
-            if (satelliteStateListenerHandler.removeListener(callback)) {
-                return SatelliteManager.SATELLITE_ERROR_NONE;
+            satelliteStateListenerHandler.removeListener(callback);
+            if (!satelliteStateListenerHandler.hasListeners()) {
+                mSatelliteStateListenerHandlers.remove(validSubId);
+
+                Phone phone = getPhoneOrDefault(
+                        validSubId, "unregisterForSatelliteModemStateChange");
+                if (phone == null) {
+                    loge("unregisterForSatelliteModemStateChange: phone is null");
+                } else {
+                    phone.unregisterForSatelliteModemStateChange(satelliteStateListenerHandler);
+                    phone.unregisterForPendingDatagramCount(satelliteStateListenerHandler);
+                }
             }
         }
-        return SatelliteManager.SATELLITE_INVALID_ARGUMENTS;
     }
 
     /**
@@ -13315,8 +13365,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @Override
     @SatelliteManager.SatelliteError public int registerForSatelliteDatagram(int subId,
             @SatelliteManager.DatagramType int datagramType,
-            @NonNull ISatelliteStateListener callback) {
+            @NonNull ISatelliteDatagramCallback callback) {
         enforceSatelliteCommunicationPermission("registerForSatelliteDatagram");
+        if (!isSatelliteSupported()) {
+            return SatelliteManager.SATELLITE_NOT_SUPPORTED;
+        }
 
         final int validSubId = getValidSatelliteSubId(subId);
         Phone phone = getPhoneOrDefault(validSubId, "registerForSatelliteDatagram");
@@ -13340,29 +13393,36 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     /**
      * Unregister to stop receiving incoming datagrams over satellite.
+     * If callback was not registered before, the request will be ignored.
      *
      * @param subId The subId of the subscription to unregister for incoming satellite datagrams.
      * @param callback The callback that was passed to
-     *                 {@link #registerForSatelliteDatagram(int, int, ISatelliteStateListener)}.
-     *
-     * @return The {@link SatelliteManager.SatelliteError} result of the operation.
+     *                 {@link #registerForSatelliteDatagram(int, int, ISatelliteDatagramCallback)}.
      *
      * @throws SecurityException if the caller doesn't have the required permission.
      */
     @Override
-    @SatelliteManager.SatelliteError public int unregisterForSatelliteDatagram(int subId,
-            @NonNull ISatelliteStateListener callback) {
+    public void unregisterForSatelliteDatagram(int subId,
+            @NonNull ISatelliteDatagramCallback callback) {
         enforceSatelliteCommunicationPermission("unregisterForSatelliteDatagram");
 
         final int validSubId = getValidSatelliteSubId(subId);
         SatelliteDatagramListenerHandler satelliteDatagramListenerHandler =
                 mSatelliteDatagramListenerHandlers.get(validSubId);
         if (satelliteDatagramListenerHandler != null) {
-            if (satelliteDatagramListenerHandler.removeListener(callback)) {
-                return SatelliteManager.SATELLITE_ERROR_NONE;
+            satelliteDatagramListenerHandler.removeListener(callback);
+
+            if (!satelliteDatagramListenerHandler.hasListeners()) {
+                mSatelliteDatagramListenerHandlers.remove(validSubId);
+
+                Phone phone = getPhoneOrDefault(validSubId, "unregisterForSatelliteDatagram");
+                if (phone == null) {
+                    loge("unregisterForSatelliteDatagram: phone is null");
+                } else {
+                    phone.unregisterForNewSatelliteDatagram(satelliteDatagramListenerHandler);
+                }
             }
         }
-        return SatelliteManager.SATELLITE_INVALID_ARGUMENTS;
     }
 
     /**
@@ -13370,7 +13430,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      *
      * This method requests modem to check if there are any pending datagrams to be received over
      * satellite. If there are any incoming datagrams, they will be received via
-     * {@link SatelliteCallback.SatelliteDatagramListener#onSatelliteDatagrams(SatelliteDatagram[])}
+     * {@link SatelliteDatagramCallback#onSatelliteDatagrams(SatelliteDatagram[])}
      *
      * @param subId The subId of the subscription used for receiving datagrams.
      * @param callback The callback to get {@link SatelliteManager.SatelliteError} of the request.
@@ -13694,7 +13754,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * @return The {@link SatelliteManager.SatelliteError} result of the operation.
      */
     @SatelliteManager.SatelliteError private int registerForSatelliteProvisionStateChangedInternal(
-            int subId, @Nullable ISatelliteStateListener callback) {
+            int subId, @Nullable ISatelliteProvisionStateCallback callback) {
         if (!isSatelliteSupported()) {
             return SatelliteManager.SATELLITE_NOT_SUPPORTED;
         }
@@ -13720,6 +13780,39 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         mSatelliteProvisionStateChangedHandlers.put(
                 validSubId, satelliteProvisionStateChangedHandler);
         return SatelliteManager.SATELLITE_ERROR_NONE;
+    }
+
+    private void handleStartSatellitePositionUpdatesDone(@NonNull AsyncResult ar) {
+        MainThreadRequest request = (MainThreadRequest) ar.userObj;
+        SatellitePositionUpdateArgument arg = (SatellitePositionUpdateArgument) request.argument;
+        int errorCode = getSatelliteError(
+                ar, "handleStartSatellitePositionUpdatesDone", false);
+        arg.errorCallback.accept(errorCode);
+
+        if (errorCode != SatelliteManager.SATELLITE_ERROR_NONE) {
+            /**
+             * We need to remove the callback from our listener list since the caller might not call
+             * {@link #stopSatellitePositionUpdates(int, IIntegerConsumer, ISatellitePositionUpdateCallback)}
+             * to unregister the callback in case of failure.
+             */
+            SatellitePositionUpdateHandler handler =
+                    mSatellitePositionUpdateHandlers.get(arg.subId);
+            if (handler != null) {
+                handler.removeListener(arg.callback);
+
+                if (!handler.hasListeners()) {
+                    mSatellitePositionUpdateHandlers.remove(arg.subId);
+
+                    Phone phone = getPhoneFromRequest(request);
+                    if (phone == null) {
+                        loge("handleStartSatellitePositionUpdatesDone: phone is null");
+                    } else {
+                        phone.unregisterForSatellitePointingInfoChanged(handler);
+                        phone.unregisterForSatelliteDatagramsDelivered(handler);
+                    }
+                }
+            }
+        }
     }
 
     /**
