@@ -211,6 +211,7 @@ import com.android.internal.telephony.imsphone.ImsPhone;
 import com.android.internal.telephony.imsphone.ImsPhoneCallTracker;
 import com.android.internal.telephony.metrics.RcsStats;
 import com.android.internal.telephony.metrics.TelephonyMetrics;
+import com.android.internal.telephony.satellite.SatelliteServiceController;
 import com.android.internal.telephony.subscription.SubscriptionInfoInternal;
 import com.android.internal.telephony.subscription.SubscriptionManagerService;
 import com.android.internal.telephony.uicc.IccCardApplicationStatus.AppType;
@@ -425,23 +426,23 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private static PhoneInterfaceManager sInstance;
     private static List<String> sThermalMitigationAllowlistedPackages = new ArrayList<>();
 
-    private PhoneGlobals mApp;
-    private CallManager mCM;
-    private ImsResolver mImsResolver;
-    private UserManager mUserManager;
-    private AppOpsManager mAppOps;
-    private PackageManager mPm;
-    private MainThreadHandler mMainThreadHandler;
+    private final PhoneGlobals mApp;
+    private final CallManager mCM;
+    private final ImsResolver mImsResolver;
+    private final SatelliteServiceController mSatelliteServiceController;
+    private final UserManager mUserManager;
+    private final AppOpsManager mAppOps;
+    private final MainThreadHandler mMainThreadHandler;
     private final SubscriptionController mSubscriptionController;
-    private SharedPreferences mTelephonySharedPreferences;
-    private PhoneConfigurationManager mPhoneConfigurationManager;
+    private final SharedPreferences mTelephonySharedPreferences;
+    private final PhoneConfigurationManager mPhoneConfigurationManager;
     private final RadioInterfaceCapabilityController mRadioInterfaceCapabilities;
 
     /** User Activity */
-    private AtomicBoolean mNotifyUserActivity;
+    private final AtomicBoolean mNotifyUserActivity;
     private static final int USER_ACTIVITY_NOTIFICATION_DELAY = 200;
 
-    private Set<Integer> mCarrierPrivilegeTestOverrideSubIds = new ArraySet<>();
+    private final Set<Integer> mCarrierPrivilegeTestOverrideSubIds = new ArraySet<>();
 
     /**
      * Map key: subId, value: callback to get error code of the provision request.
@@ -462,6 +463,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private Boolean mIsSatelliteSupported = null;
     private final Object mIsSatelliteSupportedLock = new Object();
     private final ResultReceiver mSatelliteSupportedReceiver;
+    /**
+     * {@code true} to use the vendor satellite service and {@code false} to use the HAL.
+     */
+    private final boolean mIsSatelliteServiceSupported = false;
 
     /**
      * Map key: subId, value: SatelliteStateChangeHandler to notify registrants.
@@ -2548,6 +2553,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     request = (MainThreadRequest) msg.obj;
                     onCompleted =
                             obtainMessage(EVENT_START_SATELLITE_POSITION_UPDATES_DONE, request);
+                    if (mIsSatelliteServiceSupported) {
+                        mSatelliteServiceController.startSendingSatellitePointingInfo(onCompleted);
+                        break;
+                    }
                     Phone phone = getPhoneFromRequest(request);
                     if (phone != null) {
                         phone.startSatellitePositionUpdates(onCompleted);
@@ -2571,6 +2580,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     request = (MainThreadRequest) msg.obj;
                     onCompleted =
                             obtainMessage(EVENT_STOP_SATELLITE_POSITION_UPDATES_DONE, request);
+                    if (mIsSatelliteServiceSupported) {
+                        mSatelliteServiceController.stopSendingSatellitePointingInfo(onCompleted);
+                        break;
+                    }
                     Phone phone = getPhoneFromRequest(request);
                     if (phone != null) {
                         phone.stopSatellitePositionUpdates(onCompleted);
@@ -2592,8 +2605,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
                 case CMD_GET_MAX_CHAR_PER_SATELLITE_TEXT_MSG: {
                     request = (MainThreadRequest) msg.obj;
-                    onCompleted = obtainMessage(EVENT_GET_MAX_CHAR_PER_SATELLITE_TEXT_MSG_DONE,
-                            request);
+                    onCompleted =
+                            obtainMessage(EVENT_GET_MAX_CHAR_PER_SATELLITE_TEXT_MSG_DONE, request);
+                    if (mIsSatelliteServiceSupported) {
+                        mSatelliteServiceController
+                                .requestMaxCharactersPerMOTextMessage(onCompleted);
+                        break;
+                    }
                     Phone phone = getPhoneFromRequest(request);
                     if (phone != null) {
                         phone.getMaxCharactersPerSatelliteTextMessage(onCompleted);
@@ -2623,12 +2641,24 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
                 case CMD_PROVISION_SATELLITE_SERVICE: {
                     request = (MainThreadRequest) msg.obj;
-                    onCompleted = obtainMessage(EVENT_PROVISION_SATELLITE_SERVICE_DONE, request);
-                    Phone phone = getPhoneFromRequest(request);
                     ProvisionSatelliteServiceArgument argument =
                             (ProvisionSatelliteServiceArgument) request.argument;
+                    if (mSatelliteProvisionCallbacks.containsKey(argument.subId)) {
+                        argument.callback.accept(
+                                SatelliteManager.SATELLITE_SERVICE_PROVISION_IN_PROGRESS);
+                        notifyRequester(request);
+                        break;
+                    }
+                    mSatelliteProvisionCallbacks.put(argument.subId, argument.callback);
+                    onCompleted = obtainMessage(EVENT_PROVISION_SATELLITE_SERVICE_DONE, request);
+                    if (mIsSatelliteServiceSupported) {
+                        mSatelliteServiceController
+                                .provisionSatelliteService(argument.token, onCompleted);
+                        break;
+                    }
+                    Phone phone = getPhoneFromRequest(request);
                     if (phone != null) {
-                        handleCmdProvisionSatelliteService(argument, phone, onCompleted);
+                        phone.provisionSatelliteService(onCompleted, argument.token);
                     } else {
                         loge("provisionSatelliteService: No phone object");
                         argument.callback.accept(
@@ -2650,19 +2680,23 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
                 case CMD_DEPROVISION_SATELLITE_SERVICE: {
                     request = (MainThreadRequest) msg.obj;
-                    onCompleted = obtainMessage(EVENT_DEPROVISION_SATELLITE_SERVICE_DONE, request);
-                    Phone phone = getPhoneFromRequest(request);
                     ProvisionSatelliteServiceArgument argument =
                             (ProvisionSatelliteServiceArgument) request.argument;
+                    onCompleted = obtainMessage(EVENT_DEPROVISION_SATELLITE_SERVICE_DONE, request);
+                    if (mIsSatelliteServiceSupported) {
+                        mSatelliteServiceController
+                                .deprovisionSatelliteService(argument.token, onCompleted);
+                        break;
+                    }
+                    Phone phone = getPhoneFromRequest(request);
                     if (phone != null) {
-                        handleCmdDeprovisionSatelliteService(argument, phone, onCompleted);
+                        phone.deprovisionSatelliteService(onCompleted, argument.token);
                     } else {
                         loge("deprovisionSatelliteService: No phone object");
                         if (argument.callback != null) {
                             argument.callback.accept(
                                     SatelliteManager.SATELLITE_INVALID_TELEPHONY_STATE);
                         }
-                        notifyRequester(request);
                     }
                     break;
                 }
@@ -2673,23 +2707,25 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     int errorCode = getSatelliteError(ar, "deprovisionSatelliteService", false);
                     handleEventDeprovisionSatelliteServiceDone(
                             (ProvisionSatelliteServiceArgument) request.argument, errorCode);
-                    notifyRequester(request);
                     break;
                 }
 
                 case CMD_SET_SATELLITE_ENABLED: {
                     request = (MainThreadRequest) msg.obj;
-                    onCompleted = obtainMessage(EVENT_SET_SATELLITE_ENABLED_DONE, request);
                     Pair<Boolean, Consumer<Integer>> argument =
                             (Pair<Boolean, Consumer<Integer>>) request.argument;
+                    onCompleted = obtainMessage(EVENT_SET_SATELLITE_ENABLED_DONE, request);
+                    if (mIsSatelliteServiceSupported) {
+                        mSatelliteServiceController
+                                .requestSatelliteEnabled(argument.first, onCompleted);
+                        break;
+                    }
                     Phone phone = getPhoneFromRequest(request);
                     if (phone != null) {
-                        boolean enable = argument.first.booleanValue();
-                        phone.setSatellitePower(onCompleted, enable);
+                        phone.setSatellitePower(onCompleted, argument.first);
                     } else {
-                        loge("setSatelliteEnabled: No phone object");
+                        loge("requestSatelliteEnabled: No phone object");
                         argument.second.accept(SatelliteManager.SATELLITE_INVALID_TELEPHONY_STATE);
-                        notifyRequester(request);
                     }
                     break;
                 }
@@ -2707,6 +2743,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 case CMD_IS_SATELLITE_ENABLED: {
                     request = (MainThreadRequest) msg.obj;
                     onCompleted = obtainMessage(EVENT_IS_SATELLITE_ENABLED_DONE, request);
+                    if (mIsSatelliteServiceSupported) {
+                        mSatelliteServiceController.requestIsSatelliteEnabled(onCompleted);
+                        break;
+                    }
                     Phone phone = getPhoneFromRequest(request);
                     if (phone != null) {
                         phone.isSatellitePowerOn(onCompleted);
@@ -2735,6 +2775,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 case CMD_IS_SATELLITE_SUPPORTED: {
                     request = (MainThreadRequest) msg.obj;
                     onCompleted = obtainMessage(EVENT_IS_SATELLITE_SUPPORTED_DONE, request);
+                    if (mIsSatelliteServiceSupported) {
+                        mSatelliteServiceController.requestIsSatelliteSupported(onCompleted);
+                        break;
+                    }
                     Phone phone = getPhoneFromRequest(request);
                     if (phone != null) {
                         phone.isSatelliteSupported(onCompleted);
@@ -2770,6 +2814,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 case CMD_GET_SATELLITE_CAPABILITIES: {
                     request = (MainThreadRequest) msg.obj;
                     onCompleted = obtainMessage(EVENT_GET_SATELLITE_CAPABILITIES_DONE, request);
+                    if (mIsSatelliteServiceSupported) {
+                        mSatelliteServiceController.requestSatelliteCapabilities(onCompleted);
+                        break;
+                    }
                     Phone phone = getPhoneFromRequest(request);
                     if (phone != null) {
                         phone.getSatelliteCapabilities(onCompleted);
@@ -2798,15 +2846,19 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
                 case CMD_POLL_PENDING_SATELLITE_DATAGRAMS: {
                     request = (MainThreadRequest) msg.obj;
-                    onCompleted = obtainMessage(EVENT_POLL_PENDING_SATELLITE_DATAGRAMS_DONE,
-                            request);
+                    onCompleted =
+                            obtainMessage(EVENT_POLL_PENDING_SATELLITE_DATAGRAMS_DONE, request);
+                    if (mIsSatelliteServiceSupported) {
+                        mSatelliteServiceController.pollPendingSatelliteDatagrams(onCompleted);
+                        break;
+                    }
                     Phone phone = getPhoneFromRequest(request);
                     if (phone != null) {
                         phone.pollPendingSatelliteDatagrams(onCompleted);
                     } else {
                         loge("pollPendingSatelliteDatagrams: No phone object");
-                        ((Consumer<Integer>) request.argument)
-                                .accept(SatelliteManager.SATELLITE_INVALID_TELEPHONY_STATE);
+                        ((Consumer<Integer>) request.argument).accept(
+                                SatelliteManager.SATELLITE_INVALID_TELEPHONY_STATE);
                     }
                     break;
                 }
@@ -2821,17 +2873,22 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
                 case CMD_SEND_SATELLITE_DATAGRAM: {
                     request = (MainThreadRequest) msg.obj;
-                    onCompleted =
-                            obtainMessage(EVENT_SEND_SATELLITE_DATAGRAM_DONE, request);
-                    Phone phone = getPhoneFromRequest(request);
                     SendSatelliteDatagramArgument argument =
                             (SendSatelliteDatagramArgument) request.argument;
+                    onCompleted = obtainMessage(EVENT_SEND_SATELLITE_DATAGRAM_DONE, request);
+                    if (mIsSatelliteServiceSupported) {
+                        // TODO: set isEmergency properly
+                        mSatelliteServiceController
+                                .sendSatelliteDatagram(argument.datagram, false, onCompleted);
+                        break;
+                    }
+                    Phone phone = getPhoneFromRequest(request);
                     if (phone != null) {
                         phone.sendSatelliteDatagram(onCompleted, argument.datagram);
                     } else {
                         loge("sendSatelliteDatagram: No phone object");
-                        argument.callback
-                                .accept(SatelliteManager.SATELLITE_INVALID_TELEPHONY_STATE);
+                        argument.callback.accept(
+                                SatelliteManager.SATELLITE_INVALID_TELEPHONY_STATE);
                     }
                     break;
                 }
@@ -2839,8 +2896,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 case EVENT_SEND_SATELLITE_DATAGRAM_DONE: {
                     ar = (AsyncResult) msg.obj;
                     request = (MainThreadRequest) ar.userObj;
-                    int error = getSatelliteError(ar, "sendSatelliteDatagram",
-                            false);
+                    int error = getSatelliteError(ar, "sendSatelliteDatagram", false);
                     SendSatelliteDatagramArgument argument =
                             (SendSatelliteDatagramArgument) request.argument;
                     argument.callback.accept(error);
@@ -2849,8 +2905,14 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
                 case CMD_IS_SATELLITE_COMMUNICATION_ALLOWED: {
                     request = (MainThreadRequest) msg.obj;
-                    onCompleted = obtainMessage(EVENT_IS_SATELLITE_COMMUNICATION_ALLOWED_DONE,
-                            request);
+                    onCompleted =
+                            obtainMessage(EVENT_IS_SATELLITE_COMMUNICATION_ALLOWED_DONE, request);
+                    if (mIsSatelliteServiceSupported) {
+                        mSatelliteServiceController
+                                .requestIsSatelliteCommunicationAllowedForCurrentLocation(
+                                        onCompleted);
+                        break;
+                    }
                     Phone phone = getPhoneFromRequest(request);
                     if (phone != null) {
                         phone.isSatelliteCommunicationAllowedForCurrentLocation(onCompleted);
@@ -2885,6 +2947,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     request = (MainThreadRequest) msg.obj;
                     onCompleted = obtainMessage(EVENT_GET_TIME_SATELLITE_NEXT_VISIBLE_DONE,
                             request);
+                    if (mIsSatelliteServiceSupported) {
+                        mSatelliteServiceController
+                                .requestTimeForNextSatelliteVisibility(onCompleted);
+                        break;
+                    }
                     Phone phone = getPhoneFromRequest(request);
                     if (phone != null) {
                         phone.requestTimeForNextSatelliteVisibility(onCompleted);
@@ -3108,17 +3175,16 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         mApp = app;
         mCM = PhoneGlobals.getInstance().mCM;
         mImsResolver = ImsResolver.getInstance();
+        mSatelliteServiceController = SatelliteServiceController.getInstance();
         mUserManager = (UserManager) app.getSystemService(Context.USER_SERVICE);
         mAppOps = (AppOpsManager)app.getSystemService(Context.APP_OPS_SERVICE);
-        mPm = app.getSystemService(PackageManager.class);
         mMainThreadHandler = new MainThreadHandler();
         if (!PhoneFactory.isSubscriptionManagerServiceEnabled()) {
             mSubscriptionController = SubscriptionController.getInstance();
         } else {
             mSubscriptionController = null;
         }
-        mTelephonySharedPreferences =
-                PreferenceManager.getDefaultSharedPreferences(mApp);
+        mTelephonySharedPreferences = PreferenceManager.getDefaultSharedPreferences(mApp);
         mNetworkScanRequestTracker = new NetworkScanRequestTracker();
         mPhoneConfigurationManager = PhoneConfigurationManager.getInstance();
         mRadioInterfaceCapabilities = RadioInterfaceCapabilityController.getInstance();
@@ -4486,11 +4552,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     private static void logv(String msg) {
-        Log.v(LOG_TAG, "[PhoneIntfMgr] " + msg);
+        Log.v(LOG_TAG, msg);
     }
 
     private static void loge(String msg) {
-        Log.e(LOG_TAG, "[PhoneIntfMgr] " + msg);
+        Log.e(LOG_TAG, msg);
     }
 
     @Override
@@ -13441,16 +13507,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         sendRequestAsync(CMD_GET_TIME_SATELLITE_NEXT_VISIBLE, result, phone, null);
     }
 
-    private void handleCmdProvisionSatelliteService(@NonNull ProvisionSatelliteServiceArgument arg,
-            @NonNull Phone phone, Message onCompleted) {
-        if (!mSatelliteProvisionCallbacks.containsKey(arg.subId)) {
-            mSatelliteProvisionCallbacks.put(arg.subId, arg.callback);
-            phone.provisionSatelliteService(onCompleted, arg.token);
-        } else {
-            arg.callback.accept(SatelliteManager.SATELLITE_SERVICE_PROVISION_IN_PROGRESS);
-        }
-    }
-
     private void handleEventProvisionSatelliteServiceDone(
             @NonNull ProvisionSatelliteServiceArgument arg,
             @SatelliteManager.SatelliteError int result) {
@@ -13475,23 +13531,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
          * TODO (b/267826133) we need to do this for all subscriptions on the device.
          */
         registerForSatelliteProvisionStateChangedInternal(arg.subId, null);
-    }
-
-    private void handleCmdDeprovisionSatelliteService(
-            @NonNull ProvisionSatelliteServiceArgument arg, @NonNull Phone phone,
-            @NonNull Message onCompleted) {
-        if (arg == null) {
-            loge("handleCmdDeprovisionSatelliteService: arg is null");
-            return;
-        }
-        if (phone == null) {
-            loge("handleCmdDeprovisionSatelliteService: phone is null");
-            if (arg.callback != null) {
-                arg.callback.accept(SatelliteManager.SATELLITE_INVALID_TELEPHONY_STATE);
-            }
-            return;
-        }
-        phone.deprovisionSatelliteService(onCompleted, arg.token);
     }
 
     private void handleEventDeprovisionSatelliteServiceDone(
@@ -13632,10 +13671,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         } else {
             errorCode = SatelliteManager.SATELLITE_ERROR;
             if (ar.exception instanceof CommandException) {
-                CommandException.Error error =
-                        ((CommandException) (ar.exception)).getCommandError();
+                CommandException.Error error = ((CommandException) ar.exception).getCommandError();
                 errorCode = RILUtils.convertToSatelliteError(error);
                 loge(caller + " CommandException: " + ar.exception);
+            } else if (ar.exception instanceof SatelliteManager.SatelliteException) {
+                errorCode = ((SatelliteManager.SatelliteException) ar.exception).getErrorCode();
+                loge(caller + " SatelliteException: " + ar.exception);
             } else {
                 loge(caller + " unknown exception: " + ar.exception);
             }
