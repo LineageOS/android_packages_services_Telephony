@@ -543,19 +543,20 @@ public class TelephonyConnectionService extends ConnectionService {
                 }
 
                 @Override
-        public void onStateChanged(Connection connection, @Connection.ConnectionState int state) {
-            if (connection != null) {
-                TelephonyConnection c = (TelephonyConnection) connection;
-                Log.i(this, "onStateChanged callId=" + c.getTelecomCallId() + ", state=" + state);
-                if (c.getState() == Connection.STATE_ACTIVE) {
-                    mEmergencyStateTracker.onEmergencyCallStateChanged(
-                            c.getOriginalConnection().getState(), c.getTelecomCallId());
-                    c.removeTelephonyConnectionListener(mEmergencyConnectionListener);
-                    releaseEmergencyCallDomainSelection(false);
+                public void onStateChanged(Connection connection,
+                        @Connection.ConnectionState int state) {
+                    if (mEmergencyCallDomainSelectionConnection == null) return;
+                    if (connection == null) return;
+                    TelephonyConnection c = (TelephonyConnection) connection;
+                    Log.i(this, "onStateChanged callId=" + c.getTelecomCallId()
+                            + ", state=" + state);
+                    if (c.getState() == Connection.STATE_ACTIVE) {
+                        mEmergencyStateTracker.onEmergencyCallStateChanged(
+                                c.getOriginalConnection().getState(), c.getTelecomCallId());
+                        releaseEmergencyCallDomainSelection(false);
+                    }
                 }
-            }
-        }
-    };
+            };
 
     /**
      * A listener for calls.
@@ -2328,6 +2329,7 @@ public class TelephonyConnectionService extends ConnectionService {
                 return maybeReselectDomainForEmergencyCall(c, callFailCause, reasonInfo);
             }
             Log.i(this, "maybeReselectDomain endCall()");
+            c.removeTelephonyConnectionListener(mEmergencyConnectionListener);
             mEmergencyStateTracker.endCall(c.getTelecomCallId());
             mEmergencyCallId = null;
             return false;
@@ -2648,6 +2650,11 @@ public class TelephonyConnectionService extends ConnectionService {
             mEmergencyStateTracker.endCall(c.getTelecomCallId());
             mEmergencyCallId = null;
         }
+    }
+
+    @VisibleForTesting
+    public TelephonyConnection.TelephonyConnectionListener getEmergencyConnectionListener() {
+        return mEmergencyConnectionListener;
     }
 
     private boolean isVideoCallHoldAllowed(Phone phone) {
