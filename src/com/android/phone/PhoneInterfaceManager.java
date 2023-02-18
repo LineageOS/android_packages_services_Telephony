@@ -146,6 +146,7 @@ import android.telephony.ims.feature.ImsFeature;
 import android.telephony.ims.stub.ImsConfigImplBase;
 import android.telephony.ims.stub.ImsRegistrationImplBase;
 import android.telephony.satellite.ISatelliteDatagramCallback;
+import android.telephony.satellite.ISatelliteDatagramReceiverAck;
 import android.telephony.satellite.ISatellitePositionUpdateCallback;
 import android.telephony.satellite.ISatelliteProvisionStateCallback;
 import android.telephony.satellite.ISatelliteStateCallback;
@@ -591,15 +592,19 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     private static final class SendSatelliteDatagramArgument {
+        public long datagramId;
+
         public @SatelliteManager.DatagramType int datagramType;
         public @NonNull SatelliteDatagram datagram;
-        public @NonNull Consumer<Integer> callback;
+        public @NonNull ResultReceiver result;
 
-        SendSatelliteDatagramArgument(@SatelliteManager.DatagramType int datagramType,
-                SatelliteDatagram datagram, Consumer<Integer> callback) {
+        SendSatelliteDatagramArgument(long datagramId,
+                @SatelliteManager.DatagramType int datagramType,
+                SatelliteDatagram datagram, ResultReceiver result) {
+            this.datagramId = datagramId;
             this.datagramType = datagramType;
             this.datagram = datagram;
-            this.callback = callback;
+            this.result = result;
         }
     }
 
@@ -792,6 +797,27 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
+    /** Callback used by datagram receiver app to send ack back to Telephony. */
+    private static final ISatelliteDatagramReceiverAck.Stub mDatagramReceiverAck =
+            new ISatelliteDatagramReceiverAck.Stub() {
+                /**
+                 * This callback will be used by datagram receiver app to send ack back to
+                 * Telephony. If the callback is not received within five minutes,
+                 * then Telephony will resend the datagram again.
+                 *
+                 * @param datagramId An id that uniquely identifies datagram
+                 *                   received by satellite datagram receiver app.
+                 *                   This should match with datagramId passed in
+                 *                   {@link SatelliteDatagramCallback#onSatelliteDatagramReceived(
+                 *                   long, SatelliteDatagram, int, ISatelliteDatagramReceiverAck)}.
+                 *                   Upon receiving the ack, Telephony will remove the datagram from
+                 *                   the persistent memory.
+                 */
+                public void acknowledgeSatelliteDatagramReceived(long datagramId) {
+
+                }
+    };
+
     private static final class SatelliteDatagramListenerHandler extends Handler {
         public static final int EVENT_SATELLITE_DATAGRAMS_RECEIVED = 1;
 
@@ -828,7 +854,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     log("Received EVENT_SATELLITE_DATAGRAMS_RECEIVED for subId=" + mSubId);
                     mListeners.values().forEach(listener -> {
                         try {
-                            listener.onSatelliteDatagrams(satelliteDatagramArray);
+                            for(SatelliteDatagram datagram : satelliteDatagramArray) {
+                                // TODO (b/269637555): wait for ack and retry after 5mins
+                                listener.onSatelliteDatagramReceived(0, datagram, 0,
+                                        mDatagramReceiverAck);
+                            }
                         } catch (RemoteException e) {
                             log("EVENT_SATELLITE_DATAGRAMS_RECEIVED RemoteException: " + e);
                         }
@@ -2926,8 +2956,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                         phone.sendSatelliteDatagram(onCompleted, argument.datagram);
                     } else {
                         loge("sendSatelliteDatagram: No phone object");
-                        argument.callback.accept(
-                                SatelliteManager.SATELLITE_INVALID_TELEPHONY_STATE);
+                        argument.result.send(
+                                SatelliteManager.SATELLITE_INVALID_TELEPHONY_STATE, null);
                     }
                     break;
                 }
@@ -2938,7 +2968,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     int error = getSatelliteError(ar, "sendSatelliteDatagram", false);
                     SendSatelliteDatagramArgument argument =
                             (SendSatelliteDatagramArgument) request.argument;
-                    argument.callback.accept(error);
+                    Bundle bundle = new Bundle();
+                    if (error == SatelliteManager.SATELLITE_ERROR_NONE) {
+                        bundle.putLong(SatelliteManager.KEY_SEND_SATELLITE_DATAGRAM,
+                                argument.datagramId);
+                    }
+                    argument.result.send(error, bundle);
                     break;
                 }
 
@@ -13088,19 +13123,19 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
-     * Request to get the maximum number of characters per text message on satellite.
+     * Request to get the maximum number of bytes per datagram that can be sent to satellite.
      *
      * @param subId The subId of the subscription to get the maximum number of characters for.
-     * @param result The result receiver that returns the maximum number of characters per text
+     * @param result The result receiver that returns the maximum number of bytes per datagram
      *               message on satellite if the request is successful or an error code
      *               if the request failed.
      *
      * @throws SecurityException if the caller doesn't have the required permission.
      */
     @Override
-    public void requestMaxCharactersPerSatelliteTextMessage(int subId,
+    public void requestMaxSizePerSendingDatagram(int subId,
             @NonNull ResultReceiver result) {
-        enforceSatelliteCommunicationPermission("requestMaxCharactersPerSatelliteTextMessage");
+        enforceSatelliteCommunicationPermission("requestMaxSizePerSendingDatagram");
         if (!isSatelliteSupported()) {
             result.send(SatelliteManager.SATELLITE_NOT_SUPPORTED, null);
             return;
@@ -13112,7 +13147,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             return;
         }
 
-        Phone phone = getPhoneOrDefault(validSubId, "requestMaxCharactersPerSatelliteTextMessage");
+        Phone phone = getPhoneOrDefault(validSubId, "requestMaxSizePerSendingDatagram");
         if (phone == null) {
             result.send(SatelliteManager.SATELLITE_INVALID_TELEPHONY_STATE, null);
             return;
@@ -13430,7 +13465,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      *
      * This method requests modem to check if there are any pending datagrams to be received over
      * satellite. If there are any incoming datagrams, they will be received via
-     * {@link SatelliteDatagramCallback#onSatelliteDatagrams(SatelliteDatagram[])}
+     * {@link SatelliteDatagramCallback#onSatelliteDatagramReceived(long, SatelliteDatagram, int,
+     *          ISatelliteDatagramReceiverAck)}
      *
      * @param subId The subId of the subscription used for receiving datagrams.
      * @param callback The callback to get {@link SatelliteManager.SatelliteError} of the request.
@@ -13460,11 +13496,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     /**
      * Send datagram over satellite.
      *
-     * Gateway encodes SOS SMS or location sharing message into a datagram and passes it as input to
-     * this method. Datagram received here will be passed down to modem without any encoding or
-     * encryption.
+     * Gateway encodes SOS message or location sharing message into a datagram and passes it as
+     * input to this method. Datagram received here will be passed down to modem without any
+     * encoding or encryption.
      *
      * @param subId The subId of the subscription to send satellite datagrams for.
+     * @param datagramId An id that uniquely identifies datagram requested to be sent.
      * @param datagramType datagram type indicating whether the datagram is of type
      *                     SOS_SMS or LOCATION_SHARING.
      * @param datagram encoded gateway datagram which is encrypted by the caller.
@@ -13474,27 +13511,27 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * @throws SecurityException if the caller doesn't have required permission.
      */
     @Override
-    public void sendSatelliteDatagram(int subId, @SatelliteManager.DatagramType int datagramType,
-            SatelliteDatagram datagram, IIntegerConsumer callback) {
+    public void sendSatelliteDatagram(int subId, long datagramId,
+            @SatelliteManager.DatagramType int datagramType, SatelliteDatagram datagram,
+            @NonNull ResultReceiver result) {
         enforceSatelliteCommunicationPermission("sendSatelliteDatagram");
-        Consumer<Integer> result = FunctionalUtils.ignoreRemoteException(callback::accept);
 
         final int validSubId = getValidSatelliteSubId(subId);
         if (!isSatelliteProvisioned(validSubId)) {
-            result.accept(SatelliteManager.SATELLITE_SERVICE_NOT_PROVISIONED);
+            result.send(SatelliteManager.SATELLITE_SERVICE_NOT_PROVISIONED, null);
             return;
         }
 
         Phone phone = getPhoneOrDefault(validSubId, "sendSatelliteDatagram");
         if (phone == null) {
-            result.accept(SatelliteManager.SATELLITE_INVALID_TELEPHONY_STATE);
+            result.send(SatelliteManager.SATELLITE_INVALID_TELEPHONY_STATE, null);
             return;
         }
 
         // check if we need to start PointingUI.
 
         sendRequestAsync(CMD_SEND_SATELLITE_DATAGRAM,
-                new SendSatelliteDatagramArgument(datagramType, datagram, result),
+                new SendSatelliteDatagramArgument(datagramId, datagramType, datagram, result),
                 phone, null);
     }
 
