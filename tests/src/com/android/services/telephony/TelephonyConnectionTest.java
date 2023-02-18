@@ -1,6 +1,9 @@
 package com.android.services.telephony;
 
 import static android.telecom.Connection.STATE_DISCONNECTED;
+import static android.telephony.ims.ImsReasonInfo.CODE_LOCAL_CALL_CS_RETRY_REQUIRED;
+import static android.telephony.ims.ImsReasonInfo.CODE_SIP_ALTERNATE_EMERGENCY_CALL;
+import static android.telephony.ims.ImsReasonInfo.EXTRA_CODE_CALL_RETRY_EMERGENCY;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNotNull;
@@ -23,6 +26,8 @@ import android.os.PersistableBundle;
 import android.telecom.Connection;
 import android.telephony.CarrierConfigManager;
 import android.telephony.DisconnectCause;
+import android.telephony.emergency.EmergencyNumber;
+import android.telephony.ims.ImsReasonInfo;
 
 import androidx.test.runner.AndroidJUnit4;
 
@@ -38,6 +43,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+
+import java.util.ArrayList;
 
 @RunWith(AndroidJUnit4.class)
 public class TelephonyConnectionTest {
@@ -305,5 +312,59 @@ public class TelephonyConnectionTest {
 
         assertNotEquals(STATE_DISCONNECTED, c.getState());
         assertTrue(c.isOriginalConnectionCleared());
+    }
+
+    @Test
+    public void testDomainSelectionDisconnected_AlternateService() {
+        TestTelephonyConnection c = new TestTelephonyConnection();
+        c.setOriginalConnection(mImsPhoneConnection);
+        c.setIsImsConnection(true);
+        doReturn(Call.State.DISCONNECTED).when(mImsPhoneConnection)
+                .getState();
+        doReturn(new ImsReasonInfo(CODE_SIP_ALTERNATE_EMERGENCY_CALL, 0, null))
+                .when(mImsPhoneConnection).getImsReasonInfo();
+        doReturn(getEmergencyNumber(EmergencyNumber.EMERGENCY_SERVICE_CATEGORY_POLICE))
+                .when(mImsPhoneConnection).getEmergencyNumberInfo();
+        c.setTelephonyConnectionService(mTelephonyConnectionService);
+        doReturn(true).when(mTelephonyConnectionService)
+                .maybeReselectDomain(any(), anyInt(), any());
+        c.updateState();
+
+        Integer serviceCategory = c.getEmergencyServiceCategory();
+
+        assertNotNull(serviceCategory);
+        assertEquals(EmergencyNumber.EMERGENCY_SERVICE_CATEGORY_POLICE,
+                serviceCategory.intValue());
+    }
+
+    @Test
+    public void testDomainSelectionDisconnected_SilentRedialEmergency() {
+        TestTelephonyConnection c = new TestTelephonyConnection();
+        c.setOriginalConnection(mImsPhoneConnection);
+        c.setIsImsConnection(true);
+        doReturn(Call.State.DISCONNECTED).when(mImsPhoneConnection)
+                .getState();
+        doReturn(new ImsReasonInfo(CODE_LOCAL_CALL_CS_RETRY_REQUIRED,
+                        EXTRA_CODE_CALL_RETRY_EMERGENCY, null))
+                .when(mImsPhoneConnection).getImsReasonInfo();
+        doReturn(getEmergencyNumber(EmergencyNumber.EMERGENCY_SERVICE_CATEGORY_FIRE_BRIGADE))
+                .when(mImsPhoneConnection).getEmergencyNumberInfo();
+        c.setTelephonyConnectionService(mTelephonyConnectionService);
+        doReturn(true).when(mTelephonyConnectionService)
+                .maybeReselectDomain(any(), anyInt(), any());
+        c.updateState();
+
+        Integer serviceCategory = c.getEmergencyServiceCategory();
+
+        assertNotNull(serviceCategory);
+        assertEquals(EmergencyNumber.EMERGENCY_SERVICE_CATEGORY_FIRE_BRIGADE,
+                serviceCategory.intValue());
+    }
+
+    private EmergencyNumber getEmergencyNumber(int eccCategory) {
+        return new EmergencyNumber("", "", "", eccCategory,
+            new ArrayList<String>(),
+            EmergencyNumber.EMERGENCY_NUMBER_SOURCE_NETWORK_SIGNALING,
+            EmergencyNumber.EMERGENCY_CALL_ROUTING_UNKNOWN);
     }
 }
