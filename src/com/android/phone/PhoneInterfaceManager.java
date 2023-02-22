@@ -596,14 +596,18 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         public @SatelliteManager.DatagramType int datagramType;
         public @NonNull SatelliteDatagram datagram;
+
+        public boolean needFullScreenPointingUI;
         public @NonNull ResultReceiver result;
 
         SendSatelliteDatagramArgument(long datagramId,
                 @SatelliteManager.DatagramType int datagramType,
-                SatelliteDatagram datagram, ResultReceiver result) {
+                SatelliteDatagram datagram, boolean needFullScreenPointingUI,
+                ResultReceiver result) {
             this.datagramId = datagramId;
             this.datagramType = datagramType;
             this.datagram = datagram;
+            this.needFullScreenPointingUI = needFullScreenPointingUI;
             this.result = result;
         }
     }
@@ -2953,12 +2957,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                         mSatelliteServiceController.sendSatelliteDatagram(
                                 argument.datagram,
                                 argument.datagramType == SatelliteManager.DATAGRAM_TYPE_SOS_MESSAGE,
-                                onCompleted);
+                                argument.needFullScreenPointingUI, onCompleted);
                         break;
                     }
                     Phone phone = getPhoneFromRequest(request);
                     if (phone != null) {
-                        phone.sendSatelliteDatagram(onCompleted, argument.datagram);
+                        phone.sendSatelliteDatagram(onCompleted, argument.datagram,
+                                argument.needFullScreenPointingUI);
                     } else {
                         loge("sendSatelliteDatagram: No phone object");
                         argument.result.send(
@@ -13623,14 +13628,17 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      *                     SOS_SMS or LOCATION_SHARING.
      * @param datagram encoded gateway datagram which is encrypted by the caller.
      *                 Datagram will be passed down to modem without any encoding or encryption.
-     * @param callback The callback to get {@link SatelliteManager.SatelliteError} of the request.
+     * @param needFullScreenPointingUI this is used to indicate pointingUI app to open in
+     *                                 full screen mode.
+     * @param result The result receiver that returns datagramId if datagram is sent successfully
+     *               or {@link SatelliteManager.SatelliteError} of the request if it is failed.
      *
      * @throws SecurityException if the caller doesn't have required permission.
      */
     @Override
     public void sendSatelliteDatagram(int subId, long datagramId,
             @SatelliteManager.DatagramType int datagramType, SatelliteDatagram datagram,
-            @NonNull ResultReceiver result) {
+            boolean needFullScreenPointingUI, @NonNull ResultReceiver result) {
         enforceSatelliteCommunicationPermission("sendSatelliteDatagram");
 
         final int validSubId = getValidSatelliteSubId(subId);
@@ -13648,8 +13656,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         // check if we need to start PointingUI.
 
         sendRequestAsync(CMD_SEND_SATELLITE_DATAGRAM,
-                new SendSatelliteDatagramArgument(datagramId, datagramType, datagram, result),
-                phone, null);
+                new SendSatelliteDatagramArgument(datagramId, datagramType, datagram,
+                        needFullScreenPointingUI, result), phone, null);
     }
 
     /**
