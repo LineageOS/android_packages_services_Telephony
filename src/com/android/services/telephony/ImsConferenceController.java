@@ -16,6 +16,7 @@
 
 package com.android.services.telephony;
 
+import android.annotation.NonNull;
 import android.content.Context;
 import android.os.PersistableBundle;
 import android.telecom.Conference;
@@ -26,17 +27,17 @@ import android.telecom.DisconnectCause;
 import android.telecom.PhoneAccountHandle;
 import android.telephony.CarrierConfigManager;
 
-import com.android.telephony.Rlog;
-
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.phone.PhoneUtils;
+import com.android.telephony.Rlog;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
@@ -220,14 +221,33 @@ public class ImsConferenceController {
         recalculateConference();
     }
 
+    private PhoneAccountHandle getPhoneAccountHandle(@NonNull Conferenceable c) {
+        if (c instanceof Connection) {
+            Connection connection = (Connection) c;
+            return connection.getPhoneAccountHandle();
+        } else if (c instanceof Conference) {
+            Conference conference = (Conference) c;
+            return conference.getPhoneAccountHandle();
+        }
+        throw new IllegalArgumentException("Unrecognized Conferenceable!" + c);
+    }
+
+    private boolean isSamePhoneAccountHandle(
+            @NonNull Conferenceable left, @NonNull Conferenceable right) {
+        PhoneAccountHandle leftHandle = getPhoneAccountHandle(left);
+        PhoneAccountHandle rightHandle = getPhoneAccountHandle(right);
+        return Objects.equals(leftHandle, rightHandle);
+    }
+
     /**
      * Calculates the conference-capable state of all GSM connections in this connection service.
+     * Connections from different {@link PhoneAccountHandle}s shall not be conferenceable.
      */
     private void recalculateConferenceable() {
         Log.v(this, "recalculateConferenceable : %d", mTelephonyConnections.size());
         HashSet<Conferenceable> conferenceableSet = new HashSet<>(mTelephonyConnections.size() +
                 mImsConferences.size());
-        HashSet<Conferenceable> conferenceParticipantsSet = new HashSet<>();
+        HashSet<Connection> conferenceParticipantsSet = new HashSet<>();
 
         // Loop through and collect all calls which are active or holding
         for (TelephonyConnection connection : mTelephonyConnections) {
@@ -300,11 +320,6 @@ public class ImsConferenceController {
 
         for (Conferenceable c : conferenceableSet) {
             if (c instanceof Connection) {
-                // Remove this connection from the Set and add all others
-                List<Conferenceable> conferenceables = conferenceableSet
-                        .stream()
-                        .filter(conferenceable -> c != conferenceable)
-                        .collect(Collectors.toList());
                 // TODO: Remove this once RemoteConnection#setConferenceableConnections is fixed.
                 // Add all conference participant connections as conferenceable with a standalone
                 // Connection.  We need to do this to ensure that RemoteConnections work properly.
@@ -313,7 +328,18 @@ public class ImsConferenceController {
                 // into the conference.
                 // We should add support for RemoteConnection#setConferenceables, which accepts a
                 // list of remote conferences and connections in the future.
-                conferenceables.addAll(conferenceParticipantsSet);
+                List<Conferenceable> conferenceables = conferenceParticipantsSet
+                        .stream()
+                        // Removes conference participants from different PhoneAccountHandles.
+                        .filter(connection -> isSamePhoneAccountHandle(c, connection))
+                        .collect(Collectors.toCollection(ArrayList::new));
+
+                // Removes this connection from the Set and add all others. Removes conferenceables
+                // from different PhoneAccountHandles.
+                conferenceables.addAll(conferenceableSet
+                        .stream()
+                        .filter(conferenceable -> c != conferenceable
+                                && isSamePhoneAccountHandle(c, conferenceable)).toList());
 
                 ((Connection) c).setConferenceables(conferenceables);
             } else if (c instanceof ImsConference) {
@@ -325,10 +351,11 @@ public class ImsConferenceController {
                 }
 
                 // Remove all conferences from the set, since we can not conference a conference
-                // to another conference.
+                // to another conference. Removes connections from different PhoneAccountHandles.
                 List<Connection> connections = conferenceableSet
                         .stream()
-                        .filter(conferenceable -> conferenceable instanceof Connection)
+                        .filter(conferenceable -> conferenceable instanceof Connection
+                                && isSamePhoneAccountHandle(c, conferenceable))
                         .map(conferenceable -> (Connection) conferenceable)
                         .collect(Collectors.toList());
                 // Conference equivalent to setConferenceables that only accepts Connections
