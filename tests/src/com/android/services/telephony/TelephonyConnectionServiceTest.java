@@ -55,6 +55,7 @@ import android.net.Uri;
 import android.os.AsyncResult;
 import android.os.Bundle;
 import android.os.Handler;
+import android.telecom.Conference;
 import android.telecom.ConnectionRequest;
 import android.telecom.DisconnectCause;
 import android.telecom.PhoneAccountHandle;
@@ -100,6 +101,8 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -118,6 +121,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
      */
     public static class SimpleTelephonyConnection extends TelephonyConnection {
         public boolean wasDisconnected = false;
+        public boolean wasUnheld = false;
 
         @Override
         public TelephonyConnection cloneConnection() {
@@ -127,6 +131,24 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         @Override
         public void hangup(int telephonyDisconnectCode) {
             wasDisconnected = true;
+        }
+
+        @Override
+        public void onUnhold() {
+            wasUnheld = true;
+        }
+    }
+
+    public static class SimpleConference extends Conference {
+        public boolean wasUnheld = false;
+
+        public SimpleConference(PhoneAccountHandle phoneAccountHandle) {
+            super(phoneAccountHandle);
+        }
+
+        @Override
+        public void onUnhold() {
+            wasUnheld = true;
         }
     }
 
@@ -1582,6 +1604,67 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         assertFalse(tc1.wasDisconnected);
     }
 
+
+    /**
+     * For calls on the same sub, the Dialer implements the 'swap' functionality to perform hold and
+     * unhold, so we do not additionally unhold when 'hold' button is pressed.
+     */
+    @Test
+    @SmallTest
+    public void testDontUnholdOnSameSubForVirtualDsdaDevice() {
+        when(mTelephonyManagerProxy.isConcurrentCallsPossible()).thenReturn(true);
+
+        ArrayList<android.telecom.Connection> tcs = new ArrayList<>();
+        Collection<Conference> conferences = new ArrayList<>();
+        SimpleTelephonyConnection tc1 = createTestConnection(SUB1_HANDLE, 0, false);
+        tcs.add(tc1);
+        TelephonyConnectionService.maybeUnholdCallsOnOtherSubs(
+                tcs, conferences, SUB1_HANDLE, mTelephonyManagerProxy);
+        assertFalse(tc1.wasUnheld);
+    }
+
+    /**
+     * Triggering 'Hold' on 1 call will unhold the other call for DSDA or Virtual DSDA
+     * enabled devices, effectively constituting 'swap' functionality.
+     */
+    @Test
+    @SmallTest
+    public void testUnholdOnOtherSubForVirtualDsdaDevice() {
+        when(mTelephonyManagerProxy.isConcurrentCallsPossible()).thenReturn(true);
+
+        ArrayList<android.telecom.Connection> tcs = new ArrayList<>();
+        SimpleTelephonyConnection tc1 = createTestConnection(SUB1_HANDLE, 0, false);
+        tcs.add(tc1);
+        TelephonyConnectionService.maybeUnholdCallsOnOtherSubs(
+                tcs, new ArrayList<>(), SUB2_HANDLE, mTelephonyManagerProxy);
+        assertTrue(tc1.wasUnheld);
+    }
+
+    /**
+     * Verifies hold/unhold behavior for a conference on the other sub. It does not disturb the
+     * individual connections that participate in the conference.
+     */
+    @Test
+    @SmallTest
+    public void testUnholdConferenceOnOtherSubForVirtualDsdaDevice() {
+        when(mTelephonyManagerProxy.isConcurrentCallsPossible()).thenReturn(true);
+        SimpleTelephonyConnection tc1 =
+                createTestConnection(SUB1_HANDLE, 0, false);
+        SimpleTelephonyConnection tc2 =
+                createTestConnection(SUB1_HANDLE, 0, false);
+        List<android.telecom.Connection> conferenceParticipants = Arrays.asList(tc1, tc2);
+
+        SimpleConference testConference = createTestConference(SUB1_HANDLE, 0);
+        List<Conference> conferences = Arrays.asList(testConference);
+
+        TelephonyConnectionService.maybeUnholdCallsOnOtherSubs(
+                conferenceParticipants, conferences, SUB2_HANDLE, mTelephonyManagerProxy);
+
+        assertTrue(testConference.wasUnheld);
+        assertFalse(tc1.wasUnheld);
+        assertFalse(tc2.wasUnheld);
+    }
+
     /**
      * Verifies that TelephonyManager is used to determine whether a connection is Emergency when
      * creating an outgoing connection.
@@ -2367,6 +2450,12 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         connection.setConnectionProperties(properties);
         connection.setPhoneAccountHandle(handle);
         return connection;
+    }
+
+    private SimpleConference createTestConference(PhoneAccountHandle handle, int properties) {
+        SimpleConference conference = new SimpleConference(handle);
+        conference.setConnectionProperties(properties);
+        return conference;
     }
 
     /**

@@ -34,6 +34,7 @@ import android.os.Bundle;
 import android.os.ParcelUuid;
 import android.provider.DeviceConfig;
 import android.telecom.Conference;
+import android.telecom.Conferenceable;
 import android.telecom.Connection;
 import android.telecom.ConnectionRequest;
 import android.telecom.ConnectionService;
@@ -137,6 +138,12 @@ public class TelephonyConnectionService extends ConnectionService {
         }
         @Override
         public void addConference(ImsConference mImsConference) {
+            Connection conferenceHost = mImsConference.getConferenceHost();
+            if (conferenceHost instanceof TelephonyConnection) {
+                TelephonyConnection tcConferenceHost = (TelephonyConnection) conferenceHost;
+                tcConferenceHost.setTelephonyConnectionService(TelephonyConnectionService.this);
+                tcConferenceHost.setPhoneAccountHandle(mImsConference.getPhoneAccountHandle());
+            }
             TelephonyConnectionService.this.addTelephonyConference(mImsConference);
         }
         @Override
@@ -3576,6 +3583,80 @@ public class TelephonyConnectionService extends ConnectionService {
                         }
                     }
                 });
+    }
+
+    private static void onUnhold(Conferenceable conferenceable) {
+        if (conferenceable instanceof Connection) {
+            Connection connection = (Connection) conferenceable;
+            connection.onUnhold();
+        } else if (conferenceable instanceof Conference) {
+            Conference conference = (Conference) conferenceable;
+            conference.onUnhold();
+        } else {
+            throw new IllegalArgumentException("Unexpected conferenceable! " + conferenceable);
+        }
+    }
+
+    /**
+     * Where there are ongoing calls on multiple subscriptions for DSDA devices, let the 'hold'
+     * button perform an unhold on the other sub's Connection or Conference. This covers for Dialer
+     * apps that may not have a dedicated 'swap' button for calls across different subs.
+     * @param incomingHandle The incoming {@link PhoneAccountHandle}.
+     */
+    public void maybeUnholdCallsOnOtherSubs(@NonNull PhoneAccountHandle incomingHandle) {
+        Log.i(this, "maybeUnholdCallsOnOtherSubs: check for calls not on %s",
+                incomingHandle);
+        maybeUnholdCallsOnOtherSubs(getAllConnections(), getAllConferences(), incomingHandle,
+                mTelephonyManagerProxy);
+    }
+
+    /**
+     * Used by {@link #maybeUnholdCallsOnOtherSubs(PhoneAccountHandle)} to evaluate whether and on
+     * which connection / conference to call onUnhold(). This method exists as a convenience so that
+     * it is possible to unit test the core functionality.
+     * @param connections all individual connections, including conference participants.
+     * @param conferences all conferences.
+     * @param incomingHandle the incoming handle.
+     * @param telephonyManagerProxy the proxy to the {@link TelephonyManager} instance.
+     */
+    @VisibleForTesting
+    public static void maybeUnholdCallsOnOtherSubs(@NonNull Collection<Connection> connections,
+            @NonNull Collection<Conference> conferences,
+            @NonNull PhoneAccountHandle incomingHandle,
+            TelephonyManagerProxy telephonyManagerProxy) {
+        if (!telephonyManagerProxy.isConcurrentCallsPossible()) {
+            return;
+        }
+        List<Conference> otherSubConferences = conferences.stream()
+                .filter(c ->
+                        // Exclude multiendpoint calls as they're not on this device.
+                        (c.getConnectionProperties()
+                                & Connection.PROPERTY_IS_EXTERNAL_CALL) == 0
+                                // Include any conferences not on same sub as current connection.
+                                && !Objects.equals(c.getPhoneAccountHandle(),
+                                incomingHandle))
+                .toList();
+        if (!otherSubConferences.isEmpty()) {
+            onUnhold(otherSubConferences.get(0));
+            return;
+        }
+
+        // Considers Connections (including conference participants) only if no conferences.
+        List<Connection> otherSubConnections = connections.stream()
+                .filter(c ->
+                        // Exclude multiendpoint calls as they're not on this device.
+                        (c.getConnectionProperties() & Connection.PROPERTY_IS_EXTERNAL_CALL) == 0
+                                // Include any calls not on same sub as current connection.
+                                && !Objects.equals(c.getPhoneAccountHandle(),
+                                incomingHandle)).toList();
+
+        if (!otherSubConnections.isEmpty()) {
+            if (otherSubConnections.size() > 1) {
+                Log.w(LOG_TAG, "Unexpected number of conferenceables: "
+                        + otherSubConnections.size() + " on other sub!");
+            }
+            onUnhold(otherSubConnections.get(0));
+        }
     }
 
     private void disconnectAllCallsOnOtherSubs (@NonNull PhoneAccountHandle handle) {
