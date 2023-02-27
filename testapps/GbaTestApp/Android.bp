@@ -22,7 +22,6 @@ android_test {
     static_libs: [
         "androidx.appcompat_appcompat",
 	"androidx-constraintlayout_constraintlayout",
-	"ub-uiautomator",
     ],
     srcs: ["src/**/*.java"],
     javacflags: ["-parameters"],
