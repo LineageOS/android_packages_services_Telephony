@@ -1564,13 +1564,7 @@ public class ImsProvisioningController {
     }
 
     protected int getSubId(int slotId) {
-        final int[] subIds = mSubscriptionManager.getSubscriptionIds(slotId);
-        int subId = SubscriptionManager.INVALID_SUBSCRIPTION_ID;
-        if (subIds != null && subIds.length >= 1) {
-            subId = subIds[0];
-        }
-
-        return subId;
+        return SubscriptionManager.getSubscriptionId(slotId);
     }
 
     protected int getSlotId(int subId) {
