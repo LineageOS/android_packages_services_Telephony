@@ -281,7 +281,7 @@
     <string name="data_enabled" msgid="22525832097434368">"Data aktivdir"</string>
     <string name="data_enable_summary" msgid="696860063456536557">"Data istifadəsinə icazə verin"</string>
     <string name="dialog_alert_title" msgid="5260471806940268478">"Diqqət"</string>
-    <string name="roaming" msgid="1576180772877858949">"Rominq"</string>
+    <string name="roaming" msgid="1576180772877858949">"Rouminq"</string>
     <string name="roaming_enable" msgid="6853685214521494819">"Rominq zamanı data xidmətinə qoşulun"</string>
     <string name="roaming_disable" msgid="8856224638624592681">"Rominq zamanı data xidmətinə qoşulun"</string>
     <string name="roaming_reenable_message" msgid="1951802463885727915">"Data rominqi deaktivdir. Aktiv etmək üçün klikləyin."</string>
@@ -835,6 +835,7 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"Bu ayarı dəyişmək üçün cihazı yenidən başlatmalısınız."</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"Yenidən başladın"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"Ləğv edin"</string>
+    <string name="removable_esim_string" msgid="7931369811671787649">"Çıxarıla bilən eSIM\'i Defolt olaraq təyin edin"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"Mobil Radio Enerjisi"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"SIM Ünvan Kitabçasına Baxın"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"Sabit Yığım Nömrələrinə Baxın"</string>
@@ -850,7 +851,7 @@
     <string name="radioInfo_service_out" msgid="287972405416142312">"Xidmətdən kənarda"</string>
     <string name="radioInfo_service_emergency" msgid="4763879891415016848">"Yalnız təcili zənglər"</string>
     <string name="radioInfo_service_off" msgid="3456583511226783064">"Radio Deaktivdir"</string>
-    <string name="radioInfo_roaming_in" msgid="3156335577793145965">"Rominq"</string>
+    <string name="radioInfo_roaming_in" msgid="3156335577793145965">"Rouminq"</string>
     <string name="radioInfo_roaming_not" msgid="1904547918725478110">"Rominq Deyil"</string>
     <string name="radioInfo_phone_idle" msgid="2191653783170757819">"Fəaliyyətsiz"</string>
     <string name="radioInfo_phone_ringing" msgid="8100354169567413370">"Zəng"</string>
@@ -874,7 +875,7 @@
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Mobil məlumatın yenilənmə göstəricisi:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Operatorun bütün mobil ölçü məlumatı:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"Data Xidməti:"</string>
-    <string name="radio_info_roaming_label" msgid="6636932886446857120">"Rominq:"</string>
+    <string name="radio_info_roaming_label" msgid="6636932886446857120">"Rouminq:"</string>
     <string name="radio_info_imei_label" msgid="8947899706930120368">"IMEI:"</string>
     <string name="radio_info_call_redirect_label" msgid="4526480903023362276">"Zəng Yönləndirməsi:"</string>
     <string name="radio_info_ppp_resets_label" msgid="9131901102339077661">"Yükləmədən bəri sıfırlanan PPP sayı:"</string>
@@ -915,9 +916,6 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Telefon məlumatı"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Operator Təchizat Məlumatı"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Operator Təchizatlanmasını aktiv edin"</string>
-    <string name="provisioning_info_wfc_entitlement_id" msgid="8845188780811890910">"WFC İcazə ID-si:"</string>
-    <string name="update_provisioning_info_wfc_entitlement_id" msgid="7044171908781134221">"Güncəlləyin"</string>
-    <string name="refresh_provisioning_info_wfc_entitlement_id" msgid="738894335351353407">"Yeniləyin"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Bluetooth siqnalı zəifdir. Telefon spikerinə keçin."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Zəng keyfiyyəti bildirişi"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Ləğv edilmiş SIP hesabları"</string>
