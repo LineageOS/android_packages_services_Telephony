@@ -142,7 +142,8 @@ public class SmsDomainSelectorTest {
 
         processAllMessages();
 
-        verify(mWwanSelectorCallback).onDomainSelected(eq(NetworkRegistrationInfo.DOMAIN_CS));
+        verify(mWwanSelectorCallback).onDomainSelected(eq(NetworkRegistrationInfo.DOMAIN_CS),
+                eq(false));
         assertFalse(mDomainSelector.isDomainSelectionRequested());
     }
 
@@ -184,7 +185,8 @@ public class SmsDomainSelectorTest {
 
         // onDomainSelected will be invoked only once
         // even though the domain selection was requested twice.
-        verify(mWwanSelectorCallback).onDomainSelected(eq(NetworkRegistrationInfo.DOMAIN_PS));
+        verify(mWwanSelectorCallback).onDomainSelected(eq(NetworkRegistrationInfo.DOMAIN_PS),
+                eq(false));
         assertFalse(mDomainSelector.isDomainSelectionRequested());
     }
 
@@ -230,7 +232,8 @@ public class SmsDomainSelectorTest {
 
         processAllMessages();
 
-        verify(mWwanSelectorCallback).onDomainSelected(eq(NetworkRegistrationInfo.DOMAIN_PS));
+        verify(mWwanSelectorCallback).onDomainSelected(eq(NetworkRegistrationInfo.DOMAIN_PS),
+                eq(false));
         assertFalse(mDomainSelector.isDomainSelectionRequested());
 
         mDomainSelector.reselectDomain(mSelectionAttributes);
@@ -239,7 +242,7 @@ public class SmsDomainSelectorTest {
 
         processAllMessages();
 
-        verify(mTransportSelectorCallback).onWlanSelected();
+        verify(mTransportSelectorCallback).onWlanSelected(eq(false));
         assertFalse(mDomainSelector.isDomainSelectionRequested());
     }
 
@@ -256,9 +259,10 @@ public class SmsDomainSelectorTest {
         mDomainSelector.reselectDomain(mSelectionAttributes);
         processAllMessages();
 
-        verify(mWwanSelectorCallback).onDomainSelected(eq(NetworkRegistrationInfo.DOMAIN_PS));
+        verify(mWwanSelectorCallback).onDomainSelected(eq(NetworkRegistrationInfo.DOMAIN_PS),
+                eq(false));
         assertFalse(mDomainSelector.isDomainSelectionRequested());
-        verify(mTransportSelectorCallback, never()).onWlanSelected();
+        verify(mTransportSelectorCallback, never()).onWlanSelected(eq(false));
         assertFalse(mDomainSelector.isDomainSelectionRequested());
     }
 
@@ -275,7 +279,8 @@ public class SmsDomainSelectorTest {
 
         processAllMessages();
 
-        verify(mWwanSelectorCallback).onDomainSelected(eq(NetworkRegistrationInfo.DOMAIN_CS));
+        verify(mWwanSelectorCallback).onDomainSelected(eq(NetworkRegistrationInfo.DOMAIN_CS),
+                eq(false));
         assertFalse(mDomainSelector.isDomainSelectionRequested());
     }
 
@@ -292,7 +297,8 @@ public class SmsDomainSelectorTest {
 
         processAllMessages();
 
-        verify(mWwanSelectorCallback).onDomainSelected(eq(NetworkRegistrationInfo.DOMAIN_PS));
+        verify(mWwanSelectorCallback).onDomainSelected(eq(NetworkRegistrationInfo.DOMAIN_PS),
+                eq(false));
         assertFalse(mDomainSelector.isDomainSelectionRequested());
     }
 
@@ -309,7 +315,8 @@ public class SmsDomainSelectorTest {
 
         processAllMessages();
 
-        verify(mWwanSelectorCallback).onDomainSelected(eq(NetworkRegistrationInfo.DOMAIN_CS));
+        verify(mWwanSelectorCallback).onDomainSelected(eq(NetworkRegistrationInfo.DOMAIN_CS),
+                eq(false));
         assertFalse(mDomainSelector.isDomainSelectionRequested());
     }
 
@@ -326,7 +333,8 @@ public class SmsDomainSelectorTest {
 
         processAllMessages();
 
-        verify(mWwanSelectorCallback).onDomainSelected(eq(NetworkRegistrationInfo.DOMAIN_PS));
+        verify(mWwanSelectorCallback).onDomainSelected(eq(NetworkRegistrationInfo.DOMAIN_PS),
+                eq(false));
         assertFalse(mDomainSelector.isDomainSelectionRequested());
     }
 
@@ -343,7 +351,8 @@ public class SmsDomainSelectorTest {
 
         processAllMessages();
 
-        verify(mWwanSelectorCallback).onDomainSelected(eq(NetworkRegistrationInfo.DOMAIN_CS));
+        verify(mWwanSelectorCallback).onDomainSelected(eq(NetworkRegistrationInfo.DOMAIN_CS),
+                eq(false));
         assertFalse(mDomainSelector.isDomainSelectionRequested());
     }
 
@@ -358,9 +367,10 @@ public class SmsDomainSelectorTest {
         processAllMessages();
 
         if (accessNetworkType == AccessNetworkType.IWLAN) {
-            verify(mTransportSelectorCallback).onWlanSelected();
+            verify(mTransportSelectorCallback).onWlanSelected(eq(false));
         } else {
-            verify(mWwanSelectorCallback).onDomainSelected(eq(NetworkRegistrationInfo.DOMAIN_PS));
+            verify(mWwanSelectorCallback).onDomainSelected(eq(NetworkRegistrationInfo.DOMAIN_PS),
+                    eq(false));
         }
         assertFalse(mDomainSelector.isDomainSelectionRequested());
     }
