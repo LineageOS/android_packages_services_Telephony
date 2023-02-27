@@ -1135,7 +1135,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         mDomainSelected = true;
         mLastTransportType = TRANSPORT_TYPE_WLAN;
         mVoWifiTrialCount++;
-        mTransportSelectorCallback.onWlanSelected();
+        mTransportSelectorCallback.onWlanSelected(mVoWifiOverEmergencyPdn);
         mWwanSelectorCallback = null;
     }
 
@@ -1166,7 +1166,8 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         if (accessNetworkType == EUTRAN || accessNetworkType == NGRAN) {
             domain = NetworkRegistrationInfo.DOMAIN_PS;
         }
-        mWwanSelectorCallback.onDomainSelected(domain);
+        mWwanSelectorCallback.onDomainSelected(domain,
+                (domain == NetworkRegistrationInfo.DOMAIN_PS));
     }
 
     /**
