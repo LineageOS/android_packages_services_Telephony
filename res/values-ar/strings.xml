@@ -566,7 +566,7 @@
     <string name="emergency_enable_radio_dialog_message" msgid="1695305158151408629">"جارٍ تفعيل اللاسلكي..."</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="4329131876852608587">"لا تتوفر خدمة. جارٍ إعادة المحاولة…"</string>
     <string name="radio_off_during_emergency_call" msgid="8011154134040481609">"لا يمكن دخول وضع الطيران أثناء إجراء مكالمة طوارئ."</string>
-    <string name="dial_emergency_error" msgid="825822413209026039">"يتعذر الاتصال. لا يعد <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> رقم طوارئ."</string>
+    <string name="dial_emergency_error" msgid="825822413209026039">"يتعذر الاتصال. <xliff:g id="NON_EMERGENCY_NUMBER">%s</xliff:g> ليس رقم طوارئ."</string>
     <string name="dial_emergency_empty_error" msgid="2785803395047793634">"يتعذر الاتصال. يمكنك طلب رقم طوارئ."</string>
     <string name="dial_emergency_calling_not_available" msgid="6485846193794727823">"مكالمة الطوارئ غير متوفرة"</string>
     <string name="pin_puk_system_user_only" msgid="1045147220686867922">"‏يمكن لمالك الجهاز فقط إدخال رمزَي PIN/PUK."</string>
@@ -575,7 +575,7 @@
     <string name="fire_type_description" msgid="6565200468934914930">"حريق"</string>
     <string name="description_concat_format" msgid="2014471565101724088">"‏%1$s، ‏%2$s‏"</string>
     <string name="dialerKeyboardHintText" msgid="1115266533703764049">"استخدام لوحة المفاتيح للطلب"</string>
-    <string name="onscreenHoldText" msgid="4025348842151665191">"تعليق"</string>
+    <string name="onscreenHoldText" msgid="4025348842151665191">"انتظار"</string>
     <string name="onscreenEndCallText" msgid="6138725377654842757">"الانتهاء"</string>
     <string name="onscreenShowDialpadText" msgid="658465753816164079">"لوحة الاتصال"</string>
     <string name="onscreenMuteText" msgid="5470306116733843621">"كتم الصوت"</string>
@@ -692,7 +692,7 @@
     <string name="change_pin_enter_new_pin_header" msgid="4739465616733486118">"تعيين رقم تعريف شخصي جديد"</string>
     <string name="change_pin_enter_new_pin_hint" msgid="2326038476516364210">"ينبغي لرقم التعريف الشخصي أن يتكون من <xliff:g id="MIN">%1$d</xliff:g>-<xliff:g id="MAX">%2$d</xliff:g> أرقام."</string>
     <string name="change_pin_confirm_pin_header" msgid="2606303906320705726">"تأكيد رقم التعريف الشخصي"</string>
-    <string name="change_pin_confirm_pins_dont_match" msgid="305164501222587215">"أرقام التعريف الشخصي غير متطابقة"</string>
+    <string name="change_pin_confirm_pins_dont_match" msgid="305164501222587215">"رقما التعريف الشخصي غير متطابقَين"</string>
     <string name="change_pin_succeeded" msgid="2504705600693014403">"تمّ تحديث رقم التعريف الشخصي للبريد الصوتي"</string>
     <string name="change_pin_system_error" msgid="7772788809875146873">"يتعذر تعيين رقم التعريف الشخصي"</string>
     <string name="mobile_data_status_roaming_turned_off_subtext" msgid="6840673347416227054">"تم إيقاف تجوال البيانات"</string>
@@ -835,6 +835,7 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"عليك إعادة تشغيل جهازك لتغيير هذا الإعداد."</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"إعادة التشغيل"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"إلغاء"</string>
+    <string name="removable_esim_string" msgid="7931369811671787649">"‏ضبط شريحة eSIM القابلة للإزالة كشريحة تلقائية"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"طاقة اللاسلكي للجوّال"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"‏عرض دفتر عناوين SIM"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"عرض أرقام الطلب الثابت"</string>
@@ -915,9 +916,6 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"معلومات الهاتف"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"معلومات توفير خدمة مشغّل شبكة الجوّال"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"توفير خدمة مشغّل شبكة الجوّال"</string>
-    <string name="provisioning_info_wfc_entitlement_id" msgid="8845188780811890910">"‏معرّف التخويل لميزة \"الاتصال عبر Wi-Fi\":"</string>
-    <string name="update_provisioning_info_wfc_entitlement_id" msgid="7044171908781134221">"تعديل"</string>
-    <string name="refresh_provisioning_info_wfc_entitlement_id" msgid="738894335351353407">"إعادة تحميل"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"إشارة البلوتوث ضعيفة. حاوِل التبديل إلى مكبّر الصوت."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"إشعار بشأن جودة المكالمة"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"‏حسابات SIP المتوقّفة"</string>

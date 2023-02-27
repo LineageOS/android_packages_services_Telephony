@@ -835,6 +835,7 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"អ្នក​ត្រូវ​ចាប់ផ្ដើម​ឧបករណ៍​របស់អ្នកឡើងវិញ ដើម្បី​ផ្លាស់ប្ដូរ​ការកំណត់​នេះ។"</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"ចាប់ផ្ដើមឡើងវិញ"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"បោះបង់"</string>
+    <string name="removable_esim_string" msgid="7931369811671787649">"កំណត់ eSIM ដែល​អាចដកបាន​ជាលំនាំដើម"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"ថាមពល​វិទ្យុ​ទូរសព្ទ​ចល័ត"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"មើលសៀវភៅអាសយដ្ឋានក្នុងស៊ីមកាត"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"មើល​លេខ​ហៅ​ថេរ"</string>
@@ -915,9 +916,6 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"ព័ត៌មាន​ទូរសព្ទ"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"ព័ត៌មាន​អំពី​ការផ្តល់​ទិន្នន័យ​របស់​ក្រុមហ៊ុន​សេវា​ទូរសព្ទ"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"នាំ​ឱ្យ​មាន​ការផ្តល់​ទិន្នន័យ​ពី​ក្រុមហ៊ុន​សេវា​ទូរសព្ទ"</string>
-    <string name="provisioning_info_wfc_entitlement_id" msgid="8845188780811890910">"លេខ​សម្គាល់​ការ​ផ្ដល់​សិទ្ធិ WFC៖"</string>
-    <string name="update_provisioning_info_wfc_entitlement_id" msgid="7044171908781134221">"ដំឡើងកំណែ"</string>
-    <string name="refresh_provisioning_info_wfc_entitlement_id" msgid="738894335351353407">"ផ្ទុកឡើងវិញ"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"រលកសញ្ញាប៊្លូធូសរបស់អ្នក​មានកម្រិតខ្សោយ។ សូមសាកល្បងប្ដូរ​ទៅឧបករណ៍បំពងសំឡេងទូរសព្ទ។"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"ការជូនដំណឹង​អំពីគុណភាព​ហៅទូរសព្ទ"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"គណនី SIP ដែលបានបញ្ឈប់"</string>

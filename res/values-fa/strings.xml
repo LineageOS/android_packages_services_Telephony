@@ -191,7 +191,7 @@
     <string name="preferred_network_mode_dialogtitle" msgid="2781447433514459696">"نوع شبکه ترجیحی"</string>
     <string name="forbidden_network" msgid="5081729819561333023">"(ممنوع است)"</string>
     <string name="choose_network_title" msgid="5335832663422653082">"انتخاب شبکه"</string>
-    <string name="network_disconnected" msgid="8844141106841160825">"قطع اتصال"</string>
+    <string name="network_disconnected" msgid="8844141106841160825">"متصل نیست"</string>
     <string name="network_connected" msgid="2760235679963580224">"متصل"</string>
     <string name="network_connecting" msgid="160901383582774987">"درحال اتصال…"</string>
     <string name="network_could_not_connect" msgid="6547460848093727998">"متصل نشد"</string>
@@ -451,7 +451,7 @@
     <string name="sum_fdn" msgid="6152246141642323582">"مدیریت شماره‌های شماره‌گیری ثابت"</string>
     <string name="sum_fdn_change_pin" msgid="3510994280557335727">"‏تغییر پین برای دسترسی FDN"</string>
     <string name="sum_fdn_manage_list" msgid="3311397063233992907">"مدیریت فهرست شماره تلفن"</string>
-    <string name="voice_privacy" msgid="7346935172372181951">"حریم‌خصوصی صوتی"</string>
+    <string name="voice_privacy" msgid="7346935172372181951">"حریم خصوصی صوتی"</string>
     <string name="voice_privacy_summary" msgid="3556460926168473346">"فعال کردن حالت رازداری پیشرفته"</string>
     <string name="tty_mode_option_title" msgid="3843817710032641703">"‏حالت TTY"</string>
     <string name="tty_mode_option_summary" msgid="4770510287236494371">"‏تنظیم حالت TTY"</string>
@@ -592,9 +592,9 @@
     <string name="importToFDNfromContacts" msgid="5068664870738407341">"وارد کردن از مخاطبین"</string>
     <string name="singleContactImportedMsg" msgid="3619804066300998934">"مخاطب واردشده"</string>
     <string name="failedToImportSingleContactMsg" msgid="228095510489830266">"مخاطب وارد نشد"</string>
-    <string name="hac_mode_title" msgid="4127986689621125468">"دستگاه‌های کمک‌شنوایی"</string>
+    <string name="hac_mode_title" msgid="4127986689621125468">"سمعک"</string>
     <string name="hac_mode_summary" msgid="7774989500136009881">"روشن کردن سازگاری دستگاه کمک‌شنوایی"</string>
-    <string name="rtt_mode_title" msgid="3075948111362818043">"‏تماس نوشتار هم‌زمان (RTT)"</string>
+    <string name="rtt_mode_title" msgid="3075948111362818043">"‏تماس با نوشتار هم‌زمان (RTT)"</string>
     <string name="rtt_mode_summary" msgid="8631541375609989562">"پیام‌رسانی در تماس صوتی مجاز است"</string>
     <string name="rtt_mode_more_information" msgid="587500128658756318">"‏«نوشتار هم‌زمان» به تماس گیرندگان ناشنوا، دارای مشکل شنوایی، دارای ناتوانی گفتاری یا افرادی که به چیزی بیش از صدا نیاز دارند کمک می‌کند.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;بیشتر بدانید&lt;/a&gt;\n       ‏&lt;br&gt;&lt;br&gt; تماس‌های «نوشتار هم‌زمان» به‌صورت ترانویسی پیام ذخیره می‌شود\n       &lt;br&gt; «نوشتار هم‌زمان» برای تماس‌های ویدیویی دردسترس نیست"</string>
     <string name="no_rtt_when_roaming" msgid="5268008247378355389">"نکته: «نوشتار هم‌زمان» در هنگام فراگردی دردسترس نیست"</string>
@@ -835,6 +835,7 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"برای تغییر این تنظیم، باید دستگاه را بازراه‌اندازی کنید."</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"بازراه‌اندازی"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"لغو"</string>
+    <string name="removable_esim_string" msgid="7931369811671787649">"تنظیم سیم‌کارت داخلی جداشدنی به‌عنوان پیش‌فرض"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"توان رادیوی تلفن همراه"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"مشاهده دفترچه نشانی سیم‌کارت"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"مشاهده شماره‌های شماره‌گیری ثابت"</string>
@@ -898,7 +899,7 @@
     <string name="ping_test_label" msgid="448617502935719694">"اجرای آزمایش پینگ"</string>
     <string name="radio_info_smsc_label" msgid="3749927072726033763">"SMSC:"</string>
     <string name="radio_info_smsc_update_label" msgid="5141996256097115753">"به‌روزرسانی"</string>
-    <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"بازخوانی"</string>
+    <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"بازآوری"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"‏تغییر وضعیت علامت DNS"</string>
     <string name="oem_radio_info_label" msgid="2914167475119997456">"‏تنظیمات/اطلاعات خاص OEM"</string>
     <string name="radio_info_endc_available" msgid="2983767110681230019">"‏EN-DC دردسترس است (NSA):"</string>
@@ -915,9 +916,6 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"اطلاعات تلفن"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"اطلاعات ارائه شرکت مخابراتی"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"شروع ارائه شرکت مخابراتی"</string>
-    <string name="provisioning_info_wfc_entitlement_id" msgid="8845188780811890910">"‏شناسه برخورداری از WFC:"</string>
-    <string name="update_provisioning_info_wfc_entitlement_id" msgid="7044171908781134221">"به‌روزرسانی"</string>
-    <string name="refresh_provisioning_info_wfc_entitlement_id" msgid="738894335351353407">"بازآوری"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"سیگنال بلوتوث شما ضعیف است. از بلندگوی تلفن استفاده کنید."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"اعلان کیفیت تماس"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"‏حساب‌های SIP منسوخ‌شده"</string>

@@ -835,6 +835,7 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"यो सेटिङ परिवर्तन गर्न तपाईंले आफ्नो यन्त्र पुनः सुरु गर्नु पर्छ।"</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"पुनः सुरु गर्नुहोस्"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"रद्द गर्नुहोस्"</string>
+    <string name="removable_esim_string" msgid="7931369811671787649">"हटाउन मिल्ने eSIM डिफल्ट रूपमा सेट गर्नुहोस्"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"मोबाइल रेडियोको पावर"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"SIM को ठेगाना पुस्तिका हेर्नुहोस्"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"स्थिर डायल गर्ने नम्बरहरू हेर्नुहोस्"</string>
@@ -915,9 +916,6 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"फोनसम्बन्धी जानकारी"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"सेवा प्रदायकको प्रावधानसम्बन्धी जानकारी"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"सेवा प्रदायकको प्रावधानलाई ट्रिगर गर्नुहोस्"</string>
-    <string name="provisioning_info_wfc_entitlement_id" msgid="8845188780811890910">"WFC Entitlement ID:"</string>
-    <string name="update_provisioning_info_wfc_entitlement_id" msgid="7044171908781134221">"अपडेट गर्नुहोस्"</string>
-    <string name="refresh_provisioning_info_wfc_entitlement_id" msgid="738894335351353407">"रिफ्रेस गर्नुहोस्"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"ब्लुटुथको सिग्नल कमजोर छ। स्पिकरफोन प्रयोग गरी हेर्नुहोस्।"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"कलको गुणस्तरसम्बन्धी सूचना"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"चल्तीबाट हटाइएका SIP खाताहरू"</string>
