@@ -73,9 +73,11 @@ import android.telephony.DomainSelectionService;
 import android.telephony.DomainSelectionService.SelectionAttributes;
 import android.telephony.EmergencyRegResult;
 import android.telephony.NetworkRegistrationInfo;
+import android.telephony.PhoneNumberUtils;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.telephony.TransportSelectorCallback;
+import android.telephony.emergency.EmergencyNumber;
 import android.telephony.ims.ImsManager;
 import android.telephony.ims.ImsMmTelManager;
 import android.telephony.ims.ProvisioningManager;
@@ -86,7 +88,9 @@ import com.android.internal.annotations.VisibleForTesting;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.function.IntFunction;
 
 /**
@@ -157,6 +161,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
     private @TransportType int mLastTransportType = TRANSPORT_TYPE_INVALID;
     private @DomainSelectionService.EmergencyScanType int mScanType;
     private @RadioAccessNetworkType List<Integer> mLastPreferredNetworks;
+    private boolean mIsTestEmergencyNumber;
 
     private CancellationSignal mCancelSignal;
 
@@ -315,6 +320,11 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
     private void reselectDomain() {
         logi("reselectDomain tryCsWhenPsFails=" + mTryCsWhenPsFails);
 
+        if (mIsTestEmergencyNumber) {
+            selectDomainForTestEmergencyNumber();
+            return;
+        }
+
         if (mTryCsWhenPsFails) {
             mTryCsWhenPsFails = false;
             // Initial state was CSFB available and dial PS failed.
@@ -367,6 +377,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         logi("selectDomain attr=" + attr);
         mTransportSelectorCallback = cb;
         mSelectionAttributes = attr;
+        mIsTestEmergencyNumber = isTestEmergencyNumber(attr.getNumber());
 
         TelephonyManager tm = mContext.getSystemService(TelephonyManager.class);
         mModemCount = tm.getActiveModemCount();
@@ -530,6 +541,11 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
     }
 
     private void selectDomainFromInitialState() {
+        if (mIsTestEmergencyNumber) {
+            selectDomainForTestEmergencyNumber();
+            return;
+        }
+
         boolean csInService = isCsInService();
         boolean psInService = isPsInService();
 
@@ -1315,6 +1331,37 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
                 }
             }
         }
+    }
+
+    private void selectDomainForTestEmergencyNumber() {
+        logi("selectDomainForTestEmergencyNumber");
+        if (isImsRegisteredWithVoiceCapability()) {
+            onWwanNetworkTypeSelected(EUTRAN);
+        } else {
+            onWwanNetworkTypeSelected(UTRAN);
+        }
+    }
+
+    private boolean isTestEmergencyNumber(String number) {
+        number = PhoneNumberUtils.stripSeparators(number);
+        Map<Integer, List<EmergencyNumber>> list = new HashMap<>();
+        try {
+            TelephonyManager tm = mContext.getSystemService(TelephonyManager.class);
+            list = tm.getEmergencyNumberList();
+        } catch (IllegalStateException ise) {
+            loge("isTestEmergencyNumber ise=" + ise);
+        }
+
+        for (Integer sub : list.keySet()) {
+            for (EmergencyNumber eNumber : list.get(sub)) {
+                if (number.equals(eNumber.getNumber())
+                        && eNumber.isFromSources(EmergencyNumber.EMERGENCY_NUMBER_SOURCE_TEST)) {
+                    logd("isTestEmergencyNumber: " + number + " is a test emergency number.");
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     @Override
