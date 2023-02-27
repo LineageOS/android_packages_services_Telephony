@@ -178,7 +178,7 @@ public class SmsDomainSelector extends DomainSelectorBase implements
 
     protected void notifyWlanSelected() {
         logi("DomainSelected: WLAN");
-        mTransportSelectorCallback.onWlanSelected();
+        mTransportSelectorCallback.onWlanSelected(false);
         setDomainSelectionRequested(false);
     }
 
@@ -199,7 +199,7 @@ public class SmsDomainSelector extends DomainSelectorBase implements
         logi("DomainSelected: WWAN/" + DomainSelectionService.getDomainName(domain));
 
         if (mWwanSelectorCallback != null) {
-            mWwanSelectorCallback.onDomainSelected(domain);
+            mWwanSelectorCallback.onDomainSelected(domain, false);
         } else {
             mTransportSelectorCallback.onSelectionTerminated(DisconnectCause.LOCAL);
         }
