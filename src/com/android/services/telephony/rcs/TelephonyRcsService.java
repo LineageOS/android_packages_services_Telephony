@@ -366,16 +366,7 @@ public class TelephonyRcsService {
     }
 
     private int getSubscriptionFromSlot(int slotId) {
-        SubscriptionManager manager = mContext.getSystemService(SubscriptionManager.class);
-        if (manager == null) {
-            Log.w(LOG_TAG, "Couldn't find SubscriptionManager for slotId=" + slotId);
-            return SubscriptionManager.INVALID_SUBSCRIPTION_ID;
-        }
-        int[] subIds = manager.getSubscriptionIds(slotId);
-        if (subIds != null && subIds.length > 0) {
-            return subIds[0];
-        }
-        return SubscriptionManager.INVALID_SUBSCRIPTION_ID;
+        return SubscriptionManager.getSubscriptionId(slotId);
     }
 
     /**
