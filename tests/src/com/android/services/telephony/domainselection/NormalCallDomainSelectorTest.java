@@ -436,7 +436,7 @@ public class NormalCallDomainSelectorTest {
         }
 
         @Override
-        public synchronized void onWlanSelected() {
+        public synchronized void onWlanSelected(boolean useEmergencyPdn) {
             Log.d(TAG, "onWlanSelected");
             mWlanSelected = true;
             notifyAll();
@@ -504,7 +504,8 @@ public class NormalCallDomainSelectorTest {
 
         }
 
-        public synchronized void onDomainSelected(@NetworkRegistrationInfo.Domain int domain) {
+        public synchronized void onDomainSelected(@NetworkRegistrationInfo.Domain int domain,
+                boolean useEmergencyPdn) {
             Log.i(TAG, "onDomainSelected - called");
             mSelectedDomain = domain;
             mDomainSelected = true;

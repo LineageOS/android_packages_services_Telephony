@@ -60,6 +60,7 @@ import static junit.framework.Assert.assertNotNull;
 import static junit.framework.Assert.assertTrue;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyBoolean;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.doAnswer;
@@ -269,7 +270,7 @@ public class EmergencyCallDomainSelectorTest {
 
         verify(mWwanSelectorCallback, times(0)).onRequestEmergencyNetworkScan(
                 any(), anyInt(), any(), any());
-        verify(mWwanSelectorCallback, times(0)).onDomainSelected(anyInt());
+        verify(mWwanSelectorCallback, times(0)).onDomainSelected(anyInt(), eq(true));
     }
 
     @Test
@@ -984,13 +985,13 @@ public class EmergencyCallDomainSelectorTest {
         assertTrue(mDomainSelector.hasMessages(MSG_NETWORK_SCAN_TIMEOUT));
 
         // Wi-Fi is not connected.
-        verify(mTransportSelectorCallback, times(0)).onWlanSelected();
+        verify(mTransportSelectorCallback, times(0)).onWlanSelected(anyBoolean());
 
         // Wi-Fi is connected.
         mNetworkCallback.onAvailable(null);
         mDomainSelector.handleMessage(mDomainSelector.obtainMessage(MSG_NETWORK_SCAN_TIMEOUT));
 
-        verify(mTransportSelectorCallback, times(1)).onWlanSelected();
+        verify(mTransportSelectorCallback, times(1)).onWlanSelected(eq(true));
     }
 
     @Test
@@ -1016,20 +1017,20 @@ public class EmergencyCallDomainSelectorTest {
         mDomainSelector.handleMessage(mDomainSelector.obtainMessage(MSG_NETWORK_SCAN_TIMEOUT));
 
         // Wi-Fi is not connected.
-        verify(mTransportSelectorCallback, times(0)).onWlanSelected();
+        verify(mTransportSelectorCallback, times(0)).onWlanSelected(anyBoolean());
 
         // Wi-Fi is connected. But Wi-Fi calling setting is disabled.
         mNetworkCallback.onAvailable(null);
         when(mMmTelManager.isVoWiFiRoamingSettingEnabled()).thenReturn(false);
         mDomainSelector.handleMessage(mDomainSelector.obtainMessage(MSG_NETWORK_SCAN_TIMEOUT));
 
-        verify(mTransportSelectorCallback, times(0)).onWlanSelected();
+        verify(mTransportSelectorCallback, times(0)).onWlanSelected(anyBoolean());
 
         // Wi-Fi is connected and Wi-Fi calling setting is enabled.
         when(mMmTelManager.isVoWiFiSettingEnabled()).thenReturn(true);
         mDomainSelector.handleMessage(mDomainSelector.obtainMessage(MSG_NETWORK_SCAN_TIMEOUT));
 
-        verify(mTransportSelectorCallback, times(1)).onWlanSelected();
+        verify(mTransportSelectorCallback, times(1)).onWlanSelected(eq(true));
     }
 
     @Test
@@ -1055,19 +1056,19 @@ public class EmergencyCallDomainSelectorTest {
         mDomainSelector.handleMessage(mDomainSelector.obtainMessage(MSG_NETWORK_SCAN_TIMEOUT));
 
         // Wi-Fi is not connected.
-        verify(mTransportSelectorCallback, times(0)).onWlanSelected();
+        verify(mTransportSelectorCallback, times(0)).onWlanSelected(anyBoolean());
 
         // Wi-Fi is connected. But Wi-Fi calling s not activated.
         mNetworkCallback.onAvailable(null);
         mDomainSelector.handleMessage(mDomainSelector.obtainMessage(MSG_NETWORK_SCAN_TIMEOUT));
 
-        verify(mTransportSelectorCallback, times(0)).onWlanSelected();
+        verify(mTransportSelectorCallback, times(0)).onWlanSelected(anyBoolean());
 
         // Wi-Fi is connected and Wi-Fi calling is activated.
         doReturn("1").when(mProvisioningManager).getProvisioningStringValue(anyInt());
         mDomainSelector.handleMessage(mDomainSelector.obtainMessage(MSG_NETWORK_SCAN_TIMEOUT));
 
-        verify(mTransportSelectorCallback, times(1)).onWlanSelected();
+        verify(mTransportSelectorCallback, times(1)).onWlanSelected(eq(true));
     }
 
     @Test
@@ -1088,19 +1089,19 @@ public class EmergencyCallDomainSelectorTest {
         mDomainSelector.handleMessage(mDomainSelector.obtainMessage(MSG_NETWORK_SCAN_TIMEOUT));
 
         // Wi-Fi is not connected.
-        verify(mTransportSelectorCallback, times(0)).onWlanSelected();
+        verify(mTransportSelectorCallback, times(0)).onWlanSelected(anyBoolean());
 
         // Wi-Fi is connected but IMS is not registered over Wi-Fi.
         mNetworkCallback.onAvailable(null);
         mDomainSelector.handleMessage(mDomainSelector.obtainMessage(MSG_NETWORK_SCAN_TIMEOUT));
 
-        verify(mTransportSelectorCallback, times(0)).onWlanSelected();
+        verify(mTransportSelectorCallback, times(0)).onWlanSelected(anyBoolean());
 
         // IMS is registered over Wi-Fi.
         bindImsService(true);
         mDomainSelector.handleMessage(mDomainSelector.obtainMessage(MSG_NETWORK_SCAN_TIMEOUT));
 
-        verify(mTransportSelectorCallback, times(1)).onWlanSelected();
+        verify(mTransportSelectorCallback, times(1)).onWlanSelected(eq(false));
     }
 
     @Test
@@ -1127,13 +1128,13 @@ public class EmergencyCallDomainSelectorTest {
 
         mDomainSelector.handleMessage(mDomainSelector.obtainMessage(MSG_NETWORK_SCAN_TIMEOUT));
 
-        verify(mTransportSelectorCallback, times(1)).onWlanSelected();
+        verify(mTransportSelectorCallback, times(1)).onWlanSelected(eq(false));
 
         // duplicated event
         mDomainSelector.handleMessage(mDomainSelector.obtainMessage(MSG_NETWORK_SCAN_TIMEOUT));
 
         // ignore duplicated callback, no change in interaction
-        verify(mTransportSelectorCallback, times(1)).onWlanSelected();
+        verify(mTransportSelectorCallback, times(1)).onWlanSelected(anyBoolean());
     }
 
     @Test
@@ -1559,12 +1560,12 @@ public class EmergencyCallDomainSelectorTest {
 
     private void verifyCsDialed() {
         processAllMessages();
-        verify(mWwanSelectorCallback, times(1)).onDomainSelected(eq(DOMAIN_CS));
+        verify(mWwanSelectorCallback, times(1)).onDomainSelected(eq(DOMAIN_CS), eq(false));
     }
 
     private void verifyPsDialed() {
         processAllMessages();
-        verify(mWwanSelectorCallback, times(1)).onDomainSelected(eq(DOMAIN_PS));
+        verify(mWwanSelectorCallback, times(1)).onDomainSelected(eq(DOMAIN_PS), eq(true));
     }
 
     private void verifyScanPsPreferred() {
