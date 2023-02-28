@@ -168,7 +168,7 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
         mStopDomainSelection = true;
         if (mImsStateTracker.isImsRegisteredOverWlan()) {
             logd("WLAN selected");
-            mTransportSelectorCallback.onWlanSelected();
+            mTransportSelectorCallback.onWlanSelected(false);
         } else {
             if (mWwanSelectorCallback == null) {
                 mTransportSelectorCallback.onWwanSelected((callback) -> {
@@ -184,7 +184,7 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
     private void notifyPsSelectedInternal() {
         if (mWwanSelectorCallback != null) {
             logd("notifyPsSelected - onWwanSelected");
-            mWwanSelectorCallback.onDomainSelected(NetworkRegistrationInfo.DOMAIN_PS);
+            mWwanSelectorCallback.onDomainSelected(NetworkRegistrationInfo.DOMAIN_PS, false);
         } else {
             loge("wwanSelectorCallback is null");
             mTransportSelectorCallback.onSelectionTerminated(DisconnectCause.OUTGOING_FAILURE);
@@ -207,7 +207,7 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
     private void notifyCsSelectedInternal() {
         if (mWwanSelectorCallback != null) {
             logd("wwanSelectorCallback -> onDomainSelected(DOMAIN_CS)");
-            mWwanSelectorCallback.onDomainSelected(NetworkRegistrationInfo.DOMAIN_CS);
+            mWwanSelectorCallback.onDomainSelected(NetworkRegistrationInfo.DOMAIN_CS, false);
         } else {
             loge("wwanSelectorCallback is null");
             mTransportSelectorCallback.onSelectionTerminated(DisconnectCause.OUTGOING_FAILURE);
