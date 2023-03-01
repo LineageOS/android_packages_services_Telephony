@@ -2353,10 +2353,23 @@ public class TelephonyConnectionService extends ConnectionService {
             return false;
         }
 
-        if (reasonInfo != null
-                && reasonInfo.getCode() == ImsReasonInfo.CODE_SIP_ALTERNATE_EMERGENCY_CALL) {
-            onEmergencyRedial(c, c.getPhone().getDefaultPhone());
-            return true;
+        if (reasonInfo != null) {
+            int reasonCode = reasonInfo.getCode();
+            int extraCode = reasonInfo.getExtraCode();
+            if ((reasonCode == ImsReasonInfo.CODE_SIP_ALTERNATE_EMERGENCY_CALL)
+                    || (reasonCode == ImsReasonInfo.CODE_LOCAL_CALL_CS_RETRY_REQUIRED
+                            && extraCode == ImsReasonInfo.EXTRA_CODE_CALL_RETRY_EMERGENCY)) {
+                // clear normal call domain selector
+                c.removeTelephonyConnectionListener(mNormalCallConnectionListener);
+                if (mDomainSelectionConnection != null) {
+                    mDomainSelectionConnection.finishSelection();
+                    mDomainSelectionConnection = null;
+                }
+                mNormalCallConnection = null;
+
+                onEmergencyRedial(c, c.getPhone().getDefaultPhone());
+                return true;
+            }
         }
 
         return maybeReselectDomainForNormalCall(c, callFailCause, reasonInfo);
