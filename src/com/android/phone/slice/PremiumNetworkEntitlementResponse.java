@@ -30,40 +30,39 @@ public class PremiumNetworkEntitlementResponse {
     public static final int PREMIUM_NETWORK_ENTITLEMENT_STATUS_PROVISIONING = 3;
     public static final int PREMIUM_NETWORK_ENTITLEMENT_STATUS_INCLUDED = 4;
 
-    @IntDef(prefix = {"PREMIUM_NETWORK_ENTITLEMENT_STATUS_"},
-            value = {
-                    PREMIUM_NETWORK_ENTITLEMENT_STATUS_DISABLED,
-                    PREMIUM_NETWORK_ENTITLEMENT_STATUS_ENABLED,
-                    PREMIUM_NETWORK_ENTITLEMENT_STATUS_INCOMPATIBLE,
-                    PREMIUM_NETWORK_ENTITLEMENT_STATUS_PROVISIONING,
-                    PREMIUM_NETWORK_ENTITLEMENT_STATUS_INCLUDED
-            })
+    @IntDef(prefix = {"PREMIUM_NETWORK_ENTITLEMENT_STATUS_"}, value = {
+            PREMIUM_NETWORK_ENTITLEMENT_STATUS_DISABLED,
+            PREMIUM_NETWORK_ENTITLEMENT_STATUS_ENABLED,
+            PREMIUM_NETWORK_ENTITLEMENT_STATUS_INCOMPATIBLE,
+            PREMIUM_NETWORK_ENTITLEMENT_STATUS_PROVISIONING,
+            PREMIUM_NETWORK_ENTITLEMENT_STATUS_INCLUDED
+    })
     public @interface PremiumNetworkEntitlementStatus {}
 
     public static final int PREMIUM_NETWORK_PROVISION_STATUS_NOT_PROVISIONED = 0;
     public static final int PREMIUM_NETWORK_PROVISION_STATUS_PROVISIONED = 1;
-    public static final int PREMIUM_NETWORK_PROVISION_STATUS_NOT_REQUIRED = 2;
+    public static final int PREMIUM_NETWORK_PROVISION_STATUS_NOT_AVAILABLE = 2;
     public static final int PREMIUM_NETWORK_PROVISION_STATUS_IN_PROGRESS = 3;
 
-    @IntDef(prefix = {"PREMIUM_NETWORK_PROVISION_STATUS_"},
-            value = {
-                    PREMIUM_NETWORK_PROVISION_STATUS_NOT_PROVISIONED,
-                    PREMIUM_NETWORK_PROVISION_STATUS_PROVISIONED,
-                    PREMIUM_NETWORK_PROVISION_STATUS_NOT_REQUIRED,
-                    PREMIUM_NETWORK_PROVISION_STATUS_IN_PROGRESS
-            })
+    @IntDef(prefix = {"PREMIUM_NETWORK_PROVISION_STATUS_"}, value = {
+            PREMIUM_NETWORK_PROVISION_STATUS_NOT_PROVISIONED,
+            PREMIUM_NETWORK_PROVISION_STATUS_PROVISIONED,
+            PREMIUM_NETWORK_PROVISION_STATUS_NOT_AVAILABLE,
+            PREMIUM_NETWORK_PROVISION_STATUS_IN_PROGRESS
+    })
     public @interface PremiumNetworkProvisionStatus {}
 
     @PremiumNetworkEntitlementStatus public int mEntitlementStatus;
     @PremiumNetworkProvisionStatus public int mProvisionStatus;
-    public int mProvisionTimeLeft;
     @NonNull public String mServiceFlowURL;
+    @NonNull public String mServiceFlowUserData;
 
     /**
      * @return {@code true} if the premium network is provisioned and {@code false} otherwise.
      */
     public boolean isProvisioned() {
         return mProvisionStatus == PREMIUM_NETWORK_PROVISION_STATUS_PROVISIONED
+                || mEntitlementStatus == PREMIUM_NETWORK_ENTITLEMENT_STATUS_ENABLED
                 || mEntitlementStatus == PREMIUM_NETWORK_ENTITLEMENT_STATUS_INCLUDED;
     }
 
@@ -83,7 +82,10 @@ public class PremiumNetworkEntitlementResponse {
     public boolean isPremiumNetworkCapabilityAllowed() {
         switch (mEntitlementStatus) {
             case PREMIUM_NETWORK_ENTITLEMENT_STATUS_INCOMPATIBLE:
-            case PREMIUM_NETWORK_ENTITLEMENT_STATUS_DISABLED:
+                return false;
+        }
+        switch (mProvisionStatus) {
+            case PREMIUM_NETWORK_PROVISION_STATUS_NOT_AVAILABLE:
                 return false;
         }
         return true;
