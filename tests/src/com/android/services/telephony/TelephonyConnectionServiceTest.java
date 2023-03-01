@@ -56,6 +56,7 @@ import android.os.AsyncResult;
 import android.os.Bundle;
 import android.os.Handler;
 import android.telecom.Conference;
+import android.telecom.Conferenceable;
 import android.telecom.ConnectionRequest;
 import android.telecom.DisconnectCause;
 import android.telecom.PhoneAccountHandle;
@@ -122,6 +123,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
     public static class SimpleTelephonyConnection extends TelephonyConnection {
         public boolean wasDisconnected = false;
         public boolean wasUnheld = false;
+        public boolean wasHeld = false;
 
         @Override
         public TelephonyConnection cloneConnection() {
@@ -136,6 +138,11 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         @Override
         public void onUnhold() {
             wasUnheld = true;
+        }
+
+        @Override
+        public void onHold() {
+            wasHeld = true;
         }
     }
 
@@ -1663,6 +1670,24 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         assertTrue(testConference.wasUnheld);
         assertFalse(tc1.wasUnheld);
         assertFalse(tc2.wasUnheld);
+    }
+
+    /**
+     * For DSDA devices, placing an outgoing call on a 2nd sub will hold the existing connection on
+     * the first sub.
+     */
+    @Test
+    @SmallTest
+    public void testHoldOnOtherSubForVirtualDsdaDevice() {
+        when(mTelephonyManagerProxy.isConcurrentCallsPossible()).thenReturn(true);
+
+        ArrayList<android.telecom.Connection> tcs = new ArrayList<>();
+        SimpleTelephonyConnection tc1 = createTestConnection(SUB1_HANDLE, 0, false);
+        tcs.add(tc1);
+        Conferenceable c = TelephonyConnectionService.maybeHoldCallsOnOtherSubs(
+                tcs, new ArrayList<>(), SUB2_HANDLE, mTelephonyManagerProxy);
+        assertTrue(c.equals(tc1));
+        assertTrue(tc1.wasHeld);
     }
 
     /**
