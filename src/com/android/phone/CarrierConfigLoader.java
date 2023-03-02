@@ -80,6 +80,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -193,6 +194,14 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
     // carrier B is on SIM 2, in which case we should not dump carrier B's service when carrier A
     // requested the dump.
     private static final String DUMP_ARG_REQUESTING_PACKAGE = "--requesting-package";
+
+    // Configs that should always be included when clients calls getConfig[ForSubId] with specified
+    // keys (even configs are not explicitly specified). Those configs have special purpose for the
+    // carrier config APIs to work correctly.
+    private static final String[] CONFIG_SUBSET_METADATA_KEYS = new String[] {
+            CarrierConfigManager.KEY_CARRIER_CONFIG_VERSION_STRING,
+            CarrierConfigManager.KEY_CARRIER_CONFIG_APPLIED_BOOL
+    };
 
     // Handler to process various events.
     //
@@ -1314,6 +1323,52 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
             }
         }
         return retConfig;
+    }
+
+    @Override
+    @NonNull
+    public PersistableBundle getConfigSubsetForSubIdWithFeature(int subscriptionId,
+            @NonNull String callingPackage, @Nullable String callingFeatureId,
+            @NonNull String[] keys) {
+        Objects.requireNonNull(callingPackage, "Calling package must be non-null");
+        Objects.requireNonNull(keys, "Config keys must be non-null");
+        enforceCallerIsSystemOrRequestingPackage(callingPackage);
+
+        // Permission check is performed inside and an empty bundle will return on failure.
+        // No SecurityException thrown here since most clients expect to retrieve the overridden
+        // value if present or use default one if not
+        PersistableBundle allConfigs = getConfigForSubIdWithFeature(subscriptionId, callingPackage,
+                callingFeatureId);
+        if (allConfigs.isEmpty()) {
+            return allConfigs;
+        }
+        for (String key : keys) {
+            Objects.requireNonNull(key, "Config key must be non-null");
+            // TODO(b/261776046): validate provided key which may has no default value.
+            // For now, return empty bundle if any required key is not supported
+            if (!allConfigs.containsKey(key)) {
+                return new PersistableBundle();
+            }
+        }
+
+        PersistableBundle configSubset = new PersistableBundle(
+                keys.length + CONFIG_SUBSET_METADATA_KEYS.length);
+        for (String carrierConfigKey : keys) {
+            Object value = allConfigs.get(carrierConfigKey);
+            // Config value itself could be PersistableBundle which requires different API to put
+            if (value instanceof PersistableBundle) {
+                configSubset.putPersistableBundle(carrierConfigKey, (PersistableBundle) value);
+            } else {
+                configSubset.putObject(carrierConfigKey, value);
+            }
+        }
+
+        // Configs in CONFIG_SUBSET_ALWAYS_INCLUDED_KEYS should always be included
+        for (String generalKey : CONFIG_SUBSET_METADATA_KEYS) {
+            configSubset.putObject(generalKey, allConfigs.get(generalKey));
+        }
+
+        return configSubset;
     }
 
     @Override
