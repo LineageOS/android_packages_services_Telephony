@@ -1593,9 +1593,8 @@ public class TelecomAccountRegistry {
                         int subscriptionId = phone.getSubId();
                         Log.i(this, "setupAccounts: Phone with subscription id %d", subscriptionId);
                         // setupAccounts can be called multiple times during service changes.
-                        // Don't add an account if the Icc has not been set yet.
-                        if (!SubscriptionManager.isValidSubscriptionId(subscriptionId)
-                                || phone.getFullIccSerialNumber() == null) {
+                        // Don't add an account if subscription is not ready.
+                        if (!SubscriptionManager.isValidSubscriptionId(subscriptionId)) {
                             Log.d(this, "setupAccounts: skipping invalid subid %d", subscriptionId);
                             continue;
                         }

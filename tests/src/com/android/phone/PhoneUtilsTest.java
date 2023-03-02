@@ -82,8 +82,8 @@ public class PhoneUtilsTest extends TelephonyTestBase {
     public void testMakePstnPhoneAccountHandleWithPrefix() throws Exception {
         PhoneAccountHandle phoneAccountHandleTest = new PhoneAccountHandle(
                 PSTN_CONNECTION_SERVICE_COMPONENT, mPhoneAccountHandleIdString);
-        assertEquals(phoneAccountHandleTest, PhoneUtils.makePstnPhoneAccountHandleWithPrefix(
-                mPhoneAccountHandleIdString, "", false, null));
+        assertEquals(phoneAccountHandleTest, PhoneUtils.makePstnPhoneAccountHandleWithId(
+                mPhoneAccountHandleIdString, null));
     }
 
     @Test
@@ -91,7 +91,7 @@ public class PhoneUtilsTest extends TelephonyTestBase {
         UserHandle userHandle = new UserHandle(10);
         PhoneAccountHandle phoneAccountHandleTest = new PhoneAccountHandle(
                 PSTN_CONNECTION_SERVICE_COMPONENT, mPhoneAccountHandleIdString, userHandle);
-        assertEquals(phoneAccountHandleTest, PhoneUtils.makePstnPhoneAccountHandleWithPrefix(
-                mPhoneAccountHandleIdString, "", false, userHandle));
+        assertEquals(phoneAccountHandleTest, PhoneUtils.makePstnPhoneAccountHandleWithId(
+                mPhoneAccountHandleIdString, userHandle));
     }
 }
