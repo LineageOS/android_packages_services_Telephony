@@ -1060,7 +1060,7 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
     private int handleBarringSendCommand() {
         PrintWriter errPw = getErrPrintWriter();
         int slotId = getDefaultSlot();
-        int subId = SubscriptionManager.getSubId(slotId)[0];
+        int subId = SubscriptionManager.getSubscriptionId(slotId);
         @BarringInfo.BarringServiceInfo.BarringType int barringType =
                 BarringInfo.BarringServiceInfo.BARRING_TYPE_UNCONDITIONAL;
         boolean isConditionallyBarred = false;
@@ -1072,7 +1072,7 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                 case "-s": {
                     try {
                         slotId = Integer.parseInt(getNextArgRequired());
-                        subId = SubscriptionManager.getSubId(slotId)[0];
+                        subId = SubscriptionManager.getSubscriptionId(slotId);
                     } catch (NumberFormatException e) {
                         errPw.println("barring send requires an integer as a SLOT_ID.");
                         return -1;
@@ -2123,8 +2123,7 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                 return SubscriptionManager.INVALID_SUBSCRIPTION_ID;
             }
         }
-        int[] subIds = SubscriptionManager.getSubId(slotId);
-        return subIds[0];
+        return SubscriptionManager.getSubscriptionId(slotId);
     }
 
     private int handleGbaSetServiceCommand() {

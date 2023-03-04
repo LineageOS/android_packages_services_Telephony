@@ -1875,14 +1875,8 @@ public class RadioInfo extends AppCompatActivity {
                     return;
                 }
                 // getSubId says it takes a slotIndex, but it actually takes a phone index
-                int subId = SubscriptionManager.INVALID_SUBSCRIPTION_ID;
-                int[] subIds = SubscriptionManager.getSubId(phoneIndex);
-                if (subIds != null && subIds.length > 0) {
-                    subId = subIds[0];
-                }
                 mSelectedPhoneIndex = phoneIndex;
-
-                updatePhoneIndex(phoneIndex, subId);
+                updatePhoneIndex(phoneIndex, SubscriptionManager.getSubscriptionId(phoneIndex));
             }
         }
 

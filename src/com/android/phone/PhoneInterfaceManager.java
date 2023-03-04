@@ -5813,11 +5813,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     public boolean setBoundImsServiceOverride(int slotIndex, boolean isCarrierService,
             int[] featureTypes, String packageName) {
-        int[] subIds = SubscriptionManager.getSubId(slotIndex);
         TelephonyPermissions.enforceShellOnly(Binder.getCallingUid(), "setBoundImsServiceOverride");
         TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(mApp,
-                (subIds != null ? subIds[0] : SubscriptionManager.INVALID_SUBSCRIPTION_ID),
-                "setBoundImsServiceOverride");
+                SubscriptionManager.getSubscriptionId(slotIndex), "setBoundImsServiceOverride");
 
         final long identity = Binder.clearCallingIdentity();
         try {
@@ -5847,12 +5845,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     @Override
     public boolean clearCarrierImsServiceOverride(int slotIndex) {
-        int[] subIds = SubscriptionManager.getSubId(slotIndex);
         TelephonyPermissions.enforceShellOnly(Binder.getCallingUid(),
                 "clearCarrierImsServiceOverride");
         TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(mApp,
-                (subIds != null ? subIds[0] : SubscriptionManager.INVALID_SUBSCRIPTION_ID),
-                "clearCarrierImsServiceOverride");
+                SubscriptionManager.getSubscriptionId(slotIndex), "clearCarrierImsServiceOverride");
 
         final long identity = Binder.clearCallingIdentity();
         try {
@@ -5877,11 +5873,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     public String getBoundImsServicePackage(int slotId, boolean isCarrierImsService,
             @ImsFeature.FeatureType int featureType) {
-        int[] subIds = SubscriptionManager.getSubId(slotId);
         TelephonyPermissions
-                .enforceCallingOrSelfReadPrivilegedPhoneStatePermissionOrCarrierPrivilege(
-                mApp, (subIds != null ? subIds[0] : SubscriptionManager.INVALID_SUBSCRIPTION_ID),
-                "getBoundImsServicePackage");
+                .enforceCallingOrSelfReadPrivilegedPhoneStatePermissionOrCarrierPrivilege(mApp,
+                        SubscriptionManager.getSubscriptionId(slotId), "getBoundImsServicePackage");
 
         final long identity = Binder.clearCallingIdentity();
         try {
