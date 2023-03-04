@@ -813,10 +813,10 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                 Intent.FLAG_RECEIVER_FOREGROUND);
         if (addSubIdExtra) {
             int simApplicationState = TelephonyManager.SIM_STATE_UNKNOWN;
-            int[] subIds = SubscriptionManager.getSubId(phoneId);
-            if (!ArrayUtils.isEmpty(subIds)) {
+            int subId = SubscriptionManager.getSubscriptionId(phoneId);
+            if (SubscriptionManager.isValidSubscriptionId(subId)) {
                 TelephonyManager telMgr = TelephonyManager.from(mContext)
-                        .createForSubscriptionId(subIds[0]);
+                        .createForSubscriptionId(subId);
                 simApplicationState = telMgr.getSimApplicationState();
             }
             logd("Broadcast CARRIER_CONFIG_CHANGED for phone " + phoneId
@@ -834,9 +834,9 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         intent.putExtra(CarrierConfigManager.EXTRA_REBROADCAST_ON_UNLOCK,
                 mFromSystemUnlocked[phoneId]);
         mContext.sendBroadcastAsUser(intent, UserHandle.ALL);
-        int[] subIds = SubscriptionManager.getSubId(phoneId);
-        if (subIds != null && subIds.length > 0) {
-            logd("Broadcast CARRIER_CONFIG_CHANGED for phone " + phoneId + ", subId=" + subIds[0]);
+        int subId = SubscriptionManager.getSubscriptionId(phoneId);
+        if (SubscriptionManager.isValidSubscriptionId(subId)) {
+            logd("Broadcast CARRIER_CONFIG_CHANGED for phone " + phoneId + ", subId=" + subId);
         } else {
             logd("Broadcast CARRIER_CONFIG_CHANGED for phone " + phoneId);
         }
@@ -1730,12 +1730,12 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
     }
 
     private boolean hasCarrierPrivileges(@NonNull String pkgName, int phoneId) {
-        int[] subIds = SubscriptionManager.getSubId(phoneId);
-        if (ArrayUtils.isEmpty(subIds)) {
+        int subId = SubscriptionManager.getSubscriptionId(phoneId);
+        if (!SubscriptionManager.isValidSubscriptionId(subId)) {
             return false;
         }
-        return TelephonyManager.from(mContext).createForSubscriptionId(
-                subIds[0]).checkCarrierPrivilegesForPackage(pkgName)
+        return TelephonyManager.from(mContext).createForSubscriptionId(subId)
+                .checkCarrierPrivilegesForPackage(pkgName)
                 == TelephonyManager.CARRIER_PRIVILEGE_STATUS_HAS_ACCESS;
     }
 
