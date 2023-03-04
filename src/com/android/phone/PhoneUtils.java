@@ -713,11 +713,11 @@ public class PhoneUtils {
         // an emergency-only account
         String id = isEmergency ? EMERGENCY_ACCOUNT_HANDLE_ID : prefix +
                 String.valueOf(phone.getSubId());
-        return makePstnPhoneAccountHandleWithPrefix(id, prefix, isEmergency, userHandle);
+        return makePstnPhoneAccountHandleWithId(id, userHandle);
     }
 
-    public static PhoneAccountHandle makePstnPhoneAccountHandleWithPrefix(
-            String id, String prefix, boolean isEmergency, UserHandle userHandle) {
+    public static PhoneAccountHandle makePstnPhoneAccountHandleWithId(
+            String id, UserHandle userHandle) {
         ComponentName pstnConnectionServiceName = getPstnConnectionServiceName();
         // If user handle is null, resort to default constructor to use phone process's
         // user handle
