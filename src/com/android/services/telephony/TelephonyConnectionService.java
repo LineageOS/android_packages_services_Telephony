@@ -83,6 +83,7 @@ import com.android.internal.telephony.imsphone.ImsExternalCallTracker;
 import com.android.internal.telephony.imsphone.ImsPhone;
 import com.android.internal.telephony.imsphone.ImsPhoneConnection;
 import com.android.internal.telephony.imsphone.ImsPhoneMmiCode;
+import com.android.internal.telephony.satellite.SatelliteSOSMessageRecommender;
 import com.android.internal.telephony.subscription.SubscriptionInfoInternal;
 import com.android.internal.telephony.subscription.SubscriptionManagerService;
 import com.android.phone.FrameworksUtils;
@@ -209,6 +210,7 @@ public class TelephonyConnectionService extends ConnectionService {
     public Pair<WeakReference<TelephonyConnection>, Queue<Phone>> mEmergencyRetryCache;
     private DeviceState mDeviceState = new DeviceState();
     private EmergencyStateTracker mEmergencyStateTracker;
+    private SatelliteSOSMessageRecommender mSatelliteSOSMessageRecommender;
     private DomainSelectionResolver mDomainSelectionResolver;
     private EmergencyCallDomainSelectionConnection mEmergencyCallDomainSelectionConnection;
     private TelephonyConnection mEmergencyConnection;
@@ -568,6 +570,34 @@ public class TelephonyConnectionService extends ConnectionService {
                         mEmergencyStateTracker.onEmergencyCallStateChanged(
                                 c.getOriginalConnection().getState(), c.getTelecomCallId());
                         releaseEmergencyCallDomainSelection(false);
+                    }
+                }
+            };
+
+    private final TelephonyConnection.TelephonyConnectionListener
+            mEmergencyConnectionSatelliteListener =
+            new TelephonyConnection.TelephonyConnectionListener() {
+                @Override
+                public void onStateChanged(Connection connection,
+                        @Connection.ConnectionState int state) {
+                    if (connection == null) {
+                        Log.d(this,
+                                "onStateChanged for satellite listener: connection is null");
+                        return;
+                    }
+                    if (mSatelliteSOSMessageRecommender == null) {
+                        Log.d(this, "onStateChanged for satellite listener: "
+                                + "mSatelliteSOSMessageRecommender is null");
+                        return;
+                    }
+
+                    TelephonyConnection c = (TelephonyConnection) connection;
+                    mSatelliteSOSMessageRecommender.onEmergencyCallConnectionStateChanged(
+                            c.getTelecomCallId(), state);
+                    if (state == Connection.STATE_DISCONNECTED
+                            || state == Connection.STATE_ACTIVE) {
+                        c.removeTelephonyConnectionListener(mEmergencyConnectionSatelliteListener);
+                        mSatelliteSOSMessageRecommender = null;
                     }
                 }
             };
@@ -2011,12 +2041,14 @@ public class TelephonyConnectionService extends ConnectionService {
                         }
                     });
         }
+
         final com.android.internal.telephony.Connection originalConnection;
         try {
             if (phone != null) {
                 boolean isEmergency = mTelephonyManagerProxy.isCurrentEmergencyNumber(number);
                 Log.i(this, "placeOutgoingConnection isEmergency=" + isEmergency);
                 if (isEmergency) {
+                    handleEmergencyCallStartedForSatelliteSOSMessageRecommender(connection, phone);
                     if (!getAllConnections().isEmpty()) {
                         if (!shouldHoldForEmergencyCall(phone)) {
                             // If we do not support holding ongoing calls for an outgoing
@@ -2578,6 +2610,7 @@ public class TelephonyConnectionService extends ConnectionService {
 
         mIsEmergencyCallPending = true;
         c.addTelephonyConnectionListener(mEmergencyConnectionListener);
+        handleEmergencyCallStartedForSatelliteSOSMessageRecommender(c, phone);
 
         if (mEmergencyStateTracker == null) {
             mEmergencyStateTracker = EmergencyStateTracker.getInstance();
@@ -2746,6 +2779,12 @@ public class TelephonyConnectionService extends ConnectionService {
     @VisibleForTesting
     public TelephonyConnection.TelephonyConnectionListener getEmergencyConnectionListener() {
         return mEmergencyConnectionListener;
+    }
+
+    @VisibleForTesting
+    public TelephonyConnection.TelephonyConnectionListener
+            getEmergencyConnectionSatelliteListener() {
+        return mEmergencyConnectionSatelliteListener;
     }
 
     private boolean isVideoCallHoldAllowed(Phone phone) {
@@ -3897,5 +3936,15 @@ public class TelephonyConnectionService extends ConnectionService {
             }
         }
         return NetworkRegistrationInfo.DOMAIN_UNKNOWN;
+    }
+
+    private void handleEmergencyCallStartedForSatelliteSOSMessageRecommender(
+            @NonNull TelephonyConnection connection, @NonNull Phone phone) {
+        if (mSatelliteSOSMessageRecommender == null) {
+            mSatelliteSOSMessageRecommender = new SatelliteSOSMessageRecommender(
+                    phone.getContext().getMainLooper());
+        }
+        connection.addTelephonyConnectionListener(mEmergencyConnectionSatelliteListener);
+        mSatelliteSOSMessageRecommender.onEmergencyCallStarted(connection, phone);
     }
 }
