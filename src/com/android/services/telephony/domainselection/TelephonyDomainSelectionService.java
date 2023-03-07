@@ -70,7 +70,8 @@ public class TelephonyDomainSelectionService extends DomainSelectionService {
         DomainSelectorBase create(Context context, int slotId, int subId,
                 @SelectorType int selectorType, boolean isEmergency, @NonNull Looper looper,
                 @NonNull ImsStateTracker imsStateTracker,
-                @NonNull DomainSelectorBase.DestroyListener listener);
+                @NonNull DomainSelectorBase.DestroyListener listener,
+                @NonNull CrossSimRedialingController crossSimRedialingController);
     }
 
     private static final class DefaultDomainSelectorFactory implements DomainSelectorFactory {
@@ -78,7 +79,8 @@ public class TelephonyDomainSelectionService extends DomainSelectionService {
         public DomainSelectorBase create(Context context, int slotId, int subId,
                 @SelectorType int selectorType, boolean isEmergency, @NonNull Looper looper,
                 @NonNull ImsStateTracker imsStateTracker,
-                @NonNull DomainSelectorBase.DestroyListener listener) {
+                @NonNull DomainSelectorBase.DestroyListener listener,
+                @NonNull CrossSimRedialingController crossSimRedialingController) {
             DomainSelectorBase selector = null;
 
             logi("create-DomainSelector: slotId=" + slotId + ", subId=" + subId
@@ -89,7 +91,7 @@ public class TelephonyDomainSelectionService extends DomainSelectionService {
                 case SELECTOR_TYPE_CALLING:
                     if (isEmergency) {
                         selector = new EmergencyCallDomainSelector(context, slotId, subId, looper,
-                                imsStateTracker, listener);
+                                imsStateTracker, listener, crossSimRedialingController);
                     } else {
                         selector = new NormalCallDomainSelector(context, slotId, subId, looper,
                                 imsStateTracker, listener);
@@ -192,6 +194,7 @@ public class TelephonyDomainSelectionService extends DomainSelectionService {
     private final ImsStateTrackerFactory mImsStateTrackerFactory;
     private final DomainSelectorFactory mDomainSelectorFactory;
     private Handler mServiceHandler;
+    private CrossSimRedialingController mCrossSimRedialingController;
 
     public TelephonyDomainSelectionService(Context context) {
         this(context, ImsStateTracker::new, new DefaultDomainSelectorFactory());
@@ -220,6 +223,8 @@ public class TelephonyDomainSelectionService extends DomainSelectionService {
         } else {
             loge("Adding OnSubscriptionChangedListener failed");
         }
+
+        mCrossSimRedialingController = new CrossSimRedialingController(context, getLooper());
 
         logi("TelephonyDomainSelectionService created");
     }
@@ -258,6 +263,11 @@ public class TelephonyDomainSelectionService extends DomainSelectionService {
             sm.removeOnSubscriptionsChangedListener(mSubscriptionsChangedListener);
         }
 
+        if (mCrossSimRedialingController != null) {
+            mCrossSimRedialingController.destroy();
+            mCrossSimRedialingController = null;
+        }
+
         if (mServiceHandler != null) {
             mServiceHandler.getLooper().quit();
             mServiceHandler = null;
@@ -279,7 +289,8 @@ public class TelephonyDomainSelectionService extends DomainSelectionService {
         final boolean isEmergency = attr.isEmergency();
         ImsStateTracker ist = getImsStateTracker(slotId);
         DomainSelectorBase selector = mDomainSelectorFactory.create(mContext, slotId, subId,
-                selectorType, isEmergency, getLooper(), ist, mDestroyListener);
+                selectorType, isEmergency, getLooper(), ist, mDestroyListener,
+                mCrossSimRedialingController);
 
         if (selector != null) {
             // Ensures that ImsStateTracker is started before selecting the domain if not started
