@@ -50,6 +50,8 @@ import static android.telephony.CarrierConfigManager.ImsEmergency.VOWIFI_REQUIRE
 import static android.telephony.CarrierConfigManager.ImsWfc.KEY_EMERGENCY_CALL_OVER_EMERGENCY_PDN_BOOL;
 import static android.telephony.NetworkRegistrationInfo.REGISTRATION_STATE_HOME;
 import static android.telephony.NetworkRegistrationInfo.REGISTRATION_STATE_ROAMING;
+import static android.telephony.PreciseDisconnectCause.EMERGENCY_PERM_FAILURE;
+import static android.telephony.PreciseDisconnectCause.EMERGENCY_TEMP_FAILURE;
 
 import android.annotation.NonNull;
 import android.content.Context;
@@ -194,6 +196,9 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
     private boolean mIsScanRequested = false;
     /** Indicates whether selected domain has been notified. */
     private boolean mDomainSelected = false;
+    /** Indicates whether the cross sim redialing timer has expired. */
+    private boolean mCrossStackTimerExpired = false;
+
     /**
      * Indicates whether {@link #selectDomain(SelectionAttributes, TransportSelectionCallback)}
      * is called or not.
@@ -201,11 +206,13 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
     private boolean mDomainSelectionRequested = false;
 
     private final PowerManager.WakeLock mPartialWakeLock;
+    private final CrossSimRedialingController mCrossSimRedialingController;
 
     /** Constructor. */
     public EmergencyCallDomainSelector(Context context, int slotId, int subId,
             @NonNull Looper looper, @NonNull ImsStateTracker imsStateTracker,
-            @NonNull DestroyListener destroyListener) {
+            @NonNull DestroyListener destroyListener,
+            @NonNull CrossSimRedialingController csrController) {
         super(context, slotId, subId, looper, imsStateTracker, destroyListener, TAG);
 
         mImsStateTracker.addBarringInfoListener(this);
@@ -214,6 +221,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         PowerManager pm = context.getSystemService(PowerManager.class);
         mPartialWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, TAG);
 
+        mCrossSimRedialingController = csrController;
         acquireWakeLock();
     }
 
@@ -320,6 +328,23 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
     private void reselectDomain() {
         logi("reselectDomain tryCsWhenPsFails=" + mTryCsWhenPsFails);
 
+        int cause = mSelectionAttributes.getCsDisconnectCause();
+        mCrossSimRedialingController.notifyCallFailure(cause);
+
+        // TODO(b/258112541) make EMERGENCY_PERM_FAILURE and EMERGENCY_TEMP_FAILURE public api
+        if (cause == EMERGENCY_PERM_FAILURE
+                || cause == EMERGENCY_TEMP_FAILURE) {
+            logi("reselectDomain should redial on the other subscription");
+            terminateSelectionForCrossSimRedialing(cause == EMERGENCY_PERM_FAILURE);
+            return;
+        }
+
+        if (mCrossStackTimerExpired) {
+            logi("reselectDomain cross stack timer expired");
+            terminateSelectionForCrossSimRedialing(false);
+            return;
+        }
+
         if (mIsTestEmergencyNumber) {
             selectDomainForTestEmergencyNumber();
             return;
@@ -389,6 +414,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         logi("startDomainSelection modemCount=" + mModemCount);
         updateCarrierConfiguration();
         mDomainSelectionRequested = true;
+        startCrossStackTimer();
         if (SubscriptionManager.isValidSubscriptionId(getSubId())) {
             selectDomain();
         } else {
@@ -1217,7 +1243,10 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
             int simState = tm.getSimState(getSlotId());
             if (simState != TelephonyManager.SIM_STATE_READY) {
                 logi("allowEmergencyCalls not ready, simState=" + simState + ", iso=" + iso);
-                return false;
+                if (mCrossSimRedialingController.isThereOtherSlot()) {
+                    return false;
+                }
+                logi("allowEmergencyCalls there is no other slot available");
             }
         }
 
@@ -1226,12 +1255,58 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
 
     private void terminateSelectionPermanentlyForSlot() {
         logi("terminateSelectionPermanentlyForSlot");
-        mTransportSelectorCallback.onSelectionTerminated(DisconnectCause.EMERGENCY_PERM_FAILURE);
+        terminateSelection(true);
+    }
+
+    private void terminateSelectionForCrossSimRedialing(boolean permanent) {
+        logi("terminateSelectionForCrossSimRedialing perm=" + permanent);
+        terminateSelection(permanent);
+    }
+
+    private void terminateSelection(boolean permanent) {
+        mTransportSelectorCallback.onSelectionTerminated(permanent
+                ? DisconnectCause.EMERGENCY_PERM_FAILURE
+                : DisconnectCause.EMERGENCY_TEMP_FAILURE);
 
         if (mIsScanRequested && mCancelSignal != null) {
             mCancelSignal.cancel();
             mCancelSignal = null;
         }
+    }
+
+    /** Starts the cross stack timer. */
+    public void startCrossStackTimer() {
+        boolean inService = false;
+        boolean inRoaming = false;
+
+        if (mModemCount == 1) return;
+
+        EmergencyRegResult regResult = mSelectionAttributes.getEmergencyRegResult();
+        if (regResult != null) {
+            int regState = regResult.getRegState();
+
+            if ((regResult.getDomain() > 0)
+                    && (regState == REGISTRATION_STATE_HOME
+                            || regState == REGISTRATION_STATE_ROAMING)) {
+                inService = true;
+            }
+            inRoaming = (regState == REGISTRATION_STATE_ROAMING) || isInRoaming();
+        }
+
+        mCrossSimRedialingController.startTimer(mContext, this, mSelectionAttributes.getCallId(),
+                mSelectionAttributes.getNumber(), inService, inRoaming, mModemCount);
+    }
+
+    /** Notifies that the cross stack redilaing timer has been expired. */
+    public void notifyCrossStackTimerExpired() {
+        logi("notifyCrossStackTimerExpired");
+
+        mCrossStackTimerExpired = true;
+        if (mDomainSelected) {
+            // When reselecting domain, terminateSelection will be called.
+            return;
+        }
+        terminateSelectionForCrossSimRedialing(false);
     }
 
     private static String arrayToString(int[] intArray, IntFunction<String> func) {
@@ -1304,6 +1379,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
     public void destroy() {
         if (DBG) logd("destroy");
 
+        mCrossSimRedialingController.stopTimer();
         releaseWakeLock();
 
         mDestroyed = true;

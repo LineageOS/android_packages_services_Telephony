@@ -77,7 +77,8 @@ public class TelephonyDomainSelectionServiceTest {
                 public DomainSelectorBase create(Context context, int slotId, int subId,
                         @SelectorType int selectorType, boolean isEmergency,
                         @NonNull Looper looper, @NonNull ImsStateTracker imsStateTracker,
-                        @NonNull DomainSelectorBase.DestroyListener listener) {
+                        @NonNull DomainSelectorBase.DestroyListener listener,
+                        @NonNull CrossSimRedialingController crossSimRedialingController) {
                     switch (selectorType) {
                         case DomainSelectionService.SELECTOR_TYPE_CALLING: // fallthrough
                         case DomainSelectionService.SELECTOR_TYPE_SMS: // fallthrough
