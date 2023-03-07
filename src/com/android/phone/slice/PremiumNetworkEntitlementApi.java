@@ -45,7 +45,7 @@ public class PremiumNetworkEntitlementApi {
     private static final String ENTITLEMENT_STATUS_KEY = "EntitlementStatus";
     private static final String PROVISION_STATUS_KEY = "ProvStatus";
     private static final String SERVICE_FLOW_URL_KEY = "ServiceFlow_URL";
-    private static final String PROVISION_TIME_LEFT_KEY = "ProvisionTimeLeft";
+    private static final String SERVICE_FLOW_USERDATA_KEY = "ServiceFlow_UserData";
     private static final String DEFAULT_EAP_AKA_RESPONSE = "Default EAP AKA response";
     /**
      * UUID to report an anomaly if an unexpected error is received during entitlement check.
@@ -100,8 +100,7 @@ public class PremiumNetworkEntitlementApi {
         requestBuilder.setTerminalModel("modelY");
         requestBuilder.setTerminalSoftwareVersion("versionZ");
         requestBuilder.setAcceptContentType(ServiceEntitlementRequest.ACCEPT_CONTENT_TYPE_JSON);
-        requestBuilder.setNetworkIdentifier(
-                TelephonyManager.convertPremiumCapabilityToString(capability));
+        requestBuilder.setBoostType(getBoostTypeFromPremiumCapability(capability));
         ServiceEntitlementRequest request = requestBuilder.build();
         PremiumNetworkEntitlementResponse premiumNetworkEntitlementResponse =
                 new PremiumNetworkEntitlementResponse();
@@ -109,7 +108,7 @@ public class PremiumNetworkEntitlementApi {
         String response = null;
         try {
             response = mServiceEntitlement.queryEntitlementStatus(
-                    ServiceEntitlement.APP_PREMIUM_NETWORK_SLICE,
+                    ServiceEntitlement.APP_DATA_PLAN_BOOST,
                     request);
         } catch (ServiceEntitlementException e) {
             Log.e(TAG, "queryEntitlementStatus failed", e);
@@ -123,10 +122,9 @@ public class PremiumNetworkEntitlementApi {
             JSONObject jsonAuthResponse = new JSONObject(response);
             String entitlementStatus = null;
             String provisionStatus = null;
-            String provisionTimeLeft = null;
-            if (jsonAuthResponse.has(ServiceEntitlement.APP_PREMIUM_NETWORK_SLICE)) {
+            if (jsonAuthResponse.has(ServiceEntitlement.APP_DATA_PLAN_BOOST)) {
                 JSONObject jsonToken = jsonAuthResponse.getJSONObject(
-                        ServiceEntitlement.APP_PREMIUM_NETWORK_SLICE);
+                        ServiceEntitlement.APP_DATA_PLAN_BOOST);
                 if (jsonToken.has(ENTITLEMENT_STATUS_KEY)) {
                     entitlementStatus = jsonToken.getString(ENTITLEMENT_STATUS_KEY);
                     if (entitlementStatus == null) {
@@ -142,20 +140,17 @@ public class PremiumNetworkEntitlementApi {
                                 Integer.parseInt(provisionStatus);
                     }
                 }
-                if (jsonToken.has(PROVISION_TIME_LEFT_KEY)) {
-                    provisionTimeLeft = jsonToken.getString(PROVISION_TIME_LEFT_KEY);
-                    if (provisionTimeLeft != null) {
-                        premiumNetworkEntitlementResponse.mProvisionTimeLeft =
-                                Integer.parseInt(provisionTimeLeft);
-                    }
-                }
                 if (jsonToken.has(SERVICE_FLOW_URL_KEY)) {
                     premiumNetworkEntitlementResponse.mServiceFlowURL =
                             jsonToken.getString(SERVICE_FLOW_URL_KEY);
                 }
+                if (jsonToken.has(SERVICE_FLOW_USERDATA_KEY)) {
+                    premiumNetworkEntitlementResponse.mServiceFlowUserData =
+                            jsonToken.getString(SERVICE_FLOW_USERDATA_KEY);
+                }
+            } else {
+                Log.e(TAG, "queryEntitlementStatus failed with no app");
             }
-
-
         } catch (JSONException e) {
             Log.e(TAG, "queryEntitlementStatus failed", e);
             reportAnomaly(UUID_ENTITLEMENT_CHECK_UNEXPECTED_ERROR,
@@ -193,5 +188,13 @@ public class PremiumNetworkEntitlementApi {
     private boolean isBypassEapAkaAuthForSlicePurchaseEnabled() {
         return DeviceConfig.getBoolean(DeviceConfig.NAMESPACE_TELEPHONY,
                 BYPASS_EAP_AKA_AUTH_FOR_SLICE_PURCHASE_ENABLED, false);
+    }
+
+    @NonNull private String getBoostTypeFromPremiumCapability(
+            @TelephonyManager.PremiumCapability int capability) {
+        if (capability == TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY) {
+            return "0" /* REALTIME_INTERACTIVE_TRAFFIC */;
+        }
+        return "";
     }
 }
