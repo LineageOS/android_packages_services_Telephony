@@ -715,7 +715,7 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
         doReturn(TelephonyManager.NETWORK_TYPE_NR).when(mServiceState).getDataNetworkType();
         // entitlement check passed
         mEntitlementResponse.mEntitlementStatus =
-                PremiumNetworkEntitlementResponse.PREMIUM_NETWORK_ENTITLEMENT_STATUS_ENABLED;
+                PremiumNetworkEntitlementResponse.PREMIUM_NETWORK_ENTITLEMENT_STATUS_DISABLED;
 
         // send purchase request
         mSlicePurchaseController.purchasePremiumCapability(

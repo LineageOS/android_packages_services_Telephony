@@ -2386,6 +2386,44 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
     }
 
     @Test
+    public void testDomainSelectionTempFailure() throws Exception {
+        setupForCallTest();
+
+        int preciseDisconnectCause =
+                com.android.internal.telephony.CallFailCause.EMERGENCY_TEMP_FAILURE;
+        int disconnectCause = android.telephony.DisconnectCause.EMERGENCY_TEMP_FAILURE;
+        int selectedDomain = DOMAIN_CS;
+
+        TestTelephonyConnection c = setupForReDialForDomainSelection(
+                mPhone0, selectedDomain, preciseDisconnectCause, disconnectCause, true);
+
+        doReturn(new CompletableFuture()).when(mEmergencyCallDomainSelectionConnection)
+                .reselectDomain(any());
+
+        assertTrue(mTestConnectionService.maybeReselectDomain(c, preciseDisconnectCause, null));
+        verify(mEmergencyCallDomainSelectionConnection).reselectDomain(any());
+    }
+
+    @Test
+    public void testDomainSelectionPermFailure() throws Exception {
+        setupForCallTest();
+
+        int preciseDisconnectCause =
+                com.android.internal.telephony.CallFailCause.EMERGENCY_PERM_FAILURE;
+        int disconnectCause = android.telephony.DisconnectCause.EMERGENCY_PERM_FAILURE;
+        int selectedDomain = DOMAIN_CS;
+
+        TestTelephonyConnection c = setupForReDialForDomainSelection(
+                mPhone0, selectedDomain, preciseDisconnectCause, disconnectCause, true);
+
+        doReturn(new CompletableFuture()).when(mEmergencyCallDomainSelectionConnection)
+                .reselectDomain(any());
+
+        assertTrue(mTestConnectionService.maybeReselectDomain(c, preciseDisconnectCause, null));
+        verify(mEmergencyCallDomainSelectionConnection).reselectDomain(any());
+    }
+
+    @Test
     public void testDomainSelectionWithMmiCode() {
         //UT domain selection should not be handled by new domain selector.
         doNothing().when(mContext).startActivity(any());

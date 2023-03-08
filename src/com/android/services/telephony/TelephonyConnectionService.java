@@ -2464,13 +2464,7 @@ public class TelephonyConnectionService extends ConnectionService {
         Log.i(this, "maybeReselectDomainForEmergencyCall "
                 + "csCause=" +  callFailCause + ", psCause=" + reasonInfo);
 
-        // EMERGENCY_TEMP_FAILURE and EMERGENCY_PERM_FAILURE shall be handled after
-        // reselecting new {@link Phone} in {@link #retryOutgoingOriginalConnection()}.
         if (c.getOriginalConnection() != null
-                && c.getOriginalConnection().getDisconnectCause()
-                        != android.telephony.DisconnectCause.EMERGENCY_TEMP_FAILURE
-                && c.getOriginalConnection().getDisconnectCause()
-                        != android.telephony.DisconnectCause.EMERGENCY_PERM_FAILURE
                 && c.getOriginalConnection().getDisconnectCause()
                         != android.telephony.DisconnectCause.LOCAL
                 && c.getOriginalConnection().getDisconnectCause()
