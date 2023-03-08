@@ -50,6 +50,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
+import android.os.LocaleList;
 import android.os.Looper;
 import android.os.Message;
 import android.os.Messenger;
@@ -7685,7 +7686,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 if (!localeFromDefaultSim.getCountry().isEmpty()) {
                     if (DBG) log("Using locale from subId: " + subId + " locale: "
                             + localeFromDefaultSim);
-                    return localeFromDefaultSim.toLanguageTag();
+                    return matchLocaleFromSupportedLocaleList(phone, localeFromDefaultSim);
                 } else {
                     simLanguage = localeFromDefaultSim.getLanguage();
                 }
@@ -7698,7 +7699,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             final Locale mccLocale = LocaleUtils.getLocaleFromMcc(mApp, mcc, simLanguage);
             if (mccLocale != null) {
                 if (DBG) log("No locale from SIM, using mcc locale:" + mccLocale);
-                return mccLocale.toLanguageTag();
+                return matchLocaleFromSupportedLocaleList(phone, mccLocale);
             }
 
             if (DBG) log("No locale found - returning null");
@@ -7706,6 +7707,20 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
+    }
+
+    @VisibleForTesting
+    String matchLocaleFromSupportedLocaleList(Phone phone, @NonNull Locale inputLocale) {
+        String[] supportedLocale = com.android.internal.app.LocalePicker.getSupportedLocales(
+                phone.getContext());
+        for (String localeTag : supportedLocale) {
+            if (LocaleList.matchesLanguageAndScript(inputLocale, Locale.forLanguageTag(localeTag))
+                    && TextUtils.equals(inputLocale.getCountry(),
+                    Locale.forLanguageTag(localeTag).getCountry())) {
+                return localeTag;
+            }
+        }
+        return inputLocale.toLanguageTag();
     }
 
     private List<SubscriptionInfo> getAllSubscriptionInfoList() {

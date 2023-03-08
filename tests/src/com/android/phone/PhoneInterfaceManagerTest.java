@@ -16,11 +16,17 @@
 
 package com.android.phone;
 
+import static org.junit.Assert.assertEquals;
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
+import android.content.Context;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.telephony.RadioAccessFamily;
 import android.telephony.TelephonyManager;
 
@@ -35,6 +41,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
+
+import java.util.Locale;
 
 /**
  * Unit Test for CarrierConfigLoader.
@@ -82,5 +90,52 @@ public class PhoneInterfaceManagerTest extends TelephonyTestBase {
         verify(mPhone, never()).loadAllowedNetworksFromSubscriptionDatabase();
         verify(mPhone, never()).setAllowedNetworkTypes(
                 TelephonyManager.ALLOWED_NETWORK_TYPES_REASON_USER, defaultNetworkType, null);
+    }
+
+    @Test
+    public void matchLocaleFromSupportedLocaleList_inputLocaleChangeToSupportedLocale_notMatched() {
+        Context context = mock(Context.class);
+        when(mPhone.getContext()).thenReturn(context);
+        Resources resources = mock(Resources.class);
+        when(context.getResources()).thenReturn(resources);
+        when(resources.getStringArray(anyInt()))
+                .thenReturn(new String[]{"fi-FI", "ff-Adlm-BF", "en-US"});
+
+        // Input empty string, then return default locale of ICU.
+        String resultInputEmpty = mPhoneInterfaceManager.matchLocaleFromSupportedLocaleList(mPhone,
+                Locale.forLanguageTag(""));
+
+        assertEquals("und", resultInputEmpty);
+
+        // Input en, then look up the matched supported locale. No matched, so return input locale.
+        String resultOnlyLanguage = mPhoneInterfaceManager.matchLocaleFromSupportedLocaleList(
+                mPhone,
+                Locale.forLanguageTag("en"));
+
+        assertEquals("en", resultOnlyLanguage);
+    }
+
+    @Test
+    public void matchLocaleFromSupportedLocaleList_inputLocaleChangeToSupportedLocale() {
+        Context context = mock(Context.class);
+        when(mPhone.getContext()).thenReturn(context);
+        Resources resources = mock(Resources.class);
+        when(context.getResources()).thenReturn(resources);
+        when(resources.getStringArray(anyInt())).thenReturn(new String[]{"zh-Hant-TW"});
+
+        // Input zh-TW, then look up the matched supported locale, zh-Hant-TW, instead.
+        String resultInputZhTw = mPhoneInterfaceManager.matchLocaleFromSupportedLocaleList(mPhone,
+                Locale.forLanguageTag("zh-TW"));
+
+        assertEquals("zh-Hant-TW", resultInputZhTw);
+
+        when(resources.getStringArray(anyInt())).thenReturn(
+                new String[]{"fi-FI", "ff-Adlm-BF", "ff-Latn-BF"});
+
+        // Input ff-BF, then find the matched supported locale, ff-Latn-BF, instead.
+        String resultFfBf = mPhoneInterfaceManager.matchLocaleFromSupportedLocaleList(mPhone,
+                Locale.forLanguageTag("ff-BF"));
+
+        assertEquals("ff-Latn-BF", resultFfBf);
     }
 }
