@@ -145,7 +145,6 @@ import android.telephony.ims.feature.ImsFeature;
 import android.telephony.ims.stub.ImsConfigImplBase;
 import android.telephony.ims.stub.ImsRegistrationImplBase;
 import android.telephony.satellite.ISatelliteDatagramCallback;
-import android.telephony.satellite.ISatelliteDatagramReceiverAck;
 import android.telephony.satellite.ISatellitePositionUpdateCallback;
 import android.telephony.satellite.ISatelliteProvisionStateCallback;
 import android.telephony.satellite.ISatelliteStateCallback;
@@ -180,6 +179,7 @@ import com.android.internal.telephony.IBooleanConsumer;
 import com.android.internal.telephony.ICallForwardingInfoCallback;
 import com.android.internal.telephony.IImsStateCallback;
 import com.android.internal.telephony.IIntegerConsumer;
+import com.android.internal.telephony.ILongConsumer;
 import com.android.internal.telephony.INumberVerificationCallback;
 import com.android.internal.telephony.ITelephony;
 import com.android.internal.telephony.IccCard;
@@ -12412,7 +12412,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * This method requests modem to check if there are any pending datagrams to be received over
      * satellite. If there are any incoming datagrams, they will be received via
      * {@link SatelliteDatagramCallback#onSatelliteDatagramReceived(long, SatelliteDatagram, int,
-     *          ISatelliteDatagramReceiverAck)}
+     * ILongConsumer)})}
      *
      * @param subId The subId of the subscription used for receiving datagrams.
      * @param callback The callback to get {@link SatelliteManager.SatelliteError} of the request.
@@ -12433,25 +12433,23 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * encoding or encryption.
      *
      * @param subId The subId of the subscription to send satellite datagrams for.
-     * @param datagramId An id that uniquely identifies datagram requested to be sent.
      * @param datagramType datagram type indicating whether the datagram is of type
      *                     SOS_SMS or LOCATION_SHARING.
      * @param datagram encoded gateway datagram which is encrypted by the caller.
      *                 Datagram will be passed down to modem without any encoding or encryption.
      * @param needFullScreenPointingUI this is used to indicate pointingUI app to open in
      *                                 full screen mode.
-     * @param result The result receiver that returns datagramId if datagram is sent successfully
-     *               or {@link SatelliteManager.SatelliteError} of the request if it is failed.
+     * @param callback The callback to get {@link SatelliteManager.SatelliteError} of the request.
      *
      * @throws SecurityException if the caller doesn't have required permission.
      */
     @Override
-    public void sendSatelliteDatagram(int subId, long datagramId,
-            @SatelliteManager.DatagramType int datagramType, SatelliteDatagram datagram,
-            boolean needFullScreenPointingUI, @NonNull ResultReceiver result) {
+    public void sendSatelliteDatagram(int subId, @SatelliteManager.DatagramType int datagramType,
+            @NonNull SatelliteDatagram datagram, boolean needFullScreenPointingUI,
+            @NonNull IIntegerConsumer callback) {
         enforceSatelliteCommunicationPermission("sendSatelliteDatagram");
-        mSatelliteController.sendSatelliteDatagram(subId, datagramId, datagramType, datagram,
-                needFullScreenPointingUI, result);
+        mSatelliteController.sendSatelliteDatagram(subId, datagramType, datagram,
+                needFullScreenPointingUI, callback);
     }
 
     /**
