@@ -9562,6 +9562,34 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
+    public void setCarrierServicePackageOverride(
+            int subId, String carrierServicePackage, String callingPackage) {
+        TelephonyPermissions.enforceShellOnly(
+                Binder.getCallingUid(), "setCarrierServicePackageOverride");
+
+        // Verify that the callingPackage belongs to the calling UID
+        mApp.getSystemService(AppOpsManager.class)
+                .checkPackage(Binder.getCallingUid(), callingPackage);
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            final Phone phone = getPhone(subId);
+            if (phone == null || phone.getSubId() != subId) {
+                loge("setCarrierServicePackageOverride fails with invalid subId: " + subId);
+                throw new IllegalArgumentException("No phone for subid");
+            }
+            CarrierPrivilegesTracker cpt = phone.getCarrierPrivilegesTracker();
+            if (cpt == null) {
+                loge("setCarrierServicePackageOverride failed with no CPT for phone");
+                throw new IllegalStateException("No CPT for phone");
+            }
+            cpt.setTestOverrideCarrierServicePackage(carrierServicePackage);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    @Override
     public int getCarrierIdListVersion(int subId) {
         enforceReadPrivilegedPermission("getCarrierIdListVersion");
 
