@@ -1362,17 +1362,18 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         }
         for (String key : keys) {
             Objects.requireNonNull(key, "Config key must be non-null");
-            // TODO(b/261776046): validate provided key which may has no default value.
-            // For now, return empty bundle if any required key is not supported
-            if (!allConfigs.containsKey(key)) {
-                return new PersistableBundle();
-            }
         }
 
         PersistableBundle configSubset = new PersistableBundle(
                 keys.length + CONFIG_SUBSET_METADATA_KEYS.length);
         for (String carrierConfigKey : keys) {
             Object value = allConfigs.get(carrierConfigKey);
+            if (value == null) {
+                // Filter out keys without values.
+                // In history, many AOSP or OEMs/carriers private configs didn't provide default
+                // values. We have to continue supporting them for now. See b/261776046 for details.
+                continue;
+            }
             // Config value itself could be PersistableBundle which requires different API to put
             if (value instanceof PersistableBundle) {
                 configSubset.putPersistableBundle(carrierConfigKey, (PersistableBundle) value);
