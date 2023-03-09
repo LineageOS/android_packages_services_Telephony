@@ -40,10 +40,12 @@ import android.util.Log;
 import com.android.internal.telephony.CallManager;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
+import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.SubscriptionController;
 import com.android.internal.telephony.cdma.CdmaInformationRecords.CdmaDisplayInfoRec;
 import com.android.internal.telephony.cdma.CdmaInformationRecords.CdmaSignalInfoRec;
 import com.android.internal.telephony.cdma.SignalToneUtil;
+import com.android.internal.telephony.subscription.SubscriptionManagerService;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -487,9 +489,16 @@ public class CallNotifier extends Handler {
     }
 
     public void updatePhoneStateListeners(boolean isRefresh, int updateType, int subIdToUpdate) {
-        List<SubscriptionInfo> subInfos = SubscriptionController.getInstance()
-                .getActiveSubscriptionInfoList(mApplication.getOpPackageName(),
-                        mApplication.getAttributionTag());
+        List<SubscriptionInfo> subInfos;
+        if (PhoneFactory.isSubscriptionManagerServiceEnabled()) {
+            subInfos = SubscriptionManagerService.getInstance()
+                    .getActiveSubscriptionInfoList(mApplication.getOpPackageName(),
+                            mApplication.getAttributionTag());
+        } else {
+            subInfos = SubscriptionController.getInstance()
+                    .getActiveSubscriptionInfoList(mApplication.getOpPackageName(),
+                            mApplication.getAttributionTag());
+        }
 
         // Sort sub id list based on slot id, so that CFI/MWI notifications will be updated for
         // slot 0 first then slot 1. This is needed to ensure that when CFI or MWI is enabled for
@@ -498,8 +507,8 @@ public class CallNotifier extends Handler {
         List<Integer> subIdList = new ArrayList<Integer>(mTelephonyCallback.keySet());
         Collections.sort(subIdList, new Comparator<Integer>() {
             public int compare(Integer sub1, Integer sub2) {
-                int slotId1 = SubscriptionController.getInstance().getSlotIndex(sub1);
-                int slotId2 = SubscriptionController.getInstance().getSlotIndex(sub2);
+                int slotId1 = SubscriptionManager.getSlotIndex(sub1);
+                int slotId2 = SubscriptionManager.getSlotIndex(sub2);
                 return slotId1 > slotId2 ? 0 : -1;
             }
         });
