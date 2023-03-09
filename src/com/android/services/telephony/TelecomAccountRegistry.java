@@ -64,6 +64,7 @@ import com.android.internal.telephony.ExponentialBackoff;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.SubscriptionController;
+import com.android.internal.telephony.subscription.SubscriptionManagerService;
 import com.android.phone.PhoneGlobals;
 import com.android.phone.PhoneUtils;
 import com.android.phone.R;
@@ -535,18 +536,37 @@ public class TelecomAccountRegistry {
                 return false;
             }
 
-            SubscriptionController controller = SubscriptionController.getInstance();
-            if (controller == null) {
-                Log.d(this, "isEmergencyPreferredAccount: SubscriptionController not available.");
-                return false;
-            }
-            // Only set an emergency preference on devices with multiple active subscriptions
-            // (include opportunistic subscriptions) in this check.
-            // API says never null, but this can return null in testing.
-            int[] activeSubIds = controller.getActiveSubIdList(false);
-            if (activeSubIds == null || activeSubIds.length <= 1) {
-                Log.d(this, "isEmergencyPreferredAccount: one or less active subscriptions.");
-                return false;
+            if (PhoneFactory.isSubscriptionManagerServiceEnabled()) {
+                if (SubscriptionManagerService.getInstance() == null) {
+                    Log.d(this,
+                            "isEmergencyPreferredAccount: SubscriptionManagerService not "
+                                    + "available.");
+                    return false;
+                }
+                // Only set an emergency preference on devices with multiple active subscriptions
+                // (include opportunistic subscriptions) in this check.
+                // API says never null, but this can return null in testing.
+                int[] activeSubIds = SubscriptionManagerService.getInstance()
+                        .getActiveSubIdList(false);
+                if (activeSubIds == null || activeSubIds.length <= 1) {
+                    Log.d(this, "isEmergencyPreferredAccount: one or less active subscriptions.");
+                    return false;
+                }
+            } else {
+                SubscriptionController controller = SubscriptionController.getInstance();
+                if (controller == null) {
+                    Log.d(this,
+                            "isEmergencyPreferredAccount: SubscriptionController not available.");
+                    return false;
+                }
+                // Only set an emergency preference on devices with multiple active subscriptions
+                // (include opportunistic subscriptions) in this check.
+                // API says never null, but this can return null in testing.
+                int[] activeSubIds = controller.getActiveSubIdList(false);
+                if (activeSubIds == null || activeSubIds.length <= 1) {
+                    Log.d(this, "isEmergencyPreferredAccount: one or less active subscriptions.");
+                    return false;
+                }
             }
             // Check to see if this PhoneAccount is associated with the default Data subscription.
             if (!SubscriptionManager.isValidSubscriptionId(subId)) {
@@ -554,10 +574,21 @@ public class TelecomAccountRegistry {
                         + "valid.");
                 return false;
             }
-            int userDefaultData = controller.getDefaultDataSubId();
+            int userDefaultData = SubscriptionManager.getDefaultDataSubscriptionId();
             boolean isActiveDataValid = SubscriptionManager.isValidSubscriptionId(activeDataSubId);
-            boolean isActiveDataOpportunistic = isActiveDataValid
-                    && controller.isOpportunistic(activeDataSubId);
+
+            boolean isActiveDataOpportunistic;
+            if (PhoneFactory.isSubscriptionManagerServiceEnabled()) {
+                SubscriptionInfo subInfo;
+                subInfo = SubscriptionManagerService.getInstance()
+                        .getSubscriptionInfo(activeDataSubId);
+                isActiveDataOpportunistic = isActiveDataValid && subInfo != null
+                        && subInfo.isOpportunistic();
+            } else {
+                isActiveDataOpportunistic = isActiveDataValid
+                        && SubscriptionController.getInstance().isOpportunistic(activeDataSubId);
+            }
+
             // compare the activeDataSubId to the subId specified only if it is valid and not an
             // opportunistic subscription (only supports data). If not, use the current default
             // defined by the user.
