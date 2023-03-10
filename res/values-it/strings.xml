@@ -924,5 +924,5 @@
     <string name="send_from_work_profile_title" msgid="9201528838448432473">"Impossibile inviare messaggi da questo profilo"</string>
     <string name="send_from_work_profile_description" msgid="5002701841936861636">"Le norme di lavoro ti consentono di inviare messaggi solo dal profilo di lavoro"</string>
     <string name="send_from_work_profile_cancel" msgid="177746511030381711">"Annulla"</string>
-    <string name="send_from_work_profile_action_str" msgid="6892775562934243337">"Passa a profilo di lavoro"</string>
+    <string name="send_from_work_profile_action_str" msgid="6892775562934243337">"Passa al profilo di lavoro"</string>
 </resources>
