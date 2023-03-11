@@ -968,6 +968,7 @@ public class ImsConference extends TelephonyConferenceBase implements Holdable {
         // of the participants, we can get into a situation where the participant is added twice.
         synchronized (mUpdateSyncRoot) {
             int oldParticipantCount = mConferenceParticipantConnections.size();
+            boolean wasFullConference = isFullConference();
             boolean newParticipantsAdded = false;
             boolean oldParticipantsRemoved = false;
             ArrayList<ConferenceParticipant> newParticipants = new ArrayList<>(participants.size());
@@ -1104,6 +1105,12 @@ public class ImsConference extends TelephonyConferenceBase implements Holdable {
             // of the manage conference capability is updated.
             if (newParticipantsAdded || oldParticipantsRemoved) {
                 updateManageConference();
+            }
+
+            // If the "fullness" of the conference changed, we need to inform listeners.
+            // Ie tell ImsConferenceController.
+            if (wasFullConference != isFullConference()) {
+                notifyConferenceCapacityChanged();
             }
 
             // If the conference is empty and we're supposed to do a local disconnect, do so now.
