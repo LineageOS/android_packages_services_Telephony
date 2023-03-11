@@ -52,6 +52,14 @@ public class ImsConferenceController {
     private final TelephonyConferenceBase.TelephonyConferenceListener mConferenceListener =
             new TelephonyConferenceBase.TelephonyConferenceListener() {
         @Override
+        public void onConferenceCapacityChanged() {
+            // If the conference reached or is no longer at capacity then we need to recalculate
+            // as it may be possible to merge or not merge now.
+            Log.i(ImsConferenceController.this, "onConferenceCapacityChanged: recalc");
+            recalculateConferenceable();
+        }
+
+        @Override
         public void onDestroyed(Conference conference) {
             if (Log.VERBOSE) {
                 Log.v(ImsConferenceController.class, "onDestroyed: %s", conference);

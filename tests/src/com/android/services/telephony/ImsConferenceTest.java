@@ -23,6 +23,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.any;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.reset;
 import static org.mockito.Mockito.times;
@@ -119,6 +120,58 @@ public class ImsConferenceTest {
             assertEquals(TelephonyManager.NETWORK_TYPE_IWLAN, c.getExtras().getInt(
                     TelecomManager.EXTRA_CALL_NETWORK_TYPE));
         }
+    }
+
+    /**
+     * Verifies that an ImsConference will inform listeners when the "fullness" of the conference
+     * changes as participants come and go.
+     */
+    @Test
+    @SmallTest
+    public void testNotifyOnConferenceCapacityChanged() {
+        ImsConference imsConference = new ImsConference(mMockTelecomAccountRegistry,
+                mMockTelephonyConnectionServiceProxy, mConferenceHost,
+                null /* phoneAccountHandle */, () -> true /* featureFlagProxy */,
+                new ImsConference.CarrierConfiguration.Builder()
+                        .setIsMaximumConferenceSizeEnforced(true)
+                        .setMaximumConferenceSize(2)
+                        .build());
+        TelephonyConferenceBase.TelephonyConferenceListener listener =
+                mock(TelephonyConferenceBase.TelephonyConferenceListener.class);
+        imsConference.addTelephonyConferenceListener(listener);
+
+        ConferenceParticipant participant1 = new ConferenceParticipant(
+                Uri.parse("tel:6505551212"),
+                "A",
+                Uri.parse("sip:6505551212@testims.com"),
+                Connection.STATE_ACTIVE,
+                Call.Details.DIRECTION_OUTGOING);
+        ConferenceParticipant participant2 = new ConferenceParticipant(
+                Uri.parse("tel:6505551213"),
+                "A",
+                Uri.parse("sip:6505551213@testims.com"),
+                Connection.STATE_ACTIVE,
+                Call.Details.DIRECTION_INCOMING);
+
+        // no capacity change since we haven't hit the limit yet.
+        imsConference.handleConferenceParticipantsUpdate(mConferenceHost,
+                Arrays.asList(participant1));
+        verify(listener, never()).onConferenceCapacityChanged();
+
+        // Now we should get a capacity change
+        imsConference.handleConferenceParticipantsUpdate(mConferenceHost,
+                Arrays.asList(participant1, participant2));
+        verify(listener, times(1)).onConferenceCapacityChanged();
+
+        // And another when we go back to a non-full conference.
+        imsConference.handleConferenceParticipantsUpdate(mConferenceHost,
+                Arrays.asList(participant1));
+        verify(listener, times(2)).onConferenceCapacityChanged();
+
+        // But not when we reduce count further.
+        imsConference.handleConferenceParticipantsUpdate(mConferenceHost,
+                Collections.emptyList());
+        verify(listener, times(2)).onConferenceCapacityChanged();
     }
 
     @Test
