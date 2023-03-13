@@ -151,11 +151,11 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
         doReturn(CARRIER).when(mSlicePurchaseController).getSimOperator();
         replaceInstance(SlicePurchaseController.class, "sInstances", mSlicePurchaseController,
                 Map.of(PHONE_ID, mSlicePurchaseController));
-        replaceInstance(SlicePurchaseController.class, "mPremiumNetworkEntitlementApi",
-                mSlicePurchaseController, mPremiumNetworkEntitlementApi);
         replaceInstance(SlicePurchaseController.class, "mIsSlicingUpsellEnabled",
                 mSlicePurchaseController, true);
         mEntitlementResponse = new PremiumNetworkEntitlementResponse();
+        doReturn(mPremiumNetworkEntitlementApi).when(mSlicePurchaseController)
+                .getPremiumNetworkEntitlementApi();
         doReturn(mEntitlementResponse).when(mPremiumNetworkEntitlementApi)
                 .checkEntitlementStatus(anyInt());
     }
