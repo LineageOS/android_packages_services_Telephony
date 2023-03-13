@@ -216,7 +216,7 @@ public class TelephonyConnectionService extends ConnectionService {
 
         @Override
         public int getSimStateForSlotIdx(int slotId) {
-            return TelephonyManager.getSimStateForSlotIndex(slotId);
+            return SubscriptionManager.getSimStateForSlotIndex(slotId);
         }
 
         @Override
