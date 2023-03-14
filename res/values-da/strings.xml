@@ -577,7 +577,7 @@
     <string name="dialerKeyboardHintText" msgid="1115266533703764049">"Brug tastatur til at ringe op"</string>
     <string name="onscreenHoldText" msgid="4025348842151665191">"Hold"</string>
     <string name="onscreenEndCallText" msgid="6138725377654842757">"Afslut"</string>
-    <string name="onscreenShowDialpadText" msgid="658465753816164079">"Nummerblok"</string>
+    <string name="onscreenShowDialpadText" msgid="658465753816164079">"Opkaldstastatur"</string>
     <string name="onscreenMuteText" msgid="5470306116733843621">"Lyd fra"</string>
     <string name="onscreenAddCallText" msgid="9075675082903611677">"Tilføj opkald"</string>
     <string name="onscreenMergeCallsText" msgid="3692389519611225407">"Slå opkald sammen"</string>
@@ -657,8 +657,8 @@
     <string name="selectContact" msgid="1527612842599767382">"vælg kontakt"</string>
     <string name="not_voice_capable" msgid="2819996734252084253">"Taleopkald understøttes ikke"</string>
     <string name="description_dial_button" msgid="8614631902795087259">"ring op"</string>
-    <string name="description_dialpad_button" msgid="7395114120463883623">"vis numerisk tastatur"</string>
-    <string name="pane_title_emergency_dialpad" msgid="3627372514638694401">"Numerisk tastatur til nødopkald"</string>
+    <string name="description_dialpad_button" msgid="7395114120463883623">"vis opkaldstastatur"</string>
+    <string name="pane_title_emergency_dialpad" msgid="3627372514638694401">"Nødopkaldstastatur"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="6610414098912832120">"Visuel telefonsvarer"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="7005128605986960003">"Angiv pinkode"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="4633077715231764435">"Skift pinkode"</string>

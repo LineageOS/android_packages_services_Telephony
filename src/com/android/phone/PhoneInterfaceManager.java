@@ -50,6 +50,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
+import android.os.LocaleList;
 import android.os.Looper;
 import android.os.Message;
 import android.os.Messenger;
@@ -1414,6 +1415,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     request = (MainThreadRequest) ar.userObj;
                     ResultReceiver result = (ResultReceiver) request.argument;
                     int error = 0;
+                    ModemActivityInfo ret = null;
                     if (mLastModemActivityInfo == null) {
                         mLastModemActivitySpecificInfo = new ActivityStatsTechSpecificInfo[1];
                         mLastModemActivitySpecificInfo[0] =
@@ -1432,12 +1434,14 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                         if (isModemActivityInfoValid(info)) {
                             mergeModemActivityInfo(info);
                         }
-                        mLastModemActivityInfo =
-                                new ModemActivityInfo(
-                                        mLastModemActivityInfo.getTimestampMillis(),
-                                        mLastModemActivityInfo.getSleepTimeMillis(),
-                                        mLastModemActivityInfo.getIdleTimeMillis(),
-                                        mLastModemActivitySpecificInfo);
+                        // This is needed to decouple ret from mLastModemActivityInfo
+                        // We don't want to return mLastModemActivityInfo which is updated
+                        // inside mergeModemActivityInfo()
+                        ret = new ModemActivityInfo(
+                                mLastModemActivityInfo.getTimestampMillis(),
+                                mLastModemActivityInfo.getSleepTimeMillis(),
+                                mLastModemActivityInfo.getIdleTimeMillis(),
+                                deepCopyModemActivitySpecificInfo(mLastModemActivitySpecificInfo));
 
                     } else {
                         if (ar.result == null) {
@@ -1455,10 +1459,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                         }
                     }
                     Bundle bundle = new Bundle();
-                    if (mLastModemActivityInfo != null) {
+                    if (ret != null) {
                         bundle.putParcelable(
                                 TelephonyManager.MODEM_ACTIVITY_RESULT_KEY,
-                                mLastModemActivityInfo);
+                                ret);
                     } else {
                         bundle.putInt(TelephonyManager.EXCEPTION_RESULT_KEY, error);
                     }
@@ -6337,8 +6341,14 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     private SecurityException checkNetworkRequestForSanitizedLocationAccess(
             NetworkScanRequest request, int subId, String callingPackage) {
-        boolean hasCarrierPriv = checkCarrierPrivilegesForPackage(subId, callingPackage)
-                == TelephonyManager.CARRIER_PRIVILEGE_STATUS_HAS_ACCESS;
+        boolean hasCarrierPriv;
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            hasCarrierPriv = checkCarrierPrivilegesForPackage(subId, callingPackage)
+                    == TelephonyManager.CARRIER_PRIVILEGE_STATUS_HAS_ACCESS;
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
         boolean hasNetworkScanPermission =
                 mApp.checkCallingOrSelfPermission(android.Manifest.permission.NETWORK_SCAN)
                 == PERMISSION_GRANTED;
@@ -7703,7 +7713,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 if (!localeFromDefaultSim.getCountry().isEmpty()) {
                     if (DBG) log("Using locale from subId: " + subId + " locale: "
                             + localeFromDefaultSim);
-                    return localeFromDefaultSim.toLanguageTag();
+                    return matchLocaleFromSupportedLocaleList(localeFromDefaultSim);
                 } else {
                     simLanguage = localeFromDefaultSim.getLanguage();
                 }
@@ -7716,7 +7726,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             final Locale mccLocale = LocaleUtils.getLocaleFromMcc(mApp, mcc, simLanguage);
             if (mccLocale != null) {
                 if (DBG) log("No locale from SIM, using mcc locale:" + mccLocale);
-                return mccLocale.toLanguageTag();
+                return matchLocaleFromSupportedLocaleList(mccLocale);
             }
 
             if (DBG) log("No locale found - returning null");
@@ -7724,6 +7734,21 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
+    }
+
+    @VisibleForTesting
+    String matchLocaleFromSupportedLocaleList(@NonNull Locale inputLocale) {
+        String[] supportedLocale = com.android.internal.app.LocalePicker.getSupportedLocales(
+                getDefaultPhone().getContext());
+        for (String localeTag : supportedLocale) {
+            if (LocaleList.matchesLanguageAndScript(
+                    inputLocale, Locale.forLanguageTag(localeTag))
+                    && inputLocale.getCountry().equals(
+                    Locale.forLanguageTag(localeTag).getCountry())) {
+                return localeTag;
+            }
+        }
+        return inputLocale.toLanguageTag();
     }
 
     private List<SubscriptionInfo> getAllSubscriptionInfoList() {
@@ -7817,7 +7842,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     */
     private void mergeModemActivityInfo(ModemActivityInfo info) {
         List<ActivityStatsTechSpecificInfo> merged = new ArrayList<>();
-        ActivityStatsTechSpecificInfo mDeltaSpecificInfo;
+        ActivityStatsTechSpecificInfo deltaSpecificInfo;
         boolean matched;
         for (int i = 0; i < info.getSpecificInfoLength(); i++) {
             matched = false;
@@ -7842,13 +7867,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             }
 
             if (!matched) {
-                mDeltaSpecificInfo =
+                deltaSpecificInfo =
                         new ActivityStatsTechSpecificInfo(
                                 rat,
                                 freq,
                                 info.getTransmitTimeMillis(rat, freq),
                                 (int) info.getReceiveTimeMillis(rat, freq));
-                merged.addAll(Arrays.asList(mDeltaSpecificInfo));
+                merged.addAll(Arrays.asList(deltaSpecificInfo));
             }
         }
         merged.addAll(Arrays.asList(mLastModemActivitySpecificInfo));
@@ -7863,6 +7888,26 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         mLastModemActivityInfo.setIdleTimeMillis(
                 info.getIdleTimeMillis()
                 + mLastModemActivityInfo.getIdleTimeMillis());
+
+        mLastModemActivityInfo =
+                 new ModemActivityInfo(
+                         mLastModemActivityInfo.getTimestampMillis(),
+                         mLastModemActivityInfo.getSleepTimeMillis(),
+                         mLastModemActivityInfo.getIdleTimeMillis(),
+                         mLastModemActivitySpecificInfo);
+    }
+
+    private ActivityStatsTechSpecificInfo[] deepCopyModemActivitySpecificInfo(
+            ActivityStatsTechSpecificInfo[] info) {
+        int infoSize = info.length;
+        ActivityStatsTechSpecificInfo[] ret = new ActivityStatsTechSpecificInfo[infoSize];
+        for (int i = 0; i < infoSize; i++) {
+            ret[i] = new ActivityStatsTechSpecificInfo(
+                    info[i].getRat(), info[i].getFrequencyRange(),
+                    info[i].getTransmitTimeMillis(),
+                    (int) info[i].getReceiveTimeMillis());
+        }
+        return ret;
     }
 
     /**

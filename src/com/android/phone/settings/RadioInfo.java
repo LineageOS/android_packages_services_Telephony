@@ -72,6 +72,13 @@ import android.telephony.TelephonyCallback;
 import android.telephony.TelephonyDisplayInfo;
 import android.telephony.TelephonyManager;
 import android.telephony.data.NetworkSlicingConfig;
+import android.telephony.ims.ImsException;
+import android.telephony.ims.ImsManager;
+import android.telephony.ims.ImsMmTelManager;
+import android.telephony.ims.ImsRcsManager;
+import android.telephony.ims.ProvisioningManager;
+import android.telephony.ims.feature.MmTelFeature;
+import android.telephony.ims.stub.ImsRegistrationImplBase;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
@@ -92,9 +99,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AlertDialog.Builder;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.android.ims.ImsConfig;
-import com.android.ims.ImsException;
-import com.android.ims.ImsManager;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.euicc.EuiccConnector;
@@ -175,18 +179,6 @@ public class RadioInfo extends AppCompatActivity {
      * @see {@link #DSDS_MODE_PROPERTY}
      */
     private static final int ALWAYS_ON_DSDS_MODE = 1;
-
-    private static final int IMS_VOLTE_PROVISIONED_CONFIG_ID =
-            ImsConfig.ConfigConstants.VLT_SETTING_ENABLED;
-
-    private static final int IMS_VT_PROVISIONED_CONFIG_ID =
-            ImsConfig.ConfigConstants.LVC_SETTING_ENABLED;
-
-    private static final int IMS_WFC_PROVISIONED_CONFIG_ID =
-            ImsConfig.ConfigConstants.VOICE_OVER_WIFI_SETTING_ENABLED;
-
-    private static final int EAB_PROVISIONED_CONFIG_ID =
-            ImsConfig.ConfigConstants.EAB_SETTING_ENABLED;
 
     //Values in must match CELL_INFO_REFRESH_RATES
     private static final String[] CELL_INFO_REFRESH_RATE_LABELS = {
@@ -291,6 +283,7 @@ public class RadioInfo extends AppCompatActivity {
     private TelephonyManager mTelephonyManager;
     private ImsManager mImsManager = null;
     private Phone mPhone = null;
+    private ProvisioningManager mProvisioningManager = null;
 
     private String mPingHostnameResultV4;
     private String mPingHostnameResultV6;
@@ -419,12 +412,23 @@ public class RadioInfo extends AppCompatActivity {
         unregisterPhoneStateListener();
         mTelephonyManager.setCellInfoListRate(sCellInfoListRateDisabled);
 
+        if (phoneIndex == SubscriptionManager.INVALID_PHONE_INDEX) {
+            log("Invalid phone index " + phoneIndex + ", subscription ID " + subId);
+            return;
+        }
+
         // update the subId
         mTelephonyManager = mTelephonyManager.createForSubscriptionId(subId);
 
         // update the phoneId
-        mImsManager = ImsManager.getInstance(getApplicationContext(), phoneIndex);
         mPhone = PhoneFactory.getPhone(phoneIndex);
+        mImsManager = new ImsManager(mPhone.getContext());
+        try {
+            mProvisioningManager = ProvisioningManager.createForSubscriptionId(subId);
+        } catch (IllegalArgumentException e) {
+            log("updatePhoneIndex : IllegalArgumentException " + e.getMessage());
+            mProvisioningManager = null;
+        }
 
         updateAllFields();
     }
@@ -480,11 +484,17 @@ public class RadioInfo extends AppCompatActivity {
         mQueuedWork = new ThreadPoolExecutor(1, 1, RUNNABLE_TIMEOUT_MS, TimeUnit.MICROSECONDS,
                 new LinkedBlockingDeque<Runnable>());
         mConnectivityManager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
-        mPhone = PhoneFactory.getDefaultPhone();
+        mPhone = getPhone(SubscriptionManager.getDefaultSubscriptionId());
         mTelephonyManager = ((TelephonyManager) getSystemService(TELEPHONY_SERVICE))
                 .createForSubscriptionId(mPhone.getSubId());
 
-        mImsManager = ImsManager.getInstance(getApplicationContext(), mPhone.getPhoneId());
+        mImsManager = new ImsManager(mPhone.getContext());
+        try {
+            mProvisioningManager = ProvisioningManager.createForSubscriptionId(mPhone.getSubId());
+        } catch (IllegalArgumentException e) {
+            log("onCreate : IllegalArgumentException " + e.getMessage());
+            mProvisioningManager = null;
+        }
 
         sPhoneIndexLabels = getPhoneIndexLabels(mTelephonyManager);
 
@@ -552,7 +562,7 @@ public class RadioInfo extends AppCompatActivity {
         mImsWfcProvisionedSwitch = (Switch) findViewById(R.id.wfc_provisioned_switch);
         mEabProvisionedSwitch = (Switch) findViewById(R.id.eab_provisioned_switch);
 
-        if (!ImsManager.isImsSupportedOnDevice(mPhone.getContext())) {
+        if (!isImsSupportedOnDevice(mPhone.getContext())) {
             mImsVolteProvisionedSwitch.setVisibility(View.GONE);
             mImsVtProvisionedSwitch.setVisibility(View.GONE);
             mImsWfcProvisionedSwitch.setVisibility(View.GONE);
@@ -627,7 +637,7 @@ public class RadioInfo extends AppCompatActivity {
 
         mCellInfoRefreshRateIndex = 0; //disabled
         mPreferredNetworkTypeResult = PREFERRED_NETWORK_LABELS.length - 1; //Unknown
-        mSelectedPhoneIndex = 0; //phone 0
+        mSelectedPhoneIndex = mPhone.getPhoneId();
 
         new Thread(() -> {
             int networkType = (int) mTelephonyManager.getPreferredNetworkTypeBitmask();
@@ -774,7 +784,7 @@ public class RadioInfo extends AppCompatActivity {
                 R.string.radioInfo_menu_viewFDN).setOnMenuItemClickListener(mViewFDNCallback);
         menu.add(1, MENU_ITEM_VIEW_SDN, 0,
                 R.string.radioInfo_menu_viewSDN).setOnMenuItemClickListener(mViewSDNCallback);
-        if (ImsManager.isImsSupportedOnDevice(mPhone.getContext())) {
+        if (isImsSupportedOnDevice(mPhone.getContext())) {
             menu.add(1, MENU_ITEM_GET_IMS_STATUS,
                     0, R.string.radioInfo_menu_getIMS).setOnMenuItemClickListener(mGetImsStatus);
         }
@@ -1502,39 +1512,108 @@ public class RadioInfo extends AppCompatActivity {
         mRadioPowerOnSwitch.setOnCheckedChangeListener(mRadioPowerOnChangeListener);
     }
 
-    void setImsVolteProvisionedState(boolean state) {
+    private void setImsVolteProvisionedState(boolean state) {
         Log.d(TAG, "setImsVolteProvisioned state: " + ((state) ? "on" : "off"));
-        setImsConfigProvisionedState(IMS_VOLTE_PROVISIONED_CONFIG_ID, state);
+        setImsConfigProvisionedState(MmTelFeature.MmTelCapabilities.CAPABILITY_TYPE_VOICE,
+                ImsRegistrationImplBase.REGISTRATION_TECH_LTE, state);
     }
 
-    void setImsVtProvisionedState(boolean state) {
+    private void setImsVtProvisionedState(boolean state) {
         Log.d(TAG, "setImsVtProvisioned() state: " + ((state) ? "on" : "off"));
-        setImsConfigProvisionedState(IMS_VT_PROVISIONED_CONFIG_ID, state);
+        setImsConfigProvisionedState(MmTelFeature.MmTelCapabilities.CAPABILITY_TYPE_VIDEO,
+                ImsRegistrationImplBase.REGISTRATION_TECH_LTE, state);
     }
 
-    void setImsWfcProvisionedState(boolean state) {
+    private void setImsWfcProvisionedState(boolean state) {
         Log.d(TAG, "setImsWfcProvisioned() state: " + ((state) ? "on" : "off"));
-        setImsConfigProvisionedState(IMS_WFC_PROVISIONED_CONFIG_ID, state);
+        setImsConfigProvisionedState(MmTelFeature.MmTelCapabilities.CAPABILITY_TYPE_VOICE,
+                ImsRegistrationImplBase.REGISTRATION_TECH_IWLAN, state);
     }
 
-    void setEabProvisionedState(boolean state) {
+    private void setEabProvisionedState(boolean state) {
         Log.d(TAG, "setEabProvisioned() state: " + ((state) ? "on" : "off"));
-        setImsConfigProvisionedState(EAB_PROVISIONED_CONFIG_ID, state);
+        setRcsConfigProvisionedState(ImsRcsManager.CAPABILITY_TYPE_PRESENCE_UCE,
+                ImsRegistrationImplBase.REGISTRATION_TECH_LTE, state);
     }
 
-    void setImsConfigProvisionedState(int configItem, boolean state) {
-        if (mPhone != null && mImsManager != null) {
+    private void setImsConfigProvisionedState(int capability, int tech, boolean state) {
+        if (mProvisioningManager != null) {
             mQueuedWork.execute(new Runnable() {
                 public void run() {
                     try {
-                        mImsManager.getConfigInterface().setProvisionedValue(
-                                configItem, state ? 1 : 0);
-                    } catch (ImsException e) {
+                        mProvisioningManager.setProvisioningStatusForCapability(
+                                capability, tech, state);
+                    } catch (RuntimeException e) {
                         Log.e(TAG, "setImsConfigProvisioned() exception:", e);
                     }
                 }
             });
         }
+    }
+
+    private void setRcsConfigProvisionedState(int capability, int tech, boolean state) {
+        if (mProvisioningManager != null) {
+            mQueuedWork.execute(new Runnable() {
+                public void run() {
+                    try {
+                        mProvisioningManager.setRcsProvisioningStatusForCapability(
+                                capability, tech, state);
+                    } catch (RuntimeException e) {
+                        Log.e(TAG, "setRcsConfigProvisioned() exception:", e);
+                    }
+                }
+            });
+        }
+    }
+
+    private boolean isImsVolteProvisioningRequired() {
+        return isImsConfigProvisioningRequired(
+                MmTelFeature.MmTelCapabilities.CAPABILITY_TYPE_VOICE,
+                ImsRegistrationImplBase.REGISTRATION_TECH_LTE);
+    }
+
+    private boolean isImsVtProvisioningRequired() {
+        return isImsConfigProvisioningRequired(
+                MmTelFeature.MmTelCapabilities.CAPABILITY_TYPE_VIDEO,
+                ImsRegistrationImplBase.REGISTRATION_TECH_LTE);
+    }
+
+    private boolean isImsWfcProvisioningRequired() {
+        return isImsConfigProvisioningRequired(
+                MmTelFeature.MmTelCapabilities.CAPABILITY_TYPE_VOICE,
+                ImsRegistrationImplBase.REGISTRATION_TECH_IWLAN);
+    }
+
+    private boolean isEabProvisioningRequired() {
+        return isRcsConfigProvisioningRequired(
+                ImsRcsManager.CAPABILITY_TYPE_PRESENCE_UCE,
+                ImsRegistrationImplBase.REGISTRATION_TECH_LTE);
+    }
+
+    private boolean isImsConfigProvisioningRequired(int capability, int tech) {
+        if (mProvisioningManager != null) {
+            try {
+                return mProvisioningManager.isProvisioningRequiredForCapability(
+                        capability, tech);
+            } catch (RuntimeException e) {
+                Log.e(TAG, "isImsConfigProvisioningRequired() exception:", e);
+            }
+        }
+
+        return false;
+    }
+
+    private boolean isRcsConfigProvisioningRequired(int capability, int tech) {
+        if (mProvisioningManager != null) {
+            try {
+                return mProvisioningManager.isRcsProvisioningRequiredForCapability(
+                        capability, tech);
+            } catch (RuntimeException e) {
+                Log.e(TAG, "isRcsConfigProvisioningRequired() exception:", e);
+            }
+        }
+
+        return false;
     }
 
     OnCheckedChangeListener mRadioPowerOnChangeListener = new OnCheckedChangeListener() {
@@ -1556,11 +1635,8 @@ public class RadioInfo extends AppCompatActivity {
     };
 
     private boolean isImsVolteProvisioned() {
-        if (mImsManager != null) {
-            return mImsManager.isVolteEnabledByPlatform()
-                && mImsManager.isVolteProvisionedOnDevice();
-        }
-        return false;
+        return getImsConfigProvisionedState(MmTelFeature.MmTelCapabilities.CAPABILITY_TYPE_VOICE,
+                ImsRegistrationImplBase.REGISTRATION_TECH_LTE);
     }
 
     OnCheckedChangeListener mImsVolteCheckedChangeListener = new OnCheckedChangeListener() {
@@ -1571,11 +1647,8 @@ public class RadioInfo extends AppCompatActivity {
     };
 
     private boolean isImsVtProvisioned() {
-        if (mImsManager != null) {
-            return mImsManager.isVtEnabledByPlatform()
-                && mImsManager.isVtProvisionedOnDevice();
-        }
-        return false;
+        return getImsConfigProvisionedState(MmTelFeature.MmTelCapabilities.CAPABILITY_TYPE_VIDEO,
+                ImsRegistrationImplBase.REGISTRATION_TECH_LTE);
     }
 
     OnCheckedChangeListener mImsVtCheckedChangeListener = new OnCheckedChangeListener() {
@@ -1586,11 +1659,8 @@ public class RadioInfo extends AppCompatActivity {
     };
 
     private boolean isImsWfcProvisioned() {
-        if (mImsManager != null) {
-            return mImsManager.isWfcEnabledByPlatform()
-                && mImsManager.isWfcProvisionedOnDevice();
-        }
-        return false;
+        return getImsConfigProvisionedState(MmTelFeature.MmTelCapabilities.CAPABILITY_TYPE_VOICE,
+                ImsRegistrationImplBase.REGISTRATION_TECH_IWLAN);
     }
 
     OnCheckedChangeListener mImsWfcCheckedChangeListener = new OnCheckedChangeListener() {
@@ -1601,7 +1671,8 @@ public class RadioInfo extends AppCompatActivity {
     };
 
     private boolean isEabProvisioned() {
-        return isFeatureProvisioned(EAB_PROVISIONED_CONFIG_ID, false);
+        return getRcsConfigProvisionedState(ImsRcsManager.CAPABILITY_TYPE_PRESENCE_UCE,
+                ImsRegistrationImplBase.REGISTRATION_TECH_LTE);
     }
 
     OnCheckedChangeListener mEabCheckedChangeListener = new OnCheckedChangeListener() {
@@ -1611,23 +1682,30 @@ public class RadioInfo extends AppCompatActivity {
         }
     };
 
-    private boolean isFeatureProvisioned(int featureId, boolean defaultValue) {
-        boolean provisioned = defaultValue;
-        if (mImsManager != null) {
+    private boolean getImsConfigProvisionedState(int capability, int tech) {
+        if (mProvisioningManager != null) {
             try {
-                ImsConfig imsConfig = mImsManager.getConfigInterface();
-                if (imsConfig != null) {
-                    provisioned =
-                            (imsConfig.getProvisionedValue(featureId)
-                                    == ImsConfig.FeatureValueConstants.ON);
-                }
-            } catch (ImsException ex) {
-                Log.e(TAG, "isFeatureProvisioned() exception:", ex);
+                return mProvisioningManager.getProvisioningStatusForCapability(
+                        capability, tech);
+            } catch (RuntimeException e) {
+                Log.e(TAG, "getImsConfigProvisionedState() exception:", e);
             }
         }
 
-        log("isFeatureProvisioned() featureId=" + featureId + " provisioned=" + provisioned);
-        return provisioned;
+        return false;
+    }
+
+    private boolean getRcsConfigProvisionedState(int capability, int tech) {
+        if (mProvisioningManager != null) {
+            try {
+                return mProvisioningManager.getRcsProvisioningStatusForCapability(
+                        capability, tech);
+            } catch (RuntimeException e) {
+                Log.e(TAG, "getRcsConfigProvisionedState() exception:", e);
+            }
+        }
+
+        return false;
     }
 
     private boolean isEabEnabledByPlatform() {
@@ -1646,35 +1724,56 @@ public class RadioInfo extends AppCompatActivity {
     }
 
     private void updateImsProvisionedState() {
-        if (!ImsManager.isImsSupportedOnDevice(mPhone.getContext())) {
+        if (!isImsSupportedOnDevice(mPhone.getContext())) {
             return;
         }
-        log("updateImsProvisionedState isImsVolteProvisioned()=" + isImsVolteProvisioned());
-        //delightful hack to prevent on-checked-changed calls from
-        //actually forcing the ims provisioning to its transient/current value.
+
+        updateServiceEnabledByPlatform();
+
+        updateEabProvisionedSwitch(isEabEnabledByPlatform());
+    }
+
+    private void updateVolteProvisionedSwitch(boolean isEnabledByPlatform) {
+        boolean isProvisioned = isEnabledByPlatform && isImsVolteProvisioned();
+        log("updateVolteProvisionedSwitch isProvisioned" + isProvisioned);
+
         mImsVolteProvisionedSwitch.setOnCheckedChangeListener(null);
-        mImsVolteProvisionedSwitch.setChecked(isImsVolteProvisioned());
+        mImsVolteProvisionedSwitch.setChecked(isProvisioned);
         mImsVolteProvisionedSwitch.setOnCheckedChangeListener(mImsVolteCheckedChangeListener);
         mImsVolteProvisionedSwitch.setEnabled(!IS_USER_BUILD
-                && mImsManager.isVolteEnabledByPlatform());
+                && isEnabledByPlatform && isImsVolteProvisioningRequired());
+    }
+
+    private void updateVtProvisionedSwitch(boolean isEnabledByPlatform) {
+        boolean isProvisioned = isEnabledByPlatform && isImsVtProvisioned();
+        log("updateVtProvisionedSwitch isProvisioned" + isProvisioned);
 
         mImsVtProvisionedSwitch.setOnCheckedChangeListener(null);
-        mImsVtProvisionedSwitch.setChecked(isImsVtProvisioned());
+        mImsVtProvisionedSwitch.setChecked(isProvisioned);
         mImsVtProvisionedSwitch.setOnCheckedChangeListener(mImsVtCheckedChangeListener);
         mImsVtProvisionedSwitch.setEnabled(!IS_USER_BUILD
-                && mImsManager.isVtEnabledByPlatform());
+                && isEnabledByPlatform && isImsVtProvisioningRequired());
+    }
+
+    private void updateWfcProvisionedSwitch(boolean isEnabledByPlatform) {
+        boolean isProvisioned = isEnabledByPlatform && isImsWfcProvisioned();
+        log("updateWfcProvisionedSwitch isProvisioned" + isProvisioned);
 
         mImsWfcProvisionedSwitch.setOnCheckedChangeListener(null);
-        mImsWfcProvisionedSwitch.setChecked(isImsWfcProvisioned());
+        mImsWfcProvisionedSwitch.setChecked(isProvisioned);
         mImsWfcProvisionedSwitch.setOnCheckedChangeListener(mImsWfcCheckedChangeListener);
         mImsWfcProvisionedSwitch.setEnabled(!IS_USER_BUILD
-                && mImsManager.isWfcEnabledByPlatform());
+                && isEnabledByPlatform && isImsWfcProvisioningRequired());
+    }
+
+    private void updateEabProvisionedSwitch(boolean isEnabledByPlatform) {
+        log("updateEabProvisionedSwitch isEabWfcProvisioned()=" + isEabProvisioned());
 
         mEabProvisionedSwitch.setOnCheckedChangeListener(null);
         mEabProvisionedSwitch.setChecked(isEabProvisioned());
         mEabProvisionedSwitch.setOnCheckedChangeListener(mEabCheckedChangeListener);
         mEabProvisionedSwitch.setEnabled(!IS_USER_BUILD
-                && isEabEnabledByPlatform());
+                && isEnabledByPlatform && isEabProvisioningRequired());
     }
 
     OnClickListener mDnsCheckButtonHandler = new OnClickListener() {
@@ -1912,5 +2011,46 @@ public class RadioInfo extends AppCompatActivity {
         intent.setPackage(componentInfo.packageName);
         intent.putExtra("isDefault", isChecked);
         sendBroadcast(intent);
+    }
+
+    private boolean isImsSupportedOnDevice(Context context) {
+        return context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_TELEPHONY_IMS);
+    }
+
+    private void updateServiceEnabledByPlatform() {
+        int subId = mPhone.getSubId();
+        if (subId == SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
+            log("updateServiceEnabledByPlatform subscription ID is invalid");
+            return;
+        }
+
+        ImsMmTelManager imsMmTelManager = mImsManager.getImsMmTelManager(subId);
+        try {
+            imsMmTelManager.isSupported(MmTelFeature.MmTelCapabilities.CAPABILITY_TYPE_VOICE,
+                    AccessNetworkConstants.TRANSPORT_TYPE_WWAN, getMainExecutor(), (result) -> {
+                        updateVolteProvisionedSwitch(result);
+                    });
+            imsMmTelManager.isSupported(MmTelFeature.MmTelCapabilities.CAPABILITY_TYPE_VIDEO,
+                    AccessNetworkConstants.TRANSPORT_TYPE_WWAN, getMainExecutor(), (result) -> {
+                        updateVtProvisionedSwitch(result);
+                    });
+            imsMmTelManager.isSupported(MmTelFeature.MmTelCapabilities.CAPABILITY_TYPE_VOICE,
+                    AccessNetworkConstants.TRANSPORT_TYPE_WLAN, getMainExecutor(), (result) -> {
+                        updateWfcProvisionedSwitch(result);
+                    });
+        } catch (ImsException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private Phone getPhone(int subId) {
+        log("getPhone subId = " + subId);
+        Phone phone = PhoneFactory.getPhone(SubscriptionManager.getPhoneId(subId));
+        if (phone == null) {
+            log("return the default phone");
+            return PhoneFactory.getDefaultPhone();
+        }
+
+        return phone;
     }
 }

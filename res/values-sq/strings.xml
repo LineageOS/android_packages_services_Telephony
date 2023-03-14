@@ -660,7 +660,7 @@
     <string name="description_dialpad_button" msgid="7395114120463883623">"shfaq bllokun e formimit të numrit"</string>
     <string name="pane_title_emergency_dialpad" msgid="3627372514638694401">"Blloku i formimit të numrit të urgjencës"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="6610414098912832120">"Posta zanore vizuale"</string>
-    <string name="voicemail_set_pin_dialog_title" msgid="7005128605986960003">"Konfiguro kodin PIN"</string>
+    <string name="voicemail_set_pin_dialog_title" msgid="7005128605986960003">"Cakto kodin PIN"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="4633077715231764435">"Ndrysho kodin PIN"</string>
     <string name="preference_category_ringtone" msgid="8787281191375434976">"Me zile dhe me dridhje"</string>
     <string name="pstn_connection_service_label" msgid="9200102709997537069">"Kartat e integruara SIM"</string>

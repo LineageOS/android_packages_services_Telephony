@@ -48,7 +48,7 @@
     <string name="no_vm_number_msg" msgid="5165161462411372504">"Tidak ada nomor kotak pesan tersimpan pada kartu SIM."</string>
     <string name="add_vm_number_str" msgid="7368168964435881637">"Tambahkan nomor"</string>
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"Setelan Pesan Suara hanya dapat diubah oleh Pengguna Utama."</string>
-    <string name="puk_unlocked" msgid="4627340655215746511">"Kartu SIM Anda tidak lagi dicekal. Ponsel Anda sedang dibuka kuncinya..."</string>
+    <string name="puk_unlocked" msgid="4627340655215746511">"Kartu SIM Anda tidak lagi diblokir. Ponsel Anda sedang dibuka kuncinya..."</string>
     <string name="label_ndp" msgid="7617392683877410341">"PIN pembuka kunci jaringan SIM"</string>
     <string name="label_phoneid" msgid="8775611434123577808">"SIM dikunci untuk operator"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"Buka kunci"</string>

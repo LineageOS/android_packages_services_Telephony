@@ -424,7 +424,7 @@
   </string-array>
     <string name="cdma_subscription_title" msgid="3449527179325589434">"CDMA सदस्‍यता"</string>
     <string name="cdma_subscription_summary" msgid="5681152534466169001">"RUIM/सिम आणि NV मध्‍ये बदला"</string>
-    <string name="cdma_subscription_dialogtitle" msgid="8872086335839723980">"सदस्यता"</string>
+    <string name="cdma_subscription_dialogtitle" msgid="8872086335839723980">"सदस्यत्व"</string>
   <string-array name="cdma_subscription_choices">
     <item msgid="7989486897370727698">"RUIM/सिम"</item>
     <item msgid="5445342771222849381">"NV"</item>
