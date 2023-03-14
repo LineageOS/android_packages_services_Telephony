@@ -47,7 +47,7 @@
     <string name="no_vm_number" msgid="6623853880546176930">"ହଜିଯାଇଥିବା ଭଏସମେଲ୍ ନମ୍ବର୍"</string>
     <string name="no_vm_number_msg" msgid="5165161462411372504">"SIM କାର୍ଡରେ କୌଣସି ଭଏସମେଲ୍ ନମ୍ବର୍ ଷ୍ଟୋର୍ କରାଯାଇନାହିଁ।"</string>
     <string name="add_vm_number_str" msgid="7368168964435881637">"ନମ୍ବର୍ ଯୋଡ଼ନ୍ତୁ"</string>
-    <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"ଭଏସମେଲ ସେଟିଂସକୁ ପ୍ରାଥମିକ ଉପଯୋଗକର୍ତ୍ତା କେବଳ ପରିବର୍ତ୍ତିତ କରିପାରିବେ।"</string>
+    <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"ଭଏସମେଲ ସେଟିଂସକୁ କେବଳ ପ୍ରାଥମିକ ୟୁଜର ପରିବର୍ତ୍ତନ କରିପାରିବେ।"</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"ଆପଣଙ୍କର SIM କାର୍ଡକୁ ଅବରୋଧ କରିଦିଆଯାଇଛି। ଆପଣଙ୍କର ଫୋନ୍ ଅନଲକ୍ ହେଉଛି…"</string>
     <string name="label_ndp" msgid="7617392683877410341">"SIM ନେଟ୍‌ୱର୍କ‌କୁ ଅନଲକ୍ କରିବା ପାଇଁ PIN"</string>
     <string name="label_phoneid" msgid="8775611434123577808">"ଅପରେଟର୍ ପାଇଁ SIM ଲକ୍ କରାଯାଇଛି"</string>
@@ -56,7 +56,7 @@
     <string name="requesting_unlock" msgid="930512210309437741">"ନେଟ୍‌ୱର୍କକୁ ଅନଲକ୍ କରିବା ପାଇଁ ଅନୁରୋଧ କରାଯାଉଛି…"</string>
     <string name="unlock_failed" msgid="7103543844840661366">"ନେଟ୍‌ୱର୍କ ଅନଲକ୍ କରିବା ପାଇଁ ଅନୁରୋଧ ବିଫଳ ହୋ‌ଇଛି।"</string>
     <string name="unlock_success" msgid="32681089371067565">"ନେଟ୍‌ୱର୍କ ଅନଲକ୍ କରିବା ସଫଳ ହେଲା।"</string>
-    <string name="mobile_network_settings_not_available" msgid="8678168497517090039">"ଏହି ୟୁଜରଙ୍କ ପାଇଁ ମୋବାଇଲ୍ ନେଟ୍‌ୱର୍କ ସେଟିଙ୍ଗ ଉପଲବ୍ଧ ନାହିଁ"</string>
+    <string name="mobile_network_settings_not_available" msgid="8678168497517090039">"ଏହି ୟୁଜରଙ୍କ ପାଇଁ ମୋବାଇଲ ନେଟୱାର୍କ ସେଟିଂସ ଉପଲବ୍ଧ ନାହିଁ"</string>
     <string name="labelGSMMore" msgid="7354182269461281543">"GSM କଲ ସେଟିଂସ"</string>
     <string name="labelGsmMore_with_label" msgid="3206015314393246224">"GSM କଲ ସେଟିଂସ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCDMAMore" msgid="7937441382611224632">"CDMA କଲ୍ ସେଟିଙ୍ଗ"</string>
@@ -132,7 +132,7 @@
     <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"IMSରେ CDMA \'କଲ୍ ୱେଟିଂ\' ସୁବିଧା ଚାଲୁ ଅଛି"</string>
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"IMSରେ CDMA \'କଲ୍ ୱେଟିଂ\' ସୁବିଧା ବନ୍ଦ ଅଛି"</string>
     <string name="updating_title" msgid="6130548922615719689">"କଲ ସେଟିଂସ"</string>
-    <string name="call_settings_admin_user_only" msgid="7238947387649986286">"କଲ୍ ସେଟିଙ୍ଗକୁ କେବଳ ଆଡମିନ୍ ୟୁଜର୍‌ ବଦଳାଇପାରିବେ।"</string>
+    <string name="call_settings_admin_user_only" msgid="7238947387649986286">"କଲ ସେଟିଂସକୁ କେବଳ ଆଡମିନ ୟୁଜର ବଦଳାଇପାରିବେ।"</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"ସେଟିଙ୍ଗ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"କଲ୍ ସେଟିଙ୍ଗରେ ତ୍ରୁଟି"</string>
     <string name="reading_settings" msgid="1605904432450871183">"ସେଟିଂସକୁ ପଢ଼ାଯାଉଛି…"</string>
@@ -718,8 +718,8 @@
     <string name="clh_callFailed_channel_unacceptable_txt" msgid="4062754579408613021">"କଲ୍ ସମ୍ପୂର୍ଣ୍ଣ କରିହେଲା ନାହିଁ। ତ୍ରୁଟି କୋଡ୍ 6।"</string>
     <string name="clh_callFailed_operator_determined_barring_txt" msgid="4202077821465974286">"କଲ୍ ସମ୍ପୂର୍ଣ୍ଣ କରିହେଲା ନାହିଁ। ତ୍ରୁଟି କୋଡ୍ 8।"</string>
     <string name="clh_callFailed_normal_call_clearing_txt" msgid="5677987959062976462">"କଲ୍ ସମ୍ପୂର୍ଣ୍ଣ କରିହେଲା ନାହିଁ। ତ୍ରୁଟି କୋଡ୍ 16।"</string>
-    <string name="clh_callFailed_user_busy_txt" msgid="8886432858568086854">"ୟୁଜର୍ ବ୍ୟସ୍ତ ଅଛନ୍ତି"</string>
-    <string name="clh_callFailed_no_user_responding_txt" msgid="341100226919865128">"ୟୁଜର୍ ଉତ୍ତର ଦେଉନାହାନ୍ତି"</string>
+    <string name="clh_callFailed_user_busy_txt" msgid="8886432858568086854">"ୟୁଜର ବ୍ୟସ୍ତ ଅଛନ୍ତି"</string>
+    <string name="clh_callFailed_no_user_responding_txt" msgid="341100226919865128">"ୟୁଜର ଉତ୍ତର ଦେଉନାହାଁନ୍ତି"</string>
     <string name="clh_callFailed_user_alerting_txt" msgid="896082976264427969">"କଲ୍ ସମ୍ପୂର୍ଣ୍ଣ କରିହେଲା ନାହିଁ। ତ୍ରୁଟି କୋଡ୍ 19।"</string>
     <string name="clh_callFailed_call_rejected_txt" msgid="3439435671153341709">"କଲ୍‌କୁ ପ୍ରତ୍ୟାଖ୍ୟାନ କରାଗଲା"</string>
     <string name="clh_callFailed_number_changed_txt" msgid="2868476949771441667">"ନମ୍ବର୍ ବଦଳିଯାଇଛି"</string>
@@ -800,7 +800,7 @@
     <string name="supp_service_notification_call_forwarded" msgid="7102930311735433088">"କଲ୍‌କୁ ଫରୱାର୍ଡ କରାଯାଇଛି।"</string>
     <string name="supp_service_notification_call_waiting" msgid="4577403881609445324">"କଲ୍ ଅପେକ୍ଷାରେ ଅଛି।"</string>
     <string name="supp_service_clir_suppression_rejected" msgid="6105737020194776121">"ନମ୍ବର୍ ଅବରୋଧକୁ ପ୍ରତ୍ୟାଖ୍ୟାନ କରାଗଲା।"</string>
-    <string name="supp_service_closed_user_group_call" msgid="2811636666505250689">"ନିକଟତମ ୟୁଜର୍ ଗ୍ରୁପ୍ ଦ୍ଵାରା କଲ୍‌ରେ ସୀମିତ।"</string>
+    <string name="supp_service_closed_user_group_call" msgid="2811636666505250689">"ନିକଟତମ ୟୁଜର ଗ୍ରୁପ କଲ।"</string>
     <string name="supp_service_incoming_calls_barred" msgid="2034627421274447674">"ଇନକମିଙ୍ଗ କଲ୍‌କୁ ରୋକାଯାଇଛି।"</string>
     <string name="supp_service_outgoing_calls_barred" msgid="5205725332394087112">"ଆଉଟ୍‌ଗୋ‌ଇଙ୍ଗ କଲ୍‌କୁ ରୋକାଯାଇଛି।"</string>
     <string name="supp_service_call_forwarding_active" msgid="7910162960395132464">"କଲ୍ ଫରୱାର୍ଡିଙ୍ଗ ସକ୍ରିୟ ଅଛି।"</string>

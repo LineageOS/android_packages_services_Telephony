@@ -144,7 +144,7 @@
     <string name="stk_cc_ss_to_ussd_error" msgid="8330749347425752192">"SS অনুৰোধ USSD অনুৰোধলৈ সলনি কৰা হ’ল"</string>
     <string name="stk_cc_ss_to_ss_error" msgid="8297155544652134278">"নতুন SS অনুৰোধলৈ সলনি কৰা হ’ল"</string>
     <string name="stk_cc_ss_to_dial_video_error" msgid="4255261231466032505">"SS অনুৰোধ ভিডিঅ\' কললৈ সলনি কৰা হ’ল"</string>
-    <string name="fdn_check_failure" msgid="1833769746374185247">"আপোনাৰ ফ\'ন এপটোৰ ফিক্সড্ ডায়েলিং নম্বৰ ছেটিঙটো অন কৰি থোৱা আছে। ফলস্বৰূপে, কল সম্পৰ্কীয় কিছুমান সুবিধাই কাম কৰা নাই।"</string>
+    <string name="fdn_check_failure" msgid="1833769746374185247">"আপোনাৰ ফ\'ন এপ্‌টোৰ ফিক্সড্ ডায়েলিং নম্বৰ ছেটিঙটো অন কৰি থোৱা আছে। ফলস্বৰূপে, কল সম্পৰ্কীয় কিছুমান সুবিধাই কাম কৰা নাই।"</string>
     <string name="radio_off_error" msgid="8321564164914232181">"এই ছেটিংসমূহ চোৱাৰ আগতে ৰেডিঅ\' অন কৰক।"</string>
     <string name="close_dialog" msgid="1074977476136119408">"ঠিক"</string>
     <string name="enable" msgid="2636552299455477603">"অন কৰক"</string>
@@ -179,7 +179,7 @@
     <string name="network_query_error" msgid="3862515805115145124">"নেটৱৰ্ক বিচাৰি পোৱা নগ\'ল। আকৌ চেষ্টা কৰক।"</string>
     <string name="register_on_network" msgid="4194770527833960423">"<xliff:g id="NETWORK">%s</xliff:g>ৰ লগত পঞ্জীয়ন কৰি থকা হৈছে…"</string>
     <string name="not_allowed" msgid="8541221928746104798">"আপোনাৰ ছিম কাৰ্ডখনে এই নেটৱৰ্কটোৰ সৈতে সংযোগ কৰিবলৈ অনুমতি নিদিয়ে।"</string>
-    <string name="connect_later" msgid="1950138106010005425">"এই মুহূৰ্তত এই নেটৱৰ্কটোৰ সৈতে সংযোগ কৰিব নোৱাৰি। পিছত আকৌ চেষ্টা কৰক।"</string>
+    <string name="connect_later" msgid="1950138106010005425">"এই মুহূৰ্তত এই নেটৱৰ্কটোৰ সৈতে সংযোগ কৰিব নোৱাৰি। পাছত আকৌ চেষ্টা কৰক।"</string>
     <string name="registration_done" msgid="5337407023566953292">"নেটৱৰ্কৰ লগত পঞ্জীয়ন কৰা হ’ল।"</string>
     <string name="already_auto" msgid="8607068290733079336">"স্বয়ংক্ৰিয় বাছনিত ইতিমধ্যে আছে।"</string>
     <string name="select_automatically" msgid="779750291257872651">"স্বয়ংক্ৰিয়ভাৱে নেটৱৰ্ক বাছনি কৰক"</string>
@@ -613,7 +613,7 @@
     <string name="network_info_message" msgid="7599413947016532355">"নেটৱৰ্ক বাৰ্তা"</string>
     <string name="network_error_message" msgid="4271579424089326618">"আসোঁৱাহ বাৰ্তা"</string>
     <string name="ota_title_activate" msgid="4049645324841263423">"আপোনাৰ ফ\'নটো সক্ৰিয় কৰক"</string>
-    <string name="ota_touch_activate" msgid="838764494319694754">"আপোনাৰ ফ\'নৰ সেৱা সক্ৰিয় কৰিবলৈ এটা বিশেষ কল কৰা প্ৰয়োজন। \n\nআপোনাৰ ফ\'নটো সক্ৰিয় কৰিবলৈ \"সক্ৰিয় কৰক\"ত টিপাৰ পিছত নিৰ্দেশনাসমূহ শুনক।"</string>
+    <string name="ota_touch_activate" msgid="838764494319694754">"আপোনাৰ ফ\'নৰ সেৱা সক্ৰিয় কৰিবলৈ এটা বিশেষ কল কৰা প্ৰয়োজন। \n\nআপোনাৰ ফ\'নটো সক্ৰিয় কৰিবলৈ \"সক্ৰিয় কৰক\"ত টিপাৰ পাছত নিৰ্দেশনাসমূহ শুনক।"</string>
     <string name="ota_hfa_activation_title" msgid="3300556778212729671">"সক্ৰিয় কৰি থকা হৈছে..."</string>
     <string name="ota_hfa_activation_dialog_message" msgid="7921718445773342996">"ফ\'নটোৱে আপোনাৰ ম’বাইল ডেটা সেৱা সক্ৰিয় কৰি আছে।\n\nএই কামটো সম্পূৰ্ণ হ\'বলৈ ৫ মিনিট পৰ্যন্ত সময় লাগিব পাৰে।"</string>
     <string name="ota_skip_activation_dialog_title" msgid="7666611236789203797">"সক্ৰিয়কৰণ এৰি যায় নেকি?"</string>
@@ -711,7 +711,7 @@
     <string name="mobile_data_activate_cancel_button" msgid="3530174817572005860">"বাতিল কৰক"</string>
     <string name="clh_card_title_call_ended_txt" msgid="5977978317527299698">"কল শেষ হ’ল"</string>
     <string name="clh_callFailed_powerOff_txt" msgid="8279934912560765361">"এয়াৰপ্লেইন ম\'ড অন হৈ আছে"</string>
-    <string name="clh_callFailed_simError_txt" msgid="5128538525762326413">"ছিম কাৰ্ডত প্ৰৱেশ কৰিব পৰা নাই"</string>
+    <string name="clh_callFailed_simError_txt" msgid="5128538525762326413">"ছিম কাৰ্ড এক্সেছ কৰিব নোৱাৰি"</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="2736010617446749869">"ম’বাইল নেটৱৰ্ক উপলব্ধ নহয়"</string>
     <string name="clh_callFailed_unassigned_number_txt" msgid="141967660286695682">"আপুনি ডায়েল কৰিব খোজা ফ\'ন নম্বৰত আসোঁৱাহ আছে। আসোঁৱাহ ক\'ড ১।"</string>
     <string name="clh_callFailed_no_route_to_destination_txt" msgid="4805015149822352308">"কলটো সম্পূৰ্ণ কৰিব পৰা নগ\'ল। আসোঁৱাহ ক\'ড ৩।"</string>
@@ -794,7 +794,7 @@
     <string name="call_barring_confirm_pwd" msgid="7552526161616461858">"পাছৱৰ্ড নিশ্চিত কৰক"</string>
     <string name="messageCallBarring" msgid="5537730400652466912">"পাছৱৰ্ড দিয়ক"</string>
     <string name="call_barring_settings" msgid="4616607285790258919">"কল প্ৰতিবন্ধক ছেটিংসমূহ"</string>
-    <string name="callFailed_NetworkBusy" msgid="5437103975842913681">"নেটৱৰ্ক ব্যস্ত। অনুগ্ৰহ কৰি কিছুসময় পিছত আকৌ কল কৰাৰ চেষ্টা কৰক।"</string>
+    <string name="callFailed_NetworkBusy" msgid="5437103975842913681">"নেটৱৰ্ক ব্যস্ত। অনুগ্ৰহ কৰি কিছুসময় পাছত আকৌ কল কৰাৰ চেষ্টা কৰক।"</string>
     <string name="callFailed_NetworkCongested" msgid="6801283142342775380">"নেটৱর্ক ব্যস্ত আছে। সহায়তাৰ বাবে আপোনাৰ ম\'বাইল অ\'পাৰেটৰৰ সৈতে যোগাযোগ কৰক।"</string>
     <string name="supp_service_notification_call_deflected" msgid="4980942818105909813">"কলটো বিচ্যুত কৰা হৈছে।"</string>
     <string name="supp_service_notification_call_forwarded" msgid="7102930311735433088">"কলটো ফৰৱাৰ্ড কৰা হ’ল।"</string>

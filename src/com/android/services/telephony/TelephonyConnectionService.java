@@ -1133,6 +1133,11 @@ public class TelephonyConnectionService extends ConnectionService {
                             "Invalid phone type",
                             phone.getPhoneId()));
         }
+        if (!Objects.equals(request.getAccountHandle(), accountHandle)) {
+            Log.i(this, "onCreateOutgoingConnection, update phoneAccountHandle, accountHandle = "
+                    + accountHandle);
+            connection.setPhoneAccountHandle(accountHandle);
+        }
         connection.setAddress(handle, PhoneConstants.PRESENTATION_ALLOWED);
         connection.setTelephonyConnectionInitializing();
         connection.setTelephonyVideoState(request.getVideoState());

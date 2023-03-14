@@ -555,7 +555,7 @@
     <string name="incall_error_supp_service_hangup" msgid="836524952243836735">"Kan ikke frigjøre samtale(r)."</string>
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"Kan ikke sette samtaler på vent."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"Koble til et trådløst nettverk for å ringe."</string>
-    <string name="incall_error_promote_wfc" msgid="9164896813931363415">"Slå på telefonanrop via Wi-Fi for å ringe."</string>
+    <string name="incall_error_promote_wfc" msgid="9164896813931363415">"Slå på telefonanrop via Wifi for å ringe."</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"Nødinformasjon"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"Eier"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"Trykk på nytt for å se informasjon"</string>
@@ -673,12 +673,12 @@
     <string name="sim_description_default" msgid="7474671114363724971">"SIM-kort, spor: <xliff:g id="SLOT_ID">%s</xliff:g>"</string>
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"Tilgjengelighet"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"Wifi-anrop fra"</string>
-    <string name="status_hint_label_wifi_call" msgid="942993035689809853">"Oppringing via Wi-Fi"</string>
+    <string name="status_hint_label_wifi_call" msgid="942993035689809853">"Oppringing via Wifi"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"Det oppsto en feil under dekoding av meldingen."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"Et SIM-kort har aktivert tjenesten din og oppdatert roamingfunksjonene for telefonen din."</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"Du har for mange aktive samtaler. Avslutt eller slå sammen eksisterende samtaler før du starter en ny samtale."</string>
     <string name="callFailed_imei_not_accepted" msgid="7257903653685147251">"Kunne ikke koble til. Sett inn et gyldig SIM-kort."</string>
-    <string name="callFailed_wifi_lost" msgid="1788036730589163141">"Samtalen ble avsluttet fordi Wi-Fi-forbindelsen ble brutt."</string>
+    <string name="callFailed_wifi_lost" msgid="1788036730589163141">"Samtalen ble avsluttet fordi Wifi-forbindelsen ble brutt."</string>
     <string name="dialFailed_low_battery" msgid="6857904237423407056">"Kan ikke utføre videoanropet på grunn av lite batteristrøm."</string>
     <string name="callFailed_low_battery" msgid="4056828320214416182">"Videosamtalen ble avsluttet på grunn av lite batteristrøm."</string>
     <string name="callFailed_emergency_call_over_wfc_not_available" msgid="5944309590693432042">"Nødanrop via wifi-anrop er ikke tilgjengelig på dette stedet."</string>
@@ -846,7 +846,7 @@
     <string name="radio_info_ims_reg_status_not_registered" msgid="8045821447288876085">"Ikke registrert"</string>
     <string name="radio_info_ims_feature_status_available" msgid="6493200914756969292">"Tilgjengelig"</string>
     <string name="radio_info_ims_feature_status_unavailable" msgid="8930391136839759778">"Utilgjengelig"</string>
-    <string name="radio_info_ims_reg_status" msgid="25582845222446390">"IMS-registrering: <xliff:g id="STATUS">%1$s</xliff:g>\nTale over LTE: <xliff:g id="AVAILABILITY_0">%2$s</xliff:g>\nTale over Wi-Fi: <xliff:g id="AVAILABILITY_1">%3$s</xliff:g>\nVideoanrop: <xliff:g id="AVAILABILITY_2">%4$s</xliff:g>\nUT-grensesnitt: <xliff:g id="AVAILABILITY_3">%5$s</xliff:g>"</string>
+    <string name="radio_info_ims_reg_status" msgid="25582845222446390">"IMS-registrering: <xliff:g id="STATUS">%1$s</xliff:g>\nTale over LTE: <xliff:g id="AVAILABILITY_0">%2$s</xliff:g>\nTale over Wifi: <xliff:g id="AVAILABILITY_1">%3$s</xliff:g>\nVideoanrop: <xliff:g id="AVAILABILITY_2">%4$s</xliff:g>\nUT-grensesnitt: <xliff:g id="AVAILABILITY_3">%5$s</xliff:g>"</string>
     <string name="radioInfo_service_in" msgid="45753418231446400">"Fungerer som normalt"</string>
     <string name="radioInfo_service_out" msgid="287972405416142312">"Ute av drift"</string>
     <string name="radioInfo_service_emergency" msgid="4763879891415016848">"Bare nødanrop"</string>
