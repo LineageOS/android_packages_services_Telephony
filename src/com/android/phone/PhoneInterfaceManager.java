@@ -109,6 +109,7 @@ import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyFrameworkInitializer;
 import android.telephony.TelephonyHistogram;
 import android.telephony.TelephonyManager;
+import android.telephony.TelephonyManager.SimState;
 import android.telephony.TelephonyScanManager;
 import android.telephony.ThermalMitigationRequest;
 import android.telephony.UiccCardInfo;
@@ -165,6 +166,7 @@ import com.android.internal.telephony.IIntegerConsumer;
 import com.android.internal.telephony.INumberVerificationCallback;
 import com.android.internal.telephony.ITelephony;
 import com.android.internal.telephony.IccCard;
+import com.android.internal.telephony.IccCardConstants;
 import com.android.internal.telephony.IccLogicalChannelRequest;
 import com.android.internal.telephony.LocaleTracker;
 import com.android.internal.telephony.NetworkScanRequestTracker;
@@ -11355,5 +11357,36 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
-
+    /**
+     * Get the SIM state for the slot index.
+     * For Remote-SIMs, this method returns {@link IccCardConstants.State#UNKNOWN}
+     *
+     * @return SIM state as the ordinal of {@link IccCardConstants.State}
+     */
+    @Override
+    @SimState
+    public int getSimStateForSlotIndex(int slotIndex) {
+        IccCardConstants.State simState;
+        if (slotIndex < 0) {
+            simState = IccCardConstants.State.UNKNOWN;
+        } else {
+            Phone phone = null;
+            try {
+                phone = PhoneFactory.getPhone(slotIndex);
+            } catch (IllegalStateException e) {
+                // ignore
+            }
+            if (phone == null) {
+                simState = IccCardConstants.State.UNKNOWN;
+            } else {
+                IccCard icc = phone.getIccCard();
+                if (icc == null) {
+                    simState = IccCardConstants.State.UNKNOWN;
+                } else {
+                    simState = icc.getState();
+                }
+            }
+        }
+        return simState.ordinal();
+    }
 }
