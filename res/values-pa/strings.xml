@@ -879,7 +879,7 @@
     <string name="radio_info_imei_label" msgid="8947899706930120368">"IMEI:"</string>
     <string name="radio_info_call_redirect_label" msgid="4526480903023362276">"ਇਸ \'ਤੇ ਕਾਲ ਰੀਡਾਇਰੈਕਟ ਕਰੋ:"</string>
     <string name="radio_info_ppp_resets_label" msgid="9131901102339077661">"ਬੂਟ ਤੋਂ ਬਾਅਦ PPP ਰੀਸੈੱਟ ਦੀ ਗਿਣਤੀ:"</string>
-    <string name="radio_info_current_network_label" msgid="3052098695239642450">"ਵਰਤਮਾਨ ਨੈੱਟਵਰਕ:"</string>
+    <string name="radio_info_current_network_label" msgid="3052098695239642450">"ਮੌਜੂਦਾ ਨੈੱਟਵਰਕ:"</string>
     <string name="radio_info_ppp_received_label" msgid="5753592451640644889">"ਡਾਟਾ ਪ੍ਰਾਪਤ ਹੋਇਆ:"</string>
     <string name="radio_info_gsm_service_label" msgid="6443348321714241328">"ਵੌਇਸ ਸੇਵਾ:"</string>
     <string name="radio_info_signal_strength_label" msgid="5545444702102543260">"ਸਿਗਨਲ ਦੀ ਤੀਬਰਤਾ:"</string>
