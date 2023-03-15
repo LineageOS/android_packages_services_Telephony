@@ -285,7 +285,7 @@
     <string name="roaming_enable" msgid="6853685214521494819">"Повежи са услугом за податке у ромингу"</string>
     <string name="roaming_disable" msgid="8856224638624592681">"Повежи са услугом за податке у ромингу"</string>
     <string name="roaming_reenable_message" msgid="1951802463885727915">"Пренос података у ромингу је искључен. Додирните да бисте га укључили."</string>
-    <string name="roaming_enabled_message" msgid="9022249120750897">"Важе накнаде за роминг. Додирните да бисте изменили."</string>
+    <string name="roaming_enabled_message" msgid="9022249120750897">"Могу да важе накнаде за роминг. Додирните да бисте изменили."</string>
     <string name="roaming_notification_title" msgid="3590348480688047320">"Изгубили сте везу за пренос мобилних података"</string>
     <string name="roaming_on_notification_title" msgid="7451473196411559173">"Пренос података у ромингу је укључен"</string>
     <string name="roaming_warning" msgid="7855681468067171971">"Могу да настану значајни трошкови."</string>

@@ -827,7 +827,7 @@
     <string name="radio_info_data_connection_disable" msgid="6404751291511368706">"Inaktivera dataanslutning"</string>
     <string name="volte_provisioned_switch_string" msgid="4812874990480336178">"VoLTE-administrerad"</string>
     <string name="vt_provisioned_switch_string" msgid="8295542122512195979">"Videosamtal tillhandahålls"</string>
-    <string name="wfc_provisioned_switch_string" msgid="3835004640321078988">"wifi-samtal tillhandahålls"</string>
+    <string name="wfc_provisioned_switch_string" msgid="3835004640321078988">"Wifi-samtal tillhandahålls"</string>
     <string name="eab_provisioned_switch_string" msgid="4449676720736033035">"EAB/Presence tillhandahålls"</string>
     <string name="cbrs_data_switch_string" msgid="6060356430838077653">"Data via CBRS"</string>
     <string name="dsds_switch_string" msgid="7564769822086764796">"Aktivera DSDS"</string>
