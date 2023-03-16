@@ -58,10 +58,8 @@ import java.util.function.Consumer;
  */
 @RunWith(AndroidJUnit4.class)
 public class SmsDomainSelectorTest {
-    private static final String LOG_TAG = "DomainSelector-SMS";
     private static final int SLOT_0 = 0;
     private static final int SUB_1 = 1;
-    private static final int SUB_2 = 2;
 
     @Mock private TransportSelectorCallback mTransportSelectorCallback;
     @Mock private WwanSelectorCallback mWwanSelectorCallback;

@@ -89,7 +89,6 @@ public class EmergencySmsDomainSelectorTest {
     private NetworkRegistrationInfo mNetworkRegistrationInfo;
     private boolean mCarrierConfigManagerNullTest = false;
     private BarringInfo mBarringInfo = new BarringInfo();
-    private ImsStateTracker.ImsStateListener mImsStateListener;
     private ImsStateTracker.BarringInfoListener mBarringInfoListener;
     private ImsStateTracker.ServiceStateListener mServiceStateListener;
     private EmergencySmsDomainSelector mDomainSelector;
@@ -415,7 +414,7 @@ public class EmergencySmsDomainSelectorTest {
         // onDomainSelected will be invoked only once
         // even though the domain selection was requested twice.
         verify(mWwanSelectorCallback).onDomainSelected(eq(NetworkRegistrationInfo.DOMAIN_PS),
-                eq(false));
+                eq(true));
         assertFalse(mDomainSelector.isDomainSelectionRequested());
     }
 
@@ -484,7 +483,7 @@ public class EmergencySmsDomainSelectorTest {
 
         // Expected: PS network
         verify(mWwanSelectorCallback).onDomainSelected(eq(NetworkRegistrationInfo.DOMAIN_PS),
-                eq(false));
+                eq(true));
     }
 
     @Test
@@ -535,7 +534,7 @@ public class EmergencySmsDomainSelectorTest {
 
         // Expected: PS network
         verify(mWwanSelectorCallback).onDomainSelected(eq(NetworkRegistrationInfo.DOMAIN_PS),
-                eq(false));
+                eq(true));
     }
 
     @Test
@@ -586,7 +585,7 @@ public class EmergencySmsDomainSelectorTest {
 
         // Expected: PS network
         verify(mWwanSelectorCallback).onDomainSelected(eq(NetworkRegistrationInfo.DOMAIN_PS),
-                eq(false));
+                eq(true));
     }
 
     @Test
@@ -673,7 +672,7 @@ public class EmergencySmsDomainSelectorTest {
 
         // Expected: PS network
         verify(mWwanSelectorCallback).onDomainSelected(eq(NetworkRegistrationInfo.DOMAIN_PS),
-                eq(false));
+                eq(true));
     }
 
     private void setUpCarrierConfig(boolean supported) {
