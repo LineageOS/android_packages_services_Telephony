@@ -147,12 +147,12 @@ public class SmsDomainSelector extends DomainSelectorBase implements
 
         if (isSmsOverImsAvailable()) {
             if (mImsStateTracker.isImsRegisteredOverWlan()) {
-                notifyWlanSelected();
+                notifyWlanSelected(false);
                 return;
             }
-            notifyWwanSelected(NetworkRegistrationInfo.DOMAIN_PS);
+            notifyWwanSelected(NetworkRegistrationInfo.DOMAIN_PS, false);
         } else {
-            notifyWwanSelected(NetworkRegistrationInfo.DOMAIN_CS);
+            notifyWwanSelected(NetworkRegistrationInfo.DOMAIN_CS, false);
         }
     }
 
@@ -176,30 +176,33 @@ public class SmsDomainSelector extends DomainSelectorBase implements
         }
     }
 
-    protected void notifyWlanSelected() {
-        logi("DomainSelected: WLAN");
-        mTransportSelectorCallback.onWlanSelected(false);
+    protected void notifyWlanSelected(boolean useEmergencyPdn) {
+        logi("DomainSelected: WLAN, E-PDN=" + useEmergencyPdn);
+        mTransportSelectorCallback.onWlanSelected(useEmergencyPdn);
         setDomainSelectionRequested(false);
     }
 
-    protected void notifyWwanSelected(@NetworkRegistrationInfo.Domain int domain) {
+    protected void notifyWwanSelected(@NetworkRegistrationInfo.Domain int domain,
+            boolean useEmergencyPdn) {
         if (mWwanSelectorCallback == null) {
             mTransportSelectorCallback.onWwanSelected((callback) -> {
                 mWwanSelectorCallback = callback;
-                notifyWwanSelectedInternal(domain);
+                notifyWwanSelectedInternal(domain, useEmergencyPdn);
             });
         } else {
-            notifyWwanSelectedInternal(domain);
+            notifyWwanSelectedInternal(domain, useEmergencyPdn);
         }
 
         setDomainSelectionRequested(false);
     }
 
-    protected void notifyWwanSelectedInternal(@NetworkRegistrationInfo.Domain int domain) {
-        logi("DomainSelected: WWAN/" + DomainSelectionService.getDomainName(domain));
+    protected void notifyWwanSelectedInternal(@NetworkRegistrationInfo.Domain int domain,
+            boolean useEmergencyPdn) {
+        logi("DomainSelected: WWAN/" + DomainSelectionService.getDomainName(domain)
+                + ", E-PDN=" + useEmergencyPdn);
 
         if (mWwanSelectorCallback != null) {
-            mWwanSelectorCallback.onDomainSelected(domain, false);
+            mWwanSelectorCallback.onDomainSelected(domain, useEmergencyPdn);
         } else {
             mTransportSelectorCallback.onSelectionTerminated(DisconnectCause.LOCAL);
         }
