@@ -79,6 +79,8 @@ import com.android.internal.telephony.domainselection.DomainSelectionResolver;
 import com.android.internal.telephony.domainselection.EmergencyCallDomainSelectionConnection;
 import com.android.internal.telephony.domainselection.NormalCallDomainSelectionConnection;
 import com.android.internal.telephony.emergency.EmergencyStateTracker;
+import com.android.internal.telephony.emergency.RadioOnHelper;
+import com.android.internal.telephony.emergency.RadioOnStateListener;
 import com.android.internal.telephony.imsphone.ImsExternalCallTracker;
 import com.android.internal.telephony.imsphone.ImsPhone;
 import com.android.internal.telephony.imsphone.ImsPhoneConnection;

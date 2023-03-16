@@ -91,6 +91,8 @@ import com.android.internal.telephony.domainselection.EmergencyCallDomainSelecti
 import com.android.internal.telephony.domainselection.NormalCallDomainSelectionConnection;
 import com.android.internal.telephony.emergency.EmergencyNumberTracker;
 import com.android.internal.telephony.emergency.EmergencyStateTracker;
+import com.android.internal.telephony.emergency.RadioOnHelper;
+import com.android.internal.telephony.emergency.RadioOnStateListener;
 import com.android.internal.telephony.gsm.SuppServiceNotification;
 import com.android.internal.telephony.imsphone.ImsPhone;
 import com.android.internal.telephony.satellite.SatelliteSOSMessageRecommender;
