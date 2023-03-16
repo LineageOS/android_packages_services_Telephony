@@ -300,8 +300,7 @@ public class SlicePurchaseController extends Handler {
             mSlicePurchaseControllerBroadcastReceivers = new HashMap<>();
     /** The current network slicing configuration. */
     @Nullable private NetworkSlicingConfig mSlicingConfig;
-    /** Premium network entitlement query API. */
-    @NonNull private final PremiumNetworkEntitlementApi mPremiumNetworkEntitlementApi;
+
     /** LocalDate to use when resetting notification counts. {@code null} except when testing. */
     @Nullable private LocalDate mLocalDate;
     /** The number of times the performance boost notification has been shown today. */
@@ -452,8 +451,6 @@ public class SlicePurchaseController extends Handler {
         mPhone = phone;
         // TODO: Create a cached value for slicing config in DataIndication and initialize here
         mPhone.mCi.registerForSlicingConfigChanged(this, EVENT_SLICING_CONFIG_CHANGED, null);
-        mPremiumNetworkEntitlementApi =
-                new PremiumNetworkEntitlementApi(mPhone, getCarrierConfigs());
         mIsSlicingUpsellEnabled = DeviceConfig.getBoolean(
                 DeviceConfig.NAMESPACE_TELEPHONY, KEY_ENABLE_SLICING_UPSELL, false);
         DeviceConfig.addOnPropertiesChangedListener(
@@ -682,10 +679,20 @@ public class SlicePurchaseController extends Handler {
         }
     }
 
+    /*
+      return a new PremiumNetworkEntitlementApi object.
+     */
+    @VisibleForTesting
+    public PremiumNetworkEntitlementApi getPremiumNetworkEntitlementApi() {
+        return new PremiumNetworkEntitlementApi(mPhone, getCarrierConfigs());
+    }
+
     private void onStartSlicePurchaseApplication(
             @TelephonyManager.PremiumCapability int capability) {
+        final PremiumNetworkEntitlementApi premiumNetworkEntitlementApi =
+                getPremiumNetworkEntitlementApi();
         PremiumNetworkEntitlementResponse premiumNetworkEntitlementResponse =
-                mPremiumNetworkEntitlementApi.checkEntitlementStatus(capability);
+                premiumNetworkEntitlementApi.checkEntitlementStatus(capability);
 
         // invalid response for entitlement check
         if (premiumNetworkEntitlementResponse == null) {
