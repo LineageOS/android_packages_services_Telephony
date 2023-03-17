@@ -111,7 +111,7 @@ public class EmergencySmsDomainSelector extends SmsDomainSelector implements
              * when {@link CarrierConfigManager#KEY_SUPPORT_EMERGENCY_SMS_OVER_IMS_BOOL} is set
              * to true.
              */
-            if (isEmergencySmsOverImsSupportedByConfig()) {
+            if (isEmergencySmsOverImsSupportedIfLteLimitedOrInService()) {
                 /**
                  * Emergency SMS should be supported via emergency PDN.
                  * If this condition is false, then need to fallback to CS network
@@ -142,22 +142,30 @@ public class EmergencySmsDomainSelector extends SmsDomainSelector implements
         logi("selectDomain: " + mImsStateTracker.imsStateToString());
 
         if (isSmsOverImsAvailable()) {
-            if (mImsStateTracker.isImsRegisteredOverWlan()) {
-                if (!isEmergencySmsOverImsSupportedByConfig()) {
-                    notifyWlanSelected();
-                    return;
-                }
+            boolean isEmergencySmsOverImsSupportedIfLteLimitedOrInService =
+                    isEmergencySmsOverImsSupportedIfLteLimitedOrInService();
 
+            if (mImsStateTracker.isImsRegisteredOverWlan()) {
                 /**
                  * When {@link CarrierConfigManager#KEY_SUPPORT_EMERGENCY_SMS_OVER_IMS_BOOL}
                  * is set to true, the emergency SMS supports on the LTE network using the
-                 * emergency PDN. So, considering EUTRAN only at this point.
+                 * emergency PDN. As of now, since the emergency SMS doesn't use the emergency PDN
+                 * over WLAN, the domain selector reports the domain as WLAN only if
+                 * {@code isEmergencySmsOverImsSupportedIfLteLimitedOrInService} is set to false
+                 * and IMS is registered over WLAN.
+                 * Otherwise, the domain selector reports the domain as WWAN.
                  */
+                if (!isEmergencySmsOverImsSupportedIfLteLimitedOrInService) {
+                    notifyWlanSelected(false);
+                    return;
+                }
+
                 logi("DomainSelected: WLAN >> WWAN");
             }
-            notifyWwanSelected(NetworkRegistrationInfo.DOMAIN_PS);
+            notifyWwanSelected(NetworkRegistrationInfo.DOMAIN_PS,
+                    isEmergencySmsOverImsSupportedIfLteLimitedOrInService);
         } else {
-            notifyWwanSelected(NetworkRegistrationInfo.DOMAIN_CS);
+            notifyWwanSelected(NetworkRegistrationInfo.DOMAIN_CS, false);
         }
     }
 
@@ -166,15 +174,16 @@ public class EmergencySmsDomainSelector extends SmsDomainSelector implements
      * configuration and the current network states.
      */
     private boolean isImsEmergencySmsAvailable() {
-        boolean emergencySmsOverImsSupportedByConfig = isEmergencySmsOverImsSupportedByConfig();
+        boolean isEmergencySmsOverImsSupportedIfLteLimitedOrInService =
+                isEmergencySmsOverImsSupportedIfLteLimitedOrInService();
         boolean networkAvailable = isNetworkAvailableForImsEmergencySms();
 
         logi("isImsEmergencySmsAvailable: "
-                + "emergencySmsOverIms=" + emergencySmsOverImsSupportedByConfig
+                + "emergencySmsOverIms=" + isEmergencySmsOverImsSupportedIfLteLimitedOrInService
                 + ", mmTelFeatureAvailable=" + mImsStateTracker.isMmTelFeatureAvailable()
                 + ", networkAvailable=" + networkAvailable);
 
-        return emergencySmsOverImsSupportedByConfig
+        return isEmergencySmsOverImsSupportedIfLteLimitedOrInService
                 && mImsStateTracker.isMmTelFeatureAvailable()
                 && networkAvailable;
     }
@@ -183,7 +192,7 @@ public class EmergencySmsDomainSelector extends SmsDomainSelector implements
      * Checks if sending emergency SMS messages over IMS is supported when in LTE/limited LTE
      * (Emergency only) service mode from the carrier configuration.
      */
-    private boolean isEmergencySmsOverImsSupportedByConfig() {
+    private boolean isEmergencySmsOverImsSupportedIfLteLimitedOrInService() {
         if (mEmergencySmsOverImsSupportedByConfig == null) {
             CarrierConfigManager ccm = mContext.getSystemService(CarrierConfigManager.class);
 
