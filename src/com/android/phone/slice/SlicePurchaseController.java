@@ -784,7 +784,8 @@ public class SlicePurchaseController extends Handler {
         filter.addAction(ACTION_SLICE_PURCHASE_APP_RESPONSE_SUCCESS);
         filter.addAction(ACTION_SLICE_PURCHASE_APP_RESPONSE_NOTIFICATION_SHOWN);
         mPhone.getContext().registerReceiver(
-                mSlicePurchaseControllerBroadcastReceivers.get(capability), filter);
+                mSlicePurchaseControllerBroadcastReceivers.get(capability), filter,
+                Context.RECEIVER_NOT_EXPORTED);
     }
 
     /**
