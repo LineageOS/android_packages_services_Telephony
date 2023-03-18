@@ -672,7 +672,7 @@
     <string name="sim_description_emergency_calls" msgid="5146872803938897296">"Nur Notrufe"</string>
     <string name="sim_description_default" msgid="7474671114363724971">"SIM-Karte, Schacht: <xliff:g id="SLOT_ID">%s</xliff:g>"</string>
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"Bedienungshilfen"</string>
-    <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"WLAN-Anruf von"</string>
+    <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"WiFi-Anruf von"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"WLAN-Anruf"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"Beim Entschlüsseln der Nachricht ist ein Fehler aufgetreten."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"Eine SIM-Karte hat deinen Dienst aktiviert und die Roamingfunktionen deines Smartphones aktualisiert."</string>
