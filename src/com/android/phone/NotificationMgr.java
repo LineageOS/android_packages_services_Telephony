@@ -365,10 +365,16 @@ public class NotificationMgr {
                                 null));
                 intent.putExtra(TelecomManager.EXTRA_PHONE_ACCOUNT_HANDLE, phoneAccountHandle);
             }
-
-            PendingIntent pendingIntent =
-                    PendingIntent.getActivity(mContext, subId /* requestCode */, intent,
-                            PendingIntent.FLAG_IMMUTABLE);
+            PendingIntent pendingIntent;
+            UserHandle subAssociatedUserHandle =
+                    mSubscriptionManager.getSubscriptionUserHandle(subId);
+            if (subAssociatedUserHandle == null) {
+                pendingIntent = PendingIntent.getActivity(mContext, subId /* requestCode */, intent,
+                        PendingIntent.FLAG_IMMUTABLE);
+            } else {
+                pendingIntent = PendingIntent.getActivityAsUser(mContext, subId /* requestCode */,
+                        intent, PendingIntent.FLAG_IMMUTABLE, null, subAssociatedUserHandle);
+            }
 
             Resources res = mContext.getResources();
             PersistableBundle carrierConfig = PhoneGlobals.getInstance().getCarrierConfigForSubId(
@@ -389,34 +395,21 @@ public class NotificationMgr {
             final Notification notification = builder.build();
             List<UserHandle> users = getUsersExcludeDying();
             for (UserHandle userHandle : users) {
-                if (!hasUserRestriction(
-                        UserManager.DISALLOW_OUTGOING_CALLS, userHandle)
-                        && !mUserManager.isManagedProfile(userHandle.getIdentifier())) {
-                    if (!maybeSendVoicemailNotificationUsingDefaultDialer(phone, vmCount, vmNumber,
-                            pendingIntent, isSettingsIntent, userHandle, isRefresh)) {
-                        notifyAsUser(
-                                Integer.toString(subId) /* tag */,
-                                VOICEMAIL_NOTIFICATION,
-                                notification,
-                                userHandle);
-                    }
+                boolean isManagedUser = mUserManager.isManagedProfile(userHandle.getIdentifier());
+                if (!hasUserRestriction(UserManager.DISALLOW_OUTGOING_CALLS, userHandle)
+                        && (userHandle.equals(subAssociatedUserHandle)
+                            || (subAssociatedUserHandle == null && !isManagedUser))
+                        && !maybeSendVoicemailNotificationUsingDefaultDialer(phone, vmCount,
+                        vmNumber, pendingIntent, isSettingsIntent, userHandle, isRefresh)) {
+                    notifyAsUser(
+                            Integer.toString(subId) /* tag */,
+                            VOICEMAIL_NOTIFICATION,
+                            notification,
+                            userHandle);
                 }
             }
         } else {
-            List<UserHandle> users = getUsersExcludeDying();
-            for (UserHandle userHandle : users) {
-                if (!hasUserRestriction(
-                        UserManager.DISALLOW_OUTGOING_CALLS, userHandle)
-                        && !mUserManager.isManagedProfile(userHandle.getIdentifier())) {
-                    if (!maybeSendVoicemailNotificationUsingDefaultDialer(phone, 0, null, null,
-                            false, userHandle, isRefresh)) {
-                        cancelAsUser(
-                                Integer.toString(subId) /* tag */,
-                                VOICEMAIL_NOTIFICATION,
-                                userHandle);
-                    }
-                }
-            }
+            cancelAsUser(Integer.toString(subId) /* tag */, VOICEMAIL_NOTIFICATION, UserHandle.ALL);
         }
     }
 
