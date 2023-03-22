@@ -96,7 +96,7 @@
     <string name="sum_loading_settings" msgid="434063780286688775">"A carregar as definições..."</string>
     <string name="sum_hide_caller_id" msgid="131100328602371933">"Ocultar o número em chamadas efectuadas"</string>
     <string name="sum_show_caller_id" msgid="3571854755324664591">"Número apresentado em chamadas efectuadas"</string>
-    <string name="sum_default_caller_id" msgid="1767070797135682959">"Utilizar as predefinições do operador para apresentar o meu número nas chamadas efetuadas"</string>
+    <string name="sum_default_caller_id" msgid="1767070797135682959">"Usar as predefinições do operador para apresentar o meu número nas chamadas efetuadas"</string>
     <string name="labelCW" msgid="8449327023861428622">"Chamada em espera"</string>
     <string name="sum_cw_enabled" msgid="3977308526187139996">"Notificar-me de chamadas em espera durante uma chamada"</string>
     <string name="sum_cw_disabled" msgid="3658094589461768637">"Notificar-me de chamadas em espera durante uma chamada"</string>
@@ -273,8 +273,8 @@
     <string name="network_operator_category" msgid="4992217193732304680">"Rede"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="4213420368777080540">"Modo 4G LTE avançado"</string>
     <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (7240155150166394308) -->
-    <string name="enhanced_4g_lte_mode_summary" msgid="7725708511804143638">"Utilizar os serviços LTE para melhorar a voz e outras comunicações (recomendado)"</string>
-    <string name="enhanced_4g_lte_mode_summary_o2" msgid="2521108446409016542">"Utilizar os serviços 4G para melhorar a voz e outras comunicações (recomendado)"</string>
+    <string name="enhanced_4g_lte_mode_summary" msgid="7725708511804143638">"Usar os serviços LTE para melhorar a voz e outras comunicações (recomendado)"</string>
+    <string name="enhanced_4g_lte_mode_summary_o2" msgid="2521108446409016542">"Usar os serviços 4G para melhorar a voz e outras comunicações (recomendado)"</string>
     <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:0 (2943982616649705147) -->
     <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:1 (5262249464504131443) -->
     <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:2 (6356974241850241718) -->
@@ -574,7 +574,7 @@
     <string name="ambulance_type_description" msgid="6798237503553180461">"Ambulância"</string>
     <string name="fire_type_description" msgid="6565200468934914930">"Fogo"</string>
     <string name="description_concat_format" msgid="2014471565101724088">"%1$s, %2$s"</string>
-    <string name="dialerKeyboardHintText" msgid="1115266533703764049">"Utilizar o teclado para marcar"</string>
+    <string name="dialerKeyboardHintText" msgid="1115266533703764049">"Usar o teclado para marcar"</string>
     <string name="onscreenHoldText" msgid="4025348842151665191">"Suspender"</string>
     <string name="onscreenEndCallText" msgid="6138725377654842757">"Terminar"</string>
     <string name="onscreenShowDialpadText" msgid="658465753816164079">"Teclado de marcação"</string>
