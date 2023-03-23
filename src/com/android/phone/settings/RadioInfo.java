@@ -204,12 +204,10 @@ public class RadioInfo extends AppCompatActivity {
         Log.d(TAG, s);
     }
 
-    private static final int EVENT_CFI_CHANGED = 302;
     private static final int EVENT_QUERY_SMSC_DONE = 1005;
     private static final int EVENT_UPDATE_SMSC_DONE = 1006;
     private static final int EVENT_PHYSICAL_CHANNEL_CONFIG_CHANGED = 1007;
 
-    private static final int MENU_ITEM_SELECT_BAND         = 0;
     private static final int MENU_ITEM_VIEW_ADN            = 1;
     private static final int MENU_ITEM_VIEW_FDN            = 2;
     private static final int MENU_ITEM_VIEW_SDN            = 3;
@@ -262,7 +260,6 @@ public class RadioInfo extends AppCompatActivity {
     private EditText mSmsc;
     private Switch mRadioPowerOnSwitch;
     private Switch mSimulateOutOfServiceSwitch;
-    private Button mCellInfoRefreshRateButton;
     private Button mDnsCheckToggleButton;
     private Button mPingTestButton;
     private Button mUpdateSmscButton;
@@ -795,9 +792,7 @@ public class RadioInfo extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        menu.add(0, MENU_ITEM_SELECT_BAND, 0, R.string.radio_info_band_mode_label)
-                .setOnMenuItemClickListener(mSelectBandCallback)
-                .setAlphabeticShortcut('b');
+        // Removed "select Radio band". If need it back, use setSystemSelectionChannels()
         menu.add(1, MENU_ITEM_VIEW_ADN, 0,
                 R.string.radioInfo_menu_viewADN).setOnMenuItemClickListener(mViewADNCallback);
         menu.add(1, MENU_ITEM_VIEW_FDN, 0,
@@ -1520,16 +1515,6 @@ public class RadioInfo extends AppCompatActivity {
 
             imsDialog.show();
 
-            return true;
-        }
-    };
-
-    private MenuItem.OnMenuItemClickListener mSelectBandCallback =
-            new MenuItem.OnMenuItemClickListener() {
-        public boolean onMenuItemClick(MenuItem item) {
-            Intent intent = new Intent();
-            intent.setClass(RadioInfo.this, BandMode.class);
-            startActivity(intent);
             return true;
         }
     };
