@@ -92,6 +92,12 @@
             <TextView android:id="@+id/data_network" style="@style/info_value" />
         </LinearLayout>
 
+        <!-- Data Raw Registration State -->
+        <LinearLayout style="@style/RadioInfo_entry_layout">
+            <TextView android:text="@string/radio_info_data_raw_registration_state_label" style="@style/info_label" />
+            <TextView android:id="@+id/data_raw_registration_state" style="@style/info_value" />
+        </LinearLayout>
+
         <!-- Override Network Type -->
         <LinearLayout style="@style/RadioInfo_entry_layout">
             <TextView android:text="@string/radio_info_override_network_type_label" style="@style/info_label" />
@@ -108,6 +114,18 @@
         <LinearLayout style="@style/RadioInfo_entry_layout">
             <TextView android:text="@string/radio_info_voice_network_type_label" style="@style/info_label" />
             <TextView android:id="@+id/voice_network" style="@style/info_value" />
+        </LinearLayout>
+
+        <!-- Voice Raw Registration State -->
+        <LinearLayout style="@style/RadioInfo_entry_layout">
+            <TextView android:text="@string/radio_info_voice_raw_registration_state_label" style="@style/info_label" />
+            <TextView android:id="@+id/voice_raw_registration_state" style="@style/info_value" />
+        </LinearLayout>
+
+        <!-- PS IWLAN Raw Registration State -->
+        <LinearLayout style="@style/RadioInfo_entry_layout">
+            <TextView android:text="@string/radio_info_wlan_data_raw_registration_state_label" style="@style/info_label" />
+            <TextView android:id="@+id/wlan_data_raw_registration_state" style="@style/info_value" />
         </LinearLayout>
 
         <!-- Signal Strength -->
