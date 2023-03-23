@@ -236,6 +236,9 @@ public class RadioInfo extends AppCompatActivity {
     private TextView mGprsState;
     private TextView mVoiceNetwork;
     private TextView mDataNetwork;
+    private TextView mVoiceRawReg;
+    private TextView mDataRawReg;
+    private TextView mWlanDataRawReg;
     private TextView mOverrideNetwork;
     private TextView mDBm;
     private TextView mMwi;
@@ -377,6 +380,7 @@ public class RadioInfo extends AppCompatActivity {
             updateServiceState(serviceState);
             updateRadioPowerState();
             updateNetworkType();
+            updateRawRegistrationState(serviceState);
             updateImsProvisionedState();
             updateNrStats(serviceState);
         }
@@ -514,6 +518,9 @@ public class RadioInfo extends AppCompatActivity {
         mGprsState = (TextView) findViewById(R.id.gprs);
         mVoiceNetwork = (TextView) findViewById(R.id.voice_network);
         mDataNetwork = (TextView) findViewById(R.id.data_network);
+        mVoiceRawReg = (TextView) findViewById(R.id.voice_raw_registration_state);
+        mDataRawReg = (TextView) findViewById(R.id.data_raw_registration_state);
+        mWlanDataRawReg = (TextView) findViewById(R.id.wlan_data_raw_registration_state);
         mOverrideNetwork = (TextView) findViewById(R.id.override_network);
         mDBm = (TextView) findViewById(R.id.dbm);
         mMwi = (TextView) findViewById(R.id.mwi);
@@ -855,8 +862,11 @@ public class RadioInfo extends AppCompatActivity {
         mOperatorName.setText("");
         mGprsState.setText("");
         mDataNetwork.setText("");
+        mDataRawReg.setText("");
         mOverrideNetwork.setText("");
         mVoiceNetwork.setText("");
+        mVoiceRawReg.setText("");
+        mWlanDataRawReg.setText("");
         mSent.setText("");
         mReceived.setText("");
         mCallState.setText("");
@@ -1202,6 +1212,32 @@ public class RadioInfo extends AppCompatActivity {
             mOverrideNetwork.setText(
                     TelephonyDisplayInfo.overrideNetworkTypeToString(overrideNetwork));
         }
+    }
+
+    private String getRawRegistrationStateText(ServiceState ss, int domain, int transportType) {
+        if (ss != null) {
+            NetworkRegistrationInfo nri = ss.getNetworkRegistrationInfo(domain, transportType);
+            if (nri != null) {
+                return NetworkRegistrationInfo.registrationStateToString(
+                        nri.getNetworkRegistrationState())
+                        + (nri.isEmergencyEnabled() ? "_EM" : "");
+            }
+        }
+        return "";
+    }
+
+    private void updateRawRegistrationState(ServiceState serviceState) {
+        ServiceState ss = serviceState;
+        if (ss == null && mPhone != null) {
+            ss = mPhone.getServiceState();
+        }
+
+        mVoiceRawReg.setText(getRawRegistrationStateText(ss, NetworkRegistrationInfo.DOMAIN_CS,
+                    AccessNetworkConstants.TRANSPORT_TYPE_WWAN));
+        mDataRawReg.setText(getRawRegistrationStateText(ss, NetworkRegistrationInfo.DOMAIN_PS,
+                    AccessNetworkConstants.TRANSPORT_TYPE_WWAN));
+        mWlanDataRawReg.setText(getRawRegistrationStateText(ss, NetworkRegistrationInfo.DOMAIN_PS,
+                    AccessNetworkConstants.TRANSPORT_TYPE_WLAN));
     }
 
     private void updateNrStats(ServiceState serviceState) {
