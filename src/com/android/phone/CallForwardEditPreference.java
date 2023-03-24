@@ -210,8 +210,9 @@ public class CallForwardEditPreference extends EditPhoneNumberPreference {
         // 3gpp spec. This can cause us to receive "numbers" that are sequences of letters. In this
         // case, we must detect these series of characters and replace them with "Voicemail".
         // PhoneNumberUtils#formatNumber returns null if the number is not valid.
-        if (mReplaceInvalidCFNumber && (PhoneNumberUtils.formatNumber(callForwardInfo.number,
-                getCurrentCountryIso()) == null)) {
+        if (mReplaceInvalidCFNumber && !TextUtils.isEmpty(callForwardInfo.number)
+                && (PhoneNumberUtils.formatNumber(callForwardInfo.number, getCurrentCountryIso())
+                == null)) {
             callForwardInfo.number = getContext().getString(R.string.voicemail);
             Log.i(LOG_TAG, "handleGetCFResponse: Overridding CF number");
         }
