@@ -2518,9 +2518,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * @param subId - subscriptionId
      * @return phone object associated with a subscription or default phone if null.
      */
-    private Phone getPhoneFromSubIdOrDefault(int subId) {
+    private @NonNull Phone getPhoneFromSubIdOrDefault(int subId) {
         Phone phone = getPhoneFromSubId(subId);
         if (phone == null) {
+            loge("Called with invalid subId: " + subId + ". Retrying with default phone.");
             phone = getDefaultPhone();
         }
         return phone;
@@ -2533,8 +2534,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 UiccController.getInstance().getUiccPort(phone.getPhoneId());
     }
 
-    // returns phone associated with the subId.
-    private Phone getPhone(int subId) {
+    /**
+     * @param subId The sub Id that associates the phone. If the device has no active SIM, passing
+     *              in {@link SubscriptionManager#DEFAULT_SUBSCRIPTION_ID} or any sub <=
+     *              {@link SubscriptionManager#INVALID_SUBSCRIPTION_ID} will return {@code null}.
+     * @return The Phone associated the sub Id
+     */
+    private @Nullable Phone getPhone(int subId) {
         return PhoneFactory.getPhone(SubscriptionManager.getPhoneId(subId));
     }
 
@@ -2828,10 +2834,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         WorkSource workSource = getWorkSource(Binder.getCallingUid());
         final long identity = Binder.clearCallingIdentity();
         try {
-            final Phone phone = getPhone(getDefaultSubscription());
-            if (phone != null) {
-                phone.updateServiceLocation(workSource);
-            }
+            getPhoneFromSubIdOrDefault(getDefaultSubscription()).updateServiceLocation(workSource);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -3208,9 +3211,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
         final long identity = Binder.clearCallingIdentity();
         try {
-            Phone phone = getPhone(getDefaultSubscription());
-            return phone == null ? TelephonyManager.CALL_STATE_IDLE :
-                    PhoneConstantConversions.convertCallState(phone.getState());
+            Phone phone = getPhoneFromSubIdOrDefault(getDefaultSubscription());
+            return PhoneConstantConversions.convertCallState(phone.getState());
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -4256,8 +4258,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     public boolean isConcurrentVoiceAndDataAllowed(int subId) {
         final long identity = Binder.clearCallingIdentity();
         try {
-            final Phone phone = getPhone(subId);
-            return (phone == null ? false : phone.isConcurrentVoiceAndDataAllowed());
+            return getPhoneFromSubIdOrDefault(subId).isConcurrentVoiceAndDataAllowed();
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -6665,7 +6666,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         final long identity = Binder.clearCallingIdentity();
         try {
             return mNetworkScanRequestTracker.startNetworkScan(
-                    renounceFineLocationAccess, request, messenger, binder, getPhone(subId),
+                    renounceFineLocationAccess, request, messenger, binder,
+                    getPhoneFromSubIdOrDefault(subId),
                     callingUid, callingPid, callingPackage);
         } finally {
             Binder.restoreCallingIdentity(identity);
@@ -9028,22 +9030,16 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
-     * Check if phone is in emergency callback mode
+     * Check if phone is in emergency callback mode.
      * @return true if phone is in emergency callback mode
-     * @param subId sub id
+     * @param subId sub Id, but the check is in fact irrlevant to sub Id.
      */
     @Override
     public boolean getEmergencyCallbackMode(int subId) {
         enforceReadPrivilegedPermission("getEmergencyCallbackMode");
-        final Phone phone = getPhone(subId);
-
         final long identity = Binder.clearCallingIdentity();
         try {
-            if (phone != null) {
-                return phone.isInEcm();
-            } else {
-                return false;
-            }
+            return getPhoneFromSubIdOrDefault(subId).isInEcm();
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -11822,9 +11818,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            Phone phone = getPhone(subId);
-            if (phone == null) return null;
-            ServiceStateTracker sst = phone.getServiceStateTracker();
+            ServiceStateTracker sst = getPhoneFromSubIdOrDefault(subId).getServiceStateTracker();
             if (sst == null) return null;
             return sst.getLastKnownCellIdentity();
         } finally {
@@ -12454,19 +12448,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     public void requestTimeForNextSatelliteVisibility(int subId, @NonNull ResultReceiver result) {
         enforceSatelliteCommunicationPermission("requestTimeForNextSatelliteVisibility");
         mSatelliteController.requestTimeForNextSatelliteVisibility(subId, result);
-    }
-
-    private Phone getPhoneOrDefault(int subId, String caller) {
-        Phone phone = getPhone(subId);
-        if (phone == null) {
-            loge(caller + " called with invalid subId: " + subId
-                    + ". Retrying with default phone.");
-            phone = getDefaultPhone();
-            if (phone == null) {
-                loge(caller + " failed with no phone object.");
-            }
-        }
-        return phone;
     }
 
     /**
