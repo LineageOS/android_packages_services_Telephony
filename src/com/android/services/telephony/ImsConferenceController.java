@@ -431,6 +431,12 @@ public class ImsConferenceController {
             Log.w(this, "start new ImsConference - control should never come here");
             return;
         }
+
+        // Mark the foreground connection as MERGE_COMPLETE before it is disconnected as part of
+        // the IMS merge conference process:
+        connection.sendTelephonyConnectionEvent(
+                android.telecom.Connection.EVENT_MERGE_COMPLETE, null);
+
         // Make a clone of the connection which will become the Ims conference host connection.
         // This is necessary since the Connection Service does not support removing a connection
         // from Telecom.  Instead we create a new instance and remove the old one from telecom.
