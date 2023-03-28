@@ -12028,6 +12028,39 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         return simState.ordinal();
     }
 
+    private void persistEmergencyCallDiagnosticDataInternal(@NonNull String dropboxTag,
+            boolean enableLogcat,
+            long logcatStartTimestampMillis, boolean enableTelecomDump,
+            boolean enableTelephonyDump) {
+        //TODO: next CL
+    }
+
+    /**
+     * Request telephony to persist state for debugging emergency call failures.
+     *
+     * @param dropBoxTag                 Tag to use when persisting data to dropbox service.
+     * @param enableLogcat               whether to collect logcat output
+     * @param logcatStartTimestampMillis timestamp from when logcat buffers would be persisted
+     * @param enableTelecomDump          whether to collect telecom dumpsys
+     * @param enableTelephonyDump        whether to collect telephony dumpsys
+     */
+    @Override
+    @RequiresPermission(android.Manifest.permission.DUMP)
+    public void persistEmergencyCallDiagnosticData(@NonNull String dropboxTag, boolean enableLogcat,
+            long logcatStartTimestampMillis, boolean enableTelecomDump,
+            boolean enableTelephonyDump) {
+        mApp.enforceCallingPermission(android.Manifest.permission.DUMP,
+                "persistEmergencyCallDiagnosticData");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            persistEmergencyCallDiagnosticDataInternal(dropboxTag, enableLogcat,
+                    logcatStartTimestampMillis, enableTelecomDump, enableTelephonyDump);
+
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
     /**
      * Get current cell broadcast ranges.
      */
