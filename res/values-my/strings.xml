@@ -889,10 +889,12 @@
     <string name="radio_info_ppp_sent_label" msgid="6542208429356199695">"ဒေတာ ပို့လိုက်ပါပြီ −"</string>
     <string name="radio_info_message_waiting_label" msgid="1886549432566952078">"မက်ဆေ့ဂျ်ကို စောင့်နေသည် −"</string>
     <string name="radio_info_phone_number_label" msgid="2533852539562512203">"ဖုန်းနံပါတ် −"</string>
-    <string name="radio_info_band_mode_label" msgid="23480556225515290">"ရေဒီယိုလိုင်း ရွေးချယ်ပါ"</string>
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"အသံကွန်ရက် အမျိုးအစား −"</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"ဒေတာကွန်ရက် အမျိုးအစား −"</string>
     <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"အစားထိုး ကွန်ရက်အမျိုးအစား-"</string>
+    <string name="radio_info_voice_raw_registration_state_label" msgid="2822988327145825128">"ပကတိအသံ မှတ်ပုံတင်ခြင်းအခြေအနေ-"</string>
+    <string name="radio_info_data_raw_registration_state_label" msgid="2895895513822604539">"ပကတိဒေတာ မှတ်ပုံတင်ခြင်းအခြေအနေ-"</string>
+    <string name="radio_info_wlan_data_raw_registration_state_label" msgid="6396894835757296612">"ပကတိ WLAN ဒေတာ မှတ်ပုံတင်ခြင်းအခြေအနေ-"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"ဖုန်းအညွှန်း ရွေးရန်"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"ပိုနှစ်သက်သည့် ကွန်ရက်အမျိုးအစားကို သတ်မှတ်ပါ −"</string>
     <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"ပင်ကို လက်ခံဝန်ဆောင်ပေးသူအမည်(www.google.com) မှာ IPv4 -"</string>
