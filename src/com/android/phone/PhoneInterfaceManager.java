@@ -51,6 +51,7 @@ import android.os.AsyncResult;
 import android.os.Binder;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.DropBoxManager;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.ICancellationSignal;
@@ -12026,6 +12027,49 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             }
         }
         return simState.ordinal();
+    }
+
+    private void persistEmergencyCallDiagnosticDataInternal(@NonNull String dropboxTag,
+            boolean enableLogcat,
+            long logcatStartTimestampMillis, boolean enableTelecomDump,
+            boolean enableTelephonyDump) {
+        DropBoxManager db = mApp.getSystemService(DropBoxManager.class);
+        TelephonyManager.EmergencyCallDiagnosticParams edp =
+                new TelephonyManager.EmergencyCallDiagnosticParams();
+        edp.setLogcatCollection(enableLogcat, logcatStartTimestampMillis);
+        edp.setTelephonyDumpSysCollection(enableTelephonyDump);
+        edp.setTelecomDumpSysCollection(enableTelecomDump);
+        Log.d(LOG_TAG, "persisting with Params " + edp.toString());
+        DiagnosticDataCollector ddc = new DiagnosticDataCollector(Runtime.getRuntime(),
+                Executors.newCachedThreadPool(), db,
+                mApp.getSystemService(ActivityManager.class).isLowRamDevice());
+        ddc.persistEmergencyDianosticData(new DataCollectorConfig.Adapter(), edp, dropboxTag);
+    }
+
+    /**
+     * Request telephony to persist state for debugging emergency call failures.
+     *
+     * @param dropBoxTag                 Tag to use when persisting data to dropbox service.
+     * @param enableLogcat               whether to collect logcat output
+     * @param logcatStartTimestampMillis timestamp from when logcat buffers would be persisted
+     * @param enableTelecomDump          whether to collect telecom dumpsys
+     * @param enableTelephonyDump        whether to collect telephony dumpsys
+     */
+    @Override
+    @RequiresPermission(android.Manifest.permission.DUMP)
+    public void persistEmergencyCallDiagnosticData(@NonNull String dropboxTag, boolean enableLogcat,
+            long logcatStartTimestampMillis, boolean enableTelecomDump,
+            boolean enableTelephonyDump) {
+        mApp.enforceCallingPermission(android.Manifest.permission.DUMP,
+                "persistEmergencyCallDiagnosticData");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            persistEmergencyCallDiagnosticDataInternal(dropboxTag, enableLogcat,
+                    logcatStartTimestampMillis, enableTelecomDump, enableTelephonyDump);
+
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
     }
 
     /**
