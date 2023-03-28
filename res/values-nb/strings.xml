@@ -835,7 +835,7 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"Du må starte enheten din på nytt for å endre innstillingen."</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"Start på nytt"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"Avbryt"</string>
-    <string name="removable_esim_string" msgid="7931369811671787649">"Angi flyttbart e-SIM-kort som standard"</string>
+    <string name="removable_esim_string" msgid="7931369811671787649">"Angi flyttbart eSIM-kort som standard"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"Strømforsyning for mobilradio"</string>
     <string name="simulate_out_of_service_string" msgid="7787925611727597193">"Ute av drift-simulering (bare for feilsøkingsversjoner)"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"Se adressebok for SIM-kort"</string>
@@ -889,10 +889,15 @@
     <string name="radio_info_ppp_sent_label" msgid="6542208429356199695">"Data sendt:"</string>
     <string name="radio_info_message_waiting_label" msgid="1886549432566952078">"Melding venter:"</string>
     <string name="radio_info_phone_number_label" msgid="2533852539562512203">"Telefonnummer:"</string>
-    <string name="radio_info_band_mode_label" msgid="23480556225515290">"Velg radiobånd"</string>
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"Nettverkstype for tale:"</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"Type datanettverk:"</string>
     <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"Overstyr nettverkstype:"</string>
+    <!-- no translation found for radio_info_voice_raw_registration_state_label (2822988327145825128) -->
+    <skip />
+    <!-- no translation found for radio_info_data_raw_registration_state_label (2895895513822604539) -->
+    <skip />
+    <!-- no translation found for radio_info_wlan_data_raw_registration_state_label (6396894835757296612) -->
+    <skip />
     <string name="phone_index_label" msgid="6222406512768964268">"Velg telefonindeks"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"Velg foretrukket nettverkstype:"</string>
     <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"Ping vertsnavn(www.google.no) IPv4:"</string>

@@ -889,10 +889,12 @@
     <string name="radio_info_ppp_sent_label" msgid="6542208429356199695">"ಡೇಟಾ ಕಳುಹಿಸಲಾಗಿದೆ:"</string>
     <string name="radio_info_message_waiting_label" msgid="1886549432566952078">"ಸಂದೇಶ ನಿರೀಕ್ಷಿಸಲಾಗುತ್ತಿದೆ:"</string>
     <string name="radio_info_phone_number_label" msgid="2533852539562512203">"ಫೋನ್ ಸಂಖ್ಯೆ:"</string>
-    <string name="radio_info_band_mode_label" msgid="23480556225515290">"ರೇಡಿಯೋ ಬ್ಯಾಂಡ್ ಆಯ್ಕೆಮಾಡಿ"</string>
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"ಧ್ವನಿ ನೆಟ್‌ವರ್ಕ್‌ ಪ್ರಕಾರ:"</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"ಡೇಟಾ ನೆಟ್‌ವರ್ಕ್ ಪ್ರಕಾರ:"</string>
     <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"ನೆಟ್‌ವರ್ಕ್ ಪ್ರಕಾರವನ್ನು ಅತಿಕ್ರಮಿಸಿ:"</string>
+    <string name="radio_info_voice_raw_registration_state_label" msgid="2822988327145825128">"ಧ್ವನಿ ರಾ ರಿಜಿಸ್ಟ್ರೇಷನ್ ಸ್ಟೇಟ್‌:"</string>
+    <string name="radio_info_data_raw_registration_state_label" msgid="2895895513822604539">"ಡೇಟಾ ರಾ ರಿಜಿಸ್ಟ್ರೇಷನ್‌ ಸ್ಟೇಟ್‌:"</string>
+    <string name="radio_info_wlan_data_raw_registration_state_label" msgid="6396894835757296612">"WLAN ಡೇಟಾ ರಾ ರಿಜಿಸ್ಟ್ರೇಷನ್‌ ಸ್ಟೇಟ್‌:"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"ಫೋನ್ ಸೂಚಿಕೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"ಆದ್ಯತೆಯ ನೆಟ್‌ವರ್ಕ್‌ ಪ್ರಕಾರವನ್ನು ಹೊಂದಿಸಿ:"</string>
     <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"ಹೋಸ್ಟ್‌ ಹೆಸರನ್ನು ಪಿಂಗ್ ಮಾಡಿ(www.google.com) IPv4:"</string>
