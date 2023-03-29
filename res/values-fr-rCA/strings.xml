@@ -618,7 +618,7 @@
     <string name="ota_hfa_activation_dialog_message" msgid="7921718445773342996">"Le téléphone est en train d\'activer votre service de données cellulaires.\n\nCela peut prendre jusqu\'à cinq minutes."</string>
     <string name="ota_skip_activation_dialog_title" msgid="7666611236789203797">"Ignorer l\'activation?"</string>
     <string name="ota_skip_activation_dialog_message" msgid="6691722887019708713">"Si vous poursuivez sans activer votre appareil mobile, vous ne pourrez ni téléphoner, ni vous connecter à des réseaux de données cellulaires. La connexion à un réseau Wi-Fi reste possible. Vous serez invité à effectuer l\'activation à chaque démarrage du téléphone."</string>
-    <string name="ota_skip_activation_dialog_skip_label" msgid="5908029466817825633">"Passer"</string>
+    <string name="ota_skip_activation_dialog_skip_label" msgid="5908029466817825633">"Ignorer"</string>
     <string name="ota_activate" msgid="7939695753665438357">"Activer"</string>
     <string name="ota_title_activate_success" msgid="1272135024761004889">"Votre téléphone est activé"</string>
     <string name="ota_title_problem_with_activation" msgid="7019745985413368726">"Problème lors de l\'activation"</string>
