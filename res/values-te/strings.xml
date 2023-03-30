@@ -889,10 +889,12 @@
     <string name="radio_info_ppp_sent_label" msgid="6542208429356199695">"పంపిన డేటా:"</string>
     <string name="radio_info_message_waiting_label" msgid="1886549432566952078">"సందేశ నిరీక్షణ:"</string>
     <string name="radio_info_phone_number_label" msgid="2533852539562512203">"ఫోన్ నంబర్:"</string>
-    <string name="radio_info_band_mode_label" msgid="23480556225515290">"రేడియో బ్యాండ్‌ను ఎంచుకోండి"</string>
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"వాయిస్ నెట్‌వర్క్ రకం:"</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"డేటా నెట్‌వర్క్ రకం:"</string>
     <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"నెట్‌వర్క్ రకాన్ని ఓవర్‌రైడ్ చేయండి:"</string>
+    <string name="radio_info_voice_raw_registration_state_label" msgid="2822988327145825128">"వాయిస్ ప్రాసెస్ చేయని నమోదు స్టేటస్:"</string>
+    <string name="radio_info_data_raw_registration_state_label" msgid="2895895513822604539">"డేటా ప్రాసెస్ చేయని నమోదు స్టేటస్:"</string>
+    <string name="radio_info_wlan_data_raw_registration_state_label" msgid="6396894835757296612">"WLAN డేటా ప్రాసెస్ చేయని నమోదు స్టేటస్:"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"ఫోన్ సూచికను ఎంచుకోండి"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"సెట్ చేసిన ప్రాధాన్య నెట్‌వర్క్ రకం:"</string>
     <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"పింగ్ హోస్ట్ పేరు(www.google.com) IPv4:"</string>
