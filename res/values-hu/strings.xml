@@ -889,10 +889,12 @@
     <string name="radio_info_ppp_sent_label" msgid="6542208429356199695">"Elküldött adatok:"</string>
     <string name="radio_info_message_waiting_label" msgid="1886549432566952078">"Üzenetek várakozása:"</string>
     <string name="radio_info_phone_number_label" msgid="2533852539562512203">"Telefonszám:"</string>
-    <string name="radio_info_band_mode_label" msgid="23480556225515290">"Rádióhullámsáv kiválasztása"</string>
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"Hanghálózat típusa:"</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"Adathálózat típusa:"</string>
     <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"Hálózattípus felülbírálata:"</string>
+    <string name="radio_info_voice_raw_registration_state_label" msgid="2822988327145825128">"Beszédhang nyers regisztrációs állapota:"</string>
+    <string name="radio_info_data_raw_registration_state_label" msgid="2895895513822604539">"Adatok nyers regisztrációs állapota:"</string>
+    <string name="radio_info_wlan_data_raw_registration_state_label" msgid="6396894835757296612">"WLAN-adatok nyers regisztrációs állapota:"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"Telefonkönyv kiválasztása"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"Preferált hálózattípus beállítása:"</string>
     <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"Pingelt gazdagépnév (www.google.com) IPv4:"</string>
