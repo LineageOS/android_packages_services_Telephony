@@ -12495,6 +12495,23 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
+     * This API can be used by only CTS to update satellite vendor service package name.
+     *
+     * @param servicePackageName The package name of the satellite vendor service.
+     * @return {@code true} if the satellite vendor service is set successfully,
+     * {@code false} otherwise.
+     */
+    public boolean setSatelliteServicePackageName(String servicePackageName) {
+        Log.d(LOG_TAG, "setSatelliteServicePackageName - " + servicePackageName);
+        TelephonyPermissions.enforceShellOnly(
+                Binder.getCallingUid(), "setSatelliteServicePackageName");
+        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(mApp,
+                SubscriptionManager.INVALID_SUBSCRIPTION_ID,
+                "setSatelliteServicePackageName");
+        return mSatelliteController.setSatelliteServicePackageName(servicePackageName);
+    }
+
+    /**
      * Check whether the caller (or self, if not processing an IPC) can read device identifiers.
      *
      * <p>This method behaves in one of the following ways:

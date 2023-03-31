@@ -179,6 +179,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
     private static final String THERMAL_MITIGATION_COMMAND = "thermal-mitigation";
     private static final String ALLOW_THERMAL_MITIGATION_PACKAGE_SUBCOMMAND = "allow-package";
     private static final String DISALLOW_THERMAL_MITIGATION_PACKAGE_SUBCOMMAND = "disallow-package";
+    private static final String SET_SATELLITE_SERVICE_PACKAGE_NAME =
+            "set-satellite-service-package-name";
 
     private static final String INVALID_ENTRY_ERROR = "An emergency number (only allow '0'-'9', "
             + "'*', '#' or '+') needs to be specified after -a in the command ";
@@ -360,6 +362,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                 return setCarrierServicePackageOverride();
             case CLEAR_CARRIER_SERVICE_PACKAGE_OVERRIDE:
                 return clearCarrierServicePackageOverride();
+            case SET_SATELLITE_SERVICE_PACKAGE_NAME:
+                return handleSetSatelliteServicePackageNameCommand();
             default: {
                 return handleDefaultCommands(cmd);
             }
@@ -413,6 +417,7 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         onHelpAllowedNetworkTypes();
         onHelpRadio();
         onHelpImei();
+        onHelpSatellite();
     }
 
     private void onHelpD2D() {
@@ -731,6 +736,16 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         pw.println("    If it is binding to default, 'default' returns.");
         pw.println("    If it doesn't bind to any modem service for some reasons,");
         pw.println("    the result would be 'unknown'.");
+    }
+
+    private void onHelpSatellite() {
+        PrintWriter pw = getOutPrintWriter();
+        pw.println("Satellite Commands:");
+        pw.println("  set-satellite-service-package-name [-s SERVICE_PACKAGE_NAME]");
+        pw.println("    Sets the package name of satellite service defined in");
+        pw.println("    SERVICE_PACKAGE_NAME to be the bound. Options are:");
+        pw.println("      -s: the satellite service package name that Telephony will bind to.");
+        pw.println("          If no option is specified, it will bind to the default.");
     }
 
     private void onHelpImei() {
@@ -3067,6 +3082,38 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         }
 
         return -1;
+    }
+
+    private int handleSetSatelliteServicePackageNameCommand() {
+        PrintWriter errPw = getErrPrintWriter();
+        String serviceName = null;
+
+        String opt;
+        while ((opt = getNextOption()) != null) {
+            switch (opt) {
+                case "-s": {
+                    serviceName = getNextArgRequired();
+                    break;
+                }
+            }
+        }
+        Log.d(LOG_TAG, "handleSetSatelliteServicePackageNameCommand: serviceName="
+                + serviceName);
+
+        try {
+            boolean result = mInterface.setSatelliteServicePackageName(serviceName);
+            if (VDBG) {
+                Log.v(LOG_TAG, "SetSatelliteServicePackageName " + serviceName
+                        + ", result = " + result);
+            }
+            getOutPrintWriter().println(result);
+        } catch (RemoteException e) {
+            Log.w(LOG_TAG, "SetSatelliteServicePackageName: " + serviceName
+                    + ", error = " + e.getMessage());
+            errPw.println("Exception: " + e.getMessage());
+            return -1;
+        }
+        return 0;
     }
 
     private int handleCarrierRestrictionStatusCommand() {
