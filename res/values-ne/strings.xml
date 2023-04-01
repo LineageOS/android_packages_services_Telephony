@@ -889,10 +889,12 @@
     <string name="radio_info_ppp_sent_label" msgid="6542208429356199695">"डेटा पठाइयो:"</string>
     <string name="radio_info_message_waiting_label" msgid="1886549432566952078">"सन्देशलाई कुर्दै:"</string>
     <string name="radio_info_phone_number_label" msgid="2533852539562512203">"फोन नम्बर:"</string>
-    <string name="radio_info_band_mode_label" msgid="23480556225515290">"रेडियोको ब्यान्ड चयन गर्नुहोस्"</string>
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"Voice नेटवर्कको प्रकार:"</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"डेटा नेटवर्कको प्रकार:"</string>
     <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"ओभरराइड नेटवर्कको प्रकार:"</string>
+    <string name="radio_info_voice_raw_registration_state_label" msgid="2822988327145825128">"अप्रशोधित आवाजको दर्ताको स्थिति:"</string>
+    <string name="radio_info_data_raw_registration_state_label" msgid="2895895513822604539">"अप्रशोधित डेटाको दर्ताको स्थिति:"</string>
+    <string name="radio_info_wlan_data_raw_registration_state_label" msgid="6396894835757296612">"अप्रशोधित WLAN डेटाको दर्ताको स्थिति:"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"फोनको सूचक चयन गर्नुहोस्"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"रुचाइएको नेटवर्कको प्रकार सेट गर्नुहोस्:"</string>
     <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"होस्टनाम (www.google.com) IPv4 मा पिङ गर्नुहोस्:"</string>

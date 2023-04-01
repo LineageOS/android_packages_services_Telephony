@@ -12261,7 +12261,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * @param subId The subId of the subscription to be provisioned.
      * @param token The token to be used as a unique identifier for provisioning with satellite
      *              gateway.
-     * @param regionId The region ID for the device's current location.
+     * @param provisionData Data from the provisioning app that can be used by provisioning server
      * @param callback The callback to get the result of the request.
      *
      * @return The signal transport used by the caller to cancel the provision request,
@@ -12271,9 +12271,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     @Override
     @Nullable public ICancellationSignal provisionSatelliteService(int subId,
-            @NonNull String token, @NonNull String regionId, @NonNull IIntegerConsumer callback) {
+            @NonNull String token, @NonNull byte[] provisionData,
+            @NonNull IIntegerConsumer callback) {
         enforceSatelliteCommunicationPermission("provisionSatelliteService");
-        return mSatelliteController.provisionSatelliteService(subId, token, regionId, callback);
+        return mSatelliteController.provisionSatelliteService(subId, token, provisionData,
+                callback);
     }
 
     /**
@@ -12492,6 +12494,23 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     public void requestTimeForNextSatelliteVisibility(int subId, @NonNull ResultReceiver result) {
         enforceSatelliteCommunicationPermission("requestTimeForNextSatelliteVisibility");
         mSatelliteController.requestTimeForNextSatelliteVisibility(subId, result);
+    }
+
+    /**
+     * This API can be used by only CTS to update satellite vendor service package name.
+     *
+     * @param servicePackageName The package name of the satellite vendor service.
+     * @return {@code true} if the satellite vendor service is set successfully,
+     * {@code false} otherwise.
+     */
+    public boolean setSatelliteServicePackageName(String servicePackageName) {
+        Log.d(LOG_TAG, "setSatelliteServicePackageName - " + servicePackageName);
+        TelephonyPermissions.enforceShellOnly(
+                Binder.getCallingUid(), "setSatelliteServicePackageName");
+        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(mApp,
+                SubscriptionManager.INVALID_SUBSCRIPTION_ID,
+                "setSatelliteServicePackageName");
+        return mSatelliteController.setSatelliteServicePackageName(servicePackageName);
     }
 
     /**
