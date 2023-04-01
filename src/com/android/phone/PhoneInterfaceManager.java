@@ -12420,8 +12420,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      *
      * This method requests modem to check if there are any pending datagrams to be received over
      * satellite. If there are any incoming datagrams, they will be received via
-     * {@link SatelliteDatagramCallback#onSatelliteDatagramReceived(long, SatelliteDatagram, int,
-     * ILongConsumer)})}
+     * {@link SatelliteDatagramCallback#onSatelliteDatagramReceived(long, SatelliteDatagram, int, Consumer)})}
      *
      * @param subId The subId of the subscription used for receiving datagrams.
      * @param callback The callback to get {@link SatelliteManager.SatelliteError} of the request.
