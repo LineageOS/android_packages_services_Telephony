@@ -892,12 +892,9 @@
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"ଭଏସ୍ ନେଟ୍‌ୱାର୍କ ପ୍ରକାର:"</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"ଡାଟା ନେଟ୍‌ୱାର୍କର ପ୍ରକାର:"</string>
     <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"ନେଟୱାର୍କ ପ୍ରକାରକୁ ଓଭରରାଇଡ କରନ୍ତୁ:"</string>
-    <!-- no translation found for radio_info_voice_raw_registration_state_label (2822988327145825128) -->
-    <skip />
-    <!-- no translation found for radio_info_data_raw_registration_state_label (2895895513822604539) -->
-    <skip />
-    <!-- no translation found for radio_info_wlan_data_raw_registration_state_label (6396894835757296612) -->
-    <skip />
+    <string name="radio_info_voice_raw_registration_state_label" msgid="2822988327145825128">"Voice Raw ପଞ୍ଜିକରଣ ସ୍ଥିତି:"</string>
+    <string name="radio_info_data_raw_registration_state_label" msgid="2895895513822604539">"Data Raw ପଞ୍ଜିକରଣ ସ୍ଥିତି:"</string>
+    <string name="radio_info_wlan_data_raw_registration_state_label" msgid="6396894835757296612">"WLAN Data Raw ପଞ୍ଜିକରଣ ସ୍ଥିତି:"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"ଫୋନ୍ ଇଣ୍ଡେକ୍ସ ବାଛନ୍ତୁ"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"ନିଜ ପସନ୍ଦର ନେଟ୍‌ୱାର୍କ ପ୍ରକାର ସେଟ୍‌ କରନ୍ତୁ:"</string>
     <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"ହୋଷ୍ଟନାମ (www.google.com) IPv4 ପିଙ୍ଗ କରନ୍ତୁ:"</string>
