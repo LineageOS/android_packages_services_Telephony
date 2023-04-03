@@ -38,6 +38,7 @@ android_test {
     instrumentation_for: "TeleService",
 
     static_libs: [
+        "frameworks-base-testutils",
         "androidx.test.core",
         "androidx.test.espresso.core",
         "androidx.test.ext.junit",
