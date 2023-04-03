@@ -32,5 +32,7 @@
       <meta-data android:name="android.service.carrier.LONG_LIVED_BINDING"
           android:value="true" />
     </service>
+    <property android:name="android.net.PROPERTY_SELF_CERTIFIED_NETWORK_CAPABILITIES"
+              android:resource="@xml/self_certified_network_capabilities_both" />
   </application>
 </manifest>
