@@ -45,7 +45,7 @@
     <string name="pause_prompt_no" msgid="2145264674774138579">"లేదు"</string>
     <string name="wild_prompt_str" msgid="5858910969703305375">"దీనితో వైల్డ్ అక్షరాన్ని భర్తీ చేయండి"</string>
     <string name="no_vm_number" msgid="6623853880546176930">"వాయిస్ మెయిల్ నంబర్ లేదు"</string>
-    <string name="no_vm_number_msg" msgid="5165161462411372504">"సిమ్ కార్డులో వాయిస్ మెయిల్ నంబర్ ఏదీ నిల్వ చేయబడలేదు."</string>
+    <string name="no_vm_number_msg" msgid="5165161462411372504">"సిమ్ కార్డులో వాయిస్ మెయిల్ నంబర్ ఏదీ స్టోరేజ్‌ చేయబడలేదు."</string>
     <string name="add_vm_number_str" msgid="7368168964435881637">"నంబర్‌ను జోడించండి"</string>
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"వాయిస్ మెయిల్ సెట్టింగ్‌లను ప్రాథమిక వినియోగదారు మాత్రమే ఎడిట్ చేయగలరు."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"మీ SIM కార్డు అన్‌బ్లాక్ చేయబడింది. మీ ఫోన్ అన్‌లాక్ చేయబడుతోంది…"</string>
