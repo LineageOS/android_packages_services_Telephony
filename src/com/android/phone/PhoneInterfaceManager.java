@@ -180,7 +180,6 @@ import com.android.internal.telephony.IBooleanConsumer;
 import com.android.internal.telephony.ICallForwardingInfoCallback;
 import com.android.internal.telephony.IImsStateCallback;
 import com.android.internal.telephony.IIntegerConsumer;
-import com.android.internal.telephony.ILongConsumer;
 import com.android.internal.telephony.INumberVerificationCallback;
 import com.android.internal.telephony.ITelephony;
 import com.android.internal.telephony.IccCard;
@@ -3038,11 +3037,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 + ",reason=" + reason + ",callingPackage=" + getCurrentPackageName());
         final long identity = Binder.clearCallingIdentity();
         try {
-            final Phone phone = getPhone(subId);
+            final Phone phone = getPhoneFromSubIdOrDefault(subId);
             if (phone != null) {
                 phone.setRadioPowerForReason(false, reason);
                 return true;
             } else {
+                loge("requestRadioPowerOffForReason: phone is null");
                 return false;
             }
         } finally {
@@ -3064,11 +3064,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            final Phone phone = getPhone(subId);
+            final Phone phone = getPhoneFromSubIdOrDefault(subId);
             if (phone != null) {
                 phone.setRadioPowerForReason(true, reason);
                 return true;
             } else {
+                loge("clearRadioPowerOffForReason: phone is null");
                 return false;
             }
         } finally {
@@ -3095,9 +3096,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 return result;
             }
 
-            final Phone phone = getPhone(subId);
+            final Phone phone = getPhoneFromSubIdOrDefault(subId);
             if (phone != null) {
                 result.addAll(phone.getRadioPowerOffReasons());
+            } else {
+                loge("getRadioPowerOffReasons: phone is null");
             }
         } finally {
             Binder.restoreCallingIdentity(identity);
