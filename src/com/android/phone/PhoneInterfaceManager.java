@@ -180,7 +180,6 @@ import com.android.internal.telephony.IBooleanConsumer;
 import com.android.internal.telephony.ICallForwardingInfoCallback;
 import com.android.internal.telephony.IImsStateCallback;
 import com.android.internal.telephony.IIntegerConsumer;
-import com.android.internal.telephony.ILongConsumer;
 import com.android.internal.telephony.INumberVerificationCallback;
 import com.android.internal.telephony.ITelephony;
 import com.android.internal.telephony.IccCard;
@@ -12510,6 +12509,24 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 SubscriptionManager.INVALID_SUBSCRIPTION_ID,
                 "setSatelliteServicePackageName");
         return mSatelliteController.setSatelliteServicePackageName(servicePackageName);
+    }
+
+    /**
+     * This API can be used by only CTS to update the timeout duration in milliseconds that
+     * satellite should stay at listening mode to wait for the next incoming page before disabling
+     * listening mode.
+     *
+     * @param timeoutMillis The timeout duration in millisecond.
+     * @return {@code true} if the timeout duration is set successfully, {@code false} otherwise.
+     */
+    public boolean setSatelliteListeningTimeoutDuration(long timeoutMillis) {
+        Log.d(LOG_TAG, "setSatelliteListeningTimeoutDuration - " + timeoutMillis);
+        TelephonyPermissions.enforceShellOnly(
+                Binder.getCallingUid(), "setSatelliteListeningTimeoutDuration");
+        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(mApp,
+                SubscriptionManager.INVALID_SUBSCRIPTION_ID,
+                "setSatelliteListeningTimeoutDuration");
+        return mSatelliteController.setSatelliteListeningTimeoutDuration(timeoutMillis);
     }
 
     /**
