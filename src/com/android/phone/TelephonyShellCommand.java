@@ -181,6 +181,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
     private static final String DISALLOW_THERMAL_MITIGATION_PACKAGE_SUBCOMMAND = "disallow-package";
     private static final String SET_SATELLITE_SERVICE_PACKAGE_NAME =
             "set-satellite-service-package-name";
+    private static final String SET_SATELLITE_LISTENING_TIMEOUT_DURATION =
+            "set-satellite-listening-timeout-duration";
 
     private static final String INVALID_ENTRY_ERROR = "An emergency number (only allow '0'-'9', "
             + "'*', '#' or '+') needs to be specified after -a in the command ";
@@ -364,6 +366,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                 return clearCarrierServicePackageOverride();
             case SET_SATELLITE_SERVICE_PACKAGE_NAME:
                 return handleSetSatelliteServicePackageNameCommand();
+            case SET_SATELLITE_LISTENING_TIMEOUT_DURATION:
+                return handleSetSatelliteListeningTimeoutDuration();
             default: {
                 return handleDefaultCommands(cmd);
             }
@@ -743,9 +747,14 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         pw.println("Satellite Commands:");
         pw.println("  set-satellite-service-package-name [-s SERVICE_PACKAGE_NAME]");
         pw.println("    Sets the package name of satellite service defined in");
-        pw.println("    SERVICE_PACKAGE_NAME to be the bound. Options are:");
+        pw.println("    SERVICE_PACKAGE_NAME to be bound. Options are:");
         pw.println("      -s: the satellite service package name that Telephony will bind to.");
         pw.println("          If no option is specified, it will bind to the default.");
+        pw.println("  set-satellite-listening-timeout-duration [-t TIMEOUT_MILLIS]");
+        pw.println("    Sets the timeout duration in millis that satellite will stay at listening");
+        pw.println("    mode. Options are:");
+        pw.println("      -t: the timeout duration in milliseconds.");
+        pw.println("          If no option is specified, it will use the default values.");
     }
 
     private void onHelpImei() {
@@ -3109,6 +3118,38 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             getOutPrintWriter().println(result);
         } catch (RemoteException e) {
             Log.w(LOG_TAG, "SetSatelliteServicePackageName: " + serviceName
+                    + ", error = " + e.getMessage());
+            errPw.println("Exception: " + e.getMessage());
+            return -1;
+        }
+        return 0;
+    }
+
+    private int handleSetSatelliteListeningTimeoutDuration() {
+        PrintWriter errPw = getErrPrintWriter();
+        long timeoutMillis = 0;
+
+        String opt;
+        while ((opt = getNextOption()) != null) {
+            switch (opt) {
+                case "-t": {
+                    timeoutMillis = Long.parseLong(getNextArgRequired());
+                    break;
+                }
+            }
+        }
+        Log.d(LOG_TAG, "handleSetSatelliteListeningTimeoutDuration: timeoutMillis="
+                + timeoutMillis);
+
+        try {
+            boolean result = mInterface.setSatelliteListeningTimeoutDuration(timeoutMillis);
+            if (VDBG) {
+                Log.v(LOG_TAG, "setSatelliteListeningTimeoutDuration " + timeoutMillis
+                        + ", result = " + result);
+            }
+            getOutPrintWriter().println(result);
+        } catch (RemoteException e) {
+            Log.w(LOG_TAG, "setSatelliteListeningTimeoutDuration: " + timeoutMillis
                     + ", error = " + e.getMessage());
             errPw.println("Exception: " + e.getMessage());
             return -1;
