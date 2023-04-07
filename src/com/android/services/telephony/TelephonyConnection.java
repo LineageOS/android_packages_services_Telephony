@@ -331,7 +331,6 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
                     SomeArgs args = (SomeArgs) msg.obj;
                     try {
                         sendTelephonyConnectionEvent((String) args.arg1, (Bundle) args.arg2);
-
                     } finally {
                         args.recycle();
                     }
@@ -738,7 +737,13 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
             SomeArgs args = SomeArgs.obtain();
             args.arg1 = event;
             args.arg2 = extras;
-            mHandler.obtainMessage(MSG_ON_CONNECTION_EVENT, args).sendToTarget();
+            if (EVENT_MERGE_COMPLETE.equals(event)){
+                // To ensure the MERGE_COMPLETE event logs before the listeners are removed,
+                // circumvent the handler by sending the connection event directly:
+                sendTelephonyConnectionEvent(event, extras);
+            } else {
+                mHandler.obtainMessage(MSG_ON_CONNECTION_EVENT, args).sendToTarget();
+            }
         }
 
         @Override
