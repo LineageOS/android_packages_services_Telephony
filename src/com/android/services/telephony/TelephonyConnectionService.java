@@ -553,7 +553,11 @@ public class TelephonyConnectionService extends ConnectionService {
                 @Override
                 public void onOriginalConnectionConfigured(TelephonyConnection c) {
                     com.android.internal.telephony.Connection origConn = c.getOriginalConnection();
-                    if (origConn == null) return;
+                    if ((origConn == null) || (mEmergencyStateTracker == null)) {
+                        // mEmergencyStateTracker is null when no emergency call has been dialed
+                        // after bootup and normal call fails with 380 response.
+                        return;
+                    }
                     // Update the domain in the case that it changes,for example during initial
                     // setup or when there was an srvcc or internal redial.
                     mEmergencyStateTracker.onEmergencyCallDomainUpdated(
