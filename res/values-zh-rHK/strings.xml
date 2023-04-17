@@ -534,7 +534,7 @@
     <string name="notification_voicemail_no_vm_number" msgid="3423686009815186750">"沒有可用的留言信箱號碼"</string>
     <string name="notification_network_selection_title" msgid="255595526707809121">"沒有服務"</string>
     <string name="notification_network_selection_text" msgid="553288408722427659">"您所選取的網絡 (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) 無法使用"</string>
-    <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"開啟流動網絡、關閉飛行模式或關閉省電模式，以撥打電話。"</string>
+    <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"開啟流動網絡、關閉飛行模式或關閉慳電模式，以撥打電話。"</string>
     <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"關閉飛行模式以撥打電話。"</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"關閉飛行模式或連接無線網絡，以撥打電話。"</string>
     <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"電話過熱"</b>\n\n"無法完成此通話。請在電話冷卻後再試一次。\n\n您仍可進行緊急電話。"</string>
@@ -816,7 +816,7 @@
     <string name="callFailed_otasp_provisioning_in_process" msgid="3345666183602879326">"目前正在佈建裝置，無法撥打電話。"</string>
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"系統正在撥打另一通電話，因此無法撥打電話。"</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"由於目前有尚未接聽的來電，因此無法撥打電話。請先接聽或拒絕來電，然後再撥打電話。"</string>
-    <string name="callFailed_calling_disabled" msgid="5010992739401206283">"通話功能已由 ro.telephony.disable-call 系統屬性停用，因此無法撥打電話。"</string>
+    <string name="callFailed_calling_disabled" msgid="5010992739401206283">"致電功能已由 ro.telephony.disable-call 系統屬性停用，因此無法打電話。"</string>
     <string name="callFailed_too_many_calls" msgid="2761754044990799580">"目前已有兩個通話正在進行，因此無法撥打電話。請先結束其中一個通話，或將兩個通話合併為一個會議，才撥打電話。"</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"如要使用<xliff:g id="SUPP_SERVICE">%s</xliff:g>，請確保流動數據已開啟。您可以在流動網絡設定中變更此設定。"</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"如要使用<xliff:g id="SUPP_SERVICE">%s</xliff:g>，請確保流動數據和數據漫遊已開啟。您可以在流動網絡設定中變更此設定。"</string>
