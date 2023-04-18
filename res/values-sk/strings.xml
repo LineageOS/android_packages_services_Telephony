@@ -835,7 +835,6 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"Ak chcete zmeniť nastavenie, musíte reštartovať zariadenie."</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"Reštartovať"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"Zrušiť"</string>
-    <string name="removable_esim_string" msgid="7931369811671787649">"Nastaviť odoberateľnú eSIM kartu ako predvolenú"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"Sila signálu GSM"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"Zobraziť adresár SIM karty"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"Zobraziť povolené čísla"</string>
@@ -916,6 +915,9 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Informácie o telefóne"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Informácie o poskytovaní služieb operátorom"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Spustiť poskytovanie služieb operátorom"</string>
+    <string name="provisioning_info_wfc_entitlement_id" msgid="8845188780811890910">"Identifikátor oprávnenia služby WFC"</string>
+    <string name="update_provisioning_info_wfc_entitlement_id" msgid="7044171908781134221">"Aktualizovať"</string>
+    <string name="refresh_provisioning_info_wfc_entitlement_id" msgid="738894335351353407">"Obnoviť"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Signál Bluetooth je slabý. Skúste prepnúť na reproduktor."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Upozornenie o kvalite hovoru"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Účty SIP s ukončenou podporou"</string>

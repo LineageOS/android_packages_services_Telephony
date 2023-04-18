@@ -303,7 +303,7 @@
     <string name="carrier_settings_euicc" msgid="1190237227261337749">"Оператор"</string>
     <string name="keywords_carrier_settings_euicc" msgid="8540160967922063745">"оператор, esim, sim, euicc, операторларды ауыстыру, оператор қосу"</string>
     <string name="carrier_settings_euicc_summary" msgid="2027941166597330117">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <string name="mobile_data_settings_title" msgid="7228249980933944101">"Мобильдік интернет"</string>
+    <string name="mobile_data_settings_title" msgid="7228249980933944101">"Мобильдік деректер"</string>
     <string name="mobile_data_settings_summary" msgid="5012570152029118471">"Деректерге мобильдік желі арқылы кіру"</string>
     <string name="data_usage_disable_mobile" msgid="5669109209055988308">"Мобильдік байланысты өшіру қажет пе?"</string>
     <string name="sim_selection_required_pref" msgid="6985901872978341314">"Таңдау қажет"</string>
@@ -452,7 +452,7 @@
     <string name="sum_fdn_change_pin" msgid="3510994280557335727">"ТТН қол жетімділігі үшін PIN кодты өзгерту"</string>
     <string name="sum_fdn_manage_list" msgid="3311397063233992907">"Телефон нөмірлері тізімін басқару"</string>
     <string name="voice_privacy" msgid="7346935172372181951">"Дауыс құпиялығы"</string>
-    <string name="voice_privacy_summary" msgid="3556460926168473346">"Жетілдірілген құпиялық режимін қосу"</string>
+    <string name="voice_privacy_summary" msgid="3556460926168473346">"Жетілдірілген құпиялылық режимін қосу"</string>
     <string name="tty_mode_option_title" msgid="3843817710032641703">"Tелетайп режимі"</string>
     <string name="tty_mode_option_summary" msgid="4770510287236494371">"Телетайп режиміне реттеу"</string>
     <string name="auto_retry_mode_title" msgid="2985801935424422340">"Әрекетті автоматты қайталау"</string>
@@ -835,7 +835,6 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"Бұл параметрді өзгерту үшін құрылғыны қайта қосу қажет."</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"Қайта қосу"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"Өшіру"</string>
-    <string name="removable_esim_string" msgid="7931369811671787649">"Алынбалы eSIM әдепкі етіп орнату"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"Радиосигнал күші"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"SIM мекенжай кітапшасын көру"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"Рұқсат нөмірлерді көру"</string>
@@ -916,6 +915,9 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Телефон ақпараты"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Операторды инициализациялау туралы ақпарат"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Операторды инциализациялауды іске қосу"</string>
+    <string name="provisioning_info_wfc_entitlement_id" msgid="8845188780811890910">"WFC негіздеме идентификаторы:"</string>
+    <string name="update_provisioning_info_wfc_entitlement_id" msgid="7044171908781134221">"Жаңарту"</string>
+    <string name="refresh_provisioning_info_wfc_entitlement_id" msgid="738894335351353407">"Жаңарту"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Bluetooth сигналы нашар. Спикерфонға ауысып көріңіз."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Қоңырау сапасы туралы хабарландыру"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Қолданыстан шыққан SIP аккаунттары"</string>

@@ -559,7 +559,7 @@
     <string name="emergency_information_hint" msgid="9208897544917793012">"ข้อมูลสำหรับกรณีฉุกเฉิน"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"เจ้าของ"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"แตะอีกครั้งเพื่อดูข้อมูล"</string>
-    <string name="emergency_enable_radio_dialog_title" msgid="2667568200755388829">"โทรฉุกเฉิน"</string>
+    <string name="emergency_enable_radio_dialog_title" msgid="2667568200755388829">"หมายเลขฉุกเฉิน"</string>
     <string name="single_emergency_number_title" msgid="8413371079579067196">"หมายเลขฉุกเฉิน"</string>
     <string name="numerous_emergency_numbers_title" msgid="8972398932506755510">"หมายเลขฉุกเฉิน"</string>
     <string name="emergency_call_shortcut_hint" msgid="1290485125107779500">"แตะอีกครั้งเพื่อโทรหา <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
@@ -585,7 +585,7 @@
     <string name="onscreenManageCallsText" msgid="1162047856081836469">"จัดการการโทร"</string>
     <string name="onscreenManageConferenceText" msgid="4700574060601755137">"จัดการการประชุม"</string>
     <string name="onscreenAudioText" msgid="7224226735052019986">"เสียง"</string>
-    <string name="onscreenVideoCallText" msgid="1743992456126258698">"วิดีโอคอล"</string>
+    <string name="onscreenVideoCallText" msgid="1743992456126258698">" Hangouts วิดีโอ"</string>
     <string name="importSimEntry" msgid="3892354284082689894">"นำเข้า"</string>
     <string name="importAllSimEntries" msgid="2628391505643564007">"นำเข้าทั้งหมด"</string>
     <string name="importingSimContacts" msgid="4995457122107888932">"กำลังนำเข้าสมุดโทรศัพท์ในซิม"</string>
@@ -835,7 +835,6 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"คุณต้องรีสตาร์ทอุปกรณ์เพื่อเปลี่ยนการตั้งค่านี้"</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"รีสตาร์ท"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"ยกเลิก"</string>
-    <string name="removable_esim_string" msgid="7931369811671787649">"กำหนดให้ eSIM แบบนำออกได้เป็นค่าเริ่มต้น"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"กำลังส่งของวิทยุเครือข่ายมือถือ"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"ดูสมุดที่อยู่ของซิม"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"ดูการจำกัดหมายเลขโทรออก"</string>
@@ -916,6 +915,9 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"ข้อมูลโทรศัพท์"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"ข้อมูลการจัดสรรผู้ให้บริการ"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"ทริกเกอร์การจัดสรรผู้ให้บริการ"</string>
+    <string name="provisioning_info_wfc_entitlement_id" msgid="8845188780811890910">"รหัสการให้สิทธิ์ WFC:"</string>
+    <string name="update_provisioning_info_wfc_entitlement_id" msgid="7044171908781134221">"อัปเดต"</string>
+    <string name="refresh_provisioning_info_wfc_entitlement_id" msgid="738894335351353407">"รีเฟรช"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"สัญญาณบลูทูธอ่อน ลองเปลี่ยนไปใช้ลำโพงแทน"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"การแจ้งเตือนคุณภาพการโทร"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"บัญชี SIP ที่เลิกใช้งาน"</string>

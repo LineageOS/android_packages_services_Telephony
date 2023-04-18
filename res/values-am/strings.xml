@@ -34,7 +34,7 @@
     <string name="enter_input" msgid="6193628663039958990">"የUSSD መልዕክት በ<xliff:g id="MIN_LEN">%1$d</xliff:g> እና <xliff:g id="MAX_LEN">%2$d</xliff:g> ቁምፊዎች መካከል መሆን አለበት። እባክዎ እንደገና ይሞክሩ።"</string>
     <string name="manageConferenceLabel" msgid="8415044818156353233">"የስብሰባስልክ ጥሪ አደራጅ"</string>
     <string name="ok" msgid="7818974223666140165">"እሺ"</string>
-    <string name="audio_mode_speaker" msgid="243689733219312360">"ድምፅ ማጉያ"</string>
+    <string name="audio_mode_speaker" msgid="243689733219312360">"ድምጽ ማጉያ"</string>
     <string name="audio_mode_earpiece" msgid="2823700267171134282">"የስልክ እጀታ ጆሮማዳመጫ"</string>
     <string name="audio_mode_wired_headset" msgid="5028010823105817443">"ባለ ገመድ የጆሮ ማዳመጫ"</string>
     <string name="audio_mode_bluetooth" msgid="25732183428018809">"ብሉቱዝ"</string>
@@ -623,11 +623,11 @@
     <string name="ota_title_activate_success" msgid="1272135024761004889">"ስልክ አግብረሃል!"</string>
     <string name="ota_title_problem_with_activation" msgid="7019745985413368726">"ከአግብር ጋር ያለ ችግር"</string>
     <string name="ota_listen" msgid="2772252405488894280">"አግብር መጠናቀቁን እስኪሰሙ የተነገሩትን መመሪያዎች ይከተሉ።"</string>
-    <string name="ota_speaker" msgid="1086766980329820528">"ድምፅ ማጉያ"</string>
+    <string name="ota_speaker" msgid="1086766980329820528">"ድምጽ ማጉያ"</string>
     <string name="ota_progress" msgid="8837259285255700132">"ስልክዎን ፕሮግራም በማድረግ ላይ…"</string>
     <string name="ota_failure" msgid="5674217489921481576">"ስልክዎን ፕሮግራም ማድረግ አልተቻለም"</string>
     <string name="ota_successful" msgid="1106825981548107774">"አሁን ስልክዎ አግብሯል።አገልግሎቱ ለመጀመር እስከ 15 ደቂቃዎች ሊፈጅ ይችላል።"</string>
-    <string name="ota_unsuccessful" msgid="8531037653803955754">"ስልክህ አላገበረም።\n ጥሩ ሽፋን ያለበት አካባቢ ማግኘት ያስፈልግሃል (መስኮት፣ ወይም ውጭ አካባቢ)።ለበለጠ አማራጮች የደንበኞች አገልግሎት ደውል ወይም \n\nእንደገና ሞክር።"</string>
+    <string name="ota_unsuccessful" msgid="8531037653803955754">"ስልክህ አላገበረም።\n ጥሩ ሽፋን ያለበት አካባቢ ማግኘት ያስፈልግሃል (መስኮት፣ ወይም ውጪ አካባቢ)።ለበለጠ አማራጮች የደንበኞች አገልግሎት ደውል ወይም \n\nእንደገና ሞክር።"</string>
     <string name="ota_spc_failure" msgid="904092035241370080">"ከልክ ያለፈ የSPC  መታወክ"</string>
     <string name="ota_call_end" msgid="8657746378290737034">"ተመለስ"</string>
     <string name="ota_try_again" msgid="6914781945599998550">"በድጋሚ ሞክር"</string>
@@ -805,8 +805,8 @@
     <string name="supp_service_outgoing_calls_barred" msgid="5205725332394087112">"ወጪ ጥሪዎች ተከልክለዋል።"</string>
     <string name="supp_service_call_forwarding_active" msgid="7910162960395132464">"ጥሪ ማስተላለፍ ንቁ።"</string>
     <string name="supp_service_additional_call_forwarded" msgid="8772753260008398632">"ተጨማሪ ጥሪ ተላልፏል።"</string>
-    <string name="supp_service_additional_ect_connected" msgid="8525934162945220237">"ግልፅ የጥሪ ማስተላለፍ ተጠናቅቋል።"</string>
-    <string name="supp_service_additional_ect_connecting" msgid="7046240728781222753">"ግልፅ የጥሪ ማስተላለፍ በሂደት ላይ።"</string>
+    <string name="supp_service_additional_ect_connected" msgid="8525934162945220237">"ግልጽ የጥሪ ማስተላለፍ ተጠናቅቋል።"</string>
+    <string name="supp_service_additional_ect_connecting" msgid="7046240728781222753">"ግልጽ የጥሪ ማስተላለፍ በሂደት ላይ።"</string>
     <string name="supp_service_call_on_hold" msgid="2836811319594503059">"ጥሪ በይቆይ ላይ።"</string>
     <string name="supp_service_call_resumed" msgid="3786864005920743546">"ጥሪ ከቆመበት ቀጥሏል።"</string>
     <string name="supp_service_deflected_call" msgid="7565979024562921707">"ጥሪው አቅጣጫው ተቀይሯል።"</string>
@@ -835,7 +835,6 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"ይህን ቅንብር ለመለወጥ መሣሪያዎትን ዳግም ማስጀመር ያስፈልግዎታል።"</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"ዳግም አስጀምር"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"ይቅር"</string>
-    <string name="removable_esim_string" msgid="7931369811671787649">"የሚወገድን ኢሲም ነባሪ በሚል አቀናብር"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"የሞባይል ሬዲዮ ኃይል"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"የሲም አድራሻ ደብተር አሳይ"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"በቋሚነት የሚደወልባቸው ቁጥሮች"</string>
@@ -848,7 +847,7 @@
     <string name="radio_info_ims_feature_status_unavailable" msgid="8930391136839759778">"አይገኝም"</string>
     <string name="radio_info_ims_reg_status" msgid="25582845222446390">"የIMS ምዝገባ፦ <xliff:g id="STATUS">%1$s</xliff:g>\n የድምጽ ቅጂ LTE፡ <xliff:g id="AVAILABILITY_0">%2$s</xliff:g>\nየድምጽ ቅጂ WiFi፡ <xliff:g id="AVAILABILITY_1">%3$s</xliff:g>\nየቪድዮ ጥሪ፦ <xliff:g id="AVAILABILITY_2">%4$s</xliff:g>\nUT በይነገጽ፡ <xliff:g id="AVAILABILITY_3">%5$s</xliff:g>"</string>
     <string name="radioInfo_service_in" msgid="45753418231446400">"በአገልግሎት ውስጥ"</string>
-    <string name="radioInfo_service_out" msgid="287972405416142312">"ከአገልግሎት ውጭ"</string>
+    <string name="radioInfo_service_out" msgid="287972405416142312">"ከአገልግሎት ውጪ"</string>
     <string name="radioInfo_service_emergency" msgid="4763879891415016848">"የአደጋ ጊዜ ጥሪዎች ብቻ"</string>
     <string name="radioInfo_service_off" msgid="3456583511226783064">"ሬዲዮ ጠፍቷል"</string>
     <string name="radioInfo_roaming_in" msgid="3156335577793145965">"በማዘዋወር ላይ"</string>
@@ -916,6 +915,9 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"የስልክ መረጃ"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"የአገልግሎት አቅራቢ አቅርቦት መረጃ"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"የቀስቅሴ አገልግሎት አቅራቢ አቅርቦት"</string>
+    <string name="provisioning_info_wfc_entitlement_id" msgid="8845188780811890910">"WFC የባለመብትነት መታወቂያ፦"</string>
+    <string name="update_provisioning_info_wfc_entitlement_id" msgid="7044171908781134221">"አዘምን"</string>
+    <string name="refresh_provisioning_info_wfc_entitlement_id" msgid="738894335351353407">"አድስ"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"የእርስዎ የብሉቱዝ ሲግናል ደካማ ነው። ወደ የስልክ ድምፅ ማጉያ ለመቀየር ይሞክሩ።"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"የጥሪ ጥራት ማሳወቂያ"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"የተቋረጡ የSIP መለያዎች"</string>

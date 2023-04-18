@@ -17,7 +17,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="phoneAppLabel" product="tablet" msgid="1916019789885839910">"Dati cellulare"</string>
-    <string name="phoneAppLabel" product="default" msgid="130465039375347763">"Servizi telefonici"</string>
+    <string name="phoneAppLabel" product="default" msgid="130465039375347763">"Phone Services"</string>
     <string name="emergencyDialerIconLabel" msgid="8668005772339436680">"Chiamata di emergenza"</string>
     <string name="phoneIconLabel" msgid="3015941229249651419">"Telefono"</string>
     <string name="fdnListLabel" msgid="4119121875004244097">"Elenco numeri consentiti"</string>
@@ -572,7 +572,7 @@
     <string name="pin_puk_system_user_only" msgid="1045147220686867922">"Solo il proprietario del dispositivo può inserire i codici PIN/PUK."</string>
     <string name="police_type_description" msgid="2819533883972081757">"Polizia"</string>
     <string name="ambulance_type_description" msgid="6798237503553180461">"Ambulanza"</string>
-    <string name="fire_type_description" msgid="6565200468934914930">"Pompieri"</string>
+    <string name="fire_type_description" msgid="6565200468934914930">"Vigili del fuoco"</string>
     <string name="description_concat_format" msgid="2014471565101724088">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="1115266533703764049">"Usa tastiera"</string>
     <string name="onscreenHoldText" msgid="4025348842151665191">"In attesa"</string>
@@ -835,7 +835,6 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"Riavvia il dispositivo per modificare questa impostazione."</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"Riavvia"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"Annulla"</string>
-    <string name="removable_esim_string" msgid="7931369811671787649">"Imposta la eSIM rimovibile come predefinita"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"Potenza del segnale radio mobile"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"Visualizza rubrica SIM"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"Visualizza numeri consentiti"</string>
@@ -916,6 +915,9 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Info telefono"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Informazioni sul provisioning operatore"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Attiva provisioning operatore"</string>
+    <string name="provisioning_info_wfc_entitlement_id" msgid="8845188780811890910">"ID diritto per le chiamate Wi-Fi:"</string>
+    <string name="update_provisioning_info_wfc_entitlement_id" msgid="7044171908781134221">"Aggiorna"</string>
+    <string name="refresh_provisioning_info_wfc_entitlement_id" msgid="738894335351353407">"Aggiorna"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Il segnale del Bluetooth è debole. Prova a passare al vivavoce."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Notifica sulla qualità della chiamata"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Account SIP deprecati"</string>

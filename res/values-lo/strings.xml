@@ -835,7 +835,6 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"ທ່ານຕ້ອງຣີສະຕາດອຸປະກອນຂອງທ່ານເພື່ອປ່ຽນການຕັ້ງຄ່ານີ້."</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"ປິດເປີດຄືນໃໝ່"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"ຍົກເລີກ"</string>
-    <string name="removable_esim_string" msgid="7931369811671787649">"ຕັ້ງຄ່າ eSIM ແບບຖອດໄດ້ໃຫ້ເປັນຄ່າເລີ່ມຕົ້ນ"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"ພະລັງງານວິທະຍຸມືຖື"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"ເບິ່ງສະໝຸດທີ່ຢູ່ໃນຊິມ"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"ເບິ່ງໝາຍເລກໂທອອກທີ່ກຳນົດ"</string>
@@ -916,6 +915,9 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"ຂໍ້​ມູນ​ໂທລະ​ສັບ"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"ຂໍ້ມູນການເປີດນຳໃຊ້ເຄືອຂ່າຍ"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"ກະຕຸ້ນການຈັດຫາຜູ້ໃຫ້ບໍລິການ"</string>
+    <string name="provisioning_info_wfc_entitlement_id" msgid="8845188780811890910">"ລະຫັດ ID ສິດ ຂອງ WFC:"</string>
+    <string name="update_provisioning_info_wfc_entitlement_id" msgid="7044171908781134221">"ອັບເດດ"</string>
+    <string name="refresh_provisioning_info_wfc_entitlement_id" msgid="738894335351353407">"ໂຫຼດຂໍ້ມູນຄືນໃໝ່"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"ສັນຍານ Bluetooth ຂອງທ່ານອ່ອນ. ລອງສະຫຼັບລຳໂພງໂທລະສັບ."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"ການແຈ້ງເຕືອນຄຸນນະພາບການໂທ"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"ບັນຊີ SIP ທີ່ເຊົາສະໜັບສະໜູນ"</string>

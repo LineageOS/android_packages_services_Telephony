@@ -665,7 +665,7 @@
     <string name="preference_category_ringtone" msgid="8787281191375434976">"Ton de chamada e vibración"</string>
     <string name="pstn_connection_service_label" msgid="9200102709997537069">"Tarxetas SIM integradas"</string>
     <string name="enable_video_calling_title" msgid="7246600931634161830">"Activar videochamadas"</string>
-    <string name="enable_video_calling_dialog_msg" msgid="7141478720386203540">"Para activar as videochamadas, necesitas activar o modo LTE 4G mellorado na configuración do sistema."</string>
+    <string name="enable_video_calling_dialog_msg" msgid="7141478720386203540">"Para activar as videochamadas, necesitas activar o Modo LTE 4G mellorado na configuración do sistema."</string>
     <string name="enable_video_calling_dialog_settings" msgid="8697890611305307110">"Configuración de rede"</string>
     <string name="enable_video_calling_dialog_close" msgid="4298929725917045270">"Pechar"</string>
     <string name="sim_label_emergency_calls" msgid="9078241989421522310">"Chamadas de emerxencia"</string>
@@ -835,7 +835,6 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"Debes reiniciar o dispositivo para cambiar esta opción"</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"Reiniciar"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"Cancelar"</string>
-    <string name="removable_esim_string" msgid="7931369811671787649">"Establecer eSIM extraíble como predeterminada"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"Alimentación da radio móbil"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"Ver axenda de enderezos da SIM"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"Ver números de marcación fixa"</string>
@@ -916,6 +915,9 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Información do teléfono"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Información de aprovisionamento do operador"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Aprovisionamento do operador do activador"</string>
+    <string name="provisioning_info_wfc_entitlement_id" msgid="8845188780811890910">"Identificador do dereito a usar chamadas por wifi:"</string>
+    <string name="update_provisioning_info_wfc_entitlement_id" msgid="7044171908781134221">"Actualizar"</string>
+    <string name="refresh_provisioning_info_wfc_entitlement_id" msgid="738894335351353407">"Actualizar"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"O teu sinal de Bluetooth é feble. Proba a cambiar ao altofalante."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Notificación sobre a calidade da chamada"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Contas SIP obsoletas"</string>

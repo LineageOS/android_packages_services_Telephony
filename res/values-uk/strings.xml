@@ -52,7 +52,7 @@
     <string name="label_ndp" msgid="7617392683877410341">"Розбл. PIN-код мережі SIM"</string>
     <string name="label_phoneid" msgid="8775611434123577808">"Заблокована SIM-карта оператора"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"Розблок."</string>
-    <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"Закрити"</string>
+    <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"Відхилити"</string>
     <string name="requesting_unlock" msgid="930512210309437741">"Запитув. розблок. мережі..."</string>
     <string name="unlock_failed" msgid="7103543844840661366">"Не здійсн. запит розблокування мережі"</string>
     <string name="unlock_success" msgid="32681089371067565">"Мережу успішно розблоковано."</string>
@@ -643,7 +643,7 @@
     <string name="progress_dialog_exiting_ecm" msgid="9159080081676927217">"Вихід із режиму екстреного зворотного виклику"</string>
     <string name="alert_dialog_yes" msgid="3532525979632841417">"Так"</string>
     <string name="alert_dialog_no" msgid="1075632654085988420">"Ні"</string>
-    <string name="alert_dialog_dismiss" msgid="1336356286354517054">"Закрити"</string>
+    <string name="alert_dialog_dismiss" msgid="1336356286354517054">"Відхилити"</string>
     <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"Телефон перебуває в режимі екстреного зворотного виклику"</string>
     <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"До <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
     <!-- format error in translation for alert_dialog_exit_ecm_without_data_restriction_hint (7549850847524907932) -->
@@ -835,7 +835,6 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"Щоб змінити це налаштування, перезапустіть пристрій."</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"Перезапустити"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"Скасувати"</string>
-    <string name="removable_esim_string" msgid="7931369811671787649">"Установити знімну eSIM-карту як карту за умовчанням"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"Потужність мобільного радіо"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"Переглянути адресну книгу SIM-карти"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"Переглянути фіксовані номери"</string>
@@ -916,6 +915,9 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Інформація про телефон"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Інформація про ініціалізацію оператора"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Запустити ініціалізацію оператора"</string>
+    <string name="provisioning_info_wfc_entitlement_id" msgid="8845188780811890910">"Ідентифікатор доступу WFC:"</string>
+    <string name="update_provisioning_info_wfc_entitlement_id" msgid="7044171908781134221">"Оновити"</string>
+    <string name="refresh_provisioning_info_wfc_entitlement_id" msgid="738894335351353407">"Оновити"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Сигнал Bluetooth заслабкий. Спробуйте переключитися на гучний зв\'язок."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Сповіщення про якість виклику"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Облікові записи SIP, що не підтримуються"</string>
