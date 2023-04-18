@@ -40,8 +40,6 @@ import android.util.Log;
 import com.android.internal.telephony.CallManager;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
-import com.android.internal.telephony.PhoneFactory;
-import com.android.internal.telephony.SubscriptionController;
 import com.android.internal.telephony.cdma.CdmaInformationRecords.CdmaDisplayInfoRec;
 import com.android.internal.telephony.cdma.CdmaInformationRecords.CdmaSignalInfoRec;
 import com.android.internal.telephony.cdma.SignalToneUtil;
@@ -489,16 +487,9 @@ public class CallNotifier extends Handler {
     }
 
     public void updatePhoneStateListeners(boolean isRefresh, int updateType, int subIdToUpdate) {
-        List<SubscriptionInfo> subInfos;
-        if (PhoneFactory.isSubscriptionManagerServiceEnabled()) {
-            subInfos = SubscriptionManagerService.getInstance()
-                    .getActiveSubscriptionInfoList(mApplication.getOpPackageName(),
-                            mApplication.getAttributionTag());
-        } else {
-            subInfos = SubscriptionController.getInstance()
-                    .getActiveSubscriptionInfoList(mApplication.getOpPackageName(),
-                            mApplication.getAttributionTag());
-        }
+        List<SubscriptionInfo> subInfos = SubscriptionManagerService.getInstance()
+                .getActiveSubscriptionInfoList(mApplication.getOpPackageName(),
+                        mApplication.getAttributionTag());
 
         // Sort sub id list based on slot id, so that CFI/MWI notifications will be updated for
         // slot 0 first then slot 1. This is needed to ensure that when CFI or MWI is enabled for
