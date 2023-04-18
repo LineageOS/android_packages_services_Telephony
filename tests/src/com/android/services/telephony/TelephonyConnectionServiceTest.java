@@ -1703,6 +1703,110 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         assertTrue(tc1.wasHeld);
     }
 
+    // For 'Virtual DSDA' devices, if there is an existing call on sub1, an outgoing call on sub2
+    // will place the sub1 call on hold.
+    @Test
+    @SmallTest
+    public void testOutgoingCallOnOtherSubPutsFirstCallOnHoldForVirtualDsdaDevice()
+            throws Exception {
+        setupForCallTest();
+        when(mTelephonyManagerProxy.isConcurrentCallsPossible()).thenReturn(true);
+        doNothing().when(mContext).startActivity(any());
+
+        mBinderStub.createConnection(PHONE_ACCOUNT_HANDLE_1, "TC@1",
+                new ConnectionRequest(PHONE_ACCOUNT_HANDLE_1, Uri.parse("tel:16505551212"),
+                        new Bundle()),
+                true, false, null);
+        waitForHandlerAction(mTestConnectionService.getHandler(), TIMEOUT_MS);
+        assertEquals(1, mTestConnectionService.getAllConnections().size());
+
+        TelephonyConnection connection1 = (TelephonyConnection)
+                mTestConnectionService.getAllConnections().toArray()[0];
+
+        TelephonyConnection connection2 = (TelephonyConnection) mTestConnectionService
+                .onCreateOutgoingConnection(PHONE_ACCOUNT_HANDLE_2,
+                        createConnectionRequest(PHONE_ACCOUNT_HANDLE_2, "1234", "TC@2"));
+        assertNotNull("test connection was not set up correctly.", connection2);
+
+        // Simulates that connection1 is placed on HOLD.
+        connection1.setTelephonyConnectionOnHold();
+
+        verify(mPhone1).dial(anyString(), any(), any());
+        assertEquals(connection1.getState(), android.telecom.Connection.STATE_HOLDING);
+    }
+
+    // For 'Virtual DSDA' devices, if the carrier config 'KEY_ALLOW_HOLD_CALL_DURING_EMERGENCY_BOOL'
+    // is not configured, or set to true, an outgoing emergency call will place the existing call on
+    // a different sub on hold.
+    @Test
+    @SmallTest
+    public void testEmergencyCallOnOtherSubPutsFirstCallOnHoldForVirtualDsdaDevice()
+            throws Exception {
+        setupForCallTest();
+        when(mTelephonyManagerProxy.isConcurrentCallsPossible()).thenReturn(true);
+        doNothing().when(mContext).startActivity(any());
+
+        doReturn(true).when(mTelephonyManagerProxy).isCurrentEmergencyNumber(anyString());
+        mBinderStub.createConnection(PHONE_ACCOUNT_HANDLE_1, "TC@1",
+                new ConnectionRequest(PHONE_ACCOUNT_HANDLE_1, Uri.parse("tel:16505551212"),
+                        new Bundle()),
+                true, false, null);
+        waitForHandlerAction(mTestConnectionService.getHandler(), TIMEOUT_MS);
+        assertEquals(1, mTestConnectionService.getAllConnections().size());
+
+        TelephonyConnection connection1 = (TelephonyConnection)
+                mTestConnectionService.getAllConnections().toArray()[0];
+
+        // Simulates an outgoing emergency call.
+        TelephonyConnection connection2 = (TelephonyConnection) mTestConnectionService
+                .onCreateOutgoingConnection(PHONE_ACCOUNT_HANDLE_2,
+                        createConnectionRequest(PHONE_ACCOUNT_HANDLE_2,
+                                TEST_EMERGENCY_NUMBER, "TC@2"));
+        assertNotNull("test connection was not set up correctly.", connection2);
+
+        // Simulates that connection1 is placed on HOLD.
+        connection1.setTelephonyConnectionOnHold();
+
+        verify(mPhone1).dial(anyString(), any(), any());
+        assertEquals(connection1.getState(), android.telecom.Connection.STATE_HOLDING);
+    }
+
+    // For 'Virtual DSDA' devices If the carrier config 'KEY_ALLOW_HOLD_CALL_DURING_EMERGENCY_BOOL'
+    // is explicitly configured false, an outgoing emergency call will disconnect all existing
+    // calls, across subscriptions.
+    @Test
+    @SmallTest
+    public void testEmergencyCallOnOtherSubDisconnectsExistingCallForVirtualDsdaDevice()
+            throws Exception {
+        setupForCallTest();
+        when(mTelephonyManagerProxy.isConcurrentCallsPossible()).thenReturn(true);
+        doNothing().when(mContext).startActivity(any());
+
+        doReturn(true).when(mTelephonyManagerProxy).isCurrentEmergencyNumber(anyString());
+        getTestContext().getCarrierConfig(0 /*subId*/).putBoolean(
+                CarrierConfigManager.KEY_ALLOW_HOLD_CALL_DURING_EMERGENCY_BOOL, false);
+
+        mBinderStub.createConnection(PHONE_ACCOUNT_HANDLE_1, "TC@1",
+                new ConnectionRequest(PHONE_ACCOUNT_HANDLE_1, Uri.parse("tel:16505551212"),
+                        new Bundle()),
+                true, false, null);
+        waitForHandlerAction(mTestConnectionService.getHandler(), TIMEOUT_MS);
+        assertEquals(1, mTestConnectionService.getAllConnections().size());
+
+        TelephonyConnection connection1 = (TelephonyConnection)
+                mTestConnectionService.getAllConnections().toArray()[0];
+
+        // Simulates an outgoing emergency call.
+        TelephonyConnection connection2 = (TelephonyConnection) mTestConnectionService
+                .onCreateOutgoingConnection(PHONE_ACCOUNT_HANDLE_2,
+                        createConnectionRequest(PHONE_ACCOUNT_HANDLE_2,
+                                TEST_EMERGENCY_NUMBER, "TC@2"));
+        assertNotNull("test connection was not set up correctly.", connection2);
+
+        verify(mPhone1).dial(anyString(), any(), any());
+        assertEquals(connection1.getState(), android.telecom.Connection.STATE_DISCONNECTED);
+    }
+
     /**
      * Verifies that TelephonyManager is used to determine whether a connection is Emergency when
      * creating an outgoing connection.
