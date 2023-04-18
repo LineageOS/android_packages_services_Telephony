@@ -183,6 +183,7 @@ public class RemoteVvmTaskManager extends Service {
             if (targetPackage != null && !TextUtils.equals(packageName, targetPackage)) {
                 VvmLog.w(TAG, "target package " + targetPackage
                         + " is no longer the active VisualVoicemailService, ignoring");
+                continue;
             }
             ComponentInfo componentInfo = TelephonyUtils.getComponentInfo(info);
             return new ComponentName(componentInfo.packageName, componentInfo.name);
