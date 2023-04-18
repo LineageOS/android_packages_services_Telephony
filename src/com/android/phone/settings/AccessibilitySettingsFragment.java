@@ -39,7 +39,6 @@ import android.util.Log;
 import com.android.ims.ImsManager;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
-import com.android.internal.telephony.SubscriptionController;
 import com.android.internal.telephony.subscription.SubscriptionManagerService;
 import com.android.phone.PhoneGlobals;
 import com.android.phone.R;
@@ -184,12 +183,8 @@ public class AccessibilitySettingsFragment extends PreferenceFragment {
             // Update RTT config with IMS Manager if the always-on carrier config isn't set to true.
             CarrierConfigManager configManager = (CarrierConfigManager) mContext.getSystemService(
                             Context.CARRIER_CONFIG_SERVICE);
-            int[] activeSubIds;
-            if (PhoneFactory.isSubscriptionManagerServiceEnabled()) {
-                activeSubIds = SubscriptionManagerService.getInstance().getActiveSubIdList(true);
-            } else {
-                activeSubIds = SubscriptionController.getInstance().getActiveSubIdList(true);
-            }
+            int[] activeSubIds = SubscriptionManagerService.getInstance().getActiveSubIdList(true);
+
             for (int subId : activeSubIds) {
                 if (!configManager.getConfigForSubId(subId).getBoolean(
                         CarrierConfigManager.KEY_IGNORE_RTT_MODE_SETTING_BOOL, false)) {
@@ -271,15 +266,7 @@ public class AccessibilitySettingsFragment extends PreferenceFragment {
     private boolean shouldShowRttSetting() {
         // Go through all the subs -- if we want to display the RTT setting for any of them, do
         // display it.
-        if (PhoneFactory.isSubscriptionManagerServiceEnabled()) {
-            for (int subId : SubscriptionManagerService.getInstance().getActiveSubIdList(true)) {
-                if (PhoneGlobals.getInstance().phoneMgr.isRttSupported(subId)) {
-                    return true;
-                }
-            }
-            return false;
-        }
-        for (int subId : SubscriptionController.getInstance().getActiveSubIdList(true)) {
+        for (int subId : SubscriptionManagerService.getInstance().getActiveSubIdList(true)) {
             if (PhoneGlobals.getInstance().phoneMgr.isRttSupported(subId)) {
                 return true;
             }
