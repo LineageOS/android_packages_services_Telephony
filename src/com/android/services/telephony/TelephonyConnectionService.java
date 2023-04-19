@@ -56,6 +56,7 @@ import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.telephony.emergency.EmergencyNumber;
 import android.telephony.ims.ImsReasonInfo;
+import android.telephony.ims.stub.ImsRegistrationImplBase;
 import android.text.TextUtils;
 import android.util.Pair;
 import android.view.WindowManager;
@@ -71,7 +72,6 @@ import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.RIL;
-import com.android.internal.telephony.SubscriptionController;
 import com.android.internal.telephony.d2d.Communicator;
 import com.android.internal.telephony.data.PhoneSwitcher;
 import com.android.internal.telephony.domainselection.DomainSelectionConnection;
@@ -125,7 +125,7 @@ public class TelephonyConnectionService extends ConnectionService {
 
     // Timeout before we terminate the outgoing DSDA call if HOLD did not complete in time on the
     // existing call.
-    private static final int DEFAULT_DSDA_OUTGOING_CALL_HOLD_TIMEOUT_MS = 1000;
+    private static final int DEFAULT_DSDA_OUTGOING_CALL_HOLD_TIMEOUT_MS = 2000;
     private static final String KEY_DOMAIN_COMPARE_FEATURE_ENABLED_FLAG =
             "is_domain_selection_compare_feature_enabled";
 
@@ -654,14 +654,14 @@ public class TelephonyConnectionService extends ConnectionService {
             if (c != null) {
                 switch (c.getState()) {
                     case Connection.STATE_HOLDING: {
-                        Log.d(LOG_TAG, "Connection " + connection
+                        Log.d(LOG_TAG, "Connection " + connection.getTelecomCallId()
                                 + " changed to STATE_HOLDING!");
                         mStateHoldingFuture.complete(true);
                         c.removeTelephonyConnectionListener(this);
                     }
                     break;
                     case Connection.STATE_DISCONNECTED: {
-                        Log.d(LOG_TAG, "Connection " + connection
+                        Log.d(LOG_TAG, "Connection " + connection.getTelecomCallId()
                                 + " changed to STATE_DISCONNECTED!");
                         mStateHoldingFuture.complete(false);
                         c.removeTelephonyConnectionListener(this);
@@ -1106,27 +1106,16 @@ public class TelephonyConnectionService extends ConnectionService {
                         return (phone.getState() == PhoneConstants.State.OFFHOOK)
                             || phone.getServiceStateTracker().isRadioOn();
                     } else {
-                        if (PhoneFactory.isSubscriptionManagerServiceEnabled()) {
-                            SubscriptionInfoInternal subInfo = SubscriptionManagerService
-                                    .getInstance().getSubscriptionInfoInternal(phone.getSubId());
-                            // Wait until we are in service and ready to make calls. This can happen
-                            // when we power down the radio on bluetooth to save power on watches or
-                            // if it is a test emergency number and we have to wait for the device
-                            // to move IN_SERVICE before the call can take place over normal
-                            // routing.
-                            return (phone.getState() == PhoneConstants.State.OFFHOOK)
-                                    // Do not wait for voice in service on opportunistic SIMs.
-                                    || (subInfo != null && subInfo.isOpportunistic())
-                                    || serviceState == ServiceState.STATE_IN_SERVICE;
-                        }
+                        SubscriptionInfoInternal subInfo = SubscriptionManagerService
+                                .getInstance().getSubscriptionInfoInternal(phone.getSubId());
                         // Wait until we are in service and ready to make calls. This can happen
-                        // when we power down the radio on bluetooth to save power on watches or if
-                        // it is a test emergency number and we have to wait for the device to move
-                        // IN_SERVICE before the call can take place over normal routing.
+                        // when we power down the radio on bluetooth to save power on watches or
+                        // if it is a test emergency number and we have to wait for the device
+                        // to move IN_SERVICE before the call can take place over normal
+                        // routing.
                         return (phone.getState() == PhoneConstants.State.OFFHOOK)
                                 // Do not wait for voice in service on opportunistic SIMs.
-                                || SubscriptionController.getInstance().isOpportunistic(
-                                        phone.getSubId())
+                                || (subInfo != null && subInfo.isOpportunistic())
                                 || serviceState == ServiceState.STATE_IN_SERVICE;
                     }
                 }
@@ -1157,29 +1146,56 @@ public class TelephonyConnectionService extends ConnectionService {
                     return resultConnection;
                 } else {
                     if (mTelephonyManagerProxy.isConcurrentCallsPossible()) {
-                        delayDialForOtherSubHold(phone, request.getAccountHandle(), (result) -> {
-                            Log.d(this,
-                                    "onCreateOutgoingConn - delayDialForOtherSubHold result = "
-                                            + result);
-                            if (result) {
-                                placeOutgoingConnection(request, resultConnection, phone);
-                            } else {
-                                ((TelephonyConnection) resultConnection).hangup(
-                                        android.telephony.DisconnectCause.LOCAL);
-                            }
-                        });
-                        return resultConnection;
+                        Conferenceable c = maybeHoldCallsOnOtherSubs(request.getAccountHandle());
+                        if (c != null) {
+                            delayDialForOtherSubHold(phone, c, (success) -> {
+                                Log.d(this,
+                                        "onCreateOutgoingConn - delayDialForOtherSubHold"
+                                                + " success = " + success);
+                                if (success) {
+                                    placeOutgoingConnection(request, resultConnection,
+                                            phone);
+                                } else {
+                                    ((TelephonyConnection) resultConnection).hangup(
+                                            android.telephony.DisconnectCause.LOCAL);
+                                }
+                            });
+                            return resultConnection;
+                        }
                     }
-                    // The standard case.
                     return placeOutgoingConnection(request, resultConnection, phone);
                 }
             } else {
                 final Connection resultConnection = getTelephonyConnection(request, numberToDial,
                         true, handle, phone);
-                delayDialForDdsSwitch(phone, (result) -> {
-                    Log.i(this, "onCreateOutgoingConn - delayDialForDdsSwitch result = " + result);
-                        placeOutgoingConnection(request, resultConnection, phone);
-                });
+
+                CompletableFuture<Void> maybeHoldFuture = CompletableFuture.completedFuture(null);
+                if (mTelephonyManagerProxy.isConcurrentCallsPossible()
+                        && shouldHoldForEmergencyCall(phone)) {
+                    // If the PhoneAccountHandle was adjusted on building the TelephonyConnection,
+                    // the relevant PhoneAccountHandle will be updated in resultConnection.
+                    PhoneAccountHandle phoneAccountHandle =
+                            resultConnection.getPhoneAccountHandle() == null
+                            ? request.getAccountHandle() : resultConnection.getPhoneAccountHandle();
+                    Conferenceable c = maybeHoldCallsOnOtherSubs(phoneAccountHandle);
+                    if (c != null) {
+                        maybeHoldFuture = delayDialForOtherSubHold(phone, c, (success) -> {
+                            Log.i(this, "onCreateOutgoingConn emergency-"
+                                    + " delayDialForOtherSubHold success = " + success);
+                            if (!success) {
+                                // Terminates the existing call to make way for the emergency call.
+                                hangup(c, android.telephony.DisconnectCause
+                                        .OUTGOING_EMERGENCY_CALL_PLACED);
+                            }
+                        });
+                    }
+                }
+                Consumer<Boolean> ddsSwitchConsumer = (result) -> {
+                    Log.i(this, "onCreateOutgoingConn emergency-"
+                            + " delayDialForDdsSwitch result = " + result);
+                    placeOutgoingConnection(request, resultConnection, phone);
+                };
+                maybeHoldFuture.thenRun(() -> delayDialForDdsSwitch(phone, ddsSwitchConsumer));
                 return resultConnection;
             }
         }
@@ -1294,16 +1310,9 @@ public class TelephonyConnectionService extends ConnectionService {
             // Notify Telecom of the new Connection type.
             // TODO: Switch out the underlying connection instead of creating a new
             // one and causing UI Jank.
-            boolean noActiveSimCard;
-            if (PhoneFactory.isSubscriptionManagerServiceEnabled()) {
-                noActiveSimCard = SubscriptionManagerService.getInstance()
-                        .getActiveSubInfoCount(phone.getContext().getOpPackageName(),
-                                phone.getContext().getAttributionTag()) == 0;
-            } else {
-                noActiveSimCard = SubscriptionController.getInstance()
-                        .getActiveSubInfoCount(phone.getContext().getOpPackageName(),
-                                phone.getContext().getAttributionTag()) == 0;
-            }
+            boolean noActiveSimCard = SubscriptionManagerService.getInstance()
+                    .getActiveSubInfoCount(phone.getContext().getOpPackageName(),
+                            phone.getContext().getAttributionTag()) == 0;
             // If there's no active sim card and the device is in emergency mode, use E account.
             addExistingConnection(mPhoneUtilsProxy.makePstnPhoneAccountHandleWithPrefix(
                     phone, "", isEmergencyNumber && noActiveSimCard), repConnection);
@@ -2942,7 +2951,7 @@ public class TelephonyConnectionService extends ConnectionService {
     }
 
     /**
-     * If needed, block until the the default data is is switched for outgoing emergency call, or
+     * If needed, block until the default data is switched for outgoing emergency call, or
      * timeout expires.
      * @param phone The Phone to switch the DDS on.
      * @param completeConsumer The consumer to call once the default data subscription has been
@@ -3097,37 +3106,30 @@ public class TelephonyConnectionService extends ConnectionService {
         return future;
     }
 
-    // If there are any live calls on the other subscription, sends a hold request for the live call
-    // and waits for the STATE_HOLDING confirmation, to sequence the dial of the outgoing call.
-    private void delayDialForOtherSubHold(Phone phone, PhoneAccountHandle phoneAccountHandle,
+    // Returns a future that waits for the STATE_HOLDING confirmation on the input
+    // {@link Conferenceable}, or times out.
+    private CompletableFuture<Void> delayDialForOtherSubHold(Phone phone, Conferenceable c,
             Consumer<Boolean> completeConsumer) {
-        Conferenceable c = maybeHoldCallsOnOtherSubs(phoneAccountHandle);
-        if (c == null) {
-            // Nothing to hold.
-            completeConsumer.accept(true);
-            return;
-        }
-
-        if (phone == null) {
+        if (c == null || phone == null) {
+            // Unexpected inputs
             completeConsumer.accept(false);
-            return;
+            return CompletableFuture.completedFuture(null);
         }
 
         try {
-            // We have dispatched a 'hold' command to a live call (Connection or Conference) on the
-            // other sub. Listen to state changed events to see if this entered hold state.
             CompletableFuture<Boolean> stateHoldingFuture = listenForHoldStateChanged(c);
             // a timeout that will complete the future to not block the outgoing call indefinitely.
             CompletableFuture<Boolean> timeout = new CompletableFuture<>();
             phone.getContext().getMainThreadHandler().postDelayed(
                     () -> timeout.complete(false), DEFAULT_DSDA_OUTGOING_CALL_HOLD_TIMEOUT_MS);
             // Ensure that the Consumer is completed on the main thread.
-            stateHoldingFuture.acceptEitherAsync(timeout, completeConsumer,
+            return stateHoldingFuture.acceptEitherAsync(timeout, completeConsumer,
                     phone.getContext().getMainExecutor());
         } catch (Exception e) {
             Log.w(this, "delayDialForOtherSubHold - exception= "
                     + e.getMessage());
             completeConsumer.accept(false);
+            return CompletableFuture.completedFuture(null);
         }
     }
 
@@ -3366,6 +3368,13 @@ public class TelephonyConnectionService extends ConnectionService {
      * Returns true if the state of the Phone is IN_SERVICE or available for emergency calling only.
      */
     private boolean isAvailableForEmergencyCalls(Phone phone) {
+        if (phone.getImsRegistrationTech() == ImsRegistrationImplBase.REGISTRATION_TECH_CROSS_SIM) {
+            // When a Phone is registered to Cross-SIM calling, there must always be a Phone on the
+            // other sub which is registered to cellular, so that must be selected.
+            Log.d(this, "isAvailableForEmergencyCalls: skipping over phone "
+                    + phone + " as it is registered to CROSS_SIM");
+            return false;
+        }
         return ServiceState.STATE_IN_SERVICE == phone.getServiceState().getState() ||
                 phone.getServiceState().isEmergencyOnly();
     }
@@ -3774,6 +3783,16 @@ public class TelephonyConnectionService extends ConnectionService {
         }
     }
 
+    private static void hangup(Conferenceable conferenceable, int code) {
+        if (conferenceable instanceof TelephonyConnection) {
+            ((TelephonyConnection) conferenceable).hangup(code);
+        } else if (conferenceable instanceof Conference) {
+            ((Conference) conferenceable).onDisconnect();
+        } else {
+            Log.w(LOG_TAG, "hangup(): Unexpected conferenceable! " + conferenceable);
+        }
+    }
+
      /**
      * Evaluates whether a connection or conference exists on subscriptions other than the one
      * corresponding to the existing {@link PhoneAccountHandle}.
@@ -3801,6 +3820,9 @@ public class TelephonyConnectionService extends ConnectionService {
                                 currentHandle))
                 .toList();
         if (!otherSubConferences.isEmpty()) {
+            Log.i(LOG_TAG, "maybeGetFirstConferenceable: found "
+                    + otherSubConferences.get(0).getTelecomCallId() + " on "
+                    + otherSubConferences.get(0).getPhoneAccountHandle());
             return otherSubConferences.get(0);
         }
 
@@ -3818,6 +3840,9 @@ public class TelephonyConnectionService extends ConnectionService {
                 Log.w(LOG_TAG, "Unexpected number of connections: "
                         + otherSubConnections.size() + " on other sub!");
             }
+            Log.i(LOG_TAG, "maybeGetFirstConferenceable: found "
+                    + otherSubConnections.get(0).getTelecomCallId() + " on "
+                    + otherSubConnections.get(0).getPhoneAccountHandle());
             return otherSubConnections.get(0);
         }
         return null;
