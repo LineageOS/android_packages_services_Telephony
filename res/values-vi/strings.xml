@@ -86,8 +86,8 @@
     <string name="voicemail_notifications_preference_title" msgid="7829238858063382977">"Thông báo"</string>
     <string name="cell_broadcast_settings" msgid="8135324242541809924">"Phát sóng trong tình huống khẩn cấp"</string>
     <string name="call_settings" msgid="3677282690157603818">"Cài đặt cuộc gọi"</string>
-    <string name="additional_gsm_call_settings" msgid="1561980168685658846">"Tùy chọn cài đặt bổ sung"</string>
-    <string name="additional_gsm_call_settings_with_label" msgid="7973920539979524908">"Tùy chọn cài đặt bổ sung (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
+    <string name="additional_gsm_call_settings" msgid="1561980168685658846">"Chế độ cài đặt bổ sung"</string>
+    <string name="additional_gsm_call_settings_with_label" msgid="7973920539979524908">"Chế độ cài đặt bổ sung (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="sum_gsm_call_settings" msgid="7964692601608878138">"Cài đặt cuộc gọi chỉ GSM bổ sung"</string>
     <string name="additional_cdma_call_settings" msgid="2178016561980611304">"Cài đặt cuộc gọi CDMA bổ sung"</string>
     <string name="sum_cdma_call_settings" msgid="3185825305136993636">"Cài đặt cuộc gọi chỉ CDMA bổ sung"</string>
