@@ -37,6 +37,7 @@ import static android.telephony.CarrierConfigManager.ImsEmergency.KEY_EMERGENCY_
 import static android.telephony.CarrierConfigManager.ImsEmergency.KEY_EMERGENCY_REQUIRES_VOLTE_ENABLED_BOOL;
 import static android.telephony.CarrierConfigManager.ImsEmergency.KEY_EMERGENCY_SCAN_TIMER_SEC_INT;
 import static android.telephony.CarrierConfigManager.ImsEmergency.KEY_EMERGENCY_VOWIFI_REQUIRES_CONDITION_INT;
+import static android.telephony.CarrierConfigManager.ImsEmergency.KEY_MAXIMUM_CELLULAR_SEARCH_TIMER_SEC_INT;
 import static android.telephony.CarrierConfigManager.ImsEmergency.KEY_MAXIMUM_NUMBER_OF_EMERGENCY_TRIES_OVER_VOWIFI_INT;
 import static android.telephony.CarrierConfigManager.ImsEmergency.KEY_PREFER_IMS_EMERGENCY_WHEN_VOICE_CALLS_ON_CS_BOOL;
 import static android.telephony.CarrierConfigManager.ImsEmergency.SCAN_TYPE_FULL_SERVICE;
@@ -52,6 +53,7 @@ import static android.telephony.NetworkRegistrationInfo.DOMAIN_PS;
 import static android.telephony.NetworkRegistrationInfo.REGISTRATION_STATE_HOME;
 import static android.telephony.NetworkRegistrationInfo.REGISTRATION_STATE_UNKNOWN;
 
+import static com.android.services.telephony.domainselection.EmergencyCallDomainSelector.MSG_MAX_CELLULAR_TIMEOUT;
 import static com.android.services.telephony.domainselection.EmergencyCallDomainSelector.MSG_NETWORK_SCAN_TIMEOUT;
 
 import static junit.framework.Assert.assertEquals;
@@ -1679,6 +1681,172 @@ public class EmergencyCallDomainSelectorTest {
         assertFalse(mAccessNetwork.contains(EUTRAN));
     }
 
+    @Test
+    public void testMaxCellularTimeout() throws Exception {
+        PersistableBundle bundle = getDefaultPersistableBundle();
+        bundle.putBoolean(KEY_EMERGENCY_CALL_OVER_EMERGENCY_PDN_BOOL, true);
+        bundle.putInt(KEY_MAXIMUM_CELLULAR_SEARCH_TIMER_SEC_INT, 20);
+        when(mCarrierConfigManager.getConfigForSubId(anyInt())).thenReturn(bundle);
+
+        setupForHandleScanResult();
+
+        assertTrue(mDomainSelector.hasMessages(MSG_NETWORK_SCAN_TIMEOUT));
+        assertTrue(mDomainSelector.hasMessages(MSG_MAX_CELLULAR_TIMEOUT));
+
+        verify(mTransportSelectorCallback, times(0)).onWlanSelected(anyBoolean());
+
+        // Wi-Fi is connected.
+        mNetworkCallback.onAvailable(null);
+
+        // Max cellular timer expired
+        mDomainSelector.removeMessages(MSG_MAX_CELLULAR_TIMEOUT);
+        mDomainSelector.handleMessage(mDomainSelector.obtainMessage(MSG_MAX_CELLULAR_TIMEOUT));
+
+        assertFalse(mDomainSelector.hasMessages(MSG_NETWORK_SCAN_TIMEOUT));
+        verify(mTransportSelectorCallback, times(1)).onWlanSelected(anyBoolean());
+    }
+
+
+    @Test
+    public void testMaxCellularTimeoutScanTimeout() throws Exception {
+        PersistableBundle bundle = getDefaultPersistableBundle();
+        bundle.putBoolean(KEY_EMERGENCY_CALL_OVER_EMERGENCY_PDN_BOOL, true);
+        bundle.putInt(KEY_MAXIMUM_CELLULAR_SEARCH_TIMER_SEC_INT, 20);
+        when(mCarrierConfigManager.getConfigForSubId(anyInt())).thenReturn(bundle);
+
+        setupForHandleScanResult();
+
+        assertTrue(mDomainSelector.hasMessages(MSG_NETWORK_SCAN_TIMEOUT));
+        assertTrue(mDomainSelector.hasMessages(MSG_MAX_CELLULAR_TIMEOUT));
+
+        verify(mTransportSelectorCallback, times(0)).onWlanSelected(anyBoolean());
+
+        // Wi-Fi is connected.
+        mNetworkCallback.onAvailable(null);
+
+        // Scan timer expired
+        mDomainSelector.removeMessages(MSG_NETWORK_SCAN_TIMEOUT);
+        mDomainSelector.handleMessage(mDomainSelector.obtainMessage(MSG_NETWORK_SCAN_TIMEOUT));
+
+        assertFalse(mDomainSelector.hasMessages(MSG_MAX_CELLULAR_TIMEOUT));
+        verify(mTransportSelectorCallback, times(1)).onWlanSelected(anyBoolean());
+    }
+
+    @Test
+    public void testMaxCellularTimeoutWhileDialingOnCellular() throws Exception {
+        PersistableBundle bundle = getDefaultPersistableBundle();
+        bundle.putBoolean(KEY_EMERGENCY_CALL_OVER_EMERGENCY_PDN_BOOL, true);
+        bundle.putInt(KEY_MAXIMUM_CELLULAR_SEARCH_TIMER_SEC_INT, 5);
+        when(mCarrierConfigManager.getConfigForSubId(anyInt())).thenReturn(bundle);
+
+        createSelector(SLOT_0_SUB_ID);
+        unsolBarringInfoChanged(false);
+
+        EmergencyRegResult regResult = getEmergencyRegResult(UTRAN, REGISTRATION_STATE_HOME,
+                NetworkRegistrationInfo.DOMAIN_CS,
+                true, true, 0, 0, "", "");
+        SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
+        mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
+        processAllMessages();
+
+        bindImsServiceUnregistered();
+
+        verifyCsDialed();
+
+        assertFalse(mDomainSelector.hasMessages(MSG_NETWORK_SCAN_TIMEOUT));
+        assertFalse(mDomainSelector.hasMessages(MSG_MAX_CELLULAR_TIMEOUT));
+
+        mDomainSelector.reselectDomain(attr);
+        processAllMessages();
+
+        assertTrue(mDomainSelector.hasMessages(MSG_NETWORK_SCAN_TIMEOUT));
+        assertTrue(mDomainSelector.hasMessages(MSG_MAX_CELLULAR_TIMEOUT));
+
+        // Wi-Fi is connected.
+        mNetworkCallback.onAvailable(null);
+        processAllMessages();
+
+        verify(mTransportSelectorCallback, times(0)).onWlanSelected(anyBoolean());
+
+        // Max cellular timer expired
+        mDomainSelector.removeMessages(MSG_MAX_CELLULAR_TIMEOUT);
+        mDomainSelector.handleMessage(mDomainSelector.obtainMessage(MSG_MAX_CELLULAR_TIMEOUT));
+        processAllMessages();
+
+        mDomainSelector.reselectDomain(attr);
+        processAllMessages();
+
+        assertFalse(mDomainSelector.hasMessages(MSG_MAX_CELLULAR_TIMEOUT));
+        verify(mTransportSelectorCallback, times(1)).onWlanSelected(anyBoolean());
+    }
+
+    @Test
+    public void testMaxCellularTimeoutWileDialingOnWlan() throws Exception {
+        PersistableBundle bundle = getDefaultPersistableBundle();
+        bundle.putBoolean(KEY_EMERGENCY_CALL_OVER_EMERGENCY_PDN_BOOL, true);
+        bundle.putInt(KEY_MAXIMUM_CELLULAR_SEARCH_TIMER_SEC_INT, 20);
+        when(mCarrierConfigManager.getConfigForSubId(anyInt())).thenReturn(bundle);
+
+        setupForHandleScanResult();
+
+        assertTrue(mDomainSelector.hasMessages(MSG_NETWORK_SCAN_TIMEOUT));
+        assertTrue(mDomainSelector.hasMessages(MSG_MAX_CELLULAR_TIMEOUT));
+
+        verify(mTransportSelectorCallback, times(0)).onWlanSelected(anyBoolean());
+
+        // Wi-Fi is connected.
+        mNetworkCallback.onAvailable(null);
+
+        // Network scan timer expired
+        mDomainSelector.removeMessages(MSG_NETWORK_SCAN_TIMEOUT);
+        mDomainSelector.handleMessage(mDomainSelector.obtainMessage(MSG_NETWORK_SCAN_TIMEOUT));
+
+        verify(mTransportSelectorCallback, times(1)).onWlanSelected(anyBoolean());
+        assertFalse(mDomainSelector.hasMessages(MSG_MAX_CELLULAR_TIMEOUT));
+    }
+
+    @Test
+    public void testMaxCellularTimeoutWileDialingOnWlanAllowMultipleTries() throws Exception {
+        PersistableBundle bundle = getDefaultPersistableBundle();
+        bundle.putBoolean(KEY_EMERGENCY_CALL_OVER_EMERGENCY_PDN_BOOL, true);
+        bundle.putInt(KEY_MAXIMUM_CELLULAR_SEARCH_TIMER_SEC_INT, 20);
+        bundle.putInt(KEY_MAXIMUM_NUMBER_OF_EMERGENCY_TRIES_OVER_VOWIFI_INT, 2);
+        when(mCarrierConfigManager.getConfigForSubId(anyInt())).thenReturn(bundle);
+
+        setupForHandleScanResult();
+
+        assertTrue(mDomainSelector.hasMessages(MSG_NETWORK_SCAN_TIMEOUT));
+        assertTrue(mDomainSelector.hasMessages(MSG_MAX_CELLULAR_TIMEOUT));
+
+        verify(mTransportSelectorCallback, times(0)).onWlanSelected(anyBoolean());
+
+        // Wi-Fi is connected.
+        mNetworkCallback.onAvailable(null);
+
+        // Network scan timer expired
+        mDomainSelector.removeMessages(MSG_NETWORK_SCAN_TIMEOUT);
+        mDomainSelector.handleMessage(mDomainSelector.obtainMessage(MSG_NETWORK_SCAN_TIMEOUT));
+
+        verify(mTransportSelectorCallback, times(1)).onWlanSelected(anyBoolean());
+        assertFalse(mDomainSelector.hasMessages(MSG_MAX_CELLULAR_TIMEOUT));
+
+        EmergencyRegResult regResult = getEmergencyRegResult(UTRAN, REGISTRATION_STATE_HOME,
+                NetworkRegistrationInfo.DOMAIN_CS,
+                true, true, 0, 0, "", "");
+        SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
+        mDomainSelector.reselectDomain(attr);
+        processAllMessages();
+
+        assertTrue(mDomainSelector.hasMessages(MSG_MAX_CELLULAR_TIMEOUT));
+
+        // Max cellular timer expired
+        mDomainSelector.removeMessages(MSG_MAX_CELLULAR_TIMEOUT);
+        mDomainSelector.handleMessage(mDomainSelector.obtainMessage(MSG_MAX_CELLULAR_TIMEOUT));
+        processAllMessages();
+
+        verify(mTransportSelectorCallback, times(2)).onWlanSelected(anyBoolean());
+    }
+
     private void setupForScanListTest(PersistableBundle bundle) throws Exception {
         setupForScanListTest(bundle, false);
     }
@@ -1851,6 +2019,7 @@ public class EmergencyCallDomainSelectorTest {
         int voWifiRequiresCondition = VOWIFI_REQUIRES_NONE;
         int maxRetriesOverWiFi = 1;
         int cellularScanTimerSec = 10;
+        int maxCellularTimerSec = 0;
         boolean voWifiOverEmergencyPdn = false;
         int scanType = SCAN_TYPE_NO_PREFERENCE;
         boolean requiresImsRegistration = false;
@@ -1861,7 +2030,7 @@ public class EmergencyCallDomainSelectorTest {
         return getPersistableBundle(imsRats, csRats, imsRoamRats, csRoamRats,
                 domainPreference, roamDomainPreference, imsWhenVoiceOnCs,
                 voWifiRequiresCondition, maxRetriesOverWiFi, cellularScanTimerSec,
-                scanType, voWifiOverEmergencyPdn, requiresImsRegistration,
+                maxCellularTimerSec, scanType, voWifiOverEmergencyPdn, requiresImsRegistration,
                 requiresVoLteEnabled, ltePreferredAfterNrFailed, cdmaPreferredNumbers);
     }
 
@@ -1870,7 +2039,8 @@ public class EmergencyCallDomainSelectorTest {
             @Nullable int[] imsRoamRats, @Nullable int[] csRoamRats,
             @Nullable int[] domainPreference, @Nullable int[] roamDomainPreference,
             boolean imsWhenVoiceOnCs, int voWifiRequiresCondition,
-            int maxRetriesOverWiFi, int cellularScanTimerSec, int scanType,
+            int maxRetriesOverWiFi, int cellularScanTimerSec,
+            int maxCellularTimerSec, int scanType,
             boolean voWifiOverEmergencyPdn, boolean requiresImsRegistration,
             boolean requiresVoLteEnabled, boolean ltePreferredAfterNrFailed,
             @Nullable String[] cdmaPreferredNumbers) {
@@ -1905,6 +2075,7 @@ public class EmergencyCallDomainSelectorTest {
         bundle.putInt(KEY_EMERGENCY_VOWIFI_REQUIRES_CONDITION_INT, voWifiRequiresCondition);
         bundle.putInt(KEY_MAXIMUM_NUMBER_OF_EMERGENCY_TRIES_OVER_VOWIFI_INT, maxRetriesOverWiFi);
         bundle.putInt(KEY_EMERGENCY_SCAN_TIMER_SEC_INT, cellularScanTimerSec);
+        bundle.putInt(KEY_MAXIMUM_CELLULAR_SEARCH_TIMER_SEC_INT, maxCellularTimerSec);
         bundle.putBoolean(KEY_EMERGENCY_CALL_OVER_EMERGENCY_PDN_BOOL, voWifiOverEmergencyPdn);
         bundle.putInt(KEY_EMERGENCY_NETWORK_SCAN_TYPE_INT, scanType);
         bundle.putBoolean(KEY_EMERGENCY_REQUIRES_IMS_REGISTRATION_BOOL, requiresImsRegistration);
