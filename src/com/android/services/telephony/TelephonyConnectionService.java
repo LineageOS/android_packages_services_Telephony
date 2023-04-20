@@ -43,8 +43,10 @@ import android.telecom.PhoneAccount;
 import android.telecom.PhoneAccountHandle;
 import android.telecom.TelecomManager;
 import android.telecom.VideoProfile;
+import android.telephony.AccessNetworkConstants;
 import android.telephony.Annotation.DisconnectCauses;
 import android.telephony.CarrierConfigManager;
+import android.telephony.DataSpecificRegistrationInfo;
 import android.telephony.DomainSelectionService;
 import android.telephony.DomainSelectionService.SelectionAttributes;
 import android.telephony.EmergencyRegResult;
@@ -122,6 +124,10 @@ public class TelephonyConnectionService extends ConnectionService {
     // Timeout before we continue with the emergency call without waiting for DDS switch response
     // from the modem.
     private static final int DEFAULT_DATA_SWITCH_TIMEOUT_MS = 1000;
+
+    // Timeout to start dynamic routing of normal routing emergency numbers.
+    @VisibleForTesting
+    public static final int TIMEOUT_TO_DYNAMIC_ROUTING_MS = 10000;
 
     // Timeout before we terminate the outgoing DSDA call if HOLD did not complete in time on the
     // existing call.
@@ -1083,6 +1089,8 @@ public class TelephonyConnectionService extends ConnectionService {
             if (isEmergencyNumber) {
                 mIsEmergencyCallPending = true;
             }
+            int timeoutToOnTimeoutCallback = mDomainSelectionResolver.isDomainSelectionSupported()
+                    ? TIMEOUT_TO_DYNAMIC_ROUTING_MS : 0;
             mRadioOnHelper.triggerRadioOnAndListen(new RadioOnStateListener.Callback() {
                 @Override
                 public void onComplete(RadioOnStateListener listener, boolean isRadioReady) {
@@ -1091,13 +1099,33 @@ public class TelephonyConnectionService extends ConnectionService {
                 }
 
                 @Override
-                public boolean isOkToCall(Phone phone, int serviceState) {
+                public boolean onTimeout(Phone phone, int serviceState, boolean imsVoiceCapable) {
+                    if (mDomainSelectionResolver.isDomainSelectionSupported()) {
+                        return isEmergencyNumber;
+                    }
+                    return false;
+                }
+
+                @Override
+                public boolean isOkToCall(Phone phone, int serviceState, boolean imsVoiceCapable) {
                     // HAL 1.4 introduced a new variant of dial for emergency calls, which includes
                     // an isTesting parameter. For HAL 1.4+, do not wait for IN_SERVICE, this will
                     // be handled at the RIL/vendor level by emergencyDial(...).
                     boolean waitForInServiceToDialEmergency = isTestEmergencyNumber
                             && phone.getHalVersion(HAL_SERVICE_VOICE)
                             .less(RIL.RADIO_HAL_VERSION_1_4);
+                    if (mDomainSelectionResolver.isDomainSelectionSupported()) {
+                        if (isEmergencyNumber) {
+                            // Since the domain selection service is enabled,
+                            // dilaing normal routing emergency number only reaches here.
+                            if (!isVoiceInService(phone, imsVoiceCapable)) {
+                                // Wait for voice in service.
+                                // That is, wait for IMS registration on PS only network.
+                                serviceState = ServiceState.STATE_OUT_OF_SERVICE;
+                                waitForInServiceToDialEmergency = true;
+                            }
+                        }
+                    }
                     if (isEmergencyNumber && !waitForInServiceToDialEmergency) {
                         // We currently only look to make sure that the radio is on before dialing.
                         // We should be able to make emergency calls at any time after the radio has
@@ -1119,7 +1147,8 @@ public class TelephonyConnectionService extends ConnectionService {
                                 || serviceState == ServiceState.STATE_IN_SERVICE;
                     }
                 }
-            }, isEmergencyNumber && !isTestEmergencyNumber, phone, isTestEmergencyNumber);
+            }, isEmergencyNumber && !isTestEmergencyNumber, phone, isTestEmergencyNumber,
+                    timeoutToOnTimeoutCallback);
             // Return the still unconnected GsmConnection and wait for the Radios to boot before
             // connecting it to the underlying Phone.
             return resultConnection;
@@ -2525,6 +2554,44 @@ public class TelephonyConnectionService extends ConnectionService {
             }
         }
         return false;
+    }
+
+    private boolean isVoiceInService(Phone phone, boolean imsVoiceCapable) {
+        // Dialing normal call is available.
+        if (phone.isWifiCallingEnabled()) {
+            Log.i(this, "isVoiceInService VoWi-Fi available");
+            return true;
+        }
+
+        ServiceState ss = phone.getServiceStateTracker().getServiceState();
+        if (ss.getState() != ServiceState.STATE_IN_SERVICE) return false;
+
+        NetworkRegistrationInfo regState = ss.getNetworkRegistrationInfo(
+                NetworkRegistrationInfo.DOMAIN_PS, AccessNetworkConstants.TRANSPORT_TYPE_WWAN);
+        if (regState != null) {
+            int registrationState = regState.getRegistrationState();
+            if (registrationState != NetworkRegistrationInfo.REGISTRATION_STATE_HOME
+                    && registrationState != NetworkRegistrationInfo.REGISTRATION_STATE_ROAMING) {
+                return true;
+            }
+
+            int networkType = regState.getAccessNetworkTechnology();
+            if (networkType == TelephonyManager.NETWORK_TYPE_LTE) {
+                DataSpecificRegistrationInfo regInfo = regState.getDataSpecificInfo();
+                if (regInfo.getLteAttachResultType()
+                        == DataSpecificRegistrationInfo.LTE_ATTACH_TYPE_COMBINED) {
+                    Log.i(this, "isVoiceInService combined attach");
+                    return true;
+                }
+            }
+
+            if (networkType == TelephonyManager.NETWORK_TYPE_NR
+                    || networkType == TelephonyManager.NETWORK_TYPE_LTE) {
+                Log.i(this, "isVoiceInService PS only network, IMS available " + imsVoiceCapable);
+                return imsVoiceCapable;
+            }
+        }
+        return true;
     }
 
     private boolean maybeReselectDomainForNormalCall(
