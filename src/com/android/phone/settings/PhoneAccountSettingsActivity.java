@@ -18,9 +18,10 @@ package com.android.phone.settings;
 
 import android.app.ActionBar;
 import android.os.Bundle;
+import android.os.UserManager;
 import android.preference.PreferenceActivity;
 import android.view.MenuItem;
-import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.android.phone.R;
 
@@ -29,6 +30,16 @@ public class PhoneAccountSettingsActivity extends PreferenceActivity {
     @Override
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
+
+        // Make sure we are running as an admin/work user.
+        UserManager userManager = getSystemService(UserManager.class);
+        if (!userManager.isAdminUser() && !userManager.isManagedProfile()) {
+            Toast.makeText(this, R.string.phone_account_settings_user_restriction,
+                    Toast.LENGTH_SHORT).show();
+            finish();
+            return;
+        }
+
         getWindow().addSystemFlags(
                 android.view.WindowManager.LayoutParams
                         .SYSTEM_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);
