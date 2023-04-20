@@ -42,6 +42,7 @@ import static android.telephony.CarrierConfigManager.ImsEmergency.KEY_EMERGENCY_
 import static android.telephony.CarrierConfigManager.ImsEmergency.KEY_EMERGENCY_REQUIRES_VOLTE_ENABLED_BOOL;
 import static android.telephony.CarrierConfigManager.ImsEmergency.KEY_EMERGENCY_SCAN_TIMER_SEC_INT;
 import static android.telephony.CarrierConfigManager.ImsEmergency.KEY_EMERGENCY_VOWIFI_REQUIRES_CONDITION_INT;
+import static android.telephony.CarrierConfigManager.ImsEmergency.KEY_MAXIMUM_CELLULAR_SEARCH_TIMER_SEC_INT;
 import static android.telephony.CarrierConfigManager.ImsEmergency.KEY_MAXIMUM_NUMBER_OF_EMERGENCY_TRIES_OVER_VOWIFI_INT;
 import static android.telephony.CarrierConfigManager.ImsEmergency.KEY_PREFER_IMS_EMERGENCY_WHEN_VOICE_CALLS_ON_CS_BOOL;
 import static android.telephony.CarrierConfigManager.ImsEmergency.SCAN_TYPE_FULL_SERVICE_FOLLOWED_BY_LIMITED_SERVICE;
@@ -109,6 +110,8 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
     @VisibleForTesting
     public static final int MSG_NETWORK_SCAN_TIMEOUT = 12;
     private static final int MSG_NETWORK_SCAN_RESULT = 13;
+    @VisibleForTesting
+    public static final int MSG_MAX_CELLULAR_TIMEOUT = 14;
 
     private static final int NOT_SUPPORTED = -1;
 
@@ -180,6 +183,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
     private boolean mIsMonitoringConnectivity;
     private boolean mWiFiAvailable;
     private int mScanTimeout;
+    private int mMaxCellularTimeout;
     private int mMaxNumOfVoWifiTries;
     private boolean mVoWifiOverEmergencyPdn;
     private @CarrierConfigManager.ImsEmergency.EmergencyScanType int mPreferredNetworkScanType;
@@ -199,6 +203,8 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
     private boolean mDomainSelected = false;
     /** Indicates whether the cross sim redialing timer has expired. */
     private boolean mCrossStackTimerExpired = false;
+    /** Indicates whether max cellular timer expired. */
+    private boolean mMaxCellularTimerExpired = false;
 
     /**
      * Indicates whether {@link #selectDomain(SelectionAttributes, TransportSelectionCallback)}
@@ -241,6 +247,10 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
 
             case MSG_NETWORK_SCAN_RESULT:
                 handleScanResult((EmergencyRegResult) msg.obj);
+                break;
+
+            case MSG_MAX_CELLULAR_TIMEOUT:
+                handleMaxCellularTimeout();
                 break;
 
             default:
@@ -362,6 +372,18 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
             }
         }
 
+        if (mMaxCellularTimerExpired) {
+            if (mLastTransportType == TRANSPORT_TYPE_WWAN
+                    && maybeDialOverWlan()) {
+                // Cellular call failed and max cellular search timer expired, so redial on Wi-Fi.
+                // If this VoWi-Fi fails, the timer shall be restarted on next reselectDomain().
+                return;
+            } else if (mLastTransportType == TRANSPORT_TYPE_WLAN) {
+                // Since VoWi-Fi failed, allow for requestScan to restart max cellular timer.
+                mMaxCellularTimerExpired = false;
+            }
+        }
+
         if (mLastTransportType == TRANSPORT_TYPE_WLAN) {
             // Dialing over Wi-Fi failed. Try scanning cellular networks.
             onWwanSelected(this::reselectDomainInternal);
@@ -477,6 +499,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
                 KEY_PREFER_IMS_EMERGENCY_WHEN_VOICE_CALLS_ON_CS_BOOL);
         mVoWifiRequiresCondition = b.getInt(KEY_EMERGENCY_VOWIFI_REQUIRES_CONDITION_INT);
         mScanTimeout = b.getInt(KEY_EMERGENCY_SCAN_TIMER_SEC_INT) * 1000;
+        mMaxCellularTimeout = b.getInt(KEY_MAXIMUM_CELLULAR_SEARCH_TIMER_SEC_INT) * 1000;
         mMaxNumOfVoWifiTries = b.getInt(KEY_MAXIMUM_NUMBER_OF_EMERGENCY_TRIES_OVER_VOWIFI_INT);
         mVoWifiOverEmergencyPdn = b.getBoolean(KEY_EMERGENCY_CALL_OVER_EMERGENCY_PDN_BOOL);
         mPreferredNetworkScanType = b.getInt(KEY_EMERGENCY_NETWORK_SCAN_TYPE_INT);
@@ -512,6 +535,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
                 + ", preferImsOnCs=" + mPreferImsWhenCallsOnCs
                 + ", voWifiRequiresCondition=" + mVoWifiRequiresCondition
                 + ", scanTimeout=" + mScanTimeout
+                + ", maxCellularTimeout=" + mMaxCellularTimeout
                 + ", maxNumOfVoWifiTries=" + mMaxNumOfVoWifiTries
                 + ", voWifiOverEmergencyPdn=" + mVoWifiOverEmergencyPdn
                 + ", preferredScanType=" + carrierConfigNetworkScanTypeToString(
@@ -699,6 +723,9 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
                 registerForConnectivityChanges();
             }
         }
+        if (!mMaxCellularTimerExpired && !hasMessages(MSG_MAX_CELLULAR_TIMEOUT)) {
+            startMaxCellularTimer();
+        }
     }
 
     /**
@@ -811,8 +838,33 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         return preferredNetworks;
     }
 
+    private void handleMaxCellularTimeout() {
+        logi("handleMaxCellularTimeout");
+        if (mVoWifiTrialCount >= mMaxNumOfVoWifiTries) {
+            logi("handleMaxCellularTimeout already tried maximum");
+            return;
+        }
+
+        mMaxCellularTimerExpired = true;
+
+        if (mDomainSelected) {
+            // Dialing is already requested.
+            logi("handleMaxCellularTimeout wait for reselectDomain");
+            return;
+        }
+
+        if (!maybeDialOverWlan()) {
+            logd("handleMaxCellularTimeout VoWi-Fi is not available");
+        }
+    }
+
     private void handleNetworkScanTimeout() {
-        logi("handleNetworkScanTimeout overEmergencyPdn=" + mVoWifiOverEmergencyPdn
+        logi("handleNetworkScanTimeout");
+        maybeDialOverWlan();
+    }
+
+    private boolean maybeDialOverWlan() {
+        logi("maybeDialOverWlan overEmergencyPdn=" + mVoWifiOverEmergencyPdn
                 + ", wifiAvailable=" + mWiFiAvailable);
         boolean available = mWiFiAvailable;
         if (mVoWifiOverEmergencyPdn) {
@@ -837,7 +889,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
             available = isImsRegisteredWithVoiceCapability() && isImsRegisteredOverWifi();
         }
 
-        logi("handleNetworkScanTimeout VoWi-Fi available=" + available);
+        logi("maybeDialOverWlan VoWi-Fi available=" + available);
         if (available) {
             if (mCancelSignal != null) {
                 mCancelSignal.cancel();
@@ -845,6 +897,8 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
             }
             onWlanSelected();
         }
+
+        return available;
     }
 
     /**
@@ -983,7 +1037,11 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
     private boolean isEmcOverWifiSupported() {
         if (SubscriptionManager.isValidSubscriptionId(getSubId())) {
             List<Integer> domains = getDomainPreference();
-            return domains.contains(DOMAIN_PS_NON_3GPP);
+            boolean ret = domains.contains(DOMAIN_PS_NON_3GPP);
+            logi("isEmcOverWifiSupported " + ret);
+            return ret;
+        } else {
+            logi("isEmcOverWifiSupported invalid subId");
         }
         return false;
     }
@@ -1184,6 +1242,8 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         mVoWifiTrialCount++;
         mTransportSelectorCallback.onWlanSelected(mVoWifiOverEmergencyPdn);
         mWwanSelectorCallback = null;
+        removeMessages(MSG_NETWORK_SCAN_TIMEOUT);
+        removeMessages(MSG_MAX_CELLULAR_TIMEOUT);
     }
 
     private void onWwanSelected(Runnable runnable) {
@@ -1248,6 +1308,19 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
             logi("unregisterForConnectivityChanges");
             cm.unregisterNetworkCallback(mNetworkCallback);
             mIsMonitoringConnectivity = false;
+        }
+    }
+
+    /** Starts the max cellular timer. */
+    private void startMaxCellularTimer() {
+        logd("startMaxCellularTimer tried=" + mVoWifiTrialCount
+                + ", max=" + mMaxNumOfVoWifiTries);
+        if (isEmcOverWifiSupported()
+                && (mMaxCellularTimeout > 0)
+                && (mVoWifiTrialCount < mMaxNumOfVoWifiTries)) {
+            logi("startMaxCellularTimer start timer");
+            sendEmptyMessageDelayed(MSG_MAX_CELLULAR_TIMEOUT, mMaxCellularTimeout);
+            registerForConnectivityChanges();
         }
     }
 
