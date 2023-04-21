@@ -133,6 +133,7 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"IMS अन्तर्गत CDMA कल प्रतीक्षाको सुविधा निष्क्रिय छ"</string>
     <string name="updating_title" msgid="6130548922615719689">"कल सेटिङहरू"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"कल सेटिङहरू केवल प्रशासकीय प्रयोगकर्ताद्वारा परिवर्तन गर्न सकिन्छ।"</string>
+    <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"एड्मिन वा कार्य प्रोफाइलका प्रयोगकर्ताले मात्र फोनको खाताका सेटिङ बदल्न सक्छन्।"</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"सेटिङहरू (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"कल सेटिङमा त्रुटि"</string>
     <string name="reading_settings" msgid="1605904432450871183">"सेटिङहरू पढ्दै..."</string>

@@ -133,6 +133,8 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"በIMS ስር ያለው የCDMA ጥሪ መጠበቂያ ጠፍቷል"</string>
     <string name="updating_title" msgid="6130548922615719689">"የጥሪ ቅንብሮች"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"የጥሪ ቅንብሮች በአስተዳዳሪ ተጠቃሚው ብቻ ነው ሊለወጡ የሚችሉት።"</string>
+    <!-- no translation found for phone_account_settings_user_restriction (9142685151087208396) -->
+    <skip />
     <string name="call_settings_with_label" msgid="8460230435361579511">"ቅንብሮች (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"የጥሪ ቅንብሮች ስህተት"</string>
     <string name="reading_settings" msgid="1605904432450871183">"ቅንብሮች በማንበብ ላይ..."</string>
@@ -171,7 +173,7 @@
     <string name="vm_change_pin_error_mismatch" msgid="5364847280026257331">"የቀድሞ ፒን አልተዛመደም።"</string>
     <string name="vm_change_pin_error_invalid" msgid="5230002671175580674">"አዲሱ ፒን ልክ ያልሆኑ ቁምፊዎችን ይዟል።"</string>
     <string name="vm_change_pin_error_system_error" msgid="9116483527909681791">"ፒን መቀየር አልተቻለም።"</string>
-    <string name="vvm_unsupported_message_format" msgid="4206402558577739713">"የማይደገፍ የመልዕክት አይነት፤ ለማዳመጥ ወደ <xliff:g id="NUMBER">%s</xliff:g> ይደውሉ።"</string>
+    <string name="vvm_unsupported_message_format" msgid="4206402558577739713">"የማይደገፍ የመልዕክት ዓይነት፤ ለማዳመጥ ወደ <xliff:g id="NUMBER">%s</xliff:g> ይደውሉ።"</string>
     <string name="network_settings_title" msgid="7560807107123171541">"የተንቀሳቃሽ ስልክ አውታረ መረብ"</string>
     <string name="label_available" msgid="1316084116670821258">"የሚገኙ አውታረመረቦች"</string>
     <string name="load_networks_progress" msgid="4051433047717401683">"በመፈለግ ላይ…"</string>
@@ -186,9 +188,9 @@
     <string name="manual_mode_disallowed_summary" msgid="3970048592179890197">"ከ %1$s ጋር በተገናኘ ጊዜ አይገኝም"</string>
     <string name="network_select_title" msgid="4117305053881611988">"አውታረ መረብ"</string>
     <string name="register_automatically" msgid="3907580547590554834">"ራስ ሰር ምዝገባ...."</string>
-    <string name="preferred_network_mode_title" msgid="5253395265169539830">"የሚመረጠው የአውታረ መረብ አይነት"</string>
+    <string name="preferred_network_mode_title" msgid="5253395265169539830">"የሚመረጠው የአውታረ መረብ ዓይነት"</string>
     <string name="preferred_network_mode_summary" msgid="3787989000044330064">"የአውታረመረቡንመከወኛ ሁነታ ለውጥ"</string>
-    <string name="preferred_network_mode_dialogtitle" msgid="2781447433514459696">"የሚመረጠው የአውታረ መረብ አይነት"</string>
+    <string name="preferred_network_mode_dialogtitle" msgid="2781447433514459696">"የሚመረጠው የአውታረ መረብ ዓይነት"</string>
     <string name="forbidden_network" msgid="5081729819561333023">"(የተከለከለ)"</string>
     <string name="choose_network_title" msgid="5335832663422653082">"አውታረ መረብ ይምረጡ"</string>
     <string name="network_disconnected" msgid="8844141106841160825">"ግንኙነት ተቋርጧል"</string>
@@ -891,12 +893,12 @@
     <string name="radio_info_phone_number_label" msgid="2533852539562512203">"ስልክ ቁጥር:"</string>
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"የድምፅ የአውታረ መረብ ዓይነት፡"</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"የውሂብ አውታረ መረብ ዓይነት፡"</string>
-    <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"የአውታረ መረብ አይነት ሻር፦"</string>
+    <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"የአውታረ መረብ ዓይነት ሻር፦"</string>
     <string name="radio_info_voice_raw_registration_state_label" msgid="2822988327145825128">"የጥሬ ድምጽ ምዝገባ ሁነታ፦"</string>
     <string name="radio_info_data_raw_registration_state_label" msgid="2895895513822604539">"የጥሬ ውሂብ ምዝገባ ሁነታ፦"</string>
     <string name="radio_info_wlan_data_raw_registration_state_label" msgid="6396894835757296612">"የWLAN ጥሬ ውሂብ ምዝገባ ሁነታ፦"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"የስልክ መረጃ ጠቋሚ ይምረጡ"</string>
-    <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"ተመራጭ የአውታረ መረብ አይነት ያዋቅሩ፡"</string>
+    <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"ተመራጭ የአውታረ መረብ ዓይነት ያዋቅሩ፡"</string>
     <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"ፒንግ ስመ ከዳም(www.google.com) IPv4፦"</string>
     <string name="radio_info_ping_hostname_v6" msgid="2748637889486554603">"ፒንግ ስመ ካዳም(www.google.com) IPv6፡"</string>
     <string name="radio_info_http_client_test" msgid="1329583721088428238">"የኤችቲቲፒ ደንበኛ ሙከራ:"</string>
