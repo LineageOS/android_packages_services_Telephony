@@ -12485,6 +12485,26 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
+     * This API can be used by only CTS to update satellite pointing UI app package and class names.
+     *
+     * @param packageName The package name of the satellite pointing UI app.
+     * @param className The class name of the satellite pointing UI app.
+     * @return {@code true} if the satellite pointing UI app package and class is set successfully,
+     * {@code false} otherwise.
+     */
+    public boolean setSatellitePointingUiClassName(
+            @Nullable String packageName, @Nullable String className) {
+        Log.d(LOG_TAG, "setSatellitePointingUiClassName: packageName=" + packageName
+                + ", className=" + className);
+        TelephonyPermissions.enforceShellOnly(
+                Binder.getCallingUid(), "setSatellitePointingUiClassName");
+        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(mApp,
+                SubscriptionManager.INVALID_SUBSCRIPTION_ID,
+                "setSatelliteGatewayServicePackageName");
+        return mSatelliteController.setSatellitePointingUiClassName(packageName, className);
+    }
+
+    /**
      * This API can be used by only CTS to update the timeout duration in milliseconds that
      * satellite should stay at listening mode to wait for the next incoming page before disabling
      * listening mode.
