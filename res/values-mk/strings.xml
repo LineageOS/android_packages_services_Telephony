@@ -152,7 +152,7 @@
     <string name="change_num" msgid="6982164494063109334">"Ажурирај"</string>
   <string-array name="clir_display_values">
     <item msgid="8477364191403806960">"Стандардна мрежа"</item>
-    <item msgid="6813323051965618926">"Сокриј број"</item>
+    <item msgid="6813323051965618926">"Скриј број"</item>
     <item msgid="9150034130629852635">"Прикажи број"</item>
   </string-array>
     <string name="vm_changed" msgid="4739599044379692505">"Бројот на говорна пошта е променет."</string>
