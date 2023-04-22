@@ -48,7 +48,7 @@
     <string name="no_vm_number_msg" msgid="5165161462411372504">"Tidak ada nomor kotak pesan tersimpan pada kartu SIM."</string>
     <string name="add_vm_number_str" msgid="7368168964435881637">"Tambahkan nomor"</string>
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"Setelan Pesan Suara hanya dapat diubah oleh Pengguna Utama."</string>
-    <string name="puk_unlocked" msgid="4627340655215746511">"Kartu SIM Anda tidak lagi dicekal. Ponsel Anda sedang dibuka kuncinya..."</string>
+    <string name="puk_unlocked" msgid="4627340655215746511">"Kartu SIM Anda tidak lagi diblokir. Ponsel Anda sedang dibuka kuncinya..."</string>
     <string name="label_ndp" msgid="7617392683877410341">"PIN pembuka kunci jaringan SIM"</string>
     <string name="label_phoneid" msgid="8775611434123577808">"SIM dikunci untuk operator"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"Buka kunci"</string>
@@ -186,9 +186,9 @@
     <string name="manual_mode_disallowed_summary" msgid="3970048592179890197">"Tidak tersedia saat terhubung ke %1$s"</string>
     <string name="network_select_title" msgid="4117305053881611988">"Jaringan"</string>
     <string name="register_automatically" msgid="3907580547590554834">"Pendaftaran otomatis..."</string>
-    <string name="preferred_network_mode_title" msgid="5253395265169539830">"Jenis jaringan yang dipilih"</string>
+    <string name="preferred_network_mode_title" msgid="5253395265169539830">"Jenis jaringan preferensi"</string>
     <string name="preferred_network_mode_summary" msgid="3787989000044330064">"Ubah mode pengoperasian jaringan"</string>
-    <string name="preferred_network_mode_dialogtitle" msgid="2781447433514459696">"Jenis jaringan yang dipilih"</string>
+    <string name="preferred_network_mode_dialogtitle" msgid="2781447433514459696">"Jenis jaringan preferensi"</string>
     <string name="forbidden_network" msgid="5081729819561333023">"(terlarang)"</string>
     <string name="choose_network_title" msgid="5335832663422653082">"Pilih jaringan"</string>
     <string name="network_disconnected" msgid="8844141106841160825">"Terputus"</string>
@@ -674,7 +674,7 @@
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"Aksesibilitas"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"Panggilan Wi-Fi dari"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"Panggilan Wi-Fi"</string>
-    <string name="message_decode_error" msgid="1061856591500290887">"Terjadi kesalahan saat mendekode pesan."</string>
+    <string name="message_decode_error" msgid="1061856591500290887">"Terjadi error saat mendekode pesan."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"Kartu SIM telah mengaktifkan layanan dan memperbarui kemampuan roaming ponsel."</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"Ada terlalu banyak panggilan aktif. Akhiri atau gabungkan panggilan yang ada sebelum melakukan panggilan baru."</string>
     <string name="callFailed_imei_not_accepted" msgid="7257903653685147251">"Tidak dapat terhubung, masukkan kartu SIM yang valid."</string>
@@ -835,6 +835,7 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"Anda perlu memulai ulang perangkat untuk mengubah setelan."</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"Mulai ulang"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"Batal"</string>
+    <string name="removable_esim_string" msgid="7931369811671787649">"Tetapkan eSIM yang Dapat Dilepas sebagai Default"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"Daya Radio Seluler"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"Lihat Buku Alamat SIM"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"Lihat Panggilan Terbatas"</string>
@@ -915,9 +916,6 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Info telepon"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Info Provisioning Operator"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Memicu Provisioning Operator"</string>
-    <string name="provisioning_info_wfc_entitlement_id" msgid="8845188780811890910">"ID Hak WFC:"</string>
-    <string name="update_provisioning_info_wfc_entitlement_id" msgid="7044171908781134221">"Perbarui"</string>
-    <string name="refresh_provisioning_info_wfc_entitlement_id" msgid="738894335351353407">"Muat ulang"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Sinyal bluetooth Anda lemah. Coba beralih ke speaker ponsel."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Notifikasi Kualitas Panggilan"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Akun SIP yang tidak digunakan lagi"</string>

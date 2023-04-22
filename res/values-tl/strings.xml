@@ -511,7 +511,7 @@
     <string name="invalidPuk2" msgid="713729511903849544">"Maglagay ng PUK2 na 8 numero."</string>
     <string name="pin2_changed" msgid="5710551850481287821">"Na-update na ang PIN2"</string>
     <string name="label_puk2_code" msgid="2852217004288085562">"Ilagay ang PUK2 code"</string>
-    <string name="fdn_enable_puk2_requested" msgid="5793652792131588041">"Mali ang password. Naka-block na ngayon ang PIN2. Upang subukang muli, baguhin ang PIN 2."</string>
+    <string name="fdn_enable_puk2_requested" msgid="5793652792131588041">"Mali ang password. Naka-block na ngayon ang PIN2. Upang subukan ulit, baguhin ang PIN 2."</string>
     <string name="puk2_requested" msgid="6992374450720307514">"Mali ang password. Naka-lock na ngayon ang SIM. Ilagay ang PUK2."</string>
     <string name="puk2_blocked" msgid="3131139031779319911">"Permanenteng na-block ang PUK2."</string>
     <string name="pin2_attempts" msgid="5625178102026453023">\n"Mayroon ka na lang <xliff:g id="NUMBER">%d</xliff:g> (na) natitirang pagsubok."</string>
@@ -835,6 +835,7 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"Kailangan mong i-restart ang device para mabago ang setting."</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"I-restart"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"Kanselahin"</string>
+    <string name="removable_esim_string" msgid="7931369811671787649">"Itakda na Default ang Naaalis na eSIM"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"Mobile Radio Power"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"Tingnan ang Address Book ng SIM"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"Tingnan ang Mga Fixed Dialing Number"</string>
@@ -915,9 +916,6 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Impormasyon ng telepono"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Impormasyon sa Provisioning ng Carrier"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"I-trigger ang Provisioning ng Carrier"</string>
-    <string name="provisioning_info_wfc_entitlement_id" msgid="8845188780811890910">"WFC Entitlement ID:"</string>
-    <string name="update_provisioning_info_wfc_entitlement_id" msgid="7044171908781134221">"I-update"</string>
-    <string name="refresh_provisioning_info_wfc_entitlement_id" msgid="738894335351353407">"I-refresh"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Mahina ang signal ng iyong bluetooth. Subukang lumipat sa speakerphone."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Notification sa Kalidad ng Tawag"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Mga hindi na ginagamit na SIP account"</string>

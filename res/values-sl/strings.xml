@@ -671,7 +671,7 @@
     <string name="sim_label_emergency_calls" msgid="9078241989421522310">"Klici v sili"</string>
     <string name="sim_description_emergency_calls" msgid="5146872803938897296">"Samo klicanje v sili"</string>
     <string name="sim_description_default" msgid="7474671114363724971">"Kartica SIM, reža: <xliff:g id="SLOT_ID">%s</xliff:g>"</string>
-    <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"Funkcije za ljudi s posebnimi potrebami"</string>
+    <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"Dostopnost"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"Klic prek Wi-Fi-ja osebe"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"Klic Wi-Fi"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"Napaka pri dekodiranju sporočila."</string>
@@ -835,6 +835,7 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"Če želite spremeniti to nastavitev, znova zaženite napravo."</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"Vnovičen zagon"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"Prekliči"</string>
+    <string name="removable_esim_string" msgid="7931369811671787649">"Nastavi izmenljivo kartico e-SIM kot privzeto"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"Moč radia mobilne naprave"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"Prikaži imenik na kartici SIM"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"Prikaži številke za zaporo odhodnih klicev"</string>
@@ -915,9 +916,6 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Informacije o telefonu"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Podatki o omogočanju uporabe operaterja"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Sproži omogočanje uporabe operaterja"</string>
-    <string name="provisioning_info_wfc_entitlement_id" msgid="8845188780811890910">"ID upravičenosti za WFC:"</string>
-    <string name="update_provisioning_info_wfc_entitlement_id" msgid="7044171908781134221">"Posodobi"</string>
-    <string name="refresh_provisioning_info_wfc_entitlement_id" msgid="738894335351353407">"Osveži"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Signal povezave Bluetooth je šibek. Poskusite preklopiti na zvočnik."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Obvestilo o kakovosti klica"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Opuščeni računi SIP"</string>

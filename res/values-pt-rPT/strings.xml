@@ -96,7 +96,7 @@
     <string name="sum_loading_settings" msgid="434063780286688775">"A carregar as definições..."</string>
     <string name="sum_hide_caller_id" msgid="131100328602371933">"Ocultar o número em chamadas efectuadas"</string>
     <string name="sum_show_caller_id" msgid="3571854755324664591">"Número apresentado em chamadas efectuadas"</string>
-    <string name="sum_default_caller_id" msgid="1767070797135682959">"Utilizar as predefinições do operador para apresentar o meu número nas chamadas efetuadas"</string>
+    <string name="sum_default_caller_id" msgid="1767070797135682959">"Usar as predefinições do operador para apresentar o meu número nas chamadas efetuadas"</string>
     <string name="labelCW" msgid="8449327023861428622">"Chamada em espera"</string>
     <string name="sum_cw_enabled" msgid="3977308526187139996">"Notificar-me de chamadas em espera durante uma chamada"</string>
     <string name="sum_cw_disabled" msgid="3658094589461768637">"Notificar-me de chamadas em espera durante uma chamada"</string>
@@ -179,7 +179,7 @@
     <string name="network_query_error" msgid="3862515805115145124">"Não foi possível localizar nenhuma rede. Tente novamente."</string>
     <string name="register_on_network" msgid="4194770527833960423">"A registar em <xliff:g id="NETWORK">%s</xliff:g>..."</string>
     <string name="not_allowed" msgid="8541221928746104798">"O cartão SIM não permite uma ligação a esta rede."</string>
-    <string name="connect_later" msgid="1950138106010005425">"De momento, não é possível estabelecer ligação com esta rede. Tente novamente mais tarde."</string>
+    <string name="connect_later" msgid="1950138106010005425">"De momento, não é possível estabelecer ligação com esta rede. Tente mais tarde."</string>
     <string name="registration_done" msgid="5337407023566953292">"Registado na rede."</string>
     <string name="already_auto" msgid="8607068290733079336">"A seleção automática já está ativada."</string>
     <string name="select_automatically" msgid="779750291257872651">"Selecionar automaticamente a rede"</string>
@@ -273,8 +273,8 @@
     <string name="network_operator_category" msgid="4992217193732304680">"Rede"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="4213420368777080540">"Modo 4G LTE avançado"</string>
     <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (7240155150166394308) -->
-    <string name="enhanced_4g_lte_mode_summary" msgid="7725708511804143638">"Utilizar os serviços LTE para melhorar a voz e outras comunicações (recomendado)"</string>
-    <string name="enhanced_4g_lte_mode_summary_o2" msgid="2521108446409016542">"Utilizar os serviços 4G para melhorar a voz e outras comunicações (recomendado)"</string>
+    <string name="enhanced_4g_lte_mode_summary" msgid="7725708511804143638">"Usar os serviços LTE para melhorar a voz e outras comunicações (recomendado)"</string>
+    <string name="enhanced_4g_lte_mode_summary_o2" msgid="2521108446409016542">"Usar os serviços 4G para melhorar a voz e outras comunicações (recomendado)"</string>
     <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:0 (2943982616649705147) -->
     <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:1 (5262249464504131443) -->
     <!-- no translation found for enhanced_4g_lte_mode_sumary_variant:2 (6356974241850241718) -->
@@ -574,7 +574,7 @@
     <string name="ambulance_type_description" msgid="6798237503553180461">"Ambulância"</string>
     <string name="fire_type_description" msgid="6565200468934914930">"Fogo"</string>
     <string name="description_concat_format" msgid="2014471565101724088">"%1$s, %2$s"</string>
-    <string name="dialerKeyboardHintText" msgid="1115266533703764049">"Utilizar o teclado para marcar"</string>
+    <string name="dialerKeyboardHintText" msgid="1115266533703764049">"Usar o teclado para marcar"</string>
     <string name="onscreenHoldText" msgid="4025348842151665191">"Suspender"</string>
     <string name="onscreenEndCallText" msgid="6138725377654842757">"Terminar"</string>
     <string name="onscreenShowDialpadText" msgid="658465753816164079">"Teclado de marcação"</string>
@@ -835,6 +835,7 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"Tem de reiniciar o dispositivo para alterar esta definição."</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"Reiniciar"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"Cancelar"</string>
+    <string name="removable_esim_string" msgid="7931369811671787649">"Predefinir eSIM removível"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"Potência do rádio móvel"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"Ver livro de endereços do SIM"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"Ver números autorizados"</string>
@@ -915,9 +916,6 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Informações do telefone"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Informações de fornecimento do operador"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Acionar fornecimento do operador"</string>
-    <string name="provisioning_info_wfc_entitlement_id" msgid="8845188780811890910">"ID de direito de utilização de WFC:"</string>
-    <string name="update_provisioning_info_wfc_entitlement_id" msgid="7044171908781134221">"Atualizar"</string>
-    <string name="refresh_provisioning_info_wfc_entitlement_id" msgid="738894335351353407">"Atualizar"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"O seu sinal Bluetooth é fraco. Tente mudar para o altifalante."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Notificação de qualidade da chamada"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Contas SIP descontinuadas"</string>

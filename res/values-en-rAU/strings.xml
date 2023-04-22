@@ -835,6 +835,7 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"You need to restart your device to change this setting."</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"Restart"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"Cancel"</string>
+    <string name="removable_esim_string" msgid="7931369811671787649">"Set removable eSIM as default"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"Mobile radio power"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"View SIM address book"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"View fixed dialling numbers"</string>
@@ -915,9 +916,6 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Phone info"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Operator provisioning info"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Trigger operator provisioning"</string>
-    <string name="provisioning_info_wfc_entitlement_id" msgid="8845188780811890910">"WFC entitlement ID:"</string>
-    <string name="update_provisioning_info_wfc_entitlement_id" msgid="7044171908781134221">"Update"</string>
-    <string name="refresh_provisioning_info_wfc_entitlement_id" msgid="738894335351353407">"Refresh"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Your Bluetooth signal is weak. Try switching to speakerphone."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Call quality notification"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Deprecated SIP accounts"</string>

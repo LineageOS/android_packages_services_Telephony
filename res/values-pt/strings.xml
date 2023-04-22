@@ -579,7 +579,7 @@
     <string name="onscreenEndCallText" msgid="6138725377654842757">"Finalizar"</string>
     <string name="onscreenShowDialpadText" msgid="658465753816164079">"Teclado"</string>
     <string name="onscreenMuteText" msgid="5470306116733843621">"Desativar som"</string>
-    <string name="onscreenAddCallText" msgid="9075675082903611677">"Adicionar chamada"</string>
+    <string name="onscreenAddCallText" msgid="9075675082903611677">"Adicionar ligação"</string>
     <string name="onscreenMergeCallsText" msgid="3692389519611225407">"Juntar chamadas"</string>
     <string name="onscreenSwapCallsText" msgid="2682542150803377991">"Trocar"</string>
     <string name="onscreenManageCallsText" msgid="1162047856081836469">"Gerenciar chamadas"</string>
@@ -595,7 +595,7 @@
     <string name="hac_mode_title" msgid="4127986689621125468">"Aparelhos auditivos"</string>
     <string name="hac_mode_summary" msgid="7774989500136009881">"Ativar compatibilidade com aparelhos auditivos"</string>
     <string name="rtt_mode_title" msgid="3075948111362818043">"Chamada com mensagem de texto em tempo real (RTT)"</string>
-    <string name="rtt_mode_summary" msgid="8631541375609989562">"Permitir o envio de mensagens de texto em uma chamada de voz"</string>
+    <string name="rtt_mode_summary" msgid="8631541375609989562">"Permitir o envio de mensagens de texto em uma ligação"</string>
     <string name="rtt_mode_more_information" msgid="587500128658756318">"A RTT ajuda os autores das chamadas com deficiências como surdez, dificuldade de audição ou fala ou que precisam de outros recursos além de voz.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Saiba mais&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; — As chamadas RTT são salvas como transcrições de mensagem\n       &lt;br&gt; — A RTT não está disponível para videochamadas"</string>
     <string name="no_rtt_when_roaming" msgid="5268008247378355389">"Observação: a RTT não está disponível em roaming"</string>
   <string-array name="tty_mode_entries">
@@ -655,7 +655,7 @@
     <string name="contactPhoto" msgid="7885089213135154834">"foto do contato"</string>
     <string name="goPrivate" msgid="4645108311382209551">"conversar em particular"</string>
     <string name="selectContact" msgid="1527612842599767382">"selecionar contato"</string>
-    <string name="not_voice_capable" msgid="2819996734252084253">"Chamada de voz não compatível"</string>
+    <string name="not_voice_capable" msgid="2819996734252084253">"Ligação não compatível"</string>
     <string name="description_dial_button" msgid="8614631902795087259">"discar"</string>
     <string name="description_dialpad_button" msgid="7395114120463883623">"Mostrar teclado"</string>
     <string name="pane_title_emergency_dialpad" msgid="3627372514638694401">"Teclado de emergência"</string>
@@ -815,7 +815,7 @@
     <string name="supp_service_held_call_released" msgid="2847835124639112410">"A chamada em espera foi desconectada."</string>
     <string name="callFailed_otasp_provisioning_in_process" msgid="3345666183602879326">"Não é possível ligar porque o dispositivo está sendo provisionado no momento,"</string>
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"Não é possível ligar porque há outra chamada sendo realizada."</string>
-    <string name="callFailed_already_ringing" msgid="2376603543544289303">"Não é possível ligar porque há uma chamada recebida que não foi atendida. Atenda ou rejeite essa chamada antes de fazer outra."</string>
+    <string name="callFailed_already_ringing" msgid="2376603543544289303">"Não é possível ligar porque há uma ligação recebida que não foi atendida. Atenda ou rejeite essa chamada antes de fazer outra."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"Não é possível ligar porque as chamadas foram desativadas pela propriedade \"ro.telephony.disable-call system\"."</string>
     <string name="callFailed_too_many_calls" msgid="2761754044990799580">"Não é possível ligar porque já há duas chamadas em andamento. Encerre uma das chamadas ou mescle-as em uma conferência antes de fazer outra."</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"Verifique se os dados móveis estão ativados para usar este serviço: <xliff:g id="SUPP_SERVICE">%s</xliff:g>. Você pode alterar essa opção nas configurações da rede móvel."</string>
@@ -835,6 +835,7 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"Reinicie o dispositivo para alterar essa configuração."</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"Reiniciar"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"Cancelar"</string>
+    <string name="removable_esim_string" msgid="7931369811671787649">"Definir eSIM removível como padrão"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"Potência do rádio celular"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"Ver o catálogo de endereços do chip"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"Ver números de discagem fixa"</string>
@@ -882,7 +883,7 @@
     <string name="radio_info_ppp_received_label" msgid="5753592451640644889">"Dados recebidos:"</string>
     <string name="radio_info_gsm_service_label" msgid="6443348321714241328">"Serviço de voz:"</string>
     <string name="radio_info_signal_strength_label" msgid="5545444702102543260">"Potência do sinal:"</string>
-    <string name="radio_info_call_status_label" msgid="7693575431923095487">"Status da chamada de voz:"</string>
+    <string name="radio_info_call_status_label" msgid="7693575431923095487">"Status da ligação:"</string>
     <string name="radio_info_ppp_sent_label" msgid="6542208429356199695">"Dados enviados:"</string>
     <string name="radio_info_message_waiting_label" msgid="1886549432566952078">"Mensagem em espera:"</string>
     <string name="radio_info_phone_number_label" msgid="2533852539562512203">"Número de telefone:"</string>
@@ -915,9 +916,6 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Informações do telefone"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Informações de provisionamento da operadora"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Acionar provisionamento da operadora"</string>
-    <string name="provisioning_info_wfc_entitlement_id" msgid="8845188780811890910">"ID de direito WFC:"</string>
-    <string name="update_provisioning_info_wfc_entitlement_id" msgid="7044171908781134221">"Atualizar"</string>
-    <string name="refresh_provisioning_info_wfc_entitlement_id" msgid="738894335351353407">"Atualizar"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"O sinal do Bluetooth está fraco. Mude para o viva-voz."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Notificação sobre a qualidade da chamada"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Contas SIP suspensas"</string>

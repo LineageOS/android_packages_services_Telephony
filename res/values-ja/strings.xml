@@ -662,7 +662,7 @@
     <string name="voicemail_visual_voicemail_switch_title" msgid="6610414098912832120">"ビジュアル留守番電話"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="7005128605986960003">"PIN の設定"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="4633077715231764435">"PIN の変更"</string>
-    <string name="preference_category_ringtone" msgid="8787281191375434976">"着信音とバイブレーション"</string>
+    <string name="preference_category_ringtone" msgid="8787281191375434976">"音とバイブレーション"</string>
     <string name="pstn_connection_service_label" msgid="9200102709997537069">"内蔵のSIMカード"</string>
     <string name="enable_video_calling_title" msgid="7246600931634161830">"ビデオハングアウトを有効にする"</string>
     <string name="enable_video_calling_dialog_msg" msgid="7141478720386203540">"ビデオハングアウトをONにするには、ネットワーク設定で4G LTE拡張モードを有効にする必要があります。"</string>
@@ -835,6 +835,7 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"この設定を変更するには、デバイスの再起動が必要です。"</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"再起動"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"キャンセル"</string>
+    <string name="removable_esim_string" msgid="7931369811671787649">"リムーバブル eSIM をデフォルトに設定"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"モバイル無線電力"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"SIM のアドレス帳を表示"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"発信番号制限を表示"</string>
@@ -915,9 +916,6 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"スマートフォン情報"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"携帯通信会社のプロビジョニング情報"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"携帯通信会社のプロビジョニングをトリガー"</string>
-    <string name="provisioning_info_wfc_entitlement_id" msgid="8845188780811890910">"WFC 利用資格 ID:"</string>
-    <string name="update_provisioning_info_wfc_entitlement_id" msgid="7044171908781134221">"アップデート"</string>
-    <string name="refresh_provisioning_info_wfc_entitlement_id" msgid="738894335351353407">"更新"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Bluetooth の信号強度が十分ではありません。スピーカーフォンに切り替えてみてください。"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"通話品質に関するお知らせ"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"サポートが終了した SIP アカウント"</string>

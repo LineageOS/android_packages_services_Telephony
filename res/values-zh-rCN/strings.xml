@@ -575,7 +575,7 @@
     <string name="fire_type_description" msgid="6565200468934914930">"火警"</string>
     <string name="description_concat_format" msgid="2014471565101724088">"%1$s、%2$s"</string>
     <string name="dialerKeyboardHintText" msgid="1115266533703764049">"使用键盘拨号"</string>
-    <string name="onscreenHoldText" msgid="4025348842151665191">"保持"</string>
+    <string name="onscreenHoldText" msgid="4025348842151665191">"保持通话"</string>
     <string name="onscreenEndCallText" msgid="6138725377654842757">"挂断"</string>
     <string name="onscreenShowDialpadText" msgid="658465753816164079">"拨号键盘"</string>
     <string name="onscreenMuteText" msgid="5470306116733843621">"静音"</string>
@@ -835,6 +835,7 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"您需要重启设备才能让这项设置更改生效。"</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"重启"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"取消"</string>
+    <string name="removable_esim_string" msgid="7931369811671787649">"将可卸载的 eSIM 卡设为默认 eSIM 卡"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"移动无线装置电源"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"查看 SIM 卡通讯录"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"查看固定拨号号码"</string>
@@ -915,9 +916,6 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"手机信息"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"运营商配置信息"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"触发运营商配置"</string>
-    <string name="provisioning_info_wfc_entitlement_id" msgid="8845188780811890910">"WFC 权限 ID："</string>
-    <string name="update_provisioning_info_wfc_entitlement_id" msgid="7044171908781134221">"更新"</string>
-    <string name="refresh_provisioning_info_wfc_entitlement_id" msgid="738894335351353407">"刷新"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"您的蓝牙信号较弱。请尝试切换为扬声器模式。"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"通话质量通知"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"已弃用的 SIP 帐号"</string>

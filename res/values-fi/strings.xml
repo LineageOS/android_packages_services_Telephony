@@ -835,6 +835,7 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"Laite on käynnistettävä uudelleen asetuksen muuttamiseksi."</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"Käynnistä uudelleen"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"Peru"</string>
+    <string name="removable_esim_string" msgid="7931369811671787649">"Aseta poistettava eSIM oletukseksi"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"Mobiiliradion voimakkuus"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"Näytä SIM-kortin osoitekirja"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"Näytä sallitut numerot"</string>
@@ -892,8 +893,8 @@
     <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"Ohita verkon tyyppi:"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"Valitse puhelimen hakemisto"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"Aseta ensisijainen verkon tyyppi:"</string>
-    <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"Ping-kutsu isäntänimelle (www.google.com), IPv4:"</string>
-    <string name="radio_info_ping_hostname_v6" msgid="2748637889486554603">"Ping-kutsu isäntänimelle (www.google.com), IPv6:"</string>
+    <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"Ping isäntänimelle (www.google.com), IPv4:"</string>
+    <string name="radio_info_ping_hostname_v6" msgid="2748637889486554603">"Ping isäntänimelle (www.google.com), IPv6:"</string>
     <string name="radio_info_http_client_test" msgid="1329583721088428238">"HTTP-asiakastesti:"</string>
     <string name="ping_test_label" msgid="448617502935719694">"Suorita ping-testi"</string>
     <string name="radio_info_smsc_label" msgid="3749927072726033763">"SMSC:"</string>
@@ -915,9 +916,6 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Puhelimen tiedot"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Operaattorin hallintatiedot"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Ota operaattorin hallinta käyttöön"</string>
-    <string name="provisioning_info_wfc_entitlement_id" msgid="8845188780811890910">"WFC-oikeuden tunnus:"</string>
-    <string name="update_provisioning_info_wfc_entitlement_id" msgid="7044171908781134221">"Päivitä"</string>
-    <string name="refresh_provisioning_info_wfc_entitlement_id" msgid="738894335351353407">"Päivitä"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Bluetooth-signaali on heikko. Kokeile vaihtaa kaiutinpuhelimeen."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Puhelun laatua koskeva ilmoitus"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Käytöstä poistetut SIP-tilit"</string>

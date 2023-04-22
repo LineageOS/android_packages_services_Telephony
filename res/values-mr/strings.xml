@@ -48,7 +48,7 @@
     <string name="no_vm_number_msg" msgid="5165161462411372504">"सिम कार्डवर कोणताही व्हॉइसमेल नंबर स्टोअर केला नाही."</string>
     <string name="add_vm_number_str" msgid="7368168964435881637">"नंबर जोडा"</string>
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"केवळ प्राथमिक वापरकर्ता व्हॉइसमेल सेटिंग्ज बदलू शकतो."</string>
-    <string name="puk_unlocked" msgid="4627340655215746511">"तुमचे सिम कार्ड अवरोधित करणे रद्द केले गेले आहे. तुमचा फोन अनलॉक होत आहे…"</string>
+    <string name="puk_unlocked" msgid="4627340655215746511">"तुमचे सिम कार्ड ब्लॉक करणे रद्द केले गेले आहे. तुमचा फोन अनलॉक होत आहे…"</string>
     <string name="label_ndp" msgid="7617392683877410341">"सिम नेटवर्क अनलॉक पिन"</string>
     <string name="label_phoneid" msgid="8775611434123577808">"ऑपरेटरसाठी सिम लॉक केले आहे"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"अनलॉक करा"</string>
@@ -424,7 +424,7 @@
   </string-array>
     <string name="cdma_subscription_title" msgid="3449527179325589434">"CDMA सदस्‍यता"</string>
     <string name="cdma_subscription_summary" msgid="5681152534466169001">"RUIM/सिम आणि NV मध्‍ये बदला"</string>
-    <string name="cdma_subscription_dialogtitle" msgid="8872086335839723980">"सदस्यता"</string>
+    <string name="cdma_subscription_dialogtitle" msgid="8872086335839723980">"सदस्यत्व"</string>
   <string-array name="cdma_subscription_choices">
     <item msgid="7989486897370727698">"RUIM/सिम"</item>
     <item msgid="5445342771222849381">"NV"</item>
@@ -499,7 +499,7 @@
     <string name="disable_pin_ok" msgid="888505244389647754">"पिन साफ केला"</string>
     <string name="pin_failed" msgid="4527347792881939652">"पिन चुकीचा आहे"</string>
     <string name="pin_changed" msgid="7291153750090452808">"पिन अपडेट केला"</string>
-    <string name="puk_requested" msgid="2061337960609806851">"पासवर्ड चुकीचा आहे. पिन आता अवरोधित केला. PUK ची विनंती केली."</string>
+    <string name="puk_requested" msgid="2061337960609806851">"पासवर्ड चुकीचा आहे. पिन आता ब्लॉक केला. PUK ची विनंती केली."</string>
     <string name="enter_pin2_text" msgid="7266379426804295979">"PIN2"</string>
     <string name="oldPin2Label" msgid="4648543187859997203">"जुना PIN2"</string>
     <string name="newPin2Label" msgid="1840905981784453939">"नवीन PIN2"</string>
@@ -511,12 +511,12 @@
     <string name="invalidPuk2" msgid="713729511903849544">"8 अंक असलेला एक PUK2 प्रविष्‍ट करा."</string>
     <string name="pin2_changed" msgid="5710551850481287821">"पिन2 अपडेट केला"</string>
     <string name="label_puk2_code" msgid="2852217004288085562">"PUK2 कोड प्रविष्‍ट करा"</string>
-    <string name="fdn_enable_puk2_requested" msgid="5793652792131588041">"पासवर्ड चुकीचा आहे. पिन2 आता अवरोधित केला. पुन्हा प्रयत्न करण्‍यासाठी, पिन 2 बदला."</string>
+    <string name="fdn_enable_puk2_requested" msgid="5793652792131588041">"पासवर्ड चुकीचा आहे. पिन2 आता ब्लॉक केला. पुन्हा प्रयत्न करण्‍यासाठी, पिन 2 बदला."</string>
     <string name="puk2_requested" msgid="6992374450720307514">"पासवर्ड चुकीचा आहे. सिम आता लॉक केले आहे. PUK2 प्रविष्‍ट करा."</string>
-    <string name="puk2_blocked" msgid="3131139031779319911">"PUK2 कायमचे अवरोधित केले आहे."</string>
+    <string name="puk2_blocked" msgid="3131139031779319911">"PUK2 कायमचे ब्लॉक केले आहे."</string>
     <string name="pin2_attempts" msgid="5625178102026453023">\n"आपल्‍याकडे <xliff:g id="NUMBER">%d</xliff:g> शिल्लक प्रयत्न आहेत."</string>
     <string name="puk2_locked" msgid="6497760825455461057">"PUK2 द्वारे लॉक केले आहे. ते अनलॉक करण्यासाठी सेवा पुरवठादाराशी संपर्क साधा."</string>
-    <string name="pin2_unblocked" msgid="4481107908727789303">"पिन2 अवरोधित केला नाही"</string>
+    <string name="pin2_unblocked" msgid="4481107908727789303">"पिन2 ब्लॉक केला नाही"</string>
     <string name="pin2_error_exception" msgid="8116103864600823641">"नेटवर्क किंवा सिम कार्ड एरर"</string>
     <string name="doneButton" msgid="7371209609238460207">"पूर्ण झाले"</string>
     <string name="voicemail_settings_number_label" msgid="1265118640154688162">"व्हॉइसमेल नंबर"</string>
@@ -545,7 +545,7 @@
     <string name="incall_error_no_phone_number_supplied" msgid="8680831089508851894">"कॉल करण्यासाठी, एक वैध नंबर एंटर करा."</string>
     <string name="incall_error_call_failed" msgid="393508653582682539">"कॉल अयशस्वी झाला."</string>
     <string name="incall_error_cannot_add_call" msgid="5425764862628655443">"या वेळी कॉल जोडू शकत नाही. तुम्ही मेसेज पाठवून संपर्क करण्याचा प्रयत्न करू शकता."</string>
-    <string name="incall_error_supp_service_unknown" msgid="8751177117194592623">"सेवा समर्थित नाही"</string>
+    <string name="incall_error_supp_service_unknown" msgid="8751177117194592623">"सेवेला सपोर्ट नाही"</string>
     <string name="incall_error_supp_service_switch" msgid="5272822448189448479">"कॉल स्विच करू शकत नाही."</string>
     <string name="incall_error_supp_service_resume" msgid="1276861499306817035">"कॉल पुन्‍हा सुरू करू शकत नाही."</string>
     <string name="incall_error_supp_service_separate" msgid="8932660028965274353">"कॉल विभक्त करू शकत नाही."</string>
@@ -655,7 +655,7 @@
     <string name="contactPhoto" msgid="7885089213135154834">"संपर्क फोटो"</string>
     <string name="goPrivate" msgid="4645108311382209551">"खाजगी जा"</string>
     <string name="selectContact" msgid="1527612842599767382">"संपर्क निवडा"</string>
-    <string name="not_voice_capable" msgid="2819996734252084253">"व्‍हॉइस कॉलिंंग समर्थित नाही"</string>
+    <string name="not_voice_capable" msgid="2819996734252084253">"व्‍हॉइस कॉलिंंग याला सपोर्ट नाही"</string>
     <string name="description_dial_button" msgid="8614631902795087259">"डायल करा"</string>
     <string name="description_dialpad_button" msgid="7395114120463883623">"डायलपॅड दाखवा"</string>
     <string name="pane_title_emergency_dialpad" msgid="3627372514638694401">"आणीबाणी डायलपॅड"</string>
@@ -801,8 +801,8 @@
     <string name="supp_service_notification_call_waiting" msgid="4577403881609445324">"कॉल प्रतीक्षेत आहे."</string>
     <string name="supp_service_clir_suppression_rejected" msgid="6105737020194776121">"क्रमांक ब्‍लॉक करणे रद्द केले."</string>
     <string name="supp_service_closed_user_group_call" msgid="2811636666505250689">"बंद वापरकर्ता गट कॉल."</string>
-    <string name="supp_service_incoming_calls_barred" msgid="2034627421274447674">"इनकमिंग कॉल अवरोधित केले."</string>
-    <string name="supp_service_outgoing_calls_barred" msgid="5205725332394087112">"जाणारे कॉल अवरोधित केले."</string>
+    <string name="supp_service_incoming_calls_barred" msgid="2034627421274447674">"इनकमिंग कॉल ब्लॉक केले."</string>
+    <string name="supp_service_outgoing_calls_barred" msgid="5205725332394087112">"आउटगोइंग कॉल ब्लॉक केले."</string>
     <string name="supp_service_call_forwarding_active" msgid="7910162960395132464">"कॉल फॉरवर्ड होत आहे."</string>
     <string name="supp_service_additional_call_forwarded" msgid="8772753260008398632">"अतिरिक्‍त कॉल फॉरवर्ड केला."</string>
     <string name="supp_service_additional_ect_connected" msgid="8525934162945220237">"भडक कॉल ट्रान्सफर करणे पूर्ण झाले."</string>
@@ -835,6 +835,7 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"ही सेटिंग बदलण्यासाठी तुम्ही तुमचे डिव्हाइस रीस्टार्ट करणे आवश्यक आहे."</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"रीस्टार्ट करा"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"रद्द करा"</string>
+    <string name="removable_esim_string" msgid="7931369811671787649">"काढून टाकण्यायोग्य eSIM डीफॉल्ट म्हणून सेट करा"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"मोबाइल रेडिओ पॉवर"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"सिम ॲड्रेस बुक पहा"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"निश्चित डायलिंग नंबर पहा"</string>
@@ -915,9 +916,6 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"फोनची माहिती"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"वाहक सुविधा माहिती"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"वाहक सुविधा ट्रिगर करा"</string>
-    <string name="provisioning_info_wfc_entitlement_id" msgid="8845188780811890910">"WFC अधिकार आयडी:"</string>
-    <string name="update_provisioning_info_wfc_entitlement_id" msgid="7044171908781134221">"अपडेट करा"</string>
-    <string name="refresh_provisioning_info_wfc_entitlement_id" msgid="738894335351353407">"रिफ्रेश करा"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"तुमचा ब्लूटूथ सिग्नल कमकुवत आहे. स्पीकरफोनवर स्विच करून पहा."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"कॉल गुणवत्ता सूचना"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"कालबाह्य झालेली SIP खाती"</string>

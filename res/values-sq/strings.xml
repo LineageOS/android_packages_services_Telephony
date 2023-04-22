@@ -631,7 +631,7 @@
     <string name="ota_spc_failure" msgid="904092035241370080">"DËSHTIME TË SHUMTA SPC"</string>
     <string name="ota_call_end" msgid="8657746378290737034">"Prapa"</string>
     <string name="ota_try_again" msgid="6914781945599998550">"Provo sërish"</string>
-    <string name="ota_next" msgid="2041016619313475914">"Përpara"</string>
+    <string name="ota_next" msgid="2041016619313475914">"Para"</string>
     <string name="ecm_exit_dialog" msgid="4200691880721429078">"EcmExitDialog"</string>
     <string name="phone_entered_ecm_text" msgid="8431238297843035842">"Hyri në modalitetin e \"Kthimit të telefonatës së urgjencës\""</string>
     <string name="phone_in_ecm_notification_title" msgid="6825016389926367946">"Modaliteti i \"Kthimit të telefonatës së urgjencës\""</string>
@@ -660,7 +660,7 @@
     <string name="description_dialpad_button" msgid="7395114120463883623">"shfaq bllokun e formimit të numrit"</string>
     <string name="pane_title_emergency_dialpad" msgid="3627372514638694401">"Blloku i formimit të numrit të urgjencës"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="6610414098912832120">"Posta zanore vizuale"</string>
-    <string name="voicemail_set_pin_dialog_title" msgid="7005128605986960003">"Konfiguro kodin PIN"</string>
+    <string name="voicemail_set_pin_dialog_title" msgid="7005128605986960003">"Cakto kodin PIN"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="4633077715231764435">"Ndrysho kodin PIN"</string>
     <string name="preference_category_ringtone" msgid="8787281191375434976">"Me zile dhe me dridhje"</string>
     <string name="pstn_connection_service_label" msgid="9200102709997537069">"Kartat e integruara SIM"</string>
@@ -835,6 +835,7 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"Duhet të rinisësh pajisjen tënde për të ndryshuar këtë cilësim."</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"Rinis"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"Anulo"</string>
+    <string name="removable_esim_string" msgid="7931369811671787649">"Caktoje kartën e lëvizshme eSIM si të parazgjedhur"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"Fuqia e radios së rrjetit celular"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"Shiko librin e adresave të kartës SIM"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"Shiko numrat me telefonim të përzgjedhur"</string>
@@ -915,9 +916,6 @@
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Informacioni i telefonit"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Informacionet e përgatitjes së operatorit celular"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Aktivizo përgatitjen e operatorit celular"</string>
-    <string name="provisioning_info_wfc_entitlement_id" msgid="8845188780811890910">"ID-ja e të drejtës për WFC:"</string>
-    <string name="update_provisioning_info_wfc_entitlement_id" msgid="7044171908781134221">"Përditëso"</string>
-    <string name="refresh_provisioning_info_wfc_entitlement_id" msgid="738894335351353407">"Rifresko"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Sinjali i Bluetooth-it është i dobët. Provo të kalosh te altoparlanti."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Njoftim për cilësinë e telefonatës"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Llogaritë e zhvlerësuara SIP"</string>
