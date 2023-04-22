@@ -185,6 +185,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             "set-satellite-gateway-service-package-name";
     private static final String SET_SATELLITE_LISTENING_TIMEOUT_DURATION =
             "set-satellite-listening-timeout-duration";
+    private static final String SET_SATELLITE_POINTING_UI_CLASS_NAME =
+            "set-satellite-pointing-ui-class-name";
 
     private static final String INVALID_ENTRY_ERROR = "An emergency number (only allow '0'-'9', "
             + "'*', '#' or '+') needs to be specified after -a in the command ";
@@ -372,6 +374,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                 return handleSetSatelliteGatewayServicePackageNameCommand();
             case SET_SATELLITE_LISTENING_TIMEOUT_DURATION:
                 return handleSetSatelliteListeningTimeoutDuration();
+            case SET_SATELLITE_POINTING_UI_CLASS_NAME:
+                return handleSetSatellitePointingUiClassNameCommand();
             default: {
                 return handleDefaultCommands(cmd);
             }
@@ -764,6 +768,13 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         pw.println("    mode. Options are:");
         pw.println("      -t: the timeout duration in milliseconds.");
         pw.println("          If no option is specified, it will use the default values.");
+        pw.println("  set-satellite-pointing-ui-class-name [-p PACKAGE_NAME -c CLASS_NAME]");
+        pw.println("    Sets the package and class name of satellite pointing UI app defined in");
+        pw.println("    PACKAGE_NAME and CLASS_NAME to be launched. Options are:");
+        pw.println("      -p: the satellite pointing UI app package name that Telephony will");
+        pw.println("           launch. If no option is specified, it will launch the default.");
+        pw.println("      -c: the satellite pointing UI app class name that Telephony will");
+        pw.println("           launch.");
     }
 
     private void onHelpImei() {
@@ -3159,6 +3170,42 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             getOutPrintWriter().println(result);
         } catch (RemoteException e) {
             Log.w(LOG_TAG, "setSatelliteGatewayServicePackageName: " + serviceName
+                    + ", error = " + e.getMessage());
+            errPw.println("Exception: " + e.getMessage());
+            return -1;
+        }
+        return 0;
+    }
+
+    private int handleSetSatellitePointingUiClassNameCommand() {
+        PrintWriter errPw = getErrPrintWriter();
+        String packageName = null;
+        String className = null;
+
+        String opt;
+        while ((opt = getNextOption()) != null) {
+            switch (opt) {
+                case "-p": {
+                    packageName = getNextArgRequired();
+                    break;
+                }
+                case "-c": {
+                    className = getNextArgRequired();
+                    break;
+                }
+            }
+        }
+        Log.d(LOG_TAG, "handleSetSatellitePointingUiClassNameCommand: packageName="
+                + packageName + ", className=" + className);
+
+        try {
+            boolean result = mInterface.setSatellitePointingUiClassName(packageName, className);
+            if (VDBG) {
+                Log.v(LOG_TAG, "setSatellitePointingUiClassName result =" + result);
+            }
+            getOutPrintWriter().println(result);
+        } catch (RemoteException e) {
+            Log.e(LOG_TAG, "setSatellitePointingUiClassName: " + packageName
                     + ", error = " + e.getMessage());
             errPw.println("Exception: " + e.getMessage());
             return -1;
