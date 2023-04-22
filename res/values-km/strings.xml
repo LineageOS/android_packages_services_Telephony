@@ -133,6 +133,7 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"ការរង់ចាំ​ការហៅ ទូរសព្ទ CDMA ក្រោម IMS ត្រូវ​បាន​បិទ"</string>
     <string name="updating_title" msgid="6130548922615719689">"កំណត់​ការ​ហៅ"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"ការកំណត់ការហៅអាចផ្លាស់ប្តូរបានដោយអ្នកប្រើដែលមានសិទ្ធិគ្រប់គ្រងតែប៉ុណ្ណោះ។"</string>
+    <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"មានតែ​អ្នកគ្រប់គ្រង ឬអ្នកប្រើប្រាស់​ពាក់ព័ន្ធនឹងការងារ​ប៉ុណ្ណោះ ទើបអាចផ្លាស់ប្ដូរ​ការកំណត់​គណនី​ទូរសព្ទបាន។"</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"ការកំណត់ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"បញ្ហា​ការ​កំណត់​ការ​ហៅ"</string>
     <string name="reading_settings" msgid="1605904432450871183">"កំពុង​អាន​ការ​កំណត់…"</string>

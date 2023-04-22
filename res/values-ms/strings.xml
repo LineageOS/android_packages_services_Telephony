@@ -133,6 +133,7 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"Panggilan Menunggu CDMA di bawah IMS Dimatikan"</string>
     <string name="updating_title" msgid="6130548922615719689">"Tetapan panggilan"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Tetapan panggilan hanya boleh diubah oleh pengguna pentadbir."</string>
+    <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Tetapan akaun telefon hanya boleh ditukar oleh pentadbir atau pengguna di tempat kerja."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Tetapan (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Ralat tetapan panggilan"</string>
     <string name="reading_settings" msgid="1605904432450871183">"Membaca tetapan..."</string>
