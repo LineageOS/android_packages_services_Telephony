@@ -133,6 +133,8 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"Avviso di chiamata CDMA con IMS disattivato"</string>
     <string name="updating_title" msgid="6130548922615719689">"Impostazioni chiamate"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Le impostazioni delle chiamate possono essere modificate solo dall\'utente amministratore."</string>
+    <!-- no translation found for phone_account_settings_user_restriction (9142685151087208396) -->
+    <skip />
     <string name="call_settings_with_label" msgid="8460230435361579511">"Impostazioni (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Errore durante aggiornam. impostaz. chiamate"</string>
     <string name="reading_settings" msgid="1605904432450871183">"Lettura impostazioni..."</string>
