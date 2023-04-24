@@ -22,6 +22,8 @@
     <string name="private_num">Númberu priváu</string>
     <string name="payphone">Teléfonu públicu</string>
     <string name="onHold">N\'espera</string>
+    <string name="carrier_mmi_msg_title">Mensaxe de: <xliff:g id="mmicarrier" example="T-Mobile">%s</xliff:g></string>
+    <string name="default_carrier_mmi_msg_title">Mensaxe de la operadora</string>
     <string name="cancel">Encaboxar</string>
     <string name="ok">D\'acuerdu</string>
     <string name="audio_mode_wired_headset">Cascos con cable</string>
@@ -30,6 +32,7 @@
     <string name="pause_prompt_yes">Sí</string>
     <string name="pause_prompt_no">Non</string>
     <string name="phone_accounts_settings_header">Axustes</string>
+    <string name="voicemail_notifications_preference_title">Avisos</string>
     <string name="additional_gsm_call_settings">Axustes adicionales</string>
     <string name="additional_gsm_call_settings_with_label">Axustes adicionales (<xliff:g id="subscriptionlabel" example="Verizon">%s</xliff:g>)</string>
     <string name="sum_cfu_enabled_no_number">El númberu nun ta disponible</string>
@@ -65,7 +68,7 @@
         <item>LTE/TDSCDMA/GSM/WCDMA</item>
         <item>TDSCDMA/CDMA/EVDO/GSM/WCDMA </item>
         <item>LTE/TDSCDMA/CDMA/EVDO/GSM/WCDMA</item>
-        <item>NR only</item>
+        <item>Namás NR</item>
         <item>NR/LTE</item>
         <item>NR/LTE/CDMA/EvDo</item>
         <item>NR/LTE/GSM/WCDMA</item>
@@ -88,13 +91,26 @@
     <string name="preferred_network_mode_lte_summary">Mou de rede preferíu: LTE </string>
     <string name="preferred_network_mode_lte_gsm_wcdma_summary">Mou de rede preferíu: GSM/WCDMA/LTE</string>
     <string name="preferred_network_mode_lte_cdma_evdo_summary">Mou de rede preferíu: CDMA+LTE/EVDO</string>
+    <string name="preferred_network_mode_lte_cdma_evdo_gsm_wcdma_summary">Mou de rede preferíu: LTE/CDMA/EvDo/GSM/WCDMA</string>
     <string name="preferred_network_mode_global_summary">Mou de rede preferíu: Global</string>
     <string name="preferred_network_mode_lte_wcdma_summary">Mou de rede preferíu: LTE/WCDMA</string>
     <string name="preferred_network_mode_lte_gsm_umts_summary">Mou de rede preferíu: LTE / GSM / UMTS</string>
     <string name="preferred_network_mode_lte_cdma_summary">Mou de rede preferíu: LTE/CDMA</string>
     <string name="preferred_network_mode_tdscdma_summary">Mou de rede preferíu: TDSCDMA</string>
+    <string name="preferred_network_mode_nr_only_summary">Mou de rede preferíu: namás NR</string>
+    <string name="preferred_network_mode_nr_lte_summary">Mou de rede preferíu: NR / LTE</string>
+    <string name="preferred_network_mode_nr_lte_cdma_evdo_summary">Mou de rede preferíu: NR/LTE/CDMA/EvDo</string>
+    <string name="preferred_network_mode_nr_lte_gsm_wcdma_summary">Mou de rede preferíu: NR/LTE/GSM/WCDMA</string>
+    <string name="preferred_network_mode_nr_lte_cdma_evdo_gsm_wcdma_summary">Mou de rede preferíu: NR/LTE/CDMA/EvDo/GSM/WCDMA</string>
+    <string name="preferred_network_mode_nr_lte_wcdma_summary">Mou de rede preferíu: NR/LTE/WCDMA</string>
+    <string name="preferred_network_mode_nr_lte_tdscdma_summary">Mou de rede preferíu: NR/LTE/GSM/TDSCDMA</string>
+    <string name="preferred_network_mode_nr_lte_tdscdma_gsm_summary">Mou de rede preferíu: NR/LTE/TDSCDMA/GSM</string>
+    <string name="preferred_network_mode_nr_lte_tdscdma_wcdma_summary">Mou de rede preferíu: NR/LTE/TDSCDMA/WCDMA</string>
+    <string name="preferred_network_mode_nr_lte_tdscdma_gsm_wcdma_summary">Mou de rede preferíu: NR/LTE/TDSCDMA/GSM/WCDMA</string>
+    <string name="preferred_network_mode_nr_lte_tdscdma_cdma_evdo_gsm_wcdma_summary">Mou de rede preferíu: NR/LTE/TDSCDMA/CDMA/EvDo/GSM/WCDMA</string>
     <string name="dialog_alert_title">Atención</string>
     <string name="roaming_alert_title">¿Quies permitir el roaming de datos?</string>
+    <string name="network_recommended">\u0020(aconséyase)</string>
     <string name="network_lte">LTE (aconséyase)</string>
     <string name="network_4G">4G (aconséyase)</string>
     <string name="name">Nome</string>
@@ -143,6 +159,23 @@
     <string name="change_pin_continue_label">Siguir</string>
     <string name="change_pin_cancel_label">Encaboxar</string>
     <string name="change_pin_ok_label">D\'acuerdu</string>
+    <string name="dsds_dialog_message">Tienes de reaniciar el preséu pa camudar esti axuste.</string>
     <string name="dsds_dialog_cancel">Encaboxar</string>
+    <string name="radioInfo_service_emergency">Namás llamaes d\'emerxencia</string>
+    <string name="radioInfo_phone_offhook">Llamada en cursu</string>
+    <string name="radioInfo_display_packets">pqts</string>
+    <string name="radioInfo_display_bytes">bytes</string>
+    <string name="radioInfo_display_dbm">dBm</string>
+    <string name="radioInfo_display_asu">asu</string>
+    <string name="radioInfo_lac">LAC</string>
+    <string name="radioInfo_cid">CID</string>
+    <string name="radio_info_roaming_label">Roaming:</string>
+    <string name="radio_info_imei_label">IMEI:</string>
+    <string name="radio_info_imsi_label">IMSI:</string>
+    <string name="radio_info_signal_strength_label">Intensidá de la señal:</string>
+    <string name="radio_info_smsc_label">SMSC:</string>
     <string name="radio_info_smsc_update_label">Anovar</string>
+    <string name="band_mode_loading">Cargando la llista de bandes\u2026</string>
+    <string name="phone_info_label" product="tablet">Información de la tableta</string>
+    <string name="phone_info_label" product="default">Información del teléfonu</string>
 </resources>
