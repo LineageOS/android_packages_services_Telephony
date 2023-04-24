@@ -133,6 +133,8 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"IMS ਦੇ ਅਧੀਨ CDMA ਕਾਲ ਦੀ ਉਡੀਕ ਵਾਲੀ ਸੁਵਿਧਾ ਬੰਦ ਹੈ"</string>
     <string name="updating_title" msgid="6130548922615719689">"ਕਾਲ ਸੈਟਿੰਗਾਂ"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"ਕਾਲ ਸੈਟਿੰਗਾਂ ਸਿਰਫ਼ ਪ੍ਰਸ਼ਾਸਕ ਵਰਤੋਂਕਾਰ ਵੱਲੋਂ ਹੀ ਬਦਲੀਆਂ ਜਾ ਸਕਦੀਆਂ ਹਨ।"</string>
+    <!-- no translation found for phone_account_settings_user_restriction (9142685151087208396) -->
+    <skip />
     <string name="call_settings_with_label" msgid="8460230435361579511">"ਸੈਟਿੰਗਾਂ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"ਕਾਲ ਸੈਟਿੰਗਾਂ ਵਿੱਚ ਗੜਬੜ"</string>
     <string name="reading_settings" msgid="1605904432450871183">"ਸੈਟਿੰਗਾਂ ਪੜ੍ਹ ਰਿਹਾ ਹੈ…"</string>

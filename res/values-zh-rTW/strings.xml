@@ -133,6 +133,8 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"IMS 的 CDMA 來電等候功能已關閉"</string>
     <string name="updating_title" msgid="6130548922615719689">"通話設定"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"只有管理員使用者可以變更通話設定。"</string>
+    <!-- no translation found for phone_account_settings_user_restriction (9142685151087208396) -->
+    <skip />
     <string name="call_settings_with_label" msgid="8460230435361579511">"設定 (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"通話設定錯誤"</string>
     <string name="reading_settings" msgid="1605904432450871183">"正在讀取設定…"</string>

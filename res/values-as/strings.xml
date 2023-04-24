@@ -133,6 +133,8 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"IMSত CDMA কল অপেক্ষাৰত সুবিধাটো অফ আছে"</string>
     <string name="updating_title" msgid="6130548922615719689">"কল ছেটিংসমূহ"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"কেৱল প্ৰশাসকে কল ছেটিংসমূহ সলনি কৰিব পাৰে।"</string>
+    <!-- no translation found for phone_account_settings_user_restriction (9142685151087208396) -->
+    <skip />
     <string name="call_settings_with_label" msgid="8460230435361579511">"ছেটিংসমূহ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"কল ছেটিংসমূহত আসোঁৱাহ"</string>
     <string name="reading_settings" msgid="1605904432450871183">"ছেটিংসমূহ পঢ়ি থকা হৈছে…"</string>
@@ -850,7 +852,7 @@
     <string name="radio_info_ims_reg_status" msgid="25582845222446390">"IMS পঞ্জীয়ন: <xliff:g id="STATUS">%1$s</xliff:g>\nভইচ অভাৰ LTE: <xliff:g id="AVAILABILITY_0">%2$s</xliff:g>\nভইচ অভাৰ ৱাই-ফাই: <xliff:g id="AVAILABILITY_1">%3$s</xliff:g>\nভিডিঅ’ কলিং: <xliff:g id="AVAILABILITY_2">%4$s</xliff:g>\nUT ইণ্টাৰফে’চ: <xliff:g id="AVAILABILITY_3">%5$s</xliff:g>"</string>
     <string name="radioInfo_service_in" msgid="45753418231446400">"সেৱাত আছে"</string>
     <string name="radioInfo_service_out" msgid="287972405416142312">"সেৱাত নাই"</string>
-    <string name="radioInfo_service_emergency" msgid="4763879891415016848">"কেৱল জৰুৰীকালীন কলসমূহ"</string>
+    <string name="radioInfo_service_emergency" msgid="4763879891415016848">"কেৱল জৰুৰীকালীন কল"</string>
     <string name="radioInfo_service_off" msgid="3456583511226783064">"ৰেডিঅ’ অফ হৈ আছে"</string>
     <string name="radioInfo_roaming_in" msgid="3156335577793145965">"ৰ’মিং"</string>
     <string name="radioInfo_roaming_not" msgid="1904547918725478110">"ৰ’মিঙত নাই"</string>
