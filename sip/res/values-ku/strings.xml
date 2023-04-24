@@ -71,7 +71,5 @@
     <string name="no_internet_available">بۆ گرێدانی پەیوەندییەکی SIP, لەپێشەوە بۆ گرێدانی ئینتەرنێتیت بڕوانە.</string>
     <string name="no_wifi_available">تۆ پێویستە بەسترابیتەوە بە تۆڕێکی Wi-Fi بۆ پەیوەندییەکانی SIP (ڕێکخستنەکانی تۆڕی&amp; بێتەل بەکار بهێنە).</string>
     <string name="no_voip">پەیوەندیکردنی SIP پشتگیری ناکرێت</string>
-    <string translatable="true" name="sip_system_decide">خۆکار</string>
-    <string translatable="true" name="sip_always_send_keepalive">هەردەم بینێرە</string>
     <string name="sip_connection_service_label">پەیوەندیگرتنی ناوکاری SIP</string>
 </resources>
