@@ -23,7 +23,9 @@ import android.app.role.RoleManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.pm.UserInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.UserHandle;
 import android.os.UserManager;
@@ -55,13 +57,60 @@ public class ErrorDialogActivity extends Activity {
     }
 
     private void showDialog() {
+        int managedProfileUserId =
+                getManagedProfileUserId(
+                        getApplicationContext(), getApplicationContext().getUserId());
+        if (managedProfileUserId == UserHandle.USER_NULL) {
+            Log.w(TAG, "Error dialog is only applicable to managed profile.");
+            finish();
+        }
+        String defaultMessagesAppPackage =
+                getBaseContext()
+                    .getSystemService(RoleManager.class)
+                    .getSmsRoleHolder(managedProfileUserId);
+
+        Intent smsIntent = new Intent(Intent.ACTION_MAIN)
+                .addCategory(Intent.CATEGORY_DEFAULT)
+                .addCategory(Intent.CATEGORY_LAUNCHER)
+                .addCategory(Intent.CATEGORY_APP_MESSAGING)
+                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                .setPackage(defaultMessagesAppPackage);
+        Intent marketIntent =
+                new Intent(
+                        Intent.ACTION_VIEW,
+                        Uri.parse("market://search?q=messages"));
+        int positiveButtonText = 0;
+        Intent intent = null;
+        boolean showPositiveActionButton = true;
+        // A messages app may not be available in the managed profile. We try to handle that
+        // gracefully by redirecting to install a suitable app.
+        // Failing that, we simply omit the positive action button as the user has no mechanism
+        // to send the message.
+        if (defaultMessagesAppPackage != null
+                && canStartActivityAsUser(
+                smsIntent,
+                managedProfileUserId)) {
+            positiveButtonText = R.string.send_from_work_profile_action_str;
+            intent = smsIntent;
+        } else if (canStartActivityAsUser(marketIntent, managedProfileUserId)) {
+            positiveButtonText = R.string.install_messages_on_work_profile_action_str;
+            intent = marketIntent;
+        } else {
+            showPositiveActionButton = false;
+        }
+
+        // Variable has to be effectively final to be passing into the lambda, so copying it
+        // here.
+        Intent finalIntent = intent;
         final DialogInterface.OnClickListener listener =
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         switch (which) {
                             case DialogInterface.BUTTON_POSITIVE:
-                                switchToManagedProfile();
+                                switchToManagedProfile(
+                                        managedProfileUserId,
+                                        finalIntent);
                                 finish();
                                 break;
                             case DialogInterface.BUTTON_NEGATIVE:
@@ -71,47 +120,35 @@ public class ErrorDialogActivity extends Activity {
                     }
                 };
 
-        new AlertDialog.Builder(this)
-            .setTitle(R.string.send_from_work_profile_title)
-            .setMessage(R.string.send_from_work_profile_description)
-            .setPositiveButton(R.string.send_from_work_profile_action_str, listener)
-            .setNegativeButton(R.string.send_from_work_profile_cancel, listener)
-            .setOnCancelListener(
-                new DialogInterface.OnCancelListener() {
-                    @Override
-                    public void onCancel(DialogInterface dialog) {
-                        finish();
-                    }
-                })
-            .show();
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this)
+                .setTitle(R.string.send_from_work_profile_title)
+                .setMessage(R.string.send_from_work_profile_description)
+                .setNegativeButton(R.string.send_from_work_profile_cancel, listener)
+                .setOnCancelListener(
+                        new DialogInterface.OnCancelListener() {
+                            @Override
+                            public void onCancel(DialogInterface dialog) {
+                                finish();
+                            }
+                        });
+        if (showPositiveActionButton) {
+            alertDialogBuilder.setPositiveButton(positiveButtonText, listener);
+        }
+        alertDialogBuilder.show();
     }
 
-    private void switchToManagedProfile() {
+    private boolean canStartActivityAsUser(Intent intent, int managedProfileUserId) {
+        return !this.getPackageManager()
+                .queryIntentActivitiesAsUser(
+                        intent,
+                        PackageManager.ResolveInfoFlags.of(0),
+                        managedProfileUserId)
+                .isEmpty();
+    }
+
+    private void switchToManagedProfile(int managedProfileUserId, Intent intent) {
         try {
-            int managedProfileUserId =
-                    getManagedProfileUserId(
-                            getApplicationContext(), getApplicationContext().getUserId());
-            if (managedProfileUserId == UserHandle.USER_NULL) {
-                finish();
-            }
-
-            String defaultMessagesAppPackage =
-                    getBaseContext()
-                            .getSystemService(RoleManager.class)
-                            .getSmsRoleHolder(managedProfileUserId);
-
-            Intent sendIntent = new Intent(Intent.ACTION_MAIN);
-            sendIntent.addCategory(Intent.CATEGORY_DEFAULT);
-            sendIntent.addCategory(Intent.CATEGORY_LAUNCHER);
-            sendIntent.addCategory(Intent.CATEGORY_APP_MESSAGING);
-
-            sendIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-            if (defaultMessagesAppPackage != null) {
-                sendIntent.setPackage(defaultMessagesAppPackage);
-            }
-
-            startActivityAsUser(sendIntent,
+            startActivityAsUser(intent,
                     ActivityOptions.makeOpenCrossProfileAppsAnimation().toBundle(),
                     UserHandle.of(managedProfileUserId));
         } catch (Exception e) {
