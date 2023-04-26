@@ -28,12 +28,11 @@ import android.telephony.CarrierConfigManager;
 import android.telephony.DisconnectCause;
 import android.telephony.DomainSelectionService.SelectionAttributes;
 import android.telephony.NetworkRegistrationInfo;
+import android.telephony.PhoneNumberUtils;
 import android.telephony.ServiceState;
 import android.telephony.SubscriptionManager;
 import android.telephony.TransportSelectorCallback;
 import android.telephony.ims.ImsReasonInfo;
-
-import com.android.internal.telephony.domainselection.NormalCallDomainSelectionConnection;
 
 /**
  * Implements domain selector for outgoing non-emergency calls.
@@ -375,9 +374,7 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
         // Handle voice call.
         if (mImsStateTracker.isImsVoiceCapable()) {
             logd("IMS is voice capable");
-            // TODO(b/266175810) Remove this dependency.
-            if (NormalCallDomainSelectionConnection
-                    .isWpsCall(mSelectionAttributes.getNumber())) {
+            if (PhoneNumberUtils.isWpsCallNumber(mSelectionAttributes.getNumber())) {
                 handleWpsCall();
             } else {
                 notifyPsSelected();

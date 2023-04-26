@@ -2221,8 +2221,7 @@ public class TelephonyConnectionService extends ConnectionService {
                                         .setVideoState(videoState)
                                         .setIntentExtras(extras)
                                         .setRttTextStream(mNormalCallConnection.getRttTextStream())
-                                        .setIsWpsCall(NormalCallDomainSelectionConnection
-                                                .isWpsCall(number))
+                                        .setIsWpsCall(PhoneNumberUtils.isWpsCallNumber(number))
                                         .build(),
                                 mNormalCallConnection::registerForCallEvents);
 
@@ -2283,7 +2282,7 @@ public class TelephonyConnectionService extends ConnectionService {
         // Check and select same domain as ongoing call on the same subscription (if exists)
         int activeCallDomain = getActiveCallDomain(phone.getSubId());
         if (activeCallDomain != NetworkRegistrationInfo.DOMAIN_UNKNOWN
-                && !NormalCallDomainSelectionConnection.isWpsCall(number)) {
+                && !PhoneNumberUtils.isWpsCallNumber(number)) {
             Log.d(LOG_TAG, "Selecting same domain as ongoing call on same subId");
             mNormalCallConnection = connection;
             handleOutgoingCallConnectionByCallDomainSelection(
