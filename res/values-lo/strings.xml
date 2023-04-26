@@ -133,6 +133,8 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"ການລໍຖ້າສາຍ CDMA ພາຍໃຕ້ IMS ປິດຢູ່"</string>
     <string name="updating_title" msgid="6130548922615719689">"ການຕັ້ງຄ່າການໂທ"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"ມີ​ແຕ່​ຜູ້​ໃຊ້​ທີ່​ເປັນ​ຜູ້ດູແລລະບົບ​ເທົ່າ​ນັ້ນ​ທີ່​ສາ​ມາດ​ປ່ຽນການ​ຕັ້ງ​ຄ່າ​ການ​ໂທ​ໄດ້."</string>
+    <!-- no translation found for phone_account_settings_user_restriction (9142685151087208396) -->
+    <skip />
     <string name="call_settings_with_label" msgid="8460230435361579511">"ການ​ຕັ້ງ​ຄ່າ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"ການຕັ້ງຄ່າການໂທຜິດພາດ"</string>
     <string name="reading_settings" msgid="1605904432450871183">"ກຳລັງອ່ານການຕັ້ງຄ່າ..."</string>

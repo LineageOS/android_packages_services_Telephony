@@ -133,6 +133,8 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"Повикот на чекање CDMA под IMS е исклучен"</string>
     <string name="updating_title" msgid="6130548922615719689">"Поставки за повици"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Поставките за повик може да ги измени само администраторскиот корисник."</string>
+    <!-- no translation found for phone_account_settings_user_restriction (9142685151087208396) -->
+    <skip />
     <string name="call_settings_with_label" msgid="8460230435361579511">"Поставки (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Грешка со поставки на повици"</string>
     <string name="reading_settings" msgid="1605904432450871183">"Се читаат поставките..."</string>
@@ -152,7 +154,7 @@
     <string name="change_num" msgid="6982164494063109334">"Ажурирај"</string>
   <string-array name="clir_display_values">
     <item msgid="8477364191403806960">"Стандардна мрежа"</item>
-    <item msgid="6813323051965618926">"Сокриј број"</item>
+    <item msgid="6813323051965618926">"Скриј број"</item>
     <item msgid="9150034130629852635">"Прикажи број"</item>
   </string-array>
     <string name="vm_changed" msgid="4739599044379692505">"Бројот на говорна пошта е променет."</string>

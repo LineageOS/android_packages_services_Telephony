@@ -133,6 +133,8 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"IMS での CDMA 通話中着信が OFF になっています"</string>
     <string name="updating_title" msgid="6130548922615719689">"通話設定"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"通話設定は管理者ユーザーのみが変更できます。"</string>
+    <!-- no translation found for phone_account_settings_user_restriction (9142685151087208396) -->
+    <skip />
     <string name="call_settings_with_label" msgid="8460230435361579511">"設定（<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>）"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"通話設定エラー"</string>
     <string name="reading_settings" msgid="1605904432450871183">"設定を読み取り中..."</string>
