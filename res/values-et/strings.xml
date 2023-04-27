@@ -133,8 +133,7 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"CDMA ootel kõne on IMS-i all välja lülitatud"</string>
     <string name="updating_title" msgid="6130548922615719689">"Kõneseaded"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Kõne seadeid saab muuta ainult administraator."</string>
-    <!-- no translation found for phone_account_settings_user_restriction (9142685151087208396) -->
-    <skip />
+    <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Telefoni konto seadeid saab muuta ainult administraator või tööprofiili kasutaja."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Seaded (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Kõneseadete viga"</string>
     <string name="reading_settings" msgid="1605904432450871183">"Seadete lugemine ..."</string>
@@ -925,8 +924,12 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Teie Bluetoothi signaal on nõrk. Lülitage valjuhääldile."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Kõnekvaliteedi märguanne"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Katkestatud toega SIP-kontod"</string>
-    <string name="send_from_work_profile_title" msgid="9201528838448432473">"Te ei saa sellelt profiililt sõnumeid saata"</string>
-    <string name="send_from_work_profile_description" msgid="5002701841936861636">"Teie töökoja eeskirjad lubavad teil ainult tööprofiililt sõnumeid saata"</string>
+    <!-- no translation found for send_from_work_profile_title (7044759579507604732) -->
+    <skip />
+    <!-- no translation found for send_from_work_profile_description (2174402508727161974) -->
+    <skip />
     <string name="send_from_work_profile_cancel" msgid="177746511030381711">"Tühista"</string>
     <string name="send_from_work_profile_action_str" msgid="6892775562934243337">"Lülitu tööprofiilile"</string>
+    <!-- no translation found for install_messages_on_work_profile_action_str (3773440996395152903) -->
+    <skip />
 </resources>
