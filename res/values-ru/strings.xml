@@ -133,6 +133,7 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"Ожидание вызова CDMA, если сервис IMS выключен"</string>
     <string name="updating_title" msgid="6130548922615719689">"Настройки вызовов"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Настройки вызовов может изменить только основной пользователь"</string>
+    <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Настройки аккаунта на телефоне может изменить только работающий с ним сотрудник или администратор."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Настройки (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Ошибка настройки вызовов"</string>
     <string name="reading_settings" msgid="1605904432450871183">"Чтение настроек…"</string>
@@ -889,10 +890,12 @@
     <string name="radio_info_ppp_sent_label" msgid="6542208429356199695">"Отправлено данных:"</string>
     <string name="radio_info_message_waiting_label" msgid="1886549432566952078">"Параллельное сообщение:"</string>
     <string name="radio_info_phone_number_label" msgid="2533852539562512203">"Номер телефона:"</string>
-    <string name="radio_info_band_mode_label" msgid="23480556225515290">"Выбрать радиостанцию"</string>
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"Тип сети для голосовой связи:"</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"Тип сети для передачи данных:"</string>
     <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"Переопределение типа сети:"</string>
+    <string name="radio_info_voice_raw_registration_state_label" msgid="2822988327145825128">"Статус начальной регистрации Voice:"</string>
+    <string name="radio_info_data_raw_registration_state_label" msgid="2895895513822604539">"Статус начальной регистрации данных:"</string>
+    <string name="radio_info_wlan_data_raw_registration_state_label" msgid="6396894835757296612">"Статус начальной регистрации данных WLAN:"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"Выберите телефонный код"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"Настроить предпочтительный тип сети:"</string>
     <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"Имя хоста запроса ping для www.google.com, IPv4:"</string>
@@ -921,8 +924,12 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Слабый сигнал Bluetooth. Попробуйте переключиться на громкую связь."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Уведомление о качестве связи"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Неподдерживаемые SIP-аккаунты"</string>
-    <string name="send_from_work_profile_title" msgid="9201528838448432473">"Нельзя отправить сообщение из этого профиля"</string>
-    <string name="send_from_work_profile_description" msgid="5002701841936861636">"Согласно правилам вашей организации вы можете отправлять сообщения только из рабочего профиля."</string>
+    <!-- no translation found for send_from_work_profile_title (7044759579507604732) -->
+    <skip />
+    <!-- no translation found for send_from_work_profile_description (2174402508727161974) -->
+    <skip />
     <string name="send_from_work_profile_cancel" msgid="177746511030381711">"Отмена"</string>
     <string name="send_from_work_profile_action_str" msgid="6892775562934243337">"Перейти в рабочий профиль"</string>
+    <!-- no translation found for install_messages_on_work_profile_action_str (3773440996395152903) -->
+    <skip />
 </resources>

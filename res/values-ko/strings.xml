@@ -133,6 +133,7 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"IMS에서 CDMA 통화중 대기 사용 안함"</string>
     <string name="updating_title" msgid="6130548922615719689">"통화 설정"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"관리자만 통화 설정을 변경할 수 있습니다."</string>
+    <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"전화 계정 설정은 관리자 또는 직장 사용자만 변경할 수 있습니다."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"설정(<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"통화 설정 오류"</string>
     <string name="reading_settings" msgid="1605904432450871183">"설정을 읽는 중..."</string>
@@ -889,10 +890,12 @@
     <string name="radio_info_ppp_sent_label" msgid="6542208429356199695">"보낸 데이터:"</string>
     <string name="radio_info_message_waiting_label" msgid="1886549432566952078">"메시지 대기 중:"</string>
     <string name="radio_info_phone_number_label" msgid="2533852539562512203">"전화번호:"</string>
-    <string name="radio_info_band_mode_label" msgid="23480556225515290">"무선 주파수 대역 선택"</string>
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"음성 네트워크 유형:"</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"데이터 네트워크 유형:"</string>
     <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"네트워크 유형 재정의:"</string>
+    <string name="radio_info_voice_raw_registration_state_label" msgid="2822988327145825128">"음성 Raw 등록 상태:"</string>
+    <string name="radio_info_data_raw_registration_state_label" msgid="2895895513822604539">"데이터 Raw 등록 상태:"</string>
+    <string name="radio_info_wlan_data_raw_registration_state_label" msgid="6396894835757296612">"WLAN 데이터 Raw 등록 상태:"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"휴대전화 색인 선택"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"기본 네트워크 유형 설정:"</string>
     <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"핑 호스트 이름(www.google.com) IPv4:"</string>
@@ -921,8 +924,12 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"블루투스 신호 강도가 약합니다. 스피커폰으로 전환해 보세요."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"통화 품질 알림"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"지원 중단된 SIP 계정"</string>
-    <string name="send_from_work_profile_title" msgid="9201528838448432473">"이 프로필에서 메시지를 보낼 수 없음"</string>
-    <string name="send_from_work_profile_description" msgid="5002701841936861636">"직장 정책을 사용하면 직장 프로필에서만 메시지를 보낼 수 있습니다."</string>
+    <!-- no translation found for send_from_work_profile_title (7044759579507604732) -->
+    <skip />
+    <!-- no translation found for send_from_work_profile_description (2174402508727161974) -->
+    <skip />
     <string name="send_from_work_profile_cancel" msgid="177746511030381711">"취소"</string>
     <string name="send_from_work_profile_action_str" msgid="6892775562934243337">"직장 프로필로 전환"</string>
+    <!-- no translation found for install_messages_on_work_profile_action_str (3773440996395152903) -->
+    <skip />
 </resources>

@@ -133,6 +133,7 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"IMS अन्तर्गत CDMA कल प्रतीक्षाको सुविधा निष्क्रिय छ"</string>
     <string name="updating_title" msgid="6130548922615719689">"कल सेटिङहरू"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"कल सेटिङहरू केवल प्रशासकीय प्रयोगकर्ताद्वारा परिवर्तन गर्न सकिन्छ।"</string>
+    <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"एड्मिन वा कार्य प्रोफाइलका प्रयोगकर्ता मात्र फोनमा लिंक गरिएको खाताका सेटिङ बदल्न सक्नुहुन्छ।"</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"सेटिङहरू (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"कल सेटिङमा त्रुटि"</string>
     <string name="reading_settings" msgid="1605904432450871183">"सेटिङहरू पढ्दै..."</string>
@@ -889,10 +890,12 @@
     <string name="radio_info_ppp_sent_label" msgid="6542208429356199695">"डेटा पठाइयो:"</string>
     <string name="radio_info_message_waiting_label" msgid="1886549432566952078">"सन्देशलाई कुर्दै:"</string>
     <string name="radio_info_phone_number_label" msgid="2533852539562512203">"फोन नम्बर:"</string>
-    <string name="radio_info_band_mode_label" msgid="23480556225515290">"रेडियोको ब्यान्ड चयन गर्नुहोस्"</string>
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"Voice नेटवर्कको प्रकार:"</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"डेटा नेटवर्कको प्रकार:"</string>
     <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"ओभरराइड नेटवर्कको प्रकार:"</string>
+    <string name="radio_info_voice_raw_registration_state_label" msgid="2822988327145825128">"अप्रशोधित आवाजको दर्ताको स्थिति:"</string>
+    <string name="radio_info_data_raw_registration_state_label" msgid="2895895513822604539">"अप्रशोधित डेटाको दर्ताको स्थिति:"</string>
+    <string name="radio_info_wlan_data_raw_registration_state_label" msgid="6396894835757296612">"अप्रशोधित WLAN डेटाको दर्ताको स्थिति:"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"फोनको सूचक चयन गर्नुहोस्"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"रुचाइएको नेटवर्कको प्रकार सेट गर्नुहोस्:"</string>
     <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"होस्टनाम (www.google.com) IPv4 मा पिङ गर्नुहोस्:"</string>
@@ -921,8 +924,9 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"ब्लुटुथको सिग्नल कमजोर छ। स्पिकरफोन प्रयोग गरी हेर्नुहोस्।"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"कलको गुणस्तरसम्बन्धी सूचना"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"चल्तीबाट हटाइएका SIP खाताहरू"</string>
-    <string name="send_from_work_profile_title" msgid="9201528838448432473">"यो प्रोफाइलबाट म्यासेज पठाउन सकिँदैन"</string>
-    <string name="send_from_work_profile_description" msgid="5002701841936861636">"तपाईंको कामसम्बन्धी नीतिअनुसार कार्य प्रोफाइलबाट मात्र म्यासेज पठाउन सकिन्छ"</string>
+    <string name="send_from_work_profile_title" msgid="7044759579507604732">"व्यक्तिगत एपमार्फत म्यासेज पठाउन मिल्दैन"</string>
+    <string name="send_from_work_profile_description" msgid="2174402508727161974">"तपाईंको सङ्गठनले तपाईंलाई केवल कामसम्बन्धी एपहरूमार्फत म्यासेज पठाउने अनुमति दिन्छ"</string>
     <string name="send_from_work_profile_cancel" msgid="177746511030381711">"रद्द गर्नुहोस्"</string>
     <string name="send_from_work_profile_action_str" msgid="6892775562934243337">"कार्य प्रोफाइल प्रयोग गर्नुहोस्"</string>
+    <string name="install_messages_on_work_profile_action_str" msgid="3773440996395152903">"कामसम्बन्धी म्यासेजिङ एप इन्स्टल गर्नुहोस्"</string>
 </resources>

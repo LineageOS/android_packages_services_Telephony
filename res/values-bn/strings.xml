@@ -133,6 +133,7 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"IMS-এ CDMA কল ওয়েটিং সুবিধা বন্ধ আছে"</string>
     <string name="updating_title" msgid="6130548922615719689">"কল সেটিংস"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"কেবলমাত্র প্রশাসক ব্যবহারকারী কল সেটিংস পরিবর্তন করতে পারবেন৷"</string>
+    <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"শুধুমাত্র অ্যাডমিন বা অফিস প্রোফাইল ব্যবহারকারী ফোনের অ্যাকাউন্ট সেটিংস পরিবর্তন করতে পারবেন।"</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"সেটিংস (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"কল সেটিংসে ত্রুটি"</string>
     <string name="reading_settings" msgid="1605904432450871183">"সেটিংস পড়ছে…"</string>
@@ -889,10 +890,12 @@
     <string name="radio_info_ppp_sent_label" msgid="6542208429356199695">"ডেটা পাঠানো হয়েছে:"</string>
     <string name="radio_info_message_waiting_label" msgid="1886549432566952078">"মেসেজের জন্য অপেক্ষা করা হচ্ছে:"</string>
     <string name="radio_info_phone_number_label" msgid="2533852539562512203">"ফোন নম্বর:"</string>
-    <string name="radio_info_band_mode_label" msgid="23480556225515290">"রেডিও ব্যান্ড বেছে নিন"</string>
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"ভয়েস নেটওয়ার্কের প্রকার:"</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"ডেটা নেটওয়ার্কের প্রকার:"</string>
     <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"ওভাররাইড নেটওয়ার্কের ধরন:"</string>
+    <string name="radio_info_voice_raw_registration_state_label" msgid="2822988327145825128">"ভয়েস Raw রেজিস্ট্রেশনের স্ট্যাটাস:"</string>
+    <string name="radio_info_data_raw_registration_state_label" msgid="2895895513822604539">"ডেটা Raw রেজিস্ট্রেশনের স্ট্যাটাস:"</string>
+    <string name="radio_info_wlan_data_raw_registration_state_label" msgid="6396894835757296612">"WLAN ডেটা Raw রেজিস্ট্রেশনের স্ট্যাটাস:"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"ফোনের ইন্ডেক্স বেছে নিন"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"পছন্দের নেটওয়ার্ক সেট করুন:"</string>
     <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"হোস্টনামে(www.google.com) IPv4 পিং করুন:"</string>
@@ -921,8 +924,12 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"আপনার ডিভাইসের ব্লুটুথ সিগনাল ভাল না। বদল করে স্পিকারফোন বেছে নিন।"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"ফোন কলের কোয়ালিটি সংক্রান্ত বিজ্ঞপ্তি"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"পুরনো SIP অ্যাকাউন্ট"</string>
-    <string name="send_from_work_profile_title" msgid="9201528838448432473">"এই প্রোফাইল থেকে মেসেজ পাঠানো যাচ্ছে না"</string>
-    <string name="send_from_work_profile_description" msgid="5002701841936861636">"কাজ সংক্রান্ত নীতি, আপনাকে শুধুমাত্র অফিস প্রোফাইল থেকে মেসেজ করার অনুমতি দেয়"</string>
+    <!-- no translation found for send_from_work_profile_title (7044759579507604732) -->
+    <skip />
+    <!-- no translation found for send_from_work_profile_description (2174402508727161974) -->
+    <skip />
     <string name="send_from_work_profile_cancel" msgid="177746511030381711">"বাতিল করুন"</string>
     <string name="send_from_work_profile_action_str" msgid="6892775562934243337">"অফিস প্রোফাইলে পাল্টে নিন"</string>
+    <!-- no translation found for install_messages_on_work_profile_action_str (3773440996395152903) -->
+    <skip />
 </resources>
