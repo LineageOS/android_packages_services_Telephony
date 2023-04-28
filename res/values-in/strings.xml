@@ -133,6 +133,8 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"Nada tunggu CDMA dalam IMS nonaktif"</string>
     <string name="updating_title" msgid="6130548922615719689">"Setelan panggilan"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Setelan panggilan telepon hanya dapat diubah oleh pengguna admin."</string>
+    <!-- no translation found for phone_account_settings_user_restriction (9142685151087208396) -->
+    <skip />
     <string name="call_settings_with_label" msgid="8460230435361579511">"Setelan (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Kesalahan setelan panggilan"</string>
     <string name="reading_settings" msgid="1605904432450871183">"Membaca setelan…"</string>
@@ -186,9 +188,9 @@
     <string name="manual_mode_disallowed_summary" msgid="3970048592179890197">"Tidak tersedia saat terhubung ke %1$s"</string>
     <string name="network_select_title" msgid="4117305053881611988">"Jaringan"</string>
     <string name="register_automatically" msgid="3907580547590554834">"Pendaftaran otomatis..."</string>
-    <string name="preferred_network_mode_title" msgid="5253395265169539830">"Jenis jaringan yang dipilih"</string>
+    <string name="preferred_network_mode_title" msgid="5253395265169539830">"Jenis jaringan preferensi"</string>
     <string name="preferred_network_mode_summary" msgid="3787989000044330064">"Ubah mode pengoperasian jaringan"</string>
-    <string name="preferred_network_mode_dialogtitle" msgid="2781447433514459696">"Jenis jaringan yang dipilih"</string>
+    <string name="preferred_network_mode_dialogtitle" msgid="2781447433514459696">"Jenis jaringan preferensi"</string>
     <string name="forbidden_network" msgid="5081729819561333023">"(terlarang)"</string>
     <string name="choose_network_title" msgid="5335832663422653082">"Pilih jaringan"</string>
     <string name="network_disconnected" msgid="8844141106841160825">"Terputus"</string>

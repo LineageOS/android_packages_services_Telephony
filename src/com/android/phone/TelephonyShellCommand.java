@@ -181,8 +181,12 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
     private static final String DISALLOW_THERMAL_MITIGATION_PACKAGE_SUBCOMMAND = "disallow-package";
     private static final String SET_SATELLITE_SERVICE_PACKAGE_NAME =
             "set-satellite-service-package-name";
+    private static final String SET_SATELLITE_GATEWAY_SERVICE_PACKAGE_NAME =
+            "set-satellite-gateway-service-package-name";
     private static final String SET_SATELLITE_LISTENING_TIMEOUT_DURATION =
             "set-satellite-listening-timeout-duration";
+    private static final String SET_SATELLITE_POINTING_UI_CLASS_NAME =
+            "set-satellite-pointing-ui-class-name";
 
     private static final String INVALID_ENTRY_ERROR = "An emergency number (only allow '0'-'9', "
             + "'*', '#' or '+') needs to be specified after -a in the command ";
@@ -366,8 +370,12 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                 return clearCarrierServicePackageOverride();
             case SET_SATELLITE_SERVICE_PACKAGE_NAME:
                 return handleSetSatelliteServicePackageNameCommand();
+            case SET_SATELLITE_GATEWAY_SERVICE_PACKAGE_NAME:
+                return handleSetSatelliteGatewayServicePackageNameCommand();
             case SET_SATELLITE_LISTENING_TIMEOUT_DURATION:
                 return handleSetSatelliteListeningTimeoutDuration();
+            case SET_SATELLITE_POINTING_UI_CLASS_NAME:
+                return handleSetSatellitePointingUiClassNameCommand();
             default: {
                 return handleDefaultCommands(cmd);
             }
@@ -750,11 +758,23 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         pw.println("    SERVICE_PACKAGE_NAME to be bound. Options are:");
         pw.println("      -s: the satellite service package name that Telephony will bind to.");
         pw.println("          If no option is specified, it will bind to the default.");
+        pw.println("  set-satellite-gateway-service-package-name [-s SERVICE_PACKAGE_NAME]");
+        pw.println("    Sets the package name of satellite gateway service defined in");
+        pw.println("    SERVICE_PACKAGE_NAME to be bound. Options are:");
+        pw.println("      -s: the satellite gateway service package name that Telephony will bind");
+        pw.println("           to. If no option is specified, it will bind to the default.");
         pw.println("  set-satellite-listening-timeout-duration [-t TIMEOUT_MILLIS]");
         pw.println("    Sets the timeout duration in millis that satellite will stay at listening");
         pw.println("    mode. Options are:");
         pw.println("      -t: the timeout duration in milliseconds.");
         pw.println("          If no option is specified, it will use the default values.");
+        pw.println("  set-satellite-pointing-ui-class-name [-p PACKAGE_NAME -c CLASS_NAME]");
+        pw.println("    Sets the package and class name of satellite pointing UI app defined in");
+        pw.println("    PACKAGE_NAME and CLASS_NAME to be launched. Options are:");
+        pw.println("      -p: the satellite pointing UI app package name that Telephony will");
+        pw.println("           launch. If no option is specified, it will launch the default.");
+        pw.println("      -c: the satellite pointing UI app class name that Telephony will");
+        pw.println("           launch.");
     }
 
     private void onHelpImei() {
@@ -3118,6 +3138,74 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             getOutPrintWriter().println(result);
         } catch (RemoteException e) {
             Log.w(LOG_TAG, "SetSatelliteServicePackageName: " + serviceName
+                    + ", error = " + e.getMessage());
+            errPw.println("Exception: " + e.getMessage());
+            return -1;
+        }
+        return 0;
+    }
+
+    private int handleSetSatelliteGatewayServicePackageNameCommand() {
+        PrintWriter errPw = getErrPrintWriter();
+        String serviceName = null;
+
+        String opt;
+        while ((opt = getNextOption()) != null) {
+            switch (opt) {
+                case "-s": {
+                    serviceName = getNextArgRequired();
+                    break;
+                }
+            }
+        }
+        Log.d(LOG_TAG, "handleSetSatelliteGatewayServicePackageNameCommand: serviceName="
+                + serviceName);
+
+        try {
+            boolean result = mInterface.setSatelliteGatewayServicePackageName(serviceName);
+            if (VDBG) {
+                Log.v(LOG_TAG, "setSatelliteGatewayServicePackageName " + serviceName
+                        + ", result = " + result);
+            }
+            getOutPrintWriter().println(result);
+        } catch (RemoteException e) {
+            Log.w(LOG_TAG, "setSatelliteGatewayServicePackageName: " + serviceName
+                    + ", error = " + e.getMessage());
+            errPw.println("Exception: " + e.getMessage());
+            return -1;
+        }
+        return 0;
+    }
+
+    private int handleSetSatellitePointingUiClassNameCommand() {
+        PrintWriter errPw = getErrPrintWriter();
+        String packageName = null;
+        String className = null;
+
+        String opt;
+        while ((opt = getNextOption()) != null) {
+            switch (opt) {
+                case "-p": {
+                    packageName = getNextArgRequired();
+                    break;
+                }
+                case "-c": {
+                    className = getNextArgRequired();
+                    break;
+                }
+            }
+        }
+        Log.d(LOG_TAG, "handleSetSatellitePointingUiClassNameCommand: packageName="
+                + packageName + ", className=" + className);
+
+        try {
+            boolean result = mInterface.setSatellitePointingUiClassName(packageName, className);
+            if (VDBG) {
+                Log.v(LOG_TAG, "setSatellitePointingUiClassName result =" + result);
+            }
+            getOutPrintWriter().println(result);
+        } catch (RemoteException e) {
+            Log.e(LOG_TAG, "setSatellitePointingUiClassName: " + packageName
                     + ", error = " + e.getMessage());
             errPw.println("Exception: " + e.getMessage());
             return -1;
