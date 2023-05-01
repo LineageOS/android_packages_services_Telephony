@@ -1239,6 +1239,8 @@
     <string name="incall_error_wfc_only_no_wireless_network">Connect to a wireless network to make a call.</string>
     <!-- In-call screen: call failure message displayed in an error dialog when the user is connected to a wireless network, but wifi calling is turned off. [CHAR_LIMIT=NONE] -->
     <string name="incall_error_promote_wfc">Enable Wi-Fi calling to make a call.</string>
+    <!-- In-call screen: call failure message displayed in an error dialog when the satellite modem is on. [CHAR_LIMIT=NONE] -->
+    <string name="incall_error_satellite_enabled">Disable satellite mode to make a call.</string>
 
     <!-- Hint for the button of emergency information -->
     <string name="emergency_information_hint">Emergency information</string>
@@ -1711,6 +1713,8 @@
     <string name="clh_callFailed_simError_txt">Can\'t access SIM card</string>
     <!-- In-call screen: call failure message displayed in an error dialog -->
     <string name="clh_incall_error_out_of_service_txt">Mobile network not available</string>
+    <!-- In-call screen: call failure reason (satellite modem is enabled) -->
+    <string name="clh_callFailed_satelliteEnabled_txt">Satellite mode is on</string>
 
     <!-- See CallFailCause for details on what causes each message -->
     <!-- In-call screen: call failure reason (Cause Number 1) -->
