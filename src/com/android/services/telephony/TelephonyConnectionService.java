@@ -87,6 +87,7 @@ import com.android.internal.telephony.imsphone.ImsExternalCallTracker;
 import com.android.internal.telephony.imsphone.ImsPhone;
 import com.android.internal.telephony.imsphone.ImsPhoneConnection;
 import com.android.internal.telephony.imsphone.ImsPhoneMmiCode;
+import com.android.internal.telephony.satellite.SatelliteController;
 import com.android.internal.telephony.satellite.SatelliteSOSMessageRecommender;
 import com.android.internal.telephony.subscription.SubscriptionInfoInternal;
 import com.android.internal.telephony.subscription.SubscriptionManagerService;
@@ -227,6 +228,7 @@ public class TelephonyConnectionService extends ConnectionService {
     private ImsManager mImsManager = null;
     private DomainSelectionConnection mDomainSelectionConnection;
     private TelephonyConnection mNormalCallConnection;
+    private SatelliteController mSatelliteController;
 
     /**
      * Keeps track of the status of a SIM slot.
@@ -799,6 +801,7 @@ public class TelephonyConnectionService extends ConnectionService {
         mIsTtyEnabled = mDeviceState.isTtyModeEnabled(this);
         mDomainSelectionMainExecutor = getApplicationContext().getMainExecutor();
         mDomainSelectionResolver = DomainSelectionResolver.getInstance();
+        mSatelliteController = SatelliteController.getInstance();
 
         IntentFilter intentFilter = new IntentFilter(
                 TelecomManager.ACTION_TTY_PREFERRED_MODE_CHANGED);
@@ -1165,6 +1168,13 @@ public class TelephonyConnectionService extends ConnectionService {
             }
 
             if (!isEmergencyNumber) {
+                if (mSatelliteController.isSatelliteEnabled()) {
+                    Log.d(this, "onCreateOutgoingConnection, cannot make call in satellite mode.");
+                    return Connection.createFailedConnection(
+                            mDisconnectCauseFactory.toTelecomDisconnectCause(
+                                    android.telephony.DisconnectCause.SATELLITE_ENABLED,
+                                    "Call failed because satellite modem is enabled."));
+                }
                 final Connection resultConnection = getTelephonyConnection(request, numberToDial,
                         false, handle, phone);
                 if (isAdhocConference) {
@@ -1479,6 +1489,14 @@ public class TelephonyConnectionService extends ConnectionService {
                                     "Unknown service state " + state,
                                     phone.getPhoneId()));
             }
+        }
+
+        if (!isSatelliteStateValid(isEmergencyNumber)) {
+            Log.d(this, "onCreateOutgoingConnection, cannot make call in satellite mode.");
+            return Connection.createFailedConnection(
+                    mDisconnectCauseFactory.toTelecomDisconnectCause(
+                            android.telephony.DisconnectCause.SATELLITE_ENABLED,
+                            "Call failed because satellite modem is enabled."));
         }
 
         final boolean isTtyModeEnabled = mDeviceState.isTtyModeEnabled(this);
@@ -1957,6 +1975,14 @@ public class TelephonyConnectionService extends ConnectionService {
             result |= phone.isRadioOn();
         }
         return result;
+    }
+
+    private boolean isSatelliteStateValid(boolean isEmergencyNumber) {
+        if (isEmergencyNumber) {
+            return !mSatelliteController.isSatelliteEnabled();
+        } else {
+            return !mSatelliteController.isDemoModeEnabled();
+        }
     }
 
     private Pair<WeakReference<TelephonyConnection>, Queue<Phone>> makeCachedConnectionPhonePair(
