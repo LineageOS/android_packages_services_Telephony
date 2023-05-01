@@ -232,6 +232,7 @@ public class DisconnectCauseUtil {
             case android.telephony.DisconnectCause.IMS_ACCESS_BLOCKED:
             case android.telephony.DisconnectCause.IMS_SIP_ALTERNATE_EMERGENCY_CALL:
             case android.telephony.DisconnectCause.MEDIA_TIMEOUT:
+            case android.telephony.DisconnectCause.SATELLITE_ENABLED:
                 return DisconnectCause.ERROR;
 
             case android.telephony.DisconnectCause.DIALED_MMI:
@@ -418,6 +419,9 @@ public class DisconnectCauseUtil {
             case android.telephony.DisconnectCause.WFC_SERVICE_NOT_AVAILABLE_IN_THIS_LOCATION:
                 resourceId = R.string.callFailed_wfc_service_not_available_in_this_location;
                 break;
+            case android.telephony.DisconnectCause.SATELLITE_ENABLED:
+                resourceId = R.string.incall_error_satellite_enabled;
+                break;
             default:
                 break;
         }
@@ -598,6 +602,9 @@ public class DisconnectCauseUtil {
                         break;
                     case android.telephony.DisconnectCause.OUT_OF_SERVICE:
                         resourceId = R.string.clh_incall_error_out_of_service_txt;
+                        break;
+                    case android.telephony.DisconnectCause.SATELLITE_ENABLED:
+                        resourceId = R.string.clh_callFailed_satelliteEnabled_txt;
                         break;
                     default:
                         resourceId = R.string.clh_card_title_call_ended_txt;
@@ -821,6 +828,9 @@ public class DisconnectCauseUtil {
                 break;
             case android.telephony.DisconnectCause.WFC_SERVICE_NOT_AVAILABLE_IN_THIS_LOCATION:
                 resourceId = R.string.callFailed_wfc_service_not_available_in_this_location;
+                break;
+            case android.telephony.DisconnectCause.SATELLITE_ENABLED:
+                resourceId = R.string.incall_error_satellite_enabled;
                 break;
             default:
                 break;
