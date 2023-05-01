@@ -187,6 +187,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             "set-satellite-listening-timeout-duration";
     private static final String SET_SATELLITE_POINTING_UI_CLASS_NAME =
             "set-satellite-pointing-ui-class-name";
+    private static final String SET_SATELLITE_DEVICE_ALIGNED_TIMEOUT_DURATION =
+            "set-satellite-device-aligned-timeout-duration";
 
     private static final String INVALID_ENTRY_ERROR = "An emergency number (only allow '0'-'9', "
             + "'*', '#' or '+') needs to be specified after -a in the command ";
@@ -376,6 +378,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                 return handleSetSatelliteListeningTimeoutDuration();
             case SET_SATELLITE_POINTING_UI_CLASS_NAME:
                 return handleSetSatellitePointingUiClassNameCommand();
+            case SET_SATELLITE_DEVICE_ALIGNED_TIMEOUT_DURATION:
+                return handleSettSatelliteDeviceAlignedTimeoutDuration();
             default: {
                 return handleDefaultCommands(cmd);
             }
@@ -3238,6 +3242,38 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             getOutPrintWriter().println(result);
         } catch (RemoteException e) {
             Log.w(LOG_TAG, "setSatelliteListeningTimeoutDuration: " + timeoutMillis
+                    + ", error = " + e.getMessage());
+            errPw.println("Exception: " + e.getMessage());
+            return -1;
+        }
+        return 0;
+    }
+
+    private int handleSettSatelliteDeviceAlignedTimeoutDuration() {
+        PrintWriter errPw = getErrPrintWriter();
+        long timeoutMillis = 0;
+
+        String opt;
+        while ((opt = getNextOption()) != null) {
+            switch (opt) {
+                case "-t": {
+                    timeoutMillis = Long.parseLong(getNextArgRequired());
+                    break;
+                }
+            }
+        }
+        Log.d(LOG_TAG, "handleSettSatelliteDeviceAlignedTimeoutDuration: timeoutMillis="
+                + timeoutMillis);
+
+        try {
+            boolean result = mInterface.setSatelliteDeviceAlignedTimeoutDuration(timeoutMillis);
+            if (VDBG) {
+                Log.v(LOG_TAG, "setSatelliteDeviceAlignedTimeoutDuration " + timeoutMillis
+                        + ", result = " + result);
+            }
+            getOutPrintWriter().println(result);
+        } catch (RemoteException e) {
+            Log.w(LOG_TAG, "setSatelliteDeviceAlignedTimeoutDuration: " + timeoutMillis
                     + ", error = " + e.getMessage());
             errPw.println("Exception: " + e.getMessage());
             return -1;
