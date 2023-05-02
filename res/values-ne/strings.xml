@@ -688,7 +688,7 @@
     <string name="change_pin_cancel_label" msgid="2301711566758827936">"रद्द गर्नुहोस्"</string>
     <string name="change_pin_ok_label" msgid="6861082678817785330">"ठिक छ"</string>
     <string name="change_pin_enter_old_pin_header" msgid="853151335217594829">"आफ्नो पुरानो PIN को पुष्टि गर्नुहोस्"</string>
-    <string name="change_pin_enter_old_pin_hint" msgid="8801292976275169367">"जारी राख्नका लागि आफ्नो भ्वाइस मेलको PIN प्रविष्टि गर्नुहोस्।"</string>
+    <string name="change_pin_enter_old_pin_hint" msgid="8801292976275169367">"जारी राख्नका लागि आफ्नो भ्वाइस मेलको PIN हाल्नुहोस्।"</string>
     <string name="change_pin_enter_new_pin_header" msgid="4739465616733486118">"एउटा नयाँ PIN सेट गर्नुहोस्"</string>
     <string name="change_pin_enter_new_pin_hint" msgid="2326038476516364210">"PIN <xliff:g id="MIN">%1$d</xliff:g>-<xliff:g id="MAX">%2$d</xliff:g> अङ्कको हुनु पर्छ।"</string>
     <string name="change_pin_confirm_pin_header" msgid="2606303906320705726">"तपाईँको PIN को पुष्टि गर्नुहोस्"</string>

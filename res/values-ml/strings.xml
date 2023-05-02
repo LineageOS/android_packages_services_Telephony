@@ -181,7 +181,7 @@
     <string name="not_allowed" msgid="8541221928746104798">"നിങ്ങളുടെ സിം കാർഡ് ഈ നെറ്റ്‌വർക്കിലേക്ക് ഒരു കണക്ഷൻ അനുവദിക്കുന്നില്ല."</string>
     <string name="connect_later" msgid="1950138106010005425">"ഈ നെറ്റ്‌വർക്കിൽ ഇപ്പോൾ കണക്റ്റുചെയ്യാനാകുന്നില്ല. പിന്നീട് വീണ്ടും ശ്രമിക്കുക."</string>
     <string name="registration_done" msgid="5337407023566953292">"ഒരു നെറ്റ്‌വർക്കിൽ രജിസ്റ്റർ ചെയ്‌തു."</string>
-    <string name="already_auto" msgid="8607068290733079336">"സ്വമേധയാ ഉള്ള തിരഞ്ഞെടുക്കലിൽ ഇതിനകം ഉണ്ട്."</string>
+    <string name="already_auto" msgid="8607068290733079336">"സ്വയമേവ ഉള്ള തിരഞ്ഞെടുക്കലിൽ ഇതിനകം ഉണ്ട്."</string>
     <string name="select_automatically" msgid="779750291257872651">"സ്വയമേവ നെറ്റ്‌വർക്ക് തിരഞ്ഞെടുക്കുക"</string>
     <string name="manual_mode_disallowed_summary" msgid="3970048592179890197">"%1$s എന്നതിലേക്ക് കണക്‌റ്റ് ചെയ്‌തിരിക്കുമ്പോൾ ലഭ്യമല്ല"</string>
     <string name="network_select_title" msgid="4117305053881611988">"നെറ്റ്‌വർക്ക്"</string>

@@ -296,7 +296,7 @@
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"Башка SIM картаны колднгндо <xliff:g id="CARRIER_NAME">%1$s</xliff:g> чалуулары жана дайындар кызмттары бөгөттлшү мүмкүн."</string>
     <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"Колдонуудан чыккан SIP аккаунттары табылды жана өчүрүлдү"</string>
     <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"SIP аркылуу чалуу Android платформасында мындан ары колдоого алынбайт.\nУчурдагы SIP аккаунттарыңыз (<xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g>) өчүрүлдү.\nЧалууларга колдонулган демейки аккаунтун жөндөөсүн ырастаңыз."</string>
-    <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"Жөндөөлөргө өтүү"</string>
+    <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"Параметрлерге өтүү"</string>
     <string name="data_usage_title" msgid="8438592133893837464">"Колдонмолордун трафиги"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"<xliff:g id="ID_2">%2$s</xliff:g> аралыгында <xliff:g id="ID_1">%1$s</xliff:g> мобилдик трафик колдонулду"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"Өркүндөтүлгөн"</string>
@@ -596,7 +596,7 @@
     <string name="hac_mode_summary" msgid="7774989500136009881">"Угуу аппараты иштетилет"</string>
     <string name="rtt_mode_title" msgid="3075948111362818043">"Чалуу учурунда анык убакыттагы билдирүү (RTT)"</string>
     <string name="rtt_mode_summary" msgid="8631541375609989562">"Үн чалуунун учурунда жазышууга уруксат берүү"</string>
-    <string name="rtt_mode_more_information" msgid="587500128658756318">"RTT функциясы угуу жана сүйлөө жөндөмдүүлүгү бузулган адамдарга арналат.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Кеңири маалымат&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT функциясында чалуулар транскрипциялар катары сакталат\n       &lt;br&gt; - RTT функациясы видео чалууда жеткиликсиз болот"</string>
+    <string name="rtt_mode_more_information" msgid="587500128658756318">"RTT функциясы уга албаган же сүйлөй албаган адамдарга арналган.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Кеңири маалымат&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT функциясында чалуулар транскрипциялар катары сакталат\n       &lt;br&gt; - RTT функациясы видео чалууда жеткиликсиз болот"</string>
     <string name="no_rtt_when_roaming" msgid="5268008247378355389">"Эскертүү: Роуминг учурунда RTT жеткиликсиз"</string>
   <string-array name="tty_mode_entries">
     <item msgid="3238070884803849303">"Телетайп түзмөгү өчүк"</item>
