@@ -133,8 +133,7 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"IMS에서 CDMA 통화중 대기 사용 안함"</string>
     <string name="updating_title" msgid="6130548922615719689">"통화 설정"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"관리자만 통화 설정을 변경할 수 있습니다."</string>
-    <!-- no translation found for phone_account_settings_user_restriction (9142685151087208396) -->
-    <skip />
+    <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"전화 계정 설정은 관리자 또는 직장 사용자만 변경할 수 있습니다."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"설정(<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"통화 설정 오류"</string>
     <string name="reading_settings" msgid="1605904432450871183">"설정을 읽는 중..."</string>
@@ -925,8 +924,12 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"블루투스 신호 강도가 약합니다. 스피커폰으로 전환해 보세요."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"통화 품질 알림"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"지원 중단된 SIP 계정"</string>
-    <string name="send_from_work_profile_title" msgid="9201528838448432473">"이 프로필에서 메시지를 보낼 수 없음"</string>
-    <string name="send_from_work_profile_description" msgid="5002701841936861636">"직장 정책을 사용하면 직장 프로필에서만 메시지를 보낼 수 있습니다."</string>
+    <!-- no translation found for send_from_work_profile_title (7044759579507604732) -->
+    <skip />
+    <!-- no translation found for send_from_work_profile_description (2174402508727161974) -->
+    <skip />
     <string name="send_from_work_profile_cancel" msgid="177746511030381711">"취소"</string>
     <string name="send_from_work_profile_action_str" msgid="6892775562934243337">"직장 프로필로 전환"</string>
+    <!-- no translation found for install_messages_on_work_profile_action_str (3773440996395152903) -->
+    <skip />
 </resources>
