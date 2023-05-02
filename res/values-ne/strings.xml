@@ -557,6 +557,8 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"कल सञ्चालन गर्न सकिँदैन।"</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"एक कल गर्न एक ताररहितको सञ्जालमा कनेक्ट गर्नुहोस्।"</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"कल गर्नका लागि Wi-Fi कलिङ सक्षम गर्नुहोस्।"</string>
+    <!-- no translation found for incall_error_satellite_enabled (1936541518147323016) -->
+    <skip />
     <string name="emergency_information_hint" msgid="9208897544917793012">"आपत्‌कालीन जानकारी"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"मालिक"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"जानकारी हेर्न पुनः ट्याप गर्नुहोस्"</string>
@@ -689,7 +691,7 @@
     <string name="change_pin_cancel_label" msgid="2301711566758827936">"रद्द गर्नुहोस्"</string>
     <string name="change_pin_ok_label" msgid="6861082678817785330">"ठिक छ"</string>
     <string name="change_pin_enter_old_pin_header" msgid="853151335217594829">"आफ्नो पुरानो PIN को पुष्टि गर्नुहोस्"</string>
-    <string name="change_pin_enter_old_pin_hint" msgid="8801292976275169367">"जारी राख्नका लागि आफ्नो भ्वाइस मेलको PIN प्रविष्टि गर्नुहोस्।"</string>
+    <string name="change_pin_enter_old_pin_hint" msgid="8801292976275169367">"जारी राख्नका लागि आफ्नो भ्वाइस मेलको PIN हाल्नुहोस्।"</string>
     <string name="change_pin_enter_new_pin_header" msgid="4739465616733486118">"एउटा नयाँ PIN सेट गर्नुहोस्"</string>
     <string name="change_pin_enter_new_pin_hint" msgid="2326038476516364210">"PIN <xliff:g id="MIN">%1$d</xliff:g>-<xliff:g id="MAX">%2$d</xliff:g> अङ्कको हुनु पर्छ।"</string>
     <string name="change_pin_confirm_pin_header" msgid="2606303906320705726">"तपाईँको PIN को पुष्टि गर्नुहोस्"</string>
@@ -714,6 +716,8 @@
     <string name="clh_callFailed_powerOff_txt" msgid="8279934912560765361">"हवाइजहाज मोड सक्रिय छ"</string>
     <string name="clh_callFailed_simError_txt" msgid="5128538525762326413">"SIM कार्डमाथि पहुँच राख्न सकिएन"</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="2736010617446749869">"मोबाइल नेटवर्क उपलब्ध छैन"</string>
+    <!-- no translation found for clh_callFailed_satelliteEnabled_txt (1675517238240377396) -->
+    <skip />
     <string name="clh_callFailed_unassigned_number_txt" msgid="141967660286695682">"तपाईंले डायल गर्न खोजिरहनुभएको नम्बरमा समस्या छ। त्रुटिको कोड: १।"</string>
     <string name="clh_callFailed_no_route_to_destination_txt" msgid="4805015149822352308">"कल पूरा गर्न सकिएन। त्रुटिको कोड: ३।"</string>
     <string name="clh_callFailed_channel_unacceptable_txt" msgid="4062754579408613021">"कल पूरा गर्न सकिएन। त्रुटिको कोड: ६।"</string>
