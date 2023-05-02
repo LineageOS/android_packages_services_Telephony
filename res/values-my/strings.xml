@@ -108,21 +108,21 @@
     <string name="sum_cfu_enabled_indicator" msgid="9030139213402432776">"ခေါ်ဆိုမှုအားလုံးအား တဆင့်ထပ်ပို့နေသည်"</string>
     <string name="sum_cfu_enabled" msgid="5806923046528144526">"ခေါ်ဆိုမှုအားလုံးကို <xliff:g id="PHONENUMBER">{0}</xliff:g> သို့ ထပ်ဆင့်ပို့နေသည်"</string>
     <string name="sum_cfu_enabled_no_number" msgid="7287752761743377930">"ဖုန်းနံပါတ်မှာ မရှိပါ"</string>
-    <string name="sum_cfu_disabled" msgid="5010617134210809853">"ပိတ်ထားသည်"</string>
+    <string name="sum_cfu_disabled" msgid="5010617134210809853">"ပိတ်"</string>
     <string name="labelCFB" msgid="615265213360512768">"မအားလပ်ချိန်"</string>
     <string name="messageCFB" msgid="1958017270393563388">"ဖုန်းမအားလျှင် ပို့ရန် နံပါတ်"</string>
     <string name="sum_cfb_enabled" msgid="332037613072049492">"<xliff:g id="PHONENUMBER">{0}</xliff:g> သို့ခေါ်ဆိုမှုအား တဆင့်ထပ်ပို့နေသည်"</string>
-    <string name="sum_cfb_disabled" msgid="3589913334164866035">"ပိတ်ထားသည်"</string>
+    <string name="sum_cfb_disabled" msgid="3589913334164866035">"ပိတ်"</string>
     <string name="disable_cfb_forbidden" msgid="4831494744351633961">"သင့် ဖုန်း အလုပ်များနေစဉ် call forwarding ပြုလုပ်မှု ပယ်ဖျက်ရန် သင့် အော်ပရေတာမှ ခွင့်မပြုပါ"</string>
     <string name="labelCFNRy" msgid="3403533792248457946">"ဖုန်းမကိုင်ချိန်"</string>
     <string name="messageCFNRy" msgid="7644434155765359009">"ဖုန်းမကိုင်လျှင်ပို့ရန် နံပါတ်"</string>
     <string name="sum_cfnry_enabled" msgid="3000500837493854799">"<xliff:g id="PHONENUMBER">{0}</xliff:g> သို့ခေါ်ဆိုမှုအား တဆင့်ထပ်ပို့နေသည်"</string>
-    <string name="sum_cfnry_disabled" msgid="1990563512406017880">"ပိတ်ထားသည်"</string>
+    <string name="sum_cfnry_disabled" msgid="1990563512406017880">"ပိတ်"</string>
     <string name="disable_cfnry_forbidden" msgid="3174731413216550689">"သင့် ဖုန်း မကိုင်စဉ် call forwarding ပြုလုပ်မှု ပယ်ဖျက်ရန် သင့် အော်ပရေတာမှ ခွင့်မပြုပါ"</string>
     <string name="labelCFNRc" msgid="4163399350778066013">"ဆက်သွယ်၍ မရချိန်"</string>
     <string name="messageCFNRc" msgid="6980340731313007250">"ဖုန်းခေါ်မရလျှင် ပို့ရန် နံပါတ်"</string>
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"<xliff:g id="PHONENUMBER">{0}</xliff:g> သို့ခေါ်ဆိုမှုအား တဆင့်ထပ်ပို့နေသည်"</string>
-    <string name="sum_cfnrc_disabled" msgid="739289696796917683">"ပိတ်ထားသည်"</string>
+    <string name="sum_cfnrc_disabled" msgid="739289696796917683">"ပိတ်"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"သင့် ဖုန်း ဆက်သွယ်မှု လုပ်လို့မရစဉ် call forwarding ပြုလုပ်မှု ပယ်ဖျက်ရန် သင့် အော်ပရေတာမှ ခွင့်မပြုပါ"</string>
     <string name="registration_cf_forbidden" msgid="4386482610771190420">"သင်၏ ဝန်ဆောင်မှုပေးသူသည် အဝင်ဖုန်းကို ဆက်ပို့ပေးခြင်းအား ပံ့ပိုးမထားပါ။"</string>
     <string name="cdma_call_waiting" msgid="4565070960879673216">"အဝင်ဖုန်း စောင့်ဆိုင်းခြင်းကို ဖွင့်မလား။"</string>
@@ -764,7 +764,7 @@
     <string name="clh_callFailed_interworking_unspecified_txt" msgid="7969686413930847182">"ခေါ်ဆိုမှုကို မပြုလုပ်နိုင်ပါ။ အမှားကုဒ် ၁၂၇။"</string>
     <string name="labelCallBarring" msgid="4180377113052853173">"ခေါ်ဆိုမှုကို ပိတ်ပင်ရန်"</string>
     <string name="sum_call_barring_enabled" msgid="5184331188926370824">"ဖွင့်"</string>
-    <string name="sum_call_barring_disabled" msgid="5699448000600153096">"ပိတ်ထားသည်"</string>
+    <string name="sum_call_barring_disabled" msgid="5699448000600153096">"ပိတ်"</string>
     <string name="call_barring_baoc" msgid="7400892586336429326">"အထွက်ခေါ်ဆိုမှုအားလုံး"</string>
     <string name="call_barring_baoc_enabled" msgid="3131509193386668182">"အထွက်ခေါ်ဆိုမှုအားလုံး ပိတ်ထားခြင်းကို ပယ်ဖျက်မလား။"</string>
     <string name="call_barring_baoc_disabled" msgid="8534224684091141509">"အထွက်ခေါ်ဆိုမှုအားလုံးကို ပိတ်မလား။"</string>

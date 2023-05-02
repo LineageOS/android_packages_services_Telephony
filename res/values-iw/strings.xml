@@ -596,7 +596,8 @@
     <string name="hac_mode_summary" msgid="7774989500136009881">"הפעלת תאימות למכשיר שמיעה"</string>
     <string name="rtt_mode_title" msgid="3075948111362818043">"‏שיחת RTT (טקסט בזמן אמת)"</string>
     <string name="rtt_mode_summary" msgid="8631541375609989562">"אפשר לשלוח הודעות טקסט בזמן שיחה"</string>
-    <string name="rtt_mode_more_information" msgid="587500128658756318">"‏RTT (טקסט בזמן אמת) היא תכונת נגישות שעוזרת לחרשים, לקויי שמיעה, לקויי דיבור או אנשים שלא יכולים להסתפק רק בשיחות קוליות.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;למידע נוסף&lt;/a&gt;‏\n      &lt;br&gt;&lt;br&gt; - שיחות RTT מתומללות ונשמרות כהודעות\n &lt;br&gt; - אי אפשר להשתמש ב-RTT לשיחות וידאו"</string>
+    <!-- syntax error in translation for rtt_mode_more_information (587500128658756318) org.xmlpull.v1.XmlPullParserException: expected: /br read: string (position:END_TAG </string>@1:430 in     <string name="rtt_mode_more_information" msgid="587500128658756318">"‏RTT (טקסט בזמן אמת) היא תכונת נגישות שעוזרת לחרשים, לקויי שמיעה, לקויי דיבור או אנשים שלא יכולים להסתפק רק בשיחות קוליות.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;למידע נוסף&lt;/a&gt;\n &lt;br&gt;&lt;br&gt; - שיחות RTT מתומללות ונשמרות כהודעות\n <br> - אי אפשר להשתמש ב-RTT לשיחות וידאו"</string>
+)  -->
     <string name="no_rtt_when_roaming" msgid="5268008247378355389">"‏הערה: אי אפשר להשתמש ב-RTT בזמן נדידה"</string>
   <string-array name="tty_mode_entries">
     <item msgid="3238070884803849303">"‏TTY כבוי"</item>

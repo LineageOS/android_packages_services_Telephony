@@ -31,7 +31,7 @@
     <string name="ussdRunning" msgid="1163586813106772717">"USSD కోడ్ అమలు చేయబడుతోంది…"</string>
     <string name="mmiCancelled" msgid="5339191899200678272">"MMI కోడ్ రద్దు చేయబడింది"</string>
     <string name="cancel" msgid="8984206397635155197">"రద్దు చేయండి"</string>
-    <string name="enter_input" msgid="6193628663039958990">"USSD మెసేజ్‌ తప్పనిసరిగా <xliff:g id="MIN_LEN">%1$d</xliff:g> మరియు <xliff:g id="MAX_LEN">%2$d</xliff:g> అక్షరాల మధ్య ఉండాలి. దయచేసి మళ్లీ ప్రయత్నించండి."</string>
+    <string name="enter_input" msgid="6193628663039958990">"USSD మెసేజ్‌ తప్పనిసరిగా <xliff:g id="MIN_LEN">%1$d</xliff:g> మరియు <xliff:g id="MAX_LEN">%2$d</xliff:g> అక్షరాల మధ్య ఉండాలి. దయచేసి మళ్లీ ట్రై చేయండి."</string>
     <string name="manageConferenceLabel" msgid="8415044818156353233">"కాన్ఫరెన్స్ కాల్‌ను నిర్వహించండి"</string>
     <string name="ok" msgid="7818974223666140165">"సరే"</string>
     <string name="audio_mode_speaker" msgid="243689733219312360">"స్పీకర్"</string>
@@ -176,10 +176,10 @@
     <string name="label_available" msgid="1316084116670821258">"అందుబాటులో ఉన్న నెట్‌వర్క్‌లు"</string>
     <string name="load_networks_progress" msgid="4051433047717401683">"శోధిస్తోంది..."</string>
     <string name="empty_networks_list" msgid="9216418268008582342">"నెట్‌వర్క్‌లు కనుగొనబడలేదు."</string>
-    <string name="network_query_error" msgid="3862515805115145124">"నెట్‌వర్క్‌లను కనుగొనడం సాధ్యపడలేదు. మళ్లీ ప్రయత్నించండి."</string>
+    <string name="network_query_error" msgid="3862515805115145124">"నెట్‌వర్క్‌లను కనుగొనడం సాధ్యపడలేదు. మళ్లీ ట్రై చేయండి."</string>
     <string name="register_on_network" msgid="4194770527833960423">"<xliff:g id="NETWORK">%s</xliff:g>లో నమోదు అవుతోంది…"</string>
     <string name="not_allowed" msgid="8541221928746104798">"మీ SIM కార్డు ఈ నెట్‌వర్క్‌కు కనెక్షన్‌ను అనుమతించదు."</string>
-    <string name="connect_later" msgid="1950138106010005425">"ప్రస్తుతం ఈ నెట్‌వర్క్‌కు కనెక్ట్ చేయడం సాధ్యపడదు. తర్వాత మళ్లీ ప్రయత్నించండి."</string>
+    <string name="connect_later" msgid="1950138106010005425">"ప్రస్తుతం ఈ నెట్‌వర్క్‌కు కనెక్ట్ చేయడం సాధ్యపడదు. తర్వాత మళ్లీ ట్రై చేయండి."</string>
     <string name="registration_done" msgid="5337407023566953292">"నెట్‌వర్క్‌లో నమోదు అయింది."</string>
     <string name="already_auto" msgid="8607068290733079336">"ఇప్పటికే ఆటోమేటిక్‌ ఎంపికలో ఉంది."</string>
     <string name="select_automatically" msgid="779750291257872651">"నెట్‌వర్క్‌ను ఆటోమేటిక్‌గా ఎంచుకో"</string>
@@ -489,8 +489,8 @@
     <string name="oldPinLabel" msgid="8618515202411987721">"పాత పిన్‌"</string>
     <string name="newPinLabel" msgid="3585899083055354732">"కొత్త పిన్‌"</string>
     <string name="confirmPinLabel" msgid="7783531218662473778">"కొత్త PINని నిర్ధారించండి"</string>
-    <string name="badPin" msgid="4549286285015892321">"మీరు టైప్ చేసిన పాత పిన్‌ చెల్లదు. మళ్లీ ప్రయత్నించండి."</string>
-    <string name="mismatchPin" msgid="1467254768290323845">"మీరు టైప్ చేసిన PINలు సరిపోలలేదు. మళ్లీ ప్రయత్నించండి."</string>
+    <string name="badPin" msgid="4549286285015892321">"మీరు టైప్ చేసిన పాత పిన్‌ చెల్లదు. మళ్లీ ట్రై చేయండి."</string>
+    <string name="mismatchPin" msgid="1467254768290323845">"మీరు టైప్ చేసిన PINలు సరిపోలలేదు. మళ్లీ ట్రై చేయండి."</string>
     <string name="invalidPin" msgid="7363723429414001979">"4 నుండి 8 సంఖ్యలు ఉండే PINని టైప్ చేయండి."</string>
     <string name="disable_sim_pin" msgid="3112303905548613752">"SIM PINను తీసివేయండి"</string>
     <string name="enable_sim_pin" msgid="445461050748318980">"SIM PINను సెట్ చేయండి"</string>
@@ -504,9 +504,9 @@
     <string name="oldPin2Label" msgid="4648543187859997203">"పాత PIN2"</string>
     <string name="newPin2Label" msgid="1840905981784453939">"కొత్త PIN2"</string>
     <string name="confirmPin2Label" msgid="4336025914667593762">"కొత్త PIN2ని నిర్ధారించండి"</string>
-    <string name="badPuk2" msgid="6438182906645832235">"PUK2 చెల్లదు. మళ్లీ ప్రయత్నించండి."</string>
-    <string name="badPin2" msgid="2760917538643074635">"పాత PIN2 చెల్లదు. మళ్లీ ప్రయత్నించండి."</string>
-    <string name="mismatchPin2" msgid="4952718725266700631">"PIN2లు సరిపోలలేదు. మళ్లీ ప్రయత్నించండి."</string>
+    <string name="badPuk2" msgid="6438182906645832235">"PUK2 చెల్లదు. మళ్లీ ట్రై చేయండి."</string>
+    <string name="badPin2" msgid="2760917538643074635">"పాత PIN2 చెల్లదు. మళ్లీ ట్రై చేయండి."</string>
+    <string name="mismatchPin2" msgid="4952718725266700631">"PIN2లు సరిపోలలేదు. మళ్లీ ట్రై చేయండి."</string>
     <string name="invalidPin2" msgid="6467957903056379343">"4 నుండి 8 సంఖ్యలు ఉండే PIN2ని నమోదు చేయండి."</string>
     <string name="invalidPuk2" msgid="713729511903849544">"8 సంఖ్యలు ఉండే PUK2ను నమోదు చేయండి."</string>
     <string name="pin2_changed" msgid="5710551850481287821">"PIN2 అప్‌డేట్ చేయబడింది"</string>
@@ -627,7 +627,7 @@
     <string name="ota_progress" msgid="8837259285255700132">"మీ ఫోన్ ప్రోగ్రామ్ చేయబడుతోంది…"</string>
     <string name="ota_failure" msgid="5674217489921481576">"మీ ఫోన్‌ను ప్రోగ్రామ్ చేయడం సాధ్యపడలేదు"</string>
     <string name="ota_successful" msgid="1106825981548107774">"మీ ఫోన్ ఇప్పుడు సక్రియం అయ్యింది. సేవ ప్రారంభం కావడానికి గరిష్టంగా 15 నిమిషాలు పట్టవచ్చు."</string>
-    <string name="ota_unsuccessful" msgid="8531037653803955754">"మీ ఫోన్ సక్రియం చేయబడలేదు. \nమీరు మెరుగైన కవరేజీ గల ప్రాంతాన్ని (కిటికీ దగ్గర లేదా వెలుపల) కనుగొనాల్సి ఉంటుంది. \n\nమళ్లీ ప్రయత్నించండి లేదా మరిన్ని ఎంపికల కోసం కస్టమర్ సేవకు కాల్ చేయండి."</string>
+    <string name="ota_unsuccessful" msgid="8531037653803955754">"మీ ఫోన్ సక్రియం చేయబడలేదు. \nమీరు మెరుగైన కవరేజీ గల ప్రాంతాన్ని (కిటికీ దగ్గర లేదా వెలుపల) కనుగొనాల్సి ఉంటుంది. \n\nమళ్లీ ట్రై చేయండి లేదా మరిన్ని ఎంపికల కోసం కస్టమర్ సేవకు కాల్ చేయండి."</string>
     <string name="ota_spc_failure" msgid="904092035241370080">"అత్యధిక SPC వైఫల్యాలు"</string>
     <string name="ota_call_end" msgid="8657746378290737034">"వెనుకకు"</string>
     <string name="ota_try_again" msgid="6914781945599998550">"మళ్లీ ప్రయత్నించు"</string>
@@ -692,7 +692,7 @@
     <string name="change_pin_enter_new_pin_header" msgid="4739465616733486118">"కొత్త PINని సెట్ చేయండి"</string>
     <string name="change_pin_enter_new_pin_hint" msgid="2326038476516364210">"PIN తప్పనిసరిగా <xliff:g id="MIN">%1$d</xliff:g>-<xliff:g id="MAX">%2$d</xliff:g> అంకెల మధ్య ఉండాలి."</string>
     <string name="change_pin_confirm_pin_header" msgid="2606303906320705726">"మీ PINని నిర్ధారించండి"</string>
-    <string name="change_pin_confirm_pins_dont_match" msgid="305164501222587215">"PINలు సరిపోలలేదు"</string>
+    <string name="change_pin_confirm_pins_dont_match" msgid="305164501222587215">"PINలు మ్యాచ్ కాలేదు"</string>
     <string name="change_pin_succeeded" msgid="2504705600693014403">"వాయిస్ మెయిల్ PIN అప్‌డేట్ చేయబడింది"</string>
     <string name="change_pin_system_error" msgid="7772788809875146873">"PINని సెట్ చేయడం సాధ్యపడలేదు"</string>
     <string name="mobile_data_status_roaming_turned_off_subtext" msgid="6840673347416227054">"డేటా రోమింగ్ ఆఫ్ చేయబడింది"</string>
