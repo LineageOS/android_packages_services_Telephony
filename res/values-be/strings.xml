@@ -133,8 +133,7 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"Чаканне выкліку па тэхналогіі CDMA (IMS) выключана"</string>
     <string name="updating_title" msgid="6130548922615719689">"Налады выклікаў"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Налады выклікаў можа мяняць толькі адміністратар."</string>
-    <!-- no translation found for phone_account_settings_user_restriction (9142685151087208396) -->
-    <skip />
+    <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Налады ўліковага запісу на тэлефоне можа мяняць толькі адміністратар ці карыстальнік працоўнага профілю."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Налады (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Памылка налад выкліку"</string>
     <string name="reading_settings" msgid="1605904432450871183">"Чытанне налад..."</string>
@@ -558,6 +557,8 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"Немагчыма ўтрымліваць выклікі."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"Падлучыцеся да бесправадной сеткі, каб зрабіць выклік."</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"Дазволіць выклік па Wi-Fi-тэлефаніі."</string>
+    <!-- no translation found for incall_error_satellite_enabled (1936541518147323016) -->
+    <skip />
     <string name="emergency_information_hint" msgid="9208897544917793012">"Даныя для экстранных сітуацый"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"Уладальнік"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"Каб паглядзець інфармацыю, націсніце яшчэ раз"</string>
@@ -715,6 +716,8 @@
     <string name="clh_callFailed_powerOff_txt" msgid="8279934912560765361">"Уключаны рэжым палёту"</string>
     <string name="clh_callFailed_simError_txt" msgid="5128538525762326413">"Няма доступу да SIM-карты"</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="2736010617446749869">"Мабільная сетка недаступная"</string>
+    <!-- no translation found for clh_callFailed_satelliteEnabled_txt (1675517238240377396) -->
+    <skip />
     <string name="clh_callFailed_unassigned_number_txt" msgid="141967660286695682">"Праблема з нумарам тэлефона, які вы спрабуеце набраць. Код памылкі: 1."</string>
     <string name="clh_callFailed_no_route_to_destination_txt" msgid="4805015149822352308">"Не атрымалася выканаць выклік. Код памылкі: 3."</string>
     <string name="clh_callFailed_channel_unacceptable_txt" msgid="4062754579408613021">"Не атрымалася выканаць выклік. Код памылкі: 6."</string>
@@ -925,8 +928,9 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Сігнал Bluetooth слабы. Паспрабуйце пераключыцца на гучную сувязь."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Апавяшчэнне пра якасць выкліку"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Састарэлыя ўліковыя запісы SIP"</string>
-    <string name="send_from_work_profile_title" msgid="9201528838448432473">"Адпраўляць паведамленні з гэтага профілю нельга"</string>
-    <string name="send_from_work_profile_description" msgid="5002701841936861636">"Згодна з палітыкай вашай арганізацыі адпраўляць паведамленні дазваляецца толькі з працоўнага профілю"</string>
+    <string name="send_from_work_profile_title" msgid="7044759579507604732">"Нельга адпраўляць паведамленні з асабістай праграмы"</string>
+    <string name="send_from_work_profile_description" msgid="2174402508727161974">"Ваша арганізацыя дазваляе адпраўляць паведамленні толькі з працоўных праграм"</string>
     <string name="send_from_work_profile_cancel" msgid="177746511030381711">"Скасаваць"</string>
     <string name="send_from_work_profile_action_str" msgid="6892775562934243337">"Пераключыцца на працоўны профіль"</string>
+    <string name="install_messages_on_work_profile_action_str" msgid="3773440996395152903">"Усталюйце працоўную праграму абмену паведамленнямі"</string>
 </resources>

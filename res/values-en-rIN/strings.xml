@@ -557,6 +557,8 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"Can\'t hold calls."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"Connect to a wireless network to make a call."</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"Enable Wi-Fi calling to make a call."</string>
+    <!-- no translation found for incall_error_satellite_enabled (1936541518147323016) -->
+    <skip />
     <string name="emergency_information_hint" msgid="9208897544917793012">"Emergency information"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"Owner"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"Tap again to view info"</string>
@@ -714,6 +716,8 @@
     <string name="clh_callFailed_powerOff_txt" msgid="8279934912560765361">"Aeroplane mode is on"</string>
     <string name="clh_callFailed_simError_txt" msgid="5128538525762326413">"Can\'t access SIM card"</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="2736010617446749869">"Mobile network not available"</string>
+    <!-- no translation found for clh_callFailed_satelliteEnabled_txt (1675517238240377396) -->
+    <skip />
     <string name="clh_callFailed_unassigned_number_txt" msgid="141967660286695682">"Issue with phone number you are trying to dial. Error code 1."</string>
     <string name="clh_callFailed_no_route_to_destination_txt" msgid="4805015149822352308">"Couldn\'t complete call. Error code 3."</string>
     <string name="clh_callFailed_channel_unacceptable_txt" msgid="4062754579408613021">"Couldn\'t complete call. Error code 6."</string>
@@ -924,8 +928,9 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Your Bluetooth signal is weak. Try switching to speakerphone."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Call quality notification"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Deprecated SIP accounts"</string>
-    <string name="send_from_work_profile_title" msgid="9201528838448432473">"Can\'t send message from this profile"</string>
-    <string name="send_from_work_profile_description" msgid="5002701841936861636">"Your work policy allows you to send messages only from the work profile"</string>
+    <string name="send_from_work_profile_title" msgid="7044759579507604732">"Can\'t message from a personal app"</string>
+    <string name="send_from_work_profile_description" msgid="2174402508727161974">"Your organisation only allows you to send messages from work apps"</string>
     <string name="send_from_work_profile_cancel" msgid="177746511030381711">"Cancel"</string>
     <string name="send_from_work_profile_action_str" msgid="6892775562934243337">"Switch to work profile"</string>
+    <string name="install_messages_on_work_profile_action_str" msgid="3773440996395152903">"Install a work messages app"</string>
 </resources>
