@@ -133,8 +133,7 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"IMS ਦੇ ਅਧੀਨ CDMA ਕਾਲ ਦੀ ਉਡੀਕ ਵਾਲੀ ਸੁਵਿਧਾ ਬੰਦ ਹੈ"</string>
     <string name="updating_title" msgid="6130548922615719689">"ਕਾਲ ਸੈਟਿੰਗਾਂ"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"ਕਾਲ ਸੈਟਿੰਗਾਂ ਸਿਰਫ਼ ਪ੍ਰਸ਼ਾਸਕ ਵਰਤੋਂਕਾਰ ਵੱਲੋਂ ਹੀ ਬਦਲੀਆਂ ਜਾ ਸਕਦੀਆਂ ਹਨ।"</string>
-    <!-- no translation found for phone_account_settings_user_restriction (9142685151087208396) -->
-    <skip />
+    <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"ਫ਼ੋਨ ਦੀਆਂ ਖਾਤਾ ਸੈਟਿੰਗਾਂ ਸਿਰਫ਼ ਪ੍ਰਸ਼ਾਸਕ ਜਾਂ ਕਾਰਜ-ਸਥਾਨ ਵਰਤੋਂਕਾਰ ਵੱਲੋਂ ਹੀ ਬਦਲੀਆਂ ਜਾ ਸਕਦੀਆਂ ਹਨ।"</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"ਸੈਟਿੰਗਾਂ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"ਕਾਲ ਸੈਟਿੰਗਾਂ ਵਿੱਚ ਗੜਬੜ"</string>
     <string name="reading_settings" msgid="1605904432450871183">"ਸੈਟਿੰਗਾਂ ਪੜ੍ਹ ਰਿਹਾ ਹੈ…"</string>
@@ -558,6 +557,8 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"ਕਾਲਾਂ ਹੋਲਡ ਨਹੀਂ ਕੀਤੀਆਂ ਜਾ ਸਕਦੀਆਂ ਹਨ।"</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"ਇੱਕ ਕਾਲ ਕਰਨ ਲਈ ਇੱਕ ਵਾਇਰਲੈਸ ਨੈਟਵਰਕ ਨਾਲ ਕਨੈਕਟ ਕਰੋ।"</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"ਇੱਕ ਕਾਲ ਕਰਨ ਲਈ Wi-Fi ਕਾਲਿੰਗ ਯੋਗ ਬਣਾਓ।"</string>
+    <!-- no translation found for incall_error_satellite_enabled (1936541518147323016) -->
+    <skip />
     <string name="emergency_information_hint" msgid="9208897544917793012">"ਸੰਕਟਕਾਲੀਨ ਜਾਣਕਾਰੀ"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"ਮਾਲਕ"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"ਜਾਣਕਾਰੀ ਦੇਖਣ ਲਈ ਦੁਬਾਰਾ ਟੈਪ ਕਰੋ"</string>
@@ -694,7 +695,7 @@
     <string name="change_pin_enter_new_pin_header" msgid="4739465616733486118">"ਇੱਕ ਨਵਾਂ PIN ਸੈੱਟ ਕਰੋ"</string>
     <string name="change_pin_enter_new_pin_hint" msgid="2326038476516364210">"PIN ਲਾਜ਼ਮੀ ਤੌਰ \'ਤੇ <xliff:g id="MIN">%1$d</xliff:g>-<xliff:g id="MAX">%2$d</xliff:g> ਅੰਕਾਂ ਦਾ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ।"</string>
     <string name="change_pin_confirm_pin_header" msgid="2606303906320705726">"ਆਪਣੇ PIN ਦੀ ਪੁਸ਼ਟੀ ਕਰੋ"</string>
-    <string name="change_pin_confirm_pins_dont_match" msgid="305164501222587215">"PIN ਮੇਲ ਨਹੀਂ ਖਾਂਦੇ"</string>
+    <string name="change_pin_confirm_pins_dont_match" msgid="305164501222587215">"ਪਿੰਨ ਮੇਲ ਨਹੀਂ ਖਾਂਦੇ"</string>
     <string name="change_pin_succeeded" msgid="2504705600693014403">"ਵੌਇਸਮੇਲ PIN ਅੱਪਡੇਟ ਕੀਤਾ ਗਿਆ"</string>
     <string name="change_pin_system_error" msgid="7772788809875146873">"PIN ਸਥਾਪਤ ਕਰਨ ਦੇ ਅਯੋਗ"</string>
     <string name="mobile_data_status_roaming_turned_off_subtext" msgid="6840673347416227054">" ਡਾਟਾ  ਰੋਮਿੰਗ ਬੰਦ ਹੈ"</string>
@@ -715,6 +716,8 @@
     <string name="clh_callFailed_powerOff_txt" msgid="8279934912560765361">"ਹਵਾਈ-ਜਹਾਜ਼ ਮੋਡ ਚਾਲੂ ਹੈ"</string>
     <string name="clh_callFailed_simError_txt" msgid="5128538525762326413">"ਸਿਮ ਕਾਰਡ ਤੱਕ ਪਹੁੰਚ ਨਹੀਂ ਕਰ ਸਕਦੇ"</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="2736010617446749869">"ਮੋਬਾਈਲ ਨੈੱਟਵਰਕ ਉਪਲਬਧ ਨਹੀਂ"</string>
+    <!-- no translation found for clh_callFailed_satelliteEnabled_txt (1675517238240377396) -->
+    <skip />
     <string name="clh_callFailed_unassigned_number_txt" msgid="141967660286695682">"ਜਿਸ ਫ਼ੋਨ ਨੰਬਰ ਨੂੰ ਤੁਸੀਂ ਡਾਇਲ ਕਰਨ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰ ਰਹੇ ਹੋ ਉਸ ਵਿੱਚ ਸਮੱਸਿਆ ਹੈ। ਗੜਬੜ ਕੋਡ 1 ਹੈ।"</string>
     <string name="clh_callFailed_no_route_to_destination_txt" msgid="4805015149822352308">"ਕਾਲ ਪੂਰੀ ਨਹੀਂ ਹੋ ਸਕੀ। ਗੜਬੜ ਕੋਡ 3 ਹੈ।"</string>
     <string name="clh_callFailed_channel_unacceptable_txt" msgid="4062754579408613021">"ਕਾਲ ਪੂਰੀ ਨਹੀਂ ਹੋ ਸਕੀ। ਗੜਬੜ ਕੋਡ 6 ਹੈ।"</string>
@@ -925,8 +928,9 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"ਤੁਹਾਡਾ ਬਲੂਟੁੱਥ ਸਿਗਨਲ ਕਮਜ਼ੋਰ ਹੈ। ਸਪੀਕਰਫ਼ੋਨ \'ਤੇ ਲਿਜਾ ਕੇ ਦੇਖੋ।"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"ਕਾਲ ਦੀ ਕੁਆਲਿਟੀ ਸੰਬੰਧੀ ਸੂਚਨਾ"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"ਨਾਪਸੰਦ ਕੀਤੇ SIP ਖਾਤੇ"</string>
-    <string name="send_from_work_profile_title" msgid="9201528838448432473">"ਇਸ ਪ੍ਰੋਫਾਈਲ ਤੋਂ ਸੁਨੇਹਾ ਨਹੀਂ ਭੇਜਿਆ ਜਾ ਸਕਦਾ"</string>
-    <string name="send_from_work_profile_description" msgid="5002701841936861636">"ਤੁਹਾਡੀ ਕਾਰਜ ਨੀਤੀ ਤੁਹਾਨੂੰ ਸਿਰਫ਼ ਕਾਰਜ ਪ੍ਰੋਫਾਈਲ ਤੋਂ ਹੀ ਸੁਨੇਹਾ ਭੇਜਣ ਦੀ ਆਗਿਆ ਦਿੰਦੀ ਹੈ"</string>
+    <string name="send_from_work_profile_title" msgid="7044759579507604732">"ਕਿਸੇ ਨਿੱਜੀ ਐਪ ਤੋਂ ਸੁਨੇਹਾ ਨਹੀਂ ਭੇਜਿਆ ਜਾ ਸਕਦਾ"</string>
+    <string name="send_from_work_profile_description" msgid="2174402508727161974">"ਤੁਹਾਡੀ ਸੰਸਥਾ ਤੁਹਾਨੂੰ ਸਿਰਫ਼ ਕੰਮ ਸੰਬੰਧੀ ਐਪਾਂ ਤੋਂ ਹੀ ਸੁਨੇਹੇ ਭੇਜਣ ਦਿੰਦੀ ਹੈ"</string>
     <string name="send_from_work_profile_cancel" msgid="177746511030381711">"ਰੱਦ ਕਰੋ"</string>
     <string name="send_from_work_profile_action_str" msgid="6892775562934243337">"ਕਾਰਜ ਪ੍ਰੋਫਾਈਲ \'ਤੇ ਜਾਓ"</string>
+    <string name="install_messages_on_work_profile_action_str" msgid="3773440996395152903">"ਕੰਮ ਸੰਬੰਧੀ ਸੁਨੇਹਾ ਐਪ ਸਥਾਪਤ ਕਰੋ"</string>
 </resources>
