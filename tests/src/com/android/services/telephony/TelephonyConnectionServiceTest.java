@@ -1297,6 +1297,42 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
     }
 
     /**
+     * Test that the TelephonyConnectionService successfully turns satellite off before placing the
+     * emergency call.
+     */
+    @Test
+    @SmallTest
+    public void testCreateOutgoingEmergencyConnection_exitingSatellite_placeCall() {
+        when(mSatelliteController.isSatelliteEnabled()).thenReturn(true);
+        Phone testPhone = setupConnectionServiceInApm();
+
+        ArgumentCaptor<RadioOnStateListener.Callback> callback =
+                ArgumentCaptor.forClass(RadioOnStateListener.Callback.class);
+        verify(mRadioOnHelper).triggerRadioOnAndListen(callback.capture(), eq(true),
+                eq(testPhone), eq(false), eq(0));
+
+        assertFalse(callback.getValue()
+                .isOkToCall(testPhone, ServiceState.STATE_OUT_OF_SERVICE, false));
+        when(mSST.isRadioOn()).thenReturn(true);
+        assertFalse(callback.getValue()
+                .isOkToCall(testPhone, ServiceState.STATE_OUT_OF_SERVICE, false));
+        when(mSatelliteController.isSatelliteEnabled()).thenReturn(false);
+        assertTrue(callback.getValue()
+                .isOkToCall(testPhone, ServiceState.STATE_OUT_OF_SERVICE, false));
+
+        callback.getValue().onComplete(null, true);
+
+        try {
+            doAnswer(invocation -> null).when(mContext).startActivity(any());
+            verify(testPhone).dial(anyString(), any(), any());
+        } catch (CallStateException e) {
+            // This shouldn't happen
+            fail();
+        }
+        verify(mSatelliteSOSMessageRecommender).onEmergencyCallStarted(any(), any());
+    }
+
+    /**
      * Test that the TelephonyConnectionService does not perform a DDS switch when the carrier
      * supports control-plane fallback.
      */
