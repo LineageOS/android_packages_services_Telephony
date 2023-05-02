@@ -133,8 +133,7 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"IMSত CDMA কল অপেক্ষাৰত সুবিধাটো অফ আছে"</string>
     <string name="updating_title" msgid="6130548922615719689">"কল ছেটিংসমূহ"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"কেৱল প্ৰশাসকে কল ছেটিংসমূহ সলনি কৰিব পাৰে।"</string>
-    <!-- no translation found for phone_account_settings_user_restriction (9142685151087208396) -->
-    <skip />
+    <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"ফ’ন একাউণ্টৰ ছেটিং কেৱল প্ৰশাসক অথবা কৰ্মস্থানৰ ব্যৱহাৰকাৰীয়েহে সলনি কৰিব পাৰে।"</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"ছেটিংসমূহ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"কল ছেটিংসমূহত আসোঁৱাহ"</string>
     <string name="reading_settings" msgid="1605904432450871183">"ছেটিংসমূহ পঢ়ি থকা হৈছে…"</string>
@@ -558,6 +557,8 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"কলসমূহ হ\'ল্ডত ৰাখিব নোৱাৰি।"</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"কল কৰিবলৈ কোনো বেতাঁৰ নেটৱৰ্কৰ সৈতে সংযোগ কৰক।"</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"কল কৰিবৰ কাৰণে ৱাই-ফাই কলিং সুবিধা সক্ষম কৰক।"</string>
+    <!-- no translation found for incall_error_satellite_enabled (1936541518147323016) -->
+    <skip />
     <string name="emergency_information_hint" msgid="9208897544917793012">"জৰুৰীকালীন তথ্য"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"গৰাকী"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"তথ্য চাবলৈ পুনৰ টিপক"</string>
@@ -715,6 +716,8 @@
     <string name="clh_callFailed_powerOff_txt" msgid="8279934912560765361">"এয়াৰপ্লেইন ম\'ড অন হৈ আছে"</string>
     <string name="clh_callFailed_simError_txt" msgid="5128538525762326413">"ছিম কাৰ্ড এক্সেছ কৰিব নোৱাৰি"</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="2736010617446749869">"ম’বাইল নেটৱৰ্ক উপলব্ধ নহয়"</string>
+    <!-- no translation found for clh_callFailed_satelliteEnabled_txt (1675517238240377396) -->
+    <skip />
     <string name="clh_callFailed_unassigned_number_txt" msgid="141967660286695682">"আপুনি ডায়েল কৰিব খোজা ফ\'ন নম্বৰত আসোঁৱাহ আছে। আসোঁৱাহ ক\'ড ১।"</string>
     <string name="clh_callFailed_no_route_to_destination_txt" msgid="4805015149822352308">"কলটো সম্পূৰ্ণ কৰিব পৰা নগ\'ল। আসোঁৱাহ ক\'ড ৩।"</string>
     <string name="clh_callFailed_channel_unacceptable_txt" msgid="4062754579408613021">"কলটো সম্পূৰ্ণ কৰিব পৰা নগ\'ল। আসোঁৱাহ ক\'ড ৬।"</string>
@@ -925,8 +928,9 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"আপোনাৰ ব্লুটুথৰ ছিগনেল দুৰ্বল। স্পীকাৰফ’নলৈ সলনি কৰি চাওক।"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"কলৰ গুণগত মানৰ জাননী"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"বন্ধ হৈ যোৱা SIP একাউণ্ট"</string>
-    <string name="send_from_work_profile_title" msgid="9201528838448432473">"এই প্ৰ’ফাইলৰ পৰা বাৰ্তা পঠিয়াব নোৱাৰি"</string>
-    <string name="send_from_work_profile_description" msgid="5002701841936861636">"আপোনাৰ কৰ্মস্থানৰ নীতিয়ে আপোনাক কেৱল কৰ্মস্থানৰ প্ৰ’ফাইলৰ পৰা বাৰ্তা পঠিয়াবলৈ দিয়ে"</string>
+    <string name="send_from_work_profile_title" msgid="7044759579507604732">"ব্যক্তিগত এপৰ পৰা বাৰ্তা পঠিয়াব নোৱাৰি"</string>
+    <string name="send_from_work_profile_description" msgid="2174402508727161974">"আপোনাৰ প্ৰতিষ্ঠানে আপোনাক কেৱল কাম সম্পর্কীয় এপ্‌সমূহৰ পৰা বাৰ্তা পঠিওৱাৰ অনুমতি দিয়ে"</string>
     <string name="send_from_work_profile_cancel" msgid="177746511030381711">"বাতিল কৰক"</string>
     <string name="send_from_work_profile_action_str" msgid="6892775562934243337">"কৰ্মস্থানৰ প্ৰ’ফাইললৈ সলনি কৰক"</string>
+    <string name="install_messages_on_work_profile_action_str" msgid="3773440996395152903">"এটা কৰ্মস্থানৰ বাৰ্তা আদান-প্ৰদান কৰা এপ্‌ ইনষ্টল কৰক"</string>
 </resources>

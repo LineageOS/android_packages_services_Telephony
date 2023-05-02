@@ -133,8 +133,7 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"IMS платформасында CDMA чалуу күтүүcү өчүрүлгөн"</string>
     <string name="updating_title" msgid="6130548922615719689">"Чалуу параметрлери"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Чалуу параметрлерин администратор гана өзгөртө алат."</string>
-    <!-- no translation found for phone_account_settings_user_restriction (9142685151087208396) -->
-    <skip />
+    <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Телефондогу аккаунттун параметрлерин администратор же жумуштагы колдонуучу гана өзгөртө алат."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Параметрлер (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Чалуу жөндөөлөрүндө ката кетти"</string>
     <string name="reading_settings" msgid="1605904432450871183">"Параметрлер окулууда…"</string>
@@ -298,7 +297,7 @@
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"Башка SIM картаны колднгндо <xliff:g id="CARRIER_NAME">%1$s</xliff:g> чалуулары жана дайындар кызмттары бөгөттлшү мүмкүн."</string>
     <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"Колдонуудан чыккан SIP аккаунттары табылды жана өчүрүлдү"</string>
     <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"SIP аркылуу чалуу Android платформасында мындан ары колдоого алынбайт.\nУчурдагы SIP аккаунттарыңыз (<xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g>) өчүрүлдү.\nЧалууларга колдонулган демейки аккаунтун жөндөөсүн ырастаңыз."</string>
-    <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"Жөндөөлөргө өтүү"</string>
+    <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"Параметрлерге өтүү"</string>
     <string name="data_usage_title" msgid="8438592133893837464">"Колдонмолордун трафиги"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"<xliff:g id="ID_2">%2$s</xliff:g> аралыгында <xliff:g id="ID_1">%1$s</xliff:g> мобилдик трафик колдонулду"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"Өркүндөтүлгөн"</string>
@@ -558,6 +557,8 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"Чалууну кармап туруу мүмкүн эмес."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"Чалуу үчүн зымсыз тармакка туташыңыз."</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"Wi-Fi аркылуу чалыңыз."</string>
+    <!-- no translation found for incall_error_satellite_enabled (1936541518147323016) -->
+    <skip />
     <string name="emergency_information_hint" msgid="9208897544917793012">"Кырсыктаганда керек болчу маалымат"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"Ээси"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"Маалыматты көрүү үчүн кайра таптап коюңуз"</string>
@@ -598,7 +599,7 @@
     <string name="hac_mode_summary" msgid="7774989500136009881">"Угуу аппараты иштетилет"</string>
     <string name="rtt_mode_title" msgid="3075948111362818043">"Чалуу учурунда анык убакыттагы билдирүү (RTT)"</string>
     <string name="rtt_mode_summary" msgid="8631541375609989562">"Үн чалуунун учурунда жазышууга уруксат берүү"</string>
-    <string name="rtt_mode_more_information" msgid="587500128658756318">"RTT функциясы угуу жана сүйлөө жөндөмдүүлүгү бузулган адамдарга арналат.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Кеңири маалымат&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT функциясында чалуулар транскрипциялар катары сакталат\n       &lt;br&gt; - RTT функациясы видео чалууда жеткиликсиз болот"</string>
+    <string name="rtt_mode_more_information" msgid="587500128658756318">"RTT функциясы уга албаган же сүйлөй албаган адамдарга арналган.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Кеңири маалымат&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT функциясында чалуулар транскрипциялар катары сакталат\n       &lt;br&gt; - RTT функациясы видео чалууда жеткиликсиз болот"</string>
     <string name="no_rtt_when_roaming" msgid="5268008247378355389">"Эскертүү: Роуминг учурунда RTT жеткиликсиз"</string>
   <string-array name="tty_mode_entries">
     <item msgid="3238070884803849303">"Телетайп түзмөгү өчүк"</item>
@@ -715,6 +716,8 @@
     <string name="clh_callFailed_powerOff_txt" msgid="8279934912560765361">"Учак режими күйүк"</string>
     <string name="clh_callFailed_simError_txt" msgid="5128538525762326413">"SIM картага кире албай жатат"</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="2736010617446749869">"Мобилдик тармак жок"</string>
+    <!-- no translation found for clh_callFailed_satelliteEnabled_txt (1675517238240377396) -->
+    <skip />
     <string name="clh_callFailed_unassigned_number_txt" msgid="141967660286695682">"Сиз терип жаткан телефон номери менен бир маселе бар. Ката коду 1."</string>
     <string name="clh_callFailed_no_route_to_destination_txt" msgid="4805015149822352308">"Чалуу аяктабай калды. Ката коду 3."</string>
     <string name="clh_callFailed_channel_unacceptable_txt" msgid="4062754579408613021">"Чалуу аяктабай калды. Ката коду 6."</string>
@@ -925,8 +928,9 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Bluetooth сигналыңыз начар. Спикерфонго которулуп көрүңүз."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Чалуунун сапаты тууралуу билдирме"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Колдонуудан чыккан SIP аккаунттары"</string>
-    <string name="send_from_work_profile_title" msgid="9201528838448432473">"Билдирүүлөрдү бул профилден жөнөтүүгө болбойт"</string>
-    <string name="send_from_work_profile_description" msgid="5002701841936861636">"Жумуш саясатыңызга ылайык, билдирүүлөрдү жумуш профилинен гана жөнөтө аласыз"</string>
+    <string name="send_from_work_profile_title" msgid="7044759579507604732">"Жеке колдонмодон жазышуу мүмкүн эмес"</string>
+    <string name="send_from_work_profile_description" msgid="2174402508727161974">"Уюмуңуз билдирүүлөрдү жумуш колдонмолорунан гана жөнөтүүгө уруксат берет"</string>
     <string name="send_from_work_profile_cancel" msgid="177746511030381711">"Жокко чыгаруу"</string>
     <string name="send_from_work_profile_action_str" msgid="6892775562934243337">"Жумуш профилине которулуу"</string>
+    <string name="install_messages_on_work_profile_action_str" msgid="3773440996395152903">"Жумушка арналган жазышуу колдонмосун орнотуу"</string>
 </resources>
