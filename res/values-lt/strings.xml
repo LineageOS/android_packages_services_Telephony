@@ -924,8 +924,12 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Silpnas „Bluetooth“ signalas. Pabandykite perjungti garsiakalbį."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Pranešimas apie skambučio kokybę"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Nebenaudojamos SIP paskyros"</string>
-    <string name="send_from_work_profile_title" msgid="9201528838448432473">"Nepavyko išsiųsti pranešimo iš šio profilio"</string>
-    <string name="send_from_work_profile_description" msgid="5002701841936861636">"Pagal jūsų darbo politiką galite siųsti pranešimus tik iš darbo profilio"</string>
+    <!-- no translation found for send_from_work_profile_title (7044759579507604732) -->
+    <skip />
+    <!-- no translation found for send_from_work_profile_description (2174402508727161974) -->
+    <skip />
     <string name="send_from_work_profile_cancel" msgid="177746511030381711">"Atšaukti"</string>
     <string name="send_from_work_profile_action_str" msgid="6892775562934243337">"Perjungti į darbo profilį"</string>
+    <!-- no translation found for install_messages_on_work_profile_action_str (3773440996395152903) -->
+    <skip />
 </resources>

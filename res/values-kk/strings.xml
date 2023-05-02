@@ -133,8 +133,7 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"IMS бойынша басқа CDMA желісіндегі қоңырауды ұстап тұру мүмкіндігі өшірулі."</string>
     <string name="updating_title" msgid="6130548922615719689">"Қоңырау параметрлері"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Қоңырау параметрлерін тек әкімші пайдаланушы өзгерте алады."</string>
-    <!-- no translation found for phone_account_settings_user_restriction (9142685151087208396) -->
-    <skip />
+    <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Телефонның аккаунт параметрлерін тек әкімші немесе жұмыстағы пайдаланушы өзгерте алады."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Параметрлер (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Қоңырау параметрлерінің қателігі"</string>
     <string name="reading_settings" msgid="1605904432450871183">"Параметрлерді оқуда…"</string>
@@ -925,8 +924,12 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Bluetooth сигналы нашар. Спикерфонға ауысып көріңіз."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Қоңырау сапасы туралы хабарландыру"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Қолданыстан шыққан SIP аккаунттары"</string>
-    <string name="send_from_work_profile_title" msgid="9201528838448432473">"Бұл профильден хабар жіберу мүмкін емес"</string>
-    <string name="send_from_work_profile_description" msgid="5002701841936861636">"Жұмыс саясатыңызға сәйкес тек жұмыс профилінен хабар жіберуге болады."</string>
+    <!-- no translation found for send_from_work_profile_title (7044759579507604732) -->
+    <skip />
+    <!-- no translation found for send_from_work_profile_description (2174402508727161974) -->
+    <skip />
     <string name="send_from_work_profile_cancel" msgid="177746511030381711">"Бас тарту"</string>
     <string name="send_from_work_profile_action_str" msgid="6892775562934243337">"Жұмыс профиліне ауысу"</string>
+    <!-- no translation found for install_messages_on_work_profile_action_str (3773440996395152903) -->
+    <skip />
 </resources>

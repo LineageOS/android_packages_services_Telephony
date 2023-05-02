@@ -133,8 +133,7 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"CDMA զանգի սպասումը IMS-ում անջատված է"</string>
     <string name="updating_title" msgid="6130548922615719689">"Զանգի կարգավորումներ"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Զանգի կարգավորումները կարող է փոխել միայն ադմինիստրատոր հանդիսացող օգտատերը:"</string>
-    <!-- no translation found for phone_account_settings_user_restriction (9142685151087208396) -->
-    <skip />
+    <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Հեռախոսի հաշվի կարգավորումները կարող է փոխել միայն ադմինիստրատորը կամ աշխատանքային հաշվի օգտատերը։"</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Կարգավորումներ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Զանգի կարգավորումների սխալ"</string>
     <string name="reading_settings" msgid="1605904432450871183">"Ընթերցման կարգավորումներ..."</string>
@@ -925,8 +924,12 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Ձեր Bluetooth-ի ազդանշանը թույլ է։ Փորձեք միացնել բարձրախոսը։"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Զանգի որակի մասին ծանուցում"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Հնացած SIP հաշիվներ"</string>
-    <string name="send_from_work_profile_title" msgid="9201528838448432473">"Հնարավոր չէ հաղորդագրություն ուղարկել այս պրոֆիլից"</string>
-    <string name="send_from_work_profile_description" msgid="5002701841936861636">"Ձեր աշխատանքային կանոնների համաձայն՝ դուք կարող եք հաղորդագրություն ուղարկել միայն աշխատանքային պրոֆիլից"</string>
+    <!-- no translation found for send_from_work_profile_title (7044759579507604732) -->
+    <skip />
+    <!-- no translation found for send_from_work_profile_description (2174402508727161974) -->
+    <skip />
     <string name="send_from_work_profile_cancel" msgid="177746511030381711">"Չեղարկել"</string>
     <string name="send_from_work_profile_action_str" msgid="6892775562934243337">"Անցնել աշխատանքային պրոֆիլ"</string>
+    <!-- no translation found for install_messages_on_work_profile_action_str (3773440996395152903) -->
+    <skip />
 </resources>
