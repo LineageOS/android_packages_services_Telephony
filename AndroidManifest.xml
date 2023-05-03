@@ -164,6 +164,9 @@
     <!-- Needed to set user association to a certain sim -->
     <uses-permission android:name="android.permission.MANAGE_SUBSCRIPTION_USER_ASSOCIATION"/>
 
+    <!-- Needed to register for UWB state changes for satellite communication -->
+    <uses-permission android:name="android.permission.UWB_PRIVILEGED"/>
+
     <permission android:name="com.android.phone.permission.ACCESS_LAST_KNOWN_CELL_ID"
                 android:label="Access last known cell identity."
                 android:protectionLevel="signature"/>
