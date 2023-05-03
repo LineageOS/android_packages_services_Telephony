@@ -133,8 +133,7 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"Telefonatat në pritje CDMA në sistemin IMS janë joaktive"</string>
     <string name="updating_title" msgid="6130548922615719689">"Cilësimet e telefonatës"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Cilësimet e telefonatës mund të ndryshohen vetëm nga administratori."</string>
-    <!-- no translation found for phone_account_settings_user_restriction (9142685151087208396) -->
-    <skip />
+    <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Cilësimet e llogarisë të telefonit mund të ndryshohen vetëm nga administratori ose një përdorues në punë."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Cilësimet (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Gabim në cilësimet e telefonatës"</string>
     <string name="reading_settings" msgid="1605904432450871183">"Po lexon cilësimet…"</string>
@@ -558,6 +557,8 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"Telefonatat nuk mund të mbahen në pritje."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"Lidhu me një rrjet me valë për të bërë një telefonatë."</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"Aktivizo telefonatat nëpërmjet rrjetit Wi-Fi për të bërë një telefonatë."</string>
+    <!-- no translation found for incall_error_satellite_enabled (1936541518147323016) -->
+    <skip />
     <string name="emergency_information_hint" msgid="9208897544917793012">"Informacioni i urgjencës"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"Zotëruesi"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"Trokit përsëri për të shikuar informacionet"</string>
@@ -715,6 +716,8 @@
     <string name="clh_callFailed_powerOff_txt" msgid="8279934912560765361">"Modaliteti i aeroplanit është aktiv"</string>
     <string name="clh_callFailed_simError_txt" msgid="5128538525762326413">"Nuk ka qasje te karta SIM"</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="2736010617446749869">"Rrjeti celular nuk ofrohet"</string>
+    <!-- no translation found for clh_callFailed_satelliteEnabled_txt (1675517238240377396) -->
+    <skip />
     <string name="clh_callFailed_unassigned_number_txt" msgid="141967660286695682">"Problem me numrin e telefonit që po përpiqesh të telefonosh. Kodi i gabimit 1."</string>
     <string name="clh_callFailed_no_route_to_destination_txt" msgid="4805015149822352308">"Telefonata nuk mund të kryhej. Kodi i gabimit 3."</string>
     <string name="clh_callFailed_channel_unacceptable_txt" msgid="4062754579408613021">"Telefonata nuk mund të kryhej. Kodi i gabimit 6."</string>
@@ -925,8 +928,9 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Sinjali i Bluetooth-it është i dobët. Provo të kalosh te altoparlanti."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Njoftim për cilësinë e telefonatës"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Llogaritë e zhvlerësuara SIP"</string>
-    <string name="send_from_work_profile_title" msgid="9201528838448432473">"Mesazhi nuk mund të dërgohet nga ky profil"</string>
-    <string name="send_from_work_profile_description" msgid="5002701841936861636">"Politika jote e punës të lejon të dërgosh mesazhe vetëm nga profili i punës"</string>
+    <string name="send_from_work_profile_title" msgid="7044759579507604732">"Nuk mund të dërgohen mesazhe nga një aplikacion personal"</string>
+    <string name="send_from_work_profile_description" msgid="2174402508727161974">"Organizata jote të lejon që të dërgosh mesazhe vetëm nga aplikacionet e punës"</string>
     <string name="send_from_work_profile_cancel" msgid="177746511030381711">"Anulo"</string>
     <string name="send_from_work_profile_action_str" msgid="6892775562934243337">"Kalo te profili i punës"</string>
+    <string name="install_messages_on_work_profile_action_str" msgid="3773440996395152903">"Instalo një aplikacion të mesazheve të punës"</string>
 </resources>
