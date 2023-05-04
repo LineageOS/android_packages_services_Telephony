@@ -557,6 +557,8 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"କଲ୍‍କୁ ହୋଲ୍ଡ କରାଯାଇପାରିବ ନାହିଁ।"</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"ଗୋଟିଏ କଲ୍ କରିବା ପାଇଁ ଏକ ତାରବିହୀନ ନେଟ୍‌ୱର୍କ ସହ କନେକ୍ଟ କରନ୍ତୁ।"</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"ଗୋଟିଏ କଲ୍ କରିବା ପାଇଁ ୱାଇ-ଫାଇ କଲିଙ୍ଗକୁ ସକ୍ଷମ କରନ୍ତୁ।"</string>
+    <!-- no translation found for incall_error_satellite_enabled (1936541518147323016) -->
+    <skip />
     <string name="emergency_information_hint" msgid="9208897544917793012">"ଜରୁରୀକାଳୀନ ସୂଚନା"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"ମାଲିକ"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"ସୂଚନା ଦେଖିବାକୁ ପୁଣିଥରେ ଟାପ୍‍ କରନ୍ତୁ"</string>
@@ -714,6 +716,8 @@
     <string name="clh_callFailed_powerOff_txt" msgid="8279934912560765361">"ଏୟାରପ୍ଲେନ୍ ମୋଡ୍ ଚାଲୁ ଅଛି"</string>
     <string name="clh_callFailed_simError_txt" msgid="5128538525762326413">"SIM କାର୍ଡକୁ ଆକ୍ସେସ୍ କରିହେଉନାହିଁ"</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="2736010617446749869">"ମୋବାଇଲ୍ ନେଟ୍‌ୱର୍କ ଉପଲବ୍ଧ ଅଛି"</string>
+    <!-- no translation found for clh_callFailed_satelliteEnabled_txt (1675517238240377396) -->
+    <skip />
     <string name="clh_callFailed_unassigned_number_txt" msgid="141967660286695682">"ଆପଣ ଡାଏଲ୍ କରିବା ପାଇଁ ଚେଷ୍ଟା କରୁଥିବା ଫୋନ୍ ନମ୍ବର୍‌ରେ ସମସ୍ୟା ଅଛି। ତ୍ରୁଟି କୋଡ୍ 1।"</string>
     <string name="clh_callFailed_no_route_to_destination_txt" msgid="4805015149822352308">"କଲ୍ ସମ୍ପୂର୍ଣ୍ଣ କରିହେଲା ନାହିଁ। ତ୍ରୁଟି କୋଡ୍ 3।"</string>
     <string name="clh_callFailed_channel_unacceptable_txt" msgid="4062754579408613021">"କଲ୍ ସମ୍ପୂର୍ଣ୍ଣ କରିହେଲା ନାହିଁ। ତ୍ରୁଟି କୋଡ୍ 6।"</string>
@@ -924,8 +928,9 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"ଆପଣଙ୍କ ବ୍ଲୁଟୁଥ୍ ସିଗନାଲ୍ ଦୁର୍ବଳ ଅଛି। ସ୍ପିକରଫୋନକୁ ସ୍ୱିଚ୍ କରିବା ପାଇଁ ଚେଷ୍ଟା କରନ୍ତୁ।"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"କଲ୍ ଗୁଣବତ୍ତା ବିଜ୍ଞପ୍ତି"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"ଅସମର୍ଥିତ SIP ଆକାଉଣ୍ଟଗୁଡ଼ିକ"</string>
-    <string name="send_from_work_profile_title" msgid="9201528838448432473">"ଏହି ପ୍ରୋଫାଇଲରୁ ମେସେଜ ପଠାଯାଇପାରିବ ନାହିଁ"</string>
-    <string name="send_from_work_profile_description" msgid="5002701841936861636">"ଆପଣଙ୍କ ୱାର୍କ ନୀତି ଆପଣଙ୍କୁ କେବଳ ୱାର୍କ ପ୍ରୋଫାଇଲରୁ ମେସେଜ ପଠାଇବାକୁ ଅନୁମତି ଦିଏ"</string>
+    <string name="send_from_work_profile_title" msgid="7044759579507604732">"ଏକ ବ୍ୟକ୍ତିଗତ ଆପରୁ ମେସେଜ କରିପାରିବେ ନାହିଁ"</string>
+    <string name="send_from_work_profile_description" msgid="2174402508727161974">"ଆପଣଙ୍କ ସଂସ୍ଥା ଆପଣଙ୍କୁ କେବଳ ୱାର୍କ ଆପ୍ସରୁ ମେସେଜ ପଠାଇବା ପାଇଁ ଅନୁମତି ଦିଏ"</string>
     <string name="send_from_work_profile_cancel" msgid="177746511030381711">"ବାତିଲ କରନ୍ତୁ"</string>
     <string name="send_from_work_profile_action_str" msgid="6892775562934243337">"ୱାର୍କ ପ୍ରୋଫାଇଲକୁ ସ୍ୱିଚ କରନ୍ତୁ"</string>
+    <string name="install_messages_on_work_profile_action_str" msgid="3773440996395152903">"ଏକ ୱାର୍କ ମେସେଜ ଆପ ଇନଷ୍ଟଲ କରନ୍ତୁ"</string>
 </resources>

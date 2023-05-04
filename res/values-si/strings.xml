@@ -133,8 +133,7 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"IMS යටත් CDMA ඇමතුම රඳවා ගැනීම ක්‍රියාවිරහිතයි"</string>
     <string name="updating_title" msgid="6130548922615719689">"ඇමතුම් සැකසීම්"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"ඇමතුම් සැකසීම් වෙනස් කළ හැක්කේ පරිපාලක පරිශීලකයාට පමණි."</string>
-    <!-- no translation found for phone_account_settings_user_restriction (9142685151087208396) -->
-    <skip />
+    <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"දුරකථන ගිණුම් සැකසීම් වෙනස් කළ හැක්කේ පරිපාලක හෝ කාර්යාල පරිශීලකයාට පමණි."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"සැකසීම් (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"ඇමතුම් සැකසුම් දෝෂය"</string>
     <string name="reading_settings" msgid="1605904432450871183">"සැකසුම් කියවමින්…"</string>
@@ -558,6 +557,8 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"ඇමතුම් රඳවා තැබීමට නොහැකිය."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"ඇමතුමක් ගැනීමට රැහැන් රහිත ජාලයක් වෙත සම්බන්ධ වෙන්න."</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"ඇමතුමක් කිරීමට Wi-Fi ඇමතීම සබල කරන්න."</string>
+    <!-- no translation found for incall_error_satellite_enabled (1936541518147323016) -->
+    <skip />
     <string name="emergency_information_hint" msgid="9208897544917793012">"හදිසි අවස්ථා තොරතුරු"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"හිමිකරු"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"තොරතුරු බැලීම සඳහා නැවත තට්ටු කරන්න"</string>
@@ -715,6 +716,8 @@
     <string name="clh_callFailed_powerOff_txt" msgid="8279934912560765361">"ගුවන් යානා ප්‍රකාරය ක්‍රියාත්මකයි"</string>
     <string name="clh_callFailed_simError_txt" msgid="5128538525762326413">"SIM කාඩ්පතට පිවිසිය නොහැකිය"</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="2736010617446749869">"ජංගම ජාලය නොමැත"</string>
+    <!-- no translation found for clh_callFailed_satelliteEnabled_txt (1675517238240377396) -->
+    <skip />
     <string name="clh_callFailed_unassigned_number_txt" msgid="141967660286695682">"ඔබ ඇමතීමට උත්සාහ කරන දුරකථන අංකය සමගින් වන දෝෂයකි. දෝෂ කේතය 1."</string>
     <string name="clh_callFailed_no_route_to_destination_txt" msgid="4805015149822352308">"ඇමතුම සම්පූර්ණ කළ නොහැකි විය. දෝෂ කේතය 3."</string>
     <string name="clh_callFailed_channel_unacceptable_txt" msgid="4062754579408613021">"ඇමතුම සම්පූර්ණ කළ නොහැකි විය. දෝෂ කේතය 6."</string>
@@ -925,8 +928,9 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"ඔබේ බ්ලූටූත් සංඥාව දුර්වලයි. ස්පීකර් දුරකථනයට මාරු වීමට උත්සාහ කරන්න."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"ඇමතුම් ගුණත්ව දැනුම්දීම"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"අතහැර දැමූ SIP ගිණුම්"</string>
-    <string name="send_from_work_profile_title" msgid="9201528838448432473">"මෙම පැතිකඩෙන් පණිවිඩ යැවිය නොහැක"</string>
-    <string name="send_from_work_profile_description" msgid="5002701841936861636">"ඔබේ වැඩ ප්‍රතිපත්තිය ඔබට කාර්යාල පැතිකඩෙන් පමණක් පණිවිඩ යැවීමට ඉඩ දෙයි"</string>
+    <string name="send_from_work_profile_title" msgid="7044759579507604732">"පුද්ගලික යෙදුමකින් පණිවිඩය යැවිය නොහැක"</string>
+    <string name="send_from_work_profile_description" msgid="2174402508727161974">"ඔබේ සංවිධානය ඔබට කාර්යාල යෙදුම්වලින් පණිවිඩ යැවීමට පමණක් ඉඩ දෙයි"</string>
     <string name="send_from_work_profile_cancel" msgid="177746511030381711">"අවලංගු කරන්න"</string>
     <string name="send_from_work_profile_action_str" msgid="6892775562934243337">"කාර්යාල පැතිකඩ වෙත මාරු වන්න"</string>
+    <string name="install_messages_on_work_profile_action_str" msgid="3773440996395152903">"කාර්යාල පණිවිඩ යැවීමේ යෙදුමක් ස්ථාපනය කරන්න"</string>
 </resources>
