@@ -1150,14 +1150,17 @@ countries {
   eccs {
     phone_number: "17"
     types: POLICE
+    routing: NORMAL
   }
   eccs {
     phone_number: "15"
     types: AMBULANCE
+    routing: NORMAL
   }
   eccs {
     phone_number: "18"
     types: FIRE
+    routing: NORMAL
   }
   ecc_fallback: "112"
 }
@@ -2413,14 +2416,17 @@ countries {
   eccs {
     phone_number: "17"
     types: POLICE
+    routing: NORMAL
   }
   eccs {
     phone_number: "15"
     types: AMBULANCE
+    routing: NORMAL
   }
   eccs {
     phone_number: "18"
     types: FIRE
+    routing: NORMAL
   }
   ecc_fallback: "112"
 }
