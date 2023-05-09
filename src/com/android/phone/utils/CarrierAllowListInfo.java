@@ -16,12 +16,14 @@
 
 package com.android.phone.utils;
 
+import android.annotation.TestApi;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.telephony.Rlog;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.android.internal.telephony.uicc.IccUtils;
 
@@ -34,7 +36,9 @@ import java.io.InputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 
 public class CarrierAllowListInfo {
@@ -194,5 +198,15 @@ public class CarrierAllowListInfo {
         public List<String> getSHAIdList() {
             return mSHAIdList;
         }
+    }
+
+    @TestApi
+    public List<String> getShaIdList(String srcPkg, int carrierId) {
+        CarrierInfo carrierInfo = parseJsonForCallerInfo(srcPkg);
+        if (carrierInfo != null && carrierInfo.getCallerCarrierId() == carrierId) {
+            return carrierInfo.getSHAIdList();
+        }
+        Rlog.e(LOG_TAG, "getShaIdList carrierId or shaIdList is empty");
+        return Collections.EMPTY_LIST;
     }
 }
