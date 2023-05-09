@@ -557,8 +557,7 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"کالز کو ہولڈ نہیں کیا جا سکتا۔"</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"کال کرنے کیلئے کسی وائرلیس نیٹ ورک سے منسلک ہوں۔"</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"‏کال کرنے کیلئے Wi-Fi کالنگ فعال کریں۔"</string>
-    <!-- no translation found for incall_error_satellite_enabled (1936541518147323016) -->
-    <skip />
+    <string name="incall_error_satellite_enabled" msgid="1936541518147323016">"کال کرنے کیلئے سیٹلائٹ موڈ کو غیرفعال کریں"</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"ایمرجنسی معلومات"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"مالک"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"معلومات دیکھنے کیلئے دوبارہ تھپتھپائیں"</string>
@@ -716,8 +715,7 @@
     <string name="clh_callFailed_powerOff_txt" msgid="8279934912560765361">"ہوائی جہاز وضع آن ہے"</string>
     <string name="clh_callFailed_simError_txt" msgid="5128538525762326413">"‏SIM کارڈ تک رسائی حاصل نہیں ہو رہی"</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="2736010617446749869">"موبائل نیٹ ورک دستیاب نہیں ہے"</string>
-    <!-- no translation found for clh_callFailed_satelliteEnabled_txt (1675517238240377396) -->
-    <skip />
+    <string name="clh_callFailed_satelliteEnabled_txt" msgid="1675517238240377396">"سیٹلائٹ موڈ آن ہے"</string>
     <string name="clh_callFailed_unassigned_number_txt" msgid="141967660286695682">"جو فون نمبر آپ ڈائل کرنے کی کوشش کر رہے ہیں اس کے ساتھ مسئلہ ہے۔ خرابی کا کوڈ 1۔"</string>
     <string name="clh_callFailed_no_route_to_destination_txt" msgid="4805015149822352308">"کال مکمل نہیں ہو سکی۔ خرابی کا کوڈ 3۔"</string>
     <string name="clh_callFailed_channel_unacceptable_txt" msgid="4062754579408613021">"کال مکمل نہیں ہو سکی۔ خرابی کا کوڈ 6۔"</string>
