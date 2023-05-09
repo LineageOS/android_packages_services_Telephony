@@ -557,8 +557,7 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"Qo‘ng‘iroqlarni ushlab turib bo‘lmadi."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"Qo‘ng‘iroq qilish uchun simsiz tarmoqqa ulaning"</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"Qo‘ng‘iroq qilish uchun Wi-Fi qo‘ng‘iroqlar funksiyasini yoqing."</string>
-    <!-- no translation found for incall_error_satellite_enabled (1936541518147323016) -->
-    <skip />
+    <string name="incall_error_satellite_enabled" msgid="1936541518147323016">"Telefon qilish uchun sputnik rejimini faolsizlantiring."</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"Favqulodda vaziyatlar uchun axborot"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"Egasi"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"Axborotni ochish uchun yana bir marta bosing"</string>
@@ -716,8 +715,7 @@
     <string name="clh_callFailed_powerOff_txt" msgid="8279934912560765361">"Parvoz rejimi yoniq"</string>
     <string name="clh_callFailed_simError_txt" msgid="5128538525762326413">"SIM kartaga kirishga ruxsat berilmagan"</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="2736010617446749869">"Uyali aloqa tarmog‘idan foydalanib bo‘lmaydi"</string>
-    <!-- no translation found for clh_callFailed_satelliteEnabled_txt (1675517238240377396) -->
-    <skip />
+    <string name="clh_callFailed_satelliteEnabled_txt" msgid="1675517238240377396">"Sputnik rejimi yoniq"</string>
     <string name="clh_callFailed_unassigned_number_txt" msgid="141967660286695682">"Siz chaqiruv qilmoqchi bo‘lgan telefon raqami bilan muammo mavjud. Xatolik kodi: 1."</string>
     <string name="clh_callFailed_no_route_to_destination_txt" msgid="4805015149822352308">"Chaqiruv amalga oshmadi. Xatolik kodi: 3."</string>
     <string name="clh_callFailed_channel_unacceptable_txt" msgid="4062754579408613021">"Chaqiruv amalga oshmadi. Xatolik kodi: 6."</string>
