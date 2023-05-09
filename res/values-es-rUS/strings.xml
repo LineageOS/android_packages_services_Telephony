@@ -557,8 +557,7 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"No es posible poner las llamadas en espera."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"Conectarse a una red inalámbrica para hacer una llamada"</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"Habilita las llamadas con Wi-Fi para hacer una llamada."</string>
-    <!-- no translation found for incall_error_satellite_enabled (1936541518147323016) -->
-    <skip />
+    <string name="incall_error_satellite_enabled" msgid="1936541518147323016">"Inhabilita el modo satelital para realizar una llamada."</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"Información de emergencia"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"Propietario"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"Vuelve a presionar para ver la información"</string>
@@ -716,8 +715,7 @@
     <string name="clh_callFailed_powerOff_txt" msgid="8279934912560765361">"El modo de avión está activado"</string>
     <string name="clh_callFailed_simError_txt" msgid="5128538525762326413">"No se puede acceder a la tarjeta SIM"</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="2736010617446749869">"Red móvil no disponible"</string>
-    <!-- no translation found for clh_callFailed_satelliteEnabled_txt (1675517238240377396) -->
-    <skip />
+    <string name="clh_callFailed_satelliteEnabled_txt" msgid="1675517238240377396">"El modo satelital está activado"</string>
     <string name="clh_callFailed_unassigned_number_txt" msgid="141967660286695682">"Hubo un problema con el número de teléfono que quieres marcar. Código de error: 1."</string>
     <string name="clh_callFailed_no_route_to_destination_txt" msgid="4805015149822352308">"No se pudo realizar la llamada. Código de error: 3."</string>
     <string name="clh_callFailed_channel_unacceptable_txt" msgid="4062754579408613021">"No se pudo realizar la llamada. Código de error: 6."</string>

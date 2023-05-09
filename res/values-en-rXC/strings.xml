@@ -557,8 +557,7 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‏‏‏‏‏‏‎‏‏‎‎‏‏‏‎‎‏‎‏‎‎‏‏‏‎‎‏‎‎‏‎‏‏‎‏‎‏‎‎‏‎‎‏‎‏‏‏‏‏‏‎‏‎‏‎‏‎‎‎‎‎‎‎‏‎‏‎Can\'t hold calls.‎‏‎‎‏‎"</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‏‏‏‏‎‏‎‎‎‏‎‏‎‏‎‏‎‏‏‎‎‎‏‎‏‎‏‎‎‎‎‏‎‎‏‎‏‏‏‏‎‏‎‏‏‏‎‏‎‎‎‏‎‎‏‎‏‏‏‎‏‎‏‏‎‏‎Connect to a wireless network to make a call.‎‏‎‎‏‎"</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‏‏‏‏‏‏‏‏‏‏‎‎‏‏‎‎‎‎‎‏‎‎‎‎‎‏‎‎‎‏‏‎‎‎‎‎‏‏‎‏‎‏‎‏‏‏‏‏‎‎‏‏‏‏‏‏‎‎‎‏‎‏‎‏‏‏‎Enable Wi-Fi calling to make a call.‎‏‎‎‏‎"</string>
-    <!-- no translation found for incall_error_satellite_enabled (1936541518147323016) -->
-    <skip />
+    <string name="incall_error_satellite_enabled" msgid="1936541518147323016">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‏‎‏‏‏‎‏‎‏‏‎‏‏‏‏‏‏‏‏‏‏‎‏‎‎‏‎‎‎‎‎‎‎‎‏‎‎‎‎‏‏‏‏‏‎‏‏‏‏‎‎‎‎‏‎‎‏‎‎‎‏‎‎‎‎Disable satellite mode to make a call.‎‏‎‎‏‎"</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‏‏‏‏‏‏‏‏‏‏‏‏‎‎‏‏‎‎‏‎‎‏‎‎‏‏‏‎‎‎‎‏‏‎‏‎‏‏‏‎‎‏‏‏‎‎‏‎‏‎‏‎‏‏‏‎‎‎‏‏‏‏‎‏‎‎‎Emergency information‎‏‎‎‏‎"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‏‏‏‏‎‏‎‏‏‎‏‏‎‏‎‏‎‏‎‎‎‎‎‎‏‎‎‏‏‎‎‏‎‎‏‎‎‎‎‏‎‎‏‏‎‎‏‏‎‏‎‎‎‎‎‎‏‎‎‎‏‎‎‏‎‎‎Owner‎‏‎‎‏‎"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‏‏‏‏‎‎‎‏‏‎‏‏‏‎‎‏‏‎‏‏‏‎‎‎‎‎‎‏‏‏‎‎‏‏‏‏‏‏‎‎‏‎‏‎‏‎‎‎‎‏‎‎‏‏‎‏‏‏‎‎‎‎‎‎‏‎‎Tap again to view info‎‏‎‎‏‎"</string>
@@ -716,8 +715,7 @@
     <string name="clh_callFailed_powerOff_txt" msgid="8279934912560765361">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‏‏‏‏‏‏‎‎‏‎‏‏‏‎‏‎‎‎‎‎‏‏‏‏‎‎‏‏‏‎‏‏‏‏‎‎‎‏‏‎‏‎‏‎‎‎‏‎‏‎‎‎‎‏‏‎‎‏‏‎‏‏‎‎‎‏‎Airplane mode is on‎‏‎‎‏‎"</string>
     <string name="clh_callFailed_simError_txt" msgid="5128538525762326413">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‏‏‏‏‎‎‎‏‏‏‎‎‏‎‏‏‎‎‎‎‏‏‏‎‏‎‏‎‎‏‏‏‎‏‏‏‏‏‎‏‎‎‏‏‏‏‏‎‎‎‎‎‎‎‏‏‏‏‏‎‎‎‏‏‎‏‎Can\'t access SIM card‎‏‎‎‏‎"</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="2736010617446749869">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‏‏‎‏‎‎‏‎‏‏‏‏‏‏‎‎‎‎‏‎‎‎‎‏‏‎‎‏‎‏‎‎‏‎‎‎‏‏‎‏‎‏‎‎‏‏‏‎‎‎‏‎‏‎‏‏‎‏‎‏‎‏‏‎‏‎Mobile network not available‎‏‎‎‏‎"</string>
-    <!-- no translation found for clh_callFailed_satelliteEnabled_txt (1675517238240377396) -->
-    <skip />
+    <string name="clh_callFailed_satelliteEnabled_txt" msgid="1675517238240377396">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‏‎‏‏‎‏‏‏‎‏‎‎‎‎‎‎‏‎‏‎‎‎‏‎‎‎‎‎‏‏‎‏‎‎‎‎‏‎‎‎‎‏‎‏‏‏‎‎‎‏‏‏‏‎‏‎‎‎‏‏‎‏‎‎‎Satellite mode is on‎‏‎‎‏‎"</string>
     <string name="clh_callFailed_unassigned_number_txt" msgid="141967660286695682">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‎‎‏‏‏‏‏‏‏‎‎‎‎‏‎‏‏‏‏‎‏‏‎‏‎‏‎‏‏‎‏‏‏‎‎‎‏‏‏‏‏‎‏‏‎‏‎‏‏‎‎‏‎‎‎‎‎‎‏‎‎Issue with phone number you are trying to dial. Error code 1.‎‏‎‎‏‎"</string>
     <string name="clh_callFailed_no_route_to_destination_txt" msgid="4805015149822352308">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‏‏‏‏‎‎‎‎‏‎‏‎‏‎‏‏‏‎‏‏‎‏‎‏‏‏‏‏‎‏‎‎‏‎‎‎‎‏‏‎‎‏‏‎‎‎‏‎‎‎‎‎‎‏‏‎‏‏‏‎‏‏‎‏‎‎‎Couldn\'t complete call. Error code 3.‎‏‎‎‏‎"</string>
     <string name="clh_callFailed_channel_unacceptable_txt" msgid="4062754579408613021">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‏‏‎‏‏‏‎‎‎‎‏‏‎‎‎‎‏‏‏‎‎‏‏‎‏‏‏‎‎‎‎‏‏‏‎‏‏‏‎‏‏‎‎‏‏‏‏‎‏‏‏‏‎‏‏‏‎‏‎‎‏‏‏‎‏‎Couldn\'t complete call. Error code 6.‎‏‎‎‏‎"</string>

@@ -557,8 +557,7 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"Nije moguće staviti pozive na čekanje."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"Povežite se na bežičnu mrežu da pozovete."</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"Omogućite pozivanje putem WiFi-ja da pozovete."</string>
-    <!-- no translation found for incall_error_satellite_enabled (1936541518147323016) -->
-    <skip />
+    <string name="incall_error_satellite_enabled" msgid="1936541518147323016">"Onemogućite način rada putem satelita da uputite poziv."</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"Informacije za hitne slučajeve"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"Vlasnik"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"Dodirnite ponovo da pogledate informacije"</string>
@@ -716,8 +715,7 @@
     <string name="clh_callFailed_powerOff_txt" msgid="8279934912560765361">"Način rada u avionu je uključen"</string>
     <string name="clh_callFailed_simError_txt" msgid="5128538525762326413">"Nije moguće pristupiti SIM kartici"</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="2736010617446749869">"Mobilna mreža nije dostupna"</string>
-    <!-- no translation found for clh_callFailed_satelliteEnabled_txt (1675517238240377396) -->
-    <skip />
+    <string name="clh_callFailed_satelliteEnabled_txt" msgid="1675517238240377396">"Način rada putem satelita je uključen"</string>
     <string name="clh_callFailed_unassigned_number_txt" msgid="141967660286695682">"Problem s brojem telefona koji pokušavate birati. Kȏd greške 1."</string>
     <string name="clh_callFailed_no_route_to_destination_txt" msgid="4805015149822352308">"Završavanje poziva nije uspjelo. Kôd greške 3."</string>
     <string name="clh_callFailed_channel_unacceptable_txt" msgid="4062754579408613021">"Završavanje poziva nije uspjelo. Kôd greške 6."</string>
