@@ -179,7 +179,7 @@
     <string name="empty_networks_list" msgid="9216418268008582342">"ကွန်ယက်များ မတွေ့ပါ"</string>
     <string name="network_query_error" msgid="3862515805115145124">"ကွန်ရက် ရှာမတွေ့ပါ။ ထပ်လုပ်ကြည့်ပါ။"</string>
     <string name="register_on_network" msgid="4194770527833960423">"<xliff:g id="NETWORK">%s</xliff:g> တွင် မှတ်ပုံတင်နေခြင်း…"</string>
-    <string name="not_allowed" msgid="8541221928746104798">"ဒီကွန်ယက်ကို ဆက်သွယ်ရန် သင့်ရဲ့ ဆင်းမ်ကဒ်မှ ခွင့်မပြုပါ"</string>
+    <string name="not_allowed" msgid="8541221928746104798">"ဒီကွန်ယက်ကို ဆက်သွယ်ရန် သင့်ရဲ့ ဆင်းမ်ကတ်မှ ခွင့်မပြုပါ"</string>
     <string name="connect_later" msgid="1950138106010005425">"ကွန်ယက်ကို ဆက်သွယ်လို့မရပါ။ နောင်မှ ပြန်ကြိုးစားပါ"</string>
     <string name="registration_done" msgid="5337407023566953292">"ကွန်ယက်ပေါ်တွင် မှတ်ပုံတင်ထားခြင်း"</string>
     <string name="already_auto" msgid="8607068290733079336">"အလိုအလျောက် ရွေးချယ်မှုထဲတွင် ပါပြီးသားဖြစ်သည်။"</string>
@@ -480,11 +480,11 @@
     <string name="fdn_invalid_number" msgid="9067189814657840439">"နံပါတ်တွင် ဂဏန်းအလုံးရေ <xliff:g id="FDN_NUMBER_LIMIT_LENGTH">%d</xliff:g> ကျော်နေပါသဖြင့် FDN ကို အပ်ဒိတ်လုပ်၍ မရပါ။"</string>
     <string name="pin2_or_fdn_invalid" msgid="7542639487955868181">"FDN ပြောင်းလဲမှု မဖြစ်ပါ။ ပင်နံပါတ် ၂ မှားယွင်းခြင်း သို့မဟုတ် ဖုန်းနံပါတ်ကို ငြင်းဖယ်ခံရခြင်း တစ်ခုခုဖြစ်ပါသည်"</string>
     <string name="fdn_failed" msgid="216592346853420250">"FDN လုပ်ဆောင်ချက် မအောင်မြင်ပါ"</string>
-    <string name="simContacts_emptyLoading" msgid="4989040293858675483">"ဆင်းမ်ကဒ်မှ ဖတ်နေပါသည်..."</string>
+    <string name="simContacts_emptyLoading" msgid="4989040293858675483">"ဆင်းမ်ကတ်မှ ဖတ်နေပါသည်..."</string>
     <string name="simContacts_empty" msgid="1135632055473689521">"ဆင်းမ်ကဒ်ထဲတွင် လိပ်စာများ မရှိပါ"</string>
     <string name="simContacts_title" msgid="2714029230160136647">"ထည့်ယူရန် လိပ်စာများ ရွေးပါ"</string>
     <string name="simContacts_airplaneMode" msgid="4654884030631503808">"SIM ကဒ်မှ အဆက်အသွယ်များ သွင်းယူရန် လေယာဉ်ပျံမုဒ် ပိတ်ထားပါ။"</string>
-    <string name="enable_pin" msgid="967674051730845376">"ဆင်းမ် ပင်နံပါတ်ကို ပယ်ဖျက်၊ပြုလုပ်ရန်"</string>
+    <string name="enable_pin" msgid="967674051730845376">"ဆင်းမ်ကတ် ပင်နံပါတ်ကို ပယ်ဖျက်၊ပြုလုပ်ရန်"</string>
     <string name="change_pin" msgid="3657869530942905790">"ဆင်းမ်ကတ် ပင်နံပါတ်ပြောင်းရန်"</string>
     <string name="enter_pin_text" msgid="3182311451978663356">"ဆင်းမ်ကတ် ပင်နံပါတ်:"</string>
     <string name="oldPinLabel" msgid="8618515202411987721">"ပင်နံပါတ် အဟောင်း"</string>
@@ -557,8 +557,7 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"ခေါ်ဆိုမှုများကို ကိုင်ထား၍မရပါ။"</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"ဖုန်းခေါ်ရန် ကြိုးမဲကွန်ယက်တစ်ခုသို့ ချိတ်ဆက်ပါ။"</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"ဖုန်းဆက်ရန် Wi-Fi ခေါ်ဆိုခြင်းကို ဖွင့်ပါ။"</string>
-    <!-- no translation found for incall_error_satellite_enabled (1936541518147323016) -->
-    <skip />
+    <string name="incall_error_satellite_enabled" msgid="1936541518147323016">"ဖုန်းခေါ်ရန် ဂြိုဟ်တုမုဒ် ပိတ်ပါ။"</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"အရေးပေါ် အချက်အလက်"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"ပိုင်ရှင်"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"အချက်အလက်ကြည့်ရန် ထပ်နှိပ်ပါ"</string>
@@ -591,7 +590,7 @@
     <string name="onscreenVideoCallText" msgid="1743992456126258698">"ဗီဒီယိုခေါ်ဆိုမှု"</string>
     <string name="importSimEntry" msgid="3892354284082689894">"ထည့်ရန်"</string>
     <string name="importAllSimEntries" msgid="2628391505643564007">"အားလုံးကို ထည့်သွင်းပါ"</string>
-    <string name="importingSimContacts" msgid="4995457122107888932">"ဆင်းမ်ကဒ်မှ လိပ်စာများအား ထည့်ပါ"</string>
+    <string name="importingSimContacts" msgid="4995457122107888932">"ဆင်းမ်ကတ်မှ လိပ်စာများအား ထည့်ပါ"</string>
     <string name="importToFDNfromContacts" msgid="5068664870738407341">"လိပ်စားများထဲမှ ထည့်ပါ"</string>
     <string name="singleContactImportedMsg" msgid="3619804066300998934">"တင်သွင်းခဲ့သည့် အဆက်အသွယ်"</string>
     <string name="failedToImportSingleContactMsg" msgid="228095510489830266">"အဆက်အသွယ်ကို တင်သွင်း မရခဲ့"</string>
@@ -666,7 +665,7 @@
     <string name="voicemail_set_pin_dialog_title" msgid="7005128605986960003">"ပင်နံပါတ်သတ်မှတ်ရန်"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="4633077715231764435">"ပင်နံပါတ်ပြောင်းပါ"</string>
     <string name="preference_category_ringtone" msgid="8787281191375434976">"ဖုန်းမြည်သံ &amp; တုန်ခါသံ"</string>
-    <string name="pstn_connection_service_label" msgid="9200102709997537069">"တပ်ဆင်ပြီး ဆင်းမ် ကဒ်များ"</string>
+    <string name="pstn_connection_service_label" msgid="9200102709997537069">"တပ်ဆင်ပြီး ဆင်းမ်ကတ် ကဒ်များ"</string>
     <string name="enable_video_calling_title" msgid="7246600931634161830">"ဗီဒီယို ခေါ်ဆိုမှုများကို ဖွင့်ထားရန်"</string>
     <string name="enable_video_calling_dialog_msg" msgid="7141478720386203540">"ဗီဒီယိုခေါ်ဆိုမှု ဖွင့်လိုပါက အဆင့်မြှင့်ထားသည့် 4G LTE မုဒ်ကို ကွန်ရက်ဆက်တင်များတွင် ဖွင့်ရပါမည်။"</string>
     <string name="enable_video_calling_dialog_settings" msgid="8697890611305307110">"ကွန်ရက် ဆက်တင်များ"</string>
@@ -716,8 +715,7 @@
     <string name="clh_callFailed_powerOff_txt" msgid="8279934912560765361">"လေယာဉ်ပျံမုဒ်ကို ဖွင့်ထားပါသည်"</string>
     <string name="clh_callFailed_simError_txt" msgid="5128538525762326413">"ဆင်းမ်ကဒ်ကို ဝင်၍ မရပါ"</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="2736010617446749869">"မိုဘိုင်း ကွန်ရက် မရှိပါ"</string>
-    <!-- no translation found for clh_callFailed_satelliteEnabled_txt (1675517238240377396) -->
-    <skip />
+    <string name="clh_callFailed_satelliteEnabled_txt" msgid="1675517238240377396">"ဂြိုဟ်တုမုဒ် ဖွင့်ထားသည်"</string>
     <string name="clh_callFailed_unassigned_number_txt" msgid="141967660286695682">"သင်ခေါ်ဆိုနေသော ဖုန်းနံပါတ်တွင် လွဲချော်မှု ရှိပါသည်။ အမှားကုဒ် ၁။"</string>
     <string name="clh_callFailed_no_route_to_destination_txt" msgid="4805015149822352308">"ခေါ်ဆိုမှုကို မပြုလုပ်နိုင်ပါ။ အမှားကုဒ် ၃။"</string>
     <string name="clh_callFailed_channel_unacceptable_txt" msgid="4062754579408613021">"ခေါ်ဆိုမှုကို မပြုလုပ်နိုင်ပါ။ အမှားကုဒ် ၆။"</string>
