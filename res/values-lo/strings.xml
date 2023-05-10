@@ -557,8 +557,7 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"ບໍ່ສາມາດພັກສາຍໄດ້."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"ເຊື່ອມຕໍ່ກັບເຄືອຂ່າຍໄຮ້ສາຍເພື່ອເຮັດການໂທ."</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"ກະລຸນາເປີດໃຊ້ການໂທ Wi-Fi ເພື່ອໂທ."</string>
-    <!-- no translation found for incall_error_satellite_enabled (1936541518147323016) -->
-    <skip />
+    <string name="incall_error_satellite_enabled" msgid="1936541518147323016">"ປິດການນຳໃຊ້ໂໝດດາວທຽມເພື່ອໂທອອກ."</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"ຂໍ້ມູນສຸກເສີນ"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"ເຈົ້າຂອງ"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"ແຕະອີກເທື່ອໜຶ່ງເພື່ອເບິ່ງຂໍ້ມູນ"</string>
@@ -716,8 +715,7 @@
     <string name="clh_callFailed_powerOff_txt" msgid="8279934912560765361">"ເປີດໂໝດຢູ່ໃນຍົນແລ້ວ"</string>
     <string name="clh_callFailed_simError_txt" msgid="5128538525762326413">"ບໍ່ສາມາດເຂົ້າເຖິງຊິມກາດໄດ້"</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="2736010617446749869">"ບໍ່ມີການເຊື່ອມຕໍ່ຂໍ້ມູນຜ່ານມືຖື"</string>
-    <!-- no translation found for clh_callFailed_satelliteEnabled_txt (1675517238240377396) -->
-    <skip />
+    <string name="clh_callFailed_satelliteEnabled_txt" msgid="1675517238240377396">"ໂໝດດາວທຽມເປີດຢູ່"</string>
     <string name="clh_callFailed_unassigned_number_txt" msgid="141967660286695682">"ເກີດບັນຫາກັບເບີທີ່ທ່ານກຳລັງພະຍາຍາມໂທຫາ. ລະຫັດຂໍ້ຜິດພາດ 1."</string>
     <string name="clh_callFailed_no_route_to_destination_txt" msgid="4805015149822352308">"ບໍ່ສາມາດສຳເລັດການໂທໄດ້. ລະຫັດຂໍ້ຜິດພາດ 3."</string>
     <string name="clh_callFailed_channel_unacceptable_txt" msgid="4062754579408613021">"ບໍ່ສາມາດສຳເລັດການໂທໄດ້. ລະຫັດຂໍ້ຜິດພາດ 6."</string>

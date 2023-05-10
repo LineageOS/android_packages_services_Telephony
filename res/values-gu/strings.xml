@@ -557,8 +557,7 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"કૉલ્સને હોલ્ડ કરી શકતાં નથી."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"કૉલ કરવા માટે વાયરલેસ નેટવર્કથી કનેક્ટ કરો."</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"કૉલ કરવા માટે Wi-Fi કૉલિંગ સક્ષમ કરો."</string>
-    <!-- no translation found for incall_error_satellite_enabled (1936541518147323016) -->
-    <skip />
+    <string name="incall_error_satellite_enabled" msgid="1936541518147323016">"કૉલ કરવા માટે ઉપગ્રહ મોડ બંધ કરો."</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"ઇમર્જન્સીની માહિતી"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"માલિક"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"માહિતી જોવા માટે ફરીથી ટૅપ કરો"</string>
@@ -716,8 +715,7 @@
     <string name="clh_callFailed_powerOff_txt" msgid="8279934912560765361">"એરપ્લેન મોડ ચાલુ છે"</string>
     <string name="clh_callFailed_simError_txt" msgid="5128538525762326413">"સિમ કાર્ડ ઍક્સેસ કરી શકતાં નથી"</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="2736010617446749869">"મોબાઇલ નેટવર્ક ઉપલબ્ધ નથી"</string>
-    <!-- no translation found for clh_callFailed_satelliteEnabled_txt (1675517238240377396) -->
-    <skip />
+    <string name="clh_callFailed_satelliteEnabled_txt" msgid="1675517238240377396">"ઉપગ્રહ મોડ ચાલુ છે"</string>
     <string name="clh_callFailed_unassigned_number_txt" msgid="141967660286695682">"તમે જે ફોન નંબર ડાયલ કરવાનો પ્રયાસ કરી રહ્યાં છો, તેની સમસ્યા. ભૂલનો કોડ 1."</string>
     <string name="clh_callFailed_no_route_to_destination_txt" msgid="4805015149822352308">"કૉલ પૂર્ણ થઈ શક્યો નથી. ભૂલનો કોડ 3."</string>
     <string name="clh_callFailed_channel_unacceptable_txt" msgid="4062754579408613021">"કૉલ પૂર્ણ થઈ શક્યો નથી. ભૂલનો કોડ 6."</string>
