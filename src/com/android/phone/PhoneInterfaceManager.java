@@ -8671,6 +8671,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
+    @Override
+    public List<String> getShaIdFromAllowList(String pkgName, int carrierId) {
+        enforceReadPrivilegedPermission("checkCarrierRestrictionFileForNoChange");
+        CarrierAllowListInfo allowListInfo = CarrierAllowListInfo.loadInstance(mApp);
+        return allowListInfo.getShaIdList(pkgName, carrierId);
+    }
+
     @VisibleForTesting
     public int validateCallerAndGetCarrierId(String packageName) {
         CarrierAllowListInfo allowListInfo = CarrierAllowListInfo.loadInstance(mApp);
