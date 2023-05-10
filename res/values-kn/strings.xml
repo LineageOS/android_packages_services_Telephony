@@ -422,9 +422,9 @@
     <item msgid="462340042928284921">"ಮುಖಪುಟ ಮಾತ್ರ"</item>
     <item msgid="6058010046783562674">"ಸ್ವಯಂಚಾಲಿತ"</item>
   </string-array>
-    <string name="cdma_subscription_title" msgid="3449527179325589434">"CDMA ಚಂದಾದಾರಿಕೆ"</string>
+    <string name="cdma_subscription_title" msgid="3449527179325589434">"CDMA ಸಬ್‌ಸ್ಕ್ರಿಪ್ಶನ್"</string>
     <string name="cdma_subscription_summary" msgid="5681152534466169001">"RUIM/ಸಿಮ್‌ ಮತ್ತು NV ರ ನಡುವೆ ಬದಲಾಯಿಸಿ"</string>
-    <string name="cdma_subscription_dialogtitle" msgid="8872086335839723980">"ಚಂದಾದಾರಿಕೆ"</string>
+    <string name="cdma_subscription_dialogtitle" msgid="8872086335839723980">"ಸಬ್‌ಸ್ಕ್ರಿಪ್ಶನ್"</string>
   <string-array name="cdma_subscription_choices">
     <item msgid="7989486897370727698">"RUIM/ಸಿಮ್‌"</item>
     <item msgid="5445342771222849381">"NV"</item>
@@ -616,7 +616,7 @@
     <string name="ota_touch_activate" msgid="838764494319694754">"ನಿಮ್ಮ ಫೋನ್‌ ಸೇವೆಯನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಲು ವಿಶೇಷ ಕರೆಯೊಂದನ್ನು ಮಾಡಬೇಕಾಗುತ್ತದೆ. \n\n “ಸಕ್ರಿಯಗೊಳಿಸು” ಒತ್ತಿದ ಬಳಿಕ ನಿಮ್ಮ ಫೋನ್ ಸಕ್ರಿಯಗೊಳಿಸಲು ನೀಡಲಾಗುವ ಸೂಚನೆಗಳನ್ನು ಕೇಳಿ."</string>
     <string name="ota_hfa_activation_title" msgid="3300556778212729671">"ಸಕ್ರಿಯಗೊಳಿಸಲಾಗುತ್ತಿದೆ..."</string>
     <string name="ota_hfa_activation_dialog_message" msgid="7921718445773342996">"ನಿಮ್ಮ ಮೊಬೈಲ್‌‌ ಡೇಟಾ ಸೇವೆಯನ್ನು ಫೋನ್‌ ಸಕ್ರಿಯಗೊಳಿಸುತ್ತಿದೆ.\n\nಇದು ಸುಮಾರು 5 ನಿಮಿಷಗಳ ಕಾಲಾವಕಾಶ ತೆಗೆದುಕೊಳ್ಳಬಹುದು."</string>
-    <string name="ota_skip_activation_dialog_title" msgid="7666611236789203797">"ಸಕ್ರಿಯಗೊಳಿಸುವುದನ್ನು ಸ್ಕಿಪ್‌ ಮಾಡುವುದೇ?"</string>
+    <string name="ota_skip_activation_dialog_title" msgid="7666611236789203797">"ಸಕ್ರಿಯಗೊಳಿಸುವುದನ್ನು ಸ್ಕಿಪ್‌ ಮಾಡಬೇಕೆ?"</string>
     <string name="ota_skip_activation_dialog_message" msgid="6691722887019708713">"ನೀವು ಸಕ್ರಿಯಗೊಳಿಸುವುದನ್ನು ಸ್ಕಿಪ್‌ ಮಾಡಿದರೆ, ನೀವು ಕರೆಗಳನ್ನು ಮಾಡಲು ಅಥವಾ ಮೊಬೈಲ್‌ ಡೇಟಾ ನೆಟ್‌ವರ್ಕ್‌ಗಳಿಗೆ ಸಂಪರ್ಕಗೊಳಿಸಲು ಸಾಧ್ಯವಾಗುವುದಿಲ್ಲ (ಆದರೂ ನೀವು ವೈ-ಫೈ ನೆಟ್‌ವರ್ಕ್‌ಗಳಿಗೆ ಸಂಪರ್ಕಗೊಳಿಸಬಹುದು). ನಿಮ್ಮ ಫೋನ್ ಅನ್ನು ನೀವು ಸಕ್ರಿಯಗೊಳಿಸುವವರೆಗೂ, ನೀವು ಅದನ್ನು ಪ್ರತಿಬಾರಿ ಆನ್‌ ಮಾಡಿದಾಗಲೆಲ್ಲಾ ಅದನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಲು ನಿಮಗೆ ತಿಳಿಸಲಾಗುತ್ತದೆ."</string>
     <string name="ota_skip_activation_dialog_skip_label" msgid="5908029466817825633">"ಸ್ಕಿಪ್"</string>
     <string name="ota_activate" msgid="7939695753665438357">"ಸಕ್ರಿಯಗೊಳಿಸಿ"</string>
