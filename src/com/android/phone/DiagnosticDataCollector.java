@@ -21,8 +21,11 @@ import android.annotation.NonNull;
 import android.annotation.WorkerThread;
 import android.os.DropBoxManager;
 import android.os.SystemClock;
+import android.os.TransactionTooLargeException;
+import android.telephony.AnomalyReporter;
 import android.telephony.TelephonyManager;
 import android.util.Log;
+import java.util.UUID;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -59,7 +62,10 @@ public class DiagnosticDataCollector {
     private final SimpleDateFormat mDateFormat = new SimpleDateFormat("MM-dd HH:mm:ss.mmm",
             Locale.US);
     private final boolean mIsLowRamDevice;
-
+    public static final UUID DROPBOX_TRANSACTION_TOO_LARGE_EXCEPTION =
+            UUID.fromString("ab27e97a-ef7b-11ed-a05b-0242ac120003");
+    public static final String DROPBOX_TRANSACTION_TOO_LARGE_MSG =
+            "DiagnosticDataCollector: transaction too large";
     public DiagnosticDataCollector(Runtime javaRuntime, Executor asyncTaskExecutor,
             DropBoxManager dropBoxManager, boolean isLowRamDevice) {
         mJavaRuntime = javaRuntime;
@@ -179,7 +185,16 @@ public class DiagnosticDataCollector {
                 Log.w(TAG, "Cmd ran with errors");
                 output.append(ERROR_MSG + System.lineSeparator());
             }
-            mDropBoxManager.addText(dropboxTag, output.toString());
+            try {
+                mDropBoxManager.addText(dropboxTag, output.toString());
+            } catch (Exception e) {
+                if (e instanceof TransactionTooLargeException) {
+                    AnomalyReporter.reportAnomaly(
+                            DROPBOX_TRANSACTION_TOO_LARGE_EXCEPTION,
+                            DROPBOX_TRANSACTION_TOO_LARGE_MSG);
+                }
+                Log.w(TAG, "Exception while writing to Dropbox " + e);
+            }
         }
 
         @WorkerThread
