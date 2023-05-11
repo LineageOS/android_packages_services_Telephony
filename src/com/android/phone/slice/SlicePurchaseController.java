@@ -19,6 +19,7 @@ package com.android.phone.slice;
 import static android.telephony.TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_ALREADY_IN_PROGRESS;
 import static android.telephony.TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_ALREADY_PURCHASED;
 import static android.telephony.TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_CARRIER_DISABLED;
+import static android.telephony.TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_CARRIER_ERROR;
 import static android.telephony.TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_ENTITLEMENT_CHECK_FAILED;
 import static android.telephony.TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_NOT_DEFAULT_DATA_SUBSCRIPTION;
 
@@ -695,8 +696,16 @@ public class SlicePurchaseController extends Handler {
                 premiumNetworkEntitlementApi.checkEntitlementStatus(capability);
 
         // invalid response for entitlement check
-        if (premiumNetworkEntitlementResponse == null) {
-            logd("Invalid response for entitlement check.");
+        if (premiumNetworkEntitlementResponse == null
+                || premiumNetworkEntitlementResponse.isInvalidResponse()) {
+            loge("Invalid response for entitlement check: " + premiumNetworkEntitlementResponse);
+            handlePurchaseResult(capability,
+                    PURCHASE_PREMIUM_CAPABILITY_RESULT_CARRIER_ERROR, true);
+            return;
+        }
+
+        if (!premiumNetworkEntitlementResponse.isPremiumNetworkCapabilityAllowed()) {
+            loge("Entitlement Check: Not allowed.");
             handlePurchaseResult(capability,
                     PURCHASE_PREMIUM_CAPABILITY_RESULT_ENTITLEMENT_CHECK_FAILED, true);
             return;
@@ -710,15 +719,9 @@ public class SlicePurchaseController extends Handler {
         }
 
         if (premiumNetworkEntitlementResponse.isProvisioningInProgress()) {
-            logd("Entitlement Check: In Progress");
+            logd("Entitlement Check: In progress.");
             handlePurchaseResult(capability,
                     PURCHASE_PREMIUM_CAPABILITY_RESULT_ALREADY_IN_PROGRESS, true);
-            return;
-        }
-
-        if (!premiumNetworkEntitlementResponse.isPremiumNetworkCapabilityAllowed()) {
-            handlePurchaseResult(capability,
-                    PURCHASE_PREMIUM_CAPABILITY_RESULT_ENTITLEMENT_CHECK_FAILED, true);
             return;
         }
 
