@@ -455,7 +455,7 @@ public class SlicePurchaseController extends Handler {
         mIsSlicingUpsellEnabled = DeviceConfig.getBoolean(
                 DeviceConfig.NAMESPACE_TELEPHONY, KEY_ENABLE_SLICING_UPSELL, false);
         DeviceConfig.addOnPropertiesChangedListener(
-                DeviceConfig.NAMESPACE_TELEPHONY, this::post,
+                DeviceConfig.NAMESPACE_TELEPHONY, Runnable::run,
                 properties -> {
                     if (TextUtils.equals(DeviceConfig.NAMESPACE_TELEPHONY,
                             properties.getNamespace())) {
