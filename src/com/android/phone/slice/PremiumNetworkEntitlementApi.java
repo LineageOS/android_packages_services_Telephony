@@ -160,7 +160,8 @@ public class PremiumNetworkEntitlementApi {
             reportAnomaly(UUID_ENTITLEMENT_CHECK_UNEXPECTED_ERROR,
                     "checkEntitlementStatus failed with NumberFormatException");
         }
-
+        Log.d(TAG, "queryEntitlementStatus succeeded with response: "
+                + premiumNetworkEntitlementResponse);
         return premiumNetworkEntitlementResponse;
     }
 
