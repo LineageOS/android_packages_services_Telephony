@@ -385,10 +385,11 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
         mSlicePurchaseController.purchasePremiumCapability(
                 TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, mHandler.obtainMessage());
         mTestableLooper.processAllMessages();
-        assertEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_ENTITLEMENT_CHECK_FAILED,
-                mResult);
+        assertEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_CARRIER_ERROR, mResult);
 
         // retry with provisioned response
+        mEntitlementResponse.mEntitlementStatus =
+                PremiumNetworkEntitlementResponse.PREMIUM_NETWORK_ENTITLEMENT_STATUS_INCLUDED;
         mEntitlementResponse.mProvisionStatus =
                 PremiumNetworkEntitlementResponse.PREMIUM_NETWORK_PROVISION_STATUS_PROVISIONED;
         doReturn(mEntitlementResponse).when(mPremiumNetworkEntitlementApi)
@@ -401,6 +402,8 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
                 mResult);
 
         // retry with provisioning response
+        mEntitlementResponse.mEntitlementStatus =
+                PremiumNetworkEntitlementResponse.PREMIUM_NETWORK_ENTITLEMENT_STATUS_PROVISIONING;
         mEntitlementResponse.mProvisionStatus =
                 PremiumNetworkEntitlementResponse.PREMIUM_NETWORK_PROVISION_STATUS_IN_PROGRESS;
 
@@ -721,7 +724,9 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
         doReturn(true).when(mDataSettingsManager).isDataEnabledForReason(anyInt());
         // entitlement check passed
         mEntitlementResponse.mEntitlementStatus =
-                PremiumNetworkEntitlementResponse.PREMIUM_NETWORK_ENTITLEMENT_STATUS_DISABLED;
+                PremiumNetworkEntitlementResponse.PREMIUM_NETWORK_ENTITLEMENT_STATUS_ENABLED;
+        mEntitlementResponse.mProvisionStatus =
+                PremiumNetworkEntitlementResponse.PREMIUM_NETWORK_PROVISION_STATUS_PROVISIONED;
 
         // send purchase request
         mSlicePurchaseController.purchasePremiumCapability(
