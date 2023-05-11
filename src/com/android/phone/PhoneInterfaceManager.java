@@ -2240,7 +2240,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                         arg.callback.accept(result);
                         log("purchasePremiumCapability: capability="
                                 + TelephonyManager.convertPremiumCapabilityToString(arg.capability)
-                                + ", result= "
+                                + ", result="
                                 + TelephonyManager.convertPurchaseResultToString(result));
                     } catch (RemoteException e) {
                         String logStr = "Purchase premium capability "
@@ -11642,7 +11642,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             if (processes != null) {
                 for (ActivityManager.RunningAppProcessInfo process : processes) {
                     log("purchasePremiumCapability: process " + process.processName
-                            + "has importance " + process.importance);
+                            + " has importance " + process.importance);
                     if (process.processName.equals(callingProcess) && process.importance
                             <= ActivityManager.RunningAppProcessInfo.IMPORTANCE_VISIBLE) {
                         isVisible = true;
