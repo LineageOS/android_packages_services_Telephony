@@ -557,8 +557,7 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"அழைப்புகளை ஹோல்டு செய்ய முடியாது."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"அழைக்க, வயர்லெஸ் நெட்வொர்க்குடன் இணைக்கவும்."</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"அழைக்க, வைஃபை அழைப்பை இயக்கவும்."</string>
-    <!-- no translation found for incall_error_satellite_enabled (1936541518147323016) -->
-    <skip />
+    <string name="incall_error_satellite_enabled" msgid="1936541518147323016">"அழைப்பை மேற்கொள்ள சாட்டிலைட் பயன்முறையை முடக்கவும்."</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"அவசரத் தகவல்"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"உரிமையாளர்"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"தகவலைப் பார்க்க, மீண்டும் தட்டவும்"</string>
@@ -716,8 +715,7 @@
     <string name="clh_callFailed_powerOff_txt" msgid="8279934912560765361">"விமானப் பயன்முறை இயக்கத்தில் உள்ளது"</string>
     <string name="clh_callFailed_simError_txt" msgid="5128538525762326413">"SIM கார்டை அணுக முடியவில்லை"</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="2736010617446749869">"மொபைல் நெட்வொர்க் இல்லை"</string>
-    <!-- no translation found for clh_callFailed_satelliteEnabled_txt (1675517238240377396) -->
-    <skip />
+    <string name="clh_callFailed_satelliteEnabled_txt" msgid="1675517238240377396">"சாட்டிலைட் பயன்முறை இயக்கப்பட்டுள்ளது"</string>
     <string name="clh_callFailed_unassigned_number_txt" msgid="141967660286695682">"அழைப்பை நிறைவுசெய்ய முடியவில்லை. பிழைக் குறியீடு 1."</string>
     <string name="clh_callFailed_no_route_to_destination_txt" msgid="4805015149822352308">"அழைப்பை நிறைவுசெய்ய முடியவில்லை. பிழைக் குறியீடு 3."</string>
     <string name="clh_callFailed_channel_unacceptable_txt" msgid="4062754579408613021">"அழைப்பை நிறைவுசெய்ய முடியவில்லை. பிழைக் குறியீடு 6."</string>
