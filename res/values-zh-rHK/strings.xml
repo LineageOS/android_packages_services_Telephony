@@ -557,8 +557,7 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"無法保留通話。"</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"連接無線網絡，以撥打電話。"</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"啟用 Wi-Fi 通話功能以撥打電話。"</string>
-    <!-- no translation found for incall_error_satellite_enabled (1936541518147323016) -->
-    <skip />
+    <string name="incall_error_satellite_enabled" msgid="1936541518147323016">"如要撥打電話，請停用衛星模式。"</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"緊急資料"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"擁有者"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"再次輕按即可查看資訊"</string>
@@ -716,8 +715,7 @@
     <string name="clh_callFailed_powerOff_txt" msgid="8279934912560765361">"已開啟飛行模式"</string>
     <string name="clh_callFailed_simError_txt" msgid="5128538525762326413">"無法存取 SIM 卡"</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="2736010617446749869">"無法使用流動網絡"</string>
-    <!-- no translation found for clh_callFailed_satelliteEnabled_txt (1675517238240377396) -->
-    <skip />
+    <string name="clh_callFailed_satelliteEnabled_txt" msgid="1675517238240377396">"衛星模式已開啟"</string>
     <string name="clh_callFailed_unassigned_number_txt" msgid="141967660286695682">"你嘗試撥打的電話號碼有問題。錯誤碼 1。"</string>
     <string name="clh_callFailed_no_route_to_destination_txt" msgid="4805015149822352308">"無法完成通話。錯誤碼 3。"</string>
     <string name="clh_callFailed_channel_unacceptable_txt" msgid="4062754579408613021">"無法完成通話。錯誤碼 6。"</string>

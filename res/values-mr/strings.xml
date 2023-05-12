@@ -557,8 +557,7 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"कॉल सुरू ठेवू शकत नाही."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"कॉल करण्‍यासाठी वायरलेस नेटवर्कशी कनेक्‍ट करा."</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"कॉल करण्यासाठी वाय-फाय कॉलिंग सक्षम करा."</string>
-    <!-- no translation found for incall_error_satellite_enabled (1936541518147323016) -->
-    <skip />
+    <string name="incall_error_satellite_enabled" msgid="1936541518147323016">"कॉल करण्यासाठी उपग्रह मोड बंद करा."</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"अतिमहत्त्वाची माहिती"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"मालक"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"माहिती पाहण्यासाठी पुन्हा टॅप करा"</string>
@@ -716,8 +715,7 @@
     <string name="clh_callFailed_powerOff_txt" msgid="8279934912560765361">"विमान मोड सुरू आहे"</string>
     <string name="clh_callFailed_simError_txt" msgid="5128538525762326413">"सिम कार्ड अ‍ॅक्सेस करू शकत नाही"</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="2736010617446749869">"मोबाइल नेटवर्क उपलब्ध नाही"</string>
-    <!-- no translation found for clh_callFailed_satelliteEnabled_txt (1675517238240377396) -->
-    <skip />
+    <string name="clh_callFailed_satelliteEnabled_txt" msgid="1675517238240377396">"उपग्रह मोड सुरू आहे"</string>
     <string name="clh_callFailed_unassigned_number_txt" msgid="141967660286695682">"तुम्ही डायल करायचा प्रयत्न करत असलेल्या फोन नंबरमध्ये समस्या आहे. एरर कोड 1."</string>
     <string name="clh_callFailed_no_route_to_destination_txt" msgid="4805015149822352308">"कॉल पूर्ण करता आला नाही. एरर कोड 3."</string>
     <string name="clh_callFailed_channel_unacceptable_txt" msgid="4062754579408613021">"कॉल पूर्ण करता आला नाही. एरर कोड 6."</string>
