@@ -69,12 +69,10 @@ public class ErrorDialogActivity extends Activity {
                     .getSystemService(RoleManager.class)
                     .getSmsRoleHolder(managedProfileUserId);
 
-        Intent smsIntent = new Intent(Intent.ACTION_MAIN)
+        Intent smsIntent = new Intent(Intent.ACTION_SENDTO)
                 .addCategory(Intent.CATEGORY_DEFAULT)
-                .addCategory(Intent.CATEGORY_LAUNCHER)
-                .addCategory(Intent.CATEGORY_APP_MESSAGING)
                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                .setPackage(defaultMessagesAppPackage);
+                .setData(Uri.parse("smsto:"));
         Intent marketIntent =
                 new Intent(
                         Intent.ACTION_VIEW,
@@ -87,7 +85,7 @@ public class ErrorDialogActivity extends Activity {
         // Failing that, we simply omit the positive action button as the user has no mechanism
         // to send the message.
         if (defaultMessagesAppPackage != null
-                && canStartActivityAsUser(
+                || canStartActivityAsUser(
                 smsIntent,
                 managedProfileUserId)) {
             positiveButtonText = R.string.send_from_work_profile_action_str;
