@@ -557,8 +557,7 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"통화를 보류할 수 없습니다."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"전화를 걸려면 무선 네트워크에 연결하세요."</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"전화를 걸려면 Wi-Fi 통화를 사용 설정하세요."</string>
-    <!-- no translation found for incall_error_satellite_enabled (1936541518147323016) -->
-    <skip />
+    <string name="incall_error_satellite_enabled" msgid="1936541518147323016">"전화를 걸려면 위성 모드를 사용 중지하세요."</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"긴급 상황 정보"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"소유자"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"정보를 보려면 다시 탭하세요."</string>
@@ -716,8 +715,7 @@
     <string name="clh_callFailed_powerOff_txt" msgid="8279934912560765361">"비행기 모드 사용 중"</string>
     <string name="clh_callFailed_simError_txt" msgid="5128538525762326413">"SIM 카드에 액세스할 수 없음"</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="2736010617446749869">"모바일 네트워크를 사용할 수 없음"</string>
-    <!-- no translation found for clh_callFailed_satelliteEnabled_txt (1675517238240377396) -->
-    <skip />
+    <string name="clh_callFailed_satelliteEnabled_txt" msgid="1675517238240377396">"위성 모드 사용 중"</string>
     <string name="clh_callFailed_unassigned_number_txt" msgid="141967660286695682">"전화를 걸려는 전화번호에 문제가 있습니다. 오류 코드 1."</string>
     <string name="clh_callFailed_no_route_to_destination_txt" msgid="4805015149822352308">"통화를 완료할 수 없습니다. 오류 코드 3."</string>
     <string name="clh_callFailed_channel_unacceptable_txt" msgid="4062754579408613021">"통화를 완료할 수 없습니다. 오류 코드 6."</string>

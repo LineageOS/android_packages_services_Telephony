@@ -557,8 +557,7 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"通話を保留にできません。"</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"電話をかけるには無線ネットワークに接続してください。"</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"電話をかけるには Wi-Fi 通話を有効にしてください。"</string>
-    <!-- no translation found for incall_error_satellite_enabled (1936541518147323016) -->
-    <skip />
+    <string name="incall_error_satellite_enabled" msgid="1936541518147323016">"電話をかけるには、衛星モードを無効にしてください。"</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"緊急時情報"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"所有者"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"もう一度タップすると情報を確認できます"</string>
@@ -716,8 +715,7 @@
     <string name="clh_callFailed_powerOff_txt" msgid="8279934912560765361">"機内モードが ON になっています"</string>
     <string name="clh_callFailed_simError_txt" msgid="5128538525762326413">"SIM カードにアクセスできません"</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="2736010617446749869">"モバイル ネットワークを利用できない"</string>
-    <!-- no translation found for clh_callFailed_satelliteEnabled_txt (1675517238240377396) -->
-    <skip />
+    <string name="clh_callFailed_satelliteEnabled_txt" msgid="1675517238240377396">"衛星モードがオンになっています"</string>
     <string name="clh_callFailed_unassigned_number_txt" msgid="141967660286695682">"発信先の電話番号に問題があります。エラーコード 1。"</string>
     <string name="clh_callFailed_no_route_to_destination_txt" msgid="4805015149822352308">"通話が切断されました。エラーコード 3。"</string>
     <string name="clh_callFailed_channel_unacceptable_txt" msgid="4062754579408613021">"通話が切断されました。エラーコード 6。"</string>

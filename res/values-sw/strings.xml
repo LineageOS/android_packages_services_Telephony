@@ -557,8 +557,7 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"Haiwezi kushikilia simu."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"Unganisha kwenye mtandao pasiwaya ili upige simu."</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"Washa kipengele cha kupiga simu kupitia Wi-Fi ili upige simu."</string>
-    <!-- no translation found for incall_error_satellite_enabled (1936541518147323016) -->
-    <skip />
+    <string name="incall_error_satellite_enabled" msgid="1936541518147323016">"Zima hali ya sateliti ili upige simu."</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"Maelezo ya dharura"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"Mmiliki"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"Gusa tena ili uangalie maelezo"</string>
@@ -716,8 +715,7 @@
     <string name="clh_callFailed_powerOff_txt" msgid="8279934912560765361">"Hali ya ndegeni imewashwa"</string>
     <string name="clh_callFailed_simError_txt" msgid="5128538525762326413">"Imeshindwa kufikia SIM kadi"</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="2736010617446749869">"Mtandao wa simu za mkononi haupatikani"</string>
-    <!-- no translation found for clh_callFailed_satelliteEnabled_txt (1675517238240377396) -->
-    <skip />
+    <string name="clh_callFailed_satelliteEnabled_txt" msgid="1675517238240377396">"Hali ya sateliti imewashwa"</string>
     <string name="clh_callFailed_unassigned_number_txt" msgid="141967660286695682">"Nambari ya simu unayojaribu kupiga ina hitilafu. Msimbo wa hitilafu nambari 1."</string>
     <string name="clh_callFailed_no_route_to_destination_txt" msgid="4805015149822352308">"Imeshindwa kupiga simu. Msimbo wa hitilafu nambari 3."</string>
     <string name="clh_callFailed_channel_unacceptable_txt" msgid="4062754579408613021">"Imeshindwa kupiga simu. Msimbo wa hitilafu nambari 6."</string>

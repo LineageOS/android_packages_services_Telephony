@@ -557,8 +557,7 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"কলগুলি ধরে রাখা যাবে না।"</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"একটি কল করতে কোনো ওয়্যারলেস নেটওয়ার্কে সংযোগ করুন৷"</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"কোনো কল করতে Wi-Fi কলিং সক্ষম করুন৷"</string>
-    <!-- no translation found for incall_error_satellite_enabled (1936541518147323016) -->
-    <skip />
+    <string name="incall_error_satellite_enabled" msgid="1936541518147323016">"কল করার জন্য \'উপগ্রহ\' মোড বন্ধ করুন।"</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"জরুরি তথ্য"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"মালিক"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"তথ্য দেখার জন্য আবার ট্যাপ করুন"</string>
@@ -716,8 +715,7 @@
     <string name="clh_callFailed_powerOff_txt" msgid="8279934912560765361">"ফ্লাইট মোড চালু আছে"</string>
     <string name="clh_callFailed_simError_txt" msgid="5128538525762326413">"সিম কার্ড অ্যাক্সেস করা যাচ্ছে না"</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="2736010617446749869">"মোবাইল নেটওয়ার্ক নেই"</string>
-    <!-- no translation found for clh_callFailed_satelliteEnabled_txt (1675517238240377396) -->
-    <skip />
+    <string name="clh_callFailed_satelliteEnabled_txt" msgid="1675517238240377396">"\'উপগ্রহ\' মোড চালু আছে"</string>
     <string name="clh_callFailed_unassigned_number_txt" msgid="141967660286695682">"আপনি যে নম্বর ডায়াল করছেন সেটিতে কোনও সমস্যা আছে। ত্রুটি কোড ১।"</string>
     <string name="clh_callFailed_no_route_to_destination_txt" msgid="4805015149822352308">"কল করা যায়নি। ত্রুটি কোড ৩।"</string>
     <string name="clh_callFailed_channel_unacceptable_txt" msgid="4062754579408613021">"কল করা যায়নি। ত্রুটি কোড ৬।"</string>
