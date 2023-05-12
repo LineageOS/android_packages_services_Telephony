@@ -19,6 +19,7 @@ package com.android.phone.slice;
 import static android.telephony.TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_ALREADY_IN_PROGRESS;
 import static android.telephony.TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_ALREADY_PURCHASED;
 import static android.telephony.TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_CARRIER_DISABLED;
+import static android.telephony.TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_CARRIER_ERROR;
 import static android.telephony.TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_ENTITLEMENT_CHECK_FAILED;
 import static android.telephony.TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_NOT_DEFAULT_DATA_SUBSCRIPTION;
 
@@ -204,10 +205,10 @@ public class SlicePurchaseController extends Handler {
     /** Extra for the human-readable reason why the premium capability purchase failed. */
     public static final String EXTRA_FAILURE_REASON =
             "com.android.phone.slice.extra.FAILURE_REASON";
-    /**
-     * Extra for the user's carrier.
-     */
+    /** Extra for the user's carrier. */
     public static final String EXTRA_CARRIER = "com.android.phone.slice.extra.CARRIER";
+    /** Extra for the user data received from the entitlement service to send to the webapp. */
+    public static final String EXTRA_USER_DATA = "com.android.phone.slice.extra.USER_DATA";
     /**
      * Extra for the canceled PendingIntent that the slice purchase application can send as a
      * response if the performance boost notification or WebView was canceled by the user.
@@ -695,8 +696,16 @@ public class SlicePurchaseController extends Handler {
                 premiumNetworkEntitlementApi.checkEntitlementStatus(capability);
 
         // invalid response for entitlement check
-        if (premiumNetworkEntitlementResponse == null) {
-            logd("Invalid response for entitlement check.");
+        if (premiumNetworkEntitlementResponse == null
+                || premiumNetworkEntitlementResponse.isInvalidResponse()) {
+            loge("Invalid response for entitlement check: " + premiumNetworkEntitlementResponse);
+            handlePurchaseResult(capability,
+                    PURCHASE_PREMIUM_CAPABILITY_RESULT_CARRIER_ERROR, true);
+            return;
+        }
+
+        if (!premiumNetworkEntitlementResponse.isPremiumNetworkCapabilityAllowed()) {
+            loge("Entitlement Check: Not allowed.");
             handlePurchaseResult(capability,
                     PURCHASE_PREMIUM_CAPABILITY_RESULT_ENTITLEMENT_CHECK_FAILED, true);
             return;
@@ -710,18 +719,13 @@ public class SlicePurchaseController extends Handler {
         }
 
         if (premiumNetworkEntitlementResponse.isProvisioningInProgress()) {
-            logd("Entitlement Check: In Progress");
+            logd("Entitlement Check: In progress.");
             handlePurchaseResult(capability,
                     PURCHASE_PREMIUM_CAPABILITY_RESULT_ALREADY_IN_PROGRESS, true);
             return;
         }
 
-        if (!premiumNetworkEntitlementResponse.isPremiumNetworkCapabilityAllowed()) {
-            handlePurchaseResult(capability,
-                    PURCHASE_PREMIUM_CAPABILITY_RESULT_ENTITLEMENT_CHECK_FAILED, true);
-            return;
-        }
-
+        String userData = premiumNetworkEntitlementResponse.mServiceFlowUserData;
         String purchaseUrl = getPurchaseUrl(premiumNetworkEntitlementResponse);
         String carrier = getSimOperator();
         if (TextUtils.isEmpty(purchaseUrl) || TextUtils.isEmpty(carrier)) {
@@ -757,6 +761,9 @@ public class SlicePurchaseController extends Handler {
         intent.putExtra(EXTRA_PREMIUM_CAPABILITY, capability);
         intent.putExtra(EXTRA_PURCHASE_URL, purchaseUrl);
         intent.putExtra(EXTRA_CARRIER, carrier);
+        if (!TextUtils.isEmpty(userData)) {
+            intent.putExtra(EXTRA_USER_DATA, userData);
+        }
         intent.putExtra(EXTRA_INTENT_CANCELED, createPendingIntent(
                 ACTION_SLICE_PURCHASE_APP_RESPONSE_CANCELED, capability, false));
         intent.putExtra(EXTRA_INTENT_CARRIER_ERROR, createPendingIntent(
