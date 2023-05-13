@@ -557,8 +557,7 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"Не можна призупиняти виклики."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"Щоб зателефонувати, під’єднайтеся до бездротової мережі."</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"Щоб мати змогу телефонувати, увімкніть виклики через Wi-Fi."</string>
-    <!-- no translation found for incall_error_satellite_enabled (1936541518147323016) -->
-    <skip />
+    <string name="incall_error_satellite_enabled" msgid="1936541518147323016">"Щоб зателефонувати, вимкніть режим супутника."</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"Дані для екстрених випадків"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"Власник"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"Торкніться ще раз, щоб переглянути відомості"</string>
@@ -716,8 +715,7 @@
     <string name="clh_callFailed_powerOff_txt" msgid="8279934912560765361">"Увімкнено режим польоту"</string>
     <string name="clh_callFailed_simError_txt" msgid="5128538525762326413">"Немає доступу до SIM-карти"</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="2736010617446749869">"Мобільна мережа недоступна"</string>
-    <!-- no translation found for clh_callFailed_satelliteEnabled_txt (1675517238240377396) -->
-    <skip />
+    <string name="clh_callFailed_satelliteEnabled_txt" msgid="1675517238240377396">"Режим супутника ввімкнено"</string>
     <string name="clh_callFailed_unassigned_number_txt" msgid="141967660286695682">"Проблема з номером телефону, який ви набираєте. Код помилки: 1."</string>
     <string name="clh_callFailed_no_route_to_destination_txt" msgid="4805015149822352308">"Не вдалося здійснити виклик. Код помилки: 3."</string>
     <string name="clh_callFailed_channel_unacceptable_txt" msgid="4062754579408613021">"Не вдалося здійснити виклик. Код помилки: 6."</string>
