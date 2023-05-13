@@ -39,6 +39,7 @@ import android.app.compat.CompatChanges;
 import android.app.role.RoleManager;
 import android.compat.annotation.ChangeId;
 import android.compat.annotation.EnabledSince;
+import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -2240,7 +2241,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                         arg.callback.accept(result);
                         log("purchasePremiumCapability: capability="
                                 + TelephonyManager.convertPremiumCapabilityToString(arg.capability)
-                                + ", result= "
+                                + ", result="
                                 + TelephonyManager.convertPurchaseResultToString(result));
                     } catch (RemoteException e) {
                         String logStr = "Purchase premium capability "
@@ -10227,11 +10228,21 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @Override
     public void showSwitchToManagedProfileDialog() {
         enforceModifyPermission();
-
-        Intent intent = new Intent();
-        intent.setClass(mApp, ErrorDialogActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        mApp.startActivity(intent);
+        try {
+            // Note: This intent is constructed to ensure that the IntentForwarderActivity is
+            // shown in accordance with the intent filters in DefaultCrossProfileIntentFilterUtils
+            // for work telephony.
+            Intent intent = new Intent(Intent.ACTION_SENDTO);
+            intent.setData(Uri.parse("smsto:"));
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            mApp.startActivity(intent);
+        } catch (ActivityNotFoundException e) {
+            Log.w(LOG_TAG, "Unable to show intent forwarder, try showing error dialog instead");
+            Intent intent = new Intent();
+            intent.setClass(mApp, ErrorDialogActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            mApp.startActivity(intent);
+        }
     }
 
     @Override
@@ -11642,7 +11653,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             if (processes != null) {
                 for (ActivityManager.RunningAppProcessInfo process : processes) {
                     log("purchasePremiumCapability: process " + process.processName
-                            + "has importance " + process.importance);
+                            + " has importance " + process.importance);
                     if (process.processName.equals(callingProcess) && process.importance
                             <= ActivityManager.RunningAppProcessInfo.IMPORTANCE_VISIBLE) {
                         isVisible = true;
