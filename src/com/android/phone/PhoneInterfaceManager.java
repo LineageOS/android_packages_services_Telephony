@@ -296,8 +296,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private static final int EVENT_GET_ALLOWED_NETWORK_TYPES_BITMASK_DONE = 22;
     private static final int CMD_SEND_ENVELOPE = 25;
     private static final int EVENT_SEND_ENVELOPE_DONE = 26;
-    private static final int CMD_INVOKE_OEM_RIL_REQUEST_RAW = 27;
-    private static final int EVENT_INVOKE_OEM_RIL_REQUEST_RAW_DONE = 28;
     private static final int CMD_TRANSMIT_APDU_BASIC_CHANNEL = 29;
     private static final int EVENT_TRANSMIT_APDU_BASIC_CHANNEL_DONE = 30;
     private static final int CMD_EXCHANGE_SIM_IO = 31;
@@ -1152,19 +1150,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
                 case EVENT_SET_ALLOWED_NETWORK_TYPES_FOR_REASON_DONE:
                     handleNullReturnEvent(msg, "setAllowedNetworkTypesForReason");
-                    break;
-
-                case CMD_INVOKE_OEM_RIL_REQUEST_RAW:
-                    request = (MainThreadRequest)msg.obj;
-                    onCompleted = obtainMessage(EVENT_INVOKE_OEM_RIL_REQUEST_RAW_DONE, request);
-                    defaultPhone.invokeOemRilRequestRaw((byte[]) request.argument, onCompleted);
-                    break;
-
-                case EVENT_INVOKE_OEM_RIL_REQUEST_RAW_DONE:
-                    ar = (AsyncResult)msg.obj;
-                    request = (MainThreadRequest)ar.userObj;
-                    request.result = ar;
-                    notifyRequester(request);
                     break;
 
                 case CMD_SET_VOICEMAIL_NUMBER:
@@ -7515,39 +7500,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
-    }
-
-    @Override
-    @Deprecated
-    public int invokeOemRilRequestRaw(byte[] oemReq, byte[] oemResp) {
-        enforceModifyPermission();
-
-        int returnValue = 0;
-        try {
-            AsyncResult result = (AsyncResult) sendRequest(CMD_INVOKE_OEM_RIL_REQUEST_RAW, oemReq);
-            if(result.exception == null) {
-                if (result.result != null) {
-                    byte[] responseData = (byte[])(result.result);
-                    if(responseData.length > oemResp.length) {
-                        Log.w(LOG_TAG, "Buffer to copy response too small: Response length is " +
-                                responseData.length +  "bytes. Buffer Size is " +
-                                oemResp.length + "bytes.");
-                    }
-                    System.arraycopy(responseData, 0, oemResp, 0, responseData.length);
-                    returnValue = responseData.length;
-                }
-            } else {
-                CommandException ex = (CommandException) result.exception;
-                returnValue = ex.getCommandError().ordinal();
-                if(returnValue > 0) returnValue *= -1;
-            }
-        } catch (RuntimeException e) {
-            Log.w(LOG_TAG, "sendOemRilRequestRaw: Runtime Exception");
-            returnValue = (CommandException.Error.GENERIC_FAILURE.ordinal());
-            if(returnValue > 0) returnValue *= -1;
-        }
-
-        return returnValue;
     }
 
     @Override
