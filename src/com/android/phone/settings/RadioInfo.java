@@ -44,6 +44,7 @@ import android.os.HandlerExecutor;
 import android.os.Message;
 import android.os.PersistableBundle;
 import android.os.SystemProperties;
+import android.os.UserManager;
 import android.telephony.AccessNetworkConstants;
 import android.telephony.CarrierConfigManager;
 import android.telephony.CellIdentityCdma;
@@ -482,6 +483,15 @@ public class RadioInfo extends AppCompatActivity {
             return;
         }
 
+        UserManager userManager =
+                (UserManager) getApplicationContext().getSystemService(Context.USER_SERVICE);
+        if (userManager != null
+                && userManager.hasUserRestriction(UserManager.DISALLOW_CONFIG_MOBILE_NETWORKS)) {
+            Log.w(TAG, "User is restricted from configuring mobile networks.");
+            finish();
+            return;
+        }
+
         setContentView(R.layout.radio_info);
 
         log("Started onCreate");
@@ -835,7 +845,9 @@ public class RadioInfo extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mQueuedWork.shutdown();
+        if (mQueuedWork != null) {
+            mQueuedWork.shutdown();
+        }
     }
 
     // returns array of string labels for each phone index. The array index is equal to the phone
