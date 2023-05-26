@@ -17,6 +17,7 @@
 package com.android.phone.settings;
 
 import android.app.Dialog;
+import android.content.ContentProvider;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -24,6 +25,7 @@ import android.os.AsyncResult;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.os.Process;
 import android.os.UserHandle;
 import android.preference.CheckBoxPreference;
 import android.preference.Preference;
@@ -544,6 +546,17 @@ public class VoicemailSettingsActivity extends PreferenceActivity
 
             Cursor cursor = null;
             try {
+                // check if the URI returned by the user belongs to the user
+                final int currentUser = UserHandle.getUserId(Process.myUid());
+                if (currentUser
+                        != ContentProvider.getUserIdFromUri(data.getData(), currentUser)) {
+
+                    if (DBG) {
+                        log("onActivityResult: Contact data of different user, "
+                                + "cannot access");
+                    }
+                    return;
+                }
                 cursor = getContentResolver().query(data.getData(),
                     new String[] { CommonDataKinds.Phone.NUMBER }, null, null, null);
                 if ((cursor == null) || (!cursor.moveToFirst())) {
