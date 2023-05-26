@@ -92,12 +92,10 @@ public class SlicePurchaseController extends Handler {
     public static final int FAILURE_CODE_UNKNOWN = 0;
     /** Performance boost purchase failed because the carrier URL is unavailable. */
     public static final int FAILURE_CODE_CARRIER_URL_UNAVAILABLE = 1;
-    /** Performance boost purchase failed because the server is unreachable. */
-    public static final int FAILURE_CODE_SERVER_UNREACHABLE = 2;
     /** Performance boost purchase failed because user authentication failed. */
-    public static final int FAILURE_CODE_AUTHENTICATION_FAILED = 3;
+    public static final int FAILURE_CODE_AUTHENTICATION_FAILED = 2;
     /** Performance boost purchase failed because the payment failed. */
-    public static final int FAILURE_CODE_PAYMENT_FAILED = 4;
+    public static final int FAILURE_CODE_PAYMENT_FAILED = 3;
 
     /**
      * Failure codes that the carrier website can return when a premium capability purchase fails.
@@ -106,7 +104,6 @@ public class SlicePurchaseController extends Handler {
     @IntDef(prefix = { "FAILURE_CODE_" }, value = {
             FAILURE_CODE_UNKNOWN,
             FAILURE_CODE_CARRIER_URL_UNAVAILABLE,
-            FAILURE_CODE_SERVER_UNREACHABLE,
             FAILURE_CODE_AUTHENTICATION_FAILED,
             FAILURE_CODE_PAYMENT_FAILED})
     public @interface FailureCode {}
@@ -690,6 +687,17 @@ public class SlicePurchaseController extends Handler {
 
     private void onStartSlicePurchaseApplication(
             @TelephonyManager.PremiumCapability int capability) {
+        updateNotificationCounts();
+        if (mMonthlyCount >= getCarrierConfigs().getInt(
+                CarrierConfigManager.KEY_PREMIUM_CAPABILITY_MAXIMUM_MONTHLY_NOTIFICATION_COUNT_INT)
+                || mDailyCount >= getCarrierConfigs().getInt(
+                CarrierConfigManager.KEY_PREMIUM_CAPABILITY_MAXIMUM_DAILY_NOTIFICATION_COUNT_INT)) {
+            logd("Reached maximum number of performance boost notifications.");
+            handlePurchaseResult(capability,
+                    TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_THROTTLED, false);
+            return;
+        }
+
         final PremiumNetworkEntitlementApi premiumNetworkEntitlementApi =
                 getPremiumNetworkEntitlementApi();
         PremiumNetworkEntitlementResponse premiumNetworkEntitlementResponse =
@@ -731,17 +739,6 @@ public class SlicePurchaseController extends Handler {
         if (TextUtils.isEmpty(purchaseUrl) || TextUtils.isEmpty(carrier)) {
             handlePurchaseResult(capability,
                     PURCHASE_PREMIUM_CAPABILITY_RESULT_CARRIER_DISABLED, false);
-            return;
-        }
-
-        updateNotificationCounts();
-        if (mMonthlyCount >= getCarrierConfigs().getInt(
-                CarrierConfigManager.KEY_PREMIUM_CAPABILITY_MAXIMUM_MONTHLY_NOTIFICATION_COUNT_INT)
-                || mDailyCount >= getCarrierConfigs().getInt(
-                CarrierConfigManager.KEY_PREMIUM_CAPABILITY_MAXIMUM_DAILY_NOTIFICATION_COUNT_INT)) {
-            logd("Reached maximum number of performance boost notifications.");
-            handlePurchaseResult(capability,
-                    TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_THROTTLED, false);
             return;
         }
 
@@ -1094,7 +1091,6 @@ public class SlicePurchaseController extends Handler {
         switch (failureCode) {
             case FAILURE_CODE_UNKNOWN: return "UNKNOWN";
             case FAILURE_CODE_CARRIER_URL_UNAVAILABLE: return "CARRIER_URL_UNAVAILABLE";
-            case FAILURE_CODE_SERVER_UNREACHABLE: return "SERVER_UNREACHABLE";
             case FAILURE_CODE_AUTHENTICATION_FAILED: return "AUTHENTICATION_FAILED";
             case FAILURE_CODE_PAYMENT_FAILED: return "PAYMENT_FAILED";
             default:

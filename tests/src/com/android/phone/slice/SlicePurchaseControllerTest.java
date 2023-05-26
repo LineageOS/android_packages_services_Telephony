@@ -578,7 +578,7 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
         intent.putExtra(SlicePurchaseController.EXTRA_PREMIUM_CAPABILITY,
                 TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY);
         intent.putExtra(SlicePurchaseController.EXTRA_FAILURE_CODE,
-                SlicePurchaseController.FAILURE_CODE_SERVER_UNREACHABLE);
+                SlicePurchaseController.FAILURE_CODE_CARRIER_URL_UNAVAILABLE);
         mContext.getBroadcastReceiver().onReceive(mContext, intent);
         mTestableLooper.processAllMessages();
         assertEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_CARRIER_ERROR, mResult);
