@@ -5,9 +5,12 @@ import com.android.internal.telephony.CommandsInterface;
 import com.android.internal.telephony.Phone;
 
 import android.app.ActionBar;
+import android.content.ContentProvider;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.os.Process;
+import android.os.UserHandle;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
 import android.telephony.CarrierConfigManager;
@@ -156,6 +159,15 @@ public class GsmUmtsCallForwardOptions extends TimeConsumingPreferenceActivity {
         }
         Cursor cursor = null;
         try {
+            // check if the URI returned by the user belongs to the user
+            final int currentUser = UserHandle.getUserId(Process.myUid());
+            if (currentUser
+                    != ContentProvider.getUserIdFromUri(data.getData(), currentUser)) {
+
+                Log.w(LOG_TAG, "onActivityResult: Contact data of different user, "
+                        + "cannot access");
+                return;
+            }
             cursor = getContentResolver().query(data.getData(),
                 NUM_PROJECTION, null, null, null);
             if ((cursor == null) || (!cursor.moveToFirst())) {
