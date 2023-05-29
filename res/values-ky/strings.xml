@@ -476,7 +476,7 @@
     <string name="delete_fdn_contact" msgid="7027405651994507077">"Туруктуу терүү номерин жок кылуу"</string>
     <string name="deleting_fdn_contact" msgid="6872320570844460428">"Туруктуу терүү номери жок кылынууда…"</string>
     <string name="fdn_contact_deleted" msgid="1680714996763848838">"Туруктуу терүү номери өчүрүлдү."</string>
-    <string name="pin2_invalid" msgid="2313954262684494442">"БНТ жаңырган жок, анткени туура эмес PIN-код киргизилди."</string>
+    <string name="pin2_invalid" msgid="2313954262684494442">"БНТ жаңырган жок, анткени туура эмес PIN код киргизилди."</string>
     <string name="fdn_invalid_number" msgid="9067189814657840439">"Уруксат берилген номер жаңырган жок, себеби жазылган номердин саны <xliff:g id="FDN_NUMBER_LIMIT_LENGTH">%d</xliff:g> ашпашы керек."</string>
     <string name="pin2_or_fdn_invalid" msgid="7542639487955868181">"БНТ жаңырган жок. PIN2 туура эмес, же телефон номуру жараксыз."</string>
     <string name="fdn_failed" msgid="216592346853420250">"БНТ иши кыйрады."</string>
@@ -490,9 +490,9 @@
     <string name="oldPinLabel" msgid="8618515202411987721">"Эски PIN"</string>
     <string name="newPinLabel" msgid="3585899083055354732">"Жаңы PIN"</string>
     <string name="confirmPinLabel" msgid="7783531218662473778">"Жаңы PIN\'ди ырастаңыз"</string>
-    <string name="badPin" msgid="4549286285015892321">"Сиз киргизген эски PIN-кодуңуз туура эмес. Кайра аракеттениңиз."</string>
+    <string name="badPin" msgid="4549286285015892321">"Сиз киргизген эски PIN кодуңуз туура эмес. Кайра аракеттениңиз."</string>
     <string name="mismatchPin" msgid="1467254768290323845">"Сиз терген PIN\'дер дал келишпейт. Кайра аракеттениңиз."</string>
-    <string name="invalidPin" msgid="7363723429414001979">"Узундугу 4төн 8ге чейинки сандан турган PIN-кодду териңиз."</string>
+    <string name="invalidPin" msgid="7363723429414001979">"Узундугу 4төн 8ге чейинки сандан турган PIN кодду териңиз."</string>
     <string name="disable_sim_pin" msgid="3112303905548613752">"SIM PIN тазалоо"</string>
     <string name="enable_sim_pin" msgid="445461050748318980">"SIM PIN орнотуу"</string>
     <string name="enable_in_progress" msgid="4135305985717272592">"PIN орнотулууда…"</string>

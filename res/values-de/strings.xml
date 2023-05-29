@@ -594,7 +594,7 @@
     <string name="importToFDNfromContacts" msgid="5068664870738407341">"Aus Kontakten importieren"</string>
     <string name="singleContactImportedMsg" msgid="3619804066300998934">"Kontakt wird importiert."</string>
     <string name="failedToImportSingleContactMsg" msgid="228095510489830266">"Fehler beim Importieren des Kontakts"</string>
-    <string name="hac_mode_title" msgid="4127986689621125468">"Hörhilfen"</string>
+    <string name="hac_mode_title" msgid="4127986689621125468">"Hörgeräte"</string>
     <string name="hac_mode_summary" msgid="7774989500136009881">"Hörhilfekompatibilität aktivieren"</string>
     <string name="rtt_mode_title" msgid="3075948111362818043">"RTT-Anruf"</string>
     <string name="rtt_mode_summary" msgid="8631541375609989562">"Nachrichten in Sprachanrufen erlauben"</string>
