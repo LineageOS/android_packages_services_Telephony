@@ -719,8 +719,8 @@ public class SlicePurchaseController extends Handler {
             return;
         }
 
-        if (premiumNetworkEntitlementResponse.isProvisioned()) {
-            logd("Entitlement Check: Already provisioned.");
+        if (premiumNetworkEntitlementResponse.isAlreadyPurchased()) {
+            logd("Entitlement Check: Already purchased/provisioned.");
             handlePurchaseResult(capability,
                     PURCHASE_PREMIUM_CAPABILITY_RESULT_ALREADY_PURCHASED, true);
             return;
