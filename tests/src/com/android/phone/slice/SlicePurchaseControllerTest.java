@@ -726,7 +726,7 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
         mEntitlementResponse.mEntitlementStatus =
                 PremiumNetworkEntitlementResponse.PREMIUM_NETWORK_ENTITLEMENT_STATUS_ENABLED;
         mEntitlementResponse.mProvisionStatus =
-                PremiumNetworkEntitlementResponse.PREMIUM_NETWORK_PROVISION_STATUS_PROVISIONED;
+                PremiumNetworkEntitlementResponse.PREMIUM_NETWORK_PROVISION_STATUS_NOT_PROVISIONED;
 
         // send purchase request
         mSlicePurchaseController.purchasePremiumCapability(
