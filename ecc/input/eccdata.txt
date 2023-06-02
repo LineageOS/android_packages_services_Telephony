@@ -839,42 +839,42 @@ countries {
   eccs {
     phone_number: "088"
     types: POLICE
-    routing: EMERGENCY
+    routing: NORMAL
   }
   eccs {
     phone_number: "085"
     types: FIRE
-    routing: EMERGENCY
+    routing: NORMAL
   }
   eccs {
     phone_number: "1006"
     types: TYPE_UNSPECIFIED
-    routing: EMERGENCY
+    routing: NORMAL
   }
   eccs {
     phone_number: "061"
     types: TYPE_UNSPECIFIED
-    routing: EMERGENCY
+    routing: NORMAL
   }
   eccs {
     phone_number: "062"
     types: TYPE_UNSPECIFIED
-    routing: EMERGENCY
+    routing: NORMAL
   }
   eccs {
     phone_number: "080"
     types: FIRE
-    routing: EMERGENCY
+    routing: NORMAL
   }
   eccs {
     phone_number: "091"
     types: POLICE
-    routing: EMERGENCY
+    routing: NORMAL
   }
   eccs {
     phone_number: "092"
     types: POLICE
-    routing: EMERGENCY
+    routing: NORMAL
   }
   eccs {
     phone_number: "024"
@@ -2317,6 +2317,77 @@ countries {
     types: POLICE
     types: AMBULANCE
     types: FIRE
+    routing: EMERGENCY
+  }
+  eccs {
+    phone_number: "984"
+    types: TYPE_UNSPECIFIED
+    routing: EMERGENCY
+  }
+  eccs {
+    phone_number: "985"
+    types: MOUNTAIN_RESCUE
+    routing: EMERGENCY
+  }
+  eccs {
+    phone_number: "986"
+    types: POLICE
+    routing: EMERGENCY
+  }
+  eccs {
+    phone_number: "997"
+    types: POLICE
+    routing: EMERGENCY
+  }
+  eccs {
+    phone_number: "998"
+    types: FIRE
+    routing: EMERGENCY
+  }
+  eccs {
+    phone_number: "999"
+    types: AMBULANCE
+    routing: EMERGENCY
+  }
+  eccs {
+    phone_number: "991"
+    types: TYPE_UNSPECIFIED
+    routing: EMERGENCY
+  }
+  eccs {
+    phone_number: "992"
+    types: TYPE_UNSPECIFIED
+    routing: EMERGENCY
+  }
+  eccs {
+    phone_number: "993"
+    types: TYPE_UNSPECIFIED
+    routing: EMERGENCY
+  }
+  eccs {
+    phone_number: "994"
+    types: TYPE_UNSPECIFIED
+    routing: EMERGENCY
+  }
+  eccs {
+    phone_number: "995"
+    types: TYPE_UNSPECIFIED
+    routing: EMERGENCY
+  }
+  eccs {
+    phone_number: "996"
+    types: TYPE_UNSPECIFIED
+    routing: EMERGENCY
+  }
+  eccs {
+    phone_number: "987"
+    types: TYPE_UNSPECIFIED
+    routing: EMERGENCY
+  }
+  eccs {
+    phone_number: "989"
+    types: TYPE_UNSPECIFIED
+    routing: EMERGENCY
   }
   ecc_fallback: "112"
 }
