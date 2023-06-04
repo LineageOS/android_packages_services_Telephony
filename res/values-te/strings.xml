@@ -320,7 +320,7 @@
     <string name="throttle_rate" msgid="7641913901133634905">"డేటా రేట్ విధానం"</string>
     <string name="throttle_help" msgid="2624535757028809735">"మరింత తెలుసుకోండి"</string>
     <string name="throttle_status_subtext" msgid="1110276415078236687">"గరిష్ఠ వ్యవధి అయిన <xliff:g id="USED_2">%3$s</xliff:g>లో <xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪)\nతర్వాతి వ్యవధి <xliff:g id="USED_3">%4$d</xliff:g> రోజుల్లో (<xliff:g id="USED_4">%5$s</xliff:g>) ప్రారంభమవుతుంది"</string>
-    <string name="throttle_data_usage_subtext" msgid="3185429653996709840">"గరిష్టంగా <xliff:g id="USED_2">%3$s</xliff:g>లో <xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪)"</string>
+    <string name="throttle_data_usage_subtext" msgid="3185429653996709840">"గరిష్ఠంగా <xliff:g id="USED_2">%3$s</xliff:g>లో <xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪)"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"<xliff:g id="USED_0">%1$s</xliff:g> గరిష్ట పరిమితి మించిపోయింది\nడేటా రేట్ <xliff:g id="USED_1">%2$d</xliff:g> Kb/sకి తగ్గించబడింది"</string>
     <string name="throttle_time_frame_subtext" msgid="6462089615392402127">"సైకిల్‌లో <xliff:g id="USED_0">%1$d</xliff:g>٪ గడిచిపోయింది\nతదుపరి వ్యవధి <xliff:g id="USED_1">%2$d</xliff:g> రోజుల్లో (<xliff:g id="USED_2">%3$s</xliff:g>) ప్రారంభమవుతుంది"</string>
     <string name="throttle_rate_subtext" msgid="7221971817325779535">"డేటా వినియోగ పరిమితి మించిపోయినప్పుడు డేటా రేట్ <xliff:g id="USED">%1$d</xliff:g> Kb/sకి తగ్గించబడుతుంది"</string>
@@ -617,7 +617,7 @@
     <string name="ota_title_activate" msgid="4049645324841263423">"మీ ఫోన్‌ను యాక్టివేట్ చేయండి"</string>
     <string name="ota_touch_activate" msgid="838764494319694754">"మీ ఫోన్ సేవను సక్రియం చేయడానికి ప్రత్యేక కాల్ చేయాల్సి ఉంటుంది. \n\n“యాక్టివేట్ చేయండి” నొక్కిన తర్వాత, మీ ఫోన్‌ను సక్రియం చేయడానికి అందించబడే సూచనలను వినండి."</string>
     <string name="ota_hfa_activation_title" msgid="3300556778212729671">"సక్రియం చేస్తోంది..."</string>
-    <string name="ota_hfa_activation_dialog_message" msgid="7921718445773342996">"ఫోన్ మీ మొబైల్ డేటా సేవను సక్రియం చేస్తోంది.\n\nదీనికి గరిష్టంగా 5 నిమిషాలు పట్టవచ్చు."</string>
+    <string name="ota_hfa_activation_dialog_message" msgid="7921718445773342996">"ఫోన్ మీ మొబైల్ డేటా సేవను సక్రియం చేస్తోంది.\n\nదీనికి గరిష్ఠంగా 5 నిమిషాలు పట్టవచ్చు."</string>
     <string name="ota_skip_activation_dialog_title" msgid="7666611236789203797">"సక్రియం చేయడాన్ని దాటవేయాలా?"</string>
     <string name="ota_skip_activation_dialog_message" msgid="6691722887019708713">"మీరు సక్రియం చేయడాన్ని దాటవేస్తే, కాల్స్‌ చేయలేరు లేదా మొబైల్ డేటా నెట్‌వర్క్‌లకు కనెక్ట్ చేయలేరు (మీరు Wi-Fi నెట్‌వర్క్‌లకు కనెక్ట్ చేయగలిగినప్పటికీ). మీరు మీ ఫోన్‌ను సక్రియం చేసేవరకు, దాన్ని ప్రారంభించే ప్రతిసారీ సక్రియం చేయమని మిమ్మల్ని అడుగుతుంది."</string>
     <string name="ota_skip_activation_dialog_skip_label" msgid="5908029466817825633">"స్కిప్ చేయండి"</string>
@@ -628,7 +628,7 @@
     <string name="ota_speaker" msgid="1086766980329820528">"స్పీకర్"</string>
     <string name="ota_progress" msgid="8837259285255700132">"మీ ఫోన్ ప్రోగ్రామ్ చేయబడుతోంది…"</string>
     <string name="ota_failure" msgid="5674217489921481576">"మీ ఫోన్‌ను ప్రోగ్రామ్ చేయడం సాధ్యపడలేదు"</string>
-    <string name="ota_successful" msgid="1106825981548107774">"మీ ఫోన్ ఇప్పుడు సక్రియం అయ్యింది. సేవ ప్రారంభం కావడానికి గరిష్టంగా 15 నిమిషాలు పట్టవచ్చు."</string>
+    <string name="ota_successful" msgid="1106825981548107774">"మీ ఫోన్ ఇప్పుడు సక్రియం అయ్యింది. సేవ ప్రారంభం కావడానికి గరిష్ఠంగా 15 నిమిషాలు పట్టవచ్చు."</string>
     <string name="ota_unsuccessful" msgid="8531037653803955754">"మీ ఫోన్ సక్రియం చేయబడలేదు. \nమీరు మెరుగైన కవరేజీ గల ప్రాంతాన్ని (కిటికీ దగ్గర లేదా వెలుపల) కనుగొనాల్సి ఉంటుంది. \n\nమళ్లీ ట్రై చేయండి లేదా మరిన్ని ఎంపికల కోసం కస్టమర్ సేవకు కాల్ చేయండి."</string>
     <string name="ota_spc_failure" msgid="904092035241370080">"అత్యధిక SPC వైఫల్యాలు"</string>
     <string name="ota_call_end" msgid="8657746378290737034">"వెనుకకు"</string>
