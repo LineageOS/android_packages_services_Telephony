@@ -297,7 +297,7 @@
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"Повиците и услугите за интернет на <xliff:g id="CARRIER_NAME">%1$s</xliff:g> може да се блокирани со друга SIM-картичка."</string>
     <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"Најдени и отстранети се неподдржани сметки на SIP"</string>
     <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"Платформата Android веќе не поддржува повикување преку SIP.\nВашите постојни сметки на SIP <xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g> се отстранети.\nПотврдете ја вашата стандардна поставка за повикување."</string>
-    <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"Одете во „Поставки“"</string>
+    <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"Отворете „Поставки“"</string>
     <string name="data_usage_title" msgid="8438592133893837464">"Потрошен интернет од апликации"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"<xliff:g id="ID_1">%1$s</xliff:g> потрошен мобилен интернет во периодот <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"Напредни"</string>
