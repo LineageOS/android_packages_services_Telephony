@@ -592,7 +592,7 @@
     <string name="importToFDNfromContacts" msgid="5068664870738407341">"Aus Kontakten importieren"</string>
     <string name="singleContactImportedMsg" msgid="3619804066300998934">"Kontakt wird importiert."</string>
     <string name="failedToImportSingleContactMsg" msgid="228095510489830266">"Fehler beim Importieren des Kontakts"</string>
-    <string name="hac_mode_title" msgid="4127986689621125468">"Hörhilfen"</string>
+    <string name="hac_mode_title" msgid="4127986689621125468">"Hörgeräte"</string>
     <string name="hac_mode_summary" msgid="7774989500136009881">"Hörhilfekompatibilität aktivieren"</string>
     <string name="rtt_mode_title" msgid="3075948111362818043">"RTT-Anruf"</string>
     <string name="rtt_mode_summary" msgid="8631541375609989562">"Nachrichten in Sprachanrufen erlauben"</string>
@@ -672,7 +672,7 @@
     <string name="sim_description_emergency_calls" msgid="5146872803938897296">"Nur Notrufe"</string>
     <string name="sim_description_default" msgid="7474671114363724971">"SIM-Karte, Schacht: <xliff:g id="SLOT_ID">%s</xliff:g>"</string>
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"Bedienungshilfen"</string>
-    <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"WLAN-Anruf von"</string>
+    <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"WiFi-Anruf von"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"WLAN-Anruf"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"Beim Entschlüsseln der Nachricht ist ein Fehler aufgetreten."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"Eine SIM-Karte hat deinen Dienst aktiviert und die Roamingfunktionen deines Smartphones aktualisiert."</string>

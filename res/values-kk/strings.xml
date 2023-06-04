@@ -499,7 +499,7 @@
     <string name="disable_pin_ok" msgid="888505244389647754">"PIN тазаланды"</string>
     <string name="pin_failed" msgid="4527347792881939652">"PIN дұрыс емес"</string>
     <string name="pin_changed" msgid="7291153750090452808">"PIN коды жаңартылды"</string>
-    <string name="puk_requested" msgid="2061337960609806851">"Құпия сөз дұрыс емес. PIN қазір бөгелген. PUK коды сұралды."</string>
+    <string name="puk_requested" msgid="2061337960609806851">"Құпия сөз дұрыс емес. PIN қазір блокталған. PUK коды сұралды."</string>
     <string name="enter_pin2_text" msgid="7266379426804295979">"PIN2"</string>
     <string name="oldPin2Label" msgid="4648543187859997203">"Ескі PIN2"</string>
     <string name="newPin2Label" msgid="1840905981784453939">"Жаңа PIN2 коды"</string>
@@ -513,7 +513,7 @@
     <string name="label_puk2_code" msgid="2852217004288085562">"PUK2 кодын енгізіңіз"</string>
     <string name="fdn_enable_puk2_requested" msgid="5793652792131588041">"Құпия сөз дұрыс емес. PIN2 енді бөгелді. Әрекетті қайталау үшін PIN 2 кодын өзгертіңіз."</string>
     <string name="puk2_requested" msgid="6992374450720307514">"Құпия сөз дұрыс емес. SIM қазір бекітілген. PUK2 кодын енгізіңіз."</string>
-    <string name="puk2_blocked" msgid="3131139031779319911">"PUK2 уақытша бөгелген."</string>
+    <string name="puk2_blocked" msgid="3131139031779319911">"PUK2 уақытша блокталған."</string>
     <string name="pin2_attempts" msgid="5625178102026453023">\n"<xliff:g id="NUMBER">%d</xliff:g> әрекет қалды."</string>
     <string name="puk2_locked" msgid="6497760825455461057">"PUK2 құлыптаулы. Құлпын ашу үшін қызмет көрсетушіге хабарласыңыз."</string>
     <string name="pin2_unblocked" msgid="4481107908727789303">"PIN2 енді бөгелмеген"</string>

@@ -868,7 +868,7 @@
     <string name="radioInfo_lac" msgid="3892986460272607013">"LAC"</string>
     <string name="radioInfo_cid" msgid="1423185536264406705">"CID"</string>
     <string name="radio_info_subid" msgid="6839966868621703203">"Sous-identifiant actuel :"</string>
-    <string name="radio_info_dds" msgid="1122593144425697126">"Sous-identifiant de la carte SIM par défaut pour les données :"</string>
+    <string name="radio_info_dds" msgid="1122593144425697126">"Sous-identifiant SIM par défaut pour les données :"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Bande passante de téléchargement (kbit/s) :"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Bande passante d\'importation (kbit/s) :"</string>
     <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Configuration de la chaîne physique LTE :"</string>

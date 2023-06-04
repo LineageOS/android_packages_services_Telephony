@@ -692,7 +692,7 @@
     <string name="change_pin_enter_new_pin_header" msgid="4739465616733486118">"Angi en ny PIN-kode"</string>
     <string name="change_pin_enter_new_pin_hint" msgid="2326038476516364210">"PIN-koden må bestå av <xliff:g id="MIN">%1$d</xliff:g>-<xliff:g id="MAX">%2$d</xliff:g> sifre."</string>
     <string name="change_pin_confirm_pin_header" msgid="2606303906320705726">"Bekreft PIN-koden"</string>
-    <string name="change_pin_confirm_pins_dont_match" msgid="305164501222587215">"PIN-kodene stemmer ikke overens"</string>
+    <string name="change_pin_confirm_pins_dont_match" msgid="305164501222587215">"PIN-kodene er ikke like"</string>
     <string name="change_pin_succeeded" msgid="2504705600693014403">"PIN-koden for talemeldinger ble oppdatert"</string>
     <string name="change_pin_system_error" msgid="7772788809875146873">"Kan ikke angi PIN-kode"</string>
     <string name="mobile_data_status_roaming_turned_off_subtext" msgid="6840673347416227054">"Data-roaming er slått av"</string>
@@ -835,7 +835,7 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"Du må starte enheten din på nytt for å endre innstillingen."</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"Start på nytt"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"Avbryt"</string>
-    <string name="removable_esim_string" msgid="7931369811671787649">"Angi flyttbart e-SIM-kort som standard"</string>
+    <string name="removable_esim_string" msgid="7931369811671787649">"Angi flyttbart eSIM-kort som standard"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"Strømforsyning for mobilradio"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"Se adressebok for SIM-kort"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"Vis forhåndsbestemte numre"</string>
