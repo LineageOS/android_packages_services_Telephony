@@ -849,7 +849,7 @@
     <string name="radio_info_ims_reg_status" msgid="25582845222446390">"IMS ରେଜିଷ୍ଟ୍ରସନ୍: <xliff:g id="STATUS">%1$s</xliff:g>\nଭଏସ୍ ଓଭର୍ LTE: <xliff:g id="AVAILABILITY_0">%2$s</xliff:g>\nଭଏସ୍ ଓଭର୍ ୱାଇ-ଫାଇ: <xliff:g id="AVAILABILITY_1">%3$s</xliff:g>\nଭିଡିଓ କଲିଙ୍ଗ: <xliff:g id="AVAILABILITY_2">%4$s</xliff:g>\nUT ଇଣ୍ଟର୍‌ଫେସ୍: <xliff:g id="AVAILABILITY_3">%5$s</xliff:g>"</string>
     <string name="radioInfo_service_in" msgid="45753418231446400">"ସେବାରେ ଅଛି"</string>
     <string name="radioInfo_service_out" msgid="287972405416142312">"ଏବେ କାମ କରୁନାହିଁ"</string>
-    <string name="radioInfo_service_emergency" msgid="4763879891415016848">"କେବଳ ଜରୁରୀକାଳୀନ କଲ୍"</string>
+    <string name="radioInfo_service_emergency" msgid="4763879891415016848">"କେବଳ ଜରୁରୀକାଳୀନ କଲ"</string>
     <string name="radioInfo_service_off" msgid="3456583511226783064">"ରେଡିଓ ବନ୍ଦ କରନ୍ତୁ"</string>
     <string name="radioInfo_roaming_in" msgid="3156335577793145965">"ରୋମିଂ"</string>
     <string name="radioInfo_roaming_not" msgid="1904547918725478110">"ରୋମିଂରେ ନାହିଁ"</string>
