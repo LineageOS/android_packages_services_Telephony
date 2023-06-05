@@ -75,7 +75,7 @@
     <string name="phone_accounts_configure_account_settings" msgid="6622119715253196586">"Конфигурирајте ги поставките на сметка"</string>
     <string name="phone_accounts_all_calling_accounts" msgid="1609600743500618823">"Сите сметки за повици"</string>
     <string name="phone_accounts_all_calling_accounts_summary" msgid="2214134955430107240">"Изберете кои сметки може да повикуваат"</string>
-    <string name="wifi_calling" msgid="3650509202851355742">"Повик преку Wi-Fi"</string>
+    <string name="wifi_calling" msgid="3650509202851355742">"Повици преку Wi-Fi"</string>
     <string name="connection_service_default_label" msgid="7332739049855715584">"Вградена услуга на поврзување"</string>
     <string name="voicemail" msgid="7697769412804195032">"Говорна пошта"</string>
     <string name="voicemail_settings_with_label" msgid="4228431668214894138">"Говорна пошта (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -296,7 +296,7 @@
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"Повиците и услугите за интернет на <xliff:g id="CARRIER_NAME">%1$s</xliff:g> може да се блокирани со друга SIM-картичка."</string>
     <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"Најдени и отстранети се неподдржани сметки на SIP"</string>
     <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"Платформата Android веќе не поддржува повикување преку SIP.\nВашите постојни сметки на SIP <xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g> се отстранети.\nПотврдете ја вашата стандардна поставка за повикување."</string>
-    <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"Одете во „Поставки“"</string>
+    <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"Отворете „Поставки“"</string>
     <string name="data_usage_title" msgid="8438592133893837464">"Потрошен интернет од апликации"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"<xliff:g id="ID_1">%1$s</xliff:g> потрошен мобилен интернет во периодот <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"Напредни"</string>
@@ -309,7 +309,7 @@
     <string name="sim_selection_required_pref" msgid="6985901872978341314">"Треба да се избере"</string>
     <string name="sim_change_data_title" msgid="9142726786345906606">"Да се промени SIM за интернет?"</string>
     <string name="sim_change_data_message" msgid="3567358694255933280">"Да се користи <xliff:g id="NEW_SIM">%1$s</xliff:g> наместо <xliff:g id="OLD_SIM">%2$s</xliff:g> за мобилен интернет?"</string>
-    <string name="wifi_calling_settings_title" msgid="5800018845662016507">"Повик преку Wi-Fi"</string>
+    <string name="wifi_calling_settings_title" msgid="5800018845662016507">"Повици преку Wi-Fi"</string>
     <string name="video_calling_settings_title" msgid="342829454913266078">"Видеоповикување преку оператор"</string>
     <string name="gsm_umts_options" msgid="4968446771519376808">"Опции за GSM/UMTS"</string>
     <string name="cdma_options" msgid="3669592472226145665">"Опции на CDMA"</string>
@@ -458,7 +458,7 @@
     <string name="auto_retry_mode_title" msgid="2985801935424422340">"Автоматски повторен обид"</string>
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"Овозможи режим на автоматски повторен обид"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"Промена на режим TTY не е дозволена за време на видеоповик"</string>
-    <string name="menu_add" msgid="5616487894975773141">"Додај контакт"</string>
+    <string name="menu_add" msgid="5616487894975773141">"Додајте контакт"</string>
     <string name="menu_edit" msgid="3593856941552460706">"Измени контакт"</string>
     <string name="menu_delete" msgid="6326861853830546488">"Избриши контакт"</string>
     <string name="menu_dial" msgid="4178537318419450012">"Повикај контакт"</string>
@@ -596,7 +596,7 @@
     <string name="hac_mode_summary" msgid="7774989500136009881">"Вклучи компатибилност на слушни помагала"</string>
     <string name="rtt_mode_title" msgid="3075948111362818043">"Повик со „Текст во реално време“ (RTT)"</string>
     <string name="rtt_mode_summary" msgid="8631541375609989562">"Дозволете пораки во текот на гласовен повик"</string>
-    <string name="rtt_mode_more_information" msgid="587500128658756318">"Функцијата RTT им помага на повикувачи коишто се глуви, слабо слушаат, имаат говорна мана или пак, им е потребно многу повеќе од глас.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Дознајте повеќе&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - Повиците со RTT се зачувуваат како препис на порака\n       &lt;br&gt; - Функцијата RTT не е достапна за видеоповици"</string>
+    <string name="rtt_mode_more_information" msgid="587500128658756318">"RTT им помага на корисниците коишто се глуви, наглуви, имаат попреченост во говорот или пак, не им е доволен само глас.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Дознајте повеќе&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT-повиците се зачувуваат како транскрипции на пораки\n       &lt;br&gt; - Функцијата RTT не е достапна за видеоповици"</string>
     <string name="no_rtt_when_roaming" msgid="5268008247378355389">"Напомена: RTT не е достапна во роаминг"</string>
   <string-array name="tty_mode_entries">
     <item msgid="3238070884803849303">"TTY исклучени"</item>
