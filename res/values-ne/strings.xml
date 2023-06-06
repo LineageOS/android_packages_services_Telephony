@@ -927,7 +927,7 @@
     <string name="call_quality_notification_name" msgid="3476828289553948830">"कलको गुणस्तरसम्बन्धी सूचना"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"चल्तीबाट हटाइएका SIP खाताहरू"</string>
     <string name="send_from_work_profile_title" msgid="7044759579507604732">"व्यक्तिगत एपमार्फत म्यासेज पठाउन मिल्दैन"</string>
-    <string name="send_from_work_profile_description" msgid="2174402508727161974">"तपाईंको सङ्गठनले तपाईंलाई केवल कामसम्बन्धी एपहरूमार्फत म्यासेज पठाउने अनुमति दिन्छ"</string>
+    <string name="send_from_work_profile_description" msgid="2174402508727161974">"तपाईंको सङ्गठनले तपाईंलाई केवल कामसम्बन्धी एपहरूमार्फत म्यासेज पठाउने अनुमति दिएको छ"</string>
     <string name="send_from_work_profile_cancel" msgid="177746511030381711">"रद्द गर्नुहोस्"</string>
     <string name="send_from_work_profile_action_str" msgid="6892775562934243337">"कार्य प्रोफाइल प्रयोग गर्नुहोस्"</string>
     <string name="install_messages_on_work_profile_action_str" msgid="3773440996395152903">"कामसम्बन्धी म्यासेजिङ एप इन्स्टल गर्नुहोस्"</string>
