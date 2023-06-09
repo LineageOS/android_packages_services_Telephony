@@ -17,6 +17,7 @@
 package com.android.phone;
 
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
+import static android.permission.flags.Flags.opEnableMobileDataByUser;
 import static android.telephony.TelephonyManager.HAL_SERVICE_NETWORK;
 import static android.telephony.TelephonyManager.HAL_SERVICE_RADIO;
 
@@ -8822,6 +8823,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             }
         } else {
             enforceModifyPermission();
+        }
+
+        if (reason == TelephonyManager.DATA_ENABLED_REASON_USER && enabled
+                && null != callingPackage && opEnableMobileDataByUser()) {
+            mAppOps.noteOp(AppOpsManager.OPSTR_ENABLE_MOBILE_DATA_BY_USER, Binder.getCallingUid(),
+                    callingPackage, null, null);
         }
 
         final long identity = Binder.clearCallingIdentity();
