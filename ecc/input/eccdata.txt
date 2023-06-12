@@ -881,6 +881,31 @@ countries {
     types: TYPE_UNSPECIFIED
     routing: NORMAL
   }
+  eccs {
+      phone_number: "016"
+      types: TYPE_UNSPECIFIED
+      routing: NORMAL
+  }
+  eccs {
+        phone_number: "017"
+        types: TYPE_UNSPECIFIED
+        routing: NORMAL
+  }
+  eccs {
+       phone_number: "021"
+       types: TYPE_UNSPECIFIED
+       routing: NORMAL
+  }
+  eccs {
+      phone_number: "116111"
+      types: TYPE_UNSPECIFIED
+      routing: NORMAL
+  }
+  eccs {
+      phone_number: "900018018"
+      types: TYPE_UNSPECIFIED
+      routing: NORMAL
+  }
   ecc_fallback: "112"
 }
 countries {
