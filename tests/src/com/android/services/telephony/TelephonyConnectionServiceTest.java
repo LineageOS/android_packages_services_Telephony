@@ -1333,6 +1333,72 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
     }
 
     /**
+     * Test that the TelephonyConnectionService successfully turns radio on before placing the
+     * call when radio off because bluetooth on and wifi calling is not enabled
+     */
+    @Test
+    @SmallTest
+    public void testCreateOutgoingCall_turnOnRadio_bluetoothOn() {
+        doReturn(true).when(mDeviceState).isRadioPowerDownAllowedOnBluetooth(any());
+        doReturn(PhoneConstants.CELL_ON_FLAG).when(mDeviceState).getCellOnStatus(any());
+        Phone testPhone0 = makeTestPhone(0 /*phoneId*/, ServiceState.STATE_POWER_OFF,
+                false /*isEmergencyOnly*/);
+        Phone testPhone1 = makeTestPhone(1 /*phoneId*/, ServiceState.STATE_POWER_OFF,
+                false /*isEmergencyOnly*/);
+        doReturn(false).when(testPhone0).isRadioOn();
+        doReturn(false).when(testPhone0).isWifiCallingEnabled();
+        doReturn(false).when(testPhone1).isRadioOn();
+        doReturn(false).when(testPhone1).isWifiCallingEnabled();
+        List<Phone> phones = new ArrayList<>(2);
+        phones.add(testPhone0);
+        phones.add(testPhone1);
+        setPhones(phones);
+        setupHandleToPhoneMap(PHONE_ACCOUNT_HANDLE_1, testPhone0);
+        ConnectionRequest connectionRequest = new ConnectionRequest.Builder()
+                .setAccountHandle(PHONE_ACCOUNT_HANDLE_1)
+                .setAddress(TEST_ADDRESS)
+                .build();
+        mConnection = mTestConnectionService.onCreateOutgoingConnection(
+                PHONE_ACCOUNT_HANDLE_1, connectionRequest);
+
+        verify(mRadioOnHelper).triggerRadioOnAndListen(any(), eq(false),
+                eq(testPhone0), eq(false), eq(0));
+    }
+
+    /**
+     * Test that the TelephonyConnectionService will not turns radio on before placing the
+     * call when radio off because bluetooth on and wifi calling is enabled
+     */
+    @Test
+    @SmallTest
+    public void testCreateOutgoingCall_notTurnOnRadio_bluetoothOnWifiCallingEnabled() {
+        doReturn(true).when(mDeviceState).isRadioPowerDownAllowedOnBluetooth(any());
+        doReturn(PhoneConstants.CELL_ON_FLAG).when(mDeviceState).getCellOnStatus(any());
+        Phone testPhone0 = makeTestPhone(0 /*phoneId*/, ServiceState.STATE_POWER_OFF,
+                false /*isEmergencyOnly*/);
+        Phone testPhone1 = makeTestPhone(1 /*phoneId*/, ServiceState.STATE_POWER_OFF,
+                false /*isEmergencyOnly*/);
+        doReturn(false).when(testPhone0).isRadioOn();
+        doReturn(true).when(testPhone0).isWifiCallingEnabled();
+        doReturn(false).when(testPhone1).isRadioOn();
+        doReturn(true).when(testPhone1).isWifiCallingEnabled();
+        List<Phone> phones = new ArrayList<>(2);
+        phones.add(testPhone0);
+        phones.add(testPhone1);
+        setPhones(phones);
+        setupHandleToPhoneMap(PHONE_ACCOUNT_HANDLE_1, testPhone0);
+        ConnectionRequest connectionRequest = new ConnectionRequest.Builder()
+                .setAccountHandle(PHONE_ACCOUNT_HANDLE_1)
+                .setAddress(TEST_ADDRESS)
+                .build();
+        mConnection = mTestConnectionService.onCreateOutgoingConnection(
+                PHONE_ACCOUNT_HANDLE_1, connectionRequest);
+
+        verify(mRadioOnHelper, times(0)).triggerRadioOnAndListen(any(),
+                eq(true), eq(testPhone0), eq(false), eq(0));
+    }
+
+    /**
      * Test that the TelephonyConnectionService does not perform a DDS switch when the carrier
      * supports control-plane fallback.
      */

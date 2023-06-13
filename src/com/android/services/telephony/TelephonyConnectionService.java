@@ -1061,14 +1061,16 @@ public class TelephonyConnectionService extends ConnectionService {
 
         final boolean isAirplaneModeOn = mDeviceState.isAirplaneModeOn(this);
 
-        boolean needToTurnOnRadio = (isEmergencyNumber && (!isRadioOn() || isAirplaneModeOn))
-                || isRadioPowerDownOnBluetooth();
         boolean needToTurnOffSatellite = isSatelliteBlockingCall(isEmergencyNumber);
 
         // Get the right phone object from the account data passed in.
         final Phone phone = getPhoneForAccount(request.getAccountHandle(), isEmergencyNumber,
                 /* Note: when not an emergency, handle can be null for unknown callers */
                 handle == null ? null : handle.getSchemeSpecificPart());
+
+        boolean isPhoneWifiCallingEnabled = phone != null && phone.isWifiCallingEnabled();
+        boolean needToTurnOnRadio = (isEmergencyNumber && (!isRadioOn() || isAirplaneModeOn))
+                || (isRadioPowerDownOnBluetooth() && !isPhoneWifiCallingEnabled);
 
         if (mDomainSelectionResolver.isDomainSelectionSupported()) {
             // Normal routing emergency number shall be handled by normal call domain selctor.
