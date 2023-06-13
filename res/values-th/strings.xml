@@ -559,7 +559,7 @@
     <string name="emergency_information_hint" msgid="9208897544917793012">"ข้อมูลสำหรับกรณีฉุกเฉิน"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"เจ้าของ"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"แตะอีกครั้งเพื่อดูข้อมูล"</string>
-    <string name="emergency_enable_radio_dialog_title" msgid="2667568200755388829">"หมายเลขฉุกเฉิน"</string>
+    <string name="emergency_enable_radio_dialog_title" msgid="2667568200755388829">"โทรฉุกเฉิน"</string>
     <string name="single_emergency_number_title" msgid="8413371079579067196">"หมายเลขฉุกเฉิน"</string>
     <string name="numerous_emergency_numbers_title" msgid="8972398932506755510">"หมายเลขฉุกเฉิน"</string>
     <string name="emergency_call_shortcut_hint" msgid="1290485125107779500">"แตะอีกครั้งเพื่อโทรหา <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>

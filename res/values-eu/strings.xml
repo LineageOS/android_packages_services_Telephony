@@ -615,7 +615,7 @@
     <string name="ota_title_activate" msgid="4049645324841263423">"Aktibatu telefonoa"</string>
     <string name="ota_touch_activate" msgid="838764494319694754">"Telefono-zerbitzua aktibatzeko, dei berezi bat egin behar da.\n\n\"Aktibatu\" sakatu ondoren, telefonoa aktibatzeko, entzun ematen zaizkizun argibideak."</string>
     <string name="ota_hfa_activation_title" msgid="3300556778212729671">"Aktibatzen…"</string>
-    <string name="ota_hfa_activation_dialog_message" msgid="7921718445773342996">"Telefonoa datu-konexioaren zerbitzua aktibatzen ari da.\n\nEragiketa 5 minutura arte luza daiteke."</string>
+    <string name="ota_hfa_activation_dialog_message" msgid="7921718445773342996">"Telefonoa mugikorretarako datu-zerbitzua aktibatzen ari da.\n\nEragiketa gehienez 5 minutu luza daiteke."</string>
     <string name="ota_skip_activation_dialog_title" msgid="7666611236789203797">"Aktibazioa saltatu nahi duzu?"</string>
     <string name="ota_skip_activation_dialog_message" msgid="6691722887019708713">"Aktibazioa saltatzen baduzu, ezingo duzu deirik egin, ez eta datu-konexioaren sareetara konektatu ere, baina Wi-Fi sareetara konektatu ahal izango duzu. Telefonoa aktibatzen duzun arte, pizten duzun bakoitzean eskatuko zaizu aktibatzeko."</string>
     <string name="ota_skip_activation_dialog_skip_label" msgid="5908029466817825633">"Saltatu"</string>
