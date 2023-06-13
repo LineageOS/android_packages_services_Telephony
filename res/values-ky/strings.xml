@@ -835,7 +835,7 @@
     <string name="cbrs_data_switch_string" msgid="6060356430838077653">"Жарандык радио кызматынын дайындары"</string>
     <string name="dsds_switch_string" msgid="7564769822086764796">"DSDS\'ти иштетүү"</string>
     <string name="dsds_dialog_title" msgid="8494569893941847575">"Түзмөк өчүп күйсүнбү?"</string>
-    <string name="dsds_dialog_message" msgid="4047480385678538850">"Бул жөндөөнү өзгөртүү үчүн түзмөгүңүздү өчүрүп күйгүзүңүз."</string>
+    <string name="dsds_dialog_message" msgid="4047480385678538850">"Бул параметрди өзгөртүү үчүн түзмөгүңүздү өчүрүп күйгүзүңүз."</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"Өчүрүп-күйгүзүү"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"Жокко чыгаруу"</string>
     <string name="removable_esim_string" msgid="7931369811671787649">"Чыгарылуучу eSIM-картаны демейки катары коюу"</string>
