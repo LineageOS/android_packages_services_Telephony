@@ -1120,11 +1120,8 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         }
 
         PersistableBundle restoredBundle = null;
-        File file = null;
-        FileInputStream inFile = null;
-        try {
-            file = new File(mContext.getFilesDir(),fileName);
-            inFile = new FileInputStream(file);
+        File file = new File(mContext.getFilesDir(), fileName);
+        try (FileInputStream inFile = new FileInputStream(file)) {
 
             restoredBundle = PersistableBundle.readFromStream(inFile);
             String savedVersion = restoredBundle.getString(KEY_VERSION);
@@ -1134,19 +1131,15 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                 loge("Saved version mismatch: " + version + " vs " + savedVersion);
                 restoredBundle = null;
             }
-
-            inFile.close();
         } catch (FileNotFoundException e) {
             // Missing file is normal occurrence that might occur with a new sim or when restoring
             // an override file during boot and should not be treated as an error.
-            if (file != null) {
-                if (isNoSimConfig) {
-                    logd("File not found: " + file.getPath());
-                } else {
-                    String filePath = file.getPath();
-                    filePath = getFilePathForLogging(filePath, iccid);
-                    logd("File not found : " + filePath);
-                }
+            if (isNoSimConfig) {
+                logd("File not found: " + file.getPath());
+            } else {
+                String filePath = file.getPath();
+                filePath = getFilePathForLogging(filePath, iccid);
+                logd("File not found : " + filePath);
             }
         } catch (IOException e) {
             loge(e.toString());
