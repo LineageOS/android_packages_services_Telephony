@@ -511,7 +511,7 @@
     <string name="invalidPin2" msgid="6467957903056379343">"4 देखि 8 नम्बरको एक PIN2 प्रविष्टि गर्नुहोस्।"</string>
     <string name="invalidPuk2" msgid="713729511903849544">"8 नम्बरको एक PUK2 प्रविष्टि गर्नुहोस्।"</string>
     <string name="pin2_changed" msgid="5710551850481287821">"PIN2 अद्यावधिक गरियो"</string>
-    <string name="label_puk2_code" msgid="2852217004288085562">"PUK2 कोड प्रविष्टि गर्नुहोस्"</string>
+    <string name="label_puk2_code" msgid="2852217004288085562">"PUK2 कोड हाल्नुहोस्"</string>
     <string name="fdn_enable_puk2_requested" msgid="5793652792131588041">"पासवर्ड गलत छ। PIN2 अहिले ब्लक गरिएको छ। पिन 2 परिवर्तन, फेरि प्रयास गर्नुहोस्।"</string>
     <string name="puk2_requested" msgid="6992374450720307514">"पासवर्ड गलत छ। सिम अब ब्लक गरिएको छ। PUK2 प्रविष्टि गर्नुहोस्।"</string>
     <string name="puk2_blocked" msgid="3131139031779319911">"PUK2 स्थायी रूपमा रोक्का गरियो।"</string>
@@ -620,7 +620,7 @@
     <string name="ota_hfa_activation_dialog_message" msgid="7921718445773342996">"फोनले तपाईँको मोबाइल डेटा सेवा सक्रिय पार्दै छ। \n\nयसले ५ मिनेटसम्म समय लिन सक्छ।"</string>
     <string name="ota_skip_activation_dialog_title" msgid="7666611236789203797">"सक्रिया गर्ने काम छोड्ने हो?"</string>
     <string name="ota_skip_activation_dialog_message" msgid="6691722887019708713">"यदि तपाईं सक्रियता छोड्नुहुन्छ भने तपाईं कल वा मोबाइल डेटा नेटवर्क (तपाईं Wi-Fi नेटवर्क जडान गर्न सक्नु हुन्छ) बाट जडान गर्न सक्नु हुन्छ। तपाईंले आफ्नो फोनलाई सक्रिय गर्ने बेलासम्म तपाईं यसलाई हरेक पटक खोल्ने गर्नुहोस्।"</string>
-    <string name="ota_skip_activation_dialog_skip_label" msgid="5908029466817825633">"छोड्नुहोस्"</string>
+    <string name="ota_skip_activation_dialog_skip_label" msgid="5908029466817825633">"स्किप गर्नुहोस्"</string>
     <string name="ota_activate" msgid="7939695753665438357">"सक्रिय बनाउनुहोस्"</string>
     <string name="ota_title_activate_success" msgid="1272135024761004889">"फोन सक्रिय भएको छ।"</string>
     <string name="ota_title_problem_with_activation" msgid="7019745985413368726">"सक्रिय पार्दा समस्या"</string>
