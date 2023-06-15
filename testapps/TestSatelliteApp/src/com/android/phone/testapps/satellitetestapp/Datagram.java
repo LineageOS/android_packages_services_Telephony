@@ -83,10 +83,12 @@ public class Datagram extends Activity {
     }
 
     private void pollPendingSatelliteDatagramsApp(View view) {
+        mSatelliteManager.onDeviceAlignedWithSatellite(true);
         SatelliteTestApp.getTestSatelliteService().sendOnPendingDatagrams();
         SatelliteTestApp.getTestSatelliteService().sendOnSatelliteDatagramReceived(
                     mReceivedDatagram, 0);
         LinkedBlockingQueue<Integer> resultListener = new LinkedBlockingQueue<>(1);
+        mSatelliteManager.requestSatelliteEnabled(true, true, Runnable::run, resultListener::offer);
         mSatelliteManager.pollPendingSatelliteDatagrams(Runnable::run, resultListener::offer);
         try {
             Integer value = resultListener.poll(1000, TimeUnit.MILLISECONDS);
@@ -103,10 +105,12 @@ public class Datagram extends Activity {
     }
 
     private void multiplePollPendingSatelliteDatagramsApp(View view) {
+        mSatelliteManager.onDeviceAlignedWithSatellite(true);
         SatelliteTestApp.getTestSatelliteService().sendOnPendingDatagrams();
         SatelliteTestApp.getTestSatelliteService().sendOnSatelliteDatagramReceived(
                     mReceivedDatagram, 4);
         LinkedBlockingQueue<Integer> resultListener = new LinkedBlockingQueue<>(1);
+        mSatelliteManager.requestSatelliteEnabled(true, true, Runnable::run, resultListener::offer);
         mSatelliteManager.pollPendingSatelliteDatagrams(Runnable::run, resultListener::offer);
         SatelliteTestApp.getTestSatelliteService().sendOnSatelliteDatagramReceived(
                     mReceivedDatagram, 3);
@@ -135,6 +139,7 @@ public class Datagram extends Activity {
     }
 
     private void sendSatelliteDatagramApp(View view) {
+        mSatelliteManager.onDeviceAlignedWithSatellite(true);
         LinkedBlockingQueue<Integer> resultListener = new LinkedBlockingQueue<>(1);
         String mText = "This is a test datagram message";
         SatelliteDatagram datagram = new SatelliteDatagram(mText.getBytes());
@@ -155,6 +160,7 @@ public class Datagram extends Activity {
     }
 
     private void multipleSendSatelliteDatagramApp(View view) {
+        mSatelliteManager.onDeviceAlignedWithSatellite(true);
         LinkedBlockingQueue<Integer> resultListener = new LinkedBlockingQueue<>(1);
         String mText = "This is a test datagram message";
         SatelliteDatagram datagram = new SatelliteDatagram(mText.getBytes());
@@ -183,7 +189,9 @@ public class Datagram extends Activity {
     }
 
     private void multipleSendReceiveSatelliteDatagramApp(View view) {
+        mSatelliteManager.onDeviceAlignedWithSatellite(true);
         LinkedBlockingQueue<Integer> resultListener = new LinkedBlockingQueue<>(1);
+        mSatelliteManager.requestSatelliteEnabled(true, true, Runnable::run, resultListener::offer);
         String mText = "This is a test datagram message";
         SatelliteDatagram datagram = new SatelliteDatagram(mText.getBytes());
         mSatelliteManager.sendSatelliteDatagram(SatelliteManager.DATAGRAM_TYPE_SOS_MESSAGE,
