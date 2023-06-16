@@ -30,16 +30,23 @@
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:layout_weight="0"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
             android:textColor="@android:color/holo_blue_dark"
             android:textSize="20dp"
             android:text="Satellite Control APIs"/>
         <Button
-            android:id="@+id/requestSatelliteEnabled"
+            android:id="@+id/enableSatellite"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingRight="4dp"
-            android:text="@string/requestSatelliteEnabled"/>
+            android:text="@string/enableSatellite"/>
+        <Button
+            android:id="@+id/disableSatellite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="4dp"
+            android:text="@string/disableSatellite"/>
          <Button
             android:id="@+id/requestIsSatelliteEnabled"
             android:layout_width="match_parent"

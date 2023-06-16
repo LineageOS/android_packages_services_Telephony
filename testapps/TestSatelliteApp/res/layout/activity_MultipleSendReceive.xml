@@ -30,22 +30,29 @@
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:layout_weight="0"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
             android:textColor="@android:color/holo_blue_dark"
             android:textSize="20dp"
-            android:text="SatelliteTransmissionUpdates APIs"/>
+            android:text="Multiple Send and Receive APIs"/>
         <Button
-            android:id="@+id/startSatelliteTransmissionUpdates"
+            android:id="@+id/multiplePollPendingSatelliteDatagrams"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingRight="4dp"
-            android:text="@string/startSatelliteTransmissionUpdates"/>
+            android:text="@string/multiplePollPendingSatelliteDatagrams"/>
         <Button
-            android:id="@+id/stopSatelliteTransmissionUpdates"
+            android:id="@+id/multipleSendSatelliteDatagram"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingRight="4dp"
-            android:text="@string/stopSatelliteTransmissionUpdates"/>
+            android:text="@string/multipleSendSatelliteDatagram"/>
+        <Button
+            android:id="@+id/multipleSendReceiveSatelliteDatagram"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="4dp"
+            android:text="@string/multipleSendReceiveSatelliteDatagram"/>
         <Button
             android:id="@+id/Back"
             android:onClick="Back"
@@ -56,10 +63,33 @@
             android:layout_height="wrap_content"
             android:paddingRight="4dp"
             android:text="@string/Back"/>
-         <TextView
+        <TextView
             android:id="@+id/text_id"
-            android:layout_width="300dp"
-            android:layout_height="200dp"
+            android:layout_width="400dp"
+            android:layout_height="50dp"
+            android:capitalize="characters"
+            android:textColor="@android:color/holo_blue_light"
+            android:textSize="15dp" />
+        <TextView
+            android:id="@+id/text_id1"
+            android:layout_width="400dp"
+            android:layout_height="65dp"
+            android:capitalize="characters"
+            android:textColor="@android:color/holo_blue_light"
+            android:layout_centerVertical="true"
+            android:textSize="15dp" />
+        <TextView
+            android:id="@+id/text_id2"
+            android:layout_width="400dp"
+            android:layout_height="65dp"
+            android:capitalize="characters"
+            android:textColor="@android:color/holo_blue_light"
+            android:layout_centerVertical="true"
+            android:textSize="15dp" />
+        <TextView
+            android:id="@+id/text_id3"
+            android:layout_width="400dp"
+            android:layout_height="65dp"
             android:capitalize="characters"
             android:textColor="@android:color/holo_blue_light"
             android:layout_centerVertical="true"

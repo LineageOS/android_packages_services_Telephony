@@ -17,12 +17,12 @@
 
 <resources>
     <string name="SatelliteControl">SatelliteControl APIs</string>
-    <string name="SatelliteTransmissionUpdates">SatelliteTransmissionUpdates APIs</string>
     <string name="Datagram">Datagram APIs</string>
     <string name="Provisioning">Provisioning APIs</string>
     <string name="SatelliteModemState">SatelliteModemState APIs</string>
 
-    <string name="requestSatelliteEnabled">requestSatelliteEnabled</string>
+    <string name="enableSatellite">enableSatellite</string>
+    <string name="disableSatellite">disableSatellite</string>
     <string name="requestIsSatelliteEnabled">requestIsSatelliteEnabled</string>
     <string name="requestIsDemoModeEnabled">requestIsDemoModeEnabled</string>
     <string name="requestIsSatelliteSupported">requestIsSatelliteSupported</string>
@@ -30,25 +30,28 @@
     <string name="requestIsSatelliteCommunicationAllowedForCurrentLocation">requestIsSatelliteCommunicationAllowedForCurrentLocation</string>
     <string name="requestTimeForNextSatelliteVisibility">requestTimeForNextSatelliteVisibility</string>
 
-    <string name="startSatelliteTransmissionUpdates">startSatelliteTransmissionUpdates</string>
-    <string name="stopSatelliteTransmissionUpdates">stopSatelliteTransmissionUpdates</string>
-
     <string name="pollPendingSatelliteDatagrams">pollPendingSatelliteDatagrams</string>
-    <string name="multiplePollPendingSatelliteDatagrams">multiplePollPendingSatelliteDatagrams</string>
     <string name="sendSatelliteDatagram">sendSatelliteDatagram</string>
-    <string name="multipleSendSatelliteDatagram">multipleSendSatelliteDatagram</string>
-    <string name="multipleSendReceiveSatelliteDatagram">multipleSendReceiveSatelliteDatagram</string>
     <string name="registerForSatelliteDatagram">registerForSatelliteDatagram</string>
     <string name="unregisterForSatelliteDatagram">unregisterForSatelliteDatagram</string>
+    <string name="registerForSatelliteModemStateChanged">registerForSatelliteModemStateChanged</string>
+    <string name="unregisterForSatelliteModemStateChanged">unregisterForSatelliteModemStateChanged</string>
+    <string name="showSatelliteModemStateTransition">showSatelliteModemStateTransition</string>
+    <string name="startSatelliteTransmissionUpdates">startSatelliteTransmissionUpdates</string>
+    <string name="stopSatelliteTransmissionUpdates">stopSatelliteTransmissionUpdates</string>
+    <string name="showDatagramSendStateTransition">showDatagramSendStateTransition</string>
+    <string name="showDatagramReceiveStateTransition">showDatagramReceiveStateTransition</string>
 
     <string name="provisionSatelliteService">provisionSatelliteService</string>
     <string name="deprovisionSatelliteService">deprovisionSatelliteService</string>
     <string name="requestIsSatelliteProvisioned">requestIsSatelliteProvisioned</string>
     <string name="registerForSatelliteProvisionStateChanged">registerForSatelliteProvisionStateChanged</string>
     <string name="unregisterForSatelliteProvisionStateChanged">unregisterForSatelliteProvisionStateChanged</string>
+    <string name="showCurrentSatelliteProvisionState">showCurrentSatelliteProvisionState</string>
 
-    <string name="registerForSatelliteModemStateChanged">registerForSatelliteModemStateChanged</string>
-    <string name="unregisterForSatelliteModemStateChanged">unregisterForSatelliteModemStateChanged</string>
+    <string name="multiplePollPendingSatelliteDatagrams">multiplePollPendingSatelliteDatagrams</string>
+    <string name="multipleSendSatelliteDatagram">multipleSendSatelliteDatagram</string>
+    <string name="multipleSendReceiveSatelliteDatagram">multipleSendReceiveSatelliteDatagram</string>
 
     <string name="Back">Back</string>
 </resources>

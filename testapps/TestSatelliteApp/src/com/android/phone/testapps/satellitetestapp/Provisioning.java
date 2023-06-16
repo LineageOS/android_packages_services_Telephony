@@ -39,6 +39,8 @@ public class Provisioning extends Activity {
 
     private static final String TAG = "Provisioning";
 
+    private boolean mProvisioned = false;
+
     private SatelliteManager mSatelliteManager;
     private SatelliteProvisionStateCallbackTestApp mCallback;
 
@@ -59,6 +61,8 @@ public class Provisioning extends Activity {
                 .setOnClickListener(this::registerForSatelliteProvisionStateChangedApp);
         findViewById(R.id.unregisterForSatelliteProvisionStateChanged)
                 .setOnClickListener(this::unregisterForSatelliteProvisionStateChangedApp);
+        findViewById(R.id.showCurrentSatelliteProvisionState)
+                .setOnClickListener(this::showCurrentSatelliteProvisionStateApp);
         findViewById(R.id.Back).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -67,12 +71,13 @@ public class Provisioning extends Activity {
         });
     }
 
-    protected static class SatelliteProvisionStateCallbackTestApp implements
+    protected class SatelliteProvisionStateCallbackTestApp implements
             SatelliteProvisionStateCallback {
         @Override
         public void onSatelliteProvisionStateChanged(boolean provisioned) {
+            mProvisioned = provisioned;
             Log.d(TAG, "onSatelliteProvisionStateChanged in SatelliteTestApp: provisioned="
-                    + provisioned);
+                    + mProvisioned);
         }
     }
 
@@ -143,5 +148,10 @@ public class Provisioning extends Activity {
         mSatelliteManager.unregisterForSatelliteProvisionStateChanged(mCallback);
         TextView textView = findViewById(R.id.text_id);
         textView.setText("unregisterForSatelliteProvisionStateChanged is successful");
+    }
+
+    private void showCurrentSatelliteProvisionStateApp(View view) {
+        TextView textView = findViewById(R.id.text_id);
+        textView.setText("Current Provision State is " + mProvisioned);
     }
 }

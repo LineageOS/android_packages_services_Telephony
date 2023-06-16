@@ -30,7 +30,8 @@
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:layout_weight="0"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
             android:textColor="@android:color/holo_blue_dark"
             android:textSize="20dp"
             android:text="Provisioning APIs"/>
@@ -64,6 +65,12 @@
             android:layout_height="wrap_content"
             android:paddingRight="4dp"
             android:text="@string/unregisterForSatelliteProvisionStateChanged"/>
+        <Button
+            android:id="@+id/showCurrentSatelliteProvisionState"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="4dp"
+            android:text="@string/showCurrentSatelliteProvisionState"/>
         <Button
             android:id="@+id/Back"
             android:onClick="Back"

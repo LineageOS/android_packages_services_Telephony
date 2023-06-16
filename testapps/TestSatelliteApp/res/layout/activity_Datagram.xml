@@ -27,13 +27,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical" >
-
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:layout_weight="0"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
             android:textColor="@android:color/holo_blue_dark"
             android:textSize="20dp"
             android:text="Datagram APIs"/>
+        <Button
+            android:id="@+id/startSatelliteTransmissionUpdates"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="4dp"
+            android:text="@string/startSatelliteTransmissionUpdates"/>
+        <Button
+            android:id="@+id/stopSatelliteTransmissionUpdates"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="4dp"
+            android:text="@string/stopSatelliteTransmissionUpdates"/>
         <Button
             android:id="@+id/pollPendingSatelliteDatagrams"
             android:layout_width="match_parent"
@@ -41,29 +53,11 @@
             android:paddingRight="4dp"
             android:text="@string/pollPendingSatelliteDatagrams"/>
         <Button
-            android:id="@+id/multiplePollPendingSatelliteDatagrams"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingRight="4dp"
-            android:text="@string/multiplePollPendingSatelliteDatagrams"/>
-        <Button
             android:id="@+id/sendSatelliteDatagram"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingRight="4dp"
             android:text="@string/sendSatelliteDatagram"/>
-        <Button
-            android:id="@+id/multipleSendSatelliteDatagram"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingRight="4dp"
-            android:text="@string/multipleSendSatelliteDatagram"/>
-        <Button
-            android:id="@+id/multipleSendReceiveSatelliteDatagram"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingRight="4dp"
-            android:text="@string/multipleSendReceiveSatelliteDatagram"/>
         <Button
             android:id="@+id/registerForSatelliteDatagram"
             android:layout_width="match_parent"
@@ -77,6 +71,36 @@
             android:paddingRight="4dp"
             android:text="@string/unregisterForSatelliteDatagram"/>
         <Button
+            android:id="@+id/showDatagramSendStateTransition"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="4dp"
+            android:text="@string/showDatagramSendStateTransition"/>
+        <Button
+            android:id="@+id/showDatagramReceiveStateTransition"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="4dp"
+            android:text="@string/showDatagramReceiveStateTransition"/>
+        <Button
+            android:id="@+id/registerForSatelliteModemStateChanged"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="4dp"
+            android:text="@string/registerForSatelliteModemStateChanged"/>
+        <Button
+            android:id="@+id/unregisterForSatelliteModemStateChanged"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="4dp"
+            android:text="@string/unregisterForSatelliteModemStateChanged"/>
+        <Button
+            android:id="@+id/showSatelliteModemStateTransition"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="4dp"
+            android:text="@string/showSatelliteModemStateTransition"/>
+        <Button
             android:id="@+id/Back"
             android:onClick="Back"
             android:textColor="@android:color/holo_blue_dark"
@@ -88,11 +112,10 @@
             android:text="@string/Back"/>
         <TextView
             android:id="@+id/text_id"
-            android:layout_width="300dp"
-            android:layout_height="200dp"
+            android:layout_width="400dp"
+            android:layout_height="50dp"
             android:capitalize="characters"
             android:textColor="@android:color/holo_blue_light"
-            android:layout_centerVertical="true"
             android:textSize="15dp" />
     </LinearLayout>
 </LinearLayout>

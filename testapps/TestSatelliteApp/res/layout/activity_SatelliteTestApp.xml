@@ -29,7 +29,8 @@
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:layout_weight="0"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
             android:textColor="@android:color/holo_blue_dark"
             android:textSize="20dp"
             android:text="Available Satellite APIs"/>
@@ -39,12 +40,6 @@
             android:layout_height="wrap_content"
             android:paddingRight="4dp"
             android:text="@string/SatelliteControl"/>
-        <Button
-            android:id="@+id/SatelliteTransmissionUpdates"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingRight="4dp"
-            android:text="@string/SatelliteTransmissionUpdates"/>
         <Button
             android:id="@+id/Datagram"
             android:layout_width="match_parent"
@@ -58,7 +53,7 @@
             android:paddingRight="4dp"
             android:text="@string/Provisioning"/>
         <Button
-            android:id="@+id/SatelliteModemState"
+            android:id="@+id/MultipleSendReceive"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingRight="4dp"

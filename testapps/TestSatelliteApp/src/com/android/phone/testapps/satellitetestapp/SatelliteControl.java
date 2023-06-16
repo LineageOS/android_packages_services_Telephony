@@ -47,8 +47,10 @@ public class SatelliteControl extends Activity {
         mSatelliteManager = getSystemService(SatelliteManager.class);
 
         setContentView(R.layout.activity_SatelliteControl);
-        findViewById(R.id.requestSatelliteEnabled)
-                .setOnClickListener(this::requestSatelliteEnabledApp);
+        findViewById(R.id.enableSatellite)
+                .setOnClickListener(this::enableSatelliteApp);
+        findViewById(R.id.disableSatellite)
+                .setOnClickListener(this::disableSatelliteApp);
         findViewById(R.id.requestIsSatelliteEnabled)
                 .setOnClickListener(this::requestIsSatelliteEnabledApp);
         findViewById(R.id.requestIsDemoModeEnabled)
@@ -70,14 +72,31 @@ public class SatelliteControl extends Activity {
         });
     }
 
-    private void requestSatelliteEnabledApp(View view) {
+    private void enableSatelliteApp(View view) {
         LinkedBlockingQueue<Integer> error = new LinkedBlockingQueue<>(1);
         mSatelliteManager.requestSatelliteEnabled(true, true, Runnable::run, error::offer);
         try {
             Integer value = error.poll(1000, TimeUnit.MILLISECONDS);
             TextView textView = findViewById(R.id.text_id);
             if (value == 0) {
-                textView.setText("requestSatelliteEnabled is successful");
+                textView.setText("Enable satellite is successful");
+            } else {
+                textView.setText("Status for requestSatelliteEnabled: "
+                        + SatelliteErrorUtils.mapError(value));
+            }
+        } catch (InterruptedException e) {
+            Log.e(TAG, "exception caught =" + e);
+        }
+    }
+
+    private void disableSatelliteApp(View view) {
+        LinkedBlockingQueue<Integer> error = new LinkedBlockingQueue<>(1);
+        mSatelliteManager.requestSatelliteEnabled(false, true, Runnable::run, error::offer);
+        try {
+            Integer value = error.poll(1000, TimeUnit.MILLISECONDS);
+            TextView textView = findViewById(R.id.text_id);
+            if (value == 0) {
+                textView.setText("Disable satellite is successful");
             } else {
                 textView.setText("Status for requestSatelliteEnabled: "
                         + SatelliteErrorUtils.mapError(value));

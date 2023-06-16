@@ -189,32 +189,6 @@ public class TestSatelliteService extends SatelliteImplBase {
         }
     }
 
-    @Override
-    public void enableCellularModemWhileSatelliteModeIsOn(boolean enable,
-             @NonNull IIntegerConsumer errorCallback) {
-        logd("enableCellularModemWhileSatelliteModeIsOn :" + enable + " error Code = " + mErrorCode
-                    + "mIsCellularModemEnabledMode = " + mIsCellularModemEnabledMode
-                    + " mIsEnabled = " + mIsEnabled);
-        if (mLocalListener != null) {
-            runWithExecutor(() -> mLocalListener
-                    .onEnableCellularModemWhileSatelliteModeIsOn(enable));
-        } else {
-            loge("requestSatelliteListeningEnabled: mLocalListener is null");
-        }
-        if (mIsEnabled) {
-            if (enable) {
-                mIsCellularModemEnabledMode = true;
-                disableSatellite(errorCallback);
-            } else {
-                mIsCellularModemEnabledMode = false;
-                enableSatellite(errorCallback);
-            }
-        } else {
-            final int finalError = SatelliteError.INVALID_MODEM_STATE;
-            runWithExecutor(() -> errorCallback.accept(finalError));
-        }
-
-    }
     private void enableSatellite(@NonNull IIntegerConsumer errorCallback) {
         mIsEnabled = true;
         updateSatelliteModemState(SatelliteModemState.SATELLITE_MODEM_STATE_IDLE);
