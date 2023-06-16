@@ -149,6 +149,8 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
     private static final int MSG_DTMF_DONE = 22;
     private static final int MSG_MEDIA_ATTRIBUTES_CHANGED = 23;
     private static final int MSG_ON_RTT_INITIATED = 24;
+    private static final int MSG_HOLD = 25;
+    private static final int MSG_UNHOLD = 26;
 
     private static final String JAPAN_COUNTRY_CODE_WITH_PLUS_SIGN = "+81";
     private static final String JAPAN_ISO_COUNTRY_CODE = "JP";
@@ -343,6 +345,12 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
                         refreshConferenceSupported();
                     }
                     sendRttInitiationSuccess();
+                    break;
+                case MSG_HOLD:
+                    performHold();
+                    break;
+                case MSG_UNHOLD:
+                    performUnhold();
                     break;
             }
         }
@@ -1049,12 +1057,12 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
 
     @Override
     public void onHold() {
-        performHold();
+        mHandler.obtainMessage(MSG_HOLD).sendToTarget();
     }
 
     @Override
     public void onUnhold() {
-        performUnhold();
+        mHandler.obtainMessage(MSG_UNHOLD).sendToTarget();
     }
 
     @Override
