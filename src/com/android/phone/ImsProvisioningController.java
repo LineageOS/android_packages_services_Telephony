@@ -839,7 +839,7 @@ public class ImsProvisioningController {
         mSubscriptionManager = mApp.getSystemService(SubscriptionManager.class);
         mTelephonyRegistryManager = mApp.getSystemService(TelephonyRegistryManager.class);
         mTelephonyRegistryManager.addOnSubscriptionsChangedListener(
-                mSubChangedListener, mSubChangedListener.getHandlerExecutor());
+                mSubChangedListener, mHandler::post);
         mImsProvisioningLoader = imsProvisioningLoader;
 
         PhoneConfigurationManager.registerForMultiSimConfigChange(mHandler,

@@ -524,7 +524,7 @@ public class RcsProvisioningMonitor {
         filter.addAction(CarrierConfigManager.ACTION_CARRIER_CONFIG_CHANGED);
         mPhone.registerReceiver(mReceiver, filter);
         mTelephonyRegistryManager.addOnSubscriptionsChangedListener(
-                mSubChangedListener, mSubChangedListener.getHandlerExecutor());
+                mSubChangedListener, mHandler::post);
         mDmaChangedListener.register();
         //initialize configs for all active sub
         onSubChanged();
