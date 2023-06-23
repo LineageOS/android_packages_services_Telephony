@@ -561,7 +561,7 @@
     <string name="emergency_information_hint" msgid="9208897544917793012">"అత్యవసర సమాచారం"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"యజమాని"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"సమాచారాన్ని చూడడానికి మళ్లీ నొక్కండి"</string>
-    <string name="emergency_enable_radio_dialog_title" msgid="2667568200755388829">"అత్యవసర కాల్"</string>
+    <string name="emergency_enable_radio_dialog_title" msgid="2667568200755388829">"ఎమర్జెన్సీ కాల్"</string>
     <string name="single_emergency_number_title" msgid="8413371079579067196">"అత్యవసర నంబర్"</string>
     <string name="numerous_emergency_numbers_title" msgid="8972398932506755510">"అత్యవసర నంబర్‌లు"</string>
     <string name="emergency_call_shortcut_hint" msgid="1290485125107779500">"<xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>కు కాల్ చేయడానికి మళ్లీ నొక్కండి"</string>
