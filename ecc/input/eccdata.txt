@@ -523,12 +523,12 @@ countries {
   eccs {
     phone_number: "144"
     types: AMBULANCE
-    routing: EMERGENCY
+    routing: NORMAL
   }
   eccs {
     phone_number: "118"
     types: FIRE
-    routing: EMERGENCY
+    routing: NORMAL
   }
   eccs {
     phone_number: "143"
