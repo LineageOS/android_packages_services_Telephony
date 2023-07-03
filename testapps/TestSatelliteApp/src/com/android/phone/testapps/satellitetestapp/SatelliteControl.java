@@ -22,7 +22,7 @@ import android.os.Bundle;
 import android.os.OutcomeReceiver;
 import android.telephony.satellite.SatelliteCapabilities;
 import android.telephony.satellite.SatelliteManager;
-import android.util.Log;
+import android.telephony.satellite.stub.SatelliteError;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
@@ -37,7 +37,7 @@ import java.util.concurrent.atomic.AtomicReference;
  */
 public class SatelliteControl extends Activity {
 
-    private static final String TAG = "SatelliteControl";
+    private static final long TIMEOUT = 3000;
 
     private SatelliteManager mSatelliteManager;
 
@@ -75,34 +75,38 @@ public class SatelliteControl extends Activity {
     private void enableSatelliteApp(View view) {
         LinkedBlockingQueue<Integer> error = new LinkedBlockingQueue<>(1);
         mSatelliteManager.requestSatelliteEnabled(true, true, Runnable::run, error::offer);
+        TextView textView = findViewById(R.id.text_id);
         try {
-            Integer value = error.poll(1000, TimeUnit.MILLISECONDS);
-            TextView textView = findViewById(R.id.text_id);
-            if (value == 0) {
-                textView.setText("Enable satellite is successful");
-            } else {
-                textView.setText("Status for requestSatelliteEnabled: "
+            Integer value = error.poll(TIMEOUT, TimeUnit.MILLISECONDS);
+            if (value == null) {
+                textView.setText("Timed out to enable the satellite");
+            } else if (value != SatelliteError.ERROR_NONE) {
+                textView.setText("Failed to enable the satellite, error ="
                         + SatelliteErrorUtils.mapError(value));
+            } else {
+                textView.setText("Successfully enabled the satellite");
             }
         } catch (InterruptedException e) {
-            Log.e(TAG, "exception caught =" + e);
+            textView.setText("Enable SatelliteService exception caught =" + e);
         }
     }
 
     private void disableSatelliteApp(View view) {
         LinkedBlockingQueue<Integer> error = new LinkedBlockingQueue<>(1);
         mSatelliteManager.requestSatelliteEnabled(false, true, Runnable::run, error::offer);
+        TextView textView = findViewById(R.id.text_id);
         try {
-            Integer value = error.poll(1000, TimeUnit.MILLISECONDS);
-            TextView textView = findViewById(R.id.text_id);
-            if (value == 0) {
-                textView.setText("Disable satellite is successful");
-            } else {
-                textView.setText("Status for requestSatelliteEnabled: "
+            Integer value = error.poll(TIMEOUT, TimeUnit.MILLISECONDS);
+            if (value == null) {
+                textView.setText("Timed out to disable the satellite");
+            } else if (value != SatelliteError.ERROR_NONE) {
+                textView.setText("Failed to disable the satellite, error ="
                         + SatelliteErrorUtils.mapError(value));
+            } else {
+                textView.setText("Successfully disabled the satellite");
             }
         } catch (InterruptedException e) {
-            Log.e(TAG, "exception caught =" + e);
+            textView.setText("Disable SatelliteService exception caught =" + e);
         }
     }
 

@@ -44,5 +44,6 @@
         <activity android:name=".Datagram" />
         <activity android:name=".Provisioning" />
         <activity android:name=".MultipleSendReceive" />
+        <activity android:name=".SendReceive" />
     </application>
 </manifest>
