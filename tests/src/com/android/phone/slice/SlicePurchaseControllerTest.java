@@ -619,6 +619,7 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
     public void testPurchasePremiumCapabilityResultNotDefaultDataSubscriptionResponse() {
         sendValidPurchaseRequest();
 
+        // broadcast NOT_DEFAULT_DATA_SUBSCRIPTION response from slice purchase application
         Intent intent = new Intent();
         intent.setAction("com.android.phone.slice.action."
                 + "SLICE_PURCHASE_APP_RESPONSE_NOT_DEFAULT_DATA_SUBSCRIPTION");
@@ -632,6 +633,34 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
                 mResult);
 
         // retry to verify no throttling
+        testPurchasePremiumCapabilityResultSuccess();
+    }
+
+    @Test
+    public void testPurchasePremiumCapabilityResultNotificationsDisabled() {
+        sendValidPurchaseRequest();
+
+        // broadcast NOTIFICATIONS_DISABLED response from slice purchase application
+        Intent intent = new Intent();
+        intent.setAction("com.android.phone.slice.action."
+                + "SLICE_PURCHASE_APP_RESPONSE_NOTIFICATIONS_DISABLED");
+        intent.putExtra(SlicePurchaseController.EXTRA_PHONE_ID, PHONE_ID);
+        intent.putExtra(SlicePurchaseController.EXTRA_PREMIUM_CAPABILITY,
+                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY);
+        mContext.getBroadcastReceiver().onReceive(mContext, intent);
+        mTestableLooper.processAllMessages();
+        assertEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_USER_DISABLED, mResult);
+
+        // retry to verify throttled
+        mSlicePurchaseController.purchasePremiumCapability(
+                TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY, mHandler.obtainMessage());
+        mTestableLooper.processAllMessages();
+        assertEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_THROTTLED, mResult);
+
+        // retry to verify unthrottled
+        mTestableLooper.moveTimeForward(THROTTLE_TIMEOUT);
+        mTestableLooper.processAllMessages();
+
         testPurchasePremiumCapabilityResultSuccess();
     }
 
