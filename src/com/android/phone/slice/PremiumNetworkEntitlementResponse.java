@@ -72,6 +72,7 @@ public class PremiumNetworkEntitlementResponse {
     @PremiumNetworkProvisionStatus public int mProvisionStatus;
     @NonNull public String mServiceFlowURL;
     @NonNull public String mServiceFlowUserData;
+    @NonNull public String mServiceFlowContentsType;
 
     /**
      * @return {@code true} if the premium network is already purchased and {@code false} otherwise.
@@ -133,6 +134,7 @@ public class PremiumNetworkEntitlementResponse {
     @NonNull public String toString() {
         return "PremiumNetworkEntitlementResponse{mEntitlementStatus=" + mEntitlementStatus
                 + ", mProvisionStatus=" + mProvisionStatus + ", mServiceFlowURL=" + mServiceFlowURL
-                + ", mServiceFlowUserData" + mServiceFlowUserData + "}";
+                + ", mServiceFlowUserData=" + mServiceFlowUserData + ", mServiceFlowContentsType="
+                + mServiceFlowContentsType + "}";
     }
 }
