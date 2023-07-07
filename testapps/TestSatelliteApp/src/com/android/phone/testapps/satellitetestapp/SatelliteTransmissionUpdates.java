@@ -83,6 +83,7 @@ public class SatelliteTransmissionUpdates extends Activity {
 
     private void startSatelliteTransmissionUpdatesApp(View view) {
         LinkedBlockingQueue<Integer> error = new LinkedBlockingQueue<>(1);
+        mSatelliteManager.requestSatelliteEnabled(true, true, Runnable::run, error::offer);
         mSatelliteManager.startSatelliteTransmissionUpdates(Runnable::run, error::offer, mCallback);
         try {
             Integer value = error.poll(1000, TimeUnit.MILLISECONDS);
