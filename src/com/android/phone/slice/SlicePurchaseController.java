@@ -96,6 +96,11 @@ public class SlicePurchaseController extends Handler {
     public static final int FAILURE_CODE_AUTHENTICATION_FAILED = 2;
     /** Performance boost purchase failed because the payment failed. */
     public static final int FAILURE_CODE_PAYMENT_FAILED = 3;
+    /**
+     * Performance boost purchase failed because the content type was specified but
+     * user data does not exist.
+     */
+    public static final int FAILURE_CODE_NO_USER_DATA = 4;
 
     /**
      * Failure codes that the carrier website can return when a premium capability purchase fails.
@@ -105,7 +110,8 @@ public class SlicePurchaseController extends Handler {
             FAILURE_CODE_UNKNOWN,
             FAILURE_CODE_CARRIER_URL_UNAVAILABLE,
             FAILURE_CODE_AUTHENTICATION_FAILED,
-            FAILURE_CODE_PAYMENT_FAILED})
+            FAILURE_CODE_PAYMENT_FAILED,
+            FAILURE_CODE_NO_USER_DATA})
     public @interface FailureCode {}
 
     /** Value for an invalid premium capability. */
@@ -206,6 +212,8 @@ public class SlicePurchaseController extends Handler {
     public static final String EXTRA_CARRIER = "com.android.phone.slice.extra.CARRIER";
     /** Extra for the user data received from the entitlement service to send to the webapp. */
     public static final String EXTRA_USER_DATA = "com.android.phone.slice.extra.USER_DATA";
+    /** Extra for the contents type received from the entitlement service to send to the webapp. */
+    public static final String EXTRA_CONTENTS_TYPE = "com.android.phone.slice.extra.CONTENTS_TYPE";
     /**
      * Extra for the canceled PendingIntent that the slice purchase application can send as a
      * response if the performance boost notification or WebView was canceled by the user.
@@ -733,7 +741,6 @@ public class SlicePurchaseController extends Handler {
             return;
         }
 
-        String userData = premiumNetworkEntitlementResponse.mServiceFlowUserData;
         String purchaseUrl = getPurchaseUrl(premiumNetworkEntitlementResponse);
         String carrier = getSimOperator();
         if (TextUtils.isEmpty(purchaseUrl) || TextUtils.isEmpty(carrier)) {
@@ -758,9 +765,9 @@ public class SlicePurchaseController extends Handler {
         intent.putExtra(EXTRA_PREMIUM_CAPABILITY, capability);
         intent.putExtra(EXTRA_PURCHASE_URL, purchaseUrl);
         intent.putExtra(EXTRA_CARRIER, carrier);
-        if (!TextUtils.isEmpty(userData)) {
-            intent.putExtra(EXTRA_USER_DATA, userData);
-        }
+        intent.putExtra(EXTRA_USER_DATA, premiumNetworkEntitlementResponse.mServiceFlowUserData);
+        intent.putExtra(EXTRA_CONTENTS_TYPE,
+                premiumNetworkEntitlementResponse.mServiceFlowContentsType);
         intent.putExtra(EXTRA_INTENT_CANCELED, createPendingIntent(
                 ACTION_SLICE_PURCHASE_APP_RESPONSE_CANCELED, capability, false));
         intent.putExtra(EXTRA_INTENT_CARRIER_ERROR, createPendingIntent(
@@ -1093,6 +1100,7 @@ public class SlicePurchaseController extends Handler {
             case FAILURE_CODE_CARRIER_URL_UNAVAILABLE: return "CARRIER_URL_UNAVAILABLE";
             case FAILURE_CODE_AUTHENTICATION_FAILED: return "AUTHENTICATION_FAILED";
             case FAILURE_CODE_PAYMENT_FAILED: return "PAYMENT_FAILED";
+            case FAILURE_CODE_NO_USER_DATA: return "NO_USER_DATA";
             default:
                 return "UNKNOWN(" + failureCode + ")";
         }

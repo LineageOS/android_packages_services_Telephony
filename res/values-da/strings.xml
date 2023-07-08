@@ -683,8 +683,8 @@
     <string name="callFailed_wifi_lost" msgid="1788036730589163141">"Du mistede Wi-Fi-forbindelsen. Opkaldet blev afsluttet."</string>
     <string name="dialFailed_low_battery" msgid="6857904237423407056">"Du kan ikke foretage videoopkaldet på grund af lavt batteriniveau."</string>
     <string name="callFailed_low_battery" msgid="4056828320214416182">"Videoopkaldet blev afsluttet på grund af lavt batteriniveau."</string>
-    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="5944309590693432042">"Det er ikke muligt at foretage nødopkald som Wi-Fi-opkald i dette land."</string>
-    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="3624536608369524988">"Det er ikke muligt at foretage Wi-Fi-opkald i dette land."</string>
+    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="5944309590693432042">"Det er ikke muligt at foretage nødopkald som Wi-Fi-opkald på denne lokation."</string>
+    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="3624536608369524988">"Det er ikke muligt at foretage Wi-Fi-opkald på denne lokation."</string>
     <string name="change_pin_title" msgid="3564254326626797321">"Skift pinkode til din telefonsvarer"</string>
     <string name="change_pin_continue_label" msgid="5177011752453506371">"Fortsæt"</string>
     <string name="change_pin_cancel_label" msgid="2301711566758827936">"Annuller"</string>
