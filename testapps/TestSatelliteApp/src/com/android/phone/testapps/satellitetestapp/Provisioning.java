@@ -18,11 +18,13 @@ package com.android.phone.testapps.satellitetestapp;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CancellationSignal;
 import android.os.OutcomeReceiver;
 import android.telephony.satellite.SatelliteManager;
 import android.telephony.satellite.SatelliteProvisionStateCallback;
+import android.telephony.satellite.stub.SatelliteError;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -43,6 +45,7 @@ public class Provisioning extends Activity {
 
     private SatelliteManager mSatelliteManager;
     private SatelliteProvisionStateCallbackTestApp mCallback;
+    private static final long TIMEOUT = 3000;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -82,6 +85,7 @@ public class Provisioning extends Activity {
     }
 
     private void provisionSatelliteServiceApp(View view) {
+        TextView textView = findViewById(R.id.text_id);
         CancellationSignal cancellationSignal = new CancellationSignal();
         LinkedBlockingQueue<Integer> error = new LinkedBlockingQueue<>(1);
         String mText = "This is test provision data.";
@@ -89,26 +93,37 @@ public class Provisioning extends Activity {
         mSatelliteManager.provisionSatelliteService("SATELLITE_TOKEN", testProvisionData,
                 cancellationSignal, Runnable::run, error::offer);
         try {
-            Integer value = error.poll(1000, TimeUnit.MILLISECONDS);
-            TextView textView = findViewById(R.id.text_id);
-            textView.setText("Status for provisionSatelliteService : "
-                    + SatelliteErrorUtils.mapError(value));
+            Integer value = error.poll(TIMEOUT, TimeUnit.MILLISECONDS);
+            if (value == null) {
+                textView.setText("Timed out to provision the satellite");
+            } else if (value != SatelliteError.ERROR_NONE) {
+                textView.setText("Failed to provision SatelliteService with error = "
+                        + SatelliteErrorUtils.mapError(value));
+            } else {
+                textView.setText("Successfully provisioned the satellite");
+            }
         } catch (InterruptedException e) {
-            Log.e(TAG, "exception caught =" + e);
+            textView.setText("Provision SatelliteService exception caught =" + e);
         }
     }
 
     private void deprovisionSatelliteServiceApp(View view) {
+        TextView textView = findViewById(R.id.text_id);
         LinkedBlockingQueue<Integer> error = new LinkedBlockingQueue<>(1);
         mSatelliteManager.deprovisionSatelliteService("SATELLITE_TOKEN", Runnable::run,
                 error::offer);
         try {
-            Integer value = error.poll(1000, TimeUnit.MILLISECONDS);
-            TextView textView = findViewById(R.id.text_id);
-            textView.setText("Status for deprovisionSatelliteService : "
-                    + SatelliteErrorUtils.mapError(value));
+            Integer value = error.poll(TIMEOUT, TimeUnit.MILLISECONDS);
+            if (value == null) {
+                textView.setText("Timed out to deprovision the satellite");
+            } else if (value != SatelliteError.ERROR_NONE) {
+                textView.setText("Failed to deprovision SatelliteService with error = "
+                        + SatelliteErrorUtils.mapError(value));
+            } else {
+                textView.setText("Successfully deprovisioned the satellite");
+            }
         } catch (InterruptedException e) {
-            Log.e(TAG, "exception caught =" + e);
+            textView.setText("Deprovision SatelliteService exception caught =" + e);
         }
     }
 
@@ -153,5 +168,41 @@ public class Provisioning extends Activity {
     private void showCurrentSatelliteProvisionStateApp(View view) {
         TextView textView = findViewById(R.id.text_id);
         textView.setText("Current Provision State is " + mProvisioned);
+    }
+
+    // Fetch the stored data in onResume()
+    // Because this is what will be called when the app opens again
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Fetching the stored data from the SharedPreference
+        SharedPreferences sh = getSharedPreferences("MySharedPref", MODE_PRIVATE);
+        boolean isProvisioned = sh.getBoolean("provision_state", mProvisioned);
+
+        // Setting the fetched data
+        mProvisioned = isProvisioned;
+    }
+
+    // Store the data in the SharedPreference in the onPause() method
+    // When the user closes the application onPause() will be called and data will be stored
+    @Override
+    protected void onPause() {
+        super.onPause();
+        // Creating a shared pref object with a file name "MySharedPref" in private mode
+        SharedPreferences sharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE);
+        SharedPreferences.Editor myEdit = sharedPreferences.edit();
+
+        // write all the data entered by the user in SharedPreference and apply
+        myEdit.putBoolean("provision_state", mProvisioned);
+        myEdit.apply();
+    }
+
+    protected void onDestroy() {
+        super.onDestroy();
+        SharedPreferences sharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE);
+
+        final SharedPreferences.Editor sharedPrefsEditor = sharedPreferences.edit();
+        sharedPrefsEditor.remove("provision_state");
+        sharedPrefsEditor.commit();
     }
 }
