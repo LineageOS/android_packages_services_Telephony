@@ -2965,6 +2965,22 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
                 disconnectCause.getTelephonyDisconnectCause());
     }
 
+    @Test
+    public void testNormalCallUsingNonTerrestrialNetwork() {
+        setupForCallTest();
+        NetworkRegistrationInfo nri = new NetworkRegistrationInfo.Builder()
+                .setIsNonTerrestrialNetwork(true)
+                .build();
+        ServiceState ss = new ServiceState();
+        ss.addNetworkRegistrationInfo(nri);
+        when(mPhone0.getServiceState()).thenReturn(ss);
+        mConnection = mTestConnectionService.onCreateOutgoingConnection(PHONE_ACCOUNT_HANDLE_1,
+                createConnectionRequest(PHONE_ACCOUNT_HANDLE_1, "1234", TELECOM_CALL_ID1));
+        DisconnectCause disconnectCause = mConnection.getDisconnectCause();
+        assertEquals(android.telephony.DisconnectCause.SATELLITE_ENABLED,
+                disconnectCause.getTelephonyDisconnectCause());
+    }
+
     private void setupForDialForDomainSelection(Phone mockPhone, int domain, boolean isEmergency) {
         if (isEmergency) {
             doReturn(mEmergencyCallDomainSelectionConnection).when(mDomainSelectionResolver)

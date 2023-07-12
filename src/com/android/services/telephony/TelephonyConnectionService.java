@@ -1173,7 +1173,11 @@ public class TelephonyConnectionService extends ConnectionService {
             }
 
             if (!isEmergencyNumber) {
-                if (mSatelliteController.isSatelliteEnabled()) {
+                ServiceState serviceState = phone != null ? phone.getServiceState() : null;
+                if (mSatelliteController.isSatelliteEnabled()
+                        || (serviceState != null && serviceState.isUsingNonTerrestrialNetwork())) {
+                    // TODO: Disconnect call when connected to satellite based on device config or
+                    //  carrier config.
                     Log.d(this, "onCreateOutgoingConnection, cannot make call in satellite mode.");
                     return Connection.createFailedConnection(
                             mDisconnectCauseFactory.toTelecomDisconnectCause(
