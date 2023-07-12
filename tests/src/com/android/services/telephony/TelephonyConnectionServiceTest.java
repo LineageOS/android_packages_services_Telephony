@@ -35,6 +35,7 @@ import static junit.framework.Assert.assertNotNull;
 import static junit.framework.Assert.assertTrue;
 import static junit.framework.Assert.fail;
 
+import static org.junit.Assert.assertNotEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyBoolean;
 import static org.mockito.ArgumentMatchers.anyInt;
@@ -2968,8 +2969,10 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
     @Test
     public void testNormalCallUsingNonTerrestrialNetwork() {
         setupForCallTest();
+        // Call is not supported while using satellite
         NetworkRegistrationInfo nri = new NetworkRegistrationInfo.Builder()
                 .setIsNonTerrestrialNetwork(true)
+                .setAvailableServices(List.of(NetworkRegistrationInfo.SERVICE_TYPE_DATA))
                 .build();
         ServiceState ss = new ServiceState();
         ss.addNetworkRegistrationInfo(nri);
@@ -2978,6 +2981,18 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
                 createConnectionRequest(PHONE_ACCOUNT_HANDLE_1, "1234", TELECOM_CALL_ID1));
         DisconnectCause disconnectCause = mConnection.getDisconnectCause();
         assertEquals(android.telephony.DisconnectCause.SATELLITE_ENABLED,
+                disconnectCause.getTelephonyDisconnectCause());
+
+        // Call is supported while using satellite
+        nri = new NetworkRegistrationInfo.Builder()
+                .setIsNonTerrestrialNetwork(true)
+                .setAvailableServices(List.of(NetworkRegistrationInfo.SERVICE_TYPE_VOICE))
+                .build();
+        ss.addNetworkRegistrationInfo(nri);
+        mConnection = mTestConnectionService.onCreateOutgoingConnection(PHONE_ACCOUNT_HANDLE_1,
+                createConnectionRequest(PHONE_ACCOUNT_HANDLE_1, "1234", "TC@2"));
+        disconnectCause = mConnection.getDisconnectCause();
+        assertNotEquals(android.telephony.DisconnectCause.SATELLITE_ENABLED,
                 disconnectCause.getTelephonyDisconnectCause());
     }
 
