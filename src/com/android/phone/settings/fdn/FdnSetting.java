@@ -19,10 +19,12 @@ package com.android.phone.settings.fdn;
 import android.app.ActionBar;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.os.AsyncResult;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.os.UserManager;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
 import android.util.Log;
@@ -505,6 +507,15 @@ public class FdnSetting extends PreferenceActivity
     @Override
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
+
+        // Make sure mobile network configurations are not restricted.
+        UserManager userManager = (UserManager) getSystemService(Context.USER_SERVICE);
+        if (userManager.hasUserRestriction(UserManager.DISALLOW_CONFIG_MOBILE_NETWORKS)) {
+            Toast.makeText(this, R.string.call_settings_no_config_mobile_networks,
+                    Toast.LENGTH_SHORT).show();
+            finish();
+            return;
+        }
 
         mSubscriptionInfoHelper = new SubscriptionInfoHelper(this, getIntent());
         mPhone = mSubscriptionInfoHelper.getPhone();
