@@ -133,7 +133,7 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"CDMA அழைப்பு காத்திருப்பு IMS முடக்கத்தில்"</string>
     <string name="updating_title" msgid="6130548922615719689">"அழைப்பு அமைப்பு"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"நிர்வாகிப் பயனர் மட்டுமே அழைப்பிற்கான அமைப்புகளை மாற்ற முடியும்."</string>
-    <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"நிர்வாகி அல்லது பணிக் கணக்கின் பயனரால் மட்டுமே மொபைல் கணக்கு அமைப்புகளை மாற்ற முடியும்."</string>
+    <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"நிர்வாகி/பணிக்கணக்கு பயனர் மட்டுமே அமைப்புகளை மாற்றலாம்."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"அமைப்புகள் (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"அழைப்பு அமைப்புகளில் பிழை"</string>
     <string name="reading_settings" msgid="1605904432450871183">"அமைப்புகளைப் படிக்கிறது…"</string>
