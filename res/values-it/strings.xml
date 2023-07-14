@@ -133,6 +133,7 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"Avviso di chiamata CDMA con IMS disattivato"</string>
     <string name="updating_title" msgid="6130548922615719689">"Impostazioni chiamate"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Le impostazioni delle chiamate possono essere modificate solo dall\'utente amministratore."</string>
+    <string name="call_settings_no_config_mobile_networks" msgid="5158212415701421219">"Il proprietario del dispositivo ha limitato la possibilità di modificare le impostazioni della rete mobile."</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Le impostazioni dell\'account del telefono possono essere modificate solo dall\'amministratore o dall\'utente di lavoro."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Impostazioni (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Errore durante aggiornam. impostaz. chiamate"</string>
@@ -580,7 +581,7 @@
     <string name="onscreenHoldText" msgid="4025348842151665191">"In attesa"</string>
     <string name="onscreenEndCallText" msgid="6138725377654842757">"Chiudi"</string>
     <string name="onscreenShowDialpadText" msgid="658465753816164079">"Tastierino"</string>
-    <string name="onscreenMuteText" msgid="5470306116733843621">"No audio"</string>
+    <string name="onscreenMuteText" msgid="5470306116733843621">"Silenzia"</string>
     <string name="onscreenAddCallText" msgid="9075675082903611677">"Aggiungi chiamata"</string>
     <string name="onscreenMergeCallsText" msgid="3692389519611225407">"Unisci"</string>
     <string name="onscreenSwapCallsText" msgid="2682542150803377991">"Scambia"</string>
@@ -876,7 +877,8 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"ID secondario della SIM dati predefinita:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Larghezza di banda DL (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Larghezza di banda UL (kbps):"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Configurazione canale fisico LTE:"</string>
+    <!-- no translation found for radio_info_phy_chan_config (608045501232211303) -->
+    <skip />
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Frequenza di aggiornamento delle informazioni sulle celle:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Informazioni sulla misurazione di tutte le celle:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"Servizio dati:"</string>

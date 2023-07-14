@@ -133,6 +133,7 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"L\'opció de trucada en espera de CDMA a IMS està desactivada"</string>
     <string name="updating_title" msgid="6130548922615719689">"Configuració de trucada"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Només l\'administrador pot canviar la configuració de trucades."</string>
+    <string name="call_settings_no_config_mobile_networks" msgid="5158212415701421219">"El propietari del dispositiu ha restringit la possibilitat de canviar la configuració de la xarxa mòbil."</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Només l\'administrador o l\'usuari de la feina pot canviar la configuració del compte del telèfon."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Configuració (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Error de configuració de trucada"</string>
@@ -876,7 +877,7 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"Subidentificador de la SIM de dades predeterminada:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Amplada de banda de baixada (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Amplada de banda de pujada (kbps):"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Configuració del canal físic de LTE:"</string>
+    <string name="radio_info_phy_chan_config" msgid="608045501232211303">"Configuracions del canal físic:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Freqüència d\'actualització de la informació del mòbil:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Tota la informació de mesures del mòbil:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"Servei de dades:"</string>

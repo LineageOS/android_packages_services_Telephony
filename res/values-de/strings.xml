@@ -133,6 +133,7 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"CDMA-Anklopfen unter IMS deaktiviert"</string>
     <string name="updating_title" msgid="6130548922615719689">"Anrufeinstellungen"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Anrufeinstellungen können nur vom Administrator geändert werden."</string>
+    <string name="call_settings_no_config_mobile_networks" msgid="5158212415701421219">"Der Eigentümer des Geräts hat die Möglichkeit zum Ändern der Einstellungen für Mobilfunknetze eingeschränkt."</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Die Kontoeinstellungen können nur durch den Administrator oder den Nutzer des Arbeitsprofils geändert werden."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Einstellungen (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Fehler bei Anrufeinstellungen"</string>
@@ -876,7 +877,8 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"Unter-ID der standardmäßigen Daten-SIM:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DL-Bandbreite (kbit/s):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL-Bandbreite (kbit/s):"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Konfiguration des physischen LTE-Kanals:"</string>
+    <!-- no translation found for radio_info_phy_chan_config (608045501232211303) -->
+    <skip />
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Aktualisierungsrate der Mobiltelefoninformationen:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Alle Informationen zu Zellenmesswerten:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"Datendienst:"</string>

@@ -133,6 +133,7 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"ការរង់ចាំ​ការហៅ ទូរសព្ទ CDMA ក្រោម IMS ត្រូវ​បាន​បិទ"</string>
     <string name="updating_title" msgid="6130548922615719689">"កំណត់​ការ​ហៅ"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"ការកំណត់ការហៅអាចផ្លាស់ប្តូរបានដោយអ្នកប្រើដែលមានសិទ្ធិគ្រប់គ្រងតែប៉ុណ្ណោះ។"</string>
+    <string name="call_settings_no_config_mobile_networks" msgid="5158212415701421219">"ម្ចាស់ឧបករណ៍បានរឹតបន្តឹង​លទ្ធភាព​ក្នុងការប្ដូរការកំណត់​បណ្ដាញ​ទូរសព្ទ​ចល័ត។"</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"មានតែ​អ្នកគ្រប់គ្រង ឬអ្នកប្រើប្រាស់​ពាក់ព័ន្ធនឹងការងារ​ប៉ុណ្ណោះ ទើបអាចផ្លាស់ប្ដូរ​ការកំណត់​គណនី​ទូរសព្ទបាន។"</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"ការកំណត់ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"បញ្ហា​ការ​កំណត់​ការ​ហៅ"</string>
@@ -876,7 +877,8 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"លេខសម្គាល់រង​របស់​ស៊ីម​ទិន្នន័យ​លំនាំដើម៖"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"កម្រិត​បញ្ជូន DL (kbps) ៖"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"កម្រិត​បញ្ជូន UL (kbps) ៖"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"ការកំណត់​រចនាសម្ព័ន្ធបណ្ដាញរូបវ័ន្ត LTE ៖"</string>
+    <!-- no translation found for radio_info_phy_chan_config (608045501232211303) -->
+    <skip />
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"អត្រា​ផ្ទុក​ឡើង​វិញ​នៃ​ព័ត៌មាន​ទូរសព្ទ​ចល័ត៖"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"ព័ត៌មាន​វាស់​ទូរសព្ទ​ចល័ត​ទាំងអស់៖"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"សេវាកម្មទិន្នន័យ៖"</string>

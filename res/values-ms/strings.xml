@@ -133,6 +133,7 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"Panggilan Menunggu CDMA di bawah IMS Dimatikan"</string>
     <string name="updating_title" msgid="6130548922615719689">"Tetapan panggilan"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Tetapan panggilan hanya boleh diubah oleh pengguna pentadbir."</string>
+    <string name="call_settings_no_config_mobile_networks" msgid="5158212415701421219">"Pemilik peranti telah mengehadkan keupayaan untuk menukar tetapan rangkaian mudah alih."</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Tetapan akaun telefon hanya boleh ditukar oleh pentadbir atau pengguna di tempat kerja."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Tetapan (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Ralat tetapan panggilan"</string>
@@ -876,7 +877,7 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"SubId SIM data lalai:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Lebar Jalur DL (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Lebar Jalur UL (kbps):"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Konfigurasi Saluran Fizikal LTE:"</string>
+    <string name="radio_info_phy_chan_config" msgid="608045501232211303">"Konfigurasi Saluran Fizikal:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Kadar Muat Semula Maklumat Selular:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Semua Maklumat Ukuran Selular:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"Perkhidmatan Data:"</string>

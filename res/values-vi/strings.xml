@@ -133,6 +133,7 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"Cuộc gọi chờ CDMA trong IMS đang tắt"</string>
     <string name="updating_title" msgid="6130548922615719689">"Cài đặt cuộc gọi"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Chỉ người dùng quản trị mới có thể thay đổi cài đặt cuộc gọi."</string>
+    <string name="call_settings_no_config_mobile_networks" msgid="5158212415701421219">"Chủ sở hữu thiết bị đã hạn chế khả năng thay đổi chế độ cài đặt mạng di động."</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Chỉ quản trị viên hoặc người dùng tài khoản cho công việc mới có thể thay đổi chế độ cài đặt tài khoản điện thoại."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Cài đặt (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Lỗi cài đặt cuộc gọi"</string>
@@ -876,7 +877,8 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"Mã phụ của SIM dữ liệu mặc định:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Băng thông DL (kb/giây):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Băng thông UL (kb/giây):"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Cấu hình kênh LTE thực:"</string>
+    <!-- no translation found for radio_info_phy_chan_config (608045501232211303) -->
+    <skip />
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Tốc độ làm mới thông tin mạng di động:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Toàn bộ thông tin về số đo mạng di động:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"Dịch vụ dữ liệu:"</string>

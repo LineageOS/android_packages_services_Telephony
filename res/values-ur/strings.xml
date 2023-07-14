@@ -133,6 +133,7 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"‏IMS آف کے تحت CDMA کال کا انتظار کرنا"</string>
     <string name="updating_title" msgid="6130548922615719689">"کال کی ترتیبات"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"صرف منتظم صارف ہی کال کی ترتیبات تبدیل کر سکتا ہے۔"</string>
+    <string name="call_settings_no_config_mobile_networks" msgid="5158212415701421219">"آلہ کے مالک نے موبائل نیٹ ورک کی ترتیبات کو تبدیل کرنے کی صلاحیت کو محدود کر دیا ہے۔"</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"صرف منتظم یا دفتر کا صارف ہی فون کے اکاؤنٹ کی ترتیبات تبدیل کر سکتا ہے۔"</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"ترتیبات (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"کال کی ترتیبات کی خرابی"</string>
@@ -876,7 +877,8 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"‏ڈیفالٹ ڈیٹا SIM کی SubId:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"‏DL بینڈ وڈتھ (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"‏UL بینڈ وڈتھ (kbps):"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"‏LTE فزيکل چینل کنفیگریشن:"</string>
+    <!-- no translation found for radio_info_phy_chan_config (608045501232211303) -->
+    <skip />
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"سیل کی معلومات ریفریش کرنے کی شرح:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"سیل پیمائش کی تمام معلومات:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"ڈیٹا سروس:"</string>

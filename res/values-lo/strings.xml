@@ -133,6 +133,7 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"ການລໍຖ້າສາຍ CDMA ພາຍໃຕ້ IMS ປິດຢູ່"</string>
     <string name="updating_title" msgid="6130548922615719689">"ການຕັ້ງຄ່າການໂທ"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"ມີ​ແຕ່​ຜູ້​ໃຊ້​ທີ່​ເປັນ​ຜູ້ດູແລລະບົບ​ເທົ່າ​ນັ້ນ​ທີ່​ສາ​ມາດ​ປ່ຽນການ​ຕັ້ງ​ຄ່າ​ການ​ໂທ​ໄດ້."</string>
+    <string name="call_settings_no_config_mobile_networks" msgid="5158212415701421219">"ເຈົ້າຂອງອຸປະກອນໄດ້ຈຳກັດຄວາມສາມາດໃນການປ່ຽນການຕັ້ງຄ່າເຄືອຂ່າຍມືຖື."</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"ສະເພາະຜູ້ເບິ່ງແຍງລະບົບ ຫຼື ຜູ້ໃຊ້ຢູ່ບ່ອນເຮັດວຽກເທົ່ານັ້ນທີ່ສາມາດປ່ຽນການຕັ້ງຄ່າບັນຊີຂອງໂທລະສັບໄດ້."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"ການ​ຕັ້ງ​ຄ່າ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"ການຕັ້ງຄ່າການໂທຜິດພາດ"</string>
@@ -876,7 +877,8 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"SubId ຂອງຊິມອິນເຕີເນັດເລີ່ມຕົ້ນ:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"ແບນວິດ DL (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"ແບນວິດ UL (kbps):"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"ການຕັ້ງຄ່າຊ່ອງ LTE ກາຍະພາບ:"</string>
+    <!-- no translation found for radio_info_phy_chan_config (608045501232211303) -->
+    <skip />
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"ອັດຕາການໂຫຼດຄືນໃໝ່ຂອງຂໍ້ມູນມືຖື:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"ຂໍ້ມູນການວັດແທກມືຖືທັງໝົດ:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"ບໍລິການຂໍ້ມູນ:"</string>

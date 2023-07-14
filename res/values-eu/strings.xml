@@ -133,7 +133,8 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"IMS zerbitzupean CDMA deiak zain uzteko aukera desaktibatuta dago"</string>
     <string name="updating_title" msgid="6130548922615719689">"Deien ezarpenak"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Administratzaileak soilik alda ditzake deien ezarpenak."</string>
-    <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Administratzaileak edo laneko erabiltzaileek soilik alda ditzakete telefonoko kontuaren ezarpenak."</string>
+    <string name="call_settings_no_config_mobile_networks" msgid="5158212415701421219">"Gailuaren jabeak sare mugikorraren ezarpenak aldatzeko aukera mugatu du."</string>
+    <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Administratzaileak / Laneko erabiltzaileek alda ditzakete telefonoko kontuaren ezarpenak."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Ezarpenak (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Deien ezarpenen errorea"</string>
     <string name="reading_settings" msgid="1605904432450871183">"Ezarpenak irakurtzen…"</string>
@@ -876,7 +877,8 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"Datu-konexioetarako SIM lehenetsiaren azpiIDa:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Deskargatzeko banda-zabalera (Kb/s):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Kargen banda-zabalera (Kb/s):"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"LTE kanal fisikoaren konfigurazioa:"</string>
+    <!-- no translation found for radio_info_phy_chan_config (608045501232211303) -->
+    <skip />
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Sare mugikorraren informazioa eguneratzeko maiztasuna:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Sare mugikorraren neurketa guztien informazioa:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"Datu-zerbitzua:"</string>

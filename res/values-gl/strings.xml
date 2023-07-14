@@ -133,6 +133,7 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"A función de chamada en espera de CDMA en IMS está desactivada"</string>
     <string name="updating_title" msgid="6130548922615719689">"Configuración de chamada"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Só o usuario administrador pode cambiar a configuración de chamada."</string>
+    <string name="call_settings_no_config_mobile_networks" msgid="5158212415701421219">"A persoa propietaria do dispositivo restrinxiu a posibilidade de modificar a configuración da rede de telefonía móbil."</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Só o usuario administrador ou o usuario do traballo poden cambiar a configuración da conta do teléfono."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Configuración (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Erro de configuración das chamadas"</string>
@@ -876,7 +877,8 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"Código de identificación secundario da SIM de datos predeterminada:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Largura de banda de descarga (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Largura de banda de carga (kbps):"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Configuración de canle física de LTE:"</string>
+    <!-- no translation found for radio_info_phy_chan_config (608045501232211303) -->
+    <skip />
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Taxa de actualización da información para móbiles:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Toda a información de medición para móbiles:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"Servizo de datos:"</string>

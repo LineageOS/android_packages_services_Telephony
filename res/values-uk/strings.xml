@@ -133,6 +133,7 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"Паралельний виклик CDMA на платформі IMS вимкнено"</string>
     <string name="updating_title" msgid="6130548922615719689">"Налаштування викликів"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Налаштування викликів може змінювати лише адміністратор."</string>
+    <string name="call_settings_no_config_mobile_networks" msgid="5158212415701421219">"Власник пристрою заборонив змінювати налаштування мобільної мережі."</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Налаштування облікового запису телефона може змінювати лише співробітник, який із ним працює, або адміністратор."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Налаштування (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Помилка налаштування викликів"</string>
@@ -876,7 +877,8 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"Субідентифікатор SIM-карти для даних за умовчанням:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Пропускна спроможність DL (кбіт/с):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Пропускна спроможність UL (кбіт/с):"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Конфігурація фізичного каналу LTE:"</string>
+    <!-- no translation found for radio_info_phy_chan_config (608045501232211303) -->
+    <skip />
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Частота оновлення даних про мобільний зв\'язок:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Усі дані про показники мобільного зв\'язку:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"Мобільний Інтернет:"</string>

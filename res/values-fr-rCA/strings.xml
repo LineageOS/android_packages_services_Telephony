@@ -133,6 +133,7 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"Mise en attente d\'appels CDMA sous IMS désactivée"</string>
     <string name="updating_title" msgid="6130548922615719689">"Paramètres d\'appel"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Seul l\'administrateur peut modifier les paramètres d\'appel."</string>
+    <string name="call_settings_no_config_mobile_networks" msgid="5158212415701421219">"Le propriétaire de l\'appareil a limité la possibilité de modifier les paramètres du réseau cellulaire."</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Seuls l\'administrateur ou l\'utilisateur professionnel peuvent modifier les paramètres du compte téléphonique."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Paramètres (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Erreur des paramètres d\'appel"</string>
@@ -876,7 +877,7 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"Sous-identifiant de la carte SIM par défaut :"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Bande passante de téléchargement (kb/s) :"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Bande passante de téléversement (kb/s) :"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Configuration du canal physique LTE :"</string>
+    <string name="radio_info_phy_chan_config" msgid="608045501232211303">"Configurations des canaux physiques :"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Taux d\'actualisation des données de la cellule :"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Données des mesures de toutes les cellules :"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"Service de données :"</string>

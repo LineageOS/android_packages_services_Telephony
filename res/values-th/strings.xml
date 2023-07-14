@@ -133,6 +133,7 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"ปิดใช้สายเรียกซ้อนระบบ CDMA ภายใต้ IMS"</string>
     <string name="updating_title" msgid="6130548922615719689">"การตั้งค่าการโทร"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"ผู้ใช้ระดับผู้ดูแลระบบเท่านั้นที่สามารถเปลี่ยนแปลงการตั้งค่าการโทรได้"</string>
+    <string name="call_settings_no_config_mobile_networks" msgid="5158212415701421219">"เจ้าของอุปกรณ์ได้จำกัดความสามารถในการเปลี่ยนการตั้งค่าเครือข่ายมือถือ"</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"เฉพาะผู้ดูแลระบบหรือผู้ใช้ที่ทำงานเท่านั้นที่สามารถเปลี่ยนการตั้งค่าบัญชีของโทรศัพท์ได้"</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"การตั้งค่า (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"ข้อผิดพลาดในการตั้งค่าการโทร"</string>
@@ -876,7 +877,8 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"SubId ของซิมอินเทอร์เน็ตเริ่มต้น:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"แบนด์วิดท์ดาวน์โหลด (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"แบนด์วิดท์อัปโหลด (kbps):"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"การกำหนดค่าแชเนลทางกายภาพของ LTE:"</string>
+    <!-- no translation found for radio_info_phy_chan_config (608045501232211303) -->
+    <skip />
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"อัตราการรีเฟรชข้อมูลมือถือ:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"ข้อมูลการวัดเครือข่ายมือถือทั้งหมด:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"บริการข้อมูล:"</string>

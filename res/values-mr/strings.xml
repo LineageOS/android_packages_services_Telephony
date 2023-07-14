@@ -133,6 +133,7 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"IMS मध्ये CDMA कॉल वेटिंग बंद आहे"</string>
     <string name="updating_title" msgid="6130548922615719689">"कॉल सेटिंग्ज"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"कॉल सेटिंग्ज केवळ प्रशासक वापरकर्त्याद्वारे बदलल्‍या जाऊ शकतात."</string>
+    <string name="call_settings_no_config_mobile_networks" msgid="5158212415701421219">"डिव्हाइसच्या मालकाने मोबाइल नेटवर्क सेटिंग्ज बदलण्याची क्षमता प्रतिबंधित केली आहे."</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"फोन खाते सेटिंग्ज फक्त ॲडमिन किंवा ऑफिसच्या वापरकर्त्याद्वारे बदलली जाऊ शकतात."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"सेटिंग्ज (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"कॉल सेटिंग्ज एरर"</string>
@@ -876,7 +877,8 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"डीफॉल्ट डेटा सिम SubId:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DL बँडविड्थ (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL बँडविड्थ (kbps):"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"LTE फिजिकल चॅनल कॉंफिगरेशन:"</string>
+    <!-- no translation found for radio_info_phy_chan_config (608045501232211303) -->
+    <skip />
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"सेल माहिती रिफ्रेश रेट:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"सर्व सेल परिमाण माहिती:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"डेटा सर्व्हिस:"</string>

@@ -133,6 +133,7 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"IMS હેઠળ CDMA કૉલ પ્રતીક્ષા બંધ છે"</string>
     <string name="updating_title" msgid="6130548922615719689">"કૉલ સેટિંગ"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"કૉલ સેટિંગને ફક્ત ઍડમિન વપરાશકર્તા દ્વારા જ બદલી શકાય છે."</string>
+    <string name="call_settings_no_config_mobile_networks" msgid="5158212415701421219">"ડિવાઇસના માલિકે મોબાઇલ નેટવર્ક સેટિંગ બદલવાની ક્ષમતા પ્રતિબંધિત કરી છે."</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"ફોન એકાઉન્ટના સેટિંગને ફક્ત ઍડમિન અથવા ઑફિસના વપરાશકર્તા જ બદલી શકે છે."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"સેટિંગ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"કૉલ સેટિંગની ભૂલ"</string>
@@ -876,7 +877,7 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"ડિફૉલ્ટ ડેટા સિમનું SubId:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DL બૅન્ડવિડ્થ (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL બૅન્ડવિડ્થ (kbps):"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"LTE ભૌતિક ચૅનલની ગોઠવણી:"</string>
+    <string name="radio_info_phy_chan_config" msgid="608045501232211303">"ચૅનલનું ભૌતિક કન્ફિગ્યુરેશન:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"સેલ માહિતી રિફ્રેશ થવાનો રેટ:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"તમામ સેલ માપ માહિતી:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"ડેટા સેવા:"</string>

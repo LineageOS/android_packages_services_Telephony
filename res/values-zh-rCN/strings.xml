@@ -133,6 +133,7 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"基于 IMS 的 CDMA 来电等待功能已关闭"</string>
     <string name="updating_title" msgid="6130548922615719689">"通话设置"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"只有管理员用户才能更改通话设置。"</string>
+    <string name="call_settings_no_config_mobile_networks" msgid="5158212415701421219">"设备所有者对更改移动网络设置的功能进行了限制。"</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"电话帐号设置只能由管理员或工作资料用户更改。"</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"设置（<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>）"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"通话设置出错"</string>
@@ -876,7 +877,8 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"默认数据 SIM 卡的 SubId："</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DL 带宽 (kbps)："</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL 带宽 (kbps)："</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"LTE 物理信道配置："</string>
+    <!-- no translation found for radio_info_phy_chan_config (608045501232211303) -->
+    <skip />
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"移动网络信息刷新频率："</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"所有移动网络测量信息："</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"数据服务："</string>

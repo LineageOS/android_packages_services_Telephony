@@ -133,6 +133,7 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"Naka-off ang CDMA Call Waiting sa IMS"</string>
     <string name="updating_title" msgid="6130548922615719689">"Mga setting ng tawag"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Ang admin user lang ang maaaring magbago sa mga setting ng tawag."</string>
+    <string name="call_settings_no_config_mobile_networks" msgid="5158212415701421219">"Pinaghigpitan ng may-ari ng device ang kakayahang baguhin ang mga setting ng mobile network."</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Ang admin o user sa trabaho lang ang puwedeng magbago sa mga setting ng account ng telepono."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Mga Setting (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Error sa mga setting ng tawag"</string>
@@ -876,7 +877,7 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"SubId ng default na data SIM:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DL Bandwidth (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL Bandwidth (kbps):"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Configuration ng LTE Physical Channel:"</string>
+    <string name="radio_info_phy_chan_config" msgid="608045501232211303">"Mga Configuration ng Physical Channel:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Rate ng Pag-refresh ng Impormasyon ng Cell:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Impormasyon ng Pagsukat sa Lahat ng Cell:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"Serbisyo ng Data:"</string>
