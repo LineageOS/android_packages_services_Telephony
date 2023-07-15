@@ -133,7 +133,8 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"Apelurile în așteptare CDMA din IMS sunt dezactivate"</string>
     <string name="updating_title" msgid="6130548922615719689">"Setări pentru apeluri"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Numai administratorul poate să modifice setările pentru apeluri."</string>
-    <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Setările contului de pe telefon pot fi modificate numai de administrator sau de utilizatorul de la serviciu."</string>
+    <string name="call_settings_no_config_mobile_networks" msgid="5158212415701421219">"Proprietarul dispozitivului a restricționat posibilitatea de a modifica setările pentru rețelele mobile."</string>
+    <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Setările contului de pe telefon pot fi modificate numai de administrator sau de un utilizator profesional."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Setări (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Eroare în setările pentru apeluri"</string>
     <string name="reading_settings" msgid="1605904432450871183">"Se citesc setările..."</string>
@@ -876,7 +877,8 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"SubId pentru SIM-ul de date prestabilit:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Lățime de bandă de descărcare (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Lățime de bandă de încărcare (kbps):"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Configurarea canalului fizic LTE:"</string>
+    <!-- no translation found for radio_info_phy_chan_config (608045501232211303) -->
+    <skip />
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Rata de actualizare a informațiilor despre celulă:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Toate informațiile de măsurare despre celulă:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"Serviciu de date:"</string>

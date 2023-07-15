@@ -133,7 +133,8 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"Nada tunggu CDMA dalam IMS nonaktif"</string>
     <string name="updating_title" msgid="6130548922615719689">"Setelan panggilan"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Setelan panggilan telepon hanya dapat diubah oleh pengguna admin."</string>
-    <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Setelan akun Telepon hanya dapat diubah oleh admin atau orang yang menggunakannya untuk bekerja."</string>
+    <string name="call_settings_no_config_mobile_networks" msgid="5158212415701421219">"Pemilik perangkat telah membatasi kemampuan untuk mengubah setelan jaringan seluler."</string>
+    <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Setelan akun Telepon hanya dapat diubah admin atau pengguna untuk kerja."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Setelan (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Kesalahan setelan panggilan"</string>
     <string name="reading_settings" msgid="1605904432450871183">"Membaca setelan…"</string>
@@ -876,7 +877,8 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"SubId SIM data default:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Bandwidth DL (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Bandwidth UL (kbps):"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Konfigurasi Saluran Fisik LTE:"</string>
+    <!-- no translation found for radio_info_phy_chan_config (608045501232211303) -->
+    <skip />
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Rasio Pembaruan Info Sel"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Semua Info Pengukuran Sel:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"Layanan Data:"</string>

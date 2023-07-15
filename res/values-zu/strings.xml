@@ -133,6 +133,7 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"Ukulinda kwekholi ye-CDMA ngaphansi kwe-IMS kuvaliwe"</string>
     <string name="updating_title" msgid="6130548922615719689">"Izilungiselelo zekholi"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Izilungiselelo zekholi zingaguqulwa kuphela ngumsebenzisi oyinhloko."</string>
+    <string name="call_settings_no_config_mobile_networks" msgid="5158212415701421219">"Umnikazi wedivayisi ukhawule amandla okushintsha amasethingi enethiwekhi yeselula."</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Amasethingi e-akhawunti yefoni angashintshwa kuphela umphathi noma umsebenzisi wasemsebenzini."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Izilungiselelo (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Iphutha lokulungiselela ikholi"</string>
@@ -876,7 +877,8 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"I-SubId ye-SIM yedatha yokuzenzakalela:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Umkhawulokudonsa we-DL (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Umkhawulokudonsa we-UL (kbps):"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Ukulungiselelwa okuphathekayo kwesiteshi se-LTE:"</string>
+    <!-- no translation found for radio_info_phy_chan_config (608045501232211303) -->
+    <skip />
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Isilinganiso sokuqalisa kabusha solwazi lweseli:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Ulwazi lwesilinganiso seseli:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"Isevisi yedatha:"</string>

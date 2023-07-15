@@ -133,6 +133,7 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"IMS бойынша басқа CDMA желісіндегі қоңырауды ұстап тұру мүмкіндігі өшірулі."</string>
     <string name="updating_title" msgid="6130548922615719689">"Қоңырау параметрлері"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Қоңырау параметрлерін тек әкімші пайдаланушы өзгерте алады."</string>
+    <string name="call_settings_no_config_mobile_networks" msgid="5158212415701421219">"Құрылғының иесі мобильдік желі параметрлерін өзгертуге шектеу қойды."</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Телефонның аккаунт параметрлерін тек әкімші немесе жұмыстағы пайдаланушы өзгерте алады."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Параметрлер (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Қоңырау параметрлерінің қателігі"</string>
@@ -876,7 +877,8 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"Әдепкі деректер SIM картасының қосалқы идентификаторы:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DL өткізу мүмкіндігі (кбит/сек):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL өткізу мүмкіндігі (кбит/сек):"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"LTE физикалық арна конфигурациясы:"</string>
+    <!-- no translation found for radio_info_phy_chan_config (608045501232211303) -->
+    <skip />
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Ұялы желі туралы ақпаратты жаңарту жиілігі:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Барлық ұялы желі өлшемдері туралы ақпарат:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"Деректер қызметі:"</string>

@@ -133,6 +133,7 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"IMS යටත් CDMA ඇමතුම රඳවා ගැනීම ක්‍රියාවිරහිතයි"</string>
     <string name="updating_title" msgid="6130548922615719689">"ඇමතුම් සැකසීම්"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"ඇමතුම් සැකසීම් වෙනස් කළ හැක්කේ පරිපාලක පරිශීලකයාට පමණි."</string>
+    <string name="call_settings_no_config_mobile_networks" msgid="5158212415701421219">"උපාංග හිමිකරු ජංගම ජාල සැකසීම් වෙනස් කිරීමේ හැකියාව සීමා කර ඇත."</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"දුරකථන ගිණුම් සැකසීම් වෙනස් කළ හැක්කේ පරිපාලක හෝ කාර්යාල පරිශීලකයාට පමණි."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"සැකසීම් (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"ඇමතුම් සැකසුම් දෝෂය"</string>
@@ -876,7 +877,8 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"පෙරනිමි දත්ත SIM පතේ උප හැඳුනුම:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DL කලාප පළල (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL කලාප පළල (kbps):"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"LTE භෞතික නාලිකා වින්‍යාසය:"</string>
+    <!-- no translation found for radio_info_phy_chan_config (608045501232211303) -->
+    <skip />
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"සෙල් තොරතුරු නැවුම් කිරීමේ අනුපාතය:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"සියලු සෙල් මිනුම් තොරතුරු:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"දත්ත සේවාව:"</string>

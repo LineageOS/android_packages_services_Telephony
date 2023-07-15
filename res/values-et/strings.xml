@@ -133,6 +133,7 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"CDMA ootel kõne on IMS-i all välja lülitatud"</string>
     <string name="updating_title" msgid="6130548922615719689">"Kõneseaded"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Kõne seadeid saab muuta ainult administraator."</string>
+    <string name="call_settings_no_config_mobile_networks" msgid="5158212415701421219">"Seadme omanik on mobiilsidevõrgu seadete muutmise võimalust piiranud."</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Telefoni konto seadeid saab muuta ainult administraator või tööprofiili kasutaja."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Seaded (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Kõneseadete viga"</string>
@@ -876,7 +877,8 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"Andmete vaike-SIM-kaardi alam-ID:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DL-i ribalaius (kbit/s):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL-i ribalaius (kbit/s):"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"LTE füüsilise kanali konfiguratsioon:"</string>
+    <!-- no translation found for radio_info_phy_chan_config (608045501232211303) -->
+    <skip />
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Kärje teabe värskendamissagedus:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Kõik kärje mõõteandmed:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"Andmesideteenus:"</string>

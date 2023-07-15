@@ -133,6 +133,7 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"Стављање CDMA позива на чекање у IMS-у је искључено"</string>
     <string name="updating_title" msgid="6130548922615719689">"Подешавања позива"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Само кориснику са администраторским правима је дозвољено да мења подешавања позива."</string>
+    <string name="call_settings_no_config_mobile_networks" msgid="5158212415701421219">"Власник уређаја је ограничио могућност промене подешавања мобилне мреже."</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Подешавања налога телефона може да промени само администратор или пословни корисник."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Подешавања (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Грешка у подешавањима позива"</string>
@@ -876,7 +877,7 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"SubID подразумеваног SIM-а за податке:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DL пропусни опсег (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL пропусни опсег (kbps):"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Конфигурација LTE физичког канала:"</string>
+    <string name="radio_info_phy_chan_config" msgid="608045501232211303">"Конфигурације физичког канала:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Учесталост освежавања информација о предајнику:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Све информације о мерењу за предајник:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"Услуга преноса података:"</string>

@@ -133,6 +133,7 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"IMS での CDMA 通話中着信が OFF になっています"</string>
     <string name="updating_title" msgid="6130548922615719689">"通話設定"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"通話設定は管理者ユーザーのみが変更できます。"</string>
+    <string name="call_settings_no_config_mobile_networks" msgid="5158212415701421219">"デバイス所有者によって、モバイル ネットワークの設定を変更する機能が制限されています。"</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"モバイル デバイスのアカウント設定を変更できるのは、管理者または従業員ユーザーのみに限られています。"</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"設定（<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>）"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"通話設定エラー"</string>
@@ -876,7 +877,8 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"デフォルトのデータ SIM の SUBID:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DL 帯域幅（kbps）:"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL 帯域幅（kbps）:"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"LTE の物理チャネル設定:"</string>
+    <!-- no translation found for radio_info_phy_chan_config (608045501232211303) -->
+    <skip />
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"セル情報の更新間隔:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"すべてのセルの測定情報:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"データサービス:"</string>

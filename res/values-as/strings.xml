@@ -133,6 +133,7 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"IMSত CDMA কল অপেক্ষাৰত সুবিধাটো অফ আছে"</string>
     <string name="updating_title" msgid="6130548922615719689">"কল ছেটিংসমূহ"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"কেৱল প্ৰশাসকে কল ছেটিংসমূহ সলনি কৰিব পাৰে।"</string>
+    <string name="call_settings_no_config_mobile_networks" msgid="5158212415701421219">"ডিভাইচৰ গৰাকীয়ে ম’বাইল নেটৱৰ্কৰ ছেটিং সলনি কৰাৰ ক্ষমতা সীমিত কৰিছে।"</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"ফ’ন একাউণ্টৰ ছেটিং কেৱল প্ৰশাসক অথবা কৰ্মস্থানৰ ব্যৱহাৰকাৰীয়েহে সলনি কৰিব পাৰে।"</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"ছেটিংসমূহ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"কল ছেটিংসমূহত আসোঁৱাহ"</string>
@@ -876,7 +877,8 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"ডিফ’ল্ট ডেটা ছিমৰ ছাবআইডি:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DL বেণ্ডৱিথ (কেবিপিএছ):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL বেণ্ডৱিথ (কেবিপিএছ):"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"LTE ফিজিকেল চেনেলৰ কনফিগাৰেশ্বন:"</string>
+    <!-- no translation found for radio_info_phy_chan_config (608045501232211303) -->
+    <skip />
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"চেল তথ্য ৰিফ্ৰেশ্বৰ হাৰ:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"সকলো চেল পৰিমাপৰ তথ্য:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"ডেটা সেৱা:"</string>

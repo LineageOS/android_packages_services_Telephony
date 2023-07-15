@@ -133,6 +133,7 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"CDMA – čakajúci hovor v službe IMS – vypnuté"</string>
     <string name="updating_title" msgid="6130548922615719689">"Nastavenia hovorov"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Nastavenia hovorov môže zmeniť iba používateľ s povoleniami správcu."</string>
+    <string name="call_settings_no_config_mobile_networks" msgid="5158212415701421219">"Vlastník zariadenia obmedzil možnosť zmeny nastavení mobilnej siete."</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Nastavenia telefónneho účtu môže zmeniť iba správca alebo spravovaný používateľ."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Nastavenia (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Chyba nastavení hovorov"</string>
@@ -876,7 +877,7 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"Podradený identifikátor predvolenej dátovej SIM karty:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Rýchlosť pripojenia DL (kB/s):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Rýchlosť pripojenia UL (kB/s):"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Konfigurácia fyzického kanála LTE:"</string>
+    <string name="radio_info_phy_chan_config" msgid="608045501232211303">"Konfigurácie fyzického kanála:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Frekvencia obnovenia informácií o mobilnej sieti:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Všetky informácie o meraní mobilnej siete:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"Dátová služba:"</string>

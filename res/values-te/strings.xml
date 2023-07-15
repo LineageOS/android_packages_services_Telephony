@@ -133,6 +133,7 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"IMSలో CDMA కాల్ వెయిటింగ్ ఆఫ్‌లో ఉంది"</string>
     <string name="updating_title" msgid="6130548922615719689">"కాల్ సెట్టింగ్‌లు"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"కాల్ సెట్టింగ్‌లను నిర్వాహక వినియోగదారు మాత్రమే మార్చగలరు."</string>
+    <string name="call_settings_no_config_mobile_networks" msgid="5158212415701421219">"పరికర ఓనర్ మొబైల్ నెట్‌వర్క్ సెట్టింగ్‌లను మార్చగల సామర్థ్యాన్ని పరిమితం చేశారు."</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"ఫోన్ ఖాతా సెట్టింగ్‌లను అడ్మిన్ లేదా వర్క్ యూజర్ మాత్రమే మార్చగలరు."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"సెట్టింగ్‌లు (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"కాల్ సెట్టింగ్‌ల ఎర్రర్"</string>
@@ -876,7 +877,7 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"ఆటోమేటిక్ డేటా SIM యొక్క SubId:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DL బ్యాండ్‌విడ్త్ (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL బ్యాండ్‌విడ్త్ (kbps):"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"LTE భౌతిక ఛానెల్ కాన్ఫిగరేషన్:"</string>
+    <string name="radio_info_phy_chan_config" msgid="608045501232211303">"ఫిజికల్ ఛానెల్ కాన్ఫిగరేషన్‌లు:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"సెల్ సమాచార రిఫ్రెష్ సగటు:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"మొత్తం సెల్ పరిమాణ సమాచారం:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"డేటా సేవ:"</string>

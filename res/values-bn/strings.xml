@@ -133,6 +133,7 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"IMS-এ CDMA কল ওয়েটিং সুবিধা বন্ধ আছে"</string>
     <string name="updating_title" msgid="6130548922615719689">"কল সেটিংস"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"কেবলমাত্র প্রশাসক ব্যবহারকারী কল সেটিংস পরিবর্তন করতে পারবেন৷"</string>
+    <string name="call_settings_no_config_mobile_networks" msgid="5158212415701421219">"এই ডিভাইসের মালিক নেটওয়ার্ক সম্পর্কিত সেটিংস পরিবর্তনের ক্ষেত্রে বিধিনিষেধ রেখেছেন।"</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"শুধুমাত্র অ্যাডমিন বা অফিস প্রোফাইল ব্যবহারকারী ফোনের অ্যাকাউন্ট সেটিংস পরিবর্তন করতে পারবেন।"</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"সেটিংস (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"কল সেটিংসে ত্রুটি"</string>
@@ -876,7 +877,8 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"ডিফল্ট ডেটা সিমের SubId:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"ডিএল ব্যান্ডউইথ (কেবিপিএস):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"ইউএল ব্যান্ডউইথ (কেবিপিএস):"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"LTE ফিজিক্যাল চ্যানেল কনফিগারেশন:"</string>
+    <!-- no translation found for radio_info_phy_chan_config (608045501232211303) -->
+    <skip />
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"সেল তথ্যে রিফ্রেশ রেট:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"সমস্ত সেল পরিমাপ তথ্য:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"ডেটা পরিষেবা:"</string>

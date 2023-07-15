@@ -133,6 +133,7 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"A chamada CDMA em espera está desativada no IMS"</string>
     <string name="updating_title" msgid="6130548922615719689">"Configurações de chamadas"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"As configurações de chamada só podem ser alteradas pelo usuário administrador."</string>
+    <string name="call_settings_no_config_mobile_networks" msgid="5158212415701421219">"O proprietário do dispositivo restringiu a capacidade de mudar as configurações de rede móvel."</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"As configurações da conta do smartphone só podem ser alteradas pelo administrador ou usuário no trabalho."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Configurações (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Erro de configuração da chamada"</string>
@@ -876,7 +877,8 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"Subcódigo do chip de dados padrão:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Largura de banda DL (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Largura de banda UL (kbps):"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Configuração do canal físico de LTE:"</string>
+    <!-- no translation found for radio_info_phy_chan_config (608045501232211303) -->
+    <skip />
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Taxa de atualização das informações do celular:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Todas as informações de medição do celular:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"Serviço de dados:"</string>

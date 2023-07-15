@@ -133,6 +133,7 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"CDMA Call Waiting under IMS Off"</string>
     <string name="updating_title" msgid="6130548922615719689">"Call settings"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Call settings can only be changed by the admin user."</string>
+    <string name="call_settings_no_config_mobile_networks" msgid="5158212415701421219">"The device owner has restricted the ability to change mobile network settings."</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Phone account settings can only be changed by the admin or work user."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Settings (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Call settings error"</string>
@@ -876,7 +877,7 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"SubId of default data SIM:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DL Bandwidth (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL Bandwidth (kbps):"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"LTE Physical Channel Configuration:"</string>
+    <string name="radio_info_phy_chan_config" msgid="608045501232211303">"Physical Channel Configurations:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Cell Info Refresh Rate:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"All Cell Measurement Info:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"Data Service:"</string>

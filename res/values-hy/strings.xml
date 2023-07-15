@@ -133,6 +133,7 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"CDMA զանգի սպասումը IMS-ում անջատված է"</string>
     <string name="updating_title" msgid="6130548922615719689">"Զանգի կարգավորումներ"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Զանգի կարգավորումները կարող է փոխել միայն ադմինիստրատոր հանդիսացող օգտատերը:"</string>
+    <string name="call_settings_no_config_mobile_networks" msgid="5158212415701421219">"Սարքի սեփականատերը սահմանափակել է բջջային ցանցի կարգավորումները փոխելու հնարավորությունը։"</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Հեռախոսի հաշվի կարգավորումները կարող է փոխել միայն ադմինիստրատորը կամ աշխատանքային հաշվի օգտատերը։"</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Կարգավորումներ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Զանգի կարգավորումների սխալ"</string>
@@ -876,7 +877,8 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"SIM քարտի հավելյալ ID կանխադրված բջջային ինտերնետի համար՝"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DL թողունակությունը (կբ/վ)՝"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL թողունակությունը (կբ/վ)՝"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"LTE ֆիզիկական ալիքի կարգավորում՝"</string>
+    <!-- no translation found for radio_info_phy_chan_config (608045501232211303) -->
+    <skip />
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Բջիջի տվյալների թարմացման հաճախականությունը՝"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Բոլոր բջիջների չափման տվյալները՝"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"Տվյալների ծառայություն՝"</string>
