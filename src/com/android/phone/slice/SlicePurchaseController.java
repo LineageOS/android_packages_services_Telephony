@@ -180,6 +180,12 @@ public class SlicePurchaseController extends Handler {
     private static final String ACTION_SLICE_PURCHASE_APP_RESPONSE_NOT_DEFAULT_DATA_SUBSCRIPTION =
             "com.android.phone.slice.action."
                     + "SLICE_PURCHASE_APP_RESPONSE_NOT_DEFAULT_DATA_SUBSCRIPTION";
+    /**
+     * Action indicating the performance boost notification was not shown because the user
+     * disabled notifications for the application or channel.
+     */
+    private static final String ACTION_SLICE_PURCHASE_APP_RESPONSE_NOTIFICATIONS_DISABLED =
+            "com.android.phone.slice.action.SLICE_PURCHASE_APP_RESPONSE_NOTIFICATIONS_DISABLED";
     /** Action indicating the purchase request was successful. */
     private static final String ACTION_SLICE_PURCHASE_APP_RESPONSE_SUCCESS =
             "com.android.phone.slice.action.SLICE_PURCHASE_APP_RESPONSE_SUCCESS";
@@ -246,6 +252,14 @@ public class SlicePurchaseController extends Handler {
      */
     public static final String EXTRA_INTENT_NOT_DEFAULT_DATA_SUBSCRIPTION =
             "com.android.phone.slice.extra.INTENT_NOT_DEFAULT_DATA_SUBSCRIPTION";
+    /**
+     * Extra for the notifications disabled PendingIntent that the slice purchase application can
+     * send as a response if the premium capability purchase request failed because the user
+     * disabled notifications for the application or channel.
+     * Sends {@link #ACTION_SLICE_PURCHASE_APP_RESPONSE_NOTIFICATIONS_DISABLED}.
+     */
+    public static final String EXTRA_INTENT_NOTIFICATIONS_DISABLED =
+            "com.android.phone.slice.extra.INTENT_NOTIFICATIONS_DISABLED";
     /**
      * Extra for the success PendingIntent that the slice purchase application can send as a
      * response if the premium capability purchase request was successful.
@@ -394,6 +408,16 @@ public class SlicePurchaseController extends Handler {
                             .handlePurchaseResult(capability,
                             PURCHASE_PREMIUM_CAPABILITY_RESULT_NOT_DEFAULT_DATA_SUBSCRIPTION,
                             false);
+                    break;
+                }
+                case ACTION_SLICE_PURCHASE_APP_RESPONSE_NOTIFICATIONS_DISABLED: {
+                    logd("Slice purchase application unable to show notification for capability: "
+                            + TelephonyManager.convertPremiumCapabilityToString(capability)
+                            + " because the user has disabled notifications.");
+                    SlicePurchaseController.getInstance(phoneId)
+                            .handlePurchaseResult(capability,
+                            TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_USER_DISABLED,
+                            true);
                     break;
                 }
                 case ACTION_SLICE_PURCHASE_APP_RESPONSE_SUCCESS: {
@@ -777,6 +801,8 @@ public class SlicePurchaseController extends Handler {
         intent.putExtra(EXTRA_INTENT_NOT_DEFAULT_DATA_SUBSCRIPTION, createPendingIntent(
                 ACTION_SLICE_PURCHASE_APP_RESPONSE_NOT_DEFAULT_DATA_SUBSCRIPTION, capability,
                 false));
+        intent.putExtra(EXTRA_INTENT_NOTIFICATIONS_DISABLED, createPendingIntent(
+                ACTION_SLICE_PURCHASE_APP_RESPONSE_NOTIFICATIONS_DISABLED, capability, false));
         intent.putExtra(EXTRA_INTENT_SUCCESS, createPendingIntent(
                 ACTION_SLICE_PURCHASE_APP_RESPONSE_SUCCESS, capability, true));
         intent.putExtra(EXTRA_INTENT_NOTIFICATION_SHOWN, createPendingIntent(
@@ -792,6 +818,7 @@ public class SlicePurchaseController extends Handler {
         filter.addAction(ACTION_SLICE_PURCHASE_APP_RESPONSE_CARRIER_ERROR);
         filter.addAction(ACTION_SLICE_PURCHASE_APP_RESPONSE_REQUEST_FAILED);
         filter.addAction(ACTION_SLICE_PURCHASE_APP_RESPONSE_NOT_DEFAULT_DATA_SUBSCRIPTION);
+        filter.addAction(ACTION_SLICE_PURCHASE_APP_RESPONSE_NOTIFICATIONS_DISABLED);
         filter.addAction(ACTION_SLICE_PURCHASE_APP_RESPONSE_SUCCESS);
         filter.addAction(ACTION_SLICE_PURCHASE_APP_RESPONSE_NOTIFICATION_SHOWN);
         mPhone.getContext().registerReceiver(
@@ -981,7 +1008,8 @@ public class SlicePurchaseController extends Handler {
 
     private long getThrottleDuration(@TelephonyManager.PurchasePremiumCapabilityResult int result) {
         if (result == TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_USER_CANCELED
-                || result == TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_TIMEOUT) {
+                || result == TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_TIMEOUT
+                || result == TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_USER_DISABLED) {
             return getCarrierConfigs().getLong(CarrierConfigManager
                     .KEY_PREMIUM_CAPABILITY_NOTIFICATION_BACKOFF_HYSTERESIS_TIME_MILLIS_LONG);
         }
