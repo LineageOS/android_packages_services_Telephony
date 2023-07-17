@@ -48,6 +48,9 @@ import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.telephony.data.NetworkSliceInfo;
 import android.telephony.data.NetworkSlicingConfig;
+import android.telephony.data.RouteSelectionDescriptor;
+import android.telephony.data.TrafficDescriptor;
+import android.telephony.data.UrspRule;
 import android.text.TextUtils;
 import android.util.Log;
 import android.webkit.URLUtil;
@@ -339,7 +342,7 @@ public class SlicePurchaseController extends Handler {
         /**
          * Create a SlicePurchaseControllerBroadcastReceiver for the given capability
          *
-         * @param capability The requested capability to listen to response for.
+         * @param capability The requested premium capability to listen to response for.
          */
         SlicePurchaseControllerBroadcastReceiver(
                 @TelephonyManager.PremiumCapability int capability) {
@@ -504,6 +507,17 @@ public class SlicePurchaseController extends Handler {
         mLocalDate = localDate;
     }
 
+    /**
+     * Set the NetworkSlicingConfig to use for determining whether the premium capability was
+     * successfully set up on the carrier network.
+     *
+     * @param slicingConfig The LocalDate instance to use.
+     */
+    @VisibleForTesting
+    public void setSlicingConfig(@NonNull NetworkSlicingConfig slicingConfig) {
+        mSlicingConfig = slicingConfig;
+    }
+
     @Override
     public void handleMessage(@NonNull Message msg) {
         switch (msg.what) {
@@ -517,7 +531,8 @@ public class SlicePurchaseController extends Handler {
             case EVENT_SLICING_CONFIG_CHANGED: {
                 AsyncResult ar = (AsyncResult) msg.obj;
                 NetworkSlicingConfig config = (NetworkSlicingConfig) ar.result;
-                logd("EVENT_SLICING_CONFIG_CHANGED: from " + mSlicingConfig + " to " + config);
+                logd("EVENT_SLICING_CONFIG_CHANGED: previous= " + mSlicingConfig);
+                logd("EVENT_SLICING_CONFIG_CHANGED: current= " + config);
                 mSlicingConfig = config;
                 onSlicingConfigChanged();
                 break;
@@ -1069,26 +1084,71 @@ public class SlicePurchaseController extends Handler {
         return mPhone.getSubId() == SubscriptionManager.getDefaultDataSubscriptionId();
     }
 
-    private boolean isSlicingConfigActive(@TelephonyManager.PremiumCapability int capability) {
+    /**
+     * Check whether the current network slicing configuration indicates that the given premium
+     * capability is active and set up on the carrier network.
+     * @param capability The premium capability to check for.
+     * @return {@code true} if the slicing config indicates the capability is active and
+     * {@code false} otherwise.
+     */
+    @VisibleForTesting
+    public boolean isSlicingConfigActive(@TelephonyManager.PremiumCapability int capability) {
         if (mSlicingConfig == null) {
             return false;
         }
-        int capabilityServiceType = getSliceServiceType(capability);
-        for (NetworkSliceInfo sliceInfo : mSlicingConfig.getSliceInfo()) {
-            if (sliceInfo.getSliceServiceType() == capabilityServiceType
-                    && sliceInfo.getStatus() == NetworkSliceInfo.SLICE_STATUS_ALLOWED) {
-                return true;
+        for (UrspRule urspRule : mSlicingConfig.getUrspRules()) {
+            for (TrafficDescriptor trafficDescriptor : urspRule.getTrafficDescriptors()) {
+                TrafficDescriptor.OsAppId osAppId =
+                        new TrafficDescriptor.OsAppId(trafficDescriptor.getOsAppId());
+                if (osAppId.getAppId().equals(getAppId(capability))) {
+                    for (RouteSelectionDescriptor rsd : urspRule.getRouteSelectionDescriptor()) {
+                        for (NetworkSliceInfo sliceInfo : rsd.getSliceInfo()) {
+                            if (sliceInfo.getStatus() == NetworkSliceInfo.SLICE_STATUS_ALLOWED
+                                    && getSliceServiceTypes(capability).contains(
+                                            sliceInfo.getSliceServiceType())) {
+                                return true;
+                            }
+                        }
+                    }
+                }
             }
         }
         return false;
     }
 
-    @NetworkSliceInfo.SliceServiceType private int getSliceServiceType(
-            @TelephonyManager.PremiumCapability int capability) {
+    /**
+     * Get the application ID associated with the given premium capability.
+     * The app ID is a field in {@link TrafficDescriptor} that helps match URSP rules to determine
+     * whether the premium capability was successfully set up on the carrier network.
+     * @param capability The premium capability to get the app ID for.
+     * @return The application ID associated with the premium capability.
+     */
+    @VisibleForTesting
+    @NonNull public static String getAppId(@TelephonyManager.PremiumCapability int capability) {
         if (capability == TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY) {
-            return NetworkSliceInfo.SLICE_SERVICE_TYPE_URLLC;
+            return "PRIORITIZE_LATENCY";
         }
-        return NetworkSliceInfo.SLICE_SERVICE_TYPE_NONE;
+        return "";
+    }
+
+    /**
+     * Get the slice service types associated with the given premium capability.
+     * The slice service type is a field in {@link NetworkSliceInfo} that helps to match determine
+     * whether the premium capability was successfully set up on the carrier network.
+     * @param capability The premium capability to get the associated slice service types for.
+     * @return A set of slice service types associated with the premium capability.
+     */
+    @VisibleForTesting
+    @NonNull @NetworkSliceInfo.SliceServiceType public static Set<Integer> getSliceServiceTypes(
+            @TelephonyManager.PremiumCapability int capability) {
+        Set<Integer> sliceServiceTypes = new HashSet<>();
+        if (capability == TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY) {
+            sliceServiceTypes.add(NetworkSliceInfo.SLICE_SERVICE_TYPE_EMBB);
+            sliceServiceTypes.add(NetworkSliceInfo.SLICE_SERVICE_TYPE_URLLC);
+        } else {
+            sliceServiceTypes.add(NetworkSliceInfo.SLICE_SERVICE_TYPE_NONE);
+        }
+        return sliceServiceTypes;
     }
 
     private boolean isNetworkAvailable() {

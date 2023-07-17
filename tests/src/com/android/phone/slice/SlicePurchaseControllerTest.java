@@ -34,6 +34,7 @@ import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
 
+import android.annotation.NonNull;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -50,6 +51,9 @@ import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.telephony.data.NetworkSliceInfo;
 import android.telephony.data.NetworkSlicingConfig;
+import android.telephony.data.RouteSelectionDescriptor;
+import android.telephony.data.TrafficDescriptor;
+import android.telephony.data.UrspRule;
 import android.testing.TestableLooper;
 
 import androidx.test.ext.junit.runners.AndroidJUnit4;
@@ -66,7 +70,9 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 
 @RunWith(AndroidJUnit4.class)
@@ -699,6 +705,69 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
         assertEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_THROTTLED, mResult);
     }
 
+    @Test
+    public void testIsSlicingConfigActive_emptyUrspRules() {
+        int capability = TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY;
+        NetworkSliceInfo sliceInfo = createNetworkSliceInfo(
+                getRandomSliceServiceType(capability), true);
+        NetworkSlicingConfig slicingConfig = new NetworkSlicingConfig(
+                Collections.emptyList(), Collections.singletonList(sliceInfo));
+        mSlicePurchaseController.setSlicingConfig(slicingConfig);
+
+        assertFalse(mSlicePurchaseController.isSlicingConfigActive(capability));
+    }
+
+    @Test
+    public void testIsSlicingConfigActive_noMatchingTrafficDescriptor() {
+        int capability = TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY;
+        NetworkSliceInfo sliceInfo = createNetworkSliceInfo(
+                getRandomSliceServiceType(capability), true);
+        TrafficDescriptor trafficDescriptor = createTrafficDescriptor("ENTERPRISE");
+        RouteSelectionDescriptor routeSelectionDescriptor = createRouteSelectionDescriptor(
+                Collections.singletonList(sliceInfo));
+        NetworkSlicingConfig slicingConfig = createNetworkSlicingConfig(
+                Collections.singletonList(sliceInfo),
+                Collections.singletonList(trafficDescriptor),
+                Collections.singletonList(routeSelectionDescriptor));
+        mSlicePurchaseController.setSlicingConfig(slicingConfig);
+
+        assertFalse(mSlicePurchaseController.isSlicingConfigActive(capability));
+    }
+
+    @Test
+    public void testIsSlicingConfigActive_multipleElements() {
+        int capability = TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY;
+        NetworkSliceInfo sliceInfo1 = createNetworkSliceInfo(
+                getRandomSliceServiceType(SlicePurchaseController.PREMIUM_CAPABILITY_INVALID),
+                false);
+        NetworkSliceInfo sliceInfo2 = createNetworkSliceInfo(
+                getRandomSliceServiceType(capability), true);
+        List<NetworkSliceInfo> sliceInfos = new ArrayList<>();
+        sliceInfos.add(sliceInfo1);
+        sliceInfos.add(sliceInfo2);
+
+        TrafficDescriptor trafficDescriptor1 = createTrafficDescriptor("ENTERPRISE");
+        TrafficDescriptor trafficDescriptor2 = createTrafficDescriptor(
+                SlicePurchaseController.getAppId(capability));
+        List<TrafficDescriptor> trafficDescriptors = new ArrayList<>();
+        trafficDescriptors.add(trafficDescriptor1);
+        trafficDescriptors.add(trafficDescriptor2);
+
+        RouteSelectionDescriptor routeSelectionDescriptor1 = createRouteSelectionDescriptor(
+                Collections.emptyList());
+        RouteSelectionDescriptor routeSelectionDescriptor2 = createRouteSelectionDescriptor(
+                sliceInfos);
+        List<RouteSelectionDescriptor> routeSelectionDescriptors = new ArrayList<>();
+        routeSelectionDescriptors.add(routeSelectionDescriptor1);
+        routeSelectionDescriptors.add(routeSelectionDescriptor2);
+
+        NetworkSlicingConfig slicingConfig = createNetworkSlicingConfig(
+                sliceInfos, trafficDescriptors, routeSelectionDescriptors);
+        mSlicePurchaseController.setSlicingConfig(slicingConfig);
+
+        assertTrue(mSlicePurchaseController.isSlicingConfigActive(capability));
+    }
+
     private void completeSuccessfulPurchase() {
         sendValidPurchaseRequest();
 
@@ -773,18 +842,61 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
     }
 
     private void sendNetworkSlicingConfig(int capability, boolean configActive) {
-        int sliceServiceType = capability == TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY
-                ? NetworkSliceInfo.SLICE_SERVICE_TYPE_URLLC
-                : NetworkSliceInfo.SLICE_SERVICE_TYPE_NONE;
-        NetworkSliceInfo sliceInfo = new NetworkSliceInfo.Builder()
-                .setStatus(configActive ? NetworkSliceInfo.SLICE_STATUS_ALLOWED
-                        : NetworkSliceInfo.SLICE_STATUS_UNKNOWN)
-                .setSliceServiceType(sliceServiceType)
-                .build();
-        NetworkSlicingConfig slicingConfig = new NetworkSlicingConfig(Collections.emptyList(),
+        NetworkSliceInfo sliceInfo = createNetworkSliceInfo(
+                getRandomSliceServiceType(capability), configActive);
+        TrafficDescriptor trafficDescriptor = createTrafficDescriptor(
+                SlicePurchaseController.getAppId(capability));
+        RouteSelectionDescriptor routeSelectionDescriptor = createRouteSelectionDescriptor(
                 Collections.singletonList(sliceInfo));
+        NetworkSlicingConfig slicingConfig = createNetworkSlicingConfig(
+                Collections.singletonList(sliceInfo),
+                Collections.singletonList(trafficDescriptor),
+                Collections.singletonList(routeSelectionDescriptor));
         mSlicePurchaseController.obtainMessage(2 /* EVENT_SLICING_CONFIG_CHANGED */,
                 new AsyncResult(null, slicingConfig, null)).sendToTarget();
         mTestableLooper.processAllMessages();
+    }
+
+    @NetworkSliceInfo.SliceServiceType private int getRandomSliceServiceType(
+            @TelephonyManager.PremiumCapability int capability) {
+        for (int sliceServiceType : SlicePurchaseController.getSliceServiceTypes(capability)) {
+            // Get a random valid sst from the set
+            return sliceServiceType;
+        }
+        return NetworkSliceInfo.SLICE_SERVICE_TYPE_NONE;
+    }
+
+    @NonNull private NetworkSliceInfo createNetworkSliceInfo(
+            @NetworkSliceInfo.SliceServiceType int sliceServiceType, boolean active) {
+        return new NetworkSliceInfo.Builder()
+                .setStatus(active ? NetworkSliceInfo.SLICE_STATUS_ALLOWED
+                        : NetworkSliceInfo.SLICE_STATUS_UNKNOWN)
+                .setSliceServiceType(sliceServiceType)
+                .build();
+    }
+
+    @NonNull private TrafficDescriptor createTrafficDescriptor(@NonNull String appId) {
+        TrafficDescriptor.OsAppId osAppId = new TrafficDescriptor.OsAppId(
+                TrafficDescriptor.OsAppId.ANDROID_OS_ID, appId);
+        return new TrafficDescriptor.Builder()
+                .setOsAppId(osAppId.getBytes())
+                .build();
+    }
+
+    @NonNull private RouteSelectionDescriptor createRouteSelectionDescriptor(
+            @NonNull List<NetworkSliceInfo> sliceInfos) {
+        return new RouteSelectionDescriptor(
+                RouteSelectionDescriptor.MIN_ROUTE_PRECEDENCE,
+                RouteSelectionDescriptor.SESSION_TYPE_IPV4,
+                RouteSelectionDescriptor.ROUTE_SSC_MODE_1,
+                sliceInfos, Collections.emptyList());
+    }
+
+    @NonNull private NetworkSlicingConfig createNetworkSlicingConfig(
+            @NonNull List<NetworkSliceInfo> sliceInfos,
+            @NonNull List<TrafficDescriptor> trafficDescriptors,
+            @NonNull List<RouteSelectionDescriptor> routeSelectionDescriptors) {
+        UrspRule urspRule = new UrspRule(0, trafficDescriptors, routeSelectionDescriptors);
+        return new NetworkSlicingConfig(Collections.singletonList(urspRule), sliceInfos);
     }
 }
