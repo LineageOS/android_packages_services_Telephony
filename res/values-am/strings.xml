@@ -113,7 +113,7 @@
     <string name="messageCFB" msgid="1958017270393563388">"ቁጥሩ ሲያዝ"</string>
     <string name="sum_cfb_enabled" msgid="332037613072049492">"ወደ <xliff:g id="PHONENUMBER">{0}</xliff:g>በማስተላለፍ ላይ"</string>
     <string name="sum_cfb_disabled" msgid="3589913334164866035">"ጠፍቷል"</string>
-    <string name="disable_cfb_forbidden" msgid="4831494744351633961">"ስልክህ ስራ ሲበዛበት የድምጽ ተያያዥ ሞደም አቅራቢህ  የጥሪ-ማስተላለፍን  አይደግፍም።"</string>
+    <string name="disable_cfb_forbidden" msgid="4831494744351633961">"ስልክህ ሥራ ሲበዛበት የድምጽ ተያያዥ ሞደም አቅራቢህ  የጥሪ-ማስተላለፍን  አይደግፍም።"</string>
     <string name="labelCFNRy" msgid="3403533792248457946">"መልስ ሳይሰጥ ሲቀር"</string>
     <string name="messageCFNRy" msgid="7644434155765359009">"ቁጥሩ ሳይነሳ"</string>
     <string name="sum_cfnry_enabled" msgid="3000500837493854799">"ወደ <xliff:g id="PHONENUMBER">{0}</xliff:g>በማስተላለፍ ላይ"</string>
@@ -895,7 +895,7 @@
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"የድምፅ የአውታረ መረብ ዓይነት፡"</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"የውሂብ አውታረ መረብ ዓይነት፡"</string>
     <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"የአውታረ መረብ ዓይነት ሻር፦"</string>
-    <string name="radio_info_voice_raw_registration_state_label" msgid="2822988327145825128">"የጥሬ ድምጽ ምዝገባ ሁነታ፦"</string>
+    <string name="radio_info_voice_raw_registration_state_label" msgid="2822988327145825128">"የጥሬ ድምፅ ምዝገባ ሁነታ፦"</string>
     <string name="radio_info_data_raw_registration_state_label" msgid="2895895513822604539">"የጥሬ ውሂብ ምዝገባ ሁነታ፦"</string>
     <string name="radio_info_wlan_data_raw_registration_state_label" msgid="6396894835757296612">"የWLAN ጥሬ ውሂብ ምዝገባ ሁነታ፦"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"የስልክ መረጃ ጠቋሚ ይምረጡ"</string>
