@@ -113,7 +113,7 @@
     <string name="messageCFB" msgid="1958017270393563388">"ቁጥሩ ሲያዝ"</string>
     <string name="sum_cfb_enabled" msgid="332037613072049492">"ወደ <xliff:g id="PHONENUMBER">{0}</xliff:g>በማስተላለፍ ላይ"</string>
     <string name="sum_cfb_disabled" msgid="3589913334164866035">"ጠፍቷል"</string>
-    <string name="disable_cfb_forbidden" msgid="4831494744351633961">"ስልክህ ስራ ሲበዛበት የድምጽ ተያያዥ ሞደም አቅራቢህ  የጥሪ-ማስተላለፍን  አይደግፍም።"</string>
+    <string name="disable_cfb_forbidden" msgid="4831494744351633961">"ስልክህ ሥራ ሲበዛበት የድምጽ ተያያዥ ሞደም አቅራቢህ  የጥሪ-ማስተላለፍን  አይደግፍም።"</string>
     <string name="labelCFNRy" msgid="3403533792248457946">"መልስ ሳይሰጥ ሲቀር"</string>
     <string name="messageCFNRy" msgid="7644434155765359009">"ቁጥሩ ሳይነሳ"</string>
     <string name="sum_cfnry_enabled" msgid="3000500837493854799">"ወደ <xliff:g id="PHONENUMBER">{0}</xliff:g>በማስተላለፍ ላይ"</string>
