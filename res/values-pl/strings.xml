@@ -133,7 +133,7 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"Połączenie oczekujące CDMA, gdy usługa IMS jest wyłączona"</string>
     <string name="updating_title" msgid="6130548922615719689">"Ustawienia połączeń"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Ustawienia połączeń może zmieniać tylko użytkownik będący administratorem."</string>
-    <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Ustawienia konta telefonu może zmienić tylko administrator lub użytkownik profilu służbowego."</string>
+    <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Ustawienia konta telefonu zmienia administrator lub użytkownik profilu służbowego."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Ustawienia (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Błąd w ustawieniach połączenia"</string>
     <string name="reading_settings" msgid="1605904432450871183">"Czytanie ustawień..."</string>
