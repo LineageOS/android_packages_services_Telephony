@@ -19,7 +19,8 @@
     <string name="SatelliteControl">SatelliteControl APIs</string>
     <string name="Datagram">Datagram APIs</string>
     <string name="Provisioning">Provisioning APIs</string>
-    <string name="SatelliteModemState">SatelliteModemState APIs</string>
+    <string name="MultipleSendReceive">Test multiple poll and send</string>
+    <string name="SendReceive">Send and Receive datagrams</string>
 
     <string name="enableSatellite">enableSatellite</string>
     <string name="disableSatellite">disableSatellite</string>
@@ -52,6 +53,9 @@
     <string name="multiplePollPendingSatelliteDatagrams">multiplePollPendingSatelliteDatagrams</string>
     <string name="multipleSendSatelliteDatagram">multipleSendSatelliteDatagram</string>
     <string name="multipleSendReceiveSatelliteDatagram">multipleSendReceiveSatelliteDatagram</string>
+
+    <string name="sendMessage">sendMessage</string>
+    <string name="receiveMessage">receiveMessage</string>
 
     <string name="Back">Back</string>
 </resources>
