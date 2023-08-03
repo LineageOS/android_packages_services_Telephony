@@ -96,6 +96,10 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
     private static final String ENABLE = "enable";
     private static final String DISABLE = "disable";
     private static final String QUERY = "query";
+    private static final String SET_CARRIER_SERVICE_PACKAGE_OVERRIDE =
+            "set-carrier-service-package-override";
+    private static final String CLEAR_CARRIER_SERVICE_PACKAGE_OVERRIDE =
+            "clear-carrier-service-package-override";
 
     private static final String CALL_COMPOSER_TEST_MODE = "test-mode";
     private static final String CALL_COMPOSER_SIMULATE_CALL = "simulate-outgoing-call";
@@ -333,6 +337,10 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                 return handleGetSimSlotsMapping();
             case RADIO_SUBCOMMAND:
                 return handleRadioCommand();
+            case SET_CARRIER_SERVICE_PACKAGE_OVERRIDE:
+                return setCarrierServicePackageOverride();
+            case CLEAR_CARRIER_SERVICE_PACKAGE_OVERRIDE:
+                return clearCarrierServicePackageOverride();
             default: {
                 return handleDefaultCommands(cmd);
             }
@@ -2971,5 +2979,96 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         }
 
         return -1;
+    }
+
+    // set-carrier-service-package-override
+    private int setCarrierServicePackageOverride() {
+        PrintWriter errPw = getErrPrintWriter();
+        int subId = SubscriptionManager.getDefaultSubscriptionId();
+
+        String opt;
+        while ((opt = getNextOption()) != null) {
+            switch (opt) {
+                case "-s":
+                    try {
+                        subId = Integer.parseInt(getNextArgRequired());
+                    } catch (NumberFormatException e) {
+                        errPw.println(
+                                "set-carrier-service-package-override requires an integer as a"
+                                        + " subscription ID.");
+                        return -1;
+                    }
+                    break;
+            }
+        }
+
+        String packageName = getNextArg();
+        if (packageName == null) {
+            errPw.println("set-carrier-service-package-override requires a override package name.");
+            return -1;
+        }
+
+        try {
+            mInterface.setCarrierServicePackageOverride(
+                    subId, packageName, mContext.getOpPackageName());
+
+            if (VDBG) {
+                Log.v(
+                        LOG_TAG,
+                        "set-carrier-service-package-override -s " + subId + " " + packageName);
+            }
+        } catch (RemoteException | IllegalArgumentException | IllegalStateException e) {
+            Log.w(
+                    LOG_TAG,
+                    "set-carrier-service-package-override -s "
+                            + subId
+                            + " "
+                            + packageName
+                            + ", error"
+                            + e.getMessage());
+            errPw.println("Exception: " + e.getMessage());
+            return -1;
+        }
+        return 0;
+    }
+
+    // clear-carrier-service-package-override
+    private int clearCarrierServicePackageOverride() {
+        PrintWriter errPw = getErrPrintWriter();
+        int subId = getDefaultSlot();
+
+        String opt;
+        while ((opt = getNextOption()) != null) {
+            switch (opt) {
+                case "-s":
+                    try {
+                        subId = Integer.parseInt(getNextArgRequired());
+                    } catch (NumberFormatException e) {
+                        errPw.println(
+                                "clear-carrier-service-package-override requires an integer as a"
+                                        + " subscription ID.");
+                        return -1;
+                    }
+                    break;
+            }
+        }
+
+        try {
+            mInterface.setCarrierServicePackageOverride(subId, null, mContext.getOpPackageName());
+
+            if (VDBG) {
+                Log.v(LOG_TAG, "clear-carrier-service-package-override -s " + subId);
+            }
+        } catch (RemoteException | IllegalArgumentException | IllegalStateException e) {
+            Log.w(
+                    LOG_TAG,
+                    "clear-carrier-service-package-override -s "
+                            + subId
+                            + ", error"
+                            + e.getMessage());
+            errPw.println("Exception: " + e.getMessage());
+            return -1;
+        }
+        return 0;
     }
 }
