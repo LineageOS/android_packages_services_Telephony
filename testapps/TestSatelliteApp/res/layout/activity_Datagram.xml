@@ -117,5 +117,12 @@
             android:capitalize="characters"
             android:textColor="@android:color/holo_blue_light"
             android:textSize="15dp" />
+        <TextView
+            android:id="@+id/showErrorStatus"
+            android:layout_width="400dp"
+            android:layout_height="50dp"
+            android:capitalize="characters"
+            android:textColor="@android:color/holo_blue_light"
+            android:textSize="15dp" />
     </LinearLayout>
 </LinearLayout>

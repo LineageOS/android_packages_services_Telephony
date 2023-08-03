@@ -174,8 +174,7 @@ public class TestSatelliteService extends SatelliteImplBase {
     @Override
     public void requestSatelliteEnabled(boolean enableSatellite, boolean enableDemoMode,
             @NonNull IIntegerConsumer errorCallback) {
-        logd("requestSatelliteEnabled: mErrorCode=" + mErrorCode + " enable = " + enableSatellite
-                + "mIsCellularModemEnabledMode = " + mIsCellularModemEnabledMode);
+        logd("requestSatelliteEnabled: mErrorCode=" + mErrorCode + " enable = " + enableSatellite);
         if (mErrorCode != SatelliteError.ERROR_NONE) {
             runWithExecutor(() -> errorCallback.accept(mErrorCode));
             return;
@@ -184,7 +183,6 @@ public class TestSatelliteService extends SatelliteImplBase {
         if (enableSatellite) {
             enableSatellite(errorCallback);
         } else {
-            mIsCellularModemEnabledMode = false;
             disableSatellite(errorCallback);
         }
     }
