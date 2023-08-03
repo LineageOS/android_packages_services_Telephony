@@ -19,6 +19,8 @@ package com.android.services.telephony;
 import static android.telephony.DomainSelectionService.SELECTOR_TYPE_CALLING;
 import static android.telephony.TelephonyManager.HAL_SERVICE_VOICE;
 
+import static com.android.internal.telephony.flags.Flags.carrierEnabledSatelliteFlag;
+
 import android.annotation.NonNull;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -4077,6 +4079,10 @@ public class TelephonyConnectionService extends ConnectionService {
      * else {@code false}.
      */
     private boolean isCallDisallowedDueToSatellite(Phone phone) {
+        if (!carrierEnabledSatelliteFlag()) {
+            return false;
+        }
+
         if (phone == null) {
             return false;
         }
