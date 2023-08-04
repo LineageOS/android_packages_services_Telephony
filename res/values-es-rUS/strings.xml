@@ -877,8 +877,7 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"ID secundario de SIM de datos predeterminada:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Ancho de banda de descarga (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Ancho de banda de carga (kbps):"</string>
-    <!-- no translation found for radio_info_phy_chan_config (608045501232211303) -->
-    <skip />
+    <string name="radio_info_phy_chan_config" msgid="608045501232211303">"Parámetros de configuración de canales físicos:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Frecuencia de actualización de datos del celular:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Información sobre las dimensiones del celular:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"Servicio de datos:"</string>

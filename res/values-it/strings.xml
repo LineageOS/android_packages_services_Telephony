@@ -559,7 +559,7 @@
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"Connettiti a una rete wireless per effettuare una chiamata."</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"Attiva le chiamate tramite Wi-Fi per effettuare una chiamata."</string>
     <string name="incall_error_satellite_enabled" msgid="1936541518147323016">"Disattiva la modalità satellite per effettuare una chiamata."</string>
-    <string name="emergency_information_hint" msgid="9208897544917793012">"Informazioni per le emergenze"</string>
+    <string name="emergency_information_hint" msgid="9208897544917793012">"Informazioni d\'emergenza"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"Proprietario"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"Tocca di nuovo per visualizzare le informazioni"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="2667568200755388829">"Chiamata di emergenza"</string>
@@ -877,8 +877,7 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"ID secondario della SIM dati predefinita:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Larghezza di banda DL (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Larghezza di banda UL (kbps):"</string>
-    <!-- no translation found for radio_info_phy_chan_config (608045501232211303) -->
-    <skip />
+    <string name="radio_info_phy_chan_config" msgid="608045501232211303">"Configurazioni dei canali fisici:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Frequenza di aggiornamento delle informazioni sulle celle:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Informazioni sulla misurazione di tutte le celle:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"Servizio dati:"</string>
