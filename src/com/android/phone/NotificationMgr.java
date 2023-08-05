@@ -409,7 +409,22 @@ public class NotificationMgr {
                 }
             }
         } else {
-            cancelAsUser(Integer.toString(subId) /* tag */, VOICEMAIL_NOTIFICATION, UserHandle.ALL);
+            UserHandle subAssociatedUserHandle =
+                    mSubscriptionManager.getSubscriptionUserHandle(subId);
+            List<UserHandle> users = getUsersExcludeDying();
+            for (UserHandle userHandle : users) {
+                boolean isManagedUser = mUserManager.isManagedProfile(userHandle.getIdentifier());
+                if (!hasUserRestriction(UserManager.DISALLOW_OUTGOING_CALLS, userHandle)
+                        && (userHandle.equals(subAssociatedUserHandle)
+                            || (subAssociatedUserHandle == null && !isManagedUser))
+                        && !maybeSendVoicemailNotificationUsingDefaultDialer(phone, 0, null, null,
+                        false, userHandle, isRefresh)) {
+                    cancelAsUser(
+                            Integer.toString(subId) /* tag */,
+                            VOICEMAIL_NOTIFICATION,
+                            userHandle);
+                }
+            }
         }
     }
 
