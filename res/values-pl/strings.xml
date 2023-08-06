@@ -134,7 +134,7 @@
     <string name="updating_title" msgid="6130548922615719689">"Ustawienia połączeń"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Ustawienia połączeń może zmieniać tylko użytkownik będący administratorem."</string>
     <string name="call_settings_no_config_mobile_networks" msgid="5158212415701421219">"Właściciel urządzenia ograniczył możliwość zmieniania ustawień sieci komórkowej."</string>
-    <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Ustawienia konta telefonu może zmienić tylko administrator lub użytkownik profilu służbowego."</string>
+    <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Ustawienia konta telefonu zmienia administrator lub użytkownik profilu służbowego."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Ustawienia (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Błąd w ustawieniach połączenia"</string>
     <string name="reading_settings" msgid="1605904432450871183">"Czytanie ustawień..."</string>
@@ -877,8 +877,7 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"Identyfikator domyślnej karty SIM do transmisji danych:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Przepustowość kanału DL (kb/s):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Przepustowość kanału UL (kb/s):"</string>
-    <!-- no translation found for radio_info_phy_chan_config (608045501232211303) -->
-    <skip />
+    <string name="radio_info_phy_chan_config" msgid="608045501232211303">"Konfiguracje kanału fizycznego:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Częstotliwość odświeżania informacji o sieci komórkowej:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Wszystkie informacje pomiarowe z sieci komórkowej:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"Usługa transmisji danych:"</string>
