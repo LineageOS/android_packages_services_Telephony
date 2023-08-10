@@ -832,7 +832,8 @@ public class NotificationMgr {
         Phone phone = SubscriptionManager.isValidPhoneId(phoneId) ?
                 PhoneFactory.getPhone(phoneId) : PhoneFactory.getDefaultPhone();
         if (TelephonyCapabilities.supportsNetworkSelection(phone)) {
-            if (SubscriptionManager.isValidSubscriptionId(subId)) {
+            if (SubscriptionManager.isValidSubscriptionId(subId)
+                    && mSubscriptionManager.isActiveSubId(subId)) {
                 SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(mContext);
                 String selectedNetworkOperatorName =
                         sp.getString(Phone.NETWORK_SELECTION_NAME_KEY + subId, "");
