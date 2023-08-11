@@ -263,14 +263,6 @@ public class CallFeaturesSetting extends PreferenceActivity
             return;
         }
 
-        // Make sure mobile network configurations are not restricted.
-        if (userManager.hasUserRestriction(UserManager.DISALLOW_CONFIG_MOBILE_NETWORKS)) {
-            Toast.makeText(this, R.string.call_settings_no_config_mobile_networks,
-                    Toast.LENGTH_SHORT).show();
-            finish();
-            return;
-        }
-
         mSubscriptionInfoHelper = new SubscriptionInfoHelper(this, getIntent());
         mPhone = mSubscriptionInfoHelper.getPhone();
         mSubscriptionInfoHelper.setActionBarTitle(

@@ -16,8 +16,10 @@
 
 package com.android.phone;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.os.UserManager;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
 import android.telephony.CarrierConfigManager;
@@ -78,9 +80,20 @@ public class CdmaCallOptions extends TimeConsumingPreferenceActivity {
             buttonVoicePrivacy.setEnabled(false);
         }
 
+        // If mobile network configs are restricted, then hide the mCallForwardingPref and
+        // mCallWaitingPref.
+        UserManager userManager = (UserManager) getSystemService(Context.USER_SERVICE);
+        boolean mobileNetworkConfigsRestricted =
+                userManager.hasUserRestriction(UserManager.DISALLOW_CONFIG_MOBILE_NETWORKS);
+        if (mobileNetworkConfigsRestricted) {
+            Log.i(LOG_TAG, "Mobile network configs are restricted, hiding CDMA call forwarding "
+                    + "and CDMA call waiting options.");
+        }
+
         mCallForwardingPref = getPreferenceScreen().findPreference(CALL_FORWARDING_KEY);
         if (carrierConfig != null && carrierConfig.getBoolean(
-                CarrierConfigManager.KEY_CALL_FORWARDING_VISIBILITY_BOOL)) {
+                CarrierConfigManager.KEY_CALL_FORWARDING_VISIBILITY_BOOL) &&
+                !mobileNetworkConfigsRestricted) {
             mCallForwardingPref.setIntent(
                     subInfoHelper.getIntent(CdmaCallForwardOptions.class));
         } else {
@@ -91,7 +104,8 @@ public class CdmaCallOptions extends TimeConsumingPreferenceActivity {
         mCallWaitingPref = (CdmaCallWaitingPreference) getPreferenceScreen()
                 .findPreference(CALL_WAITING_KEY);
         if (carrierConfig == null || !carrierConfig.getBoolean(
-                CarrierConfigManager.KEY_ADDITIONAL_SETTINGS_CALL_WAITING_VISIBILITY_BOOL)) {
+                CarrierConfigManager.KEY_ADDITIONAL_SETTINGS_CALL_WAITING_VISIBILITY_BOOL) ||
+                mobileNetworkConfigsRestricted) {
             getPreferenceScreen().removePreference(mCallWaitingPref);
             mCallWaitingPref = null;
         }
