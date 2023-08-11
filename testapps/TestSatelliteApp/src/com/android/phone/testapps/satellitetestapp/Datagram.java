@@ -224,7 +224,7 @@ public class Datagram extends Activity {
         LinkedBlockingQueue<Integer> resultListener = new LinkedBlockingQueue<>(1);
         TextView showErrorStatusTextView = findViewById(R.id.showErrorStatus);
         TextView textView = findViewById(R.id.text_id);
-        mSatelliteManager.onDeviceAlignedWithSatellite(true);
+        mSatelliteManager.setDeviceAlignedWithSatellite(true);
         if (SatelliteTestApp.getTestSatelliteService() != null) {
             SatelliteTestApp.getTestSatelliteService().sendOnPendingDatagrams();
         }
@@ -264,7 +264,7 @@ public class Datagram extends Activity {
 
     private void sendSatelliteDatagramApp(View view) {
         TextView textView = findViewById(R.id.text_id);
-        mSatelliteManager.onDeviceAlignedWithSatellite(true);
+        mSatelliteManager.setDeviceAlignedWithSatellite(true);
         LinkedBlockingQueue<Integer> resultListener = new LinkedBlockingQueue<>(1);
         String mText = "This is a test datagram message";
         SatelliteDatagram datagram = new SatelliteDatagram(mText.getBytes());

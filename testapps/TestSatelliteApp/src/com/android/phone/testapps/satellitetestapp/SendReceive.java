@@ -278,6 +278,6 @@ public class SendReceive extends Activity {
                         + e);
         }
         //Device is aligned with the satellite for demo mode
-        mSatelliteManager.onDeviceAlignedWithSatellite(true);
+        mSatelliteManager.setDeviceAlignedWithSatellite(true);
     }
 }
