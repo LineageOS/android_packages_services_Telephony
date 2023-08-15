@@ -63,18 +63,18 @@
     <string name="labelCdmaMore_with_label" msgid="7759692829160238152">"CDMA 通话设置（<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>）"</string>
     <string name="apn_settings" msgid="1978652203074756623">"接入点名称 (APN)"</string>
     <string name="settings_label" msgid="9101778088412567956">"网络设置"</string>
-    <string name="phone_accounts" msgid="1216879437523774604">"通话帐号"</string>
-    <string name="phone_accounts_make_calls_with" msgid="16747814788918145">"选择通话帐号"</string>
-    <string name="phone_accounts_make_sip_calls_with" msgid="4691221006731847255">"选择 SIP 通话帐号"</string>
+    <string name="phone_accounts" msgid="1216879437523774604">"通话账号"</string>
+    <string name="phone_accounts_make_calls_with" msgid="16747814788918145">"选择通话账号"</string>
+    <string name="phone_accounts_make_sip_calls_with" msgid="4691221006731847255">"选择 SIP 通话账号"</string>
     <string name="phone_accounts_ask_every_time" msgid="6192347582666047168">"先询问"</string>
     <string name="phone_accounts_default_account_label" msgid="5107598881335931101">"无可用网络"</string>
     <string name="phone_accounts_settings_header" msgid="6296501692964706536">"设置"</string>
-    <string name="phone_accounts_choose_accounts" msgid="4748805293314824974">"选择帐号"</string>
-    <string name="phone_accounts_selection_header" msgid="2945830843104108440">"电话帐号"</string>
-    <string name="phone_accounts_add_sip_account" msgid="1437634802033309305">"添加 SIP 帐号"</string>
-    <string name="phone_accounts_configure_account_settings" msgid="6622119715253196586">"配置帐号设置"</string>
-    <string name="phone_accounts_all_calling_accounts" msgid="1609600743500618823">"所有通话帐号"</string>
-    <string name="phone_accounts_all_calling_accounts_summary" msgid="2214134955430107240">"选择可用于拨打电话的帐号"</string>
+    <string name="phone_accounts_choose_accounts" msgid="4748805293314824974">"选择账号"</string>
+    <string name="phone_accounts_selection_header" msgid="2945830843104108440">"电话账号"</string>
+    <string name="phone_accounts_add_sip_account" msgid="1437634802033309305">"添加 SIP 账号"</string>
+    <string name="phone_accounts_configure_account_settings" msgid="6622119715253196586">"配置账号设置"</string>
+    <string name="phone_accounts_all_calling_accounts" msgid="1609600743500618823">"所有通话账号"</string>
+    <string name="phone_accounts_all_calling_accounts_summary" msgid="2214134955430107240">"选择可用于拨打电话的账号"</string>
     <string name="wifi_calling" msgid="3650509202851355742">"WLAN 通话"</string>
     <string name="connection_service_default_label" msgid="7332739049855715584">"内置网络连接服务"</string>
     <string name="voicemail" msgid="7697769412804195032">"语音信箱"</string>
@@ -134,7 +134,7 @@
     <string name="updating_title" msgid="6130548922615719689">"通话设置"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"只有管理员用户才能更改通话设置。"</string>
     <string name="call_settings_no_config_mobile_networks" msgid="5158212415701421219">"设备所有者对更改移动网络设置的功能进行了限制。"</string>
-    <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"电话帐号设置只能由管理员或工作资料用户更改。"</string>
+    <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"电话账号设置只能由管理员或工作资料用户更改。"</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"设置（<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>）"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"通话设置出错"</string>
     <string name="reading_settings" msgid="1605904432450871183">"正在读取设置..."</string>
@@ -296,8 +296,8 @@
     <string name="limited_sim_function_notification_title" msgid="612715399099846281">"SIM 卡功能受限"</string>
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"使用 <xliff:g id="PHONE_NUMBER">%2$s</xliff:g> 时，系统可能会屏蔽<xliff:g id="CARRIER_NAME">%1$s</xliff:g>通话和数据服务。"</string>
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"使用另一张 SIM 卡时，系统可能会屏蔽<xliff:g id="CARRIER_NAME">%1$s</xliff:g>通话和数据服务。"</string>
-    <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"系统已找到并移除已弃用的 SIP 帐号"</string>
-    <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"SIP 通话已不再受 Android 平台支持。\n您现有的 SIP 帐号 <xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g> 已被移除。\n请确认您的默认通话帐号设置。"</string>
+    <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"系统已找到并移除已弃用的 SIP 账号"</string>
+    <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"SIP 通话已不再受 Android 平台支持。\n您现有的 SIP 账号 <xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g> 已被移除。\n请确认您的默认通话账号设置。"</string>
     <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"转到设置"</string>
     <string name="data_usage_title" msgid="8438592133893837464">"应用的流量使用情况"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"<xliff:g id="ID_2">%2$s</xliff:g>期间使用的移动数据流量为：<xliff:g id="ID_1">%1$s</xliff:g>"</string>
@@ -926,7 +926,7 @@
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"触发运营商配置"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"您的蓝牙信号较弱。请尝试切换为扬声器模式。"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"通话质量通知"</string>
-    <string name="notification_channel_sip_account" msgid="1261816025156179637">"已弃用的 SIP 帐号"</string>
+    <string name="notification_channel_sip_account" msgid="1261816025156179637">"已弃用的 SIP 账号"</string>
     <string name="send_from_work_profile_title" msgid="7044759579507604732">"无法通过个人应用发送消息"</string>
     <string name="send_from_work_profile_description" msgid="2174402508727161974">"贵组织仅允许您通过工作应用发送消息"</string>
     <string name="send_from_work_profile_cancel" msgid="177746511030381711">"取消"</string>
