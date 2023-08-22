@@ -508,15 +508,6 @@ public class FdnSetting extends PreferenceActivity
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
 
-        // Make sure mobile network configurations are not restricted.
-        UserManager userManager = (UserManager) getSystemService(Context.USER_SERVICE);
-        if (userManager.hasUserRestriction(UserManager.DISALLOW_CONFIG_MOBILE_NETWORKS)) {
-            Toast.makeText(this, R.string.call_settings_no_config_mobile_networks,
-                    Toast.LENGTH_SHORT).show();
-            finish();
-            return;
-        }
-
         mSubscriptionInfoHelper = new SubscriptionInfoHelper(this, getIntent());
         mPhone = mSubscriptionInfoHelper.getPhone();
 
