@@ -837,6 +837,7 @@
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"বাতিল কৰক"</string>
     <string name="removable_esim_string" msgid="7931369811671787649">"আঁতৰাব পৰা ই-ছিম ডিফ’ল্ট হিচাপে ছেট কৰক"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"ম’বাইলৰ ৰেডিঅ’ পাৱাৰ"</string>
+    <string name="simulate_out_of_service_string" msgid="7787925611727597193">"সেৱাত নাই ছিমুলে’ট কৰক (কেৱল ডিবাগ বিল্ড)"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"ছিম ঠিকনা সূচী চাওক"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"ফিক্সড্ ডায়েলিং নম্বৰসমূহ চাওক"</string>
     <string name="radioInfo_menu_viewSDN" msgid="2613431584522392842">"সেৱা ডায়েলিং নম্বৰসমূহ চাওক"</string>
@@ -849,7 +850,7 @@
     <string name="radio_info_ims_reg_status" msgid="25582845222446390">"IMS পঞ্জীয়ন: <xliff:g id="STATUS">%1$s</xliff:g>\nভইচ অভাৰ LTE: <xliff:g id="AVAILABILITY_0">%2$s</xliff:g>\nভইচ অভাৰ ৱাই-ফাই: <xliff:g id="AVAILABILITY_1">%3$s</xliff:g>\nভিডিঅ’ কলিং: <xliff:g id="AVAILABILITY_2">%4$s</xliff:g>\nUT ইণ্টাৰফে’চ: <xliff:g id="AVAILABILITY_3">%5$s</xliff:g>"</string>
     <string name="radioInfo_service_in" msgid="45753418231446400">"সেৱাত আছে"</string>
     <string name="radioInfo_service_out" msgid="287972405416142312">"সেৱাত নাই"</string>
-    <string name="radioInfo_service_emergency" msgid="4763879891415016848">"কেৱল জৰুৰীকালীন কল"</string>
+    <string name="radioInfo_service_emergency" msgid="4763879891415016848">"কেৱল জৰুৰীকালীন কলসমূহ"</string>
     <string name="radioInfo_service_off" msgid="3456583511226783064">"ৰেডিঅ’ অফ হৈ আছে"</string>
     <string name="radioInfo_roaming_in" msgid="3156335577793145965">"ৰ’মিং"</string>
     <string name="radioInfo_roaming_not" msgid="1904547918725478110">"ৰ’মিঙত নাই"</string>
@@ -861,6 +862,7 @@
     <string name="radioInfo_data_connected" msgid="7637335645634239508">"সংযোগ কৰা হ’ল"</string>
     <string name="radioInfo_data_suspended" msgid="8695262782642002785">"নিলম্বন কৰা হৈছে"</string>
     <string name="radioInfo_unknown" msgid="5401423738500672850">"অজ্ঞাত"</string>
+    <string name="radioInfo_imei_primary" msgid="5948747378637224400">"প্ৰাথমিক"</string>
     <string name="radioInfo_display_packets" msgid="6794302192441084157">"পিকেটিএছ"</string>
     <string name="radioInfo_display_bytes" msgid="7701006329222413797">"বাইটসমূহ"</string>
     <string name="radioInfo_display_dbm" msgid="7491944975710865703">"ডিবিএম"</string>
@@ -887,10 +889,12 @@
     <string name="radio_info_ppp_sent_label" msgid="6542208429356199695">"প্ৰেৰণ কৰা ডেটা:"</string>
     <string name="radio_info_message_waiting_label" msgid="1886549432566952078">"বাৰ্তা অপেক্ষাৰত:"</string>
     <string name="radio_info_phone_number_label" msgid="2533852539562512203">"ফ’ন নম্বৰ:"</string>
-    <string name="radio_info_band_mode_label" msgid="23480556225515290">"ৰেডিঅ’ বেণ্ড বাছনি কৰক"</string>
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"ভইচ নেটৱৰ্কৰ প্ৰকাৰ:"</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"ডেটা নেটৱৰ্কৰ প্ৰকাৰ:"</string>
     <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"নেটৱৰ্ক প্ৰকাৰ অ’ভাৰৰাইড কৰক:"</string>
+    <string name="radio_info_voice_raw_registration_state_label" msgid="2822988327145825128">"কণ্ঠস্বৰৰ অসম্পাদিত পঞ্জীয়নৰ স্থিতি:"</string>
+    <string name="radio_info_data_raw_registration_state_label" msgid="2895895513822604539">"ডেটাৰ অসম্পাদিত পঞ্জীয়নৰ স্থিতি:"</string>
+    <string name="radio_info_wlan_data_raw_registration_state_label" msgid="6396894835757296612">"WLAN ডেটাৰ অসম্পাদিত পঞ্জীয়নৰ স্থিতি:"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"ফ’নৰ ইনডেক্স বাছনি কৰক"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"পচন্দৰ নেটৱৰ্কৰ প্ৰকাৰ ছেট কৰক:"</string>
     <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"হ\'ষ্টনাম(www.google.com) IPv4 পিং কৰক:"</string>
@@ -919,4 +923,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"আপোনাৰ ব্লুটুথৰ ছিগনেল দুৰ্বল। স্পীকাৰফ’নলৈ সলনি কৰি চাওক।"</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"কলৰ গুণগত মানৰ জাননী"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"বন্ধ হৈ যোৱা SIP একাউণ্ট"</string>
+    <string name="send_from_work_profile_title" msgid="9201528838448432473">"এই প্ৰ’ফাইলৰ পৰা বাৰ্তা পঠিয়াব নোৱাৰি"</string>
+    <string name="send_from_work_profile_description" msgid="5002701841936861636">"আপোনাৰ কৰ্মস্থানৰ নীতিয়ে আপোনাক কেৱল কৰ্মস্থানৰ প্ৰ’ফাইলৰ পৰা বাৰ্তা পঠিয়াবলৈ দিয়ে"</string>
+    <string name="send_from_work_profile_cancel" msgid="177746511030381711">"বাতিল কৰক"</string>
+    <string name="send_from_work_profile_action_str" msgid="6892775562934243337">"কৰ্মস্থানৰ প্ৰ’ফাইললৈ সলনি কৰক"</string>
 </resources>

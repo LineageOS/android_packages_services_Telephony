@@ -499,7 +499,7 @@
     <string name="disable_pin_ok" msgid="888505244389647754">"PIN тазаланды"</string>
     <string name="pin_failed" msgid="4527347792881939652">"PIN дұрыс емес"</string>
     <string name="pin_changed" msgid="7291153750090452808">"PIN коды жаңартылды"</string>
-    <string name="puk_requested" msgid="2061337960609806851">"Құпия сөз дұрыс емес. PIN қазір блокталған. PUK коды сұралды."</string>
+    <string name="puk_requested" msgid="2061337960609806851">"Құпия сөз дұрыс емес. PIN қазір бөгелген. PUK коды сұралды."</string>
     <string name="enter_pin2_text" msgid="7266379426804295979">"PIN2"</string>
     <string name="oldPin2Label" msgid="4648543187859997203">"Ескі PIN2"</string>
     <string name="newPin2Label" msgid="1840905981784453939">"Жаңа PIN2 коды"</string>
@@ -513,7 +513,7 @@
     <string name="label_puk2_code" msgid="2852217004288085562">"PUK2 кодын енгізіңіз"</string>
     <string name="fdn_enable_puk2_requested" msgid="5793652792131588041">"Құпия сөз дұрыс емес. PIN2 енді бөгелді. Әрекетті қайталау үшін PIN 2 кодын өзгертіңіз."</string>
     <string name="puk2_requested" msgid="6992374450720307514">"Құпия сөз дұрыс емес. SIM қазір бекітілген. PUK2 кодын енгізіңіз."</string>
-    <string name="puk2_blocked" msgid="3131139031779319911">"PUK2 уақытша блокталған."</string>
+    <string name="puk2_blocked" msgid="3131139031779319911">"PUK2 уақытша бөгелген."</string>
     <string name="pin2_attempts" msgid="5625178102026453023">\n"<xliff:g id="NUMBER">%d</xliff:g> әрекет қалды."</string>
     <string name="puk2_locked" msgid="6497760825455461057">"PUK2 құлыптаулы. Құлпын ашу үшін қызмет көрсетушіге хабарласыңыз."</string>
     <string name="pin2_unblocked" msgid="4481107908727789303">"PIN2 енді бөгелмеген"</string>
@@ -837,6 +837,7 @@
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"Өшіру"</string>
     <string name="removable_esim_string" msgid="7931369811671787649">"Алынбалы eSIM әдепкі етіп орнату"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"Радиосигнал күші"</string>
+    <string name="simulate_out_of_service_string" msgid="7787925611727597193">"\"Істен шыққан\" қызметін симуляциялау (түзету құрамасы ғана)"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"SIM мекенжай кітапшасын көру"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"Рұқсат нөмірлерді көру"</string>
     <string name="radioInfo_menu_viewSDN" msgid="2613431584522392842">"Қызметтік теру нөмірлерін көру"</string>
@@ -861,6 +862,7 @@
     <string name="radioInfo_data_connected" msgid="7637335645634239508">"Жалғанған"</string>
     <string name="radioInfo_data_suspended" msgid="8695262782642002785">"Уақытша тоқтатылған"</string>
     <string name="radioInfo_unknown" msgid="5401423738500672850">"Белгісіз"</string>
+    <string name="radioInfo_imei_primary" msgid="5948747378637224400">"Негізгі"</string>
     <string name="radioInfo_display_packets" msgid="6794302192441084157">"pkts"</string>
     <string name="radioInfo_display_bytes" msgid="7701006329222413797">"байт"</string>
     <string name="radioInfo_display_dbm" msgid="7491944975710865703">"dBm"</string>
@@ -887,10 +889,12 @@
     <string name="radio_info_ppp_sent_label" msgid="6542208429356199695">"Жіберілген деректер:"</string>
     <string name="radio_info_message_waiting_label" msgid="1886549432566952078">"Хабар күтуде:"</string>
     <string name="radio_info_phone_number_label" msgid="2533852539562512203">"Телефон нөмірі:"</string>
-    <string name="radio_info_band_mode_label" msgid="23480556225515290">"Радио жолағын таңдау"</string>
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"Дауыс желісінің түрі:"</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"Деректер желісінің түрі:"</string>
     <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"Желі түрін қайта анықтау:"</string>
+    <string name="radio_info_voice_raw_registration_state_label" msgid="2822988327145825128">"Өңделмеген дыбыс деректерін тіркеу күйі:"</string>
+    <string name="radio_info_data_raw_registration_state_label" msgid="2895895513822604539">"Өңделмеген деректерді тіркеу күйі:"</string>
+    <string name="radio_info_wlan_data_raw_registration_state_label" msgid="6396894835757296612">"Өңделмеген WLAN деректерін тіркеу күйі:"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"Телефон индексін таңдау"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"Қалаулы желі түрін реттеу:"</string>
     <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"Ping хост атауы (www.google.com) IPv4:"</string>
@@ -919,4 +923,8 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Bluetooth сигналы нашар. Спикерфонға ауысып көріңіз."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Қоңырау сапасы туралы хабарландыру"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Қолданыстан шыққан SIP аккаунттары"</string>
+    <string name="send_from_work_profile_title" msgid="9201528838448432473">"Бұл профильден хабар жіберу мүмкін емес"</string>
+    <string name="send_from_work_profile_description" msgid="5002701841936861636">"Жұмыс саясатыңызға сәйкес тек жұмыс профилінен хабар жіберуге болады."</string>
+    <string name="send_from_work_profile_cancel" msgid="177746511030381711">"Бас тарту"</string>
+    <string name="send_from_work_profile_action_str" msgid="6892775562934243337">"Жұмыс профиліне ауысу"</string>
 </resources>
