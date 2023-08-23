@@ -12436,9 +12436,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     @RequiresPermission(Manifest.permission.SATELLITE_COMMUNICATION)
 
-    public void onDeviceAlignedWithSatellite(int subId, @NonNull boolean isAligned) {
+    public void setDeviceAlignedWithSatellite(int subId, @NonNull boolean isAligned) {
         enforceSatelliteCommunicationPermission("informDeviceAlignedToSatellite");
-        mSatelliteController.onDeviceAlignedWithSatellite(subId, isAligned);
+        mSatelliteController.setDeviceAlignedWithSatellite(subId, isAligned);
     }
 
     /**

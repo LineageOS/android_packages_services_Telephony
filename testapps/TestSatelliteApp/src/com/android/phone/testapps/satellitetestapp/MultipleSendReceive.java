@@ -61,7 +61,7 @@ public class MultipleSendReceive extends Activity {
     }
 
     private void multiplePollPendingSatelliteDatagramsApp(View view) {
-        mSatelliteManager.onDeviceAlignedWithSatellite(true);
+        mSatelliteManager.setDeviceAlignedWithSatellite(true);
         SatelliteTestApp.getTestSatelliteService().sendOnPendingDatagrams();
         SatelliteTestApp.getTestSatelliteService().sendOnSatelliteDatagramReceived(
                 mReceivedDatagram, 4);
@@ -96,7 +96,7 @@ public class MultipleSendReceive extends Activity {
 
 
     private void multipleSendSatelliteDatagramApp(View view) {
-        mSatelliteManager.onDeviceAlignedWithSatellite(true);
+        mSatelliteManager.setDeviceAlignedWithSatellite(true);
         LinkedBlockingQueue<Integer> resultListener = new LinkedBlockingQueue<>(1);
         String mText = "This is a test datagram message";
         SatelliteDatagram datagram = new SatelliteDatagram(mText.getBytes());
@@ -125,7 +125,7 @@ public class MultipleSendReceive extends Activity {
     }
 
     private void multipleSendReceiveSatelliteDatagramApp(View view) {
-        mSatelliteManager.onDeviceAlignedWithSatellite(true);
+        mSatelliteManager.setDeviceAlignedWithSatellite(true);
         LinkedBlockingQueue<Integer> resultListener = new LinkedBlockingQueue<>(1);
         mSatelliteManager.requestSatelliteEnabled(true, true, Runnable::run, resultListener::offer);
         String mText = "This is a test datagram message";
