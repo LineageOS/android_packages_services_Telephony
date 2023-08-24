@@ -133,7 +133,6 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"Η αναμονή κλήσης σε λειτουργία άμεσων μηνυμάτων (ΙΜ) είναι απενεργοποιημένη"</string>
     <string name="updating_title" msgid="6130548922615719689">"Ρυθμίσεις κλήσης"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Οι ρυθμίσεις κλήσεων μπορούν να αλλάξουν μόνο από τον χρήστη που έχει ρόλο διαχειριστή."</string>
-    <string name="call_settings_no_config_mobile_networks" msgid="5158212415701421219">"Ο κάτοχος της συσκευής έχει περιορίσει τη δυνατότητα αλλαγής των ρυθμίσεων δικτύου κινητής τηλεφωνίας."</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Οι ρυθμίσεις λογαριασμού του τηλεφώνου μπορούν να αλλάξουν μόνο από τον διαχειριστή ή τον χρήστη του προφίλ εργασίας."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Ρυθμίσεις (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Σφάλμα ρυθμίσεων κλήσης"</string>

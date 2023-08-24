@@ -133,7 +133,6 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"Повикот на чекање CDMA под IMS е исклучен"</string>
     <string name="updating_title" msgid="6130548922615719689">"Поставки за повици"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Поставките за повик може да ги измени само администраторскиот корисник."</string>
-    <string name="call_settings_no_config_mobile_networks" msgid="5158212415701421219">"Сопственикот на уредот ја ограничил можноста за менување на поставките за мобилната мрежа."</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Поставките за сметката на телефонот може да ги промени само администраторот или деловниот корисник."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Поставки (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Грешка со поставки на повици"</string>
@@ -930,6 +929,6 @@
     <string name="send_from_work_profile_title" msgid="7044759579507604732">"Не може да испраќате пораки од лична апликација"</string>
     <string name="send_from_work_profile_description" msgid="2174402508727161974">"Организацијата ви дозволува да испраќате пораки само од работни апликации"</string>
     <string name="send_from_work_profile_cancel" msgid="177746511030381711">"Откажи"</string>
-    <string name="send_from_work_profile_action_str" msgid="6892775562934243337">"Префрли на работен профил"</string>
+    <string name="send_from_work_profile_action_str" msgid="6892775562934243337">"Префрлете се на работен профил"</string>
     <string name="install_messages_on_work_profile_action_str" msgid="3773440996395152903">"Инсталирајте работна апликација за разменување пораки"</string>
 </resources>

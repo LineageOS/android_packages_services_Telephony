@@ -133,7 +133,6 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"IMSରେ CDMA \'କଲ୍ ୱେଟିଂ\' ସୁବିଧା ବନ୍ଦ ଅଛି"</string>
     <string name="updating_title" msgid="6130548922615719689">"କଲ ସେଟିଂସ"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"କଲ ସେଟିଂସକୁ କେବଳ ଆଡମିନ ୟୁଜର ବଦଳାଇପାରିବେ।"</string>
-    <string name="call_settings_no_config_mobile_networks" msgid="5158212415701421219">"ମୋବାଇଲ ନେଟୱାର୍କ ସେଟିଂସ ପରିବର୍ତ୍ତନ କରିବାର କ୍ଷମତାକୁ ଡିଭାଇସ ମାଲିକ ପ୍ରତିବନ୍ଧିତ କରିଛନ୍ତି।"</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"ଫୋନ ଆକାଉଣ୍ଟ ସେଟିଂସ କେବଳ ଆଡମିନ କିମ୍ବା ୱାର୍କ ୟୁଜରଙ୍କ ଦ୍ୱାରା ପରିବର୍ତ୍ତନ କରାଯାଇପାରିବ।"</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"ସେଟିଙ୍ଗ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"କଲ୍ ସେଟିଙ୍ଗରେ ତ୍ରୁଟି"</string>
