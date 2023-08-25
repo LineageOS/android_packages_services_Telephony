@@ -133,7 +133,6 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"基于 IMS 的 CDMA 来电等待功能已关闭"</string>
     <string name="updating_title" msgid="6130548922615719689">"通话设置"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"只有管理员用户才能更改通话设置。"</string>
-    <string name="call_settings_no_config_mobile_networks" msgid="5158212415701421219">"设备所有者对更改移动网络设置的功能进行了限制。"</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"电话账号设置只能由管理员或工作资料用户更改。"</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"设置（<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>）"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"通话设置出错"</string>

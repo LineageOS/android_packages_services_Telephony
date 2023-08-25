@@ -133,7 +133,6 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"CDMA zvanu gaidīšana, kad ir izslēgts tūlītējās ziņojumapmaiņas pakalpojums"</string>
     <string name="updating_title" msgid="6130548922615719689">"Zvanu iestatījumi"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Tikai lietotājs ar administratora tiesībām var mainīt zvanu iestatījumus."</string>
-    <string name="call_settings_no_config_mobile_networks" msgid="5158212415701421219">"Ierīces īpašnieks ir ierobežojis iespēju mainīt mobilā tīkla iestatījumus."</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Tikai administrators vai primārais lietotājs var mainīt tālruņa konta iestatījumus."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Iestatījumi (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Zvanu iestatījumu kļūda"</string>

@@ -133,7 +133,6 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"‏IMS آف کے تحت CDMA کال کا انتظار کرنا"</string>
     <string name="updating_title" msgid="6130548922615719689">"کال کی ترتیبات"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"صرف منتظم صارف ہی کال کی ترتیبات تبدیل کر سکتا ہے۔"</string>
-    <string name="call_settings_no_config_mobile_networks" msgid="5158212415701421219">"آلہ کے مالک نے موبائل نیٹ ورک کی ترتیبات کو تبدیل کرنے کی صلاحیت کو محدود کر دیا ہے۔"</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"صرف منتظم یا دفتر کا صارف ہی فون کے اکاؤنٹ کی ترتیبات تبدیل کر سکتا ہے۔"</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"ترتیبات (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"کال کی ترتیبات کی خرابی"</string>
