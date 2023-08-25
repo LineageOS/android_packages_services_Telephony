@@ -12233,13 +12233,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * @param subId The subId of the subscription to register for provision state changed.
      * @param callback The callback to handle the satellite provision state changed event.
      *
-     * @return The {@link SatelliteManager.SatelliteError} result of the operation.
+     * @return The {@link SatelliteManager.SatelliteResult} result of the operation.
      *
      * @throws SecurityException if the caller doesn't have the required permission.
      */
     @Override
-    @SatelliteManager.SatelliteError public int registerForSatelliteProvisionStateChanged(int subId,
-            @NonNull ISatelliteProvisionStateCallback callback) {
+    @SatelliteManager.SatelliteResult public int registerForSatelliteProvisionStateChanged(
+            int subId, @NonNull ISatelliteProvisionStateCallback callback) {
         enforceSatelliteCommunicationPermission("registerForSatelliteProvisionStateChanged");
         return mSatelliteController.registerForSatelliteProvisionStateChanged(subId, callback);
     }
@@ -12283,12 +12283,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * @param subId The subId of the subscription to register for satellite modem state changed.
      * @param callback The callback to handle the satellite modem state changed event.
      *
-     * @return The {@link SatelliteManager.SatelliteError} result of the operation.
+     * @return The {@link SatelliteManager.SatelliteResult} result of the operation.
      *
      * @throws SecurityException if the caller doesn't have the required permission.
      */
     @Override
-    @SatelliteManager.SatelliteError public int registerForSatelliteModemStateChanged(int subId,
+    @SatelliteManager.SatelliteResult public int registerForSatelliteModemStateChanged(int subId,
             @NonNull ISatelliteStateCallback callback) {
         enforceSatelliteCommunicationPermission("registerForSatelliteModemStateChanged");
         return mSatelliteController.registerForSatelliteModemStateChanged(subId, callback);
@@ -12317,12 +12317,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * @param subId The subId of the subscription to register for incoming satellite datagrams.
      * @param callback The callback to handle incoming datagrams over satellite.
      *
-     * @return The {@link SatelliteManager.SatelliteError} result of the operation.
+     * @return The {@link SatelliteManager.SatelliteResult} result of the operation.
      *
      * @throws SecurityException if the caller doesn't have the required permission.
      */
     @Override
-    @SatelliteManager.SatelliteError public int registerForSatelliteDatagram(int subId,
+    @SatelliteManager.SatelliteResult public int registerForSatelliteDatagram(int subId,
             @NonNull ISatelliteDatagramCallback callback) {
         enforceSatelliteCommunicationPermission("registerForSatelliteDatagram");
         return mSatelliteController.registerForSatelliteDatagram(subId, callback);
@@ -12353,7 +12353,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * {@link SatelliteDatagramCallback#onSatelliteDatagramReceived(long, SatelliteDatagram, int, Consumer)})}
      *
      * @param subId The subId of the subscription used for receiving datagrams.
-     * @param callback The callback to get {@link SatelliteManager.SatelliteError} of the request.
+     * @param callback The callback to get {@link SatelliteManager.SatelliteResult} of the request.
      *
      * @throws SecurityException if the caller doesn't have required permission.
      */
@@ -12377,7 +12377,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      *                 Datagram will be passed down to modem without any encoding or encryption.
      * @param needFullScreenPointingUI this is used to indicate pointingUI app to open in
      *                                 full screen mode.
-     * @param callback The callback to get {@link SatelliteManager.SatelliteError} of the request.
+     * @param callback The callback to get {@link SatelliteManager.SatelliteResult} of the request.
      *
      * @throws SecurityException if the caller doesn't have required permission.
      */

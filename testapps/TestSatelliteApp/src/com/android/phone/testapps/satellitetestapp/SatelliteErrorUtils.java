@@ -16,7 +16,7 @@
 
 package com.android.phone.testapps.satellitetestapp;
 
-import android.telephony.satellite.stub.SatelliteError;
+import android.telephony.satellite.stub.SatelliteResult;
 import android.util.Log;
 
 /**
@@ -31,48 +31,46 @@ public class SatelliteErrorUtils {
      */
     public static String mapError(int error) {
         switch (error) {
-            case SatelliteError.ERROR_NONE:
-                return "SATELLITE_ERROR_NONE";
-            case SatelliteError.SATELLITE_ERROR:
-                return "SATELLITE_ERROR";
-            case SatelliteError.SERVER_ERROR:
-                return "SATELLITE_SERVER_ERROR";
-            case SatelliteError.SERVICE_ERROR:
-                return "SATELLITE_SERVICE_ERROR";
-            case SatelliteError.MODEM_ERROR:
-                return "SATELLITE_MODEM_ERROR";
-            case SatelliteError.NETWORK_ERROR:
-                return "SATELLITE_NETWORK_ERROR";
-            case SatelliteError.INVALID_TELEPHONY_STATE:
-                return "SATELLITE_INVALID_TELEPHONY_STATE";
-            case SatelliteError.INVALID_MODEM_STATE:
-                return "SATELLITE_INVALID_MODEM_STATE";
-            case SatelliteError.INVALID_ARGUMENTS:
-                return "SATELLITE_INVALID_ARGUMENTS";
-            case SatelliteError.REQUEST_FAILED:
-                return "SATELLITE_REQUEST_FAILED";
-            case SatelliteError.RADIO_NOT_AVAILABLE:
-                return "SATELLITE_RADIO_NOT_AVAILABLE";
-            case SatelliteError.REQUEST_NOT_SUPPORTED:
-                return "SATELLITE_REQUEST_NOT_SUPPORTED";
-            case SatelliteError.NO_RESOURCES:
-                return "SATELLITE_NO_RESOURCES";
-            case SatelliteError.SERVICE_NOT_PROVISIONED:
-                return "SATELLITE_SERVICE_NOT_PROVISIONED";
-            case SatelliteError.SERVICE_PROVISION_IN_PROGRESS:
-                return "SATELLITE_SERVICE_PROVISION_IN_PROGRESS";
-            case SatelliteError.REQUEST_ABORTED:
-                return "SATELLITE_REQUEST_ABORTED";
-            case SatelliteError.SATELLITE_ACCESS_BARRED:
-                return "SATELLITE_ACCESS_BARRED";
-            case SatelliteError.NETWORK_TIMEOUT:
-                return "SATELLITE_NETWORK_TIMEOUT";
-            case SatelliteError.SATELLITE_NOT_REACHABLE:
-                return "SATELLITE_NOT_REACHABLE";
-            case SatelliteError.NOT_AUTHORIZED:
-                return "SATELLITE_NOT_AUTHORIZED";
+            case SatelliteResult.SATELLITE_RESULT_SUCCESS:
+                return "SATELLITE_RESULT_SUCCESS";
+            case SatelliteResult.SATELLITE_RESULT_ERROR:
+                return "SATELLITE_RESULT_ERROR";
+            case SatelliteResult.SATELLITE_RESULT_SERVER_ERROR:
+                return "SATELLITE_RESULT_SERVER_ERROR";
+            case SatelliteResult.SATELLITE_RESULT_SERVICE_ERROR:
+                return "SATELLITE_RESULT_SERVICE_ERROR";
+            case SatelliteResult.SATELLITE_RESULT_MODEM_ERROR:
+                return "SATELLITE_RESULT_MODEM_ERROR";
+            case SatelliteResult.SATELLITE_RESULT_NETWORK_ERROR:
+                return "SATELLITE_RESULT_NETWORK_ERROR";
+            case SatelliteResult.SATELLITE_RESULT_INVALID_MODEM_STATE:
+                return "SATELLITE_RESULT_INVALID_MODEM_STATE";
+            case SatelliteResult.SATELLITE_RESULT_INVALID_ARGUMENTS:
+                return "SATELLITE_RESULT_INVALID_ARGUMENTS";
+            case SatelliteResult.SATELLITE_RESULT_REQUEST_FAILED:
+                return "SATELLITE_RESULT_REQUEST_FAILED";
+            case SatelliteResult.SATELLITE_RESULT_RADIO_NOT_AVAILABLE:
+                return "SATELLITE_RESULT_RADIO_NOT_AVAILABLE";
+            case SatelliteResult.SATELLITE_RESULT_REQUEST_NOT_SUPPORTED:
+                return "SATELLITE_RESULT_REQUEST_NOT_SUPPORTED";
+            case SatelliteResult.SATELLITE_RESULT_NO_RESOURCES:
+                return "SATELLITE_RESULT_NO_RESOURCES";
+            case SatelliteResult.SATELLITE_RESULT_SERVICE_NOT_PROVISIONED:
+                return "SATELLITE_RESULT_SERVICE_NOT_PROVISIONED";
+            case SatelliteResult.SATELLITE_RESULT_SERVICE_PROVISION_IN_PROGRESS:
+                return "SATELLITE_RESULT_SERVICE_PROVISION_IN_PROGRESS";
+            case SatelliteResult.SATELLITE_RESULT_REQUEST_ABORTED:
+                return "SATELLITE_RESULT_REQUEST_ABORTED";
+            case SatelliteResult.SATELLITE_RESULT_ACCESS_BARRED:
+                return "SATELLITE_RESULT_ACCESS_BARRED";
+            case SatelliteResult.SATELLITE_RESULT_NETWORK_TIMEOUT:
+                return "SATELLITE_RESULT_NETWORK_TIMEOUT";
+            case SatelliteResult.SATELLITE_RESULT_NOT_REACHABLE:
+                return "SATELLITE_RESULT_NOT_REACHABLE";
+            case SatelliteResult.SATELLITE_RESULT_NOT_AUTHORIZED:
+                return "SATELLITE_RESULT_NOT_AUTHORIZED";
         }
         Log.d(TAG, "Received invalid satellite service error: " + error);
-        return "SATELLITE_SERVICE_ERROR";
+        return "SATELLITE_RESULT_SERVICE_ERROR";
     }
 }

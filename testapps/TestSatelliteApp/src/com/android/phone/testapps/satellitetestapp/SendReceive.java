@@ -27,7 +27,7 @@ import android.telephony.satellite.SatelliteDatagram;
 import android.telephony.satellite.SatelliteDatagramCallback;
 import android.telephony.satellite.SatelliteManager;
 import android.telephony.satellite.SatelliteTransmissionUpdateCallback;
-import android.telephony.satellite.stub.SatelliteError;
+import android.telephony.satellite.stub.SatelliteResult;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -131,7 +131,7 @@ public class SendReceive extends Activity {
             Integer value = error.poll(TIMEOUT, TimeUnit.MILLISECONDS);
             if (value == null) {
                 messageStatusTextView.setText("Timed out to send the message");
-            } else if (value != SatelliteError.ERROR_NONE) {
+            } else if (value != SatelliteResult.SATELLITE_RESULT_SUCCESS) {
                 messageStatusTextView.setText("Failed to send the message, error ="
                         + SatelliteErrorUtils.mapError(value));
             } else {
@@ -150,7 +150,7 @@ public class SendReceive extends Activity {
 
         int result = mSatelliteManager.registerForSatelliteDatagram(Runnable::run, mCallback);
         TextView showErrorStatusTextView = findViewById(R.id.showErrorStatus);
-        if (result != SatelliteError.ERROR_NONE) {
+        if (result != SatelliteResult.SATELLITE_RESULT_SUCCESS) {
             showErrorStatusTextView.setText("Status for registerForSatelliteDatagram : "
                     + SatelliteErrorUtils.mapError(result));
         }
@@ -162,7 +162,7 @@ public class SendReceive extends Activity {
             Integer value = resultListener.poll(TIMEOUT, TimeUnit.MILLISECONDS);
             if (value == null) {
                 showErrorStatusTextView.setText("Timed out to enable the satellite");
-            } else if (value != SatelliteError.ERROR_NONE) {
+            } else if (value != SatelliteResult.SATELLITE_RESULT_SUCCESS) {
                 showErrorStatusTextView.setText("Failed to enable satellite, error = "
                         + SatelliteErrorUtils.mapError(value));
                 return;
@@ -178,7 +178,7 @@ public class SendReceive extends Activity {
             Integer value = resultListener.poll(TIMEOUT, TimeUnit.MILLISECONDS);
             if (value == null) {
                 mMessageStatusTextView.setText("Timed out to poll pending messages");
-            } else if (value != SatelliteError.ERROR_NONE) {
+            } else if (value != SatelliteResult.SATELLITE_RESULT_SUCCESS) {
                 mMessageStatusTextView.setText("Failed to poll pending messages, error = "
                         + SatelliteErrorUtils.mapError(value));
             }  else {
@@ -201,7 +201,7 @@ public class SendReceive extends Activity {
             Integer value = error.poll(TIMEOUT, TimeUnit.MILLISECONDS);
             if (value == null) {
                 showErrorStatusTextView.setText("Timed out to provision the satellite");
-            } else if (value != SatelliteError.ERROR_NONE) {
+            } else if (value != SatelliteResult.SATELLITE_RESULT_SUCCESS) {
                 showErrorStatusTextView.setText("Failed to provision satellite, error = "
                         + SatelliteErrorUtils.mapError(value));
                 return;
@@ -243,7 +243,7 @@ public class SendReceive extends Activity {
             Integer value = error.poll(TIMEOUT, TimeUnit.MILLISECONDS);
             if (value == null) {
                 showErrorStatusTextView.setText("Timed out to enable the satellite");
-            } else if (value != SatelliteError.ERROR_NONE) {
+            } else if (value != SatelliteResult.SATELLITE_RESULT_SUCCESS) {
                 showErrorStatusTextView.setText("Failed to enable satellite, error = "
                         + SatelliteErrorUtils.mapError(value));
                 return;
@@ -269,7 +269,7 @@ public class SendReceive extends Activity {
             if (value == null) {
                 satellitePositionTextView.setText("Failed to register for satellite transmission"
                         + "updates");
-            } else if (value != SatelliteError.ERROR_NONE) {
+            } else if (value != SatelliteResult.SATELLITE_RESULT_SUCCESS) {
                 satellitePositionTextView.setText("Failed to register for satellite transmission "
                         + "updates, error = " + SatelliteErrorUtils.mapError(value));
             }
