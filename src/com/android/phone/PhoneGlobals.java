@@ -70,6 +70,7 @@ import com.android.internal.telephony.TelephonyIntents;
 import com.android.internal.telephony.data.DataEvaluation.DataDisallowedReason;
 import com.android.internal.telephony.domainselection.DomainSelectionResolver;
 import com.android.internal.telephony.emergency.EmergencyStateTracker;
+import com.android.internal.telephony.flags.FeatureFlagsImpl;
 import com.android.internal.telephony.ims.ImsResolver;
 import com.android.internal.telephony.imsphone.ImsPhone;
 import com.android.internal.telephony.imsphone.ImsPhoneCallTracker;
@@ -478,7 +479,7 @@ public class PhoneGlobals extends ContextWrapper {
                     getResources().getBoolean(R.bool.config_enable_aosp_domain_selection));
 
             // Initialize the telephony framework
-            PhoneFactory.makeDefaultPhones(this);
+            PhoneFactory.makeDefaultPhones(this, new FeatureFlagsImpl());
 
             // Initialize the DomainSelectionResolver after creating the Phone instance
             // to check the Radio HAL version.
