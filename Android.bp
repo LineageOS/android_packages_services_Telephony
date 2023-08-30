@@ -43,8 +43,7 @@ android_app {
         "PlatformProperties",
         "modules-utils-os",
         "nist-sip",
-        "service-entitlement",
-        "telephony_flags-lib",
+        "service-entitlement"
     ],
 
     srcs: [
