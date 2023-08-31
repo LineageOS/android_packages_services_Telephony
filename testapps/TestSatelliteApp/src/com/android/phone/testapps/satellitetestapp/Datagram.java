@@ -35,7 +35,7 @@ import android.telephony.satellite.SatelliteDatagramCallback;
 import android.telephony.satellite.SatelliteManager;
 import android.telephony.satellite.SatelliteStateCallback;
 import android.telephony.satellite.SatelliteTransmissionUpdateCallback;
-import android.telephony.satellite.stub.SatelliteError;
+import android.telephony.satellite.stub.SatelliteResult;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -176,7 +176,7 @@ public class Datagram extends Activity {
             if (value == null) {
                 showErrorStatusTextView.setText("Timed out to enable the satellite");
                 return;
-            } else if (value != SatelliteError.ERROR_NONE) {
+            } else if (value != SatelliteResult.SATELLITE_RESULT_SUCCESS) {
                 showErrorStatusTextView.setText("Failed to enable satellite, error = "
                         + SatelliteErrorUtils.mapError(value));
                 return;
@@ -191,7 +191,7 @@ public class Datagram extends Activity {
             Integer value = error.poll(TIMEOUT, TimeUnit.MILLISECONDS);
             if (value == null) {
                 textView.setText("Timed out to startSatelliteTransmissionUpdates");
-            } else if (value != SatelliteError.ERROR_NONE) {
+            } else if (value != SatelliteResult.SATELLITE_RESULT_SUCCESS) {
                 textView.setText("Failed to startSatelliteTransmissionUpdates with error = "
                         + SatelliteErrorUtils.mapError(value));
             } else {
@@ -210,7 +210,7 @@ public class Datagram extends Activity {
             Integer value = error.poll(TIMEOUT, TimeUnit.MILLISECONDS);
             if (value == null) {
                 textView.setText("Timed out to stopSatelliteTransmissionUpdates");
-            } else if (value != SatelliteError.ERROR_NONE) {
+            } else if (value != SatelliteResult.SATELLITE_RESULT_SUCCESS) {
                 textView.setText("Failed to stopSatelliteTransmissionUpdates with error = "
                         + SatelliteErrorUtils.mapError(value));
             } else {
@@ -234,7 +234,7 @@ public class Datagram extends Activity {
             if (value == null) {
                 showErrorStatusTextView.setText("Timed out to enable the satellite");
                 return;
-            } else if (value != SatelliteError.ERROR_NONE) {
+            } else if (value != SatelliteResult.SATELLITE_RESULT_SUCCESS) {
                 showErrorStatusTextView.setText("Failed to enable satellite, error = "
                         + SatelliteErrorUtils.mapError(value));
                 return;
@@ -251,7 +251,7 @@ public class Datagram extends Activity {
             Integer value = resultListener.poll(TIMEOUT, TimeUnit.MILLISECONDS);
             if (value == null) {
                 textView.setText("Timed out for poll message");
-            } else if (value != SatelliteError.ERROR_NONE) {
+            } else if (value != SatelliteResult.SATELLITE_RESULT_SUCCESS) {
                 textView.setText("Failed to pollPendingSatelliteDatagrams with error = "
                         + SatelliteErrorUtils.mapError(value));
             } else {
@@ -274,7 +274,7 @@ public class Datagram extends Activity {
             Integer value = resultListener.poll(TIMEOUT, TimeUnit.MILLISECONDS);
             if (value == null) {
                 textView.setText("Timed out for sendSatelliteDatagram");
-            } else if (value != SatelliteError.ERROR_NONE) {
+            } else if (value != SatelliteResult.SATELLITE_RESULT_SUCCESS) {
                 textView.setText("Failed to sendSatelliteDatagram with error = "
                         + SatelliteErrorUtils.mapError(value));
             } else {
