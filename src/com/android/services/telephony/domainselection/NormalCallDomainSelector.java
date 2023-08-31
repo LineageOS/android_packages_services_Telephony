@@ -118,6 +118,12 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
         mTransportSelectorCallback = null;
     }
 
+    @Override
+    public void destroy() {
+        finishSelection();
+        super.destroy();
+    }
+
     /**
      * Cancel an ongoing selection operation. It is up to the DomainSelectionService
      * to clean up all ongoing operations with the framework.
