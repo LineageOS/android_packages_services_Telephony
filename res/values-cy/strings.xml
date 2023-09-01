@@ -523,11 +523,11 @@
     <string name="notification_network_selection_text">Rhwydwaith a ddewiswyd <xliff:g id="operator_name">%s</xliff:g> dim ar gael</string>
     <string name="incall_error_power_off" product="watch">I wneud galwad rhai troi\'r rhwydwaith symudol ymlaen, troi modd awyren i ffwrdd neu droi modd arbed batri i fwrdd.</string>
     <string name="incall_error_power_off" product="default">Rhaid diffodd modd awyren er mwyn gwneud galwad.</string>
-    <string name="incall_error_power_off_wfc">Diffodda modd awyren neu cysylltu â rhwydwaith diwifr i wneud galwad.</string>
+    <string name="incall_error_power_off_wfc">Diffodda modd awyren neu cysylltu â rhwydwaith di-wifr i wneud galwad.</string>
     <string name="incall_error_ecm_emergency_only">Rhaid gadael modd Galwad Nôl mewn Argyfwng i wneud galwad na sy\'n argyfyngus.</string>
     <string name="incall_error_emergency_only">Heb gofrestru ar y rhwydwaith.</string>
     <string name="incall_error_out_of_service">Dim rhwydwaith symudol ar gael.</string>
-    <string name="incall_error_out_of_service_wfc">Dyw\'r rhwydwaith symudol ddim ar gael. Cysyllta â\'r rwydwaith diwifr i wneud galwad.</string>
+    <string name="incall_error_out_of_service_wfc">Dyw\'r rhwydwaith symudol ddim ar gael. Cysyllta â\'r rwydwaith di-wifr i wneud galwad.</string>
     <string name="incall_error_no_phone_number_supplied">I wneud galwad, rho rif dilys.</string>
     <string name="incall_error_call_failed">Methodd yr alwad.</string>
     <string name="incall_error_cannot_add_call">Ni ellir gwneud yr alwad ar hyn o bryd. Gellir ceisio anfon neges.</string>
@@ -540,7 +540,7 @@
     <string name="incall_error_supp_service_reject">Methu â gwrthod yr alwad.</string>
     <string name="incall_error_supp_service_hangup">Methu â rhyddhau galwad(au).</string>
     <string name="incall_error_supp_service_hold">Methu â rhoi galwadau i aros.</string>
-    <string name="incall_error_wfc_only_no_wireless_network">Cysyllta â rhwydwaith diwifr i wneud galwad.</string>
+    <string name="incall_error_wfc_only_no_wireless_network">Cysyllta â rhwydwaith di-wifr i wneud galwad.</string>
     <string name="incall_error_promote_wfc">Galluoga galwadau Wi-Fi er mwyn gwneud galwad.</string>
     <string name="emergency_information_hint">Gwybodaeth mewn argyfwng</string>
     <string name="emergency_information_owner_hint">Perchennog</string>
