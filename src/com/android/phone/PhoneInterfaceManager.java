@@ -12442,6 +12442,76 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
+     * Add a restriction reason for disallowing carrier supported satellite plmn scan and attach
+     * by modem.
+     *
+     * @param subId The subId of the subscription to request for.
+     * @param reason Reason for disallowing satellite communication for carrier.
+     * @param callback Listener for the {@link SatelliteManager.SatelliteError} result of the
+     * operation.
+     *
+     * @throws SecurityException if the caller doesn't have required permission.
+     */
+    public void addSatelliteAttachRestrictionForCarrier(int subId,
+            @SatelliteManager.SatelliteCommunicationRestrictionReason int reason,
+            @NonNull IIntegerConsumer callback) {
+        enforceSatelliteCommunicationPermission("addSatelliteAttachRestrictionForCarrier");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            mSatelliteController.addSatelliteAttachRestrictionForCarrier(subId, reason, callback);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Remove a restriction reason for disallowing carrier supported satellite plmn scan and attach
+     * by modem.
+     *
+     * @param subId The subId of the subscription to request for.
+     * @param reason Reason for disallowing satellite communication.
+     * @param callback Listener for the {@link SatelliteManager.SatelliteError} result of the
+     * operation.
+     *
+     * @throws SecurityException if the caller doesn't have required permission.
+     */
+    public void removeSatelliteAttachRestrictionForCarrier(int subId,
+            @SatelliteManager.SatelliteCommunicationRestrictionReason int reason,
+            @NonNull IIntegerConsumer callback) {
+        enforceSatelliteCommunicationPermission("removeSatelliteAttachRestrictionForCarrier");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            mSatelliteController.removeSatelliteAttachRestrictionForCarrier(subId, reason,
+                    callback);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Get reasons for disallowing satellite communication, as requested by
+     * {@link #addSatelliteAttachRestrictionForCarrier(int, int, IIntegerConsumer)}.
+     *
+     * @param subId The subId of the subscription to request for.
+     *
+     * @return Integer array of reasons for disallowing satellite communication.
+     *
+     * @throws SecurityException if the caller doesn't have the required permission.
+     */
+    public @NonNull int[] getSatelliteAttachRestrictionReasonsForCarrier(
+            int subId) {
+        enforceSatelliteCommunicationPermission("getSatelliteAttachRestrictionReasonsForCarrier");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            Set<Integer> reasonSet =
+                    mSatelliteController.getSatelliteAttachRestrictionReasonsForCarrier(subId);
+            return reasonSet.stream().mapToInt(i->i).toArray();
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
      * This API can be used by only CTS to update satellite vendor service package name.
      *
      * @param servicePackageName The package name of the satellite vendor service.
