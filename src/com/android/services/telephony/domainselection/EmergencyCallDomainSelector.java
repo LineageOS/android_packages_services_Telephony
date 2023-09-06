@@ -83,7 +83,6 @@ import android.telephony.TransportSelectorCallback;
 import android.telephony.emergency.EmergencyNumber;
 import android.telephony.ims.ImsManager;
 import android.telephony.ims.ImsMmTelManager;
-import android.telephony.ims.ImsReasonInfo;
 import android.telephony.ims.ProvisioningManager;
 import android.text.TextUtils;
 import android.util.LocalLog;
@@ -694,8 +693,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         mCancelSignal = new CancellationSignal();
         // In case dialing over Wi-Fi has failed, do not the change the domain preference.
         if (!wifiFailed) {
-            mLastPreferredNetworks = getNextPreferredNetworks(csPreferred, mTryEpsFallback,
-                    !startVoWifiTimer);
+            mLastPreferredNetworks = getNextPreferredNetworks(csPreferred, mTryEpsFallback);
         }
         mTryEpsFallback = false;
 
@@ -733,13 +731,11 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
      *
      * @param csPreferred Indicates whether CS preferred scan is requested.
      * @param tryEpsFallback Indicates whether scan requested for EPS fallback.
-     * @param lastScanFailed Indicates whether this a scan request due to the failure of last scan
-     *        request.
      * @return The list of preferred network types.
      */
     @VisibleForTesting
     public @RadioAccessNetworkType List<Integer> getNextPreferredNetworks(boolean csPreferred,
-            boolean tryEpsFallback, boolean lastScanFailed) {
+            boolean tryEpsFallback) {
         if (mRequiresVoLteEnabled && !isAdvancedCallingSettingEnabled()) {
             // Emergency call over IMS is not supported.
             logi("getNextPreferredNetworks VoLte setting is not enabled.");
@@ -806,23 +802,6 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
             } else {
                 // PS not suppored.
                 preferredNetworks = generatePreferredNetworks(getCsNetworkTypeConfiguration());
-            }
-        }
-
-        // There can be cases that dialing IMS call failed but the modem doesn't know this
-        // situation with some vendor solutions. For example, dialing failure due to the
-        // emergency registration failure.
-        // Remove the current RAT from the scan list to avoid modem select current PLMN.
-        // If the scan fails, the next scan will include this RAT again.
-        //
-        // TODO (b/278183420) Replace this with a better solution by adding indication
-        // of call setup failure to the scan request.
-        ImsReasonInfo reasonInfo = mSelectionAttributes.getPsDisconnectCause();
-        if (!lastScanFailed && reasonInfo != null
-                && reasonInfo.getCode() == ImsReasonInfo.CODE_LOCAL_NOT_REGISTERED) {
-            logi("getNextPreferredNetworks remove " + mLastNetworkType);
-            if (preferredNetworks.size() > 1) {
-                preferredNetworks.remove(Integer.valueOf(mLastNetworkType));
             }
         }
 
