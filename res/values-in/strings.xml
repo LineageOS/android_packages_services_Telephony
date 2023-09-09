@@ -187,9 +187,9 @@
     <string name="manual_mode_disallowed_summary" msgid="3970048592179890197">"Tidak tersedia saat terhubung ke %1$s"</string>
     <string name="network_select_title" msgid="4117305053881611988">"Jaringan"</string>
     <string name="register_automatically" msgid="3907580547590554834">"Pendaftaran otomatis..."</string>
-    <string name="preferred_network_mode_title" msgid="5253395265169539830">"Jenis jaringan preferensi"</string>
+    <string name="preferred_network_mode_title" msgid="5253395265169539830">"Preferensi jenis jaringan"</string>
     <string name="preferred_network_mode_summary" msgid="3787989000044330064">"Ubah mode pengoperasian jaringan"</string>
-    <string name="preferred_network_mode_dialogtitle" msgid="2781447433514459696">"Jenis jaringan preferensi"</string>
+    <string name="preferred_network_mode_dialogtitle" msgid="2781447433514459696">"Preferensi jenis jaringan"</string>
     <string name="forbidden_network" msgid="5081729819561333023">"(terlarang)"</string>
     <string name="choose_network_title" msgid="5335832663422653082">"Pilih jaringan"</string>
     <string name="network_disconnected" msgid="8844141106841160825">"Terputus"</string>
@@ -899,7 +899,7 @@
     <string name="radio_info_data_raw_registration_state_label" msgid="2895895513822604539">"Status Pendaftaran Mentah Data:"</string>
     <string name="radio_info_wlan_data_raw_registration_state_label" msgid="6396894835757296612">"Status Pendaftaran Mentah Data WLAN:"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"Pilih indeks ponsel"</string>
-    <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"Setel Jenis Jaringan yang Disukai:"</string>
+    <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"Setel Preferensi Jenis Jaringan:"</string>
     <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"Ping Hostname(www.google.com) IPv4:"</string>
     <string name="radio_info_ping_hostname_v6" msgid="2748637889486554603">"Ping Hostname(www.google.com) IPv6:"</string>
     <string name="radio_info_http_client_test" msgid="1329583721088428238">"Uji Klien HTTP:"</string>
