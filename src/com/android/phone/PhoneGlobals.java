@@ -597,6 +597,13 @@ public class PhoneGlobals extends ContextWrapper {
             intentFilter.addAction(TelephonyIntents.ACTION_DEFAULT_DATA_SUBSCRIPTION_CHANGED);
             intentFilter.addAction(CarrierConfigManager.ACTION_CARRIER_CONFIG_CHANGED);
             registerReceiver(mReceiver, intentFilter);
+            int defaultDataSubId = SubscriptionManager.getDefaultDataSubscriptionId();
+            if (SubscriptionManager.isValidSubscriptionId(defaultDataSubId)) {
+                if (VDBG) Log.v(LOG_TAG, "Loaded initial default data sub: " + defaultDataSubId);
+                mDefaultDataSubId = defaultDataSubId;
+                registerSettingsObserver();
+                updateDataRoamingStatus(ROAMING_NOTIFICATION_REASON_DEFAULT_DATA_SUBS_CHANGED);
+            }
 
             PhoneConfigurationManager.registerForMultiSimConfigChange(
                     mHandler, EVENT_MULTI_SIM_CONFIG_CHANGED, null);
