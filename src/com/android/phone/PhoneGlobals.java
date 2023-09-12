@@ -70,6 +70,7 @@ import com.android.internal.telephony.TelephonyIntents;
 import com.android.internal.telephony.data.DataEvaluation.DataDisallowedReason;
 import com.android.internal.telephony.domainselection.DomainSelectionResolver;
 import com.android.internal.telephony.emergency.EmergencyStateTracker;
+import com.android.internal.telephony.flags.FeatureFlags;
 import com.android.internal.telephony.flags.FeatureFlagsImpl;
 import com.android.internal.telephony.ims.ImsResolver;
 import com.android.internal.telephony.imsphone.ImsPhone;
@@ -479,7 +480,8 @@ public class PhoneGlobals extends ContextWrapper {
                     getResources().getBoolean(R.bool.config_enable_aosp_domain_selection));
 
             // Initialize the telephony framework
-            PhoneFactory.makeDefaultPhones(this, new FeatureFlagsImpl());
+            FeatureFlags featureFlags = new FeatureFlagsImpl();
+            PhoneFactory.makeDefaultPhones(this, featureFlags);
 
             // Initialize the DomainSelectionResolver after creating the Phone instance
             // to check the Radio HAL version.
@@ -537,7 +539,7 @@ public class PhoneGlobals extends ContextWrapper {
 
             // Create the SatelliteController singleton, which acts as a backend service for
             // {@link android.telephony.satellite.SatelliteManager}.
-            SatelliteController.make(this);
+            SatelliteController.make(this, featureFlags);
 
             // Create an instance of CdmaPhoneCallState and initialize it to IDLE
             cdmaPhoneCallState = new CdmaPhoneCallState();
