@@ -80,7 +80,7 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
             return;
         }
 
-        int subId = attributes.getSubId();
+        int subId = attributes.getSubscriptionId();
         boolean validSubscriptionId = SubscriptionManager.isValidSubscriptionId(subId);
         if (attributes.getSelectorType() != SELECTOR_TYPE_CALLING || attributes.isEmergency()
                 || !validSubscriptionId) {
@@ -129,11 +129,6 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
         }
     }
 
-    /**
-     * Cancel an ongoing selection operation. It is up to the DomainSelectionService
-     * to clean up all ongoing operations with the framework.
-     */
-    @Override
     public void cancelSelection() {
         logd("cancelSelection");
         mStopDomainSelection = true;
@@ -243,7 +238,7 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
 
         PersistableBundle config = null;
         if (configManager != null) {
-            config = configManager.getConfigForSubId(mSelectionAttributes.getSubId(),
+            config = configManager.getConfigForSubId(mSelectionAttributes.getSubscriptionId(),
                     new String[] {CarrierConfigManager.KEY_SUPPORT_WPS_OVER_IMS_BOOL});
         }
 
@@ -271,7 +266,7 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
 
         PersistableBundle config = null;
         if (configManager != null) {
-            config = configManager.getConfigForSubId(mSelectionAttributes.getSubId(),
+            config = configManager.getConfigForSubId(mSelectionAttributes.getSubscriptionId(),
                     new String[] {CarrierConfigManager.KEY_CARRIER_VOLTE_TTY_SUPPORTED_BOOL});
         }
 
@@ -387,7 +382,8 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
         // Handle voice call.
         if (mImsStateTracker.isImsVoiceCapable()) {
             logd("IMS is voice capable");
-            if (PhoneNumberUtils.isWpsCallNumber(mSelectionAttributes.getNumber())) {
+            String number = mSelectionAttributes.getAddress().getSchemeSpecificPart();
+            if (PhoneNumberUtils.isWpsCallNumber(number)) {
                 handleWpsCall();
             } else {
                 notifyPsSelected();

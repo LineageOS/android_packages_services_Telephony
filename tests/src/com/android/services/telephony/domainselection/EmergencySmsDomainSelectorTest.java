@@ -22,6 +22,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyBoolean;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.doAnswer;
@@ -764,7 +765,8 @@ public class EmergencySmsDomainSelectorTest {
         processAllMessages();
 
         // onRequestEmergencyNetworkScan is invoked only once.
-        verify(mWwanSelectorCallback).onRequestEmergencyNetworkScan(any(), anyInt(), any(), any());
+        verify(mWwanSelectorCallback).onRequestEmergencyNetworkScan(any(), anyInt(),
+                anyBoolean(), any(), any());
     }
 
     @Test
@@ -991,11 +993,11 @@ public class EmergencySmsDomainSelectorTest {
 
         doAnswer((invocation) -> {
             Object[] args = invocation.getArguments();
-            final Consumer<EmergencyRegResult> result = (Consumer<EmergencyRegResult>) args[3];
+            final Consumer<EmergencyRegResult> result = (Consumer<EmergencyRegResult>) args[4];
             result.accept(mEmergencyRegResult);
             return null;
         }).when(mWwanSelectorCallback).onRequestEmergencyNetworkScan(
-                any(), anyInt(), any(), any());
+                any(), anyInt(), anyBoolean(), any(), any());
     }
 
     private void setUpEmergencyRegResult(

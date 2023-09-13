@@ -18,7 +18,6 @@ package com.android.services.telephony.domainselection;
 
 import android.annotation.NonNull;
 import android.annotation.Nullable;
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Handler;
 import android.os.HandlerThread;
@@ -227,7 +226,7 @@ public class TelephonyDomainSelectionService extends DomainSelectionService {
         mContext = getApplicationContext();
 
         // Create a worker thread for this domain selection service.
-        getExecutor();
+        onCreateExecutor();
 
         TelephonyManager tm = mContext.getSystemService(TelephonyManager.class);
         int activeModemCount = (tm != null) ? tm.getActiveModemCount() : 1;
@@ -317,8 +316,8 @@ public class TelephonyDomainSelectionService extends DomainSelectionService {
     @Override
     public void onDomainSelection(@NonNull SelectionAttributes attr,
             @NonNull TransportSelectorCallback callback) {
-        final int slotId = attr.getSlotId();
-        final int subId = attr.getSubId();
+        final int slotId = attr.getSlotIndex();
+        final int subId = attr.getSubscriptionId();
         final int selectorType = attr.getSelectorType();
         final boolean isEmergency = attr.isEmergency();
         ImsStateTracker ist = getImsStateTracker(slotId);
@@ -385,8 +384,15 @@ public class TelephonyDomainSelectionService extends DomainSelectionService {
     /**
      *  Returns an Executor used to execute methods called remotely by the framework.
      */
-    @SuppressLint("OnNameExpected")
     @Override
+    public @NonNull Executor onCreateExecutor() {
+        return getExecutor();
+    }
+
+    /**
+     *  Returns an Executor used to execute methods called remotely by the framework.
+     */
+    @VisibleForTesting
     public @NonNull Executor getExecutor() {
         if (mServiceHandler == null) {
             HandlerThread handlerThread = new HandlerThread(TAG);
@@ -506,7 +512,6 @@ public class TelephonyDomainSelectionService extends DomainSelectionService {
         switch (selectorType) {
             case SELECTOR_TYPE_CALLING: return "CALLING";
             case SELECTOR_TYPE_SMS: return "SMS";
-            case SELECTOR_TYPE_UT: return "UT";
             default: return Integer.toString(selectorType);
         }
     }

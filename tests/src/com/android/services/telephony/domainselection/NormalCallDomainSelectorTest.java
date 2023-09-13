@@ -17,7 +17,6 @@
 package com.android.services.telephony.domainselection;
 
 import static android.telephony.DomainSelectionService.SELECTOR_TYPE_CALLING;
-import static android.telephony.DomainSelectionService.SELECTOR_TYPE_UT;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -28,10 +27,12 @@ import static org.mockito.Mockito.doReturn;
 
 import android.annotation.NonNull;
 import android.content.Context;
+import android.net.Uri;
 import android.os.CancellationSignal;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.PersistableBundle;
+import android.telecom.PhoneAccount;
 import android.telecom.TelecomManager;
 import android.telephony.AccessNetworkConstants;
 import android.telephony.CarrierConfigManager;
@@ -69,10 +70,12 @@ import java.util.function.Consumer;
 public class NormalCallDomainSelectorTest {
     private static final String TAG = "NormalCallDomainSelectorTest";
 
+    private static final int SELECTOR_TYPE_UT = 3;
     private static final int SLOT_ID = 0;
     private static final int SUB_ID_1 = 1;
     private static final int SUB_ID_2 = 2;
     private static final String TEST_CALLID = "01234";
+    private static final Uri TEST_URI = Uri.fromParts(PhoneAccount.SCHEME_TEL, "123456789", null);
 
     private HandlerThread mHandlerThread;
     private NormalCallDomainSelector mNormalCallDomainSelector;
@@ -157,6 +160,7 @@ public class NormalCallDomainSelectorTest {
         DomainSelectionService.SelectionAttributes attributes =
                 new DomainSelectionService.SelectionAttributes.Builder(
                         SLOT_ID, SUB_ID_1, SELECTOR_TYPE_CALLING)
+                        .setAddress(TEST_URI)
                         .setCallId(TEST_CALLID)
                         .setEmergency(false)
                         .setVideoCall(true)
@@ -193,6 +197,7 @@ public class NormalCallDomainSelectorTest {
         // Case 4: Invalid Subscription-id
         attributes = new DomainSelectionService.SelectionAttributes.Builder(
                 SLOT_ID, SubscriptionManager.INVALID_SUBSCRIPTION_ID, SELECTOR_TYPE_CALLING)
+                .setAddress(TEST_URI)
                 .setCallId(TEST_CALLID)
                 .setEmergency(false)
                 .setVideoCall(true)
@@ -211,6 +216,7 @@ public class NormalCallDomainSelectorTest {
         attributes =
                 new DomainSelectionService.SelectionAttributes.Builder(
                         SLOT_ID, SUB_ID_1, SELECTOR_TYPE_UT)
+                        .setAddress(TEST_URI)
                         .setCallId(TEST_CALLID)
                         .setEmergency(false)
                         .setVideoCall(true)
@@ -228,6 +234,7 @@ public class NormalCallDomainSelectorTest {
         // Case 6: Emergency Call
         attributes = new DomainSelectionService.SelectionAttributes.Builder(
                 SLOT_ID, SUB_ID_1, SELECTOR_TYPE_CALLING)
+                .setAddress(TEST_URI)
                 .setCallId(TEST_CALLID)
                 .setEmergency(true)
                 .setVideoCall(true)
@@ -250,6 +257,7 @@ public class NormalCallDomainSelectorTest {
         DomainSelectionService.SelectionAttributes attributes =
                 new DomainSelectionService.SelectionAttributes.Builder(
                         SLOT_ID, SUB_ID_1, SELECTOR_TYPE_CALLING)
+                        .setAddress(TEST_URI)
                         .setCallId(TEST_CALLID)
                         .setEmergency(false)
                         .setVideoCall(true)
@@ -270,6 +278,7 @@ public class NormalCallDomainSelectorTest {
         DomainSelectionService.SelectionAttributes attributes =
                 new DomainSelectionService.SelectionAttributes.Builder(
                         SLOT_ID, SUB_ID_1, SELECTOR_TYPE_CALLING)
+                        .setAddress(TEST_URI)
                         .setCallId(TEST_CALLID)
                         .setEmergency(false)
                         .setVideoCall(false)
@@ -296,6 +305,7 @@ public class NormalCallDomainSelectorTest {
         imsReasonInfo.mCode = ImsReasonInfo.CODE_LOCAL_CALL_CS_RETRY_REQUIRED;
         attributes = new DomainSelectionService.SelectionAttributes.Builder(
                 SLOT_ID, SUB_ID_1, SELECTOR_TYPE_CALLING)
+                .setAddress(TEST_URI)
                 .setCallId(TEST_CALLID)
                 .setEmergency(false)
                 .setVideoCall(false)
@@ -334,7 +344,7 @@ public class NormalCallDomainSelectorTest {
         DomainSelectionService.SelectionAttributes attributes =
                 new DomainSelectionService.SelectionAttributes.Builder(
                         SLOT_ID, SUB_ID_1, SELECTOR_TYPE_CALLING)
-                        .setNumber("*272121")
+                        .setAddress(Uri.fromParts(PhoneAccount.SCHEME_TEL, "*272121", null))
                         .setCallId(TEST_CALLID)
                         .setEmergency(false)
                         .setVideoCall(false)
@@ -378,6 +388,7 @@ public class NormalCallDomainSelectorTest {
         DomainSelectionService.SelectionAttributes attributes =
                 new DomainSelectionService.SelectionAttributes.Builder(
                         SLOT_ID, SUB_ID_1, SELECTOR_TYPE_CALLING)
+                        .setAddress(TEST_URI)
                         .setCallId(TEST_CALLID)
                         .setEmergency(false)
                         .setVideoCall(false)
@@ -451,13 +462,6 @@ public class NormalCallDomainSelectorTest {
         }
 
         @Override
-        public synchronized WwanSelectorCallback onWwanSelected() {
-            mWwanSelected = true;
-            notifyAll();
-            return (WwanSelectorCallback) this;
-        }
-
-        @Override
         public void onWwanSelected(final Consumer<WwanSelectorCallback> consumer) {
             mWwanSelected = true;
             Executors.newSingleThreadExecutor().execute(() -> {
@@ -500,6 +504,7 @@ public class NormalCallDomainSelectorTest {
         @Override
         public void onRequestEmergencyNetworkScan(@NonNull List<Integer> preferredNetworks,
                                                   int scanType,
+                                                  boolean resetScan,
                                                   @NonNull CancellationSignal signal,
                                                   @NonNull Consumer<EmergencyRegResult> consumer) {
             Log.i(TAG, "onRequestEmergencyNetworkScan - called");

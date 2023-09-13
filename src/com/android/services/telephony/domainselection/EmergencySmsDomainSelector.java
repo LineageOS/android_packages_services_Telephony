@@ -230,7 +230,7 @@ public class EmergencySmsDomainSelector extends SmsDomainSelector implements
         mEmergencyNetworkScanSignal = new CancellationSignal();
         mWwanSelectorCallback.onRequestEmergencyNetworkScan(
                 preferredNetworks,
-                DomainSelectionService.SCAN_TYPE_FULL_SERVICE,
+                DomainSelectionService.SCAN_TYPE_FULL_SERVICE, false,
                 mEmergencyNetworkScanSignal,
                 (regResult) -> {
                     logi("requestEmergencyNetworkScan-onComplete");

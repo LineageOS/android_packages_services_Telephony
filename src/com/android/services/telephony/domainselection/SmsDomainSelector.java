@@ -71,12 +71,6 @@ public class SmsDomainSelector extends DomainSelectorBase implements
     }
 
     @Override
-    public void cancelSelection() {
-        logi("cancelSelection");
-        finishSelection();
-    }
-
-    @Override
     public void reselectDomain(@NonNull SelectionAttributes attr) {
         if (isDomainSelectionRequested()) {
             // The domain selection is already requested,

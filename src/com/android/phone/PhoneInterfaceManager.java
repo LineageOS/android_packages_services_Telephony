@@ -13787,6 +13787,62 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
+     * Sets the service defined in ComponentName to be bound.
+     *
+     * This should only be used for testing.
+     * @return {@code true} if the DomainSelectionService to bind to was set,
+     *         {@code false} otherwise.
+     */
+    @Override
+    public boolean setDomainSelectionServiceOverride(ComponentName componentName) {
+        Log.i(LOG_TAG, "setDomainSelectionServiceOverride component=" + componentName);
+
+        TelephonyPermissions.enforceShellOnly(Binder.getCallingUid(),
+                "setDomainSelectionServiceOverride");
+        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(mApp,
+                getDefaultSubscription(), "setDomainSelectionServiceOverride");
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            if (DomainSelectionResolver.getInstance().isDomainSelectionSupported()) {
+                return DomainSelectionResolver.getInstance()
+                        .setDomainSelectionServiceOverride(componentName);
+            }
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+        return false;
+    }
+
+    /**
+     * Clears the DomainSelectionService override.
+     *
+     * This should only be used for testing.
+     * @return {@code true} if the DomainSelectionService override was cleared,
+     *         {@code false} otherwise.
+     */
+    @Override
+    public boolean clearDomainSelectionServiceOverride() {
+        Log.i(LOG_TAG, "clearDomainSelectionServiceOverride");
+
+        TelephonyPermissions.enforceShellOnly(Binder.getCallingUid(),
+                "clearDomainSelectionServiceOverride");
+        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(mApp,
+                getDefaultSubscription(), "clearDomainSelectionServiceOverride");
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            if (DomainSelectionResolver.getInstance().isDomainSelectionSupported()) {
+                return DomainSelectionResolver.getInstance()
+                        .clearDomainSelectionServiceOverride();
+            }
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+        return false;
+    }
+
+    /**
      * Enable or disable notifications sent for cellular identifier disclosure events.
      *
      * Disclosure events are defined as instances where a device has sent a cellular identifier

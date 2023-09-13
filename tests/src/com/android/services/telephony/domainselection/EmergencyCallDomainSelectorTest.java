@@ -83,6 +83,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.net.ConnectivityManager;
 import android.net.NetworkRequest;
+import android.net.Uri;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.IPowerManager;
@@ -90,6 +91,7 @@ import android.os.IThermalService;
 import android.os.Looper;
 import android.os.PersistableBundle;
 import android.os.PowerManager;
+import android.telecom.PhoneAccount;
 import android.telephony.AccessNetworkConstants;
 import android.telephony.BarringInfo;
 import android.telephony.CarrierConfigManager;
@@ -104,7 +106,6 @@ import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.telephony.TransportSelectorCallback;
 import android.telephony.WwanSelectorCallback;
-import android.telephony.emergency.EmergencyNumber;
 import android.telephony.ims.ImsManager;
 import android.telephony.ims.ImsMmTelManager;
 import android.telephony.ims.ProvisioningManager;
@@ -124,10 +125,7 @@ import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.function.Consumer;
 
 /**
@@ -138,7 +136,7 @@ public class EmergencyCallDomainSelectorTest {
 
     private static final int SLOT_0 = 0;
     private static final int SLOT_0_SUB_ID = 1;
-    private static final String TEST_EMERGENCY_NUMBER = "911";
+    private static final Uri TEST_URI = Uri.fromParts(PhoneAccount.SCHEME_TEL, "911", null);
 
     @Mock private CarrierConfigManager mCarrierConfigManager;
     @Mock private ConnectivityManager mConnectivityManager;
@@ -254,7 +252,6 @@ public class EmergencyCallDomainSelectorTest {
         doReturn(mProvisioningManager).when(imsManager).getProvisioningManager(anyInt());
         doReturn(null).when(mProvisioningManager).getProvisioningStringValue(anyInt());
 
-        when(mTransportSelectorCallback.onWwanSelected()).thenReturn(mWwanSelectorCallback);
         doAnswer(new Answer<Void>() {
             @Override
             public Void answer(InvocationOnMock invocation) throws Throwable {
@@ -269,11 +266,11 @@ public class EmergencyCallDomainSelectorTest {
             @Override
             public Void answer(InvocationOnMock invocation) throws Throwable {
                 mAccessNetwork = (List<Integer>) invocation.getArguments()[0];
-                mResultConsumer = (Consumer<EmergencyRegResult>) invocation.getArguments()[3];
+                mResultConsumer = (Consumer<EmergencyRegResult>) invocation.getArguments()[4];
                 return null;
             }
         }).when(mWwanSelectorCallback).onRequestEmergencyNetworkScan(
-                any(), anyInt(), any(), any());
+                any(), anyInt(), anyBoolean(), any(), any());
 
         when(mResources.getStringArray(anyInt())).thenReturn(null);
     }
@@ -297,7 +294,7 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
 
         verify(mWwanSelectorCallback, times(0)).onRequestEmergencyNetworkScan(
-                any(), anyInt(), any(), any());
+                any(), anyInt(), anyBoolean(), any(), any());
         verify(mWwanSelectorCallback, times(0)).onDomainSelected(anyInt(), eq(true));
     }
 
@@ -390,7 +387,7 @@ public class EmergencyCallDomainSelectorTest {
 
         verify(mTransportSelectorCallback, times(1)).onWwanSelected(any());
         verify(mWwanSelectorCallback, times(1)).onRequestEmergencyNetworkScan(
-                any(), anyInt(), any(), any());
+                any(), anyInt(), anyBoolean(), any(), any());
     }
 
     @Test
@@ -498,6 +495,7 @@ public class EmergencyCallDomainSelectorTest {
         //Extended service request failed
         SelectionAttributes.Builder builder =
                 new SelectionAttributes.Builder(SLOT_0, SLOT_0_SUB_ID, SELECTOR_TYPE_CALLING)
+                .setAddress(TEST_URI)
                 .setCsDisconnectCause(SERVICE_OPTION_NOT_AVAILABLE)
                 .setEmergency(true)
                 .setEmergencyRegResult(regResult);
@@ -568,7 +566,7 @@ public class EmergencyCallDomainSelectorTest {
                 true, true, 0, 0, "", "");
         SelectionAttributes attr = new SelectionAttributes.Builder(
                         SLOT_0, SLOT_0_SUB_ID, SELECTOR_TYPE_CALLING)
-                .setNumber(TEST_EMERGENCY_NUMBER)
+                .setAddress(TEST_URI)
                 .setEmergency(true)
                 .setEmergencyRegResult(regResult)
                 .setExitedFromAirplaneMode(true)
@@ -595,7 +593,7 @@ public class EmergencyCallDomainSelectorTest {
                 true, true, 0, 0, "", "");
         SelectionAttributes attr = new SelectionAttributes.Builder(
                         SLOT_0, SLOT_0_SUB_ID, SELECTOR_TYPE_CALLING)
-                .setNumber(TEST_EMERGENCY_NUMBER)
+                .setAddress(TEST_URI)
                 .setEmergency(true)
                 .setEmergencyRegResult(regResult)
                 .setExitedFromAirplaneMode(true)
@@ -1566,18 +1564,18 @@ public class EmergencyCallDomainSelectorTest {
         processAllMessages();
 
         verify(mWwanSelectorCallback, times(1)).onRequestEmergencyNetworkScan(
-                any(), eq(DomainSelectionService.SCAN_TYPE_FULL_SERVICE), any(), any());
+                any(), eq(DomainSelectionService.SCAN_TYPE_FULL_SERVICE), eq(false), any(), any());
         assertNotNull(mResultConsumer);
 
         mResultConsumer.accept(regResult);
         processAllMessages();
 
         verify(mWwanSelectorCallback, times(2)).onRequestEmergencyNetworkScan(
-                any(), eq(DomainSelectionService.SCAN_TYPE_FULL_SERVICE), any(), any());
+                any(), eq(DomainSelectionService.SCAN_TYPE_FULL_SERVICE), eq(false), any(), any());
     }
 
     @Test
-    public void testFullServiceThenLimtedService() throws Exception {
+    public void testFullServiceThenLimitedService() throws Exception {
         PersistableBundle bundle = getDefaultPersistableBundle();
         bundle.putInt(KEY_EMERGENCY_NETWORK_SCAN_TYPE_INT,
                 SCAN_TYPE_FULL_SERVICE_FOLLOWED_BY_LIMITED_SERVICE);
@@ -1597,14 +1595,15 @@ public class EmergencyCallDomainSelectorTest {
         processAllMessages();
 
         verify(mWwanSelectorCallback, times(1)).onRequestEmergencyNetworkScan(
-                any(), eq(DomainSelectionService.SCAN_TYPE_FULL_SERVICE), any(), any());
+                any(), eq(DomainSelectionService.SCAN_TYPE_FULL_SERVICE), eq(false), any(), any());
         assertNotNull(mResultConsumer);
 
         mResultConsumer.accept(regResult);
         processAllMessages();
 
         verify(mWwanSelectorCallback, times(1)).onRequestEmergencyNetworkScan(
-                any(), eq(DomainSelectionService.SCAN_TYPE_LIMITED_SERVICE), any(), any());
+                any(), eq(DomainSelectionService.SCAN_TYPE_LIMITED_SERVICE),
+                eq(false), any(), any());
     }
 
     @Test
@@ -1875,16 +1874,6 @@ public class EmergencyCallDomainSelectorTest {
     }
 
     @Test
-    public void testStopCrossStackTimerOnCancel() throws Exception {
-        createSelector(SLOT_0_SUB_ID);
-        unsolBarringInfoChanged(false);
-
-        mDomainSelector.cancelSelection();
-
-        verify(mCsrdCtrl).stopTimer();
-    }
-
-    @Test
     public void testStopCrossStackTimerOnFinish() throws Exception {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
@@ -1911,6 +1900,7 @@ public class EmergencyCallDomainSelectorTest {
         verifyCsDialed();
 
         attr = new SelectionAttributes.Builder(SLOT_0, SLOT_0_SUB_ID, SELECTOR_TYPE_CALLING)
+                .setAddress(TEST_URI)
                 .setEmergency(true)
                 .setEmergencyRegResult(regResult)
                 .setCsDisconnectCause(PreciseDisconnectCause.EMERGENCY_TEMP_FAILURE)
@@ -1939,6 +1929,7 @@ public class EmergencyCallDomainSelectorTest {
         verifyCsDialed();
 
         attr = new SelectionAttributes.Builder(SLOT_0, SLOT_0_SUB_ID, SELECTOR_TYPE_CALLING)
+                .setAddress(TEST_URI)
                 .setEmergency(true)
                 .setEmergencyRegResult(regResult)
                 .setCsDisconnectCause(PreciseDisconnectCause.EMERGENCY_PERM_FAILURE)
@@ -2202,7 +2193,7 @@ public class EmergencyCallDomainSelectorTest {
         processAllMessages();
 
         verify(mWwanSelectorCallback, times(1)).onRequestEmergencyNetworkScan(
-                any(), anyInt(), any(), any());
+                any(), anyInt(), anyBoolean(), any(), any());
         assertEquals(4, mAccessNetwork.size());
         assertEquals(EUTRAN, (int) mAccessNetwork.get(0));
         assertEquals(NGRAN, (int) mAccessNetwork.get(1));
@@ -2228,7 +2219,7 @@ public class EmergencyCallDomainSelectorTest {
         processAllMessages();
 
         verify(mWwanSelectorCallback, times(1)).onRequestEmergencyNetworkScan(
-                any(), anyInt(), any(), any());
+                any(), anyInt(), anyBoolean(), any(), any());
         assertEquals(4, mAccessNetwork.size());
         assertEquals(EUTRAN, (int) mAccessNetwork.get(0));
         assertEquals(UTRAN, (int) mAccessNetwork.get(1));
@@ -2252,7 +2243,7 @@ public class EmergencyCallDomainSelectorTest {
         processAllMessages();
 
         verify(mWwanSelectorCallback, times(1)).onRequestEmergencyNetworkScan(
-                any(), anyInt(), any(), any());
+                any(), anyInt(), anyBoolean(), any(), any());
         assertEquals(4, mAccessNetwork.size());
         assertEquals(EUTRAN, (int) mAccessNetwork.get(0));
         assertEquals(UTRAN, (int) mAccessNetwork.get(1));
@@ -2279,7 +2270,7 @@ public class EmergencyCallDomainSelectorTest {
         processAllMessages();
 
         verify(mWwanSelectorCallback, times(1)).onRequestEmergencyNetworkScan(
-                any(), anyInt(), any(), any());
+                any(), anyInt(), anyBoolean(), any(), any());
         assertEquals(4, mAccessNetwork.size());
         assertEquals(EUTRAN, (int) mAccessNetwork.get(0));
         assertEquals(NGRAN, (int) mAccessNetwork.get(1));
@@ -2321,24 +2312,13 @@ public class EmergencyCallDomainSelectorTest {
 
     @Test
     public void testTestEmergencyNumberOverCs() throws Exception {
-        EmergencyNumber num = new EmergencyNumber(TEST_EMERGENCY_NUMBER, "us", "",
-                EmergencyNumber.EMERGENCY_SERVICE_CATEGORY_POLICE, new ArrayList<String>(),
-                EmergencyNumber.EMERGENCY_NUMBER_SOURCE_TEST,
-                EmergencyNumber.EMERGENCY_CALL_ROUTING_UNKNOWN);
-
-        Map<Integer, List<EmergencyNumber>> lists = new HashMap<>();
-        List<EmergencyNumber> list = new ArrayList<>();
-        list.add(num);
-        lists.put(SLOT_0_SUB_ID, list);
-
-        doReturn(lists).when(mTelephonyManager).getEmergencyNumberList();
-
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
         EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_UNKNOWN,
                 0, false, true, 0, 0, "", "");
-        SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
+        SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID,
+                true /*isTestEmergencyNumber*/, regResult);
         mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
         processAllMessages();
 
@@ -2349,24 +2329,13 @@ public class EmergencyCallDomainSelectorTest {
 
     @Test
     public void testTestEmergencyNumberOverPs() throws Exception {
-        EmergencyNumber num = new EmergencyNumber(TEST_EMERGENCY_NUMBER, "us", "",
-                EmergencyNumber.EMERGENCY_SERVICE_CATEGORY_POLICE, new ArrayList<String>(),
-                EmergencyNumber.EMERGENCY_NUMBER_SOURCE_TEST,
-                EmergencyNumber.EMERGENCY_CALL_ROUTING_UNKNOWN);
-
-        Map<Integer, List<EmergencyNumber>> lists = new HashMap<>();
-        List<EmergencyNumber> list = new ArrayList<>();
-        list.add(num);
-        lists.put(SLOT_0_SUB_ID, list);
-
-        doReturn(lists).when(mTelephonyManager).getEmergencyNumberList();
-
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
         EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_UNKNOWN,
                 0, false, true, 0, 0, "", "");
-        SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
+        SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID,
+                true /*isTestEmergencyNumber*/, regResult);
         mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
         processAllMessages();
 
@@ -2377,24 +2346,13 @@ public class EmergencyCallDomainSelectorTest {
 
     @Test
     public void testTestEmergencyNumberOverWifi() throws Exception {
-        EmergencyNumber num = new EmergencyNumber(TEST_EMERGENCY_NUMBER, "us", "",
-                EmergencyNumber.EMERGENCY_SERVICE_CATEGORY_POLICE, new ArrayList<String>(),
-                EmergencyNumber.EMERGENCY_NUMBER_SOURCE_TEST,
-                EmergencyNumber.EMERGENCY_CALL_ROUTING_UNKNOWN);
-
-        Map<Integer, List<EmergencyNumber>> lists = new HashMap<>();
-        List<EmergencyNumber> list = new ArrayList<>();
-        list.add(num);
-        lists.put(SLOT_0_SUB_ID, list);
-
-        doReturn(lists).when(mTelephonyManager).getEmergencyNumberList();
-
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
         EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_UNKNOWN,
                 0, false, true, 0, 0, "", "");
-        SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
+        SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID,
+                true /*isTestEmergencyNumber*/, regResult);
         mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
         processAllMessages();
 
@@ -2573,7 +2531,7 @@ public class EmergencyCallDomainSelectorTest {
         processAllMessages();
 
         verify(mWwanSelectorCallback, times(1)).onRequestEmergencyNetworkScan(
-                any(), anyInt(), any(), any());
+                any(), anyInt(), anyBoolean(), any(), any());
         assertNotNull(mResultConsumer);
     }
 
@@ -2607,7 +2565,7 @@ public class EmergencyCallDomainSelectorTest {
     private void verifyScanPreferred(int scanType, int expectedPreferredAccessNetwork) {
         processAllMessages();
         verify(mWwanSelectorCallback, times(1)).onRequestEmergencyNetworkScan(
-                any(), eq(scanType), any(), any());
+                any(), eq(scanType), anyBoolean(), any(), any());
         assertEquals(expectedPreferredAccessNetwork, (int) mAccessNetwork.get(0));
     }
 
@@ -2749,12 +2707,18 @@ public class EmergencyCallDomainSelectorTest {
         return bundle;
     }
 
-    public static SelectionAttributes getSelectionAttributes(int slotId, int subId,
+    private static SelectionAttributes getSelectionAttributes(int slotId, int subId,
             EmergencyRegResult regResult) {
+        return getSelectionAttributes(slotId, subId, false, regResult);
+    }
+
+    private static SelectionAttributes getSelectionAttributes(int slotId, int subId,
+            boolean isTestEmergencyNumber, EmergencyRegResult regResult) {
         SelectionAttributes.Builder builder =
                 new SelectionAttributes.Builder(slotId, subId, SELECTOR_TYPE_CALLING)
-                .setNumber(TEST_EMERGENCY_NUMBER)
+                .setAddress(TEST_URI)
                 .setEmergency(true)
+                .setTestEmergencyNumber(isTestEmergencyNumber)
                 .setEmergencyRegResult(regResult);
         return builder.build();
     }
