@@ -61,7 +61,7 @@
     <string name="labelGsmMore_with_label" msgid="3206015314393246224">"การตั้งค่าการโทร GSM (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCDMAMore" msgid="7937441382611224632">"การตั้งค่าการโทร CDMA"</string>
     <string name="labelCdmaMore_with_label" msgid="7759692829160238152">"การตั้งค่าการโทร CDMA (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="apn_settings" msgid="1978652203074756623">"ชื่อจุดเข้าใช้งาน"</string>
+    <string name="apn_settings" msgid="1978652203074756623">"จุดเข้าใช้งาน"</string>
     <string name="settings_label" msgid="9101778088412567956">"การตั้งค่าเครือข่าย"</string>
     <string name="phone_accounts" msgid="1216879437523774604">"บัญชีการโทร"</string>
     <string name="phone_accounts_make_calls_with" msgid="16747814788918145">"โทรด้วย"</string>
