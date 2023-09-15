@@ -38,6 +38,7 @@ import com.android.internal.telephony.Call;
 import com.android.internal.telephony.CallStateException;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
+import com.android.internal.telephony.flags.Flags;
 import com.android.phone.PhoneUtils;
 import com.android.phone.R;
 import com.android.telephony.Rlog;
@@ -700,7 +701,11 @@ public class ImsConference extends TelephonyConferenceBase implements Holdable {
         if (mConferenceHost == null) {
             return;
         }
-        mConferenceHost.performHold();
+        if (Flags.conferenceHoldUnholdChangedToSendMessage()) {
+            mConferenceHost.onHold();
+        } else {
+            mConferenceHost.performHold();
+        }
     }
 
     /**
@@ -711,7 +716,11 @@ public class ImsConference extends TelephonyConferenceBase implements Holdable {
         if (mConferenceHost == null) {
             return;
         }
-        mConferenceHost.performUnhold();
+        if (Flags.conferenceHoldUnholdChangedToSendMessage()) {
+            mConferenceHost.onUnhold();
+        } else {
+            mConferenceHost.performUnhold();
+        }
     }
 
     /**
