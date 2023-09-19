@@ -284,6 +284,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
                 "mSatelliteController", mTestConnectionService, mSatelliteController);
         mBinderStub = (IConnectionService.Stub) mTestConnectionService.onBind(null);
         mSetFlagsRule.disableFlags(Flags.FLAG_CARRIER_ENABLED_SATELLITE_FLAG);
+        mSetFlagsRule.enableFlags(Flags.FLAG_DO_NOT_OVERRIDE_PRECISE_LABEL);
     }
 
     @After
