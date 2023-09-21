@@ -133,7 +133,6 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"CDMA-Oproep Wat Wag onder IMS is Af"</string>
     <string name="updating_title" msgid="6130548922615719689">"Belinstellings"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Oproepinstellings kan net deur die administrateur verander word."</string>
-    <string name="call_settings_no_config_mobile_networks" msgid="5158212415701421219">"Die toesteleienaar het die vermoë om selnetwerkinstellings te verander, beperk."</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Net die admin of werkgebruiker kan foonrekeninginstellings verander."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Instellings (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Oproepinstellingsfout"</string>
@@ -299,7 +298,7 @@
     <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"Opgeskorte SIP-rekeninge is gevind en verwyder"</string>
     <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"SIP-bel word nie meer deur die Android-platform ondersteun nie.\nJou bestaande SIP-rekeninge <xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g> is verwyder.\nBevestig asseblief jou verstekbelinstelling."</string>
     <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"Gaan na instellings"</string>
-    <string name="data_usage_title" msgid="8438592133893837464">"Programdatagebruik"</string>
+    <string name="data_usage_title" msgid="8438592133893837464">"Appdatagebruik"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"<xliff:g id="ID_1">%1$s</xliff:g> mobiele data gebruik <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"Gevorderd"</string>
     <string name="carrier_settings_euicc" msgid="1190237227261337749">"Diensverskaffer"</string>

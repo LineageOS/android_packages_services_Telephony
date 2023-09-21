@@ -49,6 +49,7 @@ android_test {
         "truth-prebuilt",
         "testables",
         "platform-compat-test-rules",
+        "flag-junit",
     ],
 
     test_suites: [

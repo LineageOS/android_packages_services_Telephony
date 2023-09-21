@@ -24,7 +24,7 @@ import android.os.CancellationSignal;
 import android.os.OutcomeReceiver;
 import android.telephony.satellite.SatelliteManager;
 import android.telephony.satellite.SatelliteProvisionStateCallback;
-import android.telephony.satellite.stub.SatelliteError;
+import android.telephony.satellite.stub.SatelliteResult;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -96,7 +96,7 @@ public class Provisioning extends Activity {
             Integer value = error.poll(TIMEOUT, TimeUnit.MILLISECONDS);
             if (value == null) {
                 textView.setText("Timed out to provision the satellite");
-            } else if (value != SatelliteError.ERROR_NONE) {
+            } else if (value != SatelliteResult.SATELLITE_RESULT_SUCCESS) {
                 textView.setText("Failed to provision SatelliteService with error = "
                         + SatelliteErrorUtils.mapError(value));
             } else {
@@ -116,7 +116,7 @@ public class Provisioning extends Activity {
             Integer value = error.poll(TIMEOUT, TimeUnit.MILLISECONDS);
             if (value == null) {
                 textView.setText("Timed out to deprovision the satellite");
-            } else if (value != SatelliteError.ERROR_NONE) {
+            } else if (value != SatelliteResult.SATELLITE_RESULT_SUCCESS) {
                 textView.setText("Failed to deprovision SatelliteService with error = "
                         + SatelliteErrorUtils.mapError(value));
             } else {

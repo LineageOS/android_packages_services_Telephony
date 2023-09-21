@@ -22,7 +22,7 @@ import android.os.Bundle;
 import android.os.OutcomeReceiver;
 import android.telephony.satellite.SatelliteCapabilities;
 import android.telephony.satellite.SatelliteManager;
-import android.telephony.satellite.stub.SatelliteError;
+import android.telephony.satellite.stub.SatelliteResult;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
@@ -80,7 +80,7 @@ public class SatelliteControl extends Activity {
             Integer value = error.poll(TIMEOUT, TimeUnit.MILLISECONDS);
             if (value == null) {
                 textView.setText("Timed out to enable the satellite");
-            } else if (value != SatelliteError.ERROR_NONE) {
+            } else if (value != SatelliteResult.SATELLITE_RESULT_SUCCESS) {
                 textView.setText("Failed to enable the satellite, error ="
                         + SatelliteErrorUtils.mapError(value));
             } else {
@@ -99,7 +99,7 @@ public class SatelliteControl extends Activity {
             Integer value = error.poll(TIMEOUT, TimeUnit.MILLISECONDS);
             if (value == null) {
                 textView.setText("Timed out to disable the satellite");
-            } else if (value != SatelliteError.ERROR_NONE) {
+            } else if (value != SatelliteResult.SATELLITE_RESULT_SUCCESS) {
                 textView.setText("Failed to disable the satellite, error ="
                         + SatelliteErrorUtils.mapError(value));
             } else {

@@ -133,7 +133,6 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"በIMS ስር ያለው የCDMA ጥሪ መጠበቂያ ጠፍቷል"</string>
     <string name="updating_title" msgid="6130548922615719689">"የጥሪ ቅንብሮች"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"የጥሪ ቅንብሮች በአስተዳዳሪ ተጠቃሚው ብቻ ነው ሊለወጡ የሚችሉት።"</string>
-    <string name="call_settings_no_config_mobile_networks" msgid="5158212415701421219">"የመሣሪያው ባለቤት የሞባይል አውታረ መረብ ቅንብሮች የመለወጥ ችሎታን ገድበዋል።"</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"የስልክ የመለያ ቅንብሮች መለወጥ የሚችሉት በአስተዳዳሪ ወይም በሥራ ተጠቃሚ ብቻ ነው።"</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"ቅንብሮች (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"የጥሪ ቅንብሮች ስህተት"</string>

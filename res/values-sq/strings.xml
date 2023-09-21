@@ -133,7 +133,6 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"Telefonatat në pritje CDMA në sistemin IMS janë joaktive"</string>
     <string name="updating_title" msgid="6130548922615719689">"Cilësimet e telefonatës"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Cilësimet e telefonatës mund të ndryshohen vetëm nga administratori."</string>
-    <string name="call_settings_no_config_mobile_networks" msgid="5158212415701421219">"Zotëruesi i pajisjes ka kufizuar aftësinë për të ndryshuar cilësimet e rrjetit celular."</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Cilësimet e llogarisë të telefonit mund të ndryshohen vetëm nga administratori ose një përdorues në punë."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Cilësimet (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Gabim në cilësimet e telefonatës"</string>
@@ -543,7 +542,7 @@
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Dil nga modaliteti i kthimit të telefonatës së urgjencës për të bërë një telefonatë jo urgjente."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"I paregjistruar në rrjet."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"Rrjeti celular nuk mundësohet."</string>
-    <string name="incall_error_out_of_service_wfc" msgid="4497663185857190885">"Rrjeti celular nuk ofrohet. Lidhu me një rrjet pa tel për të bërë një telefonatë."</string>
+    <string name="incall_error_out_of_service_wfc" msgid="4497663185857190885">"Rrjeti celular nuk ofrohet. Lidhu me një rrjet wireless për të bërë një telefonatë."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="8680831089508851894">"Për të kryer një telefonatë, fut një numër të vlefshëm."</string>
     <string name="incall_error_call_failed" msgid="393508653582682539">"Thirrja dështoi."</string>
     <string name="incall_error_cannot_add_call" msgid="5425764862628655443">"Telefonata nuk mund të shtohet në këtë moment. Mund të provosh të kontaktosh duke dërguar një mesazh."</string>
@@ -556,7 +555,7 @@
     <string name="incall_error_supp_service_reject" msgid="3044363092441655912">"Nuk mund të refuzojë telefonatën."</string>
     <string name="incall_error_supp_service_hangup" msgid="836524952243836735">"Nuk mund të lëshojë telefonatën(at)."</string>
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"Telefonatat nuk mund të mbahen në pritje."</string>
-    <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"Lidhu me një rrjet me valë për të bërë një telefonatë."</string>
+    <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"Lidhu me një rrjet wireless për të bërë një telefonatë."</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"Aktivizo telefonatat nëpërmjet rrjetit Wi-Fi për të bërë një telefonatë."</string>
     <string name="incall_error_satellite_enabled" msgid="1936541518147323016">"Çaktivizo modalitetin e satelitit për të bërë një telefonatë."</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"Informacioni i urgjencës"</string>

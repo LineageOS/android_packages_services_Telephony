@@ -61,7 +61,7 @@
     <string name="labelGsmMore_with_label" msgid="3206015314393246224">"การตั้งค่าการโทร GSM (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="labelCDMAMore" msgid="7937441382611224632">"การตั้งค่าการโทร CDMA"</string>
     <string name="labelCdmaMore_with_label" msgid="7759692829160238152">"การตั้งค่าการโทร CDMA (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
-    <string name="apn_settings" msgid="1978652203074756623">"ชื่อจุดเข้าใช้งาน"</string>
+    <string name="apn_settings" msgid="1978652203074756623">"จุดเข้าใช้งาน"</string>
     <string name="settings_label" msgid="9101778088412567956">"การตั้งค่าเครือข่าย"</string>
     <string name="phone_accounts" msgid="1216879437523774604">"บัญชีการโทร"</string>
     <string name="phone_accounts_make_calls_with" msgid="16747814788918145">"โทรด้วย"</string>
@@ -133,7 +133,6 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"ปิดใช้สายเรียกซ้อนระบบ CDMA ภายใต้ IMS"</string>
     <string name="updating_title" msgid="6130548922615719689">"การตั้งค่าการโทร"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"ผู้ใช้ระดับผู้ดูแลระบบเท่านั้นที่สามารถเปลี่ยนแปลงการตั้งค่าการโทรได้"</string>
-    <string name="call_settings_no_config_mobile_networks" msgid="5158212415701421219">"เจ้าของอุปกรณ์ได้จำกัดความสามารถในการเปลี่ยนการตั้งค่าเครือข่ายมือถือ"</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"เฉพาะผู้ดูแลระบบหรือผู้ใช้ที่ทำงานเท่านั้นที่สามารถเปลี่ยนการตั้งค่าบัญชีของโทรศัพท์ได้"</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"การตั้งค่า (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"ข้อผิดพลาดในการตั้งค่าการโทร"</string>
