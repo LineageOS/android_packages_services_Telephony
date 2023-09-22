@@ -146,6 +146,7 @@ import android.telephony.ims.aidl.IRcsConfigCallback;
 import android.telephony.ims.feature.ImsFeature;
 import android.telephony.ims.stub.ImsConfigImplBase;
 import android.telephony.ims.stub.ImsRegistrationImplBase;
+import android.telephony.satellite.INtnSignalStrengthCallback;
 import android.telephony.satellite.ISatelliteDatagramCallback;
 import android.telephony.satellite.ISatelliteProvisionStateCallback;
 import android.telephony.satellite.ISatelliteStateCallback;
@@ -12504,6 +12505,70 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             Set<Integer> reasonSet =
                     mSatelliteController.getSatelliteAttachRestrictionReasonsForCarrier(subId);
             return reasonSet.stream().mapToInt(i->i).toArray();
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Request to get the signal strength of the satellite connection.
+     *
+     * @param subId The subId of the subscription to request for.
+     * @param result Result receiver to get the error code of the request and the current signal
+     * strength of the satellite connection.
+     *
+     * @throws SecurityException if the caller doesn't have required permission.
+     */
+    @Override
+    public void requestNtnSignalStrength(int subId, @NonNull ResultReceiver result) {
+        enforceSatelliteCommunicationPermission("requestNtnSignalStrength");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            mSatelliteController.requestNtnSignalStrength(subId, result);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Registers for NTN signal strength changed from satellite modem.
+     *
+     * @param subId The subId of the subscription to request for.
+     * @param callback The callback to handle the NTN signal strength changed event.
+     *
+     * @return The {@link SatelliteManager.SatelliteResult} result of the operation.
+     *
+     * @throws SecurityException if the caller doesn't have the required permission.
+     */
+    @Override
+    @SatelliteManager.SatelliteResult public int registerForNtnSignalStrengthChanged(
+            int subId, @NonNull INtnSignalStrengthCallback callback) {
+        enforceSatelliteCommunicationPermission("registerForNtnSignalStrengthChanged");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return mSatelliteController.registerForNtnSignalStrengthChanged(subId, callback);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Unregisters for NTN signal strength changed from satellite modem.
+     * If callback was not registered before, the request will be ignored.
+     *
+     * @param subId The subId of the subscription to unregister for provision state changed.
+     * @param callback The callback that was passed to
+     * {@link #registerForNtnSignalStrengthChanged(int, INtnSignalStrengthCallback)}
+     *
+     * @throws SecurityException if the caller doesn't have the required permission.
+     */
+    @Override
+    public void unregisterForNtnSignalStrengthChanged(
+            int subId, @NonNull INtnSignalStrengthCallback callback) {
+        enforceSatelliteCommunicationPermission("unregisterForNtnSignalStrengthChanged");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            mSatelliteController.unregisterForNtnSignalStrengthChanged(subId, callback);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
