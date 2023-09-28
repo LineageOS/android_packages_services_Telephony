@@ -9193,10 +9193,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         TelephonyPermissions.enforceShellOnly(
                 Binder.getCallingUid(), "setCarrierServicePackageOverride");
 
-        // Verify that the callingPackage belongs to the calling UID
-        mApp.getSystemService(AppOpsManager.class)
-                .checkPackage(Binder.getCallingUid(), callingPackage);
-
         final long identity = Binder.clearCallingIdentity();
         try {
             final Phone phone = getPhone(subId);
