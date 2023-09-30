@@ -3021,14 +3021,15 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 + ",reason=" + reason + ",callingPackage=" + getCurrentPackageName());
         final long identity = Binder.clearCallingIdentity();
         try {
-            final Phone phone = getPhoneFromSubIdOrDefault(subId);
-            if (phone != null) {
+            boolean result = false;
+            for (Phone phone : PhoneFactory.getPhones()) {
+                result = true;
                 phone.setRadioPowerForReason(false, reason);
-                return true;
-            } else {
-                loge("requestRadioPowerOffForReason: phone is null");
-                return false;
             }
+            if (!result) {
+                loge("requestRadioPowerOffForReason: no phone exists");
+            }
+            return result;
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -3048,14 +3049,15 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            final Phone phone = getPhoneFromSubIdOrDefault(subId);
-            if (phone != null) {
+            boolean result = false;
+            for (Phone phone : PhoneFactory.getPhones()) {
+                result = true;
                 phone.setRadioPowerForReason(true, reason);
-                return true;
-            } else {
-                loge("clearRadioPowerOffForReason: phone is null");
-                return false;
             }
+            if (!result) {
+                loge("clearRadioPowerOffForReason: no phone exists");
+            }
+            return result;
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -9482,10 +9484,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             int subId, String carrierServicePackage, String callingPackage) {
         TelephonyPermissions.enforceShellOnly(
                 Binder.getCallingUid(), "setCarrierServicePackageOverride");
-
-        // Verify that the callingPackage belongs to the calling UID
-        mApp.getSystemService(AppOpsManager.class)
-                .checkPackage(Binder.getCallingUid(), callingPackage);
 
         final long identity = Binder.clearCallingIdentity();
         try {
