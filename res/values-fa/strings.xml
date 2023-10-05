@@ -133,6 +133,7 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"‏«انتظار مکالمه CDMA» تحت IMS خاموش است"</string>
     <string name="updating_title" msgid="6130548922615719689">"تنظیمات تماس"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"فقط کاربر سرپرست می‌تواند تنظیمات تماس را تغییر دهد."</string>
+    <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"فقط کاربر کاری یا سرپرست می‌تواند تنظیمات حساب تلفن را تغییر دهد."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"تنظیمات (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"خطای تنظیمات تماس"</string>
     <string name="reading_settings" msgid="1605904432450871183">"در حال خواندن تنظیمات..."</string>
@@ -556,6 +557,7 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"نگه‌داشتن تماس‌ها ممکن نیست."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"برای برقراری تماس، به یک شبکه بی‌سیم وصل شوید"</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"‏برای برقراری تماس، تماس Wi-Fi را فعال کنید."</string>
+    <string name="incall_error_satellite_enabled" msgid="1936541518147323016">"برای برقراری تماس، حالت ماهواره را غیرفعال کنید."</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"اطلاعات اضطراری"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"مالک"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"برای دیدن اطلاعات، دوباره ضربه بزنید"</string>
@@ -596,7 +598,7 @@
     <string name="hac_mode_summary" msgid="7774989500136009881">"روشن کردن سازگاری دستگاه کمک‌شنوایی"</string>
     <string name="rtt_mode_title" msgid="3075948111362818043">"‏تماس با نوشتار هم‌زمان (RTT)"</string>
     <string name="rtt_mode_summary" msgid="8631541375609989562">"پیام‌رسانی در تماس صوتی مجاز است"</string>
-    <string name="rtt_mode_more_information" msgid="587500128658756318">"‏«نوشتار هم‌زمان» به تماس گیرندگان ناشنوا، دارای مشکل شنوایی، دارای ناتوانی گفتاری یا افرادی که به چیزی بیش از صدا نیاز دارند کمک می‌کند.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;بیشتر بدانید&lt;/a&gt;\n       ‏&lt;br&gt;&lt;br&gt; تماس‌های «نوشتار هم‌زمان» به‌صورت ترانویسی پیام ذخیره می‌شود\n       &lt;br&gt; «نوشتار هم‌زمان» برای تماس‌های ویدیویی دردسترس نیست"</string>
+    <string name="rtt_mode_more_information" msgid="587500128658756318">"‏«نوشتار هم‌زمان» به تماس گیرندگان ناشنوا، دارای مشکل شنوایی، دارای ناتوانی گفتاری یا افرادی که به چیزی بیش از صدا نیاز دارند کمک می‌کند.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;بیشتر بدانید&lt;/a&gt;\n       ‏&lt;br&gt;&lt;br&gt; تماس‌های «نوشتار هم‌زمان» به‌صورت ترانویسی پیام ذخیره می‌شود\n       &lt;br&gt; «نوشتار هم‌زمان» برای تماس‌های تصویری دردسترس نیست"</string>
     <string name="no_rtt_when_roaming" msgid="5268008247378355389">"نکته: «نوشتار هم‌زمان» در هنگام فراگردی دردسترس نیست"</string>
   <string-array name="tty_mode_entries">
     <item msgid="3238070884803849303">"‏TTY خاموش"</item>
@@ -659,7 +661,7 @@
     <string name="description_dial_button" msgid="8614631902795087259">"شماره گیری"</string>
     <string name="description_dialpad_button" msgid="7395114120463883623">"نمایش صفحه شماره گیری"</string>
     <string name="pane_title_emergency_dialpad" msgid="3627372514638694401">"صفحه شماره‌گیری اضطراری"</string>
-    <string name="voicemail_visual_voicemail_switch_title" msgid="6610414098912832120">"پست صوتی تصویری"</string>
+    <string name="voicemail_visual_voicemail_switch_title" msgid="6610414098912832120">"پست صوتی دیداری"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="7005128605986960003">"تنظیم پین"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="4633077715231764435">"تغییر پین"</string>
     <string name="preference_category_ringtone" msgid="8787281191375434976">"آهنگ‌ زنگ و لرزش"</string>
@@ -713,6 +715,7 @@
     <string name="clh_callFailed_powerOff_txt" msgid="8279934912560765361">"حالت هواپیما روشن است"</string>
     <string name="clh_callFailed_simError_txt" msgid="5128538525762326413">"دسترسی به سیم‌کارت ممکن نیست"</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="2736010617446749869">"شبکه تلفن همراه در دسترس نیست"</string>
+    <string name="clh_callFailed_satelliteEnabled_txt" msgid="1675517238240377396">"حالت ماهواره روشن است"</string>
     <string name="clh_callFailed_unassigned_number_txt" msgid="141967660286695682">"شماره تلفنی که سعی دارید با آن تماس بگیرید مشکل دارد. کد خطا: ۱."</string>
     <string name="clh_callFailed_no_route_to_destination_txt" msgid="4805015149822352308">"تماس انجام نشد. کد خطا: ۳."</string>
     <string name="clh_callFailed_channel_unacceptable_txt" msgid="4062754579408613021">"تماس انجام نشد. کد خطا: ۶."</string>
@@ -837,6 +840,7 @@
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"لغو"</string>
     <string name="removable_esim_string" msgid="7931369811671787649">"تنظیم سیم‌کارت داخلی جداشدنی به‌عنوان پیش‌فرض"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"توان رادیوی تلفن همراه"</string>
+    <string name="simulate_out_of_service_string" msgid="7787925611727597193">"شبیه‌سازی از کار افتادن (فقط ساخت اشکال‌زدایی)"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"مشاهده دفترچه نشانی سیم‌کارت"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"مشاهده شماره‌های شماره‌گیری ثابت"</string>
     <string name="radioInfo_menu_viewSDN" msgid="2613431584522392842">"مشاهده شماره‌های شماره‌گیری سرویس"</string>
@@ -861,6 +865,7 @@
     <string name="radioInfo_data_connected" msgid="7637335645634239508">"متصل"</string>
     <string name="radioInfo_data_suspended" msgid="8695262782642002785">"تعلیق‌شده"</string>
     <string name="radioInfo_unknown" msgid="5401423738500672850">"نامشخص"</string>
+    <string name="radioInfo_imei_primary" msgid="5948747378637224400">"اصلی"</string>
     <string name="radioInfo_display_packets" msgid="6794302192441084157">"pkts"</string>
     <string name="radioInfo_display_bytes" msgid="7701006329222413797">"بایت"</string>
     <string name="radioInfo_display_dbm" msgid="7491944975710865703">"dBm"</string>
@@ -887,10 +892,12 @@
     <string name="radio_info_ppp_sent_label" msgid="6542208429356199695">"داده ارسال‌شده:"</string>
     <string name="radio_info_message_waiting_label" msgid="1886549432566952078">"پیام در انتظار:"</string>
     <string name="radio_info_phone_number_label" msgid="2533852539562512203">"شماره تلفن:"</string>
-    <string name="radio_info_band_mode_label" msgid="23480556225515290">"انتخاب باند رادیو"</string>
     <string name="radio_info_voice_network_type_label" msgid="2395347336419593265">"نوع شبکه صوتی:"</string>
     <string name="radio_info_data_network_type_label" msgid="8886597029237501929">"نوع شبکه داده:"</string>
     <string name="radio_info_override_network_type_label" msgid="4176280017221092005">"ملغی کردن نوع شبکه:"</string>
+    <string name="radio_info_voice_raw_registration_state_label" msgid="2822988327145825128">"وضعیت ثبت خام صدا:"</string>
+    <string name="radio_info_data_raw_registration_state_label" msgid="2895895513822604539">"وضعیت ثبت خام داده:"</string>
+    <string name="radio_info_wlan_data_raw_registration_state_label" msgid="6396894835757296612">"‏وضعیت ثبت خام داده WLAN:"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"انتخاب نمایه تلفن"</string>
     <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"تنظیم نوع شبکه ترجیحی:"</string>
     <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"‏پینگ کردن نام میزبان (www.google.com)‏ IPv4:"</string>
@@ -919,4 +926,9 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"سیگنال بلوتوث شما ضعیف است. از بلندگوی تلفن استفاده کنید."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"اعلان کیفیت تماس"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"‏حساب‌های SIP منسوخ‌شده"</string>
+    <string name="send_from_work_profile_title" msgid="7044759579507604732">"نمی‌توانید ازطریق برنامه شخصی پیام ارسال کنید"</string>
+    <string name="send_from_work_profile_description" msgid="2174402508727161974">"سازمانتان فقط به شما اجازه می‌دهد ازطریق برنامه‌های کاری پیام ارسال کنید"</string>
+    <string name="send_from_work_profile_cancel" msgid="177746511030381711">"لغو کردن"</string>
+    <string name="send_from_work_profile_action_str" msgid="6892775562934243337">"رفتن به نمایه کاری"</string>
+    <string name="install_messages_on_work_profile_action_str" msgid="3773440996395152903">"نصب برنامه پیام‌رسانی کاری"</string>
 </resources>
