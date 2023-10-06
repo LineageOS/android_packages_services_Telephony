@@ -32,6 +32,8 @@ import com.android.internal.telephony.PhoneConstants;
 import com.android.phone.PhoneGlobals;
 import com.android.telephony.Rlog;
 
+import java.util.Locale;
+
 /**
  * Represents a participant in a conference call.
  */
@@ -207,7 +209,7 @@ public class ConferenceParticipantConnection extends Connection {
         // The SubscriptionInfo reports ISO country codes in lower case.  Convert to upper case,
         // since ultimately we use this ISO when formatting the CEP phone number, and the phone
         // number formatting library expects uppercase ISO country codes.
-        return subInfo.getCountryIso().toUpperCase();
+        return subInfo.getCountryIso().toUpperCase(Locale.ROOT);
     }
 
     /**
