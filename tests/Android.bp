@@ -46,7 +46,7 @@ android_test {
         "mockito-target-minus-junit4",
         "telephony-common-testing",
         "testng",
-        "truth-prebuilt",
+        "truth",
         "testables",
         "platform-compat-test-rules",
         "flag-junit",
