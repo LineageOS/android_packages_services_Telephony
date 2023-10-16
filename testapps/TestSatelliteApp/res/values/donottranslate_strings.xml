@@ -57,5 +57,10 @@
     <string name="sendMessage">sendMessage</string>
     <string name="receiveMessage">receiveMessage</string>
 
+    <string name="TestSatelliteWrapper">Test Satellite Wrapper</string>
+    <string name="requestNtnSignalStrength">requestNtnSignalStrength</string>
+    <string name="registerForNtnSignalStrengthChanged">registerForNtnSignalStrengthChanged</string>
+    <string name="unregisterForNtnSignalStrengthChanged">unregisterForNtnSignalStrengthChanged</string>
+
     <string name="Back">Back</string>
 </resources>
