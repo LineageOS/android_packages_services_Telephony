@@ -503,8 +503,9 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
                 b.getIntArray(KEY_EMERGENCY_OVER_IMS_SUPPORTED_3GPP_NETWORK_TYPES_INT_ARRAY);
         mImsRoamRatsConfig = b.getIntArray(
                 KEY_EMERGENCY_OVER_IMS_ROAMING_SUPPORTED_3GPP_NETWORK_TYPES_INT_ARRAY);
-        if (!SubscriptionManager.isValidSubscriptionId(getSubId())) {
-            // Default configuration includes only EUTRAN . In case of no SIM, add NGRAN.
+        if (!isSimReady()) {
+            // Default configuration includes only EUTRAN.
+            // In case of no SIM or SIM locked state, add NGRAN.
             mImsRatsConfig = new int[] { EUTRAN, NGRAN };
             mImsRoamRatsConfig = new int[] { EUTRAN, NGRAN };
         }
