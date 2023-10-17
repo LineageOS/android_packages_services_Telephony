@@ -1171,7 +1171,8 @@ public class TelephonyConnectionService extends ConnectionService {
             }
 
             if (!isEmergencyNumber) {
-                if (mSatelliteController.isSatelliteEnabled()) {
+                if (mSatelliteController.isSatelliteEnabled()
+                        || isCallDisallowedDueToSatellite(phone)) {
                     Log.d(this, "onCreateOutgoingConnection, cannot make call in satellite mode.");
                     return Connection.createFailedConnection(
                             mDisconnectCauseFactory.toTelecomDisconnectCause(
@@ -4066,5 +4067,35 @@ public class TelephonyConnectionService extends ConnectionService {
         }
         connection.addTelephonyConnectionListener(mEmergencyConnectionSatelliteListener);
         mSatelliteSOSMessageRecommender.onEmergencyCallStarted(connection, phone);
+    }
+
+    /**
+     * Check whether making a call is disallowed while using satellite
+     * @param phone phone object whose supported services needs to be checked
+     * @return {@code true} if network does not support calls while using satellite
+     * else {@code false}.
+     */
+    private boolean isCallDisallowedDueToSatellite(Phone phone) {
+        if (phone == null) {
+            return false;
+        }
+
+        ServiceState serviceState = phone.getServiceState();
+        if (!serviceState.isUsingNonTerrestrialNetwork()) {
+            // Device is not connected to satellite
+            return false;
+        }
+
+        for (NetworkRegistrationInfo nri : serviceState.getNetworkRegistrationInfoList()) {
+            if (nri.isNonTerrestrialNetwork()
+                    && nri.getAvailableServices().contains(
+                    NetworkRegistrationInfo.SERVICE_TYPE_VOICE)) {
+                // Call is supported while using satellite
+                return false;
+            }
+        }
+
+        // Call is disallowed while using satellite
+        return true;
     }
 }

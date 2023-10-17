@@ -46,6 +46,7 @@ public class PremiumNetworkEntitlementApi {
     private static final String PROVISION_STATUS_KEY = "ProvStatus";
     private static final String SERVICE_FLOW_URL_KEY = "ServiceFlow_URL";
     private static final String SERVICE_FLOW_USERDATA_KEY = "ServiceFlow_UserData";
+    private static final String SERVICE_FLOW_CONTENTS_TYPE_KEY = "ServiceFlow_ContentsType";
     private static final String DEFAULT_EAP_AKA_RESPONSE = "Default EAP AKA response";
     /**
      * UUID to report an anomaly if an unexpected error is received during entitlement check.
@@ -120,13 +121,11 @@ public class PremiumNetworkEntitlementApi {
         }
         try {
             JSONObject jsonAuthResponse = new JSONObject(response);
-            String entitlementStatus = null;
-            String provisionStatus = null;
             if (jsonAuthResponse.has(ServiceEntitlement.APP_DATA_PLAN_BOOST)) {
                 JSONObject jsonToken = jsonAuthResponse.getJSONObject(
                         ServiceEntitlement.APP_DATA_PLAN_BOOST);
                 if (jsonToken.has(ENTITLEMENT_STATUS_KEY)) {
-                    entitlementStatus = jsonToken.getString(ENTITLEMENT_STATUS_KEY);
+                    String entitlementStatus = jsonToken.getString(ENTITLEMENT_STATUS_KEY);
                     if (entitlementStatus == null) {
                         return null;
                     }
@@ -134,7 +133,7 @@ public class PremiumNetworkEntitlementApi {
                             Integer.parseInt(entitlementStatus);
                 }
                 if (jsonToken.has(PROVISION_STATUS_KEY)) {
-                    provisionStatus = jsonToken.getString(PROVISION_STATUS_KEY);
+                    String provisionStatus = jsonToken.getString(PROVISION_STATUS_KEY);
                     if (provisionStatus != null) {
                         premiumNetworkEntitlementResponse.mProvisionStatus =
                                 Integer.parseInt(provisionStatus);
@@ -147,6 +146,10 @@ public class PremiumNetworkEntitlementApi {
                 if (jsonToken.has(SERVICE_FLOW_USERDATA_KEY)) {
                     premiumNetworkEntitlementResponse.mServiceFlowUserData =
                             jsonToken.getString(SERVICE_FLOW_USERDATA_KEY);
+                }
+                if (jsonToken.has(SERVICE_FLOW_CONTENTS_TYPE_KEY)) {
+                    premiumNetworkEntitlementResponse.mServiceFlowContentsType =
+                            jsonToken.getString(SERVICE_FLOW_CONTENTS_TYPE_KEY);
                 }
             } else {
                 Log.e(TAG, "queryEntitlementStatus failed with no app");
