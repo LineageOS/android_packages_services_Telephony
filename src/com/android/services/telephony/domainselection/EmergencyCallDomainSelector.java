@@ -560,17 +560,20 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         // State updated right after creation.
         if (!mDomainSelectionRequested) return;
 
-        // Emergency network scan requested has not been completed.
-        if (mIsScanRequested) return;
-
-        // Domain selection completed, {@link #reselectDomain()} will restart domain selection.
-        if (mDomainSelected) return;
-
         if (!mBarringInfoReceived || !mImsRegStateReceived || !mMmTelCapabilitiesReceived) {
             logi("selectDomain not received"
                     + " BarringInfo, IMS registration state, or MMTEL capabilities");
             return;
         }
+
+        // The statements below should be executed only once to select domain from initial state.
+        // Next domain selection shall be triggered by reselectDomain().
+        // However, selectDomain() can be called by change of IMS service state and Barring status
+        // at any time. mIsScanRequested and mDomainSelected are not enough since there are cases
+        // when neither mIsScanRequested nor mDomainSelected is set though selectDomain() has been
+        // executed already.
+        // Reset mDomainSelectionRequested to avoid redundant execution of selectDomain().
+        mDomainSelectionRequested = false;
 
         if (!allowEmergencyCalls(mSelectionAttributes.getEmergencyRegResult())) {
             // Detected the country and found that emergency calls are not allowed with this slot.
