@@ -89,6 +89,13 @@ public class SatelliteTestApp extends Activity {
                 startActivity(intent);
             }
         });
+        findViewById(R.id.TestSatelliteWrapper).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SatelliteTestApp.this, TestSatelliteWrapper.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private final ILocalSatelliteListener mSatelliteListener =

@@ -11,6 +11,9 @@ android_app {
         "src/**/*.java",
         "src/**/I*.aidl",
     ],
+    static_libs: [
+        "SatelliteClient",
+    ],
     owner: "google",
     privileged: true,
     certificate: "platform",
