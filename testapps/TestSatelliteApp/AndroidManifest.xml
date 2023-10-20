@@ -45,5 +45,6 @@
         <activity android:name=".Provisioning" />
         <activity android:name=".MultipleSendReceive" />
         <activity android:name=".SendReceive" />
+        <activity android:name=".TestSatelliteWrapper" />
     </application>
 </manifest>
