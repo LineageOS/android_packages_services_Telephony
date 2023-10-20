@@ -1372,6 +1372,13 @@ countries {
     types: AMBULANCE
     types: FIRE
   }
+  eccs {
+    phone_number: "100"
+    types: POLICE
+    types: AMBULANCE
+    types: FIRE
+    routing: NORMAL
+  }
   ecc_fallback: "112"
 }
 countries {
