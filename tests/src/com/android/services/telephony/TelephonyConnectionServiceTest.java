@@ -32,6 +32,7 @@ import static com.android.services.telephony.TelephonyConnectionService.TIMEOUT_
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertNotNull;
+import static junit.framework.Assert.assertNull;
 import static junit.framework.Assert.assertTrue;
 import static junit.framework.Assert.fail;
 
@@ -63,6 +64,7 @@ import android.telecom.Conference;
 import android.telecom.Conferenceable;
 import android.telecom.ConnectionRequest;
 import android.telecom.DisconnectCause;
+import android.telecom.PhoneAccount;
 import android.telecom.PhoneAccountHandle;
 import android.telecom.TelecomManager;
 import android.telephony.AccessNetworkConstants;
@@ -76,7 +78,9 @@ import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.telephony.emergency.EmergencyNumber;
 import android.telephony.ims.ImsReasonInfo;
+import android.telephony.ims.stub.ImsRegistrationImplBase;
 import android.test.suitebuilder.annotation.SmallTest;
+import android.util.ArrayMap;
 
 import androidx.test.runner.AndroidJUnit4;
 
@@ -120,8 +124,10 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
+import java.util.function.Consumer;
 
 /**
  * Unit tests for TelephonyConnectionService.
@@ -130,6 +136,33 @@ import java.util.concurrent.Executor;
 @RunWith(AndroidJUnit4.class)
 public class TelephonyConnectionServiceTest extends TelephonyTestBase {
     @Rule public final SetFlagsRule mSetFlagsRule = new SetFlagsRule();
+    private static final String NORMAL_ROUTED_EMERGENCY_NUMBER = "110";
+    private static final String EMERGENCY_ROUTED_EMERGENCY_NUMBER = "911";
+    private static final EmergencyNumber MOCK_NORMAL_NUMBER = new EmergencyNumber(
+            NORMAL_ROUTED_EMERGENCY_NUMBER,
+            "US" /* country */,
+            null /* mcc */,
+            EmergencyNumber.EMERGENCY_SERVICE_CATEGORY_UNSPECIFIED,
+            Collections.emptyList() /* categories */,
+            EmergencyNumber.EMERGENCY_NUMBER_SOURCE_NETWORK_SIGNALING,
+            EmergencyNumber.EMERGENCY_CALL_ROUTING_NORMAL);
+    private static final EmergencyNumber MOCK_NORMAL_NUMBER_WITH_UNKNOWN_ROUTING =
+            new EmergencyNumber(
+                    NORMAL_ROUTED_EMERGENCY_NUMBER,
+                    "US" /* country */,
+                    "455" /* mcc */,
+                    EmergencyNumber.EMERGENCY_SERVICE_CATEGORY_UNSPECIFIED,
+                    Collections.emptyList() /* categories */,
+                    EmergencyNumber.EMERGENCY_NUMBER_SOURCE_NETWORK_SIGNALING,
+                    EmergencyNumber.EMERGENCY_CALL_ROUTING_UNKNOWN);
+    private static final EmergencyNumber MOCK_EMERGENCY_NUMBER = new EmergencyNumber(
+            EMERGENCY_ROUTED_EMERGENCY_NUMBER,
+            "US" /* country */,
+            null /* mcc */,
+            EmergencyNumber.EMERGENCY_SERVICE_CATEGORY_UNSPECIFIED,
+            Collections.emptyList() /* categories */,
+            EmergencyNumber.EMERGENCY_NUMBER_SOURCE_NETWORK_SIGNALING,
+            EmergencyNumber.EMERGENCY_CALL_ROUTING_EMERGENCY);
 
     /**
      * Unlike {@link TestTelephonyConnection}, a bare minimal {@link TelephonyConnection} impl
@@ -180,8 +213,8 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
 
     private static final ComponentName TEST_COMPONENT_NAME = new ComponentName(
             "com.android.phone.tests", TelephonyConnectionServiceTest.class.getName());
-    private static final String TEST_ACCOUNT_ID1 = "id1";
-    private static final String TEST_ACCOUNT_ID2 = "id2";
+    private static final String TEST_ACCOUNT_ID1 = "0"; // subid 0
+    private static final String TEST_ACCOUNT_ID2 = "1"; // subid 1
     private static final PhoneAccountHandle PHONE_ACCOUNT_HANDLE_1 = new PhoneAccountHandle(
             TEST_COMPONENT_NAME, TEST_ACCOUNT_ID1);
     private static final PhoneAccountHandle PHONE_ACCOUNT_HANDLE_2 = new PhoneAccountHandle(
@@ -1305,6 +1338,82 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
     }
 
     /**
+     * Test that the TelephonyConnectionService successfully dials an outgoing normal routed
+     * emergency call on an in-service sim.
+     */
+    @Test
+    @SmallTest
+    public void testCreateOutgoingConnectionForNormalRoutedEmergencyCall()
+            throws CallStateException {
+        // A whole load of annoying mocks to set up to test this scenario.
+        // We'll purposely try to start the call on the limited service phone.
+        ConnectionRequest connectionRequest = new ConnectionRequest.Builder()
+                .setAccountHandle(PHONE_ACCOUNT_HANDLE_1)
+                .setAddress(Uri.fromParts(PhoneAccount.SCHEME_TEL, NORMAL_ROUTED_EMERGENCY_NUMBER,
+                        null))
+                .build();
+
+        // First phone is in limited service.
+        Phone testPhone0 = makeTestPhone(0 /*phoneId*/, ServiceState.STATE_EMERGENCY_ONLY,
+                true /*isEmergencyOnly*/);
+        doReturn(ImsRegistrationImplBase.REGISTRATION_TECH_LTE).when(testPhone0)
+                .getImsRegistrationTech();
+        doReturn(0).when(testPhone0).getSubId();
+        setupMockEmergencyNumbers(testPhone0, List.of(MOCK_NORMAL_NUMBER,
+                MOCK_NORMAL_NUMBER_WITH_UNKNOWN_ROUTING, MOCK_EMERGENCY_NUMBER));
+
+        // Second phone is in full service; this is ultimately the one we want to pick.
+        Phone testPhone1 = makeTestPhone(1 /*phoneId*/, ServiceState.STATE_IN_SERVICE,
+                false /*isEmergencyOnly*/);
+        doReturn(ImsRegistrationImplBase.REGISTRATION_TECH_LTE).when(testPhone1)
+                .getImsRegistrationTech();
+        doReturn(1).when(testPhone1).getSubId();
+        setupMockEmergencyNumbers(testPhone1, List.of(MOCK_NORMAL_NUMBER,
+                MOCK_NORMAL_NUMBER_WITH_UNKNOWN_ROUTING, MOCK_EMERGENCY_NUMBER));
+
+        // Make sure both phones are going to prefer in service for normal routed ecalls.
+        doReturn(true).when(testPhone0).shouldPreferInServiceSimForNormalRoutedEmergencyCall();
+        doReturn(true).when(testPhone1).shouldPreferInServiceSimForNormalRoutedEmergencyCall();
+
+        // A whole load of other stuff that needs to be setup for this to work.
+        doReturn(GSM_PHONE).when(testPhone0).getPhoneType();
+        doReturn(GSM_PHONE).when(testPhone1).getPhoneType();
+        List<Phone> phones = new ArrayList<>(2);
+        doReturn(true).when(testPhone0).isRadioOn();
+        doReturn(true).when(testPhone1).isRadioOn();
+        phones.add(testPhone0);
+        phones.add(testPhone1);
+        setPhones(phones);
+        doReturn(0).when(mPhoneUtilsProxy).getSubIdForPhoneAccountHandle(
+                eq(PHONE_ACCOUNT_HANDLE_1));
+        doReturn(1).when(mPhoneUtilsProxy).getSubIdForPhoneAccountHandle(
+                eq(PHONE_ACCOUNT_HANDLE_2));
+        setupHandleToPhoneMap(PHONE_ACCOUNT_HANDLE_1, testPhone0);
+        setupHandleToPhoneMap(PHONE_ACCOUNT_HANDLE_2, testPhone1);
+        setupDeviceConfig(testPhone0, testPhone1, 0);
+        doReturn(true).when(mTelephonyManagerProxy).isCurrentEmergencyNumber(
+                eq(NORMAL_ROUTED_EMERGENCY_NUMBER));
+        HashMap<Integer, List<EmergencyNumber>> emergencyNumbers = new HashMap<>(1);
+        List<EmergencyNumber> numbers = new ArrayList<>();
+        numbers.add(MOCK_EMERGENCY_NUMBER);
+        numbers.add(MOCK_NORMAL_NUMBER);
+        numbers.add(MOCK_NORMAL_NUMBER_WITH_UNKNOWN_ROUTING);
+        emergencyNumbers.put(0 /*subId*/, numbers);
+        doReturn(emergencyNumbers).when(mTelephonyManagerProxy).getCurrentEmergencyNumberList();
+        doReturn(2).when(mTelephonyManagerProxy).getPhoneCount();
+
+        // All of that for... this.
+        mConnection = mTestConnectionService.onCreateOutgoingConnection(
+                PHONE_ACCOUNT_HANDLE_1, connectionRequest);
+        assertNotNull("test connection was not set up correctly.", mConnection);
+
+        // Lets make sure we DID try to place the call on phone 1, which is the in service phone.
+        verify(testPhone1).dial(anyString(), any(DialArgs.class), any(Consumer.class));
+        // And make sure we DID NOT try to place the call on phone 0, which is in limited service.
+        verify(testPhone0, never()).dial(anyString(), any(DialArgs.class), any(Consumer.class));
+    }
+
+    /**
      * Test that the TelephonyConnectionService successfully turns satellite off before placing the
      * emergency call.
      */
@@ -2110,6 +2219,8 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         setupForDialForDomainSelection(mPhone0, selectedDomain, false);
         doReturn(true).when(mTelephonyManagerProxy).isCurrentEmergencyNumber(anyString());
         doReturn(emergencyNumber).when(mEmergencyNumberTracker).getEmergencyNumber(anyString());
+        doReturn(Arrays.asList(emergencyNumber)).when(mEmergencyNumberTracker).getEmergencyNumbers(
+                anyString());
 
         mTestConnectionService.onCreateOutgoingConnection(PHONE_ACCOUNT_HANDLE_1,
                 createConnectionRequest(PHONE_ACCOUNT_HANDLE_1,
@@ -2152,6 +2263,8 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
 
         doReturn(true).when(mTelephonyManagerProxy).isCurrentEmergencyNumber(anyString());
         doReturn(emergencyNumber).when(mEmergencyNumberTracker).getEmergencyNumber(anyString());
+        doReturn(Arrays.asList(emergencyNumber)).when(mEmergencyNumberTracker).getEmergencyNumbers(
+                anyString());
 
         when(mDeviceState.isAirplaneModeOn(any())).thenReturn(true);
 
@@ -2199,6 +2312,8 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
 
         doReturn(true).when(mTelephonyManagerProxy).isCurrentEmergencyNumber(anyString());
         doReturn(emergencyNumber).when(mEmergencyNumberTracker).getEmergencyNumber(anyString());
+        doReturn(Arrays.asList(emergencyNumber)).when(mEmergencyNumberTracker).getEmergencyNumbers(
+                anyString());
 
         when(mDeviceState.isAirplaneModeOn(any())).thenReturn(true);
 
@@ -2240,6 +2355,8 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
 
         doReturn(true).when(mTelephonyManagerProxy).isCurrentEmergencyNumber(anyString());
         doReturn(emergencyNumber).when(mEmergencyNumberTracker).getEmergencyNumber(anyString());
+        doReturn(Arrays.asList(emergencyNumber)).when(mEmergencyNumberTracker).getEmergencyNumbers(
+                anyString());
 
         when(mDeviceState.isAirplaneModeOn(any())).thenReturn(true);
 
@@ -2293,6 +2410,8 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
 
         doReturn(true).when(mTelephonyManagerProxy).isCurrentEmergencyNumber(anyString());
         doReturn(emergencyNumber).when(mEmergencyNumberTracker).getEmergencyNumber(anyString());
+        doReturn(Arrays.asList(emergencyNumber)).when(mEmergencyNumberTracker).getEmergencyNumbers(
+                anyString());
 
         when(mDeviceState.isAirplaneModeOn(any())).thenReturn(true);
 
@@ -2347,6 +2466,8 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
 
         doReturn(true).when(mTelephonyManagerProxy).isCurrentEmergencyNumber(anyString());
         doReturn(emergencyNumber).when(mEmergencyNumberTracker).getEmergencyNumber(anyString());
+        doReturn(Arrays.asList(emergencyNumber)).when(mEmergencyNumberTracker).getEmergencyNumbers(
+                anyString());
 
         when(mDeviceState.isAirplaneModeOn(any())).thenReturn(true);
 
@@ -3025,6 +3146,153 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
                 disconnectCause.getTelephonyDisconnectCause());
     }
 
+    @Test
+    public void testIsAvailableForEmergencyCallsNotForCrossSim() {
+        Phone mockPhone = Mockito.mock(Phone.class);
+        when(mockPhone.getImsRegistrationTech()).thenReturn(
+                ImsRegistrationImplBase.REGISTRATION_TECH_CROSS_SIM);
+        assertFalse(mTestConnectionService.isAvailableForEmergencyCalls(mockPhone,
+                EmergencyNumber.EMERGENCY_CALL_ROUTING_EMERGENCY));
+        assertFalse(mTestConnectionService.isAvailableForEmergencyCalls(mockPhone,
+                EmergencyNumber.EMERGENCY_CALL_ROUTING_NORMAL));
+        assertFalse(mTestConnectionService.isAvailableForEmergencyCalls(mockPhone,
+                EmergencyNumber.EMERGENCY_CALL_ROUTING_UNKNOWN));
+    }
+
+    @Test
+    public void testIsAvailableForEmergencyCallsForEmergencyRoutingInEmergencyOnly() {
+        ServiceState mockService = Mockito.mock(ServiceState.class);
+        when(mockService.isEmergencyOnly()).thenReturn(true);
+        when(mockService.getState()).thenReturn(ServiceState.STATE_EMERGENCY_ONLY);
+
+        Phone mockPhone = Mockito.mock(Phone.class);
+        when(mockPhone.getImsRegistrationTech()).thenReturn(
+                ImsRegistrationImplBase.REGISTRATION_TECH_LTE);
+        when(mockPhone.getServiceState()).thenReturn(mockService);
+
+        assertTrue(mTestConnectionService.isAvailableForEmergencyCalls(mockPhone,
+                EmergencyNumber.EMERGENCY_CALL_ROUTING_EMERGENCY));
+        assertFalse(mTestConnectionService.isAvailableForEmergencyCalls(mockPhone,
+                EmergencyNumber.EMERGENCY_CALL_ROUTING_NORMAL));
+        assertTrue(mTestConnectionService.isAvailableForEmergencyCalls(mockPhone,
+                EmergencyNumber.EMERGENCY_CALL_ROUTING_UNKNOWN));
+    }
+
+    @Test
+    public void testIsAvailableForEmergencyCallsForEmergencyRoutingInService() {
+        ServiceState mockService = Mockito.mock(ServiceState.class);
+        when(mockService.isEmergencyOnly()).thenReturn(false);
+        when(mockService.getState()).thenReturn(ServiceState.STATE_IN_SERVICE);
+
+        Phone mockPhone = Mockito.mock(Phone.class);
+        when(mockPhone.getImsRegistrationTech()).thenReturn(
+                ImsRegistrationImplBase.REGISTRATION_TECH_LTE);
+        when(mockPhone.getServiceState()).thenReturn(mockService);
+
+        assertTrue(mTestConnectionService.isAvailableForEmergencyCalls(mockPhone,
+                EmergencyNumber.EMERGENCY_CALL_ROUTING_EMERGENCY));
+        assertTrue(mTestConnectionService.isAvailableForEmergencyCalls(mockPhone,
+                EmergencyNumber.EMERGENCY_CALL_ROUTING_NORMAL));
+        assertTrue(mTestConnectionService.isAvailableForEmergencyCalls(mockPhone,
+                EmergencyNumber.EMERGENCY_CALL_ROUTING_UNKNOWN));
+    }
+
+    /**
+     * Verify that is the carrier config indicates that the carrier does not prefer to use an in
+     * service sim for a normal routed emergency call that we'll get no result.
+     */
+    @Test
+    public void testGetPhoneForNormalRoutedEmergencyCallWhenCarrierDoesntSupport() {
+        ServiceState mockService = Mockito.mock(ServiceState.class);
+        when(mockService.isEmergencyOnly()).thenReturn(false);
+        when(mockService.getState()).thenReturn(ServiceState.STATE_IN_SERVICE);
+
+        Phone mockPhone = Mockito.mock(Phone.class);
+        when(mockPhone.shouldPreferInServiceSimForNormalRoutedEmergencyCall()).thenReturn(
+                false);
+        setupMockEmergencyNumbers(mockPhone, List.of(MOCK_NORMAL_NUMBER));
+        when(mPhoneFactoryProxy.getPhones()).thenReturn(new Phone[] {mockPhone});
+
+        assertNull(mTestConnectionService.getPhoneForNormalRoutedEmergencyCall(
+                NORMAL_ROUTED_EMERGENCY_NUMBER));
+    }
+
+    /**
+     * Verify that is the carrier config indicates that the carrier prefers to use an in service sim
+     * for a normal routed emergency call that we'll get the in service sim that supports it.
+     */
+    @Test
+    public void testGetPhoneForNormalRoutedEmergencyCallWhenCarrierDoesSupport() {
+        ServiceState mockService = Mockito.mock(ServiceState.class);
+        when(mockService.isEmergencyOnly()).thenReturn(false);
+        when(mockService.getState()).thenReturn(ServiceState.STATE_IN_SERVICE);
+
+        Phone mockPhone = Mockito.mock(Phone.class);
+        when(mockPhone.shouldPreferInServiceSimForNormalRoutedEmergencyCall()).thenReturn(
+                true);
+        when(mockPhone.getServiceState()).thenReturn(mockService);
+        setupMockEmergencyNumbers(mockPhone, List.of(MOCK_NORMAL_NUMBER));
+        when(mPhoneFactoryProxy.getPhones()).thenReturn(new Phone[] {mockPhone});
+
+        assertEquals(mockPhone,
+                mTestConnectionService.getPhoneForNormalRoutedEmergencyCall(
+                        NORMAL_ROUTED_EMERGENCY_NUMBER));
+    }
+
+    /**
+     * Verify where there are two sims, one in limited service, and another in full service, if the
+     * carrier prefers to use an in-service sim, we choose the in-service sim.
+     */
+    @Test
+    public void testGetPhoneForNormalRoutedEmergencyCallWhenCarrierDoesSupportMultiSim() {
+        ServiceState mockInService = Mockito.mock(ServiceState.class);
+        when(mockInService.isEmergencyOnly()).thenReturn(false);
+        when(mockInService.getState()).thenReturn(ServiceState.STATE_IN_SERVICE);
+        ServiceState mockLimitedService = Mockito.mock(ServiceState.class);
+        when(mockLimitedService.isEmergencyOnly()).thenReturn(true);
+        when(mockLimitedService.getState()).thenReturn(ServiceState.STATE_EMERGENCY_ONLY);
+
+        Phone mockInservicePhone = Mockito.mock(Phone.class);
+        when(mockInservicePhone.shouldPreferInServiceSimForNormalRoutedEmergencyCall()).thenReturn(
+                true);
+        when(mockInservicePhone.getServiceState()).thenReturn(mockInService);
+        setupMockEmergencyNumbers(mockInservicePhone, List.of(MOCK_NORMAL_NUMBER));
+
+        Phone mockLimitedServicePhone = Mockito.mock(Phone.class);
+        when(mockLimitedServicePhone.shouldPreferInServiceSimForNormalRoutedEmergencyCall())
+                .thenReturn(true);
+        when(mockLimitedServicePhone.getServiceState()).thenReturn(mockLimitedService);
+        setupMockEmergencyNumbers(mockLimitedServicePhone, List.of(MOCK_NORMAL_NUMBER));
+
+        when(mPhoneFactoryProxy.getPhones()).thenReturn(new Phone[] {mockLimitedServicePhone,
+                mockInservicePhone});
+
+        assertEquals(mockInservicePhone,
+                mTestConnectionService.getPhoneForNormalRoutedEmergencyCall(
+                        NORMAL_ROUTED_EMERGENCY_NUMBER));
+    }
+
+    private void setupMockEmergencyNumbers(Phone mockPhone, List<EmergencyNumber> numbers) {
+        EmergencyNumberTracker emergencyNumberTracker = Mockito.mock(EmergencyNumberTracker.class);
+        // Yuck.  There should really be a fake emergency number class which makes it easy to inject
+        // the numbers for testing.
+        ArrayMap<String, List<EmergencyNumber>> numbersMap = new ArrayMap<>();
+        for (EmergencyNumber number : numbers) {
+            when(emergencyNumberTracker.getEmergencyNumber(eq(number.getNumber())))
+                    .thenReturn(number);
+            if (!numbersMap.containsKey(number.getNumber())) {
+                numbersMap.put(number.getNumber(), new ArrayList<>());
+            }
+            numbersMap.get(number.getNumber()).add(number);
+        }
+        // Double yuck.
+        for (Map.Entry<String, List<EmergencyNumber>> entry : numbersMap.entrySet()) {
+            when(emergencyNumberTracker.getEmergencyNumbers(eq(entry.getKey()))).thenReturn(
+                    entry.getValue());
+        }
+        when(mockPhone.getEmergencyNumberTracker()).thenReturn(emergencyNumberTracker);
+    }
+
     private void setupForDialForDomainSelection(Phone mockPhone, int domain, boolean isEmergency) {
         if (isEmergency) {
             doReturn(mEmergencyCallDomainSelectionConnection).when(mDomainSelectionResolver)
@@ -3233,10 +3501,14 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
     }
 
     private void setupHandleToPhoneMap(PhoneAccountHandle handle, Phone phone) {
-        // use subId 0
-        when(mPhoneUtilsProxy.getSubIdForPhoneAccountHandle(eq(handle))).thenReturn(0);
-        when(mSubscriptionManagerProxy.getPhoneId(eq(0))).thenReturn(0);
-        when(mPhoneFactoryProxy.getPhone(eq(0))).thenReturn(phone);
+        // The specified handle has an id which is subID
+        doReturn(Integer.parseInt(handle.getId())).when(mPhoneUtilsProxy)
+                .getSubIdForPhoneAccountHandle(eq(handle));
+        // The specified sub id in the passed handle will correspond to the phone's phone id.
+        doReturn(phone.getPhoneId()).when(mSubscriptionManagerProxy)
+                .getPhoneId(eq(Integer.parseInt(handle.getId())));
+        int phoneId = phone.getPhoneId();
+        doReturn(phone).when(mPhoneFactoryProxy).getPhone(eq(phoneId));
     }
 
     private AsyncResult getSuppServiceNotification(int notificationType, int code) {
