@@ -18,6 +18,7 @@ package com.android.services.telephony;
 
 import static android.telephony.DomainSelectionService.SELECTOR_TYPE_CALLING;
 import static android.telephony.TelephonyManager.HAL_SERVICE_VOICE;
+import static com.android.internal.telephony.PhoneConstants.PHONE_TYPE_GSM;
 
 import static com.android.internal.telephony.flags.Flags.carrierEnabledSatelliteFlag;
 
@@ -1088,7 +1089,7 @@ public class TelephonyConnectionService extends ConnectionService {
 
         if (needToTurnOnRadio || needToTurnOffSatellite) {
             final Uri resultHandle = handle;
-            final int originalPhoneType = phone.getPhoneType();
+            final int originalPhoneType = (phone == null) ? PHONE_TYPE_GSM : phone.getPhoneType();
             final Connection resultConnection = getTelephonyConnection(request, numberToDial,
                     isEmergencyNumber, resultHandle, phone);
             if (mRadioOnHelper == null) {
