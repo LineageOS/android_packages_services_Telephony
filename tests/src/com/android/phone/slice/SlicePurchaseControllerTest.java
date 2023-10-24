@@ -62,6 +62,7 @@ import com.android.TelephonyTestBase;
 import com.android.internal.telephony.CommandsInterface;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.data.DataSettingsManager;
+import com.android.internal.telephony.flags.FeatureFlags;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -92,6 +93,7 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
     private static final long THROTTLE_TIMEOUT = 4000;
 
     @Mock Phone mPhone;
+    @Mock FeatureFlags mFeatureFlags;
     @Mock CarrierConfigManager mCarrierConfigManager;
     @Mock CommandsInterface mCommandsInterface;
     @Mock ServiceState mServiceState;
@@ -153,7 +155,7 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
 
         // create a spy to mock final PendingIntent methods
         SlicePurchaseController slicePurchaseController =
-                new SlicePurchaseController(mPhone, mHandler.getLooper());
+                new SlicePurchaseController(mPhone, mFeatureFlags, mHandler.getLooper());
         mSlicePurchaseController = spy(slicePurchaseController);
         doReturn(null).when(mSlicePurchaseController).createPendingIntent(
                 anyString(), anyInt(), anyBoolean());
@@ -644,6 +646,7 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
 
     @Test
     public void testPurchasePremiumCapabilityResultNotificationsDisabled() {
+        doReturn(true).when(mFeatureFlags).slicingAdditionalErrorCodes();
         sendValidPurchaseRequest();
 
         // broadcast NOTIFICATIONS_DISABLED response from slice purchase application

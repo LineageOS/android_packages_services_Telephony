@@ -209,6 +209,7 @@ import com.android.internal.telephony.data.DataUtils;
 import com.android.internal.telephony.domainselection.DomainSelectionResolver;
 import com.android.internal.telephony.emergency.EmergencyNumberTracker;
 import com.android.internal.telephony.euicc.EuiccConnector;
+import com.android.internal.telephony.flags.FeatureFlags;
 import com.android.internal.telephony.ims.ImsResolver;
 import com.android.internal.telephony.imsphone.ImsPhone;
 import com.android.internal.telephony.imsphone.ImsPhoneCallTracker;
@@ -402,6 +403,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private static List<String> sThermalMitigationAllowlistedPackages = new ArrayList<>();
 
     private final PhoneGlobals mApp;
+    private final FeatureFlags mFeatureFlags;
     private final CallManager mCM;
     private final ImsResolver mImsResolver;
 
@@ -2212,8 +2214,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     onCompleted = obtainMessage(EVENT_PURCHASE_PREMIUM_CAPABILITY_DONE, request);
                     PurchasePremiumCapabilityArgument arg =
                             (PurchasePremiumCapabilityArgument) request.argument;
-                    SlicePurchaseController.getInstance(request.phone).purchasePremiumCapability(
-                            arg.capability, onCompleted);
+                    SlicePurchaseController.getInstance(request.phone, mFeatureFlags)
+                            .purchasePremiumCapability(arg.capability, onCompleted);
                     break;
                 }
 
@@ -2426,10 +2428,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * Initialize the singleton PhoneInterfaceManager instance.
      * This is only done once, at startup, from PhoneApp.onCreate().
      */
-    /* package */ static PhoneInterfaceManager init(PhoneGlobals app) {
+    /* package */ static PhoneInterfaceManager init(PhoneGlobals app, FeatureFlags featureFlags) {
         synchronized (PhoneInterfaceManager.class) {
             if (sInstance == null) {
-                sInstance = new PhoneInterfaceManager(app);
+                sInstance = new PhoneInterfaceManager(app, featureFlags);
             } else {
                 Log.wtf(LOG_TAG, "init() called multiple times!  sInstance = " + sInstance);
             }
@@ -2438,8 +2440,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /** Private constructor; @see init() */
-    private PhoneInterfaceManager(PhoneGlobals app) {
+    private PhoneInterfaceManager(PhoneGlobals app, FeatureFlags featureFlags) {
         mApp = app;
+        mFeatureFlags = featureFlags;
         mCM = PhoneGlobals.getInstance().mCM;
         mImsResolver = ImsResolver.getInstance();
         mSatelliteController = SatelliteController.getInstance();
@@ -11542,7 +11545,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
         final long identity = Binder.clearCallingIdentity();
         try {
-            return SlicePurchaseController.getInstance(phone)
+            return SlicePurchaseController.getInstance(phone, mFeatureFlags)
                     .isPremiumCapabilityAvailableForPurchase(capability);
         } finally {
             Binder.restoreCallingIdentity(identity);
