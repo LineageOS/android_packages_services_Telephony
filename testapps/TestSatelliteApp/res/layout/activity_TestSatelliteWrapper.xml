@@ -53,23 +53,46 @@
             android:layout_height="wrap_content"
             android:paddingRight="4dp"
             android:text="@string/unregisterForNtnSignalStrengthChanged"/>
-         <Button
-            android:id="@+id/Back"
-            android:onClick="Back"
-            android:textColor="@android:color/holo_blue_dark"
-            android:layout_marginTop="100dp"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/isOnlyNonTerrestrialNetworkSubscription"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingRight="4dp"
-            android:text="@string/Back"/>
-         <TextView
-            android:id="@+id/text_id"
-            android:layout_width="300dp"
-            android:layout_height="200dp"
+            android:text="@string/isOnlyNonTerrestrialNetworkSubscription"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+             <Button
+                android:id="@+id/Back"
+                android:onClick="Back"
+                android:textColor="@android:color/holo_blue_dark"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingRight="4dp"
+                android:text="@string/Back"/>
+            <Button
+                android:id="@+id/ClearLog"
+                android:onClick="ClearLog"
+                android:textColor="@android:color/holo_blue_dark"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingRight="4dp"
+                android:text="@string/ClearLog"/>
+        </LinearLayout>
+        <ListView
+            android:id="@+id/logListView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:capitalize="characters"
             android:textColor="@android:color/holo_blue_light"
             android:layout_centerVertical="true"
-            android:textSize="15dp" />
+            android:textSize="8dp" />
     </LinearLayout>
 </LinearLayout>
