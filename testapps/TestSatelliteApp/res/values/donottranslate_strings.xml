@@ -61,6 +61,8 @@
     <string name="requestNtnSignalStrength">requestNtnSignalStrength</string>
     <string name="registerForNtnSignalStrengthChanged">registerForNtnSignalStrengthChanged</string>
     <string name="unregisterForNtnSignalStrengthChanged">unregisterForNtnSignalStrengthChanged</string>
+    <string name="isOnlyNonTerrestrialNetworkSubscription">isOnlyNonTerrestrialNetworkSubscription</string>
 
     <string name="Back">Back</string>
+    <string name="ClearLog">Clear Log</string>
 </resources>

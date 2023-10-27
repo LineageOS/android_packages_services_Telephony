@@ -21,32 +21,44 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.OutcomeReceiver;
+import android.telephony.SubscriptionInfo;
+import android.telephony.SubscriptionManager;
 import android.telephony.satellite.wrapper.NtnSignalStrengthCallbackWrapper;
 import android.telephony.satellite.wrapper.NtnSignalStrengthWrapper;
 import android.telephony.satellite.wrapper.SatelliteManagerWrapper;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.stream.Collectors;
+
 
 /**
  * Activity related to SatelliteControl APIs for satellite.
  */
 public class TestSatelliteWrapper extends Activity {
     private static final String TAG = "TestSatelliteWrapper";
+    ArrayList<String> mLogMessages = new ArrayList<>();
+    ArrayAdapter<String> mAdapter;
 
     private final ExecutorService mExecutor = Executors.newSingleThreadExecutor();
     private SatelliteManagerWrapper mSatelliteManagerWrapper;
     private NtnSignalStrengthCallback mNtnSignalStrengthCallback = null;
+    private SubscriptionManager mSubscriptionManager;
+    private ListView mLogListView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mSatelliteManagerWrapper = SatelliteManagerWrapper.getInstance(this);
+        mSubscriptionManager = getSystemService(SubscriptionManager.class);
 
         setContentView(R.layout.activity_TestSatelliteWrapper);
         findViewById(R.id.requestNtnSignalStrength)
@@ -55,12 +67,32 @@ public class TestSatelliteWrapper extends Activity {
                 .setOnClickListener(this::registerForNtnSignalStrengthChanged);
         findViewById(R.id.unregisterForNtnSignalStrengthChanged)
                 .setOnClickListener(this::unregisterForNtnSignalStrengthChanged);
+        findViewById(R.id.isOnlyNonTerrestrialNetworkSubscription)
+                .setOnClickListener(this::isOnlyNonTerrestrialNetworkSubscription);
         findViewById(R.id.Back).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(TestSatelliteWrapper.this, SatelliteTestApp.class));
             }
         });
+        findViewById(R.id.ClearLog).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clearListView();
+            }
+        });
+
+        mLogListView = findViewById(R.id.logListView);
+        mAdapter = new ArrayAdapter<>(this, R.layout.log_textview, mLogMessages);
+        mLogListView.setAdapter(mAdapter);
+
+        addLogMessage("TestSatelliteWrapper.onCreate()");
+    }
+
+
+    private void clearListView() {
+        mLogMessages.clear();
+        mAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -75,17 +107,15 @@ public class TestSatelliteWrapper extends Activity {
     }
 
     private void requestNtnSignalStrength(View view) {
+        addLogMessage("requestNtnSignalStrength");
         Log.d(TAG, "requestNtnSignalStrength");
-        TextView textView = findViewById(R.id.text_id);
         OutcomeReceiver<NtnSignalStrengthWrapper,
                 SatelliteManagerWrapper.SatelliteExceptionWrapper> receiver =
                 new OutcomeReceiver<>() {
                     @Override
                     public void onResult(NtnSignalStrengthWrapper level) {
-                        TextView textView = findViewById(R.id.text_id);
                         if (level != null) {
-                            textView.setText("requestNtnSignalStrength level is "
-                                    + level.getLevel());
+                            addLogMessage("requestNtnSignalStrength level is " + level.getLevel());
                         }
                     }
 
@@ -93,11 +123,10 @@ public class TestSatelliteWrapper extends Activity {
                     public void onError(
                             SatelliteManagerWrapper.SatelliteExceptionWrapper exception) {
                         if (exception != null) {
-                            TextView textView = findViewById(R.id.text_id);
                             String onError = "requestNtnSignalStrength exception: "
                                     + translateResultCodeToString(exception.getErrorCode());
                             Log.d(TAG, onError);
-                            textView.setText(onError);
+                            addLogMessage(onError);
                         }
                     }
                 };
@@ -106,8 +135,8 @@ public class TestSatelliteWrapper extends Activity {
     }
 
     private void registerForNtnSignalStrengthChanged(View view) {
+        addLogMessage("registerForNtnSignalStrengthChanged");
         Log.d(TAG, "registerForNtnSignalStrengthChanged()");
-        TextView textView = findViewById(R.id.text_id);
         if (mNtnSignalStrengthCallback == null) {
             Log.d(TAG, "create new NtnSignalStrengthCallback instance.");
             mNtnSignalStrengthCallback = new NtnSignalStrengthCallback();
@@ -117,21 +146,48 @@ public class TestSatelliteWrapper extends Activity {
         if (result != SatelliteManagerWrapper.SATELLITE_RESULT_SUCCESS) {
             String onError = translateResultCodeToString(result);
             Log.d(TAG, onError);
-            textView.setText(onError);
+            addLogMessage(onError);
             mNtnSignalStrengthCallback = null;
         }
     }
 
     private void unregisterForNtnSignalStrengthChanged(View view) {
+        addLogMessage("unregisterForNtnSignalStrengthChanged");
         Log.d(TAG, "unregisterForNtnSignalStrengthChanged()");
-        TextView textView = findViewById(R.id.text_id);
         if (mNtnSignalStrengthCallback != null) {
             mSatelliteManagerWrapper.unregisterForNtnSignalStrengthChanged(
                     mNtnSignalStrengthCallback);
             mNtnSignalStrengthCallback = null;
-            textView.setText("mNtnSignalStrengthCallback was unregistered");
+            addLogMessage("mNtnSignalStrengthCallback was unregistered");
         } else {
-            textView.setText("mNtnSignalStrengthCallback is null, ignored.");
+            addLogMessage("mNtnSignalStrengthCallback is null, ignored.");
+        }
+    }
+
+    private void isOnlyNonTerrestrialNetworkSubscription(View view) {
+        addLogMessage("isOnlyNonTerrestrialNetworkSubscription");
+        Log.d(TAG, "isOnlyNonTerrestrialNetworkSubscription()");
+        List<SubscriptionInfo> infoList = mSubscriptionManager.getAvailableSubscriptionInfoList();
+        List<Integer> subIdList = infoList.stream()
+                .map(SubscriptionInfo::getSubscriptionId)
+                .toList();
+
+        Map<Integer, Boolean> resultMap = subIdList.stream().collect(
+                Collectors.toMap(
+                        id -> id,
+                        id -> {
+                            boolean result = mSatelliteManagerWrapper
+                                    .isOnlyNonTerrestrialNetworkSubscription(id);
+                            addLogMessage("SatelliteManagerWrapper"
+                                    + ".isOnlyNonTerrestrialNetworkSubscription(" + id + ")");
+                            return result;
+                        }
+                ));
+
+        for (Map.Entry<Integer, Boolean> entry : resultMap.entrySet()) {
+            int subId = entry.getKey();
+            boolean result = entry.getValue();
+            addLogMessage("Subscription ID: " + subId + ", Result: " + result);
         }
     }
 
@@ -139,15 +195,9 @@ public class TestSatelliteWrapper extends Activity {
         @Override
         public void onNtnSignalStrengthChanged(
                 @NonNull NtnSignalStrengthWrapper ntnSignalStrength) {
-            String toastMessage = "Received NTN SignalStrength : " + ntnSignalStrength.getLevel();
-            Log.d(TAG, toastMessage);
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    Toast.makeText(getApplicationContext(), toastMessage,
-                            Toast.LENGTH_SHORT).show();
-                }
-            });
+            String message = "Received NTN SignalStrength : " + ntnSignalStrength.getLevel();
+            Log.d(TAG, message);
+            runOnUiThread(() -> addLogMessage(message));
         }
     }
 
@@ -203,5 +253,11 @@ public class TestSatelliteWrapper extends Activity {
             default:
                 return "INVALID CODE: " + result;
         }
+    }
+
+    private void addLogMessage(String message) {
+        mLogMessages.add(message);
+        mAdapter.notifyDataSetChanged();
+        mLogListView.setSelection(mAdapter.getCount() - 1);
     }
 }

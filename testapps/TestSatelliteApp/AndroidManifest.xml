@@ -19,6 +19,7 @@
     package="com.android.phone.testapps.satellitetestapp">
     <uses-permission android:name="android.permission.BIND_SATELLITE_SERVICE"/>
     <uses-permission android:name="android.permission.SATELLITE_COMMUNICATION"/>
+    <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE"/>
     <application android:label="SatelliteTestApp">
         <activity android:name=".SatelliteTestApp"
              android:label="SatelliteTestApp"
