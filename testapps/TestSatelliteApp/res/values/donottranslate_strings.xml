@@ -62,6 +62,8 @@
     <string name="registerForNtnSignalStrengthChanged">registerForNtnSignalStrengthChanged</string>
     <string name="unregisterForNtnSignalStrengthChanged">unregisterForNtnSignalStrengthChanged</string>
     <string name="isOnlyNonTerrestrialNetworkSubscription">isOnlyNonTerrestrialNetworkSubscription</string>
+    <string name="registerForSatelliteCapabilitiesChanged">registerForSatelliteCapabilitiesChanged</string>
+    <string name="unregisterForSatelliteCapabilitiesChanged">unregisterForSatelliteCapabilitiesChanged</string>
 
     <string name="Back">Back</string>
     <string name="ClearLog">Clear Log</string>
