@@ -590,6 +590,24 @@ public class TelephonyConnectionService extends ConnectionService {
                         releaseEmergencyCallDomainSelection(false);
                     }
                 }
+
+                @Override
+                public void onConnectionPropertiesChanged(Connection connection,
+                        int connectionProperties) {
+                    if ((connection == null) || (mEmergencyStateTracker == null)) {
+                        return;
+                    }
+                    TelephonyConnection c = (TelephonyConnection) connection;
+                    com.android.internal.telephony.Connection origConn = c.getOriginalConnection();
+                    if ((origConn == null) || (!origConn.getState().isAlive())) {
+                        // ignore if there is no original connection alive
+                        Log.i(this, "onConnectionPropertiesChanged without orig connection alive");
+                        return;
+                    }
+                    Log.i(this, "onConnectionPropertiesChanged prop=" + connectionProperties);
+                    mEmergencyStateTracker.onEmergencyCallPropertiesChanged(connectionProperties,
+                            c.getTelecomCallId());
+                }
             };
 
     private final TelephonyConnection.TelephonyConnectionListener
