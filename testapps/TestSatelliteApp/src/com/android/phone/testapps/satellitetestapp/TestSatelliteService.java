@@ -21,6 +21,8 @@ import android.annotation.Nullable;
 import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
+import android.telephony.IBooleanConsumer;
+import android.telephony.IIntegerConsumer;
 import android.telephony.satellite.AntennaDirection;
 import android.telephony.satellite.AntennaPosition;
 import android.telephony.satellite.SatelliteManager;
@@ -36,8 +38,6 @@ import android.telephony.satellite.stub.SatelliteResult;
 import android.telephony.satellite.stub.SatelliteService;
 import android.util.Log;
 
-import com.android.internal.telephony.IBooleanConsumer;
-import com.android.internal.telephony.IIntegerConsumer;
 import com.android.internal.util.FunctionalUtils;
 import com.android.telephony.Rlog;
 
