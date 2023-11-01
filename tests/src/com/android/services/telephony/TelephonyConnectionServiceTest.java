@@ -16,6 +16,7 @@
 
 package com.android.services.telephony;
 
+import static android.telecom.Connection.PROPERTY_WIFI;
 import static android.telephony.DisconnectCause.EMERGENCY_PERM_FAILURE;
 import static android.telephony.DisconnectCause.EMERGENCY_TEMP_FAILURE;
 import static android.telephony.DisconnectCause.ERROR_UNSPECIFIED;
@@ -3015,6 +3016,52 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
                 any(), eq(TELECOM_CALL_ID1));
         verify(mSatelliteSOSMessageRecommender, times(1))
                 .onEmergencyCallConnectionStateChanged(eq(TELECOM_CALL_ID1), anyInt());
+    }
+
+    @Test
+    public void testDomainSelectionListenOriginalConnectionPropertiesChange() throws Exception {
+        setupForCallTest();
+
+        int selectedDomain = DOMAIN_PS;
+
+        setupForDialForDomainSelection(mPhone0, selectedDomain, true);
+
+        mTestConnectionService.onCreateOutgoingConnection(PHONE_ACCOUNT_HANDLE_1,
+                createConnectionRequest(PHONE_ACCOUNT_HANDLE_1,
+                        TEST_EMERGENCY_NUMBER, TELECOM_CALL_ID1));
+
+        verify(mDomainSelectionResolver)
+                .getDomainSelectionConnection(eq(mPhone0), eq(SELECTOR_TYPE_CALLING), eq(true));
+        verify(mEmergencyStateTracker)
+                .startEmergencyCall(eq(mPhone0), eq(TELECOM_CALL_ID1), eq(false));
+        verify(mEmergencyCallDomainSelectionConnection).createEmergencyConnection(any(), any());
+        verify(mPhone0).dial(anyString(), any(), any());
+
+        TestTelephonyConnection c = new TestTelephonyConnection();
+        c.setTelecomCallId(TELECOM_CALL_ID1);
+        c.setIsImsConnection(true);
+        Connection orgConn = c.getOriginalConnection();
+        doReturn(PhoneConstants.PHONE_TYPE_IMS).when(orgConn).getPhoneType();
+
+        TelephonyConnection.TelephonyConnectionListener connectionListener =
+                mTestConnectionService.getEmergencyConnectionListener();
+
+        doReturn(Call.State.DISCONNECTING).when(orgConn).getState();
+        connectionListener.onConnectionPropertiesChanged(c, PROPERTY_WIFI);
+
+        verify(mEmergencyStateTracker, times(0)).onEmergencyCallPropertiesChanged(
+                anyInt(), anyString());
+
+        doReturn(Call.State.ACTIVE).when(orgConn).getState();
+        connectionListener.onConnectionPropertiesChanged(c, PROPERTY_WIFI);
+
+        verify(mEmergencyStateTracker, times(1)).onEmergencyCallPropertiesChanged(
+                eq(PROPERTY_WIFI), eq(TELECOM_CALL_ID1));
+
+        connectionListener.onConnectionPropertiesChanged(c, 0);
+
+        verify(mEmergencyStateTracker, times(1)).onEmergencyCallPropertiesChanged(
+                eq(0), eq(TELECOM_CALL_ID1));
     }
 
     @Test
