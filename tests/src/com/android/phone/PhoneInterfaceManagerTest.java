@@ -44,6 +44,7 @@ import com.android.TelephonyTestBase;
 import com.android.internal.telephony.IIntegerConsumer;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.RILConstants;
+import com.android.internal.telephony.flags.FeatureFlags;
 import com.android.internal.telephony.subscription.SubscriptionManagerService;
 
 import org.junit.Before;
@@ -66,6 +67,8 @@ public class PhoneInterfaceManagerTest extends TelephonyTestBase {
     PhoneGlobals mPhoneGlobals;
     @Mock
     Phone mPhone;
+    @Mock
+    FeatureFlags mFeatureFlags;
 
     @Mock
     private SubscriptionManagerService mSubscriptionManagerService;
@@ -78,7 +81,7 @@ public class PhoneInterfaceManagerTest extends TelephonyTestBase {
         // global singleton, but the context that is passed in is unused if the phone app is already
         // alive on a test devices. You must use the spy to mock behavior. Mocks stemming from the
         // passed context will remain unused.
-        mPhoneInterfaceManager = spy(PhoneInterfaceManager.init(mPhoneGlobals));
+        mPhoneInterfaceManager = spy(PhoneInterfaceManager.init(mPhoneGlobals, mFeatureFlags));
         doReturn(mSubscriptionManagerService).when(mPhoneInterfaceManager)
                 .getSubscriptionManagerService();
         TelephonyManager.setupISubForTest(mSubscriptionManagerService);
