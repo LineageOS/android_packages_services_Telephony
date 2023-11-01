@@ -1952,8 +1952,8 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
     }
 
     /**
-     * For DSDA devices, placing an outgoing call on a 2nd sub will hold the existing connection on
-     * the first sub.
+     * For DSDA devices, placing an outgoing call on a 2nd sub will hold the existing ACTIVE
+     * connection on the first sub.
      */
     @Test
     @SmallTest
@@ -1962,11 +1962,32 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
 
         ArrayList<android.telecom.Connection> tcs = new ArrayList<>();
         SimpleTelephonyConnection tc1 = createTestConnection(SUB1_HANDLE, 0, false);
+        tc1.setTelephonyConnectionActive();
         tcs.add(tc1);
+
         Conferenceable c = TelephonyConnectionService.maybeHoldCallsOnOtherSubs(
                 tcs, new ArrayList<>(), SUB2_HANDLE, mTelephonyManagerProxy);
         assertTrue(c.equals(tc1));
         assertTrue(tc1.wasHeld);
+    }
+
+    /**
+     * For DSDA devices, if the existing connection was already held, placing an outgoing call on a
+     * 2nd sub will not attempt to hold the existing connection on the first sub.
+     */
+    @Test
+    @SmallTest
+    public void testNoHold_ifExistingConnectionAlreadyHeld_ForVirtualDsdaDevice() {
+        when(mTelephonyManagerProxy.isConcurrentCallsPossible()).thenReturn(true);
+
+        ArrayList<android.telecom.Connection> tcs = new ArrayList<>();
+        SimpleTelephonyConnection tc1 = createTestConnection(SUB1_HANDLE, 0, false);
+        tc1.setTelephonyConnectionOnHold();
+        tcs.add(tc1);
+
+        Conferenceable c = TelephonyConnectionService.maybeHoldCallsOnOtherSubs(
+                tcs, new ArrayList<>(), SUB2_HANDLE, mTelephonyManagerProxy);
+        assertNull(c);
     }
 
     // For 'Virtual DSDA' devices, if there is an existing call on sub1, an outgoing call on sub2
