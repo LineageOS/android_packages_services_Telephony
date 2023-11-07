@@ -133,7 +133,7 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"Ventende CDMA-opkald under IMS er deaktiveret"</string>
     <string name="updating_title" msgid="6130548922615719689">"Indstillinger for opkald"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Opkaldsindstillingerne kan kun ændres af administratorbrugeren."</string>
-    <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Kontoindstillingerne på din telefon kan kun ændres af administrator- eller arbejdsbrugeren."</string>
+    <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Telefons kontoindstillinger kan kun ændres af en administrator eller arbejdsbruger."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Indstillinger (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Fejl i indstillinger for opkald"</string>
     <string name="reading_settings" msgid="1605904432450871183">"Læser indstillinger ..."</string>
@@ -683,8 +683,8 @@
     <string name="callFailed_wifi_lost" msgid="1788036730589163141">"Du mistede Wi-Fi-forbindelsen. Opkaldet blev afsluttet."</string>
     <string name="dialFailed_low_battery" msgid="6857904237423407056">"Du kan ikke foretage videoopkaldet på grund af lavt batteriniveau."</string>
     <string name="callFailed_low_battery" msgid="4056828320214416182">"Videoopkaldet blev afsluttet på grund af lavt batteriniveau."</string>
-    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="5944309590693432042">"Det er ikke muligt at foretage nødopkald som Wi-Fi-opkald i dette land."</string>
-    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="3624536608369524988">"Det er ikke muligt at foretage Wi-Fi-opkald i dette land."</string>
+    <string name="callFailed_emergency_call_over_wfc_not_available" msgid="5944309590693432042">"Det er ikke muligt at foretage nødopkald som Wi-Fi-opkald på denne lokation."</string>
+    <string name="callFailed_wfc_service_not_available_in_this_location" msgid="3624536608369524988">"Det er ikke muligt at foretage Wi-Fi-opkald på denne lokation."</string>
     <string name="change_pin_title" msgid="3564254326626797321">"Skift pinkode til din telefonsvarer"</string>
     <string name="change_pin_continue_label" msgid="5177011752453506371">"Fortsæt"</string>
     <string name="change_pin_cancel_label" msgid="2301711566758827936">"Annuller"</string>
