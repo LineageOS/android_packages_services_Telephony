@@ -76,6 +76,7 @@ import static org.mockito.Mockito.when;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.content.Context;
+import android.content.res.Resources;
 import android.net.ConnectivityManager;
 import android.net.NetworkRequest;
 import android.os.Handler;
@@ -139,6 +140,7 @@ public class EmergencyCallDomainSelectorTest {
     @Mock private DomainSelectorBase.DestroyListener mDestroyListener;
     @Mock private ProvisioningManager mProvisioningManager;
     @Mock private CrossSimRedialingController mCsrdCtrl;
+    @Mock private Resources mResources;
 
     private Context mContext;
 
@@ -188,6 +190,11 @@ public class EmergencyCallDomainSelectorTest {
             public String getOpPackageName() {
                 return "";
             }
+
+            @Override
+            public Resources getResources() {
+                return mResources;
+            }
         };
 
         if (Looper.myLooper() == null) {
@@ -208,6 +215,7 @@ public class EmergencyCallDomainSelectorTest {
                 .thenReturn(mTelephonyManager);
         when(mTelephonyManager.getNetworkCountryIso()).thenReturn("");
         when(mTelephonyManager.getSimState(anyInt())).thenReturn(TelephonyManager.SIM_STATE_READY);
+        when(mTelephonyManager.getActiveModemCount()).thenReturn(1);
 
         mCarrierConfigManager = mContext.getSystemService(CarrierConfigManager.class);
         when(mCarrierConfigManager.getConfigForSubId(anyInt()))
@@ -254,6 +262,8 @@ public class EmergencyCallDomainSelectorTest {
             }
         }).when(mWwanSelectorCallback).onRequestEmergencyNetworkScan(
                 any(), anyInt(), any(), any());
+
+        when(mResources.getStringArray(anyInt())).thenReturn(null);
     }
 
     @After
@@ -359,6 +369,7 @@ public class EmergencyCallDomainSelectorTest {
         doReturn(TelephonyManager.SIM_STATE_PIN_REQUIRED)
                 .when(mTelephonyManager).getSimState(anyInt());
         doReturn(true).when(mCsrdCtrl).isThereOtherSlot();
+        doReturn(new String[] {"jp"}).when(mResources).getStringArray(anyInt());
 
         EmergencyRegResult regResult = getEmergencyRegResult(
                 UNKNOWN, REGISTRATION_STATE_UNKNOWN, 0, false, false, 0, 0, "", "", "jp");
@@ -1306,6 +1317,7 @@ public class EmergencyCallDomainSelectorTest {
         doReturn(TelephonyManager.SIM_STATE_PIN_REQUIRED)
                 .when(mTelephonyManager).getSimState(anyInt());
         doReturn(true).when(mCsrdCtrl).isThereOtherSlot();
+        doReturn(new String[] {"jp"}).when(mResources).getStringArray(anyInt());
 
         EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_UNKNOWN,
                 0, false, false, 0, 0, "", "", "jp");
@@ -1328,6 +1340,7 @@ public class EmergencyCallDomainSelectorTest {
         doReturn(TelephonyManager.SIM_STATE_PIN_REQUIRED)
                 .when(mTelephonyManager).getSimState(anyInt());
         doReturn(false).when(mCsrdCtrl).isThereOtherSlot();
+        doReturn(new String[] {"jp"}).when(mResources).getStringArray(anyInt());
 
         EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_UNKNOWN,
                 0, false, false, 0, 0, "", "", "jp");
@@ -1668,6 +1681,7 @@ public class EmergencyCallDomainSelectorTest {
     public void testStartCrossStackTimer() throws Exception {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
+        doReturn(2).when(mTelephonyManager).getActiveModemCount();
 
         EmergencyRegResult regResult = getEmergencyRegResult(
                 UNKNOWN, REGISTRATION_STATE_UNKNOWN, 0, false, false, 0, 0, "", "");
@@ -2084,7 +2098,7 @@ public class EmergencyCallDomainSelectorTest {
         mDomainSelector = new EmergencyCallDomainSelector(
                 mContext, SLOT_0, subId, mHandlerThread.getLooper(),
                 mImsStateTracker, mDestroyListener, mCsrdCtrl);
-
+        mDomainSelector.clearResourceConfiguration();
         replaceInstance(DomainSelectorBase.class,
                 "mWwanSelectorCallback", mDomainSelector, mWwanSelectorCallback);
     }
