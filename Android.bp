@@ -46,6 +46,7 @@ android_app {
         "nist-sip",
         "service-entitlement",
         "telephony_flags_core_java_lib",
+        "android.permission.flags-aconfig-java",
     ],
 
     srcs: [

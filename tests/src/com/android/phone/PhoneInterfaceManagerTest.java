@@ -34,6 +34,8 @@ import static org.mockito.Mockito.when;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.permission.flags.Flags;
+import android.platform.test.flag.junit.SetFlagsRule;
 import android.telephony.RadioAccessFamily;
 import android.telephony.TelephonyManager;
 
@@ -48,6 +50,7 @@ import com.android.internal.telephony.flags.FeatureFlags;
 import com.android.internal.telephony.subscription.SubscriptionManagerService;
 
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -72,6 +75,8 @@ public class PhoneInterfaceManagerTest extends TelephonyTestBase {
 
     @Mock
     private SubscriptionManagerService mSubscriptionManagerService;
+
+    @Rule public final SetFlagsRule mSetFlagsRule = new SetFlagsRule();
 
     @Before
     @UiThreadTest
@@ -285,5 +290,73 @@ public class PhoneInterfaceManagerTest extends TelephonyTestBase {
         when(mPhoneInterfaceManager.validateCallerAndGetCarrierId(anyString())).thenReturn(1);
         mPhoneInterfaceManager.getCarrierRestrictionStatus(mIIntegerConsumer,
                 "com.test.package");
+    }
+
+    @Test
+    public void notifyEnableDataWithAppOps_enableByUser_doNoteOp() {
+        mSetFlagsRule.enableFlags(Flags.FLAG_OP_ENABLE_MOBILE_DATA_BY_USER);
+        String packageName = "INVALID_PACKAGE";
+        String error = "";
+        try {
+            mPhoneInterfaceManager.setDataEnabledForReason(1,
+                    TelephonyManager.DATA_ENABLED_REASON_USER, true, packageName);
+        } catch (SecurityException expected) {
+            // The test doesn't have access to note the op, but we're just interested that it makes
+            // the attempt.
+            error = expected.getMessage();
+        }
+
+        String appop = "ENABLE_MOBILE_DATA_BY_USER";
+        assertTrue("expected error to contain " + packageName + " but it didn't: " + error,
+                error.contains(packageName));
+        assertTrue("expected error to contain " + appop + " but it didn't: " + error,
+                error.contains(appop));
+    }
+
+    @Test
+    public void notifyEnableDataWithAppOps_enableByCarrier_doNotNoteOp() {
+        mSetFlagsRule.enableFlags(Flags.FLAG_OP_ENABLE_MOBILE_DATA_BY_USER);
+        String packageName = "INVALID_PACKAGE";
+        String error = "";
+        try {
+            mPhoneInterfaceManager.setDataEnabledForReason(1,
+                    TelephonyManager.DATA_ENABLED_REASON_CARRIER, true, packageName);
+        } catch (SecurityException expected) {
+            // The test doesn't have access to note the op, but we're just interested that it makes
+            // the attempt.
+            error = expected.getMessage();
+        }
+        assertEquals("Expected error to be empty, was " + error, error, "");
+    }
+
+    @Test
+    public void notifyEnableDataWithAppOps_disableByUser_doNotNoteOp() {
+        mSetFlagsRule.enableFlags(Flags.FLAG_OP_ENABLE_MOBILE_DATA_BY_USER);
+        String packageName = "INVALID_PACKAGE";
+        String error = "";
+        try {
+            mPhoneInterfaceManager.setDataEnabledForReason(1,
+                    TelephonyManager.DATA_ENABLED_REASON_USER, false, packageName);
+        } catch (SecurityException expected) {
+            // The test doesn't have access to note the op, but we're just interested that it makes
+            // the attempt.
+            error = expected.getMessage();
+        }
+        assertEquals("Expected error to be empty, was " + error, error, "");
+    }
+
+    @Test
+    public void notifyEnableDataWithAppOps_noPackageNameAndEnableByUser_doNotnoteOp() {
+        mSetFlagsRule.enableFlags(Flags.FLAG_OP_ENABLE_MOBILE_DATA_BY_USER);
+        String error = "";
+        try {
+            mPhoneInterfaceManager.setDataEnabledForReason(1,
+                    TelephonyManager.DATA_ENABLED_REASON_USER, false, null);
+        } catch (SecurityException expected) {
+            // The test doesn't have access to note the op, but we're just interested that it makes
+            // the attempt.
+            error = expected.getMessage();
+        }
+        assertEquals("Expected error to be empty, was " + error, error, "");
     }
 }
