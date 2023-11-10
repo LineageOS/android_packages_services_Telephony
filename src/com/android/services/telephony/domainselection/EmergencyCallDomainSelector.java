@@ -483,6 +483,12 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         selectDomain();
     }
 
+    private boolean isSimReady() {
+        if (!SubscriptionManager.isValidSubscriptionId(getSubId())) return false;
+        TelephonyManager tm = mContext.getSystemService(TelephonyManager.class);
+        return tm.getSimState(getSlotId()) == TelephonyManager.SIM_STATE_READY;
+    }
+
     /**
      * Caches the configuration.
      */
@@ -1032,13 +1038,13 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
      * @return {@code true} if emergency call over Wi-Fi allowed.
      */
     private boolean isEmcOverWifiSupported() {
-        if (SubscriptionManager.isValidSubscriptionId(getSubId())) {
+        if (isSimReady()) {
             List<Integer> domains = getDomainPreference();
             boolean ret = domains.contains(DOMAIN_PS_NON_3GPP);
             logi("isEmcOverWifiSupported " + ret);
             return ret;
         } else {
-            logi("isEmcOverWifiSupported invalid subId");
+            logi("isEmcOverWifiSupported invalid subId or lock state");
         }
         return false;
     }

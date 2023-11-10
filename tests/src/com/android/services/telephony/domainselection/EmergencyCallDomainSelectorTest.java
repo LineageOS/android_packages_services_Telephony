@@ -207,6 +207,7 @@ public class EmergencyCallDomainSelectorTest {
         when(mTelephonyManager.createForSubscriptionId(anyInt()))
                 .thenReturn(mTelephonyManager);
         when(mTelephonyManager.getNetworkCountryIso()).thenReturn("");
+        when(mTelephonyManager.getSimState(anyInt())).thenReturn(TelephonyManager.SIM_STATE_READY);
 
         mCarrierConfigManager = mContext.getSystemService(CarrierConfigManager.class);
         when(mCarrierConfigManager.getConfigForSubId(anyInt()))
@@ -1130,6 +1131,31 @@ public class EmergencyCallDomainSelectorTest {
     }
 
     @Test
+    public void testSimLockEpsImsRegisteredBarredScanNoTimeoutWifi() throws Exception {
+        when(mTelephonyManager.getSimState(anyInt())).thenReturn(
+                TelephonyManager.SIM_STATE_PIN_REQUIRED);
+        PersistableBundle bundle = getDefaultPersistableBundle();
+        bundle.putBoolean(KEY_EMERGENCY_CALL_OVER_EMERGENCY_PDN_BOOL, true);
+        when(mCarrierConfigManager.getConfigForSubId(anyInt())).thenReturn(bundle);
+
+        createSelector(SLOT_0_SUB_ID);
+        unsolBarringInfoChanged(true);
+
+        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+                NetworkRegistrationInfo.DOMAIN_PS,
+                true, true, 0, 0, "", "");
+        SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
+        mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
+        processAllMessages();
+
+        bindImsService(true);
+
+        verifyScanPsPreferred();
+
+        assertFalse(mDomainSelector.hasMessages(MSG_NETWORK_SCAN_TIMEOUT));
+    }
+
+    @Test
     public void testVoWifiSosPdnRequiresSettingEnabled() throws Exception {
         PersistableBundle bundle = getDefaultPersistableBundle();
         bundle.putBoolean(KEY_EMERGENCY_CALL_OVER_EMERGENCY_PDN_BOOL, true);
@@ -1806,6 +1832,20 @@ public class EmergencyCallDomainSelectorTest {
         verify(mTransportSelectorCallback, times(1)).onWlanSelected(anyBoolean());
     }
 
+    @Test
+    public void testSimLockNoMaxCellularTimeout() throws Exception {
+        when(mTelephonyManager.getSimState(anyInt())).thenReturn(
+                TelephonyManager.SIM_STATE_PIN_REQUIRED);
+        PersistableBundle bundle = getDefaultPersistableBundle();
+        bundle.putBoolean(KEY_EMERGENCY_CALL_OVER_EMERGENCY_PDN_BOOL, true);
+        bundle.putInt(KEY_MAXIMUM_CELLULAR_SEARCH_TIMER_SEC_INT, 20);
+        when(mCarrierConfigManager.getConfigForSubId(anyInt())).thenReturn(bundle);
+
+        setupForHandleScanResult();
+
+        assertFalse(mDomainSelector.hasMessages(MSG_NETWORK_SCAN_TIMEOUT));
+        assertFalse(mDomainSelector.hasMessages(MSG_MAX_CELLULAR_TIMEOUT));
+    }
 
     @Test
     public void testMaxCellularTimeoutScanTimeout() throws Exception {
