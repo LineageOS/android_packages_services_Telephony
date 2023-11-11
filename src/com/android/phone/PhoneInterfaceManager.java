@@ -148,6 +148,7 @@ import android.telephony.ims.feature.ImsFeature;
 import android.telephony.ims.stub.ImsConfigImplBase;
 import android.telephony.ims.stub.ImsRegistrationImplBase;
 import android.telephony.satellite.INtnSignalStrengthCallback;
+import android.telephony.satellite.ISatelliteCapabilitiesCallback;
 import android.telephony.satellite.ISatelliteDatagramCallback;
 import android.telephony.satellite.ISatelliteProvisionStateCallback;
 import android.telephony.satellite.ISatelliteStateCallback;
@@ -12566,7 +12567,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * Unregisters for NTN signal strength changed from satellite modem.
      * If callback was not registered before, the request will be ignored.
      *
-     * @param subId The subId of the subscription to unregister for provision state changed.
+     * @param subId The subId of the subscription to unregister for listening NTN signal strength
+     * changed event.
      * @param callback The callback that was passed to
      * {@link #registerForNtnSignalStrengthChanged(int, INtnSignalStrengthCallback)}
      *
@@ -12579,6 +12581,50 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         final long identity = Binder.clearCallingIdentity();
         try {
             mSatelliteController.unregisterForNtnSignalStrengthChanged(subId, callback);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Registers for satellite capabilities change event from the satellite service.
+     *
+     * @param subId The subId of the subscription to request for.
+     * @param callback The callback to handle the satellite capabilities changed event.
+     *
+     * @return The {@link SatelliteManager.SatelliteResult} result of the operation.
+     *
+     * @throws SecurityException if the caller doesn't have required permission.
+     */
+    @Override
+    @SatelliteManager.SatelliteResult public int registerForSatelliteCapabilitiesChanged(
+            int subId, @NonNull ISatelliteCapabilitiesCallback callback) {
+        enforceSatelliteCommunicationPermission("registerForSatelliteCapabilitiesChanged");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return mSatelliteController.registerForSatelliteCapabilitiesChanged(subId, callback);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Unregisters for satellite capabilities change event from the satellite service.
+     * If callback was not registered before, the request will be ignored.
+     *
+     * @param subId The subId of the subscription to unregister for satellite capabilities change.
+     * @param callback The callback that was passed to.
+     * {@link #registerForSatelliteCapabilitiesChanged(int, ISatelliteCapabilitiesCallback)}.
+     *
+     * @throws SecurityException if the caller doesn't have required permission.
+     */
+    @Override
+    public void unregisterForSatelliteCapabilitiesChanged(
+            int subId, @NonNull ISatelliteCapabilitiesCallback callback) {
+        enforceSatelliteCommunicationPermission("unregisterForSatelliteCapabilitiesChanged");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            mSatelliteController.unregisterForSatelliteCapabilitiesChanged(subId, callback);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
