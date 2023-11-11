@@ -19,8 +19,8 @@ package com.android.services.telephony;
 import static android.telephony.CarrierConfigManager.KEY_USE_ONLY_DIALED_SIM_ECC_LIST_BOOL;
 import static android.telephony.DomainSelectionService.SELECTOR_TYPE_CALLING;
 import static android.telephony.TelephonyManager.HAL_SERVICE_VOICE;
-import static com.android.internal.telephony.PhoneConstants.PHONE_TYPE_GSM;
 
+import static com.android.internal.telephony.PhoneConstants.PHONE_TYPE_GSM;
 import static com.android.internal.telephony.flags.Flags.carrierEnabledSatelliteFlag;
 
 import android.annotation.NonNull;
@@ -4184,11 +4184,11 @@ public class TelephonyConnectionService extends ConnectionService {
     private void handleEmergencyCallStartedForSatelliteSOSMessageRecommender(
             @NonNull TelephonyConnection connection, @NonNull Phone phone) {
         if (mSatelliteSOSMessageRecommender == null) {
-            mSatelliteSOSMessageRecommender = new SatelliteSOSMessageRecommender(
+            mSatelliteSOSMessageRecommender = new SatelliteSOSMessageRecommender(phone.getContext(),
                     phone.getContext().getMainLooper());
         }
         connection.addTelephonyConnectionListener(mEmergencyConnectionSatelliteListener);
-        mSatelliteSOSMessageRecommender.onEmergencyCallStarted(connection, phone);
+        mSatelliteSOSMessageRecommender.onEmergencyCallStarted(connection);
     }
 
     /**
