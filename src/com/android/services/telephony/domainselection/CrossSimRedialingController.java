@@ -31,16 +31,19 @@ import android.os.PersistableBundle;
 import android.os.SystemProperties;
 import android.telephony.Annotation.PreciseDisconnectCauses;
 import android.telephony.CarrierConfigManager;
+import android.telephony.PhoneNumberUtils;
+import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
+import android.telephony.emergency.EmergencyNumber;
 import android.text.TextUtils;
 import android.util.LocalLog;
 import android.util.Log;
 
 import com.android.internal.annotations.VisibleForTesting;
-import com.android.internal.telephony.Phone;
-import com.android.internal.telephony.PhoneFactory;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 /** Controls the cross stack redialing. */
 public class CrossSimRedialingController extends Handler {
@@ -53,11 +56,11 @@ public class CrossSimRedialingController extends Handler {
         /**
          * Returns whether the number is an emergency number in the given modem slot.
          *
-         * @param slotId The slot id to be checked.
+         * @param subId The sub id to be checked.
          * @param number The number.
          * @return {@code true} if the number is an emergency number in the given slot.
          */
-        boolean isEmergencyNumber(int slotId, String number);
+        boolean isEmergencyNumber(int subId, String number);
     }
 
     @VisibleForTesting
@@ -73,17 +76,23 @@ public class CrossSimRedialingController extends Handler {
 
     private EmergencyNumberHelper mEmergencyNumberHelper = new EmergencyNumberHelper() {
         @Override
-        public boolean isEmergencyNumber(int slotId, String number) {
-            // TODO(b/258112541) Add System api to check emergency number per subscription.
+        public boolean isEmergencyNumber(int subId, String number) {
+            number = PhoneNumberUtils.stripSeparators(number);
+            if (TextUtils.isEmpty(number)) return false;
+            Map<Integer, List<EmergencyNumber>> lists = null;
             try {
-                Phone phone = PhoneFactory.getPhone(slotId);
-                if (phone != null
-                        && phone.getEmergencyNumberTracker() != null
-                        && phone.getEmergencyNumberTracker().isEmergencyNumber(number)) {
-                    return true;
-                }
-            } catch (IllegalStateException e) {
-                loge("isEmergencyNumber e=" + e);
+                lists = mTelephonyManager.getEmergencyNumberList();
+            } catch (IllegalStateException ise) {
+                loge("isEmergencyNumber ise=" + ise);
+            } catch (RuntimeException rte) {
+                loge("isEmergencyNumber rte=" + rte);
+            }
+            if (lists == null) return false;
+
+            List<EmergencyNumber> list = lists.get(subId);
+            if (list == null || list.isEmpty()) return false;
+            for (EmergencyNumber eNumber : list) {
+                if (number.equals(eNumber.getNumber())) return true;
             }
             return false;
         }
@@ -242,11 +251,12 @@ public class CrossSimRedialingController extends Handler {
                 continue;
             }
 
-            if (mEmergencyNumberHelper.isEmergencyNumber(i, mNumber)) {
-                logi("isThereOtherSlot index=" + i + ", found");
+            int subId = SubscriptionManager.getSubscriptionId(i);
+            if (mEmergencyNumberHelper.isEmergencyNumber(subId, mNumber)) {
+                logi("isThereOtherSlot index=" + i + "(" + subId + "), found");
                 return true;
             } else {
-                logi("isThereOtherSlot index=" + i + ", not emergency number");
+                logi("isThereOtherSlot index=" + i + "(" + subId + "), not emergency number");
             }
         }
 
@@ -276,6 +286,12 @@ public class CrossSimRedialingController extends Handler {
                 + ", crossStackTimer=" + mCrossStackTimer
                 + ", quickCrossStackTimer=" + mQuickCrossStackTimer
                 + ", startQuickTimerInService=" + mStartQuickCrossStackTimerWhenInService);
+    }
+
+    /** Test purpose only. */
+    @VisibleForTesting
+    public EmergencyNumberHelper getEmergencyNumberHelper() {
+        return mEmergencyNumberHelper;
     }
 
     /** Destroys the instance. */
