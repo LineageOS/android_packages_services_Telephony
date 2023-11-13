@@ -1305,6 +1305,8 @@ public class PhoneGlobals extends ContextWrapper {
         pw.println("loadDdsOnCreate=" + mFeatureFlags.loadDdsOnCreate());
         pw.println("reorganizeRoamingNotification="
                 + mFeatureFlags.reorganizeRoamingNotification());
+        pw.println("dismissNetworkSelectionNotificationOnSimDisable="
+                + mFeatureFlags.dismissNetworkSelectionNotificationOnSimDisable());
         pw.decreaseIndent();
         if (mFeatureFlags.reorganizeRoamingNotification()) {
             pw.println("mCurrentRoamingNotification=" + mCurrentRoamingNotification);

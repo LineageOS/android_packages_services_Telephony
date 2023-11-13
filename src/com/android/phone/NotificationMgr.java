@@ -64,6 +64,8 @@ import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.RILConstants;
 import com.android.internal.telephony.TelephonyCapabilities;
+import com.android.internal.telephony.flags.FeatureFlags;
+import com.android.internal.telephony.flags.FeatureFlagsImpl;
 import com.android.internal.telephony.util.NotificationChannelController;
 import com.android.phone.settings.VoicemailSettingsActivity;
 
@@ -146,6 +148,9 @@ public class NotificationMgr {
     // maps each subId to selected network operator name.
     private SparseArray<String> mSelectedNetworkOperatorName = new SparseArray<>();
 
+    // feature flags
+    private final FeatureFlags mFeatureFlags;
+
     private final Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -177,6 +182,7 @@ public class NotificationMgr {
         mSubscriptionManager = SubscriptionManager.from(mContext);
         mTelecomManager = app.getSystemService(TelecomManager.class);
         mTelephonyManager = (TelephonyManager) app.getSystemService(Context.TELEPHONY_SERVICE);
+        mFeatureFlags = new FeatureFlagsImpl();
     }
 
     /**
@@ -828,12 +834,74 @@ public class NotificationMgr {
      * @param subId The subscription ID
      */
     void updateNetworkSelection(int serviceState, int subId) {
+        if (!mFeatureFlags.dismissNetworkSelectionNotificationOnSimDisable()) {
+            updateNetworkSelectionForFeatureDisabled(serviceState, subId);
+            return;
+        }
+
+        // for dismissNetworkSelectionNotificationOnSimDisable feature enabled.
         int phoneId = SubscriptionManager.getPhoneId(subId);
         Phone phone = SubscriptionManager.isValidPhoneId(phoneId) ?
                 PhoneFactory.getPhone(phoneId) : PhoneFactory.getDefaultPhone();
         if (TelephonyCapabilities.supportsNetworkSelection(phone)) {
             if (SubscriptionManager.isValidSubscriptionId(subId)
                     && mSubscriptionManager.isActiveSubId(subId)) {
+                SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(mContext);
+                String selectedNetworkOperatorName =
+                        sp.getString(Phone.NETWORK_SELECTION_NAME_KEY + subId, "");
+                // get the shared preference of network_selection.
+                // empty is auto mode, otherwise it is the operator alpha name
+                // in case there is no operator name, check the operator numeric
+                if (TextUtils.isEmpty(selectedNetworkOperatorName)) {
+                    selectedNetworkOperatorName =
+                            sp.getString(Phone.NETWORK_SELECTION_KEY + subId, "");
+                }
+                boolean isManualSelection;
+                // if restoring manual selection is controlled by framework, then get network
+                // selection from shared preference, otherwise get from real network indicators.
+                boolean restoreSelection = !mContext.getResources().getBoolean(
+                        com.android.internal.R.bool.skip_restoring_network_selection);
+                if (restoreSelection) {
+                    isManualSelection = !TextUtils.isEmpty(selectedNetworkOperatorName);
+                } else {
+                    isManualSelection = phone.getServiceStateTracker().mSS.getIsManualSelection();
+                }
+
+                if (DBG) {
+                    log("updateNetworkSelection()..." + "state = " + serviceState + " new network "
+                            + (isManualSelection ? selectedNetworkOperatorName : ""));
+                }
+
+                if (isManualSelection) {
+                    mSelectedNetworkOperatorName.put(subId, selectedNetworkOperatorName);
+                    shouldShowNotification(serviceState, subId);
+                } else {
+                    dismissNetworkSelectionNotification(subId);
+                    clearUpNetworkSelectionNotificationParam(subId);
+                }
+            } else {
+                if (DBG) {
+                    log("updateNetworkSelection()... state = " + serviceState
+                            + " not updating network due to invalid subId " + subId);
+                }
+                dismissNetworkSelectionNotificationForInactiveSubId();
+            }
+        }
+    }
+
+    /**
+     * Update notification about no service of user selected operator.
+     * For dismissNetworkSelectionNotificationOnSimDisable feature disabled.
+     *
+     * @param serviceState Phone service state
+     * @param subId The subscription ID
+     */
+    private void updateNetworkSelectionForFeatureDisabled(int serviceState, int subId) {
+        int phoneId = SubscriptionManager.getPhoneId(subId);
+        Phone phone = SubscriptionManager.isValidPhoneId(phoneId)
+                ? PhoneFactory.getPhone(phoneId) : PhoneFactory.getDefaultPhone();
+        if (TelephonyCapabilities.supportsNetworkSelection(phone)) {
+            if (SubscriptionManager.isValidSubscriptionId(subId)) {
                 SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(mContext);
                 String selectedNetworkOperatorName =
                         sp.getString(Phone.NETWORK_SELECTION_NAME_KEY + subId, "");
