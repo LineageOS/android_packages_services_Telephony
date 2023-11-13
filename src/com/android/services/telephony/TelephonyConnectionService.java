@@ -19,8 +19,8 @@ package com.android.services.telephony;
 import static android.telephony.CarrierConfigManager.KEY_USE_ONLY_DIALED_SIM_ECC_LIST_BOOL;
 import static android.telephony.DomainSelectionService.SELECTOR_TYPE_CALLING;
 import static android.telephony.TelephonyManager.HAL_SERVICE_VOICE;
-import static com.android.internal.telephony.PhoneConstants.PHONE_TYPE_GSM;
 
+import static com.android.internal.telephony.PhoneConstants.PHONE_TYPE_GSM;
 import static com.android.internal.telephony.flags.Flags.carrierEnabledSatelliteFlag;
 
 import android.annotation.NonNull;
@@ -1389,7 +1389,7 @@ public class TelephonyConnectionService extends ConnectionService {
             // one and causing UI Jank.
             boolean noActiveSimCard = SubscriptionManagerService.getInstance()
                     .getActiveSubInfoCount(phone.getContext().getOpPackageName(),
-                            phone.getContext().getAttributionTag()) == 0;
+                            phone.getContext().getAttributionTag(), true/*isForAllProfile*/) == 0;
             // If there's no active sim card and the device is in emergency mode, use E account.
             addExistingConnection(mPhoneUtilsProxy.makePstnPhoneAccountHandleWithPrefix(
                     phone, "", isEmergencyNumber && noActiveSimCard), repConnection);
