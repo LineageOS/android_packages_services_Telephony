@@ -17,6 +17,7 @@
 package com.android.phone;
 
 import android.annotation.IntDef;
+import android.annotation.Nullable;
 import android.app.Activity;
 import android.app.KeyguardManager;
 import android.app.ProgressDialog;
@@ -217,6 +218,14 @@ public class PhoneGlobals extends ContextWrapper {
      */
     private ArraySet<String> mShownNotificationReasons = new ArraySet<>();
 
+    // For reorganize_roaming_notification feature disabled.
+    @RoamingNotification
+    private int mPrevRoamingNotification = ROAMING_NOTIFICATION_NO_NOTIFICATION;
+
+    // For reorganize_roaming_notification feature disabled.
+    /** Operator numerics for which we've shown is-roaming notifications. **/
+    private ArraySet<String> mPrevRoamingOperatorNumerics = new ArraySet<>();
+
     private WakeState mWakeState = WakeState.SLEEP;
 
     private PowerManager mPowerManager;
@@ -387,11 +396,19 @@ public class PhoneGlobals extends ContextWrapper {
                     //TODO: handle message here;
                     break;
                 case EVENT_DATA_ROAMING_SETTINGS_CHANGED:
-                    updateDataRoamingStatus(
-                            ROAMING_NOTIFICATION_REASON_DATA_ROAMING_SETTING_CHANGED);
+                    if (mFeatureFlags.reorganizeRoamingNotification()) {
+                        updateDataRoamingStatus(
+                                ROAMING_NOTIFICATION_REASON_DATA_ROAMING_SETTING_CHANGED);
+                    } else {
+                        updateDataRoamingStatusForFeatureDisabled(null);
+                    }
                     break;
                 case EVENT_MOBILE_DATA_SETTINGS_CHANGED:
-                    updateDataRoamingStatus(ROAMING_NOTIFICATION_REASON_DATA_SETTING_CHANGED);
+                    if (mFeatureFlags.reorganizeRoamingNotification()) {
+                        updateDataRoamingStatus(ROAMING_NOTIFICATION_REASON_DATA_SETTING_CHANGED);
+                    } else {
+                        updateDataRoamingStatusForFeatureDisabled(null);
+                    }
                     break;
                 case EVENT_CARRIER_CONFIG_CHANGED:
                     int subId = (Integer) msg.obj;
@@ -814,7 +831,11 @@ public class PhoneGlobals extends ContextWrapper {
     /** Clear fields on power off radio **/
     private void clearCacheOnRadioOff() {
         // Re-show is-roaming notifications after APM mode
-        mShownNotificationReasons.clear();
+        if (mFeatureFlags.reorganizeRoamingNotification()) {
+            mShownNotificationReasons.clear();
+        } else {
+            mPrevRoamingOperatorNumerics.clear();
+        }
     }
 
     private void setRadioPowerOn() {
@@ -911,7 +932,11 @@ public class PhoneGlobals extends ContextWrapper {
             } else if (action.equals(CarrierConfigManager.ACTION_CARRIER_CONFIG_CHANGED)) {
                 // Roaming status could be overridden by carrier config, so we need to update it.
                 if (VDBG) Log.v(LOG_TAG, "carrier config changed.");
-                updateDataRoamingStatus(ROAMING_NOTIFICATION_REASON_CARRIER_CONFIG_CHANGED);
+                if (mFeatureFlags.reorganizeRoamingNotification()) {
+                    updateDataRoamingStatus(ROAMING_NOTIFICATION_REASON_CARRIER_CONFIG_CHANGED);
+                } else {
+                    updateDataRoamingStatusForFeatureDisabled(null);
+                }
                 updateLimitedSimFunctionForDualSim();
                 int subId = intent.getIntExtra(SubscriptionManager.EXTRA_SUBSCRIPTION_INDEX,
                         SubscriptionManager.INVALID_SUBSCRIPTION_ID);
@@ -926,7 +951,12 @@ public class PhoneGlobals extends ContextWrapper {
                 registerSettingsObserver();
                 Phone phone = getPhone(mDefaultDataSubId);
                 if (phone != null) {
-                    updateDataRoamingStatus(ROAMING_NOTIFICATION_REASON_DEFAULT_DATA_SUBS_CHANGED);
+                    if (mFeatureFlags.reorganizeRoamingNotification()) {
+                        updateDataRoamingStatus(
+                                ROAMING_NOTIFICATION_REASON_DEFAULT_DATA_SUBS_CHANGED);
+                    } else {
+                        updateDataRoamingStatusForFeatureDisabled(null);
+                    }
                 }
             }
         }
@@ -942,7 +972,11 @@ public class PhoneGlobals extends ContextWrapper {
                     + mDefaultDataSubId + ", ss roaming=" + serviceState.getDataRoaming());
         }
         if (subId == mDefaultDataSubId) {
-            updateDataRoamingStatus(ROAMING_NOTIFICATION_REASON_SERVICE_STATE_CHANGED);
+            if (mFeatureFlags.reorganizeRoamingNotification()) {
+                updateDataRoamingStatus(ROAMING_NOTIFICATION_REASON_SERVICE_STATE_CHANGED);
+            } else {
+                updateDataRoamingStatusForFeatureDisabled(serviceState.getOperatorNumeric());
+            }
         }
     }
 
@@ -1089,6 +1123,87 @@ public class PhoneGlobals extends ContextWrapper {
         return mCurrentRoamingNotification;
     }
 
+    // For reorganize_roaming_notification feature disabled.
+    /**
+     * When roaming, if mobile data cannot be established due to data roaming not enabled, we need
+     * to notify the user so they can enable it through settings. Vise versa if the condition
+     * changes, we need to dismiss the notification.
+     * @param roamingOperatorNumeric The operator numeric for the current roaming. {@code null} if
+     *                               the current roaming operator numeric didn't change.
+     */
+    private void updateDataRoamingStatusForFeatureDisabled(
+            @Nullable String roamingOperatorNumeric) {
+        if (VDBG) Log.v(LOG_TAG, "updateDataRoamingStatusForFeatureDisabled");
+        Phone phone = getPhone(mDefaultDataSubId);
+        if (phone == null) {
+            Log.w(LOG_TAG, "Can't get phone with sub id = " + mDefaultDataSubId);
+            return;
+        }
+
+        boolean dataAllowed;
+        boolean notAllowedDueToRoamingOff;
+        List<DataDisallowedReason> reasons = phone.getDataNetworkController()
+                .getInternetDataDisallowedReasons();
+        dataAllowed = reasons.isEmpty();
+        notAllowedDueToRoamingOff = (reasons.size() == 1
+                && reasons.contains(DataDisallowedReason.ROAMING_DISABLED));
+        mDataRoamingNotifLog.log("dataAllowed=" + dataAllowed + ", reasons=" + reasons
+                + ", roamingOperatorNumeric=" + roamingOperatorNumeric);
+        if (VDBG) {
+            Log.v(LOG_TAG, "dataAllowed=" + dataAllowed + ", reasons=" + reasons
+                    + ", roamingOperatorNumeric=" + roamingOperatorNumeric);
+        }
+
+        if (!dataAllowed && notAllowedDueToRoamingOff) {
+            // Don't show roaming notification if we've already shown for this MccMnc
+            if (roamingOperatorNumeric != null
+                    && !mPrevRoamingOperatorNumerics.add(roamingOperatorNumeric)) {
+                Log.d(LOG_TAG, "Skip roaming disconnected notification since already shown in "
+                        + "MccMnc " + roamingOperatorNumeric);
+                return;
+            }
+            // No need to show it again if we never cancelled it explicitly.
+            if (mPrevRoamingNotification == ROAMING_NOTIFICATION_DISCONNECTED) return;
+            // If the only reason of no data is data roaming disabled, then we notify the user
+            // so the user can turn on data roaming.
+            mPrevRoamingNotification = ROAMING_NOTIFICATION_DISCONNECTED;
+            Log.d(LOG_TAG, "Show roaming disconnected notification");
+            mDataRoamingNotifLog.log("Show roaming off.");
+            Message msg = mHandler.obtainMessage(EVENT_DATA_ROAMING_DISCONNECTED);
+            msg.arg1 = mDefaultDataSubId;
+            msg.sendToTarget();
+        } else if (dataAllowed && dataIsNowRoaming(mDefaultDataSubId)) {
+            boolean isShowRoamingNotificationEnabled = getCarrierConfigForSubId(mDefaultDataSubId)
+                    .getBoolean(CarrierConfigManager
+                            .KEY_SHOW_DATA_CONNECTED_ROAMING_NOTIFICATION_BOOL);
+            if (!isShowRoamingNotificationEnabled) return;
+            // Don't show roaming notification if we've already shown for this MccMnc
+            if (roamingOperatorNumeric != null
+                    && !mPrevRoamingOperatorNumerics.add(roamingOperatorNumeric)) {
+                Log.d(LOG_TAG, "Skip roaming connected notification since already shown in "
+                        + "MccMnc " + roamingOperatorNumeric);
+                return;
+            }
+            // No need to show it again if we never cancelled it explicitly, or carrier config
+            // indicates this is not needed.
+            if (mPrevRoamingNotification == ROAMING_NOTIFICATION_CONNECTED) return;
+            mPrevRoamingNotification = ROAMING_NOTIFICATION_CONNECTED;
+            Log.d(LOG_TAG, "Show roaming connected notification");
+            mDataRoamingNotifLog.log("Show roaming on.");
+            Message msg = mHandler.obtainMessage(EVENT_DATA_ROAMING_CONNECTED);
+            msg.arg1 = mDefaultDataSubId;
+            msg.sendToTarget();
+        } else if (mPrevRoamingNotification != ROAMING_NOTIFICATION_NO_NOTIFICATION) {
+            // Otherwise we either 1) we are not roaming or 2) roaming is off but ROAMING_DISABLED
+            // is not the only data disable reason. In this case we dismiss the notification we
+            // showed earlier.
+            mPrevRoamingNotification = ROAMING_NOTIFICATION_NO_NOTIFICATION;
+            Log.d(LOG_TAG, "Dismiss roaming notification");
+            mDataRoamingNotifLog.log("Hide. data allowed=" + dataAllowed);
+            mHandler.sendEmptyMessage(EVENT_DATA_ROAMING_OK);
+        }
+    }
+
     /**
      *
      * @param subId to check roaming on
@@ -1188,8 +1303,14 @@ public class PhoneGlobals extends ContextWrapper {
         pw.println("FeatureFlags:");
         pw.increaseIndent();
         pw.println("loadDdsOnCreate=" + mFeatureFlags.loadDdsOnCreate());
+        pw.println("reorganizeRoamingNotification="
+                + mFeatureFlags.reorganizeRoamingNotification());
         pw.decreaseIndent();
-        pw.println("mCurrentRoamingNotification=" + mCurrentRoamingNotification);
+        if (mFeatureFlags.reorganizeRoamingNotification()) {
+            pw.println("mCurrentRoamingNotification=" + mCurrentRoamingNotification);
+        } else {
+            pw.println("mPrevRoamingNotification=" + mPrevRoamingNotification);
+        }
         pw.println("mDefaultDataSubId=" + mDefaultDataSubId);
         pw.println("isSmsCapable=" + TelephonyManager.from(this).isSmsCapable());
         pw.println("mDataRoamingNotifLog:");
@@ -1230,7 +1351,11 @@ public class PhoneGlobals extends ContextWrapper {
             mDomainSelectionService.dump(fd, pw, args);
         }
         pw.decreaseIndent();
-        pw.println("mShownNotificationReasons=" + mShownNotificationReasons);
+        if (mFeatureFlags.reorganizeRoamingNotification()) {
+            pw.println("mShownNotificationReasons=" + mShownNotificationReasons);
+        } else {
+            pw.println("mPrevRoamingOperatorNumerics:" + mPrevRoamingOperatorNumerics);
+        }
         pw.println("------- End PhoneGlobals -------");
     }
 }
