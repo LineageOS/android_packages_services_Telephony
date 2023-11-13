@@ -240,6 +240,8 @@ public class PhoneGlobals extends ContextWrapper {
     // fine or coarse location since we only use ServiceState for
     private PhoneAppCallback[] mTelephonyCallbacks;
 
+    private FeatureFlags mFeatureFlags;
+
     private class PhoneAppCallback extends TelephonyCallback implements
             TelephonyCallback.ServiceStateListener {
         private final int mSubId;
@@ -480,8 +482,8 @@ public class PhoneGlobals extends ContextWrapper {
                     getResources().getBoolean(R.bool.config_enable_aosp_domain_selection));
 
             // Initialize the telephony framework
-            FeatureFlags featureFlags = new FeatureFlagsImpl();
-            PhoneFactory.makeDefaultPhones(this, featureFlags);
+            mFeatureFlags = new FeatureFlagsImpl();
+            PhoneFactory.makeDefaultPhones(this, mFeatureFlags);
 
             // Initialize the DomainSelectionResolver after creating the Phone instance
             // to check the Radio HAL version.
@@ -539,7 +541,7 @@ public class PhoneGlobals extends ContextWrapper {
 
             // Create the SatelliteController singleton, which acts as a backend service for
             // {@link android.telephony.satellite.SatelliteManager}.
-            SatelliteController.make(this, featureFlags);
+            SatelliteController.make(this, mFeatureFlags);
 
             // Create an instance of CdmaPhoneCallState and initialize it to IDLE
             cdmaPhoneCallState = new CdmaPhoneCallState();
@@ -554,7 +556,7 @@ public class PhoneGlobals extends ContextWrapper {
 
             mKeyguardManager = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
 
-            phoneMgr = PhoneInterfaceManager.init(this, featureFlags);
+            phoneMgr = PhoneInterfaceManager.init(this, mFeatureFlags);
 
             imsRcsController = ImsRcsController.init(this);
 
@@ -599,12 +601,16 @@ public class PhoneGlobals extends ContextWrapper {
             intentFilter.addAction(TelephonyIntents.ACTION_DEFAULT_DATA_SUBSCRIPTION_CHANGED);
             intentFilter.addAction(CarrierConfigManager.ACTION_CARRIER_CONFIG_CHANGED);
             registerReceiver(mReceiver, intentFilter);
-            int defaultDataSubId = SubscriptionManager.getDefaultDataSubscriptionId();
-            if (SubscriptionManager.isValidSubscriptionId(defaultDataSubId)) {
-                if (VDBG) Log.v(LOG_TAG, "Loaded initial default data sub: " + defaultDataSubId);
-                mDefaultDataSubId = defaultDataSubId;
-                registerSettingsObserver();
-                updateDataRoamingStatus(ROAMING_NOTIFICATION_REASON_DEFAULT_DATA_SUBS_CHANGED);
+            if (mFeatureFlags.loadDdsOnCreate()) {
+                int defaultDataSubId = SubscriptionManager.getDefaultDataSubscriptionId();
+                if (SubscriptionManager.isValidSubscriptionId(defaultDataSubId)) {
+                    if (VDBG) {
+                        Log.v(LOG_TAG, "Loaded initial default data sub: " + defaultDataSubId);
+                    }
+                    mDefaultDataSubId = defaultDataSubId;
+                    registerSettingsObserver();
+                    updateDataRoamingStatus(ROAMING_NOTIFICATION_REASON_DEFAULT_DATA_SUBS_CHANGED);
+                }
             }
 
             PhoneConfigurationManager.registerForMultiSimConfigChange(
@@ -1179,6 +1185,10 @@ public class PhoneGlobals extends ContextWrapper {
         IndentingPrintWriter pw = new IndentingPrintWriter(printWriter, "  ");
         pw.println("------- PhoneGlobals -------");
         pw.increaseIndent();
+        pw.println("FeatureFlags:");
+        pw.increaseIndent();
+        pw.println("loadDdsOnCreate=" + mFeatureFlags.loadDdsOnCreate());
+        pw.decreaseIndent();
         pw.println("mCurrentRoamingNotification=" + mCurrentRoamingNotification);
         pw.println("mDefaultDataSubId=" + mDefaultDataSubId);
         pw.println("isSmsCapable=" + TelephonyManager.from(this).isSmsCapable());
