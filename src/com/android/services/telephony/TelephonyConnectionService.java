@@ -3909,6 +3909,19 @@ public class TelephonyConnectionService extends ConnectionService {
                 });
     }
 
+    static boolean isStateActive(Conferenceable conferenceable) {
+        if (conferenceable instanceof Connection) {
+            Connection connection = (Connection) conferenceable;
+            return connection.getState() == Connection.STATE_ACTIVE;
+        } else if (conferenceable instanceof Conference) {
+            Conference conference = (Conference) conferenceable;
+            return conference.getState() == Connection.STATE_ACTIVE;
+        } else {
+            throw new IllegalArgumentException(
+                    "isStateActive(): Unexpected conferenceable! " + conferenceable);
+        }
+    }
+
     static void onHold(Conferenceable conferenceable) {
         if (conferenceable instanceof Connection) {
             Connection connection = (Connection) conferenceable;
@@ -4068,7 +4081,7 @@ public class TelephonyConnectionService extends ConnectionService {
             TelephonyManagerProxy telephonyManagerProxy) {
         Conferenceable c = maybeGetFirstConferenceableFromOtherSubscription(
                 connections, conferences, outgoingHandle, telephonyManagerProxy);
-        if (c != null) {
+        if (c != null && isStateActive(c)) {
             onHold(c);
             return c;
         }
