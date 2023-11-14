@@ -1987,6 +1987,29 @@ public class EmergencyCallDomainSelectorTest {
         verify(mTransportSelectorCallback, times(2)).onWlanSelected(anyBoolean());
     }
 
+    @Test
+    public void testSimLockScanPsPreferredIncludingNr() throws Exception {
+        createSelector(SLOT_0_SUB_ID);
+        unsolBarringInfoChanged(false);
+
+        when(mTelephonyManager.getSimState(anyInt())).thenReturn(
+                TelephonyManager.SIM_STATE_PIN_REQUIRED);
+
+        EmergencyRegResult regResult = getEmergencyRegResult(
+                UNKNOWN, REGISTRATION_STATE_UNKNOWN, 0, false, false, 0, 0, "", "");
+        SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
+        mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
+        processAllMessages();
+
+        bindImsServiceUnregistered();
+        processAllMessages();
+
+        verify(mWwanSelectorCallback, times(1)).onRequestEmergencyNetworkScan(
+                any(), anyInt(), any(), any());
+        assertEquals(EUTRAN, (int) mAccessNetwork.get(0));
+        assertEquals(NGRAN, (int) mAccessNetwork.get(1));
+    }
+
     private void setupForScanListTest(PersistableBundle bundle) throws Exception {
         setupForScanListTest(bundle, false);
     }
