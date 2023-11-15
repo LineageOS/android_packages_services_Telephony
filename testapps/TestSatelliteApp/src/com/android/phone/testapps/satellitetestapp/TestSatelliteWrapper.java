@@ -25,6 +25,7 @@ import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.satellite.wrapper.NtnSignalStrengthCallbackWrapper;
 import android.telephony.satellite.wrapper.NtnSignalStrengthWrapper;
+import android.telephony.satellite.wrapper.SatelliteCapabilitiesCallbackWrapper;
 import android.telephony.satellite.wrapper.SatelliteManagerWrapper;
 import android.util.Log;
 import android.view.View;
@@ -51,7 +52,9 @@ public class TestSatelliteWrapper extends Activity {
     private final ExecutorService mExecutor = Executors.newSingleThreadExecutor();
     private SatelliteManagerWrapper mSatelliteManagerWrapper;
     private NtnSignalStrengthCallback mNtnSignalStrengthCallback = null;
+    private SatelliteCapabilitiesCallbackWrapper mSatelliteCapabilitiesCallback;
     private SubscriptionManager mSubscriptionManager;
+
     private ListView mLogListView;
 
     @Override
@@ -69,6 +72,10 @@ public class TestSatelliteWrapper extends Activity {
                 .setOnClickListener(this::unregisterForNtnSignalStrengthChanged);
         findViewById(R.id.isOnlyNonTerrestrialNetworkSubscription)
                 .setOnClickListener(this::isOnlyNonTerrestrialNetworkSubscription);
+        findViewById(R.id.registerForSatelliteCapabilitiesChanged)
+                .setOnClickListener(this::registerForSatelliteCapabilitiesChanged);
+        findViewById(R.id.unregisterForSatelliteCapabilitiesChanged)
+                .setOnClickListener(this::unregisterForSatelliteCapabilitiesChanged);
         findViewById(R.id.Back).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -99,10 +106,17 @@ public class TestSatelliteWrapper extends Activity {
     protected void onDestroy() {
         super.onDestroy();
 
-        if (mSatelliteManagerWrapper != null && mNtnSignalStrengthCallback != null) {
-            Log.d(TAG, "unregisterForNtnSignalStrengthChanged()");
-            mSatelliteManagerWrapper.unregisterForNtnSignalStrengthChanged(
-                    mNtnSignalStrengthCallback);
+        if (mSatelliteManagerWrapper != null) {
+            if (mNtnSignalStrengthCallback != null) {
+                Log.d(TAG, "unregisterForNtnSignalStrengthChanged()");
+                mSatelliteManagerWrapper.unregisterForNtnSignalStrengthChanged(
+                        mNtnSignalStrengthCallback);
+            }
+            if (mSatelliteCapabilitiesCallback != null) {
+                Log.d(TAG, "unregisterForSatelliteCapabilitiesChanged()");
+                mSatelliteManagerWrapper.unregisterForSatelliteCapabilitiesChanged(
+                        mSatelliteCapabilitiesCallback);
+            }
         }
     }
 
@@ -188,6 +202,42 @@ public class TestSatelliteWrapper extends Activity {
             int subId = entry.getKey();
             boolean result = entry.getValue();
             addLogMessage("Subscription ID: " + subId + ", Result: " + result);
+        }
+    }
+
+    private void registerForSatelliteCapabilitiesChanged(View view) {
+        addLogMessage("registerForSatelliteCapabilitiesChanged");
+        Log.d(TAG, "registerForSatelliteCapabilitiesChanged()");
+        if (mSatelliteCapabilitiesCallback == null) {
+            mSatelliteCapabilitiesCallback =
+                    SatelliteCapabilities -> {
+                        String message = "Received SatelliteCapabillities : "
+                                + SatelliteCapabilities;
+                        Log.d(TAG, message);
+                        runOnUiThread(() -> addLogMessage(message));
+                    };
+        }
+
+        int result = mSatelliteManagerWrapper.registerForSatelliteCapabilitiesChanged(mExecutor,
+                mSatelliteCapabilitiesCallback);
+        if (result != SatelliteManagerWrapper.SATELLITE_RESULT_SUCCESS) {
+            String onError = translateResultCodeToString(result);
+            Log.d(TAG, onError);
+            addLogMessage(onError);
+            mSatelliteCapabilitiesCallback = null;
+        }
+    }
+
+    private void unregisterForSatelliteCapabilitiesChanged(View view) {
+        addLogMessage("unregisterForSatelliteCapabilitiesChanged");
+        Log.d(TAG, "unregisterForSatelliteCapabilitiesChanged()");
+        if (mSatelliteCapabilitiesCallback != null) {
+            mSatelliteManagerWrapper.unregisterForSatelliteCapabilitiesChanged(
+                    mSatelliteCapabilitiesCallback);
+            mSatelliteCapabilitiesCallback = null;
+            addLogMessage("mSatelliteCapabilitiesCallback was unregistered");
+        } else {
+            addLogMessage("mSatelliteCapabilitiesCallback is null, ignored.");
         }
     }
 

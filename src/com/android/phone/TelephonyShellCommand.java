@@ -191,6 +191,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             "set-satellite-device-aligned-timeout-duration";
     private static final String SET_EMERGENCY_CALL_TO_SATELLITE_HANDOVER_TYPE =
             "set-emergency-call-to-satellite-handover-type";
+    private static final String SET_SHOULD_SEND_DATAGRAM_TO_MODEM_IN_DEMO_MODE =
+            "set-should-send-datagram-to-modem-in-demo-mode";
 
     private static final String INVALID_ENTRY_ERROR = "An emergency number (only allow '0'-'9', "
             + "'*', '#' or '+') needs to be specified after -a in the command ";
@@ -384,6 +386,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                 return handleSettSatelliteDeviceAlignedTimeoutDuration();
             case SET_EMERGENCY_CALL_TO_SATELLITE_HANDOVER_TYPE:
                 return handleSetEmergencyCallToSatelliteHandoverType();
+            case SET_SHOULD_SEND_DATAGRAM_TO_MODEM_IN_DEMO_MODE:
+                return handleSetShouldSendDatagramToModemInDemoMode();
             default: {
                 return handleDefaultCommands(cmd);
             }
@@ -3336,6 +3340,54 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         } catch (RemoteException e) {
             Log.w(LOG_TAG, "setSatelliteDeviceAlignedTimeoutDuration: " + timeoutMillis
                     + ", error = " + e.getMessage());
+            errPw.println("Exception: " + e.getMessage());
+            return -1;
+        }
+        return 0;
+    }
+
+    private int handleSetShouldSendDatagramToModemInDemoMode() {
+        PrintWriter errPw = getErrPrintWriter();
+        String opt;
+        boolean shouldSendToDemoMode;
+
+        if ((opt = getNextArg()) == null) {
+            errPw.println(
+                    "adb shell cmd phone set-should-send-datagram-to-modem-in-demo-mode :"
+                            + " Invalid Argument");
+            return -1;
+        } else {
+            switch (opt) {
+                case "true": {
+                    shouldSendToDemoMode = true;
+                    break;
+                }
+                case "false": {
+                    shouldSendToDemoMode = false;
+                    break;
+                }
+                default:
+                    errPw.println(
+                            "adb shell cmd phone set-should-send-datagram-to-modem-in-demo-mode :"
+                                    + " Invalid Argument");
+                    return -1;
+            }
+        }
+
+        Log.d(LOG_TAG,
+                "handleSetShouldSendDatagramToModemInDemoMode(" + shouldSendToDemoMode + ")");
+
+        try {
+            boolean result = mInterface.setShouldSendDatagramToModemInDemoMode(
+                    shouldSendToDemoMode);
+            if (VDBG) {
+                Log.v(LOG_TAG, "handleSetShouldSendDatagramToModemInDemoMode returns: "
+                        + result);
+            }
+            getOutPrintWriter().println(false);
+        } catch (RemoteException e) {
+            Log.w(LOG_TAG, "setShouldSendDatagramToModemInDemoMode(" + shouldSendToDemoMode
+                    + "), error = " + e.getMessage());
             errPw.println("Exception: " + e.getMessage());
             return -1;
         }

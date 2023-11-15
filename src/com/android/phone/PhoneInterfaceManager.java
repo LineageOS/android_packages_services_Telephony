@@ -12744,6 +12744,32 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
+     * This API can be used by only CTS to override the cached value for the device overlay config
+     * value : config_send_satellite_datagram_to_modem_in_demo_mode, which determines whether
+     * outgoing satellite datagrams should be sent to modem in demo mode.
+     *
+     * @param shouldSendToModemInDemoMode Whether send datagram in demo mode should be sent to
+     * satellite modem or not.
+     *
+     * @return {@code true} if the operation is successful, {@code false} otherwise.
+     */
+    public boolean setShouldSendDatagramToModemInDemoMode(boolean shouldSendToModemInDemoMode) {
+        if (!mFeatureFlags.oemEnabledSatelliteFlag()) {
+            Log.d(LOG_TAG, "shouldSendDatagramToModemInDemoMode: oemEnabledSatelliteFlag is "
+                    + "disabled");
+            return false;
+        }
+        Log.d(LOG_TAG, "setShouldSendDatagramToModemInDemoMode");
+        TelephonyPermissions.enforceShellOnly(
+                Binder.getCallingUid(), "setShouldSendDatagramToModemInDemoMode");
+        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(mApp,
+                SubscriptionManager.INVALID_SUBSCRIPTION_ID,
+                "setShouldSendDatagramToModemInDemoMode");
+        return mSatelliteController.setShouldSendDatagramToModemInDemoMode(
+                shouldSendToModemInDemoMode);
+    }
+
+    /**
      * Check whether the caller (or self, if not processing an IPC) can read device identifiers.
      *
      * <p>This method behaves in one of the following ways:

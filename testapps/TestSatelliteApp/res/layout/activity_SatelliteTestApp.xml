@@ -68,7 +68,7 @@
             android:id="@+id/TestSatelliteWrapper"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingRight="4dp"
+            android:paddingEnd="4dp"
             android:text="@string/TestSatelliteWrapper"/>
     </LinearLayout>
 </LinearLayout>
