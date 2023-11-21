@@ -210,12 +210,14 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
 
     private final PowerManager.WakeLock mPartialWakeLock;
     private final CrossSimRedialingController mCrossSimRedialingController;
+    private final CarrierConfigHelper mCarrierConfigHelper;
 
     /** Constructor. */
     public EmergencyCallDomainSelector(Context context, int slotId, int subId,
             @NonNull Looper looper, @NonNull ImsStateTracker imsStateTracker,
             @NonNull DestroyListener destroyListener,
-            @NonNull CrossSimRedialingController csrController) {
+            @NonNull CrossSimRedialingController csrController,
+            @NonNull CarrierConfigHelper carrierConfigHelper) {
         super(context, slotId, subId, looper, imsStateTracker, destroyListener, TAG);
 
         mImsStateTracker.addBarringInfoListener(this);
@@ -225,6 +227,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         mPartialWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, TAG);
 
         mCrossSimRedialingController = csrController;
+        mCarrierConfigHelper = carrierConfigHelper;
         acquireWakeLock();
     }
 
@@ -285,6 +288,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
                             sendMessage(obtainMessage(MSG_NETWORK_SCAN_RESULT, regResult));
                         });
             } else {
+                maybeModifyImsRats();
                 // Continuous scan, do not start a new timer.
                 requestScan(false);
             }
@@ -496,11 +500,8 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
                 b.getIntArray(KEY_EMERGENCY_OVER_IMS_SUPPORTED_3GPP_NETWORK_TYPES_INT_ARRAY);
         mImsRoamRatsConfig = b.getIntArray(
                 KEY_EMERGENCY_OVER_IMS_ROAMING_SUPPORTED_3GPP_NETWORK_TYPES_INT_ARRAY);
-        if (!isSimReady()) {
-            // Default configuration includes only EUTRAN.
-            // In case of no SIM or SIM locked state, add NGRAN.
-            mImsRatsConfig = new int[] { EUTRAN, NGRAN };
-            mImsRoamRatsConfig = new int[] { EUTRAN, NGRAN };
+        if (mCarrierConfigHelper.isVoNrEmergencySupported(getSlotId())) {
+            maybeModifyImsRats();
         }
 
         mCsRatsConfig =
@@ -568,6 +569,17 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
             mScanType = DomainSelectionService.SCAN_TYPE_FULL_SERVICE;
         } else {
             mScanType = DomainSelectionService.SCAN_TYPE_NO_PREFERENCE;
+        }
+    }
+
+    /**
+     * Adds NGRAN if no other network has been found in case of no SIM or SIM locked state.
+     */
+    private void maybeModifyImsRats() {
+        if (!isSimReady() && mImsRatsConfig.length < 2) {
+            // Default configuration includes only EUTRAN.
+            mImsRatsConfig = new int[] { EUTRAN, NGRAN };
+            mImsRoamRatsConfig = new int[] { EUTRAN, NGRAN };
         }
     }
 

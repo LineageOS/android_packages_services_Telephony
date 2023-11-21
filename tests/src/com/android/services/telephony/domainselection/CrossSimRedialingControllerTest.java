@@ -66,8 +66,6 @@ public class CrossSimRedialingControllerTest {
     private static final String TELECOM_CALL_ID1 = "TC1";
     private static final String TEST_EMERGENCY_NUMBER = "911";
 
-    @Mock private CarrierConfigManager mCarrierConfigManager;
-    @Mock private TelephonyManager mTelephonyManager;
     @Mock private EmergencyCallDomainSelector mEcds;
     @Mock private CrossSimRedialingController.EmergencyNumberHelper mEmergencyNumberHelper;
 
@@ -76,6 +74,8 @@ public class CrossSimRedialingControllerTest {
     private HandlerThread mHandlerThread;
     private TestableLooper mLooper;
     private CrossSimRedialingController mCsrController;
+    private CarrierConfigManager mCarrierConfigManager;
+    private TelephonyManager mTelephonyManager;
 
     @Before
     public void setUp() throws Exception {

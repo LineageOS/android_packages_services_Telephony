@@ -78,7 +78,8 @@ public class TelephonyDomainSelectionServiceTest {
                         @SelectorType int selectorType, boolean isEmergency,
                         @NonNull Looper looper, @NonNull ImsStateTracker imsStateTracker,
                         @NonNull DomainSelectorBase.DestroyListener listener,
-                        @NonNull CrossSimRedialingController crossSimRedialingController) {
+                        @NonNull CrossSimRedialingController crossSimRedialingController,
+                        @NonNull CarrierConfigHelper carrierConfigHelper) {
                     switch (selectorType) {
                         case DomainSelectionService.SELECTOR_TYPE_CALLING: // fallthrough
                         case DomainSelectionService.SELECTOR_TYPE_SMS: // fallthrough
@@ -107,6 +108,7 @@ public class TelephonyDomainSelectionServiceTest {
     @Mock private TransportSelectorCallback mSelectorCallback1;
     @Mock private TransportSelectorCallback mSelectorCallback2;
     @Mock private ImsStateTracker mImsStateTracker;
+    @Mock private CarrierConfigHelper mCarrierConfigHelper;
 
     private final ServiceState mServiceState = new ServiceState();
     private final BarringInfo mBarringInfo = new BarringInfo();
@@ -128,7 +130,7 @@ public class TelephonyDomainSelectionServiceTest {
 
         mContext = new TestContext();
         mDomainSelectionService = new TelephonyDomainSelectionService(mContext,
-                mImsStateTrackerFactory, mDomainSelectorFactory);
+                mImsStateTrackerFactory, mDomainSelectorFactory, mCarrierConfigHelper);
         mServiceHandler = new Handler(mDomainSelectionService.getLooper());
         mTestableLooper = new TestableLooper(mDomainSelectionService.getLooper());
 
