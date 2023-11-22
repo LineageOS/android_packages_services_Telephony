@@ -308,8 +308,8 @@
     <string name="mobile_data_settings_summary" msgid="5012570152029118471">"Aceder aos dados através de rede móvel"</string>
     <string name="data_usage_disable_mobile" msgid="5669109209055988308">"Desativar os dados móveis?"</string>
     <string name="sim_selection_required_pref" msgid="6985901872978341314">"A seleção é necessária"</string>
-    <string name="sim_change_data_title" msgid="9142726786345906606">"Pretende alterar o SIM de dados?"</string>
-    <string name="sim_change_data_message" msgid="3567358694255933280">"Pretende utilizar o <xliff:g id="NEW_SIM">%1$s</xliff:g> em vez do <xliff:g id="OLD_SIM">%2$s</xliff:g> para os dados móveis?"</string>
+    <string name="sim_change_data_title" msgid="9142726786345906606">"Quer alterar o SIM de dados?"</string>
+    <string name="sim_change_data_message" msgid="3567358694255933280">"Quer utilizar o <xliff:g id="NEW_SIM">%1$s</xliff:g> em vez do <xliff:g id="OLD_SIM">%2$s</xliff:g> para os dados móveis?"</string>
     <string name="wifi_calling_settings_title" msgid="5800018845662016507">"Chamadas Wi-Fi"</string>
     <string name="video_calling_settings_title" msgid="342829454913266078">"Videochamadas do operador"</string>
     <string name="gsm_umts_options" msgid="4968446771519376808">"Opções GSM/UMTS"</string>
@@ -639,8 +639,8 @@
     <string name="phone_in_ecm_notification_title" msgid="6825016389926367946">"Modo de Chamada de Retorno de Emergência"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="653972232922670335">"Ligação de dados desativada"</string>
     <string name="phone_in_ecm_notification_complete_time" msgid="7341624337163082759">"Sem ligação de dados até à(s) <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
-    <string name="alert_dialog_exit_ecm" msgid="7661603870224398025">"{count,plural, =1{O telemóvel ficará no modo de chamada de retorno de emergência durante um minuto. Enquanto estiver neste modo, não é possível utilizar aplicações que utilizem uma ligação de dados. Pretende sair agora?}other{O telemóvel ficará no modo de chamada de retorno de emergência durante %s minutos. Enquanto estiver neste modo, não é possível utilizar aplicações que utilizem uma ligação de dados. Pretende sair agora?}}"</string>
-    <string name="alert_dialog_not_avaialble_in_ecm" msgid="8717711120099503279">"{count,plural, =1{A ação selecionada não está disponível no modo de chamada de retorno de emergência. O telemóvel ficará neste modo durante um minuto. Pretende sair agora?}other{A ação selecionada não está disponível no modo de chamada de retorno de emergência. O telemóvel ficará neste modo durante %s minutos. Pretende sair agora?}}"</string>
+    <string name="alert_dialog_exit_ecm" msgid="7661603870224398025">"{count,plural, =1{O telemóvel ficará no modo de chamada de retorno de emergência durante um minuto. Enquanto estiver neste modo, não é possível utilizar aplicações que utilizem uma ligação de dados. Quer sair agora?}other{O telemóvel ficará no modo de chamada de retorno de emergência durante %s minutos. Enquanto estiver neste modo, não é possível utilizar aplicações que utilizem uma ligação de dados. Quer sair agora?}}"</string>
+    <string name="alert_dialog_not_avaialble_in_ecm" msgid="8717711120099503279">"{count,plural, =1{A ação selecionada não está disponível no modo de chamada de retorno de emergência. O telemóvel ficará neste modo durante um minuto. Quer sair agora?}other{A ação selecionada não está disponível no modo de chamada de retorno de emergência. O telemóvel ficará neste modo durante %s minutos. Quer sair agora?}}"</string>
     <string name="alert_dialog_in_ecm_call" msgid="1207545603149771978">"A ação selecionada não está disponível durante uma chamada de emergência."</string>
     <string name="progress_dialog_exiting_ecm" msgid="9159080081676927217">"A sair do modo de chamada de retorno de emergência"</string>
     <string name="alert_dialog_yes" msgid="3532525979632841417">"Sim"</string>
@@ -648,7 +648,7 @@
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"Ignorar"</string>
     <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"O telemóvel está no modo de chamada de retorno de emergência."</string>
     <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"Até à(s) <xliff:g id="COMPLETETIME">%s</xliff:g>."</string>
-    <string name="alert_dialog_exit_ecm_without_data_restriction_hint" msgid="7549850847524907932">"{count,plural, =1{O telemóvel ficará no modo de chamada de retorno de emergência durante um minuto.\nPretende sair agora?}other{O telemóvel ficará no modo de chamada de retorno de emergência durante %s minutos.\nPretende sair agora?}}"</string>
+    <string name="alert_dialog_exit_ecm_without_data_restriction_hint" msgid="7549850847524907932">"{count,plural, =1{O telemóvel ficará no modo de chamada de retorno de emergência durante um minuto.\nQuer sair agora?}other{O telemóvel ficará no modo de chamada de retorno de emergência durante %s minutos.\nQuer sair agora?}}"</string>
     <string name="voicemail_provider" msgid="4158806657253745294">"Serviço"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"Configuração"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;Não definido&gt;"</string>
@@ -707,7 +707,7 @@
     <string name="mobile_data_activate_roaming_plan" msgid="922290995866269366">"Sem plano de roaming"</string>
     <string name="mobile_data_activate_roaming_plan_summary" msgid="5379228493306235969">"Adicionar plano de roaming através do operador <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
     <string name="mobile_data_activate_footer" msgid="7895874069807204548">"Pode adicionar dados móveis ou um plano de roaming através do seu operador <xliff:g id="PROVIDER_NAME">%s</xliff:g>."</string>
-    <string name="mobile_data_activate_diag_title" msgid="5401741936224757312">"Pretende adicionar dados?"</string>
+    <string name="mobile_data_activate_diag_title" msgid="5401741936224757312">"Quer adicionar dados?"</string>
     <string name="mobile_data_activate_diag_message" msgid="3527260988020415441">"Pode ter de adicionar dados através do operador <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
     <string name="mobile_data_activate_button" msgid="1139792516354374612">"ADICIONAR DADOS"</string>
     <string name="mobile_data_activate_cancel_button" msgid="3530174817572005860">"CANCELAR"</string>
@@ -834,7 +834,7 @@
     <string name="eab_provisioned_switch_string" msgid="4449676720736033035">"EAB/presença aprovisionada"</string>
     <string name="cbrs_data_switch_string" msgid="6060356430838077653">"Dados de CBRS"</string>
     <string name="dsds_switch_string" msgid="7564769822086764796">"Ativar DSDS"</string>
-    <string name="dsds_dialog_title" msgid="8494569893941847575">"Pretende reiniciar o dispositivo?"</string>
+    <string name="dsds_dialog_title" msgid="8494569893941847575">"Quer reiniciar o dispositivo?"</string>
     <string name="dsds_dialog_message" msgid="4047480385678538850">"Tem de reiniciar o dispositivo para alterar esta definição."</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"Reiniciar"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"Cancelar"</string>

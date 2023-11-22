@@ -133,7 +133,7 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"Kipengele cha Simu Inayosubiri Kupokewa ya CDMA chini ya IMS Kimezimwa"</string>
     <string name="updating_title" msgid="6130548922615719689">"Mipangilio ya simu"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Mipangilio ya simu inaweza kubadilishwa na mtumiaji wa akaunti ya msimamizi."</string>
-    <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Mipangilio ya akaunti ya simu inaweza tu kubadilishwa na msimamizi au mtumiaji wa wasifu wa kazini."</string>
+    <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Mipangilio ya akaunti ya simu inaweza tu kubadilishwa na msimamizi au mtumiaji wa kazini."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Mipangilio (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Hitilafu ya mipangilio ya kupiga simu"</string>
     <string name="reading_settings" msgid="1605904432450871183">"Inasoma mipangilio…."</string>
