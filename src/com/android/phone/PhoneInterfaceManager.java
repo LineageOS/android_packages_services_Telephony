@@ -8051,7 +8051,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     private List<SubscriptionInfo> getActiveSubscriptionInfoListPrivileged() {
         return getSubscriptionManagerService().getActiveSubscriptionInfoList(
-                mApp.getOpPackageName(), mApp.getAttributionTag());
+                mApp.getOpPackageName(), mApp.getAttributionTag(), true/*isForAllProfile*/);
     }
 
     private ActivityStatsTechSpecificInfo[] mLastModemActivitySpecificInfo = null;
