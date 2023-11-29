@@ -288,7 +288,6 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
                             sendMessage(obtainMessage(MSG_NETWORK_SCAN_RESULT, regResult));
                         });
             } else {
-                maybeModifyImsRats();
                 // Continuous scan, do not start a new timer.
                 requestScan(false);
             }
@@ -500,9 +499,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
                 b.getIntArray(KEY_EMERGENCY_OVER_IMS_SUPPORTED_3GPP_NETWORK_TYPES_INT_ARRAY);
         mImsRoamRatsConfig = b.getIntArray(
                 KEY_EMERGENCY_OVER_IMS_ROAMING_SUPPORTED_3GPP_NETWORK_TYPES_INT_ARRAY);
-        if (mCarrierConfigHelper.isVoNrEmergencySupported(getSlotId())) {
-            maybeModifyImsRats();
-        }
+        maybeModifyImsRats();
 
         mCsRatsConfig =
                 b.getIntArray(KEY_EMERGENCY_OVER_CS_SUPPORTED_ACCESS_NETWORK_TYPES_INT_ARRAY);
@@ -572,11 +569,10 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         }
     }
 
-    /**
-     * Adds NGRAN if no other network has been found in case of no SIM or SIM locked state.
-     */
+    /** Adds NGRAN if SIM is absent or locked and the last valid subscription supported NGRAN. */
     private void maybeModifyImsRats() {
-        if (!isSimReady() && mImsRatsConfig.length < 2) {
+        if (mCarrierConfigHelper.isVoNrEmergencySupported(getSlotId())
+                && !isSimReady() && mImsRatsConfig.length < 2) {
             // Default configuration includes only EUTRAN.
             mImsRatsConfig = new int[] { EUTRAN, NGRAN };
             mImsRoamRatsConfig = new int[] { EUTRAN, NGRAN };
@@ -859,6 +855,11 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
                 // PS not suppored.
                 preferredNetworks = generatePreferredNetworks(getCsNetworkTypeConfiguration());
             }
+        }
+
+        // Adds NGRAN at the end of the list if SIM is absent or locked and NGRAN is not included.
+        if (!isSimReady() && !preferredNetworks.contains(NGRAN)) {
+            preferredNetworks.add(NGRAN);
         }
 
         return preferredNetworks;
