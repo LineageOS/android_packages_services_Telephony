@@ -32,9 +32,11 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.PersistableBundle;
@@ -64,10 +66,12 @@ public class CarrierConfigHelperTest {
     private static final int SLOT_0 = 0;
     private static final int SLOT_1 = 1;
     private static final int SUB_1 = 1;
+    private static final int TEST_SIM_CARRIER_ID = 1911;
 
     @Mock private Context mContext;
     @Mock private SharedPreferences mSharedPreferences;
     @Mock private SharedPreferences.Editor mEditor;
+    @Mock private Resources mResources;
 
     private HandlerThread mHandlerThread;
     private TestableLooper mLooper;
@@ -93,6 +97,11 @@ public class CarrierConfigHelperTest {
             public String getOpPackageName() {
                 return "";
             }
+
+            @Override
+            public Resources getResources() {
+                return mResources;
+            }
         };
 
         if (Looper.myLooper() == null) {
@@ -115,6 +124,8 @@ public class CarrierConfigHelperTest {
         doReturn(2).when(mTelephonyManager).getActiveModemCount();
         doReturn(TelephonyManager.SIM_STATE_READY)
                 .when(mTelephonyManager).getSimState(anyInt());
+
+        doReturn(new int[] { TEST_SIM_CARRIER_ID }).when(mResources).getIntArray(anyInt());
 
         mCarrierConfigHelper = new CarrierConfigHelper(mContext, mHandlerThread.getLooper(),
                 mSharedPreferences);
@@ -229,6 +240,28 @@ public class CarrierConfigHelperTest {
                 mSharedPreferences);
 
         assertTrue(mCarrierConfigHelper.isVoNrEmergencySupported(SLOT_0));
+    }
+
+    @Test
+    public void testCarrierIgnoreNrWhenSimRemoved() throws Exception {
+        ArgumentCaptor<CarrierConfigManager.CarrierConfigChangeListener> callbackCaptor =
+                ArgumentCaptor.forClass(CarrierConfigManager.CarrierConfigChangeListener.class);
+
+        verify(mCarrierConfigManager).registerCarrierConfigChangeListener(any(),
+                callbackCaptor.capture());
+
+        CarrierConfigManager.CarrierConfigChangeListener callback = callbackCaptor.getValue();
+
+        assertNotNull(callback);
+
+        // NR is included and carrier config for TEST SIM is applied.
+        PersistableBundle b = getPersistableBundle(new int[] { EUTRAN, NGRAN }, true);
+        doReturn(b).when(mCarrierConfigManager).getConfigForSubId(anyInt(), anyString());
+        callback.onCarrierConfigChanged(SLOT_0, SUB_1, TEST_SIM_CARRIER_ID, 0);
+
+        // NR is ignored.
+        assertFalse(mCarrierConfigHelper.isVoNrEmergencySupported(SLOT_0));
+        assertFalse(mCarrierConfigHelper.isVoNrEmergencySupported(SLOT_1));
     }
 
     private static PersistableBundle getPersistableBundle(int[] imsRats, boolean applied) {
