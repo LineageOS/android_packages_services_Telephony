@@ -2004,7 +2004,35 @@ public class EmergencyCallDomainSelectorTest {
     }
 
     @Test
-    public void testSimLockScanPsPreferredIncludingNr() throws Exception {
+    public void testSimLockScanPsPreferredWithNr() throws Exception {
+        createSelector(SLOT_0_SUB_ID);
+        unsolBarringInfoChanged(false);
+
+        // The last valid subscription supported NR.
+        doReturn(true).when(mCarrierConfigHelper).isVoNrEmergencySupported(eq(SLOT_0));
+        when(mTelephonyManager.getSimState(anyInt())).thenReturn(
+                TelephonyManager.SIM_STATE_PIN_REQUIRED);
+
+        EmergencyRegResult regResult = getEmergencyRegResult(
+                UNKNOWN, REGISTRATION_STATE_UNKNOWN, 0, false, false, 0, 0, "", "");
+        SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
+        mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
+        processAllMessages();
+
+        bindImsServiceUnregistered();
+        processAllMessages();
+
+        verify(mWwanSelectorCallback, times(1)).onRequestEmergencyNetworkScan(
+                any(), anyInt(), any(), any());
+        assertEquals(4, mAccessNetwork.size());
+        assertEquals(EUTRAN, (int) mAccessNetwork.get(0));
+        assertEquals(NGRAN, (int) mAccessNetwork.get(1));
+        assertEquals(UTRAN, (int) mAccessNetwork.get(2));
+        assertEquals(GERAN, (int) mAccessNetwork.get(3));
+    }
+
+    @Test
+    public void testSimLockScanPsPreferredWithNrAtTheEnd() throws Exception {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
@@ -2022,31 +2050,17 @@ public class EmergencyCallDomainSelectorTest {
 
         verify(mWwanSelectorCallback, times(1)).onRequestEmergencyNetworkScan(
                 any(), anyInt(), any(), any());
-        assertEquals(3, mAccessNetwork.size());
+        assertEquals(4, mAccessNetwork.size());
         assertEquals(EUTRAN, (int) mAccessNetwork.get(0));
         assertEquals(UTRAN, (int) mAccessNetwork.get(1));
         assertEquals(GERAN, (int) mAccessNetwork.get(2));
-        assertNotNull(mResultConsumer);
-
-        mResultConsumer.accept(regResult);
-        processAllMessages();
-
-        verify(mWwanSelectorCallback, times(2)).onRequestEmergencyNetworkScan(
-                any(), anyInt(), any(), any());
-        assertEquals(4, mAccessNetwork.size());
-        assertEquals(EUTRAN, (int) mAccessNetwork.get(0));
-        assertEquals(NGRAN, (int) mAccessNetwork.get(1));
-        assertEquals(UTRAN, (int) mAccessNetwork.get(2));
-        assertEquals(GERAN, (int) mAccessNetwork.get(3));
+        assertEquals(NGRAN, (int) mAccessNetwork.get(3));
     }
 
     @Test
-    public void testInvalidSubscriptionScanPsPreferredWithoutNr() throws Exception {
-        createSelector(SLOT_0_SUB_ID);
+    public void testInvalidSubscriptionScanPsPreferredWithNrAtTheEnd() throws Exception {
+        createSelector(SubscriptionManager.INVALID_SUBSCRIPTION_ID);
         unsolBarringInfoChanged(false);
-
-        when(mTelephonyManager.getSimState(anyInt())).thenReturn(
-                TelephonyManager.SIM_STATE_PIN_REQUIRED);
 
         EmergencyRegResult regResult = getEmergencyRegResult(
                 UNKNOWN, REGISTRATION_STATE_UNKNOWN, 0, false, false, 0, 0, "", "");
@@ -2060,20 +2074,20 @@ public class EmergencyCallDomainSelectorTest {
 
         verify(mWwanSelectorCallback, times(1)).onRequestEmergencyNetworkScan(
                 any(), anyInt(), any(), any());
-        assertEquals(3, mAccessNetwork.size());
+        assertEquals(4, mAccessNetwork.size());
         assertEquals(EUTRAN, (int) mAccessNetwork.get(0));
         assertEquals(UTRAN, (int) mAccessNetwork.get(1));
         assertEquals(GERAN, (int) mAccessNetwork.get(2));
+        assertEquals(NGRAN, (int) mAccessNetwork.get(3));
     }
 
     @Test
     public void testInvalidSubscriptionScanPsPreferredWithNr() throws Exception {
-        createSelector(SLOT_0_SUB_ID);
+        createSelector(SubscriptionManager.INVALID_SUBSCRIPTION_ID);
         unsolBarringInfoChanged(false);
 
+        // The last valid subscription supported NR.
         doReturn(true).when(mCarrierConfigHelper).isVoNrEmergencySupported(eq(SLOT_0));
-        when(mTelephonyManager.getSimState(anyInt())).thenReturn(
-                TelephonyManager.SIM_STATE_PIN_REQUIRED);
 
         EmergencyRegResult regResult = getEmergencyRegResult(
                 UNKNOWN, REGISTRATION_STATE_UNKNOWN, 0, false, false, 0, 0, "", "");
