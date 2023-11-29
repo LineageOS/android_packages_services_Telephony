@@ -908,7 +908,7 @@
     <string name="radio_info_smsc_update_label" msgid="5141996256097115753">"Atjaunināt"</string>
     <string name="radio_info_smsc_refresh_label" msgid="8409923721451604560">"Atsvaidzināt"</string>
     <string name="radio_info_toggle_dns_check_label" msgid="1394078554927787350">"Pārslēgt DNS pārbaudi"</string>
-    <string name="oem_radio_info_label" msgid="2914167475119997456">"OEM raksturīga informācija/iestatījumi"</string>
+    <string name="oem_radio_info_label" msgid="2914167475119997456">"OAR raksturīga informācija/iestatījumi"</string>
     <string name="radio_info_endc_available" msgid="2983767110681230019">"EN-DC pieejamība (NSA):"</string>
     <string name="radio_info_dcnr_restricted" msgid="7147511536420148173">"DCNR ierobežojums (NSA):"</string>
     <string name="radio_info_nr_available" msgid="3383388088451237182">"NR pieejamība (NSA):"</string>
