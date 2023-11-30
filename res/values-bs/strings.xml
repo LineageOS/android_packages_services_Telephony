@@ -596,7 +596,7 @@
     <string name="failedToImportSingleContactMsg" msgid="228095510489830266">"Uvoz kontakta nije uspio"</string>
     <string name="hac_mode_title" msgid="4127986689621125468">"Slušni aparat"</string>
     <string name="hac_mode_summary" msgid="7774989500136009881">"Uključite kompatibilnost za slušni aparat"</string>
-    <string name="rtt_mode_title" msgid="3075948111362818043">"Pozivanje sa slanjem SMS-ova u stvarnom vremenu (RTT)"</string>
+    <string name="rtt_mode_title" msgid="3075948111362818043">"Poziv sa SMS-ovima u stvarnom vremenu (RTT)"</string>
     <string name="rtt_mode_summary" msgid="8631541375609989562">"Dozvolite razmjenu poruka tokom glasovnog poziva"</string>
     <string name="rtt_mode_more_information" msgid="587500128658756318">"RTT pomaže pozivaocima koji su gluhi, imaju probleme sa sluhom ili govorom te onima kojima treba više od samog glasa.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Saznajte više&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT pozivi se pohranjuju kao transkripti poruka\n       &lt;br&gt; - RTT nije dostupan za video pozive"</string>
     <string name="no_rtt_when_roaming" msgid="5268008247378355389">"Napomena: RTT nije dostupan u romingu"</string>
