@@ -7816,8 +7816,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         try {
             boolean isCarrierSupported = mApp.getCarrierConfigForSubId(subscriptionId).getBoolean(
                     CarrierConfigManager.KEY_RTT_SUPPORTED_BOOL);
-            boolean isDeviceSupported =
-                    phone.getContext().getResources().getBoolean(R.bool.config_support_rtt);
+            boolean isDeviceSupported = (phone.getContext().getResources() != null)
+                    ? phone.getContext().getResources().getBoolean(R.bool.config_support_rtt)
+                    : false;
             return isCarrierSupported && isDeviceSupported;
         } finally {
             Binder.restoreCallingIdentity(identity);
@@ -7832,6 +7833,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     public boolean isRttEnabled(int subscriptionId) {
         final long identity = Binder.clearCallingIdentity();
         try {
+            if (mFeatureFlags.enforceTelephonyFeatureMappingForPublicApis()) {
+                if (!mPackageManager.hasSystemFeature(PackageManager.FEATURE_TELEPHONY_IMS)) {
+                    return false;
+                }
+            }
+
             boolean isRttSupported = isRttSupported(subscriptionId);
             boolean isUserRttSettingOn = Settings.Secure.getInt(
                     mApp.getContentResolver(), Settings.Secure.RTT_CALLING_MODE, 0) != 0;
