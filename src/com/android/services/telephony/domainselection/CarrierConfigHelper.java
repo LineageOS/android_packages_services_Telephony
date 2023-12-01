@@ -23,6 +23,7 @@ import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
@@ -36,6 +37,12 @@ import android.util.ArrayMap;
 import android.util.Log;
 
 import com.android.internal.annotations.VisibleForTesting;
+import com.android.phone.R;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /** Helper class to cache carrier configurations. */
 public class CarrierConfigHelper extends Handler {
@@ -56,6 +63,8 @@ public class CarrierConfigHelper extends Handler {
 
     // For test purpose only
     private final SharedPreferences mSharedPreferences;
+
+    private List<Integer> mIgnoreNrWhenSimRemoved = null;
 
     /**
      * Creates an instance.
@@ -87,6 +96,7 @@ public class CarrierConfigHelper extends Handler {
         mSharedPreferences = sharedPreferences;
 
         readFromSharedPreference();
+        readResourceConfiguration();
     }
 
     /**
@@ -154,8 +164,7 @@ public class CarrierConfigHelper extends Handler {
                 break;
             }
         }
-        // Ignore configuration for TEST SIM.
-        if (carrierId == 1911) carrierConfig = false;
+        if (mIgnoreNrWhenSimRemoved.contains(carrierId)) carrierConfig = false;
 
         Boolean savedConfig = mVoNrSupported.get(Integer.valueOf(slotIndex));
         if (carrierConfig == savedConfig) {
@@ -172,6 +181,22 @@ public class CarrierConfigHelper extends Handler {
 
         Log.i(TAG, "onCarrierConfigurationChanged preference updated slotIndex=" + slotIndex
                 + ", supported=" + carrierConfig);
+    }
+
+    private void readResourceConfiguration() {
+        try {
+            mIgnoreNrWhenSimRemoved = Arrays.stream(mContext.getResources().getIntArray(
+                    R.array.config_carriers_ignore_ngran_preference_when_sim_removed))
+                    .boxed().collect(Collectors.toList());
+        } catch (Resources.NotFoundException nfe) {
+            Log.e(TAG, "readResourceConfiguration exception=" + nfe);
+        } catch (NullPointerException npe) {
+            Log.e(TAG, "readResourceConfiguration exception=" + npe);
+        }
+        if (mIgnoreNrWhenSimRemoved == null) {
+            mIgnoreNrWhenSimRemoved = new ArrayList<Integer>();
+        }
+        Log.i(TAG, "readResourceConfiguration ignoreNrWhenSimRemoved=" + mIgnoreNrWhenSimRemoved);
     }
 
     /** Destroys the instance. */
