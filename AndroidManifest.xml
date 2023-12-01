@@ -619,17 +619,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".settings.BandMode"
-                  android:label="@string/band_mode_title"
-                  android:exported="true"
-                  android:theme="@style/Theme.AppCompat.DayNight">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.VOICE_LAUNCH" />
-            </intent-filter>
-        </activity>
-
         <provider
             android:name="ServiceStateProvider"
             android:authorities="service-state"
