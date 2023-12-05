@@ -38,6 +38,7 @@ import android.util.Log;
 import android.util.SparseArray;
 
 import com.android.internal.annotations.VisibleForTesting;
+import com.android.internal.telephony.flags.Flags;
 
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
@@ -384,6 +385,9 @@ public class TelephonyDomainSelectionService extends DomainSelectionService {
      */
     private void handleSubscriptionsChanged() {
         SubscriptionManager sm = mContext.getSystemService(SubscriptionManager.class);
+        if (Flags.workProfileApiSplit()) {
+            sm = sm.createForAllUserProfiles();
+        }
         List<SubscriptionInfo> subsInfoList =
                 (sm != null) ? sm.getActiveSubscriptionInfoList() : null;
 

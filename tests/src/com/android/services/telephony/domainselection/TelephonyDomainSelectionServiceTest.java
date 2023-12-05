@@ -20,6 +20,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
@@ -44,6 +45,7 @@ import android.testing.TestableLooper;
 import androidx.test.runner.AndroidJUnit4;
 
 import com.android.TestContext;
+import com.android.internal.telephony.flags.Flags;
 
 import org.junit.After;
 import org.junit.Before;
@@ -135,6 +137,9 @@ public class TelephonyDomainSelectionServiceTest {
         mTestableLooper = new TestableLooper(mDomainSelectionService.getLooper());
 
         mSubscriptionManager = mContext.getSystemService(SubscriptionManager.class);
+        if (Flags.workProfileApiSplit()) {
+            doReturn(mSubscriptionManager).when(mSubscriptionManager).createForAllUserProfiles();
+        }
         ArgumentCaptor<OnSubscriptionsChangedListener> listenerCaptor =
                 ArgumentCaptor.forClass(OnSubscriptionsChangedListener.class);
         verify(mSubscriptionManager).addOnSubscriptionsChangedListener(
