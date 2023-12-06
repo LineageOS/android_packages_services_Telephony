@@ -33,6 +33,7 @@ import android.view.WindowManager;
 import com.android.internal.telephony.IccCardConstants;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.TelephonyCapabilities;
+import com.android.internal.telephony.flags.Flags;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -208,6 +209,9 @@ public class SpecialCharSequenceMgr {
 
     private static int getNextSubIdForState(IccCardConstants.State state, Context context) {
         SubscriptionManager subscriptionManager = SubscriptionManager.from(context);
+        if (Flags.workProfileApiSplit()) {
+            subscriptionManager = subscriptionManager.createForAllUserProfiles();
+        }
         List<SubscriptionInfo> list = subscriptionManager.getActiveSubscriptionInfoList();
         if (list == null) {
             // getActiveSubscriptionInfoList was null callers expect an empty list.

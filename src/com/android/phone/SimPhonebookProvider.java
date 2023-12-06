@@ -50,6 +50,7 @@ import androidx.annotation.Nullable;
 
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.telephony.IIccPhoneBook;
+import com.android.internal.telephony.flags.Flags;
 import com.android.internal.telephony.uicc.AdnRecord;
 import com.android.internal.telephony.uicc.IccConstants;
 
@@ -173,17 +174,21 @@ public class SimPhonebookProvider extends ContentProvider {
     @Override
     public boolean onCreate() {
         ContentResolver resolver = getContext().getContentResolver();
-        return onCreate(getContext().getSystemService(SubscriptionManager.class),
+
+        SubscriptionManager sm = getContext().getSystemService(SubscriptionManager.class);
+        if (sm == null) {
+            return false;
+        } else if (Flags.workProfileApiSplit()) {
+            sm = sm.createForAllUserProfiles();
+        }
+        return onCreate(sm,
                 SimPhonebookProvider::getIccPhoneBook,
                 uri -> resolver.notifyChange(uri, null));
     }
 
     @TestApi
-    boolean onCreate(SubscriptionManager subscriptionManager,
+    boolean onCreate(@NonNull SubscriptionManager subscriptionManager,
             Supplier<IIccPhoneBook> iccPhoneBookSupplier, ContentNotifier notifier) {
-        if (subscriptionManager == null) {
-            return false;
-        }
         mSubscriptionManager = subscriptionManager;
         mIccPhoneBookSupplier = iccPhoneBookSupplier;
         mContentNotifier = notifier;
