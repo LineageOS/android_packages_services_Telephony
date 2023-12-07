@@ -2216,7 +2216,8 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         TestTelephonyConnection c = setupForReDialForDomainSelection(
                 mPhone0, selectedDomain, preciseDisconnectCause, disconnectCause, true);
 
-        assertTrue(mTestConnectionService.maybeReselectDomain(c, preciseDisconnectCause, null));
+        assertTrue(mTestConnectionService.maybeReselectDomain(c, null, true,
+                android.telephony.DisconnectCause.NOT_VALID));
         verify(mEmergencyCallDomainSelectionConnection).reselectDomain(any());
 
         ArgumentCaptor<DialArgs> argsCaptor = ArgumentCaptor.forClass(DialArgs.class);
@@ -2244,7 +2245,8 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         TestTelephonyConnection c = setupForReDialForDomainSelection(
                 mPhone0, selectedDomain, preciseDisconnectCause, disconnectCause, true);
 
-        assertTrue(mTestConnectionService.maybeReselectDomain(c, preciseDisconnectCause, null));
+        assertTrue(mTestConnectionService.maybeReselectDomain(c, null, true,
+                android.telephony.DisconnectCause.NOT_VALID));
         verify(mEmergencyCallDomainSelectionConnection).reselectDomain(any());
 
         ArgumentCaptor<DialArgs> argsCaptor = ArgumentCaptor.forClass(DialArgs.class);
@@ -2657,8 +2659,8 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         c.setAddress(TEST_ADDRESS, TelecomManager.PRESENTATION_ALLOWED);
 
         ImsReasonInfo reasonInfo = new ImsReasonInfo(CODE_SIP_ALTERNATE_EMERGENCY_CALL, 0, null);
-        assertTrue(mTestConnectionService.maybeReselectDomain(c,
-                  preciseDisconnectCause, reasonInfo));
+        assertTrue(mTestConnectionService.maybeReselectDomain(c, reasonInfo, true,
+                android.telephony.DisconnectCause.NOT_VALID));
 
         verify(mDomainSelectionResolver)
                 .getDomainSelectionConnection(eq(mPhone0), eq(SELECTOR_TYPE_CALLING), eq(true));
@@ -2698,8 +2700,8 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         c.setAddress(TEST_ADDRESS, TelecomManager.PRESENTATION_ALLOWED);
 
         ImsReasonInfo reasonInfo = new ImsReasonInfo(CODE_SIP_ALTERNATE_EMERGENCY_CALL, 0, null);
-        assertTrue(mTestConnectionService.maybeReselectDomain(c,
-                  preciseDisconnectCause, reasonInfo));
+        assertTrue(mTestConnectionService.maybeReselectDomain(c, reasonInfo, true,
+                android.telephony.DisconnectCause.NOT_VALID));
 
         verify(mDomainSelectionResolver)
                 .getDomainSelectionConnection(eq(mPhone0), eq(SELECTOR_TYPE_CALLING), eq(true));
@@ -2927,7 +2929,8 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         doReturn(future).when(mEmergencyCallDomainSelectionConnection)
                 .reselectDomain(any());
 
-        assertTrue(mTestConnectionService.maybeReselectDomain(c, preciseDisconnectCause, null));
+        assertTrue(mTestConnectionService.maybeReselectDomain(c, null, true,
+                android.telephony.DisconnectCause.NOT_VALID));
         verify(mEmergencyCallDomainSelectionConnection).reselectDomain(any());
 
         // dialing is canceled
@@ -2964,8 +2967,8 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
                 .startEmergencyCall(any(), anyString(), eq(false));
 
         ImsReasonInfo reasonInfo = new ImsReasonInfo(CODE_SIP_ALTERNATE_EMERGENCY_CALL, 0, null);
-        assertTrue(mTestConnectionService.maybeReselectDomain(c,
-                  preciseDisconnectCause, reasonInfo));
+        assertTrue(mTestConnectionService.maybeReselectDomain(c, reasonInfo, true,
+                android.telephony.DisconnectCause.NOT_VALID));
 
         verify(mEmergencyStateTracker)
                 .startEmergencyCall(eq(mPhone0), eq(TELECOM_CALL_ID1), eq(false));
@@ -3006,8 +3009,8 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
                 .createEmergencyConnection(any(), any());
 
         ImsReasonInfo reasonInfo = new ImsReasonInfo(CODE_SIP_ALTERNATE_EMERGENCY_CALL, 0, null);
-        assertTrue(mTestConnectionService.maybeReselectDomain(c,
-                  preciseDisconnectCause, reasonInfo));
+        assertTrue(mTestConnectionService.maybeReselectDomain(c, reasonInfo, true,
+                android.telephony.DisconnectCause.NOT_VALID));
 
         verify(mEmergencyCallDomainSelectionConnection).createEmergencyConnection(any(), any());
 
@@ -3182,7 +3185,8 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         doReturn(new CompletableFuture()).when(mEmergencyCallDomainSelectionConnection)
                 .reselectDomain(any());
 
-        assertTrue(mTestConnectionService.maybeReselectDomain(c, preciseDisconnectCause, null));
+        assertTrue(mTestConnectionService.maybeReselectDomain(c, null, true,
+                android.telephony.DisconnectCause.NOT_VALID));
         verify(mEmergencyCallDomainSelectionConnection).reselectDomain(any());
     }
 
@@ -3201,7 +3205,8 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         doReturn(new CompletableFuture()).when(mEmergencyCallDomainSelectionConnection)
                 .reselectDomain(any());
 
-        assertTrue(mTestConnectionService.maybeReselectDomain(c, preciseDisconnectCause, null));
+        assertTrue(mTestConnectionService.maybeReselectDomain(c, null, true,
+                android.telephony.DisconnectCause.NOT_VALID));
         verify(mEmergencyCallDomainSelectionConnection).reselectDomain(any());
     }
 

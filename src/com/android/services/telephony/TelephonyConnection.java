@@ -2523,8 +2523,8 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
                             }
                         }
 
-                        if (mTelephonyConnectionService.maybeReselectDomain(this,
-                                  mOriginalConnection.getPreciseDisconnectCause(), reasonInfo)) {
+                        if (mTelephonyConnectionService.maybeReselectDomain(this, reasonInfo,
+                                mShowPreciseFailedCause, mHangupDisconnectCause)) {
                             clearOriginalConnection();
                             break;
                         }
