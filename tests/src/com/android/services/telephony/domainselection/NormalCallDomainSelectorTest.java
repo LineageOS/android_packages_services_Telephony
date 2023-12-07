@@ -344,7 +344,8 @@ public class NormalCallDomainSelectorTest {
         //Case 1: WPS not supported by IMS
         PersistableBundle config = new PersistableBundle();
         config.putBoolean(CarrierConfigManager.KEY_SUPPORT_WPS_OVER_IMS_BOOL, false);
-        doReturn(config).when(mMockCarrierConfigMgr).getConfigForSubId(SUB_ID_1);
+        doReturn(config).when(mMockCarrierConfigMgr).getConfigForSubId(SUB_ID_1,
+                new String[]{CarrierConfigManager.KEY_SUPPORT_WPS_OVER_IMS_BOOL});
         ServiceState serviceState = new ServiceState();
         serviceState.setState(ServiceState.STATE_IN_SERVICE);
         initialize(serviceState, true, true, true, true);
@@ -387,7 +388,8 @@ public class NormalCallDomainSelectorTest {
         doReturn(TelecomManager.TTY_MODE_FULL).when(mMockTelecomManager).getCurrentTtyMode();
         PersistableBundle config = new PersistableBundle();
         config.putBoolean(CarrierConfigManager.KEY_CARRIER_VOLTE_TTY_SUPPORTED_BOOL, false);
-        doReturn(config).when(mMockCarrierConfigMgr).getConfigForSubId(SUB_ID_1);
+        doReturn(config).when(mMockCarrierConfigMgr).getConfigForSubId(SUB_ID_1,
+                new String[]{CarrierConfigManager.KEY_CARRIER_VOLTE_TTY_SUPPORTED_BOOL});
         ServiceState serviceState = new ServiceState();
         serviceState.setState(ServiceState.STATE_IN_SERVICE);
         initialize(serviceState, true, false, true, true);

@@ -238,7 +238,8 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
 
         PersistableBundle config = null;
         if (configManager != null) {
-            config = configManager.getConfigForSubId(mSelectionAttributes.getSubId());
+            config = configManager.getConfigForSubId(mSelectionAttributes.getSubId(),
+                    new String[] {CarrierConfigManager.KEY_SUPPORT_WPS_OVER_IMS_BOOL});
         }
 
         return (config != null)
@@ -265,7 +266,8 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
 
         PersistableBundle config = null;
         if (configManager != null) {
-            config = configManager.getConfigForSubId(mSelectionAttributes.getSubId());
+            config = configManager.getConfigForSubId(mSelectionAttributes.getSubId(),
+                    new String[] {CarrierConfigManager.KEY_CARRIER_VOLTE_TTY_SUPPORTED_BOOL});
         }
 
         return (config != null)
@@ -297,9 +299,9 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
         // IMS -> CS
         ImsReasonInfo imsReasonInfo = mSelectionAttributes.getPsDisconnectCause();
         if (mReselectDomain && imsReasonInfo != null) {
-            logd("PsDisconnectCause:" + imsReasonInfo.mCode);
+            logd("PsDisconnectCause:" + imsReasonInfo.getCode());
             mReselectDomain = false;
-            if (imsReasonInfo.mCode == ImsReasonInfo.CODE_LOCAL_CALL_CS_RETRY_REQUIRED) {
+            if (imsReasonInfo.getCode() == ImsReasonInfo.CODE_LOCAL_CALL_CS_RETRY_REQUIRED) {
                 if (isOutOfService()) {
                     loge("Cannot place call in current ServiceState: " + mServiceState.getState());
                     notifySelectionTerminated(DisconnectCause.OUT_OF_SERVICE);
