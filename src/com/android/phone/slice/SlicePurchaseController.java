@@ -48,6 +48,9 @@ import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.telephony.data.NetworkSliceInfo;
 import android.telephony.data.NetworkSlicingConfig;
+import android.telephony.data.RouteSelectionDescriptor;
+import android.telephony.data.TrafficDescriptor;
+import android.telephony.data.UrspRule;
 import android.text.TextUtils;
 import android.util.Log;
 import android.webkit.URLUtil;
@@ -92,12 +95,15 @@ public class SlicePurchaseController extends Handler {
     public static final int FAILURE_CODE_UNKNOWN = 0;
     /** Performance boost purchase failed because the carrier URL is unavailable. */
     public static final int FAILURE_CODE_CARRIER_URL_UNAVAILABLE = 1;
-    /** Performance boost purchase failed because the server is unreachable. */
-    public static final int FAILURE_CODE_SERVER_UNREACHABLE = 2;
     /** Performance boost purchase failed because user authentication failed. */
-    public static final int FAILURE_CODE_AUTHENTICATION_FAILED = 3;
+    public static final int FAILURE_CODE_AUTHENTICATION_FAILED = 2;
     /** Performance boost purchase failed because the payment failed. */
-    public static final int FAILURE_CODE_PAYMENT_FAILED = 4;
+    public static final int FAILURE_CODE_PAYMENT_FAILED = 3;
+    /**
+     * Performance boost purchase failed because the content type was specified but
+     * user data does not exist.
+     */
+    public static final int FAILURE_CODE_NO_USER_DATA = 4;
 
     /**
      * Failure codes that the carrier website can return when a premium capability purchase fails.
@@ -106,9 +112,9 @@ public class SlicePurchaseController extends Handler {
     @IntDef(prefix = { "FAILURE_CODE_" }, value = {
             FAILURE_CODE_UNKNOWN,
             FAILURE_CODE_CARRIER_URL_UNAVAILABLE,
-            FAILURE_CODE_SERVER_UNREACHABLE,
             FAILURE_CODE_AUTHENTICATION_FAILED,
-            FAILURE_CODE_PAYMENT_FAILED})
+            FAILURE_CODE_PAYMENT_FAILED,
+            FAILURE_CODE_NO_USER_DATA})
     public @interface FailureCode {}
 
     /** Value for an invalid premium capability. */
@@ -177,6 +183,12 @@ public class SlicePurchaseController extends Handler {
     private static final String ACTION_SLICE_PURCHASE_APP_RESPONSE_NOT_DEFAULT_DATA_SUBSCRIPTION =
             "com.android.phone.slice.action."
                     + "SLICE_PURCHASE_APP_RESPONSE_NOT_DEFAULT_DATA_SUBSCRIPTION";
+    /**
+     * Action indicating the performance boost notification was not shown because the user
+     * disabled notifications for the application or channel.
+     */
+    private static final String ACTION_SLICE_PURCHASE_APP_RESPONSE_NOTIFICATIONS_DISABLED =
+            "com.android.phone.slice.action.SLICE_PURCHASE_APP_RESPONSE_NOTIFICATIONS_DISABLED";
     /** Action indicating the purchase request was successful. */
     private static final String ACTION_SLICE_PURCHASE_APP_RESPONSE_SUCCESS =
             "com.android.phone.slice.action.SLICE_PURCHASE_APP_RESPONSE_SUCCESS";
@@ -209,6 +221,8 @@ public class SlicePurchaseController extends Handler {
     public static final String EXTRA_CARRIER = "com.android.phone.slice.extra.CARRIER";
     /** Extra for the user data received from the entitlement service to send to the webapp. */
     public static final String EXTRA_USER_DATA = "com.android.phone.slice.extra.USER_DATA";
+    /** Extra for the contents type received from the entitlement service to send to the webapp. */
+    public static final String EXTRA_CONTENTS_TYPE = "com.android.phone.slice.extra.CONTENTS_TYPE";
     /**
      * Extra for the canceled PendingIntent that the slice purchase application can send as a
      * response if the performance boost notification or WebView was canceled by the user.
@@ -241,6 +255,14 @@ public class SlicePurchaseController extends Handler {
      */
     public static final String EXTRA_INTENT_NOT_DEFAULT_DATA_SUBSCRIPTION =
             "com.android.phone.slice.extra.INTENT_NOT_DEFAULT_DATA_SUBSCRIPTION";
+    /**
+     * Extra for the notifications disabled PendingIntent that the slice purchase application can
+     * send as a response if the premium capability purchase request failed because the user
+     * disabled notifications for the application or channel.
+     * Sends {@link #ACTION_SLICE_PURCHASE_APP_RESPONSE_NOTIFICATIONS_DISABLED}.
+     */
+    public static final String EXTRA_INTENT_NOTIFICATIONS_DISABLED =
+            "com.android.phone.slice.extra.INTENT_NOTIFICATIONS_DISABLED";
     /**
      * Extra for the success PendingIntent that the slice purchase application can send as a
      * response if the premium capability purchase request was successful.
@@ -320,7 +342,7 @@ public class SlicePurchaseController extends Handler {
         /**
          * Create a SlicePurchaseControllerBroadcastReceiver for the given capability
          *
-         * @param capability The requested capability to listen to response for.
+         * @param capability The requested premium capability to listen to response for.
          */
         SlicePurchaseControllerBroadcastReceiver(
                 @TelephonyManager.PremiumCapability int capability) {
@@ -389,6 +411,16 @@ public class SlicePurchaseController extends Handler {
                             .handlePurchaseResult(capability,
                             PURCHASE_PREMIUM_CAPABILITY_RESULT_NOT_DEFAULT_DATA_SUBSCRIPTION,
                             false);
+                    break;
+                }
+                case ACTION_SLICE_PURCHASE_APP_RESPONSE_NOTIFICATIONS_DISABLED: {
+                    logd("Slice purchase application unable to show notification for capability: "
+                            + TelephonyManager.convertPremiumCapabilityToString(capability)
+                            + " because the user has disabled notifications.");
+                    SlicePurchaseController.getInstance(phoneId)
+                            .handlePurchaseResult(capability,
+                            TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_USER_DISABLED,
+                            true);
                     break;
                 }
                 case ACTION_SLICE_PURCHASE_APP_RESPONSE_SUCCESS: {
@@ -475,6 +507,17 @@ public class SlicePurchaseController extends Handler {
         mLocalDate = localDate;
     }
 
+    /**
+     * Set the NetworkSlicingConfig to use for determining whether the premium capability was
+     * successfully set up on the carrier network.
+     *
+     * @param slicingConfig The LocalDate instance to use.
+     */
+    @VisibleForTesting
+    public void setSlicingConfig(@NonNull NetworkSlicingConfig slicingConfig) {
+        mSlicingConfig = slicingConfig;
+    }
+
     @Override
     public void handleMessage(@NonNull Message msg) {
         switch (msg.what) {
@@ -488,7 +531,8 @@ public class SlicePurchaseController extends Handler {
             case EVENT_SLICING_CONFIG_CHANGED: {
                 AsyncResult ar = (AsyncResult) msg.obj;
                 NetworkSlicingConfig config = (NetworkSlicingConfig) ar.result;
-                logd("EVENT_SLICING_CONFIG_CHANGED: from " + mSlicingConfig + " to " + config);
+                logd("EVENT_SLICING_CONFIG_CHANGED: previous= " + mSlicingConfig);
+                logd("EVENT_SLICING_CONFIG_CHANGED: current= " + config);
                 mSlicingConfig = config;
                 onSlicingConfigChanged();
                 break;
@@ -690,6 +734,17 @@ public class SlicePurchaseController extends Handler {
 
     private void onStartSlicePurchaseApplication(
             @TelephonyManager.PremiumCapability int capability) {
+        updateNotificationCounts();
+        if (mMonthlyCount >= getCarrierConfigs().getInt(
+                CarrierConfigManager.KEY_PREMIUM_CAPABILITY_MAXIMUM_MONTHLY_NOTIFICATION_COUNT_INT)
+                || mDailyCount >= getCarrierConfigs().getInt(
+                CarrierConfigManager.KEY_PREMIUM_CAPABILITY_MAXIMUM_DAILY_NOTIFICATION_COUNT_INT)) {
+            logd("Reached maximum number of performance boost notifications.");
+            handlePurchaseResult(capability,
+                    TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_THROTTLED, false);
+            return;
+        }
+
         final PremiumNetworkEntitlementApi premiumNetworkEntitlementApi =
                 getPremiumNetworkEntitlementApi();
         PremiumNetworkEntitlementResponse premiumNetworkEntitlementResponse =
@@ -711,8 +766,8 @@ public class SlicePurchaseController extends Handler {
             return;
         }
 
-        if (premiumNetworkEntitlementResponse.isProvisioned()) {
-            logd("Entitlement Check: Already provisioned.");
+        if (premiumNetworkEntitlementResponse.isAlreadyPurchased()) {
+            logd("Entitlement Check: Already purchased/provisioned.");
             handlePurchaseResult(capability,
                     PURCHASE_PREMIUM_CAPABILITY_RESULT_ALREADY_PURCHASED, true);
             return;
@@ -725,23 +780,11 @@ public class SlicePurchaseController extends Handler {
             return;
         }
 
-        String userData = premiumNetworkEntitlementResponse.mServiceFlowUserData;
         String purchaseUrl = getPurchaseUrl(premiumNetworkEntitlementResponse);
         String carrier = getSimOperator();
         if (TextUtils.isEmpty(purchaseUrl) || TextUtils.isEmpty(carrier)) {
             handlePurchaseResult(capability,
                     PURCHASE_PREMIUM_CAPABILITY_RESULT_CARRIER_DISABLED, false);
-            return;
-        }
-
-        updateNotificationCounts();
-        if (mMonthlyCount >= getCarrierConfigs().getInt(
-                CarrierConfigManager.KEY_PREMIUM_CAPABILITY_MAXIMUM_MONTHLY_NOTIFICATION_COUNT_INT)
-                || mDailyCount >= getCarrierConfigs().getInt(
-                CarrierConfigManager.KEY_PREMIUM_CAPABILITY_MAXIMUM_DAILY_NOTIFICATION_COUNT_INT)) {
-            logd("Reached maximum number of performance boost notifications.");
-            handlePurchaseResult(capability,
-                    TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_THROTTLED, false);
             return;
         }
 
@@ -761,9 +804,9 @@ public class SlicePurchaseController extends Handler {
         intent.putExtra(EXTRA_PREMIUM_CAPABILITY, capability);
         intent.putExtra(EXTRA_PURCHASE_URL, purchaseUrl);
         intent.putExtra(EXTRA_CARRIER, carrier);
-        if (!TextUtils.isEmpty(userData)) {
-            intent.putExtra(EXTRA_USER_DATA, userData);
-        }
+        intent.putExtra(EXTRA_USER_DATA, premiumNetworkEntitlementResponse.mServiceFlowUserData);
+        intent.putExtra(EXTRA_CONTENTS_TYPE,
+                premiumNetworkEntitlementResponse.mServiceFlowContentsType);
         intent.putExtra(EXTRA_INTENT_CANCELED, createPendingIntent(
                 ACTION_SLICE_PURCHASE_APP_RESPONSE_CANCELED, capability, false));
         intent.putExtra(EXTRA_INTENT_CARRIER_ERROR, createPendingIntent(
@@ -773,6 +816,8 @@ public class SlicePurchaseController extends Handler {
         intent.putExtra(EXTRA_INTENT_NOT_DEFAULT_DATA_SUBSCRIPTION, createPendingIntent(
                 ACTION_SLICE_PURCHASE_APP_RESPONSE_NOT_DEFAULT_DATA_SUBSCRIPTION, capability,
                 false));
+        intent.putExtra(EXTRA_INTENT_NOTIFICATIONS_DISABLED, createPendingIntent(
+                ACTION_SLICE_PURCHASE_APP_RESPONSE_NOTIFICATIONS_DISABLED, capability, false));
         intent.putExtra(EXTRA_INTENT_SUCCESS, createPendingIntent(
                 ACTION_SLICE_PURCHASE_APP_RESPONSE_SUCCESS, capability, true));
         intent.putExtra(EXTRA_INTENT_NOTIFICATION_SHOWN, createPendingIntent(
@@ -788,6 +833,7 @@ public class SlicePurchaseController extends Handler {
         filter.addAction(ACTION_SLICE_PURCHASE_APP_RESPONSE_CARRIER_ERROR);
         filter.addAction(ACTION_SLICE_PURCHASE_APP_RESPONSE_REQUEST_FAILED);
         filter.addAction(ACTION_SLICE_PURCHASE_APP_RESPONSE_NOT_DEFAULT_DATA_SUBSCRIPTION);
+        filter.addAction(ACTION_SLICE_PURCHASE_APP_RESPONSE_NOTIFICATIONS_DISABLED);
         filter.addAction(ACTION_SLICE_PURCHASE_APP_RESPONSE_SUCCESS);
         filter.addAction(ACTION_SLICE_PURCHASE_APP_RESPONSE_NOTIFICATION_SHOWN);
         mPhone.getContext().registerReceiver(
@@ -977,7 +1023,8 @@ public class SlicePurchaseController extends Handler {
 
     private long getThrottleDuration(@TelephonyManager.PurchasePremiumCapabilityResult int result) {
         if (result == TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_USER_CANCELED
-                || result == TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_TIMEOUT) {
+                || result == TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_TIMEOUT
+                || result == TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_USER_DISABLED) {
             return getCarrierConfigs().getLong(CarrierConfigManager
                     .KEY_PREMIUM_CAPABILITY_NOTIFICATION_BACKOFF_HYSTERESIS_TIME_MILLIS_LONG);
         }
@@ -1037,26 +1084,71 @@ public class SlicePurchaseController extends Handler {
         return mPhone.getSubId() == SubscriptionManager.getDefaultDataSubscriptionId();
     }
 
-    private boolean isSlicingConfigActive(@TelephonyManager.PremiumCapability int capability) {
+    /**
+     * Check whether the current network slicing configuration indicates that the given premium
+     * capability is active and set up on the carrier network.
+     * @param capability The premium capability to check for.
+     * @return {@code true} if the slicing config indicates the capability is active and
+     * {@code false} otherwise.
+     */
+    @VisibleForTesting
+    public boolean isSlicingConfigActive(@TelephonyManager.PremiumCapability int capability) {
         if (mSlicingConfig == null) {
             return false;
         }
-        int capabilityServiceType = getSliceServiceType(capability);
-        for (NetworkSliceInfo sliceInfo : mSlicingConfig.getSliceInfo()) {
-            if (sliceInfo.getSliceServiceType() == capabilityServiceType
-                    && sliceInfo.getStatus() == NetworkSliceInfo.SLICE_STATUS_ALLOWED) {
-                return true;
+        for (UrspRule urspRule : mSlicingConfig.getUrspRules()) {
+            for (TrafficDescriptor trafficDescriptor : urspRule.getTrafficDescriptors()) {
+                TrafficDescriptor.OsAppId osAppId =
+                        new TrafficDescriptor.OsAppId(trafficDescriptor.getOsAppId());
+                if (osAppId.getAppId().equals(getAppId(capability))) {
+                    for (RouteSelectionDescriptor rsd : urspRule.getRouteSelectionDescriptor()) {
+                        for (NetworkSliceInfo sliceInfo : rsd.getSliceInfo()) {
+                            if (sliceInfo.getStatus() == NetworkSliceInfo.SLICE_STATUS_ALLOWED
+                                    && getSliceServiceTypes(capability).contains(
+                                            sliceInfo.getSliceServiceType())) {
+                                return true;
+                            }
+                        }
+                    }
+                }
             }
         }
         return false;
     }
 
-    @NetworkSliceInfo.SliceServiceType private int getSliceServiceType(
-            @TelephonyManager.PremiumCapability int capability) {
+    /**
+     * Get the application ID associated with the given premium capability.
+     * The app ID is a field in {@link TrafficDescriptor} that helps match URSP rules to determine
+     * whether the premium capability was successfully set up on the carrier network.
+     * @param capability The premium capability to get the app ID for.
+     * @return The application ID associated with the premium capability.
+     */
+    @VisibleForTesting
+    @NonNull public static String getAppId(@TelephonyManager.PremiumCapability int capability) {
         if (capability == TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY) {
-            return NetworkSliceInfo.SLICE_SERVICE_TYPE_URLLC;
+            return "PRIORITIZE_LATENCY";
         }
-        return NetworkSliceInfo.SLICE_SERVICE_TYPE_NONE;
+        return "";
+    }
+
+    /**
+     * Get the slice service types associated with the given premium capability.
+     * The slice service type is a field in {@link NetworkSliceInfo} that helps to match determine
+     * whether the premium capability was successfully set up on the carrier network.
+     * @param capability The premium capability to get the associated slice service types for.
+     * @return A set of slice service types associated with the premium capability.
+     */
+    @VisibleForTesting
+    @NonNull @NetworkSliceInfo.SliceServiceType public static Set<Integer> getSliceServiceTypes(
+            @TelephonyManager.PremiumCapability int capability) {
+        Set<Integer> sliceServiceTypes = new HashSet<>();
+        if (capability == TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY) {
+            sliceServiceTypes.add(NetworkSliceInfo.SLICE_SERVICE_TYPE_EMBB);
+            sliceServiceTypes.add(NetworkSliceInfo.SLICE_SERVICE_TYPE_URLLC);
+        } else {
+            sliceServiceTypes.add(NetworkSliceInfo.SLICE_SERVICE_TYPE_NONE);
+        }
+        return sliceServiceTypes;
     }
 
     private boolean isNetworkAvailable() {
@@ -1094,9 +1186,9 @@ public class SlicePurchaseController extends Handler {
         switch (failureCode) {
             case FAILURE_CODE_UNKNOWN: return "UNKNOWN";
             case FAILURE_CODE_CARRIER_URL_UNAVAILABLE: return "CARRIER_URL_UNAVAILABLE";
-            case FAILURE_CODE_SERVER_UNREACHABLE: return "SERVER_UNREACHABLE";
             case FAILURE_CODE_AUTHENTICATION_FAILED: return "AUTHENTICATION_FAILED";
             case FAILURE_CODE_PAYMENT_FAILED: return "PAYMENT_FAILED";
+            case FAILURE_CODE_NO_USER_DATA: return "NO_USER_DATA";
             default:
                 return "UNKNOWN(" + failureCode + ")";
         }

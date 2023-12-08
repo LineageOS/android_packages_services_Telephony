@@ -114,6 +114,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
 import java.util.function.Consumer;
 import java.util.regex.Pattern;
+import java.util.stream.Stream;
 
 import javax.annotation.Nullable;
 
@@ -1171,7 +1172,8 @@ public class TelephonyConnectionService extends ConnectionService {
             }
 
             if (!isEmergencyNumber) {
-                if (mSatelliteController.isSatelliteEnabled()) {
+                if (mSatelliteController.isSatelliteEnabled()
+                        || isCallDisallowedDueToSatellite(phone)) {
                     Log.d(this, "onCreateOutgoingConnection, cannot make call in satellite mode.");
                     return Connection.createFailedConnection(
                             mDisconnectCauseFactory.toTelecomDisconnectCause(
@@ -2575,13 +2577,30 @@ public class TelephonyConnectionService extends ConnectionService {
 
     private boolean isNormalRouting(Phone phone, String number) {
         if (phone.getEmergencyNumberTracker() != null) {
-            EmergencyNumber num = phone.getEmergencyNumberTracker().getEmergencyNumber(number);
-            if (num != null) {
-                return num.getEmergencyCallRouting()
-                        == EmergencyNumber.EMERGENCY_CALL_ROUTING_NORMAL;
-            }
+            // Note: There can potentially be multiple instances of EmergencyNumber found; if any of
+            // them have normal routing, then use normal routing.
+            List<EmergencyNumber> nums = phone.getEmergencyNumberTracker().getEmergencyNumbers(
+                    number);
+            return nums.stream().anyMatch(n ->
+                    n.getEmergencyCallRouting() == EmergencyNumber.EMERGENCY_CALL_ROUTING_NORMAL);
         }
         return false;
+    }
+
+    /**
+     * Determines the phone to use for a normal routed emergency call.
+     * @param number The emergency number.
+     * @return The {@link Phone} to place the normal routed emergency call on, or {@code null} if
+     * none was found.
+     */
+    @VisibleForTesting
+    public Phone getPhoneForNormalRoutedEmergencyCall(String number) {
+        return Stream.of(mPhoneFactoryProxy.getPhones())
+                .filter(p -> p.shouldPreferInServiceSimForNormalRoutedEmergencyCall()
+                        && isNormalRouting(p, number)
+                        && isAvailableForEmergencyCalls(p,
+                                EmergencyNumber.EMERGENCY_CALL_ROUTING_NORMAL))
+                .findFirst().orElse(null);
     }
 
     private boolean isVoiceInService(Phone phone, boolean imsVoiceCapable) {
@@ -3031,15 +3050,34 @@ public class TelephonyConnectionService extends ConnectionService {
         if (subId != SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
             int phoneId = mSubscriptionManagerProxy.getPhoneId(subId);
             chosenPhone = mPhoneFactoryProxy.getPhone(phoneId);
+            Log.i(this, "getPhoneForAccount: handle=%s, subId=%s", accountHandle,
+                    (chosenPhone == null ? "null" : chosenPhone.getSubId()));
         }
-        // If this is an emergency call and the phone we originally planned to make this call
+
+        // If this isn't an emergency call, just use the chosen phone (or null if none was found).
+        if (!isEmergency) {
+            return chosenPhone;
+        }
+
+        // Check if this call should be treated as a normal routed emergency call; we'll return null
+        // if this is not a normal routed emergency call.
+        Phone normalRoutingPhone = getPhoneForNormalRoutedEmergencyCall(emergencyNumberAddress);
+        if (normalRoutingPhone != null) {
+            Log.i(this, "getPhoneForAccount: normal routed emergency number,"
+                            + "using phoneId=%d/subId=%d", normalRoutingPhone.getPhoneId(),
+                    normalRoutingPhone.getSubId());
+            return normalRoutingPhone;
+        }
+
+        // Default emergency call phone selection logic:
+        // This is an emergency call and the phone we originally planned to make this call
         // with is not in service or was invalid, try to find one that is in service, using the
         // default as a last chance backup.
-        if (isEmergency && (chosenPhone == null || !isAvailableForEmergencyCalls(chosenPhone))) {
+        if (chosenPhone == null || !isAvailableForEmergencyCalls(chosenPhone)) {
             Log.d(this, "getPhoneForAccount: phone for phone acct handle %s is out of service "
                     + "or invalid for emergency call.", accountHandle);
             chosenPhone = getPhoneForEmergencyCall(emergencyNumberAddress);
-            Log.d(this, "getPhoneForAccount: using subId: " +
+            Log.i(this, "getPhoneForAccount: emergency call - using subId: %s",
                     (chosenPhone == null ? "null" : chosenPhone.getSubId()));
         }
         return chosenPhone;
@@ -3459,10 +3497,20 @@ public class TelephonyConnectionService extends ConnectionService {
         }
     }
 
-    /**
-     * Returns true if the state of the Phone is IN_SERVICE or available for emergency calling only.
-     */
     private boolean isAvailableForEmergencyCalls(Phone phone) {
+        return isAvailableForEmergencyCalls(phone,
+                EmergencyNumber.EMERGENCY_CALL_ROUTING_EMERGENCY);
+    }
+
+    /**
+     * Determines if the phone is available for an emergency call given the specified routing.
+     *
+     * @param phone the phone to check the service availability for
+     * @param routing the emergency call routing for this call
+     */
+    @VisibleForTesting
+    public boolean isAvailableForEmergencyCalls(Phone phone,
+            @EmergencyNumber.EmergencyCallRouting int routing) {
         if (phone.getImsRegistrationTech() == ImsRegistrationImplBase.REGISTRATION_TECH_CROSS_SIM) {
             // When a Phone is registered to Cross-SIM calling, there must always be a Phone on the
             // other sub which is registered to cellular, so that must be selected.
@@ -3470,8 +3518,17 @@ public class TelephonyConnectionService extends ConnectionService {
                     + phone + " as it is registered to CROSS_SIM");
             return false;
         }
-        return ServiceState.STATE_IN_SERVICE == phone.getServiceState().getState() ||
-                phone.getServiceState().isEmergencyOnly();
+
+        // In service phones are always appropriate for emergency calls.
+        if (ServiceState.STATE_IN_SERVICE == phone.getServiceState().getState()) {
+            return true;
+        }
+
+        // If the call routing is unknown or is using emergency routing, an emergency only attach is
+        // sufficient for placing the emergency call.  Normal routed emergency calls cannot be
+        // placed on an emergency-only phone.
+        return (routing != EmergencyNumber.EMERGENCY_CALL_ROUTING_NORMAL
+                && phone.getServiceState().isEmergencyOnly());
     }
 
     /**
@@ -4066,5 +4123,35 @@ public class TelephonyConnectionService extends ConnectionService {
         }
         connection.addTelephonyConnectionListener(mEmergencyConnectionSatelliteListener);
         mSatelliteSOSMessageRecommender.onEmergencyCallStarted(connection, phone);
+    }
+
+    /**
+     * Check whether making a call is disallowed while using satellite
+     * @param phone phone object whose supported services needs to be checked
+     * @return {@code true} if network does not support calls while using satellite
+     * else {@code false}.
+     */
+    private boolean isCallDisallowedDueToSatellite(Phone phone) {
+        if (phone == null) {
+            return false;
+        }
+
+        ServiceState serviceState = phone.getServiceState();
+        if (!serviceState.isUsingNonTerrestrialNetwork()) {
+            // Device is not connected to satellite
+            return false;
+        }
+
+        for (NetworkRegistrationInfo nri : serviceState.getNetworkRegistrationInfoList()) {
+            if (nri.isNonTerrestrialNetwork()
+                    && nri.getAvailableServices().contains(
+                    NetworkRegistrationInfo.SERVICE_TYPE_VOICE)) {
+                // Call is supported while using satellite
+                return false;
+            }
+        }
+
+        // Call is disallowed while using satellite
+        return true;
     }
 }
