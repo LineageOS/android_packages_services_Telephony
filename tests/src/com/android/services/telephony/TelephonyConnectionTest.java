@@ -14,6 +14,7 @@ import static junit.framework.TestCase.assertFalse;
 
 import static org.junit.Assert.assertNotEquals;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyBoolean;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.doReturn;
@@ -280,7 +281,7 @@ public class TelephonyConnectionTest {
         c.updateState();
 
         verify(mTelephonyConnectionService)
-                .maybeReselectDomain(any(), anyInt(), any());
+                .maybeReselectDomain(any(), any(), anyBoolean(), anyInt());
     }
 
     @Test
@@ -291,7 +292,7 @@ public class TelephonyConnectionTest {
                 .getState();
         c.setTelephonyConnectionService(mTelephonyConnectionService);
         doReturn(false).when(mTelephonyConnectionService)
-                .maybeReselectDomain(any(), anyInt(), any());
+                .maybeReselectDomain(any(), any(), anyBoolean(), anyInt());
         c.updateState();
 
         assertEquals(STATE_DISCONNECTED, c.getState());
@@ -306,7 +307,7 @@ public class TelephonyConnectionTest {
                 .getState();
         c.setTelephonyConnectionService(mTelephonyConnectionService);
         doReturn(true).when(mTelephonyConnectionService)
-                .maybeReselectDomain(any(), anyInt(), any());
+                .maybeReselectDomain(any(), any(), anyBoolean(), anyInt());
         c.resetOriginalConnectionCleared();
         c.updateState();
 
@@ -327,7 +328,7 @@ public class TelephonyConnectionTest {
                 .when(mImsPhoneConnection).getEmergencyNumberInfo();
         c.setTelephonyConnectionService(mTelephonyConnectionService);
         doReturn(true).when(mTelephonyConnectionService)
-                .maybeReselectDomain(any(), anyInt(), any());
+                .maybeReselectDomain(any(), any(), anyBoolean(), anyInt());
         c.updateState();
 
         Integer serviceCategory = c.getEmergencyServiceCategory();
@@ -351,7 +352,7 @@ public class TelephonyConnectionTest {
                 .when(mImsPhoneConnection).getEmergencyNumberInfo();
         c.setTelephonyConnectionService(mTelephonyConnectionService);
         doReturn(true).when(mTelephonyConnectionService)
-                .maybeReselectDomain(any(), anyInt(), any());
+                .maybeReselectDomain(any(), any(), anyBoolean(), anyInt());
         c.updateState();
 
         Integer serviceCategory = c.getEmergencyServiceCategory();

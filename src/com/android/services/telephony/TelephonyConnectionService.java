@@ -71,6 +71,7 @@ import android.view.WindowManager;
 import com.android.ims.ImsManager;
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.telephony.Call;
+import com.android.internal.telephony.CallFailCause;
 import com.android.internal.telephony.CallStateException;
 import com.android.internal.telephony.GsmCdmaPhone;
 import com.android.internal.telephony.IccCard;
@@ -749,35 +750,45 @@ public class TelephonyConnectionService extends ConnectionService {
                 public void onSelectionTerminated(@DisconnectCauses int cause) {
                     mDomainSelectionMainExecutor.execute(new Runnable() {
                         int mCause = cause;
+
                         @Override
                         public void run() {
                             Log.v(this, "Call domain selection terminated.");
                             if (mDomainSelectionConnection != null) {
-                                mDomainSelectionConnection = null;
-                            }
-                            if (mNormalCallConnection != null) {
-                                // TODO: To support ShowPreciseFailedCause, TelephonyConnection
-                                //  .getShowPreciseFailedCause API should be added.
+                                if (mNormalCallConnection != null) {
 
-                                // If cause is NOT_VALID then, it's a redial cancellation and
-                                // use cause code from original connection.
-                                com.android.internal.telephony.Connection connection =
-                                        mNormalCallConnection.getOriginalConnection();
-                                if (connection != null) {
+                                    NormalCallDomainSelectionConnection ncdsConn =
+                                            (NormalCallDomainSelectionConnection)
+                                                    mDomainSelectionConnection;
+
+                                    // If cause is NOT_VALID then, it's a redial cancellation
                                     if (mCause == android.telephony.DisconnectCause.NOT_VALID) {
-                                        mCause = connection.getDisconnectCause();
+                                        mCause = ncdsConn.getDisconnectCause();
                                     }
 
-                                    String reason = connection.getVendorDisconnectCause();
-                                    int phoneId = mNormalCallConnection.getPhone().getPhoneId();
+                                    Log.d(this, "Call connection closed. PreciseCause: "
+                                            + ncdsConn.getPreciseDisconnectCause()
+                                            + " DisconnectCause: " + ncdsConn.getDisconnectCause()
+                                            + " Reason: " + ncdsConn.getReasonMessage());
+
                                     mNormalCallConnection.setTelephonyConnectionDisconnected(
-                                            mDisconnectCauseFactory.toTelecomDisconnectCause(
-                                                    mCause, reason, phoneId));
-                                    Log.d(this, "Call connection closed. Cause: " + mCause
-                                            + " Reason: " + reason);
+                                            DisconnectCauseUtil.toTelecomDisconnectCause(mCause,
+                                                    ncdsConn.getPreciseDisconnectCause(),
+                                                    ncdsConn.getReasonMessage(),
+                                                    ncdsConn.getPhoneId(),
+                                                    ncdsConn.getImsReasonInfo(),
+                                                    new FlagsAdapterImpl()));
+
+                                    mNormalCallConnection.close();
+                                    mNormalCallConnection = null;
+                                } else {
+                                    Log.v(this, "NormalCallConnection is null.");
                                 }
-                                mNormalCallConnection.close();
-                                mNormalCallConnection = null;
+
+                                mDomainSelectionConnection = null;
+
+                            } else {
+                                Log.v(this, "DomainSelectionConnection is null.");
                             }
                         }
                     });
@@ -2514,14 +2525,18 @@ public class TelephonyConnectionService extends ConnectionService {
     /**
      * Determine whether reselection of domain is required or not.
      * @param c the {@link Connection} instance.
-     * @param callFailCause the reason why CS call is disconnected. Allowed values are defined in
      * {@link com.android.internal.telephony.CallFailCause}.
      * @param reasonInfo the reason why PS call is disconnected.
+     * @param showPreciseCause Indicates whether this connection supports showing precise
+     *                         call failed cause.
+     * @param overrideCause Provides a DisconnectCause associated with a hang up request.
      * @return {@code true} if reselection of domain is required.
      */
-    public boolean maybeReselectDomain(final TelephonyConnection c,
-            int callFailCause, ImsReasonInfo reasonInfo) {
+    public boolean maybeReselectDomain(final TelephonyConnection c, ImsReasonInfo reasonInfo,
+                                       boolean showPreciseCause, int overrideCause) {
         if (!mDomainSelectionResolver.isDomainSelectionSupported()) return false;
+
+        int callFailCause = c.getOriginalConnection().getPreciseDisconnectCause();
 
         Log.i(this, "maybeReselectDomain csCause=" +  callFailCause + ", psCause=" + reasonInfo);
         if (TextUtils.equals(mEmergencyCallId, c.getTelecomCallId())) {
@@ -2554,7 +2569,7 @@ public class TelephonyConnectionService extends ConnectionService {
             }
         }
 
-        return maybeReselectDomainForNormalCall(c, callFailCause, reasonInfo);
+        return maybeReselectDomainForNormalCall(c, reasonInfo, showPreciseCause, overrideCause);
     }
 
     private boolean maybeReselectDomainForEmergencyCall(final TelephonyConnection c,
@@ -2695,25 +2710,45 @@ public class TelephonyConnectionService extends ConnectionService {
     }
 
     private boolean maybeReselectDomainForNormalCall(
-            final TelephonyConnection c, int callFailCause, ImsReasonInfo reasonInfo) {
+            final TelephonyConnection c, ImsReasonInfo reasonInfo,
+            boolean showPreciseCause, int overrideCause) {
 
-        Log.i(LOG_TAG, "maybeReselectDomainForNormalCall " + "csCause:" +  callFailCause
-                + ", psCause:" + reasonInfo);
+        Log.i(LOG_TAG, "maybeReselectDomainForNormalCall");
 
-        if (mDomainSelectionConnection != null && c.getOriginalConnection() != null) {
+        com.android.internal.telephony.Connection originalConn = c.getOriginalConnection();
+        if (mDomainSelectionConnection != null && originalConn != null) {
             Phone phone = c.getPhone().getDefaultPhone();
             final String number = c.getAddress().getSchemeSpecificPart();
-            int videoState = c.getOriginalConnection().getVideoState();
+            int videoState = originalConn.getVideoState();
+
             SelectionAttributes selectionAttributes = NormalCallDomainSelectionConnection
                     .getSelectionAttributes(phone.getPhoneId(), phone.getSubId(),
                             c.getTelecomCallId(), number, VideoProfile.isVideo(videoState),
-                            callFailCause, reasonInfo);
+                            originalConn.getPreciseDisconnectCause(), reasonInfo);
 
-            Log.d(LOG_TAG, "Reselecting the domain for call");
-            mNormalCallConnection = c;
             CompletableFuture<Integer> future = mDomainSelectionConnection
                     .reselectDomain(selectionAttributes);
             if (future != null) {
+                int preciseDisconnectCause = CallFailCause.NOT_VALID;
+                if (showPreciseCause) {
+                    preciseDisconnectCause = originalConn.getPreciseDisconnectCause();
+                }
+
+                int disconnectCause = originalConn.getDisconnectCause();
+                if ((overrideCause != android.telephony.DisconnectCause.NOT_VALID)
+                        && (overrideCause != disconnectCause)) {
+                    Log.i(LOG_TAG, "setDisconnected: override cause: " + disconnectCause
+                            + " -> " + overrideCause);
+                    disconnectCause = overrideCause;
+                }
+
+                ((NormalCallDomainSelectionConnection) mDomainSelectionConnection)
+                        .setDisconnectCause(disconnectCause, preciseDisconnectCause,
+                                originalConn.getVendorDisconnectCause());
+
+                Log.d(LOG_TAG, "Reselecting the domain for call");
+                mNormalCallConnection = c;
+
                 future.thenAcceptAsync((result) -> {
                     onNormalCallRedial(c, phone, result, videoState);
                 }, mDomainSelectionMainExecutor);
