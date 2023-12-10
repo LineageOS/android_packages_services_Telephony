@@ -16,12 +16,15 @@
 
 package com.android.phone;
 
+import static android.content.pm.PackageManager.FEATURE_TELEPHONY_SUBSCRIPTION;
 import static android.service.carrier.CarrierService.ICarrierServiceWrapper.KEY_CONFIG_BUNDLE;
 import static android.service.carrier.CarrierService.ICarrierServiceWrapper.RESULT_ERROR;
+import static android.telephony.TelephonyManager.ENABLE_FEATURE_MAPPING;
 
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.app.AppOpsManager;
+import android.app.compat.CompatChanges;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
@@ -66,6 +69,7 @@ import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConfigurationManager;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.TelephonyPermissions;
+import com.android.internal.telephony.flags.FeatureFlags;
 import com.android.internal.telephony.subscription.SubscriptionManagerService;
 import com.android.internal.telephony.util.ArrayUtils;
 import com.android.internal.telephony.util.TelephonyUtils;
@@ -685,12 +689,17 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
 
     @NonNull private final Handler mHandler;
 
+    @NonNull private final FeatureFlags  mFeatureFlags;
+
+    @NonNull private final PackageManager mPackageManager;
+
     /**
      * Constructs a CarrierConfigLoader, registers it as a service, and registers a broadcast
      * receiver for relevant events.
      */
     @VisibleForTesting
-    /* package */ CarrierConfigLoader(@NonNull Context context, @NonNull Looper looper) {
+    /* package */ CarrierConfigLoader(@NonNull Context context, @NonNull Looper looper,
+            @NonNull FeatureFlags featureFlags) {
         super(PermissionEnforcer.fromContext(context));
         mContext = context;
         mPlatformCarrierConfigPackage =
@@ -719,6 +728,8 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
             TelephonyManager.from(context).registerCarrierPrivilegesCallback(phoneId,
                     new HandlerExecutor(mHandler), mCarrierServiceChangeCallbacks[phoneId]);
         }
+        mFeatureFlags = featureFlags;
+        mPackageManager = context.getPackageManager();
         logd("CarrierConfigLoader has started");
 
         PhoneConfigurationManager.registerForMultiSimConfigChange(
@@ -733,10 +744,11 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
      * This is only done once, at startup, from {@link com.android.phone.PhoneApp#onCreate}.
      */
     @NonNull
-    /* package */ static CarrierConfigLoader init(@NonNull Context context) {
+    /* package */ static CarrierConfigLoader init(@NonNull Context context,
+            @NonNull FeatureFlags featureFlags) {
         synchronized (CarrierConfigLoader.class) {
             if (sInstance == null) {
-                sInstance = new CarrierConfigLoader(context, Looper.myLooper());
+                sInstance = new CarrierConfigLoader(context, Looper.myLooper(), featureFlags);
                 // Make this service available through ServiceManager.
                 TelephonyFrameworkInitializer.getTelephonyServiceManager()
                         .getCarrierConfigServiceRegisterer().register(sInstance);
@@ -1323,6 +1335,8 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
             return new PersistableBundle();
         }
 
+        enforceTelephonyFeatureWithException(callingPackage, "getConfigForSubIdWithFeature");
+
         int phoneId = SubscriptionManager.getPhoneId(subscriptionId);
         PersistableBundle retConfig = CarrierConfigManager.getDefaultConfig();
         if (SubscriptionManager.isValidPhoneId(phoneId)) {
@@ -1366,6 +1380,9 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         Objects.requireNonNull(callingPackage, "Calling package must be non-null");
         Objects.requireNonNull(keys, "Config keys must be non-null");
         enforceCallerIsSystemOrRequestingPackage(callingPackage);
+
+        enforceTelephonyFeatureWithException(callingPackage,
+                "getConfigSubsetForSubIdWithFeature");
 
         // Permission check is performed inside and an empty bundle will return on failure.
         // No SecurityException thrown here since most clients expect to retrieve the overridden
@@ -1416,6 +1433,9 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
             throw new IllegalArgumentException(
                     "Invalid phoneId " + phoneId + " for subId " + subscriptionId);
         }
+
+        enforceTelephonyFeatureWithException(getCurrentPackageName(), "overrideConfig");
+
         // Post to run on handler thread on which all states should be confined.
         mHandler.post(() -> {
             overrideConfig(mOverrideConfigs, phoneId, overrides);
@@ -1468,6 +1488,9 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                     "Invalid phoneId " + phoneId + " for subId " + subscriptionId);
         }
 
+        enforceTelephonyFeatureWithException(getCurrentPackageName(),
+                "notifyConfigChangedForSubId");
+
         logdWithLocalLog("Notified carrier config changed. phoneId=" + phoneId
                 + ", subId=" + subscriptionId);
 
@@ -1488,6 +1511,9 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         if (!SubscriptionManager.isValidPhoneId(phoneId)) {
             throw new IllegalArgumentException("Invalid phoneId: " + phoneId);
         }
+
+        enforceTelephonyFeatureWithException(getCurrentPackageName(), "updateConfigForPhoneId");
+
         // requires Java 7 for switch on string.
         switch (simState) {
             case IccCardConstants.INTENT_VALUE_ICC_ABSENT:
@@ -1509,6 +1535,10 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
     @NonNull
     public String getDefaultCarrierServicePackageName() {
         getDefaultCarrierServicePackageName_enforcePermission();
+
+        enforceTelephonyFeatureWithException(getCurrentPackageName(),
+                "getDefaultCarrierServicePackageName");
+
         return mPlatformCarrierConfigPackage;
     }
 
@@ -1817,6 +1847,40 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         return TelephonyManager.from(mContext).createForSubscriptionId(subId)
                 .checkCarrierPrivilegesForPackage(pkgName)
                 == TelephonyManager.CARRIER_PRIVILEGE_STATUS_HAS_ACCESS;
+    }
+
+    /**
+     * Get the current calling package name.
+     * @return the current calling package name
+     */
+    @Nullable
+    private String getCurrentPackageName() {
+        if (mPackageManager == null) return null;
+        String[] callingUids = mPackageManager.getPackagesForUid(Binder.getCallingUid());
+        return (callingUids == null) ? null : callingUids[0];
+    }
+
+    /**
+     * Make sure the device has required telephony feature
+     *
+     * @throws UnsupportedOperationException if the device does not have required telephony feature
+     */
+    private void enforceTelephonyFeatureWithException(@Nullable String callingPackage,
+            @NonNull String methodName) {
+        if (callingPackage == null || mPackageManager == null) {
+            return;
+        }
+
+        if (!mFeatureFlags.enforceTelephonyFeatureMappingForPublicApis()
+                || !CompatChanges.isChangeEnabled(ENABLE_FEATURE_MAPPING, callingPackage,
+                Binder.getCallingUserHandle())) {
+            return;
+        }
+
+        if (!mPackageManager.hasSystemFeature(FEATURE_TELEPHONY_SUBSCRIPTION)) {
+            throw new UnsupportedOperationException(
+                    methodName + " is unsupported without " + FEATURE_TELEPHONY_SUBSCRIPTION);
+        }
     }
 
     private class CarrierServiceConnection implements ServiceConnection {

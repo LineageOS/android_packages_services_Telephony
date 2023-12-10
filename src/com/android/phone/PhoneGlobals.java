@@ -578,7 +578,7 @@ public class PhoneGlobals extends ContextWrapper {
 
             imsRcsController = ImsRcsController.init(this);
 
-            configLoader = CarrierConfigLoader.init(this);
+            configLoader = CarrierConfigLoader.init(this, mFeatureFlags);
 
             if (getPackageManager().hasSystemFeature(PackageManager.FEATURE_TELEPHONY_IMS)) {
                 mImsStateCallbackController =
