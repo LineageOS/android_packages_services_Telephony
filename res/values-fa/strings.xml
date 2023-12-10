@@ -598,7 +598,7 @@
     <string name="hac_mode_summary" msgid="7774989500136009881">"روشن کردن سازگاری دستگاه کمک‌شنوایی"</string>
     <string name="rtt_mode_title" msgid="3075948111362818043">"‏تماس با نوشتار هم‌زمان (RTT)"</string>
     <string name="rtt_mode_summary" msgid="8631541375609989562">"پیام‌رسانی در تماس صوتی مجاز است"</string>
-    <string name="rtt_mode_more_information" msgid="587500128658756318">"‏«نوشتار هم‌زمان» به تماس گیرندگان ناشنوا، دارای مشکل شنوایی، دارای ناتوانی گفتاری یا افرادی که به چیزی بیش از صدا نیاز دارند کمک می‌کند.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;بیشتر بدانید&lt;/a&gt;\n       ‏&lt;br&gt;&lt;br&gt; تماس‌های «نوشتار هم‌زمان» به‌صورت ترانویسی پیام ذخیره می‌شود\n       &lt;br&gt; «نوشتار هم‌زمان» برای تماس‌های ویدیویی دردسترس نیست"</string>
+    <string name="rtt_mode_more_information" msgid="587500128658756318">"‏«نوشتار هم‌زمان» به تماس گیرندگان ناشنوا، دارای مشکل شنوایی، دارای ناتوانی گفتاری یا افرادی که به چیزی بیش از صدا نیاز دارند کمک می‌کند.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;بیشتر بدانید&lt;/a&gt;\n       ‏&lt;br&gt;&lt;br&gt; تماس‌های «نوشتار هم‌زمان» به‌صورت ترانویسی پیام ذخیره می‌شود\n       &lt;br&gt; «نوشتار هم‌زمان» برای تماس‌های تصویری دردسترس نیست"</string>
     <string name="no_rtt_when_roaming" msgid="5268008247378355389">"نکته: «نوشتار هم‌زمان» در هنگام فراگردی دردسترس نیست"</string>
   <string-array name="tty_mode_entries">
     <item msgid="3238070884803849303">"‏TTY خاموش"</item>
@@ -661,7 +661,7 @@
     <string name="description_dial_button" msgid="8614631902795087259">"شماره گیری"</string>
     <string name="description_dialpad_button" msgid="7395114120463883623">"نمایش صفحه شماره گیری"</string>
     <string name="pane_title_emergency_dialpad" msgid="3627372514638694401">"صفحه شماره‌گیری اضطراری"</string>
-    <string name="voicemail_visual_voicemail_switch_title" msgid="6610414098912832120">"پست صوتی تصویری"</string>
+    <string name="voicemail_visual_voicemail_switch_title" msgid="6610414098912832120">"پست صوتی دیداری"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="7005128605986960003">"تنظیم پین"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="4633077715231764435">"تغییر پین"</string>
     <string name="preference_category_ringtone" msgid="8787281191375434976">"آهنگ‌ زنگ و لرزش"</string>

@@ -133,7 +133,7 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"Mise en attente d\'appels CDMA sous IMS désactivée"</string>
     <string name="updating_title" msgid="6130548922615719689">"Paramètres d\'appel"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Seul l\'administrateur peut modifier les paramètres d\'appel."</string>
-    <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Seuls l\'administrateur ou l\'utilisateur professionnel peuvent modifier les paramètres du compte téléphonique."</string>
+    <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Seuls l\'admin. ou l\'utilisat. profession. peuvent modif. les param. du compte tél."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Paramètres (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Erreur des paramètres d\'appel"</string>
     <string name="reading_settings" msgid="1605904432450871183">"Lecture des paramètres..."</string>

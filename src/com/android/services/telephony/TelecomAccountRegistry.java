@@ -16,6 +16,7 @@
 
 package com.android.services.telephony;
 
+import android.app.ActivityManager;
 import android.app.PropertyInvalidatedCache;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -1191,7 +1192,7 @@ public class TelecomAccountRegistry {
     private int mSubscriptionListenerState = LISTENER_STATE_UNREGISTERED;
     private int mServiceState = ServiceState.STATE_POWER_OFF;
     private int mActiveDataSubscriptionId = SubscriptionManager.INVALID_SUBSCRIPTION_ID;
-    private boolean mIsPrimaryUser = true;
+    private boolean mIsPrimaryUser = UserHandle.of(ActivityManager.getCurrentUser()).isSystem();
     private ExponentialBackoff mRegisterSubscriptionListenerBackoff;
     private final HandlerThread mHandlerThread = new HandlerThread("TelecomAccountRegistry");
 

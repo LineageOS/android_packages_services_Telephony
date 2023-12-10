@@ -133,7 +133,7 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"CDMA poziv na čekanju u okviru IMS-a isključen"</string>
     <string name="updating_title" msgid="6130548922615719689">"Postavke poziva"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Postavke poziva može mijenjati samo korisnik koji je administrator."</string>
-    <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Postavke telefonskog računa može promijeniti samo administrator ili poslovni korisnik."</string>
+    <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Postavke računa za telefon može mijenjati samo administrator ili poslovni korisnik."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Postavke (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Pogreška postavki poziva"</string>
     <string name="reading_settings" msgid="1605904432450871183">"Čitanje postavki..."</string>
