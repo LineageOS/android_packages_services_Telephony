@@ -399,6 +399,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     // Toggling null cipher and integrity support was added in IRadioNetwork 2.1
     private static final int MIN_NULL_CIPHER_AND_INTEGRITY_VERSION = 201;
+    // Cellular identifier disclosure transparency was added in IRadioNetwork 2.2
+    private static final int MIN_IDENTIFIER_DISCLOSURE_VERSION = 202;
 
     /** The singleton instance. */
     private static PhoneInterfaceManager sInstance;
@@ -11936,6 +11938,18 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
+    private void checkForIdentifierDisclosureNotificationSupport() {
+        if (getHalVersion(HAL_SERVICE_NETWORK) < MIN_IDENTIFIER_DISCLOSURE_VERSION) {
+            throw new UnsupportedOperationException(
+                    "Cellular identifier disclosure transparency operations require HAL 2.2 or "
+                            + "above");
+        }
+        if (!getDefaultPhone().isIdentifierDisclosureTransparencySupported()) {
+            throw new UnsupportedOperationException(
+                    "Cellular identifier disclosure transparency operations unsupported by modem");
+        }
+    }
+
     /**
      * Get the SIM state for the slot index.
      * For Remote-SIMs, this method returns {@link IccCardConstants.State#UNKNOWN}
@@ -12767,6 +12781,46 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 "setShouldSendDatagramToModemInDemoMode");
         return mSatelliteController.setShouldSendDatagramToModemInDemoMode(
                 shouldSendToModemInDemoMode);
+    }
+
+    /**
+     * Enable or disable notifications sent for cellular identifier disclosure events.
+     *
+     * Disclosure events are defined as instances where a device has sent a cellular identifier
+     * on the Non-access stratum (NAS) before a security context is established. As a result the
+     * identifier is sent in the clear, which has privacy implications for the user.
+     *
+     * @param enable if notifications about disclosure events should be enabled
+     * @throws SecurityException             if the caller does not have the required privileges
+     * @throws UnsupportedOperationException if the modem does not support this feature.
+     */
+    @RequiresPermission(Manifest.permission.MODIFY_PHONE_STATE)
+    public void enableCellularIdentifierDisclosureNotifications(boolean enable) {
+        enforceModifyPermission();
+        checkForIdentifierDisclosureNotificationSupport();
+
+        SharedPreferences.Editor editor = mTelephonySharedPreferences.edit();
+        editor.putBoolean(Phone.PREF_IDENTIFIER_DISCLOSURE_NOTIFICATIONS_ENABLED, enable);
+        editor.apply();
+
+        // Each phone instance is responsible for updating its respective modem immediately
+        // after we've made a preference change.
+        for (Phone phone : PhoneFactory.getPhones()) {
+            phone.handleIdentifierDisclosureNotificationPreferenceChange();
+        }
+    }
+
+    /**
+     * Get whether or not cellular identifier disclosure notifications are enabled.
+     *
+     * @throws SecurityException             if the caller does not have the required privileges
+     * @throws UnsupportedOperationException if the modem does not support this feature.
+     */
+    @RequiresPermission(Manifest.permission.READ_PRIVILEGED_PHONE_STATE)
+    public boolean isCellularIdentifierDisclosureNotificationEnabled() {
+        enforceReadPrivilegedPermission("isCellularIdentifierDisclosureNotificationEnabled");
+        checkForIdentifierDisclosureNotificationSupport();
+        return getDefaultPhone().getIdentifierDisclosureNotificationsPreferenceEnabled();
     }
 
     /**
