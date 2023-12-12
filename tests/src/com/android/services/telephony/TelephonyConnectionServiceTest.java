@@ -319,6 +319,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         mBinderStub = (IConnectionService.Stub) mTestConnectionService.onBind(null);
         mSetFlagsRule.disableFlags(Flags.FLAG_CARRIER_ENABLED_SATELLITE_FLAG);
         mSetFlagsRule.enableFlags(Flags.FLAG_DO_NOT_OVERRIDE_PRECISE_LABEL);
+        mSetFlagsRule.enableFlags(Flags.FLAG_CALL_EXTRA_FOR_NON_HOLD_SUPPORTED_CARRIERS);
     }
 
     @After
@@ -1816,7 +1817,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         SimpleTelephonyConnection tc1 = createTestConnection(SUB1_HANDLE, 0, false);
         tcs.add(tc1);
         TelephonyConnectionService.maybeDisconnectCallsOnOtherSubs(
-                tcs, SUB1_HANDLE, mTelephonyManagerProxy);
+                tcs, SUB1_HANDLE, false, mTelephonyManagerProxy);
         // Would've preferred to use mockito, but can't mock out TelephonyConnection/Connection
         // easily.
         assertFalse(tc1.wasDisconnected);
@@ -1829,7 +1830,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         SimpleTelephonyConnection tc1 = createTestConnection(SUB1_HANDLE, 0, true);
         tcs.add(tc1);
         TelephonyConnectionService.maybeDisconnectCallsOnOtherSubs(
-                tcs, SUB2_HANDLE, mTelephonyManagerProxy);
+                tcs, SUB2_HANDLE, false, mTelephonyManagerProxy);
         // Other call is an emergency call, so don't disconnect it.
         assertFalse(tc1.wasDisconnected);
     }
@@ -1842,7 +1843,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
                 android.telecom.Connection.PROPERTY_IS_EXTERNAL_CALL, false);
         tcs.add(tc1);
         TelephonyConnectionService.maybeDisconnectCallsOnOtherSubs(
-                tcs, SUB2_HANDLE, mTelephonyManagerProxy);
+                tcs, SUB2_HANDLE, false, mTelephonyManagerProxy);
         // Other call is an external call, so don't disconnect it.
         assertFalse(tc1.wasDisconnected);
     }
@@ -1854,7 +1855,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         SimpleTelephonyConnection tc1 = createTestConnection(SUB1_HANDLE, 0, false);
         tcs.add(tc1);
         TelephonyConnectionService.maybeDisconnectCallsOnOtherSubs(
-                tcs, SUB2_HANDLE, mTelephonyManagerProxy);
+                tcs, SUB2_HANDLE, false, mTelephonyManagerProxy);
         assertTrue(tc1.wasDisconnected);
     }
 
@@ -1868,14 +1869,14 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         tcs.add(tc1);
         tcs.add(tc2);
         TelephonyConnectionService.maybeDisconnectCallsOnOtherSubs(
-                tcs, SUB2_HANDLE, mTelephonyManagerProxy);
+                tcs, SUB2_HANDLE, false, mTelephonyManagerProxy);
         assertTrue(tc1.wasDisconnected);
         assertTrue(tc2.wasDisconnected);
     }
 
     /**
      * Verifies that DSDA or virtual DSDA-enabled devices can support active non-emergency calls on
-     * separate subs.
+     * separate subs, when the extra EXTRA_ANSWERING_DROPS_FG_CALL is not set on the incoming call.
      */
     @Test
     @SmallTest
@@ -1886,10 +1887,26 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         SimpleTelephonyConnection tc1 = createTestConnection(SUB1_HANDLE, 0, false);
         tcs.add(tc1);
         TelephonyConnectionService.maybeDisconnectCallsOnOtherSubs(
-                tcs, SUB2_HANDLE, mTelephonyManagerProxy);
+                tcs, SUB2_HANDLE, false, mTelephonyManagerProxy);
         assertFalse(tc1.wasDisconnected);
     }
 
+    /**
+     * Verifies that DSDA or virtual DSDA-enabled devices will disconnect the existing call when the
+     * call extra EXTRA_ANSWERING_DROPS_FG_CALL is set on the incoming call on a different sub.
+     */
+    @Test
+    @SmallTest
+    public void testDisconnectDifferentSubForVirtualDsdaDevice_ifCallExtraSet() {
+        when(mTelephonyManagerProxy.isConcurrentCallsPossible()).thenReturn(true);
+
+        ArrayList<android.telecom.Connection> tcs = new ArrayList<>();
+        SimpleTelephonyConnection tc1 = createTestConnection(SUB1_HANDLE, 0, false);
+        tcs.add(tc1);
+        TelephonyConnectionService.maybeDisconnectCallsOnOtherSubs(
+                tcs, SUB2_HANDLE, true, mTelephonyManagerProxy);
+        assertTrue(tc1.wasDisconnected);
+    }
 
     /**
      * For calls on the same sub, the Dialer implements the 'swap' functionality to perform hold and
