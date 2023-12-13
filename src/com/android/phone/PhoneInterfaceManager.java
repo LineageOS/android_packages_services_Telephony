@@ -153,6 +153,8 @@ import android.telephony.satellite.ISatelliteDatagramCallback;
 import android.telephony.satellite.ISatelliteProvisionStateCallback;
 import android.telephony.satellite.ISatelliteStateCallback;
 import android.telephony.satellite.ISatelliteTransmissionUpdateCallback;
+import android.telephony.satellite.NtnSignalStrength;
+import android.telephony.satellite.NtnSignalStrengthCallback;
 import android.telephony.satellite.SatelliteCapabilities;
 import android.telephony.satellite.SatelliteDatagram;
 import android.telephony.satellite.SatelliteDatagramCallback;
@@ -12556,22 +12558,27 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
-     * Registers for NTN signal strength changed from satellite modem.
+     * Registers for NTN signal strength changed from satellite modem. If the registration operation
+     * is not successful, a {@link ServiceSpecificException} that contains
+     * {@link SatelliteManager.SatelliteResult} will be thrown.
      *
      * @param subId The subId of the subscription to request for.
-     * @param callback The callback to handle the NTN signal strength changed event.
+     * @param callback The callback to handle the NTN signal strength changed event. If the
+     * operation is successful, {@link NtnSignalStrengthCallback#onNtnSignalStrengthChanged(
+     * NtnSignalStrength)} will return an instance of {@link NtnSignalStrength} with a value of
+     * {@link NtnSignalStrength.NtnSignalStrengthLevel} when the signal strength of non-terrestrial
+     * network has changed.
      *
-     * @return The {@link SatelliteManager.SatelliteResult} result of the operation.
-     *
-     * @throws SecurityException if the caller doesn't have the required permission.
+     * @throws SecurityException If the caller doesn't have the required permission.
+     * @throws ServiceSpecificException If the callback registration operation fails.
      */
     @Override
-    @SatelliteManager.SatelliteResult public int registerForNtnSignalStrengthChanged(
-            int subId, @NonNull INtnSignalStrengthCallback callback) {
+    public void registerForNtnSignalStrengthChanged(int subId,
+            @NonNull INtnSignalStrengthCallback callback) throws RemoteException {
         enforceSatelliteCommunicationPermission("registerForNtnSignalStrengthChanged");
         final long identity = Binder.clearCallingIdentity();
         try {
-            return mSatelliteController.registerForNtnSignalStrengthChanged(subId, callback);
+            mSatelliteController.registerForNtnSignalStrengthChanged(subId, callback);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
