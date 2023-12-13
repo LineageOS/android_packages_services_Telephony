@@ -12802,7 +12802,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * @throws UnsupportedOperationException if the modem does not support this feature.
      */
     @RequiresPermission(Manifest.permission.MODIFY_PHONE_STATE)
-    public void enableCellularIdentifierDisclosureNotifications(boolean enable) {
+    public void setEnableCellularIdentifierDisclosureNotifications(boolean enable) {
         enforceModifyPermission();
         checkForIdentifierDisclosureNotificationSupport();
 
@@ -12824,7 +12824,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * @throws UnsupportedOperationException if the modem does not support this feature.
      */
     @RequiresPermission(Manifest.permission.READ_PRIVILEGED_PHONE_STATE)
-    public boolean isCellularIdentifierDisclosureNotificationEnabled() {
+    public boolean isCellularIdentifierDisclosureNotificationsEnabled() {
         enforceReadPrivilegedPermission("isCellularIdentifierDisclosureNotificationEnabled");
         checkForIdentifierDisclosureNotificationSupport();
         return getDefaultPhone().getIdentifierDisclosureNotificationsPreferenceEnabled();
