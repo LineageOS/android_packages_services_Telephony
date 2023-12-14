@@ -23,6 +23,7 @@ import android.os.Bundle;
 import android.os.OutcomeReceiver;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
+import android.telephony.satellite.SatelliteManager;
 import android.telephony.satellite.wrapper.NtnSignalStrengthCallbackWrapper;
 import android.telephony.satellite.wrapper.NtnSignalStrengthWrapper;
 import android.telephony.satellite.wrapper.SatelliteCapabilitiesCallbackWrapper;
@@ -145,7 +146,13 @@ public class TestSatelliteWrapper extends Activity {
                     }
                 };
 
-        mSatelliteManagerWrapper.requestNtnSignalStrength(mExecutor, receiver);
+        try {
+            mSatelliteManagerWrapper.requestNtnSignalStrength(mExecutor, receiver);
+        } catch (SecurityException | IllegalStateException ex) {
+            String errorMessage = "requestNtnSignalStrength: " + ex.getMessage();
+            Log.d(TAG, errorMessage);
+            addLogMessage(errorMessage);
+        }
     }
 
     private void registerForNtnSignalStrengthChanged(View view) {
@@ -155,13 +162,23 @@ public class TestSatelliteWrapper extends Activity {
             Log.d(TAG, "create new NtnSignalStrengthCallback instance.");
             mNtnSignalStrengthCallback = new NtnSignalStrengthCallback();
         }
-        int result = mSatelliteManagerWrapper.registerForNtnSignalStrengthChanged(mExecutor,
-                mNtnSignalStrengthCallback);
-        if (result != SatelliteManagerWrapper.SATELLITE_RESULT_SUCCESS) {
-            String onError = translateResultCodeToString(result);
-            Log.d(TAG, onError);
-            addLogMessage(onError);
+
+        try {
+            mSatelliteManagerWrapper.registerForNtnSignalStrengthChanged(mExecutor,
+                    mNtnSignalStrengthCallback);
+        } catch (Exception ex) {
+            String errorMessage;
+            if (ex instanceof SatelliteManager.SatelliteException) {
+                errorMessage =
+                        "registerForNtnSignalStrengthChanged: " + translateResultCodeToString(
+                                ((SatelliteManager.SatelliteException) ex).getErrorCode());
+            } else {
+                errorMessage = "registerForNtnSignalStrengthChanged: " + ex.getMessage();
+            }
+            Log.d(TAG, errorMessage);
+            addLogMessage(errorMessage);
             mNtnSignalStrengthCallback = null;
+
         }
     }
 
