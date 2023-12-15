@@ -16,7 +16,6 @@
 
 package com.android.phone;
 
-import android.annotation.AnyThread;
 import android.annotation.NonNull;
 import android.annotation.WorkerThread;
 import android.os.DropBoxManager;
@@ -25,7 +24,6 @@ import android.os.TransactionTooLargeException;
 import android.telephony.AnomalyReporter;
 import android.telephony.TelephonyManager;
 import android.util.Log;
-import java.util.UUID;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -34,6 +32,7 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Locale;
+import java.util.UUID;
 import java.util.concurrent.Executor;
 import java.util.concurrent.TimeUnit;
 
@@ -84,7 +83,7 @@ public class DiagnosticDataCollector {
             persistTelecomState(dc, tag);
         }
         if (edp.isLogcatCollectionEnabled()) {
-            persistLogcat(dc, tag, edp.getLogcatStartTime());
+            persistLogcat(dc, tag, edp.getLogcatCollectionStartTimeMillis());
         }
     }
 
