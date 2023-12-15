@@ -619,16 +619,14 @@ public class PhoneGlobals extends ContextWrapper {
             intentFilter.addAction(TelephonyIntents.ACTION_DEFAULT_DATA_SUBSCRIPTION_CHANGED);
             intentFilter.addAction(CarrierConfigManager.ACTION_CARRIER_CONFIG_CHANGED);
             registerReceiver(mReceiver, intentFilter);
-            if (mFeatureFlags.loadDdsOnCreate()) {
-                int defaultDataSubId = SubscriptionManager.getDefaultDataSubscriptionId();
-                if (SubscriptionManager.isValidSubscriptionId(defaultDataSubId)) {
-                    if (VDBG) {
-                        Log.v(LOG_TAG, "Loaded initial default data sub: " + defaultDataSubId);
-                    }
-                    mDefaultDataSubId = defaultDataSubId;
-                    registerSettingsObserver();
-                    updateDataRoamingStatus(ROAMING_NOTIFICATION_REASON_DEFAULT_DATA_SUBS_CHANGED);
+            int defaultDataSubId = SubscriptionManager.getDefaultDataSubscriptionId();
+            if (SubscriptionManager.isValidSubscriptionId(defaultDataSubId)) {
+                if (VDBG) {
+                    Log.v(LOG_TAG, "Loaded initial default data sub: " + defaultDataSubId);
                 }
+                mDefaultDataSubId = defaultDataSubId;
+                registerSettingsObserver();
+                updateDataRoamingStatus(ROAMING_NOTIFICATION_REASON_DEFAULT_DATA_SUBS_CHANGED);
             }
 
             PhoneConfigurationManager.registerForMultiSimConfigChange(
@@ -1341,7 +1339,6 @@ public class PhoneGlobals extends ContextWrapper {
         pw.increaseIndent();
         pw.println("FeatureFlags:");
         pw.increaseIndent();
-        pw.println("loadDdsOnCreate=" + mFeatureFlags.loadDdsOnCreate());
         pw.println("reorganizeRoamingNotification="
                 + mFeatureFlags.reorganizeRoamingNotification());
         pw.println("dismissNetworkSelectionNotificationOnSimDisable="

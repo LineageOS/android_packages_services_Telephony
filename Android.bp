@@ -47,6 +47,8 @@ android_app {
         "service-entitlement",
         "telephony_flags_core_java_lib",
         "android.permission.flags-aconfig-java",
+        "satellite-s2storage-ro",
+        "s2-geometry-library-java",
     ],
 
     srcs: [
@@ -90,7 +92,19 @@ java_library {
     libs: [
         "telephony-common",
         "service-entitlement"
-        ],
+    ],
+}
+
+// Used by satellite unit tests temporarily during the development phase.
+// TODO: Remove this once the satellite code is wired into Telephony code.
+java_library {
+    name: "telephony-satellite",
+    srcs: ["src/com/android/phone/satellite/**/*.java"],
+    libs: [
+        "satellite-s2storage-ro",
+        "s2-geometry-library-java",
+        "telephony-common",
+    ],
 }
 
 platform_compat_config {
