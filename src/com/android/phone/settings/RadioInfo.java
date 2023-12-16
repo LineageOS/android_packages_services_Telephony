@@ -1567,8 +1567,7 @@ public class RadioInfo extends AppCompatActivity {
     };
 
     private boolean isRadioOn() {
-        //FIXME: Replace with a TelephonyManager call
-        return mPhone.getServiceState().getState() != ServiceState.STATE_POWER_OFF;
+        return mTelephonyManager.getRadioPowerState() == TelephonyManager.RADIO_POWER_ON;
     }
 
     private void updateRadioPowerState() {

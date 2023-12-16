@@ -50,6 +50,7 @@ import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyCallback;
 import android.telephony.TelephonyLocalConnection;
 import android.telephony.TelephonyManager;
+import android.text.TextUtils;
 import android.util.ArraySet;
 import android.util.LocalLog;
 import android.util.Log;
@@ -618,16 +619,14 @@ public class PhoneGlobals extends ContextWrapper {
             intentFilter.addAction(TelephonyIntents.ACTION_DEFAULT_DATA_SUBSCRIPTION_CHANGED);
             intentFilter.addAction(CarrierConfigManager.ACTION_CARRIER_CONFIG_CHANGED);
             registerReceiver(mReceiver, intentFilter);
-            if (mFeatureFlags.loadDdsOnCreate()) {
-                int defaultDataSubId = SubscriptionManager.getDefaultDataSubscriptionId();
-                if (SubscriptionManager.isValidSubscriptionId(defaultDataSubId)) {
-                    if (VDBG) {
-                        Log.v(LOG_TAG, "Loaded initial default data sub: " + defaultDataSubId);
-                    }
-                    mDefaultDataSubId = defaultDataSubId;
-                    registerSettingsObserver();
-                    updateDataRoamingStatus(ROAMING_NOTIFICATION_REASON_DEFAULT_DATA_SUBS_CHANGED);
+            int defaultDataSubId = SubscriptionManager.getDefaultDataSubscriptionId();
+            if (SubscriptionManager.isValidSubscriptionId(defaultDataSubId)) {
+                if (VDBG) {
+                    Log.v(LOG_TAG, "Loaded initial default data sub: " + defaultDataSubId);
                 }
+                mDefaultDataSubId = defaultDataSubId;
+                registerSettingsObserver();
+                updateDataRoamingStatus(ROAMING_NOTIFICATION_REASON_DEFAULT_DATA_SUBS_CHANGED);
             }
 
             PhoneConfigurationManager.registerForMultiSimConfigChange(
@@ -1061,16 +1060,14 @@ public class PhoneGlobals extends ContextWrapper {
                     && reason == ROAMING_NOTIFICATION_REASON_CARRIER_CONFIG_CHANGED) {
                 mShownNotificationReasons.add(callingReason);
             }
-            boolean isShowRoamingNotificationEnabled = getCarrierConfigForSubId(mDefaultDataSubId)
-                    .getBoolean(CarrierConfigManager
-                            .KEY_SHOW_DATA_CONNECTED_ROAMING_NOTIFICATION_BOOL);
+            boolean shouldShowRoamingNotification = shouldShowRoamingNotification(roamingNumeric);
             // No need to show it again if we never cancelled it explicitly.
             if (getCurrentRoamingNotification() == ROAMING_NOTIFICATION_CONNECTED) {
                 return;
             }
 
             // Inform users that roaming charges may apply.
-            if (!shownInThisNumeric && !shownForThisReason && isShowRoamingNotificationEnabled) {
+            if (!shownInThisNumeric && !shownForThisReason && shouldShowRoamingNotification) {
                 updateDataRoamingNotification(ROAMING_NOTIFICATION_CONNECTED);
             } else {
                 // Don't show roaming notification if we've already shown for this MccMnc or
@@ -1078,7 +1075,7 @@ public class PhoneGlobals extends ContextWrapper {
                 Log.d(LOG_TAG, "Skip roaming connected notification since already"
                         + " shownInThisNumeric:" + shownInThisNumeric
                         + " shownForThisReason:" + shownForThisReason
-                        + " isShowRoamingNotificationEnabled:" + isShowRoamingNotificationEnabled);
+                        + " shouldShowRoamingNotification:" + shouldShowRoamingNotification);
                 // Dismiss notification if the other notification is shown.
                 if (getCurrentRoamingNotification() != ROAMING_NOTIFICATION_NO_NOTIFICATION) {
                     updateDataRoamingNotification(ROAMING_NOTIFICATION_NO_NOTIFICATION);
@@ -1173,10 +1170,10 @@ public class PhoneGlobals extends ContextWrapper {
             msg.arg1 = mDefaultDataSubId;
             msg.sendToTarget();
         } else if (dataAllowed && dataIsNowRoaming(mDefaultDataSubId)) {
-            boolean isShowRoamingNotificationEnabled = getCarrierConfigForSubId(mDefaultDataSubId)
-                    .getBoolean(CarrierConfigManager
-                            .KEY_SHOW_DATA_CONNECTED_ROAMING_NOTIFICATION_BOOL);
-            if (!isShowRoamingNotificationEnabled) return;
+            if (!shouldShowRoamingNotification(roamingOperatorNumeric)) {
+                Log.d(LOG_TAG, "Skip showing roaming connected notification.");
+                return;
+            }
             // Don't show roaming notification if we've already shown for this MccMnc
             if (roamingOperatorNumeric != null
                     && !mPrevRoamingOperatorNumerics.add(roamingOperatorNumeric)) {
@@ -1211,6 +1208,46 @@ public class PhoneGlobals extends ContextWrapper {
      */
     private boolean dataIsNowRoaming(int subId) {
         return getPhone(subId).getServiceState().getDataRoaming();
+    }
+
+    private boolean shouldShowRoamingNotification(String roamingNumeric) {
+        PersistableBundle config = getCarrierConfigForSubId(mDefaultDataSubId);
+        boolean showRoamingNotification = config.getBoolean(
+                CarrierConfigManager.KEY_SHOW_DATA_CONNECTED_ROAMING_NOTIFICATION_BOOL);
+
+        if (TextUtils.isEmpty(roamingNumeric) || !mFeatureFlags.hideRoamingIcon()) {
+            Log.d(LOG_TAG, "shouldShowRoamingNotification: roamingNumeric=" + roamingNumeric
+                    + ", hideRoaming=" + mFeatureFlags.hideRoamingIcon());
+            return showRoamingNotification;
+        }
+
+        String[] includedMccMncs = config.getStringArray(CarrierConfigManager
+                .KEY_DATA_CONNECTED_ROAMING_NOTIFICATION_INCLUDED_MCC_MNCS_STRING_ARRAY);
+        if (includedMccMncs != null) {
+            for (String mccMnc : includedMccMncs) {
+                if (roamingNumeric.equals(mccMnc)) {
+                    Log.d(LOG_TAG, "shouldShowRoamingNotification: show for MCC/MNC " + mccMnc);
+                    return showRoamingNotification;
+                }
+            }
+        }
+
+        String[] excludedMccs = config.getStringArray(CarrierConfigManager
+                .KEY_DATA_CONNECTED_ROAMING_NOTIFICATION_EXCLUDED_MCCS_STRING_ARRAY);
+        String roamingMcc = roamingNumeric.length() < 3 ? "" : roamingNumeric.substring(0, 3);
+        if (excludedMccs != null && !TextUtils.isEmpty(roamingMcc)) {
+            for (String mcc : excludedMccs) {
+                if (roamingMcc.equals(mcc)) {
+                    Log.d(LOG_TAG, "shouldShowRoamingNotification: ignore for MCC " + mcc);
+                    return false;
+                }
+            }
+        }
+
+        if (showRoamingNotification) {
+            Log.d(LOG_TAG, "shouldShowRoamingNotification: show for numeric " + roamingNumeric);
+        }
+        return showRoamingNotification;
     }
 
     private void updateLimitedSimFunctionForDualSim() {
@@ -1302,7 +1339,6 @@ public class PhoneGlobals extends ContextWrapper {
         pw.increaseIndent();
         pw.println("FeatureFlags:");
         pw.increaseIndent();
-        pw.println("loadDdsOnCreate=" + mFeatureFlags.loadDdsOnCreate());
         pw.println("reorganizeRoamingNotification="
                 + mFeatureFlags.reorganizeRoamingNotification());
         pw.println("dismissNetworkSelectionNotificationOnSimDisable="

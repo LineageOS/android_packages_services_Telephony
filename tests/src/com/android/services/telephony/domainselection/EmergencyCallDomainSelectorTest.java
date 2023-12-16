@@ -96,6 +96,7 @@ import android.telephony.DomainSelectionService.SelectionAttributes;
 import android.telephony.EmergencyRegResult;
 import android.telephony.NetworkRegistrationInfo;
 import android.telephony.PreciseDisconnectCause;
+import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.telephony.TransportSelectorCallback;
 import android.telephony.WwanSelectorCallback;
@@ -140,6 +141,7 @@ public class EmergencyCallDomainSelectorTest {
     @Mock private DomainSelectorBase.DestroyListener mDestroyListener;
     @Mock private ProvisioningManager mProvisioningManager;
     @Mock private CrossSimRedialingController mCsrdCtrl;
+    @Mock private CarrierConfigHelper mCarrierConfigHelper;
     @Mock private Resources mResources;
 
     private Context mContext;
@@ -2002,7 +2004,35 @@ public class EmergencyCallDomainSelectorTest {
     }
 
     @Test
-    public void testSimLockScanPsPreferredIncludingNr() throws Exception {
+    public void testSimLockScanPsPreferredWithNr() throws Exception {
+        createSelector(SLOT_0_SUB_ID);
+        unsolBarringInfoChanged(false);
+
+        // The last valid subscription supported NR.
+        doReturn(true).when(mCarrierConfigHelper).isVoNrEmergencySupported(eq(SLOT_0));
+        when(mTelephonyManager.getSimState(anyInt())).thenReturn(
+                TelephonyManager.SIM_STATE_PIN_REQUIRED);
+
+        EmergencyRegResult regResult = getEmergencyRegResult(
+                UNKNOWN, REGISTRATION_STATE_UNKNOWN, 0, false, false, 0, 0, "", "");
+        SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
+        mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
+        processAllMessages();
+
+        bindImsServiceUnregistered();
+        processAllMessages();
+
+        verify(mWwanSelectorCallback, times(1)).onRequestEmergencyNetworkScan(
+                any(), anyInt(), any(), any());
+        assertEquals(4, mAccessNetwork.size());
+        assertEquals(EUTRAN, (int) mAccessNetwork.get(0));
+        assertEquals(NGRAN, (int) mAccessNetwork.get(1));
+        assertEquals(UTRAN, (int) mAccessNetwork.get(2));
+        assertEquals(GERAN, (int) mAccessNetwork.get(3));
+    }
+
+    @Test
+    public void testSimLockScanPsPreferredWithNrAtTheEnd() throws Exception {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
@@ -2020,8 +2050,62 @@ public class EmergencyCallDomainSelectorTest {
 
         verify(mWwanSelectorCallback, times(1)).onRequestEmergencyNetworkScan(
                 any(), anyInt(), any(), any());
+        assertEquals(4, mAccessNetwork.size());
+        assertEquals(EUTRAN, (int) mAccessNetwork.get(0));
+        assertEquals(UTRAN, (int) mAccessNetwork.get(1));
+        assertEquals(GERAN, (int) mAccessNetwork.get(2));
+        assertEquals(NGRAN, (int) mAccessNetwork.get(3));
+    }
+
+    @Test
+    public void testInvalidSubscriptionScanPsPreferredWithNrAtTheEnd() throws Exception {
+        createSelector(SubscriptionManager.INVALID_SUBSCRIPTION_ID);
+        unsolBarringInfoChanged(false);
+
+        EmergencyRegResult regResult = getEmergencyRegResult(
+                UNKNOWN, REGISTRATION_STATE_UNKNOWN, 0, false, false, 0, 0, "", "");
+        SelectionAttributes attr = getSelectionAttributes(SLOT_0,
+                SubscriptionManager.INVALID_SUBSCRIPTION_ID, regResult);
+        mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
+        processAllMessages();
+
+        bindImsServiceUnregistered();
+        processAllMessages();
+
+        verify(mWwanSelectorCallback, times(1)).onRequestEmergencyNetworkScan(
+                any(), anyInt(), any(), any());
+        assertEquals(4, mAccessNetwork.size());
+        assertEquals(EUTRAN, (int) mAccessNetwork.get(0));
+        assertEquals(UTRAN, (int) mAccessNetwork.get(1));
+        assertEquals(GERAN, (int) mAccessNetwork.get(2));
+        assertEquals(NGRAN, (int) mAccessNetwork.get(3));
+    }
+
+    @Test
+    public void testInvalidSubscriptionScanPsPreferredWithNr() throws Exception {
+        createSelector(SubscriptionManager.INVALID_SUBSCRIPTION_ID);
+        unsolBarringInfoChanged(false);
+
+        // The last valid subscription supported NR.
+        doReturn(true).when(mCarrierConfigHelper).isVoNrEmergencySupported(eq(SLOT_0));
+
+        EmergencyRegResult regResult = getEmergencyRegResult(
+                UNKNOWN, REGISTRATION_STATE_UNKNOWN, 0, false, false, 0, 0, "", "");
+        SelectionAttributes attr = getSelectionAttributes(SLOT_0,
+                SubscriptionManager.INVALID_SUBSCRIPTION_ID, regResult);
+        mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
+        processAllMessages();
+
+        bindImsServiceUnregistered();
+        processAllMessages();
+
+        verify(mWwanSelectorCallback, times(1)).onRequestEmergencyNetworkScan(
+                any(), anyInt(), any(), any());
+        assertEquals(4, mAccessNetwork.size());
         assertEquals(EUTRAN, (int) mAccessNetwork.get(0));
         assertEquals(NGRAN, (int) mAccessNetwork.get(1));
+        assertEquals(UTRAN, (int) mAccessNetwork.get(2));
+        assertEquals(GERAN, (int) mAccessNetwork.get(3));
     }
 
     private void setupForScanListTest(PersistableBundle bundle) throws Exception {
@@ -2097,7 +2181,7 @@ public class EmergencyCallDomainSelectorTest {
     private void createSelector(int subId) throws Exception {
         mDomainSelector = new EmergencyCallDomainSelector(
                 mContext, SLOT_0, subId, mHandlerThread.getLooper(),
-                mImsStateTracker, mDestroyListener, mCsrdCtrl);
+                mImsStateTracker, mDestroyListener, mCsrdCtrl, mCarrierConfigHelper);
         mDomainSelector.clearResourceConfiguration();
         replaceInstance(DomainSelectorBase.class,
                 "mWwanSelectorCallback", mDomainSelector, mWwanSelectorCallback);

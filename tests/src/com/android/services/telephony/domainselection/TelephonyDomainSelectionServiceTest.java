@@ -20,6 +20,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
@@ -44,6 +45,7 @@ import android.testing.TestableLooper;
 import androidx.test.runner.AndroidJUnit4;
 
 import com.android.TestContext;
+import com.android.internal.telephony.flags.Flags;
 
 import org.junit.After;
 import org.junit.Before;
@@ -78,7 +80,8 @@ public class TelephonyDomainSelectionServiceTest {
                         @SelectorType int selectorType, boolean isEmergency,
                         @NonNull Looper looper, @NonNull ImsStateTracker imsStateTracker,
                         @NonNull DomainSelectorBase.DestroyListener listener,
-                        @NonNull CrossSimRedialingController crossSimRedialingController) {
+                        @NonNull CrossSimRedialingController crossSimRedialingController,
+                        @NonNull CarrierConfigHelper carrierConfigHelper) {
                     switch (selectorType) {
                         case DomainSelectionService.SELECTOR_TYPE_CALLING: // fallthrough
                         case DomainSelectionService.SELECTOR_TYPE_SMS: // fallthrough
@@ -107,6 +110,7 @@ public class TelephonyDomainSelectionServiceTest {
     @Mock private TransportSelectorCallback mSelectorCallback1;
     @Mock private TransportSelectorCallback mSelectorCallback2;
     @Mock private ImsStateTracker mImsStateTracker;
+    @Mock private CarrierConfigHelper mCarrierConfigHelper;
 
     private final ServiceState mServiceState = new ServiceState();
     private final BarringInfo mBarringInfo = new BarringInfo();
@@ -128,11 +132,14 @@ public class TelephonyDomainSelectionServiceTest {
 
         mContext = new TestContext();
         mDomainSelectionService = new TelephonyDomainSelectionService(mContext,
-                mImsStateTrackerFactory, mDomainSelectorFactory);
+                mImsStateTrackerFactory, mDomainSelectorFactory, mCarrierConfigHelper);
         mServiceHandler = new Handler(mDomainSelectionService.getLooper());
         mTestableLooper = new TestableLooper(mDomainSelectionService.getLooper());
 
         mSubscriptionManager = mContext.getSystemService(SubscriptionManager.class);
+        if (Flags.workProfileApiSplit()) {
+            doReturn(mSubscriptionManager).when(mSubscriptionManager).createForAllUserProfiles();
+        }
         ArgumentCaptor<OnSubscriptionsChangedListener> listenerCaptor =
                 ArgumentCaptor.forClass(OnSubscriptionsChangedListener.class);
         verify(mSubscriptionManager).addOnSubscriptionsChangedListener(
