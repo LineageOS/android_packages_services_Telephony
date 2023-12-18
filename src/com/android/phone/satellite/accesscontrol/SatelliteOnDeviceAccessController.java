@@ -45,11 +45,12 @@ public abstract class SatelliteOnDeviceAccessController implements Closeable {
 
     /**
      * Returns a token for a given location. See {@link LocationToken} for details.
-     *
-     * @throws IOException in the unlikely event of errors when reading the underlying file
      */
-    public abstract LocationToken createLocationTokenForLatLng(double latDegrees, double lngDegrees)
-            throws IOException;
+    public static LocationToken createLocationTokenForLatLng(double latDegrees, double lngDegrees,
+            int s2Level) {
+        return S2RangeSatelliteOnDeviceAccessController
+                .createLocationTokenForLatLng(latDegrees, lngDegrees, s2Level);
+    }
 
     /**
      * Returns {@code true} if the satellite communication is allowed at the provided location,
@@ -59,6 +60,11 @@ public abstract class SatelliteOnDeviceAccessController implements Closeable {
      */
     public abstract boolean isSatCommunicationAllowedAtLocation(LocationToken locationToken)
             throws IOException;
+
+    /**
+     * Returns the S2 level of the file.
+     */
+    public abstract int getS2Level();
 
     /**
      * A class that represents an area with the same value. Two locations with tokens that

@@ -23,6 +23,9 @@ import static android.permission.flags.Flags.opEnableMobileDataByUser;
 import static android.telephony.TelephonyManager.ENABLE_FEATURE_MAPPING;
 import static android.telephony.TelephonyManager.HAL_SERVICE_NETWORK;
 import static android.telephony.TelephonyManager.HAL_SERVICE_RADIO;
+import static android.telephony.satellite.SatelliteManager.KEY_SATELLITE_COMMUNICATION_ALLOWED;
+import static android.telephony.satellite.SatelliteManager.SATELLITE_RESULT_ACCESS_BARRED;
+import static android.telephony.satellite.SatelliteManager.SATELLITE_RESULT_SUCCESS;
 
 import static com.android.internal.telephony.PhoneConstants.PHONE_TYPE_CDMA;
 import static com.android.internal.telephony.PhoneConstants.PHONE_TYPE_GSM;
@@ -210,6 +213,7 @@ import com.android.internal.telephony.ServiceStateTracker;
 import com.android.internal.telephony.SmsApplication;
 import com.android.internal.telephony.SmsController;
 import com.android.internal.telephony.SmsPermissions;
+import com.android.internal.telephony.TelephonyCountryDetector;
 import com.android.internal.telephony.TelephonyIntents;
 import com.android.internal.telephony.TelephonyPermissions;
 import com.android.internal.telephony.data.DataUtils;
@@ -243,6 +247,7 @@ import com.android.internal.util.HexDump;
 import com.android.phone.callcomposer.CallComposerPictureManager;
 import com.android.phone.callcomposer.CallComposerPictureTransfer;
 import com.android.phone.callcomposer.ImageData;
+import com.android.phone.satellite.accesscontrol.SatelliteAccessController;
 import com.android.phone.settings.PickSmsSubscriptionActivity;
 import com.android.phone.slice.SlicePurchaseController;
 import com.android.phone.utils.CarrierAllowListInfo;
@@ -417,6 +422,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private final ImsResolver mImsResolver;
 
     private final SatelliteController mSatelliteController;
+    private final SatelliteAccessController mSatelliteAccessController;
     private final UserManager mUserManager;
     private final AppOpsManager mAppOps;
     private final MainThreadHandler mMainThreadHandler;
@@ -2464,6 +2470,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         mRadioInterfaceCapabilities = RadioInterfaceCapabilityController.getInstance();
         mNotifyUserActivity = new AtomicBoolean(false);
         mPackageManager = app.getPackageManager();
+        mSatelliteAccessController = SatelliteAccessController.getOrCreateInstance(
+                getDefaultPhone().getContext(), featureFlags);
         PropertyInvalidatedCache.invalidateCache(TelephonyManager.CACHE_KEY_PHONE_ACCOUNT_TO_SUBID);
         publish();
         CarrierAllowListInfo.loadInstance(mApp);
@@ -12956,8 +12964,34 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     public void requestSatelliteEnabled(int subId, boolean enableSatellite, boolean enableDemoMode,
             @NonNull IIntegerConsumer callback) {
         enforceSatelliteCommunicationPermission("requestSatelliteEnabled");
-        mSatelliteController.requestSatelliteEnabled(subId, enableSatellite, enableDemoMode,
-                callback);
+        ResultReceiver resultReceiver = new ResultReceiver(mMainThreadHandler) {
+            @Override
+            protected void onReceiveResult(int resultCode, Bundle resultData) {
+                Log.d(LOG_TAG, "Satellite access restriction resultCode=" + resultCode
+                        + ", resultData=" + resultData);
+                boolean isAllowed = false;
+                Consumer<Integer> result = FunctionalUtils.ignoreRemoteException(callback::accept);
+                if (resultCode == SATELLITE_RESULT_SUCCESS) {
+                    if (resultData != null
+                            && resultData.containsKey(KEY_SATELLITE_COMMUNICATION_ALLOWED)) {
+                        isAllowed = resultData.getBoolean(KEY_SATELLITE_COMMUNICATION_ALLOWED);
+                    } else {
+                        loge("KEY_SATELLITE_COMMUNICATION_ALLOWED does not exist.");
+                    }
+                } else {
+                    result.accept(resultCode);
+                    return;
+                }
+                if (isAllowed) {
+                    mSatelliteController.requestSatelliteEnabled(
+                            subId, enableSatellite, enableDemoMode, callback);
+                } else {
+                    result.accept(SATELLITE_RESULT_ACCESS_BARRED);
+                }
+            }
+        };
+        mSatelliteAccessController.requestIsSatelliteCommunicationAllowedForCurrentLocation(
+                subId, resultReceiver);
     }
 
     /**
@@ -13278,8 +13312,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             @NonNull ResultReceiver result) {
         enforceSatelliteCommunicationPermission(
                 "requestIsSatelliteCommunicationAllowedForCurrentLocation");
-        mSatelliteController.requestIsSatelliteCommunicationAllowedForCurrentLocation(subId,
-                result);
+        mSatelliteAccessController.requestIsSatelliteCommunicationAllowedForCurrentLocation(
+                subId, result);
     }
 
     /**
@@ -13608,6 +13642,55 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 "setEmergencyCallToSatelliteHandoverType");
         return mSatelliteController.setEmergencyCallToSatelliteHandoverType(
                 handoverType, delaySeconds);
+    }
+
+    /**
+     * This API should be used by only CTS tests to forcefully set telephony country codes.
+     *
+     * @return {@code true} if the country code is set successfully, {@code false} otherwise.
+     */
+    public boolean setCountryCodes(boolean reset, List<String> currentNetworkCountryCodes,
+            Map cachedNetworkCountryCodes, String locationCountryCode,
+            long locationCountryCodeTimestampNanos) {
+        Log.d(LOG_TAG, "setCountryCodes: currentNetworkCountryCodes="
+                + String.join(", ", currentNetworkCountryCodes)
+                + ", locationCountryCode=" + locationCountryCode
+                + ", locationCountryCodeTimestampNanos" + locationCountryCodeTimestampNanos
+                + ", reset=" + reset + ", cachedNetworkCountryCodes="
+                + String.join(", ", cachedNetworkCountryCodes.keySet()));
+        TelephonyPermissions.enforceShellOnly(
+                Binder.getCallingUid(), "setCachedLocationCountryCode");
+        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(mApp,
+                SubscriptionManager.INVALID_SUBSCRIPTION_ID,
+                "setCachedLocationCountryCode");
+        return TelephonyCountryDetector.getInstance(getDefaultPhone().getContext()).setCountryCodes(
+                reset, currentNetworkCountryCodes, cachedNetworkCountryCodes, locationCountryCode,
+                locationCountryCodeTimestampNanos);
+    }
+
+    /**
+     * This API should be used by only CTS tests to override the overlay configs of satellite
+     * access controller.
+     *
+     * @param reset {@code true} mean the overridden configs should not be used, {@code false}
+     *              otherwise.
+     * @return {@code true} if the overlay configs are set successfully, {@code false} otherwise.
+     */
+    public boolean setSatelliteAccessControlOverlayConfigs(boolean reset, boolean isAllowed,
+            String s2CellFile, long locationFreshDurationNanos,
+            List<String> satelliteCountryCodes) {
+        Log.d(LOG_TAG, "setSatelliteAccessControlOverlayConfigs: reset=" + reset
+                + ", isAllowed" + isAllowed + ", s2CellFile=" + s2CellFile
+                + ", locationFreshDurationNanos=" + locationFreshDurationNanos
+                + ", satelliteCountryCodes=" + ((satelliteCountryCodes != null)
+                ? String.join(", ", satelliteCountryCodes) : null));
+        TelephonyPermissions.enforceShellOnly(
+                Binder.getCallingUid(), "setSatelliteAccessControlOverlayConfigs");
+        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(mApp,
+                SubscriptionManager.INVALID_SUBSCRIPTION_ID,
+                "setSatelliteAccessControlOverlayConfigs");
+        return mSatelliteAccessController.setSatelliteAccessControlOverlayConfigs(reset, isAllowed,
+                s2CellFile, locationFreshDurationNanos, satelliteCountryCodes);
     }
 
     /**

@@ -24,6 +24,8 @@ import static com.android.internal.telephony.d2d.Communicator.MESSAGE_DEVICE_NET
 import static java.util.Map.entry;
 
 import android.Manifest;
+import android.annotation.NonNull;
+import android.annotation.Nullable;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Binder;
@@ -65,6 +67,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -191,6 +194,9 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             "set-satellite-device-aligned-timeout-duration";
     private static final String SET_EMERGENCY_CALL_TO_SATELLITE_HANDOVER_TYPE =
             "set-emergency-call-to-satellite-handover-type";
+    private static final String SET_COUNTRY_CODES = "set-country-codes";
+    private static final String SET_SATELLITE_ACCESS_CONTROL_OVERLAY_CONFIGS =
+            "set-satellite-access-control-overlay-configs";
     private static final String SET_SHOULD_SEND_DATAGRAM_TO_MODEM_IN_DEMO_MODE =
             "set-should-send-datagram-to-modem-in-demo-mode";
 
@@ -388,6 +394,10 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                 return handleSetEmergencyCallToSatelliteHandoverType();
             case SET_SHOULD_SEND_DATAGRAM_TO_MODEM_IN_DEMO_MODE:
                 return handleSetShouldSendDatagramToModemInDemoMode();
+            case SET_SATELLITE_ACCESS_CONTROL_OVERLAY_CONFIGS:
+                return handleSetSatelliteAccessControlOverlayConfigs();
+            case SET_COUNTRY_CODES:
+                return handleSetCountryCodes();
             default: {
                 return handleDefaultCommands(cmd);
             }
@@ -795,6 +805,25 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         pw.println("          If no option is specified, override is disabled.");
         pw.println("      -d: the delay in seconds in sending EVENT_DISPLAY_EMERGENCY_MESSAGE.");
         pw.println("          If no option is specified, there is no delay in sending the event.");
+        pw.println("  set-satellite-access-control-overlay-configs [-r -a -f SATELLITE_S2_FILE ");
+        pw.println("    -d LOCATION_FRESH_DURATION_NANOS -c COUNTRY_CODES] Override the overlay");
+        pw.println("    configs of satellite access controller.");
+        pw.println("    Options are:");
+        pw.println("      -r: clear the overriding. Absent means enable overriding.");
+        pw.println("      -a: the country codes is an allowed list. Absent means disallowed.");
+        pw.println("      -f: the satellite s2 file.");
+        pw.println("      -d: the location fresh duration nanos.");
+        pw.println("      -c: the list of satellite country codes separated by comma.");
+        pw.println("  set-country-codes [-r -n CURRENT_NETWORK_COUNTRY_CODES -c");
+        pw.println("    CACHED_NETWORK_COUNTRY_CODES -l LOCATION_COUNTRY_CODE -t");
+        pw.println("    LOCATION_COUNTRY_CODE_TIMESTAMP] ");
+        pw.println("    Override the cached location country code and its update timestamp. ");
+        pw.println("    Options are:");
+        pw.println("      -r: clear the overriding. Absent means enable overriding.");
+        pw.println("      -n: the current network country code ISOs.");
+        pw.println("      -c: the cached network country code ISOs.");
+        pw.println("      -l: the location country code ISO.");
+        pw.println("      -t: the update timestamp nanos of the location country code.");
     }
 
     private void onHelpImei() {
@@ -3392,6 +3421,149 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             return -1;
         }
         return 0;
+    }
+
+    private int handleSetSatelliteAccessControlOverlayConfigs() {
+        PrintWriter errPw = getErrPrintWriter();
+        boolean reset = false;
+        boolean isAllowed = false;
+        String s2CellFile = null;
+        long locationFreshDurationNanos = 0;
+        List<String> satelliteCountryCodes = null;
+
+        String opt;
+        while ((opt = getNextOption()) != null) {
+            switch (opt) {
+                case "-r": {
+                    reset = true;
+                    break;
+                }
+                case "-a": {
+                    isAllowed = true;
+                    break;
+                }
+                case "-f": {
+                    s2CellFile = getNextArgRequired();
+                    break;
+                }
+                case "-d": {
+                    locationFreshDurationNanos = Long.parseLong(getNextArgRequired());
+                    break;
+                }
+                case "-c": {
+                    String countryCodeStr = getNextArgRequired();
+                    satelliteCountryCodes = Arrays.asList(countryCodeStr.split(","));
+                    break;
+                }
+            }
+        }
+        Log.d(LOG_TAG, "handleSetSatelliteAccessControlOverlayConfigs: reset=" + reset
+                + ", isAllowed=" + isAllowed + ", s2CellFile=" + s2CellFile
+                + ", locationFreshDurationNanos=" + locationFreshDurationNanos
+                + ", satelliteCountryCodes=" + satelliteCountryCodes);
+
+        try {
+            boolean result = mInterface.setSatelliteAccessControlOverlayConfigs(reset, isAllowed,
+                    s2CellFile, locationFreshDurationNanos, satelliteCountryCodes);
+            if (VDBG) {
+                Log.v(LOG_TAG, "setSatelliteAccessControlOverlayConfigs result =" + result);
+            }
+            getOutPrintWriter().println(result);
+        } catch (RemoteException e) {
+            Log.e(LOG_TAG, "setSatelliteAccessControlOverlayConfigs: ex=" + e.getMessage());
+            errPw.println("Exception: " + e.getMessage());
+            return -1;
+        }
+        return 0;
+    }
+
+    private int handleSetCountryCodes() {
+        PrintWriter errPw = getErrPrintWriter();
+        List<String> currentNetworkCountryCodes = new ArrayList<>();
+        String locationCountryCode = null;
+        long locationCountryCodeTimestampNanos = 0;
+        Map<String, Long> cachedNetworkCountryCodes = new HashMap<>();
+        boolean reset = false;
+
+        String opt;
+        while ((opt = getNextOption()) != null) {
+            switch (opt) {
+                case "-r": {
+                    reset = true;
+                    break;
+                }
+                case "-n": {
+                    String countryCodeStr = getNextArgRequired();
+                    currentNetworkCountryCodes = Arrays.asList(countryCodeStr.split(","));
+                    break;
+                }
+                case "-c": {
+                    String cachedNetworkCountryCodeStr = getNextArgRequired();
+                    cachedNetworkCountryCodes = parseStringLongMap(cachedNetworkCountryCodeStr);
+                    break;
+                }
+                case "-l": {
+                    locationCountryCode = getNextArgRequired();
+                    break;
+                }
+                case "-t": {
+                    locationCountryCodeTimestampNanos = Long.parseLong(getNextArgRequired());
+                    break;
+                }
+            }
+        }
+        Log.d(LOG_TAG, "setCountryCodes: locationCountryCode="
+                + locationCountryCode + ", locationCountryCodeTimestampNanos="
+                + locationCountryCodeTimestampNanos + ", currentNetworkCountryCodes="
+                + currentNetworkCountryCodes);
+
+        try {
+            boolean result = mInterface.setCountryCodes(reset, currentNetworkCountryCodes,
+                    cachedNetworkCountryCodes, locationCountryCode,
+                    locationCountryCodeTimestampNanos);
+            if (VDBG) {
+                Log.v(LOG_TAG, "setCountryCodes result =" + result);
+            }
+            getOutPrintWriter().println(result);
+        } catch (RemoteException e) {
+            Log.e(LOG_TAG, "setCountryCodes: ex=" + e.getMessage());
+            errPw.println("Exception: " + e.getMessage());
+            return -1;
+        }
+        return 0;
+    }
+
+    /**
+     * Sample inputStr = "US,UK,CA;2,1,3"
+     * Sample output: {[US,2], [UK,1], [CA,3]}
+     */
+    @NonNull private Map<String, Long> parseStringLongMap(@Nullable String inputStr) {
+        Map<String, Long> result = new HashMap<>();
+        if (!TextUtils.isEmpty(inputStr)) {
+            String[] stringLongArr = inputStr.split(";");
+            if (stringLongArr.length != 2) {
+                Log.e(LOG_TAG, "parseStringLongMap: invalid inputStr=" + inputStr);
+                return result;
+            }
+
+            String[] stringArr = stringLongArr[0].split(",");
+            String[] longArr = stringLongArr[1].split(",");
+            if (stringArr.length != longArr.length) {
+                Log.e(LOG_TAG, "parseStringLongMap: invalid inputStr=" + inputStr);
+                return result;
+            }
+
+            for (int i = 0; i < stringArr.length; i++) {
+                try {
+                    result.put(stringArr[i], Long.parseLong(longArr[i]));
+                } catch (Exception ex) {
+                    Log.e(LOG_TAG, "parseStringLongMap: invalid inputStr=" + inputStr
+                            + ", ex=" + ex);
+                    return result;
+                }
+            }
+        }
+        return result;
     }
 
     private int handleCarrierRestrictionStatusCommand() {
