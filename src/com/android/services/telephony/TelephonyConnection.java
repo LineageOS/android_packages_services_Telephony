@@ -1015,23 +1015,6 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
         mHandler.obtainMessage(MSG_HANGUP, android.telephony.DisconnectCause.LOCAL).sendToTarget();
     }
 
-    /**
-     * Notifies this Connection of a request to disconnect a participant of the conference managed
-     * by the connection.
-     *
-     * @param endpoint the {@link Uri} of the participant to disconnect.
-     */
-    @Override
-    public void onDisconnectConferenceParticipant(Uri endpoint) {
-        Log.v(this, "onDisconnectConferenceParticipant %s", endpoint);
-
-        if (mOriginalConnection == null) {
-            return;
-        }
-
-        mOriginalConnection.onDisconnectConferenceParticipant(endpoint);
-    }
-
     @Override
     public void onSeparate() {
         Log.v(this, "onSeparate");
