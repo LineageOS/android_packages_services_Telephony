@@ -14,7 +14,7 @@ android_app {
         "androidx-constraintlayout_constraintlayout",
         "aosp_test_rcs_client_base",
         "androidx.appcompat_appcompat",
-        "libphonenumber-platform"
+        "libphonenumber-platform",
     ],
 
     libs: ["org.apache.http.legacy"],
@@ -25,12 +25,15 @@ android_app {
 
     sdk_version: "system_current",
     min_sdk_version: "30",
-    required: ["privapp-permissions-com.google.android.sample.rcsclient.xml"]
+    required: ["privapp-permissions-com.google.android.sample.rcsclient.xml"],
+    lint: {
+        baseline_filename: "lint-baseline.xml",
+    },
 }
 
 prebuilt_etc {
     name: "privapp-permissions-com.google.android.sample.rcsclient.xml",
     src: "etc/permissions/privapp-permissions-com.google.android.sample.rcsclient.xml",
-    sub_dir:"permissions",
+    sub_dir: "permissions",
     product_specific: true,
 }
