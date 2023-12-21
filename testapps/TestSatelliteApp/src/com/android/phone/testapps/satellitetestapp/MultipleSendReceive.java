@@ -66,20 +66,20 @@ public class MultipleSendReceive extends Activity {
         SatelliteTestApp.getTestSatelliteService().sendOnSatelliteDatagramReceived(
                 mReceivedDatagram, 4);
         LinkedBlockingQueue<Integer> resultListener = new LinkedBlockingQueue<>(1);
-        mSatelliteManager.requestSatelliteEnabled(true, true, Runnable::run, resultListener::offer);
-        mSatelliteManager.pollPendingSatelliteDatagrams(Runnable::run, resultListener::offer);
+        mSatelliteManager.requestEnabled(true, true, Runnable::run, resultListener::offer);
+        mSatelliteManager.pollPendingDatagrams(Runnable::run, resultListener::offer);
         SatelliteTestApp.getTestSatelliteService().sendOnSatelliteDatagramReceived(
                 mReceivedDatagram, 3);
-        mSatelliteManager.pollPendingSatelliteDatagrams(Runnable::run, resultListener::offer);
+        mSatelliteManager.pollPendingDatagrams(Runnable::run, resultListener::offer);
         SatelliteTestApp.getTestSatelliteService().sendOnSatelliteDatagramReceived(
                 mReceivedDatagram, 2);
-        mSatelliteManager.pollPendingSatelliteDatagrams(Runnable::run, resultListener::offer);
+        mSatelliteManager.pollPendingDatagrams(Runnable::run, resultListener::offer);
         SatelliteTestApp.getTestSatelliteService().sendOnSatelliteDatagramReceived(
                 mReceivedDatagram, 1);
-        mSatelliteManager.pollPendingSatelliteDatagrams(Runnable::run, resultListener::offer);
+        mSatelliteManager.pollPendingDatagrams(Runnable::run, resultListener::offer);
         SatelliteTestApp.getTestSatelliteService().sendOnSatelliteDatagramReceived(
                 mReceivedDatagram, 0);
-        mSatelliteManager.pollPendingSatelliteDatagrams(Runnable::run, resultListener::offer);
+        mSatelliteManager.pollPendingDatagrams(Runnable::run, resultListener::offer);
         try {
             Integer value = resultListener.poll(1000, TimeUnit.MILLISECONDS);
             TextView textView = findViewById(R.id.text_id);
@@ -100,15 +100,15 @@ public class MultipleSendReceive extends Activity {
         LinkedBlockingQueue<Integer> resultListener = new LinkedBlockingQueue<>(1);
         String mText = "This is a test datagram message";
         SatelliteDatagram datagram = new SatelliteDatagram(mText.getBytes());
-        mSatelliteManager.sendSatelliteDatagram(SatelliteManager.DATAGRAM_TYPE_SOS_MESSAGE,
+        mSatelliteManager.sendDatagram(SatelliteManager.DATAGRAM_TYPE_SOS_MESSAGE,
                 datagram, true, Runnable::run, resultListener::offer);
-        mSatelliteManager.sendSatelliteDatagram(SatelliteManager.DATAGRAM_TYPE_SOS_MESSAGE,
+        mSatelliteManager.sendDatagram(SatelliteManager.DATAGRAM_TYPE_SOS_MESSAGE,
                 datagram, true, Runnable::run, resultListener::offer);
-        mSatelliteManager.sendSatelliteDatagram(SatelliteManager.DATAGRAM_TYPE_SOS_MESSAGE,
+        mSatelliteManager.sendDatagram(SatelliteManager.DATAGRAM_TYPE_SOS_MESSAGE,
                 datagram, true, Runnable::run, resultListener::offer);
-        mSatelliteManager.sendSatelliteDatagram(SatelliteManager.DATAGRAM_TYPE_SOS_MESSAGE,
+        mSatelliteManager.sendDatagram(SatelliteManager.DATAGRAM_TYPE_SOS_MESSAGE,
                 datagram, true, Runnable::run, resultListener::offer);
-        mSatelliteManager.sendSatelliteDatagram(SatelliteManager.DATAGRAM_TYPE_SOS_MESSAGE,
+        mSatelliteManager.sendDatagram(SatelliteManager.DATAGRAM_TYPE_SOS_MESSAGE,
                 datagram, true, Runnable::run, resultListener::offer);
         try {
             Integer value = resultListener.poll(1000, TimeUnit.MILLISECONDS);
@@ -127,27 +127,27 @@ public class MultipleSendReceive extends Activity {
     private void multipleSendReceiveSatelliteDatagramApp(View view) {
         mSatelliteManager.setDeviceAlignedWithSatellite(true);
         LinkedBlockingQueue<Integer> resultListener = new LinkedBlockingQueue<>(1);
-        mSatelliteManager.requestSatelliteEnabled(true, true, Runnable::run, resultListener::offer);
+        mSatelliteManager.requestEnabled(true, true, Runnable::run, resultListener::offer);
         String mText = "This is a test datagram message";
         SatelliteDatagram datagram = new SatelliteDatagram(mText.getBytes());
-        mSatelliteManager.sendSatelliteDatagram(SatelliteManager.DATAGRAM_TYPE_SOS_MESSAGE,
+        mSatelliteManager.sendDatagram(SatelliteManager.DATAGRAM_TYPE_SOS_MESSAGE,
                 datagram, true, Runnable::run, resultListener::offer);
         SatelliteTestApp.getTestSatelliteService().sendOnSatelliteDatagramReceived(
                 mReceivedDatagram, 4);
-        mSatelliteManager.pollPendingSatelliteDatagrams(Runnable::run, resultListener::offer);
-        mSatelliteManager.sendSatelliteDatagram(SatelliteManager.DATAGRAM_TYPE_SOS_MESSAGE,
+        mSatelliteManager.pollPendingDatagrams(Runnable::run, resultListener::offer);
+        mSatelliteManager.sendDatagram(SatelliteManager.DATAGRAM_TYPE_SOS_MESSAGE,
                 datagram, true, Runnable::run, resultListener::offer);
         SatelliteTestApp.getTestSatelliteService().sendOnSatelliteDatagramReceived(
                 mReceivedDatagram, 3);
-        mSatelliteManager.sendSatelliteDatagram(SatelliteManager.DATAGRAM_TYPE_SOS_MESSAGE,
+        mSatelliteManager.sendDatagram(SatelliteManager.DATAGRAM_TYPE_SOS_MESSAGE,
                 datagram, true, Runnable::run, resultListener::offer);
         SatelliteTestApp.getTestSatelliteService().sendOnSatelliteDatagramReceived(
                 mReceivedDatagram, 2);
-        mSatelliteManager.sendSatelliteDatagram(SatelliteManager.DATAGRAM_TYPE_SOS_MESSAGE,
+        mSatelliteManager.sendDatagram(SatelliteManager.DATAGRAM_TYPE_SOS_MESSAGE,
                 datagram, true, Runnable::run, resultListener::offer);
         SatelliteTestApp.getTestSatelliteService().sendOnSatelliteDatagramReceived(
                 mReceivedDatagram, 1);
-        mSatelliteManager.sendSatelliteDatagram(SatelliteManager.DATAGRAM_TYPE_SOS_MESSAGE,
+        mSatelliteManager.sendDatagram(SatelliteManager.DATAGRAM_TYPE_SOS_MESSAGE,
                 datagram, true, Runnable::run, resultListener::offer);
         SatelliteTestApp.getTestSatelliteService().sendOnSatelliteDatagramReceived(
                 mReceivedDatagram, 0);

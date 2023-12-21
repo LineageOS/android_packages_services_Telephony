@@ -330,14 +330,14 @@ public class TestSatelliteService extends SatelliteImplBase {
         if (mLocalListener != null) {
             runWithExecutor(() -> mLocalListener.onPollPendingSatelliteDatagrams());
         } else {
-            loge("pollPendingSatelliteDatagrams: mLocalListener is null");
+            loge("pollPendingDatagrams: mLocalListener is null");
         }
     }
 
     @Override
     public void sendSatelliteDatagram(@NonNull SatelliteDatagram datagram, boolean isEmergency,
             @NonNull IIntegerConsumer errorCallback) {
-        logd("sendSatelliteDatagram: mErrorCode=" + mErrorCode);
+        logd("sendDatagram: mErrorCode=" + mErrorCode);
         if (mErrorCode != SatelliteResult.SATELLITE_RESULT_SUCCESS) {
             runWithExecutor(() -> errorCallback.accept(mErrorCode));
         } else {
@@ -347,7 +347,7 @@ public class TestSatelliteService extends SatelliteImplBase {
         if (mLocalListener != null) {
             runWithExecutor(() -> mLocalListener.onSendSatelliteDatagram(datagram, isEmergency));
         } else {
-            loge("sendSatelliteDatagram: mLocalListener is null");
+            loge("sendDatagram: mLocalListener is null");
         }
     }
 
@@ -365,7 +365,7 @@ public class TestSatelliteService extends SatelliteImplBase {
     @Override
     public void requestIsSatelliteCommunicationAllowedForCurrentLocation(
             @NonNull IIntegerConsumer errorCallback, @NonNull IBooleanConsumer callback) {
-        logd("requestIsSatelliteCommunicationAllowedForCurrentLocation: mErrorCode=" + mErrorCode);
+        logd("requestIsCommunicationAllowedForCurrentLocation: mErrorCode=" + mErrorCode);
         if (mErrorCode != SatelliteResult.SATELLITE_RESULT_SUCCESS) {
             runWithExecutor(() -> errorCallback.accept(mErrorCode));
             return;

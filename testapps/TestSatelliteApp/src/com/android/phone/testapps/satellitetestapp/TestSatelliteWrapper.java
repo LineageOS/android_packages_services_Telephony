@@ -72,9 +72,9 @@ public class TestSatelliteWrapper extends Activity {
         findViewById(R.id.isOnlyNonTerrestrialNetworkSubscription)
                 .setOnClickListener(this::isOnlyNonTerrestrialNetworkSubscription);
         findViewById(R.id.registerForSatelliteCapabilitiesChanged)
-                .setOnClickListener(this::registerForSatelliteCapabilitiesChanged);
+                .setOnClickListener(this::registerForCapabilitiesChanged);
         findViewById(R.id.unregisterForSatelliteCapabilitiesChanged)
-                .setOnClickListener(this::unregisterForSatelliteCapabilitiesChanged);
+                .setOnClickListener(this::unregisterForCapabilitiesChanged);
         findViewById(R.id.Back).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -112,8 +112,8 @@ public class TestSatelliteWrapper extends Activity {
                         mNtnSignalStrengthCallback);
             }
             if (mSatelliteCapabilitiesCallback != null) {
-                Log.d(TAG, "unregisterForSatelliteCapabilitiesChanged()");
-                mSatelliteManagerWrapper.unregisterForSatelliteCapabilitiesChanged(
+                Log.d(TAG, "unregisterForCapabilitiesChanged()");
+                mSatelliteManagerWrapper.unregisterForCapabilitiesChanged(
                         mSatelliteCapabilitiesCallback);
             }
         }
@@ -212,9 +212,9 @@ public class TestSatelliteWrapper extends Activity {
         }
     }
 
-    private void registerForSatelliteCapabilitiesChanged(View view) {
-        addLogMessage("registerForSatelliteCapabilitiesChanged");
-        Log.d(TAG, "registerForSatelliteCapabilitiesChanged()");
+    private void registerForCapabilitiesChanged(View view) {
+        addLogMessage("registerForCapabilitiesChanged");
+        Log.d(TAG, "registerForCapabilitiesChanged()");
         if (mSatelliteCapabilitiesCallback == null) {
             mSatelliteCapabilitiesCallback =
                     SatelliteCapabilities -> {
@@ -225,7 +225,7 @@ public class TestSatelliteWrapper extends Activity {
                     };
         }
 
-        int result = mSatelliteManagerWrapper.registerForSatelliteCapabilitiesChanged(mExecutor,
+        int result = mSatelliteManagerWrapper.registerForCapabilitiesChanged(mExecutor,
                 mSatelliteCapabilitiesCallback);
         if (result != SatelliteManagerWrapper.SATELLITE_RESULT_SUCCESS) {
             String onError = translateResultCodeToString(result);
@@ -235,11 +235,11 @@ public class TestSatelliteWrapper extends Activity {
         }
     }
 
-    private void unregisterForSatelliteCapabilitiesChanged(View view) {
-        addLogMessage("unregisterForSatelliteCapabilitiesChanged");
-        Log.d(TAG, "unregisterForSatelliteCapabilitiesChanged()");
+    private void unregisterForCapabilitiesChanged(View view) {
+        addLogMessage("unregisterForCapabilitiesChanged");
+        Log.d(TAG, "unregisterForCapabilitiesChanged()");
         if (mSatelliteCapabilitiesCallback != null) {
-            mSatelliteManagerWrapper.unregisterForSatelliteCapabilitiesChanged(
+            mSatelliteManagerWrapper.unregisterForCapabilitiesChanged(
                     mSatelliteCapabilitiesCallback);
             mSatelliteCapabilitiesCallback = null;
             addLogMessage("mSatelliteCapabilitiesCallback was unregistered");
