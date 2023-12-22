@@ -2230,6 +2230,22 @@ public class EmergencyCallDomainSelectorTest {
         verify(mTransportSelectorCallback, times(1)).onWlanSelected(anyBoolean());
     }
 
+    @Test
+    public void testLimitedServiceDialCs() throws Exception {
+        createSelector(SLOT_0_SUB_ID);
+        unsolBarringInfoChanged(false);
+
+        EmergencyRegResult regResult = getEmergencyRegResult(UTRAN, REGISTRATION_STATE_UNKNOWN,
+                0, false, false, 0, 0, "", "");
+        SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
+        mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
+        processAllMessages();
+
+        bindImsServiceUnregistered();
+
+        verifyCsDialed();
+    }
+
     private void setupForScanListTest(PersistableBundle bundle) throws Exception {
         setupForScanListTest(bundle, false);
     }
