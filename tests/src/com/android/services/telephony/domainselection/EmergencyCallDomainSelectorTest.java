@@ -100,6 +100,7 @@ import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.telephony.TransportSelectorCallback;
 import android.telephony.WwanSelectorCallback;
+import android.telephony.emergency.EmergencyNumber;
 import android.telephony.ims.ImsManager;
 import android.telephony.ims.ImsMmTelManager;
 import android.telephony.ims.ProvisioningManager;
@@ -119,7 +120,10 @@ import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Consumer;
 
 /**
@@ -130,6 +134,7 @@ public class EmergencyCallDomainSelectorTest {
 
     private static final int SLOT_0 = 0;
     private static final int SLOT_0_SUB_ID = 1;
+    private static final String TEST_EMERGENCY_NUMBER = "911";
 
     @Mock private CarrierConfigManager mCarrierConfigManager;
     @Mock private ConnectivityManager mConnectivityManager;
@@ -2108,6 +2113,123 @@ public class EmergencyCallDomainSelectorTest {
         assertEquals(GERAN, (int) mAccessNetwork.get(3));
     }
 
+    @Test
+    public void testDefaultLimitedServiceEutran() throws Exception {
+        createSelector(SLOT_0_SUB_ID);
+        unsolBarringInfoChanged(false);
+
+        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_UNKNOWN,
+                0, false, true, 0, 0, "", "");
+        SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
+        mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
+        processAllMessages();
+
+        bindImsServiceUnregistered();
+
+        verifyPsDialed();
+    }
+
+    @Test
+    public void testDefaultLimitedServiceNgran() throws Exception {
+        createSelector(SLOT_0_SUB_ID);
+        unsolBarringInfoChanged(false);
+
+        EmergencyRegResult regResult = getEmergencyRegResult(NGRAN, REGISTRATION_STATE_UNKNOWN,
+                0, false, true, 0, 0, "", "");
+        SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
+        mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
+        processAllMessages();
+
+        bindImsServiceUnregistered();
+
+        verifyScanPsPreferred();
+    }
+
+    @Test
+    public void testTestEmergencyNumberOverCs() throws Exception {
+        EmergencyNumber num = new EmergencyNumber(TEST_EMERGENCY_NUMBER, "us", "",
+                EmergencyNumber.EMERGENCY_SERVICE_CATEGORY_POLICE, new ArrayList<String>(),
+                EmergencyNumber.EMERGENCY_NUMBER_SOURCE_TEST,
+                EmergencyNumber.EMERGENCY_CALL_ROUTING_UNKNOWN);
+
+        Map<Integer, List<EmergencyNumber>> lists = new HashMap<>();
+        List<EmergencyNumber> list = new ArrayList<>();
+        list.add(num);
+        lists.put(SLOT_0_SUB_ID, list);
+
+        doReturn(lists).when(mTelephonyManager).getEmergencyNumberList();
+
+        createSelector(SLOT_0_SUB_ID);
+        unsolBarringInfoChanged(false);
+
+        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_UNKNOWN,
+                0, false, true, 0, 0, "", "");
+        SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
+        mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
+        processAllMessages();
+
+        bindImsServiceUnregistered();
+
+        verifyCsDialed();
+    }
+
+    @Test
+    public void testTestEmergencyNumberOverPs() throws Exception {
+        EmergencyNumber num = new EmergencyNumber(TEST_EMERGENCY_NUMBER, "us", "",
+                EmergencyNumber.EMERGENCY_SERVICE_CATEGORY_POLICE, new ArrayList<String>(),
+                EmergencyNumber.EMERGENCY_NUMBER_SOURCE_TEST,
+                EmergencyNumber.EMERGENCY_CALL_ROUTING_UNKNOWN);
+
+        Map<Integer, List<EmergencyNumber>> lists = new HashMap<>();
+        List<EmergencyNumber> list = new ArrayList<>();
+        list.add(num);
+        lists.put(SLOT_0_SUB_ID, list);
+
+        doReturn(lists).when(mTelephonyManager).getEmergencyNumberList();
+
+        createSelector(SLOT_0_SUB_ID);
+        unsolBarringInfoChanged(false);
+
+        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_UNKNOWN,
+                0, false, true, 0, 0, "", "");
+        SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
+        mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
+        processAllMessages();
+
+        bindImsService();
+
+        verifyPsDialed();
+    }
+
+    @Test
+    public void testTestEmergencyNumberOverWifi() throws Exception {
+        EmergencyNumber num = new EmergencyNumber(TEST_EMERGENCY_NUMBER, "us", "",
+                EmergencyNumber.EMERGENCY_SERVICE_CATEGORY_POLICE, new ArrayList<String>(),
+                EmergencyNumber.EMERGENCY_NUMBER_SOURCE_TEST,
+                EmergencyNumber.EMERGENCY_CALL_ROUTING_UNKNOWN);
+
+        Map<Integer, List<EmergencyNumber>> lists = new HashMap<>();
+        List<EmergencyNumber> list = new ArrayList<>();
+        list.add(num);
+        lists.put(SLOT_0_SUB_ID, list);
+
+        doReturn(lists).when(mTelephonyManager).getEmergencyNumberList();
+
+        createSelector(SLOT_0_SUB_ID);
+        unsolBarringInfoChanged(false);
+
+        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_UNKNOWN,
+                0, false, true, 0, 0, "", "");
+        SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
+        mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
+        processAllMessages();
+
+        bindImsService(true);
+        processAllMessages();
+
+        verify(mTransportSelectorCallback, times(1)).onWlanSelected(anyBoolean());
+    }
+
     private void setupForScanListTest(PersistableBundle bundle) throws Exception {
         setupForScanListTest(bundle, false);
     }
@@ -2354,6 +2476,7 @@ public class EmergencyCallDomainSelectorTest {
             EmergencyRegResult regResult) {
         SelectionAttributes.Builder builder =
                 new SelectionAttributes.Builder(slotId, subId, SELECTOR_TYPE_CALLING)
+                .setNumber(TEST_EMERGENCY_NUMBER)
                 .setEmergency(true)
                 .setEmergencyRegResult(regResult);
         return builder.build();
