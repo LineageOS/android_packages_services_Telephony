@@ -637,8 +637,8 @@
     <string name="phone_in_ecm_notification_title" msgid="6825016389926367946">"Modus voor noodoproepen"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="653972232922670335">"Gegevensverbinding staat uit"</string>
     <string name="phone_in_ecm_notification_complete_time" msgid="7341624337163082759">"Geen dataverbinding tot <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
-    <string name="alert_dialog_exit_ecm" msgid="7661603870224398025">"{count,plural, =1{De telefoon blijft 1 minuut in de modus voor noodoproepen. In deze modus kun je geen apps gebruiken waarvoor een dataverbinding nodig is. Wil je nu afsluiten?}other{De telefoon blijft %s minuten in de modus voor noodoproepen. In deze modus kun je geen apps gebruiken waarvoor een dataverbinding nodig is. Wil je nu afsluiten?}}"</string>
-    <string name="alert_dialog_not_avaialble_in_ecm" msgid="8717711120099503279">"{count,plural, =1{De geselecteerde actie is niet beschikbaar in de modus voor noodoproepen. De telefoon blijft 1 minuut in deze modus. Wil je nu afsluiten?}other{De geselecteerde actie is niet beschikbaar in de modus voor noodoproepen. De telefoon blijft %s minuten in deze modus. Wil je nu afsluiten?}}"</string>
+    <string name="alert_dialog_exit_ecm" msgid="7661603870224398025">"{count,plural, =1{De telefoon blijft 1 minuut in de modus voor noodoproepen. In deze modus kun je geen apps gebruiken waarvoor een dataverbinding nodig is. Wil je nu afsluiten?}other{De telefoon blijft %1$s minuten in de modus voor noodoproepen. In deze modus kun je geen apps gebruiken waarvoor een dataverbinding nodig is. Wil je nu afsluiten?}}"</string>
+    <string name="alert_dialog_not_avaialble_in_ecm" msgid="8717711120099503279">"{count,plural, =1{De geselecteerde actie is niet beschikbaar in de modus voor noodoproepen. De telefoon blijft 1 minuut in deze modus. Wil je nu afsluiten?}other{De geselecteerde actie is niet beschikbaar in de modus voor noodoproepen. De telefoon blijft %1$s minuten in deze modus. Wil je nu afsluiten?}}"</string>
     <string name="alert_dialog_in_ecm_call" msgid="1207545603149771978">"De geselecteerde actie is niet beschikbaar tijdens noodoproepen."</string>
     <string name="progress_dialog_exiting_ecm" msgid="9159080081676927217">"Modus voor noodoproepen verlaten"</string>
     <string name="alert_dialog_yes" msgid="3532525979632841417">"Ja"</string>
@@ -646,7 +646,7 @@
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"Negeren"</string>
     <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"De modus voor noodoproepen is geactiveerd voor de telefoon"</string>
     <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"Tot <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
-    <string name="alert_dialog_exit_ecm_without_data_restriction_hint" msgid="7549850847524907932">"{count,plural, =1{De telefoon blijft 1 minuut in de modus voor noodoproepen.\nWil je nu afsluiten?}other{De telefoon blijft %s minuten in de modus voor noodoproepen.\nWil je nu afsluiten?}}"</string>
+    <string name="alert_dialog_exit_ecm_without_data_restriction_hint" msgid="7549850847524907932">"{count,plural, =1{De telefoon blijft 1 minuut in de modus voor noodoproepen.\nWil je nu afsluiten?}other{De telefoon blijft %1$s minuten in de modus voor noodoproepen.\nWil je nu afsluiten?}}"</string>
     <string name="voicemail_provider" msgid="4158806657253745294">"Service"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"Instellen"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;Niet ingesteld&gt;"</string>

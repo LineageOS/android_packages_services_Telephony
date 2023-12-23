@@ -637,8 +637,8 @@
     <string name="phone_in_ecm_notification_title" msgid="6825016389926367946">"आपत्‌कालीन कलब्याक मोड"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="653972232922670335">"डेटा जडान अक्षम भयो"</string>
     <string name="phone_in_ecm_notification_complete_time" msgid="7341624337163082759">"<xliff:g id="COMPLETETIME">%s</xliff:g> सम्म डेटा कनेक्ट भएको छैन"</string>
-    <string name="alert_dialog_exit_ecm" msgid="7661603870224398025">"{count,plural, =1{यो फोन एक मिनेटसम्म आपत्‌कालीन कलब्याक मोडमा हुने छ। उक्त फोन यो मोडमा हुँदा डेटा कनेक्सन प्रयोग गर्ने कुनै पनि एप प्रयोग गर्न मिल्दैन। तपाईं अहिले नै यो मोडबाट बाहिरिन चाहनुहुन्छ?}other{यो फोन %s मिनेटसम्म आपत्‌कालीन कलब्याक मोडमा हुने छ। उक्त फोन यो मोडमा हुँदा डेटा कनेक्सन प्रयोग गर्ने कुनै पनि एप प्रयोग गर्न मिल्दैन। तपाईं अहिले नै यो मोडबाट बाहिरिन चाहनुहुन्छ?}}"</string>
-    <string name="alert_dialog_not_avaialble_in_ecm" msgid="8717711120099503279">"{count,plural, =1{आपत्‌कालीन कलब्याक मोडमा हुँदा चयन गरिएको कारबाही गर्न मिल्दैन। फोन एक मिनेटसम्म यो मोडमा हुने छ। तपाईं अहिले नै यो मोडबाट बाहिरिन चाहनुहुन्छ?}other{आपत्‌कालीन कलब्याक मोडमा हुँदा चयन गरिएको कारबाही गर्न मिल्दैन। फोन %s मिनेटसम्म यो मोडमा हुने छ। तपाईं अहिले नै यो मोडबाट बाहिरिन चाहनुहुन्छ?}}"</string>
+    <string name="alert_dialog_exit_ecm" msgid="7661603870224398025">"{count,plural, =1{यो फोन एक मिनेटसम्म आपत्‌कालीन कलब्याक मोडमा हुने छ। उक्त फोन यो मोडमा हुँदा डेटा कनेक्सन प्रयोग गर्ने कुनै पनि एप प्रयोग गर्न मिल्दैन। तपाईं अहिले नै यो मोडबाट बाहिरिन चाहनुहुन्छ?}other{यो फोन %1$s मिनेटसम्म आपत्‌कालीन कलब्याक मोडमा हुने छ। उक्त फोन यो मोडमा हुँदा डेटा कनेक्सन प्रयोग गर्ने कुनै पनि एप प्रयोग गर्न मिल्दैन। तपाईं अहिले नै यो मोडबाट बाहिरिन चाहनुहुन्छ?}}"</string>
+    <string name="alert_dialog_not_avaialble_in_ecm" msgid="8717711120099503279">"{count,plural, =1{आपत्‌कालीन कलब्याक मोडमा हुँदा चयन गरिएको कारबाही गर्न मिल्दैन। फोन एक मिनेटसम्म यो मोडमा हुने छ। तपाईं अहिले नै यो मोडबाट बाहिरिन चाहनुहुन्छ?}other{आपत्‌कालीन कलब्याक मोडमा हुँदा चयन गरिएको कारबाही गर्न मिल्दैन। फोन %1$s मिनेटसम्म यो मोडमा हुने छ। तपाईं अहिले नै यो मोडबाट बाहिरिन चाहनुहुन्छ?}}"</string>
     <string name="alert_dialog_in_ecm_call" msgid="1207545603149771978">"आपत्‌कालीन कल हुँदा चयन भएको कार्य उपलब्ध हुँदैन।"</string>
     <string name="progress_dialog_exiting_ecm" msgid="9159080081676927217">"आपत्‌कालीन कलब्याक मोडबाट निस्कदै"</string>
     <string name="alert_dialog_yes" msgid="3532525979632841417">"हो"</string>
@@ -646,7 +646,7 @@
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"खारेज गर्नुहोस्"</string>
     <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"यो फोन आपत्‌कालीन कलब्याक मोडमा छ"</string>
     <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"<xliff:g id="COMPLETETIME">%s</xliff:g> सम्म"</string>
-    <string name="alert_dialog_exit_ecm_without_data_restriction_hint" msgid="7549850847524907932">"{count,plural, =1{यो फोन एक मिनेटसम्म आपत्‌कालीन कलब्याक मोडमा हुने छ।\nतपाईं अहिले नै यो मोडबाट बाहिरिन चाहनुहुन्छ?}other{यो फोन %s मिनेटसम्म आपत्‌कालीन कलब्याक मोडमा हुने छ।\nतपाईं अहिले नै यो मोडबाट बाहिरिन चाहनुहुन्छ?}}"</string>
+    <string name="alert_dialog_exit_ecm_without_data_restriction_hint" msgid="7549850847524907932">"{count,plural, =1{यो फोन एक मिनेटसम्म आपत्‌कालीन कलब्याक मोडमा हुने छ।\nतपाईं अहिले नै यो मोडबाट बाहिरिन चाहनुहुन्छ?}other{यो फोन %1$s मिनेटसम्म आपत्‌कालीन कलब्याक मोडमा हुने छ।\nतपाईं अहिले नै यो मोडबाट बाहिरिन चाहनुहुन्छ?}}"</string>
     <string name="voicemail_provider" msgid="4158806657253745294">"सेवा"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"सेटअप"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"सेट गरिएको छैन"</string>

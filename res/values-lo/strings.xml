@@ -637,8 +637,8 @@
     <string name="phone_in_ecm_notification_title" msgid="6825016389926367946">"ໂໝດໂທກັບສຸກເສີນ"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="653972232922670335">"ປິດການເຊື່ອມຕໍ່ຂໍ້ມູນແລ້ວ"</string>
     <string name="phone_in_ecm_notification_complete_time" msgid="7341624337163082759">"ບໍ່ມີການເຊື່ອມຕໍ່ອິນເຕີເນັດຈົນຮອດ <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
-    <string name="alert_dialog_exit_ecm" msgid="7661603870224398025">"{count,plural, =1{ໂທລະສັບຈະຢູ່ໃນໂໝດການໂທກັບສຸກເສີນເປັນເວລາໜຶ່ງນາທີ. ໃນລະຫວ່າງທີ່ຢູ່ໃນໂໝດນີ້ ບໍ່ສາມາດໃຊ້ແອັບທີ່ໃຊ້ການເຊື່ອມຕໍ່ອິນເຕີເນັດໄດ້. ທ່ານຕ້ອງການອອກດຽວນີ້ບໍ?}other{ໂທລະສັບຈະຢູ່ໃນໂໝດການໂທກັບສຸກເສີນເປັນເວລາ %s ນາທີ. ໃນລະຫວ່າງທີ່ຢູ່ໃນໂໝດນີ້ ບໍ່ສາມາດໃຊ້ແອັບພລິເຄຊັນທີ່ໃຊ້ການເຊື່ອມຕໍ່ອິນເຕີເນັດໄດ້. ທ່ານຕ້ອງການອອກດຽວນີ້ບໍ?}}"</string>
-    <string name="alert_dialog_not_avaialble_in_ecm" msgid="8717711120099503279">"{count,plural, =1{ຄຳສັ່ງທີ່ເລືອກບໍ່ສາມາດໃຊ້ໄດ້ໃນຂະນະທີ່ຢູ່ໃນໂໝດໂທກັບສຸກເສີນ. ໂທລະສັບຈະຢູ່ໃນໂໝດນີ້ອີກໜຶ່ງນາທີ. ທ່ານຕ້ອງການອອກດຽວນີ້ບໍ?}other{ຄຳສັ່ງທີ່ເລືອກບໍ່ສາມາດໃຊ້ໄດ້ໃນຂະນະທີ່ຢູ່ໃນໂໝດໂທກັບສຸກເສີນ. ໂທລະສັບຈະຢູ່ໃນໂໝດນີ້ອີກ %s ນາທີ. ທ່ານຕ້ອງການອອກດຽວນີ້ບໍ?}}"</string>
+    <string name="alert_dialog_exit_ecm" msgid="7661603870224398025">"{count,plural, =1{ໂທລະສັບຈະຢູ່ໃນໂໝດການໂທກັບສຸກເສີນເປັນເວລາໜຶ່ງນາທີ. ໃນລະຫວ່າງທີ່ຢູ່ໃນໂໝດນີ້ ບໍ່ສາມາດໃຊ້ແອັບທີ່ໃຊ້ການເຊື່ອມຕໍ່ອິນເຕີເນັດໄດ້. ທ່ານຕ້ອງການອອກດຽວນີ້ບໍ?}other{ໂທລະສັບຈະຢູ່ໃນໂໝດການໂທກັບສຸກເສີນເປັນເວລາ %1$s ນາທີ. ໃນລະຫວ່າງທີ່ຢູ່ໃນໂໝດນີ້ ບໍ່ສາມາດໃຊ້ແອັບພລິເຄຊັນທີ່ໃຊ້ການເຊື່ອມຕໍ່ອິນເຕີເນັດໄດ້. ທ່ານຕ້ອງການອອກດຽວນີ້ບໍ?}}"</string>
+    <string name="alert_dialog_not_avaialble_in_ecm" msgid="8717711120099503279">"{count,plural, =1{ຄຳສັ່ງທີ່ເລືອກບໍ່ສາມາດໃຊ້ໄດ້ໃນຂະນະທີ່ຢູ່ໃນໂໝດໂທກັບສຸກເສີນ. ໂທລະສັບຈະຢູ່ໃນໂໝດນີ້ອີກໜຶ່ງນາທີ. ທ່ານຕ້ອງການອອກດຽວນີ້ບໍ?}other{ຄຳສັ່ງທີ່ເລືອກບໍ່ສາມາດໃຊ້ໄດ້ໃນຂະນະທີ່ຢູ່ໃນໂໝດໂທກັບສຸກເສີນ. ໂທລະສັບຈະຢູ່ໃນໂໝດນີ້ອີກ %1$s ນາທີ. ທ່ານຕ້ອງການອອກດຽວນີ້ບໍ?}}"</string>
     <string name="alert_dialog_in_ecm_call" msgid="1207545603149771978">"ການດຳເນີນການທີ່ເລືອກ ບໍ່ສາມາດໃຊ້ໄດ້ໃນຂະນະທີ່ຢູ່ໃນການໂທສຸກເສີນ."</string>
     <string name="progress_dialog_exiting_ecm" msgid="9159080081676927217">"ກຳລັງອອກຈາກໂໝດໂທກັບສຸກເສີນ"</string>
     <string name="alert_dialog_yes" msgid="3532525979632841417">"ຕົກລົງ"</string>
@@ -646,7 +646,7 @@
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"ປິດໄວ້"</string>
     <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"ໂທລະສັບຢູ່ໃນໂໝດໂທກັບສຸກເສີນ"</string>
     <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"ຈົນຮອດ <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
-    <string name="alert_dialog_exit_ecm_without_data_restriction_hint" msgid="7549850847524907932">"{count,plural, =1{ໂທລະສັບຈະຢູ່ໃນໂໝດໂທກັບສຸກເສີນເປັນເວລາໜຶ່ງນາທີ.\nທ່ານຕ້ອງການອອກຕອນນີ້ເລີຍບໍ?}other{ໂທລະສັບຈະຢູ່ໃນໂໝດໂທກັບສຸກເສີນເປັນເວລາ %s ນາທີ.\nທ່ານຕ້ອງການອອກຕອນນີ້ເລີຍບໍ?}}"</string>
+    <string name="alert_dialog_exit_ecm_without_data_restriction_hint" msgid="7549850847524907932">"{count,plural, =1{ໂທລະສັບຈະຢູ່ໃນໂໝດໂທກັບສຸກເສີນເປັນເວລາໜຶ່ງນາທີ.\nທ່ານຕ້ອງການອອກຕອນນີ້ເລີຍບໍ?}other{ໂທລະສັບຈະຢູ່ໃນໂໝດໂທກັບສຸກເສີນເປັນເວລາ %1$s ນາທີ.\nທ່ານຕ້ອງການອອກຕອນນີ້ເລີຍບໍ?}}"</string>
     <string name="voicemail_provider" msgid="4158806657253745294">"ບໍລິການ"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"ຕັ້ງຄ່າ"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;ຍັງບໍ່ໄດ້ຕັ້ງ&gt;"</string>

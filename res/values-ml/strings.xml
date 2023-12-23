@@ -637,8 +637,8 @@
     <string name="phone_in_ecm_notification_title" msgid="6825016389926367946">"അടിയന്തര കോൾബാക്ക് മോഡ്"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="653972232922670335">"ഡാറ്റ കണക്ഷൻ പ്രവർത്തനരഹിതമാക്കി"</string>
     <string name="phone_in_ecm_notification_complete_time" msgid="7341624337163082759">"<xliff:g id="COMPLETETIME">%s</xliff:g> വരെ ഡാറ്റാ കണക്ഷൻ ലഭ്യമല്ല"</string>
-    <string name="alert_dialog_exit_ecm" msgid="7661603870224398025">"{count,plural, =1{ഫോൺ ഒരു മിനിറ്റ്, അടിയന്തര കോൾ ബാക്ക് മോഡിൽ ആയിരിക്കും. ഈ മോഡിൽ ആയിരിക്കുമ്പോൾ ഡാറ്റാ കണക്ഷൻ ഉപയോഗിക്കുന്ന ആപ്പുകളൊന്നും ഉപയോഗിക്കാനാകില്ല. ഇപ്പോൾ പുറത്തുകടക്കണോ?}other{ഫോൺ %s മിനിറ്റ്, അടിയന്തര കോൾ ബാക്ക് മോഡിൽ ആയിരിക്കും. ഈ മോഡിൽ ആയിരിക്കുമ്പോൾ ഡാറ്റാ കണക്ഷൻ ഉപയോഗിക്കുന്ന ആപ്പുകളൊന്നും ഉപയോഗിക്കാനാകില്ല. ഇപ്പോൾ പുറത്തുകടക്കണോ?}}"</string>
-    <string name="alert_dialog_not_avaialble_in_ecm" msgid="8717711120099503279">"{count,plural, =1{അടിയന്തര കോൾ ബാക്ക് മോഡിൽ ആയിരിക്കുമ്പോൾ, തിരഞ്ഞെടുത്ത പ്രവർത്തനം ലഭ്യമല്ല. ഫോൺ ഒരു മിനിറ്റ് ഈ മോഡിൽ ആയിരിക്കും. ഇപ്പോൾ പുറത്തുകടക്കണോ?}other{അടിയന്തര കോൾ ബാക്ക് മോഡിൽ ആയിരിക്കുമ്പോൾ, തിരഞ്ഞെടുത്ത പ്രവർത്തനം ലഭ്യമല്ല. ഫോൺ %s മിനിറ്റ് ഈ മോഡിൽ ആയിരിക്കും. ഇപ്പോൾ പുറത്തുകടക്കണോ?}}"</string>
+    <string name="alert_dialog_exit_ecm" msgid="7661603870224398025">"{count,plural, =1{ഫോൺ ഒരു മിനിറ്റ്, അടിയന്തര കോൾ ബാക്ക് മോഡിൽ ആയിരിക്കും. ഈ മോഡിൽ ആയിരിക്കുമ്പോൾ ഡാറ്റാ കണക്ഷൻ ഉപയോഗിക്കുന്ന ആപ്പുകളൊന്നും ഉപയോഗിക്കാനാകില്ല. ഇപ്പോൾ പുറത്തുകടക്കണോ?}other{ഫോൺ %1$s മിനിറ്റ്, അടിയന്തര കോൾ ബാക്ക് മോഡിൽ ആയിരിക്കും. ഈ മോഡിൽ ആയിരിക്കുമ്പോൾ ഡാറ്റാ കണക്ഷൻ ഉപയോഗിക്കുന്ന ആപ്പുകളൊന്നും ഉപയോഗിക്കാനാകില്ല. ഇപ്പോൾ പുറത്തുകടക്കണോ?}}"</string>
+    <string name="alert_dialog_not_avaialble_in_ecm" msgid="8717711120099503279">"{count,plural, =1{അടിയന്തര കോൾ ബാക്ക് മോഡിൽ ആയിരിക്കുമ്പോൾ, തിരഞ്ഞെടുത്ത പ്രവർത്തനം ലഭ്യമല്ല. ഫോൺ ഒരു മിനിറ്റ് ഈ മോഡിൽ ആയിരിക്കും. ഇപ്പോൾ പുറത്തുകടക്കണോ?}other{അടിയന്തര കോൾ ബാക്ക് മോഡിൽ ആയിരിക്കുമ്പോൾ, തിരഞ്ഞെടുത്ത പ്രവർത്തനം ലഭ്യമല്ല. ഫോൺ %1$s മിനിറ്റ് ഈ മോഡിൽ ആയിരിക്കും. ഇപ്പോൾ പുറത്തുകടക്കണോ?}}"</string>
     <string name="alert_dialog_in_ecm_call" msgid="1207545603149771978">"അടിയന്തര കോളിലായിരിക്കുമ്പോൾ തിരഞ്ഞെടുത്ത പ്രവർത്തനം ലഭ്യമാകില്ല."</string>
     <string name="progress_dialog_exiting_ecm" msgid="9159080081676927217">"നിലവിലെ അടിയന്തര കോൾബാക്ക് മോഡ്"</string>
     <string name="alert_dialog_yes" msgid="3532525979632841417">"വേണം"</string>
@@ -646,7 +646,7 @@
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"നിരസിക്കുക"</string>
     <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"ഫോൺ അടിയന്തര കോൾബാക്ക് മോഡിലാണ്"</string>
     <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"<xliff:g id="COMPLETETIME">%s</xliff:g> വരെ"</string>
-    <string name="alert_dialog_exit_ecm_without_data_restriction_hint" msgid="7549850847524907932">"{count,plural, =1{ഫോൺ ഒരു മിനിറ്റ്, അടിയന്തര കോൾബാക്ക് മോഡിലായിരിക്കും.\nഇപ്പോൾ പുറത്തുകടക്കണോ?}other{ഫോൺ %s മിനിറ്റ്, അടിയന്തര കോൾബാക്ക് മോഡിലായിരിക്കും.\nഇപ്പോൾ പുറത്തുകടക്കണോ?}}"</string>
+    <string name="alert_dialog_exit_ecm_without_data_restriction_hint" msgid="7549850847524907932">"{count,plural, =1{ഫോൺ ഒരു മിനിറ്റ്, അടിയന്തര കോൾബാക്ക് മോഡിലായിരിക്കും.\nഇപ്പോൾ പുറത്തുകടക്കണോ?}other{ഫോൺ %1$s മിനിറ്റ്, അടിയന്തര കോൾബാക്ക് മോഡിലായിരിക്കും.\nഇപ്പോൾ പുറത്തുകടക്കണോ?}}"</string>
     <string name="voicemail_provider" msgid="4158806657253745294">"സേവനം"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"സജ്ജമാക്കുക"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;സജ്ജീകരിച്ചിട്ടില്ല&gt;"</string>

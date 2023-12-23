@@ -637,8 +637,8 @@
     <string name="phone_in_ecm_notification_title" msgid="6825016389926367946">"Hätäpuhelujen takaisinsoittotila"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="653972232922670335">"Verkkoyhteys pois käytöstä"</string>
     <string name="phone_in_ecm_notification_complete_time" msgid="7341624337163082759">"Datayhteyden voi muodostaa vasta <xliff:g id="COMPLETETIME">%s</xliff:g>."</string>
-    <string name="alert_dialog_exit_ecm" msgid="7661603870224398025">"{count,plural, =1{Puhelin on hätäpuhelujen takaisinsoittotilassa yhden minuutin ajan. Tässä tilassa datayhteyttä hyödyntäviä sovelluksia ei voi käyttää. Haluatko lopettaa nyt?}other{Puhelin on hätäpuhelujen takaisinsoittotilassa %s minuutin ajan. Tässä tilassa datayhteyttä hyödyntäviä sovelluksia ei voi käyttää. Haluatko lopettaa nyt?}}"</string>
-    <string name="alert_dialog_not_avaialble_in_ecm" msgid="8717711120099503279">"{count,plural, =1{Valittu toiminto ei ole käytettävissä hätäpuhelujen takaisinsoittotilassa. Puhelin pysyy tässä tilassa yhden minuutin ajan. Haluatko lopettaa nyt?}other{Valittu toiminto ei ole käytettävissä hätäpuhelujen takaisinsoittotilassa. Puhelin pysyy tässä tilassa %s minuutin ajan. Haluatko lopettaa nyt?}}"</string>
+    <string name="alert_dialog_exit_ecm" msgid="7661603870224398025">"{count,plural, =1{Puhelin on hätäpuhelujen takaisinsoittotilassa yhden minuutin ajan. Tässä tilassa datayhteyttä hyödyntäviä sovelluksia ei voi käyttää. Haluatko lopettaa nyt?}other{Puhelin on hätäpuhelujen takaisinsoittotilassa %1$s minuutin ajan. Tässä tilassa datayhteyttä hyödyntäviä sovelluksia ei voi käyttää. Haluatko lopettaa nyt?}}"</string>
+    <string name="alert_dialog_not_avaialble_in_ecm" msgid="8717711120099503279">"{count,plural, =1{Valittu toiminto ei ole käytettävissä hätäpuhelujen takaisinsoittotilassa. Puhelin pysyy tässä tilassa yhden minuutin ajan. Haluatko lopettaa nyt?}other{Valittu toiminto ei ole käytettävissä hätäpuhelujen takaisinsoittotilassa. Puhelin pysyy tässä tilassa %1$s minuutin ajan. Haluatko lopettaa nyt?}}"</string>
     <string name="alert_dialog_in_ecm_call" msgid="1207545603149771978">"Valittu toiminto ei ole käytettävissä hätäpuhelun aikana"</string>
     <string name="progress_dialog_exiting_ecm" msgid="9159080081676927217">"Poistutaan hätäpuhelujen takaisinsoittotilasta"</string>
     <string name="alert_dialog_yes" msgid="3532525979632841417">"Kyllä"</string>
@@ -646,7 +646,7 @@
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"Hylkää"</string>
     <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"Puhelin on hätäpuhelujen takaisinsoittotilassa."</string>
     <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"<xliff:g id="COMPLETETIME">%s</xliff:g> asti"</string>
-    <string name="alert_dialog_exit_ecm_without_data_restriction_hint" msgid="7549850847524907932">"{count,plural, =1{Puhelin on hätäpuhelujen takaisinsoittotilassa yhden minuutin ajan.\nHaluatko lopettaa nyt?}other{Puhelin on hätäpuhelujen takaisinsoittotilassa %s minuutin ajan.\nHaluatko lopettaa nyt?}}"</string>
+    <string name="alert_dialog_exit_ecm_without_data_restriction_hint" msgid="7549850847524907932">"{count,plural, =1{Puhelin on hätäpuhelujen takaisinsoittotilassa yhden minuutin ajan.\nHaluatko lopettaa nyt?}other{Puhelin on hätäpuhelujen takaisinsoittotilassa %1$s minuutin ajan.\nHaluatko lopettaa nyt?}}"</string>
     <string name="voicemail_provider" msgid="4158806657253745294">"Palveluntarjoaja"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"Asetukset"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;Ei asetettu&gt;"</string>

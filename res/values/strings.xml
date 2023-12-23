@@ -1450,14 +1450,14 @@
         <!-- number of minutes is one -->
         =1    {The phone will be in Emergency Callback mode for one minute. While in this mode no apps using a data connection can be used. Do you want to exit now?}
         <!-- number of minutes is not equal to one -->
-        other {The phone will be in Emergency Callback mode for %s minutes. While in this mode no applications using a data connection can be used. Do you want to exit now?}
+        other {The phone will be in Emergency Callback mode for %1$s minutes. While in this mode no applications using a data connection can be used. Do you want to exit now?}
     }</string>
     <!-- ECM: Dialog box message for exiting from any other app -->
     <string name="alert_dialog_not_avaialble_in_ecm"> {count, plural,
         <!-- number of minutes is one -->
         =1    {The selected action isn\'t available while in the Emergency Callback mode. The phone will be in this mode for one minute. Do you want to exit now?}
         <!-- number of minutes is not equal to one -->
-        other {The selected action isn\'t available while in the Emergency Callback mode. The phone will be in this mode for %s minutes. Do you want to exit now?}
+        other {The selected action isn\'t available while in the Emergency Callback mode. The phone will be in this mode for %1$s minutes. Do you want to exit now?}
     }</string>
     <!-- ECM: Dialog box message while in emergency call -->
     <string name="alert_dialog_in_ecm_call">The selected action isn\'t available while in an emergency call.</string>
@@ -1478,7 +1478,7 @@
         <!-- number of minutes is one -->
         =1    {The phone will be in emergency callback mode for one minute.\nDo you want to exit now?}
         <!-- number of minutes is not equal to one -->
-        other {The phone will be in emergency callback mode for %s minutes.\nDo you want to exit now?}
+        other {The phone will be in emergency callback mode for %1$s minutes.\nDo you want to exit now?}
     }</string>
 
     <!-- For incoming calls, this is a string we can get from a CDMA network instead of

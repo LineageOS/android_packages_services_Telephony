@@ -637,8 +637,8 @@
     <string name="phone_in_ecm_notification_title" msgid="6825016389926367946">"Läget Återuppringning vid nödsamtal"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="653972232922670335">"Dataanslutning inaktiverad"</string>
     <string name="phone_in_ecm_notification_complete_time" msgid="7341624337163082759">"Ingen dataanslutning förrän <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
-    <string name="alert_dialog_exit_ecm" msgid="7661603870224398025">"{count,plural, =1{Telefonen kommer att vara i läget Återuppringning vid nödsamtal i en minut. I det här läget kan inga appar som kräver en dataanslutning användas. Vill du avsluta nu?}other{Telefonen kommer att vara i läget Återuppringning vid nödsamtal i %s minuter. I det här läget kan inga appar som kräver en dataanslutning användas. Vill du avsluta nu?}}"</string>
-    <string name="alert_dialog_not_avaialble_in_ecm" msgid="8717711120099503279">"{count,plural, =1{Den valda åtgärden är inte tillgänglig i läget Återuppringning vid nödsamtal. Telefonen kommer att vara i det här läget i en minut. Vill du avsluta nu?}other{Den valda åtgärden är inte tillgänglig i läget Återuppringning vid nödsamtal. Telefonen kommer att vara i det här läget i %s minuter. Vill du avsluta nu?}}"</string>
+    <string name="alert_dialog_exit_ecm" msgid="7661603870224398025">"{count,plural, =1{Telefonen kommer att vara i läget Återuppringning vid nödsamtal i en minut. I det här läget kan inga appar som kräver en dataanslutning användas. Vill du avsluta nu?}other{Telefonen kommer att vara i läget Återuppringning vid nödsamtal i %1$s minuter. I det här läget kan inga appar som kräver en dataanslutning användas. Vill du avsluta nu?}}"</string>
+    <string name="alert_dialog_not_avaialble_in_ecm" msgid="8717711120099503279">"{count,plural, =1{Den valda åtgärden är inte tillgänglig i läget Återuppringning vid nödsamtal. Telefonen kommer att vara i det här läget i en minut. Vill du avsluta nu?}other{Den valda åtgärden är inte tillgänglig i läget Återuppringning vid nödsamtal. Telefonen kommer att vara i det här läget i %1$s minuter. Vill du avsluta nu?}}"</string>
     <string name="alert_dialog_in_ecm_call" msgid="1207545603149771978">"Den valda åtgärden är inte tillgänglig under nödsamtal."</string>
     <string name="progress_dialog_exiting_ecm" msgid="9159080081676927217">"Avslutar läget Återuppringning vid nödsamtal"</string>
     <string name="alert_dialog_yes" msgid="3532525979632841417">"Ja"</string>
@@ -646,7 +646,7 @@
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"Ta bort permanent"</string>
     <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"Telefonen är i läget för återuppringning vid nödsamtal"</string>
     <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"Till <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
-    <string name="alert_dialog_exit_ecm_without_data_restriction_hint" msgid="7549850847524907932">"{count,plural, =1{Telefonen kommer att vara i läget för återuppringning vid nödsamtal i en minut.\nVill du avsluta nu?}other{Telefonen kommer att vara i läget för återuppringning vid nödsamtal i %s minuter.\nVill du avsluta nu?}}"</string>
+    <string name="alert_dialog_exit_ecm_without_data_restriction_hint" msgid="7549850847524907932">"{count,plural, =1{Telefonen kommer att vara i läget för återuppringning vid nödsamtal i en minut.\nVill du avsluta nu?}other{Telefonen kommer att vara i läget för återuppringning vid nödsamtal i %1$s minuter.\nVill du avsluta nu?}}"</string>
     <string name="voicemail_provider" msgid="4158806657253745294">"Tjänst"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"Konfiguration"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;Har inte angetts&gt;"</string>

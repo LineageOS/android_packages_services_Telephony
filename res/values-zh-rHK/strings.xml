@@ -637,8 +637,8 @@
     <string name="phone_in_ecm_notification_title" msgid="6825016389926367946">"緊急回撥模式"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="653972232922670335">"數據連線已停用"</string>
     <string name="phone_in_ecm_notification_complete_time" msgid="7341624337163082759">"到<xliff:g id="COMPLETETIME">%s</xliff:g> 以前沒有數據連線"</string>
-    <string name="alert_dialog_exit_ecm" msgid="7661603870224398025">"{count,plural, =1{手機在接下來的 1 分鐘都將處於緊急回撥模式。在這個模式中，所有使用數據連線的應用程式皆無法使用。您要立即退出嗎？}other{手機在接下來的 %s 分鐘都將處於緊急回撥模式。在這個模式中，所有使用數據連線的應用程式皆無法使用。您要立即退出嗎？}}"</string>
-    <string name="alert_dialog_not_avaialble_in_ecm" msgid="8717711120099503279">"{count,plural, =1{緊急回撥模式不支援您所選取的操作。手機在接下來的 1 分鐘都將處於這個模式，您要立即退出嗎？}other{緊急回撥模式不支援您所選取的操作。手機在接下來的 %s 分鐘都將處於這個模式，您要立即退出嗎？}}"</string>
+    <string name="alert_dialog_exit_ecm" msgid="7661603870224398025">"{count,plural, =1{手機在接下來的 1 分鐘都將處於緊急回撥模式。在這個模式中，所有使用數據連線的應用程式皆無法使用。您要立即退出嗎？}other{手機在接下來的 %1$s 分鐘都將處於緊急回撥模式。在這個模式中，所有使用數據連線的應用程式皆無法使用。您要立即退出嗎？}}"</string>
+    <string name="alert_dialog_not_avaialble_in_ecm" msgid="8717711120099503279">"{count,plural, =1{緊急回撥模式不支援您所選取的操作。手機在接下來的 1 分鐘都將處於這個模式，您要立即退出嗎？}other{緊急回撥模式不支援您所選取的操作。手機在接下來的 %1$s 分鐘都將處於這個模式，您要立即退出嗎？}}"</string>
     <string name="alert_dialog_in_ecm_call" msgid="1207545603149771978">"緊急電話模式不支援您所選取的操作。"</string>
     <string name="progress_dialog_exiting_ecm" msgid="9159080081676927217">"正在退出緊急回撥模式"</string>
     <string name="alert_dialog_yes" msgid="3532525979632841417">"是"</string>
@@ -646,7 +646,7 @@
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"關閉"</string>
     <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"手機處於緊急回撥模式"</string>
     <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"直至<xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
-    <string name="alert_dialog_exit_ecm_without_data_restriction_hint" msgid="7549850847524907932">"{count,plural, =1{手機在接下來的 1 分鐘都將處於緊急回撥模式。\n您要立即退出嗎？}other{手機在接下來的 %s 分鐘都將處於緊急回撥模式。\n您要立即退出嗎？}}"</string>
+    <string name="alert_dialog_exit_ecm_without_data_restriction_hint" msgid="7549850847524907932">"{count,plural, =1{手機在接下來的 1 分鐘都將處於緊急回撥模式。\n您要立即退出嗎？}other{手機在接下來的 %1$s 分鐘都將處於緊急回撥模式。\n您要立即退出嗎？}}"</string>
     <string name="voicemail_provider" msgid="4158806657253745294">"服務"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"設定"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;未設定&gt;"</string>

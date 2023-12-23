@@ -637,8 +637,8 @@
     <string name="phone_in_ecm_notification_title" msgid="6825016389926367946">"Təcisi Geriyə Zəng Rejimi"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="653972232922670335">"Data bağlantısı deaktiv edildi"</string>
     <string name="phone_in_ecm_notification_complete_time" msgid="7341624337163082759">"<xliff:g id="COMPLETETIME">%s</xliff:g> vaxtına qədər data bağlantısı yoxdur"</string>
-    <string name="alert_dialog_exit_ecm" msgid="7661603870224398025">"{count,plural, =1{Telefon bir dəqiqəlik Fövqəladə Geriyə Zəng rejimində olacaq. Bu rejimdə data bağlantısı işlədən heç bir tətbiq istifadə oluna bilməz. İndi çıxmaq istəyirsiniz?}other{Telefon %s dəqiqə Fövqəladə Geriyə Zəng rejimində olacaq. Bu rejimdə data bağlantısı işlədən heç bir tətbiq istifadə oluna bilməz. İndi çıxmaq istəyirsiniz?}}"</string>
-    <string name="alert_dialog_not_avaialble_in_ecm" msgid="8717711120099503279">"{count,plural, =1{Seçilmiş əməliyyat Fövqəladə Geriyə Zəng rejimində əlçatan deyil. Telefon 1 dəqiqə bu rejimdə olacaq. İndi çıxmaq istəyirsiniz?}other{Seçilmiş əməliyyat Fövqəladə Geriyə Zəng rejimində əlçatan deyil. Telefon %s dəqiqə bu rejimdə olacaq. İndi çıxmaq istəyirsiniz?}}"</string>
+    <string name="alert_dialog_exit_ecm" msgid="7661603870224398025">"{count,plural, =1{Telefon bir dəqiqəlik Fövqəladə Geriyə Zəng rejimində olacaq. Bu rejimdə data bağlantısı işlədən heç bir tətbiq istifadə oluna bilməz. İndi çıxmaq istəyirsiniz?}other{Telefon %1$s dəqiqə Fövqəladə Geriyə Zəng rejimində olacaq. Bu rejimdə data bağlantısı işlədən heç bir tətbiq istifadə oluna bilməz. İndi çıxmaq istəyirsiniz?}}"</string>
+    <string name="alert_dialog_not_avaialble_in_ecm" msgid="8717711120099503279">"{count,plural, =1{Seçilmiş əməliyyat Fövqəladə Geriyə Zəng rejimində əlçatan deyil. Telefon 1 dəqiqə bu rejimdə olacaq. İndi çıxmaq istəyirsiniz?}other{Seçilmiş əməliyyat Fövqəladə Geriyə Zəng rejimində əlçatan deyil. Telefon %1$s dəqiqə bu rejimdə olacaq. İndi çıxmaq istəyirsiniz?}}"</string>
     <string name="alert_dialog_in_ecm_call" msgid="1207545603149771978">"Seçilmiş fəaliyyət təcili zəng zamanı mümkün deyil"</string>
     <string name="progress_dialog_exiting_ecm" msgid="9159080081676927217">"Təcili Geriyə Zəng Rejimindən Çıxır"</string>
     <string name="alert_dialog_yes" msgid="3532525979632841417">"Bəli"</string>
@@ -646,7 +646,7 @@
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"Kənarlaşdır"</string>
     <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"Telefon fövqəladə geriyə zəng rejimindədir"</string>
     <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"<xliff:g id="COMPLETETIME">%s</xliff:g> olana qədər"</string>
-    <string name="alert_dialog_exit_ecm_without_data_restriction_hint" msgid="7549850847524907932">"{count,plural, =1{Telefon \n dəqiqə fövqəladə geriyə zəng rejimində olacaq. İndi çıxmaq istəyirsiniz?}other{Telefon %s dəqiqə fövqəladə geriyə zəng rejimində olacaq.\nİndi çıxmaq istəyirsiniz?}}"</string>
+    <string name="alert_dialog_exit_ecm_without_data_restriction_hint" msgid="7549850847524907932">"{count,plural, =1{Telefon \n dəqiqə fövqəladə geriyə zəng rejimində olacaq. İndi çıxmaq istəyirsiniz?}other{Telefon %1$s dəqiqə fövqəladə geriyə zəng rejimində olacaq.\nİndi çıxmaq istəyirsiniz?}}"</string>
     <string name="voicemail_provider" msgid="4158806657253745294">"Xidmət"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"Quraşdırma"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;Ayarlanmayıb&gt;"</string>

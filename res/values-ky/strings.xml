@@ -637,8 +637,8 @@
     <string name="phone_in_ecm_notification_title" msgid="6825016389926367946">"Шашылыш кайра чалуу режими"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="653972232922670335">"Мобилдик туташуу өчүрүлгөн"</string>
     <string name="phone_in_ecm_notification_complete_time" msgid="7341624337163082759">"<xliff:g id="COMPLETETIME">%s</xliff:g> чейин мобилдик байланыш жок"</string>
-    <string name="alert_dialog_exit_ecm" msgid="7661603870224398025">"{count,plural, =1{Телефон Шашылыш кайра чалуу режиминде бир мүнөт иштейт. Бул режимде колдонмолор мобилдик Интернет туташууну пайдалана алышпайт. Азыр чыгып кетесизби?}other{Телефон Шашылыш кайра чалуу режиминде %s мүнөт иштейт. Бул режимде колдонмолор мобилдик Интернет туташууну пайдалана алышпайт. Азыр чыгып кетесизби?}}"</string>
-    <string name="alert_dialog_not_avaialble_in_ecm" msgid="8717711120099503279">"{count,plural, =1{Бул аракет Шашылыш кайра чалуу режиминде иштебейт. Телефон бул режимде бир мүнөт бою болот. Азыр чыгып кетесизби?}other{Бул аракет Шашылыш кайра чалуу режиминде иштебейт. Телефон бул режимде %s мүнөт бою болот. Азыр чыгып кетесизби?}}"</string>
+    <string name="alert_dialog_exit_ecm" msgid="7661603870224398025">"{count,plural, =1{Телефон Шашылыш кайра чалуу режиминде бир мүнөт иштейт. Бул режимде колдонмолор мобилдик Интернет туташууну пайдалана алышпайт. Азыр чыгып кетесизби?}other{Телефон Шашылыш кайра чалуу режиминде %1$s мүнөт иштейт. Бул режимде колдонмолор мобилдик Интернет туташууну пайдалана алышпайт. Азыр чыгып кетесизби?}}"</string>
+    <string name="alert_dialog_not_avaialble_in_ecm" msgid="8717711120099503279">"{count,plural, =1{Бул аракет Шашылыш кайра чалуу режиминде иштебейт. Телефон бул режимде бир мүнөт бою болот. Азыр чыгып кетесизби?}other{Бул аракет Шашылыш кайра чалуу режиминде иштебейт. Телефон бул режимде %1$s мүнөт бою болот. Азыр чыгып кетесизби?}}"</string>
     <string name="alert_dialog_in_ecm_call" msgid="1207545603149771978">"Куткаруучуларга чалуу учурунда, бул тандалган аракет аткарылбайт."</string>
     <string name="progress_dialog_exiting_ecm" msgid="9159080081676927217">"Куткаруучулардын Кайра Чалуусу тартибинен чыгуу"</string>
     <string name="alert_dialog_yes" msgid="3532525979632841417">"Ооба"</string>
@@ -646,7 +646,7 @@
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"Этибарга албоо"</string>
     <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"Телефон шашылыш кайра чалуу режиминде"</string>
     <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"<xliff:g id="COMPLETETIME">%s</xliff:g> чейин"</string>
-    <string name="alert_dialog_exit_ecm_without_data_restriction_hint" msgid="7549850847524907932">"{count,plural, =1{Телефон шашылыш кайра чалуу режиминде бир мүнөт иштейт.\nАзыр чыгып кетесизби?}other{Телефон шашылыш кайра чалуу режиминде %s мүнөт иштейт.\nАзыр чыгып кетесизби?}}"</string>
+    <string name="alert_dialog_exit_ecm_without_data_restriction_hint" msgid="7549850847524907932">"{count,plural, =1{Телефон шашылыш кайра чалуу режиминде бир мүнөт иштейт.\nАзыр чыгып кетесизби?}other{Телефон шашылыш кайра чалуу режиминде %1$s мүнөт иштейт.\nАзыр чыгып кетесизби?}}"</string>
     <string name="voicemail_provider" msgid="4158806657253745294">"Кызмат"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"Жөндөө"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;Коюлган эмес&gt;"</string>

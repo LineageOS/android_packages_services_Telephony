@@ -637,8 +637,8 @@
     <string name="phone_in_ecm_notification_title" msgid="6825016389926367946">"Notfallrückrufmodus"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="653972232922670335">"Datenverbindung deaktiviert"</string>
     <string name="phone_in_ecm_notification_complete_time" msgid="7341624337163082759">"Keine Datenverbindung bis <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
-    <string name="alert_dialog_exit_ecm" msgid="7661603870224398025">"{count,plural, =1{Das Smartphone bleibt 1 Minute im Notfallrückrufmodus. In diesem Modus können keine Apps verwendet werden, die eine Datenverbindung erfordern. Möchtest du den Vorgang jetzt beenden?}other{Das Smartphone bleibt %s Minuten im Notfallrückrufmodus. In diesem Modus können keine Apps verwendet werden, die eine Datenverbindung erfordern. Möchtest du den Vorgang jetzt beenden?}}"</string>
-    <string name="alert_dialog_not_avaialble_in_ecm" msgid="8717711120099503279">"{count,plural, =1{Die ausgewählte Aktion ist im Notfallrückrufmodus nicht verfügbar. Das Telefon bleibt 1 Minute in diesem Modus. Möchtest du den Vorgang jetzt beenden?}other{Die ausgewählte Aktion ist im Notfallrückrufmodus nicht verfügbar. Das Telefon bleibt %s Minuten in diesem Modus. Möchtest du den Vorgang jetzt beenden?}}"</string>
+    <string name="alert_dialog_exit_ecm" msgid="7661603870224398025">"{count,plural, =1{Das Smartphone bleibt 1 Minute im Notfallrückrufmodus. In diesem Modus können keine Apps verwendet werden, die eine Datenverbindung erfordern. Möchtest du den Vorgang jetzt beenden?}other{Das Smartphone bleibt %1$s Minuten im Notfallrückrufmodus. In diesem Modus können keine Apps verwendet werden, die eine Datenverbindung erfordern. Möchtest du den Vorgang jetzt beenden?}}"</string>
+    <string name="alert_dialog_not_avaialble_in_ecm" msgid="8717711120099503279">"{count,plural, =1{Die ausgewählte Aktion ist im Notfallrückrufmodus nicht verfügbar. Das Telefon bleibt 1 Minute in diesem Modus. Möchtest du den Vorgang jetzt beenden?}other{Die ausgewählte Aktion ist im Notfallrückrufmodus nicht verfügbar. Das Telefon bleibt %1$s Minuten in diesem Modus. Möchtest du den Vorgang jetzt beenden?}}"</string>
     <string name="alert_dialog_in_ecm_call" msgid="1207545603149771978">"Die ausgewählte Aktion ist während eines Notrufs nicht verfügbar."</string>
     <string name="progress_dialog_exiting_ecm" msgid="9159080081676927217">"Notfallrückrufmodus wird beendet..."</string>
     <string name="alert_dialog_yes" msgid="3532525979632841417">"Ja"</string>
@@ -646,7 +646,7 @@
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"Verwerfen"</string>
     <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"Das Smartphone ist im Notfallrückrufmodus"</string>
     <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"Bis <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
-    <string name="alert_dialog_exit_ecm_without_data_restriction_hint" msgid="7549850847524907932">"{count,plural, =1{Das Smartphone bleibt 1 Minute im Notfallrückrufmodus.\nMöchtest du den Vorgang jetzt beenden?}other{Das Smartphone bleibt %s Minuten im Notfallrückrufmodus.\nMöchtest du den Vorgang jetzt beenden?}}"</string>
+    <string name="alert_dialog_exit_ecm_without_data_restriction_hint" msgid="7549850847524907932">"{count,plural, =1{Das Smartphone bleibt 1 Minute im Notfallrückrufmodus.\nMöchtest du den Vorgang jetzt beenden?}other{Das Smartphone bleibt %1$s Minuten im Notfallrückrufmodus.\nMöchtest du den Vorgang jetzt beenden?}}"</string>
     <string name="voicemail_provider" msgid="4158806657253745294">"Dienst"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"Einrichtung"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;Nicht festgelegt&gt;"</string>

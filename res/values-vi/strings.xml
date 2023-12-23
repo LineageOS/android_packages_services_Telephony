@@ -637,8 +637,8 @@
     <string name="phone_in_ecm_notification_title" msgid="6825016389926367946">"Chế độ Gọi lại Khẩn cấp"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="653972232922670335">"Đã tắt kết nối mạng"</string>
     <string name="phone_in_ecm_notification_complete_time" msgid="7341624337163082759">"Không có kết nối dữ liệu cho đến <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
-    <string name="alert_dialog_exit_ecm" msgid="7661603870224398025">"{count,plural, =1{Điện thoại sẽ ở chế độ Gọi lại khẩn cấp trong 1 phút. Không thể sử dụng các ứng dụng cần kết nối dữ liệu khi đang ở trong chế độ này. Bạn có muốn thoát ngay không?}other{Điện thoại sẽ ở chế độ Gọi lại khẩn cấp trong %s phút. Không thể sử dụng các ứng dụng cần kết nối dữ liệu khi đang ở trong chế độ này. Bạn có muốn thoát ngay không?}}"</string>
-    <string name="alert_dialog_not_avaialble_in_ecm" msgid="8717711120099503279">"{count,plural, =1{Thao tác đã chọn không thực hiện được trong khi ở chế độ Gọi lại khẩn cấp. Điện thoại sẽ ở chế độ này trong vòng 1 phút. Bạn có muốn thoát ngay không?}other{Thao tác đã chọn không thực hiện được trong khi ở chế độ Gọi lại khẩn cấp. Điện thoại sẽ ở chế độ này trong vòng %s phút. Bạn có muốn thoát ngay không?}}"</string>
+    <string name="alert_dialog_exit_ecm" msgid="7661603870224398025">"{count,plural, =1{Điện thoại sẽ ở chế độ Gọi lại khẩn cấp trong 1 phút. Không thể sử dụng các ứng dụng cần kết nối dữ liệu khi đang ở trong chế độ này. Bạn có muốn thoát ngay không?}other{Điện thoại sẽ ở chế độ Gọi lại khẩn cấp trong %1$s phút. Không thể sử dụng các ứng dụng cần kết nối dữ liệu khi đang ở trong chế độ này. Bạn có muốn thoát ngay không?}}"</string>
+    <string name="alert_dialog_not_avaialble_in_ecm" msgid="8717711120099503279">"{count,plural, =1{Thao tác đã chọn không thực hiện được trong khi ở chế độ Gọi lại khẩn cấp. Điện thoại sẽ ở chế độ này trong vòng 1 phút. Bạn có muốn thoát ngay không?}other{Thao tác đã chọn không thực hiện được trong khi ở chế độ Gọi lại khẩn cấp. Điện thoại sẽ ở chế độ này trong vòng %1$s phút. Bạn có muốn thoát ngay không?}}"</string>
     <string name="alert_dialog_in_ecm_call" msgid="1207545603149771978">"Tác vụ đã chọn không khả dụng trong khi thực hiện cuộc gọi khẩn cấp."</string>
     <string name="progress_dialog_exiting_ecm" msgid="9159080081676927217">"Thoát khỏi chế độ Gọi lại khẩn cấp"</string>
     <string name="alert_dialog_yes" msgid="3532525979632841417">"Có"</string>
@@ -646,7 +646,7 @@
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"Loại bỏ"</string>
     <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"Điện thoại đang ở chế độ gọi lại khẩn cấp"</string>
     <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"Cho đến <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
-    <string name="alert_dialog_exit_ecm_without_data_restriction_hint" msgid="7549850847524907932">"{count,plural, =1{Điện thoại sẽ ở chế độ gọi lại khẩn cấp trong 1 phút.\nBạn có muốn thoát ngay không?}other{Điện thoại sẽ ở chế độ gọi lại khẩn cấp trong %s phút.\nBạn có muốn thoát ngay không?}}"</string>
+    <string name="alert_dialog_exit_ecm_without_data_restriction_hint" msgid="7549850847524907932">"{count,plural, =1{Điện thoại sẽ ở chế độ gọi lại khẩn cấp trong 1 phút.\nBạn có muốn thoát ngay không?}other{Điện thoại sẽ ở chế độ gọi lại khẩn cấp trong %1$s phút.\nBạn có muốn thoát ngay không?}}"</string>
     <string name="voicemail_provider" msgid="4158806657253745294">"Dịch vụ"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"Thiết lập"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;Chưa đặt&gt;"</string>

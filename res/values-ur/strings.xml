@@ -637,8 +637,8 @@
     <string name="phone_in_ecm_notification_title" msgid="6825016389926367946">"ہنگامی کال بیک طرز"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="653972232922670335">"ڈیٹا کنکشن غیر فعال ہوگیا"</string>
     <string name="phone_in_ecm_notification_complete_time" msgid="7341624337163082759">"<xliff:g id="COMPLETETIME">%s</xliff:g> تک کوئی ڈیٹا کنکشن نہیں"</string>
-    <string name="alert_dialog_exit_ecm" msgid="7661603870224398025">"{count,plural, =1{فون ایک منٹ تک ایمرجنسی کال بیک وضع میں رہے گا۔ اس وضع میں رہتے ہوئے ڈیٹا کنکشن کا استعمال کرنے والی کوئی بھی ایپ استعمال نہیں ہو سکتی۔ کیا آپ ابھی باہر نکلنا چاہتے ہیں؟}other{‏فون ‎%s منٹ تک ایمرجنسی کال بیک وضع میں رہے گا۔ اس وضع میں رہتے ہوئے ڈیٹا کنکشن کا استعمال کرنے والی کوئی بھی ایپلیکیشن استعمال نہیں ہو سکتی۔ کیا آپ ابھی باہر نکلنا چاہتے ہیں؟}}"</string>
-    <string name="alert_dialog_not_avaialble_in_ecm" msgid="8717711120099503279">"{count,plural, =1{منتخب کردہ کارروائی ایمرجنسی کال بیک وضع میں دستیاب نہیں ہے۔ فون ایک منٹ تک اس وضع میں رہے گا۔ کیا آپ ابھی نکلنا چاہتے ہیں؟}other{‏منتخب کردہ کارروائی ایمرجنسی کال بیک وضع میں دستیاب نہیں ہے۔ فون ‎%s منٹ تک اس وضع میں رہے گا۔ کیا آپ ابھی نکلنا چاہتے ہیں؟}}"</string>
+    <string name="alert_dialog_exit_ecm" msgid="7661603870224398025">"{count,plural, =1{فون ایک منٹ تک ایمرجنسی کال بیک وضع میں رہے گا۔ اس وضع میں رہتے ہوئے ڈیٹا کنکشن کا استعمال کرنے والی کوئی بھی ایپ استعمال نہیں ہو سکتی۔ کیا آپ ابھی باہر نکلنا چاہتے ہیں؟}other{‏فون ‎%1$s منٹ تک ایمرجنسی کال بیک وضع میں رہے گا۔ اس وضع میں رہتے ہوئے ڈیٹا کنکشن کا استعمال کرنے والی کوئی بھی ایپلیکیشن استعمال نہیں ہو سکتی۔ کیا آپ ابھی باہر نکلنا چاہتے ہیں؟}}"</string>
+    <string name="alert_dialog_not_avaialble_in_ecm" msgid="8717711120099503279">"{count,plural, =1{منتخب کردہ کارروائی ایمرجنسی کال بیک وضع میں دستیاب نہیں ہے۔ فون ایک منٹ تک اس وضع میں رہے گا۔ کیا آپ ابھی نکلنا چاہتے ہیں؟}other{‏منتخب کردہ کارروائی ایمرجنسی کال بیک وضع میں دستیاب نہیں ہے۔ فون ‎%1$s منٹ تک اس وضع میں رہے گا۔ کیا آپ ابھی نکلنا چاہتے ہیں؟}}"</string>
     <string name="alert_dialog_in_ecm_call" msgid="1207545603149771978">"منتخب کردہ کارروائی ایک ہنگامی کال میں رہتے ہوئے دستیاب نہیں ہے۔"</string>
     <string name="progress_dialog_exiting_ecm" msgid="9159080081676927217">"موجودہ ہنگامی کال بیک طرز"</string>
     <string name="alert_dialog_yes" msgid="3532525979632841417">"ہاں"</string>
@@ -646,7 +646,7 @@
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"کالعدم کریں"</string>
     <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"فون ہنگامی کال بیک وضع میں ہے"</string>
     <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"<xliff:g id="COMPLETETIME">%s</xliff:g> تک"</string>
-    <string name="alert_dialog_exit_ecm_without_data_restriction_hint" msgid="7549850847524907932">"{count,plural, =1{فون ایک منٹ تک ایمرجنسی کال بیک وضع میں رہے گا۔\nکیا آپ ابھی باہر نکلنا چاہتے ہیں؟}other{‏فون ‎%s منٹ تک ایمرجنسی کال بیک وضع میں رہے گا۔\nکیا آپ ابھی باہر نکلنا چاہتے ہیں؟}}"</string>
+    <string name="alert_dialog_exit_ecm_without_data_restriction_hint" msgid="7549850847524907932">"{count,plural, =1{فون ایک منٹ تک ایمرجنسی کال بیک وضع میں رہے گا۔\nکیا آپ ابھی باہر نکلنا چاہتے ہیں؟}other{‏فون ‎%1$s منٹ تک ایمرجنسی کال بیک وضع میں رہے گا۔\nکیا آپ ابھی باہر نکلنا چاہتے ہیں؟}}"</string>
     <string name="voicemail_provider" msgid="4158806657253745294">"سروس"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"سیٹ اپ"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"‏&lt;سیٹ نہیں ہے&gt;"</string>

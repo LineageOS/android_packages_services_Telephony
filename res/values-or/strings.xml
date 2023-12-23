@@ -637,8 +637,8 @@
     <string name="phone_in_ecm_notification_title" msgid="6825016389926367946">"ଜରୁରୀକାଳିନ କଲବ୍ୟାକ୍‍ ମୋଡ୍‍"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="653972232922670335">"ଡାଟା କନେକ୍ସନ୍‌କୁ ଅକ୍ଷମ କରାଯାଇଛି"</string>
     <string name="phone_in_ecm_notification_complete_time" msgid="7341624337163082759">"<xliff:g id="COMPLETETIME">%s</xliff:g> ପର୍ଯ୍ୟନ୍ତ କୌଣସି ଡାଟା କନେକ୍ସନ୍ ନାହିଁ"</string>
-    <string name="alert_dialog_exit_ecm" msgid="7661603870224398025">"{count,plural, =1{ଫୋନଟି ଏକ ମିନିଟ ପାଇଁ ଜରୁରୀକାଳୀନ କଲବ୍ୟାକ ମୋଡରେ ରହିବ। ଏହି ମୋଡରେ ଥିବା ସମୟରେ ଡାଟା ସଂଯୋଗ‌କୁ ବ୍ୟବହାର କରୁଥିବା କୌଣସି ଆପକୁ ବ୍ୟବହାର କରାଯାଇପାରିବ ନାହିଁ। ଆପଣ ବର୍ତ୍ତମାନ ବାହାରି ଯିବାକୁ ଚାହାଁନ୍ତି?}other{ଫୋନଟି %s ମିନିଟ ପାଇଁ ଜରୁରୀକାଳୀନ କଲବ୍ୟାକ ମୋଡରେ ରହିବ। ଏହି ମୋଡରେ ଥିବା ସମୟରେ ଡାଟା ସଂଯୋଗ‌କୁ ବ୍ୟବହାର କରୁଥିବା କୌଣସି ଆପ୍ଲିକେସନକୁ ବ୍ୟବହାର କରାଯାଇପାରିବ ନାହିଁ। ଆପଣ ବର୍ତ୍ତମାନ ବାହାରି ଯିବାକୁ ଚାହାଁନ୍ତି?}}"</string>
-    <string name="alert_dialog_not_avaialble_in_ecm" msgid="8717711120099503279">"{count,plural, =1{ଜରୁରୀକାଳୀନ କଲବ୍ୟାକ ମୋଡରେ ଥିବା ସମୟରେ ଚୟନିତ କାର୍ଯ୍ୟଟି ଉପଲବ୍ଧ ନୁହେଁ। ଫୋନଟି ଏହି ମୋଡରେ ଏକ ମିନିଟ ପାଇଁ ରହିବ। ଆପଣ ବର୍ତ୍ତମାନ ବାହାରି ଯିବାକୁ ଚାହାଁନ୍ତି?}other{ଜରୁରୀକାଳୀନ କଲବ୍ୟାକ ମୋଡରେ ଥିବା ସମୟରେ ଚୟନିତ କାର୍ଯ୍ୟଟି ଉପଲବ୍ଧ ନୁହେଁ। ଫୋନଟି ଏହି ମୋଡରେ %s ମିନିଟ ପାଇଁ ରହିବ। ଆପଣ ବର୍ତ୍ତମାନ ବାହାରି ଯିବାକୁ ଚାହାଁନ୍ତି?}}"</string>
+    <string name="alert_dialog_exit_ecm" msgid="7661603870224398025">"{count,plural, =1{ଫୋନଟି ଏକ ମିନିଟ ପାଇଁ ଜରୁରୀକାଳୀନ କଲବ୍ୟାକ ମୋଡରେ ରହିବ। ଏହି ମୋଡରେ ଥିବା ସମୟରେ ଡାଟା ସଂଯୋଗ‌କୁ ବ୍ୟବହାର କରୁଥିବା କୌଣସି ଆପକୁ ବ୍ୟବହାର କରାଯାଇପାରିବ ନାହିଁ। ଆପଣ ବର୍ତ୍ତମାନ ବାହାରି ଯିବାକୁ ଚାହାଁନ୍ତି?}other{ଫୋନଟି %1$s ମିନିଟ ପାଇଁ ଜରୁରୀକାଳୀନ କଲବ୍ୟାକ ମୋଡରେ ରହିବ। ଏହି ମୋଡରେ ଥିବା ସମୟରେ ଡାଟା ସଂଯୋଗ‌କୁ ବ୍ୟବହାର କରୁଥିବା କୌଣସି ଆପ୍ଲିକେସନକୁ ବ୍ୟବହାର କରାଯାଇପାରିବ ନାହିଁ। ଆପଣ ବର୍ତ୍ତମାନ ବାହାରି ଯିବାକୁ ଚାହାଁନ୍ତି?}}"</string>
+    <string name="alert_dialog_not_avaialble_in_ecm" msgid="8717711120099503279">"{count,plural, =1{ଜରୁରୀକାଳୀନ କଲବ୍ୟାକ ମୋଡରେ ଥିବା ସମୟରେ ଚୟନିତ କାର୍ଯ୍ୟଟି ଉପଲବ୍ଧ ନୁହେଁ। ଫୋନଟି ଏହି ମୋଡରେ ଏକ ମିନିଟ ପାଇଁ ରହିବ। ଆପଣ ବର୍ତ୍ତମାନ ବାହାରି ଯିବାକୁ ଚାହାଁନ୍ତି?}other{ଜରୁରୀକାଳୀନ କଲବ୍ୟାକ ମୋଡରେ ଥିବା ସମୟରେ ଚୟନିତ କାର୍ଯ୍ୟଟି ଉପଲବ୍ଧ ନୁହେଁ। ଫୋନଟି ଏହି ମୋଡରେ %1$s ମିନିଟ ପାଇଁ ରହିବ। ଆପଣ ବର୍ତ୍ତମାନ ବାହାରି ଯିବାକୁ ଚାହାଁନ୍ତି?}}"</string>
     <string name="alert_dialog_in_ecm_call" msgid="1207545603149771978">"ଜରୁରୀକାଳୀନ କଲ୍ କରୁଥିବାବେଳେ ଚୟନିତ କାର୍ଯ୍ୟ ଉପଲବ୍ଧ ନାହିଁ।"</string>
     <string name="progress_dialog_exiting_ecm" msgid="9159080081676927217">"ଜରୁରୀକାଳିନ କଲବ୍ୟାକ୍ ମୋଡ୍‌ରୁ ବାହାରି ଆସନ୍ତୁ"</string>
     <string name="alert_dialog_yes" msgid="3532525979632841417">"ହଁ"</string>
@@ -646,7 +646,7 @@
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"ଖାରଜ କରନ୍ତୁ"</string>
     <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"ଫୋନଟି ଜରୁରୀକାଳୀନ କଲବ୍ୟାକ୍ ମୋଡରେ ଅଛି"</string>
     <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"<xliff:g id="COMPLETETIME">%s</xliff:g> ପର୍ଯ୍ୟନ୍ତ"</string>
-    <string name="alert_dialog_exit_ecm_without_data_restriction_hint" msgid="7549850847524907932">"{count,plural, =1{ଫୋନଟି ଏକ ମିନିଟ ପାଇଁ ଜରୁରୀକାଳୀନ କଲବ୍ୟାକ ମୋଡରେ ରହିବ। \nଆପଣ ବର୍ତ୍ତମାନ ବାହାରି ଯିବାକୁ ଚାହାଁନ୍ତି?}other{ଫୋନଟି %s ମିନିଟ ପାଇଁ ଜରୁରୀକାଳୀନ କଲବ୍ୟାକ ମୋଡରେ ରହିବ।\nଆପଣ ବର୍ତ୍ତମାନ ବାହାରି ଯିବାକୁ ଚାହାଁନ୍ତି?}}"</string>
+    <string name="alert_dialog_exit_ecm_without_data_restriction_hint" msgid="7549850847524907932">"{count,plural, =1{ଫୋନଟି ଏକ ମିନିଟ ପାଇଁ ଜରୁରୀକାଳୀନ କଲବ୍ୟାକ ମୋଡରେ ରହିବ। \nଆପଣ ବର୍ତ୍ତମାନ ବାହାରି ଯିବାକୁ ଚାହାଁନ୍ତି?}other{ଫୋନଟି %1$s ମିନିଟ ପାଇଁ ଜରୁରୀକାଳୀନ କଲବ୍ୟାକ ମୋଡରେ ରହିବ।\nଆପଣ ବର୍ତ୍ତମାନ ବାହାରି ଯିବାକୁ ଚାହାଁନ୍ତି?}}"</string>
     <string name="voicemail_provider" msgid="4158806657253745294">"ସେବା"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"ସେଟଅପ୍ କରନ୍ତୁ"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;ସେଟ୍ ହୋ‌ଇନାହିଁ&gt;"</string>

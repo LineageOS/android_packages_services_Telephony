@@ -637,8 +637,8 @@
     <string name="phone_in_ecm_notification_title" msgid="6825016389926367946">"Noodterugbel-modus"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="653972232922670335">"Dataverbinding gedeaktiveer"</string>
     <string name="phone_in_ecm_notification_complete_time" msgid="7341624337163082759">"Geen dataverbinding tot <xliff:g id="COMPLETETIME">%s</xliff:g> nie"</string>
-    <string name="alert_dialog_exit_ecm" msgid="7661603870224398025">"{count,plural, =1{Die foon sal in noodterugbelmodus wees vir een minuut. Terwyl hierdie modus aktief is, kan geen programme wat \'n dataverbinding nodig het, gebruik word nie. Wil jy nou uitgaan?}other{Die foon sal in noodterugbelmodus wees vir %s minute. Terwyl hierdie modus aktief is, kan geen programme wat \'n dataverbinding nodig het, gebruik word nie. Wil jy nou uitgaan?}}"</string>
-    <string name="alert_dialog_not_avaialble_in_ecm" msgid="8717711120099503279">"{count,plural, =1{Die geselekteerde handeling is nie beskikbaar terwyl die noodterugbelmodus aktief is nie. Die modus sal vir een minuut op hierdie foon aktief wees. Wil jy nou uitgaan?}other{Die geselekteerde handeling is nie beskikbaar terwyl die noodterugbelmodus aktief is nie. Die modus sal vir %s minute op hierdie foon aktief wees. Wil jy nou uitgaan?}}"</string>
+    <string name="alert_dialog_exit_ecm" msgid="7661603870224398025">"{count,plural, =1{Die foon sal in noodterugbelmodus wees vir een minuut. Terwyl hierdie modus aktief is, kan geen programme wat \'n dataverbinding nodig het, gebruik word nie. Wil jy nou uitgaan?}other{Die foon sal in noodterugbelmodus wees vir %1$s minute. Terwyl hierdie modus aktief is, kan geen programme wat \'n dataverbinding nodig het, gebruik word nie. Wil jy nou uitgaan?}}"</string>
+    <string name="alert_dialog_not_avaialble_in_ecm" msgid="8717711120099503279">"{count,plural, =1{Die geselekteerde handeling is nie beskikbaar terwyl die noodterugbelmodus aktief is nie. Die modus sal vir een minuut op hierdie foon aktief wees. Wil jy nou uitgaan?}other{Die geselekteerde handeling is nie beskikbaar terwyl die noodterugbelmodus aktief is nie. Die modus sal vir %1$s minute op hierdie foon aktief wees. Wil jy nou uitgaan?}}"</string>
     <string name="alert_dialog_in_ecm_call" msgid="1207545603149771978">"Die gekose handeling is nie beskikbaar tydens \'n noodoproep nie."</string>
     <string name="progress_dialog_exiting_ecm" msgid="9159080081676927217">"Verlaat noodterugbel-modus"</string>
     <string name="alert_dialog_yes" msgid="3532525979632841417">"Ja"</string>
@@ -646,7 +646,7 @@
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"Maak toe"</string>
     <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"Die foon is in noodterugbelmodus"</string>
     <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"Tot <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
-    <string name="alert_dialog_exit_ecm_without_data_restriction_hint" msgid="7549850847524907932">"{count,plural, =1{Die foon sal in noodterugbelmodus wees vir een minuut.\nWil jy nou uitgaan?}other{Die foon sal in noodterugbelmodus wees vir %s minute.\nWil jy nou uitgaan?}}"</string>
+    <string name="alert_dialog_exit_ecm_without_data_restriction_hint" msgid="7549850847524907932">"{count,plural, =1{Die foon sal in noodterugbelmodus wees vir een minuut.\nWil jy nou uitgaan?}other{Die foon sal in noodterugbelmodus wees vir %1$s minute.\nWil jy nou uitgaan?}}"</string>
     <string name="voicemail_provider" msgid="4158806657253745294">"Diens"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"Opstelling"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;Nie gestel nie&gt;"</string>

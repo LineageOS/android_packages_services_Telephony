@@ -637,8 +637,8 @@
     <string name="phone_in_ecm_notification_title" msgid="6825016389926367946">"Acil Geri Arama Modu"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="653972232922670335">"Veri bağlantısı devre dışı bırakıldı"</string>
     <string name="phone_in_ecm_notification_complete_time" msgid="7341624337163082759">"Şu saate kadar veri bağlantısı olmayacak: <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
-    <string name="alert_dialog_exit_ecm" msgid="7661603870224398025">"{count,plural, =1{Telefon bir dakika boyunca acil geri arama modunda olacak. Bu moddayken, veri bağlantısı kullanan uygulamalar kullanılamaz. Şimdi çıkmak istiyor musunuz?}other{Telefon %s dakika boyunca acil geri arama modunda olacak. Bu moddayken, veri bağlantısı kullanan uygulamalar kullanılamaz. Şimdi çıkmak istiyor musunuz?}}"</string>
-    <string name="alert_dialog_not_avaialble_in_ecm" msgid="8717711120099503279">"{count,plural, =1{Seçilen işlem acil geri arama modunda kullanılamaz. Telefon bir dakika boyunca bu modda kalacak. Şimdi çıkmak istiyor musunuz?}other{Seçilen işlem acil geri arama modunda kullanılamaz. Telefon %s dakika boyunca bu modda kalacak. Şimdi çıkmak istiyor musunuz?}}"</string>
+    <string name="alert_dialog_exit_ecm" msgid="7661603870224398025">"{count,plural, =1{Telefon bir dakika boyunca acil geri arama modunda olacak. Bu moddayken, veri bağlantısı kullanan uygulamalar kullanılamaz. Şimdi çıkmak istiyor musunuz?}other{Telefon %1$s dakika boyunca acil geri arama modunda olacak. Bu moddayken, veri bağlantısı kullanan uygulamalar kullanılamaz. Şimdi çıkmak istiyor musunuz?}}"</string>
+    <string name="alert_dialog_not_avaialble_in_ecm" msgid="8717711120099503279">"{count,plural, =1{Seçilen işlem acil geri arama modunda kullanılamaz. Telefon bir dakika boyunca bu modda kalacak. Şimdi çıkmak istiyor musunuz?}other{Seçilen işlem acil geri arama modunda kullanılamaz. Telefon %1$s dakika boyunca bu modda kalacak. Şimdi çıkmak istiyor musunuz?}}"</string>
     <string name="alert_dialog_in_ecm_call" msgid="1207545603149771978">"Seçilen işlem, acil durum çağrısında kullanılamaz."</string>
     <string name="progress_dialog_exiting_ecm" msgid="9159080081676927217">"Acil Geri Arama Modundan çıkılıyor"</string>
     <string name="alert_dialog_yes" msgid="3532525979632841417">"Evet"</string>
@@ -646,7 +646,7 @@
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"Kapat"</string>
     <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"Telefon, acil geri arama modunda"</string>
     <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"Şu saate kadar: <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
-    <string name="alert_dialog_exit_ecm_without_data_restriction_hint" msgid="7549850847524907932">"{count,plural, =1{Telefon bir dakika boyunca acil geri arama modunda olacak.\nŞimdi çıkmak istiyor musunuz?}other{Telefon %s dakika boyunca acil geri arama modunda olacak.\nŞimdi çıkmak istiyor musunuz?}}"</string>
+    <string name="alert_dialog_exit_ecm_without_data_restriction_hint" msgid="7549850847524907932">"{count,plural, =1{Telefon bir dakika boyunca acil geri arama modunda olacak.\nŞimdi çıkmak istiyor musunuz?}other{Telefon %1$s dakika boyunca acil geri arama modunda olacak.\nŞimdi çıkmak istiyor musunuz?}}"</string>
     <string name="voicemail_provider" msgid="4158806657253745294">"Hizmet"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"Kurulum"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;Ayarlanmadı&gt;"</string>

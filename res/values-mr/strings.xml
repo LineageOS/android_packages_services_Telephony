@@ -637,8 +637,8 @@
     <string name="phone_in_ecm_notification_title" msgid="6825016389926367946">"आणीबाणी कॉलबॅक मोड"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="653972232922670335">"डेटा कनेक्शन अक्षम केले"</string>
     <string name="phone_in_ecm_notification_complete_time" msgid="7341624337163082759">"<xliff:g id="COMPLETETIME">%s</xliff:g> पर्यंत कोणतेही डेटा कनेक्‍शन नाही"</string>
-    <string name="alert_dialog_exit_ecm" msgid="7661603870224398025">"{count,plural, =1{फोन एका मिनिटासाठी आणीबाणी कॉलबॅक मोडमध्‍ये राहील. या मोडमध्‍ये असताना डेटा कनेक्‍शन वापरणारी कोणतीही अ‍ॅप्‍स वापरली जाऊ शकत नाहीत. तुम्हाला आता बाहेर पडायचे आहे का?}other{फोन %s मिनिटांसाठी आणीबाणी कॉलबॅक मोडमध्‍ये राहील. या मोडमध्‍ये असताना डेटा कनेक्‍शन वापरणारी कोणतीही अ‍ॅप्‍स वापरली जाऊ शकत नाहीत. तुम्हाला आता बाहेर पडायचे आहे का?}}"</string>
-    <string name="alert_dialog_not_avaialble_in_ecm" msgid="8717711120099503279">"{count,plural, =1{आणीबाणी कॉलबॅक मोडमध्‍ये असताना निवडलेली कृती उपलब्‍ध नाही. फोन एका मिनिटासाठी या मोडमध्‍ये राहील. तुम्हाला आता बाहेर पडायचे आहे का?}other{आणीबाणी कॉलबॅक मोडमध्‍ये असताना निवडलेली कृती उपलब्‍ध नाही. फोन %s मिनिटांसाठी या मोडमध्‍ये राहील. तुम्हाला आता बाहेर पडायचे आहे का?}}"</string>
+    <string name="alert_dialog_exit_ecm" msgid="7661603870224398025">"{count,plural, =1{फोन एका मिनिटासाठी आणीबाणी कॉलबॅक मोडमध्‍ये राहील. या मोडमध्‍ये असताना डेटा कनेक्‍शन वापरणारी कोणतीही अ‍ॅप्‍स वापरली जाऊ शकत नाहीत. तुम्हाला आता बाहेर पडायचे आहे का?}other{फोन %1$s मिनिटांसाठी आणीबाणी कॉलबॅक मोडमध्‍ये राहील. या मोडमध्‍ये असताना डेटा कनेक्‍शन वापरणारी कोणतीही अ‍ॅप्‍स वापरली जाऊ शकत नाहीत. तुम्हाला आता बाहेर पडायचे आहे का?}}"</string>
+    <string name="alert_dialog_not_avaialble_in_ecm" msgid="8717711120099503279">"{count,plural, =1{आणीबाणी कॉलबॅक मोडमध्‍ये असताना निवडलेली कृती उपलब्‍ध नाही. फोन एका मिनिटासाठी या मोडमध्‍ये राहील. तुम्हाला आता बाहेर पडायचे आहे का?}other{आणीबाणी कॉलबॅक मोडमध्‍ये असताना निवडलेली कृती उपलब्‍ध नाही. फोन %1$s मिनिटांसाठी या मोडमध्‍ये राहील. तुम्हाला आता बाहेर पडायचे आहे का?}}"</string>
     <string name="alert_dialog_in_ecm_call" msgid="1207545603149771978">"आणीबाणीच्‍या कॉलमध्‍ये असताना निवडलेली क्रिया उपलब्‍ध नसते."</string>
     <string name="progress_dialog_exiting_ecm" msgid="9159080081676927217">"आणीबाणी कॉलबॅक मोडमधून बाहेर पडत आहे"</string>
     <string name="alert_dialog_yes" msgid="3532525979632841417">"होय"</string>
@@ -646,7 +646,7 @@
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"डिसमिस करा"</string>
     <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"फोन आणीबाणी कॉलबॅक मोडमध्ये आहे"</string>
     <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"<xliff:g id="COMPLETETIME">%s</xliff:g> पर्यंत"</string>
-    <string name="alert_dialog_exit_ecm_without_data_restriction_hint" msgid="7549850847524907932">"{count,plural, =1{फोन एका मिनिटासाठी आणीबाणी कॉलबॅक मोडमध्ये राहील.\nतुम्हाला आता बाहेर पडायचे आहे का?}other{फोन %s मिनिटांसाठी आणीबाणी कॉलबॅक मोडमध्ये राहील.\nतुम्हाला आता बाहेर पडायचे आहे का?}}"</string>
+    <string name="alert_dialog_exit_ecm_without_data_restriction_hint" msgid="7549850847524907932">"{count,plural, =1{फोन एका मिनिटासाठी आणीबाणी कॉलबॅक मोडमध्ये राहील.\nतुम्हाला आता बाहेर पडायचे आहे का?}other{फोन %1$s मिनिटांसाठी आणीबाणी कॉलबॅक मोडमध्ये राहील.\nतुम्हाला आता बाहेर पडायचे आहे का?}}"</string>
     <string name="voicemail_provider" msgid="4158806657253745294">"सेवा"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"सेटअप"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;सेट नाही&gt;"</string>

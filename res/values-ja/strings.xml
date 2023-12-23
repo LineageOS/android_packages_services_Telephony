@@ -637,8 +637,8 @@
     <string name="phone_in_ecm_notification_title" msgid="6825016389926367946">"緊急通報待機モード"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="653972232922670335">"データ接続が無効です"</string>
     <string name="phone_in_ecm_notification_complete_time" msgid="7341624337163082759">"<xliff:g id="COMPLETETIME">%s</xliff:g> までデータ接続できません"</string>
-    <string name="alert_dialog_exit_ecm" msgid="7661603870224398025">"{count,plural, =1{スマートフォンが 1 分間にわたって緊急通報待機モードになります。このモード中はデータ通信を使用するアプリが利用できなくなります。今すぐこの通知画面を終了してもよろしいですか？}other{スマートフォンが %s 分間にわたって緊急通報待機モードになります。このモード中はデータ通信を使用するアプリケーションが利用できなくなります。今すぐこの通知画面を終了してもよろしいですか？}}"</string>
-    <string name="alert_dialog_not_avaialble_in_ecm" msgid="8717711120099503279">"{count,plural, =1{選択した操作は緊急通報待機モードでは実行できません。スマートフォンは 1 分間にわたってこのモードになります。今すぐアプリを終了してもよろしいですか？}other{選択した操作は緊急通報待機モードでは実行できません。スマートフォンは %s 分間にわたってこのモードになります。今すぐアプリを終了してもよろしいですか？}}"</string>
+    <string name="alert_dialog_exit_ecm" msgid="7661603870224398025">"{count,plural, =1{スマートフォンが 1 分間にわたって緊急通報待機モードになります。このモード中はデータ通信を使用するアプリが利用できなくなります。今すぐこの通知画面を終了してもよろしいですか？}other{スマートフォンが %1$s 分間にわたって緊急通報待機モードになります。このモード中はデータ通信を使用するアプリケーションが利用できなくなります。今すぐこの通知画面を終了してもよろしいですか？}}"</string>
+    <string name="alert_dialog_not_avaialble_in_ecm" msgid="8717711120099503279">"{count,plural, =1{選択した操作は緊急通報待機モードでは実行できません。スマートフォンは 1 分間にわたってこのモードになります。今すぐアプリを終了してもよろしいですか？}other{選択した操作は緊急通報待機モードでは実行できません。スマートフォンは %1$s 分間にわたってこのモードになります。今すぐアプリを終了してもよろしいですか？}}"</string>
     <string name="alert_dialog_in_ecm_call" msgid="1207545603149771978">"選択した操作は緊急通報時には実行できません。"</string>
     <string name="progress_dialog_exiting_ecm" msgid="9159080081676927217">"緊急通報待機モードを終了しています"</string>
     <string name="alert_dialog_yes" msgid="3532525979632841417">"はい"</string>
@@ -646,7 +646,7 @@
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"解除"</string>
     <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"スマートフォンが緊急通報待機モードになっています"</string>
     <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"<xliff:g id="COMPLETETIME">%s</xliff:g> まで"</string>
-    <string name="alert_dialog_exit_ecm_without_data_restriction_hint" msgid="7549850847524907932">"{count,plural, =1{スマートフォンが 1 分間にわたって緊急通報待機モードになります。\n今すぐこの通知画面を終了してもよろしいですか？}other{スマートフォンが %s 分間にわたって緊急通報待機モードになります。\n今すぐこの通知画面を終了してもよろしいですか？}}"</string>
+    <string name="alert_dialog_exit_ecm_without_data_restriction_hint" msgid="7549850847524907932">"{count,plural, =1{スマートフォンが 1 分間にわたって緊急通報待機モードになります。\n今すぐこの通知画面を終了してもよろしいですか？}other{スマートフォンが %1$s 分間にわたって緊急通報待機モードになります。\n今すぐこの通知画面を終了してもよろしいですか？}}"</string>
     <string name="voicemail_provider" msgid="4158806657253745294">"サービス"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"セットアップ"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;未設定&gt;"</string>

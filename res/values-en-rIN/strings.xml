@@ -637,8 +637,8 @@
     <string name="phone_in_ecm_notification_title" msgid="6825016389926367946">"Emergency Callback Mode"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="653972232922670335">"Data connection disabled"</string>
     <string name="phone_in_ecm_notification_complete_time" msgid="7341624337163082759">"No data connection until <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
-    <string name="alert_dialog_exit_ecm" msgid="7661603870224398025">"{count,plural, =1{The phone will be in emergency callback mode for one minute. While in this mode, no apps using a data connection can be used. Do you want to exit now?}other{The phone will be in emergency callback mode for %s minutes. While in this mode, no applications using a data connection can be used. Do you want to exit now?}}"</string>
-    <string name="alert_dialog_not_avaialble_in_ecm" msgid="8717711120099503279">"{count,plural, =1{The selected action isn\'t available while in the emergency callback mode. The phone will be in this mode for one minute. Do you want to exit now?}other{The selected action isn\'t available while in the emergency callback mode. The phone will be in this mode for %s minutes. Do you want to exit now?}}"</string>
+    <string name="alert_dialog_exit_ecm" msgid="7661603870224398025">"{count,plural, =1{The phone will be in emergency callback mode for one minute. While in this mode, no apps using a data connection can be used. Do you want to exit now?}other{The phone will be in emergency callback mode for %1$s minutes. While in this mode, no applications using a data connection can be used. Do you want to exit now?}}"</string>
+    <string name="alert_dialog_not_avaialble_in_ecm" msgid="8717711120099503279">"{count,plural, =1{The selected action isn\'t available while in the emergency callback mode. The phone will be in this mode for one minute. Do you want to exit now?}other{The selected action isn\'t available while in the emergency callback mode. The phone will be in this mode for %1$s minutes. Do you want to exit now?}}"</string>
     <string name="alert_dialog_in_ecm_call" msgid="1207545603149771978">"The action selected isn\'t available during an emergency call."</string>
     <string name="progress_dialog_exiting_ecm" msgid="9159080081676927217">"Exiting Emergency Callback mode"</string>
     <string name="alert_dialog_yes" msgid="3532525979632841417">"Yes"</string>
@@ -646,7 +646,7 @@
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"Dismiss"</string>
     <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"The phone is in emergency callback mode"</string>
     <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"Until <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
-    <string name="alert_dialog_exit_ecm_without_data_restriction_hint" msgid="7549850847524907932">"{count,plural, =1{The phone will be in emergency callback mode for one minute.\nDo you want to exit now?}other{The phone will be in emergency callback mode for %s minutes.\nDo you want to exit now?}}"</string>
+    <string name="alert_dialog_exit_ecm_without_data_restriction_hint" msgid="7549850847524907932">"{count,plural, =1{The phone will be in emergency callback mode for one minute.\nDo you want to exit now?}other{The phone will be in emergency callback mode for %1$s minutes.\nDo you want to exit now?}}"</string>
     <string name="voicemail_provider" msgid="4158806657253745294">"Service"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"Setup"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;Not set&gt;"</string>

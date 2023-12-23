@@ -637,8 +637,8 @@
     <string name="phone_in_ecm_notification_title" msgid="6825016389926367946">"გადაუდებელი გადმორეკვის რეჟიმი"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="653972232922670335">"მობილური ინტერნეტი გამორთულია"</string>
     <string name="phone_in_ecm_notification_complete_time" msgid="7341624337163082759">"მობილურ ინტერნეტთან კავშირი მიუწვდომელია <xliff:g id="COMPLETETIME">%s</xliff:g>-მდე"</string>
-    <string name="alert_dialog_exit_ecm" msgid="7661603870224398025">"{count,plural, =1{ტელეფონი გადაუდებელი გადმორეკვის რეჟიმში იქნება ერთი წუთის განმავლობაში. ამ რეჟიმის დროს ვერ გამოიყენებთ აპებს, რომლებიც მობილურ ინტერნეტს იყენებს. გსურთ ახლა გასვლა?}other{ტელეფონი გადაუდებელი გადმორეკვის რეჟიმში იქნება %s წუთის განმავლობაში. ამ რეჟიმის დროს ვერ გამოიყენებთ აპებს, რომლებიც მობილურ ინტერნეტს იყენებს. გსურთ ახლა გასვლა?}}"</string>
-    <string name="alert_dialog_not_avaialble_in_ecm" msgid="8717711120099503279">"{count,plural, =1{არჩეული მოქმედება მიუწვდომელია გადაუდებელი გადმორეკვის რეჟიმში. ტელეფონი ამ რეჟიმში დარჩება ერთი წუთის განმავლობაში. გსურთ ახლავე გასვლა?}other{არჩეული მოქმედება მიუწვდომელია გადაუდებელი გადმორეკვის რეჟიმში. ტელეფონი ამ რეჟიმში დარჩება %s წუთის განმავლობაში. გსურთ ახლავე გასვლა?}}"</string>
+    <string name="alert_dialog_exit_ecm" msgid="7661603870224398025">"{count,plural, =1{ტელეფონი გადაუდებელი გადმორეკვის რეჟიმში იქნება ერთი წუთის განმავლობაში. ამ რეჟიმის დროს ვერ გამოიყენებთ აპებს, რომლებიც მობილურ ინტერნეტს იყენებს. გსურთ ახლა გასვლა?}other{ტელეფონი გადაუდებელი გადმორეკვის რეჟიმში იქნება %1$s წუთის განმავლობაში. ამ რეჟიმის დროს ვერ გამოიყენებთ აპებს, რომლებიც მობილურ ინტერნეტს იყენებს. გსურთ ახლა გასვლა?}}"</string>
+    <string name="alert_dialog_not_avaialble_in_ecm" msgid="8717711120099503279">"{count,plural, =1{არჩეული მოქმედება მიუწვდომელია გადაუდებელი გადმორეკვის რეჟიმში. ტელეფონი ამ რეჟიმში დარჩება ერთი წუთის განმავლობაში. გსურთ ახლავე გასვლა?}other{არჩეული მოქმედება მიუწვდომელია გადაუდებელი გადმორეკვის რეჟიმში. ტელეფონი ამ რეჟიმში დარჩება %1$s წუთის განმავლობაში. გსურთ ახლავე გასვლა?}}"</string>
     <string name="alert_dialog_in_ecm_call" msgid="1207545603149771978">"არჩეული ქმედება მიუწვდომელია გადაუდებელის ზარის რეჟიმში."</string>
     <string name="progress_dialog_exiting_ecm" msgid="9159080081676927217">"გადაუდებელი გადმორეკვის რეჟიმიდან გამოსვლა"</string>
     <string name="alert_dialog_yes" msgid="3532525979632841417">"დიახ"</string>
@@ -646,7 +646,7 @@
     <string name="alert_dialog_dismiss" msgid="1336356286354517054">"იგნორირება"</string>
     <string name="phone_in_ecm_call_notification_text_without_data_restriction_hint" msgid="3747860785153531225">"ტელეფონი გადაუდებელი გადმორეკვის რეჟიმშია"</string>
     <string name="phone_in_ecm_notification_complete_time_without_data_restriction_hint" msgid="3690292264812050858">"<xliff:g id="COMPLETETIME">%s</xliff:g>-მდე"</string>
-    <string name="alert_dialog_exit_ecm_without_data_restriction_hint" msgid="7549850847524907932">"{count,plural, =1{ტელეფონი გადაუდებელი გადმორეკვის რეჟიმში იქნება ერთი წუთის განმავლობაში.\nგსურთ გასვლა ახლავე?}other{ტელეფონი გადაუდებელი გადმორეკვის რეჟიმში იქნება %s წუთის განმავლობაში.\nგსურთ გასვლა ახლავე?}}"</string>
+    <string name="alert_dialog_exit_ecm_without_data_restriction_hint" msgid="7549850847524907932">"{count,plural, =1{ტელეფონი გადაუდებელი გადმორეკვის რეჟიმში იქნება ერთი წუთის განმავლობაში.\nგსურთ გასვლა ახლავე?}other{ტელეფონი გადაუდებელი გადმორეკვის რეჟიმში იქნება %1$s წუთის განმავლობაში.\nგსურთ გასვლა ახლავე?}}"</string>
     <string name="voicemail_provider" msgid="4158806657253745294">"სერვისი"</string>
     <string name="voicemail_settings" msgid="4451045613238972776">"დაყენება"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"&lt;არ არის დაყენებული&gt;"</string>
