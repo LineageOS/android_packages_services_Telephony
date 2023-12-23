@@ -89,6 +89,7 @@ import com.android.internal.telephony.domainselection.NormalCallDomainSelectionC
 import com.android.internal.telephony.emergency.EmergencyStateTracker;
 import com.android.internal.telephony.emergency.RadioOnHelper;
 import com.android.internal.telephony.emergency.RadioOnStateListener;
+import com.android.internal.telephony.flags.Flags;
 import com.android.internal.telephony.imsphone.ImsExternalCallTracker;
 import com.android.internal.telephony.imsphone.ImsPhone;
 import com.android.internal.telephony.imsphone.ImsPhoneConnection;
@@ -3907,10 +3908,34 @@ public class TelephonyConnectionService extends ConnectionService {
         return origAccountHandle;
     }
 
+    /*
+     * Returns true if both existing connections on-device and the incoming connection support HOLD,
+     * false otherwise. Assumes that a TelephonyConference supports HOLD.
+     */
+    private boolean allCallsSupportHold(@NonNull TelephonyConnection incomingConnection) {
+        if (Flags.callExtraForNonHoldSupportedCarriers()) {
+            if (getAllConnections().stream()
+                    .filter(c ->
+                            // Exclude multiendpoint calls as they're not on this device.
+                            (c.getConnectionProperties() & Connection.PROPERTY_IS_EXTERNAL_CALL)
+                                    == 0
+                                    && (c.getConnectionCapabilities()
+                                    & Connection.CAPABILITY_SUPPORT_HOLD) != 0).count() == 0) {
+                return false;
+            }
+            if ((incomingConnection.getConnectionCapabilities()
+                    & Connection.CAPABILITY_SUPPORT_HOLD) == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     /**
-     * For the passed in incoming {@link TelephonyConnection}, for non- dual active voice devices,
+     * For the passed in incoming {@link TelephonyConnection}, for non-dual active voice devices,
      * adds {@link Connection#EXTRA_ANSWERING_DROPS_FG_CALL} if there are ongoing calls on another
-     * subscription (ie phone account handle) than the one passed in.
+     * subscription (ie phone account handle) than the one passed in. For dual active voice devices,
+     * still sets the EXTRA if either subscription has connections that don't support hold.
      * @param connection The connection.
      * @param phoneAccountHandle The {@link PhoneAccountHandle} the incoming call originated on;
      *                           this is passed in because
@@ -3920,10 +3945,11 @@ public class TelephonyConnectionService extends ConnectionService {
      */
     public void maybeIndicateAnsweringWillDisconnect(@NonNull TelephonyConnection connection,
             @NonNull PhoneAccountHandle phoneAccountHandle) {
-        if (mTelephonyManagerProxy.isConcurrentCallsPossible()) {
-            return;
-        }
         if (isCallPresentOnOtherSub(phoneAccountHandle)) {
+            if (mTelephonyManagerProxy.isConcurrentCallsPossible()
+                    && allCallsSupportHold(connection)) {
+                return;
+            }
             Log.i(this, "maybeIndicateAnsweringWillDisconnect; answering call %s will cause a call "
                     + "on another subscription to drop.", connection.getTelecomCallId());
             Bundle extras = new Bundle();
@@ -3948,13 +3974,16 @@ public class TelephonyConnectionService extends ConnectionService {
 
     /**
      * Where there are ongoing calls on another subscription other than the one specified,
-     * disconnect these calls for non-DSDA devices. This is used where there is an incoming call on
-     * one sub, but there are ongoing calls on another sub which need to be disconnected.
+     * disconnect these calls. This is used where there is an incoming call on one sub, but there
+     * are ongoing calls on another sub which need to be disconnected.
      * @param incomingHandle The incoming {@link PhoneAccountHandle}.
+     * @param answeringDropsFgCall Whether for dual-SIM dual active devices, answering the incoming
+     *                            call should drop the second call.
      */
-    public void maybeDisconnectCallsOnOtherSubs(@NonNull PhoneAccountHandle incomingHandle) {
+    public void maybeDisconnectCallsOnOtherSubs(
+            @NonNull PhoneAccountHandle incomingHandle, boolean answeringDropsFgCall) {
         Log.i(this, "maybeDisconnectCallsOnOtherSubs: check for calls not on %s", incomingHandle);
-        maybeDisconnectCallsOnOtherSubs(getAllConnections(), incomingHandle,
+        maybeDisconnectCallsOnOtherSubs(getAllConnections(), incomingHandle, answeringDropsFgCall,
                 mTelephonyManagerProxy);
     }
 
@@ -3964,13 +3993,16 @@ public class TelephonyConnectionService extends ConnectionService {
      * the core functionality.
      * @param connections the calls to check.
      * @param incomingHandle the incoming handle.
+     * @param answeringDropsFgCall Whether for dual-SIM dual active devices, answering the incoming
+     *                            call should drop the second call.
      * @param telephonyManagerProxy the proxy to the {@link TelephonyManager} instance.
      */
     @VisibleForTesting
     public static void maybeDisconnectCallsOnOtherSubs(@NonNull Collection<Connection> connections,
             @NonNull PhoneAccountHandle incomingHandle,
+            boolean answeringDropsFgCall,
             TelephonyManagerProxy telephonyManagerProxy) {
-        if (telephonyManagerProxy.isConcurrentCallsPossible()) {
+        if (telephonyManagerProxy.isConcurrentCallsPossible() && !answeringDropsFgCall) {
             return;
         }
         connections.stream()
