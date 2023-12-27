@@ -862,7 +862,7 @@
     <string name="radioInfo_phone_offhook" msgid="7564601639749936170">"Opkald i gang"</string>
     <string name="radioInfo_data_disconnected" msgid="8085447971880814541">"Afbrudt"</string>
     <string name="radioInfo_data_connecting" msgid="925092271092152472">"Forbindelsen oprettes"</string>
-    <string name="radioInfo_data_connected" msgid="7637335645634239508">"Tilsluttet"</string>
+    <string name="radioInfo_data_connected" msgid="7637335645634239508">"Forbundet"</string>
     <string name="radioInfo_data_suspended" msgid="8695262782642002785">"Suspenderet"</string>
     <string name="radioInfo_unknown" msgid="5401423738500672850">"Ukendt"</string>
     <string name="radioInfo_imei_primary" msgid="5948747378637224400">"Primær"</string>
