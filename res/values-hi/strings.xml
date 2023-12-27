@@ -165,7 +165,7 @@
     <string name="voicemail_default" msgid="6427575113775462077">"आपको सेवा देने वाली कंपनी"</string>
     <string name="vm_change_pin_old_pin" msgid="7154951790929009241">"पुराना पिन"</string>
     <string name="vm_change_pin_new_pin" msgid="2656200418481288069">"नया पिन"</string>
-    <string name="vm_change_pin_progress_message" msgid="626015184502739044">"कृपया प्रतीक्षा करें."</string>
+    <string name="vm_change_pin_progress_message" msgid="626015184502739044">"कृपया इंतज़ार करें."</string>
     <string name="vm_change_pin_error_too_short" msgid="1789139338449945483">"नया पिन बहुत छोटा है."</string>
     <string name="vm_change_pin_error_too_long" msgid="3634907034310018954">"नया पिन बहुत बड़ा है."</string>
     <string name="vm_change_pin_error_too_weak" msgid="8581892952627885719">"नया पिन बहुत कमज़ोर है. किसी सशक्त पासवर्ड में निरंतर क्रम या अंकों का दोहराव नहीं होना चाहिए."</string>
