@@ -576,7 +576,7 @@ public class PhoneGlobals extends ContextWrapper {
 
             phoneMgr = PhoneInterfaceManager.init(this, mFeatureFlags);
 
-            imsRcsController = ImsRcsController.init(this);
+            imsRcsController = ImsRcsController.init(this, mFeatureFlags);
 
             configLoader = CarrierConfigLoader.init(this, mFeatureFlags);
 
