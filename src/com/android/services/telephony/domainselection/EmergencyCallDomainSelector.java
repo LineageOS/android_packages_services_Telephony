@@ -652,11 +652,15 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         boolean psInService = isPsInService();
 
         if (!csInService && !psInService) {
+            mCsNetworkType = getSelectableCsNetworkType();
             mPsNetworkType = getSelectablePsNetworkType(false);
-            logi("selectDomain limited service ps=" + accessNetworkTypeToString(mPsNetworkType));
+            logi("selectDomain limited service ps=" + accessNetworkTypeToString(mPsNetworkType)
+                    + ", cs=" + accessNetworkTypeToString(mCsNetworkType));
             // If NGRAN, request scan to trigger emergency registration.
             if (mPsNetworkType == EUTRAN) {
                 onWwanNetworkTypeSelected(mPsNetworkType);
+            } else if (mCsNetworkType != UNKNOWN) {
+                onWwanNetworkTypeSelected(mCsNetworkType);
             } else {
                 requestScan(true);
             }
