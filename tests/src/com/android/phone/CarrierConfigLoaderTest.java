@@ -21,6 +21,7 @@ import static com.android.TestContext.STUB_PERMISSION_ENABLE_ALL;
 import static com.google.common.truth.Truth.assertThat;
 
 import static org.junit.Assert.assertThrows;
+import static org.junit.Assert.fail;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
@@ -30,6 +31,7 @@ import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import android.compat.testing.PlatformCompatChangeRule;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
@@ -56,12 +58,17 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 import com.android.TelephonyTestBase;
 import com.android.internal.telephony.IccCardConstants;
+import com.android.internal.telephony.flags.FeatureFlags;
 import com.android.internal.telephony.subscription.SubscriptionManagerService;
+
+import libcore.junit.util.compat.CoreCompatChangeRule.EnableCompatChanges;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.TestRule;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -76,10 +83,14 @@ import java.io.StringWriter;
  */
 @RunWith(AndroidJUnit4.class)
 public class CarrierConfigLoaderTest extends TelephonyTestBase {
+    @Rule
+    public TestRule compatChangeRule = new PlatformCompatChangeRule();
 
+    private static final String TAG = CarrierConfigLoaderTest.class.getSimpleName();
     private static final int DEFAULT_PHONE_ID = 0;
     private static final int DEFAULT_SUB_ID = SubscriptionManager.getDefaultSubscriptionId();
     private static final String PLATFORM_CARRIER_CONFIG_PACKAGE = "com.android.carrierconfig";
+    private static final String PLATFORM_CARRIER_CONFIG_FEATURE = "com.android.carrierconfig";
     private static final long PLATFORM_CARRIER_CONFIG_PACKAGE_VERSION_CODE = 1;
     private static final String CARRIER_CONFIG_EXAMPLE_KEY =
             CarrierConfigManager.KEY_CARRIER_USSD_METHOD_INT;
@@ -92,6 +103,7 @@ public class CarrierConfigLoaderTest extends TelephonyTestBase {
     @Mock SubscriptionManagerService mSubscriptionManagerService;
     @Mock SharedPreferences mSharedPreferences;
     @Mock TelephonyRegistryManager mTelephonyRegistryManager;
+    @Mock FeatureFlags mFeatureFlags;
 
     private TelephonyManager mTelephonyManager;
     private CarrierConfigLoader mCarrierConfigLoader;
@@ -118,6 +130,8 @@ public class CarrierConfigLoaderTest extends TelephonyTestBase {
         doReturn(Build.FINGERPRINT).when(mSharedPreferences).getString(eq("build_fingerprint"),
                 any());
         doReturn(mPackageManager).when(mContext).getPackageManager();
+        doReturn(new String[]{TAG}).when(mPackageManager).getPackagesForUid(anyInt());
+
         doReturn(mResources).when(mContext).getResources();
         doReturn(InstrumentationRegistry.getTargetContext().getFilesDir()).when(
                 mContext).getFilesDir();
@@ -141,7 +155,8 @@ public class CarrierConfigLoaderTest extends TelephonyTestBase {
         mHandlerThread.start();
 
         mTestableLooper = new TestableLooper(mHandlerThread.getLooper());
-        mCarrierConfigLoader = new CarrierConfigLoader(mContext, mTestableLooper.getLooper());
+        mCarrierConfigLoader = new CarrierConfigLoader(mContext, mTestableLooper.getLooper(),
+                mFeatureFlags);
         mHandler = mCarrierConfigLoader.getHandler();
 
         // Clear all configs to have the same starting point.
@@ -410,6 +425,34 @@ public class CarrierConfigLoaderTest extends TelephonyTestBase {
         String dumpContent = stringWriter.toString();
         assertThat(dumpContent).contains("CarrierConfigLoader:");
         assertThat(dumpContent).doesNotContain("Permission Denial:");
+    }
+
+    @Test
+    @EnableCompatChanges({TelephonyManager.ENABLE_FEATURE_MAPPING})
+    public void testGetConfigForSubIdWithFeature_withTelephonyFeatureMapping() {
+        doNothing().when(mContext).enforcePermission(
+                eq(android.Manifest.permission.READ_PRIVILEGED_PHONE_STATE),
+                anyInt(), anyInt(), anyString());
+
+        doReturn(true).when(mFeatureFlags).enforceTelephonyFeatureMappingForPublicApis();
+        doReturn(false).when(mPackageManager).hasSystemFeature(
+                eq(PackageManager.FEATURE_TELEPHONY_SUBSCRIPTION));
+
+        // Not defined required feature, expect UnsupportedOperationException
+        assertThrows(UnsupportedOperationException.class,
+                () -> mCarrierConfigLoader.getConfigForSubIdWithFeature(DEFAULT_SUB_ID,
+                        PLATFORM_CARRIER_CONFIG_PACKAGE, PLATFORM_CARRIER_CONFIG_FEATURE));
+
+        doReturn(true).when(mPackageManager).hasSystemFeature(
+                eq(PackageManager.FEATURE_TELEPHONY_SUBSCRIPTION));
+
+        // Defined required feature, not expect UnsupportedOperationException
+        try {
+            mCarrierConfigLoader.getConfigForSubIdWithFeature(DEFAULT_SUB_ID,
+                    PLATFORM_CARRIER_CONFIG_PACKAGE, PLATFORM_CARRIER_CONFIG_FEATURE);
+        } catch (UnsupportedOperationException e) {
+            fail("not expected UnsupportedOperationException");
+        }
     }
 
     private static PersistableBundle getTestConfig() {

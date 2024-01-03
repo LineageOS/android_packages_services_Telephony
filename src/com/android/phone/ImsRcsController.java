@@ -16,7 +16,13 @@
 
 package com.android.phone;
 
+import static android.content.pm.PackageManager.FEATURE_TELEPHONY_IMS;
+import static android.content.pm.PackageManager.FEATURE_TELEPHONY_IMS_SINGLE_REGISTRATION;
+import static android.telephony.TelephonyManager.ENABLE_FEATURE_MAPPING;
+
 import android.Manifest;
+import android.annotation.NonNull;
+import android.annotation.Nullable;
 import android.app.compat.CompatChanges;
 import android.compat.annotation.ChangeId;
 import android.compat.annotation.EnabledAfter;
@@ -53,6 +59,7 @@ import com.android.internal.telephony.IIntegerConsumer;
 import com.android.internal.telephony.ISipDialogStateCallback;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.TelephonyPermissions;
+import com.android.internal.telephony.flags.FeatureFlags;
 import com.android.internal.telephony.ims.ImsResolver;
 import com.android.services.telephony.rcs.RcsFeatureController;
 import com.android.services.telephony.rcs.SipTransportController;
@@ -74,6 +81,8 @@ public class ImsRcsController extends IImsRcsController.Stub {
     private PhoneGlobals mApp;
     private TelephonyRcsService mRcsService;
     private ImsResolver mImsResolver;
+    private FeatureFlags mFeatureFlags;
+    private PackageManager mPackageManager;
     // set by shell cmd phone src set-device-enabled true/false
     private Boolean mSingleRegistrationOverride;
 
@@ -90,10 +99,10 @@ public class ImsRcsController extends IImsRcsController.Stub {
      * Initialize the singleton ImsRcsController instance.
      * This is only done once, at startup, from PhoneApp.onCreate().
      */
-    static ImsRcsController init(PhoneGlobals app) {
+    static ImsRcsController init(PhoneGlobals app, FeatureFlags featureFlags) {
         synchronized (ImsRcsController.class) {
             if (sInstance == null) {
-                sInstance = new ImsRcsController(app);
+                sInstance = new ImsRcsController(app, featureFlags);
             } else {
                 Log.wtf(TAG, "init() called multiple times!  sInstance = " + sInstance);
             }
@@ -102,9 +111,11 @@ public class ImsRcsController extends IImsRcsController.Stub {
     }
 
     /** Private constructor; @see init() */
-    private ImsRcsController(PhoneGlobals app) {
+    private ImsRcsController(PhoneGlobals app, FeatureFlags featureFlags) {
         Log.i(TAG, "ImsRcsController");
         mApp = app;
+        mFeatureFlags = featureFlags;
+        mPackageManager = mApp.getPackageManager();
         TelephonyFrameworkInitializer
                 .getTelephonyServiceManager().getTelephonyImsServiceRegisterer().register(this);
         mImsResolver = ImsResolver.getInstance();
@@ -118,6 +129,10 @@ public class ImsRcsController extends IImsRcsController.Stub {
     public void registerImsRegistrationCallback(int subId, IImsRegistrationCallback callback) {
         TelephonyPermissions.enforceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
                 mApp, subId, "registerImsRegistrationCallback");
+
+        enforceTelephonyFeatureWithException(getCurrentPackageName(),
+                FEATURE_TELEPHONY_IMS, "registerImsRegistrationCallback");
+
         final long token = Binder.clearCallingIdentity();
         try {
             getRcsFeatureController(subId).registerImsRegistrationCallback(subId, callback);
@@ -136,6 +151,10 @@ public class ImsRcsController extends IImsRcsController.Stub {
     public void unregisterImsRegistrationCallback(int subId, IImsRegistrationCallback callback) {
         TelephonyPermissions.enforceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
                 mApp, subId, "unregisterImsRegistrationCallback");
+
+        enforceTelephonyFeatureWithException(getCurrentPackageName(),
+                FEATURE_TELEPHONY_IMS, "unregisterImsRegistrationCallback");
+
         final long token = Binder.clearCallingIdentity();
         try {
             getRcsFeatureController(subId).unregisterImsRegistrationCallback(subId, callback);
@@ -153,6 +172,10 @@ public class ImsRcsController extends IImsRcsController.Stub {
     public void getImsRcsRegistrationState(int subId, IIntegerConsumer consumer) {
         TelephonyPermissions.enforceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
                 mApp, subId, "getImsRcsRegistrationState");
+
+        enforceTelephonyFeatureWithException(getCurrentPackageName(),
+                FEATURE_TELEPHONY_IMS, "getImsRcsRegistrationState");
+
         final long token = Binder.clearCallingIdentity();
         try {
             getRcsFeatureController(subId).getRegistrationState(regState -> {
@@ -175,6 +198,10 @@ public class ImsRcsController extends IImsRcsController.Stub {
     public void getImsRcsRegistrationTransportType(int subId, IIntegerConsumer consumer) {
         TelephonyPermissions.enforceCallingOrSelfReadPrecisePhoneStatePermissionOrCarrierPrivilege(
                 mApp, subId, "getImsRcsRegistrationTransportType");
+
+        enforceTelephonyFeatureWithException(getCurrentPackageName(),
+                FEATURE_TELEPHONY_IMS, "getImsRcsRegistrationTransportType");
+
         final long token = Binder.clearCallingIdentity();
         try {
             getRcsFeatureController(subId).getRegistrationTech(regTech -> {
@@ -204,6 +231,10 @@ public class ImsRcsController extends IImsRcsController.Stub {
     @Override
     public void registerRcsAvailabilityCallback(int subId, IImsCapabilityCallback callback) {
         enforceReadPrivilegedPermission("registerRcsAvailabilityCallback");
+
+        enforceTelephonyFeatureWithException(getCurrentPackageName(),
+                FEATURE_TELEPHONY_IMS, "registerRcsAvailabilityCallback");
+
         final long token = Binder.clearCallingIdentity();
         try {
             getRcsFeatureController(subId).registerRcsAvailabilityCallback(subId, callback);
@@ -224,6 +255,10 @@ public class ImsRcsController extends IImsRcsController.Stub {
     @Override
     public void unregisterRcsAvailabilityCallback(int subId, IImsCapabilityCallback callback) {
         enforceReadPrivilegedPermission("unregisterRcsAvailabilityCallback");
+
+        enforceTelephonyFeatureWithException(getCurrentPackageName(),
+                FEATURE_TELEPHONY_IMS, "unregisterRcsAvailabilityCallback");
+
         final long token = Binder.clearCallingIdentity();
         try {
             getRcsFeatureController(subId).unregisterRcsAvailabilityCallback(subId, callback);
@@ -247,6 +282,10 @@ public class ImsRcsController extends IImsRcsController.Stub {
             @RcsFeature.RcsImsCapabilities.RcsImsCapabilityFlag int capability,
             @ImsRegistrationImplBase.ImsRegistrationTech int radioTech) {
         enforceReadPrivilegedPermission("isCapable");
+
+        enforceTelephonyFeatureWithException(getCurrentPackageName(),
+                FEATURE_TELEPHONY_IMS, "isCapable");
+
         final long token = Binder.clearCallingIdentity();
         try {
             return getRcsFeatureController(subId).isCapable(capability, radioTech);
@@ -273,6 +312,10 @@ public class ImsRcsController extends IImsRcsController.Stub {
             @RcsFeature.RcsImsCapabilities.RcsImsCapabilityFlag int capability,
             @ImsRegistrationImplBase.ImsRegistrationTech int radioTech) {
         enforceReadPrivilegedPermission("isAvailable");
+
+        enforceTelephonyFeatureWithException(getCurrentPackageName(),
+                FEATURE_TELEPHONY_IMS, "isAvailable");
+
         final long token = Binder.clearCallingIdentity();
         try {
             return getRcsFeatureController(subId).isAvailable(capability, radioTech);
@@ -290,6 +333,10 @@ public class ImsRcsController extends IImsRcsController.Stub {
             List<Uri> contactNumbers, IRcsUceControllerCallback c) {
         enforceAccessUserCapabilityExchangePermission("requestCapabilities");
         enforceReadContactsPermission("requestCapabilities");
+
+        enforceTelephonyFeatureWithException(callingPackage,
+                FEATURE_TELEPHONY_IMS, "requestCapabilities");
+
         final long token = Binder.clearCallingIdentity();
         try {
             UceControllerManager uceCtrlManager = getRcsFeatureController(subId).getFeature(
@@ -311,6 +358,10 @@ public class ImsRcsController extends IImsRcsController.Stub {
             String callingFeatureId, Uri contactNumber, IRcsUceControllerCallback c) {
         enforceAccessUserCapabilityExchangePermission("requestAvailability");
         enforceReadContactsPermission("requestAvailability");
+
+        enforceTelephonyFeatureWithException(callingPackage,
+                FEATURE_TELEPHONY_IMS, "requestAvailability");
+
         final long token = Binder.clearCallingIdentity();
         try {
             UceControllerManager uceCtrlManager = getRcsFeatureController(subId).getFeature(
@@ -330,6 +381,10 @@ public class ImsRcsController extends IImsRcsController.Stub {
     @Override
     public @PublishState int getUcePublishState(int subId) {
         enforceReadPrivilegedPermission("getUcePublishState");
+
+        enforceTelephonyFeatureWithException(getCurrentPackageName(),
+                FEATURE_TELEPHONY_IMS, "getUcePublishState");
+
         final int uid = Binder.getCallingUid();
         final long token = Binder.clearCallingIdentity();
         boolean isSupportPublishingState = false;
@@ -485,6 +540,10 @@ public class ImsRcsController extends IImsRcsController.Stub {
     @Override
     public void registerUcePublishStateCallback(int subId, IRcsUcePublishStateCallback c) {
         enforceReadPrivilegedPermission("registerUcePublishStateCallback");
+
+        enforceTelephonyFeatureWithException(getCurrentPackageName(),
+                FEATURE_TELEPHONY_IMS, "registerUcePublishStateCallback");
+
         final int uid = Binder.getCallingUid();
         final long token = Binder.clearCallingIdentity();
         boolean isSupportPublishingState = false;
@@ -510,6 +569,10 @@ public class ImsRcsController extends IImsRcsController.Stub {
     @Override
     public void unregisterUcePublishStateCallback(int subId, IRcsUcePublishStateCallback c) {
         enforceReadPrivilegedPermission("unregisterUcePublishStateCallback");
+
+        enforceTelephonyFeatureWithException(getCurrentPackageName(),
+                FEATURE_TELEPHONY_IMS, "unregisterUcePublishStateCallback");
+
         final long token = Binder.clearCallingIdentity();
         try {
             UceControllerManager uceCtrlManager = getRcsFeatureController(subId).getFeature(
@@ -534,6 +597,10 @@ public class ImsRcsController extends IImsRcsController.Stub {
                     + "isUceSettingEnabled");
             return false;
         }
+
+        enforceTelephonyFeatureWithException(callingPackage,
+                FEATURE_TELEPHONY_IMS, "isUceSettingEnabled");
+
         final long token = Binder.clearCallingIdentity();
         try {
             return SubscriptionManager.getBooleanSubscriptionProperty(subId,
@@ -546,6 +613,10 @@ public class ImsRcsController extends IImsRcsController.Stub {
     @Override
     public void setUceSettingEnabled(int subId, boolean isEnabled) {
         enforceModifyPermission();
+
+        enforceTelephonyFeatureWithException(getCurrentPackageName(),
+                FEATURE_TELEPHONY_IMS, "setUceSettingEnabled");
+
         final long token = Binder.clearCallingIdentity();
         try {
             SubscriptionManager.setSubscriptionProperty(subId,
@@ -680,6 +751,10 @@ public class ImsRcsController extends IImsRcsController.Stub {
         if (!SubscriptionManager.isValidSubscriptionId(subId)) {
             throw new IllegalArgumentException("Invalid Subscription ID: " + subId);
         }
+
+        enforceTelephonyFeatureWithException(getCurrentPackageName(),
+                FEATURE_TELEPHONY_IMS_SINGLE_REGISTRATION, "registerSipDialogStateCallback");
+
         try {
             SipTransportController transport = getRcsFeatureController(subId).getFeature(
                     SipTransportController.class);
@@ -707,6 +782,10 @@ public class ImsRcsController extends IImsRcsController.Stub {
         if (!SubscriptionManager.isValidSubscriptionId(subId)) {
             throw new IllegalArgumentException("Invalid Subscription ID: " + subId);
         }
+
+        enforceTelephonyFeatureWithException(getCurrentPackageName(),
+                FEATURE_TELEPHONY_IMS_SINGLE_REGISTRATION, "unregisterSipDialogStateCallback");
+
         try {
             SipTransportController transport = getRcsFeatureController(subId).getFeature(
                     SipTransportController.class);
@@ -895,6 +974,40 @@ public class ImsRcsController extends IImsRcsController.Stub {
         return mSingleRegistrationOverride != null ? mSingleRegistrationOverride
                 : mApp.getPackageManager().hasSystemFeature(
                         PackageManager.FEATURE_TELEPHONY_IMS_SINGLE_REGISTRATION);
+    }
+
+    /**
+     * Get the current calling package name.
+     * @return the current calling package name
+     */
+    @Nullable
+    private String getCurrentPackageName() {
+        if (mPackageManager == null) return null;
+        String[] callingUids = mPackageManager.getPackagesForUid(Binder.getCallingUid());
+        return (callingUids == null) ? null : callingUids[0];
+    }
+
+    /**
+     * Make sure the device has required telephony feature
+     *
+     * @throws UnsupportedOperationException if the device does not have required telephony feature
+     */
+    private void enforceTelephonyFeatureWithException(@Nullable String callingPackage,
+            @NonNull String telephonyFeature, @NonNull String methodName) {
+        if (callingPackage == null || mPackageManager == null) {
+            return;
+        }
+
+        if (!mFeatureFlags.enforceTelephonyFeatureMappingForPublicApis()
+                || !CompatChanges.isChangeEnabled(ENABLE_FEATURE_MAPPING, callingPackage,
+                Binder.getCallingUserHandle())) {
+            return;
+        }
+
+        if (!mPackageManager.hasSystemFeature(telephonyFeature)) {
+            throw new UnsupportedOperationException(
+                    methodName + " is unsupported without " + telephonyFeature);
+        }
     }
 
     void setRcsService(TelephonyRcsService rcsService) {
