@@ -61,6 +61,8 @@ import org.junit.rules.TestRule;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.util.Locale;
 
 /**
@@ -407,5 +409,21 @@ public class PhoneInterfaceManagerTest extends TelephonyTestBase {
                 () -> mPhoneInterfaceManager.handlePinMmiForSubscriber(1, "123456789"));
         assertThrows(UnsupportedOperationException.class,
                 () -> mPhoneInterfaceManager.toggleRadioOnOffForSubscriber(1));
+    }
+
+    @Test
+    public void testGetCurrentPackageNameWithNoKnownPackage() throws Exception {
+        Field field = PhoneInterfaceManager.class.getDeclaredField("mApp");
+        field.setAccessible(true);
+        Field modifiersField = Field.class.getDeclaredField("accessFlags");
+        modifiersField.setAccessible(true);
+        modifiersField.setInt(field, field.getModifiers() & ~Modifier.FINAL);
+        field.set(mPhoneInterfaceManager, mPhoneGlobals);
+
+        doReturn(mPackageManager).when(mPhoneGlobals).getPackageManager();
+        doReturn(null).when(mPackageManager).getPackagesForUid(anyInt());
+
+        String packageName = mPhoneInterfaceManager.getCurrentPackageName();
+        assertEquals(null, packageName);
     }
 }
