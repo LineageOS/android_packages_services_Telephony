@@ -2227,23 +2227,11 @@ public class TelephonyConnectionService extends ConnectionService {
             return;
         }
         if (originalConnection == null) {
-            int telephonyDisconnectCause = android.telephony.DisconnectCause.OUTGOING_FAILURE;
-            // On GSM phones, null connection means that we dialed an MMI code
-            if (phone.getPhoneType() == PhoneConstants.PHONE_TYPE_GSM ||
-                    phone.isUtEnabled()) {
-                Log.d(this, "dialed MMI code");
-                int subId = phone.getSubId();
-                Log.d(this, "subId: "+subId);
-                telephonyDisconnectCause = android.telephony.DisconnectCause.DIALED_MMI;
-                final Intent intent = new Intent(this, MMIDialogActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
-                        Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
-                if (SubscriptionManager.isValidSubscriptionId(subId)) {
-                    SubscriptionManager.putSubscriptionIdExtra(intent, subId);
-                }
-                startActivity(intent);
-            }
             Log.d(this, "placeOutgoingConnection, phone.dial returned null");
+
+            // On GSM phones, null connection means that we dialed an MMI code
+            int telephonyDisconnectCause = handleMmiCode(
+                    phone, android.telephony.DisconnectCause.OUTGOING_FAILURE);
             connection.setTelephonyConnectionDisconnected(
                     mDisconnectCauseFactory.toTelecomDisconnectCause(telephonyDisconnectCause,
                             "Connection is null", phone.getPhoneId()));
@@ -2261,6 +2249,25 @@ public class TelephonyConnectionService extends ConnectionService {
                 connection.setOriginalConnection(originalConnection);
             }
         }
+    }
+
+    private int handleMmiCode(Phone phone, int telephonyDisconnectCause) {
+        int disconnectCause = telephonyDisconnectCause;
+        if (phone.getPhoneType() == PhoneConstants.PHONE_TYPE_GSM
+                || phone.isUtEnabled()) {
+            Log.d(this, "dialed MMI code");
+            int subId = phone.getSubId();
+            Log.d(this, "subId: " + subId);
+            disconnectCause = android.telephony.DisconnectCause.DIALED_MMI;
+            final Intent intent = new Intent(this, MMIDialogActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                    | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
+            if (SubscriptionManager.isValidSubscriptionId(subId)) {
+                SubscriptionManager.putSubscriptionIdExtra(intent, subId);
+            }
+            startActivity(intent);
+        }
+        return disconnectCause;
     }
 
     private void handleOutgoingCallConnectionByCallDomainSelection(
@@ -2291,6 +2298,19 @@ public class TelephonyConnectionService extends ConnectionService {
                                         .setIsWpsCall(PhoneNumberUtils.isWpsCallNumber(number))
                                         .build(),
                                 mNormalCallConnection::registerForCallEvents);
+
+                if (connection == null) {
+                    Log.d(this, "placeOutgoingConnection, phone.dial returned null");
+
+                    // On GSM phones, null connection means that we dialed an MMI code
+                    int telephonyDisconnectCause = handleMmiCode(
+                            phone, android.telephony.DisconnectCause.OUTGOING_FAILURE);
+                    mNormalCallConnection.setTelephonyConnectionDisconnected(mDisconnectCauseFactory
+                            .toTelecomDisconnectCause(telephonyDisconnectCause,
+                                    "Connection is null", phone.getPhoneId()));
+                    mNormalCallConnection.close();
+                    return;
+                }
 
                 mNormalCallConnection.setOriginalConnection(connection);
                 mNormalCallConnection.addTelephonyConnectionListener(mNormalCallConnectionListener);
