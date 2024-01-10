@@ -41,7 +41,7 @@ import com.android.internal.telephony.CallFailCause;
 import com.android.internal.telephony.GsmCdmaPhone;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
-import com.android.phone.common.R;
+import com.android.phone.R;
 
 import org.junit.Before;
 import org.junit.Test;
