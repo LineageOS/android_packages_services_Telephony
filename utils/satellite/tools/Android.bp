@@ -39,6 +39,15 @@ java_binary_host {
     ],
 }
 
+// A tool to look up a location in the input binary satellite S2 file.
+java_binary_host {
+    name: "satellite_location_lookup",
+    main_class: "com.android.telephony.tools.sats2.SatS2LocationLookup",
+    static_libs: [
+        "satellite-s2storage-tools",
+    ],
+}
+
 // A tool to create a test satellite S2 file.
 java_binary_host {
     name: "satellite_createsats2file_test",

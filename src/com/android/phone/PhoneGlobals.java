@@ -994,6 +994,11 @@ public class PhoneGlobals extends ContextWrapper {
         }
 
         ServiceState serviceState = phone.getServiceState();
+        if (serviceState == null) {
+            Log.e(LOG_TAG, "updateDataRoamingStatus: serviceState is null");
+            return;
+        }
+
         String roamingNumeric = serviceState.getOperatorNumeric();
         String roamingNumericReason = "RoamingNumeric=" + roamingNumeric;
         String callingReason = "CallingReason=" + reason;

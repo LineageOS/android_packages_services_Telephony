@@ -80,13 +80,14 @@ public class S2RangeSatelliteOnDeviceAccessControllerTest {
         SatelliteOnDeviceAccessController accessController = null;
         try {
             accessController = SatelliteOnDeviceAccessController.create(mFile);
+            int s2Level = accessController.getS2Level();
 
             // Verify an edge cell of range 1 not in the output file
             S2CellId s2CellId = new S2CellId(TestUtils.createCellId(fileFormat, 1, 1000, 999));
             S2LatLng s2LatLng = s2CellId.toLatLng();
             SatelliteOnDeviceAccessController.LocationToken locationToken =
-                    accessController.createLocationTokenForLatLng(
-                            s2LatLng.latDegrees(), s2LatLng.lngDegrees());
+                    SatelliteOnDeviceAccessController.createLocationTokenForLatLng(
+                            s2LatLng.latDegrees(), s2LatLng.lngDegrees(), s2Level);
             boolean isAllowed = accessController.isSatCommunicationAllowedAtLocation(locationToken);
             assertTrue(isAllowed != isAllowedList);
 
@@ -96,8 +97,8 @@ public class S2RangeSatelliteOnDeviceAccessControllerTest {
                 s2LatLng = s2CellId.toLatLng();
 
                 // Lookup using location token
-                locationToken = accessController.createLocationTokenForLatLng(
-                                s2LatLng.latDegrees(), s2LatLng.lngDegrees());
+                locationToken = SatelliteOnDeviceAccessController.createLocationTokenForLatLng(
+                                s2LatLng.latDegrees(), s2LatLng.lngDegrees(), s2Level);
                 isAllowed = accessController.isSatCommunicationAllowedAtLocation(locationToken);
                 assertTrue(isAllowed == isAllowedList);
             }
@@ -105,8 +106,8 @@ public class S2RangeSatelliteOnDeviceAccessControllerTest {
             // Verify the middle cell not in the output file
             s2CellId = new S2CellId(TestUtils.createCellId(fileFormat, 1, 1000, 2000));
             s2LatLng = s2CellId.toLatLng();
-            locationToken = accessController.createLocationTokenForLatLng(
-                    s2LatLng.latDegrees(), s2LatLng.lngDegrees());
+            locationToken = SatelliteOnDeviceAccessController.createLocationTokenForLatLng(
+                    s2LatLng.latDegrees(), s2LatLng.lngDegrees(), s2Level);
             isAllowed = accessController.isSatCommunicationAllowedAtLocation(locationToken);
             assertTrue(isAllowed != isAllowedList);
 
@@ -114,8 +115,8 @@ public class S2RangeSatelliteOnDeviceAccessControllerTest {
             for (int suffix = 2001; suffix < 3000; suffix++) {
                 s2CellId = new S2CellId(TestUtils.createCellId(fileFormat, 1, 1000, suffix));
                 s2LatLng = s2CellId.toLatLng();
-                locationToken = accessController.createLocationTokenForLatLng(
-                        s2LatLng.latDegrees(), s2LatLng.lngDegrees());
+                locationToken = SatelliteOnDeviceAccessController.createLocationTokenForLatLng(
+                        s2LatLng.latDegrees(), s2LatLng.lngDegrees(), s2Level);
                 isAllowed = accessController.isSatCommunicationAllowedAtLocation(locationToken);
                 assertTrue(isAllowed == isAllowedList);
             }
@@ -123,16 +124,16 @@ public class S2RangeSatelliteOnDeviceAccessControllerTest {
             // Verify an edge cell of range 2 not in the output file
             s2CellId = new S2CellId(TestUtils.createCellId(fileFormat, 1, 1000, 3000));
             s2LatLng = s2CellId.toLatLng();
-            locationToken = accessController.createLocationTokenForLatLng(
-                    s2LatLng.latDegrees(), s2LatLng.lngDegrees());
+            locationToken = SatelliteOnDeviceAccessController.createLocationTokenForLatLng(
+                    s2LatLng.latDegrees(), s2LatLng.lngDegrees(), s2Level);
             isAllowed = accessController.isSatCommunicationAllowedAtLocation(locationToken);
             assertTrue(isAllowed != isAllowedList);
 
             // Verify an edge cell of range 3 not in the output file
             s2CellId = new S2CellId(TestUtils.createCellId(fileFormat, 1, 1001, 999));
             s2LatLng = s2CellId.toLatLng();
-            locationToken = accessController.createLocationTokenForLatLng(
-                    s2LatLng.latDegrees(), s2LatLng.lngDegrees());
+            locationToken = SatelliteOnDeviceAccessController.createLocationTokenForLatLng(
+                    s2LatLng.latDegrees(), s2LatLng.lngDegrees(), s2Level);
             isAllowed = accessController.isSatCommunicationAllowedAtLocation(locationToken);
             assertTrue(isAllowed != isAllowedList);
 
@@ -140,8 +141,8 @@ public class S2RangeSatelliteOnDeviceAccessControllerTest {
             for (int suffix = 1000; suffix < 2000; suffix++) {
                 s2CellId = new S2CellId(TestUtils.createCellId(fileFormat, 1, 1001, suffix));
                 s2LatLng = s2CellId.toLatLng();
-                locationToken = accessController.createLocationTokenForLatLng(
-                        s2LatLng.latDegrees(), s2LatLng.lngDegrees());
+                locationToken = SatelliteOnDeviceAccessController.createLocationTokenForLatLng(
+                        s2LatLng.latDegrees(), s2LatLng.lngDegrees(), s2Level);
                 isAllowed = accessController.isSatCommunicationAllowedAtLocation(locationToken);
                 assertTrue(isAllowed == isAllowedList);
             }
@@ -149,8 +150,8 @@ public class S2RangeSatelliteOnDeviceAccessControllerTest {
             // Verify an edge cell of range 3 not in the output file
             s2CellId = new S2CellId(TestUtils.createCellId(fileFormat, 1, 1001, 2000));
             s2LatLng = s2CellId.toLatLng();
-            locationToken = accessController.createLocationTokenForLatLng(
-                    s2LatLng.latDegrees(), s2LatLng.lngDegrees());
+            locationToken = SatelliteOnDeviceAccessController.createLocationTokenForLatLng(
+                    s2LatLng.latDegrees(), s2LatLng.lngDegrees(), s2Level);
             isAllowed = accessController.isSatCommunicationAllowedAtLocation(locationToken);
             assertTrue(isAllowed != isAllowedList);
         } catch (Exception ex) {
