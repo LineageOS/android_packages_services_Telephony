@@ -156,8 +156,8 @@ import android.telephony.ims.stub.ImsRegistrationImplBase;
 import android.telephony.satellite.INtnSignalStrengthCallback;
 import android.telephony.satellite.ISatelliteCapabilitiesCallback;
 import android.telephony.satellite.ISatelliteDatagramCallback;
+import android.telephony.satellite.ISatelliteModemStateCallback;
 import android.telephony.satellite.ISatelliteProvisionStateCallback;
-import android.telephony.satellite.ISatelliteStateCallback;
 import android.telephony.satellite.ISatelliteTransmissionUpdateCallback;
 import android.telephony.satellite.NtnSignalStrength;
 import android.telephony.satellite.NtnSignalStrengthCallback;
@@ -411,6 +411,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private static final int MIN_NULL_CIPHER_AND_INTEGRITY_VERSION = 201;
     // Cellular identifier disclosure transparency was added in IRadioNetwork 2.2
     private static final int MIN_IDENTIFIER_DISCLOSURE_VERSION = 202;
+    // Null cipher notification support was added in IRadioNetwork 2.2
+    private static final int MIN_NULL_CIPHER_NOTIFICATION_VERSION = 202;
 
     /** The singleton instance. */
     private static PhoneInterfaceManager sInstance;
@@ -12795,6 +12797,17 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
+    private void checkForNullCipherNotificationSupport() {
+        if (getHalVersion(HAL_SERVICE_NETWORK) < MIN_NULL_CIPHER_NOTIFICATION_VERSION) {
+            throw new UnsupportedOperationException(
+                    "Null cipher notification operations require HAL 2.2 or above");
+        }
+        if (!getDefaultPhone().isNullCipherNotificationSupported()) {
+            throw new UnsupportedOperationException(
+                    "Null cipher notification operations unsupported by modem");
+        }
+    }
+
     /**
      * Get the SIM state for the slot index.
      * For Remote-SIMs, this method returns {@link IccCardConstants.State#UNKNOWN}
@@ -13195,7 +13208,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     @Override
     @SatelliteManager.SatelliteResult public int registerForSatelliteModemStateChanged(int subId,
-            @NonNull ISatelliteStateCallback callback) {
+            @NonNull ISatelliteModemStateCallback callback) {
         enforceSatelliteCommunicationPermission("registerForSatelliteModemStateChanged");
         return mSatelliteController.registerForSatelliteModemStateChanged(subId, callback);
     }
@@ -13206,13 +13219,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      *
      * @param subId The subId of the subscription to unregister for satellite modem state changed.
      * @param callback The callback that was passed to
-     *                 {@link #registerForSatelliteModemStateChanged(int, ISatelliteStateCallback)}.
+     * {@link #registerForSatelliteModemStateChanged(int, ISatelliteModemStateCallback)}.
      *
      * @throws SecurityException if the caller doesn't have the required permission.
      */
     @Override
     public void unregisterForSatelliteModemStateChanged(int subId,
-            @NonNull ISatelliteStateCallback callback) {
+            @NonNull ISatelliteModemStateCallback callback) {
         enforceSatelliteCommunicationPermission("unregisterForSatelliteModemStateChanged");
         mSatelliteController.unregisterForSatelliteModemStateChanged(subId, callback);
     }
@@ -13757,6 +13770,49 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         enforceReadPrivilegedPermission("isCellularIdentifierDisclosureNotificationEnabled");
         checkForIdentifierDisclosureNotificationSupport();
         return getDefaultPhone().getIdentifierDisclosureNotificationsPreferenceEnabled();
+    }
+
+    /**
+     * Enables or disables notifications sent when cellular null cipher or integrity algorithms
+     * are in use by the cellular modem.
+     *
+     * @throws IllegalStateException if the Telephony process is not currently available
+     * @throws SecurityException if the caller does not have the required privileges
+     * @throws UnsupportedOperationException if the modem does not support reporting on ciphering
+     * and integrity algorithms in use
+     * @hide
+     */
+    @RequiresPermission(Manifest.permission.MODIFY_PHONE_STATE)
+    public void setEnableNullCipherNotifications(boolean enable) {
+        enforceModifyPermission();
+        checkForNullCipherNotificationSupport();
+
+        SharedPreferences.Editor editor = mTelephonySharedPreferences.edit();
+        editor.putBoolean(Phone.PREF_NULL_CIPHER_NOTIFICATIONS_ENABLED, enable);
+        editor.apply();
+
+        // Each phone instance is responsible for updating its respective modem immediately
+        // after a preference change.
+        for (Phone phone : PhoneFactory.getPhones()) {
+            phone.handleNullCipherNotificationPreferenceChanged();
+        }
+    }
+
+    /**
+     * Get whether notifications are enabled for null cipher or integrity algorithms in use by the
+     * cellular modem.
+     *
+     * @throws IllegalStateException if the Telephony process is not currently available
+     * @throws SecurityException if the caller does not have the required privileges
+     * @throws UnsupportedOperationException if the modem does not support reporting on ciphering
+     * and integrity algorithms in use
+     * @hide
+     */
+    @RequiresPermission(Manifest.permission.READ_PRIVILEGED_PHONE_STATE)
+    public boolean isNullCipherNotificationsEnabled() {
+        enforceReadPrivilegedPermission("isNullCipherNotificationsEnabled");
+        checkForNullCipherNotificationSupport();
+        return getDefaultPhone().getNullCipherNotificationsPreferenceEnabled();
     }
 
     /**

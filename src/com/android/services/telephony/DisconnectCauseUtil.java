@@ -31,7 +31,7 @@ import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.phone.ImsUtil;
 import com.android.phone.PhoneGlobals;
-import com.android.phone.common.R;
+import com.android.phone.R;
 
 public class DisconnectCauseUtil {
 

@@ -33,7 +33,7 @@ import android.telephony.satellite.PointingInfo;
 import android.telephony.satellite.SatelliteDatagram;
 import android.telephony.satellite.SatelliteDatagramCallback;
 import android.telephony.satellite.SatelliteManager;
-import android.telephony.satellite.SatelliteStateCallback;
+import android.telephony.satellite.SatelliteModemStateCallback;
 import android.telephony.satellite.SatelliteTransmissionUpdateCallback;
 import android.telephony.satellite.stub.SatelliteResult;
 import android.util.Log;
@@ -61,7 +61,7 @@ public class Datagram extends Activity {
 
     private SatelliteManager mSatelliteManager;
     private SatelliteDatagramCallbackTestApp mDatagramCallback;
-    private SatelliteStateCallbackTestApp mStateCallback;
+    private SatelliteModemStateCallbackTestApp mStateCallback;
     private SatelliteTransmissionUpdateCallbackTestApp mCallback;
     private android.telephony.satellite.stub.SatelliteDatagram mReceivedDatagram;
 
@@ -75,7 +75,7 @@ public class Datagram extends Activity {
         super.onCreate(savedInstanceState);
         mSatelliteManager = getSystemService(SatelliteManager.class);
         mDatagramCallback = new SatelliteDatagramCallbackTestApp();
-        mStateCallback = new SatelliteStateCallbackTestApp();
+        mStateCallback = new SatelliteModemStateCallbackTestApp();
         mCallback = new SatelliteTransmissionUpdateCallbackTestApp();
 
         mReceivedDatagram = new android.telephony.satellite.stub.SatelliteDatagram();
@@ -121,7 +121,7 @@ public class Datagram extends Activity {
         }
     }
 
-    protected class SatelliteStateCallbackTestApp implements SatelliteStateCallback {
+    protected class SatelliteModemStateCallbackTestApp implements SatelliteModemStateCallback {
         @Override
         public void onSatelliteModemStateChanged(int state) {
             mModemState = state;
