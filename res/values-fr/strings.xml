@@ -595,7 +595,7 @@
     <string name="singleContactImportedMsg" msgid="3619804066300998934">"Contact importé"</string>
     <string name="failedToImportSingleContactMsg" msgid="228095510489830266">"Échec de l\'importation du contact."</string>
     <string name="hac_mode_title" msgid="4127986689621125468">"Assistance auditive"</string>
-    <string name="hac_mode_summary" msgid="7774989500136009881">"Activer la compatibilité avec les prothèses auditives"</string>
+    <string name="hac_mode_summary" msgid="7774989500136009881">"Activer la compatibilité avec les appareils auditifs"</string>
     <string name="rtt_mode_title" msgid="3075948111362818043">"Appel texte en temps réel"</string>
     <string name="rtt_mode_summary" msgid="8631541375609989562">"Autoriser l\'échange de messages pendant les appels vocaux"</string>
     <string name="rtt_mode_more_information" msgid="587500128658756318">"La fonctionnalité de texte en temps réel vient en aide aux personnes sourdes, malentendantes, qui ont un trouble de la parole, ou qui ont besoin d\'une transcription en plus de la voix.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;En savoir plus&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - Les appels texte en temps réel sont enregistrés sous forme transcrite\n       &lt;br&gt; - Le mode texte en temps réel n\'est pas disponible pour les appels vidéo"</string>
