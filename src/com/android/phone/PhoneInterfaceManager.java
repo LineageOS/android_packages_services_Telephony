@@ -12645,6 +12645,27 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         return result;
     }
 
+    /**
+     * Get the aggregated satellite plmn list. This API collects plmn data from multiple sources,
+     * including carrier config, entitlement server, and config update.
+     *
+     * @param subId subId The subscription ID of the carrier.
+     *
+     * @return List of plmns for carrier satellite service. If no plmn is available, empty list will
+     * be returned.
+     *
+     * @throws SecurityException if the caller doesn't have the required permission.
+     */
+    @NonNull public List<String> getAllSatellitePlmnsForCarrier(int subId) {
+        enforceSatelliteCommunicationPermission("getAllSatellitePlmnsForCarrier");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return mSatelliteController.getAllSatellitePlmnsForCarrier(subId);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
     @Override
     public void setVoiceServiceStateOverride(int subId, boolean hasService, String callingPackage) {
         // Only telecom (and shell, for CTS purposes) is allowed to call this method.
