@@ -29,6 +29,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.sample.rcsclient.carrierLock.CarrieLockModeListActivity;
+
 /** An activity to show function list. */
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "TestRcsApp.MainActivity";
@@ -39,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private Button mMessageClientButton;
     private Button mFileUploadButton;
     private TextView mVersionInfo;
+    private Button mCarrierLockModeListBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
         mGbaButton = (Button) this.findViewById(R.id.gba);
         mFileUploadButton = findViewById(R.id.uploadFile);
         mVersionInfo = this.findViewById(R.id.version_info);
+        mCarrierLockModeListBtn = findViewById(R.id.setCarrierLockMode);
         mProvisionButton.setOnClickListener(view -> {
             Intent intent = new Intent(this, ProvisioningActivity.class);
             MainActivity.this.startActivity(intent);
@@ -90,6 +94,11 @@ public class MainActivity extends AppCompatActivity {
                     appVersionName);
             mVersionInfo.setText(version);
         }
+
+        mCarrierLockModeListBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(this, CarrieLockModeListActivity.class);
+            MainActivity.this.startActivity(intent);
+        });
     }
 
     @Override

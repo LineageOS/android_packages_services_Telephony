@@ -72,12 +72,21 @@
     <string name="browse">Browse</string>
     <string name="upload">Upload</string>
     <string name="upload_file_gba">Upload File with GBA</string>
+    <string name="setCarrierLockMode">CarrierLock</string>
+
     <string name="invalid_parameters">Invalid Parameters</string>
     <string name="server">Server:</string>
     <string name="file_name">File Name:</string>
     <string name="server_empty">Server is empty</string>
     <string name="file_empty">File is empty</string>
     <string name="version_info">Version: %s</string>
+
+    <string name="no_LockMode">NoLock/ UnLocked</string>
+    <string name="no_LockTo_VZW">Lock to Verizon</string>
+    <string name="no_LockTo_ATT">Lock to ATT</string>
+    <string name="no_LockTo_TMO">Lock to TMO</string>
+    <string name="no_LockTo_KOODOS">Lock to KOODO</string>
+    <string name="no_LockTo_TELUS">Lock to TELUS</string>
 
     <string-array name="rcs_profile">
         <item>UP_1.0</item>
