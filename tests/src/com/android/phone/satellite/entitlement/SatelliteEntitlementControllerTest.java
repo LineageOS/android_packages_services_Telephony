@@ -165,7 +165,7 @@ public class SatelliteEntitlementControllerTest extends TelephonyTestBase {
         mSatelliteEntitlementController.handleCmdStartQueryEntitlement();
 
         verify(mSatelliteEntitlementApi, never()).checkEntitlementStatus();
-        verify(mSatelliteController, never()).updateSatelliteEntitlementStatus(anyInt(),
+        verify(mSatelliteController, never()).onSatelliteEntitlementStatusUpdated(anyInt(),
                 anyBoolean(), anyList(), any());
 
         mCarrierConfigBundle.putBoolean(
@@ -176,7 +176,7 @@ public class SatelliteEntitlementControllerTest extends TelephonyTestBase {
         mSatelliteEntitlementController.handleCmdStartQueryEntitlement();
 
         verify(mSatelliteEntitlementApi, never()).checkEntitlementStatus();
-        verify(mSatelliteController, never()).updateSatelliteEntitlementStatus(anyInt(),
+        verify(mSatelliteController, never()).onSatelliteEntitlementStatusUpdated(anyInt(),
                 anyBoolean(), anyList(), any());
 
         replaceInstance(SatelliteEntitlementController.class, "mExponentialBackoffPerSub",
@@ -187,7 +187,7 @@ public class SatelliteEntitlementControllerTest extends TelephonyTestBase {
         mSatelliteEntitlementController.handleCmdStartQueryEntitlement();
 
         verify(mSatelliteEntitlementApi, never()).checkEntitlementStatus();
-        verify(mSatelliteController, never()).updateSatelliteEntitlementStatus(anyInt(),
+        verify(mSatelliteController, never()).onSatelliteEntitlementStatusUpdated(anyInt(),
                 anyBoolean(), anyList(), any());
 
         setInternetConnected(true);
@@ -196,7 +196,7 @@ public class SatelliteEntitlementControllerTest extends TelephonyTestBase {
         mSatelliteEntitlementController.handleCmdStartQueryEntitlement();
 
         verify(mSatelliteEntitlementApi, never()).checkEntitlementStatus();
-        verify(mSatelliteController, never()).updateSatelliteEntitlementStatus(anyInt(),
+        verify(mSatelliteController, never()).onSatelliteEntitlementStatusUpdated(anyInt(),
                 anyBoolean(), anyList(), any());
 
         // Verify start the query when isQueryAvailable return true
@@ -207,7 +207,7 @@ public class SatelliteEntitlementControllerTest extends TelephonyTestBase {
         mSatelliteEntitlementController.handleCmdStartQueryEntitlement();
 
         verify(mSatelliteEntitlementApi).checkEntitlementStatus();
-        verify(mSatelliteController).updateSatelliteEntitlementStatus(anyInt(),
+        verify(mSatelliteController).onSatelliteEntitlementStatusUpdated(anyInt(),
                 anyBoolean(), anyList(), any());
     }
 
@@ -220,7 +220,7 @@ public class SatelliteEntitlementControllerTest extends TelephonyTestBase {
 
         verify(mSatelliteEntitlementApi, never()).checkEntitlementStatus();
         // Verify don't call the updateSatelliteEntitlementStatus.
-        verify(mSatelliteController, never()).updateSatelliteEntitlementStatus(anyInt(),
+        verify(mSatelliteController, never()).onSatelliteEntitlementStatusUpdated(anyInt(),
                 anyBoolean(), anyList(), any());
 
         // Verify call the checkSatelliteEntitlementStatus with invalid response.
@@ -235,7 +235,7 @@ public class SatelliteEntitlementControllerTest extends TelephonyTestBase {
         verify(mSatelliteEntitlementApi).checkEntitlementStatus();
         // Verify call the updateSatelliteEntitlementStatus with satellite service is disabled
         // and empty PLMNAllowed
-        verify(mSatelliteController).updateSatelliteEntitlementStatus(eq(SUB_ID),
+        verify(mSatelliteController).onSatelliteEntitlementStatusUpdated(eq(SUB_ID),
                 eq(false), eq(new ArrayList<>()), any());
 
         // Verify call the checkSatelliteEntitlementStatus with the subscribed result.
@@ -249,7 +249,7 @@ public class SatelliteEntitlementControllerTest extends TelephonyTestBase {
         verify(mSatelliteEntitlementApi).checkEntitlementStatus();
         // Verify call the updateSatelliteEntitlementStatus with satellite service is enable and
         // availablePLMNAllowedList
-        verify(mSatelliteController).updateSatelliteEntitlementStatus(eq(SUB_ID), eq(true),
+        verify(mSatelliteController).onSatelliteEntitlementStatusUpdated(eq(SUB_ID), eq(true),
                 eq(PLMN_ALLOWED_LIST), any());
 
         // Change subId and verify call the updateSatelliteEntitlementStatus with  satellite
@@ -260,7 +260,7 @@ public class SatelliteEntitlementControllerTest extends TelephonyTestBase {
         mSatelliteEntitlementController.handleCmdStartQueryEntitlement();
 
         verify(mSatelliteEntitlementApi).checkEntitlementStatus();
-        verify(mSatelliteController).updateSatelliteEntitlementStatus(eq(SUB_ID_2), eq(true),
+        verify(mSatelliteController).onSatelliteEntitlementStatusUpdated(eq(SUB_ID_2), eq(true),
                 eq(PLMN_ALLOWED_LIST), any());
     }
 
@@ -284,7 +284,7 @@ public class SatelliteEntitlementControllerTest extends TelephonyTestBase {
 
         verify(mSatelliteEntitlementApi).checkEntitlementStatus();
         // Verify call the updateSatelliteEntitlementStatus with satellite service is available.
-        verify(mSatelliteController).updateSatelliteEntitlementStatus(eq(SUB_ID), eq(true),
+        verify(mSatelliteController).onSatelliteEntitlementStatusUpdated(eq(SUB_ID), eq(true),
                 eq(PLMN_ALLOWED_LIST), any());
     }
 
@@ -299,7 +299,7 @@ public class SatelliteEntitlementControllerTest extends TelephonyTestBase {
 
         verify(mSatelliteEntitlementApi).checkEntitlementStatus();
         // Verify call the updateSatelliteEntitlementStatus with satellite service is available.
-        verify(mSatelliteController).updateSatelliteEntitlementStatus(eq(SUB_ID), eq(true),
+        verify(mSatelliteController).onSatelliteEntitlementStatusUpdated(eq(SUB_ID), eq(true),
                 eq(PLMN_ALLOWED_LIST), any());
     }
 
