@@ -43,6 +43,7 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
     private static final String LOG_TAG = "NCDS";
 
     private boolean mStopDomainSelection = true;
+    private boolean mDestroyed = false;
     private ServiceState mServiceState;
     private boolean mImsRegStateReceived;
     private boolean mMmTelCapabilitiesReceived;
@@ -116,12 +117,16 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
         mImsStateTracker.removeImsStateListener(this);
         mSelectionAttributes = null;
         mTransportSelectorCallback = null;
+        destroy();
     }
 
     @Override
     public void destroy() {
-        finishSelection();
-        super.destroy();
+        logd("destroy");
+        if (!mDestroyed) {
+            mDestroyed = true;
+            super.destroy();
+        }
     }
 
     /**
