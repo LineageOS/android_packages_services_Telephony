@@ -37,7 +37,7 @@ public class CarrierLockProvider extends ContentProvider {
     // content://com.sample.lockProvider/carrierLock
 
     private static CarrierRestriction mLockMode = CarrierRestriction.UNLOCKED;
-    private static final List<Integer> mCarrierIds = new ArrayList<>();
+    private static final ArrayList<Integer> mCarrierIds = new ArrayList<>();
 
     @Override
     public boolean onCreate() {
@@ -87,13 +87,15 @@ public class CarrierLockProvider extends ContentProvider {
                     }
                     StringJoiner joiner = new StringJoiner(", ");
                     if (!mCarrierIds.isEmpty()) {
+                        result.putIntegerArrayList("allowed_carrier_ids", mCarrierIds);
                         for (Integer num : mCarrierIds) {
                             joiner.add(num.toString());
                         }
-                        result.putString("allowed_carrier_ids", joiner.toString());
+                        result.putString("PrintableCarrierIds", joiner.toString());
                         Log.d(TAG, "Locked to carrierIds = " + joiner.toString());
                     } else {
                         result.putString("allowed_carrier_ids", "");
+                        result.putString("PrintableCarrierIds", "");
                     }
 
                 } catch (Exception e) {
