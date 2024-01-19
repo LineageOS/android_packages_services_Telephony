@@ -3617,6 +3617,11 @@ public class TelephonyConnectionService extends ConnectionService {
     @VisibleForTesting
     public boolean isAvailableForEmergencyCalls(Phone phone,
             @EmergencyNumber.EmergencyCallRouting int routing) {
+        if (isCallDisallowedDueToSatellite(phone)) {
+            // Phone is connected to satellite due to which it is not preferred for emergency call.
+            return false;
+        }
+
         if (phone.getImsRegistrationTech() == ImsRegistrationImplBase.REGISTRATION_TECH_CROSS_SIM) {
             // When a Phone is registered to Cross-SIM calling, there must always be a Phone on the
             // other sub which is registered to cellular, so that must be selected.
@@ -4291,6 +4296,10 @@ public class TelephonyConnectionService extends ConnectionService {
         }
 
         ServiceState serviceState = phone.getServiceState();
+        if (serviceState == null) {
+            return false;
+        }
+
         if (!serviceState.isUsingNonTerrestrialNetwork()) {
             // Device is not connected to satellite
             return false;
