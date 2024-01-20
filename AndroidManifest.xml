@@ -169,9 +169,8 @@
     <!-- Needed to register for UWB state changes for satellite communication -->
     <uses-permission android:name="android.permission.UWB_PRIVILEGED"/>
 
-    <permission android:name="com.android.phone.permission.ACCESS_LAST_KNOWN_CELL_ID"
-                android:label="Access last known cell identity."
-                android:protectionLevel="signature"/>
+    <!-- Needed to bind the domain selection service. -->
+    <uses-permission android:name="android.permission.BIND_DOMAIN_SELECTION_SERVICE" />
 
     <application android:name="PhoneApp"
             android:persistent="true"
@@ -628,5 +627,13 @@
             android:multiprocess="false"
             android:singleUser="true"
             android:writePermission="android.permission.MODIFY_PHONE_STATE"/>
+
+        <service android:name="com.android.services.telephony.domainselection.TelephonyDomainSelectionService"
+            android:exported="true"
+            android:permission="android.permission.BIND_DOMAIN_SELECTION_SERVICE">
+            <intent-filter>
+                <action android:name="android.telephony.DomainSelectionService"/>
+            </intent-filter>
+        </service>
     </application>
 </manifest>

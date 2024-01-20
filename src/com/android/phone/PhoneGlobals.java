@@ -83,7 +83,6 @@ import com.android.internal.telephony.uicc.UiccProfile;
 import com.android.internal.util.IndentingPrintWriter;
 import com.android.phone.settings.SettingsConstants;
 import com.android.phone.vvm.CarrierVvmPackageInstalledReceiver;
-import com.android.services.telephony.domainselection.TelephonyDomainSelectionService;
 import com.android.services.telephony.rcs.TelephonyRcsService;
 
 import java.io.FileDescriptor;
@@ -166,7 +165,6 @@ public class PhoneGlobals extends ContextWrapper {
     public ImsStateCallbackController mImsStateCallbackController;
     public ImsProvisioningController mImsProvisioningController;
     CarrierConfigLoader configLoader;
-    TelephonyDomainSelectionService mDomainSelectionService;
 
     private Phone phoneInEcm;
 
@@ -496,8 +494,9 @@ public class PhoneGlobals extends ContextWrapper {
             // Create DomainSelectionResolver always, but it MUST be initialized only when
             // the device supports AOSP domain selection architecture and
             // has new IRadio that supports its related HAL APIs.
-            DomainSelectionResolver.make(this,
-                    getResources().getBoolean(R.bool.config_enable_aosp_domain_selection));
+            String dssComponentName = getResources().getString(
+                    R.string.config_domain_selection_service_component_name);
+            DomainSelectionResolver.make(this, dssComponentName);
 
             // Initialize the telephony framework
             mFeatureFlags = new FeatureFlagsImpl();
@@ -506,8 +505,7 @@ public class PhoneGlobals extends ContextWrapper {
             // Initialize the DomainSelectionResolver after creating the Phone instance
             // to check the Radio HAL version.
             if (DomainSelectionResolver.getInstance().isDomainSelectionSupported()) {
-                mDomainSelectionService = new TelephonyDomainSelectionService(this);
-                DomainSelectionResolver.getInstance().initialize(mDomainSelectionService);
+                DomainSelectionResolver.getInstance().initialize();
                 // Initialize EmergencyStateTracker if domain selection is supported
                 boolean isSuplDdsSwitchRequiredForEmergencyCall = getResources()
                         .getBoolean(R.bool.config_gnss_supl_requires_default_data_for_emergency);
@@ -1390,9 +1388,6 @@ public class PhoneGlobals extends ContextWrapper {
             e.printStackTrace();
         }
         pw.decreaseIndent();
-        if (mDomainSelectionService != null) {
-            mDomainSelectionService.dump(fd, pw, args);
-        }
         pw.decreaseIndent();
         if (mFeatureFlags.reorganizeRoamingNotification()) {
             pw.println("mShownNotificationReasons=" + mShownNotificationReasons);

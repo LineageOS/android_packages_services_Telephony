@@ -27,6 +27,7 @@ import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 
 import android.annotation.NonNull;
+import android.annotation.Nullable;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
@@ -97,6 +98,25 @@ public class TelephonyDomainSelectionServiceTest {
                     }
                 }
             };
+    private static class TestTelephonyDomainSelectionService
+            extends TelephonyDomainSelectionService {
+        private final Context mContext;
+
+        TestTelephonyDomainSelectionService(Context context,
+                @NonNull ImsStateTrackerFactory imsStateTrackerFactory,
+                @NonNull DomainSelectorFactory domainSelectorFactory,
+                @Nullable CarrierConfigHelper carrierConfigHelper) {
+            super(imsStateTrackerFactory, domainSelectorFactory, carrierConfigHelper);
+            mContext = context;
+        }
+
+        @Override
+        public void onCreate() {
+            // attach test context.
+            attachBaseContext(mContext);
+            super.onCreate();
+        }
+    }
     private static final int SLOT_0 = 0;
     private static final int SUB_1 = 1;
     private static final int SUB_2 = 2;
@@ -131,8 +151,9 @@ public class TelephonyDomainSelectionServiceTest {
         }
 
         mContext = new TestContext();
-        mDomainSelectionService = new TelephonyDomainSelectionService(mContext,
+        mDomainSelectionService = new TestTelephonyDomainSelectionService(mContext,
                 mImsStateTrackerFactory, mDomainSelectorFactory, mCarrierConfigHelper);
+        mDomainSelectionService.onCreate();
         mServiceHandler = new Handler(mDomainSelectionService.getLooper());
         mTestableLooper = new TestableLooper(mDomainSelectionService.getLooper());
 
@@ -184,9 +205,7 @@ public class TelephonyDomainSelectionServiceTest {
                 .setCallId(CALL_ID)
                 .setEmergency(true)
                 .build();
-        mServiceHandler.post(() -> {
-            mDomainSelectionService.onDomainSelection(attr1, mSelectorCallback1);
-        });
+        mDomainSelectionService.onDomainSelection(attr1, mSelectorCallback1);
         processAllMessages();
 
         verify(mImsStateTracker).start(eq(SUB_1));
@@ -203,9 +222,7 @@ public class TelephonyDomainSelectionServiceTest {
                 .setCallId(CALL_ID)
                 .setEmergency(true)
                 .build();
-        mServiceHandler.post(() -> {
-            mDomainSelectionService.onDomainSelection(attr1, mSelectorCallback1);
-        });
+        mDomainSelectionService.onDomainSelection(attr1, mSelectorCallback1);
         processAllMessages();
 
         verify(mImsStateTracker, never()).start(anyInt());
@@ -222,9 +239,7 @@ public class TelephonyDomainSelectionServiceTest {
                 .setCallId(CALL_ID)
                 .setEmergency(true)
                 .build();
-        mServiceHandler.post(() -> {
-            mDomainSelectionService.onDomainSelection(attr1, mSelectorCallback1);
-        });
+        mDomainSelectionService.onDomainSelection(attr1, mSelectorCallback1);
         processAllMessages();
 
         verify(mImsStateTracker).start(eq(SUB_1));
@@ -240,9 +255,7 @@ public class TelephonyDomainSelectionServiceTest {
                 .setCallId(CALL_ID)
                 .setEmergency(true)
                 .build();
-        mServiceHandler.post(() -> {
-            mDomainSelectionService.onDomainSelection(attr2, mSelectorCallback2);
-        });
+        mDomainSelectionService.onDomainSelection(attr2, mSelectorCallback2);
         processAllMessages();
 
         verify(mImsStateTracker).start(eq(SUB_2));
@@ -259,9 +272,7 @@ public class TelephonyDomainSelectionServiceTest {
                 .setCallId(CALL_ID)
                 .setEmergency(true)
                 .build();
-        mServiceHandler.post(() -> {
-            mDomainSelectionService.onDomainSelection(attr1, mSelectorCallback1);
-        });
+        mDomainSelectionService.onDomainSelection(attr1, mSelectorCallback1);
         processAllMessages();
 
         verify(mImsStateTracker).start(eq(SUB_1));
@@ -274,9 +285,7 @@ public class TelephonyDomainSelectionServiceTest {
                 .setCallId(CALL_ID)
                 .setEmergency(true)
                 .build();
-        mServiceHandler.post(() -> {
-            mDomainSelectionService.onDomainSelection(attr2, mSelectorCallback2);
-        });
+        mDomainSelectionService.onDomainSelection(attr2, mSelectorCallback2);
         processAllMessages();
 
         verify(mImsStateTracker).start(eq(SUB_2));
@@ -309,9 +318,7 @@ public class TelephonyDomainSelectionServiceTest {
                 .setCallId(CALL_ID)
                 .setEmergency(true)
                 .build();
-        mServiceHandler.post(() -> {
-            mDomainSelectionService.onDomainSelection(attr1, mSelectorCallback1);
-        });
+        mDomainSelectionService.onDomainSelection(attr1, mSelectorCallback1);
         processAllMessages();
 
         mDomainSelectionService.onDestroy();
