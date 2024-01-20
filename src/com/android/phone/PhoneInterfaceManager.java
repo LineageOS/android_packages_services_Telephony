@@ -13685,6 +13685,25 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
+     * This API can be used in only testing to override oem-enabled satellite provision status.
+     *
+     * @param reset {@code true} mean the overriding status should not be used, {@code false}
+     *              otherwise.
+     * @param isProvisioned The overriding provision status.
+     * @return {@code true} if the provision status is set successfully, {@code false} otherwise.
+     */
+    public boolean setOemEnabledSatelliteProvisionStatus(boolean reset, boolean isProvisioned) {
+        Log.d(LOG_TAG, "setOemEnabledSatelliteProvisionStatus - reset=" + reset
+                + ", isProvisioned=" + isProvisioned);
+        TelephonyPermissions.enforceShellOnly(
+                Binder.getCallingUid(), "setOemEnabledSatelliteProvisionStatus");
+        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(mApp,
+                SubscriptionManager.INVALID_SUBSCRIPTION_ID,
+                "setOemEnabledSatelliteProvisionStatus");
+        return mSatelliteController.setOemEnabledSatelliteProvisionStatus(reset, isProvisioned);
+    }
+
+    /**
      * This API should be used by only CTS tests to forcefully set telephony country codes.
      *
      * @return {@code true} if the country code is set successfully, {@code false} otherwise.
