@@ -197,6 +197,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
     private static final String SET_COUNTRY_CODES = "set-country-codes";
     private static final String SET_SATELLITE_ACCESS_CONTROL_OVERLAY_CONFIGS =
             "set-satellite-access-control-overlay-configs";
+    private static final String SET_OEM_ENABLED_SATELLITE_PROVISION_STATUS =
+            "set-oem-enabled-satellite-provision-status";
     private static final String SET_SHOULD_SEND_DATAGRAM_TO_MODEM_IN_DEMO_MODE =
             "set-should-send-datagram-to-modem-in-demo-mode";
 
@@ -398,6 +400,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                 return handleSetSatelliteAccessControlOverlayConfigs();
             case SET_COUNTRY_CODES:
                 return handleSetCountryCodes();
+            case SET_OEM_ENABLED_SATELLITE_PROVISION_STATUS:
+                return handleSetOemEnabledSatelliteProvisionStatus();
             default: {
                 return handleDefaultCommands(cmd);
             }
@@ -824,6 +828,10 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         pw.println("      -c: the cached network country code ISOs.");
         pw.println("      -l: the location country code ISO.");
         pw.println("      -t: the update timestamp nanos of the location country code.");
+        pw.println("  set-oem-enabled-satellite-provision-status [-p true/false]");
+        pw.println("    Sets the OEM-enabled satellite provision status. Options are:");
+        pw.println("      -p: the overriding satellite provision status. If no option is ");
+        pw.println("          specified, reset the overridden provision status.");
     }
 
     private void onHelpImei() {
@@ -3527,6 +3535,43 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             getOutPrintWriter().println(result);
         } catch (RemoteException e) {
             Log.e(LOG_TAG, "setCountryCodes: ex=" + e.getMessage());
+            errPw.println("Exception: " + e.getMessage());
+            return -1;
+        }
+        return 0;
+    }
+
+    private int handleSetOemEnabledSatelliteProvisionStatus() {
+        PrintWriter errPw = getErrPrintWriter();
+        boolean isProvisioned = false;
+        boolean reset = true;
+
+        String opt;
+        while ((opt = getNextOption()) != null) {
+            switch (opt) {
+                case "-p": {
+                    try {
+                        isProvisioned = Boolean.parseBoolean(getNextArgRequired());
+                        reset = false;
+                    } catch (Exception e) {
+                        errPw.println("setOemEnabledSatelliteProvisionStatus requires a boolean "
+                                + "after -p indicating provision status");
+                        return -1;
+                    }
+                }
+            }
+        }
+        Log.d(LOG_TAG, "setOemEnabledSatelliteProvisionStatus: reset=" + reset
+                + ", isProvisioned=" + isProvisioned);
+
+        try {
+            boolean result = mInterface.setOemEnabledSatelliteProvisionStatus(reset, isProvisioned);
+            if (VDBG) {
+                Log.v(LOG_TAG, "setOemEnabledSatelliteProvisionStatus result = " + result);
+            }
+            getOutPrintWriter().println(result);
+        } catch (RemoteException e) {
+            Log.w(LOG_TAG, "setOemEnabledSatelliteProvisionStatus: error = " + e.getMessage());
             errPw.println("Exception: " + e.getMessage());
             return -1;
         }
