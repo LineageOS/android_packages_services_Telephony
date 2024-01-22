@@ -64,6 +64,7 @@ import com.android.ims.ImsManager;
 import com.android.internal.telephony.ExponentialBackoff;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
+import com.android.internal.telephony.flags.Flags;
 import com.android.internal.telephony.subscription.SubscriptionManagerService;
 import com.android.phone.PhoneGlobals;
 import com.android.phone.PhoneUtils;
@@ -465,6 +466,15 @@ public class TelecomAccountRegistry {
             mIsUsingSimCallManager = isCarrierUsingSimCallManager();
             mIsShowPreciseFailedCause = isCarrierShowPreciseFailedCause();
 
+            // Set CAPABILITY_EMERGENCY_CALLS_ONLY flag if either
+            // - Carrier config overrides subscription is not voice capable, or
+            // - Resource config overrides it be emergency_calls_only
+            // TODO(b/316183370:): merge the two cases when clearing up flag
+            if (Flags.dataOnlyServiceAllowEmergencyCallOnly()) {
+                if (!isSubscriptionVoiceCapableByCarrierConfig()) {
+                    capabilities |= PhoneAccount.CAPABILITY_EMERGENCY_CALLS_ONLY;
+                }
+            }
             if (isEmergency && mContext.getResources().getBoolean(
                     R.bool.config_emergency_account_emergency_calls_only)) {
                 capabilities |= PhoneAccount.CAPABILITY_EMERGENCY_CALLS_ONLY;
@@ -801,6 +811,21 @@ public class TelecomAccountRegistry {
             phoneAccountExtras.putString(PhoneAccount.EXTRA_CALL_SUBJECT_CHARACTER_ENCODING,
                     instantLetteringEncoding);
             return phoneAccountExtras;
+        }
+
+        /**
+         * @return true if the subscription is voice capable by the carrier config.
+         */
+        private boolean isSubscriptionVoiceCapableByCarrierConfig() {
+            PersistableBundle b =
+                    PhoneGlobals.getInstance().getCarrierConfigForSubId(mPhone.getSubId());
+            if (b == null) {
+                return true; // For any abnormal case, we assume subscription is voice capable
+            }
+            final int[] serviceCapabilities = b.getIntArray(
+                    CarrierConfigManager.KEY_CELLULAR_SERVICE_CAPABILITIES_INT_ARRAY);
+            return Arrays.stream(serviceCapabilities).anyMatch(
+                    i -> i == SubscriptionManager.SERVICE_CAPABILITY_VOICE);
         }
 
         /**
