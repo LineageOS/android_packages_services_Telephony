@@ -54,6 +54,7 @@ import static android.telephony.NetworkRegistrationInfo.REGISTRATION_STATE_ROAMI
 import static android.telephony.PreciseDisconnectCause.EMERGENCY_PERM_FAILURE;
 import static android.telephony.PreciseDisconnectCause.EMERGENCY_TEMP_FAILURE;
 import static android.telephony.PreciseDisconnectCause.SERVICE_OPTION_NOT_AVAILABLE;
+import static android.telephony.TelephonyManager.DATA_CONNECTED;
 
 import android.annotation.NonNull;
 import android.content.Context;
@@ -211,13 +212,15 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
     private final PowerManager.WakeLock mPartialWakeLock;
     private final CrossSimRedialingController mCrossSimRedialingController;
     private final CarrierConfigHelper mCarrierConfigHelper;
+    private final EmergencyCallbackModeHelper mEcbmHelper;
 
     /** Constructor. */
     public EmergencyCallDomainSelector(Context context, int slotId, int subId,
             @NonNull Looper looper, @NonNull ImsStateTracker imsStateTracker,
             @NonNull DestroyListener destroyListener,
             @NonNull CrossSimRedialingController csrController,
-            @NonNull CarrierConfigHelper carrierConfigHelper) {
+            @NonNull CarrierConfigHelper carrierConfigHelper,
+            @NonNull EmergencyCallbackModeHelper ecbmHelper) {
         super(context, slotId, subId, looper, imsStateTracker, destroyListener, TAG);
 
         mImsStateTracker.addBarringInfoListener(this);
@@ -228,6 +231,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
 
         mCrossSimRedialingController = csrController;
         mCarrierConfigHelper = carrierConfigHelper;
+        mEcbmHelper = ecbmHelper;
         acquireWakeLock();
     }
 
@@ -630,7 +634,8 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
             return;
         }
 
-        if (isWifiPreferred()) {
+        if (isWifiPreferred()
+                || isInEmergencyCallbackModeOnWlan()) {
             onWlanSelected();
             return;
         }
@@ -1543,6 +1548,12 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
                 }
             }
         }
+    }
+
+    private boolean isInEmergencyCallbackModeOnWlan() {
+        return mEcbmHelper.isInEmergencyCallbackMode(getSlotId())
+                && mEcbmHelper.getTransportType(getSlotId()) == TRANSPORT_TYPE_WLAN
+                && mEcbmHelper.getDataConnectionState(getSlotId()) == DATA_CONNECTED;
     }
 
     private void selectDomainForTestEmergencyNumber() {
