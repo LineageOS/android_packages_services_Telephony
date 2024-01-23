@@ -565,8 +565,8 @@ public class TransportSipMessageValidator {
                         direction);
             } else {
                 //Message sending fail and there is no response.
-                mRcsStats.invalidatedMessageResult(mSubId, startLineSegments[0], direction,
-                        result.restrictedReason);
+                mRcsStats.invalidatedMessageResult(m.getCallIdParameter(), mSubId,
+                        startLineSegments[0], direction, result.restrictedReason);
             }
         } else if (SipMessageParsingUtils.isSipResponse(m.getStartLine())) {
             int statusCode = Integer.parseInt(startLineSegments[1]);
