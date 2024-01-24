@@ -65,6 +65,13 @@
     <string name="registerForSatelliteCapabilitiesChanged">registerForSatelliteCapabilitiesChanged</string>
     <string name="unregisterForSatelliteCapabilitiesChanged">unregisterForSatelliteCapabilitiesChanged</string>
 
+    <string name="removeUserRestrictReason">removeUserRestrictReason</string>
+    <string name="addUserRestrictReason">addUserRestrictReason</string>
+    <string name="getSatellitePlmn">getSatellitePlmn</string>
+    <string name="getAllSatellitePlmn">getAllSatellitePlmn</string>
+    <string name="isSatelliteEnabledForCarrier">isSatelliteEnabledForCarrier</string>
+    <string name="isRequestIsSatelliteEnabledForCarrier">isRequestIsSatelliteEnabledForCarrier</string>
+
     <string name="Back">Back</string>
     <string name="ClearLog">Clear Log</string>
 </resources>

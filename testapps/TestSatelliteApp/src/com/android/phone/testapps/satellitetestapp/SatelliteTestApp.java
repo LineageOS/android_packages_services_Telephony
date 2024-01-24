@@ -138,6 +138,11 @@ public class SatelliteTestApp extends Activity {
                 public void onEnableCellularModemWhileSatelliteModeIsOn(boolean enable) {
                     Log.d(TAG, "onEnableCellularModemWhileSatelliteModeIsOn");
                 }
+
+                @Override
+                public void onSetSatellitePlmn() {
+                    Log.d(TAG, "onSetSatellitePlmn");
+                }
             };
 
     private class TestSatelliteServiceConnection implements ServiceConnection {
