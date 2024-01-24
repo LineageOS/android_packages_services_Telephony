@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023 The Android Open Source Project
+ * Copyright (C) 2024 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,31 +16,30 @@
 
 package com.android.services.telephony.domainselection;
 
-import static android.telephony.AccessNetworkConstants.AccessNetworkType.EUTRAN;
-import static android.telephony.AccessNetworkConstants.AccessNetworkType.NGRAN;
-import static android.telephony.CarrierConfigManager.KEY_CARRIER_CONFIG_APPLIED_BOOL;
-import static android.telephony.CarrierConfigManager.ImsEmergency.KEY_EMERGENCY_OVER_IMS_SUPPORTED_3GPP_NETWORK_TYPES_INT_ARRAY;
+import static android.telephony.CarrierConfigManager.ImsEmergency.KEY_EMERGENCY_CALLBACK_MODE_SUPPORTED_BOOL;
 
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertTrue;
 import static junit.framework.Assert.assertNotNull;
 
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyBoolean;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.res.Resources;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.PersistableBundle;
 import android.telephony.CarrierConfigManager;
 import android.telephony.SubscriptionManager;
+import android.telephony.TelephonyCallback;
 import android.telephony.TelephonyManager;
 import android.testing.TestableLooper;
 import android.util.Log;
@@ -51,30 +50,25 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
-import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import java.util.concurrent.Executor;
 
 /**
- * Unit tests for CarrierConfigHelper
+ * Unit tests for EmergencyCallbackModeHelper
  */
-public class CarrierConfigHelperTest {
-    private static final String TAG = "CarrierConfigHelperTest";
+public class EmergencyCallbackModeHelperTest {
+    private static final String TAG = "EmergencyCallbackModeHelperTest";
 
     private static final int SLOT_0 = 0;
     private static final int SLOT_1 = 1;
     private static final int SUB_1 = 1;
-    private static final int TEST_SIM_CARRIER_ID = 1911;
-
-    @Mock private SharedPreferences mSharedPreferences;
-    @Mock private SharedPreferences.Editor mEditor;
-    @Mock private Resources mResources;
+    private static final int SUB_2 = 2;
 
     private Context mContext;
     private HandlerThread mHandlerThread;
     private TestableLooper mLooper;
-    private CarrierConfigHelper mCarrierConfigHelper;
+    private EmergencyCallbackModeHelper mEcbmHelper;
     private CarrierConfigManager mCarrierConfigManager;
     private TelephonyManager mTelephonyManager;
 
@@ -82,6 +76,8 @@ public class CarrierConfigHelperTest {
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
         mContext = new TestContext() {
+            private Intent mIntent;
+
             @Override
             public String getSystemServiceName(Class<?> serviceClass) {
                 if (serviceClass == TelephonyManager.class) {
@@ -98,8 +94,13 @@ public class CarrierConfigHelperTest {
             }
 
             @Override
-            public Resources getResources() {
-                return mResources;
+            public Intent registerReceiver(BroadcastReceiver receiver, IntentFilter filter) {
+                return mIntent;
+            }
+
+            @Override
+            public void sendStickyBroadcast(Intent intent) {
+                mIntent = intent;
             }
         };
 
@@ -107,7 +108,7 @@ public class CarrierConfigHelperTest {
             Looper.prepare();
         }
 
-        mHandlerThread = new HandlerThread("CarrierConfigHelperTest");
+        mHandlerThread = new HandlerThread("EmergencyCallbackModeHelperTest");
         mHandlerThread.start();
 
         try {
@@ -116,25 +117,18 @@ public class CarrierConfigHelperTest {
             logd("Unable to create looper from handler.");
         }
 
-        doReturn(mEditor).when(mSharedPreferences).edit();
-
         mCarrierConfigManager = mContext.getSystemService(CarrierConfigManager.class);
         mTelephonyManager = mContext.getSystemService(TelephonyManager.class);
-        doReturn(2).when(mTelephonyManager).getActiveModemCount();
-        doReturn(TelephonyManager.SIM_STATE_READY)
-                .when(mTelephonyManager).getSimState(anyInt());
+        doReturn(mTelephonyManager).when(mTelephonyManager).createForSubscriptionId(anyInt());
 
-        doReturn(new int[] { TEST_SIM_CARRIER_ID }).when(mResources).getIntArray(anyInt());
-
-        mCarrierConfigHelper = new CarrierConfigHelper(mContext, mHandlerThread.getLooper(),
-                mSharedPreferences);
+        mEcbmHelper = new EmergencyCallbackModeHelper(mContext, mHandlerThread.getLooper());
     }
 
     @After
     public void tearDown() throws Exception {
-        if (mCarrierConfigHelper != null) {
-            mCarrierConfigHelper.destroy();
-            mCarrierConfigHelper = null;
+        if (mEcbmHelper != null) {
+            mEcbmHelper.destroy();
+            mEcbmHelper = null;
         }
 
         if (mLooper != null) {
@@ -153,11 +147,10 @@ public class CarrierConfigHelperTest {
                 callbackCaptor.capture());
         assertNotNull(executorCaptor.getValue());
         assertNotNull(callbackCaptor.getValue());
-        assertFalse(mCarrierConfigHelper.isVoNrEmergencySupported(SLOT_0));
     }
 
     @Test
-    public void testCarrierConfigNotApplied() throws Exception {
+    public void testEmergencyCallbackModeNotSupported() throws Exception {
         ArgumentCaptor<CarrierConfigManager.CarrierConfigChangeListener> callbackCaptor =
                 ArgumentCaptor.forClass(CarrierConfigManager.CarrierConfigChangeListener.class);
 
@@ -168,16 +161,17 @@ public class CarrierConfigHelperTest {
 
         assertNotNull(callback);
 
-        // NR is included but carrier config is not applied.
-        PersistableBundle b = getPersistableBundle(new int[] { EUTRAN, NGRAN }, false);
+        // ECBM not supported
+        PersistableBundle b = getPersistableBundle(false);
         doReturn(b).when(mCarrierConfigManager).getConfigForSubId(anyInt(), anyString());
         callback.onCarrierConfigChanged(SLOT_0, SUB_1, 0, 0);
 
-        assertFalse(mCarrierConfigHelper.isVoNrEmergencySupported(SLOT_0));
+        // No TelephonyCallback registered
+        verify(mTelephonyManager, never()).registerTelephonyCallback(any(), any());
     }
 
     @Test
-    public void testCarrierConfigApplied() throws Exception {
+    public void testEmergencyCallbackModeSupported() throws Exception {
         ArgumentCaptor<CarrierConfigManager.CarrierConfigChangeListener> callbackCaptor =
                 ArgumentCaptor.forClass(CarrierConfigManager.CarrierConfigChangeListener.class);
 
@@ -188,30 +182,64 @@ public class CarrierConfigHelperTest {
 
         assertNotNull(callback);
 
-        // NR is included and carrier config is applied.
-        PersistableBundle b = getPersistableBundle(new int[] { EUTRAN, NGRAN }, true);
+        // ECBM supported
+        PersistableBundle b = getPersistableBundle(true);
         doReturn(b).when(mCarrierConfigManager).getConfigForSubId(anyInt(), anyString());
         callback.onCarrierConfigChanged(SLOT_0, SUB_1, 0, 0);
 
-        assertTrue(mCarrierConfigHelper.isVoNrEmergencySupported(SLOT_0));
-        assertFalse(mCarrierConfigHelper.isVoNrEmergencySupported(SLOT_1));
+        verify(mTelephonyManager).createForSubscriptionId(eq(SUB_1));
 
-        verify(mEditor).putBoolean(eq(CarrierConfigHelper.KEY_VONR_EMERGENCY_SUPPORT + SLOT_0),
-                eq(true));
+        ArgumentCaptor<TelephonyCallback> telephonyCallbackCaptor =
+                ArgumentCaptor.forClass(TelephonyCallback.class);
 
-        // NR is not included and carrier config is applied.
-        b = getPersistableBundle(new int[] { EUTRAN }, true);
+        // TelephonyCallback registered
+        verify(mTelephonyManager).registerTelephonyCallback(any(),
+                telephonyCallbackCaptor.capture());
+
+        assertNotNull(telephonyCallbackCaptor.getValue());
+    }
+
+    @Test
+    public void testEmergencyCallbackModeChanged() throws Exception {
+        ArgumentCaptor<CarrierConfigManager.CarrierConfigChangeListener> callbackCaptor =
+                ArgumentCaptor.forClass(CarrierConfigManager.CarrierConfigChangeListener.class);
+
+        verify(mCarrierConfigManager).registerCarrierConfigChangeListener(any(),
+                callbackCaptor.capture());
+
+        CarrierConfigManager.CarrierConfigChangeListener callback = callbackCaptor.getValue();
+
+        assertNotNull(callback);
+
+        // ECBM supported
+        PersistableBundle b = getPersistableBundle(true);
         doReturn(b).when(mCarrierConfigManager).getConfigForSubId(anyInt(), anyString());
         callback.onCarrierConfigChanged(SLOT_0, SUB_1, 0, 0);
 
-        assertFalse(mCarrierConfigHelper.isVoNrEmergencySupported(SLOT_0));
+        verify(mTelephonyManager).createForSubscriptionId(eq(SUB_1));
 
-        verify(mEditor).putBoolean(eq(CarrierConfigHelper.KEY_VONR_EMERGENCY_SUPPORT + SLOT_0),
-                eq(false));
+        ArgumentCaptor<TelephonyCallback> telephonyCallbackCaptor =
+                ArgumentCaptor.forClass(TelephonyCallback.class);
+
+        // TelephonyCallback registered
+        verify(mTelephonyManager).registerTelephonyCallback(any(),
+                telephonyCallbackCaptor.capture());
+
+        TelephonyCallback telephonyCallback = telephonyCallbackCaptor.getValue();
+
+        assertNotNull(telephonyCallback);
+
+        // Carrier config changes, ECBM not supported
+        b = getPersistableBundle(false);
+        doReturn(b).when(mCarrierConfigManager).getConfigForSubId(anyInt(), anyString());
+        callback.onCarrierConfigChanged(SLOT_0, SUB_1, 0, 0);
+
+        // TelephonyCallback unregistered
+        verify(mTelephonyManager).unregisterTelephonyCallback(eq(telephonyCallback));
     }
 
     @Test
-    public void testCarrierConfigInvalidSubId() throws Exception {
+    public void testEmergencyCallbackModeEnter() throws Exception {
         ArgumentCaptor<CarrierConfigManager.CarrierConfigChangeListener> callbackCaptor =
                 ArgumentCaptor.forClass(CarrierConfigManager.CarrierConfigChangeListener.class);
 
@@ -222,27 +250,21 @@ public class CarrierConfigHelperTest {
 
         assertNotNull(callback);
 
-        // NR is included and carrier config is applied.
-        PersistableBundle b = getPersistableBundle(new int[] { EUTRAN, NGRAN }, true);
+        // ECBM supported
+        PersistableBundle b = getPersistableBundle(true);
         doReturn(b).when(mCarrierConfigManager).getConfigForSubId(anyInt(), anyString());
+        callback.onCarrierConfigChanged(SLOT_0, SUB_1, 0, 0);
+        callback.onCarrierConfigChanged(SLOT_1, SUB_2, 0, 0);
 
-        // Invalid subscription
-        callback.onCarrierConfigChanged(SLOT_0, SubscriptionManager.INVALID_SUBSCRIPTION_ID, 0, 0);
+        // Enter ECBM on slot 1
+        mContext.sendStickyBroadcast(getIntent(true, SLOT_1));
 
-        assertFalse(mCarrierConfigHelper.isVoNrEmergencySupported(SLOT_0));
+        assertFalse(mEcbmHelper.isInEmergencyCallbackMode(SLOT_0));
+        assertTrue(mEcbmHelper.isInEmergencyCallbackMode(SLOT_1));
     }
 
     @Test
-    public void testRestoreFromSharedPreferences() throws Exception {
-        doReturn(true).when(mSharedPreferences).getBoolean(anyString(), anyBoolean());
-        mCarrierConfigHelper = new CarrierConfigHelper(mContext, mHandlerThread.getLooper(),
-                mSharedPreferences);
-
-        assertTrue(mCarrierConfigHelper.isVoNrEmergencySupported(SLOT_0));
-    }
-
-    @Test
-    public void testCarrierIgnoreNrWhenSimRemoved() throws Exception {
+    public void testEmergencyCallbackModeExit() throws Exception {
         ArgumentCaptor<CarrierConfigManager.CarrierConfigChangeListener> callbackCaptor =
                 ArgumentCaptor.forClass(CarrierConfigManager.CarrierConfigChangeListener.class);
 
@@ -253,20 +275,27 @@ public class CarrierConfigHelperTest {
 
         assertNotNull(callback);
 
-        // NR is included and carrier config for TEST SIM is applied.
-        PersistableBundle b = getPersistableBundle(new int[] { EUTRAN, NGRAN }, true);
+        // ECBM supported
+        PersistableBundle b = getPersistableBundle(true);
         doReturn(b).when(mCarrierConfigManager).getConfigForSubId(anyInt(), anyString());
-        callback.onCarrierConfigChanged(SLOT_0, SUB_1, TEST_SIM_CARRIER_ID, 0);
+        callback.onCarrierConfigChanged(SLOT_0, SUB_1, 0, 0);
 
-        // NR is ignored.
-        assertFalse(mCarrierConfigHelper.isVoNrEmergencySupported(SLOT_0));
-        assertFalse(mCarrierConfigHelper.isVoNrEmergencySupported(SLOT_1));
+        // Exit ECBM
+        mContext.sendStickyBroadcast(getIntent(false, SLOT_0));
+
+        assertFalse(mEcbmHelper.isInEmergencyCallbackMode(SLOT_0));
     }
 
-    private static PersistableBundle getPersistableBundle(int[] imsRats, boolean applied) {
+    private static Intent getIntent(boolean inEcm, int slotIndex) {
+        Intent intent = new Intent(TelephonyManager.ACTION_EMERGENCY_CALLBACK_MODE_CHANGED);
+        intent.putExtra(TelephonyManager.EXTRA_PHONE_IN_ECM_STATE, inEcm);
+        intent.putExtra(SubscriptionManager.EXTRA_SLOT_INDEX, slotIndex);
+        return intent;
+    }
+
+    private static PersistableBundle getPersistableBundle(boolean supported) {
         PersistableBundle bundle  = new PersistableBundle();
-        bundle.putIntArray(KEY_EMERGENCY_OVER_IMS_SUPPORTED_3GPP_NETWORK_TYPES_INT_ARRAY, imsRats);
-        bundle.putBoolean(KEY_CARRIER_CONFIG_APPLIED_BOOL, applied);
+        bundle.putBoolean(KEY_EMERGENCY_CALLBACK_MODE_SUPPORTED_BOOL, supported);
         return bundle;
     }
 
