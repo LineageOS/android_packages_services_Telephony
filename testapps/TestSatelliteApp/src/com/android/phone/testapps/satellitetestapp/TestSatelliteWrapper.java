@@ -23,7 +23,6 @@ import android.os.Bundle;
 import android.os.OutcomeReceiver;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
-import android.telephony.satellite.SatelliteManager;
 import android.telephony.satellite.wrapper.NtnSignalStrengthCallbackWrapper;
 import android.telephony.satellite.wrapper.NtnSignalStrengthWrapper;
 import android.telephony.satellite.wrapper.SatelliteCapabilitiesCallbackWrapper;
@@ -40,7 +39,6 @@ import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
-
 
 /**
  * Activity related to SatelliteControl APIs for satellite.
@@ -148,7 +146,7 @@ public class TestSatelliteWrapper extends Activity {
 
         try {
             mSatelliteManagerWrapper.requestNtnSignalStrength(mExecutor, receiver);
-        } catch (SecurityException | IllegalStateException ex) {
+        } catch (SecurityException ex) {
             String errorMessage = "requestNtnSignalStrength: " + ex.getMessage();
             Log.d(TAG, errorMessage);
             addLogMessage(errorMessage);
@@ -167,18 +165,10 @@ public class TestSatelliteWrapper extends Activity {
             mSatelliteManagerWrapper.registerForNtnSignalStrengthChanged(mExecutor,
                     mNtnSignalStrengthCallback);
         } catch (Exception ex) {
-            String errorMessage;
-            if (ex instanceof SatelliteManager.SatelliteException) {
-                errorMessage =
-                        "registerForNtnSignalStrengthChanged: " + translateResultCodeToString(
-                                ((SatelliteManager.SatelliteException) ex).getErrorCode());
-            } else {
-                errorMessage = "registerForNtnSignalStrengthChanged: " + ex.getMessage();
-            }
+            String errorMessage = "registerForNtnSignalStrengthChanged: " + ex.getMessage();
             Log.d(TAG, errorMessage);
             addLogMessage(errorMessage);
             mNtnSignalStrengthCallback = null;
-
         }
     }
 
@@ -317,6 +307,8 @@ public class TestSatelliteWrapper extends Activity {
                 return "SATELLITE_RESULT_REQUEST_IN_PROGRESS";
             case SatelliteManagerWrapper.SATELLITE_RESULT_MODEM_BUSY:
                 return "SATELLITE_RESULT_MODEM_BUSY";
+            case SatelliteManagerWrapper.SATELLITE_RESULT_ILLEGAL_STATE:
+                return "SATELLITE_RESULT_ILLEGAL_STATE";
             default:
                 return "INVALID CODE: " + result;
         }
