@@ -13004,34 +13004,41 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     public void requestSatelliteEnabled(int subId, boolean enableSatellite, boolean enableDemoMode,
             @NonNull IIntegerConsumer callback) {
         enforceSatelliteCommunicationPermission("requestSatelliteEnabled");
-        ResultReceiver resultReceiver = new ResultReceiver(mMainThreadHandler) {
-            @Override
-            protected void onReceiveResult(int resultCode, Bundle resultData) {
-                Log.d(LOG_TAG, "Satellite access restriction resultCode=" + resultCode
-                        + ", resultData=" + resultData);
-                boolean isAllowed = false;
-                Consumer<Integer> result = FunctionalUtils.ignoreRemoteException(callback::accept);
-                if (resultCode == SATELLITE_RESULT_SUCCESS) {
-                    if (resultData != null
-                            && resultData.containsKey(KEY_SATELLITE_COMMUNICATION_ALLOWED)) {
-                        isAllowed = resultData.getBoolean(KEY_SATELLITE_COMMUNICATION_ALLOWED);
+        if (enableSatellite) {
+            ResultReceiver resultReceiver = new ResultReceiver(mMainThreadHandler) {
+                @Override
+                protected void onReceiveResult(int resultCode, Bundle resultData) {
+                    Log.d(LOG_TAG, "Satellite access restriction resultCode=" + resultCode
+                            + ", resultData=" + resultData);
+                    boolean isAllowed = false;
+                    Consumer<Integer> result = FunctionalUtils.ignoreRemoteException(
+                            callback::accept);
+                    if (resultCode == SATELLITE_RESULT_SUCCESS) {
+                        if (resultData != null
+                                && resultData.containsKey(KEY_SATELLITE_COMMUNICATION_ALLOWED)) {
+                            isAllowed = resultData.getBoolean(KEY_SATELLITE_COMMUNICATION_ALLOWED);
+                        } else {
+                            loge("KEY_SATELLITE_COMMUNICATION_ALLOWED does not exist.");
+                        }
                     } else {
-                        loge("KEY_SATELLITE_COMMUNICATION_ALLOWED does not exist.");
+                        result.accept(resultCode);
+                        return;
                     }
-                } else {
-                    result.accept(resultCode);
-                    return;
+                    if (isAllowed) {
+                        mSatelliteController.requestSatelliteEnabled(
+                                subId, enableSatellite, enableDemoMode, callback);
+                    } else {
+                        result.accept(SATELLITE_RESULT_ACCESS_BARRED);
+                    }
                 }
-                if (isAllowed) {
-                    mSatelliteController.requestSatelliteEnabled(
-                            subId, enableSatellite, enableDemoMode, callback);
-                } else {
-                    result.accept(SATELLITE_RESULT_ACCESS_BARRED);
-                }
-            }
-        };
-        mSatelliteAccessController.requestIsSatelliteCommunicationAllowedForCurrentLocation(
-                subId, resultReceiver);
+            };
+            mSatelliteAccessController.requestIsSatelliteCommunicationAllowedForCurrentLocation(
+                    subId, resultReceiver);
+        } else {
+            // No need to check if satellite is allowed at current location when disabling satellite
+            mSatelliteController.requestSatelliteEnabled(
+                    subId, enableSatellite, enableDemoMode, callback);
+        }
     }
 
     /**
