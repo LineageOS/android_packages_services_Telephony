@@ -25,6 +25,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 import android.os.DropBoxManager;
+import android.os.SystemClock;
 import android.telephony.TelephonyManager;
 
 import org.junit.After;
@@ -94,9 +95,10 @@ public class DiagnosticDataCollectorTest {
 
     @Test
     public void testPersistForTelecomDumpsys() throws IOException, InterruptedException {
+        TelephonyManager.EmergencyCallDiagnosticParams.Builder callDiagnosticBuilder =
+                new TelephonyManager.EmergencyCallDiagnosticParams.Builder();
         TelephonyManager.EmergencyCallDiagnosticParams dp =
-                new TelephonyManager.EmergencyCallDiagnosticParams();
-        dp.setTelecomDumpSysCollection(true);
+                callDiagnosticBuilder.setTelecomDumpSysCollectionEnabled(true).build();
         mDiagnosticDataCollector.persistEmergencyDianosticData(mConfig, dp, "test_tag_telecom");
 
         verifyCmdAndDropboxTag(TELECOM_DUMPSYS_COMMAND, "test_tag_telecom", false);
@@ -104,9 +106,10 @@ public class DiagnosticDataCollectorTest {
 
     @Test
     public void testPersistForTelephonyDumpsys() throws IOException, InterruptedException {
+        TelephonyManager.EmergencyCallDiagnosticParams.Builder callDiagnosticBuilder =
+                new TelephonyManager.EmergencyCallDiagnosticParams.Builder();
         TelephonyManager.EmergencyCallDiagnosticParams dp =
-                new TelephonyManager.EmergencyCallDiagnosticParams();
-        dp.setTelephonyDumpSysCollection(true);
+                callDiagnosticBuilder.setTelephonyDumpSysCollectionEnabled(true).build();
         mDiagnosticDataCollector.persistEmergencyDianosticData(mConfig, dp, "test_tag_telephony");
 
         verifyCmdAndDropboxTag(TELEPHONY_DUMPSYS_COMMAND, "test_tag_telephony", false);
@@ -114,9 +117,11 @@ public class DiagnosticDataCollectorTest {
 
     @Test
     public void testPersistForLogcat() throws IOException, InterruptedException {
+        TelephonyManager.EmergencyCallDiagnosticParams.Builder callDiagnosticBuilder =
+                new TelephonyManager.EmergencyCallDiagnosticParams.Builder();
         TelephonyManager.EmergencyCallDiagnosticParams dp =
-                new TelephonyManager.EmergencyCallDiagnosticParams();
-        dp.setLogcatCollection(true, System.currentTimeMillis());
+                callDiagnosticBuilder.setLogcatCollectionStartTimeMillis(
+                        SystemClock.elapsedRealtime()).build();
         mDiagnosticDataCollector.persistEmergencyDianosticData(mConfig, dp, "test_tag_logcat");
 
         verifyCmdAndDropboxTag(LOGCAT_BINARY, "test_tag_logcat", true);

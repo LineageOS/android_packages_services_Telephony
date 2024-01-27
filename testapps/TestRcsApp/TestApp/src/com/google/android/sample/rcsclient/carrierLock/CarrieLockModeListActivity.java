@@ -21,8 +21,9 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.R;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.sample.rcsclient.R;
 
 public class CarrieLockModeListActivity extends AppCompatActivity {
 

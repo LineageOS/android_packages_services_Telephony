@@ -12876,11 +12876,15 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             long logcatStartTimestampMillis, boolean enableTelecomDump,
             boolean enableTelephonyDump) {
         DropBoxManager db = mApp.getSystemService(DropBoxManager.class);
-        TelephonyManager.EmergencyCallDiagnosticParams edp =
-                new TelephonyManager.EmergencyCallDiagnosticParams();
-        edp.setLogcatCollection(enableLogcat, logcatStartTimestampMillis);
-        edp.setTelephonyDumpSysCollection(enableTelephonyDump);
-        edp.setTelecomDumpSysCollection(enableTelecomDump);
+        TelephonyManager.EmergencyCallDiagnosticParams.Builder edpBuilder =
+                new TelephonyManager.EmergencyCallDiagnosticParams.Builder();
+        edpBuilder
+                .setTelecomDumpSysCollectionEnabled(enableTelecomDump)
+                .setTelephonyDumpSysCollectionEnabled(enableTelephonyDump);
+        if (enableLogcat) {
+            edpBuilder.setLogcatCollectionStartTimeMillis(logcatStartTimestampMillis);
+        }
+        TelephonyManager.EmergencyCallDiagnosticParams edp = edpBuilder.build();
         Log.d(LOG_TAG, "persisting with Params " + edp.toString());
         DiagnosticDataCollector ddc = new DiagnosticDataCollector(Runtime.getRuntime(),
                 Executors.newCachedThreadPool(), db,

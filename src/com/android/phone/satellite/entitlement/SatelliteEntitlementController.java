@@ -528,7 +528,7 @@ public class SatelliteEntitlementController extends Handler {
     @VisibleForTesting(visibility = VisibleForTesting.Visibility.PRIVATE)
     public void updateSatelliteEntitlementStatus(int subId, boolean enabled,
             List<String> plmnAllowedList) {
-        SatelliteController.getInstance().updateSatelliteEntitlementStatus(subId, enabled,
+        SatelliteController.getInstance().onSatelliteEntitlementStatusUpdated(subId, enabled,
                 plmnAllowedList, null);
     }
 
