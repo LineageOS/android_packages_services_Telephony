@@ -13036,7 +13036,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     }
                 }
             };
-            mSatelliteAccessController.requestIsSatelliteCommunicationAllowedForCurrentLocation(
+            mSatelliteAccessController.requestIsCommunicationAllowedForCurrentLocation(
                     subId, resultReceiver);
         } else {
             // No need to check if satellite is allowed at current location when disabling satellite
@@ -13257,15 +13257,15 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      *
      * @param subId The subId of the subscription to unregister for satellite modem state changed.
      * @param callback The callback that was passed to
-     * {@link #registerForSatelliteModemStateChanged(int, ISatelliteModemStateCallback)}.
+     * {@link #registerForModemStateChanged(int, ISatelliteModemStateCallback)}.
      *
      * @throws SecurityException if the caller doesn't have the required permission.
      */
     @Override
-    public void unregisterForSatelliteModemStateChanged(int subId,
+    public void unregisterForModemStateChanged(int subId,
             @NonNull ISatelliteModemStateCallback callback) {
-        enforceSatelliteCommunicationPermission("unregisterForSatelliteModemStateChanged");
-        mSatelliteController.unregisterForSatelliteModemStateChanged(subId, callback);
+        enforceSatelliteCommunicationPermission("unregisterForModemStateChanged");
+        mSatelliteController.unregisterForModemStateChanged(subId, callback);
     }
 
     /**
@@ -13279,10 +13279,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * @throws SecurityException if the caller doesn't have the required permission.
      */
     @Override
-    @SatelliteManager.SatelliteResult public int registerForSatelliteDatagram(int subId,
+    @SatelliteManager.SatelliteResult public int registerForIncomingDatagram(int subId,
             @NonNull ISatelliteDatagramCallback callback) {
-        enforceSatelliteCommunicationPermission("registerForSatelliteDatagram");
-        return mSatelliteController.registerForSatelliteDatagram(subId, callback);
+        enforceSatelliteCommunicationPermission("registerForIncomingDatagram");
+        return mSatelliteController.registerForIncomingDatagram(subId, callback);
     }
 
     /**
@@ -13291,15 +13291,15 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      *
      * @param subId The subId of the subscription to unregister for incoming satellite datagrams.
      * @param callback The callback that was passed to
-     *                 {@link #registerForSatelliteDatagram(int, ISatelliteDatagramCallback)}.
+     *                 {@link #registerForIncomingDatagram(int, ISatelliteDatagramCallback)}.
      *
      * @throws SecurityException if the caller doesn't have the required permission.
      */
     @Override
-    public void unregisterForSatelliteDatagram(int subId,
+    public void unregisterForIncomingDatagram(int subId,
             @NonNull ISatelliteDatagramCallback callback) {
-        enforceSatelliteCommunicationPermission("unregisterForSatelliteDatagram");
-        mSatelliteController.unregisterForSatelliteDatagram(subId, callback);
+        enforceSatelliteCommunicationPermission("unregisterForIncomingDatagram");
+        mSatelliteController.unregisterForIncomingDatagram(subId, callback);
     }
 
     /**
@@ -13314,10 +13314,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      *
      * @throws SecurityException if the caller doesn't have required permission.
      */
-    @Override
-    public void pollPendingSatelliteDatagrams(int subId, IIntegerConsumer callback) {
-        enforceSatelliteCommunicationPermission("pollPendingSatelliteDatagrams");
-        mSatelliteController.pollPendingSatelliteDatagrams(subId, callback);
+    public void pollPendingDatagrams(int subId, IIntegerConsumer callback) {
+        enforceSatelliteCommunicationPermission("pollPendingDatagrams");
+        mSatelliteController.pollPendingDatagrams(subId, callback);
     }
 
     /**
@@ -13339,12 +13338,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * @throws SecurityException if the caller doesn't have required permission.
      */
     @Override
-    public void sendSatelliteDatagram(int subId, @SatelliteManager.DatagramType int datagramType,
+    public void sendDatagram(int subId, @SatelliteManager.DatagramType int datagramType,
             @NonNull SatelliteDatagram datagram, boolean needFullScreenPointingUI,
             @NonNull IIntegerConsumer callback) {
-        enforceSatelliteCommunicationPermission("sendSatelliteDatagram");
-        mSatelliteController.sendSatelliteDatagram(subId, datagramType, datagram,
-                needFullScreenPointingUI, callback);
+        enforceSatelliteCommunicationPermission("sendDatagram");
+        mSatelliteController.sendDatagram(subId, datagramType, datagram, needFullScreenPointingUI,
+                callback);
     }
 
     /**
@@ -13359,12 +13358,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * @throws SecurityException if the caller doesn't have the required permission.
      */
     @Override
-    public void requestIsSatelliteCommunicationAllowedForCurrentLocation(int subId,
+    public void requestIsCommunicationAllowedForCurrentLocation(int subId,
             @NonNull ResultReceiver result) {
-        enforceSatelliteCommunicationPermission(
-                "requestIsSatelliteCommunicationAllowedForCurrentLocation");
-        mSatelliteAccessController.requestIsSatelliteCommunicationAllowedForCurrentLocation(
-                subId, result);
+        enforceSatelliteCommunicationPermission("requestIsCommunicationAllowedForCurrentLocation");
+        mSatelliteAccessController.requestIsCommunicationAllowedForCurrentLocation(subId,
+                result);
     }
 
     /**
@@ -13409,13 +13407,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      *
      * @throws SecurityException if the caller doesn't have required permission.
      */
-    public void addSatelliteAttachRestrictionForCarrier(int subId,
+    public void addAttachRestrictionForCarrier(int subId,
             @SatelliteManager.SatelliteCommunicationRestrictionReason int reason,
             @NonNull IIntegerConsumer callback) {
-        enforceSatelliteCommunicationPermission("addSatelliteAttachRestrictionForCarrier");
+        enforceSatelliteCommunicationPermission("addAttachRestrictionForCarrier");
         final long identity = Binder.clearCallingIdentity();
         try {
-            mSatelliteController.addSatelliteAttachRestrictionForCarrier(subId, reason, callback);
+            mSatelliteController.addAttachRestrictionForCarrier(subId, reason, callback);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -13432,14 +13430,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      *
      * @throws SecurityException if the caller doesn't have required permission.
      */
-    public void removeSatelliteAttachRestrictionForCarrier(int subId,
+    public void removeAttachRestrictionForCarrier(int subId,
             @SatelliteManager.SatelliteCommunicationRestrictionReason int reason,
             @NonNull IIntegerConsumer callback) {
-        enforceSatelliteCommunicationPermission("removeSatelliteAttachRestrictionForCarrier");
+        enforceSatelliteCommunicationPermission("removeAttachRestrictionForCarrier");
         final long identity = Binder.clearCallingIdentity();
         try {
-            mSatelliteController.removeSatelliteAttachRestrictionForCarrier(subId, reason,
-                    callback);
+            mSatelliteController.removeAttachRestrictionForCarrier(subId, reason, callback);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -13455,13 +13452,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      *
      * @throws SecurityException if the caller doesn't have the required permission.
      */
-    public @NonNull int[] getSatelliteAttachRestrictionReasonsForCarrier(
+    public @NonNull int[] getAttachRestrictionReasonsForCarrier(
             int subId) {
-        enforceSatelliteCommunicationPermission("getSatelliteAttachRestrictionReasonsForCarrier");
+        enforceSatelliteCommunicationPermission("getAttachRestrictionReasonsForCarrier");
         final long identity = Binder.clearCallingIdentity();
         try {
             Set<Integer> reasonSet =
-                    mSatelliteController.getSatelliteAttachRestrictionReasonsForCarrier(subId);
+                    mSatelliteController.getAttachRestrictionReasonsForCarrier(subId);
             return reasonSet.stream().mapToInt(i->i).toArray();
         } finally {
             Binder.restoreCallingIdentity(identity);
@@ -13549,12 +13546,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * @throws SecurityException if the caller doesn't have required permission.
      */
     @Override
-    @SatelliteManager.SatelliteResult public int registerForSatelliteCapabilitiesChanged(
+    @SatelliteManager.SatelliteResult public int registerForCapabilitiesChanged(
             int subId, @NonNull ISatelliteCapabilitiesCallback callback) {
-        enforceSatelliteCommunicationPermission("registerForSatelliteCapabilitiesChanged");
+        enforceSatelliteCommunicationPermission("registerForCapabilitiesChanged");
         final long identity = Binder.clearCallingIdentity();
         try {
-            return mSatelliteController.registerForSatelliteCapabilitiesChanged(subId, callback);
+            return mSatelliteController.registerForCapabilitiesChanged(subId, callback);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -13566,17 +13563,17 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      *
      * @param subId The subId of the subscription to unregister for satellite capabilities change.
      * @param callback The callback that was passed to.
-     * {@link #registerForSatelliteCapabilitiesChanged(int, ISatelliteCapabilitiesCallback)}.
+     * {@link #registerForCapabilitiesChanged(int, ISatelliteCapabilitiesCallback)}.
      *
      * @throws SecurityException if the caller doesn't have required permission.
      */
     @Override
-    public void unregisterForSatelliteCapabilitiesChanged(
-            int subId, @NonNull ISatelliteCapabilitiesCallback callback) {
-        enforceSatelliteCommunicationPermission("unregisterForSatelliteCapabilitiesChanged");
+    public void unregisterForCapabilitiesChanged(int subId,
+            @NonNull ISatelliteCapabilitiesCallback callback) {
+        enforceSatelliteCommunicationPermission("unregisterForCapabilitiesChanged");
         final long identity = Binder.clearCallingIdentity();
         try {
-            mSatelliteController.unregisterForSatelliteCapabilitiesChanged(subId, callback);
+            mSatelliteController.unregisterForCapabilitiesChanged(subId, callback);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
