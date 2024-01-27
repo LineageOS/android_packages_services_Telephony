@@ -55,15 +55,15 @@ public class Provisioning extends Activity {
 
         setContentView(R.layout.activity_Provisioning);
         findViewById(R.id.provisionSatelliteService)
-                .setOnClickListener(this::provisionSatelliteServiceApp);
+                .setOnClickListener(this::provisionServiceApp);
         findViewById(R.id.deprovisionSatelliteService)
-                .setOnClickListener(this::deprovisionSatelliteServiceApp);
+                .setOnClickListener(this::deprovisionServiceApp);
         findViewById(R.id.requestIsSatelliteProvisioned)
-                .setOnClickListener(this::requestIsSatelliteProvisionedApp);
+                .setOnClickListener(this::requestIsProvisionedApp);
         findViewById(R.id.registerForSatelliteProvisionStateChanged)
-                .setOnClickListener(this::registerForSatelliteProvisionStateChangedApp);
+                .setOnClickListener(this::registerForProvisionStateChangedApp);
         findViewById(R.id.unregisterForSatelliteProvisionStateChanged)
-                .setOnClickListener(this::unregisterForSatelliteProvisionStateChangedApp);
+                .setOnClickListener(this::unregisterForProvisionStateChangedApp);
         findViewById(R.id.showCurrentSatelliteProvisionState)
                 .setOnClickListener(this::showCurrentSatelliteProvisionStateApp);
         findViewById(R.id.Back).setOnClickListener(new OnClickListener() {
@@ -84,13 +84,13 @@ public class Provisioning extends Activity {
         }
     }
 
-    private void provisionSatelliteServiceApp(View view) {
+    private void provisionServiceApp(View view) {
         TextView textView = findViewById(R.id.text_id);
         CancellationSignal cancellationSignal = new CancellationSignal();
         LinkedBlockingQueue<Integer> error = new LinkedBlockingQueue<>(1);
         String mText = "This is test provision data.";
         byte[] testProvisionData = mText.getBytes();
-        mSatelliteManager.provisionSatelliteService("SATELLITE_TOKEN", testProvisionData,
+        mSatelliteManager.provisionService("SATELLITE_TOKEN", testProvisionData,
                 cancellationSignal, Runnable::run, error::offer);
         try {
             Integer value = error.poll(TIMEOUT, TimeUnit.MILLISECONDS);
@@ -107,10 +107,10 @@ public class Provisioning extends Activity {
         }
     }
 
-    private void deprovisionSatelliteServiceApp(View view) {
+    private void deprovisionServiceApp(View view) {
         TextView textView = findViewById(R.id.text_id);
         LinkedBlockingQueue<Integer> error = new LinkedBlockingQueue<>(1);
-        mSatelliteManager.deprovisionSatelliteService("SATELLITE_TOKEN", Runnable::run,
+        mSatelliteManager.deprovisionService("SATELLITE_TOKEN", Runnable::run,
                 error::offer);
         try {
             Integer value = error.poll(TIMEOUT, TimeUnit.MILLISECONDS);
@@ -127,7 +127,7 @@ public class Provisioning extends Activity {
         }
     }
 
-    private void requestIsSatelliteProvisionedApp(View view) {
+    private void requestIsProvisionedApp(View view) {
         final AtomicReference<Boolean> enabled = new AtomicReference<>();
         final AtomicReference<Integer> errorCode = new AtomicReference<>();
         OutcomeReceiver<Boolean, SatelliteManager.SatelliteException> mReceiver =
@@ -148,19 +148,19 @@ public class Provisioning extends Activity {
                         + SatelliteErrorUtils.mapError(errorCode.get()));
             }
         };
-        mSatelliteManager.requestIsSatelliteProvisioned(Runnable::run, mReceiver);
+        mSatelliteManager.requestIsProvisioned(Runnable::run, mReceiver);
     }
 
-    private void registerForSatelliteProvisionStateChangedApp(View view) {
-        int result = mSatelliteManager.registerForSatelliteProvisionStateChanged(Runnable::run,
+    private void registerForProvisionStateChangedApp(View view) {
+        int result = mSatelliteManager.registerForProvisionStateChanged(Runnable::run,
                 mCallback);
         TextView textView = findViewById(R.id.text_id);
         textView.setText("Status for registerForSatelliteProvisionStateChanged : "
                 + SatelliteErrorUtils.mapError(result));
     }
 
-    private void unregisterForSatelliteProvisionStateChangedApp(View view) {
-        mSatelliteManager.unregisterForSatelliteProvisionStateChanged(mCallback);
+    private void unregisterForProvisionStateChangedApp(View view) {
+        mSatelliteManager.unregisterForProvisionStateChanged(mCallback);
         TextView textView = findViewById(R.id.text_id);
         textView.setText("unregisterForSatelliteProvisionStateChanged is successful");
     }

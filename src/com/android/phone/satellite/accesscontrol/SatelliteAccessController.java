@@ -230,7 +230,7 @@ public class SatelliteAccessController extends Handler {
      *               for the current location if the request is successful or an error code
      *               if the request failed.
      */
-    public void requestIsSatelliteCommunicationAllowedForCurrentLocation(int subId,
+    public void requestIsCommunicationAllowedForCurrentLocation(int subId,
             @NonNull ResultReceiver result) {
         if (!mFeatureFlags.oemEnabledSatelliteFlag()) {
             logd("oemEnabledSatelliteFlag is disabled");
@@ -392,7 +392,7 @@ public class SatelliteAccessController extends Handler {
         synchronized (mLock) {
             mSatelliteAllowResultReceivers.add(requestArguments.second);
             if (mSatelliteAllowResultReceivers.size() > 1) {
-                logd("requestIsSatelliteCommunicationAllowedForCurrentLocation is already being "
+                logd("requestIsCommunicationAllowedForCurrentLocation is already being "
                         + "processed");
                 return;
             }

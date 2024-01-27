@@ -1138,6 +1138,7 @@ public class TelephonyConnectionService extends ConnectionService {
             }
             int timeoutToOnTimeoutCallback = mDomainSelectionResolver.isDomainSelectionSupported()
                     ? TIMEOUT_TO_DYNAMIC_ROUTING_MS : 0;
+            final Phone phoneForEmergency = phone;
             mRadioOnHelper.triggerRadioOnAndListen(new RadioOnStateListener.Callback() {
                 @Override
                 public void onComplete(RadioOnStateListener listener, boolean isRadioReady) {
@@ -1162,7 +1163,7 @@ public class TelephonyConnectionService extends ConnectionService {
                             && phone.getHalVersion(HAL_SERVICE_VOICE)
                             .less(RIL.RADIO_HAL_VERSION_1_4);
                     if (mDomainSelectionResolver.isDomainSelectionSupported()) {
-                        if (isEmergencyNumber) {
+                        if (isEmergencyNumber && phone == phoneForEmergency) {
                             // Since the domain selection service is enabled,
                             // dilaing normal routing emergency number only reaches here.
                             if (!isVoiceInService(phone, imsVoiceCapable)) {
