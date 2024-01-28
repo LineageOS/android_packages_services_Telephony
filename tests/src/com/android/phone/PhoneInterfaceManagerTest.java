@@ -488,14 +488,11 @@ public class PhoneInterfaceManagerTest extends TelephonyTestBase {
 
     @Test
     @EnableCompatChanges({TelephonyManager.ENABLE_FEATURE_MAPPING})
-    public void testTelephonyFeatureAndCompatChanges() {
-        doNothing().when(mPhoneInterfaceManager).enforceModifyPermission();
-        mPhoneInterfaceManager.setFeatureFlags(mFeatureFlags);
+    public void testWithTelephonyFeatureAndCompatChanges() throws Exception {
         doReturn(true).when(mFeatureFlags).enforceTelephonyFeatureMappingForPublicApis();
-        mPhoneInterfaceManager.setPackageManager(mPackageManager);
-        doReturn(true).when(mPackageManager).hasSystemFeature(anyString());
+        mPhoneInterfaceManager.setFeatureFlags(mFeatureFlags);
+        doNothing().when(mPhoneInterfaceManager).enforceModifyPermission();
 
-        // Enabled FeatureFlags and ENABLE_FEATURE_MAPPING, telephony features are defined
         try {
             // FEATURE_TELEPHONY_CALLING
             mPhoneInterfaceManager.handlePinMmiForSubscriber(1, "123456789");
@@ -505,9 +502,21 @@ public class PhoneInterfaceManagerTest extends TelephonyTestBase {
         } catch (Exception e) {
             fail("Not expect exception " + e.getMessage());
         }
+    }
 
+    @Test
+    @EnableCompatChanges({TelephonyManager.ENABLE_FEATURE_MAPPING})
+    public void testWithoutTelephonyFeatureAndCompatChanges() throws Exception {
         // telephony features is not defined, expect UnsupportedOperationException.
-        doReturn(false).when(mPackageManager).hasSystemFeature(anyString());
+        doReturn(false).when(mPackageManager).hasSystemFeature(
+                PackageManager.FEATURE_TELEPHONY_CALLING);
+        doReturn(false).when(mPackageManager).hasSystemFeature(
+                PackageManager.FEATURE_TELEPHONY_RADIO_ACCESS);
+        mPhoneInterfaceManager.setPackageManager(mPackageManager);
+        doReturn(true).when(mFeatureFlags).enforceTelephonyFeatureMappingForPublicApis();
+        mPhoneInterfaceManager.setFeatureFlags(mFeatureFlags);
+        doNothing().when(mPhoneInterfaceManager).enforceModifyPermission();
+
         assertThrows(UnsupportedOperationException.class,
                 () -> mPhoneInterfaceManager.handlePinMmiForSubscriber(1, "123456789"));
         assertThrows(UnsupportedOperationException.class,
