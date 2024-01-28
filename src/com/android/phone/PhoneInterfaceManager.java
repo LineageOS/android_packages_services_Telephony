@@ -12662,11 +12662,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      *
      * @throws SecurityException if the caller doesn't have the required permission.
      */
-    @NonNull public List<String> getAllSatellitePlmnsForCarrier(int subId) {
-        enforceSatelliteCommunicationPermission("getAllSatellitePlmnsForCarrier");
+    @NonNull public List<String> getSatellitePlmnsForCarrier(int subId) {
+        enforceSatelliteCommunicationPermission("getSatellitePlmnsForCarrier");
         final long identity = Binder.clearCallingIdentity();
         try {
-            return mSatelliteController.getAllSatellitePlmnsForCarrier(subId);
+            return mSatelliteController.getSatellitePlmnsForCarrier(subId);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
