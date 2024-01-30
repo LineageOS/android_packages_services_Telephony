@@ -559,6 +559,56 @@ public class EmergencyCallDomainSelectorTest {
     }
 
     @Test
+    public void testAirplaneDefaultCombinedImsNotRegisteredSelectPs() throws Exception {
+        createSelector(SLOT_0_SUB_ID);
+        unsolBarringInfoChanged(false);
+
+        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+                NetworkRegistrationInfo.DOMAIN_CS | NetworkRegistrationInfo.DOMAIN_PS,
+                true, true, 0, 0, "", "");
+        SelectionAttributes attr = new SelectionAttributes.Builder(
+                        SLOT_0, SLOT_0_SUB_ID, SELECTOR_TYPE_CALLING)
+                .setNumber(TEST_EMERGENCY_NUMBER)
+                .setEmergency(true)
+                .setEmergencyRegResult(regResult)
+                .setExitedFromAirplaneMode(true)
+                .build();
+        mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
+        processAllMessages();
+
+        bindImsServiceUnregistered();
+
+        verifyPsDialed();
+    }
+
+    @Test
+    public void testAirplaneRequiresRegCombinedImsNotRegisteredSelectPs() throws Exception {
+        PersistableBundle bundle = getDefaultPersistableBundle();
+        bundle.putBoolean(KEY_EMERGENCY_REQUIRES_IMS_REGISTRATION_BOOL, true);
+        when(mCarrierConfigManager.getConfigForSubId(anyInt())).thenReturn(bundle);
+
+        createSelector(SLOT_0_SUB_ID);
+        unsolBarringInfoChanged(false);
+
+        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+                NetworkRegistrationInfo.DOMAIN_CS | NetworkRegistrationInfo.DOMAIN_PS,
+                true, true, 0, 0, "", "");
+        SelectionAttributes attr = new SelectionAttributes.Builder(
+                        SLOT_0, SLOT_0_SUB_ID, SELECTOR_TYPE_CALLING)
+                .setNumber(TEST_EMERGENCY_NUMBER)
+                .setEmergency(true)
+                .setEmergencyRegResult(regResult)
+                .setExitedFromAirplaneMode(true)
+                .build();
+        mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
+        processAllMessages();
+
+        bindImsServiceUnregistered();
+
+        verifyPsDialed();
+    }
+
+    @Test
     public void testNoCsCombinedImsNotRegisteredSelectPs() throws Exception {
         PersistableBundle bundle = getDefaultPersistableBundle();
         bundle.putIntArray(KEY_EMERGENCY_OVER_CS_SUPPORTED_ACCESS_NETWORK_TYPES_INT_ARRAY,

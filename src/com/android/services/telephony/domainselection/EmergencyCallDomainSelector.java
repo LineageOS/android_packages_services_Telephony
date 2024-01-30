@@ -685,7 +685,8 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         logi("selectDomain CS={" + csInService + ", " + accessNetworkTypeToString(mCsNetworkType)
                 + "}, PS={" + psInService + ", " + accessNetworkTypeToString(mPsNetworkType) + "}");
         if (csAvailable && psAvailable) {
-            if (mPreferImsWhenCallsOnCs || isImsRegisteredWithVoiceCapability()) {
+            if (mSelectionAttributes.isExitedFromAirplaneMode()
+                    || mPreferImsWhenCallsOnCs || isImsRegisteredWithVoiceCapability()) {
                 mTryCsWhenPsFails = true;
                 onWwanNetworkTypeSelected(mPsNetworkType);
             } else if (isDeactivatedSim()) {
@@ -696,7 +697,8 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
             }
         } else if (psAvailable) {
             mTryEpsFallback = (mPsNetworkType == NGRAN) && isEpsFallbackAvailable();
-            if (!mRequiresImsRegistration || isImsRegisteredWithVoiceCapability()) {
+            if (mSelectionAttributes.isExitedFromAirplaneMode()
+                    || !mRequiresImsRegistration || isImsRegisteredWithVoiceCapability()) {
                 onWwanNetworkTypeSelected(mPsNetworkType);
             } else if (isDeactivatedSim()) {
                 // Deactivated SIM but PS is in service and supports emergency calls.
@@ -711,7 +713,8 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
             onWwanNetworkTypeSelected(mCsNetworkType);
         } else {
             // PS is in service but not supports emergency calls.
-            if (mRequiresImsRegistration && !isImsRegisteredWithVoiceCapability()) {
+            if (!mSelectionAttributes.isExitedFromAirplaneMode()
+                    && mRequiresImsRegistration && !isImsRegisteredWithVoiceCapability()) {
                 // Carrier configuration requires IMS registration for emergency services over PS,
                 // but not registered. Try CS emergency call.
                 requestScan(true, true);
