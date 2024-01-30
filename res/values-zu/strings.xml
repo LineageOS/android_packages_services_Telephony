@@ -133,6 +133,7 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"Ukulinda kwekholi ye-CDMA ngaphansi kwe-IMS kuvaliwe"</string>
     <string name="updating_title" msgid="6130548922615719689">"Izilungiselelo zekholi"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Izilungiselelo zekholi zingaguqulwa kuphela ngumsebenzisi oyinhloko."</string>
+    <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Amasethingi e-akhawunti yefoni angashintshwa kuphela umphathi noma umsebenzisi wasemsebenzini."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Izilungiselelo (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Iphutha lokulungiselela ikholi"</string>
     <string name="reading_settings" msgid="1605904432450871183">"Ifunda izilungiselelo..."</string>
@@ -556,6 +557,7 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"Ayikwazi ukubamba amakholi."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"Xhumeka kunethiwekhi engenantambo ukuze wenze ikholi."</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"Nika amandla ukushaya kwevoyisimeyili ukuze wenze ikholi."</string>
+    <string name="incall_error_satellite_enabled" msgid="1936541518147323016">"Khubaza umumo wesethelayithi ukuze wenze ikholi."</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"Ulwazi lwesimo esiphuthumayo"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"Umnikazi"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"Thepha futhi ukuze ubuke ulwazi"</string>
@@ -713,6 +715,7 @@
     <string name="clh_callFailed_powerOff_txt" msgid="8279934912560765361">"Imodi yendiza ivuliwe"</string>
     <string name="clh_callFailed_simError_txt" msgid="5128538525762326413">"Ayikwazi ukufinyelela ku-SIM card"</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="2736010617446749869">"Inethiwekhi yeselula ayitholakali"</string>
+    <string name="clh_callFailed_satelliteEnabled_txt" msgid="1675517238240377396">"Umumo wesethelayithi uvuliwe"</string>
     <string name="clh_callFailed_unassigned_number_txt" msgid="141967660286695682">"Inkinga nenombolo yefoni ozama ukuyishayela. Ikhodi yephutha ngu-1."</string>
     <string name="clh_callFailed_no_route_to_destination_txt" msgid="4805015149822352308">"Ayikwazanga ukuqedela ikholi. Ikhodi yephutha ngu-3."</string>
     <string name="clh_callFailed_channel_unacceptable_txt" msgid="4062754579408613021">"Ayikwazanga ukuqedela ikholi. Ikhodi yephutha ngu-6."</string>
@@ -873,7 +876,7 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"I-SubId ye-SIM yedatha yokuzenzakalela:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Umkhawulokudonsa we-DL (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Umkhawulokudonsa we-UL (kbps):"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Ukulungiselelwa okuphathekayo kwesiteshi se-LTE:"</string>
+    <string name="radio_info_phy_chan_config" msgid="608045501232211303">"Ukucushwa Kwesiteshi Esiphathekayo:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Isilinganiso sokuqalisa kabusha solwazi lweseli:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Ulwazi lwesilinganiso seseli:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"Isevisi yedatha:"</string>
@@ -923,8 +926,9 @@
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Isignali yakho ye-bluetooth ayiqinile. Zama ukushintshela kusipikhasefoni."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"Isaziso Sekhwalithi"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"Ama-akhawunti we-SIP ehlisiwe"</string>
-    <string name="send_from_work_profile_title" msgid="9201528838448432473">"Ayikwazi ukuthumela umyalezo kusukela kule phrofayela"</string>
-    <string name="send_from_work_profile_description" msgid="5002701841936861636">"Inqubomgomo yakho yomsebenzi ikuvumela ukuthi uthumele umyalezo kuphela usuka kuphrofayela yomsebenzi"</string>
+    <string name="send_from_work_profile_title" msgid="7044759579507604732">"Ayikwazi ukuthumela umlayezo kusuka ku-app yomuntu siqu"</string>
+    <string name="send_from_work_profile_description" msgid="2174402508727161974">"Inhlangano yakho ivumela kuphela wena ukuthumela imilayezo kusuka kuma-app womsebenzi"</string>
     <string name="send_from_work_profile_cancel" msgid="177746511030381711">"Khansela"</string>
     <string name="send_from_work_profile_action_str" msgid="6892775562934243337">"Shintshela kuphrofayela yomsebenzi"</string>
+    <string name="install_messages_on_work_profile_action_str" msgid="3773440996395152903">"Faka i-app yemilayezo yomsebenzi"</string>
 </resources>

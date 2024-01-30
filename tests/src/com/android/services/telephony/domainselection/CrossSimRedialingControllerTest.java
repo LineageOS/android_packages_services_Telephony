@@ -27,6 +27,7 @@ import static com.android.services.telephony.domainselection.CrossSimRedialingCo
 import static com.android.services.telephony.domainselection.CrossSimRedialingController.MSG_QUICK_CROSS_STACK_TIMEOUT;
 
 import static junit.framework.Assert.assertFalse;
+import static junit.framework.Assert.assertNotNull;
 import static junit.framework.Assert.assertTrue;
 
 import static org.mockito.ArgumentMatchers.anyInt;
@@ -42,6 +43,7 @@ import android.os.Looper;
 import android.os.PersistableBundle;
 import android.telephony.CarrierConfigManager;
 import android.telephony.TelephonyManager;
+import android.telephony.emergency.EmergencyNumber;
 import android.testing.TestableLooper;
 import android.util.Log;
 
@@ -53,6 +55,11 @@ import org.junit.Test;
 import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Unit tests for CrossSimRedialingController
@@ -66,8 +73,6 @@ public class CrossSimRedialingControllerTest {
     private static final String TELECOM_CALL_ID1 = "TC1";
     private static final String TEST_EMERGENCY_NUMBER = "911";
 
-    @Mock private CarrierConfigManager mCarrierConfigManager;
-    @Mock private TelephonyManager mTelephonyManager;
     @Mock private EmergencyCallDomainSelector mEcds;
     @Mock private CrossSimRedialingController.EmergencyNumberHelper mEmergencyNumberHelper;
 
@@ -76,6 +81,8 @@ public class CrossSimRedialingControllerTest {
     private HandlerThread mHandlerThread;
     private TestableLooper mLooper;
     private CrossSimRedialingController mCsrController;
+    private CarrierConfigManager mCarrierConfigManager;
+    private TelephonyManager mTelephonyManager;
 
     @Before
     public void setUp() throws Exception {
@@ -460,6 +467,42 @@ public class CrossSimRedialingControllerTest {
         processAllMessages();
 
         verify(mEcds, times(0)).notifyCrossStackTimerExpired();
+    }
+
+    @Test
+    public void testEmergencyNumberHelper() throws Exception {
+        mCsrController = new CrossSimRedialingController(mContext,
+                mHandlerThread.getLooper());
+
+        CrossSimRedialingController.EmergencyNumberHelper helper =
+                mCsrController.getEmergencyNumberHelper();
+
+        assertNotNull(helper);
+
+        EmergencyNumber num1 = new EmergencyNumber(TEST_EMERGENCY_NUMBER, "us", "",
+                EmergencyNumber.EMERGENCY_SERVICE_CATEGORY_POLICE, new ArrayList<String>(),
+                EmergencyNumber.EMERGENCY_NUMBER_SOURCE_DATABASE,
+                EmergencyNumber.EMERGENCY_CALL_ROUTING_UNKNOWN);
+
+        EmergencyNumber num2 = new EmergencyNumber("119", "jp", "",
+                EmergencyNumber.EMERGENCY_SERVICE_CATEGORY_POLICE, new ArrayList<String>(),
+                EmergencyNumber.EMERGENCY_NUMBER_SOURCE_DATABASE,
+                EmergencyNumber.EMERGENCY_CALL_ROUTING_UNKNOWN);
+
+        Map<Integer, List<EmergencyNumber>> lists = new HashMap<>();
+        List<EmergencyNumber> list = new ArrayList<>();
+        list.add(num1);
+        lists.put(1, list);
+
+        list = new ArrayList<>();
+        list.add(num2);
+        lists.put(2, list);
+
+        doReturn(lists).when(mTelephonyManager).getEmergencyNumberList();
+
+        assertTrue(helper.isEmergencyNumber(1, TEST_EMERGENCY_NUMBER));
+        assertFalse(helper.isEmergencyNumber(2, TEST_EMERGENCY_NUMBER));
+        assertFalse(helper.isEmergencyNumber(3, TEST_EMERGENCY_NUMBER));
     }
 
     private void createController() throws Exception {

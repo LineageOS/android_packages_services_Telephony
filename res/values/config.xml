@@ -318,6 +318,25 @@
     <string-array name="thermal_mitigation_allowlisted_packages" translatable="false">
     </string-array>
 
+    <!-- Array of carriers that don't care about NGRAN's preference in the preferred emergency
+         network scan list after SIM is removed. -->
+    <integer-array name="config_carriers_ignore_ngran_preference_when_sim_removed">
+        <!-- 001-01 Test SIM -->
+        <item>1911</item>
+    </integer-array>
+
+    <!-- Array of countries that active SIM is needed for emergency calls. Values should be
+         ISO3166 country codes in lowercase. -->
+    <string-array name="config_countries_require_sim_for_emergency" translatable="false">
+        <!-- b/177967010 -->
+        <item>jp</item>
+        <!-- b/230443699 -->
+        <item>in</item>
+        <item>sg</item>
+        <!-- b/198393826 -->
+        <item>de</item>
+    </string-array>
+
     <!-- Flag specifying whether the AOSP domain selection is enabled or
          the device should fallback to the modem based domain selection architecture. -->
     <bool name="config_enable_aosp_domain_selection">false</bool>

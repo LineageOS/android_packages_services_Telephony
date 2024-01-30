@@ -53,9 +53,11 @@ import static android.telephony.NetworkRegistrationInfo.REGISTRATION_STATE_HOME;
 import static android.telephony.NetworkRegistrationInfo.REGISTRATION_STATE_ROAMING;
 import static android.telephony.PreciseDisconnectCause.EMERGENCY_PERM_FAILURE;
 import static android.telephony.PreciseDisconnectCause.EMERGENCY_TEMP_FAILURE;
+import static android.telephony.PreciseDisconnectCause.SERVICE_OPTION_NOT_AVAILABLE;
 
 import android.annotation.NonNull;
 import android.content.Context;
+import android.content.res.Resources;
 import android.net.ConnectivityManager;
 import android.net.Network;
 import android.net.NetworkCapabilities;
@@ -83,12 +85,12 @@ import android.telephony.TransportSelectorCallback;
 import android.telephony.emergency.EmergencyNumber;
 import android.telephony.ims.ImsManager;
 import android.telephony.ims.ImsMmTelManager;
-import android.telephony.ims.ImsReasonInfo;
 import android.telephony.ims.ProvisioningManager;
 import android.text.TextUtils;
 import android.util.LocalLog;
 
 import com.android.internal.annotations.VisibleForTesting;
+import com.android.phone.R;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -117,17 +119,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
 
     private static final LocalLog sLocalLog = new LocalLog(LOG_SIZE);
 
-    private static final ArrayList<String> sAllowOnlyWithSimReady = new ArrayList<>();
-
-    static {
-        // b/177967010, JP
-        sAllowOnlyWithSimReady.add("jp"); // Japan
-        // b/198393826, DE
-        sAllowOnlyWithSimReady.add("de"); // Germany
-        // b/230443699, IN and SG
-        sAllowOnlyWithSimReady.add("in"); // India
-        sAllowOnlyWithSimReady.add("sg"); // Singapore
-    }
+    private static List<String> sSimReadyAllowList;
 
     /**
      * Network callback used to determine whether Wi-Fi is connected or not.
@@ -171,6 +163,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
 
     private CancellationSignal mCancelSignal;
 
+    // Members for carrier configuration
     private @RadioAccessNetworkType int[] mImsRatsConfig;
     private @RadioAccessNetworkType int[] mCsRatsConfig;
     private @RadioAccessNetworkType int[] mImsRoamRatsConfig;
@@ -180,8 +173,6 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
     private List<String> mCdmaPreferredNumbers;
     private boolean mPreferImsWhenCallsOnCs;
     private int mVoWifiRequiresCondition;
-    private boolean mIsMonitoringConnectivity;
-    private boolean mWiFiAvailable;
     private int mScanTimeout;
     private int mMaxCellularTimeout;
     private int mMaxNumOfVoWifiTries;
@@ -191,6 +182,11 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
     private boolean mRequiresImsRegistration;
     private boolean mRequiresVoLteEnabled;
     private boolean mLtePreferredAfterNrFailure;
+
+    // Members for states
+    private boolean mIsMonitoringConnectivity;
+    private boolean mWiFiAvailable;
+    private boolean mWasCsfbAfterPsFailure;
     private boolean mTryCsWhenPsFails;
     private boolean mTryEpsFallback;
     private int mModemCount;
@@ -214,12 +210,14 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
 
     private final PowerManager.WakeLock mPartialWakeLock;
     private final CrossSimRedialingController mCrossSimRedialingController;
+    private final CarrierConfigHelper mCarrierConfigHelper;
 
     /** Constructor. */
     public EmergencyCallDomainSelector(Context context, int slotId, int subId,
             @NonNull Looper looper, @NonNull ImsStateTracker imsStateTracker,
             @NonNull DestroyListener destroyListener,
-            @NonNull CrossSimRedialingController csrController) {
+            @NonNull CrossSimRedialingController csrController,
+            @NonNull CarrierConfigHelper carrierConfigHelper) {
         super(context, slotId, subId, looper, imsStateTracker, destroyListener, TAG);
 
         mImsStateTracker.addBarringInfoListener(this);
@@ -229,6 +227,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         mPartialWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, TAG);
 
         mCrossSimRedialingController = csrController;
+        mCarrierConfigHelper = carrierConfigHelper;
         acquireWakeLock();
     }
 
@@ -367,8 +366,18 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
             // Dial CS for CSFB instead of scanning with CS preferred network list.
             logi("reselectDomain tryCs=" + accessNetworkTypeToString(mCsNetworkType));
             if (mCsNetworkType != UNKNOWN) {
+                mWasCsfbAfterPsFailure = true;
                 onWwanNetworkTypeSelected(mCsNetworkType);
                 return;
+            }
+        }
+
+        if (mWasCsfbAfterPsFailure) {
+            mWasCsfbAfterPsFailure = false;
+            if (cause == SERVICE_OPTION_NOT_AVAILABLE) {
+                // b/299875872, combined attach but EXTENDED_SERVICE_REQUEST failed.
+                // Try CS preferred scan instead of PS preferred scan.
+                mLastNetworkType = EUTRAN;
             }
         }
 
@@ -435,6 +444,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
 
     private void startDomainSelection() {
         logi("startDomainSelection modemCount=" + mModemCount);
+        readResourceConfiguration();
         updateCarrierConfiguration();
         mDomainSelectionRequested = true;
         startCrossStackTimer();
@@ -469,6 +479,12 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         selectDomain();
     }
 
+    private boolean isSimReady() {
+        if (!SubscriptionManager.isValidSubscriptionId(getSubId())) return false;
+        TelephonyManager tm = mContext.getSystemService(TelephonyManager.class);
+        return tm.getSimState(getSlotId()) == TelephonyManager.SIM_STATE_READY;
+    }
+
     /**
      * Caches the configuration.
      */
@@ -483,11 +499,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
                 b.getIntArray(KEY_EMERGENCY_OVER_IMS_SUPPORTED_3GPP_NETWORK_TYPES_INT_ARRAY);
         mImsRoamRatsConfig = b.getIntArray(
                 KEY_EMERGENCY_OVER_IMS_ROAMING_SUPPORTED_3GPP_NETWORK_TYPES_INT_ARRAY);
-        if (!SubscriptionManager.isValidSubscriptionId(getSubId())) {
-            // Default configuration includes only EUTRAN . In case of no SIM, add NGRAN.
-            mImsRatsConfig = new int[] { EUTRAN, NGRAN };
-            mImsRoamRatsConfig = new int[] { EUTRAN, NGRAN };
-        }
+        maybeModifyImsRats();
 
         mCsRatsConfig =
                 b.getIntArray(KEY_EMERGENCY_OVER_CS_SUPPORTED_ACCESS_NETWORK_TYPES_INT_ARRAY);
@@ -557,21 +569,60 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         }
     }
 
+    /** Adds NGRAN if SIM is absent or locked and the last valid subscription supported NGRAN. */
+    private void maybeModifyImsRats() {
+        if (mCarrierConfigHelper.isVoNrEmergencySupported(getSlotId())
+                && !isSimReady() && mImsRatsConfig.length < 2) {
+            // Default configuration includes only EUTRAN.
+            mImsRatsConfig = new int[] { EUTRAN, NGRAN };
+            mImsRoamRatsConfig = new int[] { EUTRAN, NGRAN };
+        }
+    }
+
+    /**
+     * Caches the resource configuration.
+     */
+    private void readResourceConfiguration() {
+        if (sSimReadyAllowList != null) return;
+        try {
+            sSimReadyAllowList = Arrays.asList(mContext.getResources().getStringArray(
+                    R.array.config_countries_require_sim_for_emergency));
+        } catch (Resources.NotFoundException nfe) {
+            loge("readResourceConfiguration exception=" + nfe);
+        } catch (NullPointerException npe) {
+            loge("readResourceConfiguration exception=" + npe);
+        } finally {
+            if (sSimReadyAllowList == null) {
+                sSimReadyAllowList = new ArrayList<String>();
+            }
+        }
+        logi("readResourceConfiguration simReadyCountries=" + sSimReadyAllowList);
+    }
+
+    /** For test purpose only */
+    @VisibleForTesting
+    public void clearResourceConfiguration() {
+        sSimReadyAllowList = null;
+    }
+
     private void selectDomain() {
         // State updated right after creation.
         if (!mDomainSelectionRequested) return;
-
-        // Emergency network scan requested has not been completed.
-        if (mIsScanRequested) return;
-
-        // Domain selection completed, {@link #reselectDomain()} will restart domain selection.
-        if (mDomainSelected) return;
 
         if (!mBarringInfoReceived || !mImsRegStateReceived || !mMmTelCapabilitiesReceived) {
             logi("selectDomain not received"
                     + " BarringInfo, IMS registration state, or MMTEL capabilities");
             return;
         }
+
+        // The statements below should be executed only once to select domain from initial state.
+        // Next domain selection shall be triggered by reselectDomain().
+        // However, selectDomain() can be called by change of IMS service state and Barring status
+        // at any time. mIsScanRequested and mDomainSelected are not enough since there are cases
+        // when neither mIsScanRequested nor mDomainSelected is set though selectDomain() has been
+        // executed already.
+        // Reset mDomainSelectionRequested to avoid redundant execution of selectDomain().
+        mDomainSelectionRequested = false;
 
         if (!allowEmergencyCalls(mSelectionAttributes.getEmergencyRegResult())) {
             // Detected the country and found that emergency calls are not allowed with this slot.
@@ -694,8 +745,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         mCancelSignal = new CancellationSignal();
         // In case dialing over Wi-Fi has failed, do not the change the domain preference.
         if (!wifiFailed) {
-            mLastPreferredNetworks = getNextPreferredNetworks(csPreferred, mTryEpsFallback,
-                    !startVoWifiTimer);
+            mLastPreferredNetworks = getNextPreferredNetworks(csPreferred, mTryEpsFallback);
         }
         mTryEpsFallback = false;
 
@@ -733,13 +783,11 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
      *
      * @param csPreferred Indicates whether CS preferred scan is requested.
      * @param tryEpsFallback Indicates whether scan requested for EPS fallback.
-     * @param lastScanFailed Indicates whether this a scan request due to the failure of last scan
-     *        request.
      * @return The list of preferred network types.
      */
     @VisibleForTesting
     public @RadioAccessNetworkType List<Integer> getNextPreferredNetworks(boolean csPreferred,
-            boolean tryEpsFallback, boolean lastScanFailed) {
+            boolean tryEpsFallback) {
         if (mRequiresVoLteEnabled && !isAdvancedCallingSettingEnabled()) {
             // Emergency call over IMS is not supported.
             logi("getNextPreferredNetworks VoLte setting is not enabled.");
@@ -809,21 +857,9 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
             }
         }
 
-        // There can be cases that dialing IMS call failed but the modem doesn't know this
-        // situation with some vendor solutions. For example, dialing failure due to the
-        // emergency registration failure.
-        // Remove the current RAT from the scan list to avoid modem select current PLMN.
-        // If the scan fails, the next scan will include this RAT again.
-        //
-        // TODO (b/278183420) Replace this with a better solution by adding indication
-        // of call setup failure to the scan request.
-        ImsReasonInfo reasonInfo = mSelectionAttributes.getPsDisconnectCause();
-        if (!lastScanFailed && reasonInfo != null
-                && reasonInfo.getCode() == ImsReasonInfo.CODE_LOCAL_NOT_REGISTERED) {
-            logi("getNextPreferredNetworks remove " + mLastNetworkType);
-            if (preferredNetworks.size() > 1) {
-                preferredNetworks.remove(Integer.valueOf(mLastNetworkType));
-            }
+        // Adds NGRAN at the end of the list if SIM is absent or locked and NGRAN is not included.
+        if (!isSimReady() && !preferredNetworks.contains(NGRAN)) {
+            preferredNetworks.add(NGRAN);
         }
 
         return preferredNetworks;
@@ -1035,13 +1071,13 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
      * @return {@code true} if emergency call over Wi-Fi allowed.
      */
     private boolean isEmcOverWifiSupported() {
-        if (SubscriptionManager.isValidSubscriptionId(getSubId())) {
+        if (isSimReady()) {
             List<Integer> domains = getDomainPreference();
             boolean ret = domains.contains(DOMAIN_PS_NON_3GPP);
             logi("isEmcOverWifiSupported " + ret);
             return ret;
         } else {
-            logi("isEmcOverWifiSupported invalid subId");
+            logi("isEmcOverWifiSupported invalid subId or lock state");
         }
         return false;
     }
@@ -1332,7 +1368,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         }
 
         String iso = regResult.getIso();
-        if (sAllowOnlyWithSimReady.contains(iso)) {
+        if (sSimReadyAllowList.contains(iso)) {
             TelephonyManager tm = mContext.getSystemService(TelephonyManager.class);
             int simState = tm.getSimState(getSlotId());
             if (simState != TelephonyManager.SIM_STATE_READY) {

@@ -38,6 +38,7 @@ android_test {
     instrumentation_for: "TeleService",
 
     static_libs: [
+        "frameworks-base-testutils",
         "androidx.test.core",
         "androidx.test.espresso.core",
         "androidx.test.ext.junit",
@@ -48,6 +49,11 @@ android_test {
         "truth",
         "testables",
         "platform-compat-test-rules",
+        "flag-junit",
+        "satellite-s2storage-rw",
+        "satellite-s2storage-testutils",
+        "s2-geometry-library-java",
+        "telephony-satellite",
     ],
 
     test_suites: [

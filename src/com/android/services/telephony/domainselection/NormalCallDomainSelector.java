@@ -28,12 +28,11 @@ import android.telephony.CarrierConfigManager;
 import android.telephony.DisconnectCause;
 import android.telephony.DomainSelectionService.SelectionAttributes;
 import android.telephony.NetworkRegistrationInfo;
+import android.telephony.PhoneNumberUtils;
 import android.telephony.ServiceState;
 import android.telephony.SubscriptionManager;
 import android.telephony.TransportSelectorCallback;
 import android.telephony.ims.ImsReasonInfo;
-
-import com.android.internal.telephony.domainselection.NormalCallDomainSelectionConnection;
 
 /**
  * Implements domain selector for outgoing non-emergency calls.
@@ -117,6 +116,12 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
         mImsStateTracker.removeImsStateListener(this);
         mSelectionAttributes = null;
         mTransportSelectorCallback = null;
+    }
+
+    @Override
+    public void destroy() {
+        finishSelection();
+        super.destroy();
     }
 
     /**
@@ -233,7 +238,8 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
 
         PersistableBundle config = null;
         if (configManager != null) {
-            config = configManager.getConfigForSubId(mSelectionAttributes.getSubId());
+            config = configManager.getConfigForSubId(mSelectionAttributes.getSubId(),
+                    new String[] {CarrierConfigManager.KEY_SUPPORT_WPS_OVER_IMS_BOOL});
         }
 
         return (config != null)
@@ -260,7 +266,8 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
 
         PersistableBundle config = null;
         if (configManager != null) {
-            config = configManager.getConfigForSubId(mSelectionAttributes.getSubId());
+            config = configManager.getConfigForSubId(mSelectionAttributes.getSubId(),
+                    new String[] {CarrierConfigManager.KEY_CARRIER_VOLTE_TTY_SUPPORTED_BOOL});
         }
 
         return (config != null)
@@ -292,9 +299,9 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
         // IMS -> CS
         ImsReasonInfo imsReasonInfo = mSelectionAttributes.getPsDisconnectCause();
         if (mReselectDomain && imsReasonInfo != null) {
-            logd("PsDisconnectCause:" + imsReasonInfo.mCode);
+            logd("PsDisconnectCause:" + imsReasonInfo.getCode());
             mReselectDomain = false;
-            if (imsReasonInfo.mCode == ImsReasonInfo.CODE_LOCAL_CALL_CS_RETRY_REQUIRED) {
+            if (imsReasonInfo.getCode() == ImsReasonInfo.CODE_LOCAL_CALL_CS_RETRY_REQUIRED) {
                 if (isOutOfService()) {
                     loge("Cannot place call in current ServiceState: " + mServiceState.getState());
                     notifySelectionTerminated(DisconnectCause.OUT_OF_SERVICE);
@@ -375,9 +382,7 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
         // Handle voice call.
         if (mImsStateTracker.isImsVoiceCapable()) {
             logd("IMS is voice capable");
-            // TODO(b/266175810) Remove this dependency.
-            if (NormalCallDomainSelectionConnection
-                    .isWpsCall(mSelectionAttributes.getNumber())) {
+            if (PhoneNumberUtils.isWpsCallNumber(mSelectionAttributes.getNumber())) {
                 handleWpsCall();
             } else {
                 notifyPsSelected();
