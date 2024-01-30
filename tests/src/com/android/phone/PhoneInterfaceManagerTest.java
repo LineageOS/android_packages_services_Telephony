@@ -294,59 +294,59 @@ public class PhoneInterfaceManagerTest extends TelephonyTestBase {
     }
 
     @Test
-    public void setEnableNullCipherNotifications_allReqsMet_successfullyEnabled() {
+    public void setNullCipherNotificationsEnabled_allReqsMet_successfullyEnabled() {
         setModemSupportsNullCipherNotification(true);
         doNothing().when(mPhoneInterfaceManager).enforceModifyPermission();
         doReturn(202).when(mPhoneInterfaceManager).getHalVersion(anyInt());
         assertFalse(mSharedPreferences.contains(Phone.PREF_NULL_CIPHER_NOTIFICATIONS_ENABLED));
 
-        mPhoneInterfaceManager.setEnableNullCipherNotifications(true);
+        mPhoneInterfaceManager.setNullCipherNotificationsEnabled(true);
 
         assertTrue(
                 mSharedPreferences.getBoolean(Phone.PREF_NULL_CIPHER_NOTIFICATIONS_ENABLED, false));
     }
 
     @Test
-    public void setEnableNullCipherNotifications_allReqsMet_successfullyDisabled() {
+    public void setNullCipherNotificationsEnabled_allReqsMet_successfullyDisabled() {
         setModemSupportsNullCipherNotification(true);
         doNothing().when(mPhoneInterfaceManager).enforceModifyPermission();
         doReturn(202).when(mPhoneInterfaceManager).getHalVersion(anyInt());
         assertFalse(mSharedPreferences.contains(Phone.PREF_NULL_CIPHER_NOTIFICATIONS_ENABLED));
 
-        mPhoneInterfaceManager.setEnableNullCipherNotifications(false);
+        mPhoneInterfaceManager.setNullCipherNotificationsEnabled(false);
 
         assertFalse(
                 mSharedPreferences.getBoolean(Phone.PREF_NULL_CIPHER_NOTIFICATIONS_ENABLED, true));
     }
 
     @Test
-    public void setEnableNullCipherNotifications_lackingNecessaryHal_throwsException() {
+    public void setNullCipherNotificationsEnabled_lackingNecessaryHal_throwsException() {
         setModemSupportsNullCipherNotification(true);
         doNothing().when(mPhoneInterfaceManager).enforceModifyPermission();
         doReturn(102).when(mPhoneInterfaceManager).getHalVersion(anyInt());
 
         assertThrows(UnsupportedOperationException.class,
-                () -> mPhoneInterfaceManager.setEnableNullCipherNotifications(true));
+                () -> mPhoneInterfaceManager.setNullCipherNotificationsEnabled(true));
     }
 
     @Test
-    public void setEnableNullCipherNotifications_lackingModemSupport_throwsException() {
+    public void setNullCipherNotificationsEnabled_lackingModemSupport_throwsException() {
         setModemSupportsNullCipherNotification(false);
         doNothing().when(mPhoneInterfaceManager).enforceModifyPermission();
         doReturn(202).when(mPhoneInterfaceManager).getHalVersion(anyInt());
 
         assertThrows(UnsupportedOperationException.class,
-                () -> mPhoneInterfaceManager.setEnableNullCipherNotifications(true));
+                () -> mPhoneInterfaceManager.setNullCipherNotificationsEnabled(true));
     }
 
     @Test
-    public void setEnableNullCipherNotifications_lackingPermissions_throwsException() {
+    public void setNullCipherNotificationsEnabled_lackingPermissions_throwsException() {
         setModemSupportsNullCipherNotification(true);
         doReturn(202).when(mPhoneInterfaceManager).getHalVersion(anyInt());
         doThrow(SecurityException.class).when(mPhoneInterfaceManager).enforceModifyPermission();
 
         assertThrows(SecurityException.class, () ->
-                mPhoneInterfaceManager.setEnableNullCipherNotifications(true));
+                mPhoneInterfaceManager.setNullCipherNotificationsEnabled(true));
     }
 
     @Test
