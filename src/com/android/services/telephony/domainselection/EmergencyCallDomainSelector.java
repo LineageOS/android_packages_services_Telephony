@@ -742,7 +742,8 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         mTryEpsFallback = false;
 
         if (isInRoaming()
-                && (mPreferredNetworkScanType == DomainSelectionService.SCAN_TYPE_FULL_SERVICE)) {
+                && (mPreferredNetworkScanType
+                        == CarrierConfigManager.ImsEmergency.SCAN_TYPE_FULL_SERVICE)) {
             // FULL_SERVICE only preference is available only when not in roaming.
             mScanType = DomainSelectionService.SCAN_TYPE_NO_PREFERENCE;
         }
