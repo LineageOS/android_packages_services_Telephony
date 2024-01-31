@@ -13837,7 +13837,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * @hide
      */
     @RequiresPermission(Manifest.permission.MODIFY_PHONE_STATE)
-    public void setEnableNullCipherNotifications(boolean enable) {
+    public void setNullCipherNotificationsEnabled(boolean enable) {
         enforceModifyPermission();
         checkForNullCipherNotificationSupport();
 

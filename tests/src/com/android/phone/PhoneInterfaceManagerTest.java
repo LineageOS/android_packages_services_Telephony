@@ -294,59 +294,59 @@ public class PhoneInterfaceManagerTest extends TelephonyTestBase {
     }
 
     @Test
-    public void setEnableNullCipherNotifications_allReqsMet_successfullyEnabled() {
+    public void setNullCipherNotificationsEnabled_allReqsMet_successfullyEnabled() {
         setModemSupportsNullCipherNotification(true);
         doNothing().when(mPhoneInterfaceManager).enforceModifyPermission();
         doReturn(202).when(mPhoneInterfaceManager).getHalVersion(anyInt());
         assertFalse(mSharedPreferences.contains(Phone.PREF_NULL_CIPHER_NOTIFICATIONS_ENABLED));
 
-        mPhoneInterfaceManager.setEnableNullCipherNotifications(true);
+        mPhoneInterfaceManager.setNullCipherNotificationsEnabled(true);
 
         assertTrue(
                 mSharedPreferences.getBoolean(Phone.PREF_NULL_CIPHER_NOTIFICATIONS_ENABLED, false));
     }
 
     @Test
-    public void setEnableNullCipherNotifications_allReqsMet_successfullyDisabled() {
+    public void setNullCipherNotificationsEnabled_allReqsMet_successfullyDisabled() {
         setModemSupportsNullCipherNotification(true);
         doNothing().when(mPhoneInterfaceManager).enforceModifyPermission();
         doReturn(202).when(mPhoneInterfaceManager).getHalVersion(anyInt());
         assertFalse(mSharedPreferences.contains(Phone.PREF_NULL_CIPHER_NOTIFICATIONS_ENABLED));
 
-        mPhoneInterfaceManager.setEnableNullCipherNotifications(false);
+        mPhoneInterfaceManager.setNullCipherNotificationsEnabled(false);
 
         assertFalse(
                 mSharedPreferences.getBoolean(Phone.PREF_NULL_CIPHER_NOTIFICATIONS_ENABLED, true));
     }
 
     @Test
-    public void setEnableNullCipherNotifications_lackingNecessaryHal_throwsException() {
+    public void setNullCipherNotificationsEnabled_lackingNecessaryHal_throwsException() {
         setModemSupportsNullCipherNotification(true);
         doNothing().when(mPhoneInterfaceManager).enforceModifyPermission();
         doReturn(102).when(mPhoneInterfaceManager).getHalVersion(anyInt());
 
         assertThrows(UnsupportedOperationException.class,
-                () -> mPhoneInterfaceManager.setEnableNullCipherNotifications(true));
+                () -> mPhoneInterfaceManager.setNullCipherNotificationsEnabled(true));
     }
 
     @Test
-    public void setEnableNullCipherNotifications_lackingModemSupport_throwsException() {
+    public void setNullCipherNotificationsEnabled_lackingModemSupport_throwsException() {
         setModemSupportsNullCipherNotification(false);
         doNothing().when(mPhoneInterfaceManager).enforceModifyPermission();
         doReturn(202).when(mPhoneInterfaceManager).getHalVersion(anyInt());
 
         assertThrows(UnsupportedOperationException.class,
-                () -> mPhoneInterfaceManager.setEnableNullCipherNotifications(true));
+                () -> mPhoneInterfaceManager.setNullCipherNotificationsEnabled(true));
     }
 
     @Test
-    public void setEnableNullCipherNotifications_lackingPermissions_throwsException() {
+    public void setNullCipherNotificationsEnabled_lackingPermissions_throwsException() {
         setModemSupportsNullCipherNotification(true);
         doReturn(202).when(mPhoneInterfaceManager).getHalVersion(anyInt());
         doThrow(SecurityException.class).when(mPhoneInterfaceManager).enforceModifyPermission();
 
         assertThrows(SecurityException.class, () ->
-                mPhoneInterfaceManager.setEnableNullCipherNotifications(true));
+                mPhoneInterfaceManager.setNullCipherNotificationsEnabled(true));
     }
 
     @Test
@@ -488,14 +488,11 @@ public class PhoneInterfaceManagerTest extends TelephonyTestBase {
 
     @Test
     @EnableCompatChanges({TelephonyManager.ENABLE_FEATURE_MAPPING})
-    public void testTelephonyFeatureAndCompatChanges() {
-        doNothing().when(mPhoneInterfaceManager).enforceModifyPermission();
-        mPhoneInterfaceManager.setFeatureFlags(mFeatureFlags);
+    public void testWithTelephonyFeatureAndCompatChanges() throws Exception {
         doReturn(true).when(mFeatureFlags).enforceTelephonyFeatureMappingForPublicApis();
-        mPhoneInterfaceManager.setPackageManager(mPackageManager);
-        doReturn(true).when(mPackageManager).hasSystemFeature(anyString());
+        mPhoneInterfaceManager.setFeatureFlags(mFeatureFlags);
+        doNothing().when(mPhoneInterfaceManager).enforceModifyPermission();
 
-        // Enabled FeatureFlags and ENABLE_FEATURE_MAPPING, telephony features are defined
         try {
             // FEATURE_TELEPHONY_CALLING
             mPhoneInterfaceManager.handlePinMmiForSubscriber(1, "123456789");
@@ -505,9 +502,21 @@ public class PhoneInterfaceManagerTest extends TelephonyTestBase {
         } catch (Exception e) {
             fail("Not expect exception " + e.getMessage());
         }
+    }
 
+    @Test
+    @EnableCompatChanges({TelephonyManager.ENABLE_FEATURE_MAPPING})
+    public void testWithoutTelephonyFeatureAndCompatChanges() throws Exception {
         // telephony features is not defined, expect UnsupportedOperationException.
-        doReturn(false).when(mPackageManager).hasSystemFeature(anyString());
+        doReturn(false).when(mPackageManager).hasSystemFeature(
+                PackageManager.FEATURE_TELEPHONY_CALLING);
+        doReturn(false).when(mPackageManager).hasSystemFeature(
+                PackageManager.FEATURE_TELEPHONY_RADIO_ACCESS);
+        mPhoneInterfaceManager.setPackageManager(mPackageManager);
+        doReturn(true).when(mFeatureFlags).enforceTelephonyFeatureMappingForPublicApis();
+        mPhoneInterfaceManager.setFeatureFlags(mFeatureFlags);
+        doNothing().when(mPhoneInterfaceManager).enforceModifyPermission();
+
         assertThrows(UnsupportedOperationException.class,
                 () -> mPhoneInterfaceManager.handlePinMmiForSubscriber(1, "123456789"));
         assertThrows(UnsupportedOperationException.class,
