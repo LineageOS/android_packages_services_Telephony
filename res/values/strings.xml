@@ -1206,8 +1206,13 @@
     <string name="incall_error_emergency_only">Not registered on network.</string>
     <!-- In-call screen: call failure message displayed in an error dialog -->
     <string name="incall_error_out_of_service">Mobile network not available.</string>
+    <!-- In-call screen: call failure message displayed in an error dialog if 2G is disabled -->
+    <string name="incall_error_out_of_service_2g">Mobile network not available.\n\nConnect to a wireless network to make a call.\n\n2G is disabled on this device, which may be impacting your connectivity. Go to Settings and enable "Allow 2G" to continue.</string>
     <!-- In-call screen: call failure message displayed in an error dialog -->
     <string name="incall_error_out_of_service_wfc">Mobile network is not available. Connect to a wireless network to make a call.</string>
+    <!-- In-call screen: call failure message displayed in an error dialog if the user disabled 2G -->
+    <string name="incall_error_out_of_service_wfc_2g_user">Mobile network is not available.\n\nConnect to a wireless network to make a call.\n\n2G is disabled on this device, which may be impacting your connectivity. Go to Settings and enable "Allow 2G" to continue.</string>
+
     <!-- In-call screen: call failure message displayed in an error dialog -->
     <string name="incall_error_no_phone_number_supplied">To place a call, enter a valid number.</string>
     <!-- In-call screen: call failure message displayed in an error dialog -->
