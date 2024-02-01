@@ -74,16 +74,16 @@ public class DiagnosticDataCollector {
     }
 
     public void persistEmergencyDianosticData(@NonNull DataCollectorConfig.Adapter dc,
-            @NonNull TelephonyManager.EmergencyCallDiagnosticParams edp, @NonNull String tag) {
+            @NonNull TelephonyManager.EmergencyCallDiagnosticData ecdData, @NonNull String tag) {
 
-        if (edp.isTelephonyDumpSysCollectionEnabled()) {
+        if (ecdData.isTelephonyDumpsysCollectionEnabled()) {
             persistTelephonyState(dc, tag);
         }
-        if (edp.isTelecomDumpSysCollectionEnabled()) {
+        if (ecdData.isTelecomDumpsysCollectionEnabled()) {
             persistTelecomState(dc, tag);
         }
-        if (edp.isLogcatCollectionEnabled()) {
-            persistLogcat(dc, tag, edp.getLogcatCollectionStartTimeMillis());
+        if (ecdData.isLogcatCollectionEnabled()) {
+            persistLogcat(dc, tag, ecdData.getLogcatCollectionStartTimeMillis());
         }
     }
 
