@@ -172,6 +172,9 @@
     <!-- Needed to bind the domain selection service. -->
     <uses-permission android:name="android.permission.BIND_DOMAIN_SELECTION_SERVICE" />
 
+    <!-- Needed to send safety center updates for cellular transparency features   -->
+    <uses-permission android:name="android.permission.SEND_SAFETY_CENTER_UPDATE"/>
+
     <application android:name="PhoneApp"
             android:persistent="true"
             android:label="@string/phoneAppLabel"
@@ -574,6 +577,14 @@
         <receiver
             android:name="com.android.internal.telephony.uicc.ShowInstallAppNotificationReceiver"
             android:exported="false"/>
+
+        <receiver
+            android:name=".security.SafetySourceReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.safetycenter.action.REFRESH_SAFETY_SOURCES"/>
+            </intent-filter>
+        </receiver>
 
         <activity
             android:name="com.android.phone.settings.PickSmsSubscriptionActivity"
