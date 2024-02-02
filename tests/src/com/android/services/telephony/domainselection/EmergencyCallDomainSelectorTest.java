@@ -117,6 +117,7 @@ import com.android.TestContext;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -2319,6 +2320,7 @@ public class EmergencyCallDomainSelectorTest {
         verifyScanPsPreferred();
     }
 
+    @Ignore("Deprecated.")
     @Test
     public void testTestEmergencyNumberOverCs() throws Exception {
         EmergencyNumber num = new EmergencyNumber(TEST_EMERGENCY_NUMBER, "us", "",
@@ -2347,6 +2349,7 @@ public class EmergencyCallDomainSelectorTest {
         verifyCsDialed();
     }
 
+    @Ignore("Deprecated.")
     @Test
     public void testTestEmergencyNumberOverPs() throws Exception {
         EmergencyNumber num = new EmergencyNumber(TEST_EMERGENCY_NUMBER, "us", "",
@@ -2375,6 +2378,7 @@ public class EmergencyCallDomainSelectorTest {
         verifyPsDialed();
     }
 
+    @Ignore("Deprecated.")
     @Test
     public void testTestEmergencyNumberOverWifi() throws Exception {
         EmergencyNumber num = new EmergencyNumber(TEST_EMERGENCY_NUMBER, "us", "",
