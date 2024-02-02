@@ -39,6 +39,7 @@ import android.telephony.BarringInfo;
 import android.telephony.CarrierConfigManager;
 import android.telephony.DataSpecificRegistrationInfo;
 import android.telephony.DomainSelectionService.SelectionAttributes;
+import android.telephony.EmergencyRegResult;
 import android.telephony.NetworkRegistrationInfo;
 import android.telephony.ServiceState;
 import android.telephony.TelephonyManager;
@@ -92,6 +93,7 @@ public class EmergencySmsDomainSelectorTest {
     private ImsStateTracker.BarringInfoListener mBarringInfoListener;
     private ImsStateTracker.ServiceStateListener mServiceStateListener;
     private EmergencySmsDomainSelector mDomainSelector;
+    private EmergencyRegResult mEmergencyRegResult;
 
     @Before
     public void setUp() throws Exception {
@@ -151,6 +153,7 @@ public class EmergencySmsDomainSelectorTest {
             mLooper = null;
         }
 
+        mEmergencyRegResult = null;
         mDomainSelector = null;
         mNetworkRegistrationInfo = null;
         mVopsSupportInfo = null;
@@ -246,6 +249,26 @@ public class EmergencySmsDomainSelectorTest {
 
     @Test
     @SmallTest
+    public void testIsSmsOverImsAvailableWhenImsRegisteredAndConfigEnabledAndNrAvailable() {
+        setUpImsStateTracker(AccessNetworkType.NGRAN);
+        setUpCarrierConfig(true);
+        setUpNrInService(false, false, true, false);
+
+        assertTrue(mDomainSelector.isSmsOverImsAvailable());
+    }
+
+    @Test
+    @SmallTest
+    public void testIsSmsOverImsAvailableWhenImsRegisteredAndConfigEnabledAndNrNotAvailable() {
+        setUpImsStateTracker(AccessNetworkType.NGRAN);
+        setUpCarrierConfig(true);
+        setUpNrInService(false, false, false, false);
+
+        assertFalse(mDomainSelector.isSmsOverImsAvailable());
+    }
+
+    @Test
+    @SmallTest
     public void testIsSmsOverImsAvailableWhenCarrierConfigManagerIsNull() {
         setUpImsStateTracker(AccessNetworkType.UNKNOWN);
         mCarrierConfigManagerNullTest = true;
@@ -291,7 +314,7 @@ public class EmergencySmsDomainSelectorTest {
 
     @Test
     @SmallTest
-    public void testIsSmsOverImsAvailableWhenNoLte() {
+    public void testIsSmsOverImsAvailableWhenNoLteOrNr() {
         setUpImsStateTracker(AccessNetworkType.UNKNOWN);
         setUpCarrierConfig(true);
         mNetworkRegistrationInfo = new NetworkRegistrationInfo.Builder()
@@ -389,6 +412,56 @@ public class EmergencySmsDomainSelectorTest {
         setUpImsStateTracker(AccessNetworkType.UNKNOWN);
         setUpCarrierConfig(true);
         setUpLimitedLteService(false, false, true, false, false);
+
+        assertTrue(mDomainSelector.isSmsOverImsAvailable());
+    }
+
+    @Test
+    @SmallTest
+    public void testIsSmsOverImsAvailableWhenNrNotRegisteredOrEmergencyNotEnabled() {
+        setUpImsStateTracker(AccessNetworkType.UNKNOWN);
+        setUpCarrierConfig(true);
+        setUpNrInService(false, false, false, false);
+
+        assertFalse(mDomainSelector.isSmsOverImsAvailable());
+    }
+
+    @Test
+    @SmallTest
+    public void testIsSmsOverImsAvailableWhenNrInServiceAndNoDataSpecificRegistrationInfo() {
+        setUpImsStateTracker(AccessNetworkType.UNKNOWN);
+        setUpCarrierConfig(true);
+        setUpNrInService(true, true, false, false);
+
+        assertFalse(mDomainSelector.isSmsOverImsAvailable());
+    }
+
+    @Test
+    @SmallTest
+    public void testIsSmsOverImsAvailableWhenNrInServiceAndNoVopsSupportInfo() {
+        setUpImsStateTracker(AccessNetworkType.UNKNOWN);
+        setUpCarrierConfig(true);
+        setUpNrInService(false, true, false, false);
+
+        assertFalse(mDomainSelector.isSmsOverImsAvailable());
+    }
+
+    @Test
+    @SmallTest
+    public void testIsSmsOverImsAvailableWhenNrInServiceAndEmergencyServiceSupported() {
+        setUpImsStateTracker(AccessNetworkType.UNKNOWN);
+        setUpCarrierConfig(true);
+        setUpNrInService(false, false, true, false);
+
+        assertTrue(mDomainSelector.isSmsOverImsAvailable());
+    }
+
+    @Test
+    @SmallTest
+    public void testIsSmsOverImsAvailableWhenNrInServiceAndEmergencyServiceFallbackSupported() {
+        setUpImsStateTracker(AccessNetworkType.UNKNOWN);
+        setUpCarrierConfig(true);
+        setUpNrInService(false, false, false, true);
 
         assertTrue(mDomainSelector.isSmsOverImsAvailable());
     }
@@ -675,6 +748,115 @@ public class EmergencySmsDomainSelectorTest {
                 eq(true));
     }
 
+    @Test
+    @SmallTest
+    public void testSelectDomainWhileEmergencyNetworkScanInProgress() {
+        setUpImsStateTracker(AccessNetworkType.NGRAN);
+        setUpEmergencyRegResult(AccessNetworkType.NGRAN, NetworkRegistrationInfo.DOMAIN_PS, 1, 0);
+        setUpWwanSelectorCallback();
+        setUpCarrierConfig(true);
+        setUpNrInService(false, false, false, true);
+        setUpImsStateListener(true, true, true);
+
+        mDomainSelector.selectDomain(mSelectionAttributes, mTransportSelectorCallback);
+        // Call the domain selection before completing the emergency network scan.
+        mDomainSelector.selectDomain(mSelectionAttributes, mTransportSelectorCallback);
+        processAllMessages();
+
+        // onRequestEmergencyNetworkScan is invoked only once.
+        verify(mWwanSelectorCallback).onRequestEmergencyNetworkScan(any(), anyInt(), any(), any());
+    }
+
+    @Test
+    @SmallTest
+    public void testSelectDomainWhenNrEmergencyServiceSupported() {
+        setUpImsStateTracker(AccessNetworkType.NGRAN);
+        setUpEmergencyRegResult(AccessNetworkType.NGRAN, NetworkRegistrationInfo.DOMAIN_PS, 1, 0);
+        setUpWwanSelectorCallback();
+        setUpCarrierConfig(true);
+        setUpNrInService(false, false, true, false);
+        setUpImsStateListener(true, true, true);
+
+        mDomainSelector.selectDomain(mSelectionAttributes, mTransportSelectorCallback);
+        processAllMessages();
+
+        // Expected: PS network
+        verify(mWwanSelectorCallback).onDomainSelected(eq(NetworkRegistrationInfo.DOMAIN_PS),
+                eq(true));
+    }
+
+    @Test
+    @SmallTest
+    public void testSelectDomainWhenEmergencyRegistrationResultNgranAndPsDomain() {
+        setUpImsStateTracker(AccessNetworkType.NGRAN);
+        setUpEmergencyRegResult(AccessNetworkType.NGRAN, NetworkRegistrationInfo.DOMAIN_PS, 1, 0);
+        setUpWwanSelectorCallback();
+        setUpCarrierConfig(true);
+        setUpNrInService(false, false, false, true);
+        setUpImsStateListener(true, true, true);
+
+        mDomainSelector.selectDomain(mSelectionAttributes, mTransportSelectorCallback);
+        processAllMessages();
+
+        // Expected: PS network
+        verify(mWwanSelectorCallback).onDomainSelected(eq(NetworkRegistrationInfo.DOMAIN_PS),
+                eq(true));
+    }
+
+    @Test
+    @SmallTest
+    public void testSelectDomainWhenEmergencyRegistrationResultEutranAndPsDomain() {
+        setUpImsStateTracker(AccessNetworkType.NGRAN);
+        setUpEmergencyRegResult(AccessNetworkType.EUTRAN, NetworkRegistrationInfo.DOMAIN_PS, 0, 0);
+        setUpWwanSelectorCallback();
+        setUpCarrierConfig(true);
+        setUpNrInService(false, false, false, true);
+        setUpImsStateListener(true, true, true);
+
+        mDomainSelector.selectDomain(mSelectionAttributes, mTransportSelectorCallback);
+        processAllMessages();
+
+        // Expected: PS network
+        verify(mWwanSelectorCallback).onDomainSelected(eq(NetworkRegistrationInfo.DOMAIN_PS),
+                eq(true));
+    }
+
+    @Test
+    @SmallTest
+    public void testSelectDomainWhenEmergencyRegistrationResultEutranAndCsDomain() {
+        setUpImsStateTracker(AccessNetworkType.NGRAN);
+        setUpEmergencyRegResult(AccessNetworkType.EUTRAN, NetworkRegistrationInfo.DOMAIN_CS, 0, 0);
+        setUpWwanSelectorCallback();
+        setUpCarrierConfig(true);
+        setUpNrInService(false, false, false, true);
+        setUpImsStateListener(true, true, true);
+
+        mDomainSelector.selectDomain(mSelectionAttributes, mTransportSelectorCallback);
+        processAllMessages();
+
+        // Expected: CS network
+        verify(mWwanSelectorCallback).onDomainSelected(eq(NetworkRegistrationInfo.DOMAIN_CS),
+                eq(false));
+    }
+
+    @Test
+    @SmallTest
+    public void testSelectDomainWhenEmergencyRegistrationResultUtranAndCsDomain() {
+        setUpImsStateTracker(AccessNetworkType.NGRAN);
+        setUpEmergencyRegResult(AccessNetworkType.UTRAN, NetworkRegistrationInfo.DOMAIN_CS, 0, 0);
+        setUpWwanSelectorCallback();
+        setUpCarrierConfig(true);
+        setUpNrInService(false, false, false, true);
+        setUpImsStateListener(true, true, true);
+
+        mDomainSelector.selectDomain(mSelectionAttributes, mTransportSelectorCallback);
+        processAllMessages();
+
+        // Expected: CS network
+        verify(mWwanSelectorCallback).onDomainSelected(eq(NetworkRegistrationInfo.DOMAIN_CS),
+                eq(false));
+    }
+
     private void setUpCarrierConfig(boolean supported) {
         PersistableBundle b = new PersistableBundle();
         b.putBoolean(CarrierConfigManager.KEY_SUPPORT_EMERGENCY_SMS_OVER_IMS_BOOL, supported);
@@ -760,6 +942,29 @@ public class EmergencySmsDomainSelectorTest {
         mBarringInfoListener.onBarringInfoUpdated(barringInfo);
     }
 
+    private void setUpNrInService(boolean noDataSpecificRegistrationInfo,
+            boolean noVopsSupportInfo, boolean emergencyServiceSupported,
+            boolean emergencyServiceFallbackSupported) {
+        DataSpecificRegistrationInfo dsri = noDataSpecificRegistrationInfo
+                ? null : new DataSpecificRegistrationInfo(
+                        8, false, false, false, noVopsSupportInfo ? null : mVopsSupportInfo);
+
+        mNetworkRegistrationInfo = new NetworkRegistrationInfo.Builder()
+                .setAccessNetworkTechnology(TelephonyManager.NETWORK_TYPE_NR)
+                .setRegistrationState(NetworkRegistrationInfo.REGISTRATION_STATE_HOME)
+                .setDataSpecificInfo(dsri)
+                .build();
+        when(mServiceState.getNetworkRegistrationInfo(
+                anyInt(), eq(AccessNetworkConstants.TRANSPORT_TYPE_WWAN)))
+                .thenReturn(mNetworkRegistrationInfo);
+        when(mVopsSupportInfo.isEmergencyServiceSupported()).thenReturn(emergencyServiceSupported);
+        when(mVopsSupportInfo.isEmergencyServiceFallbackSupported())
+                .thenReturn(emergencyServiceFallbackSupported);
+
+        mServiceStateListener.onServiceStateUpdated(mServiceState);
+        mBarringInfoListener.onBarringInfoUpdated(null);
+    }
+
     private void setUpImsStateTracker(@RadioAccessNetworkType int accessNetworkType) {
         setUpImsStateTracker(accessNetworkType, true, true);
     }
@@ -783,6 +988,22 @@ public class EmergencySmsDomainSelectorTest {
             callback.accept(mWwanSelectorCallback);
             return null;
         }).when(mTransportSelectorCallback).onWwanSelected(any(Consumer.class));
+
+        doAnswer((invocation) -> {
+            Object[] args = invocation.getArguments();
+            final Consumer<EmergencyRegResult> result = (Consumer<EmergencyRegResult>) args[3];
+            result.accept(mEmergencyRegResult);
+            return null;
+        }).when(mWwanSelectorCallback).onRequestEmergencyNetworkScan(
+                any(), anyInt(), any(), any());
+    }
+
+    private void setUpEmergencyRegResult(
+            @AccessNetworkConstants.RadioAccessNetworkType int accessNetwork,
+            @NetworkRegistrationInfo.Domain int domain, int nrEs, int nrEsfb) {
+        mEmergencyRegResult = new EmergencyRegResult(accessNetwork,
+                NetworkRegistrationInfo.REGISTRATION_STATE_HOME,
+                domain, true, true, nrEs, nrEsfb, "001", "01", "");
     }
 
     private void setUpImsStateListener(boolean notifyMmTelFeatureAvailable,
