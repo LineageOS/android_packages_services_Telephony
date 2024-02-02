@@ -12876,26 +12876,26 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             long logcatStartTimestampMillis, boolean enableTelecomDump,
             boolean enableTelephonyDump) {
         DropBoxManager db = mApp.getSystemService(DropBoxManager.class);
-        TelephonyManager.EmergencyCallDiagnosticParams.Builder edpBuilder =
-                new TelephonyManager.EmergencyCallDiagnosticParams.Builder();
-        edpBuilder
-                .setTelecomDumpSysCollectionEnabled(enableTelecomDump)
-                .setTelephonyDumpSysCollectionEnabled(enableTelephonyDump);
+        TelephonyManager.EmergencyCallDiagnosticData.Builder ecdDataBuilder =
+                new TelephonyManager.EmergencyCallDiagnosticData.Builder();
+        ecdDataBuilder
+                .setTelecomDumpsysCollectionEnabled(enableTelecomDump)
+                .setTelephonyDumpsysCollectionEnabled(enableTelephonyDump);
         if (enableLogcat) {
-            edpBuilder.setLogcatCollectionStartTimeMillis(logcatStartTimestampMillis);
+            ecdDataBuilder.setLogcatCollectionStartTimeMillis(logcatStartTimestampMillis);
         }
-        TelephonyManager.EmergencyCallDiagnosticParams edp = edpBuilder.build();
-        Log.d(LOG_TAG, "persisting with Params " + edp.toString());
+        TelephonyManager.EmergencyCallDiagnosticData ecdData = ecdDataBuilder.build();
+        Log.d(LOG_TAG, "persisting with Params " + ecdData.toString());
         DiagnosticDataCollector ddc = new DiagnosticDataCollector(Runtime.getRuntime(),
                 Executors.newCachedThreadPool(), db,
                 mApp.getSystemService(ActivityManager.class).isLowRamDevice());
-        ddc.persistEmergencyDianosticData(new DataCollectorConfig.Adapter(), edp, dropboxTag);
+        ddc.persistEmergencyDianosticData(new DataCollectorConfig.Adapter(), ecdData, dropboxTag);
     }
 
     /**
      * Request telephony to persist state for debugging emergency call failures.
      *
-     * @param dropBoxTag                 Tag to use when persisting data to dropbox service.
+     * @param dropboxTag                 Tag to use when persisting data to dropbox service.
      * @param enableLogcat               whether to collect logcat output
      * @param logcatStartTimestampMillis timestamp from when logcat buffers would be persisted
      * @param enableTelecomDump          whether to collect telecom dumpsys
