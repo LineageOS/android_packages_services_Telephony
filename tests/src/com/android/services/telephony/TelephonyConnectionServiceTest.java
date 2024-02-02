@@ -3208,6 +3208,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
     public void testNormalCallSatelliteEnabled() {
         setupForCallTest();
         doReturn(true).when(mSatelliteController).isSatelliteEnabled();
+
         mConnection = mTestConnectionService.onCreateOutgoingConnection(PHONE_ACCOUNT_HANDLE_1,
                 createConnectionRequest(PHONE_ACCOUNT_HANDLE_1, "1234", TELECOM_CALL_ID1));
         DisconnectCause disconnectCause = mConnection.getDisconnectCause();
@@ -3260,6 +3261,30 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         ServiceState ss = new ServiceState();
         ss.addNetworkRegistrationInfo(nri);
         when(mPhone0.getServiceState()).thenReturn(ss);
+        mConnection = mTestConnectionService.onCreateOutgoingConnection(PHONE_ACCOUNT_HANDLE_1,
+                createConnectionRequest(PHONE_ACCOUNT_HANDLE_1, "1234", TELECOM_CALL_ID1));
+        DisconnectCause disconnectCause = mConnection.getDisconnectCause();
+        assertNotEquals(android.telephony.DisconnectCause.SATELLITE_ENABLED,
+                disconnectCause.getTelephonyDisconnectCause());
+    }
+
+    @Test
+    public void testNormalCallUsingNonTerrestrialNetwork_canMakeWifiCall() throws Exception {
+        mSetFlagsRule.enableFlags(Flags.FLAG_CARRIER_ENABLED_SATELLITE_FLAG);
+
+        setupForCallTest();
+        // Call is not supported while using satellite
+        NetworkRegistrationInfo nri = new NetworkRegistrationInfo.Builder()
+                .setIsNonTerrestrialNetwork(true)
+                .setAvailableServices(List.of(NetworkRegistrationInfo.SERVICE_TYPE_DATA))
+                .build();
+        ServiceState ss = new ServiceState();
+        ss.addNetworkRegistrationInfo(nri);
+        when(mPhone0.getServiceState()).thenReturn(ss);
+        // Wi-Fi call is possible
+        doReturn(true).when(mImsPhone).canMakeWifiCall();
+        when(mPhone0.getImsPhone()).thenReturn(mImsPhone);
+
         mConnection = mTestConnectionService.onCreateOutgoingConnection(PHONE_ACCOUNT_HANDLE_1,
                 createConnectionRequest(PHONE_ACCOUNT_HANDLE_1, "1234", TELECOM_CALL_ID1));
         DisconnectCause disconnectCause = mConnection.getDisconnectCause();

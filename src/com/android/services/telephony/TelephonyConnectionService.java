@@ -1108,6 +1108,7 @@ public class TelephonyConnectionService extends ConnectionService {
         final Phone phone = getPhoneForAccount(request.getAccountHandle(), isEmergencyNumber,
                 /* Note: when not an emergency, handle can be null for unknown callers */
                 handle == null ? null : handle.getSchemeSpecificPart());
+        ImsPhone imsPhone = phone != null ? (ImsPhone) phone.getImsPhone() : null;
 
         boolean isPhoneWifiCallingEnabled = phone != null && phone.isWifiCallingEnabled();
         boolean needToTurnOnRadio = (isEmergencyNumber && (!isRadioOn() || isAirplaneModeOn))
@@ -1215,8 +1216,9 @@ public class TelephonyConnectionService extends ConnectionService {
             }
 
             if (!isEmergencyNumber) {
-                if (mSatelliteController.isSatelliteEnabled()
-                        || isCallDisallowedDueToSatellite(phone)) {
+                if ((mSatelliteController.isSatelliteEnabled()
+                        || isCallDisallowedDueToSatellite(phone))
+                        && (imsPhone == null || !imsPhone.canMakeWifiCall())) {
                     Log.d(this, "onCreateOutgoingConnection, cannot make call in satellite mode.");
                     return Connection.createFailedConnection(
                             mDisconnectCauseFactory.toTelecomDisconnectCause(
