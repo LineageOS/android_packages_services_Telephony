@@ -2698,7 +2698,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
 
         DomainSelectionService.SelectionAttributes attr = attrCaptor.getValue();
 
-        assertEquals(mPhone1.getPhoneId(), attr.getSlotId());
+        assertEquals(mPhone1.getPhoneId(), attr.getSlotIndex());
     }
 
     @Test
@@ -2744,7 +2744,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
 
         DomainSelectionService.SelectionAttributes attr = attrCaptor.getValue();
 
-        assertEquals(mPhone1.getPhoneId(), attr.getSlotId());
+        assertEquals(mPhone1.getPhoneId(), attr.getSlotIndex());
     }
 
     @Test

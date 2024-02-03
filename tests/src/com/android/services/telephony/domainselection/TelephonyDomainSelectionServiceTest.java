@@ -86,8 +86,7 @@ public class TelephonyDomainSelectionServiceTest {
                         @NonNull EmergencyCallbackModeHelper ecbmHelper) {
                     switch (selectorType) {
                         case DomainSelectionService.SELECTOR_TYPE_CALLING: // fallthrough
-                        case DomainSelectionService.SELECTOR_TYPE_SMS: // fallthrough
-                        case DomainSelectionService.SELECTOR_TYPE_UT:
+                        case DomainSelectionService.SELECTOR_TYPE_SMS:
                             mDomainSelectorDestroyListener = listener;
                             if (subId == SUB_1) {
                                 return mDomainSelectorBase1;

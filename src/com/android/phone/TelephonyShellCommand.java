@@ -26,6 +26,7 @@ import static java.util.Map.entry;
 import android.Manifest;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
+import android.content.ComponentName;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Binder;
@@ -201,6 +202,10 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             "set-oem-enabled-satellite-provision-status";
     private static final String SET_SHOULD_SEND_DATAGRAM_TO_MODEM_IN_DEMO_MODE =
             "set-should-send-datagram-to-modem-in-demo-mode";
+
+    private static final String DOMAIN_SELECTION_SUBCOMMAND = "domainselection";
+    private static final String DOMAIN_SELECTION_SET_SERVICE_OVERRIDE = "set-dss-override";
+    private static final String DOMAIN_SELECTION_CLEAR_SERVICE_OVERRIDE = "clear-dss-override";
 
     private static final String INVALID_ENTRY_ERROR = "An emergency number (only allow '0'-'9', "
             + "'*', '#' or '+') needs to be specified after -a in the command ";
@@ -382,6 +387,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                 return setCarrierServicePackageOverride();
             case CLEAR_CARRIER_SERVICE_PACKAGE_OVERRIDE:
                 return clearCarrierServicePackageOverride();
+            case DOMAIN_SELECTION_SUBCOMMAND:
+                return handleDomainSelectionCommand();
             case SET_SATELLITE_SERVICE_PACKAGE_NAME:
                 return handleSetSatelliteServicePackageNameCommand();
             case SET_SATELLITE_GATEWAY_SERVICE_PACKAGE_NAME:
@@ -456,6 +463,7 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         onHelpRadio();
         onHelpImei();
         onHelpSatellite();
+        onHelpDomainSelection();
     }
 
     private void onHelpD2D() {
@@ -841,6 +849,15 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         pw.println("    Gets the device IMEI. Options are:");
         pw.println("      -s: the slot ID to get the IMEI. If no option");
         pw.println("          is specified, it will choose the default voice SIM slot.");
+    }
+
+    private void onHelpDomainSelection() {
+        PrintWriter pw = getOutPrintWriter();
+        pw.println("Domain Selection Commands:");
+        pw.println("  domainselection set-dss-override COMPONENT_NAME");
+        pw.println("    Sets the service defined in COMPONENT_NAME to be bound");
+        pw.println("  domainselection clear-dss-override");
+        pw.println("    Clears DomainSelectionService override.");
     }
 
     private int handleImsCommand() {
@@ -3738,6 +3755,66 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                             + subId
                             + ", error"
                             + e.getMessage());
+            errPw.println("Exception: " + e.getMessage());
+            return -1;
+        }
+        return 0;
+    }
+
+    private int handleDomainSelectionCommand() {
+        String arg = getNextArg();
+        if (arg == null) {
+            onHelpDomainSelection();
+            return 0;
+        }
+
+        switch (arg) {
+            case DOMAIN_SELECTION_SET_SERVICE_OVERRIDE: {
+                return handleDomainSelectionSetServiceOverrideCommand();
+            }
+            case DOMAIN_SELECTION_CLEAR_SERVICE_OVERRIDE: {
+                return handleDomainSelectionClearServiceOverrideCommand();
+            }
+        }
+
+        return -1;
+    }
+
+    // domainselection set-dss-override
+    private int handleDomainSelectionSetServiceOverrideCommand() {
+        PrintWriter errPw = getErrPrintWriter();
+
+        String componentName = getNextArg();
+
+        try {
+            boolean result = mInterface.setDomainSelectionServiceOverride(
+                    ComponentName.unflattenFromString(componentName));
+            if (VDBG) {
+                Log.v(LOG_TAG, "domainselection set-dss-override "
+                        + componentName + ", result=" + result);
+            }
+            getOutPrintWriter().println(result);
+        } catch (Exception e) {
+            Log.w(LOG_TAG, "domainselection set-dss-override "
+                    + componentName + ", error=" + e.getMessage());
+            errPw.println("Exception: " + e.getMessage());
+            return -1;
+        }
+        return 0;
+    }
+
+    // domainselection clear-dss-override
+    private int handleDomainSelectionClearServiceOverrideCommand() {
+        PrintWriter errPw = getErrPrintWriter();
+
+        try {
+            boolean result = mInterface.clearDomainSelectionServiceOverride();
+            if (VDBG) {
+                Log.v(LOG_TAG, "domainselection clear-dss-override result=" + result);
+            }
+            getOutPrintWriter().println(result);
+        } catch (RemoteException e) {
+            Log.w(LOG_TAG, "domainselection clear-dss-override error=" + e.getMessage());
             errPw.println("Exception: " + e.getMessage());
             return -1;
         }
