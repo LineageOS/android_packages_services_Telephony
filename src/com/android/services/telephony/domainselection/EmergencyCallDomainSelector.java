@@ -359,11 +359,6 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
             return;
         }
 
-        if (mIsTestEmergencyNumber) {
-            selectDomainForTestEmergencyNumber();
-            return;
-        }
-
         if (mTryCsWhenPsFails) {
             mTryCsWhenPsFails = false;
             // Initial state was CSFB available and dial PS failed.
@@ -648,11 +643,6 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
     }
 
     private void selectDomainFromInitialState() {
-        if (mIsTestEmergencyNumber) {
-            selectDomainForTestEmergencyNumber();
-            return;
-        }
-
         boolean csInService = isCsInService();
         boolean psInService = isPsInService();
 

@@ -95,34 +95,37 @@ public class DiagnosticDataCollectorTest {
 
     @Test
     public void testPersistForTelecomDumpsys() throws IOException, InterruptedException {
-        TelephonyManager.EmergencyCallDiagnosticParams.Builder callDiagnosticBuilder =
-                new TelephonyManager.EmergencyCallDiagnosticParams.Builder();
-        TelephonyManager.EmergencyCallDiagnosticParams dp =
-                callDiagnosticBuilder.setTelecomDumpSysCollectionEnabled(true).build();
-        mDiagnosticDataCollector.persistEmergencyDianosticData(mConfig, dp, "test_tag_telecom");
+        TelephonyManager.EmergencyCallDiagnosticData.Builder callDiagnosticBuilder =
+                new TelephonyManager.EmergencyCallDiagnosticData.Builder();
+        TelephonyManager.EmergencyCallDiagnosticData ecdData =
+                callDiagnosticBuilder.setTelecomDumpsysCollectionEnabled(true).build();
+        mDiagnosticDataCollector.persistEmergencyDianosticData(
+                mConfig, ecdData, "test_tag_telecom");
 
         verifyCmdAndDropboxTag(TELECOM_DUMPSYS_COMMAND, "test_tag_telecom", false);
     }
 
     @Test
     public void testPersistForTelephonyDumpsys() throws IOException, InterruptedException {
-        TelephonyManager.EmergencyCallDiagnosticParams.Builder callDiagnosticBuilder =
-                new TelephonyManager.EmergencyCallDiagnosticParams.Builder();
-        TelephonyManager.EmergencyCallDiagnosticParams dp =
-                callDiagnosticBuilder.setTelephonyDumpSysCollectionEnabled(true).build();
-        mDiagnosticDataCollector.persistEmergencyDianosticData(mConfig, dp, "test_tag_telephony");
+        TelephonyManager.EmergencyCallDiagnosticData.Builder callDiagnosticBuilder =
+                new TelephonyManager.EmergencyCallDiagnosticData.Builder();
+        TelephonyManager.EmergencyCallDiagnosticData ecdData =
+                callDiagnosticBuilder.setTelephonyDumpsysCollectionEnabled(true).build();
+        mDiagnosticDataCollector.persistEmergencyDianosticData(
+                mConfig, ecdData, "test_tag_telephony");
 
         verifyCmdAndDropboxTag(TELEPHONY_DUMPSYS_COMMAND, "test_tag_telephony", false);
     }
 
     @Test
     public void testPersistForLogcat() throws IOException, InterruptedException {
-        TelephonyManager.EmergencyCallDiagnosticParams.Builder callDiagnosticBuilder =
-                new TelephonyManager.EmergencyCallDiagnosticParams.Builder();
-        TelephonyManager.EmergencyCallDiagnosticParams dp =
+        TelephonyManager.EmergencyCallDiagnosticData.Builder callDiagnosticBuilder =
+                new TelephonyManager.EmergencyCallDiagnosticData.Builder();
+        TelephonyManager.EmergencyCallDiagnosticData ecdData =
                 callDiagnosticBuilder.setLogcatCollectionStartTimeMillis(
                         SystemClock.elapsedRealtime()).build();
-        mDiagnosticDataCollector.persistEmergencyDianosticData(mConfig, dp, "test_tag_logcat");
+        mDiagnosticDataCollector.persistEmergencyDianosticData(
+                mConfig, ecdData, "test_tag_logcat");
 
         verifyCmdAndDropboxTag(LOGCAT_BINARY, "test_tag_logcat", true);
     }
