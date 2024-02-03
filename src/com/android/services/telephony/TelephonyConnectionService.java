@@ -2392,7 +2392,7 @@ public class TelephonyConnectionService extends ConnectionService {
         SelectionAttributes selectionAttributes =
                 new SelectionAttributes.Builder(phone.getPhoneId(), phone.getSubId(),
                         SELECTOR_TYPE_CALLING)
-                        .setNumber(number)
+                        .setAddress(Uri.fromParts(PhoneAccount.SCHEME_TEL, number, null))
                         .setEmergency(false)
                         .setVideoCall(VideoProfile.isVideo(videoState))
                         .build();
@@ -2441,7 +2441,7 @@ public class TelephonyConnectionService extends ConnectionService {
                 }
                 if (result == android.telephony.DisconnectCause.NOT_DISCONNECTED) {
                     createEmergencyConnection(phone, (TelephonyConnection) resultConnection,
-                            numberToDial, request, needToTurnOnRadio,
+                            numberToDial, isTestEmergencyNumber, request, needToTurnOnRadio,
                             mEmergencyStateTracker.getEmergencyRegResult());
                 } else {
                     mEmergencyConnection = null;
@@ -2465,6 +2465,7 @@ public class TelephonyConnectionService extends ConnectionService {
     @SuppressWarnings("FutureReturnValueIgnored")
     private void createEmergencyConnection(final Phone phone,
             final TelephonyConnection resultConnection, final String number,
+            final boolean isTestEmergencyNumber,
             final ConnectionRequest request, boolean needToTurnOnRadio,
             final EmergencyRegResult regResult) {
         Log.i(this, "createEmergencyConnection");
@@ -2506,7 +2507,8 @@ public class TelephonyConnectionService extends ConnectionService {
         DomainSelectionService.SelectionAttributes attr =
                 EmergencyCallDomainSelectionConnection.getSelectionAttributes(
                         phone.getPhoneId(), phone.getSubId(), needToTurnOnRadio,
-                        request.getTelecomCallId(), number, 0, null, regResult);
+                        request.getTelecomCallId(), number, isTestEmergencyNumber,
+                        0, null, regResult);
 
         CompletableFuture<Integer> future =
                 mEmergencyCallDomainSelectionConnection.createEmergencyConnection(
@@ -2611,7 +2613,7 @@ public class TelephonyConnectionService extends ConnectionService {
                     EmergencyCallDomainSelectionConnection.getSelectionAttributes(
                             c.getPhone().getPhoneId(), c.getPhone().getSubId(), false,
                             c.getTelecomCallId(), c.getAddress().getSchemeSpecificPart(),
-                            callFailCause, reasonInfo, null);
+                            false, callFailCause, reasonInfo, null);
 
             CompletableFuture<Integer> future =
                     mEmergencyCallDomainSelectionConnection.reselectDomain(attr);
@@ -2881,7 +2883,7 @@ public class TelephonyConnectionService extends ConnectionService {
                                 phone.getPhoneId(),
                                 phone.getSubId(), false,
                                 c.getTelecomCallId(),
-                                c.getAddress().getSchemeSpecificPart(),
+                                c.getAddress().getSchemeSpecificPart(), isTestEmergencyNumber,
                                 0, null, mEmergencyStateTracker.getEmergencyRegResult());
 
                 CompletableFuture<Integer> domainFuture =

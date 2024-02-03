@@ -190,21 +190,6 @@ public class SmsDomainSelectorTest {
 
     @Test
     @SmallTest
-    public void testCancelSelection() {
-        setUpImsStateTracker(AccessNetworkType.EUTRAN);
-
-        mDomainSelector.selectDomain(mSelectionAttributes, mTransportSelectorCallback);
-
-        assertTrue(mDomainSelector.isDomainSelectionRequested());
-
-        mDomainSelector.cancelSelection();
-
-        assertFalse(mDomainSelector.isDomainSelectionRequested());
-        verify(mDomainSelectorDestroyListener).onDomainSelectorDestroyed(eq(mDomainSelector));
-    }
-
-    @Test
-    @SmallTest
     public void testFinishSelection() {
         setUpImsStateTracker(AccessNetworkType.EUTRAN);
 

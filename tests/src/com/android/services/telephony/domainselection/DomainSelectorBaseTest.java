@@ -52,11 +52,6 @@ public class DomainSelectorBaseTest {
         }
 
         @Override
-        public void cancelSelection() {
-            // No operations.
-        }
-
-        @Override
         public void reselectDomain(@NonNull SelectionAttributes attr) {
             // No operations.
         }
