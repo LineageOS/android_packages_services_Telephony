@@ -156,7 +156,6 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
     private @TransportType int mLastTransportType = TRANSPORT_TYPE_INVALID;
     private @DomainSelectionService.EmergencyScanType int mScanType;
     private @RadioAccessNetworkType List<Integer> mLastPreferredNetworks;
-    private boolean mIsTestEmergencyNumber;
 
     private CancellationSignal mCancelSignal;
 
@@ -422,7 +421,6 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         logi("selectDomain attr=" + attr);
         mTransportSelectorCallback = cb;
         mSelectionAttributes = attr;
-        mIsTestEmergencyNumber = attr.isTestEmergencyNumber();
 
         TelephonyManager tm = mContext.getSystemService(TelephonyManager.class);
         mModemCount = tm.getActiveModemCount();
@@ -1538,20 +1536,6 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         return mEcbmHelper.isInEmergencyCallbackMode(getSlotId())
                 && mEcbmHelper.getTransportType(getSlotId()) == TRANSPORT_TYPE_WLAN
                 && mEcbmHelper.getDataConnectionState(getSlotId()) == DATA_CONNECTED;
-    }
-
-    private void selectDomainForTestEmergencyNumber() {
-        logi("selectDomainForTestEmergencyNumber");
-        if (isImsRegisteredWithVoiceCapability()) {
-            if (isImsRegisteredOverWifi()
-                    || isImsRegisteredOverCrossSim()) {
-                mTransportSelectorCallback.onWlanSelected(mVoWifiOverEmergencyPdn);
-            } else {
-                onWwanNetworkTypeSelected(EUTRAN);
-            }
-        } else {
-            onWwanNetworkTypeSelected(UTRAN);
-        }
     }
 
     @Override

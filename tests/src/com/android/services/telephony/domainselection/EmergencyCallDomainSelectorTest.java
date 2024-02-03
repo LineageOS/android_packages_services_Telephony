@@ -118,7 +118,6 @@ import com.android.TestContext;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -2311,25 +2310,23 @@ public class EmergencyCallDomainSelectorTest {
         verifyScanPsPreferred();
     }
 
-    @Ignore("Deprecated.")
     @Test
     public void testTestEmergencyNumberOverCs() throws Exception {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_UNKNOWN,
+        EmergencyRegResult regResult = getEmergencyRegResult(UTRAN, REGISTRATION_STATE_UNKNOWN,
                 0, false, true, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID,
                 true /*isTestEmergencyNumber*/, regResult);
         mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
         processAllMessages();
 
-        bindImsServiceUnregistered();
+        bindImsService();
 
         verifyCsDialed();
     }
 
-    @Ignore("Deprecated.")
     @Test
     public void testTestEmergencyNumberOverPs() throws Exception {
         createSelector(SLOT_0_SUB_ID);
@@ -2342,19 +2339,18 @@ public class EmergencyCallDomainSelectorTest {
         mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
         processAllMessages();
 
-        bindImsService();
+        bindImsServiceUnregistered();
 
         verifyPsDialed();
     }
 
-    @Ignore("Deprecated.")
     @Test
-    public void testTestEmergencyNumberOverWifi() throws Exception {
+    public void testTestEmergencyNumberScanRequest() throws Exception {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_UNKNOWN,
-                0, false, true, 0, 0, "", "");
+        EmergencyRegResult regResult = getEmergencyRegResult(UNKNOWN, REGISTRATION_STATE_UNKNOWN,
+                0, false, false, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID,
                 true /*isTestEmergencyNumber*/, regResult);
         mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
@@ -2363,7 +2359,7 @@ public class EmergencyCallDomainSelectorTest {
         bindImsService(true);
         processAllMessages();
 
-        verify(mTransportSelectorCallback, times(1)).onWlanSelected(anyBoolean());
+        verifyScanPsPreferred();
     }
 
     @Test
