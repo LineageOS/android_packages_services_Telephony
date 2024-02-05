@@ -22,6 +22,7 @@ import android.os.Bundle;
 import android.os.OutcomeReceiver;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
+import android.telephony.satellite.EnableRequestAttributes;
 import android.telephony.satellite.SatelliteCapabilities;
 import android.telephony.satellite.SatelliteManager;
 import android.telephony.satellite.stub.SatelliteResult;
@@ -90,7 +91,9 @@ public class SatelliteControl extends Activity {
 
     private void enableSatelliteApp(View view) {
         LinkedBlockingQueue<Integer> error = new LinkedBlockingQueue<>(1);
-        mSatelliteManager.requestEnabled(true, true, Runnable::run, error::offer);
+        mSatelliteManager.requestEnabled(
+                new EnableRequestAttributes.Builder(true).setDemoMode(true).build(),
+                Runnable::run, error::offer);
         TextView textView = findViewById(R.id.text_id);
         try {
             Integer value = error.poll(TIMEOUT, TimeUnit.MILLISECONDS);
@@ -109,7 +112,8 @@ public class SatelliteControl extends Activity {
 
     private void disableSatelliteApp(View view) {
         LinkedBlockingQueue<Integer> error = new LinkedBlockingQueue<>(1);
-        mSatelliteManager.requestEnabled(false, true, Runnable::run, error::offer);
+        mSatelliteManager.requestEnabled(new EnableRequestAttributes.Builder(false).build(),
+                Runnable::run, error::offer);
         TextView textView = findViewById(R.id.text_id);
         try {
             Integer value = error.poll(TIMEOUT, TimeUnit.MILLISECONDS);

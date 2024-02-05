@@ -19,6 +19,7 @@ package com.android.phone.testapps.satellitetestapp;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.telephony.satellite.EnableRequestAttributes;
 import android.telephony.satellite.SatelliteDatagram;
 import android.telephony.satellite.SatelliteManager;
 import android.util.Log;
@@ -66,7 +67,9 @@ public class MultipleSendReceive extends Activity {
         SatelliteTestApp.getTestSatelliteService().sendOnSatelliteDatagramReceived(
                 mReceivedDatagram, 4);
         LinkedBlockingQueue<Integer> resultListener = new LinkedBlockingQueue<>(1);
-        mSatelliteManager.requestEnabled(true, true, Runnable::run, resultListener::offer);
+        mSatelliteManager.requestEnabled(
+                new EnableRequestAttributes.Builder(true).setDemoMode(true).build(),
+                Runnable::run, resultListener::offer);
         mSatelliteManager.pollPendingDatagrams(Runnable::run, resultListener::offer);
         SatelliteTestApp.getTestSatelliteService().sendOnSatelliteDatagramReceived(
                 mReceivedDatagram, 3);
@@ -127,7 +130,9 @@ public class MultipleSendReceive extends Activity {
     private void multipleSendReceiveSatelliteDatagramApp(View view) {
         mSatelliteManager.setDeviceAlignedWithSatellite(true);
         LinkedBlockingQueue<Integer> resultListener = new LinkedBlockingQueue<>(1);
-        mSatelliteManager.requestEnabled(true, true, Runnable::run, resultListener::offer);
+        mSatelliteManager.requestEnabled(
+                new EnableRequestAttributes.Builder(true).setDemoMode(true).build(),
+                Runnable::run, resultListener::offer);
         String mText = "This is a test datagram message";
         SatelliteDatagram datagram = new SatelliteDatagram(mText.getBytes());
         mSatelliteManager.sendDatagram(SatelliteManager.DATAGRAM_TYPE_SOS_MESSAGE,
