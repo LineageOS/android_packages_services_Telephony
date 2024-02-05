@@ -42,6 +42,7 @@ import static android.telephony.CarrierConfigManager.ImsEmergency.KEY_EMERGENCY_
 import static android.telephony.CarrierConfigManager.ImsEmergency.KEY_MAXIMUM_CELLULAR_SEARCH_TIMER_SEC_INT;
 import static android.telephony.CarrierConfigManager.ImsEmergency.KEY_MAXIMUM_NUMBER_OF_EMERGENCY_TRIES_OVER_VOWIFI_INT;
 import static android.telephony.CarrierConfigManager.ImsEmergency.KEY_PREFER_IMS_EMERGENCY_WHEN_VOICE_CALLS_ON_CS_BOOL;
+import static android.telephony.CarrierConfigManager.ImsEmergency.KEY_SCAN_LIMITED_SERVICE_AFTER_VOLTE_FAILURE_BOOL;
 import static android.telephony.CarrierConfigManager.ImsEmergency.SCAN_TYPE_FULL_SERVICE;
 import static android.telephony.CarrierConfigManager.ImsEmergency.SCAN_TYPE_FULL_SERVICE_FOLLOWED_BY_LIMITED_SERVICE;
 import static android.telephony.CarrierConfigManager.ImsEmergency.SCAN_TYPE_NO_PREFERENCE;
@@ -2013,6 +2014,36 @@ public class EmergencyCallDomainSelectorTest {
         assertTrue(networks.indexOf(EUTRAN) < networks.indexOf(UTRAN));
         assertTrue(networks.indexOf(UTRAN) < networks.indexOf(GERAN));
         assertTrue(networks.indexOf(GERAN) < networks.indexOf(NGRAN));
+    }
+
+    @Test
+    public void testScanLimitedOnlyAfterVoLteFailure() throws Exception {
+        PersistableBundle bundle = getDefaultPersistableBundle();
+        bundle.putBoolean(KEY_SCAN_LIMITED_SERVICE_AFTER_VOLTE_FAILURE_BOOL,
+                true);
+        when(mCarrierConfigManager.getConfigForSubId(anyInt())).thenReturn(bundle);
+
+        createSelector(SLOT_0_SUB_ID);
+        unsolBarringInfoChanged(false);
+
+        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+                NetworkRegistrationInfo.DOMAIN_PS,
+                true, true, 0, 0, "", "");
+        SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
+        mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
+        processAllMessages();
+
+        bindImsService();
+        processAllMessages();
+
+        verify(mWwanSelectorCallback).onDomainSelected(eq(DOMAIN_PS), anyBoolean());
+
+        mDomainSelector.reselectDomain(attr);
+        processAllMessages();
+
+        verify(mWwanSelectorCallback).onRequestEmergencyNetworkScan(
+                any(), eq(DomainSelectionService.SCAN_TYPE_LIMITED_SERVICE),
+                anyBoolean(), any(), any());
     }
 
     @Test
