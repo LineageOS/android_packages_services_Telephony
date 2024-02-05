@@ -39,6 +39,7 @@ import com.android.TelephonyTestBase;
 import com.android.ims.FeatureConnector;
 import com.android.ims.RcsFeatureManager;
 import com.android.internal.telephony.ISub;
+import com.android.internal.telephony.flags.FeatureFlags;
 
 import org.junit.After;
 import org.junit.Before;
@@ -68,6 +69,8 @@ public class TelephonyRcsServiceTest extends TelephonyTestBase {
     @Mock
     private TelephonyManager mTelephonyManager;
 
+    @Mock FeatureFlags mFeatureFlags;
+
     private RcsFeatureController mFeatureControllerSlot0;
     private RcsFeatureController mFeatureControllerSlot1;
 
@@ -91,9 +94,9 @@ public class TelephonyRcsServiceTest extends TelephonyTestBase {
         doReturn(mFeatureControllerSlot1).when(mFeatureFactory).createController(any(), eq(1),
                 anyInt());
         doReturn(mMockUceSlot0).when(mFeatureFactory).createUceControllerManager(any(), eq(0),
-                anyInt());
+                anyInt(), any());
         doReturn(mMockUceSlot1).when(mFeatureFactory).createUceControllerManager(any(), eq(1),
-                anyInt());
+                anyInt(), any());
         doReturn(mMockSipTransportSlot0).when(mFeatureFactory).createSipTransportController(any(),
                 eq(0), anyInt());
         doReturn(mMockSipTransportSlot1).when(mFeatureFactory).createSipTransportController(any(),
@@ -363,7 +366,8 @@ public class TelephonyRcsServiceTest extends TelephonyTestBase {
     }
 
     private TelephonyRcsService createRcsService(int numSlots) {
-        TelephonyRcsService service = new TelephonyRcsService(mContext, numSlots, mResourceProxy);
+        TelephonyRcsService service = new TelephonyRcsService(mContext, numSlots, mResourceProxy,
+                mFeatureFlags);
         service.setFeatureFactory(mFeatureFactory);
         service.initialize();
         verify(mContext).registerReceiver(mReceiverCaptor.capture(), any());
