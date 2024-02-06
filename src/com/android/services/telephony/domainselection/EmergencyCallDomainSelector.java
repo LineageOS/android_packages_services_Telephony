@@ -45,6 +45,7 @@ import static android.telephony.CarrierConfigManager.ImsEmergency.KEY_EMERGENCY_
 import static android.telephony.CarrierConfigManager.ImsEmergency.KEY_MAXIMUM_CELLULAR_SEARCH_TIMER_SEC_INT;
 import static android.telephony.CarrierConfigManager.ImsEmergency.KEY_MAXIMUM_NUMBER_OF_EMERGENCY_TRIES_OVER_VOWIFI_INT;
 import static android.telephony.CarrierConfigManager.ImsEmergency.KEY_PREFER_IMS_EMERGENCY_WHEN_VOICE_CALLS_ON_CS_BOOL;
+import static android.telephony.CarrierConfigManager.ImsEmergency.KEY_SCAN_LIMITED_SERVICE_AFTER_VOLTE_FAILURE_BOOL;
 import static android.telephony.CarrierConfigManager.ImsEmergency.SCAN_TYPE_FULL_SERVICE_FOLLOWED_BY_LIMITED_SERVICE;
 import static android.telephony.CarrierConfigManager.ImsEmergency.VOWIFI_REQUIRES_SETTING_ENABLED;
 import static android.telephony.CarrierConfigManager.ImsEmergency.VOWIFI_REQUIRES_VALID_EID;
@@ -156,7 +157,6 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
     private @TransportType int mLastTransportType = TRANSPORT_TYPE_INVALID;
     private @DomainSelectionService.EmergencyScanType int mScanType;
     private @RadioAccessNetworkType List<Integer> mLastPreferredNetworks;
-    private boolean mIsTestEmergencyNumber;
 
     private CancellationSignal mCancelSignal;
 
@@ -179,6 +179,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
     private boolean mRequiresImsRegistration;
     private boolean mRequiresVoLteEnabled;
     private boolean mLtePreferredAfterNrFailure;
+    private boolean mScanLimitedOnlyAfterVolteFailure;
 
     // Members for states
     private boolean mIsMonitoringConnectivity;
@@ -297,6 +298,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         removeMessages(MSG_NETWORK_SCAN_TIMEOUT);
         onWwanNetworkTypeSelected(getAccessNetworkType(result));
         mCancelSignal = null;
+        maybeModifyScanType(mLastNetworkType);
     }
 
     /**
@@ -422,7 +424,6 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         logi("selectDomain attr=" + attr);
         mTransportSelectorCallback = cb;
         mSelectionAttributes = attr;
-        mIsTestEmergencyNumber = attr.isTestEmergencyNumber();
 
         TelephonyManager tm = mContext.getSystemService(TelephonyManager.class);
         mModemCount = tm.getActiveModemCount();
@@ -509,6 +510,8 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         mRequiresVoLteEnabled = b.getBoolean(KEY_EMERGENCY_REQUIRES_VOLTE_ENABLED_BOOL);
         mLtePreferredAfterNrFailure = b.getBoolean(
                 KEY_EMERGENCY_LTE_PREFERRED_AFTER_NR_FAILED_BOOL);
+        mScanLimitedOnlyAfterVolteFailure = b.getBoolean(
+                KEY_SCAN_LIMITED_SERVICE_AFTER_VOLTE_FAILURE_BOOL);
         String[] numbers = b.getStringArray(KEY_EMERGENCY_CDMA_PREFERRED_NUMBERS_STRING_ARRAY);
 
         if (mImsRatsConfig == null) mImsRatsConfig = new int[0];
@@ -544,6 +547,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
                 + ", requiresImsReg=" + mRequiresImsRegistration
                 + ", requiresVoLteEnabled=" + mRequiresVoLteEnabled
                 + ", ltePreferredAfterNr=" + mLtePreferredAfterNrFailure
+                + ", scanLimitedOnly=" + mScanLimitedOnlyAfterVolteFailure
                 + ", cdmaPreferredNumbers=" + arrayToString(numbers));
 
         mCdmaPreferredNumbers = Arrays.asList(numbers);
@@ -648,6 +652,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
             } else {
                 requestScan(true);
             }
+            maybeModifyScanType(mLastNetworkType);
             return;
         }
 
@@ -702,6 +707,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
                 requestScan(true);
             }
         }
+        maybeModifyScanType(mLastNetworkType);
     }
 
     /**
@@ -742,7 +748,8 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         mTryEpsFallback = false;
 
         if (isInRoaming()
-                && (mPreferredNetworkScanType == DomainSelectionService.SCAN_TYPE_FULL_SERVICE)) {
+                && (mPreferredNetworkScanType
+                        == CarrierConfigManager.ImsEmergency.SCAN_TYPE_FULL_SERVICE)) {
             // FULL_SERVICE only preference is available only when not in roaming.
             mScanType = DomainSelectionService.SCAN_TYPE_NO_PREFERENCE;
         }
@@ -1433,6 +1440,15 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         terminateSelectionForCrossSimRedialing(false);
     }
 
+    private void maybeModifyScanType(int selectedNetworkType) {
+        if ((mPreferredNetworkScanType
+                != CarrierConfigManager.ImsEmergency.SCAN_TYPE_FULL_SERVICE)
+                && mScanLimitedOnlyAfterVolteFailure
+                && (selectedNetworkType == EUTRAN)) {
+            mScanType = DomainSelectionService.SCAN_TYPE_LIMITED_SERVICE;
+        }
+    }
+
     private static String arrayToString(int[] intArray, IntFunction<String> func) {
         int length = intArray.length;
         StringBuilder sb = new StringBuilder("{");
@@ -1538,20 +1554,6 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         return mEcbmHelper.isInEmergencyCallbackMode(getSlotId())
                 && mEcbmHelper.getTransportType(getSlotId()) == TRANSPORT_TYPE_WLAN
                 && mEcbmHelper.getDataConnectionState(getSlotId()) == DATA_CONNECTED;
-    }
-
-    private void selectDomainForTestEmergencyNumber() {
-        logi("selectDomainForTestEmergencyNumber");
-        if (isImsRegisteredWithVoiceCapability()) {
-            if (isImsRegisteredOverWifi()
-                    || isImsRegisteredOverCrossSim()) {
-                mTransportSelectorCallback.onWlanSelected(mVoWifiOverEmergencyPdn);
-            } else {
-                onWwanNetworkTypeSelected(EUTRAN);
-            }
-        } else {
-            onWwanNetworkTypeSelected(UTRAN);
-        }
     }
 
     @Override
