@@ -962,6 +962,10 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
      * @return The network type of the CS network.
      */
     private @RadioAccessNetworkType int getSelectableCsNetworkType() {
+        List<Integer> domains = getDomainPreference();
+        if (domains.indexOf(DOMAIN_CS) == NOT_SUPPORTED) {
+            return UNKNOWN;
+        }
         EmergencyRegResult regResult = mSelectionAttributes.getEmergencyRegResult();
         logi("getSelectableCsNetworkType regResult=" + regResult);
         if (regResult == null) return UNKNOWN;
@@ -1008,6 +1012,10 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
      * @return The network type if the network supports emergency services over PS network.
      */
     private @RadioAccessNetworkType int getSelectablePsNetworkType(boolean inService) {
+        List<Integer> domains = getDomainPreference();
+        if (domains.indexOf(DOMAIN_PS_3GPP) == NOT_SUPPORTED) {
+            return UNKNOWN;
+        }
         EmergencyRegResult regResult = mSelectionAttributes.getEmergencyRegResult();
         logi("getSelectablePsNetworkType regResult=" + regResult);
         if (regResult == null) return UNKNOWN;
