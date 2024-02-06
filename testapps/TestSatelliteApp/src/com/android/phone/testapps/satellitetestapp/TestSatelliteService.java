@@ -41,7 +41,9 @@ import android.util.Log;
 import com.android.internal.util.FunctionalUtils;
 import com.android.telephony.Rlog;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Executor;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -94,6 +96,10 @@ public class TestSatelliteService extends SatelliteImplBase {
     private boolean mIsSupported;
     private int mModemState;
     private boolean mIsCellularModemEnabledMode;
+    private List<String> mCarrierPlmnList = new ArrayList<>();
+    private List<String> mAllPlmnList = new ArrayList<>();
+    private boolean mIsSatelliteEnabledForCarrier;
+    private boolean mIsRequestIsSatelliteEnabledForCarrier;
 
     /**
      * Create TestSatelliteService using the Executor specified for methods being called from
@@ -109,6 +115,8 @@ public class TestSatelliteService extends SatelliteImplBase {
         mIsSupported = true;
         mModemState = SatelliteModemState.SATELLITE_MODEM_STATE_OFF;
         mIsCellularModemEnabledMode = false;
+        mIsSatelliteEnabledForCarrier = false;
+        mIsRequestIsSatelliteEnabledForCarrier = false;
     }
 
     /**
@@ -389,6 +397,55 @@ public class TestSatelliteService extends SatelliteImplBase {
         runWithExecutor(() -> callback.accept(SATELLITE_ALWAYS_VISIBLE));
     }
 
+    @Override
+    public void setSatellitePlmn(int simLogicalSlotIndex, List<String> carrierPlmnList,
+            List<String> allSatellitePlmnList, IIntegerConsumer resultCallback) {
+        logd("setSatellitePlmn: simLogicalSlotIndex=" + simLogicalSlotIndex + " , carrierPlmnList="
+                + carrierPlmnList + " , allSatellitePlmnList=" + allSatellitePlmnList);
+        if (mErrorCode != SatelliteResult.SATELLITE_RESULT_SUCCESS) {
+            runWithExecutor(() -> resultCallback.accept(mErrorCode));
+            return;
+        }
+        runWithExecutor(() -> resultCallback.accept(SatelliteResult.SATELLITE_RESULT_SUCCESS));
+
+        mCarrierPlmnList = carrierPlmnList;
+        mAllPlmnList = allSatellitePlmnList;
+
+        if (mLocalListener != null) {
+            runWithExecutor(() -> mLocalListener.onSetSatellitePlmn());
+        } else {
+            loge("setSatellitePlmn: mLocalListener is null");
+        }
+    }
+
+    @Override
+    public void setSatelliteEnabledForCarrier(int simLogicalSlotIndex, boolean satelliteEnabled,
+            IIntegerConsumer callback) {
+        logd("setSatelliteEnabledForCarrier: simLogicalSlotIndex=" + simLogicalSlotIndex
+                + ", satelliteEnabled=" + satelliteEnabled);
+        if (mErrorCode != SatelliteResult.SATELLITE_RESULT_SUCCESS) {
+            runWithExecutor(() -> callback.accept(mErrorCode));
+            return;
+        }
+
+        mIsSatelliteEnabledForCarrier = satelliteEnabled;
+        runWithExecutor(() -> callback.accept(SatelliteResult.SATELLITE_RESULT_SUCCESS));
+    }
+
+    @Override
+    public void requestIsSatelliteEnabledForCarrier(int simLogicalSlotIndex,
+            IIntegerConsumer resultCallback, IBooleanConsumer callback) {
+        logd("requestIsSatelliteEnabledForCarrier: simLogicalSlotIndex=" + simLogicalSlotIndex);
+        if (mErrorCode != SatelliteResult.SATELLITE_RESULT_SUCCESS) {
+            runWithExecutor(() -> resultCallback.accept(mErrorCode));
+            mIsRequestIsSatelliteEnabledForCarrier = false;
+            return;
+        }
+
+        runWithExecutor(() -> callback.accept(mIsSatelliteEnabledForCarrier));
+        mIsRequestIsSatelliteEnabledForCarrier = true;
+    }
+
     public void setLocalSatelliteListener(@NonNull ILocalSatelliteListener listener) {
         logd("setLocalSatelliteListener: listener=" + listener);
         mLocalListener = listener;
@@ -506,6 +563,22 @@ public class TestSatelliteService extends SatelliteImplBase {
         } else {
             mShouldNotifyRemoteServiceConnected.set(true);
         }
+    }
+
+    public List<String> getCarrierPlmnList() {
+        return mCarrierPlmnList;
+    }
+
+    public List<String> getAllSatellitePlmnList() {
+        return mAllPlmnList;
+    }
+
+    public boolean isSatelliteEnabledForCarrier() {
+        return mIsSatelliteEnabledForCarrier;
+    }
+
+    public boolean isRequestIsSatelliteEnabledForCarrier() {
+        return mIsRequestIsSatelliteEnabledForCarrier;
     }
 
     /**

@@ -20,6 +20,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.OutcomeReceiver;
+import android.telephony.SubscriptionInfo;
+import android.telephony.SubscriptionManager;
 import android.telephony.satellite.SatelliteCapabilities;
 import android.telephony.satellite.SatelliteManager;
 import android.telephony.satellite.stub.SatelliteResult;
@@ -28,6 +30,7 @@ import android.view.View.OnClickListener;
 import android.widget.TextView;
 
 import java.time.Duration;
+import java.util.List;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
@@ -40,11 +43,13 @@ public class SatelliteControl extends Activity {
     private static final long TIMEOUT = 3000;
 
     private SatelliteManager mSatelliteManager;
+    private SubscriptionManager mSubscriptionManager;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mSatelliteManager = getSystemService(SatelliteManager.class);
+        mSubscriptionManager = getSystemService(SubscriptionManager.class);
 
         setContentView(R.layout.activity_SatelliteControl);
         findViewById(R.id.enableSatellite)
@@ -63,6 +68,18 @@ public class SatelliteControl extends Activity {
                 .setOnClickListener(this::requestIsCommunicationAllowedForCurrentLocationApp);
         findViewById(R.id.requestTimeForNextSatelliteVisibility)
                 .setOnClickListener(this::requestTimeForNextSatelliteVisibilityApp);
+        findViewById(R.id.removeUserRestrictReason)
+                .setOnClickListener(this::removeUserRestrictReasonApp);
+        findViewById(R.id.addUserRestrictReason)
+                .setOnClickListener(this::addUserRestrictReasonApp);
+        findViewById(R.id.getSatellitePlmn)
+                .setOnClickListener(this::getSatellitePlmnApp);
+        findViewById(R.id.getAllSatellitePlmn)
+                .setOnClickListener(this::getAllSatellitePlmnApp);
+        findViewById(R.id.isSatelliteEnabledForCarrier)
+                .setOnClickListener(this::isSatelliteEnabledForCarrierApp);
+        findViewById(R.id.isRequestIsSatelliteEnabledForCarrier)
+                .setOnClickListener(this::isRequestIsSatelliteEnabledForCarrierApp);
         findViewById(R.id.Back).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -269,5 +286,88 @@ public class SatelliteControl extends Activity {
             }
         };
         mSatelliteManager.requestTimeForNextSatelliteVisibility(Runnable::run, receiver);
+    }
+
+    private void removeUserRestrictReasonApp(View view) {
+        TextView textView = findViewById(R.id.text_id);
+        LinkedBlockingQueue<Integer> error = new LinkedBlockingQueue<>(1);
+        List<SubscriptionInfo> infoList = mSubscriptionManager.getAvailableSubscriptionInfoList();
+        List<Integer> subIdList = infoList.stream()
+                .map(SubscriptionInfo::getSubscriptionId)
+                .toList();
+        for (int subId : subIdList) {
+            mSatelliteManager.removeAttachRestrictionForCarrier(subId,
+                    SatelliteManager.SATELLITE_COMMUNICATION_RESTRICTION_REASON_USER,
+                    Runnable::run, error::offer);
+        }
+
+        try {
+            Integer value = error.poll(TIMEOUT, TimeUnit.MILLISECONDS);
+            if (value == null) {
+                textView.setText("Timed out to removeAttachRestrictionForCarrier");
+            } else if (value != SatelliteResult.SATELLITE_RESULT_SUCCESS) {
+                textView.setText("Failed to removeAttachRestrictionForCarrier with error = "
+                        + SatelliteErrorUtils.mapError(value));
+            } else {
+                textView.setText(subIdList == null || subIdList.isEmpty() ? "no active subId list" :
+                        "removeAttachRestrictionForCarrier for all subIdList=" + subIdList);
+            }
+        } catch (InterruptedException e) {
+            textView.setText("removeAttachRestrictionForCarrier exception caught =" + e);
+        }
+    }
+
+    private void addUserRestrictReasonApp(View view) {
+        TextView textView = findViewById(R.id.text_id);
+        LinkedBlockingQueue<Integer> error = new LinkedBlockingQueue<>(1);
+        List<SubscriptionInfo> infoList = mSubscriptionManager.getAvailableSubscriptionInfoList();
+        List<Integer> subIdList = infoList.stream()
+                .map(SubscriptionInfo::getSubscriptionId)
+                .toList();
+        for (int subId : subIdList) {
+            mSatelliteManager.addAttachRestrictionForCarrier(subId,
+                    SatelliteManager.SATELLITE_COMMUNICATION_RESTRICTION_REASON_USER,
+                    Runnable::run, error::offer);
+        }
+
+        try {
+            Integer value = error.poll(TIMEOUT, TimeUnit.MILLISECONDS);
+            if (value == null) {
+                textView.setText("Timed out to addAttachRestrictionForCarrier");
+            } else if (value != SatelliteResult.SATELLITE_RESULT_SUCCESS) {
+                textView.setText("Failed to addAttachRestrictionForCarrier with error = "
+                        + SatelliteErrorUtils.mapError(value));
+            } else {
+                textView.setText(subIdList == null || subIdList.isEmpty() ? "no active subId list" :
+                        "addAttachRestrictionForCarrier for all subIdList=" + subIdList);
+            }
+        } catch (InterruptedException e) {
+            textView.setText("addAttachRestrictionForCarrier exception caught =" + e);
+        }
+    }
+
+    private void getSatellitePlmnApp(View view) {
+        TextView textView = findViewById(R.id.text_id);
+        textView.setText("[SatelliteService] getSatellitePlmnApp = "
+                + SatelliteTestApp.getTestSatelliteService().getCarrierPlmnList());
+    }
+
+    private void getAllSatellitePlmnApp(View view) {
+        TextView textView = findViewById(R.id.text_id);
+        textView.setText("[SatelliteService] getAllSatellitePlmnApp = "
+                + SatelliteTestApp.getTestSatelliteService().getAllSatellitePlmnList());
+    }
+
+    private void isSatelliteEnabledForCarrierApp(View view) {
+        TextView textView = findViewById(R.id.text_id);
+        textView.setText("[SatelliteService] isSatelliteEnabledForCarrier= "
+                + SatelliteTestApp.getTestSatelliteService().isSatelliteEnabledForCarrier());
+    }
+
+    private void isRequestIsSatelliteEnabledForCarrierApp(View view) {
+        TextView textView = findViewById(R.id.text_id);
+        textView.setText("[SatelliteService] isRequestIsSatelliteEnabledForCarrier= "
+                + SatelliteTestApp.getTestSatelliteService()
+                .isRequestIsSatelliteEnabledForCarrier());
     }
 }
