@@ -42,8 +42,13 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
 
     private static final String LOG_TAG = "NCDS";
 
-    private boolean mStopDomainSelection = true;
-    private boolean mDestroyed = false;
+    private enum SelectorState {
+        ACTIVE,
+        INACTIVE,
+        DESTROYED
+    };
+
+    private SelectorState mSelectorState = SelectorState.INACTIVE;
     private ServiceState mServiceState;
     private boolean mImsRegStateReceived;
     private boolean mMmTelCapabilitiesReceived;
@@ -67,7 +72,7 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
     public void selectDomain(SelectionAttributes attributes, TransportSelectorCallback callback) {
         mSelectionAttributes = attributes;
         mTransportSelectorCallback = callback;
-        mStopDomainSelection = false;
+        mSelectorState = SelectorState.ACTIVE;
 
         if (callback == null) {
             loge("Invalid params: TransportSelectorCallback is null");
@@ -112,26 +117,33 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
     @Override
     public synchronized void finishSelection() {
         logd("finishSelection");
-        mStopDomainSelection = true;
-        mImsStateTracker.removeServiceStateListener(this);
-        mImsStateTracker.removeImsStateListener(this);
-        mSelectionAttributes = null;
-        mTransportSelectorCallback = null;
-        destroy();
+        if (mSelectorState == SelectorState.ACTIVE) {
+            // This is cancel selection case.
+            cancelSelection();
+            return;
+        }
+
+        if (mSelectorState != SelectorState.DESTROYED) {
+            mImsStateTracker.removeServiceStateListener(this);
+            mImsStateTracker.removeImsStateListener(this);
+            mSelectionAttributes = null;
+            mTransportSelectorCallback = null;
+            destroy();
+        }
     }
 
     @Override
     public void destroy() {
         logd("destroy");
-        if (!mDestroyed) {
-            mDestroyed = true;
+        if (mSelectorState == SelectorState.INACTIVE) {
+            mSelectorState = SelectorState.DESTROYED;
             super.destroy();
         }
     }
 
     public void cancelSelection() {
         logd("cancelSelection");
-        mStopDomainSelection = true;
+        mSelectorState = SelectorState.INACTIVE;
         mReselectDomain = false;
         if (mTransportSelectorCallback != null) {
             mTransportSelectorCallback.onSelectionTerminated(DisconnectCause.OUTGOING_CANCELED);
@@ -170,7 +182,7 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
 
     private void notifyPsSelected() {
         logd("notifyPsSelected");
-        mStopDomainSelection = true;
+        mSelectorState = SelectorState.INACTIVE;
         if (mImsStateTracker.isImsRegisteredOverWlan()) {
             logd("WLAN selected");
             mTransportSelectorCallback.onWlanSelected(false);
@@ -198,7 +210,7 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
 
     private void notifyCsSelected() {
         logd("notifyCsSelected");
-        mStopDomainSelection = true;
+        mSelectorState = SelectorState.INACTIVE;
         if (mWwanSelectorCallback == null) {
             mTransportSelectorCallback.onWwanSelected((callback) -> {
                 mWwanSelectorCallback = callback;
@@ -220,7 +232,7 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
     }
 
     private void notifySelectionTerminated(@DisconnectCauses int cause) {
-        mStopDomainSelection = true;
+        mSelectorState = SelectorState.INACTIVE;
         if (mTransportSelectorCallback != null) {
             mTransportSelectorCallback.onSelectionTerminated(cause);
             finishSelection();
@@ -284,7 +296,7 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
     }
 
     private synchronized void selectDomain() {
-        if (mStopDomainSelection || mSelectionAttributes == null
+        if (mSelectorState != SelectorState.ACTIVE || mSelectionAttributes == null
                 || mTransportSelectorCallback == null) {
             logd("Domain Selection is stopped.");
             return;
