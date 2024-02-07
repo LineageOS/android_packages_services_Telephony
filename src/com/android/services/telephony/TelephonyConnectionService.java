@@ -37,7 +37,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.ParcelUuid;
 import android.os.PersistableBundle;
-import android.provider.DeviceConfig;
 import android.telecom.Conference;
 import android.telecom.Conferenceable;
 import android.telecom.Connection;
@@ -141,8 +140,6 @@ public class TelephonyConnectionService extends ConnectionService {
     // Timeout before we terminate the outgoing DSDA call if HOLD did not complete in time on the
     // existing call.
     private static final int DEFAULT_DSDA_OUTGOING_CALL_HOLD_TIMEOUT_MS = 2000;
-    private static final String KEY_DOMAIN_COMPARE_FEATURE_ENABLED_FLAG =
-            "is_domain_selection_compare_feature_enabled";
 
     // If configured, reject attempts to dial numbers matching this pattern.
     private static final Pattern CDMA_ACTIVATION_CODE_REGEX_PATTERN =
@@ -2284,14 +2281,6 @@ public class TelephonyConnectionService extends ConnectionService {
                 extras = new Bundle();
             }
             extras.putInt(PhoneConstants.EXTRA_DIAL_DOMAIN, domain);
-            // Add flag to bundle for comparing legacy and new domain selection results. When
-            // EXTRA_COMPARE_DOMAIN flag is true, legacy domain selection result is used for
-            // placing the call and if both the results are not same then bug report is generated.
-            DeviceConfig.Properties properties = //read all telephony properties
-                    DeviceConfig.getProperties(DeviceConfig.NAMESPACE_TELEPHONY);
-            boolean compareDomainSelection =
-                    properties.getBoolean(KEY_DOMAIN_COMPARE_FEATURE_ENABLED_FLAG, false);
-            extras.putBoolean(PhoneConstants.EXTRA_COMPARE_DOMAIN, compareDomainSelection);
 
             if (phone != null) {
                 Log.v(LOG_TAG, "Call dialing. Domain: " + domain);
@@ -2953,15 +2942,6 @@ public class TelephonyConnectionService extends ConnectionService {
 
         Bundle extras = new Bundle();
         extras.putInt(PhoneConstants.EXTRA_DIAL_DOMAIN, domain);
-        // Add flag to bundle for comparing legacy and new domain selection results. When
-        // EXTRA_COMPARE_DOMAIN flag is true, legacy domain selection result is used for
-        // placing the call and if both the results are not same then bug report is generated.
-        DeviceConfig.Properties properties = //read all telephony properties
-                DeviceConfig.getProperties(DeviceConfig.NAMESPACE_TELEPHONY);
-        boolean compareDomainSelection =
-                properties.getBoolean(KEY_DOMAIN_COMPARE_FEATURE_ENABLED_FLAG, false);
-        extras.putBoolean(PhoneConstants.EXTRA_COMPARE_DOMAIN, compareDomainSelection);
-
         com.android.internal.telephony.Connection originalConnection =
                 connection.getOriginalConnection();
         if (originalConnection instanceof ImsPhoneConnection) {
