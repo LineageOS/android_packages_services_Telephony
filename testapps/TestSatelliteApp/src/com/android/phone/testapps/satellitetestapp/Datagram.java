@@ -29,6 +29,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.telephony.satellite.EnableRequestAttributes;
 import android.telephony.satellite.PointingInfo;
 import android.telephony.satellite.SatelliteDatagram;
 import android.telephony.satellite.SatelliteDatagramCallback;
@@ -169,7 +170,9 @@ public class Datagram extends Activity {
     private void startTransmissionUpdatesApp(View view) {
         TextView textView = findViewById(R.id.text_id);
         LinkedBlockingQueue<Integer> error = new LinkedBlockingQueue<>(1);
-        mSatelliteManager.requestEnabled(true, true, Runnable::run, error::offer);
+        mSatelliteManager.requestEnabled(
+                new EnableRequestAttributes.Builder(true).setDemoMode(true).build(),
+                Runnable::run, error::offer);
         TextView showErrorStatusTextView = findViewById(R.id.showErrorStatus);
         try {
             Integer value = error.poll(TIMEOUT, TimeUnit.MILLISECONDS);
@@ -228,7 +231,9 @@ public class Datagram extends Activity {
         if (SatelliteTestApp.getTestSatelliteService() != null) {
             SatelliteTestApp.getTestSatelliteService().sendOnPendingDatagrams();
         }
-        mSatelliteManager.requestEnabled(true, true, Runnable::run, resultListener::offer);
+        mSatelliteManager.requestEnabled(
+                new EnableRequestAttributes.Builder(true).setDemoMode(true).build(),
+                Runnable::run, resultListener::offer);
         try {
             Integer value = resultListener.poll(TIMEOUT, TimeUnit.MILLISECONDS);
             if (value == null) {
