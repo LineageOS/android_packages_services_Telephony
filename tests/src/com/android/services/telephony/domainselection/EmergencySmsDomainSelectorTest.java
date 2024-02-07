@@ -40,7 +40,7 @@ import android.telephony.BarringInfo;
 import android.telephony.CarrierConfigManager;
 import android.telephony.DataSpecificRegistrationInfo;
 import android.telephony.DomainSelectionService.SelectionAttributes;
-import android.telephony.EmergencyRegResult;
+import android.telephony.EmergencyRegistrationResult;
 import android.telephony.NetworkRegistrationInfo;
 import android.telephony.ServiceState;
 import android.telephony.TelephonyManager;
@@ -94,7 +94,7 @@ public class EmergencySmsDomainSelectorTest {
     private ImsStateTracker.BarringInfoListener mBarringInfoListener;
     private ImsStateTracker.ServiceStateListener mServiceStateListener;
     private EmergencySmsDomainSelector mDomainSelector;
-    private EmergencyRegResult mEmergencyRegResult;
+    private EmergencyRegistrationResult mEmergencyRegistrationResult;
 
     @Before
     public void setUp() throws Exception {
@@ -154,7 +154,7 @@ public class EmergencySmsDomainSelectorTest {
             mLooper = null;
         }
 
-        mEmergencyRegResult = null;
+        mEmergencyRegistrationResult = null;
         mDomainSelector = null;
         mNetworkRegistrationInfo = null;
         mVopsSupportInfo = null;
@@ -993,8 +993,9 @@ public class EmergencySmsDomainSelectorTest {
 
         doAnswer((invocation) -> {
             Object[] args = invocation.getArguments();
-            final Consumer<EmergencyRegResult> result = (Consumer<EmergencyRegResult>) args[4];
-            result.accept(mEmergencyRegResult);
+            final Consumer<EmergencyRegistrationResult> result =
+                    (Consumer<EmergencyRegistrationResult>) args[4];
+            result.accept(mEmergencyRegistrationResult);
             return null;
         }).when(mWwanSelectorCallback).onRequestEmergencyNetworkScan(
                 any(), anyInt(), anyBoolean(), any(), any());
@@ -1003,7 +1004,7 @@ public class EmergencySmsDomainSelectorTest {
     private void setUpEmergencyRegResult(
             @AccessNetworkConstants.RadioAccessNetworkType int accessNetwork,
             @NetworkRegistrationInfo.Domain int domain, int nrEs, int nrEsfb) {
-        mEmergencyRegResult = new EmergencyRegResult(accessNetwork,
+        mEmergencyRegistrationResult = new EmergencyRegistrationResult(accessNetwork,
                 NetworkRegistrationInfo.REGISTRATION_STATE_HOME,
                 domain, true, true, nrEs, nrEsfb, "001", "01", "");
     }

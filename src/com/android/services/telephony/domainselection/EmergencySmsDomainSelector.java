@@ -28,7 +28,7 @@ import android.telephony.BarringInfo;
 import android.telephony.CarrierConfigManager;
 import android.telephony.DataSpecificRegistrationInfo;
 import android.telephony.DomainSelectionService;
-import android.telephony.EmergencyRegResult;
+import android.telephony.EmergencyRegistrationResult;
 import android.telephony.NetworkRegistrationInfo;
 import android.telephony.ServiceState;
 import android.telephony.TelephonyManager;
@@ -81,7 +81,7 @@ public class EmergencySmsDomainSelector extends SmsDomainSelector implements
     public void handleMessage(@NonNull Message msg) {
         switch (msg.what) {
             case EVENT_EMERGENCY_NETWORK_SCAN_RESULT:
-                handleEmergencyNetworkScanResult((EmergencyRegResult) msg.obj);
+                handleEmergencyNetworkScanResult((EmergencyRegistrationResult) msg.obj);
                 break;
             default:
                 super.handleMessage(msg);
@@ -247,7 +247,7 @@ public class EmergencySmsDomainSelector extends SmsDomainSelector implements
      * @param regResult The emergency registration result that is triggered
      *                  by the emergency network scan.
      */
-    private void handleEmergencyNetworkScanResult(EmergencyRegResult regResult) {
+    private void handleEmergencyNetworkScanResult(EmergencyRegistrationResult regResult) {
         logi("handleEmergencyNetworkScanResult: " + regResult);
 
         mEmergencyNetworkScanInProgress = false;
