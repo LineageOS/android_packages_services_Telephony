@@ -78,7 +78,7 @@ import android.telephony.CarrierConfigManager;
 import android.telephony.DisconnectCause;
 import android.telephony.DomainSelectionService;
 import android.telephony.DomainSelectionService.SelectionAttributes;
-import android.telephony.EmergencyRegResult;
+import android.telephony.EmergencyRegistrationResult;
 import android.telephony.NetworkRegistrationInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
@@ -246,7 +246,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
                 break;
 
             case MSG_NETWORK_SCAN_RESULT:
-                handleScanResult((EmergencyRegResult) msg.obj);
+                handleScanResult((EmergencyRegistrationResult) msg.obj);
                 break;
 
             case MSG_MAX_CELLULAR_TIMEOUT:
@@ -264,7 +264,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
      *
      * @param result The scan result.
      */
-    private void handleScanResult(EmergencyRegResult result) {
+    private void handleScanResult(EmergencyRegistrationResult result) {
         logi("handleScanResult result=" + result);
 
         if (mLastTransportType == TRANSPORT_TYPE_WLAN) {
@@ -307,7 +307,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
      * @param result The result of network scan.
      * @return The selected network type.
      */
-    private @RadioAccessNetworkType int getAccessNetworkType(EmergencyRegResult result) {
+    private @RadioAccessNetworkType int getAccessNetworkType(EmergencyRegistrationResult result) {
         int accessNetworkType = result.getAccessNetwork();
         if (accessNetworkType != EUTRAN) return accessNetworkType;
 
@@ -616,7 +616,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         // Reset mDomainSelectionRequested to avoid redundant execution of selectDomain().
         mDomainSelectionRequested = false;
 
-        if (!allowEmergencyCalls(mSelectionAttributes.getEmergencyRegResult())) {
+        if (!allowEmergencyCalls(mSelectionAttributes.getEmergencyRegistrationResult())) {
             // Detected the country and found that emergency calls are not allowed with this slot.
             terminateSelectionPermanentlyForSlot();
             return;
@@ -942,7 +942,8 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
      * @return {@code true} if CS is in service.
      */
     private boolean isCsInService() {
-        EmergencyRegResult regResult = mSelectionAttributes.getEmergencyRegResult();
+        EmergencyRegistrationResult regResult =
+                mSelectionAttributes.getEmergencyRegistrationResult();
         if (regResult == null) return false;
 
         int regState = regResult.getRegState();
@@ -966,7 +967,8 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         if (domains.indexOf(DOMAIN_CS) == NOT_SUPPORTED) {
             return UNKNOWN;
         }
-        EmergencyRegResult regResult = mSelectionAttributes.getEmergencyRegResult();
+        EmergencyRegistrationResult regResult =
+                mSelectionAttributes.getEmergencyRegistrationResult();
         logi("getSelectableCsNetworkType regResult=" + regResult);
         if (regResult == null) return UNKNOWN;
 
@@ -991,7 +993,8 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
      * @return {@code true} if PS is in service.
      */
     private boolean isPsInService() {
-        EmergencyRegResult regResult = mSelectionAttributes.getEmergencyRegResult();
+        EmergencyRegistrationResult regResult =
+                mSelectionAttributes.getEmergencyRegistrationResult();
         if (regResult == null) return false;
 
         int regState = regResult.getRegState();
@@ -1016,7 +1019,8 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         if (domains.indexOf(DOMAIN_PS_3GPP) == NOT_SUPPORTED) {
             return UNKNOWN;
         }
-        EmergencyRegResult regResult = mSelectionAttributes.getEmergencyRegResult();
+        EmergencyRegistrationResult regResult =
+                mSelectionAttributes.getEmergencyRegistrationResult();
         logi("getSelectablePsNetworkType regResult=" + regResult);
         if (regResult == null) return UNKNOWN;
         if (mRequiresVoLteEnabled && !isAdvancedCallingSettingEnabled()) {
@@ -1046,7 +1050,8 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
     }
 
     private boolean isEpsFallbackAvailable() {
-        EmergencyRegResult regResult = mSelectionAttributes.getEmergencyRegResult();
+        EmergencyRegistrationResult regResult =
+                mSelectionAttributes.getEmergencyRegistrationResult();
         if (regResult == null) return false;
 
         List<Integer> ratList = getImsNetworkTypeConfiguration();
@@ -1214,7 +1219,8 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         tm = tm.createForSubscriptionId(getSubId());
         String netIso = tm.getNetworkCountryIso();
 
-        EmergencyRegResult regResult = mSelectionAttributes.getEmergencyRegResult();
+        EmergencyRegistrationResult regResult =
+                mSelectionAttributes.getEmergencyRegistrationResult();
         if (regResult != null) {
             if (regResult.getRegState() == REGISTRATION_STATE_HOME) return false;
             if (regResult.getRegState() == REGISTRATION_STATE_ROAMING) return true;
@@ -1368,7 +1374,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         }
     }
 
-    private boolean allowEmergencyCalls(EmergencyRegResult regResult) {
+    private boolean allowEmergencyCalls(EmergencyRegistrationResult regResult) {
         if (mModemCount < 2) return true;
         if (regResult == null) {
             loge("allowEmergencyCalls null regResult");
@@ -1419,7 +1425,8 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
 
         if (mModemCount == 1) return;
 
-        EmergencyRegResult regResult = mSelectionAttributes.getEmergencyRegResult();
+        EmergencyRegistrationResult regResult =
+                mSelectionAttributes.getEmergencyRegistrationResult();
         if (regResult != null) {
             int regState = regResult.getRegState();
 

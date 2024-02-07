@@ -54,7 +54,7 @@ import android.telephony.CarrierConfigManager;
 import android.telephony.DataSpecificRegistrationInfo;
 import android.telephony.DomainSelectionService;
 import android.telephony.DomainSelectionService.SelectionAttributes;
-import android.telephony.EmergencyRegResult;
+import android.telephony.EmergencyRegistrationResult;
 import android.telephony.NetworkRegistrationInfo;
 import android.telephony.PhoneNumberUtils;
 import android.telephony.RadioAccessFamily;
@@ -2439,7 +2439,7 @@ public class TelephonyConnectionService extends ConnectionService {
                 if (result == android.telephony.DisconnectCause.NOT_DISCONNECTED) {
                     createEmergencyConnection(phone, (TelephonyConnection) resultConnection,
                             numberToDial, isTestEmergencyNumber, request, needToTurnOnRadio,
-                            mEmergencyStateTracker.getEmergencyRegResult());
+                            mEmergencyStateTracker.getEmergencyRegistrationResult());
                 } else {
                     mEmergencyConnection = null;
                     String reason = "Couldn't setup emergency call";
@@ -2462,7 +2462,7 @@ public class TelephonyConnectionService extends ConnectionService {
             final TelephonyConnection resultConnection, final String number,
             final boolean isTestEmergencyNumber,
             final ConnectionRequest request, boolean needToTurnOnRadio,
-            final EmergencyRegResult regResult) {
+            final EmergencyRegistrationResult regResult) {
         Log.i(this, "createEmergencyConnection");
 
         if (phone.getImsPhone() == null) {
@@ -2878,7 +2878,7 @@ public class TelephonyConnectionService extends ConnectionService {
                                 phone.getSubId(), false,
                                 c.getTelecomCallId(),
                                 c.getAddress().getSchemeSpecificPart(), isTestEmergencyNumber,
-                                0, null, mEmergencyStateTracker.getEmergencyRegResult());
+                                0, null, mEmergencyStateTracker.getEmergencyRegistrationResult());
 
                 CompletableFuture<Integer> domainFuture =
                         mEmergencyCallDomainSelectionConnection.createEmergencyConnection(

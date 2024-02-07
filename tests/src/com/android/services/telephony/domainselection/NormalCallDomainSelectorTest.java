@@ -39,7 +39,7 @@ import android.telephony.CarrierConfigManager;
 import android.telephony.DisconnectCause;
 import android.telephony.DomainSelectionService;
 import android.telephony.DomainSelector;
-import android.telephony.EmergencyRegResult;
+import android.telephony.EmergencyRegistrationResult;
 import android.telephony.NetworkRegistrationInfo;
 import android.telephony.ServiceState;
 import android.telephony.SubscriptionManager;
@@ -503,10 +503,10 @@ public class NormalCallDomainSelectorTest {
 
         @Override
         public void onRequestEmergencyNetworkScan(@NonNull List<Integer> preferredNetworks,
-                                                  int scanType,
-                                                  boolean resetScan,
-                                                  @NonNull CancellationSignal signal,
-                                                  @NonNull Consumer<EmergencyRegResult> consumer) {
+                int scanType,
+                boolean resetScan,
+                @NonNull CancellationSignal signal,
+                @NonNull Consumer<EmergencyRegistrationResult> consumer) {
             Log.i(TAG, "onRequestEmergencyNetworkScan - called");
 
         }
