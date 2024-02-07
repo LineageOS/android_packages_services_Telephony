@@ -1173,7 +1173,8 @@ public class PhoneGlobals extends ContextWrapper {
             msg.arg1 = mDefaultDataSubId;
             msg.sendToTarget();
         } else if (dataAllowed && dataIsNowRoaming(mDefaultDataSubId)) {
-            if (!shouldShowRoamingNotification(roamingOperatorNumeric)) {
+            if (!shouldShowRoamingNotification(roamingOperatorNumeric != null
+                        ? roamingOperatorNumeric : phone.getServiceState().getOperatorNumeric())) {
                 Log.d(LOG_TAG, "Skip showing roaming connected notification.");
                 return;
             }
