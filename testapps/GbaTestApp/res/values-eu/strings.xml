@@ -20,10 +20,10 @@
     <string name="request_naf_url" msgid="4487793541217737042">"Sareko aplikazioaren funtzioaren (NAF) URLa"</string>
     <string name="request_force_bootstrapping" msgid="206043602616214325">"Bootstrapping-a erabiltzera behartu nahi duzu?"</string>
     <string name="request_org" msgid="8416693445448308975">"Erakundearen kodea"</string>
-    <string name="request_security_protocol" msgid="1444164827561010482">"UA segurtasun-protokoloaren IDa"</string>
+    <string name="request_security_protocol" msgid="1444164827561010482">"UA segurtasun-protokoloaren identifikatzailea"</string>
     <string name="request_tls_cipher_suite" msgid="6659854717595308404">"TLS Cipher Suite ID"</string>
     <string name="response_success" msgid="2469204471244527663">"Burutu da GBA autentifikazioa?"</string>
-    <string name="response_fail_reason" msgid="3401426967253202496">"Hutsegitearen arrazoiaren IDa"</string>
+    <string name="response_fail_reason" msgid="3401426967253202496">"Hutsegitearen arrazoiaren identifikatzailea"</string>
     <string name="response_key" msgid="8839847772051686309">"GBA-ko gakoa (CK + IK)"</string>
     <string name="response_btid" msgid="2550216722679350756">"Bootstrapping Transaction Identifier (B-TID)"</string>
     <string name="sample_naf" msgid="255371174145881001">"3GPP-bootstrapping@naf1.operator.com"</string>
