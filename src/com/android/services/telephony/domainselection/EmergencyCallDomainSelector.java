@@ -1411,11 +1411,6 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         mTransportSelectorCallback.onSelectionTerminated(permanent
                 ? DisconnectCause.EMERGENCY_PERM_FAILURE
                 : DisconnectCause.EMERGENCY_TEMP_FAILURE);
-
-        if (mIsScanRequested && mCancelSignal != null) {
-            mCancelSignal.cancel();
-            mCancelSignal = null;
-        }
     }
 
     /** Starts the cross stack timer. */
