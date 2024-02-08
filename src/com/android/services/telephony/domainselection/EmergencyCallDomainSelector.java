@@ -742,7 +742,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
 
         mCancelSignal = new CancellationSignal();
         // In case dialing over Wi-Fi has failed, do not the change the domain preference.
-        if (!wifiFailed) {
+        if (!wifiFailed || mLastPreferredNetworks == null) {
             mLastPreferredNetworks = getNextPreferredNetworks(csPreferred, mTryEpsFallback);
         }
         mTryEpsFallback = false;

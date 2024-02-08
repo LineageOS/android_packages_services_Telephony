@@ -25,6 +25,7 @@ import static android.telephony.TelephonyManager.HAL_SERVICE_NETWORK;
 import static android.telephony.TelephonyManager.HAL_SERVICE_RADIO;
 import static android.telephony.satellite.SatelliteManager.KEY_SATELLITE_COMMUNICATION_ALLOWED;
 import static android.telephony.satellite.SatelliteManager.SATELLITE_RESULT_ACCESS_BARRED;
+import static android.telephony.satellite.SatelliteManager.SATELLITE_RESULT_REQUEST_NOT_SUPPORTED;
 import static android.telephony.satellite.SatelliteManager.SATELLITE_RESULT_SUCCESS;
 
 import static com.android.internal.telephony.PhoneConstants.PHONE_TYPE_CDMA;
@@ -13000,13 +13001,14 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * @param enableSatellite {@code true} to enable the satellite modem and
      *                        {@code false} to disable.
      * @param enableDemoMode {@code true} to enable demo mode and {@code false} to disable.
+     * @param isEmergency {@code true} to enable emergency mode, {@code false} otherwise.
      * @param callback The callback to get the result of the request.
      *
      * @throws SecurityException if the caller doesn't have the required permission.
      */
     @Override
     public void requestSatelliteEnabled(int subId, boolean enableSatellite, boolean enableDemoMode,
-            @NonNull IIntegerConsumer callback) {
+            boolean isEmergency, @NonNull IIntegerConsumer callback) {
         enforceSatelliteCommunicationPermission("requestSatelliteEnabled");
         if (enableSatellite) {
             ResultReceiver resultReceiver = new ResultReceiver(mMainThreadHandler) {
@@ -13074,6 +13076,22 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     public void requestIsDemoModeEnabled(int subId, @NonNull ResultReceiver result) {
         enforceSatelliteCommunicationPermission("requestIsDemoModeEnabled");
         mSatelliteController.requestIsDemoModeEnabled(subId, result);
+    }
+
+    /**
+     * Request to get whether the satellite service is enabled with emergency mode.
+     *
+     * @param subId The subId of the subscription to check whether the satellite demo mode
+     *              is enabled for.
+     * @param result The result receiver that returns whether the satellite emergency mode is
+     *               enabled if the request is successful or an error code if the request failed.
+     *
+     * @throws SecurityException if the caller doesn't have the required permission.
+     */
+    @Override
+    public void requestIsEmergencyModeEnabled(int subId, @NonNull ResultReceiver result) {
+        enforceSatelliteCommunicationPermission("requestIsEmergencyModeEnabled");
+        result.send(SATELLITE_RESULT_REQUEST_NOT_SUPPORTED, null);
     }
 
     /**

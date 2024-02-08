@@ -21,6 +21,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.CancellationSignal;
 import android.os.OutcomeReceiver;
+import android.telephony.satellite.EnableRequestAttributes;
 import android.telephony.satellite.PointingInfo;
 import android.telephony.satellite.SatelliteCapabilities;
 import android.telephony.satellite.SatelliteDatagram;
@@ -157,7 +158,9 @@ public class SendReceive extends Activity {
         if (SatelliteTestApp.getTestSatelliteService() != null) {
             SatelliteTestApp.getTestSatelliteService().sendOnPendingDatagrams();
         }
-        mSatelliteManager.requestEnabled(true, true, Runnable::run, resultListener::offer);
+        mSatelliteManager.requestEnabled(
+                new EnableRequestAttributes.Builder(true).setDemoMode(true).build(),
+                Runnable::run, resultListener::offer);
         try {
             Integer value = resultListener.poll(TIMEOUT, TimeUnit.MILLISECONDS);
             if (value == null) {
@@ -238,7 +241,9 @@ public class SendReceive extends Activity {
         //Satellite Position
         SatelliteTransmissionUpdateCallbackTestApp callback =
                 new SatelliteTransmissionUpdateCallbackTestApp();
-        mSatelliteManager.requestEnabled(true, true, Runnable::run, error::offer);
+        mSatelliteManager.requestEnabled(
+                new EnableRequestAttributes.Builder(true).setDemoMode(true).build(),
+                Runnable::run, error::offer);
         try {
             Integer value = error.poll(TIMEOUT, TimeUnit.MILLISECONDS);
             if (value == null) {
