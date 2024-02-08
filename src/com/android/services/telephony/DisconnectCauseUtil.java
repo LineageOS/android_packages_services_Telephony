@@ -119,16 +119,20 @@ public class DisconnectCauseUtil {
             FlagsAdapter featureFlags) {
         Context context = PhoneGlobals.getInstance();
 
-        return new DisconnectCause(
-                toTelecomDisconnectCauseCode(telephonyDisconnectCause, carrierConfig),
-                toTelecomDisconnectCauseLabel(context, telephonyDisconnectCause,
-                        telephonyPreciseDisconnectCause, carrierConfig, featureFlags),
-                toTelecomDisconnectCauseDescription(context, telephonyDisconnectCause, phoneId),
-                toTelecomDisconnectReason(context, telephonyDisconnectCause, reason, phoneId),
-                toTelecomDisconnectCauseTone(telephonyDisconnectCause, carrierConfig, featureFlags),
-                telephonyDisconnectCause,
-                telephonyPreciseDisconnectCause,
-                imsReasonInfo);
+        return new DisconnectCause.Builder()
+                .setCode(toTelecomDisconnectCauseCode(telephonyDisconnectCause, carrierConfig))
+                .setLabel(toTelecomDisconnectCauseLabel(context, telephonyDisconnectCause,
+                        telephonyPreciseDisconnectCause, carrierConfig, featureFlags))
+                .setDescription(toTelecomDisconnectCauseDescription(
+                        context, telephonyDisconnectCause, phoneId))
+                .setReason(toTelecomDisconnectReason(
+                        context, telephonyDisconnectCause, reason, phoneId))
+                .setTone(toTelecomDisconnectCauseTone(
+                        telephonyDisconnectCause, carrierConfig, featureFlags))
+                .setTelephonyDisconnectCause(telephonyDisconnectCause)
+                .setTelephonyPreciseDisconnectCause(telephonyPreciseDisconnectCause)
+                .setImsReasonInfo(imsReasonInfo)
+                .build();
     }
 
     /**
