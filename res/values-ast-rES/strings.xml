@@ -30,6 +30,7 @@
     <string name="pause_prompt_yes">Sí</string>
     <string name="pause_prompt_no">Non</string>
     <string name="phone_accounts_settings_header">Axustes</string>
+    <string name="voicemail_notifications_preference_title">Avisos</string>
     <string name="additional_gsm_call_settings">Axustes adicionales</string>
     <string name="additional_gsm_call_settings_with_label">Axustes adicionales (<xliff:g id="subscriptionlabel" example="Verizon">%s</xliff:g>)</string>
     <string name="sum_cfu_enabled_no_number">El númberu nun ta disponible</string>

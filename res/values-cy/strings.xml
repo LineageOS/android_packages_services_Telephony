@@ -497,11 +497,11 @@
     <string name="notification_network_selection_text">Rhwydwaith a ddewiswyd <xliff:g id="operator_name">%s</xliff:g> dim ar gael</string>
     <string name="incall_error_power_off" product="watch">I wneud galwad rhai troi\'r rhwydwaith symudol ymlaen, troi modd awyren i ffwrdd neu droi modd arbed batri i fwrdd.</string>
     <string name="incall_error_power_off" product="default">Rhaid diffodd modd awyren er mwyn gwneud galwad.</string>
-    <string name="incall_error_power_off_wfc">Diffodda modd awyren neu gysylltu â rhwydwaith diwifr i wneud galwad.</string>
+    <string name="incall_error_power_off_wfc">Diffodda modd awyren neu cysylltu â rhwydwaith di-wifr i wneud galwad.</string>
     <string name="incall_error_ecm_emergency_only">Rhaid gadael modd Galwad Nôl mewn Argyfwng i wneud galwad na sy\'n argyfyngus.</string>
     <string name="incall_error_emergency_only">Heb gofrestru ar y rhwydwaith.</string>
     <string name="incall_error_out_of_service">Dim rhwydwaith symudol ar gael.</string>
-    <string name="incall_error_out_of_service_wfc">Dyw\'r rhwydwaith symudol ddim ar gael. Cysyllta â\'r rwydwaith diwifr i wneud galwad.</string>
+    <string name="incall_error_out_of_service_wfc">Dyw\'r rhwydwaith symudol ddim ar gael. Cysyllta â\'r rwydwaith di-wifr i wneud galwad.</string>
     <string name="incall_error_no_phone_number_supplied">I wneud galwad, rho rif dilys.</string>
     <string name="incall_error_call_failed">Methodd yr alwad.</string>
     <string name="incall_error_cannot_add_call">Ni ellir gwneud yr alwad ar hyn o bryd. Gellir ceisio anfon neges.</string>
@@ -514,7 +514,7 @@
     <string name="incall_error_supp_service_reject">Methu â gwrthod yr alwad.</string>
     <string name="incall_error_supp_service_hangup">Methu â rhyddhau galwad(au).</string>
     <string name="incall_error_supp_service_hold">Methu â rhoi galwadau i aros.</string>
-    <string name="incall_error_wfc_only_no_wireless_network">Cysyllta â rhwydwaith diwifr i wneud galwad.</string>
+    <string name="incall_error_wfc_only_no_wireless_network">Cysyllta â rhwydwaith di-wifr i wneud galwad.</string>
     <string name="incall_error_promote_wfc">Galluoga galwadau Wi-Fi er mwyn gwneud galwad.</string>
     <string name="emergency_information_hint">Gwybodaeth mewn argyfwng</string>
     <string name="emergency_information_owner_hint">Perchennog</string>
@@ -552,7 +552,7 @@
     <string name="singleContactImportedMsg">Mewnforiwyd y cyswllt</string>
     <string name="failedToImportSingleContactMsg">Methwyd â mewnforio cyswllt</string>
     <string name="hac_mode_title">Cymorth clyw</string>
-    <string name="hac_mode_summary">Troi cydweddiad cymorth clyw ymlaen</string>
+    <string name="hac_mode_summary">Troi cytunedd cymorth clyw ymlaen</string>
     <string name="rtt_mode_title">Galwad testun ar y pryd (RTT)</string>
     <string name="rtt_mode_summary">Caniatáu negesu o fewn galwad llais</string>
     <string name="rtt_mode_more_information">       Mae RTT yn cynorthwyo galwyr sy\'n fyddar, â nam ar eu clyw, neu gydag anhawster llefaru.&lt;br&gt;
@@ -657,7 +657,7 @@
     <string name="emergency_action_launch_hint">Tapia eto i agor</string>
     <string name="message_decode_error">Roedd gwall wrth ddadgodio\'r neges.</string>
     <string name="callFailed_cdma_activation">Mae cerdyn SIM wedi actifadu dy wasanaeth a diweddaru gallu dy ffôn i grwydro tramor.    </string>
-    <string name="callFailed_cdma_call_limit">Mae gormod o alwadau ar eu canol. Diwedda neu gyfuno rhai o\'r galwadau cyfredol cyn gwneud galwad newydd.
+    <string name="callFailed_cdma_call_limit">Mae gormod o alwadau ar eu canol. Diwedda neu cyfuno rhai o\'r galwadau cyfredol cyn gwneud galwad newydd.
     </string>
     <string name="callFailed_imei_not_accepted">Methu â chysylltu. Rho gerdyn SIM dilys, plîs.    </string>
     <string name="callFailed_wifi_lost">        Collwyd y cysylltiad Wi-Fi. Galwad ar ben.
@@ -799,7 +799,7 @@
     <string name="supp_service_held_call_released">Mae\'r galwad yn aros wedi\'i rhyddhau.</string>
     <string name="callFailed_otasp_provisioning_in_process">Methu â gwneud galwad am fod y ddyfais yn cael ei baratoi gan dy ddarparwr gwasanaeth.</string>
     <string name="callFailed_already_dialing">Methu â gwneud galwad am fod galwad allan arall eisoes yn cael ei deialu.</string>
-    <string name="callFailed_already_ringing">Methu â gwneud galwad am fod galwad i mewn yn aros i gael ei hateb. Ateba neu wrthod yr alwad i mewn cyn gwneud galwad newydd.</string>
+    <string name="callFailed_already_ringing">Methu â gwneud galwad am fod galwad i mewn yn aros i gael ei hateb. Ateba neu gwrthod yr alwad i mewn cyn gwneud galwad newydd.</string>
     <string name="callFailed_calling_disabled">Methu â gwneud galwad am fod gwneud galwadau wedi\'i analluogi gyda\'r briodwedd system ro.telephony.disable-call.</string>
     <string name="callFailed_too_many_calls">Methu â gwneud galwad tra bod dwy alwad eisoes ar y gweill. Rhaid datgysylltu un galwad neu gyfuno\'r ddwy i alwad grŵp cyn gwneud galwad newydd.</string>
     <string name="supp_service_over_ut_precautions">I ddefnyddio <xliff:g id="supp service">%s</xliff:g>, rhaid troi data symudol ymlaen. Gellir newid hyn yng ngosodiadau rhwydwaith symudol.</string>

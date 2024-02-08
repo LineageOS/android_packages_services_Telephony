@@ -649,6 +649,7 @@
     <string name="status_hint_label_incoming_wifi_call">Gairm WiFi o</string>
     <string name="status_hint_label_wifi_call">Gairm WiFi</string>
     <string name="voicemail_visual_voicemail_key">voicemail_visual_voicemail_key</string>
+    <string name="voicemail_change_pin_key">voicemail_change_pin_key</string>
     <string name="tty_mode_key">button_tty_mode_key</string>
     <string name="wifi_calling_settings_key">button_wifi_calling_settings_key</string>
     <string name="emergency_action_launch_hint">Thoir gnogag air a-rithist gus fhosgladh</string>

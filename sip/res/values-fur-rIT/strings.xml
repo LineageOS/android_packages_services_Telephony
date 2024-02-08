@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2014 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="sip_settings">Impostazions SIP</string>
+    <string name="sip_accounts">Accounts SIP</string>
+    <string name="sip_accounts_title">Accounts</string>
+    <string name="sip_receive_calls">Ricêf clamadis in jentrade</string>
+    <string name="sip_receive_calls_summary">Al dopre plui batarie</string>
+    <string name="sip_call_options_title">Dopre clamade SIP</string>
+    <string name="sip_call_options_wifi_only_title">Dopre clamade SIP (dome Wi-Fi)</string>
+    <string name="sip_call_options_entry_1">Par dutis lis clamadis se la rêt dâts e je disponibile</string>
+    <string name="sip_call_options_entry_2">Dome pes clamadis SIP</string>
+    <string name="sip_call_options_wifi_only_entry_1">Par dutis lis clamadis</string>
+    <string name="add_sip_account">Zonte account</string>
+    <string name="remove_sip_account">Gjave account</string>
+    <string name="sip_account_list">Accounts SIP</string>
+    <string name="saving_account">Daûr a salvâ l\'account\u2026</string>
+    <string name="removing_account">Daûr a gjavâ l\'account\u2026</string>
+    <string name="sip_menu_save">Salve</string>
+    <string name="sip_menu_discard">Scarte</string>
+    <string name="alert_dialog_close">Siere il profîl</string>
+    <string name="alert_dialog_ok">Va ben</string>
+    <string name="close_profile">Siere</string>
+    <string name="registration_status_checking_status">Daûr a controlâ il stât...</string>
+    <string name="registration_status_registering">Regjistrazion\u2026</string>
+    <string name="registration_status_still_trying">Tentatîf ancjemò in cors\u2026</string>
+    <string name="registration_status_not_receiving">Ricezion clamadis no ative.</string>
+    <string name="registration_status_no_data">La regjistrazion dal account si è fermade parcè che e mancje une conession a internet.</string>
+    <string name="registration_status_no_wifi_data">La regjistrazion dal account si è fermade parcè che e mancje une conession Wi-Fi.</string>
+    <string name="registration_status_not_running">Regjistrazion account lade strucje.</string>
+    <string name="registration_status_done">Ricezion clamadis ative.</string>
+    <string name="registration_status_failed_try_later">Regjistrazion account lade strucje: (<xliff:g id="registration_error_message" example="timed out">%s</xliff:g>); plui indevant al vignarà fat un gnûf tentatîf</string>
+    <string name="registration_status_invalid_credentials">Regjistrazion account lade strucje: non utent o password sbaliâts.</string>
+    <string name="registration_status_server_unreachable">Regjistrazion account lade strucje: controle il non dal servidôr.</string>
+    <string name="third_party_account_summary">Chest account al è za doprât de aplicazion <xliff:g id="account_owner" example="Google Talk">%s</xliff:g>.</string>
+    <string name="sip_edit_title">Detais account SIP</string>
+    <string name="sip_edit_new_title">Detais account SIP</string>
+    <string name="domain_address_title">Servidôr</string>
+    <string name="username_title">Non utent</string>
+    <string name="password_title">Password</string>
+    <string name="display_name_title">Non visualizât</string>
+    <string name="proxy_address_title">Direzion proxy in jessude</string>
+    <string name="port_title">Numar de puarte</string>
+    <string name="transport_title">Gjenar di traspuart</string>
+    <string name="send_keepalive_title">Invie pachets keep-alive</string>
+    <string name="advanced_settings">Impostazions facoltativis</string>
+    <string name="auth_username_title">Non utent pe autenticazion</string>
+    <string name="auth_username_summary">Non utent doprât pe autenticazion</string>
+    <string name="default_preference_summary_username">&lt;No configurât&gt;</string>
+    <string name="default_preference_summary_password">&lt;No configurade&gt;</string>
+    <string name="default_preference_summary_domain_address">&lt;No configurade&gt;</string>
+    <string name="display_name_summary">&lt;Compagn al non utent&gt;</string>
+    <string name="optional_summary">&lt;Facoltative&gt;</string>
+    <string name="advanced_settings_show">▷ Tocje par mostrâ dut</string>
+    <string name="advanced_settings_hide">▽ Tocje par platâ dut</string>
+    <string name="all_empty_alert">Inserìs i detais dal gnûf account SIP.</string>
+    <string name="empty_alert">Il cjamp <xliff:g id="input_field_name" example="Username, Password...">%s</xliff:g> al è obligatori e no tu puedis lassâlu vueit.</string>
+    <string name="not_a_valid_port">Il numar de puarte al à di stâ tra 1000 e 65534.</string>
+    <string name="no_internet_available">Par fâ une clamade SIP, controle prime la tô conession a internet.</string>
+    <string name="no_wifi_available">Tu scugnis jessi conetût a une rêt Wi-Fi par fâ clamadis SIP (dopre lis impostazions: Conessions cence fîi e rêts).</string>
+    <string name="no_voip">Clamadis SIP no supuartadis</string>
+    <string translatable="true" name="sip_system_decide">Automatic</string>
+    <string translatable="true" name="sip_always_send_keepalive">Invie simpri</string>
+    <string name="sip_connection_service_label">Clamadis SIP integradis</string>
+</resources>

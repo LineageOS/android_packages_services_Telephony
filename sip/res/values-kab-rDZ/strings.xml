@@ -14,5 +14,19 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="sip_settings">Iγewwaṛen n SIP</string>
+    <string name="sip_accounts_title">Imiḍanen</string>
+    <string name="add_sip_account">Rnu amiḍan</string>
+    <string name="remove_sip_account">Kkes amiḍan</string>
+    <string name="sip_menu_save">Sekles</string>
+    <string name="sip_menu_discard">Ignorer</string>
+    <string name="alert_dialog_ok">IH</string>
+    <string name="close_profile">Mdel</string>
+    <string name="domain_address_title">Aqeddac</string>
+    <string name="username_title">Isem n useqdac</string>
+    <string name="password_title">Awal uffir</string>
+    <string name="display_name_title">Isem ara d-yettwaskanen</string>
     <string name="all_empty_alert">Sekcem talqayt n umiḍan SIP amaynut.</string>
+    <string translatable="true" name="sip_system_decide">Awurman</string>
+    <string translatable="true" name="sip_always_send_keepalive">Azen yal tikelt</string>
 </resources>
