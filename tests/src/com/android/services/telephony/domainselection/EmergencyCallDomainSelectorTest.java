@@ -102,7 +102,7 @@ import android.telephony.CellIdentityLte;
 import android.telephony.DisconnectCause;
 import android.telephony.DomainSelectionService;
 import android.telephony.DomainSelectionService.SelectionAttributes;
-import android.telephony.EmergencyRegResult;
+import android.telephony.EmergencyRegistrationResult;
 import android.telephony.NetworkRegistrationInfo;
 import android.telephony.PreciseDisconnectCause;
 import android.telephony.SubscriptionManager;
@@ -164,7 +164,7 @@ public class EmergencyCallDomainSelectorTest {
     private @AccessNetworkConstants.RadioAccessNetworkType List<Integer> mAccessNetwork;
     private PowerManager mPowerManager;
     private ConnectivityManager.NetworkCallback mNetworkCallback;
-    private Consumer<EmergencyRegResult> mResultConsumer;
+    private Consumer<EmergencyRegistrationResult> mResultConsumer;
 
     @Before
     public void setUp() throws Exception {
@@ -269,7 +269,8 @@ public class EmergencyCallDomainSelectorTest {
             @Override
             public Void answer(InvocationOnMock invocation) throws Throwable {
                 mAccessNetwork = (List<Integer>) invocation.getArguments()[0];
-                mResultConsumer = (Consumer<EmergencyRegResult>) invocation.getArguments()[4];
+                mResultConsumer =
+                        (Consumer<EmergencyRegistrationResult>) invocation.getArguments()[4];
                 return null;
             }
         }).when(mWwanSelectorCallback).onRequestEmergencyNetworkScan(
@@ -305,7 +306,8 @@ public class EmergencyCallDomainSelectorTest {
     public void testDestroyed() throws Exception {
         createSelector(SLOT_0_SUB_ID);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(UTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(UTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_CS,
                 true, true, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -333,7 +335,7 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(
                 UNKNOWN, REGISTRATION_STATE_UNKNOWN, 0, false, false, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
         mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
@@ -345,7 +347,7 @@ public class EmergencyCallDomainSelectorTest {
     }
 
     @Test
-    public void testNullEmergencyRegResult() throws Exception {
+    public void testNullEmergencyRegistrationResult() throws Exception {
         doReturn(2).when(mTelephonyManager).getActiveModemCount();
 
         createSelector(SLOT_0_SUB_ID);
@@ -365,7 +367,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(true);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_CS | NetworkRegistrationInfo.DOMAIN_PS,
                 true, true, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -395,7 +398,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(true);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_CS | NetworkRegistrationInfo.DOMAIN_PS,
                 true, true, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -416,7 +420,7 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(true);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(
                 UNKNOWN, REGISTRATION_STATE_UNKNOWN, 0, false, false, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
         mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
@@ -442,7 +446,7 @@ public class EmergencyCallDomainSelectorTest {
         doReturn(true).when(mCsrdCtrl).isThereOtherSlot();
         doReturn(new String[] {"jp"}).when(mResources).getStringArray(anyInt());
 
-        EmergencyRegResult regResult = getEmergencyRegResult(
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(
                 UNKNOWN, REGISTRATION_STATE_UNKNOWN, 0, false, false, 0, 0, "", "", "jp");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
         mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
@@ -461,7 +465,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(true);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_CS | NetworkRegistrationInfo.DOMAIN_PS,
                 true, true, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -478,7 +483,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_CS | NetworkRegistrationInfo.DOMAIN_PS,
                 true, true, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -495,7 +501,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_CS | NetworkRegistrationInfo.DOMAIN_PS,
                 true, true, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -518,7 +525,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_CS | NetworkRegistrationInfo.DOMAIN_PS,
                 true, true, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -540,7 +548,7 @@ public class EmergencyCallDomainSelectorTest {
                 .setAddress(TEST_URI)
                 .setCsDisconnectCause(SERVICE_OPTION_NOT_AVAILABLE)
                 .setEmergency(true)
-                .setEmergencyRegResult(regResult);
+                .setEmergencyRegistrationResult(regResult);
         attr = builder.build();
         mDomainSelector.reselectDomain(attr);
         processAllMessages();
@@ -554,7 +562,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_CS | NetworkRegistrationInfo.DOMAIN_PS,
                 true, true, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -573,7 +582,7 @@ public class EmergencyCallDomainSelectorTest {
         SelectionAttributes.Builder builder =
                 new SelectionAttributes.Builder(SLOT_0, SLOT_0_SUB_ID, SELECTOR_TYPE_CALLING)
                 .setEmergency(true)
-                .setEmergencyRegResult(regResult);
+                .setEmergencyRegistrationResult(regResult);
         attr = builder.build();
         mDomainSelector.reselectDomain(attr);
         processAllMessages();
@@ -587,7 +596,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_CS | NetworkRegistrationInfo.DOMAIN_PS,
                 true, true, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -604,7 +614,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_CS | NetworkRegistrationInfo.DOMAIN_PS,
                 true, true, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -621,14 +632,15 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_CS | NetworkRegistrationInfo.DOMAIN_PS,
                 true, true, 0, 0, "", "");
         SelectionAttributes attr = new SelectionAttributes.Builder(
                         SLOT_0, SLOT_0_SUB_ID, SELECTOR_TYPE_CALLING)
                 .setAddress(TEST_URI)
                 .setEmergency(true)
-                .setEmergencyRegResult(regResult)
+                .setEmergencyRegistrationResult(regResult)
                 .setExitedFromAirplaneMode(true)
                 .build();
         mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
@@ -648,14 +660,15 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_CS | NetworkRegistrationInfo.DOMAIN_PS,
                 true, true, 0, 0, "", "");
         SelectionAttributes attr = new SelectionAttributes.Builder(
                         SLOT_0, SLOT_0_SUB_ID, SELECTOR_TYPE_CALLING)
                 .setAddress(TEST_URI)
                 .setEmergency(true)
-                .setEmergencyRegResult(regResult)
+                .setEmergencyRegistrationResult(regResult)
                 .setExitedFromAirplaneMode(true)
                 .build();
         mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
@@ -676,7 +689,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_CS | NetworkRegistrationInfo.DOMAIN_PS,
                 true, true, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -693,7 +707,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(true);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_CS | NetworkRegistrationInfo.DOMAIN_PS,
                 true, true, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -710,7 +725,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(true);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_CS | NetworkRegistrationInfo.DOMAIN_PS,
                 true, false, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -727,7 +743,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_CS | NetworkRegistrationInfo.DOMAIN_PS,
                 true, false, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -744,7 +761,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_CS | NetworkRegistrationInfo.DOMAIN_PS,
                 true, false, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -761,7 +779,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(true);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_CS | NetworkRegistrationInfo.DOMAIN_PS,
                 true, false, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -778,7 +797,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(true);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_CS | NetworkRegistrationInfo.DOMAIN_PS,
                 false, true, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -795,7 +815,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_CS | NetworkRegistrationInfo.DOMAIN_PS,
                 false, true, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -812,7 +833,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_CS | NetworkRegistrationInfo.DOMAIN_PS,
                 false, true, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -829,7 +851,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(true);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_CS | NetworkRegistrationInfo.DOMAIN_PS,
                 false, true, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -846,7 +869,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(true);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_CS | NetworkRegistrationInfo.DOMAIN_PS,
                 false, false, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -863,7 +887,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_CS | NetworkRegistrationInfo.DOMAIN_PS,
                 false, false, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -880,7 +905,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_CS | NetworkRegistrationInfo.DOMAIN_PS,
                 false, false, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -897,7 +923,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(true);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_CS | NetworkRegistrationInfo.DOMAIN_PS,
                 false, false, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -914,7 +941,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(UTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(UTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_CS,
                 true, true, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -938,7 +966,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(UTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(UTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_CS,
                 false, false, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -971,7 +1000,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_CS | NetworkRegistrationInfo.DOMAIN_PS,
                 true, true, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -995,7 +1025,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_CS | NetworkRegistrationInfo.DOMAIN_PS,
                 true, true, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -1012,7 +1043,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(true);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_PS,
                 true, true, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -1029,7 +1061,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_PS,
                 true, true, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -1046,7 +1079,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_PS,
                 true, true, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -1063,7 +1097,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(true);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_PS,
                 true, true, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -1080,7 +1115,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(true);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_PS,
                 true, false, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -1097,7 +1133,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_PS,
                 true, false, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -1114,7 +1151,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_PS,
                 true, false, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -1131,7 +1169,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(true);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_PS,
                 true, false, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -1148,7 +1187,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(true);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_PS,
                 false, true, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -1165,7 +1205,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_PS,
                 false, true, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -1182,7 +1223,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_PS,
                 false, true, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -1199,7 +1241,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(true);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_PS,
                 false, true, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -1216,7 +1259,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(true);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_PS,
                 false, false, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -1233,7 +1277,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_PS,
                 false, false, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -1250,7 +1295,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_PS,
                 false, false, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -1267,7 +1313,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(true);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_PS,
                 false, false, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -1284,7 +1331,7 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(
                 UNKNOWN, REGISTRATION_STATE_UNKNOWN, 0, false, false, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
         mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
@@ -1304,7 +1351,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_PS,
                 true, true, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -1329,7 +1377,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_PS,
                 true, true, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -1351,7 +1400,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_PS,
                 true, true, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -1374,7 +1424,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_PS,
                 true, true, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -1396,7 +1447,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_PS,
                 true, false, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -1418,7 +1470,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(true);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_PS,
                 true, true, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -1460,7 +1513,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(true);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_PS,
                 true, true, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -1484,7 +1538,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(true);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_PS,
                 true, true, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -1523,7 +1578,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(true);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_PS,
                 true, true, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -1556,7 +1612,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(true);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_PS,
                 true, true, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -1589,7 +1646,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(true);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_PS,
                 true, true, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -1627,7 +1685,8 @@ public class EmergencyCallDomainSelectorTest {
         doReturn(true).when(mCsrdCtrl).isThereOtherSlot();
         doReturn(new String[] {"jp"}).when(mResources).getStringArray(anyInt());
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_UNKNOWN,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_UNKNOWN,
                 0, false, false, 0, 0, "", "", "jp");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
         mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
@@ -1650,7 +1709,8 @@ public class EmergencyCallDomainSelectorTest {
         doReturn(true).when(mCsrdCtrl).isThereOtherSlot();
         doReturn(new String[] {"jp"}).when(mResources).getStringArray(anyInt());
 
-        EmergencyRegResult regResult = getEmergencyRegResult(UNKNOWN, REGISTRATION_STATE_UNKNOWN,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(UNKNOWN,
+                REGISTRATION_STATE_UNKNOWN,
                 0, false, false, 0, 0, "", "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
         mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
@@ -1680,7 +1740,8 @@ public class EmergencyCallDomainSelectorTest {
         doReturn(false).when(mCsrdCtrl).isThereOtherSlot();
         doReturn(new String[] {"jp"}).when(mResources).getStringArray(anyInt());
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_UNKNOWN,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_UNKNOWN,
                 0, false, false, 0, 0, "", "", "jp");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
         mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
@@ -1698,7 +1759,8 @@ public class EmergencyCallDomainSelectorTest {
     public void testEutranWithCsDomainOnly() throws Exception {
         setupForHandleScanResult();
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 DOMAIN_CS, false, false, 0, 0, "", "");
         mResultConsumer.accept(regResult);
         processAllMessages();
@@ -1710,7 +1772,8 @@ public class EmergencyCallDomainSelectorTest {
     public void testEutranWithPsDomainOnly() throws Exception {
         setupForHandleScanResult();
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 DOMAIN_PS, false, false, 0, 0, "", "");
         mResultConsumer.accept(regResult);
         processAllMessages();
@@ -1722,7 +1785,8 @@ public class EmergencyCallDomainSelectorTest {
     public void testUtran() throws Exception {
         setupForHandleScanResult();
 
-        EmergencyRegResult regResult = getEmergencyRegResult(UTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(UTRAN,
+                REGISTRATION_STATE_HOME,
                 DOMAIN_CS, false, false, 0, 0, "", "");
         mResultConsumer.accept(regResult);
         processAllMessages();
@@ -1740,7 +1804,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(true);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(UNKNOWN, REGISTRATION_STATE_UNKNOWN,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(UNKNOWN,
+                REGISTRATION_STATE_UNKNOWN,
                 0, false, false, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
         mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
@@ -1769,7 +1834,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(true);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_ROAMING,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_ROAMING,
                 0, true, false, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
         mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
@@ -1794,7 +1860,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(true);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(UNKNOWN, REGISTRATION_STATE_UNKNOWN,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(UNKNOWN,
+                REGISTRATION_STATE_UNKNOWN,
                 0, false, false, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
         mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
@@ -2073,7 +2140,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_PS,
                 true, true, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -2099,7 +2167,7 @@ public class EmergencyCallDomainSelectorTest {
         unsolBarringInfoChanged(false);
         doReturn(2).when(mTelephonyManager).getActiveModemCount();
 
-        EmergencyRegResult regResult = getEmergencyRegResult(
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(
                 UNKNOWN, REGISTRATION_STATE_UNKNOWN, 0, false, false, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
         mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
@@ -2127,7 +2195,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(UTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(UTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_CS,
                 true, true, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -2141,7 +2210,7 @@ public class EmergencyCallDomainSelectorTest {
         attr = new SelectionAttributes.Builder(SLOT_0, SLOT_0_SUB_ID, SELECTOR_TYPE_CALLING)
                 .setAddress(TEST_URI)
                 .setEmergency(true)
-                .setEmergencyRegResult(regResult)
+                .setEmergencyRegistrationResult(regResult)
                 .setCsDisconnectCause(PreciseDisconnectCause.EMERGENCY_TEMP_FAILURE)
                 .build();
 
@@ -2156,7 +2225,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(UTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(UTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_CS,
                 true, true, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -2170,7 +2240,7 @@ public class EmergencyCallDomainSelectorTest {
         attr = new SelectionAttributes.Builder(SLOT_0, SLOT_0_SUB_ID, SELECTOR_TYPE_CALLING)
                 .setAddress(TEST_URI)
                 .setEmergency(true)
-                .setEmergencyRegResult(regResult)
+                .setEmergencyRegistrationResult(regResult)
                 .setCsDisconnectCause(PreciseDisconnectCause.EMERGENCY_PERM_FAILURE)
                 .build();
 
@@ -2185,7 +2255,7 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(
                 UNKNOWN, REGISTRATION_STATE_UNKNOWN, 0, false, false, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
         mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
@@ -2206,7 +2276,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(UTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(UTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_CS,
                 true, true, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -2326,7 +2397,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(UTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(UTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_CS,
                 true, true, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -2379,7 +2451,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(UTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(UTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_CS,
                 true, true, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -2497,7 +2570,8 @@ public class EmergencyCallDomainSelectorTest {
         verify(mTransportSelectorCallback, times(1)).onWlanSelected(anyBoolean());
         assertFalse(mDomainSelector.hasMessages(MSG_MAX_CELLULAR_TIMEOUT));
 
-        EmergencyRegResult regResult = getEmergencyRegResult(UTRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(UTRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_CS,
                 true, true, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
@@ -2524,7 +2598,7 @@ public class EmergencyCallDomainSelectorTest {
         when(mTelephonyManager.getSimState(anyInt())).thenReturn(
                 TelephonyManager.SIM_STATE_PIN_REQUIRED);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(
                 UNKNOWN, REGISTRATION_STATE_UNKNOWN, 0, false, false, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
         mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
@@ -2550,7 +2624,7 @@ public class EmergencyCallDomainSelectorTest {
         when(mTelephonyManager.getSimState(anyInt())).thenReturn(
                 TelephonyManager.SIM_STATE_PIN_REQUIRED);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(
                 UNKNOWN, REGISTRATION_STATE_UNKNOWN, 0, false, false, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
         mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
@@ -2573,7 +2647,7 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SubscriptionManager.INVALID_SUBSCRIPTION_ID);
         unsolBarringInfoChanged(false);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(
                 UNKNOWN, REGISTRATION_STATE_UNKNOWN, 0, false, false, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0,
                 SubscriptionManager.INVALID_SUBSCRIPTION_ID, regResult);
@@ -2600,7 +2674,7 @@ public class EmergencyCallDomainSelectorTest {
         // The last valid subscription supported NR.
         doReturn(true).when(mCarrierConfigHelper).isVoNrEmergencySupported(eq(SLOT_0));
 
-        EmergencyRegResult regResult = getEmergencyRegResult(
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(
                 UNKNOWN, REGISTRATION_STATE_UNKNOWN, 0, false, false, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0,
                 SubscriptionManager.INVALID_SUBSCRIPTION_ID, regResult);
@@ -2624,7 +2698,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_UNKNOWN,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_UNKNOWN,
                 0, false, true, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
         mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
@@ -2646,7 +2721,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(NGRAN, REGISTRATION_STATE_HOME,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(NGRAN,
+                REGISTRATION_STATE_HOME,
                 NetworkRegistrationInfo.DOMAIN_PS, true, false, 1, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
         mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
@@ -2672,7 +2748,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(NGRAN, REGISTRATION_STATE_UNKNOWN,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(NGRAN,
+                REGISTRATION_STATE_UNKNOWN,
                 0, false, true, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
         mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
@@ -2688,7 +2765,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(UTRAN, REGISTRATION_STATE_UNKNOWN,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(UTRAN,
+                REGISTRATION_STATE_UNKNOWN,
                 0, false, true, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID,
                 true /*isTestEmergencyNumber*/, regResult);
@@ -2705,7 +2783,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_UNKNOWN,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_UNKNOWN,
                 0, false, true, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID,
                 true /*isTestEmergencyNumber*/, regResult);
@@ -2722,7 +2801,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(UNKNOWN, REGISTRATION_STATE_UNKNOWN,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(UNKNOWN,
+                REGISTRATION_STATE_UNKNOWN,
                 0, false, false, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID,
                 true /*isTestEmergencyNumber*/, regResult);
@@ -2740,7 +2820,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(UTRAN, REGISTRATION_STATE_UNKNOWN,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(UTRAN,
+                REGISTRATION_STATE_UNKNOWN,
                 0, false, false, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
         mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
@@ -2760,7 +2841,8 @@ public class EmergencyCallDomainSelectorTest {
         doReturn(TRANSPORT_TYPE_WWAN).when(mEcbmHelper).getTransportType(anyInt());
         doReturn(DATA_CONNECTED).when(mEcbmHelper).getDataConnectionState(anyInt());
 
-        EmergencyRegResult regResult = getEmergencyRegResult(UNKNOWN, REGISTRATION_STATE_UNKNOWN,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(UNKNOWN,
+                REGISTRATION_STATE_UNKNOWN,
                 0, false, false, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
         mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
@@ -2782,7 +2864,8 @@ public class EmergencyCallDomainSelectorTest {
         doReturn(TRANSPORT_TYPE_WLAN).when(mEcbmHelper).getTransportType(anyInt());
         doReturn(DATA_CONNECTED).when(mEcbmHelper).getDataConnectionState(anyInt());
 
-        EmergencyRegResult regResult = getEmergencyRegResult(UNKNOWN, REGISTRATION_STATE_UNKNOWN,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(UNKNOWN,
+                REGISTRATION_STATE_UNKNOWN,
                 0, false, false, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
         mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
@@ -2803,7 +2886,8 @@ public class EmergencyCallDomainSelectorTest {
         doReturn(true).when(mEcbmHelper).isInEmergencyCallbackMode(anyInt());
         doReturn(TRANSPORT_TYPE_WLAN).when(mEcbmHelper).getTransportType(anyInt());
 
-        EmergencyRegResult regResult = getEmergencyRegResult(UNKNOWN, REGISTRATION_STATE_UNKNOWN,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(UNKNOWN,
+                REGISTRATION_STATE_UNKNOWN,
                 0, false, false, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
         mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
@@ -2825,7 +2909,8 @@ public class EmergencyCallDomainSelectorTest {
         doReturn(TRANSPORT_TYPE_WLAN).when(mEcbmHelper).getTransportType(anyInt());
         doReturn(DATA_CONNECTED).when(mEcbmHelper).getDataConnectionState(anyInt());
 
-        EmergencyRegResult regResult = getEmergencyRegResult(UNKNOWN, REGISTRATION_STATE_UNKNOWN,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(UNKNOWN,
+                REGISTRATION_STATE_UNKNOWN,
                 0, false, false, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
         mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
@@ -2847,7 +2932,8 @@ public class EmergencyCallDomainSelectorTest {
 
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_UNKNOWN,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_UNKNOWN,
                 0, false, false, 0, 0, "", "");
         if (psFailed) {
             regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_HOME,
@@ -2894,7 +2980,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(true);
 
-        EmergencyRegResult regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_UNKNOWN,
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_UNKNOWN,
                 0, false, false, 0, 0, "", "");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
         mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
@@ -2970,7 +3057,7 @@ public class EmergencyCallDomainSelectorTest {
         mDomainSelector.onImsMmTelCapabilitiesChanged();
     }
 
-    private static EmergencyRegResult getEmergencyRegResult(
+    private static EmergencyRegistrationResult getEmergencyRegResult(
             @AccessNetworkConstants.RadioAccessNetworkType int accessNetwork,
             @NetworkRegistrationInfo.RegistrationState int regState,
             @NetworkRegistrationInfo.Domain int domain,
@@ -2980,13 +3067,13 @@ public class EmergencyCallDomainSelectorTest {
                 isEmcBearerSupported, emc, emf, mcc, mnc, "");
     }
 
-    private static EmergencyRegResult getEmergencyRegResult(
+    private static EmergencyRegistrationResult getEmergencyRegResult(
             @AccessNetworkConstants.RadioAccessNetworkType int accessNetwork,
             @NetworkRegistrationInfo.RegistrationState int regState,
             @NetworkRegistrationInfo.Domain int domain,
             boolean isVopsSupported, boolean isEmcBearerSupported, int emc, int emf,
             @NonNull String mcc, @NonNull String mnc, @NonNull String iso) {
-        return new EmergencyRegResult(accessNetwork, regState,
+        return new EmergencyRegistrationResult(accessNetwork, regState,
                 domain, isVopsSupported, isEmcBearerSupported,
                 emc, emf, mcc, mnc, iso);
     }
@@ -3081,18 +3168,18 @@ public class EmergencyCallDomainSelectorTest {
     }
 
     private static SelectionAttributes getSelectionAttributes(int slotId, int subId,
-            EmergencyRegResult regResult) {
+            EmergencyRegistrationResult regResult) {
         return getSelectionAttributes(slotId, subId, false, regResult);
     }
 
     private static SelectionAttributes getSelectionAttributes(int slotId, int subId,
-            boolean isTestEmergencyNumber, EmergencyRegResult regResult) {
+            boolean isTestEmergencyNumber, EmergencyRegistrationResult regResult) {
         SelectionAttributes.Builder builder =
                 new SelectionAttributes.Builder(slotId, subId, SELECTOR_TYPE_CALLING)
                 .setAddress(TEST_URI)
                 .setEmergency(true)
                 .setTestEmergencyNumber(isTestEmergencyNumber)
-                .setEmergencyRegResult(regResult);
+                .setEmergencyRegistrationResult(regResult);
         return builder.build();
     }
 
