@@ -9454,17 +9454,17 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             enforceModifyPermission();
         }
 
-        if (reason == TelephonyManager.DATA_ENABLED_REASON_USER && enabled
-                && null != callingPackage && opEnableMobileDataByUser()) {
-            mAppOps.noteOp(AppOpsManager.OPSTR_ENABLE_MOBILE_DATA_BY_USER, Binder.getCallingUid(),
-                    callingPackage, null, null);
-        }
-
         enforceTelephonyFeatureWithException(callingPackage,
                 PackageManager.FEATURE_TELEPHONY_DATA, "setDataEnabledForReason");
 
+        int callingUid = Binder.getCallingUid();
         final long identity = Binder.clearCallingIdentity();
         try {
+            if (reason == TelephonyManager.DATA_ENABLED_REASON_USER && enabled
+                    && null != callingPackage && opEnableMobileDataByUser()) {
+                mAppOps.noteOp(AppOpsManager.OPSTR_ENABLE_MOBILE_DATA_BY_USER,
+                        callingUid, callingPackage, null, null);
+            }
             Phone phone = getPhone(subId);
             if (phone != null) {
                 if (reason == TelephonyManager.DATA_ENABLED_REASON_CARRIER) {
