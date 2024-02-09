@@ -34,6 +34,8 @@ import android.telephony.SubscriptionManager;
 import android.telephony.TransportSelectorCallback;
 import android.telephony.ims.ImsReasonInfo;
 
+import com.android.internal.annotations.VisibleForTesting;
+
 /**
  * Implements domain selector for outgoing non-emergency calls.
  */
@@ -42,14 +44,15 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
 
     private static final String LOG_TAG = "NCDS";
 
-    private enum SelectorState {
+    @VisibleForTesting
+    protected enum SelectorState {
         ACTIVE,
         INACTIVE,
         DESTROYED
     };
 
-    private SelectorState mSelectorState = SelectorState.INACTIVE;
-    private ServiceState mServiceState;
+    protected SelectorState mSelectorState = SelectorState.INACTIVE;
+    protected ServiceState mServiceState;
     private boolean mImsRegStateReceived;
     private boolean mMmTelCapabilitiesReceived;
     private boolean mReselectDomain;
@@ -75,6 +78,7 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
         mSelectorState = SelectorState.ACTIVE;
 
         if (callback == null) {
+            mSelectorState = SelectorState.INACTIVE;
             loge("Invalid params: TransportSelectorCallback is null");
             return;
         }
@@ -101,6 +105,7 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
             logd("NormalCallDomainSelection triggered. Sub-id:" + subId);
             post(() -> selectDomain());
         } else {
+            mSelectorState = SelectorState.INACTIVE;
             loge("Subscription-ids doesn't match. This instance is associated with sub-id:"
                     + getSubId() + ", requested sub-id:" + subId);
             // TODO: Throw anamoly here. This condition should never occur.
@@ -135,9 +140,20 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
     @Override
     public void destroy() {
         logd("destroy");
-        if (mSelectorState == SelectorState.INACTIVE) {
-            mSelectorState = SelectorState.DESTROYED;
-            super.destroy();
+        switch (mSelectorState) {
+            case INACTIVE:
+                mSelectorState = SelectorState.DESTROYED;
+                super.destroy();
+                break;
+
+            case ACTIVE:
+                loge("destroy is called when selector state is in ACTIVE state");
+                cancelSelection();
+                break;
+
+            case DESTROYED:
+                super.destroy();
+                break;
         }
     }
 
@@ -410,5 +426,10 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
                 notifyCsSelected();
             }
         }
+    }
+
+    @VisibleForTesting
+    public SelectorState getSelectorState() {
+        return mSelectorState;
     }
 }
