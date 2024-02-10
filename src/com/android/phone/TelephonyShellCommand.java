@@ -191,8 +191,11 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             "set-satellite-listening-timeout-duration";
     private static final String SET_SATELLITE_POINTING_UI_CLASS_NAME =
             "set-satellite-pointing-ui-class-name";
-    private static final String SET_SATELLITE_DEVICE_ALIGNED_TIMEOUT_DURATION =
-            "set-satellite-device-aligned-timeout-duration";
+    private static final String SET_DATAGRAM_CONTROLLER_TIMEOUT_DURATION =
+            "set-datagram-controller-timeout-duration";
+
+    private static final String SET_SATELLITE_CONTROLLER_TIMEOUT_DURATION =
+            "set-satellite-controller-timeout-duration";
     private static final String SET_EMERGENCY_CALL_TO_SATELLITE_HANDOVER_TYPE =
             "set-emergency-call-to-satellite-handover-type";
     private static final String SET_COUNTRY_CODES = "set-country-codes";
@@ -397,8 +400,10 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                 return handleSetSatelliteListeningTimeoutDuration();
             case SET_SATELLITE_POINTING_UI_CLASS_NAME:
                 return handleSetSatellitePointingUiClassNameCommand();
-            case SET_SATELLITE_DEVICE_ALIGNED_TIMEOUT_DURATION:
-                return handleSettSatelliteDeviceAlignedTimeoutDuration();
+            case SET_DATAGRAM_CONTROLLER_TIMEOUT_DURATION:
+                return handleSetDatagramControllerTimeoutDuration();
+            case SET_SATELLITE_CONTROLLER_TIMEOUT_DURATION:
+                return handleSetSatelliteControllerTimeoutDuration();
             case SET_EMERGENCY_CALL_TO_SATELLITE_HANDOVER_TYPE:
                 return handleSetEmergencyCallToSatelliteHandoverType();
             case SET_SHOULD_SEND_DATAGRAM_TO_MODEM_IN_DEMO_MODE:
@@ -3368,31 +3373,85 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         return 0;
     }
 
-    private int handleSettSatelliteDeviceAlignedTimeoutDuration() {
+    private int handleSetDatagramControllerTimeoutDuration() {
         PrintWriter errPw = getErrPrintWriter();
+        boolean reset = false;
+        int timeoutType = 0;
         long timeoutMillis = 0;
 
         String opt;
         while ((opt = getNextOption()) != null) {
             switch (opt) {
-                case "-t": {
+                case "-d": {
                     timeoutMillis = Long.parseLong(getNextArgRequired());
+                    break;
+                }
+                case "-r": {
+                    reset = true;
+                    break;
+                }
+                case "-t": {
+                    timeoutType = Integer.parseInt(getNextArgRequired());
                     break;
                 }
             }
         }
-        Log.d(LOG_TAG, "handleSettSatelliteDeviceAlignedTimeoutDuration: timeoutMillis="
-                + timeoutMillis);
+        Log.d(LOG_TAG, "setDatagramControllerTimeoutDuration: timeoutMillis="
+                + timeoutMillis + ", reset=" + reset + ", timeoutType=" + timeoutType);
 
         try {
-            boolean result = mInterface.setSatelliteDeviceAlignedTimeoutDuration(timeoutMillis);
+            boolean result = mInterface.setDatagramControllerTimeoutDuration(
+                    reset, timeoutType, timeoutMillis);
             if (VDBG) {
-                Log.v(LOG_TAG, "setSatelliteDeviceAlignedTimeoutDuration " + timeoutMillis
+                Log.v(LOG_TAG, "setDatagramControllerTimeoutDuration " + timeoutMillis
                         + ", result = " + result);
             }
             getOutPrintWriter().println(result);
         } catch (RemoteException e) {
-            Log.w(LOG_TAG, "setSatelliteDeviceAlignedTimeoutDuration: " + timeoutMillis
+            Log.w(LOG_TAG, "setDatagramControllerTimeoutDuration: " + timeoutMillis
+                    + ", error = " + e.getMessage());
+            errPw.println("Exception: " + e.getMessage());
+            return -1;
+        }
+        return 0;
+    }
+
+    private int handleSetSatelliteControllerTimeoutDuration() {
+        PrintWriter errPw = getErrPrintWriter();
+        boolean reset = false;
+        int timeoutType = 0;
+        long timeoutMillis = 0;
+
+        String opt;
+        while ((opt = getNextOption()) != null) {
+            switch (opt) {
+                case "-d": {
+                    timeoutMillis = Long.parseLong(getNextArgRequired());
+                    break;
+                }
+                case "-r": {
+                    reset = true;
+                    break;
+                }
+                case "-t": {
+                    timeoutType = Integer.parseInt(getNextArgRequired());
+                    break;
+                }
+            }
+        }
+        Log.d(LOG_TAG, "setSatelliteControllerTimeoutDuration: timeoutMillis="
+                + timeoutMillis + ", reset=" + reset + ", timeoutType=" + timeoutType);
+
+        try {
+            boolean result = mInterface.setSatelliteControllerTimeoutDuration(
+                    reset, timeoutType, timeoutMillis);
+            if (VDBG) {
+                Log.v(LOG_TAG, "setSatelliteControllerTimeoutDuration " + timeoutMillis
+                        + ", result = " + result);
+            }
+            getOutPrintWriter().println(result);
+        } catch (RemoteException e) {
+            Log.w(LOG_TAG, "setSatelliteControllerTimeoutDuration: " + timeoutMillis
                     + ", error = " + e.getMessage());
             errPw.println("Exception: " + e.getMessage());
             return -1;

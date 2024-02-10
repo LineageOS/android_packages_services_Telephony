@@ -9454,17 +9454,17 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             enforceModifyPermission();
         }
 
-        if (reason == TelephonyManager.DATA_ENABLED_REASON_USER && enabled
-                && null != callingPackage && opEnableMobileDataByUser()) {
-            mAppOps.noteOp(AppOpsManager.OPSTR_ENABLE_MOBILE_DATA_BY_USER, Binder.getCallingUid(),
-                    callingPackage, null, null);
-        }
-
         enforceTelephonyFeatureWithException(callingPackage,
                 PackageManager.FEATURE_TELEPHONY_DATA, "setDataEnabledForReason");
 
+        int callingUid = Binder.getCallingUid();
         final long identity = Binder.clearCallingIdentity();
         try {
+            if (reason == TelephonyManager.DATA_ENABLED_REASON_USER && enabled
+                    && null != callingPackage && opEnableMobileDataByUser()) {
+                mAppOps.noteOp(AppOpsManager.OPSTR_ENABLE_MOBILE_DATA_BY_USER,
+                        callingUid, callingPackage, null, null);
+            }
             Phone phone = getPhone(subId);
             if (phone != null) {
                 if (reason == TelephonyManager.DATA_ENABLED_REASON_CARRIER) {
@@ -13670,20 +13670,43 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
-     * This API can be used by only CTS to update the timeout duration in milliseconds whether
-     * the device is aligned with the satellite for demo mode
+     * This API can be used by only CTS to override the timeout durations used by the
+     * DatagramController module.
      *
      * @param timeoutMillis The timeout duration in millisecond.
      * @return {@code true} if the timeout duration is set successfully, {@code false} otherwise.
      */
-    public boolean setSatelliteDeviceAlignedTimeoutDuration(long timeoutMillis) {
-        Log.d(LOG_TAG, "setDeviceAlignedTimeoutDuration - " + timeoutMillis);
+    public boolean setDatagramControllerTimeoutDuration(
+            boolean reset, int timeoutType, long timeoutMillis) {
+        Log.d(LOG_TAG, "setDatagramControllerTimeoutDuration - " + timeoutMillis + ", reset="
+                + reset + ", timeoutMillis=" + timeoutMillis);
         TelephonyPermissions.enforceShellOnly(
-                Binder.getCallingUid(), "setDeviceAlignedTimeoutDuration");
+                Binder.getCallingUid(), "setDatagramControllerTimeoutDuration");
         TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(mApp,
                 SubscriptionManager.INVALID_SUBSCRIPTION_ID,
-                "setDeviceAlignedTimeoutDuration");
-        return mSatelliteController.setSatelliteDeviceAlignedTimeoutDuration(timeoutMillis);
+                "setDatagramControllerTimeoutDuration");
+        return mSatelliteController.setDatagramControllerTimeoutDuration(
+                reset, timeoutType, timeoutMillis);
+    }
+
+    /**
+     * This API can be used by only CTS to override the timeout durations used by the
+     * SatelliteController module.
+     *
+     * @param timeoutMillis The timeout duration in millisecond.
+     * @return {@code true} if the timeout duration is set successfully, {@code false} otherwise.
+     */
+    public boolean setSatelliteControllerTimeoutDuration(
+            boolean reset, int timeoutType, long timeoutMillis) {
+        Log.d(LOG_TAG, "setSatelliteControllerTimeoutDuration - " + timeoutMillis + ", reset="
+                + reset + ", timeoutMillis=" + timeoutMillis);
+        TelephonyPermissions.enforceShellOnly(
+                Binder.getCallingUid(), "setSatelliteControllerTimeoutDuration");
+        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(mApp,
+                SubscriptionManager.INVALID_SUBSCRIPTION_ID,
+                "setSatelliteControllerTimeoutDuration");
+        return mSatelliteController.setSatelliteControllerTimeoutDuration(
+                reset, timeoutType, timeoutMillis);
     }
 
     /**
