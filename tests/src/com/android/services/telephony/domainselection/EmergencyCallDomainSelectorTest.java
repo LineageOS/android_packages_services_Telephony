@@ -87,6 +87,7 @@ import android.content.res.Resources;
 import android.net.ConnectivityManager;
 import android.net.NetworkRequest;
 import android.net.Uri;
+import android.os.CancellationSignal;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.IPowerManager;
@@ -122,6 +123,7 @@ import com.android.TestContext;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.invocation.InvocationOnMock;
@@ -2262,13 +2264,24 @@ public class EmergencyCallDomainSelectorTest {
         processAllMessages();
 
         bindImsServiceUnregistered();
+        processAllMessages();
 
-        verifyScanPsPreferred();
+        ArgumentCaptor<CancellationSignal> cancelCaptor =
+                ArgumentCaptor.forClass(CancellationSignal.class);
+
+        verify(mWwanSelectorCallback, times(1)).onRequestEmergencyNetworkScan(
+                any(), eq(DomainSelectionService.SCAN_TYPE_NO_PREFERENCE),
+                anyBoolean(), cancelCaptor.capture(), any());
+        assertEquals(EUTRAN, (int) mAccessNetwork.get(0));
 
         mDomainSelector.notifyCrossStackTimerExpired();
 
         verify(mTransportSelectorCallback)
                 .onSelectionTerminated(eq(DisconnectCause.EMERGENCY_TEMP_FAILURE));
+
+        CancellationSignal cancelSignal = cancelCaptor.getValue();
+        assertNotNull(cancelSignal);
+        assertFalse(cancelSignal.isCanceled());
     }
 
     @Test
