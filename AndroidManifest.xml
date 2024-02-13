@@ -175,6 +175,9 @@
     <!-- Needed to send safety center updates for cellular transparency features   -->
     <uses-permission android:name="android.permission.SEND_SAFETY_CENTER_UPDATE"/>
 
+    <!-- Needed because the DISPLAY_EMERGENCY_MESSAGE ConnectionEvent contains a PendingIntent to activate the satellite feature. -->
+    <uses-permission android:name="com.google.android.apps.stargate.permission.SEND_EMERGENCY_INTENTS"/>
+
     <application android:name="PhoneApp"
             android:persistent="true"
             android:label="@string/phoneAppLabel"
