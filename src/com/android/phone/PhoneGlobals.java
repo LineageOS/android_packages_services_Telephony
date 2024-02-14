@@ -241,14 +241,14 @@ public class PhoneGlobals extends ContextWrapper {
     private final CarrierVvmPackageInstalledReceiver mCarrierVvmPackageInstalledReceiver =
             new CarrierVvmPackageInstalledReceiver();
 
-    private final SettingsObserver mSettingsObserver;
+    private SettingsObserver mSettingsObserver;
     private BinderCallsStats.SettingsObserver mBinderCallsSettingsObserver;
 
     // Mapping of phone ID to the associated TelephonyCallback. These should be registered without
     // fine or coarse location since we only use ServiceState for
     private PhoneAppCallback[] mTelephonyCallbacks;
 
-    private FeatureFlags mFeatureFlags;
+    private FeatureFlags mFeatureFlags = new FeatureFlagsImpl();
 
     private class PhoneAppCallback extends TelephonyCallback implements
             TelephonyCallback.ServiceStateListener {
@@ -462,13 +462,26 @@ public class PhoneGlobals extends ContextWrapper {
     public PhoneGlobals(Context context) {
         super(context);
         sMe = this;
-        mSettingsObserver = new SettingsObserver(context, mHandler);
+        if (mFeatureFlags.enforceTelephonyFeatureMappingForPublicApis()) {
+            if (getPackageManager().hasSystemFeature(PackageManager.FEATURE_TELEPHONY)) {
+                mSettingsObserver = new SettingsObserver(context, mHandler);
+            }
+        } else {
+            mSettingsObserver = new SettingsObserver(context, mHandler);
+        }
     }
 
     public void onCreate() {
         if (VDBG) Log.v(LOG_TAG, "onCreate()...");
 
         ContentResolver resolver = getContentResolver();
+
+        if (mFeatureFlags.enforceTelephonyFeatureMappingForPublicApis()) {
+            if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_TELEPHONY)) {
+                Log.v(LOG_TAG, "onCreate()... but not defined FEATURE_TELEPHONY");
+                return;
+            }
+        }
 
         // Initialize the shim from frameworks/opt/telephony into packages/services/Telephony.
         TelephonyLocalConnection.setInstance(new LocalConnectionImpl(this));
@@ -499,7 +512,6 @@ public class PhoneGlobals extends ContextWrapper {
             DomainSelectionResolver.make(this, dssComponentName);
 
             // Initialize the telephony framework
-            mFeatureFlags = new FeatureFlagsImpl();
             PhoneFactory.makeDefaultPhones(this, mFeatureFlags);
 
             // Initialize the DomainSelectionResolver after creating the Phone instance

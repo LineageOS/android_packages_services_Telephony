@@ -22,7 +22,9 @@ import static android.safetycenter.SafetyCenterManager.EXTRA_REFRESH_SAFETY_SOUR
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 
+import com.android.internal.telephony.flags.Flags;
 import com.android.phone.PhoneGlobals;
 
 public final class SafetySourceReceiver extends BroadcastReceiver {
@@ -39,6 +41,12 @@ public final class SafetySourceReceiver extends BroadcastReceiver {
             return;
         }
 
-        PhoneGlobals.getPhone().refreshSafetySources(refreshBroadcastId);
+        if (Flags.enforceTelephonyFeatureMappingForPublicApis()) {
+            if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_TELEPHONY)) {
+                PhoneGlobals.getPhone().refreshSafetySources(refreshBroadcastId);
+            }
+        } else {
+            PhoneGlobals.getPhone().refreshSafetySources(refreshBroadcastId);
+        }
     }
 }

@@ -38,7 +38,11 @@ public class PhoneApp extends Application {
             mPhoneGlobals = new PhoneGlobals(this);
             mPhoneGlobals.onCreate();
 
-            TelecomAccountRegistry.getInstance(this).setupOnBoot();
+            TelecomAccountRegistry telecomAccountRegistry =
+                    TelecomAccountRegistry.getInstance(this);
+            if (telecomAccountRegistry != null) {
+                telecomAccountRegistry.setupOnBoot();
+            }
         }
     }
 }
