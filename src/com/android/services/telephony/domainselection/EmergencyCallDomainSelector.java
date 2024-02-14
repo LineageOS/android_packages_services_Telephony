@@ -395,6 +395,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
 
     private void reselectDomainInternal() {
         post(() -> {
+            if (mDestroyed) return;
             requestScan(true, false, true);
             mDomainSelected = false;
         });
@@ -636,6 +637,8 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
     }
 
     private void selectDomainFromInitialState() {
+        if (mDestroyed) return;
+
         boolean csInService = isCsInService();
         boolean psInService = isPsInService();
 

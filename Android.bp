@@ -83,6 +83,8 @@ android_app {
     proto: {
         type: "lite",
     },
+
+    generate_product_characteristics_rro: true,
 }
 
 // Allow other applications to use public constants from SlicePurchaseController

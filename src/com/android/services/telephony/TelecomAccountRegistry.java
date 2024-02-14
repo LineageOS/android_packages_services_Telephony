@@ -1258,7 +1258,17 @@ public class TelecomAccountRegistry {
      */
     public static synchronized TelecomAccountRegistry getInstance(Context context) {
         if (sInstance == null && context != null) {
-            sInstance = new TelecomAccountRegistry(context);
+            if (Flags.enforceTelephonyFeatureMappingForPublicApis()) {
+                PackageManager pm = context.getPackageManager();
+                if (pm != null && pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY)
+                        && pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY_CALLING)) {
+                    sInstance = new TelecomAccountRegistry(context);
+                } else {
+                    Log.i(LOG_TAG, "getInstance: Telephony features required");
+                }
+            } else {
+                sInstance = new TelecomAccountRegistry(context);
+            }
         }
         return sInstance;
     }
