@@ -37,9 +37,9 @@ import android.telephony.DomainSelectionService.SelectionAttributes;
 import android.telephony.NetworkRegistrationInfo;
 import android.telephony.TransportSelectorCallback;
 import android.telephony.WwanSelectorCallback;
-import android.test.suitebuilder.annotation.SmallTest;
 import android.testing.TestableLooper;
 
+import androidx.test.filters.SmallTest;
 import androidx.test.runner.AndroidJUnit4;
 
 import com.android.TestContext;

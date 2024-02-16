@@ -28,7 +28,8 @@ import android.os.Looper;
 import android.telecom.Conference;
 import android.telecom.Connection;
 import android.telecom.PhoneAccount;
-import android.test.suitebuilder.annotation.SmallTest;
+
+import androidx.test.filters.SmallTest;
 
 import org.junit.Before;
 import org.junit.Test;

@@ -61,9 +61,10 @@ import android.telephony.ims.aidl.IImsConfig;
 import android.telephony.ims.aidl.IRcsConfigCallback;
 import android.test.mock.MockContentProvider;
 import android.test.mock.MockContentResolver;
-import android.test.suitebuilder.annotation.SmallTest;
 import android.testing.TestableLooper;
 import android.util.Log;
+
+import androidx.test.filters.SmallTest;
 
 import com.android.ims.FeatureConnector;
 import com.android.ims.RcsFeatureManager;

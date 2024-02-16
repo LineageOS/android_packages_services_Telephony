@@ -113,10 +113,11 @@ import android.telephony.WwanSelectorCallback;
 import android.telephony.ims.ImsManager;
 import android.telephony.ims.ImsMmTelManager;
 import android.telephony.ims.ProvisioningManager;
-import android.test.suitebuilder.annotation.SmallTest;
 import android.testing.TestableLooper;
 import android.util.Log;
 import android.util.SparseArray;
+
+import androidx.test.filters.SmallTest;
 
 import com.android.TestContext;
 
