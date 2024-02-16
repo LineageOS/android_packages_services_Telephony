@@ -226,7 +226,7 @@ public class TelephonyDomainSelectionService extends DomainSelectionService {
         mContext = getApplicationContext();
 
         // Create a worker thread for this domain selection service.
-        onCreateExecutor();
+        getCreateExecutor();
 
         TelephonyManager tm = mContext.getSystemService(TelephonyManager.class);
         int activeModemCount = (tm != null) ? tm.getActiveModemCount() : 1;
@@ -385,7 +385,7 @@ public class TelephonyDomainSelectionService extends DomainSelectionService {
      *  Returns an Executor used to execute methods called remotely by the framework.
      */
     @Override
-    public @NonNull Executor onCreateExecutor() {
+    public @NonNull Executor getCreateExecutor() {
         return getExecutor();
     }
 
