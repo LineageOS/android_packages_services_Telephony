@@ -24,11 +24,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 
+import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.flags.Flags;
 import com.android.phone.PhoneGlobals;
 
-public final class SafetySourceReceiver extends BroadcastReceiver {
+public class SafetySourceReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 
@@ -60,12 +61,17 @@ public final class SafetySourceReceiver extends BroadcastReceiver {
     }
 
     private void refreshSafetySources(String refreshBroadcastId) {
-        Phone phone = PhoneGlobals.getPhone();
+        Phone phone = getDefaultPhone();
         // It's possible that phones have not been created yet. Safety center may send a refresh
         // broadcast very early on.
         if (phone != null) {
             phone.refreshSafetySources(refreshBroadcastId);
         }
 
+    }
+
+    @VisibleForTesting
+    public Phone getDefaultPhone() {
+        return PhoneGlobals.getPhone();
     }
 }
