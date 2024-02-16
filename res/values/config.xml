@@ -337,6 +337,14 @@
         <item>de</item>
     </string-array>
 
+    <!-- Array of countries that a normal service capable subscription is preferred
+         for emergency calls. Values should be ISO3166 country codes in lowercase. -->
+    <string-array name="config_countries_prefer_normal_service_capable_subscription"
+            translatable="false">
+        <!-- b/317945295 -->
+        <item>in</item>
+    </string-array>
+
     <!-- The component name(a flattened ComponentName string) for the telephony domain selection
          service. The device should fallback to the modem based domain selection architecture
          if this is not configured. -->
