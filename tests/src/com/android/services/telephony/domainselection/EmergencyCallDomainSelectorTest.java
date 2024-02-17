@@ -113,10 +113,11 @@ import android.telephony.WwanSelectorCallback;
 import android.telephony.ims.ImsManager;
 import android.telephony.ims.ImsMmTelManager;
 import android.telephony.ims.ProvisioningManager;
-import android.test.suitebuilder.annotation.SmallTest;
 import android.testing.TestableLooper;
 import android.util.Log;
 import android.util.SparseArray;
+
+import androidx.test.filters.SmallTest;
 
 import com.android.TestContext;
 
@@ -1755,6 +1756,28 @@ public class EmergencyCallDomainSelectorTest {
         verify(mTransportSelectorCallback, times(0))
                 .onSelectionTerminated(eq(DisconnectCause.EMERGENCY_PERM_FAILURE));
         verifyScanPsPreferred();
+    }
+
+    @Test
+    public void testDualSimNormalServiceOnTheOtherSubscription() throws Exception {
+        createSelector(SLOT_0_SUB_ID);
+        unsolBarringInfoChanged(false);
+        doReturn(2).when(mTelephonyManager).getActiveModemCount();
+        doReturn(true).when(mCsrdCtrl).isThereOtherSlotInService();
+        doReturn(new String[] {"in"}).when(mResources).getStringArray(anyInt());
+
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_UNKNOWN,
+                0, false, false, 0, 0, "", "", "in");
+        SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
+        mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
+        processAllMessages();
+
+        bindImsServiceUnregistered();
+        processAllMessages();
+
+        verify(mTransportSelectorCallback, times(1))
+                .onSelectionTerminated(eq(DisconnectCause.EMERGENCY_TEMP_FAILURE));
     }
 
     @Test

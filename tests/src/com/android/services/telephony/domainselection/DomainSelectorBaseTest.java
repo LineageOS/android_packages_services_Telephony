@@ -26,8 +26,8 @@ import android.os.HandlerThread;
 import android.os.Looper;
 import android.telephony.DomainSelectionService.SelectionAttributes;
 import android.telephony.TransportSelectorCallback;
-import android.test.suitebuilder.annotation.SmallTest;
 
+import androidx.test.filters.SmallTest;
 import androidx.test.runner.AndroidJUnit4;
 
 import com.android.TestContext;

@@ -27,7 +27,8 @@ import static org.mockito.Mockito.when;
 import android.content.ComponentName;
 import android.os.Looper;
 import android.telecom.PhoneAccountHandle;
-import android.test.suitebuilder.annotation.SmallTest;
+
+import androidx.test.filters.SmallTest;
 
 import org.junit.Before;
 import org.junit.Test;

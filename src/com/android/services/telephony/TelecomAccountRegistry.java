@@ -1264,7 +1264,8 @@ public class TelecomAccountRegistry {
                         && pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY_CALLING)) {
                     sInstance = new TelecomAccountRegistry(context);
                 } else {
-                    Log.i(LOG_TAG, "getInstance: Telephony features required");
+                    Log.d(LOG_TAG, "Not initializing TelecomAccountRegistry: "
+                            + "missing telephony/calling feature(s)");
                 }
             } else {
                 sInstance = new TelecomAccountRegistry(context);
