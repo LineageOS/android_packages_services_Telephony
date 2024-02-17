@@ -118,6 +118,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
     private static final LocalLog sLocalLog = new LocalLog(LOG_SIZE);
 
     private static List<String> sSimReadyAllowList;
+    private static List<String> sPreferSlotWithNormalServiceList;
 
     /**
      * Network callback used to determine whether Wi-Fi is connected or not.
@@ -576,26 +577,43 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
      * Caches the resource configuration.
      */
     private void readResourceConfiguration() {
-        if (sSimReadyAllowList != null) return;
+        if (sSimReadyAllowList == null) {
+            sSimReadyAllowList = readResourceConfiguration(
+                    R.array.config_countries_require_sim_for_emergency);
+        }
+        logi("readResourceConfiguration simReadyCountries=" + sSimReadyAllowList);
+
+        if (sPreferSlotWithNormalServiceList == null) {
+            sPreferSlotWithNormalServiceList = readResourceConfiguration(
+                    R.array.config_countries_prefer_normal_service_capable_subscription);
+        }
+        logi("readResourceConfiguration preferNormalServiceCountries="
+                + sPreferSlotWithNormalServiceList);
+    }
+
+    private List<String> readResourceConfiguration(int id) {
+        logi("readResourceConfiguration id=" + id);
+
+        List<String> resource = null;
         try {
-            sSimReadyAllowList = Arrays.asList(mContext.getResources().getStringArray(
-                    R.array.config_countries_require_sim_for_emergency));
+            resource = Arrays.asList(mContext.getResources().getStringArray(id));
         } catch (Resources.NotFoundException nfe) {
             loge("readResourceConfiguration exception=" + nfe);
         } catch (NullPointerException npe) {
             loge("readResourceConfiguration exception=" + npe);
         } finally {
-            if (sSimReadyAllowList == null) {
-                sSimReadyAllowList = new ArrayList<String>();
+            if (resource == null) {
+                resource = new ArrayList<String>();
             }
         }
-        logi("readResourceConfiguration simReadyCountries=" + sSimReadyAllowList);
+        return resource;
     }
 
     /** For test purpose only */
     @VisibleForTesting
     public void clearResourceConfiguration() {
         sSimReadyAllowList = null;
+        sPreferSlotWithNormalServiceList = null;
     }
 
     private void selectDomain() {
@@ -643,6 +661,9 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         boolean psInService = isPsInService();
 
         if (!csInService && !psInService) {
+            if (maybeRedialOnTheOtherSlotInNormalService()) {
+                return;
+            }
             mCsNetworkType = getSelectableCsNetworkType();
             mPsNetworkType = getSelectablePsNetworkType(false);
             logi("selectDomain limited service ps=" + accessNetworkTypeToString(mPsNetworkType)
@@ -1398,6 +1419,20 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         }
 
         return true;
+    }
+
+    private boolean maybeRedialOnTheOtherSlotInNormalService() {
+        EmergencyRegistrationResult regResult =
+                mSelectionAttributes.getEmergencyRegistrationResult();
+        if (regResult == null) return false;
+
+        String iso = regResult.getCountryIso();
+        if (sPreferSlotWithNormalServiceList.contains(iso)
+                && mCrossSimRedialingController.isThereOtherSlotInService()) {
+            terminateSelectionForCrossSimRedialing(false);
+            return true;
+        }
+        return false;
     }
 
     private void terminateSelectionPermanentlyForSlot() {

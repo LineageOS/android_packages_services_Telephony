@@ -48,9 +48,10 @@ import android.os.IBinder;
 import android.os.Looper;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyRegistryManager;
-import android.test.suitebuilder.annotation.SmallTest;
 import android.testing.TestableLooper;
 import android.util.Log;
+
+import androidx.test.filters.SmallTest;
 
 import com.android.TelephonyTestBase;
 import com.android.ims.FeatureConnector;

@@ -47,10 +47,10 @@ import android.telephony.TelephonyManager;
 import android.telephony.TransportSelectorCallback;
 import android.telephony.VopsSupportInfo;
 import android.telephony.WwanSelectorCallback;
-import android.test.suitebuilder.annotation.SmallTest;
 import android.testing.TestableLooper;
 import android.util.SparseArray;
 
+import androidx.test.filters.SmallTest;
 import androidx.test.runner.AndroidJUnit4;
 
 import com.android.TestContext;
