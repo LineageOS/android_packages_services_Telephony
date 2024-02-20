@@ -343,6 +343,7 @@
             translatable="false">
         <!-- b/317945295 -->
         <item>in</item>
+        <item>sg</item>
     </string-array>
 
     <!-- The component name(a flattened ComponentName string) for the telephony domain selection
