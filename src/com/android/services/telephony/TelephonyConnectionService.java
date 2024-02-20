@@ -2224,6 +2224,10 @@ public class TelephonyConnectionService extends ConnectionService {
             }
         } catch (CallStateException e) {
             Log.e(this, e, "placeOutgoingConnection, phone.dial exception: " + e);
+            if (mDomainSelectionResolver.isDomainSelectionSupported()) {
+                // Notify EmergencyStateTracker and DomainSelector of the cancellation by exception
+                onLocalHangup(connection);
+            }
             connection.unregisterForCallEvents();
             handleCallStateException(e, connection, phone);
             return;

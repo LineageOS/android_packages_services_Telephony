@@ -46,6 +46,7 @@ import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
@@ -2837,6 +2838,28 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
 
         verify(mEmergencyCallDomainSelectionConnection).cancelSelection();
         verify(mEmergencyStateTracker).endCall(eq(c));
+    }
+
+    @Test
+    public void testDomainSelectionDialFailedByException() throws Exception {
+        setupForCallTest();
+
+        int selectedDomain = DOMAIN_CS;
+
+        setupForDialForDomainSelection(mPhone0, selectedDomain, true);
+
+        CallStateException cse = new CallStateException(CallStateException.ERROR_CALLING_DISABLED,
+                "Calling disabled via ro.telephony.disable-call property");
+        doThrow(cse).when(mPhone0).dial(anyString(), any(), any());
+
+        mTestConnectionService.onCreateOutgoingConnection(PHONE_ACCOUNT_HANDLE_1,
+                createConnectionRequest(PHONE_ACCOUNT_HANDLE_1,
+                        TEST_EMERGENCY_NUMBER, TELECOM_CALL_ID1));
+
+        verify(mEmergencyStateTracker)
+                .startEmergencyCall(any(), any(), anyBoolean());
+        verify(mEmergencyCallDomainSelectionConnection).cancelSelection();
+        verify(mEmergencyStateTracker).endCall(any());
     }
 
     @Test
