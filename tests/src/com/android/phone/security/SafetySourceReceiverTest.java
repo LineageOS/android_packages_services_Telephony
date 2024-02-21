@@ -60,12 +60,16 @@ public class SafetySourceReceiverTest {
         MockitoAnnotations.initMocks(this);
         SafetySourceReceiver receiver = new SafetySourceReceiver();
         mSafetySourceReceiver = spy(receiver);
+
+        when(mContext.getPackageManager().hasSystemFeature(
+                PackageManager.FEATURE_TELEPHONY)).thenReturn(true);
     }
 
     @Test
     public void testOnReceive() {
         mSetFlagsRule.enableFlags(Flags.FLAG_ENABLE_IDENTIFIER_DISCLOSURE_TRANSPARENCY_UNSOL_EVENTS,
-                Flags.FLAG_ENABLE_MODEM_CIPHER_TRANSPARENCY_UNSOL_EVENTS);
+                Flags.FLAG_ENABLE_MODEM_CIPHER_TRANSPARENCY_UNSOL_EVENTS,
+                Flags.FLAG_ENFORCE_TELEPHONY_FEATURE_MAPPING_FOR_PUBLIC_APIS);
         Phone mockPhone = mock(Phone.class);
         when(mSafetySourceReceiver.getDefaultPhone()).thenReturn(mockPhone);
 
@@ -80,7 +84,8 @@ public class SafetySourceReceiverTest {
     public void testOnReceive_featureFlagsOff() {
         mSetFlagsRule.disableFlags(
                 Flags.FLAG_ENABLE_IDENTIFIER_DISCLOSURE_TRANSPARENCY_UNSOL_EVENTS,
-                Flags.FLAG_ENABLE_MODEM_CIPHER_TRANSPARENCY_UNSOL_EVENTS);
+                Flags.FLAG_ENABLE_MODEM_CIPHER_TRANSPARENCY_UNSOL_EVENTS,
+                Flags.FLAG_ENFORCE_TELEPHONY_FEATURE_MAPPING_FOR_PUBLIC_APIS);
 
         Intent intent = new Intent(ACTION_REFRESH_SAFETY_SOURCES);
         intent.putExtra(EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID, "aBroadcastId");
@@ -95,9 +100,6 @@ public class SafetySourceReceiverTest {
                 Flags.FLAG_ENABLE_MODEM_CIPHER_TRANSPARENCY_UNSOL_EVENTS,
                 Flags.FLAG_ENFORCE_TELEPHONY_FEATURE_MAPPING_FOR_PUBLIC_APIS);
         when(mSafetySourceReceiver.getDefaultPhone()).thenReturn(null);
-
-        when(mContext.getPackageManager().hasSystemFeature(
-                PackageManager.FEATURE_TELEPHONY)).thenReturn(true);
 
         Intent intent = new Intent(ACTION_REFRESH_SAFETY_SOURCES);
         intent.putExtra(EXTRA_REFRESH_SAFETY_SOURCES_BROADCAST_ID, "aBroadcastId");
@@ -125,5 +127,4 @@ public class SafetySourceReceiverTest {
 
         verify(mockPhone, never()).refreshSafetySources(any());
     }
-
 }
