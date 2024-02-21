@@ -1252,27 +1252,9 @@ public class TelephonyConnectionService extends ConnectionService {
                 final Connection resultConnection = getTelephonyConnection(request, numberToDial,
                         true, handle, phone);
 
-                CompletableFuture<Void> maybeHoldFuture = CompletableFuture.completedFuture(null);
-                if (mTelephonyManagerProxy.isConcurrentCallsPossible()
-                        && shouldHoldForEmergencyCall(phone)) {
-                    // If the PhoneAccountHandle was adjusted on building the TelephonyConnection,
-                    // the relevant PhoneAccountHandle will be updated in resultConnection.
-                    PhoneAccountHandle phoneAccountHandle =
-                            resultConnection.getPhoneAccountHandle() == null
-                            ? request.getAccountHandle() : resultConnection.getPhoneAccountHandle();
-                    Conferenceable c = maybeHoldCallsOnOtherSubs(phoneAccountHandle);
-                    if (c != null) {
-                        maybeHoldFuture = delayDialForOtherSubHold(phone, c, (success) -> {
-                            Log.i(this, "onCreateOutgoingConn emergency-"
-                                    + " delayDialForOtherSubHold success = " + success);
-                            if (!success) {
-                                // Terminates the existing call to make way for the emergency call.
-                                hangup(c, android.telephony.DisconnectCause
-                                        .OUTGOING_EMERGENCY_CALL_PLACED);
-                            }
-                        });
-                    }
-                }
+                CompletableFuture<Void> maybeHoldFuture =
+                        checkAndHoldCallsOnOtherSubsForEmergencyCall(request,
+                                resultConnection, phone);
                 Consumer<Boolean> ddsSwitchConsumer = (result) -> {
                     Log.i(this, "onCreateOutgoingConn emergency-"
                             + " delayDialForDdsSwitch result = " + result);
@@ -1282,6 +1264,32 @@ public class TelephonyConnectionService extends ConnectionService {
                 return resultConnection;
             }
         }
+    }
+
+    private CompletableFuture<Void> checkAndHoldCallsOnOtherSubsForEmergencyCall(
+            ConnectionRequest request, Connection resultConnection, Phone phone) {
+        CompletableFuture<Void> maybeHoldFuture = CompletableFuture.completedFuture(null);
+        if (mTelephonyManagerProxy.isConcurrentCallsPossible()
+                && shouldHoldForEmergencyCall(phone)) {
+            // If the PhoneAccountHandle was adjusted on building the TelephonyConnection,
+            // the relevant PhoneAccountHandle will be updated in resultConnection.
+            PhoneAccountHandle phoneAccountHandle =
+                    resultConnection.getPhoneAccountHandle() == null
+                    ? request.getAccountHandle() : resultConnection.getPhoneAccountHandle();
+            Conferenceable c = maybeHoldCallsOnOtherSubs(phoneAccountHandle);
+            if (c != null) {
+                maybeHoldFuture = delayDialForOtherSubHold(phone, c, (success) -> {
+                    Log.i(this, "checkAndHoldCallsOnOtherSubsForEmergencyCall"
+                            + " delayDialForOtherSubHold success = " + success);
+                    if (!success) {
+                        // Terminates the existing call to make way for the emergency call.
+                        hangup(c, android.telephony.DisconnectCause
+                                .OUTGOING_EMERGENCY_CALL_PLACED);
+                    }
+                });
+            }
+        }
+        return maybeHoldFuture;
     }
 
     private Connection placeOutgoingConnection(ConnectionRequest request,
@@ -2431,6 +2439,32 @@ public class TelephonyConnectionService extends ConnectionService {
             Log.i(this, "placeEmergencyConnection");
 
             mIsEmergencyCallPending = true;
+            mEmergencyConnection = (TelephonyConnection) resultConnection;
+        }
+
+        CompletableFuture<Void> maybeHoldFuture =
+                checkAndHoldCallsOnOtherSubsForEmergencyCall(request, resultConnection, phone);
+        maybeHoldFuture.thenRun(() -> placeEmergencyConnectionInternal(resultConnection,
+                phone, request, numberToDial, isTestEmergencyNumber, needToTurnOnRadio));
+
+        // Non TelephonyConnection type instance means dialing failure.
+        return resultConnection;
+    }
+
+    @SuppressWarnings("FutureReturnValueIgnored")
+    private void placeEmergencyConnectionInternal(final Connection resultConnection,
+            final Phone phone, final ConnectionRequest request,
+            final String numberToDial, final boolean isTestEmergencyNumber,
+            final boolean needToTurnOnRadio) {
+
+        if (mEmergencyConnection == null) {
+            Log.i(this, "placeEmergencyConnectionInternal dialing canceled");
+            return;
+        }
+
+        if (resultConnection instanceof TelephonyConnection) {
+            Log.i(this, "placeEmergencyConnectionInternal");
+
             ((TelephonyConnection) resultConnection).addTelephonyConnectionListener(
                     mEmergencyConnectionListener);
 
@@ -2438,7 +2472,6 @@ public class TelephonyConnectionService extends ConnectionService {
                 mEmergencyStateTracker = EmergencyStateTracker.getInstance();
             }
 
-            mEmergencyConnection = (TelephonyConnection) resultConnection;
             CompletableFuture<Integer> future = mEmergencyStateTracker.startEmergencyCall(
                     phone, resultConnection, isTestEmergencyNumber);
             future.thenAccept((result) -> {
@@ -2464,8 +2497,6 @@ public class TelephonyConnectionService extends ConnectionService {
                 }
             });
         }
-        // Non TelephonyConnection type instance means dialing failure.
-        return resultConnection;
     }
 
     @SuppressWarnings("FutureReturnValueIgnored")
@@ -2830,13 +2861,19 @@ public class TelephonyConnectionService extends ConnectionService {
             }
         } catch (CallStateException e) {
             Log.e(this, e, "onEmergencyRedialOnDomain, exception: " + e);
+            onLocalHangup(connection);
+            connection.unregisterForCallEvents();
+            handleCallStateException(e, connection, phone);
+            return;
         }
         if (originalConnection == null) {
             Log.d(this, "onEmergencyRedialOnDomain, phone.dial returned null");
-            connection.setDisconnected(
+            onLocalHangup(connection);
+            connection.setTelephonyConnectionDisconnected(
                     mDisconnectCauseFactory.toTelecomDisconnectCause(
                                 android.telephony.DisconnectCause.ERROR_UNSPECIFIED,
                                 "unknown error"));
+            connection.close();
         } else {
             connection.setOriginalConnection(originalConnection);
         }
