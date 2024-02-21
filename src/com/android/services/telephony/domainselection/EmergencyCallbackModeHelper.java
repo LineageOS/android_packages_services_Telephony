@@ -68,7 +68,7 @@ public class EmergencyCallbackModeHelper extends Handler {
                 @NonNull PreciseDataConnectionState dataConnectionState) {
             ApnSetting apnSetting = dataConnectionState.getApnSetting();
             if ((apnSetting == null)
-                    || ((apnSetting.getApnTypeBitmask() | ApnSetting.TYPE_EMERGENCY) == 0)) {
+                    || ((apnSetting.getApnTypeBitmask() & ApnSetting.TYPE_EMERGENCY) == 0)) {
                 return;
             }
             mTransportType = dataConnectionState.getTransportType();
