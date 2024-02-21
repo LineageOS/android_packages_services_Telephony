@@ -668,6 +668,12 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
             mPsNetworkType = getSelectablePsNetworkType(false);
             logi("selectDomain limited service ps=" + accessNetworkTypeToString(mPsNetworkType)
                     + ", cs=" + accessNetworkTypeToString(mCsNetworkType));
+            if (!isInRoaming()
+                    && (mPreferredNetworkScanType
+                            == CarrierConfigManager.ImsEmergency.SCAN_TYPE_FULL_SERVICE)) {
+                requestScan(true);
+                return;
+            }
             // If NGRAN, request scan to trigger emergency registration.
             if (mPsNetworkType == EUTRAN) {
                 onWwanNetworkTypeSelected(mPsNetworkType);
