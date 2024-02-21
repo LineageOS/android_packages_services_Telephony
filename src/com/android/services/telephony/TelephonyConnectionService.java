@@ -2303,11 +2303,15 @@ public class TelephonyConnectionService extends ConnectionService {
                     // On GSM phones, null connection means that we dialed an MMI code
                     int telephonyDisconnectCause = handleMmiCode(
                             phone, android.telephony.DisconnectCause.OUTGOING_FAILURE);
-                    mNormalCallConnection.setTelephonyConnectionDisconnected(mDisconnectCauseFactory
-                            .toTelecomDisconnectCause(telephonyDisconnectCause,
-                                    "Connection is null", phone.getPhoneId()));
+                    if (mNormalCallConnection.getState() != Connection.STATE_DISCONNECTED) {
+                        mNormalCallConnection.setTelephonyConnectionDisconnected(
+                                mDisconnectCauseFactory.toTelecomDisconnectCause(
+                                        telephonyDisconnectCause,
+                                        "Connection is null",
+                                        phone.getPhoneId()));
+                        mNormalCallConnection.close();
+                    }
                     clearNormalCallDomainSelectionConnection();
-                    mNormalCallConnection.close();
                     return;
                 }
 
@@ -2354,6 +2358,7 @@ public class TelephonyConnectionService extends ConnectionService {
         boolean isMmiCode = (dialPart.startsWith("*") || dialPart.startsWith("#"))
                 && dialPart.endsWith("#");
         boolean isSuppServiceCode = ImsPhoneMmiCode.isSuppServiceCodes(dialPart, phone);
+        boolean isPotentialUssdCode = isMmiCode && !isSuppServiceCode;
 
         // If the number is both an MMI code and a supplementary service code,
         // it shall be treated as UT. In this case, domain selection is not performed.
@@ -2361,6 +2366,10 @@ public class TelephonyConnectionService extends ConnectionService {
             Log.v(LOG_TAG, "UT code not handled by call domain selection.");
             return false;
         }
+
+        /* For USSD codes, connection is closed and MMIDialogActivity is started.
+           To avoid connection close and return false. isPotentialUssdCode is handled after
+            all condition checks. */
 
         // Check and select same domain as ongoing call on the same subscription (if exists)
         int activeCallDomain = getActiveCallDomain(phone.getSubId());
@@ -2397,6 +2406,15 @@ public class TelephonyConnectionService extends ConnectionService {
         mNormalCallConnection = connection;
         future.thenAcceptAsync((domain) -> handleOutgoingCallConnectionByCallDomainSelection(
                 domain, phone, number, videoState), mDomainSelectionMainExecutor);
+
+        if (isPotentialUssdCode) {
+            Log.v(LOG_TAG, "PotentialUssdCode. Closing connection with DisconnectCause.DIALED_MMI");
+            connection.setTelephonyConnectionDisconnected(
+                    mDisconnectCauseFactory.toTelecomDisconnectCause(
+                            android.telephony.DisconnectCause.DIALED_MMI,
+                            "Dialing USSD", phone.getPhoneId()));
+            connection.close();
+        }
         return true;
     }
 
