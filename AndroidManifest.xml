@@ -169,6 +169,9 @@
     <!-- Needed to register for UWB state changes for satellite communication -->
     <uses-permission android:name="android.permission.UWB_PRIVILEGED"/>
 
+    <!-- Needed to initiate configuration update -->
+    <uses-permission android:name="android.permission.UPDATE_CONFIG"/>
+
     <!-- Needed to bind the domain selection service. -->
     <uses-permission android:name="android.permission.BIND_DOMAIN_SELECTION_SERVICE" />
 
@@ -574,6 +577,16 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
                 <action android:name="android.telephony.action.CARRIER_CONFIG_CHANGED"/>
                 <action android:name="android.intent.action.SIM_STATE_CHANGED"/>
+            </intent-filter>
+        </receiver>
+
+        <!-- Update configuration data file -->
+        <receiver android:name="com.android.internal.telephony.configupdate.TelephonyConfigUpdateInstallReceiver"
+            android:exported="true"
+            android:permission="android.permission.UPDATE_CONFIG">
+            <intent-filter>
+                <action android:name="android.os.action.UPDATE_CONFIG" />
+                <data android:scheme="content" android:host="*" android:mimeType="*/*" />
             </intent-filter>
         </receiver>
 
