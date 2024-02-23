@@ -2877,6 +2877,16 @@ public class EmergencyCallDomainSelectorTest {
         doReturn(TRANSPORT_TYPE_WWAN).when(mEcbmHelper).getTransportType(anyInt());
         doReturn(DATA_CONNECTED).when(mEcbmHelper).getDataConnectionState(anyInt());
 
+        doAnswer(new Answer<Void>() {
+            @Override
+            public Void answer(InvocationOnMock invocation) throws Throwable {
+                Consumer<WwanSelectorCallback> consumer =
+                        (Consumer<WwanSelectorCallback>) invocation.getArguments()[0];
+                consumer.accept(mWwanSelectorCallback);
+                return null;
+            }
+        }).when(mTransportSelectorCallback).onWwanSelected(any());
+
         EmergencyRegistrationResult regResult = getEmergencyRegResult(UNKNOWN,
                 REGISTRATION_STATE_UNKNOWN,
                 0, false, false, 0, 0, "", "");
@@ -2889,6 +2899,7 @@ public class EmergencyCallDomainSelectorTest {
 
         verify(mTransportSelectorCallback, never()).onWlanSelected(anyBoolean());
         verify(mTransportSelectorCallback).onWwanSelected(any());
+        verify(mWwanSelectorCallback).onDomainSelected(eq(DOMAIN_PS), eq(true));
     }
 
     @Test
@@ -2957,6 +2968,42 @@ public class EmergencyCallDomainSelectorTest {
 
         verify(mTransportSelectorCallback, never()).onWlanSelected(anyBoolean());
         verify(mTransportSelectorCallback).onWwanSelected(any());
+    }
+
+    @Test
+    public void testNotInEcbmOnWwanConnected() throws Exception {
+        createSelector(SLOT_0_SUB_ID);
+        unsolBarringInfoChanged(false);
+
+        doReturn(false).when(mEcbmHelper).isInEmergencyCallbackMode(anyInt());
+        doReturn(TRANSPORT_TYPE_WLAN).when(mEcbmHelper).getTransportType(anyInt());
+        doReturn(DATA_CONNECTED).when(mEcbmHelper).getDataConnectionState(anyInt());
+
+        doAnswer(new Answer<Void>() {
+            @Override
+            public Void answer(InvocationOnMock invocation) throws Throwable {
+                Consumer<WwanSelectorCallback> consumer =
+                        (Consumer<WwanSelectorCallback>) invocation.getArguments()[0];
+                consumer.accept(mWwanSelectorCallback);
+                return null;
+            }
+        }).when(mTransportSelectorCallback).onWwanSelected(any());
+
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(UNKNOWN,
+                REGISTRATION_STATE_UNKNOWN,
+                0, false, false, 0, 0, "", "");
+        SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
+        mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
+        processAllMessages();
+
+        bindImsServiceUnregistered();
+        processAllMessages();
+
+        verify(mTransportSelectorCallback, never()).onWlanSelected(anyBoolean());
+        verify(mTransportSelectorCallback).onWwanSelected(any());
+        verify(mWwanSelectorCallback, never()).onDomainSelected(anyInt(), anyBoolean());
+        verify(mWwanSelectorCallback).onRequestEmergencyNetworkScan(
+                any(), anyInt(), anyBoolean(), any(), any());
     }
 
     private void setupForScanListTest(PersistableBundle bundle) throws Exception {
