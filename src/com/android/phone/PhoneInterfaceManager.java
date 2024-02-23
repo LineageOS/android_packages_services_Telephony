@@ -8504,7 +8504,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 setNetworkSelectionModeAutomatic(subId);
                 Phone phone = getPhone(subId);
                 cleanUpAllowedNetworkTypes(phone, subId);
-                setDataRoamingEnabled(subId, getDefaultDataRoamingEnabled(subId));
+                setDataRoamingEnabled(subId, phone == null ? false
+                        : phone.getDataSettingsManager().isDefaultDataRoamingEnabled());
                 getPhone(subId).resetCarrierKeysForImsiEncryption();
             }
             // There has been issues when Sms raw table somehow stores orphan
@@ -10104,20 +10105,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     private boolean getDefaultDataEnabled() {
         return TelephonyProperties.mobile_data().orElse(true);
-    }
-
-    /**
-     * Returns true if the data roaming is enabled by default, i.e the system property
-     * of {@link #DEFAULT_DATA_ROAMING_PROPERTY_NAME} is true or the config of
-     * {@link CarrierConfigManager#KEY_CARRIER_DEFAULT_DATA_ROAMING_ENABLED_BOOL} is true.
-     */
-    private boolean getDefaultDataRoamingEnabled(int subId) {
-        final CarrierConfigManager configMgr = (CarrierConfigManager)
-                mApp.getSystemService(Context.CARRIER_CONFIG_SERVICE);
-        boolean isDataRoamingEnabled = TelephonyProperties.data_roaming().orElse(false);
-        isDataRoamingEnabled |= configMgr.getConfigForSubId(subId).getBoolean(
-                CarrierConfigManager.KEY_CARRIER_DEFAULT_DATA_ROAMING_ENABLED_BOOL);
-        return isDataRoamingEnabled;
     }
 
     /**
