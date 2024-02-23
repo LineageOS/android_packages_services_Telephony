@@ -657,6 +657,13 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
     private void selectDomainFromInitialState() {
         if (mDestroyed) return;
 
+        if (isInEmergencyCallbackModeOnPsWwan()) {
+            logi("selectDomain PS cellular connected in ECBM");
+            mPsNetworkType = EUTRAN;
+            onWwanNetworkTypeSelected(mPsNetworkType);
+            return;
+        }
+
         boolean csInService = isCsInService();
         boolean psInService = isPsInService();
 
@@ -1601,6 +1608,12 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
     private boolean isInEmergencyCallbackModeOnWlan() {
         return mEcbmHelper.isInEmergencyCallbackMode(getSlotId())
                 && mEcbmHelper.getTransportType(getSlotId()) == TRANSPORT_TYPE_WLAN
+                && mEcbmHelper.getDataConnectionState(getSlotId()) == DATA_CONNECTED;
+    }
+
+    private boolean isInEmergencyCallbackModeOnPsWwan() {
+        return mEcbmHelper.isInEmergencyCallbackMode(getSlotId())
+                && mEcbmHelper.getTransportType(getSlotId()) == TRANSPORT_TYPE_WWAN
                 && mEcbmHelper.getDataConnectionState(getSlotId()) == DATA_CONNECTED;
     }
 
