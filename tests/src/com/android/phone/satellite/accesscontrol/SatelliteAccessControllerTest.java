@@ -23,6 +23,7 @@ import static android.telephony.satellite.SatelliteManager.SATELLITE_RESULT_SUCC
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import static org.mockito.ArgumentMatchers.any;
@@ -31,7 +32,11 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.clearInvocations;
 import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -57,6 +62,8 @@ import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.TelephonyCountryDetector;
 import com.android.internal.telephony.flags.FeatureFlags;
+import com.android.internal.telephony.satellite.SatelliteConfig;
+import com.android.internal.telephony.satellite.SatelliteConfigParser;
 import com.android.internal.telephony.satellite.SatelliteController;
 
 import org.junit.After;
@@ -70,6 +77,8 @@ import org.mockito.MockitoAnnotations;
 
 import java.io.File;
 import java.lang.reflect.Field;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -529,6 +538,42 @@ public class SatelliteAccessControllerTest {
                 mSatelliteAllowedSemaphore, 1));
         assertEquals(SATELLITE_RESULT_SUCCESS, mQueriedSatelliteAllowedResultCode);
         assertTrue(mQueriedSatelliteAllowed);
+    }
+
+    @Test
+    public void testUpdateSatelliteConfigData() {
+        // Verify the case when the configParser is not exist.
+        SatelliteConfigParser spyConfigParserNull =
+                spy(new SatelliteConfigParser((byte[]) null));
+        doReturn(spyConfigParserNull).when(mMockSatelliteController).getSatelliteConfigParser();
+        mSatelliteAccessControllerUT.updateSatelliteConfigData(mMockContext);
+
+        assertNull(spyConfigParserNull.getConfig());
+
+        // Verify the case when the configParser is exist but empty.
+        SatelliteConfigParser spyConfigParserEmpty =
+                spy(new SatelliteConfigParser("test".getBytes()));
+        doReturn(spyConfigParserEmpty).when(mMockSatelliteController).getSatelliteConfigParser();
+        mSatelliteAccessControllerUT.updateSatelliteConfigData(mMockContext);
+
+        assertNull(spyConfigParserEmpty.getConfig());
+
+        // Verify the case when the configParser is exist and valid data
+        SatelliteConfig mockSatelliteConfig = mock(SatelliteConfig.class);
+        final String filePath = "/data/user_de/0/com.android.phone/app_satellite/s2_cell_file";
+        Path targetSatS2FilePath = Paths.get(filePath);
+        doReturn(false).when(mockSatelliteConfig).isFileExist(any());
+        doReturn(targetSatS2FilePath).when(mockSatelliteConfig)
+                .copySatS2FileToPhoneDirectory(any(), any());
+        doReturn(Arrays.asList("US")).when(mockSatelliteConfig).getDeviceSatelliteCountryCodes();
+        doReturn(false).when(mockSatelliteConfig).isSatelliteDataForAllowedRegion();
+        doReturn(targetSatS2FilePath).when(mockSatelliteConfig).getSatelliteS2CellFile(any());
+        doReturn(mockSatelliteConfig).when(mMockSatelliteController).getSatelliteConfig();
+
+        mSatelliteAccessControllerUT.updateSatelliteConfigData(mMockContext);
+        verify(mockSatelliteConfig, times(0)).getDeviceSatelliteCountryCodes();
+        verify(mockSatelliteConfig, times(0)).isSatelliteDataForAllowedRegion();
+        verify(mockSatelliteConfig, times(2)).getSatelliteS2CellFile(any());
     }
 
     private void clearAllInvocations() {
