@@ -3,9 +3,9 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name" msgid="2922839697457005451">"GbaTestApp"</string>
     <string name="label_settings" msgid="8030871890526865502">"सेटिंग्ज"</string>
-    <string name="label_carrier" msgid="1470455313066422804">"वाहक कॉंफिगरेशन"</string>
-    <string name="label_service" msgid="2668963955237345578">"सेवा कॉंफिगरेशन"</string>
-    <string name="label_test" msgid="8425079572898571918">"चाचणी कॉंफिगरेशन"</string>
+    <string name="label_carrier" msgid="1470455313066422804">"वाहकाचे कॉन्फिगरेशन"</string>
+    <string name="label_service" msgid="2668963955237345578">"सेवेचे कॉन्फिगरेशन"</string>
+    <string name="label_test" msgid="8425079572898571918">"चाचणीचे कॉन्फिगरेशन"</string>
     <string name="button_name_running" msgid="4557363091224858010">"रन करत आहे"</string>
     <string name="button_name_exit" msgid="8025683733431538975">"बाहेर पडा"</string>
     <string name="label_test_result" msgid="892984695972956196">"चाचणी परिणाम"</string>

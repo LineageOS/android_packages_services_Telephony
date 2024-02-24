@@ -52,6 +52,7 @@ import android.preference.PreferenceManager;
 import android.service.carrier.CarrierIdentifier;
 import android.service.carrier.CarrierService;
 import android.service.carrier.ICarrierService;
+import android.telephony.AnomalyReporter;
 import android.telephony.CarrierConfigManager;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyFrameworkInitializer;
@@ -94,6 +95,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.Set;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -217,6 +219,10 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
             CarrierConfigManager.KEY_CARRIER_CONFIG_VERSION_STRING,
             CarrierConfigManager.KEY_CARRIER_CONFIG_APPLIED_BOOL
     };
+
+    // UUID to report anomaly when config changed reported with subId that map to invalid phone
+    private static final String UUID_NOTIFY_CONFIG_CHANGED_WITH_INVALID_PHONE =
+            "d81cef11-c2f1-4d76-955d-7f50e8590c48";
 
     // Handler to process various events.
     //
@@ -1483,9 +1489,14 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
 
         int phoneId = SubscriptionManager.getPhoneId(subscriptionId);
         if (!SubscriptionManager.isValidPhoneId(phoneId)) {
-            logd("Ignore invalid phoneId: " + phoneId + " for subId: " + subscriptionId);
-            throw new IllegalArgumentException(
-                    "Invalid phoneId " + phoneId + " for subId " + subscriptionId);
+            final String msg =
+                    "Ignore invalid phoneId: " + phoneId + " for subId: " + subscriptionId;
+            if (mFeatureFlags.addAnomalyWhenNotifyConfigChangedWithInvalidPhone()) {
+                AnomalyReporter.reportAnomaly(
+                        UUID.fromString(UUID_NOTIFY_CONFIG_CHANGED_WITH_INVALID_PHONE), msg);
+            }
+            logd(msg);
+            throw new IllegalArgumentException(msg);
         }
 
         enforceTelephonyFeatureWithException(getCurrentPackageName(),

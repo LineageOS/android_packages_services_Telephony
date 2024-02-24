@@ -51,6 +51,7 @@ import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.TelephonyCountryDetector;
 import com.android.internal.telephony.flags.FeatureFlags;
+import com.android.internal.telephony.satellite.SatelliteConfig;
 import com.android.internal.telephony.satellite.SatelliteController;
 import com.android.phone.PhoneGlobals;
 
@@ -106,6 +107,7 @@ public class SatelliteAccessController extends Handler {
     private static final int CMD_IS_SATELLITE_COMMUNICATION_ALLOWED = 1;
     protected static final int EVENT_WAIT_FOR_CURRENT_LOCATION_TIMEOUT = 2;
     protected static final int EVENT_KEEP_ON_DEVICE_ACCESS_CONTROLLER_RESOURCES_TIMEOUT = 3;
+    protected static final int EVENT_CONFIG_DATA_UPDATED = 4;
 
     private static SatelliteAccessController sInstance;
 
@@ -176,6 +178,8 @@ public class SatelliteAccessController extends Handler {
         mCountryDetector = TelephonyCountryDetector.getInstance(context);
         mSatelliteController = SatelliteController.getInstance();
         loadOverlayConfigs(context);
+        mSatelliteController.registerForConfigUpdateChanged(this, EVENT_CONFIG_DATA_UPDATED,
+                context);
         if (s2CellFile != null) {
             mSatelliteS2CellFile = s2CellFile;
         }
@@ -214,6 +218,9 @@ public class SatelliteAccessController extends Handler {
                 break;
             case EVENT_KEEP_ON_DEVICE_ACCESS_CONTROLLER_RESOURCES_TIMEOUT:
                 cleanupOnDeviceAccessControllerResources();
+                break;
+            case EVENT_CONFIG_DATA_UPDATED:
+                updateSatelliteConfigData((Context) msg.obj);
                 break;
             default:
                 logw("SatelliteAccessControllerHandler: unexpected message code: " + msg.what);
@@ -336,6 +343,59 @@ public class SatelliteAccessController extends Handler {
     @VisibleForTesting(visibility = VisibleForTesting.Visibility.PRIVATE)
     protected long getElapsedRealtimeNanos() {
         return SystemClock.elapsedRealtimeNanos();
+    }
+
+    /**
+     * Update country codes, S2CellFile and satellite region allowed by ConfigUpdater
+     * or CarrierConfig
+     */
+    @VisibleForTesting(visibility = VisibleForTesting.Visibility.PRIVATE)
+    public void updateSatelliteConfigData(Context context) {
+        logd("updateSatelliteConfigData");
+
+        SatelliteConfig satelliteConfig = mSatelliteController.getSatelliteConfig();
+        if (satelliteConfig != null  && satelliteConfig.getSatelliteS2CellFile(context) != null) {
+            logd("Check mSatelliteS2CellFile from ConfigUpdater");
+            Path pathSatelliteS2CellFile = satelliteConfig.getSatelliteS2CellFile(context);
+            mSatelliteS2CellFile = pathSatelliteS2CellFile.toFile();
+            if (mSatelliteS2CellFile != null && !mSatelliteS2CellFile.exists()) {
+                loge("The satellite S2 cell file " + mSatelliteS2CellFile.getName()
+                        + " does not exist");
+                mSatelliteS2CellFile = null;
+            }
+        }
+
+        if (mSatelliteS2CellFile == null) {
+            logd("Check mSatelliteS2CellFile from CarrierConfig");
+            String satelliteS2CellFileName = getSatelliteS2CellFileFromOverlayConfig(context);
+            mSatelliteS2CellFile = TextUtils.isEmpty(satelliteS2CellFileName)
+                    ? null : new File(satelliteS2CellFileName);
+            if (mSatelliteS2CellFile != null && !mSatelliteS2CellFile.exists()) {
+                loge("The satellite S2 cell file " + mSatelliteS2CellFile.getName()
+                        + " does not exist");
+                mSatelliteS2CellFile = null;
+            }
+        }
+
+        if (mSatelliteS2CellFile == null) {
+            logd("Since mSatelliteS2CellFile is null, don't need to refer other configurations");
+            return;
+        }
+
+        if (satelliteConfig != null
+                && !satelliteConfig.getDeviceSatelliteCountryCodes().isEmpty()) {
+            logd("update mSatelliteCountryCodes by ConfigUpdater");
+            mSatelliteCountryCodes = satelliteConfig.getDeviceSatelliteCountryCodes();
+        } else {
+            mSatelliteCountryCodes = getSatelliteCountryCodesFromOverlayConfig(context);
+        }
+
+        if (satelliteConfig != null && satelliteConfig.isSatelliteDataForAllowedRegion() != null) {
+            logd("update mIsSatelliteAllowAccessControl by ConfigUpdater");
+            mIsSatelliteAllowAccessControl = satelliteConfig.isSatelliteDataForAllowedRegion();
+        } else {
+            mIsSatelliteAllowAccessControl = getSatelliteAccessAllowFromOverlayConfig(context);
+        }
     }
 
     private void loadOverlayConfigs(@NonNull Context context) {
