@@ -1990,6 +1990,27 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
     }
 
     /**
+     * For DSDA devices with AP domain selection service enabled, placing an outgoing call
+     * on a 2nd sub will hold the existing ACTIVE connection on the first sub.
+     */
+    @Test
+    @SmallTest
+    public void testHoldOnOtherSubForVirtualDsdaDeviceWithDomainSelectionEnabled() {
+        when(mTelephonyManagerProxy.isConcurrentCallsPossible()).thenReturn(true);
+        doReturn(true).when(mDomainSelectionResolver).isDomainSelectionSupported();
+
+        ArrayList<android.telecom.Connection> tcs = new ArrayList<>();
+        SimpleTelephonyConnection tc1 = createTestConnection(SUB1_HANDLE, 0, false);
+        tc1.setTelephonyConnectionActive();
+        tcs.add(tc1);
+
+        Conferenceable c = TelephonyConnectionService.maybeHoldCallsOnOtherSubs(
+                tcs, new ArrayList<>(), SUB2_HANDLE, mTelephonyManagerProxy);
+        assertTrue(c.equals(tc1));
+        assertTrue(tc1.wasHeld);
+    }
+
+    /**
      * For DSDA devices, if the existing connection was already held, placing an outgoing call on a
      * 2nd sub will not attempt to hold the existing connection on the first sub.
      */
@@ -2309,6 +2330,28 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
     }
 
     @Test
+    public void testDomainSelectionRedialFailedWithException() throws Exception {
+        setupForCallTest();
+
+        int preciseDisconnectCause = com.android.internal.telephony.CallFailCause.ERROR_UNSPECIFIED;
+        int disconnectCause = android.telephony.DisconnectCause.ERROR_UNSPECIFIED;
+        int selectedDomain = DOMAIN_CS;
+
+        TestTelephonyConnection c = setupForReDialForDomainSelection(
+                mPhone0, selectedDomain, preciseDisconnectCause, disconnectCause, true);
+
+        CallStateException cse = new CallStateException(CallStateException.ERROR_CALLING_DISABLED,
+                "Calling disabled via ro.telephony.disable-call property");
+        doThrow(cse).when(mPhone0).dial(anyString(), any(), any());
+
+        assertTrue(mTestConnectionService.maybeReselectDomain(c, null, true,
+                android.telephony.DisconnectCause.NOT_VALID));
+        verify(mEmergencyCallDomainSelectionConnection).reselectDomain(any());
+        verify(mEmergencyCallDomainSelectionConnection).cancelSelection();
+        verify(mEmergencyStateTracker).endCall(any());
+    }
+
+    @Test
     public void testDomainSelectionNormalRoutingEmergencyNumber() throws Exception {
         setupForCallTest();
         int selectedDomain = DOMAIN_PS;
@@ -2621,6 +2664,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
 
         setupForDialForDomainSelection(mPhone0, selectedDomain, true);
         doReturn(mPhone0).when(mImsPhone).getDefaultPhone();
+        doReturn(mInternalConnection).when(mPhone0).dial(anyString(), any(), any());
 
         TestTelephonyConnection c = setupForReDialForDomainSelection(
                 mImsPhone, selectedDomain, preciseDisconnectCause, disconnectCause, false);
@@ -2671,6 +2715,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
 
         setupForDialForDomainSelection(mPhone0, selectedDomain, true);
         doReturn(mPhone0).when(mImsPhone).getDefaultPhone();
+        doReturn(mInternalConnection).when(mPhone0).dial(anyString(), any(), any());
 
         TestTelephonyConnection c = setupForReDialForDomainSelection(
                 mImsPhone, selectedDomain, preciseDisconnectCause, disconnectCause, false);
