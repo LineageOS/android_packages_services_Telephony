@@ -59,10 +59,13 @@ import static android.telephony.NetworkRegistrationInfo.REGISTRATION_STATE_ROAMI
 import static android.telephony.NetworkRegistrationInfo.REGISTRATION_STATE_UNKNOWN;
 import static android.telephony.PreciseDisconnectCause.SERVICE_OPTION_NOT_AVAILABLE;
 import static android.telephony.TelephonyManager.DATA_CONNECTED;
+import static android.telephony.TelephonyManager.DATA_DISCONNECTED;
+import static android.telephony.TelephonyManager.DATA_DISCONNECTING;
 import static android.telephony.TelephonyManager.SIM_ACTIVATION_STATE_DEACTIVATED;
 
 import static com.android.services.telephony.domainselection.EmergencyCallDomainSelector.MSG_MAX_CELLULAR_TIMEOUT;
 import static com.android.services.telephony.domainselection.EmergencyCallDomainSelector.MSG_NETWORK_SCAN_TIMEOUT;
+import static com.android.services.telephony.domainselection.EmergencyCallDomainSelector.MSG_WAIT_DISCONNECTION_TIMEOUT;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertFalse;
@@ -157,7 +160,7 @@ public class EmergencyCallDomainSelectorTest {
     @Mock private DomainSelectorBase.DestroyListener mDestroyListener;
     @Mock private ProvisioningManager mProvisioningManager;
     @Mock private CrossSimRedialingController mCsrdCtrl;
-    @Mock private EmergencyCallbackModeHelper mEcbmHelper;
+    @Mock private DataConnectionStateHelper mEpdnHelper;
     @Mock private Resources mResources;
 
     private Context mContext;
@@ -307,6 +310,7 @@ public class EmergencyCallDomainSelectorTest {
         verify(mWwanSelectorCallback, times(0)).onRequestEmergencyNetworkScan(
                 any(), anyInt(), anyBoolean(), any(), any());
         verify(mWwanSelectorCallback, times(0)).onDomainSelected(anyInt(), eq(true));
+        verify(mEpdnHelper).setEmergencyCallDomainSelector(eq(mDomainSelector));
     }
 
     @Test
@@ -328,6 +332,7 @@ public class EmergencyCallDomainSelectorTest {
         unsolBarringInfoChanged(false);
 
         verify(mTransportSelectorCallback, never()).onWwanSelected(any());
+        verify(mEpdnHelper).setEmergencyCallDomainSelector(eq(null));
     }
 
     @Test
@@ -2922,12 +2927,51 @@ public class EmergencyCallDomainSelectorTest {
     }
 
     @Test
-    public void testScanLtePreferredAfterNgranFailure() throws Exception {
+    public void testScanLtePreferredAfterNgranFailureSupportEmf() throws Exception {
         PersistableBundle bundle = getDefaultPersistableBundle();
         bundle.putIntArray(KEY_EMERGENCY_OVER_IMS_SUPPORTED_3GPP_NETWORK_TYPES_INT_ARRAY,
                 new int[] { NGRAN, EUTRAN });
         bundle.putBoolean(KEY_EMERGENCY_LTE_PREFERRED_AFTER_NR_FAILED_BOOL, true);
         when(mCarrierConfigManager.getConfigForSubId(anyInt(), anyVararg())).thenReturn(bundle);
+        doReturn(DATA_CONNECTED).when(mEpdnHelper).getDataConnectionState(anyInt());
+
+        createSelector(SLOT_0_SUB_ID);
+        unsolBarringInfoChanged(false);
+
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(NGRAN,
+                REGISTRATION_STATE_HOME,
+                NetworkRegistrationInfo.DOMAIN_PS, true, false, 1, 1, "", "");
+        SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
+        mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
+        processAllMessages();
+
+        bindImsServiceUnregistered();
+
+        verifyPsDialed();
+
+        mDomainSelector.reselectDomain(attr);
+        processAllMessages();
+
+        // Verify not waiting for the disconnection in case EMF is supported.
+        assertFalse(mDomainSelector.hasMessages(MSG_WAIT_DISCONNECTION_TIMEOUT));
+
+        verify(mWwanSelectorCallback, times(1)).onRequestEmergencyNetworkScan(
+                any(), anyInt(), anyBoolean(), any(), any());
+        assertEquals(4, mAccessNetwork.size());
+        assertEquals(EUTRAN, (int) mAccessNetwork.get(0));
+        assertEquals(UTRAN, (int) mAccessNetwork.get(1));
+        assertEquals(GERAN, (int) mAccessNetwork.get(2));
+        assertEquals(NGRAN, (int) mAccessNetwork.get(3));
+    }
+
+    @Test
+    public void testScanLtePreferredAfterNgranFailureNotSupportEmf() throws Exception {
+        PersistableBundle bundle = getDefaultPersistableBundle();
+        bundle.putIntArray(KEY_EMERGENCY_OVER_IMS_SUPPORTED_3GPP_NETWORK_TYPES_INT_ARRAY,
+                new int[] { NGRAN, EUTRAN });
+        bundle.putBoolean(KEY_EMERGENCY_LTE_PREFERRED_AFTER_NR_FAILED_BOOL, true);
+        when(mCarrierConfigManager.getConfigForSubId(anyInt(), anyVararg())).thenReturn(bundle);
+        doReturn(DATA_CONNECTED).when(mEpdnHelper).getDataConnectionState(anyInt());
 
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
@@ -2945,6 +2989,176 @@ public class EmergencyCallDomainSelectorTest {
 
         mDomainSelector.reselectDomain(attr);
         processAllMessages();
+
+        // Verify waiting for the disconnection in case EMF is supported.
+        assertTrue(mDomainSelector.hasMessages(MSG_WAIT_DISCONNECTION_TIMEOUT));
+
+        mDomainSelector.removeMessages(MSG_WAIT_DISCONNECTION_TIMEOUT);
+        processAllMessages();
+
+        verify(mWwanSelectorCallback, never()).onRequestEmergencyNetworkScan(
+                any(), anyInt(), anyBoolean(), any(), any());
+
+        mDomainSelector.sendEmptyMessage(MSG_WAIT_DISCONNECTION_TIMEOUT);
+        processAllMessages();
+
+        verify(mWwanSelectorCallback, times(1)).onRequestEmergencyNetworkScan(
+                any(), anyInt(), anyBoolean(), any(), any());
+        assertEquals(4, mAccessNetwork.size());
+        assertEquals(EUTRAN, (int) mAccessNetwork.get(0));
+        assertEquals(UTRAN, (int) mAccessNetwork.get(1));
+        assertEquals(GERAN, (int) mAccessNetwork.get(2));
+        assertEquals(NGRAN, (int) mAccessNetwork.get(3));
+    }
+
+    @Test
+    public void testScanLtePreferredAfterNgranFailureRestartWaitingTimer() throws Exception {
+        PersistableBundle bundle = getDefaultPersistableBundle();
+        bundle.putIntArray(KEY_EMERGENCY_OVER_IMS_SUPPORTED_3GPP_NETWORK_TYPES_INT_ARRAY,
+                new int[] { NGRAN, EUTRAN });
+        bundle.putBoolean(KEY_EMERGENCY_LTE_PREFERRED_AFTER_NR_FAILED_BOOL, true);
+        when(mCarrierConfigManager.getConfigForSubId(anyInt(), anyVararg())).thenReturn(bundle);
+        doReturn(DATA_CONNECTED).when(mEpdnHelper).getDataConnectionState(anyInt());
+
+        createSelector(SLOT_0_SUB_ID);
+        unsolBarringInfoChanged(false);
+
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(NGRAN,
+                REGISTRATION_STATE_HOME,
+                NetworkRegistrationInfo.DOMAIN_PS, true, false, 1, 0, "", "");
+        SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
+        mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
+        processAllMessages();
+
+        bindImsServiceUnregistered();
+
+        verifyPsDialed();
+
+        mDomainSelector.reselectDomain(attr);
+        processAllMessages();
+
+        assertTrue(mDomainSelector.hasMessages(MSG_WAIT_DISCONNECTION_TIMEOUT));
+
+        mDomainSelector.removeMessages(MSG_WAIT_DISCONNECTION_TIMEOUT);
+
+        assertFalse(mDomainSelector.hasMessages(MSG_WAIT_DISCONNECTION_TIMEOUT));
+
+        mDomainSelector.notifyDataConnectionStateChange(SLOT_0, DATA_DISCONNECTING);
+
+        assertTrue(mDomainSelector.hasMessages(MSG_WAIT_DISCONNECTION_TIMEOUT));
+    }
+
+    @Test
+    public void testScanLtePreferredAfterNgranFailureDataDisconnected() throws Exception {
+        PersistableBundle bundle = getDefaultPersistableBundle();
+        bundle.putIntArray(KEY_EMERGENCY_OVER_IMS_SUPPORTED_3GPP_NETWORK_TYPES_INT_ARRAY,
+                new int[] { NGRAN, EUTRAN });
+        bundle.putBoolean(KEY_EMERGENCY_LTE_PREFERRED_AFTER_NR_FAILED_BOOL, true);
+        when(mCarrierConfigManager.getConfigForSubId(anyInt(), anyVararg())).thenReturn(bundle);
+        doReturn(DATA_CONNECTED).when(mEpdnHelper).getDataConnectionState(anyInt());
+
+        createSelector(SLOT_0_SUB_ID);
+        unsolBarringInfoChanged(false);
+
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(NGRAN,
+                REGISTRATION_STATE_HOME,
+                NetworkRegistrationInfo.DOMAIN_PS, true, false, 1, 0, "", "");
+        SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
+        mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
+        processAllMessages();
+
+        bindImsServiceUnregistered();
+
+        verifyPsDialed();
+
+        mDomainSelector.reselectDomain(attr);
+        processAllMessages();
+
+        assertTrue(mDomainSelector.hasMessages(MSG_WAIT_DISCONNECTION_TIMEOUT));
+
+        mDomainSelector.removeMessages(MSG_WAIT_DISCONNECTION_TIMEOUT);
+        processAllMessages();
+
+        verify(mWwanSelectorCallback, never()).onRequestEmergencyNetworkScan(
+                any(), anyInt(), anyBoolean(), any(), any());
+
+        mDomainSelector.notifyDataConnectionStateChange(SLOT_0, DATA_DISCONNECTED);
+
+        verify(mWwanSelectorCallback, times(1)).onRequestEmergencyNetworkScan(
+                any(), anyInt(), anyBoolean(), any(), any());
+        assertEquals(4, mAccessNetwork.size());
+        assertEquals(EUTRAN, (int) mAccessNetwork.get(0));
+        assertEquals(UTRAN, (int) mAccessNetwork.get(1));
+        assertEquals(GERAN, (int) mAccessNetwork.get(2));
+        assertEquals(NGRAN, (int) mAccessNetwork.get(3));
+    }
+
+    @Test
+    public void testDefaultAfterNgranFailureNotSupportEmf() throws Exception {
+        PersistableBundle bundle = getDefaultPersistableBundle();
+        bundle.putIntArray(KEY_EMERGENCY_OVER_IMS_SUPPORTED_3GPP_NETWORK_TYPES_INT_ARRAY,
+                new int[] { NGRAN, EUTRAN });
+        when(mCarrierConfigManager.getConfigForSubId(anyInt(), anyVararg())).thenReturn(bundle);
+        doReturn(DATA_CONNECTED).when(mEpdnHelper).getDataConnectionState(anyInt());
+
+        createSelector(SLOT_0_SUB_ID);
+        unsolBarringInfoChanged(false);
+
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(NGRAN,
+                REGISTRATION_STATE_HOME,
+                NetworkRegistrationInfo.DOMAIN_PS, true, false, 1, 0, "", "");
+        SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
+        mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
+        processAllMessages();
+
+        bindImsServiceUnregistered();
+
+        verifyPsDialed();
+
+        mDomainSelector.reselectDomain(attr);
+        processAllMessages();
+
+        // Verify not waiting for the disconnection
+        // in case KEY_EMERGENCY_LTE_PREFERRED_AFTER_NR_FAILED_BOOL is false.
+        assertFalse(mDomainSelector.hasMessages(MSG_WAIT_DISCONNECTION_TIMEOUT));
+
+        verify(mWwanSelectorCallback, times(1)).onRequestEmergencyNetworkScan(
+                any(), anyInt(), anyBoolean(), any(), any());
+        assertEquals(4, mAccessNetwork.size());
+        assertEquals(UTRAN, (int) mAccessNetwork.get(0));
+        assertEquals(GERAN, (int) mAccessNetwork.get(1));
+        assertEquals(NGRAN, (int) mAccessNetwork.get(2));
+        assertEquals(EUTRAN, (int) mAccessNetwork.get(3));
+    }
+
+    @Test
+    public void testDefaultAfterNgranFailureSupportEmf() throws Exception {
+        PersistableBundle bundle = getDefaultPersistableBundle();
+        bundle.putIntArray(KEY_EMERGENCY_OVER_IMS_SUPPORTED_3GPP_NETWORK_TYPES_INT_ARRAY,
+                new int[] { NGRAN, EUTRAN });
+        when(mCarrierConfigManager.getConfigForSubId(anyInt(), anyVararg())).thenReturn(bundle);
+        doReturn(DATA_CONNECTED).when(mEpdnHelper).getDataConnectionState(anyInt());
+
+        createSelector(SLOT_0_SUB_ID);
+        unsolBarringInfoChanged(false);
+
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(NGRAN,
+                REGISTRATION_STATE_HOME,
+                NetworkRegistrationInfo.DOMAIN_PS, true, false, 1, 1, "", "");
+        SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
+        mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
+        processAllMessages();
+
+        bindImsServiceUnregistered();
+
+        verifyPsDialed();
+
+        mDomainSelector.reselectDomain(attr);
+        processAllMessages();
+
+        // Verify not waiting for the disconnection
+        // in case KEY_EMERGENCY_LTE_PREFERRED_AFTER_NR_FAILED_BOOL is false.
+        assertFalse(mDomainSelector.hasMessages(MSG_WAIT_DISCONNECTION_TIMEOUT));
 
         verify(mWwanSelectorCallback, times(1)).onRequestEmergencyNetworkScan(
                 any(), anyInt(), anyBoolean(), any(), any());
@@ -3049,9 +3263,9 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
-        doReturn(true).when(mEcbmHelper).isInEmergencyCallbackMode(anyInt());
-        doReturn(TRANSPORT_TYPE_WWAN).when(mEcbmHelper).getTransportType(anyInt());
-        doReturn(DATA_CONNECTED).when(mEcbmHelper).getDataConnectionState(anyInt());
+        doReturn(true).when(mEpdnHelper).isInEmergencyCallbackMode(anyInt());
+        doReturn(TRANSPORT_TYPE_WWAN).when(mEpdnHelper).getTransportType(anyInt());
+        doReturn(DATA_CONNECTED).when(mEpdnHelper).getDataConnectionState(anyInt());
 
         doAnswer(new Answer<Void>() {
             @Override
@@ -3083,9 +3297,9 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
-        doReturn(true).when(mEcbmHelper).isInEmergencyCallbackMode(anyInt());
-        doReturn(TRANSPORT_TYPE_WLAN).when(mEcbmHelper).getTransportType(anyInt());
-        doReturn(DATA_CONNECTED).when(mEcbmHelper).getDataConnectionState(anyInt());
+        doReturn(true).when(mEpdnHelper).isInEmergencyCallbackMode(anyInt());
+        doReturn(TRANSPORT_TYPE_WLAN).when(mEpdnHelper).getTransportType(anyInt());
+        doReturn(DATA_CONNECTED).when(mEpdnHelper).getDataConnectionState(anyInt());
 
         EmergencyRegistrationResult regResult = getEmergencyRegResult(UNKNOWN,
                 REGISTRATION_STATE_UNKNOWN,
@@ -3106,8 +3320,8 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
-        doReturn(true).when(mEcbmHelper).isInEmergencyCallbackMode(anyInt());
-        doReturn(TRANSPORT_TYPE_WLAN).when(mEcbmHelper).getTransportType(anyInt());
+        doReturn(true).when(mEpdnHelper).isInEmergencyCallbackMode(anyInt());
+        doReturn(TRANSPORT_TYPE_WLAN).when(mEpdnHelper).getTransportType(anyInt());
 
         EmergencyRegistrationResult regResult = getEmergencyRegResult(UNKNOWN,
                 REGISTRATION_STATE_UNKNOWN,
@@ -3128,9 +3342,9 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
-        doReturn(false).when(mEcbmHelper).isInEmergencyCallbackMode(anyInt());
-        doReturn(TRANSPORT_TYPE_WLAN).when(mEcbmHelper).getTransportType(anyInt());
-        doReturn(DATA_CONNECTED).when(mEcbmHelper).getDataConnectionState(anyInt());
+        doReturn(false).when(mEpdnHelper).isInEmergencyCallbackMode(anyInt());
+        doReturn(TRANSPORT_TYPE_WLAN).when(mEpdnHelper).getTransportType(anyInt());
+        doReturn(DATA_CONNECTED).when(mEpdnHelper).getDataConnectionState(anyInt());
 
         EmergencyRegistrationResult regResult = getEmergencyRegResult(UNKNOWN,
                 REGISTRATION_STATE_UNKNOWN,
@@ -3151,9 +3365,9 @@ public class EmergencyCallDomainSelectorTest {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
-        doReturn(false).when(mEcbmHelper).isInEmergencyCallbackMode(anyInt());
-        doReturn(TRANSPORT_TYPE_WLAN).when(mEcbmHelper).getTransportType(anyInt());
-        doReturn(DATA_CONNECTED).when(mEcbmHelper).getDataConnectionState(anyInt());
+        doReturn(false).when(mEpdnHelper).isInEmergencyCallbackMode(anyInt());
+        doReturn(TRANSPORT_TYPE_WLAN).when(mEpdnHelper).getTransportType(anyInt());
+        doReturn(DATA_CONNECTED).when(mEpdnHelper).getDataConnectionState(anyInt());
 
         doAnswer(new Answer<Void>() {
             @Override
@@ -3498,7 +3712,7 @@ public class EmergencyCallDomainSelectorTest {
     private void createSelector(int subId) throws Exception {
         mDomainSelector = new EmergencyCallDomainSelector(
                 mContext, SLOT_0, subId, mHandlerThread.getLooper(),
-                mImsStateTracker, mDestroyListener, mCsrdCtrl, mEcbmHelper);
+                mImsStateTracker, mDestroyListener, mCsrdCtrl, mEpdnHelper);
         mDomainSelector.clearResourceConfiguration();
         replaceInstance(DomainSelectorBase.class,
                 "mWwanSelectorCallback", mDomainSelector, mWwanSelectorCallback);
