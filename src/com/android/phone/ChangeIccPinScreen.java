@@ -18,12 +18,14 @@ package com.android.phone;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.AsyncResult;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.os.UserManager;
 import android.text.method.DigitsKeyListener;
 import android.util.Log;
 import android.view.View;
@@ -46,12 +48,12 @@ public class ChangeIccPinScreen extends Activity {
     private static final boolean DBG = false;
 
     private static final int EVENT_PIN_CHANGED = 100;
-    
+
     private enum EntryState {
         ES_PIN,
         ES_PUK
     }
-    
+
     private EntryState mState;
 
     private static final int NO_ERROR = 0;
@@ -61,6 +63,8 @@ public class ChangeIccPinScreen extends Activity {
     private static final int MIN_PIN_LENGTH = 4;
     private static final int MAX_PIN_LENGTH = 8;
 
+    private UserManager mUserManager;
+    private boolean mDisallowedConfig;
     private Phone mPhone;
     private boolean mChangePin2;
     private TextView mBadPinError;
@@ -91,49 +95,74 @@ public class ChangeIccPinScreen extends Activity {
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
 
+        mUserManager = this.getSystemService(UserManager.class);
+        if (mUserManager.hasUserRestriction(UserManager.DISALLOW_CONFIG_MOBILE_NETWORKS)) {
+            mDisallowedConfig = true;
+        }
+
         mPhone = PhoneGlobals.getPhone();
 
         resolveIntent();
 
         setContentView(R.layout.change_sim_pin_screen);
+        setupView();
 
+        mState = EntryState.ES_PIN;
+    }
+
+    private void setupView() {
         mOldPin = (EditText) findViewById(R.id.old_pin);
-        mOldPin.setKeyListener(DigitsKeyListener.getInstance());
-        mOldPin.setMovementMethod(null);
-        mOldPin.setOnClickListener(mClicked);
-
         mNewPin1 = (EditText) findViewById(R.id.new_pin1);
-        mNewPin1.setKeyListener(DigitsKeyListener.getInstance());
-        mNewPin1.setMovementMethod(null);
-        mNewPin1.setOnClickListener(mClicked);
-
         mNewPin2 = (EditText) findViewById(R.id.new_pin2);
-        mNewPin2.setKeyListener(DigitsKeyListener.getInstance());
-        mNewPin2.setMovementMethod(null);
-        mNewPin2.setOnClickListener(mClicked);
-
         mBadPinError = (TextView) findViewById(R.id.bad_pin);
         mMismatchError = (TextView) findViewById(R.id.mismatch);
-
         mButton = (Button) findViewById(R.id.button);
-        mButton.setOnClickListener(mClicked);
-
         mScrollView = (ScrollView) findViewById(R.id.scroll);
-        
         mPUKCode = (EditText) findViewById(R.id.puk_code);
-        mPUKCode.setKeyListener(DigitsKeyListener.getInstance());
-        mPUKCode.setMovementMethod(null);
-        mPUKCode.setOnClickListener(mClicked);
-        
         mPUKSubmit = (Button) findViewById(R.id.puk_submit);
-        mPUKSubmit.setOnClickListener(mClicked);
-
         mIccPUKPanel = (LinearLayout) findViewById(R.id.puk_panel);
-
         int id = mChangePin2 ? R.string.change_pin2 : R.string.change_pin;
         setTitle(getResources().getText(id));
-        
-        mState = EntryState.ES_PIN;
+
+        if (mDisallowedConfig) {
+            mOldPin.setEnabled(false);
+            mOldPin.setAlpha(.5f);
+
+            mNewPin1.setEnabled(false);
+            mNewPin1.setAlpha(.5f);
+
+            mNewPin2.setEnabled(false);
+            mNewPin2.setAlpha(.5f);
+
+            mButton.setEnabled(false);
+            mButton.setAlpha(.5f);
+
+            mPUKCode.setEnabled(false);
+            mPUKCode.setAlpha(.5f);
+
+            mPUKSubmit.setEnabled(false);
+            mPUKSubmit.setAlpha(.5f);
+        } else {
+            mOldPin.setKeyListener(DigitsKeyListener.getInstance());
+            mOldPin.setMovementMethod(null);
+            mOldPin.setOnClickListener(mClicked);
+
+            mNewPin1.setKeyListener(DigitsKeyListener.getInstance());
+            mNewPin1.setMovementMethod(null);
+            mNewPin1.setOnClickListener(mClicked);
+
+            mNewPin2.setKeyListener(DigitsKeyListener.getInstance());
+            mNewPin2.setMovementMethod(null);
+            mNewPin2.setOnClickListener(mClicked);
+
+            mButton.setOnClickListener(mClicked);
+
+            mPUKCode.setKeyListener(DigitsKeyListener.getInstance());
+            mPUKCode.setMovementMethod(null);
+            mPUKCode.setOnClickListener(mClicked);
+
+            mPUKSubmit.setOnClickListener(mClicked);
+        }
     }
 
     private void resolveIntent() {
