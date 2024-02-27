@@ -2821,6 +2821,27 @@ public class EmergencyCallDomainSelectorTest {
     }
 
     @Test
+    public void testDefaultLimitedServiceScanTypeFullService() throws Exception {
+        PersistableBundle bundle = getDefaultPersistableBundle();
+        bundle.putInt(KEY_EMERGENCY_NETWORK_SCAN_TYPE_INT, SCAN_TYPE_FULL_SERVICE);
+        when(mCarrierConfigManager.getConfigForSubId(anyInt())).thenReturn(bundle);
+
+        createSelector(SLOT_0_SUB_ID);
+        unsolBarringInfoChanged(false);
+
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_UNKNOWN,
+                0, false, true, 0, 0, "", "");
+        SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
+        mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
+        processAllMessages();
+
+        bindImsServiceUnregistered();
+
+        verifyScanPreferred(DomainSelectionService.SCAN_TYPE_FULL_SERVICE, EUTRAN);
+    }
+
+    @Test
     public void testScanLtePreferredAfterNgranFailure() throws Exception {
         PersistableBundle bundle = getDefaultPersistableBundle();
         bundle.putIntArray(KEY_EMERGENCY_OVER_IMS_SUPPORTED_3GPP_NETWORK_TYPES_INT_ARRAY,
