@@ -141,6 +141,9 @@ public class TelephonyConnectionService extends ConnectionService {
     // existing call.
     private static final int DEFAULT_DSDA_OUTGOING_CALL_HOLD_TIMEOUT_MS = 2000;
 
+    // Timeout to wait for the termination of incoming call before continue with the emergency call.
+    private static final int DEFAULT_REJECT_INCOMING_CALL_TIMEOUT_MS = 10 * 1000; // 10 seconds.
+
     // If configured, reject attempts to dial numbers matching this pattern.
     private static final Pattern CDMA_ACTIVATION_CODE_REGEX_PATTERN =
             Pattern.compile("\\*228[0-9]{0,2}");
@@ -705,6 +708,20 @@ public class TelephonyConnectionService extends ConnectionService {
             }
         }
     }
+
+    private static class OnDisconnectListener extends
+            com.android.internal.telephony.Connection.ListenerBase {
+        private final CompletableFuture<Boolean> mFuture;
+
+        OnDisconnectListener(CompletableFuture<Boolean> future) {
+            mFuture = future;
+        }
+
+        @Override
+        public void onDisconnect(int cause) {
+            mFuture.complete(true);
+        }
+    };
 
     private final DomainSelectionConnection.DomainSelectionConnectionCallback
             mEmergencyDomainSelectionConnectionCallback =
@@ -2558,8 +2575,13 @@ public class TelephonyConnectionService extends ConnectionService {
             }
             Bundle extras = request.getExtras();
             extras.putInt(PhoneConstants.EXTRA_DIAL_DOMAIN, result);
-            placeOutgoingConnection(request, resultConnection, phone);
-            mIsEmergencyCallPending = false;
+            CompletableFuture<Void> rejectFuture = checkAndRejectIncomingCall(phone, (ret) -> {
+                if (!ret) {
+                    Log.i(this, "createEmergencyConnection reject incoming call failed");
+                }
+            });
+            rejectFuture.thenRun(() -> placeEmergencyConnectionOnSelectedDomain(request,
+                    resultConnection, phone));
         }, mDomainSelectionMainExecutor);
     }
 
@@ -2574,8 +2596,24 @@ public class TelephonyConnectionService extends ConnectionService {
                         Log.i(this, "dialCsEmergencyCall dialing canceled");
                         return;
                     }
-                    placeOutgoingConnection(request, resultConnection, phone);
+                    CompletableFuture<Void> future = checkAndRejectIncomingCall(phone, (ret) -> {
+                        if (!ret) {
+                            Log.i(this, "dialCsEmergencyCall reject incoming call failed");
+                        }
+                    });
+                    future.thenRun(() -> placeEmergencyConnectionOnSelectedDomain(request,
+                            resultConnection, phone));
                 });
+    }
+
+    private void placeEmergencyConnectionOnSelectedDomain(ConnectionRequest request,
+            TelephonyConnection resultConnection, Phone phone) {
+        if (mEmergencyConnection == null) {
+            Log.i(this, "placeEmergencyConnectionOnSelectedDomain dialing canceled");
+            return;
+        }
+        placeOutgoingConnection(request, resultConnection, phone);
+        mIsEmergencyCallPending = false;
     }
 
     private void releaseEmergencyCallDomainSelection(boolean cancel, boolean isActive) {
@@ -2827,10 +2865,28 @@ public class TelephonyConnectionService extends ConnectionService {
         return false;
     }
 
-    private void onEmergencyRedialOnDomain(TelephonyConnection connection,
+    private void onEmergencyRedialOnDomain(final TelephonyConnection connection,
             final Phone phone, @NetworkRegistrationInfo.Domain int domain) {
         Log.i(this, "onEmergencyRedialOnDomain phoneId=" + phone.getPhoneId()
                 + ", domain=" + DomainSelectionService.getDomainName(domain));
+
+        final Bundle extras = new Bundle();
+        extras.putInt(PhoneConstants.EXTRA_DIAL_DOMAIN, domain);
+
+        CompletableFuture<Void> future = checkAndRejectIncomingCall(phone, (ret) -> {
+            if (!ret) {
+                Log.i(this, "onEmergencyRedialOnDomain reject incoming call failed");
+            }
+        });
+        future.thenRun(() -> onEmergencyRedialOnDomainInternal(connection, phone, extras));
+    }
+
+    private void onEmergencyRedialOnDomainInternal(TelephonyConnection connection,
+            Phone phone, Bundle extras) {
+        if (mEmergencyConnection == null) {
+            Log.i(this, "onEmergencyRedialOnDomainInternal dialing canceled");
+            return;
+        }
 
         String number = connection.getAddress().getSchemeSpecificPart();
 
@@ -2840,11 +2896,8 @@ public class TelephonyConnectionService extends ConnectionService {
         if (connection.getEmergencyServiceCategory() != null) {
             isEmergency = true;
             eccCategory = connection.getEmergencyServiceCategory();
-            Log.i(this, "onEmergencyRedialOnDomain eccCategory=" + eccCategory);
+            Log.i(this, "onEmergencyRedialOnDomainInternal eccCategory=" + eccCategory);
         }
-
-        Bundle extras = new Bundle();
-        extras.putInt(PhoneConstants.EXTRA_DIAL_DOMAIN, domain);
 
         com.android.internal.telephony.Connection originalConnection =
                 connection.getOriginalConnection();
@@ -2860,14 +2913,14 @@ public class TelephonyConnectionService extends ConnectionService {
                         connection::registerForCallEvents);
             }
         } catch (CallStateException e) {
-            Log.e(this, e, "onEmergencyRedialOnDomain, exception: " + e);
+            Log.e(this, e, "onEmergencyRedialOnDomainInternal, exception: " + e);
             onLocalHangup(connection);
             connection.unregisterForCallEvents();
             handleCallStateException(e, connection, phone);
             return;
         }
         if (originalConnection == null) {
-            Log.d(this, "onEmergencyRedialOnDomain, phone.dial returned null");
+            Log.d(this, "onEmergencyRedialOnDomainInternal, phone.dial returned null");
             onLocalHangup(connection);
             connection.setTelephonyConnectionDisconnected(
                     mDisconnectCauseFactory.toTelecomDisconnectCause(
@@ -3415,6 +3468,52 @@ public class TelephonyConnectionService extends ConnectionService {
         } catch (Exception e) {
             Log.w(this, "delayDialForOtherSubHold - exception= "
                     + e.getMessage());
+            completeConsumer.accept(false);
+            return CompletableFuture.completedFuture(null);
+        }
+    }
+
+    /**
+     * If needed, block until an incoming call is disconnected for outgoing emergency call,
+     * or timeout expires.
+     * @param phone The Phone to reject the incoming call
+     * @param completeConsumer The consumer to call once rejecting incoming call has been
+     *        completed. {@code true} result if the operation commpletes successfully, or
+     *        {@code false} if the operation timed out/failed.
+     */
+    private CompletableFuture<Void> checkAndRejectIncomingCall(Phone phone,
+            Consumer<Boolean> completeConsumer) {
+        if (phone == null) {
+            // Unexpected inputs
+            Log.i(this, "checkAndRejectIncomingCall phone is null");
+            completeConsumer.accept(false);
+            return CompletableFuture.completedFuture(null);
+        }
+
+        Call ringingCall = phone.getRingingCall();
+        if (ringingCall == null || !ringingCall.isRinging()) {
+            completeConsumer.accept(true);
+            return CompletableFuture.completedFuture(null);
+        }
+        Log.i(this, "checkAndRejectIncomingCall found a ringing call");
+
+        try {
+            ringingCall.hangup();
+            CompletableFuture<Boolean> future = new CompletableFuture<>();
+            com.android.internal.telephony.Connection cn = ringingCall.getLatestConnection();
+            cn.addListener(new OnDisconnectListener(future));
+            // A timeout that will complete the future to not block the outgoing call indefinitely.
+            CompletableFuture<Boolean> timeout = new CompletableFuture<>();
+            phone.getContext().getMainThreadHandler().postDelayed(
+                    () -> timeout.complete(false), DEFAULT_REJECT_INCOMING_CALL_TIMEOUT_MS);
+            // Ensure that the Consumer is completed on the main thread.
+            return future.acceptEitherAsync(timeout, completeConsumer,
+                    phone.getContext().getMainExecutor()).exceptionally((ex) -> {
+                        Log.w(this, "checkAndRejectIncomingCall - exceptionally= " + ex);
+                        return null;
+                    });
+        } catch (Exception e) {
+            Log.w(this, "checkAndRejectIncomingCall - exception= " + e.getMessage());
             completeConsumer.accept(false);
             return CompletableFuture.completedFuture(null);
         }

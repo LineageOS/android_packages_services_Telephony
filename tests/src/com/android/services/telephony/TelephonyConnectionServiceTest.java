@@ -325,6 +325,10 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
 
     @After
     public void tearDown() throws Exception {
+        if (mTestConnectionService != null
+                && mTestConnectionService.getEmergencyConnection() != null) {
+            mTestConnectionService.onLocalHangup(mTestConnectionService.getEmergencyConnection());
+        }
         mTestConnectionService = null;
         super.tearDown();
     }
@@ -2288,8 +2292,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
 
         ArgumentCaptor<DialArgs> argsCaptor = ArgumentCaptor.forClass(DialArgs.class);
 
-        Connection nc = Mockito.mock(Connection.class);
-        doReturn(nc).when(mPhone0).dial(anyString(), any(), any());
+        doReturn(mInternalConnection).when(mPhone0).dial(anyString(), any(), any());
 
         verify(mPhone0).dial(anyString(), argsCaptor.capture(), any());
         DialArgs dialArgs = argsCaptor.getValue();
@@ -2317,8 +2320,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
 
         ArgumentCaptor<DialArgs> argsCaptor = ArgumentCaptor.forClass(DialArgs.class);
 
-        Connection nc = Mockito.mock(Connection.class);
-        doReturn(nc).when(mPhone0).dial(anyString(), any(), any());
+        doReturn(mInternalConnection).when(mPhone0).dial(anyString(), any(), any());
 
         verify(mPhone0).dial(anyString(), argsCaptor.capture(), any());
         DialArgs dialArgs = argsCaptor.getValue();
@@ -2349,6 +2351,108 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         verify(mEmergencyCallDomainSelectionConnection).reselectDomain(any());
         verify(mEmergencyCallDomainSelectionConnection).cancelSelection();
         verify(mEmergencyStateTracker).endCall(any());
+    }
+
+    @Test
+    public void testDomainSelectionRejectIncoming() throws Exception {
+        setupForCallTest();
+
+        int selectedDomain = DOMAIN_CS;
+
+        setupForDialForDomainSelection(mPhone0, selectedDomain, true);
+
+        doReturn(mInternalConnection2).when(mCall).getLatestConnection();
+        doReturn(true).when(mCall).isRinging();
+        doReturn(mCall).when(mPhone0).getRingingCall();
+
+        mTestConnectionService.onCreateOutgoingConnection(PHONE_ACCOUNT_HANDLE_1,
+                createConnectionRequest(PHONE_ACCOUNT_HANDLE_1,
+                        TEST_EMERGENCY_NUMBER, TELECOM_CALL_ID1));
+
+        ArgumentCaptor<android.telecom.Connection> connectionCaptor =
+                ArgumentCaptor.forClass(android.telecom.Connection.class);
+
+        verify(mDomainSelectionResolver)
+                .getDomainSelectionConnection(eq(mPhone0), eq(SELECTOR_TYPE_CALLING), eq(true));
+        verify(mEmergencyStateTracker)
+                .startEmergencyCall(eq(mPhone0), connectionCaptor.capture(), eq(false));
+        verify(mEmergencyCallDomainSelectionConnection).createEmergencyConnection(any(), any());
+
+        android.telecom.Connection tc = connectionCaptor.getValue();
+
+        assertNotNull(tc);
+        assertEquals(TELECOM_CALL_ID1, tc.getTelecomCallId());
+        assertEquals(mTestConnectionService.getEmergencyConnection(), tc);
+
+        ArgumentCaptor<Connection.Listener> listenerCaptor =
+                ArgumentCaptor.forClass(Connection.Listener.class);
+
+        verify(mInternalConnection2).addListener(listenerCaptor.capture());
+        verify(mCall).hangup();
+        verify(mPhone0, never()).dial(anyString(), any(), any());
+
+        Connection.Listener listener = listenerCaptor.getValue();
+
+        assertNotNull(listener);
+
+        listener.onDisconnect(0);
+
+        verify(mSatelliteSOSMessageRecommender).onEmergencyCallStarted(any());
+
+        ArgumentCaptor<DialArgs> argsCaptor = ArgumentCaptor.forClass(DialArgs.class);
+
+        verify(mPhone0).dial(anyString(), argsCaptor.capture(), any());
+
+        DialArgs dialArgs = argsCaptor.getValue();
+
+        assertNotNull("DialArgs param is null", dialArgs);
+        assertNotNull("intentExtras is null", dialArgs.intentExtras);
+        assertTrue(dialArgs.intentExtras.containsKey(PhoneConstants.EXTRA_DIAL_DOMAIN));
+        assertEquals(selectedDomain,
+                dialArgs.intentExtras.getInt(PhoneConstants.EXTRA_DIAL_DOMAIN, -1));
+    }
+
+    @Test
+    public void testDomainSelectionRedialRejectIncoming() throws Exception {
+        setupForCallTest();
+
+        int preciseDisconnectCause = com.android.internal.telephony.CallFailCause.ERROR_UNSPECIFIED;
+        int disconnectCause = android.telephony.DisconnectCause.ERROR_UNSPECIFIED;
+        int selectedDomain = DOMAIN_CS;
+
+        TestTelephonyConnection c = setupForReDialForDomainSelection(
+                mPhone0, selectedDomain, preciseDisconnectCause, disconnectCause, true);
+
+        doReturn(mInternalConnection2).when(mCall).getLatestConnection();
+        doReturn(true).when(mCall).isRinging();
+        doReturn(mCall).when(mPhone0).getRingingCall();
+
+        assertTrue(mTestConnectionService.maybeReselectDomain(c, null, true,
+                android.telephony.DisconnectCause.NOT_VALID));
+        verify(mEmergencyCallDomainSelectionConnection).reselectDomain(any());
+
+        ArgumentCaptor<Connection.Listener> listenerCaptor =
+                ArgumentCaptor.forClass(Connection.Listener.class);
+
+        verify(mInternalConnection2).addListener(listenerCaptor.capture());
+        verify(mCall).hangup();
+        verify(mPhone0, never()).dial(anyString(), any(), any());
+
+        Connection.Listener listener = listenerCaptor.getValue();
+
+        assertNotNull(listener);
+
+        listener.onDisconnect(0);
+
+        ArgumentCaptor<DialArgs> argsCaptor = ArgumentCaptor.forClass(DialArgs.class);
+
+        verify(mPhone0).dial(anyString(), argsCaptor.capture(), any());
+        DialArgs dialArgs = argsCaptor.getValue();
+        assertNotNull("DialArgs param is null", dialArgs);
+        assertNotNull("intentExtras is null", dialArgs.intentExtras);
+        assertTrue(dialArgs.intentExtras.containsKey(PhoneConstants.EXTRA_DIAL_DOMAIN));
+        assertEquals(selectedDomain,
+                dialArgs.intentExtras.getInt(PhoneConstants.EXTRA_DIAL_DOMAIN, -1));
     }
 
     @Test
