@@ -617,7 +617,7 @@
     <string name="ota_title_activate" msgid="4049645324841263423">"Aktivoi puhelin"</string>
     <string name="ota_touch_activate" msgid="838764494319694754">"Sinun täytyy soittaa erityinen puhelu aktivoidaksesi puhelimesi palvelun. \n\nPaina Aktivoi ja aktivoi puhelimesi kuulemiesi ohjeiden avulla."</string>
     <string name="ota_hfa_activation_title" msgid="3300556778212729671">"Aktivoidaan…"</string>
-    <string name="ota_hfa_activation_dialog_message" msgid="7921718445773342996">"Puhelimen mobiilitiedonsiirtopalvelua aktivoidaan.\n\nAktivointi voi kestää viisi minuuttia."</string>
+    <string name="ota_hfa_activation_dialog_message" msgid="7921718445773342996">"Puhelimen mobiilidatapalvelua aktivoidaan.\n\nAktivointi voi kestää viisi minuuttia."</string>
     <string name="ota_skip_activation_dialog_title" msgid="7666611236789203797">"Ohitetaanko aktivointi?"</string>
     <string name="ota_skip_activation_dialog_message" msgid="6691722887019708713">"Jos ohitat aktivoinnin, et voi soittaa puheluita etkä muodostaa verkkoyhteyttä (voit tosin muodostaa yhteyden Wi-Fi-verkkoihin). Sinua pyydetään aktivoimaan puhelimesi aina kun käynnistät sen siihen saakka, että aktivoit sen."</string>
     <string name="ota_skip_activation_dialog_skip_label" msgid="5908029466817825633">"Ohita"</string>
