@@ -2868,10 +2868,11 @@ public class EmergencyCallDomainSelectorTest {
 
         verify(mWwanSelectorCallback, times(1)).onRequestEmergencyNetworkScan(
                 any(), anyInt(), anyBoolean(), any(), any());
-        assertEquals(3, mAccessNetwork.size());
+        assertEquals(4, mAccessNetwork.size());
         assertEquals(EUTRAN, (int) mAccessNetwork.get(0));
         assertEquals(UTRAN, (int) mAccessNetwork.get(1));
         assertEquals(GERAN, (int) mAccessNetwork.get(2));
+        assertEquals(NGRAN, (int) mAccessNetwork.get(3));
     }
 
     @Test
