@@ -17,10 +17,12 @@
 package com.android.phone;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.AsyncResult;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.os.UserManager;
 import android.text.TextUtils;
 import android.text.method.DigitsKeyListener;
 import android.util.Log;
@@ -41,11 +43,13 @@ public class EnableIccPinScreen extends Activity {
     private static final int ENABLE_ICC_PIN_COMPLETE = 100;
     private static final boolean DBG = false;
 
+    private UserManager mUserManager;
     private LinearLayout mPinFieldContainer;
     private EditText mPinField;
     private TextView mStatusField;
     private boolean mEnable;
     private Phone mPhone;
+    private boolean mDisallowedConfig = false;
 
     private Handler mHandler = new Handler() {
         public void handleMessage(Message msg) {
@@ -64,6 +68,11 @@ public class EnableIccPinScreen extends Activity {
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
 
+        mUserManager = this.getSystemService(UserManager.class);
+        if (mUserManager.hasUserRestriction(UserManager.DISALLOW_CONFIG_MOBILE_NETWORKS)) {
+            mDisallowedConfig = true;
+        }
+
         setContentView(R.layout.enable_sim_pin_screen);
         setupView();
 
@@ -76,12 +85,20 @@ public class EnableIccPinScreen extends Activity {
 
     private void setupView() {
         mPinField = (EditText) findViewById(R.id.pin);
-        mPinField.setKeyListener(DigitsKeyListener.getInstance());
-        mPinField.setMovementMethod(null);
-        mPinField.setOnClickListener(mClicked);
-
         mPinFieldContainer = (LinearLayout) findViewById(R.id.pinc);
         mStatusField = (TextView) findViewById(R.id.status);
+
+        if (mDisallowedConfig) {
+            mPinField.setEnabled(false);
+            mPinField.setAlpha(.5f);
+
+            mPinFieldContainer.setEnabled(false);
+            mPinFieldContainer.setAlpha(.5f);
+        } else {
+            mPinField.setKeyListener(DigitsKeyListener.getInstance());
+            mPinField.setMovementMethod(null);
+            mPinField.setOnClickListener(mClicked);
+        }
     }
 
     private void showStatus(CharSequence statusMsg) {
