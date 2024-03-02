@@ -893,10 +893,13 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         } else if (csPreferred || mLastNetworkType == EUTRAN || mLastNetworkType == NGRAN) {
             if (!csPreferred && mLastNetworkType == NGRAN && mLtePreferredAfterNrFailure) {
                 // LTE is preferred after dialing over NR failed.
-                List<Integer> imsRats = getImsNetworkTypeConfiguration();
-                imsRats.remove(Integer.valueOf(NGRAN));
-                preferredNetworks = generatePreferredNetworks(imsRats,
+                preferredNetworks = generatePreferredNetworks(getImsNetworkTypeConfiguration(),
                         getCsNetworkTypeConfiguration());
+                // Make NGRAN have the lowest priority
+                if (preferredNetworks.contains(NGRAN)) {
+                    preferredNetworks.remove(Integer.valueOf(NGRAN));
+                    preferredNetworks.add(NGRAN);
+                }
             } else  if (csPriority > NOT_SUPPORTED) {
                 // PS tried, generate the list with CS preferred.
                 preferredNetworks = generatePreferredNetworks(getCsNetworkTypeConfiguration(),
