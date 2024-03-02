@@ -2868,10 +2868,11 @@ public class EmergencyCallDomainSelectorTest {
 
         verify(mWwanSelectorCallback, times(1)).onRequestEmergencyNetworkScan(
                 any(), anyInt(), anyBoolean(), any(), any());
-        assertEquals(3, mAccessNetwork.size());
+        assertEquals(4, mAccessNetwork.size());
         assertEquals(EUTRAN, (int) mAccessNetwork.get(0));
         assertEquals(UTRAN, (int) mAccessNetwork.get(1));
         assertEquals(GERAN, (int) mAccessNetwork.get(2));
+        assertEquals(NGRAN, (int) mAccessNetwork.get(3));
     }
 
     @Test
@@ -3099,6 +3100,58 @@ public class EmergencyCallDomainSelectorTest {
         verify(mWwanSelectorCallback, never()).onDomainSelected(anyInt(), anyBoolean());
         verify(mWwanSelectorCallback).onRequestEmergencyNetworkScan(
                 any(), anyInt(), anyBoolean(), any(), any());
+    }
+
+    @Test
+    public void testIsInRoaming() throws Exception {
+        PersistableBundle bundle = getDefaultPersistableBundle();
+        int[] domainPreference = new int[] {
+                CarrierConfigManager.ImsEmergency.DOMAIN_PS_3GPP,
+                };
+        bundle.putIntArray(KEY_EMERGENCY_DOMAIN_PREFERENCE_INT_ARRAY, domainPreference);
+        int[] domainPreferenceRoam = new int[] {
+                CarrierConfigManager.ImsEmergency.DOMAIN_PS_3GPP,
+                CarrierConfigManager.ImsEmergency.DOMAIN_CS,
+                };
+        bundle.putIntArray(KEY_EMERGENCY_DOMAIN_PREFERENCE_ROAMING_INT_ARRAY, domainPreferenceRoam);
+        when(mCarrierConfigManager.getConfigForSubId(anyInt())).thenReturn(bundle);
+        doReturn("").when(mTelephonyManager).getNetworkCountryIso();
+        doReturn("us").when(mTelephonyManager).getSimCountryIso();
+
+        mResultConsumer = null;
+        createSelector(SLOT_0_SUB_ID);
+        unsolBarringInfoChanged(true);
+
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(UNKNOWN,
+                REGISTRATION_STATE_UNKNOWN,
+                0, false, false, 0, 0, "", "");
+        SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
+        mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
+        processAllMessages();
+
+        bindImsServiceUnregistered();
+        processAllMessages();
+
+        verify(mWwanSelectorCallback, times(1)).onRequestEmergencyNetworkScan(
+                any(), anyInt(), eq(false), any(), any());
+        assertEquals(1, mAccessNetwork.size());
+        assertEquals(EUTRAN, (int) mAccessNetwork.get(0));
+        assertNotNull(mResultConsumer);
+
+        regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_UNKNOWN,
+                0, false, false, 0, 0, "", "", "zz");
+        mResultConsumer.accept(regResult);
+        processAllMessages();
+
+        mDomainSelector.reselectDomain(attr);
+        processAllMessages();
+
+        verify(mWwanSelectorCallback, times(2)).onRequestEmergencyNetworkScan(
+                any(), anyInt(), eq(false), any(), any());
+        assertEquals(3, mAccessNetwork.size());
+        assertEquals(UTRAN, (int) mAccessNetwork.get(0));
+        assertEquals(GERAN, (int) mAccessNetwork.get(1));
+        assertEquals(EUTRAN, (int) mAccessNetwork.get(2));
     }
 
     private void setupForScanListTest(PersistableBundle bundle) throws Exception {

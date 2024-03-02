@@ -161,6 +161,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
     private @RadioAccessNetworkType List<Integer> mLastPreferredNetworks;
 
     private CancellationSignal mCancelSignal;
+    private EmergencyRegistrationResult mLastRegResult;
 
     // Members for carrier configuration
     private @RadioAccessNetworkType int[] mImsRatsConfig;
@@ -297,6 +298,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
             return;
         }
 
+        mLastRegResult = result;
         removeMessages(MSG_NETWORK_SCAN_TIMEOUT);
         onWwanNetworkTypeSelected(getAccessNetworkType(result));
         mCancelSignal = null;
@@ -446,6 +448,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         logi("selectDomain attr=" + attr);
         mTransportSelectorCallback = cb;
         mSelectionAttributes = attr;
+        mLastRegResult = mSelectionAttributes.getEmergencyRegistrationResult();
 
         TelephonyManager tm = mContext.getSystemService(TelephonyManager.class);
         mModemCount = tm.getActiveModemCount();
@@ -890,10 +893,13 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         } else if (csPreferred || mLastNetworkType == EUTRAN || mLastNetworkType == NGRAN) {
             if (!csPreferred && mLastNetworkType == NGRAN && mLtePreferredAfterNrFailure) {
                 // LTE is preferred after dialing over NR failed.
-                List<Integer> imsRats = getImsNetworkTypeConfiguration();
-                imsRats.remove(Integer.valueOf(NGRAN));
-                preferredNetworks = generatePreferredNetworks(imsRats,
+                preferredNetworks = generatePreferredNetworks(getImsNetworkTypeConfiguration(),
                         getCsNetworkTypeConfiguration());
+                // Make NGRAN have the lowest priority
+                if (preferredNetworks.contains(NGRAN)) {
+                    preferredNetworks.remove(Integer.valueOf(NGRAN));
+                    preferredNetworks.add(NGRAN);
+                }
             } else  if (csPriority > NOT_SUPPORTED) {
                 // PS tried, generate the list with CS preferred.
                 preferredNetworks = generatePreferredNetworks(getCsNetworkTypeConfiguration(),
@@ -1276,8 +1282,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         tm = tm.createForSubscriptionId(getSubId());
         String netIso = tm.getNetworkCountryIso();
 
-        EmergencyRegistrationResult regResult =
-                mSelectionAttributes.getEmergencyRegistrationResult();
+        EmergencyRegistrationResult regResult = mLastRegResult;
         if (regResult != null) {
             if (regResult.getRegState() == REGISTRATION_STATE_HOME) return false;
             if (regResult.getRegState() == REGISTRATION_STATE_ROAMING) return true;
