@@ -71,6 +71,7 @@ import static junit.framework.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyBoolean;
 import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.anyVararg;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.doReturn;
@@ -234,7 +235,7 @@ public class EmergencyCallDomainSelectorTest {
         when(mTelephonyManager.getActiveModemCount()).thenReturn(1);
 
         mCarrierConfigManager = mContext.getSystemService(CarrierConfigManager.class);
-        when(mCarrierConfigManager.getConfigForSubId(anyInt()))
+        when(mCarrierConfigManager.getConfigForSubId(anyInt(), anyVararg()))
             .thenReturn(getDefaultPersistableBundle());
 
         mConnectivityManager = mContext.getSystemService(ConnectivityManager.class);
@@ -335,7 +336,7 @@ public class EmergencyCallDomainSelectorTest {
                 CarrierConfigManager.ImsEmergency.DOMAIN_PS_NON_3GPP,
                 };
         bundle.putIntArray(KEY_EMERGENCY_DOMAIN_PREFERENCE_INT_ARRAY, domainPreference);
-        when(mCarrierConfigManager.getConfigForSubId(anyInt())).thenReturn(bundle);
+        when(mCarrierConfigManager.getConfigForSubId(anyInt(), anyVararg())).thenReturn(bundle);
 
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
@@ -398,7 +399,7 @@ public class EmergencyCallDomainSelectorTest {
                 CarrierConfigManager.ImsEmergency.DOMAIN_CS
                 };
         bundle.putIntArray(KEY_EMERGENCY_DOMAIN_PREFERENCE_INT_ARRAY, domainPreference);
-        when(mCarrierConfigManager.getConfigForSubId(anyInt())).thenReturn(bundle);
+        when(mCarrierConfigManager.getConfigForSubId(anyInt(), anyVararg())).thenReturn(bundle);
 
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(true);
@@ -660,7 +661,7 @@ public class EmergencyCallDomainSelectorTest {
     public void testAirplaneRequiresRegCombinedImsNotRegisteredSelectPs() throws Exception {
         PersistableBundle bundle = getDefaultPersistableBundle();
         bundle.putBoolean(KEY_EMERGENCY_REQUIRES_IMS_REGISTRATION_BOOL, true);
-        when(mCarrierConfigManager.getConfigForSubId(anyInt())).thenReturn(bundle);
+        when(mCarrierConfigManager.getConfigForSubId(anyInt(), anyVararg())).thenReturn(bundle);
 
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
@@ -689,7 +690,7 @@ public class EmergencyCallDomainSelectorTest {
         PersistableBundle bundle = getDefaultPersistableBundle();
         bundle.putIntArray(KEY_EMERGENCY_OVER_CS_SUPPORTED_ACCESS_NETWORK_TYPES_INT_ARRAY,
                 new int[0]);
-        when(mCarrierConfigManager.getConfigForSubId(anyInt())).thenReturn(bundle);
+        when(mCarrierConfigManager.getConfigForSubId(anyInt(), anyVararg())).thenReturn(bundle);
 
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
@@ -966,7 +967,7 @@ public class EmergencyCallDomainSelectorTest {
                 CarrierConfigManager.ImsEmergency.DOMAIN_CS
                 };
         bundle.putIntArray(KEY_EMERGENCY_DOMAIN_PREFERENCE_INT_ARRAY, domainPreference);
-        when(mCarrierConfigManager.getConfigForSubId(anyInt())).thenReturn(bundle);
+        when(mCarrierConfigManager.getConfigForSubId(anyInt(), anyVararg())).thenReturn(bundle);
 
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
@@ -1000,7 +1001,7 @@ public class EmergencyCallDomainSelectorTest {
                 CarrierConfigManager.ImsEmergency.DOMAIN_CS
                 };
         bundle.putIntArray(KEY_EMERGENCY_DOMAIN_PREFERENCE_INT_ARRAY, domainPreference);
-        when(mCarrierConfigManager.getConfigForSubId(anyInt())).thenReturn(bundle);
+        when(mCarrierConfigManager.getConfigForSubId(anyInt(), anyVararg())).thenReturn(bundle);
 
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
@@ -1025,7 +1026,7 @@ public class EmergencyCallDomainSelectorTest {
                 CarrierConfigManager.ImsEmergency.DOMAIN_PS_3GPP
                 };
         bundle.putIntArray(KEY_EMERGENCY_DOMAIN_PREFERENCE_INT_ARRAY, domainPreference);
-        when(mCarrierConfigManager.getConfigForSubId(anyInt())).thenReturn(bundle);
+        when(mCarrierConfigManager.getConfigForSubId(anyInt(), anyVararg())).thenReturn(bundle);
 
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
@@ -1351,7 +1352,7 @@ public class EmergencyCallDomainSelectorTest {
     public void testVoLteOnEpsImsNotRegisteredSelectPs() throws Exception {
         PersistableBundle bundle = getDefaultPersistableBundle();
         bundle.putBoolean(KEY_EMERGENCY_REQUIRES_VOLTE_ENABLED_BOOL, true);
-        when(mCarrierConfigManager.getConfigForSubId(anyInt())).thenReturn(bundle);
+        when(mCarrierConfigManager.getConfigForSubId(anyInt(), anyVararg())).thenReturn(bundle);
 
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
@@ -1374,7 +1375,7 @@ public class EmergencyCallDomainSelectorTest {
     public void testVoLteOffEpsImsNotRegisteredScanCsPreferred() throws Exception {
         PersistableBundle bundle = getDefaultPersistableBundle();
         bundle.putBoolean(KEY_EMERGENCY_REQUIRES_VOLTE_ENABLED_BOOL, true);
-        when(mCarrierConfigManager.getConfigForSubId(anyInt())).thenReturn(bundle);
+        when(mCarrierConfigManager.getConfigForSubId(anyInt(), anyVararg())).thenReturn(bundle);
 
         // Disable VoLTE.
         when(mMmTelManager.isAdvancedCallingSettingEnabled()).thenReturn(false);
@@ -1400,7 +1401,7 @@ public class EmergencyCallDomainSelectorTest {
     public void testRequiresRegEpsImsNotRegisteredScanCsPreferred() throws Exception {
         PersistableBundle bundle = getDefaultPersistableBundle();
         bundle.putBoolean(KEY_EMERGENCY_REQUIRES_IMS_REGISTRATION_BOOL, true);
-        when(mCarrierConfigManager.getConfigForSubId(anyInt())).thenReturn(bundle);
+        when(mCarrierConfigManager.getConfigForSubId(anyInt(), anyVararg())).thenReturn(bundle);
 
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
@@ -1424,7 +1425,7 @@ public class EmergencyCallDomainSelectorTest {
 
         PersistableBundle bundle = getDefaultPersistableBundle();
         bundle.putBoolean(KEY_EMERGENCY_REQUIRES_IMS_REGISTRATION_BOOL, true);
-        when(mCarrierConfigManager.getConfigForSubId(anyInt())).thenReturn(bundle);
+        when(mCarrierConfigManager.getConfigForSubId(anyInt(), anyVararg())).thenReturn(bundle);
 
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
@@ -1447,7 +1448,7 @@ public class EmergencyCallDomainSelectorTest {
             throws Exception {
         PersistableBundle bundle = getDefaultPersistableBundle();
         bundle.putBoolean(KEY_EMERGENCY_REQUIRES_IMS_REGISTRATION_BOOL, true);
-        when(mCarrierConfigManager.getConfigForSubId(anyInt())).thenReturn(bundle);
+        when(mCarrierConfigManager.getConfigForSubId(anyInt(), anyVararg())).thenReturn(bundle);
 
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
@@ -1469,7 +1470,7 @@ public class EmergencyCallDomainSelectorTest {
     public void testDefaultEpsImsRegisteredBarredScanTimeoutWifi() throws Exception {
         PersistableBundle bundle = getDefaultPersistableBundle();
         bundle.putBoolean(KEY_EMERGENCY_CALL_OVER_EMERGENCY_PDN_BOOL, true);
-        when(mCarrierConfigManager.getConfigForSubId(anyInt())).thenReturn(bundle);
+        when(mCarrierConfigManager.getConfigForSubId(anyInt(), anyVararg())).thenReturn(bundle);
 
         mResultConsumer = null;
         createSelector(SLOT_0_SUB_ID);
@@ -1513,7 +1514,7 @@ public class EmergencyCallDomainSelectorTest {
                 TelephonyManager.SIM_STATE_PIN_REQUIRED);
         PersistableBundle bundle = getDefaultPersistableBundle();
         bundle.putBoolean(KEY_EMERGENCY_CALL_OVER_EMERGENCY_PDN_BOOL, true);
-        when(mCarrierConfigManager.getConfigForSubId(anyInt())).thenReturn(bundle);
+        when(mCarrierConfigManager.getConfigForSubId(anyInt(), anyVararg())).thenReturn(bundle);
 
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(true);
@@ -1538,7 +1539,7 @@ public class EmergencyCallDomainSelectorTest {
         PersistableBundle bundle = getDefaultPersistableBundle();
         bundle.putBoolean(KEY_EMERGENCY_CALL_OVER_EMERGENCY_PDN_BOOL, true);
         bundle.putInt(KEY_EMERGENCY_VOWIFI_REQUIRES_CONDITION_INT, VOWIFI_REQUIRES_SETTING_ENABLED);
-        when(mCarrierConfigManager.getConfigForSubId(anyInt())).thenReturn(bundle);
+        when(mCarrierConfigManager.getConfigForSubId(anyInt(), anyVararg())).thenReturn(bundle);
 
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(true);
@@ -1578,7 +1579,7 @@ public class EmergencyCallDomainSelectorTest {
         PersistableBundle bundle = getDefaultPersistableBundle();
         bundle.putBoolean(KEY_EMERGENCY_CALL_OVER_EMERGENCY_PDN_BOOL, true);
         bundle.putInt(KEY_EMERGENCY_VOWIFI_REQUIRES_CONDITION_INT, VOWIFI_REQUIRES_VALID_EID);
-        when(mCarrierConfigManager.getConfigForSubId(anyInt())).thenReturn(bundle);
+        when(mCarrierConfigManager.getConfigForSubId(anyInt(), anyVararg())).thenReturn(bundle);
 
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(true);
@@ -1825,7 +1826,7 @@ public class EmergencyCallDomainSelectorTest {
     public void testFullService() throws Exception {
         PersistableBundle bundle = getDefaultPersistableBundle();
         bundle.putInt(KEY_EMERGENCY_NETWORK_SCAN_TYPE_INT, SCAN_TYPE_FULL_SERVICE);
-        when(mCarrierConfigManager.getConfigForSubId(anyInt())).thenReturn(bundle);
+        when(mCarrierConfigManager.getConfigForSubId(anyInt(), anyVararg())).thenReturn(bundle);
 
         mResultConsumer = null;
         createSelector(SLOT_0_SUB_ID);
@@ -1856,7 +1857,7 @@ public class EmergencyCallDomainSelectorTest {
     public void testFullServiceInRoaming() throws Exception {
         PersistableBundle bundle = getDefaultPersistableBundle();
         bundle.putInt(KEY_EMERGENCY_NETWORK_SCAN_TYPE_INT, SCAN_TYPE_FULL_SERVICE);
-        when(mCarrierConfigManager.getConfigForSubId(anyInt())).thenReturn(bundle);
+        when(mCarrierConfigManager.getConfigForSubId(anyInt(), anyVararg())).thenReturn(bundle);
 
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(true);
@@ -1881,7 +1882,7 @@ public class EmergencyCallDomainSelectorTest {
         PersistableBundle bundle = getDefaultPersistableBundle();
         bundle.putInt(KEY_EMERGENCY_NETWORK_SCAN_TYPE_INT,
                 SCAN_TYPE_FULL_SERVICE_FOLLOWED_BY_LIMITED_SERVICE);
-        when(mCarrierConfigManager.getConfigForSubId(anyInt())).thenReturn(bundle);
+        when(mCarrierConfigManager.getConfigForSubId(anyInt(), anyVararg())).thenReturn(bundle);
 
         mResultConsumer = null;
         createSelector(SLOT_0_SUB_ID);
@@ -2162,7 +2163,7 @@ public class EmergencyCallDomainSelectorTest {
         PersistableBundle bundle = getDefaultPersistableBundle();
         bundle.putBoolean(KEY_SCAN_LIMITED_SERVICE_AFTER_VOLTE_FAILURE_BOOL,
                 true);
-        when(mCarrierConfigManager.getConfigForSubId(anyInt())).thenReturn(bundle);
+        when(mCarrierConfigManager.getConfigForSubId(anyInt(), anyVararg())).thenReturn(bundle);
 
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
@@ -2415,7 +2416,7 @@ public class EmergencyCallDomainSelectorTest {
         PersistableBundle bundle = getDefaultPersistableBundle();
         bundle.putBoolean(KEY_EMERGENCY_CALL_OVER_EMERGENCY_PDN_BOOL, true);
         bundle.putInt(KEY_MAXIMUM_CELLULAR_SEARCH_TIMER_SEC_INT, 20);
-        when(mCarrierConfigManager.getConfigForSubId(anyInt())).thenReturn(bundle);
+        when(mCarrierConfigManager.getConfigForSubId(anyInt(), anyVararg())).thenReturn(bundle);
 
         setupForHandleScanResult();
 
@@ -2440,7 +2441,7 @@ public class EmergencyCallDomainSelectorTest {
         PersistableBundle bundle = getDefaultPersistableBundle();
         bundle.putBoolean(KEY_EMERGENCY_CALL_OVER_EMERGENCY_PDN_BOOL, true);
         bundle.putInt(KEY_MAXIMUM_CELLULAR_SEARCH_TIMER_SEC_INT, 20);
-        when(mCarrierConfigManager.getConfigForSubId(anyInt())).thenReturn(bundle);
+        when(mCarrierConfigManager.getConfigForSubId(anyInt(), anyVararg())).thenReturn(bundle);
 
         setupForHandleScanResult();
 
@@ -2464,7 +2465,7 @@ public class EmergencyCallDomainSelectorTest {
         PersistableBundle bundle = getDefaultPersistableBundle();
         bundle.putBoolean(KEY_EMERGENCY_CALL_OVER_EMERGENCY_PDN_BOOL, true);
         bundle.putInt(KEY_MAXIMUM_CELLULAR_SEARCH_TIMER_SEC_INT, 20);
-        when(mCarrierConfigManager.getConfigForSubId(anyInt())).thenReturn(bundle);
+        when(mCarrierConfigManager.getConfigForSubId(anyInt(), anyVararg())).thenReturn(bundle);
 
         setupForHandleScanResult();
 
@@ -2477,7 +2478,7 @@ public class EmergencyCallDomainSelectorTest {
         PersistableBundle bundle = getDefaultPersistableBundle();
         bundle.putBoolean(KEY_EMERGENCY_CALL_OVER_EMERGENCY_PDN_BOOL, true);
         bundle.putInt(KEY_MAXIMUM_CELLULAR_SEARCH_TIMER_SEC_INT, 20);
-        when(mCarrierConfigManager.getConfigForSubId(anyInt())).thenReturn(bundle);
+        when(mCarrierConfigManager.getConfigForSubId(anyInt(), anyVararg())).thenReturn(bundle);
 
         setupForHandleScanResult();
 
@@ -2502,7 +2503,7 @@ public class EmergencyCallDomainSelectorTest {
         PersistableBundle bundle = getDefaultPersistableBundle();
         bundle.putBoolean(KEY_EMERGENCY_CALL_OVER_EMERGENCY_PDN_BOOL, true);
         bundle.putInt(KEY_MAXIMUM_CELLULAR_SEARCH_TIMER_SEC_INT, 5);
-        when(mCarrierConfigManager.getConfigForSubId(anyInt())).thenReturn(bundle);
+        when(mCarrierConfigManager.getConfigForSubId(anyInt(), anyVararg())).thenReturn(bundle);
 
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
@@ -2556,7 +2557,7 @@ public class EmergencyCallDomainSelectorTest {
         PersistableBundle bundle = getDefaultPersistableBundle();
         bundle.putBoolean(KEY_EMERGENCY_CALL_OVER_EMERGENCY_PDN_BOOL, true);
         bundle.putInt(KEY_MAXIMUM_CELLULAR_SEARCH_TIMER_SEC_INT, 5);
-        when(mCarrierConfigManager.getConfigForSubId(anyInt())).thenReturn(bundle);
+        when(mCarrierConfigManager.getConfigForSubId(anyInt(), anyVararg())).thenReturn(bundle);
 
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
@@ -2635,7 +2636,7 @@ public class EmergencyCallDomainSelectorTest {
         PersistableBundle bundle = getDefaultPersistableBundle();
         bundle.putBoolean(KEY_EMERGENCY_CALL_OVER_EMERGENCY_PDN_BOOL, true);
         bundle.putInt(KEY_MAXIMUM_CELLULAR_SEARCH_TIMER_SEC_INT, 20);
-        when(mCarrierConfigManager.getConfigForSubId(anyInt())).thenReturn(bundle);
+        when(mCarrierConfigManager.getConfigForSubId(anyInt(), anyVararg())).thenReturn(bundle);
 
         setupForHandleScanResult();
 
@@ -2661,7 +2662,7 @@ public class EmergencyCallDomainSelectorTest {
         bundle.putBoolean(KEY_EMERGENCY_CALL_OVER_EMERGENCY_PDN_BOOL, true);
         bundle.putInt(KEY_MAXIMUM_CELLULAR_SEARCH_TIMER_SEC_INT, 20);
         bundle.putInt(KEY_MAXIMUM_NUMBER_OF_EMERGENCY_TRIES_OVER_VOWIFI_INT, 2);
-        when(mCarrierConfigManager.getConfigForSubId(anyInt())).thenReturn(bundle);
+        when(mCarrierConfigManager.getConfigForSubId(anyInt(), anyVararg())).thenReturn(bundle);
 
         setupForHandleScanResult();
 
@@ -2824,7 +2825,7 @@ public class EmergencyCallDomainSelectorTest {
     public void testDefaultLimitedServiceScanTypeFullService() throws Exception {
         PersistableBundle bundle = getDefaultPersistableBundle();
         bundle.putInt(KEY_EMERGENCY_NETWORK_SCAN_TYPE_INT, SCAN_TYPE_FULL_SERVICE);
-        when(mCarrierConfigManager.getConfigForSubId(anyInt())).thenReturn(bundle);
+        when(mCarrierConfigManager.getConfigForSubId(anyInt(), anyVararg())).thenReturn(bundle);
 
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
@@ -2847,7 +2848,7 @@ public class EmergencyCallDomainSelectorTest {
         bundle.putIntArray(KEY_EMERGENCY_OVER_IMS_SUPPORTED_3GPP_NETWORK_TYPES_INT_ARRAY,
                 new int[] { NGRAN, EUTRAN });
         bundle.putBoolean(KEY_EMERGENCY_LTE_PREFERRED_AFTER_NR_FAILED_BOOL, true);
-        when(mCarrierConfigManager.getConfigForSubId(anyInt())).thenReturn(bundle);
+        when(mCarrierConfigManager.getConfigForSubId(anyInt(), anyVararg())).thenReturn(bundle);
 
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
@@ -3114,7 +3115,7 @@ public class EmergencyCallDomainSelectorTest {
                 CarrierConfigManager.ImsEmergency.DOMAIN_CS,
                 };
         bundle.putIntArray(KEY_EMERGENCY_DOMAIN_PREFERENCE_ROAMING_INT_ARRAY, domainPreferenceRoam);
-        when(mCarrierConfigManager.getConfigForSubId(anyInt())).thenReturn(bundle);
+        when(mCarrierConfigManager.getConfigForSubId(anyInt(), anyVararg())).thenReturn(bundle);
         doReturn("").when(mTelephonyManager).getNetworkCountryIso();
         doReturn("us").when(mTelephonyManager).getSimCountryIso();
 
@@ -3159,7 +3160,7 @@ public class EmergencyCallDomainSelectorTest {
     }
 
     private void setupForScanListTest(PersistableBundle bundle, boolean psFailed) throws Exception {
-        when(mCarrierConfigManager.getConfigForSubId(anyInt())).thenReturn(bundle);
+        when(mCarrierConfigManager.getConfigForSubId(anyInt(), anyVararg())).thenReturn(bundle);
 
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
