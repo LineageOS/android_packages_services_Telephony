@@ -504,7 +504,26 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
      */
     private void updateCarrierConfiguration() {
         CarrierConfigManager configMgr = mContext.getSystemService(CarrierConfigManager.class);
-        PersistableBundle b = configMgr.getConfigForSubId(getSubId());
+        PersistableBundle b = configMgr.getConfigForSubId(getSubId(),
+                KEY_EMERGENCY_OVER_IMS_SUPPORTED_3GPP_NETWORK_TYPES_INT_ARRAY,
+                KEY_EMERGENCY_OVER_IMS_ROAMING_SUPPORTED_3GPP_NETWORK_TYPES_INT_ARRAY,
+                KEY_EMERGENCY_OVER_CS_SUPPORTED_ACCESS_NETWORK_TYPES_INT_ARRAY,
+                KEY_EMERGENCY_OVER_CS_ROAMING_SUPPORTED_ACCESS_NETWORK_TYPES_INT_ARRAY,
+                KEY_EMERGENCY_DOMAIN_PREFERENCE_INT_ARRAY,
+                KEY_EMERGENCY_DOMAIN_PREFERENCE_ROAMING_INT_ARRAY,
+                KEY_PREFER_IMS_EMERGENCY_WHEN_VOICE_CALLS_ON_CS_BOOL,
+                KEY_EMERGENCY_VOWIFI_REQUIRES_CONDITION_INT,
+                KEY_EMERGENCY_SCAN_TIMER_SEC_INT,
+                KEY_MAXIMUM_CELLULAR_SEARCH_TIMER_SEC_INT,
+                KEY_MAXIMUM_NUMBER_OF_EMERGENCY_TRIES_OVER_VOWIFI_INT,
+                KEY_EMERGENCY_CALL_OVER_EMERGENCY_PDN_BOOL,
+                KEY_EMERGENCY_NETWORK_SCAN_TYPE_INT,
+                KEY_EMERGENCY_CALL_SETUP_TIMER_ON_CURRENT_NETWORK_SEC_INT,
+                KEY_EMERGENCY_REQUIRES_IMS_REGISTRATION_BOOL,
+                KEY_EMERGENCY_REQUIRES_VOLTE_ENABLED_BOOL,
+                KEY_EMERGENCY_LTE_PREFERRED_AFTER_NR_FAILED_BOOL,
+                KEY_SCAN_LIMITED_SERVICE_AFTER_VOLTE_FAILURE_BOOL,
+                KEY_EMERGENCY_CDMA_PREFERRED_NUMBERS_STRING_ARRAY);
         if (b == null) {
             b = CarrierConfigManager.getDefaultConfig();
         }
