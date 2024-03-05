@@ -21,9 +21,12 @@ import static android.telephony.satellite.SatelliteManager.SATELLITE_RESULT_ERRO
 import static android.telephony.satellite.SatelliteManager.SATELLITE_RESULT_REQUEST_NOT_SUPPORTED;
 import static android.telephony.satellite.SatelliteManager.SATELLITE_RESULT_SUCCESS;
 
+import static com.android.phone.satellite.accesscontrol.SatelliteAccessController.EVENT_CONFIG_DATA_UPDATED;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import static org.mockito.ArgumentMatchers.any;
@@ -46,10 +49,13 @@ import android.content.res.Resources;
 import android.location.Location;
 import android.location.LocationManager;
 import android.location.LocationRequest;
+import android.os.AsyncResult;
 import android.os.Bundle;
 import android.os.CancellationSignal;
+import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
+import android.os.Message;
 import android.os.ResultReceiver;
 import android.telecom.TelecomManager;
 import android.testing.TestableLooper;
@@ -128,12 +134,20 @@ public class SatelliteAccessControllerTest {
     private TestableLooper mTestableLooper;
     private Phone[] mPhones;
     private TestSatelliteAccessController mSatelliteAccessControllerUT;
+
     @Captor
     private ArgumentCaptor<CancellationSignal> mLocationRequestCancellationSignalCaptor;
     @Captor
     private ArgumentCaptor<Consumer<Location>> mLocationRequestConsumerCaptor;
     @Captor
     private ArgumentCaptor<ResultReceiver> mResultReceiverFromSatelliteControllerCaptor;
+    @Captor
+    private ArgumentCaptor<Handler> mConfigUpdateHandlerCaptor;
+    @Captor
+    private ArgumentCaptor<Integer> mConfigUpdateIntCaptor;
+    @Captor
+    private ArgumentCaptor<Object> mConfigUpdateObjectCaptor;
+
     private boolean mQueriedSatelliteAllowed = false;
     private int mQueriedSatelliteAllowedResultCode = SATELLITE_RESULT_SUCCESS;
     private Semaphore mSatelliteAllowedSemaphore = new Semaphore(0);
@@ -542,11 +556,20 @@ public class SatelliteAccessControllerTest {
 
     @Test
     public void testUpdateSatelliteConfigData() {
+        verify(mMockSatelliteController).registerForConfigUpdateChanged(
+                mConfigUpdateHandlerCaptor.capture(), mConfigUpdateIntCaptor.capture(),
+                mConfigUpdateObjectCaptor.capture());
+
+        assertSame(mConfigUpdateHandlerCaptor.getValue(), mSatelliteAccessControllerUT);
+        assertSame(mConfigUpdateIntCaptor.getValue(), EVENT_CONFIG_DATA_UPDATED);
+        assertSame(mConfigUpdateObjectCaptor.getValue(), mMockContext);
+
         // Verify the case when the configParser is not exist.
         SatelliteConfigParser spyConfigParserNull =
                 spy(new SatelliteConfigParser((byte[]) null));
         doReturn(spyConfigParserNull).when(mMockSatelliteController).getSatelliteConfigParser();
-        mSatelliteAccessControllerUT.updateSatelliteConfigData(mMockContext);
+
+        sendConfigUpdateChangedEvent(mMockContext);
 
         assertNull(spyConfigParserNull.getConfig());
 
@@ -554,7 +577,8 @@ public class SatelliteAccessControllerTest {
         SatelliteConfigParser spyConfigParserEmpty =
                 spy(new SatelliteConfigParser("test".getBytes()));
         doReturn(spyConfigParserEmpty).when(mMockSatelliteController).getSatelliteConfigParser();
-        mSatelliteAccessControllerUT.updateSatelliteConfigData(mMockContext);
+
+        sendConfigUpdateChangedEvent(mMockContext);
 
         assertNull(spyConfigParserEmpty.getConfig());
 
@@ -570,10 +594,18 @@ public class SatelliteAccessControllerTest {
         doReturn(targetSatS2FilePath).when(mockSatelliteConfig).getSatelliteS2CellFile(any());
         doReturn(mockSatelliteConfig).when(mMockSatelliteController).getSatelliteConfig();
 
-        mSatelliteAccessControllerUT.updateSatelliteConfigData(mMockContext);
+        sendConfigUpdateChangedEvent(mMockContext);
+
         verify(mockSatelliteConfig, times(0)).getDeviceSatelliteCountryCodes();
         verify(mockSatelliteConfig, times(0)).isSatelliteDataForAllowedRegion();
         verify(mockSatelliteConfig, times(2)).getSatelliteS2CellFile(any());
+    }
+
+    private void sendConfigUpdateChangedEvent(Context context) {
+        Message msg = mSatelliteAccessControllerUT.obtainMessage(EVENT_CONFIG_DATA_UPDATED);
+        msg.obj = new AsyncResult(context, SATELLITE_RESULT_SUCCESS, null);
+        msg.sendToTarget();
+        mTestableLooper.processAllMessages();
     }
 
     private void clearAllInvocations() {
