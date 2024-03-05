@@ -257,6 +257,7 @@ import com.android.phone.vvm.PhoneAccountHandleConverter;
 import com.android.phone.vvm.RemoteVvmTaskManager;
 import com.android.phone.vvm.VisualVoicemailSettingsUtil;
 import com.android.phone.vvm.VisualVoicemailSmsFilterConfig;
+import com.android.server.feature.flags.Flags;
 import com.android.services.telephony.TelecomAccountRegistry;
 import com.android.services.telephony.TelephonyConnectionService;
 import com.android.telephony.Rlog;
@@ -422,6 +423,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     private final PhoneGlobals mApp;
     private FeatureFlags mFeatureFlags;
+    private com.android.server.telecom.flags.FeatureFlags mTelecomFeatureFlags;
     private final CallManager mCM;
     private final ImsResolver mImsResolver;
 
@@ -2462,6 +2464,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private PhoneInterfaceManager(PhoneGlobals app, FeatureFlags featureFlags) {
         mApp = app;
         mFeatureFlags = featureFlags;
+        mTelecomFeatureFlags = new com.android.server.telecom.flags.FeatureFlagsImpl();
         mCM = PhoneGlobals.getInstance().mCM;
         mImsResolver = ImsResolver.getInstance();
         mSatelliteController = SatelliteController.getInstance();
@@ -12894,8 +12897,16 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     public void persistEmergencyCallDiagnosticData(@NonNull String dropboxTag, boolean enableLogcat,
             long logcatStartTimestampMillis, boolean enableTelecomDump,
             boolean enableTelephonyDump) {
-        mApp.enforceCallingPermission(android.Manifest.permission.DUMP,
-                "persistEmergencyCallDiagnosticData");
+        // Verify that the caller has READ_DROPBOX_DATA permission.
+        if (mTelecomFeatureFlags.telecomResolveHiddenDependencies()
+                && Flags.enableReadDropboxPermission()) {
+            mApp.enforceCallingPermission(permission.READ_DROPBOX_DATA,
+                    "persistEmergencyCallDiagnosticData");
+        } else {
+            // Otherwise, enforce legacy permission.
+            mApp.enforceCallingPermission(android.Manifest.permission.DUMP,
+                    "persistEmergencyCallDiagnosticData");
+        }
         final long identity = Binder.clearCallingIdentity();
         try {
             persistEmergencyCallDiagnosticDataInternal(dropboxTag, enableLogcat,
