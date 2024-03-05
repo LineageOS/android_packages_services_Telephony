@@ -33,6 +33,7 @@ import android.util.SparseArray;
 
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.telephony.PhoneConfigurationManager;
+import com.android.internal.telephony.flags.FeatureFlags;
 import com.android.internal.telephony.metrics.RcsStats;
 import com.android.internal.util.IndentingPrintWriter;
 import com.android.phone.ImsStateCallbackController;
@@ -63,7 +64,8 @@ public class TelephonyRcsService {
         /**
          * @return an instance of {@link UceControllerManager} associated with the slot specified.
          */
-        UceControllerManager createUceControllerManager(Context context, int slotId, int subId);
+        UceControllerManager createUceControllerManager(Context context, int slotId, int subId,
+                FeatureFlags featureFlags);
 
         /**
          * @return an instance of {@link SipTransportController} for the slot and subscription
@@ -80,8 +82,8 @@ public class TelephonyRcsService {
 
         @Override
         public UceControllerManager createUceControllerManager(Context context, int slotId,
-                int subId) {
-            return new UceControllerManager(context, slotId, subId);
+                int subId, FeatureFlags featureFlags) {
+            return new UceControllerManager(context, slotId, subId, featureFlags);
         }
 
         @Override
@@ -112,6 +114,7 @@ public class TelephonyRcsService {
 
     private final Context mContext;
     private final Object mLock = new Object();
+    private final FeatureFlags mFeatureFlags;
     private int mNumSlots;
 
     // Maps slot ID -> RcsFeatureController.
@@ -160,23 +163,26 @@ public class TelephonyRcsService {
         return true;
     });
 
-    public TelephonyRcsService(Context context, int numSlots) {
+    public TelephonyRcsService(Context context, int numSlots, FeatureFlags featureFlags) {
         mContext = context;
         mNumSlots = numSlots;
         mFeatureControllers = new SparseArray<>(numSlots);
         mSlotToAssociatedSubIds = new SparseArray<>(numSlots);
         mRcsUceEnabled = sResourceProxy.getDeviceUceEnabled(mContext);
+        mFeatureFlags = featureFlags;
         RcsStats.getInstance().registerUceCallback();
     }
 
     @VisibleForTesting
-    public TelephonyRcsService(Context context, int numSlots, ResourceProxy resourceProxy) {
+    public TelephonyRcsService(Context context, int numSlots, ResourceProxy resourceProxy,
+            FeatureFlags featureFlags) {
         mContext = context;
         mNumSlots = numSlots;
         mFeatureControllers = new SparseArray<>(numSlots);
         mSlotToAssociatedSubIds = new SparseArray<>(numSlots);
         sResourceProxy = resourceProxy;
         mRcsUceEnabled = sResourceProxy.getDeviceUceEnabled(mContext);
+        mFeatureFlags = featureFlags;
         RcsStats.getInstance().registerUceCallback();
     }
 
@@ -310,8 +316,8 @@ public class TelephonyRcsService {
     private void updateSupportedFeatures(RcsFeatureController c, int slotId, int subId) {
         if (isDeviceUceEnabled() && doesSubscriptionSupportPresence(subId)) {
             if (c.getFeature(UceControllerManager.class) == null) {
-                c.addFeature(mFeatureFactory.createUceControllerManager(mContext, slotId, subId),
-                        UceControllerManager.class);
+                c.addFeature(mFeatureFactory.createUceControllerManager(
+                        mContext, slotId, subId, mFeatureFlags), UceControllerManager.class);
             }
         } else {
             if (c.getFeature(UceControllerManager.class) != null) {

@@ -32,6 +32,7 @@ import android.util.Log;
 import com.android.ims.RcsFeatureManager;
 import com.android.ims.rcs.uce.UceController;
 import com.android.internal.annotations.VisibleForTesting;
+import com.android.internal.telephony.flags.FeatureFlags;
 
 import java.io.PrintWriter;
 import java.util.List;
@@ -53,15 +54,17 @@ public class UceControllerManager implements RcsFeatureController.Feature {
     private final int mSlotId;
     private final Context mContext;
     private final ExecutorService mExecutorService;
+    private final FeatureFlags mFeatureFlags;
 
     private volatile @Nullable UceController mUceController;
     private volatile @Nullable RcsFeatureManager mRcsFeatureManager;
 
-    public UceControllerManager(Context context, int slotId, int subId) {
+    public UceControllerManager(Context context, int slotId, int subId, FeatureFlags featureFlags) {
         Log.d(LOG_TAG, "create: slotId=" + slotId + ", subId=" + subId);
         mSlotId = slotId;
         mContext = context;
         mExecutorService = Executors.newSingleThreadExecutor();
+        mFeatureFlags = featureFlags;
         initUceController(subId);
     }
 
@@ -70,11 +73,12 @@ public class UceControllerManager implements RcsFeatureController.Feature {
      */
     @VisibleForTesting
     public UceControllerManager(Context context, int slotId, ExecutorService executor,
-            UceController uceController) {
+            UceController uceController, FeatureFlags featureFlags) {
         mSlotId = slotId;
         mContext = context;
         mExecutorService = executor;
         mUceController = uceController;
+        mFeatureFlags = featureFlags;
     }
 
     @Override
@@ -440,7 +444,7 @@ public class UceControllerManager implements RcsFeatureController.Feature {
         if (mUceController == null) {
             // Create new UceController only when the subscription ID is valid.
             if (SubscriptionManager.isValidSubscriptionId(newSubId)) {
-                mUceController = new UceController(mContext, newSubId);
+                mUceController = new UceController(mContext, newSubId, mFeatureFlags);
             }
         } else if (mUceController.getSubId() != newSubId) {
             // The subscription ID is updated. Remove the old UceController instance.
@@ -448,7 +452,7 @@ public class UceControllerManager implements RcsFeatureController.Feature {
             mUceController = null;
             // Create new UceController only when the subscription ID is valid.
             if (SubscriptionManager.isValidSubscriptionId(newSubId)) {
-                mUceController = new UceController(mContext, newSubId);
+                mUceController = new UceController(mContext, newSubId, mFeatureFlags);
             }
         }
     }
