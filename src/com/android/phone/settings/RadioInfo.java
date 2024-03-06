@@ -44,6 +44,7 @@ import android.os.HandlerExecutor;
 import android.os.Message;
 import android.os.PersistableBundle;
 import android.os.SystemProperties;
+import android.os.UserManager;
 import android.telephony.AccessNetworkConstants;
 import android.telephony.CarrierConfigManager;
 import android.telephony.CellIdentityCdma;
@@ -103,6 +104,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.euicc.EuiccConnector;
+import com.android.internal.telephony.flags.FeatureFlags;
+import com.android.internal.telephony.flags.FeatureFlagsImpl;
 import com.android.internal.telephony.util.TelephonyUtils;
 import com.android.phone.R;
 
@@ -302,6 +305,8 @@ public class RadioInfo extends AppCompatActivity {
     private int mCellInfoRefreshRateIndex;
     private int mSelectedPhoneIndex;
 
+    private FeatureFlags mFeatureFlags;
+
     private final NetworkRequest mDefaultNetworkRequest = new NetworkRequest.Builder()
             .addTransportType(NetworkCapabilities.TRANSPORT_CELLULAR)
             .addCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
@@ -494,9 +499,20 @@ public class RadioInfo extends AppCompatActivity {
             return;
         }
 
+        UserManager userManager =
+                (UserManager) getApplicationContext().getSystemService(Context.USER_SERVICE);
+        if (userManager != null
+                && userManager.hasUserRestriction(UserManager.DISALLOW_CONFIG_MOBILE_NETWORKS)) {
+            Log.w(TAG, "User is restricted from configuring mobile networks.");
+            finish();
+            return;
+        }
+
         setContentView(R.layout.radio_info);
 
         log("Started onCreate");
+
+        mFeatureFlags = new FeatureFlagsImpl();
 
         mQueuedWork = new ThreadPoolExecutor(1, 1, RUNNABLE_TIMEOUT_MS, TimeUnit.MICROSECONDS,
                 new LinkedBlockingDeque<Runnable>());
@@ -847,7 +863,9 @@ public class RadioInfo extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mQueuedWork.shutdown();
+        if (mQueuedWork != null) {
+            mQueuedWork.shutdown();
+        }
     }
 
     // returns array of string labels for each phone index. The array index is equal to the phone
@@ -1555,6 +1573,9 @@ public class RadioInfo extends AppCompatActivity {
     };
 
     private boolean isRadioOn() {
+        if (mFeatureFlags.radioInfoIsRadioOn()) {
+            return mTelephonyManager.getRadioPowerState() == TelephonyManager.RADIO_POWER_ON;
+        }
         //FIXME: Replace with a TelephonyManager call
         return mPhone.getServiceState().getState() != ServiceState.STATE_POWER_OFF;
     }

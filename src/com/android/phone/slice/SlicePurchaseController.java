@@ -58,6 +58,7 @@ import android.webkit.WebView;
 
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.telephony.Phone;
+import com.android.internal.telephony.flags.FeatureFlags;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -309,6 +310,8 @@ public class SlicePurchaseController extends Handler {
 
     /** The Phone instance used to create the SlicePurchaseController. */
     @NonNull private final Phone mPhone;
+    /** Feature flags to control behavior and errors. */
+    @NonNull private final FeatureFlags mFeatureFlags;
     /** The set of capabilities that are pending network setup. */
     @NonNull private final Set<Integer> mPendingSetupCapabilities = new HashSet<>();
     /** The set of throttled capabilities. */
@@ -417,10 +420,11 @@ public class SlicePurchaseController extends Handler {
                     logd("Slice purchase application unable to show notification for capability: "
                             + TelephonyManager.convertPremiumCapabilityToString(capability)
                             + " because the user has disabled notifications.");
+                    int error = mFeatureFlags.slicingAdditionalErrorCodes()
+                            ? TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_USER_DISABLED
+                            : TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_USER_CANCELED;
                     SlicePurchaseController.getInstance(phoneId)
-                            .handlePurchaseResult(capability,
-                            TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_USER_DISABLED,
-                            true);
+                            .handlePurchaseResult(capability, error, true);
                     break;
                 }
                 case ACTION_SLICE_PURCHASE_APP_RESPONSE_SUCCESS: {
@@ -449,14 +453,16 @@ public class SlicePurchaseController extends Handler {
      * @param phone The Phone to get the SlicePurchaseController for.
      * @return The static SlicePurchaseController instance.
      */
-    @NonNull public static synchronized SlicePurchaseController getInstance(@NonNull Phone phone) {
+    @NonNull public static synchronized SlicePurchaseController getInstance(@NonNull Phone phone,
+            @NonNull FeatureFlags featureFlags) {
         // TODO: Add listeners for multi sim setting changed (maybe carrier config changed too)
         //  that dismiss notifications and update SlicePurchaseController instance
         int phoneId = phone.getPhoneId();
         if (sInstances.get(phoneId) == null) {
             HandlerThread handlerThread = new HandlerThread("SlicePurchaseController");
             handlerThread.start();
-            sInstances.put(phoneId, new SlicePurchaseController(phone, handlerThread.getLooper()));
+            sInstances.put(phoneId,
+                    new SlicePurchaseController(phone, featureFlags, handlerThread.getLooper()));
         }
         return sInstances.get(phoneId);
     }
@@ -476,18 +482,21 @@ public class SlicePurchaseController extends Handler {
      * Create a SlicePurchaseController for the given phone on the given looper.
      *
      * @param phone The Phone to create the SlicePurchaseController for.
+     * @param featureFlags The FeatureFlags that are supported.
      * @param looper The Looper to run the SlicePurchaseController on.
      */
     @VisibleForTesting
-    public SlicePurchaseController(@NonNull Phone phone, @NonNull Looper looper) {
+    public SlicePurchaseController(@NonNull Phone phone, @NonNull FeatureFlags featureFlags,
+            @NonNull Looper looper) {
         super(looper);
         mPhone = phone;
+        mFeatureFlags = featureFlags;
         // TODO: Create a cached value for slicing config in DataIndication and initialize here
         mPhone.mCi.registerForSlicingConfigChanged(this, EVENT_SLICING_CONFIG_CHANGED, null);
         mIsSlicingUpsellEnabled = DeviceConfig.getBoolean(
                 DeviceConfig.NAMESPACE_TELEPHONY, KEY_ENABLE_SLICING_UPSELL, false);
         DeviceConfig.addOnPropertiesChangedListener(
-                DeviceConfig.NAMESPACE_TELEPHONY, this::post,
+                DeviceConfig.NAMESPACE_TELEPHONY, Runnable::run,
                 properties -> {
                     if (TextUtils.equals(DeviceConfig.NAMESPACE_TELEPHONY,
                             properties.getNamespace())) {
