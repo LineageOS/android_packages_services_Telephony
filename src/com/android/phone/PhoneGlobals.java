@@ -594,7 +594,7 @@ public class PhoneGlobals extends ContextWrapper {
                 mImsStateCallbackController =
                         ImsStateCallbackController.make(this, PhoneFactory.getPhones().length);
                 mTelephonyRcsService = new TelephonyRcsService(this,
-                        PhoneFactory.getPhones().length);
+                        PhoneFactory.getPhones().length, mFeatureFlags);
                 mTelephonyRcsService.initialize();
                 imsRcsController.setRcsService(mTelephonyRcsService);
                 mImsProvisioningController =

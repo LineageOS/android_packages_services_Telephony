@@ -35,6 +35,7 @@ import com.android.TelephonyTestBase;
 import com.android.TestExecutorService;
 import com.android.ims.RcsFeatureManager;
 import com.android.ims.rcs.uce.UceController;
+import com.android.internal.telephony.flags.FeatureFlags;
 
 import org.junit.After;
 import org.junit.Before;
@@ -52,6 +53,7 @@ public class UceControllerManagerTest extends TelephonyTestBase {
 
     @Mock private UceController mUceController;
     @Mock private RcsFeatureManager mRcsFeatureManager;
+    @Mock private FeatureFlags mFeatureFlags;
 
     private final ExecutorService mExecutorService = new TestExecutorService();
 
@@ -260,7 +262,7 @@ public class UceControllerManagerTest extends TelephonyTestBase {
 
     private UceControllerManager getUceControllerManager() {
         UceControllerManager manager = new UceControllerManager(mContext, mSlotId,
-                mExecutorService, mUceController);
+                mExecutorService, mUceController, mFeatureFlags);
         return manager;
     }
 }

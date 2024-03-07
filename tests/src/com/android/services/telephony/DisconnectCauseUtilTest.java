@@ -152,7 +152,8 @@ public class DisconnectCauseUtilTest extends TelephonyTestBase {
         android.telecom.DisconnectCause tcCause =
                 DisconnectCauseUtil.toTelecomDisconnectCause(
                         DisconnectCause.BUSY, -1 /*  precise label is NOT given */,
-                        EMPTY_STRING, PHONE_ID, null, getBundleWithBusyToneArray(), mFeatureFlags);
+                        EMPTY_STRING, PHONE_ID, null, getBundleWithBusyToneArray(), mFeatureFlags,
+                        false);
 
         assertBusyCauseWithTargetLabel(R.string.callFailed_userBusy, tcCause);
     }
@@ -170,7 +171,8 @@ public class DisconnectCauseUtilTest extends TelephonyTestBase {
         android.telecom.DisconnectCause tcCause =
                 DisconnectCauseUtil.toTelecomDisconnectCause(DisconnectCause.BUSY,
                         CallFailCause.USER_BUSY /* Telephony defined a precise label */,
-                        EMPTY_STRING, PHONE_ID, null, getBundleWithBusyToneArray(), mFeatureFlags);
+                        EMPTY_STRING, PHONE_ID, null, getBundleWithBusyToneArray(), mFeatureFlags,
+                        false);
         // Note: The precise label should not be overridden even though the carrier defined
         // the cause to play a busy tone
         assertBusyCauseWithTargetLabel(R.string.clh_callFailed_user_busy_txt, tcCause);

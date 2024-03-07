@@ -23,12 +23,15 @@ import android.provider.Settings;
 import android.telecom.DisconnectCause;
 import android.telephony.CarrierConfigManager;
 import android.telephony.SubscriptionManager;
+import android.telephony.TelephonyManager;
 import android.telephony.ims.ImsReasonInfo;
 
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.telephony.CallFailCause;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
+import com.android.internal.telephony.flags.FeatureFlags;
+import com.android.internal.telephony.flags.FeatureFlagsImpl;
 import com.android.phone.ImsUtil;
 import com.android.phone.PhoneGlobals;
 import com.android.phone.R;
@@ -86,7 +89,7 @@ public class DisconnectCauseUtil {
     public static DisconnectCause toTelecomDisconnectCause(int telephonyDisconnectCause,
             String reason, int phoneId) {
         return toTelecomDisconnectCause(telephonyDisconnectCause, CallFailCause.NOT_VALID,
-                reason, phoneId, null, new FlagsAdapterImpl());
+                reason, phoneId, null, new FlagsAdapterImpl(), false);
     }
 
    /**
@@ -103,7 +106,27 @@ public class DisconnectCauseUtil {
             int telephonyDisconnectCause, int telephonyPreciseDisconnectCause, String reason,
             int phoneId, ImsReasonInfo imsReasonInfo, FlagsAdapter featureFlags) {
         return toTelecomDisconnectCause(telephonyDisconnectCause, telephonyPreciseDisconnectCause,
-                reason, phoneId, imsReasonInfo, getCarrierConfigBundle(phoneId), featureFlags);
+                reason, phoneId, imsReasonInfo, getCarrierConfigBundle(phoneId), featureFlags,
+                false);
+    }
+
+   /**
+    * Converts from a disconnect code in {@link android.telephony.DisconnectCause} into a more
+    * generic {@link android.telecom.DisconnectCause}.object, possibly populated with a localized
+    * message and tone for Slot.
+    * @param telephonyDisconnectCause The code for the reason for the disconnect.
+    * @param telephonyPreciseDisconnectCause The code for the precise reason for the disconnect.
+    * @param reason Description of the reason for the disconnect, not intended for the user to see.
+    * @param phoneId To support localized message based on phoneId
+    * @param imsReasonInfo
+    */
+    public static DisconnectCause toTelecomDisconnectCause(
+            int telephonyDisconnectCause, int telephonyPreciseDisconnectCause, String reason,
+            int phoneId, ImsReasonInfo imsReasonInfo, FlagsAdapter featureFlags,
+            boolean shouldTreatAsEmergency) {
+        return toTelecomDisconnectCause(telephonyDisconnectCause, telephonyPreciseDisconnectCause,
+                reason, phoneId, imsReasonInfo, getCarrierConfigBundle(phoneId), featureFlags,
+                shouldTreatAsEmergency);
     }
 
     /**
@@ -116,7 +139,7 @@ public class DisconnectCauseUtil {
     static DisconnectCause toTelecomDisconnectCause(
             int telephonyDisconnectCause, int telephonyPreciseDisconnectCause, String reason,
             int phoneId, ImsReasonInfo imsReasonInfo, PersistableBundle carrierConfig,
-            FlagsAdapter featureFlags) {
+            FlagsAdapter featureFlags, boolean shouldTreatAsEmergency) {
         Context context = PhoneGlobals.getInstance();
 
         return new DisconnectCause.Builder()
@@ -124,7 +147,7 @@ public class DisconnectCauseUtil {
                 .setLabel(toTelecomDisconnectCauseLabel(context, telephonyDisconnectCause,
                         telephonyPreciseDisconnectCause, carrierConfig, featureFlags))
                 .setDescription(toTelecomDisconnectCauseDescription(
-                        context, telephonyDisconnectCause, phoneId))
+                        context, telephonyDisconnectCause, phoneId, shouldTreatAsEmergency))
                 .setReason(toTelecomDisconnectReason(
                         context, telephonyDisconnectCause, reason, phoneId))
                 .setTone(toTelecomDisconnectCauseTone(
@@ -633,7 +656,8 @@ public class DisconnectCauseUtil {
      * Returns a description of the disconnect cause to be shown to the user.
      */
     private static CharSequence toTelecomDisconnectCauseDescription(
-            Context context, int telephonyDisconnectCause, int phoneId) {
+            Context context, int telephonyDisconnectCause, int phoneId,
+            boolean shouldTreatAsEmergency) {
         if (context == null ) {
             return "";
         }
@@ -756,14 +780,31 @@ public class DisconnectCauseUtil {
 
             case android.telephony.DisconnectCause.OUT_OF_SERVICE:
                 // No network connection.
+                FeatureFlags mFeatureFlags = new FeatureFlagsImpl();
                 if (ImsUtil.shouldPromoteWfc(context, phoneId)) {
                     resourceId = R.string.incall_error_promote_wfc;
                 } else if (ImsUtil.isWfcModeWifiOnly(context, phoneId)) {
                     resourceId = R.string.incall_error_wfc_only_no_wireless_network;
                 } else if (ImsUtil.isWfcEnabled(context, phoneId)) {
-                    resourceId = R.string.incall_error_out_of_service_wfc;
+                    if (!mFeatureFlags.showCallFailNotificationFor2gToggle()) {
+                        resourceId = R.string.incall_error_out_of_service_wfc;
+                        break;
+                    }
+                    if (is2gDisabled(phoneId) && !shouldTreatAsEmergency) {
+                        resourceId = R.string.incall_error_out_of_service_wfc_2g_user;
+                    } else {
+                        resourceId = R.string.incall_error_out_of_service_wfc;
+                    }
                 } else {
-                    resourceId = R.string.incall_error_out_of_service;
+                    if (!mFeatureFlags.showCallFailNotificationFor2gToggle()) {
+                        resourceId = R.string.incall_error_out_of_service;
+                        break;
+                    }
+                    if (is2gDisabled(phoneId) && !shouldTreatAsEmergency) {
+                        resourceId = R.string.incall_error_out_of_service_2g;
+                    } else {
+                        resourceId = R.string.incall_error_out_of_service;
+                    }
                 }
                 break;
 
@@ -986,4 +1027,18 @@ public class DisconnectCauseUtil {
         return config;
     }
 
+    /**
+     * Returns true if 2G is disabled.
+     */
+    protected static boolean is2gDisabled(int phoneId) {
+        Phone phone = PhoneFactory.getPhone(phoneId);
+        if (phone == null) {
+            return false;
+        }
+        long bitmask2g = TelephonyManager.NETWORK_CLASS_BITMASK_2G;
+        long currentlyAllowedNetworkTypes = phone.getAllowedNetworkTypes(
+                TelephonyManager.ALLOWED_NETWORK_TYPES_REASON_ENABLE_2G);
+        boolean is2gEnabled = (currentlyAllowedNetworkTypes & bitmask2g) != 0;
+        return !is2gEnabled;
+    }
 }
