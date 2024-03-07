@@ -28,6 +28,7 @@ import android.content.res.Resources;
 import android.location.Location;
 import android.location.LocationManager;
 import android.location.LocationRequest;
+import android.os.AsyncResult;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CancellationSignal;
@@ -220,7 +221,8 @@ public class SatelliteAccessController extends Handler {
                 cleanupOnDeviceAccessControllerResources();
                 break;
             case EVENT_CONFIG_DATA_UPDATED:
-                updateSatelliteConfigData((Context) msg.obj);
+                AsyncResult ar = (AsyncResult) msg.obj;
+                updateSatelliteConfigData((Context) ar.userObj);
                 break;
             default:
                 logw("SatelliteAccessControllerHandler: unexpected message code: " + msg.what);
@@ -349,8 +351,7 @@ public class SatelliteAccessController extends Handler {
      * Update country codes, S2CellFile and satellite region allowed by ConfigUpdater
      * or CarrierConfig
      */
-    @VisibleForTesting(visibility = VisibleForTesting.Visibility.PRIVATE)
-    public void updateSatelliteConfigData(Context context) {
+    private void updateSatelliteConfigData(Context context) {
         logd("updateSatelliteConfigData");
 
         SatelliteConfig satelliteConfig = mSatelliteController.getSatelliteConfig();
