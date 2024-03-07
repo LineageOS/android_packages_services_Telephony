@@ -631,6 +631,7 @@ public class NotificationMgrTest extends TelephonyTestBase {
                 MOBILE_NETWORK_SELECTION_PACKAGE);
         when(mApp.getString(R.string.mobile_network_settings_class)).thenReturn(
                 MOBILE_NETWORK_SELECTION_CLASS);
+        when(mSubscriptionManager.isActiveSubId(anyInt())).thenReturn(true);
     }
 
     private void moveTimeForward(long seconds) {

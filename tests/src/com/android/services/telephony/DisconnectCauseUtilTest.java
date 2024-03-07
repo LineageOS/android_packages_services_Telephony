@@ -22,6 +22,10 @@ import static android.media.ToneGenerator.TONE_SUP_BUSY;
 import static junit.framework.Assert.assertNotNull;
 import static junit.framework.TestCase.assertEquals;
 
+import static org.mockito.Mockito.mock;
+import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.assertTrue;
+
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -33,6 +37,7 @@ import androidx.test.InstrumentationRegistry;
 import androidx.test.runner.AndroidJUnit4;
 
 import com.android.TelephonyTestBase;
+import com.android.internal.telephony.CallFailCause;
 import com.android.internal.telephony.GsmCdmaPhone;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
@@ -42,7 +47,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 
 import java.util.Locale;
 
@@ -60,11 +64,18 @@ public class DisconnectCauseUtilTest extends TelephonyTestBase {
     @Mock
     private GsmCdmaPhone mMockPhone;
 
+    private final FlagsAdapter mFeatureFlags = new FlagsAdapter(){
+        @Override
+        public boolean doNotOverridePreciseLabel() {
+            return true;
+        }
+    };
+
     @Before
     public void setUp() throws Exception {
         super.setUp();
         // objects that call static getInstance()
-        mMockPhone = Mockito.mock(GsmCdmaPhone.class);
+        mMockPhone = mock(GsmCdmaPhone.class);
         mContext = InstrumentationRegistry.getTargetContext();
         // set mocks
         setSinglePhone();
@@ -91,7 +102,7 @@ public class DisconnectCauseUtilTest extends TelephonyTestBase {
     @Test
     public void testDefaultDisconnectCauseBehaviorForCauseNotInCarrierBusyToneArray() {
         android.telecom.DisconnectCause tcCause = DisconnectCauseUtil.toTelecomDisconnectCause(
-                DisconnectCause.ERROR_UNSPECIFIED, EMPTY_STRING, PHONE_ID);
+                DisconnectCause.ERROR_UNSPECIFIED, -1, EMPTY_STRING, PHONE_ID, null, mFeatureFlags);
         // CODE
         assertEquals(android.telecom.DisconnectCause.ERROR, tcCause.getCode());
         // LABEL
@@ -101,29 +112,143 @@ public class DisconnectCauseUtilTest extends TelephonyTestBase {
     }
 
     /**
-     *  Simulate a Carrier classifying the DisconnectCause.ERROR_UNSPECIFIED as a
-     *  DisconnectCause.BUSY.  The code, label, and tone should match DisconnectCause.BUSY.
+     * verify that if a precise label is given Telephony, the label is not overridden by Telecom
      */
     @Test
-    public void testCarrierSetDisconnectCauseInBusyToneArray() {
-        int[] carrierBusyArr = {DisconnectCause.BUSY, DisconnectCause.ERROR_UNSPECIFIED};
+    public void testDefaultPhoneConfig_NoPreciseLabelGiven() {
+        android.telecom.DisconnectCause tcCause =
+                DisconnectCauseUtil.toTelecomDisconnectCause(DisconnectCause.BUSY,
+                        -1 /*  precise label is NOT given */,
+                        EMPTY_STRING, PHONE_ID, null /* carrier config is NOT set */,
+                        mFeatureFlags);
+        assertBusyCauseWithTargetLabel(R.string.callFailed_userBusy, tcCause);
+    }
+
+    /**
+     * verify that if a precise label is given Telephony, the label is not overridden by Telecom
+     */
+    @Test
+    public void testDefaultPhoneConfig_PreciseLabelProvided() {
+        android.telecom.DisconnectCause tcCause =
+                DisconnectCauseUtil.toTelecomDisconnectCause(DisconnectCause.BUSY,
+                        CallFailCause.USER_BUSY /* Telephony defined a precise label */,
+                        EMPTY_STRING, PHONE_ID, null /* carrier config is NOT set */,
+                        mFeatureFlags);
+        // Note: The precise label should not be overridden even though the carrier defined
+        // the cause to play a busy tone
+        assertBusyCauseWithTargetLabel(R.string.clh_callFailed_user_busy_txt, tcCause);
+    }
+
+    /**
+     * special case: The Carrier has re-defined a disconnect code that should play a busy tone.
+     * Thus, the code, label, and tone should be remapped.
+     * <p>
+     * <p>
+     * Verify that if the disconnect cause is in the carrier busy tone array that the expected
+     * label, tone, and code are returned.
+     */
+    @Test
+    public void testCarrierSetBusyToneArray_NoPreciseLabelGiven() {
+        android.telecom.DisconnectCause tcCause =
+                DisconnectCauseUtil.toTelecomDisconnectCause(
+                        DisconnectCause.BUSY, -1 /*  precise label is NOT given */,
+                        EMPTY_STRING, PHONE_ID, null, getBundleWithBusyToneArray(), mFeatureFlags);
+
+        assertBusyCauseWithTargetLabel(R.string.callFailed_userBusy, tcCause);
+    }
+
+    /**
+     * special case: The Carrier has re-defined a disconnect code that should play a busy tone.
+     * Thus, the code, label, and tone should be remapped.
+     * <p>
+     * <p>
+     * Verify that if the disconnect cause is in the carrier busy tone array and the Telephony
+     * stack has provided a precise label, the label is not overridden.
+     */
+    @Test
+    public void testCarrierSetBusyToneArray_PreciseLabelProvided() {
+        android.telecom.DisconnectCause tcCause =
+                DisconnectCauseUtil.toTelecomDisconnectCause(DisconnectCause.BUSY,
+                        CallFailCause.USER_BUSY /* Telephony defined a precise label */,
+                        EMPTY_STRING, PHONE_ID, null, getBundleWithBusyToneArray(), mFeatureFlags);
+        // Note: The precise label should not be overridden even though the carrier defined
+        // the cause to play a busy tone
+        assertBusyCauseWithTargetLabel(R.string.clh_callFailed_user_busy_txt, tcCause);
+    }
+
+    /**
+     * Ensure the helper doesCarrierClassifyDisconnectCauseAsBusyCause does not hit a NPE if a
+     * NULL carrier config is passed in.
+     */
+    @Test
+    public void testDoesCarrierClassifyDisconnectCauseAsBusyCause_nullConfig() {
+        assertFalse(DisconnectCauseUtil.doesCarrierClassifyDisconnectCauseAsBusyCause(-1, null));
+    }
+
+    /**
+     * Ensure the helper doesCarrierClassifyDisconnectCauseAsBusyCause does not hit a NPE if an
+     * EMPTY carrier config is passed in.
+     */
+    @Test
+    public void testDoesCarrierClassifyDisconnectCauseAsBusyCause_ConfigDoesNotDefineArray() {
         PersistableBundle config = new PersistableBundle();
+        assertFalse(DisconnectCauseUtil.doesCarrierClassifyDisconnectCauseAsBusyCause(-1, config));
+    }
+
+    /**
+     * Ensure the helper doesCarrierClassifyDisconnectCauseAsBusyCause does not hit a NPE if an
+     * EMPTY array is defined for KEY_DISCONNECT_CAUSE_PLAY_BUSYTONE_INT_ARRAY.
+     */
+    @Test
+    public void testDoesCarrierClassifyDisconnectCauseAsBusyCause_ConfigHasEmptyArray() {
+        PersistableBundle config = new PersistableBundle();
+        int[] carrierBusyArr = {}; // NOTE: This is intentionally let empty
 
         config.putIntArray(
                 CarrierConfigManager.KEY_DISCONNECT_CAUSE_PLAY_BUSYTONE_INT_ARRAY,
                 carrierBusyArr);
 
-        android.telecom.DisconnectCause tcCause =
-                DisconnectCauseUtil.toTelecomDisconnectCause(
-                        DisconnectCause.ERROR_UNSPECIFIED, -1,
-                        EMPTY_STRING, PHONE_ID, null, config);
+        assertFalse(DisconnectCauseUtil.doesCarrierClassifyDisconnectCauseAsBusyCause(-1, config));
+    }
 
-        // CODE
-        assertEquals(android.telecom.DisconnectCause.BUSY, tcCause.getCode());
-        // LABEL
-        safeAssertLabel(R.string.callFailed_userBusy, tcCause);
-        // TONE
-        assertEquals(TONE_SUP_BUSY, tcCause.getTone());
+    /**
+     * Ensure {@link DisconnectCauseUtil#doesCarrierClassifyDisconnectCauseAsBusyCause} returns
+     * FALSE is the passed in disconnect cause is NOT the busy tone array
+     */
+    @Test
+    public void testDoesCarrierClassifyDisconnectCauseAsBusyCause_ConfigHasBusyToneButNotMatch() {
+        assertFalse(DisconnectCauseUtil.doesCarrierClassifyDisconnectCauseAsBusyCause(-1,
+                getBundleWithBusyToneArray()));
+    }
+
+    /**
+     * Ensure {@link DisconnectCauseUtil#doesCarrierClassifyDisconnectCauseAsBusyCause} returns
+     * TRUE if the disconnect cause is defined in the busy tone array (by the Carrier)
+     */
+    @Test
+    public void testDoesCarrierClassifyDisconnectCauseAsBusyCause_ConfigHasBusyTone() {
+        assertTrue(DisconnectCauseUtil.doesCarrierClassifyDisconnectCauseAsBusyCause(
+                DisconnectCause.BUSY, getBundleWithBusyToneArray()));
+    }
+
+    private void assertBusyCauseWithTargetLabel(Integer targetLabel,
+            android.telecom.DisconnectCause disconnectCause) {
+        // CODE: Describes the cause of a disconnected call
+        assertEquals(android.telecom.DisconnectCause.BUSY, disconnectCause.getCode());
+        // LABEL: This is the label that the user sees
+        safeAssertLabel(targetLabel, disconnectCause);
+        // TONE: This is the DTMF tone being played to the user
+        assertEquals(TONE_SUP_BUSY, disconnectCause.getTone());
+    }
+
+    private PersistableBundle getBundleWithBusyToneArray() {
+        int[] carrierBusyArr = {DisconnectCause.BUSY};
+        PersistableBundle config = new PersistableBundle();
+
+        config.putIntArray(
+                CarrierConfigManager.KEY_DISCONNECT_CAUSE_PLAY_BUSYTONE_INT_ARRAY,
+                carrierBusyArr);
+        return config;
     }
 
     private void setSinglePhone() throws Exception {

@@ -112,7 +112,7 @@ public class IccNetworkDepersonalizationPanel extends IccPanel {
     }
 
     public static void dialogDismiss(int phoneId) {
-        if (phoneId >= sShowingDialog.length) {
+        if (phoneId >= sShowingDialog.length || !SubscriptionManager.isValidPhoneId(phoneId)) {
             Log.e(TAG, "[IccNetworkDepersonalizationPanel] - dismiss; invalid phoneId " + phoneId);
             return;
         }
