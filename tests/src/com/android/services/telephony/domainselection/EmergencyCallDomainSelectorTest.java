@@ -155,7 +155,6 @@ public class EmergencyCallDomainSelectorTest {
     @Mock private DomainSelectorBase.DestroyListener mDestroyListener;
     @Mock private ProvisioningManager mProvisioningManager;
     @Mock private CrossSimRedialingController mCsrdCtrl;
-    @Mock private CarrierConfigHelper mCarrierConfigHelper;
     @Mock private EmergencyCallbackModeHelper mEcbmHelper;
     @Mock private Resources mResources;
 
@@ -2700,34 +2699,6 @@ public class EmergencyCallDomainSelectorTest {
     }
 
     @Test
-    public void testSimLockScanPsPreferredWithNr() throws Exception {
-        createSelector(SLOT_0_SUB_ID);
-        unsolBarringInfoChanged(false);
-
-        // The last valid subscription supported NR.
-        doReturn(true).when(mCarrierConfigHelper).isVoNrEmergencySupported(eq(SLOT_0));
-        when(mTelephonyManager.getSimState(anyInt())).thenReturn(
-                TelephonyManager.SIM_STATE_PIN_REQUIRED);
-
-        EmergencyRegistrationResult regResult = getEmergencyRegResult(
-                UNKNOWN, REGISTRATION_STATE_UNKNOWN, 0, false, false, 0, 0, "", "");
-        SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
-        mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
-        processAllMessages();
-
-        bindImsServiceUnregistered();
-        processAllMessages();
-
-        verify(mWwanSelectorCallback, times(1)).onRequestEmergencyNetworkScan(
-                any(), anyInt(), anyBoolean(), any(), any());
-        assertEquals(4, mAccessNetwork.size());
-        assertEquals(EUTRAN, (int) mAccessNetwork.get(0));
-        assertEquals(NGRAN, (int) mAccessNetwork.get(1));
-        assertEquals(UTRAN, (int) mAccessNetwork.get(2));
-        assertEquals(GERAN, (int) mAccessNetwork.get(3));
-    }
-
-    @Test
     public void testSimLockScanPsPreferredWithNrAtTheEnd() throws Exception {
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
@@ -2775,33 +2746,6 @@ public class EmergencyCallDomainSelectorTest {
         assertEquals(UTRAN, (int) mAccessNetwork.get(1));
         assertEquals(GERAN, (int) mAccessNetwork.get(2));
         assertEquals(NGRAN, (int) mAccessNetwork.get(3));
-    }
-
-    @Test
-    public void testInvalidSubscriptionScanPsPreferredWithNr() throws Exception {
-        createSelector(SubscriptionManager.INVALID_SUBSCRIPTION_ID);
-        unsolBarringInfoChanged(false);
-
-        // The last valid subscription supported NR.
-        doReturn(true).when(mCarrierConfigHelper).isVoNrEmergencySupported(eq(SLOT_0));
-
-        EmergencyRegistrationResult regResult = getEmergencyRegResult(
-                UNKNOWN, REGISTRATION_STATE_UNKNOWN, 0, false, false, 0, 0, "", "");
-        SelectionAttributes attr = getSelectionAttributes(SLOT_0,
-                SubscriptionManager.INVALID_SUBSCRIPTION_ID, regResult);
-        mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
-        processAllMessages();
-
-        bindImsServiceUnregistered();
-        processAllMessages();
-
-        verify(mWwanSelectorCallback, times(1)).onRequestEmergencyNetworkScan(
-                any(), anyInt(), anyBoolean(), any(), any());
-        assertEquals(4, mAccessNetwork.size());
-        assertEquals(EUTRAN, (int) mAccessNetwork.get(0));
-        assertEquals(NGRAN, (int) mAccessNetwork.get(1));
-        assertEquals(UTRAN, (int) mAccessNetwork.get(2));
-        assertEquals(GERAN, (int) mAccessNetwork.get(3));
     }
 
     @Test
@@ -3230,7 +3174,7 @@ public class EmergencyCallDomainSelectorTest {
     private void createSelector(int subId) throws Exception {
         mDomainSelector = new EmergencyCallDomainSelector(
                 mContext, SLOT_0, subId, mHandlerThread.getLooper(),
-                mImsStateTracker, mDestroyListener, mCsrdCtrl, mCarrierConfigHelper, mEcbmHelper);
+                mImsStateTracker, mDestroyListener, mCsrdCtrl, mEcbmHelper);
         mDomainSelector.clearResourceConfiguration();
         replaceInstance(DomainSelectorBase.class,
                 "mWwanSelectorCallback", mDomainSelector, mWwanSelectorCallback);

@@ -73,7 +73,6 @@ public class TelephonyDomainSelectionService extends DomainSelectionService {
                 @NonNull ImsStateTracker imsStateTracker,
                 @NonNull DomainSelectorBase.DestroyListener listener,
                 @NonNull CrossSimRedialingController crossSimRedialingController,
-                @NonNull CarrierConfigHelper carrierConfigHelper,
                 @NonNull EmergencyCallbackModeHelper emergencyCallbackModeHelper);
     }
 
@@ -84,7 +83,6 @@ public class TelephonyDomainSelectionService extends DomainSelectionService {
                 @NonNull ImsStateTracker imsStateTracker,
                 @NonNull DomainSelectorBase.DestroyListener listener,
                 @NonNull CrossSimRedialingController crossSimRedialingController,
-                @NonNull CarrierConfigHelper carrierConfigHelper,
                 @NonNull EmergencyCallbackModeHelper emergencyCallbackModeHelper) {
             DomainSelectorBase selector = null;
 
@@ -97,7 +95,7 @@ public class TelephonyDomainSelectionService extends DomainSelectionService {
                     if (isEmergency) {
                         selector = new EmergencyCallDomainSelector(context, slotId, subId, looper,
                                 imsStateTracker, listener, crossSimRedialingController,
-                                carrierConfigHelper, emergencyCallbackModeHelper);
+                                emergencyCallbackModeHelper);
                     } else {
                         selector = new NormalCallDomainSelector(context, slotId, subId, looper,
                                 imsStateTracker, listener);
@@ -201,23 +199,20 @@ public class TelephonyDomainSelectionService extends DomainSelectionService {
     private final DomainSelectorFactory mDomainSelectorFactory;
     private Handler mServiceHandler;
     private CrossSimRedialingController mCrossSimRedialingController;
-    private CarrierConfigHelper mCarrierConfigHelper;
     private EmergencyCallbackModeHelper mEmergencyCallbackModeHelper;
 
     /** Default constructor. */
     public TelephonyDomainSelectionService() {
-        this(ImsStateTracker::new, new DefaultDomainSelectorFactory(), null, null);
+        this(ImsStateTracker::new, new DefaultDomainSelectorFactory(), null);
     }
 
     @VisibleForTesting
     protected TelephonyDomainSelectionService(
             @NonNull ImsStateTrackerFactory imsStateTrackerFactory,
             @NonNull DomainSelectorFactory domainSelectorFactory,
-            @Nullable CarrierConfigHelper carrierConfigHelper,
             @Nullable EmergencyCallbackModeHelper ecbmHelper) {
         mImsStateTrackerFactory = imsStateTrackerFactory;
         mDomainSelectorFactory = domainSelectorFactory;
-        mCarrierConfigHelper = carrierConfigHelper;
     }
 
     @Override
@@ -242,9 +237,6 @@ public class TelephonyDomainSelectionService extends DomainSelectionService {
         }
 
         mCrossSimRedialingController = new CrossSimRedialingController(mContext, getLooper());
-        if (mCarrierConfigHelper == null) {
-            mCarrierConfigHelper = new CarrierConfigHelper(mContext, getLooper());
-        }
         if (mEmergencyCallbackModeHelper == null) {
             mEmergencyCallbackModeHelper = new EmergencyCallbackModeHelper(mContext, getLooper());
         }
@@ -291,11 +283,6 @@ public class TelephonyDomainSelectionService extends DomainSelectionService {
             mCrossSimRedialingController = null;
         }
 
-        if (mCarrierConfigHelper != null) {
-            mCarrierConfigHelper.destroy();
-            mCarrierConfigHelper = null;
-        }
-
         if (mEmergencyCallbackModeHelper != null) {
             mEmergencyCallbackModeHelper.destroy();
             mEmergencyCallbackModeHelper = null;
@@ -323,7 +310,7 @@ public class TelephonyDomainSelectionService extends DomainSelectionService {
         ImsStateTracker ist = getImsStateTracker(slotId);
         DomainSelectorBase selector = mDomainSelectorFactory.create(mContext, slotId, subId,
                 selectorType, isEmergency, getLooper(), ist, mDestroyListener,
-                mCrossSimRedialingController, mCarrierConfigHelper, mEmergencyCallbackModeHelper);
+                mCrossSimRedialingController, mEmergencyCallbackModeHelper);
 
         if (selector != null) {
             // Ensures that ImsStateTracker is started before selecting the domain if not started
