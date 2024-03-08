@@ -598,7 +598,7 @@
     <string name="hac_mode_summary" msgid="7774989500136009881">"Hörhilfekompatibilität aktivieren"</string>
     <string name="rtt_mode_title" msgid="3075948111362818043">"RTT-Anruf"</string>
     <string name="rtt_mode_summary" msgid="8631541375609989562">"Nachrichten in Sprachanrufen erlauben"</string>
-    <string name="rtt_mode_more_information" msgid="587500128658756318">"Echtzeittext (Real-Time Text, RTT) dient als Unterstützung für Anrufer, die gehörlos, schwerhörig oder sprachgeschädigt sind oder zusätzlich zur gesprochenen Sprache weitere Informationen benötigen.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Weitere Informationen&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; – RTT-Anrufe werden als Nachrichtentranskripte gespeichert\n       &lt;br&gt; – RTT ist nicht für Videoanrufe verfügbar"</string>
+    <string name="rtt_mode_more_information" msgid="587500128658756318">"Echtzeittext (Real-Time Text, RTT) dient als Unterstützung für Anrufer mit Hör- oder Sprachbehinderung oder Anrufer, die zusätzlich zur gesprochenen Sprache weitere Informationen benötigen.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Weitere Informationen&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; – RTT-Anrufe werden als Nachrichtentranskripte gespeichert\n       &lt;br&gt; – RTT ist nicht für Videoanrufe verfügbar"</string>
     <string name="no_rtt_when_roaming" msgid="5268008247378355389">"Hinweis: RTT ist während des Roamings nicht verfügbar"</string>
   <string-array name="tty_mode_entries">
     <item msgid="3238070884803849303">"TTY aus"</item>
@@ -876,7 +876,7 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"Unter-ID der standardmäßigen Daten-SIM:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DL-Bandbreite (kbit/s):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL-Bandbreite (kbit/s):"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Konfiguration des physischen LTE-Kanals:"</string>
+    <string name="radio_info_phy_chan_config" msgid="608045501232211303">"Konfiguration des physischen Kanals:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Aktualisierungsrate der Mobiltelefoninformationen:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Alle Informationen zu Zellenmesswerten:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"Datendienst:"</string>

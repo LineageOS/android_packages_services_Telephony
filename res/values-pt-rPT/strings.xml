@@ -876,7 +876,7 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"SubID do SIM de dados predefinido:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Largura de banda de transferência (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Largura de banda de carregamento (kbps):"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Configuração do canal físico LTE:"</string>
+    <string name="radio_info_phy_chan_config" msgid="608045501232211303">"Configurações do canal físico:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Taxa de atualização das informações da célula:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Todas as informações de medição de células:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"Serviço de dados:"</string>

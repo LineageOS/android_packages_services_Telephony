@@ -596,7 +596,7 @@
     <string name="failedToImportSingleContactMsg" msgid="228095510489830266">"Uvoz kontakta nije uspio"</string>
     <string name="hac_mode_title" msgid="4127986689621125468">"Slušni aparat"</string>
     <string name="hac_mode_summary" msgid="7774989500136009881">"Uključite kompatibilnost za slušni aparat"</string>
-    <string name="rtt_mode_title" msgid="3075948111362818043">"Pozivanje sa slanjem SMS-ova u stvarnom vremenu (RTT)"</string>
+    <string name="rtt_mode_title" msgid="3075948111362818043">"Poziv sa SMS-ovima u stvarnom vremenu (RTT)"</string>
     <string name="rtt_mode_summary" msgid="8631541375609989562">"Dozvolite razmjenu poruka tokom glasovnog poziva"</string>
     <string name="rtt_mode_more_information" msgid="587500128658756318">"RTT pomaže pozivaocima koji su gluhi, imaju probleme sa sluhom ili govorom te onima kojima treba više od samog glasa.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Saznajte više&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT pozivi se pohranjuju kao transkripti poruka\n       &lt;br&gt; - RTT nije dostupan za video pozive"</string>
     <string name="no_rtt_when_roaming" msgid="5268008247378355389">"Napomena: RTT nije dostupan u romingu"</string>
@@ -876,7 +876,7 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"Pomoćni ID za zadani SIM za prijenos podataka:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DL propusnost (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL propusnost (kbps):"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Konfiguracija LTE fizičkog kanala:"</string>
+    <string name="radio_info_phy_chan_config" msgid="608045501232211303">"Konfiguracije fizičkih kanala:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Interval osvježavanja informacija o ćeliji:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Sve informacije o mjerenju ćelije:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"Prijenos podataka:"</string>

@@ -385,9 +385,9 @@
     <string name="enable_disable_lafs" msgid="7448060358300805661">"Жергиликтүү аэропорттун учуу тартиби"</string>
     <string name="lafs_enable" msgid="3125783406052655690">"Жергиликтүү аэропорттун учуу тартиби иштетилген"</string>
     <string name="lafs_disable" msgid="7326815066813851447">"Жергиликтүү аэропорттун учуу тартиби өчүрүлгөн"</string>
-    <string name="enable_disable_restaurants" msgid="3873247081569423019">"Ресторандар"</string>
-    <string name="restaurants_enable" msgid="5810452674239139572">"Ресторандар иштетилген"</string>
-    <string name="restaurants_disable" msgid="2733507854548413505">"Ресторандар өчүрүлгөн"</string>
+    <string name="enable_disable_restaurants" msgid="3873247081569423019">"Тамактануучу жайлар"</string>
+    <string name="restaurants_enable" msgid="5810452674239139572">"Тамактануучу жайлар иштетилген"</string>
+    <string name="restaurants_disable" msgid="2733507854548413505">"Тамактануучу жайлар өчүрүлгөн"</string>
     <string name="enable_disable_lodgings" msgid="7849168585821435109">"Турак жайлар"</string>
     <string name="lodgings_enable" msgid="2020598411398609514">"Турак жайлар иштетилген"</string>
     <string name="lodgings_disable" msgid="5145649659459722661">"Турак жайлар өчүрүлгөн"</string>
@@ -876,7 +876,7 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"Демейки оператордун SIM картасынын көз салуу идентификатору:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DL өткөрүү жөндөмдүүлүгү (кб/сек.):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL өткөрүү жөндөмдүүлүгү (кб/сек.):"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"LTE физикалык каналынын конфигурациясы:"</string>
+    <string name="radio_info_phy_chan_config" msgid="608045501232211303">"Физикалык каналдын конфигурациялары:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Уюлдук маалыматты жаңылоо ылдамдыгы:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Уюлдук чен-өлчөм маалыматтары:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"Мобилдик туташуу кызматы:"</string>

@@ -314,7 +314,7 @@
     <string name="video_calling_settings_title" msgid="342829454913266078">"वाहक वीडियो कॉलिंग"</string>
     <string name="gsm_umts_options" msgid="4968446771519376808">"GSM/UMTS विकल्प"</string>
     <string name="cdma_options" msgid="3669592472226145665">"CDMA विकल्प"</string>
-    <string name="throttle_data_usage" msgid="1944145350660420711">"डेटा उपयोग"</string>
+    <string name="throttle_data_usage" msgid="1944145350660420711">"डेटा खर्च"</string>
     <string name="throttle_current_usage" msgid="7483859109708658613">"वर्तमान अवधि में उपयोग किया गया डेटा"</string>
     <string name="throttle_time_frame" msgid="1813452485948918791">"डेटा उपयोग अवधि"</string>
     <string name="throttle_rate" msgid="7641913901133634905">"डेटा दर नीति"</string>
@@ -876,7 +876,7 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"डिफ़ॉल्ट डेटा सिम का सब-आईडी:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"डीएल बैंडविड्थ (केबीपीएस):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"यूएल बैंडविड्थ (केबीपीएस):"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"एलटीई की फ़िज़िकल चैनल कॉन्फ़िगरेशन:"</string>
+    <string name="radio_info_phy_chan_config" msgid="608045501232211303">"फ़िज़िकल चैनल के कॉन्फ़िगरेशन:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"सेल की जानकारी रीफ़्रेश होने की दर:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"सभी सेल के माप की पूरी जानकारी:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"डेटा सेवा:"</string>

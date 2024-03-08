@@ -876,7 +876,7 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"預設資料 SIM 卡的子 ID："</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"下行頻寬 (kbps)："</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"上行頻寬 (kbps)："</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"LTE 實體通道設定："</string>
+    <string name="radio_info_phy_chan_config" msgid="608045501232211303">"實體頻道設定："</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"行動網路資訊重新整理頻率："</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"所有行動網路測量資訊："</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"數據服務："</string>

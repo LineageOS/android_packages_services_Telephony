@@ -17,6 +17,7 @@
 package com.android.phone;
 
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
+import static android.permission.flags.Flags.opEnableMobileDataByUser;
 import static android.telephony.TelephonyManager.HAL_SERVICE_NETWORK;
 import static android.telephony.TelephonyManager.HAL_SERVICE_RADIO;
 
@@ -146,10 +147,14 @@ import android.telephony.ims.aidl.IRcsConfigCallback;
 import android.telephony.ims.feature.ImsFeature;
 import android.telephony.ims.stub.ImsConfigImplBase;
 import android.telephony.ims.stub.ImsRegistrationImplBase;
+import android.telephony.satellite.INtnSignalStrengthCallback;
+import android.telephony.satellite.ISatelliteCapabilitiesCallback;
 import android.telephony.satellite.ISatelliteDatagramCallback;
 import android.telephony.satellite.ISatelliteProvisionStateCallback;
 import android.telephony.satellite.ISatelliteStateCallback;
 import android.telephony.satellite.ISatelliteTransmissionUpdateCallback;
+import android.telephony.satellite.NtnSignalStrength;
+import android.telephony.satellite.NtnSignalStrengthCallback;
 import android.telephony.satellite.SatelliteCapabilities;
 import android.telephony.satellite.SatelliteDatagram;
 import android.telephony.satellite.SatelliteDatagramCallback;
@@ -208,6 +213,7 @@ import com.android.internal.telephony.data.DataUtils;
 import com.android.internal.telephony.domainselection.DomainSelectionResolver;
 import com.android.internal.telephony.emergency.EmergencyNumberTracker;
 import com.android.internal.telephony.euicc.EuiccConnector;
+import com.android.internal.telephony.flags.FeatureFlags;
 import com.android.internal.telephony.ims.ImsResolver;
 import com.android.internal.telephony.imsphone.ImsPhone;
 import com.android.internal.telephony.imsphone.ImsPhoneCallTracker;
@@ -296,8 +302,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private static final int EVENT_GET_ALLOWED_NETWORK_TYPES_BITMASK_DONE = 22;
     private static final int CMD_SEND_ENVELOPE = 25;
     private static final int EVENT_SEND_ENVELOPE_DONE = 26;
-    private static final int CMD_INVOKE_OEM_RIL_REQUEST_RAW = 27;
-    private static final int EVENT_INVOKE_OEM_RIL_REQUEST_RAW_DONE = 28;
     private static final int CMD_TRANSMIT_APDU_BASIC_CHANNEL = 29;
     private static final int EVENT_TRANSMIT_APDU_BASIC_CHANNEL_DONE = 30;
     private static final int CMD_EXCHANGE_SIM_IO = 31;
@@ -397,12 +401,15 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     // Toggling null cipher and integrity support was added in IRadioNetwork 2.1
     private static final int MIN_NULL_CIPHER_AND_INTEGRITY_VERSION = 201;
+    // Cellular identifier disclosure transparency was added in IRadioNetwork 2.2
+    private static final int MIN_IDENTIFIER_DISCLOSURE_VERSION = 202;
 
     /** The singleton instance. */
     private static PhoneInterfaceManager sInstance;
     private static List<String> sThermalMitigationAllowlistedPackages = new ArrayList<>();
 
     private final PhoneGlobals mApp;
+    private final FeatureFlags mFeatureFlags;
     private final CallManager mCM;
     private final ImsResolver mImsResolver;
 
@@ -1152,19 +1159,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
                 case EVENT_SET_ALLOWED_NETWORK_TYPES_FOR_REASON_DONE:
                     handleNullReturnEvent(msg, "setAllowedNetworkTypesForReason");
-                    break;
-
-                case CMD_INVOKE_OEM_RIL_REQUEST_RAW:
-                    request = (MainThreadRequest)msg.obj;
-                    onCompleted = obtainMessage(EVENT_INVOKE_OEM_RIL_REQUEST_RAW_DONE, request);
-                    defaultPhone.invokeOemRilRequestRaw((byte[]) request.argument, onCompleted);
-                    break;
-
-                case EVENT_INVOKE_OEM_RIL_REQUEST_RAW_DONE:
-                    ar = (AsyncResult)msg.obj;
-                    request = (MainThreadRequest)ar.userObj;
-                    request.result = ar;
-                    notifyRequester(request);
                     break;
 
                 case CMD_SET_VOICEMAIL_NUMBER:
@@ -2226,8 +2220,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     onCompleted = obtainMessage(EVENT_PURCHASE_PREMIUM_CAPABILITY_DONE, request);
                     PurchasePremiumCapabilityArgument arg =
                             (PurchasePremiumCapabilityArgument) request.argument;
-                    SlicePurchaseController.getInstance(request.phone).purchasePremiumCapability(
-                            arg.capability, onCompleted);
+                    SlicePurchaseController.getInstance(request.phone, mFeatureFlags)
+                            .purchasePremiumCapability(arg.capability, onCompleted);
                     break;
                 }
 
@@ -2440,10 +2434,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * Initialize the singleton PhoneInterfaceManager instance.
      * This is only done once, at startup, from PhoneApp.onCreate().
      */
-    /* package */ static PhoneInterfaceManager init(PhoneGlobals app) {
+    /* package */ static PhoneInterfaceManager init(PhoneGlobals app, FeatureFlags featureFlags) {
         synchronized (PhoneInterfaceManager.class) {
             if (sInstance == null) {
-                sInstance = new PhoneInterfaceManager(app);
+                sInstance = new PhoneInterfaceManager(app, featureFlags);
             } else {
                 Log.wtf(LOG_TAG, "init() called multiple times!  sInstance = " + sInstance);
             }
@@ -2452,8 +2446,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /** Private constructor; @see init() */
-    private PhoneInterfaceManager(PhoneGlobals app) {
+    private PhoneInterfaceManager(PhoneGlobals app, FeatureFlags featureFlags) {
         mApp = app;
+        mFeatureFlags = featureFlags;
         mCM = PhoneGlobals.getInstance().mCM;
         mImsResolver = ImsResolver.getInstance();
         mSatelliteController = SatelliteController.getInstance();
@@ -2745,6 +2740,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
          * If PUK is null, unlock SIM card with PIN
          *
          * If PUK is not null, unlock SIM card with PUK and set PIN code
+         *
+         * Besides, since it is reused in class level, the thread's looper will be stopped to avoid
+         * its thread leak.
          */
         synchronized int[] unlockSim(String puk, String pin) {
 
@@ -2780,6 +2778,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             if (mResult == PhoneConstants.PIN_RESULT_SUCCESS && pin.length() > 0) {
                 UiccController.getInstance().getPinStorage().storePin(pin, mPhoneId);
             }
+            // This instance is no longer reused, so quit its thread's looper.
+            mHandler.getLooper().quitSafely();
 
             return resultArray;
         }
@@ -3031,14 +3031,15 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 + ",reason=" + reason + ",callingPackage=" + getCurrentPackageName());
         final long identity = Binder.clearCallingIdentity();
         try {
-            final Phone phone = getPhoneFromSubIdOrDefault(subId);
-            if (phone != null) {
+            boolean result = false;
+            for (Phone phone : PhoneFactory.getPhones()) {
+                result = true;
                 phone.setRadioPowerForReason(false, reason);
-                return true;
-            } else {
-                loge("requestRadioPowerOffForReason: phone is null");
-                return false;
             }
+            if (!result) {
+                loge("requestRadioPowerOffForReason: no phone exists");
+            }
+            return result;
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -3058,14 +3059,15 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            final Phone phone = getPhoneFromSubIdOrDefault(subId);
-            if (phone != null) {
+            boolean result = false;
+            for (Phone phone : PhoneFactory.getPhones()) {
+                result = true;
                 phone.setRadioPowerForReason(true, reason);
-                return true;
-            } else {
-                loge("clearRadioPowerOffForReason: phone is null");
-                return false;
             }
+            if (!result) {
+                loge("clearRadioPowerOffForReason: no phone exists");
+            }
+            return result;
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -7518,39 +7520,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @Override
-    @Deprecated
-    public int invokeOemRilRequestRaw(byte[] oemReq, byte[] oemResp) {
-        enforceModifyPermission();
-
-        int returnValue = 0;
-        try {
-            AsyncResult result = (AsyncResult) sendRequest(CMD_INVOKE_OEM_RIL_REQUEST_RAW, oemReq);
-            if(result.exception == null) {
-                if (result.result != null) {
-                    byte[] responseData = (byte[])(result.result);
-                    if(responseData.length > oemResp.length) {
-                        Log.w(LOG_TAG, "Buffer to copy response too small: Response length is " +
-                                responseData.length +  "bytes. Buffer Size is " +
-                                oemResp.length + "bytes.");
-                    }
-                    System.arraycopy(responseData, 0, oemResp, 0, responseData.length);
-                    returnValue = responseData.length;
-                }
-            } else {
-                CommandException ex = (CommandException) result.exception;
-                returnValue = ex.getCommandError().ordinal();
-                if(returnValue > 0) returnValue *= -1;
-            }
-        } catch (RuntimeException e) {
-            Log.w(LOG_TAG, "sendOemRilRequestRaw: Runtime Exception");
-            returnValue = (CommandException.Error.GENERIC_FAILURE.ordinal());
-            if(returnValue > 0) returnValue *= -1;
-        }
-
-        return returnValue;
-    }
-
-    @Override
     public int getRadioAccessFamily(int phoneId, String callingPackage) {
         int raf = RadioAccessFamily.RAF_UNKNOWN;
         Phone phone = PhoneFactory.getPhone(phoneId);
@@ -8086,7 +8055,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     private List<SubscriptionInfo> getActiveSubscriptionInfoListPrivileged() {
         return getSubscriptionManagerService().getActiveSubscriptionInfoList(
-                mApp.getOpPackageName(), mApp.getAttributionTag());
+                mApp.getOpPackageName(), mApp.getAttributionTag(), true/*isForAllProfile*/);
     }
 
     private ActivityStatsTechSpecificInfo[] mLastModemActivitySpecificInfo = null;
@@ -8865,6 +8834,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             enforceModifyPermission();
         }
 
+        if (reason == TelephonyManager.DATA_ENABLED_REASON_USER && enabled
+                && null != callingPackage && opEnableMobileDataByUser()) {
+            mAppOps.noteOp(AppOpsManager.OPSTR_ENABLE_MOBILE_DATA_BY_USER, Binder.getCallingUid(),
+                    callingPackage, null, null);
+        }
+
         final long identity = Binder.clearCallingIdentity();
         try {
             Phone phone = getPhone(subId);
@@ -9525,10 +9500,6 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             int subId, String carrierServicePackage, String callingPackage) {
         TelephonyPermissions.enforceShellOnly(
                 Binder.getCallingUid(), "setCarrierServicePackageOverride");
-
-        // Verify that the callingPackage belongs to the calling UID
-        mApp.getSystemService(AppOpsManager.class)
-                .checkPackage(Binder.getCallingUid(), callingPackage);
 
         final long identity = Binder.clearCallingIdentity();
         try {
@@ -11586,7 +11557,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
         final long identity = Binder.clearCallingIdentity();
         try {
-            return SlicePurchaseController.getInstance(phone)
+            return SlicePurchaseController.getInstance(phone, mFeatureFlags)
                     .isPremiumCapabilityAvailableForPurchase(capability);
         } finally {
             Binder.restoreCallingIdentity(identity);
@@ -11969,6 +11940,18 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
     }
 
+    private void checkForIdentifierDisclosureNotificationSupport() {
+        if (getHalVersion(HAL_SERVICE_NETWORK) < MIN_IDENTIFIER_DISCLOSURE_VERSION) {
+            throw new UnsupportedOperationException(
+                    "Cellular identifier disclosure transparency operations require HAL 2.2 or "
+                            + "above");
+        }
+        if (!getDefaultPhone().isIdentifierDisclosureTransparencySupported()) {
+            throw new UnsupportedOperationException(
+                    "Cellular identifier disclosure transparency operations unsupported by modem");
+        }
+    }
+
     /**
      * Get the SIM state for the slot index.
      * For Remote-SIMs, this method returns {@link IccCardConstants.State#UNKNOWN}
@@ -12276,13 +12259,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * @param subId The subId of the subscription to register for provision state changed.
      * @param callback The callback to handle the satellite provision state changed event.
      *
-     * @return The {@link SatelliteManager.SatelliteError} result of the operation.
+     * @return The {@link SatelliteManager.SatelliteResult} result of the operation.
      *
      * @throws SecurityException if the caller doesn't have the required permission.
      */
     @Override
-    @SatelliteManager.SatelliteError public int registerForSatelliteProvisionStateChanged(int subId,
-            @NonNull ISatelliteProvisionStateCallback callback) {
+    @SatelliteManager.SatelliteResult public int registerForSatelliteProvisionStateChanged(
+            int subId, @NonNull ISatelliteProvisionStateCallback callback) {
         enforceSatelliteCommunicationPermission("registerForSatelliteProvisionStateChanged");
         return mSatelliteController.registerForSatelliteProvisionStateChanged(subId, callback);
     }
@@ -12326,12 +12309,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * @param subId The subId of the subscription to register for satellite modem state changed.
      * @param callback The callback to handle the satellite modem state changed event.
      *
-     * @return The {@link SatelliteManager.SatelliteError} result of the operation.
+     * @return The {@link SatelliteManager.SatelliteResult} result of the operation.
      *
      * @throws SecurityException if the caller doesn't have the required permission.
      */
     @Override
-    @SatelliteManager.SatelliteError public int registerForSatelliteModemStateChanged(int subId,
+    @SatelliteManager.SatelliteResult public int registerForSatelliteModemStateChanged(int subId,
             @NonNull ISatelliteStateCallback callback) {
         enforceSatelliteCommunicationPermission("registerForSatelliteModemStateChanged");
         return mSatelliteController.registerForSatelliteModemStateChanged(subId, callback);
@@ -12360,12 +12343,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * @param subId The subId of the subscription to register for incoming satellite datagrams.
      * @param callback The callback to handle incoming datagrams over satellite.
      *
-     * @return The {@link SatelliteManager.SatelliteError} result of the operation.
+     * @return The {@link SatelliteManager.SatelliteResult} result of the operation.
      *
      * @throws SecurityException if the caller doesn't have the required permission.
      */
     @Override
-    @SatelliteManager.SatelliteError public int registerForSatelliteDatagram(int subId,
+    @SatelliteManager.SatelliteResult public int registerForSatelliteDatagram(int subId,
             @NonNull ISatelliteDatagramCallback callback) {
         enforceSatelliteCommunicationPermission("registerForSatelliteDatagram");
         return mSatelliteController.registerForSatelliteDatagram(subId, callback);
@@ -12396,7 +12379,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * {@link SatelliteDatagramCallback#onSatelliteDatagramReceived(long, SatelliteDatagram, int, Consumer)})}
      *
      * @param subId The subId of the subscription used for receiving datagrams.
-     * @param callback The callback to get {@link SatelliteManager.SatelliteError} of the request.
+     * @param callback The callback to get {@link SatelliteManager.SatelliteResult} of the request.
      *
      * @throws SecurityException if the caller doesn't have required permission.
      */
@@ -12420,7 +12403,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      *                 Datagram will be passed down to modem without any encoding or encryption.
      * @param needFullScreenPointingUI this is used to indicate pointingUI app to open in
      *                                 full screen mode.
-     * @param callback The callback to get {@link SatelliteManager.SatelliteError} of the request.
+     * @param callback The callback to get {@link SatelliteManager.SatelliteResult} of the request.
      *
      * @throws SecurityException if the caller doesn't have required permission.
      */
@@ -12479,9 +12462,193 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     @RequiresPermission(Manifest.permission.SATELLITE_COMMUNICATION)
 
-    public void onDeviceAlignedWithSatellite(int subId, @NonNull boolean isAligned) {
+    public void setDeviceAlignedWithSatellite(int subId, @NonNull boolean isAligned) {
         enforceSatelliteCommunicationPermission("informDeviceAlignedToSatellite");
-        mSatelliteController.onDeviceAlignedWithSatellite(subId, isAligned);
+        mSatelliteController.setDeviceAlignedWithSatellite(subId, isAligned);
+    }
+
+    /**
+     * Add a restriction reason for disallowing carrier supported satellite plmn scan and attach
+     * by modem.
+     *
+     * @param subId The subId of the subscription to request for.
+     * @param reason Reason for disallowing satellite communication for carrier.
+     * @param callback Listener for the {@link SatelliteManager.SatelliteError} result of the
+     * operation.
+     *
+     * @throws SecurityException if the caller doesn't have required permission.
+     */
+    public void addSatelliteAttachRestrictionForCarrier(int subId,
+            @SatelliteManager.SatelliteCommunicationRestrictionReason int reason,
+            @NonNull IIntegerConsumer callback) {
+        enforceSatelliteCommunicationPermission("addSatelliteAttachRestrictionForCarrier");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            mSatelliteController.addSatelliteAttachRestrictionForCarrier(subId, reason, callback);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Remove a restriction reason for disallowing carrier supported satellite plmn scan and attach
+     * by modem.
+     *
+     * @param subId The subId of the subscription to request for.
+     * @param reason Reason for disallowing satellite communication.
+     * @param callback Listener for the {@link SatelliteManager.SatelliteError} result of the
+     * operation.
+     *
+     * @throws SecurityException if the caller doesn't have required permission.
+     */
+    public void removeSatelliteAttachRestrictionForCarrier(int subId,
+            @SatelliteManager.SatelliteCommunicationRestrictionReason int reason,
+            @NonNull IIntegerConsumer callback) {
+        enforceSatelliteCommunicationPermission("removeSatelliteAttachRestrictionForCarrier");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            mSatelliteController.removeSatelliteAttachRestrictionForCarrier(subId, reason,
+                    callback);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Get reasons for disallowing satellite communication, as requested by
+     * {@link #addSatelliteAttachRestrictionForCarrier(int, int, IIntegerConsumer)}.
+     *
+     * @param subId The subId of the subscription to request for.
+     *
+     * @return Integer array of reasons for disallowing satellite communication.
+     *
+     * @throws SecurityException if the caller doesn't have the required permission.
+     */
+    public @NonNull int[] getSatelliteAttachRestrictionReasonsForCarrier(
+            int subId) {
+        enforceSatelliteCommunicationPermission("getSatelliteAttachRestrictionReasonsForCarrier");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            Set<Integer> reasonSet =
+                    mSatelliteController.getSatelliteAttachRestrictionReasonsForCarrier(subId);
+            return reasonSet.stream().mapToInt(i->i).toArray();
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Request to get the signal strength of the satellite connection.
+     *
+     * @param subId The subId of the subscription to request for.
+     * @param result Result receiver to get the error code of the request and the current signal
+     * strength of the satellite connection.
+     *
+     * @throws SecurityException if the caller doesn't have required permission.
+     */
+    @Override
+    public void requestNtnSignalStrength(int subId, @NonNull ResultReceiver result) {
+        enforceSatelliteCommunicationPermission("requestNtnSignalStrength");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            mSatelliteController.requestNtnSignalStrength(subId, result);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Registers for NTN signal strength changed from satellite modem. If the registration operation
+     * is not successful, a {@link ServiceSpecificException} that contains
+     * {@link SatelliteManager.SatelliteResult} will be thrown.
+     *
+     * @param subId The subId of the subscription to request for.
+     * @param callback The callback to handle the NTN signal strength changed event. If the
+     * operation is successful, {@link NtnSignalStrengthCallback#onNtnSignalStrengthChanged(
+     * NtnSignalStrength)} will return an instance of {@link NtnSignalStrength} with a value of
+     * {@link NtnSignalStrength.NtnSignalStrengthLevel} when the signal strength of non-terrestrial
+     * network has changed.
+     *
+     * @throws SecurityException If the caller doesn't have the required permission.
+     * @throws ServiceSpecificException If the callback registration operation fails.
+     */
+    @Override
+    public void registerForNtnSignalStrengthChanged(int subId,
+            @NonNull INtnSignalStrengthCallback callback) throws RemoteException {
+        enforceSatelliteCommunicationPermission("registerForNtnSignalStrengthChanged");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            mSatelliteController.registerForNtnSignalStrengthChanged(subId, callback);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Unregisters for NTN signal strength changed from satellite modem.
+     * If callback was not registered before, the request will be ignored.
+     *
+     * @param subId The subId of the subscription to unregister for listening NTN signal strength
+     * changed event.
+     * @param callback The callback that was passed to
+     * {@link #registerForNtnSignalStrengthChanged(int, INtnSignalStrengthCallback)}
+     *
+     * @throws SecurityException if the caller doesn't have the required permission.
+     */
+    @Override
+    public void unregisterForNtnSignalStrengthChanged(
+            int subId, @NonNull INtnSignalStrengthCallback callback) {
+        enforceSatelliteCommunicationPermission("unregisterForNtnSignalStrengthChanged");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            mSatelliteController.unregisterForNtnSignalStrengthChanged(subId, callback);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Registers for satellite capabilities change event from the satellite service.
+     *
+     * @param subId The subId of the subscription to request for.
+     * @param callback The callback to handle the satellite capabilities changed event.
+     *
+     * @return The {@link SatelliteManager.SatelliteResult} result of the operation.
+     *
+     * @throws SecurityException if the caller doesn't have required permission.
+     */
+    @Override
+    @SatelliteManager.SatelliteResult public int registerForSatelliteCapabilitiesChanged(
+            int subId, @NonNull ISatelliteCapabilitiesCallback callback) {
+        enforceSatelliteCommunicationPermission("registerForSatelliteCapabilitiesChanged");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return mSatelliteController.registerForSatelliteCapabilitiesChanged(subId, callback);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * Unregisters for satellite capabilities change event from the satellite service.
+     * If callback was not registered before, the request will be ignored.
+     *
+     * @param subId The subId of the subscription to unregister for satellite capabilities change.
+     * @param callback The callback that was passed to.
+     * {@link #registerForSatelliteCapabilitiesChanged(int, ISatelliteCapabilitiesCallback)}.
+     *
+     * @throws SecurityException if the caller doesn't have required permission.
+     */
+    @Override
+    public void unregisterForSatelliteCapabilitiesChanged(
+            int subId, @NonNull ISatelliteCapabilitiesCallback callback) {
+        enforceSatelliteCommunicationPermission("unregisterForSatelliteCapabilitiesChanged");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            mSatelliteController.unregisterForSatelliteCapabilitiesChanged(subId, callback);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
     }
 
     /**
@@ -12571,6 +12738,96 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 SubscriptionManager.INVALID_SUBSCRIPTION_ID,
                 "setDeviceAlignedTimeoutDuration");
         return mSatelliteController.setSatelliteDeviceAlignedTimeoutDuration(timeoutMillis);
+    }
+
+    /**
+     * This API can be used in only testing to override connectivity status in monitoring emergency
+     * calls and sending EVENT_DISPLAY_EMERGENCY_MESSAGE to Dialer.
+     *
+     * @param handoverType The type of handover from emergency call to satellite messaging. Use one
+     *                     of the following values to enable the override:
+     *                     0 - EMERGENCY_CALL_TO_SATELLITE_HANDOVER_TYPE_SOS
+     *                     1 - EMERGENCY_CALL_TO_SATELLITE_HANDOVER_TYPE_T911
+     *                     To disable the override, use -1 for handoverType.
+     * @param delaySeconds The event EVENT_DISPLAY_EMERGENCY_MESSAGE will be sent to Dialer
+     *                     delaySeconds after the emergency call starts.
+     * @return {@code true} if the handover type is set successfully, {@code false} otherwise.
+     */
+    public boolean setEmergencyCallToSatelliteHandoverType(int handoverType, int delaySeconds) {
+        Log.d(LOG_TAG, "setEmergencyCallToSatelliteHandoverType - " + handoverType);
+        TelephonyPermissions.enforceShellOnly(
+                Binder.getCallingUid(), "setEmergencyCallToSatelliteHandoverType");
+        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(mApp,
+                SubscriptionManager.INVALID_SUBSCRIPTION_ID,
+                "setEmergencyCallToSatelliteHandoverType");
+        return mSatelliteController.setEmergencyCallToSatelliteHandoverType(
+                handoverType, delaySeconds);
+    }
+
+    /**
+     * This API can be used by only CTS to override the cached value for the device overlay config
+     * value : config_send_satellite_datagram_to_modem_in_demo_mode, which determines whether
+     * outgoing satellite datagrams should be sent to modem in demo mode.
+     *
+     * @param shouldSendToModemInDemoMode Whether send datagram in demo mode should be sent to
+     * satellite modem or not.
+     *
+     * @return {@code true} if the operation is successful, {@code false} otherwise.
+     */
+    public boolean setShouldSendDatagramToModemInDemoMode(boolean shouldSendToModemInDemoMode) {
+        if (!mFeatureFlags.oemEnabledSatelliteFlag()) {
+            Log.d(LOG_TAG, "shouldSendDatagramToModemInDemoMode: oemEnabledSatelliteFlag is "
+                    + "disabled");
+            return false;
+        }
+        Log.d(LOG_TAG, "setShouldSendDatagramToModemInDemoMode");
+        TelephonyPermissions.enforceShellOnly(
+                Binder.getCallingUid(), "setShouldSendDatagramToModemInDemoMode");
+        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(mApp,
+                SubscriptionManager.INVALID_SUBSCRIPTION_ID,
+                "setShouldSendDatagramToModemInDemoMode");
+        return mSatelliteController.setShouldSendDatagramToModemInDemoMode(
+                shouldSendToModemInDemoMode);
+    }
+
+    /**
+     * Enable or disable notifications sent for cellular identifier disclosure events.
+     *
+     * Disclosure events are defined as instances where a device has sent a cellular identifier
+     * on the Non-access stratum (NAS) before a security context is established. As a result the
+     * identifier is sent in the clear, which has privacy implications for the user.
+     *
+     * @param enable if notifications about disclosure events should be enabled
+     * @throws SecurityException             if the caller does not have the required privileges
+     * @throws UnsupportedOperationException if the modem does not support this feature.
+     */
+    @RequiresPermission(Manifest.permission.MODIFY_PHONE_STATE)
+    public void enableCellularIdentifierDisclosureNotifications(boolean enable) {
+        enforceModifyPermission();
+        checkForIdentifierDisclosureNotificationSupport();
+
+        SharedPreferences.Editor editor = mTelephonySharedPreferences.edit();
+        editor.putBoolean(Phone.PREF_IDENTIFIER_DISCLOSURE_NOTIFICATIONS_ENABLED, enable);
+        editor.apply();
+
+        // Each phone instance is responsible for updating its respective modem immediately
+        // after we've made a preference change.
+        for (Phone phone : PhoneFactory.getPhones()) {
+            phone.handleIdentifierDisclosureNotificationPreferenceChange();
+        }
+    }
+
+    /**
+     * Get whether or not cellular identifier disclosure notifications are enabled.
+     *
+     * @throws SecurityException             if the caller does not have the required privileges
+     * @throws UnsupportedOperationException if the modem does not support this feature.
+     */
+    @RequiresPermission(Manifest.permission.READ_PRIVILEGED_PHONE_STATE)
+    public boolean isCellularIdentifierDisclosureNotificationEnabled() {
+        enforceReadPrivilegedPermission("isCellularIdentifierDisclosureNotificationEnabled");
+        checkForIdentifierDisclosureNotificationSupport();
+        return getDefaultPhone().getIdentifierDisclosureNotificationsPreferenceEnabled();
     }
 
     /**

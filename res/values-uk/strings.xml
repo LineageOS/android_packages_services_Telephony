@@ -876,7 +876,7 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"Субідентифікатор SIM-карти для даних за умовчанням:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Пропускна спроможність DL (кбіт/с):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Пропускна спроможність UL (кбіт/с):"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Конфігурація фізичного каналу LTE:"</string>
+    <string name="radio_info_phy_chan_config" msgid="608045501232211303">"Конфігурації фізичного каналу:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Частота оновлення даних про мобільний зв\'язок:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Усі дані про показники мобільного зв\'язку:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"Мобільний Інтернет:"</string>

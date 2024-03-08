@@ -876,7 +876,7 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"ଡିଫଲ୍ଟ ଡାଟା SIMର SubId:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DL ବ୍ୟାଣ୍ଡୱିଡଥ୍ (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL ବ୍ୟାଣ୍ଡୱିଡଥ୍ (kbps):"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"LTE ଫିଜିକାଲ୍ ଚ୍ୟାନେଲ୍ କନ୍‌ଫିଗରେସନ୍:"</string>
+    <string name="radio_info_phy_chan_config" msgid="608045501232211303">"ଫିଜିକାଲ ଚେନେଲ କନଫିଗରେସନଗୁଡ଼ିକ:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"ସେଲ୍ ସୂଚନା ରିଫ୍ରେସ୍ ଦର:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"ସମସ୍ତ ସେଲ୍ ପରିମାପ ସୂଚନା:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"ଡାଟା ସେବା:"</string>

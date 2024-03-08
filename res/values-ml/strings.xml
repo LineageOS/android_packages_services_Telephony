@@ -876,7 +876,7 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"ഡിഫോൾട്ട് ഡാറ്റാ സിമ്മിന്റെ ഉപഐഡി:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DL ബാൻഡ്‌വിഡ്‌ത് (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL ബാൻഡ്‌വിഡ്‌ത് (kbps):"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"LTE ഫിസിക്കൽ ചാനൽ കോൺഫിഗറേഷൻ:"</string>
+    <string name="radio_info_phy_chan_config" msgid="608045501232211303">"ഫിസിക്കൽ ചാനൽ കോൺഫിഗറേഷനുകൾ:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"സെൽ വിവരങ്ങൾ പുതുക്കിയെടുക്കൽ നിരക്ക്:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"എല്ലാ സെൽ അളവ് വിവരങ്ങളും:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"ഡാറ്റ സേവനം:"</string>

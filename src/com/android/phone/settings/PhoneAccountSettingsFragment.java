@@ -24,6 +24,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.android.internal.telephony.Phone;
+import com.android.internal.telephony.flags.Flags;
 import com.android.phone.PhoneUtils;
 import com.android.phone.R;
 import com.android.phone.SubscriptionInfoHelper;
@@ -94,6 +95,9 @@ public class PhoneAccountSettingsFragment extends PreferenceFragment
         mTelecomManager = getActivity().getSystemService(TelecomManager.class);
         mTelephonyManager = TelephonyManager.from(getActivity());
         mSubscriptionManager = SubscriptionManager.from(getActivity());
+        if (Flags.workProfileApiSplit()) {
+            mSubscriptionManager = mSubscriptionManager.createForAllUserProfiles();
+        }
     }
 
     @Override

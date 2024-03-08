@@ -876,7 +876,7 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"Identyfikator domyślnej karty SIM do transmisji danych:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Przepustowość kanału DL (kb/s):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Przepustowość kanału UL (kb/s):"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Konfiguracja kanału fizycznego LTE:"</string>
+    <string name="radio_info_phy_chan_config" msgid="608045501232211303">"Konfiguracje kanału fizycznego:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Częstotliwość odświeżania informacji o sieci komórkowej:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Wszystkie informacje pomiarowe z sieci komórkowej:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"Usługa transmisji danych:"</string>

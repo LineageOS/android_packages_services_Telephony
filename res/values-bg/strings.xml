@@ -876,7 +876,7 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"Идентификационен подномер на SIM картата за данни по подразбиране:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Пропускателна способност при изтегляне (кб/сек):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Пропускателна способност при качване (кб/сек):"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Конфигурация на физическия канал на LTE:"</string>
+    <string name="radio_info_phy_chan_config" msgid="608045501232211303">"Конфигурации на физическия канал:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Честота на опресняване на информацията за клетките:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Цялата измервателна информация за клетките:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"Услуга за данни:"</string>

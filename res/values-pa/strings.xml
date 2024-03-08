@@ -850,7 +850,7 @@
     <string name="radio_info_ims_reg_status_not_registered" msgid="8045821447288876085">"ਰਜਿਸਟਰ ਨਹੀਂ ਕੀਤੀ ਗਈ"</string>
     <string name="radio_info_ims_feature_status_available" msgid="6493200914756969292">"ਉਪਲਬਧ"</string>
     <string name="radio_info_ims_feature_status_unavailable" msgid="8930391136839759778">"ਅਣਉਪਲਬਧ"</string>
-    <string name="radio_info_ims_reg_status" msgid="25582845222446390">"IMS ਰਜਿਸਟਰੇਸ਼ਨ: <xliff:g id="STATUS">%1$s</xliff:g>\nLTE \'ਤੇ ਅਵਾਜ਼: <xliff:g id="AVAILABILITY_0">%2$s</xliff:g>\nਵਾਈ-ਫਾਈ \'ਤੇ ਅਵਾਜ਼ੀ ਕਾਲ: <xliff:g id="AVAILABILITY_1">%3$s</xliff:g>\nਵੀਡੀਓ ਕਾਲਿੰਗ: <xliff:g id="AVAILABILITY_2">%4$s</xliff:g>\nUT ਇੰਟਰਫੇਸ: <xliff:g id="AVAILABILITY_3">%5$s</xliff:g>"</string>
+    <string name="radio_info_ims_reg_status" msgid="25582845222446390">"IMS ਰਜਿਸਟਰੇਸ਼ਨ: <xliff:g id="STATUS">%1$s</xliff:g>\nLTE \'ਤੇ ਅਵਾਜ਼: <xliff:g id="AVAILABILITY_0">%2$s</xliff:g>\nਵਾਈ-ਫਾਈ \'ਤੇ ਅਵਾਜ਼ੀ ਕਾਲ: <xliff:g id="AVAILABILITY_1">%3$s</xliff:g>\nਵੀਡੀਓ ਕਾਲਿੰਗ: <xliff:g id="AVAILABILITY_2">%4$s</xliff:g>\nUT ਇੰਟਰਫ਼ੇਸ: <xliff:g id="AVAILABILITY_3">%5$s</xliff:g>"</string>
     <string name="radioInfo_service_in" msgid="45753418231446400">"ਸੇਵਾ ਵਿੱਚ"</string>
     <string name="radioInfo_service_out" msgid="287972405416142312">"ਸੇਵਾ ਵਿੱਚ ਨਹੀਂ"</string>
     <string name="radioInfo_service_emergency" msgid="4763879891415016848">"ਸਿਰਫ਼ ਸੰਕਟਕਾਲੀਨ ਕਾਲਾਂ"</string>
@@ -876,7 +876,7 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"ਪੂਰਵ-ਨਿਰਧਾਰਤ ਡਾਟਾ ਸਿਮ ਦਾ SubId:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DL ਬੈਂਡਵਿਡਥ (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL ਬੈਂਡਵਿਡਥ (kbps):"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"LTE ਭੌਤਿਕ ਚੈਨਲ ਸੰਰੂਪਣ:"</string>
+    <string name="radio_info_phy_chan_config" msgid="608045501232211303">"ਭੌਤਿਕ ਚੈਨਲ ਸੰਰੂਪਣ:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"ਸੈੱਲ ਦੀ ਜਾਣਕਾਰੀ ਦੀ ਰਿਫ੍ਰੈਸ਼ ਦਰ:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"ਸਾਰੀ ਸੈੱਲ ਮਾਪ ਜਾਣਕਾਰੀ:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"ਡਾਟਾ ਸੇਵਾ:"</string>

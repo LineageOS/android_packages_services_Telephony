@@ -876,7 +876,7 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"SubId för standarddata på SIM-kortet:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Bandbredd för nedladdning (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Bandbredd för uppladdning (kbps):"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Fysisk kanalkonfiguration för LTE:"</string>
+    <string name="radio_info_phy_chan_config" msgid="608045501232211303">"Konfigurationer för fysiska kanaler:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Frekvens för uppdatering av mastinformation:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Alla information om mastmätning:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"Datatjänst:"</string>

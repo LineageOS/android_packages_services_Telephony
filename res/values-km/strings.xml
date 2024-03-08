@@ -876,7 +876,7 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"លេខសម្គាល់រង​របស់​ស៊ីម​ទិន្នន័យ​លំនាំដើម៖"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"កម្រិត​បញ្ជូន DL (kbps) ៖"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"កម្រិត​បញ្ជូន UL (kbps) ៖"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"ការកំណត់​រចនាសម្ព័ន្ធបណ្ដាញរូបវ័ន្ត LTE ៖"</string>
+    <string name="radio_info_phy_chan_config" msgid="608045501232211303">"ការកំណត់​រចនាសម្ព័ន្ធ​បណ្ដាញ​រូបវន្ត៖"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"អត្រា​ផ្ទុក​ឡើង​វិញ​នៃ​ព័ត៌មាន​ទូរសព្ទ​ចល័ត៖"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"ព័ត៌មាន​វាស់​ទូរសព្ទ​ចល័ត​ទាំងអស់៖"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"សេវាកម្មទិន្នន័យ៖"</string>

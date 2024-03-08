@@ -189,6 +189,10 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             "set-satellite-pointing-ui-class-name";
     private static final String SET_SATELLITE_DEVICE_ALIGNED_TIMEOUT_DURATION =
             "set-satellite-device-aligned-timeout-duration";
+    private static final String SET_EMERGENCY_CALL_TO_SATELLITE_HANDOVER_TYPE =
+            "set-emergency-call-to-satellite-handover-type";
+    private static final String SET_SHOULD_SEND_DATAGRAM_TO_MODEM_IN_DEMO_MODE =
+            "set-should-send-datagram-to-modem-in-demo-mode";
 
     private static final String INVALID_ENTRY_ERROR = "An emergency number (only allow '0'-'9', "
             + "'*', '#' or '+') needs to be specified after -a in the command ";
@@ -380,6 +384,10 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                 return handleSetSatellitePointingUiClassNameCommand();
             case SET_SATELLITE_DEVICE_ALIGNED_TIMEOUT_DURATION:
                 return handleSettSatelliteDeviceAlignedTimeoutDuration();
+            case SET_EMERGENCY_CALL_TO_SATELLITE_HANDOVER_TYPE:
+                return handleSetEmergencyCallToSatelliteHandoverType();
+            case SET_SHOULD_SEND_DATAGRAM_TO_MODEM_IN_DEMO_MODE:
+                return handleSetShouldSendDatagramToModemInDemoMode();
             default: {
                 return handleDefaultCommands(cmd);
             }
@@ -779,6 +787,14 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         pw.println("           launch. If no option is specified, it will launch the default.");
         pw.println("      -c: the satellite pointing UI app class name that Telephony will");
         pw.println("           launch.");
+        pw.println("  set-emergency-call-to-satellite-handover-type [-t HANDOVER_TYPE ");
+        pw.println("    -d DELAY_SECONDS] Override connectivity status in monitoring emergency ");
+        pw.println("    call and sending EVENT_DISPLAY_EMERGENCY_MESSAGE to Dialer.");
+        pw.println("    Options are:");
+        pw.println("      -t: the emergency call to satellite handover type.");
+        pw.println("          If no option is specified, override is disabled.");
+        pw.println("      -d: the delay in seconds in sending EVENT_DISPLAY_EMERGENCY_MESSAGE.");
+        pw.println("          If no option is specified, there is no delay in sending the event.");
     }
 
     private void onHelpImei() {
@@ -3217,6 +3233,55 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         return 0;
     }
 
+    private int handleSetEmergencyCallToSatelliteHandoverType() {
+        PrintWriter errPw = getErrPrintWriter();
+        int handoverType = -1;
+        int delaySeconds = 0;
+
+        String opt;
+        while ((opt = getNextOption()) != null) {
+            switch (opt) {
+                case "-t": {
+                    try {
+                        handoverType = Integer.parseInt(getNextArgRequired());
+                    } catch (NumberFormatException e) {
+                        errPw.println("SetEmergencyCallToSatelliteHandoverType: require an integer"
+                                + " for handoverType");
+                        return -1;
+                    }
+                    break;
+                }
+                case "-d": {
+                    try {
+                        delaySeconds = Integer.parseInt(getNextArgRequired());
+                    } catch (NumberFormatException e) {
+                        errPw.println("SetEmergencyCallToSatelliteHandoverType: require an integer"
+                                + " for delaySeconds");
+                        return -1;
+                    }
+                    break;
+                }
+            }
+        }
+        Log.d(LOG_TAG, "handleSetEmergencyCallToSatelliteHandoverType: handoverType="
+                + handoverType + ", delaySeconds=" + delaySeconds);
+
+        try {
+            boolean result =
+                    mInterface.setEmergencyCallToSatelliteHandoverType(handoverType, delaySeconds);
+            if (VDBG) {
+                Log.v(LOG_TAG, "setEmergencyCallToSatelliteHandoverType result =" + result);
+            }
+            getOutPrintWriter().println(result);
+        } catch (RemoteException e) {
+            Log.e(LOG_TAG, "setEmergencyCallToSatelliteHandoverType: " + handoverType
+                    + ", error = " + e.getMessage());
+            errPw.println("Exception: " + e.getMessage());
+            return -1;
+        }
+        return 0;
+    }
+
     private int handleSetSatelliteListeningTimeoutDuration() {
         PrintWriter errPw = getErrPrintWriter();
         long timeoutMillis = 0;
@@ -3275,6 +3340,54 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         } catch (RemoteException e) {
             Log.w(LOG_TAG, "setSatelliteDeviceAlignedTimeoutDuration: " + timeoutMillis
                     + ", error = " + e.getMessage());
+            errPw.println("Exception: " + e.getMessage());
+            return -1;
+        }
+        return 0;
+    }
+
+    private int handleSetShouldSendDatagramToModemInDemoMode() {
+        PrintWriter errPw = getErrPrintWriter();
+        String opt;
+        boolean shouldSendToDemoMode;
+
+        if ((opt = getNextArg()) == null) {
+            errPw.println(
+                    "adb shell cmd phone set-should-send-datagram-to-modem-in-demo-mode :"
+                            + " Invalid Argument");
+            return -1;
+        } else {
+            switch (opt) {
+                case "true": {
+                    shouldSendToDemoMode = true;
+                    break;
+                }
+                case "false": {
+                    shouldSendToDemoMode = false;
+                    break;
+                }
+                default:
+                    errPw.println(
+                            "adb shell cmd phone set-should-send-datagram-to-modem-in-demo-mode :"
+                                    + " Invalid Argument");
+                    return -1;
+            }
+        }
+
+        Log.d(LOG_TAG,
+                "handleSetShouldSendDatagramToModemInDemoMode(" + shouldSendToDemoMode + ")");
+
+        try {
+            boolean result = mInterface.setShouldSendDatagramToModemInDemoMode(
+                    shouldSendToDemoMode);
+            if (VDBG) {
+                Log.v(LOG_TAG, "handleSetShouldSendDatagramToModemInDemoMode returns: "
+                        + result);
+            }
+            getOutPrintWriter().println(false);
+        } catch (RemoteException e) {
+            Log.w(LOG_TAG, "setShouldSendDatagramToModemInDemoMode(" + shouldSendToDemoMode
+                    + "), error = " + e.getMessage());
             errPw.println("Exception: " + e.getMessage());
             return -1;
         }
@@ -3377,7 +3490,7 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
     // clear-carrier-service-package-override
     private int clearCarrierServicePackageOverride() {
         PrintWriter errPw = getErrPrintWriter();
-        int subId = getDefaultSlot();
+        int subId = SubscriptionManager.getDefaultSubscriptionId();
 
         String opt;
         while ((opt = getNextOption()) != null) {

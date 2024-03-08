@@ -876,7 +876,7 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"‏المعرّف الفرعي لشريحة SIM التلقائية للبيانات:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"‏معدّل نقل بيانات DL (كيلوبت في الثانية):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"‏معدّل نقل بيانات UL (كيلوبت في الثانية):"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"‏ضبط قناة LTE Physical:"</string>
+    <string name="radio_info_phy_chan_config" msgid="608045501232211303">"إعدادات القنوات:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"معدّل إعادة تحميل المعلومات الخلوية:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"جميع معلومات القياس الخلوية:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"خدمة البيانات:"</string>

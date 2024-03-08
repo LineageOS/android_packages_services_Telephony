@@ -876,7 +876,7 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"기본 데이터 SIM의 subId:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DL 대역폭(kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL 대역폭(kbps):"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"LTE 물리적 채널 구성:"</string>
+    <string name="radio_info_phy_chan_config" msgid="608045501232211303">"물리적 채널 구성:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"셀 정보 새로고침 빈도:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"모든 셀 측정 정보:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"데이터 서비스:"</string>

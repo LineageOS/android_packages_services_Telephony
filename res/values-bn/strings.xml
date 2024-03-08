@@ -876,7 +876,7 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"ডিফল্ট ডেটা সিমের SubId:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"ডিএল ব্যান্ডউইথ (কেবিপিএস):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"ইউএল ব্যান্ডউইথ (কেবিপিএস):"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"LTE ফিজিক্যাল চ্যানেল কনফিগারেশন:"</string>
+    <string name="radio_info_phy_chan_config" msgid="608045501232211303">"ফিজিক্যাল চ্যানেল কনফিগারেশন:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"সেল তথ্যে রিফ্রেশ রেট:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"সমস্ত সেল পরিমাপ তথ্য:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"ডেটা পরিষেবা:"</string>

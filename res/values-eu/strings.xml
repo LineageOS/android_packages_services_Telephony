@@ -876,7 +876,7 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"Datu-konexioetarako SIM lehenetsiaren azpiIDa:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Deskargatzeko banda-zabalera (Kb/s):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Kargen banda-zabalera (Kb/s):"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"LTE kanal fisikoaren konfigurazioa:"</string>
+    <string name="radio_info_phy_chan_config" msgid="608045501232211303">"Kanal fisikoen konfigurazioa:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Sare mugikorraren informazioa eguneratzeko maiztasuna:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Sare mugikorraren neurketa guztien informazioa:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"Datu-zerbitzua:"</string>

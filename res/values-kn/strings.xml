@@ -876,7 +876,7 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"ಡೀಫಾಲ್ಟ್ ಡೇಟಾ ಸಿಮ್‌ನ ವಿಷಯಐಡಿ:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DL ಬ್ಯಾಂಡ್‌ವಿಡ್ತ್ (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL ಬ್ಯಾಂಡ್‌ವಿಡ್ತ್ (kbps):"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"LTE ಭೌತಿಕ ಚಾನೆಲ್ ಕಾನ್ಫಿಗರೇಶನ್:"</string>
+    <string name="radio_info_phy_chan_config" msgid="608045501232211303">"ಭೌತಿಕ ಚಾನಲ್ ಕಾನ್ಫಿಗರೇಶನ್‌ಗಳು:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"ಸೆಲ್ ಮಾಹಿತಿ ರಿಫ್ರೆಶ್ ದರ:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"ಎಲ್ಲಾ ಸೆಲ್ ಮಾಪನ ಮಾಹಿತಿ:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"ಡೇಟಾ ಸೇವೆ:"</string>

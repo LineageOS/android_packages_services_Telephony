@@ -1,17 +1,5 @@
-breadley@google.com
-fionaxu@google.com
-jackyu@google.com
-rgreenwalt@google.com
-tgunn@google.com
-sarahchin@google.com
-xiaotonj@google.com
-huiwang@google.com
-jayachandranc@google.com
-chinmayd@google.com
-amruthr@google.com
-sasindran@google.com
-tjstuart@google.com
-pmadapurmath@google.com
-grantmenke@google.com
+include platform/frameworks/opt/telephony:/OWNERS
 
 per-file *SimPhonebookProvider* = file:platform/packages/apps/Contacts:/OWNERS
+
+per-file config.xml=hwangoo@google.com,forestchoi@google.com,avinashmp@google.com,mkoon@google.com,seheele@google.com,radhikaagrawal@google.com

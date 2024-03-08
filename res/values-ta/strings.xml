@@ -876,7 +876,7 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"இயல்பான டேட்டா சிம்மின் துணை ஐடி:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DL இணைய வேகம் (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL இணைய வேகம் (kbps):"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"LTE ஃபிசிக்கல் சேனல் உள்ளமைவு:"</string>
+    <string name="radio_info_phy_chan_config" msgid="608045501232211303">"சேனல் உள்ளமைவுகள்:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"மொபைல் தகவலின் புதுப்பிப்பு விகிதம்:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"அனைத்து மொபைல் அளவீட்டுத் தகவல்:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"டேட்டா சேவை:"</string>

@@ -289,7 +289,7 @@
     <string name="roaming_enabled_message" msgid="9022249120750897">"Biaya roaming dapat berlaku. Ketuk untuk mengubah."</string>
     <string name="roaming_notification_title" msgid="3590348480688047320">"Koneksi data seluler terputus"</string>
     <string name="roaming_on_notification_title" msgid="7451473196411559173">"Roaming data aktif"</string>
-    <string name="roaming_warning" msgid="7855681468067171971">"Anda dapat dikenakan biaya yang cukup besar."</string>
+    <string name="roaming_warning" msgid="7855681468067171971">"Anda dapat dikenai biaya yang cukup besar."</string>
     <string name="roaming_check_price_warning" msgid="8212484083990570215">"Hubungi penyedia jaringan untuk mengetahui harganya."</string>
     <string name="roaming_alert_title" msgid="5689615818220960940">"Izinkan roaming data?"</string>
     <string name="limited_sim_function_notification_title" msgid="612715399099846281">"Fungsi SIM terbatas"</string>
@@ -876,7 +876,7 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"SubId SIM data default:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Bandwidth DL (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Bandwidth UL (kbps):"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Konfigurasi Saluran Fisik LTE:"</string>
+    <string name="radio_info_phy_chan_config" msgid="608045501232211303">"Konfigurasi Saluran Fisik:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Rasio Pembaruan Info Sel"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Semua Info Pengukuran Sel:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"Layanan Data:"</string>

@@ -596,9 +596,9 @@
     <string name="failedToImportSingleContactMsg" msgid="228095510489830266">"Kontaktpersonen kunne ikke importeres"</string>
     <string name="hac_mode_title" msgid="4127986689621125468">"Høreapparater"</string>
     <string name="hac_mode_summary" msgid="7774989500136009881">"Slå høreapparatskompatibilitet til"</string>
-    <string name="rtt_mode_title" msgid="3075948111362818043">"Opkald via sms i realtid"</string>
+    <string name="rtt_mode_title" msgid="3075948111362818043">"Opkald via beskeder i realtid"</string>
     <string name="rtt_mode_summary" msgid="8631541375609989562">"Tillad afsendelse af sms-beskeder i et taleopkald"</string>
-    <string name="rtt_mode_more_information" msgid="587500128658756318">"Sms i realtid hjælper personer, som er døve, hørehæmmede, talehandicappede, eller som har brug for mere end bare tale, med at foretage opkald.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Få flere oplysninger&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; – Opkald via sms i realtid gemmes som en beskedtransskription\n       &lt;br&gt; – Sms i realtid er ikke tilgængeligt til videoopkald"</string>
+    <string name="rtt_mode_more_information" msgid="587500128658756318">"Beskeder i realtid hjælper personer, som er døve, hørehæmmede, talehandicappede, eller som har brug for mere end bare tale, med at foretage opkald.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Få flere oplysninger&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; – Opkald via beskeder i realtid gemmes som en beskedtransskription\n       &lt;br&gt; – Beskeder i realtid er ikke tilgængeligt til videoopkald"</string>
     <string name="no_rtt_when_roaming" msgid="5268008247378355389">"Bemærk! RTT er ikke tilgængeligt under roaming"</string>
   <string-array name="tty_mode_entries">
     <item msgid="3238070884803849303">"TTY fra"</item>
@@ -876,7 +876,7 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"Under-id for standard-SIM-kort til data:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Båndbredde til download (kB/sek.):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Båndbredde til upload (kB/sek.):"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Fysisk kanalkonfiguration for LTE:"</string>
+    <string name="radio_info_phy_chan_config" msgid="608045501232211303">"Fysiske kanalkonfigurationer:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Opdateringsfrekvens for celleoplysninger:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Alle oplysninger om cellemåling:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"Datatjeneste:"</string>

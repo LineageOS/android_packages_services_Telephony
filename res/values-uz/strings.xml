@@ -876,7 +876,7 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"Mobil internet uchun birlamchi SIM kartaning qoʻshimcha identifikatori:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Axborot uzatish tezligi (kbit/s):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL kanalining axborot uzatish tezligi (kbit/s):"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"LTE jismoniy kanal konfiguratsiyasi:"</string>
+    <string name="radio_info_phy_chan_config" msgid="608045501232211303">"Tashqi kanal konfiguratsiyalari:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Tarmoq haqidagi axborotning yangilanish darajasi:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Tarmoq statistikasi:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"Mobil internet xizmati:"</string>

@@ -876,7 +876,7 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"デフォルトのデータ SIM の SUBID:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DL 帯域幅（kbps）:"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL 帯域幅（kbps）:"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"LTE の物理チャネル設定:"</string>
+    <string name="radio_info_phy_chan_config" msgid="608045501232211303">"物理チャネルの構成:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"セル情報の更新間隔:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"すべてのセルの測定情報:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"データサービス:"</string>

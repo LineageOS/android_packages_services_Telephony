@@ -876,7 +876,7 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"默认数据 SIM 卡的 SubId："</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DL 带宽 (kbps)："</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL 带宽 (kbps)："</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"LTE 物理信道配置："</string>
+    <string name="radio_info_phy_chan_config" msgid="608045501232211303">"实体频道配置："</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"移动网络信息刷新频率："</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"所有移动网络测量信息："</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"数据服务："</string>

@@ -876,7 +876,7 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"မူရင်း ဒေတာဆင်းမ်ကဒ်အတွက် Id အခွဲ −"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DL မြန်နှုန်း (kbps)−"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL မြန်နှုန်း (kbps)−"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"LTE ရုပ်ပိုင်းဆိုင်ရာ ချန်နယ်စီစဉ်သတ်မှတ်မှု−"</string>
+    <string name="radio_info_phy_chan_config" msgid="608045501232211303">"ရုပ်ပိုင်းဆိုင်ရာ ချန်နယ်စီစဉ်သတ်မှတ်ချက်များ-"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"ဆဲလ်လူလာ အချက်အလက် ရယူမှုနှုန်း −"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"ဆဲလ်လူလာတိုင်းတာမှု အချက်အလက် အားလုံး −"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"ဒေတာ ဝန်ဆောင်မှု −"</string>

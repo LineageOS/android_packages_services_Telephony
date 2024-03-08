@@ -876,7 +876,7 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"SubId προεπιλεγμένης SIM δεδομένων:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"Εύρος ζώνης DL (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"Εύρος ζώνης UL (kbps):"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"Διαμόρφωση φυσικού καναλιού LTE:"</string>
+    <string name="radio_info_phy_chan_config" msgid="608045501232211303">"Διαμορφώσεις φυσικού καναλιού:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"Ρυθμός ανανέωσης στοιχείων κινητής τηλεφωνίας:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Όλα τα στοιχεία μετρήσεων κινητής τηλεφωνίας:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"Υπηρεσία δεδομένων:"</string>

@@ -876,7 +876,7 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"පෙරනිමි දත්ත SIM පතේ උප හැඳුනුම:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DL කලාප පළල (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL කලාප පළල (kbps):"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"LTE භෞතික නාලිකා වින්‍යාසය:"</string>
+    <string name="radio_info_phy_chan_config" msgid="608045501232211303">"භෞතික නාලිකා වින්‍යාස කිරීම්:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"සෙල් තොරතුරු නැවුම් කිරීමේ අනුපාතය:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"සියලු සෙල් මිනුම් තොරතුරු:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"දත්ත සේවාව:"</string>

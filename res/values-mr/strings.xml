@@ -876,7 +876,7 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"डीफॉल्ट डेटा सिम SubId:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"DL बँडविड्थ (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"UL बँडविड्थ (kbps):"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"LTE फिजिकल चॅनल कॉंफिगरेशन:"</string>
+    <string name="radio_info_phy_chan_config" msgid="608045501232211303">"प्रत्यक्ष चॅनलची कॉंफिगरेशन:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"सेल माहिती रिफ्रेश रेट:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"सर्व सेल परिमाण माहिती:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"डेटा सर्व्हिस:"</string>

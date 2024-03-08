@@ -876,7 +876,7 @@
     <string name="radio_info_dds" msgid="1122593144425697126">"‏ڈیفالٹ ڈیٹا SIM کی SubId:"</string>
     <string name="radio_info_dl_kbps" msgid="2382922659525318726">"‏DL بینڈ وڈتھ (kbps):"</string>
     <string name="radio_info_ul_kbps" msgid="2102225400904799036">"‏UL بینڈ وڈتھ (kbps):"</string>
-    <string name="radio_info_phy_chan_config" msgid="1277949603275436081">"‏LTE فزيکل چینل کنفیگریشن:"</string>
+    <string name="radio_info_phy_chan_config" msgid="608045501232211303">"چینل کی طبعی کنفیگریشنز:"</string>
     <string name="radio_info_cell_info_refresh_rate" msgid="670511448975997340">"سیل کی معلومات ریفریش کرنے کی شرح:"</string>
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"سیل پیمائش کی تمام معلومات:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"ڈیٹا سروس:"</string>
