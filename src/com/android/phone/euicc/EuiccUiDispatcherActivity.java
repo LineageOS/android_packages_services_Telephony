@@ -113,7 +113,7 @@ public class EuiccUiDispatcherActivity extends Activity {
     @Nullable
     Intent resolveEuiccUiIntent() {
         EuiccManager euiccManager = (EuiccManager) getSystemService(Context.EUICC_SERVICE);
-        if (!euiccManager.isEnabled()) {
+        if (euiccManager == null || !euiccManager.isEnabled()) {
             Log.w(TAG, "eUICC not enabled");
             return null;
         }
