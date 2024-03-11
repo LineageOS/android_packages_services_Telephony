@@ -542,7 +542,11 @@
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Izađite iz načina rada za hitni povratni poziv da uputite poziv koji nije hitan."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"Nije registrirano na mreži."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"Mobilna mreža nije dostupna."</string>
+    <!-- no translation found for incall_error_out_of_service_2g (904434080740846116) -->
+    <skip />
     <string name="incall_error_out_of_service_wfc" msgid="4497663185857190885">"Mobilna mreža nije dostupna. Povežite se na bežičnu mrežu da pozovete."</string>
+    <!-- no translation found for incall_error_out_of_service_wfc_2g_user (8218768986365299663) -->
+    <skip />
     <string name="incall_error_no_phone_number_supplied" msgid="8680831089508851894">"Da uputite poziv, upišite važeći broj."</string>
     <string name="incall_error_call_failed" msgid="393508653582682539">"Poziv nije uspio."</string>
     <string name="incall_error_cannot_add_call" msgid="5425764862628655443">"Trenutno nije moguće dodati poziv. Možete pokušati poslati poruku."</string>

@@ -542,7 +542,11 @@
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Lai veiktu parastu zvanu, izejiet no ārkārtas atzvana režīma."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"Tīklā nav reģistrēts."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"Mobilais tīkls nav pieejams."</string>
+    <!-- no translation found for incall_error_out_of_service_2g (904434080740846116) -->
+    <skip />
     <string name="incall_error_out_of_service_wfc" msgid="4497663185857190885">"Mobilais tīkls nav pieejams. Lai veiktu zvanu, izveidojiet savienojumu ar bezvadu tīklu."</string>
+    <!-- no translation found for incall_error_out_of_service_wfc_2g_user (8218768986365299663) -->
+    <skip />
     <string name="incall_error_no_phone_number_supplied" msgid="8680831089508851894">"Lai veiktu zvanu, ievadiet derīgu numuru."</string>
     <string name="incall_error_call_failed" msgid="393508653582682539">"Zvans neizdevās."</string>
     <string name="incall_error_cannot_add_call" msgid="5425764862628655443">"Pašlaik nevar pievienot zvanu. Varat mēģināt sūtīt īsziņu."</string>

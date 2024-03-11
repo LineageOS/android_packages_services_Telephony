@@ -542,7 +542,11 @@
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"일반 전화를 걸려면 긴급 콜백 모드를 해제하세요."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"네트워크에서 등록되지 않았습니다."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"모바일 네트워크를 사용할 수 없습니다."</string>
+    <!-- no translation found for incall_error_out_of_service_2g (904434080740846116) -->
+    <skip />
     <string name="incall_error_out_of_service_wfc" msgid="4497663185857190885">"모바일 네트워크를 사용할 수 없습니다. 전화를 걸려면 무선 네트워크에 연결하세요."</string>
+    <!-- no translation found for incall_error_out_of_service_wfc_2g_user (8218768986365299663) -->
+    <skip />
     <string name="incall_error_no_phone_number_supplied" msgid="8680831089508851894">"전화를 걸려면 올바른 번호를 입력하세요."</string>
     <string name="incall_error_call_failed" msgid="393508653582682539">"전화 연결 실패"</string>
     <string name="incall_error_cannot_add_call" msgid="5425764862628655443">"현재는 통화를 추가할 수 없습니다. 메시지를 보내 연락해 보세요."</string>

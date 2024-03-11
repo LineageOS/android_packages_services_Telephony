@@ -542,7 +542,11 @@
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"緊急通報以外の通話を発信するには、緊急通報待機モードを終了してください。"</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"ご加入の通信サービスがありません"</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"モバイルネットワークが利用できません。"</string>
+    <!-- no translation found for incall_error_out_of_service_2g (904434080740846116) -->
+    <skip />
     <string name="incall_error_out_of_service_wfc" msgid="4497663185857190885">"モバイル ネットワークを利用できません。電話をかけるにはワイヤレス ネットワークに接続してください。"</string>
+    <!-- no translation found for incall_error_out_of_service_wfc_2g_user (8218768986365299663) -->
+    <skip />
     <string name="incall_error_no_phone_number_supplied" msgid="8680831089508851894">"発信するには、有効な番号を入力してください。"</string>
     <string name="incall_error_call_failed" msgid="393508653582682539">"発信できませんでした。"</string>
     <string name="incall_error_cannot_add_call" msgid="5425764862628655443">"現在、通話を追加できません。連絡するには、メッセージを送信してみてください。"</string>

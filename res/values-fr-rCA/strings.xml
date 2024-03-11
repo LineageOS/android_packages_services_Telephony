@@ -542,7 +542,11 @@
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Quittez le mode de rappel d\'urgence pour effectuer un appel non urgent."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"Non enregistré sur le réseau"</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"Réseau pour mobile non disponible"</string>
+    <!-- no translation found for incall_error_out_of_service_2g (904434080740846116) -->
+    <skip />
     <string name="incall_error_out_of_service_wfc" msgid="4497663185857190885">"Le réseau mobile n\'est pas accessible. Connectez-vous à un réseau sans fil pour effectuer un appel."</string>
+    <!-- no translation found for incall_error_out_of_service_wfc_2g_user (8218768986365299663) -->
+    <skip />
     <string name="incall_error_no_phone_number_supplied" msgid="8680831089508851894">"Pour faire un appel, entrez un numéro valide."</string>
     <string name="incall_error_call_failed" msgid="393508653582682539">"Échec de l\'appel."</string>
     <string name="incall_error_cannot_add_call" msgid="5425764862628655443">"Impossible d\'ajouter l\'appel pour le moment. Vous pouvez essayer de joindre la personne en lui envoyant un message."</string>

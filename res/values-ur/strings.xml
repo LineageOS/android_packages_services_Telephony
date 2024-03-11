@@ -542,7 +542,11 @@
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"غیر ایمرجنسی کال کرنے کیلئے ایمرجنسی کال بیک موڈ سے اخراج کریں۔"</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"نیٹ ورک پر رجسٹرڈ نہیں ہے۔"</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"موبائل نیٹ ورک دستیاب نہیں ہے۔"</string>
+    <!-- no translation found for incall_error_out_of_service_2g (904434080740846116) -->
+    <skip />
     <string name="incall_error_out_of_service_wfc" msgid="4497663185857190885">"موبائل نیٹ ورک دستیاب نہیں ہے۔ کال کرنے کیلئے کسی وائرلیس نیٹ ورک سے منسلک ہوں۔"</string>
+    <!-- no translation found for incall_error_out_of_service_wfc_2g_user (8218768986365299663) -->
+    <skip />
     <string name="incall_error_no_phone_number_supplied" msgid="8680831089508851894">"کال کرنے کیلئے، ایک درست نمبر درج کریں۔"</string>
     <string name="incall_error_call_failed" msgid="393508653582682539">"کال ناکام ہوگئی۔"</string>
     <string name="incall_error_cannot_add_call" msgid="5425764862628655443">"اس وقت کال شامل نہیں کی جا سکتی۔ آپ ایک پیغام بھیج کر رابطہ کرنے کی کوشش کر سکتے ہیں۔"</string>

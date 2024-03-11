@@ -542,7 +542,9 @@
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"ອອກ​ຈາກໂໝດ​ໂທ​ກັບ​ສຸກ​ເສີນ ເພື່ອ​ເຮັດ​ການ​ໂທ​ປົກກະຕິ."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"ບໍ່ໄດ້ລົງທະບຽນໃນເຄືອຂ່າຍ."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"ເຄືອຂ່າຍມືຖືບໍ່ສາມາດໃຊ້ໄດ້."</string>
+    <string name="incall_error_out_of_service_2g" msgid="904434080740846116">"ເຄືອຂ່າຍມືຖືບໍ່ມີໃຫ້ໃຊ້.\n\nເຊື່ອມຕໍ່ຫາເຄືອຂ່າຍໄຮ້ສາຍເພື່ອໂທອອກ.\n\n2G ປິດໄວ້ຢູ່ອຸປະກອນນີ້, ເຊິ່ງອາດສົ່ງຜົນຕໍ່ການເຊື່ອມຕໍ່ຂອງທ່ານ. ໄປຫາການຕັ້ງຄ່າ ແລະ ເປີດການນຳໃຊ້ອະນຸຍາດ 2G ເພື່ອສືບຕໍ່."</string>
     <string name="incall_error_out_of_service_wfc" msgid="4497663185857190885">"ບໍ່ສາມາດໃຊ້ອິນເຕີເນັດມືຖືໄດ້. ກະລຸນາເຊື່ອມຕໍ່ຫາ Wi-Fi ເພື່ອໂທ."</string>
+    <string name="incall_error_out_of_service_wfc_2g_user" msgid="8218768986365299663">"ເຄືອຂ່າຍມືຖືບໍ່ມີໃຫ້ໃຊ້.\n\nເຊື່ອມຕໍ່ຫາເຄືອຂ່າຍໄຮ້ສາຍເພື່ອໂທອອກ.\n\n2G ປິດໄວ້ຢູ່ອຸປະກອນນີ້, ເຊິ່ງອາດສົ່ງຜົນຕໍ່ການເຊື່ອມຕໍ່ຂອງທ່ານ. ໄປຫາການຕັ້ງຄ່າ ແລະ ເປີດການນຳໃຊ້ອະນຸຍາດ 2G ເພື່ອສືບຕໍ່."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="8680831089508851894">"ເພື່ອ​ທີ່​ຈະ​ໂທ, ປ້ອນ​ເບີ​ໂທ​ທີ່​ໃຊ້​ໄດ້​ເຂົ້າ​ໄປ."</string>
     <string name="incall_error_call_failed" msgid="393508653582682539">"ໂທບໍ່ສຳເລັດ."</string>
     <string name="incall_error_cannot_add_call" msgid="5425764862628655443">"ບໍ່ສາມາດໂທໄດ້ໃນຕອນນີ້. ທ່ານສາມາດລອງຕິດຕໍ່ຫາໄດ້ໂດຍການສົ່ງຂໍ້ຄວາມ."</string>
