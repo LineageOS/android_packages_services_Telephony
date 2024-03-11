@@ -211,7 +211,6 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
 
     private final PowerManager.WakeLock mPartialWakeLock;
     private final CrossSimRedialingController mCrossSimRedialingController;
-    private final CarrierConfigHelper mCarrierConfigHelper;
     private final EmergencyCallbackModeHelper mEcbmHelper;
 
     /** Constructor. */
@@ -219,7 +218,6 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
             @NonNull Looper looper, @NonNull ImsStateTracker imsStateTracker,
             @NonNull DestroyListener destroyListener,
             @NonNull CrossSimRedialingController csrController,
-            @NonNull CarrierConfigHelper carrierConfigHelper,
             @NonNull EmergencyCallbackModeHelper ecbmHelper) {
         super(context, slotId, subId, looper, imsStateTracker, destroyListener, TAG);
 
@@ -230,7 +228,6 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         mPartialWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, TAG);
 
         mCrossSimRedialingController = csrController;
-        mCarrierConfigHelper = carrierConfigHelper;
         mEcbmHelper = ecbmHelper;
         acquireWakeLock();
     }
@@ -532,7 +529,6 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
                 b.getIntArray(KEY_EMERGENCY_OVER_IMS_SUPPORTED_3GPP_NETWORK_TYPES_INT_ARRAY);
         mImsRoamRatsConfig = b.getIntArray(
                 KEY_EMERGENCY_OVER_IMS_ROAMING_SUPPORTED_3GPP_NETWORK_TYPES_INT_ARRAY);
-        maybeModifyImsRats();
 
         mCsRatsConfig =
                 b.getIntArray(KEY_EMERGENCY_OVER_CS_SUPPORTED_ACCESS_NETWORK_TYPES_INT_ARRAY);
@@ -602,16 +598,6 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
             mScanType = DomainSelectionService.SCAN_TYPE_FULL_SERVICE;
         } else {
             mScanType = DomainSelectionService.SCAN_TYPE_NO_PREFERENCE;
-        }
-    }
-
-    /** Adds NGRAN if SIM is absent or locked and the last valid subscription supported NGRAN. */
-    private void maybeModifyImsRats() {
-        if (mCarrierConfigHelper.isVoNrEmergencySupported(getSlotId())
-                && !isSimReady() && mImsRatsConfig.length < 2) {
-            // Default configuration includes only EUTRAN.
-            mImsRatsConfig = new int[] { EUTRAN, NGRAN };
-            mImsRoamRatsConfig = new int[] { EUTRAN, NGRAN };
         }
     }
 

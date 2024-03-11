@@ -82,7 +82,6 @@ public class TelephonyDomainSelectionServiceTest {
                         @NonNull Looper looper, @NonNull ImsStateTracker imsStateTracker,
                         @NonNull DomainSelectorBase.DestroyListener listener,
                         @NonNull CrossSimRedialingController crossSimRedialingController,
-                        @NonNull CarrierConfigHelper carrierConfigHelper,
                         @NonNull EmergencyCallbackModeHelper ecbmHelper) {
                     switch (selectorType) {
                         case DomainSelectionService.SELECTOR_TYPE_CALLING: // fallthrough
@@ -105,9 +104,8 @@ public class TelephonyDomainSelectionServiceTest {
         TestTelephonyDomainSelectionService(Context context,
                 @NonNull ImsStateTrackerFactory imsStateTrackerFactory,
                 @NonNull DomainSelectorFactory domainSelectorFactory,
-                @Nullable CarrierConfigHelper carrierConfigHelper,
                 @Nullable EmergencyCallbackModeHelper ecbmHelper) {
-            super(imsStateTrackerFactory, domainSelectorFactory, carrierConfigHelper, ecbmHelper);
+            super(imsStateTrackerFactory, domainSelectorFactory, ecbmHelper);
             mContext = context;
         }
 
@@ -131,7 +129,6 @@ public class TelephonyDomainSelectionServiceTest {
     @Mock private TransportSelectorCallback mSelectorCallback1;
     @Mock private TransportSelectorCallback mSelectorCallback2;
     @Mock private ImsStateTracker mImsStateTracker;
-    @Mock private CarrierConfigHelper mCarrierConfigHelper;
     @Mock private EmergencyCallbackModeHelper mEcbmHelper;
 
     private final ServiceState mServiceState = new ServiceState();
@@ -154,7 +151,7 @@ public class TelephonyDomainSelectionServiceTest {
 
         mContext = new TestContext();
         mDomainSelectionService = new TestTelephonyDomainSelectionService(mContext,
-                mImsStateTrackerFactory, mDomainSelectorFactory, mCarrierConfigHelper, mEcbmHelper);
+                mImsStateTrackerFactory, mDomainSelectorFactory, mEcbmHelper);
         mDomainSelectionService.onCreate();
         mServiceHandler = new Handler(mDomainSelectionService.getLooper());
         mTestableLooper = new TestableLooper(mDomainSelectionService.getLooper());
