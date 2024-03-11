@@ -49,6 +49,7 @@ android_app {
         "android.permission.flags-aconfig-java",
         "satellite-s2storage-ro",
         "s2-geometry-library-java",
+        "dropbox_flags_lib",
     ],
 
     srcs: [

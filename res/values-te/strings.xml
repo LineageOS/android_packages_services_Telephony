@@ -542,7 +542,11 @@
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"సాధారణ కాల్ చేయడానికి అత్యవసర కాల్‌బ్యాక్ మోడ్ నుండి నిష్క్రమించండి."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"నెట్‌వర్క్‌లో నమోదు కాలేదు."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"మొబైల్ నెట్‌వర్క్ అందుబాటులో లేదు."</string>
+    <!-- no translation found for incall_error_out_of_service_2g (904434080740846116) -->
+    <skip />
     <string name="incall_error_out_of_service_wfc" msgid="4497663185857190885">"మొబైల్ నెట్‌వర్క్ అందుబాటులో లేదు. కాల్ చేయడానికి వైర్‌లెస్ నెట్‌వర్క్‌కు కనెక్ట్ చేయండి."</string>
+    <!-- no translation found for incall_error_out_of_service_wfc_2g_user (8218768986365299663) -->
+    <skip />
     <string name="incall_error_no_phone_number_supplied" msgid="8680831089508851894">"కాల్ చేయడానికి, చెల్లుబాటు అయ్యే నంబర్‌ను నమోదు చేయండి."</string>
     <string name="incall_error_call_failed" msgid="393508653582682539">"కాల్ విఫలమైంది."</string>
     <string name="incall_error_cannot_add_call" msgid="5425764862628655443">"ఈ సమయంలో కాల్ జోడించబడదు. మీరు మెసేజ్‌ను పంపడం ద్వారా సంప్రదించవచ్చు."</string>

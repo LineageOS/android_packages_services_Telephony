@@ -542,7 +542,11 @@
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Jei norite skambinti ne pagalbos numeriu, išjunkite atgalinio skambinimo pagalbos numeriu režimą."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"Neregistruota tinkle."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"Mobilusis tinklas negalimas."</string>
+    <!-- no translation found for incall_error_out_of_service_2g (904434080740846116) -->
+    <skip />
     <string name="incall_error_out_of_service_wfc" msgid="4497663185857190885">"Mobiliojo ryšio tinklas nepasiekiamas. Prisijunkite prie belaidžio ryšio tinklo, kad galėtumėte skambinti."</string>
+    <!-- no translation found for incall_error_out_of_service_wfc_2g_user (8218768986365299663) -->
+    <skip />
     <string name="incall_error_no_phone_number_supplied" msgid="8680831089508851894">"Kad galėtumėte paskambinti, įveskite tinkamą numerį."</string>
     <string name="incall_error_call_failed" msgid="393508653582682539">"Paskambinti nepavyko."</string>
     <string name="incall_error_cannot_add_call" msgid="5425764862628655443">"Šiuo metu skambučio pridėti negalima. Galite pabandyti susisiekti išsiųsdami pranešimą."</string>

@@ -542,7 +542,11 @@
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Ieși din modul de apelare inversă de urgență pentru a efectua un apel care nu este de urgență."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"Neînregistrat în rețea."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"Rețeaua mobilă nu este disponibilă."</string>
+    <!-- no translation found for incall_error_out_of_service_2g (904434080740846116) -->
+    <skip />
     <string name="incall_error_out_of_service_wfc" msgid="4497663185857190885">"Rețeaua mobilă nu este disponibilă. Pentru a apela, conectează-te la o rețea wireless."</string>
+    <!-- no translation found for incall_error_out_of_service_wfc_2g_user (8218768986365299663) -->
+    <skip />
     <string name="incall_error_no_phone_number_supplied" msgid="8680831089508851894">"Pentru a apela, introdu un număr valid."</string>
     <string name="incall_error_call_failed" msgid="393508653582682539">"Apelul nu a fost inițiat."</string>
     <string name="incall_error_cannot_add_call" msgid="5425764862628655443">"Apelul nu poate fi inițiat în acest moment. Poți lua legătura cu persoana respectivă trimițându-i un mesaj."</string>
