@@ -78,6 +78,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.function.Predicate;
@@ -1699,6 +1700,35 @@ public class TelecomAccountRegistry {
                     mAccounts.add(
                             new AccountEntry(PhoneFactory.getDefaultPhone(), true /* emergency */,
                                     false /* isTest */));
+                }
+
+                // In some very rare cases, when setting the default voice sub in
+                // SubscriptionManagerService, the phone accounts here have not yet been built.
+                // So calling setUserSelectedOutgoingPhoneAccount in SubscriptionManagerService
+                // becomes a no-op. The workaround here is to reconcile and make sure the
+                // outgoing phone account is properly set in telecom.
+                int defaultVoiceSubId = SubscriptionManager.getDefaultVoiceSubscriptionId();
+                if (SubscriptionManager.isValidSubscriptionId(defaultVoiceSubId)) {
+                    PhoneAccountHandle defaultVoiceAccountHandle =
+                            getPhoneAccountHandleForSubId(defaultVoiceSubId);
+                    if (defaultVoiceAccountHandle != null) {
+                        PhoneAccountHandle currentAccount = mTelecomManager
+                                .getUserSelectedOutgoingPhoneAccount();
+                        // In some rare cases, the current phone account could be non-telephony
+                        // phone account. We do not override in this case.
+                        boolean wasPreviousAccountSameComponentOrUnset = currentAccount == null
+                                || Objects.equals(defaultVoiceAccountHandle.getComponentName(),
+                                currentAccount.getComponentName());
+
+                        // Set the phone account again if it's out-of-sync.
+                        if (!defaultVoiceAccountHandle.equals(currentAccount)
+                                && wasPreviousAccountSameComponentOrUnset) {
+                            Log.d(this, "setupAccounts: Re-setup phone account "
+                                    + "again for default voice sub " + defaultVoiceSubId);
+                            mTelecomManager.setUserSelectedOutgoingPhoneAccount(
+                                    defaultVoiceAccountHandle);
+                        }
+                    }
                 }
             }
 
