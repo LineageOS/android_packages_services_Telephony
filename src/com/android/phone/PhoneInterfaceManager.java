@@ -430,11 +430,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private final SatelliteController mSatelliteController;
     private final SatelliteAccessController mSatelliteAccessController;
     private final UserManager mUserManager;
-    private final AppOpsManager mAppOps;
     private final MainThreadHandler mMainThreadHandler;
     private final SharedPreferences mTelephonySharedPreferences;
     private final PhoneConfigurationManager mPhoneConfigurationManager;
     private final RadioInterfaceCapabilityController mRadioInterfaceCapabilities;
+    private AppOpsManager mAppOps;
     private PackageManager mPackageManager;
 
     /** User Activity */
@@ -9466,7 +9466,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         try {
             if (reason == TelephonyManager.DATA_ENABLED_REASON_USER && enabled
                     && null != callingPackage && opEnableMobileDataByUser()) {
-                mAppOps.noteOp(AppOpsManager.OPSTR_ENABLE_MOBILE_DATA_BY_USER,
+                mAppOps.noteOpNoThrow(AppOpsManager.OPSTR_ENABLE_MOBILE_DATA_BY_USER,
                         callingUid, callingPackage, null, null);
             }
             Phone phone = getPhone(subId);
@@ -14024,6 +14024,16 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @VisibleForTesting
     public void setPackageManager(PackageManager packageManager) {
         mPackageManager = packageManager;
+    }
+
+    /*
+     * PhoneInterfaceManager is a singleton. Unit test calls the init() with context.
+     * But the context that is passed in is unused if the phone app is already alive.
+     * In this case PackageManager object is different in PhoneInterfaceManager and Unit test.
+     */
+    @VisibleForTesting
+    public void setAppOpsManager(AppOpsManager appOps) {
+        mAppOps = appOps;
     }
 
     /*

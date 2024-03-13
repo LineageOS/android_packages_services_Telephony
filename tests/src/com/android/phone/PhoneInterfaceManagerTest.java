@@ -23,6 +23,8 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.ArgumentMatchers.isNull;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.doThrow;
@@ -32,6 +34,7 @@ import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import android.app.AppOpsManager;
 import android.compat.testing.PlatformCompatChangeRule;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -90,6 +93,9 @@ public class PhoneInterfaceManagerTest extends TelephonyTestBase {
     @Mock
     private SubscriptionManagerService mSubscriptionManagerService;
 
+    @Mock
+    private AppOpsManager mAppOps;
+
     @Rule public final SetFlagsRule mSetFlagsRule = new SetFlagsRule();
 
     @Before
@@ -117,6 +123,8 @@ public class PhoneInterfaceManagerTest extends TelephonyTestBase {
         doReturn(false).when(mFeatureFlags).enforceTelephonyFeatureMappingForPublicApis();
         mPhoneInterfaceManager.setPackageManager(mPackageManager);
         doReturn(true).when(mPackageManager).hasSystemFeature(anyString());
+
+        mPhoneInterfaceManager.setAppOpsManager(mAppOps);
     }
 
     @Test
@@ -422,37 +430,18 @@ public class PhoneInterfaceManagerTest extends TelephonyTestBase {
     public void notifyEnableDataWithAppOps_enableByUser_doNoteOp() {
         mSetFlagsRule.enableFlags(Flags.FLAG_OP_ENABLE_MOBILE_DATA_BY_USER);
         String packageName = "INVALID_PACKAGE";
-        String error = "";
-        try {
-            mPhoneInterfaceManager.setDataEnabledForReason(1,
-                    TelephonyManager.DATA_ENABLED_REASON_USER, true, packageName);
-        } catch (SecurityException expected) {
-            // The test doesn't have access to note the op, but we're just interested that it makes
-            // the attempt.
-            error = expected.getMessage();
-        }
-
-        String appop = "ENABLE_MOBILE_DATA_BY_USER";
-        assertTrue("expected error to contain " + packageName + " but it didn't: " + error,
-                error.contains(packageName));
-        assertTrue("expected error to contain " + appop + " but it didn't: " + error,
-                error.contains(appop));
+        mPhoneInterfaceManager.setDataEnabledForReason(1,
+                TelephonyManager.DATA_ENABLED_REASON_USER, true, packageName);
+        verify(mAppOps).noteOpNoThrow(eq(AppOpsManager.OPSTR_ENABLE_MOBILE_DATA_BY_USER), anyInt(),
+                eq(packageName), isNull(), isNull());
     }
 
     @Test
     public void notifyEnableDataWithAppOps_enableByCarrier_doNotNoteOp() {
         mSetFlagsRule.enableFlags(Flags.FLAG_OP_ENABLE_MOBILE_DATA_BY_USER);
         String packageName = "INVALID_PACKAGE";
-        String error = "";
-        try {
-            mPhoneInterfaceManager.setDataEnabledForReason(1,
-                    TelephonyManager.DATA_ENABLED_REASON_CARRIER, true, packageName);
-        } catch (SecurityException expected) {
-            // The test doesn't have access to note the op, but we're just interested that it makes
-            // the attempt.
-            error = expected.getMessage();
-        }
-        assertEquals("Expected error to be empty, was " + error, error, "");
+        verify(mAppOps, never()).noteOpNoThrow(eq(AppOpsManager.OPSTR_ENABLE_MOBILE_DATA_BY_USER),
+                anyInt(), eq(packageName), isNull(), isNull());
     }
 
     @Test
