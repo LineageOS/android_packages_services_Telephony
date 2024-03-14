@@ -142,8 +142,8 @@ public class DisconnectCauseUtil {
             FlagsAdapter featureFlags, boolean shouldTreatAsEmergency) {
         Context context = PhoneGlobals.getInstance();
 
-        return new DisconnectCause.Builder()
-                .setCode(toTelecomDisconnectCauseCode(telephonyDisconnectCause, carrierConfig))
+        return new DisconnectCause.Builder(
+                toTelecomDisconnectCauseCode(telephonyDisconnectCause, carrierConfig))
                 .setLabel(toTelecomDisconnectCauseLabel(context, telephonyDisconnectCause,
                         telephonyPreciseDisconnectCause, carrierConfig, featureFlags))
                 .setDescription(toTelecomDisconnectCauseDescription(
@@ -163,8 +163,8 @@ public class DisconnectCauseUtil {
      * {@link android.telecom.DisconnectCause} disconnect code.
      * @return The disconnect code as defined in {@link android.telecom.DisconnectCause}.
      */
-    private static int toTelecomDisconnectCauseCode(int telephonyDisconnectCause,
-            PersistableBundle carrierConfig) {
+    private static @DisconnectCause.DisconnectCauseCode int toTelecomDisconnectCauseCode(
+            int telephonyDisconnectCause, PersistableBundle carrierConfig) {
 
         // special case: some carriers determine what disconnect causes play the BUSY tone.
         // hence, must adjust the disconnectCause CODE to match the tone.
