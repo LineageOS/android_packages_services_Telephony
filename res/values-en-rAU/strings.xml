@@ -542,11 +542,9 @@
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Exit emergency callback mode to make a non-emergency call."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"Not registered on network."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"Mobile network not available."</string>
-    <!-- no translation found for incall_error_out_of_service_2g (904434080740846116) -->
-    <skip />
+    <string name="incall_error_out_of_service_2g" msgid="904434080740846116">"Mobile network not available.\n\nConnect to a wireless network to make a call.\n\n2 G is disabled on this device, which may be impacting your connectivity. Go to Settings and enable Allow 2 G to continue."</string>
     <string name="incall_error_out_of_service_wfc" msgid="4497663185857190885">"Mobile network isn\'t available. Connect to a wireless network to make a call."</string>
-    <!-- no translation found for incall_error_out_of_service_wfc_2g_user (8218768986365299663) -->
-    <skip />
+    <string name="incall_error_out_of_service_wfc_2g_user" msgid="8218768986365299663">"Mobile network is not available.\n\nConnect to a wireless network to make a call.\n\n2 G is disabled on this device, which may be impacting your connectivity. Go to Settings and enable Allow 2 G to continue."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="8680831089508851894">"To place a call, enter a valid number."</string>
     <string name="incall_error_call_failed" msgid="393508653582682539">"Call failed."</string>
     <string name="incall_error_cannot_add_call" msgid="5425764862628655443">"Call cannot be added at this time. You can try to get in touch by sending a message."</string>

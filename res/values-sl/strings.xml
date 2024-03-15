@@ -542,11 +542,9 @@
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Če ne gre za klic v sili, zaprite način za povratni klici v sili."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"Ni registrirano v omrežju."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"Omrežje prenosnega telefona ni na voljo."</string>
-    <!-- no translation found for incall_error_out_of_service_2g (904434080740846116) -->
-    <skip />
+    <string name="incall_error_out_of_service_2g" msgid="904434080740846116">"Mobilno omrežje ni na voljo.\n\ne želite opraviti klic, vzpostavite povezavo z brezžičnim omrežjem.\n\nOmrežje 2G je v tej napravi onemogočeno, kar lahko vpliva na povezljivost. Odprite nastavitve in vklopite možnost »Omogoči 2G«, če želite nadaljevati."</string>
     <string name="incall_error_out_of_service_wfc" msgid="4497663185857190885">"Mobilno omrežje ni na voljo. Če želite opraviti klic, vzpostavite povezavo z brezžičnim omrežjem."</string>
-    <!-- no translation found for incall_error_out_of_service_wfc_2g_user (8218768986365299663) -->
-    <skip />
+    <string name="incall_error_out_of_service_wfc_2g_user" msgid="8218768986365299663">"Mobilno omrežje ni na voljo.\n\nČe želite opraviti klic, vzpostavite povezavo z brezžičnim omrežjem.\n\nOmrežje 2G je v tej napravi onemogočeno, kar lahko vpliva na povezljivost. Odprite nastavitve in vklopite možnost »Omogoči 2G«, če želite nadaljevati."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="8680831089508851894">"Če želite opraviti klic, vnesite veljavno številko."</string>
     <string name="incall_error_call_failed" msgid="393508653582682539">"Klic ni uspel."</string>
     <string name="incall_error_cannot_add_call" msgid="5425764862628655443">"Trenutno ni mogoče dodati klica. Poskusite poslati sporočilo."</string>

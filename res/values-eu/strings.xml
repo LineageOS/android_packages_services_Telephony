@@ -542,11 +542,9 @@
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Larrialdikoak ez diren deiak egiteko, irten larrialdi-zerbitzuen deiak jasotzeko modutik."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"Ez dago sarean erregistratuta."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"Sare mugikorra ez dago erabilgarri."</string>
-    <!-- no translation found for incall_error_out_of_service_2g (904434080740846116) -->
-    <skip />
+    <string name="incall_error_out_of_service_2g" msgid="904434080740846116">"Sare mugikorra ez dago erabilgarri.\n\nDeia egiteko, konektatu hari gabeko sare batera.\n\n2G desgaituta dago gailuan, eta baliteke horrek konexioan eragina izatea. Aurrera egiteko, joan ezarpenetara eta eman 2G erabiltzeko baimena."</string>
     <string name="incall_error_out_of_service_wfc" msgid="4497663185857190885">"Sare mugikorra ez dago erabilgarri. Deia egiteko, konektatu haririk gabeko sare batera."</string>
-    <!-- no translation found for incall_error_out_of_service_wfc_2g_user (8218768986365299663) -->
-    <skip />
+    <string name="incall_error_out_of_service_wfc_2g_user" msgid="8218768986365299663">"Sare mugikorra ez dago erabilgarri.\n\nDeia egiteko, konektatu hari gabeko sare batera.\n\n2G desgaituta dago gailuan, eta baliteke horrek konexioan eragina izatea. Aurrera egiteko, joan ezarpenetara eta eman 2G erabiltzeko baimena."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="8680831089508851894">"Deitzeko, idatzi balio duen zenbaki bat."</string>
     <string name="incall_error_call_failed" msgid="393508653582682539">"Ezin izan da deitu."</string>
     <string name="incall_error_cannot_add_call" msgid="5425764862628655443">"Une honetan, ezin da egin deia. Deitu ordez, mezu bat bidaltzen saia zaitezke."</string>
@@ -867,7 +865,7 @@
     <string name="radioInfo_data_disconnected" msgid="8085447971880814541">"Deskonektatuta"</string>
     <string name="radioInfo_data_connecting" msgid="925092271092152472">"Konektatzen"</string>
     <string name="radioInfo_data_connected" msgid="7637335645634239508">"Konektatuta"</string>
-    <string name="radioInfo_data_suspended" msgid="8695262782642002785">"Behin-behinean itxitakoak"</string>
+    <string name="radioInfo_data_suspended" msgid="8695262782642002785">"Aldi baterako itxitakoak"</string>
     <string name="radioInfo_unknown" msgid="5401423738500672850">"Ezezaguna"</string>
     <string name="radioInfo_imei_primary" msgid="5948747378637224400">"Nagusia"</string>
     <string name="radioInfo_display_packets" msgid="6794302192441084157">"pkts"</string>

@@ -542,11 +542,9 @@
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"හදිසි-නොවන ඇමතුමක් සිදු කිරීමට හදිසි අවස්ථා පසු ඇමතුම් ප්‍රකාරයෙන් ඉවත් වන්න."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"ජාලය මත ලියාපදිංචි වී නැත."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"ජංගම ජාලය නොමැත."</string>
-    <!-- no translation found for incall_error_out_of_service_2g (904434080740846116) -->
-    <skip />
+    <string name="incall_error_out_of_service_2g" msgid="904434080740846116">"ජංගම ජාලය නොලැබේ.\n\nඇමතුමක් කිරීමට රැහැන් රහිත ජාලයකට සම්බන්‍ධ කරන්න.\n\nමෙම උපාංගය මත 2G අබල කර ඇත, එය ඔබේ සම්බන්‍ධතාවට බලපාමින් තිබේවි. ඉදිරියට යාමට සැකසීම් වෙත ගොස් 2G හට ඉඩ දෙන්න සබල කරන්න."</string>
     <string name="incall_error_out_of_service_wfc" msgid="4497663185857190885">"ජංගම ජාලය ලබා ගැනීමට නොහැකිය. ඇමතුමක් කිරීමට රැහැන් රහිත ජාලයකට සම්බන්ධ කරන්න."</string>
-    <!-- no translation found for incall_error_out_of_service_wfc_2g_user (8218768986365299663) -->
-    <skip />
+    <string name="incall_error_out_of_service_wfc_2g_user" msgid="8218768986365299663">"ජංගම ජාලය නොලැබේ.\n\nඇමතුමක් කිරීමට රැහැන් රහිත ජාලයකට සම්බන්‍ධ කරන්න.\n\nමෙම උපාංගය මත 2G අබල කර ඇත, එය ඔබේ සම්බන්‍ධතාවට බලපාමින් තිබේවි. ඉදිරියට යාමට සැකසීම් වෙත ගොස් 2G හට ඉඩ දෙන්න සබල කරන්න."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="8680831089508851894">"ඇමතුමක් ලබාගැනීමට, වලංගු අංකයක් ලබාගන්න."</string>
     <string name="incall_error_call_failed" msgid="393508653582682539">"ඇමතුම අසාර්ථක විය."</string>
     <string name="incall_error_cannot_add_call" msgid="5425764862628655443">"ඇමතුම මෙම වේලාවේදී එක් කිරීමට නොහැකිය. ඔබට පණිවිඩයක් යැවීමෙන් ළඟා වීමට උත්සාහ කිරීමට හැකිය."</string>

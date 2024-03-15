@@ -542,11 +542,9 @@
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"გამოდით გადაუდებელი გადმორეკვის რეჟიმიდან არაგადაუდებელი ზარის განსახორციელებლად."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"ქსელში რეგისტრირებული არ არის."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"მობილური ქსელი მიუწვდომელია."</string>
-    <!-- no translation found for incall_error_out_of_service_2g (904434080740846116) -->
-    <skip />
+    <string name="incall_error_out_of_service_2g" msgid="904434080740846116">"მობილური ქსელი მიუწვდომელია.\n\nდაუკავშირდით უსადენო ქსელს ზარის განსახორციელებლად.\n\n2G გამორთულია ამ მოწყობილობაზე, რამაც შეიძლება გავლენა მოახდინოს თქვენს კავშირზე. გასაგრძელებლად გადადით პარამეტრებზე და ჩართეთ „2G-ის დაშვება“."</string>
     <string name="incall_error_out_of_service_wfc" msgid="4497663185857190885">"მობილური ქსელი მიუწვდომელია. ზარის განსახორციელებლად დაუკავშირდით უსადენო ქსელს."</string>
-    <!-- no translation found for incall_error_out_of_service_wfc_2g_user (8218768986365299663) -->
-    <skip />
+    <string name="incall_error_out_of_service_wfc_2g_user" msgid="8218768986365299663">"მობილური ქსელი მიუწვდომელია.\n\nდაუკავშირდით უსადენო ქსელს ზარის განსახორციელებლად.\n\n2G გამორთულია ამ მოწყობილობაზე, რამაც შეიძლება გავლენა მოახდინოს თქვენს კავშირზე. გასაგრძელებლად გადადით პარამეტრებზე და ჩართეთ „2G-ის დაშვება“."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="8680831089508851894">"ზარის განხორციელებისათვის, შეიყვანეთ მოქმედი ნომერი."</string>
     <string name="incall_error_call_failed" msgid="393508653582682539">"ზარი ვერ განხორციელდა."</string>
     <string name="incall_error_cannot_add_call" msgid="5425764862628655443">"ამჟამად ზარის დამატება შეუძლებელია. შეგიძლიათ სცადოთ დაკავშირება შეტყობინების გაგზავნით."</string>

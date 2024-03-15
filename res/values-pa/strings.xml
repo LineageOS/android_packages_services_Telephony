@@ -542,11 +542,9 @@
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"ਇੱਕ ਗ਼ੈਰ-ਅਪਾਤਕਾਲ ਕਾਲ ਕਰਨ ਲਈ ਅਪਾਤਕਾਲ ਕਾਲਬੈਕ ਮੋਡ ਤੋਂ ਬਾਹਰ ਆਓ।"</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"ਨੈਟਵਰਕ ਤੇ ਰਜਿਸਟਰ ਨਹੀਂ ਕੀਤਾ।"</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"ਮੋਬਾਈਲ ਨੈਟਵਰਕ ਉਪਲਬਧ ਨਹੀਂ।"</string>
-    <!-- no translation found for incall_error_out_of_service_2g (904434080740846116) -->
-    <skip />
+    <string name="incall_error_out_of_service_2g" msgid="904434080740846116">"ਮੋਬਾਈਲ ਨੈੱਟਵਰਕ ਉਪਲਬਧ ਨਹੀਂ ਹੈ।\n\nਕਾਲ ਕਰਨ ਲਈ ਵਾਇਰਲੈੱਸ ਨੈੱਟਵਰਕ ਨਾਲ ਕਨੈਕਟ ਕਰੋ।\n\nਇਸ ਡੀਵਾਈਸ \'ਤੇ 2G ਬੰਦ ਹੈ, ਜੋ ਤੁਹਾਡੀ ਕਨੈਕਟੀਵਿਟੀ ਨੂੰ ਪ੍ਰਭਾਵਿਤ ਕਰ ਸਕਦਾ ਹੈ। ਜਾਰੀ ਰੱਖਣ ਲਈ ਸੈਟਿੰਗਾਂ ਵਿੱਚ ਜਾ ਕੇ \'2G ਨੂੰ ਆਗਿਆ ਦਿਓ\' ਨੂੰ ਚਾਲੂ ਕਰੋ।"</string>
     <string name="incall_error_out_of_service_wfc" msgid="4497663185857190885">"ਮੋਬਾਈਲ ਨੈੱਟਵਰਕ ਉਪਲਬਧ ਨਹੀਂ ਹੈ। ਕਾਲ ਕਰਨ ਲਈ ਕਿਸੇ ਵਾਇਰਲੈੱਸ ਨੈੱਟਵਰਕ ਨਾਲ ਕਨੈਕਟ ਕਰੋ।"</string>
-    <!-- no translation found for incall_error_out_of_service_wfc_2g_user (8218768986365299663) -->
-    <skip />
+    <string name="incall_error_out_of_service_wfc_2g_user" msgid="8218768986365299663">"ਮੋਬਾਈਲ ਨੈੱਟਵਰਕ ਉਪਲਬਧ ਨਹੀਂ ਹੈ।\n\nਕਾਲ ਕਰਨ ਲਈ ਵਾਇਰਲੈੱਸ ਨੈੱਟਵਰਕ ਨਾਲ ਕਨੈਕਟ ਕਰੋ।\n\nਇਸ ਡੀਵਾਈਸ \'ਤੇ 2G ਬੰਦ ਹੈ, ਜੋ ਤੁਹਾਡੀ ਕਨੈਕਟੀਵਿਟੀ ਨੂੰ ਪ੍ਰਭਾਵਿਤ ਕਰ ਸਕਦਾ ਹੈ। ਜਾਰੀ ਰੱਖਣ ਲਈ ਸੈਟਿੰਗਾਂ ਵਿੱਚ ਜਾ ਕੇ \'2G ਨੂੰ ਆਗਿਆ ਦਿਓ\' ਨੂੰ ਚਾਲੂ ਕਰੋ।"</string>
     <string name="incall_error_no_phone_number_supplied" msgid="8680831089508851894">"ਇੱਕ ਕਾਲ ਕਰਨ ਲਈ, ਇੱਕ ਪ੍ਰਮਾਣਿਕ ਨੰਬਰ ਦਰਜ ਕਰੋ।"</string>
     <string name="incall_error_call_failed" msgid="393508653582682539">"ਕਾਲ ਕਰਨਾ ਅਸਫਲ ਰਿਹਾ।"</string>
     <string name="incall_error_cannot_add_call" msgid="5425764862628655443">"ਇਸ ਸਮੇਂ ਕਾਲ ਸ਼ਾਮਲ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕਦੀ। ਤੁਸੀਂ ਇੱਕ ਸੁਨੇਹਾ ਭੇਜ ਕੇ ਸੰਪਰਕ ਕਰਨ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰ ਸਕਦੇ ਹੋ।"</string>
