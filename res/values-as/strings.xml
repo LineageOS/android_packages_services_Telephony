@@ -542,11 +542,9 @@
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"সাধাৰণ কল কৰিবৰ কাৰণে জৰুৰীকালীন কলবেক ম\'ডৰ পৰা বাহিৰ হওক।"</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"নেটৱৰ্কত পঞ্জীকৃত নহয়।"</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"ম’বাইল নেটৱৰ্ক উপলব্ধ নহয়।"</string>
-    <!-- no translation found for incall_error_out_of_service_2g (904434080740846116) -->
-    <skip />
+    <string name="incall_error_out_of_service_2g" msgid="904434080740846116">"ম’বাইল নেটৱৰ্ক উপলব্ধ নহয়।\n\nকল কৰিবলৈ এটা বেতাঁৰ নেটৱৰ্কৰ সৈতে সংযোগ কৰক।\n\nএই ডিভাইচটোত 2G অক্ষম কৰা হৈছে, যিটোৱে আপোনাৰ সংযোগত প্ৰভাৱ পেলাব পাৰে। অব্যাহত ৰাখিবলৈ ছেটিঙলৈ গৈ 2Gক অনুমতি দিয়ক সক্ষম কৰক।"</string>
     <string name="incall_error_out_of_service_wfc" msgid="4497663185857190885">"ম’বাইল নেটৱৰ্ক উপলব্ধ নহয়। কল কৰিবৰ কাৰণে কোনো বেতাঁৰ নেটৱৰ্কৰ সৈতে সংযোগ কৰক।"</string>
-    <!-- no translation found for incall_error_out_of_service_wfc_2g_user (8218768986365299663) -->
-    <skip />
+    <string name="incall_error_out_of_service_wfc_2g_user" msgid="8218768986365299663">"ম’বাইল নেটৱৰ্ক উপলব্ধ নহয়।\n\nকল কৰিবলৈ এটা বেতাঁৰ নেটৱৰ্কৰ সৈতে সংযোগ কৰক।\n\nএই ডিভাইচটোত 2G অক্ষম কৰা হৈছে, যিটোৱে আপোনাৰ সংযোগত প্ৰভাৱ পেলাব পাৰে। অব্যাহত ৰাখিবলৈ ছেটিঙলৈ গৈ 2Gক অনুমতি দিয়ক সক্ষম কৰক।"</string>
     <string name="incall_error_no_phone_number_supplied" msgid="8680831089508851894">"কল কৰিবৰ কাৰণে এটা মান্য নম্বৰ দিয়ক।"</string>
     <string name="incall_error_call_failed" msgid="393508653582682539">"কল বিফল হৈছে"</string>
     <string name="incall_error_cannot_add_call" msgid="5425764862628655443">"এই মুহূৰ্তত কল যোগ কৰিব নোৱাৰি। আপুনি এটা বাৰ্তা পঠাই যোগাযোগ কৰিবলৈ চেষ্টা কৰি চাব পাৰে।"</string>

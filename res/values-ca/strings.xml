@@ -542,11 +542,9 @@
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Surt del mode de devolució de trucada d\'emergència per fer un altre tipus de trucada."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"No registrat a la xarxa."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"La xarxa mòbil no està disponible."</string>
-    <!-- no translation found for incall_error_out_of_service_2g (904434080740846116) -->
-    <skip />
+    <string name="incall_error_out_of_service_2g" msgid="904434080740846116">"La xarxa mòbil no està disponible.\n\nConnecta\'t a una xarxa sense fil per fer una trucada.\n\nEl 2G està desactivat en aquest dispositiu, cosa que pot afectar la connectivitat. Ves a Configuració i activa Permet 2G per continuar."</string>
     <string name="incall_error_out_of_service_wfc" msgid="4497663185857190885">"La xarxa mòbil no està disponible. Per fer una trucada, connecta\'t a una xarxa sense fil."</string>
-    <!-- no translation found for incall_error_out_of_service_wfc_2g_user (8218768986365299663) -->
-    <skip />
+    <string name="incall_error_out_of_service_wfc_2g_user" msgid="8218768986365299663">"La xarxa mòbil no està disponible.\n\nConnecta\'t a una xarxa sense fil per fer una trucada.\n\nEl 2G està desactivat en aquest dispositiu, cosa que pot afectar la connectivitat. Ves a Configuració i activa Permet 2G per continuar."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="8680831089508851894">"Per realitzar una trucada, introdueix un número vàlid."</string>
     <string name="incall_error_call_failed" msgid="393508653582682539">"No s\'ha pogut fer la trucada."</string>
     <string name="incall_error_cannot_add_call" msgid="5425764862628655443">"En aquest moment no es pot afegir la trucada. Prova d\'enviar un missatge."</string>

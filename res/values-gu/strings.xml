@@ -542,11 +542,9 @@
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"બિન-કટોકટીનો કૉલ કરવા માટે કટોકટી કૉલબૅક મોડમાંથી બહાર નીકળો."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"નેટવર્ક પર નોંધણી કરાયેલ નથી."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"મોબાઇલ નેટવર્ક ઉપલબ્ધ નથી."</string>
-    <!-- no translation found for incall_error_out_of_service_2g (904434080740846116) -->
-    <skip />
+    <string name="incall_error_out_of_service_2g" msgid="904434080740846116">"મોબાઇલ નેટવર્ક ઉપલબ્ધ નથી.\n\nકોઈ કૉલ કરવા માટે, વાયરલેસ નેટવર્કથી કનેક્ટ કરો.\n\nઆ ડિવાઇસ પર 2G સેવા બંધ છે, જે તમારી કનેક્ટિવિટીને અસર કરી શકે છે. સેટિંગમાં જાઓ અને આ સેવાને ચાલુ રાખવા માટે \'2Gને મંજૂરી આપો\' ચાલુ કરો."</string>
     <string name="incall_error_out_of_service_wfc" msgid="4497663185857190885">"મોબાઇલ નેટવર્ક ઉપલબ્ધ નથી. કૉલ કરવા માટે વાયરલેસ નેટવર્ક સાથે કનેક્ટ કરો."</string>
-    <!-- no translation found for incall_error_out_of_service_wfc_2g_user (8218768986365299663) -->
-    <skip />
+    <string name="incall_error_out_of_service_wfc_2g_user" msgid="8218768986365299663">"મોબાઇલ નેટવર્ક ઉપલબ્ધ નથી.\n\nકોઈ કૉલ કરવા માટે, વાયરલેસ નેટવર્કથી કનેક્ટ કરો.\n\nઆ ડિવાઇસ પર 2G સેવા બંધ છે, જે તમારી કનેક્ટિવિટીને અસર કરી શકે છે. સેટિંગમાં જાઓ અને આ સેવાને ચાલુ રાખવા માટે \'2Gને મંજૂરી આપો\' ચાલુ કરો."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="8680831089508851894">"કૉલ કરવા માટે, માન્ય નંબર દાખલ કરો."</string>
     <string name="incall_error_call_failed" msgid="393508653582682539">"કૉલ નિષ્ફળ થયો."</string>
     <string name="incall_error_cannot_add_call" msgid="5425764862628655443">"આ સમયે કૉલ ઉમેરી શકાતો નથી. તમે એક સંદેશ મોકલીને સંપર્ક કરવાનો પ્રયાસ કરી શકો છો."</string>

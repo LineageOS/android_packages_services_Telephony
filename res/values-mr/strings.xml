@@ -542,11 +542,9 @@
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"आणीबाणी नसलेला कॉल करण्‍यासाठी आणीबाणी कॉलबॅक मोडमधून बाहेर पडा."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"नेटवर्कवर नोंदणीकृत नाही."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"मोबाइल नेटवर्क उपलब्ध नाही."</string>
-    <!-- no translation found for incall_error_out_of_service_2g (904434080740846116) -->
-    <skip />
+    <string name="incall_error_out_of_service_2g" msgid="904434080740846116">"मोबाइल नेटवर्क उपलब्‍ध नाही. \n\nकॉल करण्‍यासाठी वायरलेस नेटवर्कशी कनेक्‍ट करा.\n\nया डिव्हाइसवर 2G बंद केले आहे, ज्यामुळे तुमच्या कनेक्टिव्हिटीवर परिणाम होत असेल. सेटिंग्ज वर जा आणि पुढे सुरू ठेवण्यासाठी 2G सुरू करा."</string>
     <string name="incall_error_out_of_service_wfc" msgid="4497663185857190885">"मोबाइल नेटवर्क उपलब्‍ध नाही. कॉल करण्‍यासाठी वायरलेस नेटवर्कशी कनेक्‍ट करा."</string>
-    <!-- no translation found for incall_error_out_of_service_wfc_2g_user (8218768986365299663) -->
-    <skip />
+    <string name="incall_error_out_of_service_wfc_2g_user" msgid="8218768986365299663">"मोबाइल नेटवर्क उपलब्‍ध नाही. \n\nकॉल करण्‍यासाठी वायरलेस नेटवर्कशी कनेक्‍ट करा.\n\nया डिव्हाइसवर 2G बंद केले आहे, ज्यामुळे तुमच्या कनेक्टिव्हिटीवर परिणाम होत असेल. सेटिंग्ज वर जा आणि पुढे सुरू ठेवण्यासाठी 2G सुरू करा."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="8680831089508851894">"कॉल करण्यासाठी, एक वैध नंबर एंटर करा."</string>
     <string name="incall_error_call_failed" msgid="393508653582682539">"कॉल अयशस्वी झाला."</string>
     <string name="incall_error_cannot_add_call" msgid="5425764862628655443">"या वेळी कॉल जोडू शकत नाही. तुम्ही मेसेज पाठवून संपर्क करण्याचा प्रयत्न करू शकता."</string>

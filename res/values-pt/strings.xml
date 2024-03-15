@@ -542,11 +542,9 @@
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Saia do modo de retorno de chamada de emergência para fazer uma chamada que não seja de emergência."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"Não registrado na rede."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"Rede móvel não disponível."</string>
-    <!-- no translation found for incall_error_out_of_service_2g (904434080740846116) -->
-    <skip />
+    <string name="incall_error_out_of_service_2g" msgid="904434080740846116">"Rede móvel indisponível.\n\nConecte-se a uma rede sem fio para fazer uma ligação.\n\nO 2G está desativado neste dispositivo e isso pode estar afetando sua conectividade. Acesse \"Configurações\" e ative a opção \"Permitir 2G\" para continuar."</string>
     <string name="incall_error_out_of_service_wfc" msgid="4497663185857190885">"A rede móvel não está disponível. Conecte-se a uma rede sem fio para fazer uma chamada."</string>
-    <!-- no translation found for incall_error_out_of_service_wfc_2g_user (8218768986365299663) -->
-    <skip />
+    <string name="incall_error_out_of_service_wfc_2g_user" msgid="8218768986365299663">"A rede móvel está indisponível.\n\nConecte-se a uma rede sem fio para fazer uma ligação.\n\nO 2G está desativado neste dispositivo e pode estar afetando sua conectividade. Acesse \"Configurações\" e ative a opção \"Permitir 2G\" para continuar."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="8680831089508851894">"Para realizar uma chamada, digite um número válido."</string>
     <string name="incall_error_call_failed" msgid="393508653582682539">"Falha na chamada."</string>
     <string name="incall_error_cannot_add_call" msgid="5425764862628655443">"Não é possível ligar no momento. Entre em contato enviando uma mensagem."</string>

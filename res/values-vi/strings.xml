@@ -542,11 +542,9 @@
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Thoát khỏi chế độ gọi lại khẩn cấp để thực hiện cuộc gọi không khẩn cấp."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"Chưa được đăng ký trên mạng."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"Mạng di động không khả dụng."</string>
-    <!-- no translation found for incall_error_out_of_service_2g (904434080740846116) -->
-    <skip />
+    <string name="incall_error_out_of_service_2g" msgid="904434080740846116">"Không có mạng di động.\n\nHãy kết nối với mạng không dây để gọi điện.\n\n2G đã bị tắt trên thiết bị này. Điều này có thể ảnh hưởng đến khả năng kết nối của bạn. Chuyển đến phần Cài đặt rồi bật cài đặt Cho phép 2G để tiếp tục."</string>
     <string name="incall_error_out_of_service_wfc" msgid="4497663185857190885">"Hiện không có mạng di động. Hãy kết nối với mạng không dây để thực hiện cuộc gọi."</string>
-    <!-- no translation found for incall_error_out_of_service_wfc_2g_user (8218768986365299663) -->
-    <skip />
+    <string name="incall_error_out_of_service_wfc_2g_user" msgid="8218768986365299663">"Không có mạng di động.\n\nHãy kết nối với mạng không dây để gọi điện.\n\n2G đã bị tắt trên thiết bị này. Điều này có thể ảnh hưởng đến khả năng kết nối của bạn. Chuyển đến phần Cài đặt rồi bật cài đặt Cho phép 2G để tiếp tục."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="8680831089508851894">"Để thực hiện cuộc gọi, hãy nhập một số hợp lệ."</string>
     <string name="incall_error_call_failed" msgid="393508653582682539">"Cuộc gọi không thành công."</string>
     <string name="incall_error_cannot_add_call" msgid="5425764862628655443">"Không thể thêm cuộc gọi tại thời điểm này. Bạn có thể cố gắng liên hệ bằng cách gửi tin nhắn."</string>

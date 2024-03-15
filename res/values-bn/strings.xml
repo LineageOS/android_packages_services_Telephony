@@ -542,11 +542,9 @@
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"একটি সাধারণ কল করতে জরুরি কলব্যাক মোডের বাইরে আসুন৷"</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"নেটওয়ার্কে নিবন্ধিত নয়৷"</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"মোবাইল নেটওয়ার্ক উপলব্ধ নয়৷"</string>
-    <!-- no translation found for incall_error_out_of_service_2g (904434080740846116) -->
-    <skip />
+    <string name="incall_error_out_of_service_2g" msgid="904434080740846116">"মোবাইল নেটওয়ার্ক উপলভ্য নেই।\n\nকল করতে হলে ওয়্যারলেস নেটওয়ার্কের সাথে কানেক্ট করুন।\n\nএই ডিভাইসে 2G পরিষেবা বন্ধ করে দেওয়া হয়েছে, যার ফলে হয়ত আপনার কানেক্টিভিটি প্রভাবিত হচ্ছে। সেটিংসে যান এবং চালিয়ে যেতে \'2G পরিষেবার অনুমতি দিন\' বিকল্পটি চালু করুন।"</string>
     <string name="incall_error_out_of_service_wfc" msgid="4497663185857190885">"মোবাইল নেটওয়ার্ক উপলব্ধ নেই৷ একটি কল করতে কোনো ওয়্যারলেস নেটওয়ার্কে সংযোগ করুন৷"</string>
-    <!-- no translation found for incall_error_out_of_service_wfc_2g_user (8218768986365299663) -->
-    <skip />
+    <string name="incall_error_out_of_service_wfc_2g_user" msgid="8218768986365299663">"মোবাইল নেটওয়ার্ক উপলভ্য নেই।\n\nকল করতে হলে ওয়্যারলেস নেটওয়ার্কের সাথে কানেক্ট করুন।\n\nএই ডিভাইসে 2G পরিষেবা বন্ধ করে দেওয়া হয়েছে, যার ফলে হয়ত আপনার কানেক্টিভিটি প্রভাবিত হচ্ছে। সেটিংসে যান এবং চালিয়ে যেতে \'2G পরিষেবার অনুমতি দিন\' বিকল্পটি চালু করুন।"</string>
     <string name="incall_error_no_phone_number_supplied" msgid="8680831089508851894">"কোনো কল স্থাপন করতে, একটি বৈধ নম্বর লিখুন৷"</string>
     <string name="incall_error_call_failed" msgid="393508653582682539">"কল ব্যর্থ হয়েছে৷"</string>
     <string name="incall_error_cannot_add_call" msgid="5425764862628655443">"এই সময়ে কলটি যোগ করা যাবে না। আপনি একটি মেসেজ পাঠিয়ে যোগাযোগ করার চেষ্টা করতে পারেন।"</string>

@@ -542,11 +542,9 @@
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"गैर-आपातकालीन कॉल करने के लिए आपातकालीन कॉलबैक मोड से बाहर निकलें."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"नेटवर्क पर पंजीकृत नहीं."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"मोबाइल नेटवर्क उपलब्ध नहीं."</string>
-    <!-- no translation found for incall_error_out_of_service_2g (904434080740846116) -->
-    <skip />
+    <string name="incall_error_out_of_service_2g" msgid="904434080740846116">"मोबाइल नेटवर्क उपलब्ध नहीं है.\n\nकॉल करने के लिए किसी वायरलेस नेटवर्क से कनेक्ट करें.\n\nइस डिवाइस पर 2G नेटवर्क इस्तेमाल करने की सुविधा बंद है, जिससे कनेक्टिविटी पर असर पड़ सकता है. जारी रखने के लिए, Settings में जाएं और ‘2G के इस्तेमाल की मंज़ूरी दें’ को चालू करें."</string>
     <string name="incall_error_out_of_service_wfc" msgid="4497663185857190885">"मोबाइल नेटवर्क उपलब्‍ध नहीं है. कॉल करने के लिए किसी वायरलेस नेटवर्क से कनेक्‍ट करें."</string>
-    <!-- no translation found for incall_error_out_of_service_wfc_2g_user (8218768986365299663) -->
-    <skip />
+    <string name="incall_error_out_of_service_wfc_2g_user" msgid="8218768986365299663">"मोबाइल नेटवर्क उपलब्ध नहीं है.\n\nकॉल करने के लिए किसी वायरलेस नेटवर्क से कनेक्ट करें.\n\nइस डिवाइस पर 2G नेटवर्क इस्तेमाल करने की सुविधा बंद है, जिससे कनेक्टिविटी पर असर पड़ सकता है. जारी रखने के लिए, Settings में जाएं और ‘2G के इस्तेमाल की मंज़ूरी दें’ को चालू करें."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="8680831089508851894">"कॉल करने के लिए, मान्‍य नंबर डालें."</string>
     <string name="incall_error_call_failed" msgid="393508653582682539">"कॉल विफल."</string>
     <string name="incall_error_cannot_add_call" msgid="5425764862628655443">"अभी कॉल जोड़ा नहीं जा सकता. आप संदेश भेजकर संपर्क करने की कोशिश कर सकते हैं."</string>

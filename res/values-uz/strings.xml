@@ -542,11 +542,9 @@
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Odatiy qo‘ng‘iroq qilish uchun favqulodda qayta qo‘ng‘iroq rejimidan chiqing."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"Tarmoqda ro‘yxatdan o‘tmagan."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"Uyali tarmoq mavjud emas."</string>
-    <!-- no translation found for incall_error_out_of_service_2g (904434080740846116) -->
-    <skip />
+    <string name="incall_error_out_of_service_2g" msgid="904434080740846116">"Mobil tarmoq ishlamayapti.\n\nTelefon qilish uchun simsiz tarmoqqa ulaning.\n\nBu qurilmada 2G yoqilmagan va aloqaga taʼsir qilishi mumkin. Davom etish uchun Sozlamalar orqali 2G ulanishga ruxsat bering."</string>
     <string name="incall_error_out_of_service_wfc" msgid="4497663185857190885">"Mobil tarmoqdan foydalanib bo‘lmaydi. Qo‘ng‘iroq qilish uchun Wi-Fi tarmog‘iga ulaning."</string>
-    <!-- no translation found for incall_error_out_of_service_wfc_2g_user (8218768986365299663) -->
-    <skip />
+    <string name="incall_error_out_of_service_wfc_2g_user" msgid="8218768986365299663">"Mobil tarmoq ishlamayapti.\n\nTelefon qilish uchun simsiz tarmoqqa ulaning.\n\nBu qurilmada 2G yoqilmagan va aloqaga taʼsir qilishi mumkin. Davom etish uchun Sozlamalar orqali 2G ulanishga ruxsat bering."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="8680831089508851894">"Qo‘ng‘iroq qilish uchun raqamni to‘g‘ri kiriting."</string>
     <string name="incall_error_call_failed" msgid="393508653582682539">"Chaqiruv amalga oshmadi."</string>
     <string name="incall_error_cannot_add_call" msgid="5425764862628655443">"Qo‘ng‘iroq qilib bo‘lmayapti. Xabar yuborib ko‘ring."</string>

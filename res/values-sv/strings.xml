@@ -542,11 +542,9 @@
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Avsluta läget för återuppringning vid nödsamtal om du vill ringa ett vanligt samtal."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"Inte registrerat på nätverk."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"Inget mobilt nätverk är tillgängligt."</string>
-    <!-- no translation found for incall_error_out_of_service_2g (904434080740846116) -->
-    <skip />
+    <string name="incall_error_out_of_service_2g" msgid="904434080740846116">"Det finns inga tillgängliga mobilnätverk.\n\nAnslut till ett trådlöst nätverk om du vill ringa.\n\n2G har inaktiverats på den här enheten, vilket kan påverka anslutningen. Öppna inställningarna och aktivera Tillåt 2G om du vill fortsätta."</string>
     <string name="incall_error_out_of_service_wfc" msgid="4497663185857190885">"Det finns inga tillgängliga mobilnätverk. Anslut till ett trådlöst nätverk om du vill ringa."</string>
-    <!-- no translation found for incall_error_out_of_service_wfc_2g_user (8218768986365299663) -->
-    <skip />
+    <string name="incall_error_out_of_service_wfc_2g_user" msgid="8218768986365299663">"Det finns inget mobilnätverk.\n\nAnslut till ett trådlöst nätverk om du vill ringa ett samtal.\n\n2G har inaktiverats på den här enheten, vilket kan påverka anslutningen. Öppna inställningarna och aktivera Tillåt 2G om du vill fortsätta."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="8680831089508851894">"Ange ett giltigt nummer om du vill ringa ett samtal."</string>
     <string name="incall_error_call_failed" msgid="393508653582682539">"Det gick inte att koppla samtalet."</string>
     <string name="incall_error_cannot_add_call" msgid="5425764862628655443">"Det går inte att lägga till samtalet just nu. Ta istället kontakt genom att skicka ett meddelande."</string>
