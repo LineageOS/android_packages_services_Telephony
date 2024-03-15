@@ -84,7 +84,6 @@ import org.mockito.MockitoAnnotations;
 import java.io.File;
 import java.lang.reflect.Field;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -573,7 +572,7 @@ public class SatelliteAccessControllerTest {
 
         assertNull(spyConfigParserNull.getConfig());
 
-        // Verify the case when the configParser is exist but empty.
+        // Verify the case when the configParser exist but empty.
         SatelliteConfigParser spyConfigParserEmpty =
                 spy(new SatelliteConfigParser("test".getBytes()));
         doReturn(spyConfigParserEmpty).when(mMockSatelliteController).getSatelliteConfigParser();
@@ -582,23 +581,28 @@ public class SatelliteAccessControllerTest {
 
         assertNull(spyConfigParserEmpty.getConfig());
 
-        // Verify the case when the configParser is exist and valid data
+        // Verify the case when the configParser exists and has valid data
         SatelliteConfig mockSatelliteConfig = mock(SatelliteConfig.class);
-        final String filePath = "/data/user_de/0/com.android.phone/app_satellite/s2_cell_file";
-        Path targetSatS2FilePath = Paths.get(filePath);
+        Path mockTargetSatS2FilePath = mock(Path.class);
+        File mockS2CellFile = mock(File.class);
+        doReturn(mockS2CellFile).when(mockTargetSatS2FilePath).toFile();
+        doReturn(true).when(mockS2CellFile).exists();
         doReturn(false).when(mockSatelliteConfig).isFileExist(any());
-        doReturn(targetSatS2FilePath).when(mockSatelliteConfig)
+        doReturn(mockTargetSatS2FilePath).when(mockSatelliteConfig)
                 .copySatS2FileToPhoneDirectory(any(), any());
         doReturn(Arrays.asList("US")).when(mockSatelliteConfig).getDeviceSatelliteCountryCodes();
         doReturn(false).when(mockSatelliteConfig).isSatelliteDataForAllowedRegion();
-        doReturn(targetSatS2FilePath).when(mockSatelliteConfig).getSatelliteS2CellFile(any());
+        doReturn(mockTargetSatS2FilePath).when(mockSatelliteConfig).getSatelliteS2CellFile(any());
         doReturn(mockSatelliteConfig).when(mMockSatelliteController).getSatelliteConfig();
 
+        mSatelliteAccessControllerUT.setSatelliteOnDeviceAccessController(
+                mMockSatelliteOnDeviceAccessController);
         sendConfigUpdateChangedEvent(mMockContext);
 
-        verify(mockSatelliteConfig, times(0)).getDeviceSatelliteCountryCodes();
-        verify(mockSatelliteConfig, times(0)).isSatelliteDataForAllowedRegion();
+        verify(mockSatelliteConfig, times(2)).getDeviceSatelliteCountryCodes();
+        verify(mockSatelliteConfig, times(2)).isSatelliteDataForAllowedRegion();
         verify(mockSatelliteConfig, times(2)).getSatelliteS2CellFile(any());
+        assertTrue(mSatelliteAccessControllerUT.isSatelliteOnDeviceAccessControllerReset());
     }
 
     private void sendConfigUpdateChangedEvent(Context context) {

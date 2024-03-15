@@ -360,19 +360,21 @@ public class SatelliteAccessController extends Handler {
             Path pathSatelliteS2CellFile = satelliteConfig.getSatelliteS2CellFile(context);
             mSatelliteS2CellFile = pathSatelliteS2CellFile.toFile();
             if (mSatelliteS2CellFile != null && !mSatelliteS2CellFile.exists()) {
-                loge("The satellite S2 cell file " + mSatelliteS2CellFile.getName()
+                loge("The satellite S2 cell file " + mSatelliteS2CellFile.getAbsolutePath()
                         + " does not exist");
                 mSatelliteS2CellFile = null;
+            } else {
+                logd("S2 cell file from ConfigUpdater:" + mSatelliteS2CellFile.getAbsolutePath());
             }
         }
 
         if (mSatelliteS2CellFile == null) {
-            logd("Check mSatelliteS2CellFile from CarrierConfig");
+            logd("Check mSatelliteS2CellFile from device overlay config");
             String satelliteS2CellFileName = getSatelliteS2CellFileFromOverlayConfig(context);
             mSatelliteS2CellFile = TextUtils.isEmpty(satelliteS2CellFileName)
                     ? null : new File(satelliteS2CellFileName);
             if (mSatelliteS2CellFile != null && !mSatelliteS2CellFile.exists()) {
-                loge("The satellite S2 cell file " + mSatelliteS2CellFile.getName()
+                loge("The satellite S2 cell file " + mSatelliteS2CellFile.getAbsolutePath()
                         + " does not exist");
                 mSatelliteS2CellFile = null;
             }
@@ -385,18 +387,23 @@ public class SatelliteAccessController extends Handler {
 
         if (satelliteConfig != null
                 && !satelliteConfig.getDeviceSatelliteCountryCodes().isEmpty()) {
-            logd("update mSatelliteCountryCodes by ConfigUpdater");
             mSatelliteCountryCodes = satelliteConfig.getDeviceSatelliteCountryCodes();
+            logd("update mSatelliteCountryCodes by ConfigUpdater: "
+                    + String.join(",", mSatelliteCountryCodes));
         } else {
             mSatelliteCountryCodes = getSatelliteCountryCodesFromOverlayConfig(context);
         }
 
         if (satelliteConfig != null && satelliteConfig.isSatelliteDataForAllowedRegion() != null) {
-            logd("update mIsSatelliteAllowAccessControl by ConfigUpdater");
             mIsSatelliteAllowAccessControl = satelliteConfig.isSatelliteDataForAllowedRegion();
+            logd("update mIsSatelliteAllowAccessControl by ConfigUpdater: "
+                    + mIsSatelliteAllowAccessControl);
         } else {
             mIsSatelliteAllowAccessControl = getSatelliteAccessAllowFromOverlayConfig(context);
         }
+
+        // Clean up resources so that the new config data will be used when receiving new requests
+        cleanupOnDeviceAccessControllerResources();
     }
 
     private void loadOverlayConfigs(@NonNull Context context) {
