@@ -863,7 +863,7 @@
     <string name="radioInfo_data_disconnected" msgid="8085447971880814541">"Deskonektatuta"</string>
     <string name="radioInfo_data_connecting" msgid="925092271092152472">"Konektatzen"</string>
     <string name="radioInfo_data_connected" msgid="7637335645634239508">"Konektatuta"</string>
-    <string name="radioInfo_data_suspended" msgid="8695262782642002785">"Behin-behinean itxitakoak"</string>
+    <string name="radioInfo_data_suspended" msgid="8695262782642002785">"Aldi baterako itxitakoak"</string>
     <string name="radioInfo_unknown" msgid="5401423738500672850">"Ezezaguna"</string>
     <string name="radioInfo_imei_primary" msgid="5948747378637224400">"Nagusia"</string>
     <string name="radioInfo_display_packets" msgid="6794302192441084157">"pkts"</string>
