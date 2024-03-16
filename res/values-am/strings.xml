@@ -542,11 +542,9 @@
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"አስቸኳይ ያልሆነ ጥሪ ለማድረግ ከአስቸኳይ መልሰህ ደውል ሁነታ ይውጡ።"</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"በአውታረ መረቡ ላይ አልተመዘገበም።"</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"የተንቀሳቃሽ አደራጅ የለም።"</string>
-    <!-- no translation found for incall_error_out_of_service_2g (904434080740846116) -->
-    <skip />
+    <string name="incall_error_out_of_service_2g" msgid="904434080740846116">"የተንቀሳቃሽ ስልክ አውታረ መረብ አይገኝም።\n\nጥሪ ለማድረግ ከሽቦ አልባ አውታር ጋር ያገናኙ።\n\n2G በዚህ መሣሪያ ላይ ተሰናክሏል፣ ይህም ግንኙነትዎ ላይ ተጽዕኖ እያሳደረ ይሆናል። ወደ ቅንብሮች ይሂዱ እና ለመቀጠል 2G ፍቀድ የሚለውን ያንቁ።"</string>
     <string name="incall_error_out_of_service_wfc" msgid="4497663185857190885">"የተንቀሳቃሽ ስልክ አውታረ መረብ አይገኝም። ጥሪ ለማድረግ ከሽቦ አልባ አውታረ መረብ ጋር ያገናኙ።"</string>
-    <!-- no translation found for incall_error_out_of_service_wfc_2g_user (8218768986365299663) -->
-    <skip />
+    <string name="incall_error_out_of_service_wfc_2g_user" msgid="8218768986365299663">"የተንቀሳቃሽ ስልክ አውታረ መረብ አይገኝም።\n\nጥሪ ለማድረግ ከሽቦ አልባ አውታር ጋር ያገናኙ።\n\n2G እዚህ መሣሪያ ላይ ተሰናክሏል፣ ይህም ግንኙነትዎ ላይ ተጽዕኖ እያደረገ ይሆናል። ወደ ቅንብሮች ይሂዱ እና ለመቀጠል 2G ፍቀድ የሚለውን ያንቁ።"</string>
     <string name="incall_error_no_phone_number_supplied" msgid="8680831089508851894">"አንድ ጥሪ ለማድረግ የሚሰራ ቁጥር ያስገቡ።"</string>
     <string name="incall_error_call_failed" msgid="393508653582682539">"ጥሪ አልተሳካም።"</string>
     <string name="incall_error_cannot_add_call" msgid="5425764862628655443">"ጥሪ አሁን መታከል አይችልም። መልዕክት በመላክ ለማግኘት መሞከር ይችላሉ።"</string>

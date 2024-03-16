@@ -542,11 +542,9 @@
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"അടിയന്തിരമല്ലാത്ത കോൾ ചെയ്യാൻ അടിയന്തിര കോൾബാക്ക് മോഡിൽ നിന്ന് പുറത്തുകടക്കുക."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"നെറ്റ്‌വർക്കിൽ രജിസ്റ്റർ ചെയ്‌തിട്ടില്ല."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"മൊബൈൽ നെറ്റ്‌വർക്ക് ലഭ്യമല്ല."</string>
-    <!-- no translation found for incall_error_out_of_service_2g (904434080740846116) -->
-    <skip />
+    <string name="incall_error_out_of_service_2g" msgid="904434080740846116">"മൊബൈൽ നെറ്റ്‌വർക്ക് ലഭ്യമല്ല.\n\nകോൾ ചെയ്യാൻ ഒരു വയർലെസ് നെറ്റ്‌വർക്കിലേക്ക് കണക്റ്റ് ചെയ്യുക.\n\nഈ ഉപകരണത്തിൽ 2G പ്രവർത്തനരഹിതമാക്കിയിരിക്കുന്നു, അത് നിങ്ങളുടെ കണക്റ്റിവിറ്റിയെ ബാധിച്ചേക്കാം. തുടരാൻ, ക്രമീകരണത്തിലേക്ക് പോയി 2G അനുവദിക്കുക പ്രവർത്തനക്ഷമമാക്കുക."</string>
     <string name="incall_error_out_of_service_wfc" msgid="4497663185857190885">"മൊബൈൽ നെറ്റ്‌വർക്ക് ലഭ്യമല്ല. കോൾ വിളിക്കാൻ വയർലെസ്സ് നെറ്റ്‌വർക്കിലേക്ക് കണക്റ്റുചെയ്യുക."</string>
-    <!-- no translation found for incall_error_out_of_service_wfc_2g_user (8218768986365299663) -->
-    <skip />
+    <string name="incall_error_out_of_service_wfc_2g_user" msgid="8218768986365299663">"മൊബൈൽ നെറ്റ്‌വർക്ക് ലഭ്യമല്ല.\n\nകോൾ ചെയ്യാൻ ഒരു വയർലെസ് നെറ്റ്‌വർക്കിലേക്ക് കണക്റ്റ് ചെയ്യുക.\n\nഈ ഉപകരണത്തിൽ 2G പ്രവർത്തനരഹിതമാക്കിയിരിക്കുന്നു, അത് നിങ്ങളുടെ കണക്റ്റിവിറ്റിയെ ബാധിച്ചേക്കാം. തുടരാൻ, ക്രമീകരണത്തിലേക്ക് പോയി 2G അനുവദിക്കുക പ്രവർത്തനക്ഷമമാക്കുക."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="8680831089508851894">"ഒരു കോൾ ചെയ്യുന്നതിന്, സാധുതയുള്ള നമ്പർ നൽകുക."</string>
     <string name="incall_error_call_failed" msgid="393508653582682539">"കോൾ ചെയ്യാനായില്ല."</string>
     <string name="incall_error_cannot_add_call" msgid="5425764862628655443">"ഇപ്പോൾ കോൾ ചേർക്കാനാവില്ല. നിങ്ങൾക്കൊരു സന്ദേശമയച്ചുകൊണ്ട് ബന്ധപ്പെടാൻ ശ്രമിക്കാം."</string>

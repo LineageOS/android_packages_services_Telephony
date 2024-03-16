@@ -542,11 +542,9 @@
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"離開緊急回撥模式即可撥打非緊急電話。"</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"未在網絡上完成註冊。"</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"無法使用流動網絡。"</string>
-    <!-- no translation found for incall_error_out_of_service_2g (904434080740846116) -->
-    <skip />
+    <string name="incall_error_out_of_service_2g" msgid="904434080740846116">"無法使用流動網絡。\n\n請連接無線網絡，以撥打電話。\n\n2G 已在此裝置停用，這可能會影響裝置的連接性。請前往「設定」並開啟「允許 2G」以繼續。"</string>
     <string name="incall_error_out_of_service_wfc" msgid="4497663185857190885">"無法使用流動網絡。請連接無線網絡，以撥打電話。"</string>
-    <!-- no translation found for incall_error_out_of_service_wfc_2g_user (8218768986365299663) -->
-    <skip />
+    <string name="incall_error_out_of_service_wfc_2g_user" msgid="8218768986365299663">"無法使用流動網絡。\n\n請連接無線網絡，以撥打電話。\n\n2G 已在此裝置停用，這可能會影響裝置的連接性。請前往「設定」並開啟「允許 2G」以繼續。"</string>
     <string name="incall_error_no_phone_number_supplied" msgid="8680831089508851894">"要撥打電話，請輸入有效的號碼。"</string>
     <string name="incall_error_call_failed" msgid="393508653582682539">"無法接通。"</string>
     <string name="incall_error_cannot_add_call" msgid="5425764862628655443">"目前無法新增通話。你可以改以傳送短訊聯絡對方。"</string>

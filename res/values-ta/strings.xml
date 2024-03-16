@@ -542,11 +542,9 @@
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"வழக்கமான அழைப்பிற்கு, அவசரகாலத் திரும்ப அழைக்கும் பயன்முறையிலிருந்து வெளியேறவும்."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"நெட்வொர்க்கில் பதிவுசெய்யப்படவில்லை."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"மொபைல் நெட்வொர்க் கிடைக்கவில்லை."</string>
-    <!-- no translation found for incall_error_out_of_service_2g (904434080740846116) -->
-    <skip />
+    <string name="incall_error_out_of_service_2g" msgid="904434080740846116">"மொபைல் நெட்வொர்க் கிடைக்கவில்லை.\n\nஅழைப்பைச் செய்ய வயர்லெஸ் நெட்வொர்க்குடன் இணைக்கவும்.\n\nஇந்தச் சாதனத்தில் 2G முடக்கப்பட்டுள்ளதால் இணைப்பு பாதிக்கப்பட்டிருக்கலாம். தொடர, அமைப்புகளுக்குச் சென்று \'2G சேவையை அனுமதி\' என்பதை இயக்கவும்."</string>
     <string name="incall_error_out_of_service_wfc" msgid="4497663185857190885">"மொபைல் நெட்வொர்க் கிடைக்கவில்லை. அழைக்க, வயர்லெஸ் நெட்வொர்க்குடன் இணைக்கவும்."</string>
-    <!-- no translation found for incall_error_out_of_service_wfc_2g_user (8218768986365299663) -->
-    <skip />
+    <string name="incall_error_out_of_service_wfc_2g_user" msgid="8218768986365299663">"மொபைல் நெட்வொர்க் கிடைக்கவில்லை.\n\nஅழைப்பைச் செய்ய வயர்லெஸ் நெட்வொர்க்குடன் இணைக்கவும்.\n\nஇந்தச் சாதனத்தில் 2G முடக்கப்பட்டுள்ளதால் இணைப்பு பாதிக்கப்பட்டிருக்கலாம். தொடர, அமைப்புகளுக்குச் சென்று \'2G சேவையை அனுமதி\' என்பதை இயக்கவும்."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="8680831089508851894">"அழைக்க, சரியான எண்ணை உள்ளிடவும்."</string>
     <string name="incall_error_call_failed" msgid="393508653582682539">"அழைப்பு தோல்வியடைந்தது."</string>
     <string name="incall_error_cannot_add_call" msgid="5425764862628655443">"தற்போது அழைக்க முடியவில்லை. செய்தியை அனுப்பி, தொடர்புகொள்ள முயலவும்."</string>

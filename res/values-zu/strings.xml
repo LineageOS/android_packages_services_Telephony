@@ -542,11 +542,9 @@
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Phuma kwimodi yokushayela emuva yesiko esiphuthumayo ukuze wenze ikholi yemodi engaphuthumi."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"Ayibhalisiwe kwinethiwekhi."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"Inethiwekhi yefoni ayitholakali"</string>
-    <!-- no translation found for incall_error_out_of_service_2g (904434080740846116) -->
-    <skip />
+    <string name="incall_error_out_of_service_2g" msgid="904434080740846116">"Inethiwekhi yeselula ayitholakali.\n\nXhuma kunethiwekhi e-wireless ukuze ufone.\n\nU-2G ukhutshaziwe kule divayisi, okungenzeka kunomthelela ekuxhumaneni kwakho. Iya Kumasethingi bese uvula u-Vumela u-2G ukuze uqhubeke."</string>
     <string name="incall_error_out_of_service_wfc" msgid="4497663185857190885">"Inethiwekhi yeselula ayitholakali. Xhumeka kunethiwekhi engenantambo ukuze wenze ikholi."</string>
-    <!-- no translation found for incall_error_out_of_service_wfc_2g_user (8218768986365299663) -->
-    <skip />
+    <string name="incall_error_out_of_service_wfc_2g_user" msgid="8218768986365299663">"Inethiwekhi yeselula ayitholakali.\n\nXhuma kunethiwekhi e-wireless ukuze ufone.\n\nU-2G ukhutshaziwe kule divayisi, okungenzeka kunomthelela ekuxhumaneni kwakho. Iya Kumasethingi bese uvula u-Vumela u-2G ukuze uqhubeke."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="8680831089508851894">"Ukuze wenze ikholi, faka inombolo evumelekile."</string>
     <string name="incall_error_call_failed" msgid="393508653582682539">"Ikholi ihlulekile."</string>
     <string name="incall_error_cannot_add_call" msgid="5425764862628655443">"Ikholi ayikwazi ukungezwa ngalesi sikhathi. Ungazama ukufinyelela ngokuthumela umlayezo."</string>

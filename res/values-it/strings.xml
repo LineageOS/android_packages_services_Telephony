@@ -542,11 +542,9 @@
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Per effettuare chiamate non di emergenza, esci dalla modalità di richiamata di emergenza."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"Non registrato sulla rete."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"Rete cellulare non disponibile."</string>
-    <!-- no translation found for incall_error_out_of_service_2g (904434080740846116) -->
-    <skip />
+    <string name="incall_error_out_of_service_2g" msgid="904434080740846116">"Rete mobile non disponibile.\n\nConnettiti a una rete wireless per effettuare una chiamata.\n\nIl 2G è disattivato su questo dispositivo, e questo potrebbe influire sulla tua connettività. Vai alle Impostazioni e attiva Consenti 2G per continuare."</string>
     <string name="incall_error_out_of_service_wfc" msgid="4497663185857190885">"La rete cellulare non è disponibile. Connettiti a una rete wireless per effettuare una chiamata."</string>
-    <!-- no translation found for incall_error_out_of_service_wfc_2g_user (8218768986365299663) -->
-    <skip />
+    <string name="incall_error_out_of_service_wfc_2g_user" msgid="8218768986365299663">"La rete mobile non è disponibile.\n\nConnettiti a una rete wireless per effettuare una chiamata.\n\nIl 2G è disattivato su questo dispositivo, e questo potrebbe influire sulla tua connettività. Vai alle Impostazioni e attiva Consenti 2G per continuare."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="8680831089508851894">"Per effettuare una chiamata, inserisci un numero valido."</string>
     <string name="incall_error_call_failed" msgid="393508653582682539">"Chiamata non riuscita."</string>
     <string name="incall_error_cannot_add_call" msgid="5425764862628655443">"Impossibile aggiungere la chiamata al momento. Prova a inviare un messaggio."</string>

@@ -542,11 +542,9 @@
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"ينبغي الخروج من وضع معاودة الاتصال بالطوارئ لإجراء مكالمة غير طارئة."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"غير مسجل على الشبكة."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"شبكة الجوال غير متاحة."</string>
-    <!-- no translation found for incall_error_out_of_service_2g (904434080740846116) -->
-    <skip />
+    <string name="incall_error_out_of_service_2g" msgid="904434080740846116">"شبكة الجوّال غير متوفّرة.\n\nيُرجى الاتصال بشبكة لاسلكية لإجراء مكالمة.\n\nتم إيقاف شبكة الجيل الثاني على هذا الجهاز، ما قد يؤثر في إمكانية الاتصال بالإنترنت. انتقِل إلى \"الإعدادات\" وفعِّل خيار \"السماح بشبكة الجيل الثاني\" للمتابعة."</string>
     <string name="incall_error_out_of_service_wfc" msgid="4497663185857190885">"شبكة الجوّال ليست متوفرة. اتصل بشبكة لاسلكية لإجراء مكالمة."</string>
-    <!-- no translation found for incall_error_out_of_service_wfc_2g_user (8218768986365299663) -->
-    <skip />
+    <string name="incall_error_out_of_service_wfc_2g_user" msgid="8218768986365299663">"شبكة الجوّال غير متوفّرة.\n\nيُرجى الاتصال بشبكة لاسلكية لإجراء مكالمة.\n\nتم إيقاف شبكة الجيل الثاني على هذا الجهاز، ما قد يؤثر في إمكانية الاتصال بالإنترنت. انتقِل إلى \"الإعدادات\" وفعِّل خيار \"السماح بشبكة الجيل الثاني\" للمتابعة."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="8680831089508851894">"لإجراء مكالمة، أدخل رقمًا صالحًا."</string>
     <string name="incall_error_call_failed" msgid="393508653582682539">"تعذّرت المكالمة."</string>
     <string name="incall_error_cannot_add_call" msgid="5425764862628655443">"يتعذر إجراء المكالمة في الوقت الحالي. يمكنك محاولة التواصل من خلال إرسال رسالة."</string>
