@@ -596,7 +596,8 @@
 
         <receiver
             android:name=".security.SafetySourceReceiver"
-            android:exported="false">
+            android:exported="false"
+            androidprv:systemUserOnly="true">
             <intent-filter>
                 <action android:name="android.safetycenter.action.REFRESH_SAFETY_SOURCES"/>
             </intent-filter>
