@@ -611,7 +611,8 @@ public class PhoneGlobals extends ContextWrapper {
                 mTelephonyRcsService.initialize();
                 imsRcsController.setRcsService(mTelephonyRcsService);
                 mImsProvisioningController =
-                        ImsProvisioningController.make(this, PhoneFactory.getPhones().length);
+                        ImsProvisioningController.make(this, PhoneFactory.getPhones().length,
+                                mFeatureFlags);
             }
 
             // Create the CallNotifier singleton, which handles
