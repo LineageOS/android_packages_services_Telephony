@@ -19,6 +19,7 @@ package com.android;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.doAnswer;
+import static org.mockito.Mockito.when;
 
 import android.content.AttributionSource;
 import android.content.BroadcastReceiver;
@@ -61,6 +62,7 @@ public class TestContext extends MockContext {
     @Mock SubscriptionManager mMockSubscriptionManager;
     @Mock ImsManager mMockImsManager;
     @Mock UserManager mMockUserManager;
+    @Mock PackageManager mPackageManager;
 
     private final SparseArray<PersistableBundle> mCarrierConfigs = new SparseArray<>();
 
@@ -80,6 +82,7 @@ public class TestContext extends MockContext {
             int subId = (int) invocation.getArguments()[0];
             return getTestConfigs(subId);
         }).when(mMockCarrierConfigManager).getConfigForSubId(anyInt(), anyString());
+        when(mPackageManager.hasSystemFeature(anyString())).thenReturn(true);
     }
 
     @Override
@@ -142,6 +145,11 @@ public class TestContext extends MockContext {
     @Override
     public void unregisterReceiver(BroadcastReceiver receiver) {
         mReceiver = null;
+    }
+
+    @Override
+    public PackageManager getPackageManager() {
+        return mPackageManager;
     }
 
     @Override
