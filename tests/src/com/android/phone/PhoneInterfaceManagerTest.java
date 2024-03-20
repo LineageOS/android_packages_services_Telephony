@@ -66,6 +66,8 @@ import org.mockito.Mock;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.Locale;
 
 /**
@@ -421,7 +423,8 @@ public class PhoneInterfaceManagerTest extends TelephonyTestBase {
      */
     @Test
     public void getCarrierRestrictionStatus() {
-        when(mPhoneInterfaceManager.validateCallerAndGetCarrierId(anyString())).thenReturn(1);
+        when(mPhoneInterfaceManager.validateCallerAndGetCarrierIds(anyString())).thenReturn(
+                Collections.singleton(1));
         mPhoneInterfaceManager.getCarrierRestrictionStatus(mIIntegerConsumer,
                 "com.test.package");
     }

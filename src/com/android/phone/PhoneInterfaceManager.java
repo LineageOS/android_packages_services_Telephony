@@ -1588,7 +1588,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                         // This is for the implementation of carrierRestrictionStatus.
                         CallerCallbackInfo callbackInfo = (CallerCallbackInfo) request.argument;
                         Consumer<Integer> callback = callbackInfo.getConsumer();
-                        int callerCarrierId = callbackInfo.getCarrierId();
+                        Set<Integer> callerCarrierIds = callbackInfo.getCarrierIds();
                         int lockStatus = TelephonyManager.CARRIER_RESTRICTION_STATUS_UNKNOWN;
                         if (ar.exception == null && ar.result instanceof CarrierRestrictionRules) {
                             CarrierRestrictionRules carrierRestrictionRules =
@@ -1603,8 +1603,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                                 Rlog.e(LOG_TAG, "CarrierIdentifier exception = " + ex);
                             }
                             lockStatus = carrierRestrictionRules.getCarrierRestrictionStatus();
-                            if (carrierId != -1 && callerCarrierId == carrierId && lockStatus
-                                    == TelephonyManager.CARRIER_RESTRICTION_STATUS_RESTRICTED) {
+                            int restrictedStatus =
+                                    TelephonyManager.CARRIER_RESTRICTION_STATUS_RESTRICTED;
+                            if (carrierId != -1 && callerCarrierIds.contains(carrierId) &&
+                                    lockStatus == restrictedStatus) {
                                 lockStatus = TelephonyManager
                                         .CARRIER_RESTRICTION_STATUS_RESTRICTED_TO_CALLER;
                             }
@@ -9241,15 +9243,15 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         enforceTelephonyFeatureWithException(packageName,
                 PackageManager.FEATURE_TELEPHONY_SUBSCRIPTION, "getCarrierRestrictionStatus");
 
-        int carrierId = validateCallerAndGetCarrierId(packageName);
-        if (carrierId == CarrierAllowListInfo.INVALID_CARRIER_ID) {
+        Set<Integer> carrierIds = validateCallerAndGetCarrierIds(packageName);
+        if (carrierIds.contains(CarrierAllowListInfo.INVALID_CARRIER_ID)) {
             Rlog.e(LOG_TAG, "getCarrierRestrictionStatus: caller is not registered");
             throw new SecurityException("Not an authorized caller");
         }
         final long identity = Binder.clearCallingIdentity();
         try {
             Consumer<Integer> consumer = FunctionalUtils.ignoreRemoteException(callback::accept);
-            CallerCallbackInfo callbackInfo = new CallerCallbackInfo(consumer, carrierId);
+            CallerCallbackInfo callbackInfo = new CallerCallbackInfo(consumer, carrierIds);
             sendRequestAsync(CMD_GET_ALLOWED_CARRIERS, callbackInfo);
         } finally {
             Binder.restoreCallingIdentity(identity);
@@ -9264,9 +9266,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     @VisibleForTesting
-    public int validateCallerAndGetCarrierId(String packageName) {
+    public Set<Integer> validateCallerAndGetCarrierIds(String packageName) {
         CarrierAllowListInfo allowListInfo = CarrierAllowListInfo.loadInstance(mApp);
-        return allowListInfo.validateCallerAndGetCarrierId(packageName);
+        return allowListInfo.validateCallerAndGetCarrierIds(packageName);
     }
 
     /**
@@ -14000,19 +14002,19 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     private static class CallerCallbackInfo {
         private final Consumer<Integer> mConsumer;
-        private final int mCarrierId;
+        private final Set<Integer> mCarrierIds;
 
-        public CallerCallbackInfo(Consumer<Integer> consumer, int carrierId) {
+        public CallerCallbackInfo(Consumer<Integer> consumer, Set<Integer> carrierIds) {
             mConsumer = consumer;
-            mCarrierId = carrierId;
+            mCarrierIds = carrierIds;
         }
 
         public Consumer<Integer> getConsumer() {
             return mConsumer;
         }
 
-        public int getCarrierId() {
-            return mCarrierId;
+        public Set<Integer> getCarrierIds() {
+            return mCarrierIds;
         }
     }
 
