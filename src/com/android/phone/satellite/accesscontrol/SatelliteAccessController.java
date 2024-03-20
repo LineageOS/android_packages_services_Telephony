@@ -17,6 +17,7 @@
 package com.android.phone.satellite.accesscontrol;
 
 import static android.telephony.satellite.SatelliteManager.KEY_SATELLITE_COMMUNICATION_ALLOWED;
+import static android.telephony.satellite.SatelliteManager.KEY_SATELLITE_SUPPORTED;
 import static android.telephony.satellite.SatelliteManager.SATELLITE_RESULT_REQUEST_NOT_SUPPORTED;
 import static android.telephony.satellite.SatelliteManager.SATELLITE_RESULT_SUCCESS;
 
@@ -43,6 +44,7 @@ import android.provider.DeviceConfig;
 import android.telecom.TelecomManager;
 import android.telephony.AnomalyReporter;
 import android.telephony.Rlog;
+import android.telephony.satellite.SatelliteManager;
 import android.text.TextUtils;
 import android.util.Pair;
 
@@ -120,7 +122,7 @@ public class SatelliteAccessController extends Handler {
     @NonNull private final TelecomManager mTelecomManager;
     @NonNull private final TelephonyCountryDetector mCountryDetector;
     @NonNull private final SatelliteController mSatelliteController;
-    @NonNull private final ResultReceiver mInternalSatelliteAllowResultReceiver;
+    @NonNull private final ResultReceiver mInternalSatelliteSupportedResultReceiver;
     @NonNull protected final Object mLock = new Object();
     @GuardedBy("mLock")
     @NonNull
@@ -184,10 +186,10 @@ public class SatelliteAccessController extends Handler {
         if (s2CellFile != null) {
             mSatelliteS2CellFile = s2CellFile;
         }
-        mInternalSatelliteAllowResultReceiver = new ResultReceiver(this) {
+        mInternalSatelliteSupportedResultReceiver = new ResultReceiver(this) {
             @Override
             protected void onReceiveResult(int resultCode, Bundle resultData) {
-                handleSatelliteAllowResultFromSatelliteController(resultCode, resultData);
+                handleIsSatelliteSupportedResult(resultCode, resultData);
             }
         };
         // Init the SatelliteOnDeviceAccessController so that the S2 level can be cached
@@ -464,8 +466,8 @@ public class SatelliteAccessController extends Handler {
                         + "processed");
                 return;
             }
-            mSatelliteController.requestIsSatelliteCommunicationAllowedForCurrentLocation(
-                    requestArguments.first, mInternalSatelliteAllowResultReceiver);
+            mSatelliteController.requestIsSatelliteSupported(
+                    requestArguments.first, mInternalSatelliteSupportedResultReceiver);
         }
     }
 
@@ -483,26 +485,25 @@ public class SatelliteAccessController extends Handler {
         }
     }
 
-    private void handleSatelliteAllowResultFromSatelliteController(
-            int resultCode, Bundle resultData) {
-        logd("handleSatelliteAllowResultFromSatelliteController: resultCode=" + resultCode);
+    private void handleIsSatelliteSupportedResult(int resultCode, Bundle resultData) {
+        logd("handleIsSatelliteSupportedResult: resultCode=" + resultCode);
         synchronized (mLock) {
             if (resultCode == SATELLITE_RESULT_SUCCESS) {
-                if (resultData.containsKey(KEY_SATELLITE_COMMUNICATION_ALLOWED)) {
-                    boolean isSatelliteAllowed = resultData.getBoolean(
-                            KEY_SATELLITE_COMMUNICATION_ALLOWED);
-                    if (!isSatelliteAllowed) {
-                        logd("Satellite is not allowed by modem");
-                        sendSatelliteAllowResultToReceivers(resultCode, resultData);
+                if (resultData.containsKey(KEY_SATELLITE_SUPPORTED)) {
+                    boolean isSatelliteSupported = resultData.getBoolean(KEY_SATELLITE_SUPPORTED);
+                    if (!isSatelliteSupported) {
+                        logd("Satellite is not supported");
+                        Bundle bundle = new Bundle();
+                        bundle.putBoolean(SatelliteManager.KEY_SATELLITE_COMMUNICATION_ALLOWED,
+                                false);
+                        sendSatelliteAllowResultToReceivers(resultCode, bundle);
                     } else {
                         checkSatelliteAccessRestrictionForCurrentLocation();
                     }
                 } else {
-                    loge("KEY_SATELLITE_COMMUNICATION_ALLOWED does not exist.");
+                    loge("KEY_SATELLITE_SUPPORTED does not exist.");
                     sendSatelliteAllowResultToReceivers(resultCode, resultData);
                 }
-            } else if (resultCode == SATELLITE_RESULT_REQUEST_NOT_SUPPORTED) {
-                checkSatelliteAccessRestrictionForCurrentLocation();
             } else {
                 sendSatelliteAllowResultToReceivers(resultCode, resultData);
             }
