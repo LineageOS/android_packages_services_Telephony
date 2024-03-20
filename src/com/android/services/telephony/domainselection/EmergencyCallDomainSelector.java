@@ -54,6 +54,7 @@ import static android.telephony.NetworkRegistrationInfo.REGISTRATION_STATE_HOME;
 import static android.telephony.NetworkRegistrationInfo.REGISTRATION_STATE_ROAMING;
 import static android.telephony.PreciseDisconnectCause.EMERGENCY_PERM_FAILURE;
 import static android.telephony.PreciseDisconnectCause.EMERGENCY_TEMP_FAILURE;
+import static android.telephony.PreciseDisconnectCause.NO_VALID_SIM;
 import static android.telephony.PreciseDisconnectCause.SERVICE_OPTION_NOT_AVAILABLE;
 import static android.telephony.TelephonyManager.DATA_CONNECTED;
 
@@ -342,6 +343,11 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
                 && mCrossSimRedialingController.isThereOtherSlot()) {
             logi("reselectDomain should redial on the other subscription");
             terminateSelectionForCrossSimRedialing(cause == EMERGENCY_PERM_FAILURE);
+            return;
+        }
+
+        if (maybeTerminateSelection(cause)) {
+            logi("reselectDomain terminate selection");
             return;
         }
 
@@ -1492,6 +1498,19 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         mTransportSelectorCallback.onSelectionTerminated(permanent
                 ? DisconnectCause.EMERGENCY_PERM_FAILURE
                 : DisconnectCause.EMERGENCY_TEMP_FAILURE);
+    }
+
+    private boolean maybeTerminateSelection(int cause) {
+        switch (cause) {
+            case NO_VALID_SIM:
+                // The disconnect cause saved in DomainSelectionConnection shall be used.
+                mTransportSelectorCallback.onSelectionTerminated(DisconnectCause.NOT_VALID);
+                return true;
+            default:
+                break;
+        }
+
+        return false;
     }
 
     /** Starts the cross stack timer. */
