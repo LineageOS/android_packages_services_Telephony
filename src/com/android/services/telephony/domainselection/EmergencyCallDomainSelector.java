@@ -338,8 +338,8 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         int cause = getDisconnectCause();
         mCrossSimRedialingController.notifyCallFailure(cause);
 
-        if ((cause == EMERGENCY_PERM_FAILURE || cause == EMERGENCY_TEMP_FAILURE)
-                && mCrossSimRedialingController.isThereOtherSlot()) {
+        if ((cause == EMERGENCY_TEMP_FAILURE && mCrossSimRedialingController.isThereOtherSlot())
+                || cause == EMERGENCY_PERM_FAILURE) {
             logi("reselectDomain should redial on the other subscription");
             terminateSelectionForCrossSimRedialing(cause == EMERGENCY_PERM_FAILURE);
             return;
