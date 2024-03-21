@@ -542,9 +542,9 @@
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Aby zadzwonić normalnie, wyjdź z trybu alarmowego połączenia zwrotnego."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"Nie zarejestrowano w sieci"</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"Sieć komórkowa jest niedostępna."</string>
-    <string name="incall_error_out_of_service_2g" msgid="904434080740846116">"Sieć komórkowa jest niedostępna.\n\nAby zadzwonić, połącz się z siecią bezprzewodową.\n\n2G na tym urządzeniu jest wyłączone, co może mieć wpływ na łączność. Aby kontynuować, przejdź do Ustawień i włącz opcję „Zezwól na 2G”."</string>
+    <string name="incall_error_out_of_service_2g" msgid="904434080740846116">"Sieć komórkowa jest niedostępna.\n\nAby zadzwonić, połącz się z siecią bezprzewodową.\n\nSieć 2G na tym urządzeniu jest wyłączona, co może mieć wpływ na łączność. Aby kontynuować, przejdź do Ustawień i włącz opcję „Zezwól na 2G”."</string>
     <string name="incall_error_out_of_service_wfc" msgid="4497663185857190885">"Sieć komórkowa jest niedostępna. Połącz się z siecią bezprzewodową, by zadzwonić."</string>
-    <string name="incall_error_out_of_service_wfc_2g_user" msgid="8218768986365299663">"Sieć komórkowa jest niedostępna.\n\nAby zadzwonić, połącz się z siecią bezprzewodową.\n\n2G na tym urządzeniu jest wyłączone, co może mieć wpływ na łączność. Aby kontynuować, przejdź do Ustawień i włącz opcję „Zezwól na 2G”."</string>
+    <string name="incall_error_out_of_service_wfc_2g_user" msgid="8218768986365299663">"Sieć komórkowa jest niedostępna.\n\nAby zadzwonić, połącz się z siecią bezprzewodową.\n\nSieć 2G na tym urządzeniu jest wyłączona, co może mieć wpływ na łączność. Aby kontynuować, przejdź do Ustawień i włącz opcję „Zezwól na 2G”."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="8680831089508851894">"Aby zadzwonić, wybierz prawidłowy numer."</string>
     <string name="incall_error_call_failed" msgid="393508653582682539">"Nie udało się połączyć."</string>
     <string name="incall_error_cannot_add_call" msgid="5425764862628655443">"W tej chwili nie możesz zadzwonić. Zamiast tego możesz wysłać wiadomość."</string>

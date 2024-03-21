@@ -298,7 +298,7 @@
     <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"चल्तीबाट हटाइएका SIP खाताहरू भेट्टाइयो र हटाइयो"</string>
     <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"अबदेखि Android प्लेटफर्ममा SIP कल गर्न मिल्दैन।\nतपाईंका हालका SIP खाताहरू <xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g> हटाइएका छन्।\nकृपया आफ्नो डिफल्ट कल गर्ने खाताको सेटिङ पुष्टि गर्नुहोस्।"</string>
     <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"सेटिङमा जानुहोस्"</string>
-    <string name="data_usage_title" msgid="8438592133893837464">"अनुप्रयोगले गरेको डेटाको प्रयोग"</string>
+    <string name="data_usage_title" msgid="8438592133893837464">"एपले गरेको डेटाको प्रयोग"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"<xliff:g id="ID_2">%2$s</xliff:g> सम्म <xliff:g id="ID_1">%1$s</xliff:g> मोबाइल डेटा प्रयोग भयो"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"उन्नत"</string>
     <string name="carrier_settings_euicc" msgid="1190237227261337749">"सेवा प्रदायक"</string>
@@ -542,9 +542,9 @@
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"गैर-आपत्‌कालीन कल गर्न आपत्‌कालीन कलब्याक मोडबाट निस्कनुहोस्।"</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"नेटवर्कमा दर्ता भएको छैन।"</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"मोबाइल नेटवर्क उपलब्ध छैन।"</string>
-    <string name="incall_error_out_of_service_2g" msgid="904434080740846116">"मोबाइल नेटवर्क उपलब्ध छैन।\n\nकल गर्न वायरलेस नेटवर्कमा कनेक्ट गर्नुहोस्।\n\nयो डिभाइसमा 2G नेटवर्क अफ गरिएको छ, यसै कारणले तपाईंको कनेक्टिभिटी प्रभावित हुन सक्छ। सेटिङमा जानुहोस् र जारी राख्नका निम्ति 2G प्रयोग गर्ने अनुमति दिनुहोस्।"</string>
+    <string name="incall_error_out_of_service_2g" msgid="904434080740846116">"मोबाइल नेटवर्क उपलब्ध छैन।\n\nकल गर्न वायरलेस नेटवर्कमा कनेक्ट गर्नुहोस्।\n\nयो डिभाइसमा 2G नेटवर्क अफ गरिएको छ, यसै कारणले तपाईंको कनेक्टिभिटी प्रभावित भएको हुन सक्छ। सेटिङमा जानुहोस् र जारी राख्नका निम्ति 2G प्रयोग गर्ने अनुमति दिनुहोस्।"</string>
     <string name="incall_error_out_of_service_wfc" msgid="4497663185857190885">"मोबाइल नेटवर्क उपलब्ध छैन। कल गर्न तारविनाको नेटवर्कमा कनेक्ट गर्नुहोस्।"</string>
-    <string name="incall_error_out_of_service_wfc_2g_user" msgid="8218768986365299663">"मोबाइल नेटवर्क उपलब्ध छैन।\n\nकल गर्न वायरलेस नेटवर्कमा कनेक्ट गर्नुहोस्।\n\nयो डिभाइसमा 2G अफ गरिएको छ, यसै कारणले तपाईंको कनेक्टिभिटी प्रभावित हुन सक्छ। सेटिङमा जानुहोस् र जारी राख्नका निम्ति 2G प्रयोग गर्ने अनुमति दिनुहोस्।"</string>
+    <string name="incall_error_out_of_service_wfc_2g_user" msgid="8218768986365299663">"मोबाइल नेटवर्क उपलब्ध छैन।\n\nकल गर्न वायरलेस नेटवर्कमा कनेक्ट गर्नुहोस्।\n\nयो डिभाइसमा 2G अफ गरिएको छ, यसै कारणले तपाईंको कनेक्टिभिटी प्रभावित भएको हुन सक्छ। सेटिङमा जानुहोस् र जारी राख्नका निम्ति 2G प्रयोग गर्ने अनुमति दिनुहोस्।"</string>
     <string name="incall_error_no_phone_number_supplied" msgid="8680831089508851894">"एक कल गर्नको लागि, एक वैध नम्बर प्रविष्टि गर्नुहोस्।"</string>
     <string name="incall_error_call_failed" msgid="393508653582682539">"कल विफल भयो।"</string>
     <string name="incall_error_cannot_add_call" msgid="5425764862628655443">"यतिबेला कल गर्न सकिएन। तपाईंले कुनै सन्देश पठाएर सम्पर्क गर्ने प्रयास गर्न सक्नुहुन्छ।"</string>

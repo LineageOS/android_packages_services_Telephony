@@ -542,9 +542,9 @@
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Hætta í stillingu fyrir svarhringingu neyðarsímtala til að hringja símtal sem ekki er neyðarsímtal."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"Ekki skráð á símkerfi."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"Farsímakerfi ekki tiltækt."</string>
-    <string name="incall_error_out_of_service_2g" msgid="904434080740846116">"Farsímakerfið er ekki tiltækt.\n\nTengstu þráðlausu neti til að hringja.\n\nSlökkt er á 2G í þessu tæki, sem kann að hafa áhrif á þína tengingu. Opnaðu stillingar og virkjaðu Leyfa 2G til að halda áfram."</string>
+    <string name="incall_error_out_of_service_2g" msgid="904434080740846116">"Farsímakerfið er ekki tiltækt.\n\nTengstu þráðlausu neti til að hringja.\n\nSlökkt er á 2G í þessu tæki, sem kann að hafa áhrif á tenginguna. Opnaðu stillingar og virkjaðu Leyfa 2G til að halda áfram."</string>
     <string name="incall_error_out_of_service_wfc" msgid="4497663185857190885">"Farsímakerfi er ekki tiltækt. Tengstu þráðlausu neti til að hringja."</string>
-    <string name="incall_error_out_of_service_wfc_2g_user" msgid="8218768986365299663">"Farsímakerfið er ekki tiltækt.\n\nTengstu þráðlausu neti til að hringja.\n\nSlökkt er á 2G í þessu tæki, sem kann að hafa áhrif á þína tengingu. Opnaðu stillingar og virkjaðu Leyfa 2G til að halda áfram."</string>
+    <string name="incall_error_out_of_service_wfc_2g_user" msgid="8218768986365299663">"Farsímakerfið er ekki tiltækt.\n\nTengstu þráðlausu neti til að hringja.\n\nSlökkt er á 2G í þessu tæki, sem kann að hafa áhrif á tenginguna. Opnaðu stillingar og virkjaðu Leyfa 2G til að halda áfram."</string>
     <string name="incall_error_no_phone_number_supplied" msgid="8680831089508851894">"Sláðu inn gilt númer til að hringja símtal."</string>
     <string name="incall_error_call_failed" msgid="393508653582682539">"Tókst ekki að hringja."</string>
     <string name="incall_error_cannot_add_call" msgid="5425764862628655443">"Ekki er hægt að bæta símtali við að svo stöddu. Þú getur reynt að hafa samband með því að senda skilaboð."</string>
