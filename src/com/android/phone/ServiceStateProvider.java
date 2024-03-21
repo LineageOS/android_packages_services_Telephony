@@ -41,6 +41,7 @@ import android.net.Uri;
 import android.os.Binder;
 import android.os.Build;
 import android.os.Parcel;
+import android.os.UserHandle;
 import android.telephony.LocationAccessPolicy;
 import android.telephony.ServiceState;
 import android.telephony.SubscriptionManager;
@@ -577,27 +578,31 @@ public class ServiceStateProvider extends ContentProvider {
             ServiceState newSS, int subId) {
         final boolean firstUpdate = (oldSS == null) ? true : false;
 
-        // for every field, if the field has changed values, notify via the provider
+        // For every field, if the field has changed values, notify via the provider to all users
         if (firstUpdate || voiceRegStateChanged(oldSS, newSS)) {
             context.getContentResolver().notifyChange(
                     getUriForSubscriptionIdAndField(subId, VOICE_REG_STATE),
-                    /* observer= */ null, /* syncToNetwork= */ false);
+                    /* observer= */ null, /* syncToNetwork= */ false, UserHandle.USER_ALL);
         }
         if (firstUpdate || dataRegStateChanged(oldSS, newSS)) {
             context.getContentResolver().notifyChange(
-                    getUriForSubscriptionIdAndField(subId, DATA_REG_STATE), null, false);
+                    getUriForSubscriptionIdAndField(subId, DATA_REG_STATE),
+                    /* observer= */ null, /* syncToNetwork= */ false, UserHandle.USER_ALL);
         }
         if (firstUpdate || voiceRoamingTypeChanged(oldSS, newSS)) {
             context.getContentResolver().notifyChange(
-                    getUriForSubscriptionIdAndField(subId, VOICE_ROAMING_TYPE), null, false);
+                    getUriForSubscriptionIdAndField(subId, VOICE_ROAMING_TYPE),
+                    /* observer= */ null, /* syncToNetwork= */ false, UserHandle.USER_ALL);
         }
         if (firstUpdate || dataRoamingTypeChanged(oldSS, newSS)) {
             context.getContentResolver().notifyChange(
-                    getUriForSubscriptionIdAndField(subId, DATA_ROAMING_TYPE), null, false);
+                    getUriForSubscriptionIdAndField(subId, DATA_ROAMING_TYPE),
+                    /* observer= */ null, /* syncToNetwork= */ false, UserHandle.USER_ALL);
         }
         if (firstUpdate || dataNetworkTypeChanged(oldSS, newSS)) {
             context.getContentResolver().notifyChange(
-                    getUriForSubscriptionIdAndField(subId, DATA_NETWORK_TYPE), null, false);
+                    getUriForSubscriptionIdAndField(subId, DATA_NETWORK_TYPE),
+                    /* observer= */ null, /* syncToNetwork= */ false, UserHandle.USER_ALL);
         }
     }
 
@@ -635,14 +640,15 @@ public class ServiceStateProvider extends ContentProvider {
     @VisibleForTesting
     public static void notifyChangeForSubId(Context context, ServiceState oldSS, ServiceState newSS,
             int subId) {
-        // if the voice or data registration or roaming state field has changed values, notify via
-        // the provider.
+        // If the voice or data registration or roaming state field has changed values, notify via
+        // the provider to all users.
         // If oldSS is null and newSS is not (e.g. first update of service state) this will also
-        // notify
+        // notify to all users.
         if (oldSS == null || voiceRegStateChanged(oldSS, newSS) || dataRegStateChanged(oldSS, newSS)
                 || voiceRoamingTypeChanged(oldSS, newSS) || dataRoamingTypeChanged(oldSS, newSS)
                 || dataNetworkTypeChanged(oldSS, newSS)) {
-            context.getContentResolver().notifyChange(getUriForSubscriptionId(subId), null, false);
+            context.getContentResolver().notifyChange(getUriForSubscriptionId(subId),
+                    /* observer= */ null, /* syncToNetwork= */ false, UserHandle.USER_ALL);
         }
     }
 

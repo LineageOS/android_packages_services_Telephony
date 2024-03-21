@@ -123,6 +123,11 @@ public class ServiceStateProviderTest {
             public void notifyChange(Uri uri, ContentObserver observer, boolean syncToNetwork) {
                 throw new TestNotifierException();
             }
+            @Override
+            public void notifyChange(Uri uri, ContentObserver observer, boolean syncToNetwork,
+                    int userHandle) {
+                throw new TestNotifierException();
+            }
         };
         doReturn(mContentResolver).when(mContext).getContentResolver();
 

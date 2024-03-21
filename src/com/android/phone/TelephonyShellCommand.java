@@ -3883,7 +3883,7 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
     /**
      * Building the string that can be used to build the JsonObject which supports to stub the data
      * in CarrierAllowListInfo for CTS testing. sample format is like
-     * {"com.android.example":{"carrierId":"10000","callerSHA1Id":["XXXXXXXXXXXXXX"]}}
+     * {"com.android.example":{"carrierIds":[10000],"callerSHA1Id":["XXXXXXXXXXXXXX"]}}
      */
     private String convertToJsonString(int index, String param) {
 
@@ -3895,7 +3895,7 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                 break;
             case 1:
                 jSonString =
-                        "{" + QUOTES + token[0] + QUOTES + ":" + QUOTES + token[1] + QUOTES + ",";
+                        "{" + QUOTES + token[0] + QUOTES + ":" + "[" + token[1] + "],";
                 break;
             case 2:
                 jSonString =
