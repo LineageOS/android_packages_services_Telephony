@@ -74,6 +74,7 @@ import android.telephony.TelephonyCallback;
 import android.telephony.TelephonyDisplayInfo;
 import android.telephony.TelephonyManager;
 import android.telephony.data.NetworkSlicingConfig;
+import android.telephony.euicc.EuiccManager;
 import android.telephony.ims.ImsException;
 import android.telephony.ims.ImsManager;
 import android.telephony.ims.ImsMmTelManager;
@@ -259,6 +260,7 @@ public class RadioInfo extends AppCompatActivity {
     private TextView mNrState;
     private TextView mNrFrequency;
     private TextView mNetworkSlicingConfig;
+    private TextView mEuiccInfo;
     private EditText mSmsc;
     private Switch mRadioPowerOnSwitch;
     private Switch mSimulateOutOfServiceSwitch;
@@ -289,6 +291,7 @@ public class RadioInfo extends AppCompatActivity {
     private ImsManager mImsManager = null;
     private Phone mPhone = null;
     private ProvisioningManager mProvisioningManager = null;
+    private EuiccManager mEuiccManager;
 
     private String mPingHostnameResultV4;
     private String mPingHostnameResultV6;
@@ -298,6 +301,7 @@ public class RadioInfo extends AppCompatActivity {
 
     private List<CellInfo> mCellInfoResult = null;
     private final boolean[] mSimulateOos = new boolean[2];
+    private String mEuiccInfoResult = "";
 
     private int mPreferredNetworkTypeResult;
     private int mCellInfoRefreshRateIndex;
@@ -514,6 +518,7 @@ public class RadioInfo extends AppCompatActivity {
         mPhone = getPhone(SubscriptionManager.getDefaultSubscriptionId());
         mTelephonyManager = ((TelephonyManager) getSystemService(TELEPHONY_SERVICE))
                 .createForSubscriptionId(mPhone.getSubId());
+        mEuiccManager = getSystemService(EuiccManager.class);
 
         mImsManager = new ImsManager(mPhone.getContext());
         try {
@@ -561,6 +566,7 @@ public class RadioInfo extends AppCompatActivity {
         mNrFrequency = (TextView) findViewById(R.id.nr_frequency);
         mPhyChanConfig = (TextView) findViewById(R.id.phy_chan_config);
         mNetworkSlicingConfig = (TextView) findViewById(R.id.network_slicing_config);
+        mEuiccInfo = (TextView) findViewById(R.id.euicc_info);
 
         // hide 5G stats on devices that don't support 5G
         if ((mTelephonyManager.getSupportedRadioAccessFamily()
@@ -713,6 +719,7 @@ public class RadioInfo extends AppCompatActivity {
         updateDnsCheckState();
         updateNetworkType();
         updateNrStats();
+        updateEuiccInfo();
 
         updateCellInfo(mCellInfoResult);
         updateSubscriptionIds();
@@ -1343,6 +1350,31 @@ public class RadioInfo extends AppCompatActivity {
 
         mSent.setText(txPackets + " " + packets + ", " + txBytes + " " + bytes);
         mReceived.setText(rxPackets + " " + packets + ", " + rxBytes + " " + bytes);
+    }
+
+    private void updateEuiccInfo() {
+        final Runnable setEuiccInfo = new Runnable() {
+            public void run() {
+                mEuiccInfo.setText(mEuiccInfoResult);
+            }
+        };
+
+        mQueuedWork.execute(new Runnable() {
+            @Override
+            public void run() {
+                if (!mEuiccManager.isEnabled()) {
+                    mEuiccInfoResult = "Not enabled";
+                }
+                try {
+                    mEuiccInfoResult = " { Available memory in bytes:"
+                            + mEuiccManager.getAvailableMemoryInBytes()
+                            + " }";
+                } catch (Exception e) {
+                    mEuiccInfoResult = e.getMessage();
+                }
+                mHandler.post(setEuiccInfo);
+            }
+        });
     }
 
     /**
