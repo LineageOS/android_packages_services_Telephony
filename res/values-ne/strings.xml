@@ -298,7 +298,7 @@
     <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"चल्तीबाट हटाइएका SIP खाताहरू भेट्टाइयो र हटाइयो"</string>
     <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"अबदेखि Android प्लेटफर्ममा SIP कल गर्न मिल्दैन।\nतपाईंका हालका SIP खाताहरू <xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g> हटाइएका छन्।\nकृपया आफ्नो डिफल्ट कल गर्ने खाताको सेटिङ पुष्टि गर्नुहोस्।"</string>
     <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"सेटिङमा जानुहोस्"</string>
-    <string name="data_usage_title" msgid="8438592133893837464">"अनुप्रयोगले गरेको डेटाको प्रयोग"</string>
+    <string name="data_usage_title" msgid="8438592133893837464">"एपले गरेको डेटाको प्रयोग"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"<xliff:g id="ID_2">%2$s</xliff:g> सम्म <xliff:g id="ID_1">%1$s</xliff:g> मोबाइल डेटा प्रयोग भयो"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"उन्नत"</string>
     <string name="carrier_settings_euicc" msgid="1190237227261337749">"सेवा प्रदायक"</string>
