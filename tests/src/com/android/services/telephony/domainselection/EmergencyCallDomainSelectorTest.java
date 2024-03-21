@@ -2345,7 +2345,7 @@ public class EmergencyCallDomainSelectorTest {
         processAllMessages();
 
         verify(mCsrdCtrl).notifyCallFailure(eq(PreciseDisconnectCause.EMERGENCY_PERM_FAILURE));
-        verify(mTransportSelectorCallback, never())
+        verify(mTransportSelectorCallback)
                 .onSelectionTerminated(eq(DisconnectCause.EMERGENCY_PERM_FAILURE));
     }
 
