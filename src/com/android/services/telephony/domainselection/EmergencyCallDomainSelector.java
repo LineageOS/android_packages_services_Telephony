@@ -120,6 +120,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
 
     private static List<String> sSimReadyAllowList;
     private static List<String> sPreferSlotWithNormalServiceList;
+    private static List<String> sPreferCsAfterCsfbFailure;
 
     /**
      * Network callback used to determine whether Wi-Fi is connected or not.
@@ -365,7 +366,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
 
         if (mWasCsfbAfterPsFailure) {
             mWasCsfbAfterPsFailure = false;
-            if (cause == SERVICE_OPTION_NOT_AVAILABLE) {
+            if (preferCsAfterCsfbFailure(cause)) {
                 // b/299875872, combined attach but EXTENDED_SERVICE_REQUEST failed.
                 // Try CS preferred scan instead of PS preferred scan.
                 mLastNetworkType = EUTRAN;
@@ -392,6 +393,17 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
 
         requestScan(true);
         mDomainSelected = false;
+    }
+
+    private boolean preferCsAfterCsfbFailure(int cause) {
+        if (cause != SERVICE_OPTION_NOT_AVAILABLE) return false;
+        if (sPreferCsAfterCsfbFailure == null || mLastRegResult == null
+                || TextUtils.isEmpty(mLastRegResult.getCountryIso())) {
+            // Enabled by default if country is not identified.
+            return true;
+        }
+
+        return sPreferCsAfterCsfbFailure.contains(mLastRegResult.getCountryIso());
     }
 
     private int getDisconnectCause() {
@@ -617,6 +629,13 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         }
         logi("readResourceConfiguration preferNormalServiceCountries="
                 + sPreferSlotWithNormalServiceList);
+
+        if (sPreferCsAfterCsfbFailure == null) {
+            sPreferCsAfterCsfbFailure = readResourceConfiguration(
+                    R.array.config_countries_prefer_cs_preferred_scan_after_csfb_failure);
+        }
+        logi("readResourceConfiguration preferCsAfterCsfbFailure="
+                + sPreferCsAfterCsfbFailure);
     }
 
     private List<String> readResourceConfiguration(int id) {
@@ -642,6 +661,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
     public void clearResourceConfiguration() {
         sSimReadyAllowList = null;
         sPreferSlotWithNormalServiceList = null;
+        sPreferCsAfterCsfbFailure = null;
     }
 
     private void selectDomain() {
