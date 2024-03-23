@@ -113,6 +113,7 @@ import android.telephony.TransportSelectorCallback;
 import android.telephony.WwanSelectorCallback;
 import android.telephony.ims.ImsManager;
 import android.telephony.ims.ImsMmTelManager;
+import android.telephony.ims.ImsReasonInfo;
 import android.telephony.ims.ProvisioningManager;
 import android.testing.TestableLooper;
 import android.util.Log;
@@ -2763,6 +2764,35 @@ public class EmergencyCallDomainSelectorTest {
         bindImsServiceUnregistered();
 
         verifyPsDialed();
+
+        mDomainSelector.reselectDomain(attr);
+        processAllMessages();
+
+        verifyScanCsPreferred();
+    }
+
+    @Test
+    public void testDefaultLimitedServiceEutranFail() throws Exception {
+        createSelector(SLOT_0_SUB_ID);
+        unsolBarringInfoChanged(false);
+
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_UNKNOWN,
+                0, false, true, 0, 0, "", "");
+        SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
+        mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
+        processAllMessages();
+
+        bindImsServiceUnregistered();
+
+        verifyPsDialed();
+
+        attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, false, regResult,
+                new ImsReasonInfo(ImsReasonInfo.CODE_LOCAL_NOT_REGISTERED, 0, null));
+        mDomainSelector.reselectDomain(attr);
+        processAllMessages();
+
+        verifyScanPsPreferred();
     }
 
     @Test
@@ -3350,11 +3380,18 @@ public class EmergencyCallDomainSelectorTest {
 
     private static SelectionAttributes getSelectionAttributes(int slotId, int subId,
             boolean isTestEmergencyNumber, EmergencyRegistrationResult regResult) {
+        return getSelectionAttributes(slotId, subId, isTestEmergencyNumber, regResult, null);
+    }
+
+    private static SelectionAttributes getSelectionAttributes(int slotId, int subId,
+            boolean isTestEmergencyNumber, EmergencyRegistrationResult regResult,
+            ImsReasonInfo imsReasonInfo) {
         SelectionAttributes.Builder builder =
                 new SelectionAttributes.Builder(slotId, subId, SELECTOR_TYPE_CALLING)
                 .setAddress(TEST_URI)
                 .setEmergency(true)
                 .setTestEmergencyNumber(isTestEmergencyNumber)
+                .setPsDisconnectCause(imsReasonInfo)
                 .setEmergencyRegistrationResult(regResult);
         return builder.build();
     }
