@@ -3129,6 +3129,39 @@ public class EmergencyCallDomainSelectorTest {
         assertEquals(EUTRAN, (int) mAccessNetwork.get(2));
     }
 
+    @Test
+    public void testReselectDomainCauseNoValidSim() throws Exception {
+        createSelector(SLOT_0_SUB_ID);
+        unsolBarringInfoChanged(false);
+        doReturn(false).when(mCsrdCtrl).isThereOtherSlot();
+
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(UTRAN,
+                REGISTRATION_STATE_HOME,
+                NetworkRegistrationInfo.DOMAIN_CS,
+                true, true, 0, 0, "", "");
+        SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
+        mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
+        processAllMessages();
+
+        bindImsServiceUnregistered();
+
+        verifyCsDialed();
+
+        attr = new SelectionAttributes.Builder(SLOT_0, SLOT_0_SUB_ID, SELECTOR_TYPE_CALLING)
+                .setAddress(TEST_URI)
+                .setEmergency(true)
+                .setEmergencyRegistrationResult(regResult)
+                .setCsDisconnectCause(PreciseDisconnectCause.NO_VALID_SIM)
+                .build();
+
+        mDomainSelector.reselectDomain(attr);
+        processAllMessages();
+
+        verify(mCsrdCtrl).notifyCallFailure(eq(PreciseDisconnectCause.NO_VALID_SIM));
+        verify(mTransportSelectorCallback)
+                .onSelectionTerminated(eq(DisconnectCause.NOT_VALID));
+    }
+
     private void setupForScanListTest(PersistableBundle bundle) throws Exception {
         setupForScanListTest(bundle, false);
     }
