@@ -32,15 +32,18 @@ import com.android.libraries.entitlement.ServiceEntitlementRequest;
  * @hide
  */
 public class SatelliteEntitlementApi {
+    private static final String DEFAULT_APP_NAME = "androidSatmode";
     @NonNull
     private final ServiceEntitlement mServiceEntitlement;
     private final Context mContext;
+    private final PersistableBundle mCarrierConfig;
 
     public SatelliteEntitlementApi(@NonNull Context context,
             @NonNull PersistableBundle carrierConfig, @NonNull int subId) {
         mContext = context;
         mServiceEntitlement = new ServiceEntitlement(mContext,
                 getCarrierConfigFromEntitlementServerUrl(carrierConfig), subId);
+        mCarrierConfig = carrierConfig;
     }
 
     /**
@@ -50,6 +53,7 @@ public class SatelliteEntitlementApi {
     public SatelliteEntitlementResult checkEntitlementStatus() throws ServiceEntitlementException {
         ServiceEntitlementRequest.Builder requestBuilder = ServiceEntitlementRequest.builder();
         requestBuilder.setAcceptContentType(ServiceEntitlementRequest.ACCEPT_CONTENT_TYPE_JSON);
+        requestBuilder.setAppName(getSatelliteEntitlementAppName(mCarrierConfig));
         ServiceEntitlementRequest request = requestBuilder.build();
 
         String response = mServiceEntitlement.queryEntitlementStatus(
@@ -67,5 +71,11 @@ public class SatelliteEntitlementApi {
                 CarrierConfigManager.ImsServiceEntitlement.KEY_ENTITLEMENT_SERVER_URL_STRING,
                 "");
         return CarrierConfig.builder().setServerUrl(entitlementServiceUrl).build();
+    }
+
+    @NonNull
+    private String getSatelliteEntitlementAppName(@NonNull PersistableBundle carrierConfig) {
+        return carrierConfig.getString(
+                CarrierConfigManager.KEY_SATELLITE_ENTITLEMENT_APP_NAME_STRING, DEFAULT_APP_NAME);
     }
 }
