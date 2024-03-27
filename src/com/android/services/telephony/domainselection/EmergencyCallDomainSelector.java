@@ -54,6 +54,7 @@ import static android.telephony.NetworkRegistrationInfo.REGISTRATION_STATE_HOME;
 import static android.telephony.NetworkRegistrationInfo.REGISTRATION_STATE_ROAMING;
 import static android.telephony.PreciseDisconnectCause.EMERGENCY_PERM_FAILURE;
 import static android.telephony.PreciseDisconnectCause.EMERGENCY_TEMP_FAILURE;
+import static android.telephony.PreciseDisconnectCause.NO_VALID_SIM;
 import static android.telephony.PreciseDisconnectCause.SERVICE_OPTION_NOT_AVAILABLE;
 import static android.telephony.TelephonyManager.DATA_CONNECTED;
 
@@ -345,6 +346,11 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
             return;
         }
 
+        if (maybeTerminateSelection(cause)) {
+            logi("reselectDomain terminate selection");
+            return;
+        }
+
         if (mCrossStackTimerExpired) {
             logi("reselectDomain cross stack timer expired");
             terminateSelectionForCrossSimRedialing(false);
@@ -388,6 +394,18 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
             // Dialing over Wi-Fi failed. Try scanning cellular networks.
             onWwanSelected(this::reselectDomainInternal);
             return;
+        }
+
+        if (mLastNetworkType == EUTRAN && mLastRegResult != null
+                && mSelectionAttributes.getPsDisconnectCause() != null) {
+            int regState = mLastRegResult.getRegState();
+            int reasonCode = mSelectionAttributes.getPsDisconnectCause().getCode();
+            if (reasonCode == ImsReasonInfo.CODE_LOCAL_NOT_REGISTERED
+                    && regState != REGISTRATION_STATE_HOME
+                    && regState != REGISTRATION_STATE_ROAMING) {
+                // b/326292100, ePDN setup failed in limited state, request PS preferred scan.
+                mLastNetworkType = UNKNOWN;
+            }
         }
 
         requestScan(true);
@@ -1492,6 +1510,19 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         mTransportSelectorCallback.onSelectionTerminated(permanent
                 ? DisconnectCause.EMERGENCY_PERM_FAILURE
                 : DisconnectCause.EMERGENCY_TEMP_FAILURE);
+    }
+
+    private boolean maybeTerminateSelection(int cause) {
+        switch (cause) {
+            case NO_VALID_SIM:
+                // The disconnect cause saved in DomainSelectionConnection shall be used.
+                mTransportSelectorCallback.onSelectionTerminated(DisconnectCause.NOT_VALID);
+                return true;
+            default:
+                break;
+        }
+
+        return false;
     }
 
     /** Starts the cross stack timer. */

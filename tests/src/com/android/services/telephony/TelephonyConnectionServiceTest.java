@@ -2289,6 +2289,8 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         assertTrue(mTestConnectionService.maybeReselectDomain(c, null, true,
                 android.telephony.DisconnectCause.NOT_VALID));
         verify(mEmergencyCallDomainSelectionConnection).reselectDomain(any());
+        verify(mEmergencyCallDomainSelectionConnection).setDisconnectCause(
+                eq(disconnectCause), eq(preciseDisconnectCause), any());
 
         ArgumentCaptor<DialArgs> argsCaptor = ArgumentCaptor.forClass(DialArgs.class);
 
@@ -2314,9 +2316,13 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         TestTelephonyConnection c = setupForReDialForDomainSelection(
                 mPhone0, selectedDomain, preciseDisconnectCause, disconnectCause, true);
 
-        assertTrue(mTestConnectionService.maybeReselectDomain(c, null, true,
-                android.telephony.DisconnectCause.NOT_VALID));
+        assertTrue(mTestConnectionService.maybeReselectDomain(c, null, false,
+                android.telephony.DisconnectCause.ICC_ERROR));
         verify(mEmergencyCallDomainSelectionConnection).reselectDomain(any());
+        verify(mEmergencyCallDomainSelectionConnection).setDisconnectCause(
+                eq(android.telephony.DisconnectCause.ICC_ERROR),
+                eq(com.android.internal.telephony.CallFailCause.NOT_VALID),
+                any());
 
         ArgumentCaptor<DialArgs> argsCaptor = ArgumentCaptor.forClass(DialArgs.class);
 
@@ -2967,9 +2973,10 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
                 createConnectionRequest(PHONE_ACCOUNT_HANDLE_1,
                         TEST_EMERGENCY_NUMBER, TELECOM_CALL_ID1));
 
-        android.telecom.Connection c = mTestConnectionService.getEmergencyConnection();
+        TelephonyConnection c = mTestConnectionService.getEmergencyConnection();
 
         assertNotNull(c);
+        assertNull(c.getOriginalConnection());
 
         ArgumentCaptor<DomainSelectionConnection.DomainSelectionConnectionCallback> callbackCaptor =
                 ArgumentCaptor.forClass(
@@ -2987,6 +2994,11 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
 
         verify(mEmergencyCallDomainSelectionConnection).cancelSelection();
         verify(mEmergencyStateTracker).endCall(eq(c));
+
+        android.telecom.DisconnectCause disconnectCause = c.getDisconnectCause();
+
+        assertNotNull(disconnectCause);
+        assertEquals(ERROR_UNSPECIFIED, disconnectCause.getTelephonyDisconnectCause());
     }
 
     @Test
