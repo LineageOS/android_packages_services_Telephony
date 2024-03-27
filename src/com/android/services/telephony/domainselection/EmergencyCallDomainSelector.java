@@ -42,6 +42,7 @@ import static android.telephony.CarrierConfigManager.ImsEmergency.KEY_EMERGENCY_
 import static android.telephony.CarrierConfigManager.ImsEmergency.KEY_EMERGENCY_REQUIRES_VOLTE_ENABLED_BOOL;
 import static android.telephony.CarrierConfigManager.ImsEmergency.KEY_EMERGENCY_SCAN_TIMER_SEC_INT;
 import static android.telephony.CarrierConfigManager.ImsEmergency.KEY_EMERGENCY_VOWIFI_REQUIRES_CONDITION_INT;
+import static android.telephony.CarrierConfigManager.ImsEmergency.KEY_IMS_REASONINFO_CODE_TO_RETRY_EMERGENCY_INT_ARRAY;
 import static android.telephony.CarrierConfigManager.ImsEmergency.KEY_MAXIMUM_CELLULAR_SEARCH_TIMER_SEC_INT;
 import static android.telephony.CarrierConfigManager.ImsEmergency.KEY_MAXIMUM_NUMBER_OF_EMERGENCY_TRIES_OVER_VOWIFI_INT;
 import static android.telephony.CarrierConfigManager.ImsEmergency.KEY_PREFER_IMS_EMERGENCY_WHEN_VOICE_CALLS_ON_CS_BOOL;
@@ -98,6 +99,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.IntFunction;
+import java.util.stream.Collectors;
 
 /**
  * Selects the domain for emergency calling.
@@ -116,6 +118,12 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
     public static final int MSG_MAX_CELLULAR_TIMEOUT = 14;
 
     private static final int NOT_SUPPORTED = -1;
+
+    private static List<Integer> sDefaultRetryReasonCodes = List.of(
+            ImsReasonInfo.CODE_LOCAL_CALL_CS_RETRY_REQUIRED,
+            ImsReasonInfo.CODE_LOCAL_INTERNAL_ERROR,
+            ImsReasonInfo.CODE_LOCAL_NOT_REGISTERED,
+            ImsReasonInfo.CODE_SIP_ALTERNATE_EMERGENCY_CALL);
 
     private static final LocalLog sLocalLog = new LocalLog(LOG_SIZE);
 
@@ -184,6 +192,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
     private boolean mRequiresVoLteEnabled;
     private boolean mLtePreferredAfterNrFailure;
     private boolean mScanLimitedOnlyAfterVolteFailure;
+    private List<Integer> mRetryReasonCodes;
 
     // Members for states
     private boolean mIsMonitoringConnectivity;
@@ -346,14 +355,14 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
             return;
         }
 
-        if (maybeTerminateSelection(cause)) {
-            logi("reselectDomain terminate selection");
-            return;
-        }
-
         if (mCrossStackTimerExpired) {
             logi("reselectDomain cross stack timer expired");
             terminateSelectionForCrossSimRedialing(false);
+            return;
+        }
+
+        if (maybeTerminateSelection(cause)) {
+            logi("reselectDomain terminate selection");
             return;
         }
 
@@ -538,6 +547,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
                 KEY_EMERGENCY_REQUIRES_VOLTE_ENABLED_BOOL,
                 KEY_EMERGENCY_LTE_PREFERRED_AFTER_NR_FAILED_BOOL,
                 KEY_SCAN_LIMITED_SERVICE_AFTER_VOLTE_FAILURE_BOOL,
+                KEY_IMS_REASONINFO_CODE_TO_RETRY_EMERGENCY_INT_ARRAY,
                 KEY_EMERGENCY_CDMA_PREFERRED_NUMBERS_STRING_ARRAY);
         if (b == null) {
             b = CarrierConfigManager.getDefaultConfig();
@@ -571,6 +581,8 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         mScanLimitedOnlyAfterVolteFailure = b.getBoolean(
                 KEY_SCAN_LIMITED_SERVICE_AFTER_VOLTE_FAILURE_BOOL);
         String[] numbers = b.getStringArray(KEY_EMERGENCY_CDMA_PREFERRED_NUMBERS_STRING_ARRAY);
+        int[] imsReasonCodes =
+                b.getIntArray(KEY_IMS_REASONINFO_CODE_TO_RETRY_EMERGENCY_INT_ARRAY);
 
         if (mImsRatsConfig == null) mImsRatsConfig = new int[0];
         if (mCsRatsConfig == null) mCsRatsConfig = new int[0];
@@ -579,6 +591,10 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         if (mDomainPreference == null) mDomainPreference = new int[0];
         if (mDomainPreferenceRoam == null) mDomainPreferenceRoam = new int[0];
         if (numbers == null) numbers = new String[0];
+        if (imsReasonCodes == null) imsReasonCodes = new int[0];
+
+        mRetryReasonCodes = Arrays.stream(imsReasonCodes).boxed().collect(Collectors.toList());
+        mRetryReasonCodes.addAll(sDefaultRetryReasonCodes);
 
         logi("updateCarrierConfiguration "
                 + "imsRats=" + arrayToString(mImsRatsConfig,
@@ -606,6 +622,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
                 + ", requiresVoLteEnabled=" + mRequiresVoLteEnabled
                 + ", ltePreferredAfterNr=" + mLtePreferredAfterNrFailure
                 + ", scanLimitedOnly=" + mScanLimitedOnlyAfterVolteFailure
+                + ", retryReasonCodes=" + mRetryReasonCodes
                 + ", cdmaPreferredNumbers=" + arrayToString(numbers));
 
         mCdmaPreferredNumbers = Arrays.asList(numbers);
@@ -1308,7 +1325,6 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         EmergencyRegistrationResult regResult = mLastRegResult;
         if (regResult != null) {
             if (regResult.getRegState() == REGISTRATION_STATE_HOME) return false;
-            if (regResult.getRegState() == REGISTRATION_STATE_ROAMING) return true;
 
             String iso = regResult.getCountryIso();
             if (!TextUtils.isEmpty(iso)) netIso = iso;
@@ -1498,30 +1514,38 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
 
     private void terminateSelectionPermanentlyForSlot() {
         logi("terminateSelectionPermanentlyForSlot");
-        terminateSelection(true);
+        terminateSelection(DisconnectCause.EMERGENCY_PERM_FAILURE);
     }
 
     private void terminateSelectionForCrossSimRedialing(boolean permanent) {
         logi("terminateSelectionForCrossSimRedialing perm=" + permanent);
-        terminateSelection(permanent);
+        terminateSelection(permanent ? DisconnectCause.EMERGENCY_PERM_FAILURE
+                : DisconnectCause.EMERGENCY_TEMP_FAILURE);
     }
 
-    private void terminateSelection(boolean permanent) {
-        mTransportSelectorCallback.onSelectionTerminated(permanent
-                ? DisconnectCause.EMERGENCY_PERM_FAILURE
-                : DisconnectCause.EMERGENCY_TEMP_FAILURE);
+    private void terminateSelection(int cause) {
+        mTransportSelectorCallback.onSelectionTerminated(cause);
     }
 
     private boolean maybeTerminateSelection(int cause) {
         switch (cause) {
             case NO_VALID_SIM:
                 // The disconnect cause saved in DomainSelectionConnection shall be used.
-                mTransportSelectorCallback.onSelectionTerminated(DisconnectCause.NOT_VALID);
+                terminateSelection(DisconnectCause.NOT_VALID);
                 return true;
             default:
                 break;
         }
 
+        // If CS call fails, retry always. Otherwise, check the reason code.
+        ImsReasonInfo reasonInfo = mSelectionAttributes.getPsDisconnectCause();
+        if (mRetryReasonCodes != null && reasonInfo != null) {
+            if (!mRetryReasonCodes.contains(reasonInfo.getCode())) {
+                // The disconnect cause saved in DomainSelectionConnection shall be used.
+                terminateSelection(DisconnectCause.NOT_VALID);
+                return true;
+            }
+        }
         return false;
     }
 
