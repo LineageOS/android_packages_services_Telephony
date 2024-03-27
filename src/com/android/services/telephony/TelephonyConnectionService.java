@@ -148,6 +148,10 @@ public class TelephonyConnectionService extends ConnectionService {
     private static final Pattern CDMA_ACTIVATION_CODE_REGEX_PATTERN =
             Pattern.compile("\\*228[0-9]{0,2}");
 
+    private static final String DISCONNECT_REASON_SATELLITE_ENABLED = "SATELLITE_ENABLED";
+    private static final String DISCONNECT_REASON_CARRIER_ROAMING_SATELLITE_MODE =
+            "CARRIER_ROAMING_SATELLITE_MODE";
+
     private final TelephonyConnectionServiceProxy mTelephonyConnectionServiceProxy =
             new TelephonyConnectionServiceProxy() {
         @Override
@@ -1244,15 +1248,23 @@ public class TelephonyConnectionService extends ConnectionService {
             }
 
             if (!isEmergencyNumber) {
-                if ((mSatelliteController.isSatelliteEnabled()
-                        || isCallDisallowedDueToSatellite(phone))
-                        && (imsPhone == null || !imsPhone.canMakeWifiCall())) {
-                    Log.d(this, "onCreateOutgoingConnection, cannot make call in satellite mode.");
+                if (mSatelliteController.isSatelliteEnabled()) {
+                    Log.d(this, "onCreateOutgoingConnection, cannot make call in "
+                            + "satellite mode.");
                     return Connection.createFailedConnection(
                             mDisconnectCauseFactory.toTelecomDisconnectCause(
                                     android.telephony.DisconnectCause.SATELLITE_ENABLED,
-                                    "Call failed because satellite modem is enabled."));
+                                    DISCONNECT_REASON_SATELLITE_ENABLED));
+                } else if (isCallDisallowedDueToSatellite(phone)
+                        && (imsPhone == null || !imsPhone.canMakeWifiCall())) {
+                    Log.d(this, "onCreateOutgoingConnection, cannot make call "
+                            + "when device is connected to carrier roaming satellite network");
+                    return Connection.createFailedConnection(
+                            mDisconnectCauseFactory.toTelecomDisconnectCause(
+                                    android.telephony.DisconnectCause.SATELLITE_ENABLED,
+                                    DISCONNECT_REASON_CARRIER_ROAMING_SATELLITE_MODE));
                 }
+
                 final Connection resultConnection = getTelephonyConnection(request, numberToDial,
                         false, handle, phone);
                 if (isAdhocConference) {

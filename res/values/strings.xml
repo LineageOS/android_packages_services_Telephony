@@ -1240,7 +1240,9 @@
     <!-- In-call screen: call failure message displayed in an error dialog when the user is connected to a wireless network, but wifi calling is turned off. [CHAR_LIMIT=NONE] -->
     <string name="incall_error_promote_wfc">Enable Wi-Fi calling to make a call.</string>
     <!-- In-call screen: call failure message displayed in an error dialog when the satellite modem is on. [CHAR_LIMIT=NONE] -->
-    <string name="incall_error_satellite_enabled">Disable satellite mode to make a call.</string>
+    <string name="incall_error_satellite_enabled">To make a call, first end the satellite connection.</string>
+    <!-- In-call screen: call failure message displayed in an error dialog when device is connected to carrier roaming satellite network [CHAR_LIMIT=NONE] -->
+    <string name="incall_error_carrier_roaming_satellite_mode">You can send and receive messages without a mobile or Wi-Fi network.</string>
 
     <!-- Hint for the button of emergency information -->
     <string name="emergency_information_hint">Emergency information</string>
