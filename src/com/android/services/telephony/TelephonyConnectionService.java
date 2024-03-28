@@ -4474,23 +4474,16 @@ public class TelephonyConnectionService extends ConnectionService {
             return false;
         }
 
-        ServiceState serviceState = phone.getServiceState();
-        if (serviceState == null) {
-            return false;
-        }
-
-        if (!serviceState.isUsingNonTerrestrialNetwork()) {
+        if (!mSatelliteController.isInSatelliteModeForCarrierRoaming(phone)) {
             // Device is not connected to satellite
             return false;
         }
 
-        for (NetworkRegistrationInfo nri : serviceState.getNetworkRegistrationInfoList()) {
-            if (nri.isNonTerrestrialNetwork()
-                    && nri.getAvailableServices().contains(
-                    NetworkRegistrationInfo.SERVICE_TYPE_VOICE)) {
-                // Call is supported while using satellite
-                return false;
-            }
+        List<Integer> capabilities =
+                mSatelliteController.getCapabilitiesForCarrierRoamingSatelliteMode(phone);
+        if (capabilities.contains(NetworkRegistrationInfo.SERVICE_TYPE_VOICE)) {
+            // Call is supported while using satellite
+            return false;
         }
 
         // Call is disallowed while using satellite
