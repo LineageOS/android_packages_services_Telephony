@@ -339,6 +339,15 @@
         <item>sg</item>
     </string-array>
 
+    <!-- Array of countries that a CS preferred scan is preferred after CSFB failure
+         due to the failure of extended service request. Values should be ISO3166
+         country codes in lowercase. -->
+    <string-array name="config_countries_prefer_cs_preferred_scan_after_csfb_failure"
+            translatable="false">
+        <!-- b/300022457 -->
+        <item>us</item>
+    </string-array>
+
     <!-- The component name(a flattened ComponentName string) for the telephony domain selection
          service. The device should fallback to the modem based domain selection architecture
          if this is not configured. -->
