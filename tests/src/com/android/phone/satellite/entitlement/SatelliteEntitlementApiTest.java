@@ -29,6 +29,7 @@ import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyVararg;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.verify;
 
 import android.content.Context;
 import android.os.PersistableBundle;
@@ -39,6 +40,7 @@ import android.telephony.TelephonyManager;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 import com.android.libraries.entitlement.ServiceEntitlement;
+import com.android.libraries.entitlement.ServiceEntitlementRequest;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -54,6 +56,7 @@ import java.util.List;
 public class SatelliteEntitlementApiTest {
     private static final String TEST_URL = "https://test.url";
     private static final List<String> TEST_PLMN_ALLOWED = Arrays.asList("31026", "302820");
+    private static final String TEST_APP_NAME = "androidSatmode";
     @Mock
     Context mContext;
     @Mock
@@ -83,18 +86,22 @@ public class SatelliteEntitlementApiTest {
 
         mSatelliteEntitlementAPI = new SatelliteEntitlementApi(mContext, mCarrierConfigBundle,
                 SubscriptionManager.DEFAULT_SUBSCRIPTION_ID);
-    }
 
-    @Test
-    public void testCheckEntitlementStatus() throws Exception {
         mCarrierConfigBundle.putString(
                 CarrierConfigManager.ImsServiceEntitlement.KEY_ENTITLEMENT_SERVER_URL_STRING,
                 TEST_URL);
+        mCarrierConfigBundle.putString(
+                CarrierConfigManager.KEY_SATELLITE_ENTITLEMENT_APP_NAME_STRING,
+                TEST_APP_NAME);
+
         Field fieldServiceEntitlement = SatelliteEntitlementApi.class.getDeclaredField(
                 "mServiceEntitlement");
         fieldServiceEntitlement.setAccessible(true);
         fieldServiceEntitlement.set(mSatelliteEntitlementAPI, mServiceEntitlement);
+    }
 
+    @Test
+    public void testCheckEntitlementStatus() throws Exception {
         // Get the EntitlementStatus to DISABLED
         int expectedEntitlementStatus = SATELLITE_ENTITLEMENT_STATUS_DISABLED;
         doReturn(getResponse(SATELLITE_ENTITLEMENT_STATUS_DISABLED))
@@ -135,6 +142,22 @@ public class SatelliteEntitlementApiTest {
         assertNotNull(result);
         assertEquals(expectedEntitlementStatus, result.getEntitlementStatus());
         assertTrue(result.getAllowedPLMNList().size() == 0);
+    }
+
+    @Test
+    public void testServiceEntitlementRequest() throws Exception {
+        String expectedAppId = ServiceEntitlement.APP_SATELLITE_ENTITLEMENT;
+        doReturn(getResponse(SATELLITE_ENTITLEMENT_STATUS_DISABLED))
+                .when(mServiceEntitlement)
+                .queryEntitlementStatus(eq(expectedAppId), any());
+        ServiceEntitlementRequest.Builder requestBuilder = ServiceEntitlementRequest.builder();
+        requestBuilder.setAcceptContentType(ServiceEntitlementRequest.ACCEPT_CONTENT_TYPE_JSON);
+        requestBuilder.setAppName(TEST_APP_NAME);
+        ServiceEntitlementRequest expectedRequest = requestBuilder.build();
+
+        mSatelliteEntitlementAPI.checkEntitlementStatus();
+
+        verify(mServiceEntitlement).queryEntitlementStatus(eq(expectedAppId), eq(expectedRequest));
     }
 
     private String getResponse(int entitlementStatus) {

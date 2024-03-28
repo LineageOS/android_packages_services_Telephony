@@ -509,7 +509,8 @@ public class SatelliteEntitlementController extends Handler {
         PersistableBundle config = mCarrierConfigManager.getConfigForSubId(subId,
                 CarrierConfigManager.ImsServiceEntitlement.KEY_ENTITLEMENT_SERVER_URL_STRING,
                 CarrierConfigManager.KEY_SATELLITE_ENTITLEMENT_STATUS_REFRESH_DAYS_INT,
-                CarrierConfigManager.KEY_SATELLITE_ENTITLEMENT_SUPPORTED_BOOL);
+                CarrierConfigManager.KEY_SATELLITE_ENTITLEMENT_SUPPORTED_BOOL,
+                CarrierConfigManager.KEY_SATELLITE_ENTITLEMENT_APP_NAME_STRING);
         if (config == null || config.isEmpty()) {
             config = CarrierConfigManager.getDefaultConfig();
         }
