@@ -16,7 +16,6 @@
 
 package com.android.services.telephony.domainselection;
 
-import static android.telephony.CarrierConfigManager.ImsEmergency.KEY_EMERGENCY_CALLBACK_MODE_SUPPORTED_BOOL;
 import static android.telephony.SubscriptionManager.EXTRA_SLOT_INDEX;
 import static android.telephony.SubscriptionManager.INVALID_SIM_SLOT_INDEX;
 import static android.telephony.TelephonyManager.ACTION_EMERGENCY_CALLBACK_MODE_CHANGED;
@@ -29,11 +28,11 @@ import android.content.IntentFilter;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import android.os.PersistableBundle;
 import android.os.SystemProperties;
 import android.telephony.AccessNetworkConstants;
 import android.telephony.CarrierConfigManager;
 import android.telephony.PreciseDataConnectionState;
+import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyCallback;
 import android.telephony.TelephonyManager;
 import android.telephony.data.ApnSetting;
@@ -41,8 +40,8 @@ import android.util.ArrayMap;
 import android.util.Log;
 
 /** Helper class to cache emergency data connection state. */
-public class EmergencyCallbackModeHelper extends Handler {
-    private static final String TAG = "EmergencyCallbackModeHelper";
+public class DataConnectionStateHelper extends Handler {
+    private static final String TAG = "DataConnectionStateHelper";
     private static final boolean DBG = (SystemProperties.getInt("ro.debuggable", 0) == 1);
 
     /**
@@ -53,14 +52,19 @@ public class EmergencyCallbackModeHelper extends Handler {
 
         private final Handler mHandler;
         private final TelephonyManager mTelephonyManager;
+        private final DataConnectionStateHelper mOwner;
         private final int mSubId;
+        private final int mSlotIndex;
         private int mTransportType = AccessNetworkConstants.TRANSPORT_TYPE_INVALID;
         private int mState = TelephonyManager.DATA_UNKNOWN;
 
-        DataConnectionStateListener(Handler handler, TelephonyManager tm, int subId) {
+        DataConnectionStateListener(Handler handler, TelephonyManager tm,
+                DataConnectionStateHelper owner, int subId, int slotIndex) {
             mHandler = handler;
             mTelephonyManager = tm;
+            mOwner = owner;
             mSubId = subId;
+            mSlotIndex = slotIndex;
         }
 
         @Override
@@ -73,16 +77,19 @@ public class EmergencyCallbackModeHelper extends Handler {
             }
             mTransportType = dataConnectionState.getTransportType();
             mState = dataConnectionState.getState();
+            mOwner.notifyDataConnectionStateChange(mSlotIndex, mState);
             Log.i(TAG, "onPreciseDataConnectionStateChanged ePDN state=" + mState
-                    + ", transport=" + mTransportType);
+                    + ", transport=" + mTransportType + ", subId=" + mSubId);
         }
 
         public void registerTelephonyCallback() {
+            Log.i(TAG, "registerTelephonyCallback subId=" + mSubId);
             TelephonyManager tm = mTelephonyManager.createForSubscriptionId(mSubId);
             tm.registerTelephonyCallback(mHandler::post, this);
         }
 
         public void unregisterTelephonyCallback() {
+            Log.i(TAG, "unregisterTelephonyCallback subId=" + mSubId);
             mTelephonyManager.unregisterTelephonyCallback(this);
         }
 
@@ -110,13 +117,15 @@ public class EmergencyCallbackModeHelper extends Handler {
             (slotIndex, subId, carrierId, specificCarrierId) -> onCarrierConfigChanged(
                     slotIndex, subId, carrierId);
 
+    private EmergencyCallDomainSelector mSelector;
+
     /**
      * Creates an instance.
      *
      * @param context The Context this is associated with.
-     * @param looper The Looper to run the EmergencyCallbackModeHelper.
+     * @param looper The Looper to run the DataConnectionStateHelper.
      */
-    public EmergencyCallbackModeHelper(@NonNull Context context, @NonNull Looper looper) {
+    public DataConnectionStateHelper(@NonNull Context context, @NonNull Looper looper) {
         super(looper);
 
         mContext = context;
@@ -133,10 +142,6 @@ public class EmergencyCallbackModeHelper extends Handler {
      * @return true if it is in emergency callback mode.
      */
     public boolean isInEmergencyCallbackMode(int slotIndex) {
-        DataConnectionStateListener listener =
-                mDataConnectionStateListeners.get(Integer.valueOf(slotIndex));
-        if (listener == null) return false;
-
         Intent intent = mContext.registerReceiver(null,
                 new IntentFilter(ACTION_EMERGENCY_CALLBACK_MODE_CHANGED));
         if (intent != null
@@ -177,6 +182,24 @@ public class EmergencyCallbackModeHelper extends Handler {
         return listener.getState();
     }
 
+    /**
+     * Sets the EmergencyCallDomainSelector instance.
+     *
+     * @param selector The instance of {@link EmergencyCallDomainSelector}.
+     */
+    public void setEmergencyCallDomainSelector(EmergencyCallDomainSelector selector) {
+        mSelector = selector;
+    }
+
+    private void notifyDataConnectionStateChange(int slotIndex, int state) {
+        EmergencyCallDomainSelector selector = mSelector;
+        if (selector != null) {
+            Log.i(TAG, "notifyDataConnectionStateChange slot=" + slotIndex + ", state=" + state);
+            selector.notifyDataConnectionStateChange(slotIndex, state);
+        }
+    }
+
+
     @Override
     public void handleMessage(Message msg) {
         switch(msg.what) {
@@ -194,35 +217,22 @@ public class EmergencyCallbackModeHelper extends Handler {
             return;
         }
 
-        PersistableBundle b = mConfigManager.getConfigForSubId(subId,
-                KEY_EMERGENCY_CALLBACK_MODE_SUPPORTED_BOOL);
+        DataConnectionStateListener listener =
+                mDataConnectionStateListeners.get(Integer.valueOf(slotIndex));
 
-        if (b.getBoolean(KEY_EMERGENCY_CALLBACK_MODE_SUPPORTED_BOOL)) {
-            // ECBM supported
-            DataConnectionStateListener listener =
-                    mDataConnectionStateListeners.get(Integer.valueOf(slotIndex));
+        // Remove stale listener.
+        if (listener != null && listener.getSubId() != subId) {
+            listener.unregisterTelephonyCallback();
+            mDataConnectionStateListeners.remove(Integer.valueOf(slotIndex));
+            listener = null;
+        }
 
-            // Remove stale listener.
-            if (listener != null && listener.getSubId() != subId) {
-                listener.unregisterTelephonyCallback();
-                listener = null;
-            }
-
-            if (listener == null) {
-                listener = new DataConnectionStateListener(this, mTelephonyManager, subId);
-                listener.registerTelephonyCallback();
-                mDataConnectionStateListeners.put(Integer.valueOf(slotIndex), listener);
-                Log.i(TAG, "onCarrierConfigChanged register callback");
-            }
-        } else {
-            // ECBM not supported
-            DataConnectionStateListener listener =
-                    mDataConnectionStateListeners.get(Integer.valueOf(slotIndex));
-            if (listener != null) {
-                listener.unregisterTelephonyCallback();
-                mDataConnectionStateListeners.remove(Integer.valueOf(slotIndex));
-                Log.i(TAG, "onCarrierConfigChanged unregister callback");
-            }
+        if (listener == null
+                && SubscriptionManager.isValidSubscriptionId(subId)) {
+            listener = new DataConnectionStateListener(this, mTelephonyManager,
+                    this, subId, slotIndex);
+            listener.registerTelephonyCallback();
+            mDataConnectionStateListeners.put(Integer.valueOf(slotIndex), listener);
         }
     }
 

@@ -82,7 +82,7 @@ public class TelephonyDomainSelectionServiceTest {
                         @NonNull Looper looper, @NonNull ImsStateTracker imsStateTracker,
                         @NonNull DomainSelectorBase.DestroyListener listener,
                         @NonNull CrossSimRedialingController crossSimRedialingController,
-                        @NonNull EmergencyCallbackModeHelper ecbmHelper) {
+                        @NonNull DataConnectionStateHelper dataConnectionStateHelper) {
                     switch (selectorType) {
                         case DomainSelectionService.SELECTOR_TYPE_CALLING: // fallthrough
                         case DomainSelectionService.SELECTOR_TYPE_SMS:
@@ -104,8 +104,9 @@ public class TelephonyDomainSelectionServiceTest {
         TestTelephonyDomainSelectionService(Context context,
                 @NonNull ImsStateTrackerFactory imsStateTrackerFactory,
                 @NonNull DomainSelectorFactory domainSelectorFactory,
-                @Nullable EmergencyCallbackModeHelper ecbmHelper) {
-            super(imsStateTrackerFactory, domainSelectorFactory, ecbmHelper);
+                @Nullable DataConnectionStateHelper dataConnectionStateHelper) {
+            super(imsStateTrackerFactory, domainSelectorFactory,
+                    dataConnectionStateHelper);
             mContext = context;
         }
 
@@ -129,7 +130,7 @@ public class TelephonyDomainSelectionServiceTest {
     @Mock private TransportSelectorCallback mSelectorCallback1;
     @Mock private TransportSelectorCallback mSelectorCallback2;
     @Mock private ImsStateTracker mImsStateTracker;
-    @Mock private EmergencyCallbackModeHelper mEcbmHelper;
+    @Mock private DataConnectionStateHelper mDataConnectionStateHelper;
 
     private final ServiceState mServiceState = new ServiceState();
     private final BarringInfo mBarringInfo = new BarringInfo();
@@ -151,7 +152,8 @@ public class TelephonyDomainSelectionServiceTest {
 
         mContext = new TestContext();
         mDomainSelectionService = new TestTelephonyDomainSelectionService(mContext,
-                mImsStateTrackerFactory, mDomainSelectorFactory, mEcbmHelper);
+                mImsStateTrackerFactory, mDomainSelectorFactory,
+                mDataConnectionStateHelper);
         mDomainSelectionService.onCreate();
         mServiceHandler = new Handler(mDomainSelectionService.getLooper());
         mTestableLooper = new TestableLooper(mDomainSelectionService.getLooper());
