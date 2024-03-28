@@ -73,7 +73,7 @@ public class TelephonyDomainSelectionService extends DomainSelectionService {
                 @NonNull ImsStateTracker imsStateTracker,
                 @NonNull DomainSelectorBase.DestroyListener listener,
                 @NonNull CrossSimRedialingController crossSimRedialingController,
-                @NonNull EmergencyCallbackModeHelper emergencyCallbackModeHelper);
+                @NonNull DataConnectionStateHelper dataConnectionStateHelper);
     }
 
     private static final class DefaultDomainSelectorFactory implements DomainSelectorFactory {
@@ -83,7 +83,7 @@ public class TelephonyDomainSelectionService extends DomainSelectionService {
                 @NonNull ImsStateTracker imsStateTracker,
                 @NonNull DomainSelectorBase.DestroyListener listener,
                 @NonNull CrossSimRedialingController crossSimRedialingController,
-                @NonNull EmergencyCallbackModeHelper emergencyCallbackModeHelper) {
+                @NonNull DataConnectionStateHelper dataConnectionStateHelper) {
             DomainSelectorBase selector = null;
 
             logi("create-DomainSelector: slotId=" + slotId + ", subId=" + subId
@@ -95,7 +95,7 @@ public class TelephonyDomainSelectionService extends DomainSelectionService {
                     if (isEmergency) {
                         selector = new EmergencyCallDomainSelector(context, slotId, subId, looper,
                                 imsStateTracker, listener, crossSimRedialingController,
-                                emergencyCallbackModeHelper);
+                                dataConnectionStateHelper);
                     } else {
                         selector = new NormalCallDomainSelector(context, slotId, subId, looper,
                                 imsStateTracker, listener);
@@ -199,7 +199,7 @@ public class TelephonyDomainSelectionService extends DomainSelectionService {
     private final DomainSelectorFactory mDomainSelectorFactory;
     private Handler mServiceHandler;
     private CrossSimRedialingController mCrossSimRedialingController;
-    private EmergencyCallbackModeHelper mEmergencyCallbackModeHelper;
+    private DataConnectionStateHelper mDataConnectionStateHelper;
 
     /** Default constructor. */
     public TelephonyDomainSelectionService() {
@@ -210,9 +210,10 @@ public class TelephonyDomainSelectionService extends DomainSelectionService {
     protected TelephonyDomainSelectionService(
             @NonNull ImsStateTrackerFactory imsStateTrackerFactory,
             @NonNull DomainSelectorFactory domainSelectorFactory,
-            @Nullable EmergencyCallbackModeHelper ecbmHelper) {
+            @Nullable DataConnectionStateHelper dataConnectionStateHelper) {
         mImsStateTrackerFactory = imsStateTrackerFactory;
         mDomainSelectorFactory = domainSelectorFactory;
+        mDataConnectionStateHelper = dataConnectionStateHelper;
     }
 
     @Override
@@ -237,8 +238,8 @@ public class TelephonyDomainSelectionService extends DomainSelectionService {
         }
 
         mCrossSimRedialingController = new CrossSimRedialingController(mContext, getLooper());
-        if (mEmergencyCallbackModeHelper == null) {
-            mEmergencyCallbackModeHelper = new EmergencyCallbackModeHelper(mContext, getLooper());
+        if (mDataConnectionStateHelper == null) {
+            mDataConnectionStateHelper = new DataConnectionStateHelper(mContext, getLooper());
         }
 
         logi("TelephonyDomainSelectionService created");
@@ -283,9 +284,9 @@ public class TelephonyDomainSelectionService extends DomainSelectionService {
             mCrossSimRedialingController = null;
         }
 
-        if (mEmergencyCallbackModeHelper != null) {
-            mEmergencyCallbackModeHelper.destroy();
-            mEmergencyCallbackModeHelper = null;
+        if (mDataConnectionStateHelper != null) {
+            mDataConnectionStateHelper.destroy();
+            mDataConnectionStateHelper = null;
         }
 
         if (mServiceHandler != null) {
@@ -310,7 +311,7 @@ public class TelephonyDomainSelectionService extends DomainSelectionService {
         ImsStateTracker ist = getImsStateTracker(slotId);
         DomainSelectorBase selector = mDomainSelectorFactory.create(mContext, slotId, subId,
                 selectorType, isEmergency, getLooper(), ist, mDestroyListener,
-                mCrossSimRedialingController, mEmergencyCallbackModeHelper);
+                mCrossSimRedialingController, mDataConnectionStateHelper);
 
         if (selector != null) {
             // Ensures that ImsStateTracker is started before selecting the domain if not started
