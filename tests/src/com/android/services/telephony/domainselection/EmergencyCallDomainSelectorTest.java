@@ -39,6 +39,7 @@ import static android.telephony.CarrierConfigManager.ImsEmergency.KEY_EMERGENCY_
 import static android.telephony.CarrierConfigManager.ImsEmergency.KEY_EMERGENCY_REQUIRES_VOLTE_ENABLED_BOOL;
 import static android.telephony.CarrierConfigManager.ImsEmergency.KEY_EMERGENCY_SCAN_TIMER_SEC_INT;
 import static android.telephony.CarrierConfigManager.ImsEmergency.KEY_EMERGENCY_VOWIFI_REQUIRES_CONDITION_INT;
+import static android.telephony.CarrierConfigManager.ImsEmergency.KEY_IMS_REASONINFO_CODE_TO_RETRY_EMERGENCY_INT_ARRAY;
 import static android.telephony.CarrierConfigManager.ImsEmergency.KEY_MAXIMUM_CELLULAR_SEARCH_TIMER_SEC_INT;
 import static android.telephony.CarrierConfigManager.ImsEmergency.KEY_MAXIMUM_NUMBER_OF_EMERGENCY_TRIES_OVER_VOWIFI_INT;
 import static android.telephony.CarrierConfigManager.ImsEmergency.KEY_PREFER_IMS_EMERGENCY_WHEN_VOICE_CALLS_ON_CS_BOOL;
@@ -560,6 +561,84 @@ public class EmergencyCallDomainSelectorTest {
         processAllMessages();
 
         verifyScanCsPreferred();
+    }
+
+    @Test
+    public void testDefaultCombinedImsRegisteredSelectPsThenExtendedServiceRequestFailIsoMatch()
+            throws Exception {
+        doReturn(new String[] {"us"}).when(mResources).getStringArray(anyInt());
+
+        createSelector(SLOT_0_SUB_ID);
+        unsolBarringInfoChanged(false);
+
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
+                NetworkRegistrationInfo.DOMAIN_CS | NetworkRegistrationInfo.DOMAIN_PS,
+                true, true, 0, 0, "", "", "us");
+        SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
+        mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
+        processAllMessages();
+
+        bindImsService();
+
+        verifyPsDialed();
+
+        mDomainSelector.reselectDomain(attr);
+        processAllMessages();
+
+        verifyCsDialed();
+
+        //Extended service request failed
+        SelectionAttributes.Builder builder =
+                new SelectionAttributes.Builder(SLOT_0, SLOT_0_SUB_ID, SELECTOR_TYPE_CALLING)
+                .setAddress(TEST_URI)
+                .setCsDisconnectCause(SERVICE_OPTION_NOT_AVAILABLE)
+                .setEmergency(true)
+                .setEmergencyRegistrationResult(regResult);
+        attr = builder.build();
+        mDomainSelector.reselectDomain(attr);
+        processAllMessages();
+
+        verifyScanCsPreferred();
+    }
+
+    @Test
+    public void testDefaultCombinedImsRegisteredSelectPsThenExtendedServiceRequestFailIsoNotMatch()
+            throws Exception {
+        doReturn(new String[] {"us"}).when(mResources).getStringArray(anyInt());
+
+        createSelector(SLOT_0_SUB_ID);
+        unsolBarringInfoChanged(false);
+
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
+                NetworkRegistrationInfo.DOMAIN_CS | NetworkRegistrationInfo.DOMAIN_PS,
+                true, true, 0, 0, "", "", "zz");
+        SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
+        mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
+        processAllMessages();
+
+        bindImsService();
+
+        verifyPsDialed();
+
+        mDomainSelector.reselectDomain(attr);
+        processAllMessages();
+
+        verifyCsDialed();
+
+        //Extended service request failed
+        SelectionAttributes.Builder builder =
+                new SelectionAttributes.Builder(SLOT_0, SLOT_0_SUB_ID, SELECTOR_TYPE_CALLING)
+                .setAddress(TEST_URI)
+                .setCsDisconnectCause(SERVICE_OPTION_NOT_AVAILABLE)
+                .setEmergency(true)
+                .setEmergencyRegistrationResult(regResult);
+        attr = builder.build();
+        mDomainSelector.reselectDomain(attr);
+        processAllMessages();
+
+        verifyScanPsPreferred();
     }
 
     @Test
@@ -1854,17 +1933,43 @@ public class EmergencyCallDomainSelectorTest {
     }
 
     @Test
-    public void testFullServiceInRoaming() throws Exception {
+    public void testFullServiceInDomesticRoaming() throws Exception {
         PersistableBundle bundle = getDefaultPersistableBundle();
         bundle.putInt(KEY_EMERGENCY_NETWORK_SCAN_TYPE_INT, SCAN_TYPE_FULL_SERVICE);
         when(mCarrierConfigManager.getConfigForSubId(anyInt(), anyVararg())).thenReturn(bundle);
+        doReturn("us").when(mTelephonyManager).getSimCountryIso();
 
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(true);
 
         EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
                 REGISTRATION_STATE_ROAMING,
-                0, true, false, 0, 0, "", "");
+                0, true, false, 0, 0, "", "", "us");
+        SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
+        mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
+        processAllMessages();
+
+        bindImsServiceUnregistered();
+        processAllMessages();
+
+        verify(mWwanSelectorCallback).onRequestEmergencyNetworkScan(
+                any(), eq(DomainSelectionService.SCAN_TYPE_FULL_SERVICE),
+                anyBoolean(), any(), any());
+    }
+
+    @Test
+    public void testFullServiceInInterNationalRoaming() throws Exception {
+        PersistableBundle bundle = getDefaultPersistableBundle();
+        bundle.putInt(KEY_EMERGENCY_NETWORK_SCAN_TYPE_INT, SCAN_TYPE_FULL_SERVICE);
+        when(mCarrierConfigManager.getConfigForSubId(anyInt(), anyVararg())).thenReturn(bundle);
+        doReturn("us").when(mTelephonyManager).getSimCountryIso();
+
+        createSelector(SLOT_0_SUB_ID);
+        unsolBarringInfoChanged(true);
+
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_ROAMING,
+                0, true, false, 0, 0, "", "", "zz");
         SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
         mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
         processAllMessages();
@@ -3160,6 +3265,162 @@ public class EmergencyCallDomainSelectorTest {
         verify(mCsrdCtrl).notifyCallFailure(eq(PreciseDisconnectCause.NO_VALID_SIM));
         verify(mTransportSelectorCallback)
                 .onSelectionTerminated(eq(DisconnectCause.NOT_VALID));
+    }
+
+    @Test
+    public void testReceiveSipErrorThenTerminateSelection() throws Exception {
+        createSelector(SLOT_0_SUB_ID);
+        unsolBarringInfoChanged(false);
+
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
+                NetworkRegistrationInfo.DOMAIN_CS | NetworkRegistrationInfo.DOMAIN_PS,
+                true, true, 0, 0, "", "");
+        SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
+        mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
+        processAllMessages();
+
+        bindImsService();
+
+        verifyPsDialed();
+
+        attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, false, regResult,
+                new ImsReasonInfo(ImsReasonInfo.CODE_SIP_FORBIDDEN, 0, null));
+        mDomainSelector.reselectDomain(attr);
+        processAllMessages();
+
+        verify(mTransportSelectorCallback)
+                .onSelectionTerminated(eq(DisconnectCause.NOT_VALID));
+    }
+
+    @Test
+    public void testReceiveSipErrorThenNotTerminateSelection() throws Exception {
+        PersistableBundle bundle = getDefaultPersistableBundle();
+        bundle.putIntArray(KEY_IMS_REASONINFO_CODE_TO_RETRY_EMERGENCY_INT_ARRAY,
+                new int[] { ImsReasonInfo.CODE_SIP_FORBIDDEN });
+        when(mCarrierConfigManager.getConfigForSubId(anyInt(), anyVararg())).thenReturn(bundle);
+
+        createSelector(SLOT_0_SUB_ID);
+        unsolBarringInfoChanged(false);
+
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
+                NetworkRegistrationInfo.DOMAIN_CS | NetworkRegistrationInfo.DOMAIN_PS,
+                true, true, 0, 0, "", "");
+        SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
+        mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
+        processAllMessages();
+
+        bindImsService();
+
+        verifyPsDialed();
+
+        attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, false, regResult,
+                new ImsReasonInfo(ImsReasonInfo.CODE_SIP_FORBIDDEN, 0, null));
+        mDomainSelector.reselectDomain(attr);
+        processAllMessages();
+
+        verifyCsDialed();
+    }
+
+    @Test
+    public void testRetryWithCodeLocalCallCsRetryRequired() throws Exception {
+        createSelector(SLOT_0_SUB_ID);
+        unsolBarringInfoChanged(false);
+
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
+                NetworkRegistrationInfo.DOMAIN_CS | NetworkRegistrationInfo.DOMAIN_PS,
+                true, true, 0, 0, "", "");
+        SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
+        mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
+        processAllMessages();
+
+        bindImsService();
+
+        verifyPsDialed();
+
+        attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, false, regResult,
+                new ImsReasonInfo(ImsReasonInfo.CODE_LOCAL_CALL_CS_RETRY_REQUIRED, 0, null));
+        mDomainSelector.reselectDomain(attr);
+        processAllMessages();
+
+        verifyCsDialed();
+    }
+
+    @Test
+    public void testRetryWithCodeLocalNotRegistered() throws Exception {
+        createSelector(SLOT_0_SUB_ID);
+        unsolBarringInfoChanged(false);
+
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
+                NetworkRegistrationInfo.DOMAIN_CS | NetworkRegistrationInfo.DOMAIN_PS,
+                true, true, 0, 0, "", "");
+        SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
+        mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
+        processAllMessages();
+
+        bindImsService();
+
+        verifyPsDialed();
+
+        attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, false, regResult,
+                new ImsReasonInfo(ImsReasonInfo.CODE_LOCAL_NOT_REGISTERED, 0, null));
+        mDomainSelector.reselectDomain(attr);
+        processAllMessages();
+
+        verifyCsDialed();
+    }
+
+    @Test
+    public void testRetryWithCodeSipAlternateEemergencyCall() throws Exception {
+        createSelector(SLOT_0_SUB_ID);
+        unsolBarringInfoChanged(false);
+
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
+                NetworkRegistrationInfo.DOMAIN_CS | NetworkRegistrationInfo.DOMAIN_PS,
+                true, true, 0, 0, "", "");
+        SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
+        mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
+        processAllMessages();
+
+        bindImsService();
+
+        verifyPsDialed();
+
+        attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, false, regResult,
+                new ImsReasonInfo(ImsReasonInfo.CODE_SIP_ALTERNATE_EMERGENCY_CALL, 0, null));
+        mDomainSelector.reselectDomain(attr);
+        processAllMessages();
+
+        verifyCsDialed();
+    }
+
+    @Test
+    public void testRetryWithCodeLocalInternalError() throws Exception {
+        createSelector(SLOT_0_SUB_ID);
+        unsolBarringInfoChanged(false);
+
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
+                NetworkRegistrationInfo.DOMAIN_CS | NetworkRegistrationInfo.DOMAIN_PS,
+                true, true, 0, 0, "", "");
+        SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
+        mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
+        processAllMessages();
+
+        bindImsService();
+
+        verifyPsDialed();
+
+        attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, false, regResult,
+                new ImsReasonInfo(ImsReasonInfo.CODE_LOCAL_INTERNAL_ERROR, 0, null));
+        mDomainSelector.reselectDomain(attr);
+        processAllMessages();
+
+        verifyCsDialed();
     }
 
     private void setupForScanListTest(PersistableBundle bundle) throws Exception {
