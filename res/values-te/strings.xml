@@ -669,7 +669,7 @@
     <string name="enable_video_calling_title" msgid="7246600931634161830">"వీడియో కాలింగ్‌ని ఆన్ చేయండి"</string>
     <string name="enable_video_calling_dialog_msg" msgid="7141478720386203540">"వీడియో కాలింగ్‌ను ఆన్ చేయడానికి, మీరు నెట్‌వర్క్ సెట్టింగ్‌ల్లో మెరుగుపరిచిన 4G LTE మోడ్‌ను ప్రారంభించాలి."</string>
     <string name="enable_video_calling_dialog_settings" msgid="8697890611305307110">"నెట్‌వర్క్ సెట్టింగ్‌లు"</string>
-    <string name="enable_video_calling_dialog_close" msgid="4298929725917045270">"మూసివేయి"</string>
+    <string name="enable_video_calling_dialog_close" msgid="4298929725917045270">"మూసివేయండి"</string>
     <string name="sim_label_emergency_calls" msgid="9078241989421522310">"అత్యవసర కాల్స్‌"</string>
     <string name="sim_description_emergency_calls" msgid="5146872803938897296">"అత్యవసర కాలింగ్ మాత్రమే"</string>
     <string name="sim_description_default" msgid="7474671114363724971">"SIM కార్డ్, స్లాట్: <xliff:g id="SLOT_ID">%s</xliff:g>"</string>

@@ -283,8 +283,8 @@
     <string name="data_enable_summary" msgid="696860063456536557">"Povolit používání dat"</string>
     <string name="dialog_alert_title" msgid="5260471806940268478">"Pozor"</string>
     <string name="roaming" msgid="1576180772877858949">"Roaming"</string>
-    <string name="roaming_enable" msgid="6853685214521494819">"Používat datové služby při roamingu"</string>
-    <string name="roaming_disable" msgid="8856224638624592681">"Používat datové služby při roamingu"</string>
+    <string name="roaming_enable" msgid="6853685214521494819">"Při roamingu používat datové služby"</string>
+    <string name="roaming_disable" msgid="8856224638624592681">"Při roamingu používat datové služby"</string>
     <string name="roaming_reenable_message" msgid="1951802463885727915">"Datový roaming je vypnutý. Klepnutím ho zapnete."</string>
     <string name="roaming_enabled_message" msgid="9022249120750897">"Mohou vám být účtovány poplatky za roaming. Upravte klepnutím."</string>
     <string name="roaming_notification_title" msgid="3590348480688047320">"Mobilní datové připojení bylo ztraceno"</string>
