@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023 The Android Open Source Project
+ * Copyright (C) 2024 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -467,6 +467,16 @@ public class TestSatelliteService extends SatelliteImplBase {
     }
 
     /**
+     * Helper method to report satellite supported from modem side for testing purpose.
+     * @param supported whether satellite is supported from modem or not.
+     */
+    public void sendOnSatelliteSupportedStateChanged(boolean supported) {
+        logd("sendOnSatelliteSupportedStateChanged: supported=" + supported);
+        mRemoteListeners.values().forEach(listener -> runWithExecutor(() ->
+                listener.onSatelliteSupportedStateChanged(supported)));
+    }
+
+    /**
      * Helper method to verify that the satellite modem is properly configured to receive
      * requests.
      *
@@ -563,6 +573,22 @@ public class TestSatelliteService extends SatelliteImplBase {
 
     public boolean isRequestIsSatelliteEnabledForCarrier() {
         return mIsRequestIsSatelliteEnabledForCarrier;
+    }
+
+    /**
+     * Helper methoid to provide a way to set supported state from test application to mock modem.
+     * @param supported whether satellite is supported by modem or not.
+     */
+    public void updateSatelliteSupportedState(boolean  supported) {
+        logd("updateSatelliteSupportedState: supported=" + supported);
+        mIsSupported = supported;
+        mRemoteListeners.values().forEach(listener -> runWithExecutor(
+                () -> listener.onSatelliteSupportedStateChanged(mIsSupported)));
+
+    }
+
+    public boolean getSatelliteSupportedState() {
+        return mIsSupported;
     }
 
     /**
