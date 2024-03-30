@@ -159,6 +159,7 @@ import android.telephony.satellite.ISatelliteCapabilitiesCallback;
 import android.telephony.satellite.ISatelliteDatagramCallback;
 import android.telephony.satellite.ISatelliteModemStateCallback;
 import android.telephony.satellite.ISatelliteProvisionStateCallback;
+import android.telephony.satellite.ISatelliteSupportedStateCallback;
 import android.telephony.satellite.ISatelliteTransmissionUpdateCallback;
 import android.telephony.satellite.NtnSignalStrength;
 import android.telephony.satellite.NtnSignalStrengthCallback;
@@ -13407,7 +13408,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      *
      * @param subId The subId of the subscription to request for.
      * @param reason Reason for disallowing satellite communication for carrier.
-     * @param callback Listener for the {@link SatelliteManager.SatelliteError} result of the
+     * @param callback Listener for the {@link SatelliteManager.SatelliteResult} result of the
      * operation.
      *
      * @throws SecurityException if the caller doesn't have required permission.
@@ -13430,7 +13431,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      *
      * @param subId The subId of the subscription to request for.
      * @param reason Reason for disallowing satellite communication.
-     * @param callback Listener for the {@link SatelliteManager.SatelliteError} result of the
+     * @param callback Listener for the {@link SatelliteManager.SatelliteResult} result of the
      * operation.
      *
      * @throws SecurityException if the caller doesn't have required permission.
@@ -13449,7 +13450,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     /**
      * Get reasons for disallowing satellite communication, as requested by
-     * {@link #addSatelliteAttachRestrictionForCarrier(int, int, IIntegerConsumer)}.
+     * {@link #addAttachRestrictionForCarrier(int, int, IIntegerConsumer)}.
      *
      * @param subId The subId of the subscription to request for.
      *
@@ -13582,6 +13583,40 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
+    }
+
+    /**
+     * Registers for the satellite supported state changed.
+     *
+     * @param subId The subId of the subscription to register for supported state changed.
+     * @param callback The callback to handle the satellite supported state changed event.
+     *
+     * @return The {@link SatelliteManager.SatelliteResult} result of the operation.
+     *
+     * @throws SecurityException if the caller doesn't have the required permission.
+     */
+    @Override
+    @SatelliteManager.SatelliteResult public int registerForSatelliteSupportedStateChanged(
+            int subId, @NonNull ISatelliteSupportedStateCallback callback) {
+        enforceSatelliteCommunicationPermission("registerForSatelliteSupportedStateChanged");
+        return mSatelliteController.registerForSatelliteSupportedStateChanged(subId, callback);
+    }
+
+    /**
+     * Unregisters for the satellite supported state changed.
+     * If callback was not registered before, the request will be ignored.
+     *
+     * @param subId The subId of the subscription to unregister for supported state changed.
+     * @param callback The callback that was passed to
+     * {@link #registerForSatelliteSupportedStateChanged(int, ISatelliteSupportedStateCallback)}.
+     *
+     * @throws SecurityException if the caller doesn't have the required permission.
+     */
+    @Override
+    public void unregisterForSatelliteSupportedStateChanged(
+            int subId, @NonNull ISatelliteSupportedStateCallback callback) {
+        enforceSatelliteCommunicationPermission("unregisterForSatelliteSupportedStateChanged");
+        mSatelliteController.unregisterForSatelliteSupportedStateChanged(subId, callback);
     }
 
     /**
