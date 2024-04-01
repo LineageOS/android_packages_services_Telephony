@@ -263,7 +263,7 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
         setTurnScreenOn(true);
 
         CarrierConfigManager configMgr = getSystemService(CarrierConfigManager.class);
-        PersistableBundle carrierConfig =
+        PersistableBundle carrierConfig = configMgr == null ? null :
                 configMgr.getConfigForSubId(SubscriptionManager.getDefaultVoiceSubscriptionId());
 
         mShortcutViewConfig = new ShortcutViewUtils.Config(this, carrierConfig, mEntryType);
@@ -313,12 +313,14 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
         // Check whether we should show the onscreen "Dial" button and co.
         // Read carrier config through the public API because PhoneGlobals is not available when we
         // run as a secondary user.
-        if (carrierConfig.getBoolean(CarrierConfigManager.KEY_SHOW_ONSCREEN_DIAL_BUTTON_BOOL)) {
+        if (carrierConfig != null
+                && carrierConfig.getBoolean(
+                    CarrierConfigManager.KEY_SHOW_ONSCREEN_DIAL_BUTTON_BOOL)) {
             mDialButton.setOnClickListener(this);
         } else {
             mDialButton.setVisibility(View.GONE);
         }
-        mIsWfcEmergencyCallingWarningEnabled = carrierConfig.getInt(
+        mIsWfcEmergencyCallingWarningEnabled = carrierConfig != null && carrierConfig.getInt(
                 CarrierConfigManager.KEY_EMERGENCY_NOTIFICATION_DELAY_INT) > -1;
         maybeShowWfcEmergencyCallingWarning();
 
