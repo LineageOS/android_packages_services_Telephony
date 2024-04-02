@@ -248,7 +248,7 @@ public class TestSatelliteWrapper extends Activity {
                         String message = "Received SatelliteCapabillities : "
                                 + SatelliteCapabilities;
                         logd(message);
-                        runOnUiThread(() -> addLogMessage(message));
+                        addLogMessage(message);
                     };
         }
 
@@ -281,7 +281,7 @@ public class TestSatelliteWrapper extends Activity {
                 @NonNull NtnSignalStrengthWrapper ntnSignalStrength) {
             String message = "Received NTN SignalStrength : " + ntnSignalStrength.getLevel();
             logd(message);
-            runOnUiThread(() -> addLogMessage(message));
+            addLogMessage(message);
         }
     }
 
@@ -317,7 +317,7 @@ public class TestSatelliteWrapper extends Activity {
         }
 
         Consumer<Integer> callback = result -> {
-            runOnUiThread(() -> addLogMessage("requestAttachEnabledForCarrier result: " + result));
+            addLogMessage("requestAttachEnabledForCarrier result: " + result);
             logd("requestAttachEnabledForCarrier result: " + result);
         };
 
@@ -342,7 +342,7 @@ public class TestSatelliteWrapper extends Activity {
         }
 
         Consumer<Integer> callback = result -> {
-            runOnUiThread(() -> addLogMessage("requestAttachEnabledForCarrier result: " + result));
+            addLogMessage("requestAttachEnabledForCarrier result: " + result);
             logd("requestAttachEnabledForCarrier result: " + result);
         };
 
@@ -409,7 +409,7 @@ public class TestSatelliteWrapper extends Activity {
         int reason = SatelliteManagerWrapper.SATELLITE_COMMUNICATION_RESTRICTION_REASON_USER;
 
         Consumer<Integer> callback = result -> {
-            runOnUiThread(() -> addLogMessage("addAttachRestrictionForCarrier result: " + result));
+            addLogMessage("addAttachRestrictionForCarrier result: " + result);
             logd("addAttachRestrictionForCarrier result: " + result);
         };
 
@@ -436,8 +436,7 @@ public class TestSatelliteWrapper extends Activity {
         int reason = SatelliteManagerWrapper.SATELLITE_COMMUNICATION_RESTRICTION_REASON_USER;
 
         Consumer<Integer> callback = result -> {
-            runOnUiThread(
-                    () -> addLogMessage("removeAttachRestrictionForCarrier result: " + result));
+            addLogMessage("removeAttachRestrictionForCarrier result: " + result);
             logd("removeAttachRestrictionForCarrier result: " + result);
         };
 
@@ -569,9 +568,11 @@ public class TestSatelliteWrapper extends Activity {
     }
 
     private void addLogMessage(String message) {
-        mLogMessages.add(message);
-        mAdapter.notifyDataSetChanged();
-        mLogListView.setSelection(mAdapter.getCount() - 1);
+        runOnUiThread(() -> {
+            mLogMessages.add(message);
+            mAdapter.notifyDataSetChanged();
+            mLogListView.setSelection(mAdapter.getCount() - 1);
+        });
     }
 
     private static void logd(String message) {
