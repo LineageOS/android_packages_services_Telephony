@@ -485,7 +485,7 @@
     <string name="simContacts_title" msgid="2714029230160136647">"Contacten selecteren om te importeren"</string>
     <string name="simContacts_airplaneMode" msgid="4654884030631503808">"Zet de vliegtuigmodus uit om contacten van de simkaart te importeren."</string>
     <string name="enable_pin" msgid="967674051730845376">"SIM pincode aan-/uitzetten"</string>
-    <string name="change_pin" msgid="3657869530942905790">"Pincode simkaart wijzigen"</string>
+    <string name="change_pin" msgid="3657869530942905790">"Pincode van simkaart wijzigen"</string>
     <string name="enter_pin_text" msgid="3182311451978663356">"Pincode simkaart:"</string>
     <string name="oldPinLabel" msgid="8618515202411987721">"Oude pincode"</string>
     <string name="newPinLabel" msgid="3585899083055354732">"Nieuwe pincode"</string>
