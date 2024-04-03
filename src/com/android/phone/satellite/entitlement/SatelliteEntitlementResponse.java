@@ -97,7 +97,6 @@ public class SatelliteEntitlementResponse {
      * Get the PLMNBarredList from the response
      * @return The PLMNs Barred List
      */
-    @VisibleForTesting
     public List<String> getPlmnBarredList() {
         return mPlmnBarredList.stream().map(String::new).collect(Collectors.toList());
     }
@@ -137,7 +136,10 @@ public class SatelliteEntitlementResponse {
                 mPlmnBarredList = new ArrayList<>();
                 JSONArray jsonArray = jsonToken.getJSONArray(PLMN_BARRED_KEY);
                 for (int i = 0; i < jsonArray.length(); i++) {
-                    mPlmnBarredList.add(jsonArray.getJSONObject(i).getString(PLMN_KEY));
+                    String plmn = jsonArray.getJSONObject(i).getString(PLMN_KEY);
+                    if (!TextUtils.isEmpty(plmn)) {
+                        mPlmnBarredList.add(plmn);
+                    }
                 }
             }
         } catch (JSONException e) {

@@ -61,7 +61,8 @@ public class SatelliteEntitlementApi {
         SatelliteEntitlementResponse satelliteEntitlementResponse =
                 new SatelliteEntitlementResponse(response);
         return new SatelliteEntitlementResult(satelliteEntitlementResponse.getEntitlementStatus(),
-                satelliteEntitlementResponse.getPlmnAllowed());
+                satelliteEntitlementResponse.getPlmnAllowed(),
+                satelliteEntitlementResponse.getPlmnBarredList());
     }
 
     @NonNull
