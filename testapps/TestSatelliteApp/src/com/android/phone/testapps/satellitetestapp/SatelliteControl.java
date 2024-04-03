@@ -81,6 +81,8 @@ public class SatelliteControl extends Activity {
                 .setOnClickListener(this::isSatelliteEnabledForCarrierApp);
         findViewById(R.id.isRequestIsSatelliteEnabledForCarrier)
                 .setOnClickListener(this::isRequestIsSatelliteEnabledForCarrierApp);
+        findViewById(R.id.getIsEmergency)
+                .setOnClickListener(this::getIsEmergencyApp);
         findViewById(R.id.Back).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -92,8 +94,8 @@ public class SatelliteControl extends Activity {
     private void enableSatelliteApp(View view) {
         LinkedBlockingQueue<Integer> error = new LinkedBlockingQueue<>(1);
         mSatelliteManager.requestEnabled(
-                new EnableRequestAttributes.Builder(true).setDemoMode(true).build(),
-                Runnable::run, error::offer);
+                new EnableRequestAttributes.Builder(true).setDemoMode(true).setEmergencyMode(true)
+                        .build(), Runnable::run, error::offer);
         TextView textView = findViewById(R.id.text_id);
         try {
             Integer value = error.poll(TIMEOUT, TimeUnit.MILLISECONDS);
@@ -373,5 +375,12 @@ public class SatelliteControl extends Activity {
         textView.setText("[SatelliteService] isRequestIsSatelliteEnabledForCarrier= "
                 + SatelliteTestApp.getTestSatelliteService()
                 .isRequestIsSatelliteEnabledForCarrier());
+    }
+
+    private void getIsEmergencyApp(View view) {
+        TextView textView = findViewById(R.id.text_id);
+        textView.setText("[SatelliteService] getIsEmergencyApp= "
+                + SatelliteTestApp.getTestSatelliteService()
+                .getIsEmergency());
     }
 }

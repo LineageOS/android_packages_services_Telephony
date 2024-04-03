@@ -13020,7 +13020,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     }
                     if (isAllowed) {
                         mSatelliteController.requestSatelliteEnabled(
-                                subId, enableSatellite, enableDemoMode, callback);
+                                subId, enableSatellite, enableDemoMode, isEmergency, callback);
                     } else {
                         result.accept(SATELLITE_RESULT_ACCESS_BARRED);
                     }
@@ -13031,7 +13031,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         } else {
             // No need to check if satellite is allowed at current location when disabling satellite
             mSatelliteController.requestSatelliteEnabled(
-                    subId, enableSatellite, enableDemoMode, callback);
+                    subId, enableSatellite, enableDemoMode, isEmergency, callback);
         }
     }
 
