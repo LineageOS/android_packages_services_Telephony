@@ -70,6 +70,7 @@ import com.android.ims.ImsManager;
 import com.android.ims.RcsFeatureManager;
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.telephony.PhoneConfigurationManager;
+import com.android.internal.telephony.flags.FeatureFlags;
 import com.android.internal.telephony.util.HandlerExecutor;
 import com.android.telephony.Rlog;
 
@@ -92,6 +93,7 @@ public class ImsProvisioningController {
     @VisibleForTesting
     protected static final int EVENT_MULTI_SIM_CONFIGURATION_CHANGE = 3;
     private static final int EVENT_PROVISIONING_VALUE_CHANGED = 4;
+    private static final int EVENT_NOTIFY_INIT_PROVISIONED_VALUE = 5;
 
     // Provisioning Keys that are handled via AOSP cache and not sent to the ImsService
     private static final int[] LOCAL_IMS_CONFIG_KEYS = {
@@ -119,6 +121,11 @@ public class ImsProvisioningController {
             CAPABILITY_TYPE_UT,
             CAPABILITY_TYPE_SMS,
             CAPABILITY_TYPE_CALL_COMPOSER
+    };
+
+    private static final int[] LOCAL_RCS_CAPABILITY = {
+            CAPABILITY_TYPE_OPTIONS_UCE,
+            CAPABILITY_TYPE_PRESENCE_UCE
     };
 
     /**
@@ -199,6 +206,7 @@ public class ImsProvisioningController {
     private final SparseArray<ProvisioningCallbackManager> mProvisioningCallbackManagersSlotMap =
             new SparseArray<>();
     private final ImsProvisioningLoader mImsProvisioningLoader;
+    private final FeatureFlags mFeatureFlags;
 
     private int mNumSlot;
 
@@ -252,6 +260,18 @@ public class ImsProvisioningController {
                     log("subId " + msg.arg1 + " changed provisioning value item : " + msg.arg2
                             + " value : " + (int) msg.obj);
                     updateCapabilityTechFromKey(msg.arg1, msg.arg2, (int) msg.obj);
+                    break;
+                case EVENT_NOTIFY_INIT_PROVISIONED_VALUE:
+                    int slotId = msg.arg1;
+                    int subId = msg.arg2;
+                    IFeatureProvisioningCallback callback =
+                            (IFeatureProvisioningCallback) msg.obj;
+                    log("slotId " + slotId + " subId " + subId
+                            + " callback " + (callback != null));
+
+                    // Notify MmTel Provisioning Status
+                    notifyMmTelProvisioningStatus(slotId, subId, callback);
+                    notifyRcsProvisioningStatus(slotId, subId, callback);
                     break;
                 default:
                     log("unknown message " + msg);
@@ -508,6 +528,13 @@ public class ImsProvisioningController {
 
                 // notify provisioning key value to ImsService
                 setInitialProvisioningKeys(mSubId);
+
+                if (mFeatureFlags.notifyInitialImsProvisioningStatus()) {
+                    // Notify MmTel provisioning value based on capability and radio tech.
+                    if (mProvisioningCallbackManagersSlotMap.get(mSlotId).hasCallblacks()) {
+                        notifyMmTelProvisioningStatus(mSlotId, mSubId, null);
+                    }
+                }
             } else {
                 // wait until subId is valid
                 mRequiredNotify = true;
@@ -740,6 +767,13 @@ public class ImsProvisioningController {
 
                 // notify provisioning key value to ImsService
                 setInitialProvisioningKeys(mSubId);
+
+                if (mFeatureFlags.notifyInitialImsProvisioningStatus()) {
+                    if (mProvisioningCallbackManagersSlotMap.get(mSlotId).hasCallblacks()) {
+                        // Notify RCS provisioning value based on capability and radio tech.
+                        notifyRcsProvisioningStatus(mSlotId, mSubId, null);
+                    }
+                }
             } else {
                 // wait until subId is valid
                 mRequiredNotify = true;
@@ -828,7 +862,7 @@ public class ImsProvisioningController {
     @VisibleForTesting
     public ImsProvisioningController(PhoneGlobals app, int numSlot, Looper looper,
             MmTelFeatureConnector mmTelFeatureConnector, RcsFeatureConnector rcsFeatureConnector,
-            ImsProvisioningLoader imsProvisioningLoader) {
+            ImsProvisioningLoader imsProvisioningLoader, FeatureFlags featureFlags) {
         log("ImsProvisioningController");
         mApp = app;
         mNumSlot = numSlot;
@@ -841,6 +875,7 @@ public class ImsProvisioningController {
         mTelephonyRegistryManager.addOnSubscriptionsChangedListener(
                 mSubChangedListener, mHandler::post);
         mImsProvisioningLoader = imsProvisioningLoader;
+        mFeatureFlags = featureFlags;
 
         PhoneConfigurationManager.registerForMultiSimConfigChange(mHandler,
                 EVENT_MULTI_SIM_CONFIGURATION_CHANGE, null);
@@ -924,7 +959,8 @@ public class ImsProvisioningController {
      * create an instance
      */
     @VisibleForTesting
-    public static ImsProvisioningController make(PhoneGlobals app, int numSlot) {
+    public static ImsProvisioningController make(PhoneGlobals app, int numSlot,
+            FeatureFlags featureFlags) {
         synchronized (ImsProvisioningController.class) {
             if (sInstance == null) {
                 Rlog.i(TAG, "ImsProvisioningController created");
@@ -932,7 +968,7 @@ public class ImsProvisioningController {
                 handlerThread.start();
                 sInstance = new ImsProvisioningController(app, numSlot, handlerThread.getLooper(),
                         ImsManager::getConnector, RcsFeatureManager::getConnector,
-                        new ImsProvisioningLoader(app));
+                        new ImsProvisioningLoader(app), featureFlags);
             }
         }
         return sInstance;
@@ -966,6 +1002,11 @@ public class ImsProvisioningController {
         try {
             mProvisioningCallbackManagersSlotMap.get(slotId).registerCallback(callback);
             log("Feature Provisioning Callback registered.");
+
+            if (mFeatureFlags.notifyInitialImsProvisioningStatus()) {
+                mHandler.sendMessage(mHandler.obtainMessage(EVENT_NOTIFY_INIT_PROVISIONED_VALUE,
+                        getSlotId(subId), subId, (Object) callback));
+            }
         } catch (NullPointerException e) {
             logw("can not access callback manager to add callback");
         }
@@ -1637,6 +1678,90 @@ public class ImsProvisioningController {
         }
 
         return true;
+    }
+
+    private void notifyMmTelProvisioningStatus(int slotId, int subId,
+            @Nullable IFeatureProvisioningCallback callback) {
+        int value = ImsProvisioningLoader.STATUS_NOT_SET;
+        int[] techArray;
+        for (int capability : LOCAL_MMTEL_CAPABILITY) {
+            techArray = getTechsFromCarrierConfig(subId, capability, /*isMmTle*/true);
+            if (techArray == null) {
+                continue;
+            }
+
+            for (int radioTech : techArray) {
+                value = mImsProvisioningLoader.getProvisioningStatus(subId, FEATURE_MMTEL,
+                        capability, radioTech);
+                if (value == ImsProvisioningLoader.STATUS_NOT_SET) {
+                    // Not yet provisioned
+                    continue;
+                }
+
+                value = (value == ImsProvisioningLoader.STATUS_PROVISIONED)
+                        ? PROVISIONING_VALUE_ENABLED : PROVISIONING_VALUE_DISABLED;
+
+                // Notify all registered callbacks
+                if (callback == null) {
+                    mProvisioningCallbackManagersSlotMap.get(slotId)
+                            .notifyProvisioningCapabilityChanged(
+                                    new FeatureProvisioningData(
+                                            capability,
+                                            radioTech,
+                                            getBoolValue(value),
+                                            /*isMmTle*/true));
+                } else {
+                    try {
+                        callback.onFeatureProvisioningChanged(capability, radioTech,
+                                getBoolValue(value));
+                    } catch (RemoteException e) {
+                        logw("notifyMmTelProvisioningStatus callback is not available");
+                    }
+                }
+            }
+        }
+    }
+
+    private void notifyRcsProvisioningStatus(int slotId, int subId,
+            @Nullable IFeatureProvisioningCallback callback) {
+        int value = ImsProvisioningLoader.STATUS_NOT_SET;
+        int[] techArray;
+        for (int capability : LOCAL_RCS_CAPABILITY) {
+            techArray = getTechsFromCarrierConfig(subId, capability, /*isMmTle*/false);
+            if (techArray == null) {
+                continue;
+            }
+
+            for (int radioTech : techArray) {
+                value = mImsProvisioningLoader.getProvisioningStatus(subId, FEATURE_RCS,
+                        capability, radioTech);
+                if (value == ImsProvisioningLoader.STATUS_NOT_SET) {
+                    // Not yet provisioned
+                    continue;
+                }
+
+                value = (value == ImsProvisioningLoader.STATUS_PROVISIONED)
+                        ? PROVISIONING_VALUE_ENABLED : PROVISIONING_VALUE_DISABLED;
+
+                // Notify all registered callbacks
+                if (callback == null) {
+                    mProvisioningCallbackManagersSlotMap.get(slotId)
+                            .notifyProvisioningCapabilityChanged(
+                                    new FeatureProvisioningData(
+                                            capability,
+                                            radioTech,
+                                            getBoolValue(value),
+                                            /*isMmTle*/false));
+                } else {
+                    try {
+                        callback.onRcsFeatureProvisioningChanged(capability, radioTech,
+                                getBoolValue(value));
+                    } catch (RemoteException e) {
+                        logw("notifyRcsProvisioningStatus callback is not available");
+                    }
+                }
+            }
+        }
     }
 
     private void log(String s) {
