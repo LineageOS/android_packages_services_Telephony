@@ -2800,6 +2800,25 @@ public class TelephonyConnectionService extends ConnectionService {
                 .findFirst().orElse(null);
     }
 
+    /**
+     * Determines the phone with which emergency callback mode was set.
+     * @return The {@link Phone} with which emergency callback mode was set,
+     *         or {@code null} if none was found.
+     */
+    @VisibleForTesting
+    public Phone getPhoneInEmergencyCallbackMode() {
+        if (!mDomainSelectionResolver.isDomainSelectionSupported()) {
+            // This is applicable for the AP domain selection service.
+            return null;
+        }
+        if (mEmergencyStateTracker == null) {
+            mEmergencyStateTracker = EmergencyStateTracker.getInstance();
+        }
+        return Stream.of(mPhoneFactoryProxy.getPhones())
+                .filter(p -> mEmergencyStateTracker.isInEcm(p))
+                .findFirst().orElse(null);
+    }
+
     private boolean isVoiceInService(Phone phone, boolean imsVoiceCapable) {
         // Dialing normal call is available.
         if (phone.isWifiCallingEnabled()) {
@@ -3301,6 +3320,15 @@ public class TelephonyConnectionService extends ConnectionService {
                             + "using phoneId=%d/subId=%d", normalRoutingPhone.getPhoneId(),
                     normalRoutingPhone.getSubId());
             return normalRoutingPhone;
+        }
+
+        if (mDomainSelectionResolver.isDomainSelectionSupported()) {
+            Phone phoneInEcm = getPhoneInEmergencyCallbackMode();
+            if (phoneInEcm != null) {
+                Log.i(this, "getPhoneForAccount: in ECBM, using phoneId=%d/subId=%d",
+                        phoneInEcm.getPhoneId(), phoneInEcm.getSubId());
+                return phoneInEcm;
+            }
         }
 
         // Default emergency call phone selection logic:
