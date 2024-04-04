@@ -136,26 +136,54 @@ public class SatelliteEntitlementResponseTest {
         assertTrue(response.getPlmnBarredList().size() == 2);
         assertEquals(TEST_PLMN_BARRED_LIST, response.getPlmnBarredList());
 
+        // Received the body without plmn barred key.
+        response = new SatelliteEntitlementResponse(
+                getChangedAllowedPLMNListResponse(TEST_PLMN_DATA_PLAN_TYPE_LIST.get(0).mPlmn,
+                        TEST_PLMN_DATA_PLAN_TYPE_LIST.get(1).mPlmn));
+        assertEquals(SATELLITE_ENTITLEMENT_STATUS_ENABLED, response.getEntitlementStatus());
+        assertTrue(response.getPlmnAllowed().size() == 2);
+        assertTrue(response.getPlmnBarredList().size() == 0);
+
         String plmn = "123456";
-        // Received 123456 and empty string list
+        // Received the allowed plmn list set as 123456, empty string
         response = new SatelliteEntitlementResponse(
-                getChangedPLMNListResponse(plmn, ""));
+                getChangedAllowedPLMNListResponse(plmn, ""));
         assertEquals(SATELLITE_ENTITLEMENT_STATUS_ENABLED, response.getEntitlementStatus());
         assertTrue(response.getPlmnAllowed().size() == 1);
         assertEquals(plmn, response.getPlmnAllowed().get(0).mPlmn);
 
-        // Received empty string and 123456 list
+        // Received the allowed plmn list set as 123456, empty string
         response = new SatelliteEntitlementResponse(
-                getChangedPLMNListResponse("", plmn));
+                getChangedAllowedPLMNListResponse("", plmn));
         assertEquals(SATELLITE_ENTITLEMENT_STATUS_ENABLED, response.getEntitlementStatus());
         assertTrue(response.getPlmnAllowed().size() == 1);
         assertEquals(plmn, response.getPlmnAllowed().get(0).mPlmn);
 
-        // Received all empty strings list
+        // RReceived the allowed plmn list set as empty strings
         response = new SatelliteEntitlementResponse(
-                getChangedPLMNListResponse("", ""));
+                getChangedAllowedPLMNListResponse("", ""));
         assertEquals(SATELLITE_ENTITLEMENT_STATUS_ENABLED, response.getEntitlementStatus());
         assertTrue(response.getPlmnAllowed().size() == 0);
+
+        // Received the barred plmn list set as 123456, empty string
+        response = new SatelliteEntitlementResponse(
+                getChangedBarredPLMNListResponse(plmn, ""));
+        assertEquals(SATELLITE_ENTITLEMENT_STATUS_ENABLED, response.getEntitlementStatus());
+        assertTrue(response.getPlmnBarredList().size() == 1);
+        assertEquals(plmn, response.getPlmnBarredList().get(0));
+
+        // Received the barred plmn list set as empty string, 123456
+        response = new SatelliteEntitlementResponse(
+                getChangedBarredPLMNListResponse("", plmn));
+        assertEquals(SATELLITE_ENTITLEMENT_STATUS_ENABLED, response.getEntitlementStatus());
+        assertTrue(response.getPlmnBarredList().size() == 1);
+        assertEquals(plmn, response.getPlmnBarredList().get(0));
+
+        // Received the barred plmn list set as empty strings
+        response = new SatelliteEntitlementResponse(
+                getChangedBarredPLMNListResponse("", ""));
+        assertEquals(SATELLITE_ENTITLEMENT_STATUS_ENABLED, response.getEntitlementStatus());
+        assertTrue(response.getPlmnBarredList().size() == 0);
 
         // Received null
         response = new SatelliteEntitlementResponse(null);
@@ -190,12 +218,28 @@ public class SatelliteEntitlementResponseTest {
                 + "{\"PLMN\":\"" + secondPlmn + "\",\"DataPlanType\":\"metered\"}]";
     }
 
-    private String getChangedPLMNListResponse(String firstPlmn, String secondPlmn) {
+    private String getBarredPlmns(String firstPlmn, String secondPlmn) {
+        return ",\"PLMNBarred\":[{\"PLMN\":\"" + firstPlmn + "\"}," + "{\"PLMN\":\"" + secondPlmn
+                + "\"}]";
+    }
+
+    private String getChangedAllowedPLMNListResponse(String firstPlmn, String secondPlmn) {
         return "{\"VERS\":{\"version\":\"1\",\"validity\":\"172800\"},"
                 + "\"TOKEN\":{\"token\":\"ASH127AHHA88SF\"},\""
                 + ServiceEntitlement.APP_SATELLITE_ENTITLEMENT + "\":{"
                 + "\"EntitlementStatus\":\"" + SATELLITE_ENTITLEMENT_STATUS_ENABLED + "\""
                 + getAllowedPlmns(firstPlmn, secondPlmn)
+                + "}}";
+    }
+
+    private String getChangedBarredPLMNListResponse(String firstPlmn, String secondPlmn) {
+        return "{\"VERS\":{\"version\":\"1\",\"validity\":\"172800\"},"
+                + "\"TOKEN\":{\"token\":\"ASH127AHHA88SF\"},\""
+                + ServiceEntitlement.APP_SATELLITE_ENTITLEMENT + "\":{"
+                + "\"EntitlementStatus\":\"" + SATELLITE_ENTITLEMENT_STATUS_ENABLED + "\""
+                + ",\"PLMNAllowed\":[{\"PLMN\":\"31026\",\"DataPlanType\":\"unmetered\"},"
+                + "{\"PLMN\":\"302820\",\"DataPlanType\":\"metered\"}]"
+                + getBarredPlmns(firstPlmn, secondPlmn)
                 + "}}";
     }
 }

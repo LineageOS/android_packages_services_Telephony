@@ -53,17 +53,25 @@ public class SatelliteEntitlementResult {
      * item of the satellite configuration received from the entitlement server.
      */
     private List<SatelliteNetworkInfo> mAllowedSatelliteNetworkInfoList;
+    /**
+     * List consisting of the PLMN in the PLMNBarred item of the satellite configuration received
+     * from the entitlement server
+     */
+    private List<String> mBarredPlmnList;
 
     /**
      * Store the result of the satellite entitlement response.
      *
      * @param entitlementStatus The entitlement status.
      * @param allowedSatelliteNetworkInfoList The allowedSatelliteNetworkInfoList
+     * @param barredPlmnList The barred plmn list
      */
     public SatelliteEntitlementResult(@SatelliteEntitlementStatus int entitlementStatus,
-            List<SatelliteNetworkInfo> allowedSatelliteNetworkInfoList) {
+            List<SatelliteNetworkInfo> allowedSatelliteNetworkInfoList,
+            List<String> barredPlmnList) {
         mEntitlementStatus = entitlementStatus;
         mAllowedSatelliteNetworkInfoList = allowedSatelliteNetworkInfoList;
+        mBarredPlmnList = barredPlmnList;
     }
 
     /**
@@ -86,6 +94,15 @@ public class SatelliteEntitlementResult {
     }
 
     /**
+     * Get the plmn barred list
+     *
+     * @return The plmn barred list.
+     */
+    public List<String> getBarredPLMNList() {
+        return mBarredPlmnList.stream().map(String::new).collect(Collectors.toList());
+    }
+
+    /**
      * Get the default SatelliteEntitlementResult. EntitlementStatus set to
      * `SATELLITE_ENTITLEMENT_STATUS_DISABLED` and SatelliteNetworkInfo list set to empty.
      *
@@ -93,6 +110,6 @@ public class SatelliteEntitlementResult {
      */
     public static SatelliteEntitlementResult getDefaultResult() {
         return new SatelliteEntitlementResult(SATELLITE_ENTITLEMENT_STATUS_DISABLED,
-                new ArrayList<>());
+                new ArrayList<>(), new ArrayList<>());
     }
 }
