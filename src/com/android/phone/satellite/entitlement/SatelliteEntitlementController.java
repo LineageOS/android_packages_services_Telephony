@@ -429,7 +429,8 @@ public class SatelliteEntitlementController extends Handler {
         updateSatelliteEntitlementStatus(subId,
                 mSatelliteEntitlementResultPerSub.get(subId).getEntitlementStatus()
                         == SATELLITE_ENTITLEMENT_STATUS_ENABLED,
-                mSatelliteEntitlementResultPerSub.get(subId).getAllowedPLMNList());
+                mSatelliteEntitlementResultPerSub.get(subId).getAllowedPLMNList(),
+                mSatelliteEntitlementResultPerSub.get(subId).getBarredPLMNList());
         stopExponentialBackoff(subId);
         mRetryCountPerSub.remove(subId);
     }
@@ -528,9 +529,9 @@ public class SatelliteEntitlementController extends Handler {
      */
     @VisibleForTesting(visibility = VisibleForTesting.Visibility.PRIVATE)
     public void updateSatelliteEntitlementStatus(int subId, boolean enabled,
-            List<String> plmnAllowedList) {
+            List<String> plmnAllowedList, List<String> plmnBarredList) {
         SatelliteController.getInstance().onSatelliteEntitlementStatusUpdated(subId, enabled,
-                plmnAllowedList, null);
+                plmnAllowedList, plmnBarredList, null);
     }
 
     private static void logd(String log) {

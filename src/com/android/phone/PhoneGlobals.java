@@ -91,6 +91,7 @@ import java.io.PrintWriter;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * Global state for the telephony subsystem when running in the primary
@@ -189,13 +190,15 @@ public class PhoneGlobals extends ContextWrapper {
                     ROAMING_NOTIFICATION_REASON_DATA_ROAMING_SETTING_CHANGED,
                     ROAMING_NOTIFICATION_REASON_CARRIER_CONFIG_CHANGED,
                     ROAMING_NOTIFICATION_REASON_SERVICE_STATE_CHANGED,
-                    ROAMING_NOTIFICATION_REASON_DEFAULT_DATA_SUBS_CHANGED})
+                    ROAMING_NOTIFICATION_REASON_DEFAULT_DATA_SUBS_CHANGED,
+                    ROAMING_NOTIFICATION_REASON_DISCONNECTED_SINGLE_NETWORK})
     public @interface RoamingNotificationReason {}
     private static final int ROAMING_NOTIFICATION_REASON_DATA_SETTING_CHANGED = 0;
     private static final int ROAMING_NOTIFICATION_REASON_DATA_ROAMING_SETTING_CHANGED = 1;
     private static final int ROAMING_NOTIFICATION_REASON_CARRIER_CONFIG_CHANGED = 2;
     private static final int ROAMING_NOTIFICATION_REASON_SERVICE_STATE_CHANGED = 3;
     private static final int ROAMING_NOTIFICATION_REASON_DEFAULT_DATA_SUBS_CHANGED = 4;
+    private static final int ROAMING_NOTIFICATION_REASON_DISCONNECTED_SINGLE_NETWORK = 5;
 
     /** @hide */
     @Retention(RetentionPolicy.SOURCE)
@@ -212,6 +215,14 @@ public class PhoneGlobals extends ContextWrapper {
 
     @RoamingNotification
     private int mCurrentRoamingNotification = ROAMING_NOTIFICATION_NO_NOTIFICATION;
+
+    /**
+     * If true, update roaming notifications after the Internet is completely disconnected. If
+     * carrier allows only a single data network, wait until the Internet connection is completely
+     * disconnected and then update the roaming notification once more to check if
+     * ONLY_ALLOWED_SINGLE_NETWORK disallow reason is disappeared.
+     */
+    private AtomicBoolean mWaitForInternetDisconnection = new AtomicBoolean(false);
 
     /**
      * Reasons that have already shown notification to prevent duplicate shows for the same reason.
@@ -252,7 +263,8 @@ public class PhoneGlobals extends ContextWrapper {
     private FeatureFlags mFeatureFlags = new FeatureFlagsImpl();
 
     private class PhoneAppCallback extends TelephonyCallback implements
-            TelephonyCallback.ServiceStateListener {
+            TelephonyCallback.ServiceStateListener,
+            TelephonyCallback.DataConnectionStateListener {
         private final int mSubId;
 
         PhoneAppCallback(int subId) {
@@ -264,6 +276,23 @@ public class PhoneGlobals extends ContextWrapper {
             // Note when registering that we should be registering with INCLUDE_LOCATION_DATA_NONE.
             // PhoneGlobals only uses the state and roaming status, which does not require location.
             handleServiceStateChanged(serviceState, mSubId);
+        }
+
+        @Override
+        public void onDataConnectionStateChanged(int state, int networkType) {
+            if (mSubId == mDefaultDataSubId && state == TelephonyManager.DATA_DISCONNECTED) {
+                // onDataConnectionStateChanged is an event about the state of exact DataNetwork,
+                // but since the DataNetwork of internet may not have been completely removed from
+                // the DataNetworkController list, The post handler event expects the internet data
+                // network to be completely removed from the DataNetworkController list.
+                mHandler.post(() -> {
+                    if (mWaitForInternetDisconnection.compareAndSet(true, false)) {
+                        Log.d(LOG_TAG, "onDisconnectedInternetDataNetwork.");
+                        updateDataRoamingStatus(
+                                ROAMING_NOTIFICATION_REASON_DISCONNECTED_SINGLE_NETWORK);
+                    }
+                });
+            }
         }
 
         public int getSubId() {
@@ -1007,10 +1036,9 @@ public class PhoneGlobals extends ContextWrapper {
      * When roaming, if mobile data cannot be established due to data roaming not enabled, we need
      * to notify the user so they can enable it through settings. Vise versa if the condition
      * changes, we need to dismiss the notification.
-     * @param reason to inform which event is called for notification update.
+     * @param notificationReason to inform which event is called for notification update.
      */
-    private void updateDataRoamingStatus(@RoamingNotificationReason int reason) {
-        if (VDBG) Log.v(LOG_TAG, "updateDataRoamingStatus");
+    private void updateDataRoamingStatus(@RoamingNotificationReason int notificationReason) {
         Phone phone = getPhone(mDefaultDataSubId);
         if (phone == null) {
             Log.w(LOG_TAG, "Can't get phone with sub id = " + mDefaultDataSubId);
@@ -1023,20 +1051,59 @@ public class PhoneGlobals extends ContextWrapper {
             return;
         }
 
+        List<DataDisallowedReason> disallowReasons = phone.getDataNetworkController()
+                .getInternetDataDisallowedReasons();
+
+        if (mFeatureFlags.roamingNotificationForSingleDataNetwork()) {
+            if (disallowReasons.contains(DataDisallowedReason.ONLY_ALLOWED_SINGLE_NETWORK)
+                    && disallowReasons.contains(DataDisallowedReason.ROAMING_DISABLED)
+                    && (notificationReason == ROAMING_NOTIFICATION_REASON_DATA_SETTING_CHANGED
+                            || notificationReason
+                                    == ROAMING_NOTIFICATION_REASON_DATA_ROAMING_SETTING_CHANGED)) {
+                // If the ONLY_ALLOWED_SINGLE_NETWORK disallow reason has not yet been removed due
+                // to a change in mobile_data (including roaming_data) settings, update roaming
+                // notification again after the Internet is completely disconnected to check
+                // ONLY_ALLOWED_SINGLE_NETWORK disallow reason is removed.
+                mWaitForInternetDisconnection.set(true);
+                Log.d(LOG_TAG, "updateDataRoamingStatus,"
+                        + " wait for internet disconnection for single data network");
+            } else if (!disallowReasons.contains(DataDisallowedReason.ONLY_ALLOWED_SINGLE_NETWORK)
+                    && mWaitForInternetDisconnection.compareAndSet(true, false)) {
+                // If the ONLY_ALLOWED_SINGLE_NETWORK disallow reason has been removed,
+                // no longer wait for Internet disconnection.
+                Log.d(LOG_TAG, "updateDataRoamingStatus,"
+                        + " cancel to wait for internet disconnection for single data network");
+            }
+        }
+
+        updateDataRoamingStatus(notificationReason, disallowReasons, serviceState);
+    }
+
+    /**
+     * When roaming, if mobile data cannot be established due to data roaming not enabled, we need
+     * to notify the user so they can enable it through settings. Vise versa if the condition
+     * changes, we need to dismiss the notification.
+     * @param notificationReason to inform which event is called for notification update.
+     * @param disallowReasons List of reasons why internet data is not allowed. An empty list if
+     *                       internet is allowed.
+     * @param serviceState Service state from phone
+     */
+    private void updateDataRoamingStatus(@RoamingNotificationReason int notificationReason,
+            List<DataDisallowedReason> disallowReasons, ServiceState serviceState) {
+
+        if (VDBG) Log.v(LOG_TAG, "updateDataRoamingStatus");
         String roamingNumeric = serviceState.getOperatorNumeric();
         String roamingNumericReason = "RoamingNumeric=" + roamingNumeric;
-        String callingReason = "CallingReason=" + reason;
+        String callingReason = "CallingReason=" + notificationReason;
         boolean dataIsNowRoaming = serviceState.getDataRoaming();
         boolean dataAllowed;
         boolean notAllowedDueToRoamingOff;
-        List<DataDisallowedReason> reasons = phone.getDataNetworkController()
-                .getInternetDataDisallowedReasons();
-        dataAllowed = reasons.isEmpty();
-        notAllowedDueToRoamingOff = (reasons.size() == 1
-                && reasons.contains(DataDisallowedReason.ROAMING_DISABLED));
+        dataAllowed = disallowReasons.isEmpty();
+        notAllowedDueToRoamingOff = (disallowReasons.size() == 1
+                && disallowReasons.contains(DataDisallowedReason.ROAMING_DISABLED));
         StringBuilder sb = new StringBuilder("updateDataRoamingStatus");
         sb.append(" dataAllowed=").append(dataAllowed);
-        sb.append(", reasons=").append(reasons);
+        sb.append(", disallowReasons=").append(disallowReasons);
         sb.append(", dataIsNowRoaming=").append(dataIsNowRoaming);
         sb.append(", ").append(roamingNumericReason);
         sb.append(", ").append(callingReason);
@@ -1047,8 +1114,8 @@ public class PhoneGlobals extends ContextWrapper {
 
         // Determine if a given roaming numeric has never been shown.
         boolean shownInThisNumeric = false;
-        if (reason == ROAMING_NOTIFICATION_REASON_CARRIER_CONFIG_CHANGED
-                || reason == ROAMING_NOTIFICATION_REASON_SERVICE_STATE_CHANGED) {
+        if (notificationReason == ROAMING_NOTIFICATION_REASON_CARRIER_CONFIG_CHANGED
+                || notificationReason == ROAMING_NOTIFICATION_REASON_SERVICE_STATE_CHANGED) {
             shownInThisNumeric = mShownNotificationReasons.contains(roamingNumericReason);
         }
         // Determine if a notification has never been shown by given calling reason.
@@ -1059,7 +1126,7 @@ public class PhoneGlobals extends ContextWrapper {
                 mShownNotificationReasons.add(roamingNumericReason);
             }
             if (!shownForThisReason
-                    && reason == ROAMING_NOTIFICATION_REASON_CARRIER_CONFIG_CHANGED) {
+                    && notificationReason == ROAMING_NOTIFICATION_REASON_CARRIER_CONFIG_CHANGED) {
                 mShownNotificationReasons.add(callingReason);
             }
             // No need to show it again if we never cancelled it explicitly.
@@ -1086,7 +1153,7 @@ public class PhoneGlobals extends ContextWrapper {
                 mShownNotificationReasons.add(roamingNumericReason);
             }
             if (!shownForThisReason
-                    && reason == ROAMING_NOTIFICATION_REASON_CARRIER_CONFIG_CHANGED) {
+                    && notificationReason == ROAMING_NOTIFICATION_REASON_CARRIER_CONFIG_CHANGED) {
                 mShownNotificationReasons.add(callingReason);
             }
             boolean shouldShowRoamingNotification = shouldShowRoamingNotification(roamingNumeric);
