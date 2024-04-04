@@ -3735,6 +3735,30 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
                         NORMAL_ROUTED_EMERGENCY_NUMBER));
     }
 
+    /**
+     * Verify where there are two sims, we choose the sim in emergency callback mode for the
+     * next emergency call.
+     */
+    @Test
+    public void testGetPhoneInEmergencyCallbackModeMultiSim() {
+        Phone mockPhone1 = Mockito.mock(Phone.class);
+        Phone mockPhone2 = Mockito.mock(Phone.class);
+
+        when(mPhoneFactoryProxy.getPhones()).thenReturn(
+                new Phone[] {mockPhone1, mockPhone2});
+
+        doReturn(false).when(mEmergencyStateTracker).isInEcm(eq(mockPhone1));
+        doReturn(true).when(mEmergencyStateTracker).isInEcm(eq(mockPhone2));
+
+        // Only applicable for AP domain seleciton service
+        assertNull(mTestConnectionService.getPhoneInEmergencyCallbackMode());
+
+        doReturn(true).when(mDomainSelectionResolver).isDomainSelectionSupported();
+
+        assertEquals(mockPhone2,
+                mTestConnectionService.getPhoneInEmergencyCallbackMode());
+    }
+
     private void setupMockEmergencyNumbers(Phone mockPhone, List<EmergencyNumber> numbers) {
         EmergencyNumberTracker emergencyNumberTracker = Mockito.mock(EmergencyNumberTracker.class);
         // Yuck.  There should really be a fake emergency number class which makes it easy to inject
