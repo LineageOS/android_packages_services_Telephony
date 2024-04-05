@@ -224,6 +224,9 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
     private static final Uri TEST_ADDRESS = Uri.parse("tel:+16505551212");
     private static final String TELECOM_CALL_ID1 = "TC1";
     private static final String TEST_EMERGENCY_NUMBER = "911";
+    private static final String DISCONNECT_REASON_SATELLITE_ENABLED = "SATELLITE_ENABLED";
+    private static final String DISCONNECT_REASON_CARRIER_ROAMING_SATELLITE_MODE =
+            "CARRIER_ROAMING_SATELLITE_MODE";
     private android.telecom.Connection mConnection;
 
     @Mock TelephonyConnectionService.TelephonyManagerProxy mTelephonyManagerProxy;
@@ -3475,6 +3478,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         DisconnectCause disconnectCause = mConnection.getDisconnectCause();
         assertEquals(android.telephony.DisconnectCause.SATELLITE_ENABLED,
                 disconnectCause.getTelephonyDisconnectCause());
+        assertEquals(DISCONNECT_REASON_SATELLITE_ENABLED, disconnectCause.getReason());
     }
 
     @Test
@@ -3492,6 +3496,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         DisconnectCause disconnectCause = mConnection.getDisconnectCause();
         assertEquals(android.telephony.DisconnectCause.SATELLITE_ENABLED,
                 disconnectCause.getTelephonyDisconnectCause());
+        assertEquals(DISCONNECT_REASON_CARRIER_ROAMING_SATELLITE_MODE, disconnectCause.getReason());
 
         // Call is supported while using satellite
         when(mSatelliteController.getCapabilitiesForCarrierRoamingSatelliteMode(any()))
@@ -3518,6 +3523,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         DisconnectCause disconnectCause = mConnection.getDisconnectCause();
         assertEquals(android.telephony.DisconnectCause.SATELLITE_ENABLED,
                 disconnectCause.getTelephonyDisconnectCause());
+        assertEquals(DISCONNECT_REASON_CARRIER_ROAMING_SATELLITE_MODE, disconnectCause.getReason());
 
         // Call is supported when device is connected to satellite within hysteresis time
         setupForCallTest();
