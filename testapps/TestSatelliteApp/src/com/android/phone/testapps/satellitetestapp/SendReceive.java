@@ -108,6 +108,14 @@ public class SendReceive extends Activity {
         }
 
         @Override
+        public void onSendDatagramStateChanged(
+                int datagramType, int state, int sendPendingCount, int errorCode) {
+            Log.d(TAG, "onSendDatagramStateChanged in TestApp for sendReceive: state = "
+                    + state + ", sendPendingCount =" + sendPendingCount + ", errorCode="
+                    + errorCode + ", datagramType = " + datagramType);
+        }
+
+        @Override
         public void onReceiveDatagramStateChanged(
                 int state, int receivePendingCount, int errorCode) {
             Log.d(TAG, "onReceiveDatagramStateChanged in TestApp for sendReceive: state = "
