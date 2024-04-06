@@ -23,7 +23,6 @@ import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.telephony.Rlog;
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.android.internal.telephony.uicc.IccUtils;
 
@@ -46,8 +45,8 @@ public class CarrierAllowListInfo {
     private static final String LOG_TAG = "CarrierAllowListInfo";
     private JSONObject mDataJSON;
     private static final String JSON_CHARSET = "UTF-8";
-    private static final String MESSAGE_DIGEST_ALGORITHM = "SHA1";
-    private static final String CALLER_SHA_1_ID = "callerSHA1Id";
+    private static final String MESSAGE_DIGEST_256_ALGORITHM = "SHA-256";
+    private static final String CALLER_SHA256_ID = "callerSHA256Ids";
     private static final String CALLER_CARRIER_ID = "carrierIds";
     public static final int INVALID_CARRIER_ID = -1;
 
@@ -96,7 +95,7 @@ public class CarrierAllowListInfo {
         try {
             if (mDataJSON != null && callerPackage != null) {
                 JSONObject callerJSON = mDataJSON.getJSONObject(callerPackage.trim());
-                JSONArray callerJSONArray = callerJSON.getJSONArray(CALLER_SHA_1_ID);
+                JSONArray callerJSONArray = callerJSON.getJSONArray(CALLER_SHA256_ID);
                 JSONArray carrierIdArray = callerJSON.getJSONArray(CALLER_CARRIER_ID);
 
                 Set<Integer> carrierIds = new HashSet<>();
@@ -142,7 +141,7 @@ public class CarrierAllowListInfo {
 
     /**
      * API fetches all the related signatures of the given package from the packageManager
-     * and validate all the signatures.
+     * and validate all the signatures using SHA-256.
      *
      * @param context             context
      * @param packageName         package name of the caller to validate the signatures.
@@ -158,13 +157,13 @@ public class CarrierAllowListInfo {
         }
         final PackageManager packageManager = context.getPackageManager();
         try {
-            MessageDigest sha1MDigest = MessageDigest.getInstance(MESSAGE_DIGEST_ALGORITHM);
+            MessageDigest sha256MDigest = MessageDigest.getInstance(MESSAGE_DIGEST_256_ALGORITHM);
             final PackageInfo packageInfo = packageManager.getPackageInfo(packageName,
                     PackageManager.GET_SIGNATURES);
             for (Signature signature : packageInfo.signatures) {
-                final byte[] signatureSha1 = sha1MDigest.digest(signature.toByteArray());
-                final String hexSignatureSha1 = IccUtils.bytesToHexString(signatureSha1);
-                if (!allowListSignatures.contains(hexSignatureSha1)) {
+                final byte[] signatureSha256 = sha256MDigest.digest(signature.toByteArray());
+                final String hexSignatureSha256 = IccUtils.bytesToHexString(signatureSha256);
+                if (!allowListSignatures.contains(hexSignatureSha256)) {
                     return false;
                 }
             }
@@ -214,7 +213,7 @@ public class CarrierAllowListInfo {
         if (carrierInfo != null && carrierInfo.getCallerCarrierIdList().contains(carrierId)) {
             return carrierInfo.getSHAIdList();
         }
-        Rlog.e(LOG_TAG, "getShaIdList carrierId or shaIdList is empty");
+        Rlog.e(LOG_TAG, "getShaIdList: carrierId or shaIdList is empty");
         return Collections.EMPTY_LIST;
     }
 }
