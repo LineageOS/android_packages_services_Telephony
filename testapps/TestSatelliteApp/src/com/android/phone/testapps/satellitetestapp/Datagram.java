@@ -154,6 +154,14 @@ public class Datagram extends Activity {
         }
 
         @Override
+        public void onSendDatagramStateChanged(
+                int datagramType, int state, int sendPendingCount, int errorCode) {
+            Log.d(TAG, "onSendDatagramStateChanged in TestApp: datagramType = " + datagramType
+                    + ", state =" + mTransferState + ", sendPendingCount =" + sendPendingCount
+                    + ", errorCode=" + errorCode);
+        }
+
+        @Override
         public void onReceiveDatagramStateChanged(
                 int state, int receivePendingCount, int errorCode) {
             mTransferState = state;
