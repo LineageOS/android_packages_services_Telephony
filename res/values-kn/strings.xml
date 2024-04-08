@@ -485,7 +485,7 @@
     <string name="simContacts_title" msgid="2714029230160136647">"ಆಮದು ಮಾಡಲು ಸಂಪರ್ಕಗಳು"</string>
     <string name="simContacts_airplaneMode" msgid="4654884030631503808">"ಸಿಮ್ ಕಾರ್ಡ್‌ನಿಂದ ಸಂಪರ್ಕಗಳನ್ನು ಆಮದು ಮಾಡಲು ಏರ್‌ಪ್ಲೇನ್ ಮೋಡ್ ಆಫ್ ಮಾಡಿ."</string>
     <string name="enable_pin" msgid="967674051730845376">"ಸಿಮ್‌ ಪಿನ್‌ ಸಕ್ರಿಯಗೊಳಿಸಿ/ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿ"</string>
-    <string name="change_pin" msgid="3657869530942905790">"ಸಿಮ್‌ ಪಿನ್‌ ಬದಲಾಯಿಸಿ"</string>
+    <string name="change_pin" msgid="3657869530942905790">"SIM ಪಿನ್‌ ಬದಲಾಯಿಸಿ"</string>
     <string name="enter_pin_text" msgid="3182311451978663356">"ಸಿಮ್‌ ಪಿನ್‌:"</string>
     <string name="oldPinLabel" msgid="8618515202411987721">"ಹಳೆಯ ಪಿನ್‌"</string>
     <string name="newPinLabel" msgid="3585899083055354732">"ಹೊಸ ಪಿನ್‌"</string>
