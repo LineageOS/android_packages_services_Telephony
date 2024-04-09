@@ -25,6 +25,11 @@
         <item name="android:navigationBarDividerColor">@color/dialer_divider_color</item>
         <item name="android:colorAccent">@color/dialer_theme_color</item>
         <item name="android:dialogTheme">@style/DialerAlertDialogTheme</item>
+
+        <!--
+            TODO(b/309578419): Make activities handle insets properly and then remove this.
+        -->
+        <item name="android:windowOptOutEdgeToEdgeEnforcement">true</item>
     </style>
 
     <style name="EmergencyInfoNameTextAppearance"
