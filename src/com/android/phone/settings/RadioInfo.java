@@ -205,6 +205,10 @@ public class RadioInfo extends AppCompatActivity {
         Log.d(TAG, s);
     }
 
+    private static void loge(String s) {
+        Log.e(TAG, s);
+    }
+
     private static final int EVENT_QUERY_SMSC_DONE = 1005;
     private static final int EVENT_UPDATE_SMSC_DONE = 1006;
     private static final int EVENT_PHYSICAL_CHANNEL_CONFIG_CHANGED = 1007;
@@ -262,6 +266,7 @@ public class RadioInfo extends AppCompatActivity {
     private EditText mSmsc;
     private Switch mRadioPowerOnSwitch;
     private Switch mSimulateOutOfServiceSwitch;
+    private Switch mMockSatellite;
     private Button mDnsCheckToggleButton;
     private Button mPingTestButton;
     private Button mUpdateSmscButton;
@@ -296,6 +301,7 @@ public class RadioInfo extends AppCompatActivity {
     private boolean mMwiValue = false;
     private boolean mCfiValue = false;
 
+    private final PersistableBundle[] mCarrierSatelliteOriginalBundle = new PersistableBundle[2];
     private List<CellInfo> mCellInfoResult = null;
     private final boolean[] mSimulateOos = new boolean[2];
 
@@ -633,6 +639,11 @@ public class RadioInfo extends AppCompatActivity {
             mSimulateOutOfServiceSwitch.setVisibility(View.GONE);
         }
 
+        mMockSatellite = (Switch) findViewById(R.id.mock_carrier_roaming_satellite);
+        if (!TelephonyUtils.IS_DEBUGGABLE) {
+            mMockSatellite.setVisibility(View.GONE);
+        }
+
         mDownlinkKbps = (TextView) findViewById(R.id.dl_kbps);
         mUplinkKbps = (TextView) findViewById(R.id.ul_kbps);
         updateBandwidths(0, 0);
@@ -743,8 +754,10 @@ public class RadioInfo extends AppCompatActivity {
         mSelectPhoneIndex.setOnItemSelectedListener(mSelectPhoneIndexHandler);
 
         mRadioPowerOnSwitch.setOnCheckedChangeListener(mRadioPowerOnChangeListener);
-        mSimulateOutOfServiceSwitch.setOnCheckedChangeListener(mSimulateOosOnChangeListener);
         mSimulateOutOfServiceSwitch.setChecked(mSimulateOos[mPhone.getPhoneId()]);
+        mSimulateOutOfServiceSwitch.setOnCheckedChangeListener(mSimulateOosOnChangeListener);
+        mMockSatellite.setChecked(mCarrierSatelliteOriginalBundle[mPhone.getPhoneId()] != null);
+        mMockSatellite.setOnCheckedChangeListener(mMockSatelliteListener);
         mImsVolteProvisionedSwitch.setOnCheckedChangeListener(mImsVolteCheckedChangeListener);
         mImsVtProvisionedSwitch.setOnCheckedChangeListener(mImsVtCheckedChangeListener);
         mImsWfcProvisionedSwitch.setOnCheckedChangeListener(mImsWfcCheckedChangeListener);
@@ -856,9 +869,19 @@ public class RadioInfo extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
+        clearOverride();
         super.onDestroy();
         if (mQueuedWork != null) {
             mQueuedWork.shutdown();
+        }
+    }
+
+    private void clearOverride() {
+        if (mSimulateOutOfServiceSwitch.isChecked()) {
+            mSimulateOosOnChangeListener.onCheckedChanged(mSimulateOutOfServiceSwitch, false);
+        }
+        if (mMockSatellite.isChecked()) {
+            mMockSatelliteListener.onCheckedChanged(mMockSatellite, false);
         }
     }
 
@@ -1294,7 +1317,7 @@ public class RadioInfo extends AppCompatActivity {
                     resultFuture.get(DEFAULT_TIMEOUT_MS, MILLISECONDS);
             mNetworkSlicingConfig.setText(networkSlicingConfig.toString());
         } catch (ExecutionException | InterruptedException | TimeoutException e) {
-            Log.e(TAG, "Unable to get slicing config: " + e.toString());
+            loge("Unable to get slicing config: " + e);
             mNetworkSlicingConfig.setText("Unable to get slicing config.");
         }
 
@@ -1715,6 +1738,69 @@ public class RadioInfo extends AppCompatActivity {
 
         mPhone.getTelephonyTester().setServiceStateTestIntent(intent);
     };
+
+    private final OnCheckedChangeListener mMockSatelliteListener =
+            (buttonView, isChecked) -> {
+                if (mPhone != null) {
+                    CarrierConfigManager cm = mPhone.getContext()
+                            .getSystemService(CarrierConfigManager.class);
+                    if (cm == null) return;
+                    if (isChecked) {
+                        String operatorNumeric = mPhone.getOperatorNumeric();
+                        TelephonyManager tm;
+                        if (TextUtils.isEmpty(operatorNumeric) && (tm = mPhone.getContext()
+                                .getSystemService(TelephonyManager.class)) != null) {
+                            operatorNumeric = tm.getSimOperatorNumericForPhone(mPhone.getPhoneId());
+                        }
+                        if (TextUtils.isEmpty(operatorNumeric)) {
+                            loge("mMockSatelliteListener: Can't mock because no operator for phone "
+                                    + mPhone.getPhoneId());
+                            mMockSatellite.setChecked(false);
+                            return;
+                        }
+                        PersistableBundle originalBundle = cm.getConfigForSubId(mPhone.getSubId(),
+                                CarrierConfigManager.KEY_SATELLITE_ATTACH_SUPPORTED_BOOL,
+                                CarrierConfigManager.KEY_SATELLITE_ENTITLEMENT_SUPPORTED_BOOL,
+                                CarrierConfigManager
+                                        .KEY_CARRIER_SUPPORTED_SATELLITE_SERVICES_PER_PROVIDER_BUNDLE
+                        );
+                        PersistableBundle overrideBundle = new PersistableBundle();
+                        overrideBundle.putBoolean(
+                                CarrierConfigManager.KEY_SATELLITE_ATTACH_SUPPORTED_BOOL, true);
+                        overrideBundle.putBoolean(CarrierConfigManager
+                                .KEY_SATELLITE_ENTITLEMENT_SUPPORTED_BOOL, false);
+                        PersistableBundle capableProviderBundle = new PersistableBundle();
+                        capableProviderBundle.putIntArray(mPhone.getOperatorNumeric(), new int[]{
+                                // Currently satellite only supports below
+                                NetworkRegistrationInfo.SERVICE_TYPE_SMS,
+                                NetworkRegistrationInfo.SERVICE_TYPE_EMERGENCY
+                        });
+                        overrideBundle.putPersistableBundle(CarrierConfigManager
+                                .KEY_CARRIER_SUPPORTED_SATELLITE_SERVICES_PER_PROVIDER_BUNDLE,
+                                capableProviderBundle);
+                        log("mMockSatelliteListener: new " + overrideBundle);
+                        log("mMockSatelliteListener: old " + originalBundle);
+                        cm.overrideConfig(mPhone.getSubId(), overrideBundle, false);
+                        mCarrierSatelliteOriginalBundle[mPhone.getPhoneId()] = originalBundle;
+                    } else {
+                        try {
+                            cm.overrideConfig(mPhone.getSubId(),
+                                    mCarrierSatelliteOriginalBundle[mPhone.getPhoneId()], false);
+                            mCarrierSatelliteOriginalBundle[mPhone.getPhoneId()] = null;
+                            log("mMockSatelliteListener: Successfully cleared mock for phone "
+                                    + mPhone.getPhoneId());
+                        } catch (Exception e) {
+                            loge("mMockSatelliteListener: Can't clear mock because invalid sub Id "
+                                    + mPhone.getSubId()
+                                    + ", insert SIM and use adb shell cmd phone cc clear-values");
+                            // Keep show toggle ON if the view is not destroyed. If destroyed, must
+                            // use cmd to reset, because upon creation the view doesn't remember the
+                            // last toggle state while override mock is still in place.
+                            mMockSatellite.setChecked(true);
+                        }
+                    }
+                }
+            };
 
     private boolean isImsVolteProvisioned() {
         return getImsConfigProvisionedState(MmTelFeature.MmTelCapabilities.CAPABILITY_TYPE_VOICE,
