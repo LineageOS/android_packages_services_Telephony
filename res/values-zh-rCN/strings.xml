@@ -561,7 +561,7 @@
     <string name="emergency_information_hint" msgid="9208897544917793012">"急救信息"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"所有者"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"再次点按即可查看信息"</string>
-    <string name="emergency_enable_radio_dialog_title" msgid="2667568200755388829">"紧急呼救"</string>
+    <string name="emergency_enable_radio_dialog_title" msgid="2667568200755388829">"紧急呼叫"</string>
     <string name="single_emergency_number_title" msgid="8413371079579067196">"紧急电话号码"</string>
     <string name="numerous_emergency_numbers_title" msgid="8972398932506755510">"紧急电话号码"</string>
     <string name="emergency_call_shortcut_hint" msgid="1290485125107779500">"再次点按即可呼叫 <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g>"</string>
@@ -670,7 +670,7 @@
     <string name="enable_video_calling_dialog_msg" msgid="7141478720386203540">"要开启视频通话功能，您需要在网络设置中启用增强型 4G LTE 模式。"</string>
     <string name="enable_video_calling_dialog_settings" msgid="8697890611305307110">"网络设置"</string>
     <string name="enable_video_calling_dialog_close" msgid="4298929725917045270">"关闭"</string>
-    <string name="sim_label_emergency_calls" msgid="9078241989421522310">"紧急呼救"</string>
+    <string name="sim_label_emergency_calls" msgid="9078241989421522310">"紧急呼叫"</string>
     <string name="sim_description_emergency_calls" msgid="5146872803938897296">"只能拨打紧急呼救电话"</string>
     <string name="sim_description_default" msgid="7474671114363724971">"SIM 卡，插槽：<xliff:g id="SLOT_ID">%s</xliff:g>"</string>
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"无障碍功能"</string>
@@ -853,7 +853,7 @@
     <string name="radio_info_ims_reg_status" msgid="25582845222446390">"IMS 注册：<xliff:g id="STATUS">%1$s</xliff:g>\nLTE 语音通话：<xliff:g id="AVAILABILITY_0">%2$s</xliff:g>\nWLAN 语音通话：<xliff:g id="AVAILABILITY_1">%3$s</xliff:g>\n视频通话：<xliff:g id="AVAILABILITY_2">%4$s</xliff:g>\nUT 接口：<xliff:g id="AVAILABILITY_3">%5$s</xliff:g>"</string>
     <string name="radioInfo_service_in" msgid="45753418231446400">"服务中"</string>
     <string name="radioInfo_service_out" msgid="287972405416142312">"不在服务区"</string>
-    <string name="radioInfo_service_emergency" msgid="4763879891415016848">"只能拨打紧急呼救电话"</string>
+    <string name="radioInfo_service_emergency" msgid="4763879891415016848">"只能拨打紧急呼叫电话"</string>
     <string name="radioInfo_service_off" msgid="3456583511226783064">"关闭无线装置"</string>
     <string name="radioInfo_roaming_in" msgid="3156335577793145965">"漫游"</string>
     <string name="radioInfo_roaming_not" msgid="1904547918725478110">"未使用漫游服务"</string>

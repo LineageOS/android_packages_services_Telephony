@@ -881,7 +881,7 @@
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Alla information om mastmätning:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"Datatjänst:"</string>
     <string name="radio_info_roaming_label" msgid="6636932886446857120">"Roaming:"</string>
-    <string name="radio_info_imei_label" msgid="8947899706930120368">"IMEI-kod:"</string>
+    <string name="radio_info_imei_label" msgid="8947899706930120368">"IMEI-nummer:"</string>
     <string name="radio_info_call_redirect_label" msgid="4526480903023362276">"Vidarekoppling av samtal:"</string>
     <string name="radio_info_ppp_resets_label" msgid="9131901102339077661">"Antal återställningar av köpkraftsparitet sedan start:"</string>
     <string name="radio_info_current_network_label" msgid="3052098695239642450">"Aktuellt nätverk:"</string>
