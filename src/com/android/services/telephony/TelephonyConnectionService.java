@@ -1192,6 +1192,11 @@ public class TelephonyConnectionService extends ConnectionService {
                             && phone.getHalVersion(HAL_SERVICE_VOICE)
                             .less(RIL.RADIO_HAL_VERSION_1_4);
                     if (mDomainSelectionResolver.isDomainSelectionSupported()) {
+                        if (resultConnection != null
+                                && resultConnection.getState() == Connection.STATE_DISCONNECTED) {
+                            // Dialing is discarded.
+                            return true;
+                        }
                         if (isEmergencyNumber && phone == phoneForEmergency) {
                             // Since the domain selection service is enabled,
                             // dilaing normal routing emergency number only reaches here.
@@ -1387,6 +1392,11 @@ public class TelephonyConnectionService extends ConnectionService {
             Log.i(this, "Call disconnected before the outgoing call was placed. Skipping call "
                     + "placement.");
             if (isEmergencyNumber) {
+                if (mDomainSelectionResolver.isDomainSelectionSupported()
+                        && mDeviceState.isAirplaneModeOn(this)) {
+                    mIsEmergencyCallPending = false;
+                    return;
+                }
                 // If call is already canceled by the user, notify modem to exit emergency call
                 // mode by sending radio on with forEmergencyCall=false.
                 for (Phone curPhone : mPhoneFactoryProxy.getPhones()) {
