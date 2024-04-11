@@ -485,7 +485,7 @@
     <string name="simContacts_title" msgid="2714029230160136647">"インポートする連絡先の選択"</string>
     <string name="simContacts_airplaneMode" msgid="4654884030631503808">"SIMカードから連絡先をインポートするには機内モードをオフにしてください。"</string>
     <string name="enable_pin" msgid="967674051730845376">"SIM PINの有効/無効"</string>
-    <string name="change_pin" msgid="3657869530942905790">"SIM PINの変更"</string>
+    <string name="change_pin" msgid="3657869530942905790">"SIM PIN を変更"</string>
     <string name="enter_pin_text" msgid="3182311451978663356">"SIM PIN:"</string>
     <string name="oldPinLabel" msgid="8618515202411987721">"古いPIN"</string>
     <string name="newPinLabel" msgid="3585899083055354732">"新しいPIN"</string>

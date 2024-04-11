@@ -486,7 +486,7 @@
     <string name="simContacts_airplaneMode" msgid="4654884030631503808">"Skakel vliegtuigmodus af om kontakte van die SIM-kaart af in te voer."</string>
     <string name="enable_pin" msgid="967674051730845376">"Aktiveer/deaktiveer SIM-PIN"</string>
     <string name="change_pin" msgid="3657869530942905790">"Verander SIM-PIN"</string>
-    <string name="enter_pin_text" msgid="3182311451978663356">"SIM PIN:"</string>
+    <string name="enter_pin_text" msgid="3182311451978663356">"SIM-PIN:"</string>
     <string name="oldPinLabel" msgid="8618515202411987721">"Ou PIN"</string>
     <string name="newPinLabel" msgid="3585899083055354732">"Nuwe PIN"</string>
     <string name="confirmPinLabel" msgid="7783531218662473778">"Bevestig nuwe PIN"</string>

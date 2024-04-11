@@ -485,8 +485,8 @@
     <string name="simContacts_title" msgid="2714029230160136647">"Избери контакти за увоз"</string>
     <string name="simContacts_airplaneMode" msgid="4654884030631503808">"Исклучете го авионскиот режим за да ги увезете контактите од SIM-картичката."</string>
     <string name="enable_pin" msgid="967674051730845376">"Овозможи/оневозможи PIN на SIM"</string>
-    <string name="change_pin" msgid="3657869530942905790">"Промени PIN на SIM"</string>
-    <string name="enter_pin_text" msgid="3182311451978663356">"PIN на SIM:"</string>
+    <string name="change_pin" msgid="3657869530942905790">"Променете PIN за SIM-картичката"</string>
+    <string name="enter_pin_text" msgid="3182311451978663356">"PIN за SIM-картичката:"</string>
     <string name="oldPinLabel" msgid="8618515202411987721">"Стар PIN"</string>
     <string name="newPinLabel" msgid="3585899083055354732">"Нов PIN"</string>
     <string name="confirmPinLabel" msgid="7783531218662473778">"Потврди нов PIN"</string>

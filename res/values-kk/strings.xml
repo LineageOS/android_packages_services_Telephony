@@ -194,7 +194,7 @@
     <string name="choose_network_title" msgid="5335832663422653082">"Желі таңдау"</string>
     <string name="network_disconnected" msgid="8844141106841160825">"Желіге жалғанбаған"</string>
     <string name="network_connected" msgid="2760235679963580224">"Қосылды"</string>
-    <string name="network_connecting" msgid="160901383582774987">"Қосылуда…"</string>
+    <string name="network_connecting" msgid="160901383582774987">"Қосылып жатыр…"</string>
     <string name="network_could_not_connect" msgid="6547460848093727998">"Қосылмады"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="4531933377509551889">"GSM/WCDMA таңдалған"</item>
