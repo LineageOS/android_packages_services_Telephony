@@ -559,7 +559,8 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"Не може да се извършват обаждания."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"Свържете се с безжична мрежа, за да осъществите обаждане."</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"За да извършите обаждане, активирайте обажданията през Wi-Fi."</string>
-    <string name="incall_error_satellite_enabled" msgid="1936541518147323016">"Деактивирайте сателитния режим, за да извършите обаждане."</string>
+    <string name="incall_error_satellite_enabled" msgid="5247740814607087814">"За да извършите обаждане, първо прекратете сателитната връзка."</string>
+    <string name="incall_error_carrier_roaming_satellite_mode" msgid="678603203562886361">"Можете да изпращате и получавате съобщения без мобилна или Wi-Fi мрежа."</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"Информация за спешни случаи"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"Собственик"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"Докоснете отново, за да видите информация"</string>

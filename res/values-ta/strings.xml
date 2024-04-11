@@ -559,7 +559,8 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"அழைப்புகளை ஹோல்டு செய்ய முடியாது."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"அழைக்க, வயர்லெஸ் நெட்வொர்க்குடன் இணைக்கவும்."</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"அழைக்க, வைஃபை அழைப்பை இயக்கவும்."</string>
-    <string name="incall_error_satellite_enabled" msgid="1936541518147323016">"அழைப்பை மேற்கொள்ள சாட்டிலைட் பயன்முறையை முடக்கவும்."</string>
+    <string name="incall_error_satellite_enabled" msgid="5247740814607087814">"அழைக்க, முதலில் சாட்டிலைட் இணைப்பை ஆஃப் செய்யவும்."</string>
+    <string name="incall_error_carrier_roaming_satellite_mode" msgid="678603203562886361">"மொபைல்/வைஃபை நெட்வொர்க் இல்லாமல் நீங்கள் மெசேஜ்களை அனுப்பலாம் பெறலாம்."</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"அவசரத் தகவல்"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"உரிமையாளர்"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"தகவலைப் பார்க்க, மீண்டும் தட்டவும்"</string>

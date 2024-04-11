@@ -559,7 +559,8 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"Не можна призупиняти виклики."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"Щоб зателефонувати, під’єднайтеся до бездротової мережі."</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"Щоб мати змогу телефонувати, увімкніть виклики через Wi-Fi."</string>
-    <string name="incall_error_satellite_enabled" msgid="1936541518147323016">"Щоб зателефонувати, вимкніть режим супутника."</string>
+    <string name="incall_error_satellite_enabled" msgid="5247740814607087814">"Щоб зателефонувати, спершу відключіть супутниковий зв’язок."</string>
+    <string name="incall_error_carrier_roaming_satellite_mode" msgid="678603203562886361">"Ви можете надсилати й отримувати повідомлення, не використовуючи Wi-Fi або мобільну мережу."</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"Дані для екстрених випадків"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"Власник"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"Торкніться ще раз, щоб переглянути відомості"</string>

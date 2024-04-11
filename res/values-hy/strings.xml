@@ -559,7 +559,8 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"Հնարավոր չէ հետաձգել զանգերը:"</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"Զանգ կատարելու համար միացեք անլար ցանցին:"</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"Զանգ կատարելու համար միացրեք «Զանգեր Wi-Fi ցանցի միջոցով» գործառույթը:"</string>
-    <string name="incall_error_satellite_enabled" msgid="1936541518147323016">"Զանգ կատարելու համար անջատեք արբանյակի ռեժիմը։"</string>
+    <string name="incall_error_satellite_enabled" msgid="5247740814607087814">"Զանգ կատարելու համար նախ անջատեք արբանյակային կապը։"</string>
+    <string name="incall_error_carrier_roaming_satellite_mode" msgid="678603203562886361">"Դուք կարող եք ուղարկել և ստանալ հաղորդագրություններ՝ առանց բջջային կամ Wi-Fi կապի։"</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"Անհետաձգելի բուժօգնության տվյալներ"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"Սեփականատեր"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"Կրկին հպեք՝ տեղեկությունները դիտելու համար"</string>

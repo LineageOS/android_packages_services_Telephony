@@ -559,7 +559,8 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"Opkald kan ikke sættes i venteposition."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"Opret forbindelse til et trådløst netværk for at foretage et opkald."</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"Aktivér Wi-Fi-opkald for at foretage et opkald."</string>
-    <string name="incall_error_satellite_enabled" msgid="1936541518147323016">"Deaktiver satellit for at foretage et opkald."</string>
+    <string name="incall_error_satellite_enabled" msgid="5247740814607087814">"Hvis du vil foretage et opkald, skal du først afslutte satellitforbindelsen."</string>
+    <string name="incall_error_carrier_roaming_satellite_mode" msgid="678603203562886361">"Du kan sende og modtage beskeder uden et mobil- eller Wi-Fi-netværk."</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"Nødoplysninger"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"Ejer"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"Tryk igen for at se oplysninger"</string>

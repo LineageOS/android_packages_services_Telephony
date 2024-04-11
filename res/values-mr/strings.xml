@@ -559,7 +559,8 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"कॉल सुरू ठेवू शकत नाही."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"कॉल करण्‍यासाठी वायरलेस नेटवर्कशी कनेक्‍ट करा."</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"कॉल करण्यासाठी वाय-फाय कॉलिंग सक्षम करा."</string>
-    <string name="incall_error_satellite_enabled" msgid="1936541518147323016">"कॉल करण्यासाठी उपग्रह मोड बंद करा."</string>
+    <string name="incall_error_satellite_enabled" msgid="5247740814607087814">"कॉल करण्यासाठी, सर्वप्रथम उपग्रह कनेक्शन बंद करा."</string>
+    <string name="incall_error_carrier_roaming_satellite_mode" msgid="678603203562886361">"तुम्ही मोबाइल किंवा वाय-फाय नेटवर्कशिवाय मेसेज पाठवू आणि मिळवू शकता."</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"अतिमहत्त्वाची माहिती"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"मालक"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"माहिती पाहण्यासाठी पुन्हा टॅप करा"</string>

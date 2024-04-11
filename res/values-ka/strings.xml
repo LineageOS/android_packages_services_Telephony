@@ -559,7 +559,8 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"ზარების დაყოვნება ვერ ხერხდება."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"ზარის განსახორციელებლად, დაუკავშირდით უსადენო ქსელს."</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"ზარის განსახორციელებლად ჩართეთ Wi-Fi დარეკვა."</string>
-    <string name="incall_error_satellite_enabled" msgid="1936541518147323016">"დასარეკად გამორთეთ სატელიტის რეჟიმი."</string>
+    <string name="incall_error_satellite_enabled" msgid="5247740814607087814">"დასარეკად ჯერ დაასრულეთ სატელიტური კავშირი."</string>
+    <string name="incall_error_carrier_roaming_satellite_mode" msgid="678603203562886361">"შეგიძლიათ გაგზავნოთ და მიიღოთ შეტყობინებები მობილური ან Wi-Fi ქსელის გარეშე."</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"საგანგებო ინფორმაცია"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"მფლობელი"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"ინფორმაციის სანახავად შეეხეთ ხელახლა"</string>

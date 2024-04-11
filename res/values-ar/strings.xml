@@ -559,7 +559,8 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"يتعذر وضع المكالمات قيد الانتظار."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"اتصل بشبكة لاسلكية لإجراء مكالمة."</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"‏يمكنك تفعيل اتصال Wi-Fi لإجراء مكالمة."</string>
-    <string name="incall_error_satellite_enabled" msgid="1936541518147323016">"يجب إيقاف وضع القمر الصناعي لإجراء مكالمة."</string>
+    <string name="incall_error_satellite_enabled" msgid="5247740814607087814">"لإجراء مكالمة، عليك أولاً إنهاء اتصال القمر الصناعي."</string>
+    <string name="incall_error_carrier_roaming_satellite_mode" msgid="678603203562886361">"‏يمكنك إرسال الرسائل واستلامها بدون شبكة الجوّال أو شبكة Wi-Fi."</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"معلومات الطوارئ"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"المالك"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"انقر مجددًا لعرض المعلومات."</string>

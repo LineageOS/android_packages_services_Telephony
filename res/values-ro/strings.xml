@@ -559,7 +559,8 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"Apelurile nu pot fi puse în așteptare."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"Pentru a apela, conectează-te la o rețea wireless."</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"Activează apelarea prin Wi-Fi pentru a iniția un apel."</string>
-    <string name="incall_error_satellite_enabled" msgid="1936541518147323016">"Dezactivează modul Satelit pentru a apela."</string>
+    <string name="incall_error_satellite_enabled" msgid="5247740814607087814">"Pentru a apela, mai întâi încheie conexiunea prin satelit."</string>
+    <string name="incall_error_carrier_roaming_satellite_mode" msgid="678603203562886361">"Poți să trimiți și să primești mesaje fără o rețea mobilă sau Wi-Fi."</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"Informații în caz de urgență"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"Proprietar"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"Atinge din nou pentru a vedea informațiile"</string>

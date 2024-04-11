@@ -559,7 +559,8 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"Não é possível colocar chamadas em espera."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"Conecte-se a uma rede sem fio para fazer uma chamada."</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"Ative as chamadas por Wi-Fi para fazer uma chamada."</string>
-    <string name="incall_error_satellite_enabled" msgid="1936541518147323016">"Desative o modo satélite para fazer uma ligação."</string>
+    <string name="incall_error_satellite_enabled" msgid="5247740814607087814">"Para fazer uma ligação, encerre a conexão por satélite."</string>
+    <string name="incall_error_carrier_roaming_satellite_mode" msgid="678603203562886361">"Você pode enviar e receber mensagens sem um dispositivo móvel ou uma rede Wi-Fi."</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"Informações de emergência"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"Proprietário"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"Toque novamente para ver as informações"</string>
