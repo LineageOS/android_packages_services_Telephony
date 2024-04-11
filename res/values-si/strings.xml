@@ -559,7 +559,8 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"ඇමතුම් රඳවා තැබීමට නොහැකිය."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"ඇමතුමක් ගැනීමට රැහැන් රහිත ජාලයක් වෙත සම්බන්ධ වෙන්න."</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"ඇමතුමක් කිරීමට Wi-Fi ඇමතීම සබල කරන්න."</string>
-    <string name="incall_error_satellite_enabled" msgid="1936541518147323016">"ඇමතුමක් ගැනීමට චන්ද්‍රිකා ප්‍රකාරය ක්‍රියාවිරහිත කරන්න."</string>
+    <string name="incall_error_satellite_enabled" msgid="5247740814607087814">"ඇමතුමක් ගැනීමට, පළමුව චන්ද්‍රිකා සම්බන්ධතාව නිමා කරන්න."</string>
+    <string name="incall_error_carrier_roaming_satellite_mode" msgid="678603203562886361">"ඔබට ජංගම හෝ Wi-Fi ජාලයක් නොමැතිව පණිවිඩ යැවීමට සහ ලැබීමට හැක."</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"හදිසි අවස්ථා තොරතුරු"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"හිමිකරු"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"තොරතුරු බැලීම සඳහා නැවත තට්ටු කරන්න"</string>

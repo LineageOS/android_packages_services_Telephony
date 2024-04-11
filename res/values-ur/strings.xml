@@ -559,7 +559,8 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"کالز کو ہولڈ نہیں کیا جا سکتا۔"</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"کال کرنے کیلئے کسی وائرلیس نیٹ ورک سے منسلک ہوں۔"</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"‏کال کرنے کیلئے Wi-Fi کالنگ فعال کریں۔"</string>
-    <string name="incall_error_satellite_enabled" msgid="1936541518147323016">"کال کرنے کیلئے سیٹلائٹ موڈ کو غیرفعال کریں"</string>
+    <string name="incall_error_satellite_enabled" msgid="5247740814607087814">"کال کرنے کے لیے، پہلے سیٹلائٹ کنکشن ختم کریں۔"</string>
+    <string name="incall_error_carrier_roaming_satellite_mode" msgid="678603203562886361">"‏آپ موبائل یا Wi-Fi نیٹ ورک کے بغیر پیغامات بھیج اور موصول کر سکتے ہیں۔"</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"ایمرجنسی معلومات"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"مالک"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"معلومات دیکھنے کیلئے دوبارہ تھپتھپائیں"</string>

@@ -559,7 +559,8 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"Det går inte att hålla kvar samtal."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"Anslut till ett trådlöst nätverk om du vill ringa."</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"Aktivera wifi-samtal för att ringa."</string>
-    <string name="incall_error_satellite_enabled" msgid="1936541518147323016">"Inaktivera satellitläget om du vill ringa ett samtal."</string>
+    <string name="incall_error_satellite_enabled" msgid="5247740814607087814">"Om du vill ringa ett samtal måste du först avsluta satellitanslutningen."</string>
+    <string name="incall_error_carrier_roaming_satellite_mode" msgid="678603203562886361">"Du kan skicka och ta emot meddelanden utan mobil- eller wifi-nätverk."</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"Nödinformation"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"Ägare"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"Tryck igen för att visa information"</string>
@@ -883,7 +884,7 @@
     <string name="radio_info_cellinfo_label" msgid="8199062974670377659">"Alla information om mastmätning:"</string>
     <string name="radio_info_gprs_service_label" msgid="6819204246355412952">"Datatjänst:"</string>
     <string name="radio_info_roaming_label" msgid="6636932886446857120">"Roaming:"</string>
-    <string name="radio_info_imei_label" msgid="8947899706930120368">"IMEI-kod:"</string>
+    <string name="radio_info_imei_label" msgid="8947899706930120368">"IMEI-nummer:"</string>
     <string name="radio_info_call_redirect_label" msgid="4526480903023362276">"Vidarekoppling av samtal:"</string>
     <string name="radio_info_ppp_resets_label" msgid="9131901102339077661">"Antal återställningar av köpkraftsparitet sedan start:"</string>
     <string name="radio_info_current_network_label" msgid="3052098695239642450">"Aktuellt nätverk:"</string>

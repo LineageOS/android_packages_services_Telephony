@@ -559,7 +559,8 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"Чалууну кармап туруу мүмкүн эмес."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"Чалуу үчүн зымсыз тармакка туташыңыз."</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"Wi-Fi аркылуу чалыңыз."</string>
-    <string name="incall_error_satellite_enabled" msgid="1936541518147323016">"Чалуу үчүн спутникти өчүрүңүз."</string>
+    <string name="incall_error_satellite_enabled" msgid="5247740814607087814">"Чалуу үчүн, адегенде спутникке туташыңыз."</string>
+    <string name="incall_error_carrier_roaming_satellite_mode" msgid="678603203562886361">"Мобилдик же Wi-Fi тармагы жок эле билдирүүлөрдү жөнөтүп, ала аласыз."</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"Кырсыктаганда керек болчу маалымат"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"Ээси"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"Маалыматты көрүү үчүн кайра таптап коюңуз"</string>

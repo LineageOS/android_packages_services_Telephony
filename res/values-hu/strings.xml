@@ -559,7 +559,8 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"A hívások nem tarthatók."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"Hívás indításához csatlakozzon egy vezeték nélküli hálózathoz."</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"Engedélyezze a Wi-Fi-hívást a hívásindításhoz."</string>
-    <string name="incall_error_satellite_enabled" msgid="1936541518147323016">"Hívás indításához kapcsolja ki a műholdas módot."</string>
+    <string name="incall_error_satellite_enabled" msgid="5247740814607087814">"Hívás indításához először szakítsa meg a műholdas kapcsolatot."</string>
+    <string name="incall_error_carrier_roaming_satellite_mode" msgid="678603203562886361">"Küldhet és fogadhat üzeneteket mobil- és Wi-Fi-hálózat nélkül is."</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"Segélyhívási információk"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"Tulajdonos"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"Koppints újra az információk megtekintéséhez"</string>

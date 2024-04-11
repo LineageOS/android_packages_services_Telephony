@@ -559,7 +559,8 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"ਕਾਲਾਂ ਹੋਲਡ ਨਹੀਂ ਕੀਤੀਆਂ ਜਾ ਸਕਦੀਆਂ ਹਨ।"</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"ਇੱਕ ਕਾਲ ਕਰਨ ਲਈ ਇੱਕ ਵਾਇਰਲੈਸ ਨੈਟਵਰਕ ਨਾਲ ਕਨੈਕਟ ਕਰੋ।"</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"ਇੱਕ ਕਾਲ ਕਰਨ ਲਈ Wi-Fi ਕਾਲਿੰਗ ਯੋਗ ਬਣਾਓ।"</string>
-    <string name="incall_error_satellite_enabled" msgid="1936541518147323016">"ਕਾਲ ਕਰਨ ਲਈ ਉਪਗ੍ਰਹਿ ਮੋਡ ਬੰਦ ਕਰੋ।"</string>
+    <string name="incall_error_satellite_enabled" msgid="5247740814607087814">"ਕਾਲ ਕਰਨ ਲਈ, ਪਹਿਲਾਂ ਉਪਗ੍ਰਹਿ ਕਨੈਕਸ਼ਨ ਬੰਦ ਕਰੋ।"</string>
+    <string name="incall_error_carrier_roaming_satellite_mode" msgid="678603203562886361">"ਤੁਸੀਂ ਮੋਬਾਈਲ ਜਾਂ ਵਾਈ-ਫਾਈ ਨੈੱਟਵਰਕ ਤੋਂ ਬਿਨਾਂ ਸੁਨੇਹੇ ਭੇਜ ਅਤੇ ਪ੍ਰਾਪਤ ਕਰ ਸਕਦੇ ਹੋ।"</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"ਸੰਕਟਕਾਲੀਨ ਜਾਣਕਾਰੀ"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"ਮਾਲਕ"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"ਜਾਣਕਾਰੀ ਦੇਖਣ ਲਈ ਦੁਬਾਰਾ ਟੈਪ ਕਰੋ"</string>

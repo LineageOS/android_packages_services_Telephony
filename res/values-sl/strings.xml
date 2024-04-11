@@ -559,7 +559,8 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"Klicev ni mogoče zadržati."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"Povežite se v omrežje Wi-Fi, če želite opraviti klic."</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"Če želite opraviti klic, omogočite klicanja prek Wi-Fi-ja."</string>
-    <string name="incall_error_satellite_enabled" msgid="1936541518147323016">"Če želite opraviti klic, onemogočite satelitski način."</string>
+    <string name="incall_error_satellite_enabled" msgid="5247740814607087814">"Če želite opraviti klic, najprej prekinite satelitsko povezavo."</string>
+    <string name="incall_error_carrier_roaming_satellite_mode" msgid="678603203562886361">"Sporočila SMS lahko pošiljate in prejemate brez mobilnega omrežja ali omrežja Wi-Fi."</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"Informacije za nujne primere"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"Lastnik"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"Znova se dotaknite, da si ogledate podatke"</string>

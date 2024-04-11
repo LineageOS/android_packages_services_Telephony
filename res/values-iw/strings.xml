@@ -485,7 +485,7 @@
     <string name="simContacts_title" msgid="2714029230160136647">"בחירת אנשי קשר לייבוא"</string>
     <string name="simContacts_airplaneMode" msgid="4654884030631503808">"‏יש לבטל את מצב טיסה כדי לייבא אנשי קשר מכרטיס ה-SIM."</string>
     <string name="enable_pin" msgid="967674051730845376">"‏הפעלה/השבתה של קוד האימות של SIM"</string>
-    <string name="change_pin" msgid="3657869530942905790">"‏שינוי קוד אימות של SIM"</string>
+    <string name="change_pin" msgid="3657869530942905790">"‏שינוי קוד הגישה של ה-SIM"</string>
     <string name="enter_pin_text" msgid="3182311451978663356">"‏קוד אימות של SIM:"</string>
     <string name="oldPinLabel" msgid="8618515202411987721">"קוד אימות ישן"</string>
     <string name="newPinLabel" msgid="3585899083055354732">"קוד אימות חדש"</string>
@@ -559,7 +559,8 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"לא ניתן להחזיק שיחות."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"יש להתחבר לרשת אלחוטית כדי לבצע שיחה."</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"‏יש להפעיל את \'שיחות Wi-Fi\' כדי להתקשר."</string>
-    <string name="incall_error_satellite_enabled" msgid="1936541518147323016">"כדי להתקשר, צריך להפסיק את השימוש במצב לוויין."</string>
+    <string name="incall_error_satellite_enabled" msgid="5247740814607087814">"כדי להתקשר, צריך להתנתק מהחיבור הלווייני."</string>
+    <string name="incall_error_carrier_roaming_satellite_mode" msgid="678603203562886361">"‏אפשר לשלוח ולקבל הודעות ללא חיבור לרשת סלולרית או לרשת Wi-Fi"</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"מידע למקרה חירום"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"בעלים"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"אפשר להקיש שוב כדי להציג את הפרטים"</string>

@@ -194,7 +194,7 @@
     <string name="choose_network_title" msgid="5335832663422653082">"Желі таңдау"</string>
     <string name="network_disconnected" msgid="8844141106841160825">"Желіге жалғанбаған"</string>
     <string name="network_connected" msgid="2760235679963580224">"Қосылды"</string>
-    <string name="network_connecting" msgid="160901383582774987">"Қосылуда…"</string>
+    <string name="network_connecting" msgid="160901383582774987">"Қосылып жатыр…"</string>
     <string name="network_could_not_connect" msgid="6547460848093727998">"Қосылмады"</string>
   <string-array name="preferred_network_mode_choices">
     <item msgid="4531933377509551889">"GSM/WCDMA таңдалған"</item>
@@ -559,7 +559,8 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"Қоңырауларды ұстау мүмкін емес."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"Қоңырау шалу үшін сымсыз желіге қосылыңыз."</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"Қоңырау шалу үшін, Wi-Fi желісін қосыңыз."</string>
-    <string name="incall_error_satellite_enabled" msgid="1936541518147323016">"Қоңырау шалу үшін жер серігі режимін өшіріңіз."</string>
+    <string name="incall_error_satellite_enabled" msgid="5247740814607087814">"Қоңырау шалу үшін алдымен жерсерік байланысын аяқтаңыз."</string>
+    <string name="incall_error_carrier_roaming_satellite_mode" msgid="678603203562886361">"Мобильдік не Wi-Fi желісіне қосылмастан хабар алмаса аласыз."</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"Төтенше жағдайға арналған ақпарат"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"Иесі"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"Ақпаратты көру үшін қайта түртіңіз"</string>

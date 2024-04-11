@@ -559,7 +559,8 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"Kan gesprekken niet in de wacht zetten."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"Maak verbinding met een draadloos netwerk om te bellen."</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"Zet bellen via wifi aan om te bellen."</string>
-    <string name="incall_error_satellite_enabled" msgid="1936541518147323016">"Zet de satellietmodus uit om te bellen."</string>
+    <string name="incall_error_satellite_enabled" msgid="5247740814607087814">"Als je wilt bellen, moet je eerst de satellietverbinding beëindigen."</string>
+    <string name="incall_error_carrier_roaming_satellite_mode" msgid="678603203562886361">"Je kunt berichten sturen en krijgen zonder een mobiel of wifi-netwerk."</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"Noodinformatie"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"Eigenaar"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"Tik nogmaals om informatie te bekijken"</string>
