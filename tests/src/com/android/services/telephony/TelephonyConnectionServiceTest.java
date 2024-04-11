@@ -2767,6 +2767,23 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
     }
 
     @Test
+    public void testDomainSelectionNormalRoutingEmergencyNumber_exitingApm_DiscardDialing()
+            throws Exception {
+        when(mDeviceState.isAirplaneModeOn(any())).thenReturn(true);
+        Phone testPhone = setupConnectionServiceInApmForDomainSelection(true);
+
+        ArgumentCaptor<RadioOnStateListener.Callback> callback =
+                ArgumentCaptor.forClass(RadioOnStateListener.Callback.class);
+        verify(mRadioOnHelper).triggerRadioOnAndListen(callback.capture(), eq(true),
+                eq(testPhone), eq(false), eq(TIMEOUT_TO_DYNAMIC_ROUTING_MS));
+
+        mConnection.setDisconnected(null);
+
+        assertTrue(callback.getValue()
+                .isOkToCall(testPhone, ServiceState.STATE_POWER_OFF, false));
+    }
+
+    @Test
     public void testDomainSelectionNormalToEmergencyCs() throws Exception {
         setupForCallTest();
 
