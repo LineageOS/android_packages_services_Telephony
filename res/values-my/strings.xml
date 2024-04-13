@@ -559,7 +559,8 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"ခေါ်ဆိုမှုများကို ကိုင်ထား၍မရပါ။"</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"ဖုန်းခေါ်ရန် ကြိုးမဲကွန်ယက်တစ်ခုသို့ ချိတ်ဆက်ပါ။"</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"ဖုန်းဆက်ရန် Wi-Fi ခေါ်ဆိုခြင်းကို ဖွင့်ပါ။"</string>
-    <string name="incall_error_satellite_enabled" msgid="1936541518147323016">"ဖုန်းခေါ်ရန် ဂြိုဟ်တုမုဒ် ပိတ်ပါ။"</string>
+    <string name="incall_error_satellite_enabled" msgid="5247740814607087814">"ဖုန်းခေါ်ရန်အတွက် ဂြိုဟ်တုချိတ်ဆက်မှုကို အရင်ဖြုတ်ပါ။"</string>
+    <string name="incall_error_carrier_roaming_satellite_mode" msgid="678603203562886361">"မိုဘိုင်း (သို့) Wi-Fi ကွန်ရက်မရှိဘဲ မက်ဆေ့ဂျ်များကို ပို့နိုင်၊ လက်ခံနိုင်သည်။"</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"အရေးပေါ် အချက်အလက်"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"ပိုင်ရှင်"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"အချက်အလက်ကြည့်ရန် ထပ်နှိပ်ပါ"</string>

@@ -187,9 +187,9 @@
     <string name="manual_mode_disallowed_summary" msgid="3970048592179890197">"%1$s मा जडान हुँदा उपलब्ध छैन"</string>
     <string name="network_select_title" msgid="4117305053881611988">"नेटवर्क"</string>
     <string name="register_automatically" msgid="3907580547590554834">"स्वतः दर्ता..."</string>
-    <string name="preferred_network_mode_title" msgid="5253395265169539830">"रुचाइएको सञ्जाल प्रकार"</string>
+    <string name="preferred_network_mode_title" msgid="5253395265169539830">"रुचाइएको नेटवर्कको प्रकार"</string>
     <string name="preferred_network_mode_summary" msgid="3787989000044330064">"नेटवर्क संचालन मोड परिवर्तन गर्नुहोस्"</string>
-    <string name="preferred_network_mode_dialogtitle" msgid="2781447433514459696">"रुचाइएको सञ्जाल प्रकार"</string>
+    <string name="preferred_network_mode_dialogtitle" msgid="2781447433514459696">"रुचाइएको नेटवर्कको प्रकार"</string>
     <string name="forbidden_network" msgid="5081729819561333023">"(निषेध गरिएको)"</string>
     <string name="choose_network_title" msgid="5335832663422653082">"नेटवर्क छनौट गर्नुहोस्‌"</string>
     <string name="network_disconnected" msgid="8844141106841160825">"जडान विच्छेद गरियो"</string>
@@ -559,7 +559,8 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"कल सञ्चालन गर्न सकिँदैन।"</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"एक कल गर्न एक ताररहितको सञ्जालमा कनेक्ट गर्नुहोस्।"</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"कल गर्नका लागि Wi-Fi कलिङ सक्षम गर्नुहोस्।"</string>
-    <string name="incall_error_satellite_enabled" msgid="1936541518147323016">"कल गर्न स्याटेलाइट मोड अफ गर्नुहोस्।"</string>
+    <string name="incall_error_satellite_enabled" msgid="5247740814607087814">"कल गर्न सर्वप्रथम स्याटलाइट कनेक्सन अन्त्य गर्नुहोस्।"</string>
+    <string name="incall_error_carrier_roaming_satellite_mode" msgid="678603203562886361">"तपाईं मोबाइल वा Wi-Fi नेटवर्कविनै म्यासेज पठाउन र प्राप्त गर्न सक्नुहुन्छ।"</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"आपत्‌कालीन जानकारी"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"मालिक"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"जानकारी हेर्न पुनः ट्याप गर्नुहोस्"</string>

@@ -559,7 +559,8 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"Немагчыма ўтрымліваць выклікі."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"Падлучыцеся да бесправадной сеткі, каб зрабіць выклік."</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"Дазволіць выклік па Wi-Fi-тэлефаніі."</string>
-    <string name="incall_error_satellite_enabled" msgid="1936541518147323016">"Адключыце рэжым спадарожніка, каб зрабіць выклік."</string>
+    <string name="incall_error_satellite_enabled" msgid="5247740814607087814">"Каб зрабіць выклік, завяршыце спадарожнікавае падключэнне."</string>
+    <string name="incall_error_carrier_roaming_satellite_mode" msgid="678603203562886361">"Вы можаце адпраўляць і атрымліваць паведамленні без доступу да мабільнай сеткі або Wi-Fi."</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"Даныя для экстранных сітуацый"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"Уладальнік"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"Каб паглядзець інфармацыю, націсніце яшчэ раз"</string>

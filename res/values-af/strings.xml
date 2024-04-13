@@ -486,7 +486,7 @@
     <string name="simContacts_airplaneMode" msgid="4654884030631503808">"Skakel vliegtuigmodus af om kontakte van die SIM-kaart af in te voer."</string>
     <string name="enable_pin" msgid="967674051730845376">"Aktiveer/deaktiveer SIM-PIN"</string>
     <string name="change_pin" msgid="3657869530942905790">"Verander SIM-PIN"</string>
-    <string name="enter_pin_text" msgid="3182311451978663356">"SIM PIN:"</string>
+    <string name="enter_pin_text" msgid="3182311451978663356">"SIM-PIN:"</string>
     <string name="oldPinLabel" msgid="8618515202411987721">"Ou PIN"</string>
     <string name="newPinLabel" msgid="3585899083055354732">"Nuwe PIN"</string>
     <string name="confirmPinLabel" msgid="7783531218662473778">"Bevestig nuwe PIN"</string>
@@ -559,7 +559,8 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"Kan nie oproepe aanhou nie."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"Koppel aan \'n draadlose netwerk om \'n oproep te maak."</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"Aktiveer Wi-Fi-oproepe om \'n oproep te maak."</string>
-    <string name="incall_error_satellite_enabled" msgid="1936541518147323016">"Deaktiveer satellietmodus om ’n oproep te maak."</string>
+    <string name="incall_error_satellite_enabled" msgid="5247740814607087814">"Om ’n oproep te maak, moet jy eers die satellietverbinding beëindig."</string>
+    <string name="incall_error_carrier_roaming_satellite_mode" msgid="678603203562886361">"Jy kan boodskappe stuur en ontvang sonder ’n selfoon- of wi-fi-netwerk."</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"Noodinligting"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"Eienaar"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"Tik weer om inligting te bekyk"</string>

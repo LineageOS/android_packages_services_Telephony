@@ -559,7 +559,8 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"Удержание невозможно."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"Чтобы позвонить, подключитесь к Wi-Fi."</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"Чтобы позвонить, включите звонки через Wi-Fi."</string>
-    <string name="incall_error_satellite_enabled" msgid="1936541518147323016">"Чтобы позвонить, отключите спутниковый режим."</string>
+    <string name="incall_error_satellite_enabled" msgid="5247740814607087814">"Чтобы позвонить, сначала завершите спутниковое соединение."</string>
+    <string name="incall_error_carrier_roaming_satellite_mode" msgid="678603203562886361">"Вы можете отправлять и получать сообщения без доступа к мобильной сети или Wi-Fi."</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"Данные для экстренных случаев"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"Владелец"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"Чтобы посмотреть информацию, нажмите ещё раз"</string>

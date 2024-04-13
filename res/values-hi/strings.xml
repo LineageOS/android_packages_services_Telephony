@@ -559,7 +559,8 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"कॉल होल्ड नहीं किए जा सकते."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"कॉल करने के लिए किसी वायरलेस नेटवर्क से कनेक्‍ट करें."</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"कॉल करने के लिए वाई-फ़ाई कॉलिंग सक्षम करें."</string>
-    <string name="incall_error_satellite_enabled" msgid="1936541518147323016">"कॉल करने के लिए, सैटलाइट मोड को बंद करें."</string>
+    <string name="incall_error_satellite_enabled" msgid="5247740814607087814">"कॉल करने के लिए, सैटलाइट कनेक्शन बंद करें."</string>
+    <string name="incall_error_carrier_roaming_satellite_mode" msgid="678603203562886361">"आपके पास, मोबाइल या वाई-फ़ाई नेटवर्क के बिना भी मैसेज भेजने और पाने की सुविधा है."</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"आपातकाल में दिखने वाली जानकारी"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"मालिक"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"जानकारी देखने के लिए फिर से टैप करें"</string>

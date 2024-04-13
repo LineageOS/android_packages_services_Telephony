@@ -559,7 +559,8 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"കോളുകൾ ഹോൾഡുചെയ്യാൻ കഴിയില്ല."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"ഒരു കോൾ വിളിക്കാൻ വയർലെസ്സ് നെറ്റ്‌വർക്കിലേക്ക് കണക്റ്റുചെയ്യുക."</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"കോൾ ചെയ്യാൻ Wi-Fi കോളിംഗ് പ്രവർത്തനക്ഷമമാക്കുക."</string>
-    <string name="incall_error_satellite_enabled" msgid="1936541518147323016">"കോൾ ചെയ്യാൻ സാറ്റലൈറ്റ് മോഡ് പ്രവർത്തനരഹിതമാക്കുക."</string>
+    <string name="incall_error_satellite_enabled" msgid="5247740814607087814">"ഒരു കോൾ ചെയ്യുന്നതിന്, ആദ്യം സാറ്റലൈറ്റ് കണക്ഷൻ അവസാനിപ്പിക്കുക."</string>
+    <string name="incall_error_carrier_roaming_satellite_mode" msgid="678603203562886361">"മൊബൈൽ അല്ലെങ്കിൽ വൈഫൈ നെറ്റ്‌വർക്ക് ഇല്ലാതെ തന്നെ നിങ്ങൾക്ക് സന്ദേശങ്ങൾ അയയ്ക്കാനും സ്വീകരിക്കാനും കഴിയും."</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"അടിയന്തര വിവരം"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"ഉടമ"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"വിവരങ്ങൾ കാണാൻ വീണ്ടും ടാപ്പ് ചെയ്യുക"</string>

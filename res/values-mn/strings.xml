@@ -559,7 +559,8 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"Дуудлагыг хадгалах боломжгүй байна."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"Дуудлага хийхийн тулд утасгүй интернетэд холбогдоно уу."</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"Дуудлага хийхийн тулд Wi-Fi дуудлагыг идэвхжүүлнэ үү."</string>
-    <string name="incall_error_satellite_enabled" msgid="1936541518147323016">"Дуудлага хийхийн тулд хиймэл дагуулын горимыг идэвхгүй болгоно уу."</string>
+    <string name="incall_error_satellite_enabled" msgid="5247740814607087814">"Дуудлага хийхийн тулд эхлээд хиймэл дагуулын холболтыг дуусгана уу."</string>
+    <string name="incall_error_carrier_roaming_satellite_mode" msgid="678603203562886361">"Та мобайл эсвэл Wi-Fi сүлжээгүйгээр мессеж илгээх болон хүлээн авах боломжтой."</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"Яаралтай тусламжийн мэдээлэл"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"Эзэмшигч"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"Мэдээллийг үзэхийн тулд дахин товшино уу"</string>

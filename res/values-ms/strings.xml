@@ -559,7 +559,8 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"Tidak dapat menunda panggilan."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"Sambungkan ke rangkaian wayarles untuk membuat panggilan."</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"Dayakan panggilan Wi-Fi untuk membuat panggilan."</string>
-    <string name="incall_error_satellite_enabled" msgid="1936541518147323016">"Lumpuhkan mod satelit untuk membuat panggilan."</string>
+    <string name="incall_error_satellite_enabled" msgid="5247740814607087814">"Untuk membuat panggilan, tamatkan sambungan satelit dahulu."</string>
+    <string name="incall_error_carrier_roaming_satellite_mode" msgid="678603203562886361">"Anda boleh menghantar dan menerima mesej tanpa rangkaian mudah alih atau Wi-Fi."</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"Maklumat kecemasan"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"Pemilik"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"Ketik lagi untuk melihat maklumat"</string>

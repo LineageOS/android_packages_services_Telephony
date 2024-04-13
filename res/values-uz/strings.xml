@@ -559,7 +559,8 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"Qo‘ng‘iroqlarni ushlab turib bo‘lmadi."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"Qo‘ng‘iroq qilish uchun simsiz tarmoqqa ulaning"</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"Qo‘ng‘iroq qilish uchun Wi-Fi qo‘ng‘iroqlar funksiyasini yoqing."</string>
-    <string name="incall_error_satellite_enabled" msgid="1936541518147323016">"Telefon qilish uchun sputnik rejimini faolsizlantiring."</string>
+    <string name="incall_error_satellite_enabled" msgid="5247740814607087814">"Telefon qilish uchun avval sputnik orqali aloqani uzing."</string>
+    <string name="incall_error_carrier_roaming_satellite_mode" msgid="678603203562886361">"Mobil yoki Wi-Fi tarmoqsiz xabarlarni yuborish va qabul qilish mumkin."</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"Favqulodda vaziyatlar uchun axborot"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"Egasi"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"Axborotni ochish uchun yana bir marta bosing"</string>

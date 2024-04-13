@@ -559,7 +559,8 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"కాల్స్‌ను హోల్డ్ చేయలేరు."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"కాల్ చేయడానికి వైర్‌లెస్ నెట్‌వర్క్‌కు కనెక్ట్ చేయండి."</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"కాల్‌ను చేయడానికి Wi-Fi కాలింగ్‌ను ప్రారంభించండి."</string>
-    <string name="incall_error_satellite_enabled" msgid="1936541518147323016">"కాల్ చేయడానికి ఉపగ్రహ మోడ్‌ను డిజేబుల్ చేయండి."</string>
+    <string name="incall_error_satellite_enabled" msgid="5247740814607087814">"కాల్ చేయడానికి, ముందుగా శాటిలైట్ కనెక్షన్‌ను ముగించండి."</string>
+    <string name="incall_error_carrier_roaming_satellite_mode" msgid="678603203562886361">"మీరు మొబైల్ లేదా Wi-Fi నెట్‌వర్క్ లేకుండా మెసేజ్‌లను పంపవచ్చు, స్వీకరించవచ్చు."</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"అత్యవసర సమాచారం"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"యజమాని"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"సమాచారాన్ని చూడడానికి మళ్లీ నొక్కండి"</string>

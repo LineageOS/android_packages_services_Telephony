@@ -559,7 +559,8 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"無法保留通話。"</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"連上無線網路即可撥打電話。"</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"請啟用 Wi-Fi 通話功能以撥打電話。"</string>
-    <string name="incall_error_satellite_enabled" msgid="1936541518147323016">"如要撥打電話，請停用衛星模式。"</string>
+    <string name="incall_error_satellite_enabled" msgid="5247740814607087814">"如要撥打電話，請先結束衛星連線。"</string>
+    <string name="incall_error_carrier_roaming_satellite_mode" msgid="678603203562886361">"你可以收發訊息，沒有行動/Wi-Fi 網路也無妨。"</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"緊急救援資訊"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"擁有者"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"再次輕觸即可查看資訊"</string>

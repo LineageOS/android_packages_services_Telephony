@@ -559,7 +559,8 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"Ezin dira zain utzi deiak."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"Deia egiteko, konektatu haririk gabeko sare batera."</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"Deia egiteko, gaitu wifi bidezko deiak."</string>
-    <string name="incall_error_satellite_enabled" msgid="1936541518147323016">"Deiak egiteko, desgaitu satelite modua."</string>
+    <string name="incall_error_satellite_enabled" msgid="5247740814607087814">"Dei bat egiteko, amaitu satelite bidezko konexioa."</string>
+    <string name="incall_error_carrier_roaming_satellite_mode" msgid="678603203562886361">"Mezuak bidali eta jaso ditzakezu sare mugikorrik edo wifi-sarerik gabe."</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"Larrialdietarako informazioa"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"Jabea"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"Informazioa ikusteko, sakatu berriro"</string>

@@ -559,7 +559,8 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"কলগুলি ধরে রাখা যাবে না।"</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"একটি কল করতে কোনো ওয়্যারলেস নেটওয়ার্কে সংযোগ করুন৷"</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"কোনো কল করতে Wi-Fi কলিং সক্ষম করুন৷"</string>
-    <string name="incall_error_satellite_enabled" msgid="1936541518147323016">"কল করার জন্য \'উপগ্রহ\' মোড বন্ধ করুন।"</string>
+    <string name="incall_error_satellite_enabled" msgid="5247740814607087814">"কল করতে, প্রথমে স্যাটেলাইট কানেকশন বন্ধ করুন।"</string>
+    <string name="incall_error_carrier_roaming_satellite_mode" msgid="678603203562886361">"আপনি কোনও মেবাইল বা ওয়াই-ফাই নেটওয়ার্ক ছাড়াই মেসেজ পাঠাতে ও পেতে পারবেন।"</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"জরুরি তথ্য"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"মালিক"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"তথ্য দেখার জন্য আবার ট্যাপ করুন"</string>

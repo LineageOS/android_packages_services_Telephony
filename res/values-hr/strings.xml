@@ -485,7 +485,7 @@
     <string name="simContacts_title" msgid="2714029230160136647">"Odabir kontakata za uvoz"</string>
     <string name="simContacts_airplaneMode" msgid="4654884030631503808">"Isključite način rada u zrakoplovu da biste uvezli kontakte sa SIM kartice."</string>
     <string name="enable_pin" msgid="967674051730845376">"Omogući/onemogući PIN za SIM"</string>
-    <string name="change_pin" msgid="3657869530942905790">"Promijeni PIN za SIM"</string>
+    <string name="change_pin" msgid="3657869530942905790">"Promijenite PIN za SIM"</string>
     <string name="enter_pin_text" msgid="3182311451978663356">"PIN za SIM:"</string>
     <string name="oldPinLabel" msgid="8618515202411987721">"Stari PIN"</string>
     <string name="newPinLabel" msgid="3585899083055354732">"Novi PIN"</string>
@@ -559,7 +559,8 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"Pozivi se ne mogu stavljati na čekanje."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"Povežite se s bežičnom mrežom da biste uputili poziv."</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"Omogućite pozivanje putem Wi-Fi veze da biste uspostavili poziv."</string>
-    <string name="incall_error_satellite_enabled" msgid="1936541518147323016">"Onemogućite način satelita da biste uputili poziv."</string>
+    <string name="incall_error_satellite_enabled" msgid="5247740814607087814">"Da biste uputili poziv, najprije prekinite satelitsku vezu."</string>
+    <string name="incall_error_carrier_roaming_satellite_mode" msgid="678603203562886361">"Možete slati i primati poruke bez mobilne ili Wi-Fi mreže."</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"Podaci za hitne slučajeve"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"Vlasnik"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"Dodirnite ponovno da biste vidjeli informacije"</string>

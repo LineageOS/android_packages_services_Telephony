@@ -485,7 +485,7 @@
     <string name="simContacts_title" msgid="2714029230160136647">"ಆಮದು ಮಾಡಲು ಸಂಪರ್ಕಗಳು"</string>
     <string name="simContacts_airplaneMode" msgid="4654884030631503808">"ಸಿಮ್ ಕಾರ್ಡ್‌ನಿಂದ ಸಂಪರ್ಕಗಳನ್ನು ಆಮದು ಮಾಡಲು ಏರ್‌ಪ್ಲೇನ್ ಮೋಡ್ ಆಫ್ ಮಾಡಿ."</string>
     <string name="enable_pin" msgid="967674051730845376">"ಸಿಮ್‌ ಪಿನ್‌ ಸಕ್ರಿಯಗೊಳಿಸಿ/ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿ"</string>
-    <string name="change_pin" msgid="3657869530942905790">"ಸಿಮ್‌ ಪಿನ್‌ ಬದಲಾಯಿಸಿ"</string>
+    <string name="change_pin" msgid="3657869530942905790">"SIM ಪಿನ್‌ ಬದಲಾಯಿಸಿ"</string>
     <string name="enter_pin_text" msgid="3182311451978663356">"ಸಿಮ್‌ ಪಿನ್‌:"</string>
     <string name="oldPinLabel" msgid="8618515202411987721">"ಹಳೆಯ ಪಿನ್‌"</string>
     <string name="newPinLabel" msgid="3585899083055354732">"ಹೊಸ ಪಿನ್‌"</string>
@@ -559,7 +559,8 @@
     <string name="incall_error_supp_service_hold" msgid="8535056414643540997">"ಕರೆಗಳನ್ನು ಹೋಲ್ಡ್ ಮಾಡಲಾಗುವುದಿಲ್ಲ."</string>
     <string name="incall_error_wfc_only_no_wireless_network" msgid="5860742792811400109">"ಕರೆ ಮಾಡಲು ವೈರ್‌ಲೆಸ್ ನೆಟ್‌ವರ್ಕ್‌ಗೆ ಸಂಪರ್ಕಿಸಿ."</string>
     <string name="incall_error_promote_wfc" msgid="9164896813931363415">"ಕರೆ ಮಾಡಲು ವೈ-ಫೈ ಕರೆ ಮಾಡುವಿಕೆಯನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ"</string>
-    <string name="incall_error_satellite_enabled" msgid="1936541518147323016">"ಕರೆ ಮಾಡಲು ಸ್ಯಾಟಲೈಟ್ ಮೋಡ್ ಅನ್ನು ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿ."</string>
+    <string name="incall_error_satellite_enabled" msgid="5247740814607087814">"ಕರೆ ಮಾಡಲು, ಮೊದಲು ಸ್ಯಾಟಲೈಟ್ ಕನೆಕ್ಷನ್ ಅನ್ನು ಕೊನೆಗೊಳಿಸಿ."</string>
+    <string name="incall_error_carrier_roaming_satellite_mode" msgid="678603203562886361">"ನೀವು ಮೊಬೈಲ್ ಅಥವಾ ವೈ-ಫೈ ನೆಟ್‌ವರ್ಕ್ ಇಲ್ಲದೆಯೇ ಸಂದೇಶಗಳನ್ನು ಕಳುಹಿಸಬಹುದು ಮತ್ತು ಸ್ವೀಕರಿಸಬಹುದು."</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"ತುರ್ತು ಮಾಹಿತಿ"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"ಮಾಲೀಕರು"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"ಮಾಹಿತಿಯನ್ನು ವೀಕ್ಷಿಸಲು ಮತ್ತೆ ಟ್ಯಾಪ್ ಮಾಡಿ"</string>
