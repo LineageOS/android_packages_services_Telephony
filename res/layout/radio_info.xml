@@ -232,6 +232,14 @@
                 android:layout_height="wrap_content"
                 android:text="@string/simulate_out_of_service_string"/>
 
+        <!-- Simulate this SIM to be satellite -->
+        <Switch android:id="@+id/mock_carrier_roaming_satellite"
+                android:textSize="14sp"
+                android:layout_marginTop="8dip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/mock_carrier_roaming_satellite_string"/>
+
         <!-- VoLTE provisioned -->
         <Switch android:id="@+id/volte_provisioned_switch"
                 android:textSize="14sp"
