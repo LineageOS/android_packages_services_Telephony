@@ -22,6 +22,7 @@ import static android.telephony.satellite.SatelliteManager.SATELLITE_RESULT_REQU
 import static android.telephony.satellite.SatelliteManager.SATELLITE_RESULT_SUCCESS;
 
 import static com.android.phone.satellite.accesscontrol.SatelliteAccessController.EVENT_CONFIG_DATA_UPDATED;
+import static com.android.phone.satellite.accesscontrol.SatelliteAccessController.GOOGLE_US_SAN_SAT_S2_FILE_NAME;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -30,6 +31,7 @@ import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyBoolean;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
@@ -45,6 +47,7 @@ import static org.mockito.Mockito.when;
 
 import android.annotation.Nullable;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.location.Location;
 import android.location.LocationManager;
@@ -85,12 +88,12 @@ import org.mockito.MockitoAnnotations;
 
 import java.io.File;
 import java.lang.reflect.Field;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
@@ -124,14 +127,26 @@ public class SatelliteAccessControllerTest {
     private SatelliteModemInterface mMockSatelliteModemInterface;
     @Mock
     private Context mMockContext;
-    @Mock private Phone mMockPhone;
-    @Mock private Phone mMockPhone2;
-    @Mock private FeatureFlags mMockFeatureFlags;
-    @Mock private Resources mMockResources;
-    @Mock private SatelliteOnDeviceAccessController mMockSatelliteOnDeviceAccessController;
-    @Mock Location mMockLocation0;
-    @Mock Location mMockLocation1;
-    @Mock File mMockSatS2File;
+    @Mock
+    private Phone mMockPhone;
+    @Mock
+    private Phone mMockPhone2;
+    @Mock
+    private FeatureFlags mMockFeatureFlags;
+    @Mock
+    private Resources mMockResources;
+    @Mock
+    private SatelliteOnDeviceAccessController mMockSatelliteOnDeviceAccessController;
+    @Mock
+    Location mMockLocation0;
+    @Mock
+    Location mMockLocation1;
+    @Mock
+    File mMockSatS2File;
+    @Mock
+    SharedPreferences mMockSharedPreferences;
+    @Mock
+    private SharedPreferences.Editor mMockSharedPreferencesEditor;
 
     private Looper mLooper;
     private TestableLooper mTestableLooper;
@@ -148,7 +163,6 @@ public class SatelliteAccessControllerTest {
     private ArgumentCaptor<Integer> mConfigUpdateIntCaptor;
     @Captor
     private ArgumentCaptor<Object> mConfigUpdateObjectCaptor;
-
     private boolean mQueriedSatelliteAllowed = false;
     private int mQueriedSatelliteAllowedResultCode = SATELLITE_RESULT_SUCCESS;
     private Semaphore mSatelliteAllowedSemaphore = new Semaphore(0);
@@ -197,7 +211,7 @@ public class SatelliteAccessControllerTest {
                 mMockLocationManager);
         when(mMockContext.getSystemService(TelecomManager.class)).thenReturn(
                 mMockTelecomManager);
-        mPhones = new Phone[] {mMockPhone, mMockPhone2};
+        mPhones = new Phone[]{mMockPhone, mMockPhone2};
         replaceInstance(PhoneFactory.class, "sPhones", null, mPhones);
         replaceInstance(SatelliteController.class, "sInstance", null,
                 mMockSatelliteController);
@@ -230,6 +244,17 @@ public class SatelliteAccessControllerTest {
         when(mMockLocation1.getLongitude()).thenReturn(1.0);
         when(mMockSatelliteOnDeviceAccessController.isSatCommunicationAllowedAtLocation(
                 any(SatelliteOnDeviceAccessController.LocationToken.class))).thenReturn(true);
+
+        when(mMockContext.getSharedPreferences(anyString(), anyInt())).thenReturn(
+                mMockSharedPreferences);
+        when(mMockSharedPreferences.getBoolean(anyString(), anyBoolean())).thenReturn(true);
+        when(mMockSharedPreferences.getStringSet(anyString(), any()))
+                .thenReturn(Set.of(TEST_SATELLITE_COUNTRY_CODES));
+        doReturn(mMockSharedPreferencesEditor).when(mMockSharedPreferences).edit();
+        doReturn(mMockSharedPreferencesEditor).when(mMockSharedPreferencesEditor)
+                .putBoolean(anyString(), anyBoolean());
+        doReturn(mMockSharedPreferencesEditor).when(mMockSharedPreferencesEditor)
+                .putStringSet(anyString(), any());
 
         mSatelliteAccessControllerUT = new TestSatelliteAccessController(mMockContext,
                 mMockFeatureFlags, mLooper, mMockLocationManager, mMockTelecomManager,
@@ -463,7 +488,7 @@ public class SatelliteAccessControllerTest {
     }
 
     @Test
-    public void testUpdateSatelliteConfigData() {
+    public void testUpdateSatelliteConfigData() throws Exception {
         verify(mMockSatelliteController).registerForConfigUpdateChanged(
                 mConfigUpdateHandlerCaptor.capture(), mConfigUpdateIntCaptor.capture(),
                 mConfigUpdateObjectCaptor.capture());
@@ -472,46 +497,58 @@ public class SatelliteAccessControllerTest {
         assertSame(mConfigUpdateIntCaptor.getValue(), EVENT_CONFIG_DATA_UPDATED);
         assertSame(mConfigUpdateObjectCaptor.getValue(), mMockContext);
 
-        // Verify the case when the configParser is not exist.
-        SatelliteConfigParser spyConfigParserNull =
-                spy(new SatelliteConfigParser((byte[]) null));
-        doReturn(spyConfigParserNull).when(mMockSatelliteController).getSatelliteConfigParser();
+        // These APIs are executed during loadRemoteConfigs
+        verify(mMockSharedPreferences, times(1)).getStringSet(anyString(), any());
+        verify(mMockSharedPreferences, times(1)).getBoolean(anyString(), anyBoolean());
 
-        sendConfigUpdateChangedEvent(mMockContext);
-
-        assertNull(spyConfigParserNull.getConfig());
-
-        // Verify the case when the configParser exist but empty.
-        SatelliteConfigParser spyConfigParserEmpty =
+        // satelliteConfig is null
+        SatelliteConfigParser spyConfigParser =
                 spy(new SatelliteConfigParser("test".getBytes()));
-        doReturn(spyConfigParserEmpty).when(mMockSatelliteController).getSatelliteConfigParser();
+        doReturn(spyConfigParser).when(mMockSatelliteController).getSatelliteConfigParser();
+        assertNull(spyConfigParser.getConfig());
 
         sendConfigUpdateChangedEvent(mMockContext);
+        verify(mMockSharedPreferences, never()).edit();
 
-        assertNull(spyConfigParserEmpty.getConfig());
+        // satelliteConfig has invalid country codes
+        SatelliteConfig mockConfig = mock(SatelliteConfig.class);
+        doReturn(List.of("USA", "JAP")).when(mockConfig).getDeviceSatelliteCountryCodes();
+        doReturn(mockConfig).when(mMockSatelliteController).getSatelliteConfig();
+        doReturn(false).when(mockConfig).isSatelliteDataForAllowedRegion();
 
-        // Verify the case when the configParser exists and has valid data
-        SatelliteConfig mockSatelliteConfig = mock(SatelliteConfig.class);
-        Path mockTargetSatS2FilePath = mock(Path.class);
-        File mockS2CellFile = mock(File.class);
-        doReturn(mockS2CellFile).when(mockTargetSatS2FilePath).toFile();
-        doReturn(true).when(mockS2CellFile).exists();
-        doReturn(false).when(mockSatelliteConfig).isFileExist(any());
-        doReturn(mockTargetSatS2FilePath).when(mockSatelliteConfig)
-                .copySatS2FileToPhoneDirectory(any(), any());
-        doReturn(Arrays.asList("US")).when(mockSatelliteConfig).getDeviceSatelliteCountryCodes();
-        doReturn(false).when(mockSatelliteConfig).isSatelliteDataForAllowedRegion();
-        doReturn(mockTargetSatS2FilePath).when(mockSatelliteConfig).getSatelliteS2CellFile(any());
-        doReturn(mockSatelliteConfig).when(mMockSatelliteController).getSatelliteConfig();
-
-        mSatelliteAccessControllerUT.setSatelliteOnDeviceAccessController(
-                mMockSatelliteOnDeviceAccessController);
         sendConfigUpdateChangedEvent(mMockContext);
+        verify(mMockSharedPreferences, never()).edit();
 
-        verify(mockSatelliteConfig, times(2)).getDeviceSatelliteCountryCodes();
-        verify(mockSatelliteConfig, times(2)).isSatelliteDataForAllowedRegion();
-        verify(mockSatelliteConfig, times(2)).getSatelliteS2CellFile(any());
-        assertTrue(mSatelliteAccessControllerUT.isSatelliteOnDeviceAccessControllerReset());
+        // satelliteConfig does not have is_allow_access_control data
+        doReturn(List.of(TEST_SATELLITE_COUNTRY_CODES))
+                .when(mockConfig).getDeviceSatelliteCountryCodes();
+        doReturn(null).when(mockConfig).isSatelliteDataForAllowedRegion();
+
+        sendConfigUpdateChangedEvent(mMockContext);
+        verify(mMockSharedPreferences, never()).edit();
+
+        // satelliteConfig doesn't have S2CellFile
+        File mockFile = mock(File.class);
+        doReturn(false).when(mockFile).exists();
+        doReturn(List.of(TEST_SATELLITE_COUNTRY_CODES))
+                .when(mockConfig).getDeviceSatelliteCountryCodes();
+        doReturn(true).when(mockConfig).isSatelliteDataForAllowedRegion();
+        doReturn(mockFile).when(mockConfig).getSatelliteS2CellFile(mMockContext);
+
+        sendConfigUpdateChangedEvent(mMockContext);
+        verify(mMockSharedPreferences, never()).edit();
+
+        // satelliteConfig has valid data
+        doReturn(mockConfig).when(mMockSatelliteController).getSatelliteConfig();
+        File testS2File = mSatelliteAccessControllerUT
+                .getTestSatelliteS2File(GOOGLE_US_SAN_SAT_S2_FILE_NAME);
+        doReturn(List.of(TEST_SATELLITE_COUNTRY_CODES))
+                .when(mockConfig).getDeviceSatelliteCountryCodes();
+        doReturn(true).when(mockConfig).isSatelliteDataForAllowedRegion();
+        doReturn(testS2File).when(mockConfig).getSatelliteS2CellFile(mMockContext);
+
+        sendConfigUpdateChangedEvent(mMockContext);
+        verify(mMockSharedPreferences, times(2)).edit();
     }
 
     private void sendConfigUpdateChangedEvent(Context context) {
