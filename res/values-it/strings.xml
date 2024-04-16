@@ -844,6 +844,8 @@
     <string name="removable_esim_string" msgid="7931369811671787649">"Imposta la eSIM rimovibile come predefinita"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"Potenza del segnale radio mobile"</string>
     <string name="simulate_out_of_service_string" msgid="7787925611727597193">"Simulazione non disponibile (solo build di debug)"</string>
+    <!-- no translation found for mock_carrier_roaming_satellite_string (4796300252858292593) -->
+    <skip />
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"Visualizza rubrica SIM"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"Visualizza numeri consentiti"</string>
     <string name="radioInfo_menu_viewSDN" msgid="2613431584522392842">"Visualizza numeri dell\'elenco dei numeri di servizio"</string>
