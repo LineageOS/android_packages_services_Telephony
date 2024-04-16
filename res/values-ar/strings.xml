@@ -844,6 +844,8 @@
     <string name="removable_esim_string" msgid="7931369811671787649">"‏ضبط شريحة eSIM القابلة للإزالة كشريحة تلقائية"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"طاقة اللاسلكي للجوّال"</string>
     <string name="simulate_out_of_service_string" msgid="7787925611727597193">"محاكاة الخطأ \"خارج الخدمة\" (الإصدار المخصص لتصحيح الأخطاء فقط)"</string>
+    <!-- no translation found for mock_carrier_roaming_satellite_string (4796300252858292593) -->
+    <skip />
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"‏عرض دفتر عناوين SIM"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"عرض أرقام الطلب الثابت"</string>
     <string name="radioInfo_menu_viewSDN" msgid="2613431584522392842">"عرض أرقام طلب الخدمة"</string>
@@ -932,6 +934,6 @@
     <string name="send_from_work_profile_title" msgid="7044759579507604732">"لا يمكن إرسال رسائل من تطبيق شخصي"</string>
     <string name="send_from_work_profile_description" msgid="2174402508727161974">"تسمح لك مؤسستك بإرسال الرسائل من تطبيقات العمل فقط."</string>
     <string name="send_from_work_profile_cancel" msgid="177746511030381711">"إلغاء"</string>
-    <string name="send_from_work_profile_action_str" msgid="6892775562934243337">"التبديل إلى الملف الشخصي للعمل"</string>
+    <string name="send_from_work_profile_action_str" msgid="6892775562934243337">"التبديل إلى ملف العمل"</string>
     <string name="install_messages_on_work_profile_action_str" msgid="3773440996395152903">"تثبيت تطبيق لرسائل العمل"</string>
 </resources>
