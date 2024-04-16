@@ -929,6 +929,6 @@
     <string name="send_from_work_profile_title" msgid="7044759579507604732">"لا يمكن إرسال رسائل من تطبيق شخصي"</string>
     <string name="send_from_work_profile_description" msgid="2174402508727161974">"تسمح لك مؤسستك بإرسال الرسائل من تطبيقات العمل فقط."</string>
     <string name="send_from_work_profile_cancel" msgid="177746511030381711">"إلغاء"</string>
-    <string name="send_from_work_profile_action_str" msgid="6892775562934243337">"التبديل إلى الملف الشخصي للعمل"</string>
+    <string name="send_from_work_profile_action_str" msgid="6892775562934243337">"التبديل إلى ملف العمل"</string>
     <string name="install_messages_on_work_profile_action_str" msgid="3773440996395152903">"تثبيت تطبيق لرسائل العمل"</string>
 </resources>
