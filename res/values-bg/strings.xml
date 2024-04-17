@@ -844,6 +844,8 @@
     <string name="removable_esim_string" msgid="7931369811671787649">"Задаване на електронната SIM карта с изваждащ се чип като основна"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"Мощност на мобилното радио"</string>
     <string name="simulate_out_of_service_string" msgid="7787925611727597193">"Симулиране на липса на услуга (само в компилацията за отстраняване на грешки)"</string>
+    <!-- no translation found for mock_carrier_roaming_satellite_string (4796300252858292593) -->
+    <skip />
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"Преглед на указателя на SIM картата"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"Преглед на номера за фиксирано набиране"</string>
     <string name="radioInfo_menu_viewSDN" msgid="2613431584522392842">"Преглед на номера за набиране на услуги"</string>

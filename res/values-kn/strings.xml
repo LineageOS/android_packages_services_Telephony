@@ -844,6 +844,8 @@
     <string name="removable_esim_string" msgid="7931369811671787649">"ತೆಗೆದುಹಾಕಬಹುದಾದ eSIM ಅನ್ನು ಡೀಫಾಲ್ಟ್ ಆಗಿ ಸೆಟ್ ಮಾಡಿ"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"ಮೊಬೈಲ್ ರೇಡಿಯೋ ಪವರ್"</string>
     <string name="simulate_out_of_service_string" msgid="7787925611727597193">"ಸೇವೆಯಲ್ಲಿಲ್ಲದಿರುವುದನ್ನು ಸಿಮ್ಯುಲೇಟ್‌ ಮಾಡುವುದು (ಡೀಬಗ್ ಬಿಲ್ಡ್ ಮಾತ್ರ)"</string>
+    <!-- no translation found for mock_carrier_roaming_satellite_string (4796300252858292593) -->
+    <skip />
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"ಸಿಮ್ ವಿಳಾಸ ಪುಸ್ತಕವನ್ನು ವೀಕ್ಷಿಸಿ"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"ಸ್ಥಿರ ಡಯಲಿಂಗ್ ಸಂಖ್ಯೆಗಳನ್ನು ವೀಕ್ಷಿಸಿ"</string>
     <string name="radioInfo_menu_viewSDN" msgid="2613431584522392842">"ಸೇವಾ ಡಯಲಿಂಗ್ ಸಂಖ್ಯೆಗಳನ್ನು ವೀಕ್ಷಿಸಿ"</string>
