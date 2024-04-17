@@ -147,6 +147,9 @@ public class SatelliteAccessControllerTest {
     SharedPreferences mMockSharedPreferences;
     @Mock
     private SharedPreferences.Editor mMockSharedPreferencesEditor;
+    @Mock
+    private Map<SatelliteOnDeviceAccessController.LocationToken, Boolean>
+            mMockCachedAccessRestrictionMap;
 
     private Looper mLooper;
     private TestableLooper mTestableLooper;
@@ -497,6 +500,9 @@ public class SatelliteAccessControllerTest {
         assertSame(mConfigUpdateIntCaptor.getValue(), EVENT_CONFIG_DATA_UPDATED);
         assertSame(mConfigUpdateObjectCaptor.getValue(), mMockContext);
 
+        replaceInstance(SatelliteAccessController.class, "mCachedAccessRestrictionMap",
+                mSatelliteAccessControllerUT, mMockCachedAccessRestrictionMap);
+
         // These APIs are executed during loadRemoteConfigs
         verify(mMockSharedPreferences, times(1)).getStringSet(anyString(), any());
         verify(mMockSharedPreferences, times(1)).getBoolean(anyString(), anyBoolean());
@@ -509,6 +515,7 @@ public class SatelliteAccessControllerTest {
 
         sendConfigUpdateChangedEvent(mMockContext);
         verify(mMockSharedPreferences, never()).edit();
+        verify(mMockCachedAccessRestrictionMap, never()).clear();
 
         // satelliteConfig has invalid country codes
         SatelliteConfig mockConfig = mock(SatelliteConfig.class);
@@ -518,6 +525,7 @@ public class SatelliteAccessControllerTest {
 
         sendConfigUpdateChangedEvent(mMockContext);
         verify(mMockSharedPreferences, never()).edit();
+        verify(mMockCachedAccessRestrictionMap, never()).clear();
 
         // satelliteConfig does not have is_allow_access_control data
         doReturn(List.of(TEST_SATELLITE_COUNTRY_CODES))
@@ -526,6 +534,7 @@ public class SatelliteAccessControllerTest {
 
         sendConfigUpdateChangedEvent(mMockContext);
         verify(mMockSharedPreferences, never()).edit();
+        verify(mMockCachedAccessRestrictionMap, never()).clear();
 
         // satelliteConfig doesn't have S2CellFile
         File mockFile = mock(File.class);
@@ -537,6 +546,7 @@ public class SatelliteAccessControllerTest {
 
         sendConfigUpdateChangedEvent(mMockContext);
         verify(mMockSharedPreferences, never()).edit();
+        verify(mMockCachedAccessRestrictionMap, never()).clear();
 
         // satelliteConfig has valid data
         doReturn(mockConfig).when(mMockSatelliteController).getSatelliteConfig();
@@ -549,6 +559,7 @@ public class SatelliteAccessControllerTest {
 
         sendConfigUpdateChangedEvent(mMockContext);
         verify(mMockSharedPreferences, times(2)).edit();
+        verify(mMockCachedAccessRestrictionMap, times(1)).clear();
     }
 
     private void sendConfigUpdateChangedEvent(Context context) {
