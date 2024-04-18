@@ -37,6 +37,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.os.Build;
 import android.permission.flags.Flags;
 import android.platform.test.flag.junit.SetFlagsRule;
 import android.telephony.RadioAccessFamily;
@@ -507,6 +508,11 @@ public class PhoneInterfaceManagerTest extends TelephonyTestBase {
     @Test
     @EnableCompatChanges({TelephonyManager.ENABLE_FEATURE_MAPPING})
     public void testWithoutTelephonyFeatureAndCompatChanges() throws Exception {
+        // Replace field to set SDK version of vendor partition to Android V
+        int vendorApiLevel = Build.VERSION_CODES.VANILLA_ICE_CREAM;
+        replaceInstance(PhoneInterfaceManager.class, "mVendorApiLevel", mPhoneInterfaceManager,
+                vendorApiLevel);
+
         // telephony features is not defined, expect UnsupportedOperationException.
         doReturn(false).when(mPackageManager).hasSystemFeature(
                 PackageManager.FEATURE_TELEPHONY_CALLING);
