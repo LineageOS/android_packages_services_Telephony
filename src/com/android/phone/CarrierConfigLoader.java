@@ -47,6 +47,7 @@ import android.os.PersistableBundle;
 import android.os.Process;
 import android.os.RemoteException;
 import android.os.ResultReceiver;
+import android.os.SystemProperties;
 import android.os.UserHandle;
 import android.preference.PreferenceManager;
 import android.service.carrier.CarrierIdentifier;
@@ -698,6 +699,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
     @NonNull private final FeatureFlags  mFeatureFlags;
 
     @NonNull private final PackageManager mPackageManager;
+    private final int mVendorApiLevel;
 
     /**
      * Constructs a CarrierConfigLoader, registers it as a service, and registers a broadcast
@@ -736,6 +738,8 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         }
         mFeatureFlags = featureFlags;
         mPackageManager = context.getPackageManager();
+        mVendorApiLevel = SystemProperties.getInt(
+                "ro.vendor.api_level", Build.VERSION.DEVICE_INITIAL_SDK_INT);
         logd("CarrierConfigLoader has started");
 
         PhoneConfigurationManager.registerForMultiSimConfigChange(
@@ -1884,7 +1888,11 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
 
         if (!mFeatureFlags.enforceTelephonyFeatureMappingForPublicApis()
                 || !CompatChanges.isChangeEnabled(ENABLE_FEATURE_MAPPING, callingPackage,
-                Binder.getCallingUserHandle())) {
+                Binder.getCallingUserHandle())
+                || mVendorApiLevel < Build.VERSION_CODES.VANILLA_ICE_CREAM) {
+            // Skip to check associated telephony feature,
+            // if compatibility change is not enabled for the current process or
+            // the SDK version of vendor partition is less than Android V.
             return;
         }
 
