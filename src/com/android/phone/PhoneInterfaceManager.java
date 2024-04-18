@@ -76,6 +76,7 @@ import android.os.RemoteException;
 import android.os.ResultReceiver;
 import android.os.ServiceSpecificException;
 import android.os.SystemClock;
+import android.os.SystemProperties;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.os.WorkSource;
@@ -434,6 +435,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private final PhoneConfigurationManager mPhoneConfigurationManager;
     private final RadioInterfaceCapabilityController mRadioInterfaceCapabilities;
     private PackageManager mPackageManager;
+    private final int mVendorApiLevel;
 
     /** User Activity */
     private final AtomicBoolean mNotifyUserActivity;
@@ -2476,6 +2478,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         mPackageManager = app.getPackageManager();
         mSatelliteAccessController = SatelliteAccessController.getOrCreateInstance(
                 getDefaultPhone().getContext(), featureFlags);
+        mVendorApiLevel = SystemProperties.getInt(
+                "ro.vendor.api_level", Build.VERSION.DEVICE_INITIAL_SDK_INT);
+
         PropertyInvalidatedCache.invalidateCache(TelephonyManager.CACHE_KEY_PHONE_ACCOUNT_TO_SUBID);
         publish();
         CarrierAllowListInfo.loadInstance(mApp);
@@ -14038,7 +14043,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         if (!mFeatureFlags.enforceTelephonyFeatureMappingForPublicApis()
                 || !CompatChanges.isChangeEnabled(ENABLE_FEATURE_MAPPING, callingPackage,
-                Binder.getCallingUserHandle())) {
+                Binder.getCallingUserHandle())
+                || mVendorApiLevel < Build.VERSION_CODES.VANILLA_ICE_CREAM) {
+            // Skip to check associated telephony feature,
+            // if compatibility change is not enabled for the current process or
+            // the SDK version of vendor partition is less than Android V.
             return;
         }
 

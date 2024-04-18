@@ -32,6 +32,7 @@ import android.os.Binder;
 import android.os.Build;
 import android.os.RemoteException;
 import android.os.ServiceSpecificException;
+import android.os.SystemProperties;
 import android.os.UserHandle;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyFrameworkInitializer;
@@ -85,6 +86,7 @@ public class ImsRcsController extends IImsRcsController.Stub {
     private PackageManager mPackageManager;
     // set by shell cmd phone src set-device-enabled true/false
     private Boolean mSingleRegistrationOverride;
+    private final int mVendorApiLevel;
 
     /**
      * For apps targeting Android T and above, support the publishing state on APIs, such as
@@ -119,6 +121,8 @@ public class ImsRcsController extends IImsRcsController.Stub {
         TelephonyFrameworkInitializer
                 .getTelephonyServiceManager().getTelephonyImsServiceRegisterer().register(this);
         mImsResolver = ImsResolver.getInstance();
+        mVendorApiLevel = SystemProperties.getInt(
+                "ro.vendor.api_level", Build.VERSION.DEVICE_INITIAL_SDK_INT);
     }
 
     /**
@@ -1000,7 +1004,11 @@ public class ImsRcsController extends IImsRcsController.Stub {
 
         if (!mFeatureFlags.enforceTelephonyFeatureMappingForPublicApis()
                 || !CompatChanges.isChangeEnabled(ENABLE_FEATURE_MAPPING, callingPackage,
-                Binder.getCallingUserHandle())) {
+                Binder.getCallingUserHandle())
+                || mVendorApiLevel < Build.VERSION_CODES.VANILLA_ICE_CREAM) {
+            // Skip to check associated telephony feature,
+            // if compatibility change is not enabled for the current process or
+            // the SDK version of vendor partition is less than Android V.
             return;
         }
 
