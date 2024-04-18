@@ -1840,9 +1840,8 @@ public class EmergencyCallDomainSelectorTest {
         bindImsServiceUnregistered();
         processAllMessages();
 
-        verify(mTransportSelectorCallback, times(0))
-                .onSelectionTerminated(eq(DisconnectCause.EMERGENCY_PERM_FAILURE));
-        verifyScanPsPreferred();
+        verify(mTransportSelectorCallback, times(1))
+                .onSelectionTerminated(eq(DisconnectCause.ICC_ERROR));
     }
 
     @Test
