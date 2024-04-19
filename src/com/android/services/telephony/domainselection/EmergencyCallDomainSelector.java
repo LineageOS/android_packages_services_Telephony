@@ -215,6 +215,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
     private boolean mTryCsWhenPsFails;
     private boolean mTryEsFallback;
     private boolean mIsWaitingForDataDisconnection;
+    private boolean mSwitchRatPreferenceWithLocalNotRegistered;
     private int mModemCount;
 
     /** Indicates whether this instance is deactivated. */
@@ -445,7 +446,8 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         }
 
         if (mLastNetworkType == EUTRAN && mLastRegResult != null
-                && mSelectionAttributes.getPsDisconnectCause() != null) {
+                && mSelectionAttributes.getPsDisconnectCause() != null
+                && !mSwitchRatPreferenceWithLocalNotRegistered) {
             int regState = mLastRegResult.getRegState();
             int reasonCode = mSelectionAttributes.getPsDisconnectCause().getCode();
             if (reasonCode == ImsReasonInfo.CODE_LOCAL_NOT_REGISTERED
@@ -453,6 +455,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
                     && regState != REGISTRATION_STATE_ROAMING) {
                 // b/326292100, ePDN setup failed in limited state, request PS preferred scan.
                 mLastNetworkType = UNKNOWN;
+                mSwitchRatPreferenceWithLocalNotRegistered = true;
             }
         }
 
