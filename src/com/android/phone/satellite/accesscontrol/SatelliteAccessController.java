@@ -567,6 +567,12 @@ public class SatelliteAccessController extends Handler {
 
         // Clean up resources so that the new config data will be used when serving new requests
         cleanupOnDeviceAccessControllerResources();
+
+        // Clean up cached data based on previous geofence data
+        synchronized (mLock) {
+            logd("clear mCachedAccessRestrictionMap");
+            mCachedAccessRestrictionMap.clear();
+        }
     }
 
     private void loadOverlayConfigs(@NonNull Context context) {
