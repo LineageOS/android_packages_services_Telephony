@@ -25,7 +25,7 @@
     <string name="response_success" msgid="2469204471244527663">"GBA-г амжилттай баталгаажуулсан уу?"</string>
     <string name="response_fail_reason" msgid="3401426967253202496">"Амжилтгүй болсон шалтгааны ID"</string>
     <string name="response_key" msgid="8839847772051686309">"GBA-н түлхүүр (CK + IK)"</string>
-    <string name="response_btid" msgid="2550216722679350756">"Эхлүүлэх гүйлгээний таниулбар (B-TID)"</string>
+    <string name="response_btid" msgid="2550216722679350756">"Эхлүүлэх гүйлгээний танигч (B-TID)"</string>
     <string name="sample_naf" msgid="255371174145881001">"3GPP-bootstrapping@naf1.operator.com"</string>
     <string name="sample_btid" msgid="6967620309576384966">"(B-TID)"</string>
     <string name="sample_key" msgid="3337589659405527482">"6629fae49393a05397450978507c4ef1"</string>

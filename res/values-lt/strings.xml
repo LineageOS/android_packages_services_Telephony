@@ -844,8 +844,7 @@
     <string name="removable_esim_string" msgid="7931369811671787649">"Nustatyti pašalinimą „eSIM“ kaip numatytąją"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"Mobiliojo ryšio radijo signalas"</string>
     <string name="simulate_out_of_service_string" msgid="7787925611727597193">"Modeliavimas neteikiamas (tik derinimo versija)"</string>
-    <!-- no translation found for mock_carrier_roaming_satellite_string (4796300252858292593) -->
-    <skip />
+    <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"Netikras operatoriaus satelito režimas (tik derinimo versija)"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"Žiūrėti SIM kortelės adresų knygą"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"Žiūrėti fiksuotojo rinkimo numerius"</string>
     <string name="radioInfo_menu_viewSDN" msgid="2613431584522392842">"Žiūrėti paslaugos renkamus numerius"</string>

@@ -192,7 +192,7 @@
     <string name="preferred_network_mode_dialogtitle" msgid="2781447433514459696">"रुचाइएको नेटवर्कको प्रकार"</string>
     <string name="forbidden_network" msgid="5081729819561333023">"(निषेध गरिएको)"</string>
     <string name="choose_network_title" msgid="5335832663422653082">"नेटवर्क छनौट गर्नुहोस्‌"</string>
-    <string name="network_disconnected" msgid="8844141106841160825">"जडान विच्छेद गरियो"</string>
+    <string name="network_disconnected" msgid="8844141106841160825">"जडान डिस्कनेक्ट गरियो"</string>
     <string name="network_connected" msgid="2760235679963580224">"जडान गरियो"</string>
     <string name="network_connecting" msgid="160901383582774987">"जडान गरिँदै छ..."</string>
     <string name="network_could_not_connect" msgid="6547460848093727998">"जडान गर्न सकिएन"</string>
@@ -818,7 +818,7 @@
     <string name="supp_service_deflected_call" msgid="7565979024562921707">"कल अर्को नम्बरमा स्थानान्तरण गरियो।"</string>
     <string name="supp_service_forwarded_call" msgid="6475776013771821457">"कल फर्वार्ड गरियो।"</string>
     <string name="supp_service_conference_call" msgid="4004193534408317148">"सम्मेलन कलमा सामेल हुँदै छ।"</string>
-    <string name="supp_service_held_call_released" msgid="2847835124639112410">"होल्डमा राखिएको कललाई विच्छेद गरियो।"</string>
+    <string name="supp_service_held_call_released" msgid="2847835124639112410">"होल्डमा राखिएको कललाई डिस्कनेक्ट गरियो।"</string>
     <string name="callFailed_otasp_provisioning_in_process" msgid="3345666183602879326">"डिभाइसमा हाल सेवाहरूको व्यवस्था गरिँदै हुनाले कल गर्न सकिँदैन।"</string>
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"अर्को बहिर्गमन कल पहिले नै डायल भएका हुनाले कल गर्न सकिँदैन।"</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"जवाफ नदिइएको आगमन कल जारी रहेकाले नयाँ कल गर्न सकिँदैन। कुनै नयाँ कल गर्नुअघि आगमन कलको जवाफ दिनुहोस् वा त्यसलाई अस्वीकार गर्नुहोस्।"</string>
@@ -844,8 +844,7 @@
     <string name="removable_esim_string" msgid="7931369811671787649">"हटाउन मिल्ने eSIM डिफल्ट रूपमा सेट गर्नुहोस्"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"मोबाइल रेडियोको पावर"</string>
     <string name="simulate_out_of_service_string" msgid="7787925611727597193">"\"सेवा उपलब्ध छैन\" सिमुलेट गर्नुहोस् (डिबग बिल्डमा मात्र सिमुलेट गर्न मिल्छ)"</string>
-    <!-- no translation found for mock_carrier_roaming_satellite_string (4796300252858292593) -->
-    <skip />
+    <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"सेवा प्रदायकको स्याटेलाइट मोडको परीक्षण गर्नुहोस् (डिबग बिल्ड मात्र)"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"SIM को ठेगाना पुस्तिका हेर्नुहोस्"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"स्थिर डायल गर्ने नम्बरहरू हेर्नुहोस्"</string>
     <string name="radioInfo_menu_viewSDN" msgid="2613431584522392842">"सेवामा डायल गर्ने नम्बरहरू हेर्नुहोस्"</string>
@@ -865,7 +864,7 @@
     <string name="radioInfo_phone_idle" msgid="2191653783170757819">"निष्क्रिय"</string>
     <string name="radioInfo_phone_ringing" msgid="8100354169567413370">"घन्टी बज्दै छ"</string>
     <string name="radioInfo_phone_offhook" msgid="7564601639749936170">"कल जारी छ"</string>
-    <string name="radioInfo_data_disconnected" msgid="8085447971880814541">"विच्छेद गरियो"</string>
+    <string name="radioInfo_data_disconnected" msgid="8085447971880814541">"डिस्कनेक्ट गरिएको छ"</string>
     <string name="radioInfo_data_connecting" msgid="925092271092152472">"जोडिँदै"</string>
     <string name="radioInfo_data_connected" msgid="7637335645634239508">"जडान गरियो"</string>
     <string name="radioInfo_data_suspended" msgid="8695262782642002785">"निलम्बित"</string>
