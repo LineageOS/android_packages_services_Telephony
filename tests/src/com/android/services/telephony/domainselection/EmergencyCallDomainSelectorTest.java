@@ -2882,6 +2882,7 @@ public class EmergencyCallDomainSelectorTest {
 
     @Test
     public void testDefaultLimitedServiceEutranFail() throws Exception {
+        mResultConsumer = null;
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
@@ -2894,14 +2895,36 @@ public class EmergencyCallDomainSelectorTest {
 
         bindImsServiceUnregistered();
 
-        verifyPsDialed();
+        processAllMessages();
+        verify(mWwanSelectorCallback, times(1)).onDomainSelected(eq(DOMAIN_PS), eq(true));
 
         attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, false, regResult,
                 new ImsReasonInfo(ImsReasonInfo.CODE_LOCAL_NOT_REGISTERED, 0, null));
         mDomainSelector.reselectDomain(attr);
         processAllMessages();
 
-        verifyScanPsPreferred();
+        // Verify PS preferred scan
+        verify(mWwanSelectorCallback, times(1)).onRequestEmergencyNetworkScan(
+                any(), eq(DomainSelectionService.SCAN_TYPE_NO_PREFERENCE),
+                anyBoolean(), any(), any());
+        assertEquals(EUTRAN, (int) mAccessNetwork.get(0));
+        assertNotNull(mResultConsumer);
+
+        regResult = getEmergencyRegResult(EUTRAN, REGISTRATION_STATE_UNKNOWN,
+                0, false, false, 0, 0, "", "");
+        mResultConsumer.accept(regResult);
+
+        processAllMessages();
+        verify(mWwanSelectorCallback, times(2)).onDomainSelected(eq(DOMAIN_PS), eq(true));
+
+        mDomainSelector.reselectDomain(attr);
+        processAllMessages();
+
+        // Verify RAT preference change
+        verify(mWwanSelectorCallback, times(2)).onRequestEmergencyNetworkScan(
+                any(), eq(DomainSelectionService.SCAN_TYPE_NO_PREFERENCE),
+                anyBoolean(), any(), any());
+        assertEquals(UTRAN, (int) mAccessNetwork.get(0));
     }
 
     @Test
