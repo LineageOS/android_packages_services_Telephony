@@ -844,8 +844,7 @@
     <string name="removable_esim_string" msgid="7931369811671787649">"Установити знімну eSIM-карту як карту за умовчанням"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"Потужність мобільного радіо"</string>
     <string name="simulate_out_of_service_string" msgid="7787925611727597193">"Імітація знаходження поза зоною обслуговування (лише складання для налагодження)"</string>
-    <!-- no translation found for mock_carrier_roaming_satellite_string (4796300252858292593) -->
-    <skip />
+    <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"Режим супутника оператора Mock (лише складання для налагодження)"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"Переглянути адресну книгу SIM-карти"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"Переглянути фіксовані номери"</string>
     <string name="radioInfo_menu_viewSDN" msgid="2613431584522392842">"Переглянути службові номери"</string>
