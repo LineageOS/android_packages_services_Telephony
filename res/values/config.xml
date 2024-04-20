@@ -328,6 +328,16 @@
         <item>sg</item>
         <!-- b/198393826 -->
         <item>de</item>
+        <!-- b/334773484 -->
+        <item>gb</item>
+        <item>fr</item>
+        <item>be</item>
+        <item>ro</item>
+        <item>si</item>
+        <item>hr</item>
+        <item>gr</item>
+        <item>bg</item>
+        <item>my</item>
     </string-array>
 
     <!-- Array of countries that a normal service capable subscription is preferred

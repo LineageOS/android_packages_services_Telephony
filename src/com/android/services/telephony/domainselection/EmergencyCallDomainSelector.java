@@ -57,6 +57,7 @@ import static android.telephony.PreciseDisconnectCause.EMERGENCY_PERM_FAILURE;
 import static android.telephony.PreciseDisconnectCause.EMERGENCY_TEMP_FAILURE;
 import static android.telephony.PreciseDisconnectCause.NO_VALID_SIM;
 import static android.telephony.PreciseDisconnectCause.SERVICE_OPTION_NOT_AVAILABLE;
+import static android.telephony.SubscriptionManager.PROFILE_CLASS_PROVISIONING;
 import static android.telephony.TelephonyManager.DATA_CONNECTED;
 import static android.telephony.TelephonyManager.DATA_DISCONNECTED;
 import static android.telephony.TelephonyManager.DATA_DISCONNECTING;
@@ -85,6 +86,7 @@ import android.telephony.DomainSelectionService;
 import android.telephony.DomainSelectionService.SelectionAttributes;
 import android.telephony.EmergencyRegistrationResult;
 import android.telephony.NetworkRegistrationInfo;
+import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.telephony.TransportSelectorCallback;
@@ -213,6 +215,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
     private boolean mTryCsWhenPsFails;
     private boolean mTryEsFallback;
     private boolean mIsWaitingForDataDisconnection;
+    private boolean mSwitchRatPreferenceWithLocalNotRegistered;
     private int mModemCount;
 
     /** Indicates whether this instance is deactivated. */
@@ -443,7 +446,8 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         }
 
         if (mLastNetworkType == EUTRAN && mLastRegResult != null
-                && mSelectionAttributes.getPsDisconnectCause() != null) {
+                && mSelectionAttributes.getPsDisconnectCause() != null
+                && !mSwitchRatPreferenceWithLocalNotRegistered) {
             int regState = mLastRegResult.getRegState();
             int reasonCode = mSelectionAttributes.getPsDisconnectCause().getCode();
             if (reasonCode == ImsReasonInfo.CODE_LOCAL_NOT_REGISTERED
@@ -451,6 +455,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
                     && regState != REGISTRATION_STATE_ROAMING) {
                 // b/326292100, ePDN setup failed in limited state, request PS preferred scan.
                 mLastNetworkType = UNKNOWN;
+                mSwitchRatPreferenceWithLocalNotRegistered = true;
             }
         }
 
@@ -1541,7 +1546,6 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
     }
 
     private boolean allowEmergencyCalls(EmergencyRegistrationResult regResult) {
-        if (mModemCount < 2) return true;
         if (regResult == null) {
             loge("allowEmergencyCalls null regResult");
             return true;
@@ -1549,14 +1553,18 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
 
         String iso = regResult.getCountryIso();
         if (sSimReadyAllowList.contains(iso)) {
-            TelephonyManager tm = mContext.getSystemService(TelephonyManager.class);
-            int simState = tm.getSimState(getSlotId());
-            if (simState != TelephonyManager.SIM_STATE_READY) {
-                logi("allowEmergencyCalls not ready, simState=" + simState + ", iso=" + iso);
-                if (mCrossSimRedialingController.isThereOtherSlot()) {
+            if (isSimReady()) {
+                SubscriptionManager sm = mContext.getSystemService(SubscriptionManager.class);
+                SubscriptionInfo subInfo = sm.getActiveSubscriptionInfo(getSubId());
+                if (subInfo != null
+                        && subInfo.getProfileClass() == PROFILE_CLASS_PROVISIONING) {
+                    // b/334773484, bootstrap profile
+                    logi("allowEmergencyCalls bootstrap profile, iso=" + iso);
                     return false;
                 }
-                logi("allowEmergencyCalls there is no other slot available");
+            } else {
+                logi("allowEmergencyCalls SIM state not ready, iso=" + iso);
+                return false;
             }
         }
 
@@ -1579,7 +1587,12 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
 
     private void terminateSelectionPermanentlyForSlot() {
         logi("terminateSelectionPermanentlyForSlot");
-        terminateSelection(DisconnectCause.EMERGENCY_PERM_FAILURE);
+        mCrossSimRedialingController.notifyCallFailure(EMERGENCY_PERM_FAILURE);
+        if (mCrossSimRedialingController.isThereOtherSlot()) {
+            terminateSelection(DisconnectCause.EMERGENCY_PERM_FAILURE);
+        } else {
+            terminateSelection(DisconnectCause.ICC_ERROR);
+        }
     }
 
     private void terminateSelectionForCrossSimRedialing(boolean permanent) {

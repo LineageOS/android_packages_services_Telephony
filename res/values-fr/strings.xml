@@ -184,7 +184,7 @@
     <string name="registration_done" msgid="5337407023566953292">"Enregistré sur le réseau."</string>
     <string name="already_auto" msgid="8607068290733079336">"La sélection automatique est déjà activée."</string>
     <string name="select_automatically" msgid="779750291257872651">"Sélectionner automatiquement le réseau"</string>
-    <string name="manual_mode_disallowed_summary" msgid="3970048592179890197">"Indisponibles lorsque vous êtes connecté à %1$s"</string>
+    <string name="manual_mode_disallowed_summary" msgid="3970048592179890197">"Indisponible lorsque vous êtes connecté à %1$s"</string>
     <string name="network_select_title" msgid="4117305053881611988">"Réseau"</string>
     <string name="register_automatically" msgid="3907580547590554834">"Enregistrement automatique…"</string>
     <string name="preferred_network_mode_title" msgid="5253395265169539830">"Type de réseau préféré"</string>
@@ -622,7 +622,7 @@
     <string name="ota_hfa_activation_title" msgid="3300556778212729671">"Activation en cours…"</string>
     <string name="ota_hfa_activation_dialog_message" msgid="7921718445773342996">"Le service de données mobiles est en cours d\'activation sur le téléphone…\n\nCette opération peut prendre jusqu\'à cinq minutes."</string>
     <string name="ota_skip_activation_dialog_title" msgid="7666611236789203797">"Ignorer l\'activation ?"</string>
-    <string name="ota_skip_activation_dialog_message" msgid="6691722887019708713">"Si vous poursuivez sans activer votre mobile, vous ne pourrez ni téléphoner, ni vous connecter à des réseaux de données mobiles. La connexion à un réseau Wi-Fi reste possible. Vous serez invité à effectuer l\'activation à chaque démarrage du téléphone."</string>
+    <string name="ota_skip_activation_dialog_message" msgid="6691722887019708713">"Si vous poursuivez sans activer votre mobile, vous ne pourrez ni téléphoner, ni vous connecter à des réseaux de données mobiles. La connexion à un réseau Wi-Fi reste possible. L\'activation vous sera proposée à chaque démarrage du téléphone."</string>
     <string name="ota_skip_activation_dialog_skip_label" msgid="5908029466817825633">"Ignorer"</string>
     <string name="ota_activate" msgid="7939695753665438357">"Activer"</string>
     <string name="ota_title_activate_success" msgid="1272135024761004889">"Votre téléphone est activé"</string>
@@ -844,8 +844,7 @@
     <string name="removable_esim_string" msgid="7931369811671787649">"Définir l\'eSIM amovible comme SIM par défaut"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"Alimentation radio mobile"</string>
     <string name="simulate_out_of_service_string" msgid="7787925611727597193">"Simuler une panne (version de débogage uniquement)"</string>
-    <!-- no translation found for mock_carrier_roaming_satellite_string (4796300252858292593) -->
-    <skip />
+    <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"Simuler le mode Satellite de l\'opérateur (version de débogage uniquement)"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"Afficher le carnet d\'adresses de la carte SIM"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"Afficher les numéros autorisés"</string>
     <string name="radioInfo_menu_viewSDN" msgid="2613431584522392842">"Afficher les numéros de service"</string>
