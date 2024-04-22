@@ -452,7 +452,8 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
             int reasonCode = mSelectionAttributes.getPsDisconnectCause().getCode();
             if (reasonCode == ImsReasonInfo.CODE_LOCAL_NOT_REGISTERED
                     && regState != REGISTRATION_STATE_HOME
-                    && regState != REGISTRATION_STATE_ROAMING) {
+                    && regState != REGISTRATION_STATE_ROAMING
+                    && isSimReady()) {
                 // b/326292100, ePDN setup failed in limited state, request PS preferred scan.
                 mLastNetworkType = UNKNOWN;
                 mSwitchRatPreferenceWithLocalNotRegistered = true;

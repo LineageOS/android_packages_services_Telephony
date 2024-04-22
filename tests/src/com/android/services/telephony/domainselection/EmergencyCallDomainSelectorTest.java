@@ -2928,6 +2928,34 @@ public class EmergencyCallDomainSelectorTest {
     }
 
     @Test
+    public void testDefaultLimitedServiceEutranFailPinLocked() throws Exception {
+        doReturn(TelephonyManager.SIM_STATE_PIN_REQUIRED)
+                .when(mTelephonyManager).getSimState(anyInt());
+
+        createSelector(SLOT_0_SUB_ID);
+        unsolBarringInfoChanged(false);
+
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_UNKNOWN,
+                0, false, true, 0, 0, "", "");
+        SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
+        mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
+        processAllMessages();
+
+        bindImsServiceUnregistered();
+
+        processAllMessages();
+        verify(mWwanSelectorCallback, times(1)).onDomainSelected(eq(DOMAIN_PS), eq(true));
+
+        attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, false, regResult,
+                new ImsReasonInfo(ImsReasonInfo.CODE_LOCAL_NOT_REGISTERED, 0, null));
+        mDomainSelector.reselectDomain(attr);
+        processAllMessages();
+
+        verifyScanCsPreferred();
+    }
+
+    @Test
     public void testDefaultLimitedServiceScanTypeFullService() throws Exception {
         PersistableBundle bundle = getDefaultPersistableBundle();
         bundle.putInt(KEY_EMERGENCY_NETWORK_SCAN_TYPE_INT, SCAN_TYPE_FULL_SERVICE);
