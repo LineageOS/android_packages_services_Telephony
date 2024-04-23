@@ -429,10 +429,15 @@ public class CarrierConfigLoaderTest extends TelephonyTestBase {
 
     @Test
     @EnableCompatChanges({TelephonyManager.ENABLE_FEATURE_MAPPING})
-    public void testGetConfigForSubIdWithFeature_withTelephonyFeatureMapping() {
+    public void testGetConfigForSubIdWithFeature_withTelephonyFeatureMapping() throws Exception {
         doNothing().when(mContext).enforcePermission(
                 eq(android.Manifest.permission.READ_PRIVILEGED_PHONE_STATE),
                 anyInt(), anyInt(), anyString());
+
+        // Replace field to set SDK version of vendor partition to Android V
+        int vendorApiLevel = Build.VERSION_CODES.VANILLA_ICE_CREAM;
+        replaceInstance(CarrierConfigLoader.class, "mVendorApiLevel", mCarrierConfigLoader,
+                vendorApiLevel);
 
         doReturn(true).when(mFeatureFlags).enforceTelephonyFeatureMappingForPublicApis();
         doReturn(false).when(mPackageManager).hasSystemFeature(
