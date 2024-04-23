@@ -119,6 +119,7 @@
     <uses-permission android:name="android.permission.CHANGE_COMPONENT_ENABLED_STATE" />
     <uses-permission android:name="android.permission.CHANGE_DEVICE_IDLE_TEMP_WHITELIST" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.READ_SYSTEM_GRAMMATICAL_GENDER" />
     <!-- Needed to block messages. -->
     <uses-permission android:name="android.permission.READ_BLOCKED_NUMBERS" />
     <!-- Needed for emergency contact notification. -->
