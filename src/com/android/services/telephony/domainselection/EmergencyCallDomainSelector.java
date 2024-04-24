@@ -447,6 +447,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
 
         if (mLastNetworkType == EUTRAN && mLastRegResult != null
                 && mSelectionAttributes.getPsDisconnectCause() != null
+                && !mScanLimitedOnlyAfterVolteFailure
                 && !mSwitchRatPreferenceWithLocalNotRegistered) {
             int regState = mLastRegResult.getRegState();
             int reasonCode = mSelectionAttributes.getPsDisconnectCause().getCode();
