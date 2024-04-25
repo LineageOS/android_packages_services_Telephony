@@ -1687,6 +1687,21 @@ public class TelecomAccountRegistry {
                             continue;
                         }
 
+                        // Skip the sim for bootstrap
+                        if (info.getProfileClass() == SubscriptionManager
+                                .PROFILE_CLASS_PROVISIONING) {
+                            Log.d(this, "setupAccounts: skipping bootstrap sub id "
+                                    + subscriptionId);
+                            continue;
+                        }
+
+                        // Skip the sim for satellite as it does not support call for now
+                        if (Flags.oemEnabledSatelliteFlag() && info.isOnlyNonTerrestrialNetwork()) {
+                            Log.d(this, "setupAccounts: skipping satellite sub id "
+                                    + subscriptionId);
+                            continue;
+                        }
+
                         mAccounts.add(new AccountEntry(phone, false /* emergency */,
                                 false /* isTest */));
                     }
