@@ -24,7 +24,7 @@ android_app {
     product_specific: true,
 
     sdk_version: "system_current",
-    min_sdk_version: "30",
+    min_sdk_version: "31",
     required: ["privapp-permissions-com.google.android.sample.rcsclient.xml"],
     lint: {
         baseline_filename: "lint-baseline.xml",
