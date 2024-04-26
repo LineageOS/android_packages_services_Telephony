@@ -42,8 +42,8 @@ import java.util.concurrent.TimeUnit;
 public final class SatS2FileCreator {
     /**
      * @param inputFile The input text file containing the list of S2 Cell IDs. Each line in the
-     *                  file contains a number in the range of an unsigned-64bit number which
-     *                  represents the ID of a S2 cell.
+     *                  file contains a number in the range of a 64-bit number which represents the
+     *                  ID of a S2 cell.
      * @param s2Level The S2 level of all S2 cells in the input file.
      * @param isAllowedList {@code true} means the input file contains an allowed list of S2 cells.
      *                      {@code false} means the input file contains a disallowed list of S2
@@ -133,7 +133,7 @@ public final class SatS2FileCreator {
      * Read a list of S2 cells from the inputFile.
      *
      * @param inputFile A file containing the list of S2 cells. Each line in the inputFile contains
-     *                  an unsigned long number - the ID of a S2 cell.
+     *                  a 64-bit number - the ID of a S2 cell.
      * @return A list of S2 cells.
      */
     private static List<Long> readS2CellsFromFile(String inputFile) throws Exception {
@@ -143,7 +143,7 @@ public final class SatS2FileCreator {
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 try {
-                    s2Cells.add(Long.parseUnsignedLong(line));
+                    s2Cells.add(Long.parseLong(line));
                 } catch (Exception ex) {
                     throw new IllegalStateException("Input s2 cell file has invalid format, "
                             + "current line=" + line);
