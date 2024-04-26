@@ -61,7 +61,9 @@ import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.TelephonyCountryDetector;
 import com.android.internal.telephony.flags.FeatureFlags;
 import com.android.internal.telephony.satellite.SatelliteConfig;
+import com.android.internal.telephony.satellite.SatelliteConstants;
 import com.android.internal.telephony.satellite.SatelliteController;
+import com.android.internal.telephony.satellite.metrics.ConfigUpdaterMetricsStats;
 import com.android.internal.telephony.util.TelephonyUtils;
 import com.android.phone.PhoneGlobals;
 
@@ -190,6 +192,7 @@ public class SatelliteAccessController extends Handler {
     private static final String CONFIG_UPDATER_SATELLITE_IS_ALLOW_ACCESS_CONTROL_KEY =
             "config_updater_satellite_is_allow_access_control";
     private SharedPreferences mSharedPreferences;
+    private final ConfigUpdaterMetricsStats mConfigUpdaterMetricsStats;
 
     /**
      * Map key: binder of the callback, value: callback to receive the satellite communication
@@ -241,6 +244,7 @@ public class SatelliteAccessController extends Handler {
                 handleIsSatelliteSupportedResult(resultCode, resultData);
             }
         };
+        mConfigUpdaterMetricsStats = ConfigUpdaterMetricsStats.getOrCreateInstance();
         // Init the SatelliteOnDeviceAccessController so that the S2 level can be cached
         initSatelliteOnDeviceAccessController();
     }
@@ -538,41 +542,55 @@ public class SatelliteAccessController extends Handler {
         SatelliteConfig satelliteConfig = mSatelliteController.getSatelliteConfig();
         if (satelliteConfig == null) {
             loge("satelliteConfig is null");
+            mConfigUpdaterMetricsStats.reportOemAndCarrierConfigError(
+                    SatelliteConstants.CONFIG_UPDATE_RESULT_NO_SATELLITE_DATA);
             return;
         }
 
         List<String> satelliteCountryCodes = satelliteConfig.getDeviceSatelliteCountryCodes();
         if (!isValidCountryCodes(satelliteCountryCodes)) {
             logd("country codes is invalid");
+            mConfigUpdaterMetricsStats.reportOemConfigError(
+                    SatelliteConstants.CONFIG_UPDATE_RESULT_DEVICE_DATA_INVALID_COUNTRY_CODE);
             return;
         }
 
         Boolean isSatelliteDataForAllowedRegion = satelliteConfig.isSatelliteDataForAllowedRegion();
         if (isSatelliteDataForAllowedRegion == null) {
             loge("Satellite allowed is not configured with country codes");
+            mConfigUpdaterMetricsStats.reportOemConfigError(
+                    SatelliteConstants.CONFIG_UPDATE_RESULT_DEVICE_DATA_INVALID_S2_CELL_FILE);
             return;
         }
 
         File configUpdaterS2CellFile = satelliteConfig.getSatelliteS2CellFile(context);
         if (configUpdaterS2CellFile == null || !configUpdaterS2CellFile.exists()) {
             logd("No S2 cell file configured or the file does not exist");
+            mConfigUpdaterMetricsStats.reportOemConfigError(
+                    SatelliteConstants.CONFIG_UPDATE_RESULT_DEVICE_DATA_INVALID_S2_CELL_FILE);
             return;
         }
 
         if (!isS2CellFileValid(configUpdaterS2CellFile)) {
             loge("The configured S2 cell file is not valid");
+            mConfigUpdaterMetricsStats.reportOemConfigError(
+                    SatelliteConstants.CONFIG_UPDATE_RESULT_DEVICE_DATA_INVALID_S2_CELL_FILE);
             return;
         }
 
         File localS2CellFile = copySatS2FileToLocalDirectory(configUpdaterS2CellFile);
         if (localS2CellFile == null || !localS2CellFile.exists()) {
             loge("Fail to copy S2 cell file to local directory");
+            mConfigUpdaterMetricsStats.reportOemConfigError(
+                    SatelliteConstants.CONFIG_UPDATE_RESULT_IO_ERROR);
             return;
         }
 
         if (!updateSharedPreferencesCountryCodes(context, satelliteCountryCodes)) {
             loge("Fail to copy country coeds into shared preferences");
             localS2CellFile.delete();
+            mConfigUpdaterMetricsStats.reportOemConfigError(
+                    SatelliteConstants.CONFIG_UPDATE_RESULT_IO_ERROR);
             return;
         }
 
@@ -580,6 +598,8 @@ public class SatelliteAccessController extends Handler {
                 context, isSatelliteDataForAllowedRegion.booleanValue())) {
             loge("Fail to copy allow access control into shared preferences");
             localS2CellFile.delete();
+            mConfigUpdaterMetricsStats.reportOemConfigError(
+                    SatelliteConstants.CONFIG_UPDATE_RESULT_IO_ERROR);
             return;
         }
 
@@ -599,6 +619,8 @@ public class SatelliteAccessController extends Handler {
             logd("clear mCachedAccessRestrictionMap");
             mCachedAccessRestrictionMap.clear();
         }
+
+        mConfigUpdaterMetricsStats.reportConfigUpdateSuccess();
     }
 
     private void loadOverlayConfigs(@NonNull Context context) {

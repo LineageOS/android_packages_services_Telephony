@@ -16,8 +16,6 @@
 
 package com.android.phone.satellite.entitlement;
 
-import static com.android.phone.satellite.entitlement.SatelliteEntitlementResult.SATELLITE_ENTITLEMENT_STATUS_ENABLED;
-
 import static java.time.format.DateTimeFormatter.RFC_1123_DATE_TIME;
 import static java.time.temporal.ChronoUnit.SECONDS;
 
@@ -44,7 +42,9 @@ import com.android.internal.annotations.GuardedBy;
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.telephony.ExponentialBackoff;
 import com.android.internal.telephony.flags.FeatureFlags;
+import com.android.internal.telephony.satellite.SatelliteConstants;
 import com.android.internal.telephony.satellite.SatelliteController;
+import com.android.internal.telephony.satellite.metrics.EntitlementMetricsStats;
 import com.android.internal.telephony.subscription.SubscriptionManagerService;
 import com.android.libraries.entitlement.ServiceEntitlementException;
 
@@ -109,6 +109,7 @@ public class SatelliteEntitlementController extends Handler {
     /** Map key : slotId, value : The last used subId. */
     @GuardedBy("mLock")
     private Map<Integer, Integer> mSubIdPerSlot = new HashMap<>();
+    @NonNull private final EntitlementMetricsStats mEntitlementMetricsStats;
 
     /**
      * Create the SatelliteEntitlementController singleton instance.
@@ -159,6 +160,7 @@ public class SatelliteEntitlementController extends Handler {
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(Intent.ACTION_AIRPLANE_MODE_CHANGED);
         context.registerReceiver(mReceiver, intentFilter);
+        mEntitlementMetricsStats = EntitlementMetricsStats.getOrCreateInstance();
     }
 
     @Override
@@ -255,11 +257,15 @@ public class SatelliteEntitlementController extends Handler {
             try {
                 synchronized (mLock) {
                     mIsEntitlementInProgressPerSub.put(subId, true);
-                    mSatelliteEntitlementResultPerSub.put(subId, getSatelliteEntitlementApi(
-                            subId).checkEntitlementStatus());
+                    SatelliteEntitlementResult entitlementResult =  getSatelliteEntitlementApi(
+                            subId).checkEntitlementStatus();
+                    mSatelliteEntitlementResultPerSub.put(subId, entitlementResult);
+                    mEntitlementMetricsStats.reportSuccess(subId,
+                            getEntitlementStatus(entitlementResult), false);
                 }
             } catch (ServiceEntitlementException e) {
                 loge(e.toString());
+                mEntitlementMetricsStats.reportError(subId, e.getErrorCode(), false);
                 if (!isInternetConnected()) {
                     logd("StartQuery: disconnected. " + e);
                     synchronized (mLock) {
@@ -319,11 +325,15 @@ public class SatelliteEntitlementController extends Handler {
                 int currentRetryCount = getRetryCount(subId);
                 mRetryCountPerSub.put(subId, currentRetryCount + 1);
                 logd("[" + subId + "] retry cnt:" + getRetryCount(subId));
-                mSatelliteEntitlementResultPerSub.put(subId, getSatelliteEntitlementApi(
-                        subId).checkEntitlementStatus());
+                SatelliteEntitlementResult entitlementResult =  getSatelliteEntitlementApi(
+                        subId).checkEntitlementStatus();
+                mSatelliteEntitlementResultPerSub.put(subId, entitlementResult);
+                mEntitlementMetricsStats.reportSuccess(subId,
+                        getEntitlementStatus(entitlementResult), true);
             }
         } catch (ServiceEntitlementException e) {
             loge(e.toString());
+            mEntitlementMetricsStats.reportError(subId, e.getErrorCode(), true);
             if (!isRetryAvailable(subId)) {
                 logd("retryQuery: unavailable.");
                 queryCompleted(subId);
@@ -464,8 +474,8 @@ public class SatelliteEntitlementController extends Handler {
         sendMessageDelayed(message, TimeUnit.DAYS.toMillis(
                 getSatelliteEntitlementStatusRefreshDays(subId)));
         logd("queryCompleted: updateSatelliteEntitlementStatus");
-        updateSatelliteEntitlementStatus(subId,
-                entitlementResult.getEntitlementStatus() == SATELLITE_ENTITLEMENT_STATUS_ENABLED,
+        updateSatelliteEntitlementStatus(subId, entitlementResult.getEntitlementStatus() ==
+                        SatelliteEntitlementResult.SATELLITE_ENTITLEMENT_STATUS_ENABLED,
                 entitlementResult.getAllowedPLMNList(), entitlementResult.getBarredPLMNList());
     }
 
@@ -511,12 +521,13 @@ public class SatelliteEntitlementController extends Handler {
     private void resetSatelliteEntitlementRestrictedReason(int subId) {
         SatelliteEntitlementResult previousResult;
         SatelliteEntitlementResult enabledResult = new SatelliteEntitlementResult(
-                SATELLITE_ENTITLEMENT_STATUS_ENABLED, new ArrayList<>(), new ArrayList<>());
+                SatelliteEntitlementResult.SATELLITE_ENTITLEMENT_STATUS_ENABLED,
+                new ArrayList<>(), new ArrayList<>());
         synchronized (mLock) {
             previousResult = mSatelliteEntitlementResultPerSub.get(subId);
         }
         if (previousResult != null && previousResult.getEntitlementStatus()
-                != SATELLITE_ENTITLEMENT_STATUS_ENABLED) {
+                != SatelliteEntitlementResult.SATELLITE_ENTITLEMENT_STATUS_ENABLED) {
             logd("set enabled status for removing satellite entitlement restricted reason");
             synchronized (mLock) {
                 mSatelliteEntitlementResultPerSub.put(subId, enabledResult);
@@ -631,6 +642,22 @@ public class SatelliteEntitlementController extends Handler {
             List<String> plmnAllowedList, List<String> plmnBarredList) {
         SatelliteController.getInstance().onSatelliteEntitlementStatusUpdated(subId, enabled,
                 plmnAllowedList, plmnBarredList, null);
+    }
+
+    private @SatelliteConstants.SatelliteEntitlementStatus int getEntitlementStatus(
+            SatelliteEntitlementResult entitlementResult) {
+        switch (entitlementResult.getEntitlementStatus()) {
+            case SatelliteEntitlementResult.SATELLITE_ENTITLEMENT_STATUS_DISABLED:
+                return SatelliteConstants.SATELLITE_ENTITLEMENT_STATUS_DISABLED;
+            case SatelliteEntitlementResult.SATELLITE_ENTITLEMENT_STATUS_ENABLED:
+                return SatelliteConstants.SATELLITE_ENTITLEMENT_STATUS_ENABLED;
+            case SatelliteEntitlementResult.SATELLITE_ENTITLEMENT_STATUS_INCOMPATIBLE:
+                return SatelliteConstants.SATELLITE_ENTITLEMENT_STATUS_INCOMPATIBLE;
+            case SatelliteEntitlementResult.SATELLITE_ENTITLEMENT_STATUS_PROVISIONING:
+                return SatelliteConstants.SATELLITE_ENTITLEMENT_STATUS_PROVISIONING;
+            default:
+                return SatelliteConstants.SATELLITE_ENTITLEMENT_STATUS_UNKNOWN;
+        }
     }
 
     private static void logd(String log) {
