@@ -576,7 +576,7 @@ public class PhoneGlobals extends ContextWrapper {
                         R.string.config_ims_rcs_package);
                 ImsResolver.make(this, defaultImsMmtelPackage,
                         defaultImsRcsPackage, PhoneFactory.getPhones().length,
-                        new ImsFeatureBinderRepository());
+                        new ImsFeatureBinderRepository(), mFeatureFlags);
                 ImsResolver.getInstance().initialize();
 
                 // With the IMS phone created, load static config.xml values from the phone process
