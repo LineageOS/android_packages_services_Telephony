@@ -20,6 +20,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingTop="40dp"
     android:layoutDirection="locale"
     android:textDirection="locale">
 
@@ -209,6 +210,22 @@
                  android:layout_width="match_parent"
                  android:layout_height="wrap_content"
                 />
+
+        <!-- Mock signal strength -->
+        <LinearLayout style="@style/RadioInfo_entry_layout">
+            <TextView android:text="@string/radio_info_signal_strength_label" style="@style/info_label" />
+            <Spinner android:id="@+id/signalStrength"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+       <!-- Mock data network type -->
+       <LinearLayout style="@style/RadioInfo_entry_layout">
+            <TextView android:text="@string/radio_info_data_network_type_label" style="@style/info_label" />
+            <Spinner android:id="@+id/dataNetworkType"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"/>
+         </LinearLayout>
 
         <!-- Horizontal Rule -->
         <View
