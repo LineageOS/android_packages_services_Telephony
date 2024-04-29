@@ -121,6 +121,11 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
      */
     private static final int DEFAULT_DATA_DISCONNECTION_TIMEOUT_MS = 2 * 1000; // 2 seconds
 
+    /**
+     * Timeout of waiting for the IMS state change before selecting domain from initial state.
+     */
+    private static final int DEFAULT_WAIT_FOR_IMS_STATE_TIMEOUT_MS = 3 * 1000; // 3 seconds
+
     private static final int MSG_START_DOMAIN_SELECTION = 11;
     @VisibleForTesting
     public static final int MSG_NETWORK_SCAN_TIMEOUT = 12;
@@ -129,6 +134,8 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
     public static final int MSG_MAX_CELLULAR_TIMEOUT = 14;
     @VisibleForTesting
     public static final int MSG_WAIT_DISCONNECTION_TIMEOUT = 15;
+    @VisibleForTesting
+    public static final int MSG_WAIT_FOR_IMS_STATE_TIMEOUT = 16;
 
     private static final int NOT_SUPPORTED = -1;
 
@@ -282,6 +289,10 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
 
             case MSG_WAIT_DISCONNECTION_TIMEOUT:
                 requestScanDelayed();
+                break;
+
+            case MSG_WAIT_FOR_IMS_STATE_TIMEOUT:
+                handleWaitForImsStateTimeout();
                 break;
 
             default:
@@ -551,12 +562,20 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         mDomainSelectionRequested = true;
         startCrossStackTimer();
         if (SubscriptionManager.isValidSubscriptionId(getSubId())) {
+            sendEmptyMessageDelayed(MSG_WAIT_FOR_IMS_STATE_TIMEOUT,
+                    DEFAULT_WAIT_FOR_IMS_STATE_TIMEOUT_MS);
             selectDomain();
         } else {
             logi("startDomainSelection invalid subId");
             onImsRegistrationStateChanged();
             onImsMmTelCapabilitiesChanged();
         }
+    }
+
+    private void handleWaitForImsStateTimeout() {
+        logi("handleWaitForImsStateTimeout");
+        onImsRegistrationStateChanged();
+        onImsMmTelCapabilitiesChanged();
     }
 
     @Override
@@ -760,6 +779,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
                     + " BarringInfo, IMS registration state, or MMTEL capabilities");
             return;
         }
+        removeMessages(MSG_WAIT_FOR_IMS_STATE_TIMEOUT);
 
         // The statements below should be executed only once to select domain from initial state.
         // Next domain selection shall be triggered by reselectDomain().
@@ -934,7 +954,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
                     sendMessage(obtainMessage(MSG_NETWORK_SCAN_RESULT, result));
                 });
 
-        if (startVoWifiTimer && SubscriptionManager.isValidSubscriptionId(getSubId())) {
+        if (startVoWifiTimer && isSimReady()) {
             if (isEmcOverWifiSupported()
                     && mScanTimeout > 0 && mVoWifiTrialCount < mMaxNumOfVoWifiTries) {
                 logi("requestScan start scan timer");
