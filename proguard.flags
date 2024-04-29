@@ -12,4 +12,6 @@
 -keep class com.android.phone.callcomposer.** {
  *;
 }
+# Keep the FakeFeatureFlagsImpl
+-keep class com.android.internal.telephony.flags.FakeFeatureFlagsImpl { *; }
 -verbose
