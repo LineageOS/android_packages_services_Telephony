@@ -362,4 +362,7 @@
          service. The device should fallback to the modem based domain selection architecture
          if this is not configured. -->
     <string name="config_domain_selection_service_component_name" translatable="false"></string>
+
+    <!-- Whether to turn off OEM-enabled satellite during emergency call -->
+    <bool name="config_turn_off_oem_enabled_satellite_during_emergency_call">false</bool>
 </resources>
