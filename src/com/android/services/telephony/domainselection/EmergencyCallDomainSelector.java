@@ -136,6 +136,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
     public static final int MSG_WAIT_DISCONNECTION_TIMEOUT = 15;
     @VisibleForTesting
     public static final int MSG_WAIT_FOR_IMS_STATE_TIMEOUT = 16;
+    private static final int MSG_WIFI_AVAILABLE = 17;
 
     private static final int NOT_SUPPORTED = -1;
 
@@ -160,6 +161,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
                 public void onAvailable(Network network) {
                     logi("onAvailable: " + network);
                     mWiFiAvailable = true;
+                    sendEmptyMessage(MSG_WIFI_AVAILABLE);
                 }
 
                 @Override
@@ -235,6 +237,8 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
     private boolean mCrossStackTimerExpired = false;
     /** Indicates whether max cellular timer expired. */
     private boolean mMaxCellularTimerExpired = false;
+    /** Indicates whether network scan timer expired. */
+    private boolean mNetworkScanTimerExpired = false;
 
     /**
      * Indicates whether {@link #selectDomain(SelectionAttributes, TransportSelectionCallback)}
@@ -293,6 +297,10 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
 
             case MSG_WAIT_FOR_IMS_STATE_TIMEOUT:
                 handleWaitForImsStateTimeout();
+                break;
+
+            case MSG_WIFI_AVAILABLE:
+                handleWifiAvailable();
                 break;
 
             default:
@@ -1068,6 +1076,12 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         return preferredNetworks;
     }
 
+    private void handleWifiAvailable() {
+        if (!mDomainSelected && (mMaxCellularTimerExpired || mNetworkScanTimerExpired)) {
+            maybeDialOverWlan();
+        }
+    }
+
     private void handleMaxCellularTimeout() {
         logi("handleMaxCellularTimeout");
         if (mVoWifiTrialCount >= mMaxNumOfVoWifiTries) {
@@ -1090,13 +1104,14 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
 
     private void handleNetworkScanTimeout() {
         logi("handleNetworkScanTimeout");
+        mNetworkScanTimerExpired = true;
         maybeDialOverWlan();
     }
 
     private boolean maybeDialOverWlan() {
-        logi("maybeDialOverWlan overEmergencyPdn=" + mVoWifiOverEmergencyPdn
-                + ", wifiAvailable=" + mWiFiAvailable);
         boolean available = mWiFiAvailable;
+        logi("maybeDialOverWlan overEmergencyPdn=" + mVoWifiOverEmergencyPdn
+                + ", wifiAvailable=" + available);
         if (mVoWifiOverEmergencyPdn) {
             // SOS APN
             if (!available && isImsRegisteredOverCrossSim()) {
@@ -1481,6 +1496,9 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         }
 
         mDomainSelected = true;
+        mNetworkScanTimerExpired = false;
+        mIsWaitingForDataDisconnection = false;
+        removeMessages(MSG_WAIT_DISCONNECTION_TIMEOUT);
         mLastTransportType = TRANSPORT_TYPE_WLAN;
         mVoWifiTrialCount++;
         mTransportSelectorCallback.onWlanSelected(mVoWifiOverEmergencyPdn);
@@ -1511,6 +1529,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         }
 
         mDomainSelected = true;
+        mNetworkScanTimerExpired = false;
         mLastNetworkType = accessNetworkType;
         int domain = NetworkRegistrationInfo.DOMAIN_CS;
         if (accessNetworkType == EUTRAN || accessNetworkType == NGRAN) {
