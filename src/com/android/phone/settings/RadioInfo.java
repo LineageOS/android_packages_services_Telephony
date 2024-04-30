@@ -58,6 +58,7 @@ import android.telephony.CellInfoGsm;
 import android.telephony.CellInfoLte;
 import android.telephony.CellInfoNr;
 import android.telephony.CellInfoWcdma;
+import android.telephony.CellSignalStrength;
 import android.telephony.CellSignalStrengthCdma;
 import android.telephony.CellSignalStrengthGsm;
 import android.telephony.CellSignalStrengthLte;
@@ -111,6 +112,7 @@ import com.android.phone.R;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
@@ -168,6 +170,36 @@ public class RadioInfo extends AppCompatActivity {
             "Unknown"
     };
 
+    private static final Integer[] SIGNAL_STRENGTH_LEVEL = new Integer[] {
+            -1 /*clear mock*/,
+            CellSignalStrength.SIGNAL_STRENGTH_NONE_OR_UNKNOWN,
+            CellSignalStrength.SIGNAL_STRENGTH_POOR,
+            CellSignalStrength.SIGNAL_STRENGTH_MODERATE,
+            CellSignalStrength.SIGNAL_STRENGTH_GOOD,
+            CellSignalStrength.SIGNAL_STRENGTH_GREAT
+    };
+    private static final Integer[] MOCK_DATA_NETWORK_TYPE = new Integer[] {
+            -1 /*clear mock*/,
+            ServiceState.RIL_RADIO_TECHNOLOGY_GPRS,
+            ServiceState.RIL_RADIO_TECHNOLOGY_EDGE,
+            ServiceState.RIL_RADIO_TECHNOLOGY_UMTS,
+            ServiceState.RIL_RADIO_TECHNOLOGY_IS95A,
+            ServiceState.RIL_RADIO_TECHNOLOGY_IS95B,
+            ServiceState.RIL_RADIO_TECHNOLOGY_1xRTT,
+            ServiceState.RIL_RADIO_TECHNOLOGY_EVDO_0,
+            ServiceState.RIL_RADIO_TECHNOLOGY_EVDO_A,
+            ServiceState.RIL_RADIO_TECHNOLOGY_HSDPA,
+            ServiceState.RIL_RADIO_TECHNOLOGY_HSUPA,
+            ServiceState.RIL_RADIO_TECHNOLOGY_HSPA,
+            ServiceState.RIL_RADIO_TECHNOLOGY_EVDO_B,
+            ServiceState.RIL_RADIO_TECHNOLOGY_EHRPD,
+            ServiceState.RIL_RADIO_TECHNOLOGY_LTE,
+            ServiceState.RIL_RADIO_TECHNOLOGY_HSPAP,
+            ServiceState.RIL_RADIO_TECHNOLOGY_GSM,
+            ServiceState.RIL_RADIO_TECHNOLOGY_TD_SCDMA,
+            ServiceState.RIL_RADIO_TECHNOLOGY_LTE_CA,
+            ServiceState.RIL_RADIO_TECHNOLOGY_NR
+    };
     private static String[] sPhoneIndexLabels;
 
     private static final int sCellInfoListRateDisabled = Integer.MAX_VALUE;
@@ -284,6 +316,9 @@ public class RadioInfo extends AppCompatActivity {
     private Switch mDsdsSwitch;
     private Switch mRemovableEsimSwitch;
     private Spinner mPreferredNetworkType;
+    private Spinner mMockSignalStrength;
+    private Spinner mMockDataNetworkType;
+
     private Spinner mSelectPhoneIndex;
     private Spinner mCellInfoRefreshRateSpinner;
 
@@ -307,6 +342,8 @@ public class RadioInfo extends AppCompatActivity {
     private final PersistableBundle[] mCarrierSatelliteOriginalBundle = new PersistableBundle[2];
     private List<CellInfo> mCellInfoResult = null;
     private final boolean[] mSimulateOos = new boolean[2];
+    private int[] mSelectedSignalStrengthIndex = new int[2];
+    private int[] mSelectedMockDataNetworkTypeIndex = new int[2];
     private String mEuiccInfoResult = "";
 
     private int mPreferredNetworkTypeResult;
@@ -587,6 +624,29 @@ public class RadioInfo extends AppCompatActivity {
                 .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mPreferredNetworkType.setAdapter(mPreferredNetworkTypeAdapter);
 
+        mMockSignalStrength = (Spinner) findViewById(R.id.signalStrength);
+        if (!TelephonyUtils.IS_DEBUGGABLE) {
+            mMockSignalStrength.setVisibility(View.GONE);
+        } else {
+            ArrayAdapter<Integer> mSignalStrengthAdapter = new ArrayAdapter<>(this,
+                    android.R.layout.simple_spinner_item, SIGNAL_STRENGTH_LEVEL);
+            mSignalStrengthAdapter
+                    .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            mMockSignalStrength.setAdapter(mSignalStrengthAdapter);
+        }
+
+        mMockDataNetworkType = (Spinner) findViewById(R.id.dataNetworkType);
+        if (!TelephonyUtils.IS_DEBUGGABLE) {
+            mMockDataNetworkType.setVisibility(View.GONE);
+        } else {
+            ArrayAdapter<String> mNetworkTypeAdapter = new ArrayAdapter<>(this,
+                    android.R.layout.simple_spinner_item, Arrays.stream(MOCK_DATA_NETWORK_TYPE)
+                    .map(ServiceState::rilRadioTechnologyToString).toArray(String[]::new));
+            mNetworkTypeAdapter
+                    .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            mMockDataNetworkType.setAdapter(mNetworkTypeAdapter);
+        }
+
         mSelectPhoneIndex = (Spinner) findViewById(R.id.phoneIndex);
         ArrayAdapter<String> phoneIndexAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, sPhoneIndexLabels);
@@ -756,6 +816,14 @@ public class RadioInfo extends AppCompatActivity {
                     RadioAccessFamily.getNetworkTypeFromRaf(networkType)));
         }).start();
 
+        // mock signal strength
+        mMockSignalStrength.setSelection(mSelectedSignalStrengthIndex[mPhone.getPhoneId()]);
+        mMockSignalStrength.setOnItemSelectedListener(mOnMockSignalStrengthSelectedListener);
+
+        // mock data network type
+        mMockDataNetworkType.setSelection(mSelectedMockDataNetworkTypeIndex[mPhone.getPhoneId()]);
+        mMockDataNetworkType.setOnItemSelectedListener(mOnMockDataNetworkTypeSelectedListener);
+
         // set phone index
         mSelectPhoneIndex.setSelection(mSelectedPhoneIndex, true);
         mSelectPhoneIndex.setOnItemSelectedListener(mSelectPhoneIndexHandler);
@@ -884,11 +952,20 @@ public class RadioInfo extends AppCompatActivity {
     }
 
     private void clearOverride() {
-        if (mSimulateOutOfServiceSwitch.isChecked()) {
-            mSimulateOosOnChangeListener.onCheckedChanged(mSimulateOutOfServiceSwitch, false);
-        }
-        if (mMockSatellite.isChecked()) {
-            mMockSatelliteListener.onCheckedChanged(mMockSatellite, false);
+        for (int phoneId = 0; phoneId < sPhoneIndexLabels.length; phoneId++) {
+            mPhone = PhoneFactory.getPhone(phoneId);
+            if (mSimulateOos[mPhone.getPhoneId()])  {
+                mSimulateOosOnChangeListener.onCheckedChanged(mSimulateOutOfServiceSwitch, false);
+            }
+            if (mCarrierSatelliteOriginalBundle[mPhone.getPhoneId()] != null) {
+                mMockSatelliteListener.onCheckedChanged(mMockSatellite, false);
+            }
+            if (mSelectedSignalStrengthIndex[mPhone.getPhoneId()] > 0) {
+                mOnMockSignalStrengthSelectedListener.onItemSelected(null, null, 0/*pos*/, 0);
+            }
+            if (mSelectedMockDataNetworkTypeIndex[mPhone.getPhoneId()] > 0) {
+                mOnMockDataNetworkTypeSelectedListener.onItemSelected(null, null, 0/*pos*/, 0);
+            }
         }
     }
 
@@ -2061,6 +2138,43 @@ public class RadioInfo extends AppCompatActivity {
         public void onNothingSelected(AdapterView parent) {
         }
     };
+
+    AdapterView.OnItemSelectedListener mOnMockSignalStrengthSelectedListener =
+            new AdapterView.OnItemSelectedListener() {
+
+                public void onItemSelected(AdapterView<?> parent, View v, int pos, long id) {
+                    log("mOnSignalStrengthSelectedListener: " + pos);
+                    mSelectedSignalStrengthIndex[mPhone.getPhoneId()] = pos;
+                    mPhone.getTelephonyTester().setSignalStrength(SIGNAL_STRENGTH_LEVEL[pos]);
+                }
+
+                public void onNothingSelected(AdapterView<?> parent) {}
+            };
+
+
+    AdapterView.OnItemSelectedListener mOnMockDataNetworkTypeSelectedListener =
+            new AdapterView.OnItemSelectedListener() {
+
+                public void onItemSelected(AdapterView<?> parent, View v, int pos, long id) {
+                    log("mOnMockDataNetworkTypeSelectedListener: " + pos);
+                    mSelectedMockDataNetworkTypeIndex[mPhone.getPhoneId()] = pos;
+                    Intent intent = new Intent("com.android.internal.telephony.TestServiceState");
+                    if (pos > 0) {
+                        log("mOnMockDataNetworkTypeSelectedListener: Override RAT: "
+                                + ServiceState.rilRadioTechnologyToString(
+                                        MOCK_DATA_NETWORK_TYPE[pos]));
+                        intent.putExtra("data_reg_state", ServiceState.STATE_IN_SERVICE);
+                        intent.putExtra("data_rat", MOCK_DATA_NETWORK_TYPE[pos]);
+                    } else {
+                        log("mOnMockDataNetworkTypeSelectedListener: Remove RAT override.");
+                        intent.putExtra("action", "reset");
+                    }
+
+                    mPhone.getTelephonyTester().setServiceStateTestIntent(intent);
+                }
+
+                public void onNothingSelected(AdapterView<?> parent) {}
+            };
 
     AdapterView.OnItemSelectedListener mSelectPhoneIndexHandler =
             new AdapterView.OnItemSelectedListener() {
