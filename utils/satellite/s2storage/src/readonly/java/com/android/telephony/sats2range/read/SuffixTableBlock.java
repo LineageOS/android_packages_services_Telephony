@@ -100,7 +100,7 @@ public final class SuffixTableBlock {
         if (blockData.getSize() == 0) {
             throw new IllegalArgumentException("blockData=" + blockData + ", is zero length");
         }
-        IntValueTypedPackedTable packedTable = new IntValueTypedPackedTable(blockData);
+        IntValueTypedPackedTable packedTable = new IntValueTypedPackedTable(blockData, true);
         PopulatedSuffixTableBlock delegate = new PopulatedSuffixTableBlock(fileFormat, packedTable);
         return new SuffixTableBlock(fileFormat, delegate);
     }

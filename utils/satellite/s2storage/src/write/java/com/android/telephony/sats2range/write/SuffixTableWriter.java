@@ -68,8 +68,8 @@ public final class SuffixTableWriter implements BlockWriter {
         byte[] blockSharedData = SuffixTableSharedDataWriter.toBytes(sharedData);
         FileOutputStream fileOutputStream = new FileOutputStream(mFile);
         boolean signedValue = false;
-        mPackedTableWriter = PackedTableWriter.create(
-                fileOutputStream, entrySizeByteCount, keySizeBits, signedValue, blockSharedData);
+        mPackedTableWriter = PackedTableWriter.create(fileOutputStream, entrySizeByteCount,
+                keySizeBits, signedValue, blockSharedData, true);
     }
 
     /** Returns a {@link BlockWriter} capable of generating the block data for an empty table. */
