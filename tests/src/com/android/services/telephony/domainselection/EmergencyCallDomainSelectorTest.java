@@ -2525,6 +2525,53 @@ public class EmergencyCallDomainSelectorTest {
     }
 
     @Test
+    public void testScanTimeoutWifiNotAvailable() throws Exception {
+        PersistableBundle bundle = getDefaultPersistableBundle();
+        bundle.putBoolean(KEY_EMERGENCY_CALL_OVER_EMERGENCY_PDN_BOOL, true);
+        when(mCarrierConfigManager.getConfigForSubId(anyInt(), anyVararg())).thenReturn(bundle);
+
+        createSelector(SLOT_0_SUB_ID);
+        unsolBarringInfoChanged(false);
+
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(UNKNOWN,
+                REGISTRATION_STATE_UNKNOWN,
+                0, false, false, 0, 0, "", "");
+        SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
+        mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
+        processAllMessages();
+
+        bindImsServiceUnregistered();
+
+        verifyScanPsPreferred();
+
+        assertTrue(mDomainSelector.hasMessages(MSG_NETWORK_SCAN_TIMEOUT));
+
+        // Wi-Fi is not connected.
+        verify(mTransportSelectorCallback, times(0)).onWlanSelected(anyBoolean());
+
+        // Wi-Fi is connected.
+        mNetworkCallback.onAvailable(null);
+        processAllMessages();
+
+        verify(mTransportSelectorCallback, times(0)).onWlanSelected(anyBoolean());
+
+        // Wi-Fi is disconnected.
+        mNetworkCallback.onUnavailable();
+        mDomainSelector.removeMessages(MSG_NETWORK_SCAN_TIMEOUT);
+
+        // Timer is expired
+        mDomainSelector.handleMessage(mDomainSelector.obtainMessage(MSG_NETWORK_SCAN_TIMEOUT));
+
+        verify(mTransportSelectorCallback, times(0)).onWlanSelected(anyBoolean());
+
+        // Wi-Fi is connected.
+        mNetworkCallback.onAvailable(null);
+        processAllMessages();
+
+        verify(mTransportSelectorCallback, times(1)).onWlanSelected(eq(true));
+    }
+
+    @Test
     public void testMaxCellularTimeout() throws Exception {
         PersistableBundle bundle = getDefaultPersistableBundle();
         bundle.putBoolean(KEY_EMERGENCY_CALL_OVER_EMERGENCY_PDN_BOOL, true);
@@ -2569,6 +2616,13 @@ public class EmergencyCallDomainSelectorTest {
 
         assertTrue(mDomainSelector.hasMessages(MSG_NETWORK_SCAN_TIMEOUT));
         verify(mTransportSelectorCallback, never()).onWlanSelected(anyBoolean());
+
+        // Wi-Fi is connected.
+        mNetworkCallback.onAvailable(null);
+        processAllMessages();
+
+        assertFalse(mDomainSelector.hasMessages(MSG_NETWORK_SCAN_TIMEOUT));
+        verify(mTransportSelectorCallback, times(1)).onWlanSelected(anyBoolean());
     }
 
     @Test
