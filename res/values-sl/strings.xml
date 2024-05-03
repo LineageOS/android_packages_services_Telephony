@@ -597,8 +597,8 @@
     <string name="importToFDNfromContacts" msgid="5068664870738407341">"Uvozi iz stikov"</string>
     <string name="singleContactImportedMsg" msgid="3619804066300998934">"Uvožen je bil stik"</string>
     <string name="failedToImportSingleContactMsg" msgid="228095510489830266">"Uvoz stika ni uspel"</string>
-    <string name="hac_mode_title" msgid="4127986689621125468">"Slušni pripomočki"</string>
-    <string name="hac_mode_summary" msgid="7774989500136009881">"Vključi združljivost s slušnimi pripomočki"</string>
+    <string name="hac_mode_title" msgid="4127986689621125468">"Slušni aparati"</string>
+    <string name="hac_mode_summary" msgid="7774989500136009881">"Vključi združljivost s slušnimi aparati"</string>
     <string name="rtt_mode_title" msgid="3075948111362818043">"Klic s sprotnim besedilom (RTT)"</string>
     <string name="rtt_mode_summary" msgid="8631541375609989562">"Dovoli izmenjavo sporočil v glasovnem klicu"</string>
     <string name="rtt_mode_more_information" msgid="587500128658756318">"Funkcija RTT pomaga klicateljem, ki so gluhi, naglušni, imajo govorno motnjo ali potrebujejo več kot samo glas.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Več o tem&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; – Klici RTT se shranijo kot prepis sporočila\n       &lt;br&gt; – RTT ni na voljo pri videoklicih"</string>
