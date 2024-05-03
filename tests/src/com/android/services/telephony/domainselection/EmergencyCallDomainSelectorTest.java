@@ -25,6 +25,7 @@ import static android.telephony.AccessNetworkConstants.AccessNetworkType.UNKNOWN
 import static android.telephony.AccessNetworkConstants.AccessNetworkType.UTRAN;
 import static android.telephony.BarringInfo.BARRING_SERVICE_TYPE_EMERGENCY;
 import static android.telephony.BarringInfo.BarringServiceInfo.BARRING_TYPE_UNCONDITIONAL;
+import static android.telephony.CarrierConfigManager.KEY_CARRIER_VOLTE_TTY_SUPPORTED_BOOL;
 import static android.telephony.CarrierConfigManager.ImsEmergency.KEY_EMERGENCY_CALL_SETUP_TIMER_ON_CURRENT_NETWORK_SEC_INT;
 import static android.telephony.CarrierConfigManager.ImsEmergency.KEY_EMERGENCY_CDMA_PREFERRED_NUMBERS_STRING_ARRAY;
 import static android.telephony.CarrierConfigManager.ImsEmergency.KEY_EMERGENCY_DOMAIN_PREFERENCE_INT_ARRAY;
@@ -102,6 +103,7 @@ import android.os.Looper;
 import android.os.PersistableBundle;
 import android.os.PowerManager;
 import android.telecom.PhoneAccount;
+import android.telecom.TelecomManager;
 import android.telephony.AccessNetworkConstants;
 import android.telephony.BarringInfo;
 import android.telephony.CarrierConfigManager;
@@ -164,6 +166,8 @@ public class EmergencyCallDomainSelectorTest {
     @Mock private DataConnectionStateHelper mEpdnHelper;
     @Mock private Resources mResources;
 
+    private TelecomManager mTelecomManager;
+
     private Context mContext;
 
     private HandlerThread mHandlerThread;
@@ -183,6 +187,8 @@ public class EmergencyCallDomainSelectorTest {
             public String getSystemServiceName(Class<?> serviceClass) {
                 if (serviceClass == ImsManager.class) {
                     return Context.TELEPHONY_IMS_SERVICE;
+                } else if (serviceClass == TelecomManager.class) {
+                    return Context.TELECOM_SERVICE;
                 } else if (serviceClass == TelephonyManager.class) {
                     return Context.TELEPHONY_SERVICE;
                 } else if (serviceClass == CarrierConfigManager.class) {
@@ -238,6 +244,9 @@ public class EmergencyCallDomainSelectorTest {
         when(mTelephonyManager.getNetworkCountryIso()).thenReturn("");
         when(mTelephonyManager.getSimState(anyInt())).thenReturn(TelephonyManager.SIM_STATE_READY);
         when(mTelephonyManager.getActiveModemCount()).thenReturn(1);
+
+        mTelecomManager = mContext.getSystemService(TelecomManager.class);
+        when(mTelecomManager.getCurrentTtyMode()).thenReturn(TelecomManager.TTY_MODE_OFF);
 
         mCarrierConfigManager = mContext.getSystemService(CarrierConfigManager.class);
         when(mCarrierConfigManager.getConfigForSubId(anyInt(), anyVararg()))
@@ -3826,6 +3835,79 @@ public class EmergencyCallDomainSelectorTest {
                 any(), anyInt(), anyBoolean(), any(), any());
     }
 
+    @Test
+    public void testSupportVoLteTtyLimitedServiceEutranWithNonTtyCall() throws Exception {
+        PersistableBundle bundle = getDefaultPersistableBundle();
+        bundle.putBoolean(KEY_CARRIER_VOLTE_TTY_SUPPORTED_BOOL, true);
+        bundle.putInt(KEY_MAXIMUM_CELLULAR_SEARCH_TIMER_SEC_INT, 20);
+        when(mCarrierConfigManager.getConfigForSubId(anyInt(), anyVararg())).thenReturn(bundle);
+
+        createSelector(SLOT_0_SUB_ID);
+        unsolBarringInfoChanged(false);
+
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_UNKNOWN,
+                0, false, true, 0, 0, "", "");
+        SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
+        mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
+        processAllMessages();
+
+        bindImsServiceUnregistered();
+
+        verifyPsDialed();
+
+        mDomainSelector.reselectDomain(attr);
+        processAllMessages();
+
+        verifyScanCsPreferred();
+
+        // Verify timers for VoWi-Fi
+        assertTrue(mDomainSelector.hasMessages(MSG_NETWORK_SCAN_TIMEOUT));
+        assertTrue(mDomainSelector.hasMessages(MSG_MAX_CELLULAR_TIMEOUT));
+    }
+
+    @Test
+    public void testNotSupportVoLteTtyLimitedServiceEutranWithTtyCall() throws Exception {
+        PersistableBundle bundle = getDefaultPersistableBundle();
+        int[] domainPreference = new int[] {
+                CarrierConfigManager.ImsEmergency.DOMAIN_PS_3GPP,
+                CarrierConfigManager.ImsEmergency.DOMAIN_CS,
+                };
+        bundle.putIntArray(KEY_EMERGENCY_DOMAIN_PREFERENCE_INT_ARRAY, domainPreference);
+        bundle.putIntArray(KEY_EMERGENCY_OVER_IMS_SUPPORTED_3GPP_NETWORK_TYPES_INT_ARRAY,
+                    new int[] { NGRAN, EUTRAN });
+        bundle.putBoolean(KEY_CARRIER_VOLTE_TTY_SUPPORTED_BOOL, false);
+        bundle.putInt(KEY_MAXIMUM_CELLULAR_SEARCH_TIMER_SEC_INT, 20);
+        when(mCarrierConfigManager.getConfigForSubId(anyInt(), anyVararg())).thenReturn(bundle);
+
+        when(mTelecomManager.getCurrentTtyMode()).thenReturn(TelecomManager.TTY_MODE_FULL);
+
+        createSelector(SLOT_0_SUB_ID);
+        unsolBarringInfoChanged(false);
+
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_UNKNOWN,
+                0, false, true, 0, 0, "", "");
+        SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
+        mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
+        processAllMessages();
+
+        bindImsServiceUnregistered();
+
+        processAllMessages();
+
+        // Verify CS only network scan
+        verify(mWwanSelectorCallback, times(1)).onRequestEmergencyNetworkScan(
+                any(), anyInt(), anyBoolean(), any(), any());
+        assertEquals(2, mAccessNetwork.size());
+        assertEquals(UTRAN, (int) mAccessNetwork.get(0));
+        assertEquals(GERAN, (int) mAccessNetwork.get(1));
+
+        // Verify no timer for VoWi-Fi
+        assertFalse(mDomainSelector.hasMessages(MSG_NETWORK_SCAN_TIMEOUT));
+        assertFalse(mDomainSelector.hasMessages(MSG_MAX_CELLULAR_TIMEOUT));
+    }
+
     private void setupForScanListTest(PersistableBundle bundle) throws Exception {
         setupForScanListTest(bundle, false);
     }
@@ -4066,6 +4148,7 @@ public class EmergencyCallDomainSelectorTest {
                 ltePreferredAfterNrFailed);
         bundle.putStringArray(KEY_EMERGENCY_CDMA_PREFERRED_NUMBERS_STRING_ARRAY,
                 cdmaPreferredNumbers);
+        bundle.putBoolean(KEY_CARRIER_VOLTE_TTY_SUPPORTED_BOOL, false);
 
         return bundle;
     }
