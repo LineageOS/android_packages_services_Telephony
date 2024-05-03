@@ -2245,7 +2245,9 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         replaceInstance(TelephonyConnectionService.class,
                 "mImsManager", mTestConnectionService, imsManager);
 
-        setupForDialForDomainSelection(mPhone0, DOMAIN_PS, true);
+        int selectedDomain = DOMAIN_PS;
+
+        setupForDialForDomainSelection(mPhone0, selectedDomain, true);
 
         mTestConnectionService.onCreateOutgoingConnection(PHONE_ACCOUNT_HANDLE_1,
                 createConnectionRequest(PHONE_ACCOUNT_HANDLE_1,
@@ -2254,13 +2256,12 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         ArgumentCaptor<android.telecom.Connection> connectionCaptor =
                 ArgumentCaptor.forClass(android.telecom.Connection.class);
 
-        verify(mEmergencyStateTracker, times(1))
+        verify(mDomainSelectionResolver)
+                .getDomainSelectionConnection(eq(mPhone0), eq(SELECTOR_TYPE_CALLING), eq(true));
+        verify(mEmergencyStateTracker)
                 .startEmergencyCall(eq(mPhone0), connectionCaptor.capture(), eq(false));
         verify(mSatelliteSOSMessageRecommender).onEmergencyCallStarted(any());
-        verify(mDomainSelectionResolver, times(0))
-                .getDomainSelectionConnection(eq(mPhone0), eq(SELECTOR_TYPE_CALLING), eq(true));
-        verify(mEmergencyCallDomainSelectionConnection, times(0))
-                .createEmergencyConnection(any(), any());
+        verify(mEmergencyCallDomainSelectionConnection).createEmergencyConnection(any(), any());
 
         android.telecom.Connection tc = connectionCaptor.getValue();
 
@@ -2275,7 +2276,8 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         assertNotNull("DialArgs param is null", dialArgs);
         assertNotNull("intentExtras is null", dialArgs.intentExtras);
         assertTrue(dialArgs.intentExtras.containsKey(PhoneConstants.EXTRA_DIAL_DOMAIN));
-        assertEquals(DOMAIN_CS, dialArgs.intentExtras.getInt(PhoneConstants.EXTRA_DIAL_DOMAIN, -1));
+        assertEquals(selectedDomain,
+                dialArgs.intentExtras.getInt(PhoneConstants.EXTRA_DIAL_DOMAIN, -1));
     }
 
     @Test
