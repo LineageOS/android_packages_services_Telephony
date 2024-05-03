@@ -156,6 +156,7 @@ import android.telephony.ims.stub.ImsConfigImplBase;
 import android.telephony.ims.stub.ImsRegistrationImplBase;
 import android.telephony.satellite.INtnSignalStrengthCallback;
 import android.telephony.satellite.ISatelliteCapabilitiesCallback;
+import android.telephony.satellite.ISatelliteCommunicationAllowedStateCallback;
 import android.telephony.satellite.ISatelliteDatagramCallback;
 import android.telephony.satellite.ISatelliteModemStateCallback;
 import android.telephony.satellite.ISatelliteProvisionStateCallback;
@@ -14081,5 +14082,43 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             throw new UnsupportedOperationException(
                     methodName + " is unsupported without " + telephonyFeature);
         }
+    }
+
+    /**
+     * Registers for the satellite communication allowed state changed.
+     *
+     * @param subId The subId of the subscription to register for the satellite communication
+     *              allowed state changed.
+     * @param callback The callback to handle the satellite communication allowed
+     *                 state changed event.
+     *
+     * @return The {@link SatelliteManager.SatelliteResult} result of the operation.
+     *
+     * @throws SecurityException if the caller doesn't have the required permission.
+     */
+    @Override
+    @SatelliteManager.SatelliteResult public int registerForCommunicationAllowedStateChanged(
+            int subId, @NonNull ISatelliteCommunicationAllowedStateCallback callback) {
+        enforceSatelliteCommunicationPermission("registerForCommunicationAllowedStateChanged");
+        return mSatelliteAccessController.registerForCommunicationAllowedStateChanged(
+                subId, callback);
+    }
+
+    /**
+     * Unregisters for the satellite communication allowed state changed.
+     * If callback was not registered before, the request will be ignored.
+     *
+     * @param subId    The subId of the subscription to unregister for the satellite communication
+     *                 allowed state changed.
+     * @param callback The callback that was passed to
+     *                 {@link #registerForCommunicationAllowedStateChanged(int,
+     *                 ISatelliteCommunicationAllowedStateCallback)}.     *
+     * @throws SecurityException if the caller doesn't have the required permission.
+     */
+    @Override
+    public void unregisterForCommunicationAllowedStateChanged(
+            int subId, @NonNull ISatelliteCommunicationAllowedStateCallback callback) {
+        enforceSatelliteCommunicationPermission("unregisterForCommunicationAllowedStateChanged");
+        mSatelliteAccessController.unregisterForCommunicationAllowedStateChanged(subId, callback);
     }
 }
