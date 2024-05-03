@@ -263,6 +263,7 @@ import com.android.phone.vvm.VisualVoicemailSmsFilterConfig;
 import com.android.server.feature.flags.Flags;
 import com.android.services.telephony.TelecomAccountRegistry;
 import com.android.services.telephony.TelephonyConnectionService;
+import com.android.services.telephony.domainselection.TelephonyDomainSelectionService;
 import com.android.telephony.Rlog;
 
 import java.io.ByteArrayOutputStream;
@@ -12997,6 +12998,34 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }  finally {
             Binder.restoreCallingIdentity(identity);
         }
+    }
+
+    /**
+     * Returns whether the AOSP domain selection service is supported.
+     *
+     * @return {@code true} if the AOSP domain selection service is supported,
+     *         {@code false} otherwise.
+     */
+    @Override
+    public boolean isAospDomainSelectionService() {
+        mApp.enforceCallingOrSelfPermission(Manifest.permission.READ_PRIVILEGED_PHONE_STATE,
+                "isAospDomainSelectionService");
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            if (DomainSelectionResolver.getInstance().isDomainSelectionSupported()) {
+                String dssComponentName = mApp.getResources().getString(
+                        R.string.config_domain_selection_service_component_name);
+                ComponentName componentName = ComponentName.createRelative(mApp.getPackageName(),
+                        TelephonyDomainSelectionService.class.getName());
+                Log.i(LOG_TAG, "isAospDomainSelectionService dss=" + dssComponentName
+                        + ", aosp=" + componentName.flattenToString());
+                return TextUtils.equals(componentName.flattenToString(), dssComponentName);
+            }
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+        return false;
     }
 
     /**
