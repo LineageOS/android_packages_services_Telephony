@@ -3,8 +3,8 @@
   "_comment": "Example format :: << \"packageName\" : {\"carrierId\":[<int>], \"callerSHA256Ids\":[<SHAID1>, <SHAID2>]} >>",
   "com.vzw.hss.myverizon":{"carrierIds":[1839],"callerSHA256Ids":["AE23A03436DF07B0CD70FE881CDA2EC1D21215D7B7B0CC68E67B67F5DF89526A"]},
   "com.google.android.apps.tycho":{"carrierIds":[1989],"callerSHA256Ids":["B9CFCE1C47A6AC713442718F15EF55B00B3A6D1A6D48CB46249FA8EB51465350","4C36AF4A5BDAD97C1F3D8B283416D244496C2AC5EAFE8226079EF6F676FD1859"]},
-  "com.comcast.mobile.mxs":{"carrierIds": [2032, 2532, 2556],"callerSHA256Ids":["914C26403B57D2D482359FC235CC825AD00D52B0121C18EF2B2B9D4DDA4B8996"]},
-  "com.xfinity.digitalhome": {"carrierIds": [2032],"callerSHA256Ids":["31b4c17315c2269040d535f7b6a79cf4d11517c664d9de8f1ddf4f8a785aad47"]},
-  "com.xfinity.digitalhome.debug":{"carrierIds": [2032],"callerSHA256Ids":["c9133e8168f97573c8c567f46777dff74ade0c015ecf2c5e91be3e4e76ddcae2"]},
-  "com.xfinity.dh.xm.app": {"carrierIds": [2032],"callerSHA256Ids":["c9133e8168f97573c8c567f46777dff74ade0c015ecf2c5e91be3e4e76ddcae2"]}
+  "com.comcast.mobile.mxs":{"carrierIds": [2032,2532,2556],"callerSHA256Ids":["914C26403B57D2D482359FC235CC825AD00D52B0121C18EF2B2B9D4DDA4B8996"]},
+  "com.xfinity.digitalhome": {"carrierIds": [2032,2532,2556],"callerSHA256Ids":["31b4c17315c2269040d535f7b6a79cf4d11517c664d9de8f1ddf4f8a785aad47"]},
+  "com.xfinity.digitalhome.debug":{"carrierIds": [2032,2532,2556],"callerSHA256Ids":["c9133e8168f97573c8c567f46777dff74ade0c015ecf2c5e91be3e4e76ddcae2"]},
+  "com.xfinity.dh.xm.app": {"carrierIds": [2032,2532,2556],"callerSHA256Ids":["c9133e8168f97573c8c567f46777dff74ade0c015ecf2c5e91be3e4e76ddcae2"]}
 }
