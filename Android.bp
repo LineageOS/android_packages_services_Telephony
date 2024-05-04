@@ -45,7 +45,6 @@ android_app {
         "modules-utils-os",
         "nist-sip",
         "service-entitlement",
-        "telephony_flags_core_java_lib",
         "android.permission.flags-aconfig-java",
         "satellite-s2storage-ro",
         "s2-geometry-library-java",
