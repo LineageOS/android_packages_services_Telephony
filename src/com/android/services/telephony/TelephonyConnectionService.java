@@ -2570,17 +2570,6 @@ public class TelephonyConnectionService extends ConnectionService {
             return;
         }
 
-        ImsManager imsManager = mImsManager;
-        if (imsManager == null) {
-            // mImsManager is not null only while unit test.
-            imsManager = ImsManager.getInstance(phone.getContext(), phone.getPhoneId());
-        }
-        if (!imsManager.isNonTtyOrTtyOnVolteEnabled()) {
-            Log.w(this, "createEmergencyConnection - TTY on VoLTE is not supported.");
-            dialCsEmergencyCall(phone, resultConnection, request);
-            return;
-        }
-
         DomainSelectionConnection selectConnection =
                 mDomainSelectionResolver.getDomainSelectionConnection(
                         phone, SELECTOR_TYPE_CALLING, true);
