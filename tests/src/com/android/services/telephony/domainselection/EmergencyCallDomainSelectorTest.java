@@ -1893,6 +1893,32 @@ public class EmergencyCallDomainSelectorTest {
     }
 
     @Test
+    public void testEutranVopsNotSupported() throws Exception {
+        setupForHandleScanResult();
+
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
+                DOMAIN_CS | DOMAIN_PS, false, true, 0, 0, "", "");
+        mResultConsumer.accept(regResult);
+        processAllMessages();
+
+        verifyCsDialed();
+    }
+
+    @Test
+    public void testEutranEmcBearerNotSupported() throws Exception {
+        setupForHandleScanResult();
+
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_HOME,
+                DOMAIN_CS | DOMAIN_PS, true, false, 0, 0, "", "");
+        mResultConsumer.accept(regResult);
+        processAllMessages();
+
+        verifyCsDialed();
+    }
+
+    @Test
     public void testEutranWithPsDomainOnly() throws Exception {
         setupForHandleScanResult();
 
@@ -1945,8 +1971,10 @@ public class EmergencyCallDomainSelectorTest {
         mResultConsumer.accept(regResult);
         processAllMessages();
 
-        verify(mWwanSelectorCallback, times(2)).onRequestEmergencyNetworkScan(
+        verify(mWwanSelectorCallback, times(1)).onRequestEmergencyNetworkScan(
                 any(), eq(DomainSelectionService.SCAN_TYPE_FULL_SERVICE), eq(false), any(), any());
+        verify(mWwanSelectorCallback, times(1)).onRequestEmergencyNetworkScan(
+                any(), eq(DomainSelectionService.SCAN_TYPE_FULL_SERVICE), eq(true), any(), any());
     }
 
     @Test
