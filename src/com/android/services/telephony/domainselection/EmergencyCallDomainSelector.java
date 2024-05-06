@@ -342,6 +342,15 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
                             logi("requestScan-onComplete");
                             sendMessage(obtainMessage(MSG_NETWORK_SCAN_RESULT, regResult));
                         });
+            } else if ((mPreferredNetworkScanType
+                    == CarrierConfigManager.ImsEmergency.SCAN_TYPE_FULL_SERVICE)
+                    && (mScanType == DomainSelectionService.SCAN_TYPE_FULL_SERVICE)) {
+                mWwanSelectorCallback.onRequestEmergencyNetworkScan(
+                        mLastPreferredNetworks, mScanType, true, mCancelSignal,
+                        (regResult) -> {
+                            logi("requestScan-onComplete");
+                            sendMessage(obtainMessage(MSG_NETWORK_SCAN_RESULT, regResult));
+                        });
             } else {
                 // Continuous scan, do not start a new timer.
                 requestScan(false);
@@ -367,16 +376,24 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         if (accessNetworkType != EUTRAN) return accessNetworkType;
 
         int regState = result.getRegState();
-        int domain = result.getDomain();
 
         // Emergency is not supported with LTE, but CSFB is possible.
         if ((regState == REGISTRATION_STATE_HOME || regState == REGISTRATION_STATE_ROAMING)
-                && (domain == NetworkRegistrationInfo.DOMAIN_CS)) {
+                && isCsDomainOnlyAvailable(result)) {
             logi("getAccessNetworkType emergency not supported but CSFB is possible");
             accessNetworkType = UTRAN;
         }
 
         return accessNetworkType;
+    }
+
+    private boolean isCsDomainOnlyAvailable(EmergencyRegistrationResult result) {
+        int domain = result.getDomain();
+        if (domain == NetworkRegistrationInfo.DOMAIN_CS) return true;
+        if ((domain & NetworkRegistrationInfo.DOMAIN_CS) > 0) {
+            return (!result.isEmcBearerSupported() || !result.isVopsSupported());
+        }
+        return false;
     }
 
     @Override
