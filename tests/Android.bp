@@ -50,10 +50,10 @@ android_test {
         "testables",
         "platform-compat-test-rules",
         "flag-junit",
+        "telephony_flags_core_java_lib",
         "satellite-s2storage-rw",
         "satellite-s2storage-testutils",
         "s2-geometry-library-java",
-        "telephony-satellite",
     ],
 
     test_suites: [

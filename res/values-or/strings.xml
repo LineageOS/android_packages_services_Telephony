@@ -19,7 +19,7 @@
     <string name="phoneAppLabel" product="tablet" msgid="1916019789885839910">"ମୋବାଇଲ୍‌ ଡାଟା"</string>
     <string name="phoneAppLabel" product="default" msgid="130465039375347763">"ଫୋନ୍ ସେବା"</string>
     <string name="emergencyDialerIconLabel" msgid="8668005772339436680">"ଜରୁରୀକାଳିନ ଡାଏଲର୍"</string>
-    <string name="phoneIconLabel" msgid="3015941229249651419">"ଫୋନ୍"</string>
+    <string name="phoneIconLabel" msgid="3015941229249651419">"ଫୋନ"</string>
     <string name="fdnListLabel" msgid="4119121875004244097">"FDN ତାଲିକା"</string>
     <string name="unknown" msgid="8279698889921830815">"ଅଜଣା"</string>
     <string name="private_num" msgid="4487990167889159992">"ବ୍ୟକ୍ତିଗତ ନମ୍ବର୍"</string>
@@ -674,8 +674,8 @@
     <string name="sim_description_emergency_calls" msgid="5146872803938897296">"କେବଳ ଜରୁରିକାଳୀନ କଲ୍ ପାଇଁ"</string>
     <string name="sim_description_default" msgid="7474671114363724971">"SIM କାର୍ଡ, ସ୍ଲଟ୍: <xliff:g id="SLOT_ID">%s</xliff:g>"</string>
     <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"ଆକ୍ସେସିବିଲିଟୀ"</string>
-    <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"ଠାରୁ ୱାଇ-ଫାଇ କଲ୍ କରନ୍ତୁ"</string>
-    <string name="status_hint_label_wifi_call" msgid="942993035689809853">"ୱାଇ-ଫାଇ କଲ୍"</string>
+    <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"ୱାଇ-ଫାଇ କଲ କରିଛନ୍ତି"</string>
+    <string name="status_hint_label_wifi_call" msgid="942993035689809853">"ୱାଇ-ଫାଇ କଲ"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"ମେସେଜ୍‌କୁ ଡିକୋଡ୍ କରିବା ବେଳେ ଗୋଟିଏ ତ୍ରୁଟି ଦେଖାଦେଲା।"</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"ଗୋଟିଏ SIM କାର୍ଡ ଆପଣଙ୍କର ସେବାକୁ କାର୍ଯ୍ୟକ୍ଷମ କରିଛି ଏବଂ ଆପଣଙ୍କ ଫୋନ୍‌ର ରୋମିଙ୍ଗ କ୍ଷମତାକୁ ଅପଡେଟ୍ କରିଛି।"</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"ଏଠାରେ ଅନେକ ସକ୍ରିୟ କଲ୍ ଅଛି। ଗୋଟିଏ ନୂଆ କଲ୍‌କୁ ସ୍ଥାପନ କରିବା ପୂର୍ବରୁ ଦୟାକରି ବିଦ୍ୟମାନ ଥିବା କଲ୍‌କୁ ସମାପ୍ତ କିମ୍ବା ମର୍ଜ କରନ୍ତୁ।"</string>

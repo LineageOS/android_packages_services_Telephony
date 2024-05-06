@@ -29,9 +29,12 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.PersistableBundle;
 import android.os.SystemProperties;
+import android.telephony.AccessNetworkConstants;
 import android.telephony.Annotation.PreciseDisconnectCauses;
 import android.telephony.CarrierConfigManager;
+import android.telephony.NetworkRegistrationInfo;
 import android.telephony.PhoneNumberUtils;
+import android.telephony.ServiceState;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.telephony.emergency.EmergencyNumber;
@@ -144,7 +147,7 @@ public class CrossSimRedialingController extends Handler {
      * @param selector The instance of {@link EmergencyCallDomainSelector}.
      * @param callId The call identifier.
      * @param number The dialing number.
-     * @param inService Indiates that normal service is available.
+     * @param inService Indicates that normal service is available.
      * @param roaming Indicates that it's in roaming or non-domestic network.
      * @param modemCount The number of active modem count
      */
@@ -228,12 +231,26 @@ public class CrossSimRedialingController extends Handler {
     }
 
     /**
+     * Returns whether there is another slot with which normal service is available.
+     *
+     * @return {@code true} if there is another slot with which normal service is available.
+     *         {@code false} otherwise.
+     */
+    public boolean isThereOtherSlotInService() {
+        return isThereOtherSlot(true);
+    }
+
+    /**
      * Returns whether there is another slot emergency capable.
      *
      * @return {@code true} if there is another slot emergency capable,
      *         {@code false} otherwise.
      */
     public boolean isThereOtherSlot() {
+        return isThereOtherSlot(false);
+    }
+
+    private boolean isThereOtherSlot(boolean networkRegisteredOnly) {
         logi("isThereOtherSlot modemCount=" + mModemCount);
         if (mModemCount < 2) return false;
 
@@ -254,12 +271,43 @@ public class CrossSimRedialingController extends Handler {
             int subId = SubscriptionManager.getSubscriptionId(i);
             if (mEmergencyNumberHelper.isEmergencyNumber(subId, mNumber)) {
                 logi("isThereOtherSlot index=" + i + "(" + subId + "), found");
-                return true;
+                if (networkRegisteredOnly) {
+                    if (isNetworkRegistered(subId)) {
+                        return true;
+                    }
+                } else {
+                    return true;
+                }
             } else {
                 logi("isThereOtherSlot index=" + i + "(" + subId + "), not emergency number");
             }
         }
 
+        return false;
+    }
+
+    private boolean isNetworkRegistered(int subId) {
+        if (!SubscriptionManager.isValidSubscriptionId(subId)) return false;
+
+        TelephonyManager tm = mTelephonyManager.createForSubscriptionId(subId);
+        ServiceState ss = tm.getServiceState();
+        if (ss != null) {
+            NetworkRegistrationInfo nri = ss.getNetworkRegistrationInfo(
+                    NetworkRegistrationInfo.DOMAIN_PS,
+                    AccessNetworkConstants.TRANSPORT_TYPE_WWAN);
+            if (nri != null && nri.isNetworkRegistered()) {
+                // PS is IN_SERVICE state.
+                return true;
+            }
+            nri = ss.getNetworkRegistrationInfo(
+                    NetworkRegistrationInfo.DOMAIN_CS,
+                    AccessNetworkConstants.TRANSPORT_TYPE_WWAN);
+            if (nri != null && nri.isNetworkRegistered()) {
+                // CS is IN_SERVICE state.
+                return true;
+            }
+        }
+        logi("isNetworkRegistered subId=" + subId + " not network registered");
         return false;
     }
 

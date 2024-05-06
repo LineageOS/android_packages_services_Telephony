@@ -64,6 +64,23 @@
     <string name="isOnlyNonTerrestrialNetworkSubscription">isOnlyNonTerrestrialNetworkSubscription</string>
     <string name="registerForSatelliteCapabilitiesChanged">registerForSatelliteCapabilitiesChanged</string>
     <string name="unregisterForSatelliteCapabilitiesChanged">unregisterForSatelliteCapabilitiesChanged</string>
+    <string name="isNonTerrestrialNetwork">isNonTerrestrialNetwork</string>
+    <string name="getAvailableServices">getAvailableServices</string>
+    <string name="isUsingNonTerrestrialNetwork">isUsingNonTerrestrialNetwork</string>
+    <string name="requestAttachEnabledForCarrier_enable">requestAttachEnabledForCarrier_enable</string>
+    <string name="requestAttachEnabledForCarrier_disable">requestAttachEnabledForCarrier_disable</string>
+    <string name="requestIsAttachEnabledForCarrier">requestIsAttachEnabledForCarrier</string>
+    <string name="addAttachRestrictionForCarrier">addAttachRestrictionForCarrier</string>
+    <string name="removeAttachRestrictionForCarrier">removeAttachRestrictionForCarrier</string>
+    <string name="getAttachRestrictionReasonsForCarrier">getAttachRestrictionReasonsForCarrier</string>
+    <string name="getSatellitePlmnsForCarrier">getSatellitePlmnsForCarrier</string>
+
+    <string name="removeUserRestrictReason">removeUserRestrictReason</string>
+    <string name="addUserRestrictReason">addUserRestrictReason</string>
+    <string name="getSatellitePlmn">getSatellitePlmn</string>
+    <string name="getAllSatellitePlmn">getAllSatellitePlmn</string>
+    <string name="isSatelliteEnabledForCarrier">isSatelliteEnabledForCarrier</string>
+    <string name="isRequestIsSatelliteEnabledForCarrier">isRequestIsSatelliteEnabledForCarrier</string>
 
     <string name="Back">Back</string>
     <string name="ClearLog">Clear Log</string>

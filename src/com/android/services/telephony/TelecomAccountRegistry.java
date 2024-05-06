@@ -64,6 +64,8 @@ import com.android.ims.ImsManager;
 import com.android.internal.telephony.ExponentialBackoff;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
+import com.android.internal.telephony.SimultaneousCallingTracker;
+import com.android.internal.telephony.flags.Flags;
 import com.android.internal.telephony.subscription.SubscriptionManagerService;
 import com.android.phone.PhoneGlobals;
 import com.android.phone.PhoneUtils;
@@ -71,11 +73,15 @@ import com.android.phone.R;
 import com.android.telephony.Rlog;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 /**
  * Owns all data we have registered with Telecom including handling dynamic addition and
@@ -122,6 +128,7 @@ public class TelecomAccountRegistry {
     final class AccountEntry implements PstnPhoneCapabilitiesNotifier.Listener {
         private final Phone mPhone;
         private PhoneAccount mAccount;
+        private SimultaneousCallingTracker mSCT;
         private final PstnIncomingCallNotifier mIncomingCallNotifier;
         private final PstnPhoneCapabilitiesNotifier mPhoneCapabilitiesNotifier;
         private boolean mIsEmergency;
@@ -132,6 +139,7 @@ public class TelecomAccountRegistry {
         private MmTelFeature.MmTelCapabilities mMmTelCapabilities;
         private ImsMmTelManager.CapabilityCallback mMmtelCapabilityCallback;
         private RegistrationManager.RegistrationCallback mImsRegistrationCallback;
+        private SimultaneousCallingTracker.Listener mSimultaneousCallingTrackerListener;
         private ImsMmTelManager mMmTelManager;
         private final boolean mIsTestAccount;
         private boolean mIsVideoCapable;
@@ -144,12 +152,18 @@ public class TelecomAccountRegistry {
         private boolean mIsManageImsConferenceCallSupported;
         private boolean mIsUsingSimCallManager;
         private boolean mIsShowPreciseFailedCause;
+        private Set<Integer> mSimultaneousCallSupportedSubIds;
 
         AccountEntry(Phone phone, boolean isEmergency, boolean isTest) {
             mPhone = phone;
             mIsEmergency = isEmergency;
             mIsTestAccount = isTest;
             mIsAdhocConfCapable = mPhone.isImsRegistered();
+            if (Flags.simultaneousCallingIndications()) {
+                mSCT = SimultaneousCallingTracker.getInstance();
+                mSimultaneousCallSupportedSubIds =
+                        mSCT.getSubIdsSupportingSimultaneousCalling(mPhone.getSubId());
+            }
             mAccount = registerPstnPhoneAccount(isEmergency, isTest);
             Log.i(this, "Registered phoneAccount: %s with handle: %s",
                     mAccount, mAccount.getAccountHandle());
@@ -202,6 +216,21 @@ public class TelecomAccountRegistry {
                 }
             };
             registerImsRegistrationCallback();
+
+            if (Flags.simultaneousCallingIndications()) {
+                //Register SimultaneousCallingTracker listener:
+                mSimultaneousCallingTrackerListener = new SimultaneousCallingTracker.Listener() {
+                    @Override
+                    public void onSimultaneousCallingSupportChanged(Map<Integer,
+                            Set<Integer>> simultaneousCallSubSupportMap) {
+                        updateSimultaneousCallSubSupportMap(simultaneousCallSubSupportMap);
+                    }
+                };
+                SimultaneousCallingTracker.getInstance()
+                        .addListener(mSimultaneousCallingTrackerListener);
+                Log.d(LOG_TAG, "Finished registering mSimultaneousCallingTrackerListener for "
+                        + "phoneId = " + mPhone.getPhoneId() + "; subId = " + mPhone.getSubId());
+            }
         }
 
         void teardown() {
@@ -215,6 +244,10 @@ public class TelecomAccountRegistry {
                 if (mImsRegistrationCallback != null) {
                     mMmTelManager.unregisterImsRegistrationCallback(mImsRegistrationCallback);
                 }
+            }
+            if (Flags.simultaneousCallingIndications()) {
+                SimultaneousCallingTracker.getInstance()
+                        .removeListener(mSimultaneousCallingTrackerListener);
             }
         }
 
@@ -465,6 +498,15 @@ public class TelecomAccountRegistry {
             mIsUsingSimCallManager = isCarrierUsingSimCallManager();
             mIsShowPreciseFailedCause = isCarrierShowPreciseFailedCause();
 
+            // Set CAPABILITY_EMERGENCY_CALLS_ONLY flag if either
+            // - Carrier config overrides subscription is not voice capable, or
+            // - Resource config overrides it be emergency_calls_only
+            // TODO(b/316183370:): merge the two cases when clearing up flag
+            if (Flags.dataOnlyServiceAllowEmergencyCallOnly()) {
+                if (!isSubscriptionVoiceCapableByCarrierConfig()) {
+                    capabilities |= PhoneAccount.CAPABILITY_EMERGENCY_CALLS_ONLY;
+                }
+            }
             if (isEmergency && mContext.getResources().getBoolean(
                     R.bool.config_emergency_account_emergency_calls_only)) {
                 capabilities |= PhoneAccount.CAPABILITY_EMERGENCY_CALLS_ONLY;
@@ -504,7 +546,7 @@ public class TelecomAccountRegistry {
                 Log.i(this, "Adding Merged Account with group: " + Rlog.pii(LOG_TAG, groupId));
             }
 
-            PhoneAccount account = PhoneAccount.builder(phoneAccountHandle, label)
+            PhoneAccount.Builder accountBuilder = PhoneAccount.builder(phoneAccountHandle, label)
                     .setAddress(Uri.fromParts(PhoneAccount.SCHEME_TEL, line1Number, null))
                     .setSubscriptionAddress(
                             Uri.fromParts(PhoneAccount.SCHEME_TEL, subNumber, null))
@@ -515,10 +557,19 @@ public class TelecomAccountRegistry {
                     .setSupportedUriSchemes(Arrays.asList(
                             PhoneAccount.SCHEME_TEL, PhoneAccount.SCHEME_VOICEMAIL))
                     .setExtras(extras)
-                    .setGroupId(groupId)
-                    .build();
+                    .setGroupId(groupId);
 
-            return account;
+            if (Flags.simultaneousCallingIndications()) {
+                Set <PhoneAccountHandle> simultaneousCallingHandles =
+                        mSimultaneousCallSupportedSubIds.stream()
+                                .map(subscriptionId -> PhoneUtils.makePstnPhoneAccountHandleWithId(
+                                        String.valueOf(subscriptionId), userToRegister))
+                                .collect(Collectors.toSet());
+                accountBuilder.setSimultaneousCallingRestriction(simultaneousCallingHandles);
+            }
+
+
+            return accountBuilder.build();
         }
 
         public PhoneAccountHandle getPhoneAccountHandle() {
@@ -804,6 +855,21 @@ public class TelecomAccountRegistry {
         }
 
         /**
+         * @return true if the subscription is voice capable by the carrier config.
+         */
+        private boolean isSubscriptionVoiceCapableByCarrierConfig() {
+            PersistableBundle b =
+                    PhoneGlobals.getInstance().getCarrierConfigForSubId(mPhone.getSubId());
+            if (b == null) {
+                return true; // For any abnormal case, we assume subscription is voice capable
+            }
+            final int[] serviceCapabilities = b.getIntArray(
+                    CarrierConfigManager.KEY_CELLULAR_SERVICE_CAPABILITIES_INT_ARRAY);
+            return Arrays.stream(serviceCapabilities).anyMatch(
+                    i -> i == SubscriptionManager.SERVICE_CAPABILITY_VOICE);
+        }
+
+        /**
          * Receives callback from {@link PstnPhoneCapabilitiesNotifier} when the video capabilities
          * have changed.
          *
@@ -821,6 +887,30 @@ public class TelecomAccountRegistry {
                     return;
                 }
                 mAccount = registerPstnPhoneAccount(mIsEmergency, mIsTestAccount);
+            }
+        }
+
+        public void updateSimultaneousCallSubSupportMap(Map<Integer,
+                Set<Integer>> simultaneousCallSubSupportMap) {
+            if (!Flags.simultaneousCallingIndications()) { return; }
+            //Check if the simultaneous call support subIds for this account have changed:
+            Set<Integer> updatedSimultaneousCallSupportSubIds = new HashSet<>(3);
+            updatedSimultaneousCallSupportSubIds.addAll(
+                    simultaneousCallSubSupportMap.get(mPhone.getSubId()));
+            if (!updatedSimultaneousCallSupportSubIds.equals(mSimultaneousCallSupportedSubIds)) {
+                //If necessary, update cache and re-register mAccount:
+                mSimultaneousCallSupportedSubIds = updatedSimultaneousCallSupportSubIds;
+                synchronized (mAccountsLock) {
+                    if (!mAccounts.contains(this)) {
+                        // Account has already been torn down, don't try to register it again.
+                        // This handles the case where teardown has already happened, and we got a
+                        // simultaneous calling support update that lost the race for the
+                        // mAccountsLock. In such a scenario by the time we get here, the original
+                        // phone account could have been torn down.
+                        return;
+                    }
+                    mAccount = registerPstnPhoneAccount(mIsEmergency, mIsTestAccount);
+                }
             }
         }
 
@@ -1233,7 +1323,18 @@ public class TelecomAccountRegistry {
      */
     public static synchronized TelecomAccountRegistry getInstance(Context context) {
         if (sInstance == null && context != null) {
-            sInstance = new TelecomAccountRegistry(context);
+            if (Flags.enforceTelephonyFeatureMappingForPublicApis()) {
+                PackageManager pm = context.getPackageManager();
+                if (pm != null && pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY)
+                        && pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY_CALLING)) {
+                    sInstance = new TelecomAccountRegistry(context);
+                } else {
+                    Log.d(LOG_TAG, "Not initializing TelecomAccountRegistry: "
+                            + "missing telephony/calling feature(s)");
+                }
+            } else {
+                sInstance = new TelecomAccountRegistry(context);
+            }
         }
         return sInstance;
     }

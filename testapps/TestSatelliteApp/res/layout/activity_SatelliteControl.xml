@@ -15,7 +15,7 @@
   ~ limitations under the License
   -->
 
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -84,6 +84,42 @@
             android:paddingRight="4dp"
             android:text="@string/requestTimeForNextSatelliteVisibility"/>
          <Button
+            android:id="@+id/removeUserRestrictReason"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="4dp"
+            android:text="@string/removeUserRestrictReason"/>
+         <Button
+            android:id="@+id/addUserRestrictReason"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="4dp"
+            android:text="@string/addUserRestrictReason"/>
+         <Button
+            android:id="@+id/getSatellitePlmn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="4dp"
+            android:text="@string/getSatellitePlmn"/>
+         <Button
+            android:id="@+id/getAllSatellitePlmn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="4dp"
+            android:text="@string/getAllSatellitePlmn"/>
+         <Button
+            android:id="@+id/isSatelliteEnabledForCarrier"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="4dp"
+            android:text="@string/isSatelliteEnabledForCarrier"/>
+         <Button
+            android:id="@+id/isRequestIsSatelliteEnabledForCarrier"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="4dp"
+            android:text="@string/isRequestIsSatelliteEnabledForCarrier"/>
+         <Button
             android:id="@+id/Back"
             android:onClick="Back"
             android:textColor="@android:color/holo_blue_dark"
@@ -102,4 +138,4 @@
             android:layout_centerVertical="true"
             android:textSize="15dp" />
     </LinearLayout>
-</LinearLayout>
+</ScrollView>

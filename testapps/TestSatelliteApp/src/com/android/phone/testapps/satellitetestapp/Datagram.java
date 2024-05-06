@@ -29,11 +29,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.telephony.satellite.EnableRequestAttributes;
 import android.telephony.satellite.PointingInfo;
 import android.telephony.satellite.SatelliteDatagram;
 import android.telephony.satellite.SatelliteDatagramCallback;
 import android.telephony.satellite.SatelliteManager;
-import android.telephony.satellite.SatelliteStateCallback;
+import android.telephony.satellite.SatelliteModemStateCallback;
 import android.telephony.satellite.SatelliteTransmissionUpdateCallback;
 import android.telephony.satellite.stub.SatelliteResult;
 import android.util.Log;
@@ -61,7 +62,7 @@ public class Datagram extends Activity {
 
     private SatelliteManager mSatelliteManager;
     private SatelliteDatagramCallbackTestApp mDatagramCallback;
-    private SatelliteStateCallbackTestApp mStateCallback;
+    private SatelliteModemStateCallbackTestApp mStateCallback;
     private SatelliteTransmissionUpdateCallbackTestApp mCallback;
     private android.telephony.satellite.stub.SatelliteDatagram mReceivedDatagram;
 
@@ -75,32 +76,32 @@ public class Datagram extends Activity {
         super.onCreate(savedInstanceState);
         mSatelliteManager = getSystemService(SatelliteManager.class);
         mDatagramCallback = new SatelliteDatagramCallbackTestApp();
-        mStateCallback = new SatelliteStateCallbackTestApp();
+        mStateCallback = new SatelliteModemStateCallbackTestApp();
         mCallback = new SatelliteTransmissionUpdateCallbackTestApp();
 
         mReceivedDatagram = new android.telephony.satellite.stub.SatelliteDatagram();
 
         setContentView(R.layout.activity_Datagram);
         findViewById(R.id.startSatelliteTransmissionUpdates)
-                .setOnClickListener(this::startSatelliteTransmissionUpdatesApp);
+                .setOnClickListener(this::startTransmissionUpdatesApp);
         findViewById(R.id.stopSatelliteTransmissionUpdates)
-                .setOnClickListener(this::stopSatelliteTransmissionUpdatesApp);
+                .setOnClickListener(this::stopTransmissionUpdatesApp);
         findViewById(R.id.pollPendingSatelliteDatagrams)
-                .setOnClickListener(this::pollPendingSatelliteDatagramsApp);
+                .setOnClickListener(this::pollPendingDatagramsApp);
         findViewById(R.id.sendSatelliteDatagram)
-                .setOnClickListener(this::sendSatelliteDatagramApp);
+                .setOnClickListener(this::sendDatagramApp);
         findViewById(R.id.registerForSatelliteDatagram)
-                .setOnClickListener(this::registerForSatelliteDatagramApp);
+                .setOnClickListener(this::registerForIncomingDatagramApp);
         findViewById(R.id.unregisterForSatelliteDatagram)
-                .setOnClickListener(this::unregisterForSatelliteDatagramApp);
+                .setOnClickListener(this::unregisterForIncomingDatagramApp);
         findViewById(R.id.showDatagramSendStateTransition)
                 .setOnClickListener(this::showDatagramSendStateTransitionApp);
         findViewById(R.id.showDatagramReceiveStateTransition)
                 .setOnClickListener(this::showDatagramReceiveStateTransitionApp);
         findViewById(R.id.registerForSatelliteModemStateChanged)
-                .setOnClickListener(this::registerForSatelliteModemStateChangedApp);
+                .setOnClickListener(this::registerForModemStateChangedApp);
         findViewById(R.id.unregisterForSatelliteModemStateChanged)
-                .setOnClickListener(this::unregisterForSatelliteModemStateChangedApp);
+                .setOnClickListener(this::unregisterForModemStateChangedApp);
         findViewById(R.id.showSatelliteModemStateTransition)
                 .setOnClickListener(this::showSatelliteModemStateTransitionApp);
 
@@ -121,7 +122,7 @@ public class Datagram extends Activity {
         }
     }
 
-    protected class SatelliteStateCallbackTestApp implements SatelliteStateCallback {
+    protected class SatelliteModemStateCallbackTestApp implements SatelliteModemStateCallback {
         @Override
         public void onSatelliteModemStateChanged(int state) {
             mModemState = state;
@@ -166,10 +167,12 @@ public class Datagram extends Activity {
         }
     }
 
-    private void startSatelliteTransmissionUpdatesApp(View view) {
+    private void startTransmissionUpdatesApp(View view) {
         TextView textView = findViewById(R.id.text_id);
         LinkedBlockingQueue<Integer> error = new LinkedBlockingQueue<>(1);
-        mSatelliteManager.requestSatelliteEnabled(true, true, Runnable::run, error::offer);
+        mSatelliteManager.requestEnabled(
+                new EnableRequestAttributes.Builder(true).setDemoMode(true).build(),
+                Runnable::run, error::offer);
         TextView showErrorStatusTextView = findViewById(R.id.showErrorStatus);
         try {
             Integer value = error.poll(TIMEOUT, TimeUnit.MILLISECONDS);
@@ -186,7 +189,7 @@ public class Datagram extends Activity {
             return;
         }
         error.clear();
-        mSatelliteManager.startSatelliteTransmissionUpdates(Runnable::run, error::offer, mCallback);
+        mSatelliteManager.startTransmissionUpdates(Runnable::run, error::offer, mCallback);
         try {
             Integer value = error.poll(TIMEOUT, TimeUnit.MILLISECONDS);
             if (value == null) {
@@ -202,10 +205,10 @@ public class Datagram extends Activity {
         }
     }
 
-    private void stopSatelliteTransmissionUpdatesApp(View view) {
+    private void stopTransmissionUpdatesApp(View view) {
         TextView textView = findViewById(R.id.text_id);
         LinkedBlockingQueue<Integer> error = new LinkedBlockingQueue<>(1);
-        mSatelliteManager.stopSatelliteTransmissionUpdates(mCallback, Runnable::run, error::offer);
+        mSatelliteManager.stopTransmissionUpdates(mCallback, Runnable::run, error::offer);
         try {
             Integer value = error.poll(TIMEOUT, TimeUnit.MILLISECONDS);
             if (value == null) {
@@ -220,7 +223,7 @@ public class Datagram extends Activity {
             textView.setText("stopSatelliteTransmissionUpdates exception caught =" + e);
         }
     }
-    private void pollPendingSatelliteDatagramsApp(View view) {
+    private void pollPendingDatagramsApp(View view) {
         LinkedBlockingQueue<Integer> resultListener = new LinkedBlockingQueue<>(1);
         TextView showErrorStatusTextView = findViewById(R.id.showErrorStatus);
         TextView textView = findViewById(R.id.text_id);
@@ -228,7 +231,9 @@ public class Datagram extends Activity {
         if (SatelliteTestApp.getTestSatelliteService() != null) {
             SatelliteTestApp.getTestSatelliteService().sendOnPendingDatagrams();
         }
-        mSatelliteManager.requestSatelliteEnabled(true, true, Runnable::run, resultListener::offer);
+        mSatelliteManager.requestEnabled(
+                new EnableRequestAttributes.Builder(true).setDemoMode(true).build(),
+                Runnable::run, resultListener::offer);
         try {
             Integer value = resultListener.poll(TIMEOUT, TimeUnit.MILLISECONDS);
             if (value == null) {
@@ -246,61 +251,61 @@ public class Datagram extends Activity {
             showErrorStatusTextView.setText("Enable SatelliteService exception caught = " + e);
             return;
         }
-        mSatelliteManager.pollPendingSatelliteDatagrams(Runnable::run, resultListener::offer);
+        mSatelliteManager.pollPendingDatagrams(Runnable::run, resultListener::offer);
         try {
             Integer value = resultListener.poll(TIMEOUT, TimeUnit.MILLISECONDS);
             if (value == null) {
                 textView.setText("Timed out for poll message");
             } else if (value != SatelliteResult.SATELLITE_RESULT_SUCCESS) {
-                textView.setText("Failed to pollPendingSatelliteDatagrams with error = "
+                textView.setText("Failed to pollPendingDatagrams with error = "
                         + SatelliteErrorUtils.mapError(value));
             } else {
-                textView.setText("pollPendingSatelliteDatagrams is successful");
+                textView.setText("pollPendingDatagrams is successful");
             }
         } catch (InterruptedException e) {
-            textView.setText("pollPendingSatelliteDatagrams exception caught =" + e);
+            textView.setText("pollPendingDatagrams exception caught =" + e);
         }
     }
 
-    private void sendSatelliteDatagramApp(View view) {
+    private void sendDatagramApp(View view) {
         TextView textView = findViewById(R.id.text_id);
         mSatelliteManager.setDeviceAlignedWithSatellite(true);
         LinkedBlockingQueue<Integer> resultListener = new LinkedBlockingQueue<>(1);
         String mText = "This is a test datagram message";
         SatelliteDatagram datagram = new SatelliteDatagram(mText.getBytes());
-        mSatelliteManager.sendSatelliteDatagram(SatelliteManager.DATAGRAM_TYPE_SOS_MESSAGE,
+        mSatelliteManager.sendDatagram(SatelliteManager.DATAGRAM_TYPE_SOS_MESSAGE,
                 datagram, true, Runnable::run, resultListener::offer);
         try {
             Integer value = resultListener.poll(TIMEOUT, TimeUnit.MILLISECONDS);
             if (value == null) {
-                textView.setText("Timed out for sendSatelliteDatagram");
+                textView.setText("Timed out for sendDatagram");
             } else if (value != SatelliteResult.SATELLITE_RESULT_SUCCESS) {
-                textView.setText("Failed to sendSatelliteDatagram with error = "
+                textView.setText("Failed to sendDatagram with error = "
                         + SatelliteErrorUtils.mapError(value));
             } else {
-                textView.setText("sendSatelliteDatagram is successful");
+                textView.setText("sendDatagram is successful");
             }
         } catch (InterruptedException e) {
-            textView.setText("sendSatelliteDatagram exception caught =" + e);
+            textView.setText("sendDatagram exception caught =" + e);
         }
     }
 
-    private void registerForSatelliteDatagramApp(View view) {
-        int result = mSatelliteManager.registerForSatelliteDatagram(Runnable::run,
+    private void registerForIncomingDatagramApp(View view) {
+        int result = mSatelliteManager.registerForIncomingDatagram(Runnable::run,
                 mDatagramCallback);
         TextView textView = findViewById(R.id.text_id);
         if (result == 0) {
-            textView.setText("registerForSatelliteDatagram is successful");
+            textView.setText("registerForIncomingDatagram is successful");
         } else {
-            textView.setText("Status for registerForSatelliteDatagram : "
+            textView.setText("Status for registerForIncomingDatagram : "
                     + SatelliteErrorUtils.mapError(result));
         }
     }
 
-    private void unregisterForSatelliteDatagramApp(View view) {
-        mSatelliteManager.unregisterForSatelliteDatagram(mDatagramCallback);
+    private void unregisterForIncomingDatagramApp(View view) {
+        mSatelliteManager.unregisterForIncomingDatagram(mDatagramCallback);
         TextView textView = findViewById(R.id.text_id);
-        textView.setText("unregisterForSatelliteDatagram is successful");
+        textView.setText("unregisterForIncomingDatagram is successful");
     }
 
     private void showDatagramSendStateTransitionApp(View view) {
@@ -315,22 +320,22 @@ public class Datagram extends Activity {
                 + mShowDatagramReceiveStateTransition);
     }
 
-    private void registerForSatelliteModemStateChangedApp(View view) {
-        int result = mSatelliteManager.registerForSatelliteModemStateChanged(Runnable::run,
+    private void registerForModemStateChangedApp(View view) {
+        int result = mSatelliteManager.registerForModemStateChanged(Runnable::run,
                 mStateCallback);
         TextView textView = findViewById(R.id.text_id);
         if (result == 0) {
-            textView.setText("registerForSatelliteModemStateChanged is successful");
+            textView.setText("registerForModemStateChanged is successful");
         } else {
-            textView.setText("Status for registerForSatelliteModemStateChanged : "
+            textView.setText("Status for registerForModemStateChanged : "
                     + SatelliteErrorUtils.mapError(result));
         }
     }
 
-    private void unregisterForSatelliteModemStateChangedApp(View view) {
-        mSatelliteManager.unregisterForSatelliteModemStateChanged(mStateCallback);
+    private void unregisterForModemStateChangedApp(View view) {
+        mSatelliteManager.unregisterForModemStateChanged(mStateCallback);
         TextView textView = findViewById(R.id.text_id);
-        textView.setText("unregisterForSatelliteModemStateChanged is successful");
+        textView.setText("unregisterForModemStateChanged is successful");
     }
 
     private void showSatelliteModemStateTransitionApp(View view) {

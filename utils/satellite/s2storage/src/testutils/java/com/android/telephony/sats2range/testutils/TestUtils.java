@@ -107,19 +107,22 @@ public class TestUtils {
         try (PrintStream printer = new PrintStream(outputFile)) {
             // Range 1
             for (int suffix = 1000; suffix < 2000; suffix++) {
-                printer.println(String.valueOf(fileFormat.createCellId(0b100_11111111, suffix)));
+                printer.println(
+                        Long.toUnsignedString(fileFormat.createCellId(0b100_11111111, suffix)));
             }
 
             // Range 2
             for (int suffix = 2001; suffix < 3000; suffix++) {
-                printer.println(String.valueOf(fileFormat.createCellId(0b100_11111111, suffix)));
+                printer.println(
+                        Long.toUnsignedString(fileFormat.createCellId(0b100_11111111, suffix)));
             }
 
             // Range 3
             for (int suffix = 1000; suffix < 2000; suffix++) {
-                printer.println(String.valueOf(fileFormat.createCellId(0b101_11111111, suffix)));
+                printer.println(
+                        Long.toUnsignedString(fileFormat.createCellId(0b101_11111111, suffix)));
             }
-            printer.print(String.valueOf(fileFormat.createCellId(0b101_11111111, 2000)));
+            printer.print(Long.toUnsignedString(fileFormat.createCellId(0b101_11111111, 2000)));
 
             printer.close();
         }
@@ -130,13 +133,13 @@ public class TestUtils {
             File outputFile, SatS2RangeFileFormat fileFormat) throws Exception {
         try (PrintStream printer = new PrintStream(outputFile)) {
             // Valid line
-            printer.println(String.valueOf(fileFormat.createCellId(0b100_11111111, 100)));
+            printer.println(Long.toUnsignedString(fileFormat.createCellId(0b100_11111111, 100)));
 
             // Invalid line
             printer.print("Invalid line");
 
             // Another valid line
-            printer.println(String.valueOf(fileFormat.createCellId(0b100_11111111, 200)));
+            printer.println(Long.toUnsignedString(fileFormat.createCellId(0b100_11111111, 200)));
 
             printer.close();
         }

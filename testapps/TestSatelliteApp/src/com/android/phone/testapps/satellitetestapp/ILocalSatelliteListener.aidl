@@ -64,4 +64,10 @@ oneway interface ILocalSatelliteListener {
      * enableCellularModemWhileSatelliteModeIsOn from Telephony.
      */
     void onEnableCellularModemWhileSatelliteModeIsOn(in boolean enable);
+
+    /**
+     * Indicates that MockSatelliteService has just received the request
+     * setSatellitePlmn from Telephony.
+     */
+    void onSetSatellitePlmn();
 }
