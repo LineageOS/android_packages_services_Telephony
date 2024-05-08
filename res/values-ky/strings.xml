@@ -524,7 +524,7 @@
     <string name="card_title_dialing" msgid="8742182654254431781">"Терилүүдө"</string>
     <string name="card_title_redialing" msgid="18130232613559964">"Кайра терүү"</string>
     <string name="card_title_conf_call" msgid="901197309274457427">"Конференц-чалуу"</string>
-    <string name="card_title_incoming_call" msgid="881424648458792430">"Кирүүчү чалуу"</string>
+    <string name="card_title_incoming_call" msgid="881424648458792430">"Чалып жатат"</string>
     <string name="card_title_call_ended" msgid="650223980095026340">"Чалуу аяктады"</string>
     <string name="card_title_on_hold" msgid="9028319436626975207">"Күтүлүүдө"</string>
     <string name="card_title_hanging_up" msgid="814874106866647871">"Телефон коюлууда"</string>
@@ -772,19 +772,19 @@
     <string name="sum_call_barring_enabled" msgid="5184331188926370824">"Күйүк"</string>
     <string name="sum_call_barring_disabled" msgid="5699448000600153096">"Өчүк"</string>
     <string name="call_barring_baoc" msgid="7400892586336429326">"Чыгуучу чалуулардын баары"</string>
-    <string name="call_barring_baoc_enabled" msgid="3131509193386668182">"Чыгуучу чалуулардын баарын бөгөттөө функциясы өчүрүлсүнбү?"</string>
+    <string name="call_barring_baoc_enabled" msgid="3131509193386668182">"Чыгуучу чалуулардын баарын бөгөттөө функциясын өчүрөсүзбү?"</string>
     <string name="call_barring_baoc_disabled" msgid="8534224684091141509">"Чыгуучу чалуулардын баары бөгөттөлсүнбү?"</string>
     <string name="call_barring_baoic" msgid="8668125428666851665">"Эл аралык чыгуучу чалуу"</string>
-    <string name="call_barring_baoic_enabled" msgid="1203758092657630123">"Эл аралык чыгуучу чалууларды бөгөттөө функциясы өчүрүлсүнбү?"</string>
+    <string name="call_barring_baoic_enabled" msgid="1203758092657630123">"Эл аралык чыгуучу чалууларды бөгөттөө функциясын өчүрөсүзбү?"</string>
     <string name="call_barring_baoic_disabled" msgid="5656889339002997449">"Эл аралык чыгуучу чалуулар бөгөттөлсүнбү?"</string>
     <string name="call_barring_baoicr" msgid="8566167764432343487">"Роумингдеги эл аралык чыгуучу чалуулар"</string>
-    <string name="call_barring_baoicr_enabled" msgid="1615324165512798478">"Роумингдеги эларалык чыгуучу чалууларды бөгөттөө функциясы өчүрүлсүнбү?"</string>
+    <string name="call_barring_baoicr_enabled" msgid="1615324165512798478">"Роумингдеги эларалык чыгуучу чалууларды бөгөттөө функциясын өчүрөсүзбү?"</string>
     <string name="call_barring_baoicr_disabled" msgid="172010175248142831">"Роумингдеги эларалык чыгуучу чалуулар бөгөттөлсүнбү?"</string>
     <string name="call_barring_baic" msgid="7941393541678658566">"Кирүүчү чалуулардын баары"</string>
-    <string name="call_barring_baic_enabled" msgid="4357332358020337470">"Кирүүчү чалуулардын баарын бөгөттөө функциясы өчүрүлсүнбү?"</string>
+    <string name="call_barring_baic_enabled" msgid="4357332358020337470">"Кирүүчү чалуулардын баарын бөгөттөө функциясын өчүрөсүзбү?"</string>
     <string name="call_barring_baic_disabled" msgid="2355945245938240958">"Кирүүчү чалуулардын баары бөгөттөлсүнбү?"</string>
     <string name="call_barring_baicr" msgid="8712249337313034226">"Роумингдеги эл аралык кирүүчү чалуу"</string>
-    <string name="call_barring_baicr_enabled" msgid="64774270234828175">"Роумингдеги эл аралык кирүүчү чалууларды бөгөттөө функциясы өчүрүлсүнбү?"</string>
+    <string name="call_barring_baicr_enabled" msgid="64774270234828175">"Роумингдеги эл аралык кирүүчү чалууларды бөгөттөө функциясын өчүрөсүзбү?"</string>
     <string name="call_barring_baicr_disabled" msgid="3488129262744027262">"Роумингдеги эл аралык кирүүчү чалуу бөгөттөлсүнбү?"</string>
     <string name="call_barring_deactivate_all" msgid="7837931580047157328">"Баары өчүрүлсүн"</string>
     <string name="call_barring_deactivate_all_description" msgid="4474119585042121604">"Чалууларга тыюу салуу функциясынын параметрлерин өчүрүү"</string>
