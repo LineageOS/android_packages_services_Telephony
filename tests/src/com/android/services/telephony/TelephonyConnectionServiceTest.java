@@ -2373,7 +2373,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         setupForDialForDomainSelection(mPhone0, selectedDomain, true);
 
         doReturn(mInternalConnection2).when(mCall).getLatestConnection();
-        doReturn(true).when(mCall).isRinging();
+        doReturn(Call.State.INCOMING).when(mCall).getState();
         doReturn(mCall).when(mPhone0).getRingingCall();
 
         mTestConnectionService.onCreateOutgoingConnection(PHONE_ACCOUNT_HANDLE_1,
@@ -2435,7 +2435,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
                 mPhone0, selectedDomain, preciseDisconnectCause, disconnectCause, true);
 
         doReturn(mInternalConnection2).when(mCall).getLatestConnection();
-        doReturn(true).when(mCall).isRinging();
+        doReturn(Call.State.DISCONNECTING).when(mCall).getState();
         doReturn(mCall).when(mPhone0).getRingingCall();
 
         assertTrue(mTestConnectionService.maybeReselectDomain(c, null, true,
@@ -2487,6 +2487,30 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
                 createConnectionRequest(PHONE_ACCOUNT_HANDLE_1,
                         TEST_EMERGENCY_NUMBER, TELECOM_CALL_ID1));
 
+        ArgumentCaptor<TelephonyConnection> connectionCaptor =
+                ArgumentCaptor.forClass(TelephonyConnection.class);
+        ArgumentCaptor<Consumer<Boolean>> consumerCaptor = ArgumentCaptor
+                .forClass(Consumer.class);
+
+        verify(mEmergencyStateTracker).startNormalRoutingEmergencyCall(eq(mPhone0),
+                connectionCaptor.capture(), consumerCaptor.capture());
+
+        TelephonyConnection tc = connectionCaptor.getValue();
+
+        assertNotNull(tc);
+        assertNotNull(mTestConnectionService.getNormalRoutingEmergencyConnection());
+        assertEquals(mTestConnectionService.getNormalRoutingEmergencyConnection(), tc);
+
+        verify(mDomainSelectionResolver, never())
+                .getDomainSelectionConnection(eq(mPhone0), eq(SELECTOR_TYPE_CALLING), eq(false));
+        verify(mNormalCallDomainSelectionConnection, never()).createNormalConnection(any(), any());
+
+        Consumer<Boolean> consumer = consumerCaptor.getValue();
+
+        assertNotNull(consumer);
+
+        consumer.accept(true);
+
         verify(mDomainSelectionResolver)
                 .getDomainSelectionConnection(eq(mPhone0), eq(SELECTOR_TYPE_CALLING), eq(false));
         verify(mNormalCallDomainSelectionConnection).createNormalConnection(any(), any());
@@ -2501,6 +2525,59 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         assertTrue(dialArgs.intentExtras.containsKey(PhoneConstants.EXTRA_DIAL_DOMAIN));
         assertEquals(
                 selectedDomain, dialArgs.intentExtras.getInt(PhoneConstants.EXTRA_DIAL_DOMAIN, -1));
+    }
+
+    @Test
+    public void testDomainSelectionNormalRoutingEmergencyNumberAndDiscarded() throws Exception {
+        setupForCallTest();
+        int selectedDomain = DOMAIN_PS;
+
+        EmergencyNumber emergencyNumber = new EmergencyNumber(TEST_EMERGENCY_NUMBER, "", "",
+                EmergencyNumber.EMERGENCY_SERVICE_CATEGORY_UNSPECIFIED,
+                Collections.emptyList(),
+                EmergencyNumber.EMERGENCY_NUMBER_SOURCE_DATABASE,
+                EmergencyNumber.EMERGENCY_CALL_ROUTING_NORMAL);
+
+        setupForDialForDomainSelection(mPhone0, selectedDomain, false);
+        doReturn(true).when(mTelephonyManagerProxy).isCurrentEmergencyNumber(anyString());
+        doReturn(emergencyNumber).when(mEmergencyNumberTracker).getEmergencyNumber(anyString());
+        doReturn(Arrays.asList(emergencyNumber)).when(mEmergencyNumberTracker).getEmergencyNumbers(
+                anyString());
+
+        mTestConnectionService.onCreateOutgoingConnection(PHONE_ACCOUNT_HANDLE_1,
+                createConnectionRequest(PHONE_ACCOUNT_HANDLE_1,
+                        TEST_EMERGENCY_NUMBER, TELECOM_CALL_ID1));
+
+        ArgumentCaptor<TelephonyConnection> connectionCaptor =
+                ArgumentCaptor.forClass(TelephonyConnection.class);
+        ArgumentCaptor<Consumer<Boolean>> consumerCaptor = ArgumentCaptor
+                .forClass(Consumer.class);
+
+        verify(mEmergencyStateTracker).startNormalRoutingEmergencyCall(eq(mPhone0),
+                connectionCaptor.capture(), consumerCaptor.capture());
+
+        TelephonyConnection tc = connectionCaptor.getValue();
+
+        assertNotNull(tc);
+        assertNotNull(mTestConnectionService.getNormalRoutingEmergencyConnection());
+        assertEquals(mTestConnectionService.getNormalRoutingEmergencyConnection(), tc);
+
+        verify(mDomainSelectionResolver, never())
+                .getDomainSelectionConnection(eq(mPhone0), eq(SELECTOR_TYPE_CALLING), eq(false));
+        verify(mNormalCallDomainSelectionConnection, never()).createNormalConnection(any(), any());
+
+        Consumer<Boolean> consumer = consumerCaptor.getValue();
+
+        assertNotNull(consumer);
+
+        // Discard dialing
+        tc.hangup(android.telephony.DisconnectCause.LOCAL);
+
+        consumer.accept(true);
+
+        verify(mDomainSelectionResolver, never())
+                .getDomainSelectionConnection(eq(mPhone0), eq(SELECTOR_TYPE_CALLING), eq(false));
+        verify(mNormalCallDomainSelectionConnection, never()).createNormalConnection(any(), any());
     }
 
     @Test
@@ -2577,6 +2654,30 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         mTestConnectionService.onCreateOutgoingConnection(PHONE_ACCOUNT_HANDLE_1,
                 createConnectionRequest(PHONE_ACCOUNT_HANDLE_1,
                         TEST_EMERGENCY_NUMBER, TELECOM_CALL_ID1));
+
+        ArgumentCaptor<TelephonyConnection> connectionCaptor =
+                ArgumentCaptor.forClass(TelephonyConnection.class);
+        ArgumentCaptor<Consumer<Boolean>> consumerCaptor = ArgumentCaptor
+                .forClass(Consumer.class);
+
+        verify(mEmergencyStateTracker).startNormalRoutingEmergencyCall(eq(mPhone0),
+                connectionCaptor.capture(), consumerCaptor.capture());
+
+        TelephonyConnection tc = connectionCaptor.getValue();
+
+        assertNotNull(tc);
+        assertNotNull(mTestConnectionService.getNormalRoutingEmergencyConnection());
+        assertEquals(mTestConnectionService.getNormalRoutingEmergencyConnection(), tc);
+
+        verify(mDomainSelectionResolver, never())
+                .getDomainSelectionConnection(eq(mPhone0), eq(SELECTOR_TYPE_CALLING), eq(false));
+        verify(mNormalCallDomainSelectionConnection, never()).createNormalConnection(any(), any());
+
+        Consumer<Boolean> consumer = consumerCaptor.getValue();
+
+        assertNotNull(consumer);
+
+        consumer.accept(true);
 
         verify(mDomainSelectionResolver)
                 .getDomainSelectionConnection(eq(mPhone0), eq(SELECTOR_TYPE_CALLING), eq(false));
