@@ -2574,6 +2574,8 @@ public class TelephonyConnectionService extends ConnectionService {
 
             mIsEmergencyCallPending = true;
             mEmergencyConnection = (TelephonyConnection) resultConnection;
+            handleEmergencyCallStartedForSatelliteSOSMessageRecommender(mEmergencyConnection,
+                    phone);
         }
 
         CompletableFuture<Void> maybeHoldFuture =
@@ -4642,6 +4644,8 @@ public class TelephonyConnectionService extends ConnectionService {
         }
         connection.addTelephonyConnectionListener(mEmergencyConnectionSatelliteListener);
         mSatelliteSOSMessageRecommender.onEmergencyCallStarted(connection);
+        mSatelliteSOSMessageRecommender.onEmergencyCallConnectionStateChanged(
+                connection.getTelecomCallId(), connection.STATE_DIALING);
     }
 
     /**
