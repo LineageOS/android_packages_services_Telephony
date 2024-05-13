@@ -49,6 +49,8 @@ import android.os.SystemProperties;
 import android.provider.DeviceConfig;
 import android.telecom.TelecomManager;
 import android.telephony.AnomalyReporter;
+import android.telephony.DropBoxManagerLoggerBackend;
+import android.telephony.PersistentLogger;
 import android.telephony.Rlog;
 import android.telephony.SubscriptionManager;
 import android.telephony.satellite.ISatelliteCommunicationAllowedStateCallback;
@@ -58,6 +60,7 @@ import android.telephony.satellite.SatelliteManager;
 import android.text.TextUtils;
 import android.util.Pair;
 
+import com.android.internal.R;
 import com.android.internal.annotations.GuardedBy;
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.telephony.Phone;
@@ -211,6 +214,8 @@ public class SatelliteAccessController extends Handler {
 
     private SharedPreferences mSharedPreferences;
     private final ConfigUpdaterMetricsStats mConfigUpdaterMetricsStats;
+    @Nullable
+    private PersistentLogger mPersistentLogger = null;
 
     /**
      * Map key: binder of the callback, value: callback to receive the satellite communication
@@ -248,6 +253,10 @@ public class SatelliteAccessController extends Handler {
             @Nullable SatelliteOnDeviceAccessController satelliteOnDeviceAccessController,
             @Nullable File s2CellFile) {
         super(looper);
+        if (isSatellitePersistentLoggingEnabled(context, featureFlags)) {
+            mPersistentLogger = new PersistentLogger(
+                    DropBoxManagerLoggerBackend.getInstance(context));
+        }
         mFeatureFlags = featureFlags;
         mLocationManager = locationManager;
         mTelecomManager = telecomManager;
@@ -324,10 +333,10 @@ public class SatelliteAccessController extends Handler {
     }
 
     private void updateCurrentSatelliteAllowedState(boolean isAllowed) {
-        logd("updateCurrentSatelliteAllowedState");
+        plogd("updateCurrentSatelliteAllowedState");
         synchronized (mSatelliteCommunicationAllowStateLock) {
             if (isAllowed != mCurrentSatelliteAllowedState) {
-                logd("updatedValue = " + isAllowed + " | mCurrentSatelliteAllowedState = "
+                plogd("updatedValue = " + isAllowed + " | mCurrentSatelliteAllowedState = "
                         + mCurrentSatelliteAllowedState);
                 mCurrentSatelliteAllowedState = isAllowed;
                 notifySatelliteCommunicationAllowedStateChanged(isAllowed);
@@ -368,7 +377,7 @@ public class SatelliteAccessController extends Handler {
                 updateSatelliteConfigData((Context) ar.userObj);
                 break;
             default:
-                logw("SatelliteAccessControllerHandler: unexpected message code: " + msg.what);
+                plogw("SatelliteAccessControllerHandler: unexpected message code: " + msg.what);
                 break;
         }
     }
@@ -385,7 +394,7 @@ public class SatelliteAccessController extends Handler {
     public void requestIsCommunicationAllowedForCurrentLocation(int subId,
             @NonNull ResultReceiver result) {
         if (!mFeatureFlags.oemEnabledSatelliteFlag()) {
-            logd("oemEnabledSatelliteFlag is disabled");
+            plogd("oemEnabledSatelliteFlag is disabled");
             result.send(SATELLITE_RESULT_REQUEST_NOT_SUPPORTED, null);
             return;
         }
@@ -400,10 +409,10 @@ public class SatelliteAccessController extends Handler {
             @Nullable String s2CellFile, long locationFreshDurationNanos,
             @Nullable List<String> satelliteCountryCodes) {
         if (!isMockModemAllowed()) {
-            logd("setSatelliteAccessControllerOverlayConfigs: mock modem is not allowed");
+            plogd("setSatelliteAccessControllerOverlayConfigs: mock modem is not allowed");
             return false;
         }
-        logd("setSatelliteAccessControlOverlayConfigs: reset=" + reset
+        plogd("setSatelliteAccessControlOverlayConfigs: reset=" + reset
                 + ", isAllowed" + isAllowed + ", s2CellFile=" + s2CellFile
                 + ", locationFreshDurationNanos=" + locationFreshDurationNanos
                 + ", satelliteCountryCodes=" + ((satelliteCountryCodes != null)
@@ -418,7 +427,7 @@ public class SatelliteAccessController extends Handler {
                 if (!TextUtils.isEmpty(s2CellFile)) {
                     mOverriddenSatelliteS2CellFile = getTestSatelliteS2File(s2CellFile);
                     if (!mOverriddenSatelliteS2CellFile.exists()) {
-                        logd("The overriding file "
+                        plogd("The overriding file "
                                 + mOverriddenSatelliteS2CellFile.getAbsolutePath()
                                 + " does not exist");
                         mOverriddenSatelliteS2CellFile = null;
@@ -440,13 +449,13 @@ public class SatelliteAccessController extends Handler {
     }
 
     protected File getTestSatelliteS2File(String fileName) {
-        logd("getTestSatelliteS2File: fileName=" + fileName);
+        plogd("getTestSatelliteS2File: fileName=" + fileName);
         if (TextUtils.equals(fileName, GOOGLE_US_SAN_SAT_S2_FILE_NAME)) {
             mCtsSatS2FilePath = copyTestSatS2FileToPhoneDirectory(GOOGLE_US_SAN_SAT_S2_FILE_NAME);
             if (mCtsSatS2FilePath != null) {
                 return mCtsSatS2FilePath.toFile();
             } else {
-                loge("getTestSatelliteS2File: mCtsSatS2FilePath is null");
+                ploge("getTestSatelliteS2File: mCtsSatS2FilePath is null");
             }
         }
         return new File(fileName);
@@ -524,13 +533,13 @@ public class SatelliteAccessController extends Handler {
                     SatelliteOnDeviceAccessController.create(s2CellFile);
             int s2Level = satelliteOnDeviceAccessController.getS2Level();
             if (s2Level < MIN_S2_LEVEL || s2Level > MAX_S2_LEVEL) {
-                loge("isS2CellFileValid: invalid s2 level = " + s2Level);
+                ploge("isS2CellFileValid: invalid s2 level = " + s2Level);
                 satelliteOnDeviceAccessController.close();
                 return false;
             }
             satelliteOnDeviceAccessController.close();
         } catch (Exception ex) {
-            loge("isS2CellFileValid: Got exception in reading the file, ex=" + ex);
+            ploge("isS2CellFileValid: Got exception in reading the file, ex=" + ex);
             return false;
         }
         return true;
@@ -541,7 +550,7 @@ public class SatelliteAccessController extends Handler {
             try {
                 Files.delete(mCtsSatS2FilePath);
             } catch (IOException ex) {
-                loge("cleanUpCtsResources: ex=" + ex);
+                ploge("cleanUpCtsResources: ex=" + ex);
             }
         }
     }
@@ -561,7 +570,7 @@ public class SatelliteAccessController extends Handler {
         }
         for (String countryCode : countryCodes) {
             if (!TelephonyUtils.isValidCountryCode(countryCode)) {
-                loge("invalid country code : " + countryCode);
+                ploge("invalid country code : " + countryCode);
                 return false;
             }
         }
@@ -571,11 +580,11 @@ public class SatelliteAccessController extends Handler {
     private boolean updateSharedPreferencesCountryCodes(
             @NonNull Context context, @NonNull List<String> value) {
         if (mSharedPreferences == null) {
-            logd("updateSharedPreferencesCountryCodes: mSharedPreferences is null");
+            plogd("updateSharedPreferencesCountryCodes: mSharedPreferences is null");
             initSharedPreferences(context);
         }
         if (mSharedPreferences == null) {
-            loge("updateSharedPreferencesCountryCodes: mSharedPreferences is null");
+            ploge("updateSharedPreferencesCountryCodes: mSharedPreferences is null");
             return false;
         }
         try {
@@ -583,7 +592,7 @@ public class SatelliteAccessController extends Handler {
                     CONFIG_UPDATER_SATELLITE_COUNTRY_CODES_KEY, new HashSet<>(value)).apply();
             return true;
         } catch (Exception ex) {
-            loge("updateSharedPreferencesCountryCodes error : " + ex);
+            ploge("updateSharedPreferencesCountryCodes error : " + ex);
             return false;
         }
     }
@@ -591,11 +600,11 @@ public class SatelliteAccessController extends Handler {
     private boolean updateSharedPreferencesIsAllowAccessControl(
             @NonNull Context context, boolean value) {
         if (mSharedPreferences == null) {
-            logd("updateSharedPreferencesIsAllowAccessControl: mSharedPreferences is null");
+            plogd("updateSharedPreferencesIsAllowAccessControl: mSharedPreferences is null");
             initSharedPreferences(context);
         }
         if (mSharedPreferences == null) {
-            loge("updateSharedPreferencesIsAllowAccessControl: mSharedPreferences is null");
+            ploge("updateSharedPreferencesIsAllowAccessControl: mSharedPreferences is null");
             return false;
         }
         try {
@@ -604,7 +613,7 @@ public class SatelliteAccessController extends Handler {
                     value).apply();
             return true;
         } catch (Exception ex) {
-            loge("updateSharedPreferencesIsAllowAccessControl error: " + ex);
+            ploge("updateSharedPreferencesIsAllowAccessControl error: " + ex);
             return false;
         }
     }
@@ -613,11 +622,11 @@ public class SatelliteAccessController extends Handler {
      * Update country codes and S2CellFile with the new data from ConfigUpdater
      */
     private void updateSatelliteConfigData(Context context) {
-        logd("updateSatelliteConfigData");
+        plogd("updateSatelliteConfigData");
 
         SatelliteConfig satelliteConfig = mSatelliteController.getSatelliteConfig();
         if (satelliteConfig == null) {
-            loge("satelliteConfig is null");
+            ploge("satelliteConfig is null");
             mConfigUpdaterMetricsStats.reportOemAndCarrierConfigError(
                     SatelliteConstants.CONFIG_UPDATE_RESULT_NO_SATELLITE_DATA);
             return;
@@ -625,7 +634,7 @@ public class SatelliteAccessController extends Handler {
 
         List<String> satelliteCountryCodes = satelliteConfig.getDeviceSatelliteCountryCodes();
         if (!isValidCountryCodes(satelliteCountryCodes)) {
-            logd("country codes is invalid");
+            plogd("country codes is invalid");
             mConfigUpdaterMetricsStats.reportOemConfigError(
                     SatelliteConstants.CONFIG_UPDATE_RESULT_DEVICE_DATA_INVALID_COUNTRY_CODE);
             return;
@@ -633,7 +642,7 @@ public class SatelliteAccessController extends Handler {
 
         Boolean isSatelliteDataForAllowedRegion = satelliteConfig.isSatelliteDataForAllowedRegion();
         if (isSatelliteDataForAllowedRegion == null) {
-            loge("Satellite allowed is not configured with country codes");
+            ploge("Satellite allowed is not configured with country codes");
             mConfigUpdaterMetricsStats.reportOemConfigError(
                     SatelliteConstants.CONFIG_UPDATE_RESULT_DEVICE_DATA_INVALID_S2_CELL_FILE);
             return;
@@ -641,14 +650,14 @@ public class SatelliteAccessController extends Handler {
 
         File configUpdaterS2CellFile = satelliteConfig.getSatelliteS2CellFile(context);
         if (configUpdaterS2CellFile == null || !configUpdaterS2CellFile.exists()) {
-            logd("No S2 cell file configured or the file does not exist");
+            plogd("No S2 cell file configured or the file does not exist");
             mConfigUpdaterMetricsStats.reportOemConfigError(
                     SatelliteConstants.CONFIG_UPDATE_RESULT_DEVICE_DATA_INVALID_S2_CELL_FILE);
             return;
         }
 
         if (!isS2CellFileValid(configUpdaterS2CellFile)) {
-            loge("The configured S2 cell file is not valid");
+            ploge("The configured S2 cell file is not valid");
             mConfigUpdaterMetricsStats.reportOemConfigError(
                     SatelliteConstants.CONFIG_UPDATE_RESULT_DEVICE_DATA_INVALID_S2_CELL_FILE);
             return;
@@ -656,14 +665,14 @@ public class SatelliteAccessController extends Handler {
 
         File localS2CellFile = copySatS2FileToLocalDirectory(configUpdaterS2CellFile);
         if (localS2CellFile == null || !localS2CellFile.exists()) {
-            loge("Fail to copy S2 cell file to local directory");
+            ploge("Fail to copy S2 cell file to local directory");
             mConfigUpdaterMetricsStats.reportOemConfigError(
                     SatelliteConstants.CONFIG_UPDATE_RESULT_IO_ERROR);
             return;
         }
 
         if (!updateSharedPreferencesCountryCodes(context, satelliteCountryCodes)) {
-            loge("Fail to copy country coeds into shared preferences");
+            ploge("Fail to copy country coeds into shared preferences");
             localS2CellFile.delete();
             mConfigUpdaterMetricsStats.reportOemConfigError(
                     SatelliteConstants.CONFIG_UPDATE_RESULT_IO_ERROR);
@@ -672,7 +681,7 @@ public class SatelliteAccessController extends Handler {
 
         if (!updateSharedPreferencesIsAllowAccessControl(
                 context, isSatelliteDataForAllowedRegion.booleanValue())) {
-            loge("Fail to copy allow access control into shared preferences");
+            ploge("Fail to copy allow access control into shared preferences");
             localS2CellFile.delete();
             mConfigUpdaterMetricsStats.reportOemConfigError(
                     SatelliteConstants.CONFIG_UPDATE_RESULT_IO_ERROR);
@@ -682,7 +691,7 @@ public class SatelliteAccessController extends Handler {
         mSatelliteS2CellFile = localS2CellFile;
         mSatelliteCountryCodes = satelliteCountryCodes;
         mIsSatelliteAllowAccessControl = satelliteConfig.isSatelliteDataForAllowedRegion();
-        logd("Use s2 cell file=" + mSatelliteS2CellFile.getAbsolutePath() + ", country codes="
+        plogd("Use s2 cell file=" + mSatelliteS2CellFile.getAbsolutePath() + ", country codes="
                 + String.join(",", mSatelliteCountryCodes)
                 + ", mIsSatelliteAllowAccessControl=" + mIsSatelliteAllowAccessControl
                 + " from ConfigUpdater");
@@ -692,7 +701,7 @@ public class SatelliteAccessController extends Handler {
 
         // Clean up cached data based on previous geofence data
         synchronized (mLock) {
-            logd("clear mCachedAccessRestrictionMap");
+            plogd("clear mCachedAccessRestrictionMap");
             mCachedAccessRestrictionMap.clear();
         }
 
@@ -706,7 +715,7 @@ public class SatelliteAccessController extends Handler {
         mSatelliteS2CellFile = TextUtils.isEmpty(satelliteS2CellFileName)
                 ? null : new File(satelliteS2CellFileName);
         if (mSatelliteS2CellFile != null && !mSatelliteS2CellFile.exists()) {
-            loge("The satellite S2 cell file " + satelliteS2CellFileName + " does not exist");
+            ploge("The satellite S2 cell file " + satelliteS2CellFileName + " does not exist");
             mSatelliteS2CellFile = null;
         }
         mLocationFreshDurationNanos = getSatelliteLocationFreshDurationFromOverlayConfig(context);
@@ -716,7 +725,7 @@ public class SatelliteAccessController extends Handler {
 
     private void loadConfigUpdaterConfigs() {
         if (mSharedPreferences == null) {
-            loge("loadConfigUpdaterConfigs : mSharedPreferences is null");
+            ploge("loadConfigUpdaterConfigs : mSharedPreferences is null");
             return;
         }
 
@@ -724,7 +733,7 @@ public class SatelliteAccessController extends Handler {
                 mSharedPreferences.getStringSet(CONFIG_UPDATER_SATELLITE_COUNTRY_CODES_KEY, null);
 
         if (countryCodes == null || countryCodes.isEmpty()) {
-            loge("config updater country codes are either null or empty");
+            ploge("config updater country codes are either null or empty");
             return;
         }
 
@@ -734,11 +743,11 @@ public class SatelliteAccessController extends Handler {
 
         File s2CellFile = getConfigUpdaterSatS2CellFileFromLocalDirectory();
         if (s2CellFile == null) {
-            loge("s2CellFile is null");
+            ploge("s2CellFile is null");
             return;
         }
 
-        logd("use config updater config data");
+        plogd("use config updater config data");
         mSatelliteS2CellFile = s2CellFile;
         mSatelliteCountryCodes = countryCodes.stream().collect(Collectors.toList());
         mIsSatelliteAllowAccessControl = isSatelliteAllowAccessControl;
@@ -789,7 +798,7 @@ public class SatelliteAccessController extends Handler {
         synchronized (mLock) {
             mSatelliteAllowResultReceivers.add(requestArguments.second);
             if (mSatelliteAllowResultReceivers.size() > 1) {
-                logd("requestIsCommunicationAllowedForCurrentLocation is already being "
+                plogd("requestIsCommunicationAllowedForCurrentLocation is already being "
                         + "processed");
                 return;
             }
@@ -800,40 +809,40 @@ public class SatelliteAccessController extends Handler {
     }
 
     private void handleWaitForCurrentLocationTimedOutEvent() {
-        logd("Timed out to wait for current location");
+        plogd("Timed out to wait for current location");
         synchronized (mLock) {
             if (mLocationRequestCancellationSignal != null) {
                 mLocationRequestCancellationSignal.cancel();
                 mLocationRequestCancellationSignal = null;
                 onCurrentLocationAvailable(null);
             } else {
-                loge("handleWaitForCurrentLocationTimedOutEvent: "
+                ploge("handleWaitForCurrentLocationTimedOutEvent: "
                         + "mLocationRequestCancellationSignal is null");
             }
         }
     }
 
     private void handleIsSatelliteSupportedResult(int resultCode, Bundle resultData) {
-        logd("handleIsSatelliteSupportedResult: resultCode=" + resultCode);
+        plogd("handleIsSatelliteSupportedResult: resultCode=" + resultCode);
         synchronized (mLock) {
             if (resultCode == SATELLITE_RESULT_SUCCESS) {
                 if (resultData.containsKey(KEY_SATELLITE_SUPPORTED)) {
                     boolean isSatelliteSupported = resultData.getBoolean(KEY_SATELLITE_SUPPORTED);
                     if (!isSatelliteSupported) {
-                        logd("Satellite is not supported");
+                        plogd("Satellite is not supported");
                         Bundle bundle = new Bundle();
                         bundle.putBoolean(SatelliteManager.KEY_SATELLITE_COMMUNICATION_ALLOWED,
                                 false);
                         sendSatelliteAllowResultToReceivers(resultCode, bundle, false);
                     } else {
-                        logd("Satellite is supported, check if provisioned or not");
+                        plogd("Satellite is supported, check if provisioned or not");
                         int subId = resultData.getInt(SatelliteController.SATELLITE_SUBSCRIPTION_ID,
                                 SubscriptionManager.DEFAULT_SUBSCRIPTION_ID);
                         mSatelliteController.requestIsSatelliteProvisioned(
                                 subId, mInternalSatelliteProvisionedResultReceiver);
                     }
                 } else {
-                    loge("KEY_SATELLITE_SUPPORTED does not exist.");
+                    ploge("KEY_SATELLITE_SUPPORTED does not exist.");
                     sendSatelliteAllowResultToReceivers(resultCode, resultData, false);
                 }
             } else {
@@ -843,24 +852,24 @@ public class SatelliteAccessController extends Handler {
     }
 
     private void handleIsSatelliteProvisionedResult(int resultCode, Bundle resultData) {
-        logd("handleIsSatelliteProvisionedResult: resultCode=" + resultCode);
+        plogd("handleIsSatelliteProvisionedResult: resultCode=" + resultCode);
         synchronized (mLock) {
             if (resultCode == SATELLITE_RESULT_SUCCESS) {
                 if (resultData.containsKey(KEY_SATELLITE_PROVISIONED)) {
                     boolean isSatelliteProvisioned =
                             resultData.getBoolean(KEY_SATELLITE_PROVISIONED);
                     if (!isSatelliteProvisioned) {
-                        logd("Satellite is not provisioned");
+                        plogd("Satellite is not provisioned");
                         Bundle bundle = new Bundle();
                         bundle.putBoolean(SatelliteManager.KEY_SATELLITE_COMMUNICATION_ALLOWED,
                                 false);
                         sendSatelliteAllowResultToReceivers(resultCode, bundle, false);
                     } else {
-                        logd("Satellite is provisioned");
+                        plogd("Satellite is provisioned");
                         checkSatelliteAccessRestrictionUsingGPS();
                     }
                 } else {
-                    loge("KEY_SATELLITE_PROVISIONED does not exist.");
+                    ploge("KEY_SATELLITE_PROVISIONED does not exist.");
                     sendSatelliteAllowResultToReceivers(resultCode, resultData, false);
                 }
             } else {
@@ -888,7 +897,7 @@ public class SatelliteAccessController extends Handler {
         synchronized (mLock) {
             List<String> networkCountryIsoList = mCountryDetector.getCurrentNetworkCountryIso();
             if (!networkCountryIsoList.isEmpty()) {
-                logd("Use current network country codes=" + String.join(", ",
+                plogd("Use current network country codes=" + String.join(", ",
                         networkCountryIsoList));
 
                 boolean allowed = isSatelliteAccessAllowedForLocation(networkCountryIsoList);
@@ -921,7 +930,7 @@ public class SatelliteAccessController extends Handler {
             executeLocationQuery();
         } else {
             if (mLocationManager.isLocationEnabled()) {
-                logd("location query is allowed");
+                plogd("location query is allowed");
                 if (isCommunicationAllowedCacheValid()) {
                     Bundle bundle = new Bundle();
                     bundle.putBoolean(KEY_SATELLITE_COMMUNICATION_ALLOWED,
@@ -932,7 +941,7 @@ public class SatelliteAccessController extends Handler {
                     executeLocationQuery();
                 }
             } else {
-                logv("location query is not allowed");
+                plogv("location query is not allowed");
                 Bundle bundle = new Bundle();
                 bundle.putBoolean(KEY_SATELLITE_COMMUNICATION_ALLOWED, false);
                 sendSatelliteAllowResultToReceivers(SATELLITE_RESULT_SUCCESS, bundle, false);
@@ -954,7 +963,7 @@ public class SatelliteAccessController extends Handler {
     }
 
     private void executeLocationQuery() {
-        logv("executeLocationQuery");
+        plogv("executeLocationQuery");
         synchronized (mLock) {
             mFreshLastKnownLocation = getFreshLastKnownLocation();
             checkSatelliteAccessRestrictionUsingOnDeviceData();
@@ -982,7 +991,7 @@ public class SatelliteAccessController extends Handler {
             // Use cached network country codes
             countryCodeList = networkCountryCodeInfoMap.keySet().stream().toList();
         }
-        logd("Use cached country codes=" + String.join(", ", countryCodeList));
+        plogd("Use cached country codes=" + String.join(", ", countryCodeList));
         mAccessControllerMetricsStats.setAccessControlType(
                 SatelliteConstants.ACCESS_CONTROL_TYPE_CACHED_COUNTRY_CODE);
 
@@ -1000,7 +1009,7 @@ public class SatelliteAccessController extends Handler {
     private void checkSatelliteAccessRestrictionUsingOnDeviceData() {
         mOnDeviceLookupStartTimeMillis = System.currentTimeMillis();
         synchronized (mLock) {
-            logd("Use on-device data");
+            plogd("Use on-device data");
             if (mFreshLastKnownLocation != null) {
                 mAccessControllerMetricsStats.setAccessControlType(
                         SatelliteConstants.ACCESS_CONTROL_TYPE_LAST_KNOWN_LOCATION);
@@ -1022,7 +1031,7 @@ public class SatelliteAccessController extends Handler {
     private void queryCurrentLocation() {
         synchronized (mLock) {
             if (mLocationRequestCancellationSignal != null) {
-                logd("Request for current location was already sent to LocationManager");
+                plogd("Request for current location was already sent to LocationManager");
                 return;
             }
             mLocationRequestCancellationSignal = new CancellationSignal();
@@ -1039,7 +1048,7 @@ public class SatelliteAccessController extends Handler {
     }
 
     private void onCurrentLocationAvailable(@Nullable Location location) {
-        logd("onCurrentLocationAvailable " + (location != null));
+        plogd("onCurrentLocationAvailable " + (location != null));
         synchronized (mLock) {
             stopWaitForCurrentLocationTimer();
             mLocationRequestCancellationSignal = null;
@@ -1056,9 +1065,9 @@ public class SatelliteAccessController extends Handler {
                         SatelliteConstants.ACCESS_CONTROL_TYPE_CURRENT_LOCATION);
                 checkSatelliteAccessRestrictionForLocation(location);
             } else {
-                logd("current location is not available");
+                plogd("current location is not available");
                 if (isCommunicationAllowedCacheValid()) {
-                    logd("onCurrentLocationAvailable: 24Hr cache is still valid, using it");
+                    plogd("onCurrentLocationAvailable: 24Hr cache is still valid, using it");
                     bundle.putBoolean(KEY_SATELLITE_COMMUNICATION_ALLOWED,
                             mLatestSatelliteCommunicationAllowed);
                     sendSatelliteAllowResultToReceivers(SATELLITE_RESULT_SUCCESS, bundle,
@@ -1083,7 +1092,7 @@ public class SatelliteAccessController extends Handler {
                     satelliteAllowed = mCachedAccessRestrictionMap.get(locationToken);
                 } else {
                     if (!initSatelliteOnDeviceAccessController()) {
-                        loge("Failed to init SatelliteOnDeviceAccessController");
+                        ploge("Failed to init SatelliteOnDeviceAccessController");
                         Bundle bundle = new Bundle();
                         bundle.putBoolean(KEY_SATELLITE_COMMUNICATION_ALLOWED, false);
                         sendSatelliteAllowResultToReceivers(SATELLITE_RESULT_SUCCESS, bundle,
@@ -1102,14 +1111,14 @@ public class SatelliteAccessController extends Handler {
                 mLatestSatelliteCommunicationAllowed = satelliteAllowed;
                 mLatestSatelliteCommunicationAllowedSetTime = SystemClock.elapsedRealtimeNanos();
             } catch (Exception ex) {
-                loge("checkSatelliteAccessRestrictionForLocation: ex=" + ex);
+                ploge("checkSatelliteAccessRestrictionForLocation: ex=" + ex);
                 reportAnomaly(UUID_ON_DEVICE_LOOKUP_EXCEPTION,
                         "On-device satellite lookup exception");
                 Bundle bundle = new Bundle();
                 if (isCommunicationAllowedCacheValid()) {
                     bundle.putBoolean(KEY_SATELLITE_COMMUNICATION_ALLOWED,
                             mLatestSatelliteCommunicationAllowed);
-                    logd("checkSatelliteAccessRestrictionForLocation: 24Hr cache is still valid, "
+                    plogd("checkSatelliteAccessRestrictionForLocation: 24Hr cache is still valid, "
                             + "using it");
                 } else {
                     bundle.putBoolean(KEY_SATELLITE_COMMUNICATION_ALLOWED, false);
@@ -1242,7 +1251,7 @@ public class SatelliteAccessController extends Handler {
             mSharedPreferences =
                     context.getSharedPreferences(SATELLITE_SHARED_PREF, Context.MODE_PRIVATE);
         } catch (Exception e) {
-            loge("Cannot get default shared preferences: " + e);
+            ploge("Cannot get default shared preferences: " + e);
         }
     }
 
@@ -1268,9 +1277,9 @@ public class SatelliteAccessController extends Handler {
                         SatelliteOnDeviceAccessController.create(getSatelliteS2CellFile());
                 restartKeepOnDeviceAccessControllerResourcesTimer();
                 mS2Level = mSatelliteOnDeviceAccessController.getS2Level();
-                logd("mS2Level=" + mS2Level);
+                plogd("mS2Level=" + mS2Level);
             } catch (Exception ex) {
-                loge("Got exception in creating an instance of SatelliteOnDeviceAccessController,"
+                ploge("Got exception in creating an instance of SatelliteOnDeviceAccessController,"
                         + " ex=" + ex + ", sat s2 file="
                         + getSatelliteS2CellFile().getAbsolutePath());
                 reportAnomaly(UUID_CREATE_ON_DEVICE_ACCESS_CONTROLLER_EXCEPTION,
@@ -1287,13 +1296,13 @@ public class SatelliteAccessController extends Handler {
 
     private void cleanupOnDeviceAccessControllerResources() {
         synchronized (mLock) {
-            logd("cleanupOnDeviceAccessControllerResources="
+            plogd("cleanupOnDeviceAccessControllerResources="
                     + (mSatelliteOnDeviceAccessController != null));
             if (mSatelliteOnDeviceAccessController != null) {
                 try {
                     mSatelliteOnDeviceAccessController.close();
                 } catch (Exception ex) {
-                    loge("cleanupOnDeviceAccessControllerResources: ex=" + ex);
+                    ploge("cleanupOnDeviceAccessControllerResources: ex=" + ex);
                 }
                 mSatelliteOnDeviceAccessController = null;
                 stopKeepOnDeviceAccessControllerResourcesTimer();
@@ -1400,7 +1409,7 @@ public class SatelliteAccessController extends Handler {
     private void startWaitForCurrentLocationTimer() {
         synchronized (mLock) {
             if (hasMessages(EVENT_WAIT_FOR_CURRENT_LOCATION_TIMEOUT)) {
-                logw("WaitForCurrentLocationTimer is already started");
+                plogw("WaitForCurrentLocationTimer is already started");
                 removeMessages(EVENT_WAIT_FOR_CURRENT_LOCATION_TIMEOUT);
             }
             sendEmptyMessageDelayed(EVENT_WAIT_FOR_CURRENT_LOCATION_TIMEOUT,
@@ -1417,7 +1426,7 @@ public class SatelliteAccessController extends Handler {
     private void restartKeepOnDeviceAccessControllerResourcesTimer() {
         synchronized (mLock) {
             if (hasMessages(EVENT_KEEP_ON_DEVICE_ACCESS_CONTROLLER_RESOURCES_TIMEOUT)) {
-                logd("KeepOnDeviceAccessControllerResourcesTimer is already started. "
+                plogd("KeepOnDeviceAccessControllerResourcesTimer is already started. "
                         + "Restarting it...");
                 removeMessages(EVENT_KEEP_ON_DEVICE_ACCESS_CONTROLLER_RESOURCES_TIMEOUT);
             }
@@ -1433,7 +1442,7 @@ public class SatelliteAccessController extends Handler {
     }
 
     private void reportAnomaly(@NonNull String uuid, @NonNull String log) {
-        loge(log);
+        ploge(log);
         AnomalyReporter.reportAnomaly(UUID.fromString(uuid), log);
     }
 
@@ -1466,7 +1475,7 @@ public class SatelliteAccessController extends Handler {
     public int registerForCommunicationAllowedStateChanged(int subId,
             @NonNull ISatelliteCommunicationAllowedStateCallback callback) {
         if (!mFeatureFlags.oemEnabledSatelliteFlag()) {
-            logd("registerForCommunicationAllowedStateChanged: oemEnabledSatelliteFlag is "
+            plogd("registerForCommunicationAllowedStateChanged: oemEnabledSatelliteFlag is "
                     + "disabled");
             return SatelliteManager.SATELLITE_RESULT_REQUEST_NOT_SUPPORTED;
         }
@@ -1488,7 +1497,7 @@ public class SatelliteAccessController extends Handler {
     public void unregisterForCommunicationAllowedStateChanged(
             int subId, @NonNull ISatelliteCommunicationAllowedStateCallback callback) {
         if (!mFeatureFlags.oemEnabledSatelliteFlag()) {
-            logd("unregisterForCommunicationAllowedStateChanged: "
+            plogd("unregisterForCommunicationAllowedStateChanged: "
                     + "oemEnabledSatelliteFlag is disabled");
             return;
         }
@@ -1540,14 +1549,14 @@ public class SatelliteAccessController extends Handler {
     }
 
     private void notifySatelliteCommunicationAllowedStateChanged(boolean allowState) {
-        logd("notifySatelliteCommunicationAllowedStateChanged: allowState=" + allowState);
+        plogd("notifySatelliteCommunicationAllowedStateChanged: allowState=" + allowState);
 
         List<ISatelliteCommunicationAllowedStateCallback> deadCallersList = new ArrayList<>();
         mSatelliteCommunicationAllowedStateChangedListeners.values().forEach(listener -> {
             try {
                 listener.onSatelliteCommunicationAllowedStateChanged(allowState);
             } catch (RemoteException e) {
-                logd("handleEventNtnSignalStrengthChanged RemoteException: " + e);
+                plogd("handleEventNtnSignalStrengthChanged RemoteException: " + e);
                 deadCallersList.add(listener);
             }
         });
@@ -1589,5 +1598,46 @@ public class SatelliteAccessController extends Handler {
 
     private static void logv(@NonNull String log) {
         Rlog.v(TAG, log);
+    }
+
+    private boolean isSatellitePersistentLoggingEnabled(
+            @NonNull Context context, @NonNull FeatureFlags featureFlags) {
+        if (featureFlags.satellitePersistentLogging()) {
+            return true;
+        }
+        try {
+            return context.getResources().getBoolean(
+                    R.bool.config_dropboxmanager_persistent_logging_enabled);
+        } catch (RuntimeException e) {
+            return false;
+        }
+    }
+
+    private void plogv(@NonNull String log) {
+        Rlog.v(TAG, log);
+        if (mPersistentLogger != null) {
+            mPersistentLogger.debug(TAG, log);
+        }
+    }
+
+    private void plogd(@NonNull String log) {
+        Rlog.d(TAG, log);
+        if (mPersistentLogger != null) {
+            mPersistentLogger.debug(TAG, log);
+        }
+    }
+
+    private void plogw(@NonNull String log) {
+        Rlog.w(TAG, log);
+        if (mPersistentLogger != null) {
+            mPersistentLogger.warn(TAG, log);
+        }
+    }
+
+    private void ploge(@NonNull String log) {
+        Rlog.e(TAG, log);
+        if (mPersistentLogger != null) {
+            mPersistentLogger.error(TAG, log);
+        }
     }
 }

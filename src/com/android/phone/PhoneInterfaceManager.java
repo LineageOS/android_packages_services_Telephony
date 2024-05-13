@@ -9454,7 +9454,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                     + android.Manifest.permission.DUMP);
             return;
         }
-        DumpsysHandler.dump(mApp, fd, writer, args);
+        try {
+            DumpsysHandler.dump(mApp, fd, writer, args);
+        } catch (Exception e) {
+            writer.println("Failed to dump phone information: " + e);
+        }
     }
 
     @Override
