@@ -591,7 +591,7 @@
     <string name="onscreenManageConferenceText" msgid="4700574060601755137">"कॉन्फ़्रेंस प्रबंधित करें"</string>
     <string name="onscreenAudioText" msgid="7224226735052019986">"ऑडियो"</string>
     <string name="onscreenVideoCallText" msgid="1743992456126258698">"वीडियो कॉल"</string>
-    <string name="importSimEntry" msgid="3892354284082689894">"आयात करें"</string>
+    <string name="importSimEntry" msgid="3892354284082689894">"इंपोर्ट करें"</string>
     <string name="importAllSimEntries" msgid="2628391505643564007">"सभी आयात करें"</string>
     <string name="importingSimContacts" msgid="4995457122107888932">"सिम संपर्क आयात कर रहा है"</string>
     <string name="importToFDNfromContacts" msgid="5068664870738407341">"संपर्कों से आयात करें"</string>
