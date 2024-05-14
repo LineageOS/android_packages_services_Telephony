@@ -333,6 +333,9 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         }
 
         if (result.getAccessNetwork() == UNKNOWN) {
+            if (maybeRedialOnTheOtherSlotInNormalService(mLastRegResult)) {
+                return;
+            }
             if ((mPreferredNetworkScanType == SCAN_TYPE_FULL_SERVICE_FOLLOWED_BY_LIMITED_SERVICE)
                       && (mScanType == DomainSelectionService.SCAN_TYPE_FULL_SERVICE)) {
                 mScanType = DomainSelectionService.SCAN_TYPE_LIMITED_SERVICE;
@@ -356,6 +359,13 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
                 requestScan(false);
             }
             return;
+        }
+
+        if (result.getRegState() != REGISTRATION_STATE_HOME
+                && result.getRegState() != REGISTRATION_STATE_ROAMING) {
+            if (maybeRedialOnTheOtherSlotInNormalService(result)) {
+                return;
+            }
         }
 
         mLastRegResult = result;
@@ -856,7 +866,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         boolean psInService = isPsInService();
 
         if (!csInService && !psInService) {
-            if (maybeRedialOnTheOtherSlotInNormalService()) {
+            if (maybeRedialOnTheOtherSlotInNormalService(mLastRegResult)) {
                 return;
             }
             mCsNetworkType = getSelectableCsNetworkType();
@@ -1647,14 +1657,28 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         return true;
     }
 
-    private boolean maybeRedialOnTheOtherSlotInNormalService() {
-        EmergencyRegistrationResult regResult =
-                mSelectionAttributes.getEmergencyRegistrationResult();
+    private String getCountryIso(String iso) {
+        if (TextUtils.isEmpty(iso)) {
+            TelephonyManager tm = mContext.getSystemService(TelephonyManager.class);
+            iso = tm.getNetworkCountryIso(getSlotId());
+            if (TextUtils.isEmpty(iso)) {
+                for (int i = 0; i < mModemCount; i++) {
+                    iso = tm.getNetworkCountryIso(i);
+                    if (!TextUtils.isEmpty(iso)) break;
+                }
+            }
+        }
+        return iso;
+    }
+
+    private boolean maybeRedialOnTheOtherSlotInNormalService(
+            EmergencyRegistrationResult regResult) {
         if (regResult == null) return false;
 
-        String iso = regResult.getCountryIso();
+        String iso = getCountryIso(regResult.getCountryIso());
         if (sPreferSlotWithNormalServiceList.contains(iso)
                 && mCrossSimRedialingController.isThereOtherSlotInService()) {
+            logi("maybeRedialOnTheOtherSlotInNormalService");
             terminateSelectionForCrossSimRedialing(false);
             return true;
         }
@@ -1678,6 +1702,8 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
     }
 
     private void terminateSelection(int cause) {
+        removeMessages(MSG_NETWORK_SCAN_TIMEOUT);
+        removeMessages(MSG_MAX_CELLULAR_TIMEOUT);
         mTransportSelectorCallback.onSelectionTerminated(cause);
     }
 
