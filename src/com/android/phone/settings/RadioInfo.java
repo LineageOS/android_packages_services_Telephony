@@ -1462,15 +1462,18 @@ public class RadioInfo extends AppCompatActivity {
         mQueuedWork.execute(new Runnable() {
             @Override
             public void run() {
-                if (!mEuiccManager.isEnabled()) {
-                    mEuiccInfoResult = "Not enabled";
-                }
-                try {
-                    mEuiccInfoResult = " { Available memory in bytes:"
-                            + mEuiccManager.getAvailableMemoryInBytes()
-                            + " }";
-                } catch (Exception e) {
-                    mEuiccInfoResult = e.getMessage();
+                if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_TELEPHONY_EUICC)) {
+                    mEuiccInfoResult = "Euicc Feature is disabled";
+                } else if (mEuiccManager == null || !mEuiccManager.isEnabled()) {
+                    mEuiccInfoResult = "EuiccManager is not enabled";
+                } else {
+                    try {
+                        mEuiccInfoResult = " { Available memory in bytes:"
+                                + mEuiccManager.getAvailableMemoryInBytes()
+                                + " }";
+                    } catch (Exception e) {
+                        mEuiccInfoResult = e.getMessage();
+                    }
                 }
                 mHandler.post(setEuiccInfo);
             }
