@@ -2731,6 +2731,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         // For async handler to identify request type
         private static final int SUPPLY_PIN_COMPLETE = 100;
+        private static final int SUPPLY_PIN_DELAYED  = 101;
+        private static final int SUPPLY_PIN_DELAYED_TIMER_IN_MILLIS = 10000;
+        private static final UUID SUPPLY_PIN_UUID = UUID.fromString(
+                "d3768135-4323-491d-a6c8-bda01fc89040");
 
         UnlockSim(int phoneId, IccCard simCard) {
             mPhoneId = phoneId;
@@ -2769,7 +2773,15 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                                         mResult = PhoneConstants.PIN_RESULT_SUCCESS;
                                     }
                                     mDone = true;
+                                    removeMessages(SUPPLY_PIN_DELAYED);
                                     UnlockSim.this.notifyAll();
+                                }
+                                break;
+                            case SUPPLY_PIN_DELAYED:
+                                if(!mDone) {
+                                    String logStr = "Delay in receiving SIM PIN response ";
+                                    if (DBG) log(logStr);
+                                    AnomalyReporter.reportAnomaly(SUPPLY_PIN_UUID, logStr);
                                 }
                                 break;
                         }
@@ -2810,6 +2822,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             while (!mDone) {
                 try {
                     Log.d(LOG_TAG, "wait for done");
+                    mHandler.sendEmptyMessageDelayed(SUPPLY_PIN_DELAYED,
+                            SUPPLY_PIN_DELAYED_TIMER_IN_MILLIS);
                     wait();
                 } catch (InterruptedException e) {
                     // Restore the interrupted status
