@@ -3969,6 +3969,155 @@ public class EmergencyCallDomainSelectorTest {
         assertFalse(mDomainSelector.hasMessages(MSG_MAX_CELLULAR_TIMEOUT));
     }
 
+    @Test
+    public void testNotTerminateSelectionAfterCsFailure() throws Exception {
+        mResultConsumer = null;
+        createSelector(SLOT_0_SUB_ID);
+        unsolBarringInfoChanged(false);
+
+        // mcc is identified but it doesn't start with 00.
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(
+                UTRAN, REGISTRATION_STATE_UNKNOWN, 0, false, false, 0, 0, "999", "");
+        SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
+        mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
+        processAllMessages();
+
+        bindImsServiceUnregistered();
+        processAllMessages();
+
+        verify(mWwanSelectorCallback, times(1)).onDomainSelected(eq(DOMAIN_CS), eq(false));
+
+        SelectionAttributes.Builder builder =
+                new SelectionAttributes.Builder(SLOT_0, SLOT_0_SUB_ID, SELECTOR_TYPE_CALLING)
+                .setAddress(TEST_URI)
+                .setCsDisconnectCause(SERVICE_OPTION_NOT_AVAILABLE)
+                .setEmergency(true)
+                .setEmergencyRegistrationResult(regResult);
+        attr = builder.build();
+        mDomainSelector.reselectDomain(attr);
+        processAllMessages();
+
+        // Verify reselection.
+        verify(mWwanSelectorCallback).onRequestEmergencyNetworkScan(
+                any(), anyInt(), anyBoolean(), any(), any());
+        verify(mTransportSelectorCallback, never())
+                .onSelectionTerminated(eq(DisconnectCause.NOT_VALID));
+    }
+
+    @Test
+    public void testTerminateSelectionAfterCsFailure() throws Exception {
+        mResultConsumer = null;
+        createSelector(SLOT_0_SUB_ID);
+        unsolBarringInfoChanged(false);
+
+        // mcc is identified and it starts with 00.
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(
+                UTRAN, REGISTRATION_STATE_UNKNOWN, 0, false, false, 0, 0, "003", "");
+        SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
+        mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
+        processAllMessages();
+
+        bindImsServiceUnregistered();
+        processAllMessages();
+
+        verify(mWwanSelectorCallback, times(1)).onDomainSelected(eq(DOMAIN_CS), eq(false));
+
+        SelectionAttributes.Builder builder =
+                new SelectionAttributes.Builder(SLOT_0, SLOT_0_SUB_ID, SELECTOR_TYPE_CALLING)
+                .setAddress(TEST_URI)
+                .setCsDisconnectCause(SERVICE_OPTION_NOT_AVAILABLE)
+                .setEmergency(true)
+                .setEmergencyRegistrationResult(regResult);
+        attr = builder.build();
+        mDomainSelector.reselectDomain(attr);
+        processAllMessages();
+
+        // Verify selection termination.
+        verify(mWwanSelectorCallback, never()).onRequestEmergencyNetworkScan(
+                any(), anyInt(), anyBoolean(), any(), any());
+        verify(mTransportSelectorCallback)
+                .onSelectionTerminated(eq(DisconnectCause.NOT_VALID));
+    }
+
+    @Test
+    public void testTerminateSelectionAfterCsFailureAfterScan() throws Exception {
+        mResultConsumer = null;
+        createSelector(SLOT_0_SUB_ID);
+        unsolBarringInfoChanged(false);
+
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(
+                UNKNOWN, REGISTRATION_STATE_UNKNOWN, 0, false, false, 0, 0, "", "");
+        SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
+        mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
+        processAllMessages();
+
+        bindImsServiceUnregistered();
+        processAllMessages();
+
+        verify(mTransportSelectorCallback, times(1)).onWwanSelected(any());
+        verify(mWwanSelectorCallback, times(1)).onRequestEmergencyNetworkScan(
+                any(), anyInt(), anyBoolean(), any(), any());
+        assertNotNull(mResultConsumer);
+
+        // mcc is not identified.
+        regResult = getEmergencyRegResult(UTRAN, REGISTRATION_STATE_UNKNOWN,
+                0, false, false, 0, 0, "", "");
+        mResultConsumer.accept(regResult);
+        processAllMessages();
+
+        verify(mWwanSelectorCallback, times(1)).onDomainSelected(eq(DOMAIN_CS), eq(false));
+
+        SelectionAttributes.Builder builder =
+                new SelectionAttributes.Builder(SLOT_0, SLOT_0_SUB_ID, SELECTOR_TYPE_CALLING)
+                .setAddress(TEST_URI)
+                .setCsDisconnectCause(SERVICE_OPTION_NOT_AVAILABLE)
+                .setEmergency(true)
+                .setEmergencyRegistrationResult(regResult);
+        attr = builder.build();
+        mResultConsumer = null;
+        mDomainSelector.reselectDomain(attr);
+        processAllMessages();
+
+        // Verify reselection.
+        verify(mWwanSelectorCallback, times(2)).onRequestEmergencyNetworkScan(
+                any(), anyInt(), anyBoolean(), any(), any());
+        assertNotNull(mResultConsumer);
+
+        // mcc is identified but it doesn't start with 00.
+        regResult = getEmergencyRegResult(UTRAN, REGISTRATION_STATE_UNKNOWN,
+                0, false, false, 0, 0, "999", "");
+        mResultConsumer.accept(regResult);
+        processAllMessages();
+
+        verify(mWwanSelectorCallback, times(2)).onDomainSelected(eq(DOMAIN_CS), eq(false));
+
+        mResultConsumer = null;
+        mDomainSelector.reselectDomain(attr);
+        processAllMessages();
+
+        // Verify reselection.
+        verify(mWwanSelectorCallback, times(3)).onRequestEmergencyNetworkScan(
+                any(), anyInt(), anyBoolean(), any(), any());
+        assertNotNull(mResultConsumer);
+
+        // mcc is identified and it starts with 00.
+        regResult = getEmergencyRegResult(UTRAN, REGISTRATION_STATE_UNKNOWN,
+                0, false, false, 0, 0, "003", "");
+        mResultConsumer.accept(regResult);
+        processAllMessages();
+
+        verify(mWwanSelectorCallback, times(3)).onDomainSelected(eq(DOMAIN_CS), eq(false));
+
+        mDomainSelector.reselectDomain(attr);
+        processAllMessages();
+
+        // Verify selection termination.
+        verify(mWwanSelectorCallback, times(3)).onRequestEmergencyNetworkScan(
+                any(), anyInt(), anyBoolean(), any(), any());
+        verify(mTransportSelectorCallback)
+                .onSelectionTerminated(eq(DisconnectCause.NOT_VALID));
+    }
+
     private void setupForScanListTest(PersistableBundle bundle) throws Exception {
         setupForScanListTest(bundle, false);
     }
