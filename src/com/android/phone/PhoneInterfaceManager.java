@@ -13758,6 +13758,26 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
+     * This API can be used by only CTS to override the boolean configs used by the
+     * DatagramController module.
+     *
+     * @param enable Whether to enable or disable boolean config.
+     * @return {@code true} if the boolean config is set successfully, {@code false} otherwise.
+     */
+    public boolean setDatagramControllerBooleanConfig(
+            boolean reset, int booleanType, boolean enable) {
+        Log.d(LOG_TAG, "setDatagramControllerBooleanConfig: booleanType=" + booleanType
+                + ", reset=" + reset + ", enable=" + enable);
+        TelephonyPermissions.enforceShellOnly(
+                Binder.getCallingUid(), "setDatagramControllerBooleanConfig");
+        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(mApp,
+                SubscriptionManager.INVALID_SUBSCRIPTION_ID,
+                "ssetDatagramControllerBooleanConfig");
+        return mSatelliteController.setDatagramControllerBooleanConfig(reset, booleanType, enable);
+    }
+
+
+    /**
      * This API can be used by only CTS to override the timeout durations used by the
      * SatelliteController module.
      *
