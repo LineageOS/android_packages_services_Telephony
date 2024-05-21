@@ -157,6 +157,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
     private static List<String> sSimReadyAllowList;
     private static List<String> sPreferSlotWithNormalServiceList;
     private static List<String> sPreferCsAfterCsfbFailure;
+    private static List<String> sPreferGeranWhenSimAbsent;
 
     /**
      * Network callback used to determine whether Wi-Fi is connected or not.
@@ -793,6 +794,13 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         }
         logi("readResourceConfiguration preferCsAfterCsfbFailure="
                 + sPreferCsAfterCsfbFailure);
+
+        if (sPreferGeranWhenSimAbsent == null) {
+            sPreferGeranWhenSimAbsent = readResourceConfiguration(
+                    R.array.config_countries_prefer_geran_when_sim_absent);
+        }
+        logi("readResourceConfiguration preferGeranWhenSimAbsent="
+                + sPreferGeranWhenSimAbsent);
     }
 
     private List<String> readResourceConfiguration(int id) {
@@ -819,6 +827,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         sSimReadyAllowList = null;
         sPreferSlotWithNormalServiceList = null;
         sPreferCsAfterCsfbFailure = null;
+        sPreferGeranWhenSimAbsent = null;
     }
 
     private void selectDomain() {
@@ -1045,6 +1054,17 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         logi("getNextPreferredNetworks psPriority=" + psPriority + ", csPriority=" + csPriority
                 + ", csPreferred=" + csPreferred + ", esFallback=" + tryEsFallback
                 + ", lastNetworkType=" + accessNetworkTypeToString(mLastNetworkType));
+
+        if (mLastRegResult != null
+                && !SubscriptionManager.isValidSubscriptionId(getSubId())
+                && sPreferGeranWhenSimAbsent.contains(mLastRegResult.getCountryIso())) {
+            logi("getNextPreferredNetworks preferGeran");
+            preferredNetworks.add(GERAN);
+            preferredNetworks.add(UTRAN);
+            preferredNetworks.add(EUTRAN);
+            preferredNetworks.add(NGRAN);
+            return preferredNetworks;
+        }
 
         if (!csPreferred && (mLastNetworkType == UNKNOWN || tryEsFallback)) {
             // Generate the list per the domain preference.
