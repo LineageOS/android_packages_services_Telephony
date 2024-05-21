@@ -1935,7 +1935,7 @@ public class EmergencyCallDomainSelectorTest {
         mResultConsumer.accept(regResult);
         processAllMessages();
 
-        verifyCsDialed();
+        verifyPsDialed();
     }
 
     @Test
