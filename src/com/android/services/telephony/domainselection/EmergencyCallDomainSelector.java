@@ -407,7 +407,8 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         int domain = result.getDomain();
         if (domain == NetworkRegistrationInfo.DOMAIN_CS) return true;
         if ((domain & NetworkRegistrationInfo.DOMAIN_CS) > 0) {
-            return (!result.isEmcBearerSupported() || !result.isVopsSupported());
+            // b/341865236, check emcBearer only
+            return (!result.isEmcBearerSupported());
         }
         return false;
     }
