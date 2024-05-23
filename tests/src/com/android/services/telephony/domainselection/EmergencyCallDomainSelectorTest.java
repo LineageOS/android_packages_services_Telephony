@@ -129,6 +129,7 @@ import android.util.SparseArray;
 import androidx.test.filters.SmallTest;
 
 import com.android.TestContext;
+import com.android.phone.R;
 
 import org.junit.After;
 import org.junit.Before;
@@ -3967,6 +3968,87 @@ public class EmergencyCallDomainSelectorTest {
         // Verify no timer for VoWi-Fi
         assertFalse(mDomainSelector.hasMessages(MSG_NETWORK_SCAN_TIMEOUT));
         assertFalse(mDomainSelector.hasMessages(MSG_MAX_CELLULAR_TIMEOUT));
+    }
+
+    @Test
+    public void testAdjustCsRatPreference() throws Exception {
+        doReturn(new String[] {"us"}).when(mResources).getStringArray(
+                eq(R.array.config_countries_prefer_geran_when_sim_absent));
+
+        createSelector(SubscriptionManager.INVALID_SUBSCRIPTION_ID);
+        unsolBarringInfoChanged(false);
+
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_UNKNOWN, 0, false, true, 0, 0, "", "", "us");
+        // Invalid subscription id
+        SelectionAttributes attr = getSelectionAttributes(SLOT_0,
+                SubscriptionManager.INVALID_SUBSCRIPTION_ID, regResult);
+        mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
+        processAllMessages();
+
+        bindImsServiceUnregistered();
+
+        verifyPsDialed();
+
+        mDomainSelector.reselectDomain(attr);
+        processAllMessages();
+
+        // Verify adjusted RAT preference
+        verifyScanPreferred(DomainSelectionService.SCAN_TYPE_NO_PREFERENCE, GERAN);
+    }
+
+    @Test
+    public void testNotAdjustCsRatPreferenceCountryNotIdentified() throws Exception {
+        doReturn(new String[] {"us"}).when(mResources).getStringArray(
+                eq(R.array.config_countries_prefer_geran_when_sim_absent));
+
+        createSelector(SubscriptionManager.INVALID_SUBSCRIPTION_ID);
+        unsolBarringInfoChanged(false);
+
+        // Country is not identified
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_UNKNOWN, 0, false, true, 0, 0, "", "");
+        // Invalid subscription id
+        SelectionAttributes attr = getSelectionAttributes(SLOT_0,
+                SubscriptionManager.INVALID_SUBSCRIPTION_ID, regResult);
+        mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
+        processAllMessages();
+
+        bindImsServiceUnregistered();
+
+        verifyPsDialed();
+
+        mDomainSelector.reselectDomain(attr);
+        processAllMessages();
+
+        // Verify not adjusted RAT preference
+        verifyScanPreferred(DomainSelectionService.SCAN_TYPE_NO_PREFERENCE, UTRAN);
+    }
+
+    @Test
+    public void testNotAdjustCsRatPreferenceValidSubscription() throws Exception {
+        doReturn(new String[] {"us"}).when(mResources).getStringArray(
+                eq(R.array.config_countries_prefer_geran_when_sim_absent));
+
+        createSelector(SLOT_0_SUB_ID);
+        unsolBarringInfoChanged(false);
+
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_UNKNOWN, 0, false, true, 0, 0, "", "", "us");
+        // Valid subscription id
+        SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
+        mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
+        processAllMessages();
+
+        bindImsServiceUnregistered();
+
+        verifyPsDialed();
+
+        mDomainSelector.reselectDomain(attr);
+        processAllMessages();
+
+        // Verify not adjusted RAT preference
+        verifyScanPreferred(DomainSelectionService.SCAN_TYPE_NO_PREFERENCE, UTRAN);
     }
 
     @Test
