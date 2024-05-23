@@ -45,7 +45,7 @@ android_app {
         "modules-utils-os",
         "nist-sip",
         "service-entitlement",
-        "android.permission.flags-aconfig-java",
+        "android.permission.flags-aconfig-java-export",
         "satellite-s2storage-ro",
         "s2-geometry-library-java",
         "dropbox_flags_lib",
@@ -101,3 +101,4 @@ platform_compat_config {
     name: "TeleService-platform-compat-config",
     src: ":TeleService",
 }
+
