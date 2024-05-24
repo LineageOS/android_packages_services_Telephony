@@ -56,6 +56,7 @@ import static org.mockito.Mockito.when;
 
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.AsyncResult;
 import android.os.Bundle;
@@ -252,6 +253,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
     @Mock ImsPhone mImsPhone;
     @Mock private SatelliteSOSMessageRecommender mSatelliteSOSMessageRecommender;
     @Mock private EmergencyStateTracker mEmergencyStateTracker;
+    @Mock private Resources mMockResources;
     private Phone mPhone0;
     private Phone mPhone1;
 
@@ -320,6 +322,8 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
                 any(), anyInt(), anyBoolean());
         replaceInstance(TelephonyConnectionService.class,
                 "mSatelliteController", mTestConnectionService, mSatelliteController);
+        doReturn(mMockResources).when(mContext).getResources();
+
         mBinderStub = (IConnectionService.Stub) mTestConnectionService.onBind(null);
         mSetFlagsRule.disableFlags(Flags.FLAG_CARRIER_ENABLED_SATELLITE_FLAG);
         mSetFlagsRule.enableFlags(Flags.FLAG_DO_NOT_OVERRIDE_PRECISE_LABEL);
@@ -1431,6 +1435,9 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
     @SmallTest
     public void testCreateOutgoingEmergencyConnection_exitingSatellite_placeCall() {
         when(mSatelliteController.isSatelliteEnabled()).thenReturn(true);
+        doReturn(true).when(mMockResources).getBoolean(anyInt());
+        doReturn(true).when(mTelephonyManagerProxy).isCurrentEmergencyNumber(
+                anyString());
         Phone testPhone = setupConnectionServiceInApm();
 
         ArgumentCaptor<RadioOnStateListener.Callback> callback =
@@ -3595,6 +3602,24 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
 
         mConnection = mTestConnectionService.onCreateOutgoingConnection(PHONE_ACCOUNT_HANDLE_1,
                 createConnectionRequest(PHONE_ACCOUNT_HANDLE_1, "1234", TELECOM_CALL_ID1));
+        DisconnectCause disconnectCause = mConnection.getDisconnectCause();
+        assertEquals(android.telephony.DisconnectCause.SATELLITE_ENABLED,
+                disconnectCause.getTelephonyDisconnectCause());
+        assertEquals(DISCONNECT_REASON_SATELLITE_ENABLED, disconnectCause.getReason());
+    }
+
+    @Test
+    public void testEmergencyCallSatelliteEnabled_blockEmergencyCall() {
+        setupForCallTest();
+        doReturn(true).when(mSatelliteController).isSatelliteEnabled();
+        doReturn(false).when(mMockResources).getBoolean(anyInt());
+        doReturn(true).when(mTelephonyManagerProxy).isCurrentEmergencyNumber(
+                anyString());
+
+        // Simulates an outgoing emergency call.
+        mConnection = mTestConnectionService.onCreateOutgoingConnection(PHONE_ACCOUNT_HANDLE_1,
+                createConnectionRequest(PHONE_ACCOUNT_HANDLE_1,
+                        TEST_EMERGENCY_NUMBER, TELECOM_CALL_ID1));
         DisconnectCause disconnectCause = mConnection.getDisconnectCause();
         assertEquals(android.telephony.DisconnectCause.SATELLITE_ENABLED,
                 disconnectCause.getTelephonyDisconnectCause());
