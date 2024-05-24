@@ -34,6 +34,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.ParcelUuid;
@@ -1164,6 +1165,23 @@ public class TelephonyConnectionService extends ConnectionService {
         boolean needToTurnOnRadio = (isEmergencyNumber && (!isRadioOn() || isAirplaneModeOn))
                 || (isRadioPowerDownOnBluetooth() && !isPhoneWifiCallingEnabled);
 
+        if (mSatelliteController.isSatelliteEnabled()) {
+            Log.d(this, "onCreateOutgoingConnection, "
+                    + " needToTurnOnRadio=" + needToTurnOnRadio
+                    + " needToTurnOffSatellite=" + needToTurnOffSatellite
+                    + " isEmergencyNumber=" + isEmergencyNumber);
+
+            if (!needToTurnOffSatellite) {
+                // Block outgoing call and do not turn off satellite
+                Log.d(this, "onCreateOutgoingConnection, "
+                        + "cannot make call in satellite mode.");
+                return Connection.createFailedConnection(
+                        mDisconnectCauseFactory.toTelecomDisconnectCause(
+                                android.telephony.DisconnectCause.SATELLITE_ENABLED,
+                                DISCONNECT_REASON_SATELLITE_ENABLED));
+            }
+        }
+
         if (mDomainSelectionResolver.isDomainSelectionSupported()) {
             // Normal routing emergency number shall be handled by normal call domain selctor.
             if (isEmergencyNumber && !isNormalRouting(phone, number)) {
@@ -1271,14 +1289,7 @@ public class TelephonyConnectionService extends ConnectionService {
             }
 
             if (!isEmergencyNumber) {
-                if (mSatelliteController.isSatelliteEnabled()) {
-                    Log.d(this, "onCreateOutgoingConnection, cannot make call in "
-                            + "satellite mode.");
-                    return Connection.createFailedConnection(
-                            mDisconnectCauseFactory.toTelecomDisconnectCause(
-                                    android.telephony.DisconnectCause.SATELLITE_ENABLED,
-                                    DISCONNECT_REASON_SATELLITE_ENABLED));
-                } else if (isCallDisallowedDueToSatellite(phone)
+                if (isCallDisallowedDueToSatellite(phone)
                         && (imsPhone == null || !imsPhone.canMakeWifiCall())) {
                     Log.d(this, "onCreateOutgoingConnection, cannot make call "
                             + "when device is connected to carrier roaming satellite network");
@@ -2102,11 +2113,20 @@ public class TelephonyConnectionService extends ConnectionService {
     }
 
     private boolean isSatelliteBlockingCall(boolean isEmergencyNumber) {
-        if (isEmergencyNumber) {
-            return mSatelliteController.isSatelliteEnabled();
-        } else {
-            return mSatelliteController.isDemoModeEnabled();
+        if (!mSatelliteController.isSatelliteEnabled()) {
+            return false;
         }
+
+        if (isEmergencyNumber) {
+            if (mSatelliteController.isDemoModeEnabled()) {
+                // If user makes emergency call in demo mode, end the satellite session
+                return true;
+            } else {
+                return getTurnOffOemEnabledSatelliteDuringEmergencyCall();
+            }
+        }
+
+        return false;
     }
 
     private Pair<WeakReference<TelephonyConnection>, Queue<Phone>> makeCachedConnectionPhonePair(
@@ -4682,5 +4702,16 @@ public class TelephonyConnectionService extends ConnectionService {
 
         // Call is disallowed while using satellite
         return true;
+    }
+
+    private boolean getTurnOffOemEnabledSatelliteDuringEmergencyCall() {
+        boolean turnOffSatellite = false;
+        try {
+            turnOffSatellite = getApplicationContext().getResources().getBoolean(
+                    R.bool.config_turn_off_oem_enabled_satellite_during_emergency_call);
+        } catch (Resources.NotFoundException ex) {
+            Log.e(this, ex, "getTurnOffOemEnabledSatelliteDuringEmergencyCall: ex=" + ex);
+        }
+        return turnOffSatellite;
     }
 }
