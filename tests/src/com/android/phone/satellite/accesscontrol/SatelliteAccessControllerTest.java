@@ -325,6 +325,7 @@ public class SatelliteAccessControllerTest {
 
         // Network country codes are available.
         setUpResponseForRequestIsSatelliteSupported(true, SATELLITE_RESULT_SUCCESS);
+        setUpResponseForRequestIsSatelliteProvisioned(true, SATELLITE_RESULT_SUCCESS);
         clearAllInvocations();
         when(mMockCountryDetector.getCurrentNetworkCountryIso()).thenReturn(listOf("US", "CA"));
         mSatelliteAccessControllerUT.requestIsCommunicationAllowedForCurrentLocation(
@@ -618,6 +619,23 @@ public class SatelliteAccessControllerTest {
             }
             return null;
         }).when(mMockSatelliteController).requestIsSatelliteSupported(anyInt(),
+                any(ResultReceiver.class));
+    }
+
+    private void setUpResponseForRequestIsSatelliteProvisioned(
+            boolean isSatelliteProvisioned, @SatelliteManager.SatelliteResult int error) {
+        doAnswer(invocation -> {
+            ResultReceiver resultReceiver = invocation.getArgument(1);
+            if (error == SATELLITE_RESULT_SUCCESS) {
+                Bundle bundle = new Bundle();
+                bundle.putBoolean(SatelliteManager.KEY_SATELLITE_PROVISIONED,
+                        isSatelliteProvisioned);
+                resultReceiver.send(error, bundle);
+            } else {
+                resultReceiver.send(error, Bundle.EMPTY);
+            }
+            return null;
+        }).when(mMockSatelliteController).requestIsSatelliteProvisioned(anyInt(),
                 any(ResultReceiver.class));
     }
 

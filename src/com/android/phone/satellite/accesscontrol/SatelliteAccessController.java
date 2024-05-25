@@ -17,6 +17,7 @@
 package com.android.phone.satellite.accesscontrol;
 
 import static android.telephony.satellite.SatelliteManager.KEY_SATELLITE_COMMUNICATION_ALLOWED;
+import static android.telephony.satellite.SatelliteManager.KEY_SATELLITE_PROVISIONED;
 import static android.telephony.satellite.SatelliteManager.KEY_SATELLITE_SUPPORTED;
 import static android.telephony.satellite.SatelliteManager.SATELLITE_RESULT_REQUEST_NOT_SUPPORTED;
 import static android.telephony.satellite.SatelliteManager.SATELLITE_RESULT_SUCCESS;
@@ -49,6 +50,7 @@ import android.provider.DeviceConfig;
 import android.telecom.TelecomManager;
 import android.telephony.AnomalyReporter;
 import android.telephony.Rlog;
+import android.telephony.SubscriptionManager;
 import android.telephony.satellite.ISatelliteCommunicationAllowedStateCallback;
 import android.telephony.satellite.SatelliteManager;
 import android.text.TextUtils;
@@ -141,6 +143,8 @@ public class SatelliteAccessController extends Handler {
     private final SatelliteController mSatelliteController;
     @NonNull
     private final ResultReceiver mInternalSatelliteSupportedResultReceiver;
+    @NonNull
+    private final ResultReceiver mInternalSatelliteProvisionedResultReceiver;
     @NonNull
     protected final Object mLock = new Object();
     @GuardedBy("mLock")
@@ -244,7 +248,15 @@ public class SatelliteAccessController extends Handler {
                 handleIsSatelliteSupportedResult(resultCode, resultData);
             }
         };
+        mInternalSatelliteProvisionedResultReceiver = new ResultReceiver(this) {
+            @Override
+            protected void onReceiveResult(int resultCode, Bundle resultData) {
+                handleIsSatelliteProvisionedResult(resultCode, resultData);
+            }
+        };
+
         mConfigUpdaterMetricsStats = ConfigUpdaterMetricsStats.getOrCreateInstance();
+
         // Init the SatelliteOnDeviceAccessController so that the S2 level can be cached
         initSatelliteOnDeviceAccessController();
     }
@@ -745,10 +757,41 @@ public class SatelliteAccessController extends Handler {
                                 false);
                         sendSatelliteAllowResultToReceivers(resultCode, bundle, false);
                     } else {
-                        checkSatelliteAccessRestrictionForCurrentLocation();
+                        logd("Satellite is supported, check if provisioned or not");
+                        int subId = resultData.getInt(SatelliteController.SATELLITE_SUBSCRIPTION_ID,
+                                SubscriptionManager.DEFAULT_SUBSCRIPTION_ID);
+                        mSatelliteController.requestIsSatelliteProvisioned(
+                                subId, mInternalSatelliteProvisionedResultReceiver);
                     }
                 } else {
                     loge("KEY_SATELLITE_SUPPORTED does not exist.");
+                    sendSatelliteAllowResultToReceivers(resultCode, resultData, false);
+                }
+            } else {
+                sendSatelliteAllowResultToReceivers(resultCode, resultData, false);
+            }
+        }
+    }
+
+    private void handleIsSatelliteProvisionedResult(int resultCode, Bundle resultData) {
+        logd("handleIsSatelliteProvisionedResult: resultCode=" + resultCode);
+        synchronized (mLock) {
+            if (resultCode == SATELLITE_RESULT_SUCCESS) {
+                if (resultData.containsKey(KEY_SATELLITE_PROVISIONED)) {
+                    boolean isSatelliteProvisioned =
+                            resultData.getBoolean(KEY_SATELLITE_PROVISIONED);
+                    if (!isSatelliteProvisioned) {
+                        logd("Satellite is not provisioned");
+                        Bundle bundle = new Bundle();
+                        bundle.putBoolean(SatelliteManager.KEY_SATELLITE_COMMUNICATION_ALLOWED,
+                                false);
+                        sendSatelliteAllowResultToReceivers(resultCode, bundle, false);
+                    } else {
+                        logd("Satellite is provisioned");
+                        checkSatelliteAccessRestrictionForCurrentLocation();
+                    }
+                } else {
+                    loge("KEY_SATELLITE_PROVISIONED does not exist.");
                     sendSatelliteAllowResultToReceivers(resultCode, resultData, false);
                 }
             } else {
