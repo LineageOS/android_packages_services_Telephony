@@ -1057,8 +1057,8 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
                 + ", lastNetworkType=" + accessNetworkTypeToString(mLastNetworkType));
 
         if (mLastRegResult != null
-                && !SubscriptionManager.isValidSubscriptionId(getSubId())
-                && sPreferGeranWhenSimAbsent.contains(mLastRegResult.getCountryIso())) {
+                && sPreferGeranWhenSimAbsent.contains(mLastRegResult.getCountryIso())
+                && !isSimReady()) {
             logi("getNextPreferredNetworks preferGeran");
             preferredNetworks.add(GERAN);
             preferredNetworks.add(UTRAN);
