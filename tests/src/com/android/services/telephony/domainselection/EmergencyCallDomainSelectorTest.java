@@ -3971,7 +3971,7 @@ public class EmergencyCallDomainSelectorTest {
     }
 
     @Test
-    public void testAdjustCsRatPreference() throws Exception {
+    public void testInvalidSubscriptionAdjustCsRatPreference() throws Exception {
         doReturn(new String[] {"us"}).when(mResources).getStringArray(
                 eq(R.array.config_countries_prefer_geran_when_sim_absent));
 
@@ -3983,6 +3983,34 @@ public class EmergencyCallDomainSelectorTest {
         // Invalid subscription id
         SelectionAttributes attr = getSelectionAttributes(SLOT_0,
                 SubscriptionManager.INVALID_SUBSCRIPTION_ID, regResult);
+        mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
+        processAllMessages();
+
+        bindImsServiceUnregistered();
+
+        verifyPsDialed();
+
+        mDomainSelector.reselectDomain(attr);
+        processAllMessages();
+
+        // Verify adjusted RAT preference
+        verifyScanPreferred(DomainSelectionService.SCAN_TYPE_NO_PREFERENCE, GERAN);
+    }
+
+    @Test
+    public void testSimNotReadyAdjustCsRatPreference() throws Exception {
+        doReturn(new String[] {"us"}).when(mResources).getStringArray(
+                eq(R.array.config_countries_prefer_geran_when_sim_absent));
+
+        createSelector(SLOT_0_SUB_ID);
+        unsolBarringInfoChanged(false);
+        // SIM state is not ready.
+        doReturn(TelephonyManager.SIM_STATE_PIN_REQUIRED)
+                .when(mTelephonyManager).getSimState(anyInt());
+
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(EUTRAN,
+                REGISTRATION_STATE_UNKNOWN, 0, false, true, 0, 0, "", "", "us");
+        SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
         mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
         processAllMessages();
 
