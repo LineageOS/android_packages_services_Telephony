@@ -92,6 +92,7 @@ import android.annotation.Nullable;
 import android.content.Context;
 import android.content.res.Resources;
 import android.net.ConnectivityManager;
+import android.net.Network;
 import android.net.NetworkRequest;
 import android.net.Uri;
 import android.os.CancellationSignal;
@@ -4226,6 +4227,70 @@ public class EmergencyCallDomainSelectorTest {
                 any(), anyInt(), anyBoolean(), any(), any());
         verify(mTransportSelectorCallback)
                 .onSelectionTerminated(eq(DisconnectCause.NOT_VALID));
+    }
+
+    @Test
+    public void testMultipleWiFiNetworksAvailable() throws Exception {
+        createSelector(SLOT_0_SUB_ID);
+        unsolBarringInfoChanged(false);
+
+        EmergencyRegistrationResult regResult = getEmergencyRegResult(UNKNOWN,
+                REGISTRATION_STATE_UNKNOWN,
+                0, false, false, 0, 0, "", "");
+        SelectionAttributes attr = getSelectionAttributes(SLOT_0, SLOT_0_SUB_ID, regResult);
+        mDomainSelector.selectDomain(attr, mTransportSelectorCallback);
+        processAllMessages();
+
+        bindImsServiceUnregistered();
+
+        verifyScanPsPreferred();
+
+        Network network1 = mock(Network.class);
+
+        // Wi-Fi is connected.
+        mNetworkCallback.onAvailable(network1);
+
+        assertTrue(mDomainSelector.isWiFiAvailable());
+        assertFalse(mDomainSelector.getWiFiNetworksAvailable().isEmpty());
+        assertTrue(mDomainSelector.getWiFiNetworksAvailable().contains(network1));
+
+        // Wi-Fi is lost.
+        mNetworkCallback.onLost(network1);
+
+        assertFalse(mDomainSelector.isWiFiAvailable());
+        assertTrue(mDomainSelector.getWiFiNetworksAvailable().isEmpty());
+
+        Network network2 = mock(Network.class);
+        Network network3 = mock(Network.class);
+
+        // Wi-Fi networks are connected.
+        mNetworkCallback.onAvailable(network2);
+
+        assertTrue(mDomainSelector.isWiFiAvailable());
+        assertFalse(mDomainSelector.getWiFiNetworksAvailable().isEmpty());
+        assertTrue(mDomainSelector.getWiFiNetworksAvailable().contains(network2));
+        assertFalse(mDomainSelector.getWiFiNetworksAvailable().contains(network3));
+
+        mNetworkCallback.onAvailable(network3);
+
+        assertTrue(mDomainSelector.isWiFiAvailable());
+        assertFalse(mDomainSelector.getWiFiNetworksAvailable().isEmpty());
+        assertTrue(mDomainSelector.getWiFiNetworksAvailable().contains(network2));
+        assertTrue(mDomainSelector.getWiFiNetworksAvailable().contains(network3));
+
+        // Wi-Fi network2 is lost.
+        mNetworkCallback.onLost(network2);
+
+        assertTrue(mDomainSelector.isWiFiAvailable());
+        assertFalse(mDomainSelector.getWiFiNetworksAvailable().isEmpty());
+        assertFalse(mDomainSelector.getWiFiNetworksAvailable().contains(network2));
+        assertTrue(mDomainSelector.getWiFiNetworksAvailable().contains(network3));
+
+        // Wi-Fi is unavailable.
+        mNetworkCallback.onUnavailable();
+
+        assertFalse(mDomainSelector.isWiFiAvailable());
+        assertTrue(mDomainSelector.getWiFiNetworksAvailable().isEmpty());
     }
 
     private void setupForScanListTest(PersistableBundle bundle) throws Exception {
