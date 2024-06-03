@@ -279,8 +279,10 @@ public class SatelliteAccessController extends Handler {
         if (sInstance == null) {
             HandlerThread handlerThread = new HandlerThread("SatelliteAccessController");
             handlerThread.start();
+            LocationManager lm = context.createAttributionContext("telephony")
+                    .getSystemService(LocationManager.class);
             sInstance = new SatelliteAccessController(context, featureFlags,
-                    handlerThread.getLooper(), context.getSystemService(LocationManager.class),
+                    handlerThread.getLooper(), lm,
                     context.getSystemService(TelecomManager.class), null, null);
         }
         return sInstance;
