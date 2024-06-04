@@ -104,6 +104,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.euicc.EuiccConnector;
+import com.android.internal.telephony.flags.Flags;
 import com.android.internal.telephony.util.TelephonyUtils;
 import com.android.phone.R;
 
@@ -128,6 +129,9 @@ public class RadioInfo extends AppCompatActivity {
     private static final String TAG = "RadioInfo";
 
     private static final boolean IS_USER_BUILD = "user".equals(Build.TYPE);
+
+    private static final String ACTION_ESOS_TEST =
+            "com.google.android.apps.stargate.ACTION_ESOS_QUESTIONNAIRE";
 
     private static final String[] PREFERRED_NETWORK_LABELS = {
             "GSM/WCDMA preferred",
@@ -274,6 +278,7 @@ public class RadioInfo extends AppCompatActivity {
     private Button mOemInfoButton;
     private Button mCarrierProvisioningButton;
     private Button mTriggerCarrierProvisioningButton;
+    private Button mEsosButton;
     private Switch mImsVolteProvisionedSwitch;
     private Switch mImsVtProvisionedSwitch;
     private Switch mImsWfcProvisionedSwitch;
@@ -670,6 +675,17 @@ public class RadioInfo extends AppCompatActivity {
                     mTriggerCarrierProvisioningButtonHandler);
         } else {
             mTriggerCarrierProvisioningButton.setEnabled(false);
+        }
+
+        mEsosButton = (Button) findViewById(R.id.esos_questionnaire);
+        if (!Flags.oemEnabledSatelliteFlag()) {
+            mEsosButton.setVisibility(View.GONE);
+        } else {
+            mEsosButton.setOnClickListener(v ->
+                    mPhone.getContext().startActivity(
+                        new Intent(ACTION_ESOS_TEST)
+                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK))
+            );
         }
 
         mOemInfoButton = (Button) findViewById(R.id.oem_info);
