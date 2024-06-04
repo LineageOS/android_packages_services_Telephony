@@ -108,7 +108,7 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
             mSelectorState = SelectorState.INACTIVE;
             loge("Subscription-ids doesn't match. This instance is associated with sub-id:"
                     + getSubId() + ", requested sub-id:" + subId);
-            // TODO: Throw anamoly here. This condition should never occur.
+            // TODO: Throw anomaly here. This condition should never occur.
         }
     }
 
@@ -314,6 +314,7 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
     private synchronized void selectDomain() {
         if (mSelectorState != SelectorState.ACTIVE || mSelectionAttributes == null
                 || mTransportSelectorCallback == null) {
+            mSelectorState = SelectorState.INACTIVE;
             logd("Domain Selection is stopped.");
             return;
         }
@@ -429,7 +430,7 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
     }
 
     @VisibleForTesting
-    public SelectorState getSelectorState() {
+    protected SelectorState getSelectorState() {
         return mSelectorState;
     }
 }
