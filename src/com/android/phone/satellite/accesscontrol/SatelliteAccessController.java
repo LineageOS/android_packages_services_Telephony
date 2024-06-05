@@ -76,6 +76,7 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -207,6 +208,10 @@ public class SatelliteAccessController extends Handler {
     private final Object mSatelliteCommunicationAllowStateLock = new Object();
     @GuardedBy("mSatelliteCommunicationAllowStateLock")
     private boolean mCurrentSatelliteAllowedState = false;
+
+    private static final long NANOS_IN_DAY = Duration.ofDays(1).toNanos();
+    private boolean mLatestSatelliteCommunicationAllowed;
+    private long mLatestSatelliteCommunicationAllowedSetTime;
 
     /**
      * Create a SatelliteAccessController instance.
@@ -791,7 +796,7 @@ public class SatelliteAccessController extends Handler {
                         sendSatelliteAllowResultToReceivers(resultCode, bundle, false);
                     } else {
                         logd("Satellite is provisioned");
-                        checkSatelliteAccessRestrictionForCurrentLocation();
+                        checkSatelliteAccessRestrictionUsingGPS();
                     }
                 } else {
                     loge("KEY_SATELLITE_PROVISIONED does not exist.");
@@ -838,6 +843,55 @@ public class SatelliteAccessController extends Handler {
                     checkSatelliteAccessRestrictionUsingCachedCountryCodes();
                 }
             }
+        }
+    }
+
+    /**
+     * Telephony-internal logic to verify if satellite access is restricted from the location query.
+     */
+    private void checkSatelliteAccessRestrictionUsingGPS() {
+        logv("checkSatelliteAccessRestrictionUsingGPS:");
+        if (isInEmergency()) {
+            executeLocationQuery();
+        } else {
+            if (mLocationManager.isLocationEnabled()) {
+                logd("location query is allowed");
+                if (isCommunicationAllowedCacheValid()) {
+                    Bundle bundle = new Bundle();
+                    bundle.putBoolean(KEY_SATELLITE_COMMUNICATION_ALLOWED,
+                            mLatestSatelliteCommunicationAllowed);
+                    sendSatelliteAllowResultToReceivers(SATELLITE_RESULT_SUCCESS, bundle,
+                            mLatestSatelliteCommunicationAllowed);
+                } else {
+                    executeLocationQuery();
+                }
+            } else {
+                logv("location query is not allowed");
+                Bundle bundle = new Bundle();
+                bundle.putBoolean(KEY_SATELLITE_COMMUNICATION_ALLOWED, false);
+                sendSatelliteAllowResultToReceivers(SATELLITE_RESULT_SUCCESS, bundle, false);
+            }
+        }
+    }
+
+    /* returns true,if the latest query was executed in 24Hr, or returns false. */
+    private boolean isCommunicationAllowedCacheValid() {
+        if (mLatestSatelliteCommunicationAllowedSetTime > 0) {
+            long currentTime = SystemClock.elapsedRealtimeNanos();
+            if ((currentTime - mLatestSatelliteCommunicationAllowedSetTime) <= NANOS_IN_DAY) {
+                logv("isCommunicationAllowedCacheValid: cache is valid");
+                return true;
+            }
+        }
+        logv("isCommunicationAllowedCacheValid: cache is expired");
+        return false;
+    }
+
+    private void executeLocationQuery() {
+        logv("executeLocationQuery");
+        synchronized (mLock) {
+            mFreshLastKnownLocation = getFreshLastKnownLocation();
+            checkSatelliteAccessRestrictionUsingOnDeviceData();
         }
     }
 
@@ -918,7 +972,18 @@ public class SatelliteAccessController extends Handler {
             if (location != null) {
                 checkSatelliteAccessRestrictionForLocation(location);
             } else {
-                checkSatelliteAccessRestrictionUsingCachedCountryCodes();
+                logd("current location is not available");
+                Bundle bundle = new Bundle();
+                if (isCommunicationAllowedCacheValid()) {
+                    logd("onCurrentLocationAvailable: 24Hr cache is still valid, using it");
+                    bundle.putBoolean(KEY_SATELLITE_COMMUNICATION_ALLOWED,
+                            mLatestSatelliteCommunicationAllowed);
+                    sendSatelliteAllowResultToReceivers(SATELLITE_RESULT_SUCCESS, bundle,
+                            mLatestSatelliteCommunicationAllowed);
+                } else {
+                    bundle.putBoolean(KEY_SATELLITE_COMMUNICATION_ALLOWED, false);
+                    sendSatelliteAllowResultToReceivers(SATELLITE_RESULT_SUCCESS, bundle, false);
+                }
             }
         }
     }
@@ -936,7 +1001,10 @@ public class SatelliteAccessController extends Handler {
                 } else {
                     if (!initSatelliteOnDeviceAccessController()) {
                         loge("Failed to init SatelliteOnDeviceAccessController");
-                        checkSatelliteAccessRestrictionUsingCachedCountryCodes();
+                        Bundle bundle = new Bundle();
+                        bundle.putBoolean(KEY_SATELLITE_COMMUNICATION_ALLOWED, false);
+                        sendSatelliteAllowResultToReceivers(SATELLITE_RESULT_SUCCESS, bundle,
+                                false);
                         return;
                     }
                     satelliteAllowed = mSatelliteOnDeviceAccessController
@@ -947,11 +1015,23 @@ public class SatelliteAccessController extends Handler {
                 bundle.putBoolean(KEY_SATELLITE_COMMUNICATION_ALLOWED, satelliteAllowed);
                 sendSatelliteAllowResultToReceivers(SATELLITE_RESULT_SUCCESS, bundle,
                         satelliteAllowed);
+                mLatestSatelliteCommunicationAllowed = satelliteAllowed;
+                mLatestSatelliteCommunicationAllowedSetTime = SystemClock.elapsedRealtimeNanos();
             } catch (Exception ex) {
                 loge("checkSatelliteAccessRestrictionForLocation: ex=" + ex);
                 reportAnomaly(UUID_ON_DEVICE_LOOKUP_EXCEPTION,
                         "On-device satellite lookup exception");
-                checkSatelliteAccessRestrictionUsingCachedCountryCodes();
+                Bundle bundle = new Bundle();
+                if (isCommunicationAllowedCacheValid()) {
+                    bundle.putBoolean(KEY_SATELLITE_COMMUNICATION_ALLOWED,
+                            mLatestSatelliteCommunicationAllowed);
+                    logd("checkSatelliteAccessRestrictionForLocation: 24Hr cache is still valid, "
+                            + "using it");
+                } else {
+                    bundle.putBoolean(KEY_SATELLITE_COMMUNICATION_ALLOWED, false);
+                }
+                sendSatelliteAllowResultToReceivers(SATELLITE_RESULT_SUCCESS, bundle,
+                        mLatestSatelliteCommunicationAllowed);
             }
         }
     }
@@ -1327,6 +1407,49 @@ public class SatelliteAccessController extends Handler {
         mSatelliteCommunicationAllowedStateChangedListeners.remove(callback.asBinder());
     }
 
+    /**
+     * This API can be used by only CTS to set the cache whether satellite communication is allowed.
+     *
+     * @param state a state indicates whether satellite access allowed state should be cached and
+     * the allowed state.
+     * @return {@code true} if the setting is successful, {@code false} otherwise.
+     */
+    public boolean setIsSatelliteCommunicationAllowedForCurrentLocationCache(String state) {
+        if (!mFeatureFlags.oemEnabledSatelliteFlag()) {
+            logd("setIsSatelliteCommunicationAllowedForCurrentLocationCache: "
+                    + "oemEnabledSatelliteFlag is disabled");
+            return false;
+        }
+
+        if (!isMockModemAllowed()) {
+            logd("setIsSatelliteCommunicationAllowedForCurrentLocationCache: "
+                    + "mock modem not allowed.");
+            return false;
+        }
+
+        logd("setIsSatelliteCommunicationAllowedForCurrentLocationCache: state=" + state);
+
+        synchronized (mSatelliteCommunicationAllowStateLock) {
+            if ("cache_allowed".equalsIgnoreCase(state)) {
+                mLatestSatelliteCommunicationAllowedSetTime = SystemClock.elapsedRealtimeNanos();
+                mLatestSatelliteCommunicationAllowed = true;
+                mCurrentSatelliteAllowedState = true;
+            } else if ("cache_clear_and_not_allowed".equalsIgnoreCase(state)) {
+                mLatestSatelliteCommunicationAllowedSetTime = 0;
+                mLatestSatelliteCommunicationAllowed = false;
+                mCurrentSatelliteAllowedState = false;
+            } else if ("clear_cache_only".equalsIgnoreCase(state)) {
+                mLatestSatelliteCommunicationAllowedSetTime = 0;
+                mLatestSatelliteCommunicationAllowed = false;
+            } else {
+                loge("setIsSatelliteCommunicationAllowedForCurrentLocationCache: invalid state="
+                        + state);
+                return false;
+            }
+        }
+        return true;
+    }
+
     private void notifySatelliteCommunicationAllowedStateChanged(boolean allowState) {
         logd("notifySatelliteCommunicationAllowedStateChanged: allowState=" + allowState);
 
@@ -1354,5 +1477,9 @@ public class SatelliteAccessController extends Handler {
 
     private static void loge(@NonNull String log) {
         Rlog.e(TAG, log);
+    }
+
+    private static void logv(@NonNull String log) {
+        Rlog.v(TAG, log);
     }
 }
