@@ -13930,6 +13930,32 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
+     * This API can be used by only CTS to set the cache whether satellite communication is allowed.
+     *
+     * @param state a state indicates whether satellite access allowed state should be cached and
+     * the allowed state.
+     * @return {@code true} if the setting is successful, {@code false} otherwise.
+     */
+    public boolean setIsSatelliteCommunicationAllowedForCurrentLocationCache(String state) {
+        if (!mFeatureFlags.oemEnabledSatelliteFlag()) {
+            Log.d(LOG_TAG, "setIsSatelliteCommunicationAllowedForCurrentLocationCache: "
+                    + "oemEnabledSatelliteFlag is disabled");
+            return false;
+        }
+
+        Log.d(LOG_TAG, "setIsSatelliteCommunicationAllowedForCurrentLocationCache: "
+                + "state=" + state);
+        TelephonyPermissions.enforceShellOnly(
+                Binder.getCallingUid(),
+                "setIsSatelliteCommunicationAllowedForCurrentLocationCache");
+        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(mApp,
+                SubscriptionManager.INVALID_SUBSCRIPTION_ID,
+                "setIsSatelliteCommunicationAllowedForCurrentLocationCache");
+        return mSatelliteAccessController.setIsSatelliteCommunicationAllowedForCurrentLocationCache(
+                state);
+    }
+
+    /**
      * Sets the service defined in ComponentName to be bound.
      *
      * This should only be used for testing.
