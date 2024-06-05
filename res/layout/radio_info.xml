@@ -257,6 +257,16 @@
                 android:layout_height="wrap_content"
                 android:text="@string/mock_carrier_roaming_satellite_string"/>
 
+        <!-- ESOS -->
+        <Button android:id="@+id/esos_questionnaire"
+                android:textSize="14sp"
+                android:layout_marginTop="8dip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAllCaps="false"
+                android:text="@string/esos_satellite_string"
+        />
+
         <!-- VoLTE provisioned -->
         <Switch android:id="@+id/volte_provisioned_switch"
                 android:textSize="14sp"
