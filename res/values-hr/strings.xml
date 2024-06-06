@@ -305,7 +305,7 @@
     <string name="keywords_carrier_settings_euicc" msgid="8540160967922063745">"mobilni operater, esim, sim, euicc, promjena mobilnog operatera, dodavanje mobilnog operatera"</string>
     <string name="carrier_settings_euicc_summary" msgid="2027941166597330117">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> – <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="7228249980933944101">"Mobilni podaci"</string>
-    <string name="mobile_data_settings_summary" msgid="5012570152029118471">"Pristupi podacima pomoću mobilne mreže"</string>
+    <string name="mobile_data_settings_summary" msgid="5012570152029118471">"Pristupi podacima putem mobilne mreže"</string>
     <string name="data_usage_disable_mobile" msgid="5669109209055988308">"Želite li isključiti mobilne podatke?"</string>
     <string name="sim_selection_required_pref" msgid="6985901872978341314">"Odabir je obvezan"</string>
     <string name="sim_change_data_title" msgid="9142726786345906606">"Promijeniti podatkovni SIM?"</string>
@@ -485,7 +485,7 @@
     <string name="simContacts_title" msgid="2714029230160136647">"Odabir kontakata za uvoz"</string>
     <string name="simContacts_airplaneMode" msgid="4654884030631503808">"Isključite način rada u zrakoplovu da biste uvezli kontakte sa SIM kartice."</string>
     <string name="enable_pin" msgid="967674051730845376">"Omogući/onemogući PIN za SIM"</string>
-    <string name="change_pin" msgid="3657869530942905790">"Promijeni PIN za SIM"</string>
+    <string name="change_pin" msgid="3657869530942905790">"Promijenite PIN za SIM"</string>
     <string name="enter_pin_text" msgid="3182311451978663356">"PIN za SIM:"</string>
     <string name="oldPinLabel" msgid="8618515202411987721">"Stari PIN"</string>
     <string name="newPinLabel" msgid="3585899083055354732">"Novi PIN"</string>
