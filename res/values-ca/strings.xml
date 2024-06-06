@@ -845,6 +845,8 @@
     <string name="radio_info_radio_power" msgid="8805595022160471587">"Potència del senyal mòbil"</string>
     <string name="simulate_out_of_service_string" msgid="7787925611727597193">"Simula que està fora de servei (només per a la compilació de depuració)"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"Mode de satèl·lit d\'un operador de telefonia mòbil simulat (només per a la compilació de depuració)"</string>
+    <!-- no translation found for esos_satellite_string (7291726039210940609) -->
+    <skip />
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"Mostra la llibreta d\'adreces de la SIM"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"Mostra els números de marcatge fix"</string>
     <string name="radioInfo_menu_viewSDN" msgid="2613431584522392842">"Mostra els números de marcatge de serveis"</string>

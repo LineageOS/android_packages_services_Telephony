@@ -845,6 +845,8 @@
     <string name="radio_info_radio_power" msgid="8805595022160471587">"Cường độ của sóng di động"</string>
     <string name="simulate_out_of_service_string" msgid="7787925611727597193">"Mô phỏng thiết bị không hoạt động (chỉ dành cho bản gỡ lỗi)"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"Mô phỏng chế độ vệ tinh của nhà mạng (chỉ dành cho Bản gỡ lỗi)"</string>
+    <!-- no translation found for esos_satellite_string (7291726039210940609) -->
+    <skip />
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"Xem sổ địa chỉ trên SIM"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"Xem số gọi định sẵn"</string>
     <string name="radioInfo_menu_viewSDN" msgid="2613431584522392842">"Xem số quay số dịch vụ"</string>

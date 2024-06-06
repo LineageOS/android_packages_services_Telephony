@@ -845,6 +845,8 @@
     <string name="radio_info_radio_power" msgid="8805595022160471587">"মোবাইল রেডিওর গুণমান"</string>
     <string name="simulate_out_of_service_string" msgid="7787925611727597193">"আউট-অফ-সার্ভিস সিমুলেট করা (শুধুমাত্র ডিবাগ বিল্ডের জন্য)"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"নকল পরিষেবা প্রদানকারী উপগ্রহ মোড (শুধুমাত্র ডিবাগ বিল্ড)"</string>
+    <!-- no translation found for esos_satellite_string (7291726039210940609) -->
+    <skip />
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"সিম অ্যাড্রেস বুক দেখুন"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"স্থায়ী ডায়াল নম্বরগুলি দেখুন"</string>
     <string name="radioInfo_menu_viewSDN" msgid="2613431584522392842">"সার্ভিস ডায়াল নম্বরগুলি দেখুন"</string>
