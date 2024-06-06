@@ -2024,7 +2024,7 @@
     <!-- Title for simulating SIM capable of satellite. -->
     <string name="mock_carrier_roaming_satellite_string">Mock Carrier Satellite Mode (Debug Build only)</string>
     <!-- Title for trigger real satellite eSOS. -->
-    <string name="esos_satellite_string">Test real satellite eSOS mode</string>
+    <string name="esos_satellite_string">Test real satellite eSOS mode (Debug Build only)</string>
 
     <!-- Phone Info screen. Menu item label.  Used for diagnostic info screens, precise translation isn't needed -->
     <string name="radioInfo_menu_viewADN">View SIM Address Book</string>
