@@ -2098,6 +2098,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     public void enableVisualVoicemailSmsFilter(String callingPackage, int subId,
             VisualVoicemailSmsFilterSettings settings) {
         mAppOps.checkPackage(Binder.getCallingUid(), callingPackage);
+        enforceVisualVoicemailPackage(callingPackage, subId);
         VisualVoicemailSmsFilterConfig
                 .enableVisualVoicemailSmsFilter(mPhone.getContext(), callingPackage, subId,
                         settings);
@@ -2106,6 +2107,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @Override
     public void disableVisualVoicemailSmsFilter(String callingPackage, int subId) {
         mAppOps.checkPackage(Binder.getCallingUid(), callingPackage);
+        enforceVisualVoicemailPackage(callingPackage, subId);
         VisualVoicemailSmsFilterConfig
                 .disableVisualVoicemailSmsFilter(mPhone.getContext(), callingPackage, subId);
     }
