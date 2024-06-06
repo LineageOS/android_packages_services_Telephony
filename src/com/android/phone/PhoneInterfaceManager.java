@@ -3792,7 +3792,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     public void enableVisualVoicemailSmsFilter(String callingPackage, int subId,
             VisualVoicemailSmsFilterSettings settings) {
         mAppOps.checkPackage(Binder.getCallingUid(), callingPackage);
-
+        enforceVisualVoicemailPackage(callingPackage, subId);
         final long identity = Binder.clearCallingIdentity();
         try {
             VisualVoicemailSmsFilterConfig.enableVisualVoicemailSmsFilter(
@@ -3805,7 +3805,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @Override
     public void disableVisualVoicemailSmsFilter(String callingPackage, int subId) {
         mAppOps.checkPackage(Binder.getCallingUid(), callingPackage);
-
+        enforceVisualVoicemailPackage(callingPackage, subId);
         final long identity = Binder.clearCallingIdentity();
         try {
             VisualVoicemailSmsFilterConfig.disableVisualVoicemailSmsFilter(
