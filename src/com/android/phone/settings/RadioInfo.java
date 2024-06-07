@@ -106,7 +106,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.euicc.EuiccConnector;
-import com.android.internal.telephony.flags.Flags;
 import com.android.internal.telephony.util.TelephonyUtils;
 import com.android.phone.R;
 
@@ -744,7 +743,7 @@ public class RadioInfo extends AppCompatActivity {
         }
 
         mEsosButton = (Button) findViewById(R.id.esos_questionnaire);
-        if (!Flags.oemEnabledSatelliteFlag()) {
+        if (!TelephonyUtils.IS_DEBUGGABLE) {
             mEsosButton.setVisibility(View.GONE);
         } else {
             mEsosButton.setOnClickListener(v ->
