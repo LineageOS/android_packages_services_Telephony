@@ -3937,6 +3937,15 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         mApp.enforceCallingOrSelfPermission(permission.SATELLITE_COMMUNICATION, message);
     }
 
+    /**
+     * Make sure the caller has PACKAGE_USAGE_STATS permission.
+     * @param message - log message to print.
+     * @throws SecurityException if the caller does not have the required permission
+     */
+    private void enforcePackageUsageStatsPermission(String message) {
+        mApp.enforceCallingOrSelfPermission(permission.PACKAGE_USAGE_STATS, message);
+    }
+
     private String createTelUrl(String number) {
         if (TextUtils.isEmpty(number)) {
             return null;
@@ -14164,5 +14173,21 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             int subId, @NonNull ISatelliteCommunicationAllowedStateCallback callback) {
         enforceSatelliteCommunicationPermission("unregisterForCommunicationAllowedStateChanged");
         mSatelliteAccessController.unregisterForCommunicationAllowedStateChanged(subId, callback);
+    }
+
+    /**
+     * Request to get the {@link SatelliteSessionStats} of the satellite service.
+     *
+     * @param subId The subId of the subscription to the satellite session stats for.
+     * @param result The result receiver that returns the {@link SatelliteSessionStats}
+     *               if the request is successful or an error code if the request failed.
+     *
+     * @throws SecurityException if the caller doesn't have required permission.
+     */
+    @Override
+    public void requestSatelliteSessionStats(int subId, @NonNull ResultReceiver result) {
+        enforceModifyPermission();
+        enforcePackageUsageStatsPermission("requestSatelliteSessionStats");
+        mSatelliteController.requestSatelliteSessionStats(subId, result);
     }
 }
