@@ -67,7 +67,9 @@ import com.android.internal.telephony.flags.FeatureFlags;
 import com.android.internal.telephony.satellite.SatelliteConfig;
 import com.android.internal.telephony.satellite.SatelliteConstants;
 import com.android.internal.telephony.satellite.SatelliteController;
+import com.android.internal.telephony.satellite.metrics.AccessControllerMetricsStats;
 import com.android.internal.telephony.satellite.metrics.ConfigUpdaterMetricsStats;
+import com.android.internal.telephony.satellite.metrics.ControllerMetricsStats;
 import com.android.internal.telephony.util.TelephonyUtils;
 import com.android.phone.PhoneGlobals;
 
@@ -145,6 +147,10 @@ public class SatelliteAccessController extends Handler {
     @NonNull
     private final SatelliteController mSatelliteController;
     @NonNull
+    private final ControllerMetricsStats mControllerMetricsStats;
+    @NonNull
+    private final AccessControllerMetricsStats mAccessControllerMetricsStats;
+    @NonNull
     private final ResultReceiver mInternalSatelliteSupportedResultReceiver;
     @NonNull
     private final ResultReceiver mInternalSatelliteProvisionedResultReceiver;
@@ -202,6 +208,7 @@ public class SatelliteAccessController extends Handler {
             "config_updater_satellite_country_codes";
     private static final String CONFIG_UPDATER_SATELLITE_IS_ALLOW_ACCESS_CONTROL_KEY =
             "config_updater_satellite_is_allow_access_control";
+
     private SharedPreferences mSharedPreferences;
     private final ConfigUpdaterMetricsStats mConfigUpdaterMetricsStats;
 
@@ -218,6 +225,10 @@ public class SatelliteAccessController extends Handler {
     private static final long NANOS_IN_12_HOURS = Duration.ofHours(12).toNanos();
     private boolean mLatestSatelliteCommunicationAllowed;
     private long mLatestSatelliteCommunicationAllowedSetTime;
+
+    private long mLocationQueryStartTimeMillis;
+    private long mOnDeviceLookupStartTimeMillis;
+    private long mTotalCheckingStartTimeMillis;
 
     /**
      * Create a SatelliteAccessController instance.
@@ -243,6 +254,8 @@ public class SatelliteAccessController extends Handler {
         mSatelliteOnDeviceAccessController = satelliteOnDeviceAccessController;
         mCountryDetector = TelephonyCountryDetector.getInstance(context);
         mSatelliteController = SatelliteController.getInstance();
+        mControllerMetricsStats = ControllerMetricsStats.getInstance();
+        mAccessControllerMetricsStats = AccessControllerMetricsStats.getInstance();
         initSharedPreferences(context);
         loadOverlayConfigs(context);
         // loadConfigUpdaterConfigs has to be called after loadOverlayConfigs
@@ -591,7 +604,7 @@ public class SatelliteAccessController extends Handler {
                     value).apply();
             return true;
         } catch (Exception ex) {
-            loge("updateSharedPreferencesAllowRegion : " + ex);
+            loge("updateSharedPreferencesIsAllowAccessControl error: " + ex);
             return false;
         }
     }
@@ -697,6 +710,8 @@ public class SatelliteAccessController extends Handler {
             mSatelliteS2CellFile = null;
         }
         mLocationFreshDurationNanos = getSatelliteLocationFreshDurationFromOverlayConfig(context);
+        mAccessControllerMetricsStats.setConfigDataSource(
+                SatelliteConstants.CONFIG_DATA_SOURCE_DEVICE_CONFIG);
     }
 
     private void loadConfigUpdaterConfigs() {
@@ -727,6 +742,8 @@ public class SatelliteAccessController extends Handler {
         mSatelliteS2CellFile = s2CellFile;
         mSatelliteCountryCodes = countryCodes.stream().collect(Collectors.toList());
         mIsSatelliteAllowAccessControl = isSatelliteAllowAccessControl;
+        mAccessControllerMetricsStats.setConfigDataSource(
+                SatelliteConstants.CONFIG_DATA_SOURCE_CONFIG_UPDATER);
     }
 
     private long getLocationFreshDurationNanos() {
@@ -776,6 +793,7 @@ public class SatelliteAccessController extends Handler {
                         + "processed");
                 return;
             }
+            mTotalCheckingStartTimeMillis = System.currentTimeMillis();
             mSatelliteController.requestIsSatelliteSupported(
                     requestArguments.first, mInternalSatelliteSupportedResultReceiver);
         }
@@ -860,6 +878,7 @@ public class SatelliteAccessController extends Handler {
             }
             mSatelliteAllowResultReceivers.clear();
         }
+        reportMetrics(resultCode, allowed);
     }
 
     /**
@@ -875,6 +894,10 @@ public class SatelliteAccessController extends Handler {
                 boolean allowed = isSatelliteAccessAllowedForLocation(networkCountryIsoList);
                 Bundle bundle = new Bundle();
                 bundle.putBoolean(KEY_SATELLITE_COMMUNICATION_ALLOWED, allowed);
+                mAccessControllerMetricsStats
+                        .setAccessControlType(
+                                SatelliteConstants.ACCESS_CONTROL_TYPE_NETWORK_COUNTRY_CODE)
+                        .setCountryCodes(networkCountryIsoList);
                 sendSatelliteAllowResultToReceivers(SATELLITE_RESULT_SUCCESS, bundle, allowed);
             } else {
                 if (shouldUseOnDeviceAccessController()) {
@@ -960,6 +983,8 @@ public class SatelliteAccessController extends Handler {
             countryCodeList = networkCountryCodeInfoMap.keySet().stream().toList();
         }
         logd("Use cached country codes=" + String.join(", ", countryCodeList));
+        mAccessControllerMetricsStats.setAccessControlType(
+                SatelliteConstants.ACCESS_CONTROL_TYPE_CACHED_COUNTRY_CODE);
 
         boolean allowed = isSatelliteAccessAllowedForLocation(countryCodeList);
         Bundle bundle = new Bundle();
@@ -973,14 +998,19 @@ public class SatelliteAccessController extends Handler {
      * from location service.
      */
     private void checkSatelliteAccessRestrictionUsingOnDeviceData() {
+        mOnDeviceLookupStartTimeMillis = System.currentTimeMillis();
         synchronized (mLock) {
             logd("Use on-device data");
             if (mFreshLastKnownLocation != null) {
+                mAccessControllerMetricsStats.setAccessControlType(
+                        SatelliteConstants.ACCESS_CONTROL_TYPE_LAST_KNOWN_LOCATION);
                 checkSatelliteAccessRestrictionForLocation(mFreshLastKnownLocation);
                 mFreshLastKnownLocation = null;
             } else {
                 Location freshLastKnownLocation = getFreshLastKnownLocation();
                 if (freshLastKnownLocation != null) {
+                    mAccessControllerMetricsStats.setAccessControlType(
+                            SatelliteConstants.ACCESS_CONTROL_TYPE_LAST_KNOWN_LOCATION);
                     checkSatelliteAccessRestrictionForLocation(freshLastKnownLocation);
                 } else {
                     queryCurrentLocation();
@@ -996,6 +1026,7 @@ public class SatelliteAccessController extends Handler {
                 return;
             }
             mLocationRequestCancellationSignal = new CancellationSignal();
+            mLocationQueryStartTimeMillis = System.currentTimeMillis();
             mLocationManager.getCurrentLocation(LocationManager.GPS_PROVIDER,
                     new LocationRequest.Builder(0)
                             .setQuality(LocationRequest.QUALITY_HIGH_ACCURACY)
@@ -1012,6 +1043,7 @@ public class SatelliteAccessController extends Handler {
         synchronized (mLock) {
             stopWaitForCurrentLocationTimer();
             mLocationRequestCancellationSignal = null;
+            mAccessControllerMetricsStats.setLocationQueryTime(mLocationQueryStartTimeMillis);
             Bundle bundle = new Bundle();
             if (location != null) {
                 if (location.isMock() && !isMockModemAllowed()) {
@@ -1020,6 +1052,8 @@ public class SatelliteAccessController extends Handler {
                     sendSatelliteAllowResultToReceivers(SATELLITE_RESULT_SUCCESS, bundle, false);
                     return;
                 }
+                mAccessControllerMetricsStats.setAccessControlType(
+                        SatelliteConstants.ACCESS_CONTROL_TYPE_CURRENT_LOCATION);
                 checkSatelliteAccessRestrictionForLocation(location);
             } else {
                 logd("current location is not available");
@@ -1060,6 +1094,7 @@ public class SatelliteAccessController extends Handler {
                             .isSatCommunicationAllowedAtLocation(locationToken);
                     updateCachedAccessRestrictionMap(locationToken, satelliteAllowed);
                 }
+                mAccessControllerMetricsStats.setOnDeviceLookupTime(mOnDeviceLookupStartTimeMillis);
                 Bundle bundle = new Bundle();
                 bundle.putBoolean(KEY_SATELLITE_COMMUNICATION_ALLOWED, satelliteAllowed);
                 sendSatelliteAllowResultToReceivers(SATELLITE_RESULT_SUCCESS, bundle,
@@ -1519,6 +1554,25 @@ public class SatelliteAccessController extends Handler {
         deadCallersList.forEach(listener -> {
             mSatelliteCommunicationAllowedStateChangedListeners.remove(listener.asBinder());
         });
+    }
+
+    private void reportMetrics(int resultCode, boolean allowed) {
+        if (resultCode == SATELLITE_RESULT_SUCCESS) {
+            mControllerMetricsStats.reportAllowedSatelliteAccessCount(allowed);
+        } else {
+            mControllerMetricsStats.reportFailedSatelliteAccessCheckCount();
+        }
+
+        mAccessControllerMetricsStats
+                .setLocationQueryTime(mLocationQueryStartTimeMillis)
+                .setTotalCheckingTime(mTotalCheckingStartTimeMillis)
+                .setIsAllowed(allowed)
+                .setIsEmergency(isInEmergency())
+                .setResult(resultCode)
+                .reportAccessControllerMetrics();
+        mLocationQueryStartTimeMillis = 0;
+        mOnDeviceLookupStartTimeMillis = 0;
+        mTotalCheckingStartTimeMillis = 0;
     }
 
     private static void logd(@NonNull String log) {
