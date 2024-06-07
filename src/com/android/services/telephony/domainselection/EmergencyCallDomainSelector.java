@@ -639,6 +639,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         mImsRegistered = mImsStateTracker.isImsRegistered();
         logi("onImsRegistrationStateChanged " + mImsRegistered);
         selectDomain();
+        handleImsStateChange();
     }
 
     @Override
@@ -647,6 +648,14 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         mIsVoiceCapable = mImsStateTracker.isImsVoiceCapable();
         logi("onImsMmTelCapabilitiesChanged " + mIsVoiceCapable);
         selectDomain();
+        handleImsStateChange();
+    }
+
+    private void handleImsStateChange() {
+        if (!mVoWifiOverEmergencyPdn && !mDomainSelected
+                && (mMaxCellularTimerExpired || mNetworkScanTimerExpired)) {
+            maybeDialOverWlan();
+        }
     }
 
     private boolean isSimReady() {
