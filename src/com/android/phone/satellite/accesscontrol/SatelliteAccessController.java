@@ -1012,11 +1012,17 @@ public class SatelliteAccessController extends Handler {
         synchronized (mLock) {
             stopWaitForCurrentLocationTimer();
             mLocationRequestCancellationSignal = null;
+            Bundle bundle = new Bundle();
             if (location != null) {
+                if (location.isMock() && !isMockModemAllowed()) {
+                    logd("location is mock");
+                    bundle.putBoolean(KEY_SATELLITE_COMMUNICATION_ALLOWED, false);
+                    sendSatelliteAllowResultToReceivers(SATELLITE_RESULT_SUCCESS, bundle, false);
+                    return;
+                }
                 checkSatelliteAccessRestrictionForLocation(location);
             } else {
                 logd("current location is not available");
-                Bundle bundle = new Bundle();
                 if (isCommunicationAllowedCacheValid()) {
                     logd("onCurrentLocationAvailable: 24Hr cache is still valid, using it");
                     bundle.putBoolean(KEY_SATELLITE_COMMUNICATION_ALLOWED,
@@ -1188,7 +1194,12 @@ public class SatelliteAccessController extends Handler {
                 result = location;
             }
         }
-        return result;
+
+        if (result == null || isMockModemAllowed()) {
+            return result;
+        }
+
+        return result.isMock() ? null : result;
     }
 
     private void initSharedPreferences(@NonNull Context context) {
