@@ -52,6 +52,8 @@ import android.telephony.AnomalyReporter;
 import android.telephony.Rlog;
 import android.telephony.SubscriptionManager;
 import android.telephony.satellite.ISatelliteCommunicationAllowedStateCallback;
+import android.telephony.satellite.ISatelliteProvisionStateCallback;
+import android.telephony.satellite.ISatelliteSupportedStateCallback;
 import android.telephony.satellite.SatelliteManager;
 import android.text.TextUtils;
 import android.util.Pair;
@@ -147,6 +149,10 @@ public class SatelliteAccessController extends Handler {
     @NonNull
     private final ResultReceiver mInternalSatelliteProvisionedResultReceiver;
     @NonNull
+    private final ISatelliteSupportedStateCallback mInternalSatelliteSupportedStateCallback;
+    @NonNull
+    private final ISatelliteProvisionStateCallback mInternalSatelliteProvisionStateCallback;
+    @NonNull
     protected final Object mLock = new Object();
     @GuardedBy("mLock")
     @NonNull
@@ -209,7 +215,7 @@ public class SatelliteAccessController extends Handler {
     @GuardedBy("mSatelliteCommunicationAllowStateLock")
     private boolean mCurrentSatelliteAllowedState = false;
 
-    private static final long NANOS_IN_DAY = Duration.ofDays(1).toNanos();
+    private static final long NANOS_IN_12_HOURS = Duration.ofHours(12).toNanos();
     private boolean mLatestSatelliteCommunicationAllowed;
     private long mLatestSatelliteCommunicationAllowedSetTime;
 
@@ -262,6 +268,44 @@ public class SatelliteAccessController extends Handler {
                 handleIsSatelliteProvisionedResult(resultCode, resultData);
             }
         };
+
+        mInternalSatelliteSupportedStateCallback = new ISatelliteSupportedStateCallback.Stub() {
+            @Override
+            public void onSatelliteSupportedStateChanged(boolean isSupported) {
+                logd("onSatelliteSupportedStateChanged: isSupported=" + isSupported);
+                if (isSupported) {
+                    requestIsCommunicationAllowedForCurrentLocation(
+                            SubscriptionManager.DEFAULT_SUBSCRIPTION_ID, new ResultReceiver(null) {
+                                @Override
+                                protected void onReceiveResult(int resultCode, Bundle resultData) {
+                                    // do nothing
+                                }
+                            });
+                }
+            }
+        };
+        mSatelliteController.registerForSatelliteSupportedStateChanged(
+                SubscriptionManager.DEFAULT_SUBSCRIPTION_ID,
+                mInternalSatelliteSupportedStateCallback);
+
+        mInternalSatelliteProvisionStateCallback = new ISatelliteProvisionStateCallback.Stub() {
+            @Override
+            public void onSatelliteProvisionStateChanged(boolean isProvisioned) {
+                logd("onSatelliteProvisionStateChanged: isProvisioned=" + isProvisioned);
+                if (isProvisioned) {
+                    requestIsCommunicationAllowedForCurrentLocation(
+                            SubscriptionManager.DEFAULT_SUBSCRIPTION_ID, new ResultReceiver(null) {
+                                @Override
+                                protected void onReceiveResult(int resultCode, Bundle resultData) {
+                                    // do nothing
+                                }
+                            });
+                }
+            }
+        };
+        mSatelliteController.registerForSatelliteProvisionStateChanged(
+                SubscriptionManager.DEFAULT_SUBSCRIPTION_ID,
+                mInternalSatelliteProvisionStateCallback);
 
         // Init the SatelliteOnDeviceAccessController so that the S2 level can be cached
         initSatelliteOnDeviceAccessController();
@@ -878,7 +922,7 @@ public class SatelliteAccessController extends Handler {
     private boolean isCommunicationAllowedCacheValid() {
         if (mLatestSatelliteCommunicationAllowedSetTime > 0) {
             long currentTime = SystemClock.elapsedRealtimeNanos();
-            if ((currentTime - mLatestSatelliteCommunicationAllowedSetTime) <= NANOS_IN_DAY) {
+            if ((currentTime - mLatestSatelliteCommunicationAllowedSetTime) <= NANOS_IN_12_HOURS) {
                 logv("isCommunicationAllowedCacheValid: cache is valid");
                 return true;
             }
