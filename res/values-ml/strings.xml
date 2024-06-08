@@ -845,6 +845,8 @@
     <string name="radio_info_radio_power" msgid="8805595022160471587">"മൊബൈൽ റേഡിയോ പവർ"</string>
     <string name="simulate_out_of_service_string" msgid="7787925611727597193">"സേവനം ലഭ്യമല്ലെന്ന് അനുകരിക്കുക (ഡീബഗ് ബിൽഡ് മാത്രം)"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"Mock സേവനദാതാവ് ഉപഗ്രഹ മോഡ് (ഡീബഗ് ബിൽഡ് മാത്രം)"</string>
+    <!-- no translation found for esos_satellite_string (7291726039210940609) -->
+    <skip />
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"സിം വിലാസ പുസ്‌തകം കാണുക"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"സ്ഥിര ഡയലിംഗ് നമ്പറുകൾ കാണുക"</string>
     <string name="radioInfo_menu_viewSDN" msgid="2613431584522392842">"സർവീസ് ഡയലിംഗ് നമ്പറുകൾ കാണുക"</string>
