@@ -167,6 +167,9 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
                 @Override
                 public void onAvailable(Network network) {
                     logi("onAvailable: " + network);
+                    if (network != null && !mWiFiNetworksAvailable.contains(network)) {
+                        mWiFiNetworksAvailable.add(network);
+                    }
                     mWiFiAvailable = true;
                     sendEmptyMessage(MSG_WIFI_AVAILABLE);
                 }
@@ -174,12 +177,20 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
                 @Override
                 public void onLost(Network network) {
                     logi("onLost: " + network);
+                    if (network != null) {
+                        mWiFiNetworksAvailable.remove(network);
+                    }
+                    if (!mWiFiNetworksAvailable.isEmpty()) {
+                        logi("onLost: available networks=" + mWiFiNetworksAvailable);
+                        return;
+                    }
                     mWiFiAvailable = false;
                 }
 
                 @Override
                 public void onUnavailable() {
                     logi("onUnavailable");
+                    mWiFiNetworksAvailable.clear();
                     mWiFiAvailable = false;
                 }
             };
@@ -258,6 +269,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
     private final PowerManager.WakeLock mPartialWakeLock;
     private final CrossSimRedialingController mCrossSimRedialingController;
     private final DataConnectionStateHelper mEpdnHelper;
+    private final List<Network> mWiFiNetworksAvailable = new ArrayList<>();
 
     /** Constructor. */
     public EmergencyCallDomainSelector(Context context, int slotId, int subId,
@@ -639,6 +651,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         mImsRegistered = mImsStateTracker.isImsRegistered();
         logi("onImsRegistrationStateChanged " + mImsRegistered);
         selectDomain();
+        handleImsStateChange();
     }
 
     @Override
@@ -647,6 +660,14 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
         mIsVoiceCapable = mImsStateTracker.isImsVoiceCapable();
         logi("onImsMmTelCapabilitiesChanged " + mIsVoiceCapable);
         selectDomain();
+        handleImsStateChange();
+    }
+
+    private void handleImsStateChange() {
+        if (!mVoWifiOverEmergencyPdn && !mDomainSelected
+                && (mMaxCellularTimerExpired || mNetworkScanTimerExpired)) {
+            maybeDialOverWlan();
+        }
     }
 
     private boolean isSimReady() {
@@ -1622,6 +1643,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
             return;
         }
 
+        mWiFiNetworksAvailable.clear();
         ConnectivityManager cm = mContext.getSystemService(ConnectivityManager.class);
         if (cm != null) {
             logi("registerForConnectivityChanges");
@@ -1640,6 +1662,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
             return;
         }
 
+        mWiFiNetworksAvailable.clear();
         ConnectivityManager cm = mContext.getSystemService(ConnectivityManager.class);
         if (cm != null) {
             logi("unregisterForConnectivityChanges");
@@ -1970,6 +1993,16 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
             // b/341055741
             mTerminateAfterCsFailure = true;
         }
+    }
+
+    @VisibleForTesting
+    public boolean isWiFiAvailable() {
+        return mWiFiAvailable;
+    }
+
+    @VisibleForTesting
+    public List<Network> getWiFiNetworksAvailable() {
+        return mWiFiNetworksAvailable;
     }
 
     @Override
