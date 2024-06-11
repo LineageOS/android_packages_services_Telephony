@@ -366,6 +366,23 @@
         <item>cn</item>
     </string-array>
 
+    <!-- Dynamic routing of emergency calls: trying normal routing if it's available.
+         Otherwise, emergency routing. -->
+    <!-- TODO (b/346398725: temporary code, cleanup) -->
+    <bool name="dynamic_routing_emergency_enabled">false</bool>
+
+    <!-- Array of countries that the dynamic routing is supported.
+         Values should be ISO3166 country codes in lowercase. -->
+    <string-array name="config_countries_dynamic_routing_emergency_enabled"
+            translatable="false">
+    </string-array>
+
+    <!-- Array of emergency numbers for dynamic routing.
+         Values are the tuples of Country ISO, MNC, and numbers. -->
+    <string-array name="config_dynamic_routing_emergency_numbers"
+            translatable="false">
+    </string-array>
+
     <!-- The component name(a flattened ComponentName string) for the telephony domain selection
          service. The device should fallback to the modem based domain selection architecture
          if this is not configured. -->
