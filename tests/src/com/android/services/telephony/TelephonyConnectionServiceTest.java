@@ -2942,6 +2942,8 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
                 dialArgs.intentExtras.getInt(PhoneConstants.EXTRA_DIAL_DOMAIN, -1));
         assertTrue(dialArgs.isEmergency);
         assertEquals(eccCategory, dialArgs.eccCategory);
+        assertTrue(dialArgs.intentExtras.getBoolean(
+                PhoneConstants.EXTRA_USE_EMERGENCY_ROUTING, false));
     }
 
     @Test
@@ -2993,6 +2995,8 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
                 dialArgs.intentExtras.getInt(PhoneConstants.EXTRA_DIAL_DOMAIN, -1));
         assertTrue(dialArgs.isEmergency);
         assertEquals(eccCategory, dialArgs.eccCategory);
+        assertTrue(dialArgs.intentExtras.getBoolean(
+                PhoneConstants.EXTRA_USE_EMERGENCY_ROUTING, false));
     }
 
     @Test
