@@ -845,7 +845,7 @@
     <string name="radio_info_radio_power" msgid="8805595022160471587">"توان رادیوی تلفن همراه"</string>
     <string name="simulate_out_of_service_string" msgid="7787925611727597193">"شبیه‌سازی از کار افتادن (فقط ساخت اشکال‌زدایی)"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"حالت ماهواره‌ای شرکت مخابراتی ساختگی (فقط ساخت اشکال‌زدایی)"</string>
-    <!-- no translation found for esos_satellite_string (7291726039210940609) -->
+    <!-- no translation found for esos_satellite_string (7274794226125968657) -->
     <skip />
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"مشاهده دفترچه نشانی سیم‌کارت"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"مشاهده شماره‌های شماره‌گیری ثابت"</string>

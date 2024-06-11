@@ -845,8 +845,7 @@
     <string name="radio_info_radio_power" msgid="8805595022160471587">"Mobil rádióadó teljesítménye"</string>
     <string name="simulate_out_of_service_string" msgid="7787925611727597193">"Szolgáltatáskiesés szimulációja (csak hibaelhárító build)"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"Szimulált szolgáltató – Műholdas mód (csak hibaelhárító build)"</string>
-    <!-- no translation found for esos_satellite_string (7291726039210940609) -->
-    <skip />
+    <string name="esos_satellite_string" msgid="7274794226125968657">"A valódi műholdas eSOS mód tesztelése (csak hibaelhárító build)"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"SIM-kártya telefonkönyvének megtekintése"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"Fix hívószámok megtekintése"</string>
     <string name="radioInfo_menu_viewSDN" msgid="2613431584522392842">"Szolgáltatásszámok megtekintése"</string>

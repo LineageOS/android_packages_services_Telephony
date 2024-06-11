@@ -845,8 +845,7 @@
     <string name="radio_info_radio_power" msgid="8805595022160471587">"ম’বাইলৰ ৰেডিঅ’ পাৱাৰ"</string>
     <string name="simulate_out_of_service_string" msgid="7787925611727597193">"সেৱাত নাই ছিমুলে’ট কৰক (কেৱল ডিবাগ বিল্ড)"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"নকল বাহক উপগ্ৰহ ম’ড (কেৱল ডিবাগ বিল্ড)"</string>
-    <!-- no translation found for esos_satellite_string (7291726039210940609) -->
-    <skip />
+    <string name="esos_satellite_string" msgid="7274794226125968657">"বাস্তৱিক উপগ্ৰহৰ eSOS ম’ড পৰীক্ষা কৰক (কেৱল ডিবাগ বিল্ড)"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"ছিম ঠিকনা সূচী চাওক"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"ফিক্সড্ ডায়েলিং নম্বৰসমূহ চাওক"</string>
     <string name="radioInfo_menu_viewSDN" msgid="2613431584522392842">"সেৱা ডায়েলিং নম্বৰসমূহ চাওক"</string>
