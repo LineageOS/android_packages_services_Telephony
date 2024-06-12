@@ -20,12 +20,15 @@ import android.app.ActionBar;
 import android.os.Bundle;
 import android.os.UserManager;
 import android.preference.PreferenceActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.android.internal.telephony.flags.Flags;
 import com.android.phone.R;
 
 public class PhoneAccountSettingsActivity extends PreferenceActivity {
+    private static final String LOG_TAG = "PhoneAccountSettingsActivity";
 
     @Override
     protected void onCreate(Bundle icicle) {
@@ -35,6 +38,17 @@ public class PhoneAccountSettingsActivity extends PreferenceActivity {
         UserManager userManager = getSystemService(UserManager.class);
         if (!userManager.isAdminUser() && !userManager.isManagedProfile()) {
             Toast.makeText(this, R.string.phone_account_settings_user_restriction,
+                    Toast.LENGTH_SHORT).show();
+            finish();
+            return;
+        }
+
+        // Make sure mobile network configs are not restricted.
+        if (Flags.ensureAccessToCallSettingsIsRestricted() &&
+                userManager.hasUserRestriction(UserManager.DISALLOW_CONFIG_MOBILE_NETWORKS)) {
+            Log.i(LOG_TAG, "Mobile network configs are restricted, disabling phone account "
+                    + "settings");
+            Toast.makeText(this, R.string.phone_account_no_config_mobile_networks,
                     Toast.LENGTH_SHORT).show();
             finish();
             return;

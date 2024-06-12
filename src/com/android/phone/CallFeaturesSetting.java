@@ -58,6 +58,7 @@ import com.android.ims.ImsException;
 import com.android.ims.ImsManager;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
+import com.android.internal.telephony.flags.Flags;
 import com.android.phone.settings.PhoneAccountSettingsFragment;
 import com.android.phone.settings.SuppServicesUiUtil;
 import com.android.phone.settings.VoicemailSettingsActivity;
@@ -113,6 +114,7 @@ public class CallFeaturesSetting extends PreferenceActivity
     private PreferenceScreen mVoicemailSettingsScreen;
     private SwitchPreference mEnableVideoCalling;
     private Preference mButtonWifiCalling;
+    private boolean mDisallowedConfig = false;
 
     /*
      * Click Listeners, handle click based on objects attached to UI.
@@ -261,6 +263,14 @@ public class CallFeaturesSetting extends PreferenceActivity
                     Toast.LENGTH_SHORT).show();
             finish();
             return;
+        }
+
+        // Check if mobile network configs are restricted.
+        if (Flags.ensureAccessToCallSettingsIsRestricted() &&
+                userManager.hasUserRestriction(UserManager.DISALLOW_CONFIG_MOBILE_NETWORKS)) {
+            mDisallowedConfig = true;
+            Log.i(LOG_TAG, "Mobile network configs are restricted, disabling mobile network "
+                    + "settings");
         }
 
         mSubscriptionInfoHelper = new SubscriptionInfoHelper(this, getIntent());
@@ -467,7 +477,7 @@ public class CallFeaturesSetting extends PreferenceActivity
         if (mImsMgr.isVtEnabledByPlatform() && mImsMgr.isVtProvisionedOnDevice()
                 && (carrierConfig.getBoolean(
                         CarrierConfigManager.KEY_IGNORE_DATA_ENABLED_CHANGED_FOR_VIDEO_CALLS)
-                || isDataEnabled)) {
+                || isDataEnabled) && !mDisallowedConfig) {
             boolean currentValue =
                     mImsMgr.isEnhanced4gLteModeSettingEnabledByUser()
                     ? mImsMgr.isVtEnabledByUser() : false;
