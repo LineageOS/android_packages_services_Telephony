@@ -835,11 +835,8 @@ public class SatelliteAccessController extends Handler {
                                 false);
                         sendSatelliteAllowResultToReceivers(resultCode, bundle, false);
                     } else {
-                        plogd("Satellite is supported, check if provisioned or not");
-                        int subId = resultData.getInt(SatelliteController.SATELLITE_SUBSCRIPTION_ID,
-                                SubscriptionManager.DEFAULT_SUBSCRIPTION_ID);
-                        mSatelliteController.requestIsSatelliteProvisioned(
-                                subId, mInternalSatelliteProvisionedResultReceiver);
+                        plogd("Satellite is supported");
+                        checkSatelliteAccessRestrictionUsingGPS();
                     }
                 } else {
                     ploge("KEY_SATELLITE_SUPPORTED does not exist.");
