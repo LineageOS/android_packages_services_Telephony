@@ -271,7 +271,7 @@
 
         <activity android:name="GsmUmtsCallOptions"
                 android:label="@string/gsm_umts_options"
-                android:exported="true"
+                android:exported="false"
                 android:theme="@style/DialerSettingsLight">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -280,7 +280,7 @@
 
         <activity android:name="CdmaCallOptions"
                 android:label="@string/cdma_options"
-                android:exported="true"
+                android:exported="false"
                 android:theme="@style/DialerSettingsLight">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -330,7 +330,7 @@
         <!-- fdn setting -->
         <activity android:name="com.android.phone.settings.fdn.FdnSetting"
                 android:label="@string/fdn"
-                android:exported="true"
+                android:exported="false"
                 android:theme="@style/CallSettingsWithoutDividerTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
