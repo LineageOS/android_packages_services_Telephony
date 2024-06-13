@@ -95,6 +95,7 @@ public class SatelliteEntitlementControllerTest extends TelephonyTestBase {
     private static final List<String> EMPTY_PLMN_LIST = new ArrayList<>();
     private static final int CMD_START_QUERY_ENTITLEMENT = 1;
     private static final int CMD_RETRY_QUERY_ENTITLEMENT = 2;
+    private static final int CMD_SIM_REFRESH = 3;
     private static final int MAX_RETRY_COUNT = 5;
     @Mock
     CarrierConfigManager mCarrierConfigManager;
@@ -808,6 +809,33 @@ public class SatelliteEntitlementControllerTest extends TelephonyTestBase {
         verify(mSatelliteEntitlementApi, times(2)).checkEntitlementStatus();
         verify(mSatelliteController).onSatelliteEntitlementStatusUpdated(eq(SUB_ID), eq(true),
                 eq(PLMN_ALLOWED_LIST), eq(PLMN_BARRED_LIST), any());
+    }
+
+    @Test
+    public void testStartQueryEntitlementStatus_AfterSimRefresh() throws Exception {
+        logd("testStartQueryEntitlementStatus_AfterSimRefresh");
+        setIsQueryAvailableTrue();
+
+        // Verify the first query complete.
+        doReturn(mSatelliteEntitlementResult).when(
+                mSatelliteEntitlementApi).checkEntitlementStatus();
+        setSatelliteEntitlementResult(SATELLITE_ENTITLEMENT_STATUS_ENABLED, PLMN_ALLOWED_LIST,
+                PLMN_BARRED_LIST);
+        mSatelliteEntitlementController.handleCmdStartQueryEntitlement();
+
+        verify(mSatelliteEntitlementApi).checkEntitlementStatus();
+        verify(mSatelliteController).onSatelliteEntitlementStatusUpdated(anyInt(),
+                anyBoolean(), anyList(), anyList(), any());
+
+        // SIM_REFRESH event occurred before expired the query refresh timer, verify the start
+        // the query.
+        sendMessage(CMD_SIM_REFRESH, SUB_ID);
+        mTestableLooper.moveTimeForward(TimeUnit.MINUTES.toMillis(10));
+        mTestableLooper.processAllMessages();
+
+        verify(mSatelliteEntitlementApi, times(2)).checkEntitlementStatus();
+        verify(mSatelliteController, times(2)).onSatelliteEntitlementStatusUpdated(anyInt(),
+                anyBoolean(), anyList(), anyList(), any());
     }
 
     private void triggerCarrierConfigChanged() {

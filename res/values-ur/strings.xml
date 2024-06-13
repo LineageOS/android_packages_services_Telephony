@@ -845,8 +845,7 @@
     <string name="radio_info_radio_power" msgid="8805595022160471587">"موبائل ریڈیو پاور"</string>
     <string name="simulate_out_of_service_string" msgid="7787925611727597193">"\'سروس دستیاب نہیں ہے\' موڈ کو سمیولیٹ کریں (صرف ڈیبگ بلڈ کیلئے)"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"موک کیریئر سیٹلائٹ موڈ (صرف ڈیبگ بلڈ)"</string>
-    <!-- no translation found for esos_satellite_string (7291726039210940609) -->
-    <skip />
+    <string name="esos_satellite_string" msgid="7274794226125968657">"‏اصل سیٹلائٹ eSOS وضع کی جانچ کریں (صرف ڈیبگ بلڈ)"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"‏SIM ایڈریس بک دیکھیں"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"فکسڈ ڈائلنگ نمبرز دیکھیں"</string>
     <string name="radioInfo_menu_viewSDN" msgid="2613431584522392842">"سروس ڈائلنگ نمبرز دیکھیں"</string>

@@ -306,7 +306,7 @@
     <string name="carrier_settings_euicc_summary" msgid="2027941166597330117">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="7228249980933944101">"मोबाइल डेटा"</string>
     <string name="mobile_data_settings_summary" msgid="5012570152029118471">"मोबाइल नेटवर्कको प्रयोग गरी डेटामाथि पहुँच गर्नुहोस्"</string>
-    <string name="data_usage_disable_mobile" msgid="5669109209055988308">"मोबाइल डेटा निष्क्रिय पार्ने हो?"</string>
+    <string name="data_usage_disable_mobile" msgid="5669109209055988308">"मोबाइल डेटा अफ गर्ने हो?"</string>
     <string name="sim_selection_required_pref" msgid="6985901872978341314">"चयन गर्न आवश्यक छ"</string>
     <string name="sim_change_data_title" msgid="9142726786345906606">"डेटा सिम परिवर्तन गर्ने हो?"</string>
     <string name="sim_change_data_message" msgid="3567358694255933280">"मोबाइल डेटाका लागि <xliff:g id="OLD_SIM">%2$s</xliff:g> को सट्टा <xliff:g id="NEW_SIM">%1$s</xliff:g> को प्रयोग गर्ने हो?"</string>
@@ -845,8 +845,7 @@
     <string name="radio_info_radio_power" msgid="8805595022160471587">"मोबाइल रेडियोको पावर"</string>
     <string name="simulate_out_of_service_string" msgid="7787925611727597193">"\"सेवा उपलब्ध छैन\" सिमुलेट गर्नुहोस् (डिबग बिल्डमा मात्र सिमुलेट गर्न मिल्छ)"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"सेवा प्रदायकको स्याटेलाइट मोडको परीक्षण गर्नुहोस् (डिबग बिल्ड मात्र)"</string>
-    <!-- no translation found for esos_satellite_string (7291726039210940609) -->
-    <skip />
+    <string name="esos_satellite_string" msgid="7274794226125968657">"वास्तविक स्याटेलाइट eSOS मोड परीक्षण गर्नुहोस् (डिबग बिल्ड मात्र)"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"SIM को ठेगाना पुस्तिका हेर्नुहोस्"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"स्थिर डायल गर्ने नम्बरहरू हेर्नुहोस्"</string>
     <string name="radioInfo_menu_viewSDN" msgid="2613431584522392842">"सेवामा डायल गर्ने नम्बरहरू हेर्नुहोस्"</string>

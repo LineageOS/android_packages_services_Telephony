@@ -845,7 +845,7 @@
     <string name="radio_info_radio_power" msgid="8805595022160471587">"모바일 무선 전력"</string>
     <string name="simulate_out_of_service_string" msgid="7787925611727597193">"\'서비스 지역 벗어남\' 시뮬레이션(디버그 빌드만 해당)"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"모의 이동통신사 위성 모드(디버그 빌드만 해당)"</string>
-    <!-- no translation found for esos_satellite_string (7291726039210940609) -->
+    <!-- no translation found for esos_satellite_string (7274794226125968657) -->
     <skip />
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"SIM 주소록 보기"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"발신 허용 번호 보기"</string>

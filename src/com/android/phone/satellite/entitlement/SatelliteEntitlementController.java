@@ -67,6 +67,7 @@ public class SatelliteEntitlementController extends Handler {
     /** Message code used in handleMessage() */
     private static final int CMD_START_QUERY_ENTITLEMENT = 1;
     private static final int CMD_RETRY_QUERY_ENTITLEMENT = 2;
+    private static final int CMD_SIM_REFRESH = 3;
 
     /** Retry on next trigger event. */
     private static final int HTTP_RESPONSE_500 = 500;
@@ -161,6 +162,7 @@ public class SatelliteEntitlementController extends Handler {
         intentFilter.addAction(Intent.ACTION_AIRPLANE_MODE_CHANGED);
         context.registerReceiver(mReceiver, intentFilter);
         mEntitlementMetricsStats = EntitlementMetricsStats.getOrCreateInstance();
+        SatelliteController.getInstance().registerIccRefresh(this, CMD_SIM_REFRESH);
     }
 
     @Override
@@ -171,6 +173,9 @@ public class SatelliteEntitlementController extends Handler {
                 break;
             case CMD_RETRY_QUERY_ENTITLEMENT:
                 handleCmdRetryQueryEntitlement(msg.arg1);
+                break;
+            case CMD_SIM_REFRESH:
+                handleSimRefresh();
                 break;
             default:
                 logd("do not used this message");
@@ -225,6 +230,12 @@ public class SatelliteEntitlementController extends Handler {
         if (!airplaneMode) {
             resetEntitlementQueryCounts(Intent.ACTION_AIRPLANE_MODE_CHANGED);
         }
+    }
+
+    private void handleSimRefresh() {
+        resetEntitlementQueryCounts(cmdToString(CMD_SIM_REFRESH));
+        sendMessageDelayed(obtainMessage(CMD_START_QUERY_ENTITLEMENT),
+                TimeUnit.SECONDS.toMillis(10));
     }
 
     private boolean isInternetConnected() {
@@ -657,6 +668,15 @@ public class SatelliteEntitlementController extends Handler {
                 return SatelliteConstants.SATELLITE_ENTITLEMENT_STATUS_PROVISIONING;
             default:
                 return SatelliteConstants.SATELLITE_ENTITLEMENT_STATUS_UNKNOWN;
+        }
+    }
+
+    private static String cmdToString(int cmd) {
+        switch (cmd) {
+            case CMD_SIM_REFRESH:
+                return "SIM_REFRESH";
+            default:
+                return "UNKNOWN(" + cmd + ")";
         }
     }
 

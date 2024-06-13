@@ -845,7 +845,7 @@
     <string name="radio_info_radio_power" msgid="8805595022160471587">"ພະລັງງານວິທະຍຸມືຖື"</string>
     <string name="simulate_out_of_service_string" msgid="7787925611727597193">"ຈໍາລອງເຫດການບໍ່ພ້ອມໃຫ້ບໍລິການ (ສໍາລັບ Build ດີບັກເທົ່ານັ້ນ)"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"ຈຳລອງໂໝດດາວທຽມຂອງຜູ້ໃຫ້ບໍລິການ (ສຳລັບ Build ດີບັກເທົ່ານັ້ນ)"</string>
-    <!-- no translation found for esos_satellite_string (7291726039210940609) -->
+    <!-- no translation found for esos_satellite_string (7274794226125968657) -->
     <skip />
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"ເບິ່ງສະໝຸດທີ່ຢູ່ໃນຊິມ"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"ເບິ່ງໝາຍເລກໂທອອກທີ່ກຳນົດ"</string>
