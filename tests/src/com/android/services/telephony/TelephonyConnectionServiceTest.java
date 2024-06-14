@@ -3000,6 +3000,41 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
     }
 
     @Test
+    public void testDomainSelectionSwitchPhones() throws Exception {
+        setupForCallTest();
+
+        doReturn(CompletableFuture.completedFuture(EMERGENCY_PERM_FAILURE))
+                .when(mEmergencyStateTracker)
+                .startEmergencyCall(eq(mPhone0), any(), eq(false));
+        doReturn(CompletableFuture.completedFuture(NOT_DISCONNECTED))
+                .when(mEmergencyStateTracker)
+                .startEmergencyCall(eq(mPhone1), any(), eq(false));
+
+        doReturn(mEmergencyCallDomainSelectionConnection).when(mDomainSelectionResolver)
+                .getDomainSelectionConnection(any(), anyInt(), eq(true));
+        doReturn(true).when(mTelephonyManagerProxy).isCurrentEmergencyNumber(anyString());
+
+        doReturn(true).when(mDomainSelectionResolver).isDomainSelectionSupported();
+
+        mTestConnectionService.onCreateOutgoingConnection(PHONE_ACCOUNT_HANDLE_1,
+                createConnectionRequest(PHONE_ACCOUNT_HANDLE_1,
+                        TEST_EMERGENCY_NUMBER, TELECOM_CALL_ID1));
+
+        ArgumentCaptor<DomainSelectionService.SelectionAttributes> attrCaptor =
+                ArgumentCaptor.forClass(
+                        DomainSelectionService.SelectionAttributes.class);
+
+        verify(mEmergencyStateTracker).startEmergencyCall(eq(mPhone0), any(), anyBoolean());
+        verify(mEmergencyStateTracker).startEmergencyCall(eq(mPhone1), any(), anyBoolean());
+        verify(mEmergencyCallDomainSelectionConnection).createEmergencyConnection(
+                attrCaptor.capture(), any());
+
+        DomainSelectionService.SelectionAttributes attr = attrCaptor.getValue();
+
+        assertEquals(mPhone1.getPhoneId(), attr.getSlotIndex());
+    }
+
+    @Test
     public void testOnSelectionTerminatedPerm() throws Exception {
         setupForCallTest();
 
