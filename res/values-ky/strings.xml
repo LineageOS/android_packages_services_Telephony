@@ -134,6 +134,8 @@
     <string name="updating_title" msgid="6130548922615719689">"Чалуу параметрлери"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Чалуу параметрлерин администратор гана өзгөртө алат."</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Телефондогу аккаунттун параметрлерин администратор же жумуштагы колдонуучу гана өзгөртө алат."</string>
+    <!-- no translation found for phone_account_no_config_mobile_networks (7351062247756521227) -->
+    <skip />
     <string name="call_settings_with_label" msgid="8460230435361579511">"Параметрлер (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Чалуу жөндөөлөрүндө ката кетти"</string>
     <string name="reading_settings" msgid="1605904432450871183">"Параметрлер окулууда…"</string>
@@ -845,8 +847,7 @@
     <string name="radio_info_radio_power" msgid="8805595022160471587">"Мобилдик радионун кубаты"</string>
     <string name="simulate_out_of_service_string" msgid="7787925611727597193">"Тейлөө аймагынын сыртында режимин иштетүү (Мүчүлүштүктөрдү оңдоо үчүн гана)"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"Симуляцияланган байланыш операторунун спутниги (Мүчүлүштүктөрдү оңдоо үчүн гана)"</string>
-    <!-- no translation found for esos_satellite_string (7274794226125968657) -->
-    <skip />
+    <string name="esos_satellite_string" msgid="7274794226125968657">"Чыныгы спутник eSOS режимин сыноо (Мүчүлүштүктөрдү оңдоо үчүн гана)"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"SIM картадагы дарек китепчесин көрүү"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"Туруктуу терүү номерлерин көрүү"</string>
     <string name="radioInfo_menu_viewSDN" msgid="2613431584522392842">"Кызматтык терүү номерлерин көрүү"</string>

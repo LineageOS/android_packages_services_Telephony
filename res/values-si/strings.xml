@@ -134,6 +134,8 @@
     <string name="updating_title" msgid="6130548922615719689">"ඇමතුම් සැකසීම්"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"ඇමතුම් සැකසීම් වෙනස් කළ හැක්කේ පරිපාලක පරිශීලකයාට පමණි."</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"දුරකථන ගිණුම් සැකසීම් වෙනස් කළ හැක්කේ පරිපාලක හෝ කාර්යාල පරිශීලකයාට පමණි."</string>
+    <!-- no translation found for phone_account_no_config_mobile_networks (7351062247756521227) -->
+    <skip />
     <string name="call_settings_with_label" msgid="8460230435361579511">"සැකසීම් (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"ඇමතුම් සැකසුම් දෝෂය"</string>
     <string name="reading_settings" msgid="1605904432450871183">"සැකසුම් කියවමින්…"</string>
@@ -845,8 +847,7 @@
     <string name="radio_info_radio_power" msgid="8805595022160471587">"ජංගම රේඩියෝ බලය"</string>
     <string name="simulate_out_of_service_string" msgid="7787925611727597193">"සේවයෙන් බැහැරව අනුකරණය කරන්න (නිදොස් තැනුම පමණි)"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"ආදර්ශ වාහක චන්ද්‍රිකා ප්‍රකාරය (නිදොස් තැනීමට පමණි)"</string>
-    <!-- no translation found for esos_satellite_string (7274794226125968657) -->
-    <skip />
+    <string name="esos_satellite_string" msgid="7274794226125968657">"සැබෑ චන්ද්‍රිකා eSOS ප්‍රකාරය පරීක්ෂා කරන්න (නිදොස් තැනීමට පමණි)"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"SIM ලිපින පොත බලන්න"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"ස්ථාවර ඇමතුම් අංක පෙන්වන්න"</string>
     <string name="radioInfo_menu_viewSDN" msgid="2613431584522392842">"සේවා ඩයල් කිරීමේ අංක පෙන්වන්න"</string>

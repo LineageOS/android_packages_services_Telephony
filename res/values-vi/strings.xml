@@ -134,6 +134,8 @@
     <string name="updating_title" msgid="6130548922615719689">"Cài đặt cuộc gọi"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Chỉ người dùng quản trị mới có thể thay đổi cài đặt cuộc gọi."</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Chỉ quản trị viên hoặc người dùng tài khoản cho công việc mới có thể thay đổi chế độ cài đặt tài khoản điện thoại."</string>
+    <!-- no translation found for phone_account_no_config_mobile_networks (7351062247756521227) -->
+    <skip />
     <string name="call_settings_with_label" msgid="8460230435361579511">"Cài đặt (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Lỗi cài đặt cuộc gọi"</string>
     <string name="reading_settings" msgid="1605904432450871183">"Đang đọc các tùy chọn cài đặt…"</string>
@@ -845,8 +847,7 @@
     <string name="radio_info_radio_power" msgid="8805595022160471587">"Cường độ của sóng di động"</string>
     <string name="simulate_out_of_service_string" msgid="7787925611727597193">"Mô phỏng thiết bị không hoạt động (chỉ dành cho bản gỡ lỗi)"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"Mô phỏng chế độ vệ tinh của nhà mạng (chỉ dành cho Bản gỡ lỗi)"</string>
-    <!-- no translation found for esos_satellite_string (7274794226125968657) -->
-    <skip />
+    <string name="esos_satellite_string" msgid="7274794226125968657">"Thử nghiệm chế độ eSOS thực tế qua vệ tinh (chỉ bản gỡ lỗi)"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"Xem sổ địa chỉ trên SIM"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"Xem số gọi định sẵn"</string>
     <string name="radioInfo_menu_viewSDN" msgid="2613431584522392842">"Xem số quay số dịch vụ"</string>

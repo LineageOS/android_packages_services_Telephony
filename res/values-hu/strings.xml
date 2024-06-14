@@ -134,6 +134,8 @@
     <string name="updating_title" msgid="6130548922615719689">"Hívásbeállítások"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"A hívásbeállításokat csak a rendszergazda módosíthatja."</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"A telefon fiókbeállításait csak az adminisztrátor vagy munkahelyi felhasználó módosíthatja."</string>
+    <!-- no translation found for phone_account_no_config_mobile_networks (7351062247756521227) -->
+    <skip />
     <string name="call_settings_with_label" msgid="8460230435361579511">"Beállítások (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Hiba a hívásbeállításokban"</string>
     <string name="reading_settings" msgid="1605904432450871183">"Beállítások olvasása..."</string>

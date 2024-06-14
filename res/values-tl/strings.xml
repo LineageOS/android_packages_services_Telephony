@@ -134,6 +134,8 @@
     <string name="updating_title" msgid="6130548922615719689">"Mga setting ng tawag"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Ang admin user lang ang maaaring magbago sa mga setting ng tawag."</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Ang admin o user sa trabaho lang ang puwedeng magbago sa mga setting ng account ng telepono."</string>
+    <!-- no translation found for phone_account_no_config_mobile_networks (7351062247756521227) -->
+    <skip />
     <string name="call_settings_with_label" msgid="8460230435361579511">"Mga Setting (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Error sa mga setting ng tawag"</string>
     <string name="reading_settings" msgid="1605904432450871183">"Binabasa ang mga setting…"</string>
