@@ -20,6 +20,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.OutcomeReceiver;
+import android.telephony.SubscriptionInfo;
+import android.telephony.SubscriptionManager;
+import android.telephony.satellite.EnableRequestAttributes;
 import android.telephony.satellite.SatelliteCapabilities;
 import android.telephony.satellite.SatelliteManager;
 import android.telephony.satellite.stub.SatelliteResult;
@@ -28,6 +31,7 @@ import android.view.View.OnClickListener;
 import android.widget.TextView;
 
 import java.time.Duration;
+import java.util.List;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
@@ -40,11 +44,13 @@ public class SatelliteControl extends Activity {
     private static final long TIMEOUT = 3000;
 
     private SatelliteManager mSatelliteManager;
+    private SubscriptionManager mSubscriptionManager;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mSatelliteManager = getSystemService(SatelliteManager.class);
+        mSubscriptionManager = getSystemService(SubscriptionManager.class);
 
         setContentView(R.layout.activity_SatelliteControl);
         findViewById(R.id.enableSatellite)
@@ -52,18 +58,29 @@ public class SatelliteControl extends Activity {
         findViewById(R.id.disableSatellite)
                 .setOnClickListener(this::disableSatelliteApp);
         findViewById(R.id.requestIsSatelliteEnabled)
-                .setOnClickListener(this::requestIsSatelliteEnabledApp);
+                .setOnClickListener(this::requestIsEnabledApp);
         findViewById(R.id.requestIsDemoModeEnabled)
                 .setOnClickListener(this::requestIsDemoModeEnabledApp);
         findViewById(R.id.requestIsSatelliteSupported)
-                .setOnClickListener(this::requestIsSatelliteSupportedApp);
+                .setOnClickListener(this::requestIsSupportedApp);
         findViewById(R.id.requestSatelliteCapabilities)
-                .setOnClickListener(this::requestSatelliteCapabilitiesApp);
+                .setOnClickListener(this::requestCapabilitiesApp);
         findViewById(R.id.requestIsSatelliteCommunicationAllowedForCurrentLocation)
-                .setOnClickListener(
-                this::requestIsSatelliteCommunicationAllowedForCurrentLocationApp);
+                .setOnClickListener(this::requestIsCommunicationAllowedForCurrentLocationApp);
         findViewById(R.id.requestTimeForNextSatelliteVisibility)
                 .setOnClickListener(this::requestTimeForNextSatelliteVisibilityApp);
+        findViewById(R.id.removeUserRestrictReason)
+                .setOnClickListener(this::removeUserRestrictReasonApp);
+        findViewById(R.id.addUserRestrictReason)
+                .setOnClickListener(this::addUserRestrictReasonApp);
+        findViewById(R.id.getSatellitePlmn)
+                .setOnClickListener(this::getSatellitePlmnApp);
+        findViewById(R.id.getAllSatellitePlmn)
+                .setOnClickListener(this::getAllSatellitePlmnApp);
+        findViewById(R.id.isSatelliteEnabledForCarrier)
+                .setOnClickListener(this::isSatelliteEnabledForCarrierApp);
+        findViewById(R.id.isRequestIsSatelliteEnabledForCarrier)
+                .setOnClickListener(this::isRequestIsSatelliteEnabledForCarrierApp);
         findViewById(R.id.Back).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -74,7 +91,9 @@ public class SatelliteControl extends Activity {
 
     private void enableSatelliteApp(View view) {
         LinkedBlockingQueue<Integer> error = new LinkedBlockingQueue<>(1);
-        mSatelliteManager.requestSatelliteEnabled(true, true, Runnable::run, error::offer);
+        mSatelliteManager.requestEnabled(
+                new EnableRequestAttributes.Builder(true).setDemoMode(true).build(),
+                Runnable::run, error::offer);
         TextView textView = findViewById(R.id.text_id);
         try {
             Integer value = error.poll(TIMEOUT, TimeUnit.MILLISECONDS);
@@ -93,7 +112,8 @@ public class SatelliteControl extends Activity {
 
     private void disableSatelliteApp(View view) {
         LinkedBlockingQueue<Integer> error = new LinkedBlockingQueue<>(1);
-        mSatelliteManager.requestSatelliteEnabled(false, true, Runnable::run, error::offer);
+        mSatelliteManager.requestEnabled(new EnableRequestAttributes.Builder(false).build(),
+                Runnable::run, error::offer);
         TextView textView = findViewById(R.id.text_id);
         try {
             Integer value = error.poll(TIMEOUT, TimeUnit.MILLISECONDS);
@@ -110,7 +130,7 @@ public class SatelliteControl extends Activity {
         }
     }
 
-    private void requestIsSatelliteEnabledApp(View view) {
+    private void requestIsEnabledApp(View view) {
         final AtomicReference<Boolean> enabled = new AtomicReference<>();
         final AtomicReference<Integer> errorCode = new AtomicReference<>();
         OutcomeReceiver<Boolean, SatelliteManager.SatelliteException> receiver =
@@ -120,9 +140,9 @@ public class SatelliteControl extends Activity {
                 enabled.set(result);
                 TextView textView = findViewById(R.id.text_id);
                 if (enabled.get()) {
-                    textView.setText("requestIsSatelliteEnabled is true");
+                    textView.setText("requestIsEnabled is true");
                 } else {
-                    textView.setText("Status for requestIsSatelliteEnabled result : "
+                    textView.setText("Status for requestIsEnabled result : "
                             + enabled.get());
                 }
             }
@@ -131,11 +151,11 @@ public class SatelliteControl extends Activity {
             public void onError(SatelliteManager.SatelliteException exception) {
                 errorCode.set(exception.getErrorCode());
                 TextView textView = findViewById(R.id.text_id);
-                textView.setText("Status for requestIsSatelliteEnabled error : "
+                textView.setText("Status for requestIsEnabled error : "
                         + SatelliteErrorUtils.mapError(errorCode.get()));
             }
         };
-        mSatelliteManager.requestIsSatelliteEnabled(Runnable::run, receiver);
+        mSatelliteManager.requestIsEnabled(Runnable::run, receiver);
     }
 
     private void requestIsDemoModeEnabledApp(View view) {
@@ -166,7 +186,7 @@ public class SatelliteControl extends Activity {
         mSatelliteManager.requestIsDemoModeEnabled(Runnable::run, receiver);
     }
 
-    private void requestIsSatelliteSupportedApp(View view) {
+    private void requestIsSupportedApp(View view) {
         final AtomicReference<Boolean> enabled = new AtomicReference<>();
         final AtomicReference<Integer> errorCode = new AtomicReference<>();
         OutcomeReceiver<Boolean, SatelliteManager.SatelliteException> receiver =
@@ -176,9 +196,9 @@ public class SatelliteControl extends Activity {
                 enabled.set(result);
                 TextView textView = findViewById(R.id.text_id);
                 if (enabled.get()) {
-                    textView.setText("requestIsSatelliteSupported is true");
+                    textView.setText("requestIsSupported is true");
                 } else {
-                    textView.setText("Status for requestIsSatelliteSupported result : "
+                    textView.setText("Status for requestIsSupported result : "
                             + enabled.get());
                 }
             }
@@ -187,14 +207,14 @@ public class SatelliteControl extends Activity {
             public void onError(SatelliteManager.SatelliteException exception) {
                 errorCode.set(exception.getErrorCode());
                 TextView textView = findViewById(R.id.text_id);
-                textView.setText("Status for requestIsSatelliteSupported error : "
+                textView.setText("Status for requestIsSupported error : "
                         + SatelliteErrorUtils.mapError(errorCode.get()));
             }
         };
-        mSatelliteManager.requestIsSatelliteSupported(Runnable::run, receiver);
+        mSatelliteManager.requestIsSupported(Runnable::run, receiver);
     }
 
-    private void requestSatelliteCapabilitiesApp(View view) {
+    private void requestCapabilitiesApp(View view) {
         final AtomicReference<SatelliteCapabilities> capabilities = new AtomicReference<>();
         final AtomicReference<Integer> errorCode = new AtomicReference<>();
         OutcomeReceiver<SatelliteCapabilities, SatelliteManager.SatelliteException> receiver =
@@ -203,7 +223,7 @@ public class SatelliteControl extends Activity {
             public void onResult(SatelliteCapabilities result) {
                 capabilities.set(result);
                 TextView textView = findViewById(R.id.text_id);
-                textView.setText("Status for requestSatelliteCapabilities result: "
+                textView.setText("Status for requestCapabilities result: "
                         + capabilities.get());
             }
 
@@ -211,17 +231,17 @@ public class SatelliteControl extends Activity {
             public void onError(SatelliteManager.SatelliteException exception) {
                 errorCode.set(exception.getErrorCode());
                 TextView textView = findViewById(R.id.text_id);
-                textView.setText("Status for requestSatelliteCapabilities error : "
+                textView.setText("Status for requestCapabilities error : "
                         + SatelliteErrorUtils.mapError(errorCode.get()));
             }
         };
-        mSatelliteManager.requestSatelliteCapabilities(Runnable::run, receiver);
+        mSatelliteManager.requestCapabilities(Runnable::run, receiver);
     }
 
-    private void requestIsSatelliteCommunicationAllowedForCurrentLocationApp(View view) {
+    private void requestIsCommunicationAllowedForCurrentLocationApp(View view) {
         final AtomicReference<Boolean> enabled = new AtomicReference<>();
         final AtomicReference<Integer> errorCode = new AtomicReference<>();
-        String display = "requestIsSatelliteCommunicationAllowedForCurrentLocation";
+        String display = "requestIsCommunicationAllowedForCurrentLocation";
         OutcomeReceiver<Boolean, SatelliteManager.SatelliteException> receiver =
                 new OutcomeReceiver<>() {
             @Override
@@ -244,7 +264,7 @@ public class SatelliteControl extends Activity {
                         + SatelliteErrorUtils.mapError(errorCode.get()));
             }
         };
-        mSatelliteManager.requestIsSatelliteCommunicationAllowedForCurrentLocation(Runnable::run,
+        mSatelliteManager.requestIsCommunicationAllowedForCurrentLocation(Runnable::run,
                 receiver);
     }
 
@@ -270,5 +290,88 @@ public class SatelliteControl extends Activity {
             }
         };
         mSatelliteManager.requestTimeForNextSatelliteVisibility(Runnable::run, receiver);
+    }
+
+    private void removeUserRestrictReasonApp(View view) {
+        TextView textView = findViewById(R.id.text_id);
+        LinkedBlockingQueue<Integer> error = new LinkedBlockingQueue<>(1);
+        List<SubscriptionInfo> infoList = mSubscriptionManager.getAvailableSubscriptionInfoList();
+        List<Integer> subIdList = infoList.stream()
+                .map(SubscriptionInfo::getSubscriptionId)
+                .toList();
+        for (int subId : subIdList) {
+            mSatelliteManager.removeAttachRestrictionForCarrier(subId,
+                    SatelliteManager.SATELLITE_COMMUNICATION_RESTRICTION_REASON_USER,
+                    Runnable::run, error::offer);
+        }
+
+        try {
+            Integer value = error.poll(TIMEOUT, TimeUnit.MILLISECONDS);
+            if (value == null) {
+                textView.setText("Timed out to removeAttachRestrictionForCarrier");
+            } else if (value != SatelliteResult.SATELLITE_RESULT_SUCCESS) {
+                textView.setText("Failed to removeAttachRestrictionForCarrier with error = "
+                        + SatelliteErrorUtils.mapError(value));
+            } else {
+                textView.setText(subIdList == null || subIdList.isEmpty() ? "no active subId list" :
+                        "removeAttachRestrictionForCarrier for all subIdList=" + subIdList);
+            }
+        } catch (InterruptedException e) {
+            textView.setText("removeAttachRestrictionForCarrier exception caught =" + e);
+        }
+    }
+
+    private void addUserRestrictReasonApp(View view) {
+        TextView textView = findViewById(R.id.text_id);
+        LinkedBlockingQueue<Integer> error = new LinkedBlockingQueue<>(1);
+        List<SubscriptionInfo> infoList = mSubscriptionManager.getAvailableSubscriptionInfoList();
+        List<Integer> subIdList = infoList.stream()
+                .map(SubscriptionInfo::getSubscriptionId)
+                .toList();
+        for (int subId : subIdList) {
+            mSatelliteManager.addAttachRestrictionForCarrier(subId,
+                    SatelliteManager.SATELLITE_COMMUNICATION_RESTRICTION_REASON_USER,
+                    Runnable::run, error::offer);
+        }
+
+        try {
+            Integer value = error.poll(TIMEOUT, TimeUnit.MILLISECONDS);
+            if (value == null) {
+                textView.setText("Timed out to addAttachRestrictionForCarrier");
+            } else if (value != SatelliteResult.SATELLITE_RESULT_SUCCESS) {
+                textView.setText("Failed to addAttachRestrictionForCarrier with error = "
+                        + SatelliteErrorUtils.mapError(value));
+            } else {
+                textView.setText(subIdList == null || subIdList.isEmpty() ? "no active subId list" :
+                        "addAttachRestrictionForCarrier for all subIdList=" + subIdList);
+            }
+        } catch (InterruptedException e) {
+            textView.setText("addAttachRestrictionForCarrier exception caught =" + e);
+        }
+    }
+
+    private void getSatellitePlmnApp(View view) {
+        TextView textView = findViewById(R.id.text_id);
+        textView.setText("[SatelliteService] getSatellitePlmnApp = "
+                + SatelliteTestApp.getTestSatelliteService().getCarrierPlmnList());
+    }
+
+    private void getAllSatellitePlmnApp(View view) {
+        TextView textView = findViewById(R.id.text_id);
+        textView.setText("[SatelliteService] getAllSatellitePlmnApp = "
+                + SatelliteTestApp.getTestSatelliteService().getAllSatellitePlmnList());
+    }
+
+    private void isSatelliteEnabledForCarrierApp(View view) {
+        TextView textView = findViewById(R.id.text_id);
+        textView.setText("[SatelliteService] isSatelliteEnabledForCarrier= "
+                + SatelliteTestApp.getTestSatelliteService().isSatelliteEnabledForCarrier());
+    }
+
+    private void isRequestIsSatelliteEnabledForCarrierApp(View view) {
+        TextView textView = findViewById(R.id.text_id);
+        textView.setText("[SatelliteService] isRequestIsSatelliteEnabledForCarrier= "
+                + SatelliteTestApp.getTestSatelliteService()
+                .isRequestIsSatelliteEnabledForCarrier());
     }
 }

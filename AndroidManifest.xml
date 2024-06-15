@@ -71,6 +71,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.LOCATION_BYPASS" />
     <uses-permission android:name="android.permission.WRITE_APN_SETTINGS" />
     <uses-permission android:name="android.permission.BROADCAST_SMS"/>
     <uses-permission android:name="android.permission.BROADCAST_WAP_PUSH"/>
@@ -137,6 +138,7 @@
     <uses-permission android:name="android.permission.BIND_TELEPHONY_DATA_SERVICE" />
     <uses-permission android:name="android.permission.BIND_SATELLITE_GATEWAY_SERVICE" />
     <uses-permission android:name="android.permission.BIND_SATELLITE_SERVICE" />
+    <uses-permission android:name="android.permission.SATELLITE_COMMUNICATION" />
     <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS" />
     <uses-permission android:name="android.permission.READ_PRECISE_PHONE_STATE" />
     <uses-permission android:name="android.permission.MANAGE_ROLE_HOLDERS" />
@@ -167,9 +169,17 @@
     <!-- Needed to register for UWB state changes for satellite communication -->
     <uses-permission android:name="android.permission.UWB_PRIVILEGED"/>
 
-    <permission android:name="com.android.phone.permission.ACCESS_LAST_KNOWN_CELL_ID"
-                android:label="Access last known cell identity."
-                android:protectionLevel="signature"/>
+    <!-- Needed to initiate configuration update -->
+    <uses-permission android:name="android.permission.UPDATE_CONFIG"/>
+
+    <!-- Needed to bind the domain selection service. -->
+    <uses-permission android:name="android.permission.BIND_DOMAIN_SELECTION_SERVICE" />
+
+    <!-- Needed to send safety center updates for cellular transparency features   -->
+    <uses-permission android:name="android.permission.SEND_SAFETY_CENTER_UPDATE"/>
+
+    <!-- Needed because the DISPLAY_EMERGENCY_MESSAGE ConnectionEvent contains a PendingIntent to activate the satellite feature. -->
+    <uses-permission android:name="com.google.android.apps.stargate.permission.SEND_EMERGENCY_INTENTS"/>
 
     <application android:name="PhoneApp"
             android:persistent="true"
@@ -570,9 +580,28 @@
             </intent-filter>
         </receiver>
 
+        <!-- Update configuration data file -->
+        <receiver android:name="com.android.internal.telephony.configupdate.TelephonyConfigUpdateInstallReceiver"
+            android:exported="true"
+            android:permission="android.permission.UPDATE_CONFIG">
+            <intent-filter>
+                <action android:name="android.os.action.UPDATE_CONFIG" />
+                <data android:scheme="content" android:host="*" android:mimeType="*/*" />
+            </intent-filter>
+        </receiver>
+
         <receiver
             android:name="com.android.internal.telephony.uicc.ShowInstallAppNotificationReceiver"
             android:exported="false"/>
+
+        <receiver
+            android:name=".security.SafetySourceReceiver"
+            android:exported="false"
+            androidprv:systemUserOnly="true">
+            <intent-filter>
+                <action android:name="android.safetycenter.action.REFRESH_SAFETY_SOURCES"/>
+            </intent-filter>
+        </receiver>
 
         <activity
             android:name="com.android.phone.settings.PickSmsSubscriptionActivity"
@@ -626,5 +655,13 @@
             android:multiprocess="false"
             android:singleUser="true"
             android:writePermission="android.permission.MODIFY_PHONE_STATE"/>
+
+        <service android:name="com.android.services.telephony.domainselection.TelephonyDomainSelectionService"
+            android:exported="true"
+            android:permission="android.permission.BIND_DOMAIN_SELECTION_SERVICE">
+            <intent-filter>
+                <action android:name="android.telephony.DomainSelectionService"/>
+            </intent-filter>
+        </service>
     </application>
 </manifest>

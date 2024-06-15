@@ -37,9 +37,9 @@ import android.telephony.DomainSelectionService.SelectionAttributes;
 import android.telephony.NetworkRegistrationInfo;
 import android.telephony.TransportSelectorCallback;
 import android.telephony.WwanSelectorCallback;
-import android.test.suitebuilder.annotation.SmallTest;
 import android.testing.TestableLooper;
 
+import androidx.test.filters.SmallTest;
 import androidx.test.runner.AndroidJUnit4;
 
 import com.android.TestContext;
@@ -186,21 +186,6 @@ public class SmsDomainSelectorTest {
         verify(mWwanSelectorCallback).onDomainSelected(eq(NetworkRegistrationInfo.DOMAIN_PS),
                 eq(false));
         assertFalse(mDomainSelector.isDomainSelectionRequested());
-    }
-
-    @Test
-    @SmallTest
-    public void testCancelSelection() {
-        setUpImsStateTracker(AccessNetworkType.EUTRAN);
-
-        mDomainSelector.selectDomain(mSelectionAttributes, mTransportSelectorCallback);
-
-        assertTrue(mDomainSelector.isDomainSelectionRequested());
-
-        mDomainSelector.cancelSelection();
-
-        assertFalse(mDomainSelector.isDomainSelectionRequested());
-        verify(mDomainSelectorDestroyListener).onDomainSelectorDestroyed(eq(mDomainSelector));
     }
 
     @Test

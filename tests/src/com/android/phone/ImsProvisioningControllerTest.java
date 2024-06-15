@@ -68,9 +68,10 @@ import android.telephony.ims.feature.MmTelFeature.MmTelCapabilities;
 import android.telephony.ims.feature.RcsFeature.RcsImsCapabilities;
 import android.telephony.ims.stub.ImsConfigImplBase;
 import android.telephony.ims.stub.ImsRegistrationImplBase;
-import android.test.suitebuilder.annotation.SmallTest;
 import android.testing.TestableLooper;
 import android.util.Log;
+
+import androidx.test.filters.SmallTest;
 
 import com.android.ims.FeatureConnector;
 import com.android.ims.ImsConfig;

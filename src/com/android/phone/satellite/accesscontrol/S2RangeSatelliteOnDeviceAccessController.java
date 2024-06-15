@@ -63,9 +63,9 @@ final class S2RangeSatelliteOnDeviceAccessController extends SatelliteOnDeviceAc
         return new S2RangeSatelliteOnDeviceAccessController(reader, s2Level);
     }
 
-    @Override
-    public LocationToken createLocationTokenForLatLng(double latDegrees, double lngDegrees) {
-        return new LocationTokenImpl(getS2CellId(latDegrees, lngDegrees).id());
+    public static LocationToken createLocationTokenForLatLng(
+            double latDegrees, double lngDegrees, int s2Level) {
+        return new LocationTokenImpl(getS2CellId(latDegrees, lngDegrees, s2Level).id());
     }
 
     @Override
@@ -76,6 +76,11 @@ final class S2RangeSatelliteOnDeviceAccessController extends SatelliteOnDeviceAc
         }
         LocationTokenImpl locationTokenImpl = (LocationTokenImpl) locationToken;
         return isSatCommunicationAllowedAtLocation(locationTokenImpl.getS2CellId());
+    }
+
+    @Override
+    public int getS2Level() {
+        return mS2Level;
     }
 
     private boolean isSatCommunicationAllowedAtLocation(long s2CellId) throws IOException {
@@ -91,12 +96,12 @@ final class S2RangeSatelliteOnDeviceAccessController extends SatelliteOnDeviceAc
         }
     }
 
-    private S2CellId getS2CellId(double latDegrees, double lngDegrees) {
+    private static S2CellId getS2CellId(double latDegrees, double lngDegrees, int s2Level) {
         // Create the leaf S2 cell containing the given S2LatLng
         S2CellId cellId = S2CellId.fromLatLng(S2LatLng.fromDegrees(latDegrees, lngDegrees));
 
         // Return the S2 cell at the expected S2 level
-        return cellId.parent(mS2Level);
+        return cellId.parent(s2Level);
     }
 
     @Override

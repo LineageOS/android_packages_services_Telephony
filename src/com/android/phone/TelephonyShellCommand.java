@@ -24,6 +24,9 @@ import static com.android.internal.telephony.d2d.Communicator.MESSAGE_DEVICE_NET
 import static java.util.Map.entry;
 
 import android.Manifest;
+import android.annotation.NonNull;
+import android.annotation.Nullable;
+import android.content.ComponentName;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Binder;
@@ -65,6 +68,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -187,12 +191,24 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             "set-satellite-listening-timeout-duration";
     private static final String SET_SATELLITE_POINTING_UI_CLASS_NAME =
             "set-satellite-pointing-ui-class-name";
-    private static final String SET_SATELLITE_DEVICE_ALIGNED_TIMEOUT_DURATION =
-            "set-satellite-device-aligned-timeout-duration";
+    private static final String SET_DATAGRAM_CONTROLLER_TIMEOUT_DURATION =
+            "set-datagram-controller-timeout-duration";
+
+    private static final String SET_SATELLITE_CONTROLLER_TIMEOUT_DURATION =
+            "set-satellite-controller-timeout-duration";
     private static final String SET_EMERGENCY_CALL_TO_SATELLITE_HANDOVER_TYPE =
             "set-emergency-call-to-satellite-handover-type";
+    private static final String SET_COUNTRY_CODES = "set-country-codes";
+    private static final String SET_SATELLITE_ACCESS_CONTROL_OVERLAY_CONFIGS =
+            "set-satellite-access-control-overlay-configs";
+    private static final String SET_OEM_ENABLED_SATELLITE_PROVISION_STATUS =
+            "set-oem-enabled-satellite-provision-status";
     private static final String SET_SHOULD_SEND_DATAGRAM_TO_MODEM_IN_DEMO_MODE =
             "set-should-send-datagram-to-modem-in-demo-mode";
+
+    private static final String DOMAIN_SELECTION_SUBCOMMAND = "domainselection";
+    private static final String DOMAIN_SELECTION_SET_SERVICE_OVERRIDE = "set-dss-override";
+    private static final String DOMAIN_SELECTION_CLEAR_SERVICE_OVERRIDE = "clear-dss-override";
 
     private static final String INVALID_ENTRY_ERROR = "An emergency number (only allow '0'-'9', "
             + "'*', '#' or '+') needs to be specified after -a in the command ";
@@ -374,6 +390,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                 return setCarrierServicePackageOverride();
             case CLEAR_CARRIER_SERVICE_PACKAGE_OVERRIDE:
                 return clearCarrierServicePackageOverride();
+            case DOMAIN_SELECTION_SUBCOMMAND:
+                return handleDomainSelectionCommand();
             case SET_SATELLITE_SERVICE_PACKAGE_NAME:
                 return handleSetSatelliteServicePackageNameCommand();
             case SET_SATELLITE_GATEWAY_SERVICE_PACKAGE_NAME:
@@ -382,12 +400,20 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                 return handleSetSatelliteListeningTimeoutDuration();
             case SET_SATELLITE_POINTING_UI_CLASS_NAME:
                 return handleSetSatellitePointingUiClassNameCommand();
-            case SET_SATELLITE_DEVICE_ALIGNED_TIMEOUT_DURATION:
-                return handleSettSatelliteDeviceAlignedTimeoutDuration();
+            case SET_DATAGRAM_CONTROLLER_TIMEOUT_DURATION:
+                return handleSetDatagramControllerTimeoutDuration();
+            case SET_SATELLITE_CONTROLLER_TIMEOUT_DURATION:
+                return handleSetSatelliteControllerTimeoutDuration();
             case SET_EMERGENCY_CALL_TO_SATELLITE_HANDOVER_TYPE:
                 return handleSetEmergencyCallToSatelliteHandoverType();
             case SET_SHOULD_SEND_DATAGRAM_TO_MODEM_IN_DEMO_MODE:
                 return handleSetShouldSendDatagramToModemInDemoMode();
+            case SET_SATELLITE_ACCESS_CONTROL_OVERLAY_CONFIGS:
+                return handleSetSatelliteAccessControlOverlayConfigs();
+            case SET_COUNTRY_CODES:
+                return handleSetCountryCodes();
+            case SET_OEM_ENABLED_SATELLITE_PROVISION_STATUS:
+                return handleSetOemEnabledSatelliteProvisionStatus();
             default: {
                 return handleDefaultCommands(cmd);
             }
@@ -442,6 +468,7 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         onHelpRadio();
         onHelpImei();
         onHelpSatellite();
+        onHelpDomainSelection();
     }
 
     private void onHelpD2D() {
@@ -795,6 +822,29 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         pw.println("          If no option is specified, override is disabled.");
         pw.println("      -d: the delay in seconds in sending EVENT_DISPLAY_EMERGENCY_MESSAGE.");
         pw.println("          If no option is specified, there is no delay in sending the event.");
+        pw.println("  set-satellite-access-control-overlay-configs [-r -a -f SATELLITE_S2_FILE ");
+        pw.println("    -d LOCATION_FRESH_DURATION_NANOS -c COUNTRY_CODES] Override the overlay");
+        pw.println("    configs of satellite access controller.");
+        pw.println("    Options are:");
+        pw.println("      -r: clear the overriding. Absent means enable overriding.");
+        pw.println("      -a: the country codes is an allowed list. Absent means disallowed.");
+        pw.println("      -f: the satellite s2 file.");
+        pw.println("      -d: the location fresh duration nanos.");
+        pw.println("      -c: the list of satellite country codes separated by comma.");
+        pw.println("  set-country-codes [-r -n CURRENT_NETWORK_COUNTRY_CODES -c");
+        pw.println("    CACHED_NETWORK_COUNTRY_CODES -l LOCATION_COUNTRY_CODE -t");
+        pw.println("    LOCATION_COUNTRY_CODE_TIMESTAMP] ");
+        pw.println("    Override the cached location country code and its update timestamp. ");
+        pw.println("    Options are:");
+        pw.println("      -r: clear the overriding. Absent means enable overriding.");
+        pw.println("      -n: the current network country code ISOs.");
+        pw.println("      -c: the cached network country code ISOs.");
+        pw.println("      -l: the location country code ISO.");
+        pw.println("      -t: the update timestamp nanos of the location country code.");
+        pw.println("  set-oem-enabled-satellite-provision-status [-p true/false]");
+        pw.println("    Sets the OEM-enabled satellite provision status. Options are:");
+        pw.println("      -p: the overriding satellite provision status. If no option is ");
+        pw.println("          specified, reset the overridden provision status.");
     }
 
     private void onHelpImei() {
@@ -804,6 +854,15 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         pw.println("    Gets the device IMEI. Options are:");
         pw.println("      -s: the slot ID to get the IMEI. If no option");
         pw.println("          is specified, it will choose the default voice SIM slot.");
+    }
+
+    private void onHelpDomainSelection() {
+        PrintWriter pw = getOutPrintWriter();
+        pw.println("Domain Selection Commands:");
+        pw.println("  domainselection set-dss-override COMPONENT_NAME");
+        pw.println("    Sets the service defined in COMPONENT_NAME to be bound");
+        pw.println("  domainselection clear-dss-override");
+        pw.println("    Clears DomainSelectionService override.");
     }
 
     private int handleImsCommand() {
@@ -3314,31 +3373,85 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         return 0;
     }
 
-    private int handleSettSatelliteDeviceAlignedTimeoutDuration() {
+    private int handleSetDatagramControllerTimeoutDuration() {
         PrintWriter errPw = getErrPrintWriter();
+        boolean reset = false;
+        int timeoutType = 0;
         long timeoutMillis = 0;
 
         String opt;
         while ((opt = getNextOption()) != null) {
             switch (opt) {
-                case "-t": {
+                case "-d": {
                     timeoutMillis = Long.parseLong(getNextArgRequired());
+                    break;
+                }
+                case "-r": {
+                    reset = true;
+                    break;
+                }
+                case "-t": {
+                    timeoutType = Integer.parseInt(getNextArgRequired());
                     break;
                 }
             }
         }
-        Log.d(LOG_TAG, "handleSettSatelliteDeviceAlignedTimeoutDuration: timeoutMillis="
-                + timeoutMillis);
+        Log.d(LOG_TAG, "setDatagramControllerTimeoutDuration: timeoutMillis="
+                + timeoutMillis + ", reset=" + reset + ", timeoutType=" + timeoutType);
 
         try {
-            boolean result = mInterface.setSatelliteDeviceAlignedTimeoutDuration(timeoutMillis);
+            boolean result = mInterface.setDatagramControllerTimeoutDuration(
+                    reset, timeoutType, timeoutMillis);
             if (VDBG) {
-                Log.v(LOG_TAG, "setSatelliteDeviceAlignedTimeoutDuration " + timeoutMillis
+                Log.v(LOG_TAG, "setDatagramControllerTimeoutDuration " + timeoutMillis
                         + ", result = " + result);
             }
             getOutPrintWriter().println(result);
         } catch (RemoteException e) {
-            Log.w(LOG_TAG, "setSatelliteDeviceAlignedTimeoutDuration: " + timeoutMillis
+            Log.w(LOG_TAG, "setDatagramControllerTimeoutDuration: " + timeoutMillis
+                    + ", error = " + e.getMessage());
+            errPw.println("Exception: " + e.getMessage());
+            return -1;
+        }
+        return 0;
+    }
+
+    private int handleSetSatelliteControllerTimeoutDuration() {
+        PrintWriter errPw = getErrPrintWriter();
+        boolean reset = false;
+        int timeoutType = 0;
+        long timeoutMillis = 0;
+
+        String opt;
+        while ((opt = getNextOption()) != null) {
+            switch (opt) {
+                case "-d": {
+                    timeoutMillis = Long.parseLong(getNextArgRequired());
+                    break;
+                }
+                case "-r": {
+                    reset = true;
+                    break;
+                }
+                case "-t": {
+                    timeoutType = Integer.parseInt(getNextArgRequired());
+                    break;
+                }
+            }
+        }
+        Log.d(LOG_TAG, "setSatelliteControllerTimeoutDuration: timeoutMillis="
+                + timeoutMillis + ", reset=" + reset + ", timeoutType=" + timeoutType);
+
+        try {
+            boolean result = mInterface.setSatelliteControllerTimeoutDuration(
+                    reset, timeoutType, timeoutMillis);
+            if (VDBG) {
+                Log.v(LOG_TAG, "setSatelliteControllerTimeoutDuration " + timeoutMillis
+                        + ", result = " + result);
+            }
+            getOutPrintWriter().println(result);
+        } catch (RemoteException e) {
+            Log.w(LOG_TAG, "setSatelliteControllerTimeoutDuration: " + timeoutMillis
                     + ", error = " + e.getMessage());
             errPw.println("Exception: " + e.getMessage());
             return -1;
@@ -3392,6 +3505,186 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             return -1;
         }
         return 0;
+    }
+
+    private int handleSetSatelliteAccessControlOverlayConfigs() {
+        PrintWriter errPw = getErrPrintWriter();
+        boolean reset = false;
+        boolean isAllowed = false;
+        String s2CellFile = null;
+        long locationFreshDurationNanos = 0;
+        List<String> satelliteCountryCodes = null;
+
+        String opt;
+        while ((opt = getNextOption()) != null) {
+            switch (opt) {
+                case "-r": {
+                    reset = true;
+                    break;
+                }
+                case "-a": {
+                    isAllowed = true;
+                    break;
+                }
+                case "-f": {
+                    s2CellFile = getNextArgRequired();
+                    break;
+                }
+                case "-d": {
+                    locationFreshDurationNanos = Long.parseLong(getNextArgRequired());
+                    break;
+                }
+                case "-c": {
+                    String countryCodeStr = getNextArgRequired();
+                    satelliteCountryCodes = Arrays.asList(countryCodeStr.split(","));
+                    break;
+                }
+            }
+        }
+        Log.d(LOG_TAG, "handleSetSatelliteAccessControlOverlayConfigs: reset=" + reset
+                + ", isAllowed=" + isAllowed + ", s2CellFile=" + s2CellFile
+                + ", locationFreshDurationNanos=" + locationFreshDurationNanos
+                + ", satelliteCountryCodes=" + satelliteCountryCodes);
+
+        try {
+            boolean result = mInterface.setSatelliteAccessControlOverlayConfigs(reset, isAllowed,
+                    s2CellFile, locationFreshDurationNanos, satelliteCountryCodes);
+            if (VDBG) {
+                Log.v(LOG_TAG, "setSatelliteAccessControlOverlayConfigs result =" + result);
+            }
+            getOutPrintWriter().println(result);
+        } catch (RemoteException e) {
+            Log.e(LOG_TAG, "setSatelliteAccessControlOverlayConfigs: ex=" + e.getMessage());
+            errPw.println("Exception: " + e.getMessage());
+            return -1;
+        }
+        return 0;
+    }
+
+    private int handleSetCountryCodes() {
+        PrintWriter errPw = getErrPrintWriter();
+        List<String> currentNetworkCountryCodes = new ArrayList<>();
+        String locationCountryCode = null;
+        long locationCountryCodeTimestampNanos = 0;
+        Map<String, Long> cachedNetworkCountryCodes = new HashMap<>();
+        boolean reset = false;
+
+        String opt;
+        while ((opt = getNextOption()) != null) {
+            switch (opt) {
+                case "-r": {
+                    reset = true;
+                    break;
+                }
+                case "-n": {
+                    String countryCodeStr = getNextArgRequired();
+                    currentNetworkCountryCodes = Arrays.asList(countryCodeStr.split(","));
+                    break;
+                }
+                case "-c": {
+                    String cachedNetworkCountryCodeStr = getNextArgRequired();
+                    cachedNetworkCountryCodes = parseStringLongMap(cachedNetworkCountryCodeStr);
+                    break;
+                }
+                case "-l": {
+                    locationCountryCode = getNextArgRequired();
+                    break;
+                }
+                case "-t": {
+                    locationCountryCodeTimestampNanos = Long.parseLong(getNextArgRequired());
+                    break;
+                }
+            }
+        }
+        Log.d(LOG_TAG, "setCountryCodes: locationCountryCode="
+                + locationCountryCode + ", locationCountryCodeTimestampNanos="
+                + locationCountryCodeTimestampNanos + ", currentNetworkCountryCodes="
+                + currentNetworkCountryCodes);
+
+        try {
+            boolean result = mInterface.setCountryCodes(reset, currentNetworkCountryCodes,
+                    cachedNetworkCountryCodes, locationCountryCode,
+                    locationCountryCodeTimestampNanos);
+            if (VDBG) {
+                Log.v(LOG_TAG, "setCountryCodes result =" + result);
+            }
+            getOutPrintWriter().println(result);
+        } catch (RemoteException e) {
+            Log.e(LOG_TAG, "setCountryCodes: ex=" + e.getMessage());
+            errPw.println("Exception: " + e.getMessage());
+            return -1;
+        }
+        return 0;
+    }
+
+    private int handleSetOemEnabledSatelliteProvisionStatus() {
+        PrintWriter errPw = getErrPrintWriter();
+        boolean isProvisioned = false;
+        boolean reset = true;
+
+        String opt;
+        while ((opt = getNextOption()) != null) {
+            switch (opt) {
+                case "-p": {
+                    try {
+                        isProvisioned = Boolean.parseBoolean(getNextArgRequired());
+                        reset = false;
+                    } catch (Exception e) {
+                        errPw.println("setOemEnabledSatelliteProvisionStatus requires a boolean "
+                                + "after -p indicating provision status");
+                        return -1;
+                    }
+                }
+            }
+        }
+        Log.d(LOG_TAG, "setOemEnabledSatelliteProvisionStatus: reset=" + reset
+                + ", isProvisioned=" + isProvisioned);
+
+        try {
+            boolean result = mInterface.setOemEnabledSatelliteProvisionStatus(reset, isProvisioned);
+            if (VDBG) {
+                Log.v(LOG_TAG, "setOemEnabledSatelliteProvisionStatus result = " + result);
+            }
+            getOutPrintWriter().println(result);
+        } catch (RemoteException e) {
+            Log.w(LOG_TAG, "setOemEnabledSatelliteProvisionStatus: error = " + e.getMessage());
+            errPw.println("Exception: " + e.getMessage());
+            return -1;
+        }
+        return 0;
+    }
+
+    /**
+     * Sample inputStr = "US,UK,CA;2,1,3"
+     * Sample output: {[US,2], [UK,1], [CA,3]}
+     */
+    @NonNull private Map<String, Long> parseStringLongMap(@Nullable String inputStr) {
+        Map<String, Long> result = new HashMap<>();
+        if (!TextUtils.isEmpty(inputStr)) {
+            String[] stringLongArr = inputStr.split(";");
+            if (stringLongArr.length != 2) {
+                Log.e(LOG_TAG, "parseStringLongMap: invalid inputStr=" + inputStr);
+                return result;
+            }
+
+            String[] stringArr = stringLongArr[0].split(",");
+            String[] longArr = stringLongArr[1].split(",");
+            if (stringArr.length != longArr.length) {
+                Log.e(LOG_TAG, "parseStringLongMap: invalid inputStr=" + inputStr);
+                return result;
+            }
+
+            for (int i = 0; i < stringArr.length; i++) {
+                try {
+                    result.put(stringArr[i], Long.parseLong(longArr[i]));
+                } catch (Exception ex) {
+                    Log.e(LOG_TAG, "parseStringLongMap: invalid inputStr=" + inputStr
+                            + ", ex=" + ex);
+                    return result;
+                }
+            }
+        }
+        return result;
     }
 
     private int handleCarrierRestrictionStatusCommand() {
@@ -3521,6 +3814,66 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                             + subId
                             + ", error"
                             + e.getMessage());
+            errPw.println("Exception: " + e.getMessage());
+            return -1;
+        }
+        return 0;
+    }
+
+    private int handleDomainSelectionCommand() {
+        String arg = getNextArg();
+        if (arg == null) {
+            onHelpDomainSelection();
+            return 0;
+        }
+
+        switch (arg) {
+            case DOMAIN_SELECTION_SET_SERVICE_OVERRIDE: {
+                return handleDomainSelectionSetServiceOverrideCommand();
+            }
+            case DOMAIN_SELECTION_CLEAR_SERVICE_OVERRIDE: {
+                return handleDomainSelectionClearServiceOverrideCommand();
+            }
+        }
+
+        return -1;
+    }
+
+    // domainselection set-dss-override
+    private int handleDomainSelectionSetServiceOverrideCommand() {
+        PrintWriter errPw = getErrPrintWriter();
+
+        String componentName = getNextArg();
+
+        try {
+            boolean result = mInterface.setDomainSelectionServiceOverride(
+                    ComponentName.unflattenFromString(componentName));
+            if (VDBG) {
+                Log.v(LOG_TAG, "domainselection set-dss-override "
+                        + componentName + ", result=" + result);
+            }
+            getOutPrintWriter().println(result);
+        } catch (Exception e) {
+            Log.w(LOG_TAG, "domainselection set-dss-override "
+                    + componentName + ", error=" + e.getMessage());
+            errPw.println("Exception: " + e.getMessage());
+            return -1;
+        }
+        return 0;
+    }
+
+    // domainselection clear-dss-override
+    private int handleDomainSelectionClearServiceOverrideCommand() {
+        PrintWriter errPw = getErrPrintWriter();
+
+        try {
+            boolean result = mInterface.clearDomainSelectionServiceOverride();
+            if (VDBG) {
+                Log.v(LOG_TAG, "domainselection clear-dss-override result=" + result);
+            }
+            getOutPrintWriter().println(result);
+        } catch (RemoteException e) {
+            Log.w(LOG_TAG, "domainselection clear-dss-override error=" + e.getMessage());
             errPw.println("Exception: " + e.getMessage());
             return -1;
         }

@@ -18,7 +18,6 @@ package com.android.services.telephony.domainselection;
 
 import android.annotation.NonNull;
 import android.annotation.Nullable;
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Handler;
 import android.os.HandlerThread;
@@ -74,7 +73,8 @@ public class TelephonyDomainSelectionService extends DomainSelectionService {
                 @NonNull ImsStateTracker imsStateTracker,
                 @NonNull DomainSelectorBase.DestroyListener listener,
                 @NonNull CrossSimRedialingController crossSimRedialingController,
-                @NonNull CarrierConfigHelper carrierConfigHelper);
+                @NonNull CarrierConfigHelper carrierConfigHelper,
+                @NonNull EmergencyCallbackModeHelper emergencyCallbackModeHelper);
     }
 
     private static final class DefaultDomainSelectorFactory implements DomainSelectorFactory {
@@ -84,7 +84,8 @@ public class TelephonyDomainSelectionService extends DomainSelectionService {
                 @NonNull ImsStateTracker imsStateTracker,
                 @NonNull DomainSelectorBase.DestroyListener listener,
                 @NonNull CrossSimRedialingController crossSimRedialingController,
-                @NonNull CarrierConfigHelper carrierConfigHelper) {
+                @NonNull CarrierConfigHelper carrierConfigHelper,
+                @NonNull EmergencyCallbackModeHelper emergencyCallbackModeHelper) {
             DomainSelectorBase selector = null;
 
             logi("create-DomainSelector: slotId=" + slotId + ", subId=" + subId
@@ -96,7 +97,7 @@ public class TelephonyDomainSelectionService extends DomainSelectionService {
                     if (isEmergency) {
                         selector = new EmergencyCallDomainSelector(context, slotId, subId, looper,
                                 imsStateTracker, listener, crossSimRedialingController,
-                                carrierConfigHelper);
+                                carrierConfigHelper, emergencyCallbackModeHelper);
                     } else {
                         selector = new NormalCallDomainSelector(context, slotId, subId, looper,
                                 imsStateTracker, listener);
@@ -192,7 +193,7 @@ public class TelephonyDomainSelectionService extends DomainSelectionService {
 
     // Persistent Logging
     private static final LocalLog sEventLog = new LocalLog(20);
-    private final Context mContext;
+    private Context mContext;
     // Map of slotId -> ImsStateTracker
     private final SparseArray<ImsStateTracker> mImsStateTrackers = new SparseArray<>(2);
     private final List<DomainSelectorContainer> mDomainSelectorContainers = new ArrayList<>();
@@ -201,22 +202,31 @@ public class TelephonyDomainSelectionService extends DomainSelectionService {
     private Handler mServiceHandler;
     private CrossSimRedialingController mCrossSimRedialingController;
     private CarrierConfigHelper mCarrierConfigHelper;
+    private EmergencyCallbackModeHelper mEmergencyCallbackModeHelper;
 
-    public TelephonyDomainSelectionService(Context context) {
-        this(context, ImsStateTracker::new, new DefaultDomainSelectorFactory(), null);
+    /** Default constructor. */
+    public TelephonyDomainSelectionService() {
+        this(ImsStateTracker::new, new DefaultDomainSelectorFactory(), null, null);
     }
 
     @VisibleForTesting
-    public TelephonyDomainSelectionService(Context context,
+    protected TelephonyDomainSelectionService(
             @NonNull ImsStateTrackerFactory imsStateTrackerFactory,
             @NonNull DomainSelectorFactory domainSelectorFactory,
-            @Nullable CarrierConfigHelper carrierConfigHelper) {
-        mContext = context;
+            @Nullable CarrierConfigHelper carrierConfigHelper,
+            @Nullable EmergencyCallbackModeHelper ecbmHelper) {
         mImsStateTrackerFactory = imsStateTrackerFactory;
         mDomainSelectorFactory = domainSelectorFactory;
+        mCarrierConfigHelper = carrierConfigHelper;
+    }
+
+    @Override
+    public void onCreate() {
+        logd("onCreate");
+        mContext = getApplicationContext();
 
         // Create a worker thread for this domain selection service.
-        getExecutor();
+        getCreateExecutor();
 
         TelephonyManager tm = mContext.getSystemService(TelephonyManager.class);
         int activeModemCount = (tm != null) ? tm.getActiveModemCount() : 1;
@@ -231,9 +241,13 @@ public class TelephonyDomainSelectionService extends DomainSelectionService {
             loge("Adding OnSubscriptionChangedListener failed");
         }
 
-        mCrossSimRedialingController = new CrossSimRedialingController(context, getLooper());
-        mCarrierConfigHelper = (carrierConfigHelper != null)
-                ? carrierConfigHelper : new CarrierConfigHelper(context, getLooper());
+        mCrossSimRedialingController = new CrossSimRedialingController(mContext, getLooper());
+        if (mCarrierConfigHelper == null) {
+            mCarrierConfigHelper = new CarrierConfigHelper(mContext, getLooper());
+        }
+        if (mEmergencyCallbackModeHelper == null) {
+            mEmergencyCallbackModeHelper = new EmergencyCallbackModeHelper(mContext, getLooper());
+        }
 
         logi("TelephonyDomainSelectionService created");
     }
@@ -282,6 +296,11 @@ public class TelephonyDomainSelectionService extends DomainSelectionService {
             mCarrierConfigHelper = null;
         }
 
+        if (mEmergencyCallbackModeHelper != null) {
+            mEmergencyCallbackModeHelper.destroy();
+            mEmergencyCallbackModeHelper = null;
+        }
+
         if (mServiceHandler != null) {
             mServiceHandler.getLooper().quit();
             mServiceHandler = null;
@@ -297,14 +316,14 @@ public class TelephonyDomainSelectionService extends DomainSelectionService {
     @Override
     public void onDomainSelection(@NonNull SelectionAttributes attr,
             @NonNull TransportSelectorCallback callback) {
-        final int slotId = attr.getSlotId();
-        final int subId = attr.getSubId();
+        final int slotId = attr.getSlotIndex();
+        final int subId = attr.getSubscriptionId();
         final int selectorType = attr.getSelectorType();
         final boolean isEmergency = attr.isEmergency();
         ImsStateTracker ist = getImsStateTracker(slotId);
         DomainSelectorBase selector = mDomainSelectorFactory.create(mContext, slotId, subId,
                 selectorType, isEmergency, getLooper(), ist, mDestroyListener,
-                mCrossSimRedialingController, mCarrierConfigHelper);
+                mCrossSimRedialingController, mCarrierConfigHelper, mEmergencyCallbackModeHelper);
 
         if (selector != null) {
             // Ensures that ImsStateTracker is started before selecting the domain if not started
@@ -313,15 +332,21 @@ public class TelephonyDomainSelectionService extends DomainSelectionService {
             addDomainSelector(slotId, selectorType, isEmergency, selector);
         } else {
             loge("No proper domain selector: " + selectorTypeToString(selectorType));
-            callback.onSelectionTerminated(DisconnectCause.ERROR_UNSPECIFIED);
+            // Executed through the service handler to ensure that the callbacks are not called
+            // directly in this execution flow.
+            mServiceHandler.post(() ->
+                    callback.onSelectionTerminated(DisconnectCause.ERROR_UNSPECIFIED));
             return;
         }
 
-        // Notify the caller that the domain selector is created.
-        callback.onCreated(selector);
-
-        // Performs the domain selection.
-        selector.selectDomain(attr, callback);
+        // Executed through the service handler to ensure that the callbacks are not called
+        // directly in this execution flow.
+        mServiceHandler.post(() ->  {
+            // Notify the caller that the domain selector is created.
+            callback.onCreated(selector);
+            // Performs the domain selection.
+            selector.selectDomain(attr, callback);
+        });
     }
 
     /**
@@ -359,8 +384,15 @@ public class TelephonyDomainSelectionService extends DomainSelectionService {
     /**
      *  Returns an Executor used to execute methods called remotely by the framework.
      */
-    @SuppressLint("OnNameExpected")
     @Override
+    public @NonNull Executor getCreateExecutor() {
+        return getExecutor();
+    }
+
+    /**
+     *  Returns an Executor used to execute methods called remotely by the framework.
+     */
+    @VisibleForTesting
     public @NonNull Executor getExecutor() {
         if (mServiceHandler == null) {
             HandlerThread handlerThread = new HandlerThread(TAG);
@@ -480,7 +512,6 @@ public class TelephonyDomainSelectionService extends DomainSelectionService {
         switch (selectorType) {
             case SELECTOR_TYPE_CALLING: return "CALLING";
             case SELECTOR_TYPE_SMS: return "SMS";
-            case SELECTOR_TYPE_UT: return "UT";
             default: return Integer.toString(selectorType);
         }
     }

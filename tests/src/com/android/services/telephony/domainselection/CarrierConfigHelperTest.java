@@ -32,7 +32,6 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -68,11 +67,11 @@ public class CarrierConfigHelperTest {
     private static final int SUB_1 = 1;
     private static final int TEST_SIM_CARRIER_ID = 1911;
 
-    @Mock private Context mContext;
     @Mock private SharedPreferences mSharedPreferences;
     @Mock private SharedPreferences.Editor mEditor;
     @Mock private Resources mResources;
 
+    private Context mContext;
     private HandlerThread mHandlerThread;
     private TestableLooper mLooper;
     private CarrierConfigHelper mCarrierConfigHelper;

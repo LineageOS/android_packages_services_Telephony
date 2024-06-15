@@ -18,12 +18,17 @@ package com.android.services.telephony.domainselection;
 
 import android.annotation.NonNull;
 import android.content.Context;
+import android.os.CancellationSignal;
 import android.os.Looper;
+import android.os.Message;
 import android.os.PersistableBundle;
 import android.telephony.AccessNetworkConstants;
+import android.telephony.AccessNetworkConstants.AccessNetworkType;
 import android.telephony.BarringInfo;
 import android.telephony.CarrierConfigManager;
 import android.telephony.DataSpecificRegistrationInfo;
+import android.telephony.DomainSelectionService;
+import android.telephony.EmergencyRegistrationResult;
 import android.telephony.NetworkRegistrationInfo;
 import android.telephony.ServiceState;
 import android.telephony.TelephonyManager;
@@ -31,11 +36,14 @@ import android.telephony.VopsSupportInfo;
 
 import com.android.internal.annotations.VisibleForTesting;
 
+import java.util.List;
+
 /**
  * Implements an emergency SMS domain selector for sending an emergency SMS.
  */
 public class EmergencySmsDomainSelector extends SmsDomainSelector implements
         ImsStateTracker.BarringInfoListener, ImsStateTracker.ServiceStateListener {
+    protected static final int EVENT_EMERGENCY_NETWORK_SCAN_RESULT = 201;
     /**
      * Stores the configuration value of
      * {@link CarrierConfigManager#KEY_SUPPORT_EMERGENCY_SMS_OVER_IMS_BOOL}.
@@ -46,6 +54,8 @@ public class EmergencySmsDomainSelector extends SmsDomainSelector implements
     private boolean mServiceStateReceived;
     private BarringInfo mBarringInfo;
     private boolean mBarringInfoReceived;
+    private boolean mEmergencyNetworkScanInProgress;
+    private CancellationSignal mEmergencyNetworkScanSignal;
 
     public EmergencySmsDomainSelector(Context context, int slotId, int subId,
             @NonNull Looper looper, @NonNull ImsStateTracker imsStateTracker,
@@ -68,6 +78,18 @@ public class EmergencySmsDomainSelector extends SmsDomainSelector implements
     }
 
     @Override
+    public void handleMessage(@NonNull Message msg) {
+        switch (msg.what) {
+            case EVENT_EMERGENCY_NETWORK_SCAN_RESULT:
+                handleEmergencyNetworkScanResult((EmergencyRegistrationResult) msg.obj);
+                break;
+            default:
+                super.handleMessage(msg);
+                break;
+        }
+    }
+
+    @Override
     public void finishSelection() {
         super.finishSelection();
         mServiceStateReceived = false;
@@ -75,6 +97,12 @@ public class EmergencySmsDomainSelector extends SmsDomainSelector implements
         mBarringInfoReceived = false;
         mBarringInfo = null;
         mEmergencySmsOverImsSupportedByConfig = null;
+
+        mEmergencyNetworkScanInProgress = false;
+        if (mEmergencyNetworkScanSignal != null) {
+            mEmergencyNetworkScanSignal.cancel();
+            mEmergencyNetworkScanSignal = null;
+        }
     }
 
     @Override
@@ -111,7 +139,7 @@ public class EmergencySmsDomainSelector extends SmsDomainSelector implements
              * when {@link CarrierConfigManager#KEY_SUPPORT_EMERGENCY_SMS_OVER_IMS_BOOL} is set
              * to true.
              */
-            if (isEmergencySmsOverImsSupportedIfLteLimitedOrInService()) {
+            if (isEmergencySmsOverImsSupportedIfNetworkLimitedOrInService()) {
                 /**
                  * Emergency SMS should be supported via emergency PDN.
                  * If this condition is false, then need to fallback to CS network
@@ -139,34 +167,106 @@ public class EmergencySmsDomainSelector extends SmsDomainSelector implements
             return;
         }
 
+        if (mEmergencyNetworkScanInProgress) {
+            logi("Emergency network scan is in progress.");
+            return;
+        }
+
         logi("selectDomain: " + mImsStateTracker.imsStateToString());
 
         if (isSmsOverImsAvailable()) {
-            boolean isEmergencySmsOverImsSupportedIfLteLimitedOrInService =
-                    isEmergencySmsOverImsSupportedIfLteLimitedOrInService();
+            boolean isEmergencySmsOverImsSupportedIfNetworkLimitedOrInService =
+                    isEmergencySmsOverImsSupportedIfNetworkLimitedOrInService();
 
             if (mImsStateTracker.isImsRegisteredOverWlan()) {
                 /**
                  * When {@link CarrierConfigManager#KEY_SUPPORT_EMERGENCY_SMS_OVER_IMS_BOOL}
-                 * is set to true, the emergency SMS supports on the LTE network using the
+                 * is set to true, the emergency SMS supports on the LTE/NR network using the
                  * emergency PDN. As of now, since the emergency SMS doesn't use the emergency PDN
                  * over WLAN, the domain selector reports the domain as WLAN only if
-                 * {@code isEmergencySmsOverImsSupportedIfLteLimitedOrInService} is set to false
+                 * {@code isEmergencySmsOverImsSupportedIfNetworkLimitedOrInService} is set to false
                  * and IMS is registered over WLAN.
                  * Otherwise, the domain selector reports the domain as WWAN.
                  */
-                if (!isEmergencySmsOverImsSupportedIfLteLimitedOrInService) {
+                if (!isEmergencySmsOverImsSupportedIfNetworkLimitedOrInService) {
                     notifyWlanSelected(false);
                     return;
                 }
 
                 logi("DomainSelected: WLAN >> WWAN");
             }
-            notifyWwanSelected(NetworkRegistrationInfo.DOMAIN_PS,
-                    isEmergencySmsOverImsSupportedIfLteLimitedOrInService);
+
+            /**
+             * The request of emergency network scan triggers the modem to request the emergency
+             * service fallback because NR network doesn't support the emergency service.
+             */
+            if (isEmergencySmsOverImsSupportedIfNetworkLimitedOrInService
+                    && isNrEmergencyServiceFallbackRequired()) {
+                requestEmergencyNetworkScan(List.of(AccessNetworkType.EUTRAN));
+            } else {
+                notifyWwanSelected(NetworkRegistrationInfo.DOMAIN_PS,
+                        isEmergencySmsOverImsSupportedIfNetworkLimitedOrInService);
+            }
         } else {
             notifyWwanSelected(NetworkRegistrationInfo.DOMAIN_CS, false);
         }
+    }
+
+    private void requestEmergencyNetworkScan(List<Integer> preferredNetworks) {
+        mEmergencyNetworkScanInProgress = true;
+
+        if (mWwanSelectorCallback == null) {
+            mTransportSelectorCallback.onWwanSelected((callback) -> {
+                mWwanSelectorCallback = callback;
+                requestEmergencyNetworkScanInternal(preferredNetworks);
+            });
+        } else {
+            requestEmergencyNetworkScanInternal(preferredNetworks);
+        }
+    }
+
+    private void requestEmergencyNetworkScanInternal(List<Integer> preferredNetworks) {
+        logi("requestEmergencyNetworkScan: preferredNetworks=" + preferredNetworks);
+        mEmergencyNetworkScanSignal = new CancellationSignal();
+        mWwanSelectorCallback.onRequestEmergencyNetworkScan(
+                preferredNetworks,
+                DomainSelectionService.SCAN_TYPE_FULL_SERVICE, false,
+                mEmergencyNetworkScanSignal,
+                (regResult) -> {
+                    logi("requestEmergencyNetworkScan-onComplete");
+                    obtainMessage(EVENT_EMERGENCY_NETWORK_SCAN_RESULT, regResult).sendToTarget();
+                });
+    }
+
+    /**
+     * Handles the emergency network scan result.
+     *
+     * This triggers the emergency service fallback to modem when the emergency service is not
+     * supported but the emergency service fallback is supported in the current network.
+     *
+     * @param regResult The emergency registration result that is triggered
+     *                  by the emergency network scan.
+     */
+    private void handleEmergencyNetworkScanResult(EmergencyRegistrationResult regResult) {
+        logi("handleEmergencyNetworkScanResult: " + regResult);
+
+        mEmergencyNetworkScanInProgress = false;
+        mEmergencyNetworkScanSignal = null;
+
+        int accessNetworkType = regResult.getAccessNetwork();
+        int domain = NetworkRegistrationInfo.DOMAIN_CS;
+
+        if (accessNetworkType == AccessNetworkType.NGRAN) {
+            domain = NetworkRegistrationInfo.DOMAIN_PS;
+        } else if (accessNetworkType == AccessNetworkType.EUTRAN) {
+            if (regResult.getDomain() == NetworkRegistrationInfo.DOMAIN_CS) {
+                logi("PS emergency service is not supported in LTE network.");
+            } else {
+                domain = NetworkRegistrationInfo.DOMAIN_PS;
+            }
+        }
+
+        notifyWwanSelected(domain, (domain == NetworkRegistrationInfo.DOMAIN_PS));
     }
 
     /**
@@ -174,25 +274,25 @@ public class EmergencySmsDomainSelector extends SmsDomainSelector implements
      * configuration and the current network states.
      */
     private boolean isImsEmergencySmsAvailable() {
-        boolean isEmergencySmsOverImsSupportedIfLteLimitedOrInService =
-                isEmergencySmsOverImsSupportedIfLteLimitedOrInService();
+        boolean isEmergencySmsOverImsSupportedIfNetworkLimitedOrInService =
+                isEmergencySmsOverImsSupportedIfNetworkLimitedOrInService();
         boolean networkAvailable = isNetworkAvailableForImsEmergencySms();
 
         logi("isImsEmergencySmsAvailable: "
-                + "emergencySmsOverIms=" + isEmergencySmsOverImsSupportedIfLteLimitedOrInService
+                + "emergencySmsOverIms=" + isEmergencySmsOverImsSupportedIfNetworkLimitedOrInService
                 + ", mmTelFeatureAvailable=" + mImsStateTracker.isMmTelFeatureAvailable()
                 + ", networkAvailable=" + networkAvailable);
 
-        return isEmergencySmsOverImsSupportedIfLteLimitedOrInService
+        return isEmergencySmsOverImsSupportedIfNetworkLimitedOrInService
                 && mImsStateTracker.isMmTelFeatureAvailable()
                 && networkAvailable;
     }
 
     /**
-     * Checks if sending emergency SMS messages over IMS is supported when in LTE/limited LTE
-     * (Emergency only) service mode from the carrier configuration.
+     * Checks if sending emergency SMS messages over IMS is supported when in the network(LTE/NR)
+     * normal/limited(Emergency only) service mode from the carrier configuration.
      */
-    private boolean isEmergencySmsOverImsSupportedIfLteLimitedOrInService() {
+    private boolean isEmergencySmsOverImsSupportedIfNetworkLimitedOrInService() {
         if (mEmergencySmsOverImsSupportedByConfig == null) {
             CarrierConfigManager ccm = mContext.getSystemService(CarrierConfigManager.class);
 
@@ -257,7 +357,8 @@ public class EmergencySmsDomainSelector extends SmsDomainSelector implements
      */
     private boolean isNetworkAvailableForImsEmergencySms() {
         return isLteEmergencyAvailableInService()
-                || isLteEmergencyAvailableInLimitedService();
+                || isLteEmergencyAvailableInLimitedService()
+                || isNrEmergencyAvailable();
     }
 
     /**
@@ -280,6 +381,22 @@ public class EmergencySmsDomainSelector extends SmsDomainSelector implements
     }
 
     /**
+     * Checks if the emergency service fallback is supported by the network.
+     *
+     * @return {@code true} if the emergency service fallback is supported by the network,
+     *         {@code false} otherwise.
+     */
+    private boolean isEmergencyServiceFallbackSupported(@NonNull NetworkRegistrationInfo regInfo) {
+        final DataSpecificRegistrationInfo dsRegInfo = regInfo.getDataSpecificInfo();
+        if (dsRegInfo != null) {
+            final VopsSupportInfo vopsSupportInfo = dsRegInfo.getVopsSupportInfo();
+            return vopsSupportInfo != null
+                    && vopsSupportInfo.isEmergencyServiceFallbackSupported();
+        }
+        return false;
+    }
+
+    /**
      * Checks if the emergency service is allowed (not barred) by the network.
      *
      * This checks if SystemInformationBlockType2 includes the ac-BarringInfo and
@@ -296,5 +413,46 @@ public class EmergencySmsDomainSelector extends SmsDomainSelector implements
         final BarringInfo.BarringServiceInfo bsi =
                 mBarringInfo.getBarringServiceInfo(BarringInfo.BARRING_SERVICE_TYPE_EMERGENCY);
         return !bsi.isBarred();
+    }
+
+    /**
+     * Checks if the emergency service fallback is available in the NR network
+     * because the emergency service is not supported.
+     */
+    private boolean isNrEmergencyServiceFallbackRequired() {
+        if (mServiceState == null) {
+            return false;
+        }
+
+        final NetworkRegistrationInfo regInfo = mServiceState.getNetworkRegistrationInfo(
+                NetworkRegistrationInfo.DOMAIN_PS, AccessNetworkConstants.TRANSPORT_TYPE_WWAN);
+
+        if (regInfo != null
+                && regInfo.getAccessNetworkTechnology() == TelephonyManager.NETWORK_TYPE_NR
+                && regInfo.isRegistered()) {
+            return !isEmergencyServiceSupported(regInfo)
+                    && isEmergencyServiceFallbackSupported(regInfo);
+        }
+        return false;
+    }
+
+    /**
+     * Checks if the emergency service is available in the NR network.
+     */
+    private boolean isNrEmergencyAvailable() {
+        if (mServiceState == null) {
+            return false;
+        }
+
+        final NetworkRegistrationInfo regInfo = mServiceState.getNetworkRegistrationInfo(
+                NetworkRegistrationInfo.DOMAIN_PS, AccessNetworkConstants.TRANSPORT_TYPE_WWAN);
+
+        if (regInfo != null
+                && regInfo.getAccessNetworkTechnology() == TelephonyManager.NETWORK_TYPE_NR
+                && regInfo.isRegistered()) {
+            return isEmergencyServiceSupported(regInfo)
+                    || isEmergencyServiceFallbackSupported(regInfo);
+        }
+        return false;
     }
 }

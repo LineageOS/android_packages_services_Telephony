@@ -21,6 +21,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.CancellationSignal;
 import android.os.OutcomeReceiver;
+import android.telephony.satellite.EnableRequestAttributes;
 import android.telephony.satellite.PointingInfo;
 import android.telephony.satellite.SatelliteCapabilities;
 import android.telephony.satellite.SatelliteDatagram;
@@ -124,7 +125,7 @@ public class SendReceive extends Activity {
 
         SatelliteDatagram datagram = new SatelliteDatagram(mMessageInput.getBytes());
         //Sending Message
-        mSatelliteManager.sendSatelliteDatagram(SatelliteManager.DATAGRAM_TYPE_SOS_MESSAGE,
+        mSatelliteManager.sendDatagram(SatelliteManager.DATAGRAM_TYPE_SOS_MESSAGE,
                 datagram, true, Runnable::run, error::offer);
         TextView messageStatusTextView = findViewById(R.id.messageStatus);
         try {
@@ -139,7 +140,7 @@ public class SendReceive extends Activity {
                         + mEnterMessage.getText().toString());
             }
         } catch (InterruptedException e) {
-            messageStatusTextView.setText("sendSatelliteDatagram exception caught = " + e);
+            messageStatusTextView.setText("sendDatagram exception caught = " + e);
         }
     }
 
@@ -148,16 +149,18 @@ public class SendReceive extends Activity {
         byte[] testProvisionData = mMessageOutput.getBytes();
         setupForTransferringDatagram(testProvisionData);
 
-        int result = mSatelliteManager.registerForSatelliteDatagram(Runnable::run, mCallback);
+        int result = mSatelliteManager.registerForIncomingDatagram(Runnable::run, mCallback);
         TextView showErrorStatusTextView = findViewById(R.id.showErrorStatus);
         if (result != SatelliteResult.SATELLITE_RESULT_SUCCESS) {
-            showErrorStatusTextView.setText("Status for registerForSatelliteDatagram : "
+            showErrorStatusTextView.setText("Status for registerForIncomingDatagram : "
                     + SatelliteErrorUtils.mapError(result));
         }
         if (SatelliteTestApp.getTestSatelliteService() != null) {
             SatelliteTestApp.getTestSatelliteService().sendOnPendingDatagrams();
         }
-        mSatelliteManager.requestSatelliteEnabled(true, true, Runnable::run, resultListener::offer);
+        mSatelliteManager.requestEnabled(
+                new EnableRequestAttributes.Builder(true).setDemoMode(true).build(),
+                Runnable::run, resultListener::offer);
         try {
             Integer value = resultListener.poll(TIMEOUT, TimeUnit.MILLISECONDS);
             if (value == null) {
@@ -173,7 +176,7 @@ public class SendReceive extends Activity {
             return;
         }
 
-        mSatelliteManager.pollPendingSatelliteDatagrams(Runnable::run, resultListener::offer);
+        mSatelliteManager.pollPendingDatagrams(Runnable::run, resultListener::offer);
         try {
             Integer value = resultListener.poll(TIMEOUT, TimeUnit.MILLISECONDS);
             if (value == null) {
@@ -185,7 +188,7 @@ public class SendReceive extends Activity {
                 mMessageStatusTextView.setText("Successfully polled pending messages");
             }
         } catch (InterruptedException e) {
-            mMessageStatusTextView.setText("pollPendingSatelliteDatagrams exception caught = " + e);
+            mMessageStatusTextView.setText("pollPendingDatagrams exception caught = " + e);
         }
     }
 
@@ -195,7 +198,7 @@ public class SendReceive extends Activity {
         LinkedBlockingQueue<Integer> error = new LinkedBlockingQueue<>(1);
 
         //Provisioning
-        mSatelliteManager.provisionSatelliteService("SATELLITE_TOKEN", provisionData,
+        mSatelliteManager.provisionService("SATELLITE_TOKEN", provisionData,
                 cancellationSignal, Runnable::run, error::offer);
         try {
             Integer value = error.poll(TIMEOUT, TimeUnit.MILLISECONDS);
@@ -233,12 +236,14 @@ public class SendReceive extends Activity {
                                 + SatelliteErrorUtils.mapError(errorCode.get()));
                     }
                 };
-        mSatelliteManager.requestSatelliteCapabilities(Runnable::run, receiver);
+        mSatelliteManager.requestCapabilities(Runnable::run, receiver);
 
         //Satellite Position
         SatelliteTransmissionUpdateCallbackTestApp callback =
                 new SatelliteTransmissionUpdateCallbackTestApp();
-        mSatelliteManager.requestSatelliteEnabled(true, true, Runnable::run, error::offer);
+        mSatelliteManager.requestEnabled(
+                new EnableRequestAttributes.Builder(true).setDemoMode(true).build(),
+                Runnable::run, error::offer);
         try {
             Integer value = error.poll(TIMEOUT, TimeUnit.MILLISECONDS);
             if (value == null) {
@@ -254,7 +259,7 @@ public class SendReceive extends Activity {
         }
         error.clear();
 
-        mSatelliteManager.startSatelliteTransmissionUpdates(Runnable::run, error::offer, callback);
+        mSatelliteManager.startTransmissionUpdates(Runnable::run, error::offer, callback);
         // Position update
         android.telephony.satellite.stub.PointingInfo pointingInfo =
                 new android.telephony.satellite.stub.PointingInfo();

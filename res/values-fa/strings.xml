@@ -453,7 +453,7 @@
     <string name="sum_fdn_change_pin" msgid="3510994280557335727">"‏تغییر پین برای دسترسی FDN"</string>
     <string name="sum_fdn_manage_list" msgid="3311397063233992907">"مدیریت فهرست شماره تلفن"</string>
     <string name="voice_privacy" msgid="7346935172372181951">"حریم خصوصی صوتی"</string>
-    <string name="voice_privacy_summary" msgid="3556460926168473346">"فعال کردن حالت رازداری پیشرفته"</string>
+    <string name="voice_privacy_summary" msgid="3556460926168473346">"فعال کردن حالت حریم خصوصی پیشرفته"</string>
     <string name="tty_mode_option_title" msgid="3843817710032641703">"‏حالت TTY"</string>
     <string name="tty_mode_option_summary" msgid="4770510287236494371">"‏تنظیم حالت TTY"</string>
     <string name="auto_retry_mode_title" msgid="2985801935424422340">"سعی مجدد خودکار"</string>
@@ -661,7 +661,7 @@
     <string name="description_dial_button" msgid="8614631902795087259">"شماره گیری"</string>
     <string name="description_dialpad_button" msgid="7395114120463883623">"نمایش صفحه شماره گیری"</string>
     <string name="pane_title_emergency_dialpad" msgid="3627372514638694401">"صفحه شماره‌گیری اضطراری"</string>
-    <string name="voicemail_visual_voicemail_switch_title" msgid="6610414098912832120">"پست صوتی دیداری"</string>
+    <string name="voicemail_visual_voicemail_switch_title" msgid="6610414098912832120">"پست صوتی تصویری"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="7005128605986960003">"تنظیم پین"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="4633077715231764435">"تغییر پین"</string>
     <string name="preference_category_ringtone" msgid="8787281191375434976">"آهنگ‌ زنگ و لرزش"</string>

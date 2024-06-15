@@ -23,7 +23,6 @@ import android.os.Bundle;
 import android.os.OutcomeReceiver;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
-import android.telephony.satellite.SatelliteManager;
 import android.telephony.satellite.wrapper.NtnSignalStrengthCallbackWrapper;
 import android.telephony.satellite.wrapper.NtnSignalStrengthWrapper;
 import android.telephony.satellite.wrapper.SatelliteCapabilitiesCallbackWrapper;
@@ -37,10 +36,11 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
-
 
 /**
  * Activity related to SatelliteControl APIs for satellite.
@@ -55,6 +55,7 @@ public class TestSatelliteWrapper extends Activity {
     private NtnSignalStrengthCallback mNtnSignalStrengthCallback = null;
     private SatelliteCapabilitiesCallbackWrapper mSatelliteCapabilitiesCallback;
     private SubscriptionManager mSubscriptionManager;
+    private int mSubId;
 
     private ListView mLogListView;
 
@@ -63,6 +64,7 @@ public class TestSatelliteWrapper extends Activity {
         super.onCreate(savedInstanceState);
         mSatelliteManagerWrapper = SatelliteManagerWrapper.getInstance(this);
         mSubscriptionManager = getSystemService(SubscriptionManager.class);
+        mSubId = getActiveSubId();
 
         setContentView(R.layout.activity_TestSatelliteWrapper);
         findViewById(R.id.requestNtnSignalStrength)
@@ -74,9 +76,29 @@ public class TestSatelliteWrapper extends Activity {
         findViewById(R.id.isOnlyNonTerrestrialNetworkSubscription)
                 .setOnClickListener(this::isOnlyNonTerrestrialNetworkSubscription);
         findViewById(R.id.registerForSatelliteCapabilitiesChanged)
-                .setOnClickListener(this::registerForSatelliteCapabilitiesChanged);
+                .setOnClickListener(this::registerForCapabilitiesChanged);
         findViewById(R.id.unregisterForSatelliteCapabilitiesChanged)
-                .setOnClickListener(this::unregisterForSatelliteCapabilitiesChanged);
+                .setOnClickListener(this::unregisterForCapabilitiesChanged);
+        findViewById(R.id.isNonTerrestrialNetwork)
+                .setOnClickListener(this::isNonTerrestrialNetwork);
+        findViewById(R.id.getAvailableServices)
+                .setOnClickListener(this::getAvailableServices);
+        findViewById(R.id.isUsingNonTerrestrialNetwork)
+                .setOnClickListener(this::isUsingNonTerrestrialNetwork);
+        findViewById(R.id.requestAttachEnabledForCarrier_enable)
+                .setOnClickListener(this::requestAttachEnabledForCarrier_enable);
+        findViewById(R.id.requestAttachEnabledForCarrier_disable)
+                .setOnClickListener(this::requestAttachEnabledForCarrier_disable);
+        findViewById(R.id.requestIsAttachEnabledForCarrier)
+                .setOnClickListener(this::requestIsAttachEnabledForCarrier);
+        findViewById(R.id.addAttachRestrictionForCarrier)
+                .setOnClickListener(this::addAttachRestrictionForCarrier);
+        findViewById(R.id.removeAttachRestrictionForCarrier)
+                .setOnClickListener(this::removeAttachRestrictionForCarrier);
+        findViewById(R.id.getAttachRestrictionReasonsForCarrier)
+                .setOnClickListener(this::getAttachRestrictionReasonsForCarrier);
+        findViewById(R.id.getSatellitePlmnsForCarrier)
+                .setOnClickListener(this::getSatellitePlmnsForCarrier);
         findViewById(R.id.Back).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -109,21 +131,24 @@ public class TestSatelliteWrapper extends Activity {
 
         if (mSatelliteManagerWrapper != null) {
             if (mNtnSignalStrengthCallback != null) {
-                Log.d(TAG, "unregisterForNtnSignalStrengthChanged()");
+                logd("unregisterForNtnSignalStrengthChanged()");
                 mSatelliteManagerWrapper.unregisterForNtnSignalStrengthChanged(
                         mNtnSignalStrengthCallback);
             }
             if (mSatelliteCapabilitiesCallback != null) {
-                Log.d(TAG, "unregisterForSatelliteCapabilitiesChanged()");
-                mSatelliteManagerWrapper.unregisterForSatelliteCapabilitiesChanged(
+                logd("unregisterForCapabilitiesChanged()");
+                mSatelliteManagerWrapper.unregisterForCapabilitiesChanged(
                         mSatelliteCapabilitiesCallback);
             }
         }
+        mSubscriptionManager = null;
+        mSatelliteManagerWrapper = null;
+        mExecutor.shutdown();
     }
 
     private void requestNtnSignalStrength(View view) {
         addLogMessage("requestNtnSignalStrength");
-        Log.d(TAG, "requestNtnSignalStrength");
+        logd("requestNtnSignalStrength");
         OutcomeReceiver<NtnSignalStrengthWrapper,
                 SatelliteManagerWrapper.SatelliteExceptionWrapper> receiver =
                 new OutcomeReceiver<>() {
@@ -140,7 +165,7 @@ public class TestSatelliteWrapper extends Activity {
                         if (exception != null) {
                             String onError = "requestNtnSignalStrength exception: "
                                     + translateResultCodeToString(exception.getErrorCode());
-                            Log.d(TAG, onError);
+                            logd(onError);
                             addLogMessage(onError);
                         }
                     }
@@ -148,18 +173,18 @@ public class TestSatelliteWrapper extends Activity {
 
         try {
             mSatelliteManagerWrapper.requestNtnSignalStrength(mExecutor, receiver);
-        } catch (SecurityException | IllegalStateException ex) {
+        } catch (SecurityException ex) {
             String errorMessage = "requestNtnSignalStrength: " + ex.getMessage();
-            Log.d(TAG, errorMessage);
+            logd(errorMessage);
             addLogMessage(errorMessage);
         }
     }
 
     private void registerForNtnSignalStrengthChanged(View view) {
         addLogMessage("registerForNtnSignalStrengthChanged");
-        Log.d(TAG, "registerForNtnSignalStrengthChanged()");
+        logd("registerForNtnSignalStrengthChanged()");
         if (mNtnSignalStrengthCallback == null) {
-            Log.d(TAG, "create new NtnSignalStrengthCallback instance.");
+            logd("create new NtnSignalStrengthCallback instance.");
             mNtnSignalStrengthCallback = new NtnSignalStrengthCallback();
         }
 
@@ -167,24 +192,16 @@ public class TestSatelliteWrapper extends Activity {
             mSatelliteManagerWrapper.registerForNtnSignalStrengthChanged(mExecutor,
                     mNtnSignalStrengthCallback);
         } catch (Exception ex) {
-            String errorMessage;
-            if (ex instanceof SatelliteManager.SatelliteException) {
-                errorMessage =
-                        "registerForNtnSignalStrengthChanged: " + translateResultCodeToString(
-                                ((SatelliteManager.SatelliteException) ex).getErrorCode());
-            } else {
-                errorMessage = "registerForNtnSignalStrengthChanged: " + ex.getMessage();
-            }
-            Log.d(TAG, errorMessage);
+            String errorMessage = "registerForNtnSignalStrengthChanged: " + ex.getMessage();
+            logd(errorMessage);
             addLogMessage(errorMessage);
             mNtnSignalStrengthCallback = null;
-
         }
     }
 
     private void unregisterForNtnSignalStrengthChanged(View view) {
         addLogMessage("unregisterForNtnSignalStrengthChanged");
-        Log.d(TAG, "unregisterForNtnSignalStrengthChanged()");
+        logd("unregisterForNtnSignalStrengthChanged()");
         if (mNtnSignalStrengthCallback != null) {
             mSatelliteManagerWrapper.unregisterForNtnSignalStrengthChanged(
                     mNtnSignalStrengthCallback);
@@ -197,7 +214,7 @@ public class TestSatelliteWrapper extends Activity {
 
     private void isOnlyNonTerrestrialNetworkSubscription(View view) {
         addLogMessage("isOnlyNonTerrestrialNetworkSubscription");
-        Log.d(TAG, "isOnlyNonTerrestrialNetworkSubscription()");
+        logd("isOnlyNonTerrestrialNetworkSubscription()");
         List<SubscriptionInfo> infoList = mSubscriptionManager.getAvailableSubscriptionInfoList();
         List<Integer> subIdList = infoList.stream()
                 .map(SubscriptionInfo::getSubscriptionId)
@@ -222,34 +239,34 @@ public class TestSatelliteWrapper extends Activity {
         }
     }
 
-    private void registerForSatelliteCapabilitiesChanged(View view) {
-        addLogMessage("registerForSatelliteCapabilitiesChanged");
-        Log.d(TAG, "registerForSatelliteCapabilitiesChanged()");
+    private void registerForCapabilitiesChanged(View view) {
+        addLogMessage("registerForCapabilitiesChanged");
+        logd("registerForCapabilitiesChanged()");
         if (mSatelliteCapabilitiesCallback == null) {
             mSatelliteCapabilitiesCallback =
                     SatelliteCapabilities -> {
                         String message = "Received SatelliteCapabillities : "
                                 + SatelliteCapabilities;
-                        Log.d(TAG, message);
+                        logd(message);
                         runOnUiThread(() -> addLogMessage(message));
                     };
         }
 
-        int result = mSatelliteManagerWrapper.registerForSatelliteCapabilitiesChanged(mExecutor,
+        int result = mSatelliteManagerWrapper.registerForCapabilitiesChanged(mExecutor,
                 mSatelliteCapabilitiesCallback);
         if (result != SatelliteManagerWrapper.SATELLITE_RESULT_SUCCESS) {
             String onError = translateResultCodeToString(result);
-            Log.d(TAG, onError);
+            logd(onError);
             addLogMessage(onError);
             mSatelliteCapabilitiesCallback = null;
         }
     }
 
-    private void unregisterForSatelliteCapabilitiesChanged(View view) {
-        addLogMessage("unregisterForSatelliteCapabilitiesChanged");
-        Log.d(TAG, "unregisterForSatelliteCapabilitiesChanged()");
+    private void unregisterForCapabilitiesChanged(View view) {
+        addLogMessage("unregisterForCapabilitiesChanged");
+        logd("unregisterForCapabilitiesChanged()");
         if (mSatelliteCapabilitiesCallback != null) {
-            mSatelliteManagerWrapper.unregisterForSatelliteCapabilitiesChanged(
+            mSatelliteManagerWrapper.unregisterForCapabilitiesChanged(
                     mSatelliteCapabilitiesCallback);
             mSatelliteCapabilitiesCallback = null;
             addLogMessage("mSatelliteCapabilitiesCallback was unregistered");
@@ -263,9 +280,236 @@ public class TestSatelliteWrapper extends Activity {
         public void onNtnSignalStrengthChanged(
                 @NonNull NtnSignalStrengthWrapper ntnSignalStrength) {
             String message = "Received NTN SignalStrength : " + ntnSignalStrength.getLevel();
-            Log.d(TAG, message);
+            logd(message);
             runOnUiThread(() -> addLogMessage(message));
         }
+    }
+
+    private void isNonTerrestrialNetwork(View view) {
+        boolean isNonTerrestrialNetwork = mSatelliteManagerWrapper.isNonTerrestrialNetwork(mSubId);
+        addLogMessage("isNonTerrestrialNetwork=" + isNonTerrestrialNetwork);
+        logd("isNonTerrestrialNetwork=" + isNonTerrestrialNetwork);
+    }
+
+    private void getAvailableServices(View view) {
+        List<Integer> as = mSatelliteManagerWrapper.getAvailableServices(mSubId);
+        String availableServices = as.stream().map(Object::toString).collect(
+                Collectors.joining(", "));
+        addLogMessage("getAvailableServices=" + availableServices);
+        logd("getAvailableServices=" + availableServices);
+    }
+
+    private void isUsingNonTerrestrialNetwork(View view) {
+        boolean isUsingNonTerrestrialNetwork =
+                mSatelliteManagerWrapper.isUsingNonTerrestrialNetwork(mSubId);
+        addLogMessage("isUsingNonTerrestrialNetwork=" + isUsingNonTerrestrialNetwork);
+        logd("isUsingNonTerrestrialNetwork=" + isUsingNonTerrestrialNetwork);
+    }
+
+    private void requestAttachEnabledForCarrier_enable(View view) {
+        addLogMessage("requestAttachEnabledForCarrier");
+        logd("requestAttachEnabledForCarrier");
+
+        if (mSubId == SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
+            addLogMessage("requestAttachEnabledForCarrier: Subscription ID is invalid");
+            logd("requestAttachEnabledForCarrier: Subscription ID is invalid");
+            return;
+        }
+
+        Consumer<Integer> callback = result -> {
+            runOnUiThread(() -> addLogMessage("requestAttachEnabledForCarrier result: " + result));
+            logd("requestAttachEnabledForCarrier result: " + result);
+        };
+
+        try {
+            mSatelliteManagerWrapper.requestAttachEnabledForCarrier(mSubId, true, mExecutor,
+                    callback);
+        } catch (SecurityException | IllegalArgumentException ex) {
+            String errorMessage = "requestAttachEnabledForCarrier: " + ex.getMessage();
+            logd(errorMessage);
+            addLogMessage(errorMessage);
+        }
+    }
+
+    private void requestAttachEnabledForCarrier_disable(View view) {
+        addLogMessage("requestAttachEnabledForCarrier");
+        logd("requestAttachEnabledForCarrier");
+
+        if (mSubId == SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
+            addLogMessage("requestAttachEnabledForCarrier: Subscription ID is invalid");
+            logd("requestAttachEnabledForCarrier: Subscription ID is invalid");
+            return;
+        }
+
+        Consumer<Integer> callback = result -> {
+            runOnUiThread(() -> addLogMessage("requestAttachEnabledForCarrier result: " + result));
+            logd("requestAttachEnabledForCarrier result: " + result);
+        };
+
+        try {
+            mSatelliteManagerWrapper.requestAttachEnabledForCarrier(mSubId, false, mExecutor,
+                    callback);
+        } catch (SecurityException | IllegalArgumentException ex) {
+            String errorMessage = "requestAttachEnabledForCarrier: " + ex.getMessage();
+            logd(errorMessage);
+            addLogMessage(errorMessage);
+        }
+    }
+
+    private void requestIsAttachEnabledForCarrier(View view) {
+        logd("requestIsAttachEnabledForCarrier");
+        addLogMessage("requestIsAttachEnabledForCarrier");
+
+        if (mSubId == SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
+            addLogMessage("requestIsAttachEnabledForCarrier: Subscription ID is invalid");
+            logd("requestIsAttachEnabledForCarrier: Subscription ID is invalid");
+            return;
+        }
+
+        OutcomeReceiver<Boolean,
+                SatelliteManagerWrapper.SatelliteExceptionWrapper> receiver =
+                new OutcomeReceiver<>() {
+                    @Override
+                    public void onResult(Boolean result) {
+                        logd("requestIsAttachEnabledForCarrier: onResult=" + result);
+                        addLogMessage("requestIsAttachEnabledForCarrier: onResult=" + result);
+                    }
+
+                    @Override
+                    public void onError(
+                            SatelliteManagerWrapper.SatelliteExceptionWrapper exception) {
+                        if (exception != null) {
+                            String onError = "requestIsAttachEnabledForCarrier exception: "
+                                    + translateResultCodeToString(exception.getErrorCode());
+                            logd(onError);
+                            addLogMessage(onError);
+                        }
+                    }
+                };
+
+        try {
+            mSatelliteManagerWrapper.requestIsAttachEnabledForCarrier(mSubId, mExecutor, receiver);
+        } catch (SecurityException | IllegalStateException | IllegalArgumentException ex) {
+            String errorMessage = "requestIsAttachEnabledForCarrier: " + ex.getMessage();
+            logd(errorMessage);
+            addLogMessage(errorMessage);
+        }
+    }
+
+    private void addAttachRestrictionForCarrier(View view) {
+        addLogMessage("addAttachRestrictionForCarrier");
+        logd("addAttachRestrictionForCarrier");
+
+        if (mSubId == SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
+            addLogMessage("addAttachRestrictionForCarrier: Subscription ID is invalid");
+            logd("addAttachRestrictionForCarrier: Subscription ID is invalid");
+            return;
+        }
+
+        int reason = SatelliteManagerWrapper.SATELLITE_COMMUNICATION_RESTRICTION_REASON_USER;
+
+        Consumer<Integer> callback = result -> {
+            runOnUiThread(() -> addLogMessage("addAttachRestrictionForCarrier result: " + result));
+            logd("addAttachRestrictionForCarrier result: " + result);
+        };
+
+        try {
+            mSatelliteManagerWrapper.addAttachRestrictionForCarrier(mSubId, reason, mExecutor,
+                    callback);
+        } catch (SecurityException | IllegalArgumentException ex) {
+            String errorMessage = "addAttachRestrictionForCarrier: " + ex.getMessage();
+            logd(errorMessage);
+            addLogMessage(errorMessage);
+        }
+    }
+
+    private void removeAttachRestrictionForCarrier(View view) {
+        addLogMessage("removeAttachRestrictionForCarrier");
+        logd("removeAttachRestrictionForCarrier");
+
+        if (mSubId == SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
+            addLogMessage("removeAttachRestrictionForCarrier: Subscription ID is invalid");
+            logd("removeAttachRestrictionForCarrier: Subscription ID is invalid");
+            return;
+        }
+
+        int reason = SatelliteManagerWrapper.SATELLITE_COMMUNICATION_RESTRICTION_REASON_USER;
+
+        Consumer<Integer> callback = result -> {
+            runOnUiThread(
+                    () -> addLogMessage("removeAttachRestrictionForCarrier result: " + result));
+            logd("removeAttachRestrictionForCarrier result: " + result);
+        };
+
+        try {
+            mSatelliteManagerWrapper.removeAttachRestrictionForCarrier(mSubId, reason, mExecutor,
+                    callback);
+        } catch (SecurityException | IllegalArgumentException ex) {
+            String errorMessage = "removeAttachRestrictionForCarrier: " + ex.getMessage();
+            logd(errorMessage);
+            addLogMessage(errorMessage);
+        }
+    }
+
+    private void getAttachRestrictionReasonsForCarrier(View view) {
+        addLogMessage("getAttachRestrictionReasonsForCarrier");
+        logd("getAttachRestrictionReasonsForCarrier");
+
+        if (mSubId == SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
+            addLogMessage("getAttachRestrictionReasonsForCarrier: Subscription ID is invalid");
+            logd("getAttachRestrictionReasonsForCarrier: Subscription ID is invalid");
+            return;
+        }
+
+        try {
+            Set<Integer> reasons = mSatelliteManagerWrapper.getAttachRestrictionReasonsForCarrier(
+                    mSubId);
+            String stringReasons = reasons.stream().map(Object::toString).collect(
+                    Collectors.joining(", "));
+            logd("getAttachRestrictionReasonsForCarrier=" + stringReasons);
+            addLogMessage("getAttachRestrictionReasonsForCarrier=" + stringReasons);
+        } catch (SecurityException | IllegalArgumentException ex) {
+            String errorMessage = "getAttachRestrictionReasonsForCarrier: " + ex.getMessage();
+            logd(errorMessage);
+            addLogMessage(errorMessage);
+        }
+    }
+
+    private void getSatellitePlmnsForCarrier(View view) {
+        addLogMessage("getSatellitePlmnsForCarrier");
+        logd("getSatellitePlmnsForCarrier");
+
+        if (mSubId == SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
+            addLogMessage("getSatellitePlmnsForCarrier: Subscription ID is invalid");
+            logd("getSatellitePlmnsForCarrier: Subscription ID is invalid");
+            return;
+        }
+
+        try {
+            List<String> reasons = mSatelliteManagerWrapper.getSatellitePlmnsForCarrier(
+                    mSubId);
+            String stringReasons = reasons.stream().collect(Collectors.joining(", "));
+            logd("getSatellitePlmnsForCarrier=" + stringReasons);
+            addLogMessage("getSatellitePlmnsForCarrier=" + stringReasons);
+        } catch (SecurityException | IllegalArgumentException ex) {
+            String errorMessage = "getSatellitePlmnsForCarrier: " + ex.getMessage();
+            logd(errorMessage);
+            addLogMessage(errorMessage);
+        }
+    }
+
+    private int getActiveSubId() {
+        int subId;
+        List<SubscriptionInfo> subscriptionInfoList =
+                mSubscriptionManager.getActiveSubscriptionInfoList();
+
+        if (subscriptionInfoList != null && subscriptionInfoList.size() > 0) {
+            subId = subscriptionInfoList.get(0).getSubscriptionId();
+        } else {
+            subId = SubscriptionManager.INVALID_SUBSCRIPTION_ID;
+        }
+        logd("getActiveSubId() returns " + subId);
+        return subId;
     }
 
     private String translateResultCodeToString(
@@ -317,6 +561,8 @@ public class TestSatelliteWrapper extends Activity {
                 return "SATELLITE_RESULT_REQUEST_IN_PROGRESS";
             case SatelliteManagerWrapper.SATELLITE_RESULT_MODEM_BUSY:
                 return "SATELLITE_RESULT_MODEM_BUSY";
+            case SatelliteManagerWrapper.SATELLITE_RESULT_ILLEGAL_STATE:
+                return "SATELLITE_RESULT_ILLEGAL_STATE";
             default:
                 return "INVALID CODE: " + result;
         }
@@ -326,5 +572,11 @@ public class TestSatelliteWrapper extends Activity {
         mLogMessages.add(message);
         mAdapter.notifyDataSetChanged();
         mLogListView.setSelection(mAdapter.getCount() - 1);
+    }
+
+    private static void logd(String message) {
+        if (message != null) {
+            Log.d(TAG, message);
+        }
     }
 }

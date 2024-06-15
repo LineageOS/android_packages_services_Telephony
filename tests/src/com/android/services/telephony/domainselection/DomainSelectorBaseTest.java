@@ -26,8 +26,8 @@ import android.os.HandlerThread;
 import android.os.Looper;
 import android.telephony.DomainSelectionService.SelectionAttributes;
 import android.telephony.TransportSelectorCallback;
-import android.test.suitebuilder.annotation.SmallTest;
 
+import androidx.test.filters.SmallTest;
 import androidx.test.runner.AndroidJUnit4;
 
 import com.android.TestContext;
@@ -49,11 +49,6 @@ public class DomainSelectorBaseTest {
                 @NonNull Looper looper, @NonNull ImsStateTracker imsStateTracker,
                 @NonNull DomainSelectorBase.DestroyListener listener, String logTag) {
             super(context, slotId, subId, looper, imsStateTracker, listener, logTag);
-        }
-
-        @Override
-        public void cancelSelection() {
-            // No operations.
         }
 
         @Override

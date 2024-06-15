@@ -17,7 +17,6 @@
 package com.android.services.telephony.domainselection;
 
 import static android.telephony.DomainSelectionService.SELECTOR_TYPE_CALLING;
-import static android.telephony.DomainSelectionService.SELECTOR_TYPE_UT;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -28,17 +27,19 @@ import static org.mockito.Mockito.doReturn;
 
 import android.annotation.NonNull;
 import android.content.Context;
+import android.net.Uri;
 import android.os.CancellationSignal;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.PersistableBundle;
+import android.telecom.PhoneAccount;
 import android.telecom.TelecomManager;
 import android.telephony.AccessNetworkConstants;
 import android.telephony.CarrierConfigManager;
 import android.telephony.DisconnectCause;
 import android.telephony.DomainSelectionService;
 import android.telephony.DomainSelector;
-import android.telephony.EmergencyRegResult;
+import android.telephony.EmergencyRegistrationResult;
 import android.telephony.NetworkRegistrationInfo;
 import android.telephony.ServiceState;
 import android.telephony.SubscriptionManager;
@@ -69,10 +70,12 @@ import java.util.function.Consumer;
 public class NormalCallDomainSelectorTest {
     private static final String TAG = "NormalCallDomainSelectorTest";
 
+    private static final int SELECTOR_TYPE_UT = 3;
     private static final int SLOT_ID = 0;
     private static final int SUB_ID_1 = 1;
     private static final int SUB_ID_2 = 2;
     private static final String TEST_CALLID = "01234";
+    private static final Uri TEST_URI = Uri.fromParts(PhoneAccount.SCHEME_TEL, "123456789", null);
 
     private HandlerThread mHandlerThread;
     private NormalCallDomainSelector mNormalCallDomainSelector;
@@ -150,13 +153,54 @@ public class NormalCallDomainSelectorTest {
     }
 
     @Test
-    public void testSelectDomainInputParams() {
+    public void testInitialState() {
+        assertEquals(mNormalCallDomainSelector.getSelectorState(),
+                NormalCallDomainSelector.SelectorState.INACTIVE);
+    }
+
+    @Test
+    public void testDestroyedState() {
+        mNormalCallDomainSelector.destroy();
+
+        assertEquals(mNormalCallDomainSelector.getSelectorState(),
+                NormalCallDomainSelector.SelectorState.DESTROYED);
+    }
+
+    @Test
+    public void testDestroyedDuringActiveState() {
         MockTransportSelectorCallback transportSelectorCallback =
-                new MockTransportSelectorCallback();
+                new MockTransportSelectorCallback(mNormalCallDomainSelector);
 
         DomainSelectionService.SelectionAttributes attributes =
                 new DomainSelectionService.SelectionAttributes.Builder(
                         SLOT_ID, SUB_ID_1, SELECTOR_TYPE_CALLING)
+                        .setAddress(TEST_URI)
+                        .setCallId(TEST_CALLID)
+                        .setEmergency(false)
+                        .setVideoCall(true)
+                        .setExitedFromAirplaneMode(false)
+                        .build();
+
+        mNormalCallDomainSelector.selectDomain(attributes, transportSelectorCallback);
+
+        assertEquals(mNormalCallDomainSelector.getSelectorState(),
+                NormalCallDomainSelector.SelectorState.ACTIVE);
+
+        mNormalCallDomainSelector.destroy();
+
+        assertEquals(mNormalCallDomainSelector.getSelectorState(),
+                NormalCallDomainSelector.SelectorState.DESTROYED);
+    }
+
+    @Test
+    public void testSelectDomainInputParams() {
+        MockTransportSelectorCallback transportSelectorCallback =
+                new MockTransportSelectorCallback(mNormalCallDomainSelector);
+
+        DomainSelectionService.SelectionAttributes attributes =
+                new DomainSelectionService.SelectionAttributes.Builder(
+                        SLOT_ID, SUB_ID_1, SELECTOR_TYPE_CALLING)
+                        .setAddress(TEST_URI)
                         .setCallId(TEST_CALLID)
                         .setEmergency(false)
                         .setVideoCall(true)
@@ -164,6 +208,8 @@ public class NormalCallDomainSelectorTest {
                         .build();
         mNormalCallDomainSelector.selectDomain(attributes, transportSelectorCallback);
 
+        assertEquals(mNormalCallDomainSelector.getSelectorState(),
+                NormalCallDomainSelector.SelectorState.ACTIVE);
 
         // Case 1: null inputs
         try {
@@ -172,12 +218,18 @@ public class NormalCallDomainSelectorTest {
             fail("Invalid input params not handled." + e.getMessage());
         }
 
+        assertEquals(mNormalCallDomainSelector.getSelectorState(),
+                NormalCallDomainSelector.SelectorState.INACTIVE);
+
         // Case 2: null TransportSelectorCallback
         try {
             mNormalCallDomainSelector.selectDomain(attributes, null);
         } catch (Exception e) {
             fail("Invalid params (SelectionAttributes) not handled." + e.getMessage());
         }
+
+        assertEquals(mNormalCallDomainSelector.getSelectorState(),
+                NormalCallDomainSelector.SelectorState.INACTIVE);
 
         // Case 3: null SelectionAttributes
         transportSelectorCallback.mSelectionTerminated = false;
@@ -190,9 +242,13 @@ public class NormalCallDomainSelectorTest {
         assertTrue(transportSelectorCallback
                 .verifyOnSelectionTerminated(DisconnectCause.OUTGOING_FAILURE));
 
+        assertEquals(mNormalCallDomainSelector.getSelectorState(),
+                NormalCallDomainSelector.SelectorState.DESTROYED);
+
         // Case 4: Invalid Subscription-id
         attributes = new DomainSelectionService.SelectionAttributes.Builder(
                 SLOT_ID, SubscriptionManager.INVALID_SUBSCRIPTION_ID, SELECTOR_TYPE_CALLING)
+                .setAddress(TEST_URI)
                 .setCallId(TEST_CALLID)
                 .setEmergency(false)
                 .setVideoCall(true)
@@ -207,10 +263,14 @@ public class NormalCallDomainSelectorTest {
         assertTrue(transportSelectorCallback
                 .verifyOnSelectionTerminated(DisconnectCause.OUTGOING_FAILURE));
 
+        assertEquals(mNormalCallDomainSelector.getSelectorState(),
+                NormalCallDomainSelector.SelectorState.DESTROYED);
+
         // Case 5: Invalid SELECTOR_TYPE
         attributes =
                 new DomainSelectionService.SelectionAttributes.Builder(
                         SLOT_ID, SUB_ID_1, SELECTOR_TYPE_UT)
+                        .setAddress(TEST_URI)
                         .setCallId(TEST_CALLID)
                         .setEmergency(false)
                         .setVideoCall(true)
@@ -225,9 +285,13 @@ public class NormalCallDomainSelectorTest {
         assertTrue(transportSelectorCallback
                 .verifyOnSelectionTerminated(DisconnectCause.OUTGOING_FAILURE));
 
+        assertEquals(mNormalCallDomainSelector.getSelectorState(),
+                NormalCallDomainSelector.SelectorState.DESTROYED);
+
         // Case 6: Emergency Call
         attributes = new DomainSelectionService.SelectionAttributes.Builder(
                 SLOT_ID, SUB_ID_1, SELECTOR_TYPE_CALLING)
+                .setAddress(TEST_URI)
                 .setCallId(TEST_CALLID)
                 .setEmergency(true)
                 .setVideoCall(true)
@@ -239,6 +303,9 @@ public class NormalCallDomainSelectorTest {
             fail("Invalid params (SelectionAttributes) not handled." + e.getMessage());
         }
 
+        assertEquals(mNormalCallDomainSelector.getSelectorState(),
+                NormalCallDomainSelector.SelectorState.DESTROYED);
+
         assertTrue(transportSelectorCallback
                 .verifyOnSelectionTerminated(DisconnectCause.OUTGOING_FAILURE));
     }
@@ -246,30 +313,38 @@ public class NormalCallDomainSelectorTest {
     @Test
     public void testOutOfService() {
         MockTransportSelectorCallback transportSelectorCallback =
-                new MockTransportSelectorCallback();
+                new MockTransportSelectorCallback(mNormalCallDomainSelector);
         DomainSelectionService.SelectionAttributes attributes =
                 new DomainSelectionService.SelectionAttributes.Builder(
                         SLOT_ID, SUB_ID_1, SELECTOR_TYPE_CALLING)
+                        .setAddress(TEST_URI)
                         .setCallId(TEST_CALLID)
                         .setEmergency(false)
                         .setVideoCall(true)
                         .setExitedFromAirplaneMode(false)
                         .build();
+
         ServiceState serviceState = new ServiceState();
         serviceState.setStateOutOfService();
         initialize(serviceState, false, false, false, false);
+
         mNormalCallDomainSelector.selectDomain(attributes, transportSelectorCallback);
+
         assertTrue(transportSelectorCallback
                 .verifyOnSelectionTerminated(DisconnectCause.OUT_OF_SERVICE));
+
+        assertEquals(mNormalCallDomainSelector.getSelectorState(),
+                NormalCallDomainSelector.SelectorState.DESTROYED);
     }
 
     @Test
     public void testDomainSelection() {
         MockTransportSelectorCallback transportSelectorCallback =
-                new MockTransportSelectorCallback();
+                new MockTransportSelectorCallback(mNormalCallDomainSelector);
         DomainSelectionService.SelectionAttributes attributes =
                 new DomainSelectionService.SelectionAttributes.Builder(
                         SLOT_ID, SUB_ID_1, SELECTOR_TYPE_CALLING)
+                        .setAddress(TEST_URI)
                         .setCallId(TEST_CALLID)
                         .setEmergency(false)
                         .setVideoCall(false)
@@ -280,31 +355,48 @@ public class NormalCallDomainSelectorTest {
         ServiceState serviceState = new ServiceState();
         serviceState.setState(ServiceState.STATE_IN_SERVICE);
         initialize(serviceState, true, true, true, true);
+
         mNormalCallDomainSelector.selectDomain(attributes, transportSelectorCallback);
+
         assertTrue(transportSelectorCallback.verifyOnWlanSelected());
+
+        assertEquals(mNormalCallDomainSelector.getSelectorState(),
+                NormalCallDomainSelector.SelectorState.INACTIVE);
 
         // Case 2: 5G
         mNormalCallDomainSelector.selectDomain(attributes, transportSelectorCallback);
+
         initialize(serviceState, true, false, true, true);
         mNormalCallDomainSelector.selectDomain(attributes, transportSelectorCallback);
+
         assertTrue(transportSelectorCallback.verifyOnWwanSelected());
+
         assertTrue(transportSelectorCallback
                 .verifyOnDomainSelected(NetworkRegistrationInfo.DOMAIN_PS));
+
+        assertEquals(mNormalCallDomainSelector.getSelectorState(),
+                NormalCallDomainSelector.SelectorState.INACTIVE);
 
         // Case 3: PS -> CS redial
         ImsReasonInfo imsReasonInfo = new ImsReasonInfo();
         imsReasonInfo.mCode = ImsReasonInfo.CODE_LOCAL_CALL_CS_RETRY_REQUIRED;
         attributes = new DomainSelectionService.SelectionAttributes.Builder(
                 SLOT_ID, SUB_ID_1, SELECTOR_TYPE_CALLING)
+                .setAddress(TEST_URI)
                 .setCallId(TEST_CALLID)
                 .setEmergency(false)
                 .setVideoCall(false)
                 .setExitedFromAirplaneMode(false)
                 .setPsDisconnectCause(imsReasonInfo)
                 .build();
+
         mNormalCallDomainSelector.reselectDomain(attributes);
+
         assertTrue(transportSelectorCallback
                 .verifyOnDomainSelected(NetworkRegistrationInfo.DOMAIN_CS));
+
+        assertEquals(mNormalCallDomainSelector.getSelectorState(),
+                NormalCallDomainSelector.SelectorState.INACTIVE);
 
         // Case 4: CS call
         NetworkRegistrationInfo nwRegistrationInfo = new NetworkRegistrationInfo(
@@ -313,28 +405,40 @@ public class NormalCallDomainSelectorTest {
                 AccessNetworkConstants.AccessNetworkType.UTRAN, 0, false,
                 null, null, null, false, 0, 0, 0);
         serviceState.addNetworkRegistrationInfo(nwRegistrationInfo);
+
         mNormalCallDomainSelector.selectDomain(attributes, transportSelectorCallback);
+
         initialize(serviceState, false, false, false, false);
         mNormalCallDomainSelector.selectDomain(attributes, transportSelectorCallback);
+
         assertTrue(transportSelectorCallback.verifyOnWwanSelected());
+
         assertTrue(transportSelectorCallback
                 .verifyOnDomainSelected(NetworkRegistrationInfo.DOMAIN_CS));
+
+        assertEquals(mNormalCallDomainSelector.getSelectorState(),
+                NormalCallDomainSelector.SelectorState.INACTIVE);
 
         //Case 5: Backup calling
         serviceState.setStateOutOfService();
         initialize(serviceState, true, true, true, true);
+
         mNormalCallDomainSelector.selectDomain(attributes, transportSelectorCallback);
+
         assertTrue(transportSelectorCallback.verifyOnWlanSelected());
+
+        assertEquals(mNormalCallDomainSelector.getSelectorState(),
+                NormalCallDomainSelector.SelectorState.ACTIVE);
     }
 
     @Test
     public void testWPSCallDomainSelection() {
         MockTransportSelectorCallback transportSelectorCallback =
-                new MockTransportSelectorCallback();
+                new MockTransportSelectorCallback(mNormalCallDomainSelector);
         DomainSelectionService.SelectionAttributes attributes =
                 new DomainSelectionService.SelectionAttributes.Builder(
                         SLOT_ID, SUB_ID_1, SELECTOR_TYPE_CALLING)
-                        .setNumber("*272121")
+                        .setAddress(Uri.fromParts(PhoneAccount.SCHEME_TEL, "*272121", null))
                         .setCallId(TEST_CALLID)
                         .setEmergency(false)
                         .setVideoCall(false)
@@ -346,38 +450,57 @@ public class NormalCallDomainSelectorTest {
         config.putBoolean(CarrierConfigManager.KEY_SUPPORT_WPS_OVER_IMS_BOOL, false);
         doReturn(config).when(mMockCarrierConfigMgr).getConfigForSubId(SUB_ID_1,
                 new String[]{CarrierConfigManager.KEY_SUPPORT_WPS_OVER_IMS_BOOL});
+
         ServiceState serviceState = new ServiceState();
         serviceState.setState(ServiceState.STATE_IN_SERVICE);
         initialize(serviceState, true, true, true, true);
+
         mNormalCallDomainSelector.selectDomain(attributes, transportSelectorCallback);
+
         assertTrue(transportSelectorCallback.verifyOnWwanSelected());
+
         assertTrue(transportSelectorCallback
                 .verifyOnDomainSelected(NetworkRegistrationInfo.DOMAIN_CS));
+
+        assertEquals(mNormalCallDomainSelector.getSelectorState(),
+                NormalCallDomainSelector.SelectorState.INACTIVE);
 
         //Case 2: WPS supported by IMS and WLAN registered
         config.putBoolean(CarrierConfigManager.KEY_SUPPORT_WPS_OVER_IMS_BOOL, true);
         serviceState.setState(ServiceState.STATE_IN_SERVICE);
         initialize(serviceState, true, true, true, true);
+
         mNormalCallDomainSelector.selectDomain(attributes, transportSelectorCallback);
+
         assertTrue(transportSelectorCallback.verifyOnWlanSelected());
+
+        assertEquals(mNormalCallDomainSelector.getSelectorState(),
+                NormalCallDomainSelector.SelectorState.INACTIVE);
 
         //Case 2: WPS supported by IMS and LTE registered
         config.putBoolean(CarrierConfigManager.KEY_SUPPORT_WPS_OVER_IMS_BOOL, true);
         serviceState.setState(ServiceState.STATE_IN_SERVICE);
         initialize(serviceState, true, false, true, true);
+
         mNormalCallDomainSelector.selectDomain(attributes, transportSelectorCallback);
+
         assertTrue(transportSelectorCallback.verifyOnWwanSelected());
+
         assertTrue(transportSelectorCallback
                 .verifyOnDomainSelected(NetworkRegistrationInfo.DOMAIN_PS));
+
+        assertEquals(mNormalCallDomainSelector.getSelectorState(),
+                NormalCallDomainSelector.SelectorState.INACTIVE);
     }
 
     @Test
     public void testTtyCallDomainSelection() {
         MockTransportSelectorCallback transportSelectorCallback =
-                new MockTransportSelectorCallback();
+                new MockTransportSelectorCallback(mNormalCallDomainSelector);
         DomainSelectionService.SelectionAttributes attributes =
                 new DomainSelectionService.SelectionAttributes.Builder(
                         SLOT_ID, SUB_ID_1, SELECTOR_TYPE_CALLING)
+                        .setAddress(TEST_URI)
                         .setCallId(TEST_CALLID)
                         .setEmergency(false)
                         .setVideoCall(false)
@@ -390,28 +513,47 @@ public class NormalCallDomainSelectorTest {
         config.putBoolean(CarrierConfigManager.KEY_CARRIER_VOLTE_TTY_SUPPORTED_BOOL, false);
         doReturn(config).when(mMockCarrierConfigMgr).getConfigForSubId(SUB_ID_1,
                 new String[]{CarrierConfigManager.KEY_CARRIER_VOLTE_TTY_SUPPORTED_BOOL});
+
         ServiceState serviceState = new ServiceState();
         serviceState.setState(ServiceState.STATE_IN_SERVICE);
         initialize(serviceState, true, false, true, true);
+
         mNormalCallDomainSelector.selectDomain(attributes, transportSelectorCallback);
+
         assertTrue(transportSelectorCallback.verifyOnWwanSelected());
+
         assertTrue(transportSelectorCallback
                 .verifyOnDomainSelected(NetworkRegistrationInfo.DOMAIN_CS));
+
+        assertEquals(mNormalCallDomainSelector.getSelectorState(),
+                NormalCallDomainSelector.SelectorState.INACTIVE);
 
         //Case 2: TTY supported by IMS and TTY enabled
         config.putBoolean(CarrierConfigManager.KEY_CARRIER_VOLTE_TTY_SUPPORTED_BOOL, true);
         mNormalCallDomainSelector.selectDomain(attributes, transportSelectorCallback);
+
         assertTrue(transportSelectorCallback.verifyOnWwanSelected());
+
         assertTrue(transportSelectorCallback
                 .verifyOnDomainSelected(NetworkRegistrationInfo.DOMAIN_PS));
+
+        assertEquals(mNormalCallDomainSelector.getSelectorState(),
+                NormalCallDomainSelector.SelectorState.INACTIVE);
 
         //Case 3: TTY supported by IMS and TTY disabled
         doReturn(TelecomManager.TTY_MODE_OFF).when(mMockTelecomManager).getCurrentTtyMode();
         mNormalCallDomainSelector.selectDomain(attributes, transportSelectorCallback);
+
         assertTrue(transportSelectorCallback.verifyOnWwanSelected());
+
         assertTrue(transportSelectorCallback
                 .verifyOnDomainSelected(NetworkRegistrationInfo.DOMAIN_PS));
+
+        assertEquals(mNormalCallDomainSelector.getSelectorState(),
+                NormalCallDomainSelector.SelectorState.INACTIVE);
     }
+
+
 
     static class MockTransportSelectorCallback implements TransportSelectorCallback,
             WwanSelectorCallback {
@@ -422,11 +564,20 @@ public class NormalCallDomainSelectorTest {
         public boolean mDomainSelected;
         int mCauseCode;
         int mSelectedDomain;
+        NormalCallDomainSelector mNormalCallDomainSelector;
+
+        MockTransportSelectorCallback(NormalCallDomainSelector normalCallDomainSelector) {
+            mNormalCallDomainSelector = normalCallDomainSelector;
+        }
 
         @Override
         public synchronized void onCreated(DomainSelector selector) {
             Log.d(TAG, "onCreated");
             mCreated = true;
+
+            assertEquals(mNormalCallDomainSelector.getSelectorState(),
+                    NormalCallDomainSelector.SelectorState.INACTIVE);
+
             notifyAll();
         }
 
@@ -441,6 +592,10 @@ public class NormalCallDomainSelectorTest {
         public synchronized void onWlanSelected(boolean useEmergencyPdn) {
             Log.d(TAG, "onWlanSelected");
             mWlanSelected = true;
+
+            assertEquals(mNormalCallDomainSelector.getSelectorState(),
+                    NormalCallDomainSelector.SelectorState.INACTIVE);
+
             notifyAll();
         }
 
@@ -451,18 +606,14 @@ public class NormalCallDomainSelectorTest {
         }
 
         @Override
-        public synchronized WwanSelectorCallback onWwanSelected() {
-            mWwanSelected = true;
-            notifyAll();
-            return (WwanSelectorCallback) this;
-        }
-
-        @Override
         public void onWwanSelected(final Consumer<WwanSelectorCallback> consumer) {
             mWwanSelected = true;
             Executors.newSingleThreadExecutor().execute(() -> {
                 consumer.accept(this);
             });
+
+            assertEquals(mNormalCallDomainSelector.getSelectorState(),
+                    NormalCallDomainSelector.SelectorState.INACTIVE);
         }
 
         public boolean verifyOnWwanSelected() {
@@ -475,6 +626,10 @@ public class NormalCallDomainSelectorTest {
             Log.i(TAG, "onSelectionTerminated - called");
             mCauseCode = cause;
             mSelectionTerminated = true;
+
+            assertEquals(mNormalCallDomainSelector.getSelectorState(),
+                    NormalCallDomainSelector.SelectorState.INACTIVE);
+
             notifyAll();
         }
 
@@ -499,9 +654,10 @@ public class NormalCallDomainSelectorTest {
 
         @Override
         public void onRequestEmergencyNetworkScan(@NonNull List<Integer> preferredNetworks,
-                                                  int scanType,
-                                                  @NonNull CancellationSignal signal,
-                                                  @NonNull Consumer<EmergencyRegResult> consumer) {
+                int scanType,
+                boolean resetScan,
+                @NonNull CancellationSignal signal,
+                @NonNull Consumer<EmergencyRegistrationResult> consumer) {
             Log.i(TAG, "onRequestEmergencyNetworkScan - called");
 
         }
@@ -511,6 +667,10 @@ public class NormalCallDomainSelectorTest {
             Log.i(TAG, "onDomainSelected - called");
             mSelectedDomain = domain;
             mDomainSelected = true;
+
+            assertEquals(mNormalCallDomainSelector.getSelectorState(),
+                    NormalCallDomainSelector.SelectorState.INACTIVE);
+
             notifyAll();
         }
 

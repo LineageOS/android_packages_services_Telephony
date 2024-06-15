@@ -321,9 +321,9 @@
     <string name="throttle_help" msgid="2624535757028809735">"למידע נוסף"</string>
     <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>%%) מתוך התקופה המרבית של <xliff:g id="USED_2">%3$s</xliff:g>\nהתקופה הבאה מתחילה בעוד <xliff:g id="USED_3">%4$d</xliff:g> ימים (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
     <string name="throttle_data_usage_subtext" msgid="3185429653996709840">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>??)  מתוך התקופה המרבית של<xliff:g id="USED_2">%3$s</xliff:g>"</string>
-    <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"‏<xliff:g id="USED_0">%1$s</xliff:g> חריגה מהמקסימום\nקצב הנתונים ירד ל-‏‎<xliff:g id="USED_1">%2$d</xliff:g> Kb לשנייה"</string>
+    <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"‏<xliff:g id="USED_0">%1$s</xliff:g> חריגה מהמקסימום\nקצב הנתונים ירד ל-‏‎<xliff:g id="USED_1">%2$d</xliff:g>Kb לשנייה"</string>
     <string name="throttle_time_frame_subtext" msgid="6462089615392402127">"<xliff:g id="USED_0">%1$d</xliff:g>?? מהמחזור חלפו\nהתקופה הבאה מתחילה בעוד <xliff:g id="USED_1">%2$d</xliff:g> ימים (<xliff:g id="USED_2">%3$s</xliff:g>)"</string>
-    <string name="throttle_rate_subtext" msgid="7221971817325779535">"‏קצב הנתונים יורד ל-‏‎<xliff:g id="USED">%1$d</xliff:g> Kb לשנייה במקרה של חריגה ממגבלת השימוש בנתונים"</string>
+    <string name="throttle_rate_subtext" msgid="7221971817325779535">"‏קצב הנתונים יורד ל-‏‎<xliff:g id="USED">%1$d</xliff:g>Kb לשנייה במקרה של חריגה ממגבלת השימוש בנתונים"</string>
     <string name="throttle_help_subtext" msgid="2817114897095534807">"למידע נוסף על מדיניות השימוש בנתונים ברשת הסלולרית של הספק שלך"</string>
     <string name="cell_broadcast_sms" msgid="4053449797289031063">"‏SMS בשידור סלולרי"</string>
     <string name="enable_disable_cell_bc_sms" msgid="4759958924031721350">"‏SMS בשידור סלולרי"</string>
@@ -485,7 +485,7 @@
     <string name="simContacts_title" msgid="2714029230160136647">"בחירת אנשי קשר לייבוא"</string>
     <string name="simContacts_airplaneMode" msgid="4654884030631503808">"‏יש לבטל את מצב טיסה כדי לייבא אנשי קשר מכרטיס ה-SIM."</string>
     <string name="enable_pin" msgid="967674051730845376">"‏הפעלה/השבתה של קוד האימות של SIM"</string>
-    <string name="change_pin" msgid="3657869530942905790">"‏שינוי קוד אימות של SIM"</string>
+    <string name="change_pin" msgid="3657869530942905790">"‏שינוי קוד הגישה של ה-SIM"</string>
     <string name="enter_pin_text" msgid="3182311451978663356">"‏קוד אימות של SIM:"</string>
     <string name="oldPinLabel" msgid="8618515202411987721">"קוד אימות ישן"</string>
     <string name="newPinLabel" msgid="3585899083055354732">"קוד אימות חדש"</string>

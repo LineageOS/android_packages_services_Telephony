@@ -318,7 +318,7 @@
     <string name="throttle_current_usage" msgid="7483859109708658613">"Податоци кои се користат во тековниот период"</string>
     <string name="throttle_time_frame" msgid="1813452485948918791">"Период на потрошен интернет"</string>
     <string name="throttle_rate" msgid="7641913901133634905">"Политика на стапка на податоци"</string>
-    <string name="throttle_help" msgid="2624535757028809735">"Дознај повеќе"</string>
+    <string name="throttle_help" msgid="2624535757028809735">"Дознајте повеќе"</string>
     <string name="throttle_status_subtext" msgid="1110276415078236687">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g> ٪) од максимум <xliff:g id="USED_2">%3$s</xliff:g> за периодот\nСледниот период започнува за <xliff:g id="USED_3">%4$d</xliff:g> дена (<xliff:g id="USED_4">%5$s</xliff:g>)"</string>
     <string name="throttle_data_usage_subtext" msgid="3185429653996709840">"<xliff:g id="USED_0">%1$s</xliff:g> (<xliff:g id="USED_1">%2$d</xliff:g>٪) од <xliff:g id="USED_2">%3$s</xliff:g> максимален период"</string>
     <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"<xliff:g id="USED_0">%1$s</xliff:g> максимум е надминат\nСтапката на податоци е намалена на <xliff:g id="USED_1">%2$d</xliff:g> Kb/s"</string>
@@ -485,8 +485,8 @@
     <string name="simContacts_title" msgid="2714029230160136647">"Избери контакти за увоз"</string>
     <string name="simContacts_airplaneMode" msgid="4654884030631503808">"Исклучете го авионскиот режим за да ги увезете контактите од SIM-картичката."</string>
     <string name="enable_pin" msgid="967674051730845376">"Овозможи/оневозможи PIN на SIM"</string>
-    <string name="change_pin" msgid="3657869530942905790">"Промени PIN на SIM"</string>
-    <string name="enter_pin_text" msgid="3182311451978663356">"PIN на SIM:"</string>
+    <string name="change_pin" msgid="3657869530942905790">"Променете PIN за SIM-картичката"</string>
+    <string name="enter_pin_text" msgid="3182311451978663356">"PIN за SIM-картичката:"</string>
     <string name="oldPinLabel" msgid="8618515202411987721">"Стар PIN"</string>
     <string name="newPinLabel" msgid="3585899083055354732">"Нов PIN"</string>
     <string name="confirmPinLabel" msgid="7783531218662473778">"Потврди нов PIN"</string>
