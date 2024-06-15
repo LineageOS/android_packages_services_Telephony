@@ -1052,6 +1052,8 @@ public class SatelliteAccessController extends Handler {
             mAccessControllerMetricsStats.setLocationQueryTime(mLocationQueryStartTimeMillis);
             Bundle bundle = new Bundle();
             if (location != null) {
+                plogd("onCurrentLocationAvailable: lat=" + Rlog.pii(TAG, location.getLatitude())
+                        + ", long=" + Rlog.pii(TAG, location.getLongitude()));
                 if (location.isMock() && !isMockModemAllowed()) {
                     logd("location is mock");
                     bundle.putBoolean(KEY_SATELLITE_COMMUNICATION_ALLOWED, false);
@@ -1214,13 +1216,22 @@ public class SatelliteAccessController extends Handler {
     private boolean isInEmergency() {
         // Check if emergency call is ongoing
         if (mTelecomManager.isInEmergencyCall()) {
+            plogd("In emergency call");
             return true;
         }
+
         // Check if the device is in emergency callback mode
         for (Phone phone : PhoneFactory.getPhones()) {
             if (phone.isInEcm()) {
+                plogd("In emergency callback mode");
                 return true;
             }
+        }
+
+        // Check if satellite is in emergency mode
+        if (mSatelliteController.isInEmergencyMode()) {
+            plogd("In satellite emergency mode");
+            return true;
         }
         return false;
     }
