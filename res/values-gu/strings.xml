@@ -134,6 +134,8 @@
     <string name="updating_title" msgid="6130548922615719689">"કૉલ સેટિંગ"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"કૉલ સેટિંગને ફક્ત ઍડમિન વપરાશકર્તા દ્વારા જ બદલી શકાય છે."</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"ફોન એકાઉન્ટના સેટિંગને ફક્ત ઍડમિન અથવા ઑફિસના વપરાશકર્તા જ બદલી શકે છે."</string>
+    <!-- no translation found for phone_account_no_config_mobile_networks (7351062247756521227) -->
+    <skip />
     <string name="call_settings_with_label" msgid="8460230435361579511">"સેટિંગ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"કૉલ સેટિંગની ભૂલ"</string>
     <string name="reading_settings" msgid="1605904432450871183">"સેટિંગ વાંચી રહ્યાં છે…"</string>
@@ -845,8 +847,7 @@
     <string name="radio_info_radio_power" msgid="8805595022160471587">"મોબાઇલ રેડિયો પાવર"</string>
     <string name="simulate_out_of_service_string" msgid="7787925611727597193">"\'સેવા ઉપલબ્ધ નથી\' મોડ સિમ્યુલેટ કરો (માત્ર ડિબગ બિલ્ડ માટે)"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"મૉક કૅરિઅર સૅટલાઇટ મોડ (માત્ર ડિબગ બિલ્ડ માટે)"</string>
-    <!-- no translation found for esos_satellite_string (7274794226125968657) -->
-    <skip />
+    <string name="esos_satellite_string" msgid="7274794226125968657">"રિઅલ સૅટલાઇટ eSOS મોડનું પરિક્ષણ કરો (માત્ર ડિબગ બિલ્ડ માટે)"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"સિમમાં સરનામા પુસ્તિકા જુઓ"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"ફિક્સ્ડ ડાયલિંગ નંબર જુઓ"</string>
     <string name="radioInfo_menu_viewSDN" msgid="2613431584522392842">"સર્વિસ ડાયલિંગ નંબર જુઓ"</string>

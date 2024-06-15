@@ -134,6 +134,8 @@
     <string name="updating_title" msgid="6130548922615719689">"कॉल सेटिंग"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"कॉल सेटिंग केवल व्यवस्थापक उपयोगकर्ता द्वारा ही बदली जा सकती हैं."</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"फ़ोन की खाता सेटिंग, सिर्फ़ एडमिन या वर्क प्रोफ़ाइल के उपयोगकर्ता बदल सकते हैं."</string>
+    <!-- no translation found for phone_account_no_config_mobile_networks (7351062247756521227) -->
+    <skip />
     <string name="call_settings_with_label" msgid="8460230435361579511">"सेटिंग (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"कॉल सेटिंग गड़बड़ी"</string>
     <string name="reading_settings" msgid="1605904432450871183">"सेटिंग पढ़ रहा है..."</string>

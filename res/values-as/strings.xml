@@ -134,6 +134,8 @@
     <string name="updating_title" msgid="6130548922615719689">"কল ছেটিংসমূহ"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"কেৱল প্ৰশাসকে কল ছেটিংসমূহ সলনি কৰিব পাৰে।"</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"ফ’ন একাউণ্টৰ ছেটিং কেৱল প্ৰশাসক অথবা কৰ্মস্থানৰ ব্যৱহাৰকাৰীয়েহে সলনি কৰিব পাৰে।"</string>
+    <!-- no translation found for phone_account_no_config_mobile_networks (7351062247756521227) -->
+    <skip />
     <string name="call_settings_with_label" msgid="8460230435361579511">"ছেটিংসমূহ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"কল ছেটিংসমূহত আসোঁৱাহ"</string>
     <string name="reading_settings" msgid="1605904432450871183">"ছেটিংসমূহ পঢ়ি থকা হৈছে…"</string>

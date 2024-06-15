@@ -134,6 +134,8 @@
     <string name="updating_title" msgid="6130548922615719689">"ການຕັ້ງຄ່າການໂທ"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"ມີ​ແຕ່​ຜູ້​ໃຊ້​ທີ່​ເປັນ​ຜູ້ດູແລລະບົບ​ເທົ່າ​ນັ້ນ​ທີ່​ສາ​ມາດ​ປ່ຽນການ​ຕັ້ງ​ຄ່າ​ການ​ໂທ​ໄດ້."</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"ສະເພາະຜູ້ເບິ່ງແຍງລະບົບ ຫຼື ຜູ້ໃຊ້ຢູ່ບ່ອນເຮັດວຽກເທົ່ານັ້ນທີ່ສາມາດປ່ຽນການຕັ້ງຄ່າບັນຊີຂອງໂທລະສັບໄດ້."</string>
+    <!-- no translation found for phone_account_no_config_mobile_networks (7351062247756521227) -->
+    <skip />
     <string name="call_settings_with_label" msgid="8460230435361579511">"ການ​ຕັ້ງ​ຄ່າ (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"ການຕັ້ງຄ່າການໂທຜິດພາດ"</string>
     <string name="reading_settings" msgid="1605904432450871183">"ກຳລັງອ່ານການຕັ້ງຄ່າ..."</string>
@@ -845,8 +847,7 @@
     <string name="radio_info_radio_power" msgid="8805595022160471587">"ພະລັງງານວິທະຍຸມືຖື"</string>
     <string name="simulate_out_of_service_string" msgid="7787925611727597193">"ຈໍາລອງເຫດການບໍ່ພ້ອມໃຫ້ບໍລິການ (ສໍາລັບ Build ດີບັກເທົ່ານັ້ນ)"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"ຈຳລອງໂໝດດາວທຽມຂອງຜູ້ໃຫ້ບໍລິການ (ສຳລັບ Build ດີບັກເທົ່ານັ້ນ)"</string>
-    <!-- no translation found for esos_satellite_string (7274794226125968657) -->
-    <skip />
+    <string name="esos_satellite_string" msgid="7274794226125968657">"ທົດສອບໂໝດ eSOS ດາວທຽມແທ້ (ສຳລັບ Build ດີບັກເທົ່ານັ້ນ)"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"ເບິ່ງສະໝຸດທີ່ຢູ່ໃນຊິມ"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"ເບິ່ງໝາຍເລກໂທອອກທີ່ກຳນົດ"</string>
     <string name="radioInfo_menu_viewSDN" msgid="2613431584522392842">"ເບິ່ງໝາຍເລກບໍລິການໂທອອກ"</string>

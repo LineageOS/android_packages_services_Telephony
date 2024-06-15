@@ -134,6 +134,8 @@
     <string name="updating_title" msgid="6130548922615719689">"کال کی ترتیبات"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"صرف منتظم صارف ہی کال کی ترتیبات تبدیل کر سکتا ہے۔"</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"صرف منتظم یا دفتر کا صارف ہی فون کے اکاؤنٹ کی ترتیبات تبدیل کر سکتا ہے۔"</string>
+    <!-- no translation found for phone_account_no_config_mobile_networks (7351062247756521227) -->
+    <skip />
     <string name="call_settings_with_label" msgid="8460230435361579511">"ترتیبات (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"کال کی ترتیبات کی خرابی"</string>
     <string name="reading_settings" msgid="1605904432450871183">"ترتیبات کو پڑھ رہا ہے…"</string>

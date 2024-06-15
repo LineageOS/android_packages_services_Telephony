@@ -134,6 +134,8 @@
     <string name="updating_title" msgid="6130548922615719689">"Deien ezarpenak"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Administratzaileak soilik alda ditzake deien ezarpenak."</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Administratzaileak / Laneko erabiltzaileek alda ditzakete telefonoko kontuaren ezarpenak."</string>
+    <!-- no translation found for phone_account_no_config_mobile_networks (7351062247756521227) -->
+    <skip />
     <string name="call_settings_with_label" msgid="8460230435361579511">"Ezarpenak (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Deien ezarpenen errorea"</string>
     <string name="reading_settings" msgid="1605904432450871183">"Ezarpenak irakurtzen…"</string>
@@ -845,8 +847,7 @@
     <string name="radio_info_radio_power" msgid="8805595022160471587">"Sare mugikor bidezko irratiaren indarra"</string>
     <string name="simulate_out_of_service_string" msgid="7787925611727597193">"Simulatu gailua ez dabilela (arazketa-konpilazioa soilik)"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"Simulatu operadorearen satelite modua (arazketa-konpilazioa soilik)"</string>
-    <!-- no translation found for esos_satellite_string (7274794226125968657) -->
-    <skip />
+    <string name="esos_satellite_string" msgid="7274794226125968657">"Probatu satelite bidezko SOS larrialdien modua (arazketa-konpilazioa soilik)"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"Ikusi SIMeko kontaktuak"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"Ikusi markatze finkoko zenbakiak"</string>
     <string name="radioInfo_menu_viewSDN" msgid="2613431584522392842">"Ikusi zerbitzuaren markatze-zenbakiak"</string>

@@ -134,6 +134,8 @@
     <string name="updating_title" msgid="6130548922615719689">"కాల్ సెట్టింగ్‌లు"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"కాల్ సెట్టింగ్‌లను నిర్వాహక వినియోగదారు మాత్రమే మార్చగలరు."</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"ఫోన్ ఖాతా సెట్టింగ్‌లను అడ్మిన్ లేదా వర్క్ యూజర్ మాత్రమే మార్చగలరు."</string>
+    <!-- no translation found for phone_account_no_config_mobile_networks (7351062247756521227) -->
+    <skip />
     <string name="call_settings_with_label" msgid="8460230435361579511">"సెట్టింగ్‌లు (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"కాల్ సెట్టింగ్‌ల ఎర్రర్"</string>
     <string name="reading_settings" msgid="1605904432450871183">"సెట్టింగ్‌లను చదువుతోంది…"</string>
