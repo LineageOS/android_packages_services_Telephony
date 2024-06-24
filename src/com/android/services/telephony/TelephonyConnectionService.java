@@ -1186,8 +1186,10 @@ public class TelephonyConnectionService extends ConnectionService {
         }
 
         if (mDomainSelectionResolver.isDomainSelectionSupported()) {
-            // Normal routing emergency number shall be handled by normal call domain selctor.
-            int routing = getEmergencyCallRouting(phone, number, needToTurnOnRadio);
+            // Normal routing emergency number shall be handled by normal call domain selector.
+            int routing = (isEmergencyNumber)
+                    ? getEmergencyCallRouting(phone, number, needToTurnOnRadio)
+                    : EmergencyNumber.EMERGENCY_CALL_ROUTING_UNKNOWN;
             if (isEmergencyNumber && routing != EmergencyNumber.EMERGENCY_CALL_ROUTING_NORMAL) {
                 final Connection resultConnection =
                         placeEmergencyConnection(phone,
@@ -2928,6 +2930,9 @@ public class TelephonyConnectionService extends ConnectionService {
     }
 
     private int getEmergencyCallRouting(Phone phone, String number, boolean needToTurnOnRadio) {
+        if (phone == null) {
+            return EmergencyNumber.EMERGENCY_CALL_ROUTING_UNKNOWN;
+        }
         // This method shall be called only if AOSP domain selection is enabled.
         if (mDynamicRoutingController == null) {
             mDynamicRoutingController = DynamicRoutingController.getInstance();
