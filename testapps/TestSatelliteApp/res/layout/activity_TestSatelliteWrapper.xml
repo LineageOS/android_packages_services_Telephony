@@ -130,6 +130,18 @@
             android:layout_height="wrap_content"
             android:paddingRight="4dp"
             android:text="@string/getSatellitePlmnsForCarrier"/>
+        <Button
+            android:id="@+id/registerForCarrierRoamingNtnModeChanged"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="4dp"
+            android:text="@string/registerForCarrierRoamingNtnModeChanged"/>
+        <Button
+            android:id="@+id/unregisterForCarrierRoamingNtnModeChanged"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="4dp"
+            android:text="@string/unregisterForCarrierRoamingNtnModeChanged"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

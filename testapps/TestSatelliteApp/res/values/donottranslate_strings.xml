@@ -93,4 +93,7 @@
 
     <string name="Back">Back</string>
     <string name="ClearLog">Clear Log</string>
+
+    <string name="registerForCarrierRoamingNtnModeChanged">registerForCarrierRoamingNtnModeChanged</string>
+    <string name="unregisterForCarrierRoamingNtnModeChanged">unregisterForCarrierRoamingNtnModeChanged</string>
 </resources>

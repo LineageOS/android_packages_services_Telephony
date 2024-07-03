@@ -23,6 +23,7 @@ import android.os.Bundle;
 import android.os.OutcomeReceiver;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
+import android.telephony.satellite.wrapper.CarrierRoamingNtnModeListenerWrapper;
 import android.telephony.satellite.wrapper.NtnSignalStrengthCallbackWrapper;
 import android.telephony.satellite.wrapper.NtnSignalStrengthWrapper;
 import android.telephony.satellite.wrapper.SatelliteCapabilitiesCallbackWrapper;
@@ -53,6 +54,7 @@ public class TestSatelliteWrapper extends Activity {
     private final ExecutorService mExecutor = Executors.newSingleThreadExecutor();
     private SatelliteManagerWrapper mSatelliteManagerWrapper;
     private NtnSignalStrengthCallback mNtnSignalStrengthCallback = null;
+    private CarrierRoamingNtnModeListener mCarrierRoamingNtnModeListener = null;
     private SatelliteCapabilitiesCallbackWrapper mSatelliteCapabilitiesCallback;
     private SubscriptionManager mSubscriptionManager;
     private int mSubId;
@@ -99,6 +101,10 @@ public class TestSatelliteWrapper extends Activity {
                 .setOnClickListener(this::getAttachRestrictionReasonsForCarrier);
         findViewById(R.id.getSatellitePlmnsForCarrier)
                 .setOnClickListener(this::getSatellitePlmnsForCarrier);
+        findViewById(R.id.registerForCarrierRoamingNtnModeChanged)
+                .setOnClickListener(this::registerForCarrierRoamingNtnModeChanged);
+        findViewById(R.id.unregisterForCarrierRoamingNtnModeChanged)
+                .setOnClickListener(this::unregisterForCarrierRoamingNtnModeChanged);
         findViewById(R.id.Back).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -179,6 +185,39 @@ public class TestSatelliteWrapper extends Activity {
             addLogMessage(errorMessage);
         }
     }
+
+    private void registerForCarrierRoamingNtnModeChanged(View view) {
+        addLogMessage("registerForCarrierRoamingNtnModeChanged");
+        logd("registerForCarrierRoamingNtnModeChanged()");
+        if (mCarrierRoamingNtnModeListener == null) {
+            logd("Creating new CarrierRoamingNtnModeListener instance.");
+            mCarrierRoamingNtnModeListener = new CarrierRoamingNtnModeListener();
+        }
+
+        try {
+            mSatelliteManagerWrapper.registerForCarrierRoamingNtnModeChanged(mSubId, mExecutor,
+                    mCarrierRoamingNtnModeListener);
+        } catch (Exception ex) {
+            String errorMessage = "registerForCarrierRoamingNtnModeChanged: " + ex.getMessage();
+            logd(errorMessage);
+            addLogMessage(errorMessage);
+            mCarrierRoamingNtnModeListener = null;
+        }
+    }
+
+    private void unregisterForCarrierRoamingNtnModeChanged(View view) {
+        addLogMessage("unregisterForCarrierRoamingNtnModeChanged");
+        logd("unregisterForCarrierRoamingNtnModeChanged()");
+        if (mCarrierRoamingNtnModeListener != null) {
+            mSatelliteManagerWrapper.unregisterForCarrierRoamingNtnModeChanged(mSubId,
+                    mCarrierRoamingNtnModeListener);
+            mCarrierRoamingNtnModeListener = null;
+            addLogMessage("mCarrierRoamingNtnModeListener was unregistered");
+        } else {
+            addLogMessage("mCarrierRoamingNtnModeListener is null, ignored.");
+        }
+    }
+
 
     private void registerForNtnSignalStrengthChanged(View view) {
         addLogMessage("registerForNtnSignalStrengthChanged");
@@ -280,6 +319,16 @@ public class TestSatelliteWrapper extends Activity {
         public void onNtnSignalStrengthChanged(
                 @NonNull NtnSignalStrengthWrapper ntnSignalStrength) {
             String message = "Received NTN SignalStrength : " + ntnSignalStrength.getLevel();
+            logd(message);
+            addLogMessage(message);
+        }
+    }
+
+    private class CarrierRoamingNtnModeListener implements CarrierRoamingNtnModeListenerWrapper {
+
+        @Override
+        public void onCarrierRoamingNtnModeChanged(boolean active) {
+            String message = "Received onCarrierRoamingNtnModeChanged active: " + active;
             logd(message);
             addLogMessage(message);
         }
