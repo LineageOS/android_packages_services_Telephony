@@ -17,6 +17,7 @@
 package com.android.phone.satellite.accesscontrol;
 
 import static android.telephony.satellite.SatelliteManager.KEY_SATELLITE_COMMUNICATION_ALLOWED;
+import static android.telephony.satellite.SatelliteManager.SATELLITE_RESULT_LOCATION_NOT_AVAILABLE;
 import static android.telephony.satellite.SatelliteManager.SATELLITE_RESULT_MODEM_ERROR;
 import static android.telephony.satellite.SatelliteManager.SATELLITE_RESULT_REQUEST_NOT_SUPPORTED;
 import static android.telephony.satellite.SatelliteManager.SATELLITE_RESULT_SUCCESS;
@@ -397,8 +398,10 @@ public class SatelliteAccessControllerTest {
         assertEquals(SATELLITE_RESULT_SUCCESS, mQueriedSatelliteAllowedResultCode);
         assertTrue(mQueriedSatelliteAllowed);
 
-        // Timed out to wait for current location. No cached country codes.
+        // Timed out to wait for current location. No cached allowed state.
         clearAllInvocations();
+        mSatelliteAccessControllerUT.setIsSatelliteCommunicationAllowedForCurrentLocationCache(
+                "cache_clear_and_not_allowed");
         when(mMockCountryDetector.getCurrentNetworkCountryIso()).thenReturn(EMPTY_STRING_LIST);
         when(mMockTelecomManager.isInEmergencyCall()).thenReturn(false);
         when(mMockPhone.isInEcm()).thenReturn(true);
@@ -424,9 +427,7 @@ public class SatelliteAccessControllerTest {
                 any(SatelliteOnDeviceAccessController.LocationToken.class));
         assertTrue(waitForRequestIsSatelliteAllowedForCurrentLocationResult(
                 mSatelliteAllowedSemaphore, 1));
-        assertEquals(SATELLITE_RESULT_SUCCESS,
-                mQueriedSatelliteAllowedResultCode);
-        assertTrue(mQueriedSatelliteAllowed);
+        assertEquals(SATELLITE_RESULT_LOCATION_NOT_AVAILABLE, mQueriedSatelliteAllowedResultCode);
 
         // Network country codes are not available. TelecomManager.isInEmergencyCall() returns
         // false. No phone is in ECM. Last known location is not fresh. Cached country codes should
@@ -453,7 +454,6 @@ public class SatelliteAccessControllerTest {
                 mSatelliteAllowedSemaphore, 1));
         assertEquals(SATELLITE_RESULT_SUCCESS, mQueriedSatelliteAllowedResultCode);
         assertFalse(mQueriedSatelliteAllowed);
-
     }
 
     @Test
@@ -471,7 +471,7 @@ public class SatelliteAccessControllerTest {
 
         // These APIs are executed during loadRemoteConfigs
         verify(mMockSharedPreferences, times(1)).getStringSet(anyString(), any());
-        verify(mMockSharedPreferences, times(1)).getBoolean(anyString(), anyBoolean());
+        verify(mMockSharedPreferences, times(2)).getBoolean(anyString(), anyBoolean());
 
         // satelliteConfig is null
         SatelliteConfigParser spyConfigParser =
