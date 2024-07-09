@@ -16,8 +16,8 @@
     <string name="title_activity_test_config" msgid="7585204485536359713">"TestConfigActivity"</string>
     <string name="service_package_name" msgid="7204809439090483315">"Nom de l\'ensemble de service GBA"</string>
     <string name="service_release_time" msgid="532937496122890892">"Délai de libération du service après un appel"</string>
-    <string name="request_app_type" msgid="3975978141673475612">"Type d\'application UICC"</string>
-    <string name="request_naf_url" msgid="4487793541217737042">"URL de fonction d\'application réseau (NAF)"</string>
+    <string name="request_app_type" msgid="3975978141673475612">"Type d\'appli UICC"</string>
+    <string name="request_naf_url" msgid="4487793541217737042">"URL de fonction d\'appli réseau (NAF)"</string>
     <string name="request_force_bootstrapping" msgid="206043602616214325">"Forcer l\'amorçage?"</string>
     <string name="request_org" msgid="8416693445448308975">"Code d\'organisation"</string>
     <string name="request_security_protocol" msgid="1444164827561010482">"Identifiant de protocole de sécurité UA"</string>

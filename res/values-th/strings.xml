@@ -134,8 +134,7 @@
     <string name="updating_title" msgid="6130548922615719689">"การตั้งค่าการโทร"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"ผู้ใช้ระดับผู้ดูแลระบบเท่านั้นที่สามารถเปลี่ยนแปลงการตั้งค่าการโทรได้"</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"เฉพาะผู้ดูแลระบบหรือผู้ใช้ที่ทำงานเท่านั้นที่สามารถเปลี่ยนการตั้งค่าบัญชีของโทรศัพท์ได้"</string>
-    <!-- no translation found for phone_account_no_config_mobile_networks (7351062247756521227) -->
-    <skip />
+    <string name="phone_account_no_config_mobile_networks" msgid="7351062247756521227">"เจ้าของอุปกรณ์ได้จำกัดความสามารถในการเปลี่ยนการตั้งค่าเครือข่ายมือถือ"</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"การตั้งค่า (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"ข้อผิดพลาดในการตั้งค่าการโทร"</string>
     <string name="reading_settings" msgid="1605904432450871183">"กำลังประมวลการตั้งค่า…"</string>

@@ -134,8 +134,7 @@
     <string name="updating_title" msgid="6130548922615719689">"تنظیمات تماس"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"فقط کاربر سرپرست می‌تواند تنظیمات تماس را تغییر دهد."</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"فقط کاربر کاری یا سرپرست می‌تواند تنظیمات حساب تلفن را تغییر دهد."</string>
-    <!-- no translation found for phone_account_no_config_mobile_networks (7351062247756521227) -->
-    <skip />
+    <string name="phone_account_no_config_mobile_networks" msgid="7351062247756521227">"مالک دستگاه امکان تغییر دادن تنظیمات شبکه تلفن همراه را محدود کرده است."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"تنظیمات (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"خطای تنظیمات تماس"</string>
     <string name="reading_settings" msgid="1605904432450871183">"در حال خواندن تنظیمات..."</string>
@@ -287,8 +286,8 @@
     <string name="roaming" msgid="1576180772877858949">"فراگردی"</string>
     <string name="roaming_enable" msgid="6853685214521494819">"اتصال به سرویس‌های داده هنگام فراگردی"</string>
     <string name="roaming_disable" msgid="8856224638624592681">"اتصال به سرویس‌های داده هنگام فراگردی"</string>
-    <string name="roaming_reenable_message" msgid="1951802463885727915">"فراگردی داده خاموش شده است. برای روشن کردن آن، ضربه بزنید."</string>
-    <string name="roaming_enabled_message" msgid="9022249120750897">"ممکن است هزینه‌های فراگردی اعمال شود. برای اصلاح ضربه بزنید."</string>
+    <string name="roaming_reenable_message" msgid="1951802463885727915">"فراگردی داده خاموش شده است. برای روشن کردن آن، تک‌ضرب بزنید."</string>
+    <string name="roaming_enabled_message" msgid="9022249120750897">"ممکن است هزینه‌های فراگردی اعمال شود. برای اصلاح تک‌ضرب بزنید."</string>
     <string name="roaming_notification_title" msgid="3590348480688047320">"اتصال داده تلفن همراه قطع شد"</string>
     <string name="roaming_on_notification_title" msgid="7451473196411559173">"فراگردی داده روشن است"</string>
     <string name="roaming_warning" msgid="7855681468067171971">"شاید هزینه زیادی برای شما داشته باشد."</string>
@@ -565,11 +564,11 @@
     <string name="incall_error_carrier_roaming_satellite_mode" msgid="678603203562886361">"‏می‌توانید بدون شبکه تلفن همراه یا شبکه Wi-Fi پیام ارسال و دریافت کنید."</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"اطلاعات اضطراری"</string>
     <string name="emergency_information_owner_hint" msgid="6256909888049185316">"مالک"</string>
-    <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"برای دیدن اطلاعات، دوباره ضربه بزنید"</string>
+    <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"برای دیدن اطلاعات، دوباره تک‌ضرب بزنید"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="2667568200755388829">"تماس اضطراری"</string>
     <string name="single_emergency_number_title" msgid="8413371079579067196">"شماره تلفن اضطراری"</string>
     <string name="numerous_emergency_numbers_title" msgid="8972398932506755510">"شماره تلفن‌های اضطراری"</string>
-    <string name="emergency_call_shortcut_hint" msgid="1290485125107779500">"برای تماس با <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g> دوباره ضربه بزنید"</string>
+    <string name="emergency_call_shortcut_hint" msgid="1290485125107779500">"برای تماس با <xliff:g id="EMERGENCY_NUMBER">%s</xliff:g> دوباره تک‌ضرب بزنید"</string>
     <string name="emergency_enable_radio_dialog_message" msgid="1695305158151408629">"در حال روشن کردن رادیو..."</string>
     <string name="emergency_enable_radio_dialog_retry" msgid="4329131876852608587">"سرویسی در دسترس نیست. دوباره امتحان کنید..."</string>
     <string name="radio_off_during_emergency_call" msgid="8011154134040481609">"در طول تماس اضطراری نمی‌توانید به حالت هواپیما بروید."</string>

@@ -134,8 +134,7 @@
     <string name="updating_title" msgid="6130548922615719689">"কল সেটিংস"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"কেবলমাত্র প্রশাসক ব্যবহারকারী কল সেটিংস পরিবর্তন করতে পারবেন৷"</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"শুধুমাত্র অ্যাডমিন বা অফিস প্রোফাইল ব্যবহারকারী ফোনের অ্যাকাউন্ট সেটিংস পরিবর্তন করতে পারবেন।"</string>
-    <!-- no translation found for phone_account_no_config_mobile_networks (7351062247756521227) -->
-    <skip />
+    <string name="phone_account_no_config_mobile_networks" msgid="7351062247756521227">"ডিভাইসের মালিক, মোবাইল নেটওয়ার্ক সেটিংস পরিবর্তন করার সুবিধা সীমাবদ্ধ করে রেখেছেন।"</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"সেটিংস (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"কল সেটিংসে ত্রুটি"</string>
     <string name="reading_settings" msgid="1605904432450871183">"সেটিংস পড়ছে…"</string>

@@ -20,7 +20,7 @@
     <string name="request_naf_url" msgid="4487793541217737042">"নেটৱৰ্ক এপ্লিকেশ্বন ফাংশ্বন (NAF) URL"</string>
     <string name="request_force_bootstrapping" msgid="206043602616214325">"বলেৰে বুটষ্ট্ৰেপিং কৰিবনে?"</string>
     <string name="request_org" msgid="8416693445448308975">"প্ৰতিষ্ঠানৰ ক’ড"</string>
-    <string name="request_security_protocol" msgid="1444164827561010482">"UA সুৰক্ষা প্ৰ’ট’কল আইডি"</string>
+    <string name="request_security_protocol" msgid="1444164827561010482">"UA সুৰক্ষা প্ৰ্ৰ\'টকল আইডি"</string>
     <string name="request_tls_cipher_suite" msgid="6659854717595308404">"TLS Cipher Suite আইডি"</string>
     <string name="response_success" msgid="2469204471244527663">"GBA প্ৰমাণীকৰণ সফল হৈছে নেকি?"</string>
     <string name="response_fail_reason" msgid="3401426967253202496">"ব্যৰ্থতাৰ কাৰণৰ আইডি"</string>

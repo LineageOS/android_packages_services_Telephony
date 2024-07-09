@@ -134,8 +134,7 @@
     <string name="updating_title" msgid="6130548922615719689">"Қоңырау параметрлері"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Қоңырау параметрлерін тек әкімші пайдаланушы өзгерте алады."</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Телефонның аккаунт параметрлерін тек әкімші немесе жұмыстағы пайдаланушы өзгерте алады."</string>
-    <!-- no translation found for phone_account_no_config_mobile_networks (7351062247756521227) -->
-    <skip />
+    <string name="phone_account_no_config_mobile_networks" msgid="7351062247756521227">"Құрылғының иесі мобильдік желі параметрлерін өзгертуге шектеу қойды."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Параметрлер (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Қоңырау параметрлерінің қателігі"</string>
     <string name="reading_settings" msgid="1605904432450871183">"Параметрлерді оқуда…"</string>

@@ -134,8 +134,7 @@
     <string name="updating_title" msgid="6130548922615719689">"Поставки за повици"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Поставките за повик може да ги измени само администраторскиот корисник."</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Поставките за сметката на телефонот може да ги промени само администраторот или деловниот корисник."</string>
-    <!-- no translation found for phone_account_no_config_mobile_networks (7351062247756521227) -->
-    <skip />
+    <string name="phone_account_no_config_mobile_networks" msgid="7351062247756521227">"Сопственикот на уредот ја ограничил можноста за менување на поставките за мобилната мрежа."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Поставки (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Грешка со поставки на повици"</string>
     <string name="reading_settings" msgid="1605904432450871183">"Се читаат поставките..."</string>
