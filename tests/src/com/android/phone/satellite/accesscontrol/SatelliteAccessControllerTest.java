@@ -471,7 +471,7 @@ public class SatelliteAccessControllerTest {
 
         // These APIs are executed during loadRemoteConfigs
         verify(mMockSharedPreferences, times(1)).getStringSet(anyString(), any());
-        verify(mMockSharedPreferences, times(2)).getBoolean(anyString(), anyBoolean());
+        verify(mMockSharedPreferences, times(1)).getBoolean(anyString(), anyBoolean());
 
         // satelliteConfig is null
         SatelliteConfigParser spyConfigParser =

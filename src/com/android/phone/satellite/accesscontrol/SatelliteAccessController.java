@@ -276,7 +276,6 @@ public class SatelliteAccessController extends Handler {
         // loadConfigUpdaterConfigs has to be called after loadOverlayConfigs
         // since config updater config has higher priority and thus can override overlay config
         loadConfigUpdaterConfigs();
-        loadCachedLatestSatelliteCommunicationAllowedState();
         mSatelliteController.registerForConfigUpdateChanged(this, EVENT_CONFIG_DATA_UPDATED,
                 context);
         if (s2CellFile != null) {
