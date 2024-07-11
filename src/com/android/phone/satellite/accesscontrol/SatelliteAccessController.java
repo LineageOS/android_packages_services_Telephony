@@ -233,7 +233,8 @@ public class SatelliteAccessController extends Handler {
     @GuardedBy("mSatelliteCommunicationAllowStateLock")
     private boolean mCurrentSatelliteAllowedState = false;
 
-    private static final long NANOS_IN_12_HOURS = Duration.ofHours(12).toNanos();
+    private static final long ALLOWED_STATE_CACHE_VALID_DURATION_HOURS =
+            Duration.ofHours(4).toNanos();
     private boolean mLatestSatelliteCommunicationAllowed;
     private long mLatestSatelliteCommunicationAllowedSetTime;
 
@@ -991,11 +992,15 @@ public class SatelliteAccessController extends Handler {
         }
     }
 
-    /* returns true if the latest query was executed in 12Hr, or returns false. */
+    /**
+     * @return {@code true} if the latest query was executed within the predefined valid duration,
+     * {@code false} otherwise.
+     */
     private boolean isCommunicationAllowedCacheValid() {
         if (mLatestSatelliteCommunicationAllowedSetTime > 0) {
             long currentTime = SystemClock.elapsedRealtimeNanos();
-            if ((currentTime - mLatestSatelliteCommunicationAllowedSetTime) <= NANOS_IN_12_HOURS) {
+            if ((currentTime - mLatestSatelliteCommunicationAllowedSetTime)
+                    <= ALLOWED_STATE_CACHE_VALID_DURATION_HOURS) {
                 logv("isCommunicationAllowedCacheValid: cache is valid");
                 return true;
             }
@@ -1111,7 +1116,7 @@ public class SatelliteAccessController extends Handler {
             } else {
                 plogd("current location is not available");
                 if (isCommunicationAllowedCacheValid()) {
-                    plogd("onCurrentLocationAvailable: 12Hr cache is still valid, using it");
+                    plogd("onCurrentLocationAvailable: cache is still valid, using it");
                     bundle.putBoolean(KEY_SATELLITE_COMMUNICATION_ALLOWED,
                             mLatestSatelliteCommunicationAllowed);
                     sendSatelliteAllowResultToReceivers(SATELLITE_RESULT_SUCCESS, bundle,
@@ -1164,7 +1169,7 @@ public class SatelliteAccessController extends Handler {
                 if (isCommunicationAllowedCacheValid()) {
                     bundle.putBoolean(KEY_SATELLITE_COMMUNICATION_ALLOWED,
                             mLatestSatelliteCommunicationAllowed);
-                    plogd("checkSatelliteAccessRestrictionForLocation: 24Hr cache is still valid, "
+                    plogd("checkSatelliteAccessRestrictionForLocation: cache is still valid, "
                             + "using it");
                 } else {
                     bundle.putBoolean(KEY_SATELLITE_COMMUNICATION_ALLOWED, false);
