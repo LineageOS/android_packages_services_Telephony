@@ -134,8 +134,7 @@
     <string name="updating_title" msgid="6130548922615719689">"通话设置"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"只有管理员用户才能更改通话设置。"</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"电话账号设置只能由管理员或工作资料用户更改。"</string>
-    <!-- no translation found for phone_account_no_config_mobile_networks (7351062247756521227) -->
-    <skip />
+    <string name="phone_account_no_config_mobile_networks" msgid="7351062247756521227">"设备所有者对更改移动网络设置的功能进行了限制。"</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"设置（<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>）"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"通话设置出错"</string>
     <string name="reading_settings" msgid="1605904432450871183">"正在读取设置..."</string>

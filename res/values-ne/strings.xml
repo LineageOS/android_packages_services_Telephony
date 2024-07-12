@@ -134,8 +134,7 @@
     <string name="updating_title" msgid="6130548922615719689">"कल सेटिङहरू"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"कल सेटिङहरू केवल प्रशासकीय प्रयोगकर्ताद्वारा परिवर्तन गर्न सकिन्छ।"</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"एड्मिन वा कार्य प्रोफाइलका प्रयोगकर्ता मात्र फोनमा लिंक गरिएको खाताका सेटिङ बदल्न सक्नुहुन्छ।"</string>
-    <!-- no translation found for phone_account_no_config_mobile_networks (7351062247756521227) -->
-    <skip />
+    <string name="phone_account_no_config_mobile_networks" msgid="7351062247756521227">"डिभाइसका मालिकले मोबाइल नेटवर्कसम्बन्धी सेटिङ परिवर्तन गर्न रोक लगाउनुभएको छ।"</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"सेटिङहरू (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"कल सेटिङमा त्रुटि"</string>
     <string name="reading_settings" msgid="1605904432450871183">"सेटिङहरू पढ्दै..."</string>
@@ -599,8 +598,8 @@
     <string name="importToFDNfromContacts" msgid="5068664870738407341">"कन्ट्याक्टबाट इम्पोर्ट गर्नुहोस्"</string>
     <string name="singleContactImportedMsg" msgid="3619804066300998934">"आयातित सम्पर्क"</string>
     <string name="failedToImportSingleContactMsg" msgid="228095510489830266">"सम्पर्क इम्पोर्ट गर्न असफल"</string>
-    <string name="hac_mode_title" msgid="4127986689621125468">"श्रवणका लागि सहयोगी यन्त्रहरू"</string>
-    <string name="hac_mode_summary" msgid="7774989500136009881">"श्रवण सहायता अनुकूलता खोल्नुहोस्"</string>
+    <string name="hac_mode_title" msgid="4127986689621125468">"हियरिङ डिभाइसहरू"</string>
+    <string name="hac_mode_summary" msgid="7774989500136009881">"हियरिङ डिभाइस कम्प्याटिबिलिटी अन गर्नुहोस्"</string>
     <string name="rtt_mode_title" msgid="3075948111362818043">"द्रुत टेक्स्ट म्यासेज (RTT) कल"</string>
     <string name="rtt_mode_summary" msgid="8631541375609989562">"भ्वाइस कलभित्रै सन्देश प्रवाह गर्ने अनुमति दिनुहोस्"</string>
     <string name="rtt_mode_more_information" msgid="587500128658756318">"RTT ले बहिरा, सुन्नमा कठिन हुने, बोल्न नसक्ने र आवाज मात्र नभई कल गर्दा थप कुराहरू चाहिने  मान्छेहरूलाई सहायता गर्छ!&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;थप जान्नुहोस्&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT कलहरूलाई सन्देशसम्बन्धी ट्रान्सक्रिप्टका रूपमा सुरक्षित गरिन्छ\n      &lt;br&gt; - RTT भिडियो कलहरूमा उपलब्ध छैन"</string>

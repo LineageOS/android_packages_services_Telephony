@@ -134,8 +134,7 @@
     <string name="updating_title" msgid="6130548922615719689">"Ajustes de llamadas"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"El administrador es el único usuario que puede cambiar los ajustes de llamada."</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Solo el administrador o el usuario de trabajo pueden cambiar la configuración de la cuenta del teléfono."</string>
-    <!-- no translation found for phone_account_no_config_mobile_networks (7351062247756521227) -->
-    <skip />
+    <string name="phone_account_no_config_mobile_networks" msgid="7351062247756521227">"El propietario del dispositivo ha restringido la posibilidad de cambiar la configuración de la red móvil."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Ajustes (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Error de configuración de llamada"</string>
     <string name="reading_settings" msgid="1605904432450871183">"Leyendo ajustes..."</string>

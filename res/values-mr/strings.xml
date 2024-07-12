@@ -134,8 +134,7 @@
     <string name="updating_title" msgid="6130548922615719689">"कॉल सेटिंग्ज"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"कॉल सेटिंग्ज केवळ प्रशासक वापरकर्त्याद्वारे बदलल्‍या जाऊ शकतात."</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"फोन खाते सेटिंग्ज फक्त ॲडमिन किंवा ऑफिसच्या वापरकर्त्याद्वारे बदलली जाऊ शकतात."</string>
-    <!-- no translation found for phone_account_no_config_mobile_networks (7351062247756521227) -->
-    <skip />
+    <string name="phone_account_no_config_mobile_networks" msgid="7351062247756521227">"डिव्हाइसच्या मालकाने मोबाइल नेटवर्क सेटिंग्ज बदलण्याची क्षमता प्रतिबंधित केली आहे."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"सेटिंग्ज (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"कॉल सेटिंग्ज एरर"</string>
     <string name="reading_settings" msgid="1605904432450871183">"सेटिंग्‍ज वाचत आहे…"</string>

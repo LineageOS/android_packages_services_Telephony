@@ -134,8 +134,7 @@
     <string name="updating_title" msgid="6130548922615719689">"കോൾ ക്രമീകരണങ്ങൾ"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"അഡ്മിൻ ഉപയോക്താവിന് മാത്രമേ കോൾ ക്രമീകരണം മാറ്റാൻ കഴിയൂ."</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"അഡ്‌മിനോ ഔദ്യോഗിക ഉപയോക്താവിനോ മാത്രമേ ഫോൺ അക്കൗണ്ട് ക്രമീകരണം മാറ്റാനാകൂ."</string>
-    <!-- no translation found for phone_account_no_config_mobile_networks (7351062247756521227) -->
-    <skip />
+    <string name="phone_account_no_config_mobile_networks" msgid="7351062247756521227">"ഉപകരണത്തിന്റെ ഉടമ, മൊബൈൽ നെറ്റ്‌വർക്ക് ക്രമീകരണം മാറ്റാനുള്ള ശേഷി നിയന്ത്രിച്ചിരിക്കുന്നു."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"ക്രമീകരണം (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"കോൾ ക്രമീകരണ പിശക്"</string>
     <string name="reading_settings" msgid="1605904432450871183">"ക്രമീകരണങ്ങൾ റീഡ് ചെയ്യുന്നു.…"</string>

@@ -134,8 +134,7 @@
     <string name="updating_title" msgid="6130548922615719689">"Cilësimet e telefonatës"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"Cilësimet e telefonatës mund të ndryshohen vetëm nga administratori."</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Cilësimet e llogarisë të telefonit mund të ndryshohen vetëm nga administratori ose një përdorues në punë."</string>
-    <!-- no translation found for phone_account_no_config_mobile_networks (7351062247756521227) -->
-    <skip />
+    <string name="phone_account_no_config_mobile_networks" msgid="7351062247756521227">"Zotëruesi i pajisjes ka kufizuar aftësinë për të ndryshuar cilësimet e rrjetit celular."</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"Cilësimet (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"Gabim në cilësimet e telefonatës"</string>
     <string name="reading_settings" msgid="1605904432450871183">"Po lexon cilësimet…"</string>
