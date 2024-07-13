@@ -19,6 +19,7 @@ package com.android.services.telephony.domainselection;
 import static android.telephony.DomainSelectionService.SELECTOR_TYPE_CALLING;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import static org.mockito.Mockito.any;
@@ -663,6 +664,82 @@ public class NormalCallDomainSelectorTest {
 
         processAllMessages();
         assertTrue(transportSelectorCallback.mWlanSelected);
+        assertEquals(NormalCallDomainSelector.SelectorState.INACTIVE,
+                mNormalCallDomainSelector.getSelectorState());
+    }
+
+    @Test
+    public void testImsRegistrationStateTimeoutMessage() {
+        final TestTransportSelectorCallback transportSelectorCallback =
+                new TestTransportSelectorCallback(mNormalCallDomainSelector);
+
+        final ServiceState serviceState = new ServiceState();
+        serviceState.setState(ServiceState.STATE_IN_SERVICE);
+        mNormalCallDomainSelector.onServiceStateUpdated(serviceState);
+        doReturn(true).when(mMockImsStateTracker).isImsStateReady();
+        doReturn(true).when(mMockImsStateTracker).isImsRegistered();
+        doReturn(true).when(mMockImsStateTracker).isImsVoiceCapable();
+        doReturn(false).when(mMockImsStateTracker).isImsVideoCapable();
+        doReturn(true).when(mMockImsStateTracker).isImsRegisteredOverWlan();
+
+        DomainSelectionService.SelectionAttributes attributes =
+                new DomainSelectionService.SelectionAttributes.Builder(
+                        SLOT_ID, SUB_ID_1, SELECTOR_TYPE_CALLING)
+                        .setAddress(TEST_URI)
+                        .setCallId(TEST_CALLID)
+                        .setEmergency(false)
+                        .setVideoCall(false)
+                        .setExitedFromAirplaneMode(false)
+                        .build();
+
+        mNormalCallDomainSelector.selectDomain(attributes, transportSelectorCallback);
+        assertTrue(mNormalCallDomainSelector.hasMessages(
+                NormalCallDomainSelector.MSG_WAIT_FOR_IMS_STATE_TIMEOUT));
+
+        mNormalCallDomainSelector.onImsRegistrationStateChanged();
+        mNormalCallDomainSelector.onImsMmTelCapabilitiesChanged();
+        processAllMessages();
+
+        assertFalse(mNormalCallDomainSelector.hasMessages(
+                NormalCallDomainSelector.MSG_WAIT_FOR_IMS_STATE_TIMEOUT));
+        assertTrue(transportSelectorCallback.mWlanSelected);
+        assertEquals(NormalCallDomainSelector.SelectorState.INACTIVE,
+                mNormalCallDomainSelector.getSelectorState());
+    }
+
+    @Test
+    public void testImsRegistrationStateTimeoutHandler() {
+        final TestTransportSelectorCallback transportSelectorCallback =
+                new TestTransportSelectorCallback(mNormalCallDomainSelector);
+
+        final ServiceState serviceState = new ServiceState();
+        serviceState.setState(ServiceState.STATE_IN_SERVICE);
+        mNormalCallDomainSelector.onServiceStateUpdated(serviceState);
+        doReturn(true).when(mMockImsStateTracker).isImsStateReady();
+        doReturn(false).when(mMockImsStateTracker).isImsRegistered();
+        doReturn(true).when(mMockImsStateTracker).isImsVoiceCapable();
+        doReturn(false).when(mMockImsStateTracker).isImsVideoCapable();
+        doReturn(true).when(mMockImsStateTracker).isImsRegisteredOverWlan();
+
+        DomainSelectionService.SelectionAttributes attributes =
+                new DomainSelectionService.SelectionAttributes.Builder(
+                        SLOT_ID, SUB_ID_1, SELECTOR_TYPE_CALLING)
+                        .setAddress(TEST_URI)
+                        .setCallId(TEST_CALLID)
+                        .setEmergency(false)
+                        .setVideoCall(false)
+                        .setExitedFromAirplaneMode(false)
+                        .build();
+
+        mNormalCallDomainSelector.selectDomain(attributes, transportSelectorCallback);
+        assertTrue(mNormalCallDomainSelector.hasMessages(
+                NormalCallDomainSelector.MSG_WAIT_FOR_IMS_STATE_TIMEOUT));
+
+        mTestableLooper.moveTimeForward(
+                NormalCallDomainSelector.WAIT_FOR_IMS_STATE_TIMEOUT_MS + 10);
+        processAllMessages();
+
+        assertEquals(transportSelectorCallback.mSelectedDomain, NetworkRegistrationInfo.DOMAIN_CS);
         assertEquals(NormalCallDomainSelector.SelectorState.INACTIVE,
                 mNormalCallDomainSelector.getSelectorState());
     }
