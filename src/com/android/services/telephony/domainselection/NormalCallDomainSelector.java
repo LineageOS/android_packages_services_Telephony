@@ -35,6 +35,7 @@ import android.telephony.TransportSelectorCallback;
 import android.telephony.ims.ImsReasonInfo;
 
 import com.android.internal.annotations.VisibleForTesting;
+import com.android.internal.telephony.CallFailCause;
 
 /**
  * Implements domain selector for outgoing non-emergency calls.
@@ -325,33 +326,49 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
         }
 
         // Check if this is a re-dial scenario
-        // IMS -> CS
         ImsReasonInfo imsReasonInfo = mSelectionAttributes.getPsDisconnectCause();
-        if (mReselectDomain && imsReasonInfo != null) {
-            logd("PsDisconnectCause:" + imsReasonInfo.getCode());
+        if (mReselectDomain) {
             mReselectDomain = false;
-            if (imsReasonInfo.getCode() == ImsReasonInfo.CODE_LOCAL_CALL_CS_RETRY_REQUIRED) {
-                if (isOutOfService()) {
-                    loge("Cannot place call in current ServiceState: " + mServiceState.getState());
-                    notifySelectionTerminated(DisconnectCause.OUT_OF_SERVICE);
-                } else {
-                    logd("Redialing over CS");
-                    notifyCsSelected();
-                }
-                return;
-            } else {
-                logd("Redialing cancelled.");
-                // Not a valid redial
-                notifySelectionTerminated(DisconnectCause.NOT_VALID);
+
+            // Out of service
+            if (isOutOfService()) {
+                loge("Cannot place call in current ServiceState: " + mServiceState.getState());
+                notifySelectionTerminated(DisconnectCause.OUT_OF_SERVICE);
+
                 return;
             }
-        }
 
-        // CS -> IMS
-        // TODO: @PreciseDisconnectCauses doesn't contain cause code related to redial on IMS.
-        if (mReselectDomain /*mSelectionAttributes.getCsDisconnectCause() == IMS_REDIAL_CODE*/) {
-            logd("Redialing cancelled.");
+            // IMS -> CS
+            if (imsReasonInfo != null) {
+                logd("PsDisconnectCause:" + imsReasonInfo.getCode());
+                if (imsReasonInfo.getCode() == ImsReasonInfo.CODE_LOCAL_CALL_CS_RETRY_REQUIRED) {
+                    logd("Redialing over CS");
+                    notifyCsSelected();
+                } else {
+                    // Not a valid redial
+                    logd("Redialing cancelled.");
+                    notifySelectionTerminated(DisconnectCause.NOT_VALID);
+                }
+                return;
+            }
+
+            // CS -> IMS
+            int csDisconnectCause = mSelectionAttributes.getCsDisconnectCause();
+            switch (csDisconnectCause) {
+                case CallFailCause.EMC_REDIAL_ON_IMS:
+                case CallFailCause.EMC_REDIAL_ON_VOWIFI:
+                    // Check IMS registration state.
+                    if (mImsStateTracker.isImsRegistered()) {
+                        logd("IMS is registered");
+                        notifyPsSelected();
+                        return;
+                    } else {
+                        logd("IMS is NOT registered");
+                    }
+            }
+
             // Not a valid redial
+            logd("Redialing cancelled.");
             notifySelectionTerminated(DisconnectCause.NOT_VALID);
             return;
         }
