@@ -21,6 +21,7 @@ import static android.telephony.DomainSelectionService.SELECTOR_TYPE_CALLING;
 import android.annotation.NonNull;
 import android.content.Context;
 import android.os.Looper;
+import android.os.Message;
 import android.os.PersistableBundle;
 import android.telecom.TelecomManager;
 import android.telephony.Annotation.DisconnectCauses;
@@ -45,6 +46,13 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
 
     private static final String LOG_TAG = "NCDS";
 
+    // Wait-time for IMS state change callback.
+    @VisibleForTesting
+    protected static final int WAIT_FOR_IMS_STATE_TIMEOUT_MS = 3000; // 3 seconds
+
+    @VisibleForTesting
+    protected static final int MSG_WAIT_FOR_IMS_STATE_TIMEOUT = 11;
+
     @VisibleForTesting
     protected enum SelectorState {
         ACTIVE,
@@ -67,8 +75,36 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
             logd("Subscribing to state callbacks. Subid:" + subId);
             mImsStateTracker.addServiceStateListener(this);
             mImsStateTracker.addImsStateListener(this);
+
         } else {
             loge("Invalid Subscription. Subid:" + subId);
+        }
+    }
+
+    @Override
+    public void handleMessage(Message message) {
+        switch (message.what) {
+
+            case MSG_WAIT_FOR_IMS_STATE_TIMEOUT: {
+                loge("ImsStateTimeout. ImsState callback not received");
+                if (mSelectorState != SelectorState.ACTIVE) {
+                    return;
+                }
+
+                if (!mImsRegStateReceived) {
+                    onImsRegistrationStateChanged();
+                }
+
+                if (!mMmTelCapabilitiesReceived) {
+                    onImsMmTelCapabilitiesChanged();
+                }
+            }
+            break;
+
+            default: {
+                super.handleMessage(message);
+            }
+            break;
         }
     }
 
@@ -104,6 +140,7 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
 
         if (subId == getSubId()) {
             logd("NormalCallDomainSelection triggered. Sub-id:" + subId);
+            sendEmptyMessageDelayed(MSG_WAIT_FOR_IMS_STATE_TIMEOUT, WAIT_FOR_IMS_STATE_TIMEOUT_MS);
             post(() -> selectDomain());
         } else {
             mSelectorState = SelectorState.INACTIVE;
@@ -387,6 +424,10 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
         if (!mImsRegStateReceived || !mMmTelCapabilitiesReceived) {
             loge("Waiting for ImsState and MmTelCapabilities callbacks");
             return;
+        }
+
+        if (hasMessages(MSG_WAIT_FOR_IMS_STATE_TIMEOUT)) {
+            removeMessages(MSG_WAIT_FOR_IMS_STATE_TIMEOUT);
         }
 
         // Check IMS registration state.
