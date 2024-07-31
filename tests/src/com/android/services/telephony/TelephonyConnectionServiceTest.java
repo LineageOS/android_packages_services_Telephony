@@ -106,7 +106,6 @@ import com.android.internal.telephony.emergency.EmergencyNumberTracker;
 import com.android.internal.telephony.emergency.EmergencyStateTracker;
 import com.android.internal.telephony.emergency.RadioOnHelper;
 import com.android.internal.telephony.emergency.RadioOnStateListener;
-import com.android.internal.telephony.flags.FeatureFlags;
 import com.android.internal.telephony.flags.Flags;
 import com.android.internal.telephony.gsm.SuppServiceNotification;
 import com.android.internal.telephony.imsphone.ImsPhone;
@@ -255,7 +254,6 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
     @Mock private SatelliteSOSMessageRecommender mSatelliteSOSMessageRecommender;
     @Mock private EmergencyStateTracker mEmergencyStateTracker;
     @Mock private Resources mMockResources;
-    @Mock private FeatureFlags mFeatureFlags;
     private Phone mPhone0;
     private Phone mPhone1;
 
@@ -283,7 +281,6 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         super.setUp();
         doReturn(Looper.getMainLooper()).when(mContext).getMainLooper();
         mTestConnectionService = new TestTelephonyConnectionService(mContext);
-        mTestConnectionService.setFeatureFlags(mFeatureFlags);
         mTestConnectionService.setPhoneFactoryProxy(mPhoneFactoryProxy);
         mTestConnectionService.setSubscriptionManagerProxy(mSubscriptionManagerProxy);
         // Set configurations statically
@@ -1467,53 +1464,6 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
             fail();
         }
         verify(mSatelliteSOSMessageRecommender).onEmergencyCallStarted(any());
-    }
-
-    /**
-     * Test that the TelephonyConnectionService successfully placing the emergency call based on
-     * CarrierRoaming mode of Satellite.
-     */
-    @Test
-    @SmallTest
-    public void testCreateOutgoingEmergencyConnection_exitingSatellite_CarrierRoaming() {
-        when(mSatelliteController.isSatelliteEnabled()).thenReturn(true);
-
-        // Set config_turn_off_oem_enabled_satellite_during_emergency_call as false
-        doReturn(false).when(mMockResources).getBoolean(anyInt());
-        doReturn(true).when(mTelephonyManagerProxy).isCurrentEmergencyNumber(anyString());
-        doReturn(false).when(mSatelliteController).isDemoModeEnabled();
-
-        doReturn(true).when(mFeatureFlags).carrierRoamingNbIotNtn();
-        // Disable CarrierRoaming mode
-        doReturn(false).when(mSatelliteController).isInSatelliteModeForCarrierRoaming(any());
-        doReturn(false).when(mSatelliteController).getRequestIsEmergency();
-        // Setup outgoing emergency call
-        setupConnectionServiceInApm();
-
-        // Verify DisconnectCause which not allows emergency call
-        assertNotNull(mConnection.getDisconnectCause());
-        assertEquals(android.telephony.DisconnectCause.SATELLITE_ENABLED,
-                mConnection.getDisconnectCause().getTelephonyDisconnectCause());
-
-        // Enable CarrierRoaming but satellite request was not for an emergency
-        doReturn(true).when(mSatelliteController).isInSatelliteModeForCarrierRoaming(any());
-        doReturn(true).when(mSatelliteController).getRequestIsEmergency();
-        // Setup outgoing emergency call
-        setupConnectionServiceInApm();
-
-        // Verify DisconnectCause which not allows emergency call
-        assertNotNull(mConnection.getDisconnectCause());
-        assertEquals(android.telephony.DisconnectCause.SATELLITE_ENABLED,
-                mConnection.getDisconnectCause().getTelephonyDisconnectCause());
-
-        // Enable CarrierRoaming and satellite request was for an emergency
-        doReturn(true).when(mSatelliteController).isInSatelliteModeForCarrierRoaming(any());
-        doReturn(false).when(mSatelliteController).getRequestIsEmergency();
-        // Setup outgoing emergency call
-        setupConnectionServiceInApm();
-
-        // Verify there is no DisconnectCause which allows emergency call
-        assertNull(mConnection.getDisconnectCause());
     }
 
     /**
