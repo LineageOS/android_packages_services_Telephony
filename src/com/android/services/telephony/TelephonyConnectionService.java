@@ -1174,8 +1174,7 @@ public class TelephonyConnectionService extends ConnectionService {
         boolean needToTurnOnRadio = (isEmergencyNumber && (!isRadioOn() || isAirplaneModeOn))
                 || (isRadioPowerDownOnBluetooth() && !isPhoneWifiCallingEnabled);
 
-        if (mSatelliteController.isSatelliteEnabled()
-                || mSatelliteController.isSatelliteBeingEnabled()) {
+        if (mSatelliteController.isSatelliteEnabled()) {
             Log.d(this, "onCreateOutgoingConnection, "
                     + " needToTurnOnRadio=" + needToTurnOnRadio
                     + " needToTurnOffSatellite=" + needToTurnOffSatellite
@@ -1273,8 +1272,7 @@ public class TelephonyConnectionService extends ConnectionService {
                         // reporting the OUT_OF_SERVICE state.
                         return phone.getState() == PhoneConstants.State.OFFHOOK
                                 || (phone.getServiceStateTracker().isRadioOn()
-                                && (!mSatelliteController.isSatelliteEnabled()
-                                    && !mSatelliteController.isSatelliteBeingEnabled()));
+                                && !mSatelliteController.isSatelliteEnabled());
                     } else {
                         SubscriptionInfoInternal subInfo = SubscriptionManagerService
                                 .getInstance().getSubscriptionInfoInternal(phone.getSubId());
@@ -2139,8 +2137,7 @@ public class TelephonyConnectionService extends ConnectionService {
 
     private boolean shouldExitSatelliteModeForEmergencyCall(boolean isEmergencyNumber,
             Phone phone) {
-        if (!mSatelliteController.isSatelliteEnabled()
-                && !mSatelliteController.isSatelliteBeingEnabled()) {
+        if (!mSatelliteController.isSatelliteEnabled()) {
             return false;
         }
 
