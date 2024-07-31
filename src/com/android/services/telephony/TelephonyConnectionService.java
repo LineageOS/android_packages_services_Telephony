@@ -90,8 +90,6 @@ import com.android.internal.telephony.domainselection.NormalCallDomainSelectionC
 import com.android.internal.telephony.emergency.EmergencyStateTracker;
 import com.android.internal.telephony.emergency.RadioOnHelper;
 import com.android.internal.telephony.emergency.RadioOnStateListener;
-import com.android.internal.telephony.flags.FeatureFlags;
-import com.android.internal.telephony.flags.FeatureFlagsImpl;
 import com.android.internal.telephony.flags.Flags;
 import com.android.internal.telephony.imsphone.ImsExternalCallTracker;
 import com.android.internal.telephony.imsphone.ImsPhone;
@@ -216,9 +214,6 @@ public class TelephonyConnectionService extends ConnectionService {
             new TelephonyConferenceController(mTelephonyConnectionServiceProxy);
     private final CdmaConferenceController mCdmaConferenceController =
             new CdmaConferenceController(this);
-
-    private FeatureFlags mFeatureFlags = new FeatureFlagsImpl();
-
     private ImsConferenceController mImsConferenceController;
 
     private ComponentName mExpectedComponentName = null;
@@ -1161,21 +1156,19 @@ public class TelephonyConnectionService extends ConnectionService {
 
         final boolean isAirplaneModeOn = mDeviceState.isAirplaneModeOn(this);
 
+        boolean needToTurnOffSatellite = isSatelliteBlockingCall(isEmergencyNumber);
+
         // Get the right phone object from the account data passed in.
         final Phone phone = getPhoneForAccount(request.getAccountHandle(), isEmergencyNumber,
                 /* Note: when not an emergency, handle can be null for unknown callers */
                 handle == null ? null : handle.getSchemeSpecificPart());
         ImsPhone imsPhone = phone != null ? (ImsPhone) phone.getImsPhone() : null;
 
-        boolean needToTurnOffSatellite = shouldExitSatelliteModeForEmergencyCall(
-                isEmergencyNumber, phone);
-
         boolean isPhoneWifiCallingEnabled = phone != null && phone.isWifiCallingEnabled();
         boolean needToTurnOnRadio = (isEmergencyNumber && (!isRadioOn() || isAirplaneModeOn))
                 || (isRadioPowerDownOnBluetooth() && !isPhoneWifiCallingEnabled);
 
-        if (mSatelliteController.isSatelliteEnabled()
-                || mSatelliteController.isSatelliteBeingEnabled()) {
+        if (mSatelliteController.isSatelliteEnabled()) {
             Log.d(this, "onCreateOutgoingConnection, "
                     + " needToTurnOnRadio=" + needToTurnOnRadio
                     + " needToTurnOffSatellite=" + needToTurnOffSatellite
@@ -1273,8 +1266,7 @@ public class TelephonyConnectionService extends ConnectionService {
                         // reporting the OUT_OF_SERVICE state.
                         return phone.getState() == PhoneConstants.State.OFFHOOK
                                 || (phone.getServiceStateTracker().isRadioOn()
-                                && (!mSatelliteController.isSatelliteEnabled()
-                                    && !mSatelliteController.isSatelliteBeingEnabled()));
+                                && !mSatelliteController.isSatelliteEnabled());
                     } else {
                         SubscriptionInfoInternal subInfo = SubscriptionManagerService
                                 .getInstance().getSubscriptionInfoInternal(phone.getSubId());
@@ -1287,7 +1279,7 @@ public class TelephonyConnectionService extends ConnectionService {
                                 // Do not wait for voice in service on opportunistic SIMs.
                                 || subInfo != null && subInfo.isOpportunistic()
                                 || (serviceState == ServiceState.STATE_IN_SERVICE
-                                && !needToTurnOffSatellite);
+                                && !isSatelliteBlockingCall(isEmergencyNumber));
                     }
                 }
             }, isEmergencyNumber && !isTestEmergencyNumber, phone, isTestEmergencyNumber,
@@ -1486,7 +1478,7 @@ public class TelephonyConnectionService extends ConnectionService {
                 });
             }
         } else {
-            if (shouldExitSatelliteModeForEmergencyCall(isEmergencyNumber, phone)) {
+            if (isSatelliteBlockingCall(isEmergencyNumber)) {
                 Log.w(LOG_TAG, "handleOnComplete, failed to turn off satellite modem");
                 closeOrDestroyConnection(originalConnection,
                         mDisconnectCauseFactory.toTelecomDisconnectCause(
@@ -2137,22 +2129,14 @@ public class TelephonyConnectionService extends ConnectionService {
         return result;
     }
 
-    private boolean shouldExitSatelliteModeForEmergencyCall(boolean isEmergencyNumber,
-            Phone phone) {
-        if (!mSatelliteController.isSatelliteEnabled()
-                && !mSatelliteController.isSatelliteBeingEnabled()) {
+    private boolean isSatelliteBlockingCall(boolean isEmergencyNumber) {
+        if (!mSatelliteController.isSatelliteEnabled()) {
             return false;
         }
 
         if (isEmergencyNumber) {
             if (mSatelliteController.isDemoModeEnabled()) {
                 // If user makes emergency call in demo mode, end the satellite session
-                return true;
-            } else if (mFeatureFlags.carrierRoamingNbIotNtn()
-                    && mSatelliteController.isInSatelliteModeForCarrierRoaming(phone)
-                    && !mSatelliteController.getRequestIsEmergency()) {
-                // If CarrierRoaming mode enabled and OEM Satellite request is not for emergency
-                // end to satellite session
                 return true;
             } else {
                 return getTurnOffOemEnabledSatelliteDuringEmergencyCall();
@@ -4812,11 +4796,5 @@ public class TelephonyConnectionService extends ConnectionService {
             Log.e(this, ex, "getTurnOffOemEnabledSatelliteDuringEmergencyCall: ex=" + ex);
         }
         return turnOffSatellite;
-    }
-
-    /* Only for testing */
-    @VisibleForTesting
-    public void setFeatureFlags(FeatureFlags featureFlags) {
-        mFeatureFlags = featureFlags;
     }
 }
