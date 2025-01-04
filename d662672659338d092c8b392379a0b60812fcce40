@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0157beee_4eb36315",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2025-01-04T17:20:48Z",
+      "side": 1,
+      "message": "https://review.lineageos.org/c/LineageOS/android_packages_services_Telephony/+/414107",
+      "revId": "d662672659338d092c8b392379a0b60812fcce40",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
