@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df2bafa7_312f1be2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 22465
+      },
+      "writtenOn": "2025-01-05T12:09:32Z",
+      "side": 1,
+      "message": "Chain is needed for ims.apk and QtiTelephony.apk targetting SDK\u003e\u003d34.",
+      "revId": "19c20682b503d42fbd75a5f46d9f17c2a8438fdc",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
