@@ -39,6 +39,10 @@ public class GsmUmtsCallOptions extends PreferenceActivity {
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
 
+        getWindow().addSystemFlags(
+                android.view.WindowManager.LayoutParams
+                        .SYSTEM_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);
+
         addPreferencesFromResource(R.xml.gsm_umts_call_options);
 
         SubscriptionInfoHelper subInfoHelper = new SubscriptionInfoHelper(this, getIntent());

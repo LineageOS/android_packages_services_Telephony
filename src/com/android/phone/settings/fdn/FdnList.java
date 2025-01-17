@@ -98,6 +98,10 @@ public class FdnList extends ADNList {
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
 
+        getWindow().addSystemFlags(
+                android.view.WindowManager.LayoutParams
+                        .SYSTEM_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);
+
         ActionBar actionBar = getActionBar();
         if (actionBar != null) {
             // android.R.id.home will be triggered in onOptionsItemSelected()

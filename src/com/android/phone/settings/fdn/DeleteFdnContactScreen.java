@@ -64,6 +64,10 @@ public class DeleteFdnContactScreen extends Activity {
 
         resolveIntent();
 
+        getWindow().addSystemFlags(
+                android.view.WindowManager.LayoutParams
+                        .SYSTEM_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);
+
         authenticatePin2();
 
         getWindow().requestFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
