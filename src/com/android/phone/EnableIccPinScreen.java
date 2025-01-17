@@ -68,6 +68,10 @@ public class EnableIccPinScreen extends Activity {
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
 
+        getWindow().addSystemFlags(
+                android.view.WindowManager.LayoutParams
+                        .SYSTEM_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);
+
         mUserManager = this.getSystemService(UserManager.class);
         if (mUserManager.hasUserRestriction(UserManager.DISALLOW_CONFIG_MOBILE_NETWORKS)) {
             mDisallowedConfig = true;
