@@ -27,6 +27,7 @@ import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.android.phone.PhoneGlobals;
@@ -63,6 +64,9 @@ public class DeleteFdnContactScreen extends Activity {
         super.onCreate(icicle);
 
         resolveIntent();
+
+        getWindow().addFlags(
+                WindowManager.LayoutParams.PRIVATE_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);
 
         authenticatePin2();
 

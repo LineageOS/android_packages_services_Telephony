@@ -33,6 +33,7 @@ import android.text.TextDirectionHeuristics;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.CursorAdapter;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
@@ -83,6 +84,8 @@ public class ADNList extends ListActivity {
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         getWindow().requestFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
+        getWindow().addFlags(
+                WindowManager.LayoutParams.PRIVATE_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);
         setContentView(R.layout.adn_list);
         mEmptyText = (TextView) findViewById(android.R.id.empty);
         mQueryHandler = new QueryHandler(getContentResolver());

@@ -32,6 +32,7 @@ import android.preference.SwitchPreference;
 import android.telephony.CarrierConfigManager;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.WindowManager;
 
 public class CdmaCallOptions extends PreferenceActivity {
     private static final String LOG_TAG = "CdmaCallOptions";
@@ -43,6 +44,9 @@ public class CdmaCallOptions extends PreferenceActivity {
     @Override
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
+
+        getWindow().addFlags(
+                WindowManager.LayoutParams.PRIVATE_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);
 
         addPreferencesFromResource(R.xml.cdma_call_privacy);
 

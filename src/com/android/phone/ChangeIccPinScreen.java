@@ -27,6 +27,7 @@ import android.os.Message;
 import android.text.method.DigitsKeyListener;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -90,6 +91,9 @@ public class ChangeIccPinScreen extends Activity {
 
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
+
+        getWindow().addFlags(
+                WindowManager.LayoutParams.PRIVATE_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);
 
         mPhone = PhoneGlobals.getPhone();
 

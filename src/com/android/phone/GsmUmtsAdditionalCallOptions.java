@@ -8,6 +8,7 @@ import android.preference.PreferenceScreen;
 import android.telephony.CarrierConfigManager;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.WindowManager;
 
 import com.android.internal.telephony.Phone;
 
@@ -34,6 +35,9 @@ public class GsmUmtsAdditionalCallOptions extends TimeConsumingPreferenceActivit
     @Override
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
+
+        getWindow().addFlags(
+                WindowManager.LayoutParams.PRIVATE_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);
 
         addPreferencesFromResource(R.xml.gsm_umts_additional_options);
 
