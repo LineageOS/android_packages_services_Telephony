@@ -32,6 +32,10 @@ public class DeleteFdnContactScreen extends BaseFdnContactScreen {
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
 
+        getWindow().addSystemFlags(
+                android.view.WindowManager.LayoutParams
+                        .SYSTEM_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);
+
         // Starts PIN2 authentication only for the first time.
         if (icicle == null) authenticatePin2();
         setContentView(R.layout.delete_fdn_contact_screen);
