@@ -1,5 +1,7 @@
 package com.android.phone;
 
+import static android.view.WindowManager.LayoutParams.PRIVATE_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS;
+
 import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
@@ -33,6 +35,8 @@ public class GsmUmtsAdditionalCallOptions extends TimeConsumingPreferenceActivit
     @Override
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
+
+        getWindow().addPrivateFlags(PRIVATE_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);
 
         addPreferencesFromResource(R.xml.gsm_umts_additional_options);
 

@@ -18,6 +18,7 @@ package com.android.phone;
 
 import static android.view.Window.PROGRESS_VISIBILITY_OFF;
 import static android.view.Window.PROGRESS_VISIBILITY_ON;
+import static android.view.WindowManager.LayoutParams.PRIVATE_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS;
 
 import android.app.ListActivity;
 import android.content.AsyncQueryHandler;
@@ -80,6 +81,7 @@ public class ADNList extends ListActivity {
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         getWindow().requestFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
+        getWindow().addPrivateFlags(PRIVATE_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);
         setContentView(R.layout.adn_list);
         mEmptyText = (TextView) findViewById(android.R.id.empty);
         mQueryHandler = new QueryHandler(getContentResolver());
