@@ -156,7 +156,7 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
         //
         // But note we *don't* allow most other special sequences here,
         // like "secret codes" (*#*#<code>#*#*) or IMEI display ("*#06#"),
-        // since those shouldn't be available if the device is locked.
+        // // since those shouldn't be available if the device is locked.
         //
         // So we call SpecialCharSequenceMgr.handleCharsForLockedDevice()
         // here, not the regular handleChars() method.
@@ -172,6 +172,9 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
     @Override
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
+
+        getWindow().addFlags(
+                WindowManager.LayoutParams.PRIVATE_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);
 
         // Allow this activity to be displayed in front of the keyguard / lockscreen.
         WindowManager.LayoutParams lp = getWindow().getAttributes();

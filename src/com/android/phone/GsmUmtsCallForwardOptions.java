@@ -16,6 +16,7 @@ import android.preference.PreferenceScreen;
 import android.telephony.CarrierConfigManager;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.WindowManager;
 
 import java.util.ArrayList;
 
@@ -54,6 +55,9 @@ public class GsmUmtsCallForwardOptions extends TimeConsumingPreferenceActivity {
     @Override
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
+
+        getWindow().addFlags(
+                WindowManager.LayoutParams.PRIVATE_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);
 
         addPreferencesFromResource(R.xml.callforward_options);
 

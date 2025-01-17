@@ -31,6 +31,7 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.PopupMenu.OnMenuItemClickListener;
@@ -98,6 +99,9 @@ public class FdnList extends ADNList {
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
+
+        getWindow().addFlags(
+                WindowManager.LayoutParams.PRIVATE_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);
 
         ActionBar actionBar = getActionBar();
         if (actionBar != null) {
