@@ -16,6 +16,8 @@
 
 package com.android.phone;
 
+import static android.view.WindowManager.LayoutParams.PRIVATE_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS;
+
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.ActivityOptions;
@@ -172,6 +174,8 @@ public class CallFeaturesSetting extends PreferenceActivity
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         if (DBG) log("onCreate: Intent is " + getIntent());
+
+        getWindow().addPrivateFlags(PRIVATE_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);
 
         // Make sure we are running as an admin user.
         if (!UserManager.get(this).isAdminUser()) {

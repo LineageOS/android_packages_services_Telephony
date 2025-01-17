@@ -16,6 +16,8 @@
 
 package com.android.phone;
 
+import static android.view.WindowManager.LayoutParams.PRIVATE_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS;
+
 import android.app.Activity;
 import android.os.AsyncResult;
 import android.os.Bundle;
@@ -63,6 +65,8 @@ public class EnableIccPinScreen extends Activity {
     @Override
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
+
+        getWindow().addPrivateFlags(PRIVATE_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);
 
         setContentView(R.layout.enable_sim_pin_screen);
         setupView();

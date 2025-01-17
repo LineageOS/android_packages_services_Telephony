@@ -16,6 +16,8 @@
 
 package com.android.phone.settings.fdn;
 
+import static android.view.WindowManager.LayoutParams.PRIVATE_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS;
+
 import android.app.ActionBar;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -50,6 +52,8 @@ public class FdnList extends ADNList {
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
+
+        getWindow().addPrivateFlags(PRIVATE_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);
 
         ActionBar actionBar = getActionBar();
         if (actionBar != null) {

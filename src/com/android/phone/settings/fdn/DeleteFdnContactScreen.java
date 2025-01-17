@@ -16,6 +16,8 @@
 
 package com.android.phone.settings.fdn;
 
+import static android.view.WindowManager.LayoutParams.PRIVATE_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS;
+
 import android.app.Activity;
 import android.content.AsyncQueryHandler;
 import android.content.ContentResolver;
@@ -63,6 +65,8 @@ public class DeleteFdnContactScreen extends Activity {
         super.onCreate(icicle);
 
         resolveIntent();
+
+        getWindow().addPrivateFlags(PRIVATE_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);
 
         authenticatePin2();
 

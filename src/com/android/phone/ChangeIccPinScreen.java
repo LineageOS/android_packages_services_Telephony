@@ -16,6 +16,8 @@
 
 package com.android.phone;
 
+import static android.view.WindowManager.LayoutParams.PRIVATE_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
@@ -90,6 +92,8 @@ public class ChangeIccPinScreen extends Activity {
 
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
+
+        getWindow().addPrivateFlags(PRIVATE_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);
 
         mPhone = PhoneGlobals.getPhone();
 

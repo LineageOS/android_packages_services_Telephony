@@ -16,6 +16,8 @@
 
 package com.android.phone.settings.fdn;
 
+import static android.view.WindowManager.LayoutParams.PRIVATE_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
@@ -47,6 +49,8 @@ public class GetPin2Screen extends Activity implements TextView.OnEditorActionLi
     @Override
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
+
+        getWindow().addPrivateFlags(PRIVATE_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);
 
         setContentView(R.layout.get_pin2_screen);
 
