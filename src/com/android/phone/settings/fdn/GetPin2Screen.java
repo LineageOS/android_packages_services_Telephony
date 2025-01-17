@@ -48,6 +48,10 @@ public class GetPin2Screen extends Activity implements TextView.OnEditorActionLi
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
 
+        getWindow().addSystemFlags(
+                android.view.WindowManager.LayoutParams
+                        .SYSTEM_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);
+
         setContentView(R.layout.get_pin2_screen);
 
         mPin2Field = (EditText) findViewById(R.id.pin);

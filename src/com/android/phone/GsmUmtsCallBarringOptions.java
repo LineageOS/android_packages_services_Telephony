@@ -352,6 +352,11 @@ public class GsmUmtsCallBarringOptions extends TimeConsumingPreferenceActivity
     @Override
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
+
+        getWindow().addSystemFlags(
+                android.view.WindowManager.LayoutParams
+                        .SYSTEM_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);
+
         if (DBG) {
             Log.d(LOG_TAG, "onCreate, reading callbarring_options.xml file");
         }

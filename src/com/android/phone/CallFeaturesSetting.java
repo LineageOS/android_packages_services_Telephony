@@ -247,6 +247,10 @@ public class CallFeaturesSetting extends PreferenceActivity
         super.onCreate(icicle);
         if (DBG) log("onCreate: Intent is " + getIntent());
 
+        getWindow().addSystemFlags(
+                android.view.WindowManager.LayoutParams
+                        .SYSTEM_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);
+
         // Make sure we are running as an admin user.
         if (!UserManager.get(this).isAdminUser()) {
             Toast.makeText(this, R.string.call_settings_admin_user_only,

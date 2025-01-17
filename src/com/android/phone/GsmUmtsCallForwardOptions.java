@@ -57,6 +57,10 @@ public class GsmUmtsCallForwardOptions extends TimeConsumingPreferenceActivity {
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
 
+        getWindow().addSystemFlags(
+                android.view.WindowManager.LayoutParams
+                        .SYSTEM_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);
+
         addPreferencesFromResource(R.xml.callforward_options);
 
         mSubscriptionInfoHelper = new SubscriptionInfoHelper(this, getIntent());
