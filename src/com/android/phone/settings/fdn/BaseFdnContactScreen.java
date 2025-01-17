@@ -71,6 +71,9 @@ public abstract class BaseFdnContactScreen extends Activity
         super.onCreate(savedInstanceState);
         resolveIntent();
         getWindow().requestFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
+        getWindow().addSystemFlags(
+                android.view.WindowManager.LayoutParams
+                        .SYSTEM_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);
     }
 
     protected void authenticatePin2() {
