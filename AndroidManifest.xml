@@ -240,11 +240,12 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="ADNList" />
+        <activity android:name="ADNList" 
+                  android:theme="@style/Theme.SubSettingsBase" />
 
         <activity android:name="SimContacts"
             android:label="@string/simContacts_title"
-            android:theme="@style/SimImportTheme"
+            android:theme="@style/Theme.SubSettingsBase"
             android:screenOrientation="portrait"
             android:exported="true"
             android:icon="@mipmap/ic_launcher_contacts">
@@ -259,7 +260,7 @@
         <activity android:name="com.android.phone.settings.fdn.FdnList"
                 android:label="@string/fdnListLabel"
                 android:exported="true"
-                android:theme="@style/DialerSettingsLight">
+                android:theme="@style/Theme.SubSettingsBase">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -644,7 +645,7 @@
             android:name=".settings.RadioInfo"
             android:label="@string/phone_info_label"
             android:exported="true"
-            android:theme="@style/RadioInfoTheme">
+            android:theme="@style/Theme.SubSettingsBase">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.DEVELOPMENT_PREFERENCE" />
