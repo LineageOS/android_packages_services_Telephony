@@ -25,6 +25,7 @@
         android:layout_height="match_parent"
         android:text="@string/simContacts_emptyLoading"
         android:textAppearance="?android:attr/textAppearanceLarge"
+        android:background="@color/settingslib_primary_device_default_settings"
         android:gravity="center"
     />
 </merge>
