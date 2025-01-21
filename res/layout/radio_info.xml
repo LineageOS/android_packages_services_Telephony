@@ -238,36 +238,52 @@
             android:background="?android:attr/listDivider" />
 
         <!-- Radio Power -->
-        <Switch android:id="@+id/radio_power"
+        <com.google.android.material.materialswitch.MaterialSwitch
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/radio_power"
                 android:textSize="14sp"
                 android:layout_marginTop="8dip"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/radio_info_radio_power"/>
+                android:text="@string/radio_info_radio_power"
+                android:background="@null"
+                android:theme="@style/Theme.Material3.DynamicColors.DayNight" />
 
         <!-- Simulate out of service -->
-        <Switch android:id="@+id/simulate_out_of_service"
+        <com.google.android.material.materialswitch.MaterialSwitch
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/simulate_out_of_service"
                 android:textSize="14sp"
                 android:layout_marginTop="8dip"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/simulate_out_of_service_string"/>
+                android:text="@string/simulate_out_of_service_string"
+                android:background="@null"
+                android:theme="@style/Theme.Material3.DynamicColors.DayNight" />
 
         <!-- Enforce camping on satellite channel -->
-        <Switch android:id="@+id/enforce_satellite_channel"
-            android:textSize="14sp"
-            android:layout_marginTop="8dip"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/enforce_satellite_channel_string"/>
-
-        <!-- Simulate this SIM to be satellite -->
-        <Switch android:id="@+id/mock_carrier_roaming_satellite"
+        <com.google.android.material.materialswitch.MaterialSwitch
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/enforce_satellite_channel"
                 android:textSize="14sp"
                 android:layout_marginTop="8dip"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/mock_carrier_roaming_satellite_string"/>
+                android:text="@string/enforce_satellite_channel_string"
+                android:background="@null"
+                android:theme="@style/Theme.Material3.DynamicColors.DayNight" />
+
+        <!-- Simulate this SIM to be satellite -->
+        <com.google.android.material.materialswitch.MaterialSwitch
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/mock_carrier_roaming_satellite"
+                android:textSize="14sp"
+                android:layout_marginTop="8dip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/mock_carrier_roaming_satellite_string"
+                android:background="@null"
+                android:theme="@style/Theme.Material3.DynamicColors.DayNight" />
 
         <!-- ESOS -->
         <Button android:id="@+id/esos_questionnaire"
@@ -299,36 +315,52 @@
         />
 
         <!-- VoLTE provisioned -->
-        <Switch android:id="@+id/volte_provisioned_switch"
+        <com.google.android.material.materialswitch.MaterialSwitch
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/volte_provisioned_switch"
                 android:textSize="14sp"
                 android:layout_marginTop="8dip"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/volte_provisioned_switch_string"/>
+                android:text="@string/volte_provisioned_switch_string"
+                android:background="@null"
+                android:theme="@style/Theme.Material3.DynamicColors.DayNight" />
 
         <!-- VT provisioned -->
-        <Switch android:id="@+id/vt_provisioned_switch"
+        <com.google.android.material.materialswitch.MaterialSwitch
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/vt_provisioned_switch"
                 android:textSize="14sp"
                 android:layout_marginTop="8dip"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/vt_provisioned_switch_string"/>
+                android:text="@string/vt_provisioned_switch_string"
+                android:background="@null"
+                android:theme="@style/Theme.Material3.DynamicColors.DayNight" />
 
         <!-- Wifi Calling provisioned -->
-        <Switch android:id="@+id/wfc_provisioned_switch"
+        <com.google.android.material.materialswitch.MaterialSwitch
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/wfc_provisioned_switch"
                 android:textSize="14sp"
                 android:layout_marginTop="8dip"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/wfc_provisioned_switch_string"/>
+                android:text="@string/wfc_provisioned_switch_string"
+                android:background="@null"
+                android:theme="@style/Theme.Material3.DynamicColors.DayNight" />
 
         <!-- EAB/Presence provisioned -->
-        <Switch android:id="@+id/eab_provisioned_switch"
+        <com.google.android.material.materialswitch.MaterialSwitch
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/eab_provisioned_switch"
                 android:textSize="14sp"
                 android:layout_marginTop="8dip"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/eab_provisioned_switch_string"/>
+                android:text="@string/eab_provisioned_switch_string"
+                android:background="@null"
+                android:theme="@style/Theme.Material3.DynamicColors.DayNight" />
 
         <!-- Horizontal Rule -->
         <View
@@ -337,29 +369,41 @@
             android:background="?android:attr/listDivider" />
 
         <!-- Enable/Disable CBRS data -->
-        <Switch android:id="@+id/cbrs_data_switch"
+        <com.google.android.material.materialswitch.MaterialSwitch
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/cbrs_data_switch"
                 android:textSize="14sp"
                 android:layout_marginTop="8dip"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/cbrs_data_switch_string" />
+                android:text="@string/cbrs_data_switch_string"
+                android:background="@null"
+                android:theme="@style/Theme.Material3.DynamicColors.DayNight" />
 
         <!-- Switch between SSSS(single sim single standby) and DSDS(dual sim dual standby). -->
-        <Switch android:id="@+id/dsds_switch"
+        <com.google.android.material.materialswitch.MaterialSwitch
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/dsds_switch"
                 android:textSize="14sp"
                 android:layout_marginTop="8dip"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/dsds_switch_string" />
+                android:text="@string/dsds_switch_string"
+                android:background="@null"
+                android:theme="@style/Theme.Material3.DynamicColors.DayNight" />
 
         <!-- Set removable eSIM as default eUICC. -->
-        <Switch android:id="@+id/removable_esim_switch"
+        <com.google.android.material.materialswitch.MaterialSwitch
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/removable_esim_switch"
                 android:textSize="14sp"
                 android:layout_marginTop="8dip"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:enabled="false"
-                android:text="@string/removable_esim_string" />
+                android:text="@string/removable_esim_string"
+                android:background="@null"
+                android:theme="@style/Theme.Material3.DynamicColors.DayNight" />
 
         <!-- Horizontal Rule -->
         <View
