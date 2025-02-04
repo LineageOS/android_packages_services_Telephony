@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f4ffc66_4b356dda",
+        "filename": "Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 13028
+      },
+      "writtenOn": "2025-02-04T14:44:29Z",
+      "side": 1,
+      "message": "unrelated?",
+      "revId": "a256a12d6ed5134918ab352d4916b279639461eb",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88bd88ec_3d79649d",
+        "filename": "AndroidManifest.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 13028
+      },
+      "writtenOn": "2025-02-04T14:44:29Z",
+      "side": 1,
+      "message": "unrelated?",
+      "revId": "a256a12d6ed5134918ab352d4916b279639461eb",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c5aef08_c7fd61b6",
+        "filename": "AndroidManifest.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 13028
+      },
+      "writtenOn": "2025-02-04T14:44:29Z",
+      "side": 1,
+      "message": "unrelated?",
+      "revId": "a256a12d6ed5134918ab352d4916b279639461eb",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6b8adf3_de01121c",
+        "filename": "AndroidManifest.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 13028
+      },
+      "writtenOn": "2025-02-04T14:44:29Z",
+      "side": 1,
+      "message": "unrelated?",
+      "revId": "a256a12d6ed5134918ab352d4916b279639461eb",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb8f93bc_10c67f43",
+        "filename": "res/layout/adn_list.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 13028
+      },
+      "writtenOn": "2025-02-04T14:44:29Z",
+      "side": 1,
+      "message": "unrelated?",
+      "revId": "a256a12d6ed5134918ab352d4916b279639461eb",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
