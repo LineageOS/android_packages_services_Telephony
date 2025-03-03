@@ -1398,8 +1398,7 @@ public class TelecomAccountRegistry {
                     Build.VERSION.DEVICE_INITIAL_SDK_INT);
             PackageManager pm = context.getPackageManager();
 
-            if (Flags.enforceTelephonyFeatureMappingForPublicApis()
-                    && vendorApiLevel >= Build.VERSION_CODES.VANILLA_ICE_CREAM) {
+            if (vendorApiLevel >= Build.VERSION_CODES.VANILLA_ICE_CREAM) {
                 if (pm != null && pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY)
                         && pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY_CALLING)) {
                     sInstance = new TelecomAccountRegistry(context);

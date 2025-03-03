@@ -33,6 +33,7 @@ import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
+import android.net.ConnectivityManager;
 import android.os.Binder;
 import android.os.Handler;
 import android.os.Looper;
@@ -72,6 +73,7 @@ public class TestContext extends MockContext {
     @Mock ImsManager mMockImsManager;
     @Mock UserManager mMockUserManager;
     @Mock PackageManager mPackageManager;
+    @Mock ConnectivityManager mMockConnectivityManager;
 
     private final SparseArray<PersistableBundle> mCarrierConfigs = new SparseArray<>();
 
@@ -192,6 +194,9 @@ public class TestContext extends MockContext {
             case Context.CARRIER_CONFIG_SERVICE: {
                 return mMockCarrierConfigManager;
             }
+            case Context.CONNECTIVITY_SERVICE: {
+                return mMockConnectivityManager;
+            }
             case Context.TELECOM_SERVICE: {
                 return mMockTelecomManager;
             }
@@ -215,6 +220,9 @@ public class TestContext extends MockContext {
     public String getSystemServiceName(Class<?> serviceClass) {
         if (serviceClass == CarrierConfigManager.class) {
             return Context.CARRIER_CONFIG_SERVICE;
+        }
+        if (serviceClass == ConnectivityManager.class) {
+            return Context.CONNECTIVITY_SERVICE;
         }
         if (serviceClass == TelecomManager.class) {
             return Context.TELECOM_SERVICE;

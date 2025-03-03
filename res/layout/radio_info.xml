@@ -333,6 +333,16 @@
                 android:text="@string/demo_esos_satellite_string"
         />
 
+        <!-- Satellite Config Viewer -->
+        <Button android:id="@+id/satellite_config_viewer"
+            android:textSize="14sp"
+            android:layout_marginTop="8dip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:text="@string/satellite_config_viewer"
+            />
+
         <!-- VoLTE provisioned -->
         <Switch android:id="@+id/volte_provisioned_switch"
                 android:textSize="14sp"

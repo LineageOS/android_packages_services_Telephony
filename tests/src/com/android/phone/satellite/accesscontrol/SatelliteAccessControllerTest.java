@@ -240,6 +240,10 @@ public class SatelliteAccessControllerTest extends TelephonyTestBase {
     @Mock
     private ConcurrentHashMap<IBinder, ISatelliteCommunicationAccessStateCallback>
             mSatelliteCommunicationAllowedStateCallbackMap;
+    @Mock
+    private ConcurrentHashMap<IBinder, ISatelliteCommunicationAccessStateCallback>
+            mMockSatelliteCommunicationAccessStateChangedListeners;
+
     private SatelliteInfo mSatelliteInfo;
 
     private TestableLooper mTestableLooper;
@@ -421,7 +425,6 @@ public class SatelliteAccessControllerTest extends TelephonyTestBase {
                 .putInt(anyString(), anyInt());
         doNothing().when(mMockSharedPreferencesEditor).apply();
 
-        when(mMockFeatureFlags.satellitePersistentLogging()).thenReturn(true);
         when(mMockFeatureFlags.geofenceEnhancementForBetterUx()).thenReturn(true);
         when(mMockFeatureFlags.carrierRoamingNbIotNtn()).thenReturn(true);
 
@@ -1758,7 +1761,6 @@ public class SatelliteAccessControllerTest extends TelephonyTestBase {
                 mSatelliteAccessControllerUT,
                 DEFAULT_S2_LEVEL);
         when(mMockFeatureFlags.carrierRoamingNbIotNtn()).thenReturn(true);
-        when(mMockFeatureFlags.oemEnabledSatelliteFlag()).thenReturn(true);
         when(mMockContext.getResources()).thenReturn(mMockResources);
         when(mMockResources.getBoolean(
                         com.android.internal.R.bool.config_oem_enabled_satellite_access_allow))
@@ -1976,7 +1978,8 @@ public class SatelliteAccessControllerTest extends TelephonyTestBase {
 
     @Test
     public void testLocationModeChanged() throws Exception {
-        // setup for querying GPS not to reset mIsSatelliteAllowedRegionPossiblyChanged false.
+        logd("testLocationModeChanged: setup to query the current location");
+        when(mMockFeatureFlags.oemEnabledSatelliteFlag()).thenReturn(true);
         when(mMockContext.getResources()).thenReturn(mMockResources);
         when(mMockResources.getBoolean(
                 com.android.internal.R.bool.config_oem_enabled_satellite_access_allow))
@@ -1991,13 +1994,13 @@ public class SatelliteAccessControllerTest extends TelephonyTestBase {
         doReturn(false).when(mMockCachedAccessRestrictionMap).containsKey(any());
         mSatelliteAccessControllerUT.elapsedRealtimeNanos = TEST_LOCATION_FRESH_DURATION_NANOS + 1;
 
-        // Captor and Verify if the mockReceiver and mocContext is registered well
-        verify(mMockContext, times(2))
-                .registerReceiver(mLocationBroadcastReceiverCaptor.capture(),
-                        mIntentFilterCaptor.capture());
+        logd("testLocationModeChanged: "
+                + "captor and verify if the mockReceiver and mockContext is registered well");
+        verify(mMockContext, times(2)).registerReceiver(
+                mLocationBroadcastReceiverCaptor.capture(), mIntentFilterCaptor.capture());
 
-        // When the intent action is not MODE_CHANGED_ACTION,
-        // verify if the location manager never invoke isLocationEnabled()
+        logd("testLocationModeChanged: verify if the location manager doesn't invoke "
+                + "isLocationEnabled(), when the intent action is not MODE_CHANGED_ACTION");
         doReturn("").when(mMockLocationIntent).getAction();
         mSatelliteAccessControllerUT.setIsSatelliteAllowedRegionPossiblyChanged(false);
         mSatelliteAccessControllerUT.getLocationBroadcastReceiver()
@@ -2006,6 +2009,8 @@ public class SatelliteAccessControllerTest extends TelephonyTestBase {
 
         // When the intent action is MODE_CHANGED_ACTION and isLocationEnabled() is true,
         // verify if mIsSatelliteAllowedRegionPossiblyChanged is true
+        logd("testLocationModeChanged: verify if mIsSatelliteAllowedRegionPossiblyChanged is true, "
+                + "when the intent action is MODE_CHANGED_ACTION and isLocationEnabled() is true");
         doReturn(MODE_CHANGED_ACTION).when(mMockLocationIntent).getAction();
         doReturn(true).when(mMockLocationManager).isLocationEnabled();
         clearInvocations(mMockLocationManager);
@@ -2016,8 +2021,15 @@ public class SatelliteAccessControllerTest extends TelephonyTestBase {
         mTestableLooper.processAllMessages();
         assertEquals(true, mSatelliteAccessControllerUT.isSatelliteAllowedRegionPossiblyChanged());
 
-        // When the intent action is MODE_CHANGED_ACTION and isLocationEnabled() is false,
-        // verify if mIsSatelliteAllowedRegionPossiblyChanged is false
+        logd("testLocationModeChanged: "
+                + "verify if mIsSatelliteAllowedRegionPossiblyChanged is false, "
+                + "when the intent action is MODE_CHANGED_ACTION and isLocationEnabled() is false");
+        mSatelliteAccessControllerUT
+                .setIsSatelliteCommunicationAllowedForCurrentLocationCache("cache_allowed");
+        replaceInstance(SatelliteAccessController.class,
+                "mSatelliteCommunicationAccessStateChangedListeners",
+                mSatelliteAccessControllerUT,
+                mMockSatelliteCommunicationAccessStateChangedListeners);
         doReturn(false).when(mMockLocationManager).isLocationEnabled();
         clearInvocations(mMockLocationManager);
         mSatelliteAccessControllerUT.setIsSatelliteAllowedRegionPossiblyChanged(false);
@@ -2025,7 +2037,9 @@ public class SatelliteAccessControllerTest extends TelephonyTestBase {
                 .onReceive(mMockContext, mMockLocationIntent);
         verify(mMockLocationManager, times(1)).isLocationEnabled();
         mTestableLooper.processAllMessages();
-        assertEquals(false, mSatelliteAccessControllerUT.isSatelliteAllowedRegionPossiblyChanged());
+        assertEquals(false,
+                mSatelliteAccessControllerUT.isSatelliteAllowedRegionPossiblyChanged());
+        verify(mMockSatelliteCommunicationAccessStateChangedListeners, times(1)).values();
     }
 
     @Test

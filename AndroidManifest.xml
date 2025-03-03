@@ -281,6 +281,16 @@
             </intent-filter>
         </activity>
 
+        <activity android:name="com.android.phone.settings.SatelliteConfigViewer"
+            android:label="@string/satellite_config_viewer"
+            android:exported="true"
+            android:theme="@style/DialerSettingsLight">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
         <activity android:name="CdmaCallOptions"
                 android:label="@string/cdma_options"
                 android:exported="false"

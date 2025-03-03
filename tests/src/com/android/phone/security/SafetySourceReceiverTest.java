@@ -35,7 +35,6 @@ import android.platform.test.flag.junit.SetFlagsRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 import com.android.internal.telephony.Phone;
-import com.android.internal.telephony.flags.Flags;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -91,9 +90,6 @@ public class SafetySourceReceiverTest {
 
     @Test
     public void testOnReceive_noTelephonyFeature() {
-        mSetFlagsRule.enableFlags(
-                Flags.FLAG_ENFORCE_TELEPHONY_FEATURE_MAPPING_FOR_PUBLIC_APIS);
-
         when(mContext.getPackageManager().hasSystemFeature(
                 PackageManager.FEATURE_TELEPHONY)).thenReturn(false);
 

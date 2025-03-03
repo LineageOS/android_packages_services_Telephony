@@ -26,8 +26,6 @@ import android.telephony.satellite.SatelliteInfo;
 import android.telephony.satellite.SatellitePosition;
 import android.util.Log;
 
-import com.android.internal.annotations.VisibleForTesting;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -302,7 +300,6 @@ public class SatelliteAccessConfigurationParser {
      * @return json string type json contents
      */
     @Nullable
-    @VisibleForTesting(visibility = VisibleForTesting.Visibility.PRIVATE)
     public static String readJsonStringFromFile(@NonNull String jsonFilePath) {
         logd("jsonFilePath is " + jsonFilePath);
         String json = null;

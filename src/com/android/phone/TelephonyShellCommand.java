@@ -189,6 +189,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             "set-satellite-listening-timeout-duration";
     private static final String SET_SATELLITE_IGNORE_CELLULAR_SERVICE_STATE =
             "set-satellite-ignore-cellular-service-state";
+    private static final String SET_SATELLITE_TN_SCANNING_SUPPORT =
+            "set-satellite-tn-scanning-support";
     private static final String SET_SATELLITE_POINTING_UI_CLASS_NAME =
             "set-satellite-pointing-ui-class-name";
     private static final String SET_DATAGRAM_CONTROLLER_TIMEOUT_DURATION =
@@ -214,6 +216,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
 
     private static final String SET_SATELLITE_ACCESS_RESTRICTION_CHECKING_RESULT =
             "set-satellite-access-restriction-checking-result";
+    private static final String SET_SATELLITE_ACCESS_ALLOWED_FOR_SUBSCRIPTIONS =
+            "set-satellite-access-allowed-for-subscriptions";
 
     private static final String DOMAIN_SELECTION_SUBCOMMAND = "domainselection";
     private static final String DOMAIN_SELECTION_SET_SERVICE_OVERRIDE = "set-dss-override";
@@ -432,6 +436,10 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                 return handleSetSatelliteSubscriberIdListChangedIntentComponent();
             case SET_SATELLITE_ACCESS_RESTRICTION_CHECKING_RESULT:
                 return handleOverrideCarrierRoamingNtnEligibilityChanged();
+            case SET_SATELLITE_ACCESS_ALLOWED_FOR_SUBSCRIPTIONS:
+                return handleSetSatelliteAccessAllowedForSubscriptions();
+            case SET_SATELLITE_TN_SCANNING_SUPPORT:
+                return handleSetSatelliteTnScanningSupport();
             case COMMAND_DELETE_IMSI_KEY:
                 return handleDeleteTestImsiKey();
             default: {
@@ -3231,6 +3239,38 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         return 0;
     }
 
+    private int handleSetSatelliteAccessAllowedForSubscriptions() {
+        PrintWriter errPw = getErrPrintWriter();
+        String subIdListStr = null;
+
+        String opt;
+        while ((opt = getNextOption()) != null) {
+            switch (opt) {
+                case "-s": {
+                    subIdListStr = getNextArgRequired();
+                    break;
+                }
+            }
+        }
+        Log.d(LOG_TAG, "handleSetSatelliteAccessAllowedForSubscriptions: subIdListStr="
+            + subIdListStr);
+
+        try {
+            boolean result = mInterface.setSatelliteAccessAllowedForSubscriptions(subIdListStr);
+            if (VDBG) {
+                Log.v(LOG_TAG, "SetSatelliteAccessAllowedForSubscriptions " + subIdListStr
+                    + ", result = " + result);
+            }
+            getOutPrintWriter().println(result);
+        } catch (RemoteException e) {
+            Log.w(LOG_TAG, "SetSatelliteAccessAllowedForSubscriptions: error = " + e.getMessage());
+            errPw.println("Exception: " + e.getMessage());
+            return -1;
+        }
+
+        return 0;
+    }
+
     private int handleSetSatelliteGatewayServicePackageNameCommand() {
         PrintWriter errPw = getErrPrintWriter();
         String serviceName = null;
@@ -3405,6 +3445,50 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         } catch (RemoteException e) {
             Log.w(LOG_TAG, "handleSetSatelliteIgnoreCellularServiceState: " + enabled
                     + ", error = " + e.getMessage());
+            errPw.println("Exception: " + e.getMessage());
+            return -1;
+        }
+        return 0;
+    }
+
+    private int handleSetSatelliteTnScanningSupport() {
+        PrintWriter errPw = getErrPrintWriter();
+        boolean reset = false;
+        boolean concurrentTnScanningSupported = false;
+        boolean tnScanningDuringSatelliteSessionAllowed = false;
+
+        String opt;
+        while ((opt = getNextOption()) != null) {
+            switch (opt) {
+                case "-r": {
+                    reset = true;
+                    break;
+                }
+                case "-s": {
+                    concurrentTnScanningSupported = Boolean.parseBoolean(getNextArgRequired());
+                    break;
+                }
+                case "-a": {
+                    tnScanningDuringSatelliteSessionAllowed =
+                            Boolean.parseBoolean(getNextArgRequired());
+                    break;
+                }
+            }
+        }
+        Log.d(LOG_TAG, "handleSetSatelliteTnScanningSupport: reset=" + reset
+            + ", concurrentTnScanningSupported =" + concurrentTnScanningSupported
+            + ", tnScanningDuringSatelliteSessionAllowed="
+            + tnScanningDuringSatelliteSessionAllowed);
+
+        try {
+            boolean result = mInterface.setTnScanningSupport(reset,
+                concurrentTnScanningSupported, tnScanningDuringSatelliteSessionAllowed);
+            if (VDBG) {
+                Log.v(LOG_TAG, "handleSetSatelliteTnScanningSupport: result = " + result);
+            }
+            getOutPrintWriter().println(result);
+        } catch (RemoteException e) {
+            Log.w(LOG_TAG, "handleSetSatelliteTnScanningSupport: error = " + e.getMessage());
             errPw.println("Exception: " + e.getMessage());
             return -1;
         }

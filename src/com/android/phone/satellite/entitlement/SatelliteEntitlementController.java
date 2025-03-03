@@ -37,7 +37,6 @@ import android.telephony.CarrierConfigManager;
 import android.telephony.Rlog;
 import android.telephony.SubscriptionManager;
 
-
 import com.android.internal.annotations.GuardedBy;
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.telephony.ExponentialBackoff;
@@ -118,10 +117,6 @@ public class SatelliteEntitlementController extends Handler {
      * @param featureFlags The feature flag.
      */
     public static void make(@NonNull Context context, @NonNull FeatureFlags featureFlags) {
-        if (!featureFlags.carrierEnabledSatelliteFlag()) {
-            logd("carrierEnabledSatelliteFlag is disabled. don't created this.");
-            return;
-        }
         if (sInstance == null) {
             HandlerThread handlerThread = new HandlerThread(TAG);
             handlerThread.start();
@@ -253,6 +248,51 @@ public class SatelliteEntitlementController extends Handler {
         sendEmptyMessage(CMD_START_QUERY_ENTITLEMENT);
     }
 
+    private int[] getServiceTypeForEntitlementMetrics(Map<String, List<Integer>> map) {
+        if (map == null || map.isEmpty()) {
+            return new int[]{};
+        }
+
+        return map.entrySet().stream()
+                .findFirst()
+                .map(entry -> {
+                    List<Integer> list = entry.getValue();
+                    if (list == null) {
+                        return new int[]{}; // Return empty array if the list is null
+                    }
+                    return list.stream().mapToInt(Integer::intValue).toArray();
+                })
+                .orElse(new int[]{}); // Return empty array if no entry is found
+    }
+
+    private int getDataPolicyForEntitlementMetrics(Map<String, Integer> dataPolicyMap) {
+        if (dataPolicyMap != null && !dataPolicyMap.isEmpty()) {
+            return dataPolicyMap.values().stream().findFirst()
+                    .orElse(-1);
+        }
+        return -1;
+    }
+
+    private void reportSuccessForEntitlement(int subId, SatelliteEntitlementResult
+            entitlementResult) {
+        // allowed service info entitlement status
+        boolean isAllowedServiceInfo = !entitlementResult
+                .getAvailableServiceTypeInfoForPlmnList().isEmpty();
+
+        int[] serviceType = new int[0];
+        int dataPolicy = 0;
+        if (isAllowedServiceInfo) {
+            serviceType = getServiceTypeForEntitlementMetrics(
+                    entitlementResult.getAvailableServiceTypeInfoForPlmnList());
+            dataPolicy = SatelliteController.getInstance().mapDataPolicyForMetrics(
+                    getDataPolicyForEntitlementMetrics(
+                    entitlementResult.getDataServicePolicyInfoForPlmnList()));
+        }
+        mEntitlementMetricsStats.reportSuccess(subId,
+                getEntitlementStatus(entitlementResult), true, isAllowedServiceInfo,
+                serviceType, dataPolicy);
+    }
+
     /**
      * Check if the device can request to entitlement server (if there is an internet connection and
      * if the throttle time has passed since the last request), and then pass the response to
@@ -273,8 +313,7 @@ public class SatelliteEntitlementController extends Handler {
                     SatelliteEntitlementResult entitlementResult =  getSatelliteEntitlementApi(
                             subId).checkEntitlementStatus();
                     mSatelliteEntitlementResultPerSub.put(subId, entitlementResult);
-                    mEntitlementMetricsStats.reportSuccess(subId,
-                            getEntitlementStatus(entitlementResult), false);
+                    reportSuccessForEntitlement(subId, entitlementResult);
                 }
             } catch (ServiceEntitlementException e) {
                 loge(e.toString());
@@ -341,8 +380,8 @@ public class SatelliteEntitlementController extends Handler {
                 SatelliteEntitlementResult entitlementResult =  getSatelliteEntitlementApi(
                         subId).checkEntitlementStatus();
                 mSatelliteEntitlementResultPerSub.put(subId, entitlementResult);
-                mEntitlementMetricsStats.reportSuccess(subId,
-                        getEntitlementStatus(entitlementResult), true);
+                reportSuccessForEntitlement(subId, entitlementResult);
+
             }
         } catch (ServiceEntitlementException e) {
             loge(e.toString());

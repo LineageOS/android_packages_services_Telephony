@@ -37,6 +37,7 @@ import com.android.internal.telephony.data.DataConfigManager;
 import com.android.internal.telephony.data.DataNetworkController;
 import com.android.internal.telephony.metrics.MetricsCollector;
 import com.android.internal.telephony.metrics.PersistAtomsStorage;
+import com.android.internal.telephony.satellite.SatelliteController;
 import com.android.phone.PhoneGlobals;
 import com.android.phone.PhoneInterfaceManager;
 
@@ -80,6 +81,9 @@ public class TelephonyTestBase {
 
         doCallRealMethod().when(mPhoneGlobals).getBaseContext();
         doCallRealMethod().when(mPhoneGlobals).getResources();
+        doCallRealMethod().when(mPhoneGlobals).getSystemService(Mockito.anyString());
+        doCallRealMethod().when(mPhoneGlobals).getSystemService(Mockito.any(Class.class));
+        doCallRealMethod().when(mPhoneGlobals).getSystemServiceName(Mockito.any(Class.class));
         doCallRealMethod().when(mPhone).getServiceState();
 
         mContext = spy(new TestContext());
@@ -96,6 +100,8 @@ public class TelephonyTestBase {
         replaceInstance(PhoneFactory.class, "sPhones", null, new Phone[] {mPhone});
         replaceInstance(PhoneGlobals.class, "sMe", null, mPhoneGlobals);
         replaceInstance(PhoneFactory.class, "sMetricsCollector", null, mMetricsCollector);
+        replaceInstance(SatelliteController.class, "sInstance", null,
+                Mockito.mock(SatelliteController.class));
 
         doReturn(Mockito.mock(PersistAtomsStorage.class)).when(mMetricsCollector).getAtomsStorage();
 

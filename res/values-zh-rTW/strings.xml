@@ -303,7 +303,7 @@
     <string name="data_usage_template" msgid="6287906680674061783">"<xliff:g id="ID_2">%2$s</xliff:g>期間使用了 <xliff:g id="ID_1">%1$s</xliff:g> 的行動數據"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"進階"</string>
     <string name="carrier_settings_euicc" msgid="1190237227261337749">"電信業者"</string>
-    <string name="keywords_carrier_settings_euicc" msgid="8540160967922063745">"電信業者, eSIM 卡, SIM 卡, eUICC, 切換電信業者, 新增電信業者"</string>
+    <string name="keywords_carrier_settings_euicc" msgid="8540160967922063745">"電信業者, eSIM, SIM 卡, eUICC, 切換電信業者, 新增電信業者"</string>
     <string name="carrier_settings_euicc_summary" msgid="2027941166597330117">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> - <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="7228249980933944101">"行動數據"</string>
     <string name="mobile_data_settings_summary" msgid="5012570152029118471">"使用行動網路存取數據"</string>
@@ -843,7 +843,7 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"你必須重新啟動裝置，才能變更這項設定。"</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"重新啟動"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"取消"</string>
-    <string name="removable_esim_string" msgid="7931369811671787649">"將可移除的 eSIM 卡設為預設 eSIM 卡"</string>
+    <string name="removable_esim_string" msgid="7931369811671787649">"將可移除的 eSIM 設為預設 eSIM"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"行動無線電電源"</string>
     <string name="simulate_out_of_service_string" msgid="7787925611727597193">"模擬無法使用服務的情況 (僅限偵錯版本)"</string>
     <string name="enforce_satellite_channel_string" msgid="295306734591329892">"強制執行 Camp 衛星 LTE 頻道 (僅限偵錯版本)"</string>

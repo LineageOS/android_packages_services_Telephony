@@ -867,7 +867,7 @@
     <string name="radio_info_ims_reg_status" msgid="25582845222446390">"IMS 등록: <xliff:g id="STATUS">%1$s</xliff:g>\nVoLTE: <xliff:g id="AVAILABILITY_0">%2$s</xliff:g>\nVoWi-Fi: <xliff:g id="AVAILABILITY_1">%3$s</xliff:g>\n화상 통화: <xliff:g id="AVAILABILITY_2">%4$s</xliff:g>\nUT 인터페이스: <xliff:g id="AVAILABILITY_3">%5$s</xliff:g>"</string>
     <string name="radioInfo_service_in" msgid="45753418231446400">"서비스 중"</string>
     <string name="radioInfo_service_out" msgid="287972405416142312">"서비스 지역 벗어남"</string>
-    <string name="radioInfo_service_emergency" msgid="4763879891415016848">"긴급 통화만 허용"</string>
+    <string name="radioInfo_service_emergency" msgid="4763879891415016848">"긴급 전화만 허용"</string>
     <string name="radioInfo_service_off" msgid="3456583511226783064">"무선 연결 끊김"</string>
     <string name="radioInfo_roaming_in" msgid="3156335577793145965">"로밍"</string>
     <string name="radioInfo_roaming_not" msgid="1904547918725478110">"로밍 안함"</string>

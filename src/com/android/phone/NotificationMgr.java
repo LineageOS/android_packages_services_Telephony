@@ -843,11 +843,6 @@ public class NotificationMgr {
      * @param subId The subscription ID
      */
     void updateNetworkSelection(int serviceState, int subId) {
-        if (!mFeatureFlags.dismissNetworkSelectionNotificationOnSimDisable()) {
-            updateNetworkSelectionForFeatureDisabled(serviceState, subId);
-            return;
-        }
-
         // for dismissNetworkSelectionNotificationOnSimDisable feature enabled.
         int phoneId = SubscriptionManager.getPhoneId(subId);
         Phone phone = SubscriptionManager.isValidPhoneId(phoneId) ?

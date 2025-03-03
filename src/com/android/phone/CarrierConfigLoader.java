@@ -141,6 +141,9 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
     @NonNull private boolean[] mHasSentConfigChange;
     // Whether the broadcast was sent from EVENT_SYSTEM_UNLOCKED, to track rebroadcasts
     @NonNull private boolean[] mFromSystemUnlocked;
+    // Whether this carrier config loading needs to trigger
+    // TelephonyRegistryManager.notifyCarrierConfigChanged
+    @NonNull private boolean[] mNeedNotifyCallback;
     // CarrierService change monitoring
     @NonNull private CarrierServiceChangeCallback[] mCarrierServiceChangeCallbacks;
 
@@ -257,6 +260,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
             }
             switch (msg.what) {
                 case EVENT_CLEAR_CONFIG: {
+                    mNeedNotifyCallback[phoneId] = true;
                     clearConfigForPhone(phoneId, true);
                     break;
                 }
@@ -268,8 +272,10 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                         // trying to load the carrier config when the SIM is still loading when the
                         // unlock happens.
                         if (mHasSentConfigChange[i]) {
-                            logdWithLocalLog("System unlocked");
+                            logl("System unlocked");
                             mFromSystemUnlocked[i] = true;
+                            // Do not add mNeedNotifyCallback[phoneId] = true here. We intentionally
+                            // do not want to notify callback when system unlock happens.
                             updateConfigForPhoneId(i);
                         }
                     }
@@ -281,8 +287,9 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                     // Always clear up the cache and re-load config from scratch since the carrier
                     // service change is reliable and specific to the phoneId now.
                     clearCachedConfigForPackage(carrierPackageName);
-                    logdWithLocalLog("Package changed: " + carrierPackageName
+                    logl("Package changed: " + carrierPackageName
                             + ", phone=" + phoneId);
+                    mNeedNotifyCallback[phoneId] = true;
                     updateConfigForPhoneId(phoneId);
                     break;
                 }
@@ -375,7 +382,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                         ICarrierService carrierService =
                                 ICarrierService.Stub.asInterface(conn.service);
                         carrierService.getCarrierConfig(phoneId, carrierId, resultReceiver);
-                        logdWithLocalLog("Fetch config for default app: "
+                        logl("Fetch config for default app: "
                                 + mPlatformCarrierConfigPackage
                                 + ", carrierId=" + carrierId.getSpecificCarrierId());
                     } catch (RemoteException e) {
@@ -494,7 +501,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                                     if (config != null) {
                                         mConfigFromCarrierApp[phoneId] = config;
                                     } else {
-                                        logdWithLocalLog("Config from carrier app is null "
+                                        logl("Config from carrier app is null "
                                                 + "for phoneId " + phoneId);
                                         // Put a stub bundle in place so that the rest of the logic
                                         // continues smoothly.
@@ -510,7 +517,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                         ICarrierService carrierService =
                                 ICarrierService.Stub.asInterface(conn.service);
                         carrierService.getCarrierConfig(phoneId, carrierId, resultReceiver);
-                        logdWithLocalLog("Fetch config for carrier app: "
+                        logl("Fetch config for carrier app: "
                                 + getCarrierPackageForPhoneId(phoneId)
                                 + ", carrierId=" + carrierId.getSpecificCarrierId());
                     } catch (RemoteException e) {
@@ -676,7 +683,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                         ICarrierService carrierService =
                                 ICarrierService.Stub.asInterface(conn.service);
                         carrierService.getCarrierConfig(phoneId, null, resultReceiver);
-                        logdWithLocalLog("Fetch no sim config from default app: "
+                        logl("Fetch no sim config from default app: "
                                 + mPlatformCarrierConfigPackage);
                     } catch (RemoteException e) {
                         loge("Failed to get no sim carrier config from default app: " +
@@ -728,6 +735,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         mServiceBound = new boolean[mNumPhones];
         mHasSentConfigChange = new boolean[mNumPhones];
         mFromSystemUnlocked = new boolean[mNumPhones];
+        mNeedNotifyCallback = new boolean[mNumPhones];
         mServiceConnectionForNoSimConfig = new CarrierServiceConnection[mNumPhones];
         mServiceBoundForNoSimConfig = new boolean[mNumPhones];
         mCarrierServiceChangeCallbacks = new CarrierServiceChangeCallback[mNumPhones];
@@ -866,16 +874,21 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         TelephonyRegistryManager trm = mContext.getSystemService(TelephonyRegistryManager.class);
         // Unlike broadcast, we wouldn't notify registrants on carrier config change when device is
         // unlocked. Only real carrier config change will send the notification to registrants.
-        if (trm != null && !mFromSystemUnlocked[phoneId]) {
+        if (trm != null && (mFeatureFlags.carrierConfigChangedCallbackFix()
+                ? mNeedNotifyCallback[phoneId] : !mFromSystemUnlocked[phoneId])) {
+            logl("Notify carrier config changed callback for phone " + phoneId);
             trm.notifyCarrierConfigChanged(phoneId, subId, carrierId, specificCarrierId);
+            mNeedNotifyCallback[phoneId] = false;
+        } else {
+            logl("Skipped notifying carrier config changed callback for phone " + phoneId);
         }
 
         mContext.sendBroadcastAsUser(intent, UserHandle.ALL);
 
         if (SubscriptionManager.isValidSubscriptionId(subId)) {
-            logd("Broadcast CARRIER_CONFIG_CHANGED for phone " + phoneId + ", subId=" + subId);
+            logl("Broadcast CARRIER_CONFIG_CHANGED for phone " + phoneId + ", subId=" + subId);
         } else {
-            logd("Broadcast CARRIER_CONFIG_CHANGED for phone " + phoneId);
+            logl("Broadcast CARRIER_CONFIG_CHANGED for phone " + phoneId);
         }
         mHasSentConfigChange[phoneId] = true;
         mFromSystemUnlocked[phoneId] = false;
@@ -896,7 +909,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
 
     /** Binds to the default or carrier config app. */
     private boolean bindToConfigPackage(@NonNull String pkgName, int phoneId, int eventId) {
-        logdWithLocalLog("Binding to " + pkgName + " for phone " + phoneId);
+        logl("Binding to " + pkgName + " for phone " + phoneId);
         Intent carrierService = new Intent(CarrierService.CARRIER_SERVICE_INTERFACE);
         carrierService.setPackage(pkgName);
         CarrierServiceConnection serviceConnection =  new CarrierServiceConnection(
@@ -1071,7 +1084,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
             return;
         }
 
-        logdWithLocalLog("Save carrier config to cache. phoneId=" + phoneId
+        logl("Save carrier config to cache. phoneId=" + phoneId
                         + ", xml=" + getFilePathForLogging(fileName) + ", version=" + version);
 
         FileOutputStream outFile = null;
@@ -1175,7 +1188,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         }
 
         if (restoredBundle != null) {
-            logdWithLocalLog("Restored carrier config from cache. phoneId=" + phoneId + ", xml="
+            logl("Restored carrier config from cache. phoneId=" + phoneId + ", xml="
                     + getFilePathForLogging(fileName) + ", version=" + savedVersion
                     + ", modified time=" + getFileTime(filePath));
         }
@@ -1232,7 +1245,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         });
         if (packageFiles == null || packageFiles.length < 1) return false;
         for (File f : packageFiles) {
-            logdWithLocalLog("Deleting " + getFilePathForLogging(f.getName()));
+            logl("Deleting " + getFilePathForLogging(f.getName()));
             f.delete();
         }
         return true;
@@ -1299,7 +1312,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         if (mNumPhones == oldNumPhones) {
             return;
         }
-        logdWithLocalLog("mNumPhones change from " + oldNumPhones + " to " + mNumPhones);
+        logl("mNumPhones change from " + oldNumPhones + " to " + mNumPhones);
 
         // If DS -> SS switch, release the resources BEFORE truncating the arrays to avoid leaking
         for (int phoneId = mNumPhones; phoneId < oldNumPhones; phoneId++) {
@@ -1332,10 +1345,12 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         mServiceBoundForNoSimConfig = Arrays.copyOf(mServiceBoundForNoSimConfig, mNumPhones);
         mHasSentConfigChange = Arrays.copyOf(mHasSentConfigChange, mNumPhones);
         mFromSystemUnlocked = Arrays.copyOf(mFromSystemUnlocked, mNumPhones);
+        mNeedNotifyCallback = Arrays.copyOf(mNeedNotifyCallback, mNumPhones);
         mCarrierServiceChangeCallbacks = Arrays.copyOf(mCarrierServiceChangeCallbacks, mNumPhones);
 
         // Load the config for all the phones and re-register callback AFTER padding the arrays.
         for (int phoneId = 0; phoneId < mNumPhones; phoneId++) {
+            mNeedNotifyCallback[phoneId] = true;
             updateConfigForPhoneId(phoneId);
             mCarrierServiceChangeCallbacks[phoneId] = new CarrierServiceChangeCallback(phoneId);
             TelephonyManager.from(mContext).registerCarrierPrivilegesCallback(phoneId,
@@ -1464,6 +1479,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
 
         // Post to run on handler thread on which all states should be confined.
         mHandler.post(() -> {
+            mNeedNotifyCallback[phoneId] = true;
             overrideConfig(mOverrideConfigs, phoneId, overrides);
 
             if (persistent) {
@@ -1483,7 +1499,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                     fileToDelete.delete();
                 }
             }
-            logdWithLocalLog("overrideConfig: subId=" + subscriptionId + ", persistent="
+            logl("overrideConfig: subId=" + subscriptionId + ", persistent="
                     + persistent + ", overrides=" + overrides);
             updateSubscriptionDatabase(phoneId);
         });
@@ -1520,7 +1536,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         enforceTelephonyFeatureWithException(getCurrentPackageName(),
                 "notifyConfigChangedForSubId");
 
-        logdWithLocalLog("Notified carrier config changed. phoneId=" + phoneId
+        logl("Notified carrier config changed. phoneId=" + phoneId
                 + ", subId=" + subscriptionId);
 
         // This method should block until deleting has completed, so that an error which prevents us
@@ -1529,6 +1545,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         String callingPackageName = mContext.getPackageManager().getNameForUid(
                 Binder.getCallingUid());
         clearCachedConfigForPackage(callingPackageName);
+        mNeedNotifyCallback[phoneId] = true;
         updateConfigForPhoneId(phoneId);
     }
 
@@ -1536,7 +1553,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
     @Override
     public void updateConfigForPhoneId(int phoneId, @NonNull String simState) {
         updateConfigForPhoneId_enforcePermission();
-        logdWithLocalLog("Update config for phoneId=" + phoneId + " simState=" + simState);
+        logl("Update config for phoneId=" + phoneId + " simState=" + simState);
         if (!SubscriptionManager.isValidPhoneId(phoneId)) {
             throw new IllegalArgumentException("Invalid phoneId: " + phoneId);
         }
@@ -1554,6 +1571,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                 break;
             case IccCardConstants.INTENT_VALUE_ICC_LOADED:
             case IccCardConstants.INTENT_VALUE_ICC_LOCKED:
+                mNeedNotifyCallback[phoneId] = true;
                 updateConfigForPhoneId(phoneId);
                 break;
         }
@@ -1703,6 +1721,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                 + Arrays.toString(mServiceBoundForNoSimConfig));
         indentPW.println("mHasSentConfigChange=" + Arrays.toString(mHasSentConfigChange));
         indentPW.println("mFromSystemUnlocked=" + Arrays.toString(mFromSystemUnlocked));
+        indentPW.println("mNeedNotifyCallback=" + Arrays.toString(mNeedNotifyCallback));
         indentPW.println();
         indentPW.println("CarrierConfigLoader local log=");
         indentPW.increaseIndent();
@@ -1909,8 +1928,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
             return;
         }
 
-        if (!mFeatureFlags.enforceTelephonyFeatureMappingForPublicApis()
-                || !CompatChanges.isChangeEnabled(ENABLE_FEATURE_MAPPING, callingPackage,
+        if (!CompatChanges.isChangeEnabled(ENABLE_FEATURE_MAPPING, callingPackage,
                 Binder.getCallingUserHandle())
                 || mVendorApiLevel < Build.VERSION_CODES.VANILLA_ICE_CREAM) {
             // Skip to check associated telephony feature,
@@ -2067,7 +2085,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         Log.d(LOG_TAG, msg, tr);
     }
 
-    private void logdWithLocalLog(@NonNull String msg) {
+    private void logl(@NonNull String msg) {
         Log.d(LOG_TAG, msg);
         mCarrierConfigLoadingLog.log(msg);
     }

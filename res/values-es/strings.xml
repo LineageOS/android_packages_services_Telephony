@@ -85,7 +85,7 @@
     <string name="smart_forwarding_settings_menu_summary" msgid="5096947726032885325">"Cuando no se puede contactar con un número, las llamadas se desvían siempre a otro número"</string>
     <string name="voicemail_notifications_preference_title" msgid="7829238858063382977">"Notificaciones"</string>
     <string name="cell_broadcast_settings" msgid="8135324242541809924">"Difusiones de emergencia"</string>
-    <string name="call_settings" msgid="3677282690157603818">"Ajustes de llamadas"</string>
+    <string name="call_settings" msgid="3677282690157603818">"Ajustes de llamada"</string>
     <string name="additional_gsm_call_settings" msgid="1561980168685658846">"Ajustes adicionales"</string>
     <string name="additional_gsm_call_settings_with_label" msgid="7973920539979524908">"Ajustes adicionales (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="sum_gsm_call_settings" msgid="7964692601608878138">"Ajustes adicionales de llamadas solo GSM"</string>
@@ -131,7 +131,7 @@
     <string name="disable_cdma_cw" msgid="7119290446496301734">"Cancelar"</string>
     <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"Llamada en espera de CDMA en IMS activada"</string>
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"Llamada en espera de CDMA en IMS desactivada"</string>
-    <string name="updating_title" msgid="6130548922615719689">"Ajustes de llamadas"</string>
+    <string name="updating_title" msgid="6130548922615719689">"Ajustes de llamada"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"El administrador es el único usuario que puede cambiar los ajustes de llamada."</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"Solo el administrador o el usuario de trabajo pueden cambiar la configuración de la cuenta del teléfono."</string>
     <string name="phone_account_no_config_mobile_networks" msgid="7351062247756521227">"El propietario del dispositivo ha restringido la posibilidad de cambiar la configuración de la red móvil."</string>

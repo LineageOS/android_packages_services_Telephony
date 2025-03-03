@@ -148,7 +148,7 @@ public class LocationAccessPolicyTest {
         }
     }
 
-    private static final int TESTING_UID = 10001;
+    private static final int TESTING_UID = UserHandle.getUid(UserHandle.myUserId(), 10001);
     private static final int TESTING_PID = 8009;
     private static final String TESTING_CALLING_PACKAGE = "com.android.phone";
 

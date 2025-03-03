@@ -126,6 +126,7 @@ import java.util.Queue;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
@@ -147,7 +148,7 @@ public class TelephonyConnectionService extends ConnectionService {
 
     // Timeout before we terminate the outgoing DSDA call if HOLD did not complete in time on the
     // existing call.
-    private static final int DEFAULT_DSDA_OUTGOING_CALL_HOLD_TIMEOUT_MS = 2000;
+    private static final int DEFAULT_DSDA_CALL_STATE_CHANGE_TIMEOUT_MS = 5000;
 
     // Timeout to wait for the termination of incoming call before continue with the emergency call.
     private static final int DEFAULT_REJECT_INCOMING_CALL_TIMEOUT_MS = 10 * 1000; // 10 seconds.
@@ -220,6 +221,8 @@ public class TelephonyConnectionService extends ConnectionService {
     private final CdmaConferenceController mCdmaConferenceController =
             new CdmaConferenceController(this);
 
+    private com.android.server.telecom.flags.FeatureFlags mTelecomFlags =
+            new com.android.server.telecom.flags.FeatureFlagsImpl();
     private FeatureFlags mFeatureFlags = new FeatureFlagsImpl();
 
     private ImsConferenceController mImsConferenceController;
@@ -735,6 +738,32 @@ public class TelephonyConnectionService extends ConnectionService {
                         Log.d(LOG_TAG, "Connection " + connection.getTelecomCallId()
                                 + " changed to STATE_DISCONNECTED!");
                         mStateHoldingFuture.complete(false);
+                        c.removeTelephonyConnectionListener(this);
+                    }
+                    break;
+                }
+            }
+        }
+    }
+
+    private static class StateDisconnectListener extends
+            TelephonyConnection.TelephonyConnectionListener {
+        private final CompletableFuture<Boolean> mDisconnectFuture;
+
+        StateDisconnectListener(CompletableFuture<Boolean> future) {
+            mDisconnectFuture = future;
+        }
+
+        @Override
+        public void onStateChanged(
+                Connection connection, @Connection.ConnectionState int state) {
+            TelephonyConnection c = (TelephonyConnection) connection;
+            if (c != null) {
+                switch (c.getState()) {
+                    case Connection.STATE_DISCONNECTED: {
+                        Log.d(LOG_TAG, "Connection " + connection.getTelecomCallId()
+                                + " changed to STATE_DISCONNECTED!");
+                        mDisconnectFuture.complete(true);
                         c.removeTelephonyConnectionListener(this);
                     }
                     break;
@@ -1367,44 +1396,61 @@ public class TelephonyConnectionService extends ConnectionService {
                     }
                 }
 
-                CompletableFuture<Void> maybeHoldFuture =
-                        checkAndHoldCallsOnOtherSubsForEmergencyCall(request,
+                CompletableFuture<Void> maybeHoldOrDisconnectOnOtherSubsFuture =
+                        checkAndHoldOrDisconnectCallsOnOtherSubsForEmergencyCall(request,
                                 resultConnection, phone);
                 Consumer<Boolean> ddsSwitchConsumer = (result) -> {
                     Log.i(this, "onCreateOutgoingConn emergency-"
                             + " delayDialForDdsSwitch result = " + result);
                     placeOutgoingConnection(request, resultConnection, phone);
                 };
-                maybeHoldFuture.thenRun(() -> delayDialForDdsSwitch(phone, ddsSwitchConsumer));
+                maybeHoldOrDisconnectOnOtherSubsFuture.thenRun(() -> delayDialForDdsSwitch(phone,
+                        ddsSwitchConsumer));
                 return resultConnection;
             }
         }
     }
 
-    private CompletableFuture<Void> checkAndHoldCallsOnOtherSubsForEmergencyCall(
+    private CompletableFuture<Void> checkAndHoldOrDisconnectCallsOnOtherSubsForEmergencyCall(
             ConnectionRequest request, Connection resultConnection, Phone phone) {
-        CompletableFuture<Void> maybeHoldFuture = CompletableFuture.completedFuture(null);
-        if (mTelephonyManagerProxy.isConcurrentCallsPossible()
-                && shouldHoldForEmergencyCall(phone)) {
+        CompletableFuture<Void> future = CompletableFuture.completedFuture(null);
+        if (mTelephonyManagerProxy.isConcurrentCallsPossible()) {
             // If the PhoneAccountHandle was adjusted on building the TelephonyConnection,
             // the relevant PhoneAccountHandle will be updated in resultConnection.
             PhoneAccountHandle phoneAccountHandle =
                     resultConnection.getPhoneAccountHandle() == null
-                    ? request.getAccountHandle() : resultConnection.getPhoneAccountHandle();
-            Conferenceable c = maybeHoldCallsOnOtherSubs(phoneAccountHandle);
-            if (c != null) {
-                maybeHoldFuture = delayDialForOtherSubHold(phone, c, (success) -> {
-                    Log.i(this, "checkAndHoldCallsOnOtherSubsForEmergencyCall"
-                            + " delayDialForOtherSubHold success = " + success);
-                    if (!success) {
-                        // Terminates the existing call to make way for the emergency call.
-                        hangup(c, android.telephony.DisconnectCause
-                                .OUTGOING_EMERGENCY_CALL_PLACED);
-                    }
-                });
+                            ? request.getAccountHandle()
+                            : resultConnection.getPhoneAccountHandle();
+            if (shouldHoldForEmergencyCall(phone) && !mTelecomFlags.enableCallSequencing()) {
+                Conferenceable c = maybeHoldCallsOnOtherSubs(phoneAccountHandle);
+                if (c != null) {
+                    future = delayDialForOtherSubHold(phone, c, (success) -> {
+                        Log.i(this, "checkAndHoldOrDisconnectCallsOnOtherSubsForEmergencyCall"
+                                + " delayDialForOtherSubHold success = " + success);
+                        if (!success) {
+                            // Terminates the existing call to make way for the emergency call.
+                            hangup(c, android.telephony.DisconnectCause
+                                    .OUTGOING_EMERGENCY_CALL_PLACED);
+                        }
+                    });
+                }
+            } else {
+                Log.i(this, "checkAndHoldOrDisconnectCallsOnOtherSubsForEmergencyCall"
+                        + " disconnectAllCallsOnOtherSubs, phoneAccountExcluded: "
+                        + phoneAccountHandle);
+                // Disconnect any calls on other subscription as part of call sequencing. This will
+                // cover the shared data call case too when we have a call on the shared data sim
+                // as the call will always try to be placed on the sim in service. Refer to
+                // #isAvailableForEmergencyCalls.
+                List<Conferenceable> disconnectedConferenceables =
+                        disconnectAllConferenceablesOnOtherSubs(phoneAccountHandle);
+                future = delayDialForOtherSubDisconnects(phone, disconnectedConferenceables,
+                        (success) -> Log.i(this,
+                                "checkAndHoldOrDisconnectCallsOnOtherSubsForEmergencyCall"
+                                        + " delayDialForOtherSubDisconnects success = " + success));
             }
         }
-        return maybeHoldFuture;
+        return future;
     }
 
     private Connection placeOutgoingConnection(ConnectionRequest request,
@@ -2677,10 +2723,12 @@ public class TelephonyConnectionService extends ConnectionService {
                     phone);
         }
 
-        CompletableFuture<Void> maybeHoldFuture =
-                checkAndHoldCallsOnOtherSubsForEmergencyCall(request, resultConnection, phone);
-        maybeHoldFuture.thenRun(() -> placeEmergencyConnectionInternal(resultConnection,
-                phone, request, numberToDial, isTestEmergencyNumber, needToTurnOnRadio));
+        CompletableFuture<Void> maybeHoldOrDisconnectOnOtherSubFuture =
+                checkAndHoldOrDisconnectCallsOnOtherSubsForEmergencyCall(request,
+                        resultConnection, phone);
+        maybeHoldOrDisconnectOnOtherSubFuture.thenRun(() -> placeEmergencyConnectionInternal(
+                resultConnection, phone, request, numberToDial, isTestEmergencyNumber,
+                needToTurnOnRadio));
 
         // Non TelephonyConnection type instance means dialing failure.
         return resultConnection;
@@ -3831,7 +3879,7 @@ public class TelephonyConnectionService extends ConnectionService {
             // a timeout that will complete the future to not block the outgoing call indefinitely.
             CompletableFuture<Boolean> timeout = new CompletableFuture<>();
             phone.getContext().getMainThreadHandler().postDelayed(
-                    () -> timeout.complete(false), DEFAULT_DSDA_OUTGOING_CALL_HOLD_TIMEOUT_MS);
+                    () -> timeout.complete(false), DEFAULT_DSDA_CALL_STATE_CHANGE_TIMEOUT_MS);
             // Ensure that the Consumer is completed on the main thread.
             return stateHoldingFuture.acceptEitherAsync(timeout, completeConsumer,
                     phone.getContext().getMainExecutor());
@@ -3841,6 +3889,63 @@ public class TelephonyConnectionService extends ConnectionService {
             completeConsumer.accept(false);
             return CompletableFuture.completedFuture(null);
         }
+    }
+
+    /**
+     * For DSDA devices, block until the connections passed in are disconnected (STATE_DISCONNECTED)
+     * or time out.
+     * @return {@link CompletableFuture} indicating the completion result after performing
+     * the bulk disconnect
+     */
+    private CompletableFuture<Void> delayDialForOtherSubDisconnects(Phone phone,
+            List<Conferenceable> conferenceables, Consumer<Boolean> completeConsumer) {
+        if (conferenceables.isEmpty()) {
+            completeConsumer.accept(true);
+            return CompletableFuture.completedFuture(null);
+        }
+        if (phone == null) {
+            // Unexpected inputs
+            completeConsumer.accept(false);
+            return CompletableFuture.completedFuture(null);
+        }
+        List<CompletableFuture<Void>> disconnectFutures = new ArrayList<>();
+        for (Conferenceable conferenceable : conferenceables) {
+            CompletableFuture<Void> disconnectFuture = CompletableFuture.completedFuture(null);
+            try {
+                if (conferenceable == null) {
+                    disconnectFuture = CompletableFuture.completedFuture(null);
+                } else {
+                    // Listen for each disconnect as part of an individual future.
+                    disconnectFuture = CompletableFuture.runAsync(() ->
+                            listenForDisconnectStateChanged(conferenceable)
+                                    .completeOnTimeout(false,
+                                            DEFAULT_DSDA_CALL_STATE_CHANGE_TIMEOUT_MS,
+                                            TimeUnit.MILLISECONDS),
+                            phone.getContext().getMainExecutor());
+                }
+            } catch (Exception e) {
+                Log.w(this, "delayDialForOtherSubDisconnects - exception= " + e.getMessage());
+                disconnectFuture = CompletableFuture.completedFuture(null);
+            } finally {
+                disconnectFutures.add(disconnectFuture);
+            }
+        }
+        // Return a future that waits for all the disconnect futures to complete.
+        return CompletableFuture.allOf(disconnectFutures.toArray(CompletableFuture[]::new));
+    }
+
+    /**
+     * Listen for the disconnect state change from the passed in {@link Conferenceable}.
+     * @param conferenceable
+     * @return {@link CompletableFuture} that provides the result of waiting on the
+     * disconnect state change.
+     */
+    private CompletableFuture<Boolean> listenForDisconnectStateChanged(
+            @NonNull Conferenceable conferenceable) {
+        CompletableFuture<Boolean> future = new CompletableFuture<>();
+        final StateDisconnectListener disconnectListener = new StateDisconnectListener(future);
+        addTelephonyConnectionListener(conferenceable, disconnectListener);
+        return future;
     }
 
     /**
@@ -4512,6 +4617,8 @@ public class TelephonyConnectionService extends ConnectionService {
      */
     public void maybeIndicateAnsweringWillDisconnect(@NonNull TelephonyConnection connection,
             @NonNull PhoneAccountHandle phoneAccountHandle) {
+        // With sequencing, Telecom handles setting the extra.
+        if (mTelecomFlags.enableCallSequencing()) return;
         if (isCallPresentOnOtherSub(phoneAccountHandle)) {
             if (mTelephonyManagerProxy.isConcurrentCallsPossible()
                     && allCallsSupportHold(connection)) {
@@ -4775,8 +4882,47 @@ public class TelephonyConnectionService extends ConnectionService {
         return null;
     }
 
-    private void disconnectAllCallsOnOtherSubs (@NonNull PhoneAccountHandle handle) {
-        Collection<Connection>connections = getAllConnections();
+    /**
+     * For DSDA devices, disconnects all calls (and conferences) on other subs when placing an
+     * emergency call.
+     * @param handle The {@link PhoneAccountHandle} to exclude when disconnecting calls
+     * @return {@link List} compromised of the conferenceables that have been disconnected.
+     */
+    @VisibleForTesting
+    protected List<Conferenceable> disconnectAllConferenceablesOnOtherSubs(
+            @NonNull PhoneAccountHandle handle) {
+        List<Conferenceable> conferenceables = new ArrayList<>();
+        Collection<Conference> conferences = getAllConferences();
+        // Add the conferences
+        conferences.stream()
+                .filter(c ->
+                        (c.getState() == Connection.STATE_ACTIVE
+                                || c.getState() == Connection.STATE_HOLDING)
+                                // Include any calls not on same sub as current connection.
+                                && !Objects.equals(c.getPhoneAccountHandle(), handle))
+                .forEach(c -> {
+                    if (c instanceof TelephonyConference) {
+                        TelephonyConference tc = (TelephonyConference) c;
+                        Log.i(LOG_TAG, "disconnectAllConferenceablesOnOtherSubs: disconnect"
+                                        + " %s due to redial happened on other sub.",
+                                tc.getTelecomCallId());
+                        tc.onDisconnect();
+                        conferenceables.add(c);
+                    }
+                });
+        // Add the connections.
+        conferenceables.addAll(disconnectAllCallsOnOtherSubs(handle));
+        return conferenceables;
+    }
+
+    /**
+     * For DSDA devices, disconnects all calls on other subs when placing an emergency call.
+     * @param handle The {@link PhoneAccountHandle} to exclude when disconnecting calls
+     * @return {@link List} including compromised of the connections that have been disconnected.
+     */
+    private List<Connection> disconnectAllCallsOnOtherSubs(@NonNull PhoneAccountHandle handle) {
+        Collection<Connection> connections = getAllConnections();
+        List<Connection> disconnectedConnections = new ArrayList<>();
         connections.stream()
                 .filter(c ->
                         (c.getState() == Connection.STATE_ACTIVE
@@ -4790,8 +4936,10 @@ public class TelephonyConnectionService extends ConnectionService {
                                 " %s due to redial happened on other sub.",
                                 tc.getTelecomCallId());
                         tc.hangup(android.telephony.DisconnectCause.LOCAL);
+                        disconnectedConnections.add(c);
                     }
                 });
+        return disconnectedConnections;
     }
 
     private @NetworkRegistrationInfo.Domain int getActiveCallDomain(int subId) {
@@ -4922,8 +5070,10 @@ public class TelephonyConnectionService extends ConnectionService {
 
     /* Only for testing */
     @VisibleForTesting
-    public void setFeatureFlags(FeatureFlags featureFlags) {
+    public void setFeatureFlags(FeatureFlags featureFlags,
+            com.android.server.telecom.flags.FeatureFlags telecomFlags) {
         mFeatureFlags = featureFlags;
+        mTelecomFlags = telecomFlags;
     }
 
     private void loge(String s) {

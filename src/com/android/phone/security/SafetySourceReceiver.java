@@ -26,7 +26,6 @@ import android.content.pm.PackageManager;
 
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.telephony.Phone;
-import com.android.internal.telephony.flags.Flags;
 import com.android.phone.PhoneGlobals;
 import com.android.telephony.Rlog;
 
@@ -45,11 +44,7 @@ public class SafetySourceReceiver extends BroadcastReceiver {
             return;
         }
 
-        if (Flags.enforceTelephonyFeatureMappingForPublicApis()) {
-            if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_TELEPHONY)) {
-                refreshSafetySources(refreshBroadcastId);
-            }
-        } else {
+        if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_TELEPHONY)) {
             refreshSafetySources(refreshBroadcastId);
         }
     }
