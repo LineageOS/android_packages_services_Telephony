@@ -46,7 +46,6 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.IBinder;
-import android.os.Looper;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyRegistryManager;
 import android.testing.TestableLooper;
@@ -70,7 +69,6 @@ import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
@@ -110,7 +108,6 @@ public class ImsStateCallbackControllerTest extends TelephonyTestBase {
     @Captor ArgumentCaptor<FeatureConnector.Listener<ImsManager>> mMmTelConnectorListenerSlot1;
     @Captor ArgumentCaptor<FeatureConnector.Listener<RcsFeatureManager>> mRcsConnectorListenerSlot0;
     @Captor ArgumentCaptor<FeatureConnector.Listener<RcsFeatureManager>> mRcsConnectorListenerSlot1;
-    @Mock private PhoneGlobals mPhone;
     @Mock ImsStateCallbackController.PhoneFactoryProxy mPhoneFactoryProxy;
     @Mock Phone mPhoneSlot0;
     @Mock Phone mPhoneSlot1;
@@ -134,16 +131,16 @@ public class ImsStateCallbackControllerTest extends TelephonyTestBase {
 
     @Before
     public void setUp() throws Exception {
-        MockitoAnnotations.initMocks(this);
+        super.setUp();
 
-        when(mPhone.getMainExecutor()).thenReturn(mExecutor);
-        when(mPhone.getSystemServiceName(eq(SubscriptionManager.class)))
+        when(mPhoneGlobals.getMainExecutor()).thenReturn(mExecutor);
+        when(mPhoneGlobals.getSystemServiceName(eq(SubscriptionManager.class)))
                 .thenReturn(Context.TELEPHONY_SUBSCRIPTION_SERVICE);
-        when(mPhone.getSystemService(eq(Context.TELEPHONY_SUBSCRIPTION_SERVICE)))
+        when(mPhoneGlobals.getSystemService(eq(Context.TELEPHONY_SUBSCRIPTION_SERVICE)))
                 .thenReturn(mSubscriptionManager);
-        when(mPhone.getSystemServiceName(eq(TelephonyRegistryManager.class)))
+        when(mPhoneGlobals.getSystemServiceName(eq(TelephonyRegistryManager.class)))
                 .thenReturn(Context.TELEPHONY_REGISTRY_SERVICE);
-        when(mPhone.getSystemService(eq(Context.TELEPHONY_REGISTRY_SERVICE)))
+        when(mPhoneGlobals.getSystemService(eq(Context.TELEPHONY_REGISTRY_SERVICE)))
                 .thenReturn(mTelephonyRegistryManager);
         when(mPhoneFactoryProxy.getPhone(eq(0))).thenReturn(mPhoneSlot0);
         when(mPhoneFactoryProxy.getPhone(eq(1))).thenReturn(mPhoneSlot1);
@@ -937,9 +934,6 @@ public class ImsStateCallbackControllerTest extends TelephonyTestBase {
     }
 
     private void createController(int slotCount) throws Exception {
-        if (Looper.myLooper() == null) {
-            Looper.prepare();
-        }
         makeFakeActiveSubIds(slotCount);
 
         when(mMmTelFeatureFactory
@@ -956,7 +950,7 @@ public class ImsStateCallbackControllerTest extends TelephonyTestBase {
                 .thenReturn(mRcsFeatureConnectorSlot1);
 
         mImsStateCallbackController =
-                new ImsStateCallbackController(mPhone, mHandlerThread.getLooper(),
+                new ImsStateCallbackController(mPhoneGlobals, mHandlerThread.getLooper(),
                         slotCount, mMmTelFeatureFactory, mRcsFeatureFactory, mImsResolver,
                         mFeatureFlags);
 

@@ -743,6 +743,27 @@ public class NormalCallDomainSelectorTest {
                 mNormalCallDomainSelector.getSelectorState());
     }
 
+    @Test
+    public void testReselectDomainNoTimeoutMessage() {
+        final TestTransportSelectorCallback transportSelectorCallback =
+                new TestTransportSelectorCallback(mNormalCallDomainSelector);
+
+        DomainSelectionService.SelectionAttributes attributes =
+                new DomainSelectionService.SelectionAttributes.Builder(
+                        SLOT_ID, SUB_ID_1, SELECTOR_TYPE_CALLING)
+                        .setAddress(TEST_URI)
+                        .setCallId(TEST_CALLID)
+                        .setEmergency(false)
+                        .setVideoCall(false)
+                        .setExitedFromAirplaneMode(false)
+                        .build();
+
+        mNormalCallDomainSelector.selectDomain(null, transportSelectorCallback);
+        mNormalCallDomainSelector.reselectDomain(attributes);
+        assertFalse(mNormalCallDomainSelector.hasMessages(
+                NormalCallDomainSelector.MSG_WAIT_FOR_IMS_STATE_TIMEOUT));
+    }
+
     static class TestTransportSelectorCallback implements TransportSelectorCallback,
             WwanSelectorCallback {
         public boolean mCreated;

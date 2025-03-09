@@ -16,21 +16,40 @@
 
 package com.android;
 
+import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.doCallRealMethod;
+import static org.mockito.Mockito.doReturn;
 
+import android.content.ContextWrapper;
+import android.content.res.Resources;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 
+import androidx.test.InstrumentationRegistry;
+
+import com.android.internal.telephony.GsmCdmaPhone;
+import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConfigurationManager;
+import com.android.internal.telephony.PhoneFactory;
+import com.android.internal.telephony.data.DataConfigManager;
+import com.android.internal.telephony.data.DataNetworkController;
+import com.android.internal.telephony.metrics.MetricsCollector;
+import com.android.internal.telephony.metrics.PersistAtomsStorage;
+import com.android.phone.PhoneGlobals;
+import com.android.phone.PhoneInterfaceManager;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
+import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 
 import java.lang.reflect.Field;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -39,31 +58,54 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Helper class to load Mockito Resources into a test.
+ * Helper class to load Mockito Resources into Telephony unit tests.
  */
 public class TelephonyTestBase {
     @Rule public final MockitoRule mocks = MockitoJUnit.rule();
 
     protected TestContext mContext;
+    @Mock protected PhoneGlobals mPhoneGlobals;
+    @Mock protected GsmCdmaPhone mPhone;
+    @Mock protected DataNetworkController mDataNetworkController;
+    @Mock private MetricsCollector mMetricsCollector;
 
     private final HashMap<InstanceKey, Object> mOldInstances = new HashMap<>();
     private final LinkedList<InstanceKey> mInstanceKeys = new LinkedList<>();
 
     @Before
     public void setUp() throws Exception {
-        mContext = spy(new TestContext());
-        // Set up the looper if it does not exist on the test thread.
         if (Looper.myLooper() == null) {
             Looper.prepare();
-            // Wait until the looper is not null anymore
-            for(int i = 0; i < 5; i++) {
-                if (Looper.myLooper() != null) {
-                    break;
-                }
-                Looper.prepare();
-                Thread.sleep(100);
-            }
         }
+
+        doCallRealMethod().when(mPhoneGlobals).getBaseContext();
+        doCallRealMethod().when(mPhoneGlobals).getResources();
+        doCallRealMethod().when(mPhone).getServiceState();
+
+        mContext = spy(new TestContext());
+        doReturn(mContext).when(mPhone).getContext();
+        replaceInstance(ContextWrapper.class, "mBase", mPhoneGlobals, mContext);
+
+        Resources resources = InstrumentationRegistry.getTargetContext().getResources();
+        assertNotNull(resources);
+        doReturn(resources).when(mContext).getResources();
+
+        replaceInstance(Handler.class, "mLooper", mPhone, Looper.myLooper());
+        replaceInstance(PhoneFactory.class, "sMadeDefaults", null, true);
+        replaceInstance(PhoneFactory.class, "sPhone", null, mPhone);
+        replaceInstance(PhoneFactory.class, "sPhones", null, new Phone[] {mPhone});
+        replaceInstance(PhoneGlobals.class, "sMe", null, mPhoneGlobals);
+        replaceInstance(PhoneFactory.class, "sMetricsCollector", null, mMetricsCollector);
+
+        doReturn(Mockito.mock(PersistAtomsStorage.class)).when(mMetricsCollector).getAtomsStorage();
+
+        doReturn(mDataNetworkController).when(mPhone).getDataNetworkController();
+        doReturn(Collections.emptyList()).when(mDataNetworkController)
+                .getInternetDataDisallowedReasons();
+        doReturn(Mockito.mock(DataConfigManager.class)).when(mDataNetworkController)
+                .getDataConfigManager();
+
+        mPhoneGlobals.phoneMgr = Mockito.mock(PhoneInterfaceManager.class);
     }
 
     @After

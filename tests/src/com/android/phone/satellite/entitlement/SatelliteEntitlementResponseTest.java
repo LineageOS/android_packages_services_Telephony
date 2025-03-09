@@ -16,6 +16,11 @@
 
 package com.android.phone.satellite.entitlement;
 
+import static android.telephony.CarrierConfigManager.SATELLITE_DATA_SUPPORT_ALL;
+import static android.telephony.CarrierConfigManager.SATELLITE_DATA_SUPPORT_BANDWIDTH_CONSTRAINED;
+import static android.telephony.NetworkRegistrationInfo.SERVICE_TYPE_DATA;
+import static android.telephony.NetworkRegistrationInfo.SERVICE_TYPE_VOICE;
+
 import static com.android.phone.satellite.entitlement.SatelliteEntitlementResult.SATELLITE_ENTITLEMENT_STATUS_DISABLED;
 import static com.android.phone.satellite.entitlement.SatelliteEntitlementResult.SATELLITE_ENTITLEMENT_STATUS_ENABLED;
 import static com.android.phone.satellite.entitlement.SatelliteEntitlementResult.SATELLITE_ENTITLEMENT_STATUS_INCOMPATIBLE;
@@ -34,13 +39,17 @@ import org.junit.runner.RunWith;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 @RunWith(AndroidJUnit4.class)
 public class SatelliteEntitlementResponseTest {
     private static final String TEST_OTHER_APP_ID = "ap201x";
+
     private static final List<SatelliteNetworkInfo> TEST_PLMN_DATA_PLAN_TYPE_LIST = Arrays.asList(
-            new SatelliteNetworkInfo("31026", "unmetered"),
-            new SatelliteNetworkInfo("302820", "metered"));
+            new SatelliteNetworkInfo("31026", "unmetered",
+                    Map.of("data","constrained")),
+            new SatelliteNetworkInfo("302820", "metered",
+                    Map.of("voice","unconstrained")));
     private static final List<String> TEST_PLMN_BARRED_LIST = Arrays.asList("31017", "302020");
     private static final String RESPONSE_WITHOUT_SATELLITE_APP_ID =
             "{\"VERS\":{\"version\":\"1\",\"validity\":\"172800\"},"
@@ -77,10 +86,14 @@ public class SatelliteEntitlementResponseTest {
                 response.getPlmnAllowed().get(0).mPlmn);
         assertEquals(TEST_PLMN_DATA_PLAN_TYPE_LIST.get(0).mDataPlanType,
                 response.getPlmnAllowed().get(0).mDataPlanType);
+        assertEquals(TEST_PLMN_DATA_PLAN_TYPE_LIST.get(0).mAllowedServicesInfo,
+                response.getPlmnAllowed().get(0).mAllowedServicesInfo);
         assertEquals(TEST_PLMN_DATA_PLAN_TYPE_LIST.get(1).mPlmn,
                 response.getPlmnAllowed().get(1).mPlmn);
         assertEquals(TEST_PLMN_DATA_PLAN_TYPE_LIST.get(1).mDataPlanType,
                 response.getPlmnAllowed().get(1).mDataPlanType);
+        assertEquals(TEST_PLMN_DATA_PLAN_TYPE_LIST.get(1).mAllowedServicesInfo,
+                response.getPlmnAllowed().get(1).mAllowedServicesInfo);
         assertTrue(response.getPlmnBarredList().size() == 2);
         assertEquals(TEST_PLMN_BARRED_LIST, response.getPlmnBarredList());
 
@@ -207,15 +220,17 @@ public class SatelliteEntitlementResponseTest {
 
     private String getPLMNListOrEmpty(int entitlementStatus) {
         return entitlementStatus == SATELLITE_ENTITLEMENT_STATUS_ENABLED ? ","
-                + "\"PLMNAllowed\":[{\"PLMN\":\"31026\",\"DataPlanType\":\"unmetered\"},"
-                + "{\"PLMN\":\"302820\",\"DataPlanType\":\"metered\"}],"
+                + "\"PLMNAllowed\":[{\"PLMN\":\"31026\",\"DataPlanType\":\"unmetered\",\"AllowedServicesInfo\":[{\"AllowedServices\":{\"ServiceType\":\"data\",\"ServicePolicy\":\"constrained\"}}]},"
+                + "{\"PLMN\":\"302820\",\"DataPlanType\":\"metered\",\"AllowedServicesInfo\":[{\"AllowedServices\":{\"ServiceType\":\"voice\",\"ServicePolicy\":\"unconstrained\"}}]}],"
                 + "\"PLMNBarred\":[{\"PLMN\":\"31017\"},"
                 + "{\"PLMN\":\"302020\"}]" : "";
     }
 
     private String getAllowedPlmns(String firstPlmn, String secondPlmn) {
-        return ",\"PLMNAllowed\":[{\"PLMN\":\"" + firstPlmn + "\",\"DataPlanType\":\"unmetered\"},"
-                + "{\"PLMN\":\"" + secondPlmn + "\",\"DataPlanType\":\"metered\"}]";
+        return ",\"PLMNAllowed\":[{\"PLMN\":\"" + firstPlmn +
+                "\",\"DataPlanType\":\"unmetered\",\"AllowedServicesInfo\":[{\"AllowedServices\":{\"ServiceType\":\"data\",\"ServicePolicy\":\"constrained\"}}]},"
+                + "{\"PLMN\":\"" + secondPlmn +
+                "\",\"DataPlanType\":\"metered\",\"AllowedServicesInfo\":[{\"AllowedServices\":{\"ServiceType\":\"voice\",\"ServicePolicy\":\"unconstrained\"}}]}]";
     }
 
     private String getBarredPlmns(String firstPlmn, String secondPlmn) {
@@ -237,8 +252,8 @@ public class SatelliteEntitlementResponseTest {
                 + "\"TOKEN\":{\"token\":\"ASH127AHHA88SF\"},\""
                 + ServiceEntitlement.APP_SATELLITE_ENTITLEMENT + "\":{"
                 + "\"EntitlementStatus\":\"" + SATELLITE_ENTITLEMENT_STATUS_ENABLED + "\""
-                + ",\"PLMNAllowed\":[{\"PLMN\":\"31026\",\"DataPlanType\":\"unmetered\"},"
-                + "{\"PLMN\":\"302820\",\"DataPlanType\":\"metered\"}]"
+                + ",\"PLMNAllowed\":[{\"PLMN\":\"31026\",\"DataPlanType\":\"unmetered\",\"AllowedServicesInfo\":[{\"AllowedServices\":{\"ServiceType\":\"data\",\"ServicePolicy\":\"constrained\"}}]},"
+                + "{\"PLMN\":\"302820\",\"DataPlanType\":\"metered\",\"AllowedServicesInfo\":[{\"AllowedServices\":{\"ServiceType\":\"voice\",\"ServicePolicy\":\"unconstrained\"}}]}]"
                 + getBarredPlmns(firstPlmn, secondPlmn)
                 + "}}";
     }

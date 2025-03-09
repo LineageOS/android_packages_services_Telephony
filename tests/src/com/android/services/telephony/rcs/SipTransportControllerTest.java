@@ -147,12 +147,16 @@ public class SipTransportControllerTest extends TelephonyTestBase {
 
     @After
     public void tearDown() throws Exception {
-        super.tearDown();
-        boolean isShutdown = mExecutorService == null || mExecutorService.isShutdown();
-        if (!isShutdown) {
+        var monitor = RcsProvisioningMonitor.getInstance();
+        if (monitor != null) {
+            monitor.overrideImsFeatureValidation(TEST_SUB_ID, null);
+        }
+
+        if (mExecutorService != null && !mExecutorService.isShutdown()) {
             mExecutorService.shutdownNow();
         }
-        RcsProvisioningMonitor.getInstance().overrideImsFeatureValidation(TEST_SUB_ID, null);
+
+        super.tearDown();
     }
 
     @SmallTest

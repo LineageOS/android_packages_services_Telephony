@@ -1,0 +1,140 @@
+{
+    "access_control_configs": [
+        {
+            "config_id": 0,
+            "satellite_infos": [
+                {
+                    "satellite_id": "0db0312f-d73f-444d-b99b-a893dfb42edf",
+                    "satellite_position": {
+                        "longitude": -150.3,
+                        "altitude": 35786000
+                    },
+                    "bands": [
+                        259,
+                        260
+                    ],
+                    "earfcn_ranges": [
+                        {
+                            "start_earfcn": 3000,
+                            "end_earfcn": 4300
+                        }
+                    ]
+                }
+            ],
+            "tag_ids": [
+                6,
+                7,
+                8
+            ]
+        },
+        {
+            "config_id": 1,
+            "satellite_infos": [
+                {
+                    "satellite_id": "1dec24f8-9223-4196-ad7a-a03002db7af7",
+                    "satellite_position": {
+                        "longitude": 15.5,
+                        "altitude": 35786000
+                    },
+                    "bands": [
+                        257,
+                        258
+                    ],
+                    "earfcn_ranges": [
+                        {
+                            "start_earfcn": 3200,
+                            "end_earfcn": 3200
+                        }
+                    ]
+                }
+            ],
+            "tag_ids": [
+                9,
+                10,
+                11
+            ]
+        },
+        {
+            "config_id": 2,
+            "satellite_infos": [
+                {
+                    "satellite_id": "f60cb479-d85b-4f4e-b050-cc428f5eb4a4",
+                    "satellite_position": {
+                        "longitude": -150,
+                        "altitude": 35786000
+                    },
+                    "bands": [
+                        259,
+                        260
+                    ],
+                    "earfcn_ranges": [
+                        {
+                            "start_earfcn": 3300,
+                            "end_earfcn": 3400
+                        }
+                    ]
+                }
+            ],
+            "tag_ids": [
+                12,
+                13,
+                14
+            ]
+        },
+        {
+            "config_id": 3,
+            "satellite_infos": [
+                {
+                    "satellite_id": "c5837d96-9585-46aa-8dd0-a974583737fb",
+                    "satellite_position": {
+                        "longitude": -155,
+                        "altitude": 35786000
+                    },
+                    "bands": [
+                        261,
+                        262
+                    ],
+                    "earfcn_ranges": [
+                        {
+                            "start_earfcn": 3500,
+                            "end_earfcn": 3600
+                        }
+                    ]
+                }
+            ],
+            "tag_ids": [
+                15,
+                16,
+                17
+            ]
+        }
+        ,
+        {
+            "config_id": 4,
+            "satellite_infos": [
+                {
+                    "satellite_id": "6ef2a128-0477-4271-895f-dc4a221d2b23",
+                    "satellite_position": {
+                        "longitude": -66,
+                        "altitude": 35786000
+                    },
+                    "bands": [
+                        263,
+                        264
+                    ],
+                    "earfcn_ranges": [
+                        {
+                            "start_earfcn": 3700,
+                            "end_earfcn": 3800
+                        }
+                    ]
+                }
+            ],
+            "tag_ids": [
+                18,
+                19,
+                20
+            ]
+        }
+    ]
+}

@@ -20,6 +20,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.times;
@@ -40,6 +41,7 @@ import com.android.ims.FeatureConnector;
 import com.android.ims.RcsFeatureManager;
 import com.android.internal.telephony.ISub;
 import com.android.internal.telephony.flags.FeatureFlags;
+import com.android.phone.ImsStateCallbackController;
 
 import org.junit.After;
 import org.junit.Before;
@@ -102,6 +104,9 @@ public class TelephonyRcsServiceTest extends TelephonyTestBase {
         doReturn(mMockSipTransportSlot1).when(mFeatureFactory).createSipTransportController(any(),
                 eq(1), anyInt());
         doReturn(true).when(mResourceProxy).getDeviceUceEnabled(any());
+
+        replaceInstance(ImsStateCallbackController.class, "sInstance", null,
+                mock(ImsStateCallbackController.class));
 
         replaceInstance(TelephonyManager.class, "sInstance", null, mTelephonyManager);
         doReturn(2).when(mTelephonyManager).getActiveModemCount();

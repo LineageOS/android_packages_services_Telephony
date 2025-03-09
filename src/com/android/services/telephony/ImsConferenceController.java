@@ -142,9 +142,9 @@ public class ImsConferenceController {
     public ImsConferenceController(TelecomAccountRegistry telecomAccountRegistry,
             TelephonyConnectionServiceProxy connectionService,
             ImsConference.FeatureFlagProxy featureFlagProxy) {
-        mConnectionService = connectionService;
-        mTelecomAccountRegistry = telecomAccountRegistry;
-        mFeatureFlagProxy = featureFlagProxy;
+        mConnectionService = Objects.requireNonNull(connectionService);
+        mTelecomAccountRegistry = Objects.requireNonNull(telecomAccountRegistry);
+        mFeatureFlagProxy = Objects.requireNonNull(featureFlagProxy);
     }
 
     void addConference(ImsConference conference) {

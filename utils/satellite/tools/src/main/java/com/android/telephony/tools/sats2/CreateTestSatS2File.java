@@ -16,8 +16,8 @@
 
 package com.android.telephony.tools.sats2;
 
-import com.android.storage.s2.S2LevelRange;
 import com.android.telephony.sats2range.read.SatS2RangeFileFormat;
+import com.android.telephony.sats2range.read.SuffixTableRange;
 import com.android.telephony.sats2range.write.SatS2RangeFileWriter;
 
 import java.io.File;
@@ -26,6 +26,10 @@ import java.util.List;
 
 /** Creates a Sat S2 file with a small amount of test data. Useful for testing other tools. */
 public final class CreateTestSatS2File {
+    private static final int S2_LEVEL = 12;
+    private static final boolean IS_ALLOWED_LIST = true;
+    private static final int ENTRY_VALUE_BYTE_SIZE = 4;
+    private static final int VERSION_NUMBER = 1;
 
     /**
      * Usage:
@@ -34,7 +38,8 @@ public final class CreateTestSatS2File {
     public static void main(String[] args) throws Exception {
         File file = new File(args[0]);
 
-        SatS2RangeFileFormat fileFormat = FileFormats.getFileFormatForLevel(12, true);
+        SatS2RangeFileFormat fileFormat = FileFormats.getFileFormatForLevel(S2_LEVEL,
+                IS_ALLOWED_LIST, ENTRY_VALUE_BYTE_SIZE, VERSION_NUMBER);
         if (fileFormat.getPrefixBitCount() != 11) {
             throw new IllegalStateException("Fake data requires 11 prefix bits");
         }
@@ -42,18 +47,21 @@ public final class CreateTestSatS2File {
         try (SatS2RangeFileWriter satS2RangeFileWriter =
                      SatS2RangeFileWriter.open(file, fileFormat)) {
             // Two ranges that share a prefix.
-            S2LevelRange range1 = new S2LevelRange(
+            SuffixTableRange range1 = new SuffixTableRange(
                     fileFormat.createCellId(0b100_11111111, 1000),
-                    fileFormat.createCellId(0b100_11111111, 2000));
-            S2LevelRange range2 = new S2LevelRange(
                     fileFormat.createCellId(0b100_11111111, 2000),
-                    fileFormat.createCellId(0b100_11111111, 3000));
+                    1);
+            SuffixTableRange range2 = new SuffixTableRange(
+                    fileFormat.createCellId(0b100_11111111, 2000),
+                    fileFormat.createCellId(0b100_11111111, 3000),
+                    2);
             // This range has a different face, so a different prefix, and will be in a different
             // suffix table.
-            S2LevelRange range3 = new S2LevelRange(
+            SuffixTableRange range3 = new SuffixTableRange(
                     fileFormat.createCellId(0b101_11111111, 1000),
-                    fileFormat.createCellId(0b101_11111111, 2000));
-            List<S2LevelRange> allRanges = listOf(range1, range2, range3);
+                    fileFormat.createCellId(0b101_11111111, 2000),
+                    3);
+            List<SuffixTableRange> allRanges = listOf(range1, range2, range3);
             satS2RangeFileWriter.createSortedSuffixBlocks(allRanges.iterator());
         }
     }

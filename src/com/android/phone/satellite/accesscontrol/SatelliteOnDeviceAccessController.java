@@ -16,6 +16,9 @@
 package com.android.phone.satellite.accesscontrol;
 
 import android.annotation.NonNull;
+import android.annotation.Nullable;
+
+import com.android.internal.telephony.flags.FeatureFlags;
 
 import java.io.Closeable;
 import java.io.File;
@@ -34,13 +37,15 @@ public abstract class SatelliteOnDeviceAccessController implements Closeable {
      * but at the cost of some memory, or close it immediately after a single use.
      *
      * @param file The input file that contains the location-based access restriction information.
-     * @throws IOException in the unlikely event of errors when reading underlying file(s)
+     * @throws IOException              in the unlikely event of errors when reading underlying
+     *                                  file(s)
      * @throws IllegalArgumentException if the input file format does not match the format defined
-     * by the device overlay configs.
+     *                                  by the device overlay configs.
      */
     public static SatelliteOnDeviceAccessController create(
-            @NonNull File file) throws IOException, IllegalArgumentException {
-        return S2RangeSatelliteOnDeviceAccessController.create(file);
+            @NonNull File file, @NonNull FeatureFlags featureFlags)
+            throws IOException, IllegalArgumentException {
+        return S2RangeSatelliteOnDeviceAccessController.create(file, featureFlags);
     }
 
     /**
@@ -83,4 +88,14 @@ public abstract class SatelliteOnDeviceAccessController implements Closeable {
         /** This will print out the location information */
         public abstract String toPiiString();
     }
+
+    /**
+     * Returns an unsigned integer if a regional access control config ID is found for the current
+     * location, {@code null} otherwise.
+     *
+     * @throws IOException in the unlikely event of errors when reading the underlying file
+     */
+    @Nullable
+    public abstract Integer getRegionalConfigIdForLocation(LocationToken locationToken)
+            throws IOException;
 }

@@ -67,10 +67,12 @@ public class SatS2RangeFileFormatTest {
         int suffixBitCount = 16;
         int suffixTableBlockIdOffset = 5;
         int suffixTableEntryBitCount = 24;
+        int suffixTableEntryValueSizeInBytes = 4;
+        int versionNumber = 2;
         boolean isAllowedList = false;
         SatS2RangeFileFormat satS2RangeFileFormat = new SatS2RangeFileFormat(s2Level,
                 prefixBitCount, suffixBitCount, suffixTableBlockIdOffset, suffixTableEntryBitCount,
-                isAllowedList);
+                isAllowedList, suffixTableEntryValueSizeInBytes, versionNumber);
 
         assertEquals(2, satS2RangeFileFormat.calculateRangeLength(
                 cellId(s2Level, 0, 0), cellId(s2Level, 0, 2)));
@@ -92,9 +94,11 @@ public class SatS2RangeFileFormatTest {
         int suffixTableBlockIdOffset = 5;
         int suffixTableEntryBitCount = 24;
         boolean isAllowedList = true;
+        int suffixTableEntryValueSizeInBytes = 4;
+        int versionNumber = 2;
         SatS2RangeFileFormat satS2RangeFileFormat = new SatS2RangeFileFormat(s2Level,
                 prefixBitCount, suffixBitCount, suffixTableBlockIdOffset, suffixTableEntryBitCount,
-                isAllowedList);
+                isAllowedList, suffixTableEntryValueSizeInBytes, versionNumber);
 
         // Too many bits for prefixValue
         assertThrows(IllegalArgumentException.class,
@@ -127,9 +131,11 @@ public class SatS2RangeFileFormatTest {
         int suffixTableBlockIdOffset = 5;
         int suffixTableEntryBitCount = 24;
         boolean isAllowedList = true;
+        int suffixTableEntryValueSizeInBytes = 4;
+        int versionNumber = 2;
         SatS2RangeFileFormat satS2RangeFileFormat = new SatS2RangeFileFormat(s2Level,
                 prefixBitCount, suffixBitCount, suffixTableBlockIdOffset, suffixTableEntryBitCount,
-                isAllowedList);
+                isAllowedList, suffixTableEntryValueSizeInBytes, versionNumber);
 
         assertEquals(0, satS2RangeFileFormat.extractFaceIdFromPrefix(0b00000000000));
         assertEquals(5, satS2RangeFileFormat.extractFaceIdFromPrefix(0b10100000000));
@@ -147,9 +153,11 @@ public class SatS2RangeFileFormatTest {
         int suffixTableBlockIdOffset = 5;
         int suffixTableEntryBitCount = 24;
         boolean isAllowedList = true;
+        int suffixTableEntryValueSizeInBytes = 4;
+        int versionNumber = 2;
         SatS2RangeFileFormat satS2RangeFileFormat = new SatS2RangeFileFormat(s2Level,
                 prefixBitCount, suffixBitCount, suffixTableBlockIdOffset, suffixTableEntryBitCount,
-                isAllowedList);
+                isAllowedList, suffixTableEntryValueSizeInBytes, versionNumber);
 
         // Too many bits for rangeLength
         assertThrows(IllegalArgumentException.class,
@@ -159,6 +167,33 @@ public class SatS2RangeFileFormatTest {
         assertEquals(0b10101, satS2RangeFileFormat.createSuffixTableValue(0b10101));
         assertEquals(0b00000, satS2RangeFileFormat.createSuffixTableValue(0b00000));
         assertTrue(satS2RangeFileFormat.isAllowedList());
+    }
+
+    @Test
+    public void extractEntryValueByteCount() {
+        int s2Level = 12;
+        int prefixBitCount = 11;
+        int suffixBitCount = 16;
+        int suffixTableBlockIdOffset = 5;
+        int suffixTableEntryBitCount = 24;
+        boolean isAllowedList = true;
+        final int[] suffixTableEntryValueSizeInBytes = {5};
+        int versionNumber = 1;
+
+        // Table entry byte count exceeds BYTE range.
+        assertThrows(IllegalArgumentException.class,
+                () -> new SatS2RangeFileFormat(s2Level, prefixBitCount, suffixBitCount,
+                        suffixTableBlockIdOffset, suffixTableEntryBitCount, isAllowedList,
+                        suffixTableEntryValueSizeInBytes[0], versionNumber));
+
+        suffixTableEntryValueSizeInBytes[0] = 1;
+        SatS2RangeFileFormat satS2RangeFileFormat = new SatS2RangeFileFormat(s2Level,
+                prefixBitCount, suffixBitCount, suffixTableBlockIdOffset, suffixTableEntryBitCount,
+                isAllowedList, suffixTableEntryValueSizeInBytes[0], versionNumber);
+
+        assertEquals(suffixTableEntryValueSizeInBytes[0],
+                satS2RangeFileFormat.getEntryValueSizeInBytes());
+        assertEquals(versionNumber, satS2RangeFileFormat.getVersionNumber());
     }
 
     private static int maxValForBits(int bits) {

@@ -17,6 +17,7 @@
 package com.android.telephony.tools.sats2;
 
 import com.android.telephony.sats2range.read.SatS2RangeFileReader;
+import com.android.telephony.sats2range.read.SuffixTableRange;
 
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
@@ -43,10 +44,12 @@ public final class SatS2LocationLookup {
                     satS2RangeFileReader.getS2Level());
             System.out.println("s2CellId=" + Long.toUnsignedString(s2CellId.id())
                     + ", token=" + s2CellId.toToken());
-            if (satS2RangeFileReader.findEntryByCellId(s2CellId.id()) == null) {
+            SuffixTableRange entry = satS2RangeFileReader.findEntryByCellId(s2CellId.id());
+            if (entry == null) {
                 System.out.println("The input file does not contain the input location");
             } else {
-                System.out.println("The input file contains the input location");
+                System.out.println("The input file contains the input location, entryValue="
+                        + entry.getEntryValue());
             }
         }
     }

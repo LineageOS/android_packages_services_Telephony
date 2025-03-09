@@ -50,9 +50,8 @@ import android.testing.TestableLooper;
 import com.android.TelephonyTestBase;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
-import com.android.internal.telephony.PhoneFactory;
+import com.android.internal.telephony.SimultaneousCallingTracker;
 import com.android.internal.telephony.flags.Flags;
-import com.android.phone.PhoneGlobals;
 import com.android.phone.PhoneInterfaceManager;
 import com.android.phone.R;
 
@@ -63,7 +62,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.Mockito;
 
 @RunWith(AndroidTestingRunner.class)
 @TestableLooper.RunWithLooper(setAsMainLooper = true)
@@ -83,7 +82,6 @@ public class TelecomAccountRegistryTest extends TelephonyTestBase {
     @Mock ImsManager mImsManager;
     @Mock SubscriptionManager mSubscriptionManager;
     @Mock ContentProvider mContentProvider;
-    @Mock PhoneGlobals mPhoneGlobals;
     @Mock Phone mPhone;
     @Mock Resources mResources;
     @Mock Drawable mDrawable;
@@ -96,18 +94,13 @@ public class TelecomAccountRegistryTest extends TelephonyTestBase {
     private BroadcastReceiver mUserSwitchedAndConfigChangedReceiver;
     private BroadcastReceiver mLocaleChangedBroadcastReceiver;
     private ContentResolver mContentResolver;
-    private Phone[] mPhones;
     private TestableLooper mTestableLooper;
 
     @Before
     public void setUp() throws Exception {
         super.setUp();
         mSetFlagsRule.disableFlags(Flags.FLAG_DELAY_PHONE_ACCOUNT_REGISTRATION);
-        MockitoAnnotations.initMocks(this);
 
-        mPhones = new Phone[]{mPhone};
-        replaceInstance(PhoneFactory.class, "sPhones", null, mPhones);
-        replaceInstance(PhoneGlobals.class, "sMe", null, mPhoneGlobals);
         replaceInstance(PhoneInterfaceManager.class, "sInstance", null, mPhoneInterfaceManager);
         when(mPhone.getPhoneType()).thenReturn(PhoneConstants.PHONE_TYPE_GSM);
         when(mPhone.getContext()).thenReturn(mMockedContext);
@@ -181,6 +174,9 @@ public class TelecomAccountRegistryTest extends TelephonyTestBase {
         mUserSwitchedAndConfigChangedReceiver =
                 broadcastReceiverArgumentCaptor.getAllValues().get(0);
         mLocaleChangedBroadcastReceiver = broadcastReceiverArgumentCaptor.getAllValues().get(1);
+
+        replaceInstance(SimultaneousCallingTracker.class, "sInstance", null,
+                Mockito.mock(SimultaneousCallingTracker.class));
 
         mTestableLooper.processAllMessages();
     }

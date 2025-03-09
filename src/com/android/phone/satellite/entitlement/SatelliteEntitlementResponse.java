@@ -30,7 +30,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -51,6 +53,14 @@ public class SatelliteEntitlementResponse {
     private static final String PLMN_KEY = "PLMN";
     /** The data plan is of the metered or un-metered type. This value is optional. */
     private static final String DATA_PLAN_TYPE_KEY = "DataPlanType";
+    /** The allowed services info with array of allowed services */
+    private static final String ALLOWED_SERVICES_INFO_TYPE_KEY = "AllowedServicesInfo";
+    /** The allowed services with service type and service policy for the plmn*/
+    private static final String ALLOWED_SERVICES_KEY = "AllowedServices";
+    /** list of service type supported for the plmn*/
+    private static final String SERVICE_TYPE_KEY = "ServiceType";
+    /** list of service policy supported for the plmn*/
+    private static final String SERVICE_POLICY_KEY = "ServicePolicy";
 
     @SatelliteEntitlementResult.SatelliteEntitlementStatus private int mEntitlementStatus;
 
@@ -90,7 +100,7 @@ public class SatelliteEntitlementResponse {
      */
     public List<SatelliteNetworkInfo> getPlmnAllowed() {
         return mPlmnAllowedList.stream().map((info) -> new SatelliteNetworkInfo(info.mPlmn,
-                info.mDataPlanType)).collect(Collectors.toList());
+                info.mDataPlanType, info.mAllowedServicesInfo)).collect(Collectors.toList());
     }
 
     /**
@@ -125,10 +135,31 @@ public class SatelliteEntitlementResponse {
                 for (int i = 0; i < jsonArray.length(); i++) {
                     String dataPlanType = jsonArray.getJSONObject(i).has(DATA_PLAN_TYPE_KEY)
                             ? jsonArray.getJSONObject(i).getString(DATA_PLAN_TYPE_KEY) : "";
+                    Map<String, String> allowedServicesInfo = new HashMap<>();
+                    if (jsonArray.getJSONObject(i).has(ALLOWED_SERVICES_INFO_TYPE_KEY)) {
+                        allowedServicesInfo = new HashMap<>();
+                        JSONArray jsonArray1 = jsonArray.getJSONObject(i)
+                                .getJSONArray(ALLOWED_SERVICES_INFO_TYPE_KEY);
+                        for (int j = 0; j < jsonArray1.length(); j++) {
+                            String serviceType =  jsonArray1.getJSONObject(j)
+                                    .getJSONObject(ALLOWED_SERVICES_KEY)
+                                    .has(SERVICE_TYPE_KEY) ? jsonArray1.getJSONObject(j)
+                                    .getJSONObject(ALLOWED_SERVICES_KEY)
+                                    .getString(SERVICE_TYPE_KEY): "";
+                            String servicePolicy = jsonArray1.getJSONObject(j)
+                                    .getJSONObject(ALLOWED_SERVICES_KEY)
+                                    .has(SERVICE_POLICY_KEY) ? jsonArray1.getJSONObject(j)
+                                    .getJSONObject(ALLOWED_SERVICES_KEY)
+                                    .getString(SERVICE_POLICY_KEY) : "";
+                            allowedServicesInfo.put(serviceType, servicePolicy);
+                        }
+                    }
                     String plmn = jsonArray.getJSONObject(i).getString(PLMN_KEY);
-                    logd("parsingResponse: plmn=" + plmn + " dataplan=" + dataPlanType);
+                    logd("parsingResponse: plmn=" + plmn + " dataplan=" + dataPlanType
+                            + " allowedServices=" + allowedServicesInfo);
                     if (!TextUtils.isEmpty(plmn)) {
-                        mPlmnAllowedList.add(new SatelliteNetworkInfo(plmn, dataPlanType));
+                        mPlmnAllowedList.add(new SatelliteNetworkInfo(
+                                plmn, dataPlanType, allowedServicesInfo));
                     }
                 }
             }

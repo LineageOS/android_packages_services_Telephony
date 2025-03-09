@@ -22,11 +22,11 @@ import com.android.storage.block.read.BlockData;
 import com.android.storage.block.write.BlockWriter;
 import com.android.storage.block.write.EmptyBlockWriter;
 import com.android.storage.io.write.TypedOutputStream;
-import com.android.storage.s2.S2LevelRange;
 import com.android.storage.s2.S2Support;
 import com.android.storage.table.packed.write.PackedTableWriter;
 import com.android.telephony.sats2range.read.SatS2RangeFileFormat;
 import com.android.telephony.sats2range.read.SuffixTableExtraInfo;
+import com.android.telephony.sats2range.read.SuffixTableRange;
 import com.android.telephony.sats2range.read.SuffixTableSharedData;
 
 import java.io.ByteArrayOutputStream;
@@ -42,7 +42,7 @@ import java.nio.file.StandardOpenOption;
  * To write empty tables use {@link #createEmptyBlockWriter()}.
  * To write populated tables use {@link
  * #createPopulated(SatS2RangeFileFormat, SuffixTableSharedData)} and add entries with
- * {@link #addRange(S2LevelRange)}
+ * {@link #addRange(SuffixTableRange)}
  */
 public final class SuffixTableWriter implements BlockWriter {
 
@@ -54,7 +54,7 @@ public final class SuffixTableWriter implements BlockWriter {
 
     private final File mFile;
 
-    private S2LevelRange mLastRangeAdded;
+    private SuffixTableRange mLastRangeAdded;
 
     private SuffixTableWriter(SatS2RangeFileFormat fileFormat, SuffixTableSharedData sharedData)
             throws IOException {
@@ -90,7 +90,7 @@ public final class SuffixTableWriter implements BlockWriter {
      * called at least once. See {@link SuffixTableWriter#createEmptyBlockWriter()} for empty
      * tables.
      */
-    public void addRange(S2LevelRange suffixTableRange) throws IOException {
+    public void addRange(SuffixTableRange suffixTableRange) throws IOException {
         checkIsOpen();
 
         long rangeStartCellId = suffixTableRange.getStartCellId();

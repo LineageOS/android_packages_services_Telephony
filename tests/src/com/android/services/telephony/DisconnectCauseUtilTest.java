@@ -22,7 +22,6 @@ import static android.media.ToneGenerator.TONE_SUP_BUSY;
 import static junit.framework.Assert.assertNotNull;
 import static junit.framework.TestCase.assertEquals;
 
-import static org.mockito.Mockito.mock;
 import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
@@ -38,15 +37,11 @@ import androidx.test.runner.AndroidJUnit4;
 
 import com.android.TelephonyTestBase;
 import com.android.internal.telephony.CallFailCause;
-import com.android.internal.telephony.GsmCdmaPhone;
-import com.android.internal.telephony.Phone;
-import com.android.internal.telephony.PhoneFactory;
 import com.android.phone.R;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 
 import java.util.Locale;
 
@@ -56,13 +51,6 @@ public class DisconnectCauseUtilTest extends TelephonyTestBase {
     // constants
     public static final int PHONE_ID = 123;
     public static final String EMPTY_STRING = "";
-
-    // dynamic
-    private Context mContext;
-
-    //Mocks
-    @Mock
-    private GsmCdmaPhone mMockPhone;
 
     private final FlagsAdapter mFeatureFlags = new FlagsAdapter(){
         @Override
@@ -74,11 +62,6 @@ public class DisconnectCauseUtilTest extends TelephonyTestBase {
     @Before
     public void setUp() throws Exception {
         super.setUp();
-        // objects that call static getInstance()
-        mMockPhone = mock(GsmCdmaPhone.class);
-        mContext = InstrumentationRegistry.getTargetContext();
-        // set mocks
-        setSinglePhone();
     }
 
     /**
@@ -253,11 +236,6 @@ public class DisconnectCauseUtilTest extends TelephonyTestBase {
         return config;
     }
 
-    private void setSinglePhone() throws Exception {
-        Phone[] mPhones = new Phone[]{mMockPhone};
-        replaceInstance(PhoneFactory.class, "sPhones", null, mPhones);
-    }
-
     private Resources getResourcesForLocale(Context context, Locale locale) {
         Configuration config = new Configuration();
         config.setToDefaults();
@@ -268,7 +246,7 @@ public class DisconnectCauseUtilTest extends TelephonyTestBase {
 
     private void safeAssertLabel(Integer resourceId,
             android.telecom.DisconnectCause disconnectCause) {
-        Resources r = getResourcesForLocale(mContext, Locale.US);
+        Resources r = getResourcesForLocale(InstrumentationRegistry.getTargetContext(), Locale.US);
         if (resourceId == null || r == null) {
             return;
         }

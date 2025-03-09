@@ -127,6 +127,7 @@ import android.telephony.ims.ProvisioningManager;
 import android.testing.TestableLooper;
 import android.util.Log;
 import android.util.SparseArray;
+import android.view.Display;
 
 import androidx.test.filters.SmallTest;
 
@@ -229,6 +230,11 @@ public class EmergencyCallDomainSelectorTest {
             @Override
             public Resources getResources() {
                 return mResources;
+            }
+
+            @Override
+            public int getDisplayId() {
+                return Display.DEFAULT_DISPLAY;
             }
         };
 

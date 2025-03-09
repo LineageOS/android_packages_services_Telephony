@@ -40,10 +40,26 @@ public final class HeaderBlock {
         int suffixBitCount = blockData.getUnsignedByte(offset++);
         int suffixRecordBitCount = blockData.getUnsignedByte(offset++);
         int suffixTableBlockIdOffset = blockData.getUnsignedByte(offset++);
-        boolean isAllowedList = (blockData.getUnsignedByte(offset) == TRUE);
-        mFileFormat = new SatS2RangeFileFormat(
-                dataS2Level, prefixBitCount, suffixBitCount, suffixTableBlockIdOffset,
-                suffixRecordBitCount, isAllowedList);
+        boolean isAllowedList = (blockData.getUnsignedByte(offset++) == TRUE);
+
+
+        // Check if the block is in the original format or the enhanced format.
+        // If the offset is equal to the block data size, this block is in the original format.
+        // If the offset is less than the block data size, this block is an enhanced block, which
+        // has additional fields:
+        //  - the size of an entry value in bytes
+        //  - version number of header block
+        if (offset < blockData.getSize()) {
+            int entryValueSizeInBytes = blockData.getUnsignedByte(offset++);
+            int versionNumber = blockData.getInt(offset);
+            mFileFormat = new SatS2RangeFileFormat(
+                    dataS2Level, prefixBitCount, suffixBitCount, suffixTableBlockIdOffset,
+                    suffixRecordBitCount, isAllowedList, entryValueSizeInBytes, versionNumber);
+        } else {
+            mFileFormat = new SatS2RangeFileFormat(
+                    dataS2Level, prefixBitCount, suffixBitCount, suffixTableBlockIdOffset,
+                    suffixRecordBitCount, isAllowedList);
+        }
     }
 
     /** Creates a {@link HeaderBlock} from low-level block data from a block file. */

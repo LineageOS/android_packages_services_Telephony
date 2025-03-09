@@ -16,6 +16,8 @@
 
 package com.android.telephony.sats2range.read;
 
+import static com.android.telephony.sats2range.read.SuffixTableSharedData.INVALID_ENTRY_VALUE;
+
 /**
  * An implementation of {@link SuffixTableBlock.SuffixTableBlockDelegate} for tables that are not
  * backed by real block data, i.e. have zero entries.
@@ -46,5 +48,17 @@ final class UnpopulatedSuffixTableBlock implements SuffixTableBlock.SuffixTableB
     @Override
     public int getEntryCount() {
         return 0;
+    }
+
+    /** Returns the number of entry values from the shared data. */
+    @Override
+    public int getEntryValueCount() {
+        return 0;
+    }
+
+    /** Returns the entry value from the shared data for the given index. */
+    @Override
+    public int getEntryValue(int index) {
+        return INVALID_ENTRY_VALUE;
     }
 }

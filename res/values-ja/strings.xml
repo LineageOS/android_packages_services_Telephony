@@ -184,7 +184,7 @@
     <string name="connect_later" msgid="1950138106010005425">"現在このネットワークに接続できません。しばらくしてからもう一度お試しください。"</string>
     <string name="registration_done" msgid="5337407023566953292">"ネットワークに登録されました。"</string>
     <string name="already_auto" msgid="8607068290733079336">"すでに自動選択が適用されています。"</string>
-    <string name="select_automatically" msgid="779750291257872651">"ネットワークを自動的に選択"</string>
+    <string name="select_automatically" msgid="779750291257872651">"ネットワークを自動的に選択する"</string>
     <string name="manual_mode_disallowed_summary" msgid="3970048592179890197">"%1$s に接続中はご利用いただけません"</string>
     <string name="network_select_title" msgid="4117305053881611988">"ネットワーク"</string>
     <string name="register_automatically" msgid="3907580547590554834">"自動登録..."</string>

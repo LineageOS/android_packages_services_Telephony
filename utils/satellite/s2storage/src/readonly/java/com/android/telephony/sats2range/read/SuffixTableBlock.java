@@ -20,7 +20,6 @@ import static com.android.storage.s2.S2Support.cellIdToString;
 import static com.android.storage.s2.S2Support.getS2Level;
 
 import com.android.storage.block.read.BlockData;
-import com.android.storage.s2.S2LevelRange;
 import com.android.storage.table.packed.read.IntValueTypedPackedTable;
 import com.android.storage.util.BitwiseUtils;
 import com.android.storage.util.Visitor;
@@ -83,6 +82,12 @@ public final class SuffixTableBlock {
 
         /** Returns the number of entries in the table. */
         int getEntryCount();
+
+        /** Returns the number of entry values from the shared data. */
+        int getEntryValueCount();
+
+        /** Returns the entry value from the shared data for the given index. */
+        int getEntryValue(int index);
     }
 
     private SuffixTableBlock(SatS2RangeFileFormat fileFormat, SuffixTableBlockDelegate delegate) {
@@ -151,6 +156,16 @@ public final class SuffixTableBlock {
         return mDelegate.getEntryCount();
     }
 
+    /** Returns the number of entry values from the shared data. */
+    public int getEntryValueCount() {
+        return mDelegate.getEntryValueCount();
+    }
+
+    /** Returns the entry value from the shared data for the given index. */
+    public int getEntryValue(int index) {
+        return mDelegate.getEntryValue(index);
+    }
+
     /** A {@link Visitor} for the {@link SuffixTableBlock}. See {@link #visit} */
     public interface SuffixTableBlockVisitor extends Visitor {
 
@@ -180,6 +195,6 @@ public final class SuffixTableBlock {
         public abstract int getIndex();
 
         /** Returns the data for this entry. */
-        public abstract S2LevelRange getSuffixTableRange();
+        public abstract SuffixTableRange getSuffixTableRange();
     }
 }

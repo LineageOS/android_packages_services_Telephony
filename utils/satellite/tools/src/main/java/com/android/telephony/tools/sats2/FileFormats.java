@@ -56,4 +56,19 @@ public final class FileFormats {
                         + ", isAllowedList=" + isAllowedList + " not mapped");
         }
     }
+
+    /** Maps an S2 level to one of the file format constants declared on by class. */
+    public static SatS2RangeFileFormat getFileFormatForLevel(int s2Level, boolean isAllowedList,
+            int entryValueSizeInBytes, int versionNumber) {
+        SatS2RangeFileFormat fileFormat = getFileFormatForLevel(s2Level, isAllowedList);
+        return new SatS2RangeFileFormat(
+                fileFormat.getS2Level(),
+                fileFormat.getPrefixBitCount(),
+                fileFormat.getSuffixBitCount(),
+                fileFormat.getSuffixTableBlockIdOffset(),
+                fileFormat.getTableEntryBitCount(),
+                fileFormat.isAllowedList(),
+                entryValueSizeInBytes,
+                versionNumber);
+    }
 }

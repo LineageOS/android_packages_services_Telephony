@@ -430,9 +430,9 @@ public class ImsConference extends TelephonyConferenceBase implements Holdable {
 
         super(phoneAccountHandle);
 
-        mTelecomAccountRegistry = telecomAccountRegistry;
-        mFeatureFlagProxy = featureFlagProxy;
-        mCarrierConfig = carrierConfig;
+        mTelecomAccountRegistry = Objects.requireNonNull(telecomAccountRegistry);
+        mFeatureFlagProxy = Objects.requireNonNull(featureFlagProxy);
+        mCarrierConfig = Objects.requireNonNull(carrierConfig);
 
         // Specify the connection time of the conference to be the connection time of the original
         // connection.

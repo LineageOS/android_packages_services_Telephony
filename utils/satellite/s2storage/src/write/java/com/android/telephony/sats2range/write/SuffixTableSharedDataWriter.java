@@ -21,21 +21,37 @@ import com.android.telephony.sats2range.read.SuffixTableSharedData;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Converts a {@link SuffixTableSharedData} to a byte[] for writing.
  * See also {@link SuffixTableSharedData#fromBytes(byte[])}.
  */
 public final class SuffixTableSharedDataWriter {
-
+    private static final int BUFFER_SIZE = (int) Math.pow(2, 20);
     private SuffixTableSharedDataWriter() {
     }
 
     /** Returns the byte[] for the supplied {@link SuffixTableSharedData} */
     public static byte[] toBytes(SuffixTableSharedData suffixTableSharedData) {
+        int entryValueSizeInBytes = suffixTableSharedData.getEntryValueSizeInBytes();
+        List<Integer> entryValues = suffixTableSharedData.getEntryValuesToWrite();
+        // If every entry has same value, compress to save memory
+        int numberOfEntryValues =
+                entryValues.stream().distinct().count() == 1 ? 1 : entryValues.size();
+
         try (ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                TypedOutputStream tos = new TypedOutputStream(baos)) {
+                TypedOutputStream tos = new TypedOutputStream(baos, BUFFER_SIZE)) {
             tos.writeInt(suffixTableSharedData.getTablePrefix());
+
+            if (entryValueSizeInBytes > 0 && !entryValues.isEmpty()) {
+                tos.writeInt(numberOfEntryValues);
+                for (int i = 0; i < numberOfEntryValues; i++) {
+                    // ConfigId is supported up to 0x7FFFFFFF
+                    tos.writeVarByteValue(entryValueSizeInBytes, entryValues.get(i));
+                }
+            }
+
             tos.flush();
             return baos.toByteArray();
         } catch (IOException e) {

@@ -252,7 +252,8 @@ public class EmergencyCallbackModeExitDialog extends Activity implements OnCance
                                     if (DomainSelectionResolver.getInstance()
                                             .isDomainSelectionSupported()) {
                                         EmergencyStateTracker.getInstance()
-                                                .exitEmergencyCallbackMode();
+                                                .exitEmergencyCallbackMode(
+                                                        TelephonyManager.STOP_REASON_USER_ACTION);
                                     } else {
                                         mPhone.exitEmergencyCallbackMode();
                                     }

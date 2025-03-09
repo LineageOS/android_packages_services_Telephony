@@ -35,6 +35,7 @@ import android.widget.TextView;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
+import android.util.Log;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
@@ -44,7 +45,7 @@ import java.util.concurrent.atomic.AtomicReference;
  */
 public class SatelliteControl extends Activity {
 
-    private static final long TIMEOUT = 3000;
+    private static final long TIMEOUT = TimeUnit.SECONDS.toMillis(3);
 
     private SatelliteManager mSatelliteManager;
     private SubscriptionManager mSubscriptionManager;
@@ -58,8 +59,10 @@ public class SatelliteControl extends Activity {
         mSubscriptionManager = getSystemService(SubscriptionManager.class);
 
         setContentView(R.layout.activity_SatelliteControl);
-        findViewById(R.id.enableSatellite)
-                .setOnClickListener(this::enableSatelliteApp);
+        findViewById(R.id.enableSatelliteDemoMode)
+                .setOnClickListener(v -> enableSatelliteApp(/* isDemoMode */ true));
+        findViewById(R.id.enableSatelliteRealMode)
+                .setOnClickListener(v -> enableSatelliteApp(/* isDemoMode */ false));
         findViewById(R.id.disableSatellite)
                 .setOnClickListener(this::disableSatelliteApp);
         findViewById(R.id.requestIsSatelliteEnabled)
@@ -92,6 +95,8 @@ public class SatelliteControl extends Activity {
                 .setOnClickListener(this::requestSatelliteSubscriberProvisionStatusApp);
         findViewById(R.id.provisionSatellite)
                 .setOnClickListener(this::provisionSatelliteApp);
+        findViewById(R.id.deprovisionSatellite)
+                .setOnClickListener(this::deprovisionSatelliteApp);
         findViewById(R.id.Back).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -100,24 +105,32 @@ public class SatelliteControl extends Activity {
         });
     }
 
-    private void enableSatelliteApp(View view) {
+    private void enableSatelliteApp(boolean isDemoMode) {
         LinkedBlockingQueue<Integer> error = new LinkedBlockingQueue<>(1);
         mSatelliteManager.requestEnabled(
-                new EnableRequestAttributes.Builder(true).setDemoMode(true).setEmergencyMode(true)
+                new EnableRequestAttributes.Builder(true)
+                        .setDemoMode(isDemoMode)
+                        .setEmergencyMode(true)
                         .build(), Runnable::run, error::offer);
         TextView textView = findViewById(R.id.text_id);
+        Log.d("SatelliteTestApp", "enableSatelliteApp: isDemoMode=" + isDemoMode);
         try {
             Integer value = error.poll(TIMEOUT, TimeUnit.MILLISECONDS);
             if (value == null) {
                 textView.setText("Timed out to enable the satellite");
+                Log.d("SatelliteTestApp", "Timed out to enable the satellite");
             } else if (value != SatelliteResult.SATELLITE_RESULT_SUCCESS) {
                 textView.setText("Failed to enable the satellite, error ="
                         + SatelliteErrorUtils.mapError(value));
+                Log.d("SatelliteTestApp", "Failed to enable the satellite, error ="
+                        + SatelliteErrorUtils.mapError(value));
             } else {
                 textView.setText("Successfully enabled the satellite");
+                Log.d("SatelliteTestApp", "Successfully enabled the satellite");
             }
         } catch (InterruptedException e) {
             textView.setText("Enable SatelliteService exception caught =" + e);
+            Log.d("SatelliteTestApp", "Enable SatelliteService exception caught =" + e);
         }
     }
 
@@ -455,5 +468,37 @@ public class SatelliteControl extends Activity {
             list.add(status.getSatelliteSubscriberInfo());
         }
         mSatelliteManager.provisionSatellite(list, Runnable::run, receiver);
+    }
+
+    private void deprovisionSatelliteApp(View view) {
+        final AtomicReference<Boolean> enabled = new AtomicReference<>();
+        final AtomicReference<Integer> errorCode = new AtomicReference<>();
+        OutcomeReceiver<Boolean, SatelliteManager.SatelliteException> receiver =
+                new OutcomeReceiver<>() {
+                    @Override
+                    public void onResult(Boolean result) {
+                        enabled.set(result);
+                        TextView textView = findViewById(R.id.text_id);
+                        if (enabled.get()) {
+                            textView.setText("deprovisionSatellite is true");
+                        } else {
+                            textView.setText("Status for deprovisionSatellite result : "
+                                    + enabled.get());
+                        }
+                    }
+
+                    @Override
+                    public void onError(SatelliteManager.SatelliteException exception) {
+                        errorCode.set(exception.getErrorCode());
+                        TextView textView = findViewById(R.id.text_id);
+                        textView.setText("Status for deprovisionSatellite error : "
+                                + SatelliteErrorUtils.mapError(errorCode.get()));
+                    }
+                };
+        List<SatelliteSubscriberInfo> list = new ArrayList<>();
+        for (SatelliteSubscriberProvisionStatus status : mSatelliteSubscriberProvisionStatuses) {
+            list.add(status.getSatelliteSubscriberInfo());
+        }
+        mSatelliteManager.deprovisionSatellite(list, Runnable::run, receiver);
     }
 }

@@ -394,4 +394,13 @@
 
     <!-- Whether to turn off OEM-enabled satellite during emergency call -->
     <bool name="config_turn_off_oem_enabled_satellite_during_emergency_call">false</bool>
+
+    <!-- The timeout duration in milliseconds used to determine how long does it wait for modem to
+         get in-service state when dialing emergency routing emergency calls in airplane mode before
+         starting the call. If the value is 0, it doesn't wait and starts the call right after
+         turning radio power on. -->
+    <integer name="config_in_service_wait_timer_when_dialing_emergency_routing_ecc_in_apm">3000</integer>
+
+    <!-- Whether to turn off non-emergency nb iot ntn satellite for emergency call -->
+    <bool name="config_turn_off_non_emergency_nb_iot_ntn_satellite_for_emergency_call">true</bool>
 </resources>

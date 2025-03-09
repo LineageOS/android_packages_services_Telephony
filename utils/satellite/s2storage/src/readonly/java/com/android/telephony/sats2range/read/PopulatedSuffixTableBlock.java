@@ -20,7 +20,6 @@ import static com.android.storage.s2.S2Support.MAX_FACE_ID;
 import static com.android.storage.s2.S2Support.cellIdToString;
 import static com.android.storage.util.Conditions.checkStateInRange;
 
-import com.android.storage.s2.S2LevelRange;
 import com.android.storage.table.packed.read.IntValueTypedPackedTable;
 import com.android.storage.table.reader.IntValueTable;
 
@@ -59,7 +58,8 @@ final class PopulatedSuffixTableBlock implements SuffixTableBlock.SuffixTableBlo
             SatS2RangeFileFormat fileFormat, IntValueTypedPackedTable packedTable) {
         mFileFormat = Objects.requireNonNull(fileFormat);
         mPackedTable = Objects.requireNonNull(packedTable);
-        mSuffixTableSharedData = SuffixTableSharedData.fromBytes(packedTable.getSharedData());
+        mSuffixTableSharedData = SuffixTableSharedData.fromTypedData(
+                packedTable.getSharedDataAsTyped(), fileFormat);
 
         // Obtain the prefix. All cellIds in this table will share the same prefix except for end
         // range values (which are exclusive so can be for mPrefix + 1 with a suffix value of 0).
@@ -86,6 +86,16 @@ final class PopulatedSuffixTableBlock implements SuffixTableBlock.SuffixTableBlo
     @Override
     public int getEntryCount() {
         return mPackedTable.getEntryCount();
+    }
+
+    @Override
+    public int getEntryValueCount() {
+        return mSuffixTableSharedData.getNumberOfEntryValues();
+    }
+
+    @Override
+    public int getEntryValue(int index) {
+        return mSuffixTableSharedData.getEntryValue(index);
     }
 
     /**
@@ -141,7 +151,7 @@ final class PopulatedSuffixTableBlock implements SuffixTableBlock.SuffixTableBlo
 
         private final IntValueTable.TableEntry mSuffixTableEntry;
 
-        private S2LevelRange mSuffixTableRange;
+        private SuffixTableRange mSuffixTableRange;
 
         Entry(IntValueTable.TableEntry suffixTableEntry) {
             mSuffixTableEntry = Objects.requireNonNull(suffixTableEntry);
@@ -154,7 +164,7 @@ final class PopulatedSuffixTableBlock implements SuffixTableBlock.SuffixTableBlo
 
         /** Returns the data for this entry. */
         @Override
-        public S2LevelRange getSuffixTableRange() {
+        public SuffixTableRange getSuffixTableRange() {
             // Creating SuffixTableRange is relatively expensive so it is created lazily and
             // memoized.
             if (mSuffixTableRange == null) {
@@ -190,7 +200,8 @@ final class PopulatedSuffixTableBlock implements SuffixTableBlock.SuffixTableBlo
                     endCellIdSuffix = 0;
                 }
                 long endCellId = mFileFormat.createCellId(endCellPrefixValue, endCellIdSuffix);
-                mSuffixTableRange = new S2LevelRange(startCellId, endCellId);
+                int entryValue = getEntryValue();
+                mSuffixTableRange = new SuffixTableRange(startCellId, endCellId, entryValue);
             }
             return mSuffixTableRange;
         }
@@ -217,6 +228,10 @@ final class PopulatedSuffixTableBlock implements SuffixTableBlock.SuffixTableBlo
             return "Entry{"
                     + "mSuffixTableEntry=" + mSuffixTableEntry
                     + '}';
+        }
+
+        private int getEntryValue() {
+            return mSuffixTableSharedData.getEntryValue(mSuffixTableEntry.getIndex());
         }
     }
 }

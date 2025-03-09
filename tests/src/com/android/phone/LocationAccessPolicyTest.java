@@ -225,6 +225,8 @@ public class LocationAccessPolicyTest {
         try {
             when(mPackageManager.getApplicationInfo(anyString(), anyInt()))
                     .thenReturn(fakeAppInfo);
+            when(mPackageManager.getApplicationInfoAsUser(anyString(), anyInt(),
+                    any(UserHandle.class))).thenReturn(fakeAppInfo);
         } catch (Exception e) {
             // this is a formality
         }

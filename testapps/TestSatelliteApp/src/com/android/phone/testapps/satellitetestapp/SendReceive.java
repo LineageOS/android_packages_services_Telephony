@@ -290,7 +290,7 @@ public class SendReceive extends Activity {
             satellitePositionTextView.setText("startSatelliteTransmissionUpdates exception caught ="
                         + e);
         }
-        //Device is aligned with the satellite for demo mode
+        //Device is aligned with the satellite
         mSatelliteManager.setDeviceAlignedWithSatellite(true);
     }
 }

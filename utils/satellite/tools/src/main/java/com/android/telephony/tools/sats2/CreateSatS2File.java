@@ -37,7 +37,11 @@ public final class CreateSatS2File {
         int s2Level = arguments.s2Level;
         String outputFile = arguments.outputFile;
         boolean isAllowedList = Arguments.getBooleanValue(arguments.isAllowedList);
-        SatS2FileCreator.create(inputFile, s2Level, isAllowedList, outputFile);
+        int entryValueSizeInBytes = Arguments.validateEntryValueSize(isAllowedList,
+                arguments.entryValueSizeInBytes);
+        int versionNumber = arguments.versionNumber;
+        SatS2FileCreator.create(inputFile, s2Level, isAllowedList, entryValueSizeInBytes,
+                versionNumber, outputFile);
     }
 
     private static class Arguments {
@@ -56,6 +60,14 @@ public final class CreateSatS2File {
                 required = true)
         public String isAllowedList;
 
+        @Parameter(names = "--entry-value-byte-size",
+                description = "byte size length for entry values")
+        public int entryValueSizeInBytes;
+
+        @Parameter(names = "--version-number",
+                description = "version number for header block")
+        public int versionNumber;
+
         @Parameter(names = "--output-file",
                 description = "sat s2 file",
                 required = true)
@@ -67,6 +79,17 @@ public final class CreateSatS2File {
             } else {
                 throw new ParameterException("Invalid boolean string:" + value);
             }
+        }
+
+        public static int validateEntryValueSize(boolean isAllowedList, int entryValueSizeInBytes) {
+            if (entryValueSizeInBytes < 0
+                    || (!isAllowedList && entryValueSizeInBytes > 0)
+                    || entryValueSizeInBytes > 4) {
+                throw new IllegalArgumentException(
+                        "Invalid entryValueSizeInBytes: " + entryValueSizeInBytes
+                                + ", isAllowedList: " + isAllowedList);
+            }
+            return entryValueSizeInBytes;
         }
     }
 }

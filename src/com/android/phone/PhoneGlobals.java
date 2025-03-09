@@ -44,6 +44,7 @@ import android.sysprop.TelephonyProperties;
 import android.telecom.TelecomManager;
 import android.telephony.AnomalyReporter;
 import android.telephony.CarrierConfigManager;
+import android.telephony.NetworkRegistrationInfo;
 import android.telephony.ServiceState;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
@@ -373,12 +374,16 @@ public class PhoneGlobals extends ContextWrapper {
                     break;
 
                 case EVENT_DATA_ROAMING_DISCONNECTED:
+                    Log.d(LOG_TAG, "EVENT_DATA_ROAMING_DISCONNECTED");
                     if (SubscriptionManagerService.getInstance()
                             .isEsimBootStrapProvisioningActiveForSubId(msg.arg1)) {
                         Log.i(LOG_TAG,
                                 "skip notification/warnings during esim bootstrap activation");
+                    } else if (skipDataRoamingDisconnectedNotificationInSatelliteMode((msg.arg1))) {
+                        Log.i(LOG_TAG, "skip data roaming disconnected notification when device is "
+                                + "connected to satellite network that does not support data.");
                     } else {
-                        notificationMgr.showDataRoamingNotification(msg.arg1, false);
+                        notificationMgr.showDataRoamingNotification((msg.arg1), false);
                     }
                     break;
 
@@ -566,7 +571,10 @@ public class PhoneGlobals extends ContextWrapper {
                 // Initialize EmergencyStateTracker if domain selection is supported
                 boolean isSuplDdsSwitchRequiredForEmergencyCall = getResources()
                         .getBoolean(R.bool.config_gnss_supl_requires_default_data_for_emergency);
-                EmergencyStateTracker.make(this, isSuplDdsSwitchRequiredForEmergencyCall);
+                int inServiceWaitTimeWhenDialEccInApm = getResources().getInteger(R.integer
+                        .config_in_service_wait_timer_when_dialing_emergency_routing_ecc_in_apm);
+                EmergencyStateTracker.make(this, isSuplDdsSwitchRequiredForEmergencyCall,
+                        inServiceWaitTimeWhenDialEccInApm, mFeatureFlags);
                 DynamicRoutingController.getInstance().initialize(this);
             }
 
@@ -1494,5 +1502,33 @@ public class PhoneGlobals extends ContextWrapper {
             pw.println("mPrevRoamingOperatorNumerics:" + mPrevRoamingOperatorNumerics);
         }
         pw.println("------- End PhoneGlobals -------");
+    }
+
+    private boolean skipDataRoamingDisconnectedNotificationInSatelliteMode(int subId) {
+        SatelliteController satelliteController = SatelliteController.getInstance();
+        if (satelliteController.isSatelliteEnabledOrBeingEnabled()) {
+            Log.d(LOG_TAG, "skipDataRoamingDisconnected - skip notification as "
+                    + "satellite is enabled or being enabled");
+            return true;
+        }
+
+        int phoneId = SubscriptionManager.getPhoneId(subId);
+        Phone phone = PhoneFactory.getPhone(phoneId);
+        ServiceState serviceState = phone.getServiceState();
+        if (serviceState != null && serviceState.isUsingNonTerrestrialNetwork()) {
+            Log.d(LOG_TAG, "skipDataRoamingDisconnected - isUsingNtn");
+            List<Integer> capabilities =
+                    satelliteController.getCapabilitiesForCarrierRoamingSatelliteMode(phone);
+            if (!capabilities.contains(NetworkRegistrationInfo.SERVICE_TYPE_DATA)) {
+                // Skip data roaming disconnected notification as device is connected to
+                // non-terrestrial network that does not support data.
+                Log.d(LOG_TAG, "skipDataRoamingDisconnected - skip notification as "
+                        + "NTN does not support data");
+                return true;
+            }
+        }
+
+        Log.d(LOG_TAG, "skipDataRoamingDisconnected - do not skip notification.");
+        return false;
     }
 }

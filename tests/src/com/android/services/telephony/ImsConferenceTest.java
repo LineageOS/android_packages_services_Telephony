@@ -124,6 +124,30 @@ public class ImsConferenceTest {
     }
 
     /**
+     * Verifies that the default address presentation of an ImsConference is
+     * {@link TelecomManager#PRESENTATION_UNKNOWN}
+     */
+    @Test
+    @SmallTest
+    public void testDefaultNumberPresentationIsValid() {
+        when(mMockTelecomAccountRegistry.isUsingSimCallManager(any(PhoneAccountHandle.class)))
+                .thenReturn(false);
+        mConferenceHost.setConnectionProperties(Connection.PROPERTY_ASSISTED_DIALING
+                | Connection.PROPERTY_WIFI);
+        Bundle extras = new Bundle();
+        extras.putInt(TelecomManager.EXTRA_CALL_NETWORK_TYPE, TelephonyManager.NETWORK_TYPE_IWLAN);
+        mConferenceHost.putTelephonyExtras(extras);
+        mConferenceHost.setStatusHints(new StatusHints("WIFIs", null, null));
+
+        ImsConference imsConference = new ImsConference(mMockTelecomAccountRegistry,
+                mMockTelephonyConnectionServiceProxy, mConferenceHost,
+                null /* phoneAccountHandle */, () -> true /* featureFlagProxy */,
+                new ImsConference.CarrierConfiguration.Builder().build());
+
+        assertEquals(TelecomManager.PRESENTATION_UNKNOWN, imsConference.getAddressPresentation());
+    }
+
+    /**
      * Verifies that an ImsConference will inform listeners when the "fullness" of the conference
      * changes as participants come and go.
      */

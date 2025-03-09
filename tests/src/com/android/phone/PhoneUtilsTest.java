@@ -30,15 +30,11 @@ import android.telephony.SubscriptionManager;
 import androidx.test.runner.AndroidJUnit4;
 
 import com.android.TelephonyTestBase;
-import com.android.internal.telephony.GsmCdmaPhone;
-import com.android.internal.telephony.Phone;
-import com.android.internal.telephony.PhoneFactory;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 
 @RunWith(AndroidJUnit4.class)
 public class PhoneUtilsTest extends TelephonyTestBase {
@@ -46,8 +42,6 @@ public class PhoneUtilsTest extends TelephonyTestBase {
     private SubscriptionManager mMockSubscriptionManager;
     @Mock
     private SubscriptionInfo mMockSubscriptionInfo;
-    @Mock
-    private GsmCdmaPhone mMockPhone;
 
     private final int mPhoneAccountHandleIdInteger = 123;
     private final String mPhoneAccountHandleIdString = "123";
@@ -58,12 +52,10 @@ public class PhoneUtilsTest extends TelephonyTestBase {
 
     @Before
     public void setUp() throws Exception {
-        MockitoAnnotations.initMocks(this);
+        super.setUp();
         when(mMockSubscriptionManager.getActiveSubscriptionInfo(
                 eq(mPhoneAccountHandleIdInteger))).thenReturn(mMockSubscriptionInfo);
-        when(mMockPhone.getSubId()).thenReturn(mPhoneAccountHandleIdInteger);
-        Phone[] mPhones = new Phone[] {mMockPhone};
-        replaceInstance(PhoneFactory.class, "sPhones", null, mPhones);
+        when(mPhone.getSubId()).thenReturn(mPhoneAccountHandleIdInteger);
     }
 
     @Test
@@ -74,7 +66,7 @@ public class PhoneUtilsTest extends TelephonyTestBase {
 
     @Test
     public void testGetPhoneForPhoneAccountHandle() throws Exception {
-        assertEquals(mMockPhone, PhoneUtils.getPhoneForPhoneAccountHandle(
+        assertEquals(mPhone, PhoneUtils.getPhoneForPhoneAccountHandle(
                 mPhoneAccountHandleTest));
     }
 

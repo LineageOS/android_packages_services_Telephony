@@ -16,11 +16,13 @@
 
 package com.android.phone.testapps.satellitetestapp;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.telephony.satellite.stub.SatelliteDatagram;
@@ -42,6 +44,7 @@ public class SatelliteTestApp extends Activity {
 
     private TestSatelliteServiceConnection mSatelliteServiceConn;
     private List<SatelliteDatagram> mSentSatelliteDatagrams = new ArrayList<>();
+    private static final int REQUEST_CODE_SEND_SMS = 1;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -104,6 +107,16 @@ public class SatelliteTestApp extends Activity {
             }
         });
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (checkSelfPermission(Manifest.permission.SEND_SMS)
+                != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.SEND_SMS}, REQUEST_CODE_SEND_SMS);
+        }
+    }
+
 
     private final ILocalSatelliteListener mSatelliteListener =
             new ILocalSatelliteListener.Stub() {

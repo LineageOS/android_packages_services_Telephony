@@ -19,7 +19,6 @@ package com.android.telephony.sats2range.read;
 import com.android.storage.block.read.Block;
 import com.android.storage.block.read.BlockFileReader;
 import com.android.storage.block.read.BlockInfo;
-import com.android.storage.s2.S2LevelRange;
 import com.android.storage.s2.S2Support;
 import com.android.storage.util.Conditions;
 import com.android.storage.util.Visitor;
@@ -144,11 +143,11 @@ public final class SatS2RangeFileReader implements AutoCloseable {
     }
 
     /**
-     * Finds an {@link S2LevelRange} associated with a range covering {@code cellId}.
+     * Finds an {@link SuffixTableRange} associated with a range covering {@code cellId}.
      * Returns {@code null} if no range exists. Throws {@link IllegalArgumentException} if
      * {@code cellId} is not the correct S2 level for the file. See {@link #getS2Level()}.
      */
-    public S2LevelRange findEntryByCellId(long cellId) throws IOException {
+    public SuffixTableRange findEntryByCellId(long cellId) throws IOException {
         checkNotClosed();
         int dataS2Level = mFileFormat.getS2Level();
         int searchS2Level = S2Support.getS2Level(cellId);

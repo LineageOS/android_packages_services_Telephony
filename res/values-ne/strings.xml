@@ -130,7 +130,7 @@
     <string name="enable_cdma_cw" msgid="811047045863422232">"अन गर्नुहोस्"</string>
     <string name="disable_cdma_cw" msgid="7119290446496301734">"रद्द गर्नुहोस्"</string>
     <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"IMS अन्तर्गत CDMA कल प्रतीक्षाको सुविधा सक्रिय छ"</string>
-    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"IMS अन्तर्गत CDMA कल प्रतीक्षाको सुविधा निष्क्रिय छ"</string>
+    <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"IMS अन्तर्गत CDMA कल प्रतीक्षाको सुविधा अफ छ"</string>
     <string name="updating_title" msgid="6130548922615719689">"कल सेटिङहरू"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"कल सेटिङहरू केवल प्रशासकीय प्रयोगकर्ताद्वारा परिवर्तन गर्न सकिन्छ।"</string>
     <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"एड्मिन वा कार्य प्रोफाइलका प्रयोगकर्ता मात्र फोनमा लिंक गरिएको खाताका सेटिङ बदल्न सक्नुहुन्छ।"</string>
@@ -770,8 +770,8 @@
     <string name="clh_callFailed_protocol_Error_unspecified_txt" msgid="9203320572562697755">"कल पूरा गर्न सकिएन। त्रुटिको कोड: १११।"</string>
     <string name="clh_callFailed_interworking_unspecified_txt" msgid="7969686413930847182">"कल पूरा गर्न सकिएन। त्रुटिको कोड: १२७।"</string>
     <string name="labelCallBarring" msgid="4180377113052853173">"कल ब्यारिङ"</string>
-    <string name="sum_call_barring_enabled" msgid="5184331188926370824">"सक्रिय छ"</string>
-    <string name="sum_call_barring_disabled" msgid="5699448000600153096">"निष्क्रिय छ"</string>
+    <string name="sum_call_barring_enabled" msgid="5184331188926370824">"अन छ"</string>
+    <string name="sum_call_barring_disabled" msgid="5699448000600153096">"अफ छ"</string>
     <string name="call_barring_baoc" msgid="7400892586336429326">"सबै बहिर्गमन"</string>
     <string name="call_barring_baoc_enabled" msgid="3131509193386668182">"सबै बहिर्गमन कलहरूमाथिको रोक असक्षम पार्ने हो?"</string>
     <string name="call_barring_baoc_disabled" msgid="8534224684091141509">"सबै बहिर्गमन कलहरूमाथि रोक लगाउने हो?"</string>
@@ -863,7 +863,7 @@
     <string name="radioInfo_service_in" msgid="45753418231446400">"सेवामा"</string>
     <string name="radioInfo_service_out" msgid="287972405416142312">"सेवा उपलब्ध छैन"</string>
     <string name="radioInfo_service_emergency" msgid="4763879891415016848">"आपत्‌कालीन कल मात्र"</string>
-    <string name="radioInfo_service_off" msgid="3456583511226783064">"रेडियो निष्क्रिय छ"</string>
+    <string name="radioInfo_service_off" msgid="3456583511226783064">"रेडियो अफ छ"</string>
     <string name="radioInfo_roaming_in" msgid="3156335577793145965">"रोमिङ"</string>
     <string name="radioInfo_roaming_not" msgid="1904547918725478110">"रोमिङमा छैन"</string>
     <string name="radioInfo_phone_idle" msgid="2191653783170757819">"निष्क्रिय"</string>

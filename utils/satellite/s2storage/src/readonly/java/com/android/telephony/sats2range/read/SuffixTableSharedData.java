@@ -16,11 +16,13 @@
 
 package com.android.telephony.sats2range.read;
 
+import com.android.storage.block.read.TypedData;
 import com.android.storage.io.read.TypedInputStream;
 import com.android.storage.table.reader.Table;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -28,14 +30,98 @@ import java.util.Objects;
  * entries in the table and is required when interpreting the table's block data.
  */
 public final class SuffixTableSharedData {
-
+    public static final int INVALID_ENTRY_VALUE = -1;
     private final int mTablePrefix;
+    private final int mEntryValueSizeInBytes;
+    private final int mNumberOfEntryValues;
+    private final int mHeaderByteOffsetToRead;
+    private List<Integer> mEntryValuesToWrite = List.of(); // This is used for write path
+    private final TypedData mSharedDataToRead; // This is used for read path
 
     /**
      * Creates a {@link SuffixTableSharedData}. See also {@link #fromBytes(byte[])}.
      */
     public SuffixTableSharedData(int tablePrefix) {
         mTablePrefix = tablePrefix;
+        mEntryValueSizeInBytes = 0;
+        mNumberOfEntryValues = 0;
+        mHeaderByteOffsetToRead = 0;
+        mSharedDataToRead = null;
+    }
+
+    /**
+     * This constructor is used for write path
+     */
+    public SuffixTableSharedData(int tablePrefix, List<Integer> entryValues,
+            SatS2RangeFileFormat fileFormat) {
+        mSharedDataToRead = null;
+        mTablePrefix = tablePrefix;
+        mNumberOfEntryValues = entryValues.size();
+        mEntryValuesToWrite = entryValues;
+        mEntryValueSizeInBytes = fileFormat.getEntryValueSizeInBytes();
+        mHeaderByteOffsetToRead = 0;
+    }
+
+    /**
+     * This constructor is used for read path
+     */
+    public SuffixTableSharedData(TypedData sharedDataToRead, SatS2RangeFileFormat fileFormat) {
+        mSharedDataToRead = Objects.requireNonNull(sharedDataToRead);
+        int offset = 0;
+        // extract prefix value
+        mTablePrefix = mSharedDataToRead.getInt(offset);
+        offset += Integer.BYTES;
+
+        // If the size of shared data is greater than the offset, extract the number of entry
+        // values.
+        if ((offset + Integer.BYTES) < mSharedDataToRead.getSize()) {
+            mNumberOfEntryValues = mSharedDataToRead.getInt(offset);
+            mHeaderByteOffsetToRead = offset + Integer.BYTES;
+            mEntryValueSizeInBytes = fileFormat.getEntryValueSizeInBytes();
+        } else {
+            mNumberOfEntryValues = 0;
+            mHeaderByteOffsetToRead = offset;
+            mEntryValueSizeInBytes = 0;
+        }
+    }
+
+    /**
+     * This is used for read path
+     */
+    public static SuffixTableSharedData fromTypedData(TypedData sharedData,
+            SatS2RangeFileFormat fileFormat) {
+        return new SuffixTableSharedData(sharedData, fileFormat);
+    }
+
+    /**
+     * Reads the entry value at a specific position in the byte buffer and returns it.
+     *
+     * @param entryIndex The index of entry to be read.
+     * @return entry value (integer) read from the byte buffer.
+     */
+    public int getEntryValue(int entryIndex) {
+        if (mSharedDataToRead == null || entryIndex < 0 || mNumberOfEntryValues == 0) {
+            return INVALID_ENTRY_VALUE;
+        }
+
+        if (mNumberOfEntryValues == 1) {
+            entryIndex = 0;
+        }
+
+        int offset;
+        if (entryIndex < mNumberOfEntryValues) {
+            // offset = table prefix(4) + entry value count(4) + size of entry * entry index
+            offset = mHeaderByteOffsetToRead + (mEntryValueSizeInBytes * entryIndex);
+        } else {
+            return INVALID_ENTRY_VALUE;
+        }
+
+        return getValueInternal(mSharedDataToRead, mEntryValueSizeInBytes, offset);
+    }
+
+    // Entry lists to be written to a byte buffer.
+    public List<Integer> getEntryValuesToWrite() {
+        return mEntryValuesToWrite;
     }
 
     /**
@@ -44,6 +130,20 @@ public final class SuffixTableSharedData {
      */
     public int getTablePrefix() {
         return mTablePrefix;
+    }
+
+    /**
+     * Returns the number of entry values.
+     */
+    public int getNumberOfEntryValues() {
+        return mNumberOfEntryValues;
+    }
+
+    /**
+     * Returns the size of entry value in Bytes.
+     */
+    public int getEntryValueSizeInBytes() {
+        return mEntryValueSizeInBytes;
     }
 
     @Override
@@ -55,18 +155,22 @@ public final class SuffixTableSharedData {
             return false;
         }
         SuffixTableSharedData that = (SuffixTableSharedData) o;
-        return mTablePrefix == that.mTablePrefix;
+        return mTablePrefix == that.mTablePrefix
+                && mNumberOfEntryValues == that.mNumberOfEntryValues
+                && mEntryValuesToWrite.equals(that.mEntryValuesToWrite);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(mTablePrefix);
+        return Objects.hash(mTablePrefix, mNumberOfEntryValues, mEntryValuesToWrite);
     }
 
     @Override
     public String toString() {
         return "SuffixTableSharedData{"
                 + "mTablePrefix=" + mTablePrefix
+                + "mNumberOfEntries=" + mNumberOfEntryValues
+                + "mEntryValuesToWrite=" + mEntryValuesToWrite
                 + '}';
     }
 
@@ -81,5 +185,22 @@ public final class SuffixTableSharedData {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private int getValueInternal(TypedData buffer, int valueSizeBytes, int byteOffset) {
+        if (byteOffset < 0) {
+            throw new IllegalArgumentException(
+                    "byteOffset=" + byteOffset + " must not be negative");
+        }
+
+        // High bytes read first.
+        int value = 0;
+        int bytesRead = 0;
+        while (bytesRead++ < valueSizeBytes) {
+            value <<= Byte.SIZE;
+            value |= buffer.getUnsignedByte(byteOffset++);
+        }
+
+        return value;
     }
 }

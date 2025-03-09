@@ -15,12 +15,14 @@
   ~ limitations under the License
   -->
 
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:gravity="center"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
     android:paddingLeft="4dp">
 
     <LinearLayout
@@ -125,4 +127,4 @@
             android:textColor="@android:color/holo_blue_light"
             android:textSize="15dp" />
     </LinearLayout>
-</LinearLayout>
+</ScrollView>

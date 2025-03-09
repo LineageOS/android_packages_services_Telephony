@@ -16,27 +16,31 @@
 
 package com.android.services.telephony;
 
-import android.content.AttributionSource;
-import android.content.ContentResolver;
-import android.os.Process;
-import android.os.UserHandle;
-import android.telephony.TelephonyManager;
-
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.notNull;
 import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import android.content.AttributionSource;
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
 import android.content.res.Resources;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.os.Process;
+import android.os.UserHandle;
+import android.provider.Settings;
 import android.telecom.PhoneAccountHandle;
 import android.telecom.VideoProfile;
 import android.telephony.CarrierConfigManager;
+import android.telephony.TelephonyManager;
+import android.test.mock.MockContentProvider;
+import android.test.mock.MockContentResolver;
 
 import com.android.ims.ImsCall;
 import com.android.internal.telephony.Call;
@@ -70,9 +74,6 @@ public class TestTelephonyConnection extends TelephonyConnection {
     Context mMockContext;
 
     @Mock
-    ContentResolver mMockContentResolver;
-
-    @Mock
     Resources mMockResources;
 
     @Mock
@@ -96,6 +97,7 @@ public class TestTelephonyConnection extends TelephonyConnection {
     @Mock
     CarrierConfigManager mCarrierConfigManager;
 
+    private MockContentResolver mMockContentResolver;
     private boolean mIsImsConnection;
     private boolean mIsImsExternalConnection;
     private boolean mIsConferenceSupported = true;
@@ -136,6 +138,14 @@ public class TestTelephonyConnection extends TelephonyConnection {
         mMockContext = mock(Context.class);
         mMockTelephonyManager = mock(TelephonyManager.class);
         mOriginalConnection = mMockRadioConnection;
+
+        ApplicationInfo applicationInfo = new ApplicationInfo();
+        applicationInfo.targetSdkVersion = Build.VERSION_CODES.CUR_DEVELOPMENT;
+        doReturn(applicationInfo).when(mMockContext).getApplicationInfo();
+        mMockContentResolver = new MockContentResolver(mMockContext);
+        mMockContentResolver.addProvider(Settings.AUTHORITY,
+                new EmptyContentProvider(mMockContext));
+
         // Set up mMockRadioConnection and mMockPhone to contain an active call
         when(mMockRadioConnection.getState()).thenReturn(Call.State.ACTIVE);
         when(mOriginalConnection.getState()).thenReturn(Call.State.ACTIVE);
@@ -159,8 +169,7 @@ public class TestTelephonyConnection extends TelephonyConnection {
         when(mMockContext.getSystemService(Context.TELEPHONY_SERVICE))
                 .thenReturn(mMockTelephonyManager);
         when(mMockContext.getAttributionSource()).thenReturn(attributionSource);
-        when(mMockContentResolver.getUserId()).thenReturn(UserHandle.USER_CURRENT);
-        when(mMockContentResolver.getAttributionSource()).thenReturn(attributionSource);
+        when(mMockContext.getUserId()).thenReturn(UserHandle.USER_CURRENT);
         when(mMockResources.getBoolean(anyInt())).thenReturn(false);
         when(mMockPhone.getDefaultPhone()).thenReturn(mMockPhone);
         when(mMockPhone.getPhoneType()).thenReturn(PhoneConstants.PHONE_TYPE_IMS);
@@ -319,5 +328,16 @@ public class TestTelephonyConnection extends TelephonyConnection {
 
     public void setMockImsPhoneConnection(ImsPhoneConnection connection) {
         mImsPhoneConnection = connection;
+    }
+
+    static class EmptyContentProvider extends MockContentProvider {
+        EmptyContentProvider(Context context) {
+            super(context);
+        }
+
+        @Override
+        public Bundle call(String method, String request, Bundle args) {
+            return new Bundle();
+        }
     }
 }

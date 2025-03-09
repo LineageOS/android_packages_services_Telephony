@@ -15,10 +15,12 @@
  */
 
 package com.android.services.telephony;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
 import static org.junit.Assume.assumeFalse;
+import static org.junit.Assert.assertThrows;
 import static org.junit.Assume.assumeTrue;
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.anyInt;
@@ -34,7 +36,9 @@ import android.app.PropertyInvalidatedCache;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.os.OutcomeReceiver;
 import android.os.RemoteException;
+import android.platform.test.annotations.RequiresFlagsEnabled;
 import android.telecom.PhoneAccountHandle;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
@@ -43,9 +47,10 @@ import android.test.mock.MockContext;
 
 import androidx.test.runner.AndroidJUnit4;
 
-import com.android.internal.telephony.ITelephony;
 import com.android.internal.telephony.IPhoneSubInfo;
+import com.android.internal.telephony.ITelephony;
 import com.android.internal.telephony.PhoneConstants;
+import com.android.internal.telephony.flags.Flags;
 
 import org.junit.After;
 import org.junit.Before;
@@ -53,13 +58,16 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicReference;
 
 /** Unit tests for {@link TelephonyManager}. */
 @RunWith(AndroidJUnit4.class)
@@ -128,6 +136,55 @@ public class TelephonyManagerTest {
     public void tearDown() throws Exception {
         TelephonyManager.setupITelephonyForTest(null);
         TelephonyManager.disableServiceHandleCaching();
+    }
+
+    @Test
+    @RequiresFlagsEnabled(Flags.FLAG_SUPPORT_ISIM_RECORD)
+    public void testGetImsPcscfAddresses() throws Exception {
+        assumeTrue(hasFeature(PackageManager.FEATURE_TELEPHONY_SUBSCRIPTION, true));
+        List<String> pcscfs = Arrays.asList(new String[] { "1.1.1.1 ", " 2.2.2.2"});
+        when(mMockIPhoneSubInfo.getImsPcscfAddresses(anyInt(), anyString()))
+                .thenReturn(pcscfs);
+
+        List<String> actualResult = mTelephonyManager.getImsPcscfAddresses();
+
+        assertTrue(pcscfs.equals(actualResult));
+    }
+
+    @Test
+    @RequiresFlagsEnabled(Flags.FLAG_SUPPORT_ISIM_RECORD)
+    public void testGetImsPcscfAddresses_ReturnEmptyListWhenNotAvailable() throws Exception {
+        assumeTrue(hasFeature(PackageManager.FEATURE_TELEPHONY_SUBSCRIPTION, true));
+        List<String> pcscfs = new ArrayList<>();
+        when(mMockIPhoneSubInfo.getImsPcscfAddresses(anyInt(), anyString()))
+                .thenReturn(pcscfs);
+
+        List<String> actualResult = mTelephonyManager.getImsPcscfAddresses();
+
+        assertTrue(pcscfs.equals(actualResult));
+    }
+
+    @Test
+    @RequiresFlagsEnabled(Flags.FLAG_SUPPORT_ISIM_RECORD)
+    public void testGetImsPcscfAddresses_ReturnEmptyListForInvalidSubId() throws Exception {
+        assumeTrue(hasFeature(PackageManager.FEATURE_TELEPHONY_SUBSCRIPTION, true));
+        List<String> pcscfs = new ArrayList<>();
+        when(mMockIPhoneSubInfo.getImsPcscfAddresses(anyInt(), anyString()))
+                .thenThrow(new IllegalArgumentException("Invalid subscription"));
+
+        List<String> actualResult = mTelephonyManager.getImsPcscfAddresses();
+
+        assertTrue(pcscfs.equals(actualResult));
+    }
+
+    @Test
+    @RequiresFlagsEnabled(Flags.FLAG_SUPPORT_ISIM_RECORD)
+    public void testGetImsPcscfAddresses_ThrowRuntimeException() throws Exception {
+        assumeTrue(hasFeature(PackageManager.FEATURE_TELEPHONY_SUBSCRIPTION, true));
+        when(mMockIPhoneSubInfo.getImsPcscfAddresses(anyInt(), anyString()))
+                .thenThrow(new IllegalStateException("ISIM is not loaded"));
+
+        assertThrows(RuntimeException.class, () -> mTelephonyManager.getImsPcscfAddresses());
     }
 
     @Test
@@ -260,6 +317,70 @@ public class TelephonyManagerTest {
         assertEquals(null, mTelephonyManager.getSimServiceTable(PhoneConstants.APPTYPE_RUIM));
     }
 
+    @Test
+    @RequiresFlagsEnabled(Flags.FLAG_SUPPORT_ISIM_RECORD)
+    public void testGetSimServiceTableFromIsimAsByteArrayType() throws Exception {
+        assumeTrue(hasFeature(PackageManager.FEATURE_TELEPHONY_SUBSCRIPTION, true));
+        String simServiceTable = "34FA754E8390BD02";
+        Executor executor = Executors.newSingleThreadExecutor();
+        TestOutcomeReceiver<byte[], Exception> receiver = new TestOutcomeReceiver<>();
+        when(mMockIPhoneSubInfo.getIsimIst(anyInt())).thenReturn(simServiceTable);
+
+        mTelephonyManager.getSimServiceTable(
+                PhoneConstants.APPTYPE_ISIM, executor, receiver);
+
+        byte[] actualResult = receiver.getResult();
+        assertArrayEquals(hexStringToBytes(simServiceTable), actualResult);
+    }
+
+    @Test
+    @RequiresFlagsEnabled(Flags.FLAG_SUPPORT_ISIM_RECORD)
+    public void testGetSimServiceTableFromUsimAsByteArrayType() throws Exception {
+        assumeTrue(hasFeature(PackageManager.FEATURE_TELEPHONY_SUBSCRIPTION, true));
+        String simServiceTable = "34FA754E8390BD02";
+        Executor executor = Executors.newSingleThreadExecutor();
+        TestOutcomeReceiver<byte[], Exception> receiver = new TestOutcomeReceiver<>();
+        when(mMockIPhoneSubInfo.getSimServiceTable(anyInt(), anyInt()))
+                .thenReturn(simServiceTable);
+
+        mTelephonyManager.getSimServiceTable(
+                PhoneConstants.APPTYPE_USIM, executor, receiver);
+
+        byte[] actualResult = receiver.getResult();
+        assertArrayEquals(hexStringToBytes(simServiceTable), actualResult);
+    }
+
+    @Test
+    @RequiresFlagsEnabled(Flags.FLAG_SUPPORT_ISIM_RECORD)
+    public void testGetSimServiceTable_ReturnEmptyArrayWhenNotAvailable() throws Exception {
+        assumeTrue(hasFeature(PackageManager.FEATURE_TELEPHONY_SUBSCRIPTION, true));
+        Executor executor = Executors.newSingleThreadExecutor();
+        TestOutcomeReceiver<byte[], Exception> receiver = new TestOutcomeReceiver<>();
+        when(mMockIPhoneSubInfo.getSimServiceTable(anyInt(), anyInt())).thenReturn(null);
+
+        mTelephonyManager.getSimServiceTable(
+                PhoneConstants.APPTYPE_RUIM, executor, receiver);
+
+        byte[] actualResult = receiver.getResult();
+        assertArrayEquals(new byte[0], actualResult);
+    }
+
+    @Test
+    @RequiresFlagsEnabled(Flags.FLAG_SUPPORT_ISIM_RECORD)
+    public void testGetSimServiceTable_CallbackErrorIfExceptionIsThrown() throws Exception {
+        assumeTrue(hasFeature(PackageManager.FEATURE_TELEPHONY_SUBSCRIPTION, true));
+        Executor executor = Executors.newSingleThreadExecutor();
+        TestOutcomeReceiver<byte[], Exception> receiver = new TestOutcomeReceiver<>();
+        when(mMockIPhoneSubInfo.getIsimIst(anyInt()))
+                .thenThrow(new IllegalStateException("ISIM is not loaded"));
+
+        mTelephonyManager.getSimServiceTable(
+                PhoneConstants.APPTYPE_ISIM, executor, receiver);
+
+        Exception error = receiver.getError();
+        assertTrue(error instanceof IllegalStateException);
+    }
+
     private boolean hasFeature(String feature, boolean status) {
         doReturn(status)
                 .when(mPackageManager).hasSystemFeature(
@@ -294,5 +415,59 @@ public class TelephonyManagerTest {
             }
         });
 
+    }
+
+    private static class TestOutcomeReceiver<R, E extends Throwable>
+            implements OutcomeReceiver<R, E> {
+        final int mTimeoutSeconds = 3;
+        CountDownLatch mLatch = new CountDownLatch(1);
+        AtomicReference<R> mResult = new AtomicReference<>();
+        AtomicReference<E> mError = new AtomicReference<>();
+
+        public R getResult() throws InterruptedException {
+            assertTrue(mLatch.await(mTimeoutSeconds, TimeUnit.SECONDS));
+            assertNotNull(mResult.get());
+            return mResult.get();
+        }
+
+        public E getError() throws InterruptedException {
+            assertTrue(mLatch.await(mTimeoutSeconds, TimeUnit.SECONDS));
+            assertNotNull(mError.get());
+            return mError.get();
+        }
+
+        @Override
+        public void onResult(R result) {
+            mResult.set(result);
+            mLatch.countDown();
+        }
+
+        @Override
+        public void onError(E error) {
+            mError.set(error);
+            mLatch.countDown();
+        }
+    }
+
+    private static byte[] hexStringToBytes(String s) {
+        byte[] ret;
+        if (s == null) return null;
+        int sz = s.length();
+        ret = new byte[sz / 2];
+
+        for (int i = 0; i < sz; i += 2) {
+            ret[i / 2] = (byte) ((hexCharToInt(s.charAt(i)) << 4)
+                                | hexCharToInt(s.charAt(i + 1)));
+        }
+
+        return ret;
+    }
+
+    private static int hexCharToInt(char c) {
+        if (c >= '0' && c <= '9') return (c - '0');
+        if (c >= 'A' && c <= 'F') return (c - 'A' + 10);
+        if (c >= 'a' && c <= 'f') return (c - 'a' + 10);
+
+        throw new RuntimeException("invalid hex char '" + c + "'");
     }
 }

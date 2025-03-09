@@ -59,6 +59,7 @@ import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.res.Resources;
 import android.os.Build;
+import android.os.ParcelUuid;
 import android.os.PersistableBundle;
 import android.os.SystemClock;
 import android.os.UserHandle;
@@ -76,11 +77,8 @@ import android.testing.TestableLooper;
 import com.android.TelephonyTestBase;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
-import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.ServiceStateTracker;
 import com.android.internal.telephony.SignalStrengthController;
-import com.android.internal.telephony.data.DataConfigManager;
-import com.android.internal.telephony.data.DataNetworkController;
 import com.android.internal.telephony.data.DataSettingsManager;
 import com.android.internal.telephony.util.NotificationChannelController;
 
@@ -89,9 +87,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 
-import java.util.Collections;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -110,13 +106,12 @@ public class NotificationMgrTest extends TelephonyTestBase {
     private static final String MOBILE_NETWORK_SELECTION_CLASS = ".testClass";
     private static final String CARRIER_NAME = "CoolCarrier";
 
-    @Mock PhoneGlobals mApp;
+    PhoneGlobals mApp; // mPhoneGlobals alias
     @Mock StatusBarManager mStatusBarManager;
     @Mock UserManager mUserManager;
     @Mock SubscriptionManager mSubscriptionManager;
     @Mock TelecomManager mTelecomManager;
     @Mock TelephonyManager mTelephonyManager;
-    @Mock Phone mPhone;
     @Mock SharedPreferences mSharedPreferences;
     @Mock NotificationManager mNotificationManager;
     @Mock SubscriptionInfo mSubscriptionInfo;
@@ -125,20 +120,16 @@ public class NotificationMgrTest extends TelephonyTestBase {
     @Mock ServiceStateTracker mServiceStateTracker;
     @Mock ServiceState mServiceState;
     @Mock CarrierConfigManager mCarrierConfigManager;
-    @Mock DataNetworkController mDataNetworkController;
     @Mock DataSettingsManager mDataSettingsManager;
-    @Mock DataConfigManager mDataConfigManager;
     @Mock SignalStrengthController mSignalStrengthController;
 
-    private Phone[] mPhones;
     private NotificationMgr mNotificationMgr;
     private TestableLooper mTestableLooper;
 
     @Before
     public void setUp() throws Exception {
-        MockitoAnnotations.initMocks(this);
-        mPhones = new Phone[]{mPhone};
-        replaceInstance(PhoneFactory.class, "sPhones", null, mPhones);
+        super.setUp();
+        mApp = mPhoneGlobals;
         when(mPhone.getPhoneType()).thenReturn(PhoneConstants.PHONE_TYPE_GSM);
         when(mPhone.getContext()).thenReturn(mMockedContext);
         when(mMockedContext.getResources()).thenReturn(mResources);
@@ -151,10 +142,6 @@ public class NotificationMgrTest extends TelephonyTestBase {
         when(mPhone.getServiceStateTracker()).thenReturn(mServiceStateTracker);
         mServiceStateTracker.mSS = mServiceState;
         when(mPhone.getSignalStrengthController()).thenReturn(mSignalStrengthController);
-        when(mPhone.getDataNetworkController()).thenReturn(mDataNetworkController);
-        when(mDataNetworkController.getInternetDataDisallowedReasons()).thenReturn(
-                Collections.emptyList());
-        when(mDataNetworkController.getDataConfigManager()).thenReturn(mDataConfigManager);
         when(mPhone.getDataSettingsManager()).thenReturn(mDataSettingsManager);
         when(mDataSettingsManager.isDataEnabledForReason(anyInt())).thenReturn(true);
         when(mApp.getSharedPreferences(anyString(), anyInt())).thenReturn(mSharedPreferences);
@@ -409,6 +396,35 @@ public class NotificationMgrTest extends TelephonyTestBase {
     }
 
     @Test
+    public void testUpdateNetworkSelection_opportunisticSubscription_notificationNotSent()
+            throws Exception {
+        prepareResourcesForNetworkSelection();
+        when(mSubscriptionManager.getActiveSubscriptionInfo(eq(TEST_SUB_ID))).thenReturn(
+                mSubscriptionInfo);
+
+        when(mTelephonyManager.isManualNetworkSelectionAllowed()).thenReturn(true);
+        PersistableBundle config = new PersistableBundle();
+        config.putBoolean(CarrierConfigManager.KEY_OPERATOR_SELECTION_EXPAND_BOOL, true);
+        config.putBoolean(CarrierConfigManager.KEY_HIDE_CARRIER_NETWORK_SETTINGS_BOOL, false);
+        config.putBoolean(CarrierConfigManager.KEY_CSP_ENABLED_BOOL, false);
+        config.putBoolean(CarrierConfigManager.KEY_WORLD_PHONE_BOOL, true);
+        when(mCarrierConfigManager.getConfigForSubId(TEST_SUB_ID)).thenReturn(config);
+
+        when(mSubscriptionInfo.isOpportunistic()).thenReturn(true);
+        when(mSubscriptionInfo.getGroupUuid()).thenReturn(
+                ParcelUuid.fromString("5be5c5f3-3412-452e-86a0-6f18558ae8c8"));
+
+        mNotificationMgr.updateNetworkSelection(ServiceState.STATE_OUT_OF_SERVICE, TEST_SUB_ID);
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException ignored) {
+        }
+        mNotificationMgr.updateNetworkSelection(ServiceState.STATE_OUT_OF_SERVICE, TEST_SUB_ID);
+
+        verify(mNotificationManager, never()).notify(any(), anyInt(), any());
+    }
+
+    @Test
     public void testUpdateNetworkSelection_worldMode_userSetLTE_notificationNotSent() {
         prepareResourcesForNetworkSelection();
 
@@ -632,6 +648,8 @@ public class NotificationMgrTest extends TelephonyTestBase {
         when(mApp.getString(R.string.mobile_network_settings_class)).thenReturn(
                 MOBILE_NETWORK_SELECTION_CLASS);
         when(mSubscriptionManager.isActiveSubId(anyInt())).thenReturn(true);
+        when(mSubscriptionManager.getActiveSubscriptionInfo(eq(TEST_SUB_ID))).thenReturn(
+                mSubscriptionInfo);
     }
 
     private void moveTimeForward(long seconds) {

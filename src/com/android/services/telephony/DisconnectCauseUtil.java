@@ -1046,7 +1046,7 @@ public class DisconnectCauseUtil {
     }
 
     private static Integer getSatelliteErrorString() {
-        if (SatelliteController.getInstance().isSatelliteEnabled()) {
+        if (SatelliteController.getInstance().isSatelliteEnabledOrBeingEnabled()) {
             return R.string.incall_error_satellite_enabled;
         }
         return R.string.incall_error_carrier_roaming_satellite_mode;

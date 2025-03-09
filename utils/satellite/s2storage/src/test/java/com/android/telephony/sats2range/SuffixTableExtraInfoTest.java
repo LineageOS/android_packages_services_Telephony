@@ -20,9 +20,9 @@ import static org.junit.Assert.assertEquals;
 
 import com.android.storage.block.read.BlockInfo;
 import com.android.storage.block.write.BlockWriter;
-import com.android.storage.s2.S2LevelRange;
 import com.android.telephony.sats2range.read.SatS2RangeFileFormat;
 import com.android.telephony.sats2range.read.SuffixTableExtraInfo;
+import com.android.telephony.sats2range.read.SuffixTableRange;
 import com.android.telephony.sats2range.read.SuffixTableSharedData;
 import com.android.telephony.sats2range.utils.TestUtils;
 import com.android.telephony.sats2range.write.SuffixTableWriter;
@@ -54,13 +54,13 @@ public class SuffixTableExtraInfoTest {
                 SuffixTableWriter.createPopulated(fileFormat, suffixTableSharedData);
 
         int tablePrefix = suffixTableSharedData.getTablePrefix();
-        S2LevelRange range1 = new S2LevelRange(
+        SuffixTableRange range1 = new SuffixTableRange(
                 fileFormat.createCellId(tablePrefix, 1000),
                 fileFormat.createCellId(tablePrefix, 1001));
-        S2LevelRange range2 = new S2LevelRange(
+        SuffixTableRange range2 = new SuffixTableRange(
                 fileFormat.createCellId(tablePrefix, 1002),
                 fileFormat.createCellId(tablePrefix, 1003));
-        S2LevelRange range3 = new S2LevelRange(
+        SuffixTableRange range3 = new SuffixTableRange(
                 fileFormat.createCellId(tablePrefix, 1004),
                 fileFormat.createCellId(tablePrefix, 1005));
 

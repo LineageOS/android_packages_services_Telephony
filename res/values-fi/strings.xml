@@ -600,10 +600,10 @@
     <string name="failedToImportSingleContactMsg" msgid="228095510489830266">"Kontaktin tuominen epäonnistui"</string>
     <string name="hac_mode_title" msgid="4127986689621125468">"Kuulolaitteet"</string>
     <string name="hac_mode_summary" msgid="7774989500136009881">"Ota kuulolaitteen yhteensopivuustoiminto käyttöön"</string>
-    <string name="rtt_mode_title" msgid="3075948111362818043">"RTT-puhelu (puhelusta lähetettävä teksti)"</string>
+    <string name="rtt_mode_title" msgid="3075948111362818043">"RTT-puhelu (reaaliaikainen tekstinsyöttö)"</string>
     <string name="rtt_mode_summary" msgid="8631541375609989562">"Salli viestit äänipuheluissa"</string>
     <string name="rtt_mode_more_information" msgid="587500128658756318">"RTT-toiminto auttaa kuuroja sekä käyttäjiä, joilla on kuulo‑ tai puhehäiriöitä tai jotka tarvitsevat muuta tukea pelkän puheen lisäksi.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Lisätietoja&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; – RTT-puhelut tallennetaan litterointiviestinä.\n       &lt;br&gt; – RTT ei ole käytettävissä videopuheluissa."</string>
-    <string name="no_rtt_when_roaming" msgid="5268008247378355389">"Huom. Puhelusta lähetettävä teksti (RTT) ei ole käytettävissä roaming-tilassa"</string>
+    <string name="no_rtt_when_roaming" msgid="5268008247378355389">"Huom. Reaaliaikainen tekstinsyöttö (RTT) ei ole käytettävissä roaming-tilassa"</string>
   <string-array name="tty_mode_entries">
     <item msgid="3238070884803849303">"TTY pois käytöstä"</item>
     <item msgid="1449091874731375214">"TTY täynnä"</item>

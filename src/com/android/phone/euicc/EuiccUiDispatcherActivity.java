@@ -28,8 +28,8 @@ import android.os.Bundle;
 import android.os.UserHandle;
 import android.permission.LegacyPermissionManager;
 import android.service.euicc.EuiccService;
+import android.telephony.TelephonyManager;
 import android.telephony.euicc.EuiccManager;
-import android.text.TextUtils;
 import android.util.Log;
 
 import com.android.internal.annotations.VisibleForTesting;
@@ -59,8 +59,6 @@ public class EuiccUiDispatcherActivity extends Activity {
     private LegacyPermissionManager mPermissionManager;
     private boolean mGrantPermissionDone = false;
     private ThreadPoolExecutor mExecutor;
-    // Used for CTS EuiccManager action verification
-    private static ComponentName mTestEuiccUiComponentName;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -97,18 +95,6 @@ public class EuiccUiDispatcherActivity extends Activity {
         }
     }
 
-    /**
-    * This API used to set the Test EuiccUiComponent for CTS
-    * @param packageName package which handles the intent
-    * @param componentName ui component to be launched for testing
-    */
-    public static void setTestEuiccUiComponent(String packageName, String componentName) {
-        mTestEuiccUiComponentName = null;
-        if (!TextUtils.isEmpty(packageName) && !TextUtils.isEmpty(componentName)) {
-            mTestEuiccUiComponentName = new ComponentName(packageName, componentName);
-        }
-    }
-
     @VisibleForTesting
     @Nullable
     Intent resolveEuiccUiIntent() {
@@ -124,10 +110,11 @@ public class EuiccUiDispatcherActivity extends Activity {
             return null;
         }
 
-        if (mTestEuiccUiComponentName != null) {
-            Log.i(TAG, "Test mode");
-            euiccUiIntent.setComponent(mTestEuiccUiComponentName);
-            mTestEuiccUiComponentName = null;
+        ComponentName testEuiccUiComponent = ((TelephonyManager)
+                getSystemService(Context.TELEPHONY_SERVICE)).getTestEuiccUiComponent();
+        if (testEuiccUiComponent != null) {
+            Log.i(TAG, "Test mode: " + testEuiccUiComponent);
+            euiccUiIntent.setComponent(testEuiccUiComponent);
             return euiccUiIntent;
         }
 

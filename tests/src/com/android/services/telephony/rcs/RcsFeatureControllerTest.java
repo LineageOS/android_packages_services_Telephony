@@ -45,6 +45,7 @@ import com.android.TelephonyTestBase;
 import com.android.ims.FeatureConnector;
 import com.android.ims.RcsFeatureManager;
 import com.android.internal.telephony.imsphone.ImsRegistrationCallbackHelper;
+import com.android.phone.ImsStateCallbackController;
 
 import org.junit.After;
 import org.junit.Before;
@@ -84,6 +85,9 @@ public class RcsFeatureControllerTest extends TelephonyTestBase {
     @Before
     public void setUp() throws Exception {
         super.setUp();
+
+        replaceInstance(ImsStateCallbackController.class, "sInstance", null,
+                mock(ImsStateCallbackController.class));
     }
 
     @After

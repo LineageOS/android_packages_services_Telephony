@@ -24,6 +24,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.service.euicc.EuiccService;
+import android.telephony.TelephonyManager;
 import android.telephony.euicc.EuiccManager;
 
 import androidx.test.InstrumentationRegistry;
@@ -50,6 +51,7 @@ public class EuiccUiDispatcherActivityTest {
 
     @Mock private Context mMockContext;
     @Mock private EuiccManager mMockEuiccManager;
+    @Mock private TelephonyManager mTelephonyManager;
     private ActivityInfo mActivityInfo = ACTIVITY_INFO;
     private Intent mIntent = MANAGE_INTENT;
     private EuiccUiDispatcherActivity mActivity;
@@ -59,6 +61,8 @@ public class EuiccUiDispatcherActivityTest {
         MockitoAnnotations.initMocks(this);
         when(mMockEuiccManager.isEnabled()).thenReturn(true);
         when(mMockContext.getSystemService(Context.EUICC_SERVICE)).thenReturn(mMockEuiccManager);
+        when(mMockContext.getSystemService(Context.TELEPHONY_SERVICE))
+                .thenReturn(mTelephonyManager);
         InstrumentationRegistry.getInstrumentation().runOnMainSync(
                 new Runnable() {
                     @Override

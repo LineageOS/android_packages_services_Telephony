@@ -86,8 +86,8 @@
     <string name="voicemail_notifications_preference_title" msgid="7829238858063382977">"Билдирмелер"</string>
     <string name="cell_broadcast_settings" msgid="8135324242541809924">"Өзгөчө кырдаал тууралуу кулактандыруу"</string>
     <string name="call_settings" msgid="3677282690157603818">"Чалуу параметрлери"</string>
-    <string name="additional_gsm_call_settings" msgid="1561980168685658846">"Кошумча жөндөөлөр"</string>
-    <string name="additional_gsm_call_settings_with_label" msgid="7973920539979524908">"Кошумча жөндөөлөр (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
+    <string name="additional_gsm_call_settings" msgid="1561980168685658846">"Кошумча параметрлер"</string>
+    <string name="additional_gsm_call_settings_with_label" msgid="7973920539979524908">"Кошумча параметрлер (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="sum_gsm_call_settings" msgid="7964692601608878138">"GSM менен гана чалуунун кошумча параметрлери"</string>
     <string name="additional_cdma_call_settings" msgid="2178016561980611304">"Кошумча CDMA чалуунун параметрлери"</string>
     <string name="sum_cdma_call_settings" msgid="3185825305136993636">"CDMA менен гана чалуунун кошумча параметрлери"</string>

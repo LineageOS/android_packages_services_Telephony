@@ -140,7 +140,10 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
 
         if (subId == getSubId()) {
             logd("NormalCallDomainSelection triggered. Sub-id:" + subId);
-            sendEmptyMessageDelayed(MSG_WAIT_FOR_IMS_STATE_TIMEOUT, WAIT_FOR_IMS_STATE_TIMEOUT_MS);
+            if (!mReselectDomain) {
+                sendEmptyMessageDelayed(MSG_WAIT_FOR_IMS_STATE_TIMEOUT,
+                        WAIT_FOR_IMS_STATE_TIMEOUT_MS);
+            }
             post(() -> selectDomain());
         } else {
             mSelectorState = SelectorState.INACTIVE;

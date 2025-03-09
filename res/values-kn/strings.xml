@@ -436,7 +436,7 @@
     <item msgid="7970797749269738435">"1"</item>
   </string-array>
     <string name="cdma_activate_device" msgid="5914720276140097632">"ಸಾಧನವನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ"</string>
-    <string name="cdma_lte_data_service" msgid="359786441782404562">"ಡೇಟಾ ಸೇವೆಯನ್ನು ಹೊಂದಿಸಿ"</string>
+    <string name="cdma_lte_data_service" msgid="359786441782404562">"ಡೇಟಾ ಸೇವೆಯನ್ನು ಸೆಟಪ್ ಮಾಡಿ"</string>
     <string name="carrier_settings_title" msgid="6292869148169850220">"ವಾಹಕ ಸೆಟ್ಟಿಂಗ್‌ಗಳು"</string>
     <string name="fdn" msgid="2545904344666098749">"ಸ್ಥಿರ ಡಯಲಿಂಗ್‌‌ ಸಂಖ್ಯೆಗಳು"</string>
     <string name="fdn_with_label" msgid="6412087553365709494">"ಸ್ಥಿರ ಡಯಲ್ ಸಂಖ್ಯೆಗಳು (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -456,7 +456,7 @@
     <string name="voice_privacy" msgid="7346935172372181951">"ಧ್ವನಿ ಗೌಪ್ಯತೆ"</string>
     <string name="voice_privacy_summary" msgid="3556460926168473346">"ಗೌಪ್ಯತೆ ವರ್ಧಿತ ಮೋಡ್ ಅನ್ನು ಸಕ್ರಿಯಗೊಳಿಸು"</string>
     <string name="tty_mode_option_title" msgid="3843817710032641703">"TTY ಮೋಡ್‌"</string>
-    <string name="tty_mode_option_summary" msgid="4770510287236494371">"TTY ಮೋಡ್‌ ಹೊಂದಿಸಿ"</string>
+    <string name="tty_mode_option_summary" msgid="4770510287236494371">"TTY ಮೋಡ್‌ ಸೆಟ್ ಮಾಡಿ"</string>
     <string name="auto_retry_mode_title" msgid="2985801935424422340">"ಸ್ವಯಂ-ಮರುಪ್ರಯತ್ನಿಸುವಿಕೆ"</string>
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"ಸ್ವಯಂ ಮರುಪ್ರಯತ್ನಿಸುವಿಕೆ ಮೋಡ್‌‌ ಅನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"TTY ಮೋಡ್ ವೀಡಿಯೊ ಕರೆಯ ಸಂದರ್ಭದಲ್ಲಿ ಅನುಮತಿಸಲಾಗುವುದಿಲ್ಲ"</string>
@@ -495,7 +495,7 @@
     <string name="mismatchPin" msgid="1467254768290323845">"ನೀವು ಟೈಪ್‌ ಮಾಡಿದ ಪಿನ್‌ ಗಳು ಹೊಂದಿಕೆಯಾಗುವುದಿಲ್ಲ. ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ."</string>
     <string name="invalidPin" msgid="7363723429414001979">"4 ರಿಂದ 8 ಸಂಖ್ಯೆಗಳಿರುವ ಪಿನ್‌ ಟೈಪ್ ಮಾಡಿ."</string>
     <string name="disable_sim_pin" msgid="3112303905548613752">"SIM PIN ತೆರವುಗೊಳಿಸಿ"</string>
-    <string name="enable_sim_pin" msgid="445461050748318980">"SIM PIN ಹೊಂದಿಸಿ"</string>
+    <string name="enable_sim_pin" msgid="445461050748318980">"SIM PIN ಸೆಟ್ ಮಾಡಿ"</string>
     <string name="enable_in_progress" msgid="4135305985717272592">"PIN ಹೊಂದಿಸಲಾಗುತ್ತಿದೆ…"</string>
     <string name="enable_pin_ok" msgid="2877428038280804256">"PIN ಹೊಂದಿಸಲಾಗಿದೆ"</string>
     <string name="disable_pin_ok" msgid="888505244389647754">"PIN ತೆರವುಗೊಳಿಸಲಾಗಿದೆ"</string>
@@ -597,7 +597,7 @@
     <string name="importingSimContacts" msgid="4995457122107888932">"ಸಿಮ್‌ ಸಂಪರ್ಕಗಳನ್ನು ಆಮದು ಮಾಡಲಾಗುತ್ತಿದೆ"</string>
     <string name="importToFDNfromContacts" msgid="5068664870738407341">"ಸಂಪರ್ಕಗಳಿಂದ ಆಮದು ಮಾಡು"</string>
     <string name="singleContactImportedMsg" msgid="3619804066300998934">"ಆಮದು ಮಾಡಿದ ಸಂಪರ್ಕ"</string>
-    <string name="failedToImportSingleContactMsg" msgid="228095510489830266">"ಸಂಪರ್ಕ ಆಮದು ಮಾಡುವಲ್ಲಿ ವಿಫಲವಾಗಿದೆ"</string>
+    <string name="failedToImportSingleContactMsg" msgid="228095510489830266">"ಸಂಪರ್ಕವನ್ನು ಇಂಪೋರ್ಟ್ ಮಾಡಲು ವಿಫಲವಾಗಿದೆ"</string>
     <string name="hac_mode_title" msgid="4127986689621125468">"ಕೇಳುವಿಕೆ ಸಾಧನಗಳು"</string>
     <string name="hac_mode_summary" msgid="7774989500136009881">"ಶ್ರವಣ ಸಾಧನ ಹೊಂದಾಣಿಕೆಯನ್ನು ಆನ್‌ ಮಾಡಿ"</string>
     <string name="rtt_mode_title" msgid="3075948111362818043">"ನೈಜ-ಸಮಯ ಪಠ್ಯ (RTT) ಕರೆ"</string>
@@ -611,7 +611,7 @@
     <item msgid="2131559553795606483">"TTY VCO"</item>
   </string-array>
     <string name="dtmf_tones_title" msgid="7874845461117175236">"DTMF ಟೋನ್‌ಗಳು"</string>
-    <string name="dtmf_tones_summary" msgid="2294822239899471201">"DTMF ಟೋನ್‌ಗಳ ಅಳತೆಯನ್ನು ಹೊಂದಿಸಿ"</string>
+    <string name="dtmf_tones_summary" msgid="2294822239899471201">"DTMF ಟೋನ್‌ಗಳ ಅಳತೆಯನ್ನು ಸೆಟ್ ಮಾಡಿ"</string>
   <string-array name="dtmf_tone_entries">
     <item msgid="2271798469250155310">"ಸಾಮಾನ್ಯ"</item>
     <item msgid="6044210222666533564">"ದೀರ್ಘವಾದ"</item>
@@ -666,7 +666,7 @@
     <string name="description_dialpad_button" msgid="7395114120463883623">"ಡಯಲ್‌ಪ್ಯಾಡ್ ತೋರಿಸಿ"</string>
     <string name="pane_title_emergency_dialpad" msgid="3627372514638694401">"ತುರ್ತು ಡಯಲ್‌ಪ್ಯಾಡ್‌"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="6610414098912832120">"ದೃಶ್ಯ ಧ್ವನಿಮೇಲ್"</string>
-    <string name="voicemail_set_pin_dialog_title" msgid="7005128605986960003">"ಪಿನ್ ಹೊಂದಿಸಿ"</string>
+    <string name="voicemail_set_pin_dialog_title" msgid="7005128605986960003">"ಪಿನ್ ಸೆಟ್ ಮಾಡಿ"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="4633077715231764435">"ಪಿನ್ ಬದಲಾಯಿಸಿ"</string>
     <string name="preference_category_ringtone" msgid="8787281191375434976">"ರಿಂಗ್‌ಟೋನ್‌‌ &amp; ವೈಬ್ರೇಟ್‌"</string>
     <string name="pstn_connection_service_label" msgid="9200102709997537069">"ಅಂತರ್-ರಚಿತ ಸಿಮ್‌ ಕಾರ್ಡ್‌ಗಳು"</string>
@@ -695,7 +695,7 @@
     <string name="change_pin_ok_label" msgid="6861082678817785330">"ಸರಿ"</string>
     <string name="change_pin_enter_old_pin_header" msgid="853151335217594829">"ನಿಮ್ಮ ಹಳೆಯ ಪಿನ್‌ ಅನ್ನು ದೃಢೀಕರಿಸಿ"</string>
     <string name="change_pin_enter_old_pin_hint" msgid="8801292976275169367">"ಮುಂದುವರಿಸಲು ನಿಮ್ಮ ಧ್ವನಿಮೇಲ್ ಪಿನ್ ಅನ್ನು ನಮೂದಿಸಿ."</string>
-    <string name="change_pin_enter_new_pin_header" msgid="4739465616733486118">"ಹೊಸ ಪಿನ್ ಹೊಂದಿಸಿ"</string>
+    <string name="change_pin_enter_new_pin_header" msgid="4739465616733486118">"ಹೊಸ ಪಿನ್ ಸೆಟ್ ಮಾಡಿ"</string>
     <string name="change_pin_enter_new_pin_hint" msgid="2326038476516364210">"ಪಿನ್ <xliff:g id="MIN">%1$d</xliff:g>-<xliff:g id="MAX">%2$d</xliff:g> ಅಂಕಿಗಳನ್ನು ಹೊಂದಿರಬೇಕು."</string>
     <string name="change_pin_confirm_pin_header" msgid="2606303906320705726">"ನಿಮ್ಮ ಪಿನ್‌ ಅನ್ನು ದೃಢೀಕರಿಸಿ"</string>
     <string name="change_pin_confirm_pins_dont_match" msgid="305164501222587215">"ಪಿನ್‌ಗಳು ಹೊಂದಾಣಿಕೆಯಾಗುವುದಿಲ್ಲ"</string>
@@ -908,7 +908,7 @@
     <string name="radio_info_data_raw_registration_state_label" msgid="2895895513822604539">"ಡೇಟಾ ರಾ ರಿಜಿಸ್ಟ್ರೇಷನ್‌ ಸ್ಟೇಟ್‌:"</string>
     <string name="radio_info_wlan_data_raw_registration_state_label" msgid="6396894835757296612">"WLAN ಡೇಟಾ ರಾ ರಿಜಿಸ್ಟ್ರೇಷನ್‌ ಸ್ಟೇಟ್‌:"</string>
     <string name="phone_index_label" msgid="6222406512768964268">"ಫೋನ್ ಸೂಚಿಕೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ"</string>
-    <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"ಆದ್ಯತೆಯ ನೆಟ್‌ವರ್ಕ್‌ ಪ್ರಕಾರವನ್ನು ಹೊಂದಿಸಿ:"</string>
+    <string name="radio_info_set_perferred_label" msgid="7408131389363136210">"ಆದ್ಯತೆಯ ನೆಟ್‌ವರ್ಕ್‌ ಪ್ರಕಾರವನ್ನು ಸೆಟ್ ಮಾಡಿ:"</string>
     <string name="radio_info_ping_hostname_v4" msgid="6951237885381284790">"ಹೋಸ್ಟ್‌ ಹೆಸರನ್ನು ಪಿಂಗ್ ಮಾಡಿ(www.google.com) IPv4:"</string>
     <string name="radio_info_ping_hostname_v6" msgid="2748637889486554603">"ಹೋಸ್ಟ್‌ ಹೆಸರನ್ನು ಪಿಂಗ್ ಮಾಡಿ(www.google.com) IPv6:"</string>
     <string name="radio_info_http_client_test" msgid="1329583721088428238">"HTTP ಕ್ಲೈಂಟ್ ಪರೀಕ್ಷೆ:"</string>
@@ -922,9 +922,9 @@
     <string name="radio_info_nr_available" msgid="3383388088451237182">"NR ಲಭ್ಯವಿದೆ (NSA):"</string>
     <string name="radio_info_nr_state" msgid="4158805093187555149">"NR ಸ್ಥಿತಿ (NSA):"</string>
     <string name="radio_info_nr_frequency" msgid="1201156032796584128">"NR ಫ್ರೀಕ್ವೆನ್ಸಿ:"</string>
-    <string name="band_mode_title" msgid="7988822920724576842">"ರೇಡಿಯೋ ಬ್ಯಾಂಡ್ ಮೋಡ್ ಹೊಂದಿಸಿ"</string>
+    <string name="band_mode_title" msgid="7988822920724576842">"ರೇಡಿಯೋ ಬ್ಯಾಂಡ್ ಮೋಡ್ ಸೆಟ್ ಮಾಡಿ"</string>
     <string name="band_mode_loading" msgid="795923726636735967">"ಬ್ಯಾಂಡ್ ಪಟ್ಟಿಯನ್ನು ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ…"</string>
-    <string name="band_mode_set" msgid="6657819412803771421">"ಹೊಂದಿಸಿ"</string>
+    <string name="band_mode_set" msgid="6657819412803771421">"ಸೆಟ್ ಮಾಡಿ"</string>
     <string name="band_mode_failed" msgid="1707488541847192924">"ವಿಫಲಗೊಂಡಿದೆ"</string>
     <string name="band_mode_succeeded" msgid="2230018000534761063">"ಯಶಸ್ವಿಯಾಗಿದೆ"</string>
     <string name="phone_info_label" product="tablet" msgid="7477478709388477397">"ಟ್ಯಾಬ್ಲೆಟ್ ಮಾಹಿತಿ"</string>

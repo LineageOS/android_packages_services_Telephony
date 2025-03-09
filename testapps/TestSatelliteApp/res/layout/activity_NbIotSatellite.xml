@@ -15,79 +15,86 @@
   ~ limitations under the License
   -->
 
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:gravity="center"
-    android:paddingStart="4dp"
-    android:paddingEnd="4dp">
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:paddingLeft="4dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="0"
-        android:textColor="@android:color/holo_blue_dark"
-        android:textSize="20sp"
-        android:text="@string/NbIotSatellite"/>
-    <Button
-        android:id="@+id/testRegisterForSupportedStateChanged"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingStart="4dp"
-        android:paddingEnd="4dp"
-        android:text="@string/testRegisterForSupportedStateChanged"/>
-    <Button
-        android:id="@+id/testUnregisterForSupportedStateChanged"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingStart="4dp"
-        android:paddingEnd="4dp"
-        android:text="@string/testUnregisterForSupportedStateChanged"/>
-    <Button
-        android:id="@+id/testRequestIsSupported"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingStart="4dp"
-        android:paddingEnd="4dp"
-        android:text="@string/testRequestIsSupported"/>
-     <Button
-        android:id="@+id/reportSatelliteSupportedFromModem"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingStart="4dp"
-        android:paddingEnd="4dp"
-        android:text="@string/reportSatelliteSupportedFromModem"/>
-    <Button
-        android:id="@+id/reportSatelliteNotSupportedFromModem"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingStart="4dp"
-        android:paddingEnd="4dp"
-        android:text="@string/reportSatelliteNotSupportedFromModem"/>
-    <Button
-        android:id="@+id/showCurrentSatelliteSupportedStated"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingStart="4dp"
-        android:paddingEnd="4dp"
-        android:text="@string/showCurrentSatelliteSupportedStated"/>
-    <Button
-        android:id="@+id/Back"
-        android:onClick="Back"
-        android:textColor="@android:color/holo_blue_dark"
-        android:layout_marginTop="100dp"
-        android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingStart="4dp"
-        android:paddingEnd="4dp"
-        android:text="@string/Back"/>
-    <TextView
-        android:id="@+id/text_id"
-        android:layout_width="300dp"
-        android:layout_height="200dp"
-        android:textColor="@android:color/holo_blue_light"
-        android:textSize="15sp" />
-</LinearLayout>
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="0"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textSize="20sp"
+            android:text="@string/NbIotSatellite"/>
+        <Button
+            android:id="@+id/testRegisterForSupportedStateChanged"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:text="@string/testRegisterForSupportedStateChanged"/>
+        <Button
+            android:id="@+id/testUnregisterForSupportedStateChanged"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:text="@string/testUnregisterForSupportedStateChanged"/>
+        <Button
+            android:id="@+id/testRequestIsSupported"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:text="@string/testRequestIsSupported"/>
+         <Button
+            android:id="@+id/reportSatelliteSupportedFromModem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:text="@string/reportSatelliteSupportedFromModem"/>
+        <Button
+            android:id="@+id/reportSatelliteNotSupportedFromModem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:text="@string/reportSatelliteNotSupportedFromModem"/>
+        <Button
+            android:id="@+id/showCurrentSatelliteSupportedStated"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:text="@string/showCurrentSatelliteSupportedStated"/>
+        <Button
+            android:id="@+id/Back"
+            android:onClick="Back"
+            android:textColor="@android:color/holo_blue_dark"
+            android:layout_marginTop="100dp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:text="@string/Back"/>
+        <TextView
+            android:id="@+id/text_id"
+            android:layout_width="300dp"
+            android:layout_height="200dp"
+            android:textColor="@android:color/holo_blue_light"
+            android:textSize="15sp" />
+    </LinearLayout>
+</ScrollView>

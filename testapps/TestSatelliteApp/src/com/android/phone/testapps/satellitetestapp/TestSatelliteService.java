@@ -60,7 +60,7 @@ public class TestSatelliteService extends SatelliteImplBase {
     private static final int SATELLITE_ALWAYS_VISIBLE = 0;
     /** SatelliteCapabilities constant indicating that the radio technology is proprietary. */
     private static final int[] SUPPORTED_RADIO_TECHNOLOGIES =
-            new int[]{NTRadioTechnology.PROPRIETARY};
+            new int[]{NTRadioTechnology.NB_IOT_NTN};
     /** SatelliteCapabilities constant indicating that pointing to satellite is required. */
     private static final boolean POINTING_TO_SATELLITE_REQUIRED = true;
     /** SatelliteCapabilities constant indicating the maximum number of characters per datagram. */
@@ -208,14 +208,14 @@ public class TestSatelliteService extends SatelliteImplBase {
 
     private void enableSatellite(@NonNull IIntegerConsumer errorCallback) {
         mIsEnabled = true;
-        updateSatelliteModemState(SatelliteModemState.SATELLITE_MODEM_STATE_IDLE);
         runWithExecutor(() -> errorCallback.accept(SatelliteResult.SATELLITE_RESULT_SUCCESS));
+        updateSatelliteModemState(SatelliteModemState.SATELLITE_MODEM_STATE_IN_SERVICE);
     }
 
     private void disableSatellite(@NonNull IIntegerConsumer errorCallback) {
         mIsEnabled = false;
-        updateSatelliteModemState(SatelliteModemState.SATELLITE_MODEM_STATE_OFF);
         runWithExecutor(() -> errorCallback.accept(SatelliteResult.SATELLITE_RESULT_SUCCESS));
+        updateSatelliteModemState(SatelliteModemState.SATELLITE_MODEM_STATE_OFF);
     }
 
     @Override
@@ -494,6 +494,7 @@ public class TestSatelliteService extends SatelliteImplBase {
      * @param modemState The {@link SatelliteModemState} to update.
      */
     private void updateSatelliteModemState(int modemState) {
+        logd("updateSatelliteModemState: new modemState=" + modemState);
         if (modemState == mModemState) {
             return;
         }

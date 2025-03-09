@@ -44,8 +44,8 @@
     <string name="pause_prompt_yes" msgid="8184132073048369575">"Sim"</string>
     <string name="pause_prompt_no" msgid="2145264674774138579">"Não"</string>
     <string name="wild_prompt_str" msgid="5858910969703305375">"Substituir caractere curinga por"</string>
-    <string name="no_vm_number" msgid="6623853880546176930">"Número correio de voz ausente"</string>
-    <string name="no_vm_number_msg" msgid="5165161462411372504">"Não há um número correio de voz armazenado no chip."</string>
+    <string name="no_vm_number" msgid="6623853880546176930">"Não há um número do correio de voz"</string>
+    <string name="no_vm_number_msg" msgid="5165161462411372504">"Não há um número do correio de voz armazenado no chip."</string>
     <string name="add_vm_number_str" msgid="7368168964435881637">"Adicionar número"</string>
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"As configurações do correio de voz só podem ser modificadas pelo usuário principal."</string>
     <string name="puk_unlocked" msgid="4627340655215746511">"O seu chip foi desbloqueado. O seu telefone está desbloqueando…"</string>
@@ -157,7 +157,7 @@
     <item msgid="6813323051965618926">"Ocultar número"</item>
     <item msgid="9150034130629852635">"Mostrar número"</item>
   </string-array>
-    <string name="vm_changed" msgid="4739599044379692505">"Número correio de voz alterado."</string>
+    <string name="vm_changed" msgid="4739599044379692505">"Número do correio de voz alterado."</string>
     <string name="vm_change_failed" msgid="7877733929455763566">"Não foi possível alterar o número do correio de voz.\nEntre em contato com sua operadora se o problema persistir."</string>
     <string name="fw_change_failed" msgid="9179241823460192148">"Não foi possível alterar o número de encaminhamento.\nEntre em contato com sua operadora se o problema persistir."</string>
     <string name="fw_get_in_vm_failed" msgid="2432678237218183844">"Não foi possível recuperar e salvar as configurações de número atual de encaminhamento.\nMudar para o novo provedor?"</string>
@@ -521,7 +521,7 @@
     <string name="pin2_unblocked" msgid="4481107908727789303">"PIN2 não mais bloqueado"</string>
     <string name="pin2_error_exception" msgid="8116103864600823641">"Erro de rede ou do chip"</string>
     <string name="doneButton" msgid="7371209609238460207">"Concluído"</string>
-    <string name="voicemail_settings_number_label" msgid="1265118640154688162">"Número correio de voz"</string>
+    <string name="voicemail_settings_number_label" msgid="1265118640154688162">"Número do correio de voz"</string>
     <string name="card_title_dialing" msgid="8742182654254431781">"Chamando..."</string>
     <string name="card_title_redialing" msgid="18130232613559964">"Rediscando"</string>
     <string name="card_title_conf_call" msgid="901197309274457427">"Teleconferência"</string>
@@ -533,7 +533,7 @@
     <string name="notification_voicemail_title" msgid="3932876181831601351">"Novo correio de voz"</string>
     <string name="notification_voicemail_title_count" msgid="2806950319222327082">"Novo correio de voz (<xliff:g id="COUNT">%d</xliff:g>)"</string>
     <string name="notification_voicemail_text_format" msgid="5720947141702312537">"Discar <xliff:g id="VOICEMAIL_NUMBER">%s</xliff:g>"</string>
-    <string name="notification_voicemail_no_vm_number" msgid="3423686009815186750">"Número correio de voz desconhecido"</string>
+    <string name="notification_voicemail_no_vm_number" msgid="3423686009815186750">"Número do correio de voz desconhecido"</string>
     <string name="notification_network_selection_title" msgid="255595526707809121">"Sem serviço"</string>
     <string name="notification_network_selection_text" msgid="553288408722427659">"A rede selecionada (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) não está disponível"</string>
     <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Ative a rede móvel e desative o modo avião ou o modo de economia de bateria para ligar."</string>

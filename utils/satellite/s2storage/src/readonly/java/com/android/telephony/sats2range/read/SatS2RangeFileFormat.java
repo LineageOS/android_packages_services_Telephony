@@ -53,6 +53,10 @@ public final class SatS2RangeFileFormat {
     /** The format version of the satellite S2 data file, read and written. */
     public static final int VERSION = 1;
 
+    private static final int DEFAULT_ENTRY_VALUE_SIZE_IN_BYTES = 0;
+    private static final int DEFAULT_VERSION_NUMBER = 0;
+    private static final int MAX_ENTRY_BYTE_COUNT = 4;
+
     private final int mDataS2Level;
 
     private final int mPrefixBitCount;
@@ -87,11 +91,28 @@ public final class SatS2RangeFileFormat {
     private final boolean mIsAllowedList;
 
     /**
+     * Entry value size in bytes
+     */
+    private final int mEntryValueSizeInBytes;
+
+    /**
+     * Version number
+     */
+    private final int mVersionNumber;
+
+    public SatS2RangeFileFormat(int s2Level, int prefixBitCount, int suffixBitCount,
+            int suffixTableBlockIdOffset, int tableEntryBitCount, boolean isAllowedList) {
+        this(s2Level, prefixBitCount, suffixBitCount, suffixTableBlockIdOffset, tableEntryBitCount,
+                isAllowedList, DEFAULT_ENTRY_VALUE_SIZE_IN_BYTES, DEFAULT_VERSION_NUMBER);
+    }
+
+    /**
      * Creates a new file format. This constructor validates the values against various hard-coded
      * constraints and will throw an {@link IllegalArgumentException} if they are not satisfied.
      */
     public SatS2RangeFileFormat(int s2Level, int prefixBitCount, int suffixBitCount,
-            int suffixTableBlockIdOffset, int tableEntryBitCount, boolean isAllowedList) {
+            int suffixTableBlockIdOffset, int tableEntryBitCount, boolean isAllowedList,
+            int entryValueSizeInBytes, int versionNumber) {
 
         Conditions.checkArgInRange("s2Level", s2Level, 0, MAX_S2_LEVEL);
 
@@ -180,6 +201,12 @@ public final class SatS2RangeFileFormat {
         mSuffixTableBlockIdOffset = suffixTableBlockIdOffset;
 
         mIsAllowedList = isAllowedList;
+
+        Conditions.checkArgInRange("entryValueSizeInBytes", entryValueSizeInBytes, 0,
+                MAX_ENTRY_BYTE_COUNT);
+        mEntryValueSizeInBytes = entryValueSizeInBytes;
+
+        mVersionNumber = versionNumber;
     }
 
     /** Returns the S2 level of all geo data stored in the file. */
@@ -345,6 +372,18 @@ public final class SatS2RangeFileFormat {
                 + "}";
     }
 
+    /**
+     * Returns the length of entry value in Bytes.
+     * @return the length of entry value
+     */
+    public int getEntryValueSizeInBytes() {
+        return mEntryValueSizeInBytes;
+    }
+
+    public int getVersionNumber() {
+        return mVersionNumber;
+    }
+
     @Override
     public String toString() {
         return "SatS2RangeFileFormat{"
@@ -359,6 +398,8 @@ public final class SatS2RangeFileFormat {
                 + ", mSuffixTableBlockIdOffset=" + mSuffixTableBlockIdOffset
                 + ", mUnusedCellIdBitCount=" + mUnusedCellIdBitCount
                 + ", mIsAllowedList=" + mIsAllowedList
+                + ", mEntryValueSizeInBytes=" + mEntryValueSizeInBytes
+                + ", mVersionNumber=" + mVersionNumber
                 + '}';
     }
 
@@ -381,7 +422,9 @@ public final class SatS2RangeFileFormat {
                 && mTableEntryMaxRangeLengthValue == that.mTableEntryMaxRangeLengthValue
                 && mSuffixTableBlockIdOffset == that.mSuffixTableBlockIdOffset
                 && mIsAllowedList == that.mIsAllowedList
-                && mUnusedCellIdBitCount == that.mUnusedCellIdBitCount;
+                && mUnusedCellIdBitCount == that.mUnusedCellIdBitCount
+                && mEntryValueSizeInBytes == that.mEntryValueSizeInBytes
+                && mVersionNumber == that.mVersionNumber;
     }
 
     @Override
@@ -389,7 +432,7 @@ public final class SatS2RangeFileFormat {
         return Objects.hash(mDataS2Level, mPrefixBitCount, mMaxPrefixValue, mSuffixBitCount,
                 mMaxSuffixValue, mTableEntryBitCount, mTableEntryRangeLengthBitCount,
                 mTableEntryMaxRangeLengthValue, mSuffixTableBlockIdOffset, mIsAllowedList,
-                mUnusedCellIdBitCount);
+                mUnusedCellIdBitCount, mEntryValueSizeInBytes, mVersionNumber);
     }
 
     private void checkS2Level(String name, long cellId) {

@@ -24,9 +24,9 @@ import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.argThat;
 
 import com.android.storage.block.write.BlockWriter;
-import com.android.storage.s2.S2LevelRange;
 import com.android.telephony.sats2range.read.SatS2RangeFileFormat;
 import com.android.telephony.sats2range.read.SuffixTableBlock;
+import com.android.telephony.sats2range.read.SuffixTableRange;
 import com.android.telephony.sats2range.read.SuffixTableSharedData;
 import com.android.telephony.sats2range.utils.TestUtils;
 import com.android.telephony.sats2range.write.SuffixTableWriter;
@@ -78,12 +78,14 @@ public class SuffixTableBlockTest {
         long invalidEndCellId = fileFormat.createCellId(tablePrefixValue + 1, maxSuffixValue);
         long validEndCellId = fileFormat.createCellId(tablePrefixValue, maxSuffixValue);
         {
-            S2LevelRange badStartCellId = new S2LevelRange(invalidStartCellId, validEndCellId);
+            SuffixTableRange badStartCellId = new SuffixTableRange(invalidStartCellId,
+                    validEndCellId);
             assertThrows(IllegalArgumentException.class,
                     () -> suffixTableWriter.addRange(badStartCellId));
         }
         {
-            S2LevelRange badEndCellId = new S2LevelRange(validStartCellId, invalidEndCellId);
+            SuffixTableRange badEndCellId = new SuffixTableRange(validStartCellId,
+                    invalidEndCellId);
             assertThrows(IllegalArgumentException.class,
                     () -> suffixTableWriter.addRange(badEndCellId));
         }
@@ -101,13 +103,13 @@ public class SuffixTableBlockTest {
 
         SuffixTableWriter suffixTableWriter =
                 SuffixTableWriter.createPopulated(fileFormat, suffixTableSharedData);
-        S2LevelRange suffixTableRange1 = new S2LevelRange(
+        SuffixTableRange suffixTableRange1 = new SuffixTableRange(
                 fileFormat.createCellId(tablePrefixValue, 1000),
                 fileFormat.createCellId(tablePrefixValue, 1001));
         suffixTableWriter.addRange(suffixTableRange1);
 
         // It's fine to add a range that starts adjacent to the last one.
-        S2LevelRange suffixTableRange2 = new S2LevelRange(
+        SuffixTableRange suffixTableRange2 = new SuffixTableRange(
                 fileFormat.createCellId(tablePrefixValue, 1001),
                 fileFormat.createCellId(tablePrefixValue, 1002));
         suffixTableWriter.addRange(suffixTableRange2);
@@ -117,7 +119,7 @@ public class SuffixTableBlockTest {
                 () -> suffixTableWriter.addRange(suffixTableRange2));
 
         // Try similar checks at the top end of the table.
-        S2LevelRange suffixTableRange3 = new S2LevelRange(
+        SuffixTableRange suffixTableRange3 = new SuffixTableRange(
                 fileFormat.createCellId(tablePrefixValue, maxSuffixValue - 1),
                 fileFormat.createCellId(tablePrefixValue, maxSuffixValue));
         suffixTableWriter.addRange(suffixTableRange3);
@@ -131,7 +133,7 @@ public class SuffixTableBlockTest {
                 () -> suffixTableWriter.addRange(suffixTableRange3));
 
         // Now "complete" the table: there can be no entry after this one.
-        S2LevelRange suffixTableRange4 = new S2LevelRange(
+        SuffixTableRange suffixTableRange4 = new SuffixTableRange(
                 fileFormat.createCellId(tablePrefixValue, maxSuffixValue),
                 fileFormat.createCellId(tablePrefixValue + 1, 0));
         suffixTableWriter.addRange(suffixTableRange4);
@@ -180,23 +182,23 @@ public class SuffixTableBlockTest {
 
         long entry1StartCellId = fileFormat.createCellId(tablePrefix, 1000);
         long entry1EndCellId = fileFormat.createCellId(tablePrefix, 2000);
-        S2LevelRange entry1 = new S2LevelRange(entry1StartCellId, entry1EndCellId);
+        SuffixTableRange entry1 = new SuffixTableRange(entry1StartCellId, entry1EndCellId);
         suffixTableWriter.addRange(entry1);
 
         long entry2StartCellId = fileFormat.createCellId(tablePrefix, 2000);
         long entry2EndCellId = fileFormat.createCellId(tablePrefix, 3000);
-        S2LevelRange entry2 = new S2LevelRange(entry2StartCellId, entry2EndCellId);
+        SuffixTableRange entry2 = new SuffixTableRange(entry2StartCellId, entry2EndCellId);
         suffixTableWriter.addRange(entry2);
 
         // There is a deliberate gap here between entry2 and entry3.
         long entry3StartCellId = fileFormat.createCellId(tablePrefix, 4000);
         long entry3EndCellId = fileFormat.createCellId(tablePrefix, 5000);
-        S2LevelRange entry3 = new S2LevelRange(entry3StartCellId, entry3EndCellId);
+        SuffixTableRange entry3 = new SuffixTableRange(entry3StartCellId, entry3EndCellId);
         suffixTableWriter.addRange(entry3);
 
         long entry4StartCellId = fileFormat.createCellId(tablePrefix, maxSuffix - 999);
         long entry4EndCellId = fileFormat.createCellId(tablePrefix + 1, 0);
-        S2LevelRange entry4 = new S2LevelRange(entry4StartCellId, entry4EndCellId);
+        SuffixTableRange entry4 = new SuffixTableRange(entry4StartCellId, entry4EndCellId);
         suffixTableWriter.addRange(entry4);
 
         BlockWriter.ReadBack blockReadback = suffixTableWriter.close();
@@ -251,7 +253,7 @@ public class SuffixTableBlockTest {
                 SuffixTableWriter.createPopulated(fileFormat, suffixTableSharedData);
         long entry1StartCellId = fileFormat.createCellId(tablePrefix, 1000);
         long entry1EndCellId = fileFormat.createCellId(tablePrefix, 2000);
-        S2LevelRange entry1 = new S2LevelRange(entry1StartCellId, entry1EndCellId);
+        SuffixTableRange entry1 = new SuffixTableRange(entry1StartCellId, entry1EndCellId);
         suffixTableWriter.addRange(entry1);
         BlockWriter.ReadBack blockReadback = suffixTableWriter.close();
 
@@ -276,12 +278,12 @@ public class SuffixTableBlockTest {
         SuffixTableWriter suffixTableWriter =
                 SuffixTableWriter.createPopulated(fileFormat, sharedData);
 
-        S2LevelRange entry1 = new S2LevelRange(
+        SuffixTableRange entry1 = new SuffixTableRange(
                 fileFormat.createCellId(tablePrefix, 1001),
                 fileFormat.createCellId(tablePrefix, 1101));
         suffixTableWriter.addRange(entry1);
 
-        S2LevelRange entry2 = new S2LevelRange(
+        SuffixTableRange entry2 = new SuffixTableRange(
                 fileFormat.createCellId(tablePrefix, 2001),
                 fileFormat.createCellId(tablePrefix, 2101));
         suffixTableWriter.addRange(entry2);
@@ -302,7 +304,7 @@ public class SuffixTableBlockTest {
         inOrder.verify(mockVisitor).end();
     }
 
-    private S2LevelRange findEntryByCellId(SatS2RangeFileFormat fileFormat,
+    private SuffixTableRange findEntryByCellId(SatS2RangeFileFormat fileFormat,
             SuffixTableBlock suffixTableBlock, int prefix, int suffix) {
         long cellId = fileFormat.createCellId(prefix, suffix);
         SuffixTableBlock.Entry entry = suffixTableBlock.findEntryByCellId(cellId);

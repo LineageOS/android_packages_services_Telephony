@@ -63,6 +63,8 @@ public final class HeaderBlockWriter implements BlockWriter {
             tos.writeUnsignedByte(mFileFormat.getSuffixTableBlockIdOffset());
             tos.writeUnsignedByte(mFileFormat.isAllowedList()
                     ? HeaderBlock.TRUE : HeaderBlock.FALSE);
+            tos.writeUnsignedByte(mFileFormat.getEntryValueSizeInBytes());
+            tos.writeInt(mFileFormat.getVersionNumber());
         }
 
         FileChannel fileChannel = FileChannel.open(mFile.toPath(), StandardOpenOption.READ);

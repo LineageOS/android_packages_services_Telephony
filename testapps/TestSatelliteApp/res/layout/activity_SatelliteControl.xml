@@ -21,7 +21,8 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:gravity="center"
-    android:paddingTop="100dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
     android:paddingLeft="4dp">
 
     <LinearLayout
@@ -37,11 +38,17 @@
             android:textSize="20dp"
             android:text="Satellite Control APIs"/>
         <Button
-            android:id="@+id/enableSatellite"
+            android:id="@+id/enableSatelliteDemoMode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingRight="4dp"
-            android:text="@string/enableSatellite"/>
+            android:text="@string/enableSatelliteDemoMode"/>
+        <Button
+            android:id="@+id/enableSatelliteRealMode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="4dp"
+            android:text="@string/enableSatelliteRealMode"/>
         <Button
             android:id="@+id/disableSatellite"
             android:layout_width="match_parent"
@@ -138,6 +145,12 @@
             android:layout_height="wrap_content"
             android:paddingRight="4dp"
             android:text="@string/provisionSatellite"/>
+        <Button
+            android:id="@+id/deprovisionSatellite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="4dp"
+            android:text="@string/deprovisionSatellite"/>
          <Button
             android:id="@+id/Back"
             android:onClick="Back"

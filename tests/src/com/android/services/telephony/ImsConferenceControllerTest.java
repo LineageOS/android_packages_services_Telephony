@@ -25,21 +25,27 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import android.content.ComponentName;
-import android.os.Looper;
+import android.content.pm.PackageManager;
 import android.telecom.PhoneAccountHandle;
 
 import androidx.test.filters.SmallTest;
+import androidx.test.runner.AndroidJUnit4;
 
+import com.android.TelephonyTestBase;
+
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 
 /**
  * Tests the functionality in ImsConferenceController.java
  */
-
-public class ImsConferenceControllerTest {
+@RunWith(AndroidJUnit4.class)
+public class ImsConferenceControllerTest extends TelephonyTestBase {
+    @Mock
+    PackageManager mPackageManager;
 
     @Mock
     private TelephonyConnectionServiceProxy mMockTelephonyConnectionServiceProxy;
@@ -64,11 +70,14 @@ public class ImsConferenceControllerTest {
 
     @Before
     public void setUp() throws Exception {
-        MockitoAnnotations.initMocks(this);
-        if (Looper.myLooper() == null) {
-            Looper.prepare();
-        }
-        mTelecomAccountRegistry = TelecomAccountRegistry.getInstance(null);
+        super.setUp();
+
+        when(mContext.getPackageManager()).thenReturn(mPackageManager);
+        when(mPackageManager.hasSystemFeature(PackageManager.FEATURE_TELEPHONY)).thenReturn(true);
+        when(mPackageManager.hasSystemFeature(PackageManager.FEATURE_TELEPHONY_CALLING))
+                .thenReturn(true);
+
+        mTelecomAccountRegistry = TelecomAccountRegistry.getInstance(mContext);
         mTestTelephonyConnectionA = new TestTelephonyConnection();
         mTestTelephonyConnectionB = new TestTelephonyConnection();
 
@@ -77,6 +86,11 @@ public class ImsConferenceControllerTest {
 
         mControllerTest = new ImsConferenceController(mTelecomAccountRegistry,
                 mMockTelephonyConnectionServiceProxy, () -> false);
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        super.tearDown();
     }
 
     /**

@@ -24,12 +24,14 @@ import android.os.CancellationSignal;
 import android.os.OutcomeReceiver;
 import android.telephony.satellite.SatelliteManager;
 import android.telephony.satellite.SatelliteProvisionStateCallback;
+import android.telephony.satellite.SatelliteSubscriberProvisionStatus;
 import android.telephony.satellite.stub.SatelliteResult;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 
+import java.util.List;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
@@ -81,6 +83,12 @@ public class Provisioning extends Activity {
             mProvisioned = provisioned;
             Log.d(TAG, "onSatelliteProvisionStateChanged in SatelliteTestApp: provisioned="
                     + mProvisioned);
+        }
+
+        @Override
+        public void onSatelliteSubscriptionProvisionStateChanged(
+                List<SatelliteSubscriberProvisionStatus> list) {
+            Log.d(TAG, "onSatelliteSubscriptionProvisionStateChanged in SatelliteTestApp" + list);
         }
     }
 

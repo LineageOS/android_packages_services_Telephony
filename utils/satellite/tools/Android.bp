@@ -70,11 +70,12 @@ java_binary_host {
 java_test_host {
     name: "SatelliteToolsTests",
     srcs: ["src/test/java/**/*.java"],
+    java_resource_dirs: ["src/test/java/"],
     static_libs: [
         "junit",
         "satellite-s2storage-tools",
         "s2-geometry-library-java",
-        "satellite-s2storage-testutils"
+        "satellite-s2storage-testutils",
     ],
     test_suites: ["general-tests"],
 }

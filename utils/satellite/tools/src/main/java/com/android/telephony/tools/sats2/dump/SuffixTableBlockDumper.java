@@ -55,11 +55,12 @@ public final class SuffixTableBlockDumper implements SuffixTableBlock.SuffixTabl
             writer.println("Entry count=" + entryCount);
             if (entryCount > 0) {
                 for (int i = 0; i < entryCount; i++) {
-                    writer.println(
-                            "[" + i + "]=" + suffixTableBlock.getEntryByIndex(i)
-                                    .getSuffixTableRange());
+                    writer.println("Entry[" + i + "]=" + suffixTableBlock.getEntryByIndex(
+                            i).getSuffixTableRange());
                 }
             }
+            int entryValueCount = suffixTableBlock.getEntryValueCount();
+            writer.println("Entry value count=" + entryValueCount);
         }
     }
 }
