@@ -32,9 +32,9 @@ import static junit.framework.Assert.assertNotNull;
 import static junit.framework.Assert.assertNull;
 import static junit.framework.Assert.assertTrue;
 
-import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.anyInt;
-import static org.mockito.Matchers.eq;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.doReturn;
@@ -985,7 +985,9 @@ public class ImsStateCallbackControllerTest extends TelephonyTestBase {
         when(mSubscriptionManager.getActiveSubscriptionIdList()).thenReturn(subIds);
     }
 
-    private void processAllMessages() {
+    // Override - not using mTestLooper from the base class
+    @Override
+    protected void processAllMessages() {
         while (!mLooper.getLooper().getQueue().isIdle()) {
             mLooper.processAllMessages();
         }

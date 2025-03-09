@@ -27,6 +27,7 @@ import android.telephony.TelephonyManager;
 import android.util.Log;
 
 import com.android.internal.telephony.Phone;
+import com.android.internal.telephony.flags.Flags;
 import com.android.phone.PhoneGlobals;
 
 public class OtaspSimStateReceiver extends BroadcastReceiver {
@@ -89,6 +90,7 @@ public class OtaspSimStateReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
+        if (Flags.phoneTypeCleanup()) return;
         mContext = context;
         if(CarrierConfigManager.ACTION_CARRIER_CONFIG_CHANGED.equals(intent.getAction())) {
             if (DBG) logd("Received intent: " + intent.getAction());

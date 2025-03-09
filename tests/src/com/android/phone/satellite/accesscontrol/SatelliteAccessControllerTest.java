@@ -126,6 +126,7 @@ import com.android.internal.telephony.satellite.SatelliteConfig;
 import com.android.internal.telephony.satellite.SatelliteConfigParser;
 import com.android.internal.telephony.satellite.SatelliteController;
 import com.android.internal.telephony.satellite.SatelliteModemInterface;
+import com.android.internal.telephony.satellite.metrics.CarrierRoamingSatelliteControllerStats;
 import com.android.internal.telephony.satellite.metrics.ControllerMetricsStats;
 import com.android.internal.telephony.subscription.SubscriptionManagerService;
 
@@ -243,6 +244,8 @@ public class SatelliteAccessControllerTest extends TelephonyTestBase {
     @Mock
     private ConcurrentHashMap<IBinder, ISatelliteCommunicationAccessStateCallback>
             mMockSatelliteCommunicationAccessStateChangedListeners;
+    @Mock
+    private CarrierRoamingSatelliteControllerStats mCarrierRoamingSatelliteControllerStats;
 
     private SatelliteInfo mSatelliteInfo;
 
@@ -366,6 +369,8 @@ public class SatelliteAccessControllerTest extends TelephonyTestBase {
                 mMockCountryDetector);
         replaceInstance(ControllerMetricsStats.class, "sInstance", null,
                 mock(ControllerMetricsStats.class));
+        replaceInstance(CarrierRoamingSatelliteControllerStats.class, "sInstance", null,
+                mCarrierRoamingSatelliteControllerStats);
         when(mMockSatelliteController.getSatellitePhone()).thenReturn(mMockPhone);
         when(mMockPhone.getSubId()).thenReturn(SubscriptionManager.getDefaultSubscriptionId());
 
@@ -444,6 +449,7 @@ public class SatelliteAccessControllerTest extends TelephonyTestBase {
         mMockApplicationInfo.targetSdkVersion = Build.VERSION_CODES.UPSIDE_DOWN_CAKE;
         when(mMockPackageManager.getApplicationInfo(anyString(), anyInt()))
                 .thenReturn(mMockApplicationInfo);
+        when(mCarrierRoamingSatelliteControllerStats.isMultiSim()).thenReturn(false);
 
         mSatelliteInfo = new SatelliteInfo(
                 UUID.randomUUID(),

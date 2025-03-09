@@ -944,4 +944,12 @@
     <string name="send_from_work_profile_cancel" msgid="177746511030381711">"취소"</string>
     <string name="send_from_work_profile_action_str" msgid="6892775562934243337">"직장 프로필로 전환"</string>
     <string name="install_messages_on_work_profile_action_str" msgid="3773440996395152903">"직장 메시지 앱 설치"</string>
+    <string name="radio_info_data_view_satellite_config" msgid="343120041798242877">"위성 구성 표시"</string>
+    <string name="satellite_config_viewer" msgid="5128698910841573398">"위성 구성 뷰어"</string>
+    <string name="satellite_config_version_label" msgid="1153447193166314791">"버전:"</string>
+    <string name="satellite_config_service_type_label" msgid="21749170241956082">"subId/plmn/servicetype:"</string>
+    <string name="satellite_config_allow_access_label" msgid="3806779900418131140">"allow_access:"</string>
+    <string name="satellite_config_country_code_label" msgid="1389520866423113166">"국가 코드"</string>
+    <string name="satellite_config_size_of_sats2_dat_label" msgid="671746449054349967">"sats2.dat 크기:"</string>
+    <string name="satellite_config_json_label" msgid="4577292884014824105">"위성 액세스 구성 JSON:"</string>
 </resources>

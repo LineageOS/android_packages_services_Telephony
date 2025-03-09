@@ -23,15 +23,24 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
+import android.net.ConnectivityManager;
+import android.net.ConnectivityManager.NetworkCallback;
+import android.net.Network;
+import android.net.NetworkCapabilities;
+import android.net.NetworkRequest;
 import android.os.Bundle;
+import android.os.Looper;
 import android.os.IBinder;
 import android.telephony.satellite.stub.SatelliteDatagram;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * SatelliteTestApp main activity to navigate to other APIs related to satellite.
@@ -41,14 +50,23 @@ public class SatelliteTestApp extends Activity {
     private static final String TAG = "SatelliteTestApp";
     public static TestSatelliteService sSatelliteService;
     private final Object mSendDatagramLock = new Object();
-
+    Network mNetwork = null;
+    Context mContext;
+    ConnectivityManager mConnectivityManager;
+    NetworkCallback mSatelliteConstrainNetworkCallback;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private TestSatelliteServiceConnection mSatelliteServiceConn;
     private List<SatelliteDatagram> mSentSatelliteDatagrams = new ArrayList<>();
     private static final int REQUEST_CODE_SEND_SMS = 1;
+    private final int NET_CAPABILITY_NOT_BANDWIDTH_CONSTRAINED = 37;
+    private boolean isNetworkRequested = false;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mContext = getApplicationContext();
+
+        mConnectivityManager = getSystemService(ConnectivityManager.class);
 
         if (mSatelliteServiceConn == null) {
             mSatelliteServiceConn = new TestSatelliteServiceConnection();
@@ -106,6 +124,21 @@ public class SatelliteTestApp extends Activity {
                 startActivity(intent);
             }
         });
+
+      findViewById(R.id.TestSatelliteConstrainConnection).setOnClickListener(view -> {
+        executor.execute(() -> {
+          Log.e(TAG, "onClick");
+          mSatelliteConstrainNetworkCallback = new NetworkCallback() {
+            @Override
+            public void onAvailable(final Network network) {
+              makeSatelliteDataConstrainedPing(network);
+            }
+          };
+          if(isNetworkRequested == false) {
+            requestingNetwork();
+          }
+        });
+      });
     }
 
     @Override
@@ -117,6 +150,61 @@ public class SatelliteTestApp extends Activity {
         }
     }
 
+    @Override
+    protected void onDestroy() {
+      super.onDestroy();
+      if(isNetworkRequested == true) {
+        releasingNetwork();
+      }
+    }
+
+    private void requestingNetwork() {
+      Log.e(TAG, "Requesting Network");
+      isNetworkRequested = true;
+      NetworkRequest request = new NetworkRequest.Builder()
+          .addCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
+          .addCapability(NetworkCapabilities.NET_CAPABILITY_NOT_VCN_MANAGED)
+          .removeCapability(NET_CAPABILITY_NOT_BANDWIDTH_CONSTRAINED)
+          .addTransportType(NetworkCapabilities.TRANSPORT_SATELLITE)
+          .build();
+
+      // Requesting for Network
+      mConnectivityManager.requestNetwork(request, mSatelliteConstrainNetworkCallback);
+      Log.e(TAG, "onClick + " + request);
+    }
+
+
+    private void makeSatelliteDataConstrainedPing(final Network network) {
+      Log.e(TAG, "onAvailable + " + network);
+      mNetwork = network;
+
+      try {
+        PingTask pingTask = new PingTask();
+        Log.d(TAG, "Connecting Satellite for ping");
+        String pingResult = pingTask.ping(mNetwork);
+        if(pingResult != null) {
+          Toast.makeText(mContext, "Ping Passed!", Toast.LENGTH_SHORT).show();
+        } else {
+          Toast.makeText(mContext, "Ping Failed!", Toast.LENGTH_SHORT).show();
+        }
+      } catch (Exception e) {
+        Log.d(TAG, "Exception at ping: " + e);
+      } finally {
+        // Releasing the callback in the background thread
+        releasingNetwork();
+      }
+    }
+
+    private void releasingNetwork() {
+      Log.e(TAG, "Realsing Network");
+      try {
+        mConnectivityManager
+            .unregisterNetworkCallback(mSatelliteConstrainNetworkCallback);
+      } catch (Exception e) {
+        Log.d("SatelliteDataConstrined", "Exception: " + e);
+      }
+      isNetworkRequested = false;
+    }
 
     private final ILocalSatelliteListener mSatelliteListener =
             new ILocalSatelliteListener.Stub() {

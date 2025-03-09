@@ -33,8 +33,10 @@ import com.android.internal.telephony.Call;
 import com.android.internal.telephony.CallStateException;
 import com.android.internal.telephony.Connection;
 import com.android.internal.telephony.GsmCdmaPhone;
+import com.android.internal.telephony.LocaleTracker;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
+import com.android.internal.telephony.ServiceStateTracker;
 import com.android.internal.telephony.cdma.CdmaCallWaitingNotification;
 import com.android.internal.telephony.imsphone.ImsExternalCallTracker;
 import com.android.internal.telephony.imsphone.ImsExternalConnection;
@@ -149,6 +151,19 @@ final class PstnIncomingCallNotifier {
     }
 
     /**
+     * Note: Same logic as
+     * {@link com.android.phone.PhoneInterfaceManager#getNetworkCountryIsoForPhone(int)}.
+     * @return the network country ISO for the current phone, or {@code null} if not known.
+     */
+    private String getNetworkCountryIso() {
+        ServiceStateTracker sst = mPhone.getServiceStateTracker();
+        if (sst == null) return null;
+        LocaleTracker lt = sst.getLocaleTracker();
+        if (lt == null) return null;
+        return lt.getCurrentCountry();
+    }
+
+    /**
      * Verifies the incoming call and triggers sending the incoming-call intent to Telecom.
      *
      * @param asyncResult The result object from the new ringing event.
@@ -161,7 +176,7 @@ final class PstnIncomingCallNotifier {
             // Check if we have a pending number verification request.
             if (connection.getAddress() != null) {
                 if (NumberVerificationManager.getInstance()
-                        .checkIncomingCall(connection.getAddress())) {
+                        .checkIncomingCall(connection.getAddress(), getNetworkCountryIso())) {
                     // Disconnect the call if it matches, after a delay
                     mHandler.postDelayed(() -> {
                         try {

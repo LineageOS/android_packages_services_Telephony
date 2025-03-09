@@ -621,7 +621,7 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         pw.println("  numverify override-package PACKAGE_NAME;");
         pw.println("    Set the authorized package for number verification.");
         pw.println("    Leave the package name blank to reset.");
-        pw.println("  numverify fake-call NUMBER;");
+        pw.println("  numverify fake-call NUMBER <NETWORK_COUNTRY_ISO>");
         pw.println("    Fake an incoming call from NUMBER. This is for testing. Output will be");
         pw.println("    1 if the call would have been intercepted, 0 otherwise.");
     }
@@ -1099,8 +1099,16 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                 return 0;
             }
             case NUMBER_VERIFICATION_FAKE_CALL: {
+                String number = getNextArg();
+                String country = getNextArg();
+                if (country == null) {
+                    // No locale provided, default to current locale.
+                    Locale currentLocale = Locale.getDefault();
+                    country = currentLocale.getCountry();
+                }
+                Log.i(TAG, "numberVerificationFakeCall: " + number + " Locale: " + country);
                 boolean val = NumberVerificationManager.getInstance()
-                        .checkIncomingCall(getNextArg());
+                        .checkIncomingCall(number, country);
                 getOutPrintWriter().println(val ? "1" : "0");
                 return 0;
             }

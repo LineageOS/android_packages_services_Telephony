@@ -81,5 +81,12 @@
             android:paddingStart="4dp"
             android:paddingEnd="4dp"
             android:text="@string/TestSatelliteWrapper"/>
+        <Button
+            android:id="@+id/TestSatelliteConstrainConnection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:text="@string/TestSatelliteConstrainConnection"/>
     </LinearLayout>
 </ScrollView>

@@ -944,4 +944,12 @@
     <string name="send_from_work_profile_cancel" msgid="177746511030381711">"បោះបង់"</string>
     <string name="send_from_work_profile_action_str" msgid="6892775562934243337">"ប្ដូរ​ទៅ​កម្រង​ព័ត៌មាន​ការងារ"</string>
     <string name="install_messages_on_work_profile_action_str" msgid="3773440996395152903">"ដំឡើង​កម្មវិធី messages សម្រាប់​ការងារ"</string>
+    <string name="radio_info_data_view_satellite_config" msgid="343120041798242877">"បង្ហាញ​ការកំណត់​រចនាសម្ព័ន្ធ​ផ្កាយរណប"</string>
+    <string name="satellite_config_viewer" msgid="5128698910841573398">"ឧបករណ៍មើល​ការកំណត់​រចនាសម្ព័ន្ធ​ផ្កាយរណប"</string>
+    <string name="satellite_config_version_label" msgid="1153447193166314791">"កំណែ៖"</string>
+    <string name="satellite_config_service_type_label" msgid="21749170241956082">"subId/plmn/servicetype៖"</string>
+    <string name="satellite_config_allow_access_label" msgid="3806779900418131140">"អនុញ្ញាត​ឱ្យចូលប្រើ៖"</string>
+    <string name="satellite_config_country_code_label" msgid="1389520866423113166">"លេខកូដ​ប្រទេស៖"</string>
+    <string name="satellite_config_size_of_sats2_dat_label" msgid="671746449054349967">"ទំហំ sats2.dat៖"</string>
+    <string name="satellite_config_json_label" msgid="4577292884014824105">"json នៃការ​កំណត់​រចនាសម្ព័ន្ធ​សិទ្ធិចូលប្រើ​ផ្កាយរណប៖"</string>
 </resources>

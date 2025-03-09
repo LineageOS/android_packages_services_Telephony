@@ -5828,6 +5828,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 mApp, functionName)) {
             if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(
                     mApp, subId, callingPackage, callingFeatureId, functionName)) {
+                loge("getDataNetworkTypeForSubscriber: missing permission " + callingPackage);
                 return TelephonyManager.NETWORK_TYPE_UNKNOWN;
             }
         }
@@ -5841,6 +5842,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             if (phone != null) {
                 return phone.getServiceState().getDataNetworkType();
             } else {
+                loge("getDataNetworkTypeForSubscriber: phone is null for sub " + subId);
                 return TelephonyManager.NETWORK_TYPE_UNKNOWN;
             }
         } finally {

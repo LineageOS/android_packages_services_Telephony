@@ -59,6 +59,7 @@ import com.android.internal.telephony.IIntegerConsumer;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.RILConstants;
 import com.android.internal.telephony.flags.FeatureFlags;
+import com.android.internal.telephony.satellite.SatelliteController;
 import com.android.internal.telephony.subscription.SubscriptionManagerService;
 import com.android.phone.satellite.accesscontrol.SatelliteAccessController;
 
@@ -117,6 +118,9 @@ public class PhoneInterfaceManagerTest extends TelephonyTestBase {
 
         replaceInstance(SatelliteAccessController.class, "sInstance", null,
                 Mockito.mock(SatelliteAccessController.class));
+
+        replaceInstance(SatelliteController.class, "sInstance", null,
+                Mockito.mock(SatelliteController.class));
 
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(
                 InstrumentationRegistry.getInstrumentation().getTargetContext());

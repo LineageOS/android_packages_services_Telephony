@@ -36,7 +36,6 @@ import static org.mockito.ArgumentMatchers.anyBoolean;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyList;
 import static org.mockito.ArgumentMatchers.anyMap;
-import static org.mockito.ArgumentMatchers.anyVararg;
 import static org.mockito.Mockito.clearInvocations;
 import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.doReturn;
@@ -173,7 +172,7 @@ public class SatelliteEntitlementControllerTest extends TelephonyTestBase {
         mCarrierConfigBundle.putBoolean(
                 CarrierConfigManager.KEY_SATELLITE_ENTITLEMENT_SUPPORTED_BOOL, true);
         doReturn(mCarrierConfigBundle)
-                .when(mCarrierConfigManager).getConfigForSubId(anyInt(), anyVararg());
+                .when(mCarrierConfigManager).getConfigForSubId(anyInt(), any());
         doReturn(Context.CONNECTIVITY_SERVICE).when(mContext).getSystemServiceName(
                 ConnectivityManager.class);
         doReturn(mConnectivityManager).when(mContext).getSystemService(

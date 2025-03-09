@@ -9,4 +9,7 @@ android_test {
     javacflags: ["-parameters"],
     platform_apis: true,
     certificate: "platform",
+    static_libs: [
+        "androidx.appcompat_appcompat",
+    ],
 }

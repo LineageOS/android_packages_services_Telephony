@@ -62,6 +62,8 @@
     <string name="sendMessage">sendMessage</string>
     <string name="receiveMessage">receiveMessage</string>
 
+    <string name="TestSatelliteConstrainConnection">Test Satellite Constrain Connection</string>
+
     <string name="TestSatelliteWrapper">Test Satellite Wrapper</string>
     <string name="requestNtnSignalStrength">requestNtnSignalStrength</string>
     <string name="registerForNtnSignalStrengthChanged">registerForNtnSignalStrengthChanged</string>

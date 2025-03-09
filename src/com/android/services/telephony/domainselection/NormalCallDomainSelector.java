@@ -232,7 +232,7 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
 
     @Override
     public void onServiceStateUpdated(ServiceState serviceState) {
-        logd("onServiceStateUpdated");
+        logd("onServiceStateUpdated:" + serviceState.getState());
         mServiceState = serviceState;
         selectDomain();
     }
@@ -265,8 +265,8 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
         }
     }
 
-    private void notifyCsSelected() {
-        if (isOutOfService()) {
+    private void notifyCsSelected(boolean checkServiceState) {
+        if (checkServiceState && isOutOfService()) {
             loge("Cannot place call in current ServiceState: " + mServiceState.getState());
             notifySelectionTerminated(DisconnectCause.OUT_OF_SERVICE);
             return;
@@ -327,7 +327,7 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
             notifyPsSelected();
         } else {
             logd("WPS call placed over CS");
-            notifyCsSelected();
+            notifyCsSelected(true);
         }
     }
 
@@ -339,7 +339,9 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
             logd("PsDisconnectCause:" + imsReasonInfo.getCode());
             if (imsReasonInfo.getCode() == ImsReasonInfo.CODE_LOCAL_CALL_CS_RETRY_REQUIRED) {
                 logd("Redialing over CS");
-                notifyCsSelected();
+                // Don't check for ServiceState when CODE_LOCAL_CALL_CS_RETRY_REQUIRED is received
+                // as requested here b/380412925.
+                notifyCsSelected(false);
             } else {
                 // Not a valid redial
                 logd("Redialing cancelled.");
@@ -410,7 +412,7 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
 
         if (!mImsStateTracker.isMmTelFeatureAvailable()) {
             logd("MmTelFeatureAvailable unavailable");
-            notifyCsSelected();
+            notifyCsSelected(true);
             return;
         }
 
@@ -426,13 +428,13 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
         // Check IMS registration state.
         if (!mImsStateTracker.isImsRegistered()) {
             logd("IMS is NOT registered");
-            notifyCsSelected();
+            notifyCsSelected(true);
             return;
         }
 
         // Check TTY
         if (isTtyModeEnabled() && !isTtySupportedByIms()) {
-            notifyCsSelected();
+            notifyCsSelected(true);
             return;
         }
 
@@ -461,7 +463,7 @@ public class NormalCallDomainSelector extends DomainSelectorBase implements
         } else {
             logd("IMS is not voice capable");
             // Voice call CS fallback
-            notifyCsSelected();
+            notifyCsSelected(true);
         }
     }
 

@@ -32,6 +32,7 @@ import com.android.internal.telephony.GsmCdmaConnection;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.ServiceStateTracker;
+import com.android.internal.telephony.flags.Flags;
 import com.android.phone.PhoneGlobals;
 import com.android.phone.PhoneUtils;
 
@@ -77,6 +78,7 @@ public class OtaspActivationService extends Service {
     @Override
     public void onCreate() {
         logd("otasp service onCreate");
+        if (Flags.phoneTypeCleanup()) return;
         mPhone = PhoneGlobals.getPhone();
         ServiceStateTracker sst = mPhone.getServiceStateTracker();
         if (sst != null && sst.getOtasp() != TelephonyManager.OTASP_NEEDED) {

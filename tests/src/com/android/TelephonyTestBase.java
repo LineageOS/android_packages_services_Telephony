@@ -24,7 +24,9 @@ import static org.mockito.Mockito.doReturn;
 import android.content.ContextWrapper;
 import android.content.res.Resources;
 import android.os.Handler;
+import android.os.HandlerThread;
 import android.os.Looper;
+import android.os.TestLooperManager;
 import android.util.Log;
 
 import androidx.test.InstrumentationRegistry;
@@ -69,6 +71,10 @@ public class TelephonyTestBase {
     @Mock protected GsmCdmaPhone mPhone;
     @Mock protected DataNetworkController mDataNetworkController;
     @Mock private MetricsCollector mMetricsCollector;
+
+    private HandlerThread mTestHandlerThread;
+    protected Looper mTestLooper;
+    protected TestLooperManager mLooperManager;
 
     private final HashMap<InstanceKey, Object> mOldInstances = new HashMap<>();
     private final LinkedList<InstanceKey> mInstanceKeys = new LinkedList<>();
@@ -118,7 +124,45 @@ public class TelephonyTestBase {
     public void tearDown() throws Exception {
         // Ensure there are no static references to handlers after test completes.
         PhoneConfigurationManager.unregisterAllMultiSimConfigChangeRegistrants();
+        cleanupTestLooper();
         restoreInstances();
+    }
+
+    protected void setupTestLooper() {
+        mTestHandlerThread = new HandlerThread("TestHandlerThread");
+        mTestHandlerThread.start();
+        mTestLooper = mTestHandlerThread.getLooper();
+        mLooperManager = new TestLooperManager(mTestLooper);
+    }
+
+    private void cleanupTestLooper() {
+        mTestLooper = null;
+        if (mLooperManager != null) {
+            mLooperManager.release();
+            mLooperManager = null;
+        }
+        if (mTestHandlerThread != null) {
+            mTestHandlerThread.quit();
+            try {
+                mTestHandlerThread.join();
+            } catch (InterruptedException ex) {
+                Log.w("TelephonyTestBase", "HandlerThread join interrupted", ex);
+            }
+            mTestHandlerThread = null;
+        }
+    }
+
+    protected void processOneMessage() {
+        var msg = mLooperManager.next();
+        mLooperManager.execute(msg);
+        mLooperManager.recycle(msg);
+    }
+
+    protected void processAllMessages() {
+        for (var msg = mLooperManager.poll(); msg != null && msg.getTarget() != null;) {
+            mLooperManager.execute(msg);
+            mLooperManager.recycle(msg);
+        }
     }
 
     protected final boolean waitForExecutorAction(Executor executor, long timeoutMillis) {

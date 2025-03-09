@@ -944,4 +944,12 @@
     <string name="send_from_work_profile_cancel" msgid="177746511030381711">"ரத்துசெய்"</string>
     <string name="send_from_work_profile_action_str" msgid="6892775562934243337">"பணிக் கணக்கிற்கு மாறு"</string>
     <string name="install_messages_on_work_profile_action_str" msgid="3773440996395152903">"பணி தொடர்பான மெசேஜ்களுக்கான ஆப்ஸை நிறுவு"</string>
+    <string name="radio_info_data_view_satellite_config" msgid="343120041798242877">"சாட்டிலைட் உள்ளமைவைக் காட்டு"</string>
+    <string name="satellite_config_viewer" msgid="5128698910841573398">"சாட்டிலைட் உள்ளமைவு வியூவர்"</string>
+    <string name="satellite_config_version_label" msgid="1153447193166314791">"பதிப்பு:"</string>
+    <string name="satellite_config_service_type_label" msgid="21749170241956082">"subId/plmn/servicetype:"</string>
+    <string name="satellite_config_allow_access_label" msgid="3806779900418131140">"allow_access:"</string>
+    <string name="satellite_config_country_code_label" msgid="1389520866423113166">"தேசக் குறியீடுகள்:"</string>
+    <string name="satellite_config_size_of_sats2_dat_label" msgid="671746449054349967">"sats2.dat ஃபைல் அளவு:"</string>
+    <string name="satellite_config_json_label" msgid="4577292884014824105">"சாட்டிலைட் அணுகலுக்கான உள்ளமைவு JSON ஃபைல்:"</string>
 </resources>

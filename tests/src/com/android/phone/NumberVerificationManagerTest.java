@@ -26,6 +26,9 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import android.platform.test.annotations.RequiresFlagsEnabled;
+import android.platform.test.flag.junit.CheckFlagsRule;
+import android.platform.test.flag.junit.DeviceFlagsValueProvider;
 import android.telephony.NumberVerificationCallback;
 import android.telephony.PhoneNumberRange;
 import android.telephony.ServiceState;
@@ -33,8 +36,10 @@ import android.telephony.ServiceState;
 import com.android.internal.telephony.Call;
 import com.android.internal.telephony.INumberVerificationCallback;
 import com.android.internal.telephony.Phone;
+import com.android.internal.telephony.flags.Flags;
 
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -43,6 +48,10 @@ import org.mockito.MockitoAnnotations;
 
 @RunWith(JUnit4.class)
 public class NumberVerificationManagerTest {
+    @Rule
+    public final CheckFlagsRule mCheckFlagsRule =
+            DeviceFlagsValueProvider.createCheckFlagsRule();
+
     private static final PhoneNumberRange SAMPLE_RANGE =
             new PhoneNumberRange("1", "650555", "0000", "8999");
     private static final long DEFAULT_VERIFICATION_TIMEOUT = 100;
@@ -131,7 +140,7 @@ public class NumberVerificationManagerTest {
 
     private void verifyDefaultRangeMatching(NumberVerificationManager manager) throws Exception {
         String testNumber = "6505550000";
-        assertTrue(manager.checkIncomingCall(testNumber));
+        assertTrue(manager.checkIncomingCall(testNumber, "US"));
         verify(mCallback).onCallReceived(testNumber);
     }
 
@@ -146,6 +155,45 @@ public class NumberVerificationManagerTest {
         manager.requestVerification(SAMPLE_RANGE, mCallback, DEFAULT_VERIFICATION_TIMEOUT);
         verify(mCallback, never()).onVerificationFailed(anyInt());
         verifyDefaultRangeMatching(manager);
+    }
+
+    /**
+     * Verifies that numbers starting with '0' prefix from the network and lacking the country code
+     * will be correctly compared to a range with the `44` country code.
+     * @throws Exception
+     */
+    @Test
+    @RequiresFlagsEnabled(Flags.FLAG_ROBUST_NUMBER_VERIFICATION)
+    public void testVerificationOfUkNumbersWithZeroPrefix() throws Exception {
+        NumberVerificationManager manager =
+                new NumberVerificationManager(() -> new Phone[]{mPhone1});
+
+        manager.requestVerification(new PhoneNumberRange("44", "7445", "000000", "999999"),
+                mCallback, DEFAULT_VERIFICATION_TIMEOUT);
+        verify(mCallback, never()).onVerificationFailed(anyInt());
+        String testNumber = "0 7445 032046";
+        assertTrue(manager.checkIncomingCall(testNumber, "GB"));
+        verify(mCallback).onCallReceived(testNumber);
+    }
+
+    /**
+     * Similar to {@link #testVerificationOfUkNumbersWithZeroPrefix()}, except verifies that if the
+     * network sent a full qualified UK phone number with the `+44` country code that it would
+     * match the range.
+     * @throws Exception
+     */
+    @Test
+    @RequiresFlagsEnabled(Flags.FLAG_ROBUST_NUMBER_VERIFICATION)
+    public void testVerificationOfUkNumbersWithCountryPrefix() throws Exception {
+        NumberVerificationManager manager =
+                new NumberVerificationManager(() -> new Phone[]{mPhone1});
+
+        manager.requestVerification(new PhoneNumberRange("44", "7445", "000000", "999999"),
+                mCallback, DEFAULT_VERIFICATION_TIMEOUT);
+        verify(mCallback, never()).onVerificationFailed(anyInt());
+        String testNumber = "+447445032046";
+        assertTrue(manager.checkIncomingCall(testNumber, "GB"));
+        verify(mCallback).onCallReceived(testNumber);
     }
 
     @Test
@@ -169,6 +217,6 @@ public class NumberVerificationManagerTest {
                 new NumberVerificationManager(() -> new Phone[]{mPhone1, mPhone2});
         manager.requestVerification(SAMPLE_RANGE, mCallback, DEFAULT_VERIFICATION_TIMEOUT);
         verifyDefaultRangeMatching(manager);
-        assertFalse(manager.checkIncomingCall("this doesn't even matter"));
+        assertFalse(manager.checkIncomingCall("this doesn't even matter", "US"));
     }
 }

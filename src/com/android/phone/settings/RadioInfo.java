@@ -123,7 +123,6 @@ import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.RILConstants;
 import com.android.internal.telephony.euicc.EuiccConnector;
-import com.android.internal.telephony.satellite.SatelliteServiceUtils;
 import com.android.phone.R;
 
 import java.io.IOException;
@@ -134,8 +133,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutionException;
@@ -2132,31 +2129,38 @@ public class RadioInfo extends AppCompatActivity {
     }
 
     /**
+     * Method will create the PersistableBundle and pack the satellite services like
+     * SMS, MMS, EMERGENCY CALL, DATA in it.
+     *
+     * @return PersistableBundle
+     */
+    public PersistableBundle getSatelliteServicesBundleForOperatorPlmn() {
+        PersistableBundle satServiceBundle = new PersistableBundle();
+        String plmn = mTelephonyManager.getNetworkOperatorForPhone(mPhoneId);
+        if (TextUtils.isEmpty(plmn)) {
+            loge("satData: NetworkOperator PLMN is empty");
+            plmn = mTelephonyManager.getSimOperatorNumeric(mSubId);
+            loge("satData: SimOperator PLMN = " + plmn);
+        }
+        int[] supportedServicesArray = {NetworkRegistrationInfo.SERVICE_TYPE_DATA,
+                NetworkRegistrationInfo.SERVICE_TYPE_SMS,
+                NetworkRegistrationInfo.SERVICE_TYPE_EMERGENCY,
+                NetworkRegistrationInfo.SERVICE_TYPE_MMS};
+        satServiceBundle.putIntArray(plmn, supportedServicesArray);
+        log("satData: New SatelliteServicesBundle = " + satServiceBundle);
+        return satServiceBundle;
+    }
+
+    /**
      * This method will check the required carrier config keys which plays role in enabling /
      * supporting satellite data and update the keys accordingly.
      * @param bundleToModify : PersistableBundle
      */
     private void updateCarrierConfigToSupportData(PersistableBundle bundleToModify) {
         // KEY_CARRIER_SUPPORTED_SATELLITE_SERVICES_PER_PROVIDER_BUNDLE key info update
-        PersistableBundle providerBundle = bundleToModify.getPersistableBundle(
-                KEY_CARRIER_SUPPORTED_SATELLITE_SERVICES_PER_PROVIDER_BUNDLE);
-        Map<String, Set<Integer>> satServicesBundle =
-                SatelliteServiceUtils.parseSupportedSatelliteServices(providerBundle);
-        String plmn = mTelephonyManager.getSimOperatorNumeric(mSubId);
-        log("satData: currentplmn = " + plmn);
-        if (!satServicesBundle.isEmpty() && satServicesBundle.containsKey(plmn)) {
-            Set<Integer> supportedServices = satServicesBundle.get(plmn);
-            log("satData: BEFORE supportedServices = " + supportedServices);
-            if (!supportedServices.contains(NetworkRegistrationInfo.SERVICE_TYPE_DATA)) {
-                supportedServices.add(NetworkRegistrationInfo.SERVICE_TYPE_DATA);
-                providerBundle.putIntArray(plmn, supportedServices.stream()
-                        .mapToInt(Integer::intValue)
-                        .toArray());
-                log("satData: AFTER supportedServices = " + supportedServices);
-            }
-            bundleToModify.putPersistableBundle(
-                    KEY_CARRIER_SUPPORTED_SATELLITE_SERVICES_PER_PROVIDER_BUNDLE, providerBundle);
-        }
+        bundleToModify.putPersistableBundle(
+                KEY_CARRIER_SUPPORTED_SATELLITE_SERVICES_PER_PROVIDER_BUNDLE,
+                getSatelliteServicesBundleForOperatorPlmn());
 
         // KEY_CARRIER_ROAMING_SATELLITE_DEFAULT_SERVICES_INT_ARRAY key info update
         int[] availableServices = bundleToModify.getIntArray(
@@ -2176,13 +2180,11 @@ public class RadioInfo extends AppCompatActivity {
             newServices = new int[1];
             newServices[0] = NetworkRegistrationInfo.SERVICE_TYPE_DATA;
         }
-        bundleToModify.putIntArray(
-                KEY_CARRIER_ROAMING_SATELLITE_DEFAULT_SERVICES_INT_ARRAY,
+        bundleToModify.putIntArray(KEY_CARRIER_ROAMING_SATELLITE_DEFAULT_SERVICES_INT_ARRAY,
                 newServices);
 
         // KEY_SATELLITE_ENTITLEMENT_SUPPORTED_BOOL setting to false.
-        bundleToModify.putBoolean(KEY_SATELLITE_ENTITLEMENT_SUPPORTED_BOOL,
-                false);
+        bundleToModify.putBoolean(KEY_SATELLITE_ENTITLEMENT_SUPPORTED_BOOL, false);
         bundleToModify.remove(KEY_SATELLITE_DATA_SUPPORT_MODE_INT);
         log("satData: changing carrierConfig to : " + bundleToModify);
         getCarrierConfig().overrideConfig(mSubId, bundleToModify, false);
@@ -2323,8 +2325,7 @@ public class RadioInfo extends AppCompatActivity {
             (buttonView, isChecked) -> {
                 int subId = mSubId;
                 int phoneId = mPhoneId;
-                if (SubscriptionManager.isValidPhoneId(phoneId)
-                        && isValidSubscription(subId)) {
+                if (SubscriptionManager.isValidPhoneId(phoneId) && isValidSubscription(subId)) {
                     if (getCarrierConfig() == null) return;
                     if (isChecked) {
                         if (!isValidOperator(subId)) {
@@ -2334,26 +2335,15 @@ public class RadioInfo extends AppCompatActivity {
                             return;
                         }
                         PersistableBundle originalBundle = getCarrierConfig().getConfigForSubId(
-                                subId,
-                                KEY_SATELLITE_ATTACH_SUPPORTED_BOOL,
+                                subId, KEY_SATELLITE_ATTACH_SUPPORTED_BOOL,
                                 KEY_SATELLITE_ENTITLEMENT_SUPPORTED_BOOL,
-                                KEY_CARRIER_SUPPORTED_SATELLITE_SERVICES_PER_PROVIDER_BUNDLE
-                        );
+                                KEY_CARRIER_SUPPORTED_SATELLITE_SERVICES_PER_PROVIDER_BUNDLE);
                         PersistableBundle overrideBundle = new PersistableBundle();
-                        overrideBundle.putBoolean(
-                                KEY_SATELLITE_ATTACH_SUPPORTED_BOOL, true);
+                        overrideBundle.putBoolean(KEY_SATELLITE_ATTACH_SUPPORTED_BOOL, true);
                         overrideBundle.putBoolean(KEY_SATELLITE_ENTITLEMENT_SUPPORTED_BOOL, false);
-                        PersistableBundle capableProviderBundle = new PersistableBundle();
-                        capableProviderBundle.putIntArray(mTelephonyManager
-                                        .getNetworkOperatorForPhone(phoneId),
-                                new int[]{
-                                        // Currently satellite only supports below
-                                        NetworkRegistrationInfo.SERVICE_TYPE_SMS,
-                                        NetworkRegistrationInfo.SERVICE_TYPE_EMERGENCY
-                        });
                         overrideBundle.putPersistableBundle(
                                 KEY_CARRIER_SUPPORTED_SATELLITE_SERVICES_PER_PROVIDER_BUNDLE,
-                                capableProviderBundle);
+                                getSatelliteServicesBundleForOperatorPlmn());
                         log("mMockSatelliteListener: new " + overrideBundle);
                         log("mMockSatelliteListener: old " + originalBundle);
                         getCarrierConfig().overrideConfig(subId, overrideBundle, false);

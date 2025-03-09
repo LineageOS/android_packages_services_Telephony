@@ -668,6 +668,56 @@ public class NormalCallDomainSelectorTest {
     }
 
     @Test
+    public void testEmcPsFailureAndCsRedial() {
+        final TestTransportSelectorCallback transportSelectorCallback =
+                new TestTransportSelectorCallback(mNormalCallDomainSelector);
+
+        final ServiceState serviceState = new ServiceState();
+
+        // dial PS call with APN-ON
+        serviceState.setStateOutOfService();
+        initialize(serviceState, true, true, true, false);
+        DomainSelectionService.SelectionAttributes attributes =
+                new DomainSelectionService.SelectionAttributes.Builder(
+                        SLOT_ID, SUB_ID_1, SELECTOR_TYPE_CALLING)
+                        .setAddress(TEST_URI)
+                        .setCallId(TEST_CALLID)
+                        .setEmergency(false)
+                        .setVideoCall(false)
+                        .setExitedFromAirplaneMode(true)
+                        .build();
+
+        mNormalCallDomainSelector.selectDomain(attributes, transportSelectorCallback);
+
+        processAllMessages();
+        assertTrue(transportSelectorCallback.mWlanSelected);
+        assertEquals(NormalCallDomainSelector.SelectorState.INACTIVE,
+                mNormalCallDomainSelector.getSelectorState());
+
+        // CODE_LOCAL_CALL_CS_RETRY_REQUIRED when ServiceState is OOS
+        final ImsReasonInfo imsReasonInfoCsRetry = new ImsReasonInfo(
+                ImsReasonInfo.CODE_LOCAL_CALL_CS_RETRY_REQUIRED, 0, null);
+        transportSelectorCallback.reset();
+
+        attributes = new DomainSelectionService.SelectionAttributes.Builder(
+                SLOT_ID, SUB_ID_1, SELECTOR_TYPE_CALLING)
+                .setAddress(TEST_URI)
+                .setCallId(TEST_CALLID)
+                .setEmergency(false)
+                .setVideoCall(false)
+                .setExitedFromAirplaneMode(true)
+                .setPsDisconnectCause(imsReasonInfoCsRetry)
+                .build();
+
+        mNormalCallDomainSelector.reselectDomain(attributes);
+
+        processAllMessages();
+        assertEquals(NetworkRegistrationInfo.DOMAIN_CS, transportSelectorCallback.mSelectedDomain);
+        assertEquals(NormalCallDomainSelector.SelectorState.INACTIVE,
+                mNormalCallDomainSelector.getSelectorState());
+    }
+
+    @Test
     public void testImsRegistrationStateTimeoutMessage() {
         final TestTransportSelectorCallback transportSelectorCallback =
                 new TestTransportSelectorCallback(mNormalCallDomainSelector);

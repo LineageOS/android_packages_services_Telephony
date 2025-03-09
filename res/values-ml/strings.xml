@@ -944,4 +944,12 @@
     <string name="send_from_work_profile_cancel" msgid="177746511030381711">"റദ്ദാക്കുക"</string>
     <string name="send_from_work_profile_action_str" msgid="6892775562934243337">"ഔദ്യോഗിക പ്രൊഫൈലിലേക്ക് മാറുക"</string>
     <string name="install_messages_on_work_profile_action_str" msgid="3773440996395152903">"ഒരു ഔദ്യോഗിക സന്ദേശമയയ്ക്കൽ ആപ്പ് ഇൻസ്റ്റാൾ ചെയ്യുക"</string>
+    <string name="radio_info_data_view_satellite_config" msgid="343120041798242877">"സാറ്റലൈറ്റ് കോൺഫിഗറേഷൻ കാണിക്കുക"</string>
+    <string name="satellite_config_viewer" msgid="5128698910841573398">"സാറ്റലൈറ്റ് കോൺഫിഗറേഷൻ വ്യൂവർ"</string>
+    <string name="satellite_config_version_label" msgid="1153447193166314791">"പതിപ്പ്:"</string>
+    <string name="satellite_config_service_type_label" msgid="21749170241956082">"subId/plmn/സേവനതരം:"</string>
+    <string name="satellite_config_allow_access_label" msgid="3806779900418131140">"allow_access:"</string>
+    <string name="satellite_config_country_code_label" msgid="1389520866423113166">"രാജ്യങ്ങളുടെ കോഡുകൾ:"</string>
+    <string name="satellite_config_size_of_sats2_dat_label" msgid="671746449054349967">"sats2.dat എന്നതിന്റെ വലിപ്പം:"</string>
+    <string name="satellite_config_json_label" msgid="4577292884014824105">"സാറ്റലൈറ്റ് ആക്സസ് കോൺഫിഗറേഷൻ json:"</string>
 </resources>

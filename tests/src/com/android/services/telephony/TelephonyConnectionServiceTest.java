@@ -42,7 +42,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyBoolean;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Matchers.eq;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doReturn;
@@ -109,6 +109,8 @@ import com.android.internal.telephony.flags.FeatureFlags;
 import com.android.internal.telephony.flags.Flags;
 import com.android.internal.telephony.gsm.SuppServiceNotification;
 import com.android.internal.telephony.imsphone.ImsPhone;
+import com.android.internal.telephony.imsphone.ImsPhoneCall;
+import com.android.internal.telephony.imsphone.ImsPhoneConnection;
 import com.android.internal.telephony.satellite.SatelliteController;
 import com.android.internal.telephony.satellite.SatelliteSOSMessageRecommender;
 import com.android.internal.telephony.subscription.SubscriptionInfoInternal;
@@ -197,13 +199,24 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         public void onHold() {
             wasHeld = true;
         }
+
+        @Override
+        void setOriginalConnection(com.android.internal.telephony.Connection connection) {
+            mOriginalConnection = connection;
+        }
     }
 
     public static class SimpleConference extends Conference {
+        public boolean wasDisconnected = false;
         public boolean wasUnheld = false;
 
         public SimpleConference(PhoneAccountHandle phoneAccountHandle) {
             super(phoneAccountHandle);
+        }
+
+        @Override
+        public void onDisconnect() {
+            wasDisconnected = true;
         }
 
         @Override
@@ -340,6 +353,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         mBinderStub = (IConnectionService.Stub) mTestConnectionService.onBind(null);
         mSetFlagsRule.enableFlags(Flags.FLAG_DO_NOT_OVERRIDE_PRECISE_LABEL);
         mSetFlagsRule.enableFlags(Flags.FLAG_CALL_EXTRA_FOR_NON_HOLD_SUPPORTED_CARRIERS);
+        mSetFlagsRule.disableFlags(Flags.FLAG_HANGUP_ACTIVE_CALL_BASED_ON_EMERGENCY_CALL_DOMAIN);
     }
 
     @After
@@ -3736,6 +3750,234 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         assertTrue(mTestConnectionService.maybeReselectDomain(c, null, true,
                 android.telephony.DisconnectCause.NOT_VALID));
         verify(mEmergencyCallDomainSelectionConnection).reselectDomain(any());
+    }
+
+    @Test
+    public void testDomainSelectionAddCsEmergencyCallWhenImsCallActive() throws Exception {
+        mSetFlagsRule.enableFlags(Flags.FLAG_HANGUP_ACTIVE_CALL_BASED_ON_EMERGENCY_CALL_DOMAIN);
+
+        setupForCallTest();
+        doReturn(1).when(mPhone0).getSubId();
+        doReturn(1).when(mImsPhone).getSubId();
+        ImsPhoneCall imsPhoneCall = Mockito.mock(ImsPhoneCall.class);
+        ImsPhoneConnection imsPhoneConnection = Mockito.mock(ImsPhoneConnection.class);
+        when(imsPhoneCall.getPhone()).thenReturn(mImsPhone);
+        when(imsPhoneConnection.getCall()).thenReturn(imsPhoneCall);
+        when(imsPhoneConnection.getPhoneType()).thenReturn(PhoneConstants.PHONE_TYPE_IMS);
+
+        // PROPERTY_IS_EXTERNAL_CALL: to avoid extra processing that is not related to this test.
+        SimpleTelephonyConnection tc1 = createTestConnection(PHONE_ACCOUNT_HANDLE_1,
+                android.telecom.Connection.PROPERTY_IS_EXTERNAL_CALL, false);
+        // IMS connection is set.
+        tc1.setOriginalConnection(imsPhoneConnection);
+        mTestConnectionService.addExistingConnection(PHONE_ACCOUNT_HANDLE_1, tc1);
+
+        assertEquals(1, mTestConnectionService.getAllConnections().size());
+        TelephonyConnection connection1 = (TelephonyConnection)
+                mTestConnectionService.getAllConnections().toArray()[0];
+        assertEquals(tc1, connection1);
+
+        // Add a CS emergency call.
+        String telecomCallId2 = "TC2";
+        int selectedDomain = DOMAIN_CS;
+        setupForDialForDomainSelection(mPhone0, selectedDomain, true);
+        getTestContext().getCarrierConfig(0 /*subId*/).putBoolean(
+                CarrierConfigManager.KEY_ALLOW_HOLD_CALL_DURING_EMERGENCY_BOOL, true);
+
+        mTestConnectionService.onCreateOutgoingConnection(PHONE_ACCOUNT_HANDLE_1,
+                createConnectionRequest(PHONE_ACCOUNT_HANDLE_1,
+                        TEST_EMERGENCY_NUMBER, telecomCallId2));
+
+        // Hang up the active IMS call due to CS emergency call.
+        ArgumentCaptor<Connection.Listener> listenerCaptor =
+                ArgumentCaptor.forClass(Connection.Listener.class);
+        verify(imsPhoneConnection).addListener(listenerCaptor.capture());
+        assertTrue(tc1.wasDisconnected);
+
+        // Call disconnection completed.
+        Connection.Listener listener = listenerCaptor.getValue();
+        assertNotNull(listener);
+        listener.onDisconnect(0);
+
+        // Continue to proceed the outgoing emergency call after active call is disconnected.
+        ArgumentCaptor<android.telecom.Connection> connectionCaptor =
+                ArgumentCaptor.forClass(android.telecom.Connection.class);
+        verify(mDomainSelectionResolver)
+                .getDomainSelectionConnection(eq(mPhone0), eq(SELECTOR_TYPE_CALLING), eq(true));
+        verify(mEmergencyStateTracker)
+                .startEmergencyCall(eq(mPhone0), connectionCaptor.capture(), eq(false));
+        verify(mSatelliteSOSMessageRecommender, times(2))
+                .onEmergencyCallStarted(any(), anyBoolean());
+        verify(mEmergencyCallDomainSelectionConnection).createEmergencyConnection(any(), any());
+        verify(mPhone0).dial(anyString(), any(), any());
+
+        android.telecom.Connection tc = connectionCaptor.getValue();
+        assertNotNull(tc);
+        assertEquals(telecomCallId2, tc.getTelecomCallId());
+        assertEquals(mTestConnectionService.getEmergencyConnection(), tc);
+    }
+
+    @Test
+    public void testDomainSelectionAddImsEmergencyCallWhenCsCallActive() throws Exception {
+        mSetFlagsRule.enableFlags(Flags.FLAG_HANGUP_ACTIVE_CALL_BASED_ON_EMERGENCY_CALL_DOMAIN);
+
+        setupForCallTest();
+
+        // PROPERTY_IS_EXTERNAL_CALL: to avoid extra processing that is not related to this test.
+        SimpleTelephonyConnection tc1 = createTestConnection(PHONE_ACCOUNT_HANDLE_1,
+                android.telecom.Connection.PROPERTY_IS_EXTERNAL_CALL, false);
+        // CS connection is set.
+        tc1.setOriginalConnection(mInternalConnection);
+        mTestConnectionService.addExistingConnection(PHONE_ACCOUNT_HANDLE_1, tc1);
+
+        assertEquals(1, mTestConnectionService.getAllConnections().size());
+        TelephonyConnection connection1 = (TelephonyConnection)
+                mTestConnectionService.getAllConnections().toArray()[0];
+        assertEquals(tc1, connection1);
+
+        // Add an IMS emergency call.
+        String telecomCallId2 = "TC2";
+        int selectedDomain = DOMAIN_PS;
+        setupForDialForDomainSelection(mPhone0, selectedDomain, true);
+        getTestContext().getCarrierConfig(0 /*subId*/).putBoolean(
+                CarrierConfigManager.KEY_ALLOW_HOLD_CALL_DURING_EMERGENCY_BOOL, true);
+
+        mTestConnectionService.onCreateOutgoingConnection(PHONE_ACCOUNT_HANDLE_1,
+                createConnectionRequest(PHONE_ACCOUNT_HANDLE_1,
+                        TEST_EMERGENCY_NUMBER, telecomCallId2));
+
+        // Hang up the active CS call due to IMS emergency call.
+        ArgumentCaptor<Connection.Listener> listenerCaptor =
+                ArgumentCaptor.forClass(Connection.Listener.class);
+        verify(mInternalConnection).addListener(listenerCaptor.capture());
+        assertTrue(tc1.wasDisconnected);
+
+        // Call disconnection completed.
+        Connection.Listener listener = listenerCaptor.getValue();
+        assertNotNull(listener);
+        listener.onDisconnect(0);
+
+        // Continue to proceed the outgoing emergency call after active call is disconnected.
+        ArgumentCaptor<android.telecom.Connection> connectionCaptor =
+                ArgumentCaptor.forClass(android.telecom.Connection.class);
+        verify(mDomainSelectionResolver)
+                .getDomainSelectionConnection(eq(mPhone0), eq(SELECTOR_TYPE_CALLING), eq(true));
+        verify(mEmergencyStateTracker)
+                .startEmergencyCall(eq(mPhone0), connectionCaptor.capture(), eq(false));
+        verify(mSatelliteSOSMessageRecommender, times(2))
+                .onEmergencyCallStarted(any(), anyBoolean());
+        verify(mEmergencyCallDomainSelectionConnection).createEmergencyConnection(any(), any());
+        verify(mPhone0).dial(anyString(), any(), any());
+
+        android.telecom.Connection tc = connectionCaptor.getValue();
+        assertNotNull(tc);
+        assertEquals(telecomCallId2, tc.getTelecomCallId());
+        assertEquals(mTestConnectionService.getEmergencyConnection(), tc);
+    }
+
+    @Test
+    @SmallTest
+    public void testDomainSelectionMaybeDisconnectCallsOnOtherDomainWhenNoActiveCalls() {
+        SimpleTelephonyConnection ec = createTestConnection(PHONE_ACCOUNT_HANDLE_1, 0, true);
+        Consumer<Boolean> consumer = (result) -> {
+            if (!result) {
+                fail("Unexpected result=" + result);
+            }
+        };
+        CompletableFuture<Void> unused =
+                TelephonyConnectionService.maybeDisconnectCallsOnOtherDomain(mPhone0,
+                        ec, DOMAIN_PS, Collections.emptyList(), Collections.emptyList(), consumer);
+
+        assertTrue(unused.isDone());
+    }
+
+    @Test
+    @SmallTest
+    public void testDomainSelectionMaybeDisconnectCallsOnOtherDomainWhenConferenceOnly() {
+        setupForCallTest();
+        ArrayList<android.telecom.Conference> conferences = new ArrayList<>();
+        SimpleTelephonyConnection tc1 = createTestConnection(PHONE_ACCOUNT_HANDLE_1, 0, false);
+        SimpleConference conference = createTestConference(PHONE_ACCOUNT_HANDLE_1, 0);
+        tc1.setOriginalConnection(mInternalConnection);
+        conference.addConnection(tc1);
+        conferences.add(conference);
+
+        SimpleTelephonyConnection ec = createTestConnection(PHONE_ACCOUNT_HANDLE_1, 0, true);
+        Consumer<Boolean> consumer = (result) -> {
+            if (!result) {
+                fail("Unexpected result=" + result);
+            }
+        };
+        CompletableFuture<Void> unused =
+                TelephonyConnectionService.maybeDisconnectCallsOnOtherDomain(
+                        mPhone0, ec, DOMAIN_PS, Collections.emptyList(), conferences, consumer);
+
+        assertTrue(unused.isDone());
+        assertTrue(conference.wasDisconnected);
+    }
+
+    @Test
+    @SmallTest
+    public void testDomainSelectionMaybeDisconnectCallsOnOtherDomainWhenActiveCall() {
+        setupForCallTest();
+        ArrayList<android.telecom.Connection> connections = new ArrayList<>();
+        ArrayList<android.telecom.Conference> conferences = new ArrayList<>();
+        SimpleTelephonyConnection tc1 = createTestConnection(PHONE_ACCOUNT_HANDLE_1, 0, false);
+        SimpleConference conference = createTestConference(PHONE_ACCOUNT_HANDLE_1, 0);
+        tc1.setOriginalConnection(mInternalConnection);
+        connections.add(tc1);
+        conference.addConnection(tc1);
+        conferences.add(conference);
+
+        SimpleTelephonyConnection ec = createTestConnection(PHONE_ACCOUNT_HANDLE_1, 0, true);
+        Consumer<Boolean> consumer = (result) -> {
+            if (!result) {
+                fail("Unexpected result=" + result);
+            }
+        };
+        CompletableFuture<Void> unused =
+                TelephonyConnectionService.maybeDisconnectCallsOnOtherDomain(
+                        mPhone0, ec, DOMAIN_PS, connections, conferences, consumer);
+
+        assertFalse(unused.isDone());
+        assertTrue(tc1.wasDisconnected);
+        assertTrue(conference.wasDisconnected);
+
+        ArgumentCaptor<Connection.Listener> listenerCaptor =
+                ArgumentCaptor.forClass(Connection.Listener.class);
+        verify(mInternalConnection).addListener(listenerCaptor.capture());
+
+        // Call disconnection completed.
+        Connection.Listener listener = listenerCaptor.getValue();
+        assertNotNull(listener);
+        listener.onDisconnect(0);
+
+        assertTrue(unused.isDone());
+    }
+
+    @Test
+    @SmallTest
+    public void testDomainSelectionMaybeDisconnectCallsOnOtherDomainWhenExceptionOccurs() {
+        setupForCallTest();
+        ArrayList<android.telecom.Connection> connections = new ArrayList<>();
+        SimpleTelephonyConnection tc1 = createTestConnection(PHONE_ACCOUNT_HANDLE_1, 0, false);
+        tc1.setOriginalConnection(mInternalConnection);
+        connections.add(tc1);
+        doThrow(new NullPointerException("Intended: Connection is null"))
+                .when(mInternalConnection).addListener(any());
+
+        SimpleTelephonyConnection ec = createTestConnection(PHONE_ACCOUNT_HANDLE_1, 0, true);
+        Consumer<Boolean> consumer = (result) -> {
+            if (result) {
+                fail("Unexpected result=" + result);
+            }
+        };
+        CompletableFuture<Void> unused =
+                TelephonyConnectionService.maybeDisconnectCallsOnOtherDomain(
+                        mPhone0, ec, DOMAIN_PS, connections, Collections.emptyList(), consumer);
+
+        assertTrue(unused.isDone());
+        assertFalse(tc1.wasDisconnected);
     }
 
     @Test

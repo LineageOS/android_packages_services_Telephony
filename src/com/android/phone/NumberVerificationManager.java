@@ -22,6 +22,7 @@ import android.os.Looper;
 import android.os.RemoteException;
 import android.telephony.NumberVerificationCallback;
 import android.telephony.PhoneNumberRange;
+import android.telephony.PhoneNumberUtils;
 import android.telephony.ServiceState;
 import android.text.TextUtils;
 import android.util.Log;
@@ -30,11 +31,15 @@ import com.android.internal.telephony.Call;
 import com.android.internal.telephony.INumberVerificationCallback;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
+import com.android.internal.telephony.flags.Flags;
+import com.android.telephony.Rlog;
 
 /**
  * Singleton for managing the call based number verification requests.
  */
 public class NumberVerificationManager {
+    private static final String TAG = "NumberVerification";
+
     interface PhoneListSupplier {
         Phone[] getPhones();
     }
@@ -63,16 +68,40 @@ public class NumberVerificationManager {
      * Check whether the incoming call matches one of the active filters. If so, call the callback
      * that says that the number has been successfully verified.
      * @param number A phone number
+     * @param networkCountryISO the network country ISO for the number
      * @return true if the number matches, false otherwise
      */
-    public synchronized boolean checkIncomingCall(String number) {
+    public synchronized boolean checkIncomingCall(String number, String networkCountryISO) {
         if (mCurrentRange == null || mCallback == null) {
             return false;
         }
 
-        if (mCurrentRange.matches(number)) {
+        Log.i(TAG, "checkIncomingCall: number=" + Rlog.piiHandle(number) + ", country="
+                + networkCountryISO);
+
+        String numberInE164Format;
+        if (Flags.robustNumberVerification()) {
+            // Reformat the number in E.164 format prior to performing matching.
+            numberInE164Format = PhoneNumberUtils.formatNumberToE164(number,
+                    networkCountryISO);
+            if (TextUtils.isEmpty(numberInE164Format)) {
+                // Parsing failed, so we will fall back to just passing the number as-is and hope
+                // for the best.  Chances are this number is an unknown number (ie no caller id),
+                // so it is most likely empty.
+                numberInE164Format = number;
+            }
+        } else {
+            // Default behavior.
+            numberInE164Format = number;
+        }
+
+        if (mCurrentRange.matches(numberInE164Format)) {
             mCurrentRange = null;
             try {
+                // Pass back the network-matched number as-is to the caller of
+                // TelephonyManager#requestNumberVerification -- do not send them the E.164 format
+                // number as that changes the format of the number from what the API consumer may
+                // be expecting.
                 mCallback.onCallReceived(number);
                 return true;
             } catch (RemoteException e) {
@@ -187,6 +216,12 @@ public class NumberVerificationManager {
      * @param pkgName
      */
     static void overrideAuthorizedPackage(String pkgName) {
+        // Make sure we don't have any lingering callbacks kicking around as this could crash other
+        // test runs that follow; also old invocations from previous test invocations could also
+        // mess up things here too.
+        getInstance().mCallback = null;
+        getInstance().mCurrentRange = null;
+        getInstance().mHandler.removeMessages(0);
         sAuthorizedPackageOverride = pkgName;
     }
 }
