@@ -286,7 +286,8 @@ public class NotificationMgr {
         }
 
         Phone phone = PhoneGlobals.getPhone(subId);
-        Log.i(LOG_TAG, "updateMwi(): subId " + subId + " update to " + visible);
+        Log.i(LOG_TAG, "updateMwi(): subId:" + subId + " isRefresh:" + isRefresh
+                + " update to " + visible);
         mMwiVisible.put(subId, visible);
 
         if (visible) {
@@ -401,12 +402,13 @@ public class NotificationMgr {
             final Notification notification = builder.build();
             List<UserHandle> users = getUsersExcludeDying();
             for (UserHandle userHandle : users) {
-                boolean isManagedUser = mUserManager.isManagedProfile(userHandle.getIdentifier());
+                boolean isProfile = mUserManager.isProfile(userHandle.getIdentifier());
                 if (!hasUserRestriction(UserManager.DISALLOW_OUTGOING_CALLS, userHandle)
                         && (userHandle.equals(subAssociatedUserHandle)
-                            || (subAssociatedUserHandle == null && !isManagedUser))
+                            || (subAssociatedUserHandle == null && !isProfile))
                         && !maybeSendVoicemailNotificationUsingDefaultDialer(phone, vmCount,
                         vmNumber, pendingIntent, isSettingsIntent, userHandle, isRefresh)) {
+                    Log.i(LOG_TAG, "updateMwi: notify userHandle=" + userHandle);
                     notifyAsUser(
                             Integer.toString(subId) /* tag */,
                             VOICEMAIL_NOTIFICATION,
@@ -419,12 +421,13 @@ public class NotificationMgr {
                     mSubscriptionManager.getSubscriptionUserHandle(subId);
             List<UserHandle> users = getUsersExcludeDying();
             for (UserHandle userHandle : users) {
-                boolean isManagedUser = mUserManager.isManagedProfile(userHandle.getIdentifier());
+                boolean isProfile = mUserManager.isProfile(userHandle.getIdentifier());
                 if (!hasUserRestriction(UserManager.DISALLOW_OUTGOING_CALLS, userHandle)
                         && (userHandle.equals(subAssociatedUserHandle)
-                            || (subAssociatedUserHandle == null && !isManagedUser))
+                            || (subAssociatedUserHandle == null && !isProfile))
                         && !maybeSendVoicemailNotificationUsingDefaultDialer(phone, 0, null, null,
                         false, userHandle, isRefresh)) {
+                    Log.i(LOG_TAG, "notifyMwi: cancel userHandle=" + userHandle);
                     cancelAsUser(
                             Integer.toString(subId) /* tag */,
                             VOICEMAIL_NOTIFICATION,
@@ -502,9 +505,13 @@ public class NotificationMgr {
 
             BroadcastOptions bopts = BroadcastOptions.makeBasic();
             bopts.setTemporaryAppWhitelistDuration(VOICEMAIL_ALLOW_LIST_DURATION_MILLIS);
+            Log.i(LOG_TAG, "maybeSendVoicemailNotificationUsingDefaultDialer: send via Dialer:"
+                    + intent.getPackage() + ", user:" + userHandle);
             mContext.sendBroadcastAsUser(intent, userHandle, READ_PHONE_STATE, bopts.toBundle());
             return true;
         }
+        Log.i(LOG_TAG, "maybeSendVoicemailNotificationUsingDefaultDialer: not using dialer ; user:"
+                + userHandle);
 
         return false;
     }

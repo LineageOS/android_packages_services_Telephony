@@ -202,6 +202,7 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             "set-satellite-controller-timeout-duration";
     private static final String SET_EMERGENCY_CALL_TO_SATELLITE_HANDOVER_TYPE =
             "set-emergency-call-to-satellite-handover-type";
+    private static final String OVERRIDE_CONFIG_DATA_VERSION = "override-config-data-version";
     private static final String SET_COUNTRY_CODES = "set-country-codes";
     private static final String SET_SATELLITE_ACCESS_CONTROL_OVERLAY_CONFIGS =
             "set-satellite-access-control-overlay-configs";
@@ -426,6 +427,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                 return handleSetShouldSendDatagramToModemInDemoMode();
             case SET_SATELLITE_ACCESS_CONTROL_OVERLAY_CONFIGS:
                 return handleSetSatelliteAccessControlOverlayConfigs();
+            case OVERRIDE_CONFIG_DATA_VERSION:
+                return handleOverrideConfigDataVersion();
             case SET_COUNTRY_CODES:
                 return handleSetCountryCodes();
             case SET_OEM_ENABLED_SATELLITE_PROVISION_STATUS:
@@ -3790,6 +3793,40 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             getOutPrintWriter().println(result);
         } catch (RemoteException e) {
             Log.e(LOG_TAG, "setCountryCodes: ex=" + e.getMessage());
+            errPw.println("Exception: " + e.getMessage());
+            return -1;
+        }
+        return 0;
+    }
+
+    private int handleOverrideConfigDataVersion() {
+        PrintWriter errPw = getErrPrintWriter();
+        boolean reset = false;
+        int version = 0;
+
+        String opt;
+        while ((opt = getNextOption()) != null) {
+            switch (opt) {
+                case "-r": {
+                    reset = true;
+                    break;
+                }
+                case "-v": {
+                    version = Integer.parseInt(getNextArgRequired());
+                    break;
+                }
+            }
+        }
+        Log.d(LOG_TAG, "overrideConfigDataVersion: reset=" + reset + ", version=" + version);
+
+        try {
+            boolean result = mInterface.overrideConfigDataVersion(reset, version);
+            if (VDBG) {
+                Log.v(LOG_TAG, "overrideConfigDataVersion result =" + result);
+            }
+            getOutPrintWriter().println(result);
+        } catch (RemoteException e) {
+            Log.e(LOG_TAG, "overrideConfigDataVersion: ex=" + e.getMessage());
             errPw.println("Exception: " + e.getMessage());
             return -1;
         }

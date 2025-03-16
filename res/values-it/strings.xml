@@ -944,8 +944,8 @@
     <string name="send_from_work_profile_cancel" msgid="177746511030381711">"Annulla"</string>
     <string name="send_from_work_profile_action_str" msgid="6892775562934243337">"Passa al profilo di lavoro"</string>
     <string name="install_messages_on_work_profile_action_str" msgid="3773440996395152903">"Installa un\'app di messaggistica di lavoro"</string>
-    <string name="radio_info_data_view_satellite_config" msgid="343120041798242877">"Mostra configurazione satellite"</string>
-    <string name="satellite_config_viewer" msgid="5128698910841573398">"Visualizzatore configurazione satellite"</string>
+    <string name="radio_info_data_view_satellite_config" msgid="343120041798242877">"Mostra configurazione satellitare"</string>
+    <string name="satellite_config_viewer" msgid="5128698910841573398">"Visualizzatore configurazione satellitare"</string>
     <string name="satellite_config_version_label" msgid="1153447193166314791">"versione:"</string>
     <string name="satellite_config_service_type_label" msgid="21749170241956082">"subId/plmn/servicetype:"</string>
     <string name="satellite_config_allow_access_label" msgid="3806779900418131140">"allow_access:"</string>

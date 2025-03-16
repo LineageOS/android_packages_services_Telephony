@@ -51,7 +51,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyZeroInteractions;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 
 import android.content.ComponentName;
@@ -3989,7 +3989,7 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         mTestConnectionService.onCreateOutgoingConnection(PHONE_ACCOUNT_HANDLE_1,
                 createConnectionRequest(PHONE_ACCOUNT_HANDLE_1, "*%2321%23", TELECOM_CALL_ID1));
 
-        verifyZeroInteractions(mNormalCallDomainSelectionConnection);
+        verifyNoMoreInteractions(mNormalCallDomainSelectionConnection);
     }
 
     @Test

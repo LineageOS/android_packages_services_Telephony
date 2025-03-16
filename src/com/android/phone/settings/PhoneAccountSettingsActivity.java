@@ -63,6 +63,8 @@ public class PhoneAccountSettingsActivity extends PreferenceActivity {
         }
         getFragmentManager().beginTransaction().replace(
                 android.R.id.content, new PhoneAccountSettingsFragment()).commit();
+
+        SettingsConstants.setupEdgeToEdge(this);
     }
 
     @Override

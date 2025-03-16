@@ -34,7 +34,9 @@ import static android.telephony.satellite.SatelliteManager.SATELLITE_RESULT_NO_R
 import static android.telephony.satellite.SatelliteManager.SATELLITE_RESULT_REQUEST_NOT_SUPPORTED;
 import static android.telephony.satellite.SatelliteManager.SATELLITE_RESULT_SUCCESS;
 
+import static com.android.internal.telephony.satellite.SatelliteConstants.TRIGGERING_EVENT_CONFIG_DATA_UPDATED;
 import static com.android.internal.telephony.satellite.SatelliteConstants.TRIGGERING_EVENT_EXTERNAL_REQUEST;
+import static com.android.internal.telephony.satellite.SatelliteConstants.TRIGGERING_EVENT_LOCATION_SETTINGS_DISABLED;
 import static com.android.internal.telephony.satellite.SatelliteConstants.TRIGGERING_EVENT_LOCATION_SETTINGS_ENABLED;
 import static com.android.internal.telephony.satellite.SatelliteConstants.TRIGGERING_EVENT_MCC_CHANGED;
 import static com.android.internal.telephony.satellite.SatelliteConstants.TRIGGERING_EVENT_UNKNOWN;
@@ -174,12 +176,13 @@ public class SatelliteAccessController extends Handler {
     protected static final int CMD_IS_SATELLITE_COMMUNICATION_ALLOWED = 1;
     protected static final int EVENT_WAIT_FOR_CURRENT_LOCATION_TIMEOUT = 2;
     protected static final int EVENT_KEEP_ON_DEVICE_ACCESS_CONTROLLER_RESOURCES_TIMEOUT = 3;
-    protected static final int EVENT_CONFIG_DATA_UPDATED = 4;
+    protected static final int CMD_UPDATE_CONFIG_DATA = 4;
     protected static final int EVENT_COUNTRY_CODE_CHANGED = 5;
     protected static final int EVENT_LOCATION_SETTINGS_ENABLED = 6;
     protected static final int CMD_UPDATE_SYSTEM_SELECTION_CHANNELS = 7;
     protected static final int EVENT_LOCATION_SETTINGS_DISABLED = 8;
     protected static final int EVENT_SATELLITE_SUBSCRIPTION_CHANGED = 9;
+    protected static final int EVENT_CONFIG_DATA_UPDATED = 10;
 
     public static final int DEFAULT_REGIONAL_SATELLITE_CONFIG_ID = 0;
     public static final int UNKNOWN_REGIONAL_SATELLITE_CONFIG_ID = -1;
@@ -520,7 +523,7 @@ public class SatelliteAccessController extends Handler {
         // loadConfigUpdaterConfigs has to be called after loadOverlayConfigs
         // since config updater config has higher priority and thus can override overlay config
         loadConfigUpdaterConfigs();
-        mSatelliteController.registerForConfigUpdateChanged(this, EVENT_CONFIG_DATA_UPDATED,
+        mSatelliteController.registerForConfigUpdateChanged(this, CMD_UPDATE_CONFIG_DATA,
                 context);
         mSatelliteController.registerForSatelliteSubIdChanged(this,
                 EVENT_SATELLITE_SUBSCRIPTION_CHANGED, context);
@@ -697,15 +700,17 @@ public class SatelliteAccessController extends Handler {
             case EVENT_KEEP_ON_DEVICE_ACCESS_CONTROLLER_RESOURCES_TIMEOUT:
                 cleanupOnDeviceAccessControllerResources();
                 break;
-            case EVENT_CONFIG_DATA_UPDATED:
+            case CMD_UPDATE_CONFIG_DATA:
                 AsyncResult ar = (AsyncResult) msg.obj;
                 updateSatelliteAccessDataWithConfigUpdaterData((Context) ar.userObj);
                 break;
+
+            case EVENT_CONFIG_DATA_UPDATED:
+                plogd("EVENT_CONFIG_DATA_UPDATED");      // Fall through
             case EVENT_LOCATION_SETTINGS_ENABLED:
-                plogd("EVENT_LOCATION_SETTINGS_ENABLED");
+                plogd("EVENT_LOCATION_SETTINGS_ENABLED");        // Fall through
             case EVENT_LOCATION_SETTINGS_DISABLED:
-                // Fall through
-                plogd("EVENT_LOCATION_SETTINGS_DISABLED");
+                plogd("EVENT_LOCATION_SETTINGS_DISABLED");       // Fall through
             case EVENT_COUNTRY_CODE_CHANGED:
                 plogd("EVENT_COUNTRY_CODE_CHANGED");
                 handleSatelliteAllowedRegionPossiblyChanged(msg.what);
@@ -1361,7 +1366,7 @@ public class SatelliteAccessController extends Handler {
         mSatelliteCountryCodes = satelliteCountryCodes;
         mIsSatelliteAllowAccessControl = satelliteConfig.isSatelliteDataForAllowedRegion();
         plogd("mSatelliteAccessConfigVersion=" + mSatelliteAccessConfigVersion
-                + "Use s2 cell file=" + mSatelliteS2CellFile.getAbsolutePath()
+                + ", Use s2 cell file=" + mSatelliteS2CellFile.getAbsolutePath()
                 + ", mSatelliteAccessConfigFile=" + mSatelliteAccessConfigFile.getAbsolutePath()
                 + ", country codes=" + String.join(",", mSatelliteCountryCodes)
                 + ", mIsSatelliteAllowAccessControl=" + mIsSatelliteAllowAccessControl
@@ -1377,6 +1382,10 @@ public class SatelliteAccessController extends Handler {
         }
 
         mConfigUpdaterMetricsStats.reportConfigUpdateSuccess();
+        // We need to re-evaluate if satellite is allowed at the current location and if
+        // satellite access configuration has changed with the config data received from config
+        // server, and then notify listeners accordingly.
+        sendRequestAsync(EVENT_CONFIG_DATA_UPDATED, null);
     }
 
     @VisibleForTesting(visibility = VisibleForTesting.Visibility.PRIVATE)
@@ -2112,6 +2121,10 @@ public class SatelliteAccessController extends Handler {
                 triggeringEvent = TRIGGERING_EVENT_LOCATION_SETTINGS_ENABLED;
             } else if (handleEvent == EVENT_COUNTRY_CODE_CHANGED) {
                 triggeringEvent = TRIGGERING_EVENT_MCC_CHANGED;
+            } else if (handleEvent == EVENT_LOCATION_SETTINGS_DISABLED) {
+                triggeringEvent = TRIGGERING_EVENT_LOCATION_SETTINGS_DISABLED;
+            } else if (handleEvent == EVENT_CONFIG_DATA_UPDATED) {
+                triggeringEvent = TRIGGERING_EVENT_CONFIG_DATA_UPDATED;
             }
             mAccessControllerMetricsStats.setTriggeringEvent(triggeringEvent);
         }
@@ -3130,15 +3143,15 @@ public class SatelliteAccessController extends Handler {
             if ("cache_allowed".equalsIgnoreCase(state)) {
                 mLatestSatelliteCommunicationAllowedSetTime = getElapsedRealtimeNanos();
                 mLatestSatelliteCommunicationAllowed = true;
-                mCurrentSatelliteAllowedState = true;
+                updateCurrentSatelliteAllowedState(true);
             } else if ("cache_not_allowed".equalsIgnoreCase(state)) {
                 mLatestSatelliteCommunicationAllowedSetTime = getElapsedRealtimeNanos();
                 mLatestSatelliteCommunicationAllowed = false;
-                mCurrentSatelliteAllowedState = false;
+                updateCurrentSatelliteAllowedState(false);
             } else if ("cache_clear_and_not_allowed".equalsIgnoreCase(state)) {
                 mLatestSatelliteCommunicationAllowedSetTime = 0;
                 mLatestSatelliteCommunicationAllowed = false;
-                mCurrentSatelliteAllowedState = false;
+                updateCurrentSatelliteAllowedState(false);
                 persistLatestSatelliteCommunicationAllowedState();
             } else if ("clear_cache_only".equalsIgnoreCase(state)) {
                 mLatestSatelliteCommunicationAllowedSetTime = 0;
