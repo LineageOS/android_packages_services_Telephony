@@ -16,17 +16,18 @@
 
 package com.android.phone.settings;
 
+import android.app.ComponentCaller;
 import android.app.Dialog;
-import android.content.ContentProvider;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.AsyncResult;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.PersistableBundle;
-import android.os.Process;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.preference.Preference;
@@ -40,6 +41,7 @@ import android.telephony.TelephonyManager;
 import android.text.BidiFormatter;
 import android.text.TextDirectionHeuristics;
 import android.text.TextUtils;
+import android.util.EventLog;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.ListAdapter;
@@ -541,15 +543,31 @@ public class VoicemailSettingsActivity extends PreferenceActivity
             Cursor cursor = null;
             try {
                 // check if the URI returned by the user belongs to the user
-                final int currentUser = UserHandle.getUserId(Process.myUid());
-                if (currentUser
-                        != ContentProvider.getUserIdFromUri(data.getData(), currentUser)) {
-
-                    if (DBG) {
-                        log("onActivityResult: Contact data of different user, "
-                                + "cannot access");
-                    }
+                ComponentCaller currentCaller = getCurrentCaller();
+                if (currentCaller == null) {
+                    Log.e(LOG_TAG,
+                            "onActivityResult: Current caller is null, cannot check permissions.");
                     return;
+                }
+                Uri contactUri = (data != null) ? data.getData() : null;
+                if (contactUri == null) {
+                    Log.w(LOG_TAG, "onActivityResult: Intent data or contact URI is null.");
+                    return;
+                }
+                if (currentCaller.checkContentUriPermission(
+                        contactUri,
+                        Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                        == PackageManager.PERMISSION_DENIED) {
+                    EventLog.writeEvent(0x534e4554, "337785563", currentCaller.getUid(),
+                            "Permission denied, cannot access contact");
+                    throw new SecurityException(String.format(
+                            "Permission denial: Caller (uid=%d, pkg=%s) lacks specific permission"
+                                    + " grant %s to access contact URI %s.",
+                            currentCaller.getUid(),
+                            currentCaller.getPackage(),
+                            "FLAG_GRANT_READ_URI_PERMISSION",
+                            contactUri
+                    ));
                 }
                 cursor = getContentResolver().query(data.getData(),
                     new String[] { CommonDataKinds.Phone.NUMBER }, null, null, null);
