@@ -18,6 +18,23 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cc2d023_7bd0bec8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-03-22T22:08:03Z",
+      "side": 1,
+      "message": "Donr",
+      "revId": "a256a12d6ed5134918ab352d4916b279639461eb",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f4ffc66_4b356dda",
@@ -31,6 +48,24 @@
       "writtenOn": "2025-02-04T14:44:29Z",
       "side": 1,
       "message": "unrelated?",
+      "revId": "a256a12d6ed5134918ab352d4916b279639461eb",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3d87db5_2c1a9511",
+        "filename": "Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-03-22T22:08:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f4ffc66_4b356dda",
       "revId": "a256a12d6ed5134918ab352d4916b279639461eb",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
@@ -52,6 +87,24 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8c7c57c_be4d1d4a",
+        "filename": "AndroidManifest.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-03-22T22:08:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88bd88ec_3d79649d",
+      "revId": "a256a12d6ed5134918ab352d4916b279639461eb",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1c5aef08_c7fd61b6",
@@ -65,6 +118,24 @@
       "writtenOn": "2025-02-04T14:44:29Z",
       "side": 1,
       "message": "unrelated?",
+      "revId": "a256a12d6ed5134918ab352d4916b279639461eb",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b712610_18bcb47d",
+        "filename": "AndroidManifest.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-03-22T22:08:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c5aef08_c7fd61b6",
       "revId": "a256a12d6ed5134918ab352d4916b279639461eb",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
@@ -86,6 +157,24 @@
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95243d6c_c0c61f12",
+        "filename": "AndroidManifest.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-03-22T22:08:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6b8adf3_de01121c",
+      "revId": "a256a12d6ed5134918ab352d4916b279639461eb",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb8f93bc_10c67f43",
@@ -99,6 +188,24 @@
       "writtenOn": "2025-02-04T14:44:29Z",
       "side": 1,
       "message": "unrelated?",
+      "revId": "a256a12d6ed5134918ab352d4916b279639461eb",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9653c6e_a092e164",
+        "filename": "res/layout/adn_list.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2025-03-22T22:08:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb8f93bc_10c67f43",
       "revId": "a256a12d6ed5134918ab352d4916b279639461eb",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
