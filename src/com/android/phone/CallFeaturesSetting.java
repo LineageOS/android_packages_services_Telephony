@@ -234,6 +234,9 @@ public class CallFeaturesSetting extends PreferenceActivity
                                         getString(R.string.mobile_network_settings_package),
                                         getString(R.string.mobile_network_settings_class));
                                 intent.setComponent(mobileNetworkSettingsComponent);
+                                if (mPhone != null) {
+                                    intent.putExtra(Settings.EXTRA_SUB_ID, mPhone.getSubId());
+                                }
                                 startActivityAsUser(intent, UserHandle.CURRENT);
                             }
                         };

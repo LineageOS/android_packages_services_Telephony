@@ -4053,20 +4053,17 @@ public class TelephonyConnectionService extends ConnectionService {
             completeConsumer.accept(false);
             return CompletableFuture.completedFuture(null);
         }
-        List<CompletableFuture<Void>> disconnectFutures = new ArrayList<>();
+        List<CompletableFuture<Boolean>> disconnectFutures = new ArrayList<>();
         for (Conferenceable conferenceable : conferenceables) {
-            CompletableFuture<Void> disconnectFuture = CompletableFuture.completedFuture(null);
+            CompletableFuture<Boolean> disconnectFuture = CompletableFuture.completedFuture(null);
             try {
                 if (conferenceable == null) {
                     disconnectFuture = CompletableFuture.completedFuture(null);
                 } else {
                     // Listen for each disconnect as part of an individual future.
-                    disconnectFuture = CompletableFuture.runAsync(() ->
-                            listenForDisconnectStateChanged(conferenceable)
-                                    .completeOnTimeout(false,
-                                            DEFAULT_DSDA_CALL_STATE_CHANGE_TIMEOUT_MS,
-                                            TimeUnit.MILLISECONDS),
-                            phone.getContext().getMainExecutor());
+                    disconnectFuture = listenForDisconnectStateChanged(conferenceable)
+                            .completeOnTimeout(false, DEFAULT_DSDA_CALL_STATE_CHANGE_TIMEOUT_MS,
+                                    TimeUnit.MILLISECONDS);
                 }
             } catch (Exception e) {
                 Log.w(this, "delayDialForOtherSubDisconnects - exception= " + e.getMessage());

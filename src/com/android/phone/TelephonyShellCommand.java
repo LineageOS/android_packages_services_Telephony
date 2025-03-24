@@ -189,6 +189,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             "set-satellite-listening-timeout-duration";
     private static final String SET_SATELLITE_IGNORE_CELLULAR_SERVICE_STATE =
             "set-satellite-ignore-cellular-service-state";
+    private static final String SET_SUPPORT_DISABLE_SATELLITE_WHILE_ENABLE_IN_PROGRESS =
+            "set-support-disable-satellite-while-enable-in-progress";
     private static final String SET_SATELLITE_TN_SCANNING_SUPPORT =
             "set-satellite-tn-scanning-support";
     private static final String SET_SATELLITE_POINTING_UI_CLASS_NAME =
@@ -413,6 +415,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                 return handleSetSatelliteListeningTimeoutDuration();
             case SET_SATELLITE_IGNORE_CELLULAR_SERVICE_STATE:
                 return handleSetSatelliteIgnoreCellularServiceState();
+            case SET_SUPPORT_DISABLE_SATELLITE_WHILE_ENABLE_IN_PROGRESS:
+                return handleSetSupportDisableSatelliteWhileEnableInProgress();
             case SET_SATELLITE_POINTING_UI_CLASS_NAME:
                 return handleSetSatellitePointingUiClassNameCommand();
             case SET_DATAGRAM_CONTROLLER_TIMEOUT_DURATION:
@@ -3456,6 +3460,44 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         } catch (RemoteException e) {
             Log.w(LOG_TAG, "handleSetSatelliteIgnoreCellularServiceState: " + enabled
                     + ", error = " + e.getMessage());
+            errPw.println("Exception: " + e.getMessage());
+            return -1;
+        }
+        return 0;
+    }
+
+    private int handleSetSupportDisableSatelliteWhileEnableInProgress() {
+        PrintWriter errPw = getErrPrintWriter();
+        boolean reset = false;
+        boolean supported = false;
+
+        String opt;
+        while ((opt = getNextOption()) != null) {
+            switch (opt) {
+                case "-r": {
+                    reset = true;
+                    break;
+                }
+                case "-s": {
+                    supported = Boolean.parseBoolean(getNextArgRequired());
+                    break;
+                }
+            }
+        }
+        Log.d(LOG_TAG, "handleSetSupportDisableSatelliteWhileEnableInProgress: reset=" + reset
+            + ", supported=" + supported);
+
+        try {
+            boolean result = mInterface.setSupportDisableSatelliteWhileEnableInProgress(
+                reset, supported);
+            if (VDBG) {
+                Log.v(LOG_TAG, "handleSetSupportDisableSatelliteWhileEnableInProgress: result = "
+                    + result);
+            }
+            getOutPrintWriter().println(result);
+        } catch (RemoteException e) {
+            Log.w(LOG_TAG, "handleSetSupportDisableSatelliteWhileEnableInProgress: error = "
+                + e.getMessage());
             errPw.println("Exception: " + e.getMessage());
             return -1;
         }

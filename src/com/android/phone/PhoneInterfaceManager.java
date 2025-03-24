@@ -14355,6 +14355,32 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     }
 
     /**
+     * This API can be used by only CTS to control the feature
+     * {@code config_support_disable_satellite_while_enable_in_progress}.
+     *
+     * @param reset Whether to reset the override.
+     * @param supported Whether to support the feature.
+     * @return {@code true} if the value is set successfully, {@code false} otherwise.
+     */
+    public boolean setSupportDisableSatelliteWhileEnableInProgress(
+        boolean reset, boolean supported) {
+        Log.d(LOG_TAG, "setSupportDisableSatelliteWhileEnableInProgress - reset=" + reset
+                  + ", supported=" + supported);
+        TelephonyPermissions.enforceShellOnly(
+                Binder.getCallingUid(), "setSupportDisableSatelliteWhileEnableInProgress");
+        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(mApp,
+                SubscriptionManager.INVALID_SUBSCRIPTION_ID,
+                "setSupportDisableSatelliteWhileEnableInProgress");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return mSatelliteController.setSupportDisableSatelliteWhileEnableInProgress(
+                reset, supported);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
      * This API can be used by only CTS to override the timeout durations used by the
      * DatagramController module.
      *
@@ -15162,5 +15188,36 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
 
         return appNames;
+    }
+
+    /**
+     * Method to return the current satellite data service policy supported mode for the
+     * subscriptionId based on carrier config.
+     *
+     * @param subId current subscription id.
+     *
+     * @return Supported modes {@link SatelliteManager#SatelliteDataSupportMode}
+     * @throws IllegalArgumentException if the subscription is invalid.
+     *
+     * @hide
+     */
+    @Override
+    @SatelliteManager.SatelliteDataSupportMode
+    public int getSatelliteDataSupportMode(int subId) {
+        enforceSatelliteCommunicationPermission("getSatelliteDataSupportMode");
+        int satelliteMode = SatelliteManager.SATELLITE_DATA_SUPPORT_UNKNOWN;
+
+        if (!SubscriptionManager.isValidSubscriptionId(subId)) {
+            throw new IllegalArgumentException("Invalid Subscription ID: " + subId);
+        }
+
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            satelliteMode = mSatelliteController.getSatelliteDataSupportMode(subId);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+
+        return satelliteMode;
     }
 }

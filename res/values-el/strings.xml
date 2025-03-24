@@ -848,7 +848,7 @@
     <string name="simulate_out_of_service_string" msgid="7787925611727597193">"Η προσομοίωση δεν λειτουργεί (μόνο έκδοση εντοπισμού σφαλμάτων)"</string>
     <string name="enforce_satellite_channel_string" msgid="295306734591329892">"Επιβολή καναλιού Camp Satellite LTE (μόνο έκδοση εντοπισμού σφαλμάτων)"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"Εικονική λειτουργία δορυφόρου εταιρείας κινητής τηλεφωνίας (μόνο έκδοση εντοπισμού σφαλμάτων)"</string>
-    <string name="choose_satellite_data_mode" msgid="7526640708482601423">"Εικονική λειτουργία δεδομένων μέσω δορυφόρου (μόνο εντοπισμός σφαλμάτων)"</string>
+    <string name="choose_satellite_data_mode" msgid="7526640708482601423">"Εικονική λειτουργία δεδομένων μέσω δορυφόρου (μόνο αποσφαλμάτωση)"</string>
     <string name="satellite_data_restricted_string" msgid="8729402021843670205">"Με περιορισμό"</string>
     <string name="satellite_data_constrained_string" msgid="4594481912792241881">"Περιορισμένο"</string>
     <string name="satellite_data_unConstrained_string" msgid="3957333012703408141">"Χωρίς περιορισμούς"</string>

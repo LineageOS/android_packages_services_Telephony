@@ -34,6 +34,7 @@ import android.telephony.SubscriptionManager;
 import android.telephony.SubscriptionManager.OnSubscriptionsChangedListener;
 import android.telephony.TelephonyCallback;
 import android.telephony.TelephonyManager;
+import android.telephony.ims.feature.MmTelFeature;
 import android.util.ArrayMap;
 import android.util.Log;
 
@@ -43,6 +44,7 @@ import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.cdma.CdmaInformationRecords.CdmaDisplayInfoRec;
 import com.android.internal.telephony.cdma.CdmaInformationRecords.CdmaSignalInfoRec;
 import com.android.internal.telephony.cdma.SignalToneUtil;
+import com.android.internal.telephony.imsphone.ImsPhoneCallTracker;
 import com.android.internal.telephony.subscription.SubscriptionManagerService;
 
 import java.util.ArrayList;
@@ -148,6 +150,7 @@ public class CallNotifier extends Handler {
                 new OnSubscriptionsChangedListener() {
                     @Override
                     public void onSubscriptionsChanged() {
+                        Log.i(LOG_TAG, "onSubscriptionsChanged");
                         updatePhoneStateListeners(true);
                     }
                 });
@@ -486,6 +489,22 @@ public class CallNotifier extends Handler {
                 SubscriptionManager.INVALID_SUBSCRIPTION_ID);
     }
 
+    /**
+     * Update listeners of various "phone state" things; in particular message waiting indicators
+     * and call forwarding indicators.  The updates can either be due to network signals or due to
+     * "refreshes".  See below for more; I'm not saying this is a good design, I'm just helping set
+     * the context for how this works.
+     * @param isRefresh {@code true} if this is a refresh triggered by
+     * {@link OnSubscriptionsChangedListener}, which ultimately fires way more than it should, or
+     * {@code false} if this update is as a direct result of the network telling us something
+     * changed.
+     * @param updateType {@link #UPDATE_TYPE_MWI} for message waiting indication changes by the
+     * network, {@link #UPDATE_TYPE_CFI} for call forwarding changes by the network, or
+     * {@link #UPDATE_TYPE_MWI_CFI} when {@code isRefresh} is {@code true}.
+     * @param subIdToUpdate The sub ID the update applies to for updates from the network, or
+     * {@link SubscriptionManager#INVALID_SUBSCRIPTION_ID} refreshes due to
+     * {@link OnSubscriptionsChangedListener}.
+     */
     public void updatePhoneStateListeners(boolean isRefresh, int updateType, int subIdToUpdate) {
         List<SubscriptionInfo> subInfos = SubscriptionManagerService.getInstance()
                 .getActiveSubscriptionInfoList(mApplication.getOpPackageName(),
@@ -507,7 +526,7 @@ public class CallNotifier extends Handler {
         for (int subIdCounter = (subIdList.size() - 1); subIdCounter >= 0; subIdCounter--) {
             int subId = subIdList.get(subIdCounter);
             if (subInfos == null || !containsSubId(subInfos, subId)) {
-                Log.d(LOG_TAG, "updatePhoneStateListeners: Hide the outstanding notifications.");
+                Log.i(LOG_TAG, "updatePhoneStateListeners: Hide the outstanding notifications.");
                 // Hide the outstanding notifications.
                 mApplication.notificationMgr.updateMwi(subId, false);
                 mApplication.notificationMgr.updateCfi(subId, false);
@@ -516,7 +535,7 @@ public class CallNotifier extends Handler {
                 mTelephonyManager.unregisterTelephonyCallback(mTelephonyCallback.get(subId));
                 mTelephonyCallback.remove(subId);
             } else {
-                Log.d(LOG_TAG, "updatePhoneStateListeners: update CF notifications.");
+                Log.i(LOG_TAG, "updatePhoneStateListeners: update CF/MWI for subId=" + subId);
 
                 if (mCFIStatus.containsKey(subId)) {
                     if ((updateType == UPDATE_TYPE_CFI) && (subId == subIdToUpdate)) {
@@ -526,6 +545,16 @@ public class CallNotifier extends Handler {
                         mApplication.notificationMgr.updateCfi(subId, mCFIStatus.get(subId), true);
                     }
                 }
+                // Note: This logic is needlessly convoluted.  updatePhoneStateListeners is called
+                // with either:
+                // 1. isRefresh && updateType == UPDATE_TYPE_MWI_CFI
+                //      via updatePhoneStateListeners(bool)
+                //      (ie due to onSubscriptionsChanged)
+                //      This is the "refresh" case.
+                // 2. !isRefresh && updateType != UPDATE_TYPE_MWI_CFI
+                //      via TelephonyCallback MWI or CF changed event.
+                //      This is the "non-refresh" case.
+                // The same "logic" applies for call forwarding indications above.
                 if (mMWIStatus.containsKey(subId)) {
                     if ((updateType == UPDATE_TYPE_MWI) && (subId == subIdToUpdate)) {
                         mApplication.notificationMgr.updateMwi(subId, mMWIStatus.get(subId),
@@ -706,11 +735,20 @@ public class CallNotifier extends Handler {
             this.mSubId = subId;
         }
 
+        /**
+         * Handle changes to the message waiting indicator.
+         * This originates from {@link ImsPhoneCallTracker} via the
+         * {@link MmTelFeature.Listener#onVoiceMessageCountUpdate(int)} callback from the IMS
+         * implementation (there is something similar for GSM/CDMA, but that is old news).
+         * @param visible Whether the message waiting indicator has changed or not.
+         */
         @Override
         public void onMessageWaitingIndicatorChanged(boolean visible) {
-            if (VDBG) log("onMessageWaitingIndicatorChanged(): " + this.mSubId + " " + visible);
+            Log.i(LOG_TAG, "onMessageWaitingIndicatorChanged(): subId=" + this.mSubId
+                    + ", visible=" + (visible ? "Y" : "N"));
             mMWIStatus.put(this.mSubId, visible);
-            updatePhoneStateListeners(false, UPDATE_TYPE_MWI, this.mSubId);
+            // Trigger a "non-refresh" update to the MWI indicator.
+            updatePhoneStateListeners(false /* isRefresh */, UPDATE_TYPE_MWI, this.mSubId);
         }
 
         @Override

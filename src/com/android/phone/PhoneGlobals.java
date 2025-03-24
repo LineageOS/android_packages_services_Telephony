@@ -559,8 +559,16 @@ public class PhoneGlobals extends ContextWrapper {
                         .getBoolean(R.bool.config_gnss_supl_requires_default_data_for_emergency);
                 int inServiceWaitTimeWhenDialEccInApm = getResources().getInteger(R.integer
                         .config_in_service_wait_timer_when_dialing_emergency_routing_ecc_in_apm);
+                boolean turnOffOemEnabledSatelliteDuringEmergencyCall = getResources().getBoolean(
+                        R.bool.config_turn_off_oem_enabled_satellite_during_emergency_call);
+                boolean turnOffNonEmergencyNbIotNtnSatelliteForEmergencyCall = getResources()
+                        .getBoolean(R.bool
+                            .config_turn_off_non_emergency_nb_iot_ntn_satellite_for_emergency_call);
                 EmergencyStateTracker.make(this, isSuplDdsSwitchRequiredForEmergencyCall,
-                        inServiceWaitTimeWhenDialEccInApm, mFeatureFlags);
+                        inServiceWaitTimeWhenDialEccInApm,
+                        turnOffOemEnabledSatelliteDuringEmergencyCall,
+                        turnOffNonEmergencyNbIotNtnSatelliteForEmergencyCall,
+                        mFeatureFlags);
                 DynamicRoutingController.getInstance().initialize(this);
             }
 

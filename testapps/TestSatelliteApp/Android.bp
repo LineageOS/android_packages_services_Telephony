@@ -14,6 +14,8 @@ android_app {
     static_libs: [
         "SatelliteClient",
     ],
+    min_sdk_version: "35",
+    target_sdk_version: "35",
     owner: "google",
     privileged: true,
     certificate: "platform",

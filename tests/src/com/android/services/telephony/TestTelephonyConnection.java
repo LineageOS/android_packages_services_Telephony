@@ -177,14 +177,14 @@ public class TestTelephonyConnection extends TelephonyConnection {
         when(mMockCall.getPhone()).thenReturn(mMockPhone);
         when(mMockPhone.getDefaultPhone()).thenReturn(mMockPhone);
         when(mImsPhoneConnection.getImsCall()).thenReturn(mImsCall);
-        when(mTelecomAccountRegistry.isMergeCallSupported(notNull(PhoneAccountHandle.class)))
+        when(mTelecomAccountRegistry.isMergeCallSupported(notNull()))
                 .thenReturn(mIsConferenceSupported);
-        when(mTelecomAccountRegistry.isMergeImsCallSupported(notNull(PhoneAccountHandle.class)))
+        when(mTelecomAccountRegistry.isMergeImsCallSupported(notNull()))
                 .thenReturn(mIsImsConnection);
         when(mTelecomAccountRegistry
-                .isVideoConferencingSupported(notNull(PhoneAccountHandle.class))).thenReturn(false);
+                .isVideoConferencingSupported(notNull())).thenReturn(false);
         when(mTelecomAccountRegistry
-                .isMergeOfWifiCallsAllowedWhenVoWifiOff(notNull(PhoneAccountHandle.class)))
+                .isMergeOfWifiCallsAllowedWhenVoWifiOff(notNull()))
                 .thenReturn(false);
         try {
             doNothing().when(mMockCall).hangup();
@@ -301,7 +301,7 @@ public class TestTelephonyConnection extends TelephonyConnection {
 
     public void setIsImsConnection(boolean isImsConnection) {
         mIsImsConnection = isImsConnection;
-        when(mTelecomAccountRegistry.isMergeImsCallSupported(notNull(PhoneAccountHandle.class)))
+        when(mTelecomAccountRegistry.isMergeImsCallSupported(notNull()))
                 .thenReturn(isImsConnection && mIsConferenceSupported);
     }
 

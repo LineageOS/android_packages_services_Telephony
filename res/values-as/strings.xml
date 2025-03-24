@@ -33,7 +33,7 @@
     <string name="cancel" msgid="8984206397635155197">"বাতিল কৰক"</string>
     <string name="enter_input" msgid="6193628663039958990">"USSD বাৰ্তাটো <xliff:g id="MIN_LEN">%1$d</xliff:g> আৰু <xliff:g id="MAX_LEN">%2$d</xliff:g> সংখ্যক বৰ্ণৰ ভিতৰত হ\'ব লাগিব। অনুগ্ৰহ কৰি আকৌ চেষ্টা কৰক।"</string>
     <string name="manageConferenceLabel" msgid="8415044818156353233">"কনফাৰেঞ্চ কল পৰিচালনা কৰক"</string>
-    <string name="ok" msgid="7818974223666140165">"ঠিক"</string>
+    <string name="ok" msgid="7818974223666140165">"ঠিক আছে"</string>
     <string name="audio_mode_speaker" msgid="243689733219312360">"স্পীকাৰ"</string>
     <string name="audio_mode_earpiece" msgid="2823700267171134282">"হেণ্ডছেট ইয়েৰপিচ"</string>
     <string name="audio_mode_wired_headset" msgid="5028010823105817443">"তাঁৰযুক্ত হেডছেট"</string>
@@ -148,7 +148,7 @@
     <string name="stk_cc_ss_to_dial_video_error" msgid="4255261231466032505">"SS অনুৰোধ ভিডিঅ\' কললৈ সলনি কৰা হ’ল"</string>
     <string name="fdn_check_failure" msgid="1833769746374185247">"আপোনাৰ ফ\'ন এপ্‌টোৰ ফিক্সড্ ডায়েলিং নম্বৰ ছেটিঙটো অন কৰি থোৱা আছে। ফলস্বৰূপে, কল সম্পৰ্কীয় কিছুমান সুবিধাই কাম কৰা নাই।"</string>
     <string name="radio_off_error" msgid="8321564164914232181">"এই ছেটিংসমূহ চোৱাৰ আগতে ৰেডিঅ\' অন কৰক।"</string>
-    <string name="close_dialog" msgid="1074977476136119408">"ঠিক"</string>
+    <string name="close_dialog" msgid="1074977476136119408">"ঠিক আছে"</string>
     <string name="enable" msgid="2636552299455477603">"অন কৰক"</string>
     <string name="disable" msgid="1122698860799462116">"অফ কৰক"</string>
     <string name="change_num" msgid="6982164494063109334">"আপডে’ট"</string>
@@ -693,7 +693,7 @@
     <string name="change_pin_title" msgid="3564254326626797321">"ভইচমেইলৰ পিন সলনি কৰক"</string>
     <string name="change_pin_continue_label" msgid="5177011752453506371">"অব্যাহত ৰাখক"</string>
     <string name="change_pin_cancel_label" msgid="2301711566758827936">"বাতিল কৰক"</string>
-    <string name="change_pin_ok_label" msgid="6861082678817785330">"ঠিক"</string>
+    <string name="change_pin_ok_label" msgid="6861082678817785330">"ঠিক আছে"</string>
     <string name="change_pin_enter_old_pin_header" msgid="853151335217594829">"আপোনাৰ পুৰণি পিন নিশ্চিত কৰক"</string>
     <string name="change_pin_enter_old_pin_hint" msgid="8801292976275169367">"অব্যাহত ৰাখিবলৈ আপোনাৰ ভইচমেইল পিনটো দিয়ক।"</string>
     <string name="change_pin_enter_new_pin_header" msgid="4739465616733486118">"এটা নতুন পিন ছেট কৰক"</string>
