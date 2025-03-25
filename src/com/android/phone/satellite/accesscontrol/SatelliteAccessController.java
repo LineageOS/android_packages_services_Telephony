@@ -94,6 +94,7 @@ import android.telephony.satellite.SatelliteSubscriberProvisionStatus;
 import android.telephony.satellite.SystemSelectionSpecifier;
 import android.text.TextUtils;
 import android.util.IntArray;
+import android.util.Log;
 import android.util.Pair;
 
 import com.android.internal.R;
@@ -3261,19 +3262,19 @@ public class SatelliteAccessController extends Handler {
     }
 
     private static void logd(@NonNull String log) {
-        Rlog.d(TAG, log);
+        Log.d(TAG, log);
     }
 
     private static void logw(@NonNull String log) {
-        Rlog.w(TAG, log);
+        Log.w(TAG, log);
     }
 
     protected static void loge(@NonNull String log) {
-        Rlog.e(TAG, log);
+        Log.e(TAG, log);
     }
 
     private static void logv(@NonNull String log) {
-        Rlog.v(TAG, log);
+        Log.v(TAG, log);
     }
 
     /**
@@ -3426,28 +3427,28 @@ public class SatelliteAccessController extends Handler {
     }
 
     private void plogv(@NonNull String log) {
-        Rlog.v(TAG, log);
+        Log.v(TAG, log);
         if (mPersistentLogger != null) {
             mPersistentLogger.debug(TAG, log);
         }
     }
 
     private void plogd(@NonNull String log) {
-        Rlog.d(TAG, log);
+        Log.d(TAG, log);
         if (mPersistentLogger != null) {
             mPersistentLogger.debug(TAG, log);
         }
     }
 
     private void plogw(@NonNull String log) {
-        Rlog.w(TAG, log);
+        Log.w(TAG, log);
         if (mPersistentLogger != null) {
             mPersistentLogger.warn(TAG, log);
         }
     }
 
     private void ploge(@NonNull String log) {
-        Rlog.e(TAG, log);
+        Log.e(TAG, log);
         if (mPersistentLogger != null) {
             mPersistentLogger.error(TAG, log);
         }
