@@ -23,6 +23,7 @@ import android.os.PersistableBundle;
 import android.os.RemoteCallbackList;
 import android.os.RemoteException;
 import android.os.UserHandle;
+import android.os.UserManager;
 import android.telephony.CarrierConfigManager;
 import android.telephony.ims.DelegateRequest;
 import android.telephony.ims.FeatureTagState;
@@ -106,6 +107,8 @@ public class SipTransportController implements RcsFeatureController.Feature,
     public interface RoleManagerAdapter {
         /** See {@link RoleManager#getRoleHolders(String)} */
         List<String> getRoleHolders(String roleName);
+        /** See {@link RoleManager#getRoleHoldersAsUser(String, UserHandle)} */
+        List<String> getRoleHoldersAsUser(String roleName, UserHandle user);
         /** See {@link RoleManager#addOnRoleHoldersChangedListenerAsUser} */
         void addOnRoleHoldersChangedListenerAsUser(Executor executor,
                 OnRoleHoldersChangedListener listener, UserHandle user);
@@ -163,6 +166,11 @@ public class SipTransportController implements RcsFeatureController.Feature,
         @Override
         public List<String> getRoleHolders(String roleName) {
             return mRoleManager.getRoleHolders(roleName);
+        }
+
+        @Override
+        public List<String> getRoleHoldersAsUser(String roleName, UserHandle user) {
+            return mRoleManager.getRoleHoldersAsUser(roleName, user);
         }
 
         @Override
@@ -360,6 +368,7 @@ public class SipTransportController implements RcsFeatureController.Feature,
     private CarrierConfigManager mCarrierConfigManager;
     // Cached allowed feature tags from carrier config
     private ArraySet<String> mFeatureTagsAllowed = new ArraySet<>();
+    private UserHandle mMainUser;
 
     /**
      * Create an instance of SipTransportController.
@@ -372,6 +381,8 @@ public class SipTransportController implements RcsFeatureController.Feature,
         mSubId = subId;
 
         mRoleManagerAdapter = new RoleManagerAdapterImpl(context);
+        UserManager userManager = context.getSystemService(UserManager.class);
+        mMainUser = userManager.getMainUser();
         mTimerAdapter = new TimerAdapterImpl();
         mExecutorService = Executors.newSingleThreadScheduledExecutor();
         mCarrierConfigManager = context.getSystemService(CarrierConfigManager.class);
@@ -867,8 +878,9 @@ public class SipTransportController implements RcsFeatureController.Feature,
     @Override
     public void onRoleHoldersChanged(@NonNull String roleName, @NonNull UserHandle user) {
         logi("onRoleHoldersChanged, roleName= " + roleName + ", user= " + user);
-        // Only monitor changes on the system
-        if (!UserHandle.SYSTEM.equals(user)) {
+        boolean isMainOrSystem = (mMainUser != null) ? mMainUser.equals(user)
+                : UserHandle.SYSTEM.equals(user);
+        if (!isMainOrSystem) {
             return;
         }
 
@@ -899,8 +911,14 @@ public class SipTransportController implements RcsFeatureController.Feature,
         String newSmsRolePackageName = "";
         try {
             // Only one app can fulfill the SMS role.
-            newSmsRolePackageName = mRoleManagerAdapter.getRoleHolders(RoleManager.ROLE_SMS)
-                    .stream().findFirst().orElse("");
+            if (mMainUser != null) {
+                newSmsRolePackageName = mRoleManagerAdapter
+                        .getRoleHoldersAsUser(RoleManager.ROLE_SMS, mMainUser)
+                        .stream().findFirst().orElse("");
+            } else {
+                newSmsRolePackageName = mRoleManagerAdapter.getRoleHolders(RoleManager.ROLE_SMS)
+                        .stream().findFirst().orElse("");
+            }
         } catch (Exception e) {
             logi("updateRoleCache: exception=" + e);
         }
@@ -929,6 +947,7 @@ public class SipTransportController implements RcsFeatureController.Feature,
             Set<String> alreadyRequestedTags) {
         Set<String> requestedFeatureTags = controller.getInitialRequest().getFeatureTags();
         String packageName = controller.getPackageName();
+        logi("changeSupportedFeatureTags smsRolePackageName: " + smsRolePackageName);
         if (!smsRolePackageName.equals(packageName)) {
             // Deny all tags.
             Set<FeatureTagState> deniedTags = new ArraySet<>();
@@ -1070,8 +1089,10 @@ public class SipTransportController implements RcsFeatureController.Feature,
 
     private void registerListeners() {
         try {
+            UserHandle user = (mMainUser != null) ? mMainUser : UserHandle.SYSTEM;
+            logi("registerListeners user: " + user);
             mRoleManagerAdapter.addOnRoleHoldersChangedListenerAsUser(mExecutorService, this,
-                    UserHandle.SYSTEM);
+                    user);
         } catch (Exception e) {
             logi("registerListeners: exception=" + e);
         }
@@ -1079,7 +1100,9 @@ public class SipTransportController implements RcsFeatureController.Feature,
 
     private void unregisterListeners() {
         mCachedSmsRolePackageName = "";
-        mRoleManagerAdapter.removeOnRoleHoldersChangedListenerAsUser(this, UserHandle.SYSTEM);
+        UserHandle user = (mMainUser != null) ? mMainUser : UserHandle.SYSTEM;
+        logi("unregisterListeners user: " + user);
+        mRoleManagerAdapter.removeOnRoleHoldersChangedListenerAsUser(this, user);
     }
 
     /**

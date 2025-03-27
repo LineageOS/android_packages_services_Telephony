@@ -34,6 +34,7 @@ import android.os.RemoteException;
 import android.os.ServiceSpecificException;
 import android.os.SystemProperties;
 import android.os.UserHandle;
+import android.os.UserManager;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyFrameworkInitializer;
 import android.telephony.ims.DelegateRequest;
@@ -669,13 +670,28 @@ public class ImsRcsController extends IImsRcsController.Stub {
                     "SipDelegate creation is only supported for devices supporting IMS single "
                             + "registration");
         }
-        if (!UserHandle.getUserHandleForUid(Binder.getCallingUid()).isSystem()) {
+        UserManager userManager = mApp.getApplicationContext().getSystemService(UserManager.class);
+        UserHandle mainUser = userManager.getMainUser();
+        boolean isPrimary;
+        if (mainUser != null) {
+            isPrimary = Binder.getCallingUserHandle().equals(mainUser);
+        } else {
+            isPrimary = Binder.getCallingUserHandle().isSystem();
+        }
+
+        if (!isPrimary) {
             throw new ServiceSpecificException(ImsException.CODE_ERROR_UNSUPPORTED_OPERATION,
                     "SipDelegate creation is only available to primary user.");
         }
         try {
-            int remoteUid = mApp.getPackageManager().getPackageUid(packageName, 0 /*flags*/);
-            if (Binder.getCallingUid() != remoteUid) {
+            int remoteUid;
+            if (mFeatureFlags.hsumPackageManager()) {
+                remoteUid = mApp.getPackageManager().getPackageUidAsUser(packageName, 0 /*flags*/,
+                        Binder.getCallingUserHandle().getIdentifier());
+            } else {
+                remoteUid = mApp.getPackageManager().getPackageUid(packageName, 0 /*flags*/);
+            }
+            if (!UserHandle.isSameApp(Binder.getCallingUid(), remoteUid)) {
                 throw new SecurityException("passed in packageName does not match the caller");
             }
         } catch (PackageManager.NameNotFoundException e) {
