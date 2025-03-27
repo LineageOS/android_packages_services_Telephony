@@ -29,8 +29,9 @@ import android.net.Network;
 import android.net.NetworkCapabilities;
 import android.net.NetworkRequest;
 import android.os.Bundle;
-import android.os.Looper;
+import android.os.Handler;
 import android.os.IBinder;
+import android.os.Looper;
 import android.telephony.satellite.stub.SatelliteDatagram;
 import android.util.Log;
 import android.view.View;
@@ -39,6 +40,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -52,6 +54,7 @@ public class SatelliteTestApp extends Activity {
     private final Object mSendDatagramLock = new Object();
     Network mNetwork = null;
     Context mContext;
+    Handler mHandler;
     ConnectivityManager mConnectivityManager;
     NetworkCallback mSatelliteConstrainNetworkCallback;
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
@@ -60,12 +63,13 @@ public class SatelliteTestApp extends Activity {
     private static final int REQUEST_CODE_SEND_SMS = 1;
     private final int NET_CAPABILITY_NOT_BANDWIDTH_CONSTRAINED = 37;
     private boolean isNetworkRequested = false;
+    public int totalSatelliteRequests = 0;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mContext = getApplicationContext();
-
+        mHandler = new Handler(Looper.getMainLooper());
         mConnectivityManager = getSystemService(ConnectivityManager.class);
 
         if (mSatelliteServiceConn == null) {
@@ -134,11 +138,24 @@ public class SatelliteTestApp extends Activity {
               makeSatelliteDataConstrainedPing(network);
             }
           };
-          if(isNetworkRequested == false) {
-            requestingNetwork();
-          }
+
+            if (!isNetworkRequested) {
+                requestingNetwork();
+            } else {
+                Log.e(TAG, "another request is in progress!");
+                displayToast("another request is in progress!");
+            }
         });
       });
+    }
+
+    private void displayToast(String message) {
+        mHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
@@ -160,6 +177,7 @@ public class SatelliteTestApp extends Activity {
 
     private void requestingNetwork() {
       Log.e(TAG, "Requesting Network");
+      totalSatelliteRequests = totalSatelliteRequests + 1;
       isNetworkRequested = true;
       NetworkRequest request = new NetworkRequest.Builder()
           .addCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
@@ -170,30 +188,58 @@ public class SatelliteTestApp extends Activity {
 
       // Requesting for Network
       mConnectivityManager.requestNetwork(request, mSatelliteConstrainNetworkCallback);
+      checkRequestNetworkComplete(totalSatelliteRequests);
       Log.e(TAG, "onClick + " + request);
+    }
+
+    private void checkRequestNetworkComplete(int currentSatelliteRequestNumber) {
+      mHandler.postDelayed(new Runnable() {
+        @Override
+        public void run() {
+          if (isNetworkRequested && currentSatelliteRequestNumber == totalSatelliteRequests) {
+            releasingNetwork();
+            Log.e(TAG, "ping not supported in this mode!");
+            displayToast("ping not supported in this mode!");
+          }
+        }
+      }, 2000);
     }
 
 
     private void makeSatelliteDataConstrainedPing(final Network network) {
-      Log.e(TAG, "onAvailable + " + network);
-      mNetwork = network;
+        Log.e(TAG, "onAvailable + " + network);
+        mNetwork = network;
 
-      try {
-        PingTask pingTask = new PingTask();
-        Log.d(TAG, "Connecting Satellite for ping");
-        String pingResult = pingTask.ping(mNetwork);
-        if(pingResult != null) {
-          Toast.makeText(mContext, "Ping Passed!", Toast.LENGTH_SHORT).show();
-        } else {
-          Toast.makeText(mContext, "Ping Failed!", Toast.LENGTH_SHORT).show();
+        try {
+            PingTask pingTask = new PingTask();
+            Log.d(TAG, "Connecting Satellite for ping");
+            long startTime = System.currentTimeMillis();
+            String pingResult = pingTask.ping(mNetwork);
+            long latency = System.currentTimeMillis() - startTime;
+            if (pingResult != null) {
+                displayToast("Ping Passed! Latency: " + formatLatency(latency));
+            } else {
+                displayToast("Ping Failed!");
+            }
+        } catch (Exception e) {
+            Log.d(TAG, "Exception at ping: " + e);
+        } finally {
+            // Releasing the callback in the background thread
+            releasingNetwork();
         }
-      } catch (Exception e) {
-        Log.d(TAG, "Exception at ping: " + e);
-      } finally {
-        // Releasing the callback in the background thread
-        releasingNetwork();
-      }
     }
+
+  /**
+   * Formats a time in milliseconds into a human-readable string.
+   *
+   * @param milliseconds The time in milliseconds.
+   * @return The formatted time string (e.g., "1.234 seconds").
+   */
+  public static String formatLatency(long milliseconds) {
+    double seconds = milliseconds / 1000.0;
+    return String.format(Locale.getDefault(), "%.3f seconds", seconds);
+  }
+
 
     private void releasingNetwork() {
       Log.e(TAG, "Realsing Network");
