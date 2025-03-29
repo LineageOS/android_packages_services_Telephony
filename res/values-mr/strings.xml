@@ -824,7 +824,7 @@
     <string name="callFailed_otasp_provisioning_in_process" msgid="3345666183602879326">"सध्या डिव्हाइसची तरतूद केली जात असल्यामुळे कॉल करू शकत नाही."</string>
     <string name="callFailed_already_dialing" msgid="7250591188960691086">"दुसरा आउटगोइंग कॉल आधीच डायल होत असल्यामुळे कॉल करू शकत नाही."</string>
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"अनुत्तरित इनकमिंग कॉल असल्यामुळे कॉल करू शकत नाही. नवीन कॉल करण्याआधी इनकमिंग कॉलला उत्तर द्या किंवा तो नाकारा."</string>
-    <string name="callFailed_calling_disabled" msgid="5010992739401206283">"ro.telephony.disable-call सिस्टम प्रॉपर्टी वापरून कॉल करणे बंद केले गेल्यामुळे कॉल करू शकत नाही."</string>
+    <string name="callFailed_calling_disabled" msgid="5010992739401206283">"ro.telephony.disable-call सिस्टीम प्रॉपर्टी वापरून कॉल करणे बंद केले गेल्यामुळे कॉल करू शकत नाही."</string>
     <string name="callFailed_too_many_calls" msgid="2761754044990799580">"दोन कॉल आधीच प्रगतीपथावर असल्यामुळे कॉल करू शकत नाही. नवीन कॉल करण्याआधी एक कॉल डिस्कनेक्ट करा किंवा त्यांना कॉंफरन्स कॉलमध्ये मर्ज करा."</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"<xliff:g id="SUPP_SERVICE">%s</xliff:g> वापरण्यासाठी, मोबाइल डेटा सुरू केलेला आहे याची खात्री करा. तुम्ही हे मोबाइल नेटवर्क सेटिंग्जमध्ये बदलू शकता."</string>
     <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"<xliff:g id="SUPP_SERVICE">%s</xliff:g> वापरण्यासाठी, मोबाइल डेटा आणि डेटा रोमिंग सुरू केलेले आहेत याची खात्री करा. तुम्ही हे मोबाइल नेटवर्क सेटिंग्जमध्ये बदलू शकता."</string>

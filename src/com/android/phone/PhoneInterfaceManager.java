@@ -28,6 +28,7 @@ import static android.telephony.satellite.SatelliteManager.SATELLITE_DISALLOWED_
 import static android.telephony.satellite.SatelliteManager.SATELLITE_DISALLOWED_REASON_NOT_SUPPORTED;
 import static android.telephony.satellite.SatelliteManager.SATELLITE_DISALLOWED_REASON_UNSUPPORTED_DEFAULT_MSG_APP;
 import static android.telephony.satellite.SatelliteManager.SATELLITE_RESULT_ACCESS_BARRED;
+import static android.telephony.satellite.SatelliteManager.SATELLITE_RESULT_REQUEST_NOT_SUPPORTED;
 import static android.telephony.satellite.SatelliteManager.SATELLITE_RESULT_SUCCESS;
 
 import static com.android.internal.telephony.PhoneConstants.PHONE_TYPE_CDMA;
@@ -488,6 +489,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private static final int MODEM_ACTIVITY_TIME_OFFSET_CORRECTION_MS = 50;
 
     private static final int LINE1_NUMBER_MAX_LEN = 50;
+
+    private static final String CTS_PACKAGE = "android.telephony.cts";
+    private boolean mIsInCtsMode = false;
 
     /**
      * With support for MEP(multiple enabled profile) in Android T, a SIM card can have more than
@@ -13277,6 +13281,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     public void requestSatelliteEnabled(boolean enableSatellite, boolean enableDemoMode,
             boolean isEmergency, @NonNull IIntegerConsumer callback) {
         enforceSatelliteCommunicationPermission("requestSatelliteEnabled");
+        if (shouldIgnoreSatelliteRequestInCtsMode("requestSatelliteEnabled", callback)) {
+            return;
+        }
+
         final long identity = Binder.clearCallingIdentity();
         try {
             if (enableSatellite) {
@@ -13452,6 +13460,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             @NonNull IIntegerConsumer resultCallback,
             @NonNull ISatelliteTransmissionUpdateCallback callback) {
         enforceSatelliteCommunicationPermission("startSatelliteTransmissionUpdates");
+        if (shouldIgnoreSatelliteRequestInCtsMode(
+                "startSatelliteTransmissionUpdates", resultCallback)) {
+            return;
+        }
+
         final long identity = Binder.clearCallingIdentity();
         try {
             mSatelliteController.startSatelliteTransmissionUpdates(resultCallback, callback);
@@ -13475,6 +13488,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             @NonNull IIntegerConsumer resultCallback,
             @NonNull ISatelliteTransmissionUpdateCallback callback) {
         enforceSatelliteCommunicationPermission("stopSatelliteTransmissionUpdates");
+        if (shouldIgnoreSatelliteRequestInCtsMode(
+                "stopSatelliteTransmissionUpdates", resultCallback)) {
+            return;
+        }
+
         final long identity = Binder.clearCallingIdentity();
         try {
             mSatelliteController.stopSatelliteTransmissionUpdates(resultCallback, callback);
@@ -13502,6 +13520,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             @NonNull String token, @NonNull byte[] provisionData,
             @NonNull IIntegerConsumer callback) {
         enforceSatelliteCommunicationPermission("provisionSatelliteService");
+        if (shouldIgnoreSatelliteRequestInCtsMode("provisionSatelliteService", callback)) {
+            return null;
+        }
+
         final long identity = Binder.clearCallingIdentity();
         try {
             return mSatelliteController.provisionSatelliteService(token, provisionData,
@@ -13526,6 +13548,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     public void deprovisionSatelliteService(
             @NonNull String token, @NonNull IIntegerConsumer callback) {
         enforceSatelliteCommunicationPermission("deprovisionSatelliteService");
+        if (shouldIgnoreSatelliteRequestInCtsMode("deprovisionSatelliteService", callback)) {
+            return;
+        }
+
         final long identity = Binder.clearCallingIdentity();
         try {
             mSatelliteController.deprovisionSatelliteService(token, callback);
@@ -13691,6 +13717,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      */
     public void pollPendingDatagrams(IIntegerConsumer callback) {
         enforceSatelliteCommunicationPermission("pollPendingDatagrams");
+        if (shouldIgnoreSatelliteRequestInCtsMode("pollPendingDatagrams", callback)) {
+            return;
+        }
+
         final long identity = Binder.clearCallingIdentity();
         try {
             mSatelliteController.pollPendingDatagrams(callback);
@@ -13721,6 +13751,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             @NonNull SatelliteDatagram datagram, boolean needFullScreenPointingUI,
             @NonNull IIntegerConsumer callback) {
         enforceSatelliteCommunicationPermission("sendDatagram");
+        if (shouldIgnoreSatelliteRequestInCtsMode("sendDatagram", callback)) {
+            return;
+        }
+
         final long identity = Binder.clearCallingIdentity();
         try {
             mSatelliteController.sendDatagram(datagramType, datagram, needFullScreenPointingUI,
@@ -13803,6 +13837,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     public void requestIsCommunicationAllowedForCurrentLocation(int subId,
             @NonNull ResultReceiver result) {
         enforceSatelliteCommunicationPermission("requestIsCommunicationAllowedForCurrentLocation");
+        if (shouldIgnoreSatelliteRequestInCtsMode(
+                "requestIsCommunicationAllowedForCurrentLocation", result)) {
+            return;
+        }
+
         final long identity = Binder.clearCallingIdentity();
         try {
             mSatelliteAccessController.requestIsCommunicationAllowedForCurrentLocation(result,
@@ -13826,6 +13865,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             @NonNull ResultReceiver result) {
         enforceSatelliteCommunicationPermission(
                 "requestSatelliteAccessConfigurationForCurrentLocation");
+        if (shouldIgnoreSatelliteRequestInCtsMode(
+                "requestSatelliteAccessConfigurationForCurrentLocation", result)) {
+            return;
+        }
+
         final long identity = Binder.clearCallingIdentity();
         try {
             mSatelliteAccessController
@@ -13953,6 +13997,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     public void setDeviceAlignedWithSatellite(@NonNull boolean isAligned) {
         enforceSatelliteCommunicationPermission("setDeviceAlignedWithSatellite");
+        if (shouldIgnoreSatelliteRequestInCtsMode("setDeviceAlignedWithSatellite", null)) {
+            return;
+        }
+
         final long identity = Binder.clearCallingIdentity();
         try {
             mSatelliteController.setDeviceAlignedWithSatellite(isAligned);
@@ -13976,6 +14024,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             @SatelliteManager.SatelliteCommunicationRestrictionReason int reason,
             @NonNull IIntegerConsumer callback) {
         enforceSatelliteCommunicationPermission("addAttachRestrictionForCarrier");
+        if (shouldIgnoreSatelliteRequestInCtsMode("addAttachRestrictionForCarrier", callback)) {
+            return;
+        }
+
         final long identity = Binder.clearCallingIdentity();
         try {
             mSatelliteController.addAttachRestrictionForCarrier(subId, reason, callback);
@@ -13999,6 +14051,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             @SatelliteManager.SatelliteCommunicationRestrictionReason int reason,
             @NonNull IIntegerConsumer callback) {
         enforceSatelliteCommunicationPermission("removeAttachRestrictionForCarrier");
+        if (shouldIgnoreSatelliteRequestInCtsMode("removeAttachRestrictionForCarrier", callback)) {
+            return;
+        }
+
         final long identity = Binder.clearCallingIdentity();
         try {
             mSatelliteController.removeAttachRestrictionForCarrier(subId, reason, callback);
@@ -15018,6 +15074,10 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     public void provisionSatellite(@NonNull List<SatelliteSubscriberInfo> list,
             @NonNull ResultReceiver result) {
         enforceSatelliteCommunicationPermission("provisionSatellite");
+        if (shouldIgnoreSatelliteRequestInCtsMode("provisionSatellite", result)) {
+            return;
+        }
+
         final long identity = Binder.clearCallingIdentity();
         try {
             mSatelliteController.provisionSatellite(list, result);
@@ -15038,6 +15098,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     public void deprovisionSatellite(@NonNull List<SatelliteSubscriberInfo> list,
             @NonNull ResultReceiver result) {
         enforceSatelliteCommunicationPermission("deprovisionSatellite");
+        if (shouldIgnoreSatelliteRequestInCtsMode("deprovisionSatellite", result)) {
+            return;
+        }
         final long identity = Binder.clearCallingIdentity();
         try {
             mSatelliteController.deprovisionSatellite(list, result);
@@ -15061,6 +15124,9 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     public void setNtnSmsSupported(boolean ntnSmsSupported) {
         enforceSatelliteCommunicationPermission("setNtnSmsSupported");
         enforceSendSmsPermission();
+        if (shouldIgnoreSatelliteRequestInCtsMode("setNtnSmsSupported", null)) {
+            return;
+        }
 
         final long identity = Binder.clearCallingIdentity();
         try {
@@ -15219,5 +15285,47 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         }
 
         return satelliteMode;
+    }
+
+    /**
+     * This API can be used by only CTS to update CTS mode testing.
+     *
+     * @param ctsMode Whether to enable CTS mode for testing.
+     *
+     * @return {@code true} if the CTS mode is set successfully,
+     * {@code false} otherwise.
+     */
+    public boolean setCtsMode(boolean ctsMode) {
+        Log.d(LOG_TAG, "setCtsMode - " + ctsMode);
+        TelephonyPermissions.enforceShellOnly(
+                Binder.getCallingUid(), "setCtsMode");
+        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(mApp,
+                SubscriptionManager.INVALID_SUBSCRIPTION_ID,
+                "setCtsMode");
+        mIsInCtsMode = ctsMode;
+        return true;
+    }
+
+    private boolean shouldIgnoreSatelliteRequestInCtsMode(
+        @NonNull String methodName, @Nullable Object resultCallback) {
+        if (mIsInCtsMode) {
+            String callingPackage = getCurrentPackageName();
+            if (!TextUtils.equals(callingPackage, CTS_PACKAGE)) {
+                Log.d(LOG_TAG, methodName + " requested by " + callingPackage
+                    + " is ignored in CTS mode");
+                if (resultCallback == null) return true;
+
+                if (resultCallback instanceof ResultReceiver) {
+                    ((ResultReceiver) resultCallback).send(
+                            SatelliteManager.SATELLITE_RESULT_REQUEST_NOT_SUPPORTED, null);
+                } else if (resultCallback instanceof IIntegerConsumer) {
+                    Consumer<Integer> result = FunctionalUtils.ignoreRemoteException(
+                                ((IIntegerConsumer) resultCallback)::accept);
+                    result.accept(SatelliteManager.SATELLITE_RESULT_REQUEST_NOT_SUPPORTED);
+                }
+                return true;
+            }
+        }
+        return false;
     }
 }

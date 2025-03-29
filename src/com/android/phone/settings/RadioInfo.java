@@ -2180,12 +2180,6 @@ public class RadioInfo extends AppCompatActivity {
      * @param bundleToModify : PersistableBundle
      */
     private void updateCarrierConfigToSupportData(PersistableBundle bundleToModify) {
-        // KEY_CARRIER_SUPPORTED_SATELLITE_SERVICES_PER_PROVIDER_BUNDLE key info update
-        PersistableBundle originalBundle = mSatelliteDataOriginalBundle[mPhoneId];
-        bundleToModify.putPersistableBundle(
-                KEY_CARRIER_SUPPORTED_SATELLITE_SERVICES_PER_PROVIDER_BUNDLE,
-                getSatelliteServicesBundleForOperatorPlmn(originalBundle));
-
         // KEY_CARRIER_ROAMING_SATELLITE_DEFAULT_SERVICES_INT_ARRAY key info update
         int[] availableServices = bundleToModify.getIntArray(
                 KEY_CARRIER_ROAMING_SATELLITE_DEFAULT_SERVICES_INT_ARRAY);
@@ -2305,11 +2299,12 @@ public class RadioInfo extends AppCompatActivity {
     }
 
     private void reloadCarrierConfigDefaults() {
-        if (mSatelliteDataOriginalBundle[mPhoneId] != null && isValidSubscription(mSubId)) {
+        if (mSatelliteDataOriginalBundle[mPhoneId] != null) {
             log("satData: Setting originalCarrierConfig = "
                     + mSatelliteDataOriginalBundle[mPhoneId]);
             getCarrierConfig().overrideConfig(mSubId, mSatelliteDataOriginalBundle[mPhoneId],
                     false);
+            mSatelliteDataOriginalBundle[mPhoneId] = null;
         }
     }
 

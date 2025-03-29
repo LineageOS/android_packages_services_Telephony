@@ -186,6 +186,18 @@ public class TelephonyConnectionService extends ConnectionService {
             TelephonyConnectionService.this.addTelephonyConference(mImsConference);
         }
         @Override
+        public void addConferenceFromConnection(ImsConference mImsConference,
+                TelephonyConnection connection) {
+            Connection conferenceHost = mImsConference.getConferenceHost();
+            if (conferenceHost instanceof TelephonyConnection) {
+                TelephonyConnection tcConferenceHost = (TelephonyConnection) conferenceHost;
+                tcConferenceHost.setTelephonyConnectionService(TelephonyConnectionService.this);
+                tcConferenceHost.setPhoneAccountHandle(mImsConference.getPhoneAccountHandle());
+            }
+            TelephonyConnectionService.this
+                    .addTelephonyConferenceFromConnection(mImsConference, connection);
+        }
+        @Override
         public void addExistingConnection(PhoneAccountHandle phoneAccountHandle,
                                           Connection connection) {
             TelephonyConnectionService.this
@@ -4656,6 +4668,19 @@ public class TelephonyConnectionService extends ConnectionService {
      */
     public void addTelephonyConference(@NonNull TelephonyConferenceBase conference) {
         addConference(conference);
+        conference.addTelephonyConferenceListener(mTelephonyConferenceListener);
+    }
+
+    /**
+     * Adds a {@link Conference} to the telephony ConnectionService and registers a listener for
+     * changes to the conference. Reuses the original TelephonyConnection instead of creating a
+     * new one.
+     * @param conference The conference.
+     * @param connection The original Telephony connection.
+     */
+    public void addTelephonyConferenceFromConnection(@NonNull TelephonyConferenceBase conference,
+            @NonNull TelephonyConnection connection) {
+        addConferenceFromConnection(conference, connection);
         conference.addTelephonyConferenceListener(mTelephonyConferenceListener);
     }
 

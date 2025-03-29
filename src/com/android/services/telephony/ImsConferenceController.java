@@ -29,6 +29,7 @@ import android.telephony.CarrierConfigManager;
 
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
+import com.android.internal.telephony.flags.Flags;
 import com.android.phone.PhoneUtils;
 import com.android.telephony.Rlog;
 
@@ -432,10 +433,12 @@ public class ImsConferenceController {
             return;
         }
 
-        // Mark the foreground connection as MERGE_COMPLETE before it is disconnected as part of
-        // the IMS merge conference process:
-        connection.sendTelephonyConnectionEvent(
-                android.telecom.Connection.EVENT_MERGE_COMPLETE, null);
+        if (!Flags.reuseOriginalConnRemoteConfBehavior()) {
+            // Mark the foreground connection as MERGE_COMPLETE before it is disconnected as part of
+            // the IMS merge conference process:
+            connection.sendTelephonyConnectionEvent(
+                    android.telecom.Connection.EVENT_MERGE_COMPLETE, null);
+        }
 
         // Make a clone of the connection which will become the Ims conference host connection.
         // This is necessary since the Connection Service does not support removing a connection
@@ -479,17 +482,32 @@ public class ImsConferenceController {
         conference.setCallDirection(conferenceHostConnection.getCallDirection());
         conference.addTelephonyConferenceListener(mConferenceListener);
         conference.updateConferenceParticipantsAfterCreation();
-        mConnectionService.addConference(conference);
-        conferenceHostConnection.setTelecomCallId(conference.getTelecomCallId());
 
-        // Cleanup TelephonyConnection which backed the original connection and remove from telecom.
-        // Use the "Other" disconnect cause to ensure the call is logged to the call log but the
-        // disconnect tone is not played.
-        connection.removeTelephonyConnectionListener(mTelephonyConnectionListener);
-        connection.setTelephonyConnectionDisconnected(new DisconnectCause(DisconnectCause.OTHER,
-                android.telephony.DisconnectCause.toString(
-                        android.telephony.DisconnectCause.IMS_MERGED_SUCCESSFULLY)));
-        connection.close();
+        if (Flags.reuseOriginalConnRemoteConfBehavior() && conference.isRemotelyHosted()) {
+            Log.i(LOG_TAG, "startConference: Converting original connection into a conference");
+            mConnectionService.addConferenceFromConnection(conference, connection);
+            conferenceHostConnection.setTelecomCallId(conference.getTelecomCallId());
+            conferenceHostConnection
+                    .setTelephonyConnectionProperties(Connection.PROPERTY_REMOTELY_HOSTED);
+        } else {
+            // Mark the foreground connection as MERGE_COMPLETE before it is disconnected as part of
+            // the IMS merge conference process:
+            connection.sendTelephonyConnectionEvent(
+                    android.telecom.Connection.EVENT_MERGE_COMPLETE, null);
+
+            mConnectionService.addConference(conference);
+            conferenceHostConnection.setTelecomCallId(conference.getTelecomCallId());
+
+            // Cleanup TelephonyConnection which backed the original connection and remove from
+            // telecom. Use the "Other" disconnect cause to ensure the call is logged to the call
+            // log but the disconnect tone is not played.
+            connection.removeTelephonyConnectionListener(mTelephonyConnectionListener);
+            connection.setTelephonyConnectionDisconnected(new DisconnectCause(DisconnectCause.OTHER,
+                    android.telephony.DisconnectCause.toString(
+                            android.telephony.DisconnectCause.IMS_MERGED_SUCCESSFULLY)));
+            connection.close();
+        }
+
         mImsConferences.add(conference);
         // If one of the participants failed to join the conference, recalculate will set the
         // conferenceable connections for the conference to show merge calls option.
