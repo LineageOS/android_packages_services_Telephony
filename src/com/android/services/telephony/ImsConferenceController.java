@@ -68,8 +68,11 @@ public class ImsConferenceController {
 
             if (conference instanceof ImsConference) {
                 // Ims Conference call ended, so UE may now have the ability to initiate
-                // an Adhoc Conference call. Hence, try enabling adhoc conference capability
-                mTelecomAccountRegistry.refreshAdhocConference(true);
+                // an Adhoc Conference call. Hence, try enabling adhoc conference capability. This
+                // will be updated for the specified phone account in the case of simultaneous
+                // calling.
+                mTelecomAccountRegistry.refreshAdhocConference(true,
+                        getPhoneAccountHandle(conference));
             }
             mImsConferences.remove(conference);
         }
@@ -308,8 +311,10 @@ public class ImsConferenceController {
 
             // Since UE cannot host two conference calls, remove the ability to initiate
             // another conference call as there already exists a conference call, which
-            // is hosted on this device.
-            mTelecomAccountRegistry.refreshAdhocConference(false);
+            // is hosted on this device. However, for simultaneous calling, we WILL allow UE to host
+            // a conference call on each subscription.
+            mTelecomAccountRegistry.refreshAdhocConference(false,
+                    getPhoneAccountHandle(conference));
 
             switch (conference.getState()) {
                 case Connection.STATE_ACTIVE:

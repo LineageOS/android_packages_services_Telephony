@@ -1583,14 +1583,57 @@ public class TelecomAccountRegistry {
         synchronized (mAccountsLock) {
             Log.v(this, "refreshAdhocConference isEnable = " + isEnableAdhocConf);
             for (AccountEntry entry : mAccounts) {
-                boolean hasAdhocConfCapability = entry.mAccount.hasCapabilities(
-                        PhoneAccount.CAPABILITY_ADHOC_CONFERENCE_CALLING);
-                if (!isEnableAdhocConf && hasAdhocConfCapability) {
-                    entry.updateAdhocConfCapability(isEnableAdhocConf);
-                } else if (isEnableAdhocConf && !hasAdhocConfCapability) {
-                    entry.updateAdhocConfCapability(entry.mPhone.isImsRegistered());
-                }
+                updateAdhocCapabilityForAccountEntry(entry, isEnableAdhocConf);
             }
+        }
+    }
+
+    /**
+     * Refreshes the adhoc conference capability with the new value for a given phone account.
+     * In the context of simultaneous calling, adhoc conference capability will be supported on a
+     * per sim basis. The existing behavior will remove the adhoc conference capability for all
+     * phone accounts if there's an ongoing adhoc conference on any phone account.
+     * @param isEnableAdhocConf The new enablement value for adhoc conference capability
+     * @param handle The associated handle to update adhoc conference capability for in simultaneous
+     *               calling.
+     */
+    public void refreshAdhocConference(boolean isEnableAdhocConf, PhoneAccountHandle handle) {
+        if (!isSimultaneousCallingEnabled() || handle == null) {
+            refreshAdhocConference(isEnableAdhocConf);
+        } else { // For simultaneous calling, we will allow adhoc conferences to be added per
+            // subscription.
+            synchronized (mAccountsLock) {
+                Log.v(this, "refreshAdhocConferenceCallSequencing isEnable = " + isEnableAdhocConf
+                        + ", for handle = " + handle);
+                mAccounts.stream()
+                        .filter((e) -> Objects.equals(e.getPhoneAccountHandle(), handle))
+                        .findFirst().ifPresent(entry ->
+                                updateAdhocCapabilityForAccountEntry(entry, isEnableAdhocConf));
+            }
+        }
+    }
+
+    private void updateAdhocCapabilityForAccountEntry(AccountEntry entry,
+            boolean isEnableAdhocConf) {
+        boolean hasAdhocConfCapability = entry.mAccount.hasCapabilities(
+                PhoneAccount.CAPABILITY_ADHOC_CONFERENCE_CALLING);
+        if (!isEnableAdhocConf && hasAdhocConfCapability) {
+            entry.updateAdhocConfCapability(false);
+        } else if (isEnableAdhocConf && !hasAdhocConfCapability) {
+            entry.updateAdhocConfCapability(entry.mPhone.isImsRegistered());
+        }
+    }
+
+    private boolean isSimultaneousCallingEnabled() {
+        try {
+            return mTelephonyManager.getMaxNumberOfSimultaneouslyActiveSims() > 1
+                    || mTelephonyManager.getPhoneCapability().getMaxActiveVoiceSubscriptions() > 1;
+        } catch (UnsupportedOperationException uoe) {
+            Log.w(this, "Telephony not supported");
+            return false;
+        } catch (Exception e) {
+            Log.w(this, "exception in isSimultaneousCallingEnabled(): ", e);
+            return false;
         }
     }
 
