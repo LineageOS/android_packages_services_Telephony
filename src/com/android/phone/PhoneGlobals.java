@@ -720,7 +720,7 @@ public class PhoneGlobals extends ContextWrapper {
         if (getResources().getBoolean(R.bool.hac_enabled)) {
             int hac = android.provider.Settings.System.getInt(
                     getContentResolver(),
-                    android.provider.Settings.System.HEARING_AID,
+                    android.provider.Settings.System.HEARING_AID_COMPATIBILITY,
                     0);
             AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
             audioManager.setParameters(
