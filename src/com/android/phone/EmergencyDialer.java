@@ -126,6 +126,7 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
     public static final int ENTRY_TYPE_UNKNOWN = 0;
     public static final int ENTRY_TYPE_LOCKSCREEN_BUTTON = 1;
     public static final int ENTRY_TYPE_POWER_MENU = 2;
+    public static final int ENTRY_TYPE_SETUP = 3;
 
     // List of dialer button IDs.
     private static final int[] DIALER_KEYS = new int[]{
@@ -1193,6 +1194,8 @@ public class EmergencyDialer extends Activity implements View.OnClickListener,
                 return "LockScreen";
             case ENTRY_TYPE_POWER_MENU:
                 return "PowerMenu";
+            case ENTRY_TYPE_SETUP:
+                return "Setup";
             default:
                 return "Unknown-" + entryType;
         }
