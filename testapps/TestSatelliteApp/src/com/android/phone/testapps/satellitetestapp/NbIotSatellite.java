@@ -50,6 +50,7 @@ public class NbIotSatellite extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        TestSatelliteUtils.setupEdgeToEdge(this);
         sSatelliteService = SatelliteTestApp.getTestSatelliteService();
         mSatelliteManager = getSystemService(SatelliteManager.class);
 

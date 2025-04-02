@@ -69,6 +69,7 @@ public class SatelliteTestApp extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mContext = getApplicationContext();
+        TestSatelliteUtils.setupEdgeToEdge(this);
         mHandler = new Handler(Looper.getMainLooper());
         mConnectivityManager = getSystemService(ConnectivityManager.class);
 

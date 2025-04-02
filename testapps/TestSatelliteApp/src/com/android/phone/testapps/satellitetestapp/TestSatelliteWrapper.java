@@ -73,6 +73,7 @@ public class TestSatelliteWrapper extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        TestSatelliteUtils.setupEdgeToEdge(this);
         mSatelliteManagerWrapper = SatelliteManagerWrapper.getInstance(this);
         mSubscriptionManager = getSystemService(SubscriptionManager.class);
         mSubId = getActiveSubId();

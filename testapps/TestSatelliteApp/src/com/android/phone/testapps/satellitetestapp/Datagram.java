@@ -74,6 +74,7 @@ public class Datagram extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        TestSatelliteUtils.setupEdgeToEdge(this);
         mSatelliteManager = getSystemService(SatelliteManager.class);
         mDatagramCallback = new SatelliteDatagramCallbackTestApp();
         mStateCallback = new SatelliteModemStateCallbackTestApp();

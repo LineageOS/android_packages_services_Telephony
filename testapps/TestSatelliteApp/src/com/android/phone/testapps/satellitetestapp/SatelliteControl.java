@@ -55,6 +55,7 @@ public class SatelliteControl extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        TestSatelliteUtils.setupEdgeToEdge(this);
         mSatelliteManager = getSystemService(SatelliteManager.class);
         mSubscriptionManager = getSystemService(SubscriptionManager.class);
 

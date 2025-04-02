@@ -43,6 +43,7 @@ public class MultipleSendReceive extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        TestSatelliteUtils.setupEdgeToEdge(this);
         mSatelliteManager = getSystemService(SatelliteManager.class);
         mReceivedDatagram = new android.telephony.satellite.stub.SatelliteDatagram();
 

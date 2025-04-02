@@ -597,6 +597,7 @@
         <!-- Update configuration data file -->
         <receiver android:name="com.android.internal.telephony.configupdate.TelephonyConfigUpdateInstallReceiver"
             android:exported="true"
+            androidprv:systemUserOnly="true"
             android:permission="android.permission.UPDATE_CONFIG">
             <intent-filter>
                 <action android:name="android.os.action.UPDATE_CONFIG" />

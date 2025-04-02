@@ -61,6 +61,7 @@ public class SendReceive extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        TestSatelliteUtils.setupEdgeToEdge(this);
         mSatelliteManager = getSystemService(SatelliteManager.class);
         mCallback = new SendReceive.SatelliteDatagramCallbackTestApp();
 

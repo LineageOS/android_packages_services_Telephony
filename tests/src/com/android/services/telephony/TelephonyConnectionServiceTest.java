@@ -3876,6 +3876,66 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
     }
 
     @Test
+    public void testDomainSelectionAddVoWifiEmergencyCallWhenImsCallActive() throws Exception {
+        mSetFlagsRule.enableFlags(Flags.FLAG_HANGUP_ACTIVE_CALL_BASED_ON_EMERGENCY_CALL_DOMAIN);
+
+        setupForCallTest();
+        doReturn(1).when(mPhone0).getSubId();
+        doReturn(1).when(mImsPhone).getSubId();
+        ImsPhoneCall imsPhoneCall = Mockito.mock(ImsPhoneCall.class);
+        ImsPhoneConnection imsPhoneConnection = Mockito.mock(ImsPhoneConnection.class);
+        when(imsPhoneCall.getPhone()).thenReturn(mImsPhone);
+        when(imsPhoneConnection.getCall()).thenReturn(imsPhoneCall);
+        when(imsPhoneConnection.getPhoneType()).thenReturn(PhoneConstants.PHONE_TYPE_IMS);
+
+        // PROPERTY_IS_EXTERNAL_CALL: to avoid extra processing that is not related to this test.
+        SimpleTelephonyConnection tc1 = createTestConnection(PHONE_ACCOUNT_HANDLE_1,
+                android.telecom.Connection.PROPERTY_IS_EXTERNAL_CALL, false);
+        // IMS connection is set.
+        tc1.setOriginalConnection(imsPhoneConnection);
+        mTestConnectionService.addExistingConnection(PHONE_ACCOUNT_HANDLE_1, tc1);
+
+        assertEquals(1, mTestConnectionService.getAllConnections().size());
+        TelephonyConnection connection1 = (TelephonyConnection)
+                mTestConnectionService.getAllConnections().toArray()[0];
+        assertEquals(tc1, connection1);
+
+        // Add VoWifi emergency call.
+        String telecomCallId2 = "TC2";
+        int selectedDomain = PhoneConstants.DOMAIN_NON_3GPP_PS;
+        setupForDialForDomainSelection(mPhone0, selectedDomain, true);
+        getTestContext().getCarrierConfig(0 /*subId*/).putBoolean(
+                CarrierConfigManager.KEY_ALLOW_HOLD_CALL_DURING_EMERGENCY_BOOL, true);
+
+        mTestConnectionService.onCreateOutgoingConnection(PHONE_ACCOUNT_HANDLE_1,
+                createConnectionRequest(PHONE_ACCOUNT_HANDLE_1,
+                        TEST_EMERGENCY_NUMBER, telecomCallId2));
+
+        // Maintain the active IMS call because VoWifi emergency call is made.
+        ArgumentCaptor<Connection.Listener> listenerCaptor =
+                ArgumentCaptor.forClass(Connection.Listener.class);
+        verify(imsPhoneConnection, never()).addListener(listenerCaptor.capture());
+        assertFalse(tc1.wasDisconnected);
+
+        // Continue to proceed the outgoing emergency call without active call disconnection.
+        ArgumentCaptor<android.telecom.Connection> connectionCaptor =
+                ArgumentCaptor.forClass(android.telecom.Connection.class);
+        verify(mDomainSelectionResolver)
+                .getDomainSelectionConnection(eq(mPhone0), eq(SELECTOR_TYPE_CALLING), eq(true));
+        verify(mEmergencyStateTracker)
+                .startEmergencyCall(eq(mPhone0), connectionCaptor.capture(), eq(false));
+        verify(mSatelliteSOSMessageRecommender, times(2))
+                .onEmergencyCallStarted(any(), anyBoolean());
+        verify(mEmergencyCallDomainSelectionConnection).createEmergencyConnection(any(), any());
+        verify(mPhone0).dial(anyString(), any(), any());
+
+        android.telecom.Connection tc = connectionCaptor.getValue();
+        assertNotNull(tc);
+        assertEquals(telecomCallId2, tc.getTelecomCallId());
+        assertEquals(mTestConnectionService.getEmergencyConnection(), tc);
+    }
+
+    @Test
     @SmallTest
     public void testDomainSelectionMaybeDisconnectCallsOnOtherDomainWhenNoActiveCalls() {
         SimpleTelephonyConnection ec = createTestConnection(PHONE_ACCOUNT_HANDLE_1, 0, true);
