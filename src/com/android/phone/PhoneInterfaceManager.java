@@ -447,6 +447,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private AppOpsManager mAppOps;
     private PackageManager mPackageManager;
     private final int mVendorApiLevel;
+    private final TelephonyShellCommand mTelephonyShellCommand;
 
     @Nullable
     private ComponentName mTestEuiccUiComponent;
@@ -2512,6 +2513,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 getDefaultPhone().getContext(), featureFlags);
         mVendorApiLevel = SystemProperties.getInt(
                 "ro.vendor.api_level", Build.VERSION.DEVICE_INITIAL_SDK_INT);
+        mTelephonyShellCommand = new TelephonyShellCommand(this, getDefaultPhone().getContext());
 
         PropertyInvalidatedCache.invalidateCache(TelephonyManager.CACHE_KEY_PHONE_ACCOUNT_TO_SUBID);
         publish();
@@ -9578,7 +9580,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     public int handleShellCommand(@NonNull ParcelFileDescriptor in,
             @NonNull ParcelFileDescriptor out, @NonNull ParcelFileDescriptor err,
             @NonNull String[] args) {
-        return new TelephonyShellCommand(this, getDefaultPhone().getContext()).exec(
+        Log.d(LOG_TAG, "handleShellCommand");
+        return mTelephonyShellCommand.exec(
                 this, in.getFileDescriptor(), out.getFileDescriptor(),
                 err.getFileDescriptor(), args);
     }
