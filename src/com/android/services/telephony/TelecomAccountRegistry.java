@@ -46,6 +46,7 @@ import android.provider.Telephony;
 import android.telecom.PhoneAccount;
 import android.telecom.PhoneAccountHandle;
 import android.telecom.TelecomManager;
+import android.telephony.AnomalyReporter;
 import android.telephony.CarrierConfigManager;
 import android.telephony.ServiceState;
 import android.telephony.SubscriptionInfo;
@@ -84,6 +85,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
+import java.util.UUID;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -94,6 +96,11 @@ import java.util.stream.Collectors;
 public class TelecomAccountRegistry {
     private static final boolean DBG = false; /* STOP SHIP if true */
     private static final String LOG_TAG = "TelecomAccountRegistry";
+
+    private static final String UUID_SECURITY_EXCEPTION_ON_REGISTRATION =
+            "5cd718af-4ef1-4835-8e5b-ebf78eb030ee";
+    private static final String SECURITY_EXCEPTION_ON_REGISTRATION_MSG =
+            "Failed to register a telephony phone account.";
 
     // This icon is the one that is used when the Slot ID that we have for a particular SIM
     // is not supported, i.e. SubscriptionManager.INVALID_SLOT_ID or the 5th SIM in a phone.
@@ -305,7 +312,16 @@ public class TelecomAccountRegistry {
             if (!newAccount.equals(mAccount)) {
                 Log.i(this, "reRegisterPstnPhoneAccount: subId: " + getSubId()
                         + " - re-register due to account change.");
-                mTelecomManager.registerPhoneAccount(newAccount);
+                try {
+                    mTelecomManager.registerPhoneAccount(newAccount);
+                } catch (SecurityException se) {
+                    Log.e(this, se, "reRegisterPstnPhoneAccount: acct=" + newAccount + " failed");
+                    AnomalyReporter.reportAnomaly(
+                            UUID.fromString(UUID_SECURITY_EXCEPTION_ON_REGISTRATION),
+                            SECURITY_EXCEPTION_ON_REGISTRATION_MSG);
+                    // Rethrow because this is not recoverable.
+                    throw se;
+                }
                 mAccount = newAccount;
             } else {
                 Log.i(this, "reRegisterPstnPhoneAccount: subId: " + getSubId() + " - no change");
@@ -317,7 +333,16 @@ public class TelecomAccountRegistry {
             Log.i(this, "registerPstnPhoneAccount: Registering account=%s with "
                     + "Telecom. subId=%d", account, getSubId());
             // Register with Telecom and put into the account entry.
-            mTelecomManager.registerPhoneAccount(account);
+            try {
+                mTelecomManager.registerPhoneAccount(account);
+            } catch (SecurityException se) {
+                Log.e(this, se, "registerPstnPhoneAccount: acct=" + account + " failed");
+                AnomalyReporter.reportAnomaly(
+                        UUID.fromString(UUID_SECURITY_EXCEPTION_ON_REGISTRATION),
+                        SECURITY_EXCEPTION_ON_REGISTRATION_MSG);
+                // Rethrow because this is not recoverable.
+                throw se;
+            }
             return account;
         }
 
