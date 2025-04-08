@@ -3175,7 +3175,7 @@ public class SatelliteAccessController extends Handler {
             try {
                 listener.onAccessAllowedStateChanged(allowState);
             } catch (RemoteException e) {
-                plogd("handleEventNtnSignalStrengthChanged RemoteException: " + e);
+                plogd("notifySatelliteCommunicationAllowedStateChanged RemoteException: " + e);
                 deadCallersList.add(listener);
             }
         });
