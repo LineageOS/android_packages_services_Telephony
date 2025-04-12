@@ -28,7 +28,6 @@ import static android.telephony.satellite.SatelliteManager.SATELLITE_DISALLOWED_
 import static android.telephony.satellite.SatelliteManager.SATELLITE_DISALLOWED_REASON_NOT_SUPPORTED;
 import static android.telephony.satellite.SatelliteManager.SATELLITE_DISALLOWED_REASON_UNSUPPORTED_DEFAULT_MSG_APP;
 import static android.telephony.satellite.SatelliteManager.SATELLITE_RESULT_ACCESS_BARRED;
-import static android.telephony.satellite.SatelliteManager.SATELLITE_RESULT_REQUEST_NOT_SUPPORTED;
 import static android.telephony.satellite.SatelliteManager.SATELLITE_RESULT_SUCCESS;
 
 import static com.android.internal.telephony.PhoneConstants.PHONE_TYPE_CDMA;
@@ -11187,10 +11186,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             String carrierUAProfUrl = mApp.getCarrierConfigForSubId(subId).getString(
                     CarrierConfigManager.KEY_MMS_UA_PROF_URL_STRING);
             if (!TextUtils.isEmpty(carrierUAProfUrl)) {
-                return carrierUAProfUrl;
+                return carrierUAProfUrl.replace("%s", Build.MODEL);
             }
             return SubscriptionManager.getResourcesForSubId(getDefaultPhone().getContext(), subId)
-                    .getString(com.android.internal.R.string.config_mms_user_agent_profile_url);
+                    .getString(com.android.internal.R.string.config_mms_user_agent_profile_url)
+                    .replace("%s", Build.MODEL);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -11207,10 +11207,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             String carrierUserAgent = mApp.getCarrierConfigForSubId(subId).getString(
                     CarrierConfigManager.KEY_MMS_USER_AGENT_STRING);
             if (!TextUtils.isEmpty(carrierUserAgent)) {
-                return carrierUserAgent;
+                return carrierUserAgent.replace("%s", Build.MODEL);
             }
             return SubscriptionManager.getResourcesForSubId(getDefaultPhone().getContext(), subId)
-                    .getString(com.android.internal.R.string.config_mms_user_agent);
+                    .getString(com.android.internal.R.string.config_mms_user_agent)
+                    .replace("%s", Build.MODEL);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
