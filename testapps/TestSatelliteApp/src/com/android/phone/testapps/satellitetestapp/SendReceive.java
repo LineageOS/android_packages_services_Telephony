@@ -73,7 +73,7 @@ public class SendReceive extends Activity {
         findViewById(R.id.Back).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(SendReceive.this, SatelliteTestApp.class));
+                startActivity(new Intent(SendReceive.this, ApiTestApp.class));
             }
         });
     }
@@ -164,8 +164,8 @@ public class SendReceive extends Activity {
             showErrorStatusTextView.setText("Status for registerForIncomingDatagram : "
                     + SatelliteErrorUtils.mapError(result));
         }
-        if (SatelliteTestApp.getTestSatelliteService() != null) {
-            SatelliteTestApp.getTestSatelliteService().sendOnPendingDatagrams();
+        if (ApiTestApp.getTestSatelliteService() != null) {
+            ApiTestApp.getTestSatelliteService().sendOnPendingDatagrams();
         }
         mSatelliteManager.requestEnabled(
                 new EnableRequestAttributes.Builder(true).setDemoMode(true).build(),
@@ -274,8 +274,8 @@ public class SendReceive extends Activity {
                 new android.telephony.satellite.stub.PointingInfo();
         pointingInfo.satelliteAzimuth = 50.5f;
         pointingInfo.satelliteElevation = 20.36f;
-        if (SatelliteTestApp.getTestSatelliteService() != null) {
-            SatelliteTestApp.getTestSatelliteService().sendOnSatellitePositionChanged(pointingInfo);
+        if (ApiTestApp.getTestSatelliteService() != null) {
+            ApiTestApp.getTestSatelliteService().sendOnSatellitePositionChanged(pointingInfo);
         }
         TextView satellitePositionTextView = findViewById(R.id.satellitePosition);
         try {

@@ -36,57 +36,18 @@
             android:layout_weight="0"
             android:textColor="@android:color/holo_blue_dark"
             android:textSize="20dp"
-            android:text="Available Satellite APIs"/>
+            android:text="Satellite Test App"/>
         <Button
-            android:id="@+id/SatelliteControl"
+            android:id="@+id/SatelliteDataTest"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingRight="4dp"
-            android:text="@string/SatelliteControl"/>
+            android:text="Satellite Data Test" />
         <Button
-            android:id="@+id/Datagram"
+            android:id="@+id/ApiTestApp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingRight="4dp"
-            android:text="@string/Datagram"/>
-        <Button
-            android:id="@+id/Provisioning"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingRight="4dp"
-            android:text="@string/Provisioning"/>
-        <Button
-            android:id="@+id/MultipleSendReceive"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingRight="4dp"
-            android:text="@string/MultipleSendReceive"/>
-        <Button
-             android:id="@+id/SendReceive"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:paddingRight="4dp"
-             android:text="@string/SendReceive"/>
-        <Button
-            android:id="@+id/NbIotSatellite"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingStart="4dp"
-            android:paddingEnd="4dp"
-            android:text="@string/NbIotSatellite"/>
-        <Button
-            android:id="@+id/TestSatelliteWrapper"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingStart="4dp"
-            android:paddingEnd="4dp"
-            android:text="@string/TestSatelliteWrapper"/>
-        <Button
-            android:id="@+id/TestSatelliteConstrainConnection"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingStart="4dp"
-            android:paddingEnd="4dp"
-            android:text="@string/TestSatelliteConstrainConnection"/>
+            android:text="Api Test App"/>
     </LinearLayout>
 </ScrollView>

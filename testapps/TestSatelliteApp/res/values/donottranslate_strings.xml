@@ -63,6 +63,18 @@
     <string name="receiveMessage">receiveMessage</string>
 
     <string name="TestSatelliteConstrainConnection">Test Satellite Constrain Connection</string>
+    <string name="SatelliteDataConnectionPingTest">Satellite Connection Ping Test</string>
+
+    <string name="SatellitePingTest">Satellite Ping Test</string>
+    <string name="StartPingTest">Start Ping Test</string>
+    <string name="StopPingTest">Stop Ping Test</string>
+    <string name="ResetPingTest">Reset Ping Test</string>
+    <string name="dataMode">DataMode : </string>
+    <string name="StopTask">Stop Task</string>
+
+    <string name="SatelliteSpeedTest">Satellite Speed Test</string>
+    <string name="DownloadDataInSatelliteMode">Download data</string>
+    <string name="UploadDataInSatelliteMode">Upload data</string>
 
     <string name="TestSatelliteWrapper">Test Satellite Wrapper</string>
     <string name="requestNtnSignalStrength">requestNtnSignalStrength</string>

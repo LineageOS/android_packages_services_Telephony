@@ -109,7 +109,7 @@ public class Datagram extends Activity {
         findViewById(R.id.Back).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Datagram.this, SatelliteTestApp.class));
+                startActivity(new Intent(Datagram.this, ApiTestApp.class));
             }
         });
     }
@@ -237,8 +237,8 @@ public class Datagram extends Activity {
         TextView showErrorStatusTextView = findViewById(R.id.showErrorStatus);
         TextView textView = findViewById(R.id.text_id);
         mSatelliteManager.setDeviceAlignedWithSatellite(true);
-        if (SatelliteTestApp.getTestSatelliteService() != null) {
-            SatelliteTestApp.getTestSatelliteService().sendOnPendingDatagrams();
+        if (ApiTestApp.getTestSatelliteService() != null) {
+            ApiTestApp.getTestSatelliteService().sendOnPendingDatagrams();
         }
         mSatelliteManager.requestEnabled(
                 new EnableRequestAttributes.Builder(true).setDemoMode(true).build(),

@@ -101,7 +101,7 @@ public class SatelliteControl extends Activity {
         findViewById(R.id.Back).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(SatelliteControl.this, SatelliteTestApp.class));
+                startActivity(new Intent(SatelliteControl.this, ApiTestApp.class));
             }
         });
     }
@@ -114,24 +114,24 @@ public class SatelliteControl extends Activity {
                         .setEmergencyMode(true)
                         .build(), Runnable::run, error::offer);
         TextView textView = findViewById(R.id.text_id);
-        Log.d("SatelliteTestApp", "enableSatelliteApp: isDemoMode=" + isDemoMode);
+        Log.d("ApiTestApp", "enableSatelliteApp: isDemoMode=" + isDemoMode);
         try {
             Integer value = error.poll(TIMEOUT, TimeUnit.MILLISECONDS);
             if (value == null) {
                 textView.setText("Timed out to enable the satellite");
-                Log.d("SatelliteTestApp", "Timed out to enable the satellite");
+                Log.d("ApiTestApp", "Timed out to enable the satellite");
             } else if (value != SatelliteResult.SATELLITE_RESULT_SUCCESS) {
                 textView.setText("Failed to enable the satellite, error ="
                         + SatelliteErrorUtils.mapError(value));
-                Log.d("SatelliteTestApp", "Failed to enable the satellite, error ="
+                Log.d("ApiTestApp", "Failed to enable the satellite, error ="
                         + SatelliteErrorUtils.mapError(value));
             } else {
                 textView.setText("Successfully enabled the satellite");
-                Log.d("SatelliteTestApp", "Successfully enabled the satellite");
+                Log.d("ApiTestApp", "Successfully enabled the satellite");
             }
         } catch (InterruptedException e) {
             textView.setText("Enable SatelliteService exception caught =" + e);
-            Log.d("SatelliteTestApp", "Enable SatelliteService exception caught =" + e);
+            Log.d("ApiTestApp", "Enable SatelliteService exception caught =" + e);
         }
     }
 
@@ -378,32 +378,32 @@ public class SatelliteControl extends Activity {
     private void getSatellitePlmnApp(View view) {
         TextView textView = findViewById(R.id.text_id);
         textView.setText("[SatelliteService] getSatellitePlmnApp = "
-                + SatelliteTestApp.getTestSatelliteService().getCarrierPlmnList());
+                + ApiTestApp.getTestSatelliteService().getCarrierPlmnList());
     }
 
     private void getAllSatellitePlmnApp(View view) {
         TextView textView = findViewById(R.id.text_id);
         textView.setText("[SatelliteService] getAllSatellitePlmnApp = "
-                + SatelliteTestApp.getTestSatelliteService().getAllSatellitePlmnList());
+                + ApiTestApp.getTestSatelliteService().getAllSatellitePlmnList());
     }
 
     private void isSatelliteEnabledForCarrierApp(View view) {
         TextView textView = findViewById(R.id.text_id);
         textView.setText("[SatelliteService] isSatelliteEnabledForCarrier= "
-                + SatelliteTestApp.getTestSatelliteService().isSatelliteEnabledForCarrier());
+                + ApiTestApp.getTestSatelliteService().isSatelliteEnabledForCarrier());
     }
 
     private void isRequestIsSatelliteEnabledForCarrierApp(View view) {
         TextView textView = findViewById(R.id.text_id);
         textView.setText("[SatelliteService] isRequestIsSatelliteEnabledForCarrier= "
-                + SatelliteTestApp.getTestSatelliteService()
+                + ApiTestApp.getTestSatelliteService()
                 .isRequestIsSatelliteEnabledForCarrier());
     }
 
     private void getIsEmergencyApp(View view) {
         TextView textView = findViewById(R.id.text_id);
         textView.setText("[SatelliteService] getIsEmergencyApp= "
-                + SatelliteTestApp.getTestSatelliteService()
+                + ApiTestApp.getTestSatelliteService()
                 .getIsEmergency());
     }
 

@@ -12,6 +12,10 @@ android_app {
         "src/**/I*.aidl",
     ],
     static_libs: [
+        "androidx.appcompat_appcompat",
+        "androidx.preference_preference",
+        "androidx.recyclerview_recyclerview",
+        "androidx.legacy_legacy-preference-v14",
         "SatelliteClient",
         "androidx.appcompat_appcompat",
     ],
