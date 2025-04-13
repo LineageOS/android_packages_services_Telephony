@@ -67,6 +67,7 @@ public class SatelliteEntitlementController extends Handler {
     private static final int CMD_START_QUERY_ENTITLEMENT = 1;
     private static final int CMD_RETRY_QUERY_ENTITLEMENT = 2;
     private static final int CMD_SIM_REFRESH = 3;
+    private static final int AIRPLANE_MODE_CHANGED = 4;
 
     /** Retry on next trigger event. */
     private static final int HTTP_RESPONSE_500 = 500;
@@ -110,6 +111,9 @@ public class SatelliteEntitlementController extends Handler {
     @GuardedBy("mLock")
     private Map<Integer, Integer> mSubIdPerSlot = new HashMap<>();
     @NonNull private final EntitlementMetricsStats mEntitlementMetricsStats;
+    /** Feature flags to control behavior and errors. */
+    @NonNull
+    private final FeatureFlags mFeatureFlags;
 
     /**
      * Create the SatelliteEntitlementController singleton instance.
@@ -120,8 +124,8 @@ public class SatelliteEntitlementController extends Handler {
         if (sInstance == null) {
             HandlerThread handlerThread = new HandlerThread(TAG);
             handlerThread.start();
-            sInstance =
-                    new SatelliteEntitlementController(context, handlerThread.getLooper());
+            sInstance = new SatelliteEntitlementController(
+                    context, handlerThread.getLooper(), featureFlags);
         }
     }
 
@@ -133,9 +137,11 @@ public class SatelliteEntitlementController extends Handler {
      * @param looper       The looper for the handler. It does not run on main thread.
      */
     @VisibleForTesting(visibility = VisibleForTesting.Visibility.PRIVATE)
-    public SatelliteEntitlementController(@NonNull Context context, @NonNull Looper looper) {
+    public SatelliteEntitlementController(@NonNull Context context, @NonNull Looper looper,
+            @NonNull FeatureFlags featureFlags) {
         super(looper);
         mContext = context;
+        mFeatureFlags = featureFlags;
         mSubscriptionManagerService = SubscriptionManagerService.getInstance();
         mCarrierConfigManager = context.getSystemService(CarrierConfigManager.class);
         mCarrierConfigChangeListener = (slotIndex, subId, carrierId, specificCarrierId) ->
@@ -173,6 +179,13 @@ public class SatelliteEntitlementController extends Handler {
                 break;
             case CMD_SIM_REFRESH:
                 handleSimRefresh();
+                break;
+            case AIRPLANE_MODE_CHANGED:
+                logd("AIRPLANE_MODE_CHANGED");
+                boolean airplaneMode = (boolean) msg.obj;
+                if (!airplaneMode) {
+                    resetEntitlementQueryCounts(Intent.ACTION_AIRPLANE_MODE_CHANGED);
+                }
                 break;
             default:
                 logd("do not used this message");
@@ -224,6 +237,12 @@ public class SatelliteEntitlementController extends Handler {
     }
 
     private void handleAirplaneModeChange(boolean airplaneMode) {
+        logd("handleAirplaneModeChange: airplaneMode=" + airplaneMode);
+        if (mFeatureFlags.satelliteImproveMultiThreadDesign()) {
+            sendMessage(obtainMessage(AIRPLANE_MODE_CHANGED, airplaneMode));
+            return;
+        }
+
         if (!airplaneMode) {
             resetEntitlementQueryCounts(Intent.ACTION_AIRPLANE_MODE_CHANGED);
         }
@@ -299,7 +318,7 @@ public class SatelliteEntitlementController extends Handler {
      * SatelliteController if the response is received.
      */
     @VisibleForTesting(visibility = VisibleForTesting.Visibility.PRIVATE)
-    public void handleCmdStartQueryEntitlement() {
+    protected void handleCmdStartQueryEntitlement() {
         for (int subId : mSubscriptionManagerService.getActiveSubIdList(true)) {
             if (!shouldStartQueryEntitlement(subId)) {
                 continue;
@@ -310,6 +329,7 @@ public class SatelliteEntitlementController extends Handler {
             try {
                 synchronized (mLock) {
                     mIsEntitlementInProgressPerSub.put(subId, true);
+                    logd("handleCmdStartQueryEntitlement: checkEntitlementStatus");
                     SatelliteEntitlementResult entitlementResult =  getSatelliteEntitlementApi(
                             subId).checkEntitlementStatus();
                     mSatelliteEntitlementResultPerSub.put(subId, entitlementResult);
@@ -377,6 +397,7 @@ public class SatelliteEntitlementController extends Handler {
                 int currentRetryCount = getRetryCount(subId);
                 mRetryCountPerSub.put(subId, currentRetryCount + 1);
                 logd("[" + subId + "] retry cnt:" + getRetryCount(subId));
+                logd("handleCmdRetryQueryEntitlement: checkEntitlementStatus");
                 SatelliteEntitlementResult entitlementResult =  getSatelliteEntitlementApi(
                         subId).checkEntitlementStatus();
                 mSatelliteEntitlementResultPerSub.put(subId, entitlementResult);
@@ -633,7 +654,7 @@ public class SatelliteEntitlementController extends Handler {
      * @return A new SatelliteEntitlementApi object.
      */
     @VisibleForTesting(visibility = VisibleForTesting.Visibility.PRIVATE)
-    public SatelliteEntitlementApi getSatelliteEntitlementApi(int subId) {
+    protected SatelliteEntitlementApi getSatelliteEntitlementApi(int subId) {
         return new SatelliteEntitlementApi(mContext, getConfigForSubId(subId), subId);
     }
 
@@ -699,8 +720,7 @@ public class SatelliteEntitlementController extends Handler {
      * Send to satelliteController for update the satellite service enabled or not and plmn Allowed
      * list.
      */
-    @VisibleForTesting(visibility = VisibleForTesting.Visibility.PRIVATE)
-    public void updateSatelliteEntitlementStatus(int subId, boolean enabled,
+    private void updateSatelliteEntitlementStatus(int subId, boolean enabled,
             List<String> plmnAllowedList, List<String> plmnBarredList,
             Map<String,Integer> plmnDataPlanMap,
             Map<String, List<Integer>>plmnAllowedServicesMap,

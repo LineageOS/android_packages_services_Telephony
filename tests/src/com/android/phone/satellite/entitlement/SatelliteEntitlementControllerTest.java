@@ -67,6 +67,7 @@ import androidx.annotation.NonNull;
 
 import com.android.TelephonyTestBase;
 import com.android.internal.telephony.ExponentialBackoff;
+import com.android.internal.telephony.flags.FeatureFlags;
 import com.android.internal.telephony.satellite.SatelliteController;
 import com.android.internal.telephony.subscription.SubscriptionManagerService;
 import com.android.libraries.entitlement.ServiceEntitlementException;
@@ -132,6 +133,7 @@ public class SatelliteEntitlementControllerTest extends TelephonyTestBase {
     @Mock SatelliteEntitlementApi mSatelliteEntitlementApi;
     @Mock SatelliteEntitlementResult mSatelliteEntitlementResult;
     @Mock SatelliteController mSatelliteController;
+    @Mock private FeatureFlags mMockFeatureFlags;
     private PersistableBundle mCarrierConfigBundle;
     private TestSatelliteEntitlementController mSatelliteEntitlementController;
     private Handler mHandler;
@@ -180,9 +182,10 @@ public class SatelliteEntitlementControllerTest extends TelephonyTestBase {
         doReturn(mNetwork).when(mConnectivityManager).getActiveNetwork();
         doReturn(ACTIVE_SUB_ID).when(mMockSubscriptionManagerService).getActiveSubIdList(true);
         mSatelliteEntitlementController = spy(new TestSatelliteEntitlementController(mContext,
-                mTestableLooper.getLooper(), mSatelliteEntitlementApi));
+                mTestableLooper.getLooper(), mSatelliteEntitlementApi, mMockFeatureFlags));
         doReturn(mSatelliteEntitlementResult).when(
                 mSatelliteEntitlementApi).checkEntitlementStatus();
+        doReturn(true).when(mMockFeatureFlags).satelliteImproveMultiThreadDesign();
     }
 
     @After
@@ -1022,8 +1025,8 @@ public class SatelliteEntitlementControllerTest extends TelephonyTestBase {
         private SatelliteEntitlementApi mInjectSatelliteEntitlementApi;
 
         TestSatelliteEntitlementController(@NonNull Context context, @NonNull Looper looper,
-                SatelliteEntitlementApi api) {
-            super(context, looper);
+                SatelliteEntitlementApi api, FeatureFlags featureFlags) {
+            super(context, looper, featureFlags);
             mInjectSatelliteEntitlementApi = api;
         }
 
@@ -1031,6 +1034,11 @@ public class SatelliteEntitlementControllerTest extends TelephonyTestBase {
         public SatelliteEntitlementApi getSatelliteEntitlementApi(int subId) {
             Log.d(TAG, "getSatelliteEntitlementApi");
             return mInjectSatelliteEntitlementApi;
+        }
+
+        @Override
+        protected void handleCmdStartQueryEntitlement() {
+            super.handleCmdStartQueryEntitlement();
         }
     }
 }
