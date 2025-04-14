@@ -462,6 +462,8 @@ public class SatelliteAccessControllerTest extends TelephonyTestBase {
                 mMockFeatureFlags, mTestableLooper.getLooper(), mMockLocationManager,
                 mMockTelecomManager, mMockSatelliteOnDeviceAccessController, mMockSatS2File);
         mTestableLooper.processAllMessages();
+
+        doReturn(true).when(mMockFeatureFlags).satelliteImproveMultiThreadDesign();
     }
 
     @After

@@ -100,6 +100,7 @@ import android.util.Pair;
 import com.android.internal.R;
 import com.android.internal.annotations.GuardedBy;
 import com.android.internal.annotations.VisibleForTesting;
+import com.android.internal.os.SomeArgs;
 import com.android.internal.telephony.IBooleanConsumer;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
@@ -184,6 +185,7 @@ public class SatelliteAccessController extends Handler {
     protected static final int EVENT_LOCATION_SETTINGS_DISABLED = 8;
     protected static final int EVENT_SATELLITE_SUBSCRIPTION_CHANGED = 9;
     protected static final int EVENT_CONFIG_DATA_UPDATED = 10;
+    private static final int REQUEST_IS_COMMUNICATION_ALLOWED = 11;
 
     public static final int DEFAULT_REGIONAL_SATELLITE_CONFIG_ID = 0;
     public static final int UNKNOWN_REGIONAL_SATELLITE_CONFIG_ID = -1;
@@ -724,6 +726,17 @@ public class SatelliteAccessController extends Handler {
                 initializeSatelliteSystemNotification(mContext);
                 handleEventDisallowedReasonsChanged();
                 break;
+            case REQUEST_IS_COMMUNICATION_ALLOWED:
+                plogd("REQUEST_IS_COMMUNICATION_ALLOWED");
+                SomeArgs args = (SomeArgs) msg.obj;
+                ResultReceiver result = (ResultReceiver) args.arg1;
+                boolean enablingSatellite = (boolean) args.arg2;
+                try {
+                    handleRequestIsCommunicationAllowed(result, enablingSatellite);
+                } finally {
+                    args.recycle();
+                }
+                break;
             default:
                 plogw("SatelliteAccessControllerHandler: unexpected message code: " + msg.what);
                 break;
@@ -741,6 +754,23 @@ public class SatelliteAccessController extends Handler {
             @NonNull ResultReceiver result, boolean enablingSatellite) {
         plogd("requestIsCommunicationAllowedForCurrentLocation : "
                 + "enablingSatellite is " + enablingSatellite);
+
+        if (mFeatureFlags.satelliteImproveMultiThreadDesign()) {
+            SomeArgs args = SomeArgs.obtain();
+            args.arg1 = result;
+            args.arg2 = enablingSatellite;
+            sendMessage(obtainMessage(REQUEST_IS_COMMUNICATION_ALLOWED, args));
+            return;
+        }
+
+        handleRequestIsCommunicationAllowed(result, enablingSatellite);
+    }
+
+    private void handleRequestIsCommunicationAllowed(
+            @NonNull ResultReceiver result, boolean enablingSatellite) {
+        plogd("handleRequestIsCommunicationAllowed : "
+                + "enablingSatellite is " + enablingSatellite);
+
         synchronized (mIsAllowedCheckBeforeEnablingSatelliteLock) {
             mIsAllowedCheckBeforeEnablingSatellite = enablingSatellite;
         }
