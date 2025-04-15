@@ -186,6 +186,7 @@ public class SatelliteAccessController extends Handler {
     protected static final int EVENT_SATELLITE_SUBSCRIPTION_CHANGED = 9;
     protected static final int EVENT_CONFIG_DATA_UPDATED = 10;
     private static final int REQUEST_IS_COMMUNICATION_ALLOWED = 11;
+    private static final int REQUEST_UPDATE_SYSTEM_SELECTION_CHANNELS = 12;
 
     public static final int DEFAULT_REGIONAL_SATELLITE_CONFIG_ID = 0;
     public static final int UNKNOWN_REGIONAL_SATELLITE_CONFIG_ID = -1;
@@ -726,7 +727,7 @@ public class SatelliteAccessController extends Handler {
                 initializeSatelliteSystemNotification(mContext);
                 handleEventDisallowedReasonsChanged();
                 break;
-            case REQUEST_IS_COMMUNICATION_ALLOWED:
+            case REQUEST_IS_COMMUNICATION_ALLOWED: {
                 plogd("REQUEST_IS_COMMUNICATION_ALLOWED");
                 SomeArgs args = (SomeArgs) msg.obj;
                 ResultReceiver result = (ResultReceiver) args.arg1;
@@ -737,6 +738,18 @@ public class SatelliteAccessController extends Handler {
                     args.recycle();
                 }
                 break;
+            }
+            case REQUEST_UPDATE_SYSTEM_SELECTION_CHANNELS: {
+                plogd("REQUEST_UPDATE_SYSTEM_SELECTION_CHANNELS");
+                SomeArgs args = (SomeArgs) msg.obj;
+                ResultReceiver result = (ResultReceiver) args.arg1;
+                try {
+                    handleRequestUpdateSystemSelectionChannels(result);
+                } finally {
+                    args.recycle();
+                }
+                break;
+            }
             default:
                 plogw("SatelliteAccessControllerHandler: unexpected message code: " + msg.what);
                 break;
@@ -912,6 +925,18 @@ public class SatelliteAccessController extends Handler {
      */
     public void updateSystemSelectionChannels(@NonNull ResultReceiver result) {
         plogd("updateSystemSelectionChannels");
+        if (mFeatureFlags.satelliteImproveMultiThreadDesign()) {
+            SomeArgs args = SomeArgs.obtain();
+            args.arg1 = result;
+            sendMessage(obtainMessage(REQUEST_UPDATE_SYSTEM_SELECTION_CHANNELS, args));
+            return;
+        }
+
+        handleRequestUpdateSystemSelectionChannels(result);
+    }
+
+    private void handleRequestUpdateSystemSelectionChannels(@NonNull ResultReceiver result) {
+        plogd("handleRequestUpdateSystemSelectionChannels");
         if (!mFeatureFlags.carrierRoamingNbIotNtn()) {
             plogd("updateSystemSelectionChannels: "
                     + "carrierRoamingNbIotNtn flag is disabled");
