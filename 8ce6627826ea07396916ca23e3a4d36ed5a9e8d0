@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49137c18_f73ee26c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 35181
+      },
+      "writtenOn": "2025-04-16T09:57:26Z",
+      "side": 1,
+      "message": "S10plus",
+      "revId": "8ce6627826ea07396916ca23e3a4d36ed5a9e8d0",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
