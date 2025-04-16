@@ -665,7 +665,7 @@
     <string name="not_voice_capable" msgid="2819996734252084253">"Hlasové volanie nie je podporované"</string>
     <string name="description_dial_button" msgid="8614631902795087259">"vytáčanie"</string>
     <string name="description_dialpad_button" msgid="7395114120463883623">"zobraziť číselnú klávesnicu"</string>
-    <string name="pane_title_emergency_dialpad" msgid="3627372514638694401">"Číselná klávesnica na tiesňové volanie"</string>
+    <string name="pane_title_emergency_dialpad" msgid="3627372514638694401">"Tiesňové vytáčanie"</string>
     <string name="voicemail_visual_voicemail_switch_title" msgid="6610414098912832120">"Vizuálna hlasová schránka"</string>
     <string name="voicemail_set_pin_dialog_title" msgid="7005128605986960003">"Nastavenie kódu PIN"</string>
     <string name="voicemail_change_pin_dialog_title" msgid="4633077715231764435">"Zmena kódu PIN"</string>

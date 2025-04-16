@@ -231,8 +231,7 @@ public class VoicemailSettingsActivity extends PreferenceActivity
         }
 
         // Check if mobile network configs are restricted.
-        if (Flags.ensureAccessToCallSettingsIsRestricted() &&
-                userManager.hasUserRestriction(UserManager.DISALLOW_CONFIG_MOBILE_NETWORKS)) {
+        if (userManager.hasUserRestriction(UserManager.DISALLOW_CONFIG_MOBILE_NETWORKS)) {
             mDisallowedConfig = true;
             Log.i(LOG_TAG, "Mobile network configs are restricted, disabling voicemail "
                     + "settings");

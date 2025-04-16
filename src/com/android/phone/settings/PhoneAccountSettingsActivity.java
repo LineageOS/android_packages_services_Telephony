@@ -44,8 +44,7 @@ public class PhoneAccountSettingsActivity extends PreferenceActivity {
         }
 
         // Make sure mobile network configs are not restricted.
-        if (Flags.ensureAccessToCallSettingsIsRestricted() &&
-                userManager.hasUserRestriction(UserManager.DISALLOW_CONFIG_MOBILE_NETWORKS)) {
+        if (userManager.hasUserRestriction(UserManager.DISALLOW_CONFIG_MOBILE_NETWORKS)) {
             Log.i(LOG_TAG, "Mobile network configs are restricted, disabling phone account "
                     + "settings");
             Toast.makeText(this, R.string.phone_account_no_config_mobile_networks,
