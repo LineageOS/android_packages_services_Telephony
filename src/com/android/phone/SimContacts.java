@@ -231,6 +231,10 @@ public class SimContacts extends ADNList {
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
 
+        getWindow().addSystemFlags(
+                android.view.WindowManager.LayoutParams
+                        .SYSTEM_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);
+
         Intent intent = getIntent();
         if (intent != null) {
             final String accountName = intent.getStringExtra("account_name");
