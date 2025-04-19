@@ -188,6 +188,7 @@ public class SatelliteAccessController extends Handler {
     private static final int REQUEST_IS_COMMUNICATION_ALLOWED = 11;
     private static final int REQUEST_UPDATE_SYSTEM_SELECTION_CHANNELS = 12;
     private static final int REQUEST_SATELLITE_ACCESS_CONFIGURATION_FOR_CURRENT_LOCATION = 13;
+    private static final int EVENT_LOCATION_PROVIDERS_CHANGED = 14;
 
     public static final int DEFAULT_REGIONAL_SATELLITE_CONFIG_ID = 0;
     public static final int UNKNOWN_REGIONAL_SATELLITE_CONFIG_ID = -1;
@@ -205,6 +206,7 @@ public class SatelliteAccessController extends Handler {
     private static final List<Integer> DISALLOWED_REASONS_TO_BE_RESET =
             Arrays.asList(SATELLITE_DISALLOWED_REASON_NOT_IN_ALLOWED_REGION,
                     SATELLITE_DISALLOWED_REASON_LOCATION_DISABLED);
+    private static final String LOCATION_PROVIDER = LocationManager.FUSED_PROVIDER;
 
     private static final HashMap<Integer, Pair<Integer, Integer>>
             SATELLITE_SOS_UNAVAILABLE_REASONS = new HashMap<>(Map.of(
@@ -432,7 +434,8 @@ public class SatelliteAccessController extends Handler {
     @GuardedBy("mSatelliteDisallowedReasonsLock")
     private final List<Integer> mSatelliteDisallowedReasons = new ArrayList<>();
 
-    private boolean mIsLocationManagerEnabled = false;
+    private boolean mIsLocationSettingsEnabled = false;
+    private boolean mIsLocationProviderEnabled = false;
 
     protected BroadcastReceiver mLocationModeChangedBroadcastReceiver = new BroadcastReceiver() {
         @Override
@@ -451,29 +454,8 @@ public class SatelliteAccessController extends Handler {
 
             // Check whether location manager has been enabled when boot up
             if (intent.getAction().equals(LocationManager.PROVIDERS_CHANGED_ACTION)) {
-                plogd("mLocationModeChangedBroadcastReceiver: " + intent.getAction()
-                        + ", mIsLocationManagerEnabled= " + mIsLocationManagerEnabled);
-                if (!mIsLocationManagerEnabled) {
-                    if (mLocationManager.isLocationEnabled()) {
-                        plogd("Location manager is enabled");
-                        mIsLocationManagerEnabled = true;
-                        boolean isResultReceiverEmpty;
-                        synchronized (mLock) {
-                            isResultReceiverEmpty = mSatelliteAllowResultReceivers.isEmpty();
-                        }
-                        if (isResultReceiverEmpty) {
-                            sendRequestAsync(EVENT_LOCATION_SETTINGS_ENABLED, null);
-                        } else {
-                            plogd("delayed EVENT_LOCATION_SETTINGS_ENABLED due to "
-                                    + "requestIsCommunicationAllowedForCurrentLocation is "
-                                    + "already being processed");
-                            sendDelayedRequestAsync(EVENT_LOCATION_SETTINGS_ENABLED, null,
-                                    WAIT_UNTIL_CURRENT_LOCATION_QUERY_IS_DONE_MILLIS);
-                        }
-                    } else {
-                        plogd("Location manager is still disabled, wait until next enabled event");
-                    }
-                }
+                plogd("mLocationModeChangedBroadcastReceiver: PROVIDERS_CHANGED_ACTION");
+                sendRequestAsync(EVENT_LOCATION_PROVIDERS_CHANGED, null);
             }
         }
     };
@@ -762,6 +744,9 @@ public class SatelliteAccessController extends Handler {
                 }
                 break;
             }
+            case EVENT_LOCATION_PROVIDERS_CHANGED:
+                handleEventLocationProvidersChanged();
+                break;
             default:
                 plogw("SatelliteAccessControllerHandler: unexpected message code: " + msg.what);
                 break;
@@ -2383,16 +2368,22 @@ public class SatelliteAccessController extends Handler {
                 }
             }
 
-            mLocationRequestCancellationSignal = new CancellationSignal();
-            mLocationQueryStartTimeMillis = System.currentTimeMillis();
-            mLocationManager.getCurrentLocation(LocationManager.FUSED_PROVIDER,
-                    new LocationRequest.Builder(0)
-                            .setQuality(LocationRequest.QUALITY_HIGH_ACCURACY)
-                            .setLocationSettingsIgnored(isInEmergency())
-                            .build(),
-                    mLocationRequestCancellationSignal, this::post,
-                    this::onCurrentLocationAvailable);
-            startWaitForCurrentLocationTimer();
+            try {
+                mLocationRequestCancellationSignal = new CancellationSignal();
+                mLocationManager.getCurrentLocation(LOCATION_PROVIDER,
+                        new LocationRequest.Builder(0)
+                                .setQuality(LocationRequest.QUALITY_HIGH_ACCURACY)
+                                .setLocationSettingsIgnored(isInEmergency())
+                                .build(),
+                        mLocationRequestCancellationSignal, this::post,
+                        this::onCurrentLocationAvailable);
+                mLocationQueryStartTimeMillis = System.currentTimeMillis();
+                startWaitForCurrentLocationTimer();
+            } catch (IllegalArgumentException ex) {
+                plogw("queryCurrentLocation: IllegalArgumentException: ex=" + ex
+                        + ", mIsLocationProviderEnabled=" + mIsLocationProviderEnabled);
+                onCurrentLocationAvailable(null);
+            }
         }
     }
 
@@ -3495,6 +3486,38 @@ public class SatelliteAccessController extends Handler {
             satelliteDisallowedReasons = new ArrayList<>(mSatelliteDisallowedReasons);
         }
         return satelliteDisallowedReasons;
+    }
+
+    private void handleEventLocationProvidersChanged() {
+        plogd("handleEventLocationProvidersChanged: mIsLocationSettingsEnabled="
+                  + mIsLocationSettingsEnabled + ", mIsLocationProviderEnabled="
+                  + mIsLocationProviderEnabled);
+        if (!mIsLocationSettingsEnabled || !mIsLocationProviderEnabled) {
+            if (mLocationManager.isLocationEnabled()) {
+                plogd("Location settings is enabled");
+                mIsLocationSettingsEnabled = true;
+                if (mLocationManager.isProviderEnabled(LOCATION_PROVIDER)) {
+                    mIsLocationProviderEnabled = true;
+                    plogd(LOCATION_PROVIDER + " provider is enabled");
+                }
+
+                boolean isResultReceiverEmpty;
+                synchronized (mLock) {
+                    isResultReceiverEmpty = mSatelliteAllowResultReceivers.isEmpty();
+                }
+                if (isResultReceiverEmpty) {
+                    sendRequestAsync(EVENT_LOCATION_SETTINGS_ENABLED, null);
+                } else {
+                    plogd("delayed EVENT_LOCATION_SETTINGS_ENABLED due to "
+                            + "requestIsCommunicationAllowedForCurrentLocation is "
+                            + "already being processed");
+                    sendDelayedRequestAsync(EVENT_LOCATION_SETTINGS_ENABLED, null,
+                            WAIT_UNTIL_CURRENT_LOCATION_QUERY_IS_DONE_MILLIS);
+                }
+            } else {
+                plogd("Location settings is still disabled, wait until next enabled event");
+            }
+        }
     }
 
     /**

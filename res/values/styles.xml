@@ -369,4 +369,9 @@
     <style name="RadioInfoTheme" parent="Theme.AppCompat.DayNight">
         <item name="android:windowOptOutEdgeToEdgeEnforcement">true</item>
     </style>
+
+    <!--    <style name="PhoneInformationV2Theme" parent="@android:style/Theme.DeviceDefault.DayNight">-->
+    <style name="PhoneInformationV2Theme" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:windowOptOutEdgeToEdgeEnforcement">true</item>
+    </style>
 </resources>

@@ -17,6 +17,7 @@
 package com.android.phone.satellite.accesscontrol;
 
 import static android.location.LocationManager.MODE_CHANGED_ACTION;
+import static android.location.LocationManager.PROVIDERS_CHANGED_ACTION;
 import static android.telephony.SubscriptionManager.DEFAULT_SUBSCRIPTION_ID;
 import static android.telephony.satellite.SatelliteManager.KEY_SATELLITE_ACCESS_CONFIGURATION;
 import static android.telephony.satellite.SatelliteManager.KEY_SATELLITE_COMMUNICATION_ALLOWED;
@@ -1224,6 +1225,70 @@ public class SatelliteAccessControllerTest extends TelephonyTestBase {
                 mSatelliteAllowedSemaphore, 1));
         assertEquals(SATELLITE_RESULT_LOCATION_DISABLED, mQueriedSatelliteAllowedResultCode);
         assertFalse(mQueriedSatelliteAllowed);
+    }
+
+    @Test
+    public void testCheckAllowedStateWhenLocationProviderNotExist() throws Exception {
+        setUpResponseForRequestIsSatelliteSupported(true, SATELLITE_RESULT_SUCCESS);
+        setUpResponseForRequestIsSatelliteProvisioned(true, SATELLITE_RESULT_SUCCESS);
+        when(mMockCountryDetector.getCurrentNetworkCountryIso()).thenReturn(EMPTY_STRING_LIST);
+        when(mMockTelecomManager.isInEmergencyCall()).thenReturn(true);
+        when(mMockPhone.getContext()).thenReturn(mMockContext);
+        when(mMockPhone2.getContext()).thenReturn(mMockContext);
+        mSatelliteAccessControllerUT.elapsedRealtimeNanos = TEST_LOCATION_FRESH_DURATION_NANOS + 1;
+        when(mMockLocation0.getElapsedRealtimeNanos()).thenReturn(0L);
+        when(mMockLocation1.getElapsedRealtimeNanos()).thenReturn(0L);
+
+        // Throw exception when querying current location
+        doThrow(new IllegalArgumentException("provider fused does not exist"))
+            .when(mMockLocationManager).getCurrentLocation(eq(LocationManager.FUSED_PROVIDER),
+                any(LocationRequest.class), any(CancellationSignal.class), any(Executor.class),
+                any(Consumer.class));
+
+        mSatelliteAccessControllerUT.requestIsCommunicationAllowedForCurrentLocation(
+                mSatelliteAllowedReceiver, false);
+        mTestableLooper.processAllMessages();
+
+        // Verify that LocationManager.getCurrentLocation() is called
+        verify(mMockLocationManager).getCurrentLocation(eq(LocationManager.FUSED_PROVIDER),
+                any(LocationRequest.class), any(CancellationSignal.class), any(Executor.class),
+                any(Consumer.class));
+        // Verify that all resources are cleaned up when exception is thrown
+        assertFalse(mSatelliteAccessControllerUT.isWaitForCurrentLocationTimerStarted());
+        verify(mMockSatelliteOnDeviceAccessController, never()).getRegionalConfigIdForLocation(
+                any(SatelliteOnDeviceAccessController.LocationToken.class));
+        // Verify that access is not allowed due to location not available
+        assertTrue(waitForRequestIsSatelliteAllowedForCurrentLocationResult(
+                mSatelliteAllowedSemaphore, 1));
+        assertEquals(SATELLITE_RESULT_LOCATION_NOT_AVAILABLE, mQueriedSatelliteAllowedResultCode);
+        assertFalse(mQueriedSatelliteAllowed);
+
+        // Exception is not thrown. Verify that access is allowed
+        clearAllInvocations();
+        doNothing().when(mMockLocationManager).getCurrentLocation(
+            eq(LocationManager.FUSED_PROVIDER), any(LocationRequest.class),
+            any(CancellationSignal.class), any(Executor.class), any(Consumer.class));
+        when(mMockSatelliteOnDeviceAccessController.getRegionalConfigIdForLocation(
+            any(SatelliteOnDeviceAccessController.LocationToken.class)))
+            .thenReturn(DEFAULT_REGIONAL_SATELLITE_CONFIG_ID);
+
+        mSatelliteAccessControllerUT.requestIsCommunicationAllowedForCurrentLocation(
+                mSatelliteAllowedReceiver, false);
+        mTestableLooper.processAllMessages();
+        verify(mMockLocationManager).getCurrentLocation(eq(LocationManager.FUSED_PROVIDER),
+                any(LocationRequest.class), mLocationRequestCancellationSignalCaptor.capture(),
+                any(Executor.class), mLocationRequestConsumerCaptor.capture());
+        assertTrue(mSatelliteAccessControllerUT.isWaitForCurrentLocationTimerStarted());
+
+        // Return the current location
+        sendLocationRequestResult(mMockLocation0);
+        assertFalse(mSatelliteAccessControllerUT.isWaitForCurrentLocationTimerStarted());
+        verify(mMockSatelliteOnDeviceAccessController, times(1)).getRegionalConfigIdForLocation(
+                any(SatelliteOnDeviceAccessController.LocationToken.class));
+        assertTrue(waitForRequestIsSatelliteAllowedForCurrentLocationResult(
+                mSatelliteAllowedSemaphore, 1));
+        assertEquals(SATELLITE_RESULT_SUCCESS, mQueriedSatelliteAllowedResultCode);
+        assertTrue(mQueriedSatelliteAllowed);
     }
 
     @Test
@@ -2516,6 +2581,98 @@ public class SatelliteAccessControllerTest extends TelephonyTestBase {
                 mMockTelecomManager, mMockSatelliteOnDeviceAccessController, mMockSatS2File);
 
         verify(mMockSharedPreferencesEditor, times(4)).remove(anyString());
+    }
+
+    @Test
+    public void testLocationProvidersChanged() throws Exception {
+        logd("testLocationProvidersChanged: setup to query the current location");
+        when(mMockFeatureFlags.oemEnabledSatelliteFlag()).thenReturn(true);
+        when(mMockContext.getResources()).thenReturn(mMockResources);
+        when(mMockResources.getBoolean(
+                com.android.internal.R.bool.config_oem_enabled_satellite_access_allow))
+                .thenReturn(TEST_SATELLITE_ALLOW);
+        setUpResponseForRequestIsSatelliteSupported(true, SATELLITE_RESULT_SUCCESS);
+        setUpResponseForRequestIsSatelliteProvisioned(true, SATELLITE_RESULT_SUCCESS);
+        when(mMockSatelliteOnDeviceAccessController.getRegionalConfigIdForLocation(
+                any(SatelliteOnDeviceAccessController.LocationToken.class)))
+                .thenReturn(DEFAULT_REGIONAL_SATELLITE_CONFIG_ID);
+        replaceInstance(SatelliteAccessController.class, "mCachedAccessRestrictionMap",
+                mSatelliteAccessControllerUT, mMockCachedAccessRestrictionMap);
+        doReturn(false).when(mMockCachedAccessRestrictionMap).containsKey(any());
+        mSatelliteAccessControllerUT.elapsedRealtimeNanos = TEST_LOCATION_FRESH_DURATION_NANOS + 1;
+        doReturn(PROVIDERS_CHANGED_ACTION).when(mMockLocationIntent).getAction();
+        doReturn(true).when(mMockLocationManager).isLocationEnabled();
+        doReturn(false).when(mMockLocationManager).isProviderEnabled(anyString());
+
+        logd("testLocationProvidersChanged: "
+                + "captor and verify if the mockReceiver and mockContext is registered well");
+        verify(mMockContext, times(2)).registerReceiver(
+                mLocationBroadcastReceiverCaptor.capture(), mIntentFilterCaptor.capture());
+
+        // (1) Both mIsLocationManagerEnabled and mIsLocationProviderEnabled are false.
+        // Allowed state re-evaluation should be triggered; mIsLocationManagerEnabled should
+        // be set to true.
+        logd("testLocationProvidersChanged: (1) both mIsLocationManagerEnabled and "
+                 + "mIsLocationProviderEnabled are false");
+        mSatelliteAccessControllerUT.setIsSatelliteAllowedRegionPossiblyChanged(false);
+        mSatelliteAccessControllerUT.getLocationBroadcastReceiver()
+                .onReceive(mMockContext, mMockLocationIntent);
+        mTestableLooper.processAllMessages();
+
+        verify(mMockLocationManager, times(2)).isLocationEnabled();
+        assertTrue(mSatelliteAccessControllerUT.isSatelliteAllowedRegionPossiblyChanged());
+        verify(mMockLocationManager).getCurrentLocation(eq(LocationManager.FUSED_PROVIDER),
+                any(LocationRequest.class), mLocationRequestCancellationSignalCaptor.capture(),
+                any(Executor.class), mLocationRequestConsumerCaptor.capture());
+        assertTrue(mSatelliteAccessControllerUT.isWaitForCurrentLocationTimerStarted());
+
+        // Return the current location
+        sendLocationRequestResult(mMockLocation0);
+        assertFalse(mSatelliteAccessControllerUT.isWaitForCurrentLocationTimerStarted());
+        assertFalse(mSatelliteAccessControllerUT.isSatelliteAllowedRegionPossiblyChanged());
+        clearInvocations(mMockLocationManager);
+
+        // (2) mIsLocationManagerEnabled is true and mIsLocationProviderEnabled is false.
+        // Allowed state re-evaluation should be triggered; mIsLocationProviderEnabled should be
+        // set to true.
+        logd("testLocationProvidersChanged: (2) mIsLocationManagerEnabled is true and "
+                 + "mIsLocationProviderEnabled is false");
+        mSatelliteAccessControllerUT
+            .mLastLocationQueryForPossibleChangeInAllowedRegionTimeNanos = 0;
+        doReturn(true).when(mMockLocationManager).isProviderEnabled(anyString());
+        mSatelliteAccessControllerUT.getLocationBroadcastReceiver()
+                .onReceive(mMockContext, mMockLocationIntent);
+        mTestableLooper.processAllMessages();
+
+        verify(mMockLocationManager, times(2)).isLocationEnabled();
+        assertTrue(mSatelliteAccessControllerUT.isSatelliteAllowedRegionPossiblyChanged());
+        verify(mMockLocationManager).getCurrentLocation(eq(LocationManager.FUSED_PROVIDER),
+                any(LocationRequest.class), mLocationRequestCancellationSignalCaptor.capture(),
+                any(Executor.class), mLocationRequestConsumerCaptor.capture());
+        assertTrue(mSatelliteAccessControllerUT.isWaitForCurrentLocationTimerStarted());
+
+        // Return the current location
+        sendLocationRequestResult(mMockLocation0);
+        assertFalse(mSatelliteAccessControllerUT.isWaitForCurrentLocationTimerStarted());
+        assertFalse(mSatelliteAccessControllerUT.isSatelliteAllowedRegionPossiblyChanged());
+        clearInvocations(mMockLocationManager);
+
+        // (3) BothmIsLocationManagerEnabled and mIsLocationProviderEnabled is true. Allowed state
+        // re-evaluation should NOT be triggered
+        logd("testLocationProvidersChanged: (3) Both mIsLocationManagerEnabled and "
+                 + "mIsLocationProviderEnabled are true");
+        mSatelliteAccessControllerUT
+            .mLastLocationQueryForPossibleChangeInAllowedRegionTimeNanos = 0;
+        mSatelliteAccessControllerUT.getLocationBroadcastReceiver()
+                .onReceive(mMockContext, mMockLocationIntent);
+        mTestableLooper.processAllMessages();
+
+        verify(mMockLocationManager, never()).isLocationEnabled();
+        assertFalse(mSatelliteAccessControllerUT.isSatelliteAllowedRegionPossiblyChanged());
+        verify(mMockLocationManager, never()).getCurrentLocation(anyString(),
+                any(LocationRequest.class), any(CancellationSignal.class), any(Executor.class),
+                any(Consumer.class));
+        assertFalse(mSatelliteAccessControllerUT.isWaitForCurrentLocationTimerStarted());
     }
 
     private void sendSatelliteCommunicationAllowedEvent() {
