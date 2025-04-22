@@ -934,6 +934,20 @@
     <string name="band_mode_succeeded" msgid="2230018000534761063">"Me sukses!"</string>
     <string name="phone_info_label" product="tablet" msgid="7477478709388477397">"Informacion mbi tabletin"</string>
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Informacioni i telefonit"</string>
+    <!-- no translation found for phone_info_label_v2 (4958954896454475006) -->
+    <skip />
+    <!-- no translation found for tab_title_device_details (6988777232978544580) -->
+    <skip />
+    <!-- no translation found for tab_title_data_network (3959510345511877717) -->
+    <skip />
+    <!-- no translation found for tab_title_satellite (3973515984497023639) -->
+    <skip />
+    <!-- no translation found for tab_title_ims (8386374556214247042) -->
+    <skip />
+    <!-- no translation found for phone0_title (8961115386055876486) -->
+    <skip />
+    <!-- no translation found for phone1_title (8685542469651636602) -->
+    <skip />
     <string name="carrier_provisioning" msgid="2668065041869578376">"Informacionet e përgatitjes së operatorit celular"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Aktivizo përgatitjen e operatorit celular"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Sinjali i Bluetooth-it është i dobët. Provo të kalosh te altoparlanti."</string>

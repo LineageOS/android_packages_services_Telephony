@@ -10927,11 +10927,18 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             UiccSlotInfo[] slotInfos = getUiccSlotsInfo(mApp.getOpPackageName());
             if (slotInfos != null) {
                 for (int i = 0; i < slotInfos.length; i++) {
-                    for (UiccPortInfo portInfo : slotInfos[i].getPorts()) {
-                        if (SubscriptionManager.isValidPhoneId(portInfo.getLogicalSlotIndex())) {
-                            slotMap.add(new UiccSlotMapping(portInfo.getPortIndex(), i,
-                                    portInfo.getLogicalSlotIndex()));
+                    UiccSlotInfo slotInfo = slotInfos[i];
+                    if (slotInfo != null) {
+                        for (UiccPortInfo portInfo : slotInfo.getPorts()) {
+                            if (SubscriptionManager.isValidPhoneId(
+                                    portInfo.getLogicalSlotIndex())) {
+                                slotMap.add(new UiccSlotMapping(portInfo.getPortIndex(), i,
+                                        portInfo.getLogicalSlotIndex()));
+                            }
                         }
+                    } else {
+                        loge("getSlotsMapping, SlotInfo[ " + i
+                                + " ] is null, which is not expected");
                     }
                 }
             }

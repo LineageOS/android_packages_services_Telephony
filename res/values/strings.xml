@@ -2227,6 +2227,28 @@
     <!-- The title of the activity to see phone info -->
     <string name="phone_info_label" product="default">Phone info</string>
 
+    <!-- The title of the activity to see phone info -->
+    <string name="phone_info_label_v2">Phone Info V2</string>
+
+    <!-- The title of the device details tab -->
+    <string name="tab_title_device_details">DEVICE DETAILS</string>
+
+    <!-- The title of the data and network tab -->
+    <string name="tab_title_data_network">DATA &amp; NETWORK</string>
+
+    <!-- The title of the satellite tab -->
+    <string name="tab_title_satellite">SATELLITE</string>
+
+    <!-- The title of the ims tab -->
+    <string name="tab_title_ims">IMS</string>
+
+    <!-- The title of the phone 0 button -->
+    <string name="phone0_title">Phone 0</string>
+
+    <!-- The title of the phone 1 button -->
+    <string name="phone1_title">Phone 1</string>
+
+
     <!-- Carrier Provisioning Info [CHAR LIMIT=NONE] -->
     <string name="carrier_provisioning">Carrier Provisioning Info</string>
     <!-- Trigger Carrier Provisioning [CHAR LIMIT=NONE] -->
