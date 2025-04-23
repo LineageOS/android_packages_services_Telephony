@@ -37,7 +37,6 @@ import android.telephony.CarrierConfigManager;
 import android.telephony.Rlog;
 import android.telephony.SubscriptionManager;
 
-import com.android.internal.annotations.GuardedBy;
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.telephony.ExponentialBackoff;
 import com.android.internal.telephony.flags.FeatureFlags;
@@ -50,9 +49,9 @@ import com.android.libraries.entitlement.ServiceEntitlementException;
 import java.time.Instant;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -81,6 +80,7 @@ public class SatelliteEntitlementController extends Handler {
     private static final long MAX_DELAY_MILLIS = TimeUnit.DAYS.toMillis(5); // 5 days
     private static final int MULTIPLIER = 2;
     private static final int MAX_RETRY_COUNT = 5;
+
     @NonNull private final SubscriptionManagerService mSubscriptionManagerService;
     @NonNull private final CarrierConfigManager mCarrierConfigManager;
     @NonNull private final CarrierConfigManager.CarrierConfigChangeListener
@@ -89,27 +89,23 @@ public class SatelliteEntitlementController extends Handler {
     @NonNull private final ConnectivityManager.NetworkCallback mNetworkCallback;
     @NonNull private final BroadcastReceiver mReceiver;
     @NonNull private final Context mContext;
-    private final Object mLock = new Object();
+
     /** Map key : subId, value : ExponentialBackoff. */
-    @GuardedBy("mLock")
-    private Map<Integer, ExponentialBackoff> mExponentialBackoffPerSub = new HashMap<>();
+    private ConcurrentHashMap<Integer, ExponentialBackoff> mExponentialBackoffPerSub =
+            new ConcurrentHashMap<>();
     /** Map key : subId, value : SatelliteEntitlementResult. */
-    @GuardedBy("mLock")
-    private Map<Integer, SatelliteEntitlementResult> mSatelliteEntitlementResultPerSub =
-            new HashMap<>();
+    private ConcurrentHashMap<Integer, SatelliteEntitlementResult>
+            mSatelliteEntitlementResultPerSub = new ConcurrentHashMap<>();
     /** Map key : subId, value : the last query time to millis. */
-    @GuardedBy("mLock")
-    private Map<Integer, Long> mLastQueryTimePerSub = new HashMap<>();
+    private ConcurrentHashMap<Integer, Long> mLastQueryTimePerSub = new ConcurrentHashMap<>();
     /** Map key : subId, value : Count the number of retries caused by the 'ExponentialBackoff' and
      * '503 error case with the Retry-After header'. */
-    @GuardedBy("mLock")
-    private Map<Integer, Integer> mRetryCountPerSub = new HashMap<>();
+    private ConcurrentHashMap<Integer, Integer> mRetryCountPerSub = new ConcurrentHashMap<>();
     /** Map key : subId, value : Whether query is in progress. */
-    @GuardedBy("mLock")
-    private Map<Integer, Boolean> mIsEntitlementInProgressPerSub = new HashMap<>();
+    private ConcurrentHashMap<Integer, Boolean> mIsEntitlementInProgressPerSub =
+            new ConcurrentHashMap<>();
     /** Map key : slotId, value : The last used subId. */
-    @GuardedBy("mLock")
-    private Map<Integer, Integer> mSubIdPerSlot = new HashMap<>();
+    private ConcurrentHashMap<Integer, Integer> mSubIdPerSlot = new ConcurrentHashMap<>();
     @NonNull private final EntitlementMetricsStats mEntitlementMetricsStats;
     /** Feature flags to control behavior and errors. */
     @NonNull
@@ -203,23 +199,16 @@ public class SatelliteEntitlementController extends Handler {
         }
 
         sendEmptyMessage(CMD_START_QUERY_ENTITLEMENT);
-        synchronized (mLock) {
-            mSubIdPerSlot.put(slotIndex, subId);
-        }
+        mSubIdPerSlot.put(slotIndex, subId);
     }
 
     // When SIM is removed or changed, then reset the previous subId's retry related objects.
     private void processSimChanged(int slotIndex, int subId) {
-        int previousSubId = SubscriptionManager.INVALID_SUBSCRIPTION_ID;
-        synchronized (mLock) {
-            previousSubId = mSubIdPerSlot.getOrDefault(slotIndex,
-                    SubscriptionManager.INVALID_SUBSCRIPTION_ID);
-        }
+        int previousSubId = mSubIdPerSlot.getOrDefault(slotIndex,
+                SubscriptionManager.INVALID_SUBSCRIPTION_ID);
         logd("processSimChanged prev subId:" + previousSubId);
         if (previousSubId != subId) {
-            synchronized (mLock) {
-                mSubIdPerSlot.remove(slotIndex);
-            }
+            mSubIdPerSlot.remove(slotIndex);
             logd("processSimChanged resetEntitlementQueryPerSubId");
             resetEntitlementQueryPerSubId(previousSubId);
         }
@@ -327,22 +316,18 @@ public class SatelliteEntitlementController extends Handler {
             // Check the satellite service query result from the entitlement server for the
             // satellite service.
             try {
-                synchronized (mLock) {
-                    mIsEntitlementInProgressPerSub.put(subId, true);
-                    logd("handleCmdStartQueryEntitlement: checkEntitlementStatus");
-                    SatelliteEntitlementResult entitlementResult =  getSatelliteEntitlementApi(
-                            subId).checkEntitlementStatus();
-                    mSatelliteEntitlementResultPerSub.put(subId, entitlementResult);
-                    reportSuccessForEntitlement(subId, entitlementResult);
-                }
+                mIsEntitlementInProgressPerSub.put(subId, true);
+                logd("handleCmdStartQueryEntitlement: checkEntitlementStatus");
+                SatelliteEntitlementResult entitlementResult =  getSatelliteEntitlementApi(
+                        subId).checkEntitlementStatus();
+                mSatelliteEntitlementResultPerSub.put(subId, entitlementResult);
+                reportSuccessForEntitlement(subId, entitlementResult);
             } catch (ServiceEntitlementException e) {
                 loge(e.toString());
                 mEntitlementMetricsStats.reportError(subId, e.getErrorCode(), false);
                 if (!isInternetConnected()) {
                     logd("StartQuery: disconnected. " + e);
-                    synchronized (mLock) {
-                        mIsEntitlementInProgressPerSub.remove(subId);
-                    }
+                    mIsEntitlementInProgressPerSub.remove(subId);
                     return;
                 }
                 if (isPermanentError(e)) {
@@ -370,12 +355,10 @@ public class SatelliteEntitlementController extends Handler {
      * query. */
     private void resetEntitlementQueryCounts(String event) {
         logd("resetEntitlementQueryCounts: " + event);
-        synchronized (mLock) {
-            mLastQueryTimePerSub = new HashMap<>();
-            mExponentialBackoffPerSub = new HashMap<>();
-            mRetryCountPerSub = new HashMap<>();
-            mIsEntitlementInProgressPerSub = new HashMap<>();
-        }
+        mLastQueryTimePerSub = new ConcurrentHashMap<>();
+        mExponentialBackoffPerSub = new ConcurrentHashMap<>();
+        mRetryCountPerSub = new ConcurrentHashMap<>();
+        mIsEntitlementInProgressPerSub = new ConcurrentHashMap<>();
     }
 
     /**
@@ -393,17 +376,14 @@ public class SatelliteEntitlementController extends Handler {
             return;
         }
         try {
-            synchronized (mLock) {
-                int currentRetryCount = getRetryCount(subId);
-                mRetryCountPerSub.put(subId, currentRetryCount + 1);
-                logd("[" + subId + "] retry cnt:" + getRetryCount(subId));
-                logd("handleCmdRetryQueryEntitlement: checkEntitlementStatus");
-                SatelliteEntitlementResult entitlementResult =  getSatelliteEntitlementApi(
-                        subId).checkEntitlementStatus();
-                mSatelliteEntitlementResultPerSub.put(subId, entitlementResult);
-                reportSuccessForEntitlement(subId, entitlementResult);
-
-            }
+            int currentRetryCount = getRetryCount(subId);
+            mRetryCountPerSub.put(subId, currentRetryCount + 1);
+            logd("[" + subId + "] retry cnt:" + getRetryCount(subId));
+            logd("handleCmdRetryQueryEntitlement: checkEntitlementStatus");
+            SatelliteEntitlementResult entitlementResult =  getSatelliteEntitlementApi(
+                    subId).checkEntitlementStatus();
+            mSatelliteEntitlementResultPerSub.put(subId, entitlementResult);
+            reportSuccessForEntitlement(subId, entitlementResult);
         } catch (ServiceEntitlementException e) {
             loge(e.toString());
             mEntitlementMetricsStats.reportError(subId, e.getErrorCode(), true);
@@ -415,9 +395,7 @@ public class SatelliteEntitlementController extends Handler {
             if (!isInternetConnected()) {
                 logd("retryQuery: Internet disconnected.");
                 stopExponentialBackoff(subId);
-                synchronized (mLock) {
-                    mIsEntitlementInProgressPerSub.remove(subId);
-                }
+                mIsEntitlementInProgressPerSub.remove(subId);
                 return;
             }
             if (isPermanentError(e)) {
@@ -433,10 +411,7 @@ public class SatelliteEntitlementController extends Handler {
                 stopExponentialBackoff(subId);
                 return;
             } else {
-                ExponentialBackoff exponentialBackoff = null;
-                synchronized (mLock) {
-                    exponentialBackoff = mExponentialBackoffPerSub.get(subId);
-                }
+                ExponentialBackoff exponentialBackoff = mExponentialBackoffPerSub.get(subId);
                 if (exponentialBackoff == null) {
                     startExponentialBackoff(subId);
                 } else {
@@ -489,18 +464,14 @@ public class SatelliteEntitlementController extends Handler {
     }
 
     private void startExponentialBackoff(int subId) {
-        ExponentialBackoff exponentialBackoff = null;
         stopExponentialBackoff(subId);
-        synchronized (mLock) {
-            mExponentialBackoffPerSub.put(subId,
-                    new ExponentialBackoff(INITIAL_DELAY_MILLIS, MAX_DELAY_MILLIS,
-                            MULTIPLIER, this.getLooper(), () -> {
-                        synchronized (mLock) {
-                            sendMessage(obtainMessage(CMD_RETRY_QUERY_ENTITLEMENT, subId, 0));
-                        }
-                    }));
-            exponentialBackoff = mExponentialBackoffPerSub.get(subId);
-        }
+        mExponentialBackoffPerSub.put(subId,
+                new ExponentialBackoff(INITIAL_DELAY_MILLIS, MAX_DELAY_MILLIS,
+                        MULTIPLIER, this.getLooper(), () -> {
+                    sendMessage(obtainMessage(CMD_RETRY_QUERY_ENTITLEMENT, subId, 0));
+                }));
+
+        ExponentialBackoff exponentialBackoff = mExponentialBackoffPerSub.get(subId);
         if (exponentialBackoff != null) {
             exponentialBackoff.start();
             logd("start ExponentialBackoff, cnt: " + getRetryCount(subId) + ". Retrying in "
@@ -511,12 +482,10 @@ public class SatelliteEntitlementController extends Handler {
     /** If the Internet connection is lost during the ExponentialBackoff, stop the
      * ExponentialBackoff and reset it. */
     private void stopExponentialBackoff(int subId) {
-        synchronized (mLock) {
-            if (mExponentialBackoffPerSub.get(subId) != null) {
-                logd("stopExponentialBackoff: reset ExponentialBackoff");
-                mExponentialBackoffPerSub.get(subId).stop();
-                mExponentialBackoffPerSub.remove(subId);
-            }
+        if (mExponentialBackoffPerSub.get(subId) != null) {
+            logd("stopExponentialBackoff: reset ExponentialBackoff");
+            mExponentialBackoffPerSub.get(subId).stop();
+            mExponentialBackoffPerSub.remove(subId);
         }
     }
 
@@ -526,19 +495,16 @@ public class SatelliteEntitlementController extends Handler {
      * And then it send a delayed message to trigger the query again after A refresh day has passed.
      */
     private void queryCompleted(int subId) {
-        SatelliteEntitlementResult entitlementResult;
-        synchronized (mLock) {
-            if (!mSatelliteEntitlementResultPerSub.containsKey(subId)) {
-                logd("queryCompleted: create default SatelliteEntitlementResult");
-                mSatelliteEntitlementResultPerSub.put(subId,
-                        SatelliteEntitlementResult.getDefaultResult());
-            }
-            entitlementResult = mSatelliteEntitlementResultPerSub.get(subId);
-            stopExponentialBackoff(subId);
-            mIsEntitlementInProgressPerSub.remove(subId);
-            logd("reset retry count for refresh query");
-            mRetryCountPerSub.remove(subId);
+        if (!mSatelliteEntitlementResultPerSub.containsKey(subId)) {
+            logd("queryCompleted: create default SatelliteEntitlementResult");
+            mSatelliteEntitlementResultPerSub.put(subId,
+                    SatelliteEntitlementResult.getDefaultResult());
         }
+        SatelliteEntitlementResult entitlementResult = mSatelliteEntitlementResultPerSub.get(subId);
+        stopExponentialBackoff(subId);
+        mIsEntitlementInProgressPerSub.remove(subId);
+        logd("reset retry count for refresh query");
+        mRetryCountPerSub.remove(subId);
 
         saveLastQueryTime(subId);
         Message message = obtainMessage();
@@ -562,11 +528,9 @@ public class SatelliteEntitlementController extends Handler {
             return false;
         }
 
-        synchronized (mLock) {
-            if (mIsEntitlementInProgressPerSub.getOrDefault(subId, false)) {
-                logd("In progress retry");
-                return false;
-            }
+        if (mIsEntitlementInProgressPerSub.getOrDefault(subId, false)) {
+            logd("In progress retry");
+            return false;
         }
         return true;
     }
@@ -580,9 +544,7 @@ public class SatelliteEntitlementController extends Handler {
 
         if (!isInternetConnected()) {
             stopExponentialBackoff(subId);
-            synchronized (mLock) {
-                mIsEntitlementInProgressPerSub.remove(subId);
-            }
+            mIsEntitlementInProgressPerSub.remove(subId);
             logd("Internet disconnected");
             return false;
         }
@@ -596,19 +558,15 @@ public class SatelliteEntitlementController extends Handler {
 
     // update for removing the satellite entitlement restricted reason
     private void resetSatelliteEntitlementRestrictedReason(int subId) {
-        SatelliteEntitlementResult previousResult;
         SatelliteEntitlementResult enabledResult = new SatelliteEntitlementResult(
                 SatelliteEntitlementResult.SATELLITE_ENTITLEMENT_STATUS_ENABLED,
                 new ArrayList<>(), new ArrayList<>());
-        synchronized (mLock) {
-            previousResult = mSatelliteEntitlementResultPerSub.get(subId);
-        }
+        SatelliteEntitlementResult previousResult = mSatelliteEntitlementResultPerSub.get(subId);
+
         if (previousResult != null && previousResult.getEntitlementStatus()
                 != SatelliteEntitlementResult.SATELLITE_ENTITLEMENT_STATUS_ENABLED) {
             logd("set enabled status for removing satellite entitlement restricted reason");
-            synchronized (mLock) {
-                mSatelliteEntitlementResultPerSub.put(subId, enabledResult);
-            }
+            mSatelliteEntitlementResultPerSub.put(subId, enabledResult);
             updateSatelliteEntitlementStatus(subId, true, enabledResult.getAllowedPLMNList(),
                     enabledResult.getBarredPLMNList(), enabledResult.getDataPlanInfoForPlmnList(),
                     enabledResult.getAvailableServiceTypeInfoForPlmnList(),
@@ -621,11 +579,9 @@ public class SatelliteEntitlementController extends Handler {
     private void resetEntitlementQueryPerSubId(int subId) {
         logd("resetEntitlementQueryPerSubId: " + subId);
         stopExponentialBackoff(subId);
-        synchronized (mLock) {
-            mLastQueryTimePerSub.remove(subId);
-            mRetryCountPerSub.remove(subId);
-            mIsEntitlementInProgressPerSub.remove(subId);
-        }
+        mLastQueryTimePerSub.remove(subId);
+        mRetryCountPerSub.remove(subId);
+        mIsEntitlementInProgressPerSub.remove(subId);
         removeMessages(CMD_RETRY_QUERY_ENTITLEMENT,
                 obtainMessage(CMD_RETRY_QUERY_ENTITLEMENT, subId, 0));
     }
@@ -661,9 +617,7 @@ public class SatelliteEntitlementController extends Handler {
     /** If there is a value stored in the cache, it is used. If there is no value stored in the
      * cache, it is considered the first query. */
     private long getLastQueryTime(int subId) {
-        synchronized (mLock) {
-            return mLastQueryTimePerSub.getOrDefault(subId, 0L);
-        }
+        return mLastQueryTimePerSub.getOrDefault(subId, 0L);
     }
 
     /** Return the satellite entitlement status refresh days from carrier config. */
@@ -705,15 +659,11 @@ public class SatelliteEntitlementController extends Handler {
 
     private void saveLastQueryTime(int subId) {
         long lastQueryTimeMillis = System.currentTimeMillis();
-        synchronized (mLock) {
-            mLastQueryTimePerSub.put(subId, lastQueryTimeMillis);
-        }
+        mLastQueryTimePerSub.put(subId, lastQueryTimeMillis);
     }
 
     private int getRetryCount(int subId) {
-        synchronized (mLock) {
-            return mRetryCountPerSub.getOrDefault(subId, 0);
-        }
+        return mRetryCountPerSub.getOrDefault(subId, 0);
     }
 
     /**

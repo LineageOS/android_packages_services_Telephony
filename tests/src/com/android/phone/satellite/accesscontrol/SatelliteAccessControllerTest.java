@@ -486,16 +486,22 @@ public class SatelliteAccessControllerTest extends TelephonyTestBase {
         // Verify the cache is used when the location is null and the cache is valid and true.
         mSatelliteAccessControllerUT.elapsedRealtimeNanos =
                 ALLOWED_STATE_CACHE_VALID_DURATION_NANOS - 1;
-        mSatelliteAccessControllerUT
-                .setIsSatelliteCommunicationAllowedForCurrentLocationCache("cache_allowed");
+        replaceInstance(SatelliteAccessController.class,
+            "mLatestSatelliteCommunicationAllowedSetTime",
+            mSatelliteAccessControllerUT, mSatelliteAccessControllerUT.elapsedRealtimeNanos);
+        replaceInstance(SatelliteAccessController.class, "mLatestSatelliteCommunicationAllowed",
+                mSatelliteAccessControllerUT, true);
         mSatelliteAccessControllerUT.setLocationRequestCancellationSignalAsNull(false);
 
         sendCurrentLocationTimeoutEvent();
         assertTrue(mSatelliteAccessControllerUT.isCurrentSatelliteAllowedState());
 
         // Verify the cache is used when the location is null and the cache is valid and false.
-        mSatelliteAccessControllerUT
-                .setIsSatelliteCommunicationAllowedForCurrentLocationCache("cache_not_allowed");
+        replaceInstance(SatelliteAccessController.class,
+            "mLatestSatelliteCommunicationAllowedSetTime",
+            mSatelliteAccessControllerUT, mSatelliteAccessControllerUT.elapsedRealtimeNanos);
+        replaceInstance(SatelliteAccessController.class, "mLatestSatelliteCommunicationAllowed",
+                mSatelliteAccessControllerUT, false);
         mSatelliteAccessControllerUT.setLocationRequestCancellationSignalAsNull(false);
 
         sendCurrentLocationTimeoutEvent();
@@ -512,8 +518,11 @@ public class SatelliteAccessControllerTest extends TelephonyTestBase {
         doReturn(mMockResultReceiver).when(mockResultReceiverIterator).next();
         replaceInstance(SatelliteAccessController.class, "mSatelliteAllowResultReceivers",
                 mSatelliteAccessControllerUT, mMockSatelliteAllowResultReceivers);
-        mSatelliteAccessControllerUT.setIsSatelliteCommunicationAllowedForCurrentLocationCache(
-                "cache_clear_and_not_allowed");
+        replaceInstance(SatelliteAccessController.class,
+            "mLatestSatelliteCommunicationAllowedSetTime",
+            mSatelliteAccessControllerUT, 0);
+        replaceInstance(SatelliteAccessController.class, "mLatestSatelliteCommunicationAllowed",
+                mSatelliteAccessControllerUT, false);
         mSatelliteAccessControllerUT.setLocationRequestCancellationSignalAsNull(false);
 
         sendCurrentLocationTimeoutEvent();
@@ -1170,8 +1179,11 @@ public class SatelliteAccessControllerTest extends TelephonyTestBase {
 
         // Timed out to wait for current location. No cached allowed state.
         clearAllInvocations();
-        mSatelliteAccessControllerUT.setIsSatelliteCommunicationAllowedForCurrentLocationCache(
-                "cache_clear_and_not_allowed");
+        replaceInstance(SatelliteAccessController.class,
+            "mLatestSatelliteCommunicationAllowedSetTime",
+            mSatelliteAccessControllerUT, 0);
+        replaceInstance(SatelliteAccessController.class, "mLatestSatelliteCommunicationAllowed",
+                mSatelliteAccessControllerUT, false);
         when(mMockCountryDetector.getCurrentNetworkCountryIso()).thenReturn(EMPTY_STRING_LIST);
         when(mMockTelecomManager.isInEmergencyCall()).thenReturn(false);
         when(mMockPhone.isInEcm()).thenReturn(true);
@@ -2114,8 +2126,11 @@ public class SatelliteAccessControllerTest extends TelephonyTestBase {
         logd("testLocationModeChanged: "
                 + "verify if mIsSatelliteAllowedRegionPossiblyChanged is false, "
                 + "when the intent action is MODE_CHANGED_ACTION and isLocationEnabled() is false");
-        mSatelliteAccessControllerUT
-                .setIsSatelliteCommunicationAllowedForCurrentLocationCache("cache_allowed");
+        replaceInstance(SatelliteAccessController.class,
+            "mLatestSatelliteCommunicationAllowedSetTime",
+            mSatelliteAccessControllerUT, mSatelliteAccessControllerUT.elapsedRealtimeNanos);
+        replaceInstance(SatelliteAccessController.class, "mLatestSatelliteCommunicationAllowed",
+                mSatelliteAccessControllerUT, true);
         replaceInstance(SatelliteAccessController.class,
                 "mSatelliteCommunicationAccessStateChangedListeners",
                 mSatelliteAccessControllerUT,
@@ -2125,11 +2140,10 @@ public class SatelliteAccessControllerTest extends TelephonyTestBase {
         mSatelliteAccessControllerUT.setIsSatelliteAllowedRegionPossiblyChanged(false);
         mSatelliteAccessControllerUT.getLocationBroadcastReceiver()
                 .onReceive(mMockContext, mMockLocationIntent);
-        verify(mMockLocationManager, times(1)).isLocationEnabled();
         mTestableLooper.processAllMessages();
+        verify(mMockLocationManager, times(2)).isLocationEnabled();
         assertEquals(false,
                 mSatelliteAccessControllerUT.isSatelliteAllowedRegionPossiblyChanged());
-        verify(mMockSatelliteCommunicationAccessStateChangedListeners, times(1)).values();
     }
 
     @Test

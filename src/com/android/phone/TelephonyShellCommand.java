@@ -3995,39 +3995,13 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
 
     private int handleSetIsSatelliteCommunicationAllowedForCurrentLocationCache() {
         PrintWriter errPw = getErrPrintWriter();
-        String opt;
         String state;
-        if ((opt = getNextArg()) == null) {
+        if ((state = getNextArg()) == null) {
             errPw.println(
                     "adb shell cmd phone set-is-satellite-communication-allowed-for-current"
                             + "-location-cache :"
                             + " Invalid Argument");
             return -1;
-        } else {
-            switch (opt) {
-                case "-a": {
-                    state = "cache_allowed";
-                    break;
-                }
-                case "-na": {
-                    state = "cache_not_allowed";
-                    break;
-                }
-                case "-n": {
-                    state = "cache_clear_and_not_allowed";
-                    break;
-                }
-                case "-c": {
-                    state = "clear_cache_only";
-                    break;
-                }
-                default:
-                    errPw.println(
-                            "adb shell cmd phone set-is-satellite-communication-allowed-for-current"
-                                    + "-location-cache :"
-                                    + " Invalid Argument");
-                    return -1;
-            }
         }
 
         Log.d(LOG_TAG, "handleSetIsSatelliteCommunicationAllowedForCurrentLocationCache("
