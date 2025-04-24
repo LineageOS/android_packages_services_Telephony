@@ -489,6 +489,15 @@ public class ImsConferenceController {
         conference.updateConferenceParticipantsAfterCreation();
 
         if (Flags.reuseOriginalConnRemoteConfBehavior() && conference.isRemotelyHosted()) {
+            if (phoneAccountHandle != null &&
+                    mTelecomAccountRegistry.isUsingSimCallManager(phoneAccountHandle)) {
+                // Fi is the only carrier that uses a SIM call manager and they do not intend to
+                // support remotely hosted conference calls
+                Log.i(LOG_TAG, "startConference: SIM call manager is in use so ignoring "
+                        + "the request to initiate remotely hosted conference");
+                return;
+            }
+
             Log.i(LOG_TAG, "startConference: Converting original connection into a conference");
             mConnectionService.addConferenceFromConnection(conference, connection);
             conferenceHostConnection.setTelecomCallId(conference.getTelecomCallId());

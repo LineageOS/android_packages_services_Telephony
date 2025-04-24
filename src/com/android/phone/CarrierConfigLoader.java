@@ -874,8 +874,7 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         TelephonyRegistryManager trm = mContext.getSystemService(TelephonyRegistryManager.class);
         // Unlike broadcast, we wouldn't notify registrants on carrier config change when device is
         // unlocked. Only real carrier config change will send the notification to registrants.
-        if (trm != null && (mFeatureFlags.carrierConfigChangedCallbackFix()
-                ? mNeedNotifyCallback[phoneId] : !mFromSystemUnlocked[phoneId])) {
+        if (trm != null && mNeedNotifyCallback[phoneId]) {
             logl("Notify carrier config changed callback for phone " + phoneId);
             trm.notifyCarrierConfigChanged(phoneId, subId, carrierId, specificCarrierId);
             mNeedNotifyCallback[phoneId] = false;
