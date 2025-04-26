@@ -30,8 +30,6 @@ import android.telephony.VisualVoicemailService;
 import android.text.TextUtils;
 import android.util.ArraySet;
 
-import com.android.internal.telephony.flags.Flags;
-
 import java.util.Collections;
 import java.util.Set;
 
@@ -109,11 +107,7 @@ public class CarrierVvmPackageInstalledReceiver extends BroadcastReceiver {
             Intent broadcast = new Intent(ACTION_CARRIER_VVM_PACKAGE_INSTALLED);
             broadcast.putExtra(Intent.EXTRA_PACKAGE_NAME, packageName);
             broadcast.setPackage(vvmPackage);
-            if (Flags.hsumBroadcast()) {
-                context.sendBroadcastAsUser(broadcast, UserHandle.ALL);
-            } else {
-                context.sendBroadcast(broadcast);
-            }
+            context.sendBroadcastAsUser(broadcast, UserHandle.ALL);
         }
     }
 

@@ -148,6 +148,11 @@ public class TestContext extends MockContext {
     }
 
     @Override
+    public void sendBroadcastAsUser(Intent intent, UserHandle user) {
+        mIntent = intent;
+    }
+
+    @Override
     public Intent registerReceiver(BroadcastReceiver receiver, IntentFilter filter) {
         mReceiver = receiver;
         return null;

@@ -27,9 +27,11 @@ import android.telecom.DisconnectCause;
 import android.telecom.PhoneAccountHandle;
 import android.telephony.CarrierConfigManager;
 
+import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
-import com.android.internal.telephony.flags.Flags;
+import com.android.internal.telephony.flags.FeatureFlags;
+import com.android.internal.telephony.flags.FeatureFlagsImpl;
 import com.android.phone.PhoneUtils;
 import com.android.telephony.Rlog;
 
@@ -122,7 +124,7 @@ public class ImsConferenceController {
     private final TelephonyConnectionServiceProxy mConnectionService;
 
     private final ImsConference.FeatureFlagProxy mFeatureFlagProxy;
-
+    private FeatureFlags mFeatureFlags = new FeatureFlagsImpl();
     /**
      * List of known {@link TelephonyConnection}s.
      */
@@ -438,7 +440,7 @@ public class ImsConferenceController {
             return;
         }
 
-        if (!Flags.reuseOriginalConnRemoteConfBehavior()) {
+        if (!mFeatureFlags.reuseOriginalConnRemoteConfBehavior()) {
             // Mark the foreground connection as MERGE_COMPLETE before it is disconnected as part of
             // the IMS merge conference process:
             connection.sendTelephonyConnectionEvent(
@@ -488,7 +490,7 @@ public class ImsConferenceController {
         conference.addTelephonyConferenceListener(mConferenceListener);
         conference.updateConferenceParticipantsAfterCreation();
 
-        if (Flags.reuseOriginalConnRemoteConfBehavior() && conference.isRemotelyHosted()) {
+        if (mFeatureFlags.reuseOriginalConnRemoteConfBehavior() && conference.isRemotelyHosted()) {
             if (phoneAccountHandle != null &&
                     mTelecomAccountRegistry.isUsingSimCallManager(phoneAccountHandle)) {
                 // Fi is the only carrier that uses a SIM call manager and they do not intend to
@@ -555,5 +557,11 @@ public class ImsConferenceController {
                             shouldLocalDisconnectOnEmptyConference);
         }
         return config.build();
+    }
+
+    /* Only for testing */
+    @VisibleForTesting
+    public void setFeatureFlags(FeatureFlags featureFlags) {
+        mFeatureFlags = featureFlags;
     }
 }
