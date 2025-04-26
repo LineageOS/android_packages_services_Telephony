@@ -46,6 +46,7 @@
           android:text="@string/phone0_title"
           android:textAppearance="?android:attr/textAppearanceMedium"
           android:textStyle="bold"/>
+
     </LinearLayout>
 
     <View
@@ -74,13 +75,14 @@
           android:text="@string/phone1_title"
           android:textAppearance="?android:attr/textAppearanceMedium"
           android:textStyle="bold"/>
+
     </LinearLayout>
   </LinearLayout>
 
   <View
-  android:layout_width="match_parent"
-  android:layout_height="1dp"
-  android:background="?android:attr/listDivider"/>
+      android:layout_width="match_parent"
+      android:layout_height="1dp"
+      android:background="?android:attr/listDivider"/>
 
   <ScrollView
       android:layout_width="match_parent"
@@ -123,6 +125,15 @@
         <TextView android:text="@string/radio_info_imsi_label" style="@style/info_label" />
         <TextView android:id="@+id/imsi" style="@style/info_value" />
       </LinearLayout>
+
+      <!-- Set removable eSIM as default eUICC. -->
+      <Switch android:id="@+id/removable_esim_switch"
+          android:textSize="14sp"
+          android:layout_marginTop="8dip"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:enabled="false"
+          android:text="@string/removable_esim_string" />
     </LinearLayout>
   </ScrollView>
 </LinearLayout>

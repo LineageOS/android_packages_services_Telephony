@@ -17,9 +17,238 @@
 ** limitations under the License.
 */
 -->
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
-</ScrollView>
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="4dp">
+        <LinearLayout
+            android:id="@+id/phone_button_0"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:padding="12dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true">
+
+            <TextView
+                android:id="@+id/phone_button_0_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/phone0_title"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="?android:attr/listDivider"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"/>
+
+        <LinearLayout
+            android:id="@+id/phone_button_1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:padding="12dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true">
+
+            <TextView
+                android:id="@+id/phone_button_1_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/phone1_title"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textStyle="bold"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Network Identifier -->
+            <LinearLayout style="@style/RadioInfo_entry_layout">
+                <TextView android:text="@string/radio_info_current_network_label" style="@style/info_label" />
+                <TextView android:id="@+id/operator" style="@style/info_value" />
+            </LinearLayout>
+
+            <!-- Roaming -->
+            <LinearLayout style="@style/RadioInfo_entry_layout">
+                <TextView android:text="@string/radio_info_roaming_label" style="@style/info_label" />
+                <TextView android:id="@+id/roaming" style="@style/info_value" />
+            </LinearLayout>
+
+            <!-- Data Service Status -->
+            <LinearLayout style="@style/RadioInfo_entry_layout">
+                <TextView android:text="@string/radio_info_gprs_service_label" style="@style/info_label" />
+                <TextView android:id="@+id/gprs" style="@style/info_value" />
+            </LinearLayout>
+
+            <!-- Data Network Type -->
+            <LinearLayout style="@style/RadioInfo_entry_layout">
+                <TextView android:text="@string/radio_info_data_network_type_label" style="@style/info_label" />
+                <TextView android:id="@+id/data_network" style="@style/info_value" />
+            </LinearLayout>
+
+            <!-- Data Raw Registration State -->
+            <LinearLayout style="@style/RadioInfo_entry_layout">
+                <TextView android:text="@string/radio_info_data_raw_registration_state_label" style="@style/info_label" />
+                <TextView android:id="@+id/data_raw_registration_state" style="@style/info_value" />
+            </LinearLayout>
+
+            <!-- Override Network Type -->
+            <LinearLayout style="@style/RadioInfo_entry_layout">
+                <TextView android:text="@string/radio_info_override_network_type_label" style="@style/info_label" />
+                <TextView android:id="@+id/override_network" style="@style/info_value" />
+            </LinearLayout>
+
+            <!-- Voice Service Status -->
+            <LinearLayout style="@style/RadioInfo_entry_layout">
+                <TextView android:text="@string/radio_info_gsm_service_label" style="@style/info_label" />
+                <TextView android:id="@+id/gsm" style="@style/info_value" />
+            </LinearLayout>
+
+            <!-- Voice Network Type -->
+            <LinearLayout style="@style/RadioInfo_entry_layout">
+                <TextView android:text="@string/radio_info_voice_network_type_label" style="@style/info_label" />
+                <TextView android:id="@+id/voice_network" style="@style/info_value" />
+            </LinearLayout>
+
+            <!-- Voice Raw Registration State -->
+            <LinearLayout style="@style/RadioInfo_entry_layout">
+                <TextView android:text="@string/radio_info_voice_raw_registration_state_label" style="@style/info_label" />
+                <TextView android:id="@+id/voice_raw_registration_state" style="@style/info_value" />
+            </LinearLayout>
+
+            <!-- Signal Strength -->
+            <LinearLayout style="@style/RadioInfo_entry_layout">
+                <TextView android:text="@string/radio_info_signal_strength_label" style="@style/info_label" />
+                <TextView android:id="@+id/dbm" style="@style/info_value" />
+            </LinearLayout>
+
+            <!-- Link Bandwidth -->
+            <LinearLayout style="@style/RadioInfo_entry_layout" android:orientation="horizontal">
+                <TextView android:text="@string/radio_info_dl_kbps" style="@style/info_label" />
+                <TextView android:id="@+id/dl_kbps" style="@style/info_value" />
+            </LinearLayout>
+
+            <!-- Link Bandwidth -->
+            <LinearLayout style="@style/RadioInfo_entry_layout" android:orientation="horizontal">
+                <TextView android:text="@string/radio_info_ul_kbps" style="@style/info_label" />
+                <TextView android:id="@+id/ul_kbps" style="@style/info_value" />
+            </LinearLayout>
+
+            <!-- Preferred Network Type -->
+            <LinearLayout style="@style/RadioInfo_entry_layout">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/radio_info_set_perferred_label"
+                    style="@style/info_label"
+                    />
+
+                <Spinner android:id="@+id/preferredNetworkType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+            </LinearLayout>
+
+            <!-- Mock signal strength -->
+            <LinearLayout style="@style/RadioInfo_entry_layout">
+                <TextView android:id="@+id/signal_strength_label"
+                    android:text="@string/radio_info_signal_strength_label"
+                    style="@style/info_label" />
+                <Spinner android:id="@+id/signalStrength"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <!-- Mock data network type -->
+            <LinearLayout style="@style/RadioInfo_entry_layout">
+                <TextView android:id="@+id/data_network_type_label"
+                    android:text="@string/radio_info_data_network_type_label"
+                    style="@style/info_label" />
+                <Spinner android:id="@+id/dataNetworkType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <!-- Radio Power -->
+            <Switch android:id="@+id/radio_power"
+                android:textSize="14sp"
+                android:layout_marginTop="8dip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/radio_info_radio_power"/>
+
+            <!-- Simulate out of service -->
+            <Switch android:id="@+id/simulate_out_of_service"
+                android:textSize="14sp"
+                android:layout_marginTop="8dip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/simulate_out_of_service_label"/>
+
+            <!-- VoLTE provisioned -->
+            <Switch android:id="@+id/volte_provisioned_switch"
+                android:textSize="14sp"
+                android:layout_marginTop="8dip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/volte_provisioned_switch_string"/>
+
+            <!-- VT provisioned -->
+            <Switch android:id="@+id/vt_provisioned_switch"
+                android:textSize="14sp"
+                android:layout_marginTop="8dip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/vt_provisioned_switch_string"/>
+
+            <!-- Wifi Calling provisioned -->
+            <Switch android:id="@+id/wfc_provisioned_switch"
+                android:textSize="14sp"
+                android:layout_marginTop="8dip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/wfc_provisioned_switch_string"/>
+
+            <!-- EAB/Presence provisioned -->
+            <Switch android:id="@+id/eab_provisioned_switch"
+                android:textSize="14sp"
+                android:layout_marginTop="8dip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/eab_provisioned_switch_string"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

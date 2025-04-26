@@ -1386,13 +1386,13 @@
     <string name="dtmf_tones_summary">Set the length of DTMF tones</string>
     <!-- Options displayed as part of DTMF Tones in Call Settings -->
     <string-array name="dtmf_tone_entries">
-      <item>Normal</item>
-      <item>Long</item>
+        <item>Normal</item>
+        <item>Long</item>
     </string-array>
     <!-- Do not translate. -->
     <string-array name="dtmf_tone_values" translatable="false">
-       <item>0</item>
-       <item>1</item>
+        <item>0</item>
+        <item>1</item>
     </string-array>
 
     <!-- Title for the dialog used to display CDMA DisplayInfo -->
@@ -2029,23 +2029,30 @@
 
     <!-- Title for simulating device out of service. -->
     <string name="simulate_out_of_service_string">Simulate Out of Service (Debug Build only)</string>
+    <string name="simulate_out_of_service_label">Simulate Out of Service</string>
 
     <!-- Title for enforcing satellite channels. -->
     <string name="enforce_satellite_channel_string">Force Camp Satellite LTE Channel (Debug Build only)</string>
+    <string name="enforce_satellite_channel_label">Force Camp Satellite LTE Channel</string>
 
     <!-- Title for simulating SIM capable of satellite. -->
     <string name="mock_carrier_roaming_satellite_string">Mock Carrier Satellite Mode (Debug Build only)</string>
+    <string name="mock_carrier_roaming_satellite_label">Mock</string>
     <!-- Title for simulating SIM Data in satellite Mode. -->
+    <string name="choose_satellite_data_mode_label">Mock Satellite Data mode</string>
     <string name="choose_satellite_data_mode">Mock Satellite Data mode (Debug only)</string>
     <string name="satellite_data_restricted_string">Restricted</string>
     <string name="satellite_data_constrained_string">Limited</string>
     <string name="satellite_data_unConstrained_string">UnLimited</string>
     <!-- Title for trigger real satellite eSOS. -->
     <string name="esos_satellite_string">Test real satellite eSOS mode (Debug Build only)</string>
+    <string name="esos_satellite_label">Test real satellite eSOS mode</string>
     <!-- Title for enable real satellite non-emergency mode. -->
     <string name="satellite_enable_non_emergency_mode_string">Test real satellite non-eSOS mode (Debug Build only)</string>
+    <string name="satellite_enable_non_emergency_mode_label">Test real satellite non-eSOS mode</string>
     <!-- Title for trigger demo satellite eSOS. -->
     <string name="demo_esos_satellite_string">Test demo satellite eSOS mode (Debug Build only)</string>
+    <string name="demo_esos_satellite_label">Test demo satellite eSOS mode</string>
 
     <!-- Phone Info screen. Menu item label.  Used for diagnostic info screens, precise translation isn't needed -->
     <string name="radioInfo_menu_viewADN">View SIM Address Book</string>
@@ -2227,9 +2234,6 @@
     <!-- The title of the activity to see phone info -->
     <string name="phone_info_label" product="default">Phone info</string>
 
-    <!-- The title of the activity to see phone info -->
-    <string name="phone_info_label_v2">Phone Info V2</string>
-
     <!-- The title of the device details tab -->
     <string name="tab_title_device_details">DEVICE DETAILS</string>
 
@@ -2248,6 +2252,7 @@
     <!-- The title of the phone 1 button -->
     <string name="phone1_title">Phone 1</string>
 
+    <string name="phone_info_label_v2">Phone Information V2</string>
 
     <!-- Carrier Provisioning Info [CHAR LIMIT=NONE] -->
     <string name="carrier_provisioning">Carrier Provisioning Info</string>
@@ -2287,5 +2292,14 @@
     <string name="satellite_config_size_of_sats2_dat_label">size of sats2.dat: </string>
     <!-- Satellite config viewer screen. satellite access config json file -->
     <string name="satellite_config_json_label">satellite access config json: </string>
+    <!-- Title of SatelliteConfigViewer screen -->
+    <string name="nb_iot_config_viewer">NB-IOT Config Viewer</string>
+
+    <!-- IMS Details  -->
+    <string name="ims_registration_value">IMS Registration: </string>
+    <string name="voice_over_lte_value">Voice Over LTE: </string>
+    <string name="voice_over_wifi_value">Voice Over Wi-Fi: </string>
+    <string name="video_calling_value">Video Calling: </string>
+    <string name="ut_interface_value">UT interface: </string>
 
 </resources>

@@ -141,6 +141,7 @@ import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -419,13 +420,6 @@ public class SatelliteAccessController extends Handler {
     protected static final long ALLOWED_STATE_CACHE_VALID_DURATION_NANOS =
             TimeUnit.HOURS.toNanos(4);
 
-    private boolean mLatestSatelliteCommunicationAllowed;
-    protected long mLatestSatelliteCommunicationAllowedSetTime;
-
-    private long mLocationQueryStartTimeMillis;
-    private long mOnDeviceLookupStartTimeMillis;
-    private long mTotalCheckingStartTimeMillis;
-
     private Notification mSatelliteAvailableNotification;
     // Key: SatelliteManager#SatelliteDisallowedReason; Value: Notification
     private final ConcurrentHashMap<Integer, Notification> mSatelliteUnAvailableNotifications =
@@ -461,6 +455,11 @@ public class SatelliteAccessController extends Handler {
     };
 
     /** All the atomic variables are declared here. */
+    private AtomicBoolean mLatestSatelliteCommunicationAllowed = new AtomicBoolean(false);
+    protected AtomicLong mLatestSatelliteCommunicationAllowedSetTime = new AtomicLong(0);
+    private AtomicLong mLocationQueryStartTimeMillis = new AtomicLong(0);
+    private AtomicLong mOnDeviceLookupStartTimeMillis = new AtomicLong(0);
+    private AtomicLong mTotalCheckingStartTimeMillis = new AtomicLong(0);
     private AtomicBoolean mIsAllowedCheckBeforeEnablingSatellite = new AtomicBoolean(false);
     private AtomicBoolean mIsCurrentLocationEligibleForNotification = new AtomicBoolean(false);
     private AtomicBoolean mIsProvisionEligibleForNotification = new AtomicBoolean(false);
@@ -1265,9 +1264,9 @@ public class SatelliteAccessController extends Handler {
 
         try {
             mSharedPreferences.edit().putLong(LATEST_SATELLITE_COMMUNICATION_ALLOWED_SET_TIME_KEY,
-                    mLatestSatelliteCommunicationAllowedSetTime).apply();
+                    mLatestSatelliteCommunicationAllowedSetTime.get()).apply();
             mSharedPreferences.edit().putBoolean(LATEST_SATELLITE_COMMUNICATION_ALLOWED_KEY,
-                    mLatestSatelliteCommunicationAllowed).apply();
+                    mLatestSatelliteCommunicationAllowed.get()).apply();
         } catch (Exception ex) {
             ploge("persistLatestSatelliteCommunicationAllowedState error : " + ex);
         }
@@ -1584,18 +1583,17 @@ public class SatelliteAccessController extends Handler {
         }
 
         try {
-            mLatestSatelliteCommunicationAllowedSetTime =
-                    mSharedPreferences.getLong(LATEST_SATELLITE_COMMUNICATION_ALLOWED_SET_TIME_KEY,
-                            0);
-            mLatestSatelliteCommunicationAllowed =
-                    mSharedPreferences.getBoolean(LATEST_SATELLITE_COMMUNICATION_ALLOWED_KEY,
-                            false);
+            mLatestSatelliteCommunicationAllowedSetTime.set(mSharedPreferences.getLong(
+                    LATEST_SATELLITE_COMMUNICATION_ALLOWED_SET_TIME_KEY, 0));
+            mLatestSatelliteCommunicationAllowed.set(mSharedPreferences.getBoolean(
+                    LATEST_SATELLITE_COMMUNICATION_ALLOWED_KEY, false));
         } catch (Exception ex) {
             ploge("loadCachedLatestSatelliteCommunicationAllowedState: ex=" + ex);
         }
         plogd("mLatestSatelliteCommunicationAllowedSetTime="
-                + mLatestSatelliteCommunicationAllowedSetTime
-                + ", mLatestSatelliteCommunicationAllowed=" + mLatestSatelliteCommunicationAllowed);
+                + mLatestSatelliteCommunicationAllowedSetTime.get()
+                + ", mLatestSatelliteCommunicationAllowed="
+                + mLatestSatelliteCommunicationAllowed.get());
     }
 
     private long getLocationFreshDurationNanos() {
@@ -1680,7 +1678,7 @@ public class SatelliteAccessController extends Handler {
                         + "processed");
                 return;
             }
-            mTotalCheckingStartTimeMillis = System.currentTimeMillis();
+            mTotalCheckingStartTimeMillis.set(System.currentTimeMillis());
             mSatelliteController.requestIsSatelliteSupported(
                     mInternalSatelliteSupportedResultReceiver);
         }
@@ -2249,9 +2247,9 @@ public class SatelliteAccessController extends Handler {
                 } else {
                     Bundle bundle = new Bundle();
                     bundle.putBoolean(KEY_SATELLITE_COMMUNICATION_ALLOWED,
-                            mLatestSatelliteCommunicationAllowed);
+                            mLatestSatelliteCommunicationAllowed.get());
                     sendSatelliteAllowResultToReceivers(SATELLITE_RESULT_SUCCESS, bundle,
-                            mLatestSatelliteCommunicationAllowed);
+                            mLatestSatelliteCommunicationAllowed.get());
                 }
             } else {
                 plogd("location query is not allowed");
@@ -2272,9 +2270,9 @@ public class SatelliteAccessController extends Handler {
             logd("isCommunicationAllowedCacheValid: cache is disabled for CTS test");
             return false;
         }
-        if (mLatestSatelliteCommunicationAllowedSetTime > 0) {
+        if (mLatestSatelliteCommunicationAllowedSetTime.get() > 0) {
             long currentTime = getElapsedRealtimeNanos();
-            if ((currentTime - mLatestSatelliteCommunicationAllowedSetTime)
+            if ((currentTime - mLatestSatelliteCommunicationAllowedSetTime.get())
                     <= ALLOWED_STATE_CACHE_VALID_DURATION_NANOS) {
                 logv("isCommunicationAllowedCacheValid: cache is valid");
                 return true;
@@ -2329,7 +2327,7 @@ public class SatelliteAccessController extends Handler {
      * from location service.
      */
     private void checkSatelliteAccessRestrictionUsingOnDeviceData() {
-        mOnDeviceLookupStartTimeMillis = System.currentTimeMillis();
+        mOnDeviceLookupStartTimeMillis.set(System.currentTimeMillis());
         synchronized (mLock) {
             plogd("Use on-device data");
             if (mFreshLastKnownLocation != null) {
@@ -2376,7 +2374,7 @@ public class SatelliteAccessController extends Handler {
                                 .build(),
                         mLocationRequestCancellationSignal, this::post,
                         this::onCurrentLocationAvailable);
-                mLocationQueryStartTimeMillis = System.currentTimeMillis();
+                mLocationQueryStartTimeMillis.set(System.currentTimeMillis());
                 startWaitForCurrentLocationTimer();
             } catch (IllegalArgumentException ex) {
                 plogw("queryCurrentLocation: IllegalArgumentException: ex=" + ex
@@ -2391,7 +2389,7 @@ public class SatelliteAccessController extends Handler {
         synchronized (mLock) {
             stopWaitForCurrentLocationTimer();
             mLocationRequestCancellationSignal = null;
-            mAccessControllerMetricsStats.setLocationQueryTime(mLocationQueryStartTimeMillis);
+            mAccessControllerMetricsStats.setLocationQueryTime(mLocationQueryStartTimeMillis.get());
             Bundle bundle = new Bundle();
             if (location != null) {
                 plogd("onCurrentLocationAvailable: lat=" + Rlog.pii(TAG, location.getLatitude())
@@ -2412,9 +2410,9 @@ public class SatelliteAccessController extends Handler {
                 if (isCommunicationAllowedCacheValid()) {
                     plogd("onCurrentLocationAvailable: cache is still valid, using it");
                     bundle.putBoolean(KEY_SATELLITE_COMMUNICATION_ALLOWED,
-                            mLatestSatelliteCommunicationAllowed);
+                            mLatestSatelliteCommunicationAllowed.get());
                     sendSatelliteAllowResultToReceivers(SATELLITE_RESULT_SUCCESS, bundle,
-                            mLatestSatelliteCommunicationAllowed);
+                            mLatestSatelliteCommunicationAllowed.get());
                     mIsCurrentLocationEligibleForNotification.set(true);
                 } else {
                     bundle.putBoolean(KEY_SATELLITE_COMMUNICATION_ALLOWED, false);
@@ -2481,7 +2479,8 @@ public class SatelliteAccessController extends Handler {
                     }
                     updateCachedAccessRestrictionMap(locationToken, mNewRegionalConfigId);
                 }
-                mAccessControllerMetricsStats.setOnDeviceLookupTime(mOnDeviceLookupStartTimeMillis);
+                mAccessControllerMetricsStats.setOnDeviceLookupTime(
+                        mOnDeviceLookupStartTimeMillis.get());
                 plogd(
                         "checkSatelliteAccessRestrictionForLocation: "
                                 + (satelliteAllowed ? "Satellite Allowed" : "Satellite NOT Allowed")
@@ -2495,8 +2494,8 @@ public class SatelliteAccessController extends Handler {
                 bundle.putBoolean(KEY_SATELLITE_COMMUNICATION_ALLOWED, satelliteAllowed);
                 sendSatelliteAllowResultToReceivers(SATELLITE_RESULT_SUCCESS, bundle,
                         satelliteAllowed);
-                mLatestSatelliteCommunicationAllowed = satelliteAllowed;
-                mLatestSatelliteCommunicationAllowedSetTime = getElapsedRealtimeNanos();
+                mLatestSatelliteCommunicationAllowed.set(satelliteAllowed);
+                mLatestSatelliteCommunicationAllowedSetTime.set(getElapsedRealtimeNanos());
                 persistLatestSatelliteCommunicationAllowedState();
             } catch (Exception ex) {
                 ploge("checkSatelliteAccessRestrictionForLocation: ex=" + ex);
@@ -2505,7 +2504,7 @@ public class SatelliteAccessController extends Handler {
                 Bundle bundle = new Bundle();
                 if (isCommunicationAllowedCacheValid()) {
                     bundle.putBoolean(KEY_SATELLITE_COMMUNICATION_ALLOWED,
-                            mLatestSatelliteCommunicationAllowed);
+                            mLatestSatelliteCommunicationAllowed.get());
                     plogd(
                             "checkSatelliteAccessRestrictionForLocation: cache is still valid, "
                                     + "allowing satellite communication");
@@ -2514,7 +2513,7 @@ public class SatelliteAccessController extends Handler {
                     plogd("satellite communication not allowed");
                 }
                 sendSatelliteAllowResultToReceivers(SATELLITE_RESULT_SUCCESS, bundle,
-                        mLatestSatelliteCommunicationAllowed);
+                        mLatestSatelliteCommunicationAllowed.get());
             }
         }
     }
@@ -3292,17 +3291,17 @@ public class SatelliteAccessController extends Handler {
                 mSatelliteAccessConfigVersion);
 
         mAccessControllerMetricsStats
-                .setLocationQueryTime(mLocationQueryStartTimeMillis)
-                .setTotalCheckingTime(mTotalCheckingStartTimeMillis)
+                .setLocationQueryTime(mLocationQueryStartTimeMillis.get())
+                .setTotalCheckingTime(mTotalCheckingStartTimeMillis.get())
                 .setIsAllowed(allowed)
                 .setIsEmergency(isInEmergency())
                 .setResult(resultCode)
                 .setCarrierId(mSatelliteController.getSatelliteCarrierId())
                 .setIsNtnOnlyCarrier(mSatelliteController.isNtnOnlyCarrier())
                 .reportAccessControllerMetrics();
-        mLocationQueryStartTimeMillis = 0;
-        mOnDeviceLookupStartTimeMillis = 0;
-        mTotalCheckingStartTimeMillis = 0;
+        mLocationQueryStartTimeMillis.set(0);
+        mOnDeviceLookupStartTimeMillis.set(0);
+        mTotalCheckingStartTimeMillis.set(0);
     }
 
     protected boolean isSatelliteAllowedRegionPossiblyChanged() {

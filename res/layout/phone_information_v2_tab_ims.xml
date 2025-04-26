@@ -17,8 +17,114 @@
 ** limitations under the License.
 */
 -->
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
-</ScrollView>
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="4dp">
+        <LinearLayout
+            android:id="@+id/phone_button_0"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:padding="12dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true">
+
+            <TextView
+                android:id="@+id/phone_button_0_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/phone0_title"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="?android:attr/listDivider"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"/>
+
+        <LinearLayout
+            android:id="@+id/phone_button_1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:padding="12dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true">
+
+            <TextView
+                android:id="@+id/phone_button_1_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/phone1_title"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- IMS Registration -->
+            <LinearLayout style="@style/RadioInfo_entry_layout">
+                <TextView android:text="@string/ims_registration_value" style="@style/info_label" />
+                <TextView android:id="@+id/ims_registration" style="@style/info_value" />
+            </LinearLayout>
+
+            <!-- Voice over LTE -->
+            <LinearLayout style="@style/RadioInfo_entry_layout">
+                <TextView android:text="@string/voice_over_lte_value" style="@style/info_label" />
+                <TextView android:id="@+id/voice_over_lte" style="@style/info_value" />
+            </LinearLayout>
+
+            <!-- Voice over Wi-Fi -->
+            <LinearLayout style="@style/RadioInfo_entry_layout">
+                <TextView android:text="@string/voice_over_wifi_value" style="@style/info_label" />
+                <TextView android:id="@+id/voice_over_wifi" style="@style/info_value" />
+            </LinearLayout>
+
+            <!-- Video Calling -->
+            <LinearLayout style="@style/RadioInfo_entry_layout">
+                <TextView android:text="@string/video_calling_value" style="@style/info_label" />
+                <TextView android:id="@+id/video_calling" style="@style/info_value" />
+            </LinearLayout>
+
+            <!-- UT interface -->
+            <LinearLayout style="@style/RadioInfo_entry_layout">
+                <TextView android:text="@string/ut_interface_value" style="@style/info_label" />
+                <TextView android:id="@+id/ut_interface" style="@style/info_value" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
