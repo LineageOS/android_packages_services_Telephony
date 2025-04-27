@@ -934,20 +934,13 @@
     <string name="band_mode_succeeded" msgid="2230018000534761063">"Operazione riuscita"</string>
     <string name="phone_info_label" product="tablet" msgid="7477478709388477397">"Info tablet"</string>
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Info telefono"</string>
-    <!-- no translation found for phone_info_label_v2 (4958954896454475006) -->
-    <skip />
-    <!-- no translation found for tab_title_device_details (6988777232978544580) -->
-    <skip />
-    <!-- no translation found for tab_title_data_network (3959510345511877717) -->
-    <skip />
-    <!-- no translation found for tab_title_satellite (3973515984497023639) -->
-    <skip />
-    <!-- no translation found for tab_title_ims (8386374556214247042) -->
-    <skip />
-    <!-- no translation found for phone0_title (8961115386055876486) -->
-    <skip />
-    <!-- no translation found for phone1_title (8685542469651636602) -->
-    <skip />
+    <string name="phone_info_label_v2" msgid="4958954896454475006">"Info telefono V2"</string>
+    <string name="tab_title_device_details" msgid="6988777232978544580">"DETTAGLI DISPOSITIVO"</string>
+    <string name="tab_title_data_network" msgid="3959510345511877717">"DATI E RETE"</string>
+    <string name="tab_title_satellite" msgid="3973515984497023639">"SATELLITE"</string>
+    <string name="tab_title_ims" msgid="8386374556214247042">"IMS"</string>
+    <string name="phone0_title" msgid="8961115386055876486">"Telefono 0"</string>
+    <string name="phone1_title" msgid="8685542469651636602">"Telefono 1"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Informazioni sul provisioning operatore"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Attiva provisioning operatore"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Il segnale del Bluetooth è debole. Prova a passare al vivavoce."</string>
