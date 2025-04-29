@@ -1343,7 +1343,7 @@ public class SatelliteAccessControllerTest extends TelephonyTestBase {
         verify(mMockLocationManager, times(1))
                 .getCurrentLocation(any(), any(), any(), any(), any());
         assertEquals(firstMccChangedTime, mSatelliteAccessControllerUT
-                .mLastLocationQueryForPossibleChangeInAllowedRegionTimeNanos);
+                .mLastLocationQueryForPossibleChangeInAllowedRegionTimeNanos.get());
 
         // set current time less than throttle_interval
         // verify mMockLocationManager.getCurrentLocation() is not invoked
@@ -1356,7 +1356,7 @@ public class SatelliteAccessControllerTest extends TelephonyTestBase {
         verify(mMockLocationManager, never())
                 .getCurrentLocation(any(), any(), any(), any(), any());
         assertEquals(firstMccChangedTime, mSatelliteAccessControllerUT
-                .mLastLocationQueryForPossibleChangeInAllowedRegionTimeNanos);
+                .mLastLocationQueryForPossibleChangeInAllowedRegionTimeNanos.get());
 
         // Test the scenario when last know location is fresh and
         // current time is greater than the location query throttle interval
@@ -1370,7 +1370,7 @@ public class SatelliteAccessControllerTest extends TelephonyTestBase {
         verify(mMockLocationManager, never())
                 .getCurrentLocation(any(), any(), any(), any(), any());
         assertEquals(firstMccChangedTime, mSatelliteAccessControllerUT
-                .mLastLocationQueryForPossibleChangeInAllowedRegionTimeNanos);
+                .mLastLocationQueryForPossibleChangeInAllowedRegionTimeNanos.get());
 
         // Test the scenario when last know location is not fresh and
         // current time is greater than the location query throttle interval
@@ -1385,7 +1385,7 @@ public class SatelliteAccessControllerTest extends TelephonyTestBase {
                 .getCurrentLocation(any(), any(), any(), any(), any());
         assertEquals(lastKnownLocationElapsedRealtime + TEST_LOCATION_FRESH_DURATION_NANOS + 1,
                 mSatelliteAccessControllerUT
-                        .mLastLocationQueryForPossibleChangeInAllowedRegionTimeNanos);
+                        .mLastLocationQueryForPossibleChangeInAllowedRegionTimeNanos.get());
     }
 
 
@@ -1415,20 +1415,20 @@ public class SatelliteAccessControllerTest extends TelephonyTestBase {
                 ALLOWED_STATE_CACHE_VALID_DURATION_NANOS - 10;
 
         // cash is valid and never queried before
-        mSatelliteAccessControllerUT.mLastLocationQueryForPossibleChangeInAllowedRegionTimeNanos =
-                0;
+        mSatelliteAccessControllerUT.mLastLocationQueryForPossibleChangeInAllowedRegionTimeNanos
+                .set(0);
         assertTrue(mSatelliteAccessControllerUT.allowLocationQueryForSatelliteAllowedCheck());
 
         // cash is valid and throttled
-        mSatelliteAccessControllerUT.mLastLocationQueryForPossibleChangeInAllowedRegionTimeNanos =
-                mSatelliteAccessControllerUT.elapsedRealtimeNanos
-                        - TEST_LOCATION_QUERY_THROTTLE_INTERVAL_NANOS + 100;
+        mSatelliteAccessControllerUT.mLastLocationQueryForPossibleChangeInAllowedRegionTimeNanos
+                .set(mSatelliteAccessControllerUT.elapsedRealtimeNanos
+                        - TEST_LOCATION_QUERY_THROTTLE_INTERVAL_NANOS + 100);
         assertFalse(mSatelliteAccessControllerUT.allowLocationQueryForSatelliteAllowedCheck());
 
         // cash is valid and not throttled
-        mSatelliteAccessControllerUT.mLastLocationQueryForPossibleChangeInAllowedRegionTimeNanos =
-                mSatelliteAccessControllerUT.elapsedRealtimeNanos
-                        - TEST_LOCATION_QUERY_THROTTLE_INTERVAL_NANOS - 100;
+        mSatelliteAccessControllerUT.mLastLocationQueryForPossibleChangeInAllowedRegionTimeNanos
+                .set(mSatelliteAccessControllerUT.elapsedRealtimeNanos
+                        - TEST_LOCATION_QUERY_THROTTLE_INTERVAL_NANOS - 100);
         assertTrue(mSatelliteAccessControllerUT.allowLocationQueryForSatelliteAllowedCheck());
     }
 
@@ -2657,7 +2657,7 @@ public class SatelliteAccessControllerTest extends TelephonyTestBase {
         logd("testLocationProvidersChanged: (2) mIsLocationManagerEnabled is true and "
                  + "mIsLocationProviderEnabled is false");
         mSatelliteAccessControllerUT
-            .mLastLocationQueryForPossibleChangeInAllowedRegionTimeNanos = 0;
+            .mLastLocationQueryForPossibleChangeInAllowedRegionTimeNanos.set(0);
         doReturn(true).when(mMockLocationManager).isProviderEnabled(anyString());
         mSatelliteAccessControllerUT.getLocationBroadcastReceiver()
                 .onReceive(mMockContext, mMockLocationIntent);
@@ -2681,7 +2681,7 @@ public class SatelliteAccessControllerTest extends TelephonyTestBase {
         logd("testLocationProvidersChanged: (3) Both mIsLocationManagerEnabled and "
                  + "mIsLocationProviderEnabled are true");
         mSatelliteAccessControllerUT
-            .mLastLocationQueryForPossibleChangeInAllowedRegionTimeNanos = 0;
+            .mLastLocationQueryForPossibleChangeInAllowedRegionTimeNanos.set(0);
         mSatelliteAccessControllerUT.getLocationBroadcastReceiver()
                 .onReceive(mMockContext, mMockLocationIntent);
         mTestableLooper.processAllMessages();
@@ -2898,11 +2898,11 @@ public class SatelliteAccessControllerTest extends TelephonyTestBase {
         }
 
         public int getRetryCountPossibleChangeInSatelliteAllowedRegion() {
-            return mRetryCountForValidatingPossibleChangeInAllowedRegion;
+            return mRetryCountForValidatingPossibleChangeInAllowedRegion.get();
         }
 
         public void setRetryCountPossibleChangeInSatelliteAllowedRegion(int retryCount) {
-            mRetryCountForValidatingPossibleChangeInAllowedRegion = retryCount;
+            mRetryCountForValidatingPossibleChangeInAllowedRegion.set(retryCount);
         }
 
         public ResultReceiver getResultReceiverCurrentLocation() {

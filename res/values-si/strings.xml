@@ -846,15 +846,29 @@
     <string name="removable_esim_string" msgid="7931369811671787649">"ඉවත් කළ හැකි eSIM පෙරනිමිය ලෙස සකසන්න"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"ජංගම රේඩියෝ බලය"</string>
     <string name="simulate_out_of_service_string" msgid="7787925611727597193">"සේවයෙන් බැහැරව අනුකරණය කරන්න (නිදොස් තැනුම පමණි)"</string>
+    <!-- no translation found for simulate_out_of_service_label (3563376136603403714) -->
+    <skip />
     <string name="enforce_satellite_channel_string" msgid="295306734591329892">"Force Camp Satellite LTE නාලිකාව (නිදොසීමේ තැනුම පමණි)"</string>
+    <!-- no translation found for enforce_satellite_channel_label (8212349350110213468) -->
+    <skip />
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"ආදර්ශ වාහක චන්ද්‍රිකා ප්‍රකාරය (නිදොස් තැනීමට පමණි)"</string>
+    <!-- no translation found for mock_carrier_roaming_satellite_label (2052656038544917979) -->
+    <skip />
+    <!-- no translation found for choose_satellite_data_mode_label (7403013160079828226) -->
+    <skip />
     <string name="choose_satellite_data_mode" msgid="7526640708482601423">"අනුකරණ චන්ද්‍රිකා දත්ත ප්‍රකාරය (නිදොස්කරණය පමණි)"</string>
     <string name="satellite_data_restricted_string" msgid="8729402021843670205">"සීමා කළ"</string>
     <string name="satellite_data_constrained_string" msgid="4594481912792241881">"සීමිතයි"</string>
     <string name="satellite_data_unConstrained_string" msgid="3957333012703408141">"අසීමිත"</string>
     <string name="esos_satellite_string" msgid="7274794226125968657">"සැබෑ චන්ද්‍රිකා eSOS ප්‍රකාරය පරීක්ෂා කරන්න (නිදොස් තැනීමට පමණි)"</string>
+    <!-- no translation found for esos_satellite_label (4640776617354089322) -->
+    <skip />
     <string name="satellite_enable_non_emergency_mode_string" msgid="9005332650950637932">"සැබෑ චන්ද්‍රිකා eSOS නොවන ප්‍රකාරය පරීක්ෂා කරන්න (නිදොස් තැනීමට පමණි)"</string>
+    <!-- no translation found for satellite_enable_non_emergency_mode_label (2958365217334494066) -->
+    <skip />
     <string name="demo_esos_satellite_string" msgid="2941811482168709730">"ආදර්ශන චන්ද්‍රිකා eSOS ප්‍රකාරය පරීක්ෂා කරන්න (නිදොස් තැනීමට පමණි)"</string>
+    <!-- no translation found for demo_esos_satellite_label (1538811851871457718) -->
+    <skip />
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"SIM ලිපින පොත බලන්න"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"ස්ථාවර ඇමතුම් අංක පෙන්වන්න"</string>
     <string name="radioInfo_menu_viewSDN" msgid="2613431584522392842">"සේවා ඩයල් කිරීමේ අංක පෙන්වන්න"</string>
@@ -934,19 +948,13 @@
     <string name="band_mode_succeeded" msgid="2230018000534761063">"සාර්ථකයි"</string>
     <string name="phone_info_label" product="tablet" msgid="7477478709388477397">"ටැබ්ලට් තොරතුරු"</string>
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"දුරකථන තොරතුරු"</string>
-    <!-- no translation found for phone_info_label_v2 (4958954896454475006) -->
-    <skip />
-    <!-- no translation found for tab_title_device_details (6988777232978544580) -->
-    <skip />
-    <!-- no translation found for tab_title_data_network (3959510345511877717) -->
-    <skip />
-    <!-- no translation found for tab_title_satellite (3973515984497023639) -->
-    <skip />
-    <!-- no translation found for tab_title_ims (8386374556214247042) -->
-    <skip />
-    <!-- no translation found for phone0_title (8961115386055876486) -->
-    <skip />
-    <!-- no translation found for phone1_title (8685542469651636602) -->
+    <string name="tab_title_device_details" msgid="6988777232978544580">"උපාංග විස්තර"</string>
+    <string name="tab_title_data_network" msgid="3959510345511877717">"දත්ත සහ ජාලය"</string>
+    <string name="tab_title_satellite" msgid="3973515984497023639">"චන්ද්‍රිකාව"</string>
+    <string name="tab_title_ims" msgid="8386374556214247042">"IMS"</string>
+    <string name="phone0_title" msgid="8961115386055876486">"දුරකථනය 0"</string>
+    <string name="phone1_title" msgid="8685542469651636602">"දුරකථනය 1"</string>
+    <!-- no translation found for phone_info_label_v2 (5651422721242779990) -->
     <skip />
     <string name="carrier_provisioning" msgid="2668065041869578376">"වාහක ප්‍රතිපාදන තතු"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"උත්ප්‍රේරක වාහක ප්‍රතිපාදන"</string>
@@ -966,4 +974,16 @@
     <string name="satellite_config_country_code_label" msgid="1389520866423113166">"රටේ කේත:"</string>
     <string name="satellite_config_size_of_sats2_dat_label" msgid="671746449054349967">"sats2.dat ප්‍රමාණය:"</string>
     <string name="satellite_config_json_label" msgid="4577292884014824105">"චන්ද්‍රිකා ප්‍රවේශ වින්‍යාස json:"</string>
+    <!-- no translation found for nb_iot_config_viewer (1427724000750959794) -->
+    <skip />
+    <!-- no translation found for ims_registration_value (3195763957048314776) -->
+    <skip />
+    <!-- no translation found for voice_over_lte_value (1317318233598235658) -->
+    <skip />
+    <!-- no translation found for voice_over_wifi_value (4958925307364093356) -->
+    <skip />
+    <!-- no translation found for video_calling_value (156519861684819255) -->
+    <skip />
+    <!-- no translation found for ut_interface_value (9038789989481463774) -->
+    <skip />
 </resources>

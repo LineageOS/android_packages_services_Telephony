@@ -141,6 +141,7 @@ import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -386,19 +387,13 @@ public class SatelliteAccessController extends Handler {
     private final Object mPossibleChangeInSatelliteAllowedRegionLock = new Object();
     @GuardedBy("mPossibleChangeInSatelliteAllowedRegionLock")
     private boolean mIsSatelliteAllowedRegionPossiblyChanged = false;
-    protected long mLastLocationQueryForPossibleChangeInAllowedRegionTimeNanos = 0;
 
-    protected int mRetryCountForValidatingPossibleChangeInAllowedRegion;
     protected static final int
             DEFAULT_DELAY_MINUTES_BEFORE_VALIDATING_POSSIBLE_CHANGE_IN_ALLOWED_REGION = 10;
     protected static final int
             DEFAULT_MAX_RETRY_COUNT_FOR_VALIDATING_POSSIBLE_CHANGE_IN_ALLOWED_REGION = 3;
     protected static final int DEFAULT_THROTTLE_INTERVAL_FOR_LOCATION_QUERY_MINUTES = 10;
     private static final int MAX_EARFCN_ARRAY_LENGTH = 32;
-
-    private long mRetryIntervalToEvaluateUserInSatelliteAllowedRegion = 0;
-    private int mMaxRetryCountForValidatingPossibleChangeInAllowedRegion = 0;
-    private long mLocationQueryThrottleIntervalNanos = 0;
 
     @NonNull
     protected ResultReceiver mHandlerForSatelliteAllowedResult;
@@ -455,6 +450,14 @@ public class SatelliteAccessController extends Handler {
     };
 
     /** All the atomic variables are declared here. */
+    protected AtomicLong mLastLocationQueryForPossibleChangeInAllowedRegionTimeNanos =
+            new AtomicLong(0);
+    protected AtomicInteger mRetryCountForValidatingPossibleChangeInAllowedRegion =
+            new AtomicInteger(0);
+    private AtomicLong mRetryIntervalToEvaluateUserInSatelliteAllowedRegion = new AtomicLong(0);
+    private AtomicInteger mMaxRetryCountForValidatingPossibleChangeInAllowedRegion =
+            new AtomicInteger(0);
+    private AtomicLong mLocationQueryThrottleIntervalNanos = new AtomicLong(0);
     private AtomicBoolean mLatestSatelliteCommunicationAllowed = new AtomicBoolean(false);
     protected AtomicLong mLatestSatelliteCommunicationAllowedSetTime = new AtomicLong(0);
     private AtomicLong mLocationQueryStartTimeMillis = new AtomicLong(0);
@@ -889,6 +892,9 @@ public class SatelliteAccessController extends Handler {
                 cleanUpTelephonyConfigs();
                 cleanUpSatelliteAccessConfigOtaResources();
                 cleanupSatelliteConfigOtaResources();
+                plogd("reload overly config and configupdater config");
+                loadOverlayConfigs(mContext);
+                loadConfigUpdaterConfigs();
             } else {
                 mIsOverlayConfigOverridden = true;
                 mOverriddenIsSatelliteAllowAccessControl = isAllowed;
@@ -1479,11 +1485,11 @@ public class SatelliteAccessController extends Handler {
         mLocationFreshDurationNanos = getSatelliteLocationFreshDurationFromOverlayConfig(context);
         mAccessControllerMetricsStats.setConfigDataSource(
                 SatelliteConstants.CONFIG_DATA_SOURCE_DEVICE_CONFIG);
-        mRetryIntervalToEvaluateUserInSatelliteAllowedRegion =
-                getDelayBeforeRetryValidatingPossibleChangeInSatelliteAllowedRegionMillis(context);
-        mMaxRetryCountForValidatingPossibleChangeInAllowedRegion =
-                getMaxRetryCountForValidatingPossibleChangeInAllowedRegion(context);
-        mLocationQueryThrottleIntervalNanos = getLocationQueryThrottleIntervalNanos(context);
+        mRetryIntervalToEvaluateUserInSatelliteAllowedRegion.set(
+                getDelayBeforeRetryValidatingPossibleChangeInSatelliteAllowedRegionMillis(context));
+        mMaxRetryCountForValidatingPossibleChangeInAllowedRegion.set(
+                getMaxRetryCountForValidatingPossibleChangeInAllowedRegion(context));
+        mLocationQueryThrottleIntervalNanos.set(getLocationQueryThrottleIntervalNanos(context));
     }
 
     protected void loadSatelliteAccessConfiguration() {
@@ -2024,17 +2030,18 @@ public class SatelliteAccessController extends Handler {
                         + "location, resultCode=" + resultCode + ", resultData=" + resultData);
                 synchronized (mPossibleChangeInSatelliteAllowedRegionLock) {
                     if (shouldRetryValidatingPossibleChangeInAllowedRegion(resultCode)
-                            && (mRetryCountForValidatingPossibleChangeInAllowedRegion
-                            < mMaxRetryCountForValidatingPossibleChangeInAllowedRegion)) {
-                        mRetryCountForValidatingPossibleChangeInAllowedRegion++;
+                            && (mRetryCountForValidatingPossibleChangeInAllowedRegion.get()
+                            < mMaxRetryCountForValidatingPossibleChangeInAllowedRegion.get())) {
+                        int retryCount = mRetryCountForValidatingPossibleChangeInAllowedRegion
+                                .incrementAndGet();
                         plogd("mRetryCountForValidatingPossibleChangeInAllowedRegion is "
-                                + mRetryCountForValidatingPossibleChangeInAllowedRegion);
+                                + retryCount);
                         sendDelayedRequestAsync(CMD_IS_SATELLITE_COMMUNICATION_ALLOWED,
                                 new Pair<>(SubscriptionManager.DEFAULT_SUBSCRIPTION_ID,
                                         mHandlerForSatelliteAllowedResult),
-                                mRetryIntervalToEvaluateUserInSatelliteAllowedRegion);
+                                mRetryIntervalToEvaluateUserInSatelliteAllowedRegion.get());
                     } else {
-                        mRetryCountForValidatingPossibleChangeInAllowedRegion = 0;
+                        mRetryCountForValidatingPossibleChangeInAllowedRegion.set(0);
                         plogd("Stop retry validating the possible change in satellite allowed "
                                 + "region");
                     }
@@ -2210,7 +2217,7 @@ public class SatelliteAccessController extends Handler {
     }
 
     private boolean isLocationQueryThrottled() {
-        if (mLastLocationQueryForPossibleChangeInAllowedRegionTimeNanos == 0) {
+        if (mLastLocationQueryForPossibleChangeInAllowedRegionTimeNanos.get() == 0) {
             plogv("isLocationQueryThrottled: "
                     + "mLastLocationQueryForPossibleChangeInAllowedRegionTimeNanos is 0, return "
                     + "false");
@@ -2218,11 +2225,12 @@ public class SatelliteAccessController extends Handler {
         }
 
         long currentTime = getElapsedRealtimeNanos();
-        if (currentTime - mLastLocationQueryForPossibleChangeInAllowedRegionTimeNanos
-                > mLocationQueryThrottleIntervalNanos) {
+        if (currentTime - mLastLocationQueryForPossibleChangeInAllowedRegionTimeNanos.get()
+                > mLocationQueryThrottleIntervalNanos.get()) {
             plogv("isLocationQueryThrottled: currentTime - "
                     + "mLastLocationQueryForPossibleChangeInAllowedRegionTimeNanos is "
-                    + "bigger than " + mLocationQueryThrottleIntervalNanos + " so return false");
+                    + "bigger than " + mLocationQueryThrottleIntervalNanos.get()
+                    + " so return false");
             return false;
         }
 
@@ -2358,10 +2366,10 @@ public class SatelliteAccessController extends Handler {
 
             synchronized (mPossibleChangeInSatelliteAllowedRegionLock) {
                 if (isSatelliteAllowedRegionPossiblyChanged()) {
-                    mLastLocationQueryForPossibleChangeInAllowedRegionTimeNanos =
-                            getElapsedRealtimeNanos();
+                    mLastLocationQueryForPossibleChangeInAllowedRegionTimeNanos.set(
+                            getElapsedRealtimeNanos());
                     plogd("mLastLocationQueryForPossibleChangeInAllowedRegionTimeNanos is set "
-                            + mLastLocationQueryForPossibleChangeInAllowedRegionTimeNanos);
+                            + mLastLocationQueryForPossibleChangeInAllowedRegionTimeNanos.get());
                 }
             }
 

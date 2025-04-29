@@ -487,7 +487,7 @@
     <string name="simContacts_title" msgid="2714029230160136647">"בחירת אנשי קשר לייבוא"</string>
     <string name="simContacts_airplaneMode" msgid="4654884030631503808">"‏יש לבטל את מצב טיסה כדי לייבא אנשי קשר מכרטיס ה-SIM."</string>
     <string name="enable_pin" msgid="967674051730845376">"‏הפעלה/השבתה של קוד האימות של SIM"</string>
-    <string name="change_pin" msgid="3657869530942905790">"‏שינוי קוד הגישה של ה-SIM"</string>
+    <string name="change_pin" msgid="3657869530942905790">"‏שינוי קוד האימות של ה-SIM"</string>
     <string name="enter_pin_text" msgid="3182311451978663356">"‏קוד אימות של SIM:"</string>
     <string name="oldPinLabel" msgid="8618515202411987721">"קוד אימות ישן"</string>
     <string name="newPinLabel" msgid="3585899083055354732">"קוד אימות חדש"</string>
@@ -847,15 +847,29 @@
     <string name="removable_esim_string" msgid="7931369811671787649">"‏הגדרת eSIM נשלף כברירת המחדל"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"הפעלה של רדיו סלולרי"</string>
     <string name="simulate_out_of_service_string" msgid="7787925611727597193">"‏סימולציה של המצב \'לא בשירות\' (גרסת build לניפוי באגים בלבד)"</string>
+    <!-- no translation found for simulate_out_of_service_label (3563376136603403714) -->
+    <skip />
     <string name="enforce_satellite_channel_string" msgid="295306734591329892">"‏ערוץ Force Camp Satellite LTE (רק גרסת build לניפוי באגים)"</string>
+    <!-- no translation found for enforce_satellite_channel_label (8212349350110213468) -->
+    <skip />
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"‏מצב שמדמה תקשורת לוויינית דרך ספק הסלולר (גרסת build לניפוי באגים בלבד)"</string>
+    <!-- no translation found for mock_carrier_roaming_satellite_label (2052656038544917979) -->
+    <skip />
+    <!-- no translation found for choose_satellite_data_mode_label (7403013160079828226) -->
+    <skip />
     <string name="choose_satellite_data_mode" msgid="7526640708482601423">"מצב שמדמה חיבור לחבילת הגלישה באמצעות לוויין (רק לניפוי באגים)"</string>
     <string name="satellite_data_restricted_string" msgid="8729402021843670205">"מוגבל"</string>
     <string name="satellite_data_constrained_string" msgid="4594481912792241881">"עם הגבלה"</string>
     <string name="satellite_data_unConstrained_string" msgid="3957333012703408141">"בלי הגבלה"</string>
     <string name="esos_satellite_string" msgid="7274794226125968657">"‏מצב בדיקה שמדמה תקשורת לוויינית eSOS (גרסת build לניפוי באגים בלבד)"</string>
+    <!-- no translation found for esos_satellite_label (4640776617354089322) -->
+    <skip />
     <string name="satellite_enable_non_emergency_mode_string" msgid="9005332650950637932">"‏מצב בדיקה שמדמה תקשורת לוויינית לא במצב eSOS (גרסת build לניפוי באגים בלבד)"</string>
+    <!-- no translation found for satellite_enable_non_emergency_mode_label (2958365217334494066) -->
+    <skip />
     <string name="demo_esos_satellite_string" msgid="2941811482168709730">"‏מצב בדיקה שמדמה תקשורת לוויינית eSOS (גרסת build לניפוי באגים בלבד)"</string>
+    <!-- no translation found for demo_esos_satellite_label (1538811851871457718) -->
+    <skip />
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"‏הצגת פנקס כתובות של SIM"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"הצגת מספרי חיוג קבועים"</string>
     <string name="radioInfo_menu_viewSDN" msgid="2613431584522392842">"מספרי חיוג לשירות"</string>
@@ -935,13 +949,14 @@
     <string name="band_mode_succeeded" msgid="2230018000534761063">"המעבר הצליח"</string>
     <string name="phone_info_label" product="tablet" msgid="7477478709388477397">"פרטי טאבלט"</string>
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"פרטי טלפון"</string>
-    <string name="phone_info_label_v2" msgid="4958954896454475006">"פרטי הטלפון, גרסה 2"</string>
     <string name="tab_title_device_details" msgid="6988777232978544580">"פרטי המכשיר"</string>
     <string name="tab_title_data_network" msgid="3959510345511877717">"חבילת גלישה ורשת"</string>
     <string name="tab_title_satellite" msgid="3973515984497023639">"לוויין"</string>
     <string name="tab_title_ims" msgid="8386374556214247042">"IMS"</string>
     <string name="phone0_title" msgid="8961115386055876486">"טלפון 0"</string>
     <string name="phone1_title" msgid="8685542469651636602">"טלפון 1"</string>
+    <!-- no translation found for phone_info_label_v2 (5651422721242779990) -->
+    <skip />
     <string name="carrier_provisioning" msgid="2668065041869578376">"פרטי ניהול תצורה של ספק סלולרי"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"הפעלת ניהול תצורה של ספק סלולרי"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"‏הקליטה של ה-Bluetooth חלשה. כדאי לעבור לדיבורית."</string>
@@ -960,4 +975,16 @@
     <string name="satellite_config_country_code_label" msgid="1389520866423113166">"קידומות חיוג:"</string>
     <string name="satellite_config_size_of_sats2_dat_label" msgid="671746449054349967">"‏הגודל של sats2.dat:"</string>
     <string name="satellite_config_json_label" msgid="4577292884014824105">"‏קובץ JSON של הגדרות הגישה לתקשורת הלוויינית:"</string>
+    <!-- no translation found for nb_iot_config_viewer (1427724000750959794) -->
+    <skip />
+    <!-- no translation found for ims_registration_value (3195763957048314776) -->
+    <skip />
+    <!-- no translation found for voice_over_lte_value (1317318233598235658) -->
+    <skip />
+    <!-- no translation found for voice_over_wifi_value (4958925307364093356) -->
+    <skip />
+    <!-- no translation found for video_calling_value (156519861684819255) -->
+    <skip />
+    <!-- no translation found for ut_interface_value (9038789989481463774) -->
+    <skip />
 </resources>
