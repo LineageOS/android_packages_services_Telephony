@@ -678,14 +678,9 @@ public class SimPhonebookProvider extends ContentProvider {
         String callingPackage = getCallingPackage();
         int granted = PackageManager.PERMISSION_DENIED;
         if (callingPackage != null) {
-            if (Flags.hsumPackageManager()) {
-                granted = getContext().createContextAsUser(Binder.getCallingUserHandle(), 0)
-                        .getPackageManager().checkPermission(
-                                Manifest.permission.MODIFY_PHONE_STATE, callingPackage);
-            } else {
-                granted = getContext().getPackageManager().checkPermission(
-                        Manifest.permission.MODIFY_PHONE_STATE, callingPackage);
-            }
+            granted = getContext().createContextAsUser(Binder.getCallingUserHandle(), 0)
+                    .getPackageManager().checkPermission(
+                            Manifest.permission.MODIFY_PHONE_STATE, callingPackage);
         }
         return granted == PackageManager.PERMISSION_GRANTED
                 || telephonyManager.hasCarrierPrivileges(args.subscriptionId);

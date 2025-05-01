@@ -685,12 +685,8 @@ public class ImsRcsController extends IImsRcsController.Stub {
         }
         try {
             int remoteUid;
-            if (mFeatureFlags.hsumPackageManager()) {
-                remoteUid = mApp.getPackageManager().getPackageUidAsUser(packageName, 0 /*flags*/,
-                        Binder.getCallingUserHandle().getIdentifier());
-            } else {
-                remoteUid = mApp.getPackageManager().getPackageUid(packageName, 0 /*flags*/);
-            }
+            remoteUid = mApp.getPackageManager().getPackageUidAsUser(packageName, 0 /*flags*/,
+                    Binder.getCallingUserHandle().getIdentifier());
             if (!UserHandle.isSameApp(Binder.getCallingUid(), remoteUid)) {
                 throw new SecurityException("passed in packageName does not match the caller");
             }
@@ -1002,15 +998,10 @@ public class ImsRcsController extends IImsRcsController.Stub {
      */
     @Nullable
     private String getCurrentPackageName() {
-        if (mFeatureFlags.hsumPackageManager()) {
-            PackageManager pm = mApp.getBaseContext().createContextAsUser(
-                    Binder.getCallingUserHandle(), 0).getPackageManager();
-            if (pm == null) return null;
-            String[] callingPackageNames = pm.getPackagesForUid(Binder.getCallingUid());
-            return (callingPackageNames == null) ? null : callingPackageNames[0];
-        }
-        if (mPackageManager == null) return null;
-        String[] callingPackageNames = mPackageManager.getPackagesForUid(Binder.getCallingUid());
+        PackageManager pm = mApp.getBaseContext().createContextAsUser(
+                Binder.getCallingUserHandle(), 0).getPackageManager();
+        if (pm == null) return null;
+        String[] callingPackageNames = pm.getPackagesForUid(Binder.getCallingUid());
         return (callingPackageNames == null) ? null : callingPackageNames[0];
     }
 

@@ -118,6 +118,11 @@ public class TestContext extends MockContext {
     }
 
     @Override
+    public Context createContextAsUser(UserHandle user, @CreatePackageOptions int flags) {
+        return this;
+    }
+
+    @Override
     public String getPackageName() {
         return "com.android.phone.tests";
     }
