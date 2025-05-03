@@ -40,6 +40,26 @@
         android:textSize="20dp"/>
 
     <TextView
+        android:id="@+id/signalStrengthTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:paddingRight="16dp"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="14dp"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/networkBandWidthTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:paddingRight="16dp"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="14dp"
+        android:visibility="gone"/>
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="0"

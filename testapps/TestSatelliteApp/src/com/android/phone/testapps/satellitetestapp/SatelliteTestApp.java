@@ -49,7 +49,7 @@ public class SatelliteTestApp extends Activity {
         mContext = getApplicationContext();
         TestSatelliteUtils.setupEdgeToEdge(this);
         mHandler = new Handler(Looper.getMainLooper());
-        mSatelliteManager = new SatelliteManager(mContext);
+        mSatelliteManager = getSystemService(SatelliteManager.class);
 
         setContentView(R.layout.activity_SatelliteTestApp);
 

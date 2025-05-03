@@ -40,6 +40,26 @@
         android:textSize="20dp"/>
 
     <TextView
+        android:id="@+id/signalStrengthTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:paddingRight="16dp"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="14dp"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/networkBandWidthTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:paddingRight="16dp"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="14dp"
+        android:visibility="gone"/>
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="0"
@@ -67,6 +87,29 @@
         android:paddingStart="4dp"
         android:paddingEnd="4dp"
         android:text="@string/StopPingTest"/>
+    <RadioGroup
+        android:id="@+id/protocolRadioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp">
+
+      <RadioButton
+          android:id="@+id/icmpRadioButton"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="ICMP Ping"
+          android:checked="true"/>
+
+      <RadioButton
+          android:id="@+id/httpRadioButton"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="16dp"
+          android:text="HTTP GET"/>
+    </RadioGroup>
     <TextView
         android:id="@+id/statsTextView"
         android:layout_width="wrap_content"

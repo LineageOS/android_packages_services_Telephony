@@ -23,13 +23,15 @@ import android.net.ConnectivityManager.NetworkCallback;
 import android.net.Network;
 import android.net.NetworkCapabilities;
 import android.net.NetworkRequest;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.telephony.AccessNetworkConstants;
+import android.telephony.CellSignalStrength;
+import android.telephony.CellSignalStrengthNr;
 import android.telephony.NetworkRegistrationInfo;
 import android.telephony.ServiceState;
+import android.telephony.SignalStrength;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyCallback;
 import android.telephony.TelephonyManager;
@@ -45,74 +47,79 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
-public class SatelliteSpeedTest extends Activity {
+import java.util.List;
+import java.util.Locale;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+public class SatelliteSpeedTest extends Activity
+        implements TaskCallback, FileDownloadTask.NetworkProvider, FileUploadTask.NetworkProvider {
 
     private static final String TAG = "SatelliteSpeedTest";
-    Handler mHandler;
-    NetworkCallback mSatelliteConstrainNetworkCallback;
-    ConnectivityManager mConnectivityManager;
-    NetworkRequest mRequest;
-    Context mContext;
-    private String fileName = "100KB";
-    private int fileSize = 100;
-    final int NET_CAPABILITY_NOT_BANDWIDTH_CONSTRAINED = 37;
-    public TextView statusText;
-    public RadioGroup radioGroup;
-    public ProgressBar progressBar;
-    public TextView speedText;
-    public TextView progressText;
-    public TextView timeText;
-    public Network mNetwork;
+    private ExecutorService mTaskExecutor;
+    private Handler mHandler;
+    private NetworkCallback mSatelliteConstrainNetworkCallback;
+    private ConnectivityManager mConnectivityManager;
+    private NetworkRequest mRequest;
+    private Context mContext;
+    private String mFileName = "100KB";
+    private int mFileSize = 100;
+    private String mUploadFilePath;
+    private String mDownloadUrl;
+
+    private static final String BASE_DOWNLOAD_URL = "http://speedtest.tele2.net/";
+    private static final String UPLOAD_URL = "http://speedtest.tele2.net/upload.php";
+
+    private TextView mStatusText;
+    private RadioGroup mRadioGroup;
+    private ProgressBar mProgressBar;
+    private TextView mSpeedText;
+    private TextView mProgressText;
+    private TextView mTimeText;
     private TextView mSatDataModeTextView;
-    private FileUploadTask fileUploadTask;
-    private FileDownloadTask fileDownloadTask;
-    private Button uploadTask;
-    private Button downloadTask;
-    private Button stopTask;
+    private Button mUploadTaskButton;
+    private Button mDownloadTaskButton;
+    private Button mStopTaskButton;
+    private volatile Network mNetwork;
     private int mSubId = SubscriptionManager.DEFAULT_SUBSCRIPTION_ID;
     private static final int INVALID_SUB_ID = -1;
     private TelephonyManager mTelephonyManager;
-    private SatelliteSpeedTest.RadioInfoTelephonyCallback mTelephonyCallback;
+    private RadioInfoTelephonyCallback mTelephonyCallback;
     private ServiceState mServiceState;
     private boolean mIsSatellite;
+    private SignalStrength mSignalStrength;
+    private TextView mNetworkBandWidthTextView;
+    private TextView mSignalStrengthTextView;
 
-    private class RadioInfoTelephonyCallback extends TelephonyCallback
-            implements TelephonyCallback.ServiceStateListener {
-        @Override
-        public void onServiceStateChanged(ServiceState serviceState) {
-            if (serviceState == null) {
-                return;
-            }
-            Log.d(TAG, "onServiceStateChanged: ServiceState=" + serviceState);
-            NetworkRegistrationInfo newNri =
-                    serviceState.getNetworkRegistrationInfo(
-                            NetworkRegistrationInfo.DOMAIN_PS,
-                            AccessNetworkConstants.TRANSPORT_TYPE_WWAN);
-            if (mServiceState != null && !mServiceState.equals(serviceState)) {
-                if (mServiceState.getDataRegistrationState() == ServiceState.STATE_IN_SERVICE
-                                && mIsSatellite
-                                && serviceState.getDataRegistrationState()
-                                        != ServiceState.STATE_IN_SERVICE
-                        || !newNri.isNonTerrestrialNetwork()) {
-                    Log.d(TAG, "Satellite network lost");
-                    if (mNetwork != null) {
-                        displayMessageInUI("Satellite network lost");
-                        disableView();
-                        stopTask();
-                    }
-                }
-            }
-            mServiceState = serviceState;
-            mIsSatellite = newNri.isNonTerrestrialNetwork();
-        }
+    enum TaskType {
+        NONE,
+        UPLOAD,
+        DOWNLOAD
+    }
+
+    private volatile TaskType mCurrentRunningTaskType = TaskType.NONE;
+    private volatile TaskType mPausedTaskType = TaskType.NONE;
+    private volatile Runnable mCurrentTaskRunnable = null;
+    private volatile boolean mIsPausedForNetwork = false;
+
+    private volatile long mTimeElapsedBeforePauseMillis = 0;
+    public volatile long currentDownloadBytes = 0;
+    public volatile long currentUploadBytes = 0;
+
+    @Override
+    public Network getNetwork() {
+        return mNetwork;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        mTaskExecutor = Executors.newSingleThreadExecutor();
+        mHandler = new Handler(Looper.getMainLooper());
+
         mConnectivityManager = getSystemService(ConnectivityManager.class);
         TestSatelliteUtils.setupEdgeToEdge(this);
-        mHandler = new Handler(Looper.getMainLooper());
         mContext = getApplicationContext();
 
         setContentView(R.layout.activity_SatelliteSpeedTest);
@@ -122,314 +129,695 @@ public class SatelliteSpeedTest extends Activity {
                         .getIntExtra(
                                 "SATELLITE_DATA_MODE",
                                 SatelliteManager.SATELLITE_DATA_SUPPORT_RESTRICTED);
+
         mSatDataModeTextView = findViewById(R.id.satelliteDataMode);
+        mProgressBar = findViewById(R.id.ProgressBar);
+        mStatusText = findViewById(R.id.StatusText);
+        mNetworkBandWidthTextView = findViewById(R.id.networkBandWidthTextView);
+        mSignalStrengthTextView = findViewById(R.id.signalStrengthTextView);
+        mSpeedText = findViewById(R.id.SpeedText);
+        mProgressText = findViewById(R.id.ProgressText);
+        mTimeText = findViewById(R.id.TimeText);
+        mUploadTaskButton = findViewById(R.id.UploadDataInSatelliteMode);
+        mDownloadTaskButton = findViewById(R.id.DownloadDataInSatelliteMode);
+        mStopTaskButton = findViewById(R.id.StopTask);
+        mRadioGroup = findViewById(R.id.RadioGroup);
+
         updateSatelliteDataMode(satDataMode);
+        setIdleView();
+        displayMessageInUI("Waiting for Satellite Network...");
 
-        progressBar = findViewById(R.id.ProgressBar);
-        statusText = findViewById(R.id.StatusText);
-        speedText = findViewById(R.id.SpeedText);
-        progressText = findViewById(R.id.ProgressText);
-        timeText = findViewById(R.id.TimeText);
-
-        uploadTask = findViewById(R.id.UploadDataInSatelliteMode);
-        downloadTask = findViewById(R.id.DownloadDataInSatelliteMode);
-        stopTask = findViewById(R.id.StopTask);
-        radioGroup = findViewById(R.id.RadioGroup);
-        disableView();
-        displayMessageInUI("waiting for network");
-        generateNetwork();
-        uploadTask.setOnClickListener(view -> uploadData());
-
-        downloadTask.setOnClickListener(view -> downloadData());
-
-        stopTask.setOnClickListener(view -> stopTask());
-
-        radioGroup.setOnCheckedChangeListener(
-                new RadioGroup.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(RadioGroup group, int checkedId) {
-                        RadioButton checkedRadioButton = findViewById(checkedId);
-                        if (checkedRadioButton != null) {
-                            Log.d(
-                                    "RadioButton",
-                                    "Selected option: " + checkedRadioButton.getText());
-                            fileName = checkedRadioButton.getText().toString();
-                            switch (fileName) {
-                                case "100KB" -> {
-                                    fileSize = 100;
-                                }
-                                case "1MB" -> {
-                                    fileSize = 1024;
-                                }
-                                case "10MB" -> {
-                                    fileSize = 10 * 1024;
-                                }
-                            }
+        mUploadTaskButton.setOnClickListener(view -> startUpload());
+        mDownloadTaskButton.setOnClickListener(view -> startDownload());
+        mStopTaskButton.setOnClickListener(view -> stopCurrentTask());
+        mRadioGroup.setOnCheckedChangeListener(
+                (group, checkedId) -> {
+                    RadioButton checkedRadioButton = findViewById(checkedId);
+                    if (checkedRadioButton != null) {
+                        logd("Selected option: " + checkedRadioButton.getText());
+                        mFileName = checkedRadioButton.getText().toString();
+                        switch (mFileName) {
+                            case "100KB" -> mFileSize = 100;
+                            case "1MB" -> mFileSize = 1024;
+                            case "10MB" -> mFileSize = 10 * 1024;
+                            default -> mFileSize = 100;
                         }
+                        mDownloadUrl = BASE_DOWNLOAD_URL + mFileName + ".zip";
+                        mUploadFilePath = null;
+                        logd(
+                                "Selected file: "
+                                        + mFileName
+                                        + " ("
+                                        + mFileSize
+                                        + " KB). Download URL: "
+                                        + mDownloadUrl);
                     }
                 });
+
+        RadioButton defaultButton = findViewById(R.id.radioButtonOption1);
+        if (defaultButton != null) defaultButton.setChecked(true);
+        mDownloadUrl = BASE_DOWNLOAD_URL + mFileName + ".zip";
 
         if (mSubId != INVALID_SUB_ID) {
             mTelephonyManager =
                     ((TelephonyManager) mContext.getSystemService(Context.TELEPHONY_SERVICE))
                             .createForSubscriptionId(mSubId);
+            registerServiceStateChange();
+        } else {
+            loge("Invalid Subscription ID provided.");
+            displayMessageInUI("Error: Invalid Subscription ID.");
         }
-        registerServiceStateChange();
-    }
 
-    private void registerServiceStateChange() {
-        if (mTelephonyCallback == null) {
-            mTelephonyCallback = new SatelliteSpeedTest.RadioInfoTelephonyCallback();
-            if (mTelephonyManager != null) {
-                Log.d(TAG, "Register for service state change");
-                mTelephonyManager.registerTelephonyCallback(
-                        mContext.getMainExecutor(), mTelephonyCallback);
-            }
-        }
-    }
-
-    private void unregister() {
-        mTelephonyManager.unregisterTelephonyCallback(mTelephonyCallback);
-        mTelephonyCallback = null;
-    }
-
-    private void disableView() {
-        mHandler.post(
-                new Runnable() {
-                    @Override
-                    public void run() {
-                        uploadTask.setEnabled(false);
-                        downloadTask.setEnabled(false);
-                        stopTask.setEnabled(false);
-                        for (int i = 0; i < radioGroup.getChildCount(); i++) {
-                            radioGroup.getChildAt(i).setEnabled(false);
-                        }
-                    }
-                });
-    }
-
-    private void enableRadioGroup() {
-        mHandler.post(
-                new Runnable() {
-                    @Override
-                    public void run() {
-                        for (int i = 0; i < radioGroup.getChildCount(); i++) {
-                            radioGroup.getChildAt(i).setEnabled(true);
-                        }
-                    }
-                });
-    }
-
-    private void disableButton(Button button) {
-        runOnUiThread(
-                new Runnable() {
-                    @Override
-                    public void run() {
-                        button.setEnabled(false);
-                    }
-                });
-    }
-
-    private void enableButton(Button button) {
-        runOnUiThread(
-                new Runnable() {
-                    @Override
-                    public void run() {
-                        button.setEnabled(true);
-                    }
-                });
+        generateNetworkRequest();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         refreshDataMode();
+        registerServiceStateChange();
+        if (mNetwork == null) {
+            logd("onResume: Network not available, requesting...");
+            requestingNetwork();
+        } else {
+            logd("onResume: Network available.");
+            if (mIsPausedForNetwork) {
+                displayMessageInUI("Network available. Resuming task...");
+            } else if (mCurrentRunningTaskType == TaskType.NONE) {
+                setIdleView();
+            } else {
+                setActiveTaskView();
+            }
+        }
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        unregister();
-        if (mNetwork != null) {
-            releasingNetwork();
+        logd("onDestroy called.");
+        stopCurrentTask();
+        unregisterServiceStateChange();
+        releaseNetworkRequest();
+        if (mTaskExecutor != null && !mTaskExecutor.isShutdown()) {
+            mTaskExecutor.shutdown();
+            logi("ExecutorService shutdown initiated.");
         }
     }
 
-    public void setDefaultView() {
-        enableButton(uploadTask);
-        enableButton(downloadTask);
-        disableButton(stopTask);
-        enableRadioGroup();
+    private class RadioInfoTelephonyCallback extends TelephonyCallback
+            implements TelephonyCallback.ServiceStateListener,
+            TelephonyCallback.SignalStrengthsListener {
+        @Override
+        public void onServiceStateChanged(ServiceState serviceState) {
+            if (serviceState == null) return;
+            logd("onServiceStateChanged: ServiceState=" + serviceState);
+            boolean wasSatellite = mIsSatellite;
+            mServiceState = serviceState;
+            NetworkRegistrationInfo nri =
+                    serviceState.getNetworkRegistrationInfo(
+                            NetworkRegistrationInfo.DOMAIN_PS,
+                            AccessNetworkConstants.TRANSPORT_TYPE_WWAN);
+            mIsSatellite = (nri != null && nri.isRegistered() && nri.isNonTerrestrialNetwork());
+            logd(
+                    "onServiceStateChanged: mIsSatellite = "
+                            + mIsSatellite
+                            + " | wasSatellite = "
+                            + wasSatellite);
+            if (wasSatellite && !mIsSatellite && mCurrentRunningTaskType != TaskType.NONE) {
+                logw("Satellite service lost during active task.");
+                handleNetworkLoss();
+            }
+        }
+
+        @Override
+        public void onSignalStrengthsChanged(SignalStrength signalStrength) {
+            mSignalStrength = signalStrength;
+            updateSignalStrength();
+        }
     }
 
-    private void stopTask() {
-        if (fileDownloadTask != null && fileDownloadTask.getStatus() == AsyncTask.Status.RUNNING) {
-            displayToast("Download Canceled.");
-            fileDownloadTask.cancelDownload();
+    private void startUpload() {
+        if (mNetwork == null) {
+            displayToast("Satellite Network not available.");
+            return;
         }
-        if (fileUploadTask != null && fileUploadTask.getStatus() == AsyncTask.Status.RUNNING) {
-            displayToast("Upload Cancelled.");
-            fileUploadTask.cancelUpload();
-        }
-    }
 
-    private void uploadData() {
-        statusText.setText("Starting Upload...");
-        displayToast("uploading start");
-        disableButton(uploadTask);
-        disableButton(downloadTask);
-        enableButton(stopTask);
-        progressBar.setVisibility(View.VISIBLE);
-        String filePathToUpload = RandomDataGenerator.getFilesDir() + fileName;
+        mUploadFilePath = RandomDataGenerator.getFilesDir() + mFileName;
+        logd("Creating sample file: " + mUploadFilePath + " (" + mFileSize + " KB)");
         createSampleFile();
-        String uploadUrl = "http://speedtest.tele2.net/upload.php";
-        fileUploadTask = new FileUploadTask();
-        fileUploadTask.setActivity(this);
-        fileUploadTask.execute(filePathToUpload, uploadUrl);
+
+        logd(
+                "Starting FileUploadTask with path: "
+                        + mUploadFilePath
+                        + " | URL: "
+                        + UPLOAD_URL
+                        + " | Resume Bytes: "
+                        + currentUploadBytes
+                        + " | Prev Time: "
+                        + mTimeElapsedBeforePauseMillis);
+
+        mCurrentRunningTaskType = TaskType.UPLOAD;
+        mIsPausedForNetwork = false;
+        if (currentUploadBytes == 0) {
+            mTimeElapsedBeforePauseMillis = 0;
+        }
+
+        FileUploadTask task =
+                new FileUploadTask(
+                        mUploadFilePath,
+                        UPLOAD_URL,
+                        currentUploadBytes,
+                        mTimeElapsedBeforePauseMillis,
+                        this,
+                        this);
+        mCurrentTaskRunnable = task;
+        mTaskExecutor.execute(task);
     }
 
-    private void downloadData() {
-        statusText.setText("Starting Download...");
-        String downloadUrl = "http://speedtest.tele2.net/" + fileName + ".zip";
-        displayToast("downloading start");
-        disableButton(uploadTask);
-        disableButton(downloadTask);
-        enableButton(stopTask);
-        progressBar.setVisibility(View.VISIBLE);
-        fileDownloadTask = new FileDownloadTask();
-        fileDownloadTask.setActivity(this);
-        fileDownloadTask.execute(downloadUrl);
+    private void startDownload() {
+        if (mNetwork == null) {
+            displayToast("Satellite Network not available.");
+            return;
+        }
+
+        logd(
+                "Starting FileDownloadTask with URL: "
+                        + mDownloadUrl
+                        + " | Resume Bytes: "
+                        + currentDownloadBytes
+                        + " | Prev Time: "
+                        + mTimeElapsedBeforePauseMillis);
+        mCurrentRunningTaskType = TaskType.DOWNLOAD;
+        mIsPausedForNetwork = false;
+
+        FileDownloadTask task =
+                new FileDownloadTask(
+                        mDownloadUrl,
+                        currentDownloadBytes,
+                        mTimeElapsedBeforePauseMillis,
+                        this,
+                        this);
+        mCurrentTaskRunnable = task;
+        mTaskExecutor.execute(task);
     }
 
-    private void createSampleFile() {
-        new RandomDataGenerator().generateRandomData(fileName, fileSize);
-        displayToast("sample file created");
+    private void stopCurrentTask() {
+        logw("stopCurrentTask called. Current task type: " + mCurrentRunningTaskType);
+        mTimeElapsedBeforePauseMillis = 0;
+        mPausedTaskType = TaskType.NONE;
+
+        if (mCurrentRunningTaskType != TaskType.NONE && mCurrentTaskRunnable != null) {
+            mIsPausedForNetwork = false;
+            if (mCurrentRunningTaskType == TaskType.DOWNLOAD
+                    && mCurrentTaskRunnable instanceof FileDownloadTask) {
+                ((FileDownloadTask) mCurrentTaskRunnable).cancelDownload();
+                displayToast("Download Cancelled by user.");
+            } else if (mCurrentRunningTaskType == TaskType.UPLOAD
+                    && mCurrentTaskRunnable instanceof FileUploadTask) {
+                ((FileUploadTask) mCurrentTaskRunnable).cancelUpload();
+                displayToast("Upload Cancelled by user.");
+            }
+        } else {
+            logd("stopCurrentTask: No task was running.");
+        }
+        setIdleView();
+        resetTaskStateVariables();
     }
 
-    private void generateNetwork() {
+    private void generateNetworkRequest() {
         mSatelliteConstrainNetworkCallback =
                 new NetworkCallback() {
                     @Override
                     public void onAvailable(@NonNull final Network network) {
-                        Log.d(TAG, "SatelliteConstrainNetworkCallback: onAvailable");
+                        logi("Network Available - " + network);
                         mNetwork = network;
-                        displayMessageInUI("");
-                        setDefaultView();
+                        runOnUiThread(
+                                () -> {
+                                    if (mIsPausedForNetwork) {
+                                        logi("Network became available while paused."
+                                                + " Attempting auto-resume.");
+                                        displayMessageInUI("Resuming "
+                                                + mPausedTaskType + "...");
+                                        TaskType taskToResume = mPausedTaskType;
+                                        mIsPausedForNetwork = false;
+                                        mPausedTaskType = TaskType.NONE;
+
+                                        if (taskToResume == TaskType.DOWNLOAD) {
+                                            startDownload();
+                                        } else if (taskToResume == TaskType.UPLOAD) {
+                                            startUpload();
+                                        } else {
+                                            logw("Paused task type was NONE, cannot auto-resume.");
+                                            setIdleView();
+                                        }
+                                    } else {
+                                        displayMessageInUI("Satellite Network Ready.");
+                                        if (mCurrentRunningTaskType == TaskType.NONE) {
+                                            setIdleView();
+                                        }
+                                    }
+                                });
                     }
 
                     @Override
-                    public void onLost(Network network) {
-                        displayMessageInUI("Satellite network lost");
-                        disableView();
-                        Log.d(TAG, "SatelliteConstrainNetworkCallback: Network Lost");
-                        releasingNetwork();
-                        requestingNetwork();
+                    public void onLost(@NonNull Network network) {
+                        logw("Network Lost - " + network);
+                        if (mNetwork != null && mNetwork.equals(network)) {
+                            handleNetworkLoss();
+                        }
                     }
 
                     @Override
                     public void onUnavailable() {
                         super.onUnavailable();
-                        Log.d(TAG, "SatelliteConstrainNetworkCallback : onUnavailable");
-                    }
-
-                    @Override
-                    public void onLosing(@NonNull Network arg1, int arg2) {
-                        super.onLosing(arg1, arg2);
-                        Log.d(TAG, "SatelliteConstrainNetworkCallback: onLosing");
+                        logw("NetworkCallback: onUnavailable");
+                        handleNetworkLoss();
                     }
                 };
         requestingNetwork();
     }
 
-    private void displayToast(String message) {
+    private void handleNetworkLoss() {
+        logw("Handling network loss. Current task type: " + mCurrentRunningTaskType);
+        mNetwork = null;
+        mHandler.post(() -> {
+            displayMessageInUI("Satellite Network Lost.");
+            setActiveTaskView();
+
+            logd("handleNetworkLoss: TaskType = "
+                    + mCurrentRunningTaskType + ", Runnable = " + mCurrentTaskRunnable);
+
+            if (mCurrentRunningTaskType != TaskType.NONE && mCurrentTaskRunnable != null) {
+                if (!mIsPausedForNetwork) {
+                    logi("Network lost during active task. Attempting to pause.");
+                    mIsPausedForNetwork = true;
+                    mPausedTaskType = mCurrentRunningTaskType;
+
+                    if (mCurrentRunningTaskType == TaskType.DOWNLOAD
+                            && mCurrentTaskRunnable instanceof FileDownloadTask) {
+                        ((FileDownloadTask) mCurrentTaskRunnable).pauseDownload();
+                    } else if (mCurrentRunningTaskType == TaskType.UPLOAD
+                            && mCurrentTaskRunnable instanceof FileUploadTask) {
+                        ((FileUploadTask) mCurrentTaskRunnable).pauseUpload();
+                    }
+                } else {
+                    logd("handleNetworkLoss: Already marked as paused for network.");
+                }
+            } else {
+                logd("Network lost, but no task was running or runnable ref missing.");
+                mIsPausedForNetwork = false;
+                mPausedTaskType = TaskType.NONE;
+                setIdleView();
+            }
+        });
+    }
+
+    private void requestingNetwork() {
+        if (mConnectivityManager == null) {
+            loge("ConnectivityManager is null");
+            return;
+        }
+        logi("Requesting Satellite Network...");
+        displayMessageInUI("Requesting Satellite Network...");
+        if (mRequest == null) {
+            int netCapabilityNotBandwidthConstrained = 37;
+            mRequest =
+                    new NetworkRequest.Builder()
+                            .addCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
+                            .addCapability(NetworkCapabilities.NET_CAPABILITY_NOT_VCN_MANAGED)
+                            .removeCapability(netCapabilityNotBandwidthConstrained)
+                            .addTransportType(NetworkCapabilities.TRANSPORT_SATELLITE)
+                            .build();
+        }
+        try {
+            mConnectivityManager.requestNetwork(mRequest, mSatelliteConstrainNetworkCallback);
+            logd("Network request submitted.");
+        } catch (SecurityException se) {
+            loge("SecurityException requesting network. Check Permissions. " + se.getMessage());
+            displayMessageInUI("Error: Network permission missing.");
+        } catch (Exception e) {
+            loge("Exception requesting network. " + e.getMessage());
+            displayMessageInUI("Error requesting network.");
+        }
+    }
+
+    private void releaseNetworkRequest() {
+        if (mConnectivityManager != null && mSatelliteConstrainNetworkCallback != null) {
+            logi("Releasing Network Request.");
+            try {
+                mConnectivityManager.unregisterNetworkCallback(mSatelliteConstrainNetworkCallback);
+            } catch (IllegalArgumentException e) {
+                logw("NetworkCallback not registered?");
+            } catch (Exception e) {
+                loge("Exception releasing network callback: " + e.getMessage());
+            } finally {
+                mNetwork = null;
+                mSatelliteConstrainNetworkCallback = null;
+            }
+        }
+    }
+
+    @Override
+    public void onPreExecute() {
         mHandler.post(
-                new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show();
+                () -> {
+                    logd("TaskCallback: onPreExecute");
+                    setActiveTaskView();
+                    mProgressBar.setVisibility(View.VISIBLE);
+                    mProgressBar.setIndeterminate(false);
+
+                    String initialStatus = "Starting " + mCurrentRunningTaskType + "...";
+                    String initialProgress = "Progress: 0%";
+                    String initialTime = formatTime(mTimeElapsedBeforePauseMillis);
+
+                    if (mCurrentRunningTaskType == TaskType.DOWNLOAD && currentDownloadBytes > 0) {
+                        initialStatus = "Resuming DOWNLOAD...";
+                        initialProgress = "Progress: Resuming...";
+                    } else if (mCurrentRunningTaskType == TaskType.UPLOAD
+                            && currentUploadBytes > 0) {
+                        initialStatus = "Resuming UPLOAD...";
+                        initialProgress = "Progress: Resuming...";
+                    } else {
+                        mProgressBar.setProgress(0);
+                        mSpeedText.setText("Speed: --");
+                        mProgressText.setText(initialProgress);
+                    }
+                    mStatusText.setText(initialStatus);
+                    mTimeText.setText("Time: " + initialTime);
+                });
+    }
+
+    @Override
+    public void onProgressUpdate(int progress, String speed, String time, long currentBytes) {
+        mHandler.post(
+                () -> {
+                    if (mCurrentRunningTaskType == TaskType.NONE && !mIsPausedForNetwork) {
+                        return;
+                    }
+                    if (mStatusText.getText().toString().contains("Retrying")) {
+                        mStatusText.setText(mCurrentRunningTaskType + " in progress...");
+                    }
+
+                    if (progress >= 0) {
+                        mProgressBar.setIndeterminate(false);
+                        mProgressBar.setProgress(progress);
+                        mProgressText.setText(
+                                String.format(
+                                        Locale.getDefault(),
+                                        "Progress: %d%% (%s)",
+                                        progress,
+                                        formatBytes(currentBytes)));
+                    } else {
+                        mProgressText.setText(
+                                String.format(
+                                        Locale.getDefault(),
+                                        "Progress: %s",
+                                        formatBytes(currentBytes)));
+                    }
+                    mSpeedText.setText("Speed: " + speed);
+                    mTimeText.setText("Time: " + time);
+                });
+    }
+
+    @Override
+    public void onRetryAttempt(int attemptNumber, long delayMillis) {
+        mHandler.post(() -> {
+            if (!mIsPausedForNetwork) {
+                logi("TaskCallback: onRetryAttempt "
+                        + attemptNumber + " in " + delayMillis + "ms");
+                mStatusText.setText(String.format(Locale.getDefault(),
+                        "Network issue. Retrying attempt #%d in %ds...",
+                        attemptNumber,
+                        delayMillis / 1000));
+            }
+        });
+    }
+
+    @Override
+    public void onPaused(String message, long currentOverallBytes, long timeElapsedThisRunMillis) {
+        mHandler.post(
+                () -> {
+                    logi("TaskCallback: onPaused: "
+                            + message
+                            + " at "
+                            + currentOverallBytes
+                            + " bytes. Time this run: "
+                            + timeElapsedThisRunMillis
+                            + "ms");
+
+                    mTimeElapsedBeforePauseMillis += timeElapsedThisRunMillis;
+                    logi("Total time elapsed before pause now: "
+                            + mTimeElapsedBeforePauseMillis
+                            + "ms");
+
+                    if (mPausedTaskType == TaskType.DOWNLOAD) {
+                        currentDownloadBytes = currentOverallBytes;
+                    }
+                    if (mPausedTaskType == TaskType.UPLOAD) {
+                        currentUploadBytes = currentOverallBytes;
+                    }
+
+                    if (mIsPausedForNetwork) {
+                        mProgressBar.setIndeterminate(false);
+                        mSpeedText.setText("Speed: --");
+                        mTimeText.setText("Time: " + formatTime(mTimeElapsedBeforePauseMillis));
+                        setActiveTaskView();
+                        mCurrentRunningTaskType = TaskType.NONE;
+                        mCurrentTaskRunnable = null;
+                    } else {
+                        logw("TaskCallback: onPaused received but mIsPausedForNetwork is false");
+                        resetTaskStateVariables();
+                        setIdleView();
                     }
                 });
     }
 
-    public void updateUI(int progress, String speed, String time) {
-        progressBar.setProgress(progress);
-        progressText.setText("Progress: " + progress + "%");
-        speedText.setText("Speed: " + speed);
-        timeText.setText("Time: " + time);
+    @Override
+    public void onCancelled(String message, String averageSpeed, String time) {
+        mHandler.post(
+                () -> {
+                    logw("TaskCallback: onCancelled: " + message);
+                    mStatusText.setText(message);
+                    mSpeedText.setText("Avg Speed: " + averageSpeed);
+                    mTimeText.setText("Total Time: " + time);
+                    mProgressText.setText("");
+                    mProgressBar.setVisibility(View.GONE);
+                    mProgressBar.setIndeterminate(false);
+                    mProgressBar.setProgress(0);
+
+                    resetTaskStateVariables();
+                    setIdleView();
+                });
     }
 
-    public void finishUI(String result, String averageSpeed, String time) {
-        statusText.setText(result);
-        speedText.setText("Average Speed: " + averageSpeed);
-        timeText.setText("Time: " + time);
-        progressText.setText("");
-        progressBar.setVisibility(View.GONE);
+    @Override
+    public void onPostExecute(
+            String result, String averageSpeed, String totalAccumulatedTimeStr, long finalBytes) {
+        mHandler.post(
+                () -> {
+                    logi("TaskCallback: onPostExecute: " + result);
+                    if (mCurrentRunningTaskType == TaskType.NONE && !mIsPausedForNetwork) {
+                        logw(
+                                "TaskCallback: onPostExecute received but task already"
+                                        + " stopped/idle, ignoring result: "
+                                        + result);
+                        return;
+                    }
+
+                    mStatusText.setText(result);
+                    mSpeedText.setText("Avg Speed: " + averageSpeed);
+                    mTimeText.setText("Total Time: " + totalAccumulatedTimeStr);
+                    mProgressText.setText(finalBytes > 0 ? "Total: "
+                            + formatBytes(finalBytes) : "");
+                    mProgressBar.setVisibility(View.GONE);
+                    mProgressBar.setIndeterminate(false);
+                    mProgressBar.setProgress(0);
+
+                    resetTaskStateVariables();
+                    setIdleView();
+                });
     }
 
-    public void resetUI(String status, String averageSpeed, String time) {
-        statusText.setText(status);
-        speedText.setText("Average Speed: " + averageSpeed);
-        timeText.setText("Time: " + time);
-        progressText.setText("");
-        progressBar.setVisibility(View.GONE);
+    private void setIdleView() {
+        runOnUiThread(
+                () -> {
+                    mUploadTaskButton.setEnabled(mNetwork != null);
+                    mDownloadTaskButton.setEnabled(mNetwork != null);
+                    mStopTaskButton.setEnabled(false);
+                    for (int i = 0; i < mRadioGroup.getChildCount(); i++) {
+                        mRadioGroup.getChildAt(i).setEnabled(mNetwork != null);
+                    }
+                    if (mCurrentRunningTaskType == TaskType.NONE && !mIsPausedForNetwork) {
+                        mProgressBar.setVisibility(View.GONE);
+                    }
+                });
+    }
+
+    private void setActiveTaskView() {
+        runOnUiThread(
+                () -> {
+                    mUploadTaskButton.setEnabled(false);
+                    mDownloadTaskButton.setEnabled(false);
+                    mStopTaskButton.setEnabled(true);
+                    for (int i = 0; i < mRadioGroup.getChildCount(); i++) {
+                        mRadioGroup.getChildAt(i).setEnabled(false);
+                    }
+                });
+    }
+
+    private void resetTaskStateVariables() {
+        mCurrentRunningTaskType = TaskType.NONE;
+        mCurrentTaskRunnable = null;
+        mIsPausedForNetwork = false;
+        mPausedTaskType = TaskType.NONE;
+        currentDownloadBytes = 0;
+        currentUploadBytes = 0;
+        mTimeElapsedBeforePauseMillis = 0;
+    }
+
+    private void displayToast(String message) {
+        runOnUiThread(() -> Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show());
     }
 
     private void displayMessageInUI(String message) {
-        runOnUiThread(
-                new Runnable() {
-                    @Override
-                    public void run() {
-                        // Update your UI elements here
-                        statusText.setText(message);
-                    }
-                });
+        runOnUiThread(() -> mStatusText.setText(message));
+    }
+
+    private void createSampleFile() {
+        new RandomDataGenerator().generateRandomData(mFileName, mFileSize);
     }
 
     private void refreshDataMode() {
-        SatelliteManager satelliteManager = new SatelliteManager(mContext);
+        if (mContext == null) return;
+        SatelliteManager satelliteManager = mContext.getSystemService(SatelliteManager.class);
+        if (satelliteManager == null) {
+            loge("SatelliteManager not available.");
+            return;
+        }
         int satelliteDataMode = satelliteManager.getSatelliteDataSupportMode(mSubId);
         updateSatelliteDataMode(satelliteDataMode);
     }
 
     private void updateSatelliteDataMode(int satDataMode) {
-        String satData = getResources().getString(R.string.dataMode);
-        satData =
-                switch (satDataMode) {
-                    case SatelliteManager.SATELLITE_DATA_SUPPORT_RESTRICTED ->
-                            satData + " Restricted";
-                    case SatelliteManager.SATELLITE_DATA_SUPPORT_CONSTRAINED ->
-                            satData + " Limited";
-                    case SatelliteManager.SATELLITE_DATA_SUPPORT_UNCONSTRAINED ->
-                            satData + " UnLimited";
-                    default -> satData + " UnKnown";
-                };
+        if (mSatDataModeTextView == null) return;
+        String satData = "Data Mode:";
+        satData += switch (satDataMode) {
+            case SatelliteManager.SATELLITE_DATA_SUPPORT_RESTRICTED -> " Restricted";
+            case SatelliteManager.SATELLITE_DATA_SUPPORT_CONSTRAINED -> " Limited";
+            case SatelliteManager.SATELLITE_DATA_SUPPORT_UNCONSTRAINED -> " UnLimited";
+            default -> " Unknown";
+        };
         mSatDataModeTextView.setText(satData);
         mSatDataModeTextView.setVisibility(View.VISIBLE);
     }
 
-    private void requestingNetwork() {
-        Log.e(TAG, "Requesting Network");
-        if (mRequest == null) {
-            mRequest =
-                    new NetworkRequest.Builder()
-                            .addCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
-                            .addCapability(NetworkCapabilities.NET_CAPABILITY_NOT_VCN_MANAGED)
-                            .removeCapability(NET_CAPABILITY_NOT_BANDWIDTH_CONSTRAINED)
-                            .addTransportType(NetworkCapabilities.TRANSPORT_SATELLITE)
-                            .build();
+    private void registerServiceStateChange() {
+        if (mTelephonyCallback == null && mTelephonyManager != null) {
+            mTelephonyCallback = new RadioInfoTelephonyCallback();
+            logd("Registering for service state change...");
+            try {
+                mTelephonyManager.registerTelephonyCallback(mContext.getMainExecutor(),
+                        mTelephonyCallback);
+            } catch (SecurityException e) {
+                loge("Permission error registering TelephonyCallback: " + e.getMessage());
+                displayMessageInUI("Error: Telephony permission missing.");
+            } catch (IllegalStateException e) {
+                loge("IllegalStateException registering TelephonyCallback: " + e.getMessage());
+                displayMessageInUI("Error: Cannot register telephony callback.");
+            }
         }
-
-        // Requesting for Network
-        mConnectivityManager.requestNetwork(mRequest, mSatelliteConstrainNetworkCallback);
-        Log.e(TAG, "onClick + " + mRequest);
     }
 
-    private void releasingNetwork() {
-        Log.e(TAG, "Releasing Network");
-        try {
-            mConnectivityManager.unregisterNetworkCallback(mSatelliteConstrainNetworkCallback);
-        } catch (Exception e) {
-            Log.d("SatelliteDataConstrained", "Exception: " + e);
+    private void unregisterServiceStateChange() {
+        if (mTelephonyCallback != null && mTelephonyManager != null) {
+            logd("Unregistering service state change callback.");
+            try {
+                mTelephonyManager.unregisterTelephonyCallback(mTelephonyCallback);
+            } catch (Exception e) {
+                loge("Error unregistering telephony callback: " + e.getMessage());
+            } finally {
+                mTelephonyCallback = null;
+            }
         }
+    }
+
+    private String formatBytes(long bytes) {
+        if (bytes < 1024) return bytes + " B";
+        int exp = (int) (Math.log((double) bytes) / Math.log(1024));
+        String pre = "KMGTPE".charAt(exp - 1) + "";
+        return String.format(Locale.getDefault(), "%.1f %sB", bytes / Math.pow(1024, exp), pre);
+    }
+
+    private String formatTime(long millis) {
+        if (millis < 0) millis = 0;
+        long seconds = (millis / 1000) % 60;
+        long minutes = (millis / (1000 * 60)) % 60;
+        long hours = (millis / (1000 * 60 * 60));
+        return String.format(Locale.getDefault(), "%02d:%02d:%02d", hours, minutes, seconds);
+    }
+
+    private void updateSignalStrength() {
+        if (mServiceState == null || mServiceState.getState() != ServiceState.STATE_IN_SERVICE) {
+            return;
+        }
+
+        mSignalStrengthTextView.setText(buildCellInfoString());
+        int [] networkBandWidth = mServiceState.getCellBandwidths();
+        if (networkBandWidth != null && networkBandWidth.length > 0) {
+            logd(String.format("networkBandWidth: %sMHz", networkBandWidth[0] / 1000));
+            mNetworkBandWidthTextView.setText(String.format("Network BandWidth: %sMHz",
+                    networkBandWidth[0] / 1000));
+            mNetworkBandWidthTextView.setVisibility(View.VISIBLE);
+        }
+        mSignalStrengthTextView.setVisibility(View.VISIBLE);
+    }
+
+    private String buildCellInfoString() {
+        StringBuilder value = new StringBuilder("Signal Strength: ");
+        value.append(buildLteInfoString());
+        value.append((buildNrInfoString()));
+        return value.toString();
+    }
+
+    private String buildLteInfoString() {
+        return String.format(
+                "\nLTE- RSRP: %s, RSSNR: %s, RSRQ: %s",
+                getCellInfoDisplayString(mSignalStrength.getLteRsrp()),
+                getCellInfoDisplayString(mSignalStrength.getLteRsrq()),
+                getCellInfoDisplayString(mSignalStrength.getLteRssnr()));
+    }
+
+    private String buildNrInfoString() {
+        List<CellSignalStrength> ssNrs = mSignalStrength.getCellSignalStrengths();
+
+        String nrInfo = "";
+        for (CellSignalStrength ssNr: ssNrs) {
+            if (ssNr instanceof CellSignalStrengthNr) {
+                nrInfo = String.format("\n5G- SSRSRP: %s, SSRSRQ: %s",
+                        getCellInfoDisplayString(((CellSignalStrengthNr) ssNr).getSsRsrp()),
+                        getCellInfoDisplayString(((CellSignalStrengthNr) ssNr).getSsRsrq()));
+            }
+        }
+        return nrInfo;
+    }
+
+    private String getCellInfoDisplayString(int i) {
+        return (i != Integer.MAX_VALUE) ? Integer.toString(i) : "";
+    }
+
+    private void loge(String string) {
+        Log.e(TAG, string);
+    }
+
+    private void logd(String string) {
+        Log.d(TAG, string);
+    }
+
+    private void logw(String string) {
+        Log.w(TAG, string);
+    }
+
+    private void logi(String string) {
+        Log.i(TAG, string);
     }
 }

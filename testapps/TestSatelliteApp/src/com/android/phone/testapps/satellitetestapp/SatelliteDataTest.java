@@ -64,7 +64,7 @@ public class SatelliteDataTest extends Activity {
         mHandler = new Handler(Looper.getMainLooper());
         mConnectivityManager = getSystemService(ConnectivityManager.class);
         mSubscriptionManager = getSystemService(SubscriptionManager.class);
-        mSatelliteManager = new SatelliteManager(mContext);
+        mSatelliteManager = getSystemService(SatelliteManager.class);
 
         setContentView(R.layout.activity_SatelliteDataTest);
 

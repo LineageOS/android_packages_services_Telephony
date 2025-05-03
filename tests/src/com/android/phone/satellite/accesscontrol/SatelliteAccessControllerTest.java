@@ -2920,9 +2920,7 @@ public class SatelliteAccessControllerTest extends TelephonyTestBase {
         }
 
         public boolean isCurrentSatelliteAllowedState() {
-            synchronized (mSatelliteCommunicationAllowStateLock) {
-                return mCurrentSatelliteAllowedState;
-            }
+            return mCurrentSatelliteAllowedState.get();
         }
 
         @Nullable

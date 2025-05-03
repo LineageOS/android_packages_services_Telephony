@@ -16,12 +16,7 @@
 
 package com.android.phone.testapps.satellitetestapp;
 
-import android.net.ConnectivityManager;
-import android.net.ConnectivityManager.NetworkCallback;
-import android.net.NetworkRequest;
-import android.os.AsyncTask;
 import android.util.Log;
-import android.view.View;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -29,213 +24,551 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
+import java.net.SocketException;
+import java.net.SocketTimeoutException;
 import java.net.URL;
+import java.net.UnknownHostException;
 import java.util.Locale;
 
-public class FileUploadTask extends AsyncTask<String, Integer, String> {
+public class FileUploadTask implements Runnable {
 
     private static final String TAG = "FileUploadTask";
-    ConnectivityManager mConnectivityManager;
-    NetworkRequest mRequest;
-    NetworkCallback mSatelliteConstrainNetworkCallback;
-    private static final int BUFFER_SIZE = 4096; // 4KB buffer
-    private volatile boolean isCancelled = false;
-    private static final long SPEED_UPDATE_INTERVAL = 200;
-    private long totalBytesSent = 0;
-    private long lastBytesSent = 0;
-    private long startTime = 0;
-    private long lastUpdateTime = 0;
-    private double minSpeed = Double.MAX_VALUE;
-    private double maxSpeed = 0.0;
-    private SatelliteSpeedTest activity;
+    private static final int BUFFER_SIZE = 4096;
+    private volatile boolean mIsCancelled = false;
+    private volatile boolean mIsPaused = false;
+    private static final long SPEED_UPDATE_INTERVAL = 500;
 
-    public void setActivity(SatelliteSpeedTest activity) {
-        this.activity = activity;
-        mConnectivityManager = activity.getSystemService(ConnectivityManager.class);
+    private static final long RETRY_DELAY_MS = 1000;
+
+    private final String mFilePath;
+    private final String mUploadUrl;
+    private final long mInitialBytesSent;
+    private final long mTimeElapsedBeforePauseMillis;
+    private final TaskCallback mCallback;
+    private final NetworkProvider mNetworkProvider;
+
+    private long mTotalBytesSentThisRun = 0;
+    private long mTotalBytesOverall = 0;
+    private long mLastBytesOverall = 0;
+    private long mStartTime = 0;
+    private long mLastUpdateTime = 0;
+    private double mMinSpeed = Double.MAX_VALUE;
+    private double mMaxSpeed = 0.0;
+    private long mFileSize = 0;
+
+    public interface NetworkProvider {
+        android.net.Network getNetwork();
     }
 
-    @Override
-    protected void onPreExecute() {
-        super.onPreExecute();
-        startTime = System.currentTimeMillis();
-        lastUpdateTime = startTime;
-        totalBytesSent = 0;
-        lastBytesSent = 0;
-        if (activity != null) {
-            activity.progressBar.setVisibility(View.VISIBLE);
-        }
-    }
-
-    @Override
-    protected void onCancelled(String result) {
-        super.onCancelled(result);
-        if (activity != null) {
-            activity.setDefaultView();
-        }
-        long endTime = System.currentTimeMillis();
-        long totalTime = endTime - startTime;
-        double averageSpeed = (double) totalBytesSent / totalTime * 1000;
-        activity.resetUI("upload_cancelled.", formatSpeed(averageSpeed), formatTime(totalTime));
+    public FileUploadTask(
+            String filePath,
+            String uploadUrl,
+            long bytesToResumeFrom,
+            long timeElapsedBeforePause,
+            TaskCallback callback,
+            NetworkProvider networkProvider) {
+        mFilePath = filePath;
+        mUploadUrl = uploadUrl;
+        mInitialBytesSent = bytesToResumeFrom;
+        mTimeElapsedBeforePauseMillis = timeElapsedBeforePause;
+        mCallback = callback;
+        mNetworkProvider = networkProvider;
+        mTotalBytesOverall = bytesToResumeFrom;
+        mLastBytesOverall = bytesToResumeFrom;
     }
 
     public void cancelUpload() {
-        Log.e(TAG, "Upload Cancel.");
-        isCancelled = true;
-        if (getStatus() == AsyncTask.Status.RUNNING) {
-            cancel(true);
-        }
+        Log.w(TAG, "cancelUpload() called - Setting flags.");
+        mIsCancelled = true;
+        mIsPaused = false;
+    }
+
+    public void pauseUpload() {
+        Log.w(TAG, "pauseUpload() called - Setting flags.");
+        mIsPaused = true;
+        mIsCancelled = true;
     }
 
     @Override
-    protected String doInBackground(String... params) {
-        String filePath = params[0]; // Path to the file to upload
-        String uploadUrl = params[1]; // The server upload URL
-        File fileToUpload = new File(filePath);
+    public void run() {
+        if (mIsCancelled && !mIsPaused) {
+            Log.i(TAG, "Upload Task cancelled before execution started.");
+            mCallback.onCancelled("Upload cancelled.", "--", "00:00:00");
+            return;
+        }
+        if (mIsPaused) {
+            mCallback.onPaused("Paused before run", mInitialBytesSent, 0);
+        }
+        mCallback.onPreExecute();
+        mStartTime = System.currentTimeMillis();
+        if (mInitialBytesSent == 0) {
+            mMinSpeed = Double.MAX_VALUE;
+            mMaxSpeed = 0.0;
+            mLastBytesOverall = 0;
+        } else {
+            mLastBytesOverall = mInitialBytesSent;
+            Log.i(TAG, "Resuming upload from byte: " + mInitialBytesSent);
+        }
+        mLastUpdateTime = mStartTime;
+        mTotalBytesOverall = mInitialBytesSent;
+
+        String resultMessage = performUploadWithRetries();
+
+        long endTime = System.currentTimeMillis();
+        long timeElapsedThisRunMillis = endTime - mStartTime;
+        long totalAccumulatedTimeMillis = mTimeElapsedBeforePauseMillis + timeElapsedThisRunMillis;
+
+        mTotalBytesSentThisRun = mTotalBytesOverall - mInitialBytesSent;
+        double averageSpeed =
+                (timeElapsedThisRunMillis > 0)
+                        ? (double) mTotalBytesSentThisRun / timeElapsedThisRunMillis * 1000
+                        : 0;
+        String formattedAvgSpeed =
+                (averageSpeed <= 0 && mTotalBytesOverall == 0) ? "--" : formatSpeed(averageSpeed);
+        String formattedTotalTime = formatTime(totalAccumulatedTimeMillis);
+
+        Log.d(
+                TAG,
+                "Upload Task run ended. Result: '"
+                        + resultMessage
+                        + "', mIsPaused="
+                        + mIsPaused
+                        + ", mIsCancelled="
+                        + mIsCancelled);
+
+        if (resultMessage.startsWith("Upload paused")) {
+            if (!mIsPaused) {
+                mIsPaused = true;
+            }
+            mCallback.onPaused(resultMessage, mTotalBytesOverall, timeElapsedThisRunMillis);
+        } else if (resultMessage.startsWith("Upload cancelled") || (mIsCancelled && !mIsPaused)) {
+            mCallback.onCancelled(
+                    resultMessage.startsWith("Upload cancelled")
+                            ? resultMessage
+                            : "Upload cancelled.",
+                    formattedAvgSpeed,
+                    formatTime(timeElapsedThisRunMillis));
+        } else {
+            mCallback.onPostExecute(
+                    resultMessage, formattedAvgSpeed, formattedTotalTime, mTotalBytesOverall);
+        }
+    }
+
+    private String performUploadWithRetries() {
+        int retryCount = 0;
+        long currentResumeOffset = mInitialBytesSent;
+        String attemptResult = "Starting upload";
+
+        File fileToUpload = new File(mFilePath);
         if (!fileToUpload.exists()) {
-            return "Error: File not found at " + filePath;
+            return "Error: File not found at " + mFilePath;
+        }
+        mFileSize = fileToUpload.length();
+
+        if (currentResumeOffset >= mFileSize && mFileSize > 0) {
+            Log.i(
+                    TAG,
+                    "Initial bytes ("
+                            + currentResumeOffset
+                            + ") already >= file size ("
+                            + mFileSize
+                            + "). Assuming complete.");
+            return "Upload already complete.";
         }
 
-        HttpURLConnection connection = null;
-        OutputStream outputStream = null;
-        InputStream inputStream = null;
-        publishProgress(0); // Report progress set to 0
+        while (true) {
+            if (mIsCancelled) {
+                Log.i(TAG, "Retry loop interrupted by external cancel/pause request.");
+                return mIsPaused ? "Upload paused." : "Upload cancelled.";
+            }
 
-        try {
-            URL url = new URL(uploadUrl);
-            Log.d(TAG, url.toString());
-            connection = (HttpURLConnection) activity.mNetwork.openConnection(url);
-            connection.setRequestMethod("POST"); // Or "PUT" depending on the server
-            connection.setDoOutput(true);
-            connection.setUseCaches(false);
-            connection.setChunkedStreamingMode(BUFFER_SIZE); // Optional: for large files
+            HttpURLConnection connection = null;
+            OutputStream outputStream = null;
+            InputStream inputStream = null;
+            android.net.Network network = mNetworkProvider.getNetwork();
 
-            // Set Content-Type (important for the server to know what it's receiving)
-            connection.setRequestProperty(
-                    "Content-Type", "application/zip"); // Adjust if your file is not a zip
-
-            outputStream = connection.getOutputStream();
-            inputStream = new FileInputStream(fileToUpload);
-
-            byte[] buffer = new byte[BUFFER_SIZE];
-            int bytesRead;
-            long fileSize = fileToUpload.length();
-
-            while ((bytesRead = inputStream.read(buffer)) != -1 && !isCancelled()) {
-                outputStream.write(buffer, 0, bytesRead);
-                totalBytesSent += bytesRead;
-
-                long currentTime = System.currentTimeMillis();
-                if (currentTime - lastUpdateTime >= SPEED_UPDATE_INTERVAL) {
-                    long bytesSinceLastUpdate = totalBytesSent - lastBytesSent;
-                    long timeElapsed = currentTime - lastUpdateTime;
-                    double speed = (double) bytesSinceLastUpdate / timeElapsed * 1000;
-                    publishProgress(
-                            (int) ((totalBytesSent * 100) / fileSize),
-                            (int) speed,
-                            (int) (currentTime - startTime));
-                    lastBytesSent = totalBytesSent;
-                    lastUpdateTime = currentTime;
-
-                    if (speed < minSpeed) {
-                        minSpeed = speed;
+            if (network == null) {
+                Log.w(TAG, "Network unavailable before attempt " + (retryCount + 1));
+                attemptResult = "Network unavailable";
+            } else {
+                try {
+                    long bytesSentThisAttempt = 0;
+                    if (currentResumeOffset >= mFileSize && mFileSize > 0) {
+                        Log.i(
+                                TAG,
+                                "Current offset ("
+                                        + currentResumeOffset
+                                        + ") reached file size ("
+                                        + mFileSize
+                                        + ") before attempt. Assuming complete.");
+                        return "Upload successful. Total Sent: " + formatBytes(mTotalBytesOverall);
                     }
-                    if (speed > maxSpeed) {
-                        maxSpeed = speed;
+
+                    URL url = new URL(mUploadUrl);
+                    Log.d(
+                            TAG,
+                            "Attempt "
+                                    + (retryCount + 1)
+                                    + ": Uploading to "
+                                    + url
+                                    + " | Resume Byte: "
+                                    + currentResumeOffset);
+                    if (currentResumeOffset > 0) {
+                        Log.w(
+                                TAG,
+                                "!!! WARNING: Resuming upload without server confirmation is"
+                                    + " unreliable !!!");
                     }
+
+                    connection = (HttpURLConnection) network.openConnection(url);
+                    connection.setRequestMethod("PUT");
+                    connection.setDoOutput(true);
+                    connection.setUseCaches(false);
+                    connection.setConnectTimeout(15000);
+                    connection.setReadTimeout(30000);
+
+                    long contentLength;
+                    if (currentResumeOffset > 0) {
+                        contentLength = mFileSize - currentResumeOffset;
+                        String rangeHeader =
+                                "bytes "
+                                        + currentResumeOffset
+                                        + "-"
+                                        + (mFileSize - 1)
+                                        + "/"
+                                        + mFileSize;
+                        connection.setRequestProperty("Content-Range", rangeHeader);
+                    } else {
+                        contentLength = mFileSize;
+                    }
+
+                    if (contentLength >= 0) {
+                        connection.setFixedLengthStreamingMode(contentLength);
+                    } else {
+                        connection.setChunkedStreamingMode(BUFFER_SIZE);
+                    }
+                    connection.setRequestProperty("Content-Type", "application/octet-stream");
+
+                    inputStream = new FileInputStream(fileToUpload);
+                    if (currentResumeOffset > 0) {
+                        long skipped = inputStream.skip(currentResumeOffset);
+                        if (skipped != currentResumeOffset) {
+                            try {
+                                inputStream.close();
+                            } catch (IOException ignored) {
+                                Log.e(TAG, "IOException occurs");
+                            }
+                            return "Error: Failed to seek in file for resume."; // Fatal error
+                        }
+                    }
+
+                    outputStream = connection.getOutputStream();
+                    byte[] buffer = new byte[BUFFER_SIZE];
+                    int bytesRead;
+
+                    if (retryCount == 0 && mTotalBytesOverall == mInitialBytesSent) {
+                        publishProgressUpdate();
+                    }
+
+                    while ((bytesRead = inputStream.read(buffer)) != -1) {
+                        if (mIsCancelled) {
+                            attemptResult = mIsPaused ? "Upload paused." : "Upload cancelled.";
+                            Log.d(TAG, "Cancellation/Pause detected inside write loop.");
+                            try {
+                                if (outputStream != null) outputStream.close();
+                            } catch (IOException e) {
+                                Log.e(TAG, "IOException occurs");
+                            }
+                            try {
+                                if (inputStream != null) inputStream.close();
+                            } catch (IOException e) {
+                                Log.e(TAG, "IOException occurs");
+                            }
+                            return attemptResult;
+                        }
+
+                        outputStream.write(buffer, 0, bytesRead);
+                        bytesSentThisAttempt += bytesRead;
+                        mTotalBytesOverall += bytesRead;
+                        publishProgressUpdate();
+                    }
+
+                    outputStream.flush();
+                    outputStream.close();
+
+                    mTotalBytesSentThisRun += bytesSentThisAttempt;
+                    int responseCode = -1;
+                    String responseMessage = "No response";
+                    try {
+                        responseCode = connection.getResponseCode();
+                        responseMessage = connection.getResponseMessage();
+                        Log.i(
+                                TAG,
+                                "Attempt "
+                                        + (retryCount + 1)
+                                        + ": Server Response Code: "
+                                        + responseCode
+                                        + ", Message: "
+                                        + responseMessage);
+
+                        InputStream responseStream = connection.getInputStream();
+                        byte[] responseBuffer = new byte[BUFFER_SIZE];
+                        while (responseStream.read(responseBuffer) != -1) {
+                            /* NOP */
+                        }
+                        responseStream.close();
+                        attemptResult = "Server Response Received";
+
+                    } catch (IOException e) {
+                        InputStream errorStream = null;
+                        try {
+                            if (connection != null) errorStream = connection.getErrorStream();
+                            if (errorStream != null) {
+                                while (errorStream.read(new byte[1024]) != -1) {
+                                    Log.d(TAG, "performUploadWithRetries: Reading errorStream");
+                                }
+                            }
+                        } catch (IOException ignored) {
+                            Log.e(TAG, "IOException occurs");
+                        } finally {
+                            try {
+                                if (errorStream != null) errorStream.close();
+                            } catch (IOException ignored) {
+                                Log.e(TAG, "IOException occurs");
+                            }
+                        }
+
+                        Log.w(
+                                TAG,
+                                "Attempt "
+                                        + (retryCount + 1)
+                                        + ": IOException reading response: "
+                                        + e.getClass().getSimpleName()
+                                        + " - "
+                                        + e.getMessage());
+                        if (mIsCancelled) {
+                            return mIsPaused ? "Upload paused." : "Upload cancelled.";
+                        }
+
+                        if (mTotalBytesOverall == mFileSize
+                                && errorMessageIndicatesDisconnect(e.getMessage())) {
+                            Log.w(
+                                    TAG,
+                                    "IOException reading response,"
+                                            + " but upload seems complete. Treating as success.",
+                                    e);
+                            return "Upload likely successful (response read error). Total Sent: "
+                                    + formatBytes(mTotalBytesOverall); // SUCCESS! Exit loop.
+                        } else {
+                            if (shouldPauseForIOException(e)) {
+                                attemptResult = "Network Error Reading Response: " + e.getMessage();
+                            } else {
+                                return "Upload failed (Error reading response: "
+                                        + e.getMessage()
+                                        + ")";
+                            }
+                        }
+                    }
+
+                    if (attemptResult.equals("Server Response Received")) {
+                        if (responseCode >= 200 && responseCode < 300) {
+                            if (mTotalBytesOverall >= mFileSize) {
+                                return "Upload successful. Server responded: "
+                                        + responseCode
+                                        + " "
+                                        + responseMessage;
+                            } else {
+                                Log.w(
+                                        TAG,
+                                        "Server success code "
+                                                + responseCode
+                                                + " but client only sent "
+                                                + mTotalBytesOverall
+                                                + "/"
+                                                + mFileSize);
+                                attemptResult = "Incomplete Upload Despite Success Code";
+                            }
+                        } else if (responseCode == 400) {
+                            return "Upload failed: Bad Request (400)."
+                                    + " Server likely doesn't support resume.";
+                        } else if (responseCode == 416) {
+                            return "Upload failed: Range Not Satisfiable (416). Invalid range used";
+                        } else {
+                            Log.w(
+                                    TAG,
+                                    "Attempt "
+                                            + (retryCount + 1)
+                                            + ": Failed with HTTP code: "
+                                            + responseCode);
+                            attemptResult = "HTTP Error " + responseCode;
+                        }
+                    }
+
+                } catch (IOException e) {
+                    Log.w(
+                            TAG,
+                            "Attempt "
+                                    + (retryCount + 1)
+                                    + ": IOException during connect/write: "
+                                    + e.getClass().getSimpleName()
+                                    + " - "
+                                    + e.getMessage());
+                    if (mIsCancelled) {
+                        return mIsPaused ? "Upload paused." : "Upload cancelled.";
+                    }
+                    if (shouldPauseForIOException(e)) {
+                        attemptResult = "Network Error Connect/Write: " + e.getMessage();
+                    } else {
+                        Log.e(TAG, "Non-retryable IOException occurred.", e);
+                        return "Error during upload: " + e.getMessage(); // FATAL error
+                    }
+                } catch (Exception e) { // Catch unexpected errors
+                    Log.e(TAG, "Attempt " + (retryCount + 1) + ": Unexpected error", e);
+                    if (mIsCancelled) {
+                        return mIsPaused ? "Upload paused." : "Upload cancelled.";
+                    }
+                    return "Unexpected error: " + e.getMessage();
+                } finally {
+                    try {
+                        if (outputStream != null) outputStream.close();
+                    } catch (IOException e) {
+                        Log.e(TAG, "IOException occurs");
+                    }
+                    try {
+                        if (inputStream != null) inputStream.close();
+                    } catch (IOException e) {
+                        Log.e(TAG, "IOException occurs");
+                    }
+                    if (connection != null) {
+                        connection.disconnect();
+                    }
+                    Log.d(TAG, "Attempt " + (retryCount + 1) + " finished cleanup.");
                 }
             }
-            outputStream.flush();
-            if (isCancelled()) {
-                return "Upload cancelled.";
-            }
-            int responseCode = connection.getResponseCode();
-            Log.d(TAG, "Server Response Code: " + responseCode);
 
-            // Simulate -O /dev/null by just reading and discarding the response
-            InputStream responseStream = connection.getInputStream();
-            byte[] responseBuffer = new byte[BUFFER_SIZE];
-            while (responseStream.read(responseBuffer) != -1) {
-                // Do nothing with the response
-            }
-            responseStream.close();
+            retryCount++;
+            Log.i(
+                    TAG,
+                    "Attempt "
+                            + (retryCount)
+                            + " failed ("
+                            + attemptResult
+                            + "). Retrying in "
+                            + RETRY_DELAY_MS
+                            + " ms...");
 
-            if (responseCode == HttpURLConnection.HTTP_OK
-                    || responseCode == HttpURLConnection.HTTP_CREATED
-                    || responseCode == HttpURLConnection.HTTP_ACCEPTED) {
-                return "Upload successful. Server responded with code: " + responseCode;
-            } else {
-                return "Upload failed. Server responded with code: " + responseCode;
-            }
-        } catch (IOException e) {
-            Log.e(TAG, "Error during upload: " + e.getMessage());
-            return "Error during upload: " + e.getMessage();
-        } finally {
             try {
-                if (outputStream != null) outputStream.close();
-                if (inputStream != null) inputStream.close();
-                if (connection != null) connection.disconnect();
-            } catch (IOException e) {
-                Log.e(TAG, "Error closing streams or connection: " + e.getMessage());
+                Thread.sleep(RETRY_DELAY_MS);
+                mCallback.onRetryAttempt(retryCount, RETRY_DELAY_MS);
+                currentResumeOffset = mTotalBytesOverall;
+
+                if (mIsCancelled) {
+                    Log.i(
+                            TAG,
+                            "Retry delay interrupted or completed, finding external cancel/pause"
+                                + " request.");
+                    return mIsPaused ? "Upload paused." : "Upload cancelled.";
+                }
+                Log.d(TAG, "Starting retry attempt " + retryCount);
+
+            } catch (InterruptedException ie) {
+                Log.w(TAG, "Retry delay sleep interrupted.");
+                Thread.currentThread().interrupt();
+                if (mIsCancelled) {
+                    return mIsPaused ? "Upload paused." : "Upload cancelled.";
+                }
+                return "Upload retry interrupted.";
             }
         }
     }
 
-    @Override
-    protected void onProgressUpdate(Integer... values) {
-        super.onProgressUpdate(values);
-        if (values.length > 2 && activity != null) {
-            int progress = values[0];
-            int speedBytesPerSecond = values[1];
-            int totalTimeMillis = values[2];
-            String speedFormatted = formatSpeed(speedBytesPerSecond);
-            String timeFormatted = formatTime(totalTimeMillis);
-            activity.updateUI(progress, speedFormatted, timeFormatted);
-        } else if (values.length > 1 && activity != null) {
-            int progress = values[0];
-            int speedBytesPerSecond = values[1];
-            String speedFormatted = formatSpeed(speedBytesPerSecond);
-            activity.updateUI(progress, speedFormatted, "");
-        } else if (values.length == 1 && activity != null) {
-            int progress = values[0];
-            activity.progressBar.setProgress(progress);
-        }
+    private boolean shouldPauseForIOException(IOException e) {
+        if (e == null) return false;
+        String errorMessage =
+                e.getMessage() != null ? e.getMessage().toLowerCase(Locale.getDefault()) : "";
+        return (e instanceof SocketTimeoutException
+                || e instanceof UnknownHostException
+                || (e instanceof SocketException
+                        && (errorMessage.contains("software caused connection abort")
+                                || errorMessage.contains("connection reset")
+                                || errorMessage.contains("network is down")
+                                || errorMessage.contains("network is unreachable")
+                                || errorMessage.contains("enetunreach")
+                                || errorMessage.contains("enetdown")
+                                || errorMessage.contains("broken pipe")))
+                || errorMessage.contains("network"));
     }
 
-    @Override
-    protected void onPostExecute(String result) {
-        super.onPostExecute(result);
-        long endTime = System.currentTimeMillis();
-        long totalTime = endTime - startTime;
-        double averageSpeed = (double) totalBytesSent / totalTime * 1000;
-        if (activity != null) {
-            activity.setDefaultView();
-            activity.runOnUiThread(
-                    new Runnable() {
-                        @Override
-                        public void run() {
-                            activity.finishUI(
-                                    result,
-                                    (averageSpeed == 0.0) ? "--" : formatSpeed(averageSpeed),
-                                    formatTime(totalTime));
-                        }
-                    });
+    private boolean errorMessageIndicatesDisconnect(String errorMessage) {
+        if (errorMessage == null) return false;
+        String msgLower = errorMessage.toLowerCase(Locale.getDefault());
+        return msgLower.contains("socket closed")
+                || msgLower.contains("connection reset")
+                || msgLower.contains("broken pipe");
+    }
+
+    private void publishProgressUpdate() {
+        long currentTime = System.currentTimeMillis();
+        long timeElapsedSinceRunStart = currentTime - mStartTime;
+
+        if (timeElapsedSinceRunStart >= 0
+                && currentTime - mLastUpdateTime >= SPEED_UPDATE_INTERVAL) {
+            long bytesSinceLastUpdate = mTotalBytesOverall - mLastBytesOverall;
+            long timeElapsedSinceLast = currentTime - mLastUpdateTime;
+            double speed =
+                    (timeElapsedSinceLast > 0)
+                            ? (double) bytesSinceLastUpdate / timeElapsedSinceLast * 1000
+                            : 0;
+
+            int progress = (mFileSize > 0) ? (int) ((mTotalBytesOverall * 100) / mFileSize) : -1;
+
+            if (speed < mMinSpeed && speed > 0 && timeElapsedSinceRunStart > 0) mMinSpeed = speed;
+            if (speed > mMaxSpeed) mMaxSpeed = speed;
+
+            if (!mIsCancelled || mIsPaused) {
+                long currentTotalAccumulatedTime =
+                        mTimeElapsedBeforePauseMillis + timeElapsedSinceRunStart;
+                mCallback.onProgressUpdate(
+                        progress,
+                        formatSpeed(speed),
+                        formatTime(currentTotalAccumulatedTime),
+                        mTotalBytesOverall);
+            }
+
+            mLastBytesOverall = mTotalBytesOverall;
+            mLastUpdateTime = currentTime;
         }
     }
 
     private String formatSpeed(double bytesPerSecond) {
-        if (bytesPerSecond < 1024) {
-            return String.format(Locale.getDefault(), "%.2f B/s", bytesPerSecond);
-        } else if (bytesPerSecond < 1024 * 1024) {
-            return String.format(Locale.getDefault(), "%.2f KB/s", bytesPerSecond / 1024);
-        } else {
-            return String.format(Locale.getDefault(), "%.2f MB/s", bytesPerSecond / (1024 * 1024));
+        if (bytesPerSecond < 0) return "--";
+        if (bytesPerSecond < 1.0 && bytesPerSecond > 0) return "< 1 bps";
+        if (bytesPerSecond == 0) return "0 bps";
+        double bitsPerSecond = bytesPerSecond * 8.0;
+        if (bitsPerSecond < 1000.0) {
+            return String.format(Locale.getDefault(), "%.0f bps", bitsPerSecond);
         }
+        if (bitsPerSecond < 1_000_000.0) {
+            return String.format(Locale.getDefault(), "%.1f kbps", bitsPerSecond / 1000.0);
+        }
+        if (bitsPerSecond < 1_000_000_000.0) {
+            return String.format(Locale.getDefault(), "%.2f Mbps", bitsPerSecond / 1_000_000.0);
+        }
+        return String.format(Locale.getDefault(), "%.2f Gbps", bitsPerSecond / 1_000_000_000.0);
     }
 
     private String formatTime(long millis) {
+        if (millis < 0) millis = 0;
         long seconds = (millis / 1000) % 60;
         long minutes = (millis / (1000 * 60)) % 60;
         long hours = (millis / (1000 * 60 * 60));
         return String.format(Locale.getDefault(), "%02d:%02d:%02d", hours, minutes, seconds);
+    }
+
+    private String formatBytes(long bytes) {
+        if (bytes < 1024) return bytes + " B";
+        int exp = (int) (Math.log((double) bytes) / Math.log(1024));
+        String pre = "KMGTPE".charAt(exp - 1) + "";
+        return String.format(Locale.getDefault(), "%.1f %sB", bytes / Math.pow(1024, exp), pre);
     }
 }

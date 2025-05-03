@@ -384,10 +384,6 @@ public class SatelliteAccessController extends Handler {
     @Nullable
     private PersistentLogger mPersistentLogger = null;
 
-    private final Object mPossibleChangeInSatelliteAllowedRegionLock = new Object();
-    @GuardedBy("mPossibleChangeInSatelliteAllowedRegionLock")
-    private boolean mIsSatelliteAllowedRegionPossiblyChanged = false;
-
     protected static final int
             DEFAULT_DELAY_MINUTES_BEFORE_VALIDATING_POSSIBLE_CHANGE_IN_ALLOWED_REGION = 10;
     protected static final int
@@ -404,10 +400,6 @@ public class SatelliteAccessController extends Handler {
      */
     private final ConcurrentHashMap<IBinder, ISatelliteCommunicationAccessStateCallback>
             mSatelliteCommunicationAccessStateChangedListeners = new ConcurrentHashMap<>();
-    protected final Object mSatelliteCommunicationAllowStateLock = new Object();
-    @GuardedBy("mSatelliteCommunicationAllowStateLock")
-    protected boolean mCurrentSatelliteAllowedState = false;
-
     private final ConcurrentHashMap<IBinder, ISatelliteDisallowedReasonsCallback>
             mSatelliteDisallowedReasonsChangedListeners = new ConcurrentHashMap<>();
     private final Object mSatelliteDisallowedReasonsLock = new Object();
@@ -450,6 +442,8 @@ public class SatelliteAccessController extends Handler {
     };
 
     /** All the atomic variables are declared here. */
+    private AtomicBoolean mIsSatelliteAllowedRegionPossiblyChanged = new AtomicBoolean(false);
+    protected AtomicBoolean mCurrentSatelliteAllowedState = new AtomicBoolean(false);
     protected AtomicLong mLastLocationQueryForPossibleChangeInAllowedRegionTimeNanos =
             new AtomicLong(0);
     protected AtomicInteger mRetryCountForValidatingPossibleChangeInAllowedRegion =
@@ -643,22 +637,20 @@ public class SatelliteAccessController extends Handler {
 
     private void updateCurrentSatelliteAllowedState(boolean isAllowed) {
         plogd("updateCurrentSatelliteAllowedState");
-        synchronized (mSatelliteCommunicationAllowStateLock) {
-            if (isAllowed != mCurrentSatelliteAllowedState) {
-                plogd("updatedValue = " + isAllowed + " | mCurrentSatelliteAllowedState = "
-                        + mCurrentSatelliteAllowedState);
-                mCurrentSatelliteAllowedState = isAllowed;
-                notifySatelliteCommunicationAllowedStateChanged(isAllowed);
-                mControllerMetricsStats.reportAllowedStateChanged();
-                if (!isAllowed) {
-                    synchronized (mLock) {
-                        plogd("updateCurrentSatelliteAllowedState : set mNewRegionalConfigId null");
-                        mNewRegionalConfigId = null;
-                    }
+        if (isAllowed != mCurrentSatelliteAllowedState.get()) {
+            plogd("updatedValue = " + isAllowed + " | mCurrentSatelliteAllowedState = "
+                    + mCurrentSatelliteAllowedState.get());
+            mCurrentSatelliteAllowedState.set(isAllowed);
+            notifySatelliteCommunicationAllowedStateChanged(isAllowed);
+            mControllerMetricsStats.reportAllowedStateChanged();
+            if (!isAllowed) {
+                synchronized (mLock) {
+                    plogd("updateCurrentSatelliteAllowedState : set mNewRegionalConfigId null");
+                    mNewRegionalConfigId = null;
                 }
             }
-            updateRegionalConfigId();
         }
+        updateRegionalConfigId();
     }
 
     /** @return the singleton instance of {@link SatelliteAccessController} */
@@ -2028,23 +2020,19 @@ public class SatelliteAccessController extends Handler {
             protected void onReceiveResult(int resultCode, Bundle resultData) {
                 plogd("query satellite allowed for current "
                         + "location, resultCode=" + resultCode + ", resultData=" + resultData);
-                synchronized (mPossibleChangeInSatelliteAllowedRegionLock) {
-                    if (shouldRetryValidatingPossibleChangeInAllowedRegion(resultCode)
-                            && (mRetryCountForValidatingPossibleChangeInAllowedRegion.get()
-                            < mMaxRetryCountForValidatingPossibleChangeInAllowedRegion.get())) {
-                        int retryCount = mRetryCountForValidatingPossibleChangeInAllowedRegion
-                                .incrementAndGet();
-                        plogd("mRetryCountForValidatingPossibleChangeInAllowedRegion is "
-                                + retryCount);
-                        sendDelayedRequestAsync(CMD_IS_SATELLITE_COMMUNICATION_ALLOWED,
-                                new Pair<>(SubscriptionManager.DEFAULT_SUBSCRIPTION_ID,
-                                        mHandlerForSatelliteAllowedResult),
-                                mRetryIntervalToEvaluateUserInSatelliteAllowedRegion.get());
-                    } else {
-                        mRetryCountForValidatingPossibleChangeInAllowedRegion.set(0);
-                        plogd("Stop retry validating the possible change in satellite allowed "
-                                + "region");
-                    }
+                if (shouldRetryValidatingPossibleChangeInAllowedRegion(resultCode)
+                        && (mRetryCountForValidatingPossibleChangeInAllowedRegion.get()
+                        < mMaxRetryCountForValidatingPossibleChangeInAllowedRegion.get())) {
+                    int retryCount = mRetryCountForValidatingPossibleChangeInAllowedRegion
+                            .incrementAndGet();
+                    plogd("mRetryCountForValidatingPossibleChangeInAllowedRegion is " + retryCount);
+                    sendDelayedRequestAsync(CMD_IS_SATELLITE_COMMUNICATION_ALLOWED,
+                            new Pair<>(SubscriptionManager.DEFAULT_SUBSCRIPTION_ID,
+                                    mHandlerForSatelliteAllowedResult),
+                            mRetryIntervalToEvaluateUserInSatelliteAllowedRegion.get());
+                } else {
+                    mRetryCountForValidatingPossibleChangeInAllowedRegion.set(0);
+                    plogd("Stop retry validating the possible change in satellite allowed region");
                 }
             }
         };
@@ -2181,36 +2169,32 @@ public class SatelliteAccessController extends Handler {
     }
 
     private void handleSatelliteAllowedRegionPossiblyChanged(int handleEvent) {
-        synchronized (mPossibleChangeInSatelliteAllowedRegionLock) {
-            logd("handleSatelliteAllowedRegionPossiblyChanged");
-            setIsSatelliteAllowedRegionPossiblyChanged(true);
-            requestIsCommunicationAllowedForCurrentLocation(
-                    mHandlerForSatelliteAllowedResult, false);
-            int triggeringEvent = TRIGGERING_EVENT_UNKNOWN;
-            if (handleEvent == EVENT_LOCATION_SETTINGS_ENABLED) {
-                triggeringEvent = TRIGGERING_EVENT_LOCATION_SETTINGS_ENABLED;
-            } else if (handleEvent == EVENT_COUNTRY_CODE_CHANGED) {
-                triggeringEvent = TRIGGERING_EVENT_MCC_CHANGED;
-            } else if (handleEvent == EVENT_LOCATION_SETTINGS_DISABLED) {
-                triggeringEvent = TRIGGERING_EVENT_LOCATION_SETTINGS_DISABLED;
-            } else if (handleEvent == EVENT_CONFIG_DATA_UPDATED) {
-                triggeringEvent = TRIGGERING_EVENT_CONFIG_DATA_UPDATED;
-            }
-            mAccessControllerMetricsStats.setTriggeringEvent(triggeringEvent);
+        logd("handleSatelliteAllowedRegionPossiblyChanged");
+        setIsSatelliteAllowedRegionPossiblyChanged(true);
+        requestIsCommunicationAllowedForCurrentLocation(
+                mHandlerForSatelliteAllowedResult, false);
+        int triggeringEvent = TRIGGERING_EVENT_UNKNOWN;
+        if (handleEvent == EVENT_LOCATION_SETTINGS_ENABLED) {
+            triggeringEvent = TRIGGERING_EVENT_LOCATION_SETTINGS_ENABLED;
+        } else if (handleEvent == EVENT_COUNTRY_CODE_CHANGED) {
+            triggeringEvent = TRIGGERING_EVENT_MCC_CHANGED;
+        } else if (handleEvent == EVENT_LOCATION_SETTINGS_DISABLED) {
+            triggeringEvent = TRIGGERING_EVENT_LOCATION_SETTINGS_DISABLED;
+        } else if (handleEvent == EVENT_CONFIG_DATA_UPDATED) {
+            triggeringEvent = TRIGGERING_EVENT_CONFIG_DATA_UPDATED;
         }
+        mAccessControllerMetricsStats.setTriggeringEvent(triggeringEvent);
     }
 
     protected boolean allowLocationQueryForSatelliteAllowedCheck() {
-        synchronized (mPossibleChangeInSatelliteAllowedRegionLock) {
-            if (!isCommunicationAllowedCacheValid()) {
-                logd("allowLocationQueryForSatelliteAllowedCheck: cache is not valid");
-                return true;
-            }
+        if (!isCommunicationAllowedCacheValid()) {
+            logd("allowLocationQueryForSatelliteAllowedCheck: cache is not valid");
+            return true;
+        }
 
-            if (isSatelliteAllowedRegionPossiblyChanged() && !isLocationQueryThrottled()) {
-                logd("allowLocationQueryForSatelliteAllowedCheck: location query is not throttled");
-                return true;
-            }
+        if (isSatelliteAllowedRegionPossiblyChanged() && !isLocationQueryThrottled()) {
+            logd("allowLocationQueryForSatelliteAllowedCheck: location query is not throttled");
+            return true;
         }
         logd("allowLocationQueryForSatelliteAllowedCheck: false");
         return false;
@@ -2364,13 +2348,11 @@ public class SatelliteAccessController extends Handler {
                 return;
             }
 
-            synchronized (mPossibleChangeInSatelliteAllowedRegionLock) {
-                if (isSatelliteAllowedRegionPossiblyChanged()) {
-                    mLastLocationQueryForPossibleChangeInAllowedRegionTimeNanos.set(
-                            getElapsedRealtimeNanos());
-                    plogd("mLastLocationQueryForPossibleChangeInAllowedRegionTimeNanos is set "
-                            + mLastLocationQueryForPossibleChangeInAllowedRegionTimeNanos.get());
-                }
+            if (isSatelliteAllowedRegionPossiblyChanged()) {
+                mLastLocationQueryForPossibleChangeInAllowedRegionTimeNanos.set(
+                        getElapsedRealtimeNanos());
+                plogd("mLastLocationQueryForPossibleChangeInAllowedRegionTimeNanos is set "
+                        + mLastLocationQueryForPossibleChangeInAllowedRegionTimeNanos.get());
             }
 
             try {
@@ -3098,11 +3080,10 @@ public class SatelliteAccessController extends Handler {
 
         this.post(() -> {
             try {
-                synchronized (mSatelliteCommunicationAllowStateLock) {
-                    callback.onAccessAllowedStateChanged(mCurrentSatelliteAllowedState);
-                    logd("registerForCommunicationAccessStateChanged: "
-                            + "mCurrentSatelliteAllowedState " + mCurrentSatelliteAllowedState);
-                }
+                callback.onAccessAllowedStateChanged(mCurrentSatelliteAllowedState.get());
+                logd("registerForCommunicationAccessStateChanged: "
+                        + "mCurrentSatelliteAllowedState " + mCurrentSatelliteAllowedState.get());
+
                 synchronized (mLock) {
                     SatelliteAccessConfiguration satelliteAccessConfig =
                             Optional.ofNullable(mSatelliteAccessConfigMap)
@@ -3217,17 +3198,16 @@ public class SatelliteAccessController extends Handler {
         }
 
         logd("setIsSatelliteCommunicationAllowedForCurrentLocationCache: state=" + state);
-        synchronized (mSatelliteCommunicationAllowStateLock) {
-            if ("enable".equalsIgnoreCase(state)) {
-                mIsAllowedStateCacheDisabledForCtsTest.set(false);
-            } else if ("disable".equalsIgnoreCase(state)) {
-                mIsAllowedStateCacheDisabledForCtsTest.set(true);
-            } else {
-                loge("setIsSatelliteCommunicationAllowedForCurrentLocationCache: invalid state="
-                        + state);
-                return false;
-            }
+        if ("enable".equalsIgnoreCase(state)) {
+            mIsAllowedStateCacheDisabledForCtsTest.set(false);
+        } else if ("disable".equalsIgnoreCase(state)) {
+            mIsAllowedStateCacheDisabledForCtsTest.set(true);
+        } else {
+            loge("setIsSatelliteCommunicationAllowedForCurrentLocationCache: invalid state="
+                    + state);
+            return false;
         }
+
         return true;
     }
 
@@ -3313,16 +3293,12 @@ public class SatelliteAccessController extends Handler {
     }
 
     protected boolean isSatelliteAllowedRegionPossiblyChanged() {
-        synchronized (mPossibleChangeInSatelliteAllowedRegionLock) {
-            return mIsSatelliteAllowedRegionPossiblyChanged;
-        }
+        return mIsSatelliteAllowedRegionPossiblyChanged.get();
     }
 
     protected void setIsSatelliteAllowedRegionPossiblyChanged(boolean changed) {
-        synchronized (mPossibleChangeInSatelliteAllowedRegionLock) {
-            plogd("setIsSatelliteAllowedRegionPossiblyChanged : " + changed);
-            mIsSatelliteAllowedRegionPossiblyChanged = changed;
-        }
+        plogd("setIsSatelliteAllowedRegionPossiblyChanged : " + changed);
+        mIsSatelliteAllowedRegionPossiblyChanged.set(changed);
     }
 
     private static void logd(@NonNull String log) {
