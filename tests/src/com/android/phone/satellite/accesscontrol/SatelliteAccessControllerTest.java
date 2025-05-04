@@ -2970,9 +2970,7 @@ public class SatelliteAccessControllerTest extends TelephonyTestBase {
         }
 
         public int getSatelliteAccessConfigVersion() {
-            synchronized (mLock) {
-                return mSatelliteAccessConfigVersion;
-            }
+            return mSatelliteAccessConfigVersion.get();
         }
     }
 }
