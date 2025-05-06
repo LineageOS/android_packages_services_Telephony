@@ -846,29 +846,22 @@
     <string name="removable_esim_string" msgid="7931369811671787649">"ਹਟਾਉਣਯੋਗ ਈ-ਸਿਮ ਨੂੰ ਪੂਰਵ-ਨਿਰਧਾਰਿਤ ਵਜੋਂ ਸੈੱਟ ਕਰੋ"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"ਮੋਬਾਈਲ ਰੇਡੀਓ ਪਾਵਰ"</string>
     <string name="simulate_out_of_service_string" msgid="7787925611727597193">"\'ਸੇਵਾ ਵਿੱਚ ਨਹੀਂ\' ਨੂੰ ਸਿਮੂਲੇਟ ਕਰੋ (ਸਿਰਫ਼ ਡੀਬੱਗ ਬਿਲਡ)"</string>
-    <!-- no translation found for simulate_out_of_service_label (3563376136603403714) -->
-    <skip />
+    <string name="simulate_out_of_service_label" msgid="3563376136603403714">"\'ਸੇਵਾ ਵਿੱਚ ਨਹੀਂ\' ਨੂੰ ਸਿਮੂਲੇਟ ਕਰੋ"</string>
     <string name="enforce_satellite_channel_string" msgid="295306734591329892">"ਫੋਰਸ ਕੈਂਪ ਸੈਟੇਲਾਈਟ LTE ਚੈਨਲ (ਸਿਰਫ਼ ਡੀਬੱਗ ਬਿਲਡ)"</string>
-    <!-- no translation found for enforce_satellite_channel_label (8212349350110213468) -->
-    <skip />
+    <string name="enforce_satellite_channel_label" msgid="8212349350110213468">"ਫੋਰਸ ਕੈਂਪ ਸੈਟੇਲਾਈਟ LTE ਚੈਨਲ"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"ਮੌਕ ਕੈਰੀਅਰ ਉਪਗ੍ਰਹਿ ਮੋਡ (ਸਿਰਫ਼ ਡੀਬੱਗ ਬਿਲਡ)"</string>
-    <!-- no translation found for mock_carrier_roaming_satellite_label (2052656038544917979) -->
-    <skip />
-    <!-- no translation found for choose_satellite_data_mode_label (7403013160079828226) -->
-    <skip />
+    <string name="mock_carrier_roaming_satellite_label" msgid="2052656038544917979">"ਕਲਪਿਤ"</string>
+    <string name="choose_satellite_data_mode_label" msgid="7403013160079828226">"ਕਲਪਿਤ ਸੈਟੇਲਾਈਟ ਡਾਟਾ ਮੋਡ"</string>
     <string name="choose_satellite_data_mode" msgid="7526640708482601423">"ਕਲਪਿਤ ਸੈਟੇਲਾਈਟ ਡਾਟਾ ਮੋਡ (ਸਿਰਫ਼ ਡੀਬੱਗ)"</string>
     <string name="satellite_data_restricted_string" msgid="8729402021843670205">"ਪ੍ਰਤਿਬੰਧਿਤ"</string>
     <string name="satellite_data_constrained_string" msgid="4594481912792241881">"ਸੀਮਤ"</string>
     <string name="satellite_data_unConstrained_string" msgid="3957333012703408141">"ਅਸੀਮਤ"</string>
     <string name="esos_satellite_string" msgid="7274794226125968657">"ਰੀਅਲ ਸੈਟੇਲਾਈਟ eSOS ਮੋਡ ਅਜ਼ਮਾਓ (ਸਿਰਫ਼ ਡੀਬੱਗ ਬਿਲਡ)"</string>
-    <!-- no translation found for esos_satellite_label (4640776617354089322) -->
-    <skip />
+    <string name="esos_satellite_label" msgid="4640776617354089322">"ਰੀਅਲ ਸੈਟੇਲਾਈਟ eSOS ਮੋਡ ਅਜ਼ਮਾਓ"</string>
     <string name="satellite_enable_non_emergency_mode_string" msgid="9005332650950637932">"ਰੀਅਲ ਸੈਟੇਲਾਈਟ ਗੈਰ-eSOS ਮੋਡ ਅਜ਼ਮਾਓ (ਸਿਰਫ਼ ਡੀਬੱਗ ਬਿਲਡ)"</string>
-    <!-- no translation found for satellite_enable_non_emergency_mode_label (2958365217334494066) -->
-    <skip />
+    <string name="satellite_enable_non_emergency_mode_label" msgid="2958365217334494066">"ਰੀਅਲ ਸੈਟੇਲਾਈਟ ਗੈਰ-eSOS ਮੋਡ ਅਜ਼ਮਾਓ"</string>
     <string name="demo_esos_satellite_string" msgid="2941811482168709730">"ਡੈਮੋ ਸੈਟੇਲਾਈਟ eSOS ਮੋਡ ਅਜ਼ਮਾਓ (ਸਿਰਫ਼ ਡੀਬੱਗ ਬਿਲਡ)"</string>
-    <!-- no translation found for demo_esos_satellite_label (1538811851871457718) -->
-    <skip />
+    <string name="demo_esos_satellite_label" msgid="1538811851871457718">"ਡੈਮੋ ਸੈਟੇਲਾਈਟ eSOS ਮੋਡ ਅਜ਼ਮਾਓ"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"ਸਿਮ ਦੀ ਪਤਾ ਬੁੱਕ ਦੇਖੋ"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"ਫਿਕਸਡ ਡਾਇਲਿੰਗ ਨੰਬਰ ਦੇਖੋ"</string>
     <string name="radioInfo_menu_viewSDN" msgid="2613431584522392842">"ਸੇਵਾ ਡਾਇਲਿੰਗ ਨੰਬਰ ਦੇਖੋ"</string>
@@ -954,8 +947,7 @@
     <string name="tab_title_ims" msgid="8386374556214247042">"IMS"</string>
     <string name="phone0_title" msgid="8961115386055876486">"ਫ਼ੋਨ 0"</string>
     <string name="phone1_title" msgid="8685542469651636602">"ਫ਼ੋਨ 1"</string>
-    <!-- no translation found for phone_info_label_v2 (5651422721242779990) -->
-    <skip />
+    <string name="phone_info_label_v2" msgid="5651422721242779990">"ਫ਼ੋਨ ਜਾਣਕਾਰੀ V2"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"ਕੈਰੀਅਰ ਪ੍ਰੋਵਿਜ਼ਨਿੰਗ ਜਾਣਕਾਰੀ"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"ਕੈਰੀਅਰ ਪ੍ਰਵਿਜ਼ਨਿੰਗ ਨੂੰ ਟ੍ਰਿਗਰ ਕਰੋ"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"ਤੁਹਾਡਾ ਬਲੂਟੁੱਥ ਸਿਗਨਲ ਕਮਜ਼ੋਰ ਹੈ। ਸਪੀਕਰਫ਼ੋਨ \'ਤੇ ਲਿਜਾ ਕੇ ਦੇਖੋ।"</string>
@@ -974,16 +966,10 @@
     <string name="satellite_config_country_code_label" msgid="1389520866423113166">"ਦੇਸ਼ਾਂ ਦੇ ਕੋਡ:"</string>
     <string name="satellite_config_size_of_sats2_dat_label" msgid="671746449054349967">"sats2.dat ਦਾ ਆਕਾਰ:"</string>
     <string name="satellite_config_json_label" msgid="4577292884014824105">"ਸੈਟੇਲਾਈਟ ਪਹੁੰਚ ਸੰਰੂਪਣ json:"</string>
-    <!-- no translation found for nb_iot_config_viewer (1427724000750959794) -->
-    <skip />
-    <!-- no translation found for ims_registration_value (3195763957048314776) -->
-    <skip />
-    <!-- no translation found for voice_over_lte_value (1317318233598235658) -->
-    <skip />
-    <!-- no translation found for voice_over_wifi_value (4958925307364093356) -->
-    <skip />
-    <!-- no translation found for video_calling_value (156519861684819255) -->
-    <skip />
-    <!-- no translation found for ut_interface_value (9038789989481463774) -->
-    <skip />
+    <string name="nb_iot_config_viewer" msgid="1427724000750959794">"NB-IOT ਸੰਰੂਪਣ ਦਰਸ਼ਕ"</string>
+    <string name="ims_registration_value" msgid="3195763957048314776">"IMS ਰਜਿਸਟਰੇਸ਼ਨ:"</string>
+    <string name="voice_over_lte_value" msgid="1317318233598235658">"LTE \'ਤੇ ਅਵਾਜ਼:"</string>
+    <string name="voice_over_wifi_value" msgid="4958925307364093356">"ਵਾਈ-ਫਾਈ \'ਤੇ ਅਵਾਜ਼:"</string>
+    <string name="video_calling_value" msgid="156519861684819255">"ਵੀਡੀਓ ਕਾਲਿੰਗ:"</string>
+    <string name="ut_interface_value" msgid="9038789989481463774">"UT ਇੰਟਰਫ਼ੇਸ:"</string>
 </resources>
