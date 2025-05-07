@@ -134,6 +134,15 @@
           android:layout_height="wrap_content"
           android:enabled="false"
           android:text="@string/removable_esim_string" />
+
+      <!-- Switch between SSSS(single sim single standby) and DSDS(dual sim dual standby). -->
+      <Switch android:id="@+id/dsds_switch"
+          android:textSize="14sp"
+          android:layout_marginTop="8dip"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/dsds_switch_string" />
+
     </LinearLayout>
   </ScrollView>
 </LinearLayout>

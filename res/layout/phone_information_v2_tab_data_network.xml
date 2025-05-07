@@ -202,6 +202,24 @@
                     android:layout_height="wrap_content"/>
             </LinearLayout>
 
+            <!-- NR Available -->
+            <LinearLayout style="@style/RadioInfo_entry_layout" android:orientation="horizontal">
+                <TextView android:id="@+id/nr_available_label" android:text="@string/radio_info_nr_available" style="@style/info_label" />
+                <TextView android:id="@+id/nr_available" style="@style/info_value" />
+            </LinearLayout>
+
+            <!-- NR State -->
+            <LinearLayout style="@style/RadioInfo_entry_layout" android:orientation="horizontal">
+                <TextView android:id="@+id/nr_state_label" android:text="@string/radio_info_nr_state" style="@style/info_label" />
+                <TextView android:id="@+id/nr_state" style="@style/info_value" />
+            </LinearLayout>
+
+            <!-- NR Frequency -->
+            <LinearLayout style="@style/RadioInfo_entry_layout" android:orientation="horizontal">
+                <TextView android:id="@+id/nr_frequency_label" android:text="@string/radio_info_nr_frequency" style="@style/info_label" />
+                <TextView android:id="@+id/nr_frequency" style="@style/info_value" />
+            </LinearLayout>
+
             <!-- Radio Power -->
             <Switch android:id="@+id/radio_power"
                 android:textSize="14sp"
@@ -249,6 +267,32 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/eab_provisioned_switch_string"/>
+
+            <!-- CellInfoListRate Selection -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/radio_info_cell_info_refresh_rate"
+                style="@style/info_label"
+                />
+
+            <Spinner android:id="@+id/cell_info_rate_select"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+            <!-- CellInfo -->
+            <LinearLayout style="@style/RadioInfo_entry_layout">
+                <TextView android:text="@string/radio_info_cellinfo_label"
+                    style="@style/info_label" />
+            </LinearLayout>
+            <LinearLayout style="@style/RadioInfo_entry_layout">
+                <TextView android:id="@+id/cellinfo"
+                    style="@style/info_value"
+                    android:minHeight="300dip"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

@@ -960,6 +960,7 @@ public class RadioInfo extends AppCompatActivity {
         mMockSatelliteData.setOnCheckedChangeListener(mMockSatelliteDataListener);
 
         updateSatelliteChannelDisplay(mPhoneId);
+        mEnforceSatelliteChannel.setChecked(mOriginalSystemChannels[mPhoneId] != null);
         mEnforceSatelliteChannel.setOnCheckedChangeListener(mForceSatelliteChannelOnChangeListener);
         mImsVolteProvisionedSwitch.setOnCheckedChangeListener(mImsVolteCheckedChangeListener);
         mImsVtProvisionedSwitch.setOnCheckedChangeListener(mImsVtCheckedChangeListener);

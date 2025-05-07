@@ -5839,8 +5839,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
             }
         }
 
-        enforceTelephonyFeatureWithException(callingPackage,
-                PackageManager.FEATURE_TELEPHONY_RADIO_ACCESS, "getDataNetworkTypeForSubscriber");
+        if (!mApp.getResources().getBoolean(
+                com.android.internal.R.bool.config_force_phone_globals_creation)) {
+            enforceTelephonyFeatureWithException(callingPackage,
+                    PackageManager.FEATURE_TELEPHONY_RADIO_ACCESS,
+                    "getDataNetworkTypeForSubscriber");
+        }
 
         final long identity = Binder.clearCallingIdentity();
         try {

@@ -16,13 +16,16 @@
 package com.android.phone.settings.hiddenmenu;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ComponentInfo;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.SystemProperties;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,6 +37,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
@@ -46,19 +50,22 @@ import java.util.Locale;
 
 public class PhoneInformationV2FragmentDeviceDetails extends Fragment {
     private static final String TAG = "PhoneInformationV2 DeviceDetails";
-    private PhoneInformationV2PhoneId listener;
+    private PhoneInformationV2PhoneId mListener;
     private static final boolean IS_USER_BUILD = "user".equals(Build.TYPE);
-    private Context context;
-    private LinearLayout phoneButton0, phoneButton1;
-    private TextView phoneTitle0;
-    private TextView phoneTitle1;
+    private Context mContext;
+    private LinearLayout mPhoneButton0, mPhoneButton1;
+    private TextView mPhoneTitle0;
+    private TextView mPhoneTitle1;
     private TextView mDeviceId; // DeviceId is the IMEI in GSM and the MEID in CDMA
     private TextView mLine1Number;
     private TextView mSubscriptionId;
     private TextView mDds;
     private TextView mSubscriberId;
+    private Switch mDsdsSwitch;
     private static final String ACTION_REMOVABLE_ESIM_AS_DEFAULT =
             "android.telephony.euicc.action.REMOVABLE_ESIM_AS_DEFAULT";
+    private static final String DSDS_MODE_PROPERTY = "ro.boot.hardware.dsds";
+    private static final int ALWAYS_ON_DSDS_MODE = 1;
     private Switch mRemovableEsimSwitch;
     private TelephonyManager mTelephonyManager;
     private Phone mPhone = null;
@@ -75,7 +82,7 @@ public class PhoneInformationV2FragmentDeviceDetails extends Fragment {
         super.onAttach(context);
         // Ensure the host activity implements the callback interface
         if (context instanceof PhoneInformationV2PhoneId) {
-            listener = (PhoneInformationV2PhoneId) context;
+            mListener = (PhoneInformationV2PhoneId) context;
         } else {
             throw new RuntimeException(context.toString() + " must implement SharedValueListener");
         }
@@ -122,7 +129,7 @@ public class PhoneInformationV2FragmentDeviceDetails extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         log("onViewCreated");
-        context = requireContext();
+        mContext = requireContext();
 
         mSystemUser = android.os.Process.myUserHandle().isSystem();
         log("onCreate: mSystemUser=" + mSystemUser);
@@ -139,23 +146,23 @@ public class PhoneInformationV2FragmentDeviceDetails extends Fragment {
         if (!SubscriptionManager.isValidPhoneId(mPhoneId)) {
             mPhoneId = DEFAULT_PHONE_ID;
         }
-        if (listener != null) {
-            mPhoneId = listener.getPhoneId();
+        if (mListener != null) {
+            mPhoneId = mListener.getPhoneId();
             mSubId = SubscriptionManager.getSubscriptionId(mPhoneId);
         }
         mTelephonyManager =
-                context.getSystemService(TelephonyManager.class).createForSubscriptionId(mSubId);
+                mContext.getSystemService(TelephonyManager.class).createForSubscriptionId(mSubId);
 
         sPhoneIndexLabels = getPhoneIndexLabels(mTelephonyManager);
 
-        phoneButton0 = view.findViewById(R.id.phone_button_0);
-        phoneTitle0 = view.findViewById(R.id.phone_button_0_title);
+        mPhoneButton0 = view.findViewById(R.id.phone_button_0);
+        mPhoneTitle0 = view.findViewById(R.id.phone_button_0_title);
 
-        phoneButton1 = view.findViewById(R.id.phone_button_1);
-        phoneTitle1 = view.findViewById(R.id.phone_button_1_title);
+        mPhoneButton1 = view.findViewById(R.id.phone_button_1);
+        mPhoneTitle1 = view.findViewById(R.id.phone_button_1_title);
 
-        phoneTitle0.setText(sPhoneIndexLabels[0]);
-        phoneTitle1.setText(sPhoneIndexLabels[1]);
+        mPhoneTitle0.setText(sPhoneIndexLabels[0]);
+        mPhoneTitle1.setText(sPhoneIndexLabels[1]);
 
         mDeviceId = (TextView) view.findViewById(R.id.imei);
         mLine1Number = (TextView) view.findViewById(R.id.number);
@@ -167,6 +174,22 @@ public class PhoneInformationV2FragmentDeviceDetails extends Fragment {
             mRemovableEsimSwitch.setEnabled(true);
             mRemovableEsimSwitch.setChecked(mTelephonyManager.isRemovableEsimDefaultEuicc());
             mRemovableEsimSwitch.setOnCheckedChangeListener(mRemovableEsimChangeListener);
+        }
+        mDsdsSwitch = (Switch) view.findViewById(R.id.dsds_switch);
+        if (isDsdsSupported() && !dsdsModeOnly()) {
+            mDsdsSwitch.setVisibility(View.VISIBLE);
+            mDsdsSwitch.setOnClickListener(v -> {
+                if (mTelephonyManager.doesSwitchMultiSimConfigTriggerReboot()) {
+                    // Undo the click action until user clicks the confirm dialog.
+                    mDsdsSwitch.toggle();
+                    showDsdsChangeDialog();
+                } else {
+                    performDsdsSwitch();
+                }
+            });
+            mDsdsSwitch.setChecked(isDsdsEnabled());
+        } else {
+            mDsdsSwitch.setVisibility(View.GONE);
         }
 
         View.OnClickListener selectionListener =
@@ -186,7 +209,7 @@ public class PhoneInformationV2FragmentDeviceDetails extends Fragment {
                             // Check if selection actually changed to avoid redundant work
                             if (mPhoneId != targetPhoneId) {
                                 mPhoneId = targetPhoneId;
-                                listener.setPhoneId(mPhoneId);
+                                mListener.setPhoneId(mPhoneId);
                                 try {
                                     mSubId = SubscriptionManager.getSubscriptionId(mPhoneId);
                                     log(
@@ -207,8 +230,8 @@ public class PhoneInformationV2FragmentDeviceDetails extends Fragment {
                         }
                     }
                 };
-        phoneButton0.setOnClickListener(selectionListener);
-        phoneButton1.setOnClickListener(selectionListener);
+        mPhoneButton0.setOnClickListener(selectionListener);
+        mPhoneButton1.setOnClickListener(selectionListener);
     }
 
     private static String[] getPhoneIndexLabels(TelephonyManager tm) {
@@ -236,16 +259,16 @@ public class PhoneInformationV2FragmentDeviceDetails extends Fragment {
     private void updateSelectionVisuals() {
         LinearLayout selectedButton, unSelectedButton;
         if (mPhoneId == 0) {
-            selectedButton = phoneButton0;
-            unSelectedButton = phoneButton1;
+            selectedButton = mPhoneButton0;
+            unSelectedButton = mPhoneButton1;
         } else {
-            selectedButton = phoneButton1;
-            unSelectedButton = phoneButton0;
+            selectedButton = mPhoneButton1;
+            unSelectedButton = mPhoneButton0;
         }
         selectedButton.setBackgroundColor(
-                ContextCompat.getColor(context, android.R.color.holo_green_dark));
+                ContextCompat.getColor(mContext, android.R.color.holo_green_dark));
         unSelectedButton.setBackgroundColor(
-                ContextCompat.getColor(context, android.R.color.darker_gray));
+                ContextCompat.getColor(mContext, android.R.color.darker_gray));
     }
 
     private Phone getPhone(int subId) {
@@ -259,6 +282,48 @@ public class PhoneInformationV2FragmentDeviceDetails extends Fragment {
         return phone;
     }
 
+    private void showDsdsChangeDialog() {
+        final AlertDialog confirmDialog = new AlertDialog.Builder(mContext)
+                .setTitle(R.string.dsds_dialog_title)
+                .setMessage(R.string.dsds_dialog_message)
+                .setPositiveButton(R.string.dsds_dialog_confirm, mOnDsdsDialogConfirmedListener)
+                .setNegativeButton(R.string.dsds_dialog_cancel, mOnDsdsDialogConfirmedListener)
+                .create();
+        confirmDialog.show();
+    }
+
+    private static boolean isDsdsSupported() {
+        return (TelephonyManager.getDefault().isMultiSimSupported()
+                == TelephonyManager.MULTISIM_ALLOWED);
+    }
+
+    private static boolean isDsdsEnabled() {
+        return TelephonyManager.getDefault().getPhoneCount() > 1;
+    }
+
+    private void performDsdsSwitch() {
+        mTelephonyManager.switchMultiSimConfig(mDsdsSwitch.isChecked() ? 2 : 1);
+    }
+
+    /**
+     * @return {@code True} if the device is only supported dsds mode.
+     */
+    private boolean dsdsModeOnly() {
+        String dsdsMode = SystemProperties.get(DSDS_MODE_PROPERTY);
+        return !TextUtils.isEmpty(dsdsMode) && Integer.parseInt(dsdsMode) == ALWAYS_ON_DSDS_MODE;
+    }
+
+    DialogInterface.OnClickListener mOnDsdsDialogConfirmedListener =
+            new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    if (which == DialogInterface.BUTTON_POSITIVE) {
+                        mDsdsSwitch.toggle();
+                        performDsdsSwitch();
+                    }
+                }
+            };
+
     OnCheckedChangeListener mRemovableEsimChangeListener =
             (buttonView, isChecked) -> setRemovableEsimAsDefaultEuicc(isChecked);
 
@@ -267,7 +332,8 @@ public class PhoneInformationV2FragmentDeviceDetails extends Fragment {
         mTelephonyManager.setRemovableEsimAsDefaultEuicc(isChecked);
         // TODO(b/232528117): Instead of sending intent, add new APIs in platform,
         //  LPA can directly use the API.
-        ComponentInfo componentInfo = EuiccConnector.findBestComponent(context.getPackageManager());
+        ComponentInfo componentInfo =
+                EuiccConnector.findBestComponent(mContext.getPackageManager());
         if (componentInfo == null) {
             Log.d(TAG, "setRemovableEsimAsDefaultEuicc: unable to find suitable component info");
             return;
@@ -275,7 +341,7 @@ public class PhoneInformationV2FragmentDeviceDetails extends Fragment {
         final Intent intent = new Intent(ACTION_REMOVABLE_ESIM_AS_DEFAULT);
         intent.setPackage(componentInfo.packageName);
         intent.putExtra("isDefault", isChecked);
-        context.sendBroadcast(intent);
+        mContext.sendBroadcast(intent);
     }
 
     private void updateProperties() {
@@ -291,7 +357,7 @@ public class PhoneInformationV2FragmentDeviceDetails extends Fragment {
 
         mSubscriberId.setText(subscriberId);
 
-        SubscriptionManager subMgr = context.getSystemService(SubscriptionManager.class);
+        SubscriptionManager subMgr = mContext.getSystemService(SubscriptionManager.class);
         int subId = mSubId;
         String number =
                 subMgr.getPhoneNumber(subId)

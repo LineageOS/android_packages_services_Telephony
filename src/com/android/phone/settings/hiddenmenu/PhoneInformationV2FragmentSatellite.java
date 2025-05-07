@@ -338,6 +338,7 @@ public class PhoneInformationV2FragmentSatellite extends Fragment {
 
         updateSatelliteChannelDisplay(mPhoneId);
         updateSelectionVisuals();
+        mEnforceSatelliteChannel.setChecked(mOriginalSystemChannels[mPhoneId] != null);
         mEnforceSatelliteChannel.setOnCheckedChangeListener(mForceSatelliteChannelOnChangeListener);
     }
 

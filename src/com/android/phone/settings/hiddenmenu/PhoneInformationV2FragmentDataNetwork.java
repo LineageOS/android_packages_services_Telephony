@@ -25,6 +25,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -33,7 +34,24 @@ import android.os.Looper;
 import android.os.PersistableBundle;
 import android.telephony.AccessNetworkConstants;
 import android.telephony.CarrierConfigManager;
+import android.telephony.CellIdentityCdma;
+import android.telephony.CellIdentityGsm;
+import android.telephony.CellIdentityLte;
+import android.telephony.CellIdentityNr;
+import android.telephony.CellIdentityWcdma;
+import android.telephony.CellInfo;
+import android.telephony.CellInfoCdma;
+import android.telephony.CellInfoGsm;
+import android.telephony.CellInfoLte;
+import android.telephony.CellInfoNr;
+import android.telephony.CellInfoWcdma;
 import android.telephony.CellSignalStrength;
+import android.telephony.CellSignalStrengthCdma;
+import android.telephony.CellSignalStrengthGsm;
+import android.telephony.CellSignalStrengthLte;
+import android.telephony.CellSignalStrengthNr;
+import android.telephony.CellSignalStrengthWcdma;
+import android.telephony.DataSpecificRegistrationInfo;
 import android.telephony.NetworkRegistrationInfo;
 import android.telephony.RadioAccessFamily;
 import android.telephony.ServiceState;
@@ -46,6 +64,7 @@ import android.telephony.ims.ImsManager;
 import android.telephony.ims.ImsMmTelManager;
 import android.telephony.ims.ImsRcsManager;
 import android.telephony.ims.ProvisioningManager;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -70,6 +89,7 @@ import com.android.internal.telephony.PhoneFactory;
 import com.android.phone.R;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -95,10 +115,15 @@ public class PhoneInformationV2FragmentDataNetwork extends Fragment {
     private ThreadPoolExecutor mQueuedWork;
     private TextView mDownlinkKbps;
     private TextView mUplinkKbps;
+    private TextView mNrAvailable;
+    private TextView mNrState;
+    private TextView mNrFrequency;
+    private TextView mCellInfo;
     private Spinner mPreferredNetworkType;
     private int mPreferredNetworkTypeResult;
     private Spinner mMockSignalStrength;
     private Spinner mMockDataNetworkType;
+    private Spinner mCellInfoRefreshRateSpinner;
     private Switch mRadioPowerOnSwitch;
     private Switch mSimulateOutOfServiceSwitch;
     private Switch mImsVolteProvisionedSwitch;
@@ -118,10 +143,34 @@ public class PhoneInformationV2FragmentDataNetwork extends Fragment {
     private CarrierConfigManager mCarrierConfigManager;
     private Context mContext;
     private Handler mHandler;
+    private View mView;
+    private int mCellInfoRefreshRateIndex;
     private static String[] sPhoneIndexLabels = new String[0];
     private final boolean[] mSimulateOos = new boolean[2];
     private int[] mSelectedSignalStrengthIndex = new int[2];
     private int[] mSelectedMockDataNetworkTypeIndex = new int[2];
+    private List<CellInfo> mCellInfoResult = null;
+    private static final int EVENT_UPDATE_NR_STATS = 1008;
+
+    private static final int CELL_INFO_LIST_RATE_DISABLED = Integer.MAX_VALUE;
+    private static final int CELL_INFO_LIST_RATE_MAX = 0;
+    //Values in must match CELL_INFO_REFRESH_RATES
+    private static final String[] CELL_INFO_REFRESH_RATE_LABELS = {
+            "Disabled",
+            "Immediate",
+            "Min 5s",
+            "Min 10s",
+            "Min 60s"
+    };
+
+    //Values in seconds, must match CELL_INFO_REFRESH_RATE_LABELS
+    private static final int [] CELL_INFO_REFRESH_RATES = {
+            CELL_INFO_LIST_RATE_DISABLED,
+            CELL_INFO_LIST_RATE_MAX,
+            5000,
+            10000,
+            60000
+    };
     private static final String[] PREFERRED_NETWORK_LABELS = {
         "GSM/WCDMA preferred",
         "GSM only",
@@ -224,6 +273,7 @@ public class PhoneInformationV2FragmentDataNetwork extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        mView = view;
         mContext = requireContext();
         mHandler = new Handler(Looper.getMainLooper());
         mSystemUser = android.os.Process.myUserHandle().isSystem();
@@ -275,11 +325,16 @@ public class PhoneInformationV2FragmentDataNetwork extends Fragment {
         mVoiceNetwork = (TextView) view.findViewById(R.id.voice_network);
         mVoiceRawReg = (TextView) view.findViewById(R.id.voice_raw_registration_state);
         mDBm = (TextView) view.findViewById(R.id.dbm);
+        mNrAvailable = (TextView) view.findViewById(R.id.nr_available);
+        mNrState = (TextView) view.findViewById(R.id.nr_state);
+        mNrFrequency = (TextView) view.findViewById(R.id.nr_frequency);
 
         mDownlinkKbps = (TextView) view.findViewById(R.id.dl_kbps);
         mUplinkKbps = (TextView) view.findViewById(R.id.ul_kbps);
         updateBandwidths(0, 0);
 
+        mCellInfo = (TextView) view.findViewById(R.id.cellinfo);
+        mCellInfo.setTypeface(Typeface.MONOSPACE);
         mPreferredNetworkType = (Spinner) view.findViewById(R.id.preferredNetworkType);
         ArrayAdapter<String> mPreferredNetworkTypeAdapter =
                 new ArrayAdapter<String>(
@@ -306,6 +361,7 @@ public class PhoneInformationV2FragmentDataNetwork extends Fragment {
         mMockDataNetworkType = (Spinner) view.findViewById(R.id.dataNetworkType);
         if (!Build.isDebuggable() || !mSystemUser) {
             mMockDataNetworkType.setVisibility(View.GONE);
+
             view.findViewById(R.id.dataNetworkType).setVisibility(View.GONE);
             view.findViewById(R.id.data_network_type_label).setVisibility(View.GONE);
         } else {
@@ -338,6 +394,20 @@ public class PhoneInformationV2FragmentDataNetwork extends Fragment {
             mImsWfcProvisionedSwitch.setVisibility(View.GONE);
             mEabProvisionedSwitch.setVisibility(View.GONE);
         }
+
+        // hide 5G stats on devices that don't support 5G
+        if ((mTelephonyManager.getSupportedRadioAccessFamily()
+                & TelephonyManager.NETWORK_TYPE_BITMASK_NR) == 0) {
+            setNrStatsVisibility(View.GONE);
+        }
+
+        mCellInfoRefreshRateSpinner = (Spinner) view.findViewById(R.id.cell_info_rate_select);
+        ArrayAdapter<String> cellInfoAdapter = new ArrayAdapter<String>(requireContext(),
+                android.R.layout.simple_spinner_item, CELL_INFO_REFRESH_RATE_LABELS);
+        cellInfoAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mCellInfoRefreshRateSpinner.setAdapter(cellInfoAdapter);
+
+        mCellInfoRefreshRateIndex = 0; //disabled
 
         mPhoneButton0 = view.findViewById(R.id.phone_button_0);
         mPhoneTitle0 = view.findViewById(R.id.phone_button_0_title);
@@ -421,6 +491,7 @@ public class PhoneInformationV2FragmentDataNetwork extends Fragment {
         super.onSaveInstanceState(outState);
         outState.putInt("mPreferredNetworkTypeResult", mPreferredNetworkTypeResult);
         outState.putInt("mSelectedPhoneIndex", mPhoneId);
+        outState.putInt("mCellInfoRefreshRateIndex", mCellInfoRefreshRateIndex);
     }
 
     private void restoreFromBundle(Bundle b) {
@@ -433,6 +504,8 @@ public class PhoneInformationV2FragmentDataNetwork extends Fragment {
 
         mPhoneId = b.getInt("mSelectedPhoneIndex", 0);
         mSubId = SubscriptionManager.getSubscriptionId(mPhoneId);
+
+        mCellInfoRefreshRateIndex = b.getInt("mCellInfoRefreshRateIndex", 0);
     }
 
     private boolean isImsConfigProvisioningRequired(int capability, int tech) {
@@ -752,6 +825,15 @@ public class PhoneInformationV2FragmentDataNetwork extends Fragment {
         updateRadioPowerState();
         updateImsProvisionedState();
         updateNetworkType();
+        updateNrStats();
+
+        updateCellInfo(mCellInfoResult);
+        mCellInfoRefreshRateSpinner.setOnItemSelectedListener(mCellInfoRefreshRateHandler);
+        //set selection after registering listener to force update
+        mCellInfoRefreshRateSpinner.setSelection(mCellInfoRefreshRateIndex);
+        // Request cell information update from RIL.
+        mTelephonyManager.setCellInfoListRate(CELL_INFO_REFRESH_RATES[mCellInfoRefreshRateIndex],
+                mSubId);
 
         // set selection before registering to prevent update
         mPreferredNetworkType.setSelection(mPreferredNetworkTypeResult, true);
@@ -836,7 +918,207 @@ public class PhoneInformationV2FragmentDataNetwork extends Fragment {
 
         mPreferredNetworkType.setSelection(mPreferredNetworkTypeResult, true);
     }
+    private String getCellInfoDisplayString(int i) {
+        return (i != Integer.MAX_VALUE) ? Integer.toString(i) : "";
+    }
 
+    private String getCellInfoDisplayString(long i) {
+        return (i != Long.MAX_VALUE) ? Long.toString(i) : "";
+    }
+
+    private String getConnectionStatusString(CellInfo ci) {
+        String regStr = "";
+        String connStatStr = "";
+        String connector = "";
+
+        if (ci.isRegistered()) {
+            regStr = "R";
+        }
+        switch (ci.getCellConnectionStatus()) {
+            case CellInfo.CONNECTION_PRIMARY_SERVING: connStatStr = "P"; break;
+            case CellInfo.CONNECTION_SECONDARY_SERVING: connStatStr = "S"; break;
+            case CellInfo.CONNECTION_NONE: connStatStr = "N"; break;
+            case CellInfo.CONNECTION_UNKNOWN: /* Field is unsupported */ break;
+            default: break;
+        }
+        if (!TextUtils.isEmpty(regStr) && !TextUtils.isEmpty(connStatStr)) {
+            connector = "+";
+        }
+
+        return regStr + connector + connStatStr;
+    }
+
+    private String buildCdmaInfoString(CellInfoCdma ci) {
+        CellIdentityCdma cidCdma = ci.getCellIdentity();
+        CellSignalStrengthCdma ssCdma = ci.getCellSignalStrength();
+
+        return String.format("%-3.3s %-5.5s %-5.5s %-5.5s %-6.6s %-6.6s %-6.6s %-6.6s %-5.5s",
+                getConnectionStatusString(ci),
+                getCellInfoDisplayString(cidCdma.getSystemId()),
+                getCellInfoDisplayString(cidCdma.getNetworkId()),
+                getCellInfoDisplayString(cidCdma.getBasestationId()),
+                getCellInfoDisplayString(ssCdma.getCdmaDbm()),
+                getCellInfoDisplayString(ssCdma.getCdmaEcio()),
+                getCellInfoDisplayString(ssCdma.getEvdoDbm()),
+                getCellInfoDisplayString(ssCdma.getEvdoEcio()),
+                getCellInfoDisplayString(ssCdma.getEvdoSnr()));
+    }
+
+    private String buildGsmInfoString(CellInfoGsm ci) {
+        CellIdentityGsm cidGsm = ci.getCellIdentity();
+        CellSignalStrengthGsm ssGsm = ci.getCellSignalStrength();
+
+        return String.format("%-3.3s %-3.3s %-3.3s %-5.5s %-5.5s %-6.6s %-4.4s %-4.4s\n",
+                getConnectionStatusString(ci),
+                getCellInfoDisplayString(cidGsm.getMcc()),
+                getCellInfoDisplayString(cidGsm.getMnc()),
+                getCellInfoDisplayString(cidGsm.getLac()),
+                getCellInfoDisplayString(cidGsm.getCid()),
+                getCellInfoDisplayString(cidGsm.getArfcn()),
+                getCellInfoDisplayString(cidGsm.getBsic()),
+                getCellInfoDisplayString(ssGsm.getDbm()));
+    }
+
+    private String buildLteInfoString(CellInfoLte ci) {
+        CellIdentityLte cidLte = ci.getCellIdentity();
+        CellSignalStrengthLte ssLte = ci.getCellSignalStrength();
+
+        return String.format(
+                "%-3.3s %-3.3s %-3.3s %-5.5s %-5.5s %-3.3s %-6.6s %-2.2s %-4.4s %-4.4s %-2.2s\n",
+                getConnectionStatusString(ci),
+                getCellInfoDisplayString(cidLte.getMcc()),
+                getCellInfoDisplayString(cidLte.getMnc()),
+                getCellInfoDisplayString(cidLte.getTac()),
+                getCellInfoDisplayString(cidLte.getCi()),
+                getCellInfoDisplayString(cidLte.getPci()),
+                getCellInfoDisplayString(cidLte.getEarfcn()),
+                getCellInfoDisplayString(cidLte.getBandwidth()),
+                getCellInfoDisplayString(ssLte.getDbm()),
+                getCellInfoDisplayString(ssLte.getRsrq()),
+                getCellInfoDisplayString(ssLte.getTimingAdvance()));
+    }
+
+    private String buildNrInfoString(CellInfoNr ci) {
+        CellIdentityNr cidNr = (CellIdentityNr) ci.getCellIdentity();
+        CellSignalStrengthNr ssNr = (CellSignalStrengthNr) ci.getCellSignalStrength();
+
+        return String.format(
+                "%-3.3s %-3.3s %-3.3s %-5.5s %-5.5s %-3.3s %-6.6s %-4.4s %-4.4s\n",
+                getConnectionStatusString(ci),
+                cidNr.getMccString(),
+                cidNr.getMncString(),
+                getCellInfoDisplayString(cidNr.getTac()),
+                getCellInfoDisplayString(cidNr.getNci()),
+                getCellInfoDisplayString(cidNr.getPci()),
+                getCellInfoDisplayString(cidNr.getNrarfcn()),
+                getCellInfoDisplayString(ssNr.getSsRsrp()),
+                getCellInfoDisplayString(ssNr.getSsRsrq()));
+    }
+
+    private String buildWcdmaInfoString(CellInfoWcdma ci) {
+        CellIdentityWcdma cidWcdma = ci.getCellIdentity();
+        CellSignalStrengthWcdma ssWcdma = ci.getCellSignalStrength();
+
+        return String.format("%-3.3s %-3.3s %-3.3s %-5.5s %-5.5s %-6.6s %-3.3s %-4.4s\n",
+                getConnectionStatusString(ci),
+                getCellInfoDisplayString(cidWcdma.getMcc()),
+                getCellInfoDisplayString(cidWcdma.getMnc()),
+                getCellInfoDisplayString(cidWcdma.getLac()),
+                getCellInfoDisplayString(cidWcdma.getCid()),
+                getCellInfoDisplayString(cidWcdma.getUarfcn()),
+                getCellInfoDisplayString(cidWcdma.getPsc()),
+                getCellInfoDisplayString(ssWcdma.getDbm()));
+    }
+
+    private String buildCellInfoString(List<CellInfo> arrayCi) {
+        String value = new String();
+        StringBuilder cdmaCells = new StringBuilder(),
+                gsmCells = new StringBuilder(),
+                lteCells = new StringBuilder(),
+                wcdmaCells = new StringBuilder(),
+                nrCells = new StringBuilder();
+
+        if (arrayCi != null) {
+            for (CellInfo ci : arrayCi) {
+
+                if (ci instanceof CellInfoLte) {
+                    lteCells.append(buildLteInfoString((CellInfoLte) ci));
+                } else if (ci instanceof CellInfoWcdma) {
+                    wcdmaCells.append(buildWcdmaInfoString((CellInfoWcdma) ci));
+                } else if (ci instanceof CellInfoGsm) {
+                    gsmCells.append(buildGsmInfoString((CellInfoGsm) ci));
+                } else if (ci instanceof CellInfoCdma) {
+                    cdmaCells.append(buildCdmaInfoString((CellInfoCdma) ci));
+                } else if (ci instanceof CellInfoNr) {
+                    nrCells.append(buildNrInfoString((CellInfoNr) ci));
+                }
+            }
+            if (nrCells.length() != 0) {
+                value += String.format(
+                        "NR\n%-3.3s %-3.3s %-3.3s %-5.5s %-5.5s %-3.3s"
+                                + " %-6.6s %-4.4s %-4.4s\n",
+                        "SRV", "MCC", "MNC", "TAC", "NCI", "PCI",
+                        "NRARFCN", "SS-RSRP", "SS-RSRQ");
+                value += nrCells.toString();
+            }
+
+            if (lteCells.length() != 0) {
+                value += String.format(
+                        "LTE\n%-3.3s %-3.3s %-3.3s %-5.5s %-5.5s %-3.3s"
+                                + " %-6.6s %-2.2s %-4.4s %-4.4s %-2.2s\n",
+                        "SRV", "MCC", "MNC", "TAC", "CID", "PCI",
+                        "EARFCN", "BW", "RSRP", "RSRQ", "TA");
+                value += lteCells.toString();
+            }
+            if (wcdmaCells.length() != 0) {
+                value += String.format(
+                        "WCDMA\n%-3.3s %-3.3s %-3.3s %-5.5s %-5.5s %-6.6s %-3.3s %-4.4s\n",
+                        "SRV", "MCC", "MNC", "LAC", "CID", "UARFCN", "PSC", "RSCP");
+                value += wcdmaCells.toString();
+            }
+            if (gsmCells.length() != 0) {
+                value += String.format(
+                        "GSM\n%-3.3s %-3.3s %-3.3s %-5.5s %-5.5s %-6.6s %-4.4s %-4.4s\n",
+                        "SRV", "MCC", "MNC", "LAC", "CID", "ARFCN", "BSIC", "RSSI");
+                value += gsmCells.toString();
+            }
+            if (cdmaCells.length() != 0) {
+                value += String.format(
+                        "CDMA/EVDO\n%-3.3s %-5.5s %-5.5s %-5.5s"
+                                + " %-6.6s %-6.6s %-6.6s %-6.6s %-5.5s\n",
+                        "SRV", "SID", "NID", "BSID",
+                        "C-RSSI", "C-ECIO", "E-RSSI", "E-ECIO", "E-SNR");
+                value += cdmaCells.toString();
+            }
+        } else {
+            value = "unknown";
+        }
+
+        return value.toString();
+    }
+    private void updateCellInfo(List<CellInfo> arrayCi) {
+        mCellInfo.setText(buildCellInfoString(arrayCi));
+    }
+
+    private void updateAllCellInfo() {
+
+        mCellInfo.setText("");
+
+        final Runnable updateAllCellInfoResults = new Runnable() {
+            public void run() {
+                updateCellInfo(mCellInfoResult);
+            }
+        };
+
+        mQueuedWork.execute(new Runnable() {
+            @Override
+            public void run() {
+                mCellInfoResult = mTelephonyManager.getAllCellInfo();
+
+                mHandler.post(updateAllCellInfoResults);
+            }
+        });
+    }
     private void updatePhoneIndex() {
         // unregister listeners on the old subId
         unregisterPhoneStateListener();
@@ -875,6 +1157,7 @@ public class PhoneInformationV2FragmentDataNetwork extends Fragment {
         mDBm.setText("");
         mDownlinkKbps.setText("");
         mUplinkKbps.setText("");
+        mCellInfo.setText("");
     }
 
     // register mTelephonyCallback for relevant fields using the current TelephonyManager
@@ -929,17 +1212,59 @@ public class PhoneInformationV2FragmentDataNetwork extends Fragment {
         mUplinkKbps.setText(String.format("%-5d", ulbw));
     }
 
+    private void setNrStatsVisibility(int visibility) {
+        ((TextView) mView.findViewById(R.id.nr_available_label)).setVisibility(visibility);
+        mNrAvailable.setVisibility(visibility);
+        ((TextView) mView.findViewById(R.id.nr_state_label)).setVisibility(visibility);
+        mNrState.setVisibility(visibility);
+        ((TextView) mView.findViewById(R.id.nr_frequency_label)).setVisibility(visibility);
+        mNrFrequency.setVisibility(visibility);
+    }
+
+    private void updateNrStats() {
+        if ((mTelephonyManager.getSupportedRadioAccessFamily()
+                & TelephonyManager.NETWORK_TYPE_BITMASK_NR) == 0) {
+            return;
+        }
+        ServiceState ss = mTelephonyManager.getServiceStateForSlot(mPhoneId);
+        if (ss != null) {
+            NetworkRegistrationInfo nri = ss.getNetworkRegistrationInfo(
+                    NetworkRegistrationInfo.DOMAIN_PS, AccessNetworkConstants.TRANSPORT_TYPE_WWAN);
+            if (nri != null) {
+                DataSpecificRegistrationInfo dsri = nri.getDataSpecificInfo();
+                if (dsri != null) {
+                    mNrAvailable.setText(String.valueOf(dsri.isNrAvailable));
+                }
+            }
+            mNrState.setText(NetworkRegistrationInfo.nrStateToString(ss.getNrState()));
+            mNrFrequency.setText(ServiceState.frequencyRangeToString(ss.getNrFrequencyRange()));
+        } else {
+            log("Clear Nr stats by null service state");
+            mNrAvailable.setText("");
+            mNrState.setText("");
+            mNrFrequency.setText("");
+        }
+    }
+
     private TelephonyCallback mTelephonyCallback = new RadioInfoTelephonyCallback();
 
     private class RadioInfoTelephonyCallback extends TelephonyCallback
             implements TelephonyCallback.DataConnectionStateListener,
                     TelephonyCallback.CallStateListener,
                     TelephonyCallback.ServiceStateListener,
-                    TelephonyCallback.DisplayInfoListener {
+                    TelephonyCallback.DisplayInfoListener,
+                    TelephonyCallback.CellInfoListener {
         @Override
         public void onDataConnectionStateChanged(int state, int networkType) {
             updateDataState();
             updateNetworkType();
+        }
+
+        @Override
+        public void onCellInfoChanged(List<CellInfo> arrayCi) {
+            log("onCellInfoChanged: arrayCi=" + arrayCi);
+            mCellInfoResult = arrayCi;
+            updateCellInfo(mCellInfoResult);
         }
 
         @Override
@@ -955,6 +1280,9 @@ public class PhoneInformationV2FragmentDataNetwork extends Fragment {
             updateNetworkType();
             updateRawRegistrationState(serviceState);
             updateImsProvisionedState();
+            if (!mHandler.hasMessages(EVENT_UPDATE_NR_STATS)) {
+                mHandler.post(() -> updateNrStats());
+            }
         }
 
         @Override
@@ -1020,6 +1348,19 @@ public class PhoneInformationV2FragmentDataNetwork extends Fragment {
                     });
         }
     }
+
+    AdapterView.OnItemSelectedListener mCellInfoRefreshRateHandler =
+            new AdapterView.OnItemSelectedListener() {
+
+                public void onItemSelected(AdapterView parent, View v, int pos, long id) {
+                    mCellInfoRefreshRateIndex = pos;
+                    mTelephonyManager.setCellInfoListRate(CELL_INFO_REFRESH_RATES[pos], mPhoneId);
+                    updateAllCellInfo();
+                }
+
+                public void onNothingSelected(AdapterView parent) {
+                }
+            };
 
     OnItemSelectedListener mPreferredNetworkHandler =
             new OnItemSelectedListener() {
