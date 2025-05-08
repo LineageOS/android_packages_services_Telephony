@@ -1933,7 +1933,7 @@ public class SatelliteAccessController extends Handler {
             }
         } else {
             mNotificationManager.cancel(AVAILABLE_NOTIFICATION_TAG, NOTIFICATION_ID);
-            for (Integer reason : mSatelliteDisallowedReasons) {
+            for (Integer reason : getSatelliteDisallowedReasonsCopy()) {
                 if (!hasAlreadyNotified(KEY_UNAVAILABLE_NOTIFICATION_SHOWN)) {
                     mNotificationManager.notifyAsUser(
                             UNAVAILABLE_NOTIFICATION_TAG,

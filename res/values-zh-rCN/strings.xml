@@ -861,7 +861,7 @@
     <string name="satellite_enable_non_emergency_mode_string" msgid="9005332650950637932">"测试真实的卫星非 eSOS 模式（仅限调试 build）"</string>
     <string name="satellite_enable_non_emergency_mode_label" msgid="2958365217334494066">"测试真实的卫星非紧急呼救功能模式"</string>
     <string name="demo_esos_satellite_string" msgid="2941811482168709730">"测试卫星 eSOS 演示模式（仅限调试 build）"</string>
-    <string name="demo_esos_satellite_label" msgid="1538811851871457718">"测试卫星紧急呼救功能演示模式"</string>
+    <string name="demo_esos_satellite_label" msgid="1538811851871457718">"测试演示版卫星紧急呼救功能模式"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"查看 SIM 卡通讯录"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"查看固定拨号号码"</string>
     <string name="radioInfo_menu_viewSDN" msgid="2613431584522392842">"查看服务拨号号码"</string>

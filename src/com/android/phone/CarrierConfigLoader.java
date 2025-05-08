@@ -1621,17 +1621,29 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
     // TODO(b/185129900): always call unbindService after bind, no matter if it succeeded
     private void unbindIfBound(@NonNull Context context, @NonNull CarrierServiceConnection conn,
             int phoneId) {
-        if (mServiceBound[phoneId]) {
-            mServiceBound[phoneId] = false;
-            context.unbindService(conn);
+        try {
+            if (mServiceBound[phoneId]) {
+                mServiceBound[phoneId] = false;
+                context.unbindService(conn);
+            }
+        } catch (IllegalArgumentException e) {
+            loge("unbindIfBound : CarrierServiceConnection not registered when trying to unbind "
+                    + "for phoneId: "
+                    + phoneId);
         }
     }
 
     private void unbindIfBoundForNoSimConfig(@NonNull Context context,
             @NonNull CarrierServiceConnection conn, int phoneId) {
-        if (mServiceBoundForNoSimConfig[phoneId]) {
-            mServiceBoundForNoSimConfig[phoneId] = false;
-            context.unbindService(conn);
+        try {
+            if (mServiceBoundForNoSimConfig[phoneId]) {
+                mServiceBoundForNoSimConfig[phoneId] = false;
+                context.unbindService(conn);
+            }
+        } catch (IllegalArgumentException e) {
+            loge("unbindIfBoundForNoSimConfig : CarrierServiceConnection not registered when "
+                    + "trying to unbind for phoneId: "
+                    + phoneId);
         }
     }
 

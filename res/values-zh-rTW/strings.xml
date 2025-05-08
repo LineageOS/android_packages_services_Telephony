@@ -848,7 +848,7 @@
     <string name="simulate_out_of_service_string" msgid="7787925611727597193">"模擬無法使用服務的情況 (僅限偵錯版本)"</string>
     <string name="simulate_out_of_service_label" msgid="3563376136603403714">"模擬服務中斷情況"</string>
     <string name="enforce_satellite_channel_string" msgid="295306734591329892">"強制執行 Camp 衛星 LTE 頻道 (僅限偵錯版本)"</string>
-    <string name="enforce_satellite_channel_label" msgid="8212349350110213468">"強制執行 Camp 衛星 LTE 頻道"</string>
+    <string name="enforce_satellite_channel_label" msgid="8212349350110213468">"強制暫駐衛星 LTE 頻道"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"模擬電信業者衛星模式 (僅限偵錯版本)"</string>
     <string name="mock_carrier_roaming_satellite_label" msgid="2052656038544917979">"模擬"</string>
     <string name="choose_satellite_data_mode_label" msgid="7403013160079828226">"模擬衛星資料模式"</string>
@@ -966,7 +966,7 @@
     <string name="satellite_config_country_code_label" msgid="1389520866423113166">"國家/地區代碼："</string>
     <string name="satellite_config_size_of_sats2_dat_label" msgid="671746449054349967">"sats2.dat 的大小："</string>
     <string name="satellite_config_json_label" msgid="4577292884014824105">"衛星存取權設定 JSON："</string>
-    <string name="nb_iot_config_viewer" msgid="1427724000750959794">"NB-IoT 設定檢視者"</string>
+    <string name="nb_iot_config_viewer" msgid="1427724000750959794">"NB-IoT 設定檢視工具"</string>
     <string name="ims_registration_value" msgid="3195763957048314776">"IMS 註冊："</string>
     <string name="voice_over_lte_value" msgid="1317318233598235658">"VoLTE："</string>
     <string name="voice_over_wifi_value" msgid="4958925307364093356">"VoWiFi："</string>
