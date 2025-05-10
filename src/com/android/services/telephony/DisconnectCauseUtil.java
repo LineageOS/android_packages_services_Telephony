@@ -30,8 +30,6 @@ import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.telephony.CallFailCause;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
-import com.android.internal.telephony.flags.FeatureFlags;
-import com.android.internal.telephony.flags.FeatureFlagsImpl;
 import com.android.internal.telephony.satellite.SatelliteController;
 import com.android.phone.ImsUtil;
 import com.android.phone.PhoneGlobals;
@@ -781,26 +779,17 @@ public class DisconnectCauseUtil {
 
             case android.telephony.DisconnectCause.OUT_OF_SERVICE:
                 // No network connection.
-                FeatureFlags mFeatureFlags = new FeatureFlagsImpl();
                 if (ImsUtil.shouldPromoteWfc(context, phoneId)) {
                     resourceId = R.string.incall_error_promote_wfc;
                 } else if (ImsUtil.isWfcModeWifiOnly(context, phoneId)) {
                     resourceId = R.string.incall_error_wfc_only_no_wireless_network;
                 } else if (ImsUtil.isWfcEnabled(context, phoneId)) {
-                    if (!mFeatureFlags.showCallFailNotificationFor2gToggle()) {
-                        resourceId = R.string.incall_error_out_of_service_wfc;
-                        break;
-                    }
                     if (is2gDisabled(phoneId) && !shouldTreatAsEmergency) {
                         resourceId = R.string.incall_error_out_of_service_wfc_2g_user;
                     } else {
                         resourceId = R.string.incall_error_out_of_service_wfc;
                     }
                 } else {
-                    if (!mFeatureFlags.showCallFailNotificationFor2gToggle()) {
-                        resourceId = R.string.incall_error_out_of_service;
-                        break;
-                    }
                     if (is2gDisabled(phoneId) && !shouldTreatAsEmergency) {
                         resourceId = R.string.incall_error_out_of_service_2g;
                     } else {

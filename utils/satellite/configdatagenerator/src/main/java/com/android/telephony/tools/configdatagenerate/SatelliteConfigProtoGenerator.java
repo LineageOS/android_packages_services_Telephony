@@ -32,6 +32,7 @@ public class SatelliteConfigProtoGenerator {
     public static String sProtoResultFile = "telephony_config.pb";
     public static int sVersion;
     public static ArrayList<ServiceProto> sServiceProtoList;
+    public static CarrierRoamingConfigProto sCarrierRoamingConfig;
     public static RegionProto sRegionProto;
 
     /**
@@ -84,6 +85,15 @@ public class SatelliteConfigProtoGenerator {
             System.out.print("ServiceProtoList does not exist");
         }
 
+        if (sCarrierRoamingConfig != null) {
+            // carrierRoamingConfigBuilder
+            SatelliteConfigData.CarrierRoamingConfigProto.Builder carrierRoamingConfigBuilder =
+                    SatelliteConfigData.CarrierRoamingConfigProto.newBuilder();
+            carrierRoamingConfigBuilder.setMaxAllowedDataMode(
+                    sCarrierRoamingConfig.mMaxAllowedDataMode);
+            satelliteConfigBuilder.setCarrierRoamingConfig(carrierRoamingConfigBuilder);
+        }
+
         if (sRegionProto != null) {
             // satelliteRegionBuilder
             SatelliteConfigData.SatelliteRegionProto.Builder satelliteRegionBuilder =
@@ -115,9 +125,6 @@ public class SatelliteConfigProtoGenerator {
                     && sRegionProto.mSatelliteAccessConfigFileName.length() > 0) {
                 byte[] satelliteAccessBinaryData;
                 try {
-                    System.out.println(
-                            "ConfigDataGenerator: mSatelliteAccessConfigFileName: "
-                                    + sRegionProto.mSatelliteAccessConfigFileName);
                     satelliteAccessBinaryData =
                             readFileToByteArray(sRegionProto.mSatelliteAccessConfigFileName);
                 } catch (IOException e) {

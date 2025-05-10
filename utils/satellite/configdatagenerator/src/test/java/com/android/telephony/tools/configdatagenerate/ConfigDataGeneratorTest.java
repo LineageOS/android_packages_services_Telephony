@@ -16,10 +16,15 @@
 
 package com.android.telephony.tools.configdatagenerate;
 
+import static com.android.telephony.tools.configdatagenerate.Util.SATELLITE_DATA_SUPPORT_ALL;
+import static com.android.telephony.tools.configdatagenerate.Util.SATELLITE_DATA_SUPPORT_BANDWIDTH_CONSTRAINED;
+import static com.android.telephony.tools.configdatagenerate.Util.SATELLITE_DATA_SUPPORT_ONLY_RESTRICTED;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.fail;
 
+import com.android.internal.telephony.satellite.SatelliteConfigData.CarrierRoamingConfigProto;
 import com.android.internal.telephony.satellite.SatelliteConfigData.CarrierSupportedSatelliteServicesProto;
 import com.android.internal.telephony.satellite.SatelliteConfigData.SatelliteConfigProto;
 import com.android.internal.telephony.satellite.SatelliteConfigData.SatelliteProviderCapabilityProto;
@@ -97,6 +102,7 @@ public class ConfigDataGeneratorTest {
                 1,
                 "310062222",
                 1,
+                SATELLITE_DATA_SUPPORT_BANDWIDTH_CONSTRAINED,
                 "US",
                 true,
                 inputS2CellFileName,
@@ -145,6 +151,7 @@ public class ConfigDataGeneratorTest {
                 1,
                 "31006",
                 -1,
+                SATELLITE_DATA_SUPPORT_BANDWIDTH_CONSTRAINED,
                 "US",
                 true,
                 inputS2CellFileName,
@@ -193,6 +200,7 @@ public class ConfigDataGeneratorTest {
                 1,
                 "31006",
                 1,
+                SATELLITE_DATA_SUPPORT_BANDWIDTH_CONSTRAINED,
                 "USSSS",
                 true,
                 inputS2CellFileName,
@@ -208,6 +216,82 @@ public class ConfigDataGeneratorTest {
             return;
         }
         fail("Exception should have been caught");
+    }
+
+    @Test
+    public void testConfigDataGeneratorWithInvalidMaxAllowedDataMode() throws Exception {
+        Path inputDirPath = mTempDirPath.resolve("input");
+        Files.createDirectory(inputDirPath);
+        Path inputFilePath = inputDirPath.resolve("test_input.xml");
+        Path inputS2CellFilePath = inputDirPath.resolve("sats2.dat");
+
+        Path outputDirPath = mTempDirPath.resolve("output");
+        Files.createDirectory(outputDirPath);
+        Path outputFilePath = outputDirPath.resolve("test_out.pb");
+        String inputfileName = inputFilePath.toAbsolutePath().toString();
+        String inputS2CellFileName = inputS2CellFilePath.toAbsolutePath().toString();
+        File inputFile = new File(inputfileName);
+        ByteString inputByteStringForS2Cell = ByteString.copyFromUtf8("Test ByteString!");
+        writeByteStringToFile(inputS2CellFileName, inputByteStringForS2Cell);
+
+        Path inputSatelliteAccessConfigFilePath =
+                inputDirPath.resolve("satellite_access_config.json");
+        String inputSatelliteAccessConfigFileAbsolutePath =
+                inputSatelliteAccessConfigFilePath.toAbsolutePath().toString();
+        ByteString inputSatelliteAccessConfigContent =
+                ByteString.copyFromUtf8("Test ByteString for satellite access config!");
+        writeByteStringToFile(
+                inputSatelliteAccessConfigFileAbsolutePath, inputSatelliteAccessConfigContent);
+
+        int countCaughtException = 0;
+
+        createInputXml(
+                inputFile,
+                14,
+                1,
+                "31006",
+                1,
+                SATELLITE_DATA_SUPPORT_ALL + 1,
+                "USSSS",
+                true,
+                inputS2CellFileName,
+                inputSatelliteAccessConfigFileAbsolutePath);
+        String[] args1 = {
+                "--input-file", inputFilePath.toAbsolutePath().toString(),
+                "--output-file", outputFilePath.toAbsolutePath().toString()
+        };
+        try {
+            ConfigDataGenerator.main(args1);
+        } catch (Exception ex) {
+            // Expected exception because input country code is invalid
+            countCaughtException++;
+        }
+
+        createInputXml(
+                inputFile,
+                14,
+                1,
+                "31006",
+                1,
+                SATELLITE_DATA_SUPPORT_ONLY_RESTRICTED - 1,
+                "USSSS",
+                true,
+                inputS2CellFileName,
+                inputSatelliteAccessConfigFileAbsolutePath);
+        String[] args2 = {
+                "--input-file", inputFilePath.toAbsolutePath().toString(),
+                "--output-file", outputFilePath.toAbsolutePath().toString()
+        };
+        try {
+            ConfigDataGenerator.main(args2);
+        } catch (Exception ex) {
+            // Expected exception because input country code is invalid
+            countCaughtException++;
+        }
+
+        if (countCaughtException != 2) {
+            fail("Exception should have been caught");
+        }
     }
 
     @Test
@@ -250,6 +334,7 @@ public class ConfigDataGeneratorTest {
                 inputCarrierId,
                 inputPlmn,
                 inputAllowedService,
+                SATELLITE_DATA_SUPPORT_BANDWIDTH_CONSTRAINED,
                 inputCountryCode,
                 inputIsAllowed,
                 inputS2CellFileName,
@@ -280,6 +365,11 @@ public class ConfigDataGeneratorTest {
         assertEquals(inputPlmn, plmn);
         int allowedService = providerCapabilityProto.getAllowedServices(0);
         assertEquals(inputAllowedService, allowedService);
+
+        CarrierRoamingConfigProto carrierRoamingConfigProto =
+                satelliteConfigProto.getCarrierRoamingConfig();
+        int maxAllowedDataMode = carrierRoamingConfigProto.getMaxAllowedDataMode();
+        assertEquals(SATELLITE_DATA_SUPPORT_BANDWIDTH_CONSTRAINED, maxAllowedDataMode);
 
         SatelliteRegionProto regionProto = satelliteConfigProto.getDeviceSatelliteRegion();
         String countryCode = regionProto.getCountryCodes(0);
@@ -316,7 +406,8 @@ public class ConfigDataGeneratorTest {
         ByteString inputByteStringForS2Cell = ByteString.copyFromUtf8("Test ByteString!");
         writeByteStringToFile(inputS2CellFileName, inputByteStringForS2Cell);
 
-        createInputXml(inputFile, 14, 1, "31006", 1, "US", true, inputS2CellFileName, null);
+        createInputXml(inputFile, 14, 1, "31006", 1, SATELLITE_DATA_SUPPORT_BANDWIDTH_CONSTRAINED,
+                "US", true, inputS2CellFileName, null);
         String[] args = {
             "--input-file", inputFilePath.toAbsolutePath().toString(),
             "--output-file", outputFilePath.toAbsolutePath().toString()
@@ -342,6 +433,7 @@ public class ConfigDataGeneratorTest {
             int carrierId,
             String plmn,
             int allowedService,
+            int maxAllowedDataMode,
             String countryCode,
             boolean isAllowed,
             String inputS2CellFileName,
@@ -363,6 +455,10 @@ public class ConfigDataGeneratorTest {
             // Add <carriersupportedservices>
             rootElement.appendChild(
                     createCarrierSupportedServices(doc, carrierId, plmn, allowedService));
+
+            // Add <carrierroamingconfig>
+            rootElement.appendChild(
+                    createCarrierRoamingConfig(doc, maxAllowedDataMode));
 
             // Add <satelliteregion>
             Element satelliteRegion = doc.createElement(ConfigDataGenerator.TAG_SATELLITE_REGION);
@@ -397,9 +493,12 @@ public class ConfigDataGeneratorTest {
             String carrierPlmn, int... services) {
         Element carrierSupportedServices = doc.createElement(
                 ConfigDataGenerator.TAG_SUPPORTED_SERVICES);
+
+        // Add CarrierId
         carrierSupportedServices.appendChild(createElementWithText(doc,
                 ConfigDataGenerator.TAG_CARRIER_ID, String.valueOf(carrierId)));
 
+        // Add Plmn and Services
         Element providerCapability = doc.createElement(ConfigDataGenerator.TAG_PROVIDER_CAPABILITY);
         providerCapability.appendChild(createElementWithText(doc,
                 ConfigDataGenerator.TAG_CARRIER_PLMN, carrierPlmn));
@@ -407,9 +506,21 @@ public class ConfigDataGeneratorTest {
             providerCapability.appendChild(createElementWithText(doc,
                     ConfigDataGenerator.TAG_SERVICE, String.valueOf(service)));
         }
-        carrierSupportedServices.appendChild(providerCapability);
 
+        carrierSupportedServices.appendChild(providerCapability);
         return carrierSupportedServices;
+    }
+
+
+    private static Element createCarrierRoamingConfig(Document doc, int maxAllowedDaaMode) {
+        Element carrierRoamingConfig = doc.createElement(
+                ConfigDataGenerator.TAG_CARRIER_ROAMING_CONFIG);
+
+        // Add CarrierId
+        carrierRoamingConfig.appendChild(createElementWithText(doc,
+                ConfigDataGenerator.TAG_MAX_ALLOWED_DATA_MODE, String.valueOf(maxAllowedDaaMode)));
+
+        return carrierRoamingConfig;
     }
 
     private static Element createElementWithText(Document doc, String tagName, String textContent) {

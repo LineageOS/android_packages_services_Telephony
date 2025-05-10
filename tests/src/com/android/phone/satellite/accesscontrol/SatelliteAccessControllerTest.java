@@ -157,6 +157,7 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
@@ -224,7 +225,7 @@ public class SatelliteAccessControllerTest extends TelephonyTestBase {
     private Map<SatelliteOnDeviceAccessController.LocationToken, Integer>
             mMockCachedAccessRestrictionMap;
     @Mock
-    HashMap<Integer, SatelliteAccessConfiguration> mMockSatelliteAccessConfigMap;
+    Map<Integer, SatelliteAccessConfiguration> mMockSatelliteAccessConfigMap;
 
     @Mock
     private Intent mMockLocationIntent;
@@ -3019,21 +3020,19 @@ public class SatelliteAccessControllerTest extends TelephonyTestBase {
 
         @Nullable
         public Integer getRegionalConfigId() {
-            synchronized (mLock) {
-                return mRegionalConfigId;
-            }
+            return mRegionalConfigId == null ? null : mRegionalConfigId.get();
         }
 
         @Nullable
         public Integer getNewRegionalConfigId() {
-            synchronized (mLock) {
-                return mNewRegionalConfigId;
-            }
+            return mNewRegionalConfigId == null ? null : mNewRegionalConfigId.get();
         }
 
         public void setRegionalConfigId(@Nullable Integer regionalConfigId) {
-            synchronized (mLock) {
-                mRegionalConfigId = regionalConfigId;
+            if (regionalConfigId == null) {
+                mRegionalConfigId = null;
+            } else {
+                mRegionalConfigId = new AtomicInteger(regionalConfigId);
             }
         }
 

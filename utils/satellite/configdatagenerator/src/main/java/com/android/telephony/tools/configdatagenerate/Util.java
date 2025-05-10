@@ -27,6 +27,11 @@ public class Util {
     private static final int FIRST_SERVICE_TYPE = SERVICE_TYPE_VOICE;
     private static final int LAST_SERVICE_TYPE = SERVICE_TYPE_MMS;
 
+    // Referring CarrierConfigManager.java
+    public static final int SATELLITE_DATA_SUPPORT_ONLY_RESTRICTED = 0;
+    public static final int SATELLITE_DATA_SUPPORT_BANDWIDTH_CONSTRAINED = 1;
+    public static final int SATELLITE_DATA_SUPPORT_ALL = 2;
+
     private static boolean isValidPattern(String input, String regex) {
         if ((input == null) || (regex == null)) {
             return false;
@@ -61,6 +66,18 @@ public class Util {
      */
     public static boolean isValidService(int serviceType) {
         if (serviceType < FIRST_SERVICE_TYPE || serviceType > LAST_SERVICE_TYPE) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * @param maxAllowedDataMode target max allowed data mode for validation.
+     * @return {@code true} if the target maxAllowedDataMode is valid {@code false} otherwise.
+     */
+    public static boolean isValidMaxAllowedDataMode(int maxAllowedDataMode) {
+        if (maxAllowedDataMode < SATELLITE_DATA_SUPPORT_ONLY_RESTRICTED
+                || maxAllowedDataMode > SATELLITE_DATA_SUPPORT_ALL) {
             return false;
         }
         return true;

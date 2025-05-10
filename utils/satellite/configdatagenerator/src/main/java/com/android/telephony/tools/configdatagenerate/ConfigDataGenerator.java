@@ -38,11 +38,16 @@ import javax.xml.parsers.ParserConfigurationException;
 public class ConfigDataGenerator {
     public static final String TAG_SATELLITE_CONFIG = "satelliteconfig";
     public static final String TAG_VERSION = "version";
+
     public static final String TAG_SUPPORTED_SERVICES = "carriersupportedservices";
     public static final String TAG_CARRIER_ID = "carrier_id";
     public static final String TAG_PROVIDER_CAPABILITY = "providercapability";
     public static final String TAG_CARRIER_PLMN = "carrier_plmn";
     public static final String TAG_SERVICE = "service";
+
+    public static final String TAG_CARRIER_ROAMING_CONFIG = "carrier_roaming_config";
+    public static final String TAG_MAX_ALLOWED_DATA_MODE = "max_allowed_data_mode";
+
     public static final String TAG_SATELLITE_REGION =  "satelliteregion";
     public static final String TAG_S2_CELL_FILE = "s2_cell_file";
     public static final String TAG_COUNTRY_CODE = "country_code";
@@ -132,15 +137,33 @@ public class ConfigDataGenerator {
      * </pre>
      */
     public static void createStarlinkConfigProto(Document doc) {
+
+        Node carrierRoamingConfig = doc.getElementsByTagName(TAG_CARRIER_ROAMING_CONFIG).item(0);
+        Element carrierRoamingConfigElement = (Element) carrierRoamingConfig;
+        String stringMaxAllowedDataMode = carrierRoamingConfigElement.getElementsByTagName(
+                TAG_MAX_ALLOWED_DATA_MODE).item(0).getTextContent();
+        int maxAllowedDataMode = Integer.parseInt(stringMaxAllowedDataMode);
+        if (!Util.isValidMaxAllowedDataMode(maxAllowedDataMode)) {
+            throw new ParameterException("Invalid maxAllowedDataModel: "
+                    + maxAllowedDataMode);
+        }
+        SatelliteConfigProtoGenerator.sCarrierRoamingConfig =
+                new CarrierRoamingConfigProto(maxAllowedDataMode);
+        System.out.println("\nCarrier Roaming Config ");
+        System.out.println("└ MaxAllowedDataMode: " + maxAllowedDataMode);
+
         NodeList carrierServicesList = doc.getElementsByTagName(TAG_SUPPORTED_SERVICES);
         SatelliteConfigProtoGenerator.sServiceProtoList = new ArrayList<>();
+
+        System.out.println("\nCarrier Supported Satellite Services ");
+
         for (int i = 0; i < carrierServicesList.getLength(); i++) {
             Node carrierServiceNode = carrierServicesList.item(i);
             if (carrierServiceNode.getNodeType() == Node.ELEMENT_NODE) {
                 Element carrierServiceElement = (Element) carrierServiceNode;
                 String carrierId = carrierServiceElement.getElementsByTagName(TAG_CARRIER_ID)
                         .item(0).getTextContent();
-                System.out.println("\nCarrier ID: " + carrierId);
+                System.out.println("└ Carrier ID: " + carrierId);
 
                 NodeList providerCapabilityList = carrierServiceElement.getElementsByTagName(
                         TAG_PROVIDER_CAPABILITY);
@@ -152,14 +175,14 @@ public class ConfigDataGenerator {
                         Element providerCapabilityElement = (Element) providerCapabilityNode;
                         String carrierPlmn = providerCapabilityElement.getElementsByTagName(
                                 TAG_CARRIER_PLMN).item(0).getTextContent();
-                        System.out.println("  Carrier PLMN: " + carrierPlmn);
+                        System.out.println("   └ Carrier PLMN: " + carrierPlmn);
                         if (!Util.isValidPlmn(carrierPlmn)) {
                             throw new ParameterException("Invalid plmn:" + carrierPlmn);
                         }
 
                         NodeList allowedServicesList = providerCapabilityElement
                                 .getElementsByTagName(TAG_SERVICE);
-                        System.out.print("    Allowed services: ");
+                        System.out.print("   └ Allowed services: ");
                         int[] allowedServiceArray = new int[allowedServicesList.getLength()];
                         for (int k = 0; k < allowedServicesList.getLength(); k++) {
                             int service = Integer.parseInt(allowedServicesList.item(k)
@@ -176,6 +199,7 @@ public class ConfigDataGenerator {
                         capabilityProtoList[j] = capabilityProto;
                     }
                 }
+
                 ServiceProto serviceProto = new ServiceProto(Integer.parseInt(carrierId),
                         capabilityProtoList);
                 SatelliteConfigProtoGenerator.sServiceProtoList.add(serviceProto);
@@ -222,15 +246,15 @@ public class ConfigDataGenerator {
                                 .getTextContent();
             }
             System.out.println("\nSatellite Region:");
-            System.out.println("  S2 Cell File: " + s2CellFileName);
-            System.out.println("  Is Allowed: " + isAllowed);
+            System.out.println("└ S2 Cell File: " + s2CellFileName);
+            System.out.println("└ Is Allowed: " + isAllowed);
             System.out.println(
-                    "  Satellite Access Config File Name: " + satelliteAccessConfigFileName);
+                    "└ Satellite Access Config File Name: " + satelliteAccessConfigFileName);
 
             NodeList countryCodesList = satelliteRegionElement.getElementsByTagName(
                     TAG_COUNTRY_CODE);
             String[] listCountryCode = new String[countryCodesList.getLength()];
-            System.out.print("  Country Codes: ");
+            System.out.print("└ Country Codes: ");
             for (int k = 0; k < countryCodesList.getLength(); k++) {
                 String countryCode = countryCodesList.item(k).getTextContent();
                 System.out.print(countryCode + " ");
