@@ -285,7 +285,8 @@ public class SatelliteAccessController extends Handler {
     protected final Object mLock = new Object();
     @GuardedBy("mLock")
     @NonNull
-    private final Set<ResultReceiver> mSatelliteAllowResultReceivers = new HashSet<>();
+    private final List<CheckingAllowedStateRequestArguments>
+        mCheckingAllowedStateRequests = new ArrayList<>();
     @NonNull
     private final Set<ResultReceiver>
             mUpdateSystemSelectionChannelsResultReceivers = new HashSet<>();
@@ -449,7 +450,6 @@ public class SatelliteAccessController extends Handler {
     private AtomicLong mLocationQueryStartTimeMillis = new AtomicLong(0);
     private AtomicLong mOnDeviceLookupStartTimeMillis = new AtomicLong(0);
     private AtomicLong mTotalCheckingStartTimeMillis = new AtomicLong(0);
-    private AtomicBoolean mIsAllowedCheckBeforeEnablingSatellite = new AtomicBoolean(false);
     private AtomicBoolean mIsCurrentLocationEligibleForNotification = new AtomicBoolean(false);
     private AtomicBoolean mIsProvisionEligibleForNotification = new AtomicBoolean(false);
     private AtomicBoolean mIsAllowedStateCacheDisabledForCtsTest = new AtomicBoolean(false);
@@ -676,7 +676,7 @@ public class SatelliteAccessController extends Handler {
         switch (msg.what) {
             case CMD_IS_SATELLITE_COMMUNICATION_ALLOWED:
                 handleCmdIsSatelliteAllowedForCurrentLocation(
-                        (Pair<Integer, ResultReceiver>) msg.obj);
+                        (CheckingAllowedStateRequestArguments) msg.obj);
                 break;
             case EVENT_WAIT_FOR_CURRENT_LOCATION_TIMEOUT:
                 handleWaitForCurrentLocationTimedOutEvent();
@@ -758,30 +758,32 @@ public class SatelliteAccessController extends Handler {
      *               if the request failed.
      */
     public void requestIsCommunicationAllowedForCurrentLocation(
-            @NonNull ResultReceiver result, boolean enablingSatellite) {
-        plogd("requestIsCommunicationAllowedForCurrentLocation : "
-                + "enablingSatellite is " + enablingSatellite);
+            @NonNull ResultReceiver result, boolean shouldIgnoreAllowedStateCache) {
+        plogd("requestIsCommunicationAllowedForCurrentLocation : shouldIgnoreAllowedStateCache= "
+                + shouldIgnoreAllowedStateCache);
 
         if (mFeatureFlags.satelliteImproveMultiThreadDesign()) {
             SomeArgs args = SomeArgs.obtain();
             args.arg1 = result;
-            args.arg2 = enablingSatellite;
+            args.arg2 = shouldIgnoreAllowedStateCache;
             sendMessage(obtainMessage(REQUEST_IS_COMMUNICATION_ALLOWED, args));
             return;
         }
 
-        handleRequestIsCommunicationAllowed(result, enablingSatellite);
+        handleRequestIsCommunicationAllowed(result, shouldIgnoreAllowedStateCache);
     }
 
     private void handleRequestIsCommunicationAllowed(
-            @NonNull ResultReceiver result, boolean enablingSatellite) {
-        plogd("handleRequestIsCommunicationAllowed : "
-                + "enablingSatellite is " + enablingSatellite);
+            @NonNull ResultReceiver result, boolean shouldIgnoreAllowedStateCache) {
+        plogd("handleRequestIsCommunicationAllowed : shouldIgnoreAllowedStateCache = "
+                + shouldIgnoreAllowedStateCache);
 
-        mIsAllowedCheckBeforeEnablingSatellite.set(enablingSatellite);
         mAccessControllerMetricsStats.setTriggeringEvent(TRIGGERING_EVENT_EXTERNAL_REQUEST);
-        sendRequestAsync(CMD_IS_SATELLITE_COMMUNICATION_ALLOWED,
-                new Pair<>(mSatelliteController.getSelectedSatelliteSubId(), result));
+        CheckingAllowedStateRequestArguments requestArguments =
+            new CheckingAllowedStateRequestArguments(
+                mSatelliteController.getSelectedSatelliteSubId(),
+                result, shouldIgnoreAllowedStateCache);
+        sendRequestAsync(CMD_IS_SATELLITE_COMMUNICATION_ALLOWED, requestArguments);
         mSatelliteController.incrementResultReceiverCount(
                 "SAC:requestIsCommunicationAllowedForCurrentLocation");
     }
@@ -1657,10 +1659,10 @@ public class SatelliteAccessController extends Handler {
     }
 
     private void handleCmdIsSatelliteAllowedForCurrentLocation(
-            @NonNull Pair<Integer, ResultReceiver> requestArguments) {
+            @NonNull CheckingAllowedStateRequestArguments requestArguments) {
         synchronized (mLock) {
-            mSatelliteAllowResultReceivers.add(requestArguments.second);
-            if (mSatelliteAllowResultReceivers.size() > 1) {
+            mCheckingAllowedStateRequests.add(requestArguments);
+            if (mCheckingAllowedStateRequests.size() > 1) {
                 plogd("requestIsCommunicationAllowedForCurrentLocation is already being "
                         + "processed");
                 return;
@@ -1812,12 +1814,13 @@ public class SatelliteAccessController extends Handler {
         }
 
         synchronized (mLock) {
-            for (ResultReceiver resultReceiver : mSatelliteAllowResultReceivers) {
-                resultReceiver.send(resultCode, resultData);
+            for (CheckingAllowedStateRequestArguments requestArguments
+                    : mCheckingAllowedStateRequests) {
+                requestArguments.getResultReceiver().send(resultCode, resultData);
                 mSatelliteController.decrementResultReceiverCount(
-                        "SAC:requestIsCommunicationAllowedForCurrentLocation");
+                    "SAC:requestIsCommunicationAllowedForCurrentLocation");
             }
-            mSatelliteAllowResultReceivers.clear();
+            mCheckingAllowedStateRequests.clear();
         }
         if (!shouldRetryValidatingPossibleChangeInAllowedRegion(resultCode)) {
             setIsSatelliteAllowedRegionPossiblyChanged(false);
@@ -1848,7 +1851,6 @@ public class SatelliteAccessController extends Handler {
         if (isChanged) {
             handleEventDisallowedReasonsChanged();
         }
-        mIsAllowedCheckBeforeEnablingSatellite.set(false);
         reportMetrics(resultCode, allowed);
     }
 
@@ -2015,9 +2017,12 @@ public class SatelliteAccessController extends Handler {
                     int retryCount = mRetryCountForValidatingPossibleChangeInAllowedRegion
                             .incrementAndGet();
                     plogd("mRetryCountForValidatingPossibleChangeInAllowedRegion is " + retryCount);
+                    CheckingAllowedStateRequestArguments requestArguments =
+                        new CheckingAllowedStateRequestArguments(
+                            SubscriptionManager.DEFAULT_SUBSCRIPTION_ID,
+                            mHandlerForSatelliteAllowedResult, false);
                     sendDelayedRequestAsync(CMD_IS_SATELLITE_COMMUNICATION_ALLOWED,
-                            new Pair<>(SubscriptionManager.DEFAULT_SUBSCRIPTION_ID,
-                                    mHandlerForSatelliteAllowedResult),
+                            requestArguments,
                             mRetryIntervalToEvaluateUserInSatelliteAllowedRegion.get());
                 } else {
                     mRetryCountForValidatingPossibleChangeInAllowedRegion.set(0);
@@ -2223,7 +2228,7 @@ public class SatelliteAccessController extends Handler {
             if (mLocationManager.isLocationEnabled()) {
                 plogd("location query is allowed");
                 if (allowLocationQueryForSatelliteAllowedCheck()
-                        || mIsAllowedCheckBeforeEnablingSatellite.get()) {
+                        || shouldIgnoreAllowedStateCache()) {
                     executeLocationQuery();
                 } else {
                     Bundle bundle = new Bundle();
@@ -3432,11 +3437,11 @@ public class SatelliteAccessController extends Handler {
                     plogd(LOCATION_PROVIDER + " provider is enabled");
                 }
 
-                boolean isResultReceiverEmpty;
+                boolean isRequestsEmpty;
                 synchronized (mLock) {
-                    isResultReceiverEmpty = mSatelliteAllowResultReceivers.isEmpty();
+                    isRequestsEmpty = mCheckingAllowedStateRequests.isEmpty();
                 }
-                if (isResultReceiverEmpty) {
+                if (isRequestsEmpty) {
                     sendRequestAsync(EVENT_LOCATION_SETTINGS_ENABLED, null);
                 } else {
                     plogd("delayed EVENT_LOCATION_SETTINGS_ENABLED due to "
@@ -3559,6 +3564,41 @@ public class SatelliteAccessController extends Handler {
         Log.e(TAG, log);
         if (mPersistentLogger != null) {
             mPersistentLogger.error(TAG, log);
+        }
+    }
+
+    private boolean shouldIgnoreAllowedStateCache() {
+        for (CheckingAllowedStateRequestArguments requestArguments :
+                mCheckingAllowedStateRequests) {
+            if (requestArguments.shouldIgnoreAllowedStateCache()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static class CheckingAllowedStateRequestArguments {
+        private final int mSubId;
+        private final ResultReceiver mResultReceiver;
+        private final boolean mShouldIgnoreAllowedStateCache;
+
+        public CheckingAllowedStateRequestArguments(
+            int subId, ResultReceiver resultReceiver, boolean shouldIgnoreAllowedStateCache) {
+            this.mSubId = subId;
+            this.mResultReceiver = resultReceiver;
+            this.mShouldIgnoreAllowedStateCache = shouldIgnoreAllowedStateCache;
+        }
+
+        public int getSubId() {
+            return mSubId;
+        }
+
+        public ResultReceiver getResultReceiver() {
+            return mResultReceiver;
+        }
+
+        public boolean shouldIgnoreAllowedStateCache() {
+            return mShouldIgnoreAllowedStateCache;
         }
     }
 }
