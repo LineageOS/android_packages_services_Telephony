@@ -861,7 +861,7 @@
     <string name="satellite_enable_non_emergency_mode_string" msgid="9005332650950637932">"Tester le mode non-eSOS par satellite réel (version de débogage uniquement)"</string>
     <string name="satellite_enable_non_emergency_mode_label" msgid="2958365217334494066">"Tester le mode non-eSOS par satellite réel"</string>
     <string name="demo_esos_satellite_string" msgid="2941811482168709730">"Tester eSOS par satellite en mode Démo (version de débogage uniquement)"</string>
-    <string name="demo_esos_satellite_label" msgid="1538811851871457718">"Tester eSOS par satellite en mode Démo"</string>
+    <string name="demo_esos_satellite_label" msgid="1538811851871457718">"Tester le mode eSOS par satellite en démo"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"Afficher le carnet d\'adresses de la carte SIM"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"Afficher les numéros d\'appel fixes"</string>
     <string name="radioInfo_menu_viewSDN" msgid="2613431584522392842">"Afficher les numéros de service"</string>

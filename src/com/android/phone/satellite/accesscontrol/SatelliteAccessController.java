@@ -192,6 +192,7 @@ public class SatelliteAccessController extends Handler {
     private static final int REQUEST_UPDATE_SYSTEM_SELECTION_CHANNELS = 12;
     private static final int REQUEST_SATELLITE_ACCESS_CONFIGURATION_FOR_CURRENT_LOCATION = 13;
     private static final int EVENT_LOCATION_PROVIDERS_CHANGED = 14;
+    private static final int EVENT_ACTION_PACKAGE_CHANGED = 15;
 
     public static final int DEFAULT_REGIONAL_SATELLITE_CONFIG_ID = 0;
     public static final int UNKNOWN_REGIONAL_SATELLITE_CONFIG_ID = -1;
@@ -743,6 +744,9 @@ public class SatelliteAccessController extends Handler {
             }
             case EVENT_LOCATION_PROVIDERS_CHANGED:
                 handleEventLocationProvidersChanged();
+                break;
+            case EVENT_ACTION_PACKAGE_CHANGED:
+                evaluatePossibleChangeInDefaultSmsApp((Context) msg.obj);
                 break;
             default:
                 plogw("SatelliteAccessControllerHandler: unexpected message code: " + msg.what);
@@ -2110,12 +2114,18 @@ public class SatelliteAccessController extends Handler {
         }
     }
 
-    private final BroadcastReceiver mDefaultSmsAppChangedBroadcastReceiver =
+    @VisibleForTesting(visibility = VisibleForTesting.Visibility.PRIVATE)
+    protected final BroadcastReceiver mDefaultSmsAppChangedBroadcastReceiver =
             new BroadcastReceiver() {
                 @Override
                 public void onReceive(Context context, Intent intent) {
                     if (intent.getAction()
                             .equals(Intent.ACTION_PACKAGE_CHANGED)) {
+                        if (mFeatureFlags.satelliteImproveMultiThreadDesign()) {
+                            sendRequestAsync(EVENT_ACTION_PACKAGE_CHANGED, context);
+                            return;
+                        }
+
                         evaluatePossibleChangeInDefaultSmsApp(context);
                     }
                 }

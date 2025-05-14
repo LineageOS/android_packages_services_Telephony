@@ -599,8 +599,8 @@
     <string name="importToFDNfromContacts" msgid="5068664870738407341">"Import z kontaktů"</string>
     <string name="singleContactImportedMsg" msgid="3619804066300998934">"Kontakt byl importován"</string>
     <string name="failedToImportSingleContactMsg" msgid="228095510489830266">"Kontakt se nepodařilo importovat"</string>
-    <string name="hac_mode_title" msgid="4127986689621125468">"Naslouchátka"</string>
-    <string name="hac_mode_summary" msgid="7774989500136009881">"Zapnout režim kompatibility s naslouchátkem"</string>
+    <string name="hac_mode_title" msgid="4127986689621125468">"Sluchadla"</string>
+    <string name="hac_mode_summary" msgid="7774989500136009881">"Zapnout režim kompatibility se sluchadly"</string>
     <string name="rtt_mode_title" msgid="3075948111362818043">"Hovor, během něhož můžete posílat zprávy (RTT)"</string>
     <string name="rtt_mode_summary" msgid="8631541375609989562">"Povolit posílání zpráv během hlasového hovoru"</string>
     <string name="rtt_mode_more_information" msgid="587500128658756318">"Funkce Okamžitý text (RTT) pomáhá volajícím, kteří neslyší, jsou nedoslýchaví, mají řečovou vadu, případně potřebují víc než jen hlas z jiného důvodu.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Další informace&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; – Text poslaný během hovoru se uloží jako přepis zpráv\n       &lt;br&gt; – Tato funkce není dostupná při videohovorech"</string>
