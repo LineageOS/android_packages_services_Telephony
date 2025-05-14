@@ -399,9 +399,6 @@ public class SatelliteAccessController extends Handler {
     @GuardedBy("mSatelliteDisallowedReasonsLock")
     private final List<Integer> mSatelliteDisallowedReasons = new ArrayList<>();
 
-    private boolean mIsLocationSettingsEnabled = false;
-    private boolean mIsLocationProviderEnabled = false;
-
     protected BroadcastReceiver mLocationModeChangedBroadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -454,6 +451,8 @@ public class SatelliteAccessController extends Handler {
     private AtomicBoolean mIsCurrentLocationEligibleForNotification = new AtomicBoolean(false);
     private AtomicBoolean mIsProvisionEligibleForNotification = new AtomicBoolean(false);
     private AtomicBoolean mIsAllowedStateCacheDisabledForCtsTest = new AtomicBoolean(false);
+    private AtomicBoolean mIsLocationSettingsEnabled = new AtomicBoolean(false);
+    private AtomicBoolean mIsLocationProviderEnabled = new AtomicBoolean(false);
 
     /** All the variables that require lock are declared here. */
     // Key: Config ID; Value: SatelliteAccessConfiguration
@@ -2372,7 +2371,7 @@ public class SatelliteAccessController extends Handler {
                 startWaitForCurrentLocationTimer();
             } catch (IllegalArgumentException ex) {
                 plogw("queryCurrentLocation: IllegalArgumentException: ex=" + ex
-                        + ", mIsLocationProviderEnabled=" + mIsLocationProviderEnabled);
+                        + ", mIsLocationProviderEnabled=" + mIsLocationProviderEnabled.get());
                 onCurrentLocationAvailable(null);
             }
         }
@@ -3436,14 +3435,14 @@ public class SatelliteAccessController extends Handler {
 
     private void handleEventLocationProvidersChanged() {
         plogd("handleEventLocationProvidersChanged: mIsLocationSettingsEnabled="
-                  + mIsLocationSettingsEnabled + ", mIsLocationProviderEnabled="
-                  + mIsLocationProviderEnabled);
-        if (!mIsLocationSettingsEnabled || !mIsLocationProviderEnabled) {
+                  + mIsLocationSettingsEnabled.get() + ", mIsLocationProviderEnabled="
+                  + mIsLocationProviderEnabled.get());
+        if (!mIsLocationSettingsEnabled.get() || !mIsLocationProviderEnabled.get()) {
             if (mLocationManager.isLocationEnabled()) {
                 plogd("Location settings is enabled");
-                mIsLocationSettingsEnabled = true;
+                mIsLocationSettingsEnabled.set(true);
                 if (mLocationManager.isProviderEnabled(LOCATION_PROVIDER)) {
-                    mIsLocationProviderEnabled = true;
+                    mIsLocationProviderEnabled.set(true);
                     plogd(LOCATION_PROVIDER + " provider is enabled");
                 }
 

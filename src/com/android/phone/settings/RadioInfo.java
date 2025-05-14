@@ -123,6 +123,7 @@ import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.RILConstants;
 import com.android.internal.telephony.euicc.EuiccConnector;
+import com.android.internal.telephony.satellite.SatelliteController;
 import com.android.internal.telephony.satellite.SatelliteServiceUtils;
 import com.android.phone.R;
 
@@ -2031,6 +2032,9 @@ public class RadioInfo extends AppCompatActivity {
                 int phoneId = mPhoneId;
                 if (isChecked) {
                     (new Thread(() -> {
+                        // Do not store current plmn as satellite plmn in allPlmnList during testing
+                        SatelliteController.getInstance()
+                                .setSatelliteIgnorePlmnListFromStorage(true);
                         // Override carrier config
                         PersistableBundle originalBundle = getCarrierConfig().getConfigForSubId(
                                 subId,
@@ -2079,6 +2083,9 @@ public class RadioInfo extends AppCompatActivity {
                 } else {
                     (new Thread(() -> {
                         try {
+                            // Reset to original configuration
+                            SatelliteController.getInstance()
+                                    .setSatelliteIgnorePlmnListFromStorage(false);
                             tm.setSystemSelectionChannels(
                                     Collections.emptyList() /* isSpecifyChannels false */);
                             log("Force satellite channel successfully cleared channels ");
