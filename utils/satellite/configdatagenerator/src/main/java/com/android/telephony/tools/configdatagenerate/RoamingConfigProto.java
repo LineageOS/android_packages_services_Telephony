@@ -16,11 +16,11 @@
 
 package com.android.telephony.tools.configdatagenerate;
 
-public class CarrierRoamingConfigProto {
+public class RoamingConfigProto {
 
-    int mMaxAllowedDataMode;
+    public Integer mMaxAllowedDataMode;
 
-    public CarrierRoamingConfigProto(int maxAllowedDataMode) {
+    public RoamingConfigProto(Integer maxAllowedDataMode) {
         this.mMaxAllowedDataMode = maxAllowedDataMode;
     }
 }

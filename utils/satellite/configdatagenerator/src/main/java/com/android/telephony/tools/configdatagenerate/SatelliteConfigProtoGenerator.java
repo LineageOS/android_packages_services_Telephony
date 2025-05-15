@@ -32,7 +32,7 @@ public class SatelliteConfigProtoGenerator {
     public static String sProtoResultFile = "telephony_config.pb";
     public static int sVersion;
     public static ArrayList<ServiceProto> sServiceProtoList;
-    public static CarrierRoamingConfigProto sCarrierRoamingConfig;
+    public static RoamingConfigProto sCarrierRoamingConfig;
     public static RegionProto sRegionProto;
 
     /**
@@ -89,26 +89,32 @@ public class SatelliteConfigProtoGenerator {
             // carrierRoamingConfigBuilder
             SatelliteConfigData.CarrierRoamingConfigProto.Builder carrierRoamingConfigBuilder =
                     SatelliteConfigData.CarrierRoamingConfigProto.newBuilder();
-            carrierRoamingConfigBuilder.setMaxAllowedDataMode(
-                    sCarrierRoamingConfig.mMaxAllowedDataMode);
+            if (sCarrierRoamingConfig.mMaxAllowedDataMode != null) {
+                carrierRoamingConfigBuilder.setMaxAllowedDataMode(
+                        sCarrierRoamingConfig.mMaxAllowedDataMode);
+            }
             satelliteConfigBuilder.setCarrierRoamingConfig(carrierRoamingConfigBuilder);
         }
 
         if (sRegionProto != null) {
+            System.out.println("sRegionProto");
             // satelliteRegionBuilder
             SatelliteConfigData.SatelliteRegionProto.Builder satelliteRegionBuilder =
                     SatelliteConfigData.SatelliteRegionProto.newBuilder();
 
             // mS2CellFileName
-            byte[] binaryData;
-            try {
-                binaryData = readFileToByteArray(sRegionProto.mS2CellFileName);
-            } catch (IOException e) {
-                throw new RuntimeException("Got exception in reading the file "
-                        + sRegionProto.mS2CellFileName + ", e=" + e);
-            }
-            if (binaryData != null) {
-                satelliteRegionBuilder.setS2CellFile(ByteString.copyFrom(binaryData));
+            if (sRegionProto.mS2CellFileName != null
+                    && !sRegionProto.mS2CellFileName.isEmpty()) {
+                byte[] s2SatBinaryData;
+                try {
+                    s2SatBinaryData = readFileToByteArray(sRegionProto.mS2CellFileName);
+                } catch (IOException e) {
+                    throw new RuntimeException("Got exception in reading the file "
+                            + sRegionProto.mS2CellFileName + ", e=" + e);
+                }
+                if (s2SatBinaryData != null) {
+                    satelliteRegionBuilder.setS2CellFile(ByteString.copyFrom(s2SatBinaryData));
+                }
             }
 
             // mCountryCodeList
@@ -122,7 +128,7 @@ public class SatelliteConfigProtoGenerator {
 
             // mSatelliteAccessConfigFileName
             if (sRegionProto.mSatelliteAccessConfigFileName != null
-                    && sRegionProto.mSatelliteAccessConfigFileName.length() > 0) {
+                    && !sRegionProto.mSatelliteAccessConfigFileName.isEmpty()) {
                 byte[] satelliteAccessBinaryData;
                 try {
                     satelliteAccessBinaryData =
@@ -142,11 +148,10 @@ public class SatelliteConfigProtoGenerator {
 
             satelliteConfigBuilder.setDeviceSatelliteRegion(satelliteRegionBuilder);
         } else {
-            System.out.print("RegionProto does not exist");
+            System.out.print("\nRegionProto does not exist");
         }
 
         telephonyConfigBuilder.setSatellite(satelliteConfigBuilder);
-
         writeToResultFile(telephonyConfigBuilder);
     }
 

@@ -21,7 +21,9 @@ import java.util.regex.Pattern;
 
 public class Util {
 
+    public static final int SERVICE_TYPE_INVALID = -1;
     public static final int SERVICE_TYPE_VOICE = 1;
+    public static final int SERVICE_TYPE_SMS = 3;
     public static final int SERVICE_TYPE_MMS = 6;
 
     private static final int FIRST_SERVICE_TYPE = SERVICE_TYPE_VOICE;
