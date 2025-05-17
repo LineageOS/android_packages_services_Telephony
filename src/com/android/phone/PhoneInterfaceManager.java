@@ -14265,13 +14265,17 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      * This API can be used by only CTS to override the satellite access allowed state for
      * a list of subscription IDs.
      *
+     * @param reset {@code true} mean the overridden configs should not be used, {@code false}
+     *              otherwise.
      * @param subIdListStr The string representation of the list of subscription IDs,
      *                     which are numbers separated by comma.
      * @return {@code true} if the satellite access allowed state is set successfully,
      * {@code false} otherwise.
      */
-    public boolean setSatelliteAccessAllowedForSubscriptions(@Nullable String subIdListStr) {
-        Log.d(LOG_TAG, "setSatelliteAccessAllowedForSubscriptions - " + subIdListStr);
+    public boolean setSatelliteAccessAllowedForSubscriptions(boolean reset,
+            @Nullable String subIdListStr) {
+        Log.d(LOG_TAG, "setSatelliteAccessAllowedForSubscriptions - " + subIdListStr
+            + ", reset=" + reset);
         TelephonyPermissions.enforceShellOnly(
                 Binder.getCallingUid(), "setSatelliteAccessAllowedForSubscriptions");
         TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(mApp,
@@ -14279,7 +14283,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 "setSatelliteAccessAllowedForSubscriptions");
         final long identity = Binder.clearCallingIdentity();
         try {
-            return mSatelliteController.setSatelliteAccessAllowedForSubscriptions(subIdListStr);
+            return mSatelliteController.setSatelliteAccessAllowedForSubscriptions(
+                reset, subIdListStr);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }

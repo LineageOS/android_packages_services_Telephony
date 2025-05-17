@@ -291,20 +291,6 @@ public class SatelliteAccessController extends Handler {
     @NonNull
     private final Set<ResultReceiver>
             mUpdateSystemSelectionChannelsResultReceivers = new HashSet<>();
-    @NonNull
-    private List<String> mSatelliteCountryCodes;
-    @Nullable
-    private File mSatelliteS2CellFile;
-    @Nullable
-    private File mSatelliteAccessConfigFile;
-    @NonNull
-    private List<String> mOverriddenSatelliteCountryCodes;
-    @Nullable
-    private File mOverriddenSatelliteS2CellFile;
-    @Nullable
-    private File mOverriddenSatelliteAccessConfigFile;
-    @Nullable
-    private String mOverriddenSatelliteConfigurationFileName;
 
     @GuardedBy("mLock")
     @NonNull
@@ -461,6 +447,25 @@ public class SatelliteAccessController extends Handler {
     @VisibleForTesting(visibility = VisibleForTesting.Visibility.PRIVATE)
     protected Map<Integer, SatelliteAccessConfiguration> mSatelliteAccessConfigMap;
 
+    @GuardedBy("mLock")
+    @NonNull
+    private List<String> mSatelliteCountryCodes;
+    @GuardedBy("mLock")
+    @Nullable
+    private File mSatelliteS2CellFile;
+    @GuardedBy("mLock")
+    @Nullable
+    private File mSatelliteAccessConfigFile;
+    @GuardedBy("mLock")
+    @NonNull
+    private List<String> mOverriddenSatelliteCountryCodes;
+    @GuardedBy("mLock")
+    @Nullable
+    private File mOverriddenSatelliteS2CellFile;
+    @GuardedBy("mLock")
+    @Nullable
+    private File mOverriddenSatelliteAccessConfigFile;
+
     /**
      * Create a SatelliteAccessController instance.
      *
@@ -510,7 +515,7 @@ public class SatelliteAccessController extends Handler {
         mSatelliteController.registerForSatelliteSubIdChanged(this,
                 EVENT_SATELLITE_SUBSCRIPTION_CHANGED, context);
         if (s2CellFile != null) {
-            mSatelliteS2CellFile = s2CellFile;
+            setSatelliteS2CellFile(s2CellFile);
         }
         mInternalSatelliteSupportedResultReceiver = new ResultReceiver(this) {
             @Override
@@ -1424,14 +1429,14 @@ public class SatelliteAccessController extends Handler {
         }
 
         mSatelliteAccessConfigVersion.set(satelliteAccessConfigVersion);
-        mSatelliteS2CellFile = localS2CellFile;
-        mSatelliteAccessConfigFile = localSatelliteAccessConfigFile;
-        mSatelliteCountryCodes = satelliteCountryCodes;
+        setSatelliteS2CellFile(localS2CellFile);
+        setSatelliteAccessConfigFile(localSatelliteAccessConfigFile);
+        setSatelliteCountryCodes(satelliteCountryCodes);
         mIsSatelliteAllowAccessControl.set(satelliteConfig.isSatelliteDataForAllowedRegion());
         plogd("mSatelliteAccessConfigVersion=" + mSatelliteAccessConfigVersion.get()
-                + ", Use s2 cell file=" + mSatelliteS2CellFile.getAbsolutePath()
-                + ", mSatelliteAccessConfigFile=" + mSatelliteAccessConfigFile.getAbsolutePath()
-                + ", country codes=" + String.join(",", mSatelliteCountryCodes)
+                + ", Use s2 cell file=" + getSatelliteS2CellFile().getAbsolutePath()
+                + ", mSatelliteAccessConfigFile=" + getSatelliteAccessConfigFile().getAbsolutePath()
+                + ", country codes=" + getSatelliteCountryCodesString()
                 + ", mIsSatelliteAllowAccessControl=" + mIsSatelliteAllowAccessControl.get()
                 + " from ConfigUpdater");
 
@@ -1454,25 +1459,27 @@ public class SatelliteAccessController extends Handler {
     @VisibleForTesting(visibility = VisibleForTesting.Visibility.PRIVATE)
     protected void loadOverlayConfigs(@NonNull Context context) {
         plogd("loadOverlayConfigs");
-        mSatelliteCountryCodes = getSatelliteCountryCodesFromOverlayConfig(context);
+        setSatelliteCountryCodes(getSatelliteCountryCodesFromOverlayConfig(context));
         mIsSatelliteAllowAccessControl.set(getSatelliteAccessAllowFromOverlayConfig(context));
         String satelliteS2CellFileName = getSatelliteS2CellFileFromOverlayConfig(context);
-        mSatelliteS2CellFile = TextUtils.isEmpty(satelliteS2CellFileName)
+        File satelliteS2CellFile = TextUtils.isEmpty(satelliteS2CellFileName)
                 ? null : new File(satelliteS2CellFileName);
-        if (mSatelliteS2CellFile != null && !mSatelliteS2CellFile.exists()) {
+        if (satelliteS2CellFile != null && !satelliteS2CellFile.exists()) {
             ploge("The satellite S2 cell file " + satelliteS2CellFileName + " does not exist");
-            mSatelliteS2CellFile = null;
+            satelliteS2CellFile = null;
         }
+        setSatelliteS2CellFile(satelliteS2CellFile);
 
         String satelliteAccessConfigFileName =
                 getSatelliteConfigurationFileNameFromOverlayConfig(context);
-        mSatelliteAccessConfigFile = TextUtils.isEmpty(satelliteAccessConfigFileName)
+        File satelliteAccessConfigFile = TextUtils.isEmpty(satelliteAccessConfigFileName)
                 ? null : new File(satelliteAccessConfigFileName);
-        if (mSatelliteAccessConfigFile != null && !mSatelliteAccessConfigFile.exists()) {
+        if (satelliteAccessConfigFile != null && !satelliteAccessConfigFile.exists()) {
             ploge("The satellite access config file " + satelliteAccessConfigFileName
                     + " does not exist");
-            mSatelliteAccessConfigFile = null;
+            satelliteAccessConfigFile = null;
         }
+        setSatelliteAccessConfigFile(satelliteAccessConfigFile);
 
         mLocationFreshDurationNanos.set(
                 getSatelliteLocationFreshDurationFromOverlayConfig(context));
@@ -1557,15 +1564,15 @@ public class SatelliteAccessController extends Handler {
         }
 
         mSatelliteAccessConfigVersion.set(satelliteConfigVersion);
-        mSatelliteS2CellFile = s2CellFile;
-        mSatelliteAccessConfigFile = satelliteAccessConfigJsonFile;
-        mSatelliteCountryCodes = countryCodes.stream().collect(Collectors.toList());
+        setSatelliteS2CellFile(s2CellFile);
+        setSatelliteAccessConfigFile(satelliteAccessConfigJsonFile);
+        setSatelliteCountryCodes(countryCodes.stream().collect(Collectors.toList()));
         mIsSatelliteAllowAccessControl.set(isSatelliteAllowAccessControl);
         plogd("loadConfigUpdaterConfigs: use satellite config data from configupdater: "
                 + " mSatelliteAccessConfigVersion=" + mSatelliteAccessConfigVersion.get()
-                + ", Use s2 cell file=" + mSatelliteS2CellFile.getAbsolutePath()
-                + ", mSatelliteAccessConfigFile=" + mSatelliteAccessConfigFile.getAbsolutePath()
-                + ", country codes=" + String.join(",", mSatelliteCountryCodes)
+                + ", Use s2 cell file=" + getSatelliteS2CellFile().getAbsolutePath()
+                + ", mSatelliteAccessConfigFile=" + getSatelliteAccessConfigFile().getAbsolutePath()
+                + ", country codes=" + getSatelliteCountryCodesString()
                 + ", mIsSatelliteAllowAccessControl=" + mIsSatelliteAllowAccessControl.get()
                 + " from ConfigUpdater");
         mAccessControllerMetricsStats.setConfigDataSource(
@@ -1599,6 +1606,12 @@ public class SatelliteAccessController extends Handler {
         return mLocationFreshDurationNanos.get();
     }
 
+    private void setSatelliteCountryCodes(List<String> satelliteCountryCodes) {
+        synchronized (mLock) {
+            mSatelliteCountryCodes = satelliteCountryCodes;
+        }
+    }
+
     /**
      * Returns a list of satellite country codes.
      *
@@ -1614,6 +1627,18 @@ public class SatelliteAccessController extends Handler {
         }
     }
 
+    private String getSatelliteCountryCodesString() {
+        synchronized (mLock) {
+            return String.join(",", getSatelliteCountryCodes());
+        }
+    }
+
+    private void setSatelliteS2CellFile(File s2CellFile) {
+        synchronized (mLock) {
+            mSatelliteS2CellFile = s2CellFile;
+        }
+    }
+
     /**
      * Returns a satellite s2 cell file
      *
@@ -1626,6 +1651,12 @@ public class SatelliteAccessController extends Handler {
                 return mOverriddenSatelliteS2CellFile;
             }
             return mSatelliteS2CellFile;
+        }
+    }
+
+    private void setSatelliteAccessConfigFile(File satelliteAccessConfigFile) {
+        synchronized (mLock) {
+            mSatelliteAccessConfigFile = satelliteAccessConfigFile;
         }
     }
 
@@ -2701,7 +2732,7 @@ public class SatelliteAccessController extends Handler {
                 mSatelliteOnDeviceAccessController = null;
                 setSatelliteAccessConfigMap(null);
                 if (!mIsOverlayConfigOverridden.get()) {
-                    mSatelliteS2CellFile = null;
+                    setSatelliteS2CellFile(null);
                 }
                 return false;
             }

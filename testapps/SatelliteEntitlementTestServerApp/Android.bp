@@ -1,0 +1,26 @@
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+android_app {
+    name: "SatelliteEntitlementTestServerApp",
+    system_ext_specific: true,
+    platform_apis: true,
+    manifest: "AndroidManifest.xml",
+    srcs: [
+        "src/**/*.java",
+    ],
+    libs: [
+        "telephony-common",
+    ],
+    static_libs: [
+        "androidx.appcompat_appcompat",
+        "SatelliteClient",
+    ],
+    min_sdk_version: "34",
+    target_sdk_version: "35",
+    uses_libs: ["org.apache.http.legacy"],
+    owner: "google",
+    privileged: true,
+    certificate: "platform",
+}
