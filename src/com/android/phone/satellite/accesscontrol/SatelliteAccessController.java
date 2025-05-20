@@ -283,12 +283,6 @@ public class SatelliteAccessController extends Handler {
     @NonNull
     private final ResultReceiver mInternalUpdateSystemSelectionChannelsResultReceiver;
     @NonNull
-    protected final Object mLock = new Object();
-    @GuardedBy("mLock")
-    @NonNull
-    private final List<CheckingAllowedStateRequestArguments>
-        mCheckingAllowedStateRequests = new ArrayList<>();
-    @NonNull
     private final Set<ResultReceiver>
             mUpdateSystemSelectionChannelsResultReceivers = new HashSet<>();
 
@@ -302,13 +296,7 @@ public class SatelliteAccessController extends Handler {
             return size() > MAX_CACHE_SIZE;
         }
     };
-    @GuardedBy("mLock")
-    @Nullable
-    protected CancellationSignal mLocationRequestCancellationSignal = null;
     private int mS2Level = DEFAULT_S2_LEVEL;
-    @GuardedBy("mLock")
-    @Nullable
-    private Location mFreshLastKnownLocation = null;
     @NonNull
     private final CarrierConfigManager mCarrierConfigManager;
     @NonNull
@@ -372,7 +360,6 @@ public class SatelliteAccessController extends Handler {
             mSatelliteCommunicationAccessStateChangedListeners = new ConcurrentHashMap<>();
     private final ConcurrentHashMap<IBinder, ISatelliteDisallowedReasonsCallback>
             mSatelliteDisallowedReasonsChangedListeners = new ConcurrentHashMap<>();
-    private final Object mSatelliteDisallowedReasonsLock = new Object();
 
     protected static final long ALLOWED_STATE_CACHE_VALID_DURATION_NANOS =
             TimeUnit.HOURS.toNanos(4);
@@ -382,8 +369,6 @@ public class SatelliteAccessController extends Handler {
     private final ConcurrentHashMap<Integer, Notification> mSatelliteUnAvailableNotifications =
             new ConcurrentHashMap<>();
     private NotificationManager mNotificationManager;
-    @GuardedBy("mSatelliteDisallowedReasonsLock")
-    private final List<Integer> mSatelliteDisallowedReasons = new ArrayList<>();
 
     protected BroadcastReceiver mLocationModeChangedBroadcastReceiver = new BroadcastReceiver() {
         @Override
@@ -442,6 +427,8 @@ public class SatelliteAccessController extends Handler {
 
     /** All the variables that require lock are declared here. */
     // Key: Config ID; Value: SatelliteAccessConfiguration
+    @NonNull
+    protected final Object mLock = new Object();
     @GuardedBy("mLock")
     @Nullable
     @VisibleForTesting(visibility = VisibleForTesting.Visibility.PRIVATE)
@@ -465,6 +452,22 @@ public class SatelliteAccessController extends Handler {
     @GuardedBy("mLock")
     @Nullable
     private File mOverriddenSatelliteAccessConfigFile;
+    private final Object mSatelliteDisallowedReasonsLock = new Object();
+    @GuardedBy("mSatelliteDisallowedReasonsLock")
+    private final List<Integer> mSatelliteDisallowedReasons = new ArrayList<>();
+
+    /**
+     * All the variables declared here should only be accessed by methods that run inside the
+     * handler thread.
+     */
+    @Nullable
+    protected CancellationSignal mLocationRequestCancellationSignal = null;
+    @Nullable
+    private Location mFreshLastKnownLocation = null;
+    @NonNull
+    private final List<CheckingAllowedStateRequestArguments>
+            mCheckingAllowedStateRequests = new ArrayList<>();
+
 
     /**
      * Create a SatelliteAccessController instance.
@@ -1496,16 +1499,13 @@ public class SatelliteAccessController extends Handler {
         logd("loadSatelliteAccessConfiguration");
         String satelliteConfigurationFileName;
         File satelliteAccessConfigFile = getSatelliteAccessConfigFile();
-        synchronized (mLock) {
-            if (satelliteAccessConfigFile != null) {
-                satelliteConfigurationFileName = satelliteAccessConfigFile.getAbsolutePath();
-            } else {
-                logd("loadSatelliteAccessConfiguration:");
-                satelliteConfigurationFileName = getSatelliteConfigurationFileNameFromOverlayConfig(
-                        mContext);
-            }
+        if (satelliteAccessConfigFile != null) {
+            satelliteConfigurationFileName = satelliteAccessConfigFile.getAbsolutePath();
+        } else {
+            logd("loadSatelliteAccessConfiguration:");
+            satelliteConfigurationFileName = getSatelliteConfigurationFileNameFromOverlayConfig(
+                    mContext);
         }
-
         loadSatelliteAccessConfigurationFileToMap(satelliteConfigurationFileName);
     }
 
@@ -1694,30 +1694,26 @@ public class SatelliteAccessController extends Handler {
 
     private void handleCmdIsSatelliteAllowedForCurrentLocation(
             @NonNull CheckingAllowedStateRequestArguments requestArguments) {
-        synchronized (mLock) {
-            mCheckingAllowedStateRequests.add(requestArguments);
-            if (mCheckingAllowedStateRequests.size() > 1) {
-                plogd("requestIsCommunicationAllowedForCurrentLocation is already being "
-                        + "processed");
-                return;
-            }
-            mTotalCheckingStartTimeMillis.set(System.currentTimeMillis());
-            mSatelliteController.requestIsSatelliteSupported(
-                    mInternalSatelliteSupportedResultReceiver);
+        mCheckingAllowedStateRequests.add(requestArguments);
+        if (mCheckingAllowedStateRequests.size() > 1) {
+            plogd("requestIsCommunicationAllowedForCurrentLocation is already being "
+                    + "processed");
+            return;
         }
+        mTotalCheckingStartTimeMillis.set(System.currentTimeMillis());
+        mSatelliteController.requestIsSatelliteSupported(
+                mInternalSatelliteSupportedResultReceiver);
     }
 
     private void handleWaitForCurrentLocationTimedOutEvent() {
         plogd("Timed out to wait for current location");
-        synchronized (mLock) {
-            if (mLocationRequestCancellationSignal != null) {
-                mLocationRequestCancellationSignal.cancel();
-                mLocationRequestCancellationSignal = null;
-                onCurrentLocationAvailable(null);
-            } else {
-                ploge("handleWaitForCurrentLocationTimedOutEvent: "
-                        + "mLocationRequestCancellationSignal is null");
-            }
+        if (mLocationRequestCancellationSignal != null) {
+            mLocationRequestCancellationSignal.cancel();
+            mLocationRequestCancellationSignal = null;
+            onCurrentLocationAvailable(null);
+        } else {
+            ploge("handleWaitForCurrentLocationTimedOutEvent: "
+                    + "mLocationRequestCancellationSignal is null");
         }
     }
 
@@ -1847,15 +1843,13 @@ public class SatelliteAccessController extends Handler {
                 break;
         }
 
-        synchronized (mLock) {
-            for (CheckingAllowedStateRequestArguments requestArguments
-                    : mCheckingAllowedStateRequests) {
-                requestArguments.getResultReceiver().send(resultCode, resultData);
-                mSatelliteController.decrementResultReceiverCount(
+        for (CheckingAllowedStateRequestArguments requestArguments
+                : mCheckingAllowedStateRequests) {
+            requestArguments.getResultReceiver().send(resultCode, resultData);
+            mSatelliteController.decrementResultReceiverCount(
                     "SAC:requestIsCommunicationAllowedForCurrentLocation");
-            }
-            mCheckingAllowedStateRequests.clear();
         }
+        mCheckingAllowedStateRequests.clear();
         if (!shouldRetryValidatingPossibleChangeInAllowedRegion(resultCode)) {
             setIsSatelliteAllowedRegionPossiblyChanged(false);
         }
@@ -2260,7 +2254,7 @@ public class SatelliteAccessController extends Handler {
      * Telephony-internal logic to verify if satellite access is restricted from the location query.
      */
     @VisibleForTesting(visibility = VisibleForTesting.Visibility.PRIVATE)
-    public void checkSatelliteAccessRestrictionUsingGPS() {
+    protected void checkSatelliteAccessRestrictionUsingGPS() {
         plogd("checkSatelliteAccessRestrictionUsingGPS:");
         if (isInEmergency()) {
             executeLocationQuery();
@@ -2310,10 +2304,8 @@ public class SatelliteAccessController extends Handler {
 
     private void executeLocationQuery() {
         plogd("executeLocationQuery");
-        synchronized (mLock) {
-            mFreshLastKnownLocation = getFreshLastKnownLocation();
-            checkSatelliteAccessRestrictionUsingOnDeviceData();
-        }
+        mFreshLastKnownLocation = getFreshLastKnownLocation();
+        checkSatelliteAccessRestrictionUsingOnDeviceData();
     }
 
     /**
@@ -2354,97 +2346,91 @@ public class SatelliteAccessController extends Handler {
      */
     private void checkSatelliteAccessRestrictionUsingOnDeviceData() {
         mOnDeviceLookupStartTimeMillis.set(System.currentTimeMillis());
-        synchronized (mLock) {
-            plogd("Use on-device data");
-            if (mFreshLastKnownLocation != null) {
+        plogd("Use on-device data");
+        if (mFreshLastKnownLocation != null) {
+            mAccessControllerMetricsStats.setAccessControlType(
+                    SatelliteConstants.ACCESS_CONTROL_TYPE_LAST_KNOWN_LOCATION);
+            checkSatelliteAccessRestrictionForLocation(mFreshLastKnownLocation);
+            mFreshLastKnownLocation = null;
+        } else {
+            Location freshLastKnownLocation = getFreshLastKnownLocation();
+            if (freshLastKnownLocation != null) {
                 mAccessControllerMetricsStats.setAccessControlType(
                         SatelliteConstants.ACCESS_CONTROL_TYPE_LAST_KNOWN_LOCATION);
-                checkSatelliteAccessRestrictionForLocation(mFreshLastKnownLocation);
-                mFreshLastKnownLocation = null;
+                checkSatelliteAccessRestrictionForLocation(freshLastKnownLocation);
             } else {
-                Location freshLastKnownLocation = getFreshLastKnownLocation();
-                if (freshLastKnownLocation != null) {
-                    mAccessControllerMetricsStats.setAccessControlType(
-                            SatelliteConstants.ACCESS_CONTROL_TYPE_LAST_KNOWN_LOCATION);
-                    checkSatelliteAccessRestrictionForLocation(freshLastKnownLocation);
-                } else {
-                    queryCurrentLocation();
-                }
+                queryCurrentLocation();
             }
         }
     }
 
     private void queryCurrentLocation() {
-        synchronized (mLock) {
-            if (mLocationRequestCancellationSignal != null) {
-                plogd("queryCurrentLocation : "
-                        + "Request for current location was already sent to LocationManager");
-                return;
-            }
+        if (mLocationRequestCancellationSignal != null) {
+            plogd("queryCurrentLocation : "
+                    + "Request for current location was already sent to LocationManager");
+            return;
+        }
 
-            if (isSatelliteAllowedRegionPossiblyChanged()) {
-                mLastLocationQueryForPossibleChangeInAllowedRegionTimeNanos.set(
-                        getElapsedRealtimeNanos());
-                plogd("mLastLocationQueryForPossibleChangeInAllowedRegionTimeNanos is set "
-                        + mLastLocationQueryForPossibleChangeInAllowedRegionTimeNanos.get());
-            }
+        if (isSatelliteAllowedRegionPossiblyChanged()) {
+            mLastLocationQueryForPossibleChangeInAllowedRegionTimeNanos.set(
+                    getElapsedRealtimeNanos());
+            plogd("mLastLocationQueryForPossibleChangeInAllowedRegionTimeNanos is set "
+                    + mLastLocationQueryForPossibleChangeInAllowedRegionTimeNanos.get());
+        }
 
-            try {
-                mLocationRequestCancellationSignal = new CancellationSignal();
-                mLocationManager.getCurrentLocation(LOCATION_PROVIDER,
-                        new LocationRequest.Builder(0)
-                                .setQuality(LocationRequest.QUALITY_HIGH_ACCURACY)
-                                .setLocationSettingsIgnored(isInEmergency())
-                                .build(),
-                        mLocationRequestCancellationSignal, this::post,
-                        this::onCurrentLocationAvailable);
-                mLocationQueryStartTimeMillis.set(System.currentTimeMillis());
-                startWaitForCurrentLocationTimer();
-            } catch (IllegalArgumentException ex) {
-                plogw("queryCurrentLocation: IllegalArgumentException: ex=" + ex
-                        + ", mIsLocationProviderEnabled=" + mIsLocationProviderEnabled.get());
-                onCurrentLocationAvailable(null);
-            }
+        try {
+            mLocationRequestCancellationSignal = new CancellationSignal();
+            mLocationManager.getCurrentLocation(LOCATION_PROVIDER,
+                    new LocationRequest.Builder(0)
+                            .setQuality(LocationRequest.QUALITY_HIGH_ACCURACY)
+                            .setLocationSettingsIgnored(isInEmergency())
+                            .build(),
+                    mLocationRequestCancellationSignal, this::post,
+                    this::onCurrentLocationAvailable);
+            mLocationQueryStartTimeMillis.set(System.currentTimeMillis());
+            startWaitForCurrentLocationTimer();
+        } catch (IllegalArgumentException ex) {
+            plogw("queryCurrentLocation: IllegalArgumentException: ex=" + ex
+                    + ", mIsLocationProviderEnabled=" + mIsLocationProviderEnabled.get());
+            onCurrentLocationAvailable(null);
         }
     }
 
     private void onCurrentLocationAvailable(@Nullable Location location) {
         plogd("onCurrentLocationAvailable " + (location != null));
-        synchronized (mLock) {
-            stopWaitForCurrentLocationTimer();
-            mLocationRequestCancellationSignal = null;
-            mAccessControllerMetricsStats.setLocationQueryTime(mLocationQueryStartTimeMillis.get());
-            Bundle bundle = new Bundle();
-            if (location != null) {
-                plogd("onCurrentLocationAvailable: lat=" + Rlog.pii(TAG, location.getLatitude())
-                        + ", long=" + Rlog.pii(TAG, location.getLongitude()));
-                if (location.isMock() && !isMockModemAllowed()) {
-                    logd("location is mock");
-                    bundle.putBoolean(KEY_SATELLITE_COMMUNICATION_ALLOWED, false);
-                    sendSatelliteAllowResultToReceivers(SATELLITE_RESULT_SUCCESS, bundle, false);
-                    return;
-                }
-                mAccessControllerMetricsStats.setAccessControlType(
-                        SatelliteConstants.ACCESS_CONTROL_TYPE_CURRENT_LOCATION);
-                mControllerMetricsStats.reportLocationQuerySuccessful(true);
-                checkSatelliteAccessRestrictionForLocation(location);
+        stopWaitForCurrentLocationTimer();
+        mLocationRequestCancellationSignal = null;
+        mAccessControllerMetricsStats.setLocationQueryTime(mLocationQueryStartTimeMillis.get());
+        Bundle bundle = new Bundle();
+        if (location != null) {
+            plogd("onCurrentLocationAvailable: lat=" + Rlog.pii(TAG, location.getLatitude())
+                    + ", long=" + Rlog.pii(TAG, location.getLongitude()));
+            if (location.isMock() && !isMockModemAllowed()) {
+                logd("location is mock");
+                bundle.putBoolean(KEY_SATELLITE_COMMUNICATION_ALLOWED, false);
+                sendSatelliteAllowResultToReceivers(SATELLITE_RESULT_SUCCESS, bundle, false);
+                return;
+            }
+            mAccessControllerMetricsStats.setAccessControlType(
+                    SatelliteConstants.ACCESS_CONTROL_TYPE_CURRENT_LOCATION);
+            mControllerMetricsStats.reportLocationQuerySuccessful(true);
+            checkSatelliteAccessRestrictionForLocation(location);
+            mIsCurrentLocationEligibleForNotification.set(true);
+        } else {
+            plogd("current location is not available");
+            if (isCommunicationAllowedCacheValid()) {
+                plogd("onCurrentLocationAvailable: cache is still valid, using it");
+                bundle.putBoolean(KEY_SATELLITE_COMMUNICATION_ALLOWED,
+                        mLatestSatelliteCommunicationAllowed.get());
+                sendSatelliteAllowResultToReceivers(SATELLITE_RESULT_SUCCESS, bundle,
+                        mLatestSatelliteCommunicationAllowed.get());
                 mIsCurrentLocationEligibleForNotification.set(true);
             } else {
-                plogd("current location is not available");
-                if (isCommunicationAllowedCacheValid()) {
-                    plogd("onCurrentLocationAvailable: cache is still valid, using it");
-                    bundle.putBoolean(KEY_SATELLITE_COMMUNICATION_ALLOWED,
-                            mLatestSatelliteCommunicationAllowed.get());
-                    sendSatelliteAllowResultToReceivers(SATELLITE_RESULT_SUCCESS, bundle,
-                            mLatestSatelliteCommunicationAllowed.get());
-                    mIsCurrentLocationEligibleForNotification.set(true);
-                } else {
-                    bundle.putBoolean(KEY_SATELLITE_COMMUNICATION_ALLOWED, false);
-                    sendSatelliteAllowResultToReceivers(
-                            SATELLITE_RESULT_LOCATION_NOT_AVAILABLE, bundle, false);
-                }
-                mControllerMetricsStats.reportLocationQuerySuccessful(false);
+                bundle.putBoolean(KEY_SATELLITE_COMMUNICATION_ALLOWED, false);
+                sendSatelliteAllowResultToReceivers(
+                        SATELLITE_RESULT_LOCATION_NOT_AVAILABLE, bundle, false);
             }
+            mControllerMetricsStats.reportLocationQuerySuccessful(false);
         }
     }
 
@@ -2613,14 +2599,10 @@ public class SatelliteAccessController extends Handler {
 
         Location freshLastKnownLocation = getFreshLastKnownLocation();
         if (freshLastKnownLocation != null) {
-            synchronized (mLock) {
-                mFreshLastKnownLocation = freshLastKnownLocation;
-            }
+            mFreshLastKnownLocation = freshLastKnownLocation;
             return true;
         } else {
-            synchronized (mLock) {
-                mFreshLastKnownLocation = null;
-            }
+            mFreshLastKnownLocation = null;
         }
         return false;
     }
@@ -3025,38 +3007,30 @@ public class SatelliteAccessController extends Handler {
     }
 
     private void startWaitForCurrentLocationTimer() {
-        synchronized (mLock) {
-            if (hasMessages(EVENT_WAIT_FOR_CURRENT_LOCATION_TIMEOUT)) {
-                plogw("WaitForCurrentLocationTimer is already started");
-                removeMessages(EVENT_WAIT_FOR_CURRENT_LOCATION_TIMEOUT);
-            }
-            sendEmptyMessageDelayed(EVENT_WAIT_FOR_CURRENT_LOCATION_TIMEOUT,
-                    WAIT_FOR_CURRENT_LOCATION_TIMEOUT_MILLIS);
+        if (hasMessages(EVENT_WAIT_FOR_CURRENT_LOCATION_TIMEOUT)) {
+            plogw("WaitForCurrentLocationTimer is already started");
+            removeMessages(EVENT_WAIT_FOR_CURRENT_LOCATION_TIMEOUT);
         }
+        sendEmptyMessageDelayed(EVENT_WAIT_FOR_CURRENT_LOCATION_TIMEOUT,
+                WAIT_FOR_CURRENT_LOCATION_TIMEOUT_MILLIS);
     }
 
     private void stopWaitForCurrentLocationTimer() {
-        synchronized (mLock) {
-            removeMessages(EVENT_WAIT_FOR_CURRENT_LOCATION_TIMEOUT);
-        }
+        removeMessages(EVENT_WAIT_FOR_CURRENT_LOCATION_TIMEOUT);
     }
 
     private void restartKeepOnDeviceAccessControllerResourcesTimer() {
-        synchronized (mLock) {
-            if (hasMessages(EVENT_KEEP_ON_DEVICE_ACCESS_CONTROLLER_RESOURCES_TIMEOUT)) {
-                plogd("KeepOnDeviceAccessControllerResourcesTimer is already started. "
-                        + "Restarting it...");
-                removeMessages(EVENT_KEEP_ON_DEVICE_ACCESS_CONTROLLER_RESOURCES_TIMEOUT);
-            }
-            sendEmptyMessageDelayed(EVENT_KEEP_ON_DEVICE_ACCESS_CONTROLLER_RESOURCES_TIMEOUT,
-                    KEEP_ON_DEVICE_ACCESS_CONTROLLER_RESOURCES_TIMEOUT_MILLIS);
+        if (hasMessages(EVENT_KEEP_ON_DEVICE_ACCESS_CONTROLLER_RESOURCES_TIMEOUT)) {
+            plogd("KeepOnDeviceAccessControllerResourcesTimer is already started. "
+                    + "Restarting it...");
+            removeMessages(EVENT_KEEP_ON_DEVICE_ACCESS_CONTROLLER_RESOURCES_TIMEOUT);
         }
+        sendEmptyMessageDelayed(EVENT_KEEP_ON_DEVICE_ACCESS_CONTROLLER_RESOURCES_TIMEOUT,
+                KEEP_ON_DEVICE_ACCESS_CONTROLLER_RESOURCES_TIMEOUT_MILLIS);
     }
 
     private void stopKeepOnDeviceAccessControllerResourcesTimer() {
-        synchronized (mLock) {
-            removeMessages(EVENT_KEEP_ON_DEVICE_ACCESS_CONTROLLER_RESOURCES_TIMEOUT);
-        }
+        removeMessages(EVENT_KEEP_ON_DEVICE_ACCESS_CONTROLLER_RESOURCES_TIMEOUT);
     }
 
     private void reportAnomaly(@NonNull String uuid, @NonNull String log) {
@@ -3477,10 +3451,7 @@ public class SatelliteAccessController extends Handler {
                     plogd(LOCATION_PROVIDER + " provider is enabled");
                 }
 
-                boolean isRequestsEmpty;
-                synchronized (mLock) {
-                    isRequestsEmpty = mCheckingAllowedStateRequests.isEmpty();
-                }
+                boolean isRequestsEmpty  = mCheckingAllowedStateRequests.isEmpty();
                 if (isRequestsEmpty) {
                     sendRequestAsync(EVENT_LOCATION_SETTINGS_ENABLED, null);
                 } else {
