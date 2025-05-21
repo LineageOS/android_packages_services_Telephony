@@ -2282,6 +2282,12 @@
     <string name="satellite_config_viewer">Satellite Config Viewer</string>
     <!-- Satellite config viewer screen. Label for the config data version -->
     <string name="satellite_config_version_label">version: </string>
+    <!-- Satellite config viewer screen. Label for the config data version for skylo -->
+    <string name="satellite_config_version_for_skylo_label">skylo version: </string>
+    <!-- Satellite config viewer screen. Label for the max allowed data mode -->
+    <string name="satellite_max_allowed_data_mode_label">max allowed data mode: </string>
+    <!-- Satellite config viewer screen. Label for the config data version for starlink -->
+    <string name="satellite_config_version_for_starlink_label">starlink version: </string>
     <!-- Satellite config viewer screen. Label for the subId/plmn/servicetype -->
     <string name="satellite_config_service_type_label">subId/plmn/servicetype: </string>
     <!-- Satellite config viewer screen. Label for the allow access -->

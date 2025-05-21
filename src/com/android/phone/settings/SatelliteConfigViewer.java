@@ -44,8 +44,10 @@ import java.util.List;
 public class SatelliteConfigViewer extends Activity {
     private static final String TAG = SatelliteConfigViewer.class.getSimpleName();
 
-    private TextView mVersion;
+    private TextView mStarlinkVersion;
+    private TextView mSkyloVersion;
     private TextView mServiceType;
+    private TextView mMaxAllowedDataMode;
     private TextView mAllowAccess;
     private TextView mCountryCodes;
     private TextView mSizeOfSats2;
@@ -71,8 +73,11 @@ public class SatelliteConfigViewer extends Activity {
         mSubId = intentRadioInfo.getIntExtra("mSubId", getDefaultSubscriptionId());
         Log.d(TAG, "SatelliteConfigViewer: mSubId: " + mSubId);
 
-        mVersion = (TextView) findViewById(R.id.version);
+        mStarlinkVersion = (TextView) findViewById(R.id.starlink_version);
         mServiceType = (TextView) findViewById(R.id.svc_type);
+        mMaxAllowedDataMode = (TextView) findViewById(R.id.max_allowed_data_mode);
+
+        mSkyloVersion = (TextView) findViewById(R.id.skylo_version);
         mAllowAccess = (TextView) findViewById(R.id.allow_access);
         mCountryCodes = (TextView) findViewById(R.id.country_codes);
         mSizeOfSats2 = (TextView) findViewById(R.id.size_of_sats2);
@@ -82,17 +87,45 @@ public class SatelliteConfigViewer extends Activity {
         mSatelliteAccessController = SatelliteAccessController.getOrCreateInstance(
                 getApplicationContext(), new FeatureFlagsImpl());
 
-        mVersion.setText(getSatelliteConfigVersion());
+        mStarlinkVersion.setText(getSatelliteConfigVersionForStarlink());
         mServiceType.setText(getSatelliteCarrierConfigUpdateData());
+        mMaxAllowedDataMode.setText(getMaxAllowedDataMode());
+
+        mSkyloVersion.setText(getSatelliteConfigVersionForSkylo());
         mAllowAccess.setText(getSatelliteAllowAccess());
         mCountryCodes.setText(getSatelliteConfigCountryCodes());
         mSizeOfSats2.setText(getSatelliteS2SatFileSize(getApplicationContext()));
         mConfigAccessJson.setText(getSatelliteConfigJsonFile(getApplicationContext()));
     }
 
-    private String getSatelliteConfigVersion() {
-        logd("getSatelliteConfigVersion");
+    private String getSatelliteConfigVersionForStarlink() {
+        logd("getSatelliteConfigVersionForStarlink");
+        int versionForStarlink = 0;
+        if (mSatelliteController.getSatelliteConfig() != null) {
+            versionForStarlink =
+                    mSatelliteController.getSatelliteConfig().getSatelliteConfigDataVersion();
+        }
+        return Integer.toString(versionForStarlink);
+    }
+
+    private String getSatelliteConfigVersionForSkylo() {
+        logd("getSatelliteConfigVersionForSkylo");
         return Integer.toString(mSatelliteAccessController.getSatelliteAccessConfigVersion());
+    }
+
+    private String getMaxAllowedDataMode() {
+        logd("getMaxAllowedDataMode");
+        int max_allowed_data_mode = mSatelliteController.getMaxAllowedDataMode();
+        switch (max_allowed_data_mode) {
+            case 0:
+                return max_allowed_data_mode + " (SATELLITE_DATA_SUPPORT_ONLY_RESTRICTED)";
+            case 1:
+                return max_allowed_data_mode + " (SATELLITE_DATA_SUPPORT_BANDWIDTH_CONSTRAINED)";
+            case 2:
+                return max_allowed_data_mode + " (SATELLITE_DATA_SUPPORT_ALL)";
+            default:
+                return "Not ready to show mSatelliteController.getMaxAllowedDataMode()";
+        }
     }
 
     private String getSatelliteCarrierConfigUpdateData() {
