@@ -15221,8 +15221,8 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      *
      * @param carrierIdentifier {@link CarrierIdentifier}.
      *
-     * @return carrier id from passing {@link CarrierIdentifier} or UNKNOWN_CARRIER_ID
-     * if the carrier cannot be identified
+     * @return carrier id from passing {@link CarrierIdentifier}. If parent carrier id is available,
+     * it will be returned. Or UNKNOWN_CARRIER_ID if the carrier cannot be identified
      */
     public int getCarrierIdFromIdentifier(@NonNull CarrierIdentifier carrierIdentifier) {
         enforceReadPrivilegedPermission("getCarrierIdFromIdentifier");
@@ -15231,7 +15231,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         final long identity = Binder.clearCallingIdentity();
         try {
-            return CarrierResolver.getCarrierIdFromIdentifier(mApp, carrierIdentifier);
+            return CarrierResolver.getCarrierIdFromIdentifier(mApp, carrierIdentifier, true);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }

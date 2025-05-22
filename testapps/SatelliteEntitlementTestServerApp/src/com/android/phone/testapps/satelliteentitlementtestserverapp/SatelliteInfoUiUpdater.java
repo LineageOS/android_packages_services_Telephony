@@ -83,7 +83,8 @@ public class SatelliteInfoUiUpdater {
     }
 
     public void updateNtnStatusTextView(TextView view) {
-        boolean isNonTerrestrialNetwork = mSatelliteManagerWrapper.isNonTerrestrialNetwork(mSubId);
+        boolean isNonTerrestrialNetwork = getSatelliteManagerWrapper().isNonTerrestrialNetwork(
+                mSubId);
         logd("isNonTerrestrialNetwork=" + isNonTerrestrialNetwork);
         String ntnStatus = "Is NTN : " + isNonTerrestrialNetwork;
         view.setText(ntnStatus);
@@ -92,7 +93,7 @@ public class SatelliteInfoUiUpdater {
 
     public void updateCurrentNtnStatusTextView(TextView view) {
         boolean isUsingNonTerrestrialNetwork =
-                mSatelliteManagerWrapper.isUsingNonTerrestrialNetwork(mSubId);
+                getSatelliteManagerWrapper().isUsingNonTerrestrialNetwork(mSubId);
         logd("isUsingNonTerrestrialNetwork=" + isUsingNonTerrestrialNetwork);
         String ntnUsingStatus = "Is Using NTN : " + isUsingNonTerrestrialNetwork;
         view.setText(ntnUsingStatus);
@@ -100,7 +101,7 @@ public class SatelliteInfoUiUpdater {
     }
 
     public void updateAvailableServicesTextView(TextView view) {
-        List<Integer> as = mSatelliteManagerWrapper.getAvailableServices(mSubId);
+        List<Integer> as = getSatelliteManagerWrapper().getAvailableServices(mSubId);
         String serviceList = convertAvailableServicesListToString(as);
         logd("getAvailableServices from WRAPPER =" + serviceList);
         view.setText(serviceList);

@@ -29,6 +29,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.android.phone.R;
 
@@ -38,6 +39,7 @@ import java.util.List;
 public class PhoneInformationV2 extends AppCompatActivity
         implements View.OnClickListener, PhoneInformationV2PhoneId {
     private static final String TAG = "PhoneInformationV2";
+    private PhoneInfoSharedViewModel mViewModel;
     private static final String SHARED_PREFERENCES = "PhoneInfoV2Prefs";
     private static final String KEY_LAST_SELECTED_TAB = "last_selected_nav_item_id";
     private static final int DEFAULT_PHONE_ID = 0;
@@ -51,6 +53,7 @@ public class PhoneInformationV2 extends AppCompatActivity
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.phone_information_v2);
+        mViewModel = new ViewModelProvider(this).get(PhoneInfoSharedViewModel.class);
         phoneId = DEFAULT_PHONE_ID;
         itemOneContainer = findViewById(R.id.nav_item_one_container);
         itemTwoContainer = findViewById(R.id.nav_item_two_container);
@@ -76,6 +79,13 @@ public class PhoneInformationV2 extends AppCompatActivity
     @Override
     public void onClick(View v) {
         selectNavItem(v.getId(), true);
+    }
+
+    @Override
+    public void onDestroy() {
+        if (mViewModel != null) {
+            mViewModel.resetToDefaults();
+        }
     }
 
     private void selectNavItem(int selectedItemId, boolean savePreference) {

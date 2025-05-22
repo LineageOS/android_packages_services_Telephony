@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="action_settings" msgid="7225042429670464305">"ക്രമീകരണം"</string>
+    <string name="server_running" msgid="757323360857060706">"സെർവർ പ്രവർത്തിക്കുന്നുണ്ട്"</string>
+    <string name="stop_server" msgid="6021916051636380279">"സെർവർ നിർത്തുക"</string>
+    <string name="server_down" msgid="6101311160545591567">"സെർവർ ലഭ്യമല്ല"</string>
+    <string name="start_server" msgid="3011851110037401246">"സെർവർ ആരംഭിക്കുക"</string>
+    <string name="SatelliteTestServer" msgid="7962421083554248947">"സാറ്റലൈറ്റ് ടെസ്റ്റ് സെര്‍വര്‍"</string>
+    <string name="client_request_textview" msgid="5379106493283719020">"ക്ലയന്റ് അഭ്യർത്ഥന:"</string>
+    <string name="entitlement_status_textview" msgid="4182364042860876726">"എൻടെെറ്റിൽമെന്റ് സ്റ്റാറ്റസ്:"</string>
+    <string name="entitlement_status_disable" msgid="2356975025060584723">"എൻടെെറ്റിൽമെന്റ് സ്റ്റാറ്റസ് \'പ്രവർത്തനരഹിതമാക്കി\' എന്നതായി സജ്ജീകരിച്ചു."</string>
+    <string name="entitlement_status_enable" msgid="1576820543295707752">"എൻടെെറ്റിൽമെന്റ് സ്റ്റാറ്റസ് \'പ്രവർത്തനക്ഷമമാക്കി\' എന്നതായി സജ്ജീകരിച്ചു."</string>
+    <string name="entitlement_status_incompatible" msgid="4618746073807600131">"എൻടെെറ്റിൽമെന്റ് സ്റ്റാറ്റസ് \'അനുയോജ്യമല്ല\' എന്നതായി സജ്ജീകരിച്ചു."</string>
+    <string name="entitlement_status_provisioning" msgid="7291623636504179107">"എൻടെെറ്റിൽമെന്റ് സ്റ്റാറ്റസ് \'പ്രൊവിഷനിംഗ്\' എന്നതായി സജ്ജീകരിച്ചു."</string>
+    <string name="plmn_change_textView" msgid="896130072065900789">"plmn ലിസ്റ്റ് മാറ്റാനാകും"</string>
+    <string name="plmn_change_button" msgid="4776495408690606074">"സംരക്ഷിക്കുക"</string>
+    <string name="plmn_restore_button" msgid="353201307416551274">"പുനഃസ്ഥാപിക്കുക"</string>
+    <string name="response_code_textview" msgid="7558995298281883364">"പ്രതികരണ കോഡ്:"</string>
+    <string name="server_response_textview" msgid="9059246990182640071">"സെർവർ പ്രതികരണം:"</string>
+    <string name="response_200" msgid="8428102249891629053">"ബോഡി ഉൾപ്പെടെയുള്ള സെർവർ പ്രതികരണ കോഡ് 200 ആയി സജ്ജീകരിച്ചിരിക്കുന്നു."</string>
+    <string name="response_no" msgid="9176850012409530616">"സെർവർ പ്രതികരണ കോഡ് \'പ്രതികരണമൊന്നുമില്ല\' എന്നതായി സജ്ജീകരിച്ചിരിക്കുന്നു."</string>
+    <string name="response_500" msgid="7093352648551561497">"സെർവർ പ്രതികരണ കോഡ് 500 ആയി സജ്ജീകരിച്ചിരിക്കുന്നു."</string>
+    <string name="response_503" msgid="5882347843594885590">"വീണ്ടും ശ്രമിക്കുക ഹെഡ്ഡർ ഉള്ള സെർവർ പ്രതികരണ കോഡ് 503 ആയി സജ്ജീകരിച്ചിരിക്കുന്നു."</string>
+    <string name="response_503_no_retry_after" msgid="6916161257226872448">"വീണ്ടും ശ്രമിക്കാനാവില്ല ഹെഡ്ഡർ ഉള്ള സെർവർ പ്രതികരണ കോഡ് 503 ആയി സജ്ജീകരിച്ചിരിക്കുന്നു."</string>
+    <string name="current_plmn" msgid="6531059723207151310">"നിലവിലെ Plmn :"</string>
+    <string name="refresh_button" msgid="4833927124437250565">"റീഫ്രഷ് ചെയ്യുക"</string>
+  <string-array name="entitlement_status_for_satellite">
+    <item msgid="2022601967050498274">"പ്രവർത്തനക്ഷമമാക്കി"</item>
+    <item msgid="359611466767264179">"പ്രവർത്തനരഹിതമാക്കി"</item>
+    <item msgid="272686018752211739">"അനുയോജ്യമല്ല"</item>
+    <item msgid="2230066359974626080">"പ്രൊവിഷനിംഗ്"</item>
+  </string-array>
+  <string-array name="response">
+    <item msgid="1082041511995374203">"200"</item>
+    <item msgid="8666345372187526327">"വേണ്ട"</item>
+    <item msgid="6929055236798363234">"500"</item>
+    <item msgid="1898895770647738117">"503"</item>
+    <item msgid="2420418633305128093">"503_NO_RETRY_AFTER"</item>
+  </string-array>
+</resources>

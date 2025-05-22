@@ -57,6 +57,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
@@ -69,6 +70,7 @@ import java.util.List;
 
 public class PhoneInformationV2FragmentSatellite extends Fragment {
     private static final String TAG = "PhoneInformationV2 Satellite";
+    private PhoneInfoSharedViewModel mViewModel;
     private PhoneInformationV2PhoneId mListener;
     private Switch mEnforceSatelliteChannel;
     private Switch mMockSatellite;
@@ -110,6 +112,7 @@ public class PhoneInformationV2FragmentSatellite extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mViewModel = new ViewModelProvider(requireActivity()).get(PhoneInfoSharedViewModel.class);
         log("onCreate");
     }
 
@@ -273,6 +276,21 @@ public class PhoneInformationV2FragmentSatellite extends Fragment {
                 };
         mPhoneButton0.setOnClickListener(selectionListener);
         mPhoneButton1.setOnClickListener(selectionListener);
+        updateUI();
+    }
+
+    private void updateUI() {
+        mCarrierSatelliteOriginalBundle[0] = mViewModel.getSatelliteEnabledBundle(0);
+        mCarrierSatelliteOriginalBundle[1] = mViewModel.getSatelliteEnabledBundle(1);
+        mSatelliteDataOriginalBundle[0] = mViewModel.getSatelliteDataModeBundle(0);
+        mSatelliteDataOriginalBundle[1] = mViewModel.getSatelliteDataModeBundle(1);
+        mMockSatellite.setChecked(
+                Boolean.TRUE.equals(mViewModel.getSatelliteEnabled(mPhoneId).getValue()));
+        mMockSatelliteData.setEnabled(
+                Boolean.TRUE.equals(mViewModel.getSatelliteDataEnabled(mPhoneId).getValue()));
+        setDataModeChangeVisibility(
+                Boolean.TRUE.equals(mViewModel.getSatelliteDataEnabled(mPhoneId).getValue()));
+        mViewModel.getSatelliteDataMode(mPhoneId);
     }
 
     private void updateSelectionVisuals() {
@@ -321,7 +339,6 @@ public class PhoneInformationV2FragmentSatellite extends Fragment {
     @Override
     public void onDestroy() {
         log("onDestroy");
-        clearOverride();
         super.onDestroy();
     }
 
@@ -346,21 +363,6 @@ public class PhoneInformationV2FragmentSatellite extends Fragment {
     public void onPause() {
         super.onPause();
         log("onPause: unregister phone & data intents");
-    }
-
-    private void clearOverride() {
-        for (int phoneId = 0; phoneId < sPhoneIndexLabels.length; phoneId++) {
-            if (mSystemUser) {
-                mPhone = PhoneFactory.getPhone(phoneId);
-            }
-            if (mCarrierSatelliteOriginalBundle[mPhoneId] != null) {
-                mMockSatelliteListener.onCheckedChanged(mMockSatellite, false);
-            }
-            if (mSatelliteDataOriginalBundle[mPhoneId] != null) {
-                mMockSatelliteDataSwitchListener.onCheckedChanged(mMockSatelliteDataSwitch, false);
-                mSatelliteDataOriginalBundle[mPhoneId] = null;
-            }
-        }
     }
 
     // returns array of string labels for each phone index. The array index is equal to the phone
@@ -649,6 +651,7 @@ public class PhoneInformationV2FragmentSatellite extends Fragment {
                                     KEY_CARRIER_ROAMING_SATELLITE_DEFAULT_SERVICES_INT_ARRAY,
                                     KEY_CARRIER_SUPPORTED_SATELLITE_SERVICES_PER_PROVIDER_BUNDLE);
             mSatelliteDataOriginalBundle[mPhoneId] = originalBundle;
+            mViewModel.setSatelliteDataModeBundle(originalBundle, mPhoneId);
             log("satData: OriginalConfig = " + originalBundle);
         }
         PersistableBundle currentBundle =
@@ -678,6 +681,7 @@ public class PhoneInformationV2FragmentSatellite extends Fragment {
     private final RadioGroup.OnCheckedChangeListener mMockSatelliteDataListener =
             (group, checkedId) -> {
                 int dataMode = CarrierConfigManager.SATELLITE_DATA_SUPPORT_ONLY_RESTRICTED;
+                mViewModel.setSatelliteDataMode(checkedId, mPhoneId);
                 switch (checkedId) {
                     case R.id.satellite_data_restricted:
                         dataMode = CarrierConfigManager.SATELLITE_DATA_SUPPORT_ONLY_RESTRICTED;
@@ -704,6 +708,7 @@ public class PhoneInformationV2FragmentSatellite extends Fragment {
     private final OnCheckedChangeListener mMockSatelliteDataSwitchListener =
             (buttonView, isChecked) -> {
                 log("satData: ServiceData enabling = " + isChecked);
+                mViewModel.setSatelliteDataModeEnabled(isChecked, mPhoneId);
                 if (isChecked) {
                     if (isValidOperator(mSubId)) {
                         updateSatelliteDataButton();
@@ -734,6 +739,7 @@ public class PhoneInformationV2FragmentSatellite extends Fragment {
             getCarrierConfig()
                     .overrideConfig(mSubId, mSatelliteDataOriginalBundle[mPhoneId], false);
             mSatelliteDataOriginalBundle[mPhoneId] = null;
+            mViewModel.setSatelliteDataModeBundle(null, mPhoneId);
         }
     }
 
@@ -745,6 +751,7 @@ public class PhoneInformationV2FragmentSatellite extends Fragment {
                 log("mMockSatelliteListener: Carrier config is null");
                 return;
             }
+            mViewModel.setSatelliteEnabled(isChecked, phoneId);
             if (isChecked) {
                 if (!isValidOperator(subId)) {
                     mMockSatellite.setChecked(false);
@@ -758,6 +765,7 @@ public class PhoneInformationV2FragmentSatellite extends Fragment {
                         KEY_SATELLITE_ENTITLEMENT_SUPPORTED_BOOL,
                         KEY_CARRIER_SUPPORTED_SATELLITE_SERVICES_PER_PROVIDER_BUNDLE);
                 mCarrierSatelliteOriginalBundle[phoneId] = originalBundle;
+                mViewModel.setSatelliteEnabledBundle(originalBundle, phoneId);
 
                 PersistableBundle overrideBundle = new PersistableBundle();
                 overrideBundle.putBoolean(KEY_SATELLITE_ATTACH_SUPPORTED_BOOL, true);
@@ -776,6 +784,7 @@ public class PhoneInformationV2FragmentSatellite extends Fragment {
                     getCarrierConfig().overrideConfig(
                             subId, mCarrierSatelliteOriginalBundle[phoneId], false);
                     mCarrierSatelliteOriginalBundle[phoneId] = null;
+                    mViewModel.setSatelliteEnabledBundle(null, phoneId);
                     log(
                             "mMockSatelliteListener: Successfully cleared mock for phone "
                                     + phoneId);

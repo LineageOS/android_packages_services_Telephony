@@ -83,6 +83,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
@@ -96,6 +97,7 @@ import java.util.concurrent.TimeUnit;
 
 public class PhoneInformationV2FragmentDataNetwork extends Fragment {
     private static final String TAG = "PhoneInformationV2 DataNetwork";
+    private PhoneInfoSharedViewModel mViewModel;
     private static final boolean IS_USER_BUILD = "user".equals(Build.TYPE);
     private PhoneInformationV2PhoneId mListener;
     private LinearLayout mPhoneButton0, mPhoneButton1;
@@ -255,6 +257,7 @@ public class PhoneInformationV2FragmentDataNetwork extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mViewModel = new ViewModelProvider(requireActivity()).get(PhoneInfoSharedViewModel.class);
         log("onCreate");
     }
 
@@ -459,6 +462,16 @@ public class PhoneInformationV2FragmentDataNetwork extends Fragment {
         mPhoneButton0.setOnClickListener(selectionListener);
         mPhoneButton1.setOnClickListener(selectionListener);
         restoreFromBundle(savedInstanceState);
+        updateUI();
+    }
+
+    private void updateUI() {
+        mSelectedSignalStrengthIndex[mPhoneId] =
+                mViewModel.getDataSignalStrength(mPhoneId).getValue();
+        mSelectedMockDataNetworkTypeIndex[mPhoneId] =
+                mViewModel.getDataNetworkTypeDisplay(mPhoneId).getValue();
+        mSimulateOos[mPhoneId] = Boolean.TRUE.equals(
+                mViewModel.getSimulateOutOfService(mPhoneId).getValue());
     }
 
     @Override
@@ -479,7 +492,6 @@ public class PhoneInformationV2FragmentDataNetwork extends Fragment {
     @Override
     public void onDestroy() {
         log("onDestroy");
-        clearOverride();
         super.onDestroy();
         if (mQueuedWork != null) {
             mQueuedWork.shutdown();
@@ -839,17 +851,11 @@ public class PhoneInformationV2FragmentDataNetwork extends Fragment {
         mPreferredNetworkType.setSelection(mPreferredNetworkTypeResult, true);
         mPreferredNetworkType.setOnItemSelectedListener(mPreferredNetworkHandler);
 
-        new Thread(
-                        () -> {
-                            int networkType =
-                                    (int) mTelephonyManager.getAllowedNetworkTypesBitmask();
-                            mHandler.post(
-                                    () ->
-                                            updatePreferredNetworkType(
-                                                    RadioAccessFamily.getNetworkTypeFromRaf(
-                                                            networkType)));
-                        })
-                .start();
+        new Thread(() -> {
+            int networkType = (int) mTelephonyManager.getAllowedNetworkTypesBitmask();
+            mHandler.post(() -> updatePreferredNetworkType(
+                    RadioAccessFamily.getNetworkTypeFromRaf(networkType)));
+        }).start();
 
         // mock signal strength
         mMockSignalStrength.setSelection(mSelectedSignalStrengthIndex[mPhoneId]);
@@ -881,23 +887,6 @@ public class PhoneInformationV2FragmentDataNetwork extends Fragment {
         }
 
         return phone;
-    }
-
-    private void clearOverride() {
-        for (int phoneId = 0; phoneId < sPhoneIndexLabels.length; phoneId++) {
-            if (mSystemUser) {
-                mPhone = PhoneFactory.getPhone(phoneId);
-            }
-            if (mSimulateOos[mPhoneId]) {
-                mSimulateOosOnChangeListener.onCheckedChanged(mSimulateOutOfServiceSwitch, false);
-            }
-            if (mSelectedSignalStrengthIndex[mPhoneId] > 0) {
-                mOnMockSignalStrengthSelectedListener.onItemSelected(null, null, 0 /*pos*/, 0);
-            }
-            if (mSelectedMockDataNetworkTypeIndex[mPhoneId] > 0) {
-                mOnMockDataNetworkTypeSelectedListener.onItemSelected(null, null, 0 /*pos*/, 0);
-            }
-        }
     }
 
     private static String[] getPhoneIndexLabels(TelephonyManager tm) {
@@ -1393,6 +1382,7 @@ public class PhoneInformationV2FragmentDataNetwork extends Fragment {
                     mSelectedSignalStrengthIndex[mPhoneId] = pos;
                     if (mSystemUser) {
                         mPhone.getTelephonyTester().setSignalStrength(SIGNAL_STRENGTH_LEVEL[pos]);
+                        mViewModel.setDataSignalStrength(pos, mPhoneId);
                     }
                 }
 
@@ -1404,6 +1394,7 @@ public class PhoneInformationV2FragmentDataNetwork extends Fragment {
                 public void onItemSelected(AdapterView<?> parent, View v, int pos, long id) {
                     log("mOnMockDataNetworkTypeSelectedListener: " + pos);
                     mSelectedMockDataNetworkTypeIndex[mPhoneId] = pos;
+                    mViewModel.setDataNetworkTypeDisplay(pos, mPhoneId);
                     Intent intent = new Intent("com.android.internal.telephony.TestServiceState");
                     if (pos > 0) {
                         log(
@@ -1452,6 +1443,7 @@ public class PhoneInformationV2FragmentDataNetwork extends Fragment {
     private final OnCheckedChangeListener mSimulateOosOnChangeListener =
             (bv, isChecked) -> {
                 Intent intent = new Intent("com.android.internal.telephony.TestServiceState");
+                mViewModel.setSimulateOutOfService(isChecked, mPhoneId);
                 if (isChecked) {
                     log("Send OOS override broadcast intent.");
                     intent.putExtra("data_reg_state", 1);

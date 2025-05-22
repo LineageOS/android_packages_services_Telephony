@@ -460,7 +460,7 @@
     <string name="auto_retry_mode_title" msgid="2985801935424422340">"Avto-qayta urinish"</string>
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"Avto-qayta urinish rejimini yoqish"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"Video qo‘ng‘iroq davomida TTY rejimini o‘zgartirish taqiqlangan"</string>
-    <string name="menu_add" msgid="5616487894975773141">"Kontaktni saqlash"</string>
+    <string name="menu_add" msgid="5616487894975773141">"Kontakt qoʻshish"</string>
     <string name="menu_edit" msgid="3593856941552460706">"Kontaktni tahrirlash"</string>
     <string name="menu_delete" msgid="6326861853830546488">"Kontaktni o‘chirish"</string>
     <string name="menu_dial" msgid="4178537318419450012">"Kontaktga qo‘ng‘iroq qilish"</string>

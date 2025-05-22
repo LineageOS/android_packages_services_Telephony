@@ -791,7 +791,7 @@ public class SatelliteAccessControllerTest extends TelephonyTestBase {
         ArgumentCaptor<Bundle> bundleCaptor = ArgumentCaptor.forClass(Bundle.class);
         ArgumentCaptor<Integer> regionalConfigIdCaptor = ArgumentCaptor.forClass(Integer.class);
         replaceInstance(SatelliteAccessController.class, "mS2Level",
-                mSatelliteAccessControllerUT, DEFAULT_S2_LEVEL);
+                mSatelliteAccessControllerUT, new AtomicInteger(DEFAULT_S2_LEVEL));
         Iterator<SatelliteAccessController.CheckingAllowedStateRequestArguments>
             mockRequestArgumentIterator = mock(Iterator.class);
         SatelliteAccessController.CheckingAllowedStateRequestArguments mockRequestArguments =
@@ -1913,7 +1913,7 @@ public class SatelliteAccessControllerTest extends TelephonyTestBase {
                 SatelliteAccessController.class,
                 "mS2Level",
                 mSatelliteAccessControllerUT,
-                DEFAULT_S2_LEVEL);
+                new AtomicInteger(DEFAULT_S2_LEVEL));
         when(mMockFeatureFlags.carrierRoamingNbIotNtn()).thenReturn(true);
         when(mMockContext.getResources()).thenReturn(mMockResources);
         when(mMockResources.getBoolean(

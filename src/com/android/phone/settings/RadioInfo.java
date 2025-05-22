@@ -584,6 +584,14 @@ public class RadioInfo extends AppCompatActivity {
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         SettingsConstants.setupEdgeToEdge(this);
+        int currentNightMode = getResources().getConfiguration().uiMode
+                & android.content.res.Configuration.UI_MODE_NIGHT_MASK;
+        if (currentNightMode == android.content.res.Configuration.UI_MODE_NIGHT_NO) {
+            // Light mode is active
+            View decorView = getWindow().getDecorView();
+            decorView.setSystemUiVisibility(decorView.getSystemUiVisibility()
+                    | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        }
         mSystemUser = android.os.Process.myUserHandle().isSystem();
         log("onCreate: mSystemUser=" + mSystemUser);
         UserManager userManager = getSystemService(UserManager.class);
