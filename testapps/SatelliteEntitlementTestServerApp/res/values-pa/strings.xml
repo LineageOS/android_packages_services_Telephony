@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="action_settings" msgid="7225042429670464305">"ਸੈਟਿੰਗਾਂ"</string>
+    <string name="server_running" msgid="757323360857060706">"ਸਰਵਰ ਚੱਲ ਰਿਹਾ ਹੈ"</string>
+    <string name="stop_server" msgid="6021916051636380279">"ਸਰਵਰ ਬੰਦ ਕਰੋ"</string>
+    <string name="server_down" msgid="6101311160545591567">"ਸਰਵਰ ਨਹੀਂ ਚੱਲ ਰਿਹਾ"</string>
+    <string name="start_server" msgid="3011851110037401246">"ਸਰਵਰ ਸ਼ੁਰੂ ਕਰੋ"</string>
+    <string name="SatelliteTestServer" msgid="7962421083554248947">"ਸੈਟੇਲਾਈਟ ਟੈਸਟ ਸਰਵਰ"</string>
+    <string name="client_request_textview" msgid="5379106493283719020">"ਕਲਾਇੰਟ ਦੀ ਬੇਨਤੀ:"</string>
+    <string name="entitlement_status_textview" msgid="4182364042860876726">"ਹੱਕਦਾਰੀ ਸਥਿਤੀ:"</string>
+    <string name="entitlement_status_disable" msgid="2356975025060584723">"ਹੱਕਦਾਰੀ ਸਥਿਤੀ \'ਬੰਦ\' \'ਤੇ ਸੈੱਟ ਹੈ।"</string>
+    <string name="entitlement_status_enable" msgid="1576820543295707752">"ਹੱਕਦਾਰੀ ਸਥਿਤੀ \'ਚਾਲੂ\' \'ਤੇ ਸੈੱਟ ਹੈ।"</string>
+    <string name="entitlement_status_incompatible" msgid="4618746073807600131">"ਹੱਕਦਾਰੀ ਸਥਿਤੀ \'ਗੈਰ-ਅਨੁਰੂਪ\' \'ਤੇ ਸੈੱਟ ਹੈ।"</string>
+    <string name="entitlement_status_provisioning" msgid="7291623636504179107">"ਹੱਕਦਾਰੀ ਸਥਿਤੀ \'ਪ੍ਰੋਵਿਜ਼ਨਿੰਗ\' \'ਤੇ ਸੈੱਟ ਹੈ।"</string>
+    <string name="plmn_change_textView" msgid="896130072065900789">"PLMN ਸੂਚੀ ਨੂੰ ਬਦਲਿਆ ਜਾ ਸਕਦਾ ਹੈ"</string>
+    <string name="plmn_change_button" msgid="4776495408690606074">"ਰੱਖਿਅਤ ਕਰੋ"</string>
+    <string name="plmn_restore_button" msgid="353201307416551274">"ਮੁੜ-ਬਹਾਲ ਕਰੋ"</string>
+    <string name="response_code_textview" msgid="7558995298281883364">"ਜਵਾਬੀ ਕੋਡ:"</string>
+    <string name="server_response_textview" msgid="9059246990182640071">"ਸਰਵਰ ਦਾ ਜਵਾਬ:"</string>
+    <string name="response_200" msgid="8428102249891629053">"ਸਰਵਰ ਜਵਾਬੀ ਕੋਡ, ਬਾਡੀ ਦੇ ਨਾਲ 200 \'ਤੇ ਸੈੱਟ ਹੈ।"</string>
+    <string name="response_no" msgid="9176850012409530616">"ਸਰਵਰ ਜਵਾਬੀ ਕੋਡ \'ਕੋਈ ਜਵਾਬ ਨਹੀਂ\' \'ਤੇ ਸੈੱਟ ਹੈ।"</string>
+    <string name="response_500" msgid="7093352648551561497">"ਸਰਵਰ ਜਵਾਬੀ ਕੋਡ 500 \'ਤੇ ਸੈੱਟ ਹੈ।"</string>
+    <string name="response_503" msgid="5882347843594885590">"ਸਰਵਰ ਜਵਾਬੀ ਕੋਡ, \'ਬਾਅਦ ਵਿੱਚ ਕੋਸ਼ਿਸ਼ ਕਰੋ\' ਸਿਰਲੇਖ ਦੇ ਨਾਲ 503 \'ਤੇ ਸੈੱਟ ਹੈ।"</string>
+    <string name="response_503_no_retry_after" msgid="6916161257226872448">"ਸਰਵਰ ਜਵਾਬੀ ਕੋਡ, \'ਬਾਅਦ ਵਿੱਚ ਕੋਸ਼ਿਸ਼ ਕਰੋ\' ਸਿਰਲੇਖ ਦੇ ਬਿਨਾਂ 503 \'ਤੇ ਸੈੱਟ ਹੈ।"</string>
+    <string name="current_plmn" msgid="6531059723207151310">"ਮੌਜੂਦਾ PLMN :"</string>
+    <string name="refresh_button" msgid="4833927124437250565">"ਰਿਫ੍ਰੈਸ਼ ਕਰੋ"</string>
+  <string-array name="entitlement_status_for_satellite">
+    <item msgid="2022601967050498274">"ਚਾਲੂ"</item>
+    <item msgid="359611466767264179">"ਬੰਦ"</item>
+    <item msgid="272686018752211739">"ਗੈਰ-ਅਨੁਰੂਪ"</item>
+    <item msgid="2230066359974626080">"ਪ੍ਰੋਵਿਜ਼ਨਿੰਗ"</item>
+  </string-array>
+  <string-array name="response">
+    <item msgid="1082041511995374203">"200"</item>
+    <item msgid="8666345372187526327">"ਨਹੀਂ"</item>
+    <item msgid="6929055236798363234">"500"</item>
+    <item msgid="1898895770647738117">"503"</item>
+    <item msgid="2420418633305128093">"503_NO_RETRY_AFTER"</item>
+  </string-array>
+</resources>

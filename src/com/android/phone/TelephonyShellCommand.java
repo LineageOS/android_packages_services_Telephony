@@ -217,6 +217,12 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             "set-is-satellite-communication-allowed-for-current-location-cache";
     private static final String SET_SATELLITE_SUBSCRIBERID_LIST_CHANGED_INTENT_COMPONENT =
             "set-satellite-subscriberid-list-changed-intent-component";
+    private static final String OVERRIDE_SATELLITE_ENTITLEMENT_QUERY_CONDITIONS =
+            "override-satellite-entitlement-entilement-query-conditions";
+    private static final String OVERRIDE_SATELLITE_ENTITLEMENT_STATUS_RESPONSE_FOR_CTS_TEST =
+            "override-satellite-entitlement-status-response-for-cts-test";
+    private static final String SET_MAX_ALLOWED_SATELLITE_DATA_MODE_FOR_CTS_TEST =
+            "set-max-allowed-satellite-data-mode-for-cts-test";
 
     private static final String  ADD_ATTACH_RESTRICTION_FOR_CARRIER =
             "add-attach-restriction-for-carrier";
@@ -446,6 +452,12 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                 return handleSetShouldSendDatagramToModemInDemoMode();
             case SET_SATELLITE_ACCESS_CONTROL_OVERLAY_CONFIGS:
                 return handleSetSatelliteAccessControlOverlayConfigs();
+            case OVERRIDE_SATELLITE_ENTITLEMENT_QUERY_CONDITIONS:
+                return handleOverrideSatelliteEntilementQueryConditions();
+            case OVERRIDE_SATELLITE_ENTITLEMENT_STATUS_RESPONSE_FOR_CTS_TEST:
+                return handleOverrideSatelliteEntitlementStatusResponseForCtsTest();
+            case SET_MAX_ALLOWED_SATELLITE_DATA_MODE_FOR_CTS_TEST:
+                return handleSetMaxAllowedSatelliteDataModeForCtsTest();
             case OVERRIDE_CONFIG_DATA_VERSION:
                 return handleOverrideConfigDataVersion();
             case SET_COUNTRY_CODES:
@@ -475,6 +487,7 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             case SET_SATELLITE_IGNORE_PLMN_LIST_FROM_STORAGE:
                 return handleSetSatelliteIgnorePlmnListFromStorage();
             default: {
+                Log.d(LOG_TAG, "handleDefaultCommands: cmd=" + cmd);
                 return handleDefaultCommands(cmd);
             }
         }
@@ -3419,6 +3432,7 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         PrintWriter errPw = getErrPrintWriter();
         int handoverType = -1;
         int delaySeconds = 0;
+        int simSlotIndex = 0;
 
         String opt;
         while ((opt = getNextOption()) != null) {
@@ -3443,14 +3457,24 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                     }
                     break;
                 }
+                case "-s": {
+                    try {
+                        simSlotIndex = Integer.parseInt(getNextArgRequired());
+                    } catch (NumberFormatException e) {
+                        errPw.println("SetEmergencyCallToSatelliteHandoverType: require an integer"
+                                + " for simSlotIndex");
+                        return -1;
+                    }
+                    break;
+                }
             }
         }
         Log.d(LOG_TAG, "handleSetEmergencyCallToSatelliteHandoverType: handoverType="
-                + handoverType + ", delaySeconds=" + delaySeconds);
+            + handoverType + ", delaySeconds=" + delaySeconds + ", simSlotIndex=" + simSlotIndex);
 
         try {
-            boolean result =
-                    mInterface.setEmergencyCallToSatelliteHandoverType(handoverType, delaySeconds);
+            boolean result = mInterface.setEmergencyCallToSatelliteHandoverType(
+                handoverType, delaySeconds, simSlotIndex);
             if (VDBG) {
                 Log.v(LOG_TAG, "setEmergencyCallToSatelliteHandoverType result =" + result);
             }
@@ -3870,6 +3894,123 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             getOutPrintWriter().println(result);
         } catch (RemoteException e) {
             Log.e(LOG_TAG, "setSatelliteAccessControlOverlayConfigs: ex=" + e.getMessage());
+            errPw.println("Exception: " + e.getMessage());
+            return -1;
+        }
+        return 0;
+    }
+
+    private int handleOverrideSatelliteEntitlementStatusResponseForCtsTest() {
+        PrintWriter errPw = getErrPrintWriter();
+        String opt;
+        String overriddenResponse = null;
+        boolean throwException = false;
+
+        while ((opt = getNextOption()) != null) {
+            Log.d(LOG_TAG,
+                "handleOverrideSatelliteEntitlementStatusResponseForCtsTest: opt=" + opt);
+            switch (opt) {
+                case "-r": {
+                    overriddenResponse = getNextArgRequired();
+                    break;
+                }
+                case "-t": {
+                    throwException = true;
+                    break;
+                }
+            }
+        }
+        Log.d(LOG_TAG, "handleOverrideSatelliteEntitlementStatusResponseForCtsTest("
+                + overriddenResponse + ", throwException=" + throwException + ")");
+        try {
+            boolean result = mInterface.overrideSatelliteEntilementStatusResponseForCtsTest(
+                    overriddenResponse, throwException);
+            if (VDBG) {
+                Log.v(LOG_TAG,
+                    "handleOverrideSatelliteEntitlementStatusResponseForCtsTest returns: "
+                    + result);
+            }
+            getOutPrintWriter().println(false);
+        } catch (RemoteException e) {
+            Log.w(LOG_TAG, "handleOverrideSatelliteEntitlementStatusResponseForCtsTest("
+                    + overriddenResponse
+                    + "), error = " + e.getMessage());
+            errPw.println("Exception: " + e.getMessage());
+            return -1;
+        }
+        return 0;
+    }
+
+    private int handleOverrideSatelliteEntilementQueryConditions() {
+        PrintWriter errPw = getErrPrintWriter();
+        String opt;
+        boolean ignoreInternetConnection = false;
+        boolean ignoreRefreshCondition = false;
+
+        while ((opt = getNextOption()) != null) {
+            Log.d(LOG_TAG,
+                "handleOverrideSatelliteEntilementQueryConditions: opt=" + opt);
+            switch (opt) {
+                case "-i": {
+                    ignoreInternetConnection = true;
+                    break;
+                }
+                case "-r": {
+                    ignoreRefreshCondition = true;
+                    break;
+                }
+            }
+        }
+        Log.d(LOG_TAG,
+            "handleOverrideSatelliteEntilementQueryConditions   (" + ignoreInternetConnection
+            + ", entilementRefreshDays=" + ignoreRefreshCondition + ")");
+        try {
+            boolean result = mInterface.overrideSatelliteEntilementQueryConditions(
+                    ignoreInternetConnection, ignoreRefreshCondition);
+            if (VDBG) {
+                Log.v(LOG_TAG,
+                    "handleOverrideSatelliteEntilementQueryConditions returns: "
+                    + result);
+            }
+            getOutPrintWriter().println(false);
+        } catch (RemoteException e) {
+            Log.w(LOG_TAG, "handleOverrideSatelliteEntilementQueryConditions("
+                + ignoreInternetConnection + ", entilementRefreshDays=" + ignoreRefreshCondition
+                + "), error = " + e.getMessage());
+            errPw.println("Exception: " + e.getMessage());
+            return -1;
+        }
+        return 0;
+    }
+
+    private int handleSetMaxAllowedSatelliteDataModeForCtsTest() {
+        PrintWriter errPw = getErrPrintWriter();
+        String opt;
+        int maxAllowedDataMode = -1;
+
+        while ((opt = getNextOption()) != null) {
+            Log.d(LOG_TAG,
+                "handleSetMaxAllowedSatelliteDataModeForCtsTest: opt=" + opt);
+            switch (opt) {
+                case "-m": {
+                    maxAllowedDataMode = Integer.parseInt(getNextArgRequired());
+                    break;
+                }
+            }
+        }
+        Log.d(LOG_TAG, "handleSetMaxAllowedSatelliteDataModeForCtsTest("
+                + maxAllowedDataMode + ")");
+        try {
+            boolean result = mInterface.setMaxAllowedSatelliteDataModeForCtsTest(
+                    maxAllowedDataMode);
+            if (VDBG) {
+                Log.v(LOG_TAG,
+                    "handleSetMaxAllowedSatelliteDataModeForCtsTest returns: " + result);
+            }
+            getOutPrintWriter().println(false);
+        } catch (RemoteException e) {
+            Log.w(LOG_TAG, "handleSetMaxAllowedSatelliteDataModeForCtsTest("
+                    + maxAllowedDataMode + "), error = " + e.getMessage());
             errPw.println("Exception: " + e.getMessage());
             return -1;
         }

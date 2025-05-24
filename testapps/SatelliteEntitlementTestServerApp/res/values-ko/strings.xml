@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="action_settings" msgid="7225042429670464305">"설정"</string>
+    <string name="server_running" msgid="757323360857060706">"서버 실행 중"</string>
+    <string name="stop_server" msgid="6021916051636380279">"서버 중지"</string>
+    <string name="server_down" msgid="6101311160545591567">"서버가 다운됨"</string>
+    <string name="start_server" msgid="3011851110037401246">"서버 시작"</string>
+    <string name="SatelliteTestServer" msgid="7962421083554248947">"위성 테스트 서버"</string>
+    <string name="client_request_textview" msgid="5379106493283719020">"클라이언트 요청:"</string>
+    <string name="entitlement_status_textview" msgid="4182364042860876726">"사용 권한 상태:"</string>
+    <string name="entitlement_status_disable" msgid="2356975025060584723">"사용 권한 상태가 \'사용 중지됨\'으로 설정되어 있습니다."</string>
+    <string name="entitlement_status_enable" msgid="1576820543295707752">"사용 권한 상태가 \'사용 설정됨\'으로 설정되어 있습니다."</string>
+    <string name="entitlement_status_incompatible" msgid="4618746073807600131">"사용 권한 상태가 \'호환되지 않음\'으로 설정되어 있습니다."</string>
+    <string name="entitlement_status_provisioning" msgid="7291623636504179107">"사용 권한 상태가 \'프로비저닝\'으로 설정되어 있습니다."</string>
+    <string name="plmn_change_textView" msgid="896130072065900789">"PLMN 목록을 변경할 수 있음"</string>
+    <string name="plmn_change_button" msgid="4776495408690606074">"저장"</string>
+    <string name="plmn_restore_button" msgid="353201307416551274">"복원"</string>
+    <string name="response_code_textview" msgid="7558995298281883364">"응답 코드:"</string>
+    <string name="server_response_textview" msgid="9059246990182640071">"서버 응답:"</string>
+    <string name="response_200" msgid="8428102249891629053">"서버 응답 코드가 본문과 함께 200으로 설정되었습니다."</string>
+    <string name="response_no" msgid="9176850012409530616">"서버 응답 코드가 \'응답 없음\'으로 설정되어 있습니다."</string>
+    <string name="response_500" msgid="7093352648551561497">"서버 응답 코드가 500으로 설정되었습니다."</string>
+    <string name="response_503" msgid="5882347843594885590">"서버 응답 코드가 Retry-After 헤더와 함께 503으로 설정되었습니다."</string>
+    <string name="response_503_no_retry_after" msgid="6916161257226872448">"서버 응답 코드가 503 no Retry-After 헤더로 설정되었습니다."</string>
+    <string name="current_plmn" msgid="6531059723207151310">"현재 PLMN :"</string>
+    <string name="refresh_button" msgid="4833927124437250565">"새로고침"</string>
+  <string-array name="entitlement_status_for_satellite">
+    <item msgid="2022601967050498274">"사용 설정됨"</item>
+    <item msgid="359611466767264179">"사용 중지됨"</item>
+    <item msgid="272686018752211739">"호환되지 않음"</item>
+    <item msgid="2230066359974626080">"프로비저닝"</item>
+  </string-array>
+  <string-array name="response">
+    <item msgid="1082041511995374203">"200"</item>
+    <item msgid="8666345372187526327">"NO"</item>
+    <item msgid="6929055236798363234">"500"</item>
+    <item msgid="1898895770647738117">"503"</item>
+    <item msgid="2420418633305128093">"503_NO_RETRY_AFTER"</item>
+  </string-array>
+</resources>

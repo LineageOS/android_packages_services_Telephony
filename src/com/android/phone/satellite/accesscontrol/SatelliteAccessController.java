@@ -2341,6 +2341,7 @@ public class SatelliteAccessController extends Handler {
         mOnDeviceLookupStartTimeMillis.set(System.currentTimeMillis());
         plogd("Use on-device data");
         if (mFreshLastKnownLocation != null) {
+            plogd("Use fresh last known location");
             mAccessControllerMetricsStats.setAccessControlType(
                     SatelliteConstants.ACCESS_CONTROL_TYPE_LAST_KNOWN_LOCATION);
             checkSatelliteAccessRestrictionForLocation(mFreshLastKnownLocation);
@@ -2348,6 +2349,7 @@ public class SatelliteAccessController extends Handler {
         } else {
             Location freshLastKnownLocation = getFreshLastKnownLocation();
             if (freshLastKnownLocation != null) {
+                plogd("Use fresh last known location");
                 mAccessControllerMetricsStats.setAccessControlType(
                         SatelliteConstants.ACCESS_CONTROL_TYPE_LAST_KNOWN_LOCATION);
                 checkSatelliteAccessRestrictionForLocation(freshLastKnownLocation);
@@ -2372,6 +2374,7 @@ public class SatelliteAccessController extends Handler {
         }
 
         try {
+            plogd("Querying current location");
             mLocationRequestCancellationSignal = new CancellationSignal();
             mLocationManager.getCurrentLocation(LOCATION_PROVIDER,
                     new LocationRequest.Builder(0)

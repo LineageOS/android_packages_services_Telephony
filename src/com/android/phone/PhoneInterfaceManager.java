@@ -438,6 +438,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
     private final SatelliteController mSatelliteController;
     private final SatelliteAccessController mSatelliteAccessController;
+    private final SatelliteEntitlementController mSatelliteEntitlementController;
     private final UserManager mUserManager;
     private final MainThreadHandler mMainThreadHandler;
     private final SharedPreferences mTelephonySharedPreferences;
@@ -2520,7 +2521,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
 
         // Create the SatelliteEntitlementController singleton, for using the get the
         // entitlementStatus for satellite service.
-        SatelliteEntitlementController.make(mApp, mFeatureFlags);
+        mSatelliteEntitlementController = SatelliteEntitlementController.make(mApp, mFeatureFlags);
     }
 
     @VisibleForTesting
@@ -14525,10 +14526,13 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
      *                     To disable the override, use -1 for handoverType.
      * @param delaySeconds The event EVENT_DISPLAY_EMERGENCY_MESSAGE will be sent to Dialer
      *                     delaySeconds after the emergency call starts.
+     * @param simSlotId The SIM slot ID to use for loading T911 conversation thread.
      * @return {@code true} if the handover type is set successfully, {@code false} otherwise.
      */
-    public boolean setEmergencyCallToSatelliteHandoverType(int handoverType, int delaySeconds) {
-        Log.d(LOG_TAG, "setEmergencyCallToSatelliteHandoverType - " + handoverType);
+    public boolean setEmergencyCallToSatelliteHandoverType(
+        int handoverType, int delaySeconds, int simSlotId) {
+        Log.d(LOG_TAG, "setEmergencyCallToSatelliteHandoverType - " + handoverType
+            + ", delaySeconds=" + delaySeconds + ", simSlotId=" + simSlotId);
         TelephonyPermissions.enforceShellOnly(
                 Binder.getCallingUid(), "setEmergencyCallToSatelliteHandoverType");
         TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(mApp,
@@ -14537,7 +14541,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         final long identity = Binder.clearCallingIdentity();
         try {
             return mSatelliteController.setEmergencyCallToSatelliteHandoverType(
-                    handoverType, delaySeconds);
+                    handoverType, delaySeconds, simSlotId);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
@@ -14689,6 +14693,84 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         try {
             return mSatelliteAccessController
                     .setIsSatelliteCommunicationAllowedForCurrentLocationCache(state);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * This API can be used by only CTS to override the satellite entitlement status response.
+     *
+     * @param overriddenEntilementStatusResponse the overridden entitlement status response.
+     * @param throwException whether to throw exception when receiving a request for entitlement
+     *                       status.
+     * @return {@code true} if the setting is successful, {@code false} otherwise.
+     */
+    public boolean overrideSatelliteEntilementStatusResponseForCtsTest(
+            String overriddenEntilementStatusResponse, boolean throwException) {
+        Log.d(LOG_TAG, "overrideSatelliteEntilementStatusResponseForCtsTest: "
+                + "overriddenEntilementStatusResponse=" + overriddenEntilementStatusResponse);
+        TelephonyPermissions.enforceShellOnly(
+                Binder.getCallingUid(),
+                "overrideSatelliteEntilementStatusResponseForCtsTest");
+        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(mApp,
+                SubscriptionManager.INVALID_SUBSCRIPTION_ID,
+                "overrideSatelliteEntilementStatusResponseForCtsTest");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return mSatelliteEntitlementController.overrideEntilementStatusResponseForCtsTest(
+                    overriddenEntilementStatusResponse, throwException);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * This API can be used by only CTS to override the entitlement query conditions.
+     *
+     * @param ignoreInternetConnection whether to ignore the internet connection check.
+     * @param ignoreRefreshCondition whether to ignore the refresh condition.
+     * @return {@code true} if the setting is successful, {@code false} otherwise.
+     */
+    public boolean overrideSatelliteEntilementQueryConditions(
+            boolean ignoreInternetConnection, boolean ignoreRefreshCondition) {
+        Log.d(LOG_TAG, "overrideSatelliteEntilementQueryConditions: "
+            + "ignoreInternetConnection=" + ignoreInternetConnection
+            + ", ignoreRefreshCondition=" + ignoreRefreshCondition);
+        TelephonyPermissions.enforceShellOnly(
+                Binder.getCallingUid(),
+                "overrideSatelliteEntilementQueryConditions");
+        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(mApp,
+                SubscriptionManager.INVALID_SUBSCRIPTION_ID,
+                "overrideEntilementQueryConditions");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return mSatelliteEntitlementController.overrideEntilementQueryConditions(
+                    ignoreInternetConnection, ignoreRefreshCondition);
+        } finally {
+            Binder.restoreCallingIdentity(identity);
+        }
+    }
+
+    /**
+     * This API can be used by only CTS to control the max allowed data mode.
+     *
+     * @param maxAllowedDataMode The max allowed data mode.
+     * @return {@code true} if the value is set successfully, {@code false} otherwise.
+     */
+    public boolean setMaxAllowedSatelliteDataModeForCtsTest(int maxAllowedDataMode) {
+        Log.d(LOG_TAG, "setMaxAllowedSatelliteDataModeForCtsTest: maxAllowedDataMode="
+                + maxAllowedDataMode);
+        TelephonyPermissions.enforceShellOnly(
+                Binder.getCallingUid(),
+                "setMaxAllowedSatelliteDataModeForCtsTest");
+        TelephonyPermissions.enforceCallingOrSelfModifyPermissionOrCarrierPrivilege(mApp,
+                SubscriptionManager.INVALID_SUBSCRIPTION_ID,
+                "setMaxAllowedSatelliteDataModeForCtsTest");
+        final long identity = Binder.clearCallingIdentity();
+        try {
+            return mSatelliteController.setMaxAllowedDataModeForCtsTest(
+                    maxAllowedDataMode);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }

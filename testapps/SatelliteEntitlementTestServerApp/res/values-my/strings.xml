@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="action_settings" msgid="7225042429670464305">"ဆက်တင်များ"</string>
+    <string name="server_running" msgid="757323360857060706">"ဆာဗာ လုပ်ဆောင်နေသည်"</string>
+    <string name="stop_server" msgid="6021916051636380279">"ဆာဗာ ရပ်ရန်"</string>
+    <string name="server_down" msgid="6101311160545591567">"ဆာဗာကျနေသည်"</string>
+    <string name="start_server" msgid="3011851110037401246">"ဆာဗာ စတင်ရန်"</string>
+    <string name="SatelliteTestServer" msgid="7962421083554248947">"ဂြိုဟ်တုစမ်းသပ်မှု ဆာဗာ"</string>
+    <string name="client_request_textview" msgid="5379106493283719020">"ကလိုင်းယင့် တောင်းဆိုမှု-"</string>
+    <string name="entitlement_status_textview" msgid="4182364042860876726">"ခံစားပိုင်ခွင့် အခြေအနေ-"</string>
+    <string name="entitlement_status_disable" msgid="2356975025060584723">"ခံစားပိုင်ခွင့် အခြေအနေကို ‘ပိတ်ထားသည်’ သို့ သတ်မှတ်ထားသည်။"</string>
+    <string name="entitlement_status_enable" msgid="1576820543295707752">"ခံစားပိုင်ခွင့် အခြေအနေကို ‘ဖွင့်ထားသည်’ သို့ သတ်မှတ်ထားသည်။"</string>
+    <string name="entitlement_status_incompatible" msgid="4618746073807600131">"ခံစားပိုင်ခွင့် အခြေအနေကို ‘တွဲဖက်မသုံးနိုင်ပါ’ သို့ သတ်မှတ်ထားသည်။"</string>
+    <string name="entitlement_status_provisioning" msgid="7291623636504179107">"ခံစားပိုင်ခွင့် အခြေအနေကို ‘ပံ့ပိုးပေးခြင်း’ သို့ သတ်မှတ်ထားသည်။"</string>
+    <string name="plmn_change_textView" msgid="896130072065900789">"Plmn စာရင်းကို ပြောင်းနိုင်သည်"</string>
+    <string name="plmn_change_button" msgid="4776495408690606074">"သိမ်းရန်"</string>
+    <string name="plmn_restore_button" msgid="353201307416551274">"ပြန်ယူရန်"</string>
+    <string name="response_code_textview" msgid="7558995298281883364">"တုံ့ပြန်မှုကုဒ်-"</string>
+    <string name="server_response_textview" msgid="9059246990182640071">"ဆာဗာတုံ့ပြန်မှု-"</string>
+    <string name="response_200" msgid="8428102249891629053">"ဆာဗာတုံ့ပြန်မှုကုဒ်ကို ‘စာကိုယ်ဖြင့် 200’ သို့ သတ်မှတ်ထားသည်။"</string>
+    <string name="response_no" msgid="9176850012409530616">"ဆာဗာတုံ့ပြန်မှုကုဒ်ကို ‘တုံ့ပြန်မှုမရှိ’ ဟု သတ်မှတ်ထားသည်။"</string>
+    <string name="response_500" msgid="7093352648551561497">"ဆာဗာတုံ့ပြန်မှုကုဒ်ကို ‘500’ သို့ သတ်မှတ်ထားသည်။"</string>
+    <string name="response_503" msgid="5882347843594885590">"ဆာဗာတုံ့ပြန်မှုကုဒ်ကို ‘ပြန်စမ်း၍ရသည့် ခေါင်းစီးဖြင့် 503’ သို့ သတ်မှတ်ထားသည်။"</string>
+    <string name="response_503_no_retry_after" msgid="6916161257226872448">"ဆာဗာတုံ့ပြန်မှုကုဒ်ကို ‘ပြန်စမ်း၍ရသည့် ခေါင်းစီးမပါသော 503’ သို့ သတ်မှတ်ထားသည်။"</string>
+    <string name="current_plmn" msgid="6531059723207151310">"လက်ရှိ Plmn-"</string>
+    <string name="refresh_button" msgid="4833927124437250565">"ပြန်လည်စတင်ရန်"</string>
+  <string-array name="entitlement_status_for_satellite">
+    <item msgid="2022601967050498274">"ဖွင့်ထားသည်"</item>
+    <item msgid="359611466767264179">"ပိတ်ထားသည်"</item>
+    <item msgid="272686018752211739">"တွဲဖက်မသုံးနိုင်ပါ"</item>
+    <item msgid="2230066359974626080">"ပံ့ပိုးပေးခြင်း"</item>
+  </string-array>
+  <string-array name="response">
+    <item msgid="1082041511995374203">"200"</item>
+    <item msgid="8666345372187526327">"NO"</item>
+    <item msgid="6929055236798363234">"500"</item>
+    <item msgid="1898895770647738117">"503"</item>
+    <item msgid="2420418633305128093">"503_NO_RETRY_AFTER"</item>
+  </string-array>
+</resources>

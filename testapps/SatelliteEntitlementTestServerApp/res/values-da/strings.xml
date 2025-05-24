@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="action_settings" msgid="7225042429670464305">"Indstillinger"</string>
+    <string name="server_running" msgid="757323360857060706">"Serveren kører"</string>
+    <string name="stop_server" msgid="6021916051636380279">"Stop server"</string>
+    <string name="server_down" msgid="6101311160545591567">"Serveren er nede"</string>
+    <string name="start_server" msgid="3011851110037401246">"Start server"</string>
+    <string name="SatelliteTestServer" msgid="7962421083554248947">"Satellittestserver"</string>
+    <string name="client_request_textview" msgid="5379106493283719020">"Klientanmodning:"</string>
+    <string name="entitlement_status_textview" msgid="4182364042860876726">"Status for berettigelse:"</string>
+    <string name="entitlement_status_disable" msgid="2356975025060584723">"Status for berettigelse er angivet som DEAKTIVERET."</string>
+    <string name="entitlement_status_enable" msgid="1576820543295707752">"Status for berettigelse er angivet som AKTIVERET."</string>
+    <string name="entitlement_status_incompatible" msgid="4618746073807600131">"Status for berettigelse er angivet som IKKE KOMPATIBEL."</string>
+    <string name="entitlement_status_provisioning" msgid="7291623636504179107">"Status for berettigelse er angivet som PROVISIONERER."</string>
+    <string name="plmn_change_textView" msgid="896130072065900789">"Kan ændre plmn-liste"</string>
+    <string name="plmn_change_button" msgid="4776495408690606074">"GEM"</string>
+    <string name="plmn_restore_button" msgid="353201307416551274">"GENDAN"</string>
+    <string name="response_code_textview" msgid="7558995298281883364">"Svarkode:"</string>
+    <string name="server_response_textview" msgid="9059246990182640071">"Serversvar:"</string>
+    <string name="response_200" msgid="8428102249891629053">"Serverens svarkode er angivet til 200 med brødtekst."</string>
+    <string name="response_no" msgid="9176850012409530616">"Serverens svarkode er angivet til intet Svar."</string>
+    <string name="response_500" msgid="7093352648551561497">"Serverens svarkode er angivet til 500."</string>
+    <string name="response_503" msgid="5882347843594885590">"Serverens svarkode er angivet til 503 med Retry-After-header."</string>
+    <string name="response_503_no_retry_after" msgid="6916161257226872448">"Serverens svarkode er angivet til 503, og der er ingen Retry-After-header."</string>
+    <string name="current_plmn" msgid="6531059723207151310">"Aktuel Plmn:"</string>
+    <string name="refresh_button" msgid="4833927124437250565">"Opdater"</string>
+  <string-array name="entitlement_status_for_satellite">
+    <item msgid="2022601967050498274">"AKTIVERET"</item>
+    <item msgid="359611466767264179">"DEAKTIVERET"</item>
+    <item msgid="272686018752211739">"IKKE KOMPATIBEL"</item>
+    <item msgid="2230066359974626080">"PROVISIONERER"</item>
+  </string-array>
+  <string-array name="response">
+    <item msgid="1082041511995374203">"200"</item>
+    <item msgid="8666345372187526327">"NEJ"</item>
+    <item msgid="6929055236798363234">"500"</item>
+    <item msgid="1898895770647738117">"503"</item>
+    <item msgid="2420418633305128093">"503_NO_RETRY_AFTER"</item>
+  </string-array>
+</resources>

@@ -17,10 +17,13 @@
 package com.android.phone.satellite.entitlement;
 
 import android.annotation.NonNull;
+import android.annotation.Nullable;
 import android.content.Context;
 import android.os.PersistableBundle;
 import android.telephony.CarrierConfigManager;
 
+import android.text.TextUtils;
+import android.util.Log;
 import com.android.libraries.entitlement.CarrierConfig;
 import com.android.libraries.entitlement.ServiceEntitlement;
 import com.android.libraries.entitlement.ServiceEntitlementException;
@@ -32,11 +35,15 @@ import com.android.libraries.entitlement.ServiceEntitlementRequest;
  * @hide
  */
 public class SatelliteEntitlementApi {
+    private static final String TAG = "SatelliteEntitlementApi";
     private static final String DEFAULT_APP_NAME = "androidSatmode";
     @NonNull
     private final ServiceEntitlement mServiceEntitlement;
     private final Context mContext;
     private final PersistableBundle mCarrierConfig;
+    @Nullable
+    private String mOverriddenEntilementStatusResponse = null;
+    private boolean mShouldThrowExceptionForCtsTest = false;
 
     public SatelliteEntitlementApi(@NonNull Context context,
             @NonNull PersistableBundle carrierConfig, @NonNull int subId) {
@@ -56,13 +63,25 @@ public class SatelliteEntitlementApi {
         requestBuilder.setAppName(getSatelliteEntitlementAppName(mCarrierConfig));
         ServiceEntitlementRequest request = requestBuilder.build();
 
-        String response = mServiceEntitlement.queryEntitlementStatus(
+        String response = queryEntitlementStatus(
                 ServiceEntitlement.APP_SATELLITE_ENTITLEMENT, request);
         SatelliteEntitlementResponse satelliteEntitlementResponse =
                 new SatelliteEntitlementResponse(response);
         return new SatelliteEntitlementResult(satelliteEntitlementResponse.getEntitlementStatus(),
                 satelliteEntitlementResponse.getPlmnAllowed(),
                 satelliteEntitlementResponse.getPlmnBarredList());
+    }
+
+    /**
+     * Set the overridden entitlement status response for CTS tests.
+     * @param overriddenEntilementStatusResponse The overridden entitlement status response.
+     * @param throwException Whether to throw exception when receiving a request for entitlement
+     *                       status.
+     */
+    void overrideEntilementStatusResponseForCtsTest(
+        String overriddenEntilementStatusResponse, boolean throwException) {
+        mOverriddenEntilementStatusResponse = overriddenEntilementStatusResponse;
+        mShouldThrowExceptionForCtsTest = throwException;
     }
 
     @NonNull
@@ -78,5 +97,21 @@ public class SatelliteEntitlementApi {
     private String getSatelliteEntitlementAppName(@NonNull PersistableBundle carrierConfig) {
         return carrierConfig.getString(
                 CarrierConfigManager.KEY_SATELLITE_ENTITLEMENT_APP_NAME_STRING, DEFAULT_APP_NAME);
+    }
+
+    @NonNull
+    private String queryEntitlementStatus(String appId, ServiceEntitlementRequest request)
+        throws ServiceEntitlementException {
+        if (mShouldThrowExceptionForCtsTest) {
+            throw new ServiceEntitlementException(
+                    ServiceEntitlementException.ERROR_EAP_AKA_FAILURE,
+                    "Throw exception for CTS test");
+        }
+        if (!TextUtils.isEmpty(mOverriddenEntilementStatusResponse)) {
+            Log.d(TAG, "queryEntitlementStatus: return the overridden response for CTS tests, "
+                    + "response=" + mOverriddenEntilementStatusResponse);
+            return mOverriddenEntilementStatusResponse;
+        }
+        return mServiceEntitlement.queryEntitlementStatus(appId, request);
     }
 }

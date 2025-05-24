@@ -28,11 +28,13 @@ import android.net.ConnectivityManager;
 import android.net.Network;
 import android.net.NetworkCapabilities;
 import android.net.NetworkRequest;
+import android.os.Build;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.Message;
 import android.os.PersistableBundle;
+import android.os.SystemProperties;
 import android.telephony.CarrierConfigManager;
 import android.telephony.Rlog;
 import android.telephony.SubscriptionManager;
@@ -53,29 +55,42 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * This class query the entitlement server to receive values for satellite services and passes the
  * response to the {@link com.android.internal.telephony.satellite.SatelliteController}.
+ *
  * @hide
  */
 public class SatelliteEntitlementController extends Handler {
     private static final String TAG = "SatelliteEntitlementController";
     @NonNull private static SatelliteEntitlementController sInstance;
+
     /** Message code used in handleMessage() */
     private static final int CMD_START_QUERY_ENTITLEMENT = 1;
+
     private static final int CMD_RETRY_QUERY_ENTITLEMENT = 2;
     private static final int CMD_SIM_REFRESH = 3;
     private static final int AIRPLANE_MODE_CHANGED = 4;
 
+    private static final String ALLOW_MOCK_MODEM_PROPERTY = "persist.radio.allow_mock_modem";
+    private static final String BOOT_ALLOW_MOCK_MODEM_PROPERTY = "ro.boot.radio.allow_mock_modem";
+    private static final boolean DEBUG = !"user".equals(Build.TYPE);
+
     /** Retry on next trigger event. */
     private static final int HTTP_RESPONSE_500 = 500;
-    /** Retry after the time specified in the “Retry-After” header. After retry count doesn't exceed
-     * MAX_RETRY_COUNT. */
-    private static final int HTTP_RESPONSE_503 = 503;
-    /** Default query refresh time is 1 month. */
 
+    /**
+     * Retry after the time specified in the “Retry-After” header. After retry count doesn't exceed
+     * MAX_RETRY_COUNT.
+     */
+    private static final int HTTP_RESPONSE_503 = 503;
+
+    /** Default query refresh time is 1 month. */
     private static final int DEFAULT_QUERY_REFRESH_DAYS = 7;
+
     private static final long INITIAL_DELAY_MILLIS = TimeUnit.MINUTES.toMillis(10); // 10 min
     private static final long MAX_DELAY_MILLIS = TimeUnit.DAYS.toMillis(5); // 5 days
     private static final int MULTIPLIER = 2;
@@ -83,8 +98,10 @@ public class SatelliteEntitlementController extends Handler {
 
     @NonNull private final SubscriptionManagerService mSubscriptionManagerService;
     @NonNull private final CarrierConfigManager mCarrierConfigManager;
-    @NonNull private final CarrierConfigManager.CarrierConfigChangeListener
-            mCarrierConfigChangeListener;
+
+    @NonNull
+    private final CarrierConfigManager.CarrierConfigChangeListener mCarrierConfigChangeListener;
+
     @NonNull private final ConnectivityManager mConnectivityManager;
     @NonNull private final ConnectivityManager.NetworkCallback mNetworkCallback;
     @NonNull private final BroadcastReceiver mReceiver;
@@ -93,68 +110,90 @@ public class SatelliteEntitlementController extends Handler {
     /** Map key : subId, value : ExponentialBackoff. */
     private ConcurrentHashMap<Integer, ExponentialBackoff> mExponentialBackoffPerSub =
             new ConcurrentHashMap<>();
+
     /** Map key : subId, value : SatelliteEntitlementResult. */
     private ConcurrentHashMap<Integer, SatelliteEntitlementResult>
             mSatelliteEntitlementResultPerSub = new ConcurrentHashMap<>();
+
     /** Map key : subId, value : the last query time to millis. */
     private ConcurrentHashMap<Integer, Long> mLastQueryTimePerSub = new ConcurrentHashMap<>();
-    /** Map key : subId, value : Count the number of retries caused by the 'ExponentialBackoff' and
-     * '503 error case with the Retry-After header'. */
+
+    /**
+     * Map key : subId, value : Count the number of retries caused by the 'ExponentialBackoff' and
+     * '503 error case with the Retry-After header'.
+     */
     private ConcurrentHashMap<Integer, Integer> mRetryCountPerSub = new ConcurrentHashMap<>();
+
     /** Map key : subId, value : Whether query is in progress. */
     private ConcurrentHashMap<Integer, Boolean> mIsEntitlementInProgressPerSub =
             new ConcurrentHashMap<>();
+
     /** Map key : slotId, value : The last used subId. */
     private ConcurrentHashMap<Integer, Integer> mSubIdPerSlot = new ConcurrentHashMap<>();
+
     @NonNull private final EntitlementMetricsStats mEntitlementMetricsStats;
+
     /** Feature flags to control behavior and errors. */
-    @NonNull
-    private final FeatureFlags mFeatureFlags;
+    @NonNull private final FeatureFlags mFeatureFlags;
+
+    private AtomicBoolean mShouldIgnoreInternetConnectionStateForCtsTest = new AtomicBoolean(false);
+    private AtomicBoolean mShouldIgnoreRefreshConditionForCtsTest = new AtomicBoolean(false);
+    private String mOverriddenEntilementStatusResponseForCtsTest = "";
+    private AtomicBoolean mShouldThrowExceptionForCtsTest = new AtomicBoolean(false);
 
     /**
      * Create the SatelliteEntitlementController singleton instance.
-     * @param context      The Context to use to create the SatelliteEntitlementController.
+     *
+     * @param context The Context to use to create the SatelliteEntitlementController.
      * @param featureFlags The feature flag.
+     * @return The SatelliteEntitlementController singleton instance.
      */
-    public static void make(@NonNull Context context, @NonNull FeatureFlags featureFlags) {
+    public static SatelliteEntitlementController make(
+            @NonNull Context context, @NonNull FeatureFlags featureFlags) {
         if (sInstance == null) {
             HandlerThread handlerThread = new HandlerThread(TAG);
             handlerThread.start();
-            sInstance = new SatelliteEntitlementController(
-                    context, handlerThread.getLooper(), featureFlags);
+            sInstance =
+                    new SatelliteEntitlementController(
+                            context, handlerThread.getLooper(), featureFlags);
         }
+        return sInstance;
     }
 
     /**
      * Create a SatelliteEntitlementController to request query to the entitlement server for
      * satellite services and receive responses.
      *
-     * @param context      The Context for the SatelliteEntitlementController.
-     * @param looper       The looper for the handler. It does not run on main thread.
+     * @param context The Context for the SatelliteEntitlementController.
+     * @param looper The looper for the handler. It does not run on main thread.
      */
     @VisibleForTesting(visibility = VisibleForTesting.Visibility.PRIVATE)
-    public SatelliteEntitlementController(@NonNull Context context, @NonNull Looper looper,
-            @NonNull FeatureFlags featureFlags) {
+    public SatelliteEntitlementController(
+            @NonNull Context context, @NonNull Looper looper, @NonNull FeatureFlags featureFlags) {
         super(looper);
         mContext = context;
         mFeatureFlags = featureFlags;
         mSubscriptionManagerService = SubscriptionManagerService.getInstance();
         mCarrierConfigManager = context.getSystemService(CarrierConfigManager.class);
-        mCarrierConfigChangeListener = (slotIndex, subId, carrierId, specificCarrierId) ->
-                handleCarrierConfigChanged(slotIndex, subId, carrierId, specificCarrierId);
+        mCarrierConfigChangeListener =
+                (slotIndex, subId, carrierId, specificCarrierId) ->
+                        handleCarrierConfigChanged(slotIndex, subId, carrierId, specificCarrierId);
         if (mCarrierConfigManager != null) {
-            mCarrierConfigManager.registerCarrierConfigChangeListener(this::post,
-                    mCarrierConfigChangeListener);
+            mCarrierConfigManager.registerCarrierConfigChangeListener(
+                    this::post, mCarrierConfigChangeListener);
         }
         mConnectivityManager = context.getSystemService(ConnectivityManager.class);
-        mNetworkCallback = new ConnectivityManager.NetworkCallback() {
-            @Override
-            public void onAvailable(Network network) {
-                handleInternetConnected();
-            }
-        };
-        NetworkRequest networkrequest = new NetworkRequest.Builder()
-                .addCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET).build();
+        mNetworkCallback =
+                new ConnectivityManager.NetworkCallback() {
+                    @Override
+                    public void onAvailable(Network network) {
+                        handleInternetConnected();
+                    }
+                };
+        NetworkRequest networkrequest =
+                new NetworkRequest.Builder()
+                        .addCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
+                        .build();
         mConnectivityManager.registerNetworkCallback(networkrequest, mNetworkCallback, this);
         mReceiver = new SatelliteEntitlementControllerReceiver();
         IntentFilter intentFilter = new IntentFilter();
@@ -188,11 +227,65 @@ public class SatelliteEntitlementController extends Handler {
         }
     }
 
-    private void handleCarrierConfigChanged(int slotIndex, int subId, int carrierId,
-            int specificCarrierId) {
-        logd("handleCarrierConfigChanged(): slotIndex(" + slotIndex + "), subId("
-                + subId + "), carrierId(" + carrierId + "), specificCarrierId("
-                + specificCarrierId + ")");
+    /**
+     * This API can be used by only CTS to set the ignore internet connection check.
+     *
+     * @param overriddenEntilementStatusResponse the overridden entitlement status response.
+     * @param throwException whether to throw exception when receiving a request for entitlement
+     *     status.
+     * @return {@code true} if the setting is successful, {@code false} otherwise.
+     */
+    public boolean overrideEntilementStatusResponseForCtsTest(
+            String overriddenEntilementStatusResponse, boolean throwException) {
+        if (!isMockModemAllowed()) {
+            logd("overrideEntilementStatusResponseForCtsTest: " + "mock modem not allowed.");
+            return false;
+        }
+
+        logd(
+                "overrideEntilementStatusResponseForCtsTest: overriddenEntilementStatusResponse="
+                        + overriddenEntilementStatusResponse);
+        mOverriddenEntilementStatusResponseForCtsTest = overriddenEntilementStatusResponse;
+        mShouldThrowExceptionForCtsTest.set(throwException);
+        return true;
+    }
+
+    /**
+     * This API can be used by only CTS to override the entitlement query conditions.
+     *
+     * @param ignoreInternetConnection whether to ignore the internet connection check.
+     * @param ignoreRefreshCondition whether to ignore the refresh condition.
+     * @return {@code true} if the setting is successful, {@code false} otherwise.
+     */
+    public boolean overrideEntilementQueryConditions(
+            boolean ignoreInternetConnection, boolean ignoreRefreshCondition) {
+        if (!isMockModemAllowed()) {
+            logd("overrideEntilementQueryConditions: " + "mock modem not allowed.");
+            return false;
+        }
+
+        logd(
+                "overrideEntilementQueryConditions: ignoreInternetConnection="
+                        + ignoreInternetConnection
+                        + ", ignoreRefreshCondition="
+                        + ignoreRefreshCondition);
+        mShouldIgnoreInternetConnectionStateForCtsTest.set(ignoreInternetConnection);
+        mShouldIgnoreRefreshConditionForCtsTest.set(ignoreRefreshCondition);
+        return true;
+    }
+
+    private void handleCarrierConfigChanged(
+            int slotIndex, int subId, int carrierId, int specificCarrierId) {
+        logd(
+                "handleCarrierConfigChanged(): slotIndex("
+                        + slotIndex
+                        + "), subId("
+                        + subId
+                        + "), carrierId("
+                        + carrierId
+                        + "), specificCarrierId("
+                        + specificCarrierId
+                        + ")");
         processSimChanged(slotIndex, subId);
         if (subId == SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
             return;
@@ -204,8 +297,8 @@ public class SatelliteEntitlementController extends Handler {
 
     // When SIM is removed or changed, then reset the previous subId's retry related objects.
     private void processSimChanged(int slotIndex, int subId) {
-        int previousSubId = mSubIdPerSlot.getOrDefault(slotIndex,
-                SubscriptionManager.INVALID_SUBSCRIPTION_ID);
+        int previousSubId =
+                mSubIdPerSlot.getOrDefault(slotIndex, SubscriptionManager.INVALID_SUBSCRIPTION_ID);
         logd("processSimChanged prev subId:" + previousSubId);
         if (previousSubId != subId) {
             mSubIdPerSlot.remove(slotIndex);
@@ -239,11 +332,15 @@ public class SatelliteEntitlementController extends Handler {
 
     private void handleSimRefresh() {
         resetEntitlementQueryCounts(cmdToString(CMD_SIM_REFRESH));
-        sendMessageDelayed(obtainMessage(CMD_START_QUERY_ENTITLEMENT),
-                TimeUnit.SECONDS.toMillis(10));
+        sendMessageDelayed(
+                obtainMessage(CMD_START_QUERY_ENTITLEMENT), TimeUnit.SECONDS.toMillis(10));
     }
 
     private boolean isInternetConnected() {
+        if (mShouldIgnoreInternetConnectionStateForCtsTest.get()) {
+            logd("isInternetConnected: ignore internet connection state for CTS test");
+            return true;
+        }
         Network activeNetwork = mConnectivityManager.getActiveNetwork();
         NetworkCapabilities networkCapabilities =
                 mConnectivityManager.getNetworkCapabilities(activeNetwork);
@@ -258,47 +355,55 @@ public class SatelliteEntitlementController extends Handler {
 
     private int[] getServiceTypeForEntitlementMetrics(Map<String, List<Integer>> map) {
         if (map == null || map.isEmpty()) {
-            return new int[]{};
+            return new int[] {};
         }
 
         return map.entrySet().stream()
                 .findFirst()
-                .map(entry -> {
-                    List<Integer> list = entry.getValue();
-                    if (list == null) {
-                        return new int[]{}; // Return empty array if the list is null
-                    }
-                    return list.stream().mapToInt(Integer::intValue).toArray();
-                })
-                .orElse(new int[]{}); // Return empty array if no entry is found
+                .map(
+                        entry -> {
+                            List<Integer> list = entry.getValue();
+                            if (list == null) {
+                                return new int[] {}; // Return empty array if the list is null
+                            }
+                            return list.stream().mapToInt(Integer::intValue).toArray();
+                        })
+                .orElse(new int[] {}); // Return empty array if no entry is found
     }
 
     private int getDataPolicyForEntitlementMetrics(Map<String, Integer> dataPolicyMap) {
         if (dataPolicyMap != null && !dataPolicyMap.isEmpty()) {
-            return dataPolicyMap.values().stream().findFirst()
-                    .orElse(-1);
+            return dataPolicyMap.values().stream().findFirst().orElse(-1);
         }
         return -1;
     }
 
-    private void reportSuccessForEntitlement(int subId, SatelliteEntitlementResult
-            entitlementResult) {
+    private void reportSuccessForEntitlement(
+            int subId, SatelliteEntitlementResult entitlementResult) {
         // allowed service info entitlement status
-        boolean isAllowedServiceInfo = !entitlementResult
-                .getAvailableServiceTypeInfoForPlmnList().isEmpty();
+        boolean isAllowedServiceInfo =
+                !entitlementResult.getAvailableServiceTypeInfoForPlmnList().isEmpty();
 
         int[] serviceType = new int[0];
         int dataPolicy = 0;
         if (isAllowedServiceInfo) {
-            serviceType = getServiceTypeForEntitlementMetrics(
-                    entitlementResult.getAvailableServiceTypeInfoForPlmnList());
-            dataPolicy = SatelliteController.getInstance().mapDataPolicyForMetrics(
-                    getDataPolicyForEntitlementMetrics(
-                    entitlementResult.getDataServicePolicyInfoForPlmnList()));
+            serviceType =
+                    getServiceTypeForEntitlementMetrics(
+                            entitlementResult.getAvailableServiceTypeInfoForPlmnList());
+            dataPolicy =
+                    SatelliteController.getInstance()
+                            .mapDataPolicyForMetrics(
+                                    getDataPolicyForEntitlementMetrics(
+                                            entitlementResult
+                                                    .getDataServicePolicyInfoForPlmnList()));
         }
-        mEntitlementMetricsStats.reportSuccess(subId,
-                getEntitlementStatus(entitlementResult), true, isAllowedServiceInfo,
-                serviceType, dataPolicy);
+        mEntitlementMetricsStats.reportSuccess(
+                subId,
+                getEntitlementStatus(entitlementResult),
+                true,
+                isAllowedServiceInfo,
+                serviceType,
+                dataPolicy);
     }
 
     /**
@@ -318,8 +423,7 @@ public class SatelliteEntitlementController extends Handler {
             try {
                 mIsEntitlementInProgressPerSub.put(subId, true);
                 logd("handleCmdStartQueryEntitlement: checkEntitlementStatus");
-                SatelliteEntitlementResult entitlementResult =  getSatelliteEntitlementApi(
-                        subId).checkEntitlementStatus();
+                SatelliteEntitlementResult entitlementResult = checkEntitlementStatus(subId);
                 mSatelliteEntitlementResultPerSub.put(subId, entitlementResult);
                 reportSuccessForEntitlement(subId, entitlementResult);
             } catch (ServiceEntitlementException e) {
@@ -336,9 +440,12 @@ public class SatelliteEntitlementController extends Handler {
                     continue;
                 } else if (isRetryAfterError(e)) {
                     long retryAfterSeconds = parseSecondsFromRetryAfter(e.getRetryAfter());
-                    logd("StartQuery: next retry will be in " + TimeUnit.SECONDS.toMillis(
-                            retryAfterSeconds) + " sec");
-                    sendMessageDelayed(obtainMessage(CMD_RETRY_QUERY_ENTITLEMENT, subId, 0),
+                    logd(
+                            "StartQuery: next retry will be in "
+                                    + TimeUnit.SECONDS.toMillis(retryAfterSeconds)
+                                    + " sec");
+                    sendMessageDelayed(
+                            obtainMessage(CMD_RETRY_QUERY_ENTITLEMENT, subId, 0),
                             TimeUnit.SECONDS.toMillis(retryAfterSeconds));
                     stopExponentialBackoff(subId);
                     continue;
@@ -351,8 +458,10 @@ public class SatelliteEntitlementController extends Handler {
         }
     }
 
-    /** When airplane mode changes from on to off, reset the values required to start the first
-     * query. */
+    /**
+     * When airplane mode changes from on to off, reset the values required to start the first
+     * query.
+     */
     private void resetEntitlementQueryCounts(String event) {
         logd("resetEntitlementQueryCounts: " + event);
         mLastQueryTimePerSub = new ConcurrentHashMap<>();
@@ -365,11 +474,10 @@ public class SatelliteEntitlementController extends Handler {
      * If the HTTP response does not receive a body containing the 200 ok with sat mode
      * configuration,
      *
-     * 1. If the 500 response received, then no more retry until next event occurred.
-     * 2. If the 503 response with Retry-After header received, then the query is retried until
-     * MAX_RETRY_COUNT.
-     * 3. If other response or exception is occurred, then the query is retried until
-     * MAX_RETRY_COUNT is reached using the ExponentialBackoff.
+     * <p>1. If the 500 response received, then no more retry until next event occurred. 2. If the
+     * 503 response with Retry-After header received, then the query is retried until
+     * MAX_RETRY_COUNT. 3. If other response or exception is occurred, then the query is retried
+     * until MAX_RETRY_COUNT is reached using the ExponentialBackoff.
      */
     private void handleCmdRetryQueryEntitlement(int subId) {
         if (!shouldRetryQueryEntitlement(subId)) {
@@ -380,8 +488,7 @@ public class SatelliteEntitlementController extends Handler {
             mRetryCountPerSub.put(subId, currentRetryCount + 1);
             logd("[" + subId + "] retry cnt:" + getRetryCount(subId));
             logd("handleCmdRetryQueryEntitlement: checkEntitlementStatus");
-            SatelliteEntitlementResult entitlementResult =  getSatelliteEntitlementApi(
-                    subId).checkEntitlementStatus();
+            SatelliteEntitlementResult entitlementResult = checkEntitlementStatus(subId);
             mSatelliteEntitlementResultPerSub.put(subId, entitlementResult);
             reportSuccessForEntitlement(subId, entitlementResult);
         } catch (ServiceEntitlementException e) {
@@ -404,9 +511,12 @@ public class SatelliteEntitlementController extends Handler {
                 return;
             } else if (isRetryAfterError(e)) {
                 long retryAfterSeconds = parseSecondsFromRetryAfter(e.getRetryAfter());
-                logd("retryQuery: next retry will be in " + TimeUnit.SECONDS.toMillis(
-                        retryAfterSeconds) + " sec");
-                sendMessageDelayed(obtainMessage(CMD_RETRY_QUERY_ENTITLEMENT, subId, 0),
+                logd(
+                        "retryQuery: next retry will be in "
+                                + TimeUnit.SECONDS.toMillis(retryAfterSeconds)
+                                + " sec");
+                sendMessageDelayed(
+                        obtainMessage(CMD_RETRY_QUERY_ENTITLEMENT, subId, 0),
                         TimeUnit.SECONDS.toMillis(retryAfterSeconds));
                 stopExponentialBackoff(subId);
                 return;
@@ -416,8 +526,10 @@ public class SatelliteEntitlementController extends Handler {
                     startExponentialBackoff(subId);
                 } else {
                     exponentialBackoff.notifyFailed();
-                    logd("retryQuery: The next retry will be in "
-                            + exponentialBackoff.getCurrentDelay() + " ms.");
+                    logd(
+                            "retryQuery: The next retry will be in "
+                                    + exponentialBackoff.getCurrentDelay()
+                                    + " ms.");
                 }
                 return;
             }
@@ -430,12 +542,15 @@ public class SatelliteEntitlementController extends Handler {
         return e.getHttpStatus() == HTTP_RESPONSE_500;
     }
 
-    /** If the 503 response with Retry-After header, retry is attempted according to the value in
-     * the Retry-After header up to MAX_RETRY_COUNT. */
+    /**
+     * If the 503 response with Retry-After header, retry is attempted according to the value in the
+     * Retry-After header up to MAX_RETRY_COUNT.
+     */
     private boolean isRetryAfterError(ServiceEntitlementException e) {
         int responseCode = e.getHttpStatus();
         logd("shouldRetryAfterError: received the " + responseCode);
-        if (responseCode == HTTP_RESPONSE_503 && e.getRetryAfter() != null
+        if (responseCode == HTTP_RESPONSE_503
+                && e.getRetryAfter() != null
                 && !e.getRetryAfter().isEmpty()) {
             long retryAfterSeconds = parseSecondsFromRetryAfter(e.getRetryAfter());
             if (retryAfterSeconds == -1) {
@@ -465,22 +580,33 @@ public class SatelliteEntitlementController extends Handler {
 
     private void startExponentialBackoff(int subId) {
         stopExponentialBackoff(subId);
-        mExponentialBackoffPerSub.put(subId,
-                new ExponentialBackoff(INITIAL_DELAY_MILLIS, MAX_DELAY_MILLIS,
-                        MULTIPLIER, this.getLooper(), () -> {
-                    sendMessage(obtainMessage(CMD_RETRY_QUERY_ENTITLEMENT, subId, 0));
-                }));
+        mExponentialBackoffPerSub.put(
+                subId,
+                new ExponentialBackoff(
+                        INITIAL_DELAY_MILLIS,
+                        MAX_DELAY_MILLIS,
+                        MULTIPLIER,
+                        this.getLooper(),
+                        () -> {
+                            sendMessage(obtainMessage(CMD_RETRY_QUERY_ENTITLEMENT, subId, 0));
+                        }));
 
         ExponentialBackoff exponentialBackoff = mExponentialBackoffPerSub.get(subId);
         if (exponentialBackoff != null) {
             exponentialBackoff.start();
-            logd("start ExponentialBackoff, cnt: " + getRetryCount(subId) + ". Retrying in "
-                    + exponentialBackoff.getCurrentDelay() + " ms.");
+            logd(
+                    "start ExponentialBackoff, cnt: "
+                            + getRetryCount(subId)
+                            + ". Retrying in "
+                            + exponentialBackoff.getCurrentDelay()
+                            + " ms.");
         }
     }
 
-    /** If the Internet connection is lost during the ExponentialBackoff, stop the
-     * ExponentialBackoff and reset it. */
+    /**
+     * If the Internet connection is lost during the ExponentialBackoff, stop the ExponentialBackoff
+     * and reset it.
+     */
     private void stopExponentialBackoff(int subId) {
         if (mExponentialBackoffPerSub.get(subId) != null) {
             logd("stopExponentialBackoff: reset ExponentialBackoff");
@@ -491,14 +617,14 @@ public class SatelliteEntitlementController extends Handler {
 
     /**
      * No more query retry, update the result. If there is no response from the server, then used
-     * the default value - 'satellite disabled' and empty 'PLMN allowed list'.
-     * And then it send a delayed message to trigger the query again after A refresh day has passed.
+     * the default value - 'satellite disabled' and empty 'PLMN allowed list'. And then it send a
+     * delayed message to trigger the query again after A refresh day has passed.
      */
     private void queryCompleted(int subId) {
         if (!mSatelliteEntitlementResultPerSub.containsKey(subId)) {
             logd("queryCompleted: create default SatelliteEntitlementResult");
-            mSatelliteEntitlementResultPerSub.put(subId,
-                    SatelliteEntitlementResult.getDefaultResult());
+            mSatelliteEntitlementResultPerSub.put(
+                    subId, SatelliteEntitlementResult.getDefaultResult());
         }
         SatelliteEntitlementResult entitlementResult = mSatelliteEntitlementResultPerSub.get(subId);
         stopExponentialBackoff(subId);
@@ -510,12 +636,15 @@ public class SatelliteEntitlementController extends Handler {
         Message message = obtainMessage();
         message.what = CMD_START_QUERY_ENTITLEMENT;
         message.arg1 = subId;
-        sendMessageDelayed(message, TimeUnit.DAYS.toMillis(
-                getSatelliteEntitlementStatusRefreshDays(subId)));
+        sendMessageDelayed(
+                message, TimeUnit.DAYS.toMillis(getSatelliteEntitlementStatusRefreshDays(subId)));
         logd("queryCompleted: updateSatelliteEntitlementStatus");
-        updateSatelliteEntitlementStatus(subId, entitlementResult.getEntitlementStatus() ==
-                        SatelliteEntitlementResult.SATELLITE_ENTITLEMENT_STATUS_ENABLED,
-                entitlementResult.getAllowedPLMNList(), entitlementResult.getBarredPLMNList(),
+        updateSatelliteEntitlementStatus(
+                subId,
+                entitlementResult.getEntitlementStatus()
+                        == SatelliteEntitlementResult.SATELLITE_ENTITLEMENT_STATUS_ENABLED,
+                entitlementResult.getAllowedPLMNList(),
+                entitlementResult.getBarredPLMNList(),
                 entitlementResult.getDataPlanInfoForPlmnList(),
                 entitlementResult.getAvailableServiceTypeInfoForPlmnList(),
                 entitlementResult.getDataServicePolicyInfoForPlmnList(),
@@ -558,17 +687,24 @@ public class SatelliteEntitlementController extends Handler {
 
     // update for removing the satellite entitlement restricted reason
     private void resetSatelliteEntitlementRestrictedReason(int subId) {
-        SatelliteEntitlementResult enabledResult = new SatelliteEntitlementResult(
-                SatelliteEntitlementResult.SATELLITE_ENTITLEMENT_STATUS_ENABLED,
-                new ArrayList<>(), new ArrayList<>());
+        SatelliteEntitlementResult enabledResult =
+                new SatelliteEntitlementResult(
+                        SatelliteEntitlementResult.SATELLITE_ENTITLEMENT_STATUS_ENABLED,
+                        new ArrayList<>(),
+                        new ArrayList<>());
         SatelliteEntitlementResult previousResult = mSatelliteEntitlementResultPerSub.get(subId);
 
-        if (previousResult != null && previousResult.getEntitlementStatus()
-                != SatelliteEntitlementResult.SATELLITE_ENTITLEMENT_STATUS_ENABLED) {
+        if (previousResult != null
+                && previousResult.getEntitlementStatus()
+                        != SatelliteEntitlementResult.SATELLITE_ENTITLEMENT_STATUS_ENABLED) {
             logd("set enabled status for removing satellite entitlement restricted reason");
             mSatelliteEntitlementResultPerSub.put(subId, enabledResult);
-            updateSatelliteEntitlementStatus(subId, true, enabledResult.getAllowedPLMNList(),
-                    enabledResult.getBarredPLMNList(), enabledResult.getDataPlanInfoForPlmnList(),
+            updateSatelliteEntitlementStatus(
+                    subId,
+                    true,
+                    enabledResult.getAllowedPLMNList(),
+                    enabledResult.getBarredPLMNList(),
+                    enabledResult.getDataPlanInfoForPlmnList(),
                     enabledResult.getAvailableServiceTypeInfoForPlmnList(),
                     enabledResult.getDataServicePolicyInfoForPlmnList(),
                     enabledResult.getVoiceServicePolicyInfoForPlmnList());
@@ -582,8 +718,8 @@ public class SatelliteEntitlementController extends Handler {
         mLastQueryTimePerSub.remove(subId);
         mRetryCountPerSub.remove(subId);
         mIsEntitlementInProgressPerSub.remove(subId);
-        removeMessages(CMD_RETRY_QUERY_ENTITLEMENT,
-                obtainMessage(CMD_RETRY_QUERY_ENTITLEMENT, subId, 0));
+        removeMessages(
+                CMD_RETRY_QUERY_ENTITLEMENT, obtainMessage(CMD_RETRY_QUERY_ENTITLEMENT, subId, 0));
     }
 
     /**
@@ -591,14 +727,20 @@ public class SatelliteEntitlementController extends Handler {
      * can query the entitlement server.
      */
     private boolean shouldRefreshEntitlementStatus(int subId) {
+        if (mShouldIgnoreRefreshConditionForCtsTest.get()) {
+            logd("shouldRefreshEntitlementStatus: allow refreshing entitlement for CTS test");
+            return true;
+        }
+
         long lastQueryTimeMillis = getLastQueryTime(subId);
-        long refreshTimeMillis = TimeUnit.DAYS.toMillis(
-                getSatelliteEntitlementStatusRefreshDays(subId));
+        long refreshTimeMillis =
+                TimeUnit.DAYS.toMillis(getSatelliteEntitlementStatusRefreshDays(subId));
         boolean isAvailable =
                 (System.currentTimeMillis() - lastQueryTimeMillis) > refreshTimeMillis;
         if (!isAvailable) {
-            logd("query is already done. can query after " + Instant.ofEpochMilli(
-                    refreshTimeMillis + lastQueryTimeMillis));
+            logd(
+                    "query is already done. can query after "
+                            + Instant.ofEpochMilli(refreshTimeMillis + lastQueryTimeMillis));
         }
         return isAvailable;
     }
@@ -614,17 +756,20 @@ public class SatelliteEntitlementController extends Handler {
         return new SatelliteEntitlementApi(mContext, getConfigForSubId(subId), subId);
     }
 
-    /** If there is a value stored in the cache, it is used. If there is no value stored in the
-     * cache, it is considered the first query. */
+    /**
+     * If there is a value stored in the cache, it is used. If there is no value stored in the
+     * cache, it is considered the first query.
+     */
     private long getLastQueryTime(int subId) {
         return mLastQueryTimePerSub.getOrDefault(subId, 0L);
     }
 
     /** Return the satellite entitlement status refresh days from carrier config. */
     private int getSatelliteEntitlementStatusRefreshDays(int subId) {
-        return getConfigForSubId(subId).getInt(
-                CarrierConfigManager.KEY_SATELLITE_ENTITLEMENT_STATUS_REFRESH_DAYS_INT,
-                DEFAULT_QUERY_REFRESH_DAYS);
+        return getConfigForSubId(subId)
+                .getInt(
+                        CarrierConfigManager.KEY_SATELLITE_ENTITLEMENT_STATUS_REFRESH_DAYS_INT,
+                        DEFAULT_QUERY_REFRESH_DAYS);
     }
 
     private boolean isRetryAvailable(int subId) {
@@ -637,19 +782,22 @@ public class SatelliteEntitlementController extends Handler {
 
     /** Return the satellite entitlement supported bool from carrier config. */
     private boolean isSatelliteEntitlementSupported(int subId) {
-        return getConfigForSubId(subId).getBoolean(
-                CarrierConfigManager.KEY_SATELLITE_ENTITLEMENT_SUPPORTED_BOOL);
+        return getConfigForSubId(subId)
+                .getBoolean(CarrierConfigManager.KEY_SATELLITE_ENTITLEMENT_SUPPORTED_BOOL);
     }
 
     @NonNull
     private PersistableBundle getConfigForSubId(int subId) {
         PersistableBundle config = null;
         if (mCarrierConfigManager != null) {
-            config = mCarrierConfigManager.getConfigForSubId(subId,
-                    CarrierConfigManager.ImsServiceEntitlement.KEY_ENTITLEMENT_SERVER_URL_STRING,
-                    CarrierConfigManager.KEY_SATELLITE_ENTITLEMENT_STATUS_REFRESH_DAYS_INT,
-                    CarrierConfigManager.KEY_SATELLITE_ENTITLEMENT_SUPPORTED_BOOL,
-                    CarrierConfigManager.KEY_SATELLITE_ENTITLEMENT_APP_NAME_STRING);
+            config =
+                    mCarrierConfigManager.getConfigForSubId(
+                            subId,
+                            CarrierConfigManager.ImsServiceEntitlement
+                                    .KEY_ENTITLEMENT_SERVER_URL_STRING,
+                            CarrierConfigManager.KEY_SATELLITE_ENTITLEMENT_STATUS_REFRESH_DAYS_INT,
+                            CarrierConfigManager.KEY_SATELLITE_ENTITLEMENT_SUPPORTED_BOOL,
+                            CarrierConfigManager.KEY_SATELLITE_ENTITLEMENT_APP_NAME_STRING);
         }
         if (config == null || config.isEmpty()) {
             config = CarrierConfigManager.getDefaultConfig();
@@ -670,15 +818,26 @@ public class SatelliteEntitlementController extends Handler {
      * Send to satelliteController for update the satellite service enabled or not and plmn Allowed
      * list.
      */
-    private void updateSatelliteEntitlementStatus(int subId, boolean enabled,
-            List<String> plmnAllowedList, List<String> plmnBarredList,
-            Map<String,Integer> plmnDataPlanMap,
-            Map<String, List<Integer>>plmnAllowedServicesMap,
-            Map<String,Integer>plmnDataServicePolicyMap,
-            Map<String, Integer>plmnVoiceServicePolicyMap) {
-        SatelliteController.getInstance().onSatelliteEntitlementStatusUpdated(subId, enabled,
-                plmnAllowedList, plmnBarredList, plmnDataPlanMap, plmnAllowedServicesMap,
-                plmnDataServicePolicyMap, plmnVoiceServicePolicyMap, null);
+    private void updateSatelliteEntitlementStatus(
+            int subId,
+            boolean enabled,
+            List<String> plmnAllowedList,
+            List<String> plmnBarredList,
+            Map<String, Integer> plmnDataPlanMap,
+            Map<String, List<Integer>> plmnAllowedServicesMap,
+            Map<String, Integer> plmnDataServicePolicyMap,
+            Map<String, Integer> plmnVoiceServicePolicyMap) {
+        SatelliteController.getInstance()
+                .onSatelliteEntitlementStatusUpdated(
+                        subId,
+                        enabled,
+                        plmnAllowedList,
+                        plmnBarredList,
+                        plmnDataPlanMap,
+                        plmnAllowedServicesMap,
+                        plmnDataServicePolicyMap,
+                        plmnVoiceServicePolicyMap,
+                        null);
     }
 
     private @SatelliteConstants.SatelliteEntitlementStatus int getEntitlementStatus(
@@ -697,6 +856,23 @@ public class SatelliteEntitlementController extends Handler {
         }
     }
 
+    /**
+     * Check the entitlement status from the entitlement server.
+     *
+     * @param subId The subId of the subscription for creating SatelliteEntitlementApi
+     * @return The SatelliteEntitlementResult
+     */
+    @NonNull
+    private SatelliteEntitlementResult checkEntitlementStatus(int subId)
+            throws ServiceEntitlementException {
+        logd("checkEntitlementStatus: subId=" + subId);
+        SatelliteEntitlementApi entitlementApi = getSatelliteEntitlementApi(subId);
+        entitlementApi.overrideEntilementStatusResponseForCtsTest(
+                mOverriddenEntilementStatusResponseForCtsTest,
+                mShouldThrowExceptionForCtsTest.get());
+        return entitlementApi.checkEntitlementStatus();
+    }
+
     private static String cmdToString(int cmd) {
         switch (cmd) {
             case CMD_SIM_REFRESH:
@@ -712,5 +888,11 @@ public class SatelliteEntitlementController extends Handler {
 
     private static void loge(String log) {
         Rlog.e(TAG, log);
+    }
+
+    private static boolean isMockModemAllowed() {
+        return (DEBUG
+                || SystemProperties.getBoolean(ALLOW_MOCK_MODEM_PROPERTY, false)
+                || SystemProperties.getBoolean(BOOT_ALLOW_MOCK_MODEM_PROPERTY, false));
     }
 }
