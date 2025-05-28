@@ -3364,8 +3364,12 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         final long identity = Binder.clearCallingIdentity();
         try {
             Phone phone = getPhone(subId);
-            return phone == null ? TelephonyManager.CALL_STATE_IDLE :
-                    PhoneConstantConversions.convertCallState(phone.getState());
+            if (phone == null) {
+                return TelephonyManager.CALL_STATE_IDLE;
+            }
+            PhoneConstants.State state = phone.getState();
+            return state == null ? TelephonyManager.CALL_STATE_IDLE :
+                    PhoneConstantConversions.convertCallState(state);
         } finally {
             Binder.restoreCallingIdentity(identity);
         }
