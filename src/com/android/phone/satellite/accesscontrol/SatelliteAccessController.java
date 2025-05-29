@@ -193,6 +193,12 @@ public class SatelliteAccessController extends Handler {
     private static final int REQUEST_SATELLITE_ACCESS_CONFIGURATION_FOR_CURRENT_LOCATION = 13;
     private static final int EVENT_LOCATION_PROVIDERS_CHANGED = 14;
     private static final int EVENT_ACTION_PACKAGE_CHANGED = 15;
+    private static final int EVENT_IS_SATELLITE_SUPPORTED_DONE = 16;
+    private static final int EVENT_IS_SATELLITE_PROVISIONED_DONE = 17;
+    private static final int EVENT_SATELLITE_SUPPORTED_STATE_CHANGED = 18;
+    private static final int EVENT_SATELLITE_PROVISIONED_STATE_CHANGED = 19;
+    private static final int EVENT_SEND_UPDATE_SYSTEM_SELECTION_CHANNELS_RESULT = 20;
+    private static final int EVENT_CARRIER_CONFIG_CHANGED = 21;
 
     public static final int DEFAULT_REGIONAL_SATELLITE_CONFIG_ID = 0;
     public static final int UNKNOWN_REGIONAL_SATELLITE_CONFIG_ID = -1;
@@ -522,6 +528,14 @@ public class SatelliteAccessController extends Handler {
         mInternalSatelliteSupportedResultReceiver = new ResultReceiver(this) {
             @Override
             protected void onReceiveResult(int resultCode, Bundle resultData) {
+                if (mFeatureFlags.satelliteImproveMultiThreadDesign()) {
+                    SomeArgs args = SomeArgs.obtain();
+                    args.arg1 = resultCode;
+                    args.arg2 = resultData;
+                    sendMessage(obtainMessage(EVENT_IS_SATELLITE_SUPPORTED_DONE, args));
+                    return;
+                }
+
                 handleIsSatelliteSupportedResult(resultCode, resultData);
             }
         };
@@ -531,6 +545,14 @@ public class SatelliteAccessController extends Handler {
         mInternalSatelliteProvisionedResultReceiver = new ResultReceiver(this) {
             @Override
             protected void onReceiveResult(int resultCode, Bundle resultData) {
+                if (mFeatureFlags.satelliteImproveMultiThreadDesign()) {
+                    SomeArgs args = SomeArgs.obtain();
+                    args.arg1 = resultCode;
+                    args.arg2 = resultData;
+                    sendMessage(obtainMessage(EVENT_IS_SATELLITE_PROVISIONED_DONE, args));
+                    return;
+                }
+
                 handleIsSatelliteProvisionedResult(resultCode, resultData);
             }
         };
@@ -543,31 +565,14 @@ public class SatelliteAccessController extends Handler {
             @Override
             public void accept(boolean isSupported) {
                 logd("onSatelliteSupportedStateChanged: isSupported=" + isSupported);
-                if (isSupported) {
-                    final String caller = "SAC:onSatelliteSupportedStateChanged";
-                    requestIsCommunicationAllowedForCurrentLocation(
-                            new ResultReceiver(null) {
-                                @Override
-                                protected void onReceiveResult(int resultCode, Bundle resultData) {
-                                    mSatelliteController.decrementResultReceiverCount(caller);
-                                    // do nothing
-                                }
-                            }, false);
-                    mSatelliteController.incrementResultReceiverCount(caller);
-                    if (isReasonPresentInSatelliteDisallowedReasons(
-                            SATELLITE_DISALLOWED_REASON_NOT_SUPPORTED)) {
-                        removeReasonFromSatelliteDisallowedReasons(
-                                SATELLITE_DISALLOWED_REASON_NOT_SUPPORTED);
-                        handleEventDisallowedReasonsChanged();
-                    }
-                } else {
-                    if (!isReasonPresentInSatelliteDisallowedReasons(
-                            SATELLITE_DISALLOWED_REASON_NOT_SUPPORTED)) {
-                        addReasonToSatelliteDisallowedReasons(
-                                SATELLITE_DISALLOWED_REASON_NOT_SUPPORTED);
-                        handleEventDisallowedReasonsChanged();
-                    }
+                if (mFeatureFlags.satelliteImproveMultiThreadDesign()) {
+                    SomeArgs args = SomeArgs.obtain();
+                    args.arg1 = isSupported;
+                    sendMessage(obtainMessage(EVENT_SATELLITE_SUPPORTED_STATE_CHANGED, args));
+                    return;
                 }
+
+                handleSatelliteSupportedStateChanged(isSupported);
             }
         };
         int result = mSatelliteController.registerForSatelliteSupportedStateChanged(
@@ -578,32 +583,14 @@ public class SatelliteAccessController extends Handler {
             @Override
             public void onSatelliteProvisionStateChanged(boolean isProvisioned) {
                 logd("onSatelliteProvisionStateChanged: isProvisioned=" + isProvisioned);
-                if (isProvisioned) {
-                    mIsProvisionEligibleForNotification.set(true);
-                    final String caller = "SAC:onSatelliteProvisionStateChanged";
-                    requestIsCommunicationAllowedForCurrentLocation(
-                            new ResultReceiver(null) {
-                                @Override
-                                protected void onReceiveResult(int resultCode, Bundle resultData) {
-                                    mSatelliteController.decrementResultReceiverCount(caller);
-                                    // do nothing
-                                }
-                            }, false);
-                    mSatelliteController.incrementResultReceiverCount(caller);
-                    if (isReasonPresentInSatelliteDisallowedReasons(
-                            SATELLITE_DISALLOWED_REASON_NOT_PROVISIONED)) {
-                        removeReasonFromSatelliteDisallowedReasons(
-                                SATELLITE_DISALLOWED_REASON_NOT_PROVISIONED);
-                        handleEventDisallowedReasonsChanged();
-                    }
-                } else {
-                    if (!isReasonPresentInSatelliteDisallowedReasons(
-                            SATELLITE_DISALLOWED_REASON_NOT_PROVISIONED)) {
-                        addReasonToSatelliteDisallowedReasons(
-                                SATELLITE_DISALLOWED_REASON_NOT_PROVISIONED);
-                        handleEventDisallowedReasonsChanged();
-                    }
+                if (mFeatureFlags.satelliteImproveMultiThreadDesign()) {
+                    SomeArgs args = SomeArgs.obtain();
+                    args.arg1 = isProvisioned;
+                    sendMessage(obtainMessage(EVENT_SATELLITE_PROVISIONED_STATE_CHANGED, args));
+                    return;
                 }
+
+                handleSatelliteProvisionedStateChanged(isProvisioned);
             }
 
             @Override
@@ -622,6 +609,15 @@ public class SatelliteAccessController extends Handler {
             protected void onReceiveResult(int resultCode, Bundle resultData) {
                 plogd("UpdateSystemSelectionChannels.onReceiveResult: resultCode=" + resultCode
                           + ", resultData=" + resultData);
+                if (mFeatureFlags.satelliteImproveMultiThreadDesign()) {
+                    SomeArgs args = SomeArgs.obtain();
+                    args.arg1 = resultCode;
+                    args.arg2 = resultData;
+                    sendMessage(obtainMessage(
+                            EVENT_SEND_UPDATE_SYSTEM_SELECTION_CHANNELS_RESULT, args));
+                    return;
+                }
+
                 sendUpdateSystemSelectionChannelsResult(resultCode, resultData);
             }
         };
@@ -631,9 +627,20 @@ public class SatelliteAccessController extends Handler {
         registerLocationModeChangedBroadcastReceiver(context);
 
         mCarrierConfigManager = context.getSystemService(CarrierConfigManager.class);
-        mCarrierConfigChangeListener =
-                (slotIndex, subId, carrierId, specificCarrierId) -> handleCarrierConfigChanged(
-                    context, slotIndex, subId, carrierId, specificCarrierId);
+        mCarrierConfigChangeListener = (slotIndex, subId, carrierId, specificCarrierId) -> {
+            if (mFeatureFlags.satelliteImproveMultiThreadDesign()) {
+                SomeArgs args = SomeArgs.obtain();
+                args.arg1 = context;
+                args.arg2 = slotIndex;
+                args.arg3 = subId;
+                args.arg4 = carrierId;
+                args.arg5 = specificCarrierId;
+                sendMessage(obtainMessage(EVENT_CARRIER_CONFIG_CHANGED, args));
+                return;
+            }
+
+            handleCarrierConfigChanged(context, slotIndex, subId, carrierId, specificCarrierId);
+        };
 
         if (mCarrierConfigManager != null) {
             mCarrierConfigManager.registerCarrierConfigChangeListener(
@@ -754,6 +761,80 @@ public class SatelliteAccessController extends Handler {
             case EVENT_ACTION_PACKAGE_CHANGED:
                 evaluatePossibleChangeInDefaultSmsApp((Context) msg.obj);
                 break;
+            case EVENT_IS_SATELLITE_SUPPORTED_DONE: {
+                plogd("EVENT_IS_SATELLITE_SUPPORTED_DONE");
+                SomeArgs args = (SomeArgs) msg.obj;
+                int resultCode = (int) args.arg1;
+                Bundle resultData = (Bundle) args.arg2;
+                try {
+                    handleIsSatelliteSupportedResult(resultCode, resultData);
+                } finally {
+                    args.recycle();
+                }
+                break;
+            }
+            case EVENT_IS_SATELLITE_PROVISIONED_DONE: {
+                plogd("EVENT_IS_SATELLITE_PROVISIONED_DONE");
+                SomeArgs args = (SomeArgs) msg.obj;
+                int resultCode = (int) args.arg1;
+                Bundle resultData = (Bundle) args.arg2;
+                try {
+                    handleIsSatelliteProvisionedResult(resultCode, resultData);
+                } finally {
+                    args.recycle();
+                }
+                break;
+            }
+            case EVENT_SATELLITE_SUPPORTED_STATE_CHANGED: {
+                plogd("EVENT_SATELLITE_SUPPORTED_STATE_CHANGED");
+                SomeArgs args = (SomeArgs) msg.obj;
+                boolean isSupported = (boolean) args.arg1;
+                try {
+                    handleSatelliteSupportedStateChanged(isSupported);
+                } finally {
+                 args.recycle();
+                }
+                break;
+            }
+            case EVENT_SATELLITE_PROVISIONED_STATE_CHANGED: {
+                plogd("EVENT_SATELLITE_PROVISIONED_STATE_CHANGED");
+                SomeArgs args = (SomeArgs) msg.obj;
+                boolean isProvisioned = (boolean) args.arg1;
+                try {
+                    handleSatelliteProvisionedStateChanged(isProvisioned);
+                } finally {
+                    args.recycle();
+                }
+                break;
+            }
+            case EVENT_SEND_UPDATE_SYSTEM_SELECTION_CHANNELS_RESULT: {
+                plogd("EVENT_SEND_UPDATE_SYSTEM_SELECTION_CHANNELS_RESULT");
+                SomeArgs args = (SomeArgs) msg.obj;
+                int resultCode = (int) args.arg1;
+                Bundle resultData = (Bundle) args.arg2;
+                try {
+                    sendUpdateSystemSelectionChannelsResult(resultCode, resultData);
+                } finally {
+                    args.recycle();
+                }
+                break;
+            }
+            case EVENT_CARRIER_CONFIG_CHANGED: {
+                plogd("EVENT_CARRIER_CONFIG_CHANGED");
+                SomeArgs args = (SomeArgs) msg.obj;
+                Context context = (Context) args.arg1;
+                int slotIndex = (int) args.arg2;
+                int subId = (int) args.arg3;
+                int carrierId = (int) args.arg4;
+                int specificCarrierId = (int) args.arg5;
+                try {
+                    handleCarrierConfigChanged(
+                            context, slotIndex, subId, carrierId, specificCarrierId);
+                } finally {
+                    args.recycle();
+                }
+                break;
+            }
             default:
                 plogw("SatelliteAccessControllerHandler: unexpected message code: " + msg.what);
                 break;
@@ -1797,6 +1878,36 @@ public class SatelliteAccessController extends Handler {
         }
     }
 
+    private void handleSatelliteSupportedStateChanged(boolean isSupported) {
+        plogd("handleSatelliteSupportedStateChanged: isSupported=" +  isSupported);
+
+        if (isSupported) {
+            final String caller = "SAC:onSatelliteSupportedStateChanged";
+            requestIsCommunicationAllowedForCurrentLocation(
+                    new ResultReceiver(null) {
+                        @Override
+                        protected void onReceiveResult(int resultCode, Bundle resultData) {
+                            mSatelliteController.decrementResultReceiverCount(caller);
+                            // do nothing
+                        }
+                    }, false);
+            mSatelliteController.incrementResultReceiverCount(caller);
+            if (isReasonPresentInSatelliteDisallowedReasons(
+                    SATELLITE_DISALLOWED_REASON_NOT_SUPPORTED)) {
+                removeReasonFromSatelliteDisallowedReasons(
+                        SATELLITE_DISALLOWED_REASON_NOT_SUPPORTED);
+                handleEventDisallowedReasonsChanged();
+            }
+        } else {
+            if (!isReasonPresentInSatelliteDisallowedReasons(
+                    SATELLITE_DISALLOWED_REASON_NOT_SUPPORTED)) {
+                addReasonToSatelliteDisallowedReasons(
+                        SATELLITE_DISALLOWED_REASON_NOT_SUPPORTED);
+                handleEventDisallowedReasonsChanged();
+            }
+        }
+    }
+
     private void handleIsSatelliteProvisionedResult(int resultCode, Bundle resultData) {
         plogd("handleIsSatelliteProvisionedResult: resultCode=" + resultCode);
         if (resultCode == SATELLITE_RESULT_SUCCESS) {
@@ -1819,6 +1930,36 @@ public class SatelliteAccessController extends Handler {
             }
         } else {
             sendSatelliteAllowResultToReceivers(resultCode, resultData, false);
+        }
+    }
+
+    private void handleSatelliteProvisionedStateChanged(boolean isProvisioned) {
+        plogd("handleSatelliteProvisionedStateChanged: isProvisioned=" + isProvisioned);
+        if (isProvisioned) {
+            mIsProvisionEligibleForNotification.set(true);
+            final String caller = "SAC:onSatelliteProvisionStateChanged";
+            requestIsCommunicationAllowedForCurrentLocation(
+                    new ResultReceiver(null) {
+                        @Override
+                        protected void onReceiveResult(int resultCode, Bundle resultData) {
+                            mSatelliteController.decrementResultReceiverCount(caller);
+                            // do nothing
+                        }
+                    }, false);
+            mSatelliteController.incrementResultReceiverCount(caller);
+            if (isReasonPresentInSatelliteDisallowedReasons(
+                    SATELLITE_DISALLOWED_REASON_NOT_PROVISIONED)) {
+                removeReasonFromSatelliteDisallowedReasons(
+                        SATELLITE_DISALLOWED_REASON_NOT_PROVISIONED);
+                handleEventDisallowedReasonsChanged();
+            }
+        } else {
+            if (!isReasonPresentInSatelliteDisallowedReasons(
+                    SATELLITE_DISALLOWED_REASON_NOT_PROVISIONED)) {
+                addReasonToSatelliteDisallowedReasons(
+                        SATELLITE_DISALLOWED_REASON_NOT_PROVISIONED);
+                handleEventDisallowedReasonsChanged();
+            }
         }
     }
 
