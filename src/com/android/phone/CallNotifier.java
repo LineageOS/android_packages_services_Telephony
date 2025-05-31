@@ -129,7 +129,7 @@ public class CallNotifier extends Handler {
     private CallNotifier(
             PhoneGlobals app) {
         mApplication = app;
-        mCM = app.mCM;
+        mCM = app.getCallManager();
 
         mAudioManager = (AudioManager) mApplication.getSystemService(Context.AUDIO_SERVICE);
         mTelephonyManager =

@@ -961,12 +961,9 @@
     <string name="radio_info_data_view_satellite_config" msgid="343120041798242877">"സാറ്റലൈറ്റ് കോൺഫിഗറേഷൻ കാണിക്കുക"</string>
     <string name="satellite_config_viewer" msgid="5128698910841573398">"സാറ്റലൈറ്റ് കോൺഫിഗറേഷൻ വ്യൂവർ"</string>
     <string name="satellite_config_version_label" msgid="1153447193166314791">"പതിപ്പ്:"</string>
-    <!-- no translation found for satellite_config_version_for_skylo_label (7068241597009832840) -->
-    <skip />
-    <!-- no translation found for satellite_max_allowed_data_mode_label (1808484802651916339) -->
-    <skip />
-    <!-- no translation found for satellite_config_version_for_starlink_label (7984209491963621773) -->
-    <skip />
+    <string name="satellite_config_version_for_skylo_label" msgid="7068241597009832840">"skylo പതിപ്പ്:"</string>
+    <string name="satellite_max_allowed_data_mode_label" msgid="1808484802651916339">"അനുവദനീയമായ പരമാവധി ഡാറ്റാ മോഡ്:"</string>
+    <string name="satellite_config_version_for_starlink_label" msgid="7984209491963621773">"starlink പതിപ്പ്:"</string>
     <string name="satellite_config_service_type_label" msgid="21749170241956082">"subId/plmn/സേവനതരം:"</string>
     <string name="satellite_config_allow_access_label" msgid="3806779900418131140">"allow_access:"</string>
     <string name="satellite_config_country_code_label" msgid="1389520866423113166">"രാജ്യങ്ങളുടെ കോഡുകൾ:"</string>

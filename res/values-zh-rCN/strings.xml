@@ -961,12 +961,9 @@
     <string name="radio_info_data_view_satellite_config" msgid="343120041798242877">"显示卫星配置"</string>
     <string name="satellite_config_viewer" msgid="5128698910841573398">"卫星配置查看器"</string>
     <string name="satellite_config_version_label" msgid="1153447193166314791">"版本："</string>
-    <!-- no translation found for satellite_config_version_for_skylo_label (7068241597009832840) -->
-    <skip />
-    <!-- no translation found for satellite_max_allowed_data_mode_label (1808484802651916339) -->
-    <skip />
-    <!-- no translation found for satellite_config_version_for_starlink_label (7984209491963621773) -->
-    <skip />
+    <string name="satellite_config_version_for_skylo_label" msgid="7068241597009832840">"Skylo 版本："</string>
+    <string name="satellite_max_allowed_data_mode_label" msgid="1808484802651916339">"允许的最大数据模式："</string>
+    <string name="satellite_config_version_for_starlink_label" msgid="7984209491963621773">"Starlink 版本："</string>
     <string name="satellite_config_service_type_label" msgid="21749170241956082">"subId/plmn/服务类型："</string>
     <string name="satellite_config_allow_access_label" msgid="3806779900418131140">"允许访问："</string>
     <string name="satellite_config_country_code_label" msgid="1389520866423113166">"国家/地区代码："</string>

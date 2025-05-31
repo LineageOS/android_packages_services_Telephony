@@ -675,9 +675,8 @@ public class TelecomAccountRegistry {
          */
         private boolean isCarrierVideoPauseSupported() {
             // Check if IMS video pause is supported.
-            PersistableBundle b =
-                    PhoneGlobals.getInstance().getCarrierConfigForSubId(mPhone.getSubId());
-            if (b == null) return false;
+            PersistableBundle b = mCarrierManager.getConfigForSubId(mPhone.getSubId(),
+                    CarrierConfigManager.KEY_SUPPORT_PAUSE_IMS_VIDEO_CALLS_BOOL);
             return b.getBoolean(CarrierConfigManager.KEY_SUPPORT_PAUSE_IMS_VIDEO_CALLS_BOOL);
         }
 
@@ -688,9 +687,9 @@ public class TelecomAccountRegistry {
          * @return {@code true} if RCS presence indication for video calls is supported.
          */
         private boolean isCarrierVideoPresenceSupported() {
-            PersistableBundle b =
-                    PhoneGlobals.getInstance().getCarrierConfigForSubId(mPhone.getSubId());
-            if (b == null) return false;
+            PersistableBundle b = mCarrierManager.getConfigForSubId(mPhone.getSubId(),
+                    CarrierConfigManager.Ims.KEY_ENABLE_PRESENCE_CAPABILITY_EXCHANGE_BOOL,
+                    CarrierConfigManager.KEY_USE_RCS_PRESENCE_BOOL);
 
             // If using the new RcsUceAdapter API, this should be true if
             // KEY_ENABLE_PRESENCE_CAPABILITY_EXCHANGE_BOOL is set. If using the old
@@ -721,9 +720,8 @@ public class TelecomAccountRegistry {
          * @return {@code true} if instant lettering is supported, {@code false} otherwise.
          */
         private boolean isCarrierInstantLetteringSupported() {
-            PersistableBundle b =
-                    PhoneGlobals.getInstance().getCarrierConfigForSubId(mPhone.getSubId());
-            if (b == null) return false;
+            PersistableBundle b = mCarrierManager.getConfigForSubId(mPhone.getSubId(),
+                    CarrierConfigManager.KEY_CARRIER_INSTANT_LETTERING_AVAILABLE_BOOL);
             return b.getBoolean(CarrierConfigManager.KEY_CARRIER_INSTANT_LETTERING_AVAILABLE_BOOL);
         }
 
@@ -733,9 +731,8 @@ public class TelecomAccountRegistry {
          * @return {@code true} if adhoc conference calling is supported, {@code false} otherwise.
          */
         private boolean isCarrierAdhocConferenceCallSupported() {
-            PersistableBundle b =
-                    PhoneGlobals.getInstance().getCarrierConfigForSubId(mPhone.getSubId());
-            if (b == null) return false;
+            PersistableBundle b = mCarrierManager.getConfigForSubId(mPhone.getSubId(),
+                    CarrierConfigManager.KEY_SUPPORT_ADHOC_CONFERENCE_CALLS_BOOL);
             return b.getBoolean(CarrierConfigManager.KEY_SUPPORT_ADHOC_CONFERENCE_CALLS_BOOL);
         }
 
@@ -746,9 +743,8 @@ public class TelecomAccountRegistry {
          * @return {@code true} if merging calls is supported, {@code false} otherwise.
          */
         private boolean isCarrierMergeCallSupported() {
-            PersistableBundle b =
-                    PhoneGlobals.getInstance().getCarrierConfigForSubId(mPhone.getSubId());
-            if (b == null) return false;
+            PersistableBundle b = mCarrierManager.getConfigForSubId(mPhone.getSubId(),
+                    CarrierConfigManager.KEY_SUPPORT_CONFERENCE_CALL_BOOL);
             return b.getBoolean(CarrierConfigManager.KEY_SUPPORT_CONFERENCE_CALL_BOOL);
         }
 
@@ -758,9 +754,8 @@ public class TelecomAccountRegistry {
          * @return {@code true} if merging IMS calls is supported, {@code false} otherwise.
          */
         private boolean isCarrierMergeImsCallSupported() {
-            PersistableBundle b =
-                    PhoneGlobals.getInstance().getCarrierConfigForSubId(mPhone.getSubId());
-            if (b == null) return false;
+            PersistableBundle b = mCarrierManager.getConfigForSubId(mPhone.getSubId(),
+                    CarrierConfigManager.KEY_SUPPORT_IMS_CONFERENCE_CALL_BOOL);
             return b.getBoolean(CarrierConfigManager.KEY_SUPPORT_IMS_CONFERENCE_CALL_BOOL);
         }
 
@@ -770,9 +765,8 @@ public class TelecomAccountRegistry {
          * @return {@code true} if emergency video calls are allowed, {@code false} otherwise.
          */
         private boolean isCarrierEmergencyVideoCallsAllowed() {
-            PersistableBundle b =
-                    PhoneGlobals.getInstance().getCarrierConfigForSubId(mPhone.getSubId());
-            if (b == null) return false;
+            PersistableBundle b = mCarrierManager.getConfigForSubId(mPhone.getSubId(),
+                    CarrierConfigManager.KEY_ALLOW_EMERGENCY_VIDEO_CALLS_BOOL);
             return b.getBoolean(CarrierConfigManager.KEY_ALLOW_EMERGENCY_VIDEO_CALLS_BOOL);
         }
 
@@ -782,9 +776,8 @@ public class TelecomAccountRegistry {
          * @return {@code true} if video conferencing is supported, {@code false} otherwise.
          */
         private boolean isCarrierVideoConferencingSupported() {
-            PersistableBundle b =
-                    PhoneGlobals.getInstance().getCarrierConfigForSubId(mPhone.getSubId());
-            if (b == null) return false;
+            PersistableBundle b = mCarrierManager.getConfigForSubId(mPhone.getSubId(),
+                    CarrierConfigManager.KEY_SUPPORT_VIDEO_CONFERENCE_CALL_BOOL);
             return b.getBoolean(CarrierConfigManager.KEY_SUPPORT_VIDEO_CONFERENCE_CALL_BOOL);
         }
 
@@ -796,9 +789,8 @@ public class TelecomAccountRegistry {
          *      {@code false} otherwise.
          */
         private boolean isCarrierMergeOfWifiCallsAllowedWhenVoWifiOff() {
-            PersistableBundle b =
-                    PhoneGlobals.getInstance().getCarrierConfigForSubId(mPhone.getSubId());
-            if (b == null) return false;
+            PersistableBundle b = mCarrierManager.getConfigForSubId(mPhone.getSubId(),
+                    CarrierConfigManager.KEY_ALLOW_MERGE_WIFI_CALLS_WHEN_VOWIFI_OFF_BOOL);
             return b.getBoolean(
                     CarrierConfigManager.KEY_ALLOW_MERGE_WIFI_CALLS_WHEN_VOWIFI_OFF_BOOL);
         }
@@ -810,9 +802,8 @@ public class TelecomAccountRegistry {
          *         {@code false} otherwise.
          */
         private boolean isCarrierManageImsConferenceCallSupported() {
-            PersistableBundle b =
-                    PhoneGlobals.getInstance().getCarrierConfigForSubId(mPhone.getSubId());
-            if (b == null) return false;
+            PersistableBundle b = mCarrierManager.getConfigForSubId(mPhone.getSubId(),
+                    CarrierConfigManager.KEY_SUPPORT_MANAGE_IMS_CONFERENCE_CALL_BOOL);
             return b.getBoolean(CarrierConfigManager.KEY_SUPPORT_MANAGE_IMS_CONFERENCE_CALL_BOOL);
         }
 
@@ -823,9 +814,8 @@ public class TelecomAccountRegistry {
          *         {@code false} otherwise.
          */
         private boolean isCarrierUsingSimCallManager() {
-            PersistableBundle b =
-                    PhoneGlobals.getInstance().getCarrierConfigForSubId(mPhone.getSubId());
-            if (b == null) return false;
+            PersistableBundle b = mCarrierManager.getConfigForSubId(mPhone.getSubId(),
+                    CarrierConfigManager.KEY_DEFAULT_SIM_CALL_MANAGER_STRING);
             return !TextUtils.isEmpty(
                     b.getString(CarrierConfigManager.KEY_DEFAULT_SIM_CALL_MANAGER_STRING));
         }
@@ -838,9 +828,8 @@ public class TelecomAccountRegistry {
          *         {@code false} otherwise.
          */
         private boolean isCarrierShowPreciseFailedCause() {
-            PersistableBundle b =
-                    PhoneGlobals.getInstance().getCarrierConfigForSubId(mPhone.getSubId());
-            if (b == null) return false;
+            PersistableBundle b = mCarrierManager.getConfigForSubId(mPhone.getSubId(),
+                    CarrierConfigManager.KEY_SHOW_PRECISE_FAILED_CAUSE_BOOL);
             return b.getBoolean(CarrierConfigManager.KEY_SHOW_PRECISE_FAILED_CAUSE_BOOL);
         }
 
@@ -851,9 +840,8 @@ public class TelecomAccountRegistry {
          * @return {@code true} if a call recording tone should be used, {@code false} otherwise.
          */
         private boolean isCarrierUseCallRecordingTone() {
-            PersistableBundle b =
-                    PhoneGlobals.getInstance().getCarrierConfigForSubId(mPhone.getSubId());
-            if (b == null) return false;
+            PersistableBundle b = mCarrierManager.getConfigForSubId(mPhone.getSubId(),
+                    CarrierConfigManager.KEY_PLAY_CALL_RECORDING_TONE_BOOL);
             return b.getBoolean(CarrierConfigManager.KEY_PLAY_CALL_RECORDING_TONE_BOOL);
         }
 
@@ -861,9 +849,8 @@ public class TelecomAccountRegistry {
          * Determines from carrier config whether to always allow RTT while roaming.
          */
         private boolean isCarrierAllowRttWhenRoaming() {
-            PersistableBundle b =
-                    PhoneGlobals.getInstance().getCarrierConfigForSubId(mPhone.getSubId());
-            if (b == null) return false;
+            PersistableBundle b = mCarrierManager.getConfigForSubId(mPhone.getSubId(),
+                    CarrierConfigManager.KEY_RTT_SUPPORTED_WHILE_ROAMING_BOOL);
             return b.getBoolean(CarrierConfigManager.KEY_RTT_SUPPORTED_WHILE_ROAMING_BOOL);
         }
 
@@ -874,10 +861,9 @@ public class TelecomAccountRegistry {
          * @return The {@link PhoneAccount} extras associated with the current subscription.
          */
         private Bundle getPhoneAccountExtras() {
-            PersistableBundle b =
-                    PhoneGlobals.getInstance().getCarrierConfigForSubId(mPhone.getSubId());
-            if (b == null) return new Bundle();
-
+            PersistableBundle b = mCarrierManager.getConfigForSubId(mPhone.getSubId(),
+                    CarrierConfigManager.KEY_CARRIER_INSTANT_LETTERING_LENGTH_LIMIT_INT,
+                    CarrierConfigManager.KEY_CARRIER_INSTANT_LETTERING_ENCODING_STRING);
             int instantLetteringMaxLength = b.getInt(
                     CarrierConfigManager.KEY_CARRIER_INSTANT_LETTERING_LENGTH_LIMIT_INT);
             String instantLetteringEncoding = b.getString(
@@ -894,14 +880,11 @@ public class TelecomAccountRegistry {
          * @return true if the subscription is voice capable by the carrier config.
          */
         private boolean isSubscriptionVoiceCapableByCarrierConfig() {
-            PersistableBundle b =
-                    PhoneGlobals.getInstance().getCarrierConfigForSubId(mPhone.getSubId());
-            if (b == null) {
-                return true; // For any abnormal case, we assume subscription is voice capable
-            }
+            PersistableBundle b = mCarrierManager.getConfigForSubId(mPhone.getSubId(),
+                    CarrierConfigManager.KEY_CELLULAR_SERVICE_CAPABILITIES_INT_ARRAY);
             final int[] serviceCapabilities = b.getIntArray(
                     CarrierConfigManager.KEY_CELLULAR_SERVICE_CAPABILITIES_INT_ARRAY);
-            return Arrays.stream(serviceCapabilities).anyMatch(
+            return serviceCapabilities == null || Arrays.stream(serviceCapabilities).anyMatch(
                     i -> i == SubscriptionManager.SERVICE_CAPABILITY_VOICE);
         }
 
@@ -1315,6 +1298,7 @@ public class TelecomAccountRegistry {
     private static TelecomAccountRegistry sInstance;
     private final Context mContext;
     private final TelecomManager mTelecomManager;
+    private final CarrierConfigManager mCarrierManager;
     private final android.telephony.ims.ImsManager mImsManager;
     private final TelephonyManager mTelephonyManager;
     private final SubscriptionManager mSubscriptionManager;
@@ -1395,6 +1379,7 @@ public class TelecomAccountRegistry {
     TelecomAccountRegistry(Context context) {
         mContext = context;
         mTelecomManager = context.getSystemService(TelecomManager.class);
+        mCarrierManager = context.getSystemService(CarrierConfigManager.class);
         mImsManager = context.getSystemService(android.telephony.ims.ImsManager.class);
         mTelephonyManager = TelephonyManager.from(context);
         mSubscriptionManager = SubscriptionManager.from(context);

@@ -16,22 +16,30 @@
 
 package com.android;
 
-import static org.junit.Assert.assertNotNull;
-import static org.mockito.Mockito.spy;
-import static org.mockito.Mockito.doCallRealMethod;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.spy;
 
-import android.content.ContextWrapper;
-import android.content.res.Resources;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.TestLooperManager;
+import android.os.UserHandle;
+import android.telecom.TelecomManager;
+import android.telephony.ServiceState;
+import android.telephony.SubscriptionManager;
+import android.telephony.TelephonyManager;
+import android.telephony.TelephonyRegistryManager;
 import android.util.Log;
 
-import androidx.test.InstrumentationRegistry;
-
+import com.android.internal.telephony.CallManager;
+import com.android.internal.telephony.CarrierPrivilegesTracker;
 import com.android.internal.telephony.GsmCdmaPhone;
+import com.android.internal.telephony.IccCard;
+import com.android.internal.telephony.IccCardConstants;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConfigurationManager;
 import com.android.internal.telephony.PhoneFactory;
@@ -39,7 +47,6 @@ import com.android.internal.telephony.data.DataConfigManager;
 import com.android.internal.telephony.data.DataNetworkController;
 import com.android.internal.telephony.metrics.MetricsCollector;
 import com.android.internal.telephony.metrics.PersistAtomsStorage;
-import com.android.internal.telephony.satellite.SatelliteController;
 import com.android.phone.PhoneGlobals;
 import com.android.phone.PhoneInterfaceManager;
 
@@ -48,8 +55,10 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
+import org.mockito.stubbing.Answer;
 
 import java.lang.reflect.Field;
 import java.util.Collections;
@@ -69,55 +78,73 @@ public class TelephonyTestBase {
     protected TestContext mContext;
     @Mock protected PhoneGlobals mPhoneGlobals;
     @Mock protected GsmCdmaPhone mPhone;
+    @Mock protected ServiceState mServiceState;
+    @Mock protected CarrierPrivilegesTracker mCarrierPrivilegesTracker;
+    @Mock protected IccCard mIccCard;
     @Mock protected DataNetworkController mDataNetworkController;
-    @Mock private MetricsCollector mMetricsCollector;
+    @Mock protected MetricsCollector mMetricsCollector;
+    @Mock protected CallManager mCallManager;
 
     private HandlerThread mTestHandlerThread;
     protected Looper mTestLooper;
     protected TestLooperManager mLooperManager;
+    protected TelephonyManager mTelephonyManager;
+    protected SubscriptionManager mSubscriptionManager;
+    protected TelephonyRegistryManager mTelephonyRegistryManager;
+    protected TelecomManager mTelecomManager;
 
     private final HashMap<InstanceKey, Object> mOldInstances = new HashMap<>();
     private final LinkedList<InstanceKey> mInstanceKeys = new LinkedList<>();
 
     @Before
     public void setUp() throws Exception {
+        MockitoAnnotations.openMocks(this);
         if (Looper.myLooper() == null) {
             Looper.prepare();
         }
 
-        doCallRealMethod().when(mPhoneGlobals).getBaseContext();
-        doCallRealMethod().when(mPhoneGlobals).getResources();
-        doCallRealMethod().when(mPhoneGlobals).getSystemService(Mockito.anyString());
-        doCallRealMethod().when(mPhoneGlobals).getSystemService(Mockito.any(Class.class));
-        doCallRealMethod().when(mPhoneGlobals).getSystemServiceName(Mockito.any(Class.class));
-        doCallRealMethod().when(mPhone).getServiceState();
-
         mContext = spy(new TestContext());
+        mTelephonyManager = mContext.getSystemService(TelephonyManager.class);
+        mSubscriptionManager = mContext.getSystemService(SubscriptionManager.class);
+        mTelephonyRegistryManager = mContext.getSystemService(TelephonyRegistryManager.class);
+        mTelecomManager = mContext.getSystemService(TelecomManager.class);
+        doReturn(mContext).when(mPhoneGlobals).getBaseContext();
+        doReturn(mContext.getResources()).when(mPhoneGlobals).getResources();
+        doReturn(mCallManager).when(mPhoneGlobals).getCallManager();
+        doReturn(mContext).when(mPhoneGlobals).createContextAsUser(any(UserHandle.class), anyInt());
+
+        doAnswer((Answer<Object>) invocation -> {
+            String name = (String) invocation.getArguments()[0];
+            return mContext.getSystemService(name);
+        }).when(mPhoneGlobals).getSystemService(anyString());
+
+        doAnswer((Answer<Object>) invocation -> {
+            Class<?> arg = invocation.getArgument(0);
+            return mContext.getSystemServiceName(arg);
+        }).when(mPhoneGlobals).getSystemServiceName(any());
+
         doReturn(mContext).when(mPhone).getContext();
-        replaceInstance(ContextWrapper.class, "mBase", mPhoneGlobals, mContext);
-
-        Resources resources = InstrumentationRegistry.getTargetContext().getResources();
-        assertNotNull(resources);
-        doReturn(resources).when(mContext).getResources();
-
-        replaceInstance(Handler.class, "mLooper", mPhone, Looper.myLooper());
-        replaceInstance(PhoneFactory.class, "sMadeDefaults", null, true);
-        replaceInstance(PhoneFactory.class, "sPhone", null, mPhone);
-        replaceInstance(PhoneFactory.class, "sPhones", null, new Phone[] {mPhone});
-        replaceInstance(PhoneGlobals.class, "sMe", null, mPhoneGlobals);
-        replaceInstance(PhoneFactory.class, "sMetricsCollector", null, mMetricsCollector);
-        replaceInstance(SatelliteController.class, "sInstance", null,
-                Mockito.mock(SatelliteController.class));
-
-        doReturn(Mockito.mock(PersistAtomsStorage.class)).when(mMetricsCollector).getAtomsStorage();
-
+        doReturn(mIccCard).when(mPhone).getIccCard();
+        doReturn(1).when(mPhone).getSubId();
+        doReturn(mServiceState).when(mPhone).getServiceState();
+        doReturn(IccCardConstants.State.UNKNOWN).when(mIccCard).getState();
+        doReturn(mCarrierPrivilegesTracker).when(mPhone).getCarrierPrivilegesTracker();
         doReturn(mDataNetworkController).when(mPhone).getDataNetworkController();
         doReturn(Collections.emptyList()).when(mDataNetworkController)
                 .getInternetDataDisallowedReasons();
         doReturn(Mockito.mock(DataConfigManager.class)).when(mDataNetworkController)
                 .getDataConfigManager();
+        doReturn(2).when(mTelephonyManager).getSupportedModemCount();
+        doReturn(2).when(mTelephonyManager).getActiveModemCount();
+
+        doReturn(Mockito.mock(PersistAtomsStorage.class)).when(mMetricsCollector).getAtomsStorage();
 
         mPhoneGlobals.phoneMgr = Mockito.mock(PhoneInterfaceManager.class);
+
+        replaceInstance(PhoneFactory.class, "sPhone", null, mPhone);
+        replaceInstance(PhoneFactory.class, "sPhones", null, new Phone[] {mPhone, mPhone});
+        replaceInstance(PhoneFactory.class, "sMadeDefaults", null, true);
+        replaceInstance(Handler.class, "mLooper", mPhone, Looper.myLooper());
     }
 
     @After
@@ -162,6 +189,12 @@ public class TelephonyTestBase {
         for (var msg = mLooperManager.poll(); msg != null && msg.getTarget() != null;) {
             mLooperManager.execute(msg);
             mLooperManager.recycle(msg);
+        }
+    }
+
+    protected void processAllFutureMessages() {
+        while (mLooperManager.peekWhen() != null) {
+            processAllMessages();
         }
     }
 

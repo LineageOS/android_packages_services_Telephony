@@ -38,6 +38,7 @@ import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.d2d.DtmfTransport;
 import com.android.internal.telephony.d2d.RtpTransport;
 import com.android.internal.telephony.imsphone.ImsPhoneConnection;
+import com.android.phone.PhoneGlobals;
 import com.android.phone.R;
 
 import org.junit.Before;
@@ -57,7 +58,7 @@ public class TelephonyConnectionTest extends TelephonyTestBase {
     @Before
     public void setUp() throws Exception {
         super.setUp();
-
+        replaceInstance(PhoneGlobals.class, "sMe", null, mPhoneGlobals);
         when(mImsPhoneConnection.getState()).thenReturn(Call.State.ACTIVE);
         when(mImsPhoneConnection.getPhoneType()).thenReturn(PhoneConstants.PHONE_TYPE_IMS);
     }

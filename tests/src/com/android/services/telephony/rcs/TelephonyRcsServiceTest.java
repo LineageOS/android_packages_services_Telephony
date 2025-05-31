@@ -27,7 +27,6 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 import android.app.PropertyInvalidatedCache;
-import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.os.PersistableBundle;
 import android.telephony.CarrierConfigManager;
@@ -40,21 +39,23 @@ import com.android.TelephonyTestBase;
 import com.android.ims.FeatureConnector;
 import com.android.ims.RcsFeatureManager;
 import com.android.internal.telephony.ISub;
+import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.flags.FeatureFlags;
+import com.android.internal.telephony.metrics.MetricsCollector;
+import com.android.internal.telephony.metrics.PersistAtomsStorage;
 import com.android.phone.ImsStateCallbackController;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.ArgumentCaptor;
-import org.mockito.Captor;
 import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 
 @RunWith(AndroidJUnit4.class)
 public class TelephonyRcsServiceTest extends TelephonyTestBase {
 
-    @Captor ArgumentCaptor<BroadcastReceiver> mReceiverCaptor;
     @Mock TelephonyRcsService.FeatureFactory mFeatureFactory;
     @Mock TelephonyRcsService.ResourceProxy mResourceProxy;
     @Mock UceControllerManager mMockUceSlot0;
@@ -72,6 +73,7 @@ public class TelephonyRcsServiceTest extends TelephonyTestBase {
     private TelephonyManager mTelephonyManager;
 
     @Mock FeatureFlags mFeatureFlags;
+    @Mock private MetricsCollector mMetricsCollector;
 
     private RcsFeatureController mFeatureControllerSlot0;
     private RcsFeatureController mFeatureControllerSlot1;
@@ -79,6 +81,7 @@ public class TelephonyRcsServiceTest extends TelephonyTestBase {
     @Before
     public void setUp() throws Exception {
         super.setUp();
+        MockitoAnnotations.openMocks(this);
         TelephonyManager.setupISubForTest(mISub);
         TelephonyManager.enableServiceHandleCaching();
         PropertyInvalidatedCache.disableForTestMode();
@@ -107,6 +110,9 @@ public class TelephonyRcsServiceTest extends TelephonyTestBase {
 
         replaceInstance(ImsStateCallbackController.class, "sInstance", null,
                 mock(ImsStateCallbackController.class));
+
+        replaceInstance(PhoneFactory.class, "sMetricsCollector", null, mMetricsCollector);
+        doReturn(Mockito.mock(PersistAtomsStorage.class)).when(mMetricsCollector).getAtomsStorage();
 
         replaceInstance(TelephonyManager.class, "sInstance", null, mTelephonyManager);
         doReturn(2).when(mTelephonyManager).getActiveModemCount();
@@ -358,7 +364,7 @@ public class TelephonyRcsServiceTest extends TelephonyTestBase {
         Intent intent = new Intent(CarrierConfigManager.ACTION_CARRIER_CONFIG_CHANGED);
         intent.putExtra(CarrierConfigManager.EXTRA_SLOT_INDEX, slotId);
         intent.putExtra(CarrierConfigManager.EXTRA_SUBSCRIPTION_INDEX, subId);
-        mReceiverCaptor.getValue().onReceive(mContext, intent);
+        mContext.sendBroadcast(intent);
     }
 
     private void setCarrierConfig(int subId, String key, boolean value) {
@@ -375,7 +381,6 @@ public class TelephonyRcsServiceTest extends TelephonyTestBase {
                 mFeatureFlags);
         service.setFeatureFactory(mFeatureFactory);
         service.initialize();
-        verify(mContext).registerReceiver(mReceiverCaptor.capture(), any());
         return service;
     }
 

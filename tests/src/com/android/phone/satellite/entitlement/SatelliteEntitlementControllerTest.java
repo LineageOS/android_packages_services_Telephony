@@ -67,7 +67,10 @@ import androidx.annotation.NonNull;
 
 import com.android.TelephonyTestBase;
 import com.android.internal.telephony.ExponentialBackoff;
+import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.flags.FeatureFlags;
+import com.android.internal.telephony.metrics.PersistAtomsStorage;
+import com.android.internal.telephony.metrics.SatelliteStats;
 import com.android.internal.telephony.satellite.SatelliteController;
 import com.android.internal.telephony.subscription.SubscriptionManagerService;
 import com.android.libraries.entitlement.ServiceEntitlementException;
@@ -77,6 +80,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
@@ -145,10 +150,14 @@ public class SatelliteEntitlementControllerTest extends TelephonyTestBase {
     @Before
     public void setUp() throws Exception {
         super.setUp();
+        MockitoAnnotations.openMocks(this);
 
         replaceInstance(SubscriptionManagerService.class, "sInstance", null,
                 mMockSubscriptionManagerService);
         replaceInstance(SatelliteController.class, "sInstance", null, mSatelliteController);
+        replaceInstance(PhoneFactory.class, "sMetricsCollector", null, mMetricsCollector);
+        replaceInstance(SatelliteStats.class, "mAtomsStorage", SatelliteStats.getInstance(),
+                Mockito.mock(PersistAtomsStorage.class));
 
         mTestableLooper = TestableLooper.get(this);
         mHandler = new Handler(mTestableLooper.getLooper());

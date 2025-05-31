@@ -2497,7 +2497,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         mApp = app;
         mFeatureFlags = featureFlags;
         mTelecomFeatureFlags = new com.android.server.telecom.flags.FeatureFlagsImpl();
-        mCM = PhoneGlobals.getInstance().mCM;
+        mCM = PhoneGlobals.getInstance().getCallManager();
         mImsResolver = ImsResolver.getInstance();
         mSatelliteController = SatelliteController.getInstance();
         mUserManager = (UserManager) app.getSystemService(Context.USER_SERVICE);

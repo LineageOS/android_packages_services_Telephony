@@ -71,6 +71,7 @@ import com.android.internal.telephony.flags.FeatureFlags;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 
@@ -492,7 +493,7 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
         intent.putExtra(SlicePurchaseController.EXTRA_PHONE_ID, PHONE_ID);
         intent.putExtra(SlicePurchaseController.EXTRA_PREMIUM_CAPABILITY,
                 TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY);
-        mContext.getBroadcastReceiver().onReceive(mContext, intent);
+        mContext.sendBroadcast(intent);
         mTestableLooper.processAllMessages();
         assertEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_SUCCESS, mResult);
 
@@ -572,7 +573,7 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
         intent.putExtra(SlicePurchaseController.EXTRA_PHONE_ID, PHONE_ID);
         intent.putExtra(SlicePurchaseController.EXTRA_PREMIUM_CAPABILITY,
                 TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY);
-        mContext.getBroadcastReceiver().onReceive(mContext, intent);
+        mContext.sendBroadcast(intent);
         mTestableLooper.processAllMessages();
         assertEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_USER_CANCELED, mResult);
 
@@ -602,7 +603,7 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
                 TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY);
         intent.putExtra(SlicePurchaseController.EXTRA_FAILURE_CODE,
                 SlicePurchaseController.FAILURE_CODE_CARRIER_URL_UNAVAILABLE);
-        mContext.getBroadcastReceiver().onReceive(mContext, intent);
+        mContext.sendBroadcast(intent);
         mTestableLooper.processAllMessages();
         assertEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_CARRIER_ERROR, mResult);
 
@@ -630,7 +631,7 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
         intent.putExtra(SlicePurchaseController.EXTRA_PHONE_ID, PHONE_ID);
         intent.putExtra(SlicePurchaseController.EXTRA_PREMIUM_CAPABILITY,
                 TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY);
-        mContext.getBroadcastReceiver().onReceive(mContext, intent);
+        mContext.sendBroadcast(intent);
         mTestableLooper.processAllMessages();
         assertEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_REQUEST_FAILED, mResult);
 
@@ -649,7 +650,7 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
         intent.putExtra(SlicePurchaseController.EXTRA_PHONE_ID, PHONE_ID);
         intent.putExtra(SlicePurchaseController.EXTRA_PREMIUM_CAPABILITY,
                 TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY);
-        mContext.getBroadcastReceiver().onReceive(mContext, intent);
+        mContext.sendBroadcast(intent);
         mTestableLooper.processAllMessages();
         assertEquals(
                 TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_NOT_DEFAULT_DATA_SUBSCRIPTION,
@@ -671,7 +672,7 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
         intent.putExtra(SlicePurchaseController.EXTRA_PHONE_ID, PHONE_ID);
         intent.putExtra(SlicePurchaseController.EXTRA_PREMIUM_CAPABILITY,
                 TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY);
-        mContext.getBroadcastReceiver().onReceive(mContext, intent);
+        mContext.sendBroadcast(intent);
         mTestableLooper.processAllMessages();
         assertEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_USER_DISABLED, mResult);
 
@@ -796,12 +797,12 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
         intent.putExtra(SlicePurchaseController.EXTRA_PHONE_ID, PHONE_ID);
         intent.putExtra(SlicePurchaseController.EXTRA_PREMIUM_CAPABILITY,
                 TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY);
-        mContext.getBroadcastReceiver().onReceive(mContext, intent);
+        mContext.sendBroadcast(intent);
         mTestableLooper.processAllMessages();
 
         // broadcast SUCCESS response from slice purchase application
         intent.setAction("com.android.phone.slice.action.SLICE_PURCHASE_APP_RESPONSE_SUCCESS");
-        mContext.getBroadcastReceiver().onReceive(mContext, intent);
+        mContext.sendBroadcast(intent);
         mTestableLooper.processAllMessages();
         assertEquals(TelephonyManager.PURCHASE_PREMIUM_CAPABILITY_RESULT_SUCCESS, mResult);
 
@@ -850,9 +851,10 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
         mTestableLooper.processAllMessages();
 
         // verify that the purchase request was sent successfully
-        verify(mContext).sendBroadcastAsUser(any(Intent.class), any(UserHandle.class));
+        ArgumentCaptor<Intent> intentCaptor = ArgumentCaptor.forClass(Intent.class);
+        verify(mContext).sendBroadcastAsUser(intentCaptor.capture(), any(UserHandle.class));
         assertEquals(SlicePurchaseController.ACTION_START_SLICE_PURCHASE_APP,
-                mContext.getBroadcast().getAction());
+                intentCaptor.getValue().getAction());
         assertTrue(mSlicePurchaseController.hasMessages(4 /* EVENT_PURCHASE_TIMEOUT */,
                 TelephonyManager.PREMIUM_CAPABILITY_PRIORITIZE_LATENCY));
         verify(mContext).registerReceiver(any(BroadcastReceiver.class), any(IntentFilter.class),

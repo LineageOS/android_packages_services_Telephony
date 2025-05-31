@@ -22,6 +22,7 @@ import static android.media.ToneGenerator.TONE_SUP_BUSY;
 import static junit.framework.Assert.assertNotNull;
 import static junit.framework.TestCase.assertEquals;
 
+import static org.mockito.Mockito.doReturn;
 import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
@@ -37,6 +38,7 @@ import androidx.test.runner.AndroidJUnit4;
 
 import com.android.TelephonyTestBase;
 import com.android.internal.telephony.CallFailCause;
+import com.android.phone.PhoneGlobals;
 import com.android.phone.R;
 
 import org.junit.Before;
@@ -62,6 +64,9 @@ public class DisconnectCauseUtilTest extends TelephonyTestBase {
     @Before
     public void setUp() throws Exception {
         super.setUp();
+        replaceInstance(PhoneGlobals.class, "sMe", null, mPhoneGlobals);
+        doReturn(InstrumentationRegistry.getTargetContext().getResources())
+                .when(mPhoneGlobals).getResources();
     }
 
     /**

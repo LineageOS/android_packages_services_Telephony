@@ -169,7 +169,8 @@ public class PhoneUtils {
         numberToDial = number;
 
         try {
-            connection = app.mCM.dial(phone, numberToDial, VideoProfile.STATE_AUDIO_ONLY);
+            connection = app.getCallManager()
+                    .dial(phone, numberToDial, VideoProfile.STATE_AUDIO_ONLY);
         } catch (CallStateException ex) {
             // CallStateException means a new outgoing call is not currently
             // possible: either no more call slots exist, or there's another
@@ -691,7 +692,8 @@ public class PhoneUtils {
      * meaning the call is the first real incoming call the phone is having.
      */
     public static boolean isRealIncomingCall(Call.State state) {
-        return (state == Call.State.INCOMING && !PhoneGlobals.getInstance().mCM.hasActiveFgCall());
+        return (state == Call.State.INCOMING && !PhoneGlobals.getInstance()
+                .getCallManager().hasActiveFgCall());
     }
 
     //

@@ -121,6 +121,7 @@ public class PhoneInterfaceManagerTest extends TelephonyTestBase {
 
         replaceInstance(SatelliteController.class, "sInstance", null,
                 Mockito.mock(SatelliteController.class));
+        replaceInstance(PhoneGlobals.class, "sMe", null, mPhoneGlobals);
 
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(
                 InstrumentationRegistry.getInstrumentation().getTargetContext());

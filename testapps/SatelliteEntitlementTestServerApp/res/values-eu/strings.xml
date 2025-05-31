@@ -9,9 +9,9 @@
     <string name="SatelliteTestServer" msgid="7962421083554248947">"Satelitearen probako zerbitzaria"</string>
     <string name="client_request_textview" msgid="5379106493283719020">"Bezeroaren eskaera:"</string>
     <string name="entitlement_status_textview" msgid="4182364042860876726">"Erabiltzeko eskubidearen egoera:"</string>
-    <string name="entitlement_status_disable" msgid="2356975025060584723">"Erabiltzeko eskubidearen egoera DESGAITU gisa dago ezarrita."</string>
-    <string name="entitlement_status_enable" msgid="1576820543295707752">"Erabiltzeko eskubidearen egoera GAITU gisa dago ezarrita."</string>
-    <string name="entitlement_status_incompatible" msgid="4618746073807600131">"Erabiltzeko eskubidearen egoera BATERAEZIN gisa dago ezarrita."</string>
+    <string name="entitlement_status_disable" msgid="2356975025060584723">"Erabiltzeko eskubidearen egoera DESGAITUTA gisa dago ezarrita."</string>
+    <string name="entitlement_status_enable" msgid="1576820543295707752">"Erabiltzeko eskubidearen egoera GAITUTA gisa dago ezarrita."</string>
+    <string name="entitlement_status_incompatible" msgid="4618746073807600131">"Erabiltzeko eskubidearen egoera BATERAEZINA gisa dago ezarrita."</string>
     <string name="entitlement_status_provisioning" msgid="7291623636504179107">"Erabiltzeko eskubidearen egoera HORNITZEN gisa dago ezarrita."</string>
     <string name="plmn_change_textView" msgid="896130072065900789">"plmn zerrenda alda daiteke"</string>
     <string name="plmn_change_button" msgid="4776495408690606074">"GORDE"</string>

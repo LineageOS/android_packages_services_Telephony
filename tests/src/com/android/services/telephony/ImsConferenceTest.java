@@ -45,6 +45,7 @@ import androidx.test.filters.SmallTest;
 
 import com.android.TelephonyTestBase;
 import com.android.ims.internal.ConferenceParticipant;
+import com.android.phone.PhoneGlobals;
 
 import org.junit.After;
 import org.junit.Before;
@@ -72,6 +73,7 @@ public class ImsConferenceTest extends TelephonyTestBase {
         super.setUp();
         replaceInstance(TelecomAccountRegistry.class, "sInstance", null,
                 mMockTelecomAccountRegistry);
+        replaceInstance(PhoneGlobals.class, "sMe", null, mPhoneGlobals);
         mConferenceHost = new TestTelephonyConnection();
         mConferenceHost.setManageImsConferenceCallSupported(true);
         when(mMockTelecomAccountRegistry.getAddress(any(PhoneAccountHandle.class)))
