@@ -10735,10 +10735,14 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         Phone phone = PhoneFactory.getPhone(slotIndex);
         if (phone == null) return false;
 
-        if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(
-                mApp, phone.getSubId(), callingPackage, callingFeatureId,
-                "isModemEnabledForSlot")) {
-            throw new SecurityException("Requires READ_PHONE_STATE permission.");
+        if (!mFeatureFlags.macroBasedOpportunisticNetworks()
+                || !TelephonyPermissions.checkCallingOrSelfReadNonDangerousPhoneStateNoThrow(
+                mApp, "isModemEnabledForSlot")) {
+            if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(
+                    mApp, phone.getSubId(), callingPackage, callingFeatureId,
+                    "isModemEnabledForSlot")) {
+                throw new SecurityException("Caller has no permission.");
+            }
         }
 
         enforceTelephonyFeatureWithException(callingPackage,
@@ -10776,10 +10780,20 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @Override
     @TelephonyManager.IsMultiSimSupportedResult
     public int isMultiSimSupported(String callingPackage, String callingFeatureId) {
-        if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(mApp,
-                getDefaultPhone().getSubId(), callingPackage, callingFeatureId,
-                "isMultiSimSupported")) {
-            return TelephonyManager.MULTISIM_NOT_SUPPORTED_BY_HARDWARE;
+        if (mFeatureFlags.macroBasedOpportunisticNetworks()) {
+            if (!TelephonyPermissions.checkCallingOrSelfReadNonDangerousPhoneStateNoThrow(mApp,
+                    "isMultiSimSupported")
+                    && !TelephonyPermissions.checkCallingOrSelfReadPhoneState(mApp,
+                    getDefaultPhone().getSubId(), callingPackage, callingFeatureId,
+                    "isMultiSimSupported")) {
+                throw new SecurityException("Caller does not have permission.");
+            }
+        } else {
+            if (!TelephonyPermissions.checkCallingOrSelfReadPhoneState(mApp,
+                    getDefaultPhone().getSubId(), callingPackage, callingFeatureId,
+                    "isMultiSimSupported")) {
+                return TelephonyManager.MULTISIM_NOT_SUPPORTED_BY_HARDWARE;
+            }
         }
 
         enforceTelephonyFeatureWithException(callingPackage,
