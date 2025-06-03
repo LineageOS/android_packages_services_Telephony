@@ -813,8 +813,8 @@
     <string name="supp_service_outgoing_calls_barred" msgid="5205725332394087112">"Odlazni pozivi su zabranjeni."</string>
     <string name="supp_service_call_forwarding_active" msgid="7910162960395132464">"Prosljeđivanje poziva je aktivno."</string>
     <string name="supp_service_additional_call_forwarded" msgid="8772753260008398632">"Dodatni poziv je proslijeđen."</string>
-    <string name="supp_service_additional_ect_connected" msgid="8525934162945220237">"Prijenos eksplicitnog poziva je završen."</string>
-    <string name="supp_service_additional_ect_connecting" msgid="7046240728781222753">"Prijenos eksplicitnog poziva je u toku."</string>
+    <string name="supp_service_additional_ect_connected" msgid="8525934162945220237">"Prenos eksplicitnog poziva je završen."</string>
+    <string name="supp_service_additional_ect_connecting" msgid="7046240728781222753">"Prenos eksplicitnog poziva je u toku."</string>
     <string name="supp_service_call_on_hold" msgid="2836811319594503059">"Poziv je na čekanju."</string>
     <string name="supp_service_call_resumed" msgid="3786864005920743546">"Poziv je nastavljen."</string>
     <string name="supp_service_deflected_call" msgid="7565979024562921707">"Poziv je bio preusmjeren."</string>

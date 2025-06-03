@@ -83,6 +83,7 @@ public class PhoneInformationV2 extends AppCompatActivity
 
     @Override
     public void onDestroy() {
+        super.onDestroy();
         if (mViewModel != null) {
             mViewModel.resetToDefaults();
         }
