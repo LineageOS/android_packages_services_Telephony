@@ -352,7 +352,6 @@ public class TelephonyConnectionServiceTest extends TelephonyTestBase {
         mTestConnectionService.setTelephonyManagerProxy(mTelephonyManagerProxy);
 
         mBinderStub = (IConnectionService.Stub) mTestConnectionService.onBind(null);
-        mSetFlagsRule.enableFlags(Flags.FLAG_DO_NOT_OVERRIDE_PRECISE_LABEL);
         mSetFlagsRule.disableFlags(Flags.FLAG_HANGUP_ACTIVE_CALL_BASED_ON_EMERGENCY_CALL_DOMAIN);
     }
 

@@ -1008,6 +1008,8 @@
     <string name="tty_mode_option_summary">Set TTY mode</string>
     <string name="auto_retry_mode_title">Auto-retry</string>
     <string name="auto_retry_mode_summary">Enable Auto-retry mode</string>
+    <string name="vibrating_for_outgoing_call_accepted_title">Vibrating for outgoing call accepted</string>
+    <string name="vibrating_for_outgoing_call_accepted_summary">Enable vibrating mode for outgoing call accepted</string>
     <!-- TTY Mode change is NOT allowed during a video call -->
     <string name="tty_mode_not_allowed_video_call">TTY Mode change is not allowed during a video call</string>
     <!-- FDN list screen: menu item label -->

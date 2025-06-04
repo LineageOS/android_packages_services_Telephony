@@ -16,15 +16,10 @@
 
 package com.android.services.telephony;
 
-import com.android.internal.telephony.flags.Flags;
-
 /**
  * FlagsAdapterImpl should always be used in production when Telephony is checking a flag status.
  * To help with testing, it may be necessary to have a different implementation
  * (e.g. flag is read only).
  */
 public class FlagsAdapterImpl implements FlagsAdapter {
-    public boolean doNotOverridePreciseLabel() {
-        return Flags.doNotOverridePreciseLabel();
-    }
 }

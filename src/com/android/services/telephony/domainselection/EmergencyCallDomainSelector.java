@@ -103,7 +103,6 @@ import android.text.TextUtils;
 import android.util.LocalLog;
 
 import com.android.internal.annotations.VisibleForTesting;
-import com.android.internal.telephony.flags.Flags;
 import com.android.phone.R;
 
 import java.util.ArrayList;
@@ -1866,8 +1865,7 @@ public class EmergencyCallDomainSelector extends DomainSelectorBase
     }
 
     private boolean hangupOngoingDialing() {
-        return Flags.hangupEmergencyCallForCrossSimRedialing()
-                && (mCallSetupTimerOnCurrentRat > 0)
+        return (mCallSetupTimerOnCurrentRat > 0)
                 && (!mImsEmergencyRegistrationHelper.isImsEmergencyRegistered());
     }
 

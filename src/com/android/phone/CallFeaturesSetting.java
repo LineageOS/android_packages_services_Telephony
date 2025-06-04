@@ -104,6 +104,8 @@ public class CallFeaturesSetting extends PreferenceActivity
 
     private static final String ENABLE_VIDEO_CALLING_KEY = "button_enable_video_calling";
     private static final String BUTTON_VP_KEY = "button_voice_privacy_key";
+    private static final String BUTTON_VIBRATING_KEY =
+            "button_vibrating_for_outgoing_call_accepted_key";
 
     private Phone mPhone;
     private ImsManager mImsMgr;
@@ -116,6 +118,8 @@ public class CallFeaturesSetting extends PreferenceActivity
     private SwitchPreference mEnableVideoCalling;
     private Preference mButtonWifiCalling;
     private boolean mDisallowedConfig = false;
+    private SwitchPreference mButtonVibratingForMoCallAccepted;
+    private int mCallConnectedIndicator = TelecomManager.CALL_CONNECTED_INDICATOR_NONE;
 
     /*
      * Click Listeners, handle click based on objects attached to UI.
@@ -172,6 +176,12 @@ public class CallFeaturesSetting extends PreferenceActivity
             android.provider.Settings.Global.putInt(mPhone.getContext().getContentResolver(),
                     android.provider.Settings.Global.CALL_AUTO_RETRY,
                     mButtonAutoRetry.isChecked() ? 1 : 0);
+            return true;
+        } else if (preference == mButtonVibratingForMoCallAccepted) {
+            final int prefs = mButtonVibratingForMoCallAccepted.isChecked()?
+                    mCallConnectedIndicator | TelecomManager.CALL_CONNECTED_INDICATOR_VIBRATION
+                    : mCallConnectedIndicator & ~TelecomManager.CALL_CONNECTED_INDICATOR_VIBRATION;
+            mTelecomManager.setCallConnectedIndicatorPreference(prefs);
             return true;
         } else if (preference == preferenceScreen.findPreference(
                 GsmUmtsCallOptions.CALL_FORWARDING_KEY)) {
@@ -376,6 +386,13 @@ public class CallFeaturesSetting extends PreferenceActivity
         TelephonyManager telephonyManager = getSystemService(TelephonyManager.class)
                 .createForSubscriptionId(mPhone.getSubId());
 
+        mButtonVibratingForMoCallAccepted = (SwitchPreference) findPreference(BUTTON_VIBRATING_KEY);
+        if (!getResources().getBoolean(
+                R.bool.show_call_connected_indicator_preference)) {
+            Preference phoneAccountSettingsPreference = findPreference(PHONE_ACCOUNT_SETTINGS_KEY);
+            getPreferenceScreen().removePreference(mButtonVibratingForMoCallAccepted);
+        }
+        mCallConnectedIndicator = mTelecomManager.getCallConnectedIndicatorPreference();
         // Note: The PhoneAccountSettingsActivity accessible via the
         // android.telecom.action.CHANGE_PHONE_ACCOUNTS intent is accessible directly from
         // the AOSP Dialer settings page on multi-sim devices.
@@ -385,6 +402,11 @@ public class CallFeaturesSetting extends PreferenceActivity
         if (telephonyManager.isMultiSimEnabled()) {
             Preference phoneAccountSettingsPreference = findPreference(PHONE_ACCOUNT_SETTINGS_KEY);
             getPreferenceScreen().removePreference(phoneAccountSettingsPreference);
+            getPreferenceScreen().removePreference(mButtonVibratingForMoCallAccepted);
+        } else {
+            mButtonVibratingForMoCallAccepted.setChecked((mCallConnectedIndicator
+                    & TelecomManager.CALL_CONNECTED_INDICATOR_VIBRATION) > 0);
+            mButtonVibratingForMoCallAccepted.setOnPreferenceChangeListener(this);
         }
 
         PreferenceScreen prefSet = getPreferenceScreen();

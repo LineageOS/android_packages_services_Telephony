@@ -492,6 +492,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private static final int LINE1_NUMBER_MAX_LEN = 50;
 
     private static final String CTS_PACKAGE = "android.telephony.cts";
+    private static final String PHONE_PACKAGE = "com.android.phone";
     private boolean mIsInCtsMode = false;
 
     /**
@@ -15427,10 +15428,7 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     private boolean shouldIgnoreSatelliteRequestInCtsMode(
         @NonNull String methodName, @Nullable Object resultCallback) {
         if (mIsInCtsMode) {
-            String callingPackage = getCurrentPackageName();
-            if (!TextUtils.equals(callingPackage, CTS_PACKAGE)) {
-                Log.d(LOG_TAG, methodName + " requested by " + callingPackage
-                    + " is ignored in CTS mode");
+            if (!isCallingPackageAllowedInCtsMode(methodName)) {
                 if (resultCallback == null) return true;
 
                 if (resultCallback instanceof ResultReceiver) {
@@ -15444,6 +15442,25 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
                 return true;
             }
         }
+        return false;
+    }
+
+    private boolean isCallingPackageAllowedInCtsMode(String methodName) {
+        PackageManager pm = mApp.getBaseContext().createContextAsUser(
+                Binder.getCallingUserHandle(), 0).getPackageManager();
+        if (pm == null) return false;
+        String[] callingPackages = pm.getPackagesForUid(Binder.getCallingUid());
+        if (callingPackages == null) return false;
+
+        for (String callingPackage : callingPackages) {
+            if (TextUtils.equals(callingPackage, CTS_PACKAGE)
+                    || TextUtils.equals(callingPackage, PHONE_PACKAGE)) {
+                return true;
+            }
+        }
+        Log.d(LOG_TAG, "isCallingPackageAllowedInCtsMode: calling packages="
+                + String.join(",", callingPackages) + " is not allowed in CTS mode"
+                + " for method: " + methodName);
         return false;
     }
 }

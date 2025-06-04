@@ -102,7 +102,6 @@ import android.os.IThermalService;
 import android.os.Looper;
 import android.os.PersistableBundle;
 import android.os.PowerManager;
-import android.platform.test.flag.junit.SetFlagsRule;
 import android.telecom.PhoneAccount;
 import android.telecom.TelecomManager;
 import android.telephony.AccessNetworkConstants;
@@ -131,12 +130,10 @@ import android.view.Display;
 import androidx.test.filters.SmallTest;
 
 import com.android.TestContext;
-import com.android.internal.telephony.flags.Flags;
 import com.android.phone.R;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
@@ -183,8 +180,6 @@ public class EmergencyCallDomainSelectorTest {
     private PowerManager mPowerManager;
     private ConnectivityManager.NetworkCallback mNetworkCallback;
     private Consumer<EmergencyRegistrationResult> mResultConsumer;
-
-    @Rule public final SetFlagsRule mSetFlagsRule = new SetFlagsRule();
 
     @Before
     public void setUp() throws Exception {
@@ -2815,8 +2810,6 @@ public class EmergencyCallDomainSelectorTest {
         bundle.putInt(KEY_EMERGENCY_CALL_SETUP_TIMER_ON_CURRENT_NETWORK_SEC_INT, 1);
         when(mCarrierConfigManager.getConfigForSubId(anyInt(), any())).thenReturn(bundle);
 
-        mSetFlagsRule.enableFlags(Flags.FLAG_HANGUP_EMERGENCY_CALL_FOR_CROSS_SIM_REDIALING);
-
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);
 
@@ -2845,8 +2838,6 @@ public class EmergencyCallDomainSelectorTest {
         bundle.putInt(KEY_EMERGENCY_CALL_SETUP_TIMER_ON_CURRENT_NETWORK_SEC_INT, 1);
         when(mCarrierConfigManager.getConfigForSubId(anyInt(), any())).thenReturn(bundle);
         doReturn(true).when(mImsEmergencyRegistrationHelper).isImsEmergencyRegistered();
-
-        mSetFlagsRule.enableFlags(Flags.FLAG_HANGUP_EMERGENCY_CALL_FOR_CROSS_SIM_REDIALING);
 
         createSelector(SLOT_0_SUB_ID);
         unsolBarringInfoChanged(false);

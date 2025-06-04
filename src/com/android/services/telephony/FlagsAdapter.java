@@ -21,5 +21,4 @@ package com.android.services.telephony;
  * (is_fixed_read_only: true)
  */
 public interface FlagsAdapter {
-    boolean doNotOverridePreciseLabel();
 }

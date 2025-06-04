@@ -605,6 +605,8 @@
     <string name="rtt_mode_summary" msgid="8631541375609989562">"允许在语音通话中发送信息"</string>
     <string name="rtt_mode_more_information" msgid="587500128658756318">"RTT 可为以下类型的来电者提供协助：失聪者、听力障碍人士、语言障碍人士或需要语音以外服务的人。&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;了解详情&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - 系统会以信息转录的方式存储 RTT 通话\n       &lt;br&gt; - 视频通话不支持 RTT"</string>
     <string name="no_rtt_when_roaming" msgid="5268008247378355389">"注意：漫游时无法使用 RTT 功能"</string>
+    <string name="vibrating_for_outgoing_call_accepted_title">"当拨出电话接通时震动设备"</string>
+    <string name="vibrating_for_outgoing_call_accepted_summary">"启用当拨出电话接通时震动设备"</string>
   <string-array name="tty_mode_entries">
     <item msgid="3238070884803849303">"TTY 关闭"</item>
     <item msgid="1449091874731375214">"TTY 完整"</item>
