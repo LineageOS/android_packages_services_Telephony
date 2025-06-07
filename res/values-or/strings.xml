@@ -459,6 +459,10 @@
     <string name="tty_mode_option_summary" msgid="4770510287236494371">"TTY ମୋଡ୍ ସେଟ୍ କରନ୍ତୁ"</string>
     <string name="auto_retry_mode_title" msgid="2985801935424422340">"ଅଟୋ-ରିଟ୍ରାଏ କରନ୍ତୁ"</string>
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"ଅଟୋ-ରିଟ୍ରାଏ ମୋଡ୍‌କୁ ସକ୍ଷମ କରନ୍ତୁ"</string>
+    <!-- no translation found for vibrating_for_outgoing_call_accepted_title (647945514737734657) -->
+    <skip />
+    <!-- no translation found for vibrating_for_outgoing_call_accepted_summary (906112327196063688) -->
+    <skip />
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"ଭିଡିଓ କଲ୍ କରିବା ସମୟରେ TTY ମୋଡ୍‌କୁ ପରିବର୍ତ୍ତନ କରିବା ପାଇଁ ଅନୁମତି ନାହିଁ"</string>
     <string name="menu_add" msgid="5616487894975773141">"କଣ୍ଟାକ୍ଟ ଯୋଗ କରନ୍ତୁ"</string>
     <string name="menu_edit" msgid="3593856941552460706">"କଣ୍ଟାକ୍ଟ ଏଡିଟ କରନ୍ତୁ"</string>
@@ -537,8 +541,7 @@
     <string name="notification_voicemail_no_vm_number" msgid="3423686009815186750">"ଭଏସ୍ ମେଲ୍ ନମ୍ବର୍ ଅଜଣା"</string>
     <string name="notification_network_selection_title" msgid="255595526707809121">"କୌଣସି ସେବା ନାହିଁ"</string>
     <string name="notification_network_selection_text" msgid="553288408722427659">"ଚୟନିତ ନେଟ୍‌ୱର୍କ <xliff:g id="OPERATOR_NAME">%s</xliff:g> ଉପଲବ୍ଧ ନାହିଁ"</string>
-    <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"କଲ୍ କରିବା ପାଇଁ ମୋବାଇଲ୍ ନେଟ୍‌ୱର୍କକୁ ଚାଲୁ କରନ୍ତୁ, ଏୟାରପ୍ଲେନ୍ ମୋଡ୍‌କୁ ବନ୍ଦ କରନ୍ତୁ କିମ୍ବା ବ୍ୟାଟେରୀ ସେଭର୍‌କୁ ବନ୍ଦ କରନ୍ତୁ।"</string>
-    <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"ଗୋଟିଏ କଲ୍ କରିବା ପାଇଁ ଏୟାରପ୍ଲେନ୍ ମୋଡ୍‌କୁ ବନ୍ଦ କରନ୍ତୁ।"</string>
+    <string name="incall_error_power_off" msgid="8131672264311208673">"ଗୋଟିଏ କଲ୍ କରିବା ପାଇଁ ଏୟାରପ୍ଲେନ୍ ମୋଡ୍‌କୁ ବନ୍ଦ କରନ୍ତୁ।"</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"ଗୋଟିଏ କଲ୍ କରିବା ପାଇଁ ଏୟାରପ୍ଲେନ୍ ମୋଡ୍‌କୁ ବନ୍ଦ କରନ୍ତୁ କିମ୍ବା ଏକ ତାରବିହୀନ ନେଟ୍‌ୱର୍କ ସହ କନେକ୍ଟ କରନ୍ତୁ।"</string>
     <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"ଫୋନଟି ବହୁତ ଗରମ ହୋଇଯାଇଛି"</b>\n\n"ଏହି କଲକୁ ସମ୍ପୂର୍ଣ୍ଣ କରାଯାଇପାରିବ ନାହିଁ। ଆପଣଙ୍କ ଫୋନ୍ ଥଣ୍ଡା ହେବା ପରେ ପୁଣି ଚେଷ୍ଟା କରନ୍ତୁ। \n\nଆପଣ ଏବେ ବି ଜରୁରୀକାଳୀନ କଲ୍ କରିପାରିବେ।"</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"ଗୋଟିଏ ସାଧାରଣ କଲ୍ କରିବା ପାଇଁ ଜରୁରିକାଳୀନ କଲବ୍ୟାକ୍ ମୋଡ୍‌ରୁ ବାହାରି ଆସନ୍ତୁ।"</string>

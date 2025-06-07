@@ -459,6 +459,10 @@
     <string name="tty_mode_option_summary" msgid="4770510287236494371">"‏TTY طرز متعین کریں"</string>
     <string name="auto_retry_mode_title" msgid="2985801935424422340">"از خود دوبارہ کوشش کریں"</string>
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"از خود دوبارہ کوشش کریں کا طرز فعال کریں"</string>
+    <!-- no translation found for vibrating_for_outgoing_call_accepted_title (647945514737734657) -->
+    <skip />
+    <!-- no translation found for vibrating_for_outgoing_call_accepted_summary (906112327196063688) -->
+    <skip />
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"‏ویڈیو کال کے دوران TTY وضع تبدیل کرنے کی اجازت نہیں ہے"</string>
     <string name="menu_add" msgid="5616487894975773141">"رابطہ شامل کریں"</string>
     <string name="menu_edit" msgid="3593856941552460706">"رابطہ میں ترمیم کریں"</string>
@@ -537,8 +541,7 @@
     <string name="notification_voicemail_no_vm_number" msgid="3423686009815186750">"صوتی میل نمبر نامعلوم ہے"</string>
     <string name="notification_network_selection_title" msgid="255595526707809121">"کوئی سروس نہیں ہے"</string>
     <string name="notification_network_selection_text" msgid="553288408722427659">"منتخب کردہ نیٹ ورک<xliff:g id="OPERATOR_NAME">%s</xliff:g> دستیاب نہیں ہے"</string>
-    <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"کال کرنے کیل‏ئے موبائل نیٹ ورک آن کریں، ہوائی جہاز موڈ یا بیٹری سیور موڈ آف کریں۔"</string>
-    <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"کال کرنے کیلئے ہوائی جہاز وضع آف کریں۔"</string>
+    <string name="incall_error_power_off" msgid="8131672264311208673">"کال کرنے کیلئے ہوائی جہاز وضع آف کریں۔"</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"کال کرنے کیلئے ہوائی جہاز وضع آف کریں یا کسی وائرلیس نیٹ ورک سے منسلک ہوں۔"</string>
     <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"فون بہت گرم ہے"</b>\n\n"اس کال کو مکمل نہیں کیا جا سکتا۔ جب آپ کا فون ٹھنڈا ہو جائے تو دوبارہ کوشش کریں۔\n\nآپ اب بھی ایمرجنسی کالز کر سکتے ہیں۔"</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"غیر ایمرجنسی کال کرنے کیلئے ایمرجنسی کال بیک موڈ سے اخراج کریں۔"</string>

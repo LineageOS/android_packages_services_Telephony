@@ -459,6 +459,10 @@
     <string name="tty_mode_option_summary" msgid="4770510287236494371">"Podesi TTY režim"</string>
     <string name="auto_retry_mode_title" msgid="2985801935424422340">"Automatski ponovni pokušaj"</string>
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"Omogućavanje režima automatskog ponovnog pokušaja"</string>
+    <!-- no translation found for vibrating_for_outgoing_call_accepted_title (647945514737734657) -->
+    <skip />
+    <!-- no translation found for vibrating_for_outgoing_call_accepted_summary (906112327196063688) -->
+    <skip />
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"Promena TTY režima nije dozvoljena tokom video poziva"</string>
     <string name="menu_add" msgid="5616487894975773141">"Dodaj kontakt"</string>
     <string name="menu_edit" msgid="3593856941552460706">"Izmeni kontakt"</string>
@@ -537,8 +541,7 @@
     <string name="notification_voicemail_no_vm_number" msgid="3423686009815186750">"Nepoznat broj govorne pošte"</string>
     <string name="notification_network_selection_title" msgid="255595526707809121">"Nema usluge"</string>
     <string name="notification_network_selection_text" msgid="553288408722427659">"Izabrana mreža<xliff:g id="OPERATOR_NAME">%s</xliff:g> nije dostupna"</string>
-    <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Uključite mobilnu mrežu i isključite režim rada u avionu ili režim uštede baterije da biste uputili poziv."</string>
-    <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Isključite režim rada u avionu da biste uputili poziv."</string>
+    <string name="incall_error_power_off" msgid="8131672264311208673">"Isključite režim rada u avionu da biste uputili poziv."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Isključite režim rada u avionu ili se povežite na bežičnu mrežu da biste uputili poziv."</string>
     <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"Telefon je previše vruć"</b>\n\n"Poziv ne može da se završi. Probajte ponovo kada se telefon ohladi.\n\nI dalje možete da upućujete hitne pozive."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Izađite iz režima hitnog povratnog poziva da biste uputili poziv koji nije hitan."</string>

@@ -459,6 +459,10 @@
     <string name="tty_mode_option_summary" msgid="4770510287236494371">"Definir modo TTY"</string>
     <string name="auto_retry_mode_title" msgid="2985801935424422340">"Reintento automático"</string>
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"Activar o modo de reintento automático"</string>
+    <!-- no translation found for vibrating_for_outgoing_call_accepted_title (647945514737734657) -->
+    <skip />
+    <!-- no translation found for vibrating_for_outgoing_call_accepted_summary (906112327196063688) -->
+    <skip />
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"Non se permite cambiar o modo TTY durante as videochamadas"</string>
     <string name="menu_add" msgid="5616487894975773141">"Engadir contacto"</string>
     <string name="menu_edit" msgid="3593856941552460706">"Editar contacto"</string>
@@ -537,8 +541,7 @@
     <string name="notification_voicemail_no_vm_number" msgid="3423686009815186750">"Número de correo de voz descoñecido"</string>
     <string name="notification_network_selection_title" msgid="255595526707809121">"Sen servizo"</string>
     <string name="notification_network_selection_text" msgid="553288408722427659">"A rede seleccionada (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) non está dispoñible"</string>
-    <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Para facer unha chamada, activa a rede de telefonía móbil, desactiva o modo avión ou desactiva o modo Aforro de batería."</string>
-    <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Desactiva o modo avión para facer unha chamada."</string>
+    <string name="incall_error_power_off" msgid="8131672264311208673">"Desactiva o modo avión para facer unha chamada."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Desactiva o modo avión ou conéctate a unha rede sen fíos para facer unha chamada."</string>
     <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"A temperatura do teléfono é moi alta"</b>\n\n"Non se pode completar esta chamada. Téntao de novo cando arrefríe o teléfono.\n\nAínda así, podes facer chamadas de emerxencia."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Sae do modo de devolución de chamada de emerxencia para facer unha chamada que non sexa de emerxencia."</string>

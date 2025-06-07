@@ -459,6 +459,10 @@
     <string name="tty_mode_option_summary" msgid="4770510287236494371">"Ezarri TTY modua"</string>
     <string name="auto_retry_mode_title" msgid="2985801935424422340">"Saiatu berriro automatikoki"</string>
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"Gaitu automatikoki berriro saiatzeko modua"</string>
+    <!-- no translation found for vibrating_for_outgoing_call_accepted_title (647945514737734657) -->
+    <skip />
+    <!-- no translation found for vibrating_for_outgoing_call_accepted_summary (906112327196063688) -->
+    <skip />
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"Ezin da aldatu TTY modua bideodeiak abian direnean"</string>
     <string name="menu_add" msgid="5616487894975773141">"Gehitu kontaktua"</string>
     <string name="menu_edit" msgid="3593856941552460706">"Editatu kontaktua"</string>
@@ -537,8 +541,7 @@
     <string name="notification_voicemail_no_vm_number" msgid="3423686009815186750">"Erantzungailuaren zenbakia ezezaguna da"</string>
     <string name="notification_network_selection_title" msgid="255595526707809121">"Ez dago zerbitzurik"</string>
     <string name="notification_network_selection_text" msgid="553288408722427659">"Hautatutako sarea (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) ez dago erabilgarri"</string>
-    <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Deitzeko, aktibatu sare mugikorra, desaktibatu hegaldi modua edo desaktibatu bateria-aurreztailea."</string>
-    <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Deia egiteko, desaktibatu hegaldi modua."</string>
+    <string name="incall_error_power_off" msgid="8131672264311208673">"Deia egiteko, desaktibatu hegaldi modua."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Deia egiteko, desaktibatu hegaldi modua edo konektatu haririk gabeko sare batera."</string>
     <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"Telefonoa beroegi dago"</b>\n\n"Ezin da egin deia. Saiatu berriro telefonoa hozten denean.\n\nHala ere, larrialdi-deiak egin ditzakezu."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Larrialdikoak ez diren deiak egiteko, irten larrialdi-zerbitzuen deiak jasotzeko modutik."</string>

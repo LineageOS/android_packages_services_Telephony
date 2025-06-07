@@ -459,6 +459,8 @@
     <string name="tty_mode_option_summary" msgid="4770510287236494371">"Itakda ang TTY mode"</string>
     <string name="auto_retry_mode_title" msgid="2985801935424422340">"Awtomatikong Muling Pagsubok"</string>
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"Paganahin ang mode ng Awtomatikong muling pagsubok"</string>
+    <string name="vibrating_for_outgoing_call_accepted_title" msgid="647945514737734657">"Pag-vibrate para sa pagtanggap ng outgoing na tawag"</string>
+    <string name="vibrating_for_outgoing_call_accepted_summary" msgid="906112327196063688">"I-enable ang vibrating mode para sa pagtanggap ng outgoing na tawag"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"Hindi pinapayagan ang pagbago sa TTY Mode habang nagvi-video call"</string>
     <string name="menu_add" msgid="5616487894975773141">"Magdagdag ng contact"</string>
     <string name="menu_edit" msgid="3593856941552460706">"I-edit ang contact"</string>
@@ -537,8 +539,7 @@
     <string name="notification_voicemail_no_vm_number" msgid="3423686009815186750">"Hindi kilala ang numero ng voicemail"</string>
     <string name="notification_network_selection_title" msgid="255595526707809121">"Walang serbisyo"</string>
     <string name="notification_network_selection_text" msgid="553288408722427659">"Hindi available ang piniling network na (<xliff:g id="OPERATOR_NAME">%s</xliff:g>)"</string>
-    <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"I-on ang mobile network, i-off ang airplane mode o i-off ang battery saver mode upang tumawag."</string>
-    <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"I-off ang airplane mode upang makatawag."</string>
+    <string name="incall_error_power_off" msgid="8131672264311208673">"I-off ang airplane mode upang makatawag."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"I-off ang airplane mode o kumonekta sa isang wireless network upang makatawag."</string>
     <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"Masyadong mainit ang telepono"</b>\n\n"Hindi makumpleto ang tawag na ito. Subukan ulit kapag lumamig ang iyong telepono.\n\nMakakagawa ka pa rin ng mga emergency na tawag."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Lumabas sa emergency callback mode upang makapagsagawa ng hindi pang-emergency na pagtawag."</string>

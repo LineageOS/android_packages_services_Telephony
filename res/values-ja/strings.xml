@@ -459,6 +459,10 @@
     <string name="tty_mode_option_summary" msgid="4770510287236494371">"TTYモードの設定"</string>
     <string name="auto_retry_mode_title" msgid="2985801935424422340">"自動再試行"</string>
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"自動再試行モードを有効にする"</string>
+    <!-- no translation found for vibrating_for_outgoing_call_accepted_title (647945514737734657) -->
+    <skip />
+    <!-- no translation found for vibrating_for_outgoing_call_accepted_summary (906112327196063688) -->
+    <skip />
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"TTYモードの変更はビデオハングアウト中には行えません"</string>
     <string name="menu_add" msgid="5616487894975773141">"連絡先を追加"</string>
     <string name="menu_edit" msgid="3593856941552460706">"連絡先を編集"</string>
@@ -537,8 +541,7 @@
     <string name="notification_voicemail_no_vm_number" msgid="3423686009815186750">"留守番電話の番号が不明です"</string>
     <string name="notification_network_selection_title" msgid="255595526707809121">"通信サービスなし"</string>
     <string name="notification_network_selection_text" msgid="553288408722427659">"選択したネットワーク（<xliff:g id="OPERATOR_NAME">%s</xliff:g>）は利用できません"</string>
-    <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"通話を発信するには、モバイル ネットワークを ON にし、機内モードまたはバッテリー セーバー モードを OFF にしてください。"</string>
-    <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"電話をかけるには機内モードをオフにしてください。"</string>
+    <string name="incall_error_power_off" msgid="8131672264311208673">"電話をかけるには機内モードをオフにしてください。"</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"電話をかけるには、機内モードをオフにするか無線ネットワークに接続してください。"</string>
     <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"スマートフォンが熱くなっています"</b>\n\n"この通話を完了できません。スマートフォンの熱が冷めてから、もう一度お試しください。\n\n緊急通報は通常どおり発信できます。"</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"緊急通報以外の通話を発信するには、緊急通報待機モードを終了してください。"</string>

@@ -459,6 +459,10 @@
     <string name="tty_mode_option_summary" msgid="4770510287236494371">"设置 TTY 模式"</string>
     <string name="auto_retry_mode_title" msgid="2985801935424422340">"自动重拨"</string>
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"启用自动重拨模式"</string>
+    <!-- no translation found for vibrating_for_outgoing_call_accepted_title (647945514737734657) -->
+    <skip />
+    <!-- no translation found for vibrating_for_outgoing_call_accepted_summary (906112327196063688) -->
+    <skip />
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"视频通话过程中不允许更改为 TTY 模式"</string>
     <string name="menu_add" msgid="5616487894975773141">"添加联系人"</string>
     <string name="menu_edit" msgid="3593856941552460706">"编辑联系人"</string>
@@ -537,8 +541,7 @@
     <string name="notification_voicemail_no_vm_number" msgid="3423686009815186750">"语音信箱号码未知"</string>
     <string name="notification_network_selection_title" msgid="255595526707809121">"无服务"</string>
     <string name="notification_network_selection_text" msgid="553288408722427659">"所选网络（<xliff:g id="OPERATOR_NAME">%s</xliff:g>）不可用"</string>
-    <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"需开启移动网络，并关闭飞行模式或省电模式才能拨打电话。"</string>
-    <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"需关闭飞行模式才能拨打电话。"</string>
+    <string name="incall_error_power_off" msgid="8131672264311208673">"需关闭飞行模式才能拨打电话。"</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"需关闭飞行模式或连接至无线网络才能拨打电话。"</string>
     <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"手机过热"</b>\n\n"无法完成此通话。请先让手机降温，然后再重试。\n\n您仍然可以拨打紧急呼救电话。"</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"要拨打非紧急电话，请先退出紧急回拨模式。"</string>
@@ -605,8 +608,6 @@
     <string name="rtt_mode_summary" msgid="8631541375609989562">"允许在语音通话中发送信息"</string>
     <string name="rtt_mode_more_information" msgid="587500128658756318">"RTT 可为以下类型的来电者提供协助：失聪者、听力障碍人士、语言障碍人士或需要语音以外服务的人。&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;了解详情&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - 系统会以信息转录的方式存储 RTT 通话\n       &lt;br&gt; - 视频通话不支持 RTT"</string>
     <string name="no_rtt_when_roaming" msgid="5268008247378355389">"注意：漫游时无法使用 RTT 功能"</string>
-    <string name="vibrating_for_outgoing_call_accepted_title">"当拨出电话接通时震动设备"</string>
-    <string name="vibrating_for_outgoing_call_accepted_summary">"启用当拨出电话接通时震动设备"</string>
   <string-array name="tty_mode_entries">
     <item msgid="3238070884803849303">"TTY 关闭"</item>
     <item msgid="1449091874731375214">"TTY 完整"</item>

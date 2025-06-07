@@ -459,6 +459,10 @@
     <string name="tty_mode_option_summary" msgid="4770510287236494371">"Stel TTY-modus"</string>
     <string name="auto_retry_mode_title" msgid="2985801935424422340">"Outoherprobeer"</string>
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"Aktiveer outoherprobeer-modus"</string>
+    <!-- no translation found for vibrating_for_outgoing_call_accepted_title (647945514737734657) -->
+    <skip />
+    <!-- no translation found for vibrating_for_outgoing_call_accepted_summary (906112327196063688) -->
+    <skip />
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"TTY-modusverandering word nie tydens \'n video-oproep toegelaat nie"</string>
     <string name="menu_add" msgid="5616487894975773141">"Voeg kontak by"</string>
     <string name="menu_edit" msgid="3593856941552460706">"Verander kontak"</string>
@@ -537,8 +541,7 @@
     <string name="notification_voicemail_no_vm_number" msgid="3423686009815186750">"Stemboodskapnommer onbekend"</string>
     <string name="notification_network_selection_title" msgid="255595526707809121">"Geen diens nie"</string>
     <string name="notification_network_selection_text" msgid="553288408722427659">"Geselekteerde netwerk <xliff:g id="OPERATOR_NAME">%s</xliff:g> nie beskikbaar nie"</string>
-    <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Skakel selnetwerk aan, skakel vliegtuigmodus af of skakel batterybespaardermodus af om \'n oproep te maak."</string>
-    <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Skakel vliegtuigmodus af om \'n oproep te maak."</string>
+    <string name="incall_error_power_off" msgid="8131672264311208673">"Skakel vliegtuigmodus af om \'n oproep te maak."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Skakel vliegtuigmodus af of koppel aan \'n draadlose netwerk om \'n oproep te maak."</string>
     <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"Foon is te warm"</b>\n\n"Kan nie hierdie oproep voltooi nie. Probeer weer wanneer jou foon afkoel.\n\nJy kan nog noodoproepe maak."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Verlaat noodterugbelmodus om \'n nienoodoproep te maak."</string>
