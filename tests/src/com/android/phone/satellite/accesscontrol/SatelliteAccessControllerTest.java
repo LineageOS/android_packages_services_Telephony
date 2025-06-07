@@ -132,7 +132,6 @@ import com.android.internal.telephony.satellite.SatelliteModemInterface;
 import com.android.internal.telephony.satellite.metrics.CarrierRoamingSatelliteControllerStats;
 import com.android.internal.telephony.satellite.metrics.ControllerMetricsStats;
 import com.android.internal.telephony.subscription.SubscriptionManagerService;
-import com.android.phone.PhoneGlobals;
 
 import org.junit.After;
 import org.junit.Before;
@@ -369,7 +368,6 @@ public class SatelliteAccessControllerTest extends TelephonyTestBase {
                 .getAssets();
         mPhones = new Phone[]{mMockPhone, mMockPhone2};
         replaceInstance(PhoneFactory.class, "sPhones", null, mPhones);
-        replaceInstance(PhoneFactory.class, "sMetricsCollector", null, mMetricsCollector);
         replaceInstance(SatelliteController.class, "sInstance", null,
                 mMockSatelliteController);
         replaceInstance(SatelliteModemInterface.class, "sInstance", null,
@@ -382,7 +380,6 @@ public class SatelliteAccessControllerTest extends TelephonyTestBase {
                 mock(ControllerMetricsStats.class));
         replaceInstance(CarrierRoamingSatelliteControllerStats.class, "sInstance", null,
                 mCarrierRoamingSatelliteControllerStats);
-        replaceInstance(PhoneGlobals.class, "sMe", null, mPhoneGlobals);
         when(mMockPhone.getSubId()).thenReturn(SubscriptionManager.getDefaultSubscriptionId());
 
         when(mMockContext.getResources()).thenReturn(mMockResources);

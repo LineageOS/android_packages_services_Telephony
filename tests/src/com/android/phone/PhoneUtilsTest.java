@@ -65,6 +65,12 @@ public class PhoneUtilsTest extends TelephonyTestBase {
     }
 
     @Test
+    public void testGetPhoneForPhoneAccountHandle() throws Exception {
+        assertEquals(mPhone, PhoneUtils.getPhoneForPhoneAccountHandle(
+                mPhoneAccountHandleTest));
+    }
+
+    @Test
     public void testMakePstnPhoneAccountHandleWithPrefix() throws Exception {
         PhoneAccountHandle phoneAccountHandleTest = new PhoneAccountHandle(
                 PSTN_CONNECTION_SERVICE_COMPONENT, mPhoneAccountHandleIdString);

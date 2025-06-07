@@ -21,9 +21,14 @@ import static com.google.common.truth.Truth.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.atLeastOnce;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import android.content.BroadcastReceiver;
+import android.content.ContentProvider;
+import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -31,12 +36,20 @@ import android.os.PersistableBundle;
 import android.os.UserHandle;
 import android.platform.test.flag.junit.SetFlagsRule;
 import android.telecom.PhoneAccount;
+import android.telecom.TelecomManager;
 import android.telephony.CarrierConfigManager;
+import android.telephony.ServiceState;
 import android.telephony.SubscriptionManager;
+import android.telephony.SubscriptionManager.OnSubscriptionsChangedListener;
+import android.telephony.TelephonyCallback;
+import android.telephony.TelephonyManager;
+import android.telephony.ims.ImsManager;
 import android.testing.AndroidTestingRunner;
 import android.testing.TestableLooper;
 
 import com.android.TelephonyTestBase;
+import com.android.internal.telephony.Phone;
+import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.SimultaneousCallingTracker;
 import com.android.internal.telephony.flags.Flags;
 import com.android.phone.PhoneInterfaceManager;
@@ -61,12 +74,26 @@ public class TelecomAccountRegistryTest extends TelephonyTestBase {
     @Rule
     public final SetFlagsRule mSetFlagsRule = new SetFlagsRule();
 
-    Resources mResources;
+    // We need more functions that what TelephonyTestBase.mContext supports.
+    // Use a local mocked Context to make life easier.
+    @Mock Context mMockedContext;
+    @Mock TelecomManager mTelecomManager;
+    @Mock TelephonyManager mTelephonyManager;
+    @Mock ImsManager mImsManager;
+    @Mock SubscriptionManager mSubscriptionManager;
+    @Mock ContentProvider mContentProvider;
+    @Mock Phone mPhone;
+    @Mock Resources mResources;
     @Mock Drawable mDrawable;
     @Mock PhoneInterfaceManager mPhoneInterfaceManager;
 
     private TelecomAccountRegistry mTelecomAccountRegistry;
 
+    private OnSubscriptionsChangedListener mOnSubscriptionsChangedListener;
+    private TelephonyCallback mTelephonyCallback;
+    private BroadcastReceiver mUserSwitchedAndConfigChangedReceiver;
+    private BroadcastReceiver mLocaleChangedBroadcastReceiver;
+    private ContentResolver mContentResolver;
     private TestableLooper mTestableLooper;
 
     @Before
@@ -75,9 +102,12 @@ public class TelecomAccountRegistryTest extends TelephonyTestBase {
         mSetFlagsRule.disableFlags(Flags.FLAG_DELAY_PHONE_ACCOUNT_REGISTRATION);
 
         replaceInstance(PhoneInterfaceManager.class, "sInstance", null, mPhoneInterfaceManager);
+        when(mPhone.getPhoneType()).thenReturn(PhoneConstants.PHONE_TYPE_GSM);
+        when(mPhone.getContext()).thenReturn(mMockedContext);
+        when(mPhone.getSubId()).thenReturn(TEST_SUB_ID);
         when(mPhoneInterfaceManager.isRttEnabled(anyInt())).thenReturn(false);
 
-        mResources = mContext.getResources();
+        when(mMockedContext.getResources()).thenReturn(mResources);
         // Enable PSTN PhoneAccount which can place emergency call by default
         when(mResources.getBoolean(R.bool.config_pstn_phone_accounts_enabled)).thenReturn(true);
         when(mResources.getBoolean(R.bool.config_pstnCanPlaceEmergencyCalls)).thenReturn(true);
@@ -85,7 +115,7 @@ public class TelecomAccountRegistryTest extends TelephonyTestBase {
         when(mDrawable.getIntrinsicWidth()).thenReturn(5);
         when(mDrawable.getIntrinsicHeight()).thenReturn(5);
 
-        PersistableBundle bundle = mContext.getCarrierConfig(0);
+        PersistableBundle bundle = new PersistableBundle();
         bundle.putBoolean(CarrierConfigManager.KEY_SUPPORT_IMS_CONFERENCE_CALL_BOOL, false);
         bundle.putIntArray(CarrierConfigManager.KEY_CELLULAR_SERVICE_CAPABILITIES_INT_ARRAY,
                 new int[]{
@@ -93,10 +123,57 @@ public class TelecomAccountRegistryTest extends TelephonyTestBase {
                         SubscriptionManager.SERVICE_CAPABILITY_SMS,
                         SubscriptionManager.SERVICE_CAPABILITY_DATA
                 });
+        when(mPhoneGlobals.getCarrierConfigForSubId(anyInt())).thenReturn(bundle);
+
+        // Mock system services used by TelecomAccountRegistry
+        when(mMockedContext.getSystemServiceName(TelecomManager.class))
+                .thenReturn(Context.TELECOM_SERVICE);
+        when(mMockedContext.getSystemService(TelecomManager.class))
+                .thenReturn(mTelecomManager);
+        when(mMockedContext.getSystemServiceName(TelephonyManager.class))
+                .thenReturn(Context.TELEPHONY_SERVICE);
+        when(mMockedContext.getSystemService(TelephonyManager.class))
+                .thenReturn(mTelephonyManager);
+        when(mMockedContext.getSystemServiceName(ImsManager.class))
+                .thenReturn(Context.TELEPHONY_IMS_SERVICE);
+        when(mMockedContext.getSystemService(ImsManager.class))
+                .thenReturn(mImsManager);
+        when(mMockedContext.getSystemServiceName(SubscriptionManager.class))
+                .thenReturn(Context.TELEPHONY_SUBSCRIPTION_SERVICE);
+        when(mMockedContext.getSystemService(SubscriptionManager.class))
+                .thenReturn(mSubscriptionManager);
+
+        // Use mocked ContentProvider since we can't really mock ContentResolver
+        mContentResolver = ContentResolver.wrap(mContentProvider);
+        when(mMockedContext.getContentResolver()).thenReturn(mContentResolver);
 
         mTestableLooper = TestableLooper.get(this);
-        mTelecomAccountRegistry = new TelecomAccountRegistry(mContext);
+        when(mMockedContext.getMainLooper()).thenReturn(mTestableLooper.getLooper());
+        mTelecomAccountRegistry = new TelecomAccountRegistry(mMockedContext);
         mTelecomAccountRegistry.setupOnBoot();
+
+        // Capture OnSubscriptionsChangedListener
+        ArgumentCaptor<OnSubscriptionsChangedListener> subChangeListenerCaptor =
+                ArgumentCaptor.forClass(OnSubscriptionsChangedListener.class);
+        verify(mSubscriptionManager).addOnSubscriptionsChangedListener(
+                subChangeListenerCaptor.capture());
+        mOnSubscriptionsChangedListener = subChangeListenerCaptor.getValue();
+
+        // Capture TelephonyCallback
+        ArgumentCaptor<TelephonyCallback> telephonyCallbackArgumentCaptor =
+                ArgumentCaptor.forClass(TelephonyCallback.class);
+        verify(mTelephonyManager).registerTelephonyCallback(anyInt(), any(),
+                telephonyCallbackArgumentCaptor.capture());
+        mTelephonyCallback = telephonyCallbackArgumentCaptor.getValue();
+
+        // Capture BroadcastReceivers
+        ArgumentCaptor<BroadcastReceiver> broadcastReceiverArgumentCaptor =
+                ArgumentCaptor.forClass(BroadcastReceiver.class);
+        verify(mMockedContext, times(2)).registerReceiver(broadcastReceiverArgumentCaptor.capture(),
+                any());
+        mUserSwitchedAndConfigChangedReceiver =
+                broadcastReceiverArgumentCaptor.getAllValues().get(0);
+        mLocaleChangedBroadcastReceiver = broadcastReceiverArgumentCaptor.getAllValues().get(1);
 
         replaceInstance(SimultaneousCallingTracker.class, "sInstance", null,
                 Mockito.mock(SimultaneousCallingTracker.class));
@@ -172,17 +249,62 @@ public class TelecomAccountRegistryTest extends TelephonyTestBase {
         Log.d(TAG, "Broadcast ACTION_USER_SWITCHED...");
         Intent intent = new Intent(Intent.ACTION_USER_SWITCHED);
         intent.putExtra(Intent.EXTRA_USER, userHandle);
-        mContext.sendBroadcast(intent);
+        mUserSwitchedAndConfigChangedReceiver.onReceive(mMockedContext, intent);
+        mTestableLooper.processAllMessages();
+    }
+
+    private void onCarrierConfigChanged(int subId) {
+        Log.d(TAG, "Broadcast ACTION_CARRIER_CONFIG_CHANGED...");
+        Intent intent = new Intent(CarrierConfigManager.ACTION_CARRIER_CONFIG_CHANGED);
+        intent.putExtra(SubscriptionManager.EXTRA_SUBSCRIPTION_INDEX, subId);
+        mUserSwitchedAndConfigChangedReceiver.onReceive(mMockedContext, intent);
+        mTestableLooper.processAllMessages();
+    }
+
+    private void onSubscriptionsChanged() {
+        Log.d(TAG, "Change subscriptions...");
+        mOnSubscriptionsChangedListener.onSubscriptionsChanged();
+    }
+
+    private void onAddSubscriptionListenerFailed() {
+        Log.d(TAG, "Add subscription listener failed...");
+        mOnSubscriptionsChangedListener.onAddListenerFailed();
+    }
+
+    private void onServiceStateChanged(ServiceState serviceState) {
+        if (mTelephonyCallback instanceof TelephonyCallback.ServiceStateListener) {
+            TelephonyCallback.ServiceStateListener listener =
+                    (TelephonyCallback.ServiceStateListener) mTelephonyCallback;
+            listener.onServiceStateChanged(serviceState);
+        }
+    }
+
+    private void onActiveDataSubscriptionIdChanged(int subId) {
+        if (mTelephonyCallback instanceof TelephonyCallback.ActiveDataSubscriptionIdListener) {
+            TelephonyCallback.ActiveDataSubscriptionIdListener listener =
+                    (TelephonyCallback.ActiveDataSubscriptionIdListener) mTelephonyCallback;
+            listener.onActiveDataSubscriptionIdChanged(subId);
+        }
     }
 
     private void onLocaleChanged() {
         Log.d(TAG, "Broadcast ACTION_LOCALE_CHANGED...");
         Intent intent = new Intent(Intent.ACTION_LOCALE_CHANGED);
-        mContext.sendBroadcast(intent);
+        mLocaleChangedBroadcastReceiver.onReceive(mMockedContext, intent);
+    }
+
+    private void onNetworkCountryChanged() {
+        Log.d(TAG, "Broadcast ACTION_NETWORK_COUNTRY_CHANGED...");
+        Intent intent = new Intent(TelephonyManager.ACTION_NETWORK_COUNTRY_CHANGED);
+        mLocaleChangedBroadcastReceiver.onReceive(mMockedContext, intent);
     }
 
     private void overrideSubscriptionServiceCapabilities(int[] capabilities) {
-        mContext.getCarrierConfig(1).putIntArray(
-                CarrierConfigManager.KEY_CELLULAR_SERVICE_CAPABILITIES_INT_ARRAY, capabilities);
+        PersistableBundle bundle = new PersistableBundle();
+        bundle.putIntArray(CarrierConfigManager.KEY_CELLULAR_SERVICE_CAPABILITIES_INT_ARRAY,
+                capabilities);
+
+        when(mPhoneGlobals.getCarrierConfigForSubId(anyInt())).thenReturn(bundle);
+        mTestableLooper.processAllMessages();
     }
 }

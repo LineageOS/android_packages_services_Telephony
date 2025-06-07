@@ -159,7 +159,7 @@ public class PhoneGlobals extends ContextWrapper {
 
     private static PhoneGlobals sMe;
 
-    private CallManager mCM;
+    CallManager mCM;
     CallNotifier notifier;
     NotificationMgr notificationMgr;
     TelephonyRcsService mTelephonyRcsService;
@@ -638,8 +638,7 @@ public class PhoneGlobals extends ContextWrapper {
 
             imsRcsController = ImsRcsController.init(this, mFeatureFlags);
 
-            configLoader = CarrierConfigLoader.init(this,
-                    SubscriptionManagerService.getInstance(), mFeatureFlags);
+            configLoader = CarrierConfigLoader.init(this, mFeatureFlags);
 
             if (getPackageManager().hasSystemFeature(PackageManager.FEATURE_TELEPHONY_IMS)) {
                 mImsStateCallbackController =
@@ -760,7 +759,7 @@ public class PhoneGlobals extends ContextWrapper {
         return PhoneFactory.getPhone(SubscriptionManager.getPhoneId(subId));
     }
 
-    public CallManager getCallManager() {
+    /* package */ CallManager getCallManager() {
         return mCM;
     }
 

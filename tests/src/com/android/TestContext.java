@@ -16,7 +16,6 @@
 
 package com.android;
 
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.doAnswer;
@@ -31,44 +30,33 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.net.ConnectivityManager;
 import android.os.Binder;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.os.PermissionEnforcer;
 import android.os.PersistableBundle;
 import android.os.Process;
 import android.os.UserHandle;
 import android.os.UserManager;
-import android.os.test.FakePermissionEnforcer;
 import android.telecom.TelecomManager;
 import android.telephony.CarrierConfigManager;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
-import android.telephony.TelephonyRegistryManager;
 import android.telephony.ims.ImsManager;
-import android.test.mock.MockContentResolver;
 import android.test.mock.MockContext;
 import android.util.Log;
 import android.util.SparseArray;
 
 import androidx.test.InstrumentationRegistry;
 
-import com.google.common.collect.ArrayListMultimap;
-import com.google.common.collect.Multimap;
-
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.stubbing.Answer;
 
-import java.io.File;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.concurrent.Executor;
 
@@ -77,8 +65,6 @@ public class TestContext extends MockContext {
     private static final String TAG = "TestContext";
     // Stub used to grant all permissions
     public static final String STUB_PERMISSION_ENABLE_ALL = "stub_permission_enable_all";
-
-    @Mock Resources mResources;
 
     @Mock CarrierConfigManager mMockCarrierConfigManager;
     @Mock TelecomManager mMockTelecomManager;
@@ -89,36 +75,20 @@ public class TestContext extends MockContext {
     @Mock PackageManager mPackageManager;
     @Mock ConnectivityManager mMockConnectivityManager;
 
-    @Mock TelephonyRegistryManager mTelephonyRegistryManager;
-
-    @Mock private SharedPreferences mSharedPreferences;
-
     private final SparseArray<PersistableBundle> mCarrierConfigs = new SparseArray<>();
 
-    private final Multimap<Intent, BroadcastReceiver> mOrderedBroadcastReceivers =
-            ArrayListMultimap.create();
+    private Intent mIntent;
 
-    private final Multimap<String, BroadcastReceiver> mBroadcastReceiversByAction =
-            ArrayListMultimap.create();
-    private final HashMap<String, Intent> mStickyBroadcastByAction =
-            new HashMap<String, Intent>();
+    private BroadcastReceiver mReceiver;
+
     private final HashSet<String> mPermissionTable = new HashSet<>();
-    private final FakePermissionEnforcer mFakePermissionEnforcer = new FakePermissionEnforcer();
-
-    private final MockContentResolver mContentResolver = new MockContentResolver();
 
     public TestContext() {
-        MockitoAnnotations.openMocks(this);
+        MockitoAnnotations.initMocks(this);
         doAnswer((Answer<PersistableBundle>) invocation -> {
             int subId = (int) invocation.getArguments()[0];
             return getTestConfigs(subId);
         }).when(mMockCarrierConfigManager).getConfigForSubId(anyInt());
-
-        doAnswer((Answer<PersistableBundle>) invocation -> {
-            int subId = (int) invocation.getArguments()[0];
-            return getTestConfigs(subId);
-        }).when(mMockCarrierConfigManager).getConfigForSubId(anyInt(), any());
-
         doAnswer((Answer<PersistableBundle>) invocation -> {
             int subId = (int) invocation.getArguments()[0];
             return getTestConfigs(subId);
@@ -143,8 +113,7 @@ public class TestContext extends MockContext {
     }
 
     @Override
-    @NonNull
-    public Context createAttributionContext(@Nullable String attributionTag) {
+    public @NonNull Context createAttributionContext(@Nullable String attributionTag) {
         return this;
     }
 
@@ -174,158 +143,49 @@ public class TestContext extends MockContext {
     }
 
     @Override
-    public SharedPreferences getSharedPreferences(String name, int mode) {
-        return mSharedPreferences;
-    }
-
-    @Override
-    public File getFilesDir() {
-        return InstrumentationRegistry.getTargetContext().getFilesDir();
-    }
-
-    @Override
     public void startActivityAsUser(Intent intent, UserHandle user) {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public void unregisterReceiver(BroadcastReceiver receiver) {
-        mBroadcastReceiversByAction.entries().removeIf(entry
-                -> receiver == entry.getValue());
-    }
-
-    @Override
-    public Intent registerReceiver(BroadcastReceiver receiver, IntentFilter filter) {
-        return registerReceiverFakeImpl(receiver, filter);
-    }
-
-    @Override
-    public Intent registerReceiver(BroadcastReceiver receiver, IntentFilter filter,
-                                   String broadcastPermission, Handler scheduler) {
-        return registerReceiverFakeImpl(receiver, filter);
-    }
-
-    @Override
-    public Intent registerReceiverForAllUsers(BroadcastReceiver receiver,
-            IntentFilter filter, String broadcastPermission, Handler scheduler) {
-        return registerReceiverFakeImpl(receiver, filter);
-    }
-
-    @Override
-    public Intent registerReceiverAsUser(BroadcastReceiver receiver, UserHandle user,
-            IntentFilter filter, String broadcastPermission, Handler scheduler) {
-        return registerReceiverFakeImpl(receiver, filter);
-    }
-
-    @Override
-    public Intent registerReceiver(BroadcastReceiver receiver, IntentFilter filter, int flags) {
-        return registerReceiverFakeImpl(receiver, filter);
-    }
-
-    @Override
-    public Intent registerReceiver(BroadcastReceiver receiver, IntentFilter filter,
-                                   String broadcastPermission, Handler scheduler, int flags) {
-        return registerReceiverFakeImpl(receiver, filter);
-    }
-
-    private Intent registerReceiverFakeImpl(BroadcastReceiver receiver, IntentFilter filter) {
-        Intent result = null;
-        synchronized (mBroadcastReceiversByAction) {
-            for (int i = 0; i < filter.countActions(); i++) {
-                mBroadcastReceiversByAction.put(filter.getAction(i), receiver);
-                if (result == null) {
-                    result = mStickyBroadcastByAction.get(filter.getAction(i));
-                }
-            }
-        }
-
-        return result;
-    }
-
-    @Override
     public void sendBroadcast(Intent intent) {
-        logd("sendBroadcast called for " + intent.getAction());
-        synchronized (mBroadcastReceiversByAction) {
-            for (BroadcastReceiver broadcastReceiver :
-                    mBroadcastReceiversByAction.get(intent.getAction())) {
-                broadcastReceiver.onReceive(this, intent);
-            }
-        }
-    }
-
-    @Override
-    public void sendBroadcast(Intent intent, String receiverPermission) {
-        logd("sendBroadcast called for " + intent.getAction());
-        sendBroadcast(intent);
-    }
-
-    @Override
-    public void sendBroadcast(Intent intent, String receiverPermission, Bundle initialExtras) {
-        logd("sendBroadcast called for " + intent.getAction());
-        sendBroadcast(intent);
-    }
-
-    @Override
-    public void sendOrderedBroadcast(Intent intent, String receiverPermission) {
-        logd("sendOrderedBroadcast called for " + intent.getAction());
-        sendBroadcast(intent);
-    }
-
-    @Override
-    public void sendOrderedBroadcast(Intent intent, String receiverPermission,
-            BroadcastReceiver resultReceiver, Handler scheduler, int initialCode,
-            String initialData, Bundle initialExtras) {
-        sendOrderedBroadcast(intent, receiverPermission);
-        if (resultReceiver != null) {
-            synchronized (mOrderedBroadcastReceivers) {
-                mOrderedBroadcastReceivers.put(intent, resultReceiver);
-            }
-        }
-    }
-
-    @Override
-    public void sendOrderedBroadcast(Intent intent, String receiverPermission, Bundle options,
-            BroadcastReceiver resultReceiver, Handler scheduler, int initialCode,
-            String initialData, Bundle initialExtras) {
-        sendOrderedBroadcast(intent, receiverPermission, resultReceiver, scheduler,
-                initialCode, initialData, initialExtras);
-    }
-
-    @Override
-    public void sendOrderedBroadcast(Intent intent, String receiverPermission, int appOp,
-            BroadcastReceiver resultReceiver, Handler scheduler, int initialCode,
-            String initialData, Bundle initialExtras) {
-        sendOrderedBroadcast(intent, receiverPermission, resultReceiver, scheduler,
-                initialCode, initialData, initialExtras);
+        mIntent = intent;
     }
 
     @Override
     public void sendBroadcastAsUser(Intent intent, UserHandle user) {
-        sendBroadcast(intent);
+        mIntent = intent;
     }
 
     @Override
-    public void sendBroadcastAsUser(Intent intent, UserHandle user,
-            String receiverPermission) {
-        sendBroadcast(intent);
+    public Intent registerReceiver(BroadcastReceiver receiver, IntentFilter filter) {
+        mReceiver = receiver;
+        return null;
     }
 
     @Override
-    public void sendBroadcastAsUser(Intent intent, UserHandle user,
-            String receiverPermission, int appOp) {
-        sendBroadcast(intent);
+    public Intent registerReceiver(BroadcastReceiver receiver, IntentFilter filter, int flags) {
+        mReceiver = receiver;
+        return null;
     }
 
     @Override
-    public void sendBroadcastAsUser(Intent intent, UserHandle user,
-            String receiverPermission, Bundle options) {
-        sendBroadcast(intent);
+    public Intent registerReceiver(BroadcastReceiver receiver, IntentFilter filter,
+            String broadcastPermission, Handler scheduler) {
+        mReceiver = receiver;
+        return null;
     }
 
     @Override
-    public void sendBroadcastMultiplePermissions(Intent intent, String[] includePermissions,
-            String[] excludePermissions) {
-        sendBroadcast(intent);
+    public Intent registerReceiver(BroadcastReceiver receiver, IntentFilter filter,
+            String broadcastPermission, Handler scheduler, int flags) {
+        mReceiver = receiver;
+        return null;
+    }
+
+    @Override
+    public void unregisterReceiver(BroadcastReceiver receiver) {
+        mReceiver = null;
     }
 
     @Override
@@ -335,7 +195,7 @@ public class TestContext extends MockContext {
 
     @Override
     public ContentResolver getContentResolver() {
-        return mContentResolver;
+        return null;
     }
 
     @Override
@@ -361,12 +221,6 @@ public class TestContext extends MockContext {
             }
             case Context.USER_SERVICE: {
                 return mMockUserManager;
-            }
-            case Context.PERMISSION_ENFORCER_SERVICE: {
-                return mFakePermissionEnforcer;
-            }
-            case Context.TELEPHONY_REGISTRY_SERVICE: {
-                return mTelephonyRegistryManager;
             }
         }
         return null;
@@ -394,12 +248,6 @@ public class TestContext extends MockContext {
         }
         if (serviceClass == UserManager.class) {
             return Context.USER_SERVICE;
-        }
-        if (serviceClass == PermissionEnforcer.class) {
-            return Context.PERMISSION_ENFORCER_SERVICE;
-        }
-        if (serviceClass == TelephonyRegistryManager.class) {
-            return Context.TELEPHONY_REGISTRY_SERVICE;
         }
         return null;
     }
@@ -468,17 +316,6 @@ public class TestContext extends MockContext {
     }
 
     @Override
-    public Resources getResources() {
-        return mResources;
-    }
-
-
-    @Override
-    public boolean bindService(Intent service, ServiceConnection conn, int flags) {
-        return true;
-    }
-
-    @Override
     public void unbindService(ServiceConnection conn) {
         // Override the base implementation to ensure we don't crash.
     }
@@ -503,6 +340,15 @@ public class TestContext extends MockContext {
             mPermissionTable.clear();
         }
     }
+
+    public Intent getBroadcast() {
+        return mIntent;
+    }
+
+    public BroadcastReceiver getBroadcastReceiver() {
+        return mReceiver;
+    }
+
     private PersistableBundle getTestConfigs(int subId) {
         if (subId < 0) {
             return new PersistableBundle();

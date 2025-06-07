@@ -34,7 +34,6 @@ import androidx.test.runner.AndroidJUnit4;
 
 import com.android.TelephonyTestBase;
 import com.android.internal.telephony.flags.FeatureFlags;
-import com.android.phone.PhoneGlobals;
 
 import org.junit.After;
 import org.junit.Before;
@@ -89,7 +88,6 @@ public class ImsConferenceControllerTest extends TelephonyTestBase {
         mControllerTest = new ImsConferenceController(mTelecomAccountRegistry,
                 mMockTelephonyConnectionServiceProxy, () -> false);
         mControllerTest.setFeatureFlags(mFeatureFlags);
-        replaceInstance(PhoneGlobals.class, "sMe", null, mPhoneGlobals);
     }
 
     @After
