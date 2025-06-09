@@ -17,6 +17,7 @@
 
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fitsSystemWindows="true"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -49,5 +50,12 @@
             android:layout_height="wrap_content"
             android:paddingRight="4dp"
             android:text="Api Test App"/>
+        <Button
+            android:id="@+id/PssActivity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:text="@string/PssActivity"/>
     </LinearLayout>
 </ScrollView>

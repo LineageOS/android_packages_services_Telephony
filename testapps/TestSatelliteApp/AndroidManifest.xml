@@ -44,8 +44,9 @@
         <activity android:name=".SatelliteSpeedTest" />
         <activity android:name=".ApiTestApp" />
         <activity android:name=".SatelliteDataTest" />
+        <activity android:name=".PssActivity" />
 
-        <receiver
+      <receiver
             android:name=".SatelliteTestAppReceiver"
             android:exported="true">
             <intent-filter>

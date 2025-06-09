@@ -125,4 +125,14 @@
     <string name="unregisterForModemStateChanged">unregisterForModemStateChanged</string>
 
     <string name="requestSatelliteAccessConfigurationForCurrentLocation">requestSatelliteAccessConfigurationForCurrentLocation</string>
+
+    <string name="requestSatelliteEnable">requestSatelliteEnable</string>
+    <string name="requestSatelliteModemState">requestSatelliteModemState</string>
+    <string name="startSendingNtnSignalStrength">startSendingSignalStrength</string>
+    <string name="stopSendingNtnSignalStrength">stopSendingSignalStrength</string>
+    <string name="PssActivity">Pss Activity</string>
+    <string name="DemoMode">Demo Mode</string>
+    <string name="Enable">Enable</string>
+    <string name="SelectIterations">Select number of iterations</string>
+    <string name="SelectCarrier">Select a carrier</string>
 </resources>

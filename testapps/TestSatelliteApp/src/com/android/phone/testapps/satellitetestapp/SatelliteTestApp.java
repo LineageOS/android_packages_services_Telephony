@@ -52,6 +52,13 @@ public class SatelliteTestApp extends Activity {
         mSatelliteManager = getSystemService(SatelliteManager.class);
 
         setContentView(R.layout.activity_SatelliteTestApp);
+        findViewById(R.id.PssActivity).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SatelliteTestApp.this, PssActivity.class);
+                startActivity(intent);
+            }
+        });
 
         findViewById(R.id.ApiTestApp)
                 .setOnClickListener(
