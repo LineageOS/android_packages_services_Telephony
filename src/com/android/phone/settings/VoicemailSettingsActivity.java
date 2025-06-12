@@ -553,7 +553,6 @@ public class VoicemailSettingsActivity extends PreferenceActivity
                     + " functionality is no longer supported.");
             return;
             }
-        }
 
         super.onActivityResult(requestCode, resultCode, data);
     }
