@@ -72,7 +72,7 @@ public class CallForwardEditPreference extends EditPhoneNumberPreference {
         reason = a.getInt(R.styleable.CallForwardEditPreference_reason,
                 CommandsInterface.CF_REASON_UNCONDITIONAL);
         a.recycle();
-
+        setContactPickerEnabled(false);
         Log.d(LOG_TAG, "mServiceClass=" + mServiceClass + ", reason=" + reason);
     }
 
