@@ -459,10 +459,8 @@
     <string name="tty_mode_option_summary" msgid="4770510287236494371">"TTY rejimi ayarlayın"</string>
     <string name="auto_retry_mode_title" msgid="2985801935424422340">"Avtomatik yenidən sınama"</string>
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"Avtomatik yenidən sınama rejimini aktivləşdirin"</string>
-    <!-- no translation found for vibrating_for_outgoing_call_accepted_title (647945514737734657) -->
-    <skip />
-    <!-- no translation found for vibrating_for_outgoing_call_accepted_summary (906112327196063688) -->
-    <skip />
+    <string name="vibrating_for_outgoing_call_accepted_title" msgid="647945514737734657">"Gedən zəng qəbul edildikdə vibrasiya"</string>
+    <string name="vibrating_for_outgoing_call_accepted_summary" msgid="906112327196063688">"Gedən zəng qəbul edildikdə, vibrasiya rejimini aktivləşdirin"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"Video zəng zamanı TTY rejimini dəyişdirməyə icazə yoxdur"</string>
     <string name="menu_add" msgid="5616487894975773141">"Kontakt əlavə edin"</string>
     <string name="menu_edit" msgid="3593856941552460706">"Kontakta düzəliş edin"</string>

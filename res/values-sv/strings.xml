@@ -459,10 +459,8 @@
     <string name="tty_mode_option_summary" msgid="4770510287236494371">"Ange TTY-läge"</string>
     <string name="auto_retry_mode_title" msgid="2985801935424422340">"Försök igen automatiskt"</string>
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"Aktivera läget Försök igen automatiskt"</string>
-    <!-- no translation found for vibrating_for_outgoing_call_accepted_title (647945514737734657) -->
-    <skip />
-    <!-- no translation found for vibrating_for_outgoing_call_accepted_summary (906112327196063688) -->
-    <skip />
+    <string name="vibrating_for_outgoing_call_accepted_title" msgid="647945514737734657">"Vibrerar när utgående samtal har besvarats"</string>
+    <string name="vibrating_for_outgoing_call_accepted_summary" msgid="906112327196063688">"Aktivera vibrationsläge för utgående samtal som har besvarats"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"Det går inte att ändra till texttelefonläge under ett videosamtal"</string>
     <string name="menu_add" msgid="5616487894975773141">"Lägg till kontakt"</string>
     <string name="menu_edit" msgid="3593856941552460706">"Redigera kontakt"</string>

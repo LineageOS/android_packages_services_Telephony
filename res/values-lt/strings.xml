@@ -459,10 +459,8 @@
     <string name="tty_mode_option_summary" msgid="4770510287236494371">"Nustatyti TTY režimą"</string>
     <string name="auto_retry_mode_title" msgid="2985801935424422340">"Automatinis bandymas iš naujo"</string>
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"Įgalinti automatinio kartotinio bandymo režimą"</string>
-    <!-- no translation found for vibrating_for_outgoing_call_accepted_title (647945514737734657) -->
-    <skip />
-    <!-- no translation found for vibrating_for_outgoing_call_accepted_summary (906112327196063688) -->
-    <skip />
+    <string name="vibrating_for_outgoing_call_accepted_title" msgid="647945514737734657">"Vibravimas, kai priimamas siunčiamasis skambutis"</string>
+    <string name="vibrating_for_outgoing_call_accepted_summary" msgid="906112327196063688">"Įgalinti vibravimo režimą, kai priimamas siunčiamasis skambutis"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"Vykstant vaizdo skambučiui negalima keisti TTY režimo"</string>
     <string name="menu_add" msgid="5616487894975773141">"Pridėti kontaktą"</string>
     <string name="menu_edit" msgid="3593856941552460706">"Redaguoti adresatą"</string>

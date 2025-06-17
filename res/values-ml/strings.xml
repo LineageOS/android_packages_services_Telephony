@@ -459,10 +459,8 @@
     <string name="tty_mode_option_summary" msgid="4770510287236494371">"TTY മോഡ് സജ്ജമാക്കുക"</string>
     <string name="auto_retry_mode_title" msgid="2985801935424422340">"സ്വയമേവ വീണ്ടും ശ്രമിക്കുക"</string>
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"സ്വയമേവ വീണ്ടും ശ്രമിക്കൽ മോഡ് പ്രവർത്തനക്ഷമമാക്കുക"</string>
-    <!-- no translation found for vibrating_for_outgoing_call_accepted_title (647945514737734657) -->
-    <skip />
-    <!-- no translation found for vibrating_for_outgoing_call_accepted_summary (906112327196063688) -->
-    <skip />
+    <string name="vibrating_for_outgoing_call_accepted_title" msgid="647945514737734657">"ഔട്ട്‌ഗോയിംഗ് കോളുകൾ സ്വീകരിക്കുന്നതിന് വൈബ്രേറ്റുചെയ്യുന്നു"</string>
+    <string name="vibrating_for_outgoing_call_accepted_summary" msgid="906112327196063688">"ഔട്ട്‌ഗോയിംഗ് കോളുകൾ സ്വീകരിക്കുന്നതിന് വൈബ്രേറ്റിംഗ് മോഡ് പ്രവർത്തനക്ഷമമാക്കുക"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"വീഡിയോ കോൾ സമയത്ത് TTY മോഡ് മാറ്റം അനുവദനീയമല്ല"</string>
     <string name="menu_add" msgid="5616487894975773141">"കോൺടാക്റ്റ് ചേർക്കുക"</string>
     <string name="menu_edit" msgid="3593856941552460706">"കോൺടാ‌ക്‌റ്റ് തിരുത്തുക"</string>

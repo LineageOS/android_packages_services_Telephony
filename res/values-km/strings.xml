@@ -459,10 +459,8 @@
     <string name="tty_mode_option_summary" msgid="4770510287236494371">"កំណត់​ម៉ូត TTY"</string>
     <string name="auto_retry_mode_title" msgid="2985801935424422340">"ព្យាយាម​ម្ដងទៀត​ស្វ័យប្រវត្តិ"</string>
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"បើក​របៀប​ព្យាយាម​ម្ដងទៀត​ស្វ័យប្រវត្តិ"</string>
-    <!-- no translation found for vibrating_for_outgoing_call_accepted_title (647945514737734657) -->
-    <skip />
-    <!-- no translation found for vibrating_for_outgoing_call_accepted_summary (906112327196063688) -->
-    <skip />
+    <string name="vibrating_for_outgoing_call_accepted_title" msgid="647945514737734657">"ការញ័រ​សម្រាប់​ការហៅចេញ​ដែលបាន​ទទួល"</string>
+    <string name="vibrating_for_outgoing_call_accepted_summary" msgid="906112327196063688">"បើក​មុខងារ​ញ័រ​សម្រាប់​ការហៅចេញ​ដែលបាន​ទទួល"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"ការផ្លាស់ប្តូរម៉ូត TTY មិនត្រូវបានអនុញ្ញាតទេ អំឡុងពេលធ្វើការហៅជាវីដេអូ។"</string>
     <string name="menu_add" msgid="5616487894975773141">"បញ្ចូល​ទំនាក់ទំនង"</string>
     <string name="menu_edit" msgid="3593856941552460706">"កែ​ទំនាក់ទំនង"</string>
