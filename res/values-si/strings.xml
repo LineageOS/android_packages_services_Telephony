@@ -459,10 +459,8 @@
     <string name="tty_mode_option_summary" msgid="4770510287236494371">"TTY ආකාරය සකසන්න"</string>
     <string name="auto_retry_mode_title" msgid="2985801935424422340">"ස්වයංක්‍රීය නැවත උත්සාහ කිරීම"</string>
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"ස්වයංක්‍රීය නැවත උත්සාහ කිරීමේ ආකාරය සබල කරන්න"</string>
-    <!-- no translation found for vibrating_for_outgoing_call_accepted_title (647945514737734657) -->
-    <skip />
-    <!-- no translation found for vibrating_for_outgoing_call_accepted_summary (906112327196063688) -->
-    <skip />
+    <string name="vibrating_for_outgoing_call_accepted_title" msgid="647945514737734657">"පිටතට යන ඇමතුම සඳහා කම්පනය පිළිගනු ලැබේ"</string>
+    <string name="vibrating_for_outgoing_call_accepted_summary" msgid="906112327196063688">"පිළිගත් පිටතට යන ඇමතුම සඳහා කම්පන ප්‍රකාරය සබල කරන්න"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"වීඩියෝ ඇමතුමක් අතරතුර TTY මෝඩය වෙනස් වීමකට අවසර නැත"</string>
     <string name="menu_add" msgid="5616487894975773141">"සම්බන්ධතාවය එක් කරන්න"</string>
     <string name="menu_edit" msgid="3593856941552460706">"සම්බන්ධතාව සංස්කරණය කරන්න"</string>

@@ -459,10 +459,8 @@
     <string name="tty_mode_option_summary" msgid="4770510287236494371">"TTY ମୋଡ୍ ସେଟ୍ କରନ୍ତୁ"</string>
     <string name="auto_retry_mode_title" msgid="2985801935424422340">"ଅଟୋ-ରିଟ୍ରାଏ କରନ୍ତୁ"</string>
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"ଅଟୋ-ରିଟ୍ରାଏ ମୋଡ୍‌କୁ ସକ୍ଷମ କରନ୍ତୁ"</string>
-    <!-- no translation found for vibrating_for_outgoing_call_accepted_title (647945514737734657) -->
-    <skip />
-    <!-- no translation found for vibrating_for_outgoing_call_accepted_summary (906112327196063688) -->
-    <skip />
+    <string name="vibrating_for_outgoing_call_accepted_title" msgid="647945514737734657">"ଆଉଟଗୋଇଂ କଲ ଗ୍ରହଣ କରିବା ପାଇଁ ଭାଇବ୍ରେଟ ହେଉଛି"</string>
+    <string name="vibrating_for_outgoing_call_accepted_summary" msgid="906112327196063688">"ଆଉଟଗୋଇଂ କଲ ଗ୍ରହଣ କରିବା ପାଇଁ ଭାଇବ୍ରେଟିଂ ମୋଡକୁ ସକ୍ଷମ କରନ୍ତୁ"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"ଭିଡିଓ କଲ୍ କରିବା ସମୟରେ TTY ମୋଡ୍‌କୁ ପରିବର୍ତ୍ତନ କରିବା ପାଇଁ ଅନୁମତି ନାହିଁ"</string>
     <string name="menu_add" msgid="5616487894975773141">"କଣ୍ଟାକ୍ଟ ଯୋଗ କରନ୍ତୁ"</string>
     <string name="menu_edit" msgid="3593856941552460706">"କଣ୍ଟାକ୍ଟ ଏଡିଟ କରନ୍ତୁ"</string>

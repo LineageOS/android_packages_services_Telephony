@@ -459,10 +459,8 @@
     <string name="tty_mode_option_summary" msgid="4770510287236494371">"တယ်လီဖုန်းဖြင့် စာရိုက်ခြင်း သတ်မှတ်ပါ"</string>
     <string name="auto_retry_mode_title" msgid="2985801935424422340">"အလိုအလျောက် ပြန်ကြိုးစားခြင်း"</string>
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"အလိုအလျောက် ပြန်ကြိုးစားခြင်းအား ပြုလုပ်ထားခြင်း"</string>
-    <!-- no translation found for vibrating_for_outgoing_call_accepted_title (647945514737734657) -->
-    <skip />
-    <!-- no translation found for vibrating_for_outgoing_call_accepted_summary (906112327196063688) -->
-    <skip />
+    <string name="vibrating_for_outgoing_call_accepted_title" msgid="647945514737734657">"ဖြေကြားထားသော အထွက်ခေါ်ဆိုမှုအတွက် တုန်ခါမှု"</string>
+    <string name="vibrating_for_outgoing_call_accepted_summary" msgid="906112327196063688">"ဖြေကြားထားသော အထွက်ခေါ်ဆိုမှုအတွက် တုန်ခါမှုမုဒ် ဖွင့်သည်"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"ဗီဒီယိုခေါ်ဆိုမှုအတွင်း TTY မုဒ်ပြောင်းလဲရန် ခွင့်မပြုပါ"</string>
     <string name="menu_add" msgid="5616487894975773141">"လိပ်စာထပ်ထည့်ပါ"</string>
     <string name="menu_edit" msgid="3593856941552460706">"လိပ်စာပြင်ပါ"</string>
