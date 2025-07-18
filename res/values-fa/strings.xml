@@ -951,7 +951,7 @@
     <string name="phone_info_label_v2" msgid="5651422721242779990">"اطلاعات تلفن نسخه ۲"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"اطلاعات ارائه شرکت مخابراتی"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"شروع ارائه شرکت مخابراتی"</string>
-    <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"سیگنال بلوتوث شما ضعیف است. از بلندگوی تلفن استفاده کنید."</string>
+    <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"سیگنال بلوتوث شما ضعیف است. به بلندگوی تلفن بروید."</string>
     <string name="call_quality_notification_name" msgid="3476828289553948830">"اعلان کیفیت تماس"</string>
     <string name="notification_channel_sip_account" msgid="1261816025156179637">"‏حساب‌های SIP منسوخ‌شده"</string>
     <string name="send_from_work_profile_title" msgid="7044759579507604732">"نمی‌توانید ازطریق برنامه شخصی پیام ارسال کنید"</string>
