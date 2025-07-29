@@ -19,15 +19,15 @@ package com.android.phone.settings.fdn;
 
 import static android.app.Activity.RESULT_OK;
 
-import android.content.ContentProvider;
+import android.app.ComponentCaller;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.PersistableBundle;
-import android.os.Process;
 import android.os.UserHandle;
 import android.provider.ContactsContract.CommonDataKinds;
 import android.telephony.CarrierConfigManager;
@@ -38,6 +38,7 @@ import android.text.Spannable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.text.method.DialerKeyListener;
+import android.util.EventLog;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -141,17 +142,30 @@ public class EditFdnContactScreen extends BaseFdnContactScreen {
                     if (DBG) log("onActivityResult: cancelled.");
                     return;
                 }
+                ComponentCaller currentCaller = getCurrentCaller();
+                Uri contactUri = (intent != null) ? intent.getData() : null;
+                if (contactUri == null) {
+                    Log.w(LOG_TAG, "onActivityResult: Intent data or contact URI is null.");
+                    return;
+                }
+                if (currentCaller.checkContentUriPermission(
+                        contactUri,
+                        Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                        == PackageManager.PERMISSION_DENIED) {
+                    EventLog.writeEvent(0x534e4554, "337784859", currentCaller.getUid(),
+                            "Permission denied, cannot access contact");
+                    throw new SecurityException(String.format(
+                            "Permission denial: Caller (uid=%d, pkg=%s) lacks specific permission"
+                                    + " grant %s to access contact URI %s.",
+                            currentCaller.getUid(),
+                            currentCaller.getPackage(),
+                            "FLAG_GRANT_READ_URI_PERMISSION",
+                            contactUri
+                    ));
+                }
                 Cursor cursor = null;
                 try {
-                    // check if the URI returned by the user belongs to the user
-                    final int currentUser = UserHandle.getUserId(Process.myUid());
-                    if (currentUser
-                            != ContentProvider.getUserIdFromUri(intent.getData(), currentUser)) {
-                        Log.w(LOG_TAG, "onActivityResult: Contact data of different user, "
-                                + "cannot access");
-                        return;
-                    }
-                    cursor = getContentResolver().query(intent.getData(),
+                    cursor = getContentResolver().query(contactUri,
                         NUM_PROJECTION, null, null, null);
                     if ((cursor == null) || (!cursor.moveToFirst())) {
                         Log.w(LOG_TAG,"onActivityResult: bad contact data, no results found.");
