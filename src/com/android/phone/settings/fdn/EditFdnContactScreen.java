@@ -17,18 +17,12 @@
 package com.android.phone.settings.fdn;
 
 
-import static android.app.Activity.RESULT_OK;
-
-import android.content.ContentProvider;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.PersistableBundle;
-import android.os.Process;
-import android.os.UserHandle;
 import android.provider.ContactsContract.CommonDataKinds;
 import android.telephony.CarrierConfigManager;
 import android.telephony.PhoneNumberUtils;
@@ -38,7 +32,6 @@ import android.text.Spannable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.text.method.DialerKeyListener;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -57,7 +50,6 @@ import com.android.phone.R;
 public class EditFdnContactScreen extends BaseFdnContactScreen {
 
     // Menu item codes
-    private static final int MENU_IMPORT = 1;
     private static final int MENU_DELETE = 2;
 
     private boolean mAddContact;
@@ -70,17 +62,9 @@ public class EditFdnContactScreen extends BaseFdnContactScreen {
     /**
      * Constants used in importing from contacts
      */
-    /** request code when invoking subactivity */
-    private static final int CONTACTS_PICKER_CODE = 200;
     /** projection for phone number query */
     private static final String[] NUM_PROJECTION = new String[] {CommonDataKinds.Phone.DISPLAY_NAME,
             CommonDataKinds.Phone.NUMBER};
-    /** static intent to invoke phone number picker */
-    private static final Intent CONTACT_IMPORT_INTENT;
-    static {
-        CONTACT_IMPORT_INTENT = new Intent(Intent.ACTION_GET_CONTENT);
-        CONTACT_IMPORT_INTENT.setType(CommonDataKinds.Phone.CONTENT_ITEM_TYPE);
-    }
     /** flag to track saving state */
     private boolean mDataBusy;
     private int mFdnNumberLimitLength = 20;
@@ -133,38 +117,6 @@ public class EditFdnContactScreen extends BaseFdnContactScreen {
                     finish();
                 }
                 break;
-
-            // look for the data associated with this number, and update
-            // the display with it.
-            case CONTACTS_PICKER_CODE:
-                if (resultCode != RESULT_OK) {
-                    if (DBG) log("onActivityResult: cancelled.");
-                    return;
-                }
-                Cursor cursor = null;
-                try {
-                    // check if the URI returned by the user belongs to the user
-                    final int currentUser = UserHandle.getUserId(Process.myUid());
-                    if (currentUser
-                            != ContentProvider.getUserIdFromUri(intent.getData(), currentUser)) {
-                        Log.w(LOG_TAG, "onActivityResult: Contact data of different user, "
-                                + "cannot access");
-                        return;
-                    }
-                    cursor = getContentResolver().query(intent.getData(),
-                        NUM_PROJECTION, null, null, null);
-                    if ((cursor == null) || (!cursor.moveToFirst())) {
-                        Log.w(LOG_TAG,"onActivityResult: bad contact data, no results found.");
-                        return;
-                    }
-                    mNameField.setText(cursor.getString(0));
-                    mNumberField.setText(cursor.getString(1));
-                } finally {
-                    if (cursor != null) {
-                        cursor.close();
-                    }
-                }
-                break;
         }
     }
 
@@ -178,8 +130,6 @@ public class EditFdnContactScreen extends BaseFdnContactScreen {
         Resources r = getResources();
 
         // Added the icons to the context menu
-        menu.add(0, MENU_IMPORT, 0, r.getString(R.string.importToFDNfromContacts))
-                .setIcon(R.drawable.ic_menu_contact);
         menu.add(0, MENU_DELETE, 0, r.getString(R.string.menu_delete))
                 .setIcon(android.R.drawable.ic_menu_delete);
         return true;
@@ -200,10 +150,6 @@ public class EditFdnContactScreen extends BaseFdnContactScreen {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case MENU_IMPORT:
-                startActivityForResult(CONTACT_IMPORT_INTENT, CONTACTS_PICKER_CODE);
-                return true;
-
             case MENU_DELETE:
                 deleteSelected();
                 return true;
