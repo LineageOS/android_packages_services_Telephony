@@ -20,7 +20,6 @@ import android.app.Dialog;
 import android.content.ContentProvider;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.AsyncResult;
 import android.os.Bundle;
 import android.os.Handler;
@@ -32,7 +31,6 @@ import android.os.UserManager;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
-import android.provider.ContactsContract.CommonDataKinds;
 import android.provider.Settings;
 import android.telecom.PhoneAccountHandle;
 import android.telephony.CarrierConfigManager;
@@ -265,6 +263,9 @@ public class VoicemailSettingsActivity extends PreferenceActivity
             mSubMenuVoicemailSettings.setParentActivity(this, VOICEMAIL_PREF_ID, this);
             mSubMenuVoicemailSettings.setDialogOnClosedListener(this);
             mSubMenuVoicemailSettings.setDialogTitle(R.string.voicemail_settings_number_label);
+
+            mSubMenuVoicemailSettings.setContactPickerEnabled(false);
+
             if (!getBooleanCarrierConfig(
                     CarrierConfigManager.KEY_EDITABLE_VOICEMAIL_NUMBER_SETTING_BOOL)) {
                 mSubMenuVoicemailSettings.setEnabled(false);
@@ -355,6 +356,7 @@ public class VoicemailSettingsActivity extends PreferenceActivity
             mSubMenuVoicemailSettings.setParentActivity(this, VOICEMAIL_PREF_ID, this);
             mSubMenuVoicemailSettings.setDialogOnClosedListener(this);
             mSubMenuVoicemailSettings.setDialogTitle(R.string.voicemail_settings_number_label);
+            mSubMenuVoicemailSettings.setContactPickerEnabled(false);
             updateVoiceNumberField();
 
             if (preference.getIntent() != null) {
@@ -516,41 +518,9 @@ public class VoicemailSettingsActivity extends PreferenceActivity
         }
 
         if (requestCode == VOICEMAIL_PREF_ID) {
-            if (resultCode != RESULT_OK) {
-                if (DBG) log("onActivityResult: contact picker result not OK.");
-                return;
-            }
-
-            Cursor cursor = null;
-            try {
-                // check if the URI returned by the user belongs to the user
-                final int currentUser = UserHandle.getUserId(Process.myUid());
-                if (currentUser
-                        != ContentProvider.getUserIdFromUri(data.getData(), currentUser)) {
-
-                    if (DBG) {
-                        log("onActivityResult: Contact data of different user, "
-                                + "cannot access");
-                    }
-                    return;
-                }
-                cursor = getContentResolver().query(data.getData(),
-                    new String[] { CommonDataKinds.Phone.NUMBER }, null, null, null);
-                if ((cursor == null) || (!cursor.moveToFirst())) {
-                    if (DBG) log("onActivityResult: bad contact data, no results found.");
-                    return;
-                }
-                if (mSubMenuVoicemailSettings != null) {
-                    mSubMenuVoicemailSettings.onPickActivityResult(cursor.getString(0));
-                } else {
-                    Log.w(LOG_TAG, "VoicemailSettingsActivity destroyed while setting contacts.");
-                }
-                return;
-            } finally {
-                if (cursor != null) {
-                    cursor.close();
-                }
-            }
+            Log.w(LOG_TAG, "onActivityResult: skipping contact picker result since this"
+                    + " functionality is no longer supported.");
+            return;
         }
 
         super.onActivityResult(requestCode, resultCode, data);

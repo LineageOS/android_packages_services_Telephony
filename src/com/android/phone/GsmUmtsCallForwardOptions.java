@@ -208,45 +208,8 @@ public class GsmUmtsCallForwardOptions extends TimeConsumingPreferenceActivity {
             Log.d(LOG_TAG, "onActivityResult: contact picker result not OK.");
             return;
         }
-        Cursor cursor = null;
-        try {
-            // check if the URI returned by the user belongs to the user
-            final int currentUser = UserHandle.getUserId(Process.myUid());
-            if (currentUser
-                    != ContentProvider.getUserIdFromUri(data.getData(), currentUser)) {
-
-                Log.w(LOG_TAG, "onActivityResult: Contact data of different user, "
-                        + "cannot access");
-                return;
-            }
-            cursor = getContentResolver().query(data.getData(),
-                NUM_PROJECTION, null, null, null);
-            if ((cursor == null) || (!cursor.moveToFirst())) {
-                Log.d(LOG_TAG, "onActivityResult: bad contact data, no results found.");
-                return;
-            }
-
-            switch (requestCode) {
-                case CommandsInterface.CF_REASON_UNCONDITIONAL:
-                    mButtonCFU.onPickActivityResult(cursor.getString(0));
-                    break;
-                case CommandsInterface.CF_REASON_BUSY:
-                    mButtonCFB.onPickActivityResult(cursor.getString(0));
-                    break;
-                case CommandsInterface.CF_REASON_NO_REPLY:
-                    mButtonCFNRy.onPickActivityResult(cursor.getString(0));
-                    break;
-                case CommandsInterface.CF_REASON_NOT_REACHABLE:
-                    mButtonCFNRc.onPickActivityResult(cursor.getString(0));
-                    break;
-                default:
-                    // TODO: may need exception here.
-            }
-        } finally {
-            if (cursor != null) {
-                cursor.close();
-            }
-        }
+        Log.w(LOG_TAG, "onActivityResult: skipping contact picker result since this"
+                + " functionality is no longer supported.");
     }
 
     @Override
