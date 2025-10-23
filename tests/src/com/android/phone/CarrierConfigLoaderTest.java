@@ -20,6 +20,7 @@ import static com.android.TestContext.STUB_PERMISSION_ENABLE_ALL;
 
 import static com.google.common.truth.Truth.assertThat;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.fail;
 import static org.mockito.ArgumentMatchers.any;
@@ -155,7 +156,12 @@ public class CarrierConfigLoaderTest extends TelephonyTestBase {
                 any(Intent.class), any(ServiceConnection.class), anyInt(), any(UserHandle.class));
 
         mCarrierConfigLoader = new CarrierConfigLoader(mContext, mTestLooper,
-                mFeatureFlags);
+                mFeatureFlags) {
+            @Override
+            public boolean isUserBuild() {
+                return true;
+            }
+        };
         mHandler = mCarrierConfigLoader.getHandler();
 
         // Clear all configs to have the same starting point.
@@ -329,6 +335,79 @@ public class CarrierConfigLoaderTest extends TelephonyTestBase {
         verify(mSubscriptionManagerService).updateSubscriptionByCarrierConfig(
                 eq(DEFAULT_PHONE_ID), eq(PLATFORM_CARRIER_CONFIG_PACKAGE),
                 any(PersistableBundle.class), any(Runnable.class));
+    }
+
+    /**
+     * The test case verified the blocking of the selectable carrier config values not to be
+     * override. The same values are allowed in case if that is MockModem to run the CTS test
+     * cases.
+     */
+    @Test
+    public void testOverrideConfig_blockedKeys() {
+        if (!SubscriptionManager.isValidPhoneId(SubscriptionManager.getPhoneId(DEFAULT_SUB_ID))) {
+            return;
+        }
+        mFakePermissionEnforcer.grant(android.Manifest.permission.MODIFY_PHONE_STATE);
+        PersistableBundle overrides = new PersistableBundle();
+
+        // Case 1, If mock modem service is used, it should be allowed.
+        when(mTelephonyManager.getModemService()).thenReturn(
+                "android.telephony.mockmodem.MockModemService");
+        overrides.putBoolean(
+                CarrierConfigManager.KEY_SATELLITE_ENTITLEMENT_SUPPORTED_BOOL, false);
+        mCarrierConfigLoader.overrideConfig(DEFAULT_SUB_ID, overrides /*overrides*/,
+                false/*persistent*/);
+        processOneMessage();
+        processOneMessage();
+        assertNotNull(mCarrierConfigLoader.getOverrideConfig(DEFAULT_PHONE_ID));
+        assertThat(mCarrierConfigLoader.getOverrideConfig(DEFAULT_PHONE_ID).getBoolean(
+                CarrierConfigManager.KEY_SATELLITE_ENTITLEMENT_SUPPORTED_BOOL)).isFalse();
+
+        // Clear override config for next test.
+        mCarrierConfigLoader.overrideConfig(DEFAULT_SUB_ID, null, false);
+
+        // Case 2, If not mock modem then do not override and throw security exception as the key
+        // KEY_SATELLITE_ENTITLEMENT_SUPPORTED_BOOL is blocked.
+        when(mTelephonyManager.getModemService()).thenReturn(null);
+        overrides.clear();
+        overrides.putBoolean(
+                CarrierConfigManager.KEY_SATELLITE_ENTITLEMENT_SUPPORTED_BOOL, false);
+        try {
+            // Call overrideConfig on the local instance
+            mCarrierConfigLoader.overrideConfig(DEFAULT_SUB_ID, overrides /*overrides*/,
+                    false/*persistent*/);
+            fail("Not received the SecurityException");
+        } catch (SecurityException se) {
+            // expected
+        }
+
+        // Case 3, In case of mock modem and userBuild is true the key
+        // KEY_SATELLITE_ATTACH_SUPPORTED_BOOL is allowed as it is not blocked
+        when(mTelephonyManager.getModemService()).thenReturn(
+                "android.telephony.mockmodem.MockModemService");
+        overrides.clear();
+        overrides.putBoolean(
+                CarrierConfigManager.KEY_SATELLITE_ATTACH_SUPPORTED_BOOL, true);
+        mCarrierConfigLoader.clearConfigForPhone(DEFAULT_PHONE_ID, false);
+        mCarrierConfigLoader.overrideConfig(DEFAULT_SUB_ID, overrides /*overrides*/,
+                false/*persistent*/);
+        processOneMessage();
+        processOneMessage();
+        assertThat(mCarrierConfigLoader.getOverrideConfig(DEFAULT_PHONE_ID).getBoolean(
+                CarrierConfigManager.KEY_SATELLITE_ATTACH_SUPPORTED_BOOL)).isTrue();
+
+        // Case 4, In case not a mock modem still KEY_SATELLITE_ATTACH_SUPPORTED_BOOL is allowed
+        // as it is not blocked
+        when(mTelephonyManager.getModemService()).thenReturn(null);
+        overrides.clear();
+        overrides.putBoolean(
+                CarrierConfigManager.KEY_SATELLITE_ATTACH_SUPPORTED_BOOL, false);
+        mCarrierConfigLoader.overrideConfig(DEFAULT_SUB_ID, overrides /*overrides*/,
+                false/*persistent*/);
+        processAllMessages();
+        assertThat(mCarrierConfigLoader.getOverrideConfig(DEFAULT_PHONE_ID).getBoolean(
+                CarrierConfigManager.KEY_SATELLITE_ATTACH_SUPPORTED_BOOL)).isFalse();
+
     }
 
     /**
