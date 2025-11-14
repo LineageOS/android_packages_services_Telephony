@@ -18,10 +18,10 @@ package com.android.telephony.tools.configdatagenerate;
 
 public class ServiceProto {
 
-    public int mCarrierId;
+    public Integer mCarrierId;
     public ProviderCapabilityProto[] mCapabilityProtoList;
 
-    public ServiceProto(int carrierId, ProviderCapabilityProto[] capabilityProtolist) {
+    public ServiceProto(Integer carrierId, ProviderCapabilityProto[] capabilityProtolist) {
         mCarrierId = carrierId;
         mCapabilityProtoList = capabilityProtolist;
     }

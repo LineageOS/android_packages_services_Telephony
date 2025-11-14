@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="action_settings" msgid="7225042429670464305">"הגדרות"</string>
+    <string name="server_running" msgid="757323360857060706">"השרת פועל…"</string>
+    <string name="stop_server" msgid="6021916051636380279">"הפסקת השרת"</string>
+    <string name="server_down" msgid="6101311160545591567">"תקלה בשרת"</string>
+    <string name="start_server" msgid="3011851110037401246">"הפעלת השרת"</string>
+    <string name="SatelliteTestServer" msgid="7962421083554248947">"שרת בדיקה של הלוויין"</string>
+    <string name="client_request_textview" msgid="5379106493283719020">"בקשת הלקוח:"</string>
+    <string name="entitlement_status_textview" msgid="4182364042860876726">"סטטוס ההרשאה:"</string>
+    <string name="entitlement_status_disable" msgid="2356975025060584723">"סטטוס ההרשאה הוא \"מושבת\"."</string>
+    <string name="entitlement_status_enable" msgid="1576820543295707752">"סטטוס ההרשאה הוא \"פועל\"."</string>
+    <string name="entitlement_status_incompatible" msgid="4618746073807600131">"סטטוס ההרשאה הוא \"לא תואם\"."</string>
+    <string name="entitlement_status_provisioning" msgid="7291623636504179107">"סטטוס ההרשאה הוא \"הקצאת הרשאות ידנית\"."</string>
+    <string name="plmn_change_textView" msgid="896130072065900789">"‏אפשר לשנות את רשימת ה-PLMN"</string>
+    <string name="plmn_change_button" msgid="4776495408690606074">"שמירה"</string>
+    <string name="plmn_restore_button" msgid="353201307416551274">"שחזור"</string>
+    <string name="response_code_textview" msgid="7558995298281883364">"קוד תגובה:"</string>
+    <string name="server_response_textview" msgid="9059246990182640071">"תגובת השרת:"</string>
+    <string name="response_200" msgid="8428102249891629053">"קוד התגובה של השרת הוא 200 עם גוף הודעה."</string>
+    <string name="response_no" msgid="9176850012409530616">"‏קוד התגובה של השרת הוא No Response."</string>
+    <string name="response_500" msgid="7093352648551561497">"קוד התגובה של השרת הוא 500."</string>
+    <string name="response_503" msgid="5882347843594885590">"‏קוד התגובה של השרת הוא 503 עם הכותרת Retry-After."</string>
+    <string name="response_503_no_retry_after" msgid="6916161257226872448">"‏קוד התגובה של השרת הוא 503 בלי הכותרת Retry-After."</string>
+    <string name="current_plmn" msgid="6531059723207151310">"‏PLMN נוכחית:"</string>
+    <string name="refresh_button" msgid="4833927124437250565">"רענון"</string>
+  <string-array name="entitlement_status_for_satellite">
+    <item msgid="2022601967050498274">"פועל"</item>
+    <item msgid="359611466767264179">"מושבת"</item>
+    <item msgid="272686018752211739">"לא תואם"</item>
+    <item msgid="2230066359974626080">"הקצאת הרשאות ידנית"</item>
+  </string-array>
+  <string-array name="response">
+    <item msgid="1082041511995374203">"200"</item>
+    <item msgid="8666345372187526327">"לא"</item>
+    <item msgid="6929055236798363234">"500"</item>
+    <item msgid="1898895770647738117">"503"</item>
+    <item msgid="2420418633305128093">"‎503_NO_RETRY_AFTER"</item>
+  </string-array>
+</resources>

@@ -49,7 +49,6 @@ import android.os.Message;
 import android.os.PersistableBundle;
 import android.os.RemoteCallbackList;
 import android.os.RemoteException;
-import android.telephony.AnomalyReporter;
 import android.telephony.CarrierConfigManager;
 import android.telephony.CarrierConfigManager.Ims;
 import android.telephony.SubscriptionManager;
@@ -156,10 +155,6 @@ public class ImsProvisioningController {
             CAPABILITY_TYPE_OPTIONS_UCE, Ims.KEY_CAPABILITY_TYPE_OPTIONS_UCE_INT_ARRAY,
             CAPABILITY_TYPE_PRESENCE_UCE, Ims.KEY_CAPABILITY_TYPE_PRESENCE_UCE_INT_ARRAY
     );
-
-    private static final UUID VOLTE_PROVISIONING_ANOMALY =
-            UUID.fromString("f5f90e4d-3d73-4f63-a0f9-cbe1941ca57c");
-    private static final String VOLTE_PROVISIONING_ANOMALY_DESC = "VoLTE is Not Provisioned";
 
     /**
      * Create a FeatureConnector for this class to use to connect to an ImsManager.
@@ -1656,22 +1651,15 @@ public class ImsProvisioningController {
         return value == ProvisioningManager.PROVISIONING_VALUE_ENABLED ? true : false;
     }
 
-    // If VoLTE is not provisioned, generate an anomaly report as this is not expected.
-    private void checkProvisioningValueForAnomaly(String attributionPackage, int subId,
+    // If VoLTE is set as not provisioned, log a warning.
+    private void checkUncommonProvisioningValues(String attributionPackage, int subId,
             int capability, int tech, boolean isProvisioned) {
         if (isProvisioned) return;
         boolean isVolte = capability == CAPABILITY_TYPE_VOICE && tech == REGISTRATION_TECH_LTE;
         if (!isVolte) return;
         // We have hit the condition where VoLTE has been de-provisioned
-        int carrierId = TelephonyManager.UNKNOWN_CARRIER_ID;
-        TelephonyManager manager = mApp.getSystemService(TelephonyManager.class);
-        if (manager != null) {
-            carrierId = manager.createForSubscriptionId(subId).getSimCarrierId();
-        }
-        logAttrW(attributionPackage, "checkProvisioningValueForAnomaly", subId,
+        logAttrW(attributionPackage, "checkUncommonProvisioningValues", subId,
                 "VoLTE provisioning disabled");
-        AnomalyReporter.reportAnomaly(VOLTE_PROVISIONING_ANOMALY,
-                VOLTE_PROVISIONING_ANOMALY_DESC, carrierId);
     }
 
     private boolean setAndNotifyMmTelProvisioningValue(String attributionPackage, int subId,
@@ -1681,7 +1669,7 @@ public class ImsProvisioningController {
                 capability, tech, isProvisioned);
         // notify MmTel capability changed
         if (changed) {
-            checkProvisioningValueForAnomaly(attributionPackage, subId, capability, tech,
+            checkUncommonProvisioningValues(attributionPackage, subId, capability, tech,
                     isProvisioned);
             mHandler.sendMessage(mHandler.obtainMessage(EVENT_PROVISIONING_CAPABILITY_CHANGED,
                     getSlotId(subId), 0, (Object) new FeatureProvisioningData(

@@ -459,6 +459,8 @@
     <string name="tty_mode_option_summary" msgid="4770510287236494371">"Definir modo TTY"</string>
     <string name="auto_retry_mode_title" msgid="2985801935424422340">"Reintento automático"</string>
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"Activar o modo de reintento automático"</string>
+    <string name="vibrating_for_outgoing_call_accepted_title" msgid="647945514737734657">"Aceptouse a vibración para as chamadas saíntes"</string>
+    <string name="vibrating_for_outgoing_call_accepted_summary" msgid="906112327196063688">"Aceptouse a activación do modo de vibración para as chamadas saíntes"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"Non se permite cambiar o modo TTY durante as videochamadas"</string>
     <string name="menu_add" msgid="5616487894975773141">"Engadir contacto"</string>
     <string name="menu_edit" msgid="3593856941552460706">"Editar contacto"</string>
@@ -537,8 +539,7 @@
     <string name="notification_voicemail_no_vm_number" msgid="3423686009815186750">"Número de correo de voz descoñecido"</string>
     <string name="notification_network_selection_title" msgid="255595526707809121">"Sen servizo"</string>
     <string name="notification_network_selection_text" msgid="553288408722427659">"A rede seleccionada (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) non está dispoñible"</string>
-    <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Para facer unha chamada, activa a rede de telefonía móbil, desactiva o modo avión ou desactiva o modo Aforro de batería."</string>
-    <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Desactiva o modo avión para facer unha chamada."</string>
+    <string name="incall_error_power_off" msgid="8131672264311208673">"Desactiva o modo avión para facer unha chamada."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Desactiva o modo avión ou conéctate a unha rede sen fíos para facer unha chamada."</string>
     <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"A temperatura do teléfono é moi alta"</b>\n\n"Non se pode completar esta chamada. Téntao de novo cando arrefríe o teléfono.\n\nAínda así, podes facer chamadas de emerxencia."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Sae do modo de devolución de chamada de emerxencia para facer unha chamada que non sexa de emerxencia."</string>
@@ -846,15 +847,22 @@
     <string name="removable_esim_string" msgid="7931369811671787649">"Establecer eSIM extraíble como predeterminada"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"Alimentación da radio móbil"</string>
     <string name="simulate_out_of_service_string" msgid="7787925611727597193">"Simular Fóra de servizo (só compilación de depuración)"</string>
+    <string name="simulate_out_of_service_label" msgid="3563376136603403714">"Simular que está fóra de servizo"</string>
     <string name="enforce_satellite_channel_string" msgid="295306734591329892">"Forzar o canal LTE do satélite do campamento (só compilación de depuración)"</string>
+    <string name="enforce_satellite_channel_label" msgid="8212349350110213468">"Forzar a canle LTE do satélite de campo"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"Simular o modo Satélite do operador (só compilación de depuración)"</string>
+    <string name="mock_carrier_roaming_satellite_label" msgid="2052656038544917979">"Simulación"</string>
+    <string name="choose_satellite_data_mode_label" msgid="7403013160079828226">"Simular o modo de datos por satélite"</string>
     <string name="choose_satellite_data_mode" msgid="7526640708482601423">"Simulación do modo de datos por satélite (só depuración)"</string>
     <string name="satellite_data_restricted_string" msgid="8729402021843670205">"Restrinxido"</string>
     <string name="satellite_data_constrained_string" msgid="4594481912792241881">"Limitado"</string>
     <string name="satellite_data_unConstrained_string" msgid="3957333012703408141">"Ilimitado"</string>
     <string name="esos_satellite_string" msgid="7274794226125968657">"Probar o modo real eSOS por satélite (só compilación de depuración)"</string>
+    <string name="esos_satellite_label" msgid="4640776617354089322">"Probar o modo real de eSOS por satélite"</string>
     <string name="satellite_enable_non_emergency_mode_string" msgid="9005332650950637932">"Probar o modo real non eSOS por satélite (só compilación de depuración)"</string>
+    <string name="satellite_enable_non_emergency_mode_label" msgid="2958365217334494066">"Probar o modo real que non é eSOS por satélite"</string>
     <string name="demo_esos_satellite_string" msgid="2941811482168709730">"Probar o modo de demostración de eSOS por satélite (só compilación de depuración)"</string>
+    <string name="demo_esos_satellite_label" msgid="1538811851871457718">"Probar o modo de demostración de eSOS por satélite"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"Ver axenda de enderezos da SIM"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"Ver números de marcación fixa"</string>
     <string name="radioInfo_menu_viewSDN" msgid="2613431584522392842">"Ver números de marcación de servizo"</string>
@@ -934,6 +942,13 @@
     <string name="band_mode_succeeded" msgid="2230018000534761063">"Correcto"</string>
     <string name="phone_info_label" product="tablet" msgid="7477478709388477397">"Información da tableta"</string>
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Información do teléfono"</string>
+    <string name="tab_title_device_details" msgid="6988777232978544580">"DETALLES DO DISPOSITIVO"</string>
+    <string name="tab_title_data_network" msgid="3959510345511877717">"DATOS E REDE"</string>
+    <string name="tab_title_satellite" msgid="3973515984497023639">"SATÉLITE"</string>
+    <string name="tab_title_ims" msgid="8386374556214247042">"IMS"</string>
+    <string name="phone0_title" msgid="8961115386055876486">"Teléfono 0"</string>
+    <string name="phone1_title" msgid="8685542469651636602">"Teléfono 1"</string>
+    <string name="phone_info_label_v2" msgid="5651422721242779990">"Información do teléfono V2"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Información de aprovisionamento do operador"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Aprovisionamento do operador do activador"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"O teu sinal de Bluetooth é feble. Proba a cambiar ao altofalante."</string>
@@ -947,9 +962,18 @@
     <string name="radio_info_data_view_satellite_config" msgid="343120041798242877">"Mostrar a configuración do satélite"</string>
     <string name="satellite_config_viewer" msgid="5128698910841573398">"Visualizador de configuración do satélite"</string>
     <string name="satellite_config_version_label" msgid="1153447193166314791">"versión:"</string>
+    <string name="satellite_config_version_for_skylo_label" msgid="7068241597009832840">"versión de Skylo:"</string>
+    <string name="satellite_max_allowed_data_mode_label" msgid="1808484802651916339">"modo de datos máximos permitidos:"</string>
+    <string name="satellite_config_version_for_starlink_label" msgid="7984209491963621773">"versión de Starlink:"</string>
     <string name="satellite_config_service_type_label" msgid="21749170241956082">"subId/plmn/servicetype:"</string>
     <string name="satellite_config_allow_access_label" msgid="3806779900418131140">"allow_access:"</string>
     <string name="satellite_config_country_code_label" msgid="1389520866423113166">"códigos de país:"</string>
     <string name="satellite_config_size_of_sats2_dat_label" msgid="671746449054349967">"tamaño de sats2.dat:"</string>
     <string name="satellite_config_json_label" msgid="4577292884014824105">"configuración JSON de acesso ao satélite:"</string>
+    <string name="nb_iot_config_viewer" msgid="1427724000750959794">"Visualizador de configuración de NB-IOT"</string>
+    <string name="ims_registration_value" msgid="3195763957048314776">"Rexistro de IMS:"</string>
+    <string name="voice_over_lte_value" msgid="1317318233598235658">"Voz por LTE:"</string>
+    <string name="voice_over_wifi_value" msgid="4958925307364093356">"Voz por wifi:"</string>
+    <string name="video_calling_value" msgid="156519861684819255">"Videochamadas:"</string>
+    <string name="ut_interface_value" msgid="9038789989481463774">"Interface de UT:"</string>
 </resources>

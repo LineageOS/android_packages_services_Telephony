@@ -50,7 +50,8 @@ public class NbIotSatellite extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        sSatelliteService = SatelliteTestApp.getTestSatelliteService();
+        TestSatelliteUtils.setupEdgeToEdge(this);
+        sSatelliteService = ApiTestApp.getTestSatelliteService();
         mSatelliteManager = getSystemService(SatelliteManager.class);
 
         setContentView(R.layout.activity_NbIotSatellite);
@@ -69,7 +70,7 @@ public class NbIotSatellite extends Activity {
         findViewById(R.id.Back).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(NbIotSatellite.this, SatelliteTestApp.class));
+                startActivity(new Intent(NbIotSatellite.this, ApiTestApp.class));
             }
         });
 

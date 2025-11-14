@@ -30,6 +30,8 @@ import static android.telephony.ims.stub.ImsRegistrationImplBase.REGISTRATION_TE
 import static android.telephony.ims.stub.ImsRegistrationImplBase.REGISTRATION_TECH_LTE;
 import static android.telephony.ims.stub.ImsRegistrationImplBase.REGISTRATION_TECH_NR;
 
+import static com.android.internal.telephony.configupdate.ConfigProviderAdaptor.DOMAIN_SATELLITE;
+
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
 
 import android.annotation.NonNull;
@@ -121,8 +123,11 @@ import androidx.appcompat.app.AlertDialog.Builder;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.RILConstants;
+import com.android.internal.telephony.configupdate.TelephonyConfigUpdateInstallReceiver;
 import com.android.internal.telephony.euicc.EuiccConnector;
-import com.android.internal.telephony.satellite.SatelliteServiceUtils;
+import com.android.internal.telephony.satellite.SatelliteConfig;
+import com.android.internal.telephony.satellite.SatelliteConfigParser;
+import com.android.internal.telephony.satellite.SatelliteController;
 import com.android.phone.R;
 import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
 
@@ -134,8 +139,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutionException;
@@ -391,6 +394,9 @@ public class RadioInfo extends CollapsingToolbarBaseActivity {
     private TelephonyDisplayInfo mDisplayInfo;
     private CarrierConfigManager mCarrierConfigManager;
 
+    private SatelliteConfigParser mBackedUpSatelliteConfigParser;
+    private SatelliteConfig mBackedUpSatelliteConfig;
+
     private List<PhysicalChannelConfig> mPhysicalChannelConfigs = new ArrayList<>();
 
     private final NetworkRequest mDefaultNetworkRequest = new NetworkRequest.Builder()
@@ -578,6 +584,14 @@ public class RadioInfo extends CollapsingToolbarBaseActivity {
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         SettingsConstants.setupEdgeToEdge(this);
+        int currentNightMode = getResources().getConfiguration().uiMode
+                & android.content.res.Configuration.UI_MODE_NIGHT_MASK;
+        if (currentNightMode == android.content.res.Configuration.UI_MODE_NIGHT_NO) {
+            // Light mode is active
+            View decorView = getWindow().getDecorView();
+            decorView.setSystemUiVisibility(decorView.getSystemUiVisibility()
+                    | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        }
         mSystemUser = android.os.Process.myUserHandle().isSystem();
         log("onCreate: mSystemUser=" + mSystemUser);
         UserManager userManager = getSystemService(UserManager.class);
@@ -960,6 +974,7 @@ public class RadioInfo extends CollapsingToolbarBaseActivity {
         mMockSatelliteData.setOnCheckedChangeListener(mMockSatelliteDataListener);
 
         updateSatelliteChannelDisplay(mPhoneId);
+        mEnforceSatelliteChannel.setChecked(mOriginalSystemChannels[mPhoneId] != null);
         mEnforceSatelliteChannel.setOnCheckedChangeListener(mForceSatelliteChannelOnChangeListener);
         mImsVolteProvisionedSwitch.setOnCheckedChangeListener(mImsVolteCheckedChangeListener);
         mImsVtProvisionedSwitch.setOnCheckedChangeListener(mImsVtCheckedChangeListener);
@@ -987,7 +1002,70 @@ public class RadioInfo extends CollapsingToolbarBaseActivity {
         mTelephonyManager.unregisterTelephonyCallback(mTelephonyCallback);
         mTelephonyManager.setCellInfoListRate(sCellInfoListRateDisabled, mSubId);
         mConnectivityManager.unregisterNetworkCallback(mNetworkCallback);
+    }
 
+    private void uncapMaxAllowedDataMode() {
+        log("uncapMaxAllowedDataMode: uncap max allowed data mode by overriding satellite config");
+        SatelliteConfigParser satelliteConfigParser =
+                (SatelliteConfigParser)
+                        TelephonyConfigUpdateInstallReceiver.getInstance()
+                                .getConfigParser(DOMAIN_SATELLITE);
+        SatelliteConfig satelliteConfig =
+                satelliteConfigParser != null ? satelliteConfigParser.getConfig() : null;
+
+        log(
+                "uncapMaxAllowedDataMode: backing up satellite config parser: "
+                        + satelliteConfigParser);
+        mBackedUpSatelliteConfigParser = satelliteConfigParser;
+
+        log("uncapMaxAllowedDataMode: backing up satellite config: " + satelliteConfig);
+        mBackedUpSatelliteConfig = satelliteConfig;
+
+        SatelliteConfig uncappedSatelliteConfig;
+        if (satelliteConfig == null) {
+            log(
+                    "uncapMaxAllowedDataMode: satelliteConfig is null, creating new SatelliteConfig"
+                            + " just to uncap max allowed data mode");
+            uncappedSatelliteConfig = new SatelliteConfig();
+        } else {
+            log(
+                    "uncapMaxAllowedDataMode: satelliteConfig is not null, make a deepcopy just to"
+                            + " uncap max allowed data mode");
+            uncappedSatelliteConfig = new SatelliteConfig(satelliteConfig);
+        }
+        uncappedSatelliteConfig.overrideSatelliteMaxAllowedDataMode(
+                CarrierConfigManager.SATELLITE_DATA_SUPPORT_ALL);
+
+        log(
+                "uncapMaxAllowedDataMode: creating uncappedSatelliteConfigParser to uncap max"
+                    + " allowed data mode");
+        SatelliteConfigParser uncappedSatelliteConfigParser =
+                new SatelliteConfigParser(new byte[] {});
+
+        uncappedSatelliteConfigParser.overrideConfig(uncappedSatelliteConfig);
+        TelephonyConfigUpdateInstallReceiver.getInstance()
+                .overrideConfigParser(uncappedSatelliteConfigParser);
+    }
+
+    private void restoreMaxAllowedDataMode() {
+        log(
+                "restoreMaxAllowedDataMode: restoring max allowed data mode by restoring the backed"
+                        + " up satellite config parser: "
+                        + mBackedUpSatelliteConfigParser
+                        + " and config: "
+                        + mBackedUpSatelliteConfig);
+        TelephonyConfigUpdateInstallReceiver.getInstance()
+                .overrideConfigParser(mBackedUpSatelliteConfigParser);
+        if (mBackedUpSatelliteConfigParser == null) {
+            log(
+                    "restoreMaxAllowedDataMode: mBackedUpSatelliteConfigParser is null, therefore"
+                        + " don't have to override mBackedUpSatelliteConfig, as it would null as"
+                        + " well");
+            return;
+        }
+        TelephonyConfigUpdateInstallReceiver.getInstance()
+                .getConfigParser(DOMAIN_SATELLITE)
+                .overrideConfig(mBackedUpSatelliteConfig);
     }
 
     private void restoreFromBundle(Bundle b) {
@@ -2030,6 +2108,9 @@ public class RadioInfo extends CollapsingToolbarBaseActivity {
                 int phoneId = mPhoneId;
                 if (isChecked) {
                     (new Thread(() -> {
+                        // Do not store current plmn as satellite plmn in allPlmnList during testing
+                        SatelliteController.getInstance()
+                                .setSatelliteIgnorePlmnListFromStorage(true);
                         // Override carrier config
                         PersistableBundle originalBundle = getCarrierConfig().getConfigForSubId(
                                 subId,
@@ -2078,6 +2159,9 @@ public class RadioInfo extends CollapsingToolbarBaseActivity {
                 } else {
                     (new Thread(() -> {
                         try {
+                            // Reset to original configuration
+                            SatelliteController.getInstance()
+                                    .setSatelliteIgnorePlmnListFromStorage(false);
                             tm.setSystemSelectionChannels(
                                     Collections.emptyList() /* isSpecifyChannels false */);
                             log("Force satellite channel successfully cleared channels ");
@@ -2275,20 +2359,24 @@ public class RadioInfo extends CollapsingToolbarBaseActivity {
 
     private final OnCheckedChangeListener mMockSatelliteDataSwitchListener =
             (buttonView, isChecked) -> {
-        log("satData: ServiceData enabling = " + isChecked);
-        if (isChecked) {
-            if (isValidOperator(mSubId)) {
-                updateSatelliteDataButton();
-            } else {
-                log("satData: Not a valid Operator");
-                mMockSatelliteDataSwitch.setChecked(false);
-                return;
-            }
-        } else {
-            reloadCarrierConfigDefaults();
-        }
-        setDataModeChangeVisibility(isChecked);
-    };
+                log("satData: ServiceData enabling = " + isChecked);
+                if (isChecked) {
+                    if (isValidOperator(mSubId)) {
+                        log("satData: Uncapping maxAllowedDataMode");
+                        uncapMaxAllowedDataMode();
+                        updateSatelliteDataButton();
+                    } else {
+                        log("satData: Not a valid Operator");
+                        mMockSatelliteDataSwitch.setChecked(false);
+                        return;
+                    }
+                } else {
+                    log("satData: restoring maxAllowedDataMode");
+                    restoreMaxAllowedDataMode();
+                    reloadCarrierConfigDefaults();
+                }
+                setDataModeChangeVisibility(isChecked);
+            };
 
     private void setDataModeChangeVisibility(boolean isChecked) {
         if (isChecked) {

@@ -459,6 +459,8 @@
     <string name="tty_mode_option_summary" msgid="4770510287236494371">"Установить режим телетайпа"</string>
     <string name="auto_retry_mode_title" msgid="2985801935424422340">"Автодозвон"</string>
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"Включить режим автодозвона"</string>
+    <string name="vibrating_for_outgoing_call_accepted_title" msgid="647945514737734657">"Вибрация в момент приема исходящего вызова"</string>
+    <string name="vibrating_for_outgoing_call_accepted_summary" msgid="906112327196063688">"Включить режим вибрации, когда другой абонент принимает исходящий вызов"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"Режим телетайтпа нельзя изменить во время видеозвонка"</string>
     <string name="menu_add" msgid="5616487894975773141">"Добавить контакт"</string>
     <string name="menu_edit" msgid="3593856941552460706">"Изменить контакт"</string>
@@ -537,8 +539,7 @@
     <string name="notification_voicemail_no_vm_number" msgid="3423686009815186750">"Номер голосовой почты неизвестен"</string>
     <string name="notification_network_selection_title" msgid="255595526707809121">"Сеть не найдена"</string>
     <string name="notification_network_selection_text" msgid="553288408722427659">"Выбранная сеть (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) недоступна."</string>
-    <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Чтобы позвонить, подключитесь к мобильной сети или отключите режим полета либо режим энергосбережения."</string>
-    <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Чтобы позвонить, отключите режим полета."</string>
+    <string name="incall_error_power_off" msgid="8131672264311208673">"Чтобы позвонить, отключите режим полета."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Чтобы позвонить, отключите режим полета и подключитесь к Wi-Fi."</string>
     <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"Телефон перегрелся."</b>\n\n"Не удалось совершить звонок. Повторите попытку, когда телефон остынет.\n\nЭто не касается экстренных вызовов."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Чтобы сделать обычный звонок, выйдите из режима экстренных обратных вызовов."</string>
@@ -846,15 +847,22 @@
     <string name="removable_esim_string" msgid="7931369811671787649">"Установить съемную eSIM-карту в качестве используемой по умолчанию"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"Мощность радиосигнала"</string>
     <string name="simulate_out_of_service_string" msgid="7787925611727597193">"Моделирование нахождения вне зоны обслуживания (только отладочная сборка)"</string>
+    <string name="simulate_out_of_service_label" msgid="3563376136603403714">"Моделирование нахождения вне зоны обслуживания"</string>
     <string name="enforce_satellite_channel_string" msgid="295306734591329892">"Принудительно использовать спутниковый канал LTE (только для отладочной сборки)"</string>
+    <string name="enforce_satellite_channel_label" msgid="8212349350110213468">"Принудительно использовать спутниковый канал LTE"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"Режим спутниковой связи симуляции оператора (только отладочная сборка)"</string>
+    <string name="mock_carrier_roaming_satellite_label" msgid="2052656038544917979">"Фиктивные данные"</string>
+    <string name="choose_satellite_data_mode_label" msgid="7403013160079828226">"Режим фиктивных спутниковых данных"</string>
     <string name="choose_satellite_data_mode" msgid="7526640708482601423">"Режим фиктивных спутниковых данных (только отладка)"</string>
     <string name="satellite_data_restricted_string" msgid="8729402021843670205">"Доступ ограничен"</string>
     <string name="satellite_data_constrained_string" msgid="4594481912792241881">"С ограничениями"</string>
     <string name="satellite_data_unConstrained_string" msgid="3957333012703408141">"Без ограничений"</string>
     <string name="esos_satellite_string" msgid="7274794226125968657">"Проверка спутникового режима eSOS (только отладочная сборка)"</string>
+    <string name="esos_satellite_label" msgid="4640776617354089322">"Проверка спутникового режима eSOS"</string>
     <string name="satellite_enable_non_emergency_mode_string" msgid="9005332650950637932">"Проверка спутниковой связи в режиме, отличном от eSOS (только отладочная сборка)"</string>
+    <string name="satellite_enable_non_emergency_mode_label" msgid="2958365217334494066">"Проверка спутниковой связи в режиме, отличном от eSOS"</string>
     <string name="demo_esos_satellite_string" msgid="2941811482168709730">"Проверка демоверсии спутникового режима eSOS (только отладочная сборка)"</string>
+    <string name="demo_esos_satellite_label" msgid="1538811851871457718">"Проверка демоверсии спутникового режима eSOS"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"Посмотреть адресную книгу на SIM-карте"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"Список разрешенных номеров"</string>
     <string name="radioInfo_menu_viewSDN" msgid="2613431584522392842">"Посмотреть номера служебного набора"</string>
@@ -934,6 +942,13 @@
     <string name="band_mode_succeeded" msgid="2230018000534761063">"Успешно"</string>
     <string name="phone_info_label" product="tablet" msgid="7477478709388477397">"Информация о планшетном ПК"</string>
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Информация о телефоне"</string>
+    <string name="tab_title_device_details" msgid="6988777232978544580">"СВЕДЕНИЯ ОБ УСТРОЙСТВЕ"</string>
+    <string name="tab_title_data_network" msgid="3959510345511877717">"ДАННЫЕ И СЕТЬ"</string>
+    <string name="tab_title_satellite" msgid="3973515984497023639">"СПУТНИК"</string>
+    <string name="tab_title_ims" msgid="8386374556214247042">"IMS"</string>
+    <string name="phone0_title" msgid="8961115386055876486">"Телефон 0"</string>
+    <string name="phone1_title" msgid="8685542469651636602">"Телефон 1"</string>
+    <string name="phone_info_label_v2" msgid="5651422721242779990">"Информация о телефоне, версия 2"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Сведения о синхронизации оператора"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Запустить синхронизацию оператора"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Слабый сигнал Bluetooth. Попробуйте переключиться на громкую связь."</string>
@@ -947,9 +962,18 @@
     <string name="radio_info_data_view_satellite_config" msgid="343120041798242877">"Показать конфигурацию спутниковой связи"</string>
     <string name="satellite_config_viewer" msgid="5128698910841573398">"Средство просмотра конфигурации спутниковой связи"</string>
     <string name="satellite_config_version_label" msgid="1153447193166314791">"версия:"</string>
+    <string name="satellite_config_version_for_skylo_label" msgid="7068241597009832840">"Версия Skylo:"</string>
+    <string name="satellite_max_allowed_data_mode_label" msgid="1808484802651916339">"Макс. допустимый режим данных:"</string>
+    <string name="satellite_config_version_for_starlink_label" msgid="7984209491963621773">"Версия Starlink:"</string>
     <string name="satellite_config_service_type_label" msgid="21749170241956082">"subId/plmn/servicetype:"</string>
     <string name="satellite_config_allow_access_label" msgid="3806779900418131140">"allow_access:"</string>
     <string name="satellite_config_country_code_label" msgid="1389520866423113166">"коды стран:"</string>
     <string name="satellite_config_size_of_sats2_dat_label" msgid="671746449054349967">"размер sats2.dat:"</string>
     <string name="satellite_config_json_label" msgid="4577292884014824105">"JSON-файл конфигурации спутниковой связи"</string>
+    <string name="nb_iot_config_viewer" msgid="1427724000750959794">"Средство просмотра конфигурации NB-IOT"</string>
+    <string name="ims_registration_value" msgid="3195763957048314776">"Статус регистрации сервиса IMS:"</string>
+    <string name="voice_over_lte_value" msgid="1317318233598235658">"Голос по LTE:"</string>
+    <string name="voice_over_wifi_value" msgid="4958925307364093356">"Голос по Wi-Fi:"</string>
+    <string name="video_calling_value" msgid="156519861684819255">"Видеовызовы:"</string>
+    <string name="ut_interface_value" msgid="9038789989481463774">"UT-интерфейс:"</string>
 </resources>

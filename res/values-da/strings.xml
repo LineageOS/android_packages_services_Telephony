@@ -459,6 +459,8 @@
     <string name="tty_mode_option_summary" msgid="4770510287236494371">"Angiv TTY-tilstand"</string>
     <string name="auto_retry_mode_title" msgid="2985801935424422340">"Prøv automatisk igen"</string>
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"Aktivér automatisk gentagelsestilstand"</string>
+    <string name="vibrating_for_outgoing_call_accepted_title" msgid="647945514737734657">"Vibration for udgående opkald, der accepteres"</string>
+    <string name="vibrating_for_outgoing_call_accepted_summary" msgid="906112327196063688">"Aktivér vibrationstilstand for udgående opkald, der accepteres"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"Det er ikke tilladt at ændre TTY-tilstanden under et videoopkald"</string>
     <string name="menu_add" msgid="5616487894975773141">"Tilføj kontakt"</string>
     <string name="menu_edit" msgid="3593856941552460706">"Rediger kontakt"</string>
@@ -537,8 +539,7 @@
     <string name="notification_voicemail_no_vm_number" msgid="3423686009815186750">"Telefonsvarernummeret er ukendt"</string>
     <string name="notification_network_selection_title" msgid="255595526707809121">"Ingen dækning"</string>
     <string name="notification_network_selection_text" msgid="553288408722427659">"Det valgte netværk <xliff:g id="OPERATOR_NAME">%s</xliff:g> er ikke tilgængeligt"</string>
-    <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Slå Mobilnetværk til, Flytilstand fra eller Batterisparefunktion fra for at foretage et opkald."</string>
-    <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Slå flytilstand fra for at foretage et opkald."</string>
+    <string name="incall_error_power_off" msgid="8131672264311208673">"Slå flytilstand fra for at foretage et opkald."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Slå flytilstand fra, eller opret forbindelse til et trådløst netværk for at foretage et opkald."</string>
     <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"Telefonen er for varm"</b>\n\n"Opkaldet kan ikke foretages. Prøv igen, når din telefon er kølet af.\n\nDu kan stadig foretage nødopkald."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Afslut nødtilbagekaldstilstand for at foretage et almindeligt opkald."</string>
@@ -846,15 +847,22 @@
     <string name="removable_esim_string" msgid="7931369811671787649">"Konfigurer eSIM, der kan fjernes, som standard"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"Mobilsendestyrke"</string>
     <string name="simulate_out_of_service_string" msgid="7787925611727597193">"Simulering af enhed, der er ude af drift (kun i fejlretningsbuild)"</string>
+    <string name="simulate_out_of_service_label" msgid="3563376136603403714">"Simuler enhed, der er ude af drift"</string>
     <string name="enforce_satellite_channel_string" msgid="295306734591329892">"Gennemtving Camp Satellite LTE-kanal (kun fejlretningsbuild)"</string>
+    <string name="enforce_satellite_channel_label" msgid="8212349350110213468">"Gennemtving Camp Satellite LTE-kanal"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"Test af satellittilstand via mobilselskab (kun fejlretningsbuild)"</string>
+    <string name="mock_carrier_roaming_satellite_label" msgid="2052656038544917979">"Eksempel"</string>
+    <string name="choose_satellite_data_mode_label" msgid="7403013160079828226">"Eksempel på satellitdatatilstand"</string>
     <string name="choose_satellite_data_mode" msgid="7526640708482601423">"Test af satellitdatatilstand (kun fejlretning)"</string>
     <string name="satellite_data_restricted_string" msgid="8729402021843670205">"Begrænset"</string>
     <string name="satellite_data_constrained_string" msgid="4594481912792241881">"Begrænset"</string>
     <string name="satellite_data_unConstrained_string" msgid="3957333012703408141">"Ubegrænset"</string>
     <string name="esos_satellite_string" msgid="7274794226125968657">"Test af virkelig eSOS-satellittilstand (kun fejlretningsbuild)"</string>
+    <string name="esos_satellite_label" msgid="4640776617354089322">"Test af virkelig eSOS-satellittilstand"</string>
     <string name="satellite_enable_non_emergency_mode_string" msgid="9005332650950637932">"Test af virkelig satellittilstand, der ikke er eSOS (kun fejlretningsbuild)"</string>
+    <string name="satellite_enable_non_emergency_mode_label" msgid="2958365217334494066">"Test af virkelig satellittilstand, der ikke er eSOS"</string>
     <string name="demo_esos_satellite_string" msgid="2941811482168709730">"Test af demo for eSOS-satellittilstand (kun fejlretningsbuild)"</string>
+    <string name="demo_esos_satellite_label" msgid="1538811851871457718">"Test af demo for eSOS-satellittilstand"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"Vis adressebog på SIM-kortet"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"Vis numre til begrænset opkald"</string>
     <string name="radioInfo_menu_viewSDN" msgid="2613431584522392842">"Vis tjenestens faste opkaldsnumre"</string>
@@ -934,6 +942,13 @@
     <string name="band_mode_succeeded" msgid="2230018000534761063">"Fuldført"</string>
     <string name="phone_info_label" product="tablet" msgid="7477478709388477397">"Oplysninger om tablet"</string>
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Telefonoplysninger"</string>
+    <string name="tab_title_device_details" msgid="6988777232978544580">"ENHEDSOPLYSNINGER"</string>
+    <string name="tab_title_data_network" msgid="3959510345511877717">"DATA OG NETVÆRK"</string>
+    <string name="tab_title_satellite" msgid="3973515984497023639">"SATELLIT"</string>
+    <string name="tab_title_ims" msgid="8386374556214247042">"IMS"</string>
+    <string name="phone0_title" msgid="8961115386055876486">"Telefon 0"</string>
+    <string name="phone1_title" msgid="8685542469651636602">"Telefon 1"</string>
+    <string name="phone_info_label_v2" msgid="5651422721242779990">"Telefonoplysninger (version 2)"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Oplysninger om mobilselskab"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Aktivér mobilselskab"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Dit Bluetooth-signal er svagt. Prøv at skifte til medhør."</string>
@@ -947,9 +962,18 @@
     <string name="radio_info_data_view_satellite_config" msgid="343120041798242877">"Vis konfiguration af satellit"</string>
     <string name="satellite_config_viewer" msgid="5128698910841573398">"Visning af satellitkonfiguration"</string>
     <string name="satellite_config_version_label" msgid="1153447193166314791">"version:"</string>
+    <string name="satellite_config_version_for_skylo_label" msgid="7068241597009832840">"skylo-version:"</string>
+    <string name="satellite_max_allowed_data_mode_label" msgid="1808484802651916339">"tilstand med maksimalt tilladt dataforbrug:"</string>
+    <string name="satellite_config_version_for_starlink_label" msgid="7984209491963621773">"Starlink-version:"</string>
     <string name="satellite_config_service_type_label" msgid="21749170241956082">"subId/plmn/tjenestetype:"</string>
     <string name="satellite_config_allow_access_label" msgid="3806779900418131140">"tillad_adgang:"</string>
     <string name="satellite_config_country_code_label" msgid="1389520866423113166">"landekoder:"</string>
     <string name="satellite_config_size_of_sats2_dat_label" msgid="671746449054349967">"størrelse på sats2.dat:"</string>
     <string name="satellite_config_json_label" msgid="4577292884014824105">"JSON-fil til konfiguration af satellitadgang:"</string>
+    <string name="nb_iot_config_viewer" msgid="1427724000750959794">"Visning af NB-IOT-konfiguration"</string>
+    <string name="ims_registration_value" msgid="3195763957048314776">"IMS-registrering:"</string>
+    <string name="voice_over_lte_value" msgid="1317318233598235658">"Tale via LTE:"</string>
+    <string name="voice_over_wifi_value" msgid="4958925307364093356">"Tale via Wi-Fi:"</string>
+    <string name="video_calling_value" msgid="156519861684819255">"Videoopkald:"</string>
+    <string name="ut_interface_value" msgid="9038789989481463774">"UT-grænseflade:"</string>
 </resources>

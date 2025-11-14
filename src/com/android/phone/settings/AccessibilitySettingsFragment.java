@@ -110,7 +110,7 @@ public class AccessibilitySettingsFragment extends PreferenceFragment {
 
         if (PhoneGlobals.getInstance().phoneMgr.isHearingAidCompatibilitySupported()) {
             int hac = Settings.System.getInt(mContext.getContentResolver(),
-                    Settings.System.HEARING_AID, SettingsConstants.HAC_DISABLED);
+                    Settings.System.HEARING_AID_COMPATIBILITY, SettingsConstants.HAC_DISABLED);
             mButtonHac.setChecked(hac == SettingsConstants.HAC_ENABLED);
         } else {
             getPreferenceScreen().removePreference(mButtonHac);
@@ -168,7 +168,8 @@ public class AccessibilitySettingsFragment extends PreferenceFragment {
             int hac = mButtonHac.isChecked()
                     ? SettingsConstants.HAC_ENABLED : SettingsConstants.HAC_DISABLED;
             // Update HAC value in Settings database.
-            Settings.System.putInt(mContext.getContentResolver(), Settings.System.HEARING_AID, hac);
+            Settings.System.putInt(mContext.getContentResolver(),
+                    Settings.System.HEARING_AID_COMPATIBILITY, hac);
 
             // Update HAC Value in AudioManager.
             mAudioManager.setParameters(

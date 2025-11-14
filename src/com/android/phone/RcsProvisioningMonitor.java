@@ -879,18 +879,10 @@ public class RcsProvisioningMonitor {
         // Only send permission to the default sms app if it has the correct permissions
         // except test mode enabled
         if (!mTestModeEnabled) {
-            if (mFeatureFlags.hsumBroadcast()) {
-                mPhone.sendBroadcastAsUser(intent, UserHandle.ALL,
-                        Manifest.permission.PERFORM_IMS_SINGLE_REGISTRATION);
-            } else {
-                mPhone.sendBroadcast(intent, Manifest.permission.PERFORM_IMS_SINGLE_REGISTRATION);
-            }
+            mPhone.sendBroadcastAsUser(intent, UserHandle.ALL,
+                    Manifest.permission.PERFORM_IMS_SINGLE_REGISTRATION);
         } else {
-            if (mFeatureFlags.hsumBroadcast()) {
-                mPhone.sendBroadcastAsUser(intent, UserHandle.ALL);
-            } else {
-                mPhone.sendBroadcast(intent);
-            }
+            mPhone.sendBroadcastAsUser(intent, UserHandle.ALL);
         }
     }
 

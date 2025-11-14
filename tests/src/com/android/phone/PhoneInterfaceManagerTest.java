@@ -146,7 +146,6 @@ public class PhoneInterfaceManagerTest extends TelephonyTestBase {
         // In order not to affect the existing implementation, define a telephony features
         // and disabled enforce_telephony_feature_mapping_for_public_apis feature flag
         mPhoneInterfaceManager.setFeatureFlags(mFeatureFlags);
-        doReturn(true).when(mFeatureFlags).hsumPackageManager();
         mPhoneInterfaceManager.setPackageManager(mPackageManager);
         doReturn(mPackageManager).when(mPhoneGlobals).getPackageManager();
         doReturn(true).when(mPackageManager).hasSystemFeature(anyString());

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="action_settings" msgid="7225042429670464305">"Impostazioni"</string>
+    <string name="server_running" msgid="757323360857060706">"Il server è in esecuzione"</string>
+    <string name="stop_server" msgid="6021916051636380279">"Arresta server"</string>
+    <string name="server_down" msgid="6101311160545591567">"Il server non è attivo"</string>
+    <string name="start_server" msgid="3011851110037401246">"Avvia server"</string>
+    <string name="SatelliteTestServer" msgid="7962421083554248947">"Server del test del satellite"</string>
+    <string name="client_request_textview" msgid="5379106493283719020">"Richiesta del client:"</string>
+    <string name="entitlement_status_textview" msgid="4182364042860876726">"Stato del diritto:"</string>
+    <string name="entitlement_status_disable" msgid="2356975025060584723">"Lo stato del diritto è impostato su DISATTIVATO."</string>
+    <string name="entitlement_status_enable" msgid="1576820543295707752">"Lo stato del diritto è impostato su ATTIVATO."</string>
+    <string name="entitlement_status_incompatible" msgid="4618746073807600131">"Lo stato del diritto è impostato su INCOMPATIBILE."</string>
+    <string name="entitlement_status_provisioning" msgid="7291623636504179107">"Lo stato del diritto è impostato su IN FASE DI PROVISIONING."</string>
+    <string name="plmn_change_textView" msgid="896130072065900789">"Può modificare l\'elenco di PLMN"</string>
+    <string name="plmn_change_button" msgid="4776495408690606074">"SALVA"</string>
+    <string name="plmn_restore_button" msgid="353201307416551274">"RIPRISTINA"</string>
+    <string name="response_code_textview" msgid="7558995298281883364">"Codice di risposta:"</string>
+    <string name="server_response_textview" msgid="9059246990182640071">"Risposta del server:"</string>
+    <string name="response_200" msgid="8428102249891629053">"Il codice di risposta del server è impostato su 200 con il corpo."</string>
+    <string name="response_no" msgid="9176850012409530616">"Il codice di risposta del server è impostato su nessuna risposta."</string>
+    <string name="response_500" msgid="7093352648551561497">"Il codice di risposta del server è impostato su 500."</string>
+    <string name="response_503" msgid="5882347843594885590">"Il codice di risposta del server è impostato su 503 con l\'intestazione Retry-After."</string>
+    <string name="response_503_no_retry_after" msgid="6916161257226872448">"Il codice di risposta del server è impostato su 503 senza intestazione Retry-After."</string>
+    <string name="current_plmn" msgid="6531059723207151310">"PLMN attuale:"</string>
+    <string name="refresh_button" msgid="4833927124437250565">"Aggiorna"</string>
+  <string-array name="entitlement_status_for_satellite">
+    <item msgid="2022601967050498274">"ATTIVATO"</item>
+    <item msgid="359611466767264179">"DISATTIVATO"</item>
+    <item msgid="272686018752211739">"INCOMPATIBILE"</item>
+    <item msgid="2230066359974626080">"IN FASE DI PROVISIONING"</item>
+  </string-array>
+  <string-array name="response">
+    <item msgid="1082041511995374203">"200"</item>
+    <item msgid="8666345372187526327">"NO"</item>
+    <item msgid="6929055236798363234">"500"</item>
+    <item msgid="1898895770647738117">"503"</item>
+    <item msgid="2420418633305128093">"503_NO_RETRY_AFTER"</item>
+  </string-array>
+</resources>

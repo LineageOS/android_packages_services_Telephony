@@ -67,6 +67,7 @@ import androidx.annotation.NonNull;
 
 import com.android.TelephonyTestBase;
 import com.android.internal.telephony.ExponentialBackoff;
+import com.android.internal.telephony.flags.FeatureFlags;
 import com.android.internal.telephony.satellite.SatelliteController;
 import com.android.internal.telephony.subscription.SubscriptionManagerService;
 import com.android.libraries.entitlement.ServiceEntitlementException;
@@ -85,6 +86,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Executor;
 import java.util.concurrent.TimeUnit;
 
@@ -132,6 +134,7 @@ public class SatelliteEntitlementControllerTest extends TelephonyTestBase {
     @Mock SatelliteEntitlementApi mSatelliteEntitlementApi;
     @Mock SatelliteEntitlementResult mSatelliteEntitlementResult;
     @Mock SatelliteController mSatelliteController;
+    @Mock private FeatureFlags mMockFeatureFlags;
     private PersistableBundle mCarrierConfigBundle;
     private TestSatelliteEntitlementController mSatelliteEntitlementController;
     private Handler mHandler;
@@ -180,9 +183,10 @@ public class SatelliteEntitlementControllerTest extends TelephonyTestBase {
         doReturn(mNetwork).when(mConnectivityManager).getActiveNetwork();
         doReturn(ACTIVE_SUB_ID).when(mMockSubscriptionManagerService).getActiveSubIdList(true);
         mSatelliteEntitlementController = spy(new TestSatelliteEntitlementController(mContext,
-                mTestableLooper.getLooper(), mSatelliteEntitlementApi));
+                mTestableLooper.getLooper(), mSatelliteEntitlementApi, mMockFeatureFlags));
         doReturn(mSatelliteEntitlementResult).when(
                 mSatelliteEntitlementApi).checkEntitlementStatus();
+        doReturn(true).when(mMockFeatureFlags).satelliteImproveMultiThreadDesign();
     }
 
     @After
@@ -226,7 +230,7 @@ public class SatelliteEntitlementControllerTest extends TelephonyTestBase {
         setLastQueryTime(0L);
         // Verify don't start the query when retry count is reached max
         setLastQueryTime(0L);
-        Map<Integer, Integer> mRetryCountPerSub = new HashMap<>();
+        ConcurrentHashMap<Integer, Integer> mRetryCountPerSub = new ConcurrentHashMap<>();
         mRetryCountPerSub.put(SUB_ID, MAX_RETRY_COUNT);
         replaceInstance(SatelliteEntitlementController.class, "mRetryCountPerSub",
                 mSatelliteEntitlementController, mRetryCountPerSub);
@@ -237,10 +241,11 @@ public class SatelliteEntitlementControllerTest extends TelephonyTestBase {
                 anyBoolean(), anyList(), anyList(), anyMap(), anyMap(), anyMap(), anyMap(), any());
 
         replaceInstance(SatelliteEntitlementController.class, "mRetryCountPerSub",
-                mSatelliteEntitlementController, new HashMap<>());
+                mSatelliteEntitlementController, new ConcurrentHashMap<>());
 
         // Verify don't start the query when query is in progressed.
-        Map<Integer, Boolean> mIsEntitlementInProgressPerSub = new HashMap<>();
+        ConcurrentHashMap<Integer, Boolean> mIsEntitlementInProgressPerSub =
+                new ConcurrentHashMap<>();
         mIsEntitlementInProgressPerSub.put(SUB_ID, true);
         replaceInstance(SatelliteEntitlementController.class, "mIsEntitlementInProgressPerSub",
                 mSatelliteEntitlementController, mIsEntitlementInProgressPerSub);
@@ -251,7 +256,7 @@ public class SatelliteEntitlementControllerTest extends TelephonyTestBase {
                 anyBoolean(), anyList(), anyList(), anyMap(), anyMap(), anyMap(), anyMap(), any());
 
         replaceInstance(SatelliteEntitlementController.class, "mIsEntitlementInProgressPerSub",
-                mSatelliteEntitlementController, new HashMap<>());
+                mSatelliteEntitlementController, new ConcurrentHashMap<>());
         // Verify the query starts when ShouldStartQueryEntitlement returns true.
         doReturn(mSatelliteEntitlementResult).when(
                 mSatelliteEntitlementApi).checkEntitlementStatus();
@@ -283,7 +288,7 @@ public class SatelliteEntitlementControllerTest extends TelephonyTestBase {
                 mSatelliteEntitlementApi).checkEntitlementStatus();
         replaceInstance(SatelliteEntitlementController.class,
                 "mSatelliteEntitlementResultPerSub", mSatelliteEntitlementController,
-                new HashMap<>());
+                new ConcurrentHashMap<>());
         mSatelliteEntitlementController.handleCmdStartQueryEntitlement();
 
         verify(mSatelliteEntitlementApi).checkEntitlementStatus();
@@ -421,8 +426,8 @@ public class SatelliteEntitlementControllerTest extends TelephonyTestBase {
         // occurs during retries.
         setIsQueryAvailableTrue();
         set503RetryAfterResponse();
-        Map<Integer, Integer> retryCountPerSub =
-                (Map<Integer, Integer>) getValue("mRetryCountPerSub");
+        ConcurrentHashMap<Integer, Integer> retryCountPerSub =
+                (ConcurrentHashMap<Integer, Integer>) getValue("mRetryCountPerSub");
 
         // Verify that the first query.
         sendMessage(CMD_START_QUERY_ENTITLEMENT, SUB_ID);
@@ -507,8 +512,8 @@ public class SatelliteEntitlementControllerTest extends TelephonyTestBase {
         // connected during retries, and that up to 5 retries are performed.
         setIsQueryAvailableTrue();
         set503RetryAfterResponse();
-        Map<Integer, Integer> retryCountPerSub =
-                (Map<Integer, Integer>) getValue("mRetryCountPerSub");
+        ConcurrentHashMap<Integer, Integer> retryCountPerSub =
+                (ConcurrentHashMap<Integer, Integer>) getValue("mRetryCountPerSub");
 
         // Verify that the first query.
         sendMessage(CMD_START_QUERY_ENTITLEMENT, SUB_ID);
@@ -589,8 +594,8 @@ public class SatelliteEntitlementControllerTest extends TelephonyTestBase {
     @Test
     public void testStartQueryEntitlementStatus_error500() throws Exception {
         setIsQueryAvailableTrue();
-        Map<Integer, Integer> retryCountPerSub =
-                (Map<Integer, Integer>) getValue("mRetryCountPerSub");
+        ConcurrentHashMap<Integer, Integer> retryCountPerSub =
+                (ConcurrentHashMap<Integer, Integer>) getValue("mRetryCountPerSub");
         setErrorResponse(500);
 
         sendMessage(CMD_START_QUERY_ENTITLEMENT, SUB_ID);
@@ -608,8 +613,8 @@ public class SatelliteEntitlementControllerTest extends TelephonyTestBase {
     public void testStartQueryEntitlementStatus_error503_retrySuccess() throws Exception {
         setIsQueryAvailableTrue();
         set503RetryAfterResponse();
-        Map<Integer, Integer> retryCountPerSub =
-                (Map<Integer, Integer>) getValue("mRetryCountPerSub");
+        ConcurrentHashMap<Integer, Integer> retryCountPerSub =
+                (ConcurrentHashMap<Integer, Integer>) getValue("mRetryCountPerSub");
 
         // Verify that the first query.
         sendMessage(CMD_START_QUERY_ENTITLEMENT, SUB_ID);
@@ -637,12 +642,13 @@ public class SatelliteEntitlementControllerTest extends TelephonyTestBase {
     @Test
     public void testStartQueryEntitlementStatus_otherError_retrySuccess() throws Exception {
         setIsQueryAvailableTrue();
-        Map<Integer, Integer> retryCountPerSub =
-                (Map<Integer, Integer>) getValue("mRetryCountPerSub");
-        Map<Integer, Boolean> isEntitlementInProgressPerSub =
-                (Map<Integer, Boolean>) getValue("mIsEntitlementInProgressPerSub");
-        Map<Integer, ExponentialBackoff> exponentialBackoffPerSub =
-                (Map<Integer, ExponentialBackoff>) getValue("mExponentialBackoffPerSub");
+        ConcurrentHashMap<Integer, Integer> retryCountPerSub =
+                (ConcurrentHashMap<Integer, Integer>) getValue("mRetryCountPerSub");
+        ConcurrentHashMap<Integer, Boolean> isEntitlementInProgressPerSub =
+                (ConcurrentHashMap<Integer, Boolean>) getValue("mIsEntitlementInProgressPerSub");
+        ConcurrentHashMap<Integer, ExponentialBackoff> exponentialBackoffPerSub =
+                (ConcurrentHashMap<Integer, ExponentialBackoff>) getValue(
+                        "mExponentialBackoffPerSub");
         setErrorResponse(400);
 
         // Verify start the exponentialBackoff.
@@ -934,16 +940,16 @@ public class SatelliteEntitlementControllerTest extends TelephonyTestBase {
         mCarrierConfigBundle.putBoolean(
                 CarrierConfigManager.KEY_SATELLITE_ENTITLEMENT_SUPPORTED_BOOL, true);
         replaceInstance(SatelliteEntitlementController.class, "mRetryCountPerSub",
-                mSatelliteEntitlementController, new HashMap<>());
+                mSatelliteEntitlementController, new ConcurrentHashMap<>());
         replaceInstance(SatelliteEntitlementController.class, "mIsEntitlementInProgressPerSub",
-                mSatelliteEntitlementController, new HashMap<>());
+                mSatelliteEntitlementController, new ConcurrentHashMap<>());
         setInternetConnected(true);
         setLastQueryTime(0L);
         replaceInstance(SatelliteEntitlementController.class,
                 "mSatelliteEntitlementResultPerSub", mSatelliteEntitlementController,
-                new HashMap<>());
+                new ConcurrentHashMap<>());
         replaceInstance(SatelliteEntitlementController.class,
-                "mSubIdPerSlot", mSatelliteEntitlementController, new HashMap<>());
+                "mSubIdPerSlot", mSatelliteEntitlementController, new ConcurrentHashMap<>());
     }
 
     private void setInternetConnected(boolean connected) {
@@ -977,7 +983,7 @@ public class SatelliteEntitlementControllerTest extends TelephonyTestBase {
     }
 
     private void setLastQueryTime(Long lastQueryTime) throws Exception {
-        Map<Integer, Long> lastQueryTimePerSub = new HashMap<>();
+        ConcurrentHashMap<Integer, Long> lastQueryTimePerSub = new ConcurrentHashMap<>();
         replaceInstance(SatelliteEntitlementController.class, "mLastQueryTimePerSub",
                 mSatelliteEntitlementController, lastQueryTimePerSub);
         lastQueryTimePerSub.put(SUB_ID, lastQueryTime);
@@ -1022,8 +1028,8 @@ public class SatelliteEntitlementControllerTest extends TelephonyTestBase {
         private SatelliteEntitlementApi mInjectSatelliteEntitlementApi;
 
         TestSatelliteEntitlementController(@NonNull Context context, @NonNull Looper looper,
-                SatelliteEntitlementApi api) {
-            super(context, looper);
+                SatelliteEntitlementApi api, FeatureFlags featureFlags) {
+            super(context, looper, featureFlags);
             mInjectSatelliteEntitlementApi = api;
         }
 
@@ -1031,6 +1037,11 @@ public class SatelliteEntitlementControllerTest extends TelephonyTestBase {
         public SatelliteEntitlementApi getSatelliteEntitlementApi(int subId) {
             Log.d(TAG, "getSatelliteEntitlementApi");
             return mInjectSatelliteEntitlementApi;
+        }
+
+        @Override
+        protected void handleCmdStartQueryEntitlement() {
+            super.handleCmdStartQueryEntitlement();
         }
     }
 }

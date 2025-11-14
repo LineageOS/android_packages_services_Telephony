@@ -459,6 +459,8 @@
     <string name="tty_mode_option_summary" msgid="4770510287236494371">"Nastavit režim TTY"</string>
     <string name="auto_retry_mode_title" msgid="2985801935424422340">"Automaticky zkusit znovu"</string>
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"Aktivovat režim Automaticky zkusit znovu"</string>
+    <string name="vibrating_for_outgoing_call_accepted_title" msgid="647945514737734657">"Vibrace u odchozích hovorů byly přijaty"</string>
+    <string name="vibrating_for_outgoing_call_accepted_summary" msgid="906112327196063688">"Aktivace režimu vibrací u odchozích hovorů byla přijata"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"Během videohovoru změna režimu TTY není povolena"</string>
     <string name="menu_add" msgid="5616487894975773141">"Přidat kontakt"</string>
     <string name="menu_edit" msgid="3593856941552460706">"Upravit kontakt"</string>
@@ -537,8 +539,7 @@
     <string name="notification_voicemail_no_vm_number" msgid="3423686009815186750">"Číslo hlasové schránky je neznámé."</string>
     <string name="notification_network_selection_title" msgid="255595526707809121">"Žádný signál"</string>
     <string name="notification_network_selection_text" msgid="553288408722427659">"Vybraná síť (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) není k dispozici"</string>
-    <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Pokud chcete volat, zapněte mobilní síť a vypněte režim letadla nebo spořič baterie."</string>
-    <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Chcete-li provést hovor, vypněte režim Letadlo."</string>
+    <string name="incall_error_power_off" msgid="8131672264311208673">"Chcete-li provést hovor, vypněte režim Letadlo."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Chcete-li se připojit k bezdrátové síti a provést hovor, vypněte režim Letadlo."</string>
     <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"Telefon je příliš zahřátý"</b>\n\n"Hovor nelze provést. Zkuste to znovu, až telefon vychladne.\n\nTísňové volání máte pořád k dispozici."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Chcete-li uskutečnit běžný hovor, opusťte režim tísňového volání."</string>
@@ -599,8 +600,8 @@
     <string name="importToFDNfromContacts" msgid="5068664870738407341">"Import z kontaktů"</string>
     <string name="singleContactImportedMsg" msgid="3619804066300998934">"Kontakt byl importován"</string>
     <string name="failedToImportSingleContactMsg" msgid="228095510489830266">"Kontakt se nepodařilo importovat"</string>
-    <string name="hac_mode_title" msgid="4127986689621125468">"Naslouchátka"</string>
-    <string name="hac_mode_summary" msgid="7774989500136009881">"Zapnout režim kompatibility s naslouchátkem"</string>
+    <string name="hac_mode_title" msgid="4127986689621125468">"Sluchadla"</string>
+    <string name="hac_mode_summary" msgid="7774989500136009881">"Zapnout režim kompatibility se sluchadly"</string>
     <string name="rtt_mode_title" msgid="3075948111362818043">"Hovor, během něhož můžete posílat zprávy (RTT)"</string>
     <string name="rtt_mode_summary" msgid="8631541375609989562">"Povolit posílání zpráv během hlasového hovoru"</string>
     <string name="rtt_mode_more_information" msgid="587500128658756318">"Funkce Okamžitý text (RTT) pomáhá volajícím, kteří neslyší, jsou nedoslýchaví, mají řečovou vadu, případně potřebují víc než jen hlas z jiného důvodu.&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;Další informace&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; – Text poslaný během hovoru se uloží jako přepis zpráv\n       &lt;br&gt; – Tato funkce není dostupná při videohovorech"</string>
@@ -846,15 +847,22 @@
     <string name="removable_esim_string" msgid="7931369811671787649">"Nastavit vyjímatelnou eSIM jako výchozí"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"Výkon mobilního přijímače"</string>
     <string name="simulate_out_of_service_string" msgid="7787925611727597193">"Simulovat provoz mimo službu (pouze ladicí sestavení)"</string>
+    <string name="simulate_out_of_service_label" msgid="3563376136603403714">"Simulovat výpadek služeb"</string>
     <string name="enforce_satellite_channel_string" msgid="295306734591329892">"Kanál LTE Force Camp Satellite (jen ladicí sestavení)"</string>
+    <string name="enforce_satellite_channel_label" msgid="8212349350110213468">"Kanál LTE Force Camp Satellite"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"Simulace satelitního režimu operátora (pouze ladicí sestavení)"</string>
+    <string name="mock_carrier_roaming_satellite_label" msgid="2052656038544917979">"Simulace"</string>
+    <string name="choose_satellite_data_mode_label" msgid="7403013160079828226">"Režim simulace satelitních dat"</string>
     <string name="choose_satellite_data_mode" msgid="7526640708482601423">"Simulace režimu dat přes satelit (pouze ladicí sestavení)"</string>
     <string name="satellite_data_restricted_string" msgid="8729402021843670205">"Omezeno"</string>
     <string name="satellite_data_constrained_string" msgid="4594481912792241881">"Limitováno"</string>
     <string name="satellite_data_unConstrained_string" msgid="3957333012703408141">"Neomezeno"</string>
     <string name="esos_satellite_string" msgid="7274794226125968657">"Otestovat reálný režim nouzových zpráv přes satelit (pouze ladicí sestavení)"</string>
+    <string name="esos_satellite_label" msgid="4640776617354089322">"Otestovat reálný režim nouzových zpráv přes satelit"</string>
     <string name="satellite_enable_non_emergency_mode_string" msgid="9005332650950637932">"Otestovat reálný režim jiných než nouzových zpráv přes satelit (pouze ladicí sestavení)"</string>
+    <string name="satellite_enable_non_emergency_mode_label" msgid="2958365217334494066">"Otestovat reálný režim jiných než nouzových zpráv přes satelit"</string>
     <string name="demo_esos_satellite_string" msgid="2941811482168709730">"Otestovat ukázkový režim nouzových zpráv přes satelit (pouze ladicí sestavení)"</string>
+    <string name="demo_esos_satellite_label" msgid="1538811851871457718">"Otestovat ukázkový režim nouzových zpráv přes satelit"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"Zobrazit adresář SIM karty"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"Zobrazit povolená telefonní čísla"</string>
     <string name="radioInfo_menu_viewSDN" msgid="2613431584522392842">"Zobrazit čísla volání služeb"</string>
@@ -934,6 +942,13 @@
     <string name="band_mode_succeeded" msgid="2230018000534761063">"Úspěšné"</string>
     <string name="phone_info_label" product="tablet" msgid="7477478709388477397">"Informace o tabletu"</string>
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Informace o telefonu"</string>
+    <string name="tab_title_device_details" msgid="6988777232978544580">"PODROBNOSTI O ZAŘÍZENÍ"</string>
+    <string name="tab_title_data_network" msgid="3959510345511877717">"DATA A SÍŤ"</string>
+    <string name="tab_title_satellite" msgid="3973515984497023639">"SATELITNÍ"</string>
+    <string name="tab_title_ims" msgid="8386374556214247042">"IMS"</string>
+    <string name="phone0_title" msgid="8961115386055876486">"Telefon 0"</string>
+    <string name="phone1_title" msgid="8685542469651636602">"Telefon 1"</string>
+    <string name="phone_info_label_v2" msgid="5651422721242779990">"Informace o telefonu, V2"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Informace o zprovoznění služby u operátora"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Spustit zprovoznění služby u operátora"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Signál sítě Bluetooth je slabý. Zkuste přepnout na hlasitý odposlech."</string>
@@ -947,9 +962,18 @@
     <string name="radio_info_data_view_satellite_config" msgid="343120041798242877">"Zobrazit konfiguraci satelitu"</string>
     <string name="satellite_config_viewer" msgid="5128698910841573398">"Prohlížeč satelitní konfigurace"</string>
     <string name="satellite_config_version_label" msgid="1153447193166314791">"verze:"</string>
+    <string name="satellite_config_version_for_skylo_label" msgid="7068241597009832840">"Verze technologie Skylo:"</string>
+    <string name="satellite_max_allowed_data_mode_label" msgid="1808484802651916339">"Režim maximálních povolených dat:"</string>
+    <string name="satellite_config_version_for_starlink_label" msgid="7984209491963621773">"Verze technologie Starlink:"</string>
     <string name="satellite_config_service_type_label" msgid="21749170241956082">"subId/plmn/servicetype:"</string>
     <string name="satellite_config_allow_access_label" msgid="3806779900418131140">"allow_access:"</string>
     <string name="satellite_config_country_code_label" msgid="1389520866423113166">"kódy zemí:"</string>
     <string name="satellite_config_size_of_sats2_dat_label" msgid="671746449054349967">"velikost souboru sats2.dat:"</string>
     <string name="satellite_config_json_label" msgid="4577292884014824105">"konfigurační soubor json pro přístup přes satelit:"</string>
+    <string name="nb_iot_config_viewer" msgid="1427724000750959794">"Prohlížeč konfigurace NB-IOT"</string>
+    <string name="ims_registration_value" msgid="3195763957048314776">"Registrace ve službě IMS:"</string>
+    <string name="voice_over_lte_value" msgid="1317318233598235658">"Volání přes LTE:"</string>
+    <string name="voice_over_wifi_value" msgid="4958925307364093356">"Hlasové volání přes Wi-Fi:"</string>
+    <string name="video_calling_value" msgid="156519861684819255">"Videohovory:"</string>
+    <string name="ut_interface_value" msgid="9038789989481463774">"Rozhraní UT:"</string>
 </resources>

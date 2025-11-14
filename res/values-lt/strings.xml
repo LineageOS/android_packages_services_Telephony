@@ -459,6 +459,8 @@
     <string name="tty_mode_option_summary" msgid="4770510287236494371">"Nustatyti TTY režimą"</string>
     <string name="auto_retry_mode_title" msgid="2985801935424422340">"Automatinis bandymas iš naujo"</string>
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"Įgalinti automatinio kartotinio bandymo režimą"</string>
+    <string name="vibrating_for_outgoing_call_accepted_title" msgid="647945514737734657">"Vibravimas, kai priimamas siunčiamasis skambutis"</string>
+    <string name="vibrating_for_outgoing_call_accepted_summary" msgid="906112327196063688">"Įgalinti vibravimo režimą, kai priimamas siunčiamasis skambutis"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"Vykstant vaizdo skambučiui negalima keisti TTY režimo"</string>
     <string name="menu_add" msgid="5616487894975773141">"Pridėti kontaktą"</string>
     <string name="menu_edit" msgid="3593856941552460706">"Redaguoti adresatą"</string>
@@ -537,8 +539,7 @@
     <string name="notification_voicemail_no_vm_number" msgid="3423686009815186750">"Nežinomas balso pašto numeris"</string>
     <string name="notification_network_selection_title" msgid="255595526707809121">"Nėra paslaugos"</string>
     <string name="notification_network_selection_text" msgid="553288408722427659">"Pasirinktas tinklas („<xliff:g id="OPERATOR_NAME">%s</xliff:g>“) negalimas"</string>
-    <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Įjunkite mobiliojo ryšio tinklą, išjunkite lėktuvo arba akumuliatoriaus tausojimo priemonės režimą, kad galėtumėte skambinti."</string>
-    <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Išjunkite lėktuvo režimą, kad galėtumėte skambinti."</string>
+    <string name="incall_error_power_off" msgid="8131672264311208673">"Išjunkite lėktuvo režimą, kad galėtumėte skambinti."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Išjunkite lėktuvo režimą arba prisijunkite prie belaidžio ryšio tinklo, kad galėtumėte skambinti."</string>
     <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"Telefonas per karštas"</b>\n\n"Negalima užbaigti šio skambučio. Bandykite dar kartą, kai telefonas atvės.\n\nJūs vis dar galite skambinti pagalbos numeriais."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Jei norite skambinti ne pagalbos numeriu, išjunkite atgalinio skambinimo pagalbos numeriu režimą."</string>
@@ -846,15 +847,22 @@
     <string name="removable_esim_string" msgid="7931369811671787649">"Nustatyti pašalinimą „eSIM“ kaip numatytąją"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"Mobiliojo ryšio radijo signalas"</string>
     <string name="simulate_out_of_service_string" msgid="7787925611727597193">"Modeliavimas neteikiamas (tik derinimo versija)"</string>
+    <string name="simulate_out_of_service_label" msgid="3563376136603403714">"Imitavimas neveikia"</string>
     <string name="enforce_satellite_channel_string" msgid="295306734591329892">"Priverstinis stovyklos palydovinio ryšio LTE kanalo vykdymas (tik derinimo versija)"</string>
+    <string name="enforce_satellite_channel_label" msgid="8212349350110213468">"Priverstinis stovyklos palydovinio ryšio LTE kanalas"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"Netikras operatoriaus satelito režimas (tik derinimo versija)"</string>
+    <string name="mock_carrier_roaming_satellite_label" msgid="2052656038544917979">"Pavyzdys"</string>
+    <string name="choose_satellite_data_mode_label" msgid="7403013160079828226">"Imituojamų palydovinių duomenų režimas"</string>
     <string name="choose_satellite_data_mode" msgid="7526640708482601423">"Netikras palydovinių duomenų režimas (tik derinimo versija)"</string>
     <string name="satellite_data_restricted_string" msgid="8729402021843670205">"Ribotoji prieiga"</string>
     <string name="satellite_data_constrained_string" msgid="4594481912792241881">"Ribota"</string>
     <string name="satellite_data_unConstrained_string" msgid="3957333012703408141">"Neribota"</string>
     <string name="esos_satellite_string" msgid="7274794226125968657">"Išbandykite tikrą Pagalbos iškvietimo kritiniu atveju naudojant palydovinį ryšį režimą (tik derinimo versija)"</string>
+    <string name="esos_satellite_label" msgid="4640776617354089322">"Išbandykite tikrą pagalbos iškvietimo kritiniu atveju naudojant palydovinį ryšį versiją"</string>
     <string name="satellite_enable_non_emergency_mode_string" msgid="9005332650950637932">"Išbandykite tikrą Pagalbos iškvietimo ne kritiniu atveju naudojant palydovinį ryšį režimą (tik derinimo versija)"</string>
+    <string name="satellite_enable_non_emergency_mode_label" msgid="2958365217334494066">"Išbandykite tikrą pagalbos iškvietimo ne kritiniu atveju naudojant palydovinį ryšį versiją"</string>
     <string name="demo_esos_satellite_string" msgid="2941811482168709730">"Išbandykite demonstracinę Pagalbos iškvietimo kritiniu atveju naudojant palydovinį ryšį versiją (tik derinimo versija)"</string>
+    <string name="demo_esos_satellite_label" msgid="1538811851871457718">"Išbandykite demonstracinę pagalbos iškvietimo kritiniu atveju naudojant palydovinį ryšį versiją"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"Žiūrėti SIM kortelės adresų knygą"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"Žiūrėti fiksuotojo rinkimo numerius"</string>
     <string name="radioInfo_menu_viewSDN" msgid="2613431584522392842">"Žiūrėti paslaugos renkamus numerius"</string>
@@ -934,6 +942,13 @@
     <string name="band_mode_succeeded" msgid="2230018000534761063">"Pavyko"</string>
     <string name="phone_info_label" product="tablet" msgid="7477478709388477397">"Planšetinio kompiuterio informacija"</string>
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Telefono informacija"</string>
+    <string name="tab_title_device_details" msgid="6988777232978544580">"IŠSAMI ĮRENGINIO INFORMACIJA"</string>
+    <string name="tab_title_data_network" msgid="3959510345511877717">"DUOMENYS IR TINKLAS"</string>
+    <string name="tab_title_satellite" msgid="3973515984497023639">"PALYDOVAS"</string>
+    <string name="tab_title_ims" msgid="8386374556214247042">"IMS"</string>
+    <string name="phone0_title" msgid="8961115386055876486">"0 telefonas"</string>
+    <string name="phone1_title" msgid="8685542469651636602">"1 telefonas"</string>
+    <string name="phone_info_label_v2" msgid="5651422721242779990">"Telefono informacija, 2 versija"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Operatoriaus aprūpinimo informacija"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Aktyviklio operatoriaus aprūpinimas"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Silpnas „Bluetooth“ signalas. Pabandykite perjungti garsiakalbį."</string>
@@ -947,9 +962,18 @@
     <string name="radio_info_data_view_satellite_config" msgid="343120041798242877">"Rodyti palydovo konfigūraciją"</string>
     <string name="satellite_config_viewer" msgid="5128698910841573398">"Palydovo konfigūracijos peržiūros priemonė"</string>
     <string name="satellite_config_version_label" msgid="1153447193166314791">"versija:"</string>
+    <string name="satellite_config_version_for_skylo_label" msgid="7068241597009832840">"„Skylo“ versija:"</string>
+    <string name="satellite_max_allowed_data_mode_label" msgid="1808484802651916339">"Didžiausias leistinas duomenų režimas:"</string>
+    <string name="satellite_config_version_for_starlink_label" msgid="7984209491963621773">"„Starlink“ versija:"</string>
     <string name="satellite_config_service_type_label" msgid="21749170241956082">"subId/plmn/servicetype:"</string>
     <string name="satellite_config_allow_access_label" msgid="3806779900418131140">"leisti pasiekti:"</string>
     <string name="satellite_config_country_code_label" msgid="1389520866423113166">"šalių kodai:"</string>
     <string name="satellite_config_size_of_sats2_dat_label" msgid="671746449054349967">"sats2.dat dydis:"</string>
     <string name="satellite_config_json_label" msgid="4577292884014824105">"palydovo prieigos konfigūracijos JSON:"</string>
+    <string name="nb_iot_config_viewer" msgid="1427724000750959794">"NB-IOT konfigūracijos peržiūros priemonė"</string>
+    <string name="ims_registration_value" msgid="3195763957048314776">"IMS registracija:"</string>
+    <string name="voice_over_lte_value" msgid="1317318233598235658">"Balsas naud. LTE:"</string>
+    <string name="voice_over_wifi_value" msgid="4958925307364093356">"Balsas naudojant „Wi-Fi“:"</string>
+    <string name="video_calling_value" msgid="156519861684819255">"Vaizdo skambutis:"</string>
+    <string name="ut_interface_value" msgid="9038789989481463774">"UT sąsaja:"</string>
 </resources>

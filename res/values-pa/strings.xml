@@ -459,6 +459,8 @@
     <string name="tty_mode_option_summary" msgid="4770510287236494371">"TTY ਮੋਡ ਸੈੱਟ ਕਰੋ"</string>
     <string name="auto_retry_mode_title" msgid="2985801935424422340">"ਆਟੋ-ਰੀਟ੍ਰਾਈ"</string>
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"ਆਟੋ-ਰੀਟ੍ਰਾਈ ਮੋਡ ਨੂੰ ਸਮਰੱਥ ਬਣਾਓ"</string>
+    <string name="vibrating_for_outgoing_call_accepted_title" msgid="647945514737734657">"ਆਊਟਗੋਇੰਗ ਕਾਲ ਲਈ ਥਰਥਰਾਹਟ ਨੂੰ ਚਾਲੂ ਕਰਨਾ ਸਵੀਕਾਰ ਕੀਤਾ ਗਿਆ"</string>
+    <string name="vibrating_for_outgoing_call_accepted_summary" msgid="906112327196063688">"ਆਊਟਗੋਇੰਗ ਕਾਲ ਲਈ ਥਰਥਰਾਹਟ ਮੋਡ ਨੂੰ ਚਾਲੂ ਕਰਨਾ ਸਵੀਕਾਰ ਕੀਤਾ ਗਿਆ"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"TTY ਮੋਡ ਪਰਿਵਰਤਨ ਨੂੰ ਵੀਡੀਓ ਕਾਲ ਦੇ ਦੌਰਾਨ ਅਨੁਮਤੀ ਨਹੀਂ ਹੈ"</string>
     <string name="menu_add" msgid="5616487894975773141">"ਸੰਪਰਕ ਸ਼ਾਮਲ ਕਰੋ"</string>
     <string name="menu_edit" msgid="3593856941552460706">"ਸੰਪਰਕ ਸੰਪਾਦਿਤ ਕਰੋ"</string>
@@ -537,8 +539,7 @@
     <string name="notification_voicemail_no_vm_number" msgid="3423686009815186750">"ਵੌਇਸਮੇਲ ਨੰਬਰ ਅਗਿਆਤ"</string>
     <string name="notification_network_selection_title" msgid="255595526707809121">"ਕੋਈ ਸੇਵਾ ਨਹੀਂ"</string>
     <string name="notification_network_selection_text" msgid="553288408722427659">"ਚੁਣਿਆ ਗਿਆ ਨੈੱਟਵਰਕ<xliff:g id="OPERATOR_NAME">%s</xliff:g> ਉਪਲਬਧ ਨਹੀਂ ਹੈ"</string>
-    <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"ਕਾਲ ਕਰਨ ਲਈ ਮੋਬਾਈਲ ਨੈੱਟਵਰਕ ਚਾਲੂ ਕਰੋ, ਜਹਾਜ਼ ਮੋਡ ਬੰਦ ਕਰੋ ਜਾਂ ਬੈਟਰੀ ਸੇਵਰ ਮੋਡ ਬੰਦ ਕਰੋ।"</string>
-    <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"ਇੱਕ ਕਾਲ ਕਰਨ ਲਈ ਏਅਰਪਲੇਨ ਮੋਡ ਬੰਦ ਕਰੋ।"</string>
+    <string name="incall_error_power_off" msgid="8131672264311208673">"ਇੱਕ ਕਾਲ ਕਰਨ ਲਈ ਏਅਰਪਲੇਨ ਮੋਡ ਬੰਦ ਕਰੋ।"</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"ਏਅਰਪਲੇਨ ਮੋਡ ਬੰਦ ਕਰੋ ਜਾਂ ਇੱਕ ਕਾਲ ਕਰਨ ਲਈ ਇੱਕ ਵਾਇਰਲੈਸ ਨੈਟਵਰਕ ਨਾਲ ਕਨੈਕਟ ਕਰੋ।"</string>
     <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"ਫ਼ੋਨ ਬਹੁਤ ਗਰਮ ਹੋ ਗਿਆ ਹੈ"</b>\n\n"ਇਸ ਕਾਲ ਨੂੰ ਪੂਰਾ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਦਾ। ਫ਼ੋਨ ਦੇ ਠੰਡਾ ਹੋਣ ਜਾਣ \'ਤੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।\n\nਤੁਸੀਂ ਹਾਲੇ ਵੀ ਸੰਕਟਕਾਲੀਨ ਕਾਲਾਂ ਕਰ ਸਕਦੇ ਹੋ।"</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"ਇੱਕ ਗ਼ੈਰ-ਅਪਾਤਕਾਲ ਕਾਲ ਕਰਨ ਲਈ ਅਪਾਤਕਾਲ ਕਾਲਬੈਕ ਮੋਡ ਤੋਂ ਬਾਹਰ ਆਓ।"</string>
@@ -846,15 +847,22 @@
     <string name="removable_esim_string" msgid="7931369811671787649">"ਹਟਾਉਣਯੋਗ ਈ-ਸਿਮ ਨੂੰ ਪੂਰਵ-ਨਿਰਧਾਰਿਤ ਵਜੋਂ ਸੈੱਟ ਕਰੋ"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"ਮੋਬਾਈਲ ਰੇਡੀਓ ਪਾਵਰ"</string>
     <string name="simulate_out_of_service_string" msgid="7787925611727597193">"\'ਸੇਵਾ ਵਿੱਚ ਨਹੀਂ\' ਨੂੰ ਸਿਮੂਲੇਟ ਕਰੋ (ਸਿਰਫ਼ ਡੀਬੱਗ ਬਿਲਡ)"</string>
+    <string name="simulate_out_of_service_label" msgid="3563376136603403714">"\'ਸੇਵਾ ਵਿੱਚ ਨਹੀਂ\' ਨੂੰ ਸਿਮੂਲੇਟ ਕਰੋ"</string>
     <string name="enforce_satellite_channel_string" msgid="295306734591329892">"ਫੋਰਸ ਕੈਂਪ ਸੈਟੇਲਾਈਟ LTE ਚੈਨਲ (ਸਿਰਫ਼ ਡੀਬੱਗ ਬਿਲਡ)"</string>
+    <string name="enforce_satellite_channel_label" msgid="8212349350110213468">"ਫੋਰਸ ਕੈਂਪ ਸੈਟੇਲਾਈਟ LTE ਚੈਨਲ"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"ਮੌਕ ਕੈਰੀਅਰ ਉਪਗ੍ਰਹਿ ਮੋਡ (ਸਿਰਫ਼ ਡੀਬੱਗ ਬਿਲਡ)"</string>
+    <string name="mock_carrier_roaming_satellite_label" msgid="2052656038544917979">"ਕਲਪਿਤ"</string>
+    <string name="choose_satellite_data_mode_label" msgid="7403013160079828226">"ਕਲਪਿਤ ਸੈਟੇਲਾਈਟ ਡਾਟਾ ਮੋਡ"</string>
     <string name="choose_satellite_data_mode" msgid="7526640708482601423">"ਕਲਪਿਤ ਸੈਟੇਲਾਈਟ ਡਾਟਾ ਮੋਡ (ਸਿਰਫ਼ ਡੀਬੱਗ)"</string>
     <string name="satellite_data_restricted_string" msgid="8729402021843670205">"ਪ੍ਰਤਿਬੰਧਿਤ"</string>
     <string name="satellite_data_constrained_string" msgid="4594481912792241881">"ਸੀਮਤ"</string>
     <string name="satellite_data_unConstrained_string" msgid="3957333012703408141">"ਅਸੀਮਤ"</string>
     <string name="esos_satellite_string" msgid="7274794226125968657">"ਰੀਅਲ ਸੈਟੇਲਾਈਟ eSOS ਮੋਡ ਅਜ਼ਮਾਓ (ਸਿਰਫ਼ ਡੀਬੱਗ ਬਿਲਡ)"</string>
+    <string name="esos_satellite_label" msgid="4640776617354089322">"ਰੀਅਲ ਸੈਟੇਲਾਈਟ eSOS ਮੋਡ ਅਜ਼ਮਾਓ"</string>
     <string name="satellite_enable_non_emergency_mode_string" msgid="9005332650950637932">"ਰੀਅਲ ਸੈਟੇਲਾਈਟ ਗੈਰ-eSOS ਮੋਡ ਅਜ਼ਮਾਓ (ਸਿਰਫ਼ ਡੀਬੱਗ ਬਿਲਡ)"</string>
+    <string name="satellite_enable_non_emergency_mode_label" msgid="2958365217334494066">"ਰੀਅਲ ਸੈਟੇਲਾਈਟ ਗੈਰ-eSOS ਮੋਡ ਅਜ਼ਮਾਓ"</string>
     <string name="demo_esos_satellite_string" msgid="2941811482168709730">"ਡੈਮੋ ਸੈਟੇਲਾਈਟ eSOS ਮੋਡ ਅਜ਼ਮਾਓ (ਸਿਰਫ਼ ਡੀਬੱਗ ਬਿਲਡ)"</string>
+    <string name="demo_esos_satellite_label" msgid="1538811851871457718">"ਡੈਮੋ ਸੈਟੇਲਾਈਟ eSOS ਮੋਡ ਅਜ਼ਮਾਓ"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"ਸਿਮ ਦੀ ਪਤਾ ਬੁੱਕ ਦੇਖੋ"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"ਫਿਕਸਡ ਡਾਇਲਿੰਗ ਨੰਬਰ ਦੇਖੋ"</string>
     <string name="radioInfo_menu_viewSDN" msgid="2613431584522392842">"ਸੇਵਾ ਡਾਇਲਿੰਗ ਨੰਬਰ ਦੇਖੋ"</string>
@@ -934,6 +942,13 @@
     <string name="band_mode_succeeded" msgid="2230018000534761063">"ਸਫਲ"</string>
     <string name="phone_info_label" product="tablet" msgid="7477478709388477397">"ਟੈਬਲੈੱਟ ਜਾਣਕਾਰੀ"</string>
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"ਫ਼ੋਨ ਜਾਣਕਾਰੀ"</string>
+    <string name="tab_title_device_details" msgid="6988777232978544580">"ਡੀਵਾਈਸ ਦੇ ਵੇਰਵੇ"</string>
+    <string name="tab_title_data_network" msgid="3959510345511877717">"ਡਾਟਾ ਅਤੇ ਨੈੱਟਵਰਕ"</string>
+    <string name="tab_title_satellite" msgid="3973515984497023639">"ਉਪਗ੍ਰਹਿ"</string>
+    <string name="tab_title_ims" msgid="8386374556214247042">"IMS"</string>
+    <string name="phone0_title" msgid="8961115386055876486">"ਫ਼ੋਨ 0"</string>
+    <string name="phone1_title" msgid="8685542469651636602">"ਫ਼ੋਨ 1"</string>
+    <string name="phone_info_label_v2" msgid="5651422721242779990">"ਫ਼ੋਨ ਜਾਣਕਾਰੀ V2"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"ਕੈਰੀਅਰ ਪ੍ਰੋਵਿਜ਼ਨਿੰਗ ਜਾਣਕਾਰੀ"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"ਕੈਰੀਅਰ ਪ੍ਰਵਿਜ਼ਨਿੰਗ ਨੂੰ ਟ੍ਰਿਗਰ ਕਰੋ"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"ਤੁਹਾਡਾ ਬਲੂਟੁੱਥ ਸਿਗਨਲ ਕਮਜ਼ੋਰ ਹੈ। ਸਪੀਕਰਫ਼ੋਨ \'ਤੇ ਲਿਜਾ ਕੇ ਦੇਖੋ।"</string>
@@ -947,9 +962,18 @@
     <string name="radio_info_data_view_satellite_config" msgid="343120041798242877">"ਸੈਟੇਲਾਈਟ ਸੰਰੂਪਣ ਦਿਖਾਓ"</string>
     <string name="satellite_config_viewer" msgid="5128698910841573398">"ਸੈਟੇਲਾਈਟ ਸੰਰੂਪਣ ਦਰਸ਼ਕ"</string>
     <string name="satellite_config_version_label" msgid="1153447193166314791">"ਵਰਜਨ:"</string>
+    <string name="satellite_config_version_for_skylo_label" msgid="7068241597009832840">"skylo ਵਰਜਨ:"</string>
+    <string name="satellite_max_allowed_data_mode_label" msgid="1808484802651916339">"ਵੱਧੋ-ਵੱਧ ਮਨਜ਼ੂਰਸ਼ੁਦਾ ਡਾਟਾ ਮੋਡ:"</string>
+    <string name="satellite_config_version_for_starlink_label" msgid="7984209491963621773">"starlink ਵਰਜਨ:"</string>
     <string name="satellite_config_service_type_label" msgid="21749170241956082">"subId/plmn/servicetype:"</string>
     <string name="satellite_config_allow_access_label" msgid="3806779900418131140">"allow_access:"</string>
     <string name="satellite_config_country_code_label" msgid="1389520866423113166">"ਦੇਸ਼ਾਂ ਦੇ ਕੋਡ:"</string>
     <string name="satellite_config_size_of_sats2_dat_label" msgid="671746449054349967">"sats2.dat ਦਾ ਆਕਾਰ:"</string>
     <string name="satellite_config_json_label" msgid="4577292884014824105">"ਸੈਟੇਲਾਈਟ ਪਹੁੰਚ ਸੰਰੂਪਣ json:"</string>
+    <string name="nb_iot_config_viewer" msgid="1427724000750959794">"NB-IOT ਸੰਰੂਪਣ ਦਰਸ਼ਕ"</string>
+    <string name="ims_registration_value" msgid="3195763957048314776">"IMS ਰਜਿਸਟਰੇਸ਼ਨ:"</string>
+    <string name="voice_over_lte_value" msgid="1317318233598235658">"LTE \'ਤੇ ਅਵਾਜ਼:"</string>
+    <string name="voice_over_wifi_value" msgid="4958925307364093356">"ਵਾਈ-ਫਾਈ \'ਤੇ ਅਵਾਜ਼:"</string>
+    <string name="video_calling_value" msgid="156519861684819255">"ਵੀਡੀਓ ਕਾਲਿੰਗ:"</string>
+    <string name="ut_interface_value" msgid="9038789989481463774">"UT ਇੰਟਰਫ਼ੇਸ:"</string>
 </resources>

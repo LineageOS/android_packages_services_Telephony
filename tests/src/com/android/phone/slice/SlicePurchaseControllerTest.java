@@ -47,6 +47,7 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
 import android.os.PersistableBundle;
+import android.os.UserHandle;
 import android.telephony.CarrierConfigManager;
 import android.telephony.ServiceState;
 import android.telephony.SubscriptionManager;
@@ -849,7 +850,7 @@ public class SlicePurchaseControllerTest extends TelephonyTestBase {
         mTestableLooper.processAllMessages();
 
         // verify that the purchase request was sent successfully
-        verify(mContext).sendBroadcast(any(Intent.class));
+        verify(mContext).sendBroadcastAsUser(any(Intent.class), any(UserHandle.class));
         assertEquals(SlicePurchaseController.ACTION_START_SLICE_PURCHASE_APP,
                 mContext.getBroadcast().getAction());
         assertTrue(mSlicePurchaseController.hasMessages(4 /* EVENT_PURCHASE_TIMEOUT */,

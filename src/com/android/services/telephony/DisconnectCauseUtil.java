@@ -30,8 +30,6 @@ import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.telephony.CallFailCause;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
-import com.android.internal.telephony.flags.FeatureFlags;
-import com.android.internal.telephony.flags.FeatureFlagsImpl;
 import com.android.internal.telephony.satellite.SatelliteController;
 import com.android.phone.ImsUtil;
 import com.android.phone.PhoneGlobals;
@@ -295,26 +293,16 @@ public class DisconnectCauseUtil {
             Context context, int telephonyDisconnectCause, int telephonyPreciseDisconnectCause,
             PersistableBundle carrierConfig, FlagsAdapter featureFlags) {
         CharSequence label;
-        if (!featureFlags.doNotOverridePreciseLabel()) {
-            // special case: some carriers determine what disconnect causes play the BUSY tone.
-            // hence, must adjust the disconnectCause LABEL to match the tone.
-            if (doesCarrierClassifyDisconnectCauseAsBusyCause(telephonyDisconnectCause,
-                    carrierConfig)) {
-                return context.getResources().getString(R.string.callFailed_userBusy);
-            }
-        }
 
         if (telephonyPreciseDisconnectCause != CallFailCause.NOT_VALID) {
             label = getLabelFromPreciseDisconnectCause(context, telephonyPreciseDisconnectCause,
                     telephonyDisconnectCause);
         } else {
-            if (featureFlags.doNotOverridePreciseLabel()) {
-                // special case: some carriers determine what disconnect causes play the BUSY tone.
-                // hence, must adjust the disconnectCause LABEL to match the tone.
-                if (doesCarrierClassifyDisconnectCauseAsBusyCause(telephonyDisconnectCause,
-                        carrierConfig)) {
-                    return context.getResources().getString(R.string.callFailed_userBusy);
-                }
+            // special case: some carriers determine what disconnect causes play the BUSY tone.
+            // hence, must adjust the disconnectCause LABEL to match the tone.
+            if (doesCarrierClassifyDisconnectCauseAsBusyCause(telephonyDisconnectCause,
+                    carrierConfig)) {
+                return context.getResources().getString(R.string.callFailed_userBusy);
             }
             label = getLabelFromDisconnectCause(context, telephonyDisconnectCause);
         }
@@ -781,26 +769,17 @@ public class DisconnectCauseUtil {
 
             case android.telephony.DisconnectCause.OUT_OF_SERVICE:
                 // No network connection.
-                FeatureFlags mFeatureFlags = new FeatureFlagsImpl();
                 if (ImsUtil.shouldPromoteWfc(context, phoneId)) {
                     resourceId = R.string.incall_error_promote_wfc;
                 } else if (ImsUtil.isWfcModeWifiOnly(context, phoneId)) {
                     resourceId = R.string.incall_error_wfc_only_no_wireless_network;
                 } else if (ImsUtil.isWfcEnabled(context, phoneId)) {
-                    if (!mFeatureFlags.showCallFailNotificationFor2gToggle()) {
-                        resourceId = R.string.incall_error_out_of_service_wfc;
-                        break;
-                    }
                     if (is2gDisabled(phoneId) && !shouldTreatAsEmergency) {
                         resourceId = R.string.incall_error_out_of_service_wfc_2g_user;
                     } else {
                         resourceId = R.string.incall_error_out_of_service_wfc;
                     }
                 } else {
-                    if (!mFeatureFlags.showCallFailNotificationFor2gToggle()) {
-                        resourceId = R.string.incall_error_out_of_service;
-                        break;
-                    }
                     if (is2gDisabled(phoneId) && !shouldTreatAsEmergency) {
                         resourceId = R.string.incall_error_out_of_service_2g;
                     } else {
@@ -957,9 +936,7 @@ public class DisconnectCauseUtil {
 
         switch (telephonyDisconnectCause) {
             case android.telephony.DisconnectCause.BUSY:
-                if (featureFlags.doNotOverridePreciseLabel()) {
-                    return ToneGenerator.TONE_SUP_BUSY;
-                }
+                return ToneGenerator.TONE_SUP_BUSY;
             case android.telephony.DisconnectCause.CONGESTION:
                 return ToneGenerator.TONE_SUP_CONGESTION;
 

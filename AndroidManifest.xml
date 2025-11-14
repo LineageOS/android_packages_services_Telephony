@@ -663,6 +663,18 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".settings.hiddenmenu.PhoneInformationV2"
+            android:label="@string/phone_info_label_v2"
+            android:enabled="true"
+            android:exported="true"
+            android:theme="@style/PhoneInformationV2Theme"
+            android:taskAffinity="com.android.phone.settings.hiddenmenu.PhoneInformationV2.TASK">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
         <provider
             android:name="ServiceStateProvider"
             android:authorities="service-state"

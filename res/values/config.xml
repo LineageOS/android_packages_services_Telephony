@@ -403,4 +403,7 @@
 
     <!-- Whether to turn off non-emergency nb iot ntn satellite for emergency call -->
     <bool name="config_turn_off_non_emergency_nb_iot_ntn_satellite_for_emergency_call">true</bool>
+
+    <!-- Whether to show the "call connected indicator" preference on the calling accts screen. -->
+    <bool name="show_call_connected_indicator_preference">false</bool>
 </resources>

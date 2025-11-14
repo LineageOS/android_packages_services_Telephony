@@ -255,7 +255,6 @@ public class RcsProvisioningMonitorTest {
                 .thenReturn(mSubscriptionManager);
         when(mPhone.getSystemService(eq(Context.TELEPHONY_REGISTRY_SERVICE)))
                 .thenReturn(mTelephonyRegistryManager);
-        when(mFeatureFlags.hsumBroadcast()).thenReturn(true);
 
         mBundle = new PersistableBundle();
         when(mCarrierConfigManager.getConfigForSubId(anyInt())).thenReturn(mBundle);

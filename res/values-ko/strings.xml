@@ -459,6 +459,8 @@
     <string name="tty_mode_option_summary" msgid="4770510287236494371">"TTY 모드 설정"</string>
     <string name="auto_retry_mode_title" msgid="2985801935424422340">"자동으로 다시 시도"</string>
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"자동 다시 시도 모드 사용"</string>
+    <string name="vibrating_for_outgoing_call_accepted_title" msgid="647945514737734657">"발신 전화 수락 시 진동"</string>
+    <string name="vibrating_for_outgoing_call_accepted_summary" msgid="906112327196063688">"발신 전화 수락 시 진동 모드 사용 설정"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"화상 통화 중에는 TTY 모드 변경이 허용되지 않습니다."</string>
     <string name="menu_add" msgid="5616487894975773141">"연락처 추가"</string>
     <string name="menu_edit" msgid="3593856941552460706">"연락처 수정"</string>
@@ -537,8 +539,7 @@
     <string name="notification_voicemail_no_vm_number" msgid="3423686009815186750">"알 수 없는 음성사서함 번호"</string>
     <string name="notification_network_selection_title" msgid="255595526707809121">"서비스 불가"</string>
     <string name="notification_network_selection_text" msgid="553288408722427659">"선택한 네트워크(<xliff:g id="OPERATOR_NAME">%s</xliff:g>)를 사용할 수 없음"</string>
-    <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"전화를 걸려면 모바일 네트워크를 사용 설정하고 비행기 모드 또는 절전 모드를 사용 중지하세요."</string>
-    <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"전화를 걸려면 비행기 모드를 사용 중지하세요."</string>
+    <string name="incall_error_power_off" msgid="8131672264311208673">"전화를 걸려면 비행기 모드를 사용 중지하세요."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"전화를 걸려면 비행기 모드를 사용 중지하거나 무선 네트워크에 연결하세요."</string>
     <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"휴대전화의 온도가 너무 높습니다."</b>\n\n"현재 전화를 걸 수 없습니다. 휴대전화의 온도가 내려가면 다시 시도해 보세요.\n\n긴급 전화 기능은 계속해서 사용할 수 있습니다."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"일반 전화를 걸려면 긴급 콜백 모드를 해제하세요."</string>
@@ -846,15 +847,22 @@
     <string name="removable_esim_string" msgid="7931369811671787649">"삭제 가능한 eSIM을 기본으로 설정"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"모바일 무선 전력"</string>
     <string name="simulate_out_of_service_string" msgid="7787925611727597193">"\'서비스 지역 벗어남\' 시뮬레이션(디버그 빌드만 해당)"</string>
+    <string name="simulate_out_of_service_label" msgid="3563376136603403714">"서비스 지역 벗어남 시뮬레이션"</string>
     <string name="enforce_satellite_channel_string" msgid="295306734591329892">"캠프 위성 LTE 채널 강제(디버그 빌드만 해당)"</string>
+    <string name="enforce_satellite_channel_label" msgid="8212349350110213468">"캠프 위성 LTE 채널 강제"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"모의 이동통신사 위성 모드(디버그 빌드만 해당)"</string>
+    <string name="mock_carrier_roaming_satellite_label" msgid="2052656038544917979">"모의"</string>
+    <string name="choose_satellite_data_mode_label" msgid="7403013160079828226">"모의 위성 데이터 모드"</string>
     <string name="choose_satellite_data_mode" msgid="7526640708482601423">"모의 위성 데이터 모드(디버그 전용)"</string>
     <string name="satellite_data_restricted_string" msgid="8729402021843670205">"제한됨"</string>
     <string name="satellite_data_constrained_string" msgid="4594481912792241881">"한정됨"</string>
     <string name="satellite_data_unConstrained_string" msgid="3957333012703408141">"무제한"</string>
     <string name="esos_satellite_string" msgid="7274794226125968657">"실제 위성 eSOS 모드 테스트(디버그 빌드만 해당)"</string>
+    <string name="esos_satellite_label" msgid="4640776617354089322">"실제 위성 eSOS 모드 테스트"</string>
     <string name="satellite_enable_non_emergency_mode_string" msgid="9005332650950637932">"실제 위성 비eSOS 모드 테스트(디버그 빌드만 해당)"</string>
+    <string name="satellite_enable_non_emergency_mode_label" msgid="2958365217334494066">"실제 위성 비eSOS 모드 테스트"</string>
     <string name="demo_esos_satellite_string" msgid="2941811482168709730">"데모 위성 eSOS 모드 테스트(디버그 빌드만 해당)"</string>
+    <string name="demo_esos_satellite_label" msgid="1538811851871457718">"데모 위성 eSOS 모드 테스트"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"SIM 주소록 보기"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"발신 허용 번호 보기"</string>
     <string name="radioInfo_menu_viewSDN" msgid="2613431584522392842">"SDN(Service Dialing Numbers) 보기"</string>
@@ -934,6 +942,13 @@
     <string name="band_mode_succeeded" msgid="2230018000534761063">"성공"</string>
     <string name="phone_info_label" product="tablet" msgid="7477478709388477397">"태블릿 정보"</string>
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"휴대전화 정보"</string>
+    <string name="tab_title_device_details" msgid="6988777232978544580">"기기 세부정보"</string>
+    <string name="tab_title_data_network" msgid="3959510345511877717">"데이터 및 네트워크"</string>
+    <string name="tab_title_satellite" msgid="3973515984497023639">"위성"</string>
+    <string name="tab_title_ims" msgid="8386374556214247042">"IMS"</string>
+    <string name="phone0_title" msgid="8961115386055876486">"전화 0"</string>
+    <string name="phone1_title" msgid="8685542469651636602">"전화 1"</string>
+    <string name="phone_info_label_v2" msgid="5651422721242779990">"전화번호 정보 V2"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"이동통신사 프로비저닝 정보"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"이동통신사 프로비저닝 실행"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"블루투스 신호 강도가 약합니다. 스피커폰으로 전환해 보세요."</string>
@@ -947,9 +962,18 @@
     <string name="radio_info_data_view_satellite_config" msgid="343120041798242877">"위성 구성 표시"</string>
     <string name="satellite_config_viewer" msgid="5128698910841573398">"위성 구성 뷰어"</string>
     <string name="satellite_config_version_label" msgid="1153447193166314791">"버전:"</string>
+    <string name="satellite_config_version_for_skylo_label" msgid="7068241597009832840">"skylo 버전:"</string>
+    <string name="satellite_max_allowed_data_mode_label" msgid="1808484802651916339">"최대 허용 데이터 모드:"</string>
+    <string name="satellite_config_version_for_starlink_label" msgid="7984209491963621773">"starlink 버전:"</string>
     <string name="satellite_config_service_type_label" msgid="21749170241956082">"subId/plmn/servicetype:"</string>
     <string name="satellite_config_allow_access_label" msgid="3806779900418131140">"allow_access:"</string>
     <string name="satellite_config_country_code_label" msgid="1389520866423113166">"국가 코드"</string>
     <string name="satellite_config_size_of_sats2_dat_label" msgid="671746449054349967">"sats2.dat 크기:"</string>
     <string name="satellite_config_json_label" msgid="4577292884014824105">"위성 액세스 구성 JSON:"</string>
+    <string name="nb_iot_config_viewer" msgid="1427724000750959794">"NB-IOT 구성 뷰어"</string>
+    <string name="ims_registration_value" msgid="3195763957048314776">"IMS 등록:"</string>
+    <string name="voice_over_lte_value" msgid="1317318233598235658">"LTE 음성 통화:"</string>
+    <string name="voice_over_wifi_value" msgid="4958925307364093356">"Wi-Fi 음성 통화:"</string>
+    <string name="video_calling_value" msgid="156519861684819255">"영상 통화:"</string>
+    <string name="ut_interface_value" msgid="9038789989481463774">"UT 인터페이스:"</string>
 </resources>

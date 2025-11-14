@@ -459,6 +459,8 @@
     <string name="tty_mode_option_summary" msgid="4770510287236494371">"TTY मोड सेट करा"</string>
     <string name="auto_retry_mode_title" msgid="2985801935424422340">"स्‍वयं-पुन्‍हा प्रयत्‍न करा"</string>
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"स्‍वयं-पुन्हा प्रयत्‍न करा मोड सक्षम करा"</string>
+    <string name="vibrating_for_outgoing_call_accepted_title" msgid="647945514737734657">"स्वीकारलेल्या आउटगोइंग कॉलसाठी व्हायब्रेट करत आहे"</string>
+    <string name="vibrating_for_outgoing_call_accepted_summary" msgid="906112327196063688">"स्वीकारलेल्या आउटगोइंग कॉलसाठी व्हायब्रेटिंग मोड सुरू करा"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"व्हिहिओ कॉल दरम्यान TTY मोड बदलास अनुमती नाही"</string>
     <string name="menu_add" msgid="5616487894975773141">"संपर्क जोडा"</string>
     <string name="menu_edit" msgid="3593856941552460706">"संपर्क संपादित करा"</string>
@@ -537,8 +539,7 @@
     <string name="notification_voicemail_no_vm_number" msgid="3423686009815186750">"व्हॉइसमेल नंबर अज्ञात"</string>
     <string name="notification_network_selection_title" msgid="255595526707809121">"सेवा नाही"</string>
     <string name="notification_network_selection_text" msgid="553288408722427659">"निवडलेले नेटवर्क<xliff:g id="OPERATOR_NAME">%s</xliff:g> उपलब्ध नाही"</string>
-    <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"कॉल करण्‍यासाठी मोबाइल नेटवर्क सुरू करा, विमान मोड बंद करा किंवा बॅटरी बचकर्ता मोड बंद करा."</string>
-    <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"कॉल करण्‍यासाठी विमान मोड बंद करा."</string>
+    <string name="incall_error_power_off" msgid="8131672264311208673">"कॉल करण्‍यासाठी विमान मोड बंद करा."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"कॉल करण्‍यासाठी विमान मोड बंद करा किंवा वायरलेस नेटवर्कशी कनेक्‍ट करा."</string>
     <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"फोन खूप गरम झाला आहे"</b>\n\n"हा कॉल पूर्ण करू शकत नाही. तुमचा फोन थंड झाल्यावर पुन्हा प्रयत्न करा.\n\nतुम्ही अजूनही आणीबाणी कॉल करू शकता."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"आणीबाणी नसलेला कॉल करण्‍यासाठी आणीबाणी कॉलबॅक मोडमधून बाहेर पडा."</string>
@@ -846,15 +847,22 @@
     <string name="removable_esim_string" msgid="7931369811671787649">"काढून टाकण्यायोग्य eSIM डीफॉल्ट म्हणून सेट करा"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"मोबाइल रेडिओ पॉवर"</string>
     <string name="simulate_out_of_service_string" msgid="7787925611727597193">"सेवा बंद आहे सिम्युलेट करा (फक्त डीबगचा बिल्‍ड)"</string>
+    <string name="simulate_out_of_service_label" msgid="3563376136603403714">"सेवा बंद आहे सिम्युलेट करा"</string>
     <string name="enforce_satellite_channel_string" msgid="295306734591329892">"फोर्स कॅम्प सॅटेलाइट LTE चॅनल (फक्त डीबग बिल्ड)"</string>
+    <string name="enforce_satellite_channel_label" msgid="8212349350110213468">"फोर्स कॅम्प सॅटेलाइट LTE चॅनल"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"नमुना वाहकाचा उपग्रह मोड (फक्त डीबग बिल्ड)"</string>
+    <string name="mock_carrier_roaming_satellite_label" msgid="2052656038544917979">"मॉक"</string>
+    <string name="choose_satellite_data_mode_label" msgid="7403013160079828226">"मॉक सॅटेलाइट डेटा मोड"</string>
     <string name="choose_satellite_data_mode" msgid="7526640708482601423">"सॅटेलाइट डेटा मोडशी संबंधित नमुना (फक्त डीबग बिल्ड)"</string>
     <string name="satellite_data_restricted_string" msgid="8729402021843670205">"प्रतिबंधित"</string>
     <string name="satellite_data_constrained_string" msgid="4594481912792241881">"मर्यादित"</string>
     <string name="satellite_data_unConstrained_string" msgid="3957333012703408141">"UnLimited"</string>
     <string name="esos_satellite_string" msgid="7274794226125968657">"प्रत्यक्ष सॅटेलाइट eSOS मोडची चाचणी करा (फक्त डीबग बिल्ड)"</string>
+    <string name="esos_satellite_label" msgid="4640776617354089322">"वास्तविक सॅटेलाइट eSOS मोडची चाचणी करा"</string>
     <string name="satellite_enable_non_emergency_mode_string" msgid="9005332650950637932">"eSOS नसलेल्या वास्तविक सॅटेलाइट मोडची चाचणी करा (फक्त डीबग बिल्ड)"</string>
+    <string name="satellite_enable_non_emergency_mode_label" msgid="2958365217334494066">"eSOS नसलेल्या वास्तविक सॅटेलाइट मोडची चाचणी करा"</string>
     <string name="demo_esos_satellite_string" msgid="2941811482168709730">"डेमो सॅटेलाइट eSOS मोडची चाचणी करा (फक्त डीबग बिल्ड)"</string>
+    <string name="demo_esos_satellite_label" msgid="1538811851871457718">"डेमो सॅटेलाइट eSOS मोडची चाचणी करा"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"सिम ॲड्रेस बुक पहा"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"निश्चित डायलिंग नंबर पहा"</string>
     <string name="radioInfo_menu_viewSDN" msgid="2613431584522392842">"सर्व्हिस डायलिंग नंबर पहा"</string>
@@ -934,6 +942,13 @@
     <string name="band_mode_succeeded" msgid="2230018000534761063">"यशस्वी"</string>
     <string name="phone_info_label" product="tablet" msgid="7477478709388477397">"टॅबलेट माहिती"</string>
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"फोनची माहिती"</string>
+    <string name="tab_title_device_details" msgid="6988777232978544580">"डिव्हाइससंबंधित तपशील"</string>
+    <string name="tab_title_data_network" msgid="3959510345511877717">"डेटा आणि नेटवर्क"</string>
+    <string name="tab_title_satellite" msgid="3973515984497023639">"सॅटेलाइट"</string>
+    <string name="tab_title_ims" msgid="8386374556214247042">"IMS"</string>
+    <string name="phone0_title" msgid="8961115386055876486">"फोन ०"</string>
+    <string name="phone1_title" msgid="8685542469651636602">"फोन १"</string>
+    <string name="phone_info_label_v2" msgid="5651422721242779990">"फोनशी संबंधित माहिती V2"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"वाहक सुविधा माहिती"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"वाहक सुविधा ट्रिगर करा"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"तुमचा ब्लूटूथ सिग्नल कमकुवत आहे. स्पीकरफोनवर स्विच करून पहा."</string>
@@ -947,9 +962,18 @@
     <string name="radio_info_data_view_satellite_config" msgid="343120041798242877">"सॅटेलाइट कॉन्फिगरेशन दाखवा"</string>
     <string name="satellite_config_viewer" msgid="5128698910841573398">"सॅटेलाइट कॉन्फिगरेशन व्ह्यूअर"</string>
     <string name="satellite_config_version_label" msgid="1153447193166314791">"आवृत्ती:"</string>
+    <string name="satellite_config_version_for_skylo_label" msgid="7068241597009832840">"Skylo ची आवृत्ती:"</string>
+    <string name="satellite_max_allowed_data_mode_label" msgid="1808484802651916339">"कमाल डेटाची अनुमती असलेला मोड:"</string>
+    <string name="satellite_config_version_for_starlink_label" msgid="7984209491963621773">"Starlink ची आवृत्ती:"</string>
     <string name="satellite_config_service_type_label" msgid="21749170241956082">"subId/plmn/servicetype:"</string>
     <string name="satellite_config_allow_access_label" msgid="3806779900418131140">"allow_access:"</string>
     <string name="satellite_config_country_code_label" msgid="1389520866423113166">"देशाचे कोड:"</string>
     <string name="satellite_config_size_of_sats2_dat_label" msgid="671746449054349967">"sats2.dat चा आकार:"</string>
     <string name="satellite_config_json_label" msgid="4577292884014824105">"सॅटेलाइट अ‍ॅक्सेस कॉन्फिगरेशन json:"</string>
+    <string name="nb_iot_config_viewer" msgid="1427724000750959794">"NB-IOT कॉन्फिगरेशन व्ह्यूअर"</string>
+    <string name="ims_registration_value" msgid="3195763957048314776">"IMS नोंदणी:"</string>
+    <string name="voice_over_lte_value" msgid="1317318233598235658">"व्हॉइस ओव्हर LTE:"</string>
+    <string name="voice_over_wifi_value" msgid="4958925307364093356">"वाय-फाय वरून व्हॉइस-ओव्हर:"</string>
+    <string name="video_calling_value" msgid="156519861684819255">"व्हिडिओ कॉलिंग:"</string>
+    <string name="ut_interface_value" msgid="9038789989481463774">"UT इंटरफेस:"</string>
 </resources>

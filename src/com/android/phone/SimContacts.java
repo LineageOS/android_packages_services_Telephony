@@ -56,6 +56,8 @@ import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.phone.settings.SettingsConstants;
+
 import java.util.ArrayList;
 
 /**
@@ -231,7 +233,7 @@ public class SimContacts extends ADNList {
     @Override
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
-
+        SettingsConstants.setupEdgeToEdge(this);
         getWindow().addSystemFlags(
                 android.view.WindowManager.LayoutParams
                         .SYSTEM_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="action_settings" msgid="7225042429670464305">"ቅንብሮች"</string>
+    <string name="server_running" msgid="757323360857060706">"አገልጋይ እያሄደ ነው"</string>
+    <string name="stop_server" msgid="6021916051636380279">"አገልጋይን አቁም"</string>
+    <string name="server_down" msgid="6101311160545591567">"አገልጋይ አይሰራም"</string>
+    <string name="start_server" msgid="3011851110037401246">"አገልጋይን አስጀምር"</string>
+    <string name="SatelliteTestServer" msgid="7962421083554248947">"የሳተላይት ሙከራ አገልጋይ"</string>
+    <string name="client_request_textview" msgid="5379106493283719020">"የደንበኛ ጥያቄ፦"</string>
+    <string name="entitlement_status_textview" msgid="4182364042860876726">"የመብት ሁኔታ፦"</string>
+    <string name="entitlement_status_disable" msgid="2356975025060584723">"የመብት ሁኔታ ወደ ተሰናክሏል ተቀናብሯል።"</string>
+    <string name="entitlement_status_enable" msgid="1576820543295707752">"የመብት ሁኔታ ወደ ነቅቷል ተቀናብሯል።"</string>
+    <string name="entitlement_status_incompatible" msgid="4618746073807600131">"የመብት ሁኔታ ወደ ተኳዃኝ አይደለም ተቀናብሯል።"</string>
+    <string name="entitlement_status_provisioning" msgid="7291623636504179107">"የመብት ሁኔታ ወደ በማቅረብ ላይ ተቀናብሯል።"</string>
+    <string name="plmn_change_textView" msgid="896130072065900789">"የplmn ዝርዝርን መለወጥ ይችላሉ"</string>
+    <string name="plmn_change_button" msgid="4776495408690606074">"አስቀምጥ"</string>
+    <string name="plmn_restore_button" msgid="353201307416551274">"ወደነበረበት መልስ"</string>
+    <string name="response_code_textview" msgid="7558995298281883364">"የምላሽ ኮድ፦"</string>
+    <string name="server_response_textview" msgid="9059246990182640071">"የአገልጋይ ምላሽ፦"</string>
+    <string name="response_200" msgid="8428102249891629053">"የአገልጋይ ምላሽ ኮድ ወደ 200 ከአካል ጋር ተቀናብሯል።"</string>
+    <string name="response_no" msgid="9176850012409530616">"የአገልጋይ ምላሽ ኮድ ወደ ምንም ምላሽ የለም ተቀናብሯል።"</string>
+    <string name="response_500" msgid="7093352648551561497">"የአገልጋይ ምላሽ ኮድ ወደ 500 ተቀናብሯል።"</string>
+    <string name="response_503" msgid="5882347843594885590">"የአገልጋይ ምላሽ ኮድ ወደ 503 ከከራስጌ በኋላ እንደገና ይሞክሩ ጋር ተቀናብሯል።"</string>
+    <string name="response_503_no_retry_after" msgid="6916161257226872448">"የአገልጋይ ምላሽ ኮድ ወደ 503 ከራስጌ በኋላ እንደገና አይሞክሩ ጋር ተቀናብሯል።"</string>
+    <string name="current_plmn" msgid="6531059723207151310">"የአሁን Plmn ፦"</string>
+    <string name="refresh_button" msgid="4833927124437250565">"ዓድስ"</string>
+  <string-array name="entitlement_status_for_satellite">
+    <item msgid="2022601967050498274">"ነቅቷል"</item>
+    <item msgid="359611466767264179">"ተሰናክሏል"</item>
+    <item msgid="272686018752211739">"ተኳዃኝ አይደለም"</item>
+    <item msgid="2230066359974626080">"በማቅረብ ላይ"</item>
+  </string-array>
+  <string-array name="response">
+    <item msgid="1082041511995374203">"200"</item>
+    <item msgid="8666345372187526327">"አይ"</item>
+    <item msgid="6929055236798363234">"500"</item>
+    <item msgid="1898895770647738117">"503"</item>
+    <item msgid="2420418633305128093">"503_NO_RETRY_AFTER"</item>
+  </string-array>
+</resources>

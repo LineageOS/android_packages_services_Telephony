@@ -90,7 +90,7 @@ public class CdmaCallOptions extends TimeConsumingPreferenceActivity {
         UserManager userManager = (UserManager) getSystemService(Context.USER_SERVICE);
         boolean mobileNetworkConfigsRestricted =
                 userManager.hasUserRestriction(UserManager.DISALLOW_CONFIG_MOBILE_NETWORKS);
-        if (Flags.ensureAccessToCallSettingsIsRestricted() && mobileNetworkConfigsRestricted) {
+        if (mobileNetworkConfigsRestricted) {
             Log.i(LOG_TAG, "Mobile network configs are restricted, hiding CDMA call forwarding "
                     + "and CDMA call waiting options.");
         }
@@ -98,8 +98,7 @@ public class CdmaCallOptions extends TimeConsumingPreferenceActivity {
         mCallForwardingPref = getPreferenceScreen().findPreference(CALL_FORWARDING_KEY);
         if (carrierConfig != null && carrierConfig.getBoolean(
                 CarrierConfigManager.KEY_CALL_FORWARDING_VISIBILITY_BOOL) &&
-                (!mobileNetworkConfigsRestricted ||
-                        !Flags.ensureAccessToCallSettingsIsRestricted())) {
+                !mobileNetworkConfigsRestricted) {
             mCallForwardingPref.setIntent(
                     subInfoHelper.getIntent(CdmaCallForwardOptions.class));
         } else {
@@ -111,8 +110,7 @@ public class CdmaCallOptions extends TimeConsumingPreferenceActivity {
                 .findPreference(CALL_WAITING_KEY);
         if (carrierConfig == null || !carrierConfig.getBoolean(
                 CarrierConfigManager.KEY_ADDITIONAL_SETTINGS_CALL_WAITING_VISIBILITY_BOOL) ||
-                (Flags.ensureAccessToCallSettingsIsRestricted() &&
-                        mobileNetworkConfigsRestricted)) {
+                mobileNetworkConfigsRestricted) {
             getPreferenceScreen().removePreference(mCallWaitingPref);
             mCallWaitingPref = null;
         }

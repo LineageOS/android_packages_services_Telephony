@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="action_settings" msgid="7225042429670464305">"ការកំណត់"</string>
+    <string name="server_running" msgid="757323360857060706">"ម៉ាស៊ីនមេ​កំពុង​ដំណើរការ"</string>
+    <string name="stop_server" msgid="6021916051636380279">"បញ្ឈប់​ម៉ាស៊ីន​មេ"</string>
+    <string name="server_down" msgid="6101311160545591567">"ម៉ាស៊ីន​មេ​មិនដំណើរការ"</string>
+    <string name="start_server" msgid="3011851110037401246">"ចាប់ផ្ដើម​ម៉ាស៊ីនមេ"</string>
+    <string name="SatelliteTestServer" msgid="7962421083554248947">"ម៉ាស៊ីនមេ​សម្រាប់​ធ្វើតេស្ត​ផ្កាយរណប"</string>
+    <string name="client_request_textview" msgid="5379106493283719020">"សំណើពី​កម្មវិធីភ្ញៀវ៖"</string>
+    <string name="entitlement_status_textview" msgid="4182364042860876726">"ស្ថានភាព​សិទ្ធិ៖"</string>
+    <string name="entitlement_status_disable" msgid="2356975025060584723">"ស្ថានភាព​សិទ្ធិ​ត្រូវបាន​កំណត់ទៅ \"បានបិទ\"។"</string>
+    <string name="entitlement_status_enable" msgid="1576820543295707752">"ស្ថានភាព​សិទ្ធិ​ត្រូវបាន​កំណត់ទៅ \"បានបើក\"។"</string>
+    <string name="entitlement_status_incompatible" msgid="4618746073807600131">"ស្ថានភាព​សិទ្ធិ​ត្រូវបាន​កំណត់ទៅ \"មិនត្រូវគ្នា\"។"</string>
+    <string name="entitlement_status_provisioning" msgid="7291623636504179107">"ស្ថានភាព​សិទ្ធិ​ត្រូវបាន​កំណត់ទៅ \"កំពុងផ្តល់\"។"</string>
+    <string name="plmn_change_textView" msgid="896130072065900789">"អាចប្ដូរ​បញ្ជី plmn បាន"</string>
+    <string name="plmn_change_button" msgid="4776495408690606074">"រក្សាទុក"</string>
+    <string name="plmn_restore_button" msgid="353201307416551274">"ស្ដារ"</string>
+    <string name="response_code_textview" msgid="7558995298281883364">"លេខកូដ​ឆ្លើយតប៖"</string>
+    <string name="server_response_textview" msgid="9059246990182640071">"ការឆ្លើយតប​ម៉ាស៊ីនមេ៖"</string>
+    <string name="response_200" msgid="8428102249891629053">"លេខកូដ​ឆ្លើយតប​ម៉ាស៊ីនមេ​ត្រូវបាន​កំណត់ទៅ 200 ដោយមាន​តួសេចក្ដី។"</string>
+    <string name="response_no" msgid="9176850012409530616">"លេខកូដ​ឆ្លើយតប​ម៉ាស៊ីនមេ​ត្រូវបាន​កំណត់ទៅ \"គ្មាន​ការឆ្លើយតប\"។"</string>
+    <string name="response_500" msgid="7093352648551561497">"លេខកូដ​ឆ្លើយតប​ម៉ាស៊ីនមេ​ត្រូវបាន​កំណត់ទៅ 500។"</string>
+    <string name="response_503" msgid="5882347843594885590">"លេខកូដ​ឆ្លើយតប​ម៉ាស៊ីនមេ​ត្រូវបាន​កំណត់ទៅ 503 ដោយមាន​ផ្នែកក្បាល \"ព្យាយាម​ម្ដងទៀត​បន្ទាប់ពី\"។"</string>
+    <string name="response_503_no_retry_after" msgid="6916161257226872448">"លេខកូដ​ឆ្លើយតប​ម៉ាស៊ីនមេ​ត្រូវបាន​កំណត់ទៅ 503 ដោយគ្មាន​ផ្នែកក្បាល \"ព្យាយាម​ម្ដងទៀត​បន្ទាប់ពី\"។"</string>
+    <string name="current_plmn" msgid="6531059723207151310">"Plmn បច្ចុប្បន្ន៖"</string>
+    <string name="refresh_button" msgid="4833927124437250565">"ផ្ទុក​ឡើងវិញ"</string>
+  <string-array name="entitlement_status_for_satellite">
+    <item msgid="2022601967050498274">"បាន​បើក"</item>
+    <item msgid="359611466767264179">"បាន​បិទ"</item>
+    <item msgid="272686018752211739">"មិនត្រូវគ្នា"</item>
+    <item msgid="2230066359974626080">"កំពុងផ្តល់"</item>
+  </string-array>
+  <string-array name="response">
+    <item msgid="1082041511995374203">"200"</item>
+    <item msgid="8666345372187526327">"ទេ"</item>
+    <item msgid="6929055236798363234">"500"</item>
+    <item msgid="1898895770647738117">"503"</item>
+    <item msgid="2420418633305128093">"503_NO_RETRY_AFTER"</item>
+  </string-array>
+</resources>

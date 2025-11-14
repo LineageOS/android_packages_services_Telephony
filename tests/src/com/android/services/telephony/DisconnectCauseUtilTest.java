@@ -52,12 +52,7 @@ public class DisconnectCauseUtilTest extends TelephonyTestBase {
     public static final int PHONE_ID = 123;
     public static final String EMPTY_STRING = "";
 
-    private final FlagsAdapter mFeatureFlags = new FlagsAdapter(){
-        @Override
-        public boolean doNotOverridePreciseLabel() {
-            return true;
-        }
-    };
+    private final FlagsAdapter mFeatureFlags = new FlagsAdapter(){};
 
     @Before
     public void setUp() throws Exception {

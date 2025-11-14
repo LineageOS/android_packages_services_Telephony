@@ -459,6 +459,8 @@
     <string name="tty_mode_option_summary" msgid="4770510287236494371">"設定 TTY 模式"</string>
     <string name="auto_retry_mode_title" msgid="2985801935424422340">"自動重試"</string>
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"啟用自動重試模式"</string>
+    <string name="vibrating_for_outgoing_call_accepted_title" msgid="647945514737734657">"在通話對象接起電話時震動"</string>
+    <string name="vibrating_for_outgoing_call_accepted_summary" msgid="906112327196063688">"針對通話對象接起電話的情況啟用震動模式"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"無法在視訊通話過程中變更 TTY 模式"</string>
     <string name="menu_add" msgid="5616487894975773141">"新增聯絡人"</string>
     <string name="menu_edit" msgid="3593856941552460706">"編輯聯絡人"</string>
@@ -537,8 +539,7 @@
     <string name="notification_voicemail_no_vm_number" msgid="3423686009815186750">"無語音信箱號碼"</string>
     <string name="notification_network_selection_title" msgid="255595526707809121">"沒有服務"</string>
     <string name="notification_network_selection_text" msgid="553288408722427659">"所選網路 (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) 無法使用"</string>
-    <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"如要撥打電話，請開啟行動網路，並關閉飛航模式或省電模式。"</string>
-    <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"關閉飛航模式即可撥打電話。"</string>
+    <string name="incall_error_power_off" msgid="8131672264311208673">"關閉飛航模式即可撥打電話。"</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"關閉飛航模式或連上無線網路即可撥打電話。"</string>
     <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"手機過熱"</b>\n\n"無法撥打這通電話。請等到手機降溫後再試一次。\n\n在這段期間內仍可撥打緊急電話。"</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"結束緊急回撥模式，以便撥打非緊急電話。"</string>
@@ -846,15 +847,22 @@
     <string name="removable_esim_string" msgid="7931369811671787649">"將可移除的 eSIM 設為預設 eSIM"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"行動無線電電源"</string>
     <string name="simulate_out_of_service_string" msgid="7787925611727597193">"模擬無法使用服務的情況 (僅限偵錯版本)"</string>
+    <string name="simulate_out_of_service_label" msgid="3563376136603403714">"模擬服務中斷情況"</string>
     <string name="enforce_satellite_channel_string" msgid="295306734591329892">"強制執行 Camp 衛星 LTE 頻道 (僅限偵錯版本)"</string>
+    <string name="enforce_satellite_channel_label" msgid="8212349350110213468">"強制暫駐衛星 LTE 頻道"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"模擬電信業者衛星模式 (僅限偵錯版本)"</string>
+    <string name="mock_carrier_roaming_satellite_label" msgid="2052656038544917979">"模擬"</string>
+    <string name="choose_satellite_data_mode_label" msgid="7403013160079828226">"模擬衛星資料模式"</string>
     <string name="choose_satellite_data_mode" msgid="7526640708482601423">"模擬衛星資料模式 (僅限偵錯)"</string>
     <string name="satellite_data_restricted_string" msgid="8729402021843670205">"受限制"</string>
     <string name="satellite_data_constrained_string" msgid="4594481912792241881">"有限"</string>
     <string name="satellite_data_unConstrained_string" msgid="3957333012703408141">"無限制"</string>
     <string name="esos_satellite_string" msgid="7274794226125968657">"實際測試衛星緊急求救模式 (僅限偵錯版本)"</string>
+    <string name="esos_satellite_label" msgid="4640776617354089322">"實際測試衛星緊急求救模式"</string>
     <string name="satellite_enable_non_emergency_mode_string" msgid="9005332650950637932">"實際測試衛星非緊急求救模式 (僅限偵錯版本)"</string>
+    <string name="satellite_enable_non_emergency_mode_label" msgid="2958365217334494066">"實際測試衛星非緊急求救模式"</string>
     <string name="demo_esos_satellite_string" msgid="2941811482168709730">"測試衛星緊急求救展示模式 (僅限偵錯版本)"</string>
+    <string name="demo_esos_satellite_label" msgid="1538811851871457718">"測試衛星緊急求救展示模式"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"查看 SIM 通訊錄"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"查看固定撥號"</string>
     <string name="radioInfo_menu_viewSDN" msgid="2613431584522392842">"查看服務撥號號碼"</string>
@@ -934,6 +942,13 @@
     <string name="band_mode_succeeded" msgid="2230018000534761063">"成功"</string>
     <string name="phone_info_label" product="tablet" msgid="7477478709388477397">"平板電腦資訊"</string>
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"手機資訊"</string>
+    <string name="tab_title_device_details" msgid="6988777232978544580">"裝置詳細資料"</string>
+    <string name="tab_title_data_network" msgid="3959510345511877717">"資料與網路"</string>
+    <string name="tab_title_satellite" msgid="3973515984497023639">"衛星"</string>
+    <string name="tab_title_ims" msgid="8386374556214247042">"IMS"</string>
+    <string name="phone0_title" msgid="8961115386055876486">"電話 0"</string>
+    <string name="phone1_title" msgid="8685542469651636602">"電話 1"</string>
+    <string name="phone_info_label_v2" msgid="5651422721242779990">"手機資訊第 2 版"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"電信業者佈建資訊"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"觸發電信業者佈建程序"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"你的藍牙訊號微弱，建議你改用擴音模式。"</string>
@@ -947,9 +962,18 @@
     <string name="radio_info_data_view_satellite_config" msgid="343120041798242877">"顯示衛星設定"</string>
     <string name="satellite_config_viewer" msgid="5128698910841573398">"衛星設定檢視工具"</string>
     <string name="satellite_config_version_label" msgid="1153447193166314791">"版本："</string>
+    <string name="satellite_config_version_for_skylo_label" msgid="7068241597009832840">"Skylo 版本："</string>
+    <string name="satellite_max_allowed_data_mode_label" msgid="1808484802651916339">"允許使用的最高資料模式："</string>
+    <string name="satellite_config_version_for_starlink_label" msgid="7984209491963621773">"Starlink 版本："</string>
     <string name="satellite_config_service_type_label" msgid="21749170241956082">"子 ID/PLMN/服務類型："</string>
     <string name="satellite_config_allow_access_label" msgid="3806779900418131140">"允許存取："</string>
     <string name="satellite_config_country_code_label" msgid="1389520866423113166">"國家/地區代碼："</string>
     <string name="satellite_config_size_of_sats2_dat_label" msgid="671746449054349967">"sats2.dat 的大小："</string>
     <string name="satellite_config_json_label" msgid="4577292884014824105">"衛星存取權設定 JSON："</string>
+    <string name="nb_iot_config_viewer" msgid="1427724000750959794">"NB-IoT 設定檢視工具"</string>
+    <string name="ims_registration_value" msgid="3195763957048314776">"IMS 註冊："</string>
+    <string name="voice_over_lte_value" msgid="1317318233598235658">"VoLTE："</string>
+    <string name="voice_over_wifi_value" msgid="4958925307364093356">"VoWiFi："</string>
+    <string name="video_calling_value" msgid="156519861684819255">"視訊通話："</string>
+    <string name="ut_interface_value" msgid="9038789989481463774">"UT 介面："</string>
 </resources>

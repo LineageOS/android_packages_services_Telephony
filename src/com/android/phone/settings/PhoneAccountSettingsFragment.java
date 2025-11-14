@@ -13,6 +13,7 @@ import android.os.UserManager;
 import android.preference.Preference;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceFragment;
+import android.preference.SwitchPreference;
 import android.telecom.PhoneAccount;
 import android.telecom.PhoneAccountHandle;
 import android.telecom.TelecomManager;
@@ -38,7 +39,8 @@ import java.util.stream.Collectors;
 
 public class PhoneAccountSettingsFragment extends PreferenceFragment
         implements Preference.OnPreferenceChangeListener,
-                AccountSelectionPreference.AccountSelectionListener {
+                AccountSelectionPreference.AccountSelectionListener,
+                Preference.OnPreferenceClickListener {
 
     private static final String ACCOUNTS_LIST_CATEGORY_KEY =
             "phone_accounts_accounts_list_category_key";
@@ -53,6 +55,9 @@ public class PhoneAccountSettingsFragment extends PreferenceFragment
 
     private static final String LEGACY_ACTION_CONFIGURE_PHONE_ACCOUNT =
             "android.telecom.action.CONNECTION_SERVICE_CONFIGURE";
+
+    private static final String BUTTON_VIBRATING_KEY =
+            "button_vibrating_for_outgoing_call_accepted_key";
 
     /**
      * Value to start ordering of phone accounts relative to other preferences. By setting this
@@ -74,6 +79,8 @@ public class PhoneAccountSettingsFragment extends PreferenceFragment
     private Preference mAllCallingAccounts;
 
     private PreferenceCategory mMakeAndReceiveCallsCategory;
+    private SwitchPreference mButtonVibratingForMoCallAccepted;
+    private int mCallConnectedIndicator = TelecomManager.CALL_CONNECTED_INDICATOR_NONE;
     private boolean mMakeAndReceiveCallsCategoryPresent;
 
     private final SubscriptionManager.OnSubscriptionsChangedListener
@@ -144,6 +151,14 @@ public class PhoneAccountSettingsFragment extends PreferenceFragment
 
         mMakeAndReceiveCallsCategory = (PreferenceCategory) getPreferenceScreen().findPreference(
                 MAKE_AND_RECEIVE_CALLS_CATEGORY_KEY);
+        mButtonVibratingForMoCallAccepted = (SwitchPreference)
+                mMakeAndReceiveCallsCategory.findPreference(BUTTON_VIBRATING_KEY);
+        if (!getResources().getBoolean(
+                R.bool.show_call_connected_indicator_preference)) {
+            Preference phoneAccountSettingsPreference = findPreference(BUTTON_VIBRATING_KEY);
+            getPreferenceScreen().removePreference(mButtonVibratingForMoCallAccepted);
+        }
+        mCallConnectedIndicator = mTelecomManager.getCallConnectedIndicatorPreference();
         mMakeAndReceiveCallsCategoryPresent = false;
 
         updateAccounts();
@@ -169,6 +184,18 @@ public class PhoneAccountSettingsFragment extends PreferenceFragment
      */
     @Override
     public boolean onPreferenceChange(Preference pref, Object objValue) {
+        return false;
+    }
+
+    @Override
+    public boolean onPreferenceClick(Preference preference) {
+        if (preference == mButtonVibratingForMoCallAccepted) {
+            final int prefs = mButtonVibratingForMoCallAccepted.isChecked()?
+                    mCallConnectedIndicator | TelecomManager.CALL_CONNECTED_INDICATOR_VIBRATION
+                    : mCallConnectedIndicator & ~TelecomManager.CALL_CONNECTED_INDICATOR_VIBRATION;
+            mTelecomManager.setCallConnectedIndicatorPreference(prefs);
+            return true;
+        }
         return false;
     }
 
@@ -464,6 +491,17 @@ public class PhoneAccountSettingsFragment extends PreferenceFragment
         } else {
             mMakeAndReceiveCallsCategory.removePreference(
                     getPreferenceScreen().findPreference(SMART_FORWARDING_CONFIGURATION_PREF_KEY));
+        }
+
+        if (mButtonVibratingForMoCallAccepted != null) {
+            if (mTelephonyManager.isMultiSimEnabled()) {
+                mButtonVibratingForMoCallAccepted.setChecked((mCallConnectedIndicator
+                        & TelecomManager.CALL_CONNECTED_INDICATOR_VIBRATION) > 0);
+                mButtonVibratingForMoCallAccepted.setOnPreferenceClickListener(this);
+                mMakeAndReceiveCallsCategoryPresent = true;
+            } else {
+                mMakeAndReceiveCallsCategory.removePreference(mButtonVibratingForMoCallAccepted);
+            }
         }
 
         if (!mMakeAndReceiveCallsCategoryPresent) {

@@ -27,8 +27,11 @@ import android.telecom.DisconnectCause;
 import android.telecom.PhoneAccountHandle;
 import android.telephony.CarrierConfigManager;
 
+import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
+import com.android.internal.telephony.flags.FeatureFlags;
+import com.android.internal.telephony.flags.FeatureFlagsImpl;
 import com.android.phone.PhoneUtils;
 import com.android.telephony.Rlog;
 
@@ -67,8 +70,11 @@ public class ImsConferenceController {
 
             if (conference instanceof ImsConference) {
                 // Ims Conference call ended, so UE may now have the ability to initiate
-                // an Adhoc Conference call. Hence, try enabling adhoc conference capability
-                mTelecomAccountRegistry.refreshAdhocConference(true);
+                // an Adhoc Conference call. Hence, try enabling adhoc conference capability. This
+                // will be updated for the specified phone account in the case of simultaneous
+                // calling.
+                mTelecomAccountRegistry.refreshAdhocConference(true,
+                        getPhoneAccountHandle(conference));
             }
             mImsConferences.remove(conference);
         }
@@ -118,7 +124,7 @@ public class ImsConferenceController {
     private final TelephonyConnectionServiceProxy mConnectionService;
 
     private final ImsConference.FeatureFlagProxy mFeatureFlagProxy;
-
+    private FeatureFlags mFeatureFlags = new FeatureFlagsImpl();
     /**
      * List of known {@link TelephonyConnection}s.
      */
@@ -307,8 +313,10 @@ public class ImsConferenceController {
 
             // Since UE cannot host two conference calls, remove the ability to initiate
             // another conference call as there already exists a conference call, which
-            // is hosted on this device.
-            mTelecomAccountRegistry.refreshAdhocConference(false);
+            // is hosted on this device. However, for simultaneous calling, we WILL allow UE to host
+            // a conference call on each subscription.
+            mTelecomAccountRegistry.refreshAdhocConference(false,
+                    getPhoneAccountHandle(conference));
 
             switch (conference.getState()) {
                 case Connection.STATE_ACTIVE:
@@ -432,10 +440,12 @@ public class ImsConferenceController {
             return;
         }
 
-        // Mark the foreground connection as MERGE_COMPLETE before it is disconnected as part of
-        // the IMS merge conference process:
-        connection.sendTelephonyConnectionEvent(
-                android.telecom.Connection.EVENT_MERGE_COMPLETE, null);
+        if (!mFeatureFlags.reuseOriginalConnRemoteConfBehavior()) {
+            // Mark the foreground connection as MERGE_COMPLETE before it is disconnected as part of
+            // the IMS merge conference process:
+            connection.sendTelephonyConnectionEvent(
+                    android.telecom.Connection.EVENT_MERGE_COMPLETE, null);
+        }
 
         // Make a clone of the connection which will become the Ims conference host connection.
         // This is necessary since the Connection Service does not support removing a connection
@@ -479,17 +489,41 @@ public class ImsConferenceController {
         conference.setCallDirection(conferenceHostConnection.getCallDirection());
         conference.addTelephonyConferenceListener(mConferenceListener);
         conference.updateConferenceParticipantsAfterCreation();
-        mConnectionService.addConference(conference);
-        conferenceHostConnection.setTelecomCallId(conference.getTelecomCallId());
 
-        // Cleanup TelephonyConnection which backed the original connection and remove from telecom.
-        // Use the "Other" disconnect cause to ensure the call is logged to the call log but the
-        // disconnect tone is not played.
-        connection.removeTelephonyConnectionListener(mTelephonyConnectionListener);
-        connection.setTelephonyConnectionDisconnected(new DisconnectCause(DisconnectCause.OTHER,
-                android.telephony.DisconnectCause.toString(
-                        android.telephony.DisconnectCause.IMS_MERGED_SUCCESSFULLY)));
-        connection.close();
+        if (mFeatureFlags.reuseOriginalConnRemoteConfBehavior() && conference.isRemotelyHosted()) {
+            if (phoneAccountHandle != null &&
+                    mTelecomAccountRegistry.isUsingSimCallManager(phoneAccountHandle)) {
+                // Fi is the only carrier that uses a SIM call manager and they do not intend to
+                // support remotely hosted conference calls
+                Log.i(LOG_TAG, "startConference: SIM call manager is in use so ignoring "
+                        + "the request to initiate remotely hosted conference");
+                return;
+            }
+
+            Log.i(LOG_TAG, "startConference: Converting original connection into a conference");
+            mConnectionService.addConferenceFromConnection(conference, connection);
+            conferenceHostConnection.setTelecomCallId(conference.getTelecomCallId());
+            conferenceHostConnection
+                    .setTelephonyConnectionProperties(Connection.PROPERTY_REMOTELY_HOSTED);
+        } else {
+            // Mark the foreground connection as MERGE_COMPLETE before it is disconnected as part of
+            // the IMS merge conference process:
+            connection.sendTelephonyConnectionEvent(
+                    android.telecom.Connection.EVENT_MERGE_COMPLETE, null);
+
+            mConnectionService.addConference(conference);
+            conferenceHostConnection.setTelecomCallId(conference.getTelecomCallId());
+
+            // Cleanup TelephonyConnection which backed the original connection and remove from
+            // telecom. Use the "Other" disconnect cause to ensure the call is logged to the call
+            // log but the disconnect tone is not played.
+            connection.removeTelephonyConnectionListener(mTelephonyConnectionListener);
+            connection.setTelephonyConnectionDisconnected(new DisconnectCause(DisconnectCause.OTHER,
+                    android.telephony.DisconnectCause.toString(
+                            android.telephony.DisconnectCause.IMS_MERGED_SUCCESSFULLY)));
+            connection.close();
+        }
+
         mImsConferences.add(conference);
         // If one of the participants failed to join the conference, recalculate will set the
         // conferenceable connections for the conference to show merge calls option.
@@ -523,5 +557,11 @@ public class ImsConferenceController {
                             shouldLocalDisconnectOnEmptyConference);
         }
         return config.build();
+    }
+
+    /* Only for testing */
+    @VisibleForTesting
+    public void setFeatureFlags(FeatureFlags featureFlags) {
+        mFeatureFlags = featureFlags;
     }
 }

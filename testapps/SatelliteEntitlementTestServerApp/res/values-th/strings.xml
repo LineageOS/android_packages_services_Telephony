@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="action_settings" msgid="7225042429670464305">"การตั้งค่า"</string>
+    <string name="server_running" msgid="757323360857060706">"เซิร์ฟเวอร์กำลังทำงาน"</string>
+    <string name="stop_server" msgid="6021916051636380279">"หยุดเซิร์ฟเวอร์"</string>
+    <string name="server_down" msgid="6101311160545591567">"เซิร์ฟเวอร์ขัดข้อง"</string>
+    <string name="start_server" msgid="3011851110037401246">"เริ่มต้นเซิร์ฟเวอร์"</string>
+    <string name="SatelliteTestServer" msgid="7962421083554248947">"เซิร์ฟเวอร์ทดสอบดาวเทียม"</string>
+    <string name="client_request_textview" msgid="5379106493283719020">"คำขอจากไคลเอ็นต์:"</string>
+    <string name="entitlement_status_textview" msgid="4182364042860876726">"สถานะการให้สิทธิ์:"</string>
+    <string name="entitlement_status_disable" msgid="2356975025060584723">"สถานะการให้สิทธิ์ตั้งค่าไว้เป็น \"ปิดใช้\""</string>
+    <string name="entitlement_status_enable" msgid="1576820543295707752">"สถานะการให้สิทธิ์ตั้งค่าไว้เป็น \"เปิดใช้\""</string>
+    <string name="entitlement_status_incompatible" msgid="4618746073807600131">"สถานะการให้สิทธิ์ตั้งค่าไว้เป็น \"ใช้งานร่วมกันไม่ได้\""</string>
+    <string name="entitlement_status_provisioning" msgid="7291623636504179107">"สถานะการให้สิทธิ์ตั้งค่าไว้เป็น \"การจัดสรร\""</string>
+    <string name="plmn_change_textView" msgid="896130072065900789">"เปลี่ยนรายการ PLMN ได้"</string>
+    <string name="plmn_change_button" msgid="4776495408690606074">"บันทึก"</string>
+    <string name="plmn_restore_button" msgid="353201307416551274">"คืนค่า"</string>
+    <string name="response_code_textview" msgid="7558995298281883364">"โค้ดตอบกลับ:"</string>
+    <string name="server_response_textview" msgid="9059246990182640071">"การตอบกลับของเซิร์ฟเวอร์:"</string>
+    <string name="response_200" msgid="8428102249891629053">"ตั้งค่าโค้ดตอบกลับของเซิร์ฟเวอร์เป็น 200 พร้อมเนื้อหา"</string>
+    <string name="response_no" msgid="9176850012409530616">"ตั้งค่าโค้ดตอบกลับของเซิร์ฟเวอร์เป็น \"ไม่มีการตอบกลับ\""</string>
+    <string name="response_500" msgid="7093352648551561497">"ตั้งค่าโค้ดตอบกลับของเซิร์ฟเวอร์เป็น 500"</string>
+    <string name="response_503" msgid="5882347843594885590">"ตั้งค่าโค้ดตอบกลับของเซิร์ฟเวอร์เป็น 503 พร้อมส่วนหัว Retry-After"</string>
+    <string name="response_503_no_retry_after" msgid="6916161257226872448">"ตั้งค่าโค้ดตอบกลับของเซิร์ฟเวอร์เป็น 503 โดยไม่มีส่วนหัว Retry-After"</string>
+    <string name="current_plmn" msgid="6531059723207151310">"PLMN ปัจจุบัน:"</string>
+    <string name="refresh_button" msgid="4833927124437250565">"รีเฟรช"</string>
+  <string-array name="entitlement_status_for_satellite">
+    <item msgid="2022601967050498274">"เปิดใช้"</item>
+    <item msgid="359611466767264179">"ปิดใช้"</item>
+    <item msgid="272686018752211739">"ใช้งานร่วมกันไม่ได้"</item>
+    <item msgid="2230066359974626080">"การจัดสรร"</item>
+  </string-array>
+  <string-array name="response">
+    <item msgid="1082041511995374203">"200"</item>
+    <item msgid="8666345372187526327">"ไม่"</item>
+    <item msgid="6929055236798363234">"500"</item>
+    <item msgid="1898895770647738117">"503"</item>
+    <item msgid="2420418633305128093">"503_NO_RETRY_AFTER"</item>
+  </string-array>
+</resources>

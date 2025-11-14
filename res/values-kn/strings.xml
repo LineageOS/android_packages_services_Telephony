@@ -459,6 +459,8 @@
     <string name="tty_mode_option_summary" msgid="4770510287236494371">"TTY ಮೋಡ್‌ ಸೆಟ್ ಮಾಡಿ"</string>
     <string name="auto_retry_mode_title" msgid="2985801935424422340">"ಸ್ವಯಂ-ಮರುಪ್ರಯತ್ನಿಸುವಿಕೆ"</string>
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"ಸ್ವಯಂ ಮರುಪ್ರಯತ್ನಿಸುವಿಕೆ ಮೋಡ್‌‌ ಅನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ"</string>
+    <string name="vibrating_for_outgoing_call_accepted_title" msgid="647945514737734657">"ಹೊರಹೋಗುವ ಕರೆ ಸ್ವೀಕರಿಸಿದಾಗ ವೈಬ್ರೇಟಿಂಗ್ ಆಗುತ್ತದೆ"</string>
+    <string name="vibrating_for_outgoing_call_accepted_summary" msgid="906112327196063688">"ಹೊರಹೋಗುವ ಕರೆಯನ್ನು ಸ್ವೀಕರಿಸುವಾಗ ವೈಬ್ರೇಟಿಂಗ್ ಮೋಡ್ ಅನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"TTY ಮೋಡ್ ವೀಡಿಯೊ ಕರೆಯ ಸಂದರ್ಭದಲ್ಲಿ ಅನುಮತಿಸಲಾಗುವುದಿಲ್ಲ"</string>
     <string name="menu_add" msgid="5616487894975773141">"ಸಂಪರ್ಕ ಸೇರಿಸಿ"</string>
     <string name="menu_edit" msgid="3593856941552460706">"ಸಂಪರ್ಕವನ್ನು ಎಡಿಟ್ ಮಾಡಿ"</string>
@@ -537,8 +539,7 @@
     <string name="notification_voicemail_no_vm_number" msgid="3423686009815186750">"ಅಪರಿಚಿತ ಧ್ವನಿಮೇಲ್‌ ಸಂಖ್ಯೆ"</string>
     <string name="notification_network_selection_title" msgid="255595526707809121">"ಯಾವುದೇ ಸೇವೆಯಿಲ್ಲ"</string>
     <string name="notification_network_selection_text" msgid="553288408722427659">"ಆಯ್ಕೆಮಾಡಿದ (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) ನೆಟ್‌ವರ್ಕ್‌ ಲಭ್ಯವಿಲ್ಲ"</string>
-    <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"ಕರೆ ಮಾಡಲು ಮೊಬೈಲ್ ನೆಟ್‌ವರ್ಕ್ ಆನ್ ಮಾಡಿ, ಏರ್‌ಪ್ಲೇನ್ ಮೋಡ್ ಅಥವಾ ಬ್ಯಾಟರಿ ಉಳಿತಾಯ ಮೋಡ್ ಅನ್ನು ಆಫ್ ಮಾಡಿ."</string>
-    <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"ಕರೆ ಮಾಡಲು ಏರ್‌ಪ್ಲೇನ್ ಮೋಡ್ ಆಫ್ ಮಾಡಿ."</string>
+    <string name="incall_error_power_off" msgid="8131672264311208673">"ಕರೆ ಮಾಡಲು ಏರ್‌ಪ್ಲೇನ್ ಮೋಡ್ ಆಫ್ ಮಾಡಿ."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"ಏರ್‌ಪ್ಲೇನ್ ಮೋಡ್ ಆಫ್ ಮಾಡಿ ಅಥವಾ ಕರೆ ಮಾಡಲು ವೈರ್‌ಲೆಸ್ ನೆಟ್‌ವರ್ಕ್‌ಗೆ ಸಂಪರ್ಕಿಸಿ."</string>
     <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"ಫೋನ್ ತುಂಬಾ ಬಿಸಿಯಾಗಿದೆ"</b>\n\n"ಈ ಕರೆಯನ್ನು ಪೂರ್ಣಗೊಳಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ. ಫೋನ್ ತಣ್ಣಗಾದ ನಂತರ ಪುನಃ ಪ್ರಯತ್ನಿಸಿ.\n\nನೀವು ಈಗಲೂ ತುರ್ತು ಕರೆಗಳನ್ನು ಮಾಡಬಹುದು."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"ತುರ್ತು ರಹಿತ ಕರೆಯನ್ನು ಮಾಡಲು ತುರ್ತು ಮರು ಕರೆಮಾಡುವಿಕೆ ಮೋಡ್ ಅನ್ನು ನಿರ್ಗಮಿಸಿ."</string>
@@ -846,15 +847,22 @@
     <string name="removable_esim_string" msgid="7931369811671787649">"ತೆಗೆದುಹಾಕಬಹುದಾದ eSIM ಅನ್ನು ಡೀಫಾಲ್ಟ್ ಆಗಿ ಸೆಟ್ ಮಾಡಿ"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"ಮೊಬೈಲ್ ರೇಡಿಯೋ ಪವರ್"</string>
     <string name="simulate_out_of_service_string" msgid="7787925611727597193">"ಸೇವೆಯಲ್ಲಿಲ್ಲದಿರುವುದನ್ನು ಸಿಮ್ಯುಲೇಟ್‌ ಮಾಡುವುದು (ಡೀಬಗ್ ಬಿಲ್ಡ್ ಮಾತ್ರ)"</string>
+    <string name="simulate_out_of_service_label" msgid="3563376136603403714">"ಸೇವೆಯಿಂದ ಹೊರಗಿರುವುದನ್ನು ಸಿಮ್ಯುಲೇಟ್ ಮಾಡಿ"</string>
     <string name="enforce_satellite_channel_string" msgid="295306734591329892">"ಫೋರ್ಸ್ ಕ್ಯಾಂಪ್ ಸ್ಯಾಟಲೈಟ್ LTE ಚಾನಲ್ (ಡೀಬಗ್ ಬಿಲ್ಡ್ ಮಾತ್ರ)"</string>
+    <string name="enforce_satellite_channel_label" msgid="8212349350110213468">"ಫೋರ್ಸ್ ಕ್ಯಾಂಪ್ ಸ್ಯಾಟಲೈಟ್ LTE ಚಾನಲ್"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"Mock Carrier ಉಪಗ್ರಹ ಮೋಡ್ (ಡೀಬಗ್ ಬಿಲ್ಡ್ ಮಾತ್ರ)"</string>
+    <string name="mock_carrier_roaming_satellite_label" msgid="2052656038544917979">"ಅಣಕು"</string>
+    <string name="choose_satellite_data_mode_label" msgid="7403013160079828226">"ಮಾಕ್ ಸ್ಯಾಟಲೈಟ್ ಡೇಟಾ ಮೋಡ್"</string>
     <string name="choose_satellite_data_mode" msgid="7526640708482601423">"ಮಾಕ್ ಸ್ಯಾಟಲೈಟ್ ಡೇಟಾ ಮೋಡ್ (ಡೀಬಗ್ ಮಾತ್ರ)"</string>
     <string name="satellite_data_restricted_string" msgid="8729402021843670205">"ನಿರ್ಬಂಧಿಸಲಾಗಿದೆ"</string>
     <string name="satellite_data_constrained_string" msgid="4594481912792241881">"ಸೀಮಿತ"</string>
     <string name="satellite_data_unConstrained_string" msgid="3957333012703408141">"ಅನಿಯಮಿತ"</string>
     <string name="esos_satellite_string" msgid="7274794226125968657">"ನೈಜ ಸ್ಯಾಟಲೈಟ್ eSOS ಮೋಡ್ ಅನ್ನು ಪರೀಕ್ಷಿಸಿ (ಡೀಬಗ್ ಬಿಲ್ಡ್ ಮಾತ್ರ)"</string>
+    <string name="esos_satellite_label" msgid="4640776617354089322">"ರಿಯಲ್ ಸ್ಯಾಟಲೈಟ್ eSOS ಮೋಡ್ ಅನ್ನು ಟೆಸ್ಟ್ ಮಾಡಿ"</string>
     <string name="satellite_enable_non_emergency_mode_string" msgid="9005332650950637932">"ರಿಯಲ್ ಸ್ಯಾಟಲೈಟ್ ನಾನ್-eSOS ಮೋಡ್ (ಡೀಬಗ್ ಬಿಲ್ಡ್ ಮಾತ್ರ) ಅನ್ನು ಟೆಸ್ಟ್ ಮಾಡಿ"</string>
+    <string name="satellite_enable_non_emergency_mode_label" msgid="2958365217334494066">"ರಿಯಲ್ ಸ್ಯಾಟಲೈಟ್ ನಾನ್-eSOS ಮೋಡ್ ಅನ್ನು ಟೆಸ್ಟ್ ಮಾಡಿ"</string>
     <string name="demo_esos_satellite_string" msgid="2941811482168709730">"ಸ್ಯಾಟಲೈಟ್‌ eSOS ಮೋಡ್‌ ಅನ್ನು ಟೆಸ್ಟ್‌ ಡೆಮೋ ನೀಡಿ (ಡೀಬಗ್ ಬಿಲ್ಡ್ ಮಾತ್ರ)"</string>
+    <string name="demo_esos_satellite_label" msgid="1538811851871457718">"ಡೆಮೋ ಉಪಗ್ರಹ eSOS ಮೋಡ್ ಅನ್ನು ಪರೀಕ್ಷಿಸಿ"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"ಸಿಮ್ ವಿಳಾಸ ಪುಸ್ತಕವನ್ನು ವೀಕ್ಷಿಸಿ"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"ಸ್ಥಿರ ಡಯಲಿಂಗ್ ಸಂಖ್ಯೆಗಳನ್ನು ವೀಕ್ಷಿಸಿ"</string>
     <string name="radioInfo_menu_viewSDN" msgid="2613431584522392842">"ಸೇವಾ ಡಯಲಿಂಗ್ ಸಂಖ್ಯೆಗಳನ್ನು ವೀಕ್ಷಿಸಿ"</string>
@@ -934,6 +942,13 @@
     <string name="band_mode_succeeded" msgid="2230018000534761063">"ಯಶಸ್ವಿಯಾಗಿದೆ"</string>
     <string name="phone_info_label" product="tablet" msgid="7477478709388477397">"ಟ್ಯಾಬ್ಲೆಟ್ ಮಾಹಿತಿ"</string>
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"ಫೋನ್ ಮಾಹಿತಿ"</string>
+    <string name="tab_title_device_details" msgid="6988777232978544580">"ಸಾಧನದ ವಿವರಗಳು"</string>
+    <string name="tab_title_data_network" msgid="3959510345511877717">"ಡೇಟಾ ಮತ್ತು ನೆಟ್‌ವರ್ಕ್"</string>
+    <string name="tab_title_satellite" msgid="3973515984497023639">"ಸ್ಯಾಟಲೈಟ್"</string>
+    <string name="tab_title_ims" msgid="8386374556214247042">"IMS"</string>
+    <string name="phone0_title" msgid="8961115386055876486">"ಫೋನ್ 0"</string>
+    <string name="phone1_title" msgid="8685542469651636602">"ಫೋನ್ 1"</string>
+    <string name="phone_info_label_v2" msgid="5651422721242779990">"ಫೋನ್ ಮಾಹಿತಿ V2"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"ವಾಹಕ ಪೂರೈಕೆಯ ಮಾಹಿತಿ"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"ಟ್ರಿಗರ್‌ ವಾಹಕ ಪೂರೈಕೆ"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"ನಿಮ್ಮ ಬ್ಲೂಟೂತ್ ಸಿಗ್ನಲ್ ದುರ್ಬಲವಾಗಿದೆ. ಸ್ಪೀಕರ್‌ಫೋನ್‌ಗೆ ಬದಲಾಯಿಸಲು ಪ್ರಯತ್ನಿಸಿ."</string>
@@ -947,9 +962,18 @@
     <string name="radio_info_data_view_satellite_config" msgid="343120041798242877">"ಸ್ಯಾಟಲೈಟ್ ಕಾನ್ಫಿಗರೇಶನ್ ಅನ್ನು ತೋರಿಸಿ"</string>
     <string name="satellite_config_viewer" msgid="5128698910841573398">"ಸ್ಯಾಟಲೈಟ್ ಕಾನ್ಫಿಗರೇಶನ್ ವೀಕ್ಷಕ"</string>
     <string name="satellite_config_version_label" msgid="1153447193166314791">"ಆವೃತ್ತಿ:"</string>
+    <string name="satellite_config_version_for_skylo_label" msgid="7068241597009832840">"skylo ಆವೃತ್ತಿ:"</string>
+    <string name="satellite_max_allowed_data_mode_label" msgid="1808484802651916339">"ಗರಿಷ್ಠ ಅನುಮತಿಸಲಾದ ಡೇಟಾ ಮೋಡ್:"</string>
+    <string name="satellite_config_version_for_starlink_label" msgid="7984209491963621773">"ಸ್ಟಾರ್ಲಿಂಕ್ ಆವೃತ್ತಿ:"</string>
     <string name="satellite_config_service_type_label" msgid="21749170241956082">"subId/plmn/servicetype:"</string>
     <string name="satellite_config_allow_access_label" msgid="3806779900418131140">"allow_access:"</string>
     <string name="satellite_config_country_code_label" msgid="1389520866423113166">"ರಾಷ್ಟ್ರ ಕೋಡ್‌ಗಳು:"</string>
     <string name="satellite_config_size_of_sats2_dat_label" msgid="671746449054349967">"sats2.dat ನ ಗಾತ್ರ:"</string>
     <string name="satellite_config_json_label" msgid="4577292884014824105">"ಸ್ಯಾಟಲೈಟ್ ಆ್ಯಕ್ಸೆಸ್ ಕಾನ್ಫಿಗರೇಶನ್ json:"</string>
+    <string name="nb_iot_config_viewer" msgid="1427724000750959794">"NB-IOT ಕಾನ್ಫಿಗರೇಶನ್ ವೀಕ್ಷಕ"</string>
+    <string name="ims_registration_value" msgid="3195763957048314776">"IMS ನೋಂದಣಿ:"</string>
+    <string name="voice_over_lte_value" msgid="1317318233598235658">"LTE ಕುರಿತ ಧ್ವನಿ:"</string>
+    <string name="voice_over_wifi_value" msgid="4958925307364093356">"ವಾಯ್ಸ್ ಓವರ್ ವೈಫೈ:"</string>
+    <string name="video_calling_value" msgid="156519861684819255">"ವೀಡಿಯೊ ಕರೆ ಮಾಡುವಿಕೆ:"</string>
+    <string name="ut_interface_value" msgid="9038789989481463774">"UT ಇಂಟರ್‌ಫೇಸ್:"</string>
 </resources>

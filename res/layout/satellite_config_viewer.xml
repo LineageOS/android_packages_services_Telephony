@@ -26,20 +26,11 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- VERSION -->
+        <!-- version starlink from SatelliteController -->
         <LinearLayout style="@style/RadioInfo_entry_layout">
-            <TextView android:text="@string/satellite_config_version_label" style="@style/info_label" />
-            <TextView android:id="@+id/version" style="@style/info_value" />
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="1dip"
-                android:background="?android:attr/listDivider"/>
+            <TextView android:text="@string/satellite_config_version_for_starlink_label" style="@style/info_label" />
+            <TextView android:id="@+id/starlink_version" style="@style/info_value" />
         </LinearLayout>
-
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="2dip"
-            android:background="?android:attr/listDivider" />
 
         <!-- cids, plmns, svcTypes -->
         <LinearLayout style="@style/RadioInfo_entry_layout">
@@ -47,10 +38,35 @@
             <TextView android:id="@+id/svc_type" style="@style/info_value" />
         </LinearLayout>
 
+        <!-- maxAllowedDataMode from SatelliteController -->
+        <LinearLayout style="@style/RadioInfo_entry_layout">
+            <TextView android:text="@string/satellite_max_allowed_data_mode_label" style="@style/info_label" />
+            <TextView android:id="@+id/max_allowed_data_mode" style="@style/info_value" />
+        </LinearLayout>
+
         <View
             android:layout_width="fill_parent"
-            android:layout_height="3dip"
-            android:background="?android:attr/listDivider"/>
+            android:layout_height="10dip"
+            android:alpha="0"/>
+
+        <LinearLayout style="@style/RadioInfo_entry_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView android:text="-------------------------------------" style="@style/info_label"
+            android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="10dip"
+            android:alpha="0"/>
+
+        <!-- version skylo from SatelliteController -->
+        <LinearLayout style="@style/RadioInfo_entry_layout">
+            <TextView android:text="@string/satellite_config_version_for_skylo_label" style="@style/info_label" />
+            <TextView android:id="@+id/skylo_version" style="@style/info_value" />
+        </LinearLayout>
 
         <!-- allow access -->
         <LinearLayout style="@style/RadioInfo_entry_layout">
@@ -58,32 +74,17 @@
             <TextView android:id="@+id/allow_access" style="@style/info_value" />
         </LinearLayout>
 
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="4dip"
-            android:background="?android:attr/listDivider"/>
-
         <!-- country codes -->
         <LinearLayout style="@style/RadioInfo_entry_layout">
             <TextView android:text="@string/satellite_config_country_code_label" style="@style/info_label" />
             <TextView android:id="@+id/country_codes" style="@style/info_value" />
         </LinearLayout>
 
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="5dip"
-            android:background="?android:attr/listDivider"/>
-
         <!-- size of sats2dat file -->
         <LinearLayout style="@style/RadioInfo_entry_layout">
             <TextView android:text="@string/satellite_config_size_of_sats2_dat_label" style="@style/info_label" />
             <TextView android:id="@+id/size_of_sats2" style="@style/info_value" />
         </LinearLayout>
-
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="1dip"
-            android:background="?android:attr/listDivider"/>
 
         <!-- satellite access config json -->
         <LinearLayout style="@style/entry_layout">

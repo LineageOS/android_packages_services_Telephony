@@ -17,7 +17,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="phoneAppLabel" product="tablet" msgid="1916019789885839910">"మొబైల్ డేటా"</string>
-    <string name="phoneAppLabel" product="default" msgid="130465039375347763">"ఫోన్ సేవలు"</string>
+    <string name="phoneAppLabel" product="default" msgid="130465039375347763">"ఫోన్ సర్వీస్‌లు"</string>
     <string name="emergencyDialerIconLabel" msgid="8668005772339436680">"అత్యవసర డయలర్"</string>
     <string name="phoneIconLabel" msgid="3015941229249651419">"ఫోన్"</string>
     <string name="fdnListLabel" msgid="4119121875004244097">"FDN లిస్ట్‌"</string>
@@ -459,6 +459,8 @@
     <string name="tty_mode_option_summary" msgid="4770510287236494371">"TTY మోడ్‌ను సెట్ చేయండి"</string>
     <string name="auto_retry_mode_title" msgid="2985801935424422340">"స్వీయ-పునఃప్రయత్నం"</string>
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"స్వీయ-పునఃప్రయత్నం మోడ్‌ను ప్రారంభించండి"</string>
+    <string name="vibrating_for_outgoing_call_accepted_title" msgid="647945514737734657">"అవుట్‌గోయింగ్ కాల్ స్వీకరణ సందర్భంలో వైబ్రేటింగ్"</string>
+    <string name="vibrating_for_outgoing_call_accepted_summary" msgid="906112327196063688">"అవుట్‌గోయింగ్ కాల్‌ స్వీకరణ సందర్భంలో వైబ్రేటింగ్ మోడ్ ఎనేబుల్ చేయండి"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"వీడియో కాల్ సమయంలో TTY మోడ్ మార్పు అనుమతించబడదు"</string>
     <string name="menu_add" msgid="5616487894975773141">"కాంటాక్ట్‌ను జోడించండి"</string>
     <string name="menu_edit" msgid="3593856941552460706">"కాంటాక్ట్‌ను ఎడిట్ చేయండి"</string>
@@ -537,8 +539,7 @@
     <string name="notification_voicemail_no_vm_number" msgid="3423686009815186750">"వాయిస్ మెయిల్ నంబర్ తెలియదు"</string>
     <string name="notification_network_selection_title" msgid="255595526707809121">"సేవ లేదు"</string>
     <string name="notification_network_selection_text" msgid="553288408722427659">"ఎంచుకున్న నెట్‌వర్క్ <xliff:g id="OPERATOR_NAME">%s</xliff:g> అందుబాటులో లేదు"</string>
-    <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"కాల్ చేయడానికి మొబైల్ నెట్‌వర్క్‌ను ఆన్ చేయండి, అలాగే ఎయిర్‌ప్లైన్ మోడ్ లేదా బ్యాటరీ సేవర్ మోడ్ ఆన్‌లో ఉంటే ఆఫ్ చేయండి."</string>
-    <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"కాల్ చేయడానికి ఎయిర్‌ప్లైన్ మోడ్‌ను ఆఫ్ చేయండి."</string>
+    <string name="incall_error_power_off" msgid="8131672264311208673">"కాల్ చేయడానికి ఎయిర్‌ప్లైన్ మోడ్‌ను ఆఫ్ చేయండి."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"కాల్ చేయడానికి ఎయిర్‌ప్లైన్ మోడ్‌ను ఆఫ్ చేయండి లేదా వైర్‌లెస్ నెట్‌వర్క్‌కు కనెక్ట్ చేయండి."</string>
     <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"ఫోన్ చాలా వేడిగా ఉంది"</b>\n\n"ఈ కాల్‌ను పూర్తి చేయడం సాధ్యపడదు. మీ ఫోన్ చల్లబడినప్పుడు మళ్లీ ట్రై చేయండి.\n\nమీరు ఇప్పటికీ ఎమర్జెన్సీ కాల్స్ చేయవచ్చు."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"సాధారణ కాల్ చేయడానికి అత్యవసర కాల్‌బ్యాక్ మోడ్ నుండి నిష్క్రమించండి."</string>
@@ -846,15 +847,22 @@
     <string name="removable_esim_string" msgid="7931369811671787649">"తీసివేయగలిగే eSIMని ఆటోమేటిక్ సెట్టింగ్‌గా సెట్ చేయండి"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"మొబైల్ రేడియో పవర్"</string>
     <string name="simulate_out_of_service_string" msgid="7787925611727597193">"పరికరాన్ని సిమ్యులేట్ చేయడం అందుబాటులో లేదు (డీబగ్ బిల్డ్ మోడ్‌లో మాత్రమే)"</string>
+    <string name="simulate_out_of_service_label" msgid="3563376136603403714">"సర్వీస్‌లో లేని వాటిని సిమ్యులేట్ చేయండి"</string>
     <string name="enforce_satellite_channel_string" msgid="295306734591329892">"ఫోర్స్ క్యాంప్ శాటిలైట్ LTE ఛానెల్ (డీబగ్ బిల్డ్ మోడ్‌లో మాత్రమే)"</string>
+    <string name="enforce_satellite_channel_label" msgid="8212349350110213468">"ఫోర్స్ క్యాంప్ శాటిలైట్ LTE ఛానల్"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"మాక్ క్యారియర్ శాటిలైట్ మోడ్ (డీబగ్ బిల్డ్ మోడ్‌లో మాత్రమే)"</string>
+    <string name="mock_carrier_roaming_satellite_label" msgid="2052656038544917979">"మాక్"</string>
+    <string name="choose_satellite_data_mode_label" msgid="7403013160079828226">"మాక్ శాటిలైట్ డేటా మోడ్"</string>
     <string name="choose_satellite_data_mode" msgid="7526640708482601423">"మాక్ శాటిలైట్ డేటా మోడ్ (డీబగ్ మాత్రమే)"</string>
     <string name="satellite_data_restricted_string" msgid="8729402021843670205">"పరిమితం చేయబడింది"</string>
     <string name="satellite_data_constrained_string" msgid="4594481912792241881">"పరిమితం"</string>
     <string name="satellite_data_unConstrained_string" msgid="3957333012703408141">"అపరిమితం"</string>
     <string name="esos_satellite_string" msgid="7274794226125968657">"రియల్ శాటిలైట్ eSOS మోడ్‌ను టెస్ట్ చేయండి (డీబగ్ బిల్డ్ మోడ్‌లో మాత్రమే)"</string>
+    <string name="esos_satellite_label" msgid="4640776617354089322">"రియల్ శాటిలైట్ eSOS మోడ్‌ను టెస్ట్ చేయండి"</string>
     <string name="satellite_enable_non_emergency_mode_string" msgid="9005332650950637932">"రియల్ శాటిలైట్ eSOS యేతర మోడ్‌ను టెస్ట్ చేయండి (డీబగ్ బిల్డ్ మోడ్‌లో మాత్రమే)"</string>
+    <string name="satellite_enable_non_emergency_mode_label" msgid="2958365217334494066">"రియల్ శాటిలైట్ eSOS యేతర మోడ్‌ను టెస్ట్ చేయండి"</string>
     <string name="demo_esos_satellite_string" msgid="2941811482168709730">"డెమో శాటిలైట్ eSOS మోడ్‌ను టెస్ట్ చేయండి (డీబగ్ బిల్డ్ మోడ్‌లో మాత్రమే)"</string>
+    <string name="demo_esos_satellite_label" msgid="1538811851871457718">"డెమో శాటిలైట్ eSOS మోడ్‌ను టెస్ట్ చేయండి"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"SIM అడ్రస్‌ పుస్తకాన్ని చూడండి"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"ఫిక్స్‌డ్ డయలింగ్ నంబర్‌లను చూడండి"</string>
     <string name="radioInfo_menu_viewSDN" msgid="2613431584522392842">"సర్వీస్ డయలింగ్ నంబర్‌లను చూడండి"</string>
@@ -934,6 +942,13 @@
     <string name="band_mode_succeeded" msgid="2230018000534761063">"విజయవంతమైంది"</string>
     <string name="phone_info_label" product="tablet" msgid="7477478709388477397">"టాబ్లెట్ సమాచారం"</string>
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"ఫోన్ సమాచారం"</string>
+    <string name="tab_title_device_details" msgid="6988777232978544580">"డివైజ్ వివరాలు"</string>
+    <string name="tab_title_data_network" msgid="3959510345511877717">"డేటా &amp; నెట్‌వర్క్"</string>
+    <string name="tab_title_satellite" msgid="3973515984497023639">"శాటిలైట్"</string>
+    <string name="tab_title_ims" msgid="8386374556214247042">"IMS"</string>
+    <string name="phone0_title" msgid="8961115386055876486">"ఫోన్ 0"</string>
+    <string name="phone1_title" msgid="8685542469651636602">"ఫోన్ 1"</string>
+    <string name="phone_info_label_v2" msgid="5651422721242779990">"ఫోన్ సమాచారం V2"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"క్యారియర్ కేటాయింపు సమాచారం"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"క్యారియర్ కేటాయింపు యాక్టివేట్ చేయండి"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"మీ బ్లూటూత్ సిగ్నల్ బలహీనంగా ఉంది. స్పీకర్‌ఫోన్‌కు స్విచ్ అవ్వడానికి ట్రై చేయండి."</string>
@@ -947,9 +962,18 @@
     <string name="radio_info_data_view_satellite_config" msgid="343120041798242877">"శాటిలైట్ కాన్ఫిగరేషన్‌ను చూడండి"</string>
     <string name="satellite_config_viewer" msgid="5128698910841573398">"శాటిలైట్ కాన్ఫిగరేషన్ వ్యూయర్"</string>
     <string name="satellite_config_version_label" msgid="1153447193166314791">"వెర్షన్:"</string>
+    <string name="satellite_config_version_for_skylo_label" msgid="7068241597009832840">"స్కైలో వెర్షన్:"</string>
+    <string name="satellite_max_allowed_data_mode_label" msgid="1808484802651916339">"గరిష్ఠంగా అనుమతించిన డేటా మోడ్:"</string>
+    <string name="satellite_config_version_for_starlink_label" msgid="7984209491963621773">"స్టార్‌లింక్ వెర్షన్:"</string>
     <string name="satellite_config_service_type_label" msgid="21749170241956082">"subId/plmn/servicetype:"</string>
     <string name="satellite_config_allow_access_label" msgid="3806779900418131140">"allow_access:"</string>
     <string name="satellite_config_country_code_label" msgid="1389520866423113166">"దేశం కోడ్:"</string>
     <string name="satellite_config_size_of_sats2_dat_label" msgid="671746449054349967">"sats2.dat సైజు:"</string>
     <string name="satellite_config_json_label" msgid="4577292884014824105">"శాటిలైట్ యాక్సెస్ కాన్ఫిగరేషన్ json:"</string>
+    <string name="nb_iot_config_viewer" msgid="1427724000750959794">"NB-IOT కాన్ఫిగ్ వ్యూయర్"</string>
+    <string name="ims_registration_value" msgid="3195763957048314776">"IMS రిజిస్ట్రేషన్:"</string>
+    <string name="voice_over_lte_value" msgid="1317318233598235658">"వాయిస్ ఓవర్ LTE:"</string>
+    <string name="voice_over_wifi_value" msgid="4958925307364093356">"వాయిస్-ఓవర్ Wi-Fi:"</string>
+    <string name="video_calling_value" msgid="156519861684819255">"వీడియో కాలింగ్:"</string>
+    <string name="ut_interface_value" msgid="9038789989481463774">"UT ఇంటర్‌ఫేస్:"</string>
 </resources>

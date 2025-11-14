@@ -19,6 +19,7 @@ package com.android.services.telephony;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.any;
+import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -32,6 +33,7 @@ import androidx.test.filters.SmallTest;
 import androidx.test.runner.AndroidJUnit4;
 
 import com.android.TelephonyTestBase;
+import com.android.internal.telephony.flags.FeatureFlags;
 
 import org.junit.After;
 import org.junit.Before;
@@ -52,8 +54,7 @@ public class ImsConferenceControllerTest extends TelephonyTestBase {
 
     private TelecomAccountRegistry mTelecomAccountRegistry;
 
-    @Mock
-    private TelecomAccountRegistry mMockTelecomAccountRegistry;
+    @Mock private FeatureFlags mFeatureFlags;
 
     private static final ComponentName TEST_COMPONENT_NAME = new ComponentName(
             "com.android.phone.tests", ImsConferenceControllerTest.class.getName());
@@ -86,6 +87,7 @@ public class ImsConferenceControllerTest extends TelephonyTestBase {
 
         mControllerTest = new ImsConferenceController(mTelecomAccountRegistry,
                 mMockTelephonyConnectionServiceProxy, () -> false);
+        mControllerTest.setFeatureFlags(mFeatureFlags);
     }
 
     @After
@@ -154,11 +156,41 @@ public class ImsConferenceControllerTest extends TelephonyTestBase {
      *             the status of Connection B is STATE_HOLDING;
      *             getPhoneType() in the original connection of the telephony connection
      *             is PhoneConstants.PHONE_TYPE_IMS
-     * Expected: addConference for ImsConference is called twice
+     * Expected: addConferenceFromConnection for ImsConference is called twice
      */
     @Test
     @SmallTest
     public void testMergeMultiPartyCalls() {
+        doReturn(true).when(mFeatureFlags).reuseOriginalConnRemoteConfBehavior();
+        mTestTelephonyConnectionA.setIsImsConnection(true);
+        mTestTelephonyConnectionB.setIsImsConnection(true);
+        when(mTestTelephonyConnectionA.mImsPhoneConnection.isMultiparty()).thenReturn(true);
+        when(mTestTelephonyConnectionB.mImsPhoneConnection.isMultiparty()).thenReturn(true);
+
+        mControllerTest.add(mTestTelephonyConnectionB);
+        mControllerTest.add(mTestTelephonyConnectionA);
+
+        mTestTelephonyConnectionA.setActive();
+        mTestTelephonyConnectionB.setTelephonyConnectionOnHold();
+
+        verify(mMockTelephonyConnectionServiceProxy, times(2))
+                .addConferenceFromConnection(
+                        any(ImsConference.class), any(TelephonyConnection.class));
+    }
+
+    /**
+     * Behavior: add telephony connection B and A to conference controller,
+     *           set status for merged connections
+     * Assumption: after performing the behaviors, the status of Connection A is STATE_ACTIVE;
+     *             the status of Connection B is STATE_HOLDING;
+     *             getPhoneType() in the original connection of the telephony connection
+     *             is PhoneConstants.PHONE_TYPE_IMS
+     * Expected: addConference for ImsConference is called twice
+     */
+    @Test
+    @SmallTest
+    public void testMergeMultiPartyCallsLegacy() {
+        doReturn(false).when(mFeatureFlags).reuseOriginalConnRemoteConfBehavior();
         mTestTelephonyConnectionA.setIsImsConnection(true);
         mTestTelephonyConnectionB.setIsImsConnection(true);
         when(mTestTelephonyConnectionA.mImsPhoneConnection.isMultiparty()).thenReturn(true);

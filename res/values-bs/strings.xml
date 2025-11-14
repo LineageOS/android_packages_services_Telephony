@@ -299,7 +299,7 @@
     <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"Zastarjeli SIP računi su pronađeni i uklonjeni"</string>
     <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"Android platforma više ne podržva SIP pozivanje.\nVaši postojeći SIP računi <xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g> su uklonjeni.\nPotvrdite zadanu postavku računa za pozivanje."</string>
     <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"Idi u postavke"</string>
-    <string name="data_usage_title" msgid="8438592133893837464">"Prijenos podataka u aplikaciji"</string>
+    <string name="data_usage_title" msgid="8438592133893837464">"Prenos podataka aplikacija"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"Iskorišteno je <xliff:g id="ID_1">%1$s</xliff:g> prenosa podataka u periodu <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"Napredno"</string>
     <string name="carrier_settings_euicc" msgid="1190237227261337749">"Operater"</string>
@@ -459,6 +459,8 @@
     <string name="tty_mode_option_summary" msgid="4770510287236494371">"Postavite način rada TTY"</string>
     <string name="auto_retry_mode_title" msgid="2985801935424422340">"Automatski ponovni pokušaj"</string>
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"Omogućite način rada za automatski ponovni pokušaj"</string>
+    <string name="vibrating_for_outgoing_call_accepted_title" msgid="647945514737734657">"Vibracija po prihvatanju odlaznog poziva"</string>
+    <string name="vibrating_for_outgoing_call_accepted_summary" msgid="906112327196063688">"Omogućite način rada za vibraciju po prihvatanju odlaznog poziva"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"Promjena načina rada TTY nije dozvoljena tokom video poziva"</string>
     <string name="menu_add" msgid="5616487894975773141">"Dodaj kontakt"</string>
     <string name="menu_edit" msgid="3593856941552460706">"Uredi kontakt"</string>
@@ -537,8 +539,7 @@
     <string name="notification_voicemail_no_vm_number" msgid="3423686009815186750">"Nepoznat broj govorne pošte"</string>
     <string name="notification_network_selection_title" msgid="255595526707809121">"Nema mreže"</string>
     <string name="notification_network_selection_text" msgid="553288408722427659">"Odabrana mreža (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) je nedostupna"</string>
-    <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Uključite mobilnu mrežu, isključite Način rada u avionu ili isključite Uštedu baterije da pozovete."</string>
-    <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Isključite način rada u avionu da pozovete."</string>
+    <string name="incall_error_power_off" msgid="8131672264311208673">"Isključite način rada u avionu da pozovete."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Isključite način rada u avionu ili se povežite na bežičnu mrežu da pozovete."</string>
     <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"Telefon se pregrijao"</b>\n\n"Nije moguće završiti ovaj poziv. Pokušajte ponovo kada se telefon ohladi.\n\nI dalje možete upućivati hitne pozive."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Izađite iz načina rada za hitni povratni poziv da uputite poziv koji nije hitan."</string>
@@ -813,8 +814,8 @@
     <string name="supp_service_outgoing_calls_barred" msgid="5205725332394087112">"Odlazni pozivi su zabranjeni."</string>
     <string name="supp_service_call_forwarding_active" msgid="7910162960395132464">"Prosljeđivanje poziva je aktivno."</string>
     <string name="supp_service_additional_call_forwarded" msgid="8772753260008398632">"Dodatni poziv je proslijeđen."</string>
-    <string name="supp_service_additional_ect_connected" msgid="8525934162945220237">"Prijenos eksplicitnog poziva je završen."</string>
-    <string name="supp_service_additional_ect_connecting" msgid="7046240728781222753">"Prijenos eksplicitnog poziva je u toku."</string>
+    <string name="supp_service_additional_ect_connected" msgid="8525934162945220237">"Prenos eksplicitnog poziva je završen."</string>
+    <string name="supp_service_additional_ect_connecting" msgid="7046240728781222753">"Prenos eksplicitnog poziva je u toku."</string>
     <string name="supp_service_call_on_hold" msgid="2836811319594503059">"Poziv je na čekanju."</string>
     <string name="supp_service_call_resumed" msgid="3786864005920743546">"Poziv je nastavljen."</string>
     <string name="supp_service_deflected_call" msgid="7565979024562921707">"Poziv je bio preusmjeren."</string>
@@ -846,15 +847,22 @@
     <string name="removable_esim_string" msgid="7931369811671787649">"Postavljanje uklonjive eSim kartice kao zadane"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"Snaga mobilnog radija"</string>
     <string name="simulate_out_of_service_string" msgid="7787925611727597193">"Simulacija ne radi (samo verzija za otklanjanje grešaka)"</string>
+    <string name="simulate_out_of_service_label" msgid="3563376136603403714">"Simuliraj nefunkcioniranje"</string>
     <string name="enforce_satellite_channel_string" msgid="295306734591329892">"Satelitski LTE kanala za Force Camp (samo verzija za otklanjanje grešaka)"</string>
+    <string name="enforce_satellite_channel_label" msgid="8212349350110213468">"Nametni satelitski LTE kanal kampa"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"Lažni način rada operatera za slanje putem satelita (samo verzija za otklanjanje grešaka)"</string>
+    <string name="mock_carrier_roaming_satellite_label" msgid="2052656038544917979">"Lažno"</string>
+    <string name="choose_satellite_data_mode_label" msgid="7403013160079828226">"Lažni način rada za satelitske podatke"</string>
     <string name="choose_satellite_data_mode" msgid="7526640708482601423">"Lažni način rada za satelitske podatke (samo verzija za otklanjanje grešaka)"</string>
     <string name="satellite_data_restricted_string" msgid="8729402021843670205">"Ograničeno"</string>
     <string name="satellite_data_constrained_string" msgid="4594481912792241881">"Ograničeno"</string>
     <string name="satellite_data_unConstrained_string" msgid="3957333012703408141">"Neograničeno"</string>
     <string name="esos_satellite_string" msgid="7274794226125968657">"Testiraj stvarni način rada satelitskog eSOS-a (samo verzija za otklanjanje grešaka)"</string>
+    <string name="esos_satellite_label" msgid="4640776617354089322">"Testiraj stvarni način rada za satelitski eSOS"</string>
     <string name="satellite_enable_non_emergency_mode_string" msgid="9005332650950637932">"Testiraj stvarni način rada satelita koji nije eSOS (samo verzija za otklanjanje grešaka)"</string>
+    <string name="satellite_enable_non_emergency_mode_label" msgid="2958365217334494066">"Testiraj stvarni način rada za satelit koji nije eSOS"</string>
     <string name="demo_esos_satellite_string" msgid="2941811482168709730">"Testiraj demo način rada satelitskog eSOS-a (samo verzija za otklanjanje grešaka)"</string>
+    <string name="demo_esos_satellite_label" msgid="1538811851871457718">"Testiraj demonstracijski način rada za satelitski eSOS"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"Prikaži SIM adresar"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"Prikaži brojeve fiksnog biranja"</string>
     <string name="radioInfo_menu_viewSDN" msgid="2613431584522392842">"Prikaži brojeve biranja usluga"</string>
@@ -934,6 +942,13 @@
     <string name="band_mode_succeeded" msgid="2230018000534761063">"Uspješno"</string>
     <string name="phone_info_label" product="tablet" msgid="7477478709388477397">"Informacije o tabletu"</string>
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Informacije o telefonu"</string>
+    <string name="tab_title_device_details" msgid="6988777232978544580">"DETALJI O UREĐAJU"</string>
+    <string name="tab_title_data_network" msgid="3959510345511877717">"PODACI I MREŽA"</string>
+    <string name="tab_title_satellite" msgid="3973515984497023639">"SATELIT"</string>
+    <string name="tab_title_ims" msgid="8386374556214247042">"IMS"</string>
+    <string name="phone0_title" msgid="8961115386055876486">"0. telefon"</string>
+    <string name="phone1_title" msgid="8685542469651636602">"1. telefon"</string>
+    <string name="phone_info_label_v2" msgid="5651422721242779990">"Informacije o telefonu V2"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Operater koji pruža informacije"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Aktiviranje dodjele resursa operatera"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Vaš Bluetooth signal je slab. Pokušajte prebaciti na zvučnik."</string>
@@ -947,9 +962,18 @@
     <string name="radio_info_data_view_satellite_config" msgid="343120041798242877">"Prikaži konfiguraciju satelita"</string>
     <string name="satellite_config_viewer" msgid="5128698910841573398">"Prikazivač konfiguracije satelita"</string>
     <string name="satellite_config_version_label" msgid="1153447193166314791">"verzija:"</string>
+    <string name="satellite_config_version_for_skylo_label" msgid="7068241597009832840">"verzija Skyloa:"</string>
+    <string name="satellite_max_allowed_data_mode_label" msgid="1808484802651916339">"način rada za maks. dozvoljene podatke"</string>
+    <string name="satellite_config_version_for_starlink_label" msgid="7984209491963621773">"verzija starlinka:"</string>
     <string name="satellite_config_service_type_label" msgid="21749170241956082">"subId/plmn/servicetype:"</string>
     <string name="satellite_config_allow_access_label" msgid="3806779900418131140">"allow_access:"</string>
     <string name="satellite_config_country_code_label" msgid="1389520866423113166">"pozivni brojevi zemalja:"</string>
     <string name="satellite_config_size_of_sats2_dat_label" msgid="671746449054349967">"veličina fajla sats2.dat:"</string>
     <string name="satellite_config_json_label" msgid="4577292884014824105">"JSON konfiguracije za pristup satelitu:"</string>
+    <string name="nb_iot_config_viewer" msgid="1427724000750959794">"Preglednik konfiguracije NB-IOT-a"</string>
+    <string name="ims_registration_value" msgid="3195763957048314776">"Registracija IMS-a:"</string>
+    <string name="voice_over_lte_value" msgid="1317318233598235658">"Glasovni poziv putem LTE-a:"</string>
+    <string name="voice_over_wifi_value" msgid="4958925307364093356">"Glasovni poziv putem WiFi-ja:"</string>
+    <string name="video_calling_value" msgid="156519861684819255">"Video pozivi:"</string>
+    <string name="ut_interface_value" msgid="9038789989481463774">"UT interfejs:"</string>
 </resources>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="action_settings" msgid="7225042429670464305">"Параметрлер"</string>
+    <string name="server_running" msgid="757323360857060706">"Сервер иштеп жатат"</string>
+    <string name="stop_server" msgid="6021916051636380279">"Серверди токтотуу"</string>
+    <string name="server_down" msgid="6101311160545591567">"Сервер иштебей калды"</string>
+    <string name="start_server" msgid="3011851110037401246">"Серверди иштетип баштоо"</string>
+    <string name="SatelliteTestServer" msgid="7962421083554248947">"Спутник байланышын сыноо сервери"</string>
+    <string name="client_request_textview" msgid="5379106493283719020">"Кардардын сурамы:"</string>
+    <string name="entitlement_status_textview" msgid="4182364042860876726">"Уруксат берүү статусу:"</string>
+    <string name="entitlement_status_disable" msgid="2356975025060584723">"Уруксат берүү статусу ӨЧҮК деп коюлду."</string>
+    <string name="entitlement_status_enable" msgid="1576820543295707752">"Уруксат берүү статусу КҮЙҮК деп коюлду."</string>
+    <string name="entitlement_status_incompatible" msgid="4618746073807600131">"Уруксат берүү статусу ШАЙКЕШ КЕЛБЕЙТ деп коюлду."</string>
+    <string name="entitlement_status_provisioning" msgid="7291623636504179107">"Уруксат берүү статусу ДЕМИЛГЕЛЕНҮҮДӨ деп коюлду."</string>
+    <string name="plmn_change_textView" msgid="896130072065900789">"Plmn тизмесин өзгөртө алат"</string>
+    <string name="plmn_change_button" msgid="4776495408690606074">"САКТОО"</string>
+    <string name="plmn_restore_button" msgid="353201307416551274">"КАЛЫБЫНА КЕЛТИРҮҮ"</string>
+    <string name="response_code_textview" msgid="7558995298281883364">"Жооп коду:"</string>
+    <string name="server_response_textview" msgid="9059246990182640071">"Сервердин жообу:"</string>
+    <string name="response_200" msgid="8428102249891629053">"Сервердин жооп коду текст менен 200 деп коюлду."</string>
+    <string name="response_no" msgid="9176850012409530616">"Сервердин жооп коду Жоопсуз деп коюлду."</string>
+    <string name="response_500" msgid="7093352648551561497">"Сервердин жооп коду 500 деп коюлду."</string>
+    <string name="response_503" msgid="5882347843594885590">"Сервердин жооп коду Retry-After аталышы менен 503 деп коюлду."</string>
+    <string name="response_503_no_retry_after" msgid="6916161257226872448">"Сервердин жооп коду Retry-After аталышысыз 503 деп коюлду."</string>
+    <string name="current_plmn" msgid="6531059723207151310">"Учурдагы Plmn:"</string>
+    <string name="refresh_button" msgid="4833927124437250565">"Жаңыртуу"</string>
+  <string-array name="entitlement_status_for_satellite">
+    <item msgid="2022601967050498274">"КҮЙҮК"</item>
+    <item msgid="359611466767264179">"ӨЧҮК"</item>
+    <item msgid="272686018752211739">"ШАЙКЕШ КЕЛБЕЙТ"</item>
+    <item msgid="2230066359974626080">"ДЕМИЛГЕЛЕНҮҮДӨ"</item>
+  </string-array>
+  <string-array name="response">
+    <item msgid="1082041511995374203">"200"</item>
+    <item msgid="8666345372187526327">"ЖОК"</item>
+    <item msgid="6929055236798363234">"500"</item>
+    <item msgid="1898895770647738117">"503"</item>
+    <item msgid="2420418633305128093">"503_NO_RETRY_AFTER"</item>
+  </string-array>
+</resources>

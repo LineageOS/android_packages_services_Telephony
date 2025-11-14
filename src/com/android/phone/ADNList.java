@@ -35,6 +35,8 @@ import android.widget.CursorAdapter;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
+import com.android.phone.settings.SettingsConstants;
+
 /**
  * Abbreviated Dial Numbers (ADN) list activity for the Phone app. By default, this class will show
  * you all Service Dialing Numbers (SDN) that are supported by a service provider.  SDNs are a form
@@ -80,6 +82,7 @@ public class ADNList extends ListActivity {
     @Override
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
+        SettingsConstants.setupEdgeToEdge(this);
         getWindow().requestFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         getWindow().addSystemFlags(
                 android.view.WindowManager.LayoutParams

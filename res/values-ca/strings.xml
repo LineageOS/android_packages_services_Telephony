@@ -459,6 +459,8 @@
     <string name="tty_mode_option_summary" msgid="4770510287236494371">"Defineix el mode TTY"</string>
     <string name="auto_retry_mode_title" msgid="2985801935424422340">"Reintent automàtic"</string>
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"Activa el mode de reintent automàtic"</string>
+    <string name="vibrating_for_outgoing_call_accepted_title" msgid="647945514737734657">"Vibració de trucada sortint acceptada"</string>
+    <string name="vibrating_for_outgoing_call_accepted_summary" msgid="906112327196063688">"Activa el mode de vibració per a les trucades sortints acceptades"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"No es pot canviar al mode de TTY durant una videotrucada"</string>
     <string name="menu_add" msgid="5616487894975773141">"Afegeix un contacte"</string>
     <string name="menu_edit" msgid="3593856941552460706">"Edita el contacte"</string>
@@ -537,8 +539,7 @@
     <string name="notification_voicemail_no_vm_number" msgid="3423686009815186750">"Número de la bústia de veu desconegut"</string>
     <string name="notification_network_selection_title" msgid="255595526707809121">"Sense servei"</string>
     <string name="notification_network_selection_text" msgid="553288408722427659">"La xarxa seleccionada (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) no està disponible"</string>
-    <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Per fer una trucada, activa la xarxa mòbil o desactiva el mode d\'avió o el mode d\'estalvi de bateria."</string>
-    <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Per fer una trucada, desactiva el mode d\'avió."</string>
+    <string name="incall_error_power_off" msgid="8131672264311208673">"Per fer una trucada, desactiva el mode d\'avió."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Per fer una trucada, desactiva el mode d\'avió o connecta amb una xarxa sense fil."</string>
     <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"El telèfon està massa calent"</b>\n\n"No es pot completar aquesta trucada. Torna-ho a provar quan el telèfon es refredi.\n\nPots fer trucades d\'emergència igualment."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Surt del mode de devolució de trucada d\'emergència per fer un altre tipus de trucada."</string>
@@ -846,15 +847,22 @@
     <string name="removable_esim_string" msgid="7931369811671787649">"Defineix l\'eSIM extraïble com a opció predeterminada"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"Potència del senyal mòbil"</string>
     <string name="simulate_out_of_service_string" msgid="7787925611727597193">"Simula que està fora de servei (només per a la compilació de depuració)"</string>
+    <string name="simulate_out_of_service_label" msgid="3563376136603403714">"Simula que està fora de servei"</string>
     <string name="enforce_satellite_channel_string" msgid="295306734591329892">"Força el canal LTE del satèl·lit de camp (només per a la compilació de depuració)"</string>
+    <string name="enforce_satellite_channel_label" msgid="8212349350110213468">"Força el canal LTE del satèl·lit de camp"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"Mode de satèl·lit d\'un operador de telefonia mòbil simulat (només per a la compilació de depuració)"</string>
+    <string name="mock_carrier_roaming_satellite_label" msgid="2052656038544917979">"Simulació"</string>
+    <string name="choose_satellite_data_mode_label" msgid="7403013160079828226">"Mode de dades de satèl·lit simulat"</string>
     <string name="choose_satellite_data_mode" msgid="7526640708482601423">"Mode de dades de satèl·lit simulat (només per a la depuració)"</string>
     <string name="satellite_data_restricted_string" msgid="8729402021843670205">"Restringit"</string>
     <string name="satellite_data_constrained_string" msgid="4594481912792241881">"Limitat"</string>
     <string name="satellite_data_unConstrained_string" msgid="3957333012703408141">"Il·limitat"</string>
     <string name="esos_satellite_string" msgid="7274794226125968657">"Provar el mode eSOS de satèl·lit real (només per a la compilació de depuració)"</string>
+    <string name="esos_satellite_label" msgid="4640776617354089322">"Prova el mode eSOS de satèl·lit real"</string>
     <string name="satellite_enable_non_emergency_mode_string" msgid="9005332650950637932">"Prova el mode no eSOS de satèl·lit real (només per a la compilació de depuració)"</string>
+    <string name="satellite_enable_non_emergency_mode_label" msgid="2958365217334494066">"Prova el mode no eSOS de satèl·lit real"</string>
     <string name="demo_esos_satellite_string" msgid="2941811482168709730">"Provar el mode de demostració d\'eSOS de satèl·lit (només per a la compilació de depuració)"</string>
+    <string name="demo_esos_satellite_label" msgid="1538811851871457718">"Prova el mode de demostració d\'eSOS de satèl·lit"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"Mostra la llibreta d\'adreces de la SIM"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"Mostra els números de marcatge fix"</string>
     <string name="radioInfo_menu_viewSDN" msgid="2613431584522392842">"Mostra els números de marcatge de serveis"</string>
@@ -934,6 +942,13 @@
     <string name="band_mode_succeeded" msgid="2230018000534761063">"Correcte"</string>
     <string name="phone_info_label" product="tablet" msgid="7477478709388477397">"Informació de la tauleta"</string>
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Informació del telèfon"</string>
+    <string name="tab_title_device_details" msgid="6988777232978544580">"DETALLS DEL DISPOSITIU"</string>
+    <string name="tab_title_data_network" msgid="3959510345511877717">"DADES I XARXA"</string>
+    <string name="tab_title_satellite" msgid="3973515984497023639">"SATÈL·LIT"</string>
+    <string name="tab_title_ims" msgid="8386374556214247042">"IMS"</string>
+    <string name="phone0_title" msgid="8961115386055876486">"Telèfon 0"</string>
+    <string name="phone1_title" msgid="8685542469651636602">"Telèfon 1"</string>
+    <string name="phone_info_label_v2" msgid="5651422721242779990">"Informació del telèfon V2"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Informació de serveis de l\'operador"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Activa els serveis de l\'operador"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"El senyal del Bluetooth és feble. Fes servir l\'altaveu."</string>
@@ -947,9 +962,18 @@
     <string name="radio_info_data_view_satellite_config" msgid="343120041798242877">"Mostra la configuració del satèl·lit"</string>
     <string name="satellite_config_viewer" msgid="5128698910841573398">"Visualitzador de configuració del satèl·lit"</string>
     <string name="satellite_config_version_label" msgid="1153447193166314791">"versió:"</string>
+    <string name="satellite_config_version_for_skylo_label" msgid="7068241597009832840">"Versió de Skylo:"</string>
+    <string name="satellite_max_allowed_data_mode_label" msgid="1808484802651916339">"Mode de màxim de dades permès:"</string>
+    <string name="satellite_config_version_for_starlink_label" msgid="7984209491963621773">"Versió de Starlink:"</string>
     <string name="satellite_config_service_type_label" msgid="21749170241956082">"subId/plmn/servicetype:"</string>
     <string name="satellite_config_allow_access_label" msgid="3806779900418131140">"permet l\'accés:"</string>
     <string name="satellite_config_country_code_label" msgid="1389520866423113166">"codis de país:"</string>
     <string name="satellite_config_size_of_sats2_dat_label" msgid="671746449054349967">"mida de sats2.dat:"</string>
     <string name="satellite_config_json_label" msgid="4577292884014824105">"fitxer JSON de configuració d\'accés per satèl·lit:"</string>
+    <string name="nb_iot_config_viewer" msgid="1427724000750959794">"Visualitzador de configuració d\'NB-IOT"</string>
+    <string name="ims_registration_value" msgid="3195763957048314776">"Registre d\'IMS:"</string>
+    <string name="voice_over_lte_value" msgid="1317318233598235658">"Veu per LTE:"</string>
+    <string name="voice_over_wifi_value" msgid="4958925307364093356">"Veu per Wi-Fi:"</string>
+    <string name="video_calling_value" msgid="156519861684819255">"Videotrucades:"</string>
+    <string name="ut_interface_value" msgid="9038789989481463774">"Interfície d\'UT:"</string>
 </resources>

@@ -459,6 +459,8 @@
     <string name="tty_mode_option_summary" msgid="4770510287236494371">"TTY ম\'ড ছেট কৰক"</string>
     <string name="auto_retry_mode_title" msgid="2985801935424422340">"স্বয়ংক্ৰিয় পুনৰ প্ৰয়াস"</string>
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"স্বয়ংক্ৰিয় পুনৰ প্ৰয়াস সক্ষম কৰক"</string>
+    <string name="vibrating_for_outgoing_call_accepted_title" msgid="647945514737734657">"গ্ৰহণ কৰা বহিৰ্গামী কলৰ বাবে কম্পন"</string>
+    <string name="vibrating_for_outgoing_call_accepted_summary" msgid="906112327196063688">"গ্ৰহণ কৰা বহিৰ্গামী কলৰ বাবে কম্পন ম’ড সক্ষম কৰক"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"ভিডিঅ\' কল চলি থাকোঁতে TTY ম\'ড সলনি কৰিবলৈ অনুমতি দিয়া নহয়"</string>
     <string name="menu_add" msgid="5616487894975773141">"সম্পর্ক যোগ কৰক"</string>
     <string name="menu_edit" msgid="3593856941552460706">"সম্পৰ্ক সম্পাদনা কৰক"</string>
@@ -537,8 +539,7 @@
     <string name="notification_voicemail_no_vm_number" msgid="3423686009815186750">"ভইচমেইলৰ নম্বৰ অজ্ঞাত"</string>
     <string name="notification_network_selection_title" msgid="255595526707809121">"কোনো সেৱা নাই"</string>
     <string name="notification_network_selection_text" msgid="553288408722427659">"বাছনি কৰা (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) নেটৱৰ্কটো উপলব্ধ নহয়"</string>
-    <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"কল কৰিবৰ কাৰণে ম’বাইল নেটৱৰ্ক অন কৰক, এয়াৰপ্লেইন ম’ড অফ কৰক বা বেটাৰী সঞ্চয়কাৰী ম’ড অফ কৰক।"</string>
-    <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"কল কৰিবৰ কাৰণে এয়াৰপ্লেইন ম\'ড অফ কৰক।"</string>
+    <string name="incall_error_power_off" msgid="8131672264311208673">"কল কৰিবৰ কাৰণে এয়াৰপ্লেইন ম\'ড অফ কৰক।"</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"কল কৰিবৰ কাৰণে এয়াৰপ্লেইন ম\'ড অফ কৰক বা কোনো বেতাঁৰ নেটৱৰ্কৰ সৈতে সংযোগ কৰক।"</string>
     <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"ফ’নটো বেছি গৰম হৈছে"</b>\n\n"এই কলটো সম্পূৰ্ণ কৰিব নোৱাৰি। আপোনাৰ ফ’নটো ঠাণ্ডা হোৱাৰ পাছত পুনৰ চেষ্টা কৰক।\n\nআপুনি তথাপি জৰুৰীকালীন কল কৰিব পাৰিব।"</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"সাধাৰণ কল কৰিবৰ কাৰণে জৰুৰীকালীন কলবেক ম\'ডৰ পৰা বাহিৰ হওক।"</string>
@@ -846,15 +847,22 @@
     <string name="removable_esim_string" msgid="7931369811671787649">"আঁতৰাব পৰা ই-ছিম ডিফ’ল্ট হিচাপে ছেট কৰক"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"ম’বাইলৰ ৰেডিঅ’ পাৱাৰ"</string>
     <string name="simulate_out_of_service_string" msgid="7787925611727597193">"সেৱাত নাই ছিমুলে’ট কৰক (কেৱল ডিবাগ বিল্ড)"</string>
+    <string name="simulate_out_of_service_label" msgid="3563376136603403714">"ছিমুলে’ট কৰাৰ সুবিধাটো সেৱাত নাই"</string>
     <string name="enforce_satellite_channel_string" msgid="295306734591329892">"Force Camp উপগ্ৰহ LTE চেনেল (কেৱল ডিবাগ বিল্ড)"</string>
+    <string name="enforce_satellite_channel_label" msgid="8212349350110213468">"ফ’ৰ্চ কেম্প উপগ্ৰহ LTE চেনেল"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"নকল বাহক উপগ্ৰহ ম’ড (কেৱল ডিবাগ বিল্ড)"</string>
+    <string name="mock_carrier_roaming_satellite_label" msgid="2052656038544917979">"নকল"</string>
+    <string name="choose_satellite_data_mode_label" msgid="7403013160079828226">"নকল উপগ্ৰহ ডেটা ম’ড"</string>
     <string name="choose_satellite_data_mode" msgid="7526640708482601423">"নকল উপগ্ৰহ ডেটা ম’ড (কেৱল ডিবাগ)"</string>
     <string name="satellite_data_restricted_string" msgid="8729402021843670205">"প্ৰতিবন্ধিত"</string>
     <string name="satellite_data_constrained_string" msgid="4594481912792241881">"সীমিত"</string>
     <string name="satellite_data_unConstrained_string" msgid="3957333012703408141">"অসীমিত"</string>
     <string name="esos_satellite_string" msgid="7274794226125968657">"বাস্তৱিক উপগ্ৰহৰ eSOS ম’ড পৰীক্ষা কৰক (কেৱল ডিবাগ বিল্ড)"</string>
+    <string name="esos_satellite_label" msgid="4640776617354089322">"বাস্তৱিক উপগ্ৰহৰ eSOS ম’ড পৰীক্ষা কৰক"</string>
     <string name="satellite_enable_non_emergency_mode_string" msgid="9005332650950637932">"বাস্তৱিক উপগ্ৰহৰ অনা eSOS ম’ড পৰীক্ষা কৰক (কেৱল ডিবাগ বিল্ড)"</string>
+    <string name="satellite_enable_non_emergency_mode_label" msgid="2958365217334494066">"বাস্তৱিক উপগ্ৰহৰ অনা eSOS ম’ড পৰীক্ষা কৰক"</string>
     <string name="demo_esos_satellite_string" msgid="2941811482168709730">"উপগ্ৰহৰ eSOS ম’ডৰ ডেম’ পৰীক্ষা কৰক (কেৱল ডিবাগ বিল্ড)"</string>
+    <string name="demo_esos_satellite_label" msgid="1538811851871457718">"ডেম’ উপগ্ৰহৰ eSOS ম’ড পৰীক্ষা কৰক"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"ছিম ঠিকনা সূচী চাওক"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"ফিক্সড্ ডায়েলিং নম্বৰসমূহ চাওক"</string>
     <string name="radioInfo_menu_viewSDN" msgid="2613431584522392842">"সেৱা ডায়েলিং নম্বৰসমূহ চাওক"</string>
@@ -934,6 +942,13 @@
     <string name="band_mode_succeeded" msgid="2230018000534761063">"সফল"</string>
     <string name="phone_info_label" product="tablet" msgid="7477478709388477397">"টেবলেটৰ তথ্য"</string>
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"ফ\'নৰ তথ্য"</string>
+    <string name="tab_title_device_details" msgid="6988777232978544580">"ডিভাইচৰ সবিশেষ"</string>
+    <string name="tab_title_data_network" msgid="3959510345511877717">"ডেটা আৰু নেটৱৰ্ক"</string>
+    <string name="tab_title_satellite" msgid="3973515984497023639">"উপগ্ৰহ"</string>
+    <string name="tab_title_ims" msgid="8386374556214247042">"IMS"</string>
+    <string name="phone0_title" msgid="8961115386055876486">"ফ’ন ০"</string>
+    <string name="phone1_title" msgid="8685542469651636602">"ফ’ন ১"</string>
+    <string name="phone_info_label_v2" msgid="5651422721242779990">"ফ’ন তথ্য V2"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"বাহকৰ প্ৰ’ভিজনিং তথ্য"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"বাহকৰ প্ৰ’ভিজনিং সূচনা কৰক"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"আপোনাৰ ব্লুটুথৰ ছিগনেল দুৰ্বল। স্পীকাৰফ’নলৈ সলনি কৰি চাওক।"</string>
@@ -947,9 +962,18 @@
     <string name="radio_info_data_view_satellite_config" msgid="343120041798242877">"উপগ্ৰহৰ কনফিগাৰেশ্বন দেখুৱাওক"</string>
     <string name="satellite_config_viewer" msgid="5128698910841573398">"উপগ্ৰহৰ কনফিগাৰেশ্বন ভিউৱাৰ"</string>
     <string name="satellite_config_version_label" msgid="1153447193166314791">"সংস্কৰণ:"</string>
+    <string name="satellite_config_version_for_skylo_label" msgid="7068241597009832840">"Skyloৰ সংস্কৰণ:"</string>
+    <string name="satellite_max_allowed_data_mode_label" msgid="1808484802651916339">"সৰ্বোচ্চ অনুমোদিত ডেটা ম’ড:"</string>
+    <string name="satellite_config_version_for_starlink_label" msgid="7984209491963621773">"Starlinkৰ সংস্কৰণ:"</string>
     <string name="satellite_config_service_type_label" msgid="21749170241956082">"subId/plmn/servicetype:"</string>
     <string name="satellite_config_allow_access_label" msgid="3806779900418131140">"allow_access:"</string>
     <string name="satellite_config_country_code_label" msgid="1389520866423113166">"দেশৰ ক’ড:"</string>
     <string name="satellite_config_size_of_sats2_dat_label" msgid="671746449054349967">"sats2.datৰ আকাৰ:"</string>
     <string name="satellite_config_json_label" msgid="4577292884014824105">"উপগ্ৰহৰ এক্সেছৰ কনফিগাৰেশ্বন json:"</string>
+    <string name="nb_iot_config_viewer" msgid="1427724000750959794">"NB-IOT কনফিগাৰেশ্বন ভিউৱাৰ"</string>
+    <string name="ims_registration_value" msgid="3195763957048314776">"IMS পঞ্জীয়ন:"</string>
+    <string name="voice_over_lte_value" msgid="1317318233598235658">"ভইচ অ’ভাৰ LTE:"</string>
+    <string name="voice_over_wifi_value" msgid="4958925307364093356">"ভইচ অ’ভাৰ ৱাই-ফাই:"</string>
+    <string name="video_calling_value" msgid="156519861684819255">"ভিডিঅ’ কলিং:"</string>
+    <string name="ut_interface_value" msgid="9038789989481463774">"UT ইণ্টাৰফে’চ:"</string>
 </resources>

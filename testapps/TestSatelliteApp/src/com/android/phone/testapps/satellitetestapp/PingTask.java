@@ -17,53 +17,91 @@
 package com.android.phone.testapps.satellitetestapp;
 
 import android.net.Network;
-import android.os.AsyncTask;
 import android.util.Log;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.Scanner;
 
-class PingTask extends AsyncTask<Network, Integer, Integer> {
-  protected Integer doInBackground(Network... network) {
-    ping(network[0]);
-    return 0;
-  }
-  String ping(Network network) {
-    URL url = null;
-    try {
-      url = new URL("http://www.google.com");
-    } catch (Exception e) {
-      Log.d("SatelliteDataConstrained", "exception: " + e);
-    }
-    if (url != null) {
-      try {
-        Log.d("SatelliteDataConstrained", "ping " + url);
-        String result = httpGet(network, url);
-        Log.d("SatelliteDataConstrained", "Ping Success");
-        return result;
-      } catch (Exception e) {
-        Log.d("SatelliteDataConstrained", "exception: " + e);
-      }
-    }
-    return null;
-  }
 
-  /**
-   * Performs a HTTP GET to the specified URL on the specified Network, and returns
-   * the response body decoded as UTF-8.
-   */
-  private static String httpGet(Network network, URL httpUrl) throws IOException {
-    HttpURLConnection connection = (HttpURLConnection) network.openConnection(httpUrl);
-    try {
-      InputStream inputStream = connection.getInputStream();
-      Log.d("httpGet", "httpUrl + " + httpUrl);
-      Scanner scanner = new Scanner(inputStream).useDelimiter("\\A");
-      return scanner.hasNext() ? scanner.next() : "";
-    } finally {
-      connection.disconnect();
+class PingTask{
+    private static final String PING_TARGET_HOST = "www.google.com";
+    private static final int PING_TIMEOUT_SECONDS = 20;
+
+    public String ping(Network network) {
+        URL url = null;
+        try {
+            url = new URL("http://www.google.com");
+        } catch (Exception e) {
+            Log.d("PingTask", "exception: " + e);
+        }
+        if (url != null) {
+            try {
+                Log.d("PingTask", "ping " + url);
+                String result = httpGet(network, url);
+                Log.d("PingTask", "Ping Success");
+                return result;
+            } catch (Exception e) {
+                Log.d("PingTask", "exception: " + e);
+            }
+        }
+        return null;
+
     }
-  }
+
+    /**
+     * Performs a HTTP GET to the specified URL on the specified Network, and returns the response
+     * body decoded as UTF-8.
+     */
+    private static String httpGet(Network network, URL httpUrl) throws IOException {
+        HttpURLConnection connection = (HttpURLConnection) network.openConnection(httpUrl);
+        try {
+            InputStream inputStream = connection.getInputStream();
+            Log.d("httpGet", "httpUrl + " + httpUrl);
+            return "Ping Success " + httpUrl;
+        } finally {
+            connection.disconnect();
+        }
+    }
+
+    public String pingIcmp() {
+        String command = "/system/bin/ping -c 1 -W " + PING_TIMEOUT_SECONDS + " "
+                + PING_TARGET_HOST;
+        try {
+            Process process = Runtime.getRuntime().exec(command);
+            try (InputStream inputStream = process.getInputStream();
+                 java.util.Scanner s =
+                         new java.util.Scanner(inputStream).useDelimiter("\\A")) {
+                String stdout = s.hasNext() ? s.next() : "";
+                if (!stdout.isEmpty()) {
+                    Log.d("PingTask", "Ping stdout: " + stdout);
+                }
+            }
+
+            try (InputStream errorStream = process.getErrorStream();
+                 java.util.Scanner s =
+                         new java.util.Scanner(errorStream).useDelimiter("\\A")) {
+                String stderr = s.hasNext() ? s.next() : "";
+                if (!stderr.isEmpty()) {
+                    Log.e("PingTask", "Ping stderr: " + stderr);
+                }
+            }
+
+            int result = process.waitFor();
+            Log.d("PingTask", "result: " + result);
+            if (result != 0) {
+                Log.d("PingTask", "Ping failed");
+                return null;
+            } else {
+                Log.d("PingTask", "Ping Passed");
+                return Integer.toString(result);
+            }
+        } catch (Exception e) {
+            Log.d("PingTask", "exception: " + e);
+        }
+
+        return null;
+    }
+
 }

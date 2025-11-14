@@ -459,6 +459,8 @@
     <string name="tty_mode_option_summary" msgid="4770510287236494371">"TTY modunu ayarla"</string>
     <string name="auto_retry_mode_title" msgid="2985801935424422340">"Otomatik yeniden deneme"</string>
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"Otomatik Yeniden Deneme modunu etkinleştir"</string>
+    <string name="vibrating_for_outgoing_call_accepted_title" msgid="647945514737734657">"Giden arama kabul edildiğinde titreşim"</string>
+    <string name="vibrating_for_outgoing_call_accepted_summary" msgid="906112327196063688">"Giden arama kabul edildiğinde titreşim modunu etkinleştir"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"Video görüşmesi sırasında TTY Mod değişikliğine izin verilmiyor"</string>
     <string name="menu_add" msgid="5616487894975773141">"Kişi ekle"</string>
     <string name="menu_edit" msgid="3593856941552460706">"Kişiyi düzenle"</string>
@@ -537,8 +539,7 @@
     <string name="notification_voicemail_no_vm_number" msgid="3423686009815186750">"Sesli mesaj numarası bilinmiyor"</string>
     <string name="notification_network_selection_title" msgid="255595526707809121">"Hizmet yok"</string>
     <string name="notification_network_selection_text" msgid="553288408722427659">"Seçili ağ (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) kullanılamıyor"</string>
-    <string name="incall_error_power_off" product="watch" msgid="7191184639454113633">"Telefon etmek için mobil ağı açın, uçak modunu veya pil tasarrufu modunu kapatın."</string>
-    <string name="incall_error_power_off" product="default" msgid="8131672264311208673">"Telefon etmek için uçak modunu kapatın."</string>
+    <string name="incall_error_power_off" msgid="8131672264311208673">"Telefon etmek için uçak modunu kapatın."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Telefon etmek için uçak modunu kapatın veya kablosuz ağa bağlanın."</string>
     <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"Telefon çok ısındı"</b>\n\n"Bu arama tamamlanamıyor. Telefonunuz soğuyana kadar bekleyip tekrar deneyin.\n\nBu süre zarfında acil durum aramaları yapabilirsiniz."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Acil durum çağrısı dışında bir çağrı yapmak için acil durumda geri aranma modundan çıkın."</string>
@@ -846,15 +847,22 @@
     <string name="removable_esim_string" msgid="7931369811671787649">"Çıkarılabilir eSIM\'i Varsayılan Yap"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"Mobil Radyo Gücü"</string>
     <string name="simulate_out_of_service_string" msgid="7787925611727597193">"Hizmet Dışı Simülasyonu (Yalnızca Hata Ayıklama Derlemesi)"</string>
+    <string name="simulate_out_of_service_label" msgid="3563376136603403714">"Hizmet Dışı Simülasyonu"</string>
     <string name="enforce_satellite_channel_string" msgid="295306734591329892">"Kamp uydusu LTE kanalını zorunlu kılma (yalnızca hata ayıklama derlemesi)"</string>
+    <string name="enforce_satellite_channel_label" msgid="8212349350110213468">"Kamp uydusu LTE kanalını zorunlu kılın"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"Örnek operatör uydu modu (yalnızca hata ayıklama derlemesi)"</string>
+    <string name="mock_carrier_roaming_satellite_label" msgid="2052656038544917979">"Taklit"</string>
+    <string name="choose_satellite_data_mode_label" msgid="7403013160079828226">"Uydu verileri modunu taklit edin"</string>
     <string name="choose_satellite_data_mode" msgid="7526640708482601423">"Uydu verileri modunu taklit et (yalnızca hata ayıklama)"</string>
     <string name="satellite_data_restricted_string" msgid="8729402021843670205">"Kısıtlı"</string>
     <string name="satellite_data_constrained_string" msgid="4594481912792241881">"Sınırlı"</string>
     <string name="satellite_data_unConstrained_string" msgid="3957333012703408141">"Sınırsız"</string>
     <string name="esos_satellite_string" msgid="7274794226125968657">"Gerçek uydu eSOS modunu test et (yalnızca hata ayıklama derlemesi)"</string>
+    <string name="esos_satellite_label" msgid="4640776617354089322">"Gerçek uydu eSOS modunu test edin"</string>
     <string name="satellite_enable_non_emergency_mode_string" msgid="9005332650950637932">"Gerçek uydu üzerinde eSOS olmayan modu test et (yalnızca hata ayıklama derlemesi)"</string>
+    <string name="satellite_enable_non_emergency_mode_label" msgid="2958365217334494066">"Gerçek uydu üzerinde eSOS olmayan modu test edin"</string>
     <string name="demo_esos_satellite_string" msgid="2941811482168709730">"Demo uydu üzerinde eSOS modunu test et (yalnızca hata ayıklama derlemesi)"</string>
+    <string name="demo_esos_satellite_label" msgid="1538811851871457718">"Demo uydu üzerinde eSOS modunu test edin"</string>
     <string name="radioInfo_menu_viewADN" msgid="4533179730908559846">"SIM Adres Defterini Görüntüle"</string>
     <string name="radioInfo_menu_viewFDN" msgid="1847236480527032061">"Sabit Arama Numaralarını Görüntüle"</string>
     <string name="radioInfo_menu_viewSDN" msgid="2613431584522392842">"Hizmet Arama Numaralarını Görüntüle"</string>
@@ -934,6 +942,13 @@
     <string name="band_mode_succeeded" msgid="2230018000534761063">"Başarılı"</string>
     <string name="phone_info_label" product="tablet" msgid="7477478709388477397">"Tablet bilgileri"</string>
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Telefon bilgileri"</string>
+    <string name="tab_title_device_details" msgid="6988777232978544580">"CİHAZ AYRINTILARI"</string>
+    <string name="tab_title_data_network" msgid="3959510345511877717">"VERİ VE AĞ"</string>
+    <string name="tab_title_satellite" msgid="3973515984497023639">"UYDU"</string>
+    <string name="tab_title_ims" msgid="8386374556214247042">"IMS"</string>
+    <string name="phone0_title" msgid="8961115386055876486">"Telefon 0"</string>
+    <string name="phone1_title" msgid="8685542469651636602">"Telefon 1"</string>
+    <string name="phone_info_label_v2" msgid="5651422721242779990">"Telefon Bilgileri V2"</string>
     <string name="carrier_provisioning" msgid="2668065041869578376">"Operatör Temel Hazırlık Bilgileri"</string>
     <string name="trigger_carrier_provisioning" msgid="1301829588620638234">"Tetikleyici Operatör Temel Hazırlığı"</string>
     <string name="call_quality_notification_bluetooth_details" msgid="8348950331707346711">"Bluetooth sinyaliniz zayıf. Hoparlöre geçmeyi deneyin."</string>
@@ -947,9 +962,18 @@
     <string name="radio_info_data_view_satellite_config" msgid="343120041798242877">"Uydu Yapılandırmasını Göster"</string>
     <string name="satellite_config_viewer" msgid="5128698910841573398">"Uydu Yapılandırması Görüntüleyici"</string>
     <string name="satellite_config_version_label" msgid="1153447193166314791">"sürüm:"</string>
+    <string name="satellite_config_version_for_skylo_label" msgid="7068241597009832840">"Skylo sürümü:"</string>
+    <string name="satellite_max_allowed_data_mode_label" msgid="1808484802651916339">"İzin verilen maksimum veri modu:"</string>
+    <string name="satellite_config_version_for_starlink_label" msgid="7984209491963621773">"Starlink sürümü:"</string>
     <string name="satellite_config_service_type_label" msgid="21749170241956082">"subId/plmn/servicetype:"</string>
     <string name="satellite_config_allow_access_label" msgid="3806779900418131140">"erişime_izin_ver:"</string>
     <string name="satellite_config_country_code_label" msgid="1389520866423113166">"ülke kodları:"</string>
     <string name="satellite_config_size_of_sats2_dat_label" msgid="671746449054349967">"sats2.dat boyutu:"</string>
     <string name="satellite_config_json_label" msgid="4577292884014824105">"uydu erişim yapılandırması JSON dosyası:"</string>
+    <string name="nb_iot_config_viewer" msgid="1427724000750959794">"NB-IOT Yapılandırması Görüntüleyici"</string>
+    <string name="ims_registration_value" msgid="3195763957048314776">"IMS Kaydı:"</string>
+    <string name="voice_over_lte_value" msgid="1317318233598235658">"LTE üzerinden ses:"</string>
+    <string name="voice_over_wifi_value" msgid="4958925307364093356">"Kablosuz bağlantı üzerinden sesli arama:"</string>
+    <string name="video_calling_value" msgid="156519861684819255">"Görüntülü Görüşme:"</string>
+    <string name="ut_interface_value" msgid="9038789989481463774">"UT arayüzü:"</string>
 </resources>

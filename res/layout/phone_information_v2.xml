@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+**
+** Copyright 2025, The Android Open Source Project
+**
+** Licensed under the Apache License, Version 2.0 (the "License");
+** you may not use this file except in compliance with the License.
+** You may obtain a copy of the License at
+**
+**     http://www.apache.org/licenses/LICENSE-2.0
+**
+** Unless required by applicable law or agreed to in writing, software
+** distributed under the License is distributed on an "AS IS" BASIS,
+** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+** See the License for the specific language governing permissions and
+** limitations under the License.
+*/
+-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".PhoneInformationV2">
+
+  <FrameLayout
+      android:id="@+id/content_container"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_above="@id/manual_bottom_nav_separator"
+      android:clipToPadding="false"/>
+  <View
+      android:id="@+id/manual_bottom_nav_separator"
+      android:layout_width="match_parent"
+      android:layout_height="1dp"
+      android:background="?android:attr/listDivider"
+      android:layout_above="@id/bottom_nav_scroll_view"/>
+
+  <HorizontalScrollView
+      android:id="@+id/bottom_nav_scroll_view"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_alignParentBottom="true"
+      android:fillViewport="true">
+
+    <LinearLayout
+      android:id="@+id/manual_bottom_nav_bar"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      android:background="?android:attr/windowBackground"
+      android:paddingTop="4dp"
+      android:paddingBottom="4dp">
+
+      <LinearLayout
+          android:id="@+id/nav_item_one_container"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          android:gravity="center"
+          android:minWidth="110dp"
+          android:padding="8dp"
+          android:background="?android:attr/selectableItemBackground"
+          android:clickable="true"
+          android:focusable="true">
+
+        <ImageView
+            android:id="@+id/nav_item_one_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_sim_card_alt"
+            android:scaleType="fitCenter"
+            tools:ignore="ContentDescription" />
+        <TextView
+            android:id="@+id/nav_item_one_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tab_title_device_details"
+            android:textSize="12sp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="8dp"/>
+      </LinearLayout>
+
+      <View
+          android:layout_width="1dp"
+          android:layout_height="match_parent"
+          android:background="?android:attr/listDivider"
+          android:layout_marginTop="8dp"
+          android:layout_marginBottom="8dp"/>
+
+      <LinearLayout
+          android:id="@+id/nav_item_two_container"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          android:gravity="center"
+          android:padding="8dp"
+          android:minWidth="110dp"
+          android:background="?android:attr/selectableItemBackground"
+          android:clickable="true"
+          android:focusable="true">
+
+        <ImageView
+            android:id="@+id/nav_item_two_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_signal_cellular_alt_24px"
+            android:scaleType="fitCenter"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/nav_item_two_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tab_title_data_network"
+            android:textSize="12sp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="8dp"/>
+      </LinearLayout>
+
+      <View
+          android:layout_width="1dp"
+          android:layout_height="match_parent"
+          android:background="?android:attr/listDivider"
+          android:layout_marginTop="8dp"
+          android:layout_marginBottom="8dp"/>
+
+
+      <LinearLayout
+          android:id="@+id/nav_item_three_container"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          android:gravity="center"
+          android:padding="8dp"
+          android:minWidth="110dp"
+          android:background="?android:attr/selectableItemBackground"
+          android:clickable="true"
+          android:focusable="true">
+
+        <ImageView
+            android:id="@+id/nav_item_three_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_satellite_alt_24px"
+            android:scaleType="fitCenter"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/nav_item_three_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tab_title_satellite"
+            android:textSize="12sp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="8dp"/>
+      </LinearLayout>
+
+      <View
+          android:layout_width="1dp"
+          android:layout_height="match_parent"
+          android:background="?android:attr/listDivider"
+          android:layout_marginTop="8dp"
+          android:layout_marginBottom="8dp"/>
+
+      <LinearLayout
+          android:id="@+id/nav_item_four_container"
+          android:layout_width="wrap_content"
+          android:layout_height="match_parent"
+          android:orientation="vertical"
+          android:gravity="center"
+          android:padding="8dp"
+          android:minWidth="110dp"
+          android:background="?android:attr/selectableItemBackground"
+          android:clickable="true"
+          android:focusable="true">
+
+        <TextView
+            android:id="@+id/nav_item_four_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tab_title_ims"
+            android:textSize="28sp"
+            android:textAlignment="center"
+            android:gravity="center"/>
+      </LinearLayout>
+
+      <View
+          android:layout_width="1dp"
+          android:layout_height="match_parent"
+          android:background="?android:attr/listDivider"
+          android:layout_marginTop="8dp"
+          android:layout_marginBottom="8dp"/>
+
+    </LinearLayout>
+  </HorizontalScrollView>
+</RelativeLayout>

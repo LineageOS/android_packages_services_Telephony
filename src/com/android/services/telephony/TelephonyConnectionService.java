@@ -186,6 +186,18 @@ public class TelephonyConnectionService extends ConnectionService {
             TelephonyConnectionService.this.addTelephonyConference(mImsConference);
         }
         @Override
+        public void addConferenceFromConnection(ImsConference mImsConference,
+                TelephonyConnection connection) {
+            Connection conferenceHost = mImsConference.getConferenceHost();
+            if (conferenceHost instanceof TelephonyConnection) {
+                TelephonyConnection tcConferenceHost = (TelephonyConnection) conferenceHost;
+                tcConferenceHost.setTelephonyConnectionService(TelephonyConnectionService.this);
+                tcConferenceHost.setPhoneAccountHandle(mImsConference.getPhoneAccountHandle());
+            }
+            TelephonyConnectionService.this
+                    .addTelephonyConferenceFromConnection(mImsConference, connection);
+        }
+        @Override
         public void addExistingConnection(PhoneAccountHandle phoneAccountHandle,
                                           Connection connection) {
             TelephonyConnectionService.this
@@ -806,14 +818,12 @@ public class TelephonyConnectionService extends ConnectionService {
                 if (cause == android.telephony.DisconnectCause.EMERGENCY_TEMP_FAILURE
                         || cause == android.telephony.DisconnectCause.EMERGENCY_PERM_FAILURE) {
                     if (mEmergencyConnection != null) {
-                        if (Flags.hangupEmergencyCallForCrossSimRedialing()) {
-                            if (mEmergencyConnection.getOriginalConnection() != null) {
-                                if (mEmergencyConnection.getOriginalConnection()
-                                        .getState().isAlive()) {
-                                    mEmergencyConnection.hangup(cause);
-                                }
-                                return;
+                        if (mEmergencyConnection.getOriginalConnection() != null) {
+                            if (mEmergencyConnection.getOriginalConnection()
+                                    .getState().isAlive()) {
+                                mEmergencyConnection.hangup(cause);
                             }
+                            return;
                         }
                         boolean isPermanentFailure =
                                 cause == android.telephony.DisconnectCause.EMERGENCY_PERM_FAILURE;
@@ -1370,28 +1380,6 @@ public class TelephonyConnectionService extends ConnectionService {
                     }
                     return resultConnection;
                 } else {
-                    // If call sequencing is enabled, Telecom will take care of holding calls across
-                    // subscriptions if needed before delegating the connection creation over to
-                    // Telephony.
-                    if (mTelephonyManagerProxy.isConcurrentCallsPossible()
-                            && !mTelecomFlags.enableCallSequencing()) {
-                        Conferenceable c = maybeHoldCallsOnOtherSubs(request.getAccountHandle());
-                        if (c != null) {
-                            delayDialForOtherSubHold(phone, c, (success) -> {
-                                Log.d(this,
-                                        "onCreateOutgoingConn - delayDialForOtherSubHold"
-                                                + " success = " + success);
-                                if (success) {
-                                    placeOutgoingConnection(request, resultConnection,
-                                            phone);
-                                } else {
-                                    ((TelephonyConnection) resultConnection).hangup(
-                                            android.telephony.DisconnectCause.LOCAL);
-                                }
-                            });
-                            return resultConnection;
-                        }
-                    }
                     return placeOutgoingConnection(request, resultConnection, phone);
                 }
             } else {
@@ -1429,34 +1417,19 @@ public class TelephonyConnectionService extends ConnectionService {
                     resultConnection.getPhoneAccountHandle() == null
                             ? request.getAccountHandle()
                             : resultConnection.getPhoneAccountHandle();
-            if (shouldHoldForEmergencyCall(phone) && !mTelecomFlags.enableCallSequencing()) {
-                Conferenceable c = maybeHoldCallsOnOtherSubs(phoneAccountHandle);
-                if (c != null) {
-                    future = delayDialForOtherSubHold(phone, c, (success) -> {
-                        Log.i(this, "checkAndHoldOrDisconnectCallsOnOtherSubsForEmergencyCall"
-                                + " delayDialForOtherSubHold success = " + success);
-                        if (!success) {
-                            // Terminates the existing call to make way for the emergency call.
-                            hangup(c, android.telephony.DisconnectCause
-                                    .OUTGOING_EMERGENCY_CALL_PLACED);
-                        }
-                    });
-                }
-            } else {
-                Log.i(this, "checkAndHoldOrDisconnectCallsOnOtherSubsForEmergencyCall"
-                        + " disconnectAllCallsOnOtherSubs, phoneAccountExcluded: "
-                        + phoneAccountHandle);
-                // Disconnect any calls on other subscription as part of call sequencing. This will
-                // cover the shared data call case too when we have a call on the shared data sim
-                // as the call will always try to be placed on the sim in service. Refer to
-                // #isAvailableForEmergencyCalls.
-                List<Conferenceable> disconnectedConferenceables =
-                        disconnectAllConferenceablesOnOtherSubs(phoneAccountHandle);
-                future = delayDialForOtherSubDisconnects(phone, disconnectedConferenceables,
-                        (success) -> Log.i(this,
-                                "checkAndHoldOrDisconnectCallsOnOtherSubsForEmergencyCall"
-                                        + " delayDialForOtherSubDisconnects success = " + success));
-            }
+            Log.i(this, "checkAndHoldOrDisconnectCallsOnOtherSubsForEmergencyCall"
+                    + " disconnectAllCallsOnOtherSubs, phoneAccountExcluded: "
+                    + phoneAccountHandle);
+            // Disconnect any calls on other subscription as part of call sequencing. This will
+            // cover the shared data call case too when we have a call on the shared data sim
+            // as the call will always try to be placed on the sim in service. Refer to
+            // #isAvailableForEmergencyCalls.
+            List<Conferenceable> disconnectedConferenceables =
+                    disconnectAllConferenceablesOnOtherSubs(phoneAccountHandle);
+            future = delayDialForOtherSubDisconnects(phone, disconnectedConferenceables,
+                    (success) -> Log.i(this,
+                            "checkAndHoldOrDisconnectCallsOnOtherSubsForEmergencyCall"
+                                    + " delayDialForOtherSubDisconnects success = " + success));
         }
         return future;
     }
@@ -1849,10 +1822,6 @@ public class TelephonyConnectionService extends ConnectionService {
         if (connection == null) {
             return Connection.createCanceledConnection();
         } else {
-            // Add extra to call if answering this incoming call would cause an in progress call on
-            // another subscription to be disconnected.
-            maybeIndicateAnsweringWillDisconnect(connection, request.getAccountHandle());
-
             connection.setTtyEnabled(mDeviceState.isTtyModeEnabled(getApplicationContext()));
             return connection;
         }
@@ -3118,11 +3087,9 @@ public class TelephonyConnectionService extends ConnectionService {
                         == android.telephony.DisconnectCause.LOCAL;
 
         // Do not treat it as local hangup if it is a cross-sim redial.
-        if (Flags.hangupEmergencyCallForCrossSimRedialing()) {
-            isLocalHangup = isLocalHangup
-                    && overrideCause != android.telephony.DisconnectCause.EMERGENCY_TEMP_FAILURE
-                    && overrideCause != android.telephony.DisconnectCause.EMERGENCY_PERM_FAILURE;
-        }
+        isLocalHangup = isLocalHangup
+                && overrideCause != android.telephony.DisconnectCause.EMERGENCY_TEMP_FAILURE
+                && overrideCause != android.telephony.DisconnectCause.EMERGENCY_PERM_FAILURE;
 
         // If it is neither a local hangup nor a power off hangup, then reselect domain.
         if (c.getOriginalConnection() != null && (!isLocalHangup)
@@ -4665,6 +4632,19 @@ public class TelephonyConnectionService extends ConnectionService {
     }
 
     /**
+     * Adds a {@link Conference} to the telephony ConnectionService and registers a listener for
+     * changes to the conference. Reuses the original TelephonyConnection instead of creating a
+     * new one.
+     * @param conference The conference.
+     * @param connection The original Telephony connection.
+     */
+    public void addTelephonyConferenceFromConnection(@NonNull TelephonyConferenceBase conference,
+            @NonNull TelephonyConnection connection) {
+        addConferenceFromConnection(conference, connection);
+        conference.addTelephonyConferenceListener(mTelephonyConferenceListener);
+    }
+
+    /**
      * Sends a test device to device message on the active call which supports it.
      * Used exclusively from the telephony shell command to send a test message.
      *
@@ -4727,72 +4707,6 @@ public class TelephonyConnectionService extends ConnectionService {
         return origAccountHandle;
     }
 
-    /*
-     * Returns true if both existing connections on-device and the incoming connection support HOLD,
-     * false otherwise. Assumes that a TelephonyConference supports HOLD.
-     */
-    private boolean allCallsSupportHold(@NonNull TelephonyConnection incomingConnection) {
-        if (Flags.callExtraForNonHoldSupportedCarriers()) {
-            if (getAllConnections().stream()
-                    .filter(c ->
-                            // Exclude multiendpoint calls as they're not on this device.
-                            (c.getConnectionProperties() & Connection.PROPERTY_IS_EXTERNAL_CALL)
-                                    == 0
-                                    && (c.getConnectionCapabilities()
-                                    & Connection.CAPABILITY_SUPPORT_HOLD) != 0).count() == 0) {
-                return false;
-            }
-            if ((incomingConnection.getConnectionCapabilities()
-                    & Connection.CAPABILITY_SUPPORT_HOLD) == 0) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    /**
-     * For the passed in incoming {@link TelephonyConnection}, for non-dual active voice devices,
-     * adds {@link Connection#EXTRA_ANSWERING_DROPS_FG_CALL} if there are ongoing calls on another
-     * subscription (ie phone account handle) than the one passed in. For dual active voice devices,
-     * still sets the EXTRA if either subscription has connections that don't support hold.
-     * @param connection The connection.
-     * @param phoneAccountHandle The {@link PhoneAccountHandle} the incoming call originated on;
-     *                           this is passed in because
-     *                           {@link Connection#getPhoneAccountHandle()} is not set until after
-     *                           {@link ConnectionService#onCreateIncomingConnection(
-     *                           PhoneAccountHandle, ConnectionRequest)} returns.
-     */
-    public void maybeIndicateAnsweringWillDisconnect(@NonNull TelephonyConnection connection,
-            @NonNull PhoneAccountHandle phoneAccountHandle) {
-        // With sequencing, Telecom handles setting the extra.
-        if (mTelecomFlags.enableCallSequencing()) return;
-        if (isCallPresentOnOtherSub(phoneAccountHandle)) {
-            if (mTelephonyManagerProxy.isConcurrentCallsPossible()
-                    && allCallsSupportHold(connection)) {
-                return;
-            }
-            Log.i(this, "maybeIndicateAnsweringWillDisconnect; answering call %s will cause a call "
-                    + "on another subscription to drop.", connection.getTelecomCallId());
-            Bundle extras = new Bundle();
-            extras.putBoolean(Connection.EXTRA_ANSWERING_DROPS_FG_CALL, true);
-            connection.putExtras(extras);
-        }
-    }
-
-    /**
-     * Checks to see if there are calls present on a sub other than the one passed in.
-     * @param incomingHandle The new incoming connection {@link PhoneAccountHandle}
-     */
-    private boolean isCallPresentOnOtherSub(@NonNull PhoneAccountHandle incomingHandle) {
-        return getAllConnections().stream()
-                .filter(c ->
-                        // Exclude multiendpoint calls as they're not on this device.
-                        (c.getConnectionProperties() & Connection.PROPERTY_IS_EXTERNAL_CALL) == 0
-                        // Include any calls not on same sub as current connection.
-                        && !Objects.equals(c.getPhoneAccountHandle(), incomingHandle))
-                .count() > 0;
-    }
-
     /**
      * Where there are ongoing calls on another subscription other than the one specified,
      * disconnect these calls. This is used where there is an incoming call on one sub, but there
@@ -4848,185 +4762,6 @@ public class TelephonyConnectionService extends ConnectionService {
                         }
                     }
                 });
-    }
-
-    static boolean isStateActive(Conferenceable conferenceable) {
-        if (conferenceable instanceof Connection) {
-            Connection connection = (Connection) conferenceable;
-            return connection.getState() == Connection.STATE_ACTIVE;
-        } else if (conferenceable instanceof Conference) {
-            Conference conference = (Conference) conferenceable;
-            return conference.getState() == Connection.STATE_ACTIVE;
-        } else {
-            throw new IllegalArgumentException(
-                    "isStateActive(): Unexpected conferenceable! " + conferenceable);
-        }
-    }
-
-    static void onHold(Conferenceable conferenceable) {
-        if (conferenceable instanceof Connection) {
-            Connection connection = (Connection) conferenceable;
-            connection.onHold();
-        } else if (conferenceable instanceof Conference) {
-            Conference conference = (Conference) conferenceable;
-            conference.onHold();
-        } else {
-            throw new IllegalArgumentException(
-                    "onHold(): Unexpected conferenceable! " + conferenceable);
-        }
-    }
-
-    static void onUnhold(Conferenceable conferenceable) {
-        if (conferenceable instanceof Connection) {
-            Connection connection = (Connection) conferenceable;
-            connection.onUnhold();
-        } else if (conferenceable instanceof Conference) {
-            Conference conference = (Conference) conferenceable;
-            conference.onUnhold();
-        } else {
-            throw new IllegalArgumentException(
-                    "onUnhold(): Unexpected conferenceable! " + conferenceable);
-        }
-    }
-
-    private static void hangup(Conferenceable conferenceable, int code) {
-        if (conferenceable instanceof TelephonyConnection) {
-            ((TelephonyConnection) conferenceable).hangup(code);
-        } else if (conferenceable instanceof Conference) {
-            ((Conference) conferenceable).onDisconnect();
-        } else {
-            Log.w(LOG_TAG, "hangup(): Unexpected conferenceable! " + conferenceable);
-        }
-    }
-
-     /**
-     * Evaluates whether a connection or conference exists on subscriptions other than the one
-     * corresponding to the existing {@link PhoneAccountHandle}.
-     * @param connections all individual connections, including conference participants.
-     * @param conferences all conferences.
-     * @param currentHandle the existing call handle;
-     * @param telephonyManagerProxy the proxy to the {@link TelephonyManager} instance.
-     */
-    private static @Nullable Conferenceable maybeGetFirstConferenceableFromOtherSubscription(
-            @NonNull Collection<Connection> connections,
-            @NonNull Collection<Conference> conferences,
-            @NonNull PhoneAccountHandle currentHandle,
-            TelephonyManagerProxy telephonyManagerProxy) {
-        if (!telephonyManagerProxy.isConcurrentCallsPossible()) {
-            return null;
-        }
-
-        List<Conference> otherSubConferences = conferences.stream()
-                .filter(c ->
-                        // Exclude multiendpoint calls as they're not on this device.
-                        (c.getConnectionProperties()
-                                & Connection.PROPERTY_IS_EXTERNAL_CALL) == 0
-                                // Include any conferences not on same sub as current connection.
-                                && !Objects.equals(c.getPhoneAccountHandle(),
-                                currentHandle))
-                .toList();
-        if (!otherSubConferences.isEmpty()) {
-            Log.i(LOG_TAG, "maybeGetFirstConferenceable: found "
-                    + otherSubConferences.get(0).getTelecomCallId() + " on "
-                    + otherSubConferences.get(0).getPhoneAccountHandle());
-            return otherSubConferences.get(0);
-        }
-
-        // Considers Connections (including conference participants) only if no conferences.
-        List<Connection> otherSubConnections = connections.stream()
-                .filter(c ->
-                        // Exclude multiendpoint calls as they're not on this device.
-                        (c.getConnectionProperties() & Connection.PROPERTY_IS_EXTERNAL_CALL) == 0
-                                // Include any calls not on same sub as current connection.
-                                && !Objects.equals(c.getPhoneAccountHandle(),
-                                currentHandle)).toList();
-
-        if (!otherSubConnections.isEmpty()) {
-            if (otherSubConnections.size() > 1) {
-                Log.w(LOG_TAG, "Unexpected number of connections: "
-                        + otherSubConnections.size() + " on other sub!");
-            }
-            Log.i(LOG_TAG, "maybeGetFirstConferenceable: found "
-                    + otherSubConnections.get(0).getTelecomCallId() + " on "
-                    + otherSubConnections.get(0).getPhoneAccountHandle());
-            return otherSubConnections.get(0);
-        }
-        return null;
-    }
-
-    /**
-     * Where there are ongoing calls on multiple subscriptions for DSDA devices, let the 'hold'
-     * button perform an unhold on the other sub's Connection or Conference. This covers for Dialer
-     * apps that may not have a dedicated 'swap' button for calls across different subs.
-     * @param currentHandle The {@link PhoneAccountHandle} of the current active voice call.
-     */
-    public void maybeUnholdCallsOnOtherSubs(
-            @NonNull PhoneAccountHandle currentHandle) {
-        Log.i(this, "maybeUnholdCallsOnOtherSubs: check for calls not on %s",
-                currentHandle);
-        maybeUnholdCallsOnOtherSubs(getAllConnections(), getAllConferences(),
-                currentHandle, mTelephonyManagerProxy);
-    }
-
-    /**
-     * Where there are ongoing calls on multiple subscriptions for DSDA devices, let the 'hold'
-     * button perform an unhold on the other sub's Connection or Conference. This is a convenience
-     * method to unit test the core functionality.
-     *
-     * @param connections all individual connections, including conference participants.
-     * @param conferences all conferences.
-     * @param currentHandle The {@link PhoneAccountHandle} of the current active call.
-     * @param telephonyManagerProxy the proxy to the {@link TelephonyManager} instance.
-     */
-    @VisibleForTesting
-    protected static void maybeUnholdCallsOnOtherSubs(@NonNull Collection<Connection> connections,
-            @NonNull Collection<Conference> conferences,
-            @NonNull PhoneAccountHandle currentHandle,
-            TelephonyManagerProxy telephonyManagerProxy) {
-        Conferenceable c = maybeGetFirstConferenceableFromOtherSubscription(
-                connections, conferences, currentHandle, telephonyManagerProxy);
-        if (c != null) {
-            onUnhold(c);
-        }
-    }
-
-    /**
-     * For DSDA devices, when an outgoing call is dialed out from the 2nd sub, holds the first call.
-     *
-     * @param outgoingHandle The outgoing {@link PhoneAccountHandle}.
-     * @return the Conferenceable representing the Connection or Conference to be held.
-     */
-    private @Nullable Conferenceable maybeHoldCallsOnOtherSubs(
-            @NonNull PhoneAccountHandle outgoingHandle) {
-        Log.i(this, "maybeHoldCallsOnOtherSubs: check for calls not on %s",
-                outgoingHandle);
-        return maybeHoldCallsOnOtherSubs(getAllConnections(), getAllConferences(),
-                outgoingHandle, mTelephonyManagerProxy);
-    }
-
-    /**
-     * For DSDA devices, when an outgoing call is dialed out from the 2nd sub, holds the first call.
-     * This is a convenience method to unit test the core functionality.
-     *
-     * @param connections all individual connections, including conference participants.
-     * @param conferences all conferences.
-     * @param outgoingHandle The outgoing {@link PhoneAccountHandle}.
-     * @param telephonyManagerProxy the proxy to the {@link TelephonyManager} instance.
-     * @return the {@link Conferenceable} representing the Connection or Conference to be held.
-     */
-    @VisibleForTesting
-    protected static @Nullable Conferenceable maybeHoldCallsOnOtherSubs(
-            @NonNull Collection<Connection> connections,
-            @NonNull Collection<Conference> conferences,
-            @NonNull PhoneAccountHandle outgoingHandle,
-            TelephonyManagerProxy telephonyManagerProxy) {
-        Conferenceable c = maybeGetFirstConferenceableFromOtherSubscription(
-                connections, conferences, outgoingHandle, telephonyManagerProxy);
-        if (c != null && isStateActive(c)) {
-            onHold(c);
-            return c;
-        }
-        return null;
     }
 
     /**
