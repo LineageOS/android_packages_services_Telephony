@@ -33,6 +33,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Binder;
@@ -1468,6 +1469,13 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
     public void overrideConfig(int subscriptionId, @Nullable PersistableBundle overrides,
             boolean persistent) {
         overrideConfig_enforcePermission();
+
+        // Do not allow shell UID to override the carrier config. This will not impact
+        // the CTS and telephony shell commands as they use different uids
+        if (TelephonyPermissions.isShell(getCallingUid())) {
+            throw new SecurityException("overrideConfig cannot be invoked by shell");
+        }
+
         int phoneId = SubscriptionManager.getPhoneId(subscriptionId);
         if (!SubscriptionManager.isValidPhoneId(phoneId)) {
             logd("Ignore invalid phoneId: " + phoneId + " for subId: " + subscriptionId);
@@ -1483,6 +1491,11 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
             overrideConfig(mOverrideConfigs, phoneId, overrides);
 
             if (persistent) {
+                if (isUserBuild() && !isSystemApp()) {
+                    throw new SecurityException("overrideConfig with persistent=true only can be "
+                            + "invoked by system app");
+                }
+
                 overrideConfig(mPersistentOverrideConfigs, phoneId, overrides);
 
                 if (overrides != null) {
@@ -1503,6 +1516,25 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                     + persistent + ", overrides=" + overrides);
             updateSubscriptionDatabase(phoneId);
         });
+    }
+
+    private boolean isSystemApp() {
+        try {
+            String callingPackage = mContext.getPackageManager().getNameForUid(
+                    Binder.getCallingUid());
+
+            ApplicationInfo appInfo = mContext.getPackageManager().getApplicationInfo(
+                    callingPackage, 0);
+            return (appInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0
+                    || (appInfo.flags & ApplicationInfo.FLAG_UPDATED_SYSTEM_APP) != 0;
+        } catch (Exception e) {
+            loge("isSystemApp: failed to get application info: " + e);
+            return false;
+        }
+    }
+
+    private boolean isUserBuild() {
+        return "user".equals(android.os.Build.TYPE);
     }
 
     private void overrideConfig(@NonNull PersistableBundle[] currentOverrides, int phoneId,
