@@ -75,7 +75,7 @@
     <string name="phone_accounts_configure_account_settings" msgid="6622119715253196586">"Stel rekeninginstellings op"</string>
     <string name="phone_accounts_all_calling_accounts" msgid="1609600743500618823">"Alle oproeprekeninge"</string>
     <string name="phone_accounts_all_calling_accounts_summary" msgid="2214134955430107240">"Kies watter rekeninge oproepe kan maak"</string>
-    <string name="wifi_calling" msgid="3650509202851355742">"Wi-Fi-oproepe"</string>
+    <string name="wifi_calling" msgid="3650509202851355742">"Wi-fi-oproepe"</string>
     <string name="connection_service_default_label" msgid="7332739049855715584">"Ingeboude verbindingsdiens"</string>
     <string name="voicemail" msgid="7697769412804195032">"Stemboodskap"</string>
     <string name="voicemail_settings_with_label" msgid="4228431668214894138">"Stemboodskapdiens (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
@@ -311,7 +311,7 @@
     <string name="sim_selection_required_pref" msgid="6985901872978341314">"Keuse vereis"</string>
     <string name="sim_change_data_title" msgid="9142726786345906606">"Verander data-SIM?"</string>
     <string name="sim_change_data_message" msgid="3567358694255933280">"Gebruik <xliff:g id="NEW_SIM">%1$s</xliff:g> pleks van <xliff:g id="OLD_SIM">%2$s</xliff:g> vir mobiele data?"</string>
-    <string name="wifi_calling_settings_title" msgid="5800018845662016507">"Wi-Fi-oproepe"</string>
+    <string name="wifi_calling_settings_title" msgid="5800018845662016507">"Wi-fi-oproepe"</string>
     <string name="video_calling_settings_title" msgid="342829454913266078">"Diensverskaffervideo-oproepe"</string>
     <string name="gsm_umts_options" msgid="4968446771519376808">"GSM//UMTS-opsies"</string>
     <string name="cdma_options" msgid="3669592472226145665">"CDMA-opsies"</string>
@@ -461,6 +461,8 @@
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"Aktiveer outoherprobeer-modus"</string>
     <string name="vibrating_for_outgoing_call_accepted_title" msgid="647945514737734657">"Vibrasie vir uitgaande oproepe wat aanvaar word"</string>
     <string name="vibrating_for_outgoing_call_accepted_summary" msgid="906112327196063688">"Aktiveer vibrasiemodus vir uitgaande oproepe wat aanvaar word"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_title" msgid="856074537423753072">"Klanke vir oproepe wat gekoppel is"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_summary" msgid="2442128058517260047">"Speel klank vir uitgaande oproepe wat aanvaar word"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"TTY-modusverandering word nie tydens \'n video-oproep toegelaat nie"</string>
     <string name="menu_add" msgid="5616487894975773141">"Voeg kontak by"</string>
     <string name="menu_edit" msgid="3593856941552460706">"Verander kontak"</string>
@@ -850,6 +852,14 @@
     <string name="simulate_out_of_service_label" msgid="3563376136603403714">"Simuleer Diens is Onbeskikbaar"</string>
     <string name="enforce_satellite_channel_string" msgid="295306734591329892">"Force Camp Satellite LTE-kanaal (net ontfoutingsbou)"</string>
     <string name="enforce_satellite_channel_label" msgid="8212349350110213468">"Verplig kampsatelliet-LTE-kanaal"</string>
+    <string name="starlink_satellite_band_string" msgid="2287502104005508384">"Starlink_VSA"</string>
+    <string name="ast_satellite_band_string" msgid="3238737906080758289">"AST_VSA"</string>
+    <string name="manual_override_satellite_band_string" msgid="801049975307124461">"Handmatige tersydestelling"</string>
+    <string name="satellite_manual_band_label" msgid="4135706517193927388">"Kies band:"</string>
+    <string name="satellite_channel_label_text" msgid="1999162483250790313">"Voer kanaal in:"</string>
+    <string name="satellite_channel_hint_text" msgid="4342575738602358270">"Voer satellietkanaal hier in"</string>
+    <string name="force_camp_satellite_button_string" msgid="3719311367839668322">"Koppel"</string>
+    <string name="force_camp_satellite_button_connected_string" msgid="2457912207054938894">"Gekoppel"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"Satellietmodus van skyndiensverskaffer (net ontfoutingsbou)"</string>
     <string name="mock_carrier_roaming_satellite_label" msgid="2052656038544917979">"Skyn"</string>
     <string name="choose_satellite_data_mode_label" msgid="7403013160079828226">"Skynsatellietdatamodus"</string>

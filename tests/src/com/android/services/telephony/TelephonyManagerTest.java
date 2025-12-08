@@ -23,10 +23,12 @@ import static org.junit.Assume.assumeTrue;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -38,6 +40,7 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.OutcomeReceiver;
 import android.os.RemoteException;
+import android.os.ResultReceiver;
 import android.platform.test.annotations.RequiresFlagsEnabled;
 import android.telecom.PhoneAccountHandle;
 import android.telephony.SubscriptionManager;
@@ -62,6 +65,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
@@ -185,6 +189,68 @@ public class TelephonyManagerTest {
                 .thenThrow(new IllegalStateException("ISIM is not loaded"));
 
         assertThrows(RuntimeException.class, () -> mTelephonyManager.getImsPcscfAddresses());
+    }
+
+    @Test
+    @RequiresFlagsEnabled(Flags.FLAG_SUPPORT_IMS_REGISTRATION_EVENT_DOWNLOAD)
+    public void testRequestUiccIari_IsimAppType() throws Exception {
+        assumeTrue(hasFeature(PackageManager.FEATURE_TELEPHONY_SUBSCRIPTION, true));
+        when(mMockITelephony.isApplicationOnUicc(anyInt(), eq(PhoneConstants.APPTYPE_ISIM)))
+                .thenReturn(true);
+
+        Executor executor = Executors.newSingleThreadExecutor();
+        TestOutcomeReceiver<Set<String>, Exception> receiver = new TestOutcomeReceiver<>();
+        mTelephonyManager.requestUiccIari(executor, receiver);
+
+        verify(mMockIPhoneSubInfo).getUiccIari(
+                anyInt(), eq(PhoneConstants.APPTYPE_ISIM), anyString(), any(ResultReceiver.class));
+    }
+
+    @Test
+    @RequiresFlagsEnabled(Flags.FLAG_SUPPORT_IMS_REGISTRATION_EVENT_DOWNLOAD)
+    public void testRequestUiccIari_UsimAppType() throws Exception {
+        assumeTrue(hasFeature(PackageManager.FEATURE_TELEPHONY_SUBSCRIPTION, true));
+        when(mMockITelephony.isApplicationOnUicc(anyInt(), eq(PhoneConstants.APPTYPE_ISIM)))
+                .thenReturn(false);
+        when(mMockITelephony.isApplicationOnUicc(anyInt(), eq(PhoneConstants.APPTYPE_USIM)))
+                .thenReturn(true);
+
+        Executor executor = Executors.newSingleThreadExecutor();
+        TestOutcomeReceiver<Set<String>, Exception> receiver = new TestOutcomeReceiver<>();
+        mTelephonyManager.requestUiccIari(executor, receiver);
+
+        verify(mMockIPhoneSubInfo).getUiccIari(
+                anyInt(), eq(PhoneConstants.APPTYPE_USIM), anyString(), any(ResultReceiver.class));
+    }
+
+    @Test
+    @RequiresFlagsEnabled(Flags.FLAG_SUPPORT_IMS_REGISTRATION_EVENT_DOWNLOAD)
+    public void testRequestUiccIari_CallbackErrorIfApplicationIsNotExist() throws Exception {
+        assumeTrue(hasFeature(PackageManager.FEATURE_TELEPHONY_SUBSCRIPTION, true));
+        when(mMockITelephony.isApplicationOnUicc(anyInt(), anyInt())).thenReturn(false);
+
+        Executor executor = Executors.newSingleThreadExecutor();
+        TestOutcomeReceiver<Set<String>, Exception> receiver = new TestOutcomeReceiver<>();
+        mTelephonyManager.requestUiccIari(executor, receiver);
+
+        Exception error = receiver.getError();
+        assertTrue(error instanceof RuntimeException);
+    }
+
+    @Test
+    @RequiresFlagsEnabled(Flags.FLAG_SUPPORT_IMS_REGISTRATION_EVENT_DOWNLOAD)
+    public void testRequestUiccIari_CallbackErrorIfExceptionIsThrown() throws Exception {
+        assumeTrue(hasFeature(PackageManager.FEATURE_TELEPHONY_SUBSCRIPTION, true));
+        doThrow(new SecurityException("getUiccIari"))
+                .when(mMockITelephony)
+                .isApplicationOnUicc(anyInt(), anyInt());
+
+        Executor executor = Executors.newSingleThreadExecutor();
+        TestOutcomeReceiver<Set<String>, Exception> receiver = new TestOutcomeReceiver<>();
+        mTelephonyManager.requestUiccIari(executor, receiver);
+
+        Exception error = receiver.getError();
+        assertTrue(error instanceof SecurityException);
     }
 
     @Test

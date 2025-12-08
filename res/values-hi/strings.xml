@@ -461,6 +461,8 @@
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"अपने आप फिर से प्रयास मोड सक्षम करें"</string>
     <string name="vibrating_for_outgoing_call_accepted_title" msgid="647945514737734657">"आउटगोइंग कॉल स्वीकार किए जाने पर वाइब्रेशन मोड चालू होगा"</string>
     <string name="vibrating_for_outgoing_call_accepted_summary" msgid="906112327196063688">"आउटगोइंग कॉल स्वीकार किए जाने पर वाइब्रेशन मोड चालू करें"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_title" msgid="856074537423753072">"कॉल कनेक्ट होने पर सुनाई देने वाली टोन"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_summary" msgid="2442128058517260047">"आउटगोइंग कॉल का जवाब दिए जाने पर बजने वाली टोन"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"वीडियो कॉल के दौरान TTY मोड में बदलाव की अनुमति नहीं है"</string>
     <string name="menu_add" msgid="5616487894975773141">"संपर्क जोड़ें"</string>
     <string name="menu_edit" msgid="3593856941552460706">"संपर्क में बदलाव करें"</string>
@@ -850,6 +852,14 @@
     <string name="simulate_out_of_service_label" msgid="3563376136603403714">"नेटवर्क से बाहर की सेवाओं को सिम्युलेट करें"</string>
     <string name="enforce_satellite_channel_string" msgid="295306734591329892">"फ़ोर्स कैंप सैटलाइट एलटीई चैनल (सिर्फ़ डीबग के लिए बिल्ड)"</string>
     <string name="enforce_satellite_channel_label" msgid="8212349350110213468">"कैंप सैटलाइट एलटीई चैनल को ज़रूर लागू करें"</string>
+    <string name="starlink_satellite_band_string" msgid="2287502104005508384">"Starlink_US"</string>
+    <string name="ast_satellite_band_string" msgid="3238737906080758289">"AST_US"</string>
+    <string name="manual_override_satellite_band_string" msgid="801049975307124461">"मैन्युअल तरीके से बदलाव"</string>
+    <string name="satellite_manual_band_label" msgid="4135706517193927388">"बैंड चुनें:"</string>
+    <string name="satellite_channel_label_text" msgid="1999162483250790313">"चैनल का नाम डालें:"</string>
+    <string name="satellite_channel_hint_text" msgid="4342575738602358270">"सैटलाइट चैनल का नाम यहां डालें"</string>
+    <string name="force_camp_satellite_button_string" msgid="3719311367839668322">"कनेक्ट करें"</string>
+    <string name="force_camp_satellite_button_connected_string" msgid="2457912207054938894">"कनेक्ट है"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"मोबाइल और इंटरनेट सेवा देने वाली कंपनी के सैटलाइट मोड की मॉक टेस्टिंग करें (सिर्फ़ डीबग के लिए बिल्ड)"</string>
     <string name="mock_carrier_roaming_satellite_label" msgid="2052656038544917979">"मॉक"</string>
     <string name="choose_satellite_data_mode_label" msgid="7403013160079828226">"सैटलाइट डेटा मोड की मॉक टेस्टिंग करें"</string>

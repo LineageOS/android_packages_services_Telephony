@@ -15,13 +15,6 @@
  */
 package com.android.phone.settings.hiddenmenu;
 
-import static android.telephony.ims.feature.MmTelFeature.MmTelCapabilities.CAPABILITY_TYPE_VIDEO;
-import static android.telephony.ims.feature.MmTelFeature.MmTelCapabilities.CAPABILITY_TYPE_VOICE;
-import static android.telephony.ims.stub.ImsRegistrationImplBase.REGISTRATION_TECH_3G;
-import static android.telephony.ims.stub.ImsRegistrationImplBase.REGISTRATION_TECH_CROSS_SIM;
-import static android.telephony.ims.stub.ImsRegistrationImplBase.REGISTRATION_TECH_IWLAN;
-import static android.telephony.ims.stub.ImsRegistrationImplBase.REGISTRATION_TECH_LTE;
-import static android.telephony.ims.stub.ImsRegistrationImplBase.REGISTRATION_TECH_NR;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -114,7 +107,7 @@ public class PhoneInformationV2FragmentIms extends Fragment {
         log("onCreate: mSystemUser=" + mSystemUser);
 
         if (mSystemUser) {
-            mPhone = getPhone(SubscriptionManager.getDefaultSubscriptionId());
+            mPhone = PhoneInformationUtil.getPhone(SubscriptionManager.getDefaultSubscriptionId());
         }
         mSubId = SubscriptionManager.getDefaultSubscriptionId();
         if (mPhone != null) {
@@ -133,7 +126,7 @@ public class PhoneInformationV2FragmentIms extends Fragment {
         mTelephonyManager =
                 mContext.getSystemService(TelephonyManager.class).createForSubscriptionId(mSubId);
 
-        sPhoneIndexLabels = getPhoneIndexLabels(mTelephonyManager);
+        sPhoneIndexLabels = PhoneInformationUtil.getPhoneIndexLabels(mTelephonyManager);
 
         phoneButton0 = view.findViewById(R.id.phone_button_0);
         phoneTitle0 = view.findViewById(R.id.phone_button_0_title);
@@ -141,8 +134,8 @@ public class PhoneInformationV2FragmentIms extends Fragment {
         phoneButton1 = view.findViewById(R.id.phone_button_1);
         phoneTitle1 = view.findViewById(R.id.phone_button_1_title);
 
-        phoneTitle0.setText(sPhoneIndexLabels[0]);
-        phoneTitle1.setText(sPhoneIndexLabels[1]);
+        PhoneInformationUtil.configurePhoneSelectionUi(phoneButton0, phoneButton1, phoneTitle0,
+                phoneTitle1, sPhoneIndexLabels);
 
         mImsManager = new ImsManager(mContext);
 
@@ -203,26 +196,6 @@ public class PhoneInformationV2FragmentIms extends Fragment {
         updateAllFields();
     }
 
-    private Phone getPhone(int subId) {
-        log("getPhone subId = " + subId);
-        Phone phone = PhoneFactory.getPhone(SubscriptionManager.getPhoneId(subId));
-        if (phone == null) {
-            log("return the default phone");
-            return PhoneFactory.getDefaultPhone();
-        }
-
-        return phone;
-    }
-
-    private static String[] getPhoneIndexLabels(TelephonyManager tm) {
-        int phones = tm.getActiveModemCount();
-        String[] labels = new String[phones];
-        for (int i = 0; i < phones; i++) {
-            labels[i] = "Phone " + i;
-        }
-        return labels;
-    }
-
     private void updatePhoneIndex() {
         log("updatePhoneIndex");
         // update the subId
@@ -261,9 +234,9 @@ public class PhoneInformationV2FragmentIms extends Fragment {
 
         if (isSimValid) {
             ImsMmTelManager imsMmTelManager = mImsManager.getImsMmTelManager(mSubId);
-            availableVolte = isVoiceServiceAvailable(imsMmTelManager);
-            availableVt = isVideoServiceAvailable(imsMmTelManager);
-            availableWfc = isWfcServiceAvailable(imsMmTelManager);
+            availableVolte = PhoneInformationUtil.isVoiceServiceAvailable(imsMmTelManager);
+            availableVt = PhoneInformationUtil.isVideoServiceAvailable(imsMmTelManager);
+            availableWfc = PhoneInformationUtil.isWfcServiceAvailable(imsMmTelManager);
             CountDownLatch latch = new CountDownLatch(1);
             try {
                 HandlerThread handlerThread = new HandlerThread("PhoneInfoIms");
@@ -290,83 +263,6 @@ public class PhoneInformationV2FragmentIms extends Fragment {
         mVoiceOverWiFi.setText((availableWfc ? AVAILABLE : UNAVAILABLE));
         mVideoCalling.setText((availableVt ? AVAILABLE : UNAVAILABLE));
         mUtInterface.setText((availableUt.get() ? AVAILABLE : UNAVAILABLE));
-    }
-
-    private boolean isVoiceServiceAvailable(ImsMmTelManager imsMmTelManager) {
-        if (imsMmTelManager == null) {
-            log("isVoiceServiceAvailable: ImsMmTelManager is null");
-            return false;
-        }
-
-        final int[] radioTechs = {
-            REGISTRATION_TECH_LTE,
-            REGISTRATION_TECH_CROSS_SIM,
-            REGISTRATION_TECH_NR,
-            REGISTRATION_TECH_3G
-        };
-
-        boolean isAvailable = false;
-        for (int tech : radioTechs) {
-            try {
-                isAvailable |= imsMmTelManager.isAvailable(CAPABILITY_TYPE_VOICE, tech);
-                if (isAvailable) {
-                    break;
-                }
-            } catch (Exception e) {
-                log("isVoiceServiceAvailable: exception " + e.getMessage());
-            }
-        }
-
-        log("isVoiceServiceAvailable: " + isAvailable);
-        return isAvailable;
-    }
-
-    private boolean isVideoServiceAvailable(ImsMmTelManager imsMmTelManager) {
-        if (imsMmTelManager == null) {
-            log("isVideoServiceAvailable: ImsMmTelManager is null");
-            return false;
-        }
-
-        final int[] radioTechs = {
-            REGISTRATION_TECH_LTE,
-            REGISTRATION_TECH_IWLAN,
-            REGISTRATION_TECH_CROSS_SIM,
-            REGISTRATION_TECH_NR,
-            REGISTRATION_TECH_3G
-        };
-
-        boolean isAvailable = false;
-        for (int tech : radioTechs) {
-            try {
-                isAvailable |= imsMmTelManager.isAvailable(CAPABILITY_TYPE_VIDEO, tech);
-                if (isAvailable) {
-                    break;
-                }
-            } catch (Exception e) {
-                log("isVideoServiceAvailable: exception " + e.getMessage());
-            }
-        }
-
-        log("isVideoServiceAvailable: " + isAvailable);
-        return isAvailable;
-    }
-
-    private boolean isWfcServiceAvailable(ImsMmTelManager imsMmTelManager) {
-        if (imsMmTelManager == null) {
-            log("isWfcServiceAvailable: ImsMmTelManager is null");
-            return false;
-        }
-
-        boolean isAvailable = false;
-        try {
-            isAvailable =
-                    imsMmTelManager.isAvailable(CAPABILITY_TYPE_VOICE, REGISTRATION_TECH_IWLAN);
-        } catch (Exception e) {
-            log("isWfcServiceAvailable: exception " + e.getMessage());
-        }
-
-        log("isWfcServiceAvailable: " + isAvailable);
-        return isAvailable;
     }
 
     private static void log(String s) {

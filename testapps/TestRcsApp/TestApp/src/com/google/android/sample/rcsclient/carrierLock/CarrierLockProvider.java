@@ -16,6 +16,8 @@
 
 package com.google.android.sample.rcsclient.carrierLock;
 
+import static com.google.android.sample.rcsclient.carrierLock.CarrierRestriction.CUSTOM_LOCK;
+
 import android.content.ContentProvider;
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -25,6 +27,7 @@ import android.util.Log;
 
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.StringJoiner;
 
@@ -56,7 +59,9 @@ public class CarrierLockProvider extends ContentProvider {
                     } else {
                         result.putInt("restriction_status", 2); // Locked/Restricted
                     }
-                    mCarrierIds.clear();
+                    if (CUSTOM_LOCK != mLockMode) {
+                        mCarrierIds.clear();
+                    }
                     Log.d(TAG, "Query come : Lock mode set to " + mLockMode);
                     switch (mLockMode) {
                         case UNLOCKED:
@@ -81,6 +86,8 @@ public class CarrierLockProvider extends ContentProvider {
                             break;
                         case LOCK_TO_TELUS:
                             mCarrierIds.add(1404);
+                            break;
+                        case CUSTOM_LOCK:
                             break;
                         default:
                             // Nothing
@@ -113,6 +120,18 @@ public class CarrierLockProvider extends ContentProvider {
         }
     }
 
+    public void setCarrierLock(String[] lockCarrierIds) {
+        mCarrierIds.clear();
+        for (String idString : lockCarrierIds) {
+            try {
+                int idInt = Integer.parseInt(idString.trim());
+                mCarrierIds.add(idInt);
+            } catch (NumberFormatException e) {
+                Log.e(TAG, "Warning: Skipping invalid number string: " + idString);
+            }
+        }
+    }
+
     private void updateLockValue(int lockValue) {
         Log.d(TAG, "updateLockValue through ADB to = " + lockValue);
         switch (lockValue) {
@@ -130,6 +149,9 @@ public class CarrierLockProvider extends ContentProvider {
                 break;
             case 5:
                 mLockMode = CarrierRestriction.LOCK_TO_TELUS;
+                break;
+            case 6:
+                mLockMode = CUSTOM_LOCK;
                 break;
             default:
                 mLockMode = CarrierRestriction.UNLOCKED;

@@ -30,7 +30,7 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * Base class for the various Telephony {@link Conference} implementations ({@link CdmaConference},
+ * Base class for the various Telephony {@link Conference}
  * {@link TelephonyConference}, and {@link ImsConference}).  Adds some common listener code which
  * all of these conferences use.
  */
@@ -76,14 +76,6 @@ public class TelephonyConferenceBase extends Conference {
      */
     public void addTelephonyConferenceListener(@NonNull TelephonyConferenceListener listener) {
         mListeners.add(listener);
-    }
-
-    /**
-     * Removes a listener from this conference.
-     * @param listener The listener.
-     */
-    public void removeTelephonyConferenceListener(@NonNull TelephonyConferenceListener listener) {
-        mListeners.remove(listener);
     }
 
     /**

@@ -27,7 +27,7 @@
     <string name="refresh_button" msgid="4833927124437250565">"Endurnýja"</string>
   <string-array name="entitlement_status_for_satellite">
     <item msgid="2022601967050498274">"KVEIKT"</item>
-    <item msgid="359611466767264179">"ÓVIRKT"</item>
+    <item msgid="359611466767264179">"SLÖKKT"</item>
     <item msgid="272686018752211739">"ÓSAMHÆFT"</item>
     <item msgid="2230066359974626080">"ÚTHLUTUN"</item>
   </string-array>

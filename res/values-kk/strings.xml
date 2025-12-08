@@ -461,6 +461,8 @@
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"Әрекетті автоматты қайталау режимін қосу"</string>
     <string name="vibrating_for_outgoing_call_accepted_title" msgid="647945514737734657">"Шығыс қоңырау қабылданғанда дірілдеу"</string>
     <string name="vibrating_for_outgoing_call_accepted_summary" msgid="906112327196063688">"\"Шығыс қоңырау қабылданғанда дірілдеу\" режимін қосу"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_title" msgid="856074537423753072">"Қоңырау қабылданғандағы әуендер"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_summary" msgid="2442128058517260047">"Шығыс қоңырау қабылданғанда ойнатылатын әуен"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"Бейне қоңырау барысында Телетайп режимін өзгертуге рұқсат етілмеген"</string>
     <string name="menu_add" msgid="5616487894975773141">"Байланыс қосу"</string>
     <string name="menu_edit" msgid="3593856941552460706">"Байланыс өңдеу"</string>
@@ -565,7 +567,7 @@
     <string name="incall_error_satellite_enabled" msgid="5247740814607087814">"Қоңырау шалу үшін алдымен жерсерік байланысын аяқтаңыз."</string>
     <string name="incall_error_carrier_roaming_satellite_mode" msgid="678603203562886361">"Мобильдік не Wi-Fi желісіне қосылмастан хабар алмаса аласыз."</string>
     <string name="emergency_information_hint" msgid="9208897544917793012">"Төтенше жағдайға арналған ақпарат"</string>
-    <string name="emergency_information_owner_hint" msgid="6256909888049185316">"Иесі"</string>
+    <string name="emergency_information_owner_hint" msgid="6256909888049185316">"Ие"</string>
     <string name="emergency_information_confirm_hint" msgid="5109017615894918914">"Ақпаратты көру үшін қайта түртіңіз"</string>
     <string name="emergency_enable_radio_dialog_title" msgid="2667568200755388829">"Құтқару қызметіне қоңырау шалу"</string>
     <string name="single_emergency_number_title" msgid="8413371079579067196">"Төтенше жағдай қызметі"</string>
@@ -850,6 +852,14 @@
     <string name="simulate_out_of_service_label" msgid="3563376136603403714">"Симуляция істемейді"</string>
     <string name="enforce_satellite_channel_string" msgid="295306734591329892">"Жерсеріктік LTE каналын мәжбүрлеп қолдану (тек түзету конструкциясы)"</string>
     <string name="enforce_satellite_channel_label" msgid="8212349350110213468">"Лагерьдегі жерсеріктік LTE каналын мәжбүрлеп қолдану"</string>
+    <string name="starlink_satellite_band_string" msgid="2287502104005508384">"Starlink_US"</string>
+    <string name="ast_satellite_band_string" msgid="3238737906080758289">"AST_US"</string>
+    <string name="manual_override_satellite_band_string" msgid="801049975307124461">"Қолмен басқаруға көшу"</string>
+    <string name="satellite_manual_band_label" msgid="4135706517193927388">"Жолақты таңдаңыз:"</string>
+    <string name="satellite_channel_label_text" msgid="1999162483250790313">"Арнаны енгізіңіз:"</string>
+    <string name="satellite_channel_hint_text" msgid="4342575738602358270">"Жерсерік арнасын осы жерге енгізіңіз"</string>
+    <string name="force_camp_satellite_button_string" msgid="3719311367839668322">"Қосылу"</string>
+    <string name="force_camp_satellite_button_connected_string" msgid="2457912207054938894">"Қосылды"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"Mock Carrier жер серігі режимі (тек түзету құрамасы)"</string>
     <string name="mock_carrier_roaming_satellite_label" msgid="2052656038544917979">"Имитация"</string>
     <string name="choose_satellite_data_mode_label" msgid="7403013160079828226">"Жерсерік деректерін имитациялау режимі"</string>

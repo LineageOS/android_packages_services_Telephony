@@ -17,13 +17,18 @@
 package com.google.android.sample.rcsclient.carrierLock;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.sample.rcsclient.R;
+
+import java.util.Arrays;
 
 public class CarrieLockModeListActivity extends AppCompatActivity {
 
@@ -75,5 +80,37 @@ public class CarrieLockModeListActivity extends AppCompatActivity {
             mCarrierLockProvider.setLockMode(CarrierRestriction.LOCK_TO_TELUS);
             Toast.makeText(this, "Lock mode set to TELUS", Toast.LENGTH_LONG).show();
         });
+
+        EditText multipleCarrierLockEditText = this.findViewById(R.id.multipleCarrierLockBtn);
+        Button submitLocksButton = this.findViewById(R.id.submitLocks);
+        assert submitLocksButton != null;
+        submitLocksButton.setOnClickListener(view -> {
+            mCarrierLockProvider.setLockMode(CarrierRestriction.CUSTOM_LOCK);
+            String enteredText = multipleCarrierLockEditText.getText().toString();
+            String[] lockCarrierIds = enteredText.split(",");
+            mCarrierLockProvider.setCarrierLock(lockCarrierIds);
+            Toast.makeText(this, "Multiple Locks submitted to " + Arrays.toString(lockCarrierIds),
+                    Toast.LENGTH_LONG).show();
+        });
+
+        multipleCarrierLockEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // Not needed for this functionality
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // This method is called whenever the text changes
+                // Check if the EditText has any text (is not empty or just whitespace)
+                submitLocksButton.setEnabled(!s.toString().trim().isEmpty());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                // Not needed for this functionality
+            }
+        });
+
     }
 }

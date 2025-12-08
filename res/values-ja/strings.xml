@@ -461,6 +461,8 @@
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"自動再試行モードを有効にする"</string>
     <string name="vibrating_for_outgoing_call_accepted_title" msgid="647945514737734657">"発信の応答時のバイブレーション"</string>
     <string name="vibrating_for_outgoing_call_accepted_summary" msgid="906112327196063688">"発信の応答に対するバイブレーション モードを有効にします"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_title" msgid="856074537423753072">"通話接続時の音"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_summary" msgid="2442128058517260047">"発信が応答されたときに音を再生します"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"TTYモードの変更はビデオハングアウト中には行えません"</string>
     <string name="menu_add" msgid="5616487894975773141">"連絡先を追加"</string>
     <string name="menu_edit" msgid="3593856941552460706">"連絡先を編集"</string>
@@ -850,6 +852,14 @@
     <string name="simulate_out_of_service_label" msgid="3563376136603403714">"圏外状態のシミュレート"</string>
     <string name="enforce_satellite_channel_string" msgid="295306734591329892">"Force Camp Satellite LTE チャンネル（デバッグビルドのみ）"</string>
     <string name="enforce_satellite_channel_label" msgid="8212349350110213468">"Force Camp Satellite LTE チャンネル"</string>
+    <string name="starlink_satellite_band_string" msgid="2287502104005508384">"Starlink_US"</string>
+    <string name="ast_satellite_band_string" msgid="3238737906080758289">"AST_US"</string>
+    <string name="manual_override_satellite_band_string" msgid="801049975307124461">"手動オーバーライド"</string>
+    <string name="satellite_manual_band_label" msgid="4135706517193927388">"周波数帯を選択:"</string>
+    <string name="satellite_channel_label_text" msgid="1999162483250790313">"チャンネルを入力:"</string>
+    <string name="satellite_channel_hint_text" msgid="4342575738602358270">"衛星チャンネルをここに入力"</string>
+    <string name="force_camp_satellite_button_string" msgid="3719311367839668322">"接続"</string>
+    <string name="force_camp_satellite_button_connected_string" msgid="2457912207054938894">"接続済み"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"携帯通信会社の疑似航空写真モード（デバッグビルドのみ）"</string>
     <string name="mock_carrier_roaming_satellite_label" msgid="2052656038544917979">"モック"</string>
     <string name="choose_satellite_data_mode_label" msgid="7403013160079828226">"モック衛星データモード"</string>

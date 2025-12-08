@@ -83,6 +83,7 @@ import com.android.internal.telephony.d2d.RtpAdapter;
 import com.android.internal.telephony.d2d.RtpTransport;
 import com.android.internal.telephony.d2d.Timeouts;
 import com.android.internal.telephony.d2d.TransportProtocol;
+import com.android.internal.telephony.flags.Flags;
 import com.android.internal.telephony.gsm.SuppServiceNotification;
 import com.android.internal.telephony.imsphone.ImsPhone;
 import com.android.internal.telephony.imsphone.ImsPhoneCall;
@@ -344,6 +345,7 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
                         updateConnectionProperties();
                         refreshConferenceSupported();
                     }
+                    updateConnectionCapabilities();
                     sendRttInitiationSuccess();
                     break;
                 case MSG_HOLD:
@@ -788,6 +790,7 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
 
         @Override
         public void onRttTerminated() {
+            updateConnectionCapabilities();
             updateConnectionProperties();
             refreshConferenceSupported();
             sendRttSessionRemotelyTerminated();
@@ -962,6 +965,12 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
 
     private Integer mEmergencyServiceCategory = null;
     private List<String> mEmergencyUrns = null;
+
+    /**
+     * Indicates a flag to not perform the state details update during the domain reselection
+     * after a call failure.
+     */
+    private boolean mIsDomainReselectionInProgress;
 
     protected TelephonyConnection(com.android.internal.telephony.Connection originalConnection,
             String callId, int callDirection) {
@@ -1243,6 +1252,10 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
             isAllowedToDisplayPicture = callFilteringCompletionInfo.isInContacts();
         }
 
+        if (!isAllowedToDisplayPicture) {
+            isAllowedToDisplayPicture = isBusinessCall();
+        }
+
         if (isImsConnection()) {
             ImsPhone imsPhone = (getPhone() instanceof ImsPhone) ? (ImsPhone) getPhone() : null;
             if (imsPhone != null
@@ -1276,6 +1289,14 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
                 }
             }
         }
+    }
+
+    private boolean isBusinessCall() {
+        Bundle extras = getExtras();
+        if (extras == null) {
+            return false;
+        }
+        return extras.getBoolean(ImsCallProfile.EXTRA_IS_BUSINESS_CALL, false);
     }
 
     @Override
@@ -1346,39 +1367,43 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
     public void performUnhold() {
         Log.v(this, "performUnhold");
         if (Call.State.HOLDING == mConnectionState) {
-            try {
-                Phone phone = mOriginalConnection.getCall().getPhone();
-                // New behavior for IMS -- don't use the clunky switchHoldingAndActive logic.
-                if (phone.getPhoneType() == PhoneConstants.PHONE_TYPE_IMS) {
-                    ImsPhone imsPhone = (ImsPhone) phone;
-                    imsPhone.unholdHeldCall();
-                    return;
-                }
-                // Here's the deal--Telephony hold/unhold is weird because whenever there exists
-                // more than one call, one of them must always be active. In other words, if you
-                // have an active call and holding call, and you put the active call on hold, it
-                // will automatically activate the holding call. This is weird with how Telecom
-                // sends its commands. When a user opts to "unhold" a background call, telecom
-                // issues hold commands to all active calls, and then the unhold command to the
-                // background call. This means that we get two commands...each of which reduces to
-                // switchHoldingAndActive(). The result is that they simply cancel each other out.
-                // To fix this so that it works well with telecom we add a minor hack. If we
-                // have one telephony call, everything works as normally expected. But if we have
-                // two or more calls, we will ignore all requests to "unhold" knowing that the hold
-                // requests already do what we want. If you've read up to this point, I'm very sorry
-                // that we are doing this. I didn't think of a better solution that wouldn't also
-                // make the Telecom APIs very ugly.
-
-                if (!hasMultipleTopLevelCalls()) {
-                    mOriginalConnection.getCall().getPhone().switchHoldingAndActive();
-                } else {
-                    Log.i(this, "Skipping unhold command for %s", this);
-                }
-            } catch (CallStateException e) {
-                Log.e(this, e, "Exception occurred while trying to release call from hold.");
-            }
+            sendUnhold();
         } else {
             Log.w(this, "Cannot release a call that is not already on hold from hold.");
+        }
+    }
+
+    private void sendUnhold() {
+        try {
+            Phone phone = mOriginalConnection.getCall().getPhone();
+            // New behavior for IMS -- don't use the clunky switchHoldingAndActive logic.
+            if (phone.getPhoneType() == PhoneConstants.PHONE_TYPE_IMS) {
+                ImsPhone imsPhone = (ImsPhone) phone;
+                imsPhone.unholdHeldCall();
+                return;
+            }
+            // Here's the deal--Telephony hold/unhold is weird because whenever there exists
+            // more than one call, one of them must always be active. In other words, if you
+            // have an active call and holding call, and you put the active call on hold, it
+            // will automatically activate the holding call. This is weird with how Telecom
+            // sends its commands. When a user opts to "unhold" a background call, telecom
+            // issues hold commands to all active calls, and then the unhold command to the
+            // background call. This means that we get two commands...each of which reduces to
+            // switchHoldingAndActive(). The result is that they simply cancel each other out.
+            // To fix this so that it works well with telecom we add a minor hack. If we
+            // have one telephony call, everything works as normally expected. But if we have
+            // two or more calls, we will ignore all requests to "unhold" knowing that the hold
+            // requests already do what we want. If you've read up to this point, I'm very sorry
+            // that we are doing this. I didn't think of a better solution that wouldn't also
+            // make the Telecom APIs very ugly.
+
+            if (!hasMultipleTopLevelCalls()) {
+                mOriginalConnection.getCall().getPhone().switchHoldingAndActive();
+            } else {
+                Log.i(this, "Skipping unhold command for %s", this);
+            }
+        } catch (CallStateException e) {
+            Log.e(this, e, "Exception occurred while trying to release call from hold.");
         }
     }
 
@@ -1430,7 +1455,20 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
         if (mOriginalConnection != null && mOriginalConnection.isIncoming()) {
             callCapabilities |= CAPABILITY_SPEED_UP_MT_AUDIO;
         }
-        if (!shouldTreatAsEmergencyCall() && isImsConnection() && canHoldImsCalls()) {
+
+        boolean allowHold = false;
+        if (!shouldTreatAsEmergencyCall() && isImsConnection()) {
+            if (isRtt()) {
+                Log.d(this,
+                    "buildConnectionCapabilities: Call is RTT, evaluating hold capabilities.");
+                allowHold = canHoldImsCalls() && canHoldRttCalls();
+                Log.d(this, "buildConnectionCapabilities: RTT hold allowed = " + allowHold);
+            } else {
+                allowHold = canHoldImsCalls();
+            }
+        }
+
+        if (allowHold) {
             callCapabilities |= CAPABILITY_SUPPORT_HOLD;
             if (mIsHoldable && (getState() == STATE_ACTIVE || getState() == STATE_HOLDING)) {
                 callCapabilities |= CAPABILITY_HOLD;
@@ -1576,8 +1614,10 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
         phone.registerForRingbackTone(mHandler, MSG_RINGBACK_TONE, null);
         phone.registerForSuppServiceNotification(mHandler, MSG_SUPP_SERVICE_NOTIFY, null);
         phone.registerForOnHoldTone(mHandler, MSG_ON_HOLD_TONE, null);
-        phone.registerForInCallVoicePrivacyOn(mHandler, MSG_CDMA_VOICE_PRIVACY_ON, null);
-        phone.registerForInCallVoicePrivacyOff(mHandler, MSG_CDMA_VOICE_PRIVACY_OFF, null);
+        if (!Flags.deleteCdma()) {
+            phone.registerForInCallVoicePrivacyOn(mHandler, MSG_CDMA_VOICE_PRIVACY_ON, null);
+            phone.registerForInCallVoicePrivacyOff(mHandler, MSG_CDMA_VOICE_PRIVACY_OFF, null);
+        }
         mPhoneForEvents = phone;
     }
 
@@ -1594,6 +1634,20 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
                     mOriginalConnection.getOrigDialString());
         }
 
+        // When a call is redialed as an emergency call, a handover may occur.
+        // In that case, mIsNetworkIdentifiedEmergencyCall is overwritten
+        // along with the Connection Property. The associated Call object
+        // is not similarly reset; once the call is an emergency call,
+        // then it is always an emergency call. Therefore, the
+        // Call object and Connection Property can disagree as
+        // to whether or not the call is an emergency call.
+        // To prevent that scenario, mIsNetworkIdentifiedEmergencyCall is
+        // cached here.
+        boolean isEmergency = false;
+        if (mOriginalConnection != null) {
+            isEmergency = mOriginalConnection.isNetworkIdentifiedEmergencyCall();
+        }
+
         clearOriginalConnection();
         mOriginalConnectionExtras.clear();
         mOriginalConnection = originalConnection;
@@ -1606,7 +1660,8 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
         // Set video state and capabilities
         setTelephonyVideoState(mOriginalConnection.getVideoState());
         setOriginalConnectionCapabilities(mOriginalConnection.getConnectionCapabilities());
-        setIsNetworkIdentifiedEmergencyCall(mOriginalConnection.isNetworkIdentifiedEmergencyCall());
+        setIsNetworkIdentifiedEmergencyCall(isEmergency ||
+                mOriginalConnection.isNetworkIdentifiedEmergencyCall());
         setIsAdhocConferenceCall(mOriginalConnection.isAdhocConference());
         setAudioModeIsVoip(mOriginalConnection.getAudioModeIsVoip());
         setTelephonyVideoProvider(mOriginalConnection.getVideoProvider());
@@ -1624,7 +1679,7 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
 
         TelephonyManager tm = (TelephonyManager) getPhone().getContext()
                 .getSystemService(Context.TELEPHONY_SERVICE);
-        if (tm.isEmergencyNumber(mOriginalConnection.getAddress())) {
+        if (isEmergency || tm.isEmergencyNumber(mOriginalConnection.getAddress())) {
             mTreatAsEmergencyCall = true;
         }
         // Propagate VERSTAT for IMS calls.
@@ -1965,6 +2020,24 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
                 b.getBoolean(CarrierConfigManager.KEY_ALLOW_HOLD_IN_IMS_CALL_BOOL)) &&
                 ((mOriginalConnection != null && mOriginalConnection.shouldAllowHoldingVideoCall())
                 || !VideoProfile.isVideo(getVideoState()));
+    }
+
+    /**
+     * Determines if holding an RTT call is permitted based on carrier configuration.
+     *
+     * @return {@code true} if RTT calls can be held.
+     */
+    private boolean canHoldRttCalls() {
+        PersistableBundle carrierConfig = getCarrierConfig();
+        if (carrierConfig == null) {
+            Log.w(this, "canHoldRttCalls: CarrierConfig is unavailable. Defaulting to true.");
+            return true;
+        }
+
+        boolean isHoldRttCallAllowed =
+                carrierConfig.getBoolean(CarrierConfigManager.KEY_ALLOW_HOLD_IN_RTT_CALL_BOOL);
+        Log.d(this, "canHoldRttCalls: KEY_ALLOW_HOLD_IN_RTT_CALL_BOOL=" + isHoldRttCallAllowed);
+        return isHoldRttCallAllowed;
     }
 
     private boolean isConferenceHosted() {
@@ -2442,6 +2515,14 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
         if (mOriginalConnection == null) {
             return;
         }
+
+        TelephonyManager tm = (TelephonyManager) getPhone().getContext()
+                .getSystemService(Context.TELEPHONY_SERVICE);
+        if (isNetworkIdentifiedEmergencyCall() ||
+                tm.isEmergencyNumber(mOriginalConnection.getAddress())) {
+            mTreatAsEmergencyCall = true;
+        }
+
         Call.State newState;
         // If the state is overridden and the state of the original connection hasn't changed since,
         // then we continue in the overridden state, else we go to the original connection's state.
@@ -2455,6 +2536,10 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
                 getTelecomCallId());
 
         if (mConnectionState != newState) {
+            // This flag should be reset if the call redial proceeds normally
+            // after domain reselection is successfully performed.
+            mIsDomainReselectionInProgress = false;
+
             mConnectionState = newState;
             switch (newState) {
                 case IDLE:
@@ -2514,6 +2599,7 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
                         if (mTelephonyConnectionService.maybeReselectDomain(this, reasonInfo,
                                 mShowPreciseFailedCause, mHangupDisconnectCause)) {
                             clearOriginalConnection();
+                            mIsDomainReselectionInProgress = true;
                             break;
                         }
                     }
@@ -2536,12 +2622,11 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
                             preciseDisconnectCause =
                                     mOriginalConnection.getPreciseDisconnectCause();
                         }
-                        int disconnectCause = mOriginalConnection.getDisconnectCause();
                         if ((mHangupDisconnectCause != DisconnectCause.NOT_VALID)
-                                && (mHangupDisconnectCause != disconnectCause)) {
-                            Log.i(LOG_TAG, "setDisconnected: override cause: " + disconnectCause
+                                && (mHangupDisconnectCause != cause)) {
+                            Log.i(LOG_TAG, "setDisconnected: override cause: " + cause
                                     + " -> " + mHangupDisconnectCause);
-                            disconnectCause = mHangupDisconnectCause;
+                            cause = mHangupDisconnectCause;
                         }
                         ImsReasonInfo imsReasonInfo = null;
                         if (isImsConnection()) {
@@ -2549,14 +2634,27 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
                                     (ImsPhoneConnection) mOriginalConnection;
                             imsReasonInfo = imsPhoneConnection.getImsReasonInfo();
                         }
-                        setTelephonyConnectionDisconnected(
-                                DisconnectCauseUtil.toTelecomDisconnectCause(
-                                        disconnectCause,
+                        android.telecom.DisconnectCause disconnectCause = DisconnectCauseUtil
+                                .toTelecomDisconnectCause(
+                                        cause,
                                         preciseDisconnectCause,
                                         mOriginalConnection.getVendorDisconnectCause(),
                                         getPhone().getPhoneId(), imsReasonInfo,
                                         new FlagsAdapterImpl(),
-                                        shouldTreatAsEmergencyCall()));
+                                        shouldTreatAsEmergencyCall());
+                        setTelephonyConnectionDisconnected(disconnectCause);
+
+                        // Check carrier config and that the call was remotely disconnected
+                        boolean isAutoUnholdSupported = Flags.supportAutoUnhold()
+                                && getCarrierConfig().getBoolean(
+                                        CarrierConfigManager
+                                                .KEY_AUTO_UNHOLD_ON_REMOTE_DISCONNECT_BOOL)
+                                && disconnectCause.getCode()
+                                == android.telecom.DisconnectCause.REMOTE;
+                        // Try unholding the background call if it exists.
+                        if (isAutoUnholdSupported) {
+                            sendUnhold();
+                        }
                         close();
                     }
                     break;
@@ -2576,6 +2674,16 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
         }
 
         updateStateInternal();
+
+        if (Flags.ignoreStateDetailsUpdateForDomainReselection()
+                && mIsDomainReselectionInProgress) {
+            Log.d(this, "updateState: ignore state details update for domain reselection");
+        } else {
+            updateStateDetails();
+        }
+    }
+
+    void updateStateDetails() {
         updateStatusHints();
         updateConnectionCapabilities();
         updateConnectionProperties();
@@ -2656,6 +2764,7 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
 
     public void close() {
         Log.v(this, "close");
+        mIsDomainReselectionInProgress = false;
         clearOriginalConnection();
         destroy();
         if (mTelephonyConnectionService != null) {
@@ -2989,10 +3098,6 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
         return mWasImsConnection;
     }
 
-    boolean getIsUsingAssistedDialing() {
-        return mIsUsingAssistedDialing;
-    }
-
     void setIsUsingAssistedDialing(Boolean isUsingAssistedDialing) {
         mIsUsingAssistedDialing = isUsingAssistedDialing;
         updateConnectionProperties();
@@ -3223,7 +3328,8 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
     private boolean isShowingOriginalDialString() {
         boolean showOrigDialString = false;
         Phone phone = getPhone();
-        if (phone != null && (phone.getPhoneType() == TelephonyManager.PHONE_TYPE_CDMA)
+        if (phone != null && (!Flags.deleteCdma()
+                && phone.getPhoneType() == TelephonyManager.PHONE_TYPE_CDMA)
                 && !mOriginalConnection.isIncoming()) {
             showOrigDialString = getCarrierConfig().getBoolean(CarrierConfigManager
                     .KEY_CONFIG_SHOW_ORIG_DIAL_STRING_FOR_CDMA_BOOL);
@@ -3354,6 +3460,17 @@ abstract class TelephonyConnection extends Connection implements Holdable, Commu
      */
     public void setTelephonyConnectionDisconnected(@NonNull
             android.telecom.DisconnectCause disconnectCause) {
+        if (disconnectCause.getCode() == android.telecom.DisconnectCause.ANSWERED_ELSEWHERE) {
+            PersistableBundle carrierConfig = getCarrierConfig();
+            if (carrierConfig != null && !carrierConfig.getBoolean(
+                    CarrierConfigManager.KEY_LOG_CALLS_ANSWERED_ELSEWHERE_BOOL, true)) {
+                Log.i(this, "setTelephonyConnectionDisconnected: skip logging call answered "
+                        + "elsewhere based on carrier requirements.");
+                Bundle extras = new Bundle();
+                extras.putBoolean(TelecomManager.EXTRA_DO_NOT_LOG_CALL, true);
+                putTelephonyExtras(extras);
+            }
+        }
         setDisconnected(disconnectCause);
         notifyDisconnected(disconnectCause);
         notifyStateChanged(getState());

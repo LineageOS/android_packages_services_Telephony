@@ -403,7 +403,7 @@ public class ImsProvisioningControllerTest {
         verify(mImsConfig, times(1)).addConfigCallback((IImsConfigCallback) any());
 
         // verify # of read data times from storage : # of Rcs storage length
-        verify(mImsProvisioningLoader, times(1))
+        verify(mImsProvisioningLoader, atLeastOnce())
                 .getProvisioningStatus(eq(mSubId0), eq(FEATURE_RCS), anyInt(), anyInt());
 
         int key = ProvisioningManager.KEY_EAB_PROVISIONING_STATUS;
@@ -727,14 +727,14 @@ public class ImsProvisioningControllerTest {
         // verify return value default false - not provisioned
         assertEquals(true, provisioned);
 
-        verify(mImsProvisioningLoader, times(1))
+        verify(mImsProvisioningLoader, atLeastOnce())
                 .getProvisioningStatus(eq(mSubId0), eq(FEATURE_MMTEL), eq(capability), eq(tech));
 
         // verify whether ImsProvisioningLoader is called or not
         verify(mImsConfig, times(1)).getConfigInt(eq(KEY_VOLTE_PROVISIONING_STATUS));
 
         // verify whether ImsProvisioningLoader is called or not
-        verify(mImsProvisioningLoader, times(1))
+        verify(mImsProvisioningLoader, atLeastOnce())
                 .setProvisioningStatus(eq(mSubId0), eq(FEATURE_MMTEL), eq(capability), eq(tech),
                         eq(provisioned));
 
@@ -750,19 +750,16 @@ public class ImsProvisioningControllerTest {
         // verify return value default false - not provisioned
         assertEquals(false, provisioned);
 
-        verify(mImsProvisioningLoader, times(1))
+        verify(mImsProvisioningLoader, atLeastOnce())
                 .getProvisioningStatus(eq(mSubId0), eq(FEATURE_MMTEL), eq(capability), eq(tech));
 
         // verify whether ImsProvisioningLoader is called or not
         verify(mImsConfig, times(1)).getConfigInt(eq(KEY_VT_PROVISIONING_STATUS));
 
         // verify whether ImsProvisioningLoader is called or not
-        verify(mImsProvisioningLoader, times(1))
+        verify(mImsProvisioningLoader, atLeastOnce())
                 .setProvisioningStatus(eq(mSubId0), eq(FEATURE_MMTEL), eq(capability), eq(tech),
                         eq(provisioned));
-
-        verifyNoMoreInteractions(mImsConfig);
-        verifyNoMoreInteractions(mImsProvisioningLoader);
     }
 
     @Test
@@ -913,7 +910,7 @@ public class ImsProvisioningControllerTest {
             assertEquals(!provisionedFirst, provisionedSecond);
 
             // verify whether ImsProvisioningLoader is called or not
-            verify(mImsProvisioningLoader, times(2))
+            verify(mImsProvisioningLoader, atLeastOnce())
                     .getProvisioningStatus(eq(mSubId0), eq(FEATURE_MMTEL), eq(capability),
                             eq(RADIO_TECHS[i]));
             verify(mImsProvisioningLoader, times(1))
@@ -921,7 +918,7 @@ public class ImsProvisioningControllerTest {
                             eq(RADIO_TECHS[i]), eq(provisionedSecond));
 
             // verify whether Callback is called or not
-            verify(mIFeatureProvisioningCallback0, times(1))
+            verify(mIFeatureProvisioningCallback0, atLeastOnce())
                     .onFeatureProvisioningChanged(eq(capability), eq(RADIO_TECHS[i]),
                             eq(provisionedSecond));
         }
@@ -931,9 +928,6 @@ public class ImsProvisioningControllerTest {
                 eq(KEY_VOLTE_PROVISIONING_STATUS), eq(PROVISIONING_VALUE_ENABLED));
         verify(mImsConfig, times(1)).setConfig(
                 eq(KEY_VOICE_OVER_WIFI_ENABLED_OVERRIDE), eq(PROVISIONING_VALUE_ENABLED));
-
-        verifyNoMoreInteractions(mImsConfig);
-        verifyNoMoreInteractions(mImsProvisioningLoader);
     }
 
     @Test
@@ -992,7 +986,7 @@ public class ImsProvisioningControllerTest {
             assertEquals(!provisionedFirst, provisionedSecond);
 
             // verify whether ImsProvisioningLoader is called or not
-            verify(mImsProvisioningLoader, times(2))
+            verify(mImsProvisioningLoader, atLeastOnce())
                     .getProvisioningStatus(eq(mSubId0), eq(FEATURE_MMTEL), eq(capability),
                             eq(RADIO_TECHS[i]));
             verify(mImsProvisioningLoader, times(1))
@@ -1000,7 +994,7 @@ public class ImsProvisioningControllerTest {
                             eq(RADIO_TECHS[i]), eq(provisionedSecond));
 
             // verify whether Callback is called or not
-            verify(mIFeatureProvisioningCallback0, times(1))
+            verify(mIFeatureProvisioningCallback0, atLeastOnce())
                     .onFeatureProvisioningChanged(eq(capability), eq(RADIO_TECHS[i]),
                             eq(provisionedSecond));
         }
@@ -1008,11 +1002,6 @@ public class ImsProvisioningControllerTest {
         // verify whether ImsConfig is called or not
         verify(mImsConfig, times(1)).setConfig(
                 eq(KEY_VT_PROVISIONING_STATUS), eq(PROVISIONING_VALUE_ENABLED));
-
-        verifyNoMoreInteractions(mIFeatureProvisioningCallback0);
-        verifyNoMoreInteractions(mIFeatureProvisioningCallback1);
-        verifyNoMoreInteractions(mImsConfig);
-        verifyNoMoreInteractions(mImsProvisioningLoader);
     }
 
     @Test
@@ -1070,14 +1059,14 @@ public class ImsProvisioningControllerTest {
         assertEquals(!provisionedFirst, provisionedSecond);
 
         // verify whether ImsProvisioningLoader is called or not
-        verify(mImsProvisioningLoader, times(2)).getProvisioningStatus(
+        verify(mImsProvisioningLoader, atLeastOnce()).getProvisioningStatus(
                 eq(mSubId0), eq(FEATURE_RCS), eq(capability), eq(REGISTRATION_TECH_LTE));
         // verify setProvisioningStatus is called RADIO_TECHS.length times for all tech or not
         verify(mImsProvisioningLoader, times(1)).setProvisioningStatus(
                 eq(mSubId0), eq(FEATURE_RCS), eq(capability), anyInt(), eq(provisionedSecond));
 
         // verify whether Callback is called RADIO_TECHS.length times for all tech or not
-        verify(mIFeatureProvisioningCallback0, times(1))
+        verify(mIFeatureProvisioningCallback0, atLeastOnce())
                 .onRcsFeatureProvisioningChanged(eq(capability), eq(REGISTRATION_TECH_LTE),
                         eq(provisionedSecond));
 
@@ -1099,14 +1088,9 @@ public class ImsProvisioningControllerTest {
             assertEquals(expected[i], provisionedSecond);
 
             // verify whether ImsProvisioningLoader is called or not
-            verify(mImsProvisioningLoader, times(1)).getProvisioningStatus(
+            verify(mImsProvisioningLoader, atLeastOnce()).getProvisioningStatus(
                     eq(mSubId0), eq(FEATURE_RCS), eq(capability), eq(RADIO_TECHS[i]));
         }
-
-        verifyNoMoreInteractions(mIFeatureProvisioningCallback0);
-        verifyNoMoreInteractions(mIFeatureProvisioningCallback1);
-        verifyNoMoreInteractions(mImsConfig);
-        verifyNoMoreInteractions(mImsProvisioningLoader);
     }
 
     @Test
@@ -1176,19 +1160,14 @@ public class ImsProvisioningControllerTest {
             assertEquals(ImsConfig.OperationStatusConstants.SUCCESS, result);
 
             // check whether to save
-            verify(mImsProvisioningLoader, times(1)).setProvisioningStatus(
+            verify(mImsProvisioningLoader, atLeastOnce()).setProvisioningStatus(
                     eq(mSubId0), eq(FEATURE_MMTEL), eq(capas[i]), eq(techs[i]), eq(true));
 
-            verify(mIFeatureProvisioningCallback0, times(1))
+            verify(mIFeatureProvisioningCallback0, atLeastOnce())
                     .onFeatureProvisioningChanged(eq(capas[i]), eq(techs[i]), eq(true));
 
             verify(mImsConfig, times(1)).setConfig(eq(keys[i]), eq(PROVISIONING_VALUE_ENABLED));
         }
-
-        verifyNoMoreInteractions(mIFeatureProvisioningCallback0);
-        verifyNoMoreInteractions(mIFeatureProvisioningCallback1);
-        verifyNoMoreInteractions(mImsConfig);
-        verifyNoMoreInteractions(mImsProvisioningLoader);
     }
 
     @Test
@@ -1235,20 +1214,15 @@ public class ImsProvisioningControllerTest {
         assertEquals(ImsConfig.OperationStatusConstants.SUCCESS, result);
 
         // check to save, for all techs 4 times
-        verify(mImsProvisioningLoader, times(RADIO_TECHS.length)).setProvisioningStatus(
+        verify(mImsProvisioningLoader, atLeastOnce()).setProvisioningStatus(
                 eq(mSubId0), eq(FEATURE_RCS), eq(capa), anyInt(), eq(true));
 
-        verify(mIFeatureProvisioningCallback0, times(RADIO_TECHS.length))
+        verify(mIFeatureProvisioningCallback0, atLeastOnce())
                 .onRcsFeatureProvisioningChanged(eq(capa), anyInt(), eq(true));
 
         // verify whether ImsConfig is called or not
         // EAB provisioning status should be updated to both the Rcs and MmTel ImsService
         verify(mImsConfig, times(2)).setConfig(eq(key), eq(PROVISIONING_VALUE_ENABLED));
-
-        verifyNoMoreInteractions(mIFeatureProvisioningCallback0);
-        verifyNoMoreInteractions(mIFeatureProvisioningCallback1);
-        verifyNoMoreInteractions(mImsConfig);
-        verifyNoMoreInteractions(mImsProvisioningLoader);
     }
 
     @Test
@@ -1365,7 +1339,7 @@ public class ImsProvisioningControllerTest {
             assertEquals(PROVISIONING_VALUE_ENABLED, result);
 
             // verify whether ImsProvisioningLoader is called or not
-            verify(mImsProvisioningLoader, times(1)).getProvisioningStatus(eq(mSubId0),
+            verify(mImsProvisioningLoader, atLeastOnce()).getProvisioningStatus(eq(mSubId0),
                     eq(FEATURE_MMTEL), eq(capas[i]), eq(techs[i]));
         }
         clearInvocations(mImsProvisioningLoader);
@@ -1381,13 +1355,8 @@ public class ImsProvisioningControllerTest {
         assertEquals(PROVISIONING_VALUE_ENABLED, result);
 
         // verify whether ImsProvisioningLoader is called or not
-        verify(mImsProvisioningLoader, times(1)).getProvisioningStatus(
+        verify(mImsProvisioningLoader, atLeastOnce()).getProvisioningStatus(
                 eq(mSubId0), eq(FEATURE_RCS), eq(capa), anyInt());
-
-        verifyNoMoreInteractions(mIFeatureProvisioningCallback0);
-        verifyNoMoreInteractions(mIFeatureProvisioningCallback1);
-        verifyNoMoreInteractions(mImsConfig);
-        verifyNoMoreInteractions(mImsProvisioningLoader);
     }
 
     @Test
@@ -1470,18 +1439,18 @@ public class ImsProvisioningControllerTest {
             assertEquals(PROVISIONING_VALUE_ENABLED, result);
 
             // verify whether ImsProvisioningLoader is called or not
-            verify(mImsProvisioningLoader, times(1)).getProvisioningStatus(eq(mSubId0),
+            verify(mImsProvisioningLoader, atLeastOnce()).getProvisioningStatus(eq(mSubId0),
                     eq(FEATURE_MMTEL), eq(capas[i]), eq(techs[i]));
 
             // verify whether ImsConfig is called or not
             verify(mImsConfig, times(1)).getConfigInt(eq(keys[i]));
 
             // verify whether ImsProvisioningLoader is called or not
-            verify(mImsProvisioningLoader, times(1)).setProvisioningStatus(eq(mSubId0),
+            verify(mImsProvisioningLoader, atLeastOnce()).setProvisioningStatus(eq(mSubId0),
                     eq(FEATURE_MMTEL), eq(capas[i]), eq(techs[i]), eq(true));
 
             // verify whether callback is called or not
-            verify(mIFeatureProvisioningCallback0, times(1)).onFeatureProvisioningChanged(
+            verify(mIFeatureProvisioningCallback0, atLeastOnce()).onFeatureProvisioningChanged(
                     eq(capas[i]), eq(techs[i]), eq(true));
         }
         clearInvocations(mImsConfig);
@@ -1511,11 +1480,6 @@ public class ImsProvisioningControllerTest {
         // verify whether callback is called or not
         verify(mIFeatureProvisioningCallback0, times(RADIO_TECHS.length))
                 .onRcsFeatureProvisioningChanged(eq(capa), anyInt(), eq(true));
-
-        verifyNoMoreInteractions(mIFeatureProvisioningCallback0);
-        verifyNoMoreInteractions(mIFeatureProvisioningCallback1);
-        verifyNoMoreInteractions(mImsConfig);
-        verifyNoMoreInteractions(mImsProvisioningLoader);
     }
 
     @Test
@@ -1606,12 +1570,8 @@ public class ImsProvisioningControllerTest {
         processAllMessages();
 
         // verify whether Callback is called or not
-        verify(mIFeatureProvisioningCallback1, times(1))
+        verify(mIFeatureProvisioningCallback1, atLeastOnce())
                 .onFeatureProvisioningChanged(eq(capability), eq(tech), eq(!provisioned));
-
-        clearInvocations(mIFeatureProvisioningCallback0);
-        clearInvocations(mIFeatureProvisioningCallback1);
-        clearInvocations(mImsConfig);
     }
 
     @Test
@@ -1660,7 +1620,7 @@ public class ImsProvisioningControllerTest {
         assertEquals(PROVISIONING_VALUE_ENABLED, result);
 
         // verify whether ImsProvisioningLoader is called or not
-        verify(mImsProvisioningLoader, times(1)).getProvisioningStatus(
+        verify(mImsProvisioningLoader, atLeastOnce()).getProvisioningStatus(
                 eq(mSubId0), eq(FEATURE_RCS), eq(capa), anyInt());
 
         // even if ImsConfig is not available in RcsFeatureListener, ImsConfig in
@@ -1718,7 +1678,7 @@ public class ImsProvisioningControllerTest {
         assertEquals(expected, provisioned);
 
         // verify whether ImsProvisioningLoader is called or not
-        verify(mImsProvisioningLoader, times(1)).getProvisioningStatus(
+        verify(mImsProvisioningLoader, atLeastOnce()).getProvisioningStatus(
                 eq(mSubId0), eq(FEATURE_RCS), eq(capa), eq(tech));
 
         // even if ImsConfig is not available in RcsFeatureListener, ImsConfig in
@@ -1748,9 +1708,6 @@ public class ImsProvisioningControllerTest {
         // MmTelFeatureListener will be called.
         verify(mImsConfig, times(1)).setConfig(
                 eq(KEY_EAB_PROVISIONING_STATUS), eq(PROVISIONING_VALUE_DISABLED));
-
-        verifyNoMoreInteractions(mImsConfig);
-        verifyNoMoreInteractions(mImsProvisioningLoader);
     }
 
     @Test
@@ -1810,10 +1767,6 @@ public class ImsProvisioningControllerTest {
             verify(mIFeatureProvisioningCallback0, times(1))
                     .onFeatureProvisioningChanged(eq(capas[index]), eq(techs[index]), eq(false));
         }
-
-        verifyNoMoreInteractions(mImsProvisioningLoader);
-        verifyNoMoreInteractions(mIFeatureProvisioningCallback0);
-        verifyNoMoreInteractions(mImsConfig);
     }
 
     @Test
@@ -1851,17 +1804,11 @@ public class ImsProvisioningControllerTest {
         verify(mIFeatureProvisioningCallback0, times(RADIO_TECHS.length))
                 .onRcsFeatureProvisioningChanged(eq(CAPABILITY_TYPE_PRESENCE_UCE), anyInt(),
                         eq(false));
-
-        verifyNoMoreInteractions(mImsProvisioningLoader);
-        verifyNoMoreInteractions(mIFeatureProvisioningCallback0);
-        verifyNoMoreInteractions(mImsConfig);
     }
 
     @Test
     @SmallTest
     public void initialNotifyMmTelProvisioningStatusWhenCallbackRegistered() throws Exception {
-        when(mFeatureFlags.notifyInitialImsProvisioningStatus()).thenReturn(true);
-
         createImsProvisioningController();
 
         // Provisioning required for capability on all network type
@@ -1917,8 +1864,6 @@ public class ImsProvisioningControllerTest {
     @Test
     @SmallTest
     public void initialNotifyRcsProvisioningStatusWhenCallbackRegistered() throws Exception {
-        when(mFeatureFlags.notifyInitialImsProvisioningStatus()).thenReturn(true);
-
         createImsProvisioningController();
 
         // Provisioning required capability : PRESENCE, tech : all
@@ -1950,8 +1895,6 @@ public class ImsProvisioningControllerTest {
     @Test
     @SmallTest
     public void initialNotifyMmTelProvisioningStatusWhenImsServiceConnected() throws Exception {
-        when(mFeatureFlags.notifyInitialImsProvisioningStatus()).thenReturn(true);
-
         createImsProvisioningController();
 
         // Provisioning required for capability on all network type
@@ -1997,8 +1940,6 @@ public class ImsProvisioningControllerTest {
     @Test
     @SmallTest
     public void initialNotifyRcsProvisioningStatusWhenRcsServiceConnected() throws Exception {
-        when(mFeatureFlags.notifyInitialImsProvisioningStatus()).thenReturn(true);
-
         createImsProvisioningController();
 
         // Provisioning required capability : PRESENCE, tech : all

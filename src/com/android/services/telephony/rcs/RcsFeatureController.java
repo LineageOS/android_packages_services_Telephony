@@ -181,6 +181,11 @@ public class RcsFeatureController {
                 }
 
                 @Override
+                public void handleImsUnregistered(ImsReasonInfo imsReasonInfo,
+                        int suggestedAction, int imsRadioTech, int throttlingTimeSec) {
+                }
+
+                @Override
                 public void handleImsSubscriberAssociatedUriChanged(Uri[] uris) {
                 }
             };

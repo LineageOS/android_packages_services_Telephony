@@ -461,6 +461,8 @@
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"സ്വയമേവ വീണ്ടും ശ്രമിക്കൽ മോഡ് പ്രവർത്തനക്ഷമമാക്കുക"</string>
     <string name="vibrating_for_outgoing_call_accepted_title" msgid="647945514737734657">"ഔട്ട്‌ഗോയിംഗ് കോളുകൾ സ്വീകരിക്കുന്നതിന് വൈബ്രേറ്റുചെയ്യുന്നു"</string>
     <string name="vibrating_for_outgoing_call_accepted_summary" msgid="906112327196063688">"ഔട്ട്‌ഗോയിംഗ് കോളുകൾ സ്വീകരിക്കുന്നതിന് വൈബ്രേറ്റിംഗ് മോഡ് പ്രവർത്തനക്ഷമമാക്കുക"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_title" msgid="856074537423753072">"കണക്‌റ്റ് ചെയ്‌ത കോൾ ടോണുകൾ"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_summary" msgid="2442128058517260047">"ഔട്ട്‌ഗോയിംഗ് കോൾ സ്വീകരിക്കുമ്പോൾ പ്ലേ ചെയ്യുന്ന ടോൺ"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"വീഡിയോ കോൾ സമയത്ത് TTY മോഡ് മാറ്റം അനുവദനീയമല്ല"</string>
     <string name="menu_add" msgid="5616487894975773141">"കോൺടാക്റ്റ് ചേർക്കുക"</string>
     <string name="menu_edit" msgid="3593856941552460706">"കോൺടാ‌ക്‌റ്റ് തിരുത്തുക"</string>
@@ -850,6 +852,14 @@
     <string name="simulate_out_of_service_label" msgid="3563376136603403714">"\'സേവനം ലഭ്യമല്ല\' എന്നത് സിമുലേറ്റ് ചെയ്യുക"</string>
     <string name="enforce_satellite_channel_string" msgid="295306734591329892">"ഫോഴ്‌സ് ക്യാമ്പ് സാറ്റലൈറ്റ് LTE ചാനൽ(ഡീബഗ് ബിൽഡ് മാത്രം)"</string>
     <string name="enforce_satellite_channel_label" msgid="8212349350110213468">"ഫോഴ്‌സ് ക്യാമ്പ് സാറ്റലൈറ്റ് LTE ചാനൽ"</string>
+    <string name="starlink_satellite_band_string" msgid="2287502104005508384">"Starlink_US"</string>
+    <string name="ast_satellite_band_string" msgid="3238737906080758289">"AST_US"</string>
+    <string name="manual_override_satellite_band_string" msgid="801049975307124461">"നേരിട്ടുള്ള അസാധുവാക്കൽ"</string>
+    <string name="satellite_manual_band_label" msgid="4135706517193927388">"ബ്രാൻഡ് തിരഞ്ഞെടുക്കുക:"</string>
+    <string name="satellite_channel_label_text" msgid="1999162483250790313">"ചാനൽ നൽകുക:"</string>
+    <string name="satellite_channel_hint_text" msgid="4342575738602358270">"സാറ്റലൈറ്റ് ചാനൽ ഇവിടെ നൽകുക"</string>
+    <string name="force_camp_satellite_button_string" msgid="3719311367839668322">"കണക്റ്റ് ചെയ്യുക"</string>
+    <string name="force_camp_satellite_button_connected_string" msgid="2457912207054938894">"കണക്റ്റ് ചെയ്‌തു"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"Mock സേവനദാതാവ് ഉപഗ്രഹ മോഡ് (ഡീബഗ് ബിൽഡ് മാത്രം)"</string>
     <string name="mock_carrier_roaming_satellite_label" msgid="2052656038544917979">"മോക്ക്"</string>
     <string name="choose_satellite_data_mode_label" msgid="7403013160079828226">"മോക്ക് സാറ്റലൈറ്റ് ഡാറ്റാ മോഡ്"</string>

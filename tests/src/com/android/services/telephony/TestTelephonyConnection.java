@@ -108,6 +108,7 @@ public class TestTelephonyConnection extends TelephonyConnection {
     private Object mLock = new Object();
     private PersistableBundle mCarrierConfig = new PersistableBundle();
     private boolean mOriginalConnectionCleared;
+    private boolean mClearOriginalConnectionRequested;
 
     @Override
     public com.android.internal.telephony.Connection getOriginalConnection() {
@@ -220,6 +221,10 @@ public class TestTelephonyConnection extends TelephonyConnection {
     @Override
     void clearOriginalConnection() {
         mOriginalConnectionCleared = true;
+
+        if (mClearOriginalConnectionRequested) {
+            mOriginalConnection = null;
+        }
     }
 
     boolean isOriginalConnectionCleared() {
@@ -228,6 +233,10 @@ public class TestTelephonyConnection extends TelephonyConnection {
 
     void resetOriginalConnectionCleared() {
         mOriginalConnectionCleared = false;
+    }
+
+    void requestToClearOriginalConnection(boolean clearOriginalConnection) {
+        mClearOriginalConnectionRequested = clearOriginalConnection;
     }
 
     @Override

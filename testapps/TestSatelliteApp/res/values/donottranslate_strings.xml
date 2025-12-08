@@ -127,9 +127,9 @@
     <string name="requestSatelliteAccessConfigurationForCurrentLocation">requestSatelliteAccessConfigurationForCurrentLocation</string>
 
     <string name="requestSatelliteEnable">requestSatelliteEnable</string>
+    <string name="requestIsSatelliteEnable">requestIsSatelliteEnable</string>
     <string name="requestSatelliteModemState">requestSatelliteModemState</string>
-    <string name="startSendingNtnSignalStrength">startSendingSignalStrength</string>
-    <string name="stopSendingNtnSignalStrength">stopSendingSignalStrength</string>
+    <string name="requestSignalStrength">requestSignalStrength</string>
     <string name="PssActivity">Pss Activity</string>
     <string name="DemoMode">Demo Mode</string>
     <string name="Enable">Enable</string>

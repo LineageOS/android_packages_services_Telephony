@@ -126,7 +126,7 @@
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"O seu operador não suporta a desativação do encaminhamento de chamadas quando o telemóvel não está acessível."</string>
     <string name="registration_cf_forbidden" msgid="4386482610771190420">"O seu operador não suporta encaminhamento de chamadas."</string>
     <string name="cdma_call_waiting" msgid="4565070960879673216">"Ativar chamada em espera?"</string>
-    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"Durante uma chamada, será notificado sobre as chamadas recebidas."</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"Durante uma chamada, recebe notificações sobre as chamadas recebidas."</string>
     <string name="enable_cdma_cw" msgid="811047045863422232">"Ativar"</string>
     <string name="disable_cdma_cw" msgid="7119290446496301734">"Cancelar"</string>
     <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"Chamada em espera CDMA em IMS ativada"</string>
@@ -185,7 +185,7 @@
     <string name="registration_done" msgid="5337407023566953292">"Registado na rede."</string>
     <string name="already_auto" msgid="8607068290733079336">"A seleção automática já está ativada."</string>
     <string name="select_automatically" msgid="779750291257872651">"Selecionar automaticamente a rede"</string>
-    <string name="manual_mode_disallowed_summary" msgid="3970048592179890197">"Indisponível quando está ligado a %1$s"</string>
+    <string name="manual_mode_disallowed_summary" msgid="3970048592179890197">"Indisponível quando tem ligação a %1$s"</string>
     <string name="network_select_title" msgid="4117305053881611988">"Rede"</string>
     <string name="register_automatically" msgid="3907580547590554834">"Registo automático..."</string>
     <string name="preferred_network_mode_title" msgid="5253395265169539830">"Tipo de rede preferencial"</string>
@@ -461,6 +461,8 @@
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"Ativar modo Nova tentativa automática"</string>
     <string name="vibrating_for_outgoing_call_accepted_title" msgid="647945514737734657">"A vibrar para chamada atendida"</string>
     <string name="vibrating_for_outgoing_call_accepted_summary" msgid="906112327196063688">"Ativar o modo de vibração para chamadas atendidas"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_title" msgid="856074537423753072">"Tons de chamada estabelecida"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_summary" msgid="2442128058517260047">"Ativar a reprodução de tom para chamadas feitas"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"Não é permitido alterar o modo teletipo durante uma videochamada"</string>
     <string name="menu_add" msgid="5616487894975773141">"Adicionar contacto"</string>
     <string name="menu_edit" msgid="3593856941552460706">"Editar contacto"</string>
@@ -850,6 +852,14 @@
     <string name="simulate_out_of_service_label" msgid="3563376136603403714">"Simular modo de fora de serviço"</string>
     <string name="enforce_satellite_channel_string" msgid="295306734591329892">"Canal satélite LTE Force Camp (apenas na versão de depuração)"</string>
     <string name="enforce_satellite_channel_label" msgid="8212349350110213468">"Canal satélite LTE Force Camp"</string>
+    <string name="starlink_satellite_band_string" msgid="2287502104005508384">"Starlink_US"</string>
+    <string name="ast_satellite_band_string" msgid="3238737906080758289">"AST_US"</string>
+    <string name="manual_override_satellite_band_string" msgid="801049975307124461">"Substituição manual"</string>
+    <string name="satellite_manual_band_label" msgid="4135706517193927388">"Selecionar banda:"</string>
+    <string name="satellite_channel_label_text" msgid="1999162483250790313">"Introduzir canal:"</string>
+    <string name="satellite_channel_hint_text" msgid="4342575738602358270">"Introduza o canal por satélite aqui"</string>
+    <string name="force_camp_satellite_button_string" msgid="3719311367839668322">"Ligar"</string>
+    <string name="force_camp_satellite_button_connected_string" msgid="2457912207054938894">"Ligado"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"Modo satélite da operadora fictícia (apenas na versão de depuração)"</string>
     <string name="mock_carrier_roaming_satellite_label" msgid="2052656038544917979">"Simulação"</string>
     <string name="choose_satellite_data_mode_label" msgid="7403013160079828226">"Modo de dados de satélite de simulação"</string>

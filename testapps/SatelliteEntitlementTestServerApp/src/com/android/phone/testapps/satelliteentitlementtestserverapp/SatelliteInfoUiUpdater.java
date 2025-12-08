@@ -52,7 +52,6 @@ public class SatelliteInfoUiUpdater {
     private SatelliteManagerWrapper mSatelliteManagerWrapper;
     private SubscriptionManager mSubscriptionManager;
     private CarrierConfigManager mCarrierConfigManager;
-    private final int mSubId;
     private final Context mContext;
     private PersistableBundle mOriginalBundle;
     private CarrierRoamingNtnModeCallback mNtnModeCallback;
@@ -60,18 +59,13 @@ public class SatelliteInfoUiUpdater {
 
     public SatelliteInfoUiUpdater(Context context) {
         mContext = context;
-        mSubId = getActiveSubId();
     }
 
     public void updateSatellitePlmnTextView(TextView view) {
         logd("getSatellitePlmnsForCarrier");
         List<String> plmnList = new ArrayList<>();
-        if (mSubId == SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
-            logd("getSatellitePlmnsForCarrier: Subscription ID is invalid");
-            return;
-        }
         try {
-            plmnList = getSatelliteManagerWrapper().getSatellitePlmnsForCarrier(mSubId);
+            plmnList = getSatelliteManagerWrapper().getSatellitePlmnsForCarrier(getActiveSubId());
             String strPlmnList = String.join(", ", plmnList);
             logd("getSatellitePlmnsForCarrier=" + strPlmnList);
             strPlmnList = "Allowed Plmns : " + strPlmnList;
@@ -84,7 +78,7 @@ public class SatelliteInfoUiUpdater {
 
     public void updateNtnStatusTextView(TextView view) {
         boolean isNonTerrestrialNetwork = getSatelliteManagerWrapper().isNonTerrestrialNetwork(
-                mSubId);
+                getActiveSubId());
         logd("isNonTerrestrialNetwork=" + isNonTerrestrialNetwork);
         String ntnStatus = "Is NTN : " + isNonTerrestrialNetwork;
         view.setText(ntnStatus);
@@ -93,7 +87,7 @@ public class SatelliteInfoUiUpdater {
 
     public void updateCurrentNtnStatusTextView(TextView view) {
         boolean isUsingNonTerrestrialNetwork =
-                getSatelliteManagerWrapper().isUsingNonTerrestrialNetwork(mSubId);
+                getSatelliteManagerWrapper().isUsingNonTerrestrialNetwork(getActiveSubId());
         logd("isUsingNonTerrestrialNetwork=" + isUsingNonTerrestrialNetwork);
         String ntnUsingStatus = "Is Using NTN : " + isUsingNonTerrestrialNetwork;
         view.setText(ntnUsingStatus);
@@ -101,7 +95,7 @@ public class SatelliteInfoUiUpdater {
     }
 
     public void updateAvailableServicesTextView(TextView view) {
-        List<Integer> as = getSatelliteManagerWrapper().getAvailableServices(mSubId);
+        List<Integer> as = getSatelliteManagerWrapper().getAvailableServices(getActiveSubId());
         String serviceList = convertAvailableServicesListToString(as);
         logd("getAvailableServices from WRAPPER =" + serviceList);
         view.setText(serviceList);
@@ -114,12 +108,8 @@ public class SatelliteInfoUiUpdater {
     }
 
     public void enableSatelliteEntitlementConfig() {
-        if (mSubId == SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
-            logd("enableSatelliteEntitlementConfig: Subscription ID is invalid");
-            return;
-        }
         if (mOriginalBundle == null) {
-            mOriginalBundle = getCarrierConfig().getConfigForSubId(mSubId,
+            mOriginalBundle = getCarrierConfig().getConfigForSubId(getActiveSubId(),
                     KEY_ENTITLEMENT_SERVER_URL_STRING, KEY_SATELLITE_ENTITLEMENT_SUPPORTED_BOOL,
                     KEY_SATELLITE_ATTACH_SUPPORTED_BOOL);
         }
@@ -130,7 +120,7 @@ public class SatelliteInfoUiUpdater {
         bundleToModify.putBoolean(KEY_SATELLITE_ATTACH_SUPPORTED_BOOL, true);
         logd("Modifying carrierConfig = " + bundleToModify);
         try {
-            getCarrierConfig().overrideConfig(mSubId, bundleToModify, false);
+            getCarrierConfig().overrideConfig(getActiveSubId(), bundleToModify, false);
         } catch (NoSuchMethodError exp) {
             Toast.makeText(mContext, "Manually override carrierConfig", Toast.LENGTH_LONG).show();
             loge("CarrierConfig override exp = " + exp.getMessage());
@@ -233,7 +223,7 @@ public class SatelliteInfoUiUpdater {
 
     public void registerTelephonyCallback() {
         mTelephonyManager = mContext.getSystemService(TelephonyManager.class);
-        mTelephonyManager = mTelephonyManager.createForSubscriptionId(mSubId);
+        mTelephonyManager = mTelephonyManager.createForSubscriptionId(getActiveSubId());
         mNtnModeCallback = new CarrierRoamingNtnModeCallback();
         if (mTelephonyManager != null) {
             mTelephonyManager.registerTelephonyCallback(mContext.getMainExecutor(),

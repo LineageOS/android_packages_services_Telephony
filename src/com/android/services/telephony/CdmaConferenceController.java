@@ -22,6 +22,7 @@ import android.telecom.DisconnectCause;
 import android.telecom.PhoneAccountHandle;
 import android.util.ArraySet;
 
+import com.android.internal.telephony.flags.Flags;
 import com.android.phone.PhoneUtils;
 
 import java.util.ArrayList;
@@ -82,7 +83,7 @@ final class CdmaConferenceController {
      */
     private final List<CdmaConnection> mPendingOutgoingConnections = new ArrayList<>();
 
-    private final TelephonyConnectionService mConnectionService;
+    private TelephonyConnectionService mConnectionService;
 
     private final Handler mHandler = new Handler();
 
@@ -90,6 +91,7 @@ final class CdmaConferenceController {
             new ArraySet<>());
 
     public CdmaConferenceController(TelephonyConnectionService connectionService) {
+        if (Flags.deleteCdma()) return;
         mConnectionService = connectionService;
     }
 

@@ -29,6 +29,7 @@ import android.util.Log;
 import com.android.internal.telephony.CommandException;
 import com.android.internal.telephony.CommandsInterface;
 import com.android.internal.telephony.Phone;
+import com.android.internal.telephony.flags.Flags;
 
 public class CdmaCallWaitingPreference extends Preference {
     private static final String LOG_TAG = "CdmaCallWaitingPreference";
@@ -54,6 +55,7 @@ public class CdmaCallWaitingPreference extends Preference {
     }
 
     public void init(TimeConsumingPreferenceListener listener, Phone phone) {
+        if (Flags.deleteCdma()) return;
         mPhone = phone;
         mTcpListener = listener;
         Log.d(LOG_TAG, "phone id= " + mPhone.getPhoneId());

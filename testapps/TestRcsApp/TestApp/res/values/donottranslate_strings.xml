@@ -87,6 +87,8 @@
     <string name="no_LockTo_TMO">Lock to TMO</string>
     <string name="no_LockTo_KOODOS">Lock to KOODO</string>
     <string name="no_LockTo_TELUS">Lock to TELUS</string>
+    <string name="submit_custom_lock_codes">Submit</string>
+    <string name="carrier_lock_entry_hint">For multiple carrier lock scenarios \nEnter CarrierIds separated with ,\nExample:12345,987654,56784</string>
 
     <string-array name="rcs_profile">
         <item>UP_1.0</item>

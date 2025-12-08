@@ -271,7 +271,7 @@
     <string name="preferred_network_mode_nr_lte_tdscdma_wcdma_summary" msgid="5912457779733343522">"Mode jaringan pilihan: NR/LTE/TDSCDMA/WCDMA"</string>
     <string name="preferred_network_mode_nr_lte_tdscdma_gsm_wcdma_summary" msgid="6769797110309412576">"Mode jaringan pilihan: NR/LTE/TDSCDMA/GSM/WCDMA"</string>
     <string name="preferred_network_mode_nr_lte_tdscdma_cdma_evdo_gsm_wcdma_summary" msgid="4260661428277578573">"Mode jaringan pilihan: NR/LTE/TDSCDMA/CDMA/EvDo/GSM/WCDMA"</string>
-    <string name="call_category" msgid="4394703838833058138">"Memanggil"</string>
+    <string name="call_category" msgid="4394703838833058138">"Panggilan"</string>
     <string name="network_operator_category" msgid="4992217193732304680">"Jaringan"</string>
     <string name="enhanced_4g_lte_mode_title" msgid="4213420368777080540">"Mode LTE 4G yang Ditingkatkan"</string>
     <!-- no translation found for enhanced_4g_lte_mode_title_variant:0 (7240155150166394308) -->
@@ -461,6 +461,8 @@
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"Aktifkan mode Coba lagi otomatis"</string>
     <string name="vibrating_for_outgoing_call_accepted_title" msgid="647945514737734657">"Bergetar saat panggilan keluar diterima"</string>
     <string name="vibrating_for_outgoing_call_accepted_summary" msgid="906112327196063688">"Aktifkan getaran saat panggilan keluar diterima"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_title" msgid="856074537423753072">"Nada panggilan terhubung"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_summary" msgid="2442128058517260047">"Memutar nada saat panggilan keluar diterima"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"Perubahan Mode TTY tidak diizinkan selama panggilan video"</string>
     <string name="menu_add" msgid="5616487894975773141">"Tambahkan kontak"</string>
     <string name="menu_edit" msgid="3593856941552460706">"Edit kontak"</string>
@@ -850,6 +852,14 @@
     <string name="simulate_out_of_service_label" msgid="3563376136603403714">"Simulasi Tidak Dapat Digunakan"</string>
     <string name="enforce_satellite_channel_string" msgid="295306734591329892">"Terapkan Saluran Satelit LTE (khusus Build Debug)."</string>
     <string name="enforce_satellite_channel_label" msgid="8212349350110213468">"Terapkan Saluran Satelit LTE"</string>
+    <string name="starlink_satellite_band_string" msgid="2287502104005508384">"Starlink_US"</string>
+    <string name="ast_satellite_band_string" msgid="3238737906080758289">"AST_US"</string>
+    <string name="manual_override_satellite_band_string" msgid="801049975307124461">"Penggantian Manual"</string>
+    <string name="satellite_manual_band_label" msgid="4135706517193927388">"Pilih Band:"</string>
+    <string name="satellite_channel_label_text" msgid="1999162483250790313">"Masukkan Channel:"</string>
+    <string name="satellite_channel_hint_text" msgid="4342575738602358270">"Masukkan Saluran Satelit di sini"</string>
+    <string name="force_camp_satellite_button_string" msgid="3719311367839668322">"Hubungkan"</string>
+    <string name="force_camp_satellite_button_connected_string" msgid="2457912207054938894">"Terhubung"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"Mode Satelit Operator Tiruan (khusus Build Debug)."</string>
     <string name="mock_carrier_roaming_satellite_label" msgid="2052656038544917979">"Tiruan"</string>
     <string name="choose_satellite_data_mode_label" msgid="7403013160079828226">"Mode Data Satelit Tiruan"</string>

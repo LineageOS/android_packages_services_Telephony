@@ -182,7 +182,7 @@
     <string name="register_on_network" msgid="4194770527833960423">"Probíhá registrace v síti <xliff:g id="NETWORK">%s</xliff:g>..."</string>
     <string name="not_allowed" msgid="8541221928746104798">"Vaše SIM karta nepovoluje připojení k této síti."</string>
     <string name="connect_later" msgid="1950138106010005425">"K této síti se momentálně nelze přihlásit. Zkuste to znovu později."</string>
-    <string name="registration_done" msgid="5337407023566953292">"Přihlášení k síti bylo úspěšné."</string>
+    <string name="registration_done" msgid="5337407023566953292">"Přihlášení k síti bylo úspěšné."</string>
     <string name="already_auto" msgid="8607068290733079336">"Už v automatickém výběru."</string>
     <string name="select_automatically" msgid="779750291257872651">"Vybírat síť automaticky"</string>
     <string name="manual_mode_disallowed_summary" msgid="3970048592179890197">"Nedostupné, když jste připojeni k síti %1$s"</string>
@@ -405,7 +405,7 @@
     <string name="eo_enable" msgid="107713355461019817">"Pracovní příležitosti povoleny"</string>
     <string name="eo_disable" msgid="3955421278929647485">"Pracovní příležitosti zakázány"</string>
     <string name="enable_disable_mhh" msgid="715930476289202466">"Lékařství, zdraví a nemocnice"</string>
-    <string name="mhh_enable" msgid="7224396815285147008">"Lékařství, zdraví a nemocnice – povoleno"</string>
+    <string name="mhh_enable" msgid="7224396815285147008">"Lékařství, zdraví a nemocnice – povoleno"</string>
     <string name="mhh_disable" msgid="5503643028885686265">"Lékařství, zdraví a nemocnice – zakázáno"</string>
     <string name="enable_disable_technology_news" msgid="2794845609698078400">"Technologické zprávy"</string>
     <string name="technology_news_enable" msgid="1908991199492598311">"Technologické zprávy povoleny"</string>
@@ -461,6 +461,8 @@
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"Aktivovat režim Automaticky zkusit znovu"</string>
     <string name="vibrating_for_outgoing_call_accepted_title" msgid="647945514737734657">"Vibrace u odchozích hovorů byly přijaty"</string>
     <string name="vibrating_for_outgoing_call_accepted_summary" msgid="906112327196063688">"Aktivace režimu vibrací u odchozích hovorů byla přijata"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_title" msgid="856074537423753072">"Tóny při spojení hovoru"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_summary" msgid="2442128058517260047">"Možnost přehrání tónu u odchozích hovorů byla přijata"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"Během videohovoru změna režimu TTY není povolena"</string>
     <string name="menu_add" msgid="5616487894975773141">"Přidat kontakt"</string>
     <string name="menu_edit" msgid="3593856941552460706">"Upravit kontakt"</string>
@@ -543,7 +545,7 @@
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Chcete-li se připojit k bezdrátové síti a provést hovor, vypněte režim Letadlo."</string>
     <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"Telefon je příliš zahřátý"</b>\n\n"Hovor nelze provést. Zkuste to znovu, až telefon vychladne.\n\nTísňové volání máte pořád k dispozici."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Chcete-li uskutečnit běžný hovor, opusťte režim tísňového volání."</string>
-    <string name="incall_error_emergency_only" msgid="8786127461027964653">"Přihlášení k síti nebylo úspěšné."</string>
+    <string name="incall_error_emergency_only" msgid="8786127461027964653">"Přihlášení k síti nebylo úspěšné."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"Mobilní síť je nedostupná."</string>
     <string name="incall_error_out_of_service_2g" msgid="904434080740846116">"Mobilní síť není k dispozici.\n\nAbyste mohli uskutečnit hovor, připojte se k bezdrátové síti.\n\nV tomto zařízení není aktivní připojení 2G, což může ovlivňovat možnosti připojení. Přejděte do nastavení a zapněte volbu Povolit 2G."</string>
     <string name="incall_error_out_of_service_wfc" msgid="4497663185857190885">"Mobilní síť není k dispozici. Pokud chcete provést hovor, připojte se k bezdrátové síti."</string>
@@ -625,7 +627,7 @@
     <string name="ota_hfa_activation_title" msgid="3300556778212729671">"Aktivace..."</string>
     <string name="ota_hfa_activation_dialog_message" msgid="7921718445773342996">"V telefonu se aktivuje mobilní datová služba.\n\nMůže to trvat až 5 minut."</string>
     <string name="ota_skip_activation_dialog_title" msgid="7666611236789203797">"Přeskočit aktivaci?"</string>
-    <string name="ota_skip_activation_dialog_message" msgid="6691722887019708713">"Pokud přeskočíte aktivaci, nemůžete volat ani se připojovat k mobilním datovým sítím (můžete se ale připojit k sítím Wi-Fi). Dokud svůj telefon neaktivujete, bude se zobrazovat výzva k aktivaci při každém zapnutí."</string>
+    <string name="ota_skip_activation_dialog_message" msgid="6691722887019708713">"Pokud přeskočíte aktivaci, nemůžete volat ani se připojovat k mobilním datovým sítím (můžete se ale připojit k sítím Wi-Fi). Dokud svůj telefon neaktivujete, bude se zobrazovat výzva k aktivaci při každém zapnutí."</string>
     <string name="ota_skip_activation_dialog_skip_label" msgid="5908029466817825633">"Přeskočit"</string>
     <string name="ota_activate" msgid="7939695753665438357">"Aktivovat"</string>
     <string name="ota_title_activate_success" msgid="1272135024761004889">"Telefon je aktivován."</string>
@@ -705,7 +707,7 @@
     <string name="change_pin_system_error" msgid="7772788809875146873">"Kód PIN se nepodařilo nastavit"</string>
     <string name="mobile_data_status_roaming_turned_off_subtext" msgid="6840673347416227054">"Datový roaming je vypnutý"</string>
     <string name="mobile_data_status_roaming_turned_on_subtext" msgid="5615757897768777865">"Datový roaming je zapnutý"</string>
-    <string name="mobile_data_status_roaming_without_plan_subtext" msgid="6536671968072284677">"Aktuálně roaming, je zapotřebí datový tarif"</string>
+    <string name="mobile_data_status_roaming_without_plan_subtext" msgid="6536671968072284677">"Aktuálně roaming, vyžaduje datový tarif"</string>
     <string name="mobile_data_status_roaming_with_plan_subtext" msgid="2576177169108123095">"Aktuálně roaming, datový tarif je aktivní"</string>
     <string name="mobile_data_status_no_plan_subtext" msgid="170331026419263657">"Žádná zbývající mobilní data"</string>
     <string name="mobile_data_activate_prepaid" msgid="4276738964416795596">"Žádná zbývající mobilní data"</string>
@@ -850,6 +852,14 @@
     <string name="simulate_out_of_service_label" msgid="3563376136603403714">"Simulovat výpadek služeb"</string>
     <string name="enforce_satellite_channel_string" msgid="295306734591329892">"Kanál LTE Force Camp Satellite (jen ladicí sestavení)"</string>
     <string name="enforce_satellite_channel_label" msgid="8212349350110213468">"Kanál LTE Force Camp Satellite"</string>
+    <string name="starlink_satellite_band_string" msgid="2287502104005508384">"Starlink_US"</string>
+    <string name="ast_satellite_band_string" msgid="3238737906080758289">"AST_US"</string>
+    <string name="manual_override_satellite_band_string" msgid="801049975307124461">"Ruční přepsání"</string>
+    <string name="satellite_manual_band_label" msgid="4135706517193927388">"Vyberte pásmo:"</string>
+    <string name="satellite_channel_label_text" msgid="1999162483250790313">"Zadejte kanál:"</string>
+    <string name="satellite_channel_hint_text" msgid="4342575738602358270">"Sem zadejte satelitní kanál"</string>
+    <string name="force_camp_satellite_button_string" msgid="3719311367839668322">"Připojit"</string>
+    <string name="force_camp_satellite_button_connected_string" msgid="2457912207054938894">"Připojeno"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"Simulace satelitního režimu operátora (pouze ladicí sestavení)"</string>
     <string name="mock_carrier_roaming_satellite_label" msgid="2052656038544917979">"Simulace"</string>
     <string name="choose_satellite_data_mode_label" msgid="7403013160079828226">"Režim simulace satelitních dat"</string>

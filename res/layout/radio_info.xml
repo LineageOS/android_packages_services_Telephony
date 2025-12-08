@@ -261,6 +261,70 @@
             android:layout_height="wrap_content"
             android:text="@string/enforce_satellite_channel_string"/>
 
+        <!-- Satellite Band Provider -->
+        <RadioGroup
+            android:id="@+id/force_camp_satellite_selection_radio_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dip"
+            android:visibility="gone"
+            android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/starlink_band"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dip"
+            android:text="@string/starlink_satellite_band_string" />
+
+        <RadioButton
+            android:id="@+id/ast_band"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dip"
+            android:text="@string/ast_satellite_band_string" />
+
+        <RadioButton
+            android:id="@+id/manual_override_band"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/manual_override_satellite_band_string" />
+        </RadioGroup>
+
+        <!-- Manual band selection -->
+        <LinearLayout style="@style/RadioInfo_entry_layout">
+            <TextView android:id="@+id/manual_band_selector_label"
+                android:text="@string/satellite_manual_band_label"
+                style="@style/info_label" />
+            <Spinner android:id="@+id/manualBandSelector"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView android:id="@+id/satellite_channel_label"
+                android:text="@string/satellite_channel_label_text"
+                style="@style/info_label" />
+            <EditText android:id="@+id/satellite_channel_number"
+                style="@style/form_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/satellite_channel_hint_text"
+                android:inputType="number"
+                android:imeOptions="actionDone" />
+        </LinearLayout>
+
+        <Button android:id="@+id/force_camp_satellite_button"
+            android:textSize="14sp"
+            android:layout_marginTop="8dip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:text="@string/force_camp_satellite_button_string"
+            />
+
+
         <!-- Simulate this SIM to be satellite -->
         <Switch android:id="@+id/mock_carrier_roaming_satellite"
                 android:textSize="14sp"

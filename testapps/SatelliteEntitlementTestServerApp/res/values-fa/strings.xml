@@ -15,7 +15,7 @@
     <string name="entitlement_status_provisioning" msgid="7291623636504179107">"«وضعیت حق استفاده» روی «درحال ارائه دسترسی» تنظیم شده است."</string>
     <string name="plmn_change_textView" msgid="896130072065900789">"‏می‌تواند فهرست plmn را تغییر دهد"</string>
     <string name="plmn_change_button" msgid="4776495408690606074">"ذخیره"</string>
-    <string name="plmn_restore_button" msgid="353201307416551274">"بازیابی"</string>
+    <string name="plmn_restore_button" msgid="353201307416551274">"بازگرداندن"</string>
     <string name="response_code_textview" msgid="7558995298281883364">"کد پاسخ:"</string>
     <string name="server_response_textview" msgid="9059246990182640071">"پاسخ سرور:"</string>
     <string name="response_200" msgid="8428102249891629053">"کد پاسخ سرور روی ۲۰۰ با بدنه تنظیم شده است."</string>

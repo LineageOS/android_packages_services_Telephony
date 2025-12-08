@@ -58,7 +58,7 @@ public class CdmaCallOptions extends TimeConsumingPreferenceActivity {
     @Override
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
-
+        if (Flags.deleteCdma()) return;
         getWindow().addSystemFlags(
                 android.view.WindowManager.LayoutParams
                         .SYSTEM_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);

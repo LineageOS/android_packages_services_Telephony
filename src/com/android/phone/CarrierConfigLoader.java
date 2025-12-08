@@ -33,6 +33,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Binder;
@@ -919,11 +920,8 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
             mServiceConnection[phoneId] = serviceConnection;
         }
         try {
-            if (mFeatureFlags.supportCarrierServicesForHsum()
-                    ? mContext.bindServiceAsUser(carrierService, serviceConnection,
-                    Context.BIND_AUTO_CREATE, UserHandle.of(ActivityManager.getCurrentUser()))
-                    : mContext.bindService(carrierService, serviceConnection,
-                            Context.BIND_AUTO_CREATE)) {
+            if (mContext.bindServiceAsUser(carrierService, serviceConnection,
+                    Context.BIND_AUTO_CREATE, UserHandle.of(ActivityManager.getCurrentUser()))) {
                 if (eventId == EVENT_CONNECTED_TO_DEFAULT_FOR_NO_SIM_CONFIG) {
                     mServiceBoundForNoSimConfig[phoneId] = true;
                 } else {
@@ -1284,10 +1282,8 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
     @Nullable
     private String getPackageVersion(@NonNull String packageName) {
         try {
-            PackageInfo info = mFeatureFlags.supportCarrierServicesForHsum()
-                    ? mContext.getPackageManager().getPackageInfoAsUser(packageName, 0,
-                    ActivityManager.getCurrentUser())
-                    : mContext.getPackageManager().getPackageInfo(packageName, 0);
+            PackageInfo info = mContext.getPackageManager().getPackageInfoAsUser(packageName, 0,
+                    ActivityManager.getCurrentUser());
             return Long.toString(info.getLongVersionCode());
         } catch (PackageManager.NameNotFoundException e) {
             return null;
@@ -1467,6 +1463,13 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
     public void overrideConfig(int subscriptionId, @Nullable PersistableBundle overrides,
             boolean persistent) {
         overrideConfig_enforcePermission();
+
+        // Do not allow shell UID to override the carrier config. This will not impact
+        // the CTS and telephony shell commands as they use different uids
+        if (TelephonyPermissions.isShell(getCallingUid())) {
+            throw new SecurityException("overrideConfig cannot be invoked by shell");
+        }
+
         int phoneId = SubscriptionManager.getPhoneId(subscriptionId);
         if (!SubscriptionManager.isValidPhoneId(phoneId)) {
             logd("Ignore invalid phoneId: " + phoneId + " for subId: " + subscriptionId);
@@ -1482,6 +1485,11 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
             overrideConfig(mOverrideConfigs, phoneId, overrides);
 
             if (persistent) {
+                if (isUserBuild() && !isSystemApp()) {
+                    throw new SecurityException("overrideConfig with persistent=true only can be "
+                            + "invoked by system app");
+                }
+
                 overrideConfig(mPersistentOverrideConfigs, phoneId, overrides);
 
                 if (overrides != null) {
@@ -1502,6 +1510,25 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
                     + persistent + ", overrides=" + overrides);
             updateSubscriptionDatabase(phoneId);
         });
+    }
+
+    private boolean isSystemApp() {
+        try {
+            String callingPackage = mContext.getPackageManager().getNameForUid(
+                    Binder.getCallingUid());
+
+            ApplicationInfo appInfo = mContext.getPackageManager().getApplicationInfo(
+                    callingPackage, 0);
+            return (appInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0
+                    || (appInfo.flags & ApplicationInfo.FLAG_UPDATED_SYSTEM_APP) != 0;
+        } catch (Exception e) {
+            loge("isSystemApp: failed to get application info: " + e);
+            return false;
+        }
+    }
+
+    private boolean isUserBuild() {
+        return "user".equals(android.os.Build.TYPE);
     }
 
     private void overrideConfig(@NonNull PersistableBundle[] currentOverrides, int phoneId,
@@ -1709,11 +1736,13 @@ public class CarrierConfigLoader extends ICarrierConfigLoader.Stub {
         }
 
         indentPW.println("CarrierConfigLoader: " + this);
+
+        // display default values in CarrierConfigManager
+        printConfig(CarrierConfigManager.getDefaultConfig(), indentPW,
+                "Default Values from CarrierConfigManager");
+
         for (int i = 0; i < mNumPhones; i++) {
             indentPW.println("Phone Id = " + i);
-            // display default values in CarrierConfigManager
-            printConfig(CarrierConfigManager.getDefaultConfig(), indentPW,
-                    "Default Values from CarrierConfigManager");
             // display ConfigFromDefaultApp
             printConfig(mConfigFromDefaultApp[i], indentPW, "mConfigFromDefaultApp");
             // display ConfigFromCarrierApp

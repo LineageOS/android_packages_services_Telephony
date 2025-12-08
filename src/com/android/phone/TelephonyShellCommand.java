@@ -239,6 +239,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
     private static final String DOMAIN_SELECTION_SET_SERVICE_OVERRIDE = "set-dss-override";
     private static final String DOMAIN_SELECTION_CLEAR_SERVICE_OVERRIDE = "clear-dss-override";
 
+    private static final String SET_SIM_COUNT = "set-sim-count";
+
     private static final String INVALID_ENTRY_ERROR = "An emergency number (only allow '0'-'9', "
             + "'*', '#' or '+') needs to be specified after -a in the command ";
 
@@ -486,6 +488,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
                 return handleRilEvent();
             case SET_SATELLITE_IGNORE_PLMN_LIST_FROM_STORAGE:
                 return handleSetSatelliteIgnorePlmnListFromStorage();
+            case SET_SIM_COUNT:
+                return handleSetSimCount();
             default: {
                 Log.d(LOG_TAG, "handleDefaultCommands: cmd=" + cmd);
                 return handleDefaultCommands(cmd);
@@ -543,6 +547,13 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         onHelpSatellite();
         onHelpDomainSelection();
         onHelpRilEvent();
+        onHelpSimCommands();
+    }
+
+    private void onHelpSimCommands() {
+        PrintWriter pw = getOutPrintWriter();
+        pw.println("SIM Commands:");
+        pw.println("  set-sim-count [SIM count device supported");
     }
 
     private void onHelpD2D() {
@@ -3183,7 +3194,8 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
         try {
             if (mInterface != null) {
                 result = mInterface.setAllowedNetworkTypesForReason(subId,
-                        TelephonyManager.ALLOWED_NETWORK_TYPES_REASON_USER, allowedNetworkTypes);
+                        TelephonyManager.ALLOWED_NETWORK_TYPES_REASON_USER, allowedNetworkTypes,
+                        mContext.getOpPackageName());
             } else {
                 throw new IllegalStateException("telephony service is null.");
             }
@@ -4718,6 +4730,36 @@ public class TelephonyShellCommand extends BasicShellCommandHandler {
             getOutPrintWriter().println(result);
         } catch (RemoteException e) {
             Log.w(LOG_TAG, "handleSetAllPlmnListFromStorageEmpty: " + enabled
+                    + ", error = " + e.getMessage());
+            errPw.println("Exception: " + e.getMessage());
+            return -1;
+        }
+        return 0;
+    }
+
+    private int handleSetSimCount() {
+        PrintWriter errPw = getErrPrintWriter();
+        int count;
+        try {
+            count = Integer.parseInt(getNextArgRequired());
+            if (count < 1 || count > 2) {
+                errPw.println("Need either 1 or 2 for sim count");
+                return -1;
+            }
+        } catch (NumberFormatException e) {
+            errPw.println("Need either 1 or 2 for sim count");
+            return -1;
+        }
+        Log.d(LOG_TAG, "handleSetSimCount: sim count=" + count + ", uid=" + Binder.getCallingUid());
+
+        try {
+            mInterface.switchMultiSimConfig(count);
+            if (VDBG) {
+                Log.v(LOG_TAG, "switchMultiSimConfig " + count);
+            }
+            getOutPrintWriter().println("Switched to " + count + " SIMs");
+        } catch (RemoteException e) {
+            Log.w(LOG_TAG, "switchMultiSimConfig: " + count
                     + ", error = " + e.getMessage());
             errPw.println("Exception: " + e.getMessage());
             return -1;

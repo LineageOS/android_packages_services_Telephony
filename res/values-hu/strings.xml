@@ -461,6 +461,8 @@
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"Automatikus újrapróbálkozás-mód bekapcsolása"</string>
     <string name="vibrating_for_outgoing_call_accepted_title" msgid="647945514737734657">"Rezgés kimenő hívás fogadásakor"</string>
     <string name="vibrating_for_outgoing_call_accepted_summary" msgid="906112327196063688">"Rezgés mód engedélyezése kimenő hívás fogadásakor"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_title" msgid="856074537423753072">"Sikeres hívás hangjelzései"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_summary" msgid="2442128058517260047">"Hangjelzés lejátszása kimenő hívás fogadásakor"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"A TTY mód nem módosítható videohívás közben"</string>
     <string name="menu_add" msgid="5616487894975773141">"Névjegy hozzáadása"</string>
     <string name="menu_edit" msgid="3593856941552460706">"Névjegy szerkesztése"</string>
@@ -850,6 +852,14 @@
     <string name="simulate_out_of_service_label" msgid="3563376136603403714">"Szolgáltatáskiesés szimulálása"</string>
     <string name="enforce_satellite_channel_string" msgid="295306734591329892">"Force Camp Műholdas LTE-csatorna (csak hibaelhárító build)"</string>
     <string name="enforce_satellite_channel_label" msgid="8212349350110213468">"Force Camp Műholdas LTE-csatorna"</string>
+    <string name="starlink_satellite_band_string" msgid="2287502104005508384">"Starlink_US"</string>
+    <string name="ast_satellite_band_string" msgid="3238737906080758289">"AST_US"</string>
+    <string name="manual_override_satellite_band_string" msgid="801049975307124461">"Manuális felülbírálás"</string>
+    <string name="satellite_manual_band_label" msgid="4135706517193927388">"Sáv kiválasztása:"</string>
+    <string name="satellite_channel_label_text" msgid="1999162483250790313">"Csatorna megadása:"</string>
+    <string name="satellite_channel_hint_text" msgid="4342575738602358270">"Műholdas csatorna megadása itt"</string>
+    <string name="force_camp_satellite_button_string" msgid="3719311367839668322">"Csatlakozás"</string>
+    <string name="force_camp_satellite_button_connected_string" msgid="2457912207054938894">"Csatlakozva"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"Szimulált szolgáltató – Műholdas mód (csak hibaelhárító build)"</string>
     <string name="mock_carrier_roaming_satellite_label" msgid="2052656038544917979">"Szimuláció"</string>
     <string name="choose_satellite_data_mode_label" msgid="7403013160079828226">"Szimulált műholdas adatforgalmi mód"</string>
@@ -873,12 +883,12 @@
     <string name="radio_info_ims_feature_status_available" msgid="6493200914756969292">"Rendelkezésre áll"</string>
     <string name="radio_info_ims_feature_status_unavailable" msgid="8930391136839759778">"Nem áll rendelkezésre"</string>
     <string name="radio_info_ims_reg_status" msgid="25582845222446390">"IMS-regisztráció: <xliff:g id="STATUS">%1$s</xliff:g>\nHanghívás LTE-adatkapcsolaton keresztül: <xliff:g id="AVAILABILITY_0">%2$s</xliff:g>\nHanghívás Wi-Fi-kapcsolaton keresztül: <xliff:g id="AVAILABILITY_1">%3$s</xliff:g>\nVideohívás: <xliff:g id="AVAILABILITY_2">%4$s</xliff:g>\nUT-felület: <xliff:g id="AVAILABILITY_3">%5$s</xliff:g>"</string>
-    <string name="radioInfo_service_in" msgid="45753418231446400">"Szolgáltatás"</string>
+    <string name="radioInfo_service_in" msgid="45753418231446400">"Működik"</string>
     <string name="radioInfo_service_out" msgid="287972405416142312">"Nem működik"</string>
     <string name="radioInfo_service_emergency" msgid="4763879891415016848">"Csak segélyhívások"</string>
     <string name="radioInfo_service_off" msgid="3456583511226783064">"Rádió kikapcsolva"</string>
     <string name="radioInfo_roaming_in" msgid="3156335577793145965">"Roaming"</string>
-    <string name="radioInfo_roaming_not" msgid="1904547918725478110">"Nem barangol"</string>
+    <string name="radioInfo_roaming_not" msgid="1904547918725478110">"Nincs roaming"</string>
     <string name="radioInfo_phone_idle" msgid="2191653783170757819">"Tétlen"</string>
     <string name="radioInfo_phone_ringing" msgid="8100354169567413370">"Csörgés"</string>
     <string name="radioInfo_phone_offhook" msgid="7564601639749936170">"Hívás folyamatban"</string>

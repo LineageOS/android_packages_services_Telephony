@@ -21,6 +21,8 @@
         android:sharedUserId="android.uid.phone"
         android:sharedUserLabel="@string/phoneAppLabel">
 
+    <attribution android:tag="telephony" android:label="@string/telephony_attribution_tag"/>
+
     <!-- Allows broadcasting for SlicePurchaseController events. -->
     <protected-broadcast android:name="com.android.phone.slice.action.START_SLICE_PURCHASE_APP" />
     <protected-broadcast android:name="com.android.phone.slice.action.SLICE_PURCHASE_APP_RESPONSE_TIMEOUT" />
@@ -183,6 +185,12 @@
     <uses-permission android:name="com.google.android.apps.stargate.permission.SEND_EMERGENCY_INTENTS"/>
     <!-- Needed to start demo session -->
     <uses-permission android:name="com.google.android.apps.stargate.permission.SEND_NON_EMERGENCY_INTENTS"/>
+
+    <!-- Needed to query for current companion device associations, used when handling OTP SMS -->
+    <uses-permission android:name="android.permission.MANAGE_COMPANION_DEVICES"/>
+
+    <!-- Used by Satellite module to check if Google Messages is the default SMS app. -->
+    <uses-permission android:name="android.permission.MONITOR_DEFAULT_SMS_PACKAGE"/>
 
     <application android:name="PhoneApp"
             android:persistent="true"
@@ -399,23 +407,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
-        <!-- Activation service that trigger OTASP sim provisioning -->
-        <service android:name=".otasp.OtaspActivationService" android:launchMode="singleInstance"
-            androidprv:systemUserOnly="true"
-            android:exported="true"
-            android:permission="android.permission.MODIFY_PHONE_STATE">
-            <intent-filter>
-                <action android:name="android.service.simActivation.SimActivationService" />
-            </intent-filter>
-        </service>
-
-        <receiver android:name=".otasp.OtaspSimStateReceiver" androidprv:systemUserOnly="true"
-                  android:exported ="false">
-            <intent-filter>
-                <action android:name="android.telephony.action.CARRIER_CONFIG_CHANGED" />
-            </intent-filter>
-        </receiver>
 
         <!-- "Accessibility" settings UI. Referenced by Dialer application. -->
         <activity android:name="com.android.phone.settings.AccessibilitySettingsActivity"

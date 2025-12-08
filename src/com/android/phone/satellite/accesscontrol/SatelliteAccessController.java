@@ -31,7 +31,6 @@ import static android.telephony.satellite.SatelliteManager.SATELLITE_RESULT_LOCA
 import static android.telephony.satellite.SatelliteManager.SATELLITE_RESULT_LOCATION_NOT_AVAILABLE;
 import static android.telephony.satellite.SatelliteManager.SATELLITE_RESULT_NOT_SUPPORTED;
 import static android.telephony.satellite.SatelliteManager.SATELLITE_RESULT_NO_RESOURCES;
-import static android.telephony.satellite.SatelliteManager.SATELLITE_RESULT_REQUEST_NOT_SUPPORTED;
 import static android.telephony.satellite.SatelliteManager.SATELLITE_RESULT_SUCCESS;
 
 import static com.android.internal.telephony.satellite.SatelliteConstants.TRIGGERING_EVENT_CONFIG_DATA_UPDATED;
@@ -473,6 +472,8 @@ public class SatelliteAccessController extends Handler {
             mUpdateSystemSelectionChannelsResultReceivers = new HashSet<>();
     @NonNull
     private final ResultReceiver mInternalSatelliteSupportedResultReceiver;
+    private static final String ACTION_DEFAULT_SMS_PACKAGE_CHANGED_INTERNAL =
+            "android.provider.action.DEFAULT_SMS_PACKAGE_CHANGED_INTERNAL";
 
     /**
      * Create a SatelliteAccessController instance.
@@ -902,13 +903,6 @@ public class SatelliteAccessController extends Handler {
     private void handleRequestSatelliteAccessConfigurationForCurrentLocation(
             @NonNull ResultReceiver result) {
         plogd("handleRequestSatelliteAccessConfigurationForCurrentLocation");
-
-        if (!mFeatureFlags.carrierRoamingNbIotNtn()) {
-            plogd("carrierRoamingNbIotNtnFlag is disabled");
-            result.send(SATELLITE_RESULT_REQUEST_NOT_SUPPORTED, null);
-            return;
-        }
-        plogd("requestSatelliteAccessConfigurationForCurrentLocation");
         ResultReceiver internalResultReceiver = new ResultReceiver(this) {
             @Override
             protected void onReceiveResult(int resultCode, Bundle resultData) {
@@ -1033,13 +1027,6 @@ public class SatelliteAccessController extends Handler {
 
     private void handleRequestUpdateSystemSelectionChannels(@NonNull ResultReceiver result) {
         plogd("handleRequestUpdateSystemSelectionChannels");
-        if (!mFeatureFlags.carrierRoamingNbIotNtn()) {
-            plogd("updateSystemSelectionChannels: "
-                    + "carrierRoamingNbIotNtn flag is disabled");
-            result.send(SATELLITE_RESULT_REQUEST_NOT_SUPPORTED, null);
-            return;
-        }
-
         if (getRegionalConfigId() == null) {
             plogd("updateSystemSelectionChannels: Invalid Regional config ID."
                     + " System Selection channels can not be passed down to modem");
@@ -1431,7 +1418,8 @@ public class SatelliteAccessController extends Handler {
 
         try {
             if (SatelliteAccessConfigurationParser.parse(
-                    configUpdaterSatelliteAccessConfigJsonFile.getAbsolutePath()) == null) {
+                    configUpdaterSatelliteAccessConfigJsonFile.getAbsolutePath(),
+                    mFeatureFlags) == null) {
                 ploge("updateSatelliteAccessDataWithConfigUpdaterData: "
                         + "the satellite_access_config.json is not valid");
                 mConfigUpdaterMetricsStats.reportOemConfigError(SatelliteConstants
@@ -1593,7 +1581,8 @@ public class SatelliteAccessController extends Handler {
         logd("loadSatelliteAccessConfigurationFileToMap: " + fileName);
         if (!TextUtils.isEmpty(fileName)) {
             try {
-                setSatelliteAccessConfigMap(SatelliteAccessConfigurationParser.parse(fileName));
+                setSatelliteAccessConfigMap(SatelliteAccessConfigurationParser.parse(
+                                                fileName, mFeatureFlags));
             } catch (Exception e) {
                 loge("loadSatelliteAccessConfigurationFileToMap: failed load json file: " + e);
             }
@@ -1798,15 +1787,13 @@ public class SatelliteAccessController extends Handler {
     }
 
     private void registerDefaultSmsAppChangedBroadcastReceiver(Context context) {
-        if (!mFeatureFlags.carrierRoamingNbIotNtn()) {
-            plogd("registerDefaultSmsAppChangedBroadcastReceiver: Flag "
-                    + "carrierRoamingNbIotNtn is disabled");
-            return;
-        }
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(Intent.ACTION_PACKAGE_CHANGED);
         intentFilter.addDataScheme("package");
         context.registerReceiver(mDefaultSmsAppChangedBroadcastReceiver, intentFilter);
+        IntentFilter smsFilter = new IntentFilter();
+        smsFilter.addAction(ACTION_DEFAULT_SMS_PACKAGE_CHANGED_INTERNAL);
+        context.registerReceiver(mDefaultSmsAppChangedBroadcastReceiver, smsFilter);
     }
 
     private void registerLocationModeChangedBroadcastReceiver(Context context) {
@@ -2277,8 +2264,12 @@ public class SatelliteAccessController extends Handler {
             new BroadcastReceiver() {
                 @Override
                 public void onReceive(Context context, Intent intent) {
-                    if (intent.getAction()
-                            .equals(Intent.ACTION_PACKAGE_CHANGED)) {
+                    if (intent == null || intent.getAction() == null) {
+                        return;
+                    }
+                    String action = intent.getAction();
+                    if (ACTION_DEFAULT_SMS_PACKAGE_CHANGED_INTERNAL.equals(action)
+                            || Intent.ACTION_PACKAGE_CHANGED.equals(action)) {
                         if (mFeatureFlags.satelliteImproveMultiThreadDesign()) {
                             sendRequestAsync(EVENT_ACTION_PACKAGE_CHANGED, context);
                             return;
@@ -2290,12 +2281,6 @@ public class SatelliteAccessController extends Handler {
             };
 
     private void evaluatePossibleChangeInDefaultSmsApp(@NonNull Context context) {
-        if (!mFeatureFlags.carrierRoamingNbIotNtn()) {
-            plogd("evaluatePossibleChangeInDefaultSmsApp: Flag "
-                    + "carrierRoamingNbIotNtn is disabled");
-            return;
-        }
-
         boolean isDefaultMsgAppSupported = false;
         ComponentName componentName = SmsApplication.getDefaultSmsApplicationAsUser(
                         context, true, context.getUser());
@@ -2609,25 +2594,11 @@ public class SatelliteAccessController extends Handler {
                     return;
                 }
 
-                if (mFeatureFlags.carrierRoamingNbIotNtn()) {
-                    setNewRegionalConfigId(getSatelliteOnDeviceAccessController()
-                            .getRegionalConfigIdForLocation(locationToken));
-                    plogd(
-                            "mNewRegionalConfigId from geofence file lookup is "
-                                    + getNewRegionalConfigId());
-                    satelliteAllowed = (getNewRegionalConfigId() != null);
-                } else {
-                    plogd("checkSatelliteAccessRestrictionForLocation: "
-                            + "carrierRoamingNbIotNtn is disabled");
-                    satelliteAllowed = getSatelliteOnDeviceAccessController()
-                            .isSatCommunicationAllowedAtLocation(locationToken);
-                    plogd(
-                            "checkSatelliteAccessRestrictionForLocation: satelliteAllowed from "
-                                    + "geofence file lookup: "
-                                    + satelliteAllowed);
-                    setNewRegionalConfigId(satelliteAllowed
-                            ? UNKNOWN_REGIONAL_SATELLITE_CONFIG_ID : null);
-                }
+                setNewRegionalConfigId(getSatelliteOnDeviceAccessController()
+                        .getRegionalConfigIdForLocation(locationToken));
+                plogd("mNewRegionalConfigId from geofence file lookup is "
+                        + getNewRegionalConfigId());
+                satelliteAllowed = (getNewRegionalConfigId() != null);
                 updateCachedAccessRestrictionMap(locationToken, getNewRegionalConfigId());
             }
             mAccessControllerMetricsStats.setOnDeviceLookupTime(
@@ -2991,11 +2962,6 @@ public class SatelliteAccessController extends Handler {
             @NonNull Context context) {
         String satelliteAccessControlInfoFile = null;
 
-        if (!mFeatureFlags.carrierRoamingNbIotNtn()) {
-            logd("mFeatureFlags: carrierRoamingNbIotNtn is disabled");
-            return satelliteAccessControlInfoFile;
-        }
-
         try {
             satelliteAccessControlInfoFile = context.getResources().getString(
                     com.android.internal.R.string.satellite_access_config_file);
@@ -3249,11 +3215,6 @@ public class SatelliteAccessController extends Handler {
      */
     @NonNull
     public List<Integer> getSatelliteDisallowedReasons() {
-        if (!mFeatureFlags.carrierRoamingNbIotNtn()) {
-            plogd("getSatelliteDisallowedReasons: carrierRoamingNbIotNtn is disabled");
-            return new ArrayList<>();
-        }
-
         List<Integer> satelliteDisallowedReasons = getSatelliteDisallowedReasonsCopy();
         plogd("getSatelliteDisallowedReasons: satelliteDisallowedReasons:"
                 + String.join(", ", satelliteDisallowedReasons.toString()));
@@ -3267,12 +3228,6 @@ public class SatelliteAccessController extends Handler {
      */
     public void registerForSatelliteDisallowedReasonsChanged(
             @NonNull ISatelliteDisallowedReasonsCallback callback) {
-        if (!mFeatureFlags.carrierRoamingNbIotNtn()) {
-            plogd("registerForSatelliteDisallowedReasonsChanged: carrierRoamingNbIotNtn is "
-                    + "disabled");
-            return;
-        }
-
         mSatelliteDisallowedReasonsChangedListeners.put(callback.asBinder(), callback);
 
         this.post(() -> {
@@ -3300,12 +3255,6 @@ public class SatelliteAccessController extends Handler {
      */
     public void unregisterForSatelliteDisallowedReasonsChanged(
             @NonNull ISatelliteDisallowedReasonsCallback callback) {
-        if (!mFeatureFlags.carrierRoamingNbIotNtn()) {
-            plogd("unregisterForSatelliteDisallowedReasonsChanged: "
-                    + "carrierRoamingNbIotNtn is disabled");
-            return;
-        }
-
         mSatelliteDisallowedReasonsChangedListeners.remove(callback.asBinder());
     }
 
@@ -3451,12 +3400,6 @@ public class SatelliteAccessController extends Handler {
      */
     public boolean overrideCarrierRoamingNtnEligibilityChanged(boolean state,
             boolean resetRequired) {
-        if (!mFeatureFlags.carrierRoamingNbIotNtn()) {
-            logd("overrideCarrierRoamingNtnEligibilityChanged: "
-                    + "carrierRoamingNbIotNtn is disabled");
-            return false;
-        }
-
         if (!isMockModemAllowed()) {
             logd("overrideCarrierRoamingNtnEligibilityChanged: "
                     + "mock modem not allowed.");
@@ -3522,10 +3465,6 @@ public class SatelliteAccessController extends Handler {
 
     private void handleCarrierConfigChanged(@NonNull Context context, int slotIndex,
             int subId, int carrierId, int specificCarrierId) {
-        if (!mFeatureFlags.carrierRoamingNbIotNtn()) {
-            plogd("handleCarrierConfigChanged: carrierRoamingNbIotNtn flag is disabled");
-            return;
-        }
         plogd("handleCarrierConfigChanged: slotIndex=" + slotIndex + ", subId=" + subId
                 + ", carrierId=" + carrierId + ", specificCarrierId=" + specificCarrierId);
         updateSatelliteRegionalConfig(subId);

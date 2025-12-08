@@ -38,6 +38,7 @@ import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.ServiceStateTracker;
 import com.android.internal.telephony.cdma.CdmaCallWaitingNotification;
+import com.android.internal.telephony.flags.Flags;
 import com.android.internal.telephony.imsphone.ImsExternalCallTracker;
 import com.android.internal.telephony.imsphone.ImsExternalConnection;
 import com.android.internal.telephony.imsphone.ImsPhone;
@@ -136,7 +137,9 @@ final class PstnIncomingCallNotifier {
         if (mPhone != null) {
             Log.i(this, "Registering: [%s]", getPhoneIdAsString());
             mPhone.registerForNewRingingConnection(mHandler, EVENT_NEW_RINGING_CONNECTION, null);
-            mPhone.registerForCallWaiting(mHandler, EVENT_CDMA_CALL_WAITING, null);
+            if (!Flags.deleteCdma()) {
+                mPhone.registerForCallWaiting(mHandler, EVENT_CDMA_CALL_WAITING, null);
+            }
             mPhone.registerForUnknownConnection(mHandler, EVENT_UNKNOWN_CONNECTION, null);
         }
     }
@@ -145,7 +148,9 @@ final class PstnIncomingCallNotifier {
         if (mPhone != null) {
             Log.i(this, "Unregistering: [%s]", getPhoneIdAsString());
             mPhone.unregisterForNewRingingConnection(mHandler);
-            mPhone.unregisterForCallWaiting(mHandler);
+            if (!Flags.deleteCdma()) {
+                mPhone.unregisterForCallWaiting(mHandler);
+            }
             mPhone.unregisterForUnknownConnection(mHandler);
         }
     }
@@ -199,6 +204,7 @@ final class PstnIncomingCallNotifier {
     }
 
     private void handleCdmaCallWaiting(AsyncResult asyncResult) {
+        if (Flags.deleteCdma()) return;
         Log.i(this, "handleCdmaCallWaiting: phoneId=[%s]", getPhoneIdAsString());
         CdmaCallWaitingNotification ccwi = (CdmaCallWaitingNotification) asyncResult.result;
         Call call = mPhone.getRingingCall();

@@ -25,12 +25,17 @@ public final class DataCollectorConfig {
     public static final long DUMPSYS_PROC_TIMEOUT_MILLIS_VALUE = 100L;
     public static final int MAX_LOGCAT_LINES_LOW_MEM_DEVICE_VALUE = 2000;
     public static final int MAX_LOGCAT_LINES_VALUE = 8000;
+    public static final int MAX_LOGCAT_LINES_PER_PROCESS_VALUE = 4000;
+    public static final int MAX_LOGCAT_LINES_PER_PROCESS_LOW_MEM_VALUE = 500;
     private static String LOGCAT_READ_TIMEOUT_MILLIS = "logcat_read_timeout_millis";
     private static String DUMPSYS_READ_TIMEOUT_MILLIS = "dumpsys_read_timeout_millis";
     private static String LOGCAT_PROC_TIMEOUT_MILLIS = "logcat_proc_timeout_millis";
     private static String DUMPSYS_PROC_TIMEOUT_MILLIS = "dumpsys_proc_timeout_millis";
     private static String MAX_LOGCAT_LINES_LOW_MEM = "max_logcat_lines_low_mem";
     private static String MAX_LOGCAT_LINES = "max_logcat_lines";
+    private static String MAX_LOGCAT_LINES_PER_PROCESS = "max_logcat_lines_per_process";
+    private static String MAX_LOGCAT_LINES_PER_PROCESS_LOW_MEM =
+            "max_logcat_lines_per_process_low_mem";
 
     public static int getMaxLogcatLinesForLowMemDevice() {
         return DeviceConfig.getInt(DeviceConfig.NAMESPACE_TELEPHONY,
@@ -40,6 +45,18 @@ public final class DataCollectorConfig {
     public static int getMaxLogcatLines() {
         return DeviceConfig.getInt(DeviceConfig.NAMESPACE_TELEPHONY,
                 MAX_LOGCAT_LINES, MAX_LOGCAT_LINES_VALUE);
+    }
+
+    public static int getMaxLogcatLinesPerProcess() {
+        return DeviceConfig.getInt(DeviceConfig.NAMESPACE_TELEPHONY,
+                MAX_LOGCAT_LINES_PER_PROCESS,
+                MAX_LOGCAT_LINES_PER_PROCESS_VALUE);
+    }
+
+    public static int getMaxLogcatLinesPerProcessForLowMemDevice() {
+        return DeviceConfig.getInt(DeviceConfig.NAMESPACE_TELEPHONY,
+                MAX_LOGCAT_LINES_PER_PROCESS_LOW_MEM,
+                MAX_LOGCAT_LINES_PER_PROCESS_LOW_MEM_VALUE);
     }
 
     public static long getLogcatReadTimeoutMillis() {
@@ -74,6 +91,15 @@ public final class DataCollectorConfig {
             return DataCollectorConfig.getMaxLogcatLines();
         }
 
+        public int getMaxLogcatLinesPerProcess() {
+            return DataCollectorConfig.getMaxLogcatLinesPerProcess();
+        }
+
+        public int getMaxLogcatLinesPerProcessForLowMemDevice() {
+            return DataCollectorConfig
+                .getMaxLogcatLinesPerProcessForLowMemDevice();
+        }
+
         public long getLogcatReadTimeoutMillis() {
             return DataCollectorConfig.getLogcatReadTimeoutMillis();
         }
@@ -90,6 +116,4 @@ public final class DataCollectorConfig {
             return DataCollectorConfig.getDumpsysProcTimeoutMillis();
         }
     }
-
-
 }

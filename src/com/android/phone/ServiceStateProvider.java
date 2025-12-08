@@ -485,10 +485,10 @@ public class ServiceStateProvider extends ContentProvider {
             final int css_indicator = ss.getCssIndicator();
             final int network_id = ss.getCdmaNetworkId();
             final int system_id = ss.getCdmaSystemId();
-            final int cdma_roaming_indicator = ss.getCdmaRoamingIndicator();
-            final int cdma_default_roaming_indicator = ss.getCdmaDefaultRoamingIndicator();
-            final int cdma_eri_icon_index = ss.getCdmaEriIconIndex();
-            final int cdma_eri_icon_mode = ss.getCdmaEriIconMode();
+            final int cdma_roaming_indicator = -1;
+            final int cdma_default_roaming_indicator = -1;
+            final int cdma_eri_icon_index = -1;
+            final int cdma_eri_icon_mode = -1;
             final int is_emergency_only = (ss.isEmergencyOnly()) ? 1 : 0;
             final int is_using_carrier_aggregation = (ss.isUsingCarrierAggregation()) ? 1 : 0;
             final String operator_alpha_long_raw = ss.getOperatorAlphaLongRaw();

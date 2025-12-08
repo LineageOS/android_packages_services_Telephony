@@ -106,6 +106,8 @@ public class CallFeaturesSetting extends PreferenceActivity
     private static final String BUTTON_VP_KEY = "button_voice_privacy_key";
     private static final String BUTTON_VIBRATING_KEY =
             "button_vibrating_for_outgoing_call_accepted_key";
+    private static final String BUTTON_PLAYING_TONE_KEY =
+            "button_playing_tone_for_outgoing_call_accepted_key";
 
     private Phone mPhone;
     private ImsManager mImsMgr;
@@ -119,6 +121,7 @@ public class CallFeaturesSetting extends PreferenceActivity
     private Preference mButtonWifiCalling;
     private boolean mDisallowedConfig = false;
     private SwitchPreference mButtonVibratingForMoCallAccepted;
+    private SwitchPreference mButtonPlayingToneForMoCallAccepted;
     private int mCallConnectedIndicator = TelecomManager.CALL_CONNECTED_INDICATOR_NONE;
 
     /*
@@ -178,9 +181,15 @@ public class CallFeaturesSetting extends PreferenceActivity
                     mButtonAutoRetry.isChecked() ? 1 : 0);
             return true;
         } else if (preference == mButtonVibratingForMoCallAccepted) {
-            final int prefs = mButtonVibratingForMoCallAccepted.isChecked()?
-                    mCallConnectedIndicator | TelecomManager.CALL_CONNECTED_INDICATOR_VIBRATION
+            final int prefs = mButtonVibratingForMoCallAccepted.isChecked()
+                    ? mCallConnectedIndicator | TelecomManager.CALL_CONNECTED_INDICATOR_VIBRATION
                     : mCallConnectedIndicator & ~TelecomManager.CALL_CONNECTED_INDICATOR_VIBRATION;
+            mTelecomManager.setCallConnectedIndicatorPreference(prefs);
+            return true;
+        } else if (preference == mButtonPlayingToneForMoCallAccepted) {
+            final int prefs = mButtonPlayingToneForMoCallAccepted.isChecked()
+                    ? mCallConnectedIndicator | TelecomManager.CALL_CONNECTED_INDICATOR_TONE
+                    : mCallConnectedIndicator & ~TelecomManager.CALL_CONNECTED_INDICATOR_TONE;
             mTelecomManager.setCallConnectedIndicatorPreference(prefs);
             return true;
         } else if (preference == preferenceScreen.findPreference(
@@ -387,10 +396,13 @@ public class CallFeaturesSetting extends PreferenceActivity
                 .createForSubscriptionId(mPhone.getSubId());
 
         mButtonVibratingForMoCallAccepted = (SwitchPreference) findPreference(BUTTON_VIBRATING_KEY);
+        mButtonPlayingToneForMoCallAccepted = (SwitchPreference) findPreference(
+                BUTTON_PLAYING_TONE_KEY);
         if (!getResources().getBoolean(
                 R.bool.show_call_connected_indicator_preference)) {
             Preference phoneAccountSettingsPreference = findPreference(PHONE_ACCOUNT_SETTINGS_KEY);
             getPreferenceScreen().removePreference(mButtonVibratingForMoCallAccepted);
+            getPreferenceScreen().removePreference(mButtonPlayingToneForMoCallAccepted);
         }
         mCallConnectedIndicator = mTelecomManager.getCallConnectedIndicatorPreference();
         // Note: The PhoneAccountSettingsActivity accessible via the
@@ -403,10 +415,14 @@ public class CallFeaturesSetting extends PreferenceActivity
             Preference phoneAccountSettingsPreference = findPreference(PHONE_ACCOUNT_SETTINGS_KEY);
             getPreferenceScreen().removePreference(phoneAccountSettingsPreference);
             getPreferenceScreen().removePreference(mButtonVibratingForMoCallAccepted);
+            getPreferenceScreen().removePreference(mButtonPlayingToneForMoCallAccepted);
         } else {
             mButtonVibratingForMoCallAccepted.setChecked((mCallConnectedIndicator
                     & TelecomManager.CALL_CONNECTED_INDICATOR_VIBRATION) > 0);
             mButtonVibratingForMoCallAccepted.setOnPreferenceChangeListener(this);
+            mButtonPlayingToneForMoCallAccepted.setChecked((mCallConnectedIndicator
+                    & TelecomManager.CALL_CONNECTED_INDICATOR_TONE) > 0);
+            mButtonPlayingToneForMoCallAccepted.setOnPreferenceChangeListener(this);
         }
 
         PreferenceScreen prefSet = getPreferenceScreen();
@@ -440,42 +456,37 @@ public class CallFeaturesSetting extends PreferenceActivity
         Preference gsmOptions = prefSet.findPreference(BUTTON_GSM_UMTS_OPTIONS);
         Preference fdnButton = prefSet.findPreference(BUTTON_FDN_KEY);
         fdnButton.setIntent(mSubscriptionInfoHelper.getIntent(FdnSetting.class));
-        if (!Flags.phoneTypeCleanup()
-                && carrierConfig.getBoolean(CarrierConfigManager.KEY_WORLD_PHONE_BOOL)) {
-            cdmaOptions.setIntent(mSubscriptionInfoHelper.getIntent(CdmaCallOptions.class));
-            gsmOptions.setIntent(mSubscriptionInfoHelper.getIntent(GsmUmtsCallOptions.class));
-        } else {
-            // Remove GSM options and repopulate the preferences in this Activity if phone type is
-            // GSM.
-            prefSet.removePreference(gsmOptions);
+        // Remove GSM options and repopulate the preferences in this Activity if phone type is
+        // GSM.
+        prefSet.removePreference(gsmOptions);
 
-            int phoneType = mPhone.getPhoneType();
-            if (carrierConfig.getBoolean(
-                    CarrierConfigManager.KEY_HIDE_CARRIER_NETWORK_SETTINGS_BOOL)) {
+        int phoneType = mPhone.getPhoneType();
+        if (carrierConfig.getBoolean(
+                CarrierConfigManager.KEY_HIDE_CARRIER_NETWORK_SETTINGS_BOOL)) {
+            prefSet.removePreference(fdnButton);
+        } else {
+            if (Flags.deleteCdma()) phoneType = PhoneConstants.PHONE_TYPE_GSM;
+            if (phoneType == PhoneConstants.PHONE_TYPE_CDMA) {
+                // For now, just keep CdmaCallOptions as one entity. Eventually CDMA should
+                // follow the same pattern as GSM below, where VP and Call forwarding are
+                // populated here and Call waiting is populated in another "Additional Settings"
+                // submenu for CDMA.
                 prefSet.removePreference(fdnButton);
-            } else {
-                if (phoneType == PhoneConstants.PHONE_TYPE_CDMA) {
-                    // For now, just keep CdmaCallOptions as one entity. Eventually CDMA should
-                    // follow the same pattern as GSM below, where VP and Call forwarding are
-                    // populated here and Call waiting is populated in another "Additional Settings"
-                    // submenu for CDMA.
+                cdmaOptions.setSummary(null);
+                cdmaOptions.setTitle(R.string.additional_gsm_call_settings);
+                cdmaOptions.setIntent(mSubscriptionInfoHelper.getIntent(CdmaCallOptions.class));
+            } else if (phoneType == PhoneConstants.PHONE_TYPE_GSM) {
+                prefSet.removePreference(cdmaOptions);
+                if (mPhone.getIccCard() == null || !mPhone.getIccCard().getIccFdnAvailable()) {
                     prefSet.removePreference(fdnButton);
-                    cdmaOptions.setSummary(null);
-                    cdmaOptions.setTitle(R.string.additional_gsm_call_settings);
-                    cdmaOptions.setIntent(mSubscriptionInfoHelper.getIntent(CdmaCallOptions.class));
-                } else if (phoneType == PhoneConstants.PHONE_TYPE_GSM) {
-                    prefSet.removePreference(cdmaOptions);
-                    if (mPhone.getIccCard() == null || !mPhone.getIccCard().getIccFdnAvailable()) {
-                        prefSet.removePreference(fdnButton);
-                    }
-                    if (carrierConfig.getBoolean(
-                            CarrierConfigManager.KEY_ADDITIONAL_CALL_SETTING_BOOL)) {
-                        addPreferencesFromResource(R.xml.gsm_umts_call_options);
-                        GsmUmtsCallOptions.init(prefSet, mSubscriptionInfoHelper);
-                    }
-                } else {
-                    throw new IllegalStateException("Unexpected phone type: " + phoneType);
                 }
+                if (carrierConfig.getBoolean(
+                        CarrierConfigManager.KEY_ADDITIONAL_CALL_SETTING_BOOL)) {
+                    addPreferencesFromResource(R.xml.gsm_umts_call_options);
+                    GsmUmtsCallOptions.init(prefSet, mSubscriptionInfoHelper);
+                }
+            } else {
+                throw new IllegalStateException("Unexpected phone type: " + phoneType);
             }
         }
         updateVtWfc();

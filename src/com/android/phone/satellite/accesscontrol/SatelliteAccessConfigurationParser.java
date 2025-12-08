@@ -26,6 +26,8 @@ import android.telephony.satellite.SatelliteInfo;
 import android.telephony.satellite.SatellitePosition;
 import android.util.Log;
 
+import com.android.internal.telephony.flags.FeatureFlags;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -57,6 +59,7 @@ public class SatelliteAccessConfigurationParser {
     public static final String SATELLITE_END_EARFCN = "end_earfcn";
     public static final String SATELLITE_BANDS = "bands";
     public static final String SATELLITE_TAG_ID_LIST = "tag_ids";
+    public static final String SATELLITE_CARRIER_ID_LIST = "carrier_ids";
 
     /**
      * Parses a JSON file containing satellite access configurations.
@@ -66,7 +69,8 @@ public class SatelliteAccessConfigurationParser {
      * @throws RuntimeException if the JSON file cannot be parsed or if a required field is missing.
      */
     @Nullable
-    public static Map<Integer, SatelliteAccessConfiguration> parse(@NonNull String fileName) {
+    public static Map<Integer, SatelliteAccessConfiguration> parse(
+            @NonNull String fileName, @NonNull FeatureFlags featureFlags) {
         logd("SatelliteAccessConfigurationParser: parse: " + fileName);
         Map<Integer, SatelliteAccessConfiguration> satelliteAccessConfigurationMap;
 
@@ -82,7 +86,7 @@ public class SatelliteAccessConfigurationParser {
             }
 
             satelliteAccessConfigurationMap =
-                    parseSatelliteAccessConfigurations(configurationArrayJson);
+                    parseSatelliteAccessConfigurations(configurationArrayJson, featureFlags);
 
         } catch (JSONException | ParseException e) {
             loge("Failed to parse satellite access configurations: " + e.getMessage());
@@ -104,13 +108,15 @@ public class SatelliteAccessConfigurationParser {
     }
 
     @NonNull
-    protected static List<Integer> parseSatelliteTagIdList(@NonNull JSONObject satelliteInfoJson) {
+    protected static List<Integer> parseSatelliteTagIdList(
+            @NonNull JSONObject satelliteAccessConfigurationJson) {
         List<Integer> tagIdList = new ArrayList<>();
         try {
-            JSONArray tagIdArray = satelliteInfoJson.optJSONArray(SATELLITE_TAG_ID_LIST);
+            JSONArray tagIdArray = satelliteAccessConfigurationJson.optJSONArray(
+                    SATELLITE_TAG_ID_LIST);
             tagIdList = parseIntegerList(tagIdArray);
         } catch (JSONException e) {
-            loge("parseSatelliteInfo:  parsing is error");
+            loge("parseSatelliteTagIdList:  parsing is error");
             return tagIdList;
         }
 
@@ -118,9 +124,27 @@ public class SatelliteAccessConfigurationParser {
         return tagIdList;
     }
 
+    @NonNull
+    protected static List<Integer> parseSatelliteCarrierIdList(
+            @NonNull JSONObject satelliteAccessConfigurationJson) {
+        List<Integer> carrierIdList = new ArrayList<>();
+        try {
+            JSONArray carrierIdArray = satelliteAccessConfigurationJson.optJSONArray(
+                    SATELLITE_CARRIER_ID_LIST);
+            carrierIdList = parseIntegerList(carrierIdArray);
+        } catch (JSONException e) {
+            loge("parseSatelliteCarrierIdList:  parsing is error");
+            return carrierIdList;
+        }
+        logd("parseSatelliteCarrierIdList: " + carrierIdList);
+        return carrierIdList;
+    }
+
+
     @Nullable
     private static Map<Integer, SatelliteAccessConfiguration> parseSatelliteAccessConfigurations(
-            JSONArray satelliteAccessConfigurationJsonArray) throws JSONException {
+            JSONArray satelliteAccessConfigurationJsonArray, @NonNull FeatureFlags featureFlags)
+            throws JSONException {
         Map<Integer, SatelliteAccessConfiguration> satelliteConfigMap = new HashMap<>();
         if (satelliteAccessConfigurationJsonArray == null) {
             loge("parseSatelliteAccessConfigurations: jsonArray is null, return null");
@@ -150,8 +174,15 @@ public class SatelliteAccessConfigurationParser {
                 return null;
             }
 
-            satelliteConfigMap.put(configId,
+            if (featureFlags.supportCarrierIdsInGeofence()) {
+                List<Integer> carrierIdList =
+                        parseSatelliteCarrierIdList(satelliteAccessConfigurationJson);
+                satelliteConfigMap.put(configId,
+                    new SatelliteAccessConfiguration(satelliteInfoList, tagIdList, carrierIdList));
+            } else {
+                satelliteConfigMap.put(configId,
                     new SatelliteAccessConfiguration(satelliteInfoList, tagIdList));
+            }
         }
 
         logd("parseSatelliteAccessConfigurations: " + satelliteConfigMap);

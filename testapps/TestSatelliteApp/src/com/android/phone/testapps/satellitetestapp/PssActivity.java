@@ -23,9 +23,11 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.telephony.IBooleanConsumer;
 import android.telephony.IIntegerConsumer;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
+import android.telephony.satellite.stub.INtnSignalStrengthConsumer;
 import android.telephony.satellite.stub.ISatellite;
 import android.telephony.satellite.stub.ISatelliteListener;
 import android.telephony.satellite.stub.NtnSignalStrength;
@@ -124,6 +126,11 @@ public class PssActivity extends Activity implements AdapterView.OnItemSelectedL
 
     private void initViews() {
         findViewById(R.id.requestSatelliteEnable).setOnClickListener(this::requestSatelliteEnable);
+        findViewById(R.id.requestIsSatelliteEnabled)
+                .setOnClickListener(this::requestIsSatelliteEnabled);
+        findViewById(R.id.requestSatelliteModemState)
+                .setOnClickListener(this::requestSatelliteModemState);
+        findViewById(R.id.requestSignalStrength).setOnClickListener(this::requestSignalStrength);
 
         mLogTextView = findViewById(R.id.logView);
         Switch demoSwitch = findViewById(R.id.DemoModeSwitch);
@@ -151,6 +158,74 @@ public class PssActivity extends Activity implements AdapterView.OnItemSelectedL
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
         // Optional: Handle the case where nothing is selected
+    }
+
+    private void requestIsSatelliteEnabled(View v) {
+        IIntegerConsumer errorCallback =
+                new IIntegerConsumer.Stub() {
+                    @Override
+                    public void accept(int result) {
+                        logi("requestIsSatelliteEnabled error: " + result);
+                    }
+                };
+        IBooleanConsumer callback =
+                new IBooleanConsumer.Stub() {
+                    @Override
+                    public void accept(boolean result) {
+                        logi("requestIsSatelliteEnabled: " + result);
+                    }
+                };
+        try {
+            mSatelliteService.requestIsSatelliteEnabled(errorCallback, callback);
+        } catch (Exception e) {
+            logi("requestIsSatelliteEnabled: " + e);
+        }
+    }
+
+    private void requestSatelliteModemState(View v) {
+        IIntegerConsumer errorCallback =
+                new IIntegerConsumer.Stub() {
+                    @Override
+                    public void accept(int result) {
+                        logi("requestSatelliteModemState error: " + result);
+                    }
+                };
+        IIntegerConsumer callback =
+                new IIntegerConsumer.Stub() {
+                    @Override
+                    public void accept(int result) {
+                        logi("requestSatelliteModemState: " + result);
+                    }
+                };
+        try {
+            mSatelliteService.requestSatelliteModemState(errorCallback, callback);
+        } catch (Exception e) {
+            logi("requestSatelliteModemState: " + e);
+        }
+    }
+
+    private void requestSignalStrength(View v) {
+        INtnSignalStrengthConsumer callback =
+                new INtnSignalStrengthConsumer.Stub() {
+                    @Override
+                    public void accept(NtnSignalStrength result) {
+                        logi(
+                                "requestSignalStrength NtsSignalStrength level : "
+                                        + result.signalStrengthLevel);
+                    }
+                };
+        IIntegerConsumer resultCallback =
+                new IIntegerConsumer.Stub() {
+                    @Override
+                    public void accept(int result) {
+                        logi("requestSignalStrength int result : " + result);
+                    }
+                };
+        try {
+            mSatelliteService.requestSignalStrength(resultCallback, callback);
+        } catch (Exception e) {
+            logi("requestSignalStrength: " + e);
+        }
     }
 
     private void requestSatelliteEnable(View v) {

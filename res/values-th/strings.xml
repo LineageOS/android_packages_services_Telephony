@@ -461,6 +461,8 @@
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"เปิดใช้งานโหมดลองซ้ำอัตโนมัติ"</string>
     <string name="vibrating_for_outgoing_call_accepted_title" msgid="647945514737734657">"การสั่นสำหรับสายโทรออกที่ปลายทางรับสาย"</string>
     <string name="vibrating_for_outgoing_call_accepted_summary" msgid="906112327196063688">"เปิดใช้โหมดสั่นสำหรับสายโทรออกที่ปลายทางรับสาย"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_title" msgid="856074537423753072">"เสียงเมื่อเชื่อมต่อสาย"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_summary" msgid="2442128058517260047">"เล่นเสียงเมื่อปลายทางรับสายโทรออก"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"ไม่อนุญาตการเปลี่ยนโหมด TTY ในระหว่าง Hangouts วิดีโอ"</string>
     <string name="menu_add" msgid="5616487894975773141">"เพิ่มรายชื่อติดต่อ"</string>
     <string name="menu_edit" msgid="3593856941552460706">"แก้ไขรายชื่อติดต่อ"</string>
@@ -804,7 +806,7 @@
     <string name="messageCallBarring" msgid="5537730400652466912">"ป้อนรหัสผ่าน"</string>
     <string name="call_barring_settings" msgid="4616607285790258919">"การตั้งค่าระงับการโทร"</string>
     <string name="callFailed_NetworkBusy" msgid="5437103975842913681">"เครือข่ายไม่ว่าง โปรดลองโทรอีกครั้ง"</string>
-    <string name="callFailed_NetworkCongested" msgid="6801283142342775380">"เครือข่ายแออัด ติดต่อโอเปอเรเตอร์อุปกรณ์เคลื่อนที่เพื่อขอความช่วยเหลือ"</string>
+    <string name="callFailed_NetworkCongested" msgid="6801283142342775380">"เครือข่ายแออัด ติดต่อโอเปอเรเตอร์มือถือเพื่อขอความช่วยเหลือ"</string>
     <string name="supp_service_notification_call_deflected" msgid="4980942818105909813">"มีการส่งต่อสาย"</string>
     <string name="supp_service_notification_call_forwarded" msgid="7102930311735433088">"มีการโอนสาย"</string>
     <string name="supp_service_notification_call_waiting" msgid="4577403881609445324">"กำลังรอสาย"</string>
@@ -850,6 +852,14 @@
     <string name="simulate_out_of_service_label" msgid="3563376136603403714">"จำลองความไม่พร้อมให้บริการ"</string>
     <string name="enforce_satellite_channel_string" msgid="295306734591329892">"บังคับใช้แชนเนล LTE ของ Camp Satellite (บิลด์การแก้ไขข้อบกพร่องเท่านั้น)"</string>
     <string name="enforce_satellite_channel_label" msgid="8212349350110213468">"บังคับใช้แชนเนล LTE ของ Camp Satellite"</string>
+    <string name="starlink_satellite_band_string" msgid="2287502104005508384">"Starlink_US"</string>
+    <string name="ast_satellite_band_string" msgid="3238737906080758289">"AST_US"</string>
+    <string name="manual_override_satellite_band_string" msgid="801049975307124461">"การลบล้างด้วยตนเอง"</string>
+    <string name="satellite_manual_band_label" msgid="4135706517193927388">"เลือกย่านความถี่:"</string>
+    <string name="satellite_channel_label_text" msgid="1999162483250790313">"ป้อนช่องสัญญาณ:"</string>
+    <string name="satellite_channel_hint_text" msgid="4342575738602358270">"ป้อนช่องสัญญาณดาวเทียมที่นี่"</string>
+    <string name="force_camp_satellite_button_string" msgid="3719311367839668322">"เชื่อมต่อ"</string>
+    <string name="force_camp_satellite_button_connected_string" msgid="2457912207054938894">"เชื่อมต่อแล้ว"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"โหมดดาวเทียมของผู้ให้บริการจำลอง (บิลด์การแก้ไขข้อบกพร่องเท่านั้น)"</string>
     <string name="mock_carrier_roaming_satellite_label" msgid="2052656038544917979">"จำลอง"</string>
     <string name="choose_satellite_data_mode_label" msgid="7403013160079828226">"โหมดข้อมูลดาวเทียมจำลอง"</string>

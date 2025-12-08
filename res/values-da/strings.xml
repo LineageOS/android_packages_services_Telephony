@@ -48,8 +48,8 @@
     <string name="no_vm_number_msg" msgid="5165161462411372504">"Der er ikke gemt noget telefonsvarernummer på SIM-kortet."</string>
     <string name="add_vm_number_str" msgid="7368168964435881637">"Tilføj nummer"</string>
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"Indstillingerne for telefonsvareren kan kun ændres af den primære bruger."</string>
-    <string name="puk_unlocked" msgid="4627340655215746511">"Blokeringen af dit SIM-kort er blevet ophævet. Din telefon låser op ..."</string>
-    <string name="label_ndp" msgid="7617392683877410341">"Pinkode til oplåsning af SIM-netværket"</string>
+    <string name="puk_unlocked" msgid="4627340655215746511">"Blokeringen af dit SIM-kort er blevet ophævet. Din telefon låser op..."</string>
+    <string name="label_ndp" msgid="7617392683877410341">"Pinkode til oplåsning af SIM-kortnetværket"</string>
     <string name="label_phoneid" msgid="8775611434123577808">"SIM-kortet er låst for operatøren"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"Lås op"</string>
     <string name="sim_ndp_dismiss_text" msgid="89667342248929777">"Luk"</string>
@@ -461,6 +461,8 @@
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"Aktivér automatisk gentagelsestilstand"</string>
     <string name="vibrating_for_outgoing_call_accepted_title" msgid="647945514737734657">"Vibration for udgående opkald, der accepteres"</string>
     <string name="vibrating_for_outgoing_call_accepted_summary" msgid="906112327196063688">"Aktivér vibrationstilstand for udgående opkald, der accepteres"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_title" msgid="856074537423753072">"Toner for forbundet opkald"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_summary" msgid="2442128058517260047">"Afspilning af tone for udgående opkald, der accepteres"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"Det er ikke tilladt at ændre TTY-tilstanden under et videoopkald"</string>
     <string name="menu_add" msgid="5616487894975773141">"Tilføj kontakt"</string>
     <string name="menu_edit" msgid="3593856941552460706">"Rediger kontakt"</string>
@@ -484,7 +486,7 @@
     <string name="pin2_or_fdn_invalid" msgid="7542639487955868181">"Nummeret til begrænset opkald blev ikke opdateret. PIN2-koden var forkert, eller telefonnummeret blev afvist."</string>
     <string name="fdn_failed" msgid="216592346853420250">"Handlingen mislykkedes."</string>
     <string name="fdn_blocked_mmi" msgid="3218296901316119797">"MMI-koden kan ikke ringes op, fordi FDN er aktiveret."</string>
-    <string name="simContacts_emptyLoading" msgid="4989040293858675483">"Læser fra SIM-kort ..."</string>
+    <string name="simContacts_emptyLoading" msgid="4989040293858675483">"Læser fra SIM-kort..."</string>
     <string name="simContacts_empty" msgid="1135632055473689521">"Der er ingen kontakter på dit SIM-kort."</string>
     <string name="simContacts_title" msgid="2714029230160136647">"Vælg kontakter, der skal importeres"</string>
     <string name="simContacts_airplaneMode" msgid="4654884030631503808">"Slå flytilstand fra for at importere kontakter fra SIM-kortet."</string>
@@ -596,7 +598,7 @@
     <string name="onscreenVideoCallText" msgid="1743992456126258698">"Videoopkald"</string>
     <string name="importSimEntry" msgid="3892354284082689894">"Importer"</string>
     <string name="importAllSimEntries" msgid="2628391505643564007">"Importer alle"</string>
-    <string name="importingSimContacts" msgid="4995457122107888932">"Importerer SIM-kontakter"</string>
+    <string name="importingSimContacts" msgid="4995457122107888932">"Importerer kontakter fra SIM-kort"</string>
     <string name="importToFDNfromContacts" msgid="5068664870738407341">"Importer fra kontakter"</string>
     <string name="singleContactImportedMsg" msgid="3619804066300998934">"Kontaktpersonen blev importeret"</string>
     <string name="failedToImportSingleContactMsg" msgid="228095510489830266">"Kontaktpersonen kunne ikke importeres"</string>
@@ -844,12 +846,20 @@
     <string name="dsds_dialog_message" msgid="4047480385678538850">"Genstart enheden for at skifte indstilling."</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"Genstart"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"Annuller"</string>
-    <string name="removable_esim_string" msgid="7931369811671787649">"Konfigurer eSIM, der kan fjernes, som standard"</string>
+    <string name="removable_esim_string" msgid="7931369811671787649">"Konfigurer eSIM-kort, der kan fjernes, som standard"</string>
     <string name="radio_info_radio_power" msgid="8805595022160471587">"Mobilsendestyrke"</string>
     <string name="simulate_out_of_service_string" msgid="7787925611727597193">"Simulering af enhed, der er ude af drift (kun i fejlretningsbuild)"</string>
     <string name="simulate_out_of_service_label" msgid="3563376136603403714">"Simuler enhed, der er ude af drift"</string>
     <string name="enforce_satellite_channel_string" msgid="295306734591329892">"Gennemtving Camp Satellite LTE-kanal (kun fejlretningsbuild)"</string>
     <string name="enforce_satellite_channel_label" msgid="8212349350110213468">"Gennemtving Camp Satellite LTE-kanal"</string>
+    <string name="starlink_satellite_band_string" msgid="2287502104005508384">"Starlink_US"</string>
+    <string name="ast_satellite_band_string" msgid="3238737906080758289">"AST_US"</string>
+    <string name="manual_override_satellite_band_string" msgid="801049975307124461">"Manuel tilsidesættelse"</string>
+    <string name="satellite_manual_band_label" msgid="4135706517193927388">"Vælg bånd:"</string>
+    <string name="satellite_channel_label_text" msgid="1999162483250790313">"Angiv kanal:"</string>
+    <string name="satellite_channel_hint_text" msgid="4342575738602358270">"Angiv satellitkanal her"</string>
+    <string name="force_camp_satellite_button_string" msgid="3719311367839668322">"Opret forbindelse"</string>
+    <string name="force_camp_satellite_button_connected_string" msgid="2457912207054938894">"Forbundet"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"Test af satellittilstand via mobilselskab (kun fejlretningsbuild)"</string>
     <string name="mock_carrier_roaming_satellite_label" msgid="2052656038544917979">"Eksempel"</string>
     <string name="choose_satellite_data_mode_label" msgid="7403013160079828226">"Eksempel på satellitdatatilstand"</string>

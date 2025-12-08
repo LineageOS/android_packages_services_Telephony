@@ -48,15 +48,20 @@ import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.eq;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import org.mockito.Mockito;
 
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.StatusBarManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.ParcelUuid;
@@ -88,7 +93,9 @@ import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 
+import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
+import java.util.List;
 
 /**
  * Unit Test for NotificationMgr
@@ -104,6 +111,9 @@ public class NotificationMgrTest extends TelephonyTestBase {
     private static final String TEST_SELECTED_NETWORK_OPERATOR_NAME = "TheOperator";
     private static final String MOBILE_NETWORK_SELECTION_PACKAGE = "com.android.phone";
     private static final String MOBILE_NETWORK_SELECTION_CLASS = ".testClass";
+    private static final String NOTIFICATION_VOICEMAIL_TITLE_COUNT = "New voicemail";
+    private static final String NOTIFICATION_VOICEMAIL_TEXT_FORMAT = "Dial";
+    private static final String NOTIFICATION_VOICEMAIL_NO_VM_NUMBER = "Voicemail number unknown";
     private static final String CARRIER_NAME = "CoolCarrier";
 
     PhoneGlobals mApp; // mPhoneGlobals alias
@@ -122,6 +132,7 @@ public class NotificationMgrTest extends TelephonyTestBase {
     @Mock CarrierConfigManager mCarrierConfigManager;
     @Mock DataSettingsManager mDataSettingsManager;
     @Mock SignalStrengthController mSignalStrengthController;
+    @Mock PackageManager mPackageManager;
 
     private NotificationMgr mNotificationMgr;
     private TestableLooper mTestableLooper;
@@ -178,6 +189,114 @@ public class NotificationMgrTest extends TelephonyTestBase {
         // Spy it only to avoid sleep for SystemClock.elapsedRealtime()
         mNotificationMgr = spy(new NotificationMgr(mApp));
         mTestableLooper.processAllMessages();
+    }
+
+    @Test
+    public void testUpdateMwi_visible_noActiveSubscription_notificationNeverSent() {
+        // Given no active subscription available
+        when(mSubscriptionManager.getActiveSubscriptionInfo(eq(TEST_SUB_ID))).thenReturn(null);
+
+        // When updateMwi method is called
+        mNotificationMgr.updateMwi(TEST_SUB_ID, /*visible=*/true, /*isFresh=*/true);
+
+        // Then the notification should never be sent
+        verify(mNotificationManager, never()).notify(any(), anyInt(), any());
+    }
+
+    @Test
+    public void testUpdateMwi_visible_singleSIM_noDefaultDialer_notificationSent() {
+        PersistableBundle config = new PersistableBundle();
+        config.putBoolean(CarrierConfigManager.KEY_VOICEMAIL_NOTIFICATION_PERSISTENT_BOOL, true);
+        when(mPhoneGlobals.getInstance().getCarrierConfigForSubId(TEST_SUB_ID)).thenReturn(config);
+
+        when(mTelephonyManager.getPhoneCount()).thenReturn(1);
+        when(mSubscriptionManager.getActiveSubscriptionInfo(eq(TEST_SUB_ID))).thenReturn(
+                mSubscriptionInfo);
+        when(mApp.getString(R.string.notification_voicemail_title_count)).thenReturn(
+                NOTIFICATION_VOICEMAIL_TITLE_COUNT);
+        when(mApp.getString(R.string.notification_voicemail_text_format)).thenReturn(
+                NOTIFICATION_VOICEMAIL_TEXT_FORMAT);
+        when(mPhone.getVoiceMailNumber()).thenReturn("133");
+        when(mPhone.getVoiceMessageCount()).thenReturn(1);
+
+        when(mApp.getSystemService(TelecomManager.class).getDefaultDialerPackage(any())).thenReturn(
+                "");
+        List<ResolveInfo> receivers = new ArrayList<>();
+        ResolveInfo info = new ResolveInfo();
+
+        when(mApp.createContextAsUser(any(), anyInt())).thenReturn(mMockedContext);
+        when(mMockedContext.getPackageManager()).thenReturn(mPackageManager);
+        when(mPackageManager.queryBroadcastReceivers(any(), anyInt())).thenReturn(receivers);
+
+        mNotificationMgr.updateMwi(TEST_SUB_ID, /*visible=*/true, /*isFresh=*/true);
+
+        verifyNotificationSentWithChannelId(NotificationChannelController.CHANNEL_ID_VOICE_MAIL);
+    }
+
+    @Test
+    public void testUpdateMwi_visible_singleSIM_defaultDialer_noChanges_noBroadcastSent() {
+
+        when(mPhone.getVoiceMailNumber()).thenReturn("133");
+        when(mPhone.getVoiceMessageCount()).thenReturn(1);
+
+        prepareResourcesForUpdateMwi();
+
+        mNotificationMgr.updateMwi(TEST_SUB_ID, /*visible=*/true, /*isFresh=*/true);
+
+        when(mPhone.getVoiceMailNumber()).thenReturn("133");
+        when(mPhone.getVoiceMessageCount()).thenReturn(1);
+
+        mNotificationMgr.updateMwi(TEST_SUB_ID, /*visible=*/true, /*isFresh=*/true);
+
+        // Broadcast only sent for initial updateMwi
+        verifyBroadcastSent(TelephonyManager.ACTION_SHOW_VOICEMAIL_NOTIFICATION, 1);
+
+        // Then the notification should never be sent because the default dialer will handle it
+        verify(mNotificationManager, never()).notify(any(), anyInt(), any());
+    }
+
+    @Test
+    public void testUpdateMwi_visible_singleSIM_defaultDialer_msgCountChanged_broadcastSent() {
+
+        when(mPhone.getVoiceMailNumber()).thenReturn("133");
+        when(mPhone.getVoiceMessageCount()).thenReturn(1);
+
+        prepareResourcesForUpdateMwi();
+
+        mNotificationMgr.updateMwi(TEST_SUB_ID, /*visible=*/true, /*isFresh=*/true);
+
+        when(mPhone.getVoiceMailNumber()).thenReturn("133");
+        when(mPhone.getVoiceMessageCount()).thenReturn(2);
+
+        mNotificationMgr.updateMwi(TEST_SUB_ID, /*visible=*/true, /*isFresh=*/true);
+
+        // Broadcast sent for initial updateMwi and changed msg count
+        verifyBroadcastSent(TelephonyManager.ACTION_SHOW_VOICEMAIL_NOTIFICATION, 2);
+
+        // Then the notification should never be sent because the default dialer will handle it
+        verify(mNotificationManager, never()).notify(any(), anyInt(), any());
+    }
+
+    @Test
+    public void testUpdateMwi_visible_singleSIM_defaultDialer_msgNumberChanged_broadcastSent() {
+
+        when(mPhone.getVoiceMailNumber()).thenReturn("133");
+        when(mPhone.getVoiceMessageCount()).thenReturn(1);
+
+        prepareResourcesForUpdateMwi();
+
+        mNotificationMgr.updateMwi(TEST_SUB_ID, /*visible=*/true, /*isFresh=*/true);
+
+        when(mPhone.getVoiceMailNumber()).thenReturn("134");
+        when(mPhone.getVoiceMessageCount()).thenReturn(1);
+
+        mNotificationMgr.updateMwi(TEST_SUB_ID, /*visible=*/true, /*isFresh=*/true);
+
+        // Broadcast sent for initial updateMwi and changed voice mail number
+        verifyBroadcastSent(TelephonyManager.ACTION_SHOW_VOICEMAIL_NOTIFICATION, 2);
+
+        // Then the notification should never be sent because the default dialer will handle it
+        verify(mNotificationManager, never()).notify(any(), anyInt(), any());
     }
 
     @Test
@@ -637,6 +756,14 @@ public class NotificationMgrTest extends TelephonyTestBase {
         assertThat(capturedNotification.getChannelId()).isEqualTo(expectedNotificationChannelId);
     }
 
+    private void verifyBroadcastSent(String expectedIntentAction, int numberBroadcasts) {
+        ArgumentCaptor<Intent> intentArg = ArgumentCaptor.forClass(Intent.class);
+        verify(mApp, times(numberBroadcasts)).sendBroadcastAsUser(intentArg.capture(), any(
+                UserHandle.class), any(), any());
+        Intent capturedIntent = intentArg.getAllValues().get(0);
+        assertThat(capturedIntent.getAction()).isEqualTo(expectedIntentAction);
+    }
+
     private void prepareResourcesForNetworkSelection() {
         when(mSharedPreferences.getString(Phone.NETWORK_SELECTION_NAME_KEY + TEST_SUB_ID,
                 "")).thenReturn(TEST_SELECTED_NETWORK_OPERATOR_NAME);
@@ -650,6 +777,32 @@ public class NotificationMgrTest extends TelephonyTestBase {
         when(mSubscriptionManager.isActiveSubId(anyInt())).thenReturn(true);
         when(mSubscriptionManager.getActiveSubscriptionInfo(eq(TEST_SUB_ID))).thenReturn(
                 mSubscriptionInfo);
+    }
+
+    private void prepareResourcesForUpdateMwi() {
+        PersistableBundle config = new PersistableBundle();
+        config.putBoolean(CarrierConfigManager.KEY_VOICEMAIL_NOTIFICATION_PERSISTENT_BOOL, true);
+        when(mPhoneGlobals.getInstance().getCarrierConfigForSubId(TEST_SUB_ID)).thenReturn(config);
+
+        when(mTelephonyManager.getPhoneCount()).thenReturn(1);
+        when(mSubscriptionManager.getActiveSubscriptionInfo(eq(TEST_SUB_ID))).thenReturn(
+                mSubscriptionInfo);
+        when(mApp.getString(R.string.notification_voicemail_title_count)).thenReturn(
+                NOTIFICATION_VOICEMAIL_TITLE_COUNT);
+        when(mApp.getString(R.string.notification_voicemail_text_format)).thenReturn(
+                NOTIFICATION_VOICEMAIL_TEXT_FORMAT);
+        when(mApp.getString(R.string.notification_voicemail_no_vm_number)).thenReturn(
+                NOTIFICATION_VOICEMAIL_NO_VM_NUMBER);
+
+        when(mApp.getSystemService(TelecomManager.class).getDefaultDialerPackage(any())).thenReturn(
+                "anydialer");
+        List<ResolveInfo> receivers = new ArrayList<>();
+        ResolveInfo info = new ResolveInfo();
+        receivers.add(info);
+
+        when(mApp.createContextAsUser(any(), anyInt())).thenReturn(mMockedContext);
+        when(mMockedContext.getPackageManager()).thenReturn(mPackageManager);
+        when(mPackageManager.queryBroadcastReceivers(any(), anyInt())).thenReturn(receivers);
     }
 
     private void moveTimeForward(long seconds) {

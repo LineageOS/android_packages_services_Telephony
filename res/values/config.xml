@@ -331,7 +331,7 @@
         <!-- b/198393826 -->
         <item>de</item>
         <!-- b/334773484 -->
-        <item>gb</item>
+        <!-- b/413268810 <item>gb</item> -->
         <item>fr</item>
         <item>be</item>
         <item>ro</item>
@@ -406,4 +406,17 @@
 
     <!-- Whether to show the "call connected indicator" preference on the calling accts screen. -->
     <bool name="show_call_connected_indicator_preference">false</bool>
+
+    <!-- The processes names of the logcat logs that will be collected after an emergency call.-->
+    <string-array name="ecc_log_sources_process_names" translatable="false">
+        <item>com.android.phone</item>
+    </string-array>
+
+    <!-- The tags of the logcat logs that will be collected after an emergency call.-->
+    <string-array name="ecc_log_sources_tags" translatable="false">
+        <item>Telecom</item>
+    </string-array>
+
+    <!-- Whether to enable logcat collection for all emergency call types (non failures included). -->
+    <bool name="enable_logcat_collection_for_all_emergency_calls">false</bool>
 </resources>

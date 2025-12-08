@@ -52,7 +52,6 @@ import android.os.RemoteException;
 import android.telephony.CarrierConfigManager;
 import android.telephony.CarrierConfigManager.Ims;
 import android.telephony.SubscriptionManager;
-import android.telephony.TelephonyManager;
 import android.telephony.TelephonyRegistryManager;
 import android.telephony.ims.ProvisioningManager;
 import android.telephony.ims.aidl.IFeatureProvisioningCallback;
@@ -77,7 +76,6 @@ import com.android.telephony.Rlog;
 
 import java.util.Arrays;
 import java.util.Map;
-import java.util.UUID;
 import java.util.concurrent.Executor;
 
 /**
@@ -532,13 +530,11 @@ public class ImsProvisioningController {
                 // notify provisioning key value to ImsService
                 setInitialProvisioningKeys(mSubId);
 
-                if (mFeatureFlags.notifyInitialImsProvisioningStatus()) {
-                    // Notify MmTel provisioning value based on capability and radio tech.
-                    ProvisioningCallbackManager p =
-                            mProvisioningCallbackManagersSlotMap.get(mSlotId);
-                    if (p != null && p.hasCallblacks()) {
-                        notifyMmTelProvisioningStatus(mSlotId, mSubId, null);
-                    }
+                // Notify MmTel provisioning value based on capability and radio tech.
+                ProvisioningCallbackManager p =
+                        mProvisioningCallbackManagersSlotMap.get(mSlotId);
+                if (p != null && p.hasCallblacks()) {
+                    notifyMmTelProvisioningStatus(mSlotId, mSubId, null);
                 }
             } else {
                 // wait until subId is valid
@@ -772,13 +768,11 @@ public class ImsProvisioningController {
                 // notify provisioning key value to ImsService
                 setInitialProvisioningKeys(mSubId);
 
-                if (mFeatureFlags.notifyInitialImsProvisioningStatus()) {
-                    ProvisioningCallbackManager p =
-                            mProvisioningCallbackManagersSlotMap.get(mSlotId);
-                    if (p != null && p.hasCallblacks()) {
-                        // Notify RCS provisioning value based on capability and radio tech.
-                        notifyRcsProvisioningStatus(mSlotId, mSubId, null);
-                    }
+                ProvisioningCallbackManager p =
+                        mProvisioningCallbackManagersSlotMap.get(mSlotId);
+                if (p != null && p.hasCallblacks()) {
+                    // Notify RCS provisioning value based on capability and radio tech.
+                    notifyRcsProvisioningStatus(mSlotId, mSubId, null);
                 }
             } else {
                 // wait until subId is valid
@@ -1005,14 +999,13 @@ public class ImsProvisioningController {
             throw new IllegalArgumentException("subscription id is not available");
         }
 
+
         try {
             mProvisioningCallbackManagersSlotMap.get(slotId).registerCallback(callback);
             log("Feature Provisioning Callback registered.");
 
-            if (mFeatureFlags.notifyInitialImsProvisioningStatus()) {
-                mHandler.sendMessage(mHandler.obtainMessage(EVENT_NOTIFY_INIT_PROVISIONED_VALUE,
-                        getSlotId(subId), subId, (Object) callback));
-            }
+            mHandler.sendMessage(mHandler.obtainMessage(EVENT_NOTIFY_INIT_PROVISIONED_VALUE,
+                    getSlotId(subId), subId, (Object) callback));
         } catch (NullPointerException e) {
             logw("can not access callback manager to add callback");
         }

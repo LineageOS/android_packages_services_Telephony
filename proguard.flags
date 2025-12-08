@@ -15,3 +15,7 @@
 # Keep the FakeFeatureFlagsImpl
 -keep class com.android.internal.telephony.flags.FakeFeatureFlagsImpl { *; }
 -verbose
+# Keep the SatelliteOnDeviceAccessController and its impl
+-keep class com.android.phone.satellite.accesscontrol.SatelliteOnDeviceAccessController {
+    public boolean isSatCommunicationAllowedAtLocation(com.android.phone.satellite.accesscontrol.SatelliteOnDeviceAccessController$LocationToken);
+}

@@ -46,6 +46,8 @@ import androidx.annotation.NonNull;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.platform.app.InstrumentationRegistry;
 
+import com.android.internal.telephony.flags.FeatureFlags;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.After;
@@ -55,6 +57,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.MockitoAnnotations;
+import org.mockito.Mockito;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -122,6 +125,11 @@ public class SatelliteAccessConfigurationParserTest {
                  "tag_ids": [
                    7,
                    10
+                 ],
+                 "carrier_ids": [
+                   1,
+                   2,
+                   3
                  ]
                },
                {
@@ -249,8 +257,9 @@ public class SatelliteAccessConfigurationParserTest {
                 ));
 
         List<Integer> tagIdList1 = List.of(7, 10);
+        List<Integer> carrierIdList1 = List.of(1, 2, 3);
         SatelliteAccessConfiguration satelliteAccessConfiguration1 =
-                new SatelliteAccessConfiguration(satelliteInfoList1, tagIdList1);
+                new SatelliteAccessConfiguration(satelliteInfoList1, tagIdList1, carrierIdList1);
 
         HashMap<Integer, SatelliteAccessConfiguration> expectedResult = new HashMap<>();
         expectedResult.put(123, satelliteAccessConfiguration1);
@@ -274,8 +283,10 @@ public class SatelliteAccessConfigurationParserTest {
     public void testParsingValidSatelliteAccessConfiguration() throws Exception {
         Log.d(TAG, "testParsingValidSatelliteAccessConfiguration");
         File file = createTestJsonFile(VALID_JSON_STRING);
+        FeatureFlags featureFlags = Mockito.mock(FeatureFlags.class);
+        Mockito.when(featureFlags.supportCarrierIdsInGeofence()).thenReturn(true);
         assertEquals(getExpectedMap(),
-                SatelliteAccessConfigurationParser.parse(file.getCanonicalPath()));
+                SatelliteAccessConfigurationParser.parse(file.getCanonicalPath(), featureFlags));
     }
 
     @Test

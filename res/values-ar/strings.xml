@@ -38,7 +38,7 @@
     <string name="audio_mode_earpiece" msgid="2823700267171134282">"سماعة الأذن للهاتف"</string>
     <string name="audio_mode_wired_headset" msgid="5028010823105817443">"سماعة رأس سلكية"</string>
     <string name="audio_mode_bluetooth" msgid="25732183428018809">"بلوتوث"</string>
-    <string name="wait_prompt_str" msgid="5136209532150094910">"هل تريد إرسال النغمات التالية؟\n"</string>
+    <string name="wait_prompt_str" msgid="5136209532150094910">"هل المطلوب إرسال النغمات التالية؟\n"</string>
     <string name="pause_prompt_str" msgid="2308897950360272213">"إرسال النغمات\n"</string>
     <string name="send_button" msgid="5070379600779031932">"إرسال"</string>
     <string name="pause_prompt_yes" msgid="8184132073048369575">"نعم"</string>
@@ -125,8 +125,8 @@
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"غير مفعّل"</string>
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"لا يتيح مشغل شبكة الجوال إيقاف اعادة توجيه المكالمة عند عدم التمكن من الوصول إلى هاتفك."</string>
     <string name="registration_cf_forbidden" msgid="4386482610771190420">"لا يتيح مشغّل شبكة الجوّال ميزة إعادة توجيه المكالمات."</string>
-    <string name="cdma_call_waiting" msgid="4565070960879673216">"هل تريد تفعيل ميزة انتظار المكالمات؟"</string>
-    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"خلال إحدى المكالمات، سيتم إخطارك بشأن المكالمات الواردة."</string>
+    <string name="cdma_call_waiting" msgid="4565070960879673216">"تفعيل ميزة انتظار المكالمات؟"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"خلال مكالمة، سيصلك إشعار حول المكالمات الواردة."</string>
     <string name="enable_cdma_cw" msgid="811047045863422232">"تفعيل"</string>
     <string name="disable_cdma_cw" msgid="7119290446496301734">"إلغاء"</string>
     <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"‏تفعيل ميزة انتظار مكالمات CDMA في ظل IMS"</string>
@@ -160,7 +160,7 @@
     <string name="vm_changed" msgid="4739599044379692505">"تم تغيير رقم البريد الصوتي."</string>
     <string name="vm_change_failed" msgid="7877733929455763566">"تعذر تغيير رقم البريد الصوتي.\nيمكنك الاتصال بمشغل شبكة الجوال إذا استمرت هذه المشكلة في الظهور."</string>
     <string name="fw_change_failed" msgid="9179241823460192148">"تعذر تغيير رقم إعادة التوجيه.\nاتصل بمشغل شبكة الجوّال إذا استمرت هذه المشكلة في الظهور."</string>
-    <string name="fw_get_in_vm_failed" msgid="2432678237218183844">"تتعذر عملية استعادة إعدادات إعادة توجيه الأرقام الحالية وحفظها.\nهل تريد الانتقال إلى الموزع الجديد على أي حال؟"</string>
+    <string name="fw_get_in_vm_failed" msgid="2432678237218183844">"تعذّرت استعادة إعدادات إعادة توجيه الأرقام الحالية وحفظها.\nالانتقال إلى الموزع الجديد على أي حال؟"</string>
     <string name="no_change" msgid="3737264882821031892">"لم يتم إجراء أي تغييرات."</string>
     <string name="sum_voicemail_choose_provider" msgid="6750824719081403773">"اختيار خدمة البريد الصوتي"</string>
     <string name="voicemail_default" msgid="6427575113775462077">"مشغل شبكة الجوّال"</string>
@@ -185,13 +185,13 @@
     <string name="registration_done" msgid="5337407023566953292">"مسجل على الشبكة."</string>
     <string name="already_auto" msgid="8607068290733079336">"في التحديد التلقائي فعلاً."</string>
     <string name="select_automatically" msgid="779750291257872651">"اختيار الشبكة تلقائيًا"</string>
-    <string name="manual_mode_disallowed_summary" msgid="3970048592179890197">"‏الشبكات غير متاحة عند الاتصال بمشغِّل شبكة الجوّال %1$s."</string>
+    <string name="manual_mode_disallowed_summary" msgid="3970048592179890197">"‏الشبكات غير متاحة عند الاتصال بمشغِّل شبكة الجوّال %1$s"</string>
     <string name="network_select_title" msgid="4117305053881611988">"الشبكة"</string>
     <string name="register_automatically" msgid="3907580547590554834">"التسجيل التلقائي..."</string>
     <string name="preferred_network_mode_title" msgid="5253395265169539830">"نوع الشبكة المفضّل"</string>
     <string name="preferred_network_mode_summary" msgid="3787989000044330064">"تغيير وضع تشغيل الشبكة"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="2781447433514459696">"نوع الشبكة المفضّل"</string>
-    <string name="forbidden_network" msgid="5081729819561333023">"(محظور )"</string>
+    <string name="forbidden_network" msgid="5081729819561333023">"(محظور)"</string>
     <string name="choose_network_title" msgid="5335832663422653082">"اختيار شبكة"</string>
     <string name="network_disconnected" msgid="8844141106841160825">"غير متّصل"</string>
     <string name="network_connected" msgid="2760235679963580224">"متصل"</string>
@@ -307,10 +307,10 @@
     <string name="carrier_settings_euicc_summary" msgid="2027941166597330117">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="7228249980933944101">"بيانات الجوّال"</string>
     <string name="mobile_data_settings_summary" msgid="5012570152029118471">"الوصول إلى البيانات باستخدام شبكة الجوّال"</string>
-    <string name="data_usage_disable_mobile" msgid="5669109209055988308">"هل تريد إيقاف بيانات الجوّال؟"</string>
+    <string name="data_usage_disable_mobile" msgid="5669109209055988308">"إيقاف بيانات الجوّال؟"</string>
     <string name="sim_selection_required_pref" msgid="6985901872978341314">"يلزم التحديد"</string>
-    <string name="sim_change_data_title" msgid="9142726786345906606">"‏هل تريد تغيير شريحة SIM للبيانات؟"</string>
-    <string name="sim_change_data_message" msgid="3567358694255933280">"هل تريد استخدام <xliff:g id="NEW_SIM">%1$s</xliff:g> بدلاً من <xliff:g id="OLD_SIM">%2$s</xliff:g> لبيانات الجوّال؟"</string>
+    <string name="sim_change_data_title" msgid="9142726786345906606">"‏تغيير شريحة SIM للبيانات؟"</string>
+    <string name="sim_change_data_message" msgid="3567358694255933280">"استخدام <xliff:g id="NEW_SIM">%1$s</xliff:g> بدلاً من <xliff:g id="OLD_SIM">%2$s</xliff:g> لبيانات الجوّال؟"</string>
     <string name="wifi_calling_settings_title" msgid="5800018845662016507">"‏الاتصال عبر Wi-Fi"</string>
     <string name="video_calling_settings_title" msgid="342829454913266078">"مكالمة فيديو باستخدام مشغل شبكة الجوال"</string>
     <string name="gsm_umts_options" msgid="4968446771519376808">"‏خيارات نظام GSM/النظام العالمي لاتصالات الجوال عن بعد (UMTS)"</string>
@@ -405,13 +405,13 @@
     <string name="eo_enable" msgid="107713355461019817">"تم تفعيل فرص الوظائف"</string>
     <string name="eo_disable" msgid="3955421278929647485">"تم إيقاف فرص الوظائف"</string>
     <string name="enable_disable_mhh" msgid="715930476289202466">"طبي والصحة والمستشفى"</string>
-    <string name="mhh_enable" msgid="7224396815285147008">"تم تفعيل الطبي والصحة والمستشفى"</string>
-    <string name="mhh_disable" msgid="5503643028885686265">"تم إيقاف الطبي والصحة والمستشفى"</string>
+    <string name="mhh_enable" msgid="7224396815285147008">"تم تفعيل الخدمات الطبية والصحة والمستشفى"</string>
+    <string name="mhh_disable" msgid="5503643028885686265">"تم إيقاف الخدمات الطبية والصحية وخدمات المستشفى."</string>
     <string name="enable_disable_technology_news" msgid="2794845609698078400">"أخبار التكنولوجيا"</string>
     <string name="technology_news_enable" msgid="1908991199492598311">"تم تفعيل أخبار التكنولوجيا"</string>
     <string name="technology_news_disable" msgid="8388582607149800889">"تم إيقاف أخبار التكنولوجيا"</string>
     <string name="enable_disable_multi_category" msgid="5958248155437940625">"متعددة الفئات"</string>
-    <string name="multi_category_enable" msgid="4531915767817483960">"تم تفعيل المتعددة الفئات"</string>
+    <string name="multi_category_enable" msgid="4531915767817483960">"تم تفعيل الفئات المتعددة"</string>
     <string name="multi_category_disable" msgid="6325934413701238104">"تم إيقاف متعددة الفئات"</string>
     <string name="network_recommended" msgid="3444321100580250926">" (موصى به)"</string>
     <string name="network_lte" msgid="7206879277095094280">"‏LTE (مستحسن)"</string>
@@ -461,6 +461,8 @@
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"تفعيل وضع إعادة المحاولة التلقائي"</string>
     <string name="vibrating_for_outgoing_call_accepted_title" msgid="647945514737734657">"الاهتزاز عند الرد على المكالمات الصادرة"</string>
     <string name="vibrating_for_outgoing_call_accepted_summary" msgid="906112327196063688">"تفعيل وضع الاهتزاز عند الرد على المكالمات الصادرة"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_title" msgid="856074537423753072">"نغمات الرد على المكالمات"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_summary" msgid="2442128058517260047">"تشغيل نغمة عند الرد على المكالمات الصادرة"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"‏لا يُسمح بتغيير وضع TTY أثناء مكالمة فيديو"</string>
     <string name="menu_add" msgid="5616487894975773141">"إضافة جهة اتصال"</string>
     <string name="menu_edit" msgid="3593856941552460706">"تعديل جهة الاتصال"</string>
@@ -495,7 +497,7 @@
     <string name="newPinLabel" msgid="3585899083055354732">"‏رمز PIN الجديد"</string>
     <string name="confirmPinLabel" msgid="7783531218662473778">"‏تأكيد رمز PIN الجديد"</string>
     <string name="badPin" msgid="4549286285015892321">"‏رمز PIN القديم الذي كتبته غير صحيح. حاول مرة أخرى."</string>
-    <string name="mismatchPin" msgid="1467254768290323845">"‏أرقام التعريف الشخصي PIN2 التي كتبتها غير متطابقة. حاول مرة أخرى."</string>
+    <string name="mismatchPin" msgid="1467254768290323845">"أرقام التعريف الشخصي التي كتبتها غير متطابقة. يُرجى المحاولة مرة أخرى."</string>
     <string name="invalidPin" msgid="7363723429414001979">"‏اكتب رمز PIN المكون من 4 إلى 8 أرقام."</string>
     <string name="disable_sim_pin" msgid="3112303905548613752">"‏محو رقم التعريف الشخصي لبطاقة SIM"</string>
     <string name="enable_sim_pin" msgid="445461050748318980">"‏تعيين رقم التعريف الشخصي لبطاقة SIM"</string>
@@ -519,7 +521,7 @@
     <string name="fdn_enable_puk2_requested" msgid="5793652792131588041">"‏كلمة المرور غير صحيحة. أصبح PIN2 محظور  الآن. لإعادة المحاولة، عليك تغيير PIN2."</string>
     <string name="puk2_requested" msgid="6992374450720307514">"‏كلمة المرور غير صحيحة. تم قفل شريحة SIM الآن. أدخل رمز PUK2."</string>
     <string name="puk2_blocked" msgid="3131139031779319911">"‏تم حظر PUK2 بشكل دائم."</string>
-    <string name="pin2_attempts" msgid="5625178102026453023">\n"يتبقى لديك <xliff:g id="NUMBER">%d</xliff:g> من المحاولات."</string>
+    <string name="pin2_attempts" msgid="5625178102026453023">\n"المحاولات المتبقية: <xliff:g id="NUMBER">%d</xliff:g>."</string>
     <string name="puk2_locked" msgid="6497760825455461057">"‏تم قفل شريحة SIM برمز PUK2. تواصَل مع مقدّم الخدمة لفتح قفل الشريحة."</string>
     <string name="pin2_unblocked" msgid="4481107908727789303">"‏لم يعد رمز PIN2 محظورًا"</string>
     <string name="pin2_error_exception" msgid="8116103864600823641">"‏حدث خطأ في الشبكة أو ببطاقة SIM"</string>
@@ -624,18 +626,18 @@
     <string name="ota_touch_activate" msgid="838764494319694754">"يلزم إجراء اتصال خاص لتفعيل خدمة الهاتف. \n\nبعد الضغط على \"تفعيل\"، استمع إلى الإرشادات المقدمة لتفعيل هاتفك."</string>
     <string name="ota_hfa_activation_title" msgid="3300556778212729671">"جارٍ التفعيل..."</string>
     <string name="ota_hfa_activation_dialog_message" msgid="7921718445773342996">"يُجري الهاتف تنشيطًا لخدمة بيانات الجوّال.\n\nقد يستغرق هذا الأمر ما يصل إلى 5 دقائق."</string>
-    <string name="ota_skip_activation_dialog_title" msgid="7666611236789203797">"هل تريد تخطي التفعيل؟"</string>
-    <string name="ota_skip_activation_dialog_message" msgid="6691722887019708713">"‏إذا تخطيت عملية التفعيل، فلن تتمكّن من إجراء مكالمات أو الاتصال بشبكات بيانات الجوال (ومع ذلك، يمكنك الاتصال بشبكات Wi-Fi). وسيُطلَب منك تفعيل الهاتف عند تشغيله في كل مرة إلى حين تفعيله."</string>
+    <string name="ota_skip_activation_dialog_title" msgid="7666611236789203797">"تخطي التفعيل؟"</string>
+    <string name="ota_skip_activation_dialog_message" msgid="6691722887019708713">"‏إذا تخطّيت عملية التفعيل، سيتعذّر عليك إجراء مكالمات أو الاتصال بشبكات بيانات الجوال (ولكن يمكنك الاتصال بشبكات Wi-Fi). وإلى حين تفعيل الهاتف، سيُطلَب منك تفعيله عند تشغيله في كل مرة."</string>
     <string name="ota_skip_activation_dialog_skip_label" msgid="5908029466817825633">"التخطّي"</string>
     <string name="ota_activate" msgid="7939695753665438357">"تفعيل"</string>
     <string name="ota_title_activate_success" msgid="1272135024761004889">"تم تفعيل الهاتف."</string>
     <string name="ota_title_problem_with_activation" msgid="7019745985413368726">"مشكلة في التفعيل"</string>
-    <string name="ota_listen" msgid="2772252405488894280">"اتبع الإرشادات المنطوقة حتى تسمع ما يفيد بانتهاء التفعيل."</string>
+    <string name="ota_listen" msgid="2772252405488894280">"يُرجى اتّباع الإرشادات الشفهية إلى حين سماع أنّ التفعيل اكتمل."</string>
     <string name="ota_speaker" msgid="1086766980329820528">"مكبر الصوت"</string>
     <string name="ota_progress" msgid="8837259285255700132">"جارٍ برمجة هاتفك…"</string>
     <string name="ota_failure" msgid="5674217489921481576">"تتعذر برمجة هاتفك"</string>
     <string name="ota_successful" msgid="1106825981548107774">"تم تفعيل هاتفك الآن. قد يستغرق بدء الخدمة ما يصل إلى 15 دقيقة."</string>
-    <string name="ota_unsuccessful" msgid="8531037653803955754">"لم يتم تفعيل الهاتف. \nربما يلزمك البحث عن منطقة بها تغطية أفضل (بجانب نافذة أو بالخارج). \n\nحاول مرة أخرى أو اتصل بخدمة العملاء للحصول على مزيد من الخيارات."</string>
+    <string name="ota_unsuccessful" msgid="8531037653803955754">"لم يتم تفعيل الهاتف. \nربما عليك الانتقال إلى منطقة فيها تغطية أفضل (بجانب نافذة أو بالخارج). \n\nيُرجى المحاولة مرة أخرى أو الاتصال بخدمة العملاء للحصول على مزيد من الخيارات."</string>
     <string name="ota_spc_failure" msgid="904092035241370080">"إخفاقات في المواصفات الزائدة"</string>
     <string name="ota_call_end" msgid="8657746378290737034">"رجوع"</string>
     <string name="ota_try_again" msgid="6914781945599998550">"حاول مرة أخرى"</string>
@@ -647,7 +649,7 @@
     <string name="phone_in_ecm_notification_complete_time" msgid="7341624337163082759">"لا يوجد اتصال بيانات حتى <xliff:g id="COMPLETETIME">%s</xliff:g>"</string>
     <!-- format error in translation for alert_dialog_exit_ecm (7661603870224398025) -->
     <!-- format error in translation for alert_dialog_not_avaialble_in_ecm (8717711120099503279) -->
-    <string name="alert_dialog_in_ecm_call" msgid="1207545603149771978">"الإجراء المحدد ليس متاحًا أثناء إجراء اتصال بالطوارئ."</string>
+    <string name="alert_dialog_in_ecm_call" msgid="1207545603149771978">"الإجراء المحدد ليس متاحًا أثناء إجراء مكالمة الطوارئ."</string>
     <string name="progress_dialog_exiting_ecm" msgid="9159080081676927217">"الخروج من وضع معاودة الاتصال بالطوارئ"</string>
     <string name="alert_dialog_yes" msgid="3532525979632841417">"نعم"</string>
     <string name="alert_dialog_no" msgid="1075632654085988420">"لا"</string>
@@ -659,7 +661,7 @@
     <string name="voicemail_settings" msgid="4451045613238972776">"الإعداد"</string>
     <string name="voicemail_number_not_set" msgid="8831561283386938155">"‏&lt;لم يتم الضبط&gt;"</string>
     <string name="other_settings" msgid="8895088007393598447">"اعدادات المكالمات الاخرى"</string>
-    <string name="calling_via_template" msgid="1791323450703751750">"الاتصال عبر <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
+    <string name="calling_via_template" msgid="1791323450703751750">"الاتصال عبر \"<xliff:g id="PROVIDER_NAME">%s</xliff:g>\""</string>
     <string name="contactPhoto" msgid="7885089213135154834">"صورة جهة الاتصال"</string>
     <string name="goPrivate" msgid="4645108311382209551">"انتقال إلى مكالمة خاصة"</string>
     <string name="selectContact" msgid="1527612842599767382">"اختيار جهة اتصال"</string>
@@ -673,13 +675,13 @@
     <string name="preference_category_ringtone" msgid="8787281191375434976">"نغمة الرنين والاهتزاز"</string>
     <string name="pstn_connection_service_label" msgid="9200102709997537069">"‏بطاقات SIM مدمجة"</string>
     <string name="enable_video_calling_title" msgid="7246600931634161830">"تفعيل مكالمات الفيديو"</string>
-    <string name="enable_video_calling_dialog_msg" msgid="7141478720386203540">"‏لتفعيل مكالمات الفيديو، يجب عليك تفعيل وضع 4G LTE المحسّن في إعدادات الشبكة."</string>
+    <string name="enable_video_calling_dialog_msg" msgid="7141478720386203540">"‏لتفعيل مكالمات الفيديو، يجب تفعيل وضع 4G LTE المحسّن في إعدادات الشبكة."</string>
     <string name="enable_video_calling_dialog_settings" msgid="8697890611305307110">"إعدادات الشبكة"</string>
     <string name="enable_video_calling_dialog_close" msgid="4298929725917045270">"إغلاق"</string>
     <string name="sim_label_emergency_calls" msgid="9078241989421522310">"مكالمات الطوارئ"</string>
     <string name="sim_description_emergency_calls" msgid="5146872803938897296">"مكالمات الطوارئ فقط"</string>
     <string name="sim_description_default" msgid="7474671114363724971">"‏شريحة SIM، المنفذ: <xliff:g id="SLOT_ID">%s</xliff:g>"</string>
-    <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"إعدادات تمكين الوصول"</string>
+    <string name="accessibility_settings_activity_title" msgid="7883415189273700298">"تسهيل الاستخدام"</string>
     <string name="status_hint_label_incoming_wifi_call" msgid="2606052595898044071">"‏مكالمة Wi-Fi من"</string>
     <string name="status_hint_label_wifi_call" msgid="942993035689809853">"‏مكالمة عبر Wi-Fi"</string>
     <string name="message_decode_error" msgid="1061856591500290887">"حدث خطأ أثناء فك ترميز الرسالة."</string>
@@ -712,9 +714,9 @@
     <string name="mobile_data_activate_prepaid_summary" msgid="6846085278531605925">"إضافة بيانات جوال من خلال <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
     <string name="mobile_data_activate_roaming_plan" msgid="922290995866269366">"لا توجد خطة تجوال"</string>
     <string name="mobile_data_activate_roaming_plan_summary" msgid="5379228493306235969">"إضافة خطة تجوال من خلال <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
-    <string name="mobile_data_activate_footer" msgid="7895874069807204548">"يمكنك إضافة بيانات الجوال أو خطة التجوال عبر مشغل شبكة الجوال، <xliff:g id="PROVIDER_NAME">%s</xliff:g>."</string>
+    <string name="mobile_data_activate_footer" msgid="7895874069807204548">"يمكنك إضافة بيانات الجوال أو خطة التجوال عبر مشغل شبكة الجوال، \"<xliff:g id="PROVIDER_NAME">%s</xliff:g>\"."</string>
     <string name="mobile_data_activate_diag_title" msgid="5401741936224757312">"إضافة بيانات؟"</string>
-    <string name="mobile_data_activate_diag_message" msgid="3527260988020415441">"قد تحتاج إلى إضافة بيانات من خلال <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
+    <string name="mobile_data_activate_diag_message" msgid="3527260988020415441">"قد يتعيّن عليك إضافة بيانات من خلال \"<xliff:g id="PROVIDER_NAME">%s</xliff:g>\""</string>
     <string name="mobile_data_activate_button" msgid="1139792516354374612">"إضافة بيانات"</string>
     <string name="mobile_data_activate_cancel_button" msgid="3530174817572005860">"إلغاء"</string>
     <string name="clh_card_title_call_ended_txt" msgid="5977978317527299698">"تم إنهاء الاتصال"</string>
@@ -722,7 +724,7 @@
     <string name="clh_callFailed_simError_txt" msgid="5128538525762326413">"‏تعذر الوصول إلى شريحة SIM"</string>
     <string name="clh_incall_error_out_of_service_txt" msgid="2736010617446749869">"شبكة الجوّال غير متوفرة"</string>
     <string name="clh_callFailed_satelliteEnabled_txt" msgid="1675517238240377396">"وضع القمر الصناعي مفعَّل"</string>
-    <string name="clh_callFailed_unassigned_number_txt" msgid="141967660286695682">"حدثت مشكلة في رقم الهاتف الذي تحاول الاتصال به. رمز الخطأ 1."</string>
+    <string name="clh_callFailed_unassigned_number_txt" msgid="141967660286695682">"توجد مشكلة في رقم الهاتف الذي يتم الاتصال به. رمز الخطأ 1."</string>
     <string name="clh_callFailed_no_route_to_destination_txt" msgid="4805015149822352308">"تعذر إكمال المكالمة. رمز الخطأ 3."</string>
     <string name="clh_callFailed_channel_unacceptable_txt" msgid="4062754579408613021">"تعذر إكمال المكالمة. رمز الخطأ 6."</string>
     <string name="clh_callFailed_operator_determined_barring_txt" msgid="4202077821465974286">"تعذر إكمال المكالمة. رمز الخطأ 8."</string>
@@ -775,20 +777,20 @@
     <string name="sum_call_barring_enabled" msgid="5184331188926370824">"مفعّلة"</string>
     <string name="sum_call_barring_disabled" msgid="5699448000600153096">"متوقف"</string>
     <string name="call_barring_baoc" msgid="7400892586336429326">"كل المكالمات الصادرة"</string>
-    <string name="call_barring_baoc_enabled" msgid="3131509193386668182">"هل تريد إيقاف حظر كل المكالمات الصادرة؟"</string>
-    <string name="call_barring_baoc_disabled" msgid="8534224684091141509">"هل تريد حظر كل المكالمات الصادرة؟"</string>
+    <string name="call_barring_baoc_enabled" msgid="3131509193386668182">"إيقاف حظر كل المكالمات الصادرة؟"</string>
+    <string name="call_barring_baoc_disabled" msgid="8534224684091141509">"حظر كل المكالمات الصادرة؟"</string>
     <string name="call_barring_baoic" msgid="8668125428666851665">"المكالمات الدولية الصادرة"</string>
-    <string name="call_barring_baoic_enabled" msgid="1203758092657630123">"هل تريد إيقاف حظر المكالمات الدولية الصادرة؟"</string>
-    <string name="call_barring_baoic_disabled" msgid="5656889339002997449">"هل تريد حظر المكالمات الدولية الصادرة؟"</string>
+    <string name="call_barring_baoic_enabled" msgid="1203758092657630123">"إيقاف حظر المكالمات الدولية الصادرة؟"</string>
+    <string name="call_barring_baoic_disabled" msgid="5656889339002997449">"حظر المكالمات الدولية الصادرة؟"</string>
     <string name="call_barring_baoicr" msgid="8566167764432343487">"مكالمات التجوال الدولية الصادرة"</string>
-    <string name="call_barring_baoicr_enabled" msgid="1615324165512798478">"هل تريد إيقاف حظر مكالمات التجوال الدولية الصادرة؟"</string>
-    <string name="call_barring_baoicr_disabled" msgid="172010175248142831">"هل تريد حظر مكالمات التجوال الدولية الصادرة؟"</string>
+    <string name="call_barring_baoicr_enabled" msgid="1615324165512798478">"إيقاف حظر مكالمات التجوال الدولية الصادرة؟"</string>
+    <string name="call_barring_baoicr_disabled" msgid="172010175248142831">"حظر مكالمات التجوال الدولية الصادرة؟"</string>
     <string name="call_barring_baic" msgid="7941393541678658566">"كل المكالمات الواردة"</string>
-    <string name="call_barring_baic_enabled" msgid="4357332358020337470">"هل تريد إيقاف حظر كل المكالمات الواردة؟"</string>
-    <string name="call_barring_baic_disabled" msgid="2355945245938240958">"هل تريد حظر كل المكالمات الواردة؟"</string>
+    <string name="call_barring_baic_enabled" msgid="4357332358020337470">"إيقاف حظر كل المكالمات الواردة؟"</string>
+    <string name="call_barring_baic_disabled" msgid="2355945245938240958">"هل المطلوب حظر كل المكالمات الواردة؟"</string>
     <string name="call_barring_baicr" msgid="8712249337313034226">"مكالمات التجوال الدولية الواردة"</string>
-    <string name="call_barring_baicr_enabled" msgid="64774270234828175">"هل تريد إيقاف حظر كل مكالمات التجوال الدولية الواردة؟"</string>
-    <string name="call_barring_baicr_disabled" msgid="3488129262744027262">"هل تريد حظر مكالمات التجوال الدولية الواردة؟"</string>
+    <string name="call_barring_baicr_enabled" msgid="64774270234828175">"إيقاف حظر كل مكالمات التجوال الدولية الواردة؟"</string>
+    <string name="call_barring_baicr_disabled" msgid="3488129262744027262">"حظر مكالمات التجوال الدولية الواردة؟"</string>
     <string name="call_barring_deactivate_all" msgid="7837931580047157328">"إيقاف الكل"</string>
     <string name="call_barring_deactivate_all_description" msgid="4474119585042121604">"إيقاف كل إعدادات منع الاتصال"</string>
     <string name="call_barring_deactivate_success" msgid="3545644320298275337">"تم إيقاف منع الاتصال"</string>
@@ -827,10 +829,10 @@
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"لا يمكن إجراء مكالمة لأنّ هناك مكالمة واردة لم يتم الرد عليها. يُرجى الرد على المكالمة الواردة أو رفضها قبل إجراء مكالمة جديدة."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"‏لا يمكن إجراء مكالمة لأنّه قد تم إيقاف وظيفة الاتصال باستخدام ميزة النظام ro.telephony.disable-call."</string>
     <string name="callFailed_too_many_calls" msgid="2761754044990799580">"لا يمكن إجراء مكالمة لأنّ هناك مكالمتين جاريتين حاليًا. يمكنك إنهاء إحدى المكالمتين أو دمجهما في مكالمة جماعية قبل إجراء مكالمة جديدة."</string>
-    <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"لاستخدام <xliff:g id="SUPP_SERVICE">%s</xliff:g>، تأكّد من تفعيل بيانات الجوّال. يمكنك تغيير هذا الإعداد في إعدادات شبكة الجوّال."</string>
-    <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"لاستخدام <xliff:g id="SUPP_SERVICE">%s</xliff:g>، تأكّد من تفعيل بيانات الجوّال وتجوال البيانات. يمكنك تغيير هذين الإعدادين في إعدادات شبكة الجوّال."</string>
-    <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"‏لاستخدام <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>، تأكّد من تفعيل بيانات الجوّال لشريحة SIM رقم <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. يمكنك تغيير هذا الإعداد في إعدادات شبكة الجوّال."</string>
-    <string name="supp_service_over_ut_precautions_roaming_dual_sim" msgid="6627654855191817965">"‏لاستخدام <xliff:g id="SUPP_SERVICE">%1$s</xliff:g>، تأكّد من تفعيل بيانات الجوّال وتجوال البيانات لشريحة SIM رقم <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. يمكنك تغيير هذين الإعدادين في إعدادات شبكة الجوّال."</string>
+    <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"لاستخدام \"<xliff:g id="SUPP_SERVICE">%s</xliff:g>\"، يُرجى التأكّد من تفعيل بيانات الجوّال. يمكنك تغيير هذا الإعداد في إعدادات شبكة الجوّال."</string>
+    <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"لاستخدام \"<xliff:g id="SUPP_SERVICE">%s</xliff:g>\"، يُرجى التأكّد من تفعيل بيانات الجوّال وتجوال البيانات. يمكنك تغيير هذين الإعدادين في إعدادات شبكة الجوّال."</string>
+    <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"‏لاستخدام \"<xliff:g id="SUPP_SERVICE">%1$s</xliff:g>\"، يُرجى التأكّد من تفعيل بيانات الجوّال لشريحة SIM رقم <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. يمكنك تغيير هذا الإعداد في إعدادات شبكة الجوّال."</string>
+    <string name="supp_service_over_ut_precautions_roaming_dual_sim" msgid="6627654855191817965">"‏لاستخدام \"<xliff:g id="SUPP_SERVICE">%1$s</xliff:g>\"، يُرجى التأكّد من تفعيل بيانات الجوّال وتجوال البيانات لشريحة SIM رقم <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. يمكنك تغيير هذين الإعدادين في إعدادات شبكة الجوّال."</string>
     <string name="supp_service_over_ut_precautions_dialog_dismiss" msgid="5934541487903081652">"رفض"</string>
     <string name="radio_info_data_connection_enable" msgid="6183729739783252840">"تفعيل اتصال البيانات"</string>
     <string name="radio_info_data_connection_disable" msgid="6404751291511368706">"إيقاف اتصال البيانات"</string>
@@ -840,7 +842,7 @@
     <string name="eab_provisioned_switch_string" msgid="4449676720736033035">"‏تم توفير EAB/الحضور"</string>
     <string name="cbrs_data_switch_string" msgid="6060356430838077653">"‏بيانات CBRS"</string>
     <string name="dsds_switch_string" msgid="7564769822086764796">"‏تفعيل DSDS"</string>
-    <string name="dsds_dialog_title" msgid="8494569893941847575">"هل تريد إعادة تشغيل الجهاز؟"</string>
+    <string name="dsds_dialog_title" msgid="8494569893941847575">"إعادة تشغيل الجهاز؟"</string>
     <string name="dsds_dialog_message" msgid="4047480385678538850">"عليك إعادة تشغيل جهازك لتغيير هذا الإعداد."</string>
     <string name="dsds_dialog_confirm" msgid="9032004888134129885">"إعادة التشغيل"</string>
     <string name="dsds_dialog_cancel" msgid="3245958947099586655">"إلغاء"</string>
@@ -850,6 +852,14 @@
     <string name="simulate_out_of_service_label" msgid="3563376136603403714">"محاكاة حالة \"خارج الخدمة\""</string>
     <string name="enforce_satellite_channel_string" msgid="295306734591329892">"‏قناة LTE للقمر الصناعي Force Camp (إصدار مخصّص لتصحيح الأخطاء فقط)"</string>
     <string name="enforce_satellite_channel_label" msgid="8212349350110213468">"‏فرض اتصال الجهاز بقناة LTE عبر القمر الصناعي"</string>
+    <string name="starlink_satellite_band_string" msgid="2287502104005508384">"Starlink_US"</string>
+    <string name="ast_satellite_band_string" msgid="3238737906080758289">"AST_US"</string>
+    <string name="manual_override_satellite_band_string" msgid="801049975307124461">"إلغاء يدوي"</string>
+    <string name="satellite_manual_band_label" msgid="4135706517193927388">"يُرجى اختيار النطاق:"</string>
+    <string name="satellite_channel_label_text" msgid="1999162483250790313">"يُرجى إدخال القناة:"</string>
+    <string name="satellite_channel_hint_text" msgid="4342575738602358270">"يُرجى إدخال قناة القمر الصناعي هنا"</string>
+    <string name="force_camp_satellite_button_string" msgid="3719311367839668322">"اتصال"</string>
+    <string name="force_camp_satellite_button_connected_string" msgid="2457912207054938894">"متصل"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"وضع القمر الصناعي التجريبي لمشغّل شبكة الجوّال (إصدار مخصّص لتصحيح الأخطاء فقط)"</string>
     <string name="mock_carrier_roaming_satellite_label" msgid="2052656038544917979">"نموذج تجريبي"</string>
     <string name="choose_satellite_data_mode_label" msgid="7403013160079828226">"الوضع التجريبي للبيانات عبر القمر الصناعي"</string>

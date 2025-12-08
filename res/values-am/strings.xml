@@ -38,7 +38,7 @@
     <string name="audio_mode_earpiece" msgid="2823700267171134282">"የስልክ እጀታ ጆሮማዳመጫ"</string>
     <string name="audio_mode_wired_headset" msgid="5028010823105817443">"ባለ ገመድ የጆሮ ማዳመጫ"</string>
     <string name="audio_mode_bluetooth" msgid="25732183428018809">"ብሉቱዝ"</string>
-    <string name="wait_prompt_str" msgid="5136209532150094910">"የሚከተሉትንድምፆች ላክ?\n"</string>
+    <string name="wait_prompt_str" msgid="5136209532150094910">"የሚከተሉትን የድምጽ ቃናዎች ይላኩ?\n"</string>
     <string name="pause_prompt_str" msgid="2308897950360272213">"ድምፆች በመላክ ላይ \n"</string>
     <string name="send_button" msgid="5070379600779031932">" ላክ"</string>
     <string name="pause_prompt_yes" msgid="8184132073048369575">"አዎ"</string>
@@ -48,7 +48,7 @@
     <string name="no_vm_number_msg" msgid="5165161462411372504">"በSIM ካርዱ ላይምንም የድምፅመልዕክት ቁጥር አልከተቀመጠም።"</string>
     <string name="add_vm_number_str" msgid="7368168964435881637">"ቁጥር አክል"</string>
     <string name="voice_number_setting_primary_user_only" msgid="3394706575741912843">"የድምፅ መልዕክት ቅንብሮች መለወጥ የሚችሉት በቀዳሚ ተጠቃሚው ብቻ ነው።"</string>
-    <string name="puk_unlocked" msgid="4627340655215746511">"የSIM ካርድዎ አልታገደም። ስልክዎ በመከፈት ላይነው..."</string>
+    <string name="puk_unlocked" msgid="4627340655215746511">"የሲም ካርድዎ አልታገደም። ስልክዎ በመከፈት ላይነው..."</string>
     <string name="label_ndp" msgid="7617392683877410341">"የSIM አውታረመረብ መክፈቻ ፒን"</string>
     <string name="label_phoneid" msgid="8775611434123577808">"SIM ለከዋኙ ተቆልፏል"</string>
     <string name="sim_ndp_unlock_text" msgid="7737338355451978338">"ክፈት"</string>
@@ -96,7 +96,7 @@
     <string name="sum_loading_settings" msgid="434063780286688775">"ቅንብሮች በመጫን ላይ..."</string>
     <string name="sum_hide_caller_id" msgid="131100328602371933">"በወጪ ጥሪዎች ላይ ቁጥርተደብቋል"</string>
     <string name="sum_show_caller_id" msgid="3571854755324664591">"በወጪ ጥሪዎች ላይ ቁጥር ታይቷል"</string>
-    <string name="sum_default_caller_id" msgid="1767070797135682959">"በወጪ ጥሪዎች ቁጥሬን ለማሳየት የነባሪ ከዋኝቅንብሮችን ተጠቀም"</string>
+    <string name="sum_default_caller_id" msgid="1767070797135682959">"በወጪ ጥሪዎች ቁጥሬን ለማሳየት የነባሪ ከዋኝ ቅንብሮችን ተጠቀም"</string>
     <string name="labelCW" msgid="8449327023861428622">"ጥሪ በመጠበቅ ላይ"</string>
     <string name="sum_cw_enabled" msgid="3977308526187139996">"በደውል ጊዜ፣ገቢ ደውሎችን አሳውቀኝ"</string>
     <string name="sum_cw_disabled" msgid="3658094589461768637">"በደውል ጊዜ፣ገቢ ደውሎችን አሳውቀኝ"</string>
@@ -113,17 +113,17 @@
     <string name="messageCFB" msgid="1958017270393563388">"ቁጥሩ ሲያዝ"</string>
     <string name="sum_cfb_enabled" msgid="332037613072049492">"ወደ <xliff:g id="PHONENUMBER">{0}</xliff:g>በማስተላለፍ ላይ"</string>
     <string name="sum_cfb_disabled" msgid="3589913334164866035">"ጠፍቷል"</string>
-    <string name="disable_cfb_forbidden" msgid="4831494744351633961">"ስልክህ ሥራ ሲበዛበት የድምጽ ተያያዥ ሞደም አቅራቢህ  የጥሪ-ማስተላለፍን  አይደግፍም።"</string>
+    <string name="disable_cfb_forbidden" msgid="4831494744351633961">"ስልክዎ ሥራ ሲበዛበት የድምጽ ተያያዥ ሞደም አቅራቢዎ  የጥሪ-ማስተላለፍን  አይደግፍም።"</string>
     <string name="labelCFNRy" msgid="3403533792248457946">"መልስ ሳይሰጥ ሲቀር"</string>
     <string name="messageCFNRy" msgid="7644434155765359009">"ቁጥሩ ሳይነሳ"</string>
     <string name="sum_cfnry_enabled" msgid="3000500837493854799">"ወደ <xliff:g id="PHONENUMBER">{0}</xliff:g>በማስተላለፍ ላይ"</string>
     <string name="sum_cfnry_disabled" msgid="1990563512406017880">"ጠፍቷል"</string>
-    <string name="disable_cfnry_forbidden" msgid="3174731413216550689">"ስልክህ በማይመልስበት ጊዜ የድምጽ ተያያዥ ሞደም አቅራቢህ  የጥሪ-ማስተላለፍን  አይደግፍም።"</string>
+    <string name="disable_cfnry_forbidden" msgid="3174731413216550689">"ስልክዎ በማይመልስበት ጊዜ የድምጽ ተያያዥ ሞደም አቅራቢዎ  የጥሪ-ማስተላለፍን  አይደግፍም።"</string>
     <string name="labelCFNRc" msgid="4163399350778066013">"የማልገኝ ሲሆን"</string>
     <string name="messageCFNRc" msgid="6980340731313007250">"ቁጥሩሳይገኝ"</string>
     <string name="sum_cfnrc_enabled" msgid="1799069234006073477">"ወደ <xliff:g id="PHONENUMBER">{0}</xliff:g>በማስተላለፍ ላይ"</string>
     <string name="sum_cfnrc_disabled" msgid="739289696796917683">"ጠፍቷል"</string>
-    <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"ስልክህ በማይደረስበት ጊዜ የድምጽ ተያያዥ ሞደምህ  የጥሪ-ማስተላለፍን አይደግፍም።"</string>
+    <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"ስልክዎ በማይደረስበት ጊዜ የድምጽ ተያያዥ ሞደምዎ የጥሪ-ማስተላለፍን አይደግፍም።"</string>
     <string name="registration_cf_forbidden" msgid="4386482610771190420">"አገልግሎት አቅራቢዎ ጥሪ ማስተላለፍን አይደግፍም።"</string>
     <string name="cdma_call_waiting" msgid="4565070960879673216">"ጥሪ መጠበቂያ ይብራ?"</string>
     <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"በጥሪ ጊዜ፣ ስለ ገቢ ጥሪዎች እንዲያውቁት ይደረጋል"</string>
@@ -146,7 +146,7 @@
     <string name="stk_cc_ss_to_ussd_error" msgid="8330749347425752192">"የSS ጥያቄ ወደ USSD ጥያቄ ተለውጧል"</string>
     <string name="stk_cc_ss_to_ss_error" msgid="8297155544652134278">"ወደ አዲስ SS ጥያቄ ተለውጧል"</string>
     <string name="stk_cc_ss_to_dial_video_error" msgid="4255261231466032505">"የSS ጥያቄ ወደ ቪዲዮ ጥሪ ተለውጧል"</string>
-    <string name="fdn_check_failure" msgid="1833769746374185247">"የስልክህ መተግበሪያ የተወሰነ ስልክ ቁጥሮች ቅንብር የበራ ነው። በዚህም ውጤት መሰረት፣ ከጥሪ ጋር የተያያዙ አንዳንድ ባህሪያት እየሰሩ አይደለም።"</string>
+    <string name="fdn_check_failure" msgid="1833769746374185247">"የስልክዎ መተግበሪያ የተወሰነ ስልክ ቁጥሮች ቅንብር የበራ ነው። በዚህም ውጤት መሰረት፣ ከጥሪ ጋር የተያያዙ አንዳንድ ባህሪያት እየሰሩ አይደለም።"</string>
     <string name="radio_off_error" msgid="8321564164914232181">" እነዚህን ቅንብሮች ከማየትህ በፊት ሬዲዮኑን አብራ።"</string>
     <string name="close_dialog" msgid="1074977476136119408">"እሺ"</string>
     <string name="enable" msgid="2636552299455477603">"አብራ"</string>
@@ -158,9 +158,9 @@
     <item msgid="9150034130629852635">"ቁጥርአሳይ"</item>
   </string-array>
     <string name="vm_changed" msgid="4739599044379692505">"የድምፅ መልዕክት ቁጥርተለውጧል።"</string>
-    <string name="vm_change_failed" msgid="7877733929455763566">"የድምጽ ፖስታ ቁጥርን መለወጥ አልተቻለም፡፡ ይህ ችግር በዚህ ከቀጠለ የድምጸ ተያያዥ ሞደም አቅራቢህን \nአግኝ፡፡"</string>
-    <string name="fw_change_failed" msgid="9179241823460192148">"የማስተላለፊያ ቁጥርን መለወጥ አልተቻለም፡፡ ይህ ችግር በዚህ ከቀጠለ የድምጸ ተያያዥ ሞደም አቅራቢህን \nአግኝ፡፡"</string>
-    <string name="fw_get_in_vm_failed" msgid="2432678237218183844">"አሁን ያሉትን ማስተላለፊያ ቁጥሮች ቅንብሮችን ሰርስሮ ማውጣትና ማስቀመጥ አልተቻለም።\nወደ አዲስ አቅራቢ የሆነ ሆኖ ቀይር?"</string>
+    <string name="vm_change_failed" msgid="7877733929455763566">"የድምጽ ፖስታ ቁጥርን መለወጥ አልተቻለም።\nይህ ችግር በዚህ ከቀጠለ የአገልግሎት አቅራቢዎን ያነጋግሩ።"</string>
+    <string name="fw_change_failed" msgid="9179241823460192148">"የማስተላለፊያ ቁጥርን መለወጥ አልተቻለም። ይህ ችግር በዚህ ከቀጠለ አገልግሎት አቅራቢዎን \n ያነጋግሩ።"</string>
+    <string name="fw_get_in_vm_failed" msgid="2432678237218183844">"አሁን ያሉትን ማስተላለፊያ ቁጥሮች ቅንብሮችን ሰርስሮ ማውጣትና ማስቀመጥ አልተቻለም።\nወደ አዲስ አቅራቢ የሆነ ሆኖ ይቀይር?"</string>
     <string name="no_change" msgid="3737264882821031892">"ምንም ለውጥ አልተደረገም።"</string>
     <string name="sum_voicemail_choose_provider" msgid="6750824719081403773">"የድምፅ መልዕክት አገልግሎት ምረጥ"</string>
     <string name="voicemail_default" msgid="6427575113775462077">"የእርስዎ ድምጸ ተያያዥ ሞደም"</string>
@@ -180,12 +180,12 @@
     <string name="empty_networks_list" msgid="9216418268008582342">"ምንም አውታረመረብ አልተገኘም።"</string>
     <string name="network_query_error" msgid="3862515805115145124">"አውታረ መረቦችን ማግኘት አልተቻለም። እንደገና ይሞክሩ።"</string>
     <string name="register_on_network" msgid="4194770527833960423">"በ<xliff:g id="NETWORK">%s</xliff:g> ላይ በመመዝገብ ላይ..."</string>
-    <string name="not_allowed" msgid="8541221928746104798">"የSIM ካርድህ ወደዚህ አውታረመረብ  ግንኙነት አይፈቅድም።"</string>
+    <string name="not_allowed" msgid="8541221928746104798">"የእርስዎ ሲም ካርድ ከዚህ አውታረ መረብ ጋር ግንኙነት አይፈቅድም።"</string>
     <string name="connect_later" msgid="1950138106010005425">"በአሁን ጊዜ ወደዚህ አውታረ መረብ ማገናኘት አልተቻለም፡፡ በኋላ እንደገና ሞክር፡፡"</string>
     <string name="registration_done" msgid="5337407023566953292">"በአውታረ መረብ ላይ የተመዘገበ።"</string>
     <string name="already_auto" msgid="8607068290733079336">"ቀድሞውኑ በራስ-ሰር ምርጫ ላይ ነው።"</string>
     <string name="select_automatically" msgid="779750291257872651">"አውታረ መረብን በራስ ሰር ይምረጡ"</string>
-    <string name="manual_mode_disallowed_summary" msgid="3970048592179890197">"ከ %1$s ጋር በተገናኘ ጊዜ አይገኝም"</string>
+    <string name="manual_mode_disallowed_summary" msgid="3970048592179890197">"ከ%1$s ጋር በተገናኘ ጊዜ አይገኝም"</string>
     <string name="network_select_title" msgid="4117305053881611988">"አውታረ መረብ"</string>
     <string name="register_automatically" msgid="3907580547590554834">"ራስ ሰር ምዝገባ...."</string>
     <string name="preferred_network_mode_title" msgid="5253395265169539830">"የሚመረጠው የአውታረ መረብ ዓይነት"</string>
@@ -297,7 +297,7 @@
     <string name="limited_sim_function_with_phone_num_notification_message" msgid="5928988883403677610">"የ <xliff:g id="CARRIER_NAME">%1$s</xliff:g> ጥሪዎች እና የውሂብ አገልግሎቶች <xliff:g id="PHONE_NUMBER">%2$s</xliff:g> በሚጠቀሙ ጊዜ ሊታገዱ ይችላሉ።"</string>
     <string name="limited_sim_function_notification_message" msgid="5338638075496721160">"ሌላ ሲም በሚጠቀሙ ጊዜ የ <xliff:g id="CARRIER_NAME">%1$s</xliff:g> ጥሪዎች እና የውሂብ አገልግሎቶች ሊታገዱ ይችላሉ።"</string>
     <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"የተቋረጡ የSIP መለያዎች ተገኝተው ተወግደዋል"</string>
-    <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"የSIP መደወያ ከአሁን በኋላ በAndroid መሰረተ ስርዓት ላይ አይደገፍም።\nነባር የSIP መለያዎችዎ <xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g> ተወግደዋል።\nየእርስዎ ነባሪ መደወያ የመለያ ቅንብሮችን እባክዎ ያረጋግጡ።"</string>
+    <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"የSIP መደወያ ከአሁን በኋላ በAndroid መሰረተ ሥርዓት ላይ አይደገፍም።\nነባር የSIP መለያዎችዎ <xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g> ተወግደዋል።\nየእርስዎ ነባሪ መደወያ የመለያ ቅንብሮችን እባክዎ ያረጋግጡ።"</string>
     <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"ወደ ቅንብሮች ሂድ"</string>
     <string name="data_usage_title" msgid="8438592133893837464">"የመተግበሪያ ውሂብ አጠቃቀም"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"<xliff:g id="ID_1">%1$s</xliff:g> ጥቅም ላይ የዋለ የተንቀሳቃሽ ስልክ ውሂብ <xliff:g id="ID_2">%2$s</xliff:g>"</string>
@@ -325,7 +325,7 @@
     <string name="throttle_data_rate_reduced_subtext" msgid="8369839346277847725">"<xliff:g id="USED_0">%1$s</xliff:g>ከከፍተኛው ዘሏል\n የውሂብ ደረጃ ወደ <xliff:g id="USED_1">%2$d</xliff:g> Kb/s ዝቅ ብሏል።"</string>
     <string name="throttle_time_frame_subtext" msgid="6462089615392402127">"የ<xliff:g id="USED_0">%1$d</xliff:g>٪ ዙር ሄዷል \nቀጣይ ክፍለ ጊዜ በ<xliff:g id="USED_1">%2$d</xliff:g> ቀኖች(<xliff:g id="USED_2">%3$s</xliff:g>) ይጀምራል"</string>
     <string name="throttle_rate_subtext" msgid="7221971817325779535">"የውሂብ አጠቃቀም ወሰን ከበለጠየውሂብ ደረጃ ወደ <xliff:g id="USED">%1$d</xliff:g>Kb/s ቀንሷል።"</string>
-    <string name="throttle_help_subtext" msgid="2817114897095534807">"ተጨማሪ መረጃ ስለ ድምጸ ተያያዥ ሞደምዎ ተንቀሳቃሽ ስልክ አውታረ መረብዎ ውሂብ አጠቃቀም መመሪያ"</string>
+    <string name="throttle_help_subtext" msgid="2817114897095534807">"ተጨማሪ መረጃ ስለ እርስዎ አገልግሎት አቅራቢ የተንቀሳቃሽ ስልክ አውታረ መረብ ውሂብ አጠቃቀም መመሪያ"</string>
     <string name="cell_broadcast_sms" msgid="4053449797289031063">"የተንቀሳቃሽ ስልክ SMS ስርጭት"</string>
     <string name="enable_disable_cell_bc_sms" msgid="4759958924031721350">"የተንቀሳቃሽ ስልክ SMS ስርጭት"</string>
     <string name="cell_bc_sms_enable" msgid="2019708772024632073">"የ SMS ህዋስ ማሰራጫ አልነቃም"</string>
@@ -461,6 +461,8 @@
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"ራስ ድጋሚ አስጀምር ሁናቴ አስችል"</string>
     <string name="vibrating_for_outgoing_call_accepted_title" msgid="647945514737734657">"ለሚነሳ ወጪ ጥሪ ንዝረት"</string>
     <string name="vibrating_for_outgoing_call_accepted_summary" msgid="906112327196063688">"ለሚነሳ ወጪ ጥሪ ንዝረት ሁነታን ያንቁ"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_title" msgid="856074537423753072">"ከጥሪ ጋር የተገናኙ ድምፆች"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_summary" msgid="2442128058517260047">"ለወጪ ጥሪ የሚጫወት ድምፅ ተቀባይነት አግኝቷል"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"የTTY ሁነታ ለውጥ በቪዲዮ ጥሪ ጊዜ አይፈቀድም"</string>
     <string name="menu_add" msgid="5616487894975773141">"እውቅያዎች አክል"</string>
     <string name="menu_edit" msgid="3593856941552460706">"እውቅያ አርትዕ"</string>
@@ -479,13 +481,13 @@
     <string name="delete_fdn_contact" msgid="7027405651994507077">"በቋሚ መደወያ ቁጥር ሰርዝ"</string>
     <string name="deleting_fdn_contact" msgid="6872320570844460428">"በቋሚ መደወያ ቁጥር በመሰረዝ ላይ..."</string>
     <string name="fdn_contact_deleted" msgid="1680714996763848838">"ቋሚ መደወያ ቁጥር ተሰርዟል።"</string>
-    <string name="pin2_invalid" msgid="2313954262684494442">"የተሳሳተ ፒን ስላስገባህ FDN አልዘመነም፡፡"</string>
+    <string name="pin2_invalid" msgid="2313954262684494442">"የተሳሳተ ፒን ስለተየቡ ኤፍዲኤን አልዘመነም።"</string>
     <string name="fdn_invalid_number" msgid="9067189814657840439">"FDN ቁጥሩ ከ<xliff:g id="FDN_NUMBER_LIMIT_LENGTH">%d</xliff:g> አሃዞች ስለሚበልጥ አልዘመነም።"</string>
     <string name="pin2_or_fdn_invalid" msgid="7542639487955868181">"FDN አልዘመነም። ፒን2 ትክክል አልነበረም፣ ወይም የስልክ ቁጥሩ ተቀባይነት አላገኘም።"</string>
     <string name="fdn_failed" msgid="216592346853420250">"FDN ክወና አልተሳካም!"</string>
     <string name="fdn_blocked_mmi" msgid="3218296901316119797">"ኤፍዲኤን ስለነቃ MMI ኮድ መደወል አይቻልም።"</string>
     <string name="simContacts_emptyLoading" msgid="4989040293858675483">"ከSIM ካርድ ላይ በማንበብ ላይ..."</string>
-    <string name="simContacts_empty" msgid="1135632055473689521">"በ SIM ካርድዎ ላይ ዕውቂያዎች የሉም።"</string>
+    <string name="simContacts_empty" msgid="1135632055473689521">"በSIM ካርድዎ ላይ ዕውቂያዎች የሉም።"</string>
     <string name="simContacts_title" msgid="2714029230160136647">"ለማስገባት ዕውቂያዎች ምረጥ"</string>
     <string name="simContacts_airplaneMode" msgid="4654884030631503808">"ከሲም ካርድ ላይ እውቂያዎችን ለማስመጣት የአውሮፕላን ሁኔታን ያጥፉ።"</string>
     <string name="enable_pin" msgid="967674051730845376">"SIM ፒን  አንቃ/አቦዝን"</string>
@@ -494,8 +496,8 @@
     <string name="oldPinLabel" msgid="8618515202411987721">"የድሮ ፒን"</string>
     <string name="newPinLabel" msgid="3585899083055354732">"አዲስPIN"</string>
     <string name="confirmPinLabel" msgid="7783531218662473778">"አዲስ ፒን  አረጋግጥ"</string>
-    <string name="badPin" msgid="4549286285015892321">"የተየበከው የድሮ ፒን ትክክል አይደለም። እባክህ እንደገና ሞክር።"</string>
-    <string name="mismatchPin" msgid="1467254768290323845">"ያስገባኸው ፒኖች አይዛመዱም። እንደገና ሞክር።"</string>
+    <string name="badPin" msgid="4549286285015892321">"የተየበከው የድሮ ፒን ትክክል አይደለም። እባክዎ እንደገና ይሞክሩ።"</string>
+    <string name="mismatchPin" msgid="1467254768290323845">"ያስገቧቸው ፒኖች አይመሳሰሉም። እንደገና ይሞክሩ።"</string>
     <string name="invalidPin" msgid="7363723429414001979">"ከ4 እስከ 8 ቁጥሮች የያዘ ፒን  ተይብ"</string>
     <string name="disable_sim_pin" msgid="3112303905548613752">"SIM PIN አጽዳ"</string>
     <string name="enable_sim_pin" msgid="445461050748318980">"SIM PIN አቀናብር"</string>
@@ -621,11 +623,11 @@
     <string name="network_info_message" msgid="7599413947016532355">"የአውታረ መረብ መልዕክት"</string>
     <string name="network_error_message" msgid="4271579424089326618">"የስህተት መልዕክት"</string>
     <string name="ota_title_activate" msgid="4049645324841263423">"ስልክዎን ያግብሩ"</string>
-    <string name="ota_touch_activate" msgid="838764494319694754">"የስልክዎን አገለግሎት ለማግበር ልዩ ጥሪ ያስፈልጋል።\n\n  \"አግብር\" ከተጫኑ በኋላ ስልክዎን ለማግበር የቀረቡትን መመሪያዎች ያዳምጡ።"</string>
+    <string name="ota_touch_activate" msgid="838764494319694754">"የስልክዎን አገለግሎት ለማግበር ልዩ ጥሪ ያስፈልጋል።\n\n«አግብር» የሚለውን ከተጫኑ በኋላ ስልክዎን ለማግበር የቀረቡትን መመሪያዎች ያዳምጡ።"</string>
     <string name="ota_hfa_activation_title" msgid="3300556778212729671">"በማንቃት ላይ..."</string>
     <string name="ota_hfa_activation_dialog_message" msgid="7921718445773342996">"ስልኩ የሞባይል ውሂብ አገልግሎትዎን እያነቃ ነው።\n\nይህ እስከ 5 ደቂቃዎች ድረስ ሊወስድ ይችላል።"</string>
     <string name="ota_skip_activation_dialog_title" msgid="7666611236789203797">"አግብር ይዝለል?"</string>
-    <string name="ota_skip_activation_dialog_message" msgid="6691722887019708713">"ማግበር ካዘለሉ፣ ጥሪ ማድረግ ወይም ተንቀሳቃሽ ስልክ ውሂብ አውታረ መረብ(በWi-Fi አውታረ መረቦች ማያያዝ ቢችሉም እንኳን ) ማያያዝ አይችሉም። ስልክዎን እስኪያገብሩ ድረስ፣ ባበሩት ቁጥር እንዲያገብሩት ይጠየቃሉ።"</string>
+    <string name="ota_skip_activation_dialog_message" msgid="6691722887019708713">"ማግበር ካዘለሉ፣ ጥሪ ማድረግ ወይም ተንቀሳቃሽ ስልክ ውሂብ አውታረ መረብ(በWi-Fi አውታረ መረቦች ማያያዝ ቢችሉም እንኳን) ማያያዝ አይችሉም። ስልክዎን እስኪያገብሩ ድረስ፣ ባበሩት ቁጥር እንዲያገብሩት ይጠየቃሉ።"</string>
     <string name="ota_skip_activation_dialog_skip_label" msgid="5908029466817825633">"ዝለል"</string>
     <string name="ota_activate" msgid="7939695753665438357">"አግብር"</string>
     <string name="ota_title_activate_success" msgid="1272135024761004889">"ስልክ አግብረሃል!"</string>
@@ -635,13 +637,13 @@
     <string name="ota_progress" msgid="8837259285255700132">"ስልክዎን ፕሮግራም በማድረግ ላይ…"</string>
     <string name="ota_failure" msgid="5674217489921481576">"ስልክዎን ፕሮግራም ማድረግ አልተቻለም"</string>
     <string name="ota_successful" msgid="1106825981548107774">"አሁን ስልክዎ አግብሯል።አገልግሎቱ ለመጀመር እስከ 15 ደቂቃዎች ሊፈጅ ይችላል።"</string>
-    <string name="ota_unsuccessful" msgid="8531037653803955754">"ስልክህ አላገበረም።\n ጥሩ ሽፋን ያለበት አካባቢ ማግኘት ያስፈልግሃል (መስኮት፣ ወይም ውጭ አካባቢ)።ለበለጠ አማራጮች የደንበኞች አገልግሎት ደውል ወይም \n\nእንደገና ሞክር።"</string>
+    <string name="ota_unsuccessful" msgid="8531037653803955754">"ስልክዎ አላገበረም። \nጥሩ ሽፋን ያለበት አካባቢ ማግኘት ያስፈልግዎታል (መስኮት፣ ወይም ውጪ አካባቢ)። \n\nለበለጠ አማራጮች እንደገና ይሞክሩ ወይም ለየደንበኛ አገልግሎት ይደውሉ።"</string>
     <string name="ota_spc_failure" msgid="904092035241370080">"ከልክ ያለፈ የSPC  መታወክ"</string>
     <string name="ota_call_end" msgid="8657746378290737034">"ተመለስ"</string>
     <string name="ota_try_again" msgid="6914781945599998550">"በድጋሚ ሞክር"</string>
     <string name="ota_next" msgid="2041016619313475914">"በመቀጠል"</string>
     <string name="ecm_exit_dialog" msgid="4200691880721429078">"EcmExitDialog"</string>
-    <string name="phone_entered_ecm_text" msgid="8431238297843035842">"የአደጋጊዜ ተዘዋዋሪ ጥሪ ሁነታ ገብቷል"</string>
+    <string name="phone_entered_ecm_text" msgid="8431238297843035842">"የአደጋ ጊዜ ተዘዋዋሪ ጥሪ ሁነታ ገብቷል"</string>
     <string name="phone_in_ecm_notification_title" msgid="6825016389926367946">"የአደጋጊዜ ተዘዋዋሪጥሪ ሁነታ"</string>
     <string name="phone_in_ecm_call_notification_text" msgid="653972232922670335">"የውሂብ ተያያዥነት አልነቃም"</string>
     <string name="phone_in_ecm_notification_complete_time" msgid="7341624337163082759">"እሰከ <xliff:g id="COMPLETETIME">%s</xliff:g> የውሂብ ግንኙነት የለም"</string>
@@ -781,7 +783,7 @@
     <string name="call_barring_baoic_enabled" msgid="1203758092657630123">"ወጪ ዓለምአቀፋዊ ጥሪዎችን ማገድን አሰናክል?"</string>
     <string name="call_barring_baoic_disabled" msgid="5656889339002997449">"ወጪ ዓለምዓቀፋዊ ጥሪዎችን አግድ?"</string>
     <string name="call_barring_baoicr" msgid="8566167764432343487">"ወቺ ዓለምአቀፋዊ ሮሚንግ"</string>
-    <string name="call_barring_baoicr_enabled" msgid="1615324165512798478">"ወጪ ዓለምአቀፋዊ ሮሚንግን ማገድን አሰናክል?"</string>
+    <string name="call_barring_baoicr_enabled" msgid="1615324165512798478">"ወጪ ዓለምአቀፋዊ ማዛዋርን ማገድ ይሰናክል?"</string>
     <string name="call_barring_baoicr_disabled" msgid="172010175248142831">"ወጪ ዓለምአቀፋዊ ሮሚንግን አግድ?"</string>
     <string name="call_barring_baic" msgid="7941393541678658566">"ሁሉም ገቢ"</string>
     <string name="call_barring_baic_enabled" msgid="4357332358020337470">"ሁሉንም ገቢ ጥሪዎች ማገድን አሰናክል?"</string>
@@ -828,8 +830,8 @@
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"ጥሪ ማድረግ አይቻልም ምክንያቱም ጥሪ ማድረግ በ ro.telephony.disable-call የስርዓት ባህሪ ተሰናክልሏል።"</string>
     <string name="callFailed_too_many_calls" msgid="2761754044990799580">"ጥሪ ማድረግ አይቻልም ምክንያቱም አስቀድሞ ሁለት ጥሪዎች በሂደት ላይ ናቸው። አዲስ ጥሪ ከማድረግዎ በፊት ከጥሪዎቹ አንዱን ያቋርጡ ወይም ወደ ጉባዔ ያዋህዷቸው።"</string>
     <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"<xliff:g id="SUPP_SERVICE">%s</xliff:g>ን ለመጠቀም፣ ሞባይል ውሂብ መብራቱን ያረጋግጡ። ይህን በሞባይል አውታረመረብ ቅንብሮች ውስጥ መለወጥ ይችላሉ።"</string>
-    <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"<xliff:g id="SUPP_SERVICE">%s</xliff:g>ን ለመጠቀም፣ ሞባይል ውሂብ እና የውሂብ ዝውውር መብራታቸውን ያረጋግጡ። እነዚህን በ ሞባይል አውታረመረብ ቅንብሮች ውስጥ መለወጥ ይችላሉ።"</string>
-    <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"<xliff:g id="SUPP_SERVICE">%1$s</xliff:g> ን ለመጠቀም ሞባይል ውሂብ ለ ሲም <xliff:g id="SIM_NUMBER">%2$d</xliff:g> መብራቱን ያረጋግጡ። ይህን በሞባይል አውታረመረብ ቅንብሮች ውስጥ መለወጥ ይችላሉ።"</string>
+    <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"<xliff:g id="SUPP_SERVICE">%s</xliff:g>ን ለመጠቀም፣ ሞባይል ውሂብ እና የውሂብ ዝውውር መብራታቸውን ያረጋግጡ። እነዚህን በሞባይል አውታረመረብ ቅንብሮች ውስጥ መለወጥ ይችላሉ።"</string>
+    <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"<xliff:g id="SUPP_SERVICE">%1$s</xliff:g>ን ለመጠቀም ሞባይል ውሂብ ለሲም <xliff:g id="SIM_NUMBER">%2$d</xliff:g> መብራቱን ያረጋግጡ። ይህን በሞባይል አውታረመረብ ቅንብሮች ውስጥ መለወጥ ይችላሉ።"</string>
     <string name="supp_service_over_ut_precautions_roaming_dual_sim" msgid="6627654855191817965">"<xliff:g id="SUPP_SERVICE">%1$s</xliff:g>ን ለመጠቀም፣ ሞባይል ውሂብ እና ይውሂብ ዝውውር ለሲም <xliff:g id="SIM_NUMBER">%2$d</xliff:g> መብራታቸውን ያረጋግጡ። እነዚህን በ ሞባይል አውታረመረብ ቅንብሮች ውስጥ መለወጥ ይችላሉ።"</string>
     <string name="supp_service_over_ut_precautions_dialog_dismiss" msgid="5934541487903081652">"አሰናብት"</string>
     <string name="radio_info_data_connection_enable" msgid="6183729739783252840">"የውሂብ ግንኙነትን አንቃ"</string>
@@ -850,6 +852,14 @@
     <string name="simulate_out_of_service_label" msgid="3563376136603403714">"ከአገልግሎት ውጭ ያመሳስሉ"</string>
     <string name="enforce_satellite_channel_string" msgid="295306734591329892">"Force Camp Satellite LTE ሰርጥ (የስህተት አርም ግንባታ ብቻ)"</string>
     <string name="enforce_satellite_channel_label" msgid="8212349350110213468">"የኃይል ካምፕ ሳተላይት LTE ሰርጥ"</string>
+    <string name="starlink_satellite_band_string" msgid="2287502104005508384">"Starlink_US"</string>
+    <string name="ast_satellite_band_string" msgid="3238737906080758289">"AST_US"</string>
+    <string name="manual_override_satellite_band_string" msgid="801049975307124461">"ራስዎ ይሻሩ"</string>
+    <string name="satellite_manual_band_label" msgid="4135706517193927388">"ማሰሪያ ይምረጡ፦"</string>
+    <string name="satellite_channel_label_text" msgid="1999162483250790313">"ሰርጥ ያስገቡ፦"</string>
+    <string name="satellite_channel_hint_text" msgid="4342575738602358270">"የሳተላይት ሰርጥን እዚህ ይስገቡ"</string>
+    <string name="force_camp_satellite_button_string" msgid="3719311367839668322">"አገናኝ"</string>
+    <string name="force_camp_satellite_button_connected_string" msgid="2457912207054938894">"ተገናኝቷል"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"Mock Carrier Satellite Mode (የስህተት ማረሚያ ግንባታ ብቻ)"</string>
     <string name="mock_carrier_roaming_satellite_label" msgid="2052656038544917979">"ማስመሰያ"</string>
     <string name="choose_satellite_data_mode_label" msgid="7403013160079828226">"የማስመሰያ ሳተላይት ውሂብ ሁነታ"</string>

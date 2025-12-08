@@ -15,6 +15,8 @@
 -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- DO NOT TRANSLATE. Internal key for a telephony attribution tag. -->
+    <string name="telephony_attribution_tag">Telephony</string>
 
     <!-- Official label of the phone app, as seen in "Manage Applications"
          and other settings UIs.  This is the version of the label for
@@ -1010,6 +1012,8 @@
     <string name="auto_retry_mode_summary">Enable Auto-retry mode</string>
     <string name="vibrating_for_outgoing_call_accepted_title">Vibrating for outgoing call accepted</string>
     <string name="vibrating_for_outgoing_call_accepted_summary">Enable vibrating mode for outgoing call accepted</string>
+    <string name="playing_tone_for_outgoing_call_accepted_title">"Call connected tones"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_summary">"Playing tone for outgoing call accepted"</string>
     <!-- TTY Mode change is NOT allowed during a video call -->
     <string name="tty_mode_not_allowed_video_call">TTY Mode change is not allowed during a video call</string>
     <!-- FDN list screen: menu item label -->
@@ -2034,6 +2038,19 @@
     <!-- Title for enforcing satellite channels. -->
     <string name="enforce_satellite_channel_string">Force Camp Satellite LTE Channel (Debug Build only)</string>
     <string name="enforce_satellite_channel_label">Force Camp Satellite LTE Channel</string>
+
+    <!-- Titles for selection of satellite bands and channels. -->
+    <string name="starlink_satellite_band_string">Starlink_US</string>
+    <string name="ast_satellite_band_string">AST_US</string>
+    <string name="manual_override_satellite_band_string">Manual Override</string>
+    <string name="satellite_manual_band_label">Select Band:</string>
+    <string name="satellite_channel_label_text">Enter Channel:</string>
+    <string name="satellite_channel_hint_text">Enter Satellite Channel here</string>
+    <string name="force_camp_satellite_button_string">Connect</string>
+    <string name="force_camp_satellite_button_connected_string">Connected</string>
+
+
+
 
     <!-- Title for simulating SIM capable of satellite. -->
     <string name="mock_carrier_roaming_satellite_string">Mock Carrier Satellite Mode (Debug Build only)</string>

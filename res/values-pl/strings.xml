@@ -126,7 +126,7 @@
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Twój operator nie umożliwia wyłączenia przekazywania połączeń, gdy numer jest nieosiągalny."</string>
     <string name="registration_cf_forbidden" msgid="4386482610771190420">"Twój operator nie obsługuje przekierowania połączeń."</string>
     <string name="cdma_call_waiting" msgid="4565070960879673216">"Włączyć połączenie oczekujące?"</string>
-    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"Podczas rozmowy otrzymasz powiadomienie o połączeniach przychodzących"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"Podczas rozmów będziesz otrzymywać powiadomienia o połączeniach przychodzących"</string>
     <string name="enable_cdma_cw" msgid="811047045863422232">"Włącz"</string>
     <string name="disable_cdma_cw" msgid="7119290446496301734">"Anuluj"</string>
     <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"Połączenie oczekujące CDMA, gdy usługa IMS jest włączona"</string>
@@ -461,6 +461,8 @@
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"Włącz tryb automatycznego ponawiania próby"</string>
     <string name="vibrating_for_outgoing_call_accepted_title" msgid="647945514737734657">"Wibracje po odebraniu połączenia wychodzącego"</string>
     <string name="vibrating_for_outgoing_call_accepted_summary" msgid="906112327196063688">"Włącz wibracje po odebraniu połączenia wychodzącego"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_title" msgid="856074537423753072">"Dźwięki połączenia"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_summary" msgid="2442128058517260047">"Odtwarzam dźwięk po odebraniu połączenia wychodzącego"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"Trybu TTY nie można zmienić w trakcie rozmowy wideo"</string>
     <string name="menu_add" msgid="5616487894975773141">"Dodaj kontakt"</string>
     <string name="menu_edit" msgid="3593856941552460706">"Edytuj kontakt"</string>
@@ -543,7 +545,7 @@
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Wyłącz tryb samolotowy lub połącz się z siecią bezprzewodową, by zadzwonić."</string>
     <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"Telefon jest zbyt gorący"</b>\n\n"Nie można nawiązać tego połączenia. Spróbuj ponownie, gdy telefon się ochłodzi.\n\nNadal możesz wykonywać połączenia alarmowe."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Aby zadzwonić normalnie, wyjdź z trybu alarmowego połączenia zwrotnego."</string>
-    <string name="incall_error_emergency_only" msgid="8786127461027964653">"Nie zarejestrowano w sieci"</string>
+    <string name="incall_error_emergency_only" msgid="8786127461027964653">"Nie zarejestrowano w sieci."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"Sieć komórkowa jest niedostępna."</string>
     <string name="incall_error_out_of_service_2g" msgid="904434080740846116">"Sieć komórkowa jest niedostępna.\n\nAby zadzwonić, połącz się z siecią bezprzewodową.\n\nSieć 2G na tym urządzeniu jest wyłączona, co może mieć wpływ na łączność. Aby kontynuować, przejdź do Ustawień i włącz opcję „Zezwól na 2G”."</string>
     <string name="incall_error_out_of_service_wfc" msgid="4497663185857190885">"Sieć komórkowa jest niedostępna. Połącz się z siecią bezprzewodową, by zadzwonić."</string>
@@ -850,6 +852,14 @@
     <string name="simulate_out_of_service_label" msgid="3563376136603403714">"Symulowana przerwa w działaniu usługi"</string>
     <string name="enforce_satellite_channel_string" msgid="295306734591329892">"Wymuś kanał LTE satelitarny Force Camp (tylko kompilacja do debugowania)"</string>
     <string name="enforce_satellite_channel_label" msgid="8212349350110213468">"Wymuś kanał LTE satelitarny Force Camp"</string>
+    <string name="starlink_satellite_band_string" msgid="2287502104005508384">"Starlink_US"</string>
+    <string name="ast_satellite_band_string" msgid="3238737906080758289">"AST_US"</string>
+    <string name="manual_override_satellite_band_string" msgid="801049975307124461">"Zastępowanie ręczne"</string>
+    <string name="satellite_manual_band_label" msgid="4135706517193927388">"Wybierz pasmo:"</string>
+    <string name="satellite_channel_label_text" msgid="1999162483250790313">"Wpisz kanał:"</string>
+    <string name="satellite_channel_hint_text" msgid="4342575738602358270">"Wpisz tutaj kanał satelitarny"</string>
+    <string name="force_camp_satellite_button_string" msgid="3719311367839668322">"Połącz"</string>
+    <string name="force_camp_satellite_button_connected_string" msgid="2457912207054938894">"Połączono"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"Symulowany tryb satelitarny operatora (tylko kompilacja do debugowania)"</string>
     <string name="mock_carrier_roaming_satellite_label" msgid="2052656038544917979">"Symulacja"</string>
     <string name="choose_satellite_data_mode_label" msgid="7403013160079828226">"Symulowany tryb danych satelitarnych"</string>
@@ -870,8 +880,8 @@
     <string name="radio_info_ims_reg_status_title" msgid="6875885401313992007">"Stan IMS"</string>
     <string name="radio_info_ims_reg_status_registered" msgid="7095182114078864326">"Zarejestrowane"</string>
     <string name="radio_info_ims_reg_status_not_registered" msgid="8045821447288876085">"Niezarejestrowane"</string>
-    <string name="radio_info_ims_feature_status_available" msgid="6493200914756969292">"Dostępne"</string>
-    <string name="radio_info_ims_feature_status_unavailable" msgid="8930391136839759778">"Brak dostępu"</string>
+    <string name="radio_info_ims_feature_status_available" msgid="6493200914756969292">"Dostępna"</string>
+    <string name="radio_info_ims_feature_status_unavailable" msgid="8930391136839759778">"Niedostępna"</string>
     <string name="radio_info_ims_reg_status" msgid="25582845222446390">"Rejestracja w usłudze IMS: <xliff:g id="STATUS">%1$s</xliff:g>\nVoice over LTE: <xliff:g id="AVAILABILITY_0">%2$s</xliff:g>\nVoice over WiFi: <xliff:g id="AVAILABILITY_1">%3$s</xliff:g>\nRozmowy wideo: <xliff:g id="AVAILABILITY_2">%4$s</xliff:g>\nInterfejs UT: <xliff:g id="AVAILABILITY_3">%5$s</xliff:g>"</string>
     <string name="radioInfo_service_in" msgid="45753418231446400">"Działa"</string>
     <string name="radioInfo_service_out" msgid="287972405416142312">"Nie działa"</string>

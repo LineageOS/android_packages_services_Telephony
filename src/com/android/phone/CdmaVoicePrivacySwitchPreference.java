@@ -25,6 +25,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 
 import com.android.internal.telephony.Phone;
+import com.android.internal.telephony.flags.Flags;
 
 public class CdmaVoicePrivacySwitchPreference extends SwitchPreference {
     private static final String LOG_TAG = "CdmaVoicePrivacySwitchPreference";
@@ -35,6 +36,7 @@ public class CdmaVoicePrivacySwitchPreference extends SwitchPreference {
 
     public CdmaVoicePrivacySwitchPreference(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
+        if (Flags.deleteCdma()) return;
 
         phone = PhoneGlobals.getPhone();
         phone.getEnhancedVoicePrivacy(mHandler.obtainMessage(MyHandler.MESSAGE_GET_VP));

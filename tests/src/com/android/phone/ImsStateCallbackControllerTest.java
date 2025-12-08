@@ -37,7 +37,6 @@ import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.doAnswer;
-import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -911,8 +910,6 @@ public class ImsStateCallbackControllerTest extends TelephonyTestBase {
     @Test
     @SmallTest
     public void testImsManagerInstanceWithInvalidSubId() throws Exception {
-        doReturn(true).when(mFeatureFlags).avoidDeletingImsObjectFromCache();
-
         createController(1);
 
         // MmTelConnection ready

@@ -25,6 +25,7 @@ import android.telephony.CarrierConfigManager;
 
 import com.android.internal.telephony.Call;
 import com.android.internal.telephony.CallStateException;
+import com.android.internal.telephony.flags.Flags;
 import com.android.phone.PhoneGlobals;
 
 import java.util.List;
@@ -39,6 +40,7 @@ public class CdmaConference extends TelephonyConferenceBase implements Holdable 
 
     public CdmaConference(PhoneAccountHandle phoneAccount) {
         super(phoneAccount);
+        if (Flags.deleteCdma()) return;
         setActive();
 
         mProperties = Connection.PROPERTY_GENERIC_CONFERENCE;

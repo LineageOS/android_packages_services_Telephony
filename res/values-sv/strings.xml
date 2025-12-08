@@ -461,6 +461,8 @@
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"Aktivera läget Försök igen automatiskt"</string>
     <string name="vibrating_for_outgoing_call_accepted_title" msgid="647945514737734657">"Vibrerar när utgående samtal har besvarats"</string>
     <string name="vibrating_for_outgoing_call_accepted_summary" msgid="906112327196063688">"Aktivera vibrationsläge för utgående samtal som har besvarats"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_title" msgid="856074537423753072">"Signaler för uppkopplat samtal"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_summary" msgid="2442128058517260047">"Spelar upp en ton när utgående samtal har besvarats"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"Det går inte att ändra till texttelefonläge under ett videosamtal"</string>
     <string name="menu_add" msgid="5616487894975773141">"Lägg till kontakt"</string>
     <string name="menu_edit" msgid="3593856941552460706">"Redigera kontakt"</string>
@@ -850,6 +852,14 @@
     <string name="simulate_out_of_service_label" msgid="3563376136603403714">"Simulera ur funktion"</string>
     <string name="enforce_satellite_channel_string" msgid="295306734591329892">"Force Camp Satellite LTE-kanal (endast felsökningsversion)"</string>
     <string name="enforce_satellite_channel_label" msgid="8212349350110213468">"Force Camp Satellite LTE-kanal"</string>
+    <string name="starlink_satellite_band_string" msgid="2287502104005508384">"Starlink_US"</string>
+    <string name="ast_satellite_band_string" msgid="3238737906080758289">"AST_US"</string>
+    <string name="manual_override_satellite_band_string" msgid="801049975307124461">"Manuell åsidosättning"</string>
+    <string name="satellite_manual_band_label" msgid="4135706517193927388">"Välj band:"</string>
+    <string name="satellite_channel_label_text" msgid="1999162483250790313">"Ange kanal:"</string>
+    <string name="satellite_channel_hint_text" msgid="4342575738602358270">"Ange satellitkanal här"</string>
+    <string name="force_camp_satellite_button_string" msgid="3719311367839668322">"Anslut"</string>
+    <string name="force_camp_satellite_button_connected_string" msgid="2457912207054938894">"Ansluten"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"Simulering av operatörssatellitläge (version endast för felsökning)"</string>
     <string name="mock_carrier_roaming_satellite_label" msgid="2052656038544917979">"Exempel"</string>
     <string name="choose_satellite_data_mode_label" msgid="7403013160079828226">"Simulering av satellitdataläge"</string>

@@ -461,6 +461,8 @@
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"স্বয়ংক্ৰিয় পুনৰ প্ৰয়াস সক্ষম কৰক"</string>
     <string name="vibrating_for_outgoing_call_accepted_title" msgid="647945514737734657">"গ্ৰহণ কৰা বহিৰ্গামী কলৰ বাবে কম্পন"</string>
     <string name="vibrating_for_outgoing_call_accepted_summary" msgid="906112327196063688">"গ্ৰহণ কৰা বহিৰ্গামী কলৰ বাবে কম্পন ম’ড সক্ষম কৰক"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_title" msgid="856074537423753072">"কল সংযোগ হোৱাৰ ট’ন"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_summary" msgid="2442128058517260047">"গ্ৰহণ কৰা বহিৰ্গামী কলৰ বাবে ট’ন প্লে’ কৰি থকা হৈছে"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"ভিডিঅ\' কল চলি থাকোঁতে TTY ম\'ড সলনি কৰিবলৈ অনুমতি দিয়া নহয়"</string>
     <string name="menu_add" msgid="5616487894975773141">"সম্পর্ক যোগ কৰক"</string>
     <string name="menu_edit" msgid="3593856941552460706">"সম্পৰ্ক সম্পাদনা কৰক"</string>
@@ -604,7 +606,7 @@
     <string name="hac_mode_summary" msgid="7774989500136009881">"শ্ৰৱণ যন্ত্ৰ খাপ খুউৱাৰ সুবিধা অন কৰক"</string>
     <string name="rtt_mode_title" msgid="3075948111362818043">"প্ৰকৃত সময়ত বাৰ্তা (RTT) কল"</string>
     <string name="rtt_mode_summary" msgid="8631541375609989562">"ভইচ কল চলি থকাৰ সময়ত বাৰ্তা পঠিওৱাৰ অনুমতি দিয়ক"</string>
-    <string name="rtt_mode_more_information" msgid="587500128658756318">"RTTয়ে বধিৰ বা শ্ৰৱণশক্তি কম থকা, বাকশক্তি সম্পৰ্কীয় দিব্য়াংগ বা কল কৰোঁতে কণ্ঠস্বৰতকৈ অধিক সুবিধাৰ প্ৰয়োজন হোৱা ব্য়ক্তিসকলক সহায় কৰে।&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;অধিক জানক&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT কলসমূহক বাৰ্তাৰ ট্ৰান্সক্ৰিপ্ট হিচাপে ছেভ কৰা হয়\n       &lt;br&gt; - RTT ভিডিঅ\' কলৰ বাবে উপলব্ধ নহয়"</string>
+    <string name="rtt_mode_more_information" msgid="587500128658756318">"RTTয়ে বধিৰ বা শ্ৰৱণশক্তি কম থকা, বাকশক্তি সম্পৰ্কীয় দিব্যাংগ বা কল কৰোঁতে কণ্ঠস্বৰতকৈ অধিক সুবিধাৰ প্ৰয়োজন হোৱা ব্যক্তিসকলক সহায় কৰে।&lt;br&gt; &lt;a href=<xliff:g id="URL">http://support.google.com/mobile?p=telephony_rtt</xliff:g>&gt;অধিক জানক&lt;/a&gt;\n       &lt;br&gt;&lt;br&gt; - RTT কলসমূহক বাৰ্তাৰ ট্ৰান্সক্ৰিপ্ট হিচাপে ছেভ কৰা হয়\n       &lt;br&gt; - RTT ভিডিঅ\' কলৰ বাবে উপলব্ধ নহয়"</string>
     <string name="no_rtt_when_roaming" msgid="5268008247378355389">"টোকা: ৰ’মিঙত থাকোঁতে RTT উপলব্ধ নহয়"</string>
   <string-array name="tty_mode_entries">
     <item msgid="3238070884803849303">"TTY বন্ধ হৈ আছে"</item>
@@ -850,6 +852,14 @@
     <string name="simulate_out_of_service_label" msgid="3563376136603403714">"ছিমুলে’ট কৰাৰ সুবিধাটো সেৱাত নাই"</string>
     <string name="enforce_satellite_channel_string" msgid="295306734591329892">"Force Camp উপগ্ৰহ LTE চেনেল (কেৱল ডিবাগ বিল্ড)"</string>
     <string name="enforce_satellite_channel_label" msgid="8212349350110213468">"ফ’ৰ্চ কেম্প উপগ্ৰহ LTE চেনেল"</string>
+    <string name="starlink_satellite_band_string" msgid="2287502104005508384">"Starlink_US"</string>
+    <string name="ast_satellite_band_string" msgid="3238737906080758289">"AST_US"</string>
+    <string name="manual_override_satellite_band_string" msgid="801049975307124461">"মেনুৱেল অ’ভাৰৰাইড"</string>
+    <string name="satellite_manual_band_label" msgid="4135706517193927388">"বেণ্ড বাছনি কৰক:"</string>
+    <string name="satellite_channel_label_text" msgid="1999162483250790313">"চেনেলটো দিয়ক:"</string>
+    <string name="satellite_channel_hint_text" msgid="4342575738602358270">"ইয়াত উপগ্ৰহৰ চেনেলটো দিয়ক"</string>
+    <string name="force_camp_satellite_button_string" msgid="3719311367839668322">"সংযোগ কৰক"</string>
+    <string name="force_camp_satellite_button_connected_string" msgid="2457912207054938894">"সংযোগ কৰা হ’ল"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"নকল বাহক উপগ্ৰহ ম’ড (কেৱল ডিবাগ বিল্ড)"</string>
     <string name="mock_carrier_roaming_satellite_label" msgid="2052656038544917979">"নকল"</string>
     <string name="choose_satellite_data_mode_label" msgid="7403013160079828226">"নকল উপগ্ৰহ ডেটা ম’ড"</string>

@@ -150,7 +150,7 @@
     <string name="radio_off_error" msgid="8321564164914232181">"அமைப்புகளைப் பார்ப்பதற்கு முன், ரேடியோவை இயக்கவும்."</string>
     <string name="close_dialog" msgid="1074977476136119408">"சரி"</string>
     <string name="enable" msgid="2636552299455477603">"இயக்கு"</string>
-    <string name="disable" msgid="1122698860799462116">"முடக்கு"</string>
+    <string name="disable" msgid="1122698860799462116">"ஆஃப் செய்"</string>
     <string name="change_num" msgid="6982164494063109334">"புதுப்பி"</string>
   <string-array name="clir_display_values">
     <item msgid="8477364191403806960">"நெட்வொர்க் பொருத்து"</item>
@@ -461,6 +461,8 @@
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"தானாக மீண்டும் அழைக்க முயற்சிக்கும் பயன்முறையை இயக்கு"</string>
     <string name="vibrating_for_outgoing_call_accepted_title" msgid="647945514737734657">"வெளிச்செல்லும் அழைப்புகளுக்கு அதிர்வுப் பயன்முறை ஏற்றுக்கொள்ளப்பட்டது"</string>
     <string name="vibrating_for_outgoing_call_accepted_summary" msgid="906112327196063688">"வெளிச்செல்லும் அழைப்புகளுக்கு அதிர்வுப் பயன்முறையை ஆன் செய்வது ஏற்றுக்கொள்ளப்பட்டது"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_title" msgid="856074537423753072">"அழைப்பு இணைக்கப்பட்டதற்கான டோன்கள்"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_summary" msgid="2442128058517260047">"வெளிச்செல்லும் அழைப்பு ஏற்கப்பட்டதற்கான டோன் பிளே செய்யப்படுகிறது"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"வீடியோ அழைப்பின்போது TTY பயன்முறை மாற்றம் அனுமதிக்கப்படாது"</string>
     <string name="menu_add" msgid="5616487894975773141">"தொடர்பைச் சேர்"</string>
     <string name="menu_edit" msgid="3593856941552460706">"தொடர்பை மாற்று"</string>
@@ -850,6 +852,14 @@
     <string name="simulate_out_of_service_label" msgid="3563376136603403714">"அவுட் ஆஃப் சர்வீஸை சிமுலேட் செய்தல்"</string>
     <string name="enforce_satellite_channel_string" msgid="295306734591329892">"ஃபோர்ஸ் கேம்ப் சாட்டிலைட் LTE சேனல் (பிழைதிருத்தக் கட்டமைப்பு மட்டும்)"</string>
     <string name="enforce_satellite_channel_label" msgid="8212349350110213468">"கேம்ப் சாட்டிலைட் LTE சேனலைச் செயல்படுத்துதல்"</string>
+    <string name="starlink_satellite_band_string" msgid="2287502104005508384">"Starlink_US"</string>
+    <string name="ast_satellite_band_string" msgid="3238737906080758289">"AST_US"</string>
+    <string name="manual_override_satellite_band_string" msgid="801049975307124461">"நேரடியாக மீறிச் செயல்படுதல்"</string>
+    <string name="satellite_manual_band_label" msgid="4135706517193927388">"அலைவரிசை வரம்பைத் தேர்ந்தெடுங்கள்:"</string>
+    <string name="satellite_channel_label_text" msgid="1999162483250790313">"சேனலை வழங்குங்கள்:"</string>
+    <string name="satellite_channel_hint_text" msgid="4342575738602358270">"சாட்டிலைட் சேனலை இங்கே வழங்குங்கள்"</string>
+    <string name="force_camp_satellite_button_string" msgid="3719311367839668322">"இணை"</string>
+    <string name="force_camp_satellite_button_connected_string" msgid="2457912207054938894">"இணைக்கப்பட்டது"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"Mock மொபைல் நிறுவன சாட்டிலைட் பயன்முறை (பிழைதிருத்த பதிப்பு மட்டும்)"</string>
     <string name="mock_carrier_roaming_satellite_label" msgid="2052656038544917979">"மாதிரி"</string>
     <string name="choose_satellite_data_mode_label" msgid="7403013160079828226">"சாட்டிலைட் தரவுப் பயன்முறை மாதிரி"</string>

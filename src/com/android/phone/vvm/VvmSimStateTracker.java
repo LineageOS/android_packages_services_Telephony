@@ -22,18 +22,20 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.HandlerExecutor;
-import android.os.Looper;
+import android.os.HandlerThread;
 import android.os.SystemProperties;
 import android.telecom.PhoneAccountHandle;
 import android.telecom.TelecomManager;
 import android.telephony.CarrierConfigManager;
 import android.telephony.ServiceState;
+import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyCallback;
 import android.telephony.TelephonyManager;
 import android.util.ArrayMap;
 import android.util.ArraySet;
 
+import com.android.internal.telephony.flags.Flags;
 import com.android.internal.telephony.IccCardConstants;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.TelephonyIntents;
@@ -53,6 +55,15 @@ import java.util.Set;
 public class VvmSimStateTracker extends BroadcastReceiver {
 
     private static final String TAG = "VvmSimStateTracker";
+    private static final String BACKGROUND_THREAD_NAME = "VvmSimStateTrackerBackgroundWorker";
+    // Handler to run tasks on a background thread, preventing ANRs.
+    private static final HandlerThread sWorkerThread = new HandlerThread(BACKGROUND_THREAD_NAME);
+    private static final Handler sBackgroundHandler;
+
+    static {
+        sWorkerThread.start();
+        sBackgroundHandler = new Handler(sWorkerThread.getLooper());
+    }
 
     /**
      * Map to keep track of currently inserted SIMs. If the SIM hasn't been connected to the service
@@ -89,7 +100,7 @@ public class VvmSimStateTracker extends BroadcastReceiver {
                 return;
             }
             telephonyManager.registerTelephonyCallback(TelephonyManager.INCLUDE_LOCATION_DATA_NONE,
-                    new HandlerExecutor(new Handler(Looper.getMainLooper())), this);
+                    new HandlerExecutor(sBackgroundHandler), this);
         }
 
         public void unlisten() {
@@ -113,7 +124,24 @@ public class VvmSimStateTracker extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
+        if (Flags.vvmAsyncSimStateHandling()) {
+            // move all work to a background thread immediately,
+            // freeing up the main thread and preventing ANRs.
+            final PendingResult pendingResult = goAsync();
+            sBackgroundHandler.post(() -> {
+                try {
+                    handleIntent(context, intent);
+                } finally {
+                    pendingResult.finish();
+                }
+            });
+        } else {
+            // handling work on the main thread is causing ANRs
+            handleIntent(context, intent);
+        }
+    }
 
+    private void handleIntent(Context context, Intent intent) {
         final String action = intent.getAction();
         if (action == null) {
             VvmLog.w(TAG, "onReceive: Null action for intent.");
@@ -128,10 +156,9 @@ public class VvmSimStateTracker extends BroadcastReceiver {
             case TelephonyIntents.ACTION_SIM_STATE_CHANGED:
                 if (IccCardConstants.INTENT_VALUE_ICC_ABSENT.equals(
                         intent.getStringExtra(IccCardConstants.INTENT_KEY_ICC_STATE))) {
-                    // checkRemovedSim will scan all known accounts with isPhoneAccountActive() to find
-                    // which SIM is removed.
-                    // ACTION_SIM_STATE_CHANGED only provides subId which cannot be converted to a
-                    // PhoneAccountHandle when the SIM is absent.
+                    // checkRemovedSim will scan all known accounts with isPhoneAccountActive() to
+                    // find which SIM is removed. ACTION_SIM_STATE_CHANGED only provides subId
+                    // which cannot be converted to a PhoneAccountHandle when the SIM is absent.
                     VvmLog.i(TAG, "onReceive: ACTION_SIM_STATE_CHANGED");
                     checkRemovedSim(context);
                 }
@@ -143,6 +170,13 @@ public class VvmSimStateTracker extends BroadcastReceiver {
                 if (!SubscriptionManager.isValidSubscriptionId(subId)) {
                     VvmLog.i(TAG, "onReceive: Received carrier config for invalid sub id.");
                     checkRemovedSim(context);
+                    return;
+                }
+
+                // Ignore bootstrap SIM so VvmService is not notified
+                if (isBootstrapSubscription(context, subId)) {
+                    VvmLog.i(TAG, "onReceive: carrier config changed. Ignore bootstrap SIM"
+                                    + " with subId=" + subId);
                     return;
                 }
 
@@ -258,5 +292,20 @@ public class VvmSimStateTracker extends BroadcastReceiver {
             PhoneAccountHandle phoneAccountHandle) {
         return context.getSystemService(TelephonyManager.class)
                 .createForPhoneAccountHandle(phoneAccountHandle);
+    }
+
+    private boolean isBootstrapSubscription(Context context, int subId) {
+        SubscriptionManager subscriptionManager
+                = context.getSystemService(SubscriptionManager.class);
+        if (subscriptionManager != null) {
+            SubscriptionInfo subInfo = subscriptionManager.getActiveSubscriptionInfo(subId);
+            if (subInfo != null && subInfo.getProfileClass()
+                                == SubscriptionManager.PROFILE_CLASS_PROVISIONING) {
+                VvmLog.i(TAG, "isBootstrapSubscription: Found bootstrap subscription subId="
+                        + subId);
+                    return true;
+            }
+        }
+        return false;
     }
 }

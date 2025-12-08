@@ -16,8 +16,10 @@
 
 package com.android.phone;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
@@ -42,12 +44,15 @@ import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.UserHandle;
-import android.permission.flags.Flags;
+import android.platform.test.annotations.EnableFlags;
 import android.platform.test.flag.junit.SetFlagsRule;
 import android.preference.PreferenceManager;
 import android.telephony.RadioAccessFamily;
 import android.telephony.Rlog;
 import android.telephony.TelephonyManager;
+import android.telephony.UiccPortInfo;
+import android.telephony.UiccSlotInfo;
+import android.telephony.UiccSlotMapping;
 import android.testing.AndroidTestingRunner;
 import android.testing.TestableLooper;
 
@@ -59,8 +64,12 @@ import com.android.internal.telephony.IIntegerConsumer;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.RILConstants;
 import com.android.internal.telephony.flags.FeatureFlags;
+import com.android.internal.telephony.flags.Flags;
 import com.android.internal.telephony.satellite.SatelliteController;
 import com.android.internal.telephony.subscription.SubscriptionManagerService;
+import com.android.internal.telephony.uicc.IccCardStatus;
+import com.android.internal.telephony.uicc.UiccController;
+import com.android.internal.telephony.uicc.UiccSlot;
 import com.android.phone.satellite.accesscontrol.SatelliteAccessController;
 
 import libcore.junit.util.compat.CoreCompatChangeRule.EnableCompatChanges;
@@ -75,6 +84,7 @@ import org.mockito.Mockito;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
@@ -152,6 +162,11 @@ public class PhoneInterfaceManagerTest extends TelephonyTestBase {
         doReturn(new String[]{sDebugPackageName}).when(mPackageManager).getPackagesForUid(anyInt());
 
         mPhoneInterfaceManager.setAppOpsManager(mAppOps);
+        when(mPhoneGlobals.getSystemServiceName(AppOpsManager.class)).thenReturn(
+                Context.APP_OPS_SERVICE);
+        when(mPhoneGlobals.getSystemService(AppOpsManager.class)).thenReturn(mAppOps);
+        when(mPhoneGlobals.getSystemService(Context.APP_OPS_SERVICE)).thenReturn(mAppOps);
+        doNothing().when(mAppOps).checkPackage(anyInt(), anyString());
     }
 
     @Test
@@ -460,7 +475,8 @@ public class PhoneInterfaceManagerTest extends TelephonyTestBase {
 
     @Test
     public void notifyEnableDataWithAppOps_enableByUser_doNoteOp() {
-        mSetFlagsRule.enableFlags(Flags.FLAG_OP_ENABLE_MOBILE_DATA_BY_USER);
+        mSetFlagsRule.enableFlags(
+                android.permission.flags.Flags.FLAG_OP_ENABLE_MOBILE_DATA_BY_USER);
         String packageName = "INVALID_PACKAGE";
         mPhoneInterfaceManager.setDataEnabledForReason(1,
                 TelephonyManager.DATA_ENABLED_REASON_USER, true, packageName);
@@ -470,7 +486,8 @@ public class PhoneInterfaceManagerTest extends TelephonyTestBase {
 
     @Test
     public void notifyEnableDataWithAppOps_enableByCarrier_doNotNoteOp() {
-        mSetFlagsRule.enableFlags(Flags.FLAG_OP_ENABLE_MOBILE_DATA_BY_USER);
+        mSetFlagsRule.enableFlags(
+                android.permission.flags.Flags.FLAG_OP_ENABLE_MOBILE_DATA_BY_USER);
         String packageName = "INVALID_PACKAGE";
         verify(mAppOps, never()).noteOpNoThrow(eq(AppOpsManager.OPSTR_ENABLE_MOBILE_DATA_BY_USER),
                 anyInt(), eq(packageName), isNull(), isNull());
@@ -478,7 +495,8 @@ public class PhoneInterfaceManagerTest extends TelephonyTestBase {
 
     @Test
     public void notifyEnableDataWithAppOps_disableByUser_doNotNoteOp() {
-        mSetFlagsRule.enableFlags(Flags.FLAG_OP_ENABLE_MOBILE_DATA_BY_USER);
+        mSetFlagsRule.enableFlags(
+                android.permission.flags.Flags.FLAG_OP_ENABLE_MOBILE_DATA_BY_USER);
         String packageName = "INVALID_PACKAGE";
         String error = "";
         try {
@@ -494,7 +512,8 @@ public class PhoneInterfaceManagerTest extends TelephonyTestBase {
 
     @Test
     public void notifyEnableDataWithAppOps_noPackageNameAndEnableByUser_doNotnoteOp() {
-        mSetFlagsRule.enableFlags(Flags.FLAG_OP_ENABLE_MOBILE_DATA_BY_USER);
+        mSetFlagsRule.enableFlags(
+                android.permission.flags.Flags.FLAG_OP_ENABLE_MOBILE_DATA_BY_USER);
         String error = "";
         try {
             mPhoneInterfaceManager.setDataEnabledForReason(1,
@@ -561,7 +580,6 @@ public class PhoneInterfaceManagerTest extends TelephonyTestBase {
 
     @Test
     public void testGetSatelliteDataOptimizedApps() throws Exception {
-        doReturn(true).when(mFeatureFlags).carrierRoamingNbIotNtn();
         mPhoneInterfaceManager.setFeatureFlags(mFeatureFlags);
         loge("FeatureFlagApi is set to return true");
 
@@ -579,4 +597,145 @@ public class PhoneInterfaceManagerTest extends TelephonyTestBase {
         assertFalse(containsCtsApp);
     }
 
+    @Test
+    public void testGetSlotsMapping() throws Exception {
+        doNothing().when(mPhoneInterfaceManager).enforceReadPrivilegedPermission(anyString());
+        doReturn(true).when(mPackageManager).hasSystemFeature(anyString());
+
+        // UiccPort info
+        UiccPortInfo portInfo = new UiccPortInfo(
+                UiccPortInfo.ICCID_REDACTED,
+                /* portIndex= */ 0,
+                /* logicalSlotIndex= */ 0,
+                /* isActive= */ true);
+
+        // eUICC slot info
+        UiccSlotInfo[] infos = new UiccSlotInfo[] {new UiccSlotInfo(
+                /* isEuicc= */ true,
+                /* cardId= */ "CARD_ID",
+                UiccSlotInfo.CARD_STATE_INFO_PRESENT,
+                /* isExtendedApduSupported= */ true,
+                /* isRemovable= */ false,
+                List.of(portInfo))};
+
+        doReturn(infos).when(mPhoneInterfaceManager).getUiccSlotsInfo(anyString());
+
+        List<UiccSlotMapping> slotMappings = mPhoneInterfaceManager.getSlotsMapping(anyString());
+        assertEquals(slotMappings.size(), infos.length);
+        assertEquals(slotMappings.getFirst().getLogicalSlotIndex(), 0);
+        assertEquals(slotMappings.getFirst().getPortIndex(), 0);
+        assertEquals(slotMappings.getFirst().getPhysicalSlotIndex(), 0);
+    }
+
+    @Test
+    public void testGetUiccSlotsInfo() throws Exception {
+        doNothing().when(mPhoneInterfaceManager).enforceReadPrivilegedPermission(anyString());
+        doReturn(true).when(mPackageManager).hasSystemFeature(anyString());
+
+        UiccController uiccController = Mockito.mock(UiccController.class);
+        replaceInstance(UiccController.class, "mInstance", null, uiccController);
+        UiccSlot slot = Mockito.mock(UiccSlot.class);
+
+        doReturn(new UiccSlot[] {slot}).when(uiccController).getUiccSlots();
+
+        doReturn(true).when(slot).isActive();
+        doReturn(IccCardStatus.CardState.CARDSTATE_PRESENT).when(slot).getCardState();
+        doReturn("3F979580BFFE8210428031A073BE211797").when(slot).getEid();
+        doReturn(null).when(slot).getUiccCard();
+        doReturn(new int[] {0}).when(slot).getPortList();
+        doReturn(0).when(slot).getPhoneIdFromPortIndex(anyInt());
+        doReturn(true).when(slot).isPortActive(anyInt());
+        doReturn(true).when(slot).isExtendedApduSupported();
+        doReturn(true).when(slot).isEuicc();
+
+        UiccSlotInfo[] infos = mPhoneInterfaceManager.getUiccSlotsInfo(anyString());
+
+        assertEquals(1, infos.length);
+        assertEquals("3F979580BFFE8210428031A073BE211797", infos[0].getCardId());
+
+        // only one port is configured, so size should be 1
+        Collection<UiccPortInfo> ports = infos[0].getPorts();
+        assertEquals(1, ports.size());
+        UiccPortInfo portInfo = null;
+        if (ports.stream().findFirst().isPresent()) {
+            portInfo = ports.stream().findFirst().get();
+        }
+        assertNotNull(portInfo);
+        assertTrue(portInfo.isActive());
+        assertEquals(0, portInfo.getPortIndex());
+        assertEquals(0, portInfo.getLogicalSlotIndex());
+        assertTrue(infos[0].getIsEuicc());
+    }
+
+    @Test
+    @EnableFlags(Flags.FLAG_SUPPORT_SLOT_SWITCHING_2PSIM_1ESIM_CONFIG)
+    public void testGetSlotsMapping_enableFlag() throws Exception {
+        doNothing().when(mPhoneInterfaceManager).enforceReadPrivilegedPermission(anyString());
+        doReturn(true).when(mPackageManager).hasSystemFeature(anyString());
+        doReturn(true).when(mFeatureFlags).supportSlotSwitching2psim1esimConfig();
+        // UiccPort info
+        UiccPortInfo portInfo = new UiccPortInfo(
+                UiccPortInfo.ICCID_REDACTED,
+                /* portIndex= */ 0,
+                /* logicalSlotIndex= */ 0,
+                /* isActive= */ true);
+
+        // eUICC slot info
+        UiccSlotInfo[] infos = new UiccSlotInfo[] {new UiccSlotInfo(
+                /* isEuicc= */ true,
+                /* cardId= */ "CARD_ID",
+                UiccSlotInfo.CARD_STATE_INFO_PRESENT,
+                /* isExtendedApduSupported= */ true,
+                /* isRemovable= */ false,
+                List.of(portInfo),
+                TelephonyManager.SIM_TYPE_EMBEDDED,
+                new int[] {TelephonyManager.SIM_TYPE_EMBEDDED})};
+
+        doReturn(infos).when(mPhoneInterfaceManager).getUiccSlotsInfo(anyString());
+
+        List<UiccSlotMapping> slotMappings = mPhoneInterfaceManager.getSlotsMapping(anyString());
+        assertEquals(slotMappings.size(), infos.length);
+        assertEquals(0, slotMappings.getFirst().getLogicalSlotIndex());
+        assertEquals(0, slotMappings.getFirst().getPortIndex());
+        assertEquals(0, slotMappings.getFirst().getPhysicalSlotIndex());
+        assertEquals(TelephonyManager.SIM_TYPE_EMBEDDED, slotMappings.getFirst().getSimType());
+    }
+
+    @Test
+    @EnableFlags(Flags.FLAG_SUPPORT_SLOT_SWITCHING_2PSIM_1ESIM_CONFIG)
+    public void testGetUiccSlotsInfo_enableFlag() throws Exception {
+        doNothing().when(mPhoneInterfaceManager).enforceReadPrivilegedPermission(anyString());
+        doReturn(true).when(mPackageManager).hasSystemFeature(anyString());
+        doReturn(true).when(mFeatureFlags).supportSlotSwitching2psim1esimConfig();
+
+        UiccController uiccController = Mockito.mock(UiccController.class);
+        replaceInstance(UiccController.class, "mInstance", null, uiccController);
+        UiccSlot slot = Mockito.mock(UiccSlot.class);
+
+        doReturn(new UiccSlot[] {slot}).when(uiccController).getUiccSlots();
+
+        doReturn(true).when(slot).isActive();
+        doReturn(IccCardStatus.CardState.CARDSTATE_PRESENT).when(slot).getCardState();
+        doReturn("3F979580BFFE8210428031A073BE211797").when(slot).getEid();
+        doReturn(null).when(slot).getUiccCard();
+        doReturn(new int[] {0}).when(slot).getPortList();
+        doReturn(TelephonyManager.SIM_TYPE_EMBEDDED).when(slot).getSimType();
+        doReturn(new int[] {TelephonyManager.SIM_TYPE_EMBEDDED}).when(slot).getSupportedSimTypes();
+        doReturn(0).when(slot).getPhoneIdFromPortIndex(anyInt());
+        doReturn(true).when(slot).isPortActive(anyInt());
+        doReturn(true).when(slot).isExtendedApduSupported();
+        doReturn(true).when(slot).isEuicc();
+
+
+        UiccSlotInfo[] infos = mPhoneInterfaceManager.getUiccSlotsInfo(anyString());
+
+        assertEquals(1, infos.length);
+        assertEquals("3F979580BFFE8210428031A073BE211797", infos[0].getCardId());
+        assertEquals(TelephonyManager.SIM_TYPE_EMBEDDED, infos[0].getSimType());
+        int[] expectedSimTypes = {TelephonyManager.SIM_TYPE_EMBEDDED};
+        int[] actualSimTypes = infos[0].getSupportedSimTypes();
+        assertNotNull(actualSimTypes);
+        assertEquals(1, actualSimTypes.length);
+        assertArrayEquals(expectedSimTypes, actualSimTypes);
+    }
 }

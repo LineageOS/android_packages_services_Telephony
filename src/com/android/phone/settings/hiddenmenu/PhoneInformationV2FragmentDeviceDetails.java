@@ -22,10 +22,8 @@ import android.content.pm.ComponentInfo;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.SystemProperties;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -135,7 +133,7 @@ public class PhoneInformationV2FragmentDeviceDetails extends Fragment {
         log("onCreate: mSystemUser=" + mSystemUser);
 
         if (mSystemUser) {
-            mPhone = getPhone(SubscriptionManager.getDefaultSubscriptionId());
+            mPhone = PhoneInformationUtil.getPhone(SubscriptionManager.getDefaultSubscriptionId());
         }
         mSubId = SubscriptionManager.getDefaultSubscriptionId();
         if (mPhone != null) {
@@ -153,7 +151,7 @@ public class PhoneInformationV2FragmentDeviceDetails extends Fragment {
         mTelephonyManager =
                 mContext.getSystemService(TelephonyManager.class).createForSubscriptionId(mSubId);
 
-        sPhoneIndexLabels = getPhoneIndexLabels(mTelephonyManager);
+        sPhoneIndexLabels = PhoneInformationUtil.getPhoneIndexLabels(mTelephonyManager);
 
         mPhoneButton0 = view.findViewById(R.id.phone_button_0);
         mPhoneTitle0 = view.findViewById(R.id.phone_button_0_title);
@@ -161,8 +159,8 @@ public class PhoneInformationV2FragmentDeviceDetails extends Fragment {
         mPhoneButton1 = view.findViewById(R.id.phone_button_1);
         mPhoneTitle1 = view.findViewById(R.id.phone_button_1_title);
 
-        mPhoneTitle0.setText(sPhoneIndexLabels[0]);
-        mPhoneTitle1.setText(sPhoneIndexLabels[1]);
+        PhoneInformationUtil.configurePhoneSelectionUi(mPhoneButton0, mPhoneButton1, mPhoneTitle0,
+                mPhoneTitle1, sPhoneIndexLabels);
 
         mDeviceId = (TextView) view.findViewById(R.id.imei);
         mLine1Number = (TextView) view.findViewById(R.id.number);
@@ -176,18 +174,19 @@ public class PhoneInformationV2FragmentDeviceDetails extends Fragment {
             mRemovableEsimSwitch.setOnCheckedChangeListener(mRemovableEsimChangeListener);
         }
         mDsdsSwitch = (Switch) view.findViewById(R.id.dsds_switch);
-        if (isDsdsSupported() && !dsdsModeOnly()) {
+        if (PhoneInformationUtil.isDsdsSupported() && !PhoneInformationUtil.dsdsModeOnly()) {
             mDsdsSwitch.setVisibility(View.VISIBLE);
-            mDsdsSwitch.setOnClickListener(v -> {
-                if (mTelephonyManager.doesSwitchMultiSimConfigTriggerReboot()) {
-                    // Undo the click action until user clicks the confirm dialog.
-                    mDsdsSwitch.toggle();
-                    showDsdsChangeDialog();
-                } else {
-                    performDsdsSwitch();
-                }
-            });
-            mDsdsSwitch.setChecked(isDsdsEnabled());
+            mDsdsSwitch.setOnClickListener(
+                    v -> {
+                        if (mTelephonyManager.doesSwitchMultiSimConfigTriggerReboot()) {
+                            // Undo the click action until user clicks the confirm dialog.
+                            mDsdsSwitch.toggle();
+                            showDsdsChangeDialog();
+                        } else {
+                            performDsdsSwitch();
+                        }
+                    });
+            mDsdsSwitch.setChecked(PhoneInformationUtil.isDsdsEnabled());
         } else {
             mDsdsSwitch.setVisibility(View.GONE);
         }
@@ -234,15 +233,6 @@ public class PhoneInformationV2FragmentDeviceDetails extends Fragment {
         mPhoneButton1.setOnClickListener(selectionListener);
     }
 
-    private static String[] getPhoneIndexLabels(TelephonyManager tm) {
-        int phones = tm.getActiveModemCount();
-        String[] labels = new String[phones];
-        for (int i = 0; i < phones; i++) {
-            labels[i] = "Phone " + i;
-        }
-        return labels;
-    }
-
     private void updatePhoneIndex() {
         log("updatePhoneIndex");
         // update the subId
@@ -271,46 +261,21 @@ public class PhoneInformationV2FragmentDeviceDetails extends Fragment {
                 ContextCompat.getColor(mContext, android.R.color.darker_gray));
     }
 
-    private Phone getPhone(int subId) {
-        log("getPhone subId = " + subId);
-        Phone phone = PhoneFactory.getPhone(SubscriptionManager.getPhoneId(subId));
-        if (phone == null) {
-            log("return the default phone");
-            return PhoneFactory.getDefaultPhone();
-        }
-
-        return phone;
-    }
-
     private void showDsdsChangeDialog() {
-        final AlertDialog confirmDialog = new AlertDialog.Builder(mContext)
-                .setTitle(R.string.dsds_dialog_title)
-                .setMessage(R.string.dsds_dialog_message)
-                .setPositiveButton(R.string.dsds_dialog_confirm, mOnDsdsDialogConfirmedListener)
-                .setNegativeButton(R.string.dsds_dialog_cancel, mOnDsdsDialogConfirmedListener)
-                .create();
+        final AlertDialog confirmDialog =
+                new AlertDialog.Builder(mContext)
+                        .setTitle(R.string.dsds_dialog_title)
+                        .setMessage(R.string.dsds_dialog_message)
+                        .setPositiveButton(
+                                R.string.dsds_dialog_confirm, mOnDsdsDialogConfirmedListener)
+                        .setNegativeButton(
+                                R.string.dsds_dialog_cancel, mOnDsdsDialogConfirmedListener)
+                        .create();
         confirmDialog.show();
-    }
-
-    private static boolean isDsdsSupported() {
-        return (TelephonyManager.getDefault().isMultiSimSupported()
-                == TelephonyManager.MULTISIM_ALLOWED);
-    }
-
-    private static boolean isDsdsEnabled() {
-        return TelephonyManager.getDefault().getPhoneCount() > 1;
     }
 
     private void performDsdsSwitch() {
         mTelephonyManager.switchMultiSimConfig(mDsdsSwitch.isChecked() ? 2 : 1);
-    }
-
-    /**
-     * @return {@code True} if the device is only supported dsds mode.
-     */
-    private boolean dsdsModeOnly() {
-        String dsdsMode = SystemProperties.get(DSDS_MODE_PROPERTY);
-        return !TextUtils.isEmpty(dsdsMode) && Integer.parseInt(dsdsMode) == ALWAYS_ON_DSDS_MODE;
     }
 
     DialogInterface.OnClickListener mOnDsdsDialogConfirmedListener =

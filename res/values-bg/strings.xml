@@ -182,7 +182,7 @@
     <string name="register_on_network" msgid="4194770527833960423">"Извършва се регистрация на <xliff:g id="NETWORK">%s</xliff:g>…"</string>
     <string name="not_allowed" msgid="8541221928746104798">"SIM картата ви не позволява връзка с тази мрежа."</string>
     <string name="connect_later" msgid="1950138106010005425">"В момента не може да се осъществи връзка с тази мрежа. Опитайте отново по-късно."</string>
-    <string name="registration_done" msgid="5337407023566953292">"Регистрация в мрежа."</string>
+    <string name="registration_done" msgid="5337407023566953292">"Регистрирано в мрежа."</string>
     <string name="already_auto" msgid="8607068290733079336">"Вече е избрано автоматично"</string>
     <string name="select_automatically" msgid="779750291257872651">"Автоматично избиране на мрежа"</string>
     <string name="manual_mode_disallowed_summary" msgid="3970048592179890197">"Не е налице при връзка към %1$s"</string>
@@ -191,7 +191,7 @@
     <string name="preferred_network_mode_title" msgid="5253395265169539830">"Предпочитан тип мрежа"</string>
     <string name="preferred_network_mode_summary" msgid="3787989000044330064">"Промяна на операционния режим на мрежата"</string>
     <string name="preferred_network_mode_dialogtitle" msgid="2781447433514459696">"Предпочитан тип мрежа"</string>
-    <string name="forbidden_network" msgid="5081729819561333023">"(забранена)"</string>
+    <string name="forbidden_network" msgid="5081729819561333023">"(забранено)"</string>
     <string name="choose_network_title" msgid="5335832663422653082">"Избиране на мрежа"</string>
     <string name="network_disconnected" msgid="8844141106841160825">"Връзката е прекратена"</string>
     <string name="network_connected" msgid="2760235679963580224">"Има връзка"</string>
@@ -461,6 +461,8 @@
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"Активиране на режим „Автоматичен нов опит“"</string>
     <string name="vibrating_for_outgoing_call_accepted_title" msgid="647945514737734657">"Вибрирането за изходящо обаждане е прието"</string>
     <string name="vibrating_for_outgoing_call_accepted_summary" msgid="906112327196063688">"Активиране на режима на вибриране за приет изходящ разговор"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_title" msgid="856074537423753072">"Сигнали при установяване на връзка"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_summary" msgid="2442128058517260047">"Възпроизвежда се сигнал за прието изходящо обаждане"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"Промяната на режима на TTY не е разрешена по време на видеообаждане"</string>
     <string name="menu_add" msgid="5616487894975773141">"Добавяне на контакт"</string>
     <string name="menu_edit" msgid="3593856941552460706">"Редактиране на контакт"</string>
@@ -850,6 +852,14 @@
     <string name="simulate_out_of_service_label" msgid="3563376136603403714">"Симулиране на липса на услуга"</string>
     <string name="enforce_satellite_channel_string" msgid="295306734591329892">"Принудително използване на сателитен LTE канал (само в компилацията за отстраняване на грешки)"</string>
     <string name="enforce_satellite_channel_label" msgid="8212349350110213468">"Принудително използване на сателитен LTE канал"</string>
+    <string name="starlink_satellite_band_string" msgid="2287502104005508384">"Starlink_US"</string>
+    <string name="ast_satellite_band_string" msgid="3238737906080758289">"AST_US"</string>
+    <string name="manual_override_satellite_band_string" msgid="801049975307124461">"Ръчно отменяне"</string>
+    <string name="satellite_manual_band_label" msgid="4135706517193927388">"Изберете честота:"</string>
+    <string name="satellite_channel_label_text" msgid="1999162483250790313">"Въведете канала:"</string>
+    <string name="satellite_channel_hint_text" msgid="4342575738602358270">"Въведете сателитния канал тук"</string>
+    <string name="force_camp_satellite_button_string" msgid="3719311367839668322">"Свързване"</string>
+    <string name="force_camp_satellite_button_connected_string" msgid="2457912207054938894">"Установена е връзка"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"Симулиран сателитен режим от оператора (само в компилацията за отстраняване на грешки)"</string>
     <string name="mock_carrier_roaming_satellite_label" msgid="2052656038544917979">"Симулация"</string>
     <string name="choose_satellite_data_mode_label" msgid="7403013160079828226">"Режим на симулирани сателитни данни"</string>
@@ -868,8 +878,8 @@
     <string name="radioInfo_menu_viewSDN" msgid="2613431584522392842">"Преглед на номера за набиране на услуги"</string>
     <string name="radioInfo_menu_getIMS" msgid="1950869267853198232">"Състояние на услугата IMS"</string>
     <string name="radio_info_ims_reg_status_title" msgid="6875885401313992007">"Състояние на услугата IMS"</string>
-    <string name="radio_info_ims_reg_status_registered" msgid="7095182114078864326">"Регистриран"</string>
-    <string name="radio_info_ims_reg_status_not_registered" msgid="8045821447288876085">"Не е регистриран"</string>
+    <string name="radio_info_ims_reg_status_registered" msgid="7095182114078864326">"Регистрирано"</string>
+    <string name="radio_info_ims_reg_status_not_registered" msgid="8045821447288876085">"Не е регистрирано"</string>
     <string name="radio_info_ims_feature_status_available" msgid="6493200914756969292">"Налице"</string>
     <string name="radio_info_ims_feature_status_unavailable" msgid="8930391136839759778">"Не е налице"</string>
     <string name="radio_info_ims_reg_status" msgid="25582845222446390">"Регистрация за услугата IMS: <xliff:g id="STATUS">%1$s</xliff:g>\nLTE телефония: <xliff:g id="AVAILABILITY_0">%2$s</xliff:g>\nWi-Fi телефония: <xliff:g id="AVAILABILITY_1">%3$s</xliff:g>\nВидеообаждания: <xliff:g id="AVAILABILITY_2">%4$s</xliff:g>\nИнтерфейс на UT: <xliff:g id="AVAILABILITY_3">%5$s</xliff:g>"</string>

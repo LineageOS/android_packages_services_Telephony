@@ -461,7 +461,9 @@
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"Включить режим автодозвона"</string>
     <string name="vibrating_for_outgoing_call_accepted_title" msgid="647945514737734657">"Вибрация в момент приема исходящего вызова"</string>
     <string name="vibrating_for_outgoing_call_accepted_summary" msgid="906112327196063688">"Включить режим вибрации, когда другой абонент принимает исходящий вызов"</string>
-    <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"Режим телетайтпа нельзя изменить во время видеозвонка"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_title" msgid="856074537423753072">"Сигналы при подключении к звонку"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_summary" msgid="2442128058517260047">"Воспроизведение сигнала, когда другой абонент принимает исходящий вызов"</string>
+    <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"Режим телетайпа нельзя изменить во время видеозвонка"</string>
     <string name="menu_add" msgid="5616487894975773141">"Добавить контакт"</string>
     <string name="menu_edit" msgid="3593856941552460706">"Изменить контакт"</string>
     <string name="menu_delete" msgid="6326861853830546488">"Удалить контакт"</string>
@@ -850,6 +852,14 @@
     <string name="simulate_out_of_service_label" msgid="3563376136603403714">"Моделирование нахождения вне зоны обслуживания"</string>
     <string name="enforce_satellite_channel_string" msgid="295306734591329892">"Принудительно использовать спутниковый канал LTE (только для отладочной сборки)"</string>
     <string name="enforce_satellite_channel_label" msgid="8212349350110213468">"Принудительно использовать спутниковый канал LTE"</string>
+    <string name="starlink_satellite_band_string" msgid="2287502104005508384">"Starlink_US"</string>
+    <string name="ast_satellite_band_string" msgid="3238737906080758289">"AST_US"</string>
+    <string name="manual_override_satellite_band_string" msgid="801049975307124461">"Переопределение вручную"</string>
+    <string name="satellite_manual_band_label" msgid="4135706517193927388">"Выберите диапазон:"</string>
+    <string name="satellite_channel_label_text" msgid="1999162483250790313">"Укажите канал:"</string>
+    <string name="satellite_channel_hint_text" msgid="4342575738602358270">"Укажите здесь спутниковый канал"</string>
+    <string name="force_camp_satellite_button_string" msgid="3719311367839668322">"Подключиться"</string>
+    <string name="force_camp_satellite_button_connected_string" msgid="2457912207054938894">"Подключено"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"Режим спутниковой связи симуляции оператора (только отладочная сборка)"</string>
     <string name="mock_carrier_roaming_satellite_label" msgid="2052656038544917979">"Фиктивные данные"</string>
     <string name="choose_satellite_data_mode_label" msgid="7403013160079828226">"Режим фиктивных спутниковых данных"</string>

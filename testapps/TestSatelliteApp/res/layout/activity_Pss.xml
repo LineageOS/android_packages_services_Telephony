@@ -78,6 +78,29 @@
             android:padding="16dp"
             android:text="@string/requestSatelliteEnable"/>
 
+        <Button
+            android:id="@+id/requestIsSatelliteEnabled"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="@string/requestIsSatelliteEnabled"/>
+
+
+        <Button
+            android:id="@+id/requestSatelliteModemState"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="@string/requestSatelliteModemState"/>
+
+
+        <Button
+            android:id="@+id/requestSignalStrength"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="@string/requestSignalStrength"/>
+
         <TextView
             android:id="@+id/logView"
             android:layout_width="match_parent"

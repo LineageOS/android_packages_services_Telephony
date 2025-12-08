@@ -26,7 +26,6 @@ import com.android.internal.telephony.CallForwardInfo;
 import com.android.internal.telephony.CommandException;
 import com.android.internal.telephony.CommandsInterface;
 import com.android.internal.telephony.Phone;
-import com.android.internal.telephony.flags.Flags;
 
 import java.util.HashMap;
 import java.util.Locale;
@@ -158,14 +157,10 @@ public class CallForwardEditPreference extends EditPhoneNumberPreference {
                         .getCarrierConfigForSubId(mPhone.getSubId());
                 if (carrierConfig.getBoolean(
                         CarrierConfigManager.KEY_SUPPORT_NO_REPLY_TIMER_FOR_CFNRY_BOOL, true)) {
-                    if (Flags.setNoReplyTimerForCfnry()) {
-                        // Get timer value from carrier config
-                        time = carrierConfig.getInt(
-                                CarrierConfigManager.KEY_NO_REPLY_TIMER_FOR_CFNRY_SEC_INT,
-                                DEFAULT_NO_REPLY_TIMER_FOR_CFNRY);
-                    } else {
-                        time = DEFAULT_NO_REPLY_TIMER_FOR_CFNRY;
-                    }
+                    // Get timer value from carrier config
+                    time = carrierConfig.getInt(
+                            CarrierConfigManager.KEY_NO_REPLY_TIMER_FOR_CFNRY_SEC_INT,
+                            DEFAULT_NO_REPLY_TIMER_FOR_CFNRY);
                 }
             }
             final String number = getPhoneNumber();

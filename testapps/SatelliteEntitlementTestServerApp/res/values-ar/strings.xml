@@ -26,8 +26,8 @@
     <string name="current_plmn" msgid="6531059723207151310">"‏شبكة Plmn الحالية:"</string>
     <string name="refresh_button" msgid="4833927124437250565">"إعادة تحميل"</string>
   <string-array name="entitlement_status_for_satellite">
-    <item msgid="2022601967050498274">"مفعّلة"</item>
-    <item msgid="359611466767264179">"غير مفعّلة"</item>
+    <item msgid="2022601967050498274">"الخيار مفعّل"</item>
+    <item msgid="359611466767264179">"غير مفعّل"</item>
     <item msgid="272686018752211739">"غير متوافقة"</item>
     <item msgid="2230066359974626080">"جارٍ توفير المتطلبات اللازمة"</item>
   </string-array>

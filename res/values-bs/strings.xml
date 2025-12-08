@@ -307,7 +307,7 @@
     <string name="carrier_settings_euicc_summary" msgid="2027941166597330117">"<xliff:g id="CARRIER_NAME">%1$s</xliff:g> — <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="mobile_data_settings_title" msgid="7228249980933944101">"Prenos podataka na mobilnoj mreži"</string>
     <string name="mobile_data_settings_summary" msgid="5012570152029118471">"Pristup prenosu podataka mobilnom mrežom"</string>
-    <string name="data_usage_disable_mobile" msgid="5669109209055988308">"Isključiti prijenos podataka na mobilnoj mreži?"</string>
+    <string name="data_usage_disable_mobile" msgid="5669109209055988308">"Isključiti prenos podataka na mobilnoj mreži?"</string>
     <string name="sim_selection_required_pref" msgid="6985901872978341314">"Potreban izbor"</string>
     <string name="sim_change_data_title" msgid="9142726786345906606">"Promijeniti SIM za prenos podataka?"</string>
     <string name="sim_change_data_message" msgid="3567358694255933280">"Koristiti SIM karticu <xliff:g id="NEW_SIM">%1$s</xliff:g> umjesto SIM kartice <xliff:g id="OLD_SIM">%2$s</xliff:g> za prenos podataka na mobilnoj mreži?"</string>
@@ -461,6 +461,8 @@
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"Omogućite način rada za automatski ponovni pokušaj"</string>
     <string name="vibrating_for_outgoing_call_accepted_title" msgid="647945514737734657">"Vibracija po prihvatanju odlaznog poziva"</string>
     <string name="vibrating_for_outgoing_call_accepted_summary" msgid="906112327196063688">"Omogućite način rada za vibraciju po prihvatanju odlaznog poziva"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_title" msgid="856074537423753072">"Tonovi za uspostavljeni poziv"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_summary" msgid="2442128058517260047">"Reprodukcija tona za prihvaćeni odlazni poziv"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"Promjena načina rada TTY nije dozvoljena tokom video poziva"</string>
     <string name="menu_add" msgid="5616487894975773141">"Dodaj kontakt"</string>
     <string name="menu_edit" msgid="3593856941552460706">"Uredi kontakt"</string>
@@ -705,7 +707,7 @@
     <string name="change_pin_system_error" msgid="7772788809875146873">"Nije moguće postaviti PIN"</string>
     <string name="mobile_data_status_roaming_turned_off_subtext" msgid="6840673347416227054">"Roming podataka je isključen"</string>
     <string name="mobile_data_status_roaming_turned_on_subtext" msgid="5615757897768777865">"Roming podataka je uključen"</string>
-    <string name="mobile_data_status_roaming_without_plan_subtext" msgid="6536671968072284677">"Trenutno u romingu, potreban je plan za podatke"</string>
+    <string name="mobile_data_status_roaming_without_plan_subtext" msgid="6536671968072284677">"Trenutno u romingu, potreban je paket prenosa podataka"</string>
     <string name="mobile_data_status_roaming_with_plan_subtext" msgid="2576177169108123095">"Trenutno u romingu, plan za podatke je aktivan"</string>
     <string name="mobile_data_status_no_plan_subtext" msgid="170331026419263657">"Nema preostalih mobilnih podataka"</string>
     <string name="mobile_data_activate_prepaid" msgid="4276738964416795596">"Nema preostalih mobilnih podataka"</string>
@@ -850,6 +852,14 @@
     <string name="simulate_out_of_service_label" msgid="3563376136603403714">"Simuliraj nefunkcioniranje"</string>
     <string name="enforce_satellite_channel_string" msgid="295306734591329892">"Satelitski LTE kanala za Force Camp (samo verzija za otklanjanje grešaka)"</string>
     <string name="enforce_satellite_channel_label" msgid="8212349350110213468">"Nametni satelitski LTE kanal kampa"</string>
+    <string name="starlink_satellite_band_string" msgid="2287502104005508384">"Starlink_US"</string>
+    <string name="ast_satellite_band_string" msgid="3238737906080758289">"AST_US"</string>
+    <string name="manual_override_satellite_band_string" msgid="801049975307124461">"Ručno nadjačavanje"</string>
+    <string name="satellite_manual_band_label" msgid="4135706517193927388">"Odaberite opseg:"</string>
+    <string name="satellite_channel_label_text" msgid="1999162483250790313">"Unesite kanal:"</string>
+    <string name="satellite_channel_hint_text" msgid="4342575738602358270">"Ovdje unesite satelitski kanal"</string>
+    <string name="force_camp_satellite_button_string" msgid="3719311367839668322">"Poveži"</string>
+    <string name="force_camp_satellite_button_connected_string" msgid="2457912207054938894">"Povezano"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"Lažni način rada operatera za slanje putem satelita (samo verzija za otklanjanje grešaka)"</string>
     <string name="mock_carrier_roaming_satellite_label" msgid="2052656038544917979">"Lažno"</string>
     <string name="choose_satellite_data_mode_label" msgid="7403013160079828226">"Lažni način rada za satelitske podatke"</string>

@@ -91,6 +91,7 @@ public class ImsConference extends TelephonyConferenceBase implements Holdable {
             private int mMaximumConferenceSize = 5;
             private boolean mShouldLocalDisconnectEmptyConference = false;
             private boolean mIsHoldAllowed = false;
+            private boolean mIsMultiPartyAnchorConfSupported = false;
 
             /**
              * Sets whether the maximum size of the conference is enforced.
@@ -136,13 +137,24 @@ public class ImsConference extends TelephonyConferenceBase implements Holdable {
             }
 
             /**
+             * Sets whether the multi-party anchor conference is supported.
+             * @param isMultiPartyAnchorConfSupported {@code true} if multi-party anchor
+             * conference is supported.
+             */
+            public Builder setIsMultiPartyAnchorConfSupported(
+                    boolean isMultiPartyAnchorConfSupported) {
+                mIsMultiPartyAnchorConfSupported = isMultiPartyAnchorConfSupported;
+                return this;
+            }
+
+            /**
              * Build instance of {@link CarrierConfiguration}.
              * @return carrier config instance.
              */
             public ImsConference.CarrierConfiguration build() {
                 return new ImsConference.CarrierConfiguration(mIsMaximumConferenceSizeEnforced,
                         mMaximumConferenceSize, mShouldLocalDisconnectEmptyConference,
-                        mIsHoldAllowed);
+                        mIsHoldAllowed, mIsMultiPartyAnchorConfSupported);
             }
         }
 
@@ -154,13 +166,16 @@ public class ImsConference extends TelephonyConferenceBase implements Holdable {
 
         private boolean mIsHoldAllowed;
 
+        private boolean mIsMultiPartyAnchorConfSupported;
+
         private CarrierConfiguration(boolean isMaximumConferenceSizeEnforced,
                 int maximumConferenceSize, boolean shouldLocalDisconnectEmptyConference,
-                boolean isHoldAllowed) {
+                boolean isHoldAllowed, boolean isMultiPartyAnchorConfSupported) {
             mIsMaximumConferenceSizeEnforced = isMaximumConferenceSizeEnforced;
             mMaximumConferenceSize = maximumConferenceSize;
             mShouldLocalDisconnectEmptyConference = shouldLocalDisconnectEmptyConference;
             mIsHoldAllowed = isHoldAllowed;
+            mIsMultiPartyAnchorConfSupported = isMultiPartyAnchorConfSupported;
         }
 
         /**
@@ -196,6 +211,14 @@ public class ImsConference extends TelephonyConferenceBase implements Holdable {
          */
         public boolean isHoldAllowed() {
             return mIsHoldAllowed;
+        }
+
+        /**
+         * Determines whether multi-party anchor conference is supported or not.
+         * {@code true} if multi-party anchor conferences are supported, {@code false} otherwise.
+         */
+        public boolean isMultiPartyAnchorConfSupported() {
+            return mIsMultiPartyAnchorConfSupported;
         }
     }
 
@@ -589,6 +612,8 @@ public class ImsConference extends TelephonyConferenceBase implements Holdable {
         return mParticipants;
     }
 
+    public final CarrierConfiguration getCarrierConfig() { return mCarrierConfig; }
+
     /**
      * Sets the value of the {@link #getParticipants()}.
      *
@@ -655,6 +680,30 @@ public class ImsConference extends TelephonyConferenceBase implements Holdable {
             }
         } catch (CallStateException e) {
             Log.e(this, e, "Exception thrown trying to merge call into a conference");
+        }
+    }
+
+    /**
+     * Invoked when the specified {@link android.telecom.Conference} should be merged into the
+     * conference call.
+     *
+     * @param conference The {@code Conference} to merge.
+     */
+    @Override
+    public void onMerge(@NonNull android.telecom.Conference conference) {
+        Log.i(this, "onMerge: merging two conferences together");
+        try {
+            Phone phone = mConferenceHost.getPhone();
+            if (phone != null) {
+                if (mCarrierConfig.isMultiPartyAnchorConfSupported()) {
+                    phone.conference();
+                } else {
+                    Log.wtf(this, "An attempt was made to merge two conferences "
+                            + "but this carrier does not support multi-party anchor conferences");
+                }
+            }
+        } catch (CallStateException e) {
+            Log.e(this, e, "Exception thrown trying to merge conference into a conference");
         }
     }
 
@@ -1448,7 +1497,8 @@ public class ImsConference extends TelephonyConferenceBase implements Holdable {
                 }
             }
 
-            if (mConferenceHost.getPhone().getPhoneType() == PhoneConstants.PHONE_TYPE_GSM) {
+            if (Flags.deleteCdma() || mConferenceHost.getPhone().getPhoneType()
+                    == PhoneConstants.PHONE_TYPE_GSM) {
                 GsmConnection c = new GsmConnection(originalConnection, getTelecomCallId(),
                         mConferenceHost.getCallDirection());
                 Log.i(this, "handleOriginalConnectionChange : SRVCC to GSM."

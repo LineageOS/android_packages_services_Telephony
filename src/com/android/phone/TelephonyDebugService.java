@@ -32,11 +32,17 @@ import java.io.PrintWriter;
 public class TelephonyDebugService extends Service {
     private static String TAG = "TelephonyDebugService";
     private static final boolean DBG = true;
-    private DebugService mDebugService = new DebugService();
+    private DebugService mDebugService;
 
     /** Constructor */
     public TelephonyDebugService() {
         if (DBG) Log.d(TAG, "TelephonyDebugService()");
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        mDebugService = new DebugService(this);
     }
 
     /**

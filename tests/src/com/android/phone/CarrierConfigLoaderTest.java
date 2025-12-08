@@ -143,12 +143,16 @@ public class CarrierConfigLoaderTest extends TelephonyTestBase {
         doReturn("310260").when(mTelephonyManager).getSimOperatorNumericForPhone(anyInt());
         doReturn(mPackageInfo).when(mPackageManager).getPackageInfo(
                 eq(PLATFORM_CARRIER_CONFIG_PACKAGE), eq(0) /*flags*/);
+        doReturn(mPackageInfo).when(mPackageManager).getPackageInfoAsUser(
+                eq(PLATFORM_CARRIER_CONFIG_PACKAGE), eq(0) /*flags*/, anyInt());
         doReturn(PLATFORM_CARRIER_CONFIG_PACKAGE_VERSION_CODE).when(
                 mPackageInfo).getLongVersionCode();
         when(mContext.getSystemServiceName(TelephonyRegistryManager.class)).thenReturn(
                 Context.TELEPHONY_REGISTRY_SERVICE);
         when(mContext.getSystemService(TelephonyRegistryManager.class)).thenReturn(
                 mTelephonyRegistryManager);
+        doReturn(true).when(mContext).bindServiceAsUser(
+                any(Intent.class), any(ServiceConnection.class), anyInt(), any(UserHandle.class));
 
         mCarrierConfigLoader = new CarrierConfigLoader(mContext, mTestLooper,
                 mFeatureFlags);

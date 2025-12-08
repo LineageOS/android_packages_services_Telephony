@@ -312,7 +312,7 @@
     <string name="sim_change_data_title" msgid="9142726786345906606">"Vols canviar la SIM de dades?"</string>
     <string name="sim_change_data_message" msgid="3567358694255933280">"Vols fer servir <xliff:g id="NEW_SIM">%1$s</xliff:g> en lloc de <xliff:g id="OLD_SIM">%2$s</xliff:g> per a les dades mòbils?"</string>
     <string name="wifi_calling_settings_title" msgid="5800018845662016507">"Trucades per Wi-Fi"</string>
-    <string name="video_calling_settings_title" msgid="342829454913266078">"Videotrucades amb l\'operador de telefonia mòbil"</string>
+    <string name="video_calling_settings_title" msgid="342829454913266078">"Videotrucades a través de l\'operador"</string>
     <string name="gsm_umts_options" msgid="4968446771519376808">"Opcions de GSM/UMTS"</string>
     <string name="cdma_options" msgid="3669592472226145665">"Opcions de CDMA"</string>
     <string name="throttle_data_usage" msgid="1944145350660420711">"Ús de dades"</string>
@@ -461,6 +461,8 @@
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"Activa el mode de reintent automàtic"</string>
     <string name="vibrating_for_outgoing_call_accepted_title" msgid="647945514737734657">"Vibració de trucada sortint acceptada"</string>
     <string name="vibrating_for_outgoing_call_accepted_summary" msgid="906112327196063688">"Activa el mode de vibració per a les trucades sortints acceptades"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_title" msgid="856074537423753072">"Tons de trucada connectada"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_summary" msgid="2442128058517260047">"S\'està reproduint un to quan s\'accepta una trucada sortint"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"No es pot canviar al mode de TTY durant una videotrucada"</string>
     <string name="menu_add" msgid="5616487894975773141">"Afegeix un contacte"</string>
     <string name="menu_edit" msgid="3593856941552460706">"Edita el contacte"</string>
@@ -625,7 +627,7 @@
     <string name="ota_hfa_activation_title" msgid="3300556778212729671">"S\'està activant..."</string>
     <string name="ota_hfa_activation_dialog_message" msgid="7921718445773342996">"El telèfon està activant el vostre servei de dades mòbils.\n\nAquest procés pot durar fins a 5 minuts."</string>
     <string name="ota_skip_activation_dialog_title" msgid="7666611236789203797">"Voleu ometre l\'activació?"</string>
-    <string name="ota_skip_activation_dialog_message" msgid="6691722887019708713">"Si ometeu l\'activació, no podreu fer trucades ni connectar-vos a xarxes de dades mòbils (tot i que podreu connectar-vos a xarxes Wi-fi). Fins que activeu el telèfon, se us demanarà que ho feu cada cop que l\'engegueu."</string>
+    <string name="ota_skip_activation_dialog_message" msgid="6691722887019708713">"Si omets l\'activació, no podràs fer trucades ni connectar-te a xarxes de dades mòbils (tot i que podràs connectar-te a xarxes Wi-Fi). Fins que activis el telèfon, se\'t demanarà que ho facis cada cop que l\'engeguis."</string>
     <string name="ota_skip_activation_dialog_skip_label" msgid="5908029466817825633">"Omet"</string>
     <string name="ota_activate" msgid="7939695753665438357">"Activa"</string>
     <string name="ota_title_activate_success" msgid="1272135024761004889">"El telèfon està activat."</string>
@@ -813,7 +815,7 @@
     <string name="supp_service_incoming_calls_barred" msgid="2034627421274447674">"S\'han prohibit les trucades entrants."</string>
     <string name="supp_service_outgoing_calls_barred" msgid="5205725332394087112">"S\'han prohibit les trucades sortints."</string>
     <string name="supp_service_call_forwarding_active" msgid="7910162960395132464">"La desviació de trucada està activada."</string>
-    <string name="supp_service_additional_call_forwarded" msgid="8772753260008398632">"S\'ha desviat una de les trucades."</string>
+    <string name="supp_service_additional_call_forwarded" msgid="8772753260008398632">"S\'ha desviat una altra trucada."</string>
     <string name="supp_service_additional_ect_connected" msgid="8525934162945220237">"S\'ha completat la transferència explícita de la trucada."</string>
     <string name="supp_service_additional_ect_connecting" msgid="7046240728781222753">"S\'està processant la transferència explícita de la trucada."</string>
     <string name="supp_service_call_on_hold" msgid="2836811319594503059">"S\'ha posat la trucada en espera."</string>
@@ -850,6 +852,14 @@
     <string name="simulate_out_of_service_label" msgid="3563376136603403714">"Simula que està fora de servei"</string>
     <string name="enforce_satellite_channel_string" msgid="295306734591329892">"Força el canal LTE del satèl·lit de camp (només per a la compilació de depuració)"</string>
     <string name="enforce_satellite_channel_label" msgid="8212349350110213468">"Força el canal LTE del satèl·lit de camp"</string>
+    <string name="starlink_satellite_band_string" msgid="2287502104005508384">"Starlink_US"</string>
+    <string name="ast_satellite_band_string" msgid="3238737906080758289">"AST_US"</string>
+    <string name="manual_override_satellite_band_string" msgid="801049975307124461">"Anul·lació manual"</string>
+    <string name="satellite_manual_band_label" msgid="4135706517193927388">"Selecciona la banda:"</string>
+    <string name="satellite_channel_label_text" msgid="1999162483250790313">"Introdueix el canal:"</string>
+    <string name="satellite_channel_hint_text" msgid="4342575738602358270">"Introdueix aquí el canal per satèl·lit"</string>
+    <string name="force_camp_satellite_button_string" msgid="3719311367839668322">"Connecta"</string>
+    <string name="force_camp_satellite_button_connected_string" msgid="2457912207054938894">"Connectat"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"Mode de satèl·lit d\'un operador de telefonia mòbil simulat (només per a la compilació de depuració)"</string>
     <string name="mock_carrier_roaming_satellite_label" msgid="2052656038544917979">"Simulació"</string>
     <string name="choose_satellite_data_mode_label" msgid="7403013160079828226">"Mode de dades de satèl·lit simulat"</string>

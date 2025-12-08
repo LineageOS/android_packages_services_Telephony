@@ -31,7 +31,6 @@ import static android.telephony.satellite.SatelliteManager.SATELLITE_RESULT_LOCA
 import static android.telephony.satellite.SatelliteManager.SATELLITE_RESULT_MODEM_ERROR;
 import static android.telephony.satellite.SatelliteManager.SATELLITE_RESULT_NOT_SUPPORTED;
 import static android.telephony.satellite.SatelliteManager.SATELLITE_RESULT_NO_RESOURCES;
-import static android.telephony.satellite.SatelliteManager.SATELLITE_RESULT_REQUEST_NOT_SUPPORTED;
 import static android.telephony.satellite.SatelliteManager.SATELLITE_RESULT_SUCCESS;
 
 import static com.android.phone.satellite.accesscontrol.SatelliteAccessController.ALLOWED_STATE_CACHE_VALID_DURATION_NANOS;
@@ -124,6 +123,7 @@ import com.android.TelephonyTestBase;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.TelephonyCountryDetector;
+import com.android.internal.telephony.data.DataNetworkController;
 import com.android.internal.telephony.flags.FeatureFlags;
 import com.android.internal.telephony.satellite.SatelliteConfig;
 import com.android.internal.telephony.satellite.SatelliteConfigParser;
@@ -176,6 +176,8 @@ public class SatelliteAccessControllerTest extends TelephonyTestBase {
     private static final String TEST_SATELLITE_COUNTRY_CODE_JP = "JP";
 
     private static final String TEST_SATELLITE_S2_FILE = "sat_s2_file.dat";
+    private static final String ACTION_DEFAULT_SMS_PACKAGE_CHANGED_INTERNAL =
+            "android.provider.action.DEFAULT_SMS_PACKAGE_CHANGED_INTERNAL";
     private static final boolean TEST_SATELLITE_ALLOW = true;
     private static final boolean TEST_SATELLITE_NOT_ALLOW = false;
     private static final int TEST_LOCATION_FRESH_DURATION_SECONDS = 10;
@@ -253,6 +255,8 @@ public class SatelliteAccessControllerTest extends TelephonyTestBase {
             mMockSatelliteCommunicationAccessStateChangedListeners;
     @Mock
     private CarrierRoamingSatelliteControllerStats mCarrierRoamingSatelliteControllerStats;
+    @Mock
+    private DataNetworkController mMockDataNetworkController;
 
     private SatelliteInfo mSatelliteInfo;
 
@@ -355,6 +359,8 @@ public class SatelliteAccessControllerTest extends TelephonyTestBase {
                 mMockTelecomManager);
         when(mMockContext.getSystemService(DropBoxManager.class)).thenReturn(
                 mMockDropBoxManager);
+        when(mMockPhone.getDataNetworkController()).thenReturn(mMockDataNetworkController);
+        when(mMockDataNetworkController.getInternetDataDisallowedReasons()).thenReturn(listOf());
         doAnswer(inv -> {
             var args = inv.getArguments();
             return InstrumentationRegistry.getTargetContext()
@@ -439,7 +445,6 @@ public class SatelliteAccessControllerTest extends TelephonyTestBase {
         doNothing().when(mMockSharedPreferencesEditor).apply();
 
         when(mMockFeatureFlags.geofenceEnhancementForBetterUx()).thenReturn(true);
-        when(mMockFeatureFlags.carrierRoamingNbIotNtn()).thenReturn(true);
 
         when(mMockContext.getSystemService(Context.TELEPHONY_SERVICE))
                 .thenReturn(mMockTelephonyManager);
@@ -661,22 +666,6 @@ public class SatelliteAccessControllerTest extends TelephonyTestBase {
         replaceInstance(SatelliteAccessController.class,
                 "mSatelliteCommunicationAccessStateChangedListeners", mSatelliteAccessControllerUT,
                 mSatelliteCommunicationAllowedStateCallbackMap);
-
-        // Test when the featureFlags.carrierRoamingNbIotNtn() is false
-        doReturn(false).when(mMockFeatureFlags).carrierRoamingNbIotNtn();
-
-        clearInvocations(mockResultReceiver);
-        mSatelliteAccessControllerUT
-                .requestSatelliteAccessConfigurationForCurrentLocation(mockResultReceiver);
-        mTestableLooper.processAllMessages();
-        verify(mockResultReceiver, times(1)).send(resultCodeCaptor.capture(),
-                bundleCaptor.capture());
-        assertEquals(SATELLITE_RESULT_REQUEST_NOT_SUPPORTED, (int) resultCodeCaptor.getValue());
-        assertNull(bundleCaptor.getValue());
-        verify(mockSatelliteAllowedStateCallback, never())
-                .onAccessConfigurationChanged(any());
-
-        doReturn(true).when(mMockFeatureFlags).carrierRoamingNbIotNtn();
 
         // Verify if the map is maintained after the cleanup event
         sendSatelliteDeviceAccessControllerResourcesTimeOutEvent();
@@ -1914,7 +1903,6 @@ public class SatelliteAccessControllerTest extends TelephonyTestBase {
                 "mS2Level",
                 mSatelliteAccessControllerUT,
                 new AtomicInteger(DEFAULT_S2_LEVEL));
-        when(mMockFeatureFlags.carrierRoamingNbIotNtn()).thenReturn(true);
         when(mMockContext.getResources()).thenReturn(mMockResources);
         when(mMockResources.getBoolean(
                         com.android.internal.R.bool.config_oem_enabled_satellite_access_allow))
@@ -2157,13 +2145,12 @@ public class SatelliteAccessControllerTest extends TelephonyTestBase {
     @Test
     public void testLocationModeChanged() throws Exception {
         logd("testLocationModeChanged");
-        when(mMockFeatureFlags.oemEnabledSatelliteFlag()).thenReturn(true);
         setUpResponseForRequestIsSatelliteSupported(true, SATELLITE_RESULT_SUCCESS);
         setUpResponseForRequestIsSatelliteProvisioned(true, SATELLITE_RESULT_SUCCESS);
 
         logd("testLocationModeChanged: captor: verify mockReceiver & mockContext registered");
         mSatelliteAccessControllerUT.elapsedRealtimeNanos = TEST_LOCATION_FRESH_DURATION_NANOS + 1;
-        verify(mMockContext, times(2)).registerReceiver(
+        verify(mMockContext, times(3)).registerReceiver(
                 mLocationBroadcastReceiverCaptor.capture(), mIntentFilterCaptor.capture());
 
         logd("testLocationModeChanged: no isLocationEnabled() when action != MODE_CHANGED_ACTION");
@@ -2572,8 +2559,6 @@ public class SatelliteAccessControllerTest extends TelephonyTestBase {
     @Test
     public void testUpdateSystemSelectionChannels() {
         // Set non-emergency case
-        when(mMockFeatureFlags.carrierRoamingNbIotNtn()).thenReturn(true);
-
         setUpResponseForRequestIsSatelliteSupported(true, SATELLITE_RESULT_SUCCESS);
         setUpResponseForRequestIsSatelliteProvisioned(true, SATELLITE_RESULT_SUCCESS);
         when(mMockCountryDetector.getCurrentNetworkCountryIso()).thenReturn(EMPTY_STRING_LIST);
@@ -2731,8 +2716,6 @@ public class SatelliteAccessControllerTest extends TelephonyTestBase {
     @Test
     public void testUpdateSystemSelectionChannels_HandleInvalidInput() {
         // Set non-emergency case
-        when(mMockFeatureFlags.carrierRoamingNbIotNtn()).thenReturn(true);
-
         setUpResponseForRequestIsSatelliteSupported(true, SATELLITE_RESULT_SUCCESS);
         setUpResponseForRequestIsSatelliteProvisioned(true, SATELLITE_RESULT_SUCCESS);
         when(mMockCountryDetector.getCurrentNetworkCountryIso()).thenReturn(EMPTY_STRING_LIST);
@@ -2878,7 +2861,6 @@ public class SatelliteAccessControllerTest extends TelephonyTestBase {
     @Test
     public void testLocationProvidersChanged() throws Exception {
         logd("testLocationProvidersChanged: setup to query the current location");
-        when(mMockFeatureFlags.oemEnabledSatelliteFlag()).thenReturn(true);
         when(mMockContext.getResources()).thenReturn(mMockResources);
         when(mMockResources.getBoolean(
                 com.android.internal.R.bool.config_oem_enabled_satellite_access_allow))
@@ -2898,7 +2880,7 @@ public class SatelliteAccessControllerTest extends TelephonyTestBase {
 
         logd("testLocationProvidersChanged: "
                 + "captor and verify if the mockReceiver and mockContext is registered well");
-        verify(mMockContext, times(2)).registerReceiver(
+        verify(mMockContext, times(3)).registerReceiver(
                 mLocationBroadcastReceiverCaptor.capture(), mIntentFilterCaptor.capture());
 
         // (1) Both mIsLocationManagerEnabled and mIsLocationProviderEnabled are false.
@@ -2980,7 +2962,7 @@ public class SatelliteAccessControllerTest extends TelephonyTestBase {
 
         // Send ACTION_PACKAGE_CHANGED, default SMS app does not support satellite communication
         assertTrue(mSatelliteAccessControllerUT.getSatelliteDisallowedReasons().isEmpty());
-        intent.setAction(Intent.ACTION_PACKAGE_CHANGED);
+        intent.setAction(ACTION_DEFAULT_SMS_PACKAGE_CHANGED_INTERNAL);
         mSatelliteAccessControllerUT.getDefaultSmsAppChangedBroadcastReceiver().onReceive(
                 mMockContext, intent);
         mTestableLooper.processAllMessages();

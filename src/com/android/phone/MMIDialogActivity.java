@@ -30,6 +30,7 @@ import com.android.internal.telephony.CallManager;
 import com.android.internal.telephony.MmiCode;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
+import com.android.internal.telephony.flags.Flags;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -120,9 +121,9 @@ public class MMIDialogActivity extends Activity {
 
         // if phone is a CDMA phone display feature code completed message
         int phoneType = mPhone.getPhoneType();
-        if (phoneType == PhoneConstants.PHONE_TYPE_CDMA) {
+        if (!Flags.deleteCdma() && phoneType == PhoneConstants.PHONE_TYPE_CDMA) {
             PhoneUtils.displayMMIComplete(mPhone, this, mmiCode, null, null);
-        } else if (phoneType == PhoneConstants.PHONE_TYPE_GSM) {
+        } else if (Flags.deleteCdma() || phoneType == PhoneConstants.PHONE_TYPE_GSM) {
             if (mmiCode.getState() != MmiCode.State.PENDING) {
                 Log.d(TAG, "onMMIComplete: Got MMI_COMPLETE, finishing dialog activity...");
                 dismissDialogsAndFinish();

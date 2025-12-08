@@ -33,6 +33,7 @@ import android.view.MenuItem;
 import com.android.internal.telephony.CallForwardInfo;
 import com.android.internal.telephony.CommandsInterface;
 import com.android.internal.telephony.Phone;
+import com.android.internal.telephony.flags.Flags;
 
 import java.util.ArrayList;
 
@@ -73,6 +74,7 @@ public class CdmaCallForwardOptions extends TimeConsumingPreferenceActivity {
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
 
+        if (Flags.deleteCdma()) return;
         getWindow().addSystemFlags(
                 android.view.WindowManager.LayoutParams
                         .SYSTEM_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);

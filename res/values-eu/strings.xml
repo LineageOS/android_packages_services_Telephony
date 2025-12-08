@@ -461,6 +461,8 @@
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"Gaitu automatikoki berriro saiatzeko modua"</string>
     <string name="vibrating_for_outgoing_call_accepted_title" msgid="647945514737734657">"Dardarka dabil irteerako deia onartu delako"</string>
     <string name="vibrating_for_outgoing_call_accepted_summary" msgid="906112327196063688">"Gaitu dardara modua irteerako deia onartzerakoan"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_title" msgid="856074537423753072">"Konektatutako deien tonuak"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_summary" msgid="2442128058517260047">"Irteerako dei bat egitean tonua erreproduzitzea onartzen da"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"Ezin da aldatu TTY modua bideodeiak abian direnean"</string>
     <string name="menu_add" msgid="5616487894975773141">"Gehitu kontaktua"</string>
     <string name="menu_edit" msgid="3593856941552460706">"Editatu kontaktua"</string>
@@ -623,7 +625,7 @@
     <string name="ota_title_activate" msgid="4049645324841263423">"Aktibatu telefonoa"</string>
     <string name="ota_touch_activate" msgid="838764494319694754">"Telefono-zerbitzua aktibatzeko, dei berezi bat egin behar da.\n\n\"Aktibatu\" sakatu ondoren, telefonoa aktibatzeko, entzun ematen zaizkizun argibideak."</string>
     <string name="ota_hfa_activation_title" msgid="3300556778212729671">"Aktibatzen…"</string>
-    <string name="ota_hfa_activation_dialog_message" msgid="7921718445773342996">"Telefonoa mugikorretarako datu-zerbitzua aktibatzen ari da.\n\nEragiketa gehienez 5 minutu luza daiteke."</string>
+    <string name="ota_hfa_activation_dialog_message" msgid="7921718445773342996">"Telefonoa datu-konexioaren zerbitzua aktibatzen ari da.\n\nEragiketa gehienez 5 minutu luza daiteke."</string>
     <string name="ota_skip_activation_dialog_title" msgid="7666611236789203797">"Aktibazioa saltatu nahi duzu?"</string>
     <string name="ota_skip_activation_dialog_message" msgid="6691722887019708713">"Aktibazioa saltatzen baduzu, ezingo duzu deirik egin, ez eta datu-konexioaren sareetara konektatu ere, baina Wi-Fi sareetara konektatu ahal izango duzu. Telefonoa aktibatzen duzun arte, pizten duzun bakoitzean eskatuko zaizu aktibatzeko."</string>
     <string name="ota_skip_activation_dialog_skip_label" msgid="5908029466817825633">"Saltatu"</string>
@@ -850,6 +852,14 @@
     <string name="simulate_out_of_service_label" msgid="3563376136603403714">"Simulatu zerbitzuz kanpo"</string>
     <string name="enforce_satellite_channel_string" msgid="295306734591329892">"Force Camp Satellite LTE kanala (arazte-konpilazioa bakarrik)"</string>
     <string name="enforce_satellite_channel_label" msgid="8212349350110213468">"Force Camp satelitearen LTE kanala"</string>
+    <string name="starlink_satellite_band_string" msgid="2287502104005508384">"Starlink_US"</string>
+    <string name="ast_satellite_band_string" msgid="3238737906080758289">"AST_US"</string>
+    <string name="manual_override_satellite_band_string" msgid="801049975307124461">"Eskuz ordeztea"</string>
+    <string name="satellite_manual_band_label" msgid="4135706517193927388">"Hautatu banda:"</string>
+    <string name="satellite_channel_label_text" msgid="1999162483250790313">"Idatzi kanala:"</string>
+    <string name="satellite_channel_hint_text" msgid="4342575738602358270">"Idatzi hemen satelitearen kanala"</string>
+    <string name="force_camp_satellite_button_string" msgid="3719311367839668322">"Konektatu"</string>
+    <string name="force_camp_satellite_button_connected_string" msgid="2457912207054938894">"Konektatuta"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"Simulatu operadorearen satelite modua (arazketa-konpilazioa soilik)"</string>
     <string name="mock_carrier_roaming_satellite_label" msgid="2052656038544917979">"Probazkoa"</string>
     <string name="choose_satellite_data_mode_label" msgid="7403013160079828226">"Probazko satelite-datuen modua"</string>

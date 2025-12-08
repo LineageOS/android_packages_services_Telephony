@@ -54,7 +54,8 @@ public class GsmUmtsCallOptions extends PreferenceActivity {
                 getActionBar(), getResources(), R.string.labelGsmMore_with_label);
         init(getPreferenceScreen(), subInfoHelper);
 
-        if (subInfoHelper.getPhone().getPhoneType() != PhoneConstants.PHONE_TYPE_GSM) {
+        if (!Flags.deleteCdma()
+                && subInfoHelper.getPhone().getPhoneType() != PhoneConstants.PHONE_TYPE_GSM) {
             //disable the entire screen
             getPreferenceScreen().setEnabled(false);
         }

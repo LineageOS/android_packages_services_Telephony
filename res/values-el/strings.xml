@@ -110,7 +110,7 @@
     <string name="sum_cfu_enabled_no_number" msgid="7287752761743377930">"Ο αριθμός δεν είναι διαθέσιμος"</string>
     <string name="sum_cfu_disabled" msgid="5010617134210809853">"Ανενεργό"</string>
     <string name="labelCFB" msgid="615265213360512768">"Όταν η γραμμή είναι απασχολημένη"</string>
-    <string name="messageCFB" msgid="1958017270393563388">"Αριθμός όταν είμαι απασχολημένος/ή"</string>
+    <string name="messageCFB" msgid="1958017270393563388">"Αριθμός όταν είμαι απασχολημένος"</string>
     <string name="sum_cfb_enabled" msgid="332037613072049492">"Προώθηση στο <xliff:g id="PHONENUMBER">{0}</xliff:g>"</string>
     <string name="sum_cfb_disabled" msgid="3589913334164866035">"Ανενεργό"</string>
     <string name="disable_cfb_forbidden" msgid="4831494744351633961">"Ο φορέας σας δεν υποστηρίζει την απενεργοποίηση της προώθησης κλήσεων όταν το τηλέφωνό σας είναι απασχολημένο."</string>
@@ -461,6 +461,8 @@
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"Ενεργοποίηση λειτουργίας αυτόματης επανάληψης"</string>
     <string name="vibrating_for_outgoing_call_accepted_title" msgid="647945514737734657">"Δόνηση για αποδεκτή εξερχόμενη κλήση"</string>
     <string name="vibrating_for_outgoing_call_accepted_summary" msgid="906112327196063688">"Ενεργοποίηση λειτουργίας δόνησης για αποδεκτές εξερχόμενες κλήσεις"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_title" msgid="856074537423753072">"Ήχοι σύνδεσης κλήσης"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_summary" msgid="2442128058517260047">"Αναπαραγωγή ήχου για αποδεκτή εξερχόμενη κλήση"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"Δεν επιτρέπεται αλλαγή της λειτουργίας TTY κατά τη διάρκεια μιας βιντεοκλήσης"</string>
     <string name="menu_add" msgid="5616487894975773141">"Προσθήκη επαφής"</string>
     <string name="menu_edit" msgid="3593856941552460706">"Επεξεργασία επαφής"</string>
@@ -850,6 +852,14 @@
     <string name="simulate_out_of_service_label" msgid="3563376136603403714">"Η προσομοίωση δεν λειτουργεί"</string>
     <string name="enforce_satellite_channel_string" msgid="295306734591329892">"Επιβολή καναλιού Camp Satellite LTE (μόνο έκδοση εντοπισμού σφαλμάτων)"</string>
     <string name="enforce_satellite_channel_label" msgid="8212349350110213468">"Επιβολή καναλιού Camp Satellite LTE"</string>
+    <string name="starlink_satellite_band_string" msgid="2287502104005508384">"Starlink_US"</string>
+    <string name="ast_satellite_band_string" msgid="3238737906080758289">"AST_US"</string>
+    <string name="manual_override_satellite_band_string" msgid="801049975307124461">"Μη αυτόματη παράκαμψη"</string>
+    <string name="satellite_manual_band_label" msgid="4135706517193927388">"Επιλογή ζώνης:"</string>
+    <string name="satellite_channel_label_text" msgid="1999162483250790313">"Εισαγωγή καναλιού:"</string>
+    <string name="satellite_channel_hint_text" msgid="4342575738602358270">"Εισαγάγετε εδώ το δορυφορικό κανάλι"</string>
+    <string name="force_camp_satellite_button_string" msgid="3719311367839668322">"Σύνδεση"</string>
+    <string name="force_camp_satellite_button_connected_string" msgid="2457912207054938894">"Συνδέθηκε"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"Εικονική λειτουργία δορυφόρου εταιρείας κινητής τηλεφωνίας (μόνο έκδοση εντοπισμού σφαλμάτων)"</string>
     <string name="mock_carrier_roaming_satellite_label" msgid="2052656038544917979">"Προσομοίωση"</string>
     <string name="choose_satellite_data_mode_label" msgid="7403013160079828226">"Λειτουργία προσομοίωσης δεδομένων μέσω δορυφόρου"</string>

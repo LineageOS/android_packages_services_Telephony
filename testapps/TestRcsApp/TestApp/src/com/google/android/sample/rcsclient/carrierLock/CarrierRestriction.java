@@ -22,5 +22,6 @@ public enum CarrierRestriction {
     LOCK_TO_ATT,
     LOCK_TO_TMO,
     LOCK_TO_KOODO,
-    LOCK_TO_TELUS
+    LOCK_TO_TELUS,
+    CUSTOM_LOCK
 }

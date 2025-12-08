@@ -312,7 +312,7 @@
     <string name="sim_change_data_title" msgid="9142726786345906606">"¿Cambiar SIM para datos?"</string>
     <string name="sim_change_data_message" msgid="3567358694255933280">"¿Deseas usar <xliff:g id="NEW_SIM">%1$s</xliff:g> en lugar de <xliff:g id="OLD_SIM">%2$s</xliff:g> para datos móviles?"</string>
     <string name="wifi_calling_settings_title" msgid="5800018845662016507">"Llamada con Wi-Fi"</string>
-    <string name="video_calling_settings_title" msgid="342829454913266078">"Videollamada con el proveedor"</string>
+    <string name="video_calling_settings_title" msgid="342829454913266078">"Videollamadas mediante el operador"</string>
     <string name="gsm_umts_options" msgid="4968446771519376808">"Opciones de GSM/UMTS"</string>
     <string name="cdma_options" msgid="3669592472226145665">"Opciones de CDMA"</string>
     <string name="throttle_data_usage" msgid="1944145350660420711">"Utilización de datos"</string>
@@ -405,7 +405,7 @@
     <string name="eo_enable" msgid="107713355461019817">"Oportunidades de empleo activadas"</string>
     <string name="eo_disable" msgid="3955421278929647485">"Oportunidades de empleo desactivadas"</string>
     <string name="enable_disable_mhh" msgid="715930476289202466">"Servicios de medicina, salud y hospitales"</string>
-    <string name="mhh_enable" msgid="7224396815285147008">"Se habilitaron los servicios de medicina, salud y hospitales."</string>
+    <string name="mhh_enable" msgid="7224396815285147008">"Se habilitaron los servicios de medicina, salud y hospitales"</string>
     <string name="mhh_disable" msgid="5503643028885686265">"Se inhabilitaron los servicios de medicina, salud y hospitales."</string>
     <string name="enable_disable_technology_news" msgid="2794845609698078400">"Noticias de tecnología"</string>
     <string name="technology_news_enable" msgid="1908991199492598311">"Noticias de tecnología desactivadas"</string>
@@ -461,6 +461,8 @@
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"Activar el modo de reintento automático"</string>
     <string name="vibrating_for_outgoing_call_accepted_title" msgid="647945514737734657">"Se aceptó la vibración para la llamada saliente"</string>
     <string name="vibrating_for_outgoing_call_accepted_summary" msgid="906112327196063688">"Se aceptó la habilitación del modo de vibración para la llamada saliente"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_title" msgid="856074537423753072">"Tonos de llamada conectada"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_summary" msgid="2442128058517260047">"Reproducir un tono cuando se acepten las llamadas salientes"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"No se permite cambiar el modo TTY durante una videollamada."</string>
     <string name="menu_add" msgid="5616487894975773141">"Agregar contacto"</string>
     <string name="menu_edit" msgid="3593856941552460706">"Editar contacto"</string>
@@ -543,7 +545,7 @@
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Desactivar el modo avión o conectarse a una red inalámbrica para hacer una llamada"</string>
     <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"Se sobrecalentó el teléfono"</b>\n\n"No se puede completar esta llamada. Vuelve a intentar cuando se enfríe el teléfono.\n\nDe todos modos, puedes hacer llamadas de emergencia."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Para realizar una llamada que no sea de emergencia, sal del modo de devolución de llamada de emergencia."</string>
-    <string name="incall_error_emergency_only" msgid="8786127461027964653">"No registrado en la red."</string>
+    <string name="incall_error_emergency_only" msgid="8786127461027964653">"No se registró en la red."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"La red móvil no está disponible."</string>
     <string name="incall_error_out_of_service_2g" msgid="904434080740846116">"La red móvil no está disponible.\n\nConéctate a una red inalámbrica para realizar una llamada.\n\nLa conexión 2G está inhabilitada en este dispositivo, lo que podría afectar la conectividad. Ve a Configuración y habilita Permitir 2G para continuar."</string>
     <string name="incall_error_out_of_service_wfc" msgid="4497663185857190885">"La red móvil no está disponible. Conéctate a una red inalámbrica para realizar una llamada."</string>
@@ -583,7 +585,7 @@
     <string name="fire_type_description" msgid="6565200468934914930">"Bomberos"</string>
     <string name="description_concat_format" msgid="2014471565101724088">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="1115266533703764049">"Utilizar teclado para marcar"</string>
-    <string name="onscreenHoldText" msgid="4025348842151665191">"Pausar"</string>
+    <string name="onscreenHoldText" msgid="4025348842151665191">"En espera"</string>
     <string name="onscreenEndCallText" msgid="6138725377654842757">"Finalizar"</string>
     <string name="onscreenShowDialpadText" msgid="658465753816164079">"Teclado telefónico"</string>
     <string name="onscreenMuteText" msgid="5470306116733843621">"Silenciar"</string>
@@ -625,7 +627,7 @@
     <string name="ota_hfa_activation_title" msgid="3300556778212729671">"Activando…"</string>
     <string name="ota_hfa_activation_dialog_message" msgid="7921718445773342996">"El teléfono está activando el servicio de datos móviles.\n\nEsto puede tardar hasta 5 minutos."</string>
     <string name="ota_skip_activation_dialog_title" msgid="7666611236789203797">"¿Deseas omitir la activación?"</string>
-    <string name="ota_skip_activation_dialog_message" msgid="6691722887019708713">"Si omites la activación, no puedes colocar llamadas o conectarte con redes móviles de datos (a pesar de que te puedes conectar a redes de Wi-Fi). Hasta que actives tu teléfono, se te solicitará que lo actives cada vez que lo enciendas."</string>
+    <string name="ota_skip_activation_dialog_message" msgid="6691722887019708713">"Si omites la activación, no puedes hacer llamadas ni conectarte con redes de datos móviles (aunque sí te puedes conectar a redes Wi-Fi). Se te solicitará que actives el teléfono cada vez que lo enciendas, hasta que lo hagas."</string>
     <string name="ota_skip_activation_dialog_skip_label" msgid="5908029466817825633">"Omitir"</string>
     <string name="ota_activate" msgid="7939695753665438357">"Activar"</string>
     <string name="ota_title_activate_success" msgid="1272135024761004889">"Se activó el teléfono."</string>
@@ -850,6 +852,14 @@
     <string name="simulate_out_of_service_label" msgid="3563376136603403714">"Simular fuera de servicio"</string>
     <string name="enforce_satellite_channel_string" msgid="295306734591329892">"Canal LTE de satélite del campamento de la fuerza (solo compilación de depuración)"</string>
     <string name="enforce_satellite_channel_label" msgid="8212349350110213468">"Canal LTE de satélite del campamento de la fuerza"</string>
+    <string name="starlink_satellite_band_string" msgid="2287502104005508384">"Starlink_US"</string>
+    <string name="ast_satellite_band_string" msgid="3238737906080758289">"AST_US"</string>
+    <string name="manual_override_satellite_band_string" msgid="801049975307124461">"Anulación manual"</string>
+    <string name="satellite_manual_band_label" msgid="4135706517193927388">"Selecciona la banda:"</string>
+    <string name="satellite_channel_label_text" msgid="1999162483250790313">"Ingresa el canal:"</string>
+    <string name="satellite_channel_hint_text" msgid="4342575738602358270">"Ingresa el canal satelital aquí"</string>
+    <string name="force_camp_satellite_button_string" msgid="3719311367839668322">"Conectar"</string>
+    <string name="force_camp_satellite_button_connected_string" msgid="2457912207054938894">"Conectado"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"Modo Satélite del operador de prueba (solo en la compilación de depuración)"</string>
     <string name="mock_carrier_roaming_satellite_label" msgid="2052656038544917979">"Simulación"</string>
     <string name="choose_satellite_data_mode_label" msgid="7403013160079828226">"Simulación de modo de datos por satélite"</string>

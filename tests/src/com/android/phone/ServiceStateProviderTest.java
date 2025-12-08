@@ -133,7 +133,6 @@ public class ServiceStateProviderTest {
 
         mTestServiceState = new ServiceState();
         mTestServiceState.setStateOutOfService();
-        mTestServiceState.setCdmaSystemAndNetworkId(TEST_SYSTEM_ID, TEST_NETWORK_ID);
         mTestServiceStateForSubId1 = new ServiceState();
         mTestServiceStateForSubId1.setStateOff();
 
@@ -469,10 +468,10 @@ public class ServiceStateProviderTest {
         final int cssIndicator = ss.getCssIndicator();
         final int networkId = hasLocation ? ss.getCdmaNetworkId() : ServiceState.UNKNOWN_ID;
         final int systemId = hasLocation ? ss.getCdmaSystemId() : ServiceState.UNKNOWN_ID;
-        final int cdmaRoamingIndicator = ss.getCdmaRoamingIndicator();
-        final int cdmaDefaultRoamingIndicator = ss.getCdmaDefaultRoamingIndicator();
-        final int cdmaEriIconIndex = ss.getCdmaEriIconIndex();
-        final int cdmaEriIconMode = ss.getCdmaEriIconMode();
+        final int cdmaRoamingIndicator = -1;
+        final int cdmaDefaultRoamingIndicator = -1;
+        final int cdmaEriIconIndex = -1;
+        final int cdmaEriIconMode = -1;
         final int isEmergencyOnly = (ss.isEmergencyOnly()) ? 1 : 0;
         final int isUsingCarrierAggregation = (ss.isUsingCarrierAggregation()) ? 1 : 0;
         final String operatorAlphaLongRaw = ss.getOperatorAlphaLongRaw();
@@ -519,11 +518,9 @@ public class ServiceStateProviderTest {
 
         ServiceState oldSS = new ServiceState();
         oldSS.setStateOutOfService();
-        oldSS.setCdmaSystemAndNetworkId(1, 1);
 
         ServiceState newSS = new ServiceState();
         newSS.setStateOutOfService();
-        newSS.setCdmaSystemAndNetworkId(0, 0);
 
         // Test that notifyChange is not called for these fields
         assertFalse(notifyChangeCalledForSubIdAndField(oldSS, newSS, subId));

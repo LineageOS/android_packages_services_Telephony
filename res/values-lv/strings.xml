@@ -193,7 +193,7 @@
     <string name="preferred_network_mode_dialogtitle" msgid="2781447433514459696">"Ieteicamais tīkla veids"</string>
     <string name="forbidden_network" msgid="5081729819561333023">"(aizliegts)"</string>
     <string name="choose_network_title" msgid="5335832663422653082">"Izvēlēties tīklu"</string>
-    <string name="network_disconnected" msgid="8844141106841160825">"Savienojums pārtraukts"</string>
+    <string name="network_disconnected" msgid="8844141106841160825">"Atvienots"</string>
     <string name="network_connected" msgid="2760235679963580224">"Savienojums izveidots"</string>
     <string name="network_connecting" msgid="160901383582774987">"Notiek savienojuma izveide..."</string>
     <string name="network_could_not_connect" msgid="6547460848093727998">"Nevarēja izveidot savienojumu"</string>
@@ -461,6 +461,8 @@
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"Iespējot automātiskā atkārtotā mēģinājuma režīmu"</string>
     <string name="vibrating_for_outgoing_call_accepted_title" msgid="647945514737734657">"Izejošā zvana vibrācija ir pieņemta"</string>
     <string name="vibrating_for_outgoing_call_accepted_summary" msgid="906112327196063688">"Vibrācijas režīma iespējošana izejošajam zvanam ir pieņemta"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_title" msgid="856074537423753072">"Zvana savienojuma signāli"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_summary" msgid="2442128058517260047">"Tiek atskaņots signāls, kad izejošais zvans ir pieņemts"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"Videozvana laikā nav atļauts mainīt teksta tālruņa režīmu."</string>
     <string name="menu_add" msgid="5616487894975773141">"Pievienot kontaktpersonu"</string>
     <string name="menu_edit" msgid="3593856941552460706">"Rediģēt kontaktpersonu"</string>
@@ -850,6 +852,14 @@
     <string name="simulate_out_of_service_label" msgid="3563376136603403714">"Simulēt režīmu “Nedarbojas”"</string>
     <string name="enforce_satellite_channel_string" msgid="295306734591329892">"LTE satelīta kanāla piespiedu izmantošana (tikai atkļūdošanas būvējums)"</string>
     <string name="enforce_satellite_channel_label" msgid="8212349350110213468">"Piespiest LTE satelīta kanāla izmantošanu"</string>
+    <string name="starlink_satellite_band_string" msgid="2287502104005508384">"Starlink_US"</string>
+    <string name="ast_satellite_band_string" msgid="3238737906080758289">"AST_US"</string>
+    <string name="manual_override_satellite_band_string" msgid="801049975307124461">"Manuāla ignorēšana"</string>
+    <string name="satellite_manual_band_label" msgid="4135706517193927388">"Atlasiet joslu:"</string>
+    <string name="satellite_channel_label_text" msgid="1999162483250790313">"Ievadiet kanālu:"</string>
+    <string name="satellite_channel_hint_text" msgid="4342575738602358270">"Ievadiet satelīta kanālu šeit"</string>
+    <string name="force_camp_satellite_button_string" msgid="3719311367839668322">"Izveidot savienojumu"</string>
+    <string name="force_camp_satellite_button_connected_string" msgid="2457912207054938894">"Savienojums izveidots"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"Mobilo sakaru operatora satelīta režīma imitēšana (tikai atkļūdošanas būvējums)"</string>
     <string name="mock_carrier_roaming_satellite_label" msgid="2052656038544917979">"Imitācija"</string>
     <string name="choose_satellite_data_mode_label" msgid="7403013160079828226">"Imitēts satelīta datu režīms"</string>
@@ -871,7 +881,7 @@
     <string name="radio_info_ims_reg_status_registered" msgid="7095182114078864326">"Reģistrēts"</string>
     <string name="radio_info_ims_reg_status_not_registered" msgid="8045821447288876085">"Nav reģistrēts"</string>
     <string name="radio_info_ims_feature_status_available" msgid="6493200914756969292">"Pieejams"</string>
-    <string name="radio_info_ims_feature_status_unavailable" msgid="8930391136839759778">"Nav pieejama"</string>
+    <string name="radio_info_ims_feature_status_unavailable" msgid="8930391136839759778">"Nav pieejams"</string>
     <string name="radio_info_ims_reg_status" msgid="25582845222446390">"Tūlītējās ziņojumapmaiņas reģistrācija: <xliff:g id="STATUS">%1$s</xliff:g>\nBalss pārraide ar LTE: <xliff:g id="AVAILABILITY_0">%2$s</xliff:g>\nBalss pārraide ar Wi-Fi: <xliff:g id="AVAILABILITY_1">%3$s</xliff:g>\nVideozvani: <xliff:g id="AVAILABILITY_2">%4$s</xliff:g>\nUT saskarne: <xliff:g id="AVAILABILITY_3">%5$s</xliff:g>"</string>
     <string name="radioInfo_service_in" msgid="45753418231446400">"Darbojas"</string>
     <string name="radioInfo_service_out" msgid="287972405416142312">"Nedarbojas"</string>

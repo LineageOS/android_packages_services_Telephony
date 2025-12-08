@@ -22,7 +22,6 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
-import static org.mockito.Mockito.doReturn;
 
 import android.annotation.Nullable;
 
@@ -129,11 +128,6 @@ public class S2RangeSatelliteOnDeviceAccessControllerTest {
                     SatelliteOnDeviceAccessController.createLocationTokenForLatLng(
                             s2LatLng.latDegrees(), s2LatLng.lngDegrees(), s2Level);
 
-            // Verify if the return value is null, when the carrierRoamingNbIotNtn is disabled.
-            doReturn(false).when(mMockFeatureFlags).carrierRoamingNbIotNtn();
-            assertNull(accessController.getRegionalConfigIdForLocation(locationToken));
-
-            doReturn(true).when(mMockFeatureFlags).carrierRoamingNbIotNtn();
             boolean isAllowed = accessController.isSatCommunicationAllowedAtLocation(locationToken);
             assertTrue(isAllowed != isAllowedList);
 

@@ -461,6 +461,8 @@
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"Activar o modo de reintento automático"</string>
     <string name="vibrating_for_outgoing_call_accepted_title" msgid="647945514737734657">"Aceptouse a vibración para as chamadas saíntes"</string>
     <string name="vibrating_for_outgoing_call_accepted_summary" msgid="906112327196063688">"Aceptouse a activación do modo de vibración para as chamadas saíntes"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_title" msgid="856074537423753072">"Tons de chamada conectada"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_summary" msgid="2442128058517260047">"Ton que soará cando se acepten as chamadas saíntes"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"Non se permite cambiar o modo TTY durante as videochamadas"</string>
     <string name="menu_add" msgid="5616487894975773141">"Engadir contacto"</string>
     <string name="menu_edit" msgid="3593856941552460706">"Editar contacto"</string>
@@ -706,7 +708,7 @@
     <string name="mobile_data_status_roaming_turned_off_subtext" msgid="6840673347416227054">"Desactivouse a itinerancia de datos"</string>
     <string name="mobile_data_status_roaming_turned_on_subtext" msgid="5615757897768777865">"Activouse a itinerancia de datos"</string>
     <string name="mobile_data_status_roaming_without_plan_subtext" msgid="6536671968072284677">"Actualmente estás en itinerancia, pero necesitas un plan de datos"</string>
-    <string name="mobile_data_status_roaming_with_plan_subtext" msgid="2576177169108123095">"Actualmente estás en itineracia, e tes un plan de datos activado"</string>
+    <string name="mobile_data_status_roaming_with_plan_subtext" msgid="2576177169108123095">"Actualmente estás en itinerancia, e tes un plan de datos activado"</string>
     <string name="mobile_data_status_no_plan_subtext" msgid="170331026419263657">"Non queda ningún dato móbil"</string>
     <string name="mobile_data_activate_prepaid" msgid="4276738964416795596">"Non queda ningún dato móbil"</string>
     <string name="mobile_data_activate_prepaid_summary" msgid="6846085278531605925">"Engade datos móbiles a través de <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
@@ -850,6 +852,14 @@
     <string name="simulate_out_of_service_label" msgid="3563376136603403714">"Simular que está fóra de servizo"</string>
     <string name="enforce_satellite_channel_string" msgid="295306734591329892">"Forzar o canal LTE do satélite do campamento (só compilación de depuración)"</string>
     <string name="enforce_satellite_channel_label" msgid="8212349350110213468">"Forzar a canle LTE do satélite de campo"</string>
+    <string name="starlink_satellite_band_string" msgid="2287502104005508384">"Starlink_US"</string>
+    <string name="ast_satellite_band_string" msgid="3238737906080758289">"AST_US"</string>
+    <string name="manual_override_satellite_band_string" msgid="801049975307124461">"Anulación manual"</string>
+    <string name="satellite_manual_band_label" msgid="4135706517193927388">"Seleccionar banda:"</string>
+    <string name="satellite_channel_label_text" msgid="1999162483250790313">"Indicar canle:"</string>
+    <string name="satellite_channel_hint_text" msgid="4342575738602358270">"Pon aquí a canle por satélite"</string>
+    <string name="force_camp_satellite_button_string" msgid="3719311367839668322">"Conectar"</string>
+    <string name="force_camp_satellite_button_connected_string" msgid="2457912207054938894">"Conectado"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"Simular o modo Satélite do operador (só compilación de depuración)"</string>
     <string name="mock_carrier_roaming_satellite_label" msgid="2052656038544917979">"Simulación"</string>
     <string name="choose_satellite_data_mode_label" msgid="7403013160079828226">"Simular o modo de datos por satélite"</string>

@@ -58,6 +58,8 @@ public class PhoneAccountSettingsFragment extends PreferenceFragment
 
     private static final String BUTTON_VIBRATING_KEY =
             "button_vibrating_for_outgoing_call_accepted_key";
+    private static final String BUTTON_PLAYING_TONE_KEY =
+            "button_playing_tone_for_outgoing_call_accepted_key";
 
     /**
      * Value to start ordering of phone accounts relative to other preferences. By setting this
@@ -80,6 +82,7 @@ public class PhoneAccountSettingsFragment extends PreferenceFragment
 
     private PreferenceCategory mMakeAndReceiveCallsCategory;
     private SwitchPreference mButtonVibratingForMoCallAccepted;
+    private SwitchPreference mButtonPlayingToneForMoCallAccepted;
     private int mCallConnectedIndicator = TelecomManager.CALL_CONNECTED_INDICATOR_NONE;
     private boolean mMakeAndReceiveCallsCategoryPresent;
 
@@ -153,11 +156,8 @@ public class PhoneAccountSettingsFragment extends PreferenceFragment
                 MAKE_AND_RECEIVE_CALLS_CATEGORY_KEY);
         mButtonVibratingForMoCallAccepted = (SwitchPreference)
                 mMakeAndReceiveCallsCategory.findPreference(BUTTON_VIBRATING_KEY);
-        if (!getResources().getBoolean(
-                R.bool.show_call_connected_indicator_preference)) {
-            Preference phoneAccountSettingsPreference = findPreference(BUTTON_VIBRATING_KEY);
-            getPreferenceScreen().removePreference(mButtonVibratingForMoCallAccepted);
-        }
+        mButtonPlayingToneForMoCallAccepted = (SwitchPreference)
+                mMakeAndReceiveCallsCategory.findPreference(BUTTON_PLAYING_TONE_KEY);
         mCallConnectedIndicator = mTelecomManager.getCallConnectedIndicatorPreference();
         mMakeAndReceiveCallsCategoryPresent = false;
 
@@ -190,9 +190,15 @@ public class PhoneAccountSettingsFragment extends PreferenceFragment
     @Override
     public boolean onPreferenceClick(Preference preference) {
         if (preference == mButtonVibratingForMoCallAccepted) {
-            final int prefs = mButtonVibratingForMoCallAccepted.isChecked()?
-                    mCallConnectedIndicator | TelecomManager.CALL_CONNECTED_INDICATOR_VIBRATION
+            final int prefs = mButtonVibratingForMoCallAccepted.isChecked()
+                    ? mCallConnectedIndicator | TelecomManager.CALL_CONNECTED_INDICATOR_VIBRATION
                     : mCallConnectedIndicator & ~TelecomManager.CALL_CONNECTED_INDICATOR_VIBRATION;
+            mTelecomManager.setCallConnectedIndicatorPreference(prefs);
+            return true;
+        } else if (preference == mButtonPlayingToneForMoCallAccepted) {
+            final int prefs = mButtonPlayingToneForMoCallAccepted.isChecked()
+                    ? mCallConnectedIndicator | TelecomManager.CALL_CONNECTED_INDICATOR_TONE
+                    : mCallConnectedIndicator & ~TelecomManager.CALL_CONNECTED_INDICATOR_TONE;
             mTelecomManager.setCallConnectedIndicatorPreference(prefs);
             return true;
         }
@@ -494,13 +500,28 @@ public class PhoneAccountSettingsFragment extends PreferenceFragment
         }
 
         if (mButtonVibratingForMoCallAccepted != null) {
-            if (mTelephonyManager.isMultiSimEnabled()) {
+            if (mTelephonyManager.isMultiSimEnabled() && getResources().getBoolean(
+                    R.bool.show_call_connected_indicator_preference)) {
                 mButtonVibratingForMoCallAccepted.setChecked((mCallConnectedIndicator
                         & TelecomManager.CALL_CONNECTED_INDICATOR_VIBRATION) > 0);
                 mButtonVibratingForMoCallAccepted.setOnPreferenceClickListener(this);
                 mMakeAndReceiveCallsCategoryPresent = true;
             } else {
-                mMakeAndReceiveCallsCategory.removePreference(mButtonVibratingForMoCallAccepted);
+                mMakeAndReceiveCallsCategory.removePreference(
+                        mButtonVibratingForMoCallAccepted);
+            }
+        }
+
+        if (mButtonPlayingToneForMoCallAccepted != null) {
+            if (mTelephonyManager.isMultiSimEnabled() && getResources().getBoolean(
+                    R.bool.show_call_connected_indicator_preference)) {
+                mButtonPlayingToneForMoCallAccepted.setChecked((mCallConnectedIndicator
+                        & TelecomManager.CALL_CONNECTED_INDICATOR_TONE) > 0);
+                mButtonPlayingToneForMoCallAccepted.setOnPreferenceClickListener(this);
+                mMakeAndReceiveCallsCategoryPresent = true;
+            } else {
+                mMakeAndReceiveCallsCategory.removePreference(
+                        mButtonPlayingToneForMoCallAccepted);
             }
         }
 

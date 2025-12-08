@@ -16,7 +16,7 @@
     <string name="network_released" msgid="2992280481133877025">"Rezultat: Mreža je objavljena!"</string>
     <string name="network_release_failed" msgid="256471231420029151">"Rezultat: Objavljivanje mreže nije uspelo!!!"</string>
     <string name="purchase_exception" msgid="8876841120055716671">"Rezultat: Izuzetak pri kupovini Premium mreže!!!"</string>
-    <string name="purchase_empty_result" msgid="7497824191649973928">"Rezultat: Rezultat je prazan kada kupujete Premium mrežu!!!"</string>
+    <string name="purchase_empty_result" msgid="7497824191649973928">"Rezultat: Rezultat je prazan prilikom kupovine premijum mreže!"</string>
     <string name="premium_not_available" msgid="7346368693802644748">"Rezultat: Premium mreža nije dostupna za kupovinu!!!"</string>
     <string name="purchase_in_progress" msgid="5450288183685032424">"Rezultat: Kupovina Premium mreže je u toku..."</string>
 </resources>

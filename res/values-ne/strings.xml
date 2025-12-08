@@ -133,7 +133,7 @@
     <string name="cdma_call_waiting_in_ims_off" msgid="1099246114368636334">"IMS अन्तर्गत CDMA कल प्रतीक्षाको सुविधा अफ छ"</string>
     <string name="updating_title" msgid="6130548922615719689">"कल सेटिङहरू"</string>
     <string name="call_settings_admin_user_only" msgid="7238947387649986286">"कल सेटिङहरू केवल प्रशासकीय प्रयोगकर्ताद्वारा परिवर्तन गर्न सकिन्छ।"</string>
-    <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"एड्मिन वा कार्य प्रोफाइलका प्रयोगकर्ता मात्र फोनमा लिंक गरिएको खाताका सेटिङ बदल्न सक्नुहुन्छ।"</string>
+    <string name="phone_account_settings_user_restriction" msgid="9142685151087208396">"एड्मिन वा वर्क प्रोफाइलका प्रयोगकर्ता मात्र फोनमा लिंक गरिएको खाताका सेटिङ बदल्न सक्नुहुन्छ।"</string>
     <string name="phone_account_no_config_mobile_networks" msgid="7351062247756521227">"डिभाइसका मालिकले मोबाइल नेटवर्कसम्बन्धी सेटिङ परिवर्तन गर्न रोक लगाउनुभएको छ।"</string>
     <string name="call_settings_with_label" msgid="8460230435361579511">"सेटिङहरू (<xliff:g id="SUBSCRIPTIONLABEL">%s</xliff:g>)"</string>
     <string name="error_updating_title" msgid="2024290892676808965">"कल सेटिङमा त्रुटि"</string>
@@ -299,7 +299,7 @@
     <string name="sip_accounts_removed_notification_title" msgid="3528076957535736095">"चल्तीबाट हटाइएका SIP खाताहरू भेट्टाइयो र हटाइयो"</string>
     <string name="sip_accounts_removed_notification_message" msgid="1916856744869791592">"अबदेखि Android प्लेटफर्ममा SIP कल गर्न मिल्दैन।\nतपाईंका हालका SIP खाताहरू <xliff:g id="REMOVED_SIP_ACCOUNTS">%s</xliff:g> हटाइएका छन्।\nकृपया आफ्नो डिफल्ट कल गर्ने खाताको सेटिङ पुष्टि गर्नुहोस्।"</string>
     <string name="sip_accounts_removed_notification_action" msgid="3772778402370555562">"सेटिङमा जानुहोस्"</string>
-    <string name="data_usage_title" msgid="8438592133893837464">"एपले गरेको डेटाको प्रयोग"</string>
+    <string name="data_usage_title" msgid="8438592133893837464">"एपले गरेको डेटाको खपत"</string>
     <string name="data_usage_template" msgid="6287906680674061783">"<xliff:g id="ID_2">%2$s</xliff:g> सम्म <xliff:g id="ID_1">%1$s</xliff:g> मोबाइल डेटा प्रयोग भयो"</string>
     <string name="advanced_options_title" msgid="9208195294513520934">"उन्नत"</string>
     <string name="carrier_settings_euicc" msgid="1190237227261337749">"सेवा प्रदायक"</string>
@@ -461,6 +461,8 @@
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"स्वतः-पुनः प्रयास मोड सक्षम गर्नुहोस्"</string>
     <string name="vibrating_for_outgoing_call_accepted_title" msgid="647945514737734657">"बहिर्गमन कल उठाइँदा भाइब्रेट हुने सुविधा"</string>
     <string name="vibrating_for_outgoing_call_accepted_summary" msgid="906112327196063688">"बहिर्गमन कल उठाइँदा डिभाइस भाइब्रेट होस् भन्नाका लागि भाइब्रेटिङ मोड अन गर्नुहोस्"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_title" msgid="856074537423753072">"कल कनेक्ट हुँदा बज्ने टोनहरू"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_summary" msgid="2442128058517260047">"बहिर्गमन कल उठाइँदा बज्ने टोन प्ले गरिँदै छ"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"भिडियो कल गर्ने क्रममा TTY मोड परिवर्तन गर्न अनुमति छैन"</string>
     <string name="menu_add" msgid="5616487894975773141">"सम्पर्क थप्नुहोस्"</string>
     <string name="menu_edit" msgid="3593856941552460706">"सम्पर्क सम्पादन गर्नुहोस्"</string>
@@ -850,6 +852,14 @@
     <string name="simulate_out_of_service_label" msgid="3563376136603403714">"सिमुलेट उपलब्ध छैन"</string>
     <string name="enforce_satellite_channel_string" msgid="295306734591329892">"Force Camp Satellite LTE च्यानल (डिबग बिल्ड मात्र)"</string>
     <string name="enforce_satellite_channel_label" msgid="8212349350110213468">"Force Camp Satellite LTE Channel"</string>
+    <string name="starlink_satellite_band_string" msgid="2287502104005508384">"Starlink_US"</string>
+    <string name="ast_satellite_band_string" msgid="3238737906080758289">"AST_US"</string>
+    <string name="manual_override_satellite_band_string" msgid="801049975307124461">"म्यानुअल तरिकाले ओभरराइड गर्नुहोस्"</string>
+    <string name="satellite_manual_band_label" msgid="4135706517193927388">"ब्यान्ड चयन गर्नुहोस्:"</string>
+    <string name="satellite_channel_label_text" msgid="1999162483250790313">"च्यानल हाल्नुहोस्:"</string>
+    <string name="satellite_channel_hint_text" msgid="4342575738602358270">"स्याटलाइट च्यानल यहाँ हाल्नुहोस्"</string>
+    <string name="force_camp_satellite_button_string" msgid="3719311367839668322">"कनेक्ट गर्नुहोस्"</string>
+    <string name="force_camp_satellite_button_connected_string" msgid="2457912207054938894">"कनेक्ट गरिएको छ"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"सेवा प्रदायकको स्याटेलाइट मोडको परीक्षण गर्नुहोस् (डिबग बिल्ड मात्र)"</string>
     <string name="mock_carrier_roaming_satellite_label" msgid="2052656038544917979">"मक गर्नुहोस्"</string>
     <string name="choose_satellite_data_mode_label" msgid="7403013160079828226">"स्याटलाइट डेटा मक गर्ने मोड"</string>

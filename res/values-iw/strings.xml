@@ -193,7 +193,7 @@
     <string name="preferred_network_mode_dialogtitle" msgid="2781447433514459696">"סוג רשת מועדף"</string>
     <string name="forbidden_network" msgid="5081729819561333023">"(אסור)"</string>
     <string name="choose_network_title" msgid="5335832663422653082">"בחירת רשת"</string>
-    <string name="network_disconnected" msgid="8844141106841160825">"המכשיר מנותק"</string>
+    <string name="network_disconnected" msgid="8844141106841160825">"מנותק"</string>
     <string name="network_connected" msgid="2760235679963580224">"המכשיר מחובר"</string>
     <string name="network_connecting" msgid="160901383582774987">"המכשיר מתחבר…"</string>
     <string name="network_could_not_connect" msgid="6547460848093727998">"לא ניתן להתחבר"</string>
@@ -405,7 +405,7 @@
     <string name="eo_enable" msgid="107713355461019817">"מדור דרושים מופעל"</string>
     <string name="eo_disable" msgid="3955421278929647485">"מדור דרושים מושבת"</string>
     <string name="enable_disable_mhh" msgid="715930476289202466">"רפואה, בריאות ובתי חולים"</string>
-    <string name="mhh_enable" msgid="7224396815285147008">"האפשרות \'רפואה, בריאות ובתי חולים\' מופעלת"</string>
+    <string name="mhh_enable" msgid="7224396815285147008">"האפשרות \"רפואה, בריאות ובתי חולים\" מופעלת"</string>
     <string name="mhh_disable" msgid="5503643028885686265">"האפשרות \'רפואה, בריאות ובתי חולים\' מושבתת"</string>
     <string name="enable_disable_technology_news" msgid="2794845609698078400">"חדשות הטכנולוגיה"</string>
     <string name="technology_news_enable" msgid="1908991199492598311">"קטגוריית חדשות טכנולוגיה מופעלת"</string>
@@ -461,6 +461,8 @@
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"הפעלת מצב \'ניסיון חוזר\'."</string>
     <string name="vibrating_for_outgoing_call_accepted_title" msgid="647945514737734657">"רטט כששיחות יוצאות נענות"</string>
     <string name="vibrating_for_outgoing_call_accepted_summary" msgid="906112327196063688">"הפעלת הרטט כששיחות יוצאות נענות"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_title" msgid="856074537423753072">"צלילים כשהשיחה מתחברת"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_summary" msgid="2442128058517260047">"השמעת צליל כשעונים לשיחה יוצאת"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"‏שינוי מצב TTY אינו מותר במהלך שיחת וידאו"</string>
     <string name="menu_add" msgid="5616487894975773141">"הוספת איש קשר"</string>
     <string name="menu_edit" msgid="3593856941552460706">"עריכת איש קשר"</string>
@@ -479,7 +481,7 @@
     <string name="delete_fdn_contact" msgid="7027405651994507077">"מחיקת מספר חיוג קבוע"</string>
     <string name="deleting_fdn_contact" msgid="6872320570844460428">"מחיקת מספר חיוג קבוע מתבצעת..."</string>
     <string name="fdn_contact_deleted" msgid="1680714996763848838">"מספר חיוג קבוע נמחק."</string>
-    <string name="pin2_invalid" msgid="2313954262684494442">"רשימת מספרי חיוג קבועים לא עודכנה מכיוון שקוד הגישה שגוי."</string>
+    <string name="pin2_invalid" msgid="2313954262684494442">"‏רשימת ה-FDN לא עודכנה כי קוד האימות שהקלדת שגוי."</string>
     <string name="fdn_invalid_number" msgid="9067189814657840439">"‏מספר ה-FDN לא עודכן כי הוא מכיל יותר מ-<xliff:g id="FDN_NUMBER_LIMIT_LENGTH">%d</xliff:g> ספרות."</string>
     <string name="pin2_or_fdn_invalid" msgid="7542639487955868181">"רשימת מספרי החיוג הקבועים לא עודכנה. קוד הגישה היה שגוי או שמספר הטלפון נדחה."</string>
     <string name="fdn_failed" msgid="216592346853420250">"‏פעולת FDN נכשלה."</string>
@@ -541,7 +543,7 @@
     <string name="notification_network_selection_text" msgid="553288408722427659">"הרשת שנבחרה (<xliff:g id="OPERATOR_NAME">%s</xliff:g>) לא זמינה"</string>
     <string name="incall_error_power_off" msgid="8131672264311208673">"יש לבטל את מצב טיסה כדי לבצע שיחה."</string>
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"יש לבטל את מצב טיסה או להתחבר לרשת אלחוטית כדי לבצע שיחה."</string>
-    <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"הטמפרטורה של הטלפון גבוהה מדי"</b>\n\n"אי אפשר להשלים את השיחה. אפשר לנסות שוב כשהטלפון יתקרר.\n\nבינתיים אפשר להתקשר רק למספרי חירום"</string>
+    <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"הטמפרטורה של הטלפון גבוהה מדי"</b>\n\n"אי אפשר להשלים את השיחה. אפשר לנסות שוב כשהטלפון יתקרר.\n\nבינתיים אפשר להתקשר רק למספרי חירום."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"עליך לצאת ממצב חירום של התקשרות חזרה כדי לבצע שיחות שאינן שיחות חירום."</string>
     <string name="incall_error_emergency_only" msgid="8786127461027964653">"לא רשום ברשת."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"הרשת הסלולרית אינה זמינה."</string>
@@ -636,7 +638,7 @@
     <string name="ota_progress" msgid="8837259285255700132">"התכנות של הטלפון שלך מתבצע…"</string>
     <string name="ota_failure" msgid="5674217489921481576">"לא ניתן היה לתכנת את הטלפון שלך"</string>
     <string name="ota_successful" msgid="1106825981548107774">"הטלפון שלך מופעל כעת. ייתכן שיהיה צורך להמתין עד 15 דקות להפעלת השירות."</string>
-    <string name="ota_unsuccessful" msgid="8531037653803955754">"הטלפון שלך לא הופעל. \nייתכן שעליך למצוא מקום שהקליטה בו טובה יותר (ליד חלון או בחוץ). \n\nנסה שוב או התקשר לשירות לקוחות לקבלת אפשרויות נוספות."</string>
+    <string name="ota_unsuccessful" msgid="8531037653803955754">"הטלפון שלך לא הופעל. \nייתכן שעליך למצוא מקום שהקליטה בו טובה יותר (ליד חלון או בחוץ). \n\nצריך לנסות שוב או להתקשר לשירות לקוחות לקבלת אפשרויות נוספות."</string>
     <string name="ota_spc_failure" msgid="904092035241370080">"‏כשלים מרובים של SPC"</string>
     <string name="ota_call_end" msgid="8657746378290737034">"הקודם"</string>
     <string name="ota_try_again" msgid="6914781945599998550">"יש לנסות שוב"</string>
@@ -674,7 +676,7 @@
     <string name="preference_category_ringtone" msgid="8787281191375434976">"רינגטון ורטט"</string>
     <string name="pstn_connection_service_label" msgid="9200102709997537069">"‏כרטיסי SIM מובנים"</string>
     <string name="enable_video_calling_title" msgid="7246600931634161830">"הפעלת שיחות וידאו"</string>
-    <string name="enable_video_calling_dialog_msg" msgid="7141478720386203540">"‏כדי להפעיל שיחת וידאו, עליך להפעיל את \'מצב 4G LTE משופר\' ב\'הגדרות רשת\'."</string>
+    <string name="enable_video_calling_dialog_msg" msgid="7141478720386203540">"‏כדי להפעיל שיחת וידאו, צריך להפעיל את \"מצב 4G LTE משופר\" ב-\"הגדרות רשת\"."</string>
     <string name="enable_video_calling_dialog_settings" msgid="8697890611305307110">"הגדרות רשת"</string>
     <string name="enable_video_calling_dialog_close" msgid="4298929725917045270">"סגירה"</string>
     <string name="sim_label_emergency_calls" msgid="9078241989421522310">"שיחות חירום"</string>
@@ -828,10 +830,10 @@
     <string name="callFailed_already_ringing" msgid="2376603543544289303">"אי אפשר להתקשר כי יש שיחה נכנסת אחרת. צריך לענות לשיחה או לדחות אותה ורק אז לנסות להתקשר למספר אחר."</string>
     <string name="callFailed_calling_disabled" msgid="5010992739401206283">"‏אי אפשר להתקשר כי השיחות הושבתו באמצעות מאפיין המערכת ro.telephony.disable-call."</string>
     <string name="callFailed_too_many_calls" msgid="2761754044990799580">"אי אפשר להתקשר כי כבר יש שתי שיחות פעילות. צריך לנתק את אחת מהשיחות או למזג אותן לשיחת ועידה ורק אז לנסות להתקשר למספר אחר."</string>
-    <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"כדי להשתמש בשירות \'<xliff:g id="SUPP_SERVICE">%s</xliff:g>\', צריך לוודא שהחיבור לחבילת הגלישה מופעל. אפשר להפעיל אותו בהגדרות של הרשת הסלולרית."</string>
-    <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"כדי להשתמש בשירות \'<xliff:g id="SUPP_SERVICE">%s</xliff:g>\', צריך לוודא שהחיבור לחבילת הגלישה והנדידה מופעלים. אפשר להפעיל אותם בהגדרות של הרשת הסלולרית."</string>
-    <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"‏כדי להשתמש בשירות \'<xliff:g id="SUPP_SERVICE">%1$s</xliff:g>\', צריך לוודא שהחיבור לחבילת הגלישה מופעל בכרטיס ה-SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. אפשר להפעיל אותו בהגדרות של הרשת הסלולרית."</string>
-    <string name="supp_service_over_ut_precautions_roaming_dual_sim" msgid="6627654855191817965">"‏כדי להשתמש בשירות \'<xliff:g id="SUPP_SERVICE">%1$s</xliff:g>\', צריך לוודא שהחיבור לחבילת הגלישה והנדידה מופעלים בכרטיס ה-SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. אפשר להפעיל אותם בהגדרות של הרשת הסלולרית."</string>
+    <string name="supp_service_over_ut_precautions" msgid="2145018231396701311">"כדי להשתמש בשירות \"<xliff:g id="SUPP_SERVICE">%s</xliff:g>\", צריך לוודא שהחיבור לחבילת הגלישה מופעל. אפשר להפעיל אותו בהגדרות של הרשת הסלולרית."</string>
+    <string name="supp_service_over_ut_precautions_roaming" msgid="670342104569972327">"כדי להשתמש בשירות \"<xliff:g id="SUPP_SERVICE">%s</xliff:g>\", צריך לוודא שהחיבור לחבילת הגלישה והנדידה מופעלים. אפשר להפעיל אותם בהגדרות של הרשת הסלולרית."</string>
+    <string name="supp_service_over_ut_precautions_dual_sim" msgid="5166866975550910474">"‏כדי להשתמש בשירות ‘<xliff:g id="SUPP_SERVICE">%1$s</xliff:g>\', צריך לוודא שהחיבור לחבילת הגלישה מופעל בכרטיס ה-SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. אפשר להפעיל אותו בהגדרות של הרשת הסלולרית."</string>
+    <string name="supp_service_over_ut_precautions_roaming_dual_sim" msgid="6627654855191817965">"‏כדי להשתמש בשירות \"<xliff:g id="SUPP_SERVICE">%1$s</xliff:g>\", צריך לוודא שחבילת הגלישה והנדידה מופעלים בכרטיס ה-SIM <xliff:g id="SIM_NUMBER">%2$d</xliff:g>. אפשר להפעיל אותם בהגדרות של הרשת הסלולרית."</string>
     <string name="supp_service_over_ut_precautions_dialog_dismiss" msgid="5934541487903081652">"סגירה"</string>
     <string name="radio_info_data_connection_enable" msgid="6183729739783252840">"הפעלת חיבור נתונים"</string>
     <string name="radio_info_data_connection_disable" msgid="6404751291511368706">"השבת חיבור נתונים"</string>
@@ -851,6 +853,14 @@
     <string name="simulate_out_of_service_label" msgid="3563376136603403714">"סימולציה של המצב \"אין שירות\""</string>
     <string name="enforce_satellite_channel_string" msgid="295306734591329892">"‏ערוץ Force Camp Satellite LTE (רק גרסת build לניפוי באגים)"</string>
     <string name="enforce_satellite_channel_label" msgid="8212349350110213468">"‏הערוץ Force Camp Satellite LTE"</string>
+    <string name="starlink_satellite_band_string" msgid="2287502104005508384">"Starlink_US"</string>
+    <string name="ast_satellite_band_string" msgid="3238737906080758289">"AST_US"</string>
+    <string name="manual_override_satellite_band_string" msgid="801049975307124461">"שינוי ידני מברירת המחדל"</string>
+    <string name="satellite_manual_band_label" msgid="4135706517193927388">"בחירת תדר:"</string>
+    <string name="satellite_channel_label_text" msgid="1999162483250790313">"הזנת ערוץ:"</string>
+    <string name="satellite_channel_hint_text" msgid="4342575738602358270">"כאן מזינים את ערוץ הלוויין"</string>
+    <string name="force_camp_satellite_button_string" msgid="3719311367839668322">"התחברות"</string>
+    <string name="force_camp_satellite_button_connected_string" msgid="2457912207054938894">"מחובר"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"‏מצב שמדמה תקשורת לוויינית דרך ספק הסלולר (גרסת build לניפוי באגים בלבד)"</string>
     <string name="mock_carrier_roaming_satellite_label" msgid="2052656038544917979">"הדמיה"</string>
     <string name="choose_satellite_data_mode_label" msgid="7403013160079828226">"מצב שמדמה חיבור לחבילת הגלישה באמצעות לוויין"</string>

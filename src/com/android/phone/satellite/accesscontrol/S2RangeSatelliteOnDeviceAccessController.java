@@ -176,11 +176,6 @@ final class S2RangeSatelliteOnDeviceAccessController extends SatelliteOnDeviceAc
     @Nullable
     public Integer getRegionalConfigIdForLocation(@NonNull LocationToken locationToken)
             throws IOException {
-        if (!mFeatureFlags.carrierRoamingNbIotNtn()) {
-            logd("getAccessControlConfigIdForLocation: carrierRoamingNbIotNtn is disabled");
-            return null;
-        }
-
         if (locationToken instanceof LocationTokenImpl locationTokenImpl) {
             return getRegionalConfigIdForLocation(locationTokenImpl.getS2CellId());
         } else {

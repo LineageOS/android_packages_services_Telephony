@@ -461,6 +461,8 @@
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"Bật chế độ Tự động thử lại"</string>
     <string name="vibrating_for_outgoing_call_accepted_title" msgid="647945514737734657">"Rung khi cuộc gọi đi được chấp nhận"</string>
     <string name="vibrating_for_outgoing_call_accepted_summary" msgid="906112327196063688">"Bật chế độ rung khi cuộc gọi đi được chấp nhận"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_title" msgid="856074537423753072">"Âm báo cuộc gọi được kết nối"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_summary" msgid="2442128058517260047">"Phát âm báo khi cuộc gọi đi được chấp nhận"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"Không được phép thay đổi Chế độ Máy điện báo đánh chữ (TTY) trong cuộc gọi video"</string>
     <string name="menu_add" msgid="5616487894975773141">"Thêm người liên hệ"</string>
     <string name="menu_edit" msgid="3593856941552460706">"Chỉnh sửa liên hệ"</string>
@@ -583,7 +585,7 @@
     <string name="fire_type_description" msgid="6565200468934914930">"Hỏa hoạn"</string>
     <string name="description_concat_format" msgid="2014471565101724088">"%1$s, %2$s"</string>
     <string name="dialerKeyboardHintText" msgid="1115266533703764049">"Sử dụng bàn phím để quay số"</string>
-    <string name="onscreenHoldText" msgid="4025348842151665191">"Giữ"</string>
+    <string name="onscreenHoldText" msgid="4025348842151665191">"Giữ máy"</string>
     <string name="onscreenEndCallText" msgid="6138725377654842757">"Kết thúc"</string>
     <string name="onscreenShowDialpadText" msgid="658465753816164079">"Bàn phím số"</string>
     <string name="onscreenMuteText" msgid="5470306116733843621">"Tắt tiếng"</string>
@@ -850,6 +852,14 @@
     <string name="simulate_out_of_service_label" msgid="3563376136603403714">"Mô phỏng tình trạng không hoạt động"</string>
     <string name="enforce_satellite_channel_string" msgid="295306734591329892">"Buộc sử dụng kênh LTE vệ tinh khi cắm trại (chỉ dành cho Bản gỡ lỗi)"</string>
     <string name="enforce_satellite_channel_label" msgid="8212349350110213468">"Buộc sử dụng cố định kênh LTE vệ tinh"</string>
+    <string name="starlink_satellite_band_string" msgid="2287502104005508384">"Starlink_US"</string>
+    <string name="ast_satellite_band_string" msgid="3238737906080758289">"AST_US"</string>
+    <string name="manual_override_satellite_band_string" msgid="801049975307124461">"Ghi đè theo cách thủ công"</string>
+    <string name="satellite_manual_band_label" msgid="4135706517193927388">"Chọn băng tần:"</string>
+    <string name="satellite_channel_label_text" msgid="1999162483250790313">"Nhập kênh:"</string>
+    <string name="satellite_channel_hint_text" msgid="4342575738602358270">"Nhập kênh vệ tinh tại đây"</string>
+    <string name="force_camp_satellite_button_string" msgid="3719311367839668322">"Kết nối"</string>
+    <string name="force_camp_satellite_button_connected_string" msgid="2457912207054938894">"Đã kết nối"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"Mô phỏng chế độ vệ tinh của nhà mạng (chỉ dành cho Bản gỡ lỗi)"</string>
     <string name="mock_carrier_roaming_satellite_label" msgid="2052656038544917979">"Mô phỏng"</string>
     <string name="choose_satellite_data_mode_label" msgid="7403013160079828226">"Mô phỏng dữ liệu ở chế độ vệ tinh"</string>

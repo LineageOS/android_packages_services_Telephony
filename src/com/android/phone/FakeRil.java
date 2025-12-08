@@ -96,19 +96,7 @@ class FakeRil extends BaseCommands {
     public void supplyIccPin(String pin, Message result) {}
 
     @Override
-    public void supplyIccPuk(String puk, String newPin, Message result) {}
-
-    @Override
-    public void supplyIccPin2(String pin, Message result) {}
-
-    @Override
-    public void supplyIccPuk2(String puk, String newPin2, Message result) {}
-
-    @Override
     public void changeIccPin(String oldPin, String newPin, Message result) {}
-
-    @Override
-    public void changeIccPin2(String oldPin2, String newPin2, Message result) {}
 
     @Override
     public void changeBarringPassword(
@@ -244,9 +232,6 @@ class FakeRil extends BaseCommands {
     public void deleteSmsOnSim(int index, Message response) {}
 
     @Override
-    public void deleteSmsOnRuim(int index, Message response) {}
-
-    @Override
     public void writeSmsToSim(int status, String smsc, String pdu, Message response) {}
 
     @Override
@@ -270,9 +255,6 @@ class FakeRil extends BaseCommands {
 
     @Override
     public void setRadioPower(boolean on, Message result) {}
-
-    @Override
-    public void setSuppServiceNotifications(boolean enable, Message result) {}
 
     @Override
     public void acknowledgeLastIncomingGsmSms(boolean success, int cause, Message result) {}
@@ -389,12 +371,6 @@ class FakeRil extends BaseCommands {
     public void cancelPendingUssd(Message response) {}
 
     @Override
-    public void setBandMode(int bandMode, Message response) {}
-
-    @Override
-    public void queryAvailableBandMode(Message response) {}
-
-    @Override
     public void sendTerminalResponse(String contents, Message response) {}
 
     @Override
@@ -435,9 +411,6 @@ class FakeRil extends BaseCommands {
     public void reportStkServiceIsRunning(Message result) {}
 
     @Override
-    public void getCdmaSubscriptionSource(Message response) {}
-
-    @Override
     public void getGsmBroadcastConfig(Message response) {}
 
     @Override
@@ -454,28 +427,13 @@ class FakeRil extends BaseCommands {
     public void getImei(Message response) {}
 
     @Override
-    public void getCDMASubscription(Message response) {}
-
-    @Override
     public void setPhoneType(int phoneType) {}
-
-    @Override
-    public void queryCdmaRoamingPreference(Message response) {}
-
-    @Override
-    public void setCdmaRoamingPreference(int cdmaRoamingType, Message response) {}
-
-    @Override
-    public void setCdmaSubscriptionSource(int cdmaSubscription, Message response) {}
 
     @Override
     public void queryTTYMode(Message response) {}
 
     @Override
     public void setTTYMode(int ttyMode, Message response) {}
-
-    @Override
-    public void sendCDMAFeatureCode(String featureCode, Message response) {}
 
     @Override
     public void getCdmaBroadcastConfig(Message response) {}
@@ -542,9 +500,6 @@ class FakeRil extends BaseCommands {
     @Override
     public void iccTransmitApduBasicChannel(
             int cla, int instruction, int p1, int p2, int p3, String data, Message response) {}
-
-    @Override
-    public void nvWriteCdmaPrl(byte[] preferredRoamingList, Message response) {}
 
     @Override
     public void nvResetConfig(int resetType, Message response) {}

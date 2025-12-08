@@ -72,7 +72,6 @@ import android.util.Pair;
 import android.view.WindowManager;
 import android.widget.Toast;
 
-import com.android.ims.ImsManager;
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.telephony.Call;
 import com.android.internal.telephony.CallFailCause;
@@ -236,9 +235,6 @@ public class TelephonyConnectionService extends ConnectionService {
             new TelephonyConferenceController(mTelephonyConnectionServiceProxy);
     private final CdmaConferenceController mCdmaConferenceController =
             new CdmaConferenceController(this);
-
-    private com.android.server.telecom.flags.FeatureFlags mTelecomFlags =
-            new com.android.server.telecom.flags.FeatureFlagsImpl();
     private FeatureFlags mFeatureFlags = new FeatureFlagsImpl();
 
     private ImsConferenceController mImsConferenceController;
@@ -269,7 +265,6 @@ public class TelephonyConnectionService extends ConnectionService {
     private TelephonyConnection mAlternateEmergencyConnection;
     private TelephonyConnection mNormalRoutingEmergencyConnection;
     private Executor mDomainSelectionMainExecutor;
-    private ImsManager mImsManager = null;
     private DomainSelectionConnection mDomainSelectionConnection;
     private TelephonyConnection mNormalCallConnection;
     private SatelliteController mSatelliteController;
@@ -852,6 +847,11 @@ public class TelephonyConnectionService extends ConnectionService {
                                         new FlagsAdapterImpl()));
                         mEmergencyConnection.close();
 
+                        // Handled in the same way as handling the DISCONNECTED state.
+                        if (Flags.ignoreStateDetailsUpdateForDomainReselection()) {
+                            mEmergencyConnection.updateStateDetails();
+                        }
+
                         TelephonyConnection c = mEmergencyConnection;
                         mEmergencyConnection.removeTelephonyConnectionListener(
                                 mEmergencyConnectionListener);
@@ -900,6 +900,12 @@ public class TelephonyConnectionService extends ConnectionService {
                                                     new FlagsAdapterImpl()));
 
                                     mNormalCallConnection.close();
+
+                                    // Handled in the same way as handling the DISCONNECTED state.
+                                    if (Flags.ignoreStateDetailsUpdateForDomainReselection()) {
+                                        mNormalCallConnection.updateStateDetails();
+                                    }
+
                                     mNormalCallConnection = null;
                                 } else {
                                     Log.v(this, "NormalCallConnection is null.");
@@ -909,6 +915,12 @@ public class TelephonyConnectionService extends ConnectionService {
 
                             } else {
                                 Log.v(this, "DomainSelectionConnection is null.");
+
+                                // Handled in the same way as handling the DISCONNECTED state.
+                                if (mNormalCallConnection != null
+                                        && Flags.ignoreStateDetailsUpdateForDomainReselection()) {
+                                    mNormalCallConnection.updateStateDetails();
+                                }
                             }
                         }
                     });
@@ -2048,11 +2060,6 @@ public class TelephonyConnectionService extends ConnectionService {
             return Connection.createCanceledConnection();
         }
 
-        // We should rely on the originalConnection to get the video state.  The request coming
-        // from Telecom does not know the video state of the unknown call.
-        int videoState = unknownConnection != null ? unknownConnection.getVideoState() :
-                VideoProfile.STATE_AUDIO_ONLY;
-
         TelephonyConnection connection =
                 createConnectionFor(phone, unknownConnection,
                         !unknownConnection.isIncoming() /* isOutgoing */,
@@ -2190,30 +2197,25 @@ public class TelephonyConnectionService extends ConnectionService {
             if (mSatelliteController.isDemoModeEnabled()) {
                 // If user makes emergency call in demo mode, end the satellite session
                 return true;
-            } else if (mFeatureFlags.carrierRoamingNbIotNtn()
-                    && !mSatelliteController.getRequestIsEmergency()) {
+            } else if (!mSatelliteController.getRequestIsEmergency()) {
                 // If satellite is not for emergency, end the satellite session
                 return true;
             } else { // satellite is for emergency
-                if (mFeatureFlags.carrierRoamingNbIotNtn()) {
-                    int subId = mSatelliteController.getSelectedSatelliteSubId();
-                    SubscriptionInfoInternal info = SubscriptionManagerService.getInstance()
-                            .getSubscriptionInfoInternal(subId);
-                    if (info == null) {
-                        loge("satellite is/being enabled, but satellite sub "
-                                + subId + " is null");
-                        return false;
-                    }
+                int subId = mSatelliteController.getSelectedSatelliteSubId();
+                SubscriptionInfoInternal info = SubscriptionManagerService.getInstance()
+                        .getSubscriptionInfoInternal(subId);
+                if (info == null) {
+                    loge("satellite is/being enabled, but satellite sub "
+                            + subId + " is null");
+                    return false;
+                }
 
-                    if (info.getOnlyNonTerrestrialNetwork() == 1) {
-                        // OEM
-                        return getTurnOffOemEnabledSatelliteDuringEmergencyCall();
-                    } else {
-                        // Carrier
-                        return mSatelliteController.shouldTurnOffCarrierSatelliteForEmergencyCall();
-                    }
-                } else {
+                if (info.getOnlyNonTerrestrialNetwork() == 1) {
+                    // OEM
                     return getTurnOffOemEnabledSatelliteDuringEmergencyCall();
+                } else {
+                    // Carrier
+                    return mSatelliteController.shouldTurnOffCarrierSatelliteForEmergencyCall();
                 }
             }
         }
@@ -2353,6 +2355,27 @@ public class TelephonyConnectionService extends ConnectionService {
             if (phone != null) {
                 boolean isEmergency = mTelephonyManagerProxy.isCurrentEmergencyNumber(number);
                 Log.i(this, "placeOutgoingConnection isEmergency=" + isEmergency);
+
+                // When an emergency call is dialed, the dialed number should be recognized
+                // as an emergency number, and kept until the call is initiated.
+                // However, if an abnormal behavior, such as a modem crash, misidentifies
+                // the dialed number as a normal one after the domain selection, the call will be
+                // processed incorrectly. To prevent this, the current call should be disconnected
+                // normally, so the user can try again.
+                if (mEmergencyConnection == connection && !isEmergency) {
+                    Log.i(this, "placeOutgoingConnection: "
+                            + "Dialed emergency number is recognized as a non-emergency number");
+                    onLocalHangup(connection);
+                    connection.unregisterForCallEvents();
+                    connection.setTelephonyConnectionDisconnected(
+                            DisconnectCauseUtil.toTelecomDisconnectCause(
+                                    android.telephony.DisconnectCause.OUTGOING_FAILURE,
+                                    "Emergency call is placed using a non-emergency number",
+                                    phone.getPhoneId()));
+                    connection.close();
+                    return;
+                }
+
                 if (isEmergency) {
                     handleEmergencyCallStartedForSatelliteSOSMessageRecommender(connection, phone);
                     if (!getAllConnections().isEmpty()) {
@@ -2497,7 +2520,7 @@ public class TelephonyConnectionService extends ConnectionService {
 
     private int handleMmiCode(Phone phone, int telephonyDisconnectCause) {
         int disconnectCause = telephonyDisconnectCause;
-        if (phone.getPhoneType() == PhoneConstants.PHONE_TYPE_GSM
+        if ((mFeatureFlags.deleteCdma() || phone.getPhoneType() == PhoneConstants.PHONE_TYPE_GSM)
                 || phone.isUtEnabled()) {
             Log.d(this, "dialed MMI code");
             int subId = phone.getSubId();
@@ -3633,12 +3656,6 @@ public class TelephonyConnectionService extends ConnectionService {
 
     @VisibleForTesting
     public TelephonyConnection.TelephonyConnectionListener
-            getNormalRoutingEmergencyConnectionListener() {
-        return mNormalRoutingEmergencyConnectionListener;
-    }
-
-    @VisibleForTesting
-    public TelephonyConnection.TelephonyConnectionListener
             getEmergencyConnectionSatelliteListener() {
         return mEmergencyConnectionSatelliteListener;
     }
@@ -3723,7 +3740,7 @@ public class TelephonyConnectionService extends ConnectionService {
         int phoneType = phone.getPhoneType();
         int callDirection = isOutgoing ? android.telecom.Call.Details.DIRECTION_OUTGOING
                 : android.telecom.Call.Details.DIRECTION_INCOMING;
-        if (phoneType == TelephonyManager.PHONE_TYPE_GSM) {
+        if (mFeatureFlags.deleteCdma() || phoneType == TelephonyManager.PHONE_TYPE_GSM) {
             returnConnection = new GsmConnection(originalConnection, telecomCallId, callDirection);
         } else if (phoneType == TelephonyManager.PHONE_TYPE_CDMA) {
             boolean allowsMute = allowsMute(phone);
@@ -3970,41 +3987,6 @@ public class TelephonyConnectionService extends ConnectionService {
         } else {
             throw new IllegalArgumentException(
                     "addTelephonyConnectionListener(): Unexpected conferenceable! " + c);
-        }
-    }
-
-    private CompletableFuture<Boolean> listenForHoldStateChanged(
-            @NonNull Conferenceable conferenceable) {
-        CompletableFuture<Boolean> future = new CompletableFuture<>();
-        final StateHoldingListener stateHoldingListener = new StateHoldingListener(future);
-        addTelephonyConnectionListener(conferenceable, stateHoldingListener);
-        return future;
-    }
-
-    // Returns a future that waits for the STATE_HOLDING confirmation on the input
-    // {@link Conferenceable}, or times out.
-    private CompletableFuture<Void> delayDialForOtherSubHold(Phone phone, Conferenceable c,
-            Consumer<Boolean> completeConsumer) {
-        if (c == null || phone == null) {
-            // Unexpected inputs
-            completeConsumer.accept(false);
-            return CompletableFuture.completedFuture(null);
-        }
-
-        try {
-            CompletableFuture<Boolean> stateHoldingFuture = listenForHoldStateChanged(c);
-            // a timeout that will complete the future to not block the outgoing call indefinitely.
-            CompletableFuture<Boolean> timeout = new CompletableFuture<>();
-            phone.getContext().getMainThreadHandler().postDelayed(
-                    () -> timeout.complete(false), DEFAULT_DSDA_CALL_STATE_CHANGE_TIMEOUT_MS);
-            // Ensure that the Consumer is completed on the main thread.
-            return stateHoldingFuture.acceptEitherAsync(timeout, completeConsumer,
-                    phone.getContext().getMainExecutor());
-        } catch (Exception e) {
-            Log.w(this, "delayDialForOtherSubHold - exception= "
-                    + e.getMessage());
-            completeConsumer.accept(false);
-            return CompletableFuture.completedFuture(null);
         }
     }
 
@@ -4415,6 +4397,7 @@ public class TelephonyConnectionService extends ConnectionService {
     private boolean allowsMute(Phone phone) {
         // For CDMA phones, check if we are in Emergency Callback Mode (ECM).  Mute is disallowed
         // in ECM mode.
+        if (mFeatureFlags.deleteCdma()) return true;
         if (phone.getPhoneType() == TelephonyManager.PHONE_TYPE_CDMA) {
             if (phone.isInEcm()) {
                 return false;
@@ -4445,22 +4428,28 @@ public class TelephonyConnectionService extends ConnectionService {
             Log.d(this, "Adding IMS connection to conference controller: " + connection);
             mImsConferenceController.add(connection);
             mTelephonyConferenceController.remove(connection);
-            if (connection instanceof CdmaConnection) {
-                mCdmaConferenceController.remove((CdmaConnection) connection);
-            }
-        } else {
-            int phoneType = connection.getCall().getPhone().getPhoneType();
-            if (phoneType == TelephonyManager.PHONE_TYPE_GSM) {
-                Log.d(this, "Adding GSM connection to conference controller: " + connection);
-                mTelephonyConferenceController.add(connection);
+            if (!mFeatureFlags.deleteCdma()) {
                 if (connection instanceof CdmaConnection) {
                     mCdmaConferenceController.remove((CdmaConnection) connection);
                 }
+            }
+        } else {
+            int phoneType = connection.getCall().getPhone().getPhoneType();
+            if (mFeatureFlags.deleteCdma() || phoneType == TelephonyManager.PHONE_TYPE_GSM) {
+                Log.d(this, "Adding GSM connection to conference controller: " + connection);
+                mTelephonyConferenceController.add(connection);
+                if (!mFeatureFlags.deleteCdma()) {
+                    if (connection instanceof CdmaConnection) {
+                        mCdmaConferenceController.remove((CdmaConnection) connection);
+                    }
+                }
             } else if (phoneType == TelephonyManager.PHONE_TYPE_CDMA &&
                     connection instanceof CdmaConnection) {
-                Log.d(this, "Adding CDMA connection to conference controller: " + connection);
-                mCdmaConferenceController.add((CdmaConnection) connection);
-                mTelephonyConferenceController.remove(connection);
+                if (!mFeatureFlags.deleteCdma()) {
+                    Log.d(this, "Adding CDMA connection to conference controller: " + connection);
+                    mCdmaConferenceController.add((CdmaConnection) connection);
+                    mTelephonyConferenceController.remove(connection);
+                }
             }
             Log.d(this, "Removing connection from IMS conference controller: " + connection);
             mImsConferenceController.remove(connection);
@@ -4476,6 +4465,7 @@ public class TelephonyConnectionService extends ConnectionService {
      * the right circumstances to support adding a call.
      */
     private Connection checkAdditionalOutgoingCallLimits(Phone phone) {
+        if (mFeatureFlags.deleteCdma()) return null;
         if (phone.getPhoneType() == TelephonyManager.PHONE_TYPE_CDMA) {
             // Check to see if any CDMA conference calls exist, and if they do, check them for
             // limitations.
@@ -4955,7 +4945,6 @@ public class TelephonyConnectionService extends ConnectionService {
     public void setFeatureFlags(FeatureFlags featureFlags,
             com.android.server.telecom.flags.FeatureFlags telecomFlags) {
         mFeatureFlags = featureFlags;
-        mTelecomFlags = telecomFlags;
     }
 
     private void loge(String s) {

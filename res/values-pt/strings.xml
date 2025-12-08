@@ -126,7 +126,7 @@
     <string name="disable_cfnrc_forbidden" msgid="775348748084726890">"Sua operadora não suporta a desativação do encaminhamento de chamada quando seu telefone não está acessível."</string>
     <string name="registration_cf_forbidden" msgid="4386482610771190420">"Sua operadora não é compatível com o encaminhamento de chamada."</string>
     <string name="cdma_call_waiting" msgid="4565070960879673216">"Ativar chamada em espera?"</string>
-    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"Durante uma chamada, você receberá notificações das chamadas recebidas"</string>
+    <string name="enable_cdma_call_waiting_setting" msgid="5906811747921744307">"Durante uma chamada, você receberá notificações das ligações recebidas"</string>
     <string name="enable_cdma_cw" msgid="811047045863422232">"Ativar"</string>
     <string name="disable_cdma_cw" msgid="7119290446496301734">"Cancelar"</string>
     <string name="cdma_call_waiting_in_ims_on" msgid="6390979414188659218">"A chamada CDMA em espera está ativada no IMS"</string>
@@ -461,6 +461,8 @@
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"Ativar modo Repetir automaticamente"</string>
     <string name="vibrating_for_outgoing_call_accepted_title" msgid="647945514737734657">"Vibração para ligações efetuadas"</string>
     <string name="vibrating_for_outgoing_call_accepted_summary" msgid="906112327196063688">"Ativar o modo de vibração ao fazer ligações"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_title" msgid="856074537423753072">"Sons de chamada conectada"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_summary" msgid="2442128058517260047">"Tocando o som para ligações efetuadas aceitas"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"Não é permitida a alteração do modo TTD durante uma videochamada"</string>
     <string name="menu_add" msgid="5616487894975773141">"Adicionar contato"</string>
     <string name="menu_edit" msgid="3593856941552460706">"Editar contato"</string>
@@ -528,7 +530,7 @@
     <string name="card_title_dialing" msgid="8742182654254431781">"Chamando..."</string>
     <string name="card_title_redialing" msgid="18130232613559964">"Rediscando"</string>
     <string name="card_title_conf_call" msgid="901197309274457427">"Teleconferência"</string>
-    <string name="card_title_incoming_call" msgid="881424648458792430">"Recebendo chamada"</string>
+    <string name="card_title_incoming_call" msgid="881424648458792430">"Recebendo ligação"</string>
     <string name="card_title_call_ended" msgid="650223980095026340">"Chamada encerrada"</string>
     <string name="card_title_on_hold" msgid="9028319436626975207">"Em espera"</string>
     <string name="card_title_hanging_up" msgid="814874106866647871">"Desligando"</string>
@@ -543,7 +545,7 @@
     <string name="incall_error_power_off_wfc" msgid="9125661184694727052">"Desative o modo avião ou conecte-se a uma rede sem fio para fazer uma chamada."</string>
     <string name="incall_error_power_off_thermal" product="default" msgid="8695809601655300168"><b>"O smartphone está muito quente"</b>\n\n"Não é possível completar esta chamada. Tente de novo quando seu smartphone esfriar.\n\nVocê ainda pode fazer chamadas de emergência."</string>
     <string name="incall_error_ecm_emergency_only" msgid="5622379058883722080">"Saia do modo de retorno de chamada de emergência para fazer uma chamada que não seja de emergência."</string>
-    <string name="incall_error_emergency_only" msgid="8786127461027964653">"Não registrado na rede."</string>
+    <string name="incall_error_emergency_only" msgid="8786127461027964653">"Não registrada na rede."</string>
     <string name="incall_error_out_of_service" msgid="1927265196942672791">"Rede móvel não disponível."</string>
     <string name="incall_error_out_of_service_2g" msgid="904434080740846116">"Rede móvel indisponível.\n\nConecte-se a uma rede sem fio para fazer uma ligação.\n\nO 2G está desativado neste dispositivo e isso pode afetar sua conectividade. Acesse \"Configurações\" e ative a opção \"Permitir 2G\" para continuar."</string>
     <string name="incall_error_out_of_service_wfc" msgid="4497663185857190885">"A rede móvel não está disponível. Conecte-se a uma rede sem fio para fazer uma chamada."</string>
@@ -625,7 +627,7 @@
     <string name="ota_hfa_activation_title" msgid="3300556778212729671">"Ativando…"</string>
     <string name="ota_hfa_activation_dialog_message" msgid="7921718445773342996">"O telefone está ativando o serviço de dados móveis.\n\nIsso pode levar até 5 minutos."</string>
     <string name="ota_skip_activation_dialog_title" msgid="7666611236789203797">"Ignorar ativação?"</string>
-    <string name="ota_skip_activation_dialog_message" msgid="6691722887019708713">"Se você ignorar a ativação, não poderá fazer chamadas ou se conectar a redes móveis de dados (embora possa se conectar a redes Wi-Fi). Até que o seu telefone seja ativado, você receberá solicitações de ativação sempre que o ligar."</string>
+    <string name="ota_skip_activation_dialog_message" msgid="6691722887019708713">"Se você ignorar a ativação, não poderá fazer chamadas ou se conectar a redes móveis de dados, mas poderá se conectar a redes Wi-Fi. Até que o seu telefone seja ativado, você receberá solicitações de ativação sempre que o ligar."</string>
     <string name="ota_skip_activation_dialog_skip_label" msgid="5908029466817825633">"Ignorar"</string>
     <string name="ota_activate" msgid="7939695753665438357">"Ativar"</string>
     <string name="ota_title_activate_success" msgid="1272135024761004889">"O telefone está ativado."</string>
@@ -685,7 +687,7 @@
     <string name="message_decode_error" msgid="1061856591500290887">"Ocorreu um erro ao decodificar a mensagem."</string>
     <string name="callFailed_cdma_activation" msgid="5392057031552253550">"Um chip ativou seu serviço e atualizou os recursos de roaming do smartphone."</string>
     <string name="callFailed_cdma_call_limit" msgid="1074219746093031412">"Há muitas chamadas ativas. Finalize ou mescle as chamadas existentes antes de fazer uma nova."</string>
-    <string name="callFailed_imei_not_accepted" msgid="7257903653685147251">"Não é possível conectar-se, insira um chip válido."</string>
+    <string name="callFailed_imei_not_accepted" msgid="7257903653685147251">"Não foi possível conectar. Insira um chip válido."</string>
     <string name="callFailed_wifi_lost" msgid="1788036730589163141">"Conexão Wi-Fi perdida. Chamada encerrada."</string>
     <string name="dialFailed_low_battery" msgid="6857904237423407056">"Não é possível fazer sua videochamada devido à bateria baixa."</string>
     <string name="callFailed_low_battery" msgid="4056828320214416182">"A videochamada foi encerrada devido à bateria baixa."</string>
@@ -705,8 +707,8 @@
     <string name="change_pin_system_error" msgid="7772788809875146873">"Não foi possível definir o PIN"</string>
     <string name="mobile_data_status_roaming_turned_off_subtext" msgid="6840673347416227054">"O roaming de dados está desativado"</string>
     <string name="mobile_data_status_roaming_turned_on_subtext" msgid="5615757897768777865">"O roaming de dados está ativado"</string>
-    <string name="mobile_data_status_roaming_without_plan_subtext" msgid="6536671968072284677">"Em roaming no momento: é necessário um plano de dados"</string>
-    <string name="mobile_data_status_roaming_with_plan_subtext" msgid="2576177169108123095">"Em roaming no momento: o plano de dados está ativo"</string>
+    <string name="mobile_data_status_roaming_without_plan_subtext" msgid="6536671968072284677">"Em roaming no momento. É necessário um plano de dados"</string>
+    <string name="mobile_data_status_roaming_with_plan_subtext" msgid="2576177169108123095">"Em roaming no momento. O plano de dados está ativo"</string>
     <string name="mobile_data_status_no_plan_subtext" msgid="170331026419263657">"Nenhum plano de dados móveis restante"</string>
     <string name="mobile_data_activate_prepaid" msgid="4276738964416795596">"Nenhum plano de dados móveis restante"</string>
     <string name="mobile_data_activate_prepaid_summary" msgid="6846085278531605925">"Adicionar plano de dados móveis pela operadora <xliff:g id="PROVIDER_NAME">%s</xliff:g>"</string>
@@ -850,6 +852,14 @@
     <string name="simulate_out_of_service_label" msgid="3563376136603403714">"Simular o modo fora de serviço"</string>
     <string name="enforce_satellite_channel_string" msgid="295306734591329892">"Forçar o canal LTE de satélite do grupo (somente build de depuração)"</string>
     <string name="enforce_satellite_channel_label" msgid="8212349350110213468">"Forçar o canal LTE de satélite do grupo"</string>
+    <string name="starlink_satellite_band_string" msgid="2287502104005508384">"Starlink_US"</string>
+    <string name="ast_satellite_band_string" msgid="3238737906080758289">"AST_US"</string>
+    <string name="manual_override_satellite_band_string" msgid="801049975307124461">"Substituição manual"</string>
+    <string name="satellite_manual_band_label" msgid="4135706517193927388">"Selecionar banda:"</string>
+    <string name="satellite_channel_label_text" msgid="1999162483250790313">"Inserir canal:"</string>
+    <string name="satellite_channel_hint_text" msgid="4342575738602358270">"Insira o canal de satélite aqui"</string>
+    <string name="force_camp_satellite_button_string" msgid="3719311367839668322">"Conectar"</string>
+    <string name="force_camp_satellite_button_connected_string" msgid="2457912207054938894">"Conectado"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"Simulação de modo satélite da operadora (somente build de depuração)"</string>
     <string name="mock_carrier_roaming_satellite_label" msgid="2052656038544917979">"Simulação"</string>
     <string name="choose_satellite_data_mode_label" msgid="7403013160079828226">"Simulação do modo de dados de satélite"</string>
@@ -939,7 +949,7 @@
     <string name="band_mode_loading" msgid="795923726636735967">"Carregando a lista de bandas…"</string>
     <string name="band_mode_set" msgid="6657819412803771421">"Definir"</string>
     <string name="band_mode_failed" msgid="1707488541847192924">"Falha"</string>
-    <string name="band_mode_succeeded" msgid="2230018000534761063">"Concluído"</string>
+    <string name="band_mode_succeeded" msgid="2230018000534761063">"Tudo certo"</string>
     <string name="phone_info_label" product="tablet" msgid="7477478709388477397">"Informações do tablet"</string>
     <string name="phone_info_label" product="default" msgid="1784175881556791433">"Informações do telefone"</string>
     <string name="tab_title_device_details" msgid="6988777232978544580">"DETALHES DO DISPOSITIVO"</string>

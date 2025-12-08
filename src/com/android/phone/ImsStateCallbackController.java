@@ -290,15 +290,6 @@ public class ImsStateCallbackController {
             if (mSubId == subId) return;
             logd(mLogPrefix + "setSubId changed subId=" + subId);
 
-            if (!mFeatureFlags.avoidDeletingImsObjectFromCache()) {
-                // subId changed from valid to invalid
-                if (subId == SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
-                    if (VDBG) logv(mLogPrefix + "setSubId remove ImsManager " + mSubId);
-                    // remove ImsManager reference associated with subId
-                    mSubIdToImsManagerCache.remove(mSubId);
-                }
-            }
-
             mSubId = subId;
         }
 

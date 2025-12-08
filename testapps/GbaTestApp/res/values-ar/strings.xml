@@ -18,7 +18,7 @@
     <string name="service_release_time" msgid="532937496122890892">"المدة الزمنية المتبقية قبل تفعيل الخدمة بعد الاتصال"</string>
     <string name="request_app_type" msgid="3975978141673475612">"‏نوع تطبيق UICC"</string>
     <string name="request_naf_url" msgid="4487793541217737042">"‏عنوان URL لوظيفة التطبيقات على الشبكة (NAF)"</string>
-    <string name="request_force_bootstrapping" msgid="206043602616214325">"هل تريد فرض التشغيل التمهيدي؟"</string>
+    <string name="request_force_bootstrapping" msgid="206043602616214325">"فرض التشغيل التمهيدي؟"</string>
     <string name="request_org" msgid="8416693445448308975">"رمز المؤسسة"</string>
     <string name="request_security_protocol" msgid="1444164827561010482">"‏رقم تعريف بروتوكول أمان UA"</string>
     <string name="request_tls_cipher_suite" msgid="6659854717595308404">"رقم تعريف حزمة رموز طبقة النقل الآمنة"</string>

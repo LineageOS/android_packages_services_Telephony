@@ -38,6 +38,7 @@ import android.util.Log;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.TelephonyIntents;
+import com.android.internal.telephony.flags.Flags;
 import com.android.internal.telephony.util.NotificationChannelController;
 
 import java.text.SimpleDateFormat;
@@ -76,7 +77,8 @@ public class EmergencyCallbackModeService extends Service {
     public void onCreate() {
          Phone phoneInEcm = PhoneGlobals.getInstance().getPhoneInEcm();
         // Check if it is CDMA phone
-        if (phoneInEcm == null || ((phoneInEcm.getPhoneType() != PhoneConstants.PHONE_TYPE_CDMA)
+        if (phoneInEcm == null || ((Flags.deleteCdma()
+                || phoneInEcm.getPhoneType() != PhoneConstants.PHONE_TYPE_CDMA)
                 && (phoneInEcm.getImsPhone() == null))) {
             Log.e(LOG_TAG, "Error! Emergency Callback Mode not supported for " + phoneInEcm);
             stopSelf();

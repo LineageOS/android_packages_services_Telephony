@@ -72,6 +72,29 @@
             android:text="@string/no_LockTo_TELUS"
             android:textAlignment="center"
             android:textAllCaps="false" />
+
+        <EditText
+            android:id="@+id/multipleCarrierLockBtn"
+            android:layout_marginTop="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/carrier_lock_entry_hint"
+            android:inputType="number"
+            android:digits="0123456789, "
+            android:padding="12dp"
+            android:textColorHint="#888888"
+            android:autofillHints=""
+            android:textSize="18sp" />
+
+    <Button
+            android:id="@+id/submitLocks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/submit_custom_lock_codes"
+            android:textAlignment="center"
+            android:enabled="false"
+            android:textAllCaps="false" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

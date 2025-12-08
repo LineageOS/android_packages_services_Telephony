@@ -36,9 +36,7 @@ import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.telecom.PhoneAccount;
 import android.telecom.PhoneAccountHandle;
-import android.telecom.VideoProfile;
 import android.telephony.CarrierConfigManager;
-import android.telephony.PhoneNumberUtils;
 import android.telephony.SubscriptionManager;
 import android.text.TextUtils;
 import android.util.Log;
@@ -51,14 +49,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.internal.telephony.Call;
-import com.android.internal.telephony.CallStateException;
-import com.android.internal.telephony.Connection;
 import com.android.internal.telephony.IccCard;
 import com.android.internal.telephony.MmiCode;
 import com.android.internal.telephony.Phone;
-import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.PhoneFactory;
-import com.android.internal.telephony.TelephonyCapabilities;
 import com.android.phone.settings.SuppServicesUiUtil;
 import com.android.telephony.Rlog;
 
@@ -76,17 +70,9 @@ public class PhoneUtils {
     // Do not check in with VDBG = true, since that may write PII to the system log.
     private static final boolean VDBG = false;
 
-    // Return codes from placeCall()
-    public static final int CALL_STATUS_DIALED = 0;  // The number was successfully dialed
-    public static final int CALL_STATUS_DIALED_MMI = 1;  // The specified number was an MMI code
-    public static final int CALL_STATUS_FAILED = 2;  // The call failed
-
     // USSD string length for MMI operations
     static final int MIN_USSD_LEN = 1;
     static final int MAX_USSD_LEN = 160;
-
-    /** Define for not a special CNAP string */
-    private static final int CNAP_SPECIAL_CASE_NO = -1;
 
     /** Define for default vibrate pattern if res cannot be found */
     private static final long[] DEFAULT_VIBRATE_PATTERN = {0, 250, 250, 250};
@@ -107,118 +93,6 @@ public class PhoneUtils {
 
     /** This class is never instantiated. */
     private PhoneUtils() {
-    }
-
-    /**
-     * For a CDMA phone, advance the call state upon making a new
-     * outgoing call.
-     *
-     * <pre>
-     *   IDLE -> SINGLE_ACTIVE
-     * or
-     *   SINGLE_ACTIVE -> THRWAY_ACTIVE
-     * </pre>
-     * @param app The phone instance.
-     */
-    private static void updateCdmaCallStateOnNewOutgoingCall(PhoneGlobals app,
-            Connection connection) {
-        if (app.cdmaPhoneCallState.getCurrentCallState() ==
-            CdmaPhoneCallState.PhoneCallState.IDLE) {
-            // This is the first outgoing call. Set the Phone Call State to ACTIVE
-            app.cdmaPhoneCallState.setCurrentCallState(
-                CdmaPhoneCallState.PhoneCallState.SINGLE_ACTIVE);
-        } else {
-            // This is the second outgoing call. Set the Phone Call State to 3WAY
-            app.cdmaPhoneCallState.setCurrentCallState(
-                CdmaPhoneCallState.PhoneCallState.THRWAY_ACTIVE);
-
-            // TODO: Remove this code.
-            //app.getCallModeler().setCdmaOutgoing3WayCall(connection);
-        }
-    }
-
-    /**
-     * Dial the number using the phone passed in.
-     *
-     * @param context To perform the CallerInfo query.
-     * @param phone the Phone object.
-     * @param number to be dialed as requested by the user. This is
-     * NOT the phone number to connect to. It is used only to build the
-     * call card and to update the call log. See above for restrictions.
-     *
-     * @return either CALL_STATUS_DIALED or CALL_STATUS_FAILED
-     */
-    public static int placeOtaspCall(Context context, Phone phone, String number) {
-        final Uri gatewayUri = null;
-
-        if (VDBG) {
-            log("placeCall()... number: '" + number + "'"
-                    + ", GW:'" + gatewayUri + "'");
-        } else {
-            log("placeCall()... number: " + toLogSafePhoneNumber(number)
-                    + ", GW: " + (gatewayUri != null ? "non-null" : "null"));
-        }
-        final PhoneGlobals app = PhoneGlobals.getInstance();
-
-        boolean useGateway = false;
-        Uri contactRef = null;
-
-        int status = CALL_STATUS_DIALED;
-        Connection connection;
-        String numberToDial;
-        numberToDial = number;
-
-        try {
-            connection = app.mCM.dial(phone, numberToDial, VideoProfile.STATE_AUDIO_ONLY);
-        } catch (CallStateException ex) {
-            // CallStateException means a new outgoing call is not currently
-            // possible: either no more call slots exist, or there's another
-            // call already in the process of dialing or ringing.
-            Log.w(LOG_TAG, "Exception from app.mCM.dial()", ex);
-            return CALL_STATUS_FAILED;
-
-            // Note that it's possible for CallManager.dial() to return
-            // null *without* throwing an exception; that indicates that
-            // we dialed an MMI (see below).
-        }
-
-        int phoneType = phone.getPhoneType();
-
-        // On GSM phones, null is returned for MMI codes
-        if (null == connection) {
-            status = CALL_STATUS_FAILED;
-        } else {
-            if (phoneType == PhoneConstants.PHONE_TYPE_CDMA) {
-                updateCdmaCallStateOnNewOutgoingCall(app, connection);
-            }
-        }
-
-        return status;
-    }
-
-    /* package */ static String toLogSafePhoneNumber(String number) {
-        // For unknown number, log empty string.
-        if (number == null) {
-            return "";
-        }
-
-        if (VDBG) {
-            // When VDBG is true we emit PII.
-            return number;
-        }
-
-        // Do exactly same thing as Uri#toSafeString() does, which will enable us to compare
-        // sanitized phone numbers.
-        StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < number.length(); i++) {
-            char c = number.charAt(i);
-            if (c == '-' || c == '@' || c == '.') {
-                builder.append(c);
-            } else {
-                builder.append('x');
-            }
-        }
-        return builder.toString();
     }
 
     /**
@@ -626,7 +500,7 @@ public class PhoneUtils {
      *         if the current pending MMI wasn't cancelable
      *         or if there was no current pending MMI at all.
      *
-     * @see displayMMIInitiate
+     * @see #displayMMIInitiate(Context, MmiCode, Message, Dialog)
      */
     static boolean cancelMmiCode(Phone phone) {
         List<? extends MmiCode> pendingMmis = phone.getPendingMmiCodes();
@@ -652,39 +526,6 @@ public class PhoneUtils {
     //
     // Misc UI policy helper functions
     //
-
-    /**
-     * Check if a phone number can be route through a 3rd party
-     * gateway. The number must be a global phone number in numerical
-     * form (1-800-666-SEXY won't work).
-     *
-     * MMI codes and the like cannot be used as a dial number for the
-     * gateway either.
-     *
-     * @param number To be dialed via a 3rd party gateway.
-     * @return true If the number can be routed through the 3rd party network.
-     */
-    private static boolean isRoutableViaGateway(String number) {
-        if (TextUtils.isEmpty(number)) {
-            return false;
-        }
-        number = PhoneNumberUtils.stripSeparators(number);
-        if (!number.equals(PhoneNumberUtils.convertKeypadLettersToDigits(number))) {
-            return false;
-        }
-        number = PhoneNumberUtils.extractNetworkPortion(number);
-        return PhoneNumberUtils.isGlobalPhoneNumber(number);
-    }
-
-    /**
-     * Returns whether the phone is in ECM ("Emergency Callback Mode") or not.
-     */
-    /* package */ static boolean isPhoneInEcm(Phone phone) {
-        if ((phone != null) && TelephonyCapabilities.supportsEcm(phone)) {
-            return phone.isInEcm();
-        }
-        return false;
-    }
 
     /**
      * Returns true when the given call is in INCOMING state and there's no foreground phone call,

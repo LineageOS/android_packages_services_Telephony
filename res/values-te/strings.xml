@@ -461,6 +461,8 @@
     <string name="auto_retry_mode_summary" msgid="2863919925349511402">"స్వీయ-పునఃప్రయత్నం మోడ్‌ను ప్రారంభించండి"</string>
     <string name="vibrating_for_outgoing_call_accepted_title" msgid="647945514737734657">"అవుట్‌గోయింగ్ కాల్ స్వీకరణ సందర్భంలో వైబ్రేటింగ్"</string>
     <string name="vibrating_for_outgoing_call_accepted_summary" msgid="906112327196063688">"అవుట్‌గోయింగ్ కాల్‌ స్వీకరణ సందర్భంలో వైబ్రేటింగ్ మోడ్ ఎనేబుల్ చేయండి"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_title" msgid="856074537423753072">"కాల్ కనెక్టెడ్ టోన్‌లు"</string>
+    <string name="playing_tone_for_outgoing_call_accepted_summary" msgid="2442128058517260047">"అవుట్‌గోయింగ్ కాల్ కోసం, ప్లే అవుతున్న టోన్ అంగీకరించబడింది"</string>
     <string name="tty_mode_not_allowed_video_call" msgid="6551976083652752815">"వీడియో కాల్ సమయంలో TTY మోడ్ మార్పు అనుమతించబడదు"</string>
     <string name="menu_add" msgid="5616487894975773141">"కాంటాక్ట్‌ను జోడించండి"</string>
     <string name="menu_edit" msgid="3593856941552460706">"కాంటాక్ట్‌ను ఎడిట్ చేయండి"</string>
@@ -638,7 +640,7 @@
     <string name="ota_unsuccessful" msgid="8531037653803955754">"మీ ఫోన్ సక్రియం చేయబడలేదు. \nమీరు మెరుగైన కవరేజీ గల ప్రాంతాన్ని (కిటికీ దగ్గర లేదా వెలుపల) కనుగొనాల్సి ఉంటుంది. \n\nమళ్లీ ట్రై చేయండి లేదా మరిన్ని ఎంపికల కోసం కస్టమర్ సేవకు కాల్ చేయండి."</string>
     <string name="ota_spc_failure" msgid="904092035241370080">"అత్యధిక SPC వైఫల్యాలు"</string>
     <string name="ota_call_end" msgid="8657746378290737034">"వెనుకకు"</string>
-    <string name="ota_try_again" msgid="6914781945599998550">"మళ్లీ ప్రయత్నించు"</string>
+    <string name="ota_try_again" msgid="6914781945599998550">"మళ్లీ ట్రై చేయండి"</string>
     <string name="ota_next" msgid="2041016619313475914">"తదుపరి"</string>
     <string name="ecm_exit_dialog" msgid="4200691880721429078">"EcmExitDialog"</string>
     <string name="phone_entered_ecm_text" msgid="8431238297843035842">"అత్యవసర కాల్‌బ్యాక్ మోడ్‌లోకి ప్రవేశించింది"</string>
@@ -850,6 +852,14 @@
     <string name="simulate_out_of_service_label" msgid="3563376136603403714">"సర్వీస్‌లో లేని వాటిని సిమ్యులేట్ చేయండి"</string>
     <string name="enforce_satellite_channel_string" msgid="295306734591329892">"ఫోర్స్ క్యాంప్ శాటిలైట్ LTE ఛానెల్ (డీబగ్ బిల్డ్ మోడ్‌లో మాత్రమే)"</string>
     <string name="enforce_satellite_channel_label" msgid="8212349350110213468">"ఫోర్స్ క్యాంప్ శాటిలైట్ LTE ఛానల్"</string>
+    <string name="starlink_satellite_band_string" msgid="2287502104005508384">"Starlink_US"</string>
+    <string name="ast_satellite_band_string" msgid="3238737906080758289">"AST_US"</string>
+    <string name="manual_override_satellite_band_string" msgid="801049975307124461">"మాన్యువల్ ఓవర్‌రైడ్"</string>
+    <string name="satellite_manual_band_label" msgid="4135706517193927388">"బ్యాండ్‌ను ఎంచుకోండి:"</string>
+    <string name="satellite_channel_label_text" msgid="1999162483250790313">"ఛానెల్‌ను ఎంటర్ చేయండి:"</string>
+    <string name="satellite_channel_hint_text" msgid="4342575738602358270">"శాటిలైట్ ఛానెల్‌ను ఇక్కడ ఎంటర్ చేయండి"</string>
+    <string name="force_camp_satellite_button_string" msgid="3719311367839668322">"కనెక్ట్ చేయండి"</string>
+    <string name="force_camp_satellite_button_connected_string" msgid="2457912207054938894">"కనెక్ట్ చేయబడింది"</string>
     <string name="mock_carrier_roaming_satellite_string" msgid="4796300252858292593">"మాక్ క్యారియర్ శాటిలైట్ మోడ్ (డీబగ్ బిల్డ్ మోడ్‌లో మాత్రమే)"</string>
     <string name="mock_carrier_roaming_satellite_label" msgid="2052656038544917979">"మాక్"</string>
     <string name="choose_satellite_data_mode_label" msgid="7403013160079828226">"మాక్ శాటిలైట్ డేటా మోడ్"</string>
