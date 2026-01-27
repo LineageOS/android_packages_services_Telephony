@@ -8686,6 +8686,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     @Override
     @TelephonyManager.SetCarrierRestrictionResult
     public int setAllowedCarriers(CarrierRestrictionRules carrierRestrictionRules) {
+        // Shell has MODIFY_PHONE_STATE permission even without root
+        // But we don't want adb shell to disable carrier restrictions
+        if (TelephonyPermissions.isShell(Binder.getCallingUid())) {
+            throw new SecurityException("setAllowedCarriers cannot be invoked by shell");
+        }
         enforceModifyPermission();
 
         enforceTelephonyFeatureWithException(getCurrentPackageName(),
