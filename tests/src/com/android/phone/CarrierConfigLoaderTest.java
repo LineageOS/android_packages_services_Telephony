@@ -40,6 +40,7 @@ import android.os.HandlerThread;
 import android.os.Message;
 import android.os.PersistableBundle;
 import android.os.UserHandle;
+import android.os.test.FakePermissionEnforcer;
 import android.service.carrier.CarrierIdentifier;
 import android.telephony.CarrierConfigManager;
 import android.telephony.SubscriptionManager;
@@ -89,8 +90,14 @@ public class CarrierConfigLoaderTest extends TelephonyTestBase {
     private TelephonyManager mTelephonyManager;
     private CarrierConfigLoader mCarrierConfigLoader;
     private Handler mHandler;
-    private HandlerThread mHandlerThread;
-    private TestableLooper mTestableLooper;
+    private int mCapturedCarrierId;
+    private int mCapturedCarrierServiceUid;
+    private int[] mCapturedPackageUids;
+    private int mFakeCallingUid;
+    private boolean mFakeIsSdkSandboxUid;
+
+    // The AIDL stub will use PermissionEnforcer to check permission from the caller.
+    private FakePermissionEnforcer mFakePermissionEnforcer = new FakePermissionEnforcer();
 
     @Before
     public void setUp() throws Exception {
@@ -114,13 +121,33 @@ public class CarrierConfigLoaderTest extends TelephonyTestBase {
                 eq(PLATFORM_CARRIER_CONFIG_PACKAGE), eq(0) /*flags*/);
         doReturn(PLATFORM_CARRIER_CONFIG_PACKAGE_VERSION_CODE).when(
                 mPackageInfo).getLongVersionCode();
+        doReturn(true).when(mContext).bindServiceAsUser(
+                any(Intent.class), any(ServiceConnection.class), anyInt(), any(UserHandle.class));
 
-        mHandlerThread = new HandlerThread("CarrierConfigLoaderTest");
-        mHandlerThread.start();
+        mCarrierConfigLoader = new CarrierConfigLoader(mContext, mTestLooper, mFeatureFlags) {
+            @Override
+            public boolean isUserBuild() {
+                return true;
+            }
 
-        mTestableLooper = new TestableLooper(mHandlerThread.getLooper());
-        mCarrierConfigLoader = new CarrierConfigLoader(mContext, mSubscriptionInfoUpdater,
-                mTestableLooper.getLooper());
+            @Override
+            protected void writeCarrierServiceConfigOverridesReported(int carrierId,
+                    int carrierServiceUid, int[] packageUids) {
+                mCapturedCarrierId = carrierId;
+                mCapturedCarrierServiceUid = carrierServiceUid;
+                mCapturedPackageUids = packageUids;
+            }
+
+            @Override
+            protected int getBinderCallingUid() {
+                return mFakeCallingUid;
+            }
+
+            @Override
+            protected boolean isSdkSandboxUidInternal(int uid) {
+                return mFakeIsSdkSandboxUid;
+            }
+        };
         mHandler = mCarrierConfigLoader.getHandler();
 
         // Clear all configs to have the same starting point.
@@ -394,5 +421,16 @@ public class CarrierConfigLoaderTest extends TelephonyTestBase {
         doReturn(hasCarrierPrivileges ? TelephonyManager.CARRIER_PRIVILEGE_STATUS_HAS_ACCESS
                 : TelephonyManager.CARRIER_PRIVILEGE_STATUS_NO_ACCESS).when(
                 mockTelephonyManager).getCarrierPrivilegeStatus(anyInt());
+    }
+
+    @Test
+    public void testOverrideConfig_persistent_sdkSandboxUid_securityException() {
+        mFakePermissionEnforcer.grant(android.Manifest.permission.MODIFY_PHONE_STATE);
+        mFakeCallingUid = 25000; // Some UID in SDK Sandbox range
+        mFakeIsSdkSandboxUid = true;
+
+        assertThrows(SecurityException.class,
+                () -> mCarrierConfigLoader.overrideConfig(DEFAULT_SUB_ID, new PersistableBundle(),
+                        true/*persistent*/));
     }
 }
