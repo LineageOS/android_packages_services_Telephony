@@ -108,6 +108,11 @@ public class CarrierConfigLoaderTest extends TelephonyTestBase {
     private TelephonyManager mTelephonyManager;
     private CarrierConfigLoader mCarrierConfigLoader;
     private Handler mHandler;
+    private int mCapturedCarrierId;
+    private int mCapturedCarrierServiceUid;
+    private int[] mCapturedPackageUids;
+    private int mFakeCallingUid;
+    private boolean mFakeIsSdkSandboxUid;
     private TestableLooper mTestableLooper;
 
     // The AIDL stub will use PermissionEnforcer to check permission from the caller.
@@ -155,6 +160,16 @@ public class CarrierConfigLoaderTest extends TelephonyTestBase {
             @Override
             public boolean isUserBuild() {
                 return true;
+            }
+
+            @Override
+            protected int getBinderCallingUid() {
+                return mFakeCallingUid;
+            }
+
+            @Override
+            protected boolean isSdkSandboxUidInternal(int uid) {
+                return mFakeIsSdkSandboxUid;
             }
         };
         mHandler = mCarrierConfigLoader.getHandler();
@@ -560,5 +575,16 @@ public class CarrierConfigLoaderTest extends TelephonyTestBase {
 
         mCarrierConfigLoader.updateConfigForPhoneId(1, IccCardConstants.INTENT_VALUE_ICC_ABSENT);
         mTestableLooper.processAllMessages();
+    }
+
+    @Test
+    public void testOverrideConfig_persistent_sdkSandboxUid_securityException() {
+        mFakePermissionEnforcer.grant(android.Manifest.permission.MODIFY_PHONE_STATE);
+        mFakeCallingUid = 25000; // Some UID in SDK Sandbox range
+        mFakeIsSdkSandboxUid = true;
+
+        assertThrows(SecurityException.class,
+                () -> mCarrierConfigLoader.overrideConfig(DEFAULT_SUB_ID, new PersistableBundle(),
+                        true/*persistent*/));
     }
 }
