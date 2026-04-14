@@ -107,6 +107,7 @@ public class CarrierConfigLoaderTest extends TelephonyTestBase {
 
     private TelephonyManager mTelephonyManager;
     private CarrierConfigLoader mCarrierConfigLoader;
+    private HandlerThread mHandlerThread;
     private Handler mHandler;
     private int mCapturedCarrierId;
     private int mCapturedCarrierServiceUid;
