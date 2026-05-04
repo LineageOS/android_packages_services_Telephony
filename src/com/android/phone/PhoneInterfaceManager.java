@@ -2929,6 +2929,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
     public void handleUssdRequest(int subId, String ussdRequest, ResultReceiver wrappedCallback) {
         enforceCallPermission();
 
+        if (!TelephonyPermissions.checkSubscriptionAssociatedWithUser(
+                mApp, subId, Binder.getCallingUserHandle())) {
+            throw new SecurityException(
+                    "The subscription " + subId + " is not associated " + "with the calling user");
+        }
         final long identity = Binder.clearCallingIdentity();
         try {
             if (!SubscriptionManager.isValidSubscriptionId(subId)) {
