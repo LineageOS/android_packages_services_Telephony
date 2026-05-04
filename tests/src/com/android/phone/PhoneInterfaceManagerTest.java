@@ -21,6 +21,8 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyBoolean;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.doNothing;
@@ -37,15 +39,21 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.os.ResultReceiver;
+import android.os.UserHandle;
 import android.permission.flags.Flags;
 import android.platform.test.flag.junit.SetFlagsRule;
 import android.telephony.RadioAccessFamily;
+import android.telephony.Rlog;
+import android.telephony.SubscriptionInfo;
+import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 
 import androidx.test.annotation.UiThreadTest;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 import com.android.TelephonyTestBase;
+import com.android.internal.telephony.HalVersion;
 import com.android.internal.telephony.IIntegerConsumer;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.RILConstants;
@@ -89,6 +97,8 @@ public class PhoneInterfaceManagerTest extends TelephonyTestBase {
     PackageManager mPackageManager;
     @Mock
     private SubscriptionManagerService mSubscriptionManagerService;
+    @Mock
+    private com.android.internal.telephony.data.DataNetworkController mDataNetworkController;
 
     @Rule public final SetFlagsRule mSetFlagsRule = new SetFlagsRule();
 
@@ -106,6 +116,17 @@ public class PhoneInterfaceManagerTest extends TelephonyTestBase {
         doReturn(mSubscriptionManagerService).when(mPhoneInterfaceManager)
                 .getSubscriptionManagerService();
         TelephonyManager.setupISubForTest(mSubscriptionManagerService);
+        replaceInstance(SubscriptionManagerService.class, "sInstance", null,
+                mSubscriptionManagerService);
+        doReturn(new int[0]).when(mSubscriptionManagerService).getActiveSubIdList(anyBoolean());
+
+        // Some message handlers query these methods on the default phone instance.
+        // Make sure they return sensible values and the mPhone mock instance is set
+        // as the default phone.
+        doReturn(new HalVersion(2, 1)).when(mPhone).getHalVersion(anyInt());
+        when(mPhone.getContext()).thenReturn(mPhoneGlobals);
+        doReturn(mDataNetworkController).when(mPhone).getDataNetworkController();
+        doReturn(mPhone).when(mPhoneInterfaceManager).getDefaultPhone();
         mSharedPreferences = mPhoneInterfaceManager.getSharedPreferences();
         mSharedPreferences.edit().remove(Phone.PREF_NULL_CIPHER_AND_INTEGRITY_ENABLED).commit();
         mSharedPreferences.edit().remove(Phone.PREF_NULL_CIPHER_NOTIFICATIONS_ENABLED).commit();
@@ -537,5 +558,51 @@ public class PhoneInterfaceManagerTest extends TelephonyTestBase {
 
         String packageName = mPhoneInterfaceManager.getCurrentPackageName();
         assertEquals(null, packageName);
+    }
+
+    @Test
+    public void testHandleUssdRequest_SubscriptionNotAssociatedWithUser_ThrowsSecurityException() {
+        int subId = 1;
+        String ussdRequest = "*121#";
+        ResultReceiver callback = mock(ResultReceiver.class);
+
+        // Mock subscription NOT associated with user
+        doReturn(false)
+                .when(mSubscriptionManagerService)
+                .isSubscriptionAssociatedWithUser(eq(subId), any(UserHandle.class));
+
+        assertThrows(
+                SecurityException.class,
+                () -> mPhoneInterfaceManager.handleUssdRequest(subId, ussdRequest, callback));
+    }
+
+    @Test
+    public void testHandleUssdRequest_ValidSubscription_Success() {
+        int subId = 1;
+        String ussdRequest = "*121#";
+        ResultReceiver callback = mock(ResultReceiver.class);
+
+        // Mock subscription IS associated with user
+        doReturn(true)
+                .when(mSubscriptionManagerService)
+                .isSubscriptionAssociatedWithUser(eq(subId), any(UserHandle.class));
+        SubscriptionManager sm = (SubscriptionManager) mContext.getSystemService(
+                Context.TELEPHONY_SUBSCRIPTION_SERVICE);
+        doReturn(true).when(sm).isSubscriptionAssociatedWithUser(eq(subId), any(UserHandle.class));
+
+        doReturn(true)
+                .when(mPackageManager)
+                .hasSystemFeature(PackageManager.FEATURE_TELEPHONY_RADIO_ACCESS);
+
+        // Should not throw SecurityException. It will throw RuntimeException because of deadlock
+        // since we are calling it from the main thread. Reaching that point means the security
+        // check passed.
+        try {
+            mPhoneInterfaceManager.handleUssdRequest(subId, ussdRequest, callback);
+        } catch (RuntimeException e) {
+            if (!e.getMessage().contains("deadlock")) {
+                throw e;
+            }
+        }
     }
 }
