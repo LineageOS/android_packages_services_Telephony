@@ -3093,6 +3093,11 @@ public class PhoneInterfaceManager extends ITelephony.Stub {
         enforceTelephonyFeatureWithException(getCurrentPackageName(),
                 PackageManager.FEATURE_TELEPHONY_RADIO_ACCESS, "handleUssdRequest");
 
+        if (!TelephonyPermissions.checkSubscriptionAssociatedWithUser(
+                mApp, subId, Binder.getCallingUserHandle())) {
+            throw new SecurityException(
+                    "The subscription " + subId + " is not associated " + "with the calling user");
+        }
         final long identity = Binder.clearCallingIdentity();
         try {
             if (!SubscriptionManager.isValidSubscriptionId(subId)) {

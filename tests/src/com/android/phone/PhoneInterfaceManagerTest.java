@@ -23,6 +23,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyBoolean;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
@@ -43,12 +44,15 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.os.Build;
+import android.os.ResultReceiver;
 import android.os.UserHandle;
 import android.platform.test.annotations.EnableFlags;
 import android.platform.test.flag.junit.SetFlagsRule;
 import android.preference.PreferenceManager;
 import android.telephony.RadioAccessFamily;
 import android.telephony.Rlog;
+import android.telephony.SubscriptionInfo;
+import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.telephony.UiccPortInfo;
 import android.telephony.UiccSlotInfo;
@@ -107,8 +111,6 @@ public class PhoneInterfaceManagerTest extends TelephonyTestBase {
             PhoneInterfaceManagerTest.class.getPackageName();
 
     @Mock
-    Phone mPhone;
-    @Mock
     FeatureFlags mFeatureFlags;
     @Mock
     PackageManager mPackageManager;
@@ -152,6 +154,9 @@ public class PhoneInterfaceManagerTest extends TelephonyTestBase {
         doReturn(mSubscriptionManagerService).when(mPhoneInterfaceManager)
                 .getSubscriptionManagerService();
         TelephonyManager.setupISubForTest(mSubscriptionManagerService);
+        replaceInstance(SubscriptionManagerService.class, "sInstance", null,
+                mSubscriptionManagerService);
+        doReturn(new int[0]).when(mSubscriptionManagerService).getActiveSubIdList(anyBoolean());
 
         // In order not to affect the existing implementation, define a telephony features
         // and disabled enforce_telephony_feature_mapping_for_public_apis feature flag
@@ -737,5 +742,51 @@ public class PhoneInterfaceManagerTest extends TelephonyTestBase {
         assertNotNull(actualSimTypes);
         assertEquals(1, actualSimTypes.length);
         assertArrayEquals(expectedSimTypes, actualSimTypes);
+    }
+
+    @Test
+    public void testHandleUssdRequest_SubscriptionNotAssociatedWithUser_ThrowsSecurityException() {
+        int subId = 1;
+        String ussdRequest = "*121#";
+        ResultReceiver callback = mock(ResultReceiver.class);
+
+        // Mock subscription NOT associated with user
+        doReturn(false)
+                .when(mSubscriptionManagerService)
+                .isSubscriptionAssociatedWithUser(eq(subId), any(UserHandle.class));
+
+        assertThrows(
+                SecurityException.class,
+                () -> mPhoneInterfaceManager.handleUssdRequest(subId, ussdRequest, callback));
+    }
+
+    @Test
+    public void testHandleUssdRequest_ValidSubscription_Success() {
+        int subId = 1;
+        String ussdRequest = "*121#";
+        ResultReceiver callback = mock(ResultReceiver.class);
+
+        // Mock subscription IS associated with user
+        doReturn(true)
+                .when(mSubscriptionManagerService)
+                .isSubscriptionAssociatedWithUser(eq(subId), any(UserHandle.class));
+        SubscriptionManager sm = (SubscriptionManager) mContext.getSystemService(
+                Context.TELEPHONY_SUBSCRIPTION_SERVICE);
+        doReturn(true).when(sm).isSubscriptionAssociatedWithUser(eq(subId), any(UserHandle.class));
+
+        doReturn(true)
+                .when(mPackageManager)
+                .hasSystemFeature(PackageManager.FEATURE_TELEPHONY_RADIO_ACCESS);
+
+        // Should not throw SecurityException. It will throw RuntimeException because of deadlock
+        // since we are calling it from the main thread. Reaching that point means the security
+        // check passed.
+        try {
+            mPhoneInterfaceManager.handleUssdRequest(subId, ussdRequest, callback);
+        } catch (RuntimeException e) {
+            if (!e.getMessage().contains("deadlock")) {
+                throw e;
+            }
+        }
     }
 }
