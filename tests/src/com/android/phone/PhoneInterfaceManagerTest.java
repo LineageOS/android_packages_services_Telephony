@@ -75,6 +75,7 @@ import android.telephony.NetworkSecurityEvent;
 import android.telephony.RadioAccessFamily;
 import android.telephony.Rlog;
 import android.telephony.SubscriptionInfo;
+import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.telephony.UiccPortInfo;
 import android.telephony.UiccSlotInfo;
@@ -140,23 +141,17 @@ public class PhoneInterfaceManagerTest extends TelephonyTestBase {
             PhoneInterfaceManagerTest.class.getPackageName();
 
     @Mock
-    Phone mPhone;
-    @Mock
     FeatureFlags mFeatureFlags;
     @Mock
     PackageManager mPackageManager;
     @Mock
     private SubscriptionManagerService mSubscriptionManagerService;
     @Mock
-    private com.android.internal.telephony.data.DataNetworkController mDataNetworkController;
-
-    @Mock
-    private AppOpsManager mAppOps;
-    @Mock
     private android.media.AudioManager mAudioManager;
     @Mock
     private SatelliteController mSatelliteController;
-
+    @Mock
+    private AppOpsManager mAppOps;
     @Rule public final SetFlagsRule mSetFlagsRule = new SetFlagsRule();
     private UiccController mUiccController = null;
     private PinStorage mPinStorage = null;
@@ -206,6 +201,9 @@ public class PhoneInterfaceManagerTest extends TelephonyTestBase {
         doReturn(mSubscriptionManagerService).when(mPhoneInterfaceManager)
                 .getSubscriptionManagerService();
         TelephonyManager.setupISubForTest(mSubscriptionManagerService);
+        replaceInstance(SubscriptionManagerService.class, "sInstance", null,
+                mSubscriptionManagerService);
+        doReturn(new int[0]).when(mSubscriptionManagerService).getActiveSubIdList(anyBoolean());
 
         // Some message handlers query these methods on the default phone instance.
         // Make sure they return sensible values and the mPhone mock instance is set
@@ -1329,5 +1327,51 @@ public class PhoneInterfaceManagerTest extends TelephonyTestBase {
                 anyBoolean(), anyInt(), any());
         verify(mSatelliteController, never()).requestSatelliteEnabled(anyBoolean(),
                 anyBoolean(), anyBoolean(), any());
+    }
+
+    @Test
+    public void testHandleUssdRequest_SubscriptionNotAssociatedWithUser_ThrowsSecurityException() {
+        int subId = 1;
+        String ussdRequest = "*121#";
+        ResultReceiver callback = mock(ResultReceiver.class);
+
+        // Mock subscription NOT associated with user
+        doReturn(false)
+                .when(mSubscriptionManagerService)
+                .isSubscriptionAssociatedWithUser(eq(subId), any(UserHandle.class));
+
+        assertThrows(
+                SecurityException.class,
+                () -> mPhoneInterfaceManager.handleUssdRequest(subId, ussdRequest, callback));
+    }
+
+    @Test
+    public void testHandleUssdRequest_ValidSubscription_Success() {
+        int subId = 1;
+        String ussdRequest = "*121#";
+        ResultReceiver callback = mock(ResultReceiver.class);
+
+        // Mock subscription IS associated with user
+        doReturn(true)
+                .when(mSubscriptionManagerService)
+                .isSubscriptionAssociatedWithUser(eq(subId), any(UserHandle.class));
+        SubscriptionManager sm = (SubscriptionManager) mContext.getSystemService(
+                Context.TELEPHONY_SUBSCRIPTION_SERVICE);
+        doReturn(true).when(sm).isSubscriptionAssociatedWithUser(eq(subId), any(UserHandle.class));
+
+        doReturn(true)
+                .when(mPackageManager)
+                .hasSystemFeature(PackageManager.FEATURE_TELEPHONY_RADIO_ACCESS);
+
+        // Should not throw SecurityException. It will throw RuntimeException because of deadlock
+        // since we are calling it from the main thread. Reaching that point means the security
+        // check passed.
+        try {
+            mPhoneInterfaceManager.handleUssdRequest(subId, ussdRequest, callback);
+        } catch (RuntimeException e) {
+            if (!e.getMessage().contains("deadlock")) {
+                throw e;
+            }
+        }
     }
 }
