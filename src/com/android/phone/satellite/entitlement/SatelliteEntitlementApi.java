@@ -58,11 +58,18 @@ public class SatelliteEntitlementApi {
 
         String response = mServiceEntitlement.queryEntitlementStatus(
                 ServiceEntitlement.APP_SATELLITE_ENTITLEMENT, request);
-        SatelliteEntitlementResponse satelliteEntitlementResponse =
-                new SatelliteEntitlementResponse(response);
-        return new SatelliteEntitlementResult(satelliteEntitlementResponse.getEntitlementStatus(),
-                satelliteEntitlementResponse.getPlmnAllowed(),
-                satelliteEntitlementResponse.getPlmnBarredList());
+        try {
+            SatelliteEntitlementResponse satelliteEntitlementResponse =
+                    new SatelliteEntitlementResponse(response);
+            return new SatelliteEntitlementResult(
+                    satelliteEntitlementResponse.getEntitlementStatus(),
+                    satelliteEntitlementResponse.getPlmnAllowed(),
+                    satelliteEntitlementResponse.getPlmnBarredList());
+        } catch (Throwable t) {
+            throw new ServiceEntitlementException(
+                    ServiceEntitlementException.ERROR_MALFORMED_HTTP_RESPONSE,
+                    "Failed to parse entitlement response", t);
+        }
     }
 
     @NonNull
