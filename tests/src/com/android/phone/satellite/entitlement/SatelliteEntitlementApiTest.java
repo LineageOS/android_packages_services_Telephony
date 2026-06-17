@@ -24,6 +24,7 @@ import static com.android.phone.satellite.entitlement.SatelliteEntitlementResult
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.eq;
@@ -41,6 +42,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 import com.android.internal.telephony.satellite.SatelliteConfig;
 import com.android.internal.telephony.satellite.SatelliteController;
 import com.android.libraries.entitlement.ServiceEntitlement;
+import com.android.libraries.entitlement.ServiceEntitlementException;
 import com.android.libraries.entitlement.ServiceEntitlementRequest;
 
 import org.junit.After;
@@ -193,5 +195,35 @@ public class SatelliteEntitlementApiTest {
         return entitlementStatus == SATELLITE_ENTITLEMENT_STATUS_ENABLED ? ","
                 + "\"PLMNAllowed\":[{\"PLMN\":\"31026\",\"DataPlanType\":\"unmetered\"},"
                 + "{\"PLMN\":\"302820\",\"DataPlanType\":\"metered\"}]" : "";
+    }
+
+    @Test
+    public void testCheckEntitlementStatus_maliciousJson_throwsException() throws Exception {
+        // Generate a deeply nested JSON to trigger StackOverflowError
+        String maliciousJson = getDeeplyNestedJson(10000);
+
+        doReturn(maliciousJson)
+                .when(mServiceEntitlement)
+                .queryEntitlementStatus(eq(ServiceEntitlement.APP_SATELLITE_ENTITLEMENT), any());
+
+        try {
+            mSatelliteEntitlementAPI.checkEntitlementStatus();
+            fail("Expected ServiceEntitlementException");
+        } catch (ServiceEntitlementException e) {
+            assertEquals(ServiceEntitlementException.ERROR_MALFORMED_HTTP_RESPONSE, e.getErrorCode());
+            assertTrue(e.getCause() instanceof StackOverflowError);
+        }
+    }
+
+    private String getDeeplyNestedJson(int depth) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < depth; i++) {
+            sb.append("{\"a\":");
+        }
+        sb.append("1");
+        for (int i = 0; i < depth; i++) {
+            sb.append("}");
+        }
+        return sb.toString();
     }
 }
