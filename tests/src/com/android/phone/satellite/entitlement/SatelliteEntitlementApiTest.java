@@ -27,8 +27,10 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.verify;
 
 import android.content.Context;
@@ -212,6 +214,27 @@ public class SatelliteEntitlementApiTest {
         } catch (ServiceEntitlementException e) {
             assertEquals(ServiceEntitlementException.ERROR_MALFORMED_HTTP_RESPONSE, e.getErrorCode());
             assertTrue(e.getCause() instanceof StackOverflowError);
+        }
+    }
+
+    @Test
+    public void testCheckEntitlementStatus_catchesStackOverflowError() throws Exception {
+        // Using mServiceEntitlement mock instead of creating a new one
+        doThrow(new StackOverflowError("Simulated unbounded recursion from org.json"))
+                .when(mServiceEntitlement)
+                .queryEntitlementStatus(anyString(), any());
+
+        // Execution & Assertion
+        try {
+            mSatelliteEntitlementAPI.checkEntitlementStatus();
+            fail("Expected ServiceEntitlementException was not thrown");
+        } catch (ServiceEntitlementException e) {
+            assertEquals(
+                    ServiceEntitlementException.ERROR_MALFORMED_HTTP_RESPONSE,
+                    e.getErrorCode());
+            assertTrue(
+                    "Cause should be StackOverflowError",
+                    e.getCause() instanceof StackOverflowError);
         }
     }
 

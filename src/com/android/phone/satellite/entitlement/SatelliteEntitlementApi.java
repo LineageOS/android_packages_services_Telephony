@@ -75,9 +75,9 @@ public class SatelliteEntitlementApi {
         requestBuilder.setConfigurationVersion(CONFIGURATION_VERSION);
         ServiceEntitlementRequest request = requestBuilder.build();
 
-        String response = queryEntitlementStatus(
-                ServiceEntitlement.APP_SATELLITE_ENTITLEMENT, request);
         try {
+            String response = queryEntitlementStatus(
+                ServiceEntitlement.APP_SATELLITE_ENTITLEMENT, request);
             SatelliteEntitlementResponse satelliteEntitlementResponse =
                     new SatelliteEntitlementResponse(response);
             return new SatelliteEntitlementResult(
