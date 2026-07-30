@@ -56,9 +56,9 @@ public class SatelliteEntitlementApi {
         requestBuilder.setAppName(getSatelliteEntitlementAppName(mCarrierConfig));
         ServiceEntitlementRequest request = requestBuilder.build();
 
-        String response = mServiceEntitlement.queryEntitlementStatus(
-                ServiceEntitlement.APP_SATELLITE_ENTITLEMENT, request);
         try {
+            String response = mServiceEntitlement.queryEntitlementStatus(
+                ServiceEntitlement.APP_SATELLITE_ENTITLEMENT, request);
             SatelliteEntitlementResponse satelliteEntitlementResponse =
                     new SatelliteEntitlementResponse(response);
             return new SatelliteEntitlementResult(
