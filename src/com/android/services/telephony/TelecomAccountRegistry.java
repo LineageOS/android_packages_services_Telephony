@@ -518,6 +518,16 @@ public class TelecomAccountRegistry {
                     mContext.getResources()
                             .getBoolean(R.bool.config_support_video_calling_fallback));
 
+            // Devices that run IMS media on the application processor use VoIP audio mode for
+            // IMS calls. Start calls on this account in VoIP audio mode as well, so Telecom does
+            // not set MODE_IN_CALL (which starts the modem voice path in the audio HAL) before
+            // the IMS connection reports its audio mode. Circuit-switched connections still
+            // report non-VoIP audio mode and move the call to MODE_IN_CALL.
+            if (!isEmergency && mContext.getResources().getBoolean(
+                    com.android.internal.R.bool.config_use_voip_mode_for_ims)) {
+                extras.putBoolean(PhoneAccount.EXTRA_ALWAYS_USE_VOIP_AUDIO_MODE, true);
+            }
+
             if (slotId != SubscriptionManager.INVALID_SIM_SLOT_INDEX) {
                 extras.putInt(PhoneAccount.EXTRA_SORT_ORDER, slotId);
             }
